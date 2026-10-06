@@ -27,14 +27,14 @@ export function htmlATexto(h) {
   return h.replace(/<script[\s\S]*?<\/script>/gi, '').replace(/<style[\s\S]*?<\/style>/gi, '').replace(/<ix:header[\s\S]*?<\/ix:header>/gi, '')
     .replace(/<\/(p|div|tr|li|h\d|table|section)>/gi, '\n').replace(/<br\s*\/?>/gi, '\n').replace(/<\/t[dh]>/gi, ' | ')
     .replace(/<[^>]+>/g, '').replace(/&nbsp;|&#160;|&#xa0;/gi, ' ').replace(/&amp;/g, '&').replace(/&#8217;|&rsquo;/g, "'")
-    .replace(/&#8220;|&#8221;|&ldquo;|&rdquo;/g, '"').replace(/&#8212;|&#8211;|&mdash;|&ndash;/g, '-').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&#\d+;/g, ' ')
+    .replace(/&#8220;|&#8221;|&ldquo;|&rdquo;/g, '"').replace(/&#8212;|&#8211;|&mdash;|&ndash;/g, '-').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&euro;|&#8364;|&#x20ac;/gi, '€').replace(/&pound;|&#163;/gi, '£').replace(/&yen;|&#165;/gi, '¥').replace(/&#36;/g, '$').replace(/&#(\d+);/g, (_, c) => String.fromCodePoint(+c))
     .replace(/[ \t]+/g, ' ').replace(/( \| )+\n/g, '\n').replace(/\n\s*\n+/g, '\n');
 }
 
 for (let k = 0; k < pares.length; k += 2) {
   const [nombre, url] = [pares[k], pares[k + 1]];
   try {
-    const r = await fetch(url, { headers: cabeceras(url), redirect: 'follow' });
+    const r = await fetch(url, { headers: cabeceras(url), redirect: 'follow', signal: AbortSignal.timeout(+(process.env.TIEMPO_DESCARGA || 60) * 1000) });
     const tipo = r.headers.get('content-type') || '';
     const buf = Buffer.from(await r.arrayBuffer());
     if (!r.ok) { console.log(`${nombre}: HTTP ${r.status}`); continue; }
@@ -54,7 +54,7 @@ for (let k = 0; k < pares.length; k += 2) {
       writeFileSync(join(dir, `${nombre}.html`), h);
       const t = htmlATexto(h);
       writeFileSync(join(dir, `${nombre}.txt`), t);
-      console.log(`${nombre}: HTML, ${t.length} caracteres de texto${/captcha|are you a robot|access denied|radware/i.test(h) ? ' — PARECE UN BLOQUEO ANTIBOT' : ''}`);
+      console.log(`${nombre}: HTML, ${t.length} caracteres de texto${t.length < 3000 && /captcha|are you a robot|access denied|radware|verify you are human/i.test(t) ? ' — PARECE UN BLOQUEO ANTIBOT' : ''}`);
     } else {
       const ext = (tipo.match(/json|csv|spreadsheetml|excel/) || ['bin'])[0].replace('spreadsheetml', 'xlsx').replace('excel', 'xls');
       writeFileSync(join(dir, `${nombre}.${ext}`), buf);

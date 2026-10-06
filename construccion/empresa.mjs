@@ -297,7 +297,7 @@ export default {
       ['tabla', 'transacciones.operaciones', [['Fecha', 'fecha', '', 0.8], ['Objetivo', 'objetivo', '', 1.7], ['Comprador', 'comprador', '', 1.6], ['EV (M)', 'ev', '0', 0.8, 'd'], ['EV/Ventas', 'ev_ventas', 'x2', 0.8, 'd'], ['EV/EBITDA', 'ev_ebitda', 'x', 0.8, 'd'], ['Prima', 'prima_pct', 'pct0', 0.7, 'd'], ['Comentario', 'comentario', '', 2]]],
       ['kv', [
         ['EV/EBITDA mediano (p25 – p75)', '{{calc.transacciones.mediana_ev_ebitda|x}} ({{calc.transacciones.p25_ev_ebitda|x}} – {{calc.transacciones.p75_ev_ebitda|x}})'], ['Prima de control mediana', '{{calc.transacciones.prima_mediana_pct|pct0}}'],
-        ['Valor por acción implícito (mediana)', '{{calc.transacciones.valor_mediana|2}}'], ['Rango p25 – p75', '{{calc.transacciones.valor_p25|2}} – {{calc.transacciones.valor_p75|2}}'],
+        ['Valor por acción implícito (mediana de {{calc.transacciones.metrica}})', '{{calc.transacciones.valor_mediana|2}}'], ['Rango p25 – p75', '{{calc.transacciones.valor_p25|2}} – {{calc.transacciones.valor_p75|2}}'],
       ]],
       ['grafico', 'transacciones'],
       ['texto', 'transacciones.comentario'],

@@ -28,12 +28,14 @@ Cada subagente escribe en `notas/<letra>.json` **solo hechos**, con las claves d
 
 Si no puedes lanzar subagentes, haz las fases 2-4 tú mismo, en ese orden y con la misma profundidad, escribiendo igualmente las notas A-D.
 
+**Esperar a los subagentes.** Cada uno avisa al terminar: no esperes con `sleep` ni con bucles de comprobación; mientras tanto, trabaja en `propio`.
+
 **Si un subagente se corta**, no lo relances entero: lee su `notas/<letra>.json`, mira qué campos faltan y complétalos tú (o con un subagente nuevo que solo haga esos campos). La integración acepta notas parciales.
 
 **Mientras trabajan los subagentes**, no leas el código del motor: prepara `notas/propio.json` (estructura abajo) con lo que ya sepas y piensa la tesis.
 
 ## Integración, cálculo y redacción (tú)
-1. Escribe tu parte en `notas/propio.json`: las secciones que redactas tú (`meta` salvo `huecos`, `resumen`, `dcf`, `escenarios`, `valoracion`, `suma_partes`, `catalizadores`, `riesgos`, `preguntas`, los `comentario` y textos de juicio de las demás secciones…), tus fuentes propias en `fuentes` y tus `huecos`. **Tus citas llevan la letra de la nota**: `[A3]` es la fuente 3 de `A.json`, `[D2, B5]` dos fuentes, `[P1]` una fuente tuya. Si usas un `.mjs` para escribir textos largos, que exporte el objeto por defecto (`export default {…}`) como `notas/propio.mjs`.
+1. Escribe tu parte en `notas/propio.json`: las secciones que redactas tú (`meta` salvo `huecos`, `resumen`, `dcf`, `escenarios`, `valoracion`, `suma_partes`, `catalizadores`, `riesgos`, `preguntas`, los `comentario` y textos de juicio de las demás secciones…), tus fuentes propias en `fuentes` y tus `huecos`. **Tus citas llevan la letra de la nota**: `[A3]` es la fuente 3 de `A.json`, `[D2, B5]` dos fuentes, `[P1]` una fuente tuya. Si usas un `.mjs` para escribir textos largos, que exporte el objeto por defecto (`export default {…}`) como `notas/propio.mjs`. Para cambiar un elemento de una lista que viene de una nota, usa `_parches: [{ "ruta": "trimestres.items[3].vs_consenso", "valor": "Superior" }]`; para retirar un hueco que registró una nota y que sí has resuelto, `huecos_resueltos: [{ "seccion": "…", "campo": "…" }]` (los huecos de un campo que acaba con valor se retiran solos).
 2. Integra: `node motor/integrar.mjs --dir informes/<carpeta>`. Junta notas y propio (lo tuyo completa o sustituye campo a campo lo de las notas; un `null` no borra), renumera las fuentes sin duplicados, traduce todas las citas y avisa de citas sin fuente y secciones vacías. **No escribas tu propio script de fusión.** Vuelve a ejecutarlo cada vez que cambies una nota o `propio`.
 3. Primer cálculo: `node motor/calcular-empresa.mjs --datos informes/<carpeta>/datos.json`. Corrige los controles en «Revisar» (en las notas o en `propio`, y reintegra).
 4. Fase 6 (supuestos del DCF, escenarios, pesos), segundo cálculo y lectura del DCF inverso.

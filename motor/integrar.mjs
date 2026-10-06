@@ -66,7 +66,10 @@ export async function integrar(dir) {
       const palabras = (t) => new Set(String(t || '').toLowerCase().split(/\W+/).filter((x) => x.length > 3));
       const parecidos = (a, b) => { const A = palabras(a), B = palabras(b); if (!A.size || !B.size) return true; let c = 0; for (const x of A) if (B.has(x)) c++; return c / Math.min(A.size, B.size) >= 0.5; };
       let clave = norm(f.url) ? 'u|' + norm(f.url) : 't|' + String(f.titulo || '').toLowerCase();
-      if (porClave.has(clave) && !parecidos(porClave.get(clave).titulo, f.titulo)) { clave += '|' + String(f.titulo || '').toLowerCase(); avisos.add(`Misma URL con títulos distintos (se dejan separadas): ${f.url}`); }
+      // Solo se separan las URL genéricas (portada de inversores, raíz de un dominio); un documento
+      // concreto (10-K, PDF, nota) es el mismo aunque dos subagentes lo titulen distinto.
+      const generica = (() => { try { const u = new URL(f.url); return u.pathname.split('/').filter(Boolean).length <= 1 && !/\.(pdf|html?|xml|xlsx?|json)$/i.test(u.pathname) && !u.search; } catch { return false; } })();
+      if (generica && porClave.has(clave) && !parecidos(porClave.get(clave).titulo, f.titulo)) { clave += '|' + String(f.titulo || '').toLowerCase(); avisos.add(`Misma URL con títulos distintos (se dejan separadas): ${f.url}`); }
       let g = porClave.get(clave);
       if (!g) { g = { id: global.length + 1, titulo: f.titulo ?? null, editor: f.editor ?? null, tipo: f.tipo ?? null, fecha: f.fecha ?? null, url: f.url ?? null }; global.push(g); porClave.set(clave, g); }
       mapa[L][String(f.id)] = g.id;
@@ -98,13 +101,29 @@ export async function integrar(dir) {
   const propio = recorrer(P, prefijo);
   huecos.push(...(propio.huecos || []), ...(propio.meta?.huecos || []));
   for (const k of ORDEN) if (k !== 'fuentes' && propio[k] !== undefined) datos[k] = combinar(datos[k], propio[k]);
-  datos.meta = { ...(datos.meta || {}), huecos };
+  // Parches puntuales desde propio: [{ "ruta": "trimestres.items[3].vs_consenso", "valor": "Superior" }]
+  for (const p of propio._parches || []) {
+    const partes = String(p.ruta).match(/[^.[\]]+/g) || [];
+    let o = datos;
+    for (let i = 0; i < partes.length - 1; i++) { const k = /^\d+$/.test(partes[i]) ? +partes[i] : partes[i]; if (o[k] === undefined || o[k] === null) o[k] = /^\d+$/.test(partes[i + 1]) ? [] : {}; o = o[k]; }
+    o[/^\d+$/.test(partes.at(-1)) ? +partes.at(-1) : partes.at(-1)] = p.valor;
+  }
+  // Huecos que ya no lo son: los que propio declara resueltos y los de un campo que acabó con valor.
+  const obtener = (o, ruta) => (String(ruta).match(/[^.[\]]+/g) || []).reduce((x, k) => (x === null || x === undefined ? x : x[k]), o);
+  const lleno = (v) => v !== null && v !== undefined && v !== '' && !(Array.isArray(v) && !v.length);
+  const resueltos = (propio.huecos_resueltos || []).map((h) => `${h.seccion}|${h.campo}`.toLowerCase());
+  const huecosVivos = huecos.filter((h) => {
+    if (resueltos.includes(`${h.seccion}|${h.campo}`.toLowerCase())) return false;
+    if (/^[\w.[\]]+$/.test(h.campo || '') && datos[h.seccion] && lleno(obtener(datos[h.seccion], h.campo))) { avisos.add(`Hueco retirado porque el campo tiene valor: ${h.seccion}.${h.campo}`); return false; }
+    return true;
+  });
+  datos.meta = { ...(datos.meta || {}), huecos: huecosVivos };
   datos.fuentes = global;
   const salida = Object.fromEntries(ORDEN.map((k) => [k, datos[k] === undefined ? null : datos[k]]));
   const vacias = ORDEN.filter((k) => salida[k] === null);
   const faltan = LETRAS.filter((L) => !N[L]);
   writeFileSync(join(dir, 'datos.json'), JSON.stringify(salida, null, 2));
-  return { fuentes: global.length, sinMapa: [...sinMapa], vacias, faltan, huecos: huecos.length, avisos: [...avisos] };
+  return { fuentes: global.length, sinMapa: [...sinMapa], vacias, faltan, huecos: datos.meta.huecos.length, avisos: [...avisos] };
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {

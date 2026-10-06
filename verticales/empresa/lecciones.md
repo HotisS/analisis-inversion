@@ -41,3 +41,8 @@ Lo aprendido en Viscofan, Indra y On (octubre de 2026). Ahorra búsquedas que ya
 - **Comparables frágiles**: con Inditex, la mediana pasaba de 7,7x a 12,2x según se incluyeran o no tres empresas. Explica cada exclusión; el motor avisa si quitar una sola cambia mucho la mediana.
 - **Control familiar**: con un accionista de control, el voto de la junta lo decide él; calcula el voto en contra sobre el capital libre presente (`voto_remuneracion_contra_libre_pct`) y marca `presidente_vinculado_control` si preside alguien de su entorno.
 - **Fuentes genéricas**: no cites «la web de inversores» para cosas distintas; cita el documento concreto (el integrador separa las fuentes con la misma URL y títulos distintos, pero mejor que no ocurra).
+- **EE. UU. (EDGAR)**: `curl` a sec.gov da 403; usa `descargar.mjs` (lleva el User-Agent que exige la SEC). Las series anuales salen limpias de `https://data.sec.gov/api/xbrl/companyfacts/CIK##########.json` y la lista de presentaciones (Form 4, 10-Q…) de `https://data.sec.gov/submissions/CIK##########.json` (CIK con ceros a la izquierda hasta 10 cifras).
+- **Sistemas cedidos en arrendamiento** (Intuitive: 809 M USD en 2025 traspasados de existencias a inmovilizado, fuera del capex): súmalos al capex o el DCF sube más de un 8 %.
+- **MarketScreener cambia de base según la empresa**: el BPA es GAAP en unas y ajustado en otras (Intuitive frente a Stryker). Compruébalo con la conciliación de cada empresa antes de comparar PER.
+- **Stock Analysis**: su valor empresa no resta las inversiones financieras a largo plazo; recalcúlalo con el puente.
+- **Tasa libre de EE. UU.**: FRED (`https://fred.stlouisfed.org/series/DGS10`) o el Tesoro.

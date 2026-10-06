@@ -465,7 +465,15 @@ export function calcularEmpresa(datos) {
   // ── Transacciones precedentes ──
   const ops = lista(d.transacciones?.operaciones);
   const evEbitdaOps = ops.map((o) => o.ev_ebitda);
-  const transacciones = validos(evEbitdaOps).length >= 3 && ebitdaLtm !== null ? {
+  // Si casi ninguna operación publica EV/EBITDA (tecnología, salud), se valora con EV/ventas.
+  const evVentasOps = ops.map((o) => o.ev_ventas);
+  const transPorVentas = validos(evEbitdaOps).length < 3 && validos(evVentasOps).length >= 3 && ingresosLtm !== null;
+  const transacciones = transPorVentas ? {
+    n: ops.length, metrica: 'EV/ventas', mediana_ev_ebitda: null, p25_ev_ebitda: null, p75_ev_ebitda: null,
+    mediana_ev_ventas: red(mediana(evVentasOps), 2), prima_mediana_pct: red(mediana(ops.map((o) => o.prima_pct)), 0),
+    valor_p25: red(deEv(percentil(evVentasOps, 25) * ingresosLtm), 2), valor_mediana: red(deEv(mediana(evVentasOps) * ingresosLtm), 2), valor_p75: red(deEv(percentil(evVentasOps, 75) * ingresosLtm), 2),
+  } : validos(evEbitdaOps).length >= 3 && ebitdaLtm !== null ? {
+    metrica: 'EV/EBITDA',
     n: ops.length, mediana_ev_ebitda: red(mediana(evEbitdaOps), 1), p25_ev_ebitda: red(percentil(evEbitdaOps, 25), 1), p75_ev_ebitda: red(percentil(evEbitdaOps, 75), 1),
     mediana_ev_ventas: red(mediana(ops.map((o) => o.ev_ventas)), 2), prima_mediana_pct: red(mediana(ops.map((o) => o.prima_pct)), 0),
     valor_p25: red(deEv(percentil(evEbitdaOps, 25) * ebitdaLtm), 2), valor_mediana: red(deEv(mediana(evEbitdaOps) * ebitdaLtm), 2), valor_p75: red(deEv(percentil(evEbitdaOps, 75) * ebitdaLtm), 2),
@@ -535,7 +543,7 @@ export function calcularEmpresa(datos) {
   const implPer = implicito.find((x) => x.metodo.startsWith('PER'));
   if (implNtm) fila('Comparables: EV/EBITDA NTM', implNtm.valor_p25, implNtm.valor_mediana, implNtm.valor_p75);
   if (implPer) fila('Comparables: PER NTM', implPer.valor_p25, implPer.valor_mediana, implPer.valor_p75);
-  if (transacciones) fila('Transacciones precedentes', transacciones.valor_p25, transacciones.valor_mediana, transacciones.valor_p75);
+  if (transacciones) fila(`Transacciones precedentes (${transacciones.metrica})`, transacciones.valor_p25, transacciones.valor_mediana, transacciones.valor_p75);
   if (dcf) fila('DCF (WACC y g ± 0,5)', dcf.rango_min, dcf.valor_accion, dcf.rango_max);
   if (escenarios.length >= 2) fila('Escenarios (bajista – alcista)', Math.min(...escenarios.map((e) => e.valor)), valorPonderado, Math.max(...escenarios.map((e) => e.valor)));
   if (sumaPartes) fila('Suma de partes', sumaPartes.valor_min, sumaPartes.valor_accion, sumaPartes.valor_max);
@@ -648,6 +656,10 @@ export function calcularEmpresa(datos) {
   // Se admite alguna fuente de contexto sin cita, pero no muchas: o sobran en la lista o faltan citas.
   control('Fuentes sin citar ≤ 15 %', fuentes.fuentes_sin_citar.length <= Math.max(2, 0.15 * fuentes.n_fuentes), fuentes.fuentes_sin_citar.length ? `Sin citar: ${fuentes.fuentes_sin_citar.join(', ')}.` : '');
 
+  // Controles que el análisis ya explica en el texto: no se ocultan, pasan a «Explicado» con su motivo.
+  for (const e of lista(meta.controles_explicados)) {
+    for (const c of controles) if (c.resultado === 'Revisar' && e?.control && c.control.toLowerCase().startsWith(String(e.control).toLowerCase())) { c.resultado = 'Explicado'; c.detalle = `${c.detalle} Explicación: ${e.explicacion || 'ver el texto.'}`; }
+  }
   d.calc = {
     version: 4, etiquetas, recomendacion, mercado, clave, cuenta, tcac: tcacTabla,
     cuenta_y_prevision: [...cuenta.map((c) => ({ periodo: c.periodo, ingresos: c.ingresos, ebitda: c.ebitda })), ...proy.map((p) => ({ periodo: p.periodo, ingresos: p.ingresos, ebitda: p.ebitda }))],
@@ -661,7 +673,7 @@ export function calcularEmpresa(datos) {
     competidores_margen: [{ nombre: id.nombre_corto || id.nombre, margen_ebit_pct: ultimoCalc.margen_ebit_pct ?? null }, ...lista(d.competencia?.competidores).map((c) => ({ nombre: c.nombre, margen_ebit_pct: n(c.margen_ebit_pct) }))],
     sintesis: { rangos, tabla: tablaSintesis, valor_objetivo: valorObjetivo, potencial_pct: red(pct(valorObjetivo - precio, precio)) },
     fuentes, controles,
-    controles_resumen: `${controles.filter((c) => c.resultado === 'OK').length} de ${controles.length} controles correctos`,
+    controles_resumen: `${controles.filter((c) => c.resultado === 'OK').length} de ${controles.length} controles correctos${controles.some((c) => c.resultado === 'Explicado') ? ` y ${controles.filter((c) => c.resultado === 'Explicado').length} explicados` : ''}`,
   };
   return d;
 }

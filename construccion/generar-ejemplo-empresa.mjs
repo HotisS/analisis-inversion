@@ -107,7 +107,7 @@ const fuentesLista = [
 ];
 
 const ejemplo = {
-  meta: { fecha_corte: '2026-10-06', divisa: 'EUR', unidades: 'millones', cierre_ejercicio_mes: 12, divisa_cotizacion: 'EUR', tipo_cambio: 1, etiqueta_ejercicio: 'fin', normas_contables: 'NIIF-UE', formato_cuenta: 'funcion', limitaciones: 'EJEMPLO FICTICIO para probar la plantilla y el motor: la empresa, las personas y todas las cifras son inventadas.',
+  meta: { fecha_corte: '2026-10-06', divisa: 'EUR', unidades: 'millones', cierre_ejercicio_mes: 12, divisa_cotizacion: 'EUR', tipo_cambio: 1, etiqueta_ejercicio: 'fin', controles_explicados: [{ control: 'Tipo impositivo efectivo razonable', explicacion: 'Regularización fiscal de un ejercicio, explicada en la cuenta de resultados; no se proyecta.' }], normas_contables: 'NIIF-UE', formato_cuenta: 'funcion', limitaciones: 'EJEMPLO FICTICIO para probar la plantilla y el motor: la empresa, las personas y todas las cifras son inventadas.',
     huecos: [{ seccion: 'Gobierno', campo: 'Ratio de la remuneración del primer ejecutivo sobre el salario medio', tipo: 'Complemento', intentos: '1) Informe de remuneraciones 2025: no lo publica; 2) informe de sostenibilidad (EINF): da el salario medio pero no el ratio; 3) búsqueda en prensa económica: sin resultados. Calculado a partir de 1) y 2).', decision: 'Calculado y marcado como estimación' }] },
   identificacion: {
     nombre: 'Compañía Ejemplo, S.A.', nombre_corto: 'Compañía Ejemplo', ticker: 'EJM', isin: 'ES0000000000', mercado: 'Bolsa de Madrid (Mercado Continuo)', indice_referencia: 'IBEX 35',
