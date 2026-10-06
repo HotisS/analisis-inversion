@@ -56,6 +56,11 @@ construccion/
   construir.mjs               Genera las plantillas
   probar.mjs                  Prueba: prompt = ejemplo = plantilla, sin avisos
   a-pdf.ps1, pdf-a-png.ps1    Revisión visual con Word (Windows)
+herramientas/                 Para los análisis de empresa
+  descargar.mjs               Documentos con su texto al lado (PDF por páginas)
+  bolsa.mjs                   Cotizaciones de Yahoo: rentabilidades, beta, volatilidad, cierres
+  prompt-de.mjs               Parte del prompt de cada subagente (A-D)
+motor/integrar.mjs            Junta las notas A-D y la parte del analista en datos.json
 informes/                     Informes generados (los ejemplos se versionan)
 ```
 
