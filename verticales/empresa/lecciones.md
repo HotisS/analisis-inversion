@@ -46,3 +46,7 @@ Lo aprendido en Viscofan, Indra y On (octubre de 2026). Ahorra búsquedas que ya
 - **MarketScreener cambia de base según la empresa**: el BPA es GAAP en unas y ajustado en otras (Intuitive frente a Stryker). Compruébalo con la conciliación de cada empresa antes de comparar PER.
 - **Stock Analysis**: su valor empresa no resta las inversiones financieras a largo plazo; recalcúlalo con el puente.
 - **Tasa libre de EE. UU.**: FRED (`https://fred.stlouisfed.org/series/DGS10`) o el Tesoro.
+- **Suiza (SIX)**: participaciones significativas en la API pública de la SIX (registro de notificaciones); las operaciones de directivos son anónimas (solo cargo e importe); no hay registro público de posiciones cortas. SEMI (datos del sector de semiconductores) da 403.
+- **Tablas de PDF desordenadas**: `pdftotext -layout` mezcla columnas en tablas anchas (pasó a los cuatro subagentes de VAT). Si una fila no suma su total, mira esa página como imagen con `construccion/pdf-a-png.ps1 <pdf> -Paginas "N"`.
+- **Cíclicas**: usa `perfil` en los escenarios para la caída de un año concreto (calibrada con las caídas históricas) en vez de bajar todos los años.
+- **Revisión visual**: `a-pdf.ps1` y `pdf-a-png.ps1` escriben en `%TEMP%\analisis-inversion` (fuera de OneDrive) y con `-Paginas` solo las páginas que hacen falta. Ejecútalos con `powershell -ExecutionPolicy Bypass -File …`.

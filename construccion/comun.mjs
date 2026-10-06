@@ -136,7 +136,7 @@ function bloque(b) {
     case 'tabla': return [tabla(a, c, d || {}), espacio(160)];
     case 'kv': return [kv(a, c || 2), espacio(160)];
     case 'tarjetas': return [tarjetas(a), espacio(200)];
-    case 'p': return [p(a)];
+    case 'p': return [p(a, c || {})]; // c: opciones del párrafo, p. ej. { keepNext: true }
     case 'nota': return [p(a, { style: 'Nota' })];
     case 'salto': return [new Paragraph({ children: [new PageBreak()] })];
     case 'parte': return [new Paragraph({ children: [new PageBreak()] }), new Paragraph({ style: 'Parte', children: [new TextRun(a)] })];

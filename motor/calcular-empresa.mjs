@@ -370,6 +370,7 @@ export function calcularEmpresa(datos) {
         crecimiento_base_pct: red(crecMedioBase),
         periodo: (() => { const l = anLibres.length ? anLibres : lista(dcfIn.anios); return l.length ? `${l[0].periodo}-${l.at(-1).periodo}` : null; })(),
         margen_implicito_pct: margenImpl === null || margenFinal === null ? null : red(margenFinal + margenImpl),
+        margen_implicito_texto: margenImpl === null && margenFinal !== null ? `ningún margen hasta el ${fmt(margenFinal + 30, 0)} % justifica el precio` : null,
         margen_base_pct: red(margenFinal),
         rentabilidad_implicita_pct: red(waccImpl, 1),
       },
@@ -385,13 +386,13 @@ export function calcularEmpresa(datos) {
 
   // ── Escenarios (cada uno es el mismo DCF con ajustes) ──
   const escenarios = lista(d.escenarios?.casos).map((e) => {
-    const aj = { dg: n(e.ajuste_crecimiento_pp) ?? 0, dm: n(e.ajuste_margen_pp) ?? 0 };
+    const aj = { dg: n(e.ajuste_crecimiento_pp) ?? 0, dm: n(e.ajuste_margen_pp) ?? 0, perfil: Object.fromEntries(lista(e.perfil).filter((x) => x?.periodo).map((x) => [String(x.periodo), x])) };
     const p = { ...base, wacc: wacc !== null ? wacc + (n(e.ajuste_wacc_pp) ?? 0) : null, g: n(e.crecimiento_terminal_pct) ?? base.g, multiplo: n(e.multiplo_salida) ?? base.multiplo };
     const r = valorarDcf(dcfIn, ctx, p, aj);
     return {
       escenario: e.escenario, probabilidad_pct: n(e.probabilidad_pct), narrativa: e.narrativa ?? null,
       crecimiento_medio_pct: r ? red(media(r.proyeccion.filter((x, i) => !lista(dcfIn.anios)[i]?.fijo).map((x) => x.crecimiento_pct))) : null,
-      margen_final_pct: red((n(lista(dcfIn.anios).at(-1)?.margen_ebitda_pct) ?? 0) + aj.dm),
+      margen_final_pct: r ? red(r.proyeccion.at(-1)?.margen_ebitda_pct) : null,
       wacc_pct: red(p.wacc, 1), valor: r ? red(r.valor_accion, 2) : null, potencial_pct: r ? red(pct(r.valor_accion - precio, precio)) : null,
     };
   });
@@ -671,7 +672,7 @@ export function calcularEmpresa(datos) {
     transacciones, suma_partes: sumaPartes, multiplos_historicos: multHist, multiplos_serie: serieMultGraf, multiplos_titulo: tituloMultHist,
     consenso_vs_propio: consensoVsPropio, gobierno,
     competidores_margen: [{ nombre: id.nombre_corto || id.nombre, margen_ebit_pct: ultimoCalc.margen_ebit_pct ?? null }, ...lista(d.competencia?.competidores).map((c) => ({ nombre: c.nombre, margen_ebit_pct: n(c.margen_ebit_pct) }))],
-    sintesis: { rangos, tabla: tablaSintesis, valor_objetivo: valorObjetivo, potencial_pct: red(pct(valorObjetivo - precio, precio)) },
+    sintesis: { formato_eje: Math.max(0, ...rangos.map((r) => r.max ?? 0)) >= 100 ? '#,##0' : Math.max(0, ...rangos.map((r) => r.max ?? 0)) >= 10 ? '#,##0.0' : '#,##0.00', rangos, tabla: tablaSintesis, valor_objetivo: valorObjetivo, potencial_pct: red(pct(valorObjetivo - precio, precio)) },
     fuentes, controles,
     controles_resumen: `${controles.filter((c) => c.resultado === 'OK').length} de ${controles.length} controles correctos${controles.some((c) => c.resultado === 'Explicado') ? ` y ${controles.filter((c) => c.resultado === 'Explicado').length} explicados` : ''}`,
   };
@@ -694,9 +695,11 @@ function valorarDcf(dcfIn, ctx, p, aj = {}) {
     const anio = anioDe(a.periodo);
     // Un año «fijo» (ya casi publicado, o con perímetro cerrado) no se mueve con los escenarios,
     // las sensibilidades ni el DCF inverso.
-    const g = (n(a.crecimiento_pct) ?? 0) + (a.fijo ? 0 : aj.dg ?? 0);
+    // El perfil de un escenario, si da ese año, sustituye al desplazamiento uniforme.
+    const pa = aj.perfil?.[String(a.periodo)];
+    const g = (n(a.crecimiento_pct) ?? 0) + (pa ? n(pa.crecimiento_pp) ?? 0 : a.fijo ? 0 : aj.dg ?? 0);
     ingresos *= 1 + g / 100;
-    const margen = (n(a.margen_ebitda_pct) ?? 0) + (a.fijo ? 0 : aj.dm ?? 0);
+    const margen = (n(a.margen_ebitda_pct) ?? 0) + (pa ? n(pa.margen_pp) ?? 0 : a.fijo ? 0 : aj.dm ?? 0);
     const ebitda = (ingresos * margen) / 100;
     const da = (ingresos * (n(a.amortizacion_pct_ventas) ?? 0)) / 100;
     const ebit = ebitda - da;

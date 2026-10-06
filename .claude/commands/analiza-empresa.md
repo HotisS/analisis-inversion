@@ -13,7 +13,7 @@ Vas a preparar el análisis de inversión completo de **$ARGUMENTS**.
 5. Fija la fecha de corte (hoy salvo que el usuario diga otra) y dedica entre 30 y 60 minutos al análisis. Prima la profundidad: leer los documentos que importan, no hojearlos ni leerlos enteros cuando basta con una nota.
 
 ## Fases 2-4 en paralelo (si puedes lanzar subagentes)
-Tras la fase 1 (identificación), lanza **cuatro subagentes a la vez**. A cada uno pásale este encargo, la identificación exacta de la empresa (nombre, ticker, ISIN, divisa, cierre del ejercicio, carpeta de trabajo) y estas instrucciones: ejecutar `node herramientas/prompt-de.mjs <letra>` y leer su salida (es su parte del prompt; **no** el prompt entero), leer `verticales/empresa/lecciones.md` y descargar con `herramientas/descargar.mjs` en `notas/docs/`.
+Tras la fase 1 (identificación, que incluye leer el calendario financiero de la última presentación para fijar la fecha de los próximos resultados), lanza **cuatro subagentes a la vez**. A cada uno pásale este encargo, la identificación exacta de la empresa (nombre, ticker, ISIN, divisa, cierre del ejercicio, carpeta de trabajo) y estas instrucciones: ejecutar `node herramientas/prompt-de.mjs <letra>` y leer su salida (es su parte del prompt; **no** el prompt entero), leer `verticales/empresa/lecciones.md` y descargar con `herramientas/descargar.mjs` en `notas/docs/`.
 
 - **A. Cuentas**: `financieros`, `trimestres`, `balance`, `flujos`, `calidad`, `capital` y la parte de datos de `negocio` (segmentos, geografías, KPI). Informes anuales con notas (5-10 ejercicios), informes trimestrales y transcripciones de las dos últimas conferencias.
 - **B. Sector y competencia**: `sector`, `competencia`, `historia`, `esg`, y la parte descriptiva de `negocio`. Al menos dos fuentes de tamaño de mercado e informes anuales de 3-5 competidores.
@@ -42,7 +42,7 @@ Si no puedes lanzar subagentes, haz las fases 2-4 tú mismo, en ese orden y con 
 5. Fase 7 (redacción, resumen el último) y fase 8 (revisión de comité con las diez preguntas del prompt). Las cifras de los textos salen de `calc` tal cual.
 6. Genera el informe:
    `node motor/rellenar.mjs --plantilla verticales/empresa/plantilla.docx --datos informes/<carpeta>/datos.json --salida "informes/<carpeta>/<Nombre> - <AAAA-MM-DD>.docx"`
-7. Si estás en Windows con Word, compruébalo: `powershell -File construccion/a-pdf.ps1 "<informe>.docx"` (debe abrir sin reparar). Mira como imagen solo la portada, «La decisión» y la síntesis de valoración; borra el PDF y las imágenes al terminar.
+7. Si estás en Windows con Word, compruébalo: `powershell -ExecutionPolicy Bypass -File construccion/a-pdf.ps1 "<informe>.docx"` (debe abrir sin reparar). El PDF va a `%TEMP%\analisis-inversion` (fuera de OneDrive). Mira como imagen solo la portada, la síntesis, «La decisión» y la síntesis de valoración (`construccion/pdf-a-png.ps1 <pdf> -Paginas "1-4"`); no hace falta borrarlos.
 
 ## Entrega
 Responde con la ruta del informe y, en diez líneas como máximo: recomendación (Comprar/Mantener/Vender) y convicción, valor objetivo y rentabilidad total esperada, qué descuenta el precio (DCF inverso), cobertura, controles en «Revisar» que quedan y por qué, y las secciones o datos omitidos (los de núcleo, primero).

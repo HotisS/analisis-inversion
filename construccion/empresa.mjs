@@ -7,7 +7,7 @@
 // ['sub', título, rutas, bloques] hace lo mismo con un apartado (sin anotarlo); ['si', rutas, bloques], sin título.
 
 const sub = (titulo, ruta, bloques) => ['sub', titulo, ruta, bloques ?? [['texto', ruta]]];
-const etiquetado = (etiqueta, ruta) => ['si', ruta, [['p', `**${etiqueta}**`], ['texto', ruta]]];
+const etiquetado = (etiqueta, ruta) => ['si', ruta, [['p', `**${etiqueta}**`, { keepNext: true }], ['texto', ruta]]];
 
 export default {
   tipo: 'Análisis de empresa cotizada',
@@ -326,7 +326,7 @@ export default {
       sub('DCF inverso: qué descuenta el precio actual', 'calc.dcf.inverso,dcf.lectura', [
         ['kv', [
           ['Crecimiento anual implícito en el precio ({{calc.dcf.inverso.periodo}})', '{{calc.dcf.inverso.crecimiento_implicito_pct|pct}} (base: {{calc.dcf.inverso.crecimiento_base_pct|pct}})'],
-          ['Margen EBITDA final implícito', '{{calc.dcf.inverso.margen_implicito_pct|pct}} (base: {{calc.dcf.inverso.margen_base_pct|pct}})'],
+          ['Margen EBITDA final implícito', '{{calc.dcf.inverso.margen_implicito_pct|pct}}{{calc.dcf.inverso.margen_implicito_texto|opc}} (base: {{calc.dcf.inverso.margen_base_pct|pct}})'],
           ['Rentabilidad anual implícita (TIR al precio actual)', '{{calc.dcf.inverso.rentabilidad_implicita_pct|pct}} (WACC: {{calc.dcf.wacc|pct}})'],
         ], 1],
         ['texto', 'dcf.lectura'],

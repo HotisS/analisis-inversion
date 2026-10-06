@@ -530,6 +530,10 @@ const EMU_CM = 360000;
 const xmlTexto = (s) => esc(s);
 
 function construirGrafico(def, datos, n, avisos, id) {
+  // El formato numérico también admite un {{marcador}} (p. ej. sin decimales si los valores pasan de 100).
+  if (typeof def.formato === 'string' && def.formato.includes('{{')) {
+    def = { ...def, formato: def.formato.replace(/\{\{\s*([^{}|\s]+)\s*\}\}/g, (_, r) => { const v = obtener(datos, r); return vacio(v) ? 'General' : String(v); }) };
+  }
   const titulo = def.titulo ? def.titulo.replace(/\{\{\s*([^{}|\s]+)\s*(?:\|\s*([^{}\s]+))?\s*\}\}/g, (_, r, f) => formatear(obtener(datos, r), f)) : '';
   const num = (v) => (vacio(v) || Number.isNaN(Number(v)) ? null : Number(v));
 

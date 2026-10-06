@@ -513,13 +513,13 @@ El motor calcula ROIC, ROE, ROA, la descomposición DuPont y el ROIC incremental
 
 ### 21. Escenarios · `escenarios`
 
-- `casos`: exactamente tres, en este orden: «Bajista», «Base», «Alcista». Cada uno es el DCF base con **desplazamientos**: `ajuste_crecimiento_pp` (puntos sumados al crecimiento de cada año no `fijo`), `ajuste_margen_pp` (puntos sumados al margen EBITDA de cada año no `fijo`), `ajuste_wacc_pp`, y `crecimiento_terminal_pct` y `multiplo_salida` (o `null` para usar los del caso base). El Base lleva todo a 0 y `null`. Las probabilidades suman 100.
+- `casos`: exactamente tres, en este orden: «Bajista», «Base», «Alcista». Cada uno es el DCF base con **desplazamientos**: `ajuste_crecimiento_pp` (puntos sumados al crecimiento de cada año no `fijo`), `ajuste_margen_pp` (puntos sumados al margen EBITDA de cada año no `fijo`), `ajuste_wacc_pp`, y `crecimiento_terminal_pct` y `multiplo_salida` (o `null` para usar los del caso base). El Base lleva todo a 0 y `null`. Las probabilidades suman 100. **Cíclicas**: `perfil` (opcional) da el ajuste de años concretos y sustituye al uniforme en esos años, para que una caída de un año (`{ "periodo": "2029e", "crecimiento_pp": -20, "margen_pp": -4 }`) no se convierta en una pérdida permanente de nivel; los años que no aparecen usan el desplazamiento uniforme.
 - `narrativa` (2-3 frases): qué tiene que pasar en el mundo real. El bajista debe ser verosímil: algo que ya le ha pasado a la empresa o a un competidor.
 - `comentario` (60-120 palabras): la asimetría (cuánto se gana en el alcista frente a cuánto se pierde en el bajista) y si compensa.
 
 ```json
 "escenarios": {
-  "casos": [{ "escenario": "Bajista", "probabilidad_pct": 0, "ajuste_crecimiento_pp": 0.0, "ajuste_margen_pp": 0.0, "ajuste_wacc_pp": 0.0, "crecimiento_terminal_pct": null, "multiplo_salida": null, "narrativa": "texto" }],
+  "casos": [{ "escenario": "Bajista", "probabilidad_pct": 0, "ajuste_crecimiento_pp": 0.0, "ajuste_margen_pp": 0.0, "ajuste_wacc_pp": 0.0, "crecimiento_terminal_pct": null, "multiplo_salida": null, "perfil": [{ "periodo": "2029e", "crecimiento_pp": 0.0, "margen_pp": 0.0 }], "narrativa": "texto" }],
   "comentario": "texto",
   "confianza": "Alta|Media|Baja"
 }

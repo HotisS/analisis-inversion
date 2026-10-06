@@ -329,9 +329,9 @@ const ejemplo = {
   },
   escenarios: {
     casos: [
-      { escenario: 'Bajista', probabilidad_pct: 25, ajuste_crecimiento_pp: -2.5, ajuste_margen_pp: -1.5, ajuste_wacc_pp: 0.5, crecimiento_terminal_pct: 1.5, multiplo_salida: null, narrativa: 'Automoción sigue cayendo y la competencia asiática recorta el margen de transformadores, como le pasó a Delta Cables en 2023 [26].' },
-      { escenario: 'Base', probabilidad_pct: 55, ajuste_crecimiento_pp: 0, ajuste_margen_pp: 0, ajuste_wacc_pp: 0, crecimiento_terminal_pct: null, multiplo_salida: null, narrativa: 'Redes crece según la cartera y automoción se estabiliza en 2027 [4].' },
-      { escenario: 'Alcista', probabilidad_pct: 20, ajuste_crecimiento_pp: 1.5, ajuste_margen_pp: 1.0, ajuste_wacc_pp: -0.25, crecimiento_terminal_pct: 2.25, multiplo_salida: null, narrativa: 'Contratos en Norteamérica y margen de redes al 19 % [8].' },
+      { escenario: 'Bajista', probabilidad_pct: 25, ajuste_crecimiento_pp: -2.5, ajuste_margen_pp: -1.5, ajuste_wacc_pp: 0.5, crecimiento_terminal_pct: 1.5, multiplo_salida: null, perfil: [{ periodo: '2027e', crecimiento_pp: -6, margen_pp: -2.5 }], narrativa: 'Automoción sigue cayendo y la competencia asiática recorta el margen de transformadores, como le pasó a Delta Cables en 2023 [26].' },
+      { escenario: 'Base', probabilidad_pct: 55, ajuste_crecimiento_pp: 0, ajuste_margen_pp: 0, ajuste_wacc_pp: 0, crecimiento_terminal_pct: null, multiplo_salida: null, perfil: [], narrativa: 'Redes crece según la cartera y automoción se estabiliza en 2027 [4].' },
+      { escenario: 'Alcista', probabilidad_pct: 20, ajuste_crecimiento_pp: 1.5, ajuste_margen_pp: 1.0, ajuste_wacc_pp: -0.25, crecimiento_terminal_pct: 2.25, multiplo_salida: null, perfil: [], narrativa: 'Contratos en Norteamérica y margen de redes al 19 % [8].' },
     ],
     comentario: 'La asimetría es desfavorable: el bajista pierde más de lo que gana el alcista [16].',
     confianza: 'Media',
