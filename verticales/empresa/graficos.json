@@ -1,162 +1,447 @@
 {
   "sintesis": {
-    "tipo": "rango", "titulo": "Valor por acción según cada método ({{meta.divisa}}) · precio actual {{identificacion.precio|2}}",
-    "datos": "calc.sintesis.rangos", "categoria": "etiqueta", "campo_min": "min", "campo_max": "max", "gris": "gris",
-    "formato": "#,##0.00", "alto_cm": 8
+    "tipo": "rango",
+    "titulo": "Valor por acción según cada método ({{meta.divisa}}) · precio actual {{identificacion.precio|2}}",
+    "datos": "calc.sintesis.rangos",
+    "categoria": "etiqueta",
+    "campo_min": "min",
+    "campo_max": "max",
+    "gris": "gris",
+    "formato": "#,##0.00",
+    "alto_cm": 8
   },
   "segmentos_hist": {
-    "tipo": "columnas_apiladas", "titulo": "Ingresos por segmento ({{meta.divisa}}, millones)",
-    "pivot": { "lista": "negocio.segmentos", "nombre": "nombre", "historico": "historico", "periodo": "periodo", "valor": "ingresos" },
-    "formato": "#,##0", "alto_cm": 7.5
+    "tipo": "columnas_apiladas",
+    "titulo": "Ingresos por segmento ({{meta.divisa}}, millones)",
+    "pivot": {
+      "lista": "negocio.segmentos",
+      "nombre": "nombre",
+      "historico": "historico",
+      "periodo": "periodo",
+      "valor": "ingresos"
+    },
+    "formato": "#,##0",
+    "alto_cm": 7.5
   },
   "segmentos_mix": {
-    "tipo": "donut", "titulo": "Peso de cada segmento en los ingresos ({{calc.segmentos_periodo}})",
-    "datos": "calc.segmentos_ultimo", "categoria": "nombre",
-    "series": [{ "campo": "peso_pct", "nombre": "% de ingresos" }], "alto_cm": 6.5
+    "tipo": "donut",
+    "titulo": "Peso de cada segmento en los ingresos ({{calc.segmentos_periodo}})",
+    "datos": "calc.segmentos_ultimo",
+    "categoria": "nombre",
+    "series": [
+      {
+        "campo": "peso_pct",
+        "nombre": "% de ingresos"
+      }
+    ],
+    "alto_cm": 6.5
   },
   "geografias": {
-    "tipo": "barras", "titulo": "Ingresos por geografía (% del total)",
-    "datos": "negocio.geografias", "categoria": "nombre",
-    "series": [{ "campo": "peso_pct", "nombre": "% de ingresos" }],
-    "formato": "0\"%\"", "etiquetas": true, "alto_cm": 6
+    "tipo": "barras",
+    "titulo": "Ingresos por geografía, según {{negocio.geografias_criterio}} (% del total)",
+    "datos": "negocio.geografias",
+    "categoria": "nombre",
+    "series": [
+      {
+        "campo": "peso_pct",
+        "nombre": "% de ingresos"
+      }
+    ],
+    "formato": "0\"%\"",
+    "etiquetas": true,
+    "alto_cm": 6
   },
   "sector_mercado": {
-    "tipo": "columnas", "titulo": "Tamaño del mercado ({{sector.unidad_serie}}) · «e» = previsión",
-    "datos": "sector.serie", "categoria": "anio",
-    "series": [{ "campo": "tamano", "nombre": "Tamaño del mercado" }],
-    "formato": "#,##0", "etiquetas": true, "alto_cm": 6.5
+    "tipo": "columnas",
+    "titulo": "Tamaño del mercado ({{sector.unidad_serie}}) · «e» = previsión",
+    "datos": "sector.serie",
+    "categoria": "anio",
+    "series": [
+      {
+        "campo": "tamano",
+        "nombre": "Tamaño del mercado"
+      }
+    ],
+    "formato": "#,##0",
+    "etiquetas": true,
+    "alto_cm": 6.5
   },
   "porter": {
-    "tipo": "radar", "titulo": "Cinco fuerzas: intensidad (1 = favorable, 5 = desfavorable)",
-    "datos": "sector.porter", "categoria": "fuerza",
-    "series": [{ "campo": "intensidad", "nombre": "Intensidad" }], "min": 0, "max": 5, "alto_cm": 7.5
+    "tipo": "radar",
+    "titulo": "Cinco fuerzas: intensidad (1 = favorable, 5 = desfavorable)",
+    "datos": "sector.porter",
+    "categoria": "fuerza",
+    "series": [
+      {
+        "campo": "intensidad",
+        "nombre": "Intensidad"
+      }
+    ],
+    "min": 0,
+    "max": 5,
+    "alto_cm": 7.5
   },
   "foso": {
-    "tipo": "barras", "titulo": "Fuentes de ventaja competitiva (0 = inexistente, 5 = muy fuerte)",
-    "datos": "competencia.foso.fuentes", "categoria": "fuente",
-    "series": [{ "campo": "puntuacion", "nombre": "Puntuación" }], "min": 0, "max": 5,
-    "formato": "0", "etiquetas": true, "alto_cm": 5.5
+    "tipo": "barras",
+    "titulo": "Fuentes de ventaja competitiva (0 = inexistente, 5 = muy fuerte)",
+    "datos": "competencia.foso.fuentes",
+    "categoria": "fuente",
+    "series": [
+      {
+        "campo": "puntuacion",
+        "nombre": "Puntuación"
+      }
+    ],
+    "min": 0,
+    "max": 5,
+    "formato": "0",
+    "etiquetas": true,
+    "alto_cm": 5.5
   },
   "competidores_margen": {
-    "tipo": "barras", "titulo": "Margen EBIT: la empresa frente a sus competidores (%)",
-    "datos": "calc.competidores_margen", "categoria": "nombre",
-    "series": [{ "campo": "margen_ebit_pct", "nombre": "Margen EBIT" }],
-    "formato": "0.0\"%\"", "etiquetas": true, "resaltar": 0, "alto_cm": 6.5
+    "tipo": "barras",
+    "titulo": "Margen EBIT: la empresa frente a sus competidores (%)",
+    "datos": "calc.competidores_margen",
+    "categoria": "nombre",
+    "series": [
+      {
+        "campo": "margen_ebit_pct",
+        "nombre": "Margen EBIT"
+      }
+    ],
+    "formato": "0.0\"%\"",
+    "etiquetas": true,
+    "resaltar": 0,
+    "alto_cm": 6.5
   },
   "ingresos_ebitda": {
-    "tipo": "columnas", "titulo": "Ingresos y EBITDA ({{meta.divisa}}, millones) · «e» = proyección propia del DCF",
-    "datos": "calc.cuenta_y_prevision", "categoria": "periodo",
-    "series": [{ "campo": "ingresos", "nombre": "Ingresos" }, { "campo": "ebitda", "nombre": "EBITDA" }],
+    "tipo": "columnas",
+    "titulo": "Ingresos y EBITDA ({{meta.divisa}}, millones) · «e» = proyección propia del DCF",
+    "datos": "calc.cuenta_y_prevision",
+    "categoria": "periodo",
+    "series": [
+      {
+        "campo": "ingresos",
+        "nombre": "Ingresos"
+      },
+      {
+        "campo": "ebitda",
+        "nombre": "EBITDA"
+      }
+    ],
     "formato": "#,##0"
   },
   "margenes": {
-    "tipo": "lineas", "titulo": "Márgenes (% de ingresos)",
-    "datos": "calc.cuenta", "categoria": "periodo",
+    "tipo": "lineas",
+    "titulo": "Márgenes (% de ingresos)",
+    "datos": "calc.cuenta",
+    "categoria": "periodo",
     "series": [
-      { "campo": "margen_bruto_pct", "nombre": "Bruto" }, { "campo": "margen_ebitda_pct", "nombre": "EBITDA" },
-      { "campo": "margen_ebit_pct", "nombre": "EBIT" }, { "campo": "margen_neto_pct", "nombre": "Neto" }
+      {
+        "campo": "margen_bruto_pct",
+        "nombre": "Bruto"
+      },
+      {
+        "campo": "margen_ebitda_pct",
+        "nombre": "EBITDA"
+      },
+      {
+        "campo": "margen_ebit_pct",
+        "nombre": "EBIT"
+      },
+      {
+        "campo": "margen_neto_pct",
+        "nombre": "Neto"
+      }
     ],
     "formato": "0\"%\""
   },
   "trimestres": {
-    "tipo": "columnas", "titulo": "Crecimiento interanual por trimestre (%)",
-    "datos": "trimestres.items", "categoria": "periodo",
-    "series": [{ "campo": "crecimiento_pct", "nombre": "Reportado" }, { "campo": "crecimiento_organico_pct", "nombre": "Orgánico" }],
-    "formato": "0.0\"%\"", "alto_cm": 6.5
+    "tipo": "columnas",
+    "titulo": "Crecimiento interanual por trimestre (%)",
+    "datos": "trimestres.items",
+    "categoria": "periodo",
+    "series": [
+      {
+        "campo": "crecimiento_pct",
+        "nombre": "Reportado"
+      },
+      {
+        "campo": "crecimiento_organico_pct",
+        "nombre": "Orgánico"
+      }
+    ],
+    "formato": "0.0\"%\"",
+    "alto_cm": 6.5
   },
   "dias_circulante": {
-    "tipo": "lineas", "titulo": "Capital circulante en días",
-    "datos": "calc.balance", "categoria": "periodo",
-    "series": [{ "campo": "dso", "nombre": "Días de cobro" }, { "campo": "dio", "nombre": "Días de inventario" }, { "campo": "dpo", "nombre": "Días de pago" }],
-    "formato": "0", "alto_cm": 6.5
+    "tipo": "lineas",
+    "titulo": "Capital circulante en días",
+    "datos": "calc.balance",
+    "categoria": "periodo",
+    "series": [
+      {
+        "campo": "dso",
+        "nombre": "Días de cobro"
+      },
+      {
+        "campo": "dio",
+        "nombre": "Días de inventario"
+      },
+      {
+        "campo": "dpo",
+        "nombre": "Días de pago"
+      }
+    ],
+    "formato": "0",
+    "alto_cm": 6.5
   },
   "fcf": {
-    "tipo": "columnas", "titulo": "Flujo de caja libre frente a beneficio neto ({{meta.divisa}}, millones)",
-    "datos": "calc.flujos", "categoria": "periodo",
-    "series": [{ "campo": "fcf", "nombre": "Flujo de caja libre" }, { "campo": "beneficio_neto", "nombre": "Beneficio neto" }],
+    "tipo": "columnas",
+    "titulo": "Flujo de caja libre frente a beneficio neto ({{meta.divisa}}, millones)",
+    "datos": "calc.flujos",
+    "categoria": "periodo",
+    "series": [
+      {
+        "campo": "fcf",
+        "nombre": "Flujo de caja libre"
+      },
+      {
+        "campo": "beneficio_neto",
+        "nombre": "Beneficio neto"
+      }
+    ],
     "formato": "#,##0"
   },
   "roic": {
-    "tipo": "lineas", "titulo": "ROIC y ROE frente al coste del capital (%)",
-    "datos": "calc.roic_frente_wacc", "categoria": "periodo",
-    "series": [{ "campo": "roic_pct", "nombre": "ROIC" }, { "campo": "wacc_pct", "nombre": "WACC actual" }, { "campo": "roe_pct", "nombre": "ROE" }],
+    "tipo": "lineas",
+    "titulo": "ROIC y ROE frente al coste del capital (%)",
+    "datos": "calc.roic_frente_wacc",
+    "categoria": "periodo",
+    "series": [
+      {
+        "campo": "roic_pct",
+        "nombre": "ROIC"
+      },
+      {
+        "campo": "wacc_pct",
+        "nombre": "WACC actual"
+      },
+      {
+        "campo": "roe_pct",
+        "nombre": "ROE"
+      }
+    ],
     "formato": "0\"%\""
   },
   "apalancamiento": {
-    "tipo": "columnas", "titulo": "Deuda neta / EBITDA al cierre de cada ejercicio (veces)",
-    "datos": "calc.balance", "categoria": "periodo",
-    "series": [{ "campo": "dn_ebitda", "nombre": "Deuda neta / EBITDA" }],
-    "formato": "0.0\"x\"", "etiquetas": true, "alto_cm": 6
+    "tipo": "columnas",
+    "titulo": "Deuda neta / EBITDA al cierre de cada ejercicio (veces)",
+    "datos": "calc.balance",
+    "categoria": "periodo",
+    "series": [
+      {
+        "campo": "dn_ebitda",
+        "nombre": "Deuda neta / EBITDA"
+      }
+    ],
+    "formato": "0.0\"x\"",
+    "etiquetas": true,
+    "alto_cm": 6
   },
   "vencimientos": {
-    "tipo": "columnas", "titulo": "Vencimientos de la deuda bruta ({{meta.divisa}}, millones)",
-    "datos": "balance.vencimientos", "categoria": "anio",
-    "series": [{ "campo": "importe", "nombre": "Vencimientos" }],
-    "formato": "#,##0", "etiquetas": true, "alto_cm": 6
+    "tipo": "columnas",
+    "titulo": "Vencimientos de la deuda bruta ({{meta.divisa}}, millones)",
+    "datos": "balance.vencimientos",
+    "categoria": "anio",
+    "series": [
+      {
+        "campo": "importe",
+        "nombre": "Vencimientos"
+      }
+    ],
+    "formato": "#,##0",
+    "etiquetas": true,
+    "alto_cm": 6
   },
   "usos_caja": {
-    "tipo": "columnas_apiladas", "titulo": "Usos de la caja ({{meta.divisa}}, millones)",
-    "datos": "calc.flujos", "categoria": "periodo",
-    "series": [{ "campo": "adquisiciones", "nombre": "Adquisiciones" }, { "campo": "dividendos", "nombre": "Dividendos" }, { "campo": "recompras", "nombre": "Recompras" }],
+    "tipo": "columnas_apiladas",
+    "titulo": "Usos de la caja ({{meta.divisa}}, millones)",
+    "datos": "calc.flujos",
+    "categoria": "periodo",
+    "series": [
+      {
+        "campo": "adquisiciones",
+        "nombre": "Adquisiciones"
+      },
+      {
+        "campo": "dividendos",
+        "nombre": "Dividendos"
+      },
+      {
+        "campo": "recompras",
+        "nombre": "Recompras"
+      }
+    ],
     "formato": "#,##0"
   },
   "consejo": {
-    "tipo": "donut", "titulo": "Composición del consejo (número de consejeros)",
-    "datos": "calc.gobierno.composicion", "categoria": "tipo",
-    "series": [{ "campo": "num", "nombre": "Consejeros" }], "formato": "0", "suma100": false, "alto_cm": 6
+    "tipo": "donut",
+    "titulo": "Composición del consejo (número de consejeros)",
+    "datos": "calc.gobierno.composicion",
+    "categoria": "tipo",
+    "series": [
+      {
+        "campo": "num",
+        "nombre": "Consejeros"
+      }
+    ],
+    "formato": "0",
+    "suma100": false,
+    "alto_cm": 6
   },
   "accionistas": {
-    "tipo": "barras", "titulo": "Accionistas significativos (% del capital)",
-    "datos": "gobierno.accionistas", "categoria": "nombre",
-    "series": [{ "campo": "pct", "nombre": "% del capital" }],
-    "formato": "0.0\"%\"", "etiquetas": true, "alto_cm": 6.5
+    "tipo": "barras",
+    "titulo": "Accionistas significativos (% del capital)",
+    "datos": "gobierno.accionistas",
+    "categoria": "nombre",
+    "series": [
+      {
+        "campo": "pct",
+        "nombre": "% del capital"
+      }
+    ],
+    "formato": "0.0\"%\"",
+    "etiquetas": true,
+    "alto_cm": 6.5
   },
   "bolsa_anual": {
-    "tipo": "columnas", "titulo": "Rentabilidad total por año: acción frente a su índice (%)",
-    "datos": "bolsa.anual", "categoria": "anio",
-    "series": [{ "campo": "accion_pct", "nombre": "Acción" }, { "campo": "indice_pct", "nombre": "Índice" }],
-    "formato": "0\"%\"", "alto_cm": 7
+    "tipo": "columnas",
+    "titulo": "Rentabilidad total por año: acción frente a su índice (%)",
+    "datos": "bolsa.anual",
+    "categoria": "anio",
+    "series": [
+      {
+        "campo": "accion_pct",
+        "nombre": "Acción"
+      },
+      {
+        "campo": "indice_pct",
+        "nombre": "Índice"
+      }
+    ],
+    "formato": "0\"%\"",
+    "alto_cm": 7
   },
   "multiplos_hist": {
-    "tipo": "lineas", "titulo": "EV/EBITDA de los próximos 12 meses: historia y media (veces)",
-    "datos": "calc.multiplos_serie", "categoria": "anio",
-    "series": [{ "campo": "ev_ebitda_ntm", "nombre": "EV/EBITDA NTM" }, { "campo": "media", "nombre": "Media del periodo" }],
-    "formato": "0.0\"x\"", "alto_cm": 6.5
+    "tipo": "lineas",
+    "titulo": "{{calc.multiplos_titulo}}: historia y media (veces)",
+    "datos": "calc.multiplos_serie",
+    "categoria": "anio",
+    "series": [
+      {
+        "campo": "multiplo",
+        "nombre": "Múltiplo"
+      },
+      {
+        "campo": "media",
+        "nombre": "Media del periodo"
+      }
+    ],
+    "formato": "0.0\"x\"",
+    "alto_cm": 6.5
   },
   "comps_ev": {
-    "tipo": "barras", "titulo": "EV/EBITDA de los próximos 12 meses: empresa y comparables (veces)",
-    "datos": "calc.comparables.tabla", "categoria": "nombre",
-    "series": [{ "campo": "ev_ebitda_ntm", "nombre": "EV/EBITDA NTM" }],
-    "formato": "0.0\"x\"", "etiquetas": true, "resaltar": 0, "alto_cm": 7.5
+    "tipo": "barras",
+    "titulo": "EV/EBITDA de los próximos 12 meses: empresa y comparables (veces)",
+    "datos": "calc.comparables.tabla",
+    "categoria": "nombre",
+    "series": [
+      {
+        "campo": "ev_ebitda_ntm",
+        "nombre": "EV/EBITDA NTM"
+      }
+    ],
+    "formato": "0.0\"x\"",
+    "etiquetas": true,
+    "resaltar": 0,
+    "alto_cm": 7.5
   },
   "comps_mapa": {
-    "tipo": "dispersion", "titulo": "Crecimiento esperado frente a múltiplo",
-    "datos": "calc.comparables.tabla", "etiqueta": "nombre",
-    "x": { "campo": "crecimiento_pct", "nombre": "Crecimiento de ingresos próximos 12 meses (%)", "formato": "0\"%\"" },
-    "y": { "campo": "ev_ebitda_ntm", "nombre": "EV/EBITDA NTM (x)", "formato": "0.0\"x\"" },
+    "tipo": "dispersion",
+    "titulo": "Crecimiento esperado frente a múltiplo",
+    "datos": "calc.comparables.tabla",
+    "etiqueta": "nombre",
+    "x": {
+      "campo": "crecimiento_pct",
+      "nombre": "Crecimiento de ingresos próximos 12 meses (%)",
+      "formato": "0\"%\""
+    },
+    "y": {
+      "campo": "ev_ebitda_ntm",
+      "nombre": "EV/EBITDA NTM (x)",
+      "formato": "0.0\"x\""
+    },
     "alto_cm": 8.5
   },
   "transacciones": {
-    "tipo": "barras", "titulo": "EV/EBITDA pagado en transacciones del sector (veces)",
-    "datos": "transacciones.operaciones", "categoria": "objetivo",
-    "series": [{ "campo": "ev_ebitda", "nombre": "EV/EBITDA" }],
-    "formato": "0.0\"x\"", "etiquetas": true, "alto_cm": 7
+    "tipo": "barras",
+    "titulo": "EV/EBITDA pagado en transacciones del sector (veces)",
+    "datos": "transacciones.operaciones",
+    "categoria": "objetivo",
+    "series": [
+      {
+        "campo": "ev_ebitda",
+        "nombre": "EV/EBITDA"
+      }
+    ],
+    "formato": "0.0\"x\"",
+    "etiquetas": true,
+    "alto_cm": 7
   },
   "dcf_fcff": {
-    "tipo": "columnas", "titulo": "Flujo de caja libre para la empresa proyectado ({{meta.divisa}}, millones)",
-    "datos": "calc.dcf.proyeccion", "categoria": "periodo",
-    "series": [{ "campo": "fcff", "nombre": "FCFF" }],
-    "formato": "#,##0", "etiquetas": true, "alto_cm": 6
+    "tipo": "columnas",
+    "titulo": "Flujo de caja libre para la empresa proyectado ({{meta.divisa}}, millones)",
+    "datos": "calc.dcf.proyeccion",
+    "categoria": "periodo",
+    "series": [
+      {
+        "campo": "fcff",
+        "nombre": "FCFF"
+      }
+    ],
+    "formato": "#,##0",
+    "etiquetas": true,
+    "alto_cm": 6
   },
   "dcf_composicion": {
-    "tipo": "donut", "titulo": "De dónde sale el valor empresa del DCF ({{meta.divisa}}, millones)",
-    "datos": "calc.dcf.composicion", "categoria": "parte",
-    "series": [{ "campo": "valor", "nombre": "Valor actual" }], "formato": "#,##0", "suma100": false, "alto_cm": 6
+    "tipo": "donut",
+    "titulo": "De dónde sale el valor empresa del DCF ({{meta.divisa}}, millones)",
+    "datos": "calc.dcf.composicion",
+    "categoria": "parte",
+    "series": [
+      {
+        "campo": "valor",
+        "nombre": "Valor actual"
+      }
+    ],
+    "formato": "#,##0",
+    "suma100": false,
+    "alto_cm": 6
   },
   "escenarios": {
-    "tipo": "columnas", "titulo": "Valor por acción por escenario ({{meta.divisa}}) · precio actual {{identificacion.precio|2}}",
-    "datos": "calc.escenarios", "categoria": "escenario",
-    "series": [{ "campo": "valor", "nombre": "Valor por acción" }],
-    "formato": "#,##0.00", "etiquetas": true, "alto_cm": 6
+    "tipo": "columnas",
+    "titulo": "Valor por acción por escenario ({{meta.divisa}}) · precio actual {{identificacion.precio|2}}",
+    "datos": "calc.escenarios",
+    "categoria": "escenario",
+    "series": [
+      {
+        "campo": "valor",
+        "nombre": "Valor por acción"
+      }
+    ],
+    "formato": "#,##0.00",
+    "etiquetas": true,
+    "alto_cm": 6
   }
 }

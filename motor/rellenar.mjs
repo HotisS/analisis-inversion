@@ -332,11 +332,11 @@ export function rellenar(plantillaBuf, datos, opciones = {}) {
     return lista.map((item, i) => {
       const r = fila
         .replace(/\{\{#\}\}/g, String(i + 1))
-        .replace(reFila, (_, campo, filtro) => esc(formatear(campo ? obtener(item, campo) : item, filtro)));
+        .replace(reFila, (_, campo, filtro) => { const v = campo ? obtener(item, campo) : item; return vacio(v) ? '–' : esc(formatear(v, filtro)); });
       return sustituirEscalares(r);
     }).join('');
   });
-  doc = doc.replace(/<w:tbl\b[\s\S]*?<\/w:tbl>/g, (t) => (t.includes(VACIA) || !/<w:tr\b/.test(t) ? '' : t));
+  doc = doc.replace(/<w:tbl\b[\s\S]*?<\/w:tbl>/g, (t) => (t.includes(VACIA) || !/<w:tr\b/.test(t) ? '' : quitarColumnasVacias(t)));
 
   // 2) Párrafos de bloque: texto, lista, gráfico. Sin datos, desaparecen.
   const partes = { graficos: [], siguienteId: 1 };
@@ -433,6 +433,34 @@ export function rellenar(plantillaBuf, datos, opciones = {}) {
   const restantes = [...new Set((doc.match(/\{\{[^}]*\}\}/g) || []))];
   if (restantes.length) avisos.push(`Marcadores sin resolver: ${restantes.join(', ')}`);
   return { buffer: escribirZip(zip), avisos: [...new Set(avisos)], cobertura: meta, graficos: partes.graficos.length };
+}
+
+// En una tabla de datos (con fila de cabecera), una columna en la que todas las celdas son «–» se quita
+// y su ancho pasa a la columna más ancha.
+function quitarColumnasVacias(tabla) {
+  const filas = [...tabla.matchAll(/<w:tr\b[\s\S]*?<\/w:tr>/g)].map((m) => m[0]);
+  if (filas.length < 2 || !/<w:tblHeader\/>/.test(filas[0])) return tabla;
+  const celdas = filas.map((f) => [...f.matchAll(/<w:tc\b[\s\S]*?<\/w:tc>/g)].map((m) => m[0]));
+  const nCol = celdas[0].length;
+  if (celdas.some((c) => c.length !== nCol)) return tabla;
+  const vacias = [];
+  for (let j = 1; j < nCol; j++) if (celdas.slice(1).every((c) => textoPlano(c[j]).trim() === '–')) vacias.push(j);
+  if (!vacias.length) return tabla;
+  const anchoDe = (tc) => +((tc.match(/<w:tcW w:w="(\d+)"/) || [])[1] || 0);
+  const quitado = vacias.reduce((s, j) => s + anchoDe(celdas[0][j]), 0);
+  const restantes = [...Array(nCol).keys()].filter((j) => !vacias.includes(j));
+  const destino = restantes.reduce((a, j) => (anchoDe(celdas[0][j]) > anchoDe(celdas[0][a]) ? j : a), restantes[0]);
+  const ensanchar = (tc) => tc.replace(/<w:tcW w:w="(\d+)"/, (_, w) => `<w:tcW w:w="${+w + quitado}"`);
+  let nueva = tabla;
+  for (const f of filas) {
+    let k = 0;
+    const nf = f.replace(/<w:tc\b[\s\S]*?<\/w:tc>/g, (tc) => { const j = k++; return vacias.includes(j) ? '' : j === destino ? ensanchar(tc) : tc; });
+    nueva = nueva.replace(f, nf);
+  }
+  let g = 0;
+  const grid = [...nueva.matchAll(/<w:gridCol w:w="(\d+)"\/>/g)].map((m) => +m[1]);
+  const extra = vacias.reduce((s, v) => s + (grid[v] || 0), 0);
+  return nueva.replace(/<w:gridCol w:w="(\d+)"\/>/g, (m, w) => { const j = g++; return vacias.includes(j) ? '' : j === destino ? `<w:gridCol w:w="${+w + extra}"/>` : m; });
 }
 
 function leerGraficosIncrustados(zip) {

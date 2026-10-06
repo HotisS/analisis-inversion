@@ -52,12 +52,23 @@ export function calcularEmpresa(datos) {
   const id = d.identificacion || {};
   const precio = n(id.precio), acciones = n(id.acciones);
 
+  // Cuenta por función (coste de ventas, gastos generales) o por naturaleza (aprovisionamientos,
+  // personal, otros gastos). Por naturaleza, «coste_ventas» son los aprovisionamientos: el margen que
+  // sale es el de contribución y los días de inventario y de pago se miden sobre los costes operativos.
+  const porNaturaleza = /naturaleza/i.test(meta.formato_cuenta || '');
+  const etiquetas = {
+    margen_bruto: porNaturaleza ? 'M. tras aprov.' : 'M. bruto',
+    margen_bruto_largo: porNaturaleza ? 'Margen tras aprovisionamientos' : 'Margen bruto',
+    dias_base: porNaturaleza ? 'sobre costes operativos de caja (ingresos − EBITDA), por ser una cuenta por naturaleza' : 'sobre el coste de ventas',
+  };
+
   // ── Cuenta de resultados (solo ejercicios reales) ──
   const cuentaIn = lista(d.financieros?.cuenta).filter((c) => !esEstimado(c.periodo));
   const cuenta = cuentaIn.map((c, i) => {
     const ant = cuentaIn[i - 1];
     const ingresos = n(c.ingresos), bruto = ingresos !== null && n(c.coste_ventas) !== null ? ingresos - n(c.coste_ventas) : null;
     const bai = n(c.bai), imp = n(c.impuestos);
+    const dpaOrd = n(c.dpa) !== null ? n(c.dpa) - (n(c.dpa_extraordinario) ?? 0) : null;
     return {
       periodo: c.periodo, ingresos,
       crecimiento_pct: red(ant ? pct(ingresos - n(ant.ingresos), n(ant.ingresos)) : null),
@@ -65,11 +76,14 @@ export function calcularEmpresa(datos) {
       ebitda: n(c.ebitda), margen_ebitda_pct: red(pct(n(c.ebitda), ingresos)),
       ebit: n(c.ebit), margen_ebit_pct: red(pct(n(c.ebit), ingresos)),
       beneficio_neto: n(c.beneficio_neto), margen_neto_pct: red(pct(n(c.beneficio_neto), ingresos)),
-      bpa: n(c.bpa), dpa: n(c.dpa),
+      bpa: n(c.bpa), dpa: n(c.dpa), dpa_extraordinario: n(c.dpa_extraordinario),
       tasa_impositiva_pct: red(bai > 0 ? pct(imp, bai) : null),
-      payout_pct: red(pct(n(c.dpa), n(c.bpa)), 0),
+      payout_pct: red(pct(dpaOrd, n(c.bpa)), 0), // sin dividendos extraordinarios
     };
   });
+  for (const c of cuenta.slice(-3)) {
+    if (c.tasa_impositiva_pct !== null && (c.tasa_impositiva_pct < 12 || c.tasa_impositiva_pct > 35)) control(`Tipo impositivo efectivo razonable (${c.periodo})`, false, `${fmt(c.tasa_impositiva_pct)} %: explica la causa (créditos fiscales, regularizaciones, mezcla de países) y no lo proyectes en el DCF.`);
+  }
   const ultimo = cuentaIn[cuentaIn.length - 1] || {};
   const ultimoCalc = cuenta[cuenta.length - 1] || {};
   const nC = cuenta.length;
@@ -114,6 +128,11 @@ export function calcularEmpresa(datos) {
     return e2 ? w * n(e1[campo]) + (1 - w) * n(e2[campo]) : n(e1[campo]);
   };
   const ingresosNtm = ntm('ingresos'), ebitdaNtm = ntm('ebitda'), bpaNtm = ntm('bpa');
+  // Crecimiento NTM sobre LTM, ANUALIZADO: entre el centro del periodo LTM y el centro de los próximos
+  // 12 meses puede haber más de un año (p. ej. LTM a junio y fecha de corte en octubre).
+  const finLtm = ltm.fecha_fin ? new Date(ltm.fecha_fin + 'T00:00:00Z') : (ultimo.periodo ? finEjercicio(anioDe(ultimo.periodo), mesCierre) : null);
+  const aniosEntre = finLtm ? Math.max(0.5, anios(finLtm, fechaCorte) + 1) : 1;
+  const crecimientoNtm = ingresosNtm && ingresosLtm ? ((ingresosNtm / ingresosLtm) ** (1 / aniosEntre) - 1) * 100 : null;
 
   // ── Puente de valor y datos de mercado ──
   const pu = d.valoracion?.puente || {};
@@ -160,7 +179,9 @@ export function calcularEmpresa(datos) {
   const balIn = lista(d.balance?.historico);
   const balance = balIn.map((b) => {
     const c = cuentaIn.find((x) => String(x.periodo) === String(b.periodo)) || {};
-    const ingresos = n(c.ingresos), cv = n(c.coste_ventas);
+    const ingresos = n(c.ingresos);
+    // Base de los días de inventario y de pago: coste de ventas, o costes operativos de caja si la cuenta es por naturaleza.
+    const cv = porNaturaleza ? (ingresos !== null && n(c.ebitda) !== null ? ingresos - n(c.ebitda) : null) : n(c.coste_ventas);
     const dn = suma(n(b.deuda_financiera) ?? 0, n(b.arrendamientos) ?? 0, -(n(b.caja) ?? 0));
     const circ = suma(n(b.existencias) ?? 0, n(b.clientes) ?? 0, -(n(b.proveedores) ?? 0));
     const dso = red(div(n(b.clientes), ingresos) !== null ? div(n(b.clientes), ingresos) * 365 : null, 0);
@@ -177,7 +198,8 @@ export function calcularEmpresa(datos) {
       arrendamientos: n(b.arrendamientos), deuda_neta: dn, patrimonio: pn, minoritarios: n(b.minoritarios),
       dn_ebitda: red(div(dn, n(c.ebitda)), 2), dn_patrimonio_pct: red(pct(dn, pn + mi), 0),
       dso, dio, dpo, ciclo_caja: dso !== null && dio !== null && dpo !== null ? dso + dio - dpo : null,
-      cobertura_intereses: red(rf !== null && rf < 0 ? div(n(c.ebit), -rf) : null, 1),
+      // EBIT sobre gastos por intereses; si no se aportan, sobre el resultado financiero neto (incluye divisa).
+      cobertura_intereses: red(n(c.gastos_financieros) > 0 ? div(n(c.ebit), n(c.gastos_financieros)) : rf !== null && rf < 0 ? div(n(c.ebit), -rf) : null, 1),
       capital_invertido: suma(pn ?? 0, mi, dn ?? 0),
       liquidez_corriente: red(div(n(b.activo_corriente), n(b.pasivo_corriente)), 2),
     };
@@ -188,7 +210,9 @@ export function calcularEmpresa(datos) {
   const fluIn = lista(d.flujos?.historico);
   const flujos = fluIn.map((f) => {
     const c = cuentaIn.find((x) => String(x.periodo) === String(f.periodo)) || {};
-    const fcf = suma(n(f.flujo_operativo), -(n(f.capex) ?? 0), -(n(f.pagos_arrendamientos) ?? 0));
+    // FCF después de intereses, se clasifiquen donde se clasifiquen: si la empresa pone los intereses
+    // pagados en financiación, se restan aquí («intereses_en_financiacion»).
+    const fcf = suma(n(f.flujo_operativo), -(n(f.capex) ?? 0), -(n(f.pagos_arrendamientos) ?? 0), -(n(f.intereses_en_financiacion) ?? 0));
     const bn = n(c.beneficio_neto);
     return {
       periodo: f.periodo, flujo_operativo: n(f.flujo_operativo), capex: n(f.capex), pagos_arrendamientos: n(f.pagos_arrendamientos), fcf,
@@ -232,7 +256,7 @@ export function calcularEmpresa(datos) {
   const roicIncremental = rentIni && rentUlt !== rentIni ? red(pct(rentUlt.nopat - rentIni.nopat, rentUlt.capital_invertido - rentIni.capital_invertido)) : null;
 
   // ── Calidad contable: Altman Z, Piotroski F, Beneish M ──
-  const scores = calidadContable(cuentaIn, balIn, fluIn, capitalizacion);
+  const scores = calidadContable(cuentaIn, balIn, fluIn, capitalizacion, porNaturaleza);
 
   // ── WACC y DCF ──
   const dcfIn = d.dcf || {};
@@ -284,10 +308,11 @@ export function calcularEmpresa(datos) {
     }
     // DCF inverso
     const objetivo = precio;
-    const crecImpl = objetivo ? biseccion((x) => valorarDcf(dcfIn, ctx, base, { dg: x })?.valor_accion - objetivo, -30, 40) : null;
+    const crecImpl = objetivo ? resolver((x) => valorarDcf(dcfIn, ctx, base, { dg: x })?.valor_accion - objetivo, 0, 1, 25) : null;
     const crecMedioBase = media(lista(dcfIn.anios).map((a) => a.crecimiento_pct));
-    const waccImpl = objetivo ? biseccion((x) => valorarDcf(dcfIn, ctx, { ...base, wacc: x })?.valor_accion - objetivo, Math.max((base.g ?? 0) + 0.6, 2), 30) : null;
-    const margenImpl = objetivo ? biseccion((x) => valorarDcf(dcfIn, ctx, base, { dm: x })?.valor_accion - objetivo, -40, 40) : null;
+    const waccImpl = objetivo ? resolver((x) => valorarDcf(dcfIn, ctx, { ...base, wacc: x })?.valor_accion - objetivo, wacc, 0.5, 20, Math.max((base.g ?? 0) + 0.6, 2)) : null;
+    const margenImpl = objetivo ? resolver((x) => valorarDcf(dcfIn, ctx, base, { dm: x })?.valor_accion - objetivo, 0, 1, 30) : null;
+    control('DCF inverso calculable', crecImpl !== null && waccImpl !== null, crecImpl === null || waccImpl === null ? 'No hay solución en un rango razonable: revisa circulante, capex o márgenes del DCF (un supuesto extremo hace que el valor no responda al crecimiento).' : '');
     const margenFinal = n(lista(dcfIn.anios).at(-1)?.margen_ebitda_pct);
     dcf = {
       ...dcfBase,
@@ -332,7 +357,7 @@ export function calcularEmpresa(datos) {
   const empresaFila = {
     nombre: id.nombre_corto || id.nombre, ticker: id.ticker, pais: id.pais_iso || null, capitalizacion: red(capitalizacion, 0),
     ev_ventas: red(div(valorEmpresa, ingresosLtm), 2), ev_ebitda_ltm: red(div(valorEmpresa, ebitdaLtm), 1), ev_ebitda_ntm: red(div(valorEmpresa, ebitdaNtm), 1),
-    per_ntm: red(div(precio, bpaNtm), 1), crecimiento_pct: red(ingresosNtm && ingresosLtm ? pct(ingresosNtm - ingresosLtm, ingresosLtm) : null),
+    per_ntm: red(div(precio, bpaNtm), 1), crecimiento_pct: red(crecimientoNtm),
     margen_ebitda_pct: red(pct(ebitdaLtm, ingresosLtm)), roic_pct: rentUlt.roic_pct ?? null, dn_ebitda: red(div(deudaNeta, ebitdaLtm), 1),
     fcf_yield_pct: red(pct(fcfLtm, capitalizacion)), es_objetivo: true,
   };
@@ -364,6 +389,12 @@ export function calcularEmpresa(datos) {
     regresion.multiplo_ajustado = red(regresion.ordenada + regresion.pendiente * empresaFila.crecimiento_pct, 1);
     regresion.valor_accion = red(deEv(regresion.multiplo_ajustado * ebitdaNtm), 2);
     regresion.pendiente = red(regresion.pendiente, 2); regresion.ordenada = red(regresion.ordenada, 1); regresion.r2 = red(regresion.r2, 2);
+    regresion.fiable = regresion.r2 !== null && regresion.r2 >= 0.3;
+    regresion.texto = `**Regresión EV/EBITDA NTM sobre crecimiento** (${regresion.n} comparables): múltiplo = ${fmt(regresion.ordenada, 1)} + ${fmt(regresion.pendiente, 2)} × crecimiento; R² = ${fmt(regresion.r2, 2)}. ` +
+      (regresion.fiable
+        ? `Para el crecimiento esperado de la empresa (${fmt(empresaFila.crecimiento_pct, 1)} %), el múltiplo ajustado es ${fmt(regresion.multiplo_ajustado, 1)}x y el valor por acción, ${fmt(regresion.valor_accion, 2)}.`
+        : 'El crecimiento explica poco los múltiplos de estos comparables (R² < 0,3): la regresión no se usa en la valoración.');
+    if (!regresion.fiable) control('Regresión múltiplo-crecimiento explicativa (R² ≥ 0,3)', false, `R² = ${fmt(regresion.r2, 2)}: el crecimiento no explica los múltiplos de estos comparables; no uses el valor de la regresión.`);
   }
   control('Al menos 5 comparables', pares.length >= 5, `${pares.length} comparables.`);
 
@@ -386,17 +417,33 @@ export function calcularEmpresa(datos) {
   }
 
   // ── Múltiplos históricos ──
-  const serieMult = lista(d.multiplos_historicos?.serie);
-  const multHist = [['EV/EBITDA próximos 12 meses', 'ev_ebitda_ntm', empresaFila.ev_ebitda_ntm], ['PER próximos 12 meses', 'per_ntm', empresaFila.per_ntm]].map(([metrica, campo, actual]) => {
+  // Los LTM se calculan aquí con el precio de cierre de cada ejercicio y las cuentas de ese año
+  // (mismo criterio que el múltiplo actual); los NTM, si el modelo los aporta de un proveedor.
+  const serieMult = lista(d.multiplos_historicos?.serie).map((s) => {
+    const c = cuentaIn.find((x) => String(x.periodo) === String(s.anio)) || {};
+    const b = balance.find((x) => String(x.periodo) === String(s.anio)) || {};
+    const p = n(s.precio_cierre), acc = n(c.acciones_diluidas);
+    const ev = p !== null && acc !== null && b.deuda_neta !== null && b.deuda_neta !== undefined ? p * acc + b.deuda_neta + (b.minoritarios ?? 0) : null;
+    return { ...s, ev_ebitda_ltm: red(div(ev, n(c.ebitda)), 1), per_ltm: red(div(p, n(c.bpa)), 1) };
+  });
+  const multHist = [
+    ['EV/EBITDA últimos 12 meses (cierre de cada año)', 'ev_ebitda_ltm', empresaFila.ev_ebitda_ltm],
+    ['PER últimos 12 meses (cierre de cada año)', 'per_ltm', red(div(precio, bpaLtm), 1)],
+    ['EV/EBITDA próximos 12 meses', 'ev_ebitda_ntm', empresaFila.ev_ebitda_ntm],
+    ['PER próximos 12 meses', 'per_ntm', empresaFila.per_ntm],
+  ].map(([metrica, campo, actual]) => {
     const vals = serieMult.map((s) => s[campo]);
     const v = validos(vals);
+    if (v.length < 3) return null;
     return {
-      metrica, actual, media: red(media(vals), 1), minimo: v.length ? red(Math.min(...v), 1) : null, maximo: v.length ? red(Math.max(...v), 1) : null,
-      percentil: actual !== null && v.length ? red((100 * v.filter((x) => x <= actual).length) / v.length, 0) : null,
-      prima_pct: red(pct(actual - media(vals), media(vals)), 0),
+      metrica, campo, actual, media: red(media(vals), 1), minimo: red(Math.min(...v), 1), maximo: red(Math.max(...v), 1),
+      percentil: actual !== null ? red((100 * v.filter((x) => x <= actual).length) / v.length, 0) : null,
+      prima_pct: red(pct(actual - media(vals), media(vals)), 0), anios: v.length,
     };
-  });
-  const serieMultGraf = serieMult.map((s) => ({ anio: s.anio, ev_ebitda_ntm: n(s.ev_ebitda_ntm), media: multHist[0].media }));
+  }).filter(Boolean);
+  const principal = multHist.find((m) => m.campo === 'ev_ebitda_ltm') || multHist.find((m) => m.campo === 'ev_ebitda_ntm');
+  const serieMultGraf = principal ? serieMult.map((s) => ({ anio: s.anio, multiplo: n(s[principal.campo]), media: principal.media })) : [];
+  const tituloMultHist = principal?.metrica ?? null;
 
   // ── Consenso frente a la proyección propia ──
   const proy = dcf?.proyeccion ?? [];
@@ -448,6 +495,49 @@ export function calcularEmpresa(datos) {
   control('Pesos de la síntesis suman 100', Math.abs(pesosDeclarados - 100) < 0.5, `Suman ${pesosDeclarados}.`);
   const valorObjetivo = sumaPesos ? red(acumulado2 / sumaPesos, 2) : null;
 
+  // ── Recomendación ──
+  // Regla: rentabilidad total esperada a 12 meses (potencial hasta el valor objetivo + dividendo ordinario)
+  // y asimetría (lo que se gana en el alcista frente a lo que se pierde en el bajista).
+  //   Comprar:  rentabilidad ≥ 15 % y asimetría ≥ 1
+  //   Vender:   rentabilidad ≤ −10 %, o negativa con asimetría < 0,5
+  //   Mantener: el resto
+  const res = d.resumen || {};
+  const dpaOrdinario = (n(ltm.dpa) ?? ultimoCalc.dpa ?? 0) - (n(ltm.dpa_extraordinario) ?? ultimoCalc.dpa_extraordinario ?? 0);
+  const rentDiv = precio ? (100 * dpaOrdinario) / precio : 0;
+  const potObj = valorObjetivo !== null && precio ? pct(valorObjetivo - precio, precio) : null;
+  const rte = potObj === null ? null : potObj + rentDiv;
+  const esc = (nombre) => escenarios.find((e) => new RegExp(nombre, 'i').test(e.escenario || ''));
+  const potAlc = esc('alcista')?.potencial_pct ?? null, potBaj = esc('bajista')?.potencial_pct ?? null;
+  const asimetria = potAlc !== null && potBaj !== null && potBaj < 0 ? potAlc / Math.abs(potBaj) : null;
+  const regla = rte === null ? null
+    : rte >= 15 && (asimetria === null || asimetria >= 1) ? 'Comprar'
+      : rte <= -10 || (rte < 0 && asimetria !== null && asimetria < 0.5) ? 'Vender' : 'Mantener';
+  const recomendacionFinal = res.recomendacion || regla;
+  const coincide = !res.recomendacion || !regla || res.recomendacion === regla;
+  control('Recomendación coherente con la regla de decisión', coincide || !!res.justificacion_recomendacion,
+    coincide ? '' : `La regla da «${regla}» y el análisis recomienda «${res.recomendacion}»: hace falta «justificacion_recomendacion».`);
+  const recomendacion = {
+    recomendacion: recomendacionFinal, regla, coincide, conviccion: res.conviccion ?? null,
+    potencial_pct: red(potObj), dividendo_pct: red(rentDiv), rentabilidad_total_pct: red(rte),
+    alcista_pct: potAlc, bajista_pct: potBaj, asimetria: red(asimetria, 2),
+    comprar_por_debajo: valorObjetivo ? red(valorObjetivo / (1 + 0.15 - rentDiv / 100), 2) : null,
+    vender_por_encima: valorObjetivo ? red(valorObjetivo / (1 - 0.10 - rentDiv / 100), 2) : null,
+    tabla: [
+      { concepto: 'Valor objetivo (síntesis ponderada)', valor: valorObjetivo === null ? 'n.d.' : `${fmt(valorObjetivo, 2)} ${meta.divisa || ''}` },
+      { concepto: 'Potencial sobre el precio actual', valor: potObj === null ? 'n.d.' : `${fmt(potObj, 1)} %` },
+      { concepto: 'Rentabilidad por dividendo ordinario', valor: `${fmt(rentDiv, 1)} %` },
+      { concepto: 'Rentabilidad total esperada a 12 meses', valor: rte === null ? 'n.d.' : `${fmt(rte, 1)} %` },
+      { concepto: 'Escenario alcista / bajista', valor: potAlc === null || potBaj === null ? 'n.d.' : `${fmt(potAlc, 1)} % / ${fmt(potBaj, 1)} %` },
+      { concepto: 'Asimetría (ganancia alcista / pérdida bajista)', valor: asimetria === null ? 'n.d.' : `${fmt(asimetria, 2)}x` },
+      { concepto: 'Recomendación según la regla', valor: regla ?? 'n.d.' },
+    ],
+    niveles: valorObjetivo ? [
+      { accion: 'Comprar', condicion: `Por debajo de ${fmt(valorObjetivo / (1 + 0.15 - rentDiv / 100), 2)} (rentabilidad total esperada ≥ 15 %), si la asimetría sigue siendo favorable` },
+      { accion: 'Mantener', condicion: `Entre ${fmt(valorObjetivo / (1 + 0.15 - rentDiv / 100), 2)} y ${fmt(valorObjetivo / (1 - 0.10 - rentDiv / 100), 2)}` },
+      { accion: 'Vender o reducir', condicion: `Por encima de ${fmt(valorObjetivo / (1 - 0.10 - rentDiv / 100), 2)} (rentabilidad total esperada ≤ −10 %)` },
+    ] : [],
+  };
+
   // ── Múltiplos clave para la ficha ──
   const clave = {
     capitalizacion: red(capitalizacion, 0), valor_empresa: red(valorEmpresa, 0), deuda_neta: red(deudaNeta, 0),
@@ -473,17 +563,18 @@ export function calcularEmpresa(datos) {
   control('Al menos 25 fuentes', fuentes.n_fuentes >= 25, `${fuentes.n_fuentes} fuentes (${fuentes.n_primarias} primarias).`);
   control('Al menos 10 fuentes primarias', fuentes.n_primarias >= 10, `${fuentes.n_primarias}.`);
   control('Toda cita [n] existe en fuentes', fuentes.citas_sin_fuente.length === 0, fuentes.citas_sin_fuente.length ? `No existen: ${fuentes.citas_sin_fuente.join(', ')}.` : '');
-  control('Toda fuente se cita al menos una vez', fuentes.fuentes_sin_citar.length === 0, fuentes.fuentes_sin_citar.length ? `Sin citar: ${fuentes.fuentes_sin_citar.join(', ')}.` : '');
+  // Se admite alguna fuente de contexto sin cita, pero no muchas: o sobran en la lista o faltan citas.
+  control('Fuentes sin citar ≤ 15 %', fuentes.fuentes_sin_citar.length <= Math.max(2, 0.15 * fuentes.n_fuentes), fuentes.fuentes_sin_citar.length ? `Sin citar: ${fuentes.fuentes_sin_citar.join(', ')}.` : '');
 
   d.calc = {
-    version: 2, mercado, clave, cuenta, tcac: tcacTabla,
+    version: 3, etiquetas, recomendacion, mercado, clave, cuenta, tcac: tcacTabla,
     cuenta_y_prevision: [...cuenta.map((c) => ({ periodo: c.periodo, ingresos: c.ingresos, ebitda: c.ebitda })), ...proy.map((p) => ({ periodo: p.periodo, ingresos: p.ingresos, ebitda: p.ebitda }))],
     segmentos_ultimo: segmentosUltimo, segmentos_tabla: segmentosTabla, segmentos_periodo: ultPerSeg ?? null,
     balance, flujos, flujos_acumulado: acumulado, rentabilidad, roic_incremental_pct: roicIncremental,
     roic_frente_wacc: rentabilidad.map((r) => ({ periodo: r.periodo, roic_pct: r.roic_pct, roe_pct: r.roe_pct, wacc_pct: red(wacc, 1) })),
     calidad: scores, dcf, escenarios, valor_ponderado: valorPonderado, potencial_ponderado_pct: red(pct(valorPonderado - precio, precio)),
     comparables: { tabla: [empresaFila, ...pares], estadisticos: estad, implicito, regresion, n: pares.length },
-    transacciones, suma_partes: sumaPartes, multiplos_historicos: multHist, multiplos_serie: serieMultGraf,
+    transacciones, suma_partes: sumaPartes, multiplos_historicos: multHist, multiplos_serie: serieMultGraf, multiplos_titulo: tituloMultHist,
     consenso_vs_propio: consensoVsPropio, gobierno,
     competidores_margen: [{ nombre: id.nombre_corto || id.nombre, margen_ebit_pct: ultimoCalc.margen_ebit_pct ?? null }, ...lista(d.competencia?.competidores).map((c) => ({ nombre: c.nombre, margen_ebit_pct: n(c.margen_ebit_pct) }))],
     sintesis: { rangos, tabla: tablaSintesis, valor_objetivo: valorObjetivo, potencial_pct: red(pct(valorObjetivo - precio, precio)) },
@@ -574,6 +665,22 @@ function valorarDcf(dcfIn, ctx, p, aj = {}) {
   };
 }
 
+// Busca la raíz alejándose del centro por pasos (primero a un lado y al otro) y biseca el primer
+// tramo con cambio de signo: evita las soluciones absurdas de los extremos.
+function resolver(f, centro, paso, maxPasos, minimo = -Infinity) {
+  const fc = f(centro);
+  if (Number.isFinite(fc) && Math.abs(fc) < 1e-6) return centro;
+  for (let k = 1; k <= maxPasos; k++) {
+    for (const lado of [1, -1]) {
+      const a = centro + lado * (k - 1) * paso, b = centro + lado * k * paso;
+      if (Math.min(a, b) < minimo) continue;
+      const fa = f(a), fb = f(b);
+      if (Number.isFinite(fa) && Number.isFinite(fb) && fa * fb <= 0) return biseccion(f, Math.min(a, b), Math.max(a, b));
+    }
+  }
+  return null;
+}
+
 function biseccion(f, a, b, iter = 60) {
   let fa = f(a), fb = f(b);
   if (!Number.isFinite(fa) || !Number.isFinite(fb) || fa * fb > 0) return null;
@@ -599,7 +706,7 @@ function regresionLineal(puntos) {
 
 // ───────────────────────── calidad contable ─────────────────────────
 
-function calidadContable(cuenta, balance, flujos, capitalizacion) {
+function calidadContable(cuenta, balance, flujos, capitalizacion, naturaleza = false) {
   const porPer = (arr, per) => arr.find((x) => String(x.periodo) === String(per)) || {};
   const pers = cuenta.map((c) => String(c.periodo)).filter((p) => balance.some((b) => String(b.periodo) === p));
   const t = pers[pers.length - 1], t1 = pers[pers.length - 2];
@@ -647,10 +754,10 @@ function calidadContable(cuenta, balance, flujos, capitalizacion) {
     const dep = N(c, 'amortizaciones'), depa = N(ca, 'amortizaciones');
     const sga = N(c, 'gastos_generales'), sgaa = N(ca, 'gastos_generales');
     const v = {
-      DSRI: div(div(ar, S), div(ara, Sa)), GMI: div(gma, gm),
+      DSRI: div(div(ar, S), div(ara, Sa)), GMI: naturaleza ? 1 : div(gma, gm),
       AQI: div(1 - (N(b, 'activo_corriente') + ppe) / at, 1 - (N(ba, 'activo_corriente') + ppea) / ata),
       SGI: div(S, Sa), DEPI: div(div(depa, depa + ppea), div(dep, dep + ppe)),
-      SGAI: sga !== null && sgaa !== null ? div(div(sga, S), div(sgaa, Sa)) : 1,
+      SGAI: !naturaleza && sga !== null && sgaa !== null ? div(div(sga, S), div(sgaa, Sa)) : 1,
       LVGI: div(div(pt, at), div(N(ba, 'pasivo_total'), ata)),
       TATA: div(N(c, 'beneficio_neto') - N(f, 'flujo_operativo'), at),
     };
@@ -658,7 +765,7 @@ function calidadContable(cuenta, balance, flujos, capitalizacion) {
       const m = -4.84 + 0.92 * v.DSRI + 0.528 * v.GMI + 0.404 * v.AQI + 0.892 * v.SGI + 0.115 * v.DEPI - 0.172 * v.SGAI + 4.679 * v.TATA - 0.327 * v.LVGI;
       res.beneish_m = red(m, 2);
       res.beneish_variables = Object.entries(v).map(([k, x]) => ({ variable: k, valor: red(x, 2) }));
-      tabla.push({ indicador: 'Beneish M', valor: fmt(m, 2), lectura: m > -1.78 ? 'Por encima de −1,78: perfil compatible con manipulación de beneficios; revisar a fondo.' : 'Por debajo de −1,78: sin señal de manipulación.' });
+      tabla.push({ indicador: 'Beneish M', valor: fmt(m, 2), lectura: (m > -1.78 ? 'Por encima de −1,78: perfil compatible con manipulación de beneficios; revisar a fondo.' : 'Por debajo de −1,78: sin señal de manipulación.') + (naturaleza ? ' Aproximado: con cuenta por naturaleza, los índices de margen bruto y de gastos generales se fijan en 1.' : '') });
     }
   }
   // Devengos (accruals) acumulados
@@ -678,31 +785,37 @@ function puntuarGobierno(g, calidad, fechaCorte) {
   const indepPct = nCons ? (100 * indep) / nCons : null;
   const anioCorte = fechaCorte.getUTCFullYear();
   const antig = consejo.map((c) => (anioDe(c.desde) ? anioCorte - anioDe(c.desde) : null));
-  const indepLargos = consejo.filter((c, i) => c.tipo === 'Independiente' && antig[i] !== null && antig[i] > 12).length;
+  // Externos no dominicales con mucha antigüedad: suelen ser antiguos independientes que ya no pueden serlo.
+  const externosLargos = consejo.filter((c, i) => /otro/i.test(c.tipo || '') && antig[i] !== null && antig[i] > 12);
   const mayor = Math.max(0, ...lista(g.accionistas).map((a) => n(a.pct) ?? 0));
   const ins = lista(g.insiders);
   const compras = sumaLaxa(...ins.filter((x) => /compra/i.test(x.operacion)).map((x) => n(x.importe)));
   const ventas = sumaLaxa(...ins.filter((x) => /venta/i.test(x.operacion)).map((x) => n(x.importe)));
   const b = (v) => (v === null || v === undefined ? null : !!v);
+  const sino = (v, si = 'Sí', no = 'No') => (v === null || v === undefined ? 'Sin dato' : v ? si : no);
+  const voto = n(g.voto_remuneracion_pct);
   const crit = [
-    ['Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)', indepPct === null ? null : indepPct >= 50 || (mayor >= 30 && indepPct >= 33), indepPct === null ? 'n.d.' : `${fmt(indepPct, 0)} %`],
-    ['Presidente y consejero delegado separados, o consejero coordinador independiente', g.presidente_ceo_separados === null || g.presidente_ceo_separados === undefined ? null : g.presidente_ceo_separados || !!g.consejero_coordinador, g.presidente_ceo_separados ? 'Separados' : g.consejero_coordinador ? 'Coordinador' : 'No'],
-    ['Ningún independiente con más de 12 años en el consejo', nCons ? indepLargos === 0 : null, `${indepLargos}`],
-    ['Voto a favor de la remuneración ≥ 80 %', n(g.voto_remuneracion_pct) === null ? null : n(g.voto_remuneracion_pct) >= 80, n(g.voto_remuneracion_pct) === null ? 'n.d.' : `${fmt(n(g.voto_remuneracion_pct), 1)} %`],
-    ['Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)', b(g.variable_ligado_rentabilidad), g.variable_ligado_rentabilidad ? 'Sí' : g.variable_ligado_rentabilidad === false ? 'No' : 'n.d.'],
-    ['Una acción, un voto, sin blindajes', b(g.una_accion_un_voto), g.una_accion_un_voto ? 'Sí' : g.una_accion_un_voto === false ? 'No' : 'n.d.'],
-    ['Sin operaciones vinculadas relevantes', g.operaciones_vinculadas_relevantes === null || g.operaciones_vinculadas_relevantes === undefined ? null : !g.operaciones_vinculadas_relevantes, g.operaciones_vinculadas_relevantes ? 'Hay' : 'No hay'],
-    ['Auditor con 10 años o menos en el cargo', n(calidad.anios_auditor) === null ? null : n(calidad.anios_auditor) <= 10, n(calidad.anios_auditor) === null ? 'n.d.' : `${calidad.anios_auditor} años`],
-    ['Opinión de auditoría sin salvedades', calidad.opinion ? /favorable|limpia|sin salvedades/i.test(calidad.opinion) && !/con salvedades/i.test(calidad.opinion) : null, calidad.opinion ?? 'n.d.'],
-    ['Directivos compradores netos en 12 meses (o sin ventas relevantes)', ins.length ? compras >= ventas : null, ins.length ? `Compras ${fmt(compras, 1)} / ventas ${fmt(ventas, 1)}` : 'Sin operaciones'],
+    ['Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)', indepPct === null ? null : indepPct >= 50 || (mayor >= 30 && indepPct >= 33), indepPct === null ? 'Sin dato' : `${fmt(indepPct, 0)} %`],
+    ['Presidente no ejecutivo, o consejero coordinador independiente', g.presidente_ceo_separados === null || g.presidente_ceo_separados === undefined ? null : g.presidente_ceo_separados || !!g.consejero_coordinador, g.presidente_ceo_separados ? 'Separados' : g.consejero_coordinador ? 'Coordinador' : 'No'],
+    ['Comisión de auditoría con mayoría de independientes y presidida por uno', b(g.auditoria_independiente), sino(g.auditoria_independiente)],
+    ['Ningún consejero «otro externo» con más de 12 años', nCons ? externosLargos.length === 0 : null, nCons ? (externosLargos.length ? externosLargos.map((c) => c.nombre).join(', ') : 'Ninguno') : 'Sin dato'],
+    ['Peor voto a favor sobre remuneración (3 juntas) ≥ 80 %', voto === null ? null : voto >= 80, voto === null ? 'Sin dato' : `${fmt(voto, 1)} %`],
+    ['Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)', b(g.variable_ligado_rentabilidad), sino(g.variable_ligado_rentabilidad)],
+    ['Una acción, un voto, sin blindajes ni límites de voto', b(g.una_accion_un_voto), sino(g.una_accion_un_voto)],
+    ['Sin operaciones vinculadas relevantes', g.operaciones_vinculadas_relevantes === null || g.operaciones_vinculadas_relevantes === undefined ? null : !g.operaciones_vinculadas_relevantes, sino(g.operaciones_vinculadas_relevantes, 'Hay', 'No hay')],
+    ['Auditor con 10 años o menos en el cargo', n(calidad.anios_auditor) === null ? null : n(calidad.anios_auditor) <= 10, n(calidad.anios_auditor) === null ? 'Sin dato' : `${calidad.anios_auditor} años`],
+    ['Opinión de auditoría sin salvedades', calidad.opinion ? /favorable|limpia|sin salvedades/i.test(calidad.opinion) && !/con salvedades/i.test(calidad.opinion) : null, calidad.opinion ?? 'Sin dato'],
+    ['Directivos compradores netos en 12 meses (o sin ventas relevantes)', ins.length ? compras >= ventas : g.insiders_sin_operaciones ? true : null, ins.length ? `Compras ${fmt(compras, 2)} / ventas ${fmt(ventas, 2)} M` : g.insiders_sin_operaciones ? 'Sin operaciones' : 'Sin dato'],
   ];
   const conDato = crit.filter(([, v]) => v !== null);
   const ok = conDato.filter(([, v]) => v).length;
+  const sinDato = crit.length - conDato.length;
   return {
     n_consejeros: nCons, independientes_pct: red(indepPct, 0), antiguedad_media: red(media(antig), 1),
     composicion: Object.entries(tipos).map(([tipo, num]) => ({ tipo, num })),
-    checklist: crit.map(([criterio, v, valor]) => ({ criterio, resultado: v === null ? 'n.d.' : v ? 'Cumple' : 'No cumple', valor })),
-    puntuacion: `${ok} de ${conDato.length}`, puntuacion_pct: conDato.length ? red((100 * ok) / conDato.length, 0) : null,
+    checklist: crit.map(([criterio, v, valor]) => ({ criterio, resultado: v === null ? 'Sin dato' : v ? 'Cumple' : 'No cumple', valor })),
+    // Lo que no se ha podido verificar no puntúa como cumplido.
+    puntuacion: `${ok} de ${crit.length}${sinDato ? ` (${sinDato} sin dato)` : ''}`, puntuacion_pct: red((100 * ok) / crit.length, 0),
     compras_insiders: red(compras, 2), ventas_insiders: red(ventas, 2),
   };
 }
@@ -750,6 +863,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   for (let i = 0; i < argv.length; i++) if (argv[i].startsWith('--')) a[argv[i].slice(2)] = argv[i + 1];
   if (!a.datos) { console.error('Uso: node calcular-empresa.mjs --datos datos.json [--salida datos.json]'); process.exit(1); }
   const datos = JSON.parse(readFileSync(a.datos, 'utf8'));
+  const d0 = structuredClone(datos);
   const r = calcularEmpresa(datos);
   writeFileSync(a.salida || a.datos, JSON.stringify(r, null, 2));
   const c = r.calc;
@@ -768,6 +882,8 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   if (c.transacciones) linea('Transacciones (p25 – mediana – p75)', `${fmt(c.transacciones.valor_p25, 2)} – ${fmt(c.transacciones.valor_mediana, 2)} – ${fmt(c.transacciones.valor_p75, 2)}`);
   for (const e of c.escenarios) linea(`Escenario ${e.escenario}`, `${fmt(e.valor, 2)} (${fmt(e.potencial_pct)} %, prob. ${e.probabilidad_pct} %)`);
   linea('Valor objetivo (síntesis ponderada)', `${fmt(c.sintesis.valor_objetivo, 2)} (${fmt(c.sintesis.potencial_pct)} %)`);
+  linea('Rentabilidad total 12 m · asimetría', `${fmt(c.recomendacion.rentabilidad_total_pct)} % · ${fmt(c.recomendacion.asimetria, 2)}x`);
+  linea('Recomendación: regla / análisis', `${c.recomendacion.regla ?? 'n.d.'} / ${d0.resumen?.recomendacion ?? '(sin escribir)'}`);
   console.log('Calidad y gobierno');
   linea('Altman Z · Piotroski F · Beneish M', `${fmt(c.calidad.altman_z, 2)} · ${c.calidad.piotroski_f ?? 'n.d.'} · ${fmt(c.calidad.beneish_m, 2)}`);
   linea('Gobierno', `${c.gobierno.puntuacion} criterios · ${fmt(c.gobierno.independientes_pct, 0)} % independientes`);

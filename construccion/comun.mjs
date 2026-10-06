@@ -181,7 +181,7 @@ export async function construir({ tipo, cabecera, portada, bloques, columnasFuen
         { id: 'Heading2', name: 'Heading 2', basedOn: 'Normal', next: 'Normal', quickFormat: true, run: { size: 23, bold: true, color: COLOR.marino, font: FUENTE }, paragraph: { spacing: { before: 220, after: 80 }, keepNext: true, outlineLevel: 1 } },
         { id: 'Parte', name: 'Parte', basedOn: 'Normal', next: 'Normal', run: { size: 40, bold: true, color: COLOR.acento, font: FUENTE }, paragraph: { spacing: { before: 2400, after: 400 }, keepNext: true, outlineLevel: 0, border: { bottom: { style: BorderStyle.SINGLE, size: 12, color: COLOR.acento, space: 6 } } } },
         { id: 'Aviso', name: 'Aviso', basedOn: 'Normal', next: 'Normal', run: { size: 19, bold: true, color: 'A3470F' }, paragraph: { spacing: { before: 120, after: 200 }, border: { left: { style: BorderStyle.SINGLE, size: 24, color: 'D9772E', space: 8 } }, indent: { left: 200 } } },
-        { id: 'Confianza', name: 'Confianza', basedOn: 'Normal', next: 'Normal', run: { size: 16, italics: true, color: COLOR.tenue }, paragraph: { spacing: { before: 0, after: 160 } } },
+        { id: 'Confianza', name: 'Confianza', basedOn: 'Normal', next: 'Normal', run: { size: 16, italics: true, color: COLOR.tenue }, paragraph: { spacing: { before: 0, after: 160 }, keepNext: true } },
         { id: 'Nota', name: 'Nota', basedOn: 'Normal', next: 'Normal', run: { size: 16, color: COLOR.tinta2 }, paragraph: { spacing: { after: 80 } } },
       ],
     },

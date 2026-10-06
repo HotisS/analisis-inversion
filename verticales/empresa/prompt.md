@@ -80,7 +80,7 @@ Haz de abogado del diablo con las preguntas de la sección 7 y corrige lo que fa
 ### Fase 9 — Entrega
 - `node calcular-empresa.mjs --datos datos.json`
 - `node rellenar.mjs --plantilla plantilla.docx --datos datos.json --salida "Informe - <EMPRESA>.docx"`
-- Corrige hasta que no queden avisos evitables. En el chat, como máximo diez líneas: conclusión, valor objetivo, potencial, DCF inverso en una frase, cobertura, controles en «Revisar» que quedan y por qué, y las secciones o datos omitidos por falta de información (los de núcleo, primero).
+- Corrige hasta que no queden avisos evitables. En el chat, como máximo diez líneas: recomendación y convicción, valor objetivo, potencial, DCF inverso en una frase, cobertura, controles en «Revisar» que quedan y por qué, y las secciones o datos omitidos por falta de información (los de núcleo, primero).
 
 **Si dispones de subagentes** (Claude Code), reparte las fases 2-4 entre varios que trabajen en paralelo: cuentas y trimestres; sector y competencia; gobierno y directivos; mercado, comparables y transacciones. Cada uno debe devolver hechos con su fuente, no opiniones. Tú integras, calculas, redactas y revisas.
 
@@ -115,8 +115,9 @@ Una sección de núcleo no se pone a `null` si tiene algo que aportar: mejor una
 
 ## 4. Reglas sobre los datos
 
+0. **Ninguna cifra sale del resumen de un buscador.** Los resúmenes de WebSearch inventan números con aplomo (EBITDA semestrales que no existen, bonos al 6 %, múltiplos «calculados»). Toda cifra se copia **de la página o el documento original** que la publica, abierto y leído. Si WebFetch no abre un documento (certificado, tamaño, JavaScript), descárgalo con `curl` y extrae el texto (`pdftotext`, o un lector propio para xlsx).
 1. **Nunca inventes una cifra.** Si no hay dato fiable tras el protocolo de huecos, `null` (o `[]`) y el informe no lo imprime. Las estimaciones propias se marcan en el texto («estimación propia: …») con el cálculo explicado.
-2. **Fuentes.** Cada documento consultado va en `fuentes` con `id`, `tipo` y fecha, y se cita con `[n]` en los textos (también `[3, 5]` o `[3-5]`). Tipos: `"Primaria"` (empresa o regulador), `"Datos de mercado"` (proveedores), `"Sectorial"` (asociaciones, estadística, estudios), `"Prensa"`, `"Analistas"`. Prioridad: Primaria > Datos de mercado > Sectorial > Analistas > Prensa.
+2. **Fuentes.** Cada documento leído **y usado** va en `fuentes` con `id`, `tipo` y fecha (`AAAA-MM-DD`; si el documento no tiene fecha visible, `AAAA-MM` o `AAAA` del periodo al que se refiere), y se cita con `[n]` en los textos (también `[3, 5]` o `[3-5]`). No metas citas solo para cumplir: una fuente de contexto puede quedarse sin citar (el motor tolera hasta un 15 %). Las cifras que calcula el motor **no llevan cita ni la palabra «motor»**: son cálculos del propio informe. Tipos: `"Primaria"` (empresa o regulador), `"Datos de mercado"` (proveedores), `"Sectorial"` (asociaciones, estadística, estudios), `"Prensa"`, `"Analistas"`. Prioridad: Primaria > Datos de mercado > Sectorial > Analistas > Prensa.
 3. **Unidades.** Todas las magnitudes de las cuentas, la capitalización, el valor empresa y los comparables van **en millones** de `meta.divisa`. El precio, el BPA, el DPA y los valores por acción, en unidades de la divisa. Las acciones, en millones. Si conviertes desde otra divisa, usa el tipo de cierre de cada ejercicio (o el de la fecha de corte para datos de mercado) y dilo en `meta.limitaciones`.
 4. **Números como números**: punto decimal, sin separadores de miles ni unidades. Porcentajes en puntos: 12,5 % se escribe `12.5`.
 5. **Signos.** Gastos e inversiones **en positivo** (`coste_ventas`, `gastos_generales`, `amortizaciones`, `impuestos`, `capex`, `dividendos`, `recompras`, `adquisiciones`, `pagos_arrendamientos`). `resultado_financiero` con signo (negativo si es gasto neto). `minoritarios` de la cuenta en positivo si es beneficio atribuido a minoritarios.
@@ -158,7 +159,7 @@ Las claves de primer nivel, en este orden: `meta`, `identificacion`, `resumen`, 
 ```json
 "meta": {
   "fecha_corte": "AAAA-MM-DD", "divisa": "EUR", "unidades": "millones", "cierre_ejercicio_mes": 12,
-  "normas_contables": "NIIF-UE",
+  "normas_contables": "NIIF-UE", "formato_cuenta": "funcion|naturaleza",
   "limitaciones": "Texto: línea cotizada elegida, conversiones de divisa, datos de pago no accesibles, años que vienen de un proveedor y no de las cuentas…",
   "huecos": [{ "seccion": "texto", "campo": "texto", "tipo": "Núcleo|Complemento", "intentos": "1) …; 2) …; 3) …", "decision": "Omitido|Calculado y marcado como estimación" }]
 }
@@ -195,8 +196,8 @@ Las claves de primer nivel, en este orden: `meta`, `identificacion`, `resumen`, 
 **Objetivo.** Que el comité entienda en dos minutos qué vende, a quién, cómo cobra y de dónde sale el beneficio.
 - `descripcion` (100-180 palabras): productos o servicios, clientes tipo, canales, presencia industrial o comercial.
 - `como_gana_dinero` (80-150 palabras): la economía unitaria. Qué parte de los ingresos es recurrente, de qué depende el margen (precio, volumen, mezcla, coste de materias primas o de personal), apalancamiento operativo y estacionalidad.
-- `segmentos`: los segmentos **tal como los reporta la empresa**, con su historia de al menos 5 ejercicios. `resultado` es el resultado del segmento que publique la empresa (EBIT o EBITDA; indícalo en `tipo_resultado`). Máximo 8: agrupa el resto en «Otros». Los ingresos de los segmentos deben sumar los del grupo (el motor lo comprueba); si hay eliminaciones entre segmentos, ponlas como segmento «Eliminaciones».
-- `geografias`: ingresos por destino del último ejercicio, máximo 8 con «Otros»; deben sumar 100.
+- `segmentos`: los segmentos **tal como los reporta la empresa**, con su historia de al menos 5 ejercicios. `resultado` es el resultado del segmento que publique la empresa (EBIT o EBITDA; indícalo en `tipo_resultado`). Máximo 8: agrupa el resto en «Otros». Los ingresos de los segmentos deben sumar los del grupo (el motor lo comprueba); si hay eliminaciones entre segmentos, ponlas como segmento «Eliminaciones». **Empresa monosegmento** (NIIF 8 con un solo segmento): usa las líneas de negocio o familias de producto por las que la empresa desglosa sus ingresos, con `resultado: null` y `tipo_resultado: null`; las columnas sin dato desaparecen del informe.
+- `geografias`: ingresos por geografía del último ejercicio, máximo 8 con «Otros»; deben sumar 100. `geografias_criterio`: «destino» (dónde está el cliente, lo preferible) u «origen» (dónde se factura), según lo que publique la empresa.
 - `clientes` (80-150 palabras): concentración (primer cliente, diez primeros), duración de los contratos, tasa de renovación o de bajas y **poder de precios** demostrado (subidas de precio frente a inflación de costes, con datos).
 - `kpis`: 4-8 indicadores operativos que la propia empresa sigue (cartera de pedidos, volumen, precio medio, clientes, ARPU, ventas comparables, ocupación…), con el valor del año anterior y del actual.
 
@@ -204,7 +205,7 @@ Las claves de primer nivel, en este orden: `meta`, `identificacion`, `resumen`, 
 "negocio": {
   "descripcion": "texto", "como_gana_dinero": "texto",
   "segmentos": [{ "nombre": "texto", "descripcion": "texto", "tipo_resultado": "EBIT|EBITDA", "historico": [{ "periodo": "2021", "ingresos": 0, "resultado": 0 }] }],
-  "geografias": [{ "nombre": "texto", "peso_pct": 0.0 }],
+  "geografias": [{ "nombre": "texto", "peso_pct": 0.0 }], "geografias_criterio": "destino|origen",
   "clientes": "texto",
   "kpis": [{ "kpi": "texto", "valor_anterior": "texto", "valor_actual": "texto", "variacion": "texto", "comentario": "texto" }],
   "confianza": "Alta|Media|Baja"
@@ -258,15 +259,15 @@ Las claves de primer nivel, en este orden: `meta`, `identificacion`, `resumen`, 
 ### 5. Cuenta de resultados · `financieros`
 
 **Objetivo.** La serie completa de resultados reales, de la que el motor saca márgenes, crecimientos y la base del DCF.
-- `cuenta`: **solo ejercicios reales** (5-10), en orden cronológico, de las cuentas auditadas. Las estimaciones no van aquí: van en `consenso` y en `dcf`. `gastos_generales` = gastos comerciales, generales y de administración (se usa en el Beneish M). `ebitda` = EBIT + amortizaciones y depreciaciones (incluida la de derechos de uso). `beneficio_neto` es el atribuido a la dominante. `bpa` diluido. `acciones_diluidas` en millones.
-- `ltm`: últimos doce meses a la fecha del último informe (si el último informe es anual, repite ese ejercicio). `periodo` como «LTM jun-26».
+- `cuenta`: **solo ejercicios reales** (5-10), en orden cronológico, de las cuentas auditadas. Las estimaciones no van aquí: van en `consenso` y en `dcf`. `gastos_generales` = gastos comerciales, generales y de administración (se usa en el Beneish M). **Si la empresa presenta la cuenta por naturaleza** (aprovisionamientos, personal, otros gastos), pon `meta.formato_cuenta: "naturaleza"`, usa en `coste_ventas` los aprovisionamientos (consumos ± variación de existencias) y deja `gastos_generales` en `null`: el motor ajusta el margen («tras aprovisionamientos»), los días de inventario y de pago, y el Beneish M. `gastos_financieros` = gastos por intereses (sin diferencias de cambio), para la cobertura de intereses. `dpa_extraordinario` = la parte extraordinaria del dividendo, para que el payout no se distorsione. `ebitda` = EBIT + amortizaciones y depreciaciones (incluida la de derechos de uso). `beneficio_neto` es el atribuido a la dominante. `bpa` diluido. `acciones_diluidas` en millones.
+- `ltm`: últimos doce meses a la fecha del último informe (si el último informe es anual, repite ese ejercicio). `periodo` como «LTM jun-26» y `fecha_fin` con la fecha de cierre de ese periodo (la usa el motor para anualizar el crecimiento a 12 meses).
 - `comentario` (100-180 palabras): crecimiento orgánico frente a inorgánico, evolución de los márgenes en puntos básicos con sus causas (precio, mezcla, costes, apalancamiento operativo) y años no comparables.
 - `ajustes` (60-120 palabras): diferencias entre cifras reportadas y ajustadas, partidas no recurrentes de cada año y si se repiten.
 
 ```json
 "financieros": {
-  "cuenta": [{ "periodo": "2021", "ingresos": 0, "coste_ventas": 0, "gastos_generales": 0, "ebitda": 0, "amortizaciones": 0, "ebit": 0, "resultado_financiero": 0, "bai": 0, "impuestos": 0, "minoritarios": 0, "beneficio_neto": 0, "bpa": 0.00, "dpa": 0.00, "acciones_diluidas": 0.0 }],
-  "ltm": { "periodo": "LTM jun-26", "ingresos": 0, "ebitda": 0, "ebit": 0, "beneficio_neto": 0, "bpa": 0.00, "dpa": 0.00, "fcf": 0 },
+  "cuenta": [{ "periodo": "2021", "ingresos": 0, "coste_ventas": 0, "gastos_generales": 0, "ebitda": 0, "amortizaciones": 0, "ebit": 0, "resultado_financiero": 0, "bai": 0, "impuestos": 0, "minoritarios": 0, "beneficio_neto": 0, "gastos_financieros": 0, "bpa": 0.00, "dpa": 0.00, "dpa_extraordinario": 0.00, "acciones_diluidas": 0.0 }],
+  "ltm": { "periodo": "LTM jun-26", "fecha_fin": "AAAA-MM-DD", "ingresos": 0, "ebitda": 0, "ebit": 0, "beneficio_neto": 0, "bpa": 0.00, "dpa": 0.00, "dpa_extraordinario": 0.00, "fcf": 0 },
   "comentario": "texto", "ajustes": "texto",
   "confianza": "Alta|Media|Baja"
 }
@@ -307,12 +308,12 @@ Las claves de primer nivel, en este orden: `meta`, `identificacion`, `resumen`, 
 
 ### 8. Flujos de caja · `flujos`
 
-- `historico`: los mismos ejercicios, del estado de flujos de efectivo. `flujo_operativo` después de impuestos (y de intereses, si la empresa los clasifica ahí). `capex`: inversión en inmovilizado material e intangible. `pagos_arrendamientos`: principal de arrendamientos (financiación). `adquisiciones`: neto de caja adquirida. Todo en positivo; `desinversiones` y `emision_acciones` en positivo cuando entra caja.
+- `historico`: los mismos ejercicios, del estado de flujos de efectivo. `flujo_operativo` después de impuestos (y de intereses, si la empresa los clasifica ahí). `capex`: inversión en inmovilizado material e intangible. `pagos_arrendamientos`: principal de arrendamientos (financiación). `adquisiciones`: neto de caja adquirida. `intereses_en_financiacion`: intereses pagados **si la empresa los clasifica en actividades de financiación** (si van en explotación, 0); el motor los resta para que el FCF sea siempre después de intereses. Todo en positivo; `desinversiones` y `emision_acciones` en positivo cuando entra caja.
 - `comentario` (80-150 palabras): calidad de la conversión de beneficio en caja, años anómalos con su causa, y qué parte del capex es de mantenimiento y qué parte de crecimiento (con la cifra de la empresa si la da; si no, estimación propia marcada).
 
 ```json
 "flujos": {
-  "historico": [{ "periodo": "2021", "flujo_operativo": 0, "capex": 0, "pagos_arrendamientos": 0, "adquisiciones": 0, "desinversiones": 0, "dividendos": 0, "recompras": 0, "emision_acciones": 0 }],
+  "historico": [{ "periodo": "2021", "flujo_operativo": 0, "capex": 0, "pagos_arrendamientos": 0, "adquisiciones": 0, "desinversiones": 0, "dividendos": 0, "recompras": 0, "emision_acciones": 0, "intereses_en_financiacion": 0 }],
   "comentario": "texto",
   "confianza": "Alta|Media|Baja"
 }
@@ -375,8 +376,8 @@ El motor calcula ROIC, ROE, ROA, la descomposición DuPont y el ROIC incremental
 
 **Objetivo.** Saber si el accionista minoritario está protegido. Fuente principal: IAGC e IARC (o *proxy*).
 - `consejo`: todos los consejeros. `tipo`: «Ejecutivo», «Dominical», «Independiente» u «Otro externo». `desde`: año de primer nombramiento. `comisiones`: las que integra.
-- Booleanos: `presidente_ceo_separados`, `consejero_coordinador` (hay un independiente coordinador), `una_accion_un_voto` (sin clases con voto distinto ni límites de voto ni blindajes estatutarios), `operaciones_vinculadas_relevantes`, `variable_ligado_rentabilidad` (el variable a largo plazo depende de ROIC, TSR o FCF).
-- `voto_remuneracion_pct`: porcentaje a favor en la última votación del informe de remuneraciones.
+- Booleanos: `presidente_ceo_separados`, `consejero_coordinador` (hay un independiente coordinador), `una_accion_un_voto` (sin clases con voto distinto ni límites de voto ni blindajes estatutarios), `operaciones_vinculadas_relevantes`, `variable_ligado_rentabilidad` (el variable a largo plazo depende de ROIC, TSR o FCF), `auditoria_independiente` (la comisión de auditoría tiene mayoría de independientes y la preside uno), `insiders_sin_operaciones` (`true` solo si has comprobado en el registro oficial que no hubo operaciones en 12 meses).
+- `voto_remuneracion_pct`: el porcentaje a favor **más bajo** de las votaciones sobre remuneración (informe anual y política) de las **tres últimas juntas**. Un voto por debajo del 80 % es una señal de los inversores institucionales que hay que explicar en `remuneracion`.
 - `remuneracion_ceo`: el último ejercicio, en millones: total devengado, fijo, variable anual, variable a largo plazo y `ratio_salario_medio` (remuneración del primer ejecutivo entre el coste medio por empleado).
 - `remuneracion` (80-140 palabras): métricas y pesos del variable, objetivos fijados, si premian crecimiento a cualquier precio, cláusulas de recuperación (*clawback*) e indemnizaciones.
 - `accionistas`: participaciones significativas con tipo y `variacion` (movimientos en 12-24 meses). Incluye autocartera.
@@ -388,7 +389,7 @@ El motor calcula ROIC, ROE, ROA, la descomposición DuPont y el ROIC incremental
 "gobierno": {
   "consejo": [{ "nombre": "texto", "cargo": "texto", "tipo": "Ejecutivo|Dominical|Independiente|Otro externo", "desde": "2015", "comisiones": "texto" }],
   "presidente_ceo_separados": true, "consejero_coordinador": true, "una_accion_un_voto": true,
-  "operaciones_vinculadas_relevantes": false, "variable_ligado_rentabilidad": true, "voto_remuneracion_pct": 0.0,
+  "operaciones_vinculadas_relevantes": false, "variable_ligado_rentabilidad": true, "auditoria_independiente": true, "insiders_sin_operaciones": false, "voto_remuneracion_pct": 0.0,
   "remuneracion_ceo": { "anio": "2025", "total": 0.00, "fijo": 0.00, "variable_corto": 0.00, "variable_largo": 0.00, "ratio_salario_medio": 0 },
   "remuneracion": "texto",
   "accionistas": [{ "nombre": "texto", "pct": 0.00, "tipo": "texto", "variacion": "texto" }],
@@ -402,7 +403,7 @@ El motor calcula ROIC, ROE, ROA, la descomposición DuPont y el ROIC incremental
 ### 15. Previsiones y consenso · `consenso`
 
 - `guidance` (80-140 palabras): objetivos del año y del plan a medio plazo, con la fecha de la última confirmación o cambio.
-- `estimaciones`: consenso de los **tres** próximos ejercicios, con la fuente y el número de analistas. Coteja al menos dos fuentes y anota en `revisiones` las diferencias relevantes.
+- `estimaciones`: consenso de los **tres** próximos ejercicios, con la fuente y el número de analistas. Coteja dos fuentes si existen gratis; si solo hay una con estimaciones completas, úsala, dilo en `revisiones` y contrasta al menos el precio objetivo y las recomendaciones con otra.
 - `recomendaciones`: número de analistas y de cada recomendación; precios objetivo medio, mínimo y máximo.
 - `revisiones` (60-120 palabras): cambios de las estimaciones de BPA y EBITDA en 3 y 12 meses, y por qué.
 
@@ -418,13 +419,14 @@ El motor calcula ROIC, ROE, ROA, la descomposición DuPont y el ROIC incremental
 
 ### 16. Comportamiento en bolsa · `bolsa`
 
-- `rentabilidades`: «En el año», «1 año», «3 años (anual.)», «5 años (anual.)», «10 años (anual.)»: rentabilidad **total** (con dividendos) de la acción, del índice de referencia y de un índice sectorial.
+- `rentabilidades`: «En el año», «1 año», «3 años (anual.)», «5 años (anual.)», «10 años (anual.)»: rentabilidad **total** (con dividendos) de la acción, del índice de referencia y de un índice sectorial. Si no hay rentabilidad total gratuita para los índices, usa la de precio para todos (no mezcles) y pon `tipo_rentabilidad: "de precio (sin dividendos)"`; si es total, `"total (con dividendos)"`.
 - `anual`: rentabilidad total por año natural, 5-10 años, de la acción y del índice.
 - `beta` (5 años, mensual), `volatilidad_pct` (1 año, diaria anualizada), `max_drawdown_pct` (5 años, negativo), `posicion_corta_pct` (registro oficial).
 - `comentario` (80-140 palabras): qué explica el comportamiento relativo, con los hechos concretos.
 
 ```json
 "bolsa": {
+  "tipo_rentabilidad": "total (con dividendos)|de precio (sin dividendos)",
   "rentabilidades": [{ "periodo": "1 año", "accion_pct": 0.0, "indice_pct": 0.0, "sector_pct": 0.0 }],
   "anual": [{ "anio": "2021", "accion_pct": 0.0, "indice_pct": 0.0 }],
   "beta": 0.00, "volatilidad_pct": 0.0, "max_drawdown_pct": 0.0, "posicion_corta_pct": 0.0,
@@ -435,17 +437,17 @@ El motor calcula ROIC, ROE, ROA, la descomposición DuPont y el ROIC incremental
 
 ### 17. Múltiplos frente a su historia · `multiplos_historicos`
 
-- `serie`: EV/EBITDA y PER de los próximos 12 meses al cierre de cada año, 5-10 años, de un proveedor citado.
+- `serie`: un año por ejercicio de `financieros.cuenta`, con el **precio de cierre** de la acción ese año (`precio_cierre`, del informe anual o de un histórico de cotizaciones). Con él, el motor calcula el EV/EBITDA y el PER de los últimos 12 meses de cada año con el mismo criterio que el actual. `ev_ebitda_ntm` y `per_ntm` solo si un proveedor los da gratis; si no, `null`.
 - `comentario` (60-120 palabras): por qué cotiza con prima o descuento frente a su historia (`calc.multiplos_historicos`), y si ha cambiado algo estructural (crecimiento, tipos de interés, perfil de riesgo).
 
 ```json
-"multiplos_historicos": { "serie": [{ "anio": "2021", "ev_ebitda_ntm": 0.0, "per_ntm": 0.0 }], "comentario": "texto", "confianza": "Alta|Media|Baja" }
+"multiplos_historicos": { "serie": [{ "anio": "2021", "precio_cierre": 0.00, "ev_ebitda_ntm": 0.0, "per_ntm": 0.0 }], "comentario": "texto", "confianza": "Alta|Media|Baja" }
 ```
 
 ### 18. Comparables cotizados · `comparables`
 
 - `criterio` (40-80 palabras): por qué estas empresas (negocio, tamaño, geografía, modelo) y por qué no otras que podrían parecer obvias.
-- `empresas`: 6-10 comparables **sin incluir a la empresa analizada** (el motor la añade con sus propias cifras). Todas a la misma fecha: `capitalizacion` en millones de `meta.divisa` (convertida), múltiplos de los últimos y de los próximos 12 meses, `crecimiento_pct` de ingresos esperado a 12 meses, margen EBITDA y ROIC del último ejercicio, DN/EBITDA y rentabilidad por FCF.
+- `empresas`: 6-10 comparables **sin incluir a la empresa analizada** (el motor la añade con sus propias cifras). Todas a la misma fecha: `capitalizacion` en millones de `meta.divisa` (convertida), múltiplos de los últimos y de los próximos 12 meses, `crecimiento_pct` de ingresos esperado (próximos 12 meses sobre últimos 12 meses, **anualizado**, como hace el motor con la empresa; con ejercicios no naturales, pondera los dos ejercicios estimados por los meses que caen en los próximos 12), margen EBITDA y ROIC del último ejercicio, DN/EBITDA y rentabilidad por FCF.
 - `comentario` (100-160 palabras): dónde queda la empresa en el mapa crecimiento-múltiplo, si la prima o el descuento se justifican (crecimiento, ROIC, riesgo) y qué múltiplo usarías. Apóyate en `calc.comparables.implicito` y `calc.comparables.regresion`.
 
 ```json
@@ -582,8 +584,10 @@ El motor calcula ROIC, ROE, ROA, la descomposición DuPont y el ROIC incremental
 
 ### Resumen ejecutivo (se escribe al final) · `resumen`
 
-- `conclusion`: «Atractiva», «Neutral» o «Poco atractiva». Coherente con `calc.sintesis.potencial_pct` y con la asimetría de los escenarios. Como guía: «Atractiva» si el potencial supera el 20 % y el escenario bajista no pierde más que lo que gana el alcista; «Poco atractiva» si el potencial es negativo. Si te apartas de la guía, justifícalo.
-- `horizonte`: plazo en que debería cumplirse la tesis.
+- `recomendacion`: **«Comprar», «Mantener» o «Vender»**. El motor calcula la recomendación que sale de la regla (`calc.recomendacion.regla`): rentabilidad total esperada a 12 meses (potencial hasta el valor objetivo + dividendo ordinario) **≥ 15 % y asimetría ≥ 1** (el alcista gana al menos lo que pierde el bajista) → Comprar; **≤ −10 %**, o negativa con asimetría < 0,5 → Vender; el resto, Mantener. Puedes apartarte de la regla si hay una razón que la valoración no recoge (un catalizador con fecha, un riesgo binario, la calidad del gobierno), pero entonces `justificacion_recomendacion` (80-150 palabras) es obligatoria; si coincides con la regla, `null`.
+- `conviccion`: «Alta», «Media» o «Baja»: cuánto te juegas en la recomendación según la calidad de los datos (confianza de las secciones de valoración), la dispersión entre métodos (gráfico de síntesis) y la claridad de los catalizadores.
+- `horizonte`: «12 meses» salvo que la tesis necesite otro plazo (dilo).
+- `cambiaria_recomendacion`: 3-5 hechos concretos y observables que te harían cambiar la recomendación, con el umbral («si el margen EBITDA del 3T baja del 22 %, pasaríamos a Vender»).
 - `tesis` (200-300 palabras, 3 párrafos): (1) qué es la empresa y qué la hace valiosa, con cifras; (2) qué descuenta el precio, según el DCF inverso y los múltiplos; (3) por qué el mercado se equivoca o acierta, y qué hay que creer para invertir. Cita [n].
 - `vision_diferencial`: lo que descuenta el mercado, lo que crees tú y por qué podrías tener razón (60-120 palabras cada uno). Si no tienes una visión distinta de la del mercado, dilo: es una conclusión válida.
 - `a_favor` y `en_contra`: 4-6 puntos cada uno, una frase por punto, con la idea en **negrita** y una cifra.
@@ -593,9 +597,10 @@ El motor calcula ROIC, ROE, ROA, la descomposición DuPont y el ROIC incremental
 
 ```json
 "resumen": {
-  "conclusion": "Atractiva|Neutral|Poco atractiva", "horizonte": "texto", "tesis": "texto",
+  "recomendacion": "Comprar|Mantener|Vender", "conviccion": "Alta|Media|Baja", "justificacion_recomendacion": null, "horizonte": "12 meses", "tesis": "texto",
   "vision_diferencial": { "mercado_descuenta": "texto", "nuestra_vision": "texto", "por_que": "texto" },
   "a_favor": ["texto"], "en_contra": ["texto"], "que_vigilar": "texto",
+  "cambiaria_recomendacion": ["texto"],
   "kpis_seguimiento": [{ "kpi": "texto", "nivel_actual": "texto", "umbral_alerta": "texto", "por_que": "texto" }],
   "confianza": "Alta|Media|Baja"
 }
@@ -613,7 +618,7 @@ Una entrada por documento **realmente leído**. El `id` es el número que usas e
 
 Antes de entregar, responde por escrito para ti a estas preguntas y corrige el informe donde haga falta:
 
-1. ¿Puedo explicar en dos frases por qué el precio va a converger a mi valor? Si no, la tesis no está clara.
+1. ¿Puedo explicar en dos frases por qué el precio va a converger a mi valor? Si no, la tesis no está clara. ¿La recomendación (Comprar/Mantener/Vender) se sigue de la regla o está justificada si se aparta?
 2. ¿El DCF inverso muestra que el mercado descuenta algo exigente o algo conservador? ¿Lo dice el resumen?
 3. ¿Cada supuesto del DCF tiene un precedente en la historia de la empresa o del sector? ¿Cuál es el más agresivo?
 4. ¿La proyección se aparta del consenso más de un 10 %? ¿Está explicado por qué?

@@ -32,4 +32,4 @@ Si no puedes lanzar subagentes, haz las fases 2-4 tú mismo, en ese orden y con 
 6. Si estás en Windows con Word, compruébalo: `powershell -File construccion/a-pdf.ps1 "<informe>.docx"` (debe abrir sin reparar).
 
 ## Entrega
-Responde con la ruta del informe y, en diez líneas como máximo: conclusión, valor objetivo y potencial, qué descuenta el precio (DCF inverso), cobertura, controles en «Revisar» que quedan y por qué, y las secciones o datos omitidos (los de núcleo, primero).
+Responde con la ruta del informe y, en diez líneas como máximo: recomendación (Comprar/Mantener/Vender) y convicción, valor objetivo y rentabilidad total esperada, qué descuenta el precio (DCF inverso), cobertura, controles en «Revisar» que quedan y por qué, y las secciones o datos omitidos (los de núcleo, primero).

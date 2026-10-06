@@ -27,7 +27,7 @@ const cuenta = anios.map((a) => {
   const bn = bai - imp - mino;
   return {
     periodo: String(a), ingresos: ing, coste_ventas: coste, gastos_generales: r(ing - coste - ebitda), ebitda, amortizaciones: am, ebit,
-    resultado_financiero: rf, bai, impuestos: imp, minoritarios: mino, beneficio_neto: bn, bpa: r(bn / acciones[a], 2), dpa: r((bn / acciones[a]) * 0.44, 2), acciones_diluidas: acciones[a],
+    resultado_financiero: rf, bai, impuestos: imp, minoritarios: mino, beneficio_neto: bn, gastos_financieros: r(-rf * 0.85), bpa: r(bn / acciones[a], 2), dpa: r((bn / acciones[a]) * 0.44, 2), dpa_extraordinario: 0, acciones_diluidas: acciones[a],
   };
 });
 const C = Object.fromEntries(cuenta.map((c) => [c.periodo, c]));
@@ -63,7 +63,7 @@ const flujos = anB.map((a) => {
   const fo = r(c.ebitda - c.impuestos - Math.abs(c.resultado_financiero) * 0.9 - (a === 2022 ? 95 : a === 2021 ? 40 : 12));
   return {
     periodo: String(a), flujo_operativo: fo, capex: r(c.ingresos * (a >= 2023 ? 0.049 : 0.041)), pagos_arrendamientos: r(c.ingresos * 0.012),
-    adquisiciones: adq[a], desinversiones: a === 2021 ? 18 : 0, dividendos: r(c.dpa * c.acciones_diluidas), recompras: recompra[a], emision_acciones: 0,
+    adquisiciones: adq[a], desinversiones: a === 2021 ? 18 : 0, dividendos: r(c.dpa * c.acciones_diluidas), recompras: recompra[a], emision_acciones: 0, intereses_en_financiacion: 0,
   };
 });
 
@@ -107,7 +107,7 @@ const fuentesLista = [
 ];
 
 const ejemplo = {
-  meta: { fecha_corte: '2026-10-06', divisa: 'EUR', unidades: 'millones', cierre_ejercicio_mes: 12, normas_contables: 'NIIF-UE', limitaciones: 'EJEMPLO FICTICIO para probar la plantilla y el motor: la empresa, las personas y todas las cifras son inventadas.',
+  meta: { fecha_corte: '2026-10-06', divisa: 'EUR', unidades: 'millones', cierre_ejercicio_mes: 12, normas_contables: 'NIIF-UE', formato_cuenta: 'funcion', limitaciones: 'EJEMPLO FICTICIO para probar la plantilla y el motor: la empresa, las personas y todas las cifras son inventadas.',
     huecos: [{ seccion: 'Gobierno', campo: 'Ratio de la remuneración del primer ejecutivo sobre el salario medio', tipo: 'Complemento', intentos: '1) Informe de remuneraciones 2025: no lo publica; 2) informe de sostenibilidad (EINF): da el salario medio pero no el ratio; 3) búsqueda en prensa económica: sin resultados. Calculado a partir de 1) y 2).', decision: 'Calculado y marcado como estimación' }] },
   identificacion: {
     nombre: 'Compañía Ejemplo, S.A.', nombre_corto: 'Compañía Ejemplo', ticker: 'EJM', isin: 'ES0000000000', mercado: 'Bolsa de Madrid (Mercado Continuo)', indice_referencia: 'IBEX 35',
@@ -116,7 +116,7 @@ const ejemplo = {
     volumen_medio_diario: '≈ 6,5 M EUR/día (3 meses)', proximos_resultados: '2026-10-29',
   },
   resumen: {
-    conclusion: 'Neutral', horizonte: '2-3 años',
+    recomendacion: 'Mantener', conviccion: 'Media', justificacion_recomendacion: null, horizonte: '12 meses',
     tesis: 'Ejemplo fabrica equipos eléctricos de media tensión y obtiene ya el **39 % de sus ingresos de las redes de distribución**, un mercado que crece por encima del 7 % anual por la inversión regulada en redes [1][19]. El margen EBITDA ha subido 160 pb desde 2021 por ese cambio de mezcla [1].\n\nAl precio actual, el DCF inverso dice que el mercado descuenta un crecimiento anual cercano al de nuestra proyección: el precio ya recoge buena parte de la tesis de redes [16].\n\nPara ganar dinero hay que creer que el margen de redes seguirá subiendo y que automoción se estabiliza en 2027; ninguna de las dos cosas está demostrada [5][6].',
     vision_diferencial: {
       mercado_descuenta: 'Un crecimiento de ingresos en torno al 6 % anual y márgenes estables, en línea con el consenso [16][17].',
@@ -125,6 +125,7 @@ const ejemplo = {
     },
     a_favor: ['**Redes eléctricas**: cartera de pedidos de 1,9 veces los ingresos del segmento [4].', '**Balance**: deuda neta de 1,3x EBITDA y sin vencimientos relevantes hasta 2028 [1].', '**Asignación de capital**: recompras de 120 M en tres años con el ROIC por encima del WACC [1].', '**Gobierno**: mayoría de independientes y variable ligado al ROIC [9][10].'],
     en_contra: ['**Automoción** sigue cayendo (−6 % en el primer semestre) [4].', '**Cobre**: una subida del 10 % resta unos 40 pb de margen bruto si no se traslada [1].', '**Valoración**: el precio ya descuenta la mejora de márgenes [18].', '**Competencia asiática** en transformadores con precios un 15-20 % inferiores [26].'],
+    cambiaria_recomendacion: ['Si el precio baja de la zona de compra con la cartera de redes intacta, pasaríamos a Comprar.', 'Si la tasa de concursos ganados en transformadores cae por debajo del 45 %, pasaríamos a Vender [6].', 'Si la dirección presenta un plan creíble de reducción de capacidad en automoción, revisaríamos al alza el margen [8].'],
     que_vigilar: 'La tesis depende de que la cartera de redes se convierta en ingresos al ritmo previsto y de que automoción toque fondo en 2027. La señal de alarma sería una caída de la cartera de pedidos dos trimestres seguidos [4].',
     kpis_seguimiento: [
       { kpi: 'Cartera de pedidos de redes', nivel_actual: '2.020 M', umbral_alerta: '< 1.800 M', por_que: 'Anticipa los ingresos de 12-18 meses.' },
@@ -143,7 +144,7 @@ const ejemplo = {
     descripcion: 'Diseña y fabrica aparamenta, transformadores de distribución y cableado para tres mercados: redes eléctricas, industria y automoción. Vende sobre todo a distribuidoras eléctricas con contratos marco de 3-5 años y a fabricantes industriales; tiene 14 plantas en seis países [1].',
     como_gana_dinero: 'El 45 % de los ingresos de redes viene de contratos marco con revisión de precios por cobre. El margen depende del precio del cobre, de la utilización de las plantas (81 %) y de la mezcla: redes deja 17 % de margen EBIT frente al 6 % de automoción [1][4].',
     segmentos: segs,
-    geografias: [{ nombre: 'España', peso_pct: 34 }, { nombre: 'Resto de Europa', peso_pct: 38 }, { nombre: 'Norteamérica', peso_pct: 17 }, { nombre: 'Latinoamérica', peso_pct: 8 }, { nombre: 'Resto', peso_pct: 3 }],
+    geografias: [{ nombre: 'España', peso_pct: 34 }, { nombre: 'Resto de Europa', peso_pct: 38 }, { nombre: 'Norteamérica', peso_pct: 17 }, { nombre: 'Latinoamérica', peso_pct: 8 }, { nombre: 'Resto', peso_pct: 3 }], geografias_criterio: 'destino',
     clientes: 'Los diez primeros clientes son el 31 % de las ventas; el mayor, el 7 %. La tasa de renovación de contratos marco es del 92 % [1]. Subió precios un 9 % en 2022-2023, frente a una inflación de costes del 11 % [2][3].',
     kpis: [
       { kpi: 'Cartera de pedidos', valor_anterior: '1.770 M', valor_actual: '2.020 M', variacion: '+14 %', comentario: 'Récord; 1,9 años de ingresos de redes [4].' },
@@ -199,7 +200,7 @@ const ejemplo = {
   },
   financieros: {
     cuenta,
-    ltm: { periodo: 'LTM jun-26', ingresos: r(ult.ingresos * 1.03), ebitda: r(ult.ebitda * 1.04), ebit: r(ult.ebit * 1.04), beneficio_neto: r(ult.beneficio_neto * 1.05), bpa: r(ult.bpa * 1.05, 2), dpa: ult.dpa, fcf: 205 },
+    ltm: { periodo: 'LTM jun-26', fecha_fin: '2026-06-30', dpa_extraordinario: 0, ingresos: r(ult.ingresos * 1.03), ebitda: r(ult.ebitda * 1.04), ebit: r(ult.ebit * 1.04), beneficio_neto: r(ult.beneficio_neto * 1.05), bpa: r(ult.bpa * 1.05, 2), dpa: ult.dpa, fcf: 205 },
     comentario: 'Los ingresos crecieron un 5,5 % anual en 2016-2025, con un 2020 de caída (−7,5 %) por automoción. El margen EBITDA pasó del 14,1 % al 15,9 % por el mayor peso de redes [1][2][3].',
     ajustes: 'Las cifras son las reportadas. Los no recurrentes (reestructuración en 2020 y 2023) fueron inferiores al 3 % del EBIT [1][3].',
     confianza: 'Alta',
@@ -249,7 +250,7 @@ const ejemplo = {
       { nombre: 'Consejera independiente C (ficticia)', cargo: 'Vocal', tipo: 'Independiente', desde: '2021', comisiones: 'Auditoría' },
       { nombre: 'Consejero independiente D (ficticio)', cargo: 'Vocal', tipo: 'Independiente', desde: '2023', comisiones: 'Nombramientos' },
     ],
-    presidente_ceo_separados: true, consejero_coordinador: true, una_accion_un_voto: true, operaciones_vinculadas_relevantes: false, variable_ligado_rentabilidad: true, voto_remuneracion_pct: 91.4,
+    presidente_ceo_separados: true, consejero_coordinador: true, una_accion_un_voto: true, operaciones_vinculadas_relevantes: false, variable_ligado_rentabilidad: true, auditoria_independiente: true, insiders_sin_operaciones: false, voto_remuneracion_pct: 88.2,
     remuneracion_ceo: { anio: '2025', total: 2.4, fijo: 0.9, variable_corto: 0.8, variable_largo: 0.7, ratio_salario_medio: 52 },
     remuneracion: 'El variable a largo plazo depende al 50 % del ROIC y al 50 % del rendimiento total frente al IBEX; tiene cláusula de recuperación [10].',
     accionistas: [{ nombre: 'Familia fundadora', pct: 28, tipo: 'Familiar', variacion: 'Estable' }, { nombre: 'Fondo de pensiones nórdico', pct: 5.1, tipo: 'Institucional', variacion: 'Sube desde el 3,0 % en 2025 [11]' }, { nombre: 'Gestora estadounidense', pct: 3.2, tipo: 'Institucional', variacion: 'Nueva [11]' }, { nombre: 'Autocartera', pct: 1.2, tipo: 'Autocartera', variacion: 'Por recompras' }],
@@ -270,6 +271,7 @@ const ejemplo = {
     confianza: 'Media',
   },
   bolsa: {
+    tipo_rentabilidad: 'total (con dividendos)',
     rentabilidades: [{ periodo: 'En el año', accion_pct: 14.1, indice_pct: 11.0, sector_pct: 16.2 }, { periodo: '1 año', accion_pct: 22.0, indice_pct: 14.0, sector_pct: 24.5 }, { periodo: '3 años (anual.)', accion_pct: 15.5, indice_pct: 12.8, sector_pct: 17.0 }, { periodo: '5 años (anual.)', accion_pct: 11.1, indice_pct: 8.7, sector_pct: 12.4 }, { periodo: '10 años (anual.)', accion_pct: 7.9, indice_pct: 5.2, sector_pct: 9.1 }],
     anual: [['2019', 18, 16.5], ['2020', -14, -12.7], ['2021', 24, 10.2], ['2022', -9, -2.0], ['2023', 21, 27.0], ['2024', 13, 18.0], ['2025', 17, 14.5]].map(([a, x, y]) => ({ anio: a, accion_pct: x, indice_pct: y })),
     beta: 1.08, volatilidad_pct: 24.5, max_drawdown_pct: -38.0, posicion_corta_pct: 0.6,
@@ -277,7 +279,7 @@ const ejemplo = {
     confianza: 'Media',
   },
   multiplos_historicos: {
-    serie: [['2016', 8.4, 15.2], ['2017', 9.1, 16.0], ['2018', 7.6, 13.1], ['2019', 8.8, 15.4], ['2020', 9.6, 19.8], ['2021', 10.9, 18.7], ['2022', 8.2, 13.9], ['2023', 9.0, 14.6], ['2024', 10.1, 16.2], ['2025', 10.6, 17.1]].map(([a, x, y]) => ({ anio: a, ev_ebitda_ntm: x, per_ntm: y })),
+    serie: [['2016', 8.4, 15.2], ['2017', 9.1, 16.0], ['2018', 7.6, 13.1], ['2019', 8.8, 15.4], ['2020', 9.6, 19.8], ['2021', 10.9, 18.7], ['2022', 8.2, 13.9], ['2023', 9.0, 14.6], ['2024', 10.1, 16.2], ['2025', 10.6, 17.1]].map(([a, x, y]) => ({ anio: a, precio_cierre: { 2016: 21.5, 2017: 23.0, 2018: 19.4, 2019: 22.8, 2020: 19.6, 2021: 24.3, 2022: 22.1, 2023: 26.7, 2024: 30.1, 2025: 28.9 }[a] ?? null, ev_ebitda_ntm: x, per_ntm: y })),
     comentario: 'Cotiza por encima de su media de diez años; la prima se explica por el mayor peso de redes, más estable [18].',
     confianza: 'Media',
   },

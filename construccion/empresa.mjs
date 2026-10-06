@@ -17,13 +17,13 @@ export default {
     titulo: '{{identificacion.nombre}}',
     subtitulo: '{{identificacion.ticker}} · {{identificacion.mercado}} · ISIN {{identificacion.isin}} · {{identificacion.sector}}',
     tarjetas: [
-      ['Conclusión', '{{resumen.conclusion}}'],
+      ['Recomendación', '{{calc.recomendacion.recomendacion}}'],
       ['Precio', '{{identificacion.precio|2}} {{meta.divisa}}'],
       ['Valor objetivo', '{{calc.sintesis.valor_objetivo|2}} {{meta.divisa}}'],
-      ['Potencial', '{{calc.sintesis.potencial_pct|+pct}}'],
+      ['Rentabilidad total 12 m', '{{calc.recomendacion.rentabilidad_total_pct|+pct}}'],
+      ['Convicción', '{{resumen.conviccion}}'],
       ['Capitalización', '{{calc.mercado.capitalizacion|0}} M'],
       ['EV/EBITDA próx. 12 m', '{{calc.clave.ev_ebitda_ntm|x}}'],
-      ['PER próx. 12 m', '{{calc.clave.per_ntm|x}}'],
       ['Deuda neta / EBITDA', '{{calc.clave.dn_ebitda|x}}'],
     ],
   },
@@ -54,8 +54,15 @@ export default {
     ['h1', 'Resumen ejecutivo'],
     ['confianza', 'resumen'],
     ['aviso', '{{_meta.aviso_nucleo}}'],
-    ['p', '**Conclusión:** {{resumen.conclusion}} · **Horizonte:** {{resumen.horizonte}} · **Valor objetivo:** {{calc.sintesis.valor_objetivo|2}} {{meta.divisa}} ({{calc.sintesis.potencial_pct|+pct}} sobre {{identificacion.precio|2}})'],
+    ['p', '**Recomendación: {{calc.recomendacion.recomendacion}}** · Convicción: {{resumen.conviccion}} · Horizonte: {{resumen.horizonte}} · Valor objetivo: **{{calc.sintesis.valor_objetivo|2}} {{meta.divisa}}** ({{calc.sintesis.potencial_pct|+pct}} sobre {{identificacion.precio|2}}; rentabilidad total esperada {{calc.recomendacion.rentabilidad_total_pct|+pct}})'],
     ['texto', 'resumen.tesis'],
+    ['sub', 'La decisión', 'calc.recomendacion.tabla', [
+      ['tabla', 'calc.recomendacion.tabla', [['Elemento de la decisión', 'concepto', '', 4], ['Valor', 'valor', '', 2, 'd']]],
+      ['nota', 'Regla: Comprar si la rentabilidad total esperada a 12 meses es ≥ 15 % y el alcista gana al menos lo que pierde el bajista; Vender si es ≤ −10 %, o negativa con asimetría < 0,5; Mantener en el resto.'],
+      ['tabla', 'calc.recomendacion.niveles', [['Acción', 'accion', '', 1.2], ['A qué precio', 'condicion', '', 6]]],
+      ['si', 'resumen.justificacion_recomendacion', [['p', '**Por qué la recomendación se aparta de la regla.**'], ['texto', 'resumen.justificacion_recomendacion']]],
+    ]],
+    sub('Qué cambiaría la recomendación', 'resumen.cambiaria_recomendacion', [['lista', 'resumen.cambiaria_recomendacion']]),
     ['sub', 'Dónde discrepamos del mercado', 'resumen.vision_diferencial', [
       etiquetado('Lo que descuenta el precio.', 'resumen.vision_diferencial.mercado_descuenta'),
       etiquetado('Lo que creemos nosotros.', 'resumen.vision_diferencial.nuestra_vision'),
@@ -127,7 +134,7 @@ export default {
     ['parte', 'Parte II — Finanzas'],
     ['seccion', '5. Cuenta de resultados', 'financieros', 'Núcleo', [
       ['tabla', 'calc.cuenta', [
-        ['Periodo', 'periodo', '', 0.9], ['Ingresos', 'ingresos', '0', 1, 'd'], ['Crec.', 'crecimiento_pct', '+pct', 0.8, 'd'], ['M. bruto', 'margen_bruto_pct', 'pct', 0.8, 'd'],
+        ['Periodo', 'periodo', '', 0.9], ['Ingresos', 'ingresos', '0', 1, 'd'], ['Crec.', 'crecimiento_pct', '+pct', 0.8, 'd'], ['{{calc.etiquetas.margen_bruto}}', 'margen_bruto_pct', 'pct', 0.8, 'd'],
         ['EBITDA', 'ebitda', '0', 0.9, 'd'], ['M. EBITDA', 'margen_ebitda_pct', 'pct', 0.85, 'd'], ['EBIT', 'ebit', '0', 0.85, 'd'], ['M. EBIT', 'margen_ebit_pct', 'pct', 0.8, 'd'],
         ['B. neto', 'beneficio_neto', '0', 0.85, 'd'], ['BPA', 'bpa', '2', 0.7, 'd'], ['DPA', 'dpa', '2', 0.7, 'd'], ['Tipo imp.', 'tasa_impositiva_pct', 'pct0', 0.75, 'd']]],
       ['p', 'Crecimiento anual compuesto {{calc.tcac.periodo}}: ingresos **{{calc.tcac.ingresos_pct|pct}}**, EBITDA **{{calc.tcac.ebitda_pct|pct}}**, BPA **{{calc.tcac.bpa_pct|pct}}**.'],
@@ -149,6 +156,7 @@ export default {
         ['Caja', 'caja', '0', 0.8, 'd'], ['Deuda fin.', 'deuda_financiera', '0', 0.9, 'd'], ['Arrend.', 'arrendamientos', '0', 0.8, 'd'], ['Deuda neta', 'deuda_neta', '0', 0.9, 'd'],
         ['Patrimonio', 'patrimonio', '0', 0.9, 'd'], ['DN/EBITDA', 'dn_ebitda', 'x', 0.85, 'd']]],
       ['tabla', 'calc.balance', [['Periodo', 'periodo', '', 1], ['Circulante / ventas', 'circulante_ventas_pct', 'pct', 1.1, 'd'], ['Días de cobro', 'dso', '0', 1, 'd'], ['Días de inventario', 'dio', '0', 1, 'd'], ['Días de pago', 'dpo', '0', 1, 'd'], ['Ciclo de caja (días)', 'ciclo_caja', '0', 1.1, 'd'], ['Liquidez corriente', 'liquidez_corriente', 'x', 1, 'd']]],
+      ['nota', 'Días de inventario y de pago calculados {{calc.etiquetas.dias_base}}.'],
       ['grafico', 'dias_circulante'],
       ['texto', 'balance.comentario'],
     ]],
@@ -241,6 +249,7 @@ export default {
     ]],
 
     ['seccion', '16. Comportamiento en bolsa', 'bolsa', 'Complemento', [
+      ['nota', 'Rentabilidad {{bolsa.tipo_rentabilidad}}.'],
       ['tabla', 'bolsa.rentabilidades', [['Periodo', 'periodo', '', 1.6], ['Acción', 'accion_pct', '+pct', 1, 'd'], ['Índice', 'indice_pct', '+pct', 1, 'd'], ['Sector', 'sector_pct', '+pct', 1, 'd']]],
       ['grafico', 'bolsa_anual'],
       ['kv', [
@@ -267,7 +276,7 @@ export default {
       sub('Valor implícito por acción', 'calc.comparables.implicito', [['tabla', 'calc.comparables.implicito', [['Múltiplo aplicado', 'metodo', '', 2.2], ['Métrica de la empresa', 'metrica_empresa', '', 1, 'd'], ['Múltiplo p25 / mediana / p75', 'multiplos', '', 1.6, 'd'], ['Valor p25', 'valor_p25', '2', 0.9, 'd'], ['Valor mediana', 'valor_mediana', '2', 0.9, 'd'], ['Valor p75', 'valor_p75', '2', 0.9, 'd'], ['Potencial', 'potencial_pct', '+pct', 0.9, 'd']]]]),
       ['grafico', 'comps_ev'],
       ['grafico', 'comps_mapa'],
-      ['p', '**Regresión EV/EBITDA NTM sobre crecimiento** ({{calc.comparables.regresion.n|0}} comparables): múltiplo = {{calc.comparables.regresion.ordenada|1}} + {{calc.comparables.regresion.pendiente|2}} × crecimiento; R² = {{calc.comparables.regresion.r2|2}}. Para el crecimiento de la empresa, el múltiplo ajustado es {{calc.comparables.regresion.multiplo_ajustado|x}} y el valor por acción, {{calc.comparables.regresion.valor_accion|2}}.'],
+      ['texto', 'calc.comparables.regresion.texto'],
       ['texto', 'comparables.comentario'],
     ]],
 
