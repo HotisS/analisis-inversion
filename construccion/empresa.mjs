@@ -39,6 +39,7 @@ export default {
       ['Volumen medio diario', '{{identificacion.volumen_medio_diario}}'], ['Próximos resultados', '{{identificacion.proximos_resultados|fecha}}'],
     ]],
     ['indice', [
+      'Síntesis y recomendación (una página)',
       'Resumen ejecutivo',
       'Parte I — Negocio y sector: 1. Historia · 2. Modelo de negocio · 3. Sector y mercado · 4. Posición competitiva',
       'Parte II — Finanzas: 5. Cuenta de resultados · 6. Resultados recientes · 7. Balance y circulante · 8. Flujos de caja · 9. Calidad contable · 10. Rentabilidad · 11. Deuda y solvencia · 12. Asignación de capital',
@@ -47,6 +48,14 @@ export default {
       'Parte V — Tesis, riesgos y seguimiento: 24. Catalizadores · 25. Riesgos y pre-mortem · 26. ESG · 27. Preguntas abiertas',
       'Anexos: controles de calidad, información no disponible y fuentes',
       'Las secciones sin información verificable no se imprimen; quedan listadas en el anexo «Información no disponible».',
+    ]],
+
+    // ───────── Síntesis y recomendación (una página) ─────────
+    ['si', 'resumen.sintesis', [
+      ['salto'],
+      ['h1', 'Síntesis y recomendación'],
+      ['p', '**{{calc.recomendacion.recomendacion}}** · Convicción {{resumen.conviccion}} · Valor objetivo **{{calc.sintesis.valor_objetivo|2}} {{meta.divisa}}{{calc.recomendacion.valor_objetivo_txt}}** frente a {{identificacion.precio|2}}{{calc.recomendacion.precio_txt}} · Rentabilidad total esperada a 12 meses **{{calc.recomendacion.rentabilidad_total_pct|+pct}}** · Alcista / bajista {{calc.recomendacion.alcista_pct|+pct}} / {{calc.recomendacion.bajista_pct|+pct}}'],
+      ['texto', 'resumen.sintesis'],
     ]],
 
     // ───────── Resumen ejecutivo ─────────

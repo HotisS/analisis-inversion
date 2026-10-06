@@ -598,6 +598,16 @@ El motor calcula ROIC, ROE, ROA, la descomposición DuPont y el ROIC incremental
 - `conviccion`: «Alta», «Media» o «Baja»: cuánto te juegas en la recomendación según la calidad de los datos (confianza de las secciones de valoración), la dispersión entre métodos (gráfico de síntesis) y la claridad de los catalizadores.
 - `horizonte`: «12 meses» salvo que la tesis necesite otro plazo (dilo).
 - `cambiaria_recomendacion`: 3-5 hechos concretos y observables que te harían cambiar la recomendación, con el umbral («si el margen EBITDA del 3T baja del 22 %, pasaríamos a Vender»).
+- `sintesis` (**500-650 palabras: una página**). La síntesis del informe entero para tomar la decisión; va en página propia, antes del resumen ejecutivo, y es lo único que leerá parte del comité. Se escribe **la última**, después de la revisión de comité, a partir de todo el informe. Párrafos separados por una línea en blanco, cada uno con un rótulo en negrita, en este orden y **solo los que pesan en la decisión**: si una sección no cambia nada (un ESG sin controversias, una historia sin lecciones), se omite; nunca se rellena.
+  1. **La recomendación y por qué** (3-4 frases): recomendación y convicción, valor objetivo frente al precio, rentabilidad total esperada, asimetría de los escenarios y la razón principal en una frase.
+  2. **El negocio**: qué lo hace valioso o vulnerable (foso, ROIC frente al WACC, márgenes frente a los competidores), con cifras.
+  3. **Sector y ciclo**: solo si mueve la tesis (punto del ciclo, crecimiento del mercado, regulación).
+  4. **Finanzas**: crecimiento, márgenes, conversión en caja, deuda neta ajustada, calidad contable; solo lo que cambia el valor o el riesgo (por ejemplo, un FCF inflado por anticipos, un cambio de perímetro).
+  5. **Equipo y gobierno**: si suma o resta, y por qué (control, rotación, remuneración, operaciones de directivos, cumplimiento de la guía).
+  6. **Valoración**: qué dice cada método y por qué pesan así, qué descuenta el precio (DCF inverso) frente a la historia y al consenso, y dónde discrepamos del mercado.
+  7. **Riesgos y catalizadores**: los dos o tres riesgos de mayor impacto por probabilidad, con su efecto en el valor por acción, y los catalizadores con fecha.
+  8. **Qué cambiaría la decisión**: los precios de compra y de venta, y los hechos observables con su umbral.
+  Cada afirmación con su cifra; las del motor tal cual (`calc`), los hechos con cita [n]. Explica las relaciones (por qué un dato lleva a la conclusión), no enumeres. No copies la tesis ni las listas a favor y en contra: integra. Tono de comité, sin adjetivos de folleto.
 - `tesis` (200-300 palabras, 3 párrafos): (1) qué es la empresa y qué la hace valiosa, con cifras; (2) qué descuenta el precio, según el DCF inverso y los múltiplos; (3) por qué el mercado se equivoca o acierta, y qué hay que creer para invertir. Cita [n].
 - `vision_diferencial`: lo que descuenta el mercado, lo que crees tú y por qué podrías tener razón (60-120 palabras cada uno). Si no tienes una visión distinta de la del mercado, dilo: es una conclusión válida.
 - `a_favor` y `en_contra`: 4-6 puntos cada uno, una frase por punto, con la idea en **negrita** y una cifra.
@@ -607,7 +617,7 @@ El motor calcula ROIC, ROE, ROA, la descomposición DuPont y el ROIC incremental
 
 ```json
 "resumen": {
-  "recomendacion": "Comprar|Mantener|Vender", "conviccion": "Alta|Media|Baja", "justificacion_recomendacion": null, "horizonte": "12 meses", "tesis": "texto",
+  "recomendacion": "Comprar|Mantener|Vender", "conviccion": "Alta|Media|Baja", "justificacion_recomendacion": null, "horizonte": "12 meses", "sintesis": "texto", "tesis": "texto",
   "vision_diferencial": { "mercado_descuenta": "texto", "nuestra_vision": "texto", "por_que": "texto" },
   "a_favor": ["texto"], "en_contra": ["texto"], "que_vigilar": "texto",
   "cambiaria_recomendacion": ["texto"],
