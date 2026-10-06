@@ -36,3 +36,8 @@ Lo aprendido en Viscofan, Indra y On (octubre de 2026). Ahorra búsquedas que ya
 - **EBITDA ajustado del consenso** (sin remuneración en acciones): `consenso.base_ebitda: "ajustado"` y el ajuste en % de ventas.
 - **Comparables con ejercicios no naturales** (Nike, Deckers, Lululemon…): pondera los dos ejercicios estimados por los meses que caen en los próximos 12.
 - **Fecha de corte en plena sesión**: usa el cierre del día anterior y dilo.
+- **Ejercicio no natural** (Inditex): mira si «FY2025» es el año de inicio o el de cierre y pon `meta.etiqueta_ejercicio`; no fuerces `cierre_ejercicio_mes`.
+- **NIIF 16 en distribución**: sin las altas de derechos de uso en el capex, el DCF de Inditex daba 54,48 EUR en vez de 42,80 (las tiendas sin alquiler). Es la regla que más valor mueve en negocios con muchos locales.
+- **Comparables frágiles**: con Inditex, la mediana pasaba de 7,7x a 12,2x según se incluyeran o no tres empresas. Explica cada exclusión; el motor avisa si quitar una sola cambia mucho la mediana.
+- **Control familiar**: con un accionista de control, el voto de la junta lo decide él; calcula el voto en contra sobre el capital libre presente (`voto_remuneracion_contra_libre_pct`) y marca `presidente_vinculado_control` si preside alguien de su entorno.
+- **Fuentes genéricas**: no cites «la web de inversores» para cosas distintas; cita el documento concreto (el integrador separa las fuentes con la misma URL y títulos distintos, pero mejor que no ocurra).
