@@ -1,0 +1,168 @@
+// Construye informes/indra-2026-10-06/datos.json a partir de hechos.mjs y textos.mjs
+import { writeFileSync, existsSync } from 'node:fs';
+import * as H from './hechos.mjs';
+const T = existsSync(new URL('./textos.mjs', import.meta.url)) ? (await import('./textos.mjs')).textos : new Proxy({}, { get: () => '' });
+const SALIDA = new URL('../datos.json', import.meta.url);
+
+const CC = 'https://www.indragroup.com/cms-content/';
+const fuentes = [
+  [1, 'Cuentas anuales consolidadas e informe de gestión 2025 (memoria con notas 1-44, APM e informe de sostenibilidad)', 'Indra Group', 'Primaria', '2026-02-25', CC + '2026/02/Memoria-Consolidado-FY-2025-2026-02-25-20-56.pdf'],
+  [2, 'Cuentas anuales consolidadas e informe de gestión 2024', 'Indra Group', 'Primaria', '2025-02', CC + '2025/06/memoria_consolidada_2024.pdf'],
+  [3, 'Cuentas anuales consolidadas e informe de gestión 2023', 'Indra Group', 'Primaria', '2024-02', CC + '2025/07/4_memoria_consolidada_2023.pdf'],
+  [4, 'Cuentas anuales consolidadas e informe de gestión 2022 (con comparativo 2021)', 'Indra Group', 'Primaria', '2023-02', CC + '2025/07/4_memoria_consolidada_2022.pdf'],
+  [5, 'Estados financieros intermedios resumidos consolidados e informe de gestión intermedio a 30-jun-2026', 'Indra Group / CNMV', 'Primaria', '2026-07-23', CC + '2026/07/MEMORIA-SEMESTRAL.pdf'],
+  [6, 'Informe de resultados 1S26 (nota a inversores con balance, flujos, circulante y APM)', 'Indra Group', 'Primaria', '2026-07-23', CC + '2026/07/Rdos-1S26.pdf'],
+  [7, 'Presentación de resultados 1S26 (conference call)', 'Indra Group', 'Primaria', '2026-07-23', CC + '2026/07/Conference-Call-1S26.pdf'],
+  [8, 'Comunicado de prensa: resultados del segundo trimestre de 2026', 'Indra Group', 'Primaria', '2026-07-23', CC + '2026/07/260723-NP-Indra-Group-Resultados-1S2026.pdf'],
+  [9, 'Informe de resultados 1T26', 'Indra Group', 'Primaria', '2026-04', CC + '2026/04/Rdos-1T26.pdf'],
+  [10, 'Informe de resultados 2025', 'Indra Group', 'Primaria', '2026-02-26', CC + '2026/02/Rdos-FY25.pdf'],
+  [11, 'Informe de resultados 9M25', 'Indra Group', 'Primaria', '2025-10', CC + '2025/10/Rdos-9M25.pdf'],
+  [12, 'Informe de resultados 1S25', 'Indra Group', 'Primaria', '2025-07', CC + '2025/07/rdos_1s25.pdf'],
+  [13, 'Informe de resultados 1T25', 'Indra Group', 'Primaria', '2025-04', CC + '2025/07/rdos_1t25_0.pdf'],
+  [14, 'Tablas de cuenta de resultados, balance y flujo de caja por negocios 1S26 (xls)', 'Indra Group', 'Primaria', '2026-07-23', CC + '2026/07/PG_BS_CF_1S26_spa-1.xls'],
+  [15, 'Informe anual de gobierno corporativo 2025 (IAGC)', 'Indra Group / CNMV', 'Primaria', '2026-02-25', CC + '2026/03/iagc-202561594-2.pdf'],
+  [16, 'Informe anual sobre remuneraciones de los consejeros 2025 (IARC)', 'Indra Group / CNMV', 'Primaria', '2026-02-25', CC + '2026/03/IAR-202561595.1.pdf'],
+  [17, 'Comunicado: la Junta General ratifica a Ángel Simón y a Josep Maria Recasens', 'Indra Group', 'Primaria', '2026-06-30', CC + '2026/06/260630-NP-Indra-Group-Junta-General-de-Accionistas.pdf'],
+  [18, 'Órganos de gobierno y comité de dirección (web corporativa)', 'Indra Group', 'Primaria', '2026-10-06', 'https://www.indragroup.com/es/accionistas/organos-gobierno'],
+  [19, 'Redeia refuerza su posición financiera tras la venta de Hispasat (valor empresa de 966 M€)', 'Redeia', 'Primaria', '2025-01-31', 'https://redeia.com/sites/default/files/paragraph/2025/01/file/20250131_NP_Hispasat.pdf'],
+  [20, 'Leonardo to acquire Iveco Defence (EV 1.700 M€; ingresos 1.133 M€ y EBIT 108 M€ en 2024)', 'Leonardo', 'Primaria', '2025-07-30', 'https://www.leonardo.com/documents/15646808/0/LDO_Iveco_CS_ENG_30_07_2025.pdf'],
+  [21, 'HENSOLDT acquires ESG Elektroniksystem- und Logistik-GmbH (EV 675 M€ + earn-out 55 M€; ~14x EBITDA sin sinergias)', 'Defence Industry Europe / Hensoldt', 'Prensa', '2023-12-05', 'https://defence-industry.eu/hensoldt-acquires-esg-elektroniksystem-und-logistik-gmbh/'],
+  [22, 'Thales acquires Imperva for $3.6 billion (6,1x EV/ventas 2024)', 'Help Net Security / Thales', 'Prensa', '2023-07-25', 'https://www.helpnetsecurity.com/2023/07/25/thales-imperva-acquisiton-3-6-billion/'],
+  [23, 'Indra Sistemas: estimaciones de consenso 2026-2028, recomendaciones y precios objetivo', 'MarketScreener', 'Datos de mercado', '2026-10-06', 'https://www.marketscreener.com/quote/stock/INDRA-SISTEMAS-413470/finances/'],
+  [24, 'Indra Sistemas: tabla de valoración histórica 2021-2028 (capitalización, EV, múltiplos, cotización de cierre)', 'MarketScreener', 'Datos de mercado', '2026-10-06', 'https://www.marketscreener.com/quote/stock/INDRA-SISTEMAS-413470/valuation/'],
+  [25, 'Indra A: consenso de analistas (12 comprar, 4 mantener) y rango de 52 semanas', 'Investing.com', 'Datos de mercado', '2026-10-06', 'https://www.investing.com/equities/indra-sistemas-consensus-estimates'],
+  [26, 'Indra Sistemas (BME:IDR) statistics: precio, acciones, beta, volumen, variación a 52 semanas', 'Stock Analysis', 'Datos de mercado', '2026-10-06', 'https://stockanalysis.com/quote/bme/IDR/statistics/'],
+  [27, 'Comparables: estadísticas LTM de Thales, Leonardo, Rheinmetall, BAE Systems, Hensoldt, Saab, Capgemini y Sopra Steria', 'Stock Analysis', 'Datos de mercado', '2026-10-06', 'https://stockanalysis.com/quote/epa/HO/statistics/'],
+  [28, 'Comparables: estimaciones 2025-2027 de ventas, EBITDA, EBIT y BPA de los ocho comparables', 'MarketScreener', 'Datos de mercado', '2026-10-06', 'https://www.marketscreener.com/quote/stock/THALES-4715/finances/'],
+  [29, 'Tipos de cambio de referencia del euro (6-oct-2026)', 'Banco Central Europeo', 'Datos de mercado', '2026-10-06', 'https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml'],
+  [30, 'Spain 10-Year Government Bond Yield (4,08 % el 6-oct-2026)', 'Trading Economics', 'Datos de mercado', '2026-10-06', 'https://tradingeconomics.com/spain/government-bond-yield'],
+  [31, 'Factsheet del índice IBEX 35 (rentabilidades anuales 2017-2024)', 'BME', 'Datos de mercado', '2025-12', 'https://www.bolsasymercados.es/dam/descargas/indices/factsheet-ibex-35-es.pdf'],
+  [32, 'El Ibex 35 cierra su mejor ejercicio en 32 años (17.307,8 puntos; +49,27 %; Indra +184 %)', 'The Objective', 'Prensa', '2025-12-31', 'https://theobjective.com/economia/2025-12-31/ibex-35-mejor-ejercicio-32-anos/'],
+  [33, 'IBEX 35: cotización y variación a un año', 'Investing.com', 'Datos de mercado', '2026-10-06', 'https://www.investing.com/indices/spain-35'],
+  [34, 'EU defence spending hits €343 bln in 2024 (EDA Defence Data 2024-2025)', 'Agencia Europea de Defensa', 'Sectorial', '2025-09-02', 'https://www.eda.europa.eu/news/2025/09/02/eu-defence-spending-hits-343-bln-in-2024-eda-data-shows'],
+  [35, 'NATO estimates that Spain has reached 2% of its GDP in defense (33.123 M€ en 2025)', 'Ara / OTAN', 'Sectorial', '2025-06', 'https://en.ara.cat/politics/nato-estimates-that-spain-has-reached-2-of-its-gdp-in-defense_1_5480989.html'],
+  [36, 'Redeia: la venta de Hispasat es positiva (Fitch estima un EBITDA de Hispasat superior a 140 M€ en 2024)', 'Merca2', 'Prensa', '2025-02-03', 'https://www.merca2.es/2025/02/03/venta-hispasat-redeia-fitch-2131910/'],
+  [37, 'AQR y el fondo de pensiones de Canadá aumentan sus posiciones cortas en Indra (registro de la CNMV)', 'Estrategias de Inversión', 'Prensa', '2026-04-11', 'https://www.estrategiasdeinversion.com/actualidad/noticias/bolsa-espana/aqr-y-el-fondo-de-pensiones-de-canada-aumentan-n-906747'],
+  [38, 'Escribano sells 14.3% stake in Indra for €1.322 billion', 'The Corner', 'Prensa', '2026-05-06', 'https://thecorner.eu/companies/escribano-sells-14-3-stake-in-indra-for-e1-322-billion-ending-relationship-between-two-companies/125517/'],
+  [39, 'Indra y Escribano retoman las negociaciones para tratar su cuestionada fusión', 'Onda Vasca', 'Prensa', '2026-04-08', 'https://www.ondavasca.com/indra-y-escribano-retoman-las-negociaciones-para-tratar-su-cuestionada-fusion/amp/'],
+  [40, 'Indra oficializa el relevo de su CEO: Josep Maria Recasens tomará posesión el 17 de junio', 'Merca2', 'Prensa', '2026-06-14', 'https://www.merca2.es/2026/06/14/indra-relevo-ceo-recasens-2397264/'],
+  [41, 'Indra Group, en el Sustainability Yearbook 2025 de S&P Global (MSCI AA, DJSI, CDP)', 'Indra Group', 'Primaria', '2025-02-11', 'https://indracompany.com/sites/default/files/250211_pr_indra_sustainability_yearbook_2025.pdf'],
+  [42, 'Indra Sistemas (historia corporativa)', 'Wikipedia', 'Prensa', '2026-10-06', 'https://es.wikipedia.org/wiki/Indra_Sistemas'],
+  [43, 'Indra Sistemas: consenso (16 analistas; precio objetivo medio 67,12 €, máximo 85 € y mínimo 50 €)', 'MarketScreener', 'Datos de mercado', '2026-10-06', 'https://www.marketscreener.com/quote/stock/INDRA-SISTEMAS-413470/consensus/'],
+].map(([id, titulo, editor, tipo, fecha, url]) => ({ id, titulo, editor, tipo, fecha, url }));
+
+const datos = {
+  meta: {
+    fecha_corte: '2026-10-06', divisa: 'EUR', unidades: 'millones', cierre_ejercicio_mes: 12, normas_contables: 'NIIF-UE', formato_cuenta: 'naturaleza',
+    limitaciones: T.limitaciones, huecos: T.huecos ?? [],
+  },
+  identificacion: H.identificacion,
+  resumen: T.resumen,
+  historia: T.historia,
+  negocio: { descripcion: T.negocio_descripcion, como_gana_dinero: T.negocio_como_gana, segmentos: H.segmentos, geografias: H.geografias, geografias_criterio: 'origen', clientes: T.negocio_clientes, kpis: T.kpis, confianza: 'Alta' },
+  sector: T.sector,
+  competencia: T.competencia,
+  financieros: { cuenta: H.cuenta, ltm: H.ltm, comentario: T.fin_comentario, ajustes: T.fin_ajustes, confianza: 'Alta' },
+  trimestres: { items: H.trimestres, ultima_presentacion: T.ultima_presentacion, confianza: 'Media' },
+  balance: {
+    historico: H.balance,
+    vencimientos: [{ anio: '2026', importe: 294.5 }, { anio: '2027', importe: 83.8 }, { anio: '2028', importe: 78.0 }, { anio: '2029', importe: 682.1 }, { anio: '2030+', importe: 353.4 }],
+    liquidez: 'Caja 2.473,5 M (jun-26, inflada por 1.909 M de anticipos PEM) + líneas de crédito no dispuestas 1.175,4 M (dic-25) + línea BEI de 385 M para I+D firmada en jul-25',
+    rating: 'Sin rating público', coste_deuda_pct: 3.2, vida_media_anios: 3.3,
+    otros_pasivos: T.otros_pasivos, comentario: T.balance_comentario, confianza: 'Media',
+  },
+  flujos: { historico: H.flujos, comentario: T.flujos_comentario, confianza: 'Alta' },
+  calidad: T.calidad,
+  rentabilidad: { comentario: T.rentabilidad_comentario, confianza: 'Media' },
+  capital: T.capital,
+  directivos: T.directivos,
+  gobierno: T.gobierno,
+  consenso: {
+    guidance: T.guidance,
+    estimaciones: [
+      { periodo: '2026e', ingresos: 7045, ebitda: 970.8, ebit: 708.8, bpa: 2.731, dpa: 0.413, fuente: 'MarketScreener, 16 analistas, 6-oct-2026 [23]' },
+      { periodo: '2027e', ingresos: 7800, ebitda: 1124, ebit: 829, bpa: 3.228, dpa: 0.479, fuente: 'MarketScreener, 16 analistas, 6-oct-2026 [23]' },
+      { periodo: '2028e', ingresos: 8768, ebitda: 1329, ebit: 987.1, bpa: 3.887, dpa: 0.582, fuente: 'MarketScreener, 16 analistas, 6-oct-2026 [23]' },
+    ],
+    recomendaciones: { n_analistas: 16, comprar: 12, mantener: 4, vender: 0, po_medio: 67.12, po_min: 50.0, po_max: 85.0 },
+    revisiones: T.revisiones, confianza: 'Media',
+  },
+  bolsa: {
+    tipo_rentabilidad: 'de precio (sin dividendos)',
+    rentabilidades: [
+      { periodo: 'En el año', accion_pct: 23.0, indice_pct: 12.3, sector_pct: null },
+      { periodo: '1 año', accion_pct: 51.6, indice_pct: 25.0, sector_pct: null },
+    ],
+    anual: [
+      { anio: '2022', accion_pct: 11.9, indice_pct: -5.6 }, { anio: '2023', accion_pct: 31.5, indice_pct: 22.8 },
+      { anio: '2024', accion_pct: 22.0, indice_pct: 14.8 }, { anio: '2025', accion_pct: 184.2, indice_pct: 49.3 },
+    ],
+    beta: 1.0, volatilidad_pct: null, max_drawdown_pct: null, posicion_corta_pct: 4.1,
+    comentario: T.bolsa_comentario, confianza: 'Media',
+  },
+  multiplos_historicos: {
+    serie: [
+      { anio: '2021', precio_cierre: 9.52, ev_ebitda_ntm: null, per_ntm: null }, { anio: '2022', precio_cierre: 10.65, ev_ebitda_ntm: null, per_ntm: null },
+      { anio: '2023', precio_cierre: 14.0, ev_ebitda_ntm: null, per_ntm: null }, { anio: '2024', precio_cierre: 17.08, ev_ebitda_ntm: null, per_ntm: null },
+      { anio: '2025', precio_cierre: 48.54, ev_ebitda_ntm: null, per_ntm: null },
+    ],
+    comentario: T.mult_comentario, confianza: 'Media',
+  },
+  comparables: { criterio: T.comp_criterio, empresas: H.comparables, comentario: T.comp_comentario, confianza: 'Media' },
+  transacciones: {
+    operaciones: [
+      { fecha: '2025-12', objetivo: 'Hispasat (89,68 %; operador de satélites, España)', comprador: 'Indra', ev: 966, ev_ventas: 3.49, ev_ebitda: 6.9, prima_pct: null, comentario: T.tx1 },
+      { fecha: '2025-07', objetivo: 'Iveco Defence Vehicles y Astra (vehículos militares, Italia)', comprador: 'Leonardo', ev: 1700, ev_ventas: 1.5, ev_ebitda: null, prima_pct: null, comentario: T.tx2 },
+      { fecha: '2023-12', objetivo: 'ESG Elektroniksystem- und Logistik (integrador de defensa, Alemania)', comprador: 'Hensoldt', ev: 730, ev_ventas: 2.21, ev_ebitda: 14.0, prima_pct: null, comentario: T.tx3 },
+      { fecha: '2023-07', objetivo: 'Imperva (ciberseguridad, EE. UU.)', comprador: 'Thales', ev: 3270, ev_ventas: 6.1, ev_ebitda: null, prima_pct: null, comentario: T.tx4 },
+      { fecha: '2025-06', objetivo: 'TESS Defence (26,3 % adicional; vehículo 8x8, España)', comprador: 'Indra', ev: null, ev_ventas: null, ev_ebitda: null, prima_pct: null, comentario: T.tx5 },
+    ],
+    comentario: T.tx_comentario, confianza: 'Baja',
+  },
+  dcf: {
+    anios: [
+      { periodo: '2026e', crecimiento_pct: 29.0, margen_ebitda_pct: 13.6, amortizacion_pct_ventas: 3.8, capex_pct_ventas: 5.0, nwc_pct_ventas: 12.0, tasa_impositiva_pct: 25 },
+      { periodo: '2027e', crecimiento_pct: 10.0, margen_ebitda_pct: 14.2, amortizacion_pct_ventas: 3.7, capex_pct_ventas: 4.6, nwc_pct_ventas: 12.0, tasa_impositiva_pct: 25 },
+      { periodo: '2028e', crecimiento_pct: 10.0, margen_ebitda_pct: 14.7, amortizacion_pct_ventas: 3.6, capex_pct_ventas: 4.3, nwc_pct_ventas: 12.0, tasa_impositiva_pct: 25 },
+      { periodo: '2029e', crecimiento_pct: 8.0, margen_ebitda_pct: 15.0, amortizacion_pct_ventas: 3.6, capex_pct_ventas: 4.1, nwc_pct_ventas: 12.0, tasa_impositiva_pct: 25 },
+      { periodo: '2030e', crecimiento_pct: 6.0, margen_ebitda_pct: 15.0, amortizacion_pct_ventas: 3.5, capex_pct_ventas: 4.0, nwc_pct_ventas: 12.0, tasa_impositiva_pct: 25 },
+      { periodo: '2031e', crecimiento_pct: 4.5, margen_ebitda_pct: 15.0, amortizacion_pct_ventas: 3.5, capex_pct_ventas: 3.9, nwc_pct_ventas: 12.0, tasa_impositiva_pct: 25 },
+      { periodo: '2032e', crecimiento_pct: 3.0, margen_ebitda_pct: 15.0, amortizacion_pct_ventas: 3.5, capex_pct_ventas: 3.8, nwc_pct_ventas: 12.0, tasa_impositiva_pct: 25 },
+    ],
+    wacc: { tasa_libre_pct: 4.08, beta: 1.0, prima_mercado_pct: 5.5, prima_adicional_pct: 0.5, coste_deuda_pct: 3.5, tasa_impositiva_pct: 25, peso_deuda_pct: 13 },
+    terminal: { metodo: 'gordon', crecimiento_pct: 2.5, multiplo_salida: 11.0 },
+    mitad_de_anio: true,
+    justificacion: T.dcf_justificacion, lectura: T.dcf_lectura, confianza: 'Media',
+  },
+  escenarios: {
+    casos: [
+      { escenario: 'Bajista', probabilidad_pct: 25, ajuste_crecimiento_pp: -3.0, ajuste_margen_pp: -2.0, ajuste_wacc_pp: 0.5, crecimiento_terminal_pct: 2.0, multiplo_salida: null, narrativa: T.esc_bajista },
+      { escenario: 'Base', probabilidad_pct: 50, ajuste_crecimiento_pp: 0, ajuste_margen_pp: 0, ajuste_wacc_pp: 0, crecimiento_terminal_pct: null, multiplo_salida: null, narrativa: T.esc_base },
+      { escenario: 'Alcista', probabilidad_pct: 25, ajuste_crecimiento_pp: 2.5, ajuste_margen_pp: 1.5, ajuste_wacc_pp: 0, crecimiento_terminal_pct: null, multiplo_salida: null, narrativa: T.esc_alcista },
+    ],
+    comentario: T.esc_comentario, confianza: 'Media',
+  },
+  suma_partes: {
+    aplica: true, descuento_holding_pct: 0,
+    partes: [
+      { segmento: 'Defensa', metrica: 'EBITDA 2026e (estimación propia)', valor_metrica: 432, multiplo: 14.0, justificacion: T.sp_defensa },
+      { segmento: 'Espacio (Hispasat, Hisdesat)', metrica: 'EBITDA 2026e (estimación propia)', valor_metrica: 160, multiplo: 7.0, justificacion: T.sp_espacio },
+      { segmento: 'Tráfico Aéreo', metrica: 'EBITDA 2026e (estimación propia)', valor_metrica: 98, multiplo: 11.0, justificacion: T.sp_atm },
+      { segmento: 'Movilidad', metrica: 'EBITDA 2026e (estimación propia)', valor_metrica: 18, multiplo: 7.0, justificacion: T.sp_mov },
+      { segmento: 'Minsait', metrica: 'EBITDA 2026e (estimación propia)', valor_metrica: 264, multiplo: 6.5, justificacion: T.sp_minsait },
+    ],
+    comentario: T.sp_comentario, confianza: 'Baja',
+  },
+  valoracion: {
+    puente: { fecha: '2026-06-30', deuda_financiera: 1459.2, arrendamientos: 168.1, caja: 2473.5, minoritarios: 296.4, pensiones: 0, asociadas: 400.9, otros_ajustes: 1541.0 },
+    pesos: { dcf: 35, comparables: 25, transacciones: 0, suma_partes: 15, escenarios: 25 },
+    comentario: T.val_comentario, confianza: 'Media',
+  },
+  catalizadores: { items: T.catalizadores, confianza: 'Media' },
+  riesgos: { items: T.riesgos, premortem: T.premortem, confianza: 'Media' },
+  esg: T.esg,
+  preguntas: { items: T.preguntas, confianza: 'Media' },
+  fuentes,
+};
+writeFileSync(SALIDA, JSON.stringify(datos, null, 2));
+console.log('datos.json escrito', fuentes.length, 'fuentes');

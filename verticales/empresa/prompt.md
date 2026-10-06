@@ -34,6 +34,8 @@ Las fases son obligatorias y van en orden. Los tiempos son orientativos: indican
 
 ### Fase 1 — Identificación y plan (≈ 3 min)
 - Fija sin ambigüedad: nombre legal, ticker, ISIN, mercado principal, divisa de las cuentas, mes de cierre del ejercicio y normas contables (NIIF-UE, US GAAP…).
+- **Divisa de cotización.** Si la acción cotiza en una divisa distinta de la de las cuentas, todo va en la de las cuentas (`meta.divisa`, regla de unidades), y además `meta.divisa_cotizacion` y `meta.tipo_cambio` (unidades de `meta.divisa` por 1 unidad de la de cotización a la fecha de corte, citado): el motor da el precio, el valor objetivo y los niveles de compra y venta también en la divisa en que se compra. Si coinciden, la misma divisa y `1`.
+- **Emisores extranjeros en EE. UU.** (20-F y 6-K): no hay *proxy* ni Form 4. Las operaciones de directivos salen de los Form 144 (son **avisos** de venta, no ventas confirmadas: dilo) y de los informes anuales; el gobierno, del 20-F (Item 6 y 16G) y de las actas de la junta del país de origen.
 - Si hay varias líneas cotizadas (clases, ADR, doble cotización), usa la del mercado principal y dilo en `meta.limitaciones`.
 - Escribe para ti la lista de documentos de la fase 2, con su URL.
 
@@ -158,7 +160,7 @@ Las claves de primer nivel, en este orden: `meta`, `identificacion`, `resumen`, 
 
 ```json
 "meta": {
-  "fecha_corte": "AAAA-MM-DD", "divisa": "EUR", "unidades": "millones", "cierre_ejercicio_mes": 12,
+  "fecha_corte": "AAAA-MM-DD", "divisa": "EUR", "divisa_cotizacion": "EUR", "tipo_cambio": 1.0, "unidades": "millones", "cierre_ejercicio_mes": 12,
   "normas_contables": "NIIF-UE", "formato_cuenta": "funcion|naturaleza",
   "limitaciones": "Texto: línea cotizada elegida, conversiones de divisa, datos de pago no accesibles, años que vienen de un proveedor y no de las cuentas…",
   "huecos": [{ "seccion": "texto", "campo": "texto", "tipo": "Núcleo|Complemento", "intentos": "1) …; 2) …; 3) …", "decision": "Omitido|Calculado y marcado como estimación" }]
@@ -380,6 +382,7 @@ El motor calcula ROIC, ROE, ROA, la descomposición DuPont y el ROIC incremental
 - `consejo`: todos los consejeros. `tipo`: «Ejecutivo», «Dominical», «Independiente» u «Otro externo». `desde`: año de primer nombramiento. `comisiones`: las que integra.
 - Booleanos: `presidente_ceo_separados`, `consejero_coordinador` (hay un independiente coordinador), `una_accion_un_voto` (sin clases con voto distinto ni límites de voto ni blindajes estatutarios), `operaciones_vinculadas_relevantes`, `variable_ligado_rentabilidad` (el variable a largo plazo depende de ROIC, TSR o FCF), `auditoria_independiente` (la comisión de auditoría tiene mayoría de independientes y la preside uno), `insiders_sin_operaciones` (`true` solo si has comprobado en el registro oficial que no hubo operaciones en 12 meses), `accionista_control` (`true` si un accionista o un pacto controla la junta o decide de hecho el nombramiento del presidente o del primer ejecutivo, **aunque tenga menos del 30 %**; un accionista público que propone al presidente cuenta). En `operaciones_vinculadas_relevantes` cuentan también las **propuestas** de compra o venta a consejeros, accionistas significativos o sus empresas.
 - `cambios_cupula_24m`: número de cambios de presidente o de primer ejecutivo en los 24 meses anteriores a la fecha de corte (cada persona que entra cuenta uno; una sucesión anunciada con más de seis meses de antelación, no).
+- Con **varias clases de acciones**, el voto de los fundadores tapa el de los minoritarios: si el acta lo permite, calcula el voto en contra **sobre las acciones de libre circulación** (descontando las de control) y dilo en `remuneracion`.
 - `voto_remuneracion_pct` y `voto_remuneracion_contra_pct`: el porcentaje a favor más bajo y el porcentaje **en contra** más alto de las votaciones sobre remuneración (informe anual y política) de las **tres últimas juntas**, sobre el capital presente o representado. El motor puntúa con el voto en contra (≤ 20 %), porque una abstención sistemática no es un rechazo; si solo encuentras el «a favor», deja el otro en `null`. Un voto en contra por encima del 20 % (o a favor por debajo del 80 %) hay que explicarlo en `remuneracion`.
 - `remuneracion_ceo`: el último ejercicio, en millones: total devengado, fijo, variable anual, variable a largo plazo y `ratio_salario_medio` (remuneración del primer ejecutivo entre el coste medio por empleado).
 - `remuneracion` (80-140 palabras): métricas y pesos del variable, objetivos fijados, si premian crecimiento a cualquier precio, cláusulas de recuperación (*clawback*) e indemnizaciones.
@@ -406,6 +409,7 @@ El motor calcula ROIC, ROE, ROA, la descomposición DuPont y el ROIC incremental
 ### 15. Previsiones y consenso · `consenso`
 
 - `guidance` (80-140 palabras): objetivos del año y del plan a medio plazo, con la fecha de la última confirmación o cambio.
+- `base_ebitda`: «NIIF» si el EBITDA del consenso se calcula como el de las cuentas, o «ajustado» si excluye partidas que las cuentas restan (remuneración en acciones, costes de reestructuración recurrentes…). Si es ajustado, `ajuste_ebitda_pct_ventas` = esas partidas en % de ventas (de la conciliación de la propia empresa): el motor las resta para que los múltiplos de los próximos 12 meses midan lo mismo que los de los últimos 12. Si es NIIF, `null`.
 - `estimaciones`: consenso de los **tres** próximos ejercicios, con la fuente y el número de analistas. Coteja dos fuentes si existen gratis; si solo hay una con estimaciones completas, úsala, dilo en `revisiones` y contrasta al menos el precio objetivo y las recomendaciones con otra.
 - `recomendaciones`: número de analistas y de cada recomendación; precios objetivo medio, mínimo y máximo.
 - `revisiones` (60-120 palabras): cambios de las estimaciones de BPA y EBITDA en 3 y 12 meses, y por qué.
@@ -416,6 +420,7 @@ El motor calcula ROIC, ROE, ROA, la descomposición DuPont y el ROIC incremental
   "estimaciones": [{ "periodo": "2026e", "ingresos": 0, "ebitda": 0, "ebit": 0, "bpa": 0.00, "dpa": 0.00, "fuente": "texto" }],
   "recomendaciones": { "n_analistas": 0, "comprar": 0, "mantener": 0, "vender": 0, "po_medio": 0.00, "po_min": 0.00, "po_max": 0.00 },
   "revisiones": "texto",
+  "base_ebitda": "NIIF|ajustado", "ajuste_ebitda_pct_ventas": null,
   "confianza": "Alta|Media|Baja"
 }
 ```
@@ -481,13 +486,13 @@ El motor calcula ROIC, ROE, ROA, la descomposición DuPont y el ROIC incremental
 - `anios`: **5 a 10 años** de proyección, empezando por el primer ejercicio no cerrado («2026e»). En cada año, los supuestos:
   - `crecimiento_pct` de ingresos;
   - `margen_ebitda_pct`;
-  - `amortizacion_pct_ventas` y `capex_pct_ventas`: en el último año, el capex debe ser ≥ las amortizaciones (en estado estacionario no se desinvierte);
+  - `amortizacion_pct_ventas` y `capex_pct_ventas`: en el último año, el capex debe ser ≥ las amortizaciones (en estado estacionario no se desinvierte). Con los arrendamientos en la deuda (NIIF 16), el EBITDA no lleva los alquileres: el **capex debe incluir las altas de derechos de uso** (o sumarle los pagos de arrendamiento), y la amortización, la de esos derechos; si no, el DCF cuenta las tiendas u oficinas sin pagar su alquiler;
   - `nwc_pct_ventas`: capital circulante comercial (existencias + clientes − proveedores) sobre ventas; el histórico está en `calc.balance[].circulante_ventas_pct`;
   - `tasa_impositiva_pct`: tipo efectivo normalizado;
   - `fijo`: `true` en el ejercicio en curso si ya hay publicados al menos dos trimestres y la guía o el perímetro lo dejan casi cerrado; ese año **no se mueve** con los escenarios, las sensibilidades ni el DCF inverso. `false` en los demás.
   Converge hacia un estado estacionario: el crecimiento del último año, cerca del terminal; el margen, sostenible frente a la competencia.
-- `wacc`: tasa libre de riesgo (bono a 10 años del país de la divisa a la fecha de corte, citado); beta (ajustada o desapalancada y reapalancada; di cuál); prima de mercado (5-6 % salvo fuente mejor, citada); `prima_adicional_pct` por país, tamaño o riesgo específico, justificada; coste de la deuda antes de impuestos; peso de la deuda a valor de mercado.
-- `terminal`: `metodo` «gordon», «multiplo» o «media»; `crecimiento_pct` ≤ crecimiento nominal a largo plazo de la economía (2-3 %); `multiplo_salida` coherente con los comparables. El motor calcula el implícito de cada método: deben ser razonables entre sí.
+- `wacc`: **todo en la misma divisa que los flujos** (`meta.divisa`). Tasa libre de riesgo (bono a 10 años del país de la divisa a la fecha de corte, citado); beta (ajustada o desapalancada y reapalancada; di cuál); prima de mercado (5-6 % salvo fuente mejor, citada); `prima_adicional_pct` por país, tamaño o riesgo específico, justificada; coste de la deuda antes de impuestos; peso de la deuda a valor de mercado.
+- `terminal`: `metodo` «gordon», «multiplo» o «media»; `crecimiento_pct` ≤ crecimiento nominal a largo plazo **en la divisa de los flujos**: crecimiento real (1-2 %) más la inflación esperada de esa divisa. En divisas de inflación baja (CHF, JPY), el terminal es más bajo (≈ 1-1,5 %) y la tasa libre también: no mezcles un bono suizo con un crecimiento en dólares; `multiplo_salida` coherente con los comparables. El motor calcula el implícito de cada método: deben ser razonables entre sí.
 - `mitad_de_anio`: `true` (flujos a mitad de año, lo habitual).
 - `justificacion`: un texto por bloque (crecimiento, márgenes, inversión, WACC, terminal; 60-120 palabras cada uno), comparando cada supuesto con su historia (`calc.cuenta`, `calc.flujos`, `calc.balance`), con el consenso y con el sector [n].
 - `lectura` (120-200 palabras): se escribe **después de calcular**. Valor por acción, peso del valor terminal, qué dice el DCF inverso (`calc.dcf.inverso`: crecimiento, margen y rentabilidad implícitos en el precio) y si eso es exigente o conservador frente a la historia. Es el párrafo más importante de la valoración.

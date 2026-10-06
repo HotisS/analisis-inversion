@@ -119,7 +119,13 @@ export function calcularEmpresa(datos) {
   const ebitdaLtm = n(ltm.ebitda) ?? ultimoCalc.ebitda ?? null;
   const ebitLtm = n(ltm.ebit) ?? ultimoCalc.ebit ?? null;
   const bpaLtm = n(ltm.bpa) ?? ultimoCalc.bpa ?? null;
-  const estim = lista(d.consenso?.estimaciones).filter((e) => anioDe(e.periodo));
+  // Si el consenso usa un EBITDA ajustado (sin remuneración en acciones u otras partidas que las cuentas
+  // sí restan), se pasa a la base de las cuentas restando el ajuste en % de ventas: si no, el múltiplo
+  // de los próximos 12 meses sale más bajo solo por la definición.
+  const ajusteEbitda = /ajustad/i.test(d.consenso?.base_ebitda || '') ? n(d.consenso?.ajuste_ebitda_pct_ventas) : null;
+  const estim = lista(d.consenso?.estimaciones).filter((e) => anioDe(e.periodo)).map((e) =>
+    ajusteEbitda && n(e.ebitda) !== null && n(e.ingresos) !== null ? { ...e, ebitda: n(e.ebitda) - (ajusteEbitda * n(e.ingresos)) / 100 } : e);
+  if (/ajustad/i.test(d.consenso?.base_ebitda || '') && !ajusteEbitda) control('EBITDA del consenso en la base de las cuentas', false, 'El consenso es de EBITDA ajustado y falta consenso.ajuste_ebitda_pct_ventas: los múltiplos de los próximos 12 meses no son comparables con los de los últimos 12.');
   const ntm = (campo) => {
     const futuros = estim.filter((e) => finEjercicio(anioDe(e.periodo), mesCierre) > fechaCorte && n(e[campo]) !== null);
     if (!futuros.length) return null;
@@ -221,7 +227,9 @@ export function calcularEmpresa(datos) {
     const b = balance[i], a = balance[i - 1];
     const gAct = a.activo_total && b.activo_total ? pct(b.activo_total - a.activo_total, a.activo_total) : null;
     const gIng = cuenta.find((x) => String(x.periodo) === String(b.periodo))?.crecimiento_pct ?? null;
-    if (gAct !== null && gAct > 35 && (gIng === null || gIng < gAct / 2) && !perimetro.has(String(b.periodo))) {
+    const emision = n(lista(d.flujos?.historico).find((x) => String(x.periodo) === String(b.periodo))?.emision_acciones) ?? 0;
+    const porEmision = gAct !== null && emision >= 0.5 * (b.activo_total - a.activo_total);
+    if (gAct !== null && gAct > 35 && (gIng === null || gIng < gAct / 2) && !porEmision && !perimetro.has(String(b.periodo))) {
       const desc = `el activo total crece un ${fmt(gAct, 0)} % y los ingresos un ${fmt(gIng, 0)} %`;
       perimetro.set(String(b.periodo), desc);
       control(`Cambio de perímetro declarado (${b.periodo})`, false, `${desc[0].toUpperCase() + desc.slice(1)}: si hubo una compra cerca del cierre, decláralo en financieros.cambios_perimetro y explícalo.`);
@@ -350,6 +358,7 @@ export function calcularEmpresa(datos) {
       inverso: {
         crecimiento_implicito_pct: crecImpl === null ? null : red(crecMedioBase + crecImpl),
         crecimiento_base_pct: red(crecMedioBase),
+        periodo: (() => { const l = anLibres.length ? anLibres : lista(dcfIn.anios); return l.length ? `${l[0].periodo}-${l.at(-1).periodo}` : null; })(),
         margen_implicito_pct: margenImpl === null || margenFinal === null ? null : red(margenFinal + margenImpl),
         margen_base_pct: red(margenFinal),
         rentabilidad_implicita_pct: red(waccImpl, 1),
@@ -371,7 +380,7 @@ export function calcularEmpresa(datos) {
     const r = valorarDcf(dcfIn, ctx, p, aj);
     return {
       escenario: e.escenario, probabilidad_pct: n(e.probabilidad_pct), narrativa: e.narrativa ?? null,
-      crecimiento_medio_pct: r ? red(media(r.proyeccion.map((x) => x.crecimiento_pct))) : null,
+      crecimiento_medio_pct: r ? red(media(r.proyeccion.filter((x, i) => !lista(dcfIn.anios)[i]?.fijo).map((x) => x.crecimiento_pct))) : null,
       margen_final_pct: red((n(lista(dcfIn.anios).at(-1)?.margen_ebitda_pct) ?? 0) + aj.dm),
       wacc_pct: red(p.wacc, 1), valor: r ? red(r.valor_accion, 2) : null, potencial_pct: r ? red(pct(r.valor_accion - precio, precio)) : null,
     };
@@ -427,7 +436,7 @@ export function calcularEmpresa(datos) {
   // EV/EBITDA de los últimos y de los próximos 12 meses con el mismo valor empresa: el salto entre
   // ambos es el crecimiento esperado del EBITDA. Un salto que no cuadra con el crecimiento de las
   // ventas suele ser una mezcla de definiciones de EBITDA entre proveedores.
-  const saltos = pares.filter((x) => {
+  const saltos = [empresaFila, ...pares].filter((x) => {
     const ltmM = n(x.ev_ebitda_ltm), ntmM = n(x.ev_ebitda_ntm);
     if (!ltmM || !ntmM) return false;
     const gEbitda = (ltmM / ntmM - 1) * 100, gVentas = n(x.crecimiento_pct) ?? 0;
@@ -461,7 +470,7 @@ export function calcularEmpresa(datos) {
     const b = balance.find((x) => String(x.periodo) === String(s.anio)) || {};
     const p = n(s.precio_cierre), acc = n(c.acciones_diluidas);
     const ev = p !== null && acc !== null && b.deuda_neta !== null && b.deuda_neta !== undefined ? p * acc + b.deuda_neta + (b.minoritarios ?? 0) : null;
-    return { ...s, ev_ebitda_ltm: red(div(ev, n(c.ebitda)), 1), per_ltm: red(div(p, n(c.bpa)), 1) };
+    return { ...s, ev_ebitda_ltm: n(c.ebitda) > 0 ? red(div(ev, n(c.ebitda)), 1) : null, per_ltm: n(c.bpa) > 0 ? red(div(p, n(c.bpa)), 1) : null, ev_ebitda_ntm: n(s.ev_ebitda_ntm) > 0 ? n(s.ev_ebitda_ntm) : null, per_ntm: n(s.per_ntm) > 0 ? n(s.per_ntm) : null };
   });
   const multHist = [
     ['EV/EBITDA últimos 12 meses (cierre de cada año)', 'ev_ebitda_ltm', empresaFila.ev_ebitda_ltm],
@@ -553,6 +562,15 @@ export function calcularEmpresa(datos) {
   const coincide = !res.recomendacion || !regla || res.recomendacion === regla;
   control('Recomendación coherente con la regla de decisión', coincide || !!res.justificacion_recomendacion,
     coincide ? '' : `La regla da «${regla}» y el análisis recomienda «${res.recomendacion}»: hace falta «justificacion_recomendacion».`);
+  // Divisa de cotización distinta de la de las cuentas (On: cuentas en CHF, cotiza en USD): los precios
+  // de la decisión se dan también en la divisa en que se compra la acción. tipo_cambio = unidades de
+  // meta.divisa por 1 unidad de meta.divisa_cotizacion.
+  const tc = n(meta.tipo_cambio);
+  const divCot = meta.divisa_cotizacion && meta.divisa_cotizacion !== meta.divisa && tc ? meta.divisa_cotizacion : null;
+  const enCot = (v) => (divCot && v !== null && v !== undefined && Number.isFinite(v) ? ` (${fmt(v / tc, 2)} ${divCot})` : '');
+  const nivelCompra = valorObjetivo ? valorObjetivo / (1 + 0.15 - rentDiv / 100) : null;
+  const nivelVenta = valorObjetivo ? valorObjetivo / (1 - 0.10 - rentDiv / 100) : null;
+  if (meta.divisa_cotizacion && meta.divisa_cotizacion !== meta.divisa && !tc) control('Tipo de cambio de la divisa de cotización', false, 'Falta meta.tipo_cambio: los precios de la decisión solo salen en la divisa de las cuentas.');
   const recomendacion = {
     recomendacion: recomendacionFinal, regla, coincide, conviccion: res.conviccion ?? null,
     potencial_pct: red(potObj), dividendo_pct: red(rentDiv), rentabilidad_total_pct: red(rte),
@@ -560,7 +578,8 @@ export function calcularEmpresa(datos) {
     comprar_por_debajo: valorObjetivo ? red(valorObjetivo / (1 + 0.15 - rentDiv / 100), 2) : null,
     vender_por_encima: valorObjetivo ? red(valorObjetivo / (1 - 0.10 - rentDiv / 100), 2) : null,
     tabla: [
-      { concepto: 'Valor objetivo (síntesis ponderada)', valor: valorObjetivo === null ? 'n.d.' : `${fmt(valorObjetivo, 2)} ${meta.divisa || ''}` },
+      { concepto: 'Valor objetivo (síntesis ponderada)', valor: valorObjetivo === null ? 'n.d.' : `${fmt(valorObjetivo, 2)} ${meta.divisa || ''}${enCot(valorObjetivo)}` },
+      ...(divCot ? [{ concepto: `Precio actual (${divCot} al tipo de ${fmt(tc, 4)} ${meta.divisa} por ${divCot})`, valor: `${fmt(precio, 2)} ${meta.divisa}${enCot(precio)}` }] : []),
       { concepto: 'Potencial sobre el precio actual', valor: potObj === null ? 'n.d.' : `${fmt(potObj, 1)} %` },
       { concepto: 'Rentabilidad por dividendo ordinario', valor: `${fmt(rentDiv, 1)} %` },
       { concepto: 'Rentabilidad total esperada a 12 meses', valor: rte === null ? 'n.d.' : `${fmt(rte, 1)} %` },
@@ -569,10 +588,11 @@ export function calcularEmpresa(datos) {
       { concepto: 'Recomendación según la regla', valor: regla ?? 'n.d.' },
     ],
     niveles: valorObjetivo ? [
-      { accion: 'Comprar', condicion: `Por debajo de ${fmt(valorObjetivo / (1 + 0.15 - rentDiv / 100), 2)} (rentabilidad total esperada ≥ 15 %), si la asimetría sigue siendo favorable` },
-      { accion: 'Mantener', condicion: `Entre ${fmt(valorObjetivo / (1 + 0.15 - rentDiv / 100), 2)} y ${fmt(valorObjetivo / (1 - 0.10 - rentDiv / 100), 2)}` },
-      { accion: 'Vender o reducir', condicion: `Por encima de ${fmt(valorObjetivo / (1 - 0.10 - rentDiv / 100), 2)} (rentabilidad total esperada ≤ −10 %)` },
+      { accion: 'Comprar', condicion: `Por debajo de ${fmt(nivelCompra, 2)}${enCot(nivelCompra)} (rentabilidad total esperada ≥ 15 %), si la asimetría sigue siendo favorable` },
+      { accion: 'Mantener', condicion: `Entre ${fmt(nivelCompra, 2)} y ${fmt(nivelVenta, 2)}${divCot ? ` (${fmt(nivelCompra / tc, 2)} y ${fmt(nivelVenta / tc, 2)} ${divCot})` : ''}` },
+      { accion: 'Vender o reducir', condicion: `Por encima de ${fmt(nivelVenta, 2)}${enCot(nivelVenta)} (rentabilidad total esperada ≤ −10 %)` },
     ] : [],
+    precio_txt: enCot(precio), valor_objetivo_txt: enCot(valorObjetivo),
   };
 
   // ── Múltiplos clave para la ficha ──

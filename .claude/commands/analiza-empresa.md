@@ -18,9 +18,13 @@ Tras la fase 1 (identificación), lanza **cuatro subagentes a la vez**, cada uno
 - **C. Equipo y gobierno**: `directivos` y `gobierno`. IAGC e IARC (o *proxy*), registros oficiales de participaciones y de operaciones de directivos, hechos relevantes de 12 meses e historial de cumplimiento de la guía.
 - **D. Mercado y valoración**: `identificacion` (precio, acciones, rango), `consenso`, `bolsa`, `multiplos_historicos`, `comparables` (6-10, cifra a cifra), `transacciones` (5-10), el `puente` de `valoracion` y los datos de mercado para el WACC (bono a 10 años, beta).
 
+**Guardar por partes.** Cada subagente reescribe su `notas/<letra>.json` **después de cada campo que termina** (no solo al final): un corte por límite de uso o por error no debe perder lo ya investigado. Cada campo terminado lleva su parte de `fuentes`; los que faltan quedan sin escribir.
+
 Cada subagente escribe en `notas/<letra>.json` **solo hechos**, con la estructura de sus campos en el prompt y una lista `fuentes` propia (numerada desde 1). Aplica el protocolo de huecos (tres intentos, después `null` y una entrada en `huecos`) y devuelve en su respuesta un resumen de diez líneas: qué ha encontrado, qué falta y qué le ha parecido raro.
 
 Si no puedes lanzar subagentes, haz las fases 2-4 tú mismo, en ese orden y con la misma profundidad.
+
+**Si un subagente se corta**, no lo relances entero: lee su `notas/<letra>.json`, mira qué campos faltan y complétalos tú (o con un subagente nuevo que solo haga esos campos). La integración acepta notas parciales.
 
 ## Integración, cálculo y redacción (tú)
 1. Fusiona las notas en `datos.json`: renumera las fuentes en una sola lista sin duplicados y actualiza las citas `[n]` de los textos.

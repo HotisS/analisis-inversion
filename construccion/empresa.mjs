@@ -18,8 +18,8 @@ export default {
     subtitulo: '{{identificacion.ticker}} · {{identificacion.mercado}} · ISIN {{identificacion.isin}} · {{identificacion.sector}}',
     tarjetas: [
       ['Recomendación', '{{calc.recomendacion.recomendacion}}'],
-      ['Precio', '{{identificacion.precio|2}} {{meta.divisa}}'],
-      ['Valor objetivo', '{{calc.sintesis.valor_objetivo|2}} {{meta.divisa}}'],
+      ['Precio', '{{identificacion.precio|2}} {{meta.divisa}}{{calc.recomendacion.precio_txt}}'],
+      ['Valor objetivo', '{{calc.sintesis.valor_objetivo|2}} {{meta.divisa}}{{calc.recomendacion.valor_objetivo_txt}}'],
       ['Rentabilidad total 12 m', '{{calc.recomendacion.rentabilidad_total_pct|+pct}}'],
       ['Convicción', '{{resumen.conviccion}}'],
       ['Capitalización', '{{calc.mercado.capitalizacion|0}} M'],
@@ -54,7 +54,7 @@ export default {
     ['h1', 'Resumen ejecutivo'],
     ['confianza', 'resumen'],
     ['aviso', '{{_meta.aviso_nucleo}}'],
-    ['p', '**Recomendación: {{calc.recomendacion.recomendacion}}** · Convicción: {{resumen.conviccion}} · Horizonte: {{resumen.horizonte}} · Valor objetivo: **{{calc.sintesis.valor_objetivo|2}} {{meta.divisa}}** ({{calc.sintesis.potencial_pct|+pct}} sobre {{identificacion.precio|2}}; rentabilidad total esperada {{calc.recomendacion.rentabilidad_total_pct|+pct}})'],
+    ['p', '**Recomendación: {{calc.recomendacion.recomendacion}}** · Convicción: {{resumen.conviccion}} · Horizonte: {{resumen.horizonte}} · Valor objetivo: **{{calc.sintesis.valor_objetivo|2}} {{meta.divisa}}{{calc.recomendacion.valor_objetivo_txt}}** ({{calc.sintesis.potencial_pct|+pct}} sobre {{identificacion.precio|2}}; rentabilidad total esperada {{calc.recomendacion.rentabilidad_total_pct|+pct}})'],
     ['texto', 'resumen.tesis'],
     ['sub', 'La decisión', 'calc.recomendacion.tabla', [
       ['tabla', 'calc.recomendacion.tabla', [['Elemento de la decisión', 'concepto', '', 4], ['Valor', 'valor', '', 2, 'd']]],
@@ -316,7 +316,7 @@ export default {
       sub('Sensibilidad: margen EBITDA × crecimiento de ingresos (desplazamiento de toda la proyección)', 'calc.dcf.sensibilidad2', [['tabla', 'calc.dcf.sensibilidad2.filas', [['Margen \\ crec.', 'margen', '', 1], ['{{calc.dcf.sensibilidad2.columnas[0]}}', 'v0', '2', 1, 'd'], ['{{calc.dcf.sensibilidad2.columnas[1]}}', 'v1', '2', 1, 'd'], ['{{calc.dcf.sensibilidad2.columnas[2]}}', 'v2', '2', 1, 'd'], ['{{calc.dcf.sensibilidad2.columnas[3]}}', 'v3', '2', 1, 'd'], ['{{calc.dcf.sensibilidad2.columnas[4]}}', 'v4', '2', 1, 'd']]]]),
       sub('DCF inverso: qué descuenta el precio actual', 'calc.dcf.inverso,dcf.lectura', [
         ['kv', [
-          ['Crecimiento anual implícito en el precio', '{{calc.dcf.inverso.crecimiento_implicito_pct|pct}} (base: {{calc.dcf.inverso.crecimiento_base_pct|pct}})'],
+          ['Crecimiento anual implícito en el precio ({{calc.dcf.inverso.periodo}})', '{{calc.dcf.inverso.crecimiento_implicito_pct|pct}} (base: {{calc.dcf.inverso.crecimiento_base_pct|pct}})'],
           ['Margen EBITDA final implícito', '{{calc.dcf.inverso.margen_implicito_pct|pct}} (base: {{calc.dcf.inverso.margen_base_pct|pct}})'],
           ['Rentabilidad anual implícita (TIR al precio actual)', '{{calc.dcf.inverso.rentabilidad_implicita_pct|pct}} (WACC: {{calc.dcf.wacc|pct}})'],
         ], 1],

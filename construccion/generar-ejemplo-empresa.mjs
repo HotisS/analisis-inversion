@@ -107,7 +107,7 @@ const fuentesLista = [
 ];
 
 const ejemplo = {
-  meta: { fecha_corte: '2026-10-06', divisa: 'EUR', unidades: 'millones', cierre_ejercicio_mes: 12, normas_contables: 'NIIF-UE', formato_cuenta: 'funcion', limitaciones: 'EJEMPLO FICTICIO para probar la plantilla y el motor: la empresa, las personas y todas las cifras son inventadas.',
+  meta: { fecha_corte: '2026-10-06', divisa: 'EUR', unidades: 'millones', cierre_ejercicio_mes: 12, divisa_cotizacion: 'EUR', tipo_cambio: 1, normas_contables: 'NIIF-UE', formato_cuenta: 'funcion', limitaciones: 'EJEMPLO FICTICIO para probar la plantilla y el motor: la empresa, las personas y todas las cifras son inventadas.',
     huecos: [{ seccion: 'Gobierno', campo: 'Ratio de la remuneración del primer ejecutivo sobre el salario medio', tipo: 'Complemento', intentos: '1) Informe de remuneraciones 2025: no lo publica; 2) informe de sostenibilidad (EINF): da el salario medio pero no el ratio; 3) búsqueda en prensa económica: sin resultados. Calculado a partir de 1) y 2).', decision: 'Calculado y marcado como estimación' }] },
   identificacion: {
     nombre: 'Compañía Ejemplo, S.A.', nombre_corto: 'Compañía Ejemplo', ticker: 'EJM', isin: 'ES0000000000', mercado: 'Bolsa de Madrid (Mercado Continuo)', indice_referencia: 'IBEX 35',
@@ -268,6 +268,7 @@ const ejemplo = {
       { periodo: '2028e', ingresos: r(ult.ingresos * 1.066 * 1.062 * 1.058), ebitda: r(ult.ingresos * 1.066 * 1.062 * 1.058 * 0.166), ebit: r(ult.ingresos * 1.066 * 1.062 * 1.058 * 0.123), bpa: r(ult.bpa * 1.33, 2), dpa: r(ult.dpa * 1.31, 2), fuente: 'Consenso, 9 analistas [17]' },
     ],
     recomendaciones: { n_analistas: 11, comprar: 6, mantener: 4, vender: 1, po_medio: 34.2, po_min: 27.0, po_max: 40.0 },
+    base_ebitda: 'NIIF', ajuste_ebitda_pct_ventas: null,
     revisiones: 'El BPA de 2026 sube un 3 % en tres meses y un 7 % en doce, tras subir la guía de margen [16][17].',
     confianza: 'Media',
   },
