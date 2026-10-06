@@ -1,0 +1,132 @@
+// Plantilla: ETF. Cada ruta corresponde a un campo de verticales/etf/prompt.md.
+
+export default {
+  tipo: 'Análisis de ETF',
+  cabecera: '{{identificacion.nombre}} ({{identificacion.isin}})',
+  portada: {
+    titulo: '{{identificacion.nombre}}',
+    subtitulo: 'ISIN {{identificacion.isin}} · {{identificacion.ticker}} · {{identificacion.gestora}} · {{identificacion.clase_activo}}',
+    tarjetas: [
+      ['Conclusión', '{{resumen.conclusion}}'],
+      ['Coste total (TER)', '{{costes.ter_pct|pct2}}'],
+      ['Patrimonio', '{{tamano.aum|0}} M {{meta.divisa}}'],
+      ['Diferencia de seguimiento', '{{replicacion.td_media_pct|+pct2}}'],
+      ['Rentabilidad 5 años (anual.)', '{{rentabilidad.anualizada_5a_pct|pct}}'],
+      ['Volatilidad 3 años', '{{riesgo.volatilidad_3a_pct|pct}}'],
+      ['Posiciones', '{{composicion.numero_posiciones|0}}'],
+      ['Peso de las 10 primeras', '{{composicion.peso_top10_pct|pct}}'],
+    ],
+  },
+  bloques: [
+    ['kv', [
+      ['Nombre', '{{identificacion.nombre}}'], ['ISIN / ticker', '{{identificacion.isin}} / {{identificacion.ticker}}'],
+      ['Gestora', '{{identificacion.gestora}}'], ['Domicilio', '{{identificacion.domicilio}}'],
+      ['Fecha de lanzamiento', '{{identificacion.fecha_lanzamiento|fecha}}'], ['UCITS', '{{identificacion.ucits}}'],
+      ['Divisa del fondo', '{{identificacion.divisa_fondo}}'], ['Cobertura de divisa', '{{identificacion.cobertura_divisa}}'],
+      ['Política de rentas', '{{identificacion.distribucion}}'], ['Método de réplica', '{{identificacion.replicacion}}'],
+      ['Clase de activo', '{{identificacion.clase_activo}}'], ['Categoría', '{{identificacion.categoria}}'],
+      ['Bolsas y divisas de cotización', '{{identificacion.bolsas}}'], ['Indicador de riesgo (SRI)', '{{riesgo.sri}} / 7'],
+    ]],
+
+    ['h1', 'Resumen ejecutivo'],
+    ['confianza', 'resumen'],
+    ['p', '**Conclusión:** {{resumen.conclusion}} · **Para quién:** {{resumen.para_quien}}'],
+    ['texto', 'resumen.tesis'],
+    ['h2', 'Puntos fuertes'],
+    ['lista', 'resumen.puntos_fuertes'],
+    ['h2', 'Puntos débiles'],
+    ['lista', 'resumen.puntos_debiles'],
+
+    ['h1', '1. Objetivo e índice de referencia'],
+    ['confianza', 'indice'],
+    ['kv', [
+      ['Índice', '{{indice.nombre}}'], ['Proveedor del índice', '{{indice.proveedor}}'],
+      ['Método de ponderación', '{{indice.ponderacion}}'], ['Rebalanceo', '{{indice.rebalanceo}}'],
+      ['Componentes del índice', '{{indice.componentes|0}}'], ['Tipo de rentabilidad', '{{indice.tipo_rentabilidad}}'],
+    ]],
+    ['texto', 'indice.metodologia'],
+    ['h2', 'Qué deja fuera el índice'],
+    ['texto', 'indice.exclusiones'],
+
+    ['h1', '2. Costes'],
+    ['confianza', 'costes'],
+    ['tabla', 'costes.partidas', [['Partida', 'concepto', '', 2.4], ['Valor', 'valor', '', 1.2, 'd'], ['Lectura', 'comentario', '', 4]]],
+    ['texto', 'costes.comentario'],
+
+    ['h1', '3. Tamaño y liquidez'],
+    ['confianza', 'tamano'],
+    ['kv', [
+      ['Patrimonio (fecha)', '{{tamano.aum|0}} M {{meta.divisa}} ({{tamano.aum_fecha|fecha}})'], ['Patrimonio de la clase / del fondo', '{{tamano.aum_clase}}'],
+      ['Flujos netos 12 meses', '{{tamano.flujos_12m|0}} M {{meta.divisa}}'], ['Volumen medio diario', '{{tamano.volumen_diario}}'],
+      ['Horquilla media (spread)', '{{tamano.spread_pct|pct2}}'], ['Creadores de mercado', '{{tamano.creadores_mercado}}'],
+    ]],
+    ['grafico', 'aum'],
+    ['texto', 'tamano.comentario'],
+
+    ['h1', '4. Réplica y calidad del seguimiento'],
+    ['confianza', 'replicacion'],
+    ['texto', 'replicacion.metodo'],
+    ['tabla', 'replicacion.historico', [['Año', 'anio', '', 1], ['ETF', 'etf_pct', '+pct2', 1, 'd'], ['Índice', 'indice_pct', '+pct2', 1, 'd'], ['Diferencia', 'diferencia_pct', '+pct2', 1, 'd']]],
+    ['grafico', 'tracking'],
+    ['kv', [['Diferencia media anual', '{{replicacion.td_media_pct|+pct2}}'], ['Error de seguimiento (1 año)', '{{replicacion.tracking_error_pct|pct2}}']]],
+    ['h2', 'Préstamo de valores y contrapartes'],
+    ['texto', 'replicacion.prestamo'],
+
+    ['h1', '5. Composición de la cartera'],
+    ['confianza', 'composicion'],
+    ['kv', [['Número de posiciones', '{{composicion.numero_posiciones|0}}'], ['Peso de las 10 primeras', '{{composicion.peso_top10_pct|pct}}'], ['Fecha de la cartera', '{{composicion.fecha|fecha}}'], ['Mayor posición', '{{composicion.top10[0].nombre}} ({{composicion.top10[0].peso_pct|pct}})']]],
+    ['tabla', 'composicion.top10', [['Posición', 'nombre', '', 3], ['Peso', 'peso_pct', 'pct2', 1, 'd'], ['Sector / tipo', 'sector', '', 2], ['País', 'pais', '', 1.2]], { numerar: true }],
+    ['grafico', 'top10'],
+    ['texto', 'composicion.concentracion'],
+
+    ['h1', '6. Exposiciones'],
+    ['confianza', 'exposicion'],
+    ['grafico', 'primaria'],
+    ['grafico', 'geografica'],
+    ['grafico', 'divisa'],
+    ['grafico', 'secundaria'],
+    ['texto', 'exposicion.comentario'],
+
+    ['h1', '7. Características de la cartera'],
+    ['confianza', 'caracteristicas'],
+    ['tabla', 'caracteristicas.metricas', [['Métrica', 'metrica', '', 2.4], ['ETF', 'etf', '', 1, 'd'], ['Referencia', 'referencia', '', 1, 'd'], ['Referencia usada / lectura', 'comentario', '', 3.4]]],
+    ['texto', 'caracteristicas.comentario'],
+
+    ['h1', '8. Rentabilidad'],
+    ['confianza', 'rentabilidad'],
+    ['tabla', 'rentabilidad.acumulada', [['Periodo', 'periodo', '', 1.6], ['ETF', 'etf_pct', '+pct', 1, 'd'], ['Índice', 'indice_pct', '+pct', 1, 'd'], ['Categoría', 'categoria_pct', '+pct', 1, 'd']]],
+    ['grafico', 'rent_anual'],
+    ['tabla', 'rentabilidad.anual', [['Año', 'anio', '', 1], ['ETF', 'etf_pct', '+pct', 1, 'd'], ['Índice', 'indice_pct', '+pct', 1, 'd'], ['Categoría', 'categoria_pct', '+pct', 1, 'd']]],
+    ['texto', 'rentabilidad.comentario'],
+
+    ['h1', '9. Riesgo'],
+    ['confianza', 'riesgo'],
+    ['tabla', 'riesgo.metricas', [['Métrica', 'metrica', '', 2.4], ['Valor', 'valor', '', 1, 'd'], ['Periodo', 'periodo', '', 1.2], ['Lectura', 'comentario', '', 3]]],
+    ['grafico', 'caidas'],
+    ['texto', 'riesgo.comentario'],
+
+    ['h1', '10. Alternativas'],
+    ['confianza', 'alternativas'],
+    ['tabla', 'alternativas.etfs', [
+      ['ETF', 'nombre', '', 2.6], ['ISIN', 'isin', '', 1.6], ['TER', 'ter_pct', 'pct2', 0.8, 'd'], ['Patrimonio', 'aum', '0', 1, 'd'],
+      ['Réplica', 'replicacion', '', 1], ['Rentas', 'distribucion', '', 1], ['Dif. seguim.', 'td_pct', '+pct2', 0.9, 'd']]],
+    ['grafico', 'alternativas_ter'],
+    ['texto', 'alternativas.comentario'],
+
+    ['h1', '11. Fiscalidad y operativa para un inversor español'],
+    ['confianza', 'fiscalidad'],
+    ['kv', [
+      ['Registrado en la CNMV', '{{fiscalidad.registro_cnmv}}'], ['KID en español', '{{fiscalidad.kid_espanol}}'],
+      ['Traspasable sin peaje fiscal', '{{fiscalidad.traspasable}}'], ['Retención en origen sobre dividendos', '{{fiscalidad.retencion_origen}}'],
+    ]],
+    ['texto', 'fiscalidad.comentario'],
+
+    ['h1', '12. Encaje en cartera y riesgos específicos'],
+    ['confianza', 'encaje'],
+    ['texto', 'encaje.rol'],
+    ['h2', 'Correlación y solapamientos'],
+    ['texto', 'encaje.correlaciones'],
+    ['h2', 'Riesgos específicos'],
+    ['tabla', 'encaje.riesgos', [['Riesgo', 'riesgo', '', 2], ['Descripción', 'descripcion', '', 4.5], ['Importancia', 'importancia', '', 1, 'c']], { numerar: true }],
+  ],
+};

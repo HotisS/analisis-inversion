@@ -1,0 +1,73 @@
+{
+  "mercado": {
+    "tipo": "columnas", "titulo": "Tamaño del mercado ({{meta.divisa}}, {{meta.unidades}}) · años con «e» son previsiones",
+    "datos": "mercado.serie", "categoria": "anio",
+    "series": [{ "campo": "tamano", "nombre": "Tamaño del mercado" }],
+    "formato": "#,##0", "etiquetas": true, "alto_cm": 7
+  },
+  "segmentos": {
+    "tipo": "donut", "titulo": "Peso de cada segmento (% del mercado)",
+    "datos": "segmentacion.segmentos", "categoria": "nombre",
+    "series": [{ "campo": "peso_pct", "nombre": "% del mercado" }],
+    "alto_cm": 6.5
+  },
+  "crecimiento_segmentos": {
+    "tipo": "barras", "titulo": "Crecimiento anual previsto por segmento (%)",
+    "datos": "segmentacion.segmentos", "categoria": "nombre",
+    "series": [{ "campo": "crecimiento_pct", "nombre": "Crecimiento" }],
+    "formato": "0.0\"%\"", "etiquetas": true, "alto_cm": 6
+  },
+  "geografias": {
+    "tipo": "barras", "titulo": "Peso por geografía (% del mercado)",
+    "datos": "segmentacion.geografias", "categoria": "nombre",
+    "series": [{ "campo": "peso_pct", "nombre": "% del mercado" }],
+    "formato": "0\"%\"", "etiquetas": true, "alto_cm": 6
+  },
+  "cadena": {
+    "tipo": "barras", "titulo": "Margen EBITDA típico de cada eslabón (%)",
+    "datos": "cadena_valor.eslabones", "categoria": "eslabon",
+    "series": [{ "campo": "margen_ebitda_pct", "nombre": "Margen EBITDA" }],
+    "formato": "0\"%\"", "etiquetas": true, "alto_cm": 6
+  },
+  "cuotas": {
+    "tipo": "barras", "titulo": "Cuotas de mercado (%)",
+    "datos": "competencia.cuotas", "categoria": "empresa",
+    "series": [{ "campo": "cuota_pct", "nombre": "Cuota" }],
+    "formato": "0.0\"%\"", "etiquetas": true, "alto_cm": 7
+  },
+  "porter": {
+    "tipo": "radar", "titulo": "Intensidad de las cinco fuerzas (1 = favorable, 5 = desfavorable)",
+    "datos": "porter.fuerzas", "categoria": "fuerza",
+    "series": [{ "campo": "intensidad", "nombre": "Intensidad" }],
+    "min": 0, "max": 5, "alto_cm": 8
+  },
+  "ciclo": {
+    "tipo": "lineas", "titulo": "Crecimiento del sector frente al PIB (% anual)",
+    "datos": "ciclo.serie", "categoria": "anio",
+    "series": [{ "campo": "sector_pct", "nombre": "Sector" }, { "campo": "pib_pct", "nombre": "PIB" }],
+    "formato": "0\"%\""
+  },
+  "actividad": {
+    "tipo": "columnas", "titulo": "Número de operaciones corporativas por año",
+    "datos": "operaciones.actividad", "categoria": "anio",
+    "series": [{ "campo": "numero", "nombre": "Operaciones" }],
+    "formato": "0", "etiquetas": true, "alto_cm": 6
+  },
+  "cotizadas_mapa": {
+    "tipo": "dispersion", "titulo": "Cotizadas: crecimiento frente a múltiplo",
+    "datos": "cotizadas.empresas", "etiqueta": "nombre", "destacar_primero": false,
+    "x": { "campo": "crecimiento_pct", "nombre": "Crecimiento de ingresos (%)", "formato": "0\"%\"" },
+    "y": { "campo": "ev_ebitda", "nombre": "EV/EBITDA (x)", "formato": "0.0\"x\"" },
+    "alto_cm": 8
+  },
+  "multiplos": {
+    "tipo": "columnas", "titulo": "Múltiplos del sector: hoy, su media de 10 años y el mercado",
+    "datos": "cotizadas.multiplos", "categoria": "metrica",
+    "series": [
+      { "campo": "actual", "nombre": "Sector hoy" },
+      { "campo": "media_10a", "nombre": "Media 10 años" },
+      { "campo": "mercado", "nombre": "Mercado amplio" }
+    ],
+    "formato": "0.0\"x\""
+  }
+}

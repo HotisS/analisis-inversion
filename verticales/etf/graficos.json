@@ -1,0 +1,66 @@
+{
+  "aum": {
+    "tipo": "columnas", "titulo": "Patrimonio a cierre de año ({{meta.divisa}}, millones)",
+    "datos": "tamano.historico", "categoria": "anio",
+    "series": [{ "campo": "aum", "nombre": "Patrimonio" }],
+    "formato": "#,##0", "etiquetas": true, "alto_cm": 6
+  },
+  "tracking": {
+    "tipo": "columnas", "titulo": "Diferencia de seguimiento anual: ETF menos índice (puntos %)",
+    "datos": "replicacion.historico", "categoria": "anio",
+    "series": [{ "campo": "diferencia_pct", "nombre": "Diferencia" }],
+    "formato": "0.00\"%\"", "etiquetas": true, "alto_cm": 6
+  },
+  "top10": {
+    "tipo": "barras", "titulo": "Diez primeras posiciones (% de la cartera)",
+    "datos": "composicion.top10", "categoria": "nombre",
+    "series": [{ "campo": "peso_pct", "nombre": "Peso" }],
+    "formato": "0.0\"%\"", "etiquetas": true, "alto_cm": 8
+  },
+  "primaria": {
+    "tipo": "barras", "titulo": "Exposición por {{exposicion.primaria.titulo}} (% de la cartera)",
+    "datos": "exposicion.primaria.items", "categoria": "nombre",
+    "series": [{ "campo": "peso_pct", "nombre": "Peso" }],
+    "formato": "0.0\"%\"", "etiquetas": true, "alto_cm": 7.5
+  },
+  "geografica": {
+    "tipo": "barras", "titulo": "Exposición geográfica (% de la cartera)",
+    "datos": "exposicion.geografica", "categoria": "nombre",
+    "series": [{ "campo": "peso_pct", "nombre": "Peso" }],
+    "formato": "0.0\"%\"", "etiquetas": true, "alto_cm": 7
+  },
+  "divisa": {
+    "tipo": "donut", "titulo": "Exposición por divisa (% de la cartera)",
+    "datos": "exposicion.divisa", "categoria": "nombre",
+    "series": [{ "campo": "peso_pct", "nombre": "Peso" }],
+    "alto_cm": 6.5
+  },
+  "secundaria": {
+    "tipo": "barras", "titulo": "Exposición por {{exposicion.secundaria.titulo}} (% de la cartera)",
+    "datos": "exposicion.secundaria.items", "categoria": "nombre",
+    "series": [{ "campo": "peso_pct", "nombre": "Peso" }],
+    "formato": "0.0\"%\"", "etiquetas": true, "alto_cm": 6
+  },
+  "rent_anual": {
+    "tipo": "columnas", "titulo": "Rentabilidad por año natural (%)",
+    "datos": "rentabilidad.anual", "categoria": "anio",
+    "series": [
+      { "campo": "etf_pct", "nombre": "ETF" },
+      { "campo": "indice_pct", "nombre": "Índice" },
+      { "campo": "categoria_pct", "nombre": "Media de la categoría" }
+    ],
+    "formato": "0\"%\""
+  },
+  "caidas": {
+    "tipo": "barras", "titulo": "Caídas en episodios de estrés (%)",
+    "datos": "riesgo.caidas", "categoria": "episodio",
+    "series": [{ "campo": "etf_pct", "nombre": "ETF" }, { "campo": "referencia_pct", "nombre": "Referencia amplia" }],
+    "formato": "0\"%\"", "etiquetas": true, "alto_cm": 6.5
+  },
+  "alternativas_ter": {
+    "tipo": "barras", "titulo": "Coste anual (TER, %) del ETF analizado y sus alternativas",
+    "datos": "alternativas.etfs", "categoria": "nombre",
+    "series": [{ "campo": "ter_pct", "nombre": "TER" }],
+    "formato": "0.00\"%\"", "etiquetas": true, "resaltar": 0, "alto_cm": 6.5
+  }
+}
