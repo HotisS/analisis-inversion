@@ -55,13 +55,18 @@ export async function integrar(dir) {
   P = P || {};
 
   // 1. Lista única de fuentes
-  const global = [], porClave = new Map(), mapa = {};
+  const global = [], porClave = new Map(), mapa = {}, avisos = new Set();
   const norm = (u) => String(u || '').trim().replace(/#.*$/, '').replace(/\/$/, '').toLowerCase();
   for (const L of [...LETRAS, 'P']) {
     mapa[L] = {};
     const src = L === 'P' ? P : N[L];
     for (const f of src?.fuentes || []) {
-      const clave = norm(f.url) ? 'u|' + norm(f.url) : 't|' + String(f.titulo || '').toLowerCase();
+      // Misma URL = mismo documento, salvo que los títulos no se parezcan (páginas genéricas como la portada
+      // de inversores, citadas por cosas distintas): entonces van por separado.
+      const palabras = (t) => new Set(String(t || '').toLowerCase().split(/\W+/).filter((x) => x.length > 3));
+      const parecidos = (a, b) => { const A = palabras(a), B = palabras(b); if (!A.size || !B.size) return true; let c = 0; for (const x of A) if (B.has(x)) c++; return c / Math.min(A.size, B.size) >= 0.5; };
+      let clave = norm(f.url) ? 'u|' + norm(f.url) : 't|' + String(f.titulo || '').toLowerCase();
+      if (porClave.has(clave) && !parecidos(porClave.get(clave).titulo, f.titulo)) { clave += '|' + String(f.titulo || '').toLowerCase(); avisos.add(`Misma URL con títulos distintos (se dejan separadas): ${f.url}`); }
       let g = porClave.get(clave);
       if (!g) { g = { id: global.length + 1, titulo: f.titulo ?? null, editor: f.editor ?? null, tipo: f.tipo ?? null, fecha: f.fecha ?? null, url: f.url ?? null }; global.push(g); porClave.set(clave, g); }
       mapa[L][String(f.id)] = g.id;
@@ -99,7 +104,7 @@ export async function integrar(dir) {
   const vacias = ORDEN.filter((k) => salida[k] === null);
   const faltan = LETRAS.filter((L) => !N[L]);
   writeFileSync(join(dir, 'datos.json'), JSON.stringify(salida, null, 2));
-  return { fuentes: global.length, sinMapa: [...sinMapa], vacias, faltan, huecos: huecos.length };
+  return { fuentes: global.length, sinMapa: [...sinMapa], vacias, faltan, huecos: huecos.length, avisos: [...avisos] };
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
@@ -109,5 +114,6 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   console.log(`datos.json escrito: ${r.fuentes} fuentes, ${r.huecos} huecos.`);
   if (r.faltan.length) console.log(`Notas que faltan: ${r.faltan.join(', ')} (complétalas o escribe esas secciones en propio).`);
   if (r.vacias.length) console.log(`Secciones sin datos: ${r.vacias.join(', ')}`);
+  for (const x of r.avisos) console.log(x);
   console.log(r.sinMapa.length ? `Citas sin fuente: ${r.sinMapa.join(', ')}` : 'Todas las citas tienen fuente.');
 }

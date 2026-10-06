@@ -18,8 +18,8 @@ export default {
     subtitulo: '{{identificacion.ticker}} · {{identificacion.mercado}} · ISIN {{identificacion.isin}} · {{identificacion.sector}}',
     tarjetas: [
       ['Recomendación', '{{calc.recomendacion.recomendacion}}'],
-      ['Precio', '{{identificacion.precio|2}} {{meta.divisa}}{{calc.recomendacion.precio_txt}}'],
-      ['Valor objetivo', '{{calc.sintesis.valor_objetivo|2}} {{meta.divisa}}{{calc.recomendacion.valor_objetivo_txt}}'],
+      ['Precio', '{{identificacion.precio|2}} {{meta.divisa}}{{calc.recomendacion.precio_txt|opc}}'],
+      ['Valor objetivo', '{{calc.sintesis.valor_objetivo|2}} {{meta.divisa}}{{calc.recomendacion.valor_objetivo_txt|opc}}'],
       ['Rentabilidad total 12 m', '{{calc.recomendacion.rentabilidad_total_pct|+pct}}'],
       ['Convicción', '{{resumen.conviccion}}'],
       ['Capitalización', '{{calc.mercado.capitalizacion|0}} M'],
@@ -54,7 +54,7 @@ export default {
     ['si', 'resumen.sintesis', [
       ['salto'],
       ['h1', 'Síntesis y recomendación'],
-      ['p', '**{{calc.recomendacion.recomendacion}}** · Convicción {{resumen.conviccion}} · Valor objetivo **{{calc.sintesis.valor_objetivo|2}} {{meta.divisa}}{{calc.recomendacion.valor_objetivo_txt}}** frente a {{identificacion.precio|2}}{{calc.recomendacion.precio_txt}} · Rentabilidad total esperada a 12 meses **{{calc.recomendacion.rentabilidad_total_pct|+pct}}** · Alcista / bajista {{calc.recomendacion.alcista_pct|+pct}} / {{calc.recomendacion.bajista_pct|+pct}}'],
+      ['p', '**{{calc.recomendacion.recomendacion}}** · Convicción {{resumen.conviccion}} · Valor objetivo **{{calc.sintesis.valor_objetivo|2}} {{meta.divisa}}{{calc.recomendacion.valor_objetivo_txt|opc}}** frente a {{identificacion.precio|2}}{{calc.recomendacion.precio_txt|opc}} · Rentabilidad total esperada a 12 meses **{{calc.recomendacion.rentabilidad_total_pct|+pct}}** · Alcista / bajista {{calc.recomendacion.alcista_pct|+pct}} / {{calc.recomendacion.bajista_pct|+pct}}'],
       ['texto', 'resumen.sintesis'],
     ]],
 
@@ -63,7 +63,7 @@ export default {
     ['h1', 'Resumen ejecutivo'],
     ['confianza', 'resumen'],
     ['aviso', '{{_meta.aviso_nucleo}}'],
-    ['p', '**Recomendación: {{calc.recomendacion.recomendacion}}** · Convicción: {{resumen.conviccion}} · Horizonte: {{resumen.horizonte}} · Valor objetivo: **{{calc.sintesis.valor_objetivo|2}} {{meta.divisa}}{{calc.recomendacion.valor_objetivo_txt}}** ({{calc.sintesis.potencial_pct|+pct}} sobre {{identificacion.precio|2}}; rentabilidad total esperada {{calc.recomendacion.rentabilidad_total_pct|+pct}})'],
+    ['p', '**Recomendación: {{calc.recomendacion.recomendacion}}** · Convicción: {{resumen.conviccion}} · Horizonte: {{resumen.horizonte}} · Valor objetivo: **{{calc.sintesis.valor_objetivo|2}} {{meta.divisa}}{{calc.recomendacion.valor_objetivo_txt|opc}}** ({{calc.sintesis.potencial_pct|+pct}} sobre {{identificacion.precio|2}}; rentabilidad total esperada {{calc.recomendacion.rentabilidad_total_pct|+pct}})'],
     ['texto', 'resumen.tesis'],
     ['sub', 'La decisión', 'calc.recomendacion.tabla', [
       ['tabla', 'calc.recomendacion.tabla', [['Elemento de la decisión', 'concepto', '', 4], ['Valor', 'valor', '', 2, 'd']]],
@@ -273,7 +273,7 @@ export default {
     ]],
 
     ['seccion', '17. Múltiplos frente a su historia', 'multiplos_historicos', 'Complemento', [
-      ['tabla', 'calc.multiplos_historicos', [['Múltiplo', 'metrica', '', 2.4], ['Actual', 'actual', 'x', 0.9, 'd'], ['Media', 'media', 'x', 0.9, 'd'], ['Mínimo', 'minimo', 'x', 0.9, 'd'], ['Máximo', 'maximo', 'x', 0.9, 'd'], ['Percentil', 'percentil', 'pct0', 0.9, 'd'], ['Prima / descuento', 'prima_pct', '+pct0', 1, 'd']]],
+      ['tabla', 'calc.multiplos_historicos', [['Múltiplo', 'metrica', '', 2.4], ['Actual', 'actual', 'x', 0.9, 'd'], ['Mediana', 'media', 'x', 0.9, 'd'], ['Mínimo', 'minimo', 'x', 0.9, 'd'], ['Máximo', 'maximo', 'x', 0.9, 'd'], ['Percentil', 'percentil', 'pct0', 0.9, 'd'], ['Prima / descuento', 'prima_pct', '+pct0', 1, 'd']]],
       ['grafico', 'multiplos_hist'],
       ['texto', 'multiplos_historicos.comentario'],
     ]],

@@ -48,6 +48,10 @@ export function calcularEmpresa(datos) {
   const control = (nombre, ok, detalle) => controles.push({ control: nombre, resultado: ok === null ? 'n.d.' : ok ? 'OK' : 'Revisar', detalle: detalle ?? '' });
   const meta = d.meta || {};
   const mesCierre = n(meta.cierre_ejercicio_mes) || 12;
+  // Con ejercicio no natural, «FY2025» puede nombrar el año en que empieza (Inditex: feb-25 a ene-26) o
+  // en el que termina (la mayoría). meta.etiqueta_ejercicio dice cuál; por defecto, el de cierre.
+  const desfaseEj = /inicio/i.test(meta.etiqueta_ejercicio || '') ? 1 : 0;
+  const finEj = (periodo) => finEjercicio(anioDe(periodo) + desfaseEj, mesCierre);
   const fechaCorte = new Date((meta.fecha_corte || new Date().toISOString().slice(0, 10)) + 'T00:00:00Z');
   const id = d.identificacion || {};
   const precio = n(id.precio), acciones = n(id.acciones);
@@ -127,16 +131,16 @@ export function calcularEmpresa(datos) {
     ajusteEbitda && n(e.ebitda) !== null && n(e.ingresos) !== null ? { ...e, ebitda: n(e.ebitda) - (ajusteEbitda * n(e.ingresos)) / 100 } : e);
   if (/ajustad/i.test(d.consenso?.base_ebitda || '') && !ajusteEbitda) control('EBITDA del consenso en la base de las cuentas', false, 'El consenso es de EBITDA ajustado y falta consenso.ajuste_ebitda_pct_ventas: los múltiplos de los próximos 12 meses no son comparables con los de los últimos 12.');
   const ntm = (campo) => {
-    const futuros = estim.filter((e) => finEjercicio(anioDe(e.periodo), mesCierre) > fechaCorte && n(e[campo]) !== null);
+    const futuros = estim.filter((e) => finEj(e.periodo) > fechaCorte && n(e[campo]) !== null);
     if (!futuros.length) return null;
     const e1 = futuros[0], e2 = futuros[1];
-    const w = Math.min(1, Math.max(0, anios(fechaCorte, finEjercicio(anioDe(e1.periodo), mesCierre))));
+    const w = Math.min(1, Math.max(0, anios(fechaCorte, finEj(e1.periodo))));
     return e2 ? w * n(e1[campo]) + (1 - w) * n(e2[campo]) : n(e1[campo]);
   };
   const ingresosNtm = ntm('ingresos'), ebitdaNtm = ntm('ebitda'), bpaNtm = ntm('bpa');
   // Crecimiento NTM sobre LTM, ANUALIZADO: entre el centro del periodo LTM y el centro de los próximos
   // 12 meses puede haber más de un año (p. ej. LTM a junio y fecha de corte en octubre).
-  const finLtm = ltm.fecha_fin ? new Date(ltm.fecha_fin + 'T00:00:00Z') : (ultimo.periodo ? finEjercicio(anioDe(ultimo.periodo), mesCierre) : null);
+  const finLtm = ltm.fecha_fin ? new Date(ltm.fecha_fin + 'T00:00:00Z') : (ultimo.periodo ? finEj(ultimo.periodo) : null);
   const aniosEntre = finLtm ? Math.max(0.5, anios(finLtm, fechaCorte) + 1) : 1;
   const crecimientoNtm = ingresosNtm && ingresosLtm ? ((ingresosNtm / ingresosLtm) ** (1 / aniosEntre) - 1) * 100 : null;
 
@@ -286,7 +290,9 @@ export function calcularEmpresa(datos) {
   });
   const rentUlt = rentabilidad[rentabilidad.length - 1] || {};
   const rentIni = rentabilidad.find((r) => r.nopat !== null && r.capital_invertido !== null);
-  const roicIncremental = rentIni && rentUlt !== rentIni ? red(pct(rentUlt.nopat - rentIni.nopat, rentUlt.capital_invertido - rentIni.capital_invertido)) : null;
+  const dCap = rentIni && rentUlt !== rentIni ? rentUlt.capital_invertido - rentIni.capital_invertido : null;
+  // Solo tiene sentido si el capital invertido ha crecido de verdad (≥ 10 %); si no, el cociente explota.
+  const roicIncremental = dCap !== null && dCap > 0.1 * Math.abs(rentIni.capital_invertido) ? red(pct(rentUlt.nopat - rentIni.nopat, dCap)) : null;
 
   // ── Calidad contable: Altman Z, Piotroski F, Beneish M ──
   const scores = calidadContable(cuentaIn, balIn, fluIn, capitalizacion, porNaturaleza, new Set(perimetro.keys()));
@@ -306,7 +312,11 @@ export function calcularEmpresa(datos) {
   ].map(([concepto, v, u]) => ({ concepto, valor: n(v) === null ? null : u === '%' ? `${fmt(n(v), 2)} %` : fmt(n(v), 2) }));
 
   const nwcBase = balUlt.circulante ?? null;
-  const ctx = { cuentaUlt: ultimo, nwcBase, fechaCorte, mesCierre, deudaNeta, ajustesPuente, acciones };
+  const ctx = { cuentaUlt: ultimo, nwcBase, fechaCorte, mesCierre, desfase: desfaseEj, deudaNeta, ajustesPuente, acciones };
+  if (ultimo.periodo) {
+    const finUlt = finEj(ultimo.periodo), meses = (fechaCorte - finUlt) / (30.44 * 864e5);
+    if (meses < 0 || meses > 15) control('Último ejercicio cerrado coherente con la fecha de corte', false, `El último ejercicio real (${ultimo.periodo}) cerraría el ${finUlt.toISOString().slice(0, 10)}: ${meses < 0 ? 'después de la fecha de corte' : 'más de 15 meses antes'}. Revisa meta.cierre_ejercicio_mes y meta.etiqueta_ejercicio («inicio» si FY2025 empieza en 2025).`);
+  }
   const base = { wacc, g: n(dcfIn.terminal?.crecimiento_pct), multiplo: n(dcfIn.terminal?.multiplo_salida), metodo: dcfIn.terminal?.metodo || 'gordon', mitad: dcfIn.mitad_de_anio !== false };
   const dcfBase = valorarDcf(dcfIn, ctx, base);
   let dcf = null;
@@ -433,6 +443,14 @@ export function calcularEmpresa(datos) {
     if (!regresion.fiable) control('Regresión múltiplo-crecimiento explicativa (R² ≥ 0,3)', false, `R² = ${fmt(regresion.r2, 2)}: el crecimiento no explica los múltiplos de estos comparables; no uses el valor de la regresión.`);
   }
   control('Al menos 5 comparables', pares.length >= 5, `${pares.length} comparables.`);
+  {
+    const vals = pares.map((x) => n(x.ev_ebitda_ntm)).filter((x) => x !== null);
+    if (vals.length >= 5 && ebitdaNtm) {
+      const sinUno = vals.map((_, i) => mediana(vals.filter((__, j) => j !== i)));
+      const lo = Math.min(...sinUno), hi = Math.max(...sinUno), med = mediana(vals);
+      if ((hi - lo) / med > 0.15) control('Comparables estables al quitar una empresa', false, `La mediana del EV/EBITDA NTM va de ${fmt(lo, 1)}x a ${fmt(hi, 1)}x según qué comparable se quite (${fmt(deEv(lo * ebitdaNtm), 2)} a ${fmt(deEv(hi * ebitdaNtm), 2)} por acción): la muestra es frágil; explícalo y no le des mucho peso.`);
+    }
+  }
   // EV/EBITDA de los últimos y de los próximos 12 meses con el mismo valor empresa: el salto entre
   // ambos es el crecimiento esperado del EBITDA. Un salto que no cuadra con el crecimiento de las
   // ventas suele ser una mezcla de definiciones de EBITDA entre proveedores.
@@ -478,13 +496,13 @@ export function calcularEmpresa(datos) {
     ['EV/EBITDA próximos 12 meses', 'ev_ebitda_ntm', empresaFila.ev_ebitda_ntm],
     ['PER próximos 12 meses', 'per_ntm', empresaFila.per_ntm],
   ].map(([metrica, campo, actual]) => {
-    const vals = serieMult.map((s) => s[campo]);
+    const vals = serieMult.filter((s) => !s.excluir).map((s) => s[campo]);
     const v = validos(vals);
     if (v.length < 3) return null;
     return {
-      metrica, campo, actual, media: red(media(vals), 1), minimo: red(Math.min(...v), 1), maximo: red(Math.max(...v), 1),
+      metrica, campo, actual, media: red(mediana(vals), 1), minimo: red(Math.min(...v), 1), maximo: red(Math.max(...v), 1),
       percentil: actual !== null ? red((100 * v.filter((x) => x <= actual).length) / v.length, 0) : null,
-      prima_pct: red(pct(actual - media(vals), media(vals)), 0), anios: v.length,
+      prima_pct: red(pct(actual - mediana(vals), mediana(vals)), 0), anios: v.length,
     };
   }).filter(Boolean);
   const principal = multHist.find((m) => m.campo === 'ev_ebitda_ltm') || multHist.find((m) => m.campo === 'ev_ebitda_ntm');
@@ -585,6 +603,7 @@ export function calcularEmpresa(datos) {
       { concepto: 'Rentabilidad total esperada a 12 meses', valor: rte === null ? 'n.d.' : `${fmt(rte, 1)} %` },
       { concepto: 'Escenario alcista / bajista', valor: potAlc === null || potBaj === null ? 'n.d.' : `${fmt(potAlc, 1)} % / ${fmt(potBaj, 1)} %` },
       { concepto: 'Asimetría (ganancia alcista / pérdida bajista)', valor: asimetria === null ? 'n.d.' : `${fmt(asimetria, 2)}x` },
+      ...(dcf?.inverso?.rentabilidad_implicita_pct !== null && dcf?.inverso?.rentabilidad_implicita_pct !== undefined ? [{ concepto: 'Rentabilidad anual implícita en el precio frente al WACC', valor: `${fmt(dcf.inverso.rentabilidad_implicita_pct, 1)} % frente a ${fmt(dcf.wacc, 1)} %` }] : []),
       { concepto: 'Recomendación según la regla', valor: regla ?? 'n.d.' },
     ],
     niveles: valorObjetivo ? [
@@ -614,7 +633,7 @@ export function calcularEmpresa(datos) {
   }
   // Solo tiene sentido si el puente es del mismo cierre: con un balance intermedio posterior, la
   // diferencia es normal (estacionalidad, anticipos, compras) y se explica en el texto.
-  const finUltBal = balance.length ? finEjercicio(anioDe(balUlt.periodo), mesCierre) : null;
+  const finUltBal = balance.length ? finEj(balUlt.periodo) : null;
   const puenteMismoCierre = !pu.fecha || !finUltBal || new Date(pu.fecha + (pu.fecha.length === 7 ? '-28' : '') + 'T00:00:00Z') <= new Date(finUltBal.getTime() + 15 * 864e5);
   if (puenteMismoCierre && balUlt.deuda_neta !== null && balUlt.deuda_neta !== undefined && deudaNeta !== null && Math.abs(balUlt.deuda_neta - deudaNeta) > 0.25 * Math.max(Math.abs(deudaNeta), 1) + 5) {
     control('Deuda neta del puente = la del último balance anual', false, `Puente ${fmt(deudaNeta, 0)} frente a ${fmt(balUlt.deuda_neta, 0)} en el balance del mismo cierre: revisa qué partidas entran en cada uno.`);
@@ -674,7 +693,7 @@ function valorarDcf(dcfIn, ctx, p, aj = {}) {
     const nwc = (ingresos * (n(a.nwc_pct_ventas) ?? 0)) / 100;
     const dnwc = nwc - nwcAnt; nwcAnt = nwc;
     const fcff = ebit - impuestos + da - capex - dnwc;
-    const fin = finEjercicio(anio, ctx.mesCierre), ini = finEjercicio(anio - 1, ctx.mesCierre);
+    const fin = finEjercicio(anio + (ctx.desfase || 0), ctx.mesCierre), ini = finEjercicio(anio - 1 + (ctx.desfase || 0), ctx.mesCierre);
     const fraccion = Math.min(1, Math.max(0, anios(ctx.fechaCorte > ini ? ctx.fechaCorte : ini, fin)));
     const t = Math.max(0, anios(ctx.fechaCorte, fin) - (p.mitad ? fraccion / 2 : 0));
     const fd = (1 + wacc) ** -t;
@@ -866,17 +885,20 @@ function puntuarGobierno(g, calidad, fechaCorte) {
   const sino = (v, si = 'Sí', no = 'No') => (v === null || v === undefined ? 'Sin dato' : v ? si : no);
   // El voto se mide por los votos EN CONTRA: una abstención sistemática (de un accionista público, por
   // ejemplo) baja el «a favor» sin ser un rechazo. Si solo hay el «a favor», se usa ese.
-  const votoContra = n(g.voto_remuneracion_contra_pct), voto = n(g.voto_remuneracion_pct);
+  // Con un accionista de control, lo que informa es el voto de los demás (sobre el capital libre presente).
+  const votoContraLibre = n(g.voto_remuneracion_contra_libre_pct);
+  const votoContra = votoContraLibre ?? n(g.voto_remuneracion_contra_pct), voto = n(g.voto_remuneracion_pct);
   const hayControl = g.accionista_control === null || g.accionista_control === undefined ? mayor >= 30 : !!g.accionista_control;
   const cambios = n(g.cambios_cupula_24m);
   const crit = [
     ['Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)', indepPct === null ? null : indepPct >= 50 || (hayControl && indepPct >= 33), indepPct === null ? 'Sin dato' : `${fmt(indepPct, 0)} %${hayControl ? ' (con control)' : ''}`],
+    ['Presidencia sin vínculo familiar ni profesional con el accionista de control', !hayControl ? true : g.presidente_vinculado_control === null || g.presidente_vinculado_control === undefined ? null : !g.presidente_vinculado_control, !hayControl ? 'Sin control' : g.presidente_vinculado_control === null || g.presidente_vinculado_control === undefined ? 'Sin dato' : g.presidente_vinculado_control ? 'Vinculada' : 'Independiente del control'],
     ['Presidente no ejecutivo, o consejero coordinador independiente', g.presidente_ceo_separados === null || g.presidente_ceo_separados === undefined ? null : g.presidente_ceo_separados || !!g.consejero_coordinador, g.presidente_ceo_separados ? 'Separados' : g.consejero_coordinador ? 'Coordinador' : 'No'],
     ['Comisión de auditoría con mayoría de independientes y presidida por uno', b(g.auditoria_independiente), sino(g.auditoria_independiente)],
     ['Ningún consejero «otro externo» con más de 12 años', nCons ? externosLargos.length === 0 : null, nCons ? (externosLargos.length ? externosLargos.map((c) => c.nombre).join(', ') : 'Ninguno') : 'Sin dato'],
     ['Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses', cambios === null ? null : cambios <= 1, cambios === null ? 'Sin dato' : `${fmt(cambios, 0)} cambio${cambios === 1 ? '' : 's'}`],
     votoContra !== null
-      ? ['Peor voto en contra sobre remuneración (3 juntas) ≤ 20 %', votoContra <= 20, `${fmt(votoContra, 1)} % en contra`]
+      ? [`Peor voto en contra sobre remuneración (3 juntas${votoContraLibre !== null ? ', capital libre' : ''}) ≤ 20 %`, votoContra <= 20, `${fmt(votoContra, 1)} % en contra`]
       : ['Peor voto a favor sobre remuneración (3 juntas) ≥ 80 %', voto === null ? null : voto >= 80, voto === null ? 'Sin dato' : `${fmt(voto, 1)} % a favor`],
     ['Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)', b(g.variable_ligado_rentabilidad), sino(g.variable_ligado_rentabilidad)],
     ['Una acción, un voto, sin blindajes ni límites de voto', b(g.una_accion_un_voto), sino(g.una_accion_un_voto)],

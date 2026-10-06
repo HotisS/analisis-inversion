@@ -107,7 +107,7 @@ const fuentesLista = [
 ];
 
 const ejemplo = {
-  meta: { fecha_corte: '2026-10-06', divisa: 'EUR', unidades: 'millones', cierre_ejercicio_mes: 12, divisa_cotizacion: 'EUR', tipo_cambio: 1, normas_contables: 'NIIF-UE', formato_cuenta: 'funcion', limitaciones: 'EJEMPLO FICTICIO para probar la plantilla y el motor: la empresa, las personas y todas las cifras son inventadas.',
+  meta: { fecha_corte: '2026-10-06', divisa: 'EUR', unidades: 'millones', cierre_ejercicio_mes: 12, divisa_cotizacion: 'EUR', tipo_cambio: 1, etiqueta_ejercicio: 'fin', normas_contables: 'NIIF-UE', formato_cuenta: 'funcion', limitaciones: 'EJEMPLO FICTICIO para probar la plantilla y el motor: la empresa, las personas y todas las cifras son inventadas.',
     huecos: [{ seccion: 'Gobierno', campo: 'Ratio de la remuneración del primer ejecutivo sobre el salario medio', tipo: 'Complemento', intentos: '1) Informe de remuneraciones 2025: no lo publica; 2) informe de sostenibilidad (EINF): da el salario medio pero no el ratio; 3) búsqueda en prensa económica: sin resultados. Calculado a partir de 1) y 2).', decision: 'Calculado y marcado como estimación' }] },
   identificacion: {
     nombre: 'Compañía Ejemplo, S.A.', nombre_corto: 'Compañía Ejemplo', ticker: 'EJM', isin: 'ES0000000000', mercado: 'Bolsa de Madrid (Mercado Continuo)', indice_referencia: 'IBEX 35',
@@ -252,7 +252,7 @@ const ejemplo = {
       { nombre: 'Consejera independiente C (ficticia)', cargo: 'Vocal', tipo: 'Independiente', desde: '2021', comisiones: 'Auditoría' },
       { nombre: 'Consejero independiente D (ficticio)', cargo: 'Vocal', tipo: 'Independiente', desde: '2023', comisiones: 'Nombramientos' },
     ],
-    presidente_ceo_separados: true, consejero_coordinador: true, una_accion_un_voto: true, operaciones_vinculadas_relevantes: false, variable_ligado_rentabilidad: true, auditoria_independiente: true, insiders_sin_operaciones: false, accionista_control: false, cambios_cupula_24m: 0, voto_remuneracion_pct: 88.2, voto_remuneracion_contra_pct: 9.6,
+    presidente_ceo_separados: true, consejero_coordinador: true, una_accion_un_voto: true, operaciones_vinculadas_relevantes: false, variable_ligado_rentabilidad: true, auditoria_independiente: true, insiders_sin_operaciones: false, accionista_control: false, presidente_vinculado_control: false, cambios_cupula_24m: 0, voto_remuneracion_pct: 88.2, voto_remuneracion_contra_pct: 9.6, voto_remuneracion_contra_libre_pct: null,
     remuneracion_ceo: { anio: '2025', total: 2.4, fijo: 0.9, variable_corto: 0.8, variable_largo: 0.7, ratio_salario_medio: 52 },
     remuneracion: 'El variable a largo plazo depende al 50 % del ROIC y al 50 % del rendimiento total frente al IBEX; tiene cláusula de recuperación [10].',
     accionistas: [{ nombre: 'Familia fundadora', pct: 28, tipo: 'Familiar', variacion: 'Estable' }, { nombre: 'Fondo de pensiones nórdico', pct: 5.1, tipo: 'Institucional', variacion: 'Sube desde el 3,0 % en 2025 [11]' }, { nombre: 'Gestora estadounidense', pct: 3.2, tipo: 'Institucional', variacion: 'Nueva [11]' }, { nombre: 'Autocartera', pct: 1.2, tipo: 'Autocartera', variacion: 'Por recompras' }],
@@ -282,7 +282,7 @@ const ejemplo = {
     confianza: 'Media',
   },
   multiplos_historicos: {
-    serie: [['2016', 8.4, 15.2], ['2017', 9.1, 16.0], ['2018', 7.6, 13.1], ['2019', 8.8, 15.4], ['2020', 9.6, 19.8], ['2021', 10.9, 18.7], ['2022', 8.2, 13.9], ['2023', 9.0, 14.6], ['2024', 10.1, 16.2], ['2025', 10.6, 17.1]].map(([a, x, y]) => ({ anio: a, precio_cierre: { 2016: 21.5, 2017: 23.0, 2018: 19.4, 2019: 22.8, 2020: 19.6, 2021: 24.3, 2022: 22.1, 2023: 26.7, 2024: 30.1, 2025: 28.9 }[a] ?? null, ev_ebitda_ntm: x, per_ntm: y })),
+    serie: [['2016', 8.4, 15.2], ['2017', 9.1, 16.0], ['2018', 7.6, 13.1], ['2019', 8.8, 15.4], ['2020', 9.6, 19.8], ['2021', 10.9, 18.7], ['2022', 8.2, 13.9], ['2023', 9.0, 14.6], ['2024', 10.1, 16.2], ['2025', 10.6, 17.1]].map(([a, x, y]) => ({ anio: a, excluir: false, precio_cierre: { 2016: 21.5, 2017: 23.0, 2018: 19.4, 2019: 22.8, 2020: 19.6, 2021: 24.3, 2022: 22.1, 2023: 26.7, 2024: 30.1, 2025: 28.9 }[a] ?? null, ev_ebitda_ntm: x, per_ntm: y })),
     comentario: 'Cotiza por encima de su media de diez años; la prima se explica por el mayor peso de redes, más estable [18].',
     confianza: 'Media',
   },

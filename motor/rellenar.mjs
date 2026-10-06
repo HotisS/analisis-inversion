@@ -136,7 +136,8 @@ export function numero(n, dec) {
 const MESES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
 
 export function formatear(v, filtro) {
-  if (vacio(v)) return 'n.d.';
+  if (vacio(v)) return filtro === 'opc' ? '' : 'n.d.'; // «opc»: complemento opcional, sin dato no imprime nada
+  if (filtro === 'opc') filtro = undefined;
   if (typeof v === 'boolean') return v ? 'Sí' : 'No';
   if (Array.isArray(v)) return v.map((x) => formatear(x, filtro)).join(', ');
   if (typeof v === 'object') return JSON.stringify(v);

@@ -19,6 +19,7 @@ try {
   exit 1
 } finally {
   if ($doc) { $doc.Close([ref]0) | Out-Null; [void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($doc) }
-  if ($word) { $word.Quit() | Out-Null; [void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($word) }
+  # Solo se cierra Word si no queda ningún otro documento abierto en esa instancia (puede ser la del usuario).
+  if ($word) { if ($word.Documents.Count -eq 0) { $word.Quit() | Out-Null }; [void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($word) }
   [GC]::Collect(); [GC]::WaitForPendingFinalizers()
 }

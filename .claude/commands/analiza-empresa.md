@@ -8,8 +8,9 @@ Vas a preparar el análisis de inversión completo de **$ARGUMENTS**.
 ## Antes de empezar
 1. Lee **entero** `verticales/empresa/prompt.md`. Es tu especificación: papel, protocolo por fases, protocolo de huecos, reglas de datos, los 27 campos con su formato JSON, la revisión de comité y las comprobaciones finales. Síguelo al pie de la letra.
 2. Lee `verticales/empresa/lecciones.md` (corto): herramientas del repo, fuentes que funcionan y trampas ya conocidas. No hace falta leer los diarios de análisis anteriores ni el código de `motor/`.
-3. Crea la carpeta de trabajo `informes/<nombre-corto>-<AAAA-MM-DD>/` y dentro `notas/` y `notas/docs/`. Ahí vivirán `datos.json`, las notas de investigación, los documentos descargados y el informe.
-4. Fija la fecha de corte (hoy salvo que el usuario diga otra) y dedica entre 30 y 60 minutos al análisis. Prima la profundidad: leer los documentos que importan, no hojearlos ni leerlos enteros cuando basta con una nota.
+3. Anota en el diario el commit con el que empiezas (`git log -1 --oneline`) y no cambies de versión del prompt a mitad del análisis.
+4. Crea la carpeta de trabajo `informes/<nombre-corto>-<AAAA-MM-DD>/` y dentro `notas/` y `notas/docs/`. Ahí vivirán `datos.json`, las notas de investigación, los documentos descargados y el informe.
+5. Fija la fecha de corte (hoy salvo que el usuario diga otra) y dedica entre 30 y 60 minutos al análisis. Prima la profundidad: leer los documentos que importan, no hojearlos ni leerlos enteros cuando basta con una nota.
 
 ## Fases 2-4 en paralelo (si puedes lanzar subagentes)
 Tras la fase 1 (identificación), lanza **cuatro subagentes a la vez**. A cada uno pásale este encargo, la identificación exacta de la empresa (nombre, ticker, ISIN, divisa, cierre del ejercicio, carpeta de trabajo) y estas instrucciones: ejecutar `node herramientas/prompt-de.mjs <letra>` y leer su salida (es su parte del prompt; **no** el prompt entero), leer `verticales/empresa/lecciones.md` y descargar con `herramientas/descargar.mjs` en `notas/docs/`.
@@ -19,7 +20,7 @@ Tras la fase 1 (identificación), lanza **cuatro subagentes a la vez**. A cada u
 - **C. Equipo y gobierno**: `directivos` y `gobierno`. IAGC e IARC (o *proxy*), registros oficiales de participaciones y de operaciones de directivos, hechos relevantes de 12 meses e historial de cumplimiento de la guía.
 - **D. Mercado y valoración**: `identificacion` (precio, acciones, rango), `consenso`, `bolsa`, `multiplos_historicos`, `comparables` (6-10, cifra a cifra), `transacciones` (5-10), el `puente` de `valoracion` y los datos de mercado para el WACC (bono a 10 años, beta). Precio, rango, volumen, rentabilidades, beta, volatilidad, caída máxima y precios de cierre de cada ejercicio salen de `herramientas/bolsa.mjs`, no a mano.
 
-**Guardar por partes.** Cada subagente reescribe su `notas/<letra>.json` **después de cada campo que termina** (no solo al final): un corte por límite de uso o por error no debe perder lo ya investigado. Cada campo terminado lleva su parte de `fuentes`; los que faltan quedan sin escribir.
+**Guardar por partes.** Cada subagente reescribe su `notas/<letra>.json` **después de cada campo que termina** (no solo al final; como mucho cada 10 minutos, aunque sea con el campo a medias): un corte por límite de uso o por error no debe perder lo ya investigado. Cada campo terminado lleva su parte de `fuentes`; los que faltan quedan sin escribir.
 
 Cada subagente escribe en `notas/<letra>.json` **solo hechos**, con las claves de primer nivel del prompt (`financieros`, `gobierno`…), una lista `fuentes` propia (numerada desde 1, con citas `[n]` a esa lista) y una lista `huecos` (protocolo de tres intentos). Devuelve en su respuesta un resumen de diez líneas: qué ha encontrado, qué falta y qué le ha parecido raro.
 
