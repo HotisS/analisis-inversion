@@ -14,7 +14,10 @@ const pedidas = process.argv.slice(2).length ? process.argv.slice(2) : VERTICALE
 for (const v of pedidas) {
   const definicion = (await import(`./${v}.mjs`)).default;
   const graficos = JSON.parse(readFileSync(new URL(`../verticales/${v}/graficos.json`, import.meta.url), 'utf8'));
-  const usados = definicion.bloques.filter((b) => b[0] === 'grafico').map((b) => b[1]);
+  // Los gráficos pueden ir dentro de secciones y apartados condicionales: se buscan en todo el árbol.
+  const usados = [];
+  const buscar = (x) => { if (!Array.isArray(x)) return; if (x[0] === 'grafico') usados.push(x[1]); else x.forEach(buscar); };
+  buscar(definicion.bloques);
   const faltan = usados.filter((id) => !graficos[id]);
   const sobran = Object.keys(graficos).filter((id) => !usados.includes(id));
   if (faltan.length) throw new Error(`${v}: gráficos sin definir en graficos.json: ${faltan.join(', ')}`);

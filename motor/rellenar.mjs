@@ -115,6 +115,14 @@ export function obtener(obj, ruta) {
 
 const vacio = (v) => v === null || v === undefined || v === '' || (Array.isArray(v) && v.length === 0);
 
+// Vacío «en profundidad»: todas sus hojas vacías (sin contar «confianza», que siempre se rellena).
+export function vacioProfundo(v) {
+  if (vacio(v)) return true;
+  if (Array.isArray(v)) return v.every(vacioProfundo);
+  if (typeof v === 'object') return Object.entries(v).every(([k, x]) => k === 'confianza' || vacioProfundo(x));
+  return false;
+}
+
 function agrupar(entero) {
   return entero.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 }
@@ -244,9 +252,71 @@ export function rellenar(plantillaBuf, datos, opciones = {}) {
   const sustituirEscalares = (xml, ctx = datos) =>
     xml.replace(/\{\{\s*([^{}|:#\s]+?)\s*(?:\|\s*([^{}\s]+)\s*)?\}\}/g, (m, ruta, filtro) => (ruta.startsWith('_meta') ? m : esc(valor(ruta, filtro, ctx))));
 
+  // Lo que se quita por falta de datos cuenta como hueco en la cobertura.
+  const contarHuecos = (xml) => {
+    for (const m of textoPlano(xml).matchAll(/\{\{\s*(?:texto:|lista:)?\s*([\w.[\]]+?)(?:\[\][\w.]*)?\s*(?:\|[^{}]*)?\}\}/g)) contar(m[1], null);
+  };
+
   let doc = unirMarcadoresPartidos(zip.get('word/document.xml').toString('utf8'));
 
-  // 1) Filas de tabla repetidas.
+  // 0) Secciones condicionales: {{si:rutas|Título|Núcleo o Complemento}} … {{fin:rutas}}.
+  //    Si todas las rutas están vacías, se quita el bloque entero y se anota en datos._omitidos.
+  //    Se resuelven de fuera adentro: si se quita una sección, sus apartados se van con ella.
+  const omitidos = [];
+  const RE_MARCA = /^\{\{(si|fin):([^}|]+)(?:\|([^}|]*))?(?:\|([^}|]*))?\}\}$/;
+  for (;;) {
+    const marcas = [];
+    for (const m of doc.matchAll(RE_PARRAFO)) {
+      const k = textoPlano(m[0]).trim().match(RE_MARCA);
+      if (k) marcas.push({ tipo: k[1], rutas: k[2].trim(), titulo: k[3], clase: k[4], ini: m.index, fin: m.index + m[0].length });
+    }
+    if (!marcas.length) break;
+    const pila = [];
+    let par = null;
+    for (const mk of marcas) {
+      if (mk.tipo === 'si') { pila.push(mk); continue; }
+      const a = pila.pop();
+      if (!a || a.rutas !== mk.rutas) throw new Error(`Marcadores si/fin descuadrados en la plantilla: ${mk.rutas}`);
+      if (!pila.length) { par = [a, mk]; break; }
+    }
+    if (!par) throw new Error('Marcador {{si:…}} sin su {{fin:…}} en la plantilla');
+    const [a, b] = par;
+    const sinDatos = a.rutas.split(',').map((r) => r.trim()).every((r) => vacioProfundo(obtener(datos, r)));
+    if (sinDatos) {
+      contarHuecos(doc.slice(a.fin, b.ini));
+      if (a.titulo) omitidos.push({ seccion: a.titulo, tipo: a.clase || 'Complemento' });
+      doc = doc.slice(0, a.ini) + doc.slice(b.fin);
+    } else {
+      doc = doc.slice(0, a.ini) + doc.slice(a.fin, b.ini) + doc.slice(b.fin);
+    }
+  }
+  datos = { ...datos, _omitidos: omitidos };
+
+  // 0 bis) Pares etiqueta-valor condicionales: una celda con {{?rutas}} se vacía, junto con la
+  //    celda siguiente (su valor), si todas las rutas están vacías. Las filas que quedan vacías se quitan.
+  doc = doc.replace(/<w:tr\b[\s\S]*?<\/w:tr>/g, (fila) => {
+    if (!fila.includes('{{?')) return fila;
+    const celdas = [...fila.matchAll(/<w:tc\b[\s\S]*?<\/w:tc>/g)].map((m) => m[0]);
+    const quitar = new Set();
+    celdas.forEach((c, i) => {
+      const m = textoPlano(c).match(/\{\{\?([^}]*)\}\}/);
+      if (!m) return;
+      const rutas = m[1].split(',').map((s) => s.trim()).filter(Boolean);
+      if (rutas.length && rutas.every((r) => vacio(obtener(datos, r)))) {
+        quitar.add(i); quitar.add(i + 1);
+        rutas.forEach((r) => contar(r, null));
+      }
+    });
+    if (quitar.size >= celdas.length) return '';
+    let k = 0;
+    return fila.replace(/<w:tc\b[\s\S]*?<\/w:tc>/g, (c) => {
+      const x = c.replace(/\{\{\?[^}]*\}\}/g, '');
+      return quitar.has(k++) ? x.replace(/<w:shd\b[^>]*\/>/g, '').replace(/<w:p\b[\s\S]*<\/w:p>/, '<w:p/>') : x;
+    });
+  });
+
+  // 1) Filas de tabla repetidas. Una tabla sin filas se quita entera.
+  const VACIA = '@@TABLA_VACIA@@';
   doc = doc.replace(/<w:tr\b[\s\S]*?<\/w:tr>/g, (fila) => {
     const m = textoPlano(fila).match(/\{\{\s*([\w.]+)\[\]/);
     if (!m) return fila;
@@ -256,9 +326,8 @@ export function rellenar(plantillaBuf, datos, opciones = {}) {
     contar(ruta, lista);
     const reFila = new RegExp(`\\{\\{\\s*${ruta.replace(/\./g, '\\.')}\\[\\]\\.?([\\w.]*)\\s*(?:\\|\\s*([^{}\\s]+)\\s*)?\\}\\}`, 'g');
     if (!Array.isArray(lista) || lista.length === 0) {
-      avisos.push(`Tabla sin filas: ${ruta}`);
-      let primero = true;
-      return fila.replace(reFila, () => (primero ? ((primero = false), 'Sin datos') : '')).replace(/\{\{#\}\}/g, '');
+      if (!/^(_|meta\.)/.test(ruta)) avisos.push(`Tabla sin filas (se omite): ${ruta}`);
+      return VACIA;
     }
     return lista.map((item, i) => {
       const r = fila
@@ -267,8 +336,9 @@ export function rellenar(plantillaBuf, datos, opciones = {}) {
       return sustituirEscalares(r);
     }).join('');
   });
+  doc = doc.replace(/<w:tbl\b[\s\S]*?<\/w:tbl>/g, (t) => (t.includes(VACIA) || !/<w:tr\b/.test(t) ? '' : t));
 
-  // 2) Párrafos de bloque: texto, lista, gráfico.
+  // 2) Párrafos de bloque: texto, lista, gráfico. Sin datos, desaparecen.
   const partes = { graficos: [], siguienteId: 1 };
   doc = doc.replace(RE_PARRAFO, (p) => {
     const t = textoPlano(p).trim();
@@ -277,7 +347,8 @@ export function rellenar(plantillaBuf, datos, opciones = {}) {
       const v = obtener(datos, m[1]);
       if (v === undefined) avisos.push(`Campo inexistente en datos: ${m[1]}`);
       contar(m[1], v);
-      const texto = vacio(v) ? 'n.d.' : Array.isArray(v) ? v.join('\n\n') : String(v);
+      if (vacio(v)) return '';
+      const texto = Array.isArray(v) ? v.join('\n\n') : String(v);
       const rPr = rPrPrimeraRun(p);
       return texto.split(/\n\s*\n/).map((par) => parrafo(p, runs(par.trim(), rPr))).join('');
     }
@@ -285,7 +356,8 @@ export function rellenar(plantillaBuf, datos, opciones = {}) {
       const v = obtener(datos, m[1]);
       if (v === undefined) avisos.push(`Campo inexistente en datos: ${m[1]}`);
       contar(m[1], v);
-      const items = vacio(v) ? ['n.d.'] : (Array.isArray(v) ? v : [v]).map((x) =>
+      if (vacio(v)) return '';
+      const items = (Array.isArray(v) ? v : [v]).map((x) =>
         typeof x === 'object' && x !== null ? Object.values(x).filter((y) => !vacio(y)).join(' — ') : String(x));
       const rPr = rPrPrimeraRun(p);
       return items.map((it) => parrafo(p, runs(it, rPr))).join('');
@@ -294,12 +366,23 @@ export function rellenar(plantillaBuf, datos, opciones = {}) {
       const def = graficos[m[1]];
       if (!def) { avisos.push(`Gráfico sin definición: ${m[1]}`); return parrafo(p, ''); }
       const g = construirGrafico(def, datos, partes.graficos.length + 1, avisos, m[1]);
-      if (!g) return parrafo(p, runs(`[Gráfico «${m[1]}» no disponible: faltan datos]`, '<w:rPr><w:i/><w:color w:val="8A8984"/><w:sz w:val="18"/></w:rPr>'));
+      if (!g) return '';
       partes.graficos.push(g);
       return parrafo(p, dibujoEnLinea(g, 1000 + partes.graficos.length));
     }
     return p;
   });
+
+  // 2 bis) Un párrafo del cuerpo (fuera de tablas) cuyos valores están todos vacíos se quita entero.
+  const tablas = [];
+  doc = doc.replace(/<w:tbl\b[\s\S]*?<\/w:tbl>/g, (t) => `@@TBL${tablas.push(t) - 1}@@`);
+  doc = doc.replace(RE_PARRAFO, (p) => {
+    const rutas = [...textoPlano(p).matchAll(/\{\{\s*([^{}|:#?\s]+?)\s*(?:\|[^{}]*)?\}\}/g)].map((m) => m[1]).filter((r) => !r.startsWith('_meta'));
+    if (!rutas.length || !rutas.every((r) => vacio(obtener(datos, r)))) return p;
+    rutas.forEach((r) => contar(r, null));
+    return '';
+  });
+  doc = doc.replace(/@@TBL(\d+)@@/g, (_, i) => tablas[+i]);
 
   // 3) Valores sueltos (cuerpo, cabeceras y pies).
   doc = sustituirEscalares(doc);
@@ -316,7 +399,13 @@ export function rellenar(plantillaBuf, datos, opciones = {}) {
     secciones_flojas: Object.entries(porSeccion).filter(([, c]) => pct(c.llenos, c.total) < 60).map(([k]) => k).join(', ') || 'ninguna',
     detalle: Object.fromEntries(Object.entries(porSeccion).map(([k, c]) => [k, pct(c.llenos, c.total)])),
     generado: new Date().toISOString().slice(0, 10),
+    omitidos: omitidos.map((o) => o.seccion).join('; '),
+    aviso_nucleo: omitidos.some((o) => /n[úu]cleo/i.test(o.tipo))
+      ? `Aviso: este informe no incluye ${omitidos.filter((o) => /n[úu]cleo/i.test(o.tipo)).map((o) => `«${o.seccion}»`).join(', ')}, porque no se encontró información verificable tras tres búsquedas. Ver el anexo «Información no disponible».`
+      : '',
   };
+  // El aviso solo aparece si falta alguna sección central.
+  if (!meta.aviso_nucleo) doc = doc.replace(RE_PARRAFO, (p) => (textoPlano(p).includes('{{_meta.aviso_nucleo}}') ? '' : p));
   const ponerMeta = (xml) => xml.replace(/\{\{\s*_meta\.([\w.]+)\s*(?:\|\s*([^{}\s]+)\s*)?\}\}/g, (_, r, f) => esc(formatear(obtener(meta, r), f)));
   doc = ponerMeta(doc);
   zip.set('word/document.xml', doc);
@@ -380,6 +469,8 @@ export function incrustarGraficos(plantillaBuf, graficos) {
 //     "min": 0, "max": 5,                              // escala fija (opcional)
 //     "alto_cm": 7.5, "ancho_cm": 16,
 //     // dispersión: "x": {campo,nombre}, "y": {campo,nombre}, "etiqueta": "nombre", "destacar_primero": true
+//     // rango (barras flotantes): "categoria", "campo_min", "campo_max", "gris" (campo que marca las filas de referencia)
+//     // pivot: { "lista", "nombre", "historico", "periodo", "valor" } → una serie por elemento de la lista
 //   }
 // }
 
@@ -391,13 +482,49 @@ const xmlTexto = (s) => esc(s);
 
 function construirGrafico(def, datos, n, avisos, id) {
   const titulo = def.titulo ? def.titulo.replace(/\{\{\s*([^{}|\s]+)\s*(?:\|\s*([^{}\s]+))?\s*\}\}/g, (_, r, f) => formatear(obtener(datos, r), f)) : '';
+  const num = (v) => (vacio(v) || Number.isNaN(Number(v)) ? null : Number(v));
+
+  // «pivot»: una serie por elemento de una lista, con sus valores en una sublista por periodo
+  // (p. ej. ingresos de cada segmento año a año → columnas apiladas).
+  if (def.pivot) {
+    const pv = def.pivot;
+    const items = obtener(datos, pv.lista);
+    if (!Array.isArray(items) || !items.length) { avisos.push(`Gráfico ${id}: no hay lista en «${pv.lista}»`); return null; }
+    const cats = [...new Set(items.flatMap((it) => (obtener(it, pv.historico) || []).map((h) => String(obtener(h, pv.periodo)))))]
+      .sort((a, b) => (parseInt(a.match(/\d{4}/)?.[0] ?? a, 10) || 0) - (parseInt(b.match(/\d{4}/)?.[0] ?? b, 10) || 0));
+    const series = items.map((it) => ({
+      nombre: String(obtener(it, pv.nombre) ?? ''),
+      valores: cats.map((c) => num(obtener((obtener(it, pv.historico) || []).find((h) => String(obtener(h, pv.periodo)) === c) || {}, pv.valor))),
+    })).filter((s) => s.valores.some((v) => v !== null));
+    if (!cats.length || !series.length) { avisos.push(`Gráfico ${id}: sin valores numéricos`); return null; }
+    if (series.length > PALETA.length) avisos.push(`Gráfico ${id}: ${series.length} series; agrupa las pequeñas en «Otros» (máximo ${PALETA.length})`);
+    const hoja = [['', ...series.map((s) => s.nombre)], ...cats.map((c, i) => [c, ...series.map((s) => s.valores[i])])];
+    return empaquetar(def, n, xmlCategorias(def, titulo, cats, series), hoja, titulo);
+  }
+
   let filas = obtener(datos, def.datos);
   if (!Array.isArray(filas)) { avisos.push(`Gráfico ${id}: no hay lista en «${def.datos}»`); return null; }
   if (def.filtrar) filas = filas.filter((f) => !vacio(obtener(f, def.filtrar)));
   if (def.max_filas) filas = filas.slice(0, def.max_filas);
-  const num = (v) => (vacio(v) || Number.isNaN(Number(v)) ? null : Number(v));
 
   let xml, hoja;
+  if (def.tipo === 'rango') {
+    // Barras flotantes (p. ej. la síntesis de valoración): una serie invisible hasta el mínimo
+    // y otra con la longitud del rango. Las filas marcadas en «gris» son referencias, no métodos.
+    const filasOk = filas.filter((f) => num(obtener(f, def.campo_min)) !== null && num(obtener(f, def.campo_max)) !== null);
+    if (!filasOk.length) { avisos.push(`Gráfico ${id}: sin rangos completos`); return null; }
+    const cats = filasOk.map((f) => String(obtener(f, def.categoria) ?? ''));
+    const mins = filasOk.map((f) => num(obtener(f, def.campo_min)));
+    const largos = filasOk.map((f, i) => num(obtener(f, def.campo_max)) - mins[i]);
+    const grises = filasOk.map((f, i) => (def.gris && obtener(f, def.gris) ? i : -1)).filter((i) => i >= 0);
+    const lo = Math.min(...mins), hi = Math.max(...filasOk.map((f) => num(obtener(f, def.campo_max))));
+    const paso = 10 ** Math.floor(Math.log10(Math.max(hi - lo, 1e-9) / 2));
+    const defR = { ...def, tipo: 'barras_apiladas', max: undefined, min: Math.max(0, Math.floor((lo - (hi - lo) * 0.1) / paso) * paso), etiquetas: false };
+    const series = [{ nombre: 'Desde', valores: mins, invisible: true }, { nombre: def.nombre_serie || 'Rango', valores: largos, grises }];
+    hoja = [['', 'Mínimo', 'Máximo'], ...cats.map((c, i) => [c, mins[i], mins[i] + largos[i]])];
+    xml = xmlCategorias(defR, titulo, cats, series, { sinLeyenda: true });
+    return empaquetar(def, n, xml, hoja, titulo);
+  }
   if (def.tipo === 'dispersion') {
     const puntos = filas.map((f) => ({ nombre: String(obtener(f, def.etiqueta) ?? ''), x: num(obtener(f, def.x.campo)), y: num(obtener(f, def.y.campo)) }))
       .filter((p) => p.x !== null && p.y !== null);
@@ -416,6 +543,10 @@ function construirGrafico(def, datos, n, avisos, id) {
     hoja = [['', ...series.map((s) => s.nombre)], ...cats.map((c, i) => [c, ...series.map((s) => s.valores[i])])];
     xml = xmlCategorias(def, titulo, cats, series);
   }
+  return empaquetar(def, n, xml, hoja, titulo);
+}
+
+function empaquetar(def, n, xml, hoja, titulo) {
   return {
     n, rid: `rIdGrafico${n}`, xml, xlsx: libroExcel(hoja),
     cx: Math.round((def.ancho_cm || 16) * EMU_CM), cy: Math.round((def.alto_cm || 7.5) * EMU_CM), titulo,
@@ -465,7 +596,7 @@ function envolver(def, titulo, plotArea, conLeyenda, posLeyenda) {
   return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><c:chartSpace xmlns:c="http://schemas.openxmlformats.org/drawingml/2006/chart" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><c:date1904 val="0"/><c:lang val="es-ES"/><c:roundedCorners val="0"/><c:chart>${tituloXml(titulo)}<c:plotArea><c:layout/>${plotArea}</c:plotArea>${leyenda(conLeyenda, posLeyenda)}<c:plotVisOnly val="1"/><c:dispBlanksAs val="gap"/></c:chart><c:spPr><a:noFill/><a:ln><a:noFill/></a:ln></c:spPr>${txPr(900)}<c:externalData r:id="rId1"><c:autoUpdate val="0"/></c:externalData></c:chartSpace>`;
 }
 
-function xmlCategorias(def, titulo, cats, series) {
+function xmlCategorias(def, titulo, cats, series, opciones = {}) {
   const ult = cats.length + 1;
   const comun = (s, i) => `<c:idx val="${i}"/><c:order val="${i}"/><c:tx>${strCache([s.nombre], ref(col(i + 1), 1))}</c:tx>`;
   const catYval = (s, i) => `<c:cat>${strCache(cats, ref('A', 2, ult))}</c:cat><c:val>${numCache(s.valores, ref(col(i + 1), 2, ult), def.formato)}</c:val>`;
@@ -476,15 +607,22 @@ function xmlCategorias(def, titulo, cats, series) {
       const horizontal = def.tipo.startsWith('barras');
       const apilado = def.tipo.endsWith('apiladas');
       const unaSerie = series.length === 1;
+      const gris = (k) => `<c:dPt><c:idx val="${k}"/><c:invertIfNegative val="0"/><c:bubble3D val="0"/><c:spPr>${relleno('C9C8C2')}</c:spPr></c:dPt>`;
+      const visibles = series.filter((s) => !s.invisible);
       const sers = series.map((s, i) => {
-        // Con una sola serie, «resaltar» pinta de gris todas las barras menos las indicadas.
-        const dpts = unaSerie && def.resaltar !== undefined
-          ? cats.map((c, k) => (([].concat(def.resaltar)).includes(k) || ([].concat(def.resaltar)).includes(c) ? '' : `<c:dPt><c:idx val="${k}"/><c:invertIfNegative val="0"/><c:bubble3D val="0"/><c:spPr>${relleno('C9C8C2')}</c:spPr></c:dPt>`)).join('')
-          : '';
-        return `<c:ser>${comun(s, i)}<c:spPr>${relleno(color(s, i))}${linea(apilado ? 'FFFFFF' : null, apilado ? 12700 : 9525)}</c:spPr><c:invertIfNegative val="0"/>${dpts}${etiquetasXml(def, apilado ? 'ctr' : 'outEnd')}${catYval(s, i)}</c:ser>`;
+        // Serie invisible: el «hueco» de las barras flotantes.
+        if (s.invisible) return `<c:ser>${comun(s, i)}<c:spPr><a:noFill/><a:ln><a:noFill/></a:ln></c:spPr><c:invertIfNegative val="0"/>${catYval(s, i)}</c:ser>`;
+        // Con una sola serie, «resaltar» pinta de gris todas las barras menos las indicadas;
+        // «grises» pinta de gris las indicadas.
+        const dpts = s.grises ? s.grises.map(gris).join('')
+          : unaSerie && def.resaltar !== undefined
+            ? cats.map((c, k) => (([].concat(def.resaltar)).includes(k) || ([].concat(def.resaltar)).includes(c) ? '' : gris(k))).join('')
+            : '';
+        const c = s.invisible === undefined && visibles.length === 1 ? PALETA[0] : color(s, i - (series.length - visibles.length));
+        return `<c:ser>${comun(s, i)}<c:spPr>${relleno(c)}${linea(apilado && visibles.length > 1 ? 'FFFFFF' : null, apilado ? 12700 : 9525)}</c:spPr><c:invertIfNegative val="0"/>${dpts}${etiquetasXml(def, apilado ? 'ctr' : 'outEnd')}${catYval(s, i)}</c:ser>`;
       }).join('');
       const area = `<c:barChart><c:barDir val="${horizontal ? 'bar' : 'col'}"/><c:grouping val="${apilado ? 'stacked' : 'clustered'}"/><c:varyColors val="0"/>${sers}<c:gapWidth val="${apilado ? 60 : 70}"/>${apilado ? '<c:overlap val="100"/>' : '<c:overlap val="-10"/>'}<c:axId val="10"/><c:axId val="20"/></c:barChart>${ejes(def, horizontal)}`;
-      return envolver(def, titulo, area, series.length > 1);
+      return envolver(def, titulo, area, !opciones.sinLeyenda && visibles.length > 1);
     }
     case 'lineas': {
       const sers = series.map((s, i) => `<c:ser>${comun(s, i)}<c:spPr><a:ln w="25400" cap="rnd">${relleno(color(s, i))}<a:round/></a:ln></c:spPr><c:marker><c:symbol val="circle"/><c:size val="6"/><c:spPr>${relleno(color(s, i))}${linea('FFFFFF', 9525)}</c:spPr></c:marker>${etiquetasXml(def, 't')}${catYval(s, i)}<c:smooth val="0"/></c:ser>`).join('');

@@ -4,7 +4,7 @@ Plantillas Word, prompts y un motor para producir informes de análisis de inver
 
 | Vertical | Se le da | Campos | Gráficos |
 |---|---|---|---|
-| **Empresa cotizada** | nombre, ticker o ISIN | 17 | 14 |
+| **Empresa cotizada** (extensa: 30-60 min, 30-50 páginas) | nombre, ticker o ISIN | 27 secciones | 28 |
 | **ETF** | nombre, ticker o ISIN | 13 | 10 |
 | **Industria o sector** | nombre + ámbito geográfico | 18 | 11 |
 
@@ -30,7 +30,7 @@ prompt.md ──► el modelo investiga y escribe datos.json ──► rellenar.
 
 Y escribe, por ejemplo: `EMPRESA: Viscofan`, `ETF: IE00B4L5Y983` o `SECTOR: residencias de mayores` / `ÁMBITO: España`.
 
-**En Claude Code, dentro de este repo.** Basta con «analiza la empresa Viscofan». El [CLAUDE.md](CLAUDE.md) explica el procedimiento y el informe queda en `informes/`.
+**En Claude Code, dentro de este repo.** Para empresas, `/analiza-empresa Viscofan` (reparte la investigación entre cuatro subagentes y tarda 30-60 minutos). Para ETF y sectores, «analiza el ETF …» o «analiza el sector …». El [CLAUDE.md](CLAUDE.md) explica el procedimiento y el informe queda en `informes/`.
 
 **A mano, con un datos.json ya hecho:**
 
@@ -44,6 +44,7 @@ Solo necesita Node 18 o superior; el motor no tiene dependencias.
 
 ```
 motor/rellenar.mjs            Motor: plantilla + datos → informe (sin dependencias)
+motor/calcular-empresa.mjs    Cálculos de empresa: DCF, sensibilidades, DCF inverso, comparables, Altman/Piotroski/Beneish, gobierno, controles
 verticales/<vertical>/
   prompt.md                   Prompt con las instrucciones campo a campo
   plantilla.docx              Plantilla Word con los marcadores (generada)

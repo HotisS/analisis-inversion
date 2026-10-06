@@ -3,271 +3,2035 @@
     "fecha_corte": "2026-10-06",
     "divisa": "EUR",
     "unidades": "millones",
-    "limitaciones": "EJEMPLO FICTICIO para probar la plantilla: la empresa y todas sus cifras son inventadas."
+    "cierre_ejercicio_mes": 12,
+    "normas_contables": "NIIF-UE",
+    "limitaciones": "EJEMPLO FICTICIO para probar la plantilla y el motor: la empresa, las personas y todas las cifras son inventadas.",
+    "huecos": [
+      {
+        "seccion": "Gobierno",
+        "campo": "Ratio de la remuneración del primer ejecutivo sobre el salario medio",
+        "tipo": "Complemento",
+        "intentos": "1) Informe de remuneraciones 2025: no lo publica; 2) informe de sostenibilidad (EINF): da el salario medio pero no el ratio; 3) búsqueda en prensa económica: sin resultados. Calculado a partir de 1) y 2).",
+        "decision": "Calculado y marcado como estimación"
+      }
+    ]
   },
   "identificacion": {
     "nombre": "Compañía Ejemplo, S.A.",
+    "nombre_corto": "Compañía Ejemplo",
     "ticker": "EJM",
     "isin": "ES0000000000",
     "mercado": "Bolsa de Madrid (Mercado Continuo)",
     "indice_referencia": "IBEX 35",
     "pais": "España",
+    "pais_iso": "ES",
     "sector": "Industria",
-    "industria": "Componentes eléctricos",
+    "industria": "Componentes y equipos eléctricos",
     "sede": "Madrid",
+    "fundacion": "1975",
     "empleados": 8400,
     "web": "www.ejemplo.com",
-    "precio": 24.6,
+    "precio": 31.4,
     "fecha_precio": "2026-10-03",
-    "capitalizacion": 3936,
-    "valor_empresa": 4810,
     "acciones": 160,
+    "capitalizacion_publicada": 5024,
     "free_float_pct": 62.5,
-    "max_52s": 27.9,
-    "min_52s": 18.4,
+    "max_52s": 33.9,
+    "min_52s": 24.1,
     "volumen_medio_diario": "≈ 6,5 M EUR/día (3 meses)",
     "proximos_resultados": "2026-10-29"
   },
   "resumen": {
-    "conclusion": "Atractiva",
+    "conclusion": "Neutral",
     "horizonte": "2-3 años",
-    "tesis": "Ejemplo es un fabricante de componentes eléctricos de media tensión con el **38 % de sus ingresos en redes**, un mercado que crece por encima del 7 % anual por la inversión en redes de distribución [1]. Cotiza a 11,1x EV/EBITDA, cerca de su media de cinco años (10,4x) y por debajo de sus comparables (11,2x) [4], pese a tener un ROIC que supera su coste de capital en 5 puntos.\n\nEl descuento se explica por la caída de la división de automoción, que pesa el 21 % y pierde volumen desde 2024. Si redes mantiene el ritmo, el peso de automoción baja solo y el múltiplo debería converger.",
+    "tesis": "Ejemplo fabrica equipos eléctricos de media tensión y obtiene ya el **39 % de sus ingresos de las redes de distribución**, un mercado que crece por encima del 7 % anual por la inversión regulada en redes [1][19]. El margen EBITDA ha subido 160 pb desde 2021 por ese cambio de mezcla [1].\n\nAl precio actual, el DCF inverso dice que el mercado descuenta un crecimiento anual cercano al de nuestra proyección: el precio ya recoge buena parte de la tesis de redes [16].\n\nPara ganar dinero hay que creer que el margen de redes seguirá subiendo y que automoción se estabiliza en 2027; ninguna de las dos cosas está demostrada [5][6].",
+    "vision_diferencial": {
+      "mercado_descuenta": "Un crecimiento de ingresos en torno al 6 % anual y márgenes estables, en línea con el consenso [16][17].",
+      "nuestra_vision": "Coincidimos en crecimiento, pero vemos más riesgo en el margen de automoción y en la presión de precios asiática en transformadores [26].",
+      "por_que": "La dirección no ha concretado el plan de reducción de capacidad en automoción y los concursos de transformadores se están perdiendo por precio [6][7]."
+    },
     "a_favor": [
-      "**Redes eléctricas**: cartera de pedidos de 1,9 veces los ingresos del segmento [2].",
-      "**Balance holgado**: deuda neta de 1,4x EBITDA y sin vencimientos relevantes hasta 2028 [2].",
-      "**Valoración**: 11,1x EV/EBITDA frente a 13,4x del líder del sector [4]."
+      "**Redes eléctricas**: cartera de pedidos de 1,9 veces los ingresos del segmento [4].",
+      "**Balance**: deuda neta de 1,3x EBITDA y sin vencimientos relevantes hasta 2028 [1].",
+      "**Asignación de capital**: recompras de 120 M en tres años con el ROIC por encima del WACC [1].",
+      "**Gobierno**: mayoría de independientes y variable ligado al ROIC [9][10]."
     ],
     "en_contra": [
-      "**Automoción** sigue cayendo (-8 % en el primer semestre de 2026) [3].",
-      "**Cobre**: un 10 % de subida resta ~40 pb de margen bruto si no se traslada a precio [2]."
+      "**Automoción** sigue cayendo (−6 % en el primer semestre) [4].",
+      "**Cobre**: una subida del 10 % resta unos 40 pb de margen bruto si no se traslada [1].",
+      "**Valoración**: el precio ya descuenta la mejora de márgenes [18].",
+      "**Competencia asiática** en transformadores con precios un 15-20 % inferiores [26]."
     ],
-    "que_vigilar": "La tesis necesita que la cartera de redes se convierta en ingresos al ritmo previsto (+9 % anual) y que automoción toque fondo en 2027. La señal de que no funciona sería una caída de la cartera de pedidos dos trimestres seguidos.",
+    "que_vigilar": "La tesis depende de que la cartera de redes se convierta en ingresos al ritmo previsto y de que automoción toque fondo en 2027. La señal de alarma sería una caída de la cartera de pedidos dos trimestres seguidos [4].",
+    "kpis_seguimiento": [
+      {
+        "kpi": "Cartera de pedidos de redes",
+        "nivel_actual": "2.020 M",
+        "umbral_alerta": "< 1.800 M",
+        "por_que": "Anticipa los ingresos de 12-18 meses."
+      },
+      {
+        "kpi": "Margen EBIT de automoción",
+        "nivel_actual": "6,1 %",
+        "umbral_alerta": "< 4 %",
+        "por_que": "Si cae más, el segmento destruye valor."
+      },
+      {
+        "kpi": "Precio del cobre",
+        "nivel_actual": "9.800 USD/t",
+        "umbral_alerta": "> 11.000 USD/t",
+        "por_que": "Coste principal de los cables."
+      },
+      {
+        "kpi": "Concursos de transformadores ganados",
+        "nivel_actual": "58 %",
+        "umbral_alerta": "< 45 %",
+        "por_que": "Mide la presión asiática."
+      }
+    ],
     "confianza": "Media"
   },
-  "negocio": {
-    "descripcion": "Diseña y fabrica aparamenta, transformadores de distribución y cableado para tres mercados: redes eléctricas, industria y automoción. Vende sobre todo a distribuidoras eléctricas (contratos marco de 3-5 años) y a fabricantes industriales.",
-    "segmentos": [
-      { "nombre": "Redes eléctricas", "ingresos": 1064, "peso_pct": 38, "crecimiento_pct": 11.2, "margen_pct": 16.5 },
-      { "nombre": "Industria", "ingresos": 1148, "peso_pct": 41, "crecimiento_pct": 3.1, "margen_pct": 12.0 },
-      { "nombre": "Automoción", "ingresos": 588, "peso_pct": 21, "crecimiento_pct": -6.4, "margen_pct": 6.8 }
-    ],
-    "geografias": [
-      { "nombre": "España", "peso_pct": 34 },
-      { "nombre": "Resto de Europa", "peso_pct": 38 },
-      { "nombre": "Norteamérica", "peso_pct": 17 },
-      { "nombre": "Latinoamérica", "peso_pct": 8 },
-      { "nombre": "Resto", "peso_pct": 3 }
-    ],
-    "clientes": "Los diez primeros clientes son el 31 % de las ventas; el mayor, una distribuidora europea, el 7 %. El 45 % de los ingresos de redes viene de contratos marco con cláusula de revisión por cobre.",
-    "kpis": [
-      { "kpi": "Cartera de pedidos", "valor": "2.020 M", "variacion": "+14 %", "comentario": "Récord; 1,9 años de ingresos de redes." },
-      { "kpi": "Book-to-bill", "valor": "1,12x", "variacion": "+0,05", "comentario": "Por encima de 1 seis trimestres seguidos." },
-      { "kpi": "Utilización de plantas", "valor": "81 %", "variacion": "+3 pp", "comentario": "Cerca del límite en transformadores." }
+  "historia": {
+    "resumen": "Fundada en 1975 como taller de bobinado, salió a bolsa en 1998 y se transformó con dos compras: cables especiales en 2008 y aparamenta en 2015. La familia fundadora conserva el 28 % [1][9].",
+    "hitos": [
+      {
+        "anio": "1975",
+        "hito": "Fundación en Madrid."
+      },
+      {
+        "anio": "1998",
+        "hito": "Salida a bolsa."
+      },
+      {
+        "anio": "2008",
+        "hito": "Compra de un fabricante de cables especiales."
+      },
+      {
+        "anio": "2015",
+        "hito": "Entrada en aparamenta de media tensión."
+      },
+      {
+        "anio": "2019",
+        "hito": "Nueva consejera delegada."
+      },
+      {
+        "anio": "2022",
+        "hito": "Compra de cables especiales en Polonia por 120 M."
+      },
+      {
+        "anio": "2025",
+        "hito": "Plan estratégico 2025-2028 [8]."
+      }
     ],
     "confianza": "Alta"
   },
-  "competencia": {
-    "tamano_mercado": "≈ 42.000 M EUR (Europa)",
-    "crecimiento_mercado_pct": 7.4,
-    "cuota_pct": 4.1,
-    "foso": "Estrecho",
-    "mercado": "Mercado europeo de equipos de distribución eléctrica, concentrado en cuatro grandes grupos (55 % de cuota) y una cola de especialistas regionales.",
-    "competidores": [
-      { "nombre": "Grupo Alfa", "pais": "Francia", "cuota_pct": 18, "comentario": "Líder en aparamenta; compite en precio en grandes concursos." },
-      { "nombre": "Beta Energy", "pais": "Alemania", "cuota_pct": 15, "comentario": "Fuerte en transformadores de potencia." },
-      { "nombre": "Gamma Systems", "pais": "Suiza", "cuota_pct": 12, "comentario": "Integra software de red." }
+  "negocio": {
+    "descripcion": "Diseña y fabrica aparamenta, transformadores de distribución y cableado para tres mercados: redes eléctricas, industria y automoción. Vende sobre todo a distribuidoras eléctricas con contratos marco de 3-5 años y a fabricantes industriales; tiene 14 plantas en seis países [1].",
+    "como_gana_dinero": "El 45 % de los ingresos de redes viene de contratos marco con revisión de precios por cobre. El margen depende del precio del cobre, de la utilización de las plantas (81 %) y de la mezcla: redes deja 17 % de margen EBIT frente al 6 % de automoción [1][4].",
+    "segmentos": [
+      {
+        "nombre": "Redes eléctricas",
+        "descripcion": "Aparamenta y transformadores para distribuidoras eléctricas.",
+        "tipo_resultado": "EBIT",
+        "historico": [
+          {
+            "periodo": "2021",
+            "ingresos": 719,
+            "resultado": 102
+          },
+          {
+            "periodo": "2022",
+            "ingresos": 835,
+            "resultado": 124
+          },
+          {
+            "periodo": "2023",
+            "ingresos": 941,
+            "resultado": 150
+          },
+          {
+            "periodo": "2024",
+            "ingresos": 1042,
+            "resultado": 172
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 1155,
+            "resultado": 198
+          }
+        ]
+      },
+      {
+        "nombre": "Industria",
+        "descripcion": "Cableado y equipos para plantas industriales.",
+        "tipo_resultado": "EBIT",
+        "historico": [
+          {
+            "periodo": "2021",
+            "ingresos": 1021,
+            "resultado": 116
+          },
+          {
+            "periodo": "2022",
+            "ingresos": 1089,
+            "resultado": 120
+          },
+          {
+            "periodo": "2023",
+            "ingresos": 1129,
+            "resultado": 133
+          },
+          {
+            "periodo": "2024",
+            "ingresos": 1155,
+            "resultado": 140
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 1184,
+            "resultado": 146
+          }
+        ]
+      },
+      {
+        "nombre": "Automoción",
+        "descripcion": "Mazos de cables para fabricantes de automóviles.",
+        "tipo_resultado": "EBIT",
+        "historico": [
+          {
+            "periodo": "2021",
+            "ingresos": 580,
+            "resultado": 46
+          },
+          {
+            "periodo": "2022",
+            "ingresos": 607,
+            "resultado": 41
+          },
+          {
+            "periodo": "2023",
+            "ingresos": 618,
+            "resultado": 44
+          },
+          {
+            "periodo": "2024",
+            "ingresos": 620,
+            "resultado": 41
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 622,
+            "resultado": 38
+          }
+        ]
+      }
     ],
-    "ventajas": "Homologaciones con las distribuidoras (2-3 años de proceso) y coste de cambio para el cliente. No hay ventaja de escala clara frente a los líderes.",
-    "amenazas": "Entrada de fabricantes asiáticos en transformadores de distribución con precios un 15-20 % inferiores.",
+    "geografias": [
+      {
+        "nombre": "España",
+        "peso_pct": 34
+      },
+      {
+        "nombre": "Resto de Europa",
+        "peso_pct": 38
+      },
+      {
+        "nombre": "Norteamérica",
+        "peso_pct": 17
+      },
+      {
+        "nombre": "Latinoamérica",
+        "peso_pct": 8
+      },
+      {
+        "nombre": "Resto",
+        "peso_pct": 3
+      }
+    ],
+    "clientes": "Los diez primeros clientes son el 31 % de las ventas; el mayor, el 7 %. La tasa de renovación de contratos marco es del 92 % [1]. Subió precios un 9 % en 2022-2023, frente a una inflación de costes del 11 % [2][3].",
+    "kpis": [
+      {
+        "kpi": "Cartera de pedidos",
+        "valor_anterior": "1.770 M",
+        "valor_actual": "2.020 M",
+        "variacion": "+14 %",
+        "comentario": "Récord; 1,9 años de ingresos de redes [4]."
+      },
+      {
+        "kpi": "Book-to-bill",
+        "valor_anterior": "1,07x",
+        "valor_actual": "1,12x",
+        "variacion": "+0,05",
+        "comentario": "Por encima de 1 seis trimestres seguidos [4]."
+      },
+      {
+        "kpi": "Utilización de plantas",
+        "valor_anterior": "78 %",
+        "valor_actual": "81 %",
+        "variacion": "+3 pp",
+        "comentario": "Cerca del límite en transformadores [5]."
+      },
+      {
+        "kpi": "Concursos ganados (transformadores)",
+        "valor_anterior": "64 %",
+        "valor_actual": "58 %",
+        "variacion": "−6 pp",
+        "comentario": "Presión de precios asiática [6]."
+      }
+    ],
+    "confianza": "Alta"
+  },
+  "sector": {
+    "definicion": "Mercado europeo de equipos de distribución eléctrica de media y baja tensión. Tomamos la cifra de la asociación sectorial [19]; la previsión de inversión del organismo europeo da un tamaño un 8 % mayor por perímetro [20].",
+    "tamano": "≈ 42.000 M EUR en 2025 [19]",
+    "unidad_serie": "miles de millones de EUR",
+    "serie": [
+      {
+        "anio": "2021",
+        "tamano": 33.1
+      },
+      {
+        "anio": "2022",
+        "tamano": 35.4
+      },
+      {
+        "anio": "2023",
+        "tamano": 38.2
+      },
+      {
+        "anio": "2024",
+        "tamano": 40
+      },
+      {
+        "anio": "2025",
+        "tamano": 42
+      },
+      {
+        "anio": "2027e",
+        "tamano": 48.3
+      },
+      {
+        "anio": "2030e",
+        "tamano": 59.6
+      }
+    ],
+    "tcac_historico_pct": 6.1,
+    "tcac_previsto_pct": 7.3,
+    "cr5_pct": 61,
+    "estructura": "Moderadamente concentrada",
+    "drivers": [
+      {
+        "driver": "Inversión regulada en redes",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Plan europeo de 584.000 M EUR hasta 2030 [20]."
+      },
+      {
+        "driver": "Electrificación de la industria",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Demanda eléctrica industrial +2 % anual [19]."
+      },
+      {
+        "driver": "Producción de automóviles en Europa",
+        "efecto": "−",
+        "horizonte": "Cíclico",
+        "evidencia": "Por debajo de 2019 en un 18 % [26]."
+      },
+      {
+        "driver": "Precio del cobre",
+        "efecto": "+/−",
+        "horizonte": "Cíclico",
+        "evidencia": "60 % del coste de materiales [1]."
+      }
+    ],
+    "porter": [
+      {
+        "fuerza": "Rivalidad",
+        "intensidad": 3,
+        "justificacion": "Cuatro grandes y una cola de especialistas; precios estables salvo en transformadores [19]."
+      },
+      {
+        "fuerza": "Poder de los clientes",
+        "intensidad": 4,
+        "justificacion": "Distribuidoras grandes que licitan [1]."
+      },
+      {
+        "fuerza": "Poder de los proveedores",
+        "intensidad": 3,
+        "justificacion": "Cobre y acero cotizan en mercado; poca diferenciación [1]."
+      },
+      {
+        "fuerza": "Amenaza de entrada",
+        "intensidad": 2,
+        "justificacion": "Homologaciones de 2-3 años [19]."
+      },
+      {
+        "fuerza": "Amenaza de sustitutos",
+        "intensidad": 1,
+        "justificacion": "No hay alternativa a la red física [19]."
+      }
+    ],
+    "ciclo": {
+      "posicion": "Expansión",
+      "comentario": "La inversión en redes está en máximos y la regulación la asegura hasta 2030 [20]. En 2009 el sector cayó un 12 % y en 2020 un 8 %, la mitad que la industria [19]."
+    },
+    "regulacion": "La remuneración regulada de las distribuidoras fija su inversión: la revisión de 2026 sube la tasa de retribución al 6,5 % [20].",
+    "tendencias": "Digitalización de la red (sensores, telecontrol) y entrada de fabricantes asiáticos en transformadores. Ejemplo gana con la primera y pierde con la segunda [26].",
+    "confianza": "Media"
+  },
+  "competencia": {
+    "cuota_pct": 4.1,
+    "posicion": "5.º fabricante europeo de equipos de distribución",
+    "competidores": [
+      {
+        "nombre": "Grupo Alfa",
+        "pais": "Francia",
+        "ticker": "ALF",
+        "ingresos": 9800,
+        "cuota_pct": 18,
+        "margen_ebit_pct": 15.2,
+        "comentario": "Líder en aparamenta; compite en precio en grandes concursos [21]."
+      },
+      {
+        "nombre": "Beta Energy",
+        "pais": "Alemania",
+        "ticker": "BET",
+        "ingresos": 7600,
+        "cuota_pct": 15,
+        "margen_ebit_pct": 10.8,
+        "comentario": "Fuerte en transformadores [22]."
+      },
+      {
+        "nombre": "Gamma Systems",
+        "pais": "Suiza",
+        "ticker": "GAM",
+        "ingresos": 6200,
+        "cuota_pct": 12,
+        "margen_ebit_pct": 17.4,
+        "comentario": "Integra software de red [19]."
+      },
+      {
+        "nombre": "Delta Cables",
+        "pais": "Italia",
+        "ticker": "DLC",
+        "ingresos": 2100,
+        "cuota_pct": 5,
+        "margen_ebit_pct": 8.1,
+        "comentario": "Especialista en cable [19]."
+      }
+    ],
+    "foso": {
+      "veredicto": "Estrecho",
+      "tendencia": "Estable",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 0,
+          "evidencia": "No aplica a un fabricante de equipos."
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 3,
+          "evidencia": "Homologaciones de 2-3 años con cada distribuidora [1]."
+        },
+        {
+          "fuente": "Intangibles (marca, patentes, licencias)",
+          "puntuacion": 2,
+          "evidencia": "140 patentes, ninguna crítica [1]."
+        },
+        {
+          "fuente": "Ventaja en costes",
+          "puntuacion": 1,
+          "evidencia": "Margen EBIT por debajo de los dos líderes [21][22]."
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 2,
+          "evidencia": "Líder en España con el 22 % de cuota [19]."
+        }
+      ]
+    },
+    "amenazas": "Fabricantes asiáticos de transformadores con precios un 15-20 % inferiores, ya homologados en dos distribuidoras europeas [26].",
     "confianza": "Media"
   },
   "financieros": {
-    "historico": [
-      { "periodo": "2021", "ingresos": 2150, "crecimiento_pct": 6.2, "margen_bruto_pct": 31.0, "ebitda": 301, "margen_ebitda_pct": 14.0, "ebit": 204, "beneficio_neto": 131, "margen_neto_pct": 6.1, "bpa": 0.79 },
-      { "periodo": "2022", "ingresos": 2390, "crecimiento_pct": 11.2, "margen_bruto_pct": 29.4, "ebitda": 318, "margen_ebitda_pct": 13.3, "ebit": 214, "beneficio_neto": 138, "margen_neto_pct": 5.8, "bpa": 0.84 },
-      { "periodo": "2023", "ingresos": 2560, "crecimiento_pct": 7.1, "margen_bruto_pct": 30.8, "ebitda": 371, "margen_ebitda_pct": 14.5, "ebit": 262, "beneficio_neto": 172, "margen_neto_pct": 6.7, "bpa": 1.05 },
-      { "periodo": "2024", "ingresos": 2680, "crecimiento_pct": 4.7, "margen_bruto_pct": 31.6, "ebitda": 402, "margen_ebitda_pct": 15.0, "ebit": 287, "beneficio_neto": 190, "margen_neto_pct": 7.1, "bpa": 1.17 },
-      { "periodo": "2025", "ingresos": 2800, "crecimiento_pct": 4.5, "margen_bruto_pct": 32.1, "ebitda": 434, "margen_ebitda_pct": 15.5, "ebit": 313, "beneficio_neto": 207, "margen_neto_pct": 7.4, "bpa": 1.29 },
-      { "periodo": "2026e", "ingresos": 2990, "crecimiento_pct": 6.8, "margen_bruto_pct": 32.4, "ebitda": 475, "margen_ebitda_pct": 15.9, "ebit": 348, "beneficio_neto": 232, "margen_neto_pct": 7.8, "bpa": 1.45 },
-      { "periodo": "2027e", "ingresos": 3190, "crecimiento_pct": 6.7, "margen_bruto_pct": 32.6, "ebitda": 517, "margen_ebitda_pct": 16.2, "ebit": 382, "beneficio_neto": 258, "margen_neto_pct": 8.1, "bpa": 1.61 }
+    "cuenta": [
+      {
+        "periodo": "2016",
+        "ingresos": 1900,
+        "coste_ventas": 1310,
+        "gastos_generales": 322,
+        "ebitda": 268,
+        "amortizaciones": 82,
+        "ebit": 186,
+        "resultado_financiero": -17,
+        "bai": 169,
+        "impuestos": 41,
+        "minoritarios": 2,
+        "beneficio_neto": 126,
+        "bpa": 0.75,
+        "dpa": 0.33,
+        "acciones_diluidas": 168
+      },
+      {
+        "periodo": "2017",
+        "ingresos": 2010,
+        "coste_ventas": 1383,
+        "gastos_generales": 338,
+        "ebitda": 289,
+        "amortizaciones": 86,
+        "ebit": 203,
+        "resultado_financiero": -18,
+        "bai": 185,
+        "impuestos": 45,
+        "minoritarios": 2,
+        "beneficio_neto": 138,
+        "bpa": 0.82,
+        "dpa": 0.36,
+        "acciones_diluidas": 168
+      },
+      {
+        "periodo": "2018",
+        "ingresos": 2139,
+        "coste_ventas": 1474,
+        "gastos_generales": 361,
+        "ebitda": 304,
+        "amortizaciones": 92,
+        "ebit": 212,
+        "resultado_financiero": -19,
+        "bai": 193,
+        "impuestos": 47,
+        "minoritarios": 2,
+        "beneficio_neto": 144,
+        "bpa": 0.86,
+        "dpa": 0.38,
+        "acciones_diluidas": 167.5
+      },
+      {
+        "periodo": "2019",
+        "ingresos": 2244,
+        "coste_ventas": 1542,
+        "gastos_generales": 374,
+        "ebitda": 328,
+        "amortizaciones": 96,
+        "ebit": 232,
+        "resultado_financiero": -20,
+        "bai": 212,
+        "impuestos": 52,
+        "minoritarios": 3,
+        "beneficio_neto": 157,
+        "bpa": 0.94,
+        "dpa": 0.41,
+        "acciones_diluidas": 167
+      },
+      {
+        "periodo": "2020",
+        "ingresos": 2075,
+        "coste_ventas": 1443,
+        "gastos_generales": 364,
+        "ebitda": 268,
+        "amortizaciones": 89,
+        "ebit": 179,
+        "resultado_financiero": -19,
+        "bai": 160,
+        "impuestos": 39,
+        "minoritarios": 2,
+        "beneficio_neto": 119,
+        "bpa": 0.71,
+        "dpa": 0.31,
+        "acciones_diluidas": 167
+      },
+      {
+        "periodo": "2021",
+        "ingresos": 2320,
+        "coste_ventas": 1597,
+        "gastos_generales": 391,
+        "ebitda": 332,
+        "amortizaciones": 100,
+        "ebit": 232,
+        "resultado_financiero": -21,
+        "bai": 211,
+        "impuestos": 52,
+        "minoritarios": 3,
+        "beneficio_neto": 156,
+        "bpa": 0.94,
+        "dpa": 0.41,
+        "acciones_diluidas": 166
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 2531,
+        "coste_ventas": 1751,
+        "gastos_generales": 436,
+        "ebitda": 344,
+        "amortizaciones": 109,
+        "ebit": 235,
+        "resultado_financiero": -23,
+        "bai": 212,
+        "impuestos": 52,
+        "minoritarios": 3,
+        "beneficio_neto": 157,
+        "bpa": 0.95,
+        "dpa": 0.42,
+        "acciones_diluidas": 166
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 2688,
+        "coste_ventas": 1843,
+        "gastos_generales": 444,
+        "ebitda": 401,
+        "amortizaciones": 116,
+        "ebit": 285,
+        "resultado_financiero": -24,
+        "bai": 261,
+        "impuestos": 64,
+        "minoritarios": 3,
+        "beneficio_neto": 194,
+        "bpa": 1.18,
+        "dpa": 0.52,
+        "acciones_diluidas": 164
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 2817,
+        "coste_ventas": 1924,
+        "gastos_generales": 459,
+        "ebitda": 434,
+        "amortizaciones": 121,
+        "ebit": 313,
+        "resultado_financiero": -25,
+        "bai": 288,
+        "impuestos": 71,
+        "minoritarios": 3,
+        "beneficio_neto": 214,
+        "bpa": 1.32,
+        "dpa": 0.58,
+        "acciones_diluidas": 162
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 2961,
+        "coste_ventas": 2015,
+        "gastos_generales": 475,
+        "ebitda": 471,
+        "amortizaciones": 127,
+        "ebit": 344,
+        "resultado_financiero": -27,
+        "bai": 317,
+        "impuestos": 78,
+        "minoritarios": 4,
+        "beneficio_neto": 235,
+        "bpa": 1.47,
+        "dpa": 0.65,
+        "acciones_diluidas": 160
+      }
     ],
-    "comentario": "Crecimiento medio del 6,8 % anual en 2021-2025 con expansión de 150 pb de margen EBITDA, impulsado por redes. 2026e y 2027e son consenso de 11 analistas [4].",
+    "ltm": {
+      "periodo": "LTM jun-26",
+      "ingresos": 3050,
+      "ebitda": 490,
+      "ebit": 358,
+      "beneficio_neto": 247,
+      "bpa": 1.54,
+      "dpa": 0.65,
+      "fcf": 205
+    },
+    "comentario": "Los ingresos crecieron un 5,5 % anual en 2016-2025, con un 2020 de caída (−7,5 %) por automoción. El margen EBITDA pasó del 14,1 % al 15,9 % por el mayor peso de redes [1][2][3].",
+    "ajustes": "Las cifras son las reportadas. Los no recurrentes (reestructuración en 2020 y 2023) fueron inferiores al 3 % del EBIT [1][3].",
     "confianza": "Alta"
   },
-  "caja": {
-    "historico": [
-      { "periodo": "2021", "flujo_operativo": 228, "capex": 86, "fcf": 142, "beneficio_neto": 131, "conversion_pct": 108, "capex_ventas_pct": 4.0 },
-      { "periodo": "2022", "flujo_operativo": 170, "capex": 98, "fcf": 72, "beneficio_neto": 138, "conversion_pct": 52, "capex_ventas_pct": 4.1 },
-      { "periodo": "2023", "flujo_operativo": 296, "capex": 110, "fcf": 186, "beneficio_neto": 172, "conversion_pct": 108, "capex_ventas_pct": 4.3 },
-      { "periodo": "2024", "flujo_operativo": 318, "capex": 129, "fcf": 189, "beneficio_neto": 190, "conversion_pct": 99, "capex_ventas_pct": 4.8 },
-      { "periodo": "2025", "flujo_operativo": 341, "capex": 140, "fcf": 201, "beneficio_neto": 207, "conversion_pct": 97, "capex_ventas_pct": 5.0 }
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "3T24",
+        "ingresos": 690,
+        "crecimiento_pct": 6.2,
+        "crecimiento_organico_pct": 4.1,
+        "ebitda": 105,
+        "margen_ebitda_pct": 15.2,
+        "bpa": 0.29,
+        "vs_consenso": "Superior"
+      },
+      {
+        "periodo": "4T24",
+        "ingresos": 699,
+        "crecimiento_pct": 4.4,
+        "crecimiento_organico_pct": 3,
+        "ebitda": 108,
+        "margen_ebitda_pct": 15.4,
+        "bpa": 0.3,
+        "vs_consenso": "En línea"
+      },
+      {
+        "periodo": "1T25",
+        "ingresos": 708,
+        "crecimiento_pct": 4.9,
+        "crecimiento_organico_pct": 4.2,
+        "ebitda": 110,
+        "margen_ebitda_pct": 15.6,
+        "bpa": 0.31,
+        "vs_consenso": "En línea"
+      },
+      {
+        "periodo": "2T25",
+        "ingresos": 742,
+        "crecimiento_pct": 5.6,
+        "crecimiento_organico_pct": 5,
+        "ebitda": 113,
+        "margen_ebitda_pct": 15.8,
+        "bpa": 0.33,
+        "vs_consenso": "Superior"
+      },
+      {
+        "periodo": "3T25",
+        "ingresos": 726,
+        "crecimiento_pct": 4.8,
+        "crecimiento_organico_pct": 4.6,
+        "ebitda": 116,
+        "margen_ebitda_pct": 16,
+        "bpa": 0.34,
+        "vs_consenso": "En línea"
+      },
+      {
+        "periodo": "4T25",
+        "ingresos": 735,
+        "crecimiento_pct": 5.2,
+        "crecimiento_organico_pct": 5.1,
+        "ebitda": 119,
+        "margen_ebitda_pct": 16.2,
+        "bpa": 0.35,
+        "vs_consenso": "En línea"
+      },
+      {
+        "periodo": "1T26",
+        "ingresos": 744,
+        "crecimiento_pct": 6.6,
+        "crecimiento_organico_pct": 6,
+        "ebitda": 122,
+        "margen_ebitda_pct": 16.4,
+        "bpa": 0.36,
+        "vs_consenso": "Superior"
+      },
+      {
+        "periodo": "2T26",
+        "ingresos": 778,
+        "crecimiento_pct": 7.1,
+        "crecimiento_organico_pct": 6.8,
+        "ebitda": 125,
+        "margen_ebitda_pct": 16.6,
+        "bpa": 0.37,
+        "vs_consenso": "En línea"
+      }
     ],
-    "calidad": "Conversión media del 93 % en cinco años. 2022 fue la excepción por acumulación de inventario de cobre. Los ajustes entre beneficio reportado y ajustado son pequeños (<3 % del EBIT) y no recurrentes.",
-    "circulante": "Capital circulante del 14 % de las ventas, estable. Usa factoring sin recurso por ~120 M que conviene sumar a la deuda neta en una lectura prudente.",
+    "ultima_presentacion": "La dirección elevó la guía de margen al 16 % y anunció un plan de capacidad en transformadores. Los analistas preguntaron cuatro veces por los precios asiáticos; la respuesta fue genérica [5][6]. Frente a la conferencia anterior, el discurso sobre automoción pasó de «estabilización» a «revisión de la capacidad» [7].",
+    "confianza": "Alta"
+  },
+  "balance": {
+    "historico": [
+      {
+        "periodo": "2019",
+        "activo_total": 2412,
+        "activo_corriente": 929,
+        "pasivo_corriente": 526,
+        "pasivo_total": 1202,
+        "fondo_comercio": 430,
+        "intangibles": 150,
+        "inmovilizado_material": 741,
+        "existencias": 324,
+        "clientes": 381,
+        "proveedores": 247,
+        "caja": 157,
+        "deuda_financiera": 640,
+        "arrendamientos": 76,
+        "patrimonio_neto": 1180,
+        "minoritarios": 30,
+        "reservas": 860
+      },
+      {
+        "periodo": "2020",
+        "activo_total": 2374,
+        "activo_corriente": 953,
+        "pasivo_corriente": 501,
+        "pasivo_total": 1094,
+        "fondo_comercio": 430,
+        "intangibles": 156,
+        "inmovilizado_material": 685,
+        "existencias": 303,
+        "clientes": 353,
+        "proveedores": 231,
+        "caja": 235,
+        "deuda_financiera": 690,
+        "arrendamientos": 71,
+        "patrimonio_neto": 1247,
+        "minoritarios": 33,
+        "reservas": 927
+      },
+      {
+        "periodo": "2021",
+        "activo_total": 2487,
+        "activo_corriente": 961,
+        "pasivo_corriente": 551,
+        "pasivo_total": 1116,
+        "fondo_comercio": 430,
+        "intangibles": 162,
+        "inmovilizado_material": 766,
+        "existencias": 335,
+        "clientes": 394,
+        "proveedores": 256,
+        "caja": 162,
+        "deuda_financiera": 720,
+        "arrendamientos": 79,
+        "patrimonio_neto": 1335,
+        "minoritarios": 36,
+        "reservas": 1015
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 2757,
+        "activo_corriente": 1051,
+        "pasivo_corriente": 599,
+        "pasivo_total": 1296,
+        "fondo_comercio": 520,
+        "intangibles": 168,
+        "inmovilizado_material": 835,
+        "existencias": 368,
+        "clientes": 430,
+        "proveedores": 280,
+        "caja": 177,
+        "deuda_financiera": 760,
+        "arrendamientos": 86,
+        "patrimonio_neto": 1422,
+        "minoritarios": 39,
+        "reservas": 1102
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 2888,
+        "activo_corriente": 1113,
+        "pasivo_corriente": 621,
+        "pasivo_total": 1345,
+        "fondo_comercio": 520,
+        "intangibles": 174,
+        "inmovilizado_material": 887,
+        "existencias": 387,
+        "clientes": 457,
+        "proveedores": 295,
+        "caja": 188,
+        "deuda_financiera": 700,
+        "arrendamientos": 91,
+        "patrimonio_neto": 1501,
+        "minoritarios": 42,
+        "reservas": 1181
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 2999,
+        "activo_corriente": 1165,
+        "pasivo_corriente": 638,
+        "pasivo_total": 1363,
+        "fondo_comercio": 520,
+        "intangibles": 180,
+        "inmovilizado_material": 930,
+        "existencias": 404,
+        "clientes": 479,
+        "proveedores": 308,
+        "caja": 197,
+        "deuda_financiera": 640,
+        "arrendamientos": 96,
+        "patrimonio_neto": 1591,
+        "minoritarios": 45,
+        "reservas": 1271
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 3119,
+        "activo_corriente": 1222,
+        "pasivo_corriente": 660,
+        "pasivo_total": 1379,
+        "fondo_comercio": 520,
+        "intangibles": 186,
+        "inmovilizado_material": 977,
+        "existencias": 423,
+        "clientes": 503,
+        "proveedores": 322,
+        "caja": 207,
+        "deuda_financiera": 600,
+        "arrendamientos": 101,
+        "patrimonio_neto": 1692,
+        "minoritarios": 48,
+        "reservas": 1372
+      }
+    ],
+    "vencimientos": [
+      {
+        "anio": "2026",
+        "importe": 40
+      },
+      {
+        "anio": "2027",
+        "importe": 65
+      },
+      {
+        "anio": "2028",
+        "importe": 300
+      },
+      {
+        "anio": "2029",
+        "importe": 120
+      },
+      {
+        "anio": "2030+",
+        "importe": 75
+      }
+    ],
+    "liquidez": "Caja de 210 M y líneas comprometidas no dispuestas de 500 M",
+    "rating": "BBB (agencia ficticia), perspectiva estable [14]",
+    "coste_deuda_pct": 3.6,
+    "vida_media_anios": 3.4,
+    "otros_pasivos": "Covenant de DN/EBITDA < 3,5x, con holgura amplia. Factoring sin recurso de 120 M, que conviene sumar a la deuda en una lectura prudente. Reclamación fiscal de 18 M en Brasil, provisionada al 50 % [1].",
+    "comentario": "La deuda neta baja de 2,0x a 1,3x EBITDA desde 2022. El ciclo de caja se ha mantenido estable en torno a 90 días [1].",
+    "confianza": "Alta"
+  },
+  "flujos": {
+    "historico": [
+      {
+        "periodo": "2019",
+        "flujo_operativo": 246,
+        "capex": 92,
+        "pagos_arrendamientos": 27,
+        "adquisiciones": 35,
+        "desinversiones": 0,
+        "dividendos": 68,
+        "recompras": 0,
+        "emision_acciones": 0
+      },
+      {
+        "periodo": "2020",
+        "flujo_operativo": 200,
+        "capex": 85,
+        "pagos_arrendamientos": 25,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 52,
+        "recompras": 0,
+        "emision_acciones": 0
+      },
+      {
+        "periodo": "2021",
+        "flujo_operativo": 221,
+        "capex": 95,
+        "pagos_arrendamientos": 28,
+        "adquisiciones": 40,
+        "desinversiones": 18,
+        "dividendos": 68,
+        "recompras": 0,
+        "emision_acciones": 0
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 176,
+        "capex": 104,
+        "pagos_arrendamientos": 30,
+        "adquisiciones": 120,
+        "desinversiones": 0,
+        "dividendos": 70,
+        "recompras": 0,
+        "emision_acciones": 0
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 303,
+        "capex": 132,
+        "pagos_arrendamientos": 32,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 85,
+        "recompras": 30,
+        "emision_acciones": 0
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 329,
+        "capex": 138,
+        "pagos_arrendamientos": 34,
+        "adquisiciones": 25,
+        "desinversiones": 0,
+        "dividendos": 94,
+        "recompras": 40,
+        "emision_acciones": 0
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 357,
+        "capex": 145,
+        "pagos_arrendamientos": 36,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 104,
+        "recompras": 50,
+        "emision_acciones": 0
+      }
+    ],
+    "comentario": "La conversión de beneficio en caja es alta salvo en 2022, por la acumulación de inventario de cobre. La empresa estima el capex de mantenimiento en el 3 % de las ventas [1][8].",
+    "confianza": "Alta"
+  },
+  "calidad": {
+    "auditor": "Auditora Ejemplo",
+    "anios_auditor": 7,
+    "opinion": "Favorable",
+    "comentario": "Sin cambios de criterio en cinco años. Capitaliza el 30 % del gasto en desarrollo, en línea con el sector [1]. Los tres indicadores del motor no muestran señales de alarma.",
+    "senales": [
+      {
+        "senal": "Factoring sin recurso",
+        "nivel": "Media",
+        "comentario": "120 M fuera del balance que mejoran el circulante [1]."
+      }
+    ],
     "confianza": "Alta"
   },
   "rentabilidad": {
-    "historico": [
-      { "periodo": "2021", "roic_pct": 11.2, "wacc_pct": 7.8, "diferencial_pct": 3.4, "roe_pct": 12.8 },
-      { "periodo": "2022", "roic_pct": 10.9, "wacc_pct": 8.6, "diferencial_pct": 2.3, "roe_pct": 12.6 },
-      { "periodo": "2023", "roic_pct": 12.7, "wacc_pct": 8.9, "diferencial_pct": 3.8, "roe_pct": 14.7 },
-      { "periodo": "2024", "roic_pct": 13.4, "wacc_pct": 8.5, "diferencial_pct": 4.9, "roe_pct": 15.3 },
-      { "periodo": "2025", "roic_pct": 13.9, "wacc_pct": 8.4, "diferencial_pct": 5.5, "roe_pct": 15.6 }
-    ],
-    "comentario": "Crea valor de forma sostenida: el ROIC supera el WACC en todos los años y el diferencial se ha ampliado con el mix hacia redes.",
+    "comentario": "El ROIC supera al WACC todos los años desde 2016 y el diferencial se amplía con el peso de redes. El ROIC incremental confirma que el crecimiento reciente crea valor [1].",
     "confianza": "Media"
-  },
-  "balance": {
-    "deuda_neta": 610,
-    "dn_ebitda": 1.4,
-    "cobertura_intereses": 9.8,
-    "liquidez": 720,
-    "rating": "BBB (S&P, estable)",
-    "coste_deuda_pct": 3.6,
-    "historico": [
-      { "periodo": "2021", "deuda_neta": 690, "dn_ebitda": 2.3 },
-      { "periodo": "2022", "deuda_neta": 760, "dn_ebitda": 2.4 },
-      { "periodo": "2023", "deuda_neta": 700, "dn_ebitda": 1.9 },
-      { "periodo": "2024", "deuda_neta": 650, "dn_ebitda": 1.6 },
-      { "periodo": "2025", "deuda_neta": 610, "dn_ebitda": 1.4 }
-    ],
-    "vencimientos": [
-      { "anio": "2026", "importe": 40 },
-      { "anio": "2027", "importe": 65 },
-      { "anio": "2028", "importe": 300 },
-      { "anio": "2029", "importe": 120 },
-      { "anio": "2030+", "importe": 245 }
-    ],
-    "otros_pasivos": "Arrendamientos de 95 M (incluidos en la deuda neta). Sin planes de pensiones de prestación definida relevantes. Una reclamación fiscal de 18 M en Brasil, provisionada al 50 %.",
-    "comentario": "Balance sin tensión. El bono de 300 M de 2028 es el único vencimiento relevante.",
-    "confianza": "Alta"
   },
   "capital": {
-    "politica": "Reparte el 40-50 % del beneficio neto en dos pagos. Programa de recompra de hasta 100 M anunciado en febrero de 2026. Prioridad declarada: crecimiento orgánico en redes y adquisiciones pequeñas.",
-    "historico": [
-      { "periodo": "2021", "dividendos": 52, "recompras": 0, "adquisiciones": 35, "payout_pct": 40, "acciones": 166 },
-      { "periodo": "2022", "dividendos": 58, "recompras": 0, "adquisiciones": 120, "payout_pct": 42, "acciones": 166 },
-      { "periodo": "2023", "dividendos": 74, "recompras": 20, "adquisiciones": 0, "payout_pct": 43, "acciones": 164 },
-      { "periodo": "2024", "dividendos": 84, "recompras": 40, "adquisiciones": 25, "payout_pct": 44, "acciones": 162 },
-      { "periodo": "2025", "dividendos": 93, "recompras": 50, "adquisiciones": 0, "payout_pct": 45, "acciones": 160 }
+    "politica": "Reparte el 40-50 % del beneficio y tiene un programa de recompra de hasta 100 M. Prioridad declarada: crecimiento orgánico en redes y compras pequeñas [8].",
+    "adquisiciones": [
+      {
+        "anio": "2022",
+        "objetivo": "Cables especiales (Polonia)",
+        "importe": 120,
+        "ev_ebitda": 8,
+        "financiacion": "Deuda",
+        "resultado": "Cumple el plan; sin deterioros [1]."
+      },
+      {
+        "anio": "2021",
+        "objetivo": "Software de red",
+        "importe": 40,
+        "ev_ebitda": null,
+        "financiacion": "Caja",
+        "resultado": "Integrada en redes [2]."
+      }
     ],
-    "historial_ma": "Cuatro adquisiciones desde 2019, todas por debajo de 150 M. La mayor (2022, cables especiales en Polonia, 120 M a 8x EBITDA) cumple el plan.",
+    "comentario": "Disciplina razonable: compras pequeñas a múltiplos moderados y recompras con el ROIC por encima del WACC [1][8].",
     "confianza": "Alta"
   },
-  "gobierno": {
-    "directivos": [
-      { "nombre": "Directora General (ficticia)", "cargo": "Consejera delegada", "desde": "2019", "trayectoria": "Antes dirigió la división de redes; bajo su mandato el margen EBITDA ha subido 220 pb." },
-      { "nombre": "Director Financiero (ficticio)", "cargo": "Director financiero", "desde": "2021", "trayectoria": "Procede de un grupo industrial cotizado." }
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "Directora General (ficticia)",
+        "cargo": "Consejera delegada",
+        "desde": "2019",
+        "participacion_pct": 0.15,
+        "trayectoria": "Antes dirigió redes; con ella el margen EBITDA ha subido 160 pb [1]."
+      },
+      {
+        "nombre": "Director Financiero (ficticio)",
+        "cargo": "Director financiero",
+        "desde": "2021",
+        "participacion_pct": 0.02,
+        "trayectoria": "Viene de un grupo industrial cotizado [9]."
+      }
     ],
-    "accionistas": [
-      { "nombre": "Familia fundadora", "pct": 28.0, "tipo": "Familiar (consejo)" },
-      { "nombre": "Fondo de pensiones nórdico", "pct": 5.1, "tipo": "Institucional" },
-      { "nombre": "Autocartera", "pct": 1.2, "tipo": "Autocartera" }
+    "historial_guidance": [
+      {
+        "anio": "2023",
+        "guia": "Crecer 5-7 %; margen ≥ 14,5 %",
+        "real": "+6,2 %; 14,9 %",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2024",
+        "guia": "Crecer 5-7 %; margen ≥ 15 %",
+        "real": "+4,8 %; 15,4 %",
+        "cumplida": "Parcial"
+      },
+      {
+        "anio": "2025",
+        "guia": "Crecer ~5 %; margen ≥ 15,5 %",
+        "real": "+5,1 %; 15,9 %",
+        "cumplida": "Sí"
+      }
     ],
-    "insiders": "Sin ventas de directivos en 12 meses; la consejera delegada compró 20.000 acciones en marzo de 2026.",
-    "remuneracion": "El variable a largo plazo depende del ROIC y del rendimiento total para el accionista frente al IBEX: bien alineado.",
-    "alertas": ["Ninguna relevante detectada."],
+    "comentario": "Cumple o casi cumple sus guías desde 2023. Sucesión sin plan público [9].",
     "confianza": "Media"
+  },
+  "gobierno": {
+    "consejo": [
+      {
+        "nombre": "Presidente (ficticio)",
+        "cargo": "Presidente",
+        "tipo": "Dominical",
+        "desde": "2010",
+        "comisiones": "Nombramientos"
+      },
+      {
+        "nombre": "Directora General (ficticia)",
+        "cargo": "Consejera delegada",
+        "tipo": "Ejecutivo",
+        "desde": "2019",
+        "comisiones": "—"
+      },
+      {
+        "nombre": "Consejero familiar (ficticio)",
+        "cargo": "Vocal",
+        "tipo": "Dominical",
+        "desde": "2012",
+        "comisiones": "Estrategia"
+      },
+      {
+        "nombre": "Consejera independiente A (ficticia)",
+        "cargo": "Coordinadora",
+        "tipo": "Independiente",
+        "desde": "2017",
+        "comisiones": "Auditoría (presidenta)"
+      },
+      {
+        "nombre": "Consejero independiente B (ficticio)",
+        "cargo": "Vocal",
+        "tipo": "Independiente",
+        "desde": "2020",
+        "comisiones": "Retribuciones"
+      },
+      {
+        "nombre": "Consejera independiente C (ficticia)",
+        "cargo": "Vocal",
+        "tipo": "Independiente",
+        "desde": "2021",
+        "comisiones": "Auditoría"
+      },
+      {
+        "nombre": "Consejero independiente D (ficticio)",
+        "cargo": "Vocal",
+        "tipo": "Independiente",
+        "desde": "2023",
+        "comisiones": "Nombramientos"
+      }
+    ],
+    "presidente_ceo_separados": true,
+    "consejero_coordinador": true,
+    "una_accion_un_voto": true,
+    "operaciones_vinculadas_relevantes": false,
+    "variable_ligado_rentabilidad": true,
+    "voto_remuneracion_pct": 91.4,
+    "remuneracion_ceo": {
+      "anio": "2025",
+      "total": 2.4,
+      "fijo": 0.9,
+      "variable_corto": 0.8,
+      "variable_largo": 0.7,
+      "ratio_salario_medio": 52
+    },
+    "remuneracion": "El variable a largo plazo depende al 50 % del ROIC y al 50 % del rendimiento total frente al IBEX; tiene cláusula de recuperación [10].",
+    "accionistas": [
+      {
+        "nombre": "Familia fundadora",
+        "pct": 28,
+        "tipo": "Familiar",
+        "variacion": "Estable"
+      },
+      {
+        "nombre": "Fondo de pensiones nórdico",
+        "pct": 5.1,
+        "tipo": "Institucional",
+        "variacion": "Sube desde el 3,0 % en 2025 [11]"
+      },
+      {
+        "nombre": "Gestora estadounidense",
+        "pct": 3.2,
+        "tipo": "Institucional",
+        "variacion": "Nueva [11]"
+      },
+      {
+        "nombre": "Autocartera",
+        "pct": 1.2,
+        "tipo": "Autocartera",
+        "variacion": "Por recompras"
+      }
+    ],
+    "insiders": [
+      {
+        "fecha": "2026-03-12",
+        "persona": "Consejera delegada",
+        "operacion": "Compra",
+        "acciones": 20000,
+        "importe": 0.55
+      },
+      {
+        "fecha": "2026-08-05",
+        "persona": "Consejero independiente B",
+        "operacion": "Compra",
+        "acciones": 3000,
+        "importe": 0.09
+      }
+    ],
+    "control_y_defensas": "La familia fundadora tiene el 28 % sin pacto con otros accionistas. No hay operaciones vinculadas relevantes ni límites de voto [9].",
+    "alertas": [
+      "Ninguna relevante detectada tras revisar IAGC, IARC y hechos relevantes [12][13]."
+    ],
+    "confianza": "Alta"
   },
   "consenso": {
-    "guidance": "Para 2026: crecimiento de ingresos del 6-8 % y margen EBITDA ≥ 15,8 %. Reiterado en julio de 2026.",
+    "guidance": "Para 2026: crecimiento del 6-8 % y margen EBITDA ≥ 16 %, elevado en julio de 2026 [4]. Plan 2028: margen del 17 % [8].",
     "estimaciones": [
-      { "periodo": "2026e", "ingresos": 2990, "ebitda": 475, "bpa": 1.45, "fuente": "Consenso, 11 analistas" },
-      { "periodo": "2027e", "ingresos": 3190, "ebitda": 517, "bpa": 1.61, "fuente": "Consenso, 11 analistas" }
+      {
+        "periodo": "2026e",
+        "ingresos": 3156,
+        "ebitda": 508,
+        "ebit": 372,
+        "bpa": 1.63,
+        "dpa": 0.72,
+        "fuente": "Consenso, 11 analistas [16]"
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 3352,
+        "ebitda": 550,
+        "ebit": 406,
+        "bpa": 1.79,
+        "dpa": 0.78,
+        "fuente": "Consenso, 11 analistas [16]"
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 3547,
+        "ebitda": 589,
+        "ebit": 436,
+        "bpa": 1.96,
+        "dpa": 0.85,
+        "fuente": "Consenso, 9 analistas [17]"
+      }
     ],
-    "n_analistas": 11,
-    "comprar": 6,
-    "mantener": 4,
-    "vender": 1,
-    "precio_objetivo_medio": 28.9,
-    "precio_objetivo_min": 22.0,
-    "precio_objetivo_max": 34.0,
-    "revisiones": "BPA 2026e revisado +3 % en tres meses tras los resultados semestrales.",
+    "recomendaciones": {
+      "n_analistas": 11,
+      "comprar": 6,
+      "mantener": 4,
+      "vender": 1,
+      "po_medio": 34.2,
+      "po_min": 27,
+      "po_max": 40
+    },
+    "revisiones": "El BPA de 2026 sube un 3 % en tres meses y un 7 % en doce, tras subir la guía de margen [16][17].",
     "confianza": "Media"
-  },
-  "multiplos": {
-    "tabla": [
-      { "metrica": "EV/EBITDA", "actual": 11.1, "siguiente": 10.1, "media_5a": 10.4, "comparables": 11.2 },
-      { "metrica": "EV/EBIT", "actual": 15.4, "siguiente": 13.8, "media_5a": 14.6, "comparables": 15.9 },
-      { "metrica": "PER", "actual": 19.1, "siguiente": 17.0, "media_5a": 18.2, "comparables": 20.5 },
-      { "metrica": "EV/Ventas", "actual": 1.7, "siguiente": 1.6, "media_5a": 1.5, "comparables": 1.9 }
-    ],
-    "fcf_yield_pct": 5.1,
-    "dividendo_pct": 2.4,
-    "comentario": "En línea con su media en EV/EBITDA y algo por debajo de sus comparables, que crecen más.",
-    "confianza": "Media"
-  },
-  "comparables": {
-    "criterio": "Fabricantes europeos cotizados de equipos de distribución eléctrica con más de 1.000 M EUR de ingresos.",
-    "empresas": [
-      { "nombre": "Compañía Ejemplo", "ticker": "EJM", "pais": "ES", "capitalizacion": 3936, "ev_ebitda": 11.1, "per": 19.1, "crecimiento_pct": 4.5, "margen_ebitda_pct": 15.5, "roic_pct": 13.9 },
-      { "nombre": "Grupo Alfa", "ticker": "ALF", "pais": "FR", "capitalizacion": 41000, "ev_ebitda": 13.4, "per": 23.8, "crecimiento_pct": 8.2, "margen_ebitda_pct": 19.1, "roic_pct": 15.2 },
-      { "nombre": "Beta Energy", "ticker": "BET", "pais": "DE", "capitalizacion": 18500, "ev_ebitda": 11.2, "per": 20.5, "crecimiento_pct": 6.1, "margen_ebitda_pct": 14.2, "roic_pct": 11.0 },
-      { "nombre": "Gamma Systems", "ticker": "GAM", "pais": "CH", "capitalizacion": 26000, "ev_ebitda": 15.8, "per": 27.1, "crecimiento_pct": 9.4, "margen_ebitda_pct": 21.0, "roic_pct": 18.4 },
-      { "nombre": "Delta Cables", "ticker": "DLC", "pais": "IT", "capitalizacion": 5200, "ev_ebitda": 9.6, "per": 15.2, "crecimiento_pct": 3.8, "margen_ebitda_pct": 11.5, "roic_pct": 9.7 }
-    ],
-    "comentario": "Ejemplo cotiza en la parte baja del rango, coherente con un crecimiento menor. El mapa sugiere que el mercado paga ~0,7x de EV/EBITDA por cada punto de crecimiento.",
-    "confianza": "Media"
-  },
-  "escenarios": {
-    "metodo": "Descuento de flujos de caja libres a 10 años con WACC del 8,4 % y crecimiento terminal del 2 %, contrastado con EV/EBITDA de salida de 10x.",
-    "supuestos": [
-      { "supuesto": "Crecimiento de ingresos 2026-2030 (anual)", "bajista": "3 %", "base": "6,5 %", "alcista": "9 %" },
-      { "supuesto": "Margen EBITDA 2030", "bajista": "14,5 %", "base": "16,5 %", "alcista": "18 %" },
-      { "supuesto": "WACC", "bajista": "9,0 %", "base": "8,4 %", "alcista": "8,0 %" }
-    ],
-    "casos": [
-      { "escenario": "Bajista", "valor": 17.5, "potencial_pct": -28.9, "probabilidad_pct": 25, "narrativa": "Automoción sigue cayendo y la competencia asiática presiona precios en transformadores." },
-      { "escenario": "Base", "valor": 28.0, "potencial_pct": 13.8, "probabilidad_pct": 55, "narrativa": "Redes crece según cartera y automoción se estabiliza en 2027." },
-      { "escenario": "Alcista", "valor": 36.5, "potencial_pct": 48.4, "probabilidad_pct": 20, "narrativa": "Contratos nuevos en Norteamérica y margen de redes al 18 %." }
-    ],
-    "precio_actual": 24.6,
-    "valor_ponderado": 27.1,
-    "potencial_ponderado_pct": 10.2,
-    "sensibilidad": "Cada punto de WACC mueve el valor base ±3,6 EUR; cada punto de margen EBITDA en 2030, ±2,1 EUR.",
-    "confianza": "Baja"
   },
   "bolsa": {
     "rentabilidades": [
-      { "periodo": "1 año", "accion_pct": 18.2, "indice_pct": 14.0 },
-      { "periodo": "3 años (anual.)", "accion_pct": 11.5, "indice_pct": 12.8 },
-      { "periodo": "5 años (anual.)", "accion_pct": 9.1, "indice_pct": 8.7 }
+      {
+        "periodo": "En el año",
+        "accion_pct": 14.1,
+        "indice_pct": 11,
+        "sector_pct": 16.2
+      },
+      {
+        "periodo": "1 año",
+        "accion_pct": 22,
+        "indice_pct": 14,
+        "sector_pct": 24.5
+      },
+      {
+        "periodo": "3 años (anual.)",
+        "accion_pct": 15.5,
+        "indice_pct": 12.8,
+        "sector_pct": 17
+      },
+      {
+        "periodo": "5 años (anual.)",
+        "accion_pct": 11.1,
+        "indice_pct": 8.7,
+        "sector_pct": 12.4
+      },
+      {
+        "periodo": "10 años (anual.)",
+        "accion_pct": 7.9,
+        "indice_pct": 5.2,
+        "sector_pct": 9.1
+      }
+    ],
+    "anual": [
+      {
+        "anio": "2019",
+        "accion_pct": 18,
+        "indice_pct": 16.5
+      },
+      {
+        "anio": "2020",
+        "accion_pct": -14,
+        "indice_pct": -12.7
+      },
+      {
+        "anio": "2021",
+        "accion_pct": 24,
+        "indice_pct": 10.2
+      },
+      {
+        "anio": "2022",
+        "accion_pct": -9,
+        "indice_pct": -2
+      },
+      {
+        "anio": "2023",
+        "accion_pct": 21,
+        "indice_pct": 27
+      },
+      {
+        "anio": "2024",
+        "accion_pct": 13,
+        "indice_pct": 18
+      },
+      {
+        "anio": "2025",
+        "accion_pct": 17,
+        "indice_pct": 14.5
+      }
     ],
     "beta": 1.08,
     "volatilidad_pct": 24.5,
-    "max_drawdown_pct": -38.0,
+    "max_drawdown_pct": -38,
     "posicion_corta_pct": 0.6,
-    "comentario": "Recupera el diferencial frente al índice en el último año tras dos años de peor comportamiento.",
+    "comentario": "Supera al índice en el último año por la mejora de márgenes, pero se queda por detrás del sector, que se ha beneficiado más del ciclo de redes [15].",
+    "confianza": "Media"
+  },
+  "multiplos_historicos": {
+    "serie": [
+      {
+        "anio": "2016",
+        "ev_ebitda_ntm": 8.4,
+        "per_ntm": 15.2
+      },
+      {
+        "anio": "2017",
+        "ev_ebitda_ntm": 9.1,
+        "per_ntm": 16
+      },
+      {
+        "anio": "2018",
+        "ev_ebitda_ntm": 7.6,
+        "per_ntm": 13.1
+      },
+      {
+        "anio": "2019",
+        "ev_ebitda_ntm": 8.8,
+        "per_ntm": 15.4
+      },
+      {
+        "anio": "2020",
+        "ev_ebitda_ntm": 9.6,
+        "per_ntm": 19.8
+      },
+      {
+        "anio": "2021",
+        "ev_ebitda_ntm": 10.9,
+        "per_ntm": 18.7
+      },
+      {
+        "anio": "2022",
+        "ev_ebitda_ntm": 8.2,
+        "per_ntm": 13.9
+      },
+      {
+        "anio": "2023",
+        "ev_ebitda_ntm": 9,
+        "per_ntm": 14.6
+      },
+      {
+        "anio": "2024",
+        "ev_ebitda_ntm": 10.1,
+        "per_ntm": 16.2
+      },
+      {
+        "anio": "2025",
+        "ev_ebitda_ntm": 10.6,
+        "per_ntm": 17.1
+      }
+    ],
+    "comentario": "Cotiza por encima de su media de diez años; la prima se explica por el mayor peso de redes, más estable [18].",
+    "confianza": "Media"
+  },
+  "comparables": {
+    "criterio": "Fabricantes europeos cotizados de equipos de distribución eléctrica con más de 1.000 M de ingresos. Se excluyen los conglomerados con menos del 40 % del negocio en distribución [15].",
+    "empresas": [
+      {
+        "nombre": "Grupo Alfa",
+        "ticker": "ALF",
+        "pais": "FR",
+        "capitalizacion": 41000,
+        "ev_ventas": 2.4,
+        "ev_ebitda_ltm": 14.1,
+        "ev_ebitda_ntm": 12.9,
+        "per_ntm": 22.8,
+        "crecimiento_pct": 8.2,
+        "margen_ebitda_pct": 19.1,
+        "roic_pct": 15.2,
+        "dn_ebitda": 0.9,
+        "fcf_yield_pct": 3.9
+      },
+      {
+        "nombre": "Beta Energy",
+        "ticker": "BET",
+        "pais": "DE",
+        "capitalizacion": 18500,
+        "ev_ventas": 1.6,
+        "ev_ebitda_ltm": 11.4,
+        "ev_ebitda_ntm": 10.6,
+        "per_ntm": 19.4,
+        "crecimiento_pct": 6.1,
+        "margen_ebitda_pct": 14.2,
+        "roic_pct": 11,
+        "dn_ebitda": 1.4,
+        "fcf_yield_pct": 4.6
+      },
+      {
+        "nombre": "Gamma Systems",
+        "ticker": "GAM",
+        "pais": "CH",
+        "capitalizacion": 26000,
+        "ev_ventas": 3.2,
+        "ev_ebitda_ltm": 16,
+        "ev_ebitda_ntm": 14.8,
+        "per_ntm": 26.5,
+        "crecimiento_pct": 9.4,
+        "margen_ebitda_pct": 21,
+        "roic_pct": 18.4,
+        "dn_ebitda": 0.4,
+        "fcf_yield_pct": 3.2
+      },
+      {
+        "nombre": "Delta Cables",
+        "ticker": "DLC",
+        "pais": "IT",
+        "capitalizacion": 5200,
+        "ev_ventas": 1,
+        "ev_ebitda_ltm": 9.6,
+        "ev_ebitda_ntm": 8.9,
+        "per_ntm": 14.8,
+        "crecimiento_pct": 3.8,
+        "margen_ebitda_pct": 11.5,
+        "roic_pct": 9.7,
+        "dn_ebitda": 2,
+        "fcf_yield_pct": 6.1
+      },
+      {
+        "nombre": "Epsilon Grid",
+        "ticker": "EPS",
+        "pais": "SE",
+        "capitalizacion": 7400,
+        "ev_ventas": 1.9,
+        "ev_ebitda_ltm": 12.5,
+        "ev_ebitda_ntm": 11.3,
+        "per_ntm": 20.1,
+        "crecimiento_pct": 7,
+        "margen_ebitda_pct": 15.6,
+        "roic_pct": 12.8,
+        "dn_ebitda": 1.1,
+        "fcf_yield_pct": 4.4
+      },
+      {
+        "nombre": "Zeta Power",
+        "ticker": "ZPW",
+        "pais": "NL",
+        "capitalizacion": 3100,
+        "ev_ventas": 1.2,
+        "ev_ebitda_ltm": 10.2,
+        "ev_ebitda_ntm": 9.5,
+        "per_ntm": 16.3,
+        "crecimiento_pct": 5,
+        "margen_ebitda_pct": 12.4,
+        "roic_pct": 10.1,
+        "dn_ebitda": 1.8,
+        "fcf_yield_pct": 5.3
+      }
+    ],
+    "comentario": "Ejemplo cotiza en la mitad baja del rango, coherente con un crecimiento y un ROIC por debajo de los líderes. La regresión sobre el crecimiento explica bien el múltiplo [15].",
+    "confianza": "Media"
+  },
+  "transacciones": {
+    "operaciones": [
+      {
+        "fecha": "2025-11",
+        "objetivo": "Fabricante nórdico de aparamenta",
+        "comprador": "Grupo Alfa",
+        "ev": 1450,
+        "ev_ventas": 2.1,
+        "ev_ebitda": 12.8,
+        "prima_pct": null,
+        "comentario": "Compra estratégica [23]."
+      },
+      {
+        "fecha": "2025-03",
+        "objetivo": "Delta Transformers",
+        "comprador": "Fondo de capital privado",
+        "ev": 820,
+        "ev_ventas": 1.4,
+        "ev_ebitda": 10.5,
+        "prima_pct": 31,
+        "comentario": "OPA con exclusión [23]."
+      },
+      {
+        "fecha": "2024-06",
+        "objetivo": "Cables industriales (Portugal)",
+        "comprador": "Beta Energy",
+        "ev": 310,
+        "ev_ventas": 1.1,
+        "ev_ebitda": 9.2,
+        "prima_pct": null,
+        "comentario": "Compra a un fondo [23]."
+      },
+      {
+        "fecha": "2023-09",
+        "objetivo": "Especialista en sensores de red",
+        "comprador": "Gamma Systems",
+        "ev": 520,
+        "ev_ventas": 3.6,
+        "ev_ebitda": 18.5,
+        "prima_pct": null,
+        "comentario": "Tecnología [23]."
+      },
+      {
+        "fecha": "2022-05",
+        "objetivo": "Cables especiales (Polonia)",
+        "comprador": "Compañía Ejemplo",
+        "ev": 120,
+        "ev_ventas": 0.9,
+        "ev_ebitda": 8,
+        "prima_pct": null,
+        "comentario": "Compra propia [1]."
+      }
+    ],
+    "comentario": "Las compras de equipos de red se pagan a 9-13x EBITDA. Con la familia en el 28 %, una OPA hostil no es probable [9][23].",
+    "confianza": "Media"
+  },
+  "dcf": {
+    "anios": [
+      {
+        "periodo": "2026e",
+        "crecimiento_pct": 6.6,
+        "margen_ebitda_pct": 16.1,
+        "amortizacion_pct_ventas": 4.3,
+        "capex_pct_ventas": 5,
+        "nwc_pct_ventas": 20.4,
+        "tasa_impositiva_pct": 24.5
+      },
+      {
+        "periodo": "2027e",
+        "crecimiento_pct": 6.2,
+        "margen_ebitda_pct": 16.4,
+        "amortizacion_pct_ventas": 4.3,
+        "capex_pct_ventas": 5,
+        "nwc_pct_ventas": 20.1,
+        "tasa_impositiva_pct": 24.5
+      },
+      {
+        "periodo": "2028e",
+        "crecimiento_pct": 5.8,
+        "margen_ebitda_pct": 16.6,
+        "amortizacion_pct_ventas": 4.3,
+        "capex_pct_ventas": 5,
+        "nwc_pct_ventas": 19.8,
+        "tasa_impositiva_pct": 24.5
+      },
+      {
+        "periodo": "2029e",
+        "crecimiento_pct": 5,
+        "margen_ebitda_pct": 16.7,
+        "amortizacion_pct_ventas": 4.3,
+        "capex_pct_ventas": 4.5,
+        "nwc_pct_ventas": 19.5,
+        "tasa_impositiva_pct": 24.5
+      },
+      {
+        "periodo": "2030e",
+        "crecimiento_pct": 4.2,
+        "margen_ebitda_pct": 16.8,
+        "amortizacion_pct_ventas": 4.3,
+        "capex_pct_ventas": 4.5,
+        "nwc_pct_ventas": 19.2,
+        "tasa_impositiva_pct": 24.5
+      },
+      {
+        "periodo": "2031e",
+        "crecimiento_pct": 3.5,
+        "margen_ebitda_pct": 16.8,
+        "amortizacion_pct_ventas": 4.3,
+        "capex_pct_ventas": 4.5,
+        "nwc_pct_ventas": 18.9,
+        "tasa_impositiva_pct": 24.5
+      },
+      {
+        "periodo": "2032e",
+        "crecimiento_pct": 3,
+        "margen_ebitda_pct": 16.8,
+        "amortizacion_pct_ventas": 4.3,
+        "capex_pct_ventas": 4.5,
+        "nwc_pct_ventas": 18.6,
+        "tasa_impositiva_pct": 24.5
+      }
+    ],
+    "wacc": {
+      "tasa_libre_pct": 3.2,
+      "beta": 1.05,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 0.5,
+      "coste_deuda_pct": 3.6,
+      "tasa_impositiva_pct": 25,
+      "peso_deuda_pct": 15
+    },
+    "terminal": {
+      "metodo": "gordon",
+      "crecimiento_pct": 2,
+      "multiplo_salida": 10
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "Seguimos el consenso en 2026-2028 (6-7 %) y convergemos al 3 % en 2032, por debajo del crecimiento previsto del mercado (7,3 %) [16][19].",
+      "margenes": "El margen sube hasta el 16,8 %, por debajo del objetivo del plan (17 %) [8], por la presión en transformadores [26].",
+      "inversion": "Capex del 5 % por el plan de capacidad hasta 2028 y del 4,5 % después, por encima de la amortización (4,3 %) [8].",
+      "wacc": "Bono español a 10 años del 3,2 % [15], beta ajustada de 1,05 y prima de mercado del 5,5 %, más 0,5 puntos por tamaño [15].",
+      "terminal": "Crecimiento a perpetuidad del 2 %, en línea con la inflación a largo plazo; el múltiplo implícito se compara con los comparables [15]."
+    },
+    "lectura": "El DCF base da un valor cercano al precio actual; el valor terminal pesa en torno al 70 %. El DCF inverso dice que el mercado descuenta un crecimiento similar al de nuestra proyección: no hay margen de seguridad sin una mejora adicional del margen [16].",
+    "confianza": "Media"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": -2.5,
+        "ajuste_margen_pp": -1.5,
+        "ajuste_wacc_pp": 0.5,
+        "crecimiento_terminal_pct": 1.5,
+        "multiplo_salida": null,
+        "narrativa": "Automoción sigue cayendo y la competencia asiática recorta el margen de transformadores, como le pasó a Delta Cables en 2023 [26]."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 55,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Redes crece según la cartera y automoción se estabiliza en 2027 [4]."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 20,
+        "ajuste_crecimiento_pp": 1.5,
+        "ajuste_margen_pp": 1,
+        "ajuste_wacc_pp": -0.25,
+        "crecimiento_terminal_pct": 2.25,
+        "multiplo_salida": null,
+        "narrativa": "Contratos en Norteamérica y margen de redes al 19 % [8]."
+      }
+    ],
+    "comentario": "La asimetría es desfavorable: el bajista pierde más de lo que gana el alcista [16].",
+    "confianza": "Media"
+  },
+  "suma_partes": {
+    "aplica": true,
+    "descuento_holding_pct": 0,
+    "partes": [
+      {
+        "segmento": "Redes eléctricas",
+        "metrica": "EBITDA 2026e",
+        "valor_metrica": 330,
+        "multiplo": 12.5,
+        "justificacion": "Mediana de comparables puros de redes [15]."
+      },
+      {
+        "segmento": "Industria",
+        "metrica": "EBITDA 2026e",
+        "valor_metrica": 255,
+        "multiplo": 9.5,
+        "justificacion": "Fabricantes industriales diversificados [15]."
+      },
+      {
+        "segmento": "Automoción",
+        "metrica": "EBITDA 2026e",
+        "valor_metrica": 92,
+        "multiplo": 6,
+        "justificacion": "Proveedores de automoción europeos [15]."
+      }
+    ],
+    "comentario": "Tres negocios con perfiles muy distintos: la suma de partes muestra cuánto vale redes por separado [15].",
+    "confianza": "Media"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2026-06-30",
+      "deuda_financiera": 610,
+      "arrendamientos": 100,
+      "caja": 160,
+      "minoritarios": 55,
+      "pensiones": 0,
+      "asociadas": 20,
+      "otros_ajustes": 0
+    },
+    "pesos": {
+      "dcf": 50,
+      "comparables": 30,
+      "transacciones": 10,
+      "suma_partes": 10,
+      "escenarios": 0
+    },
+    "comentario": "El DCF pesa la mitad porque el negocio es predecible y regulado en redes. Las transacciones pesan poco: con la familia en el 28 %, una operación de control no es probable [9].",
     "confianza": "Media"
   },
   "catalizadores": {
     "items": [
-      { "fecha": "29 oct 2026", "evento": "Resultados del tercer trimestre", "efecto": "Confirmar cartera de redes y guía anual", "probabilidad": "Alta" },
-      { "fecha": "1S 2027", "evento": "Día del inversor con plan 2030", "efecto": "Objetivos de margen por segmento", "probabilidad": "Media" }
+      {
+        "fecha": "29 oct 2026",
+        "evento": "Resultados del tercer trimestre",
+        "efecto": "Confirmar la cartera de redes y la guía",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "1S 2027",
+        "evento": "Día del inversor",
+        "efecto": "Plan para automoción",
+        "probabilidad": "Media",
+        "sentido": "+"
+      },
+      {
+        "fecha": "2027",
+        "evento": "Revisión regulatoria de redes",
+        "efecto": "Inversión de las distribuidoras",
+        "probabilidad": "Alta",
+        "sentido": "+"
+      },
+      {
+        "fecha": "2028",
+        "evento": "Vencimiento del bono de 300 M",
+        "efecto": "Coste de la refinanciación",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      }
     ],
     "confianza": "Media"
   },
   "riesgos": {
     "items": [
-      { "riesgo": "Caída prolongada de automoción", "tipo": "Negocio", "probabilidad": "Media", "impacto": "Medio", "mitigante": "Peso decreciente; plan de reducción de capacidad", "senal": "Pedidos de automoción < -10 %" },
-      { "riesgo": "Precio del cobre", "tipo": "Materias primas", "probabilidad": "Media", "impacto": "Medio", "mitigante": "Cláusulas de revisión en el 45 % de redes", "senal": "Cobre > 11.000 USD/t" },
-      { "riesgo": "Competencia asiática en transformadores", "tipo": "Competencia", "probabilidad": "Alta", "impacto": "Medio", "mitigante": "Homologaciones y servicio local", "senal": "Concursos perdidos por precio" }
+      {
+        "riesgo": "Competencia asiática en transformadores",
+        "tipo": "Competencia",
+        "probabilidad": "Alta",
+        "impacto": "Medio",
+        "efecto_valor": "−12 %",
+        "mitigante": "Homologaciones y servicio local",
+        "senal": "Concursos ganados < 45 %"
+      },
+      {
+        "riesgo": "Caída prolongada de automoción",
+        "tipo": "Negocio",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−8 %",
+        "mitigante": "Peso decreciente",
+        "senal": "Pedidos < −10 %"
+      },
+      {
+        "riesgo": "Precio del cobre",
+        "tipo": "Materias primas",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−6 %",
+        "mitigante": "Cláusulas en el 45 % de redes",
+        "senal": "Cobre > 11.000 USD/t"
+      },
+      {
+        "riesgo": "Retrasos en la inversión de redes",
+        "tipo": "Regulatorio",
+        "probabilidad": "Baja",
+        "impacto": "Alto",
+        "efecto_valor": "−15 %",
+        "mitigante": "Marco regulado hasta 2030",
+        "senal": "Revisión de la tasa de retribución"
+      },
+      {
+        "riesgo": "Ejecución del plan de capacidad",
+        "tipo": "Ejecución",
+        "probabilidad": "Media",
+        "impacto": "Bajo",
+        "efecto_valor": "−4 %",
+        "mitigante": "Inversión por fases",
+        "senal": "Retrasos o sobrecostes > 10 %"
+      },
+      {
+        "riesgo": "Sucesión de la consejera delegada",
+        "tipo": "Gobierno",
+        "probabilidad": "Baja",
+        "impacto": "Medio",
+        "efecto_valor": "−5 %",
+        "mitigante": "Equipo directivo estable",
+        "senal": "Salidas en la alta dirección"
+      }
     ],
+    "premortem": "Es 2029 y la acción ha caído un 40 %. Los fabricantes asiáticos ganaron tres concursos grandes en 2027 y el margen de transformadores cayó 4 puntos. Al mismo tiempo, automoción perdió otro 15 % de volumen y la empresa tardó en cerrar capacidad. El mercado dejó de pagar la prima de redes. La señal estaba en la tasa de concursos ganados, que ya bajaba en 2026 [6][26].",
     "confianza": "Media"
   },
   "esg": {
     "calificaciones": [
-      { "agencia": "MSCI ESG", "calificacion": "A", "fecha": "2026-03" },
-      { "agencia": "Sustainalytics", "calificacion": "Riesgo bajo (17,2)", "fecha": "2026-05" }
+      {
+        "agencia": "Proveedor ESG A",
+        "calificacion": "A",
+        "fecha": "2026-03"
+      },
+      {
+        "agencia": "Proveedor ESG B",
+        "calificacion": "Riesgo bajo (17,2)",
+        "fecha": "2026-05"
+      }
     ],
-    "materialidad": "Exposición positiva a la electrificación (el 38 % de los ingresos es elegible en la taxonomía europea). Consumo energético de las plantas de fundición.",
-    "controversias": "Sin controversias relevantes en los últimos tres años.",
+    "materialidad": "El 38 % de los ingresos es elegible en la taxonomía europea por su papel en la electrificación [1]. El consumo energético de las fundiciones expone a la empresa al precio del CO₂ [24].",
+    "controversias": "Sin controversias relevantes en los últimos tres años [24].",
+    "confianza": "Media"
+  },
+  "preguntas": {
+    "items": [
+      {
+        "tema": "Automoción",
+        "pregunta": "¿Qué capacidad se cerrará y con qué coste?",
+        "por_que": "Decide si el segmento deja de destruir valor [6]."
+      },
+      {
+        "tema": "Transformadores",
+        "pregunta": "¿Cuál es el diferencial de precio frente a los fabricantes asiáticos en los últimos concursos?",
+        "por_que": "Es el riesgo principal del margen [26]."
+      },
+      {
+        "tema": "Capital",
+        "pregunta": "¿Qué ROIC se exige al plan de capacidad?",
+        "por_que": "Son 450 M de capex hasta 2028 [8]."
+      },
+      {
+        "tema": "Factoring",
+        "pregunta": "¿Se mantendrá el factoring sin recurso?",
+        "por_que": "Son 120 M fuera de la deuda [1]."
+      },
+      {
+        "tema": "Sucesión",
+        "pregunta": "¿Hay un plan de sucesión para la consejera delegada?",
+        "por_que": "No es público [9]."
+      },
+      {
+        "tema": "Norteamérica",
+        "pregunta": "¿Qué cartera tiene en Norteamérica y con qué margen?",
+        "por_que": "Es la palanca del escenario alcista [25]."
+      }
+    ],
     "confianza": "Media"
   },
   "fuentes": [
-    { "id": 1, "titulo": "Informe anual 2025 (ficticio)", "editor": "Compañía Ejemplo", "fecha": "2026-02-26", "url": "https://www.ejemplo.com/inversores" },
-    { "id": 2, "titulo": "Resultados del primer semestre 2026 (ficticio)", "editor": "Compañía Ejemplo", "fecha": "2026-07-24", "url": "https://www.ejemplo.com/inversores" },
-    { "id": 3, "titulo": "Presentación a analistas 1S 2026 (ficticia)", "editor": "Compañía Ejemplo", "fecha": "2026-07-24", "url": "https://www.ejemplo.com/inversores" },
-    { "id": 4, "titulo": "Consenso de mercado (ficticio)", "editor": "Proveedor de datos", "fecha": "2026-10-03", "url": "https://example.com" }
+    {
+      "id": 1,
+      "titulo": "Informe anual 2025 (ficticio)",
+      "editor": "Compañía Ejemplo",
+      "tipo": "Primaria",
+      "fecha": "2026-02-26",
+      "url": "https://example.com"
+    },
+    {
+      "id": 2,
+      "titulo": "Informe anual 2024 (ficticio)",
+      "editor": "Compañía Ejemplo",
+      "tipo": "Primaria",
+      "fecha": "2025-02-27",
+      "url": "https://example.com"
+    },
+    {
+      "id": 3,
+      "titulo": "Informe anual 2023 (ficticio)",
+      "editor": "Compañía Ejemplo",
+      "tipo": "Primaria",
+      "fecha": "2024-02-28",
+      "url": "https://example.com"
+    },
+    {
+      "id": 4,
+      "titulo": "Resultados 1S 2026 (ficticio)",
+      "editor": "Compañía Ejemplo",
+      "tipo": "Primaria",
+      "fecha": "2026-07-24",
+      "url": "https://example.com"
+    },
+    {
+      "id": 5,
+      "titulo": "Presentación de resultados 1S 2026 (ficticia)",
+      "editor": "Compañía Ejemplo",
+      "tipo": "Primaria",
+      "fecha": "2026-07-24",
+      "url": "https://example.com"
+    },
+    {
+      "id": 6,
+      "titulo": "Conferencia con analistas 1S 2026, transcripción (ficticia)",
+      "editor": "Compañía Ejemplo",
+      "tipo": "Primaria",
+      "fecha": "2026-07-24",
+      "url": "https://example.com"
+    },
+    {
+      "id": 7,
+      "titulo": "Conferencia con analistas 1T 2026, transcripción (ficticia)",
+      "editor": "Compañía Ejemplo",
+      "tipo": "Primaria",
+      "fecha": "2026-04-28",
+      "url": "https://example.com"
+    },
+    {
+      "id": 8,
+      "titulo": "Plan estratégico 2025-2028 (ficticio)",
+      "editor": "Compañía Ejemplo",
+      "tipo": "Primaria",
+      "fecha": "2025-03-12",
+      "url": "https://example.com"
+    },
+    {
+      "id": 9,
+      "titulo": "Informe anual de gobierno corporativo 2025 (ficticio)",
+      "editor": "Compañía Ejemplo / CNMV",
+      "tipo": "Primaria",
+      "fecha": "2026-02-26",
+      "url": "https://example.com"
+    },
+    {
+      "id": 10,
+      "titulo": "Informe anual de remuneraciones 2025 (ficticio)",
+      "editor": "Compañía Ejemplo / CNMV",
+      "tipo": "Primaria",
+      "fecha": "2026-02-26",
+      "url": "https://example.com"
+    },
+    {
+      "id": 11,
+      "titulo": "Participaciones significativas (ficticio)",
+      "editor": "CNMV",
+      "tipo": "Primaria",
+      "fecha": "2026-09-30",
+      "url": "https://example.com"
+    },
+    {
+      "id": 12,
+      "titulo": "Operaciones de directivos (ficticio)",
+      "editor": "CNMV",
+      "tipo": "Primaria",
+      "fecha": "2026-09-30",
+      "url": "https://example.com"
+    },
+    {
+      "id": 13,
+      "titulo": "Posiciones cortas (ficticio)",
+      "editor": "CNMV",
+      "tipo": "Primaria",
+      "fecha": "2026-10-02",
+      "url": "https://example.com"
+    },
+    {
+      "id": 14,
+      "titulo": "Informe de rating (ficticio)",
+      "editor": "Agencia de rating",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-05-15",
+      "url": "https://example.com"
+    },
+    {
+      "id": 15,
+      "titulo": "Cotización e históricos (ficticio)",
+      "editor": "Proveedor de datos",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-03",
+      "url": "https://example.com"
+    },
+    {
+      "id": 16,
+      "titulo": "Consenso de mercado (ficticio)",
+      "editor": "Proveedor de datos A",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-03",
+      "url": "https://example.com"
+    },
+    {
+      "id": 17,
+      "titulo": "Consenso de mercado (ficticio)",
+      "editor": "Proveedor de datos B",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-02",
+      "url": "https://example.com"
+    },
+    {
+      "id": 18,
+      "titulo": "Múltiplos históricos (ficticio)",
+      "editor": "Proveedor de datos A",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-03",
+      "url": "https://example.com"
+    },
+    {
+      "id": 19,
+      "titulo": "Estudio del mercado europeo de distribución eléctrica (ficticio)",
+      "editor": "Asociación sectorial",
+      "tipo": "Sectorial",
+      "fecha": "2026-03-01",
+      "url": "https://example.com"
+    },
+    {
+      "id": 20,
+      "titulo": "Previsión de inversión en redes (ficticia)",
+      "editor": "Organismo europeo",
+      "tipo": "Sectorial",
+      "fecha": "2025-11-20",
+      "url": "https://example.com"
+    },
+    {
+      "id": 21,
+      "titulo": "Informe anual 2025 de Grupo Alfa (ficticio)",
+      "editor": "Grupo Alfa",
+      "tipo": "Primaria",
+      "fecha": "2026-03-05",
+      "url": "https://example.com"
+    },
+    {
+      "id": 22,
+      "titulo": "Informe anual 2025 de Beta Energy (ficticio)",
+      "editor": "Beta Energy",
+      "tipo": "Primaria",
+      "fecha": "2026-03-10",
+      "url": "https://example.com"
+    },
+    {
+      "id": 23,
+      "titulo": "Base de operaciones corporativas (ficticia)",
+      "editor": "Proveedor de datos C",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-09-30",
+      "url": "https://example.com"
+    },
+    {
+      "id": 24,
+      "titulo": "Calificaciones ESG (ficticio)",
+      "editor": "Proveedor ESG",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-05-31",
+      "url": "https://example.com"
+    },
+    {
+      "id": 25,
+      "titulo": "Nota de inicio de cobertura (ficticia)",
+      "editor": "Banco de inversión",
+      "tipo": "Analistas",
+      "fecha": "2026-06-10",
+      "url": "https://example.com"
+    },
+    {
+      "id": 26,
+      "titulo": "Artículo sobre la entrada de fabricantes asiáticos (ficticio)",
+      "editor": "Prensa económica",
+      "tipo": "Prensa",
+      "fecha": "2026-08-18",
+      "url": "https://example.com"
+    }
   ]
 }

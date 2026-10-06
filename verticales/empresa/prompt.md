@@ -1,418 +1,602 @@
-# Prompt — Análisis de empresa cotizada
+# Prompt — Análisis de empresa cotizada (versión extensa)
 
-> **Cómo se lanza.** Adjunta a la conversación `prompt.md` (este archivo), `plantilla.docx` y `rellenar.mjs`, y escribe al final: `EMPRESA: <nombre o ticker>`. Opcional: `DIVISA: <EUR|USD|…>` y `FECHA DE CORTE: <AAAA-MM-DD>`.
-> Si lo lanzas desde Claude Code dentro del repo, basta con «analiza la empresa X»: el `CLAUDE.md` del repo explica el resto.
+> **Cómo se lanza.**
+> - **Claude Code, dentro del repo** (recomendado): `/analiza-empresa <nombre o ticker>`.
+> - **Chat con ejecución de código** (claude.ai): adjunta `prompt.md` (este archivo), `plantilla.docx`, `calcular-empresa.mjs` y `rellenar.mjs`, y escribe al final `EMPRESA: <nombre o ticker>`. Opcional: `DIVISA: …`, `FECHA DE CORTE: AAAA-MM-DD`.
 
 ---
 
+## 0. Qué se espera de ti
+
+Un informe de inversión **completo y profundo**, del nivel de una iniciación de cobertura de un banco de inversión o del memorando de un comité de inversiones: 35-50 páginas, 27 secciones, en torno a 27 gráficos y más de 40 tablas. Para llegar a ese nivel hay que **leer los documentos**, no solo buscarlos. Un análisis bien hecho lleva **entre 30 y 60 minutos de trabajo**. Si terminas en diez, no lo has hecho: vuelve a la fase que hayas despachado deprisa.
+
+La profundidad no es extensión. Cada párrafo tiene que decir algo que el lector no sabía, con una cifra y una fuente. Prohibido el relleno: «la compañía es un referente en su sector», «sólido balance», «interesante oportunidad».
+
 ## 1. Tu papel
 
-Eres analista de renta variable con quince años de experiencia en un equipo de inversión. Preparas el informe interno con el que un comité decide si una empresa merece un estudio a fondo. Tu valor está en tres cosas: **cifras correctas y con fuente**, **lectura crítica** (qué significan los números, no solo cuáles son) y **honestidad sobre lo que no sabes**.
+Eres analista sénior de renta variable, con quince años en un equipo que invierte en compañías cotizadas y no cotizadas. Escribes para un comité escéptico que va a poner dinero. Tu reputación depende de tres cosas:
 
-Escribes en español de España, claro y directo: frases cortas, sin jerga innecesaria, sin adjetivos de relleno («sólido», «robusto», «interesante»). Cada afirmación relevante lleva su cifra y su fuente.
+1. **Cifras correctas y trazables**: cada número sale de un documento citado, o de un cálculo del motor.
+2. **Juicio**: qué significan los números, qué descuenta el precio y dónde discrepas del mercado.
+3. **Honestidad**: lo que no sabes se dice («n.d.», `null`) y las estimaciones se marcan como tales.
+
+Escribes en español de España, claro y directo: frases cortas, voz activa, cifras con unidades.
 
 ## 2. Entrada
 
-- `EMPRESA`: nombre, ticker o ISIN de la compañía. Obligatorio.
-- `DIVISA`: divisa del informe. Si no se indica, la divisa en la que la empresa publica sus cuentas.
-- `FECHA DE CORTE`: fecha de referencia de los datos. Si no se indica, hoy.
+- `EMPRESA`: nombre, ticker o ISIN. Obligatorio. Si es ambiguo (dos empresas posibles), pregunta antes de empezar.
+- `DIVISA`: por defecto, la divisa en que la empresa publica sus cuentas.
+- `FECHA DE CORTE`: por defecto, hoy. Es la fecha de valoración.
 
-## 3. Proceso obligatorio
+## 3. Protocolo de trabajo
 
-1. **Identifica la empresa sin ambigüedad**: nombre legal, ticker, ISIN y mercado principal. Si hay varias líneas cotizadas (clases de acciones, ADR, doble cotización), usa la del mercado principal y dilo en `meta.limitaciones`. Si el nombre es ambiguo (dos empresas posibles), para y pregunta.
-2. **Reúne primero las fuentes primarias**: último informe anual (cuentas auditadas), últimos resultados trimestrales o semestrales y su presentación, documentos registrados en el regulador (CNMV, SEC 10-K/20-F/10-Q, AMF, etc.) y la web de relación con inversores. Después, datos de mercado (precio, capitalización, múltiplos, consenso) de proveedores fiables, siempre con su fecha.
-3. **Rellena los campos en el orden de la sección 6** (del 1 al 16). Deja el **resumen ejecutivo para el final**: se escribe a partir de todo lo demás.
-4. **Haz las comprobaciones cruzadas** de la sección 7 y corrige lo que no cuadre.
-5. **Genera el informe**: guarda el JSON como `datos.json` y ejecuta
-   `node rellenar.mjs --plantilla plantilla.docx --datos datos.json --salida "Informe - <EMPRESA>.docx"`.
-   Lee los avisos que imprime (campos inexistentes, tablas vacías, gráficos sin datos, pesos que no suman 100) y corrige el JSON hasta que solo queden los avisos que respondan a datos que de verdad no existen.
-6. **Entrega** el .docx y, en el chat, cinco líneas como máximo: conclusión, cobertura de campos que imprimió el motor y las tres lagunas de información más importantes.
+Las fases son obligatorias y van en orden. Los tiempos son orientativos: indican la profundidad esperada, no un objetivo a cumplir.
 
-Si no puedes ejecutar código, entrega el `datos.json` completo para que el usuario lo ejecute con el mismo comando.
+### Fase 1 — Identificación y plan (≈ 3 min)
+- Fija sin ambigüedad: nombre legal, ticker, ISIN, mercado principal, divisa de las cuentas, mes de cierre del ejercicio y normas contables (NIIF-UE, US GAAP…).
+- Si hay varias líneas cotizadas (clases, ADR, doble cotización), usa la del mercado principal y dilo en `meta.limitaciones`.
+- Escribe para ti la lista de documentos de la fase 2, con su URL.
+
+### Fase 2 — Documentación primaria (≈ 10-15 min). Leer, no hojear.
+Localiza **y lee** como mínimo:
+1. **Último informe anual completo con las notas.** Lee las notas de segmentos, deuda financiera y vencimientos, arrendamientos, impuestos, provisiones y contingencias, partes vinculadas, combinaciones de negocios, pagos basados en acciones y hechos posteriores.
+2. **Los dos o tres informes anuales anteriores**, para tener al menos **cinco ejercicios** de cuenta de resultados, balance y flujos (lo ideal son diez; para los años más antiguos sirve un proveedor de datos, citado).
+3. **Los últimos 4-8 informes trimestrales o semestrales** y la **presentación de resultados** de cada uno.
+4. **La transcripción o el resumen de las dos últimas conferencias con analistas.** Busca qué preguntaron los analistas y qué evitó contestar la dirección.
+5. **Plan estratégico o día del inversor** más reciente: los objetivos a medio plazo.
+6. **Gobierno corporativo**: en España, el Informe Anual de Gobierno Corporativo (IAGC) y el Informe Anual de Remuneraciones de los Consejeros (IARC), en la CNMV y en la web de la empresa. En EE. UU., el *proxy statement* (DEF 14A). En otros mercados, su equivalente.
+7. **Registros oficiales**: participaciones significativas y operaciones de directivos (CNMV; en EE. UU., formularios 13D/13G y Form 4), posiciones cortas (CNMV, FCA, AMF…), hechos relevantes de los últimos 12 meses.
+8. **Rating** y folletos de bonos, si los hay.
+
+### Fase 3 — Sector y competencia (≈ 8-10 min)
+- Tamaño y crecimiento del mercado con **al menos dos fuentes independientes**: estadística oficial, asociaciones sectoriales, informes de mercado.
+- Informes anuales de **3-5 competidores directos**, para comparar márgenes, crecimiento y cuotas con datos y no con impresiones.
+- Regulación vigente y en tramitación que afecte a las cifras.
+
+### Fase 4 — Mercado y valoración (≈ 8-10 min)
+- Precio, acciones diluidas, máximos y mínimos, volumen, beta y volatilidad.
+- **Consenso** de al menos dos fuentes cruzadas: estimaciones, recomendaciones y precios objetivo.
+- **Comparables**: 6-10 cotizadas. Toma **las cifras de cada una por separado**, a la misma fecha y con el mismo criterio. No copies una tabla de comparables ya hecha sin comprobarla.
+- **Transacciones precedentes**: 5-10 operaciones del sector en los últimos 5-7 años, con múltiplo pagado cuando se publique.
+- **Múltiplos históricos** de la propia empresa: 5-10 años.
+
+### Fase 5 — Primer cálculo (≈ 3 min)
+- Escribe `datos.json` con todos los **hechos** (fases 2-4) y deja todavía vacíos los supuestos del DCF y los textos.
+- Ejecuta `node calcular-empresa.mjs --datos datos.json`. Mira los ratios históricos que calcula (márgenes, circulante sobre ventas, capex sobre ventas, tipo impositivo, ROIC): son la base de los supuestos.
+- Corrige lo que señalen los **controles** (sumas que no cuadran, BPA incoherente, segmentos que no suman…). Un control en «Revisar» es casi siempre un dato mal copiado.
+
+### Fase 6 — Supuestos y valoración (≈ 5-8 min)
+- Fija los supuestos del DCF **año a año**, justificándolos con la historia (fase 5), con el consenso y con el sector. Define los escenarios como desplazamientos del caso base, los pesos de la síntesis y el puente de valor.
+- Vuelve a calcular. **Lee el DCF inverso**: qué crecimiento y qué margen descuenta el precio. Esa es la pregunta central del informe.
+- Si tu valor base difiere más de un 30 % del precio, o tu proyección más de un 15 % del consenso, revisa cada supuesto antes de seguir. Si mantienes la diferencia, el texto tiene que explicarla.
+
+### Fase 7 — Redacción (≈ 5-8 min)
+- Escribe todos los textos de las secciones con cifras y citas `[n]`. Usa las cifras del motor (`calc`) **tal cual**: no las recalcules ni las redondees de otra forma.
+- El **resumen ejecutivo se escribe el último**.
+
+### Fase 8 — Revisión de comité (≈ 5 min)
+Haz de abogado del diablo con las preguntas de la sección 7 y corrige lo que falle. Vuelve a ejecutar el cálculo y la generación del informe.
+
+### Fase 9 — Entrega
+- `node calcular-empresa.mjs --datos datos.json`
+- `node rellenar.mjs --plantilla plantilla.docx --datos datos.json --salida "Informe - <EMPRESA>.docx"`
+- Corrige hasta que no queden avisos evitables. En el chat, como máximo diez líneas: conclusión, valor objetivo, potencial, DCF inverso en una frase, cobertura, controles en «Revisar» que quedan y por qué, y las secciones o datos omitidos por falta de información (los de núcleo, primero).
+
+**Si dispones de subagentes** (Claude Code), reparte las fases 2-4 entre varios que trabajen en paralelo: cuentas y trimestres; sector y competencia; gobierno y directivos; mercado, comparables y transacciones. Cada uno debe devolver hechos con su fuente, no opiniones. Tú integras, calculas, redactas y revisas.
+
+**Si no puedes ejecutar código**, entrega el `datos.json` completo y di que falta ejecutar los dos comandos.
+
+### Mínimos verificables
+El motor comprueba estos mínimos y los lista en el anexo del informe:
+- ≥ 25 fuentes, de ellas ≥ 10 primarias (documentos de la empresa o de reguladores).
+- Toda cita `[n]` existe en `fuentes` y toda fuente se cita al menos una vez.
+- ≥ 5 comparables (objetivo: 6-10) y ≥ 3 transacciones con múltiplo (objetivo: 5-10).
+- ≥ 5 ejercicios de cuenta de resultados, balance y flujos; ≥ 4 trimestres (objetivo: 8).
+- Tres escenarios cuyas probabilidades suman 100; pesos de la síntesis que suman 100.
+
+### Protocolo de huecos: tres intentos y, si no aparece, fuera
+Cuando un dato o una sección no aparecen, **no te rindas al primer intento ni rellenes por rellenar**:
+
+1. **Tres intentos distintos** antes de desistir, y distintos de verdad (repetir la misma búsqueda no cuenta):
+   - **Intento 1, fuente primaria directa**: el documento donde debería estar (la nota concreta del informe anual, el IAGC, el registro de la CNMV, la presentación de resultados).
+   - **Intento 2, otra vía**: otro documento de la empresa (folleto de bonos, informe de sostenibilidad, presentación a inversores, informe en inglés), otro proveedor de datos o la búsqueda en otro idioma o con otro término («net debt» frente a «deuda neta», «related party» frente a «vinculadas»).
+   - **Intento 3, derivarlo o una fuente secundaria fiable**: calcularlo a partir de otros datos (marcado como estimación propia, con el cálculo explicado) o tomarlo de un analista, una agencia o la prensa económica de referencia, citado.
+2. **Si después de los tres sigue sin aparecer, desiste**:
+   - **Campo**: déjalo en `null` (o `[]`). El informe no lo imprime: ni «n.d.», ni la fila, ni el gráfico.
+   - **Sección entera**: pon la clave de la sección a `null`. El informe no la imprime.
+3. **Regístralo** en `meta.huecos`: sección, dato, tipo (`"Núcleo"` o `"Complemento"`), los tres intentos separados por «;» (`1) …; 2) …; 3) …`) y la decisión («Omitido», o «Calculado y marcado como estimación» si el tercer intento lo resolvió).
+4. **Cómo lo avisa el informe**: todas las secciones omitidas y todos los huecos registrados salen en el anexo «Información no disponible». Si falta una sección de **núcleo**, además aparece un aviso al principio del resumen ejecutivo y el motor marca un control en «Revisar». Una sección de núcleo vacía casi siempre significa que falta buscar más: agota los tres intentos con especial cuidado.
+
+| Núcleo (sin ellas el informe no se sostiene) | Complemento (enriquecen, pero se puede prescindir) |
+|---|---|
+| negocio, sector, competencia, financieros, balance, flujos, rentabilidad, capital, directivos, gobierno, consenso, comparables, dcf, escenarios, valoracion, riesgos | historia, trimestres, calidad, bolsa, multiplos_historicos, transacciones, suma_partes, catalizadores, esg, preguntas |
+
+Una sección de núcleo no se pone a `null` si tiene algo que aportar: mejor una sección de gobierno con el consejo y sin operaciones de directivos que ninguna sección.
 
 ## 4. Reglas sobre los datos
 
-1. **Nunca inventes una cifra.** Si no encuentras un dato fiable, pon `null` (o una lista vacía `[]`). El informe mostrará «n.d.» y eso es mejor que un número falso. Una estimación tuya está permitida solo si la marcas como tal en el texto («estimación propia: …») y explicas el cálculo.
-2. **Cita las fuentes.** Lista cada documento en `fuentes` con un `id` numérico y cita con `[n]` en los textos. Las cifras de una tabla se citan en el comentario de esa sección. Prioridad de fuentes: (1) documentos de la propia empresa y del regulador; (2) proveedores de datos de mercado; (3) prensa económica de referencia; (4) el resto, solo si no hay otra cosa y diciéndolo.
-3. **Números como números.** En el JSON, los campos numéricos llevan números con punto decimal (`12.5`), sin unidades ni separadores de miles. Los porcentajes van en puntos porcentuales: 12,5 % se escribe `12.5`, no `0.125`. Los campos de texto pueden llevar cifras redactadas en español («1.250 M»).
-4. **Unidades homogéneas.** Todas las magnitudes de la cuenta de resultados, balance y caja van en `meta.unidades` (por defecto, millones) de `meta.divisa`. Precios, BPA, dividendos por acción y valores por acción, en unidades de la divisa. Número de acciones, en millones. Si la empresa publica en otra divisa, convierte al tipo de cambio de cierre de cada ejercicio y dilo en `meta.limitaciones`.
-5. **Periodos.** Ejercicios como texto: `"2023"`, `"2024"`. Si el ejercicio fiscal no es el año natural, `"FY2025 (mar)"`. Los últimos doce meses, `"LTM"`. Las estimaciones llevan «e»: `"2026e"`.
-6. **Cifras ajustadas.** Usa las cifras reportadas (NIIF/US GAAP). Si la empresa da cifras «ajustadas» o «subyacentes» y las usas, dilo en el comentario y explica la diferencia.
-7. **Signos.** Capex, dividendos, recompras y adquisiciones se escriben **en positivo** (importe pagado). Las caídas y rentabilidades negativas, en negativo.
-8. **Confianza.** Cada sección lleva `"confianza"`: `"Alta"` (fuentes primarias recientes que cuadran entre sí), `"Media"` (mezcla de primarias y secundarias, o algún dato estimado) o `"Baja"` (mayoría de estimaciones, fuentes secundarias o discrepantes).
-9. **Formato del texto.** Los campos de texto admiten `**negrita**` y párrafos separados por una línea en blanco (`\n\n`). No uses listas con guiones dentro de un texto: si hace falta una lista, el campo ya es una lista.
-10. **No cambies la estructura.** No añadas ni renombres claves. Si una clave no aplica, `null`.
+1. **Nunca inventes una cifra.** Si no hay dato fiable tras el protocolo de huecos, `null` (o `[]`) y el informe no lo imprime. Las estimaciones propias se marcan en el texto («estimación propia: …») con el cálculo explicado.
+2. **Fuentes.** Cada documento consultado va en `fuentes` con `id`, `tipo` y fecha, y se cita con `[n]` en los textos (también `[3, 5]` o `[3-5]`). Tipos: `"Primaria"` (empresa o regulador), `"Datos de mercado"` (proveedores), `"Sectorial"` (asociaciones, estadística, estudios), `"Prensa"`, `"Analistas"`. Prioridad: Primaria > Datos de mercado > Sectorial > Analistas > Prensa.
+3. **Unidades.** Todas las magnitudes de las cuentas, la capitalización, el valor empresa y los comparables van **en millones** de `meta.divisa`. El precio, el BPA, el DPA y los valores por acción, en unidades de la divisa. Las acciones, en millones. Si conviertes desde otra divisa, usa el tipo de cierre de cada ejercicio (o el de la fecha de corte para datos de mercado) y dilo en `meta.limitaciones`.
+4. **Números como números**: punto decimal, sin separadores de miles ni unidades. Porcentajes en puntos: 12,5 % se escribe `12.5`.
+5. **Signos.** Gastos e inversiones **en positivo** (`coste_ventas`, `gastos_generales`, `amortizaciones`, `impuestos`, `capex`, `dividendos`, `recompras`, `adquisiciones`, `pagos_arrendamientos`). `resultado_financiero` con signo (negativo si es gasto neto). `minoritarios` de la cuenta en positivo si es beneficio atribuido a minoritarios.
+6. **Periodos.** Ejercicios como texto: `"2025"`. Si el ejercicio no es el año natural: `"FY2025"`, con `meta.cierre_ejercicio_mes`. Estimaciones con «e»: `"2026e"`. Trimestres: `"2T26"` (o `"1S26"` si publica semestres).
+7. **Arrendamientos (NIIF 16).** Si el EBITDA incluye el efecto de NIIF 16 (lo normal desde 2019), los pasivos por arrendamiento van en la deuda (`arrendamientos`) y los pagos de arrendamiento se restan para el FCF. Mantén ese criterio en todas partes: cuentas, puente, DCF y comparables.
+8. **Cifras reportadas.** Usa las cifras reportadas. Si usas ajustadas, dilo en `financieros.ajustes` y explica la diferencia.
+9. **Confianza.** Cada sección lleva `"confianza"`: `"Alta"` (primarias recientes que cuadran), `"Media"` (mezcla, o algún dato estimado) o `"Baja"` (mayoría de estimaciones o fuentes discrepantes).
+10. **Texto.** Admite `**negrita**` y párrafos separados por una línea en blanco. Sin listas con guiones dentro de un texto: si hace falta una lista, el campo ya es una lista.
+11. **Estructura.** No añadas ni renombres claves. Si algo no aplica, `null`. **No escribas `calc`**: lo escribe el motor y se sobrescribe en cada ejecución.
 
-## 5. Estructura del JSON
+## 5. Qué calcula el motor (`calcular-empresa.mjs`)
 
-Claves de primer nivel, en este orden: `meta`, `identificacion`, `resumen`, `negocio`, `competencia`, `financieros`, `caja`, `rentabilidad`, `balance`, `capital`, `gobierno`, `consenso`, `multiplos`, `comparables`, `escenarios`, `bolsa`, `catalizadores`, `riesgos`, `esg`, `fuentes`. El formato exacto de cada una está en su campo, abajo.
+Tú aportas hechos y supuestos; el motor hace **todas las cuentas** y las deja en `calc`. No hagas tú estos cálculos: lee el resultado en `calc` y úsalo en los textos.
 
-```json
-"meta": {
-  "fecha_corte": "AAAA-MM-DD",
-  "divisa": "EUR",
-  "unidades": "millones",
-  "limitaciones": "Texto: qué no se ha podido verificar, conversiones de divisa, línea cotizada elegida, datos de pago no accesibles…"
-}
-```
+| Lo calcula el motor (`calc.…`) | A partir de |
+|---|---|
+| Márgenes, crecimientos, TCAC, tipo impositivo, payout (`cuenta`, `tcac`) | `financieros.cuenta` |
+| Peso, crecimiento y margen de cada segmento (`segmentos_ultimo`, `segmentos_tabla`) | `negocio.segmentos` |
+| Deuda neta, DN/EBITDA, circulante, días de cobro, inventario y pago, liquidez, cobertura (`balance`) | `balance.historico` + cuentas |
+| FCF, conversión, capex/ventas, usos de la caja (`flujos`, `flujos_acumulado`) | `flujos.historico` + cuentas |
+| ROIC, ROE, ROA, descomposición DuPont, ROIC incremental (`rentabilidad`) | cuentas + balance |
+| Altman Z, Piotroski F, Beneish M (`calidad`) | cuentas + balance + flujos |
+| Capitalización, valor empresa, múltiplos LTM y NTM (`mercado`, `clave`) | precio, acciones, `valoracion.puente`, consenso |
+| WACC, proyección, FCFF, valor terminal, puente, valor por acción, dos tablas de sensibilidad, DCF inverso (`dcf`) | `dcf` + último ejercicio real + balance |
+| Valor de cada escenario y valor ponderado (`escenarios`, `valor_ponderado`) | `escenarios.casos` (desplazamientos sobre el DCF base) |
+| Estadísticos de comparables, valor implícito por múltiplo y regresión múltiplo-crecimiento (`comparables`) | `comparables.empresas` |
+| Valor implícito por transacciones (`transacciones`) | `transacciones.operaciones` |
+| Suma de partes (`suma_partes`) | `suma_partes` |
+| Síntesis de valoración, valor objetivo y potencial (`sintesis`) | todo lo anterior + `valoracion.pesos` |
+| Puntuación de gobierno con 10 criterios (`gobierno`) | `gobierno` + `calidad` |
+| Controles de coherencia y de fuentes (`controles`, `fuentes`) | todo |
+
+Datos que el motor deriva solos: los **LTM** salen de `financieros.ltm` (o del último ejercicio si está vacío); los **NTM** combinan los dos próximos ejercicios del consenso según los meses que quedan del ejercicio en curso.
 
 ## 6. Campos
 
-### Campo 0 — Ficha de identificación · `identificacion`
+Las claves de primer nivel, en este orden: `meta`, `identificacion`, `resumen`, `historia`, `negocio`, `sector`, `competencia`, `financieros`, `trimestres`, `balance`, `flujos`, `calidad`, `rentabilidad`, `capital`, `directivos`, `gobierno`, `consenso`, `bolsa`, `multiplos_historicos`, `comparables`, `transacciones`, `dcf`, `escenarios`, `suma_partes`, `valoracion`, `catalizadores`, `riesgos`, `esg`, `preguntas`, `fuentes`.
 
-**Objetivo.** Identificar la empresa y su tamaño en bolsa sin margen de error.
+```json
+"meta": {
+  "fecha_corte": "AAAA-MM-DD", "divisa": "EUR", "unidades": "millones", "cierre_ejercicio_mes": 12,
+  "normas_contables": "NIIF-UE",
+  "limitaciones": "Texto: línea cotizada elegida, conversiones de divisa, datos de pago no accesibles, años que vienen de un proveedor y no de las cuentas…",
+  "huecos": [{ "seccion": "texto", "campo": "texto", "tipo": "Núcleo|Complemento", "intentos": "1) …; 2) …; 3) …", "decision": "Omitido|Calculado y marcado como estimación" }]
+}
+```
 
-**Instrucciones.**
-- `precio` es el último cierre disponible a la fecha de corte; `fecha_precio`, la fecha de ese cierre.
-- `capitalizacion` = precio × acciones en circulación (sin autocartera), en `meta.unidades`.
-- `valor_empresa` (VE) = capitalización + deuda financiera neta (incluye arrendamientos NIIF 16) + intereses minoritarios + provisiones por pensiones − participaciones en asociadas. Si usas la cifra de un proveedor, cita cuál.
-- `free_float_pct`: el que publica el índice o la bolsa; si no, 100 menos los accionistas significativos y la autocartera.
-- `volumen_medio_diario`: texto con el importe medio negociado en tres meses («≈ 6,5 M EUR/día»).
-- `proximos_resultados`: fecha de la próxima publicación de resultados, según el calendario de la empresa.
+### Ficha · `identificacion`
+
+- `nombre_corto`: el nombre con el que aparece en gráficos y en la tabla de comparables («Viscofan»).
+- `acciones`: acciones **diluidas** en circulación (sin autocartera), en millones, a la fecha más reciente publicada.
+- `capitalizacion_publicada`: la de un proveedor de datos, solo para que el motor compruebe precio × acciones.
+- `pais_iso`: código de dos letras.
 
 ```json
 "identificacion": {
-  "nombre": "Nombre legal", "ticker": "XXX", "isin": "ES0000000000",
-  "mercado": "Bolsa y segmento", "indice_referencia": "Índice principal en el que cotiza",
-  "pais": "País de la sede", "sector": "Sector GICS", "industria": "Industria GICS",
-  "sede": "Ciudad", "empleados": 0, "web": "www…",
-  "precio": 0.0, "fecha_precio": "AAAA-MM-DD", "capitalizacion": 0, "valor_empresa": 0,
-  "acciones": 0.0, "free_float_pct": 0.0, "max_52s": 0.0, "min_52s": 0.0,
-  "volumen_medio_diario": "texto", "proximos_resultados": "AAAA-MM-DD"
+  "nombre": "texto", "nombre_corto": "texto", "ticker": "XXX", "isin": "ES0000000000", "mercado": "texto", "indice_referencia": "texto",
+  "pais": "texto", "pais_iso": "ES", "sector": "Sector GICS", "industria": "Industria GICS", "sede": "texto", "fundacion": "1975", "empleados": 0, "web": "texto",
+  "precio": 0.00, "fecha_precio": "AAAA-MM-DD", "acciones": 0.0, "capitalizacion_publicada": 0, "free_float_pct": 0.0,
+  "max_52s": 0.00, "min_52s": 0.00, "volumen_medio_diario": "≈ 6,5 M EUR/día (3 meses)", "proximos_resultados": "AAAA-MM-DD"
 }
 ```
 
-### Campo 1 — Modelo de negocio · `negocio`
+### 1. Historia e hitos · `historia`
 
-**Objetivo.** Que el lector entienda en un minuto qué vende la empresa, a quién, cómo cobra y de dónde sale el beneficio.
+**Objetivo.** Entender de dónde viene la empresa y qué decisiones la han hecho como es.
+- `resumen` (80-150 palabras): origen, transformaciones clave, cambios de control o de dirección, salida a bolsa.
+- `hitos`: 6-12 hitos con año, sobre todo los que explican el negocio de hoy (adquisiciones, entradas en mercados, crisis, reestructuraciones).
 
-**Instrucciones.**
-- `descripcion` (80-150 palabras): productos o servicios, clientes tipo, canal de venta y fuente principal del beneficio. Nada de historia corporativa ni misión.
-- `segmentos`: los segmentos **tal como los reporta la empresa** en sus cuentas (nota de información por segmentos), del último ejercicio cerrado. `ingresos` en `meta.unidades`; `peso_pct` sobre el total (deben sumar 100 ± 1); `crecimiento_pct` frente al ejercicio anterior; `margen_pct` es el margen operativo del segmento (EBIT o EBITDA del segmento, el que publique la empresa; dilo en `clientes` o en el comentario financiero). Máximo 8 segmentos; si hay más, agrupa los pequeños en «Otros».
-- `geografias`: reparto de ingresos por destino (dónde está el cliente), máximo 8 regiones con «Otros»; deben sumar 100 ± 1.
-- `clientes` (60-120 palabras): concentración (peso del primer cliente y de los diez primeros si se publica), porcentaje de ingresos recurrentes o con contrato, duración típica de los contratos y **poder de precios** (¿ha subido precios por encima de sus costes en los últimos dos años? cita el dato).
-- `kpis`: 3 a 6 indicadores operativos que la propia empresa sigue y que explican sus ingresos (cartera de pedidos, clientes, ARPU, ocupación, toneladas, tiendas comparables…). `valor` y `variacion` como texto con unidades; `comentario` en una frase: qué dice el dato.
+```json
+"historia": { "resumen": "texto", "hitos": [{ "anio": "1975", "hito": "texto" }], "confianza": "Alta|Media|Baja" }
+```
+
+### 2. Modelo de negocio · `negocio`
+
+**Objetivo.** Que el comité entienda en dos minutos qué vende, a quién, cómo cobra y de dónde sale el beneficio.
+- `descripcion` (100-180 palabras): productos o servicios, clientes tipo, canales, presencia industrial o comercial.
+- `como_gana_dinero` (80-150 palabras): la economía unitaria. Qué parte de los ingresos es recurrente, de qué depende el margen (precio, volumen, mezcla, coste de materias primas o de personal), apalancamiento operativo y estacionalidad.
+- `segmentos`: los segmentos **tal como los reporta la empresa**, con su historia de al menos 5 ejercicios. `resultado` es el resultado del segmento que publique la empresa (EBIT o EBITDA; indícalo en `tipo_resultado`). Máximo 8: agrupa el resto en «Otros». Los ingresos de los segmentos deben sumar los del grupo (el motor lo comprueba); si hay eliminaciones entre segmentos, ponlas como segmento «Eliminaciones».
+- `geografias`: ingresos por destino del último ejercicio, máximo 8 con «Otros»; deben sumar 100.
+- `clientes` (80-150 palabras): concentración (primer cliente, diez primeros), duración de los contratos, tasa de renovación o de bajas y **poder de precios** demostrado (subidas de precio frente a inflación de costes, con datos).
+- `kpis`: 4-8 indicadores operativos que la propia empresa sigue (cartera de pedidos, volumen, precio medio, clientes, ARPU, ventas comparables, ocupación…), con el valor del año anterior y del actual.
 
 ```json
 "negocio": {
-  "descripcion": "texto",
-  "segmentos": [{ "nombre": "texto", "ingresos": 0, "peso_pct": 0.0, "crecimiento_pct": 0.0, "margen_pct": 0.0 }],
+  "descripcion": "texto", "como_gana_dinero": "texto",
+  "segmentos": [{ "nombre": "texto", "descripcion": "texto", "tipo_resultado": "EBIT|EBITDA", "historico": [{ "periodo": "2021", "ingresos": 0, "resultado": 0 }] }],
   "geografias": [{ "nombre": "texto", "peso_pct": 0.0 }],
   "clientes": "texto",
-  "kpis": [{ "kpi": "texto", "valor": "texto", "variacion": "texto", "comentario": "texto" }],
+  "kpis": [{ "kpi": "texto", "valor_anterior": "texto", "valor_actual": "texto", "variacion": "texto", "comentario": "texto" }],
   "confianza": "Alta|Media|Baja"
 }
 ```
 
-### Campo 2 — Mercado y posición competitiva · `competencia`
+### 3. Sector y mercado · `sector`
 
-**Objetivo.** Situar a la empresa en su mercado y juzgar si tiene una ventaja que proteja sus márgenes.
+**Objetivo.** Saber si la empresa juega en un mercado que crece, si este es rentable y en qué punto del ciclo está.
+- `definicion` (60-120 palabras): el mercado relevante para lo que vende la empresa (no el más grande que encuentres), con su perímetro geográfico.
+- `tamano`: texto con cifra, divisa, año y fuente («≈ 4.300 M EUR en 2025 [12]»). `serie`: 5-8 años de tamaño, con previsión marcada «e»; `unidad_serie` explica la unidad («millones de EUR»). Contrasta dos fuentes y explica en `definicion` cuál usas.
+- `tcac_historico_pct`, `tcac_previsto_pct`: crecimiento anual compuesto de los últimos y de los próximos cinco años.
+- `cr5_pct`: cuota conjunta de los cinco primeros. `estructura`: «Concentrada», «Moderadamente concentrada» o «Fragmentada».
+- `drivers`: 4-6 motores de la demanda, con efecto «+», «−» o «+/−», horizonte («Estructural» o «Cíclico») y evidencia con cifra.
+- `porter`: exactamente cinco filas, en este orden: Rivalidad, Poder de los clientes, Poder de los proveedores, Amenaza de entrada, Amenaza de sustitutos. Intensidad entera de 1 (favorable para las empresas del sector) a 5 (desfavorable), con justificación y dato.
+- `ciclo.posicion`: «Expansión», «Madurez del ciclo», «Contracción» o «Recuperación». `ciclo.comentario` (60-100 palabras): con qué indicadores lo sabes y cómo se comportó el sector en 2008-09, 2020 y 2022.
+- `regulacion` (60-120 palabras): normas que afectan a ingresos o costes y cambios en tramitación, con fechas.
+- `tendencias` (60-120 palabras): tecnología, cambios de hábitos y nuevos competidores, y si la empresa gana o pierde con ellos.
 
-**Instrucciones.**
-- `tamano_mercado`: texto con cifra, divisa, año y perímetro («≈ 42.000 M EUR, Europa, 2025»). Usa la definición de mercado que corresponde a lo que vende la empresa, no la más grande que encuentres.
-- `crecimiento_mercado_pct`: crecimiento anual compuesto previsto a 3-5 años, de una fuente citada.
-- `cuota_pct`: cuota de la empresa en ese mismo mercado. Si no hay dato publicado, calcúlala (ingresos del segmento ÷ tamaño de mercado) y dilo en `mercado`.
-- `mercado` (60-120 palabras): estructura del mercado (concentrado o fragmentado, cuántos actores relevantes), en qué fase está y de dónde viene el crecimiento.
-- `competidores`: 3 a 6 competidores directos, con su cuota si existe y una frase sobre **cómo** compiten (precio, tecnología, escala, servicio).
-- `foso`: una de estas tres etiquetas — `"Amplio"` (ventaja que durará más de 10 años: efectos red, costes de cambio altos, activos intangibles con protección legal, escala que nadie puede replicar), `"Estrecho"` (ventaja real pero erosionable en 5-10 años), `"Sin foso"`.
-- `ventajas` (60-120 palabras): justifica la etiqueta con evidencia: márgenes o ROIC por encima de los competidores durante años, cuota estable o creciente, precios subidos sin perder clientes.
-- `amenazas` (40-100 palabras): qué podría erosionar esa ventaja (entrantes, sustitutos, tecnología, regulación).
+```json
+"sector": {
+  "definicion": "texto", "tamano": "texto", "unidad_serie": "millones de EUR", "serie": [{ "anio": "2021", "tamano": 0 }],
+  "tcac_historico_pct": 0.0, "tcac_previsto_pct": 0.0, "cr5_pct": 0.0, "estructura": "texto",
+  "drivers": [{ "driver": "texto", "efecto": "+|−|+/−", "horizonte": "Estructural|Cíclico", "evidencia": "texto" }],
+  "porter": [{ "fuerza": "Rivalidad", "intensidad": 0, "justificacion": "texto" }],
+  "ciclo": { "posicion": "texto", "comentario": "texto" },
+  "regulacion": "texto", "tendencias": "texto",
+  "confianza": "Alta|Media|Baja"
+}
+```
+
+### 4. Posición competitiva y foso · `competencia`
+
+**Objetivo.** Saber si la empresa tiene una ventaja que proteja sus márgenes y si esa ventaja crece o se erosiona.
+- `cuota_pct` y `posicion` («2.º mundial en tripas artificiales»), en el mercado definido en la sección 3.
+- `competidores`: 4-8 competidores directos con ingresos (millones de `meta.divisa`), cuota y **margen EBIT del último ejercicio** de sus propias cuentas, y cómo compiten. `ticker` vacío (`null`) si no cotiza.
+- `foso.fuentes`: exactamente cinco filas — «Efectos de red», «Costes de cambio», «Intangibles (marca, patentes, licencias)», «Ventaja en costes», «Escala eficiente» — con puntuación entera de 0 a 5 y la **evidencia** que la sostiene: margen o ROIC por encima de los competidores durante años, cuota estable con precios al alza, tasa de renovación…
+- `foso.veredicto`: «Amplio» (más de 10 años), «Estrecho» (5-10 años) o «Sin foso». `foso.tendencia`: «Se amplía», «Estable» o «Se estrecha».
+- `amenazas` (60-120 palabras): qué podría erosionarlo y con qué probabilidad.
 
 ```json
 "competencia": {
-  "tamano_mercado": "texto", "crecimiento_mercado_pct": 0.0, "cuota_pct": 0.0,
-  "foso": "Amplio|Estrecho|Sin foso",
-  "mercado": "texto",
-  "competidores": [{ "nombre": "texto", "pais": "texto", "cuota_pct": 0.0, "comentario": "texto" }],
-  "ventajas": "texto", "amenazas": "texto",
+  "cuota_pct": 0.0, "posicion": "texto",
+  "competidores": [{ "nombre": "texto", "pais": "texto", "ticker": "texto", "ingresos": 0, "cuota_pct": 0.0, "margen_ebit_pct": 0.0, "comentario": "texto" }],
+  "foso": { "veredicto": "Amplio|Estrecho|Sin foso", "tendencia": "Se amplía|Estable|Se estrecha", "fuentes": [{ "fuente": "Efectos de red", "puntuacion": 0, "evidencia": "texto" }] },
+  "amenazas": "texto",
   "confianza": "Alta|Media|Baja"
 }
 ```
 
-### Campo 3 — Evolución financiera · `financieros`
+### 5. Cuenta de resultados · `financieros`
 
-**Objetivo.** Cinco ejercicios cerrados y dos estimados de la cuenta de resultados, para ver crecimiento y tendencia de márgenes.
-
-**Instrucciones.**
-- `historico`: los **cinco últimos ejercicios cerrados** y los **dos siguientes estimados** (consenso), en orden cronológico. Si la empresa tiene menos historia, los que haya.
-- Cifras reportadas de las cuentas auditadas. `ebitda` = EBIT + amortizaciones y depreciaciones (incluida la de derechos de uso). Si la empresa no publica EBITDA, calcúlalo así y dilo en el comentario.
-- Calcula tú los ratios a partir de las cifras, no los copies: `crecimiento_pct` = ingresos / ingresos del año anterior − 1; `margen_bruto_pct`, `margen_ebitda_pct`, `margen_neto_pct` sobre ingresos. `beneficio_neto` es el atribuido a la sociedad dominante. `bpa` diluido, en unidades de divisa.
-- Si hubo un cambio de perímetro relevante (adquisición o venta grande) o un cambio de norma contable, dilo en el comentario: los años no son comparables.
-- `comentario` (60-120 palabras): crecimiento medio anual del periodo, evolución del margen en puntos básicos, sus causas y de dónde vienen las estimaciones (cuántos analistas, fecha) [n].
+**Objetivo.** La serie completa de resultados reales, de la que el motor saca márgenes, crecimientos y la base del DCF.
+- `cuenta`: **solo ejercicios reales** (5-10), en orden cronológico, de las cuentas auditadas. Las estimaciones no van aquí: van en `consenso` y en `dcf`. `gastos_generales` = gastos comerciales, generales y de administración (se usa en el Beneish M). `ebitda` = EBIT + amortizaciones y depreciaciones (incluida la de derechos de uso). `beneficio_neto` es el atribuido a la dominante. `bpa` diluido. `acciones_diluidas` en millones.
+- `ltm`: últimos doce meses a la fecha del último informe (si el último informe es anual, repite ese ejercicio). `periodo` como «LTM jun-26».
+- `comentario` (100-180 palabras): crecimiento orgánico frente a inorgánico, evolución de los márgenes en puntos básicos con sus causas (precio, mezcla, costes, apalancamiento operativo) y años no comparables.
+- `ajustes` (60-120 palabras): diferencias entre cifras reportadas y ajustadas, partidas no recurrentes de cada año y si se repiten.
 
 ```json
 "financieros": {
-  "historico": [{ "periodo": "2021", "ingresos": 0, "crecimiento_pct": 0.0, "margen_bruto_pct": 0.0, "ebitda": 0, "margen_ebitda_pct": 0.0, "ebit": 0, "beneficio_neto": 0, "margen_neto_pct": 0.0, "bpa": 0.00 }],
-  "comentario": "texto",
+  "cuenta": [{ "periodo": "2021", "ingresos": 0, "coste_ventas": 0, "gastos_generales": 0, "ebitda": 0, "amortizaciones": 0, "ebit": 0, "resultado_financiero": 0, "bai": 0, "impuestos": 0, "minoritarios": 0, "beneficio_neto": 0, "bpa": 0.00, "dpa": 0.00, "acciones_diluidas": 0.0 }],
+  "ltm": { "periodo": "LTM jun-26", "ingresos": 0, "ebitda": 0, "ebit": 0, "beneficio_neto": 0, "bpa": 0.00, "dpa": 0.00, "fcf": 0 },
+  "comentario": "texto", "ajustes": "texto",
   "confianza": "Alta|Media|Baja"
 }
 ```
 
-### Campo 4 — Generación de caja y calidad del beneficio · `caja`
+### 6. Resultados recientes · `trimestres`
 
-**Objetivo.** Comprobar que el beneficio contable se convierte en caja, y detectar beneficios «de papel».
-
-**Instrucciones.**
-- `historico`: los cinco últimos ejercicios cerrados. `flujo_operativo` del estado de flujos de efectivo (después de impuestos e intereses pagados si la empresa los clasifica ahí). `capex` = inversiones en inmovilizado material e intangible, en positivo. `fcf` = flujo operativo − capex − pagos por arrendamientos (principal). `beneficio_neto` igual que en `financieros`. `conversion_pct` = fcf / beneficio neto × 100. `capex_ventas_pct` = capex / ingresos × 100.
-- `calidad` (60-150 palabras): conversión media del periodo y años anómalos con su causa; diferencia entre beneficio reportado y ajustado y si los «extraordinarios» se repiten cada año; peso de la remuneración en acciones; capitalización de gastos de desarrollo; cambios de criterio contable; salvedades del auditor si las hay.
-- `circulante` (40-100 palabras): necesidades de circulante sobre ventas, tendencia de días de cobro, pago e inventario, y uso de factoring o confirming (súmalo mentalmente a la deuda y dilo).
+**Objetivo.** Ver la tendencia más reciente, que es lo que mueve el precio, y lo que dice la dirección.
+- `items`: los últimos 8 trimestres (o 4 semestres), en orden cronológico. `crecimiento_pct` interanual reportado; `crecimiento_organico_pct` si la empresa lo publica (sin divisa ni perímetro). `vs_consenso`: «Superior», «En línea» o «Inferior» en EBITDA o BPA, con la fuente del consenso previo en el comentario.
+- `ultima_presentacion` (150-250 palabras): mensajes de la dirección en las dos últimas conferencias, cambios en el discurso entre una y otra, las preguntas de los analistas que más se repitieron y lo que la dirección evitó contestar [n].
 
 ```json
-"caja": {
-  "historico": [{ "periodo": "2021", "flujo_operativo": 0, "capex": 0, "fcf": 0, "beneficio_neto": 0, "conversion_pct": 0, "capex_ventas_pct": 0.0 }],
-  "calidad": "texto", "circulante": "texto",
+"trimestres": {
+  "items": [{ "periodo": "3T24", "ingresos": 0, "crecimiento_pct": 0.0, "crecimiento_organico_pct": 0.0, "ebitda": 0, "margen_ebitda_pct": 0.0, "bpa": 0.00, "vs_consenso": "Superior|En línea|Inferior" }],
+  "ultima_presentacion": "texto",
   "confianza": "Alta|Media|Baja"
 }
 ```
 
-### Campo 5 — Rentabilidad sobre el capital · `rentabilidad`
+### 7 y 11. Balance, circulante y deuda · `balance`
 
-**Objetivo.** Saber si la empresa crea valor: si gana sobre el capital que usa más de lo que ese capital cuesta.
-
-**Instrucciones.**
-- `historico`: cinco ejercicios cerrados.
-- `roic_pct` = EBIT × (1 − tipo impositivo efectivo) / capital invertido medio del año, donde capital invertido = patrimonio neto + deuda financiera neta (con arrendamientos). Calcúlalo tú con los datos de las cuentas, con el mismo criterio todos los años.
-- `wacc_pct`: coste medio ponderado del capital. Coste de los fondos propios = tipo sin riesgo (bono a 10 años del país de la divisa, a cierre de cada año) + beta × prima de riesgo de mercado (5,5 % salvo fuente mejor). Coste de la deuda después de impuestos. Pesos a valor de mercado. Explica el cálculo del último año en el comentario.
-- `diferencial_pct` = roic_pct − wacc_pct. `roe_pct` = beneficio neto / patrimonio neto medio.
-- `comentario` (40-100 palabras): si crea valor, desde cuándo, y qué mueve el ROIC (margen o rotación del capital).
-
-```json
-"rentabilidad": {
-  "historico": [{ "periodo": "2021", "roic_pct": 0.0, "wacc_pct": 0.0, "diferencial_pct": 0.0, "roe_pct": 0.0 }],
-  "comentario": "texto",
-  "confianza": "Alta|Media|Baja"
-}
-```
-
-### Campo 6 — Balance y solvencia · `balance`
-
-**Objetivo.** Saber si la deuda puede poner en riesgo al accionista y cuándo.
-
-**Instrucciones.**
-- `deuda_neta`: deuda financiera bruta + arrendamientos − caja y equivalentes, al último cierre publicado (trimestral si existe). Si es caja neta, número negativo.
-- `dn_ebitda` = deuda neta / EBITDA de los últimos doce meses. `cobertura_intereses` = EBIT / gastos financieros. `liquidez` = caja + líneas de crédito comprometidas no dispuestas. `coste_deuda_pct` = gastos financieros / deuda bruta media.
-- `rating`: calificación crediticia vigente, agencia y perspectiva («BBB, S&P, estable»). Si no tiene, «Sin rating».
-- `historico`: deuda neta y DN/EBITDA de los cinco últimos cierres.
-- `vencimientos`: calendario de vencimientos de la deuda bruta por año, de la nota de deuda de las cuentas; agrupa lo lejano en «20XX+».
-- `otros_pasivos` (40-100 palabras): pensiones, provisiones, litigios, garantías, pagos aplazados de adquisiciones, opciones de venta de minoritarios.
-- `comentario` (30-80 palabras): conclusión sobre la solvencia y la posición frente a sus compromisos (covenants si se publican).
+**Objetivo.** Sacar del balance la deuda, el circulante, el capital invertido y los pasivos que no parecen deuda pero lo son.
+- `historico`: los mismos ejercicios que `financieros.cuenta`, al cierre. `patrimonio_neto` es el **atribuido a la dominante**; `minoritarios` aparte. `pasivo_total` = todo el pasivo exigible (sin patrimonio). `reservas` = beneficios no distribuidos (para el Altman Z). `deuda_financiera` = deuda bancaria + bonos + pagarés, corto y largo plazo, sin arrendamientos.
+- `vencimientos`: calendario de la deuda bruta por año, de la nota de deuda; agrupa lo lejano en «20XX+».
+- `liquidez`: texto («caja 410 M + líneas no dispuestas 600 M»). `rating`: agencia, nota y perspectiva, o «Sin rating». `coste_deuda_pct`: gastos financieros entre deuda bruta media. `vida_media_anios`: de la nota de deuda.
+- `otros_pasivos` (80-150 palabras): covenants y holgura, pensiones, provisiones, litigios, garantías, pagos aplazados de adquisiciones, opciones de venta de minoritarios, *factoring* sin recurso y *confirming*.
+- `comentario` (80-150 palabras): evolución del circulante y de la deuda, y su lectura.
 
 ```json
 "balance": {
-  "deuda_neta": 0, "dn_ebitda": 0.0, "cobertura_intereses": 0.0, "liquidez": 0,
-  "rating": "texto", "coste_deuda_pct": 0.0,
-  "historico": [{ "periodo": "2021", "deuda_neta": 0, "dn_ebitda": 0.0 }],
+  "historico": [{ "periodo": "2021", "activo_total": 0, "activo_corriente": 0, "pasivo_corriente": 0, "pasivo_total": 0, "fondo_comercio": 0, "intangibles": 0, "inmovilizado_material": 0, "existencias": 0, "clientes": 0, "proveedores": 0, "caja": 0, "deuda_financiera": 0, "arrendamientos": 0, "patrimonio_neto": 0, "minoritarios": 0, "reservas": 0 }],
   "vencimientos": [{ "anio": "2026", "importe": 0 }],
+  "liquidez": "texto", "rating": "texto", "coste_deuda_pct": 0.0, "vida_media_anios": 0.0,
   "otros_pasivos": "texto", "comentario": "texto",
   "confianza": "Alta|Media|Baja"
 }
 ```
 
-### Campo 7 — Asignación de capital · `capital`
+### 8. Flujos de caja · `flujos`
 
-**Objetivo.** Juzgar qué hace la dirección con la caja que genera y si ha creado valor con ello.
-
-**Instrucciones.**
-- `politica` (40-100 palabras): política de dividendos declarada, programas de recompra vigentes, prioridades de uso de la caja que la empresa ha comunicado.
-- `historico`: cinco ejercicios. `dividendos`, `recompras` y `adquisiciones` son importes pagados en el año (estado de flujos), en positivo. `payout_pct` = dividendos / beneficio neto. `acciones` = número medio diluido de acciones, en millones (muestra si diluye o recompra).
-- `historial_ma` (40-120 palabras): adquisiciones relevantes de los últimos cinco a diez años, precio pagado (múltiplo si se conoce) y si han cumplido lo prometido (deterioros de fondo de comercio = mala señal; cítalos).
+- `historico`: los mismos ejercicios, del estado de flujos de efectivo. `flujo_operativo` después de impuestos (y de intereses, si la empresa los clasifica ahí). `capex`: inversión en inmovilizado material e intangible. `pagos_arrendamientos`: principal de arrendamientos (financiación). `adquisiciones`: neto de caja adquirida. Todo en positivo; `desinversiones` y `emision_acciones` en positivo cuando entra caja.
+- `comentario` (80-150 palabras): calidad de la conversión de beneficio en caja, años anómalos con su causa, y qué parte del capex es de mantenimiento y qué parte de crecimiento (con la cifra de la empresa si la da; si no, estimación propia marcada).
 
 ```json
-"capital": {
-  "politica": "texto",
-  "historico": [{ "periodo": "2021", "dividendos": 0, "recompras": 0, "adquisiciones": 0, "payout_pct": 0, "acciones": 0.0 }],
-  "historial_ma": "texto",
+"flujos": {
+  "historico": [{ "periodo": "2021", "flujo_operativo": 0, "capex": 0, "pagos_arrendamientos": 0, "adquisiciones": 0, "desinversiones": 0, "dividendos": 0, "recompras": 0, "emision_acciones": 0 }],
+  "comentario": "texto",
   "confianza": "Alta|Media|Baja"
 }
 ```
 
-### Campo 8 — Equipo directivo y gobierno corporativo · `gobierno`
+### 9. Calidad contable · `calidad`
 
-**Objetivo.** Saber quién decide, qué historial tiene y si sus intereses están alineados con los del accionista minoritario.
+**Objetivo.** Saber si las cifras son fiables. El motor calcula Altman Z, Piotroski F y Beneish M; tú aportas el juicio.
+- `auditor`, `anios_auditor` (años seguidos), `opinion` («Favorable» o «Con salvedades: …»).
+- `comentario` (120-200 palabras): cambios de criterio contable, capitalización de gastos (I+D, intereses), remuneración en acciones sobre beneficio, deterioros, reconocimiento de ingresos, diferencias entre resultado contable y fiscal, y **tu lectura de los tres indicadores del motor** (`calc.calidad`).
+- `senales`: todas las que encuentres, con nivel «Alta», «Media» o «Baja». Si no hay, una fila «Ninguna relevante» con la explicación de qué has revisado.
 
-**Instrucciones.**
-- `directivos`: consejero delegado, director financiero y presidente (si es ejecutivo). `desde` = año en el cargo. `trayectoria` (1-2 frases): experiencia previa y **resultados medibles** durante su mandato.
-- `accionistas`: accionistas significativos según el registro del regulador (en España, participaciones significativas de la CNMV), con su porcentaje y tipo (familiar, institucional, estatal, fondo activista, autocartera).
-- `insiders` (30-80 palabras): compras y ventas de consejeros y directivos de los últimos 12 meses, con fechas e importes. Cuántas acciones tiene el consejero delegado y cuánto vale frente a su sueldo.
-- `remuneracion` (30-80 palabras): estructura del variable (a qué métricas se liga) y si premia el crecimiento a cualquier precio o la rentabilidad.
-- `alertas`: lista de señales concretas (rotación de director financiero o auditor, operaciones vinculadas, consejo poco independiente, blindajes, multas). Si no hay ninguna, `["Ninguna relevante detectada."]`.
+```json
+"calidad": {
+  "auditor": "texto", "anios_auditor": 0, "opinion": "texto", "comentario": "texto",
+  "senales": [{ "senal": "texto", "nivel": "Alta|Media|Baja", "comentario": "texto" }],
+  "confianza": "Alta|Media|Baja"
+}
+```
+
+### 10. Rentabilidad sobre el capital · `rentabilidad`
+
+El motor calcula ROIC, ROE, ROA, la descomposición DuPont y el ROIC incremental. Tú escribes `comentario` (100-160 palabras): si crea valor (ROIC frente a WACC) y desde cuándo, qué mueve el ROIC (margen o rotación), qué dice el ROIC incremental de la calidad del crecimiento reciente y cómo se compara con los competidores [n].
+
+```json
+"rentabilidad": { "comentario": "texto", "confianza": "Alta|Media|Baja" }
+```
+
+### 12. Asignación de capital · `capital`
+
+- `politica` (80-120 palabras): política de dividendos, recompras vigentes y prioridades declaradas para la caja.
+- `adquisiciones`: las relevantes de los últimos 10 años: importe, múltiplo pagado si se publicó, financiación y **resultado** (¿cumplió el plan? ¿hubo deterioros del fondo de comercio?).
+- `comentario` (100-160 palabras): veredicto sobre la dirección como asignadora de capital, con los datos del motor (`calc.flujos_acumulado`, ROIC incremental, dilución).
+
+```json
+"capital": {
+  "politica": "texto",
+  "adquisiciones": [{ "anio": "2022", "objetivo": "texto", "importe": 0, "ev_ebitda": 0.0, "financiacion": "texto", "resultado": "texto" }],
+  "comentario": "texto",
+  "confianza": "Alta|Media|Baja"
+}
+```
+
+### 13. Equipo directivo · `directivos`
+
+- `equipo`: primer ejecutivo, director financiero, presidente y otros dos o tres directivos clave. `participacion_pct` en el capital (directa e indirecta). `trayectoria` (2-3 frases): carrera previa y **resultados medibles** en el cargo.
+- `historial_guidance`: los objetivos anuales que la dirección publicó en los últimos 4-6 años (y los del plan a medio plazo anterior) frente a lo que logró. `cumplida`: «Sí», «No» o «Parcial».
+- `comentario` (80-140 palabras): credibilidad, estabilidad del equipo y plan de sucesión.
+
+```json
+"directivos": {
+  "equipo": [{ "nombre": "texto", "cargo": "texto", "desde": "2019", "participacion_pct": 0.00, "trayectoria": "texto" }],
+  "historial_guidance": [{ "anio": "2023", "guia": "texto", "real": "texto", "cumplida": "Sí|No|Parcial" }],
+  "comentario": "texto",
+  "confianza": "Alta|Media|Baja"
+}
+```
+
+### 14. Gobierno corporativo · `gobierno`
+
+**Objetivo.** Saber si el accionista minoritario está protegido. Fuente principal: IAGC e IARC (o *proxy*).
+- `consejo`: todos los consejeros. `tipo`: «Ejecutivo», «Dominical», «Independiente» u «Otro externo». `desde`: año de primer nombramiento. `comisiones`: las que integra.
+- Booleanos: `presidente_ceo_separados`, `consejero_coordinador` (hay un independiente coordinador), `una_accion_un_voto` (sin clases con voto distinto ni límites de voto ni blindajes estatutarios), `operaciones_vinculadas_relevantes`, `variable_ligado_rentabilidad` (el variable a largo plazo depende de ROIC, TSR o FCF).
+- `voto_remuneracion_pct`: porcentaje a favor en la última votación del informe de remuneraciones.
+- `remuneracion_ceo`: el último ejercicio, en millones: total devengado, fijo, variable anual, variable a largo plazo y `ratio_salario_medio` (remuneración del primer ejecutivo entre el coste medio por empleado).
+- `remuneracion` (80-140 palabras): métricas y pesos del variable, objetivos fijados, si premian crecimiento a cualquier precio, cláusulas de recuperación (*clawback*) e indemnizaciones.
+- `accionistas`: participaciones significativas con tipo y `variacion` (movimientos en 12-24 meses). Incluye autocartera.
+- `insiders`: compras y ventas de consejeros y directivos de los últimos 12 meses, de los registros oficiales. `importe` en millones de `meta.divisa`.
+- `control_y_defensas` (80-140 palabras): accionista de control y pactos, operaciones vinculadas, blindajes, límites de voto, clases de acciones.
+- `alertas`: señales concretas (rotación del director financiero o del auditor, multas, investigaciones, consejeros con conflictos). Si no hay ninguna, `["Ninguna relevante detectada tras revisar IAGC, IARC y hechos relevantes."]`.
 
 ```json
 "gobierno": {
-  "directivos": [{ "nombre": "texto", "cargo": "texto", "desde": "2019", "trayectoria": "texto" }],
-  "accionistas": [{ "nombre": "texto", "pct": 0.0, "tipo": "texto" }],
-  "insiders": "texto", "remuneracion": "texto",
+  "consejo": [{ "nombre": "texto", "cargo": "texto", "tipo": "Ejecutivo|Dominical|Independiente|Otro externo", "desde": "2015", "comisiones": "texto" }],
+  "presidente_ceo_separados": true, "consejero_coordinador": true, "una_accion_un_voto": true,
+  "operaciones_vinculadas_relevantes": false, "variable_ligado_rentabilidad": true, "voto_remuneracion_pct": 0.0,
+  "remuneracion_ceo": { "anio": "2025", "total": 0.00, "fijo": 0.00, "variable_corto": 0.00, "variable_largo": 0.00, "ratio_salario_medio": 0 },
+  "remuneracion": "texto",
+  "accionistas": [{ "nombre": "texto", "pct": 0.00, "tipo": "texto", "variacion": "texto" }],
+  "insiders": [{ "fecha": "AAAA-MM-DD", "persona": "texto", "operacion": "Compra|Venta", "acciones": 0, "importe": 0.00 }],
+  "control_y_defensas": "texto",
   "alertas": ["texto"],
   "confianza": "Alta|Media|Baja"
 }
 ```
 
-### Campo 9 — Previsiones de la compañía y consenso · `consenso`
+### 15. Previsiones y consenso · `consenso`
 
-**Objetivo.** Saber qué espera la propia empresa, qué espera el mercado y hacia dónde se mueven esas expectativas.
-
-**Instrucciones.**
-- `guidance` (30-100 palabras): objetivos publicados por la empresa para el año en curso y el plan a medio plazo, con fecha de la última confirmación o cambio [n].
-- `estimaciones`: consenso de los dos próximos ejercicios (ingresos, EBITDA, BPA) con su fuente («Consenso, 11 analistas, fecha»). Deben coincidir con los años «e» de `financieros`.
-- `n_analistas`, `comprar`, `mantener`, `vender`: número de recomendaciones. `precio_objetivo_medio`, `precio_objetivo_min`, `precio_objetivo_max` en unidades de divisa.
-- `revisiones` (20-60 palabras): cómo han cambiado las estimaciones de BPA en los últimos tres meses y por qué.
-- Si no tienes acceso a un consenso fiable, pon `null` en las cifras y explícalo en `revisiones`. No construyas un consenso con dos notas de prensa.
+- `guidance` (80-140 palabras): objetivos del año y del plan a medio plazo, con la fecha de la última confirmación o cambio.
+- `estimaciones`: consenso de los **tres** próximos ejercicios, con la fuente y el número de analistas. Coteja al menos dos fuentes y anota en `revisiones` las diferencias relevantes.
+- `recomendaciones`: número de analistas y de cada recomendación; precios objetivo medio, mínimo y máximo.
+- `revisiones` (60-120 palabras): cambios de las estimaciones de BPA y EBITDA en 3 y 12 meses, y por qué.
 
 ```json
 "consenso": {
   "guidance": "texto",
-  "estimaciones": [{ "periodo": "2026e", "ingresos": 0, "ebitda": 0, "bpa": 0.00, "fuente": "texto" }],
-  "n_analistas": 0, "comprar": 0, "mantener": 0, "vender": 0,
-  "precio_objetivo_medio": 0.0, "precio_objetivo_min": 0.0, "precio_objetivo_max": 0.0,
+  "estimaciones": [{ "periodo": "2026e", "ingresos": 0, "ebitda": 0, "ebit": 0, "bpa": 0.00, "dpa": 0.00, "fuente": "texto" }],
+  "recomendaciones": { "n_analistas": 0, "comprar": 0, "mantener": 0, "vender": 0, "po_medio": 0.00, "po_min": 0.00, "po_max": 0.00 },
   "revisiones": "texto",
   "confianza": "Alta|Media|Baja"
 }
 ```
 
-### Campo 10 — Valoración por múltiplos · `multiplos`
+### 16. Comportamiento en bolsa · `bolsa`
 
-**Objetivo.** Saber si la acción está cara o barata frente a su propia historia y frente a sus comparables.
-
-**Instrucciones.**
-- `tabla`: exactamente estos cuatro múltiplos, en este orden: «EV/EBITDA», «EV/EBIT», «PER», «EV/Ventas». Todos en «veces».
-  - `actual`: con el valor de empresa y la capitalización a la fecha de corte sobre las cifras de los últimos doce meses.
-  - `siguiente`: sobre la estimación de consenso de los próximos doce meses.
-  - `media_5a`: media de los últimos cinco años del mismo múltiplo (de un proveedor de datos, citado).
-  - `comparables`: **mediana** del mismo múltiplo de las empresas de `comparables.empresas` (sin contar la analizada).
-- `fcf_yield_pct` = FCF de los últimos doce meses / capitalización. `dividendo_pct` = dividendo por acción de los últimos doce meses / precio.
-- `comentario` (40-100 palabras): si el descuento o la prima están justificados por diferencias de crecimiento, rentabilidad o riesgo.
-
-```json
-"multiplos": {
-  "tabla": [{ "metrica": "EV/EBITDA", "actual": 0.0, "siguiente": 0.0, "media_5a": 0.0, "comparables": 0.0 }],
-  "fcf_yield_pct": 0.0, "dividendo_pct": 0.0,
-  "comentario": "texto",
-  "confianza": "Alta|Media|Baja"
-}
-```
-
-### Campo 11 — Comparables cotizados · `comparables`
-
-**Objetivo.** Poner a la empresa al lado de sus pares para ver si el múltiplo se corresponde con su crecimiento y rentabilidad.
-
-**Instrucciones.**
-- `criterio` (20-50 palabras): por qué se eligen estas empresas (mismo negocio, tamaño, geografía).
-- `empresas`: **la empresa analizada en primera posición** y después 4 a 7 comparables cotizados reales. Todas las cifras con la misma fecha y el mismo criterio: `capitalizacion` en `meta.unidades` de `meta.divisa` (convierte); `ev_ebitda` y `per` de los últimos doce meses; `crecimiento_pct` de ingresos del último ejercicio; `margen_ebitda_pct` y `roic_pct` del último ejercicio. `pais` con el código ISO de dos letras.
-- `comentario` (40-100 palabras): dónde queda la empresa en el mapa crecimiento-múltiplo y si su posición está justificada.
-
-```json
-"comparables": {
-  "criterio": "texto",
-  "empresas": [{ "nombre": "texto", "ticker": "texto", "pais": "ES", "capitalizacion": 0, "ev_ebitda": 0.0, "per": 0.0, "crecimiento_pct": 0.0, "margen_ebitda_pct": 0.0, "roic_pct": 0.0 }],
-  "comentario": "texto",
-  "confianza": "Alta|Media|Baja"
-}
-```
-
-### Campo 12 — Valoración intrínseca y escenarios · `escenarios`
-
-**Objetivo.** Estimar cuánto vale la acción en tres escenarios y cuánto se gana o se pierde en cada uno.
-
-**Instrucciones.**
-- `metodo` (40-100 palabras): método principal (descuento de flujos de caja libres a 5-10 años con valor terminal por crecimiento perpetuo o por múltiplo de salida), WACC y crecimiento terminal usados, y contraste con múltiplos.
-- `supuestos`: 3 a 6 hipótesis que más mueven el valor (crecimiento de ingresos, margen, capex, WACC, múltiplo de salida…), con su valor en cada escenario, como texto («6,5 %»).
-- `casos`: exactamente tres, en este orden: «Bajista», «Base», «Alcista». `valor` por acción en unidades de divisa; `potencial_pct` = valor / precio actual − 1; `probabilidad_pct` (las tres suman 100); `narrativa` (una o dos frases): qué tiene que ocurrir en el mundo real para ese escenario.
-- `precio_actual` = `identificacion.precio`. `valor_ponderado` = Σ valor × probabilidad. `potencial_ponderado_pct` = valor_ponderado / precio actual − 1.
-- El escenario base **no** es el precio objetivo del consenso: es tu estimación con tus supuestos. El bajista debe ser verosímil (algo que ya le ha pasado a la empresa o a un competidor), no una catástrofe ni un ajuste cosmético.
-- `sensibilidad` (20-60 palabras): cuánto cambia el valor base al mover un punto las dos hipótesis más sensibles.
-
-```json
-"escenarios": {
-  "metodo": "texto",
-  "supuestos": [{ "supuesto": "texto", "bajista": "texto", "base": "texto", "alcista": "texto" }],
-  "casos": [{ "escenario": "Bajista", "valor": 0.00, "potencial_pct": 0.0, "probabilidad_pct": 0, "narrativa": "texto" }],
-  "precio_actual": 0.00, "valor_ponderado": 0.00, "potencial_ponderado_pct": 0.0,
-  "sensibilidad": "texto",
-  "confianza": "Alta|Media|Baja"
-}
-```
-
-### Campo 13 — Comportamiento en bolsa · `bolsa`
-
-**Objetivo.** Ver cómo ha tratado el mercado a la acción y cuánto riesgo de precio tiene.
-
-**Instrucciones.**
-- `rentabilidades`: exactamente tres filas — «1 año», «3 años (anual.)», «5 años (anual.)» — con la **rentabilidad total** (dividendos incluidos) de la acción y de `identificacion.indice_referencia`, en la divisa del informe.
-- `beta`: frente al índice de referencia, cinco años con datos mensuales. `volatilidad_pct`: desviación típica anualizada de los rendimientos diarios del último año. `max_drawdown_pct`: peor caída de máximo a mínimo en cinco años, en negativo. `posicion_corta_pct`: porcentaje del capital en posiciones cortas declaradas (en España, registro de la CNMV).
-- `comentario` (30-80 palabras): qué explica el comportamiento relativo (resultados, rotación sectorial, sucesos concretos).
+- `rentabilidades`: «En el año», «1 año», «3 años (anual.)», «5 años (anual.)», «10 años (anual.)»: rentabilidad **total** (con dividendos) de la acción, del índice de referencia y de un índice sectorial.
+- `anual`: rentabilidad total por año natural, 5-10 años, de la acción y del índice.
+- `beta` (5 años, mensual), `volatilidad_pct` (1 año, diaria anualizada), `max_drawdown_pct` (5 años, negativo), `posicion_corta_pct` (registro oficial).
+- `comentario` (80-140 palabras): qué explica el comportamiento relativo, con los hechos concretos.
 
 ```json
 "bolsa": {
-  "rentabilidades": [{ "periodo": "1 año", "accion_pct": 0.0, "indice_pct": 0.0 }],
+  "rentabilidades": [{ "periodo": "1 año", "accion_pct": 0.0, "indice_pct": 0.0, "sector_pct": 0.0 }],
+  "anual": [{ "anio": "2021", "accion_pct": 0.0, "indice_pct": 0.0 }],
   "beta": 0.00, "volatilidad_pct": 0.0, "max_drawdown_pct": 0.0, "posicion_corta_pct": 0.0,
   "comentario": "texto",
   "confianza": "Alta|Media|Baja"
 }
 ```
 
-### Campo 14 — Catalizadores · `catalizadores`
+### 17. Múltiplos frente a su historia · `multiplos_historicos`
 
-**Objetivo.** Saber qué hechos con fecha pueden mover la cotización en los próximos 12-18 meses.
-
-**Instrucciones.**
-- `items`: 3 a 6 eventos **con fecha o ventana concreta** (resultados, día del inversor, decisión regulatoria, vencimiento de una patente, cierre de una adquisición, entrada o salida de un índice). `efecto`: qué se sabrá o cambiará. `probabilidad`: «Alta», «Media» o «Baja».
-- No pongas tendencias generales («la demanda seguirá creciendo»): eso va en la tesis.
+- `serie`: EV/EBITDA y PER de los próximos 12 meses al cierre de cada año, 5-10 años, de un proveedor citado.
+- `comentario` (60-120 palabras): por qué cotiza con prima o descuento frente a su historia (`calc.multiplos_historicos`), y si ha cambiado algo estructural (crecimiento, tipos de interés, perfil de riesgo).
 
 ```json
-"catalizadores": {
-  "items": [{ "fecha": "texto", "evento": "texto", "efecto": "texto", "probabilidad": "Alta|Media|Baja" }],
+"multiplos_historicos": { "serie": [{ "anio": "2021", "ev_ebitda_ntm": 0.0, "per_ntm": 0.0 }], "comentario": "texto", "confianza": "Alta|Media|Baja" }
+```
+
+### 18. Comparables cotizados · `comparables`
+
+- `criterio` (40-80 palabras): por qué estas empresas (negocio, tamaño, geografía, modelo) y por qué no otras que podrían parecer obvias.
+- `empresas`: 6-10 comparables **sin incluir a la empresa analizada** (el motor la añade con sus propias cifras). Todas a la misma fecha: `capitalizacion` en millones de `meta.divisa` (convertida), múltiplos de los últimos y de los próximos 12 meses, `crecimiento_pct` de ingresos esperado a 12 meses, margen EBITDA y ROIC del último ejercicio, DN/EBITDA y rentabilidad por FCF.
+- `comentario` (100-160 palabras): dónde queda la empresa en el mapa crecimiento-múltiplo, si la prima o el descuento se justifican (crecimiento, ROIC, riesgo) y qué múltiplo usarías. Apóyate en `calc.comparables.implicito` y `calc.comparables.regresion`.
+
+```json
+"comparables": {
+  "criterio": "texto",
+  "empresas": [{ "nombre": "texto", "ticker": "texto", "pais": "FR", "capitalizacion": 0, "ev_ventas": 0.00, "ev_ebitda_ltm": 0.0, "ev_ebitda_ntm": 0.0, "per_ntm": 0.0, "crecimiento_pct": 0.0, "margen_ebitda_pct": 0.0, "roic_pct": 0.0, "dn_ebitda": 0.0, "fcf_yield_pct": 0.0 }],
+  "comentario": "texto",
   "confianza": "Alta|Media|Baja"
 }
 ```
 
-### Campo 15 — Riesgos · `riesgos`
+### 19. Transacciones precedentes · `transacciones`
 
-**Objetivo.** Enumerar lo que puede romper la tesis, con su peso y la señal que avisaría a tiempo.
+- `operaciones`: 5-10 compras de empresas comparables en los últimos 5-7 años (fusiones, OPA, operaciones de capital privado), con valor empresa en millones y múltiplos pagados **si se publicaron** (si no, `null`, nunca inventados). `prima_pct` solo en OPA sobre cotizadas.
+- `comentario` (60-120 palabras): qué dicen sobre el valor de control y si la empresa es o podría ser objeto de una operación (accionariado, tamaño, interés de compradores).
 
-**Instrucciones.**
-- `items`: 4 a 8 riesgos **específicos de esta empresa** (no «riesgo macroeconómico» sin más), ordenados de mayor a menor importancia. `tipo`: Negocio, Financiero, Regulatorio, Competencia, Ejecución, Gobierno, Materias primas, Divisa… `probabilidad` e `impacto`: «Alta/Alto», «Media/Medio», «Baja/Bajo». `mitigante`: qué lo reduce hoy. `senal`: indicador observable que avisaría de que el riesgo se está materializando.
-- Revisa los factores de riesgo que la propia empresa declara en su informe anual y añade los que no declara.
+```json
+"transacciones": {
+  "operaciones": [{ "fecha": "AAAA-MM", "objetivo": "texto", "comprador": "texto", "ev": 0, "ev_ventas": 0.00, "ev_ebitda": 0.0, "prima_pct": 0.0, "comentario": "texto" }],
+  "comentario": "texto",
+  "confianza": "Alta|Media|Baja"
+}
+```
+
+### 20. DCF · `dcf`
+
+**Objetivo.** El valor intrínseco con supuestos explícitos. El motor parte del **último ejercicio real** de `financieros.cuenta` y del circulante del último balance, y hace todo el cálculo.
+- `anios`: **5 a 10 años** de proyección, empezando por el primer ejercicio no cerrado («2026e»). En cada año, los supuestos:
+  - `crecimiento_pct` de ingresos;
+  - `margen_ebitda_pct`;
+  - `amortizacion_pct_ventas` y `capex_pct_ventas`: en el último año, el capex debe ser ≥ las amortizaciones (en estado estacionario no se desinvierte);
+  - `nwc_pct_ventas`: capital circulante comercial (existencias + clientes − proveedores) sobre ventas; el histórico está en `calc.balance[].circulante_ventas_pct`;
+  - `tasa_impositiva_pct`: tipo efectivo normalizado.
+  Converge hacia un estado estacionario: el crecimiento del último año, cerca del terminal; el margen, sostenible frente a la competencia.
+- `wacc`: tasa libre de riesgo (bono a 10 años del país de la divisa a la fecha de corte, citado); beta (ajustada o desapalancada y reapalancada; di cuál); prima de mercado (5-6 % salvo fuente mejor, citada); `prima_adicional_pct` por país, tamaño o riesgo específico, justificada; coste de la deuda antes de impuestos; peso de la deuda a valor de mercado.
+- `terminal`: `metodo` «gordon», «multiplo» o «media»; `crecimiento_pct` ≤ crecimiento nominal a largo plazo de la economía (2-3 %); `multiplo_salida` coherente con los comparables. El motor calcula el implícito de cada método: deben ser razonables entre sí.
+- `mitad_de_anio`: `true` (flujos a mitad de año, lo habitual).
+- `justificacion`: un texto por bloque (crecimiento, márgenes, inversión, WACC, terminal; 60-120 palabras cada uno), comparando cada supuesto con su historia (`calc.cuenta`, `calc.flujos`, `calc.balance`), con el consenso y con el sector [n].
+- `lectura` (120-200 palabras): se escribe **después de calcular**. Valor por acción, peso del valor terminal, qué dice el DCF inverso (`calc.dcf.inverso`: crecimiento, margen y rentabilidad implícitos en el precio) y si eso es exigente o conservador frente a la historia. Es el párrafo más importante de la valoración.
+
+```json
+"dcf": {
+  "anios": [{ "periodo": "2026e", "crecimiento_pct": 0.0, "margen_ebitda_pct": 0.0, "amortizacion_pct_ventas": 0.0, "capex_pct_ventas": 0.0, "nwc_pct_ventas": 0.0, "tasa_impositiva_pct": 0.0 }],
+  "wacc": { "tasa_libre_pct": 0.0, "beta": 0.00, "prima_mercado_pct": 0.0, "prima_adicional_pct": 0.0, "coste_deuda_pct": 0.0, "tasa_impositiva_pct": 0.0, "peso_deuda_pct": 0.0 },
+  "terminal": { "metodo": "gordon|multiplo|media", "crecimiento_pct": 0.0, "multiplo_salida": 0.0 },
+  "mitad_de_anio": true,
+  "justificacion": { "crecimiento": "texto", "margenes": "texto", "inversion": "texto", "wacc": "texto", "terminal": "texto" },
+  "lectura": "texto",
+  "confianza": "Alta|Media|Baja"
+}
+```
+
+### 21. Escenarios · `escenarios`
+
+- `casos`: exactamente tres, en este orden: «Bajista», «Base», «Alcista». Cada uno es el DCF base con **desplazamientos**: `ajuste_crecimiento_pp` (puntos sumados al crecimiento de cada año), `ajuste_margen_pp` (puntos sumados al margen EBITDA de cada año), `ajuste_wacc_pp`, y `crecimiento_terminal_pct` y `multiplo_salida` (o `null` para usar los del caso base). El Base lleva todo a 0 y `null`. Las probabilidades suman 100.
+- `narrativa` (2-3 frases): qué tiene que pasar en el mundo real. El bajista debe ser verosímil: algo que ya le ha pasado a la empresa o a un competidor.
+- `comentario` (60-120 palabras): la asimetría (cuánto se gana en el alcista frente a cuánto se pierde en el bajista) y si compensa.
+
+```json
+"escenarios": {
+  "casos": [{ "escenario": "Bajista", "probabilidad_pct": 0, "ajuste_crecimiento_pp": 0.0, "ajuste_margen_pp": 0.0, "ajuste_wacc_pp": 0.0, "crecimiento_terminal_pct": null, "multiplo_salida": null, "narrativa": "texto" }],
+  "comentario": "texto",
+  "confianza": "Alta|Media|Baja"
+}
+```
+
+### 22. Suma de partes · `suma_partes`
+
+- `aplica`: `true` si la empresa tiene negocios con perfiles distintos (crecimiento, margen, comparables diferentes); si no, `false`, con `partes: []` y el motivo en `comentario`.
+- `partes`: un negocio por fila, con la métrica a la que se aplica el múltiplo («EBITDA 2026e»), su valor en millones, el múltiplo y su justificación (comparables puros de ese negocio). `descuento_holding_pct`: descuento de conglomerado si procede (0-20 %).
+
+```json
+"suma_partes": {
+  "aplica": true, "descuento_holding_pct": 0.0,
+  "partes": [{ "segmento": "texto", "metrica": "EBITDA 2026e", "valor_metrica": 0, "multiplo": 0.0, "justificacion": "texto" }],
+  "comentario": "texto",
+  "confianza": "Alta|Media|Baja"
+}
+```
+
+### 23. Síntesis de valoración · `valoracion`
+
+- `puente`: del balance **más reciente publicado** (trimestral si existe), en millones: deuda financiera bruta, arrendamientos, caja (e inversiones financieras líquidas), minoritarios (a valor contable o de mercado, dilo), déficit de pensiones neto de impuestos, participaciones en asociadas (se suman) y `otros_ajustes` (otros pasivos asimilables a deuda: pagos aplazados de adquisiciones, opciones de venta de minoritarios, *factoring*; positivo resta valor). El mismo puente se usa en el valor empresa de mercado, en los múltiplos y en el DCF.
+- `pesos`: peso de cada método en el valor objetivo (`dcf`, `comparables`, `transacciones`, `suma_partes`, `escenarios`). Suman 100; pon 0 donde no aplique. Las transacciones llevan prima de control: ponderarlas mucho supone que habrá una operación.
+- `comentario` (100-160 palabras): por qué esos pesos, qué método es más fiable para esta empresa y qué dice la dispersión entre métodos (gráfico de síntesis).
+
+```json
+"valoracion": {
+  "puente": { "fecha": "AAAA-MM-DD", "deuda_financiera": 0, "arrendamientos": 0, "caja": 0, "minoritarios": 0, "pensiones": 0, "asociadas": 0, "otros_ajustes": 0 },
+  "pesos": { "dcf": 0, "comparables": 0, "transacciones": 0, "suma_partes": 0, "escenarios": 0 },
+  "comentario": "texto",
+  "confianza": "Alta|Media|Baja"
+}
+```
+
+### 24. Catalizadores · `catalizadores`
+
+`items`: 4-8 hechos **con fecha o ventana concreta** en 12-18 meses (resultados, día del inversor, decisiones regulatorias, vencimientos, refinanciaciones, entradas y salidas de índices, cierres de operaciones). `sentido`: «+», «−» o «+/−».
+
+```json
+"catalizadores": { "items": [{ "fecha": "texto", "evento": "texto", "efecto": "texto", "probabilidad": "Alta|Media|Baja", "sentido": "+|−|+/−" }], "confianza": "Alta|Media|Baja" }
+```
+
+### 25. Riesgos y pre-mortem · `riesgos`
+
+- `items`: 6-10 riesgos **específicos de la empresa**, de mayor a menor importancia. Revisa los que declara la propia empresa en su informe anual y añade los que no declara. `efecto_valor`: impacto estimado sobre el valor por acción («−15 %»), con el escenario o la sensibilidad del motor como referencia. `senal`: indicador observable que avisaría a tiempo.
+- `premortem` (150-250 palabras): «Es dentro de tres años y esta inversión ha perdido un 40 %. ¿Qué ha pasado?». Escribe la historia más probable del fracaso, con la cadena de causas, y qué indicador lo habría anticipado.
 
 ```json
 "riesgos": {
-  "items": [{ "riesgo": "texto", "tipo": "texto", "probabilidad": "Alta|Media|Baja", "impacto": "Alto|Medio|Bajo", "mitigante": "texto", "senal": "texto" }],
+  "items": [{ "riesgo": "texto", "tipo": "texto", "probabilidad": "Alta|Media|Baja", "impacto": "Alto|Medio|Bajo", "efecto_valor": "texto", "mitigante": "texto", "senal": "texto" }],
+  "premortem": "texto",
   "confianza": "Alta|Media|Baja"
 }
 ```
 
-### Campo 16 — ESG y controversias · `esg`
+### 26. ESG y controversias · `esg`
 
-**Objetivo.** Detectar asuntos ambientales, sociales o de gobierno que puedan afectar al valor o a la posibilidad de invertir.
-
-**Instrucciones.**
-- `calificaciones`: calificaciones ESG publicadas (MSCI, Sustainalytics, ISS, CDP…) con su fecha. Si no son públicas, lista vacía.
-- `materialidad` (40-100 palabras): los dos o tres asuntos ESG que más afectan **a las cifras** de esta empresa (emisiones y coste del CO₂, seguridad laboral, privacidad de datos, porcentaje de ingresos alineado con la taxonomía europea…).
-- `controversias` (20-80 palabras): sanciones, litigios, incidentes o campañas de los últimos tres años, con fecha y fuente. Si no hay, dilo.
+- `calificaciones`: las publicadas (MSCI, Sustainalytics, ISS, CDP, S&P Global), con fecha.
+- `materialidad` (80-140 palabras): los 2-3 asuntos ESG que más afectan a las cifras de esta empresa, con datos (emisiones y coste del CO₂, seguridad laboral, ingresos alineados con la taxonomía europea…).
+- `controversias` (40-100 palabras): sanciones, litigios e incidentes de los últimos tres años, con fecha y fuente; si no hay, dilo.
 
 ```json
-"esg": {
-  "calificaciones": [{ "agencia": "texto", "calificacion": "texto", "fecha": "AAAA-MM" }],
-  "materialidad": "texto", "controversias": "texto",
-  "confianza": "Alta|Media|Baja"
-}
+"esg": { "calificaciones": [{ "agencia": "texto", "calificacion": "texto", "fecha": "AAAA-MM" }], "materialidad": "texto", "controversias": "texto", "confianza": "Alta|Media|Baja" }
+```
+
+### 27. Preguntas abiertas · `preguntas`
+
+`items`: 6-10 preguntas que harías a la dirección o que una *due diligence* tendría que resolver antes de invertir. Las que más cambiarían la valoración van primero. Nada de preguntas genéricas: cada una debe nacer de algo concreto del análisis.
+
+```json
+"preguntas": { "items": [{ "tema": "texto", "pregunta": "texto", "por_que": "texto" }], "confianza": "Alta|Media|Baja" }
 ```
 
 ### Resumen ejecutivo (se escribe al final) · `resumen`
 
-**Objetivo.** Que un miembro del comité que solo lea esta página sepa qué pensar de la empresa y por qué.
-
-**Instrucciones.**
-- `conclusion`: «Atractiva», «Neutral» o «Poco atractiva». Debe ser coherente con el potencial ponderado de `escenarios` y con los riesgos: una conclusión «Atractiva» con potencial ponderado negativo es un error.
-- `horizonte`: plazo en el que debería cumplirse la tesis («2-3 años»).
-- `tesis` (120-200 palabras, 2 párrafos): el primer párrafo dice qué es la empresa, qué la hace valiosa y cuánto pide el mercado por ella, con cifras; el segundo, qué descuenta el precio y qué tendría que pasar para ganar dinero. Cita [n].
-- `a_favor` y `en_contra`: 3 a 5 puntos cada uno, una frase por punto, empezando con la idea en **negrita** y con una cifra.
-- `que_vigilar` (40-80 palabras): la condición de la que depende la tesis y la señal concreta que diría que no se cumple.
-- Cuidado con la coherencia: todas las cifras del resumen deben aparecer igual en su sección.
+- `conclusion`: «Atractiva», «Neutral» o «Poco atractiva». Coherente con `calc.sintesis.potencial_pct` y con la asimetría de los escenarios. Como guía: «Atractiva» si el potencial supera el 20 % y el escenario bajista no pierde más que lo que gana el alcista; «Poco atractiva» si el potencial es negativo. Si te apartas de la guía, justifícalo.
+- `horizonte`: plazo en que debería cumplirse la tesis.
+- `tesis` (200-300 palabras, 3 párrafos): (1) qué es la empresa y qué la hace valiosa, con cifras; (2) qué descuenta el precio, según el DCF inverso y los múltiplos; (3) por qué el mercado se equivoca o acierta, y qué hay que creer para invertir. Cita [n].
+- `vision_diferencial`: lo que descuenta el mercado, lo que crees tú y por qué podrías tener razón (60-120 palabras cada uno). Si no tienes una visión distinta de la del mercado, dilo: es una conclusión válida.
+- `a_favor` y `en_contra`: 4-6 puntos cada uno, una frase por punto, con la idea en **negrita** y una cifra.
+- `que_vigilar` (60-100 palabras): la condición de la que depende la tesis y la señal que diría que no se cumple.
+- `kpis_seguimiento`: 4-6 indicadores con su nivel actual y el umbral que dispararía una revisión.
+- Todas las cifras del resumen deben coincidir con las de su sección y con `calc`.
 
 ```json
 "resumen": {
-  "conclusion": "Atractiva|Neutral|Poco atractiva", "horizonte": "texto",
-  "tesis": "texto", "a_favor": ["texto"], "en_contra": ["texto"], "que_vigilar": "texto",
+  "conclusion": "Atractiva|Neutral|Poco atractiva", "horizonte": "texto", "tesis": "texto",
+  "vision_diferencial": { "mercado_descuenta": "texto", "nuestra_vision": "texto", "por_que": "texto" },
+  "a_favor": ["texto"], "en_contra": ["texto"], "que_vigilar": "texto",
+  "kpis_seguimiento": [{ "kpi": "texto", "nivel_actual": "texto", "umbral_alerta": "texto", "por_que": "texto" }],
   "confianza": "Alta|Media|Baja"
 }
 ```
@@ -420,23 +604,30 @@ Claves de primer nivel, en este orden: `meta`, `identificacion`, `resumen`, `neg
 ### Fuentes · `fuentes`
 
 ```json
-"fuentes": [{ "id": 1, "titulo": "Informe anual 2025", "editor": "Empresa / regulador / proveedor", "fecha": "AAAA-MM-DD", "url": "https://…" }]
+"fuentes": [{ "id": 1, "titulo": "Informe anual 2025", "editor": "Empresa", "tipo": "Primaria|Datos de mercado|Sectorial|Analistas|Prensa", "fecha": "AAAA-MM-DD", "url": "https://…" }]
 ```
 
-Una entrada por documento realmente consultado. El `id` es el número que usas en las citas `[n]`. Nada de fuentes que no hayas leído.
+Una entrada por documento **realmente leído**. El `id` es el número que usas en `[n]`.
 
-## 7. Comprobaciones antes de generar el informe
+## 7. Revisión de comité (fase 8)
 
-- [ ] Los pesos de `negocio.segmentos` y `negocio.geografias` suman 100 ± 1.
-- [ ] Los ingresos de los segmentos suman los ingresos del último ejercicio de `financieros` (± 2 %, salvo ajustes de consolidación que expliques).
-- [ ] Márgenes = cifra / ingresos en todos los años; crecimiento de cada año cuadra con los ingresos.
-- [ ] `caja.historico[].beneficio_neto` = `financieros.historico[].beneficio_neto` del mismo año.
-- [ ] `capitalizacion` ≈ `precio` × `acciones` (± 2 %).
-- [ ] `balance.dn_ebitda` ≈ `deuda_neta` / EBITDA de los últimos doce meses.
-- [ ] Los años «e» de `financieros` coinciden con `consenso.estimaciones`.
-- [ ] La primera fila de `comparables.empresas` es la empresa analizada y sus cifras cuadran con las de su sección.
-- [ ] `multiplos.tabla[].comparables` es la mediana de los comparables (sin la empresa).
-- [ ] Las probabilidades de `escenarios.casos` suman 100; `valor_ponderado` y potenciales están bien calculados.
-- [ ] `resumen.conclusion` es coherente con `escenarios.potencial_ponderado_pct`.
-- [ ] Toda cifra de los textos que venga de fuera lleva su `[n]` y cada `[n]` existe en `fuentes`.
-- [ ] Ningún campo tiene un valor inventado para «que no quede vacío».
+Antes de entregar, responde por escrito para ti a estas preguntas y corrige el informe donde haga falta:
+
+1. ¿Puedo explicar en dos frases por qué el precio va a converger a mi valor? Si no, la tesis no está clara.
+2. ¿El DCF inverso muestra que el mercado descuenta algo exigente o algo conservador? ¿Lo dice el resumen?
+3. ¿Cada supuesto del DCF tiene un precedente en la historia de la empresa o del sector? ¿Cuál es el más agresivo?
+4. ¿La proyección se aparta del consenso más de un 10 %? ¿Está explicado por qué?
+5. ¿Los comparables son de verdad comparables (modelo, tamaño, crecimiento)? ¿Hay alguno que distorsione la mediana?
+6. ¿Qué dice la calidad contable? ¿Hay algo en las notas que no aparece en el resumen y debería?
+7. ¿El gobierno corporativo protege al minoritario? ¿La remuneración premia lo correcto?
+8. ¿El bajista es verosímil o es cosmético? ¿Cuánto se pierde de verdad si sale mal?
+9. ¿Qué dato, si estuviera mal, cambiaría la conclusión? ¿Lo he verificado en dos fuentes?
+10. ¿Hay alguna frase de relleno, sin cifra ni fuente? Bórrala.
+
+## 8. Comprobaciones finales
+
+- [ ] El motor no muestra controles en «Revisar», o los que quedan están explicados en el texto correspondiente.
+- [ ] El valor objetivo, el potencial y la conclusión son coherentes entre portada, resumen y síntesis.
+- [ ] Todas las secciones tienen su texto, con cifras y citas, y su nivel de confianza.
+- [ ] Ninguna cifra inventada; las estimaciones propias, marcadas.
+- [ ] Cada dato o sección que falta está en `meta.huecos` con sus tres intentos; ninguna sección de núcleo vacía sin haberlos agotado.

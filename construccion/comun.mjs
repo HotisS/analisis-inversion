@@ -71,7 +71,9 @@ function kv(pares, porFila = 2) {
     const celdas = [];
     for (let j = 0; j < porFila; j++) {
       const par = pares[i + j] || ['', ''];
-      celdas.push(celda(par[0], { ancho: anchos[2 * j], fondo: COLOR.fondo, color: COLOR.tinta2, tam: 16 }));
+      const rutas = [...String(par[1]).matchAll(/\{\{\s*([\w.[\]]+)\s*(?:\|[^}]*)?\}\}/g)].map((m) => m[1]).filter((r) => !r.startsWith('meta.'));
+      const marca = rutas.length ? `{{?${rutas.join(',')}}}` : '';
+      celdas.push(celda(marca + par[0], { ancho: anchos[2 * j], fondo: COLOR.fondo, color: COLOR.tinta2, tam: 16 }));
       celdas.push(celda(par[1], { ancho: anchos[2 * j + 1], negrita: true, tam: 17 }));
     }
     filas.push(new TableRow({ cantSplit: true, children: celdas }));
@@ -110,9 +112,21 @@ const p = (texto, opts = {}) => new Paragraph({ spacing: { after: 100 }, ...opts
 const espacio = (after = 120) => new Paragraph({ spacing: { before: 0, after }, children: [] });
 
 // Traduce la lista de bloques de una vertical a elementos de docx.
+const marca = (texto) => new Paragraph({ spacing: { before: 0, after: 0 }, children: [new TextRun({ text: texto, size: 2, color: COLOR.tenue })] });
+
 function bloque(b) {
-  const [tipo, a, c, d] = b;
+  const [tipo, a, c, d, e] = b;
   switch (tipo) {
+    // Sección condicional: desaparece si todas sus rutas están vacías (y se anota en el anexo).
+    case 'seccion': {
+      const primera = c.split(',')[0].trim();
+      return [marca(`{{si:${c}|${a}|${d}}}`), new Paragraph({ heading: HeadingLevel.HEADING_1, children: [new TextRun(a)] }),
+        ...(primera.startsWith('calc.') ? [] : [p(`Confianza: {{${primera}.confianza}}`, { style: 'Confianza' })]),
+        ...e.flatMap(bloque), marca(`{{fin:${c}}}`)];
+    }
+    case 'sub': return [marca(`{{si:${c}}}`), new Paragraph({ heading: HeadingLevel.HEADING_2, children: [new TextRun(a)] }), ...d.flatMap(bloque), marca(`{{fin:${c}}}`)];
+    case 'si': return [marca(`{{si:${a}}}`), ...c.flatMap(bloque), marca(`{{fin:${a}}}`)];
+    case 'aviso': return [p(a, { style: 'Aviso' })];
     case 'h1': return [new Paragraph({ heading: HeadingLevel.HEADING_1, children: [new TextRun(a)] })];
     case 'h2': return [new Paragraph({ heading: HeadingLevel.HEADING_2, children: [new TextRun(a)] })];
     case 'confianza': return [p(`Confianza: {{${a}.confianza}}`, { style: 'Confianza' })];
@@ -125,11 +139,16 @@ function bloque(b) {
     case 'p': return [p(a)];
     case 'nota': return [p(a, { style: 'Nota' })];
     case 'salto': return [new Paragraph({ children: [new PageBreak()] })];
+    case 'parte': return [new Paragraph({ children: [new PageBreak()] }), new Paragraph({ style: 'Parte', children: [new TextRun(a)] })];
+    case 'indice': return [
+      new Paragraph({ heading: HeadingLevel.HEADING_2, children: [new TextRun('Contenido')] }),
+      ...a.map((t) => new Paragraph({ numbering: { reference: 'vinetas', level: 0 }, spacing: { after: 40 }, children: trozos(t, { size: 18 }) })),
+    ];
     default: throw new Error(`Bloque desconocido: ${tipo}`);
   }
 }
 
-export async function construir({ tipo, cabecera, portada, bloques }) {
+export async function construir({ tipo, cabecera, portada, bloques, columnasFuentes }) {
   const hijos = [];
   // Portada
   hijos.push(
@@ -143,7 +162,7 @@ export async function construir({ tipo, cabecera, portada, bloques }) {
   // Cierre
   hijos.push(
     new Paragraph({ heading: HeadingLevel.HEADING_1, children: [new TextRun('Fuentes')] }),
-    tabla('fuentes', [['Ref.', 'id', '', 0.5, 'c'], ['Documento', 'titulo', '', 4], ['Editor', 'editor', '', 1.6], ['Fecha', 'fecha', 'fecha', 1.1], ['Enlace', 'url', '', 3.2]]),
+    tabla('fuentes', columnasFuentes || [['Ref.', 'id', '', 0.5, 'c'], ['Documento', 'titulo', '', 4], ['Editor', 'editor', '', 1.6], ['Fecha', 'fecha', 'fecha', 1.1], ['Enlace', 'url', '', 3.2]]),
     espacio(200),
     new Paragraph({ heading: HeadingLevel.HEADING_2, children: [new TextRun('Control de calidad del informe')] }),
     p('Campos con dato: **{{_meta.cobertura|pct}}** · Secciones con menos del 60 % de campos cubiertos: **{{_meta.secciones_flojas}}** · Generado el {{_meta.generado|fecha}}.', { style: 'Nota' }),
@@ -160,6 +179,8 @@ export async function construir({ tipo, cabecera, portada, bloques }) {
         { id: 'Title', name: 'Title', basedOn: 'Normal', next: 'Normal', run: { size: 52, bold: true, color: COLOR.marino, font: FUENTE }, paragraph: { spacing: { after: 80 } } },
         { id: 'Heading1', name: 'Heading 1', basedOn: 'Normal', next: 'Normal', quickFormat: true, run: { size: 30, bold: true, color: COLOR.marino, font: FUENTE }, paragraph: { spacing: { before: 360, after: 60 }, keepNext: true, outlineLevel: 0, border: { bottom: { style: BorderStyle.SINGLE, size: 6, color: COLOR.acento, space: 4 } } } },
         { id: 'Heading2', name: 'Heading 2', basedOn: 'Normal', next: 'Normal', quickFormat: true, run: { size: 23, bold: true, color: COLOR.marino, font: FUENTE }, paragraph: { spacing: { before: 220, after: 80 }, keepNext: true, outlineLevel: 1 } },
+        { id: 'Parte', name: 'Parte', basedOn: 'Normal', next: 'Normal', run: { size: 40, bold: true, color: COLOR.acento, font: FUENTE }, paragraph: { spacing: { before: 2400, after: 400 }, keepNext: true, outlineLevel: 0, border: { bottom: { style: BorderStyle.SINGLE, size: 12, color: COLOR.acento, space: 6 } } } },
+        { id: 'Aviso', name: 'Aviso', basedOn: 'Normal', next: 'Normal', run: { size: 19, bold: true, color: 'A3470F' }, paragraph: { spacing: { before: 120, after: 200 }, border: { left: { style: BorderStyle.SINGLE, size: 24, color: 'D9772E', space: 8 } }, indent: { left: 200 } } },
         { id: 'Confianza', name: 'Confianza', basedOn: 'Normal', next: 'Normal', run: { size: 16, italics: true, color: COLOR.tenue }, paragraph: { spacing: { before: 0, after: 160 } } },
         { id: 'Nota', name: 'Nota', basedOn: 'Normal', next: 'Normal', run: { size: 16, color: COLOR.tinta2 }, paragraph: { spacing: { after: 80 } } },
       ],
