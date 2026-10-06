@@ -24,7 +24,7 @@ export default {
       ['Convicción', '{{resumen.conviccion}}'],
       ['Capitalización', '{{calc.mercado.capitalizacion|0}} M'],
       ['EV/EBITDA próx. 12 m', '{{calc.clave.ev_ebitda_ntm|x}}'],
-      ['Deuda neta / EBITDA', '{{calc.clave.dn_ebitda|x}}'],
+      ['Deuda neta aj. / EBITDA', '{{calc.clave.dn_ebitda_ajustada|x}}'],
     ],
   },
   bloques: [
@@ -80,7 +80,7 @@ export default {
       ['Rentabilidad por FCF', '{{calc.clave.fcf_yield_pct|pct}}'], ['Rentabilidad por dividendo', '{{calc.clave.dividendo_pct|pct}}'],
       ['Crecimiento anual de ingresos ({{calc.tcac.periodo}})', '{{calc.tcac.ingresos_pct|pct}}'], ['Margen EBITDA últimos 12 m', '{{calc.clave.margen_ebitda_pct|pct}}'],
       ['ROIC último ejercicio', '{{calc.clave.roic_pct|pct}}'], ['WACC', '{{calc.dcf.wacc|pct}}'],
-      ['Deuda neta / EBITDA', '{{calc.clave.dn_ebitda|x}}'], ['Gobierno (criterios cumplidos)', '{{calc.gobierno.puntuacion}}'],
+      ['Deuda neta / EBITDA (contable · ajustada)', '{{calc.clave.dn_ebitda|x}} · {{calc.clave.dn_ebitda_ajustada|x}}'], ['Gobierno (criterios cumplidos)', '{{calc.gobierno.puntuacion}}'],
     ]]]),
 
     // ───────── Parte I ─────────
@@ -157,6 +157,7 @@ export default {
         ['Patrimonio', 'patrimonio', '0', 0.9, 'd'], ['DN/EBITDA', 'dn_ebitda', 'x', 0.85, 'd']]],
       ['tabla', 'calc.balance', [['Periodo', 'periodo', '', 1], ['Circulante / ventas', 'circulante_ventas_pct', 'pct', 1.1, 'd'], ['Días de cobro', 'dso', '0', 1, 'd'], ['Días de inventario', 'dio', '0', 1, 'd'], ['Días de pago', 'dpo', '0', 1, 'd'], ['Ciclo de caja (días)', 'ciclo_caja', '0', 1.1, 'd'], ['Liquidez corriente', 'liquidez_corriente', 'x', 1, 'd']]],
       ['nota', 'Días de inventario y de pago calculados {{calc.etiquetas.dias_base}}.'],
+      ['nota', '{{calc.perimetro_nota}}'],
       ['grafico', 'dias_circulante'],
       ['texto', 'balance.comentario'],
     ]],
@@ -189,6 +190,8 @@ export default {
     ['seccion', '11. Deuda y solvencia', 'balance', 'Núcleo', [
       ['kv', [
         ['Deuda neta a {{valoracion.puente.fecha|fecha}}', '{{calc.mercado.deuda_neta|0}} M'], ['Deuda neta / EBITDA últimos 12 m', '{{calc.clave.dn_ebitda|x}}'],
+        ['Pasivos asimilables a deuda (pensiones y otros)', '{{calc.mercado.asimilables_deuda|0}} M'], ['Deuda neta ajustada', '{{calc.mercado.deuda_neta_ajustada|0}} M'],
+        ['Deuda neta ajustada / EBITDA', '{{calc.clave.dn_ebitda_ajustada|x}}'],
         ['Liquidez disponible', '{{balance.liquidez}}'], ['Rating', '{{balance.rating}}'],
         ['Coste medio de la deuda', '{{balance.coste_deuda_pct|pct}}'], ['Vida media de la deuda', '{{balance.vida_media_anios|1}} años'],
       ]],
@@ -217,6 +220,7 @@ export default {
       ['kv', [
         ['Consejeros', '{{calc.gobierno.n_consejeros|0}}'], ['Independientes', '{{calc.gobierno.independientes_pct|pct0}}'],
         ['Antigüedad media en el consejo', '{{calc.gobierno.antiguedad_media|1}} años'], ['Criterios de buen gobierno cumplidos', '{{calc.gobierno.puntuacion}}'],
+        ['Cambios de presidente o primer ejecutivo (24 meses)', '{{gobierno.cambios_cupula_24m|0}}'],
       ]],
       ['grafico', 'consejo'],
       ['tabla', 'gobierno.consejo', [['Consejero', 'nombre', '', 1.8], ['Cargo', 'cargo', '', 1.4], ['Tipo', 'tipo', '', 1.1], ['Desde', 'desde', '', 0.6, 'c'], ['Comisiones', 'comisiones', '', 2.2]]],
@@ -227,7 +231,7 @@ export default {
         ['kv', [
           ['Remuneración total del primer ejecutivo ({{gobierno.remuneracion_ceo.anio}})', '{{gobierno.remuneracion_ceo.total|2}} M'], ['Fijo', '{{gobierno.remuneracion_ceo.fijo|2}} M'],
           ['Variable anual', '{{gobierno.remuneracion_ceo.variable_corto|2}} M'], ['Variable a largo plazo', '{{gobierno.remuneracion_ceo.variable_largo|2}} M'],
-          ['Voto a favor en la junta', '{{gobierno.voto_remuneracion_pct|pct}}'], ['Ratio sobre salario medio', '{{gobierno.remuneracion_ceo.ratio_salario_medio|0}}x'],
+          ['Peor voto a favor (3 juntas)', '{{gobierno.voto_remuneracion_pct|pct}}'], ['Peor voto en contra (3 juntas)', '{{gobierno.voto_remuneracion_contra_pct|pct}}'], ['Ratio sobre salario medio', '{{gobierno.remuneracion_ceo.ratio_salario_medio|0}}x'],
         ]],
         ['texto', 'gobierno.remuneracion'],
       ]),

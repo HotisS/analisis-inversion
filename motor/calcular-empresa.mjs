@@ -97,19 +97,19 @@ export function calcularEmpresa(datos) {
     const c = cuentaIn[i];
     const ebitda = n(c.ebitda), am = n(c.amortizaciones), ebit = n(c.ebit);
     if (ebitda !== null && am !== null && ebit !== null && Math.abs(ebitda - am - ebit) > Math.max(0.03 * Math.abs(ebitda), 1)) {
-      control(`EBITDA − amortizaciones = EBIT (${c.periodo})`, false, `Diferencia de ${red(ebitda - am - ebit)}: deterioros u otros resultados entre EBITDA y EBIT; explícalo en el comentario.`);
+      control(`EBITDA − amortizaciones = EBIT (${c.periodo})`, false, `Diferencia de ${fmt(ebitda - am - ebit, 0)}: deterioros u otros resultados entre EBITDA y EBIT; explícalo en el comentario.`);
     }
     const bai = n(c.bai), rf = n(c.resultado_financiero);
     const bn = n(c.beneficio_neto), imp = n(c.impuestos), mino = n(c.minoritarios) ?? 0;
     if (bai !== null && imp !== null && bn !== null && Math.abs(bai - imp - mino - bn) > Math.max(0.03 * Math.abs(bn), 1)) {
-      control(`BAI − impuestos − minoritarios = beneficio neto (${c.periodo})`, false, `Diferencia de ${red(bai - imp - mino - bn)} (¿operaciones interrumpidas?).`);
+      control(`BAI − impuestos − minoritarios = beneficio neto (${c.periodo})`, false, `Diferencia de ${fmt(bai - imp - mino - bn, 0)} (¿operaciones interrumpidas?).`);
     }
     if (ebit !== null && rf !== null && bai !== null && Math.abs(ebit + rf - bai) > Math.max(0.05 * Math.abs(bai), 1)) {
-      control(`EBIT + resultado financiero = BAI (${c.periodo})`, false, `Diferencia de ${red(ebit + rf - bai)} (¿asociadas o extraordinarios?).`);
+      control(`EBIT + resultado financiero = BAI (${c.periodo})`, false, `Diferencia de ${fmt(ebit + rf - bai, 0)} (¿asociadas o extraordinarios?).`);
     }
     const accs = n(c.acciones_diluidas);
     if (bn !== null && accs && n(c.bpa) !== null && Math.abs(bn / accs - n(c.bpa)) > 0.06 * Math.abs(n(c.bpa)) + 0.01) {
-      control(`BPA = beneficio neto / acciones (${c.periodo})`, false, `${red(bn / accs, 2)} calculado frente a ${c.bpa} publicado.`);
+      control(`BPA = beneficio neto / acciones (${c.periodo})`, false, `${fmt(bn / accs, 2)} calculado frente a ${fmt(n(c.bpa), 2)} publicado (con convertibles, el BPA diluido publicado ajusta el numerador: explícalo si la diferencia viene de ahí).`);
     }
   }
 
@@ -138,10 +138,16 @@ export function calcularEmpresa(datos) {
   const pu = d.valoracion?.puente || {};
   const deudaNeta = suma(n(pu.deuda_financiera) ?? 0, n(pu.arrendamientos) ?? 0, -(n(pu.caja) ?? 0));
   const ajustesPuente = sumaLaxa(n(pu.minoritarios), n(pu.pensiones), -(n(pu.asociadas) ?? 0), n(pu.otros_ajustes));
+  // Deuda neta ajustada: la contable más los pasivos asimilables a deuda del puente (pensiones y
+  // otros ajustes). Es la que mide el apalancamiento; minoritarios y asociadas solo afectan al valor.
+  const deudaNetaAjustada = deudaNeta + (n(pu.pensiones) ?? 0) + (n(pu.otros_ajustes) ?? 0);
   const capitalizacion = precio !== null && acciones !== null ? precio * acciones : null;
   const valorEmpresa = capitalizacion !== null ? capitalizacion + deudaNeta + ajustesPuente : null;
   const mercado = {
     precio, acciones, capitalizacion: red(capitalizacion, 0), deuda_neta: red(deudaNeta, 0),
+    // Sin pasivos asimilables, la ajustada es la contable y no se repite en el informe.
+    deuda_neta_ajustada: Math.abs(deudaNetaAjustada - deudaNeta) < 0.5 ? null : red(deudaNetaAjustada, 0),
+    asimilables_deuda: Math.abs(deudaNetaAjustada - deudaNeta) < 0.5 ? null : red(deudaNetaAjustada - deudaNeta, 0),
     ajustes_puente: red(ajustesPuente, 0), valor_empresa: red(valorEmpresa, 0), fecha_puente: pu.fecha ?? null,
   };
 
@@ -169,11 +175,11 @@ export function calcularEmpresa(datos) {
     const c = cuenta.find((x) => String(x.periodo) === per);
     const sumaSeg = sumaLaxa(...segs.map((s) => valorSeg(s, per)));
     if (c?.ingresos && Math.abs(sumaSeg - c.ingresos) > 0.03 * c.ingresos) {
-      control(`Segmentos suman los ingresos (${per})`, false, `Segmentos ${red(sumaSeg, 0)} frente a ingresos ${c.ingresos} (${red(pct(sumaSeg - c.ingresos, c.ingresos))} %). Si hay eliminaciones entre segmentos, explícalo.`);
+      control(`Segmentos suman los ingresos (${per})`, false, `Segmentos ${fmt(sumaSeg, 0)} frente a ingresos ${fmt(c.ingresos, 0)} (${fmt(pct(sumaSeg - c.ingresos, c.ingresos))} %). Si hay eliminaciones entre segmentos, explícalo.`);
     }
   }
   const geo = lista(d.negocio?.geografias);
-  if (geo.length) { const s = sumaLaxa(...geo.map((g) => n(g.peso_pct))); control('Geografías suman 100 %', Math.abs(s - 100) <= 1.5, `Suman ${red(s)} %.`); }
+  if (geo.length) { const s = sumaLaxa(...geo.map((g) => n(g.peso_pct))); control('Geografías suman 100 %', Math.abs(s - 100) <= 1.5, Math.abs(s - 100) <= 1.5 ? '' : `Suman ${fmt(s)} %.`); }
 
   // ── Balance, circulante y solvencia ──
   const balIn = lista(d.balance?.historico);
@@ -205,6 +211,25 @@ export function calcularEmpresa(datos) {
     };
   });
   const balUlt = balance[balance.length - 1] || {};
+
+  // ── Cambios de perímetro ──
+  // Una compra grande cerca del cierre mete el balance de la adquirida sin su cuenta de resultados: los
+  // días de circulante, la DN/EBITDA, el ROIC y los indicadores de calidad de ese año dejan de ser
+  // comparables. Los declarados vienen en financieros.cambios_perimetro; los no declarados se detectan.
+  const perimetro = new Map(lista(d.financieros?.cambios_perimetro).filter((x) => x?.periodo).map((x) => [String(x.periodo), x.descripcion || 'cambio de perímetro']));
+  for (let i = 1; i < balance.length; i++) {
+    const b = balance[i], a = balance[i - 1];
+    const gAct = a.activo_total && b.activo_total ? pct(b.activo_total - a.activo_total, a.activo_total) : null;
+    const gIng = cuenta.find((x) => String(x.periodo) === String(b.periodo))?.crecimiento_pct ?? null;
+    if (gAct !== null && gAct > 35 && (gIng === null || gIng < gAct / 2) && !perimetro.has(String(b.periodo))) {
+      const desc = `el activo total crece un ${fmt(gAct, 0)} % y los ingresos un ${fmt(gIng, 0)} %`;
+      perimetro.set(String(b.periodo), desc);
+      control(`Cambio de perímetro declarado (${b.periodo})`, false, `${desc[0].toUpperCase() + desc.slice(1)}: si hubo una compra cerca del cierre, decláralo en financieros.cambios_perimetro y explícalo.`);
+    }
+  }
+  const notaPerimetro = perimetro.size
+    ? `Cambio de perímetro (${[...perimetro].map(([p, x]) => `${p}: ${x}`).join('; ')}). Los ratios de balance de ese año (días, circulante, deuda neta / EBITDA, ROIC) y los indicadores de calidad contable no son comparables con los anteriores.`
+    : null;
 
   // ── Flujos de caja y uso del capital ──
   const fluIn = lista(d.flujos?.historico);
@@ -256,7 +281,7 @@ export function calcularEmpresa(datos) {
   const roicIncremental = rentIni && rentUlt !== rentIni ? red(pct(rentUlt.nopat - rentIni.nopat, rentUlt.capital_invertido - rentIni.capital_invertido)) : null;
 
   // ── Calidad contable: Altman Z, Piotroski F, Beneish M ──
-  const scores = calidadContable(cuentaIn, balIn, fluIn, capitalizacion, porNaturaleza);
+  const scores = calidadContable(cuentaIn, balIn, fluIn, capitalizacion, porNaturaleza, new Set(perimetro.keys()));
 
   // ── WACC y DCF ──
   const dcfIn = d.dcf || {};
@@ -309,7 +334,9 @@ export function calcularEmpresa(datos) {
     // DCF inverso
     const objetivo = precio;
     const crecImpl = objetivo ? resolver((x) => valorarDcf(dcfIn, ctx, base, { dg: x })?.valor_accion - objetivo, 0, 1, 25) : null;
-    const crecMedioBase = media(lista(dcfIn.anios).map((a) => a.crecimiento_pct));
+    // Media de los años que se mueven (los «fijos» no cambian en el DCF inverso).
+    const anLibres = lista(dcfIn.anios).filter((a) => !a.fijo);
+    const crecMedioBase = media((anLibres.length ? anLibres : lista(dcfIn.anios)).map((a) => a.crecimiento_pct));
     const waccImpl = objetivo ? resolver((x) => valorarDcf(dcfIn, ctx, { ...base, wacc: x })?.valor_accion - objetivo, wacc, 0.5, 20, Math.max((base.g ?? 0) + 0.6, 2)) : null;
     const margenImpl = objetivo ? resolver((x) => valorarDcf(dcfIn, ctx, base, { dm: x })?.valor_accion - objetivo, 0, 1, 30) : null;
     control('DCF inverso calculable', crecImpl !== null && waccImpl !== null, crecImpl === null || waccImpl === null ? 'No hay solución en un rango razonable: revisa circulante, capex o márgenes del DCF (un supuesto extremo hace que el valor no responda al crecimiento).' : '');
@@ -330,9 +357,9 @@ export function calcularEmpresa(datos) {
     };
     const nwcPrimero = n(lista(dcfIn.anios)[0]?.nwc_pct_ventas), nwcReal = balUlt.circulante_ventas_pct ?? null;
     if (nwcPrimero !== null && nwcReal !== null) control('Circulante del primer año de proyección ≈ último real', Math.abs(nwcPrimero - nwcReal) <= 3, `Supuesto ${fmt(nwcPrimero)} % frente a ${fmt(nwcReal)} % real: genera una variación de circulante de ${fmt(dcfBase.proyeccion[0]?.variacion_circulante, 0)} M en el primer año. Converge de forma gradual.`);
-    if (wacc !== null && base.g !== null && wacc - base.g < 3) control('WACC − g ≥ 3 puntos', false, `WACC ${red(wacc, 2)} % y g ${base.g} %: el valor terminal se dispara; revisa.`);
-    control('Peso del valor terminal ≤ 80 % del valor empresa', dcfBase.peso_terminal_pct <= 80, `${dcfBase.peso_terminal_pct} %.`);
-    if (base.g !== null) control('Crecimiento a perpetuidad ≤ 3 %', base.g <= 3, `${base.g} %.`);
+    if (wacc !== null && base.g !== null && wacc - base.g < 3) control('WACC − g ≥ 3 puntos', false, `WACC ${fmt(wacc, 2)} % y g ${fmt(base.g, 2)} %: el valor terminal se dispara; revisa.`);
+    control('Peso del valor terminal ≤ 80 % del valor empresa', dcfBase.peso_terminal_pct <= 80, `${fmt(dcfBase.peso_terminal_pct, 0)} %.`);
+    if (base.g !== null) control('Crecimiento a perpetuidad ≤ 3 %', base.g <= 3, `${fmt(base.g, 2)} %.`);
   } else {
     control('DCF calculable', false, 'Faltan datos: año base, proyección, WACC o crecimiento terminal.');
   }
@@ -344,13 +371,13 @@ export function calcularEmpresa(datos) {
     const r = valorarDcf(dcfIn, ctx, p, aj);
     return {
       escenario: e.escenario, probabilidad_pct: n(e.probabilidad_pct), narrativa: e.narrativa ?? null,
-      crecimiento_medio_pct: red((media(lista(dcfIn.anios).map((a) => a.crecimiento_pct)) ?? 0) + aj.dg),
+      crecimiento_medio_pct: r ? red(media(r.proyeccion.map((x) => x.crecimiento_pct))) : null,
       margen_final_pct: red((n(lista(dcfIn.anios).at(-1)?.margen_ebitda_pct) ?? 0) + aj.dm),
       wacc_pct: red(p.wacc, 1), valor: r ? red(r.valor_accion, 2) : null, potencial_pct: r ? red(pct(r.valor_accion - precio, precio)) : null,
     };
   });
   const probTotal = sumaLaxa(...escenarios.map((e) => e.probabilidad_pct));
-  if (escenarios.length) control('Probabilidades de los escenarios suman 100', Math.abs(probTotal - 100) < 0.5, `Suman ${probTotal}.`);
+  if (escenarios.length) control('Probabilidades de los escenarios suman 100', Math.abs(probTotal - 100) < 0.5, Math.abs(probTotal - 100) < 0.5 ? '' : `Suman ${fmt(probTotal, 1)}.`);
   const valorPonderado = escenarios.length && escenarios.every((e) => e.valor !== null) ? red(escenarios.reduce((a, e) => a + e.valor * (e.probabilidad_pct ?? 0), 0) / (probTotal || 1), 2) : null;
 
   // ── Comparables ──
@@ -397,6 +424,16 @@ export function calcularEmpresa(datos) {
     if (!regresion.fiable) control('Regresión múltiplo-crecimiento explicativa (R² ≥ 0,3)', false, `R² = ${fmt(regresion.r2, 2)}: el crecimiento no explica los múltiplos de estos comparables; no uses el valor de la regresión.`);
   }
   control('Al menos 5 comparables', pares.length >= 5, `${pares.length} comparables.`);
+  // EV/EBITDA de los últimos y de los próximos 12 meses con el mismo valor empresa: el salto entre
+  // ambos es el crecimiento esperado del EBITDA. Un salto que no cuadra con el crecimiento de las
+  // ventas suele ser una mezcla de definiciones de EBITDA entre proveedores.
+  const saltos = pares.filter((x) => {
+    const ltmM = n(x.ev_ebitda_ltm), ntmM = n(x.ev_ebitda_ntm);
+    if (!ltmM || !ntmM) return false;
+    const gEbitda = (ltmM / ntmM - 1) * 100, gVentas = n(x.crecimiento_pct) ?? 0;
+    return gEbitda > Math.max(30, 2 * gVentas + 15) || gEbitda < Math.min(-10, gVentas - 20);
+  });
+  if (saltos.length) control('Múltiplos LTM y NTM de cada comparable coherentes', false, `${saltos.map((x) => `${x.nombre} (${fmt(n(x.ev_ebitda_ltm), 1)}x → ${fmt(n(x.ev_ebitda_ntm), 1)}x)`).join(', ')}: el salto implica un crecimiento del EBITDA que no cuadra con el de las ventas. ¿EBITDA de proveedores distintos, o un cambio de perímetro?`);
 
   // ── Transacciones precedentes ──
   const ops = lista(d.transacciones?.operaciones);
@@ -455,7 +492,7 @@ export function calcularEmpresa(datos) {
     } : null;
   }).filter(Boolean);
   for (const c of consensoVsPropio) {
-    if (Math.abs(c.ebitda_dif_pct ?? 0) > 15) control(`Proyección propia frente a consenso (${c.periodo})`, false, `EBITDA propio ${c.ebitda_dif_pct} % frente al consenso: justifica la diferencia en el DCF.`);
+    if (Math.abs(c.ebitda_dif_pct ?? 0) > 15) control(`Proyección propia frente a consenso (${c.periodo})`, false, `EBITDA propio ${fmt(c.ebitda_dif_pct)} % frente al consenso: justifica la diferencia en el DCF.`);
   }
 
   // ── Gobierno ──
@@ -492,7 +529,7 @@ export function calcularEmpresa(datos) {
     return { metodo: { dcf: 'DCF', comparables: 'Comparables (mediana EV/EBITDA y PER)', transacciones: 'Transacciones precedentes', suma_partes: 'Suma de partes', escenarios: 'Escenarios ponderados' }[k], valor: red(v, 2), peso_pct: v === null ? null : p, potencial_pct: red(pct(v - precio, precio)) };
   }).filter((x) => x.valor !== null);
   const pesosDeclarados = sumaLaxa(...Object.values(pesos).map(n));
-  control('Pesos de la síntesis suman 100', Math.abs(pesosDeclarados - 100) < 0.5, `Suman ${pesosDeclarados}.`);
+  control('Pesos de la síntesis suman 100', Math.abs(pesosDeclarados - 100) < 0.5, Math.abs(pesosDeclarados - 100) < 0.5 ? '' : `Suman ${fmt(pesosDeclarados, 1)}.`);
   const valorObjetivo = sumaPesos ? red(acumulado2 / sumaPesos, 2) : null;
 
   // ── Recomendación ──
@@ -545,16 +582,22 @@ export function calcularEmpresa(datos) {
     ev_ebit_ltm: red(div(valorEmpresa, ebitLtm), 1), per_ltm: red(div(precio, bpaLtm), 1), per_ntm: empresaFila.per_ntm,
     fcf_yield_pct: empresaFila.fcf_yield_pct, dividendo_pct: red(pct(n(ltm.dpa) ?? ultimoCalc.dpa ?? null, precio)),
     dn_ebitda: red(div(deudaNeta, ebitdaLtm), 1), roic_pct: rentUlt.roic_pct ?? null, margen_ebitda_pct: empresaFila.margen_ebitda_pct,
+    deuda_neta_ajustada: red(deudaNetaAjustada, 0), dn_ebitda_ajustada: red(div(deudaNetaAjustada, ebitdaLtm), 1),
     crecimiento_tcac_pct: tcacTabla.ingresos_pct ?? null, ingresos_ntm: red(ingresosNtm, 0), ebitda_ntm: red(ebitdaNtm, 0), bpa_ntm: red(bpaNtm, 2),
     ebitda_ltm: red(ebitdaLtm, 0), ingresos_ltm: red(ingresosLtm, 0),
   };
 
   // ── Controles de mercado y fuentes ──
   if (n(id.capitalizacion_publicada) !== null && capitalizacion !== null) {
-    control('Capitalización calculada ≈ publicada', Math.abs(capitalizacion - n(id.capitalizacion_publicada)) <= 0.03 * capitalizacion, `Calculada ${red(capitalizacion, 0)}, publicada ${id.capitalizacion_publicada}: revisa acciones y precio.`);
+    const okCap = Math.abs(capitalizacion - n(id.capitalizacion_publicada)) <= 0.03 * capitalizacion;
+    control('Capitalización calculada ≈ publicada', okCap, okCap ? '' : `Calculada ${fmt(capitalizacion, 0)}, publicada ${fmt(n(id.capitalizacion_publicada), 0)}: revisa acciones y precio.`);
   }
-  if (balUlt.deuda_neta !== null && balUlt.deuda_neta !== undefined && deudaNeta !== null && Math.abs(balUlt.deuda_neta - deudaNeta) > 0.25 * Math.max(Math.abs(deudaNeta), 1) + 5) {
-    control('Deuda neta del puente frente al último balance anual', false, `Puente ${red(deudaNeta, 0)} frente a ${red(balUlt.deuda_neta, 0)} al cierre: correcto si hay un balance trimestral más reciente; dilo.`);
+  // Solo tiene sentido si el puente es del mismo cierre: con un balance intermedio posterior, la
+  // diferencia es normal (estacionalidad, anticipos, compras) y se explica en el texto.
+  const finUltBal = balance.length ? finEjercicio(anioDe(balUlt.periodo), mesCierre) : null;
+  const puenteMismoCierre = !pu.fecha || !finUltBal || new Date(pu.fecha + (pu.fecha.length === 7 ? '-28' : '') + 'T00:00:00Z') <= new Date(finUltBal.getTime() + 15 * 864e5);
+  if (puenteMismoCierre && balUlt.deuda_neta !== null && balUlt.deuda_neta !== undefined && deudaNeta !== null && Math.abs(balUlt.deuda_neta - deudaNeta) > 0.25 * Math.max(Math.abs(deudaNeta), 1) + 5) {
+    control('Deuda neta del puente = la del último balance anual', false, `Puente ${fmt(deudaNeta, 0)} frente a ${fmt(balUlt.deuda_neta, 0)} en el balance del mismo cierre: revisa qué partidas entran en cada uno.`);
   }
   for (const s of NUCLEO) if (vacioProfundo(d[s])) control(`Sección de núcleo con datos: ${s}`, false, 'Llega vacía: el informe la omite y avisa en el resumen. Tres búsquedas registradas en meta.huecos.');
   const huecos = lista(meta.huecos);
@@ -567,10 +610,10 @@ export function calcularEmpresa(datos) {
   control('Fuentes sin citar ≤ 15 %', fuentes.fuentes_sin_citar.length <= Math.max(2, 0.15 * fuentes.n_fuentes), fuentes.fuentes_sin_citar.length ? `Sin citar: ${fuentes.fuentes_sin_citar.join(', ')}.` : '');
 
   d.calc = {
-    version: 3, etiquetas, recomendacion, mercado, clave, cuenta, tcac: tcacTabla,
+    version: 4, etiquetas, recomendacion, mercado, clave, cuenta, tcac: tcacTabla,
     cuenta_y_prevision: [...cuenta.map((c) => ({ periodo: c.periodo, ingresos: c.ingresos, ebitda: c.ebitda })), ...proy.map((p) => ({ periodo: p.periodo, ingresos: p.ingresos, ebitda: p.ebitda }))],
     segmentos_ultimo: segmentosUltimo, segmentos_tabla: segmentosTabla, segmentos_periodo: ultPerSeg ?? null,
-    balance, flujos, flujos_acumulado: acumulado, rentabilidad, roic_incremental_pct: roicIncremental,
+    balance, perimetro_nota: notaPerimetro, flujos, flujos_acumulado: acumulado, rentabilidad, roic_incremental_pct: roicIncremental,
     roic_frente_wacc: rentabilidad.map((r) => ({ periodo: r.periodo, roic_pct: r.roic_pct, roe_pct: r.roe_pct, wacc_pct: red(wacc, 1) })),
     calidad: scores, dcf, escenarios, valor_ponderado: valorPonderado, potencial_ponderado_pct: red(pct(valorPonderado - precio, precio)),
     comparables: { tabla: [empresaFila, ...pares], estadisticos: estad, implicito, regresion, n: pares.length },
@@ -598,9 +641,11 @@ function valorarDcf(dcfIn, ctx, p, aj = {}) {
   let sumaVp = 0;
   for (const a of proy) {
     const anio = anioDe(a.periodo);
-    const g = (n(a.crecimiento_pct) ?? 0) + (aj.dg ?? 0);
+    // Un año «fijo» (ya casi publicado, o con perímetro cerrado) no se mueve con los escenarios,
+    // las sensibilidades ni el DCF inverso.
+    const g = (n(a.crecimiento_pct) ?? 0) + (a.fijo ? 0 : aj.dg ?? 0);
     ingresos *= 1 + g / 100;
-    const margen = (n(a.margen_ebitda_pct) ?? 0) + (aj.dm ?? 0);
+    const margen = (n(a.margen_ebitda_pct) ?? 0) + (a.fijo ? 0 : aj.dm ?? 0);
     const ebitda = (ingresos * margen) / 100;
     const da = (ingresos * (n(a.amortizacion_pct_ventas) ?? 0)) / 100;
     const ebit = ebitda - da;
@@ -706,7 +751,7 @@ function regresionLineal(puntos) {
 
 // ───────────────────────── calidad contable ─────────────────────────
 
-function calidadContable(cuenta, balance, flujos, capitalizacion, naturaleza = false) {
+function calidadContable(cuenta, balance, flujos, capitalizacion, naturaleza = false, perimetro = new Set()) {
   const porPer = (arr, per) => arr.find((x) => String(x.periodo) === String(per)) || {};
   const pers = cuenta.map((c) => String(c.periodo)).filter((p) => balance.some((b) => String(b.periodo) === p));
   const t = pers[pers.length - 1], t1 = pers[pers.length - 2];
@@ -716,6 +761,8 @@ function calidadContable(cuenta, balance, flujos, capitalizacion, naturaleza = f
   const c = porPer(cuenta, t), b = porPer(balance, t), f = porPer(flujos, t);
   const ca = porPer(cuenta, t1), ba = porPer(balance, t1), fa = porPer(flujos, t1);
   const N = (o, k) => n(o[k]);
+  const cambioPerimetro = perimetro.has(String(t));
+  const avisoPerimetro = cambioPerimetro ? ` No fiable en ${t}: cambio de perímetro (el balance incluye negocios sin su cuenta de resultados completa).` : '';
 
   // Altman Z (versión original para cotizadas)
   const at = N(b, 'activo_total'), pt = N(b, 'pasivo_total');
@@ -724,7 +771,7 @@ function calidadContable(cuenta, balance, flujos, capitalizacion, naturaleza = f
     if (Number.isFinite(z)) {
       res.altman_z = red(z, 2);
       res.altman_zona = z > 2.99 ? 'Zona segura' : z >= 1.81 ? 'Zona gris' : 'Zona de riesgo';
-      tabla.push({ indicador: 'Altman Z', valor: fmt(z, 2), lectura: `${res.altman_zona} (> 2,99 seguro; < 1,81 riesgo). No aplica a bancos ni aseguradoras.` });
+      tabla.push({ indicador: 'Altman Z', valor: fmt(z, 2), lectura: `${res.altman_zona} (> 2,99 seguro; < 1,81 riesgo). No aplica a bancos ni aseguradoras, y subestima la solvencia de empresas con grandes anticipos de clientes o prefinanciación pública (contratistas, construcción), que inflan el pasivo.${avisoPerimetro}` });
     }
   }
   // Piotroski F
@@ -764,8 +811,12 @@ function calidadContable(cuenta, balance, flujos, capitalizacion, naturaleza = f
     if (Object.values(v).every((x) => x !== null && Number.isFinite(x))) {
       const m = -4.84 + 0.92 * v.DSRI + 0.528 * v.GMI + 0.404 * v.AQI + 0.892 * v.SGI + 0.115 * v.DEPI - 0.172 * v.SGAI + 4.679 * v.TATA - 0.327 * v.LVGI;
       res.beneish_m = red(m, 2);
+      res.beneish_fiable = !cambioPerimetro;
       res.beneish_variables = Object.entries(v).map(([k, x]) => ({ variable: k, valor: red(x, 2) }));
-      tabla.push({ indicador: 'Beneish M', valor: fmt(m, 2), lectura: (m > -1.78 ? 'Por encima de −1,78: perfil compatible con manipulación de beneficios; revisar a fondo.' : 'Por debajo de −1,78: sin señal de manipulación.') + (naturaleza ? ' Aproximado: con cuenta por naturaleza, los índices de margen bruto y de gastos generales se fijan en 1.' : '') });
+      const lecturaM = cambioPerimetro
+        ? `No interpretable en ${t}: con un cambio de perímetro, los índices de activos, amortización y ventas (AQI, DEPI, SGI) comparan grupos distintos y el umbral de −1,78 no sirve.`
+        : m > -1.78 ? 'Por encima de −1,78: perfil compatible con manipulación de beneficios; revisar a fondo.' : 'Por debajo de −1,78: sin señal de manipulación.';
+      tabla.push({ indicador: 'Beneish M', valor: fmt(m, 2), lectura: lecturaM + (naturaleza ? ' Aproximado: con cuenta por naturaleza, los índices de margen bruto y de gastos generales se fijan en 1.' : '') });
     }
   }
   // Devengos (accruals) acumulados
@@ -793,13 +844,20 @@ function puntuarGobierno(g, calidad, fechaCorte) {
   const ventas = sumaLaxa(...ins.filter((x) => /venta/i.test(x.operacion)).map((x) => n(x.importe)));
   const b = (v) => (v === null || v === undefined ? null : !!v);
   const sino = (v, si = 'Sí', no = 'No') => (v === null || v === undefined ? 'Sin dato' : v ? si : no);
-  const voto = n(g.voto_remuneracion_pct);
+  // El voto se mide por los votos EN CONTRA: una abstención sistemática (de un accionista público, por
+  // ejemplo) baja el «a favor» sin ser un rechazo. Si solo hay el «a favor», se usa ese.
+  const votoContra = n(g.voto_remuneracion_contra_pct), voto = n(g.voto_remuneracion_pct);
+  const hayControl = g.accionista_control === null || g.accionista_control === undefined ? mayor >= 30 : !!g.accionista_control;
+  const cambios = n(g.cambios_cupula_24m);
   const crit = [
-    ['Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)', indepPct === null ? null : indepPct >= 50 || (mayor >= 30 && indepPct >= 33), indepPct === null ? 'Sin dato' : `${fmt(indepPct, 0)} %`],
+    ['Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)', indepPct === null ? null : indepPct >= 50 || (hayControl && indepPct >= 33), indepPct === null ? 'Sin dato' : `${fmt(indepPct, 0)} %${hayControl ? ' (con control)' : ''}`],
     ['Presidente no ejecutivo, o consejero coordinador independiente', g.presidente_ceo_separados === null || g.presidente_ceo_separados === undefined ? null : g.presidente_ceo_separados || !!g.consejero_coordinador, g.presidente_ceo_separados ? 'Separados' : g.consejero_coordinador ? 'Coordinador' : 'No'],
     ['Comisión de auditoría con mayoría de independientes y presidida por uno', b(g.auditoria_independiente), sino(g.auditoria_independiente)],
     ['Ningún consejero «otro externo» con más de 12 años', nCons ? externosLargos.length === 0 : null, nCons ? (externosLargos.length ? externosLargos.map((c) => c.nombre).join(', ') : 'Ninguno') : 'Sin dato'],
-    ['Peor voto a favor sobre remuneración (3 juntas) ≥ 80 %', voto === null ? null : voto >= 80, voto === null ? 'Sin dato' : `${fmt(voto, 1)} %`],
+    ['Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses', cambios === null ? null : cambios <= 1, cambios === null ? 'Sin dato' : `${fmt(cambios, 0)} cambio${cambios === 1 ? '' : 's'}`],
+    votoContra !== null
+      ? ['Peor voto en contra sobre remuneración (3 juntas) ≤ 20 %', votoContra <= 20, `${fmt(votoContra, 1)} % en contra`]
+      : ['Peor voto a favor sobre remuneración (3 juntas) ≥ 80 %', voto === null ? null : voto >= 80, voto === null ? 'Sin dato' : `${fmt(voto, 1)} % a favor`],
     ['Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)', b(g.variable_ligado_rentabilidad), sino(g.variable_ligado_rentabilidad)],
     ['Una acción, un voto, sin blindajes ni límites de voto', b(g.una_accion_un_voto), sino(g.una_accion_un_voto)],
     ['Sin operaciones vinculadas relevantes', g.operaciones_vinculadas_relevantes === null || g.operaciones_vinculadas_relevantes === undefined ? null : !g.operaciones_vinculadas_relevantes, sino(g.operaciones_vinculadas_relevantes, 'Hay', 'No hay')],

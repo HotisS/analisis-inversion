@@ -202,6 +202,7 @@ const ejemplo = {
     cuenta,
     ltm: { periodo: 'LTM jun-26', fecha_fin: '2026-06-30', dpa_extraordinario: 0, ingresos: r(ult.ingresos * 1.03), ebitda: r(ult.ebitda * 1.04), ebit: r(ult.ebit * 1.04), beneficio_neto: r(ult.beneficio_neto * 1.05), bpa: r(ult.bpa * 1.05, 2), dpa: ult.dpa, fcf: 205 },
     comentario: 'Los ingresos crecieron un 5,5 % anual en 2016-2025, con un 2020 de caída (−7,5 %) por automoción. El margen EBITDA pasó del 14,1 % al 15,9 % por el mayor peso de redes [1][2][3].',
+    cambios_perimetro: [{ periodo: '2022', descripcion: 'compra de Aparamenta Boreal (ficticia), consolidada desde octubre: tres meses en la cuenta y el balance completo' }],
     ajustes: 'Las cifras son las reportadas. Los no recurrentes (reestructuración en 2020 y 2023) fueron inferiores al 3 % del EBIT [1][3].',
     confianza: 'Alta',
   },
@@ -250,7 +251,7 @@ const ejemplo = {
       { nombre: 'Consejera independiente C (ficticia)', cargo: 'Vocal', tipo: 'Independiente', desde: '2021', comisiones: 'Auditoría' },
       { nombre: 'Consejero independiente D (ficticio)', cargo: 'Vocal', tipo: 'Independiente', desde: '2023', comisiones: 'Nombramientos' },
     ],
-    presidente_ceo_separados: true, consejero_coordinador: true, una_accion_un_voto: true, operaciones_vinculadas_relevantes: false, variable_ligado_rentabilidad: true, auditoria_independiente: true, insiders_sin_operaciones: false, voto_remuneracion_pct: 88.2,
+    presidente_ceo_separados: true, consejero_coordinador: true, una_accion_un_voto: true, operaciones_vinculadas_relevantes: false, variable_ligado_rentabilidad: true, auditoria_independiente: true, insiders_sin_operaciones: false, accionista_control: false, cambios_cupula_24m: 0, voto_remuneracion_pct: 88.2, voto_remuneracion_contra_pct: 9.6,
     remuneracion_ceo: { anio: '2025', total: 2.4, fijo: 0.9, variable_corto: 0.8, variable_largo: 0.7, ratio_salario_medio: 52 },
     remuneracion: 'El variable a largo plazo depende al 50 % del ROIC y al 50 % del rendimiento total frente al IBEX; tiene cláusula de recuperación [10].',
     accionistas: [{ nombre: 'Familia fundadora', pct: 28, tipo: 'Familiar', variacion: 'Estable' }, { nombre: 'Fondo de pensiones nórdico', pct: 5.1, tipo: 'Institucional', variacion: 'Sube desde el 3,0 % en 2025 [11]' }, { nombre: 'Gestora estadounidense', pct: 3.2, tipo: 'Institucional', variacion: 'Nueva [11]' }, { nombre: 'Autocartera', pct: 1.2, tipo: 'Autocartera', variacion: 'Por recompras' }],
@@ -310,7 +311,7 @@ const ejemplo = {
   dcf: {
     anios: [
       ['2026e', 6.6, 16.1], ['2027e', 6.2, 16.4], ['2028e', 5.8, 16.6], ['2029e', 5.0, 16.7], ['2030e', 4.2, 16.8], ['2031e', 3.5, 16.8], ['2032e', 3.0, 16.8],
-    ].map(([p, g, m], i) => ({ periodo: p, crecimiento_pct: g, margen_ebitda_pct: m, amortizacion_pct_ventas: 4.3, capex_pct_ventas: i < 3 ? 5.0 : 4.5, nwc_pct_ventas: r(nwcReal - i * 0.3, 1), tasa_impositiva_pct: 24.5 })),
+    ].map(([p, g, m], i) => ({ periodo: p, crecimiento_pct: g, margen_ebitda_pct: m, amortizacion_pct_ventas: 4.3, capex_pct_ventas: i < 3 ? 5.0 : 4.5, nwc_pct_ventas: r(nwcReal - i * 0.3, 1), tasa_impositiva_pct: 24.5, fijo: i === 0 })),
     wacc: { tasa_libre_pct: 3.2, beta: 1.05, prima_mercado_pct: 5.5, prima_adicional_pct: 0.5, coste_deuda_pct: 3.6, tasa_impositiva_pct: 25, peso_deuda_pct: 15 },
     terminal: { metodo: 'gordon', crecimiento_pct: 2.0, multiplo_salida: 10.0 },
     mitad_de_anio: true,
@@ -344,7 +345,7 @@ const ejemplo = {
     confianza: 'Media',
   },
   valoracion: {
-    puente: { fecha: '2026-06-30', deuda_financiera: 610, arrendamientos: 100, caja: 160, minoritarios: 55, pensiones: 0, asociadas: 20, otros_ajustes: 0 },
+    puente: { fecha: '2026-06-30', deuda_financiera: 610, arrendamientos: 100, caja: 160, minoritarios: 55, pensiones: 0, asociadas: 20, otros_ajustes: 45 },
     pesos: { dcf: 50, comparables: 30, transacciones: 10, suma_partes: 10, escenarios: 0 },
     comentario: 'El DCF pesa la mitad porque el negocio es predecible y regulado en redes. Las transacciones pesan poco: con la familia en el 28 %, una operación de control no es probable [9].',
     confianza: 'Media',

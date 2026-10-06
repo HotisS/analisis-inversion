@@ -115,7 +115,7 @@ Una sección de núcleo no se pone a `null` si tiene algo que aportar: mejor una
 
 ## 4. Reglas sobre los datos
 
-0. **Ninguna cifra sale del resumen de un buscador.** Los resúmenes de WebSearch inventan números con aplomo (EBITDA semestrales que no existen, bonos al 6 %, múltiplos «calculados»). Toda cifra se copia **de la página o el documento original** que la publica, abierto y leído. Si WebFetch no abre un documento (certificado, tamaño, JavaScript), descárgalo con `curl` y extrae el texto (`pdftotext`, o un lector propio para xlsx).
+0. **Ninguna cifra sale del resumen de un buscador.** Los resúmenes de WebSearch inventan números con aplomo (EBITDA semestrales que no existen, bonos al 6 %, múltiplos «calculados»). Toda cifra se copia **de la página o el documento original** que la publica, abierto y leído. Si WebFetch no abre un documento (certificado, tamaño, JavaScript), descárgalo con `curl` y extrae el texto (`pdftotext`, o un lector propio para xlsx). WebFetch abre la página original, así que vale como fuente, pero también la resume un modelo: para las cifras que mueven la valoración (acciones, deuda, EBITDA, consenso, múltiplos de los comparables) pídele el **texto literal** de la tabla o contrasta con un segundo documento.
 1. **Nunca inventes una cifra.** Si no hay dato fiable tras el protocolo de huecos, `null` (o `[]`) y el informe no lo imprime. Las estimaciones propias se marcan en el texto («estimación propia: …») con el cálculo explicado.
 2. **Fuentes.** Cada documento leído **y usado** va en `fuentes` con `id`, `tipo` y fecha (`AAAA-MM-DD`; si el documento no tiene fecha visible, `AAAA-MM` o `AAAA` del periodo al que se refiere), y se cita con `[n]` en los textos (también `[3, 5]` o `[3-5]`). No metas citas solo para cumplir: una fuente de contexto puede quedarse sin citar (el motor tolera hasta un 15 %). Las cifras que calcula el motor **no llevan cita ni la palabra «motor»**: son cálculos del propio informe. Tipos: `"Primaria"` (empresa o regulador), `"Datos de mercado"` (proveedores), `"Sectorial"` (asociaciones, estadística, estudios), `"Prensa"`, `"Analistas"`. Prioridad: Primaria > Datos de mercado > Sectorial > Analistas > Prensa.
 3. **Unidades.** Todas las magnitudes de las cuentas, la capitalización, el valor empresa y los comparables van **en millones** de `meta.divisa`. El precio, el BPA, el DPA y los valores por acción, en unidades de la divisa. Las acciones, en millones. Si conviertes desde otra divisa, usa el tipo de cierre de cada ejercicio (o el de la fecha de corte para datos de mercado) y dilo en `meta.limitaciones`.
@@ -136,18 +136,18 @@ Tú aportas hechos y supuestos; el motor hace **todas las cuentas** y las deja e
 |---|---|
 | Márgenes, crecimientos, TCAC, tipo impositivo, payout (`cuenta`, `tcac`) | `financieros.cuenta` |
 | Peso, crecimiento y margen de cada segmento (`segmentos_ultimo`, `segmentos_tabla`) | `negocio.segmentos` |
-| Deuda neta, DN/EBITDA, circulante, días de cobro, inventario y pago, liquidez, cobertura (`balance`) | `balance.historico` + cuentas |
+| Deuda neta, DN/EBITDA, circulante, días de cobro, inventario y pago, liquidez, cobertura (`balance`); aviso de cambio de perímetro (`perimetro_nota`) | `balance.historico` + cuentas + `financieros.cambios_perimetro` |
 | FCF, conversión, capex/ventas, usos de la caja (`flujos`, `flujos_acumulado`) | `flujos.historico` + cuentas |
 | ROIC, ROE, ROA, descomposición DuPont, ROIC incremental (`rentabilidad`) | cuentas + balance |
 | Altman Z, Piotroski F, Beneish M (`calidad`) | cuentas + balance + flujos |
-| Capitalización, valor empresa, múltiplos LTM y NTM (`mercado`, `clave`) | precio, acciones, `valoracion.puente`, consenso |
+| Capitalización, valor empresa, deuda neta contable y **ajustada** (con pensiones y `otros_ajustes`), múltiplos LTM y NTM (`mercado`, `clave`) | precio, acciones, `valoracion.puente`, consenso |
 | WACC, proyección, FCFF, valor terminal, puente, valor por acción, dos tablas de sensibilidad, DCF inverso (`dcf`) | `dcf` + último ejercicio real + balance |
 | Valor de cada escenario y valor ponderado (`escenarios`, `valor_ponderado`) | `escenarios.casos` (desplazamientos sobre el DCF base) |
 | Estadísticos de comparables, valor implícito por múltiplo y regresión múltiplo-crecimiento (`comparables`) | `comparables.empresas` |
 | Valor implícito por transacciones (`transacciones`) | `transacciones.operaciones` |
 | Suma de partes (`suma_partes`) | `suma_partes` |
 | Síntesis de valoración, valor objetivo y potencial (`sintesis`) | todo lo anterior + `valoracion.pesos` |
-| Puntuación de gobierno con 10 criterios (`gobierno`) | `gobierno` + `calidad` |
+| Puntuación de gobierno con 12 criterios (`gobierno`) | `gobierno` + `calidad` |
 | Controles de coherencia y de fuentes (`controles`, `fuentes`) | todo |
 
 Datos que el motor deriva solos: los **LTM** salen de `financieros.ltm` (o del último ejercicio si está vacío); los **NTM** combinan los dos próximos ejercicios del consenso según los meses que quedan del ejercicio en curso.
@@ -196,7 +196,7 @@ Las claves de primer nivel, en este orden: `meta`, `identificacion`, `resumen`, 
 **Objetivo.** Que el comité entienda en dos minutos qué vende, a quién, cómo cobra y de dónde sale el beneficio.
 - `descripcion` (100-180 palabras): productos o servicios, clientes tipo, canales, presencia industrial o comercial.
 - `como_gana_dinero` (80-150 palabras): la economía unitaria. Qué parte de los ingresos es recurrente, de qué depende el margen (precio, volumen, mezcla, coste de materias primas o de personal), apalancamiento operativo y estacionalidad.
-- `segmentos`: los segmentos **tal como los reporta la empresa**, con su historia de al menos 5 ejercicios. `resultado` es el resultado del segmento que publique la empresa (EBIT o EBITDA; indícalo en `tipo_resultado`). Máximo 8: agrupa el resto en «Otros». Los ingresos de los segmentos deben sumar los del grupo (el motor lo comprueba); si hay eliminaciones entre segmentos, ponlas como segmento «Eliminaciones». **Empresa monosegmento** (NIIF 8 con un solo segmento): usa las líneas de negocio o familias de producto por las que la empresa desglosa sus ingresos, con `resultado: null` y `tipo_resultado: null`; las columnas sin dato desaparecen del informe.
+- `segmentos`: los segmentos **tal como los reporta la empresa**, con su historia de al menos 5 ejercicios. `resultado` es el resultado del segmento que publique la empresa (EBIT o EBITDA; indícalo en `tipo_resultado`). Máximo 8: agrupa el resto en «Otros». Los ingresos de los segmentos deben sumar los del grupo (el motor lo comprueba); si hay eliminaciones entre segmentos, ponlas como segmento «Eliminaciones». **Si la empresa cambió de segmentación**, usa la **vigente** y llena los años anteriores solo con las cifras reexpresadas que haya publicado la propia empresa (normalmente uno o dos ejercicios); los años sin reexpresar se quedan sin dato y lo dices en `meta.limitaciones`. No mezcles segmentaciones en una misma fila. **Empresa monosegmento** (NIIF 8 con un solo segmento): usa las líneas de negocio o familias de producto por las que la empresa desglosa sus ingresos, con `resultado: null` y `tipo_resultado: null`; las columnas sin dato desaparecen del informe.
 - `geografias`: ingresos por geografía del último ejercicio, máximo 8 con «Otros»; deben sumar 100. `geografias_criterio`: «destino» (dónde está el cliente, lo preferible) u «origen» (dónde se factura), según lo que publique la empresa.
 - `clientes` (80-150 palabras): concentración (primer cliente, diez primeros), duración de los contratos, tasa de renovación o de bajas y **poder de precios** demostrado (subidas de precio frente a inflación de costes, con datos).
 - `kpis`: 4-8 indicadores operativos que la propia empresa sigue (cartera de pedidos, volumen, precio medio, clientes, ARPU, ventas comparables, ocupación…), con el valor del año anterior y del actual.
@@ -240,7 +240,7 @@ Las claves de primer nivel, en este orden: `meta`, `identificacion`, `resumen`, 
 ### 4. Posición competitiva y foso · `competencia`
 
 **Objetivo.** Saber si la empresa tiene una ventaja que proteja sus márgenes y si esa ventaja crece o se erosiona.
-- `cuota_pct` y `posicion` («2.º mundial en tripas artificiales»), en el mercado definido en la sección 3.
+- `cuota_pct` y `posicion` («2.º mundial en tripas artificiales»), en el mercado definido en la sección 3. Si la empresa compite en varios mercados distintos (defensa y servicios de TI, por ejemplo), `cuota_pct` es la del mercado que más pesa en el beneficio, y `posicion` dice cuál es y da la cuota en los demás.
 - `competidores`: 4-8 competidores directos con ingresos (millones de `meta.divisa`), cuota y **margen EBIT del último ejercicio** de sus propias cuentas, y cómo compiten. `ticker` vacío (`null`) si no cotiza.
 - `foso.fuentes`: exactamente cinco filas — «Efectos de red», «Costes de cambio», «Intangibles (marca, patentes, licencias)», «Ventaja en costes», «Escala eficiente» — con puntuación entera de 0 a 5 y la **evidencia** que la sostiene: margen o ROIC por encima de los competidores durante años, cuota estable con precios al alza, tasa de renovación…
 - `foso.veredicto`: «Amplio» (más de 10 años), «Estrecho» (5-10 años) o «Sin foso». `foso.tendencia`: «Se amplía», «Estable» o «Se estrecha».
@@ -260,7 +260,8 @@ Las claves de primer nivel, en este orden: `meta`, `identificacion`, `resumen`, 
 
 **Objetivo.** La serie completa de resultados reales, de la que el motor saca márgenes, crecimientos y la base del DCF.
 - `cuenta`: **solo ejercicios reales** (5-10), en orden cronológico, de las cuentas auditadas. Las estimaciones no van aquí: van en `consenso` y en `dcf`. `gastos_generales` = gastos comerciales, generales y de administración (se usa en el Beneish M). **Si la empresa presenta la cuenta por naturaleza** (aprovisionamientos, personal, otros gastos), pon `meta.formato_cuenta: "naturaleza"`, usa en `coste_ventas` los aprovisionamientos (consumos ± variación de existencias) y deja `gastos_generales` en `null`: el motor ajusta el margen («tras aprovisionamientos»), los días de inventario y de pago, y el Beneish M. `gastos_financieros` = gastos por intereses (sin diferencias de cambio), para la cobertura de intereses. `dpa_extraordinario` = la parte extraordinaria del dividendo, para que el payout no se distorsione. `ebitda` = EBIT + amortizaciones y depreciaciones (incluida la de derechos de uso). `beneficio_neto` es el atribuido a la dominante. `bpa` diluido. `acciones_diluidas` en millones.
-- `ltm`: últimos doce meses a la fecha del último informe (si el último informe es anual, repite ese ejercicio). `periodo` como «LTM jun-26» y `fecha_fin` con la fecha de cierre de ese periodo (la usa el motor para anualizar el crecimiento a 12 meses).
+- `cambios_perimetro`: compras o ventas que cambian la comparabilidad de un ejercicio, sobre todo las que **cierran cerca del final del año** (el balance incluye la adquirida y la cuenta no). `periodo` del ejercicio afectado y `descripcion` breve («Hispasat, consolidada desde el 30-dic-25: entra en balance, no en la cuenta»). El motor marca ese año como no comparable en los ratios de balance y en los indicadores de calidad contable, y avisa si detecta un salto del activo que no hayas declarado. `[]` si no hay ninguno.
+- `ltm`: últimos doce meses a la fecha del último informe (si el último informe es anual, repite ese ejercicio). `periodo` como «LTM jun-26» y `fecha_fin` con la fecha de cierre de ese periodo (la usa el motor para anualizar el crecimiento a 12 meses). Si en los últimos 12 meses entró una compra relevante y la empresa publica cifras *pro forma*, usa el LTM *pro forma* (dilo en `financieros.ajustes`) para que el crecimiento a 12 meses no mezcle perímetros.
 - `comentario` (100-180 palabras): crecimiento orgánico frente a inorgánico, evolución de los márgenes en puntos básicos con sus causas (precio, mezcla, costes, apalancamiento operativo) y años no comparables.
 - `ajustes` (60-120 palabras): diferencias entre cifras reportadas y ajustadas, partidas no recurrentes de cada año y si se repiten.
 
@@ -268,6 +269,7 @@ Las claves de primer nivel, en este orden: `meta`, `identificacion`, `resumen`, 
 "financieros": {
   "cuenta": [{ "periodo": "2021", "ingresos": 0, "coste_ventas": 0, "gastos_generales": 0, "ebitda": 0, "amortizaciones": 0, "ebit": 0, "resultado_financiero": 0, "bai": 0, "impuestos": 0, "minoritarios": 0, "beneficio_neto": 0, "gastos_financieros": 0, "bpa": 0.00, "dpa": 0.00, "dpa_extraordinario": 0.00, "acciones_diluidas": 0.0 }],
   "ltm": { "periodo": "LTM jun-26", "fecha_fin": "AAAA-MM-DD", "ingresos": 0, "ebitda": 0, "ebit": 0, "beneficio_neto": 0, "bpa": 0.00, "dpa": 0.00, "dpa_extraordinario": 0.00, "fcf": 0 },
+  "cambios_perimetro": [{ "periodo": "2025", "descripcion": "texto" }],
   "comentario": "texto", "ajustes": "texto",
   "confianza": "Alta|Media|Baja"
 }
@@ -376,8 +378,9 @@ El motor calcula ROIC, ROE, ROA, la descomposición DuPont y el ROIC incremental
 
 **Objetivo.** Saber si el accionista minoritario está protegido. Fuente principal: IAGC e IARC (o *proxy*).
 - `consejo`: todos los consejeros. `tipo`: «Ejecutivo», «Dominical», «Independiente» u «Otro externo». `desde`: año de primer nombramiento. `comisiones`: las que integra.
-- Booleanos: `presidente_ceo_separados`, `consejero_coordinador` (hay un independiente coordinador), `una_accion_un_voto` (sin clases con voto distinto ni límites de voto ni blindajes estatutarios), `operaciones_vinculadas_relevantes`, `variable_ligado_rentabilidad` (el variable a largo plazo depende de ROIC, TSR o FCF), `auditoria_independiente` (la comisión de auditoría tiene mayoría de independientes y la preside uno), `insiders_sin_operaciones` (`true` solo si has comprobado en el registro oficial que no hubo operaciones en 12 meses).
-- `voto_remuneracion_pct`: el porcentaje a favor **más bajo** de las votaciones sobre remuneración (informe anual y política) de las **tres últimas juntas**. Un voto por debajo del 80 % es una señal de los inversores institucionales que hay que explicar en `remuneracion`.
+- Booleanos: `presidente_ceo_separados`, `consejero_coordinador` (hay un independiente coordinador), `una_accion_un_voto` (sin clases con voto distinto ni límites de voto ni blindajes estatutarios), `operaciones_vinculadas_relevantes`, `variable_ligado_rentabilidad` (el variable a largo plazo depende de ROIC, TSR o FCF), `auditoria_independiente` (la comisión de auditoría tiene mayoría de independientes y la preside uno), `insiders_sin_operaciones` (`true` solo si has comprobado en el registro oficial que no hubo operaciones en 12 meses), `accionista_control` (`true` si un accionista o un pacto controla la junta o decide de hecho el nombramiento del presidente o del primer ejecutivo, **aunque tenga menos del 30 %**; un accionista público que propone al presidente cuenta). En `operaciones_vinculadas_relevantes` cuentan también las **propuestas** de compra o venta a consejeros, accionistas significativos o sus empresas.
+- `cambios_cupula_24m`: número de cambios de presidente o de primer ejecutivo en los 24 meses anteriores a la fecha de corte (cada persona que entra cuenta uno; una sucesión anunciada con más de seis meses de antelación, no).
+- `voto_remuneracion_pct` y `voto_remuneracion_contra_pct`: el porcentaje a favor más bajo y el porcentaje **en contra** más alto de las votaciones sobre remuneración (informe anual y política) de las **tres últimas juntas**, sobre el capital presente o representado. El motor puntúa con el voto en contra (≤ 20 %), porque una abstención sistemática no es un rechazo; si solo encuentras el «a favor», deja el otro en `null`. Un voto en contra por encima del 20 % (o a favor por debajo del 80 %) hay que explicarlo en `remuneracion`.
 - `remuneracion_ceo`: el último ejercicio, en millones: total devengado, fijo, variable anual, variable a largo plazo y `ratio_salario_medio` (remuneración del primer ejecutivo entre el coste medio por empleado).
 - `remuneracion` (80-140 palabras): métricas y pesos del variable, objetivos fijados, si premian crecimiento a cualquier precio, cláusulas de recuperación (*clawback*) e indemnizaciones.
 - `accionistas`: participaciones significativas con tipo y `variacion` (movimientos en 12-24 meses). Incluye autocartera.
@@ -389,7 +392,7 @@ El motor calcula ROIC, ROE, ROA, la descomposición DuPont y el ROIC incremental
 "gobierno": {
   "consejo": [{ "nombre": "texto", "cargo": "texto", "tipo": "Ejecutivo|Dominical|Independiente|Otro externo", "desde": "2015", "comisiones": "texto" }],
   "presidente_ceo_separados": true, "consejero_coordinador": true, "una_accion_un_voto": true,
-  "operaciones_vinculadas_relevantes": false, "variable_ligado_rentabilidad": true, "auditoria_independiente": true, "insiders_sin_operaciones": false, "voto_remuneracion_pct": 0.0,
+  "operaciones_vinculadas_relevantes": false, "variable_ligado_rentabilidad": true, "auditoria_independiente": true, "insiders_sin_operaciones": false, "accionista_control": false, "cambios_cupula_24m": 0, "voto_remuneracion_pct": 0.0, "voto_remuneracion_contra_pct": 0.0,
   "remuneracion_ceo": { "anio": "2025", "total": 0.00, "fijo": 0.00, "variable_corto": 0.00, "variable_largo": 0.00, "ratio_salario_medio": 0 },
   "remuneracion": "texto",
   "accionistas": [{ "nombre": "texto", "pct": 0.00, "tipo": "texto", "variacion": "texto" }],
@@ -447,7 +450,7 @@ El motor calcula ROIC, ROE, ROA, la descomposición DuPont y el ROIC incremental
 ### 18. Comparables cotizados · `comparables`
 
 - `criterio` (40-80 palabras): por qué estas empresas (negocio, tamaño, geografía, modelo) y por qué no otras que podrían parecer obvias.
-- `empresas`: 6-10 comparables **sin incluir a la empresa analizada** (el motor la añade con sus propias cifras). Todas a la misma fecha: `capitalizacion` en millones de `meta.divisa` (convertida), múltiplos de los últimos y de los próximos 12 meses, `crecimiento_pct` de ingresos esperado (próximos 12 meses sobre últimos 12 meses, **anualizado**, como hace el motor con la empresa; con ejercicios no naturales, pondera los dos ejercicios estimados por los meses que caen en los próximos 12), margen EBITDA y ROIC del último ejercicio, DN/EBITDA y rentabilidad por FCF.
+- `empresas`: 6-10 comparables **sin incluir a la empresa analizada** (el motor la añade con sus propias cifras). Todas a la misma fecha: `capitalizacion` en millones de `meta.divisa` (convertida), múltiplos de los últimos y de los próximos 12 meses, `crecimiento_pct` de ingresos esperado (próximos 12 meses sobre últimos 12 meses, **anualizado**, como hace el motor con la empresa; con ejercicios no naturales, pondera los dos ejercicios estimados por los meses que caen en los próximos 12), margen EBITDA y ROIC del último ejercicio, DN/EBITDA y rentabilidad por FCF. **Toma el EBITDA de los últimos y de los próximos 12 meses del mismo proveedor**, o de las cuentas y de un consenso que use la misma definición: si mezclas proveedores, el salto entre los dos múltiplos refleja definiciones distintas y no crecimiento (el motor lo vigila).
 - `comentario` (100-160 palabras): dónde queda la empresa en el mapa crecimiento-múltiplo, si la prima o el descuento se justifican (crecimiento, ROIC, riesgo) y qué múltiplo usarías. Apóyate en `calc.comparables.implicito` y `calc.comparables.regresion`.
 
 ```json
@@ -480,7 +483,8 @@ El motor calcula ROIC, ROE, ROA, la descomposición DuPont y el ROIC incremental
   - `margen_ebitda_pct`;
   - `amortizacion_pct_ventas` y `capex_pct_ventas`: en el último año, el capex debe ser ≥ las amortizaciones (en estado estacionario no se desinvierte);
   - `nwc_pct_ventas`: capital circulante comercial (existencias + clientes − proveedores) sobre ventas; el histórico está en `calc.balance[].circulante_ventas_pct`;
-  - `tasa_impositiva_pct`: tipo efectivo normalizado.
+  - `tasa_impositiva_pct`: tipo efectivo normalizado;
+  - `fijo`: `true` en el ejercicio en curso si ya hay publicados al menos dos trimestres y la guía o el perímetro lo dejan casi cerrado; ese año **no se mueve** con los escenarios, las sensibilidades ni el DCF inverso. `false` en los demás.
   Converge hacia un estado estacionario: el crecimiento del último año, cerca del terminal; el margen, sostenible frente a la competencia.
 - `wacc`: tasa libre de riesgo (bono a 10 años del país de la divisa a la fecha de corte, citado); beta (ajustada o desapalancada y reapalancada; di cuál); prima de mercado (5-6 % salvo fuente mejor, citada); `prima_adicional_pct` por país, tamaño o riesgo específico, justificada; coste de la deuda antes de impuestos; peso de la deuda a valor de mercado.
 - `terminal`: `metodo` «gordon», «multiplo» o «media»; `crecimiento_pct` ≤ crecimiento nominal a largo plazo de la economía (2-3 %); `multiplo_salida` coherente con los comparables. El motor calcula el implícito de cada método: deben ser razonables entre sí.
@@ -490,7 +494,7 @@ El motor calcula ROIC, ROE, ROA, la descomposición DuPont y el ROIC incremental
 
 ```json
 "dcf": {
-  "anios": [{ "periodo": "2026e", "crecimiento_pct": 0.0, "margen_ebitda_pct": 0.0, "amortizacion_pct_ventas": 0.0, "capex_pct_ventas": 0.0, "nwc_pct_ventas": 0.0, "tasa_impositiva_pct": 0.0 }],
+  "anios": [{ "periodo": "2026e", "crecimiento_pct": 0.0, "margen_ebitda_pct": 0.0, "amortizacion_pct_ventas": 0.0, "capex_pct_ventas": 0.0, "nwc_pct_ventas": 0.0, "tasa_impositiva_pct": 0.0, "fijo": false }],
   "wacc": { "tasa_libre_pct": 0.0, "beta": 0.00, "prima_mercado_pct": 0.0, "prima_adicional_pct": 0.0, "coste_deuda_pct": 0.0, "tasa_impositiva_pct": 0.0, "peso_deuda_pct": 0.0 },
   "terminal": { "metodo": "gordon|multiplo|media", "crecimiento_pct": 0.0, "multiplo_salida": 0.0 },
   "mitad_de_anio": true,
@@ -502,7 +506,7 @@ El motor calcula ROIC, ROE, ROA, la descomposición DuPont y el ROIC incremental
 
 ### 21. Escenarios · `escenarios`
 
-- `casos`: exactamente tres, en este orden: «Bajista», «Base», «Alcista». Cada uno es el DCF base con **desplazamientos**: `ajuste_crecimiento_pp` (puntos sumados al crecimiento de cada año), `ajuste_margen_pp` (puntos sumados al margen EBITDA de cada año), `ajuste_wacc_pp`, y `crecimiento_terminal_pct` y `multiplo_salida` (o `null` para usar los del caso base). El Base lleva todo a 0 y `null`. Las probabilidades suman 100.
+- `casos`: exactamente tres, en este orden: «Bajista», «Base», «Alcista». Cada uno es el DCF base con **desplazamientos**: `ajuste_crecimiento_pp` (puntos sumados al crecimiento de cada año no `fijo`), `ajuste_margen_pp` (puntos sumados al margen EBITDA de cada año no `fijo`), `ajuste_wacc_pp`, y `crecimiento_terminal_pct` y `multiplo_salida` (o `null` para usar los del caso base). El Base lleva todo a 0 y `null`. Las probabilidades suman 100.
 - `narrativa` (2-3 frases): qué tiene que pasar en el mundo real. El bajista debe ser verosímil: algo que ya le ha pasado a la empresa o a un competidor.
 - `comentario` (60-120 palabras): la asimetría (cuánto se gana en el alcista frente a cuánto se pierde en el bajista) y si compensa.
 
@@ -530,7 +534,8 @@ El motor calcula ROIC, ROE, ROA, la descomposición DuPont y el ROIC incremental
 
 ### 23. Síntesis de valoración · `valoracion`
 
-- `puente`: del balance **más reciente publicado** (trimestral si existe), en millones: deuda financiera bruta, arrendamientos, caja (e inversiones financieras líquidas), minoritarios (a valor contable o de mercado, dilo), déficit de pensiones neto de impuestos, participaciones en asociadas (se suman) y `otros_ajustes` (otros pasivos asimilables a deuda: pagos aplazados de adquisiciones, opciones de venta de minoritarios, *factoring*; positivo resta valor). El mismo puente se usa en el valor empresa de mercado, en los múltiplos y en el DCF.
+- `puente`: del balance **más reciente publicado** (trimestral si existe), en millones: deuda financiera bruta, arrendamientos, caja (e inversiones financieras líquidas), minoritarios (a valor contable o de mercado, dilo), déficit de pensiones neto de impuestos, participaciones en asociadas (se suman) y `otros_ajustes` (otros pasivos asimilables a deuda: pagos aplazados de adquisiciones, opciones de venta de minoritarios, *factoring*; positivo resta valor). El mismo puente se usa en el valor empresa de mercado, en los múltiplos y en el DCF, y el motor suma pensiones y `otros_ajustes` a la deuda neta para dar la **deuda neta ajustada** (la de la portada).
+  **Anticipos y prefinanciación** (préstamos públicos a tipo cero o bonificado, anticipos de clientes para programas): son deuda (`otros_ajustes`) si se **devuelven en caja** con independencia de la entrega (préstamo reembolsable); son circulante (no van al puente) si se **compensan con entregas** del propio contrato. Si la empresa los presenta como anticipos pero la caja que generan está en el balance del puente, la parte no consumida va en `otros_ajustes`: si no, el puente cuenta la caja y no la obligación. Explica el criterio y su efecto por acción en `comentario` y en `balance.otros_pasivos`; si el importe mueve el valor más de un 10 %, dilo también en el resumen.
 - `pesos`: peso de cada método en el valor objetivo (`dcf`, `comparables`, `transacciones`, `suma_partes`, `escenarios`). Suman 100; pon 0 donde no aplique. Las transacciones llevan prima de control: ponderarlas mucho supone que habrá una operación.
 - `comentario` (100-160 palabras): por qué esos pesos, qué método es más fiable para esta empresa y qué dice la dispersión entre métodos (gráfico de síntesis).
 

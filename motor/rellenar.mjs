@@ -336,7 +336,7 @@ export function rellenar(plantillaBuf, datos, opciones = {}) {
       return sustituirEscalares(r);
     }).join('');
   });
-  doc = doc.replace(/<w:tbl\b[\s\S]*?<\/w:tbl>/g, (t) => (t.includes(VACIA) || !/<w:tr\b/.test(t) ? '' : quitarColumnasVacias(t)));
+  doc = doc.replace(/<w:tbl\b[\s\S]*?<\/w:tbl>/g, (t) => (t.includes(VACIA) || !/<w:tr\b/.test(t) ? '' : mantenerJunta(quitarColumnasVacias(t))));
 
   // 2) Párrafos de bloque: texto, lista, gráfico. Sin datos, desaparecen.
   const partes = { graficos: [], siguienteId: 1 };
@@ -455,12 +455,32 @@ function quitarColumnasVacias(tabla) {
   for (const f of filas) {
     let k = 0;
     const nf = f.replace(/<w:tc\b[\s\S]*?<\/w:tc>/g, (tc) => { const j = k++; return vacias.includes(j) ? '' : j === destino ? ensanchar(tc) : tc; });
-    nueva = nueva.replace(f, nf);
+    nueva = nueva.replace(f, () => nf);
   }
   let g = 0;
   const grid = [...nueva.matchAll(/<w:gridCol w:w="(\d+)"\/>/g)].map((m) => +m[1]);
   const extra = vacias.reduce((s, v) => s + (grid[v] || 0), 0);
   return nueva.replace(/<w:gridCol w:w="(\d+)"\/>/g, (m, w) => { const j = g++; return vacias.includes(j) ? '' : j === destino ? `<w:gridCol w:w="${+w + extra}"/>` : m; });
+}
+
+// Que una tabla de datos no empiece al pie de una página y siga en la otra: las tablas cortas
+// (hasta 15 filas) van enteras; en las largas, la cabecera va al menos con las dos primeras filas.
+// Se marca «mantener con el siguiente» en los párrafos de esas filas (en su sitio dentro de w:pPr).
+function mantenerJunta(tabla) {
+  const filas = [...tabla.matchAll(/<w:tr\b[\s\S]*?<\/w:tr>/g)].map((m) => m[0]);
+  if (filas.length < 2 || !/<w:tblHeader\/>/.test(filas[0])) return tabla;
+  const hasta = filas.length <= 15 ? filas.length - 1 : 3;
+  const conKeepNext = (fila) => fila.replace(/<w:p\b([^>]*?)(\/?)>([\s\S]*?)(?=<\/w:p>|$)/g, (todo, attrs, cerrada, resto) => {
+    if (cerrada) return todo;
+    if (/^<w:pPr>/.test(resto)) {
+      if (/^<w:pPr>(?:<w:pStyle\b[^>]*\/>)?<w:keepNext\/>/.test(resto)) return todo;
+      return `<w:p${attrs}>` + resto.replace(/^<w:pPr>(<w:pStyle\b[^>]*\/>)?/, (_, st) => `<w:pPr>${st || ''}<w:keepNext/>`);
+    }
+    return `<w:p${attrs}><w:pPr><w:keepNext/></w:pPr>${resto}`;
+  });
+  let nueva = tabla;
+  for (let i = 0; i < hasta; i++) nueva = nueva.replace(filas[i], () => conKeepNext(filas[i]));
+  return nueva;
 }
 
 function leerGraficosIncrustados(zip) {
