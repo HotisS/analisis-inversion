@@ -34,3 +34,13 @@ for (const t of trozos) {
 }
 console.log(`<!-- Extracto del prompt para el subagente ${g}: reglas comunes y campos ${GRUPOS[g].join(', ')}. -->\n`);
 console.log(salida.join('\n'));
+const esqueleto = Object.fromEntries([...new Set(GRUPOS[g])].map((k) => [k, null]));
+console.log(`\n## Antes de investigar: escribe tu nota vacía
+
+En tu **primera** acción, escribe \`notas/${g}.json\` con este esqueleto (así, si te cortan, la integración sabe qué falta) y ve rellenándolo campo a campo:
+
+\`\`\`json
+${JSON.stringify({ ...esqueleto, fuentes: [], huecos: [] }, null, 2)}
+\`\`\`
+
+Tus scripts y archivos auxiliares van en \`notas/\` (con tu letra delante) o en \`%TEMP%\\analisis-inversion\\<carpeta>-${g}\`, nunca en una carpeta temporal compartida con otros análisis.`);

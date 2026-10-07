@@ -296,7 +296,7 @@ Las claves de primer nivel, en este orden: `meta`, `identificacion`, `resumen`, 
 ### 7 y 11. Balance, circulante y deuda · `balance`
 
 **Objetivo.** Sacar del balance la deuda, el circulante, el capital invertido y los pasivos que no parecen deuda pero lo son.
-- `historico`: los mismos ejercicios que `financieros.cuenta`, al cierre. `patrimonio_neto` es el **atribuido a la dominante**; `minoritarios` aparte. `pasivo_total` = todo el pasivo exigible (sin patrimonio). `reservas` = beneficios no distribuidos (para el Altman Z). `deuda_financiera` = deuda bancaria + bonos + pagarés, corto y largo plazo, sin arrendamientos.
+- `historico`: los mismos ejercicios que `financieros.cuenta`, al cierre. `patrimonio_neto` es el **atribuido a la dominante**; `minoritarios` aparte. `pasivo_total` = todo el pasivo exigible (sin patrimonio). `reservas` = beneficios no distribuidos (para el Altman Z). `deuda_financiera` = deuda bancaria + bonos + pagarés, corto y largo plazo, sin arrendamientos. **Contratistas y empresas de proyectos** (trenes, defensa, ingeniería, construcción): `activos_contrato` (obra ejecutada pendiente de facturar) y `pasivos_contrato` (anticipos y facturación por encima de la obra ejecutada), de la nota de contratos con clientes; el motor los suma al circulante. Si no aplica, `null`.
 - `vencimientos`: calendario de la deuda bruta por año, de la nota de deuda; agrupa lo lejano en «20XX+».
 - `liquidez`: texto («caja 410 M + líneas no dispuestas 600 M»). `rating`: agencia, nota y perspectiva, o «Sin rating». `coste_deuda_pct`: gastos financieros entre deuda bruta media. `vida_media_anios`: de la nota de deuda.
 - `otros_pasivos` (80-150 palabras): covenants y holgura, pensiones, provisiones, litigios, garantías, pagos aplazados de adquisiciones, opciones de venta de minoritarios, *factoring* sin recurso y *confirming*.
@@ -304,7 +304,7 @@ Las claves de primer nivel, en este orden: `meta`, `identificacion`, `resumen`, 
 
 ```json
 "balance": {
-  "historico": [{ "periodo": "2021", "activo_total": 0, "activo_corriente": 0, "pasivo_corriente": 0, "pasivo_total": 0, "fondo_comercio": 0, "intangibles": 0, "inmovilizado_material": 0, "existencias": 0, "clientes": 0, "proveedores": 0, "caja": 0, "deuda_financiera": 0, "arrendamientos": 0, "patrimonio_neto": 0, "minoritarios": 0, "reservas": 0 }],
+  "historico": [{ "periodo": "2021", "activo_total": 0, "activo_corriente": 0, "pasivo_corriente": 0, "pasivo_total": 0, "fondo_comercio": 0, "intangibles": 0, "inmovilizado_material": 0, "existencias": 0, "clientes": 0, "proveedores": 0, "activos_contrato": null, "pasivos_contrato": null, "caja": 0, "deuda_financiera": 0, "arrendamientos": 0, "patrimonio_neto": 0, "minoritarios": 0, "reservas": 0 }],
   "vencimientos": [{ "anio": "2026", "importe": 0 }],
   "liquidez": "texto", "rating": "texto", "coste_deuda_pct": 0.0, "vida_media_anios": 0.0,
   "otros_pasivos": "texto", "comentario": "texto",

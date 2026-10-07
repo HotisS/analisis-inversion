@@ -50,7 +50,7 @@ const balance = anB.map((a) => {
   const pasivoTotal = r(activoTotal - pn - minoritarios);
   return {
     periodo: String(a), activo_total: activoTotal, activo_corriente: r(activoCorriente), pasivo_corriente: r(proveedores + c.ingresos * 0.09 + deudaFin[a] * 0.12),
-    pasivo_total: pasivoTotal, fondo_comercio: fondo, intangibles: intang, inmovilizado_material: inmov, existencias, clientes, proveedores, caja,
+    pasivo_total: pasivoTotal, fondo_comercio: fondo, intangibles: intang, inmovilizado_material: inmov, existencias, clientes, proveedores, activos_contrato: null, pasivos_contrato: null, caja,
     deuda_financiera: deudaFin[a], arrendamientos: arr, patrimonio_neto: r(pn), minoritarios, reservas: r(pn - 320),
   };
 });

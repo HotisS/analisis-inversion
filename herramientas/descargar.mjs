@@ -38,10 +38,21 @@ for (let k = 0; k < pares.length; k += 2) {
     const tipo = r.headers.get('content-type') || '';
     const buf = Buffer.from(await r.arrayBuffer());
     if (!r.ok) { console.log(`${nombre}: HTTP ${r.status}`); continue; }
+    // Manifiesto: de dónde viene cada archivo (para citar el documento, no la página que lo enlaza).
+    const final = r.url || url;
+    const manifiesto = join(dir, '_manifest.json');
+    const m = existsSync(manifiesto) ? JSON.parse(readFileSync(manifiesto, 'utf8')) : {};
+    m[nombre] = { url, url_final: final, fecha_descarga: new Date().toISOString().slice(0, 10), tipo };
+    writeFileSync(manifiesto, JSON.stringify(m, null, 2));
+    if (final !== url) {
+      const ruta = (u) => { try { return new URL(u).pathname.replace(/\/$/, ''); } catch { return u; } };
+      const aPortada = ruta(final).split('/').filter(Boolean).length <= 1 && ruta(url).split('/').filter(Boolean).length > 1;
+      console.log(`${nombre}: redirigido a ${final}${aPortada ? ' — PARECE LA PORTADA: el documento ya no está en esa dirección' : ''}`);
+    }
     if (/pdf/.test(tipo) || buf.subarray(0, 5).toString() === '%PDF-') {
       const pdf = join(dir, `${nombre}.pdf`), txt = join(dir, `${nombre}.txt`);
       writeFileSync(pdf, buf);
-      try { execFileSync('pdftotext', ['-layout', pdf, txt]); } catch { console.log(`${nombre}: PDF guardado, pdftotext no disponible`); continue; }
+      try { execFileSync('pdftotext', ['-layout', '-enc', 'UTF-8', pdf, txt]); } catch { console.log(`${nombre}: PDF guardado, pdftotext no disponible`); continue; }
       const paginas = readFileSync(txt, 'utf8').split('\f');
       writeFileSync(txt, paginas.map((p, n) => `=== página ${n + 1} ===\n${p}`).join('\n'));
       const letras = paginas.join('').replace(/\s/g, '').length;

@@ -50,3 +50,7 @@ Lo aprendido en Viscofan, Indra y On (octubre de 2026). Ahorra búsquedas que ya
 - **Tablas de PDF desordenadas**: `pdftotext -layout` mezcla columnas en tablas anchas (pasó a los cuatro subagentes de VAT). Si una fila no suma su total, mira esa página como imagen con `construccion/pdf-a-png.ps1 <pdf> -Paginas "N"`.
 - **Cíclicas**: usa `perfil` en los escenarios para la caída de un año concreto (calibrada con las caídas históricas) en vez de bajar todos los años.
 - **Revisión visual**: `a-pdf.ps1` y `pdf-a-png.ps1` escriben en `%TEMP%\analisis-inversion` (fuera de OneDrive) y con `-Paginas` solo las páginas que hacen falta. Ejecútalos con `powershell -ExecutionPolicy Bypass -File …`.
+- **Contratistas** (CAF, Indra): el circulante incluye activos y pasivos por contrato (`balance.historico[].activos_contrato` y `pasivos_contrato`); sin ellos, CAF salía con 405 M de circulante frente a los 87 M que publica. El flujo libre de 2022-2025 fue casi nulo porque el circulante se come ~21 céntimos por euro de ventas nuevas: el motor avisa si el DCF proyecta mucha más caja que la histórica.
+- **Tablas de PDF**: `pdftotext -table -f N -l N archivo.pdf -` saca limpias tablas que `-layout` mezcla.
+- **Yahoo y la fecha de corte**: en valores europeos el cierre del día de corte puede no estar aún; `bolsa.mjs` avisa y usa la sesión anterior (dilo en el informe).
+- **Documentos y su URL**: cita el PDF concreto, no la página de inversores. `descargar.mjs` deja `docs/_manifest.json` con la URL final de cada archivo y avisa si una dirección antigua redirige a la portada.

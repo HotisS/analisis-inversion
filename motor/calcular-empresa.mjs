@@ -199,7 +199,9 @@ export function calcularEmpresa(datos) {
     // Base de los días de inventario y de pago: coste de ventas, o costes operativos de caja si la cuenta es por naturaleza.
     const cv = porNaturaleza ? (ingresos !== null && n(c.ebitda) !== null ? ingresos - n(c.ebitda) : null) : n(c.coste_ventas);
     const dn = suma(n(b.deuda_financiera) ?? 0, n(b.arrendamientos) ?? 0, -(n(b.caja) ?? 0));
-    const circ = suma(n(b.existencias) ?? 0, n(b.clientes) ?? 0, -(n(b.proveedores) ?? 0));
+    // Contratistas (proyectos a varios años): los activos y pasivos por contrato (obra ejecutada pendiente de
+    // facturar, anticipos de clientes) forman parte del circulante; sin ellos sale inflado.
+    const circ = suma(n(b.existencias) ?? 0, n(b.clientes) ?? 0, -(n(b.proveedores) ?? 0), n(b.activos_contrato) ?? 0, -(n(b.pasivos_contrato) ?? 0));
     const dso = red(div(n(b.clientes), ingresos) !== null ? div(n(b.clientes), ingresos) * 365 : null, 0);
     const dio = red(div(n(b.existencias), cv) !== null ? div(n(b.existencias), cv) * 365 : null, 0);
     const dpo = red(div(n(b.proveedores), cv) !== null ? div(n(b.proveedores), cv) * 365 : null, 0);
@@ -384,6 +386,15 @@ export function calcularEmpresa(datos) {
     control('DCF calculable', false, 'Faltan datos: año base, proyección, WACC o crecimiento terminal.');
   }
 
+  // La caja que proyecta el DCF frente a la que de verdad generó la empresa: un DCF que de pronto genera el
+  // doble de caja que la historia suele esconder un supuesto de circulante o de inversión demasiado optimista.
+  if (dcf?.proyeccion?.length >= 3 && flujos.length >= 3) {
+    const proy3 = media(dcf.proyeccion.slice(0, 3).map((p) => p.fcff));
+    const hist3 = media(flujos.slice(-3).map((f) => f.fcf));
+    if (proy3 !== null && hist3 !== null && proy3 > Math.max(2 * hist3, hist3 + 0.05 * (ultimoCalc.ingresos ?? 0)) )
+      control('Caja proyectada coherente con la histórica', false, `El DCF proyecta ${fmt(proy3, 0)} M de flujo libre medio en sus tres primeros años, frente a ${fmt(hist3, 0)} M de media real en los tres últimos: justifica el salto (circulante, inversión, márgenes) o ajusta los supuestos.`);
+  }
+
   // ── Escenarios (cada uno es el mismo DCF con ajustes) ──
   const escenarios = lista(d.escenarios?.casos).map((e) => {
     const aj = { dg: n(e.ajuste_crecimiento_pp) ?? 0, dm: n(e.ajuste_margen_pp) ?? 0, perfil: Object.fromEntries(lista(e.perfil).filter((x) => x?.periodo).map((x) => [String(x.periodo), x])) };
@@ -544,7 +555,9 @@ export function calcularEmpresa(datos) {
   const implPer = implicito.find((x) => x.metodo.startsWith('PER'));
   if (implNtm) fila('Comparables: EV/EBITDA NTM', implNtm.valor_p25, implNtm.valor_mediana, implNtm.valor_p75);
   if (implPer) fila('Comparables: PER NTM', implPer.valor_p25, implPer.valor_mediana, implPer.valor_p75);
-  if (transacciones) fila(`Transacciones precedentes (${transacciones.metrica})`, transacciones.valor_p25, transacciones.valor_mediana, transacciones.valor_p75);
+  // Un método que no pesa en el valor objetivo y se sale más del doble del precio solo deforma el gráfico.
+  const pesoTrans = n(d.valoracion?.pesos?.transacciones) ?? 0;
+  if (transacciones && !(pesoTrans === 0 && precio && (transacciones.valor_mediana > 2 * precio || transacciones.valor_mediana < 0.5 * precio))) fila(`Transacciones precedentes (${transacciones.metrica})`, transacciones.valor_p25, transacciones.valor_mediana, transacciones.valor_p75);
   if (dcf) fila('DCF (WACC y g ± 0,5)', dcf.rango_min, dcf.valor_accion, dcf.rango_max);
   if (escenarios.length >= 2) fila('Escenarios (bajista – alcista)', Math.min(...escenarios.map((e) => e.valor)), valorPonderado, Math.max(...escenarios.map((e) => e.valor)));
   if (sumaPartes) fila('Suma de partes', sumaPartes.valor_min, sumaPartes.valor_accion, sumaPartes.valor_max);

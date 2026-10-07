@@ -43,6 +43,8 @@ const simbolos = { accion: a.accion, indice: a.indice, sector: a.sector };
 const S = {};
 for (const [k, s] of Object.entries(simbolos)) if (s) S[k] = await serie(s);
 const acc = S.accion, ult = acc.filas.at(-1);
+const avisoCierre = ult.d < CORTE ? `No hay cierre del ${CORTE} (sesión no cerrada o dato aún no publicado): se usa el del ${ult.d}; dilo en el informe.` : null;
+if (avisoCierre) console.error('AVISO: ' + avisoCierre);
 // Los índices de Yahoo (^IBEX, ^GSPC…) son de precio; acciones y ETF llevan el cierre ajustado por dividendos.
 const total = Object.values(S).every((s) => !s.simbolo.startsWith("^"));
 const campo = total ? 'a' : 'c';
@@ -101,6 +103,7 @@ const salida = {
   divisa_accion: acc.divisa,
   tipo_rentabilidad: total ? 'total (con dividendos)' : 'de precio (sin dividendos)',
   nota_tipo: total ? 'Todas las series llevan dividendos reinvertidos (cierre ajustado).' : `Alguna serie no lleva dividendos (${Object.values(S).filter((s) => s.simbolo.startsWith('^')).map((s) => s.simbolo).join(', ')}): todo de precio para no mezclar.`,
+  aviso_cierre: avisoCierre,
   identificacion: { precio: r2(ult.c), fecha_precio: ult.d, max_52s: r2(Math.max(...ano.map((f) => f.h ?? f.c))), min_52s: r2(Math.min(...ano.map((f) => f.l ?? f.c))) },
   volumen_3m: volumen,
   bolsa: { tipo_rentabilidad: total ? 'total (con dividendos)' : 'de precio (sin dividendos)', rentabilidades, anual, beta: S.indice ? beta(acc, S.indice)?.beta ?? null : null, volatilidad_pct: volatilidad, max_drawdown_pct: r2(caida * 100, 1), tramo_drawdown: tramo },
