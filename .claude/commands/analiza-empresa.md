@@ -5,6 +5,9 @@ argument-hint: <nombre, ticker o ISIN> [divisa] [fecha de corte]
 
 Vas a preparar el análisis de inversión completo de **$ARGUMENTS**.
 
+## Regla estricta de carpetas
+El repo vive dentro del OneDrive corporativo del usuario. Trabaja **solo** dentro del repo y en `%TEMP%`. Está **terminantemente prohibido** entrar en cualquier otra carpeta de ese OneDrive: ni buscar, ni leer, ni escribir, ni borrar, ni hacer Glob, Grep o listados por encima de la carpeta que contiene el repo. Los temporales y los PNG van a `%TEMP%`; evita crear y borrar archivos de usar y tirar dentro del repo. Pasa esta regla a cada subagente.
+
 ## Antes de empezar
 1. Lee **entero** `verticales/empresa/prompt.md`. Es tu especificación: papel, protocolo por fases, protocolo de huecos, reglas de datos, los 27 campos con su formato JSON, la revisión de comité y las comprobaciones finales. Síguelo al pie de la letra.
 2. Lee `verticales/empresa/lecciones.md` (corto): herramientas del repo, fuentes que funcionan y trampas ya conocidas. No hace falta leer los diarios de análisis anteriores ni el código de `motor/`.
