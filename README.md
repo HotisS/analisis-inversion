@@ -60,6 +60,7 @@ herramientas/                 Para los análisis de empresa
   descargar.mjs               Documentos con su texto al lado (PDF por páginas)
   bolsa.mjs                   Cotizaciones de Yahoo: rentabilidades, beta, volatilidad, cierres
   form4.mjs                   Compras y ventas de directivos en EE. UU. (Form 4 de la SEC), por persona
+  seguimiento.mjs             seguimiento.xlsx en la raíz: una fila por empresa con señal, precios y criterios ✓ = ✗
   prompt-de.mjs               Parte del prompt de cada subagente (A-D)
 motor/integrar.mjs            Junta las notas A-D y la parte del analista en datos.json
 informes/                     Informes generados (los ejemplos se versionan)
