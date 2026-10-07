@@ -57,3 +57,25 @@ Commit de partida: `e50baaa Reguladas: valoracion.rab y valor empresa sobre la R
 - `descargar.mjs` funcionó con BOE, CNMC, CNMV, EDGAR, emarketstorage y los PDF directos de Enagás (la web de inversores carga por JavaScript y WebFetch no ve los enlaces). `pdftotext -layout` desordenó los estados financieros; `-table` funcionó.
 - A, C y D pasaron de las 80 llamadas (92, 92 y 98) pero acabaron en 10-14 minutos: se rompe el límite de llamadas, no el de tiempo.
 - `a-pdf.ps1` y `pdf-a-png.ps1` funcionaron a la primera; no se cerró ningún WINWORD.
+
+
+## Actualización v2 (7 oct 2026): regla relativa y DCF en tres etapas
+
+Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.json`, escribe `datos-v2.json`). Fuente nueva [83]: prima implícita del S&P 500 de Damodaran, octubre de 2026 (4,20 %).
+
+| | v1 | v2 |
+|---|---|---|
+| Recomendación | Vender | **Mantener** |
+| Convicción | Baja | Baja |
+| Valor objetivo (nuestro WACC 5,63 %) | 13,97 EUR (RTE −7,7 %, asimetría 0,27) | igual |
+| Valor objetivo con la prima del mercado (WACC 5,30 %) | — | 14,66 EUR (RTE −3,5 %, asimetría 0,54) |
+| Regla absoluta / relativa | Vender / — | Vender / Mantener |
+| Comprar por debajo de / vender por encima de | 13,01 / 15,16 EUR | 13,61 / 16,41 EUR |
+
+- **etapa2: no.** El ROIC sin participadas (4,1 %) está por debajo del WACC, la RAB de gas baja de ≈ 3.100 M a ≈ 2.100 M en 2030 [9] y la retribución del sector baja un 2 % en 2027-2032 [23].
+- **Por qué la relativa mueve poco en una regulada.** La beta es de 0,68 y nuestra prima de mercado ya era la de la CNMC (5,02 %), no un 5,5 %. Bajarla al 4,20 % solo resta 0,33 puntos al WACC. El Mantener depende de una asimetría de 0,54, a 0,04 del umbral de venta, con el precio a un 1,2 % del nivel de venta. Con una prima del 4,4 %, la regla relativa ya da Vender (medido con el motor). Por eso la convicción sigue siendo baja.
+
+**Fallos del sistema vistos en esta actualización**
+1. **La regla es un precipicio.** Una diferencia de 0,2 puntos en la prima implícita del mercado o de 0,04 en la asimetría cambia Mantener por Vender. No hay banda ni histéresis. En las reguladas, con betas bajas y rentabilidades totales cerca de cero, la recomendación cae casi siempre al borde.
+2. La relativa compara con una prima del S&P 500, pero la absoluta de las reguladas usa la prima de la CNMC. Las dos referencias no son homogéneas: la diferencia entre reglas es menor que en una industrial por construcción, no por el negocio.
+3. Sin tocar (no es de esta actualización): la tesis dice ≈ 73,5 % de la retribución del transporte y la regasificación, y la síntesis da un 85,5 % del transporte y un 53,9 % de la regasificación. Son perímetros distintos, pero leídos juntos parecen una contradicción.

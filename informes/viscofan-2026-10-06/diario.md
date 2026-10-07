@@ -69,3 +69,26 @@ Los ficheros de trabajo están en `notas/`: `hechos.mjs` (cifras), `textos.mjs` 
 5. **Due diligence específica**: datos de cumplimiento de la EPA (ECHO) para Danville, el 10-K de Viskase completo, comprobaciones de canal con clientes cárnicos y entrevistas a expertos sobre precios de envolturas.
 6. **Controles de calidad nuevos**: DCF inverso calculable, coherencia de las bases de crecimiento, tipo impositivo fuera de rango, dividendos extraordinarios y verificación de cifras de buscador frente a la página original.
 7. **Plantilla**: aplicar de verdad el «no imprimir null», mantener los títulos con su contenido y añadir un gráfico trimestral de margen y divisa.
+
+
+## Actualización v3 (7 oct 2026): regla relativa y DCF en tres etapas
+
+Sin investigación nueva. Script: `notas/actualizacion-v3.mjs` (parte de `datos-v2.json`, escribe `datos-v3.json`). Fuente nueva [54]: prima implícita del S&P 500 de Damodaran, octubre de 2026 (4,20 %).
+
+| | v2 | v3 |
+|---|---|---|
+| Recomendación | Mantener | **Comprar** |
+| Convicción | Media | **Baja** |
+| Valor objetivo (nuestro WACC 7,99 %) | 55,98 € (RTE +12,0 %, asimetría 0,94) | igual |
+| Valor objetivo con la prima del mercado (WACC 7,24 %) | — | 62,50 € (RTE +24,4 %, asimetría 3,24) |
+| Regla absoluta / relativa | Mantener / — | Mantener / Comprar |
+| Comprar por debajo de / vender por encima de | 51,46 € / 66,82 € | 57,16 € / 65,83 € |
+
+- **etapa2: no.** El ROIC (16,4 %) supera al WACC en 8,4 puntos, pero el mercado de envolturas crece un 3,4-4 % [26][41], Viscofan ya tiene el 31 % de las celulósicas y la proyección converge a ese ritmo en 2032 sin dar crédito a todo Beat'30.
+- **Convicción baja por «Ojo con la causa».** El Comprar nace solo de la tasa de descuento: el precio ofrece un 8,5 % frente al 7,24 % que pide el mercado, y nuestras cifras coinciden con el consenso (EBITDA a menos de un 1,1 %). Con la prima del mercado, nuestro DCF (67,51 €) se acerca al objetivo medio de los analistas (69,29 €). Los resultados de 9M26 prueban el margen, no cierran esa diferencia.
+- **Sensibilidad a la prima** (medida con el motor): la regla relativa sigue en Comprar hasta una prima del 5,0 % y pasa a Mantener con un 5,2 %.
+
+**Fallos del sistema vistos en esta actualización**
+1. La portada pone «Comprar» al lado del valor objetivo absoluto (55,98 €) y de una rentabilidad del +12,0 %, por debajo del 15 % de la regla. El lector ve una contradicción. Cuando manda la relativa, la portada debería dar su objetivo y su rentabilidad, o los dos.
+2. El motor no da la prima a la que cambia la regla relativa: tuve que buscarla probando valores. Es el número que mide el riesgo de un Comprar relativo.
+3. Explicar las dos reglas cuesta 60-80 palabras de síntesis. La v2 ya estaba en 648, así que hubo que recortar finanzas, gobierno y riesgos.

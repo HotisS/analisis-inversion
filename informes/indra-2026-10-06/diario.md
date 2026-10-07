@@ -72,3 +72,29 @@ Sí. «Mantener» es lo razonable: el precio está dentro del rango de los méto
 4. **Due diligence política y legal**: estado del recurso de Santa Bárbara, calendario presupuestario de defensa, posición de la SEPI sobre EM&E y sobre Minsait; entrevistas con expertos del Ministerio y de los socios (Airbus, Leonardo, Rheinmetall).
 5. **Comparables por división** (radares y electrónica: Hensoldt, Thales; vehículos: Rheinmetall, KNDS; espacio: SES, Eutelsat; TI: Capgemini, Sopra, Indra Minsait frente a NTT Data España) y transacciones con múltiplos completos.
 6. **Controles nuevos del motor**: deuda neta ajustada en la ficha, aviso de cambio de perímetro, coherencia LTM-NTM entre proveedores, criterios de gobierno sobre estabilidad y control estatal.
+
+
+## Actualización v3 (7 oct 2026): regla relativa y DCF en tres etapas
+
+Sin investigación nueva. Script: `notas/actualizacion-v3.mjs` (parte de `datos-v2.json`, escribe `datos-v3.json`). Fuente nueva [44]: prima implícita del S&P 500 de Damodaran, octubre de 2026 (4,20 %). La v2 (.docx) no se ha tocado.
+
+| | v2 | v3 |
+|---|---|---|
+| Recomendación | Mantener | Mantener |
+| Convicción | Media | Media |
+| Valor objetivo (nuestro WACC 9,11 %) | 58,59 € (RTE −1,4 %, asimetría 0,57) | igual |
+| Valor objetivo con la prima del mercado (WACC 7,98 %) | — | 66,22 € (RTE +11,4 %, asimetría 1,70) |
+| Regla absoluta / relativa | Mantener / — | Mantener / Mantener |
+| Comprar por debajo de / vender por encima de | 51,17 € / 65,47 € | 57,83 € / 73,94 € |
+
+- **etapa2: no**, decidido por el negocio antes de mirar el resultado. El ROIC (18,5 %) supera al WACC en 9,4 puntos y el objetivo de la OTAN llega a 2035. Pero España se ha comprometido a menos gasto [1], la cartera de Defensa se ejecuta en cinco o seis años y Minsait, el negocio de TI, no tiene ese recorrido (presión de precios y sustitución por IA) [7]. La proyección ya converge al 3 % en 2032 por esas razones.
+- **Medido después, solo como referencia (no se usa):**
+  - con diez años de transición sobre la proyección actual (del 3 % al 2,5 %), el DCF sube un 3,8 % y la rentabilidad relativa llega al 14,6 %: sigue en Mantener;
+  - con la versión generosa (2030-2032 al 8 % y diez años de transición), la rentabilidad relativa llega al 34,2 % y la regla da Comprar.
+  - El cambio de recomendación depende de reescribir la proyección explícita, no de la etapa de transición.
+- **Sensibilidad a la prima:** Mantener con un 4,0 %; Comprar con un 3,8 %. El precio (59,72 €) está un 3 % por encima del nivel de compra.
+- Con la prima del mercado, nuestro objetivo (66,22 €) es casi el del consenso (67,12 €).
+
+**Fallos del sistema vistos en esta actualización**
+1. `etapa2` arranca del crecimiento del último año explícito. Los informes hechos antes del cambio convergen al terminal dentro de la proyección, como pedía el prompt, así que la etapa añade casi nada (+3,8 %). Para que pese hay que subir el crecimiento de los últimos años explícitos. Eso es rehacer supuestos, no actualizar, y el prompt no dice qué hacer con un informe antiguo.
+2. El motor no da la prima a la que cambia la regla relativa.

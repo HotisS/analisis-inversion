@@ -48,3 +48,26 @@
 
 ## Nota sobre las herramientas
 `integrar.mjs` funcionó sin tocarlo con notas parciales y con `_parches`/`huecos_resueltos` (anulé los múltiplos de Evident, puse `vs_consenso` del 2S25 y 1S26 y el rating). `calcular-empresa.mjs` y `rellenar.mjs` corrieron a la primera, sin avisos. Lo que más tiempo costó no fue el código sino el criterio que el sistema no fija: la definición de circulante en contratistas, qué pasivos asimilables van al puente (factoring, multas provisionadas, dividendo acordado y pagado después del balance) y cómo tratar transacciones de otro perfil de margen. Para `lecciones.md` (no lo he tocado, por la restricción): España → `retxt` o `-enc UTF-8`; CAF publica su EBITDA con deterioros dentro y sin transcripciones; Renta 4 (r4.com) publica gratis previas y notas de resultados con el consenso; la página de «Rating» de CAF dice que no tiene; un heredoc largo de bash con comillas tipográficas falla, mejor Write.
+
+
+## Actualización v2 (7 oct 2026): regla relativa y DCF en tres etapas
+
+Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.json`, escribe `datos-v2.json`). Fuente nueva [73]: prima implícita del S&P 500 de Damodaran, octubre de 2026 (4,20 %).
+
+| | v1 | v2 |
+|---|---|---|
+| Recomendación | Mantener | **Comprar** |
+| Convicción | Media | **Baja** |
+| Valor objetivo (nuestro WACC 8,11 %) | 84,06 EUR (RTE +9,3 %, asimetría 1,21) | igual |
+| Valor objetivo con la prima del mercado (WACC 7,20 %) | — | 97,98 EUR (RTE +27,1 %, asimetría 2,65) |
+| Regla absoluta / relativa | Mantener / — | Mantener / Comprar |
+| Comprar por debajo de / vender por encima de | 74,35 / 95,46 EUR | 86,50 / 110,62 EUR |
+
+- **etapa2: no.** El ROIC de 2025 (13,6 %) supera al WACC por solo 5,5 puntos y en 2018-2023 estuvo en el 5,9-9,7 %. La proyección explícita ya cubre diez años (2026-2035) y converge al 2,5 % con un mercado que crece un 3,2 % (UNIFE) [24, 26].
+- **Convicción baja por «Ojo con la causa».** La rentabilidad implícita en el precio (8,6 %) apenas supera nuestro WACC y supera en 1,4 puntos al que pide el mercado. Nuestras cifras están en el consenso o algo por debajo. El Comprar es solo de tasa de descuento. Además, el objetivo medio de los analistas (69,22 EUR) está por debajo del precio.
+- **Sensibilidad a la prima** (medida con el motor): Comprar hasta una prima del 5,0 %; Mantener con un 5,2 %.
+
+**Fallos del sistema vistos en esta actualización**
+1. La portada pone «Comprar» con el objetivo absoluto (84,06 EUR) y una rentabilidad del +9,3 %; el objetivo relativo solo aparece en la línea de la síntesis y en «La decisión».
+2. El objetivo relativo (97,98 EUR) queda un 42 % por encima del objetivo medio de los analistas (69,22 EUR) y el motor no lo marca. Con un WACC del 7,2 %, el DCF de un contratista de margen bajo es muy sensible: 0,9 puntos de WACC suben el DCF unos 19 EUR. Haría falta un control de distancia frente al consenso cuando manda la relativa.
+3. El motor no da la prima a la que cambia la regla relativa.
