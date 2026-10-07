@@ -27,7 +27,7 @@ const cuenta = anios.map((a) => {
   const bn = bai - imp - mino;
   return {
     periodo: String(a), ingresos: ing, coste_ventas: coste, gastos_generales: r(ing - coste - ebitda), ebitda, amortizaciones: am, ebit,
-    resultado_financiero: rf, bai, impuestos: imp, minoritarios: mino, beneficio_neto: bn, gastos_financieros: r(-rf * 0.85), participadas_en_ebitda: null, bpa: r(bn / acciones[a], 2), dpa: r((bn / acciones[a]) * 0.44, 2), dpa_extraordinario: 0, acciones_diluidas: acciones[a],
+    resultado_financiero: rf, bai, impuestos: imp, minoritarios: mino, beneficio_neto: bn, gastos_financieros: r(-rf * 0.85), participadas_en_ebitda: null, no_recurrentes_en_ebitda: null, bpa: r(bn / acciones[a], 2), dpa: r((bn / acciones[a]) * 0.44, 2), dpa_extraordinario: 0, acciones_diluidas: acciones[a],
   };
 });
 const C = Object.fromEntries(cuenta.map((c) => [c.periodo, c]));
@@ -252,7 +252,7 @@ const ejemplo = {
       { nombre: 'Consejera independiente C (ficticia)', cargo: 'Vocal', tipo: 'Independiente', desde: '2021', comisiones: 'Auditoría' },
       { nombre: 'Consejero independiente D (ficticio)', cargo: 'Vocal', tipo: 'Independiente', desde: '2023', comisiones: 'Nombramientos' },
     ],
-    presidente_ceo_separados: true, consejero_coordinador: true, una_accion_un_voto: true, operaciones_vinculadas_relevantes: false, variable_ligado_rentabilidad: true, auditoria_independiente: true, insiders_sin_operaciones: false, accionista_control: false, presidente_vinculado_control: false, cambios_cupula_24m: 0, voto_remuneracion_pct: 88.2, voto_remuneracion_contra_pct: 9.6, voto_remuneracion_contra_libre_pct: null,
+    presidente_ceo_separados: true, presidente_ejecutivo: false, consejero_coordinador: true, una_accion_un_voto: true, operaciones_vinculadas_relevantes: false, variable_ligado_rentabilidad: true, auditoria_independiente: true, insiders_sin_operaciones: false, accionista_control: false, presidente_vinculado_control: false, cambios_cupula_24m: 0, voto_remuneracion_pct: 88.2, voto_remuneracion_contra_pct: 9.6, voto_remuneracion_contra_libre_pct: null, voto_cupula_pct: null,
     remuneracion_ceo: { anio: '2025', total: 2.4, fijo: 0.9, variable_corto: 0.8, variable_largo: 0.7, ratio_salario_medio: 52 },
     remuneracion: 'El variable a largo plazo depende al 50 % del ROIC y al 50 % del rendimiento total frente al IBEX; tiene cláusula de recuperación [10].',
     accionistas: [{ nombre: 'Familia fundadora', pct: 28, tipo: 'Familiar', variacion: 'Estable' }, { nombre: 'Fondo de pensiones nórdico', pct: 5.1, tipo: 'Institucional', variacion: 'Sube desde el 3,0 % en 2025 [11]' }, { nombre: 'Gestora estadounidense', pct: 3.2, tipo: 'Institucional', variacion: 'Nueva [11]' }, { nombre: 'Autocartera', pct: 1.2, tipo: 'Autocartera', variacion: 'Por recompras' }],
@@ -301,7 +301,7 @@ const ejemplo = {
   },
   transacciones: {
     operaciones: [
-      { fecha: '2025-11', objetivo: 'Fabricante nórdico de aparamenta', comprador: 'Grupo Alfa', ev: 1450, ev_ventas: 2.1, ev_ebitda: 12.8, prima_pct: null, comentario: 'Compra estratégica [23].' },
+      { fecha: '2025-11', objetivo: 'Fabricante nórdico de aparamenta', comprador: 'Grupo Alfa', ev: 1450, ev_ventas: 2.1, ev_ebitda: 12.8, prima_pct: null, excluir: false, comentario: 'Compra estratégica [23].' },
       { fecha: '2025-03', objetivo: 'Delta Transformers', comprador: 'Fondo de capital privado', ev: 820, ev_ventas: 1.4, ev_ebitda: 10.5, prima_pct: 31, comentario: 'OPA con exclusión [23].' },
       { fecha: '2024-06', objetivo: 'Cables industriales (Portugal)', comprador: 'Beta Energy', ev: 310, ev_ventas: 1.1, ev_ebitda: 9.2, prima_pct: null, comentario: 'Compra a un fondo [23].' },
       { fecha: '2023-09', objetivo: 'Especialista en sensores de red', comprador: 'Gamma Systems', ev: 520, ev_ventas: 3.6, ev_ebitda: 18.5, prima_pct: null, comentario: 'Tecnología [23].' },
@@ -340,7 +340,7 @@ const ejemplo = {
   suma_partes: {
     aplica: true, descuento_holding_pct: 0,
     partes: [
-      { segmento: 'Redes eléctricas', metrica: 'EBITDA 2026e', valor_metrica: 330, multiplo: 12.5, justificacion: 'Mediana de comparables puros de redes [15].' },
+      { segmento: 'Redes eléctricas', metrica: 'EBITDA 2026e', valor_metrica: 330, multiplo: 12.5, ev_directo: null, justificacion: 'Mediana de comparables puros de redes [15].' },
       { segmento: 'Industria', metrica: 'EBITDA 2026e', valor_metrica: 255, multiplo: 9.5, justificacion: 'Fabricantes industriales diversificados [15].' },
       { segmento: 'Automoción', metrica: 'EBITDA 2026e', valor_metrica: 92, multiplo: 6.0, justificacion: 'Proveedores de automoción europeos [15].' },
     ],

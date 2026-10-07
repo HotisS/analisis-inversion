@@ -100,7 +100,8 @@ export async function integrar(dir) {
     for (const k of ORDEN) if (k !== 'fuentes' && nota[k] !== undefined) datos[k] = combinar(datos[k], nota[k]);
   }
   const propio = recorrer(P, prefijo);
-  huecos.push(...(propio.huecos || []), ...(propio.meta?.huecos || []));
+  const huecosPropios = [...(propio.huecos || []), ...(propio.meta?.huecos || [])].map((h) => ({ ...h, _propio: true }));
+  huecos.push(...huecosPropios);
   for (const k of ORDEN) if (k !== 'fuentes' && propio[k] !== undefined) datos[k] = combinar(datos[k], propio[k]);
   // Parches puntuales desde propio: [{ "ruta": "trimestres.items[3].vs_consenso", "valor": "Superior" }]
   for (const p of propio._parches || []) {
@@ -114,11 +115,31 @@ export async function integrar(dir) {
   const lleno = (v) => v !== null && v !== undefined && v !== '' && !(Array.isArray(v) && !v.length);
   const resueltos = (propio.huecos_resueltos || []).map((h) => `${h.seccion}|${h.campo}`.toLowerCase());
   const huecosVivos = huecos.filter((h) => {
-    if (resueltos.includes(`${h.seccion}|${h.campo}`.toLowerCase())) return false;
+    if (!h._propio && resueltos.includes(`${h.seccion}|${h.campo}`.toLowerCase())) return false;
     if (/^[\w.[\]]+$/.test(h.campo || '') && datos[h.seccion] && lleno(obtener(datos[h.seccion], h.campo))) { avisos.add(`Hueco retirado porque el campo tiene valor: ${h.seccion}.${h.campo}`); return false; }
     return true;
   });
-  datos.meta = { ...(datos.meta || {}), huecos: huecosVivos };
+  datos.meta = { ...(datos.meta || {}), huecos: huecosVivos.map(({ _propio, ...h }) => h) };
+  // Notas de trabajo: `notas_integrador` no pasa a datos.json, y se avisa si alguna se coló en un texto.
+  const limpiar = (o) => { if (Array.isArray(o)) o.forEach(limpiar); else if (esObjeto(o)) { delete o.notas_integrador; Object.values(o).forEach(limpiar); } };
+  limpiar(datos);
+  const revisarTextos = (o, ruta) => {
+    if (typeof o === 'string') { if (/\b(el|al|del) integrador\b|\bpendiente de (decidir|revisar)\b/i.test(o) || /\b(TODO|FIXME|TBD)\b/.test(o)) avisos.add(`Nota de trabajo en un campo que se imprime: ${ruta}: «${o.slice(0, 80)}…»`); }
+    else if (Array.isArray(o)) o.forEach((x, i) => revisarTextos(x, `${ruta}[${i}]`));
+    else if (esObjeto(o)) for (const [k, v] of Object.entries(o)) if (k !== 'fuentes') revisarTextos(v, ruta ? `${ruta}.${k}` : k);
+  };
+  revisarTextos(datos, '');
+  // Claves que no están en el esquema (el ejemplo): se pierden en la plantilla sin aviso.
+  try {
+    const ej = JSON.parse(readFileSync(new URL('../verticales/empresa/ejemplo.json', import.meta.url), 'utf8'));
+    const rutas = new Set();
+    const anotar = (o, r) => { if (Array.isArray(o)) o.forEach((x) => anotar(x, r + '[]')); else if (esObjeto(o)) for (const [k, v] of Object.entries(o)) { rutas.add(r + '.' + k); anotar(v, r + '.' + k); } };
+    anotar(ej, '');
+    const ajenas = new Set();
+    const mirar = (o, r) => { if (Array.isArray(o)) o.forEach((x) => mirar(x, r + '[]')); else if (esObjeto(o)) for (const [k, v] of Object.entries(o)) { const rk = r + '.' + k; if (!rutas.has(rk) && !/^\.(meta|fuentes|calc)/.test(rk)) ajenas.add(rk.slice(1)); else mirar(v, rk); } };
+    mirar(datos, '');
+    if (ajenas.size) avisos.add(`Claves fuera del esquema (no se imprimen): ${[...ajenas].slice(0, 15).join(', ')}${ajenas.size > 15 ? '…' : ''}`);
+  } catch { /* sin ejemplo, sin comprobación */ }
   datos.fuentes = global;
   const salida = Object.fromEntries(ORDEN.map((k) => [k, datos[k] === undefined ? null : datos[k]]));
   const vacias = ORDEN.filter((k) => salida[k] === null);

@@ -2,7 +2,7 @@
 // de Yahoo Finance (cierre y cierre ajustado por dividendos). Sin dependencias.
 //
 //   node herramientas/bolsa.mjs --accion ITX.MC --indice ^IBEX --sector EXH1.DE --corte 2026-10-05 \
-//        [--cierre-mes 1] [--dir informes/x/notas/docs] [--salida informes/x/notas/bolsa.json]
+//        [--cierre-mes 1] [--cierre-dia 20] [--indice-beta SIMBOLO] [--dir informes/x/notas/docs] [--salida informes/x/notas/bolsa.json]
 //
 // Devuelve (y guarda en --salida) lo que piden `bolsa`, parte de `identificacion` (precio, rango de 52
 // semanas, volumen) y `multiplos_historicos.serie[].precio_cierre` (cierre de cada ejercicio). Los
@@ -16,7 +16,7 @@ const a = {};
 const argv = process.argv.slice(2);
 for (let i = 0; i < argv.length; i++) if (argv[i].startsWith('--')) a[argv[i].slice(2)] = argv[i + 1];
 if (!a.accion || !a.corte) { console.error('Uso: node herramientas/bolsa.mjs --accion SIMBOLO --indice SIMBOLO [--sector SIMBOLO] --corte AAAA-MM-DD [--cierre-mes 12] [--dir carpeta] [--salida bolsa.json]'); process.exit(1); }
-const CORTE = a.corte, MES = +(a['cierre-mes'] || 12);
+const CORTE = a.corte, MES = +(a['cierre-mes'] || 12), DIA = a['cierre-dia'] ? +a['cierre-dia'] : null;
 // La sesión de hoy no está cerrada: su «cierre» es el último precio del día. Se usa la anterior salvo --incluir-hoy 1.
 const HOY = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
 
@@ -34,9 +34,20 @@ async function serie(simbolo) {
   const filas = x.timestamp.map((t, i) => ({ d: new Date((t + x.meta.gmtoffset) * 1000).toISOString().slice(0, 10), c: q.close[i], a: adj[i], h: q.high[i], l: q.low[i], v: q.volume[i] }))
     .filter((f) => f.c != null && f.d <= CORTE && (a['incluir-hoy'] || f.d < HOY));
   const dividendos = Object.values(x.events?.dividends || {}).length;
+  // Saltos falsos: un cierre que se aparta más de un 50 % del día anterior y del siguiente, que a su vez
+  // se parecen entre sí, es un error del dato (pasó con el ETF 1306.T y dio una beta de 0,03): se quita.
+  // Tramos de hasta 5 sesiones que se apartan más de un 50 % del cierre anterior y vuelven a él: error del dato.
+  for (let i = 1; i < filas.length - 1; i++) {
+    const p = filas[i - 1].c, r = filas[i].c / p;
+    if (r >= 0.5 && r <= 2) continue;
+    let j = i + 1;
+    while (j < filas.length && j - i <= 5 && !(filas[j].c / p > 0.7 && filas[j].c / p < 1.4)) j++;
+    if (j < filas.length && j - i <= 5) { avisosDatos.push(`${simbolo}: ${j - i} cierre(s) anómalo(s) desde el ${filas[i].d} (${filas[i].c} frente a ${p}); se descartan.`); filas.splice(i, j - i); }
+  }
   return { simbolo, divisa: x.meta.currency, filas, con_dividendos: dividendos > 0 && filas.some((f) => Math.abs(f.a / f.c - 1) > 1e-4) };
 }
 
+const avisosDatos = [];
 const r2 = (x, d = 2) => (x === null || x === undefined || !Number.isFinite(x) ? null : Math.round(x * 10 ** d) / 10 ** d);
 const en = (s, fecha) => { let o = null; for (const f of s.filas) { if (f.d <= fecha) o = f; else break; } return o; };
 const menos = (fecha, anios) => { const d = new Date(fecha + 'T00:00:00Z'); d.setUTCFullYear(d.getUTCFullYear() - anios); return d.toISOString().slice(0, 10); };
@@ -70,13 +81,15 @@ for (let y = anioCorte - 10; y < anioCorte; y++) {
 }
 
 // Beta de 5 años con rentabilidades mensuales (cierre ajustado) frente al índice
-function beta(s, idx, anios = 5) {
-  const mens = (x) => { const m = {}; for (const f of x.filas) m[f.d.slice(0, 7)] = f; return m; };
-  const ms = mens(s), mi = mens(idx), desde = menos(CORTE, anios).slice(0, 7);
+function beta(s, idx, anios = 5, semanal = false) {
+  // Clave del periodo: mes (AAAA-MM) o semana (lunes de esa semana).
+  const clave = (d) => { if (!semanal) return d.slice(0, 7); const t = new Date(d + 'T00:00:00Z'); t.setUTCDate(t.getUTCDate() - ((t.getUTCDay() + 6) % 7)); return t.toISOString().slice(0, 10); };
+  const mens = (x) => { const m = {}; for (const f of x.filas) m[clave(f.d)] = f; return m; };
+  const ms = mens(s), mi = mens(idx), desde = semanal ? menos(CORTE, anios) : menos(CORTE, anios).slice(0, 7);
   const meses = Object.keys(ms).filter((k) => k >= desde && mi[k]).sort();
   const xs = [], ys = [];
   for (let i = 1; i < meses.length; i++) { ys.push(ms[meses[i]].a / ms[meses[i - 1]].a - 1); xs.push(mi[meses[i]].a / mi[meses[i - 1]].a - 1); }
-  if (xs.length < 24) return null;
+  if (xs.length < (semanal ? 60 : 24)) return null;
   const mx = xs.reduce((p, x) => p + x, 0) / xs.length, my = ys.reduce((p, y) => p + y, 0) / ys.length;
   let cov = 0, vx = 0; for (let i = 0; i < xs.length; i++) { cov += (xs[i] - mx) * (ys[i] - my); vx += (xs[i] - mx) ** 2; }
   return { beta: r2(cov / vx), meses: xs.length };
@@ -94,22 +107,38 @@ const volumen = tres.length ? { acciones_dia: Math.round(tres.reduce((p, f) => p
 // Cierre de cada ejercicio (último día hábil del mes de cierre), para los múltiplos históricos
 const cierres = [];
 for (let y = anioCorte - 10; y <= anioCorte; y++) {
-  const fin = new Date(Date.UTC(y, MES, 0)).toISOString().slice(0, 10);
+  const fin = (DIA ? new Date(Date.UTC(y, MES - 1, DIA)) : new Date(Date.UTC(y, MES, 0))).toISOString().slice(0, 10);
   if (fin > CORTE) continue;
   const f = en(acc, fin);
   if (f && f.d.slice(0, 7) === fin.slice(0, 7)) cierres.push({ anio: MES === 12 ? String(y) : `FY${MES <= 6 ? y - 1 : y}`, fecha: f.d, precio_cierre: r2(f.c) });
 }
 
+const fMax = ano.reduce((m, f) => ((f.h ?? f.c) > (m.h ?? m.c) ? f : m), ano[0]), fMin = ano.reduce((m, f) => ((f.l ?? f.c) < (m.l ?? m.c) ? f : m), ano[0]);
+const caidas = ano.slice(1).map((f, i) => ({ fecha: f.d, variacion_pct: r2((f.c / ano[i].c - 1) * 100, 1) })).sort((x, y) => x.variacion_pct - y.variacion_pct).slice(0, 5);
+const idxBeta = S.beta || S.indice;
+const betas = idxBeta ? (() => {
+  const m5 = beta(acc, idxBeta)?.beta ?? null, s5 = beta(acc, idxBeta, 5, true)?.beta ?? null, s2 = beta(acc, idxBeta, 2, true)?.beta ?? null;
+  const ajust = (b) => (b === null ? null : r2(0.67 * b + 0.33));
+  return { frente_a: idxBeta.simbolo, mensual_5a: m5, semanal_5a: s5, semanal_2a: s2, ajustada_mensual_5a: ajust(m5), ajustada_semanal_5a: ajust(s5) };
+})() : null;
+if (betas) {
+  if ([betas.mensual_5a, betas.semanal_5a].some((b) => b !== null && b < 0.2)) avisosDatos.push(`Beta frente a ${betas.frente_a} por debajo de 0,2: casi seguro un índice mal elegido o con datos rotos; prueba otro.`);
+  if (betas.semanal_2a !== null && betas.semanal_5a !== null && Math.abs(betas.semanal_2a - betas.semanal_5a) > 0.4) avisosDatos.push(`Beta semanal de 2 años (${betas.semanal_2a}) muy distinta de la de 5 (${betas.semanal_5a}): el riesgo ha cambiado o hay un episodio puntual; explícalo al elegir la beta.`);
+}
+for (const x of avisosDatos) console.error('AVISO: ' + x);
 const salida = {
   fuente: `Yahoo Finance, históricos diarios (${Object.values(simbolos).filter(Boolean).join(', ')}), hasta ${ult.d}`,
   divisa_accion: acc.divisa,
   tipo_rentabilidad: total ? 'total (con dividendos)' : 'de precio (sin dividendos)',
   nota_tipo: total ? 'Todas las series llevan dividendos reinvertidos (cierre ajustado).' : `Alguna serie no lleva dividendos (${Object.values(S).filter((s) => s.simbolo.startsWith('^')).map((s) => s.simbolo).join(', ')}): todo de precio para no mezclar.`,
   aviso_cierre: avisoCierre,
-  identificacion: { precio: r2(ult.c), fecha_precio: ult.d, max_52s: r2(Math.max(...ano.map((f) => f.h ?? f.c))), min_52s: r2(Math.min(...ano.map((f) => f.l ?? f.c))) },
+  avisos_datos: avisosDatos,
+  identificacion: { precio: r2(ult.c), fecha_precio: ult.d, max_52s: r2(Math.max(...ano.map((f) => f.h ?? f.c))), fecha_max_52s: fMax?.d ?? null, min_52s: r2(Math.min(...ano.map((f) => f.l ?? f.c))), fecha_min_52s: fMin?.d ?? null },
+  mayores_caidas_diarias_12m: caidas,
   volumen_3m: volumen,
   bolsa: { tipo_rentabilidad: total ? 'total (con dividendos)' : 'de precio (sin dividendos)', rentabilidades, anual, beta: (S.beta || S.indice) ? beta(acc, S.beta || S.indice)?.beta ?? null : null, volatilidad_pct: volatilidad, max_drawdown_pct: r2(caida * 100, 1), tramo_drawdown: tramo },
   beta_detalle: (S.beta || S.indice) ? { ...beta(acc, S.beta || S.indice), frente_a: (S.beta || S.indice).simbolo } : null,
+  betas,
   cierres_ejercicio: cierres,
 };
 if (a.salida) { mkdirSync(dirname(a.salida), { recursive: true }); writeFileSync(a.salida, JSON.stringify(salida, null, 2)); }

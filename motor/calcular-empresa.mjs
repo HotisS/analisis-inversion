@@ -74,7 +74,15 @@ export function calcularEmpresa(datos) {
     if (!p) return c;
     return { ...c, ebitda: n(c.ebitda) !== null ? n(c.ebitda) - p : null, ebit: n(c.ebit) !== null ? n(c.ebit) - p : null, resultado_financiero: n(c.resultado_financiero) !== null ? n(c.resultado_financiero) + p : null };
   };
-  const cuentaIn = lista(d.financieros?.cuenta).filter((c) => !esEstimado(c.periodo)).map(sinParticipadas);
+  // Gastos no recurrentes que la empresa deja dentro del EBITDA (deterioros, reestructuración, litigios): se
+  // devuelven al EBITDA y al EBIT para que márgenes, múltiplos y DCF partan de lo recurrente. El beneficio neto
+  // publicado no se toca. Positivo = gasto; negativo = ingreso extraordinario.
+  const sinNoRecurrentes = (c) => {
+    const x = n(c?.no_recurrentes_en_ebitda);
+    if (!x) return c;
+    return { ...c, ebitda: n(c.ebitda) !== null ? n(c.ebitda) + x : null, ebit: n(c.ebit) !== null ? n(c.ebit) + x : null };
+  };
+  const cuentaIn = lista(d.financieros?.cuenta).filter((c) => !esEstimado(c.periodo)).map((c) => sinParticipadas(sinNoRecurrentes(c)));
   const cuenta = cuentaIn.map((c, i) => {
     const ant = cuentaIn[i - 1];
     const ingresos = n(c.ingresos), bruto = ingresos !== null && n(c.coste_ventas) !== null ? ingresos - n(c.coste_ventas) : null;
@@ -125,7 +133,7 @@ export function calcularEmpresa(datos) {
   }
 
   // ── LTM y NTM ──
-  const ltm = sinParticipadas(d.financieros?.ltm || {});
+  const ltm = sinParticipadas(sinNoRecurrentes(d.financieros?.ltm || {}));
   const ingresosLtm = n(ltm.ingresos) ?? ultimoCalc.ingresos ?? null;
   const ebitdaLtm = n(ltm.ebitda) ?? ultimoCalc.ebitda ?? null;
   const ebitLtm = n(ltm.ebit) ?? ultimoCalc.ebit ?? null;
@@ -500,7 +508,7 @@ export function calcularEmpresa(datos) {
   if (saltos.length) control('Múltiplos LTM y NTM de cada comparable coherentes', false, `${saltos.map((x) => `${x.nombre} (${fmt(n(x.ev_ebitda_ltm), 1)}x → ${fmt(n(x.ev_ebitda_ntm), 1)}x)`).join(', ')}: el salto implica un crecimiento del EBITDA que no cuadra con el de las ventas. ¿EBITDA de proveedores distintos, o un cambio de perímetro?`);
 
   // ── Transacciones precedentes ──
-  const ops = lista(d.transacciones?.operaciones);
+  const ops = lista(d.transacciones?.operaciones).filter((o) => !o.excluir);
   const evEbitdaOps = ops.map((o) => o.ev_ebitda);
   // Si casi ninguna operación publica EV/EBITDA (tecnología, salud), se valora con EV/ventas.
   const evVentasOps = ops.map((o) => o.ev_ventas);
@@ -519,10 +527,18 @@ export function calcularEmpresa(datos) {
   // ── Suma de partes ──
   let sumaPartes = null;
   if (d.suma_partes?.aplica && lista(d.suma_partes.partes).length) {
-    const partes = d.suma_partes.partes.map((p) => ({ ...p, ev: red(n(p.valor_metrica) * n(p.multiplo), 0) }));
-    const evTotal = sumaLaxa(...partes.map((p) => p.ev)) * (1 - (n(d.suma_partes.descuento_holding_pct) ?? 0) / 100);
-    const conAjuste = (dm) => deEv(sumaLaxa(...partes.map((p) => n(p.valor_metrica) * (n(p.multiplo) + dm))) * (1 - (n(d.suma_partes.descuento_holding_pct) ?? 0) / 100));
-    sumaPartes = { partes, ev_total: red(evTotal, 0), valor_accion: red(deEv(evTotal), 2), valor_min: red(conAjuste(-1), 2), valor_max: red(conAjuste(1), 2), potencial_pct: red(pct(deEv(evTotal) - precio, precio)) };
+    // Cada parte: métrica × múltiplo; o un valor empresa directo (`ev_directo`: rNPV de una cartera, una
+    // participación cotizada); o `valor_metrica: "dcf"`, que toma el valor empresa del DCF.
+    const evParte = (p, f = 1) => n(p.ev_directo) !== null ? n(p.ev_directo) * f
+      : p.valor_metrica === 'dcf' ? (n(dcf?.valor_empresa) ?? null) === null ? null : n(dcf.valor_empresa) * f
+        : n(p.valor_metrica) !== null && n(p.multiplo) !== null ? n(p.valor_metrica) * n(p.multiplo) * f : null;
+    const partes = d.suma_partes.partes.map((p) => ({ ...p, ev: red(evParte(p), 0) }));
+    const desc = 1 - (n(d.suma_partes.descuento_holding_pct) ?? 0) / 100;
+    const evTotal = sumaLaxa(...partes.map((p) => p.ev)) * desc;
+    const conAjuste = (f) => deEv(sumaLaxa(...d.suma_partes.partes.map((p) => evParte(p, f))) * desc);
+    sumaPartes = { partes, ev_total: red(evTotal, 0), valor_accion: red(deEv(evTotal), 2), valor_min: red(conAjuste(0.85), 2), valor_max: red(conAjuste(1.15), 2), potencial_pct: red(pct(deEv(evTotal) - precio, precio)) };
+    const vacias = partes.filter((p) => !p.ev);
+    if (vacias.length) control('Suma de partes: todas las partes con valor', false, `${vacias.map((p) => p.segmento).join(', ')} sin valor (métrica, múltiplo o ev_directo): la suma se queda corta.`);
   }
 
   // ── Múltiplos históricos ──
@@ -578,6 +594,10 @@ export function calcularEmpresa(datos) {
   fila('Precio objetivo de los analistas', n(po.po_min), n(po.po_medio), n(po.po_max), true);
   const implNtm = implicito.find((x) => x.metodo.startsWith('EV/EBITDA próximos'));
   const implPer = implicito.find((x) => x.metodo.startsWith('PER'));
+  if (implNtm?.valor_mediana && implPer?.valor_mediana) {
+    const hi = Math.max(implNtm.valor_mediana, implPer.valor_mediana), lo = Math.min(implNtm.valor_mediana, implPer.valor_mediana);
+    if (lo > 0 && hi / lo > 1.5) control('Comparables: EV/EBITDA y PER coherentes', false, `EV/EBITDA da ${fmt(implNtm.valor_mediana, 2)} y PER ${fmt(implPer.valor_mediana, 2)} por acción: si la empresa amortiza mucho más que sus comparables (licencias, intangibles adquiridos) el EBITDA la favorece; usa EV/EBIT o EV/(EBITDA − capex) y explícalo.`);
+  }
   if (implNtm) fila('Comparables: EV/EBITDA NTM', implNtm.valor_p25, implNtm.valor_mediana, implNtm.valor_p75);
   if (implPer) fila('Comparables: PER NTM', implPer.valor_p25, implPer.valor_mediana, implPer.valor_p75);
   // Un método que no pesa en el valor objetivo y se sale más del doble del precio solo deforma el gráfico.
@@ -715,6 +735,7 @@ export function calcularEmpresa(datos) {
         { concepto: 'Regla absoluta (frente a su coste de capital)', valor: reglaAbs ?? 'n.d.' },
         { concepto: 'Regla relativa (frente a lo que pide el mercado)', valor: reglaRel ?? 'n.d.' },
       ] : []),
+      ...(dcf?.inverso?.crecimiento_implicito_pct !== null && dcf?.inverso?.crecimiento_implicito_pct !== undefined && n(d.sector?.tcac_previsto_pct) !== null ? [{ concepto: `Crecimiento anual implícito en el precio (${dcf.inverso.periodo}) frente al previsto para su mercado`, valor: `${fmt(dcf.inverso.crecimiento_implicito_pct, 1)} % frente a ${fmt(n(d.sector.tcac_previsto_pct), 1)} %` }] : []),
       { concepto: relativo ? 'Recomendación según las reglas (manda la relativa salvo contradicción)' : 'Recomendación según la regla', valor: regla ?? 'n.d.' },
     ],
     niveles: valorObjetivo ? [
@@ -1047,13 +1068,18 @@ function puntuarGobierno(g, calidad, fechaCorte) {
   const crit = [
     ['Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)', indepPct === null ? null : indepPct >= 50 || (hayControl && indepPct >= 33), indepPct === null ? 'Sin dato' : `${fmt(indepPct, 0)} %${hayControl ? ' (con control)' : ''}`],
     ['Presidencia sin vínculo familiar ni profesional con el accionista de control', !hayControl ? true : g.presidente_vinculado_control === null || g.presidente_vinculado_control === undefined ? null : !g.presidente_vinculado_control, !hayControl ? 'Sin control' : g.presidente_vinculado_control === null || g.presidente_vinculado_control === undefined ? 'Sin dato' : g.presidente_vinculado_control ? 'Vinculada' : 'Independiente del control'],
-    ['Presidente no ejecutivo, o consejero coordinador independiente', g.presidente_ceo_separados === null || g.presidente_ceo_separados === undefined ? null : g.presidente_ceo_separados || !!g.consejero_coordinador, g.presidente_ceo_separados ? 'Separados' : g.consejero_coordinador ? 'Coordinador' : 'No'],
+    // Que presidente y primer ejecutivo sean dos personas no basta si el presidente también es ejecutivo.
+    g.presidente_ejecutivo !== null && g.presidente_ejecutivo !== undefined
+      ? ['Presidente no ejecutivo, o consejero coordinador independiente', !g.presidente_ejecutivo || !!g.consejero_coordinador, !g.presidente_ejecutivo ? 'No ejecutivo' : g.consejero_coordinador ? 'Ejecutivo, con coordinador' : 'Ejecutivo, sin coordinador']
+      : ['Presidente no ejecutivo, o consejero coordinador independiente', g.presidente_ceo_separados === null || g.presidente_ceo_separados === undefined ? null : g.presidente_ceo_separados || !!g.consejero_coordinador, g.presidente_ceo_separados ? 'Separados' : g.consejero_coordinador ? 'Coordinador' : 'No'],
     ['Comisión de auditoría con mayoría de independientes y presidida por uno', b(g.auditoria_independiente), sino(g.auditoria_independiente)],
     ['Ningún consejero «otro externo» con más de 12 años', nCons ? externosLargos.length === 0 : null, nCons ? (externosLargos.length ? externosLargos.map((c) => c.nombre).join(', ') : 'Ninguno') : 'Sin dato'],
     ['Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses', cambios === null ? null : cambios <= 1, cambios === null ? 'Sin dato' : `${fmt(cambios, 0)} cambio${cambios === 1 ? '' : 's'}`],
     votoContra !== null
       ? [`Peor voto en contra sobre remuneración (3 juntas${votoContraLibre !== null ? ', capital libre' : ''}) ≤ 20 %`, votoContra <= 20, `${fmt(votoContra, 1)} % en contra`]
-      : ['Peor voto a favor sobre remuneración (3 juntas) ≥ 80 %', voto === null ? null : voto >= 80, voto === null ? 'Sin dato' : `${fmt(voto, 1)} % a favor`],
+      : voto !== null || n(g.voto_cupula_pct) === null ? ['Peor voto a favor sobre remuneración (3 juntas) ≥ 80 %', voto === null ? null : voto >= 80, voto === null ? 'Sin dato' : `${fmt(voto, 1)} % a favor`]
+        // Donde la remuneración no se vota cada año (Japón), el voto a la reelección de la cúpula hace sus veces.
+        : ['Peor voto a favor a la reelección de presidente o primer ejecutivo (3 juntas) ≥ 80 %', n(g.voto_cupula_pct) >= 80, `${fmt(n(g.voto_cupula_pct), 1)} % a favor (no se vota la remuneración)`],
     ['Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)', b(g.variable_ligado_rentabilidad), sino(g.variable_ligado_rentabilidad)],
     ['Una acción, un voto, sin blindajes ni límites de voto estatutarios', g.una_accion_un_voto === 'limite_legal' ? true : b(g.una_accion_un_voto), g.una_accion_un_voto === 'limite_legal' ? 'Límite legal, no estatutario' : sino(g.una_accion_un_voto)],
     ['Sin operaciones vinculadas relevantes', g.operaciones_vinculadas_relevantes === null || g.operaciones_vinculadas_relevantes === undefined ? null : !g.operaciones_vinculadas_relevantes, sino(g.operaciones_vinculadas_relevantes, 'Hay', 'No hay')],
