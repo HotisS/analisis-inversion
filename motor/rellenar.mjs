@@ -206,14 +206,23 @@ function conNegrita(rPr) {
   return `<w:rPr>${m[1]}<w:b/>` + rPr.slice(m[0].length);
 }
 
-// Texto con **negrita** y saltos de línea simples → runs.
+// <w:i/> va después de <w:b/> y <w:bCs/> (el orden de rPr lo fija el esquema).
+function conCursiva(rPr) {
+  if (!rPr) return '<w:rPr><w:i/></w:rPr>';
+  if (/<w:i\/>|<w:i /.test(rPr)) return rPr;
+  const m = rPr.match(/^<w:rPr>((?:<w:rStyle[^>]*\/>)?(?:<w:rFonts[^>]*\/>)?(?:<w:b\/>|<w:b [^>]*\/>)?(?:<w:bCs\/>|<w:bCs [^>]*\/>)?)/);
+  return `<w:rPr>${m[1]}<w:i/>` + rPr.slice(m[0].length);
+}
+
+// Texto con **negrita**, *cursiva* y saltos de línea simples → runs. La cursiva exige que el asterisco
+// no vaya pegado a letras o números por fuera (así «2*3» o «nota*» no se tocan).
 function runs(texto, rPr) {
   const salida = [];
-  texto.split(/(\*\*[^*]+\*\*)/).forEach((trozo) => {
+  texto.split(/(\*\*[^*]+\*\*|(?<![\p{L}\p{N}*])\*[^*\s](?:[^*]*?[^*\s])?\*(?![\p{L}\p{N}*]))/u).forEach((trozo) => {
     if (!trozo) return;
-    const negrita = /^\*\*[^*]+\*\*$/.test(trozo);
-    const limpio = negrita ? trozo.slice(2, -2) : trozo;
-    const props = negrita ? conNegrita(rPr) : rPr;
+    const negrita = /^\*\*[^*]+\*\*$/.test(trozo), cursiva = !negrita && /^\*[^*]+\*$/.test(trozo);
+    const limpio = negrita ? trozo.slice(2, -2) : cursiva ? trozo.slice(1, -1) : trozo;
+    const props = negrita ? conNegrita(rPr) : cursiva ? conCursiva(rPr) : rPr;
     limpio.split('\n').forEach((linea, i) => {
       salida.push(`<w:r>${props}${i ? '<w:br/>' : ''}<w:t xml:space="preserve">${esc(linea)}</w:t></w:r>`);
     });
