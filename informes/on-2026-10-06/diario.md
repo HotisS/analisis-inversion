@@ -61,3 +61,26 @@ Otras menores: el gráfico de vencimientos avisa «sin valores» cuando la empre
 - `comparables` con el mismo proveedor para LTM y NTM: obligó a construir el LTM con los ejercicios de MarketScreener en lugar del LTM de Stock Analysis; más coherente. El control no se aplica a la propia empresa (fricción 2).
 - Criterio de anticipos del puente: no aplica (On no tiene anticipos ni prefinanciación).
 - Regla 0 con WebFetch literal: usada para el bono suizo; las demás cifras de valoración salen de páginas guardadas en `docs/`.
+
+
+## Actualización v3 (7 oct 2026): regla relativa y DCF en tres etapas
+
+Sin investigación nueva. Script: `notas/actualizacion-v3.mjs` (parte de `datos-v2.json`), salida `datos-v3.json` y `On Holding - 2026-10-06 v3.docx`. Fuente nueva [76]: prima implícita del S&P 500 de Damodaran, octubre de 2026, 4,20 %.
+
+| | v2 | v3 |
+|---|---|---|
+| Recomendación · convicción | Mantener · Media | **Comprar · Baja** |
+| Valor objetivo (WACC 10,01 %) | 27,68 CHF (33,33 USD), RTE +4,5 % | igual |
+| Objetivo con la prima del mercado (WACC 7,91 %) | — | 36,62 CHF (44,09 USD), RTE +38,3 %, asimetría 10,98x |
+| Regla absoluta / relativa | Mantener / — | Mantener / Comprar (discrepan; manda la relativa) |
+| Niveles | compra < 24,07 CHF, venta > 30,76 CHF | compra < 30,75 CHF (37,03 USD), venta > 40,69 CHF (48,99 USD) |
+
+- **etapa2: no se usa.** ROIC 38,4 % frente a WACC 10,01 % (pasa el filtro), pero el recorrido después de 2035 no se demuestra: los diez años explícitos ya llevan las ventas de 3.014 a 8.720 M CHF (de ≈ 2 % a ≈ 4 % del calzado deportivo mundial, estimación propia) y en 2034-2035 crecen al ritmo del mercado; el foso es solo la marca. Con una etapa de diez años el DCF pasaría de 30,07 a 31,80 CHF (+5,8 %).
+- **Convicción baja por «Ojo con la causa»**: nuestras ventas están a −1,6/−3,7 % del consenso hasta 2028 y el objetivo relativo (36,62) es casi el de los analistas (36,11); la distancia con el precio es de tasa, sin catalizador con fecha confirmada.
+- **Dependencia de la beta: sí depende.** La beta de 1,72 convierte 1,3 puntos menos de prima en 2,2 puntos menos de coste de capital. El Comprar relativo aguanta hasta una prima implícita del ≈ 5,0 % (WACC 9,2 %, RTE +15,1 %); con 5,1 % ya es Mantener. Dicho en la síntesis y en `cambiaria_recomendacion`.
+- **Terminal**: no se toca (el encargo lo limita a Keyence), pero la regla nueva lo marca: con el bono suizo al 0,51 % el techo sería 0,0 %. Sensibilidad: con g del 1,0 % el DCF baja a 28,12 CHF, la RTE absoluta a −1,3 % y la relativa a +26,2 % (33,43 CHF): la recomendación no cambia, aunque entonces el Comprar relativo solo aguanta hasta una prima del ≈ 4,6 %.
+
+**Fallos del sistema**
+1. La portada pone «Comprar» al lado del valor objetivo absoluto (27,68 CHF) y de una rentabilidad del +4,5 %: el lector ve un Comprar con un 4,5 % de potencial. Arreglo: cuando discrepan y manda la relativa, que la portada dé también el objetivo y la RTE de la regla que manda.
+2. La regla del terminal no tiene solución en divisas de tipos muy bajos (CHF: intervalo vacío). Arreglo: «si la tasa libre − 0,5 queda por debajo de la inflación esperada, el terminal es la inflación esperada», o un control del motor que lo avise.
+3. El motor no da la prima de equilibrio de la regla relativa (aquí ≈ 5,0 %), la cifra que dice cuánto depende el Comprar de la prima y de la beta; hubo que buscarla a mano.

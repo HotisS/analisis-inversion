@@ -60,3 +60,29 @@
 - Sin guía de resultados (solo dividendo) y sin transcripciones: `historial_guidance` con el dividendo y `ultima_presentacion` desde las diapositivas.
 - Gobierno: Audit & Supervisory Board (no comisión de auditoría), voto por consejero y no por remuneración; registros de participaciones en EDINET (API con clave; PDF por `disclosure2dl`); sin registro público de operaciones de directivos; cortos solo por encima del 0,5 % (ninguno declarado).
 - Tipos: el JGB a 10 años al 3,1 % cambia el WACC frente a los análisis europeos con tasas del 0,5-3 %; es la variable que decide Keyence.
+
+
+## Actualización v2 (7 oct 2026): regla relativa y DCF en tres etapas
+
+Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.json`), salida `datos-v2.json` y `Keyence - 2026-10-07 v2.docx`. Fuente nueva [96]: prima implícita del S&P 500 de Damodaran, octubre de 2026, 4,20 %.
+
+| | v1 | v2 |
+|---|---|---|
+| Recomendación · convicción | Vender · Baja | **Mantener · Baja** |
+| DCF (WACC 8,50 %) | 57.330,19 JPY (dos etapas) | 63.376,65 JPY (tres etapas; 57.852,47 sin la transición) |
+| Valor objetivo | 61.614,88 JPY, RTE −23,7 % | 66.566,47 JPY, RTE −17,6 %, asimetría 0,34x |
+| Objetivo con la prima del mercado (WACC 7,51 %) | 68.676,54 JPY, RTE −15,0 % (sin etapa2) | 75.201,52 JPY, RTE −7,0 %, asimetría 1,09x |
+| Regla absoluta / relativa | Vender / Vender | Vender / Mantener (discrepan; manda la relativa) |
+| Niveles | Mantener < 65.681,46; Comprar < 54.036,25 | Comprar < 65.834,24; Vender > 84.206,58 (+3,3 % sobre el precio) |
+
+- **etapa2: sí**, decidida por el negocio antes de calcular. ROIC 94,6 % frente a WACC 8,50 %; ventas exteriores (67 %) a más del 15 % en moneda local tres años seguidos; productividad exterior a la mitad de la japonesa; visión artificial prevista al +8,3 % anual; ventaja de información que se refuerza con la escala. Diseño: la cola FY2033e-FY2035e pasa de 6,5/5/3,5 % (la convergencia que exigía el DCF en dos etapas) a 7/6,5/6 %, por debajo del 8,3 % del mercado, y diez años de transición hasta el 2,5 %. Aporte: +9,5 % sobre el DCF sin transición (57.852,47 → 63.376,65); la transición pesa el 28 % del valor empresa y el terminal baja del 62 % al 38 %.
+- **El Mantener está en el borde y depende de la etapa**: RTE relativa del −7,0 % frente al umbral del −10 %. Con cinco años de transición sería −10,2 % (Vender); con siete, −8,9 % (Mantener); con la cola antigua y diez años, −12,4 % (Vender). Dicho en la síntesis; la convicción es baja por eso y porque las cifras a tres años están a un 1,6-4,9 % del consenso.
+- **Terminal**: v1 ya había subido el terminal al 2,5 % (no usó el 1-1,5 %). Con la regla nueva (entre la inflación esperada, ≈ 2 %, y el JGB − 0,5 = 2,6 %) es coherente: no se cambia. Solo se corrigió `dcf.wacc.nota` (no se imprime), que seguía hablando de una prima del 5,5 % y de un terminal del 1-1,5 %.
+- Disparador del JGB < 2,5 % recalculado (con el terminal al 2,0 % por coherencia): objetivo relativo de 79.738,45 JPY (−1,5 %); sigue en Mantener.
+
+**Fallos del sistema**
+1. El «sin etapa2» del motor (`valor_accion_dos_etapas`) usa la cola explícita ya subida para la transición (57.852,47), no el DCF en dos etapas original (57.330,19): con la cola al 6 % y salto directo al 2,5 % no es un modelo coherente. Arreglo: que el informe diga contra qué compara, o admitir una cola alternativa.
+2. El motor no da la sensibilidad de la recomendación a `etapa2.anios`, y aquí cambia entre 5 y 7 años. Arreglo: una fila en «La decisión» con la regla a 5 y a 10 años.
+3. La cabecera de la síntesis da el potencial con la prima del mercado (−7,7 %) y la tabla la rentabilidad total (−7,0 %): dos cifras distintas en dos páginas seguidas.
+4. La regla del terminal no dice si vale para los escenarios: el alcista usa un 3,0 %, por encima del techo del 2,6 %.
+5. En «Del valor empresa al valor por acción», la caja neta aparece como «− Deuda financiera neta» con importe positivo (2.995.278): se lee como una resta.

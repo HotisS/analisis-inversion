@@ -141,3 +141,24 @@ Ficheros en `notas/`:
 | **Base del EBITDA del consenso** | Encajó: MarketScreener da el EBITDA NIIF 16 idéntico al publicado (11.267 M en FY2025), así que `base_ebitda: "NIIF"` y el control de saltos LTM/NTM no saltó. |
 | **Regla del capex con altas de derechos de uso** | Encajó y es esencial en Inditex: sin ella, el capex sería un 5,8 % de las ventas en lugar del 10,8 %, y el DCF subiría de 42,80 a 54,48 EUR (comprobado quitando las altas y la amortización de derechos de uso), justo el precio de mercado: contaría las tiendas sin su alquiler. |
 | **NTM con ejercicio no natural** | Solo funciona con el apaño del mes 13 (fricción 1). Es el cambio pendiente más importante. |
+
+
+## Actualización v2 (7 oct 2026): regla relativa y DCF en tres etapas
+
+Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.json`), salida `datos-v2.json` y `Inditex - 2026-10-06 v2.docx`. El `Inditex - 2026-10-06.docx` modificado por el usuario no se ha tocado. Fuente nueva [153]: prima implícita del S&P 500 de Damodaran, octubre de 2026, 4,20 %.
+
+| | v1 | v2 |
+|---|---|---|
+| Recomendación · convicción | Vender · Baja | Vender · Baja |
+| Valor objetivo (WACC 8,51 %) | 44,48 EUR, RTE −15,1 % | igual |
+| Objetivo con la prima del mercado (WACC 8,48 %) | — | 44,65 EUR, RTE −14,8 %, asimetría 0,21x |
+| Regla absoluta / relativa | Vender / — | Vender / Vender (coinciden) |
+| Niveles | compra < 39,44, venta > 50,68 | compra < 39,85, venta > 48,84 (regla combinada) |
+
+- **etapa2: no se usa**, decidido por el negocio antes de calcular: ROIC 42,4 % (pasa el filtro), pero Inditex ya vende en todo el mundo con ≈ 2,4 % de un mercado maduro que crece un 3-4 % nominal; su crecimiento es superficie (+5 %) absorbiendo tiendas pequeñas y el online está estancado en ≈ 27 %; los diez años explícitos ya bajan del 7 % al 3 %. Con una etapa de diez años el DCF pasaría de 42,80 a 43,86 EUR (+2,5 %). La variante «generosa» (últimos años a la media de la proyección y diez de transición) no se usó: supondría ganar cuota veinte años en un mercado maduro.
+- La prima apenas cambia nada: la del caso base ya era la madura de Damodaran (4,23 %) y la beta es 1,0.
+- **Corregido**: dos disparadores de `cambiaria_recomendacion` y de la síntesis decían que un Bund bajo el 3 % o un punto más de crecimiento llevarían a Mantener. Medido: objetivo de 47,50 EUR (RTE −9,5 %) y 47,07 EUR (−10,3 %), pero la asimetría (< 0,5) mantiene Vender en los dos casos. Ahora dice que hacen falta las dos cosas a la vez o un precio por debajo de 48,84 EUR.
+
+**Fallos del sistema**
+1. Los disparadores de cambio de recomendación se escriben a mano y no se comprueban contra la regla: la parte de la asimetría del Vender (negativa con asimetría < 0,5) invalidaba dos de los cuatro. Arreglo: que el motor calcule la recomendación de las sensibilidades que ya hace (WACC −0,5, crecimiento +1) para poder contrastar el texto.
+2. La tabla «La decisión» compara el crecimiento implícito (8,2 %) con un 2,6 % «previsto para su mercado» (`sector.tcac_previsto_pct`), mientras el texto del informe usa el 3-4 % de Euromonitor: dos cifras del mismo mercado en el mismo informe.
