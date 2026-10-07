@@ -27,7 +27,7 @@ const cuenta = anios.map((a) => {
   const bn = bai - imp - mino;
   return {
     periodo: String(a), ingresos: ing, coste_ventas: coste, gastos_generales: r(ing - coste - ebitda), ebitda, amortizaciones: am, ebit,
-    resultado_financiero: rf, bai, impuestos: imp, minoritarios: mino, beneficio_neto: bn, gastos_financieros: r(-rf * 0.85), bpa: r(bn / acciones[a], 2), dpa: r((bn / acciones[a]) * 0.44, 2), dpa_extraordinario: 0, acciones_diluidas: acciones[a],
+    resultado_financiero: rf, bai, impuestos: imp, minoritarios: mino, beneficio_neto: bn, gastos_financieros: r(-rf * 0.85), participadas_en_ebitda: null, bpa: r(bn / acciones[a], 2), dpa: r((bn / acciones[a]) * 0.44, 2), dpa_extraordinario: 0, acciones_diluidas: acciones[a],
   };
 });
 const C = Object.fromEntries(cuenta.map((c) => [c.periodo, c]));

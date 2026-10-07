@@ -67,7 +67,14 @@ export function calcularEmpresa(datos) {
   };
 
   // ── Cuenta de resultados (solo ejercicios reales) ──
-  const cuentaIn = lista(d.financieros?.cuenta).filter((c) => !esEstimado(c.periodo));
+  // Si la empresa mete el resultado de sus participadas en el EBITDA y el EBIT (Enagás, Redeia), se saca de
+  // ahí y pasa al resultado financiero: las participadas ya se valoran en el puente y si no se contarían dos veces.
+  const sinParticipadas = (c) => {
+    const p = n(c?.participadas_en_ebitda);
+    if (!p) return c;
+    return { ...c, ebitda: n(c.ebitda) !== null ? n(c.ebitda) - p : null, ebit: n(c.ebit) !== null ? n(c.ebit) - p : null, resultado_financiero: n(c.resultado_financiero) !== null ? n(c.resultado_financiero) + p : null };
+  };
+  const cuentaIn = lista(d.financieros?.cuenta).filter((c) => !esEstimado(c.periodo)).map(sinParticipadas);
   const cuenta = cuentaIn.map((c, i) => {
     const ant = cuentaIn[i - 1];
     const ingresos = n(c.ingresos), bruto = ingresos !== null && n(c.coste_ventas) !== null ? ingresos - n(c.coste_ventas) : null;
@@ -118,7 +125,7 @@ export function calcularEmpresa(datos) {
   }
 
   // ── LTM y NTM ──
-  const ltm = d.financieros?.ltm || {};
+  const ltm = sinParticipadas(d.financieros?.ltm || {});
   const ingresosLtm = n(ltm.ingresos) ?? ultimoCalc.ingresos ?? null;
   const ebitdaLtm = n(ltm.ebitda) ?? ultimoCalc.ebitda ?? null;
   const ebitLtm = n(ltm.ebit) ?? ultimoCalc.ebit ?? null;
@@ -608,15 +615,30 @@ export function calcularEmpresa(datos) {
   const tc = n(meta.tipo_cambio);
   const divCot = meta.divisa_cotizacion && meta.divisa_cotizacion !== meta.divisa && tc ? meta.divisa_cotizacion : null;
   const enCot = (v) => (divCot && v !== null && v !== undefined && Number.isFinite(v) ? ` (${fmt(v / tc, 2)} ${divCot})` : '');
-  const nivelCompra = valorObjetivo ? valorObjetivo / (1 + 0.15 - rentDiv / 100) : null;
-  const nivelVenta = valorObjetivo ? valorObjetivo / (1 - 0.10 - rentDiv / 100) : null;
+  // Precio a partir del cual cambia la regla, con todas sus condiciones (también la asimetría, que depende
+  // del precio): se recorre una rejilla de precios alrededor del valor objetivo.
+  const vAlc = esc('alcista')?.valor ?? null, vBaj = esc('bajista')?.valor ?? null;
+  const reglaEn = (p) => {
+    const r = (100 * (valorObjetivo - p)) / p + (100 * dpaOrdinario) / p;
+    const a = vAlc !== null && vBaj !== null && vBaj < p ? (vAlc / p - 1) / Math.abs(vBaj / p - 1) : null;
+    return r >= 15 && (a === null || a >= 1) ? 'Comprar' : r <= -10 || (r < 0 && a !== null && a < 0.5) ? 'Vender' : 'Mantener';
+  };
+  let nivelCompra = null, nivelVenta = null;
+  if (valorObjetivo) {
+    for (let k = 0; k <= 3000; k++) {
+      const p = valorObjetivo * (0.2 + k * 0.001);
+      const r = reglaEn(p);
+      if (r === 'Comprar') nivelCompra = p;
+      if (r === 'Vender' && nivelVenta === null) nivelVenta = p;
+    }
+  }
   if (meta.divisa_cotizacion && meta.divisa_cotizacion !== meta.divisa && !tc) control('Tipo de cambio de la divisa de cotización', false, 'Falta meta.tipo_cambio: los precios de la decisión solo salen en la divisa de las cuentas.');
   const recomendacion = {
     recomendacion: recomendacionFinal, regla, coincide, conviccion: res.conviccion ?? null,
     potencial_pct: red(potObj), dividendo_pct: red(rentDiv), rentabilidad_total_pct: red(rte),
     alcista_pct: potAlc, bajista_pct: potBaj, asimetria: red(asimetria, 2),
-    comprar_por_debajo: valorObjetivo ? red(valorObjetivo / (1 + 0.15 - rentDiv / 100), 2) : null,
-    vender_por_encima: valorObjetivo ? red(valorObjetivo / (1 - 0.10 - rentDiv / 100), 2) : null,
+    comprar_por_debajo: red(nivelCompra, 2),
+    vender_por_encima: red(nivelVenta, 2),
     tabla: [
       { concepto: 'Valor objetivo (síntesis ponderada)', valor: valorObjetivo === null ? 'n.d.' : `${fmt(valorObjetivo, 2)} ${meta.divisa || ''}${enCot(valorObjetivo)}` },
       ...(divCot ? [{ concepto: `Precio actual (${divCot} al tipo de ${fmt(tc, 4)} ${meta.divisa} por ${divCot})`, valor: `${fmt(precio, 2)} ${meta.divisa}${enCot(precio)}` }] : []),
@@ -629,9 +651,9 @@ export function calcularEmpresa(datos) {
       { concepto: 'Recomendación según la regla', valor: regla ?? 'n.d.' },
     ],
     niveles: valorObjetivo ? [
-      { accion: 'Comprar', condicion: `Por debajo de ${fmt(nivelCompra, 2)}${enCot(nivelCompra)} (rentabilidad total esperada ≥ 15 %), si la asimetría sigue siendo favorable` },
-      { accion: 'Mantener', condicion: `Entre ${fmt(nivelCompra, 2)} y ${fmt(nivelVenta, 2)}${divCot ? ` (${fmt(nivelCompra / tc, 2)} y ${fmt(nivelVenta / tc, 2)} ${divCot})` : ''}` },
-      { accion: 'Vender o reducir', condicion: `Por encima de ${fmt(nivelVenta, 2)}${enCot(nivelVenta)} (rentabilidad total esperada ≤ −10 %)` },
+      { accion: 'Comprar', condicion: nivelCompra ? `Por debajo de ${fmt(nivelCompra, 2)}${enCot(nivelCompra)} (rentabilidad total esperada ≥ 15 % y el alcista compensa al bajista)` : 'Ningún precio cercano cumple a la vez rentabilidad ≥ 15 % y asimetría ≥ 1' },
+      { accion: 'Mantener', condicion: nivelCompra && nivelVenta ? `Entre ${fmt(nivelCompra, 2)} y ${fmt(nivelVenta, 2)}${divCot ? ` (${fmt(nivelCompra / tc, 2)} y ${fmt(nivelVenta / tc, 2)} ${divCot})` : ''}` : nivelVenta ? `Por debajo de ${fmt(nivelVenta, 2)}${enCot(nivelVenta)}` : 'En el resto de precios' },
+      { accion: 'Vender o reducir', condicion: nivelVenta ? `Por encima de ${fmt(nivelVenta, 2)}${enCot(nivelVenta)} (rentabilidad total esperada ≤ −10 %, o negativa con un bajista que pesa el doble que el alcista)` : 'Ningún precio cercano' },
     ] : [],
     precio_txt: enCot(precio), valor_objetivo_txt: enCot(valorObjetivo),
   };
@@ -931,7 +953,7 @@ function puntuarGobierno(g, calidad, fechaCorte) {
       ? [`Peor voto en contra sobre remuneración (3 juntas${votoContraLibre !== null ? ', capital libre' : ''}) ≤ 20 %`, votoContra <= 20, `${fmt(votoContra, 1)} % en contra`]
       : ['Peor voto a favor sobre remuneración (3 juntas) ≥ 80 %', voto === null ? null : voto >= 80, voto === null ? 'Sin dato' : `${fmt(voto, 1)} % a favor`],
     ['Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)', b(g.variable_ligado_rentabilidad), sino(g.variable_ligado_rentabilidad)],
-    ['Una acción, un voto, sin blindajes ni límites de voto', b(g.una_accion_un_voto), sino(g.una_accion_un_voto)],
+    ['Una acción, un voto, sin blindajes ni límites de voto estatutarios', g.una_accion_un_voto === 'limite_legal' ? true : b(g.una_accion_un_voto), g.una_accion_un_voto === 'limite_legal' ? 'Límite legal, no estatutario' : sino(g.una_accion_un_voto)],
     ['Sin operaciones vinculadas relevantes', g.operaciones_vinculadas_relevantes === null || g.operaciones_vinculadas_relevantes === undefined ? null : !g.operaciones_vinculadas_relevantes, sino(g.operaciones_vinculadas_relevantes, 'Hay', 'No hay')],
     ['Auditor con 10 años o menos en el cargo', n(calidad.anios_auditor) === null ? null : n(calidad.anios_auditor) <= 10, n(calidad.anios_auditor) === null ? 'Sin dato' : `${calidad.anios_auditor} años`],
     ['Opinión de auditoría sin salvedades', calidad.opinion ? /favorable|limpia|sin salvedades/i.test(calidad.opinion) && !/con salvedades/i.test(calidad.opinion) : null, calidad.opinion ?? 'Sin dato'],

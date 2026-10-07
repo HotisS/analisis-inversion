@@ -12,12 +12,12 @@
 //   objetos se combinan campo a campo y en las listas manda la última no vacía.
 // - Las fuentes repetidas (misma URL o, sin URL, mismo título) se funden. `meta.huecos` junta los de todos.
 
-import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, readdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
 const ORDEN = ['meta', 'identificacion', 'resumen', 'historia', 'negocio', 'sector', 'competencia', 'financieros', 'trimestres', 'balance', 'flujos', 'calidad', 'rentabilidad', 'capital', 'directivos', 'gobierno', 'consenso', 'bolsa', 'multiplos_historicos', 'comparables', 'transacciones', 'dcf', 'escenarios', 'suma_partes', 'valoracion', 'catalizadores', 'riesgos', 'esg', 'preguntas', 'fuentes'];
-const LETRAS = ['A', 'B', 'C', 'D'];
+const BASE = ['A', 'B', 'C', 'D']; // las cuatro de siempre; las extra (E, F…) se leen si existen
 
 const esObjeto = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
 function combinar(a, b) {
@@ -46,6 +46,7 @@ function recorrer(v, f) {
 export async function integrar(dir) {
   const notas = join(dir, 'notas');
   const leer = (f) => (existsSync(join(notas, f)) ? JSON.parse(readFileSync(join(notas, f), 'utf8')) : null);
+  const LETRAS = [...new Set([...BASE, ...(existsSync(notas) ? readdirSync(notas) : []).map((f) => (f.match(/^([A-OQ-Z])\.json$/) || [])[1]).filter(Boolean)])].sort();
   const N = Object.fromEntries(LETRAS.map((L) => [L, leer(`${L}.json`)]));
   let P = leer('propio.json');
   if (!P && existsSync(join(notas, 'propio.mjs'))) {
@@ -80,12 +81,12 @@ export async function integrar(dir) {
   const sinMapa = new Set();
   const unir = (ids) => { const u = [...new Set(ids.filter(Boolean))].sort((a, b) => a - b); return u.length ? `[${u.join(', ')}]` : ''; };
   const locales = (L) => (s) => s.replace(/\[(\d+(?:\s*[,;–-]\s*\d+)*)\]/g, (_, g) => unir(expandir(g).map((x) => mapa[L][x] ?? (sinMapa.add(`${L}${x}`), null))));
-  const prefijo = (s) => s.replace(/\[([ABCDP]\d+(?:\s*[,;–-]\s*[ABCDP]?\d+)*)\]/g, (_, g) => {
+  const prefijo = (s) => s.replace(/\[([A-Z]\d+(?:\s*[,;–-]\s*[A-Z]?\d+)*)\]/g, (_, g) => {
     let letra = null;
     return unir(g.split(/\s*[,;]\s*/).flatMap((p) => {
       const r = p.split(/\s*[–-]\s*/);
-      const ids = r.length === 2 ? (() => { const L = r[0][0], i = +r[0].slice(1), j = +r[1].replace(/^[ABCDP]/, ''); return Array.from({ length: Math.max(0, j - i + 1) }, (_, k) => L + (i + k)); })() : [p];
-      return ids.map((x) => { if (/^[ABCDP]/.test(x)) letra = x[0]; else x = letra + x; return mapa[x[0]]?.[x.slice(1)] ?? (sinMapa.add(x), null); });
+      const ids = r.length === 2 ? (() => { const L = r[0][0], i = +r[0].slice(1), j = +r[1].replace(/^[A-Z]/, ''); return Array.from({ length: Math.max(0, j - i + 1) }, (_, k) => L + (i + k)); })() : [p];
+      return ids.map((x) => { if (/^[A-Z]/.test(x)) letra = x[0]; else x = letra + x; return mapa[x[0]]?.[x.slice(1)] ?? (sinMapa.add(x), null); });
     }));
   });
 
@@ -121,7 +122,7 @@ export async function integrar(dir) {
   datos.fuentes = global;
   const salida = Object.fromEntries(ORDEN.map((k) => [k, datos[k] === undefined ? null : datos[k]]));
   const vacias = ORDEN.filter((k) => salida[k] === null);
-  const faltan = LETRAS.filter((L) => !N[L]);
+  const faltan = BASE.filter((L) => !N[L]);
   writeFileSync(join(dir, 'datos.json'), JSON.stringify(salida, null, 2));
   return { fuentes: global.length, sinMapa: [...sinMapa], vacias, faltan, huecos: datos.meta.huecos.length, avisos: [...avisos] };
 }
