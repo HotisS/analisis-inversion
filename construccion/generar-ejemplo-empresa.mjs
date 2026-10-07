@@ -348,6 +348,7 @@ const ejemplo = {
   },
   valoracion: {
     puente: { fecha: '2026-06-30', deuda_financiera: 610, arrendamientos: 100, caja: 160, minoritarios: 55, pensiones: 0, asociadas: 20, otros_ajustes: 45 },
+    rab: null,
     pesos: { dcf: 50, comparables: 30, transacciones: 10, suma_partes: 10, escenarios: 0 },
     comentario: 'El DCF pesa la mitad porque el negocio es predecible y regulado en redes. Las transacciones pesan poco: con la familia en el 28 %, una operación de control no es probable [9].',
     confianza: 'Media',

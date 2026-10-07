@@ -85,7 +85,7 @@ export default {
     sub('Indicadores de seguimiento', 'resumen.kpis_seguimiento', [['tabla', 'resumen.kpis_seguimiento', [['Indicador', 'kpi', '', 2], ['Nivel actual', 'nivel_actual', '', 1.2, 'd'], ['Umbral de alerta', 'umbral_alerta', '', 1.2, 'd'], ['Por qué importa', 'por_que', '', 3.4]]]]),
     sub('Datos clave', 'calc.clave', [['kv', [
       ['EV/EBITDA últimos 12 m / próx. 12 m', '{{calc.clave.ev_ebitda_ltm|x}} / {{calc.clave.ev_ebitda_ntm|x}}'], ['PER últimos 12 m / próx. 12 m', '{{calc.clave.per_ltm|x}} / {{calc.clave.per_ntm|x}}'],
-      ['EV/EBIT últimos 12 m', '{{calc.clave.ev_ebit_ltm|x}}'], ['EV/Ventas últimos 12 m', '{{calc.clave.ev_ventas_ltm|x2}}'],
+      ['EV/EBIT últimos 12 m', '{{calc.clave.ev_ebit_ltm|x}}'], ['Valor empresa / base de activos regulada (RAB)', '{{calc.clave.ev_rab|x2}}'], ['EV/Ventas últimos 12 m', '{{calc.clave.ev_ventas_ltm|x2}}'],
       ['Rentabilidad por FCF', '{{calc.clave.fcf_yield_pct|pct}}'], ['Rentabilidad por dividendo', '{{calc.clave.dividendo_pct|pct}}'],
       ['Crecimiento anual de ingresos ({{calc.tcac.periodo}})', '{{calc.tcac.ingresos_pct|pct}}'], ['Margen EBITDA últimos 12 m', '{{calc.clave.margen_ebitda_pct|pct}}'],
       ['ROIC último ejercicio', '{{calc.clave.roic_pct|pct}}'], ['WACC', '{{calc.dcf.wacc|pct}}'],

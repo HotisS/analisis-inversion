@@ -543,12 +543,14 @@ El motor calcula ROIC, ROE, ROA, la descomposición DuPont y el ROIC incremental
 
 - `puente`: del balance **más reciente publicado** (trimestral si existe), en millones: deuda financiera bruta, arrendamientos, caja (e inversiones financieras líquidas), minoritarios (a valor contable o de mercado, dilo), déficit de pensiones neto de impuestos, participaciones en asociadas (se suman) y `otros_ajustes` (otros pasivos asimilables a deuda: pagos aplazados de adquisiciones, opciones de venta de minoritarios, *factoring*; positivo resta valor). El mismo puente se usa en el valor empresa de mercado, en los múltiplos y en el DCF, y el motor suma pensiones y `otros_ajustes` a la deuda neta para dar la **deuda neta ajustada** (la de la portada).
   **Anticipos y prefinanciación** (préstamos públicos a tipo cero o bonificado, anticipos de clientes para programas): son deuda (`otros_ajustes`) si se **devuelven en caja** con independencia de la entrega (préstamo reembolsable); son circulante (no van al puente) si se **compensan con entregas** del propio contrato. Si la empresa los presenta como anticipos pero la caja que generan está en el balance del puente, la parte no consumida va en `otros_ajustes`: si no, el puente cuenta la caja y no la obligación. Explica el criterio y su efecto por acción en `comentario` y en `balance.otros_pasivos`; si el importe mueve el valor más de un 10 %, dilo también en el resumen.
+- `rab`: **solo empresas reguladas** (redes de gas o electricidad, agua, autopistas en concesión): base de activos regulada en millones a la fecha del puente, de la empresa o del regulador. El motor da el valor empresa sobre la RAB, que es el múltiplo de referencia del sector; compáralo con el de las transacciones y los comparables en `comentario`, y en el DCF proyecta la retribución regulada (tasa financiera del periodo regulatorio, amortización regulatoria, inversión reconocida) en vez de márgenes libres. En las demás, `null`.
 - `pesos`: peso de cada método en el valor objetivo (`dcf`, `comparables`, `transacciones`, `suma_partes`, `escenarios`). Suman 100; pon 0 donde no aplique. Las transacciones llevan prima de control: ponderarlas mucho supone que habrá una operación.
 - `comentario` (100-160 palabras): por qué esos pesos, qué método es más fiable para esta empresa y qué dice la dispersión entre métodos (gráfico de síntesis).
 
 ```json
 "valoracion": {
   "puente": { "fecha": "AAAA-MM-DD", "deuda_financiera": 0, "arrendamientos": 0, "caja": 0, "minoritarios": 0, "pensiones": 0, "asociadas": 0, "otros_ajustes": 0 },
+  "rab": null,
   "pesos": { "dcf": 0, "comparables": 0, "transacciones": 0, "suma_partes": 0, "escenarios": 0 },
   "comentario": "texto",
   "confianza": "Alta|Media|Baja"

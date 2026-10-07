@@ -646,6 +646,8 @@ export function calcularEmpresa(datos) {
     deuda_neta_ajustada: red(deudaNetaAjustada, 0), dn_ebitda_ajustada: red(div(deudaNetaAjustada, ebitdaLtm), 1),
     crecimiento_tcac_pct: tcacTabla.ingresos_pct ?? null, ingresos_ntm: red(ingresosNtm, 0), ebitda_ntm: red(ebitdaNtm, 0), bpa_ntm: red(bpaNtm, 2),
     ebitda_ltm: red(ebitdaLtm, 0), ingresos_ltm: red(ingresosLtm, 0),
+    // Reguladas: el valor empresa frente a la base de activos regulada (prima o descuento sobre la RAB).
+    ev_rab: n(d.valoracion?.rab) ? red(div(valorEmpresa, n(d.valoracion.rab)), 2) : null,
   };
 
   // ── Controles de mercado y fuentes ──
