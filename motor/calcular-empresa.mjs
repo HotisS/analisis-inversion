@@ -715,6 +715,10 @@ export function calcularEmpresa(datos) {
     reglas_discrepan: !!(reglaRel && reglaAbs && reglaRel !== reglaAbs),
     relativo: relativo ? { ...relativo, potencial_pct: red(potRel), rentabilidad_total_pct: potRel === null ? null : red(potRel + rentDiv), asimetria: red(asimRel, 2) } : null,
     objetivo_mercado_txt: relativo?.valor_objetivo ? ` · con la prima implícita del mercado: ${fmt(relativo.valor_objetivo, 2)}${enCot(relativo.valor_objetivo)} (${potRel >= 0 ? '+' : ''}${fmt(potRel, 1)} %)` : '',
+    // Portada: si hay regla relativa, la tarjeta enseña también el objetivo y la rentabilidad con la prima del mercado
+    // (con un Comprar que solo da la relativa, el objetivo absoluto solo no llega al 15 % y parece contradecirlo).
+    objetivo_mercado_corto: relativo?.valor_objetivo ? ` · mercado ${fmt(relativo.valor_objetivo, 2)}` : '',
+    rentabilidad_mercado_corto: relativo?.valor_objetivo && potRel !== null ? ` · mercado ${potRel + rentDiv >= 0 ? '+' : ''}${fmt(potRel + rentDiv, 1)} %` : '',
     potencial_pct: red(potObj), dividendo_pct: red(rentDiv), rentabilidad_total_pct: red(rte),
     alcista_pct: potAlc, bajista_pct: potBaj, asimetria: red(asimetria, 2),
     comprar_por_debajo: red(nivelCompra, 2),

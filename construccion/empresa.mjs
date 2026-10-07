@@ -19,8 +19,8 @@ export default {
     tarjetas: [
       ['Recomendación', '{{calc.recomendacion.recomendacion}}'],
       ['Precio', '{{identificacion.precio|2}} {{meta.divisa}}{{calc.recomendacion.precio_txt|opc}}'],
-      ['Valor objetivo', '{{calc.sintesis.valor_objetivo|2}} {{meta.divisa}}{{calc.recomendacion.valor_objetivo_txt|opc}}'],
-      ['Rentabilidad total 12 m', '{{calc.recomendacion.rentabilidad_total_pct|+pct}}'],
+      ['Valor objetivo', '{{calc.sintesis.valor_objetivo|2}} {{meta.divisa}}{{calc.recomendacion.valor_objetivo_txt|opc}}{{calc.recomendacion.objetivo_mercado_corto|opc}}'],
+      ['Rentabilidad total 12 m', '{{calc.recomendacion.rentabilidad_total_pct|+pct}}{{calc.recomendacion.rentabilidad_mercado_corto|opc}}'],
       ['Convicción', '{{resumen.conviccion}}'],
       ['Capitalización', '{{calc.mercado.capitalizacion|0}} M'],
       ['EV/EBITDA próx. 12 m', '{{calc.clave.ev_ebitda_ntm|x}}'],
