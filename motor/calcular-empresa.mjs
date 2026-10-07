@@ -313,11 +313,19 @@ export function calcularEmpresa(datos) {
   const kdDesp = n(w.coste_deuda_pct) !== null ? n(w.coste_deuda_pct) * (1 - (n(w.tasa_impositiva_pct) ?? 25) / 100) : null;
   const pesoD = (n(w.peso_deuda_pct) ?? 0) / 100;
   const wacc = ke !== null && kdDesp !== null ? ke * (1 - pesoD) + kdDesp * pesoD : null;
+  // Regla relativa: el mismo WACC con la prima de riesgo que hoy descuenta el mercado (prima implícita, p. ej.
+  // la de Damodaran para el S&P 500) en vez de la prima normalizada. Responde a «¿rinde más que el mercado,
+  // ajustado por su beta?», no a «¿rinde más que su coste de capital histórico?».
+  const refMercado = d.valoracion?.referencia_mercado || {};
+  const primaImpl = n(refMercado.prima_implicita_pct);
+  const keRel = primaImpl !== null && n(w.tasa_libre_pct) !== null && n(w.beta) !== null ? n(w.tasa_libre_pct) + n(w.beta) * primaImpl + (n(w.prima_adicional_pct) ?? 0) : null;
+  const waccRel = keRel !== null && kdDesp !== null ? keRel * (1 - pesoD) + kdDesp * pesoD : null;
   const waccTabla = [
     ['Tasa libre de riesgo', w.tasa_libre_pct, '%'], ['Beta', w.beta, ''], ['Prima de riesgo de mercado', w.prima_mercado_pct, '%'],
     ['Prima adicional (país, tamaño, específica)', w.prima_adicional_pct, '%'], ['Coste de los fondos propios', ke, '%'],
     ['Coste de la deuda antes de impuestos', w.coste_deuda_pct, '%'], ['Tipo impositivo', w.tasa_impositiva_pct, '%'],
     ['Coste de la deuda después de impuestos', kdDesp, '%'], ['Peso de la deuda (D / (D + E))', w.peso_deuda_pct, '%'], ['WACC', wacc, '%'],
+    ...(waccRel !== null ? [['Prima de riesgo implícita del mercado (regla relativa)', primaImpl, '%'], ['WACC con la prima implícita del mercado', waccRel, '%']] : []),
   ].map(([concepto, v, u]) => ({ concepto, valor: n(v) === null ? null : u === '%' ? `${fmt(n(v), 2)} %` : fmt(n(v), 2) }));
 
   const nwcBase = balUlt.circulante ?? null;
@@ -372,6 +380,10 @@ export function calcularEmpresa(datos) {
       ...dcfBase,
       wacc: red(wacc, 2), ke: red(ke, 2), kd_despues: red(kdDesp, 2), wacc_tabla: waccTabla,
       potencial_pct: red(pct(vpa - precio, precio)),
+      ...(dcfBase.etapa2 ? (() => {
+        const sin = valorarDcf(dcfIn, ctx, { ...base, sinEtapa2: true })?.valor_accion ?? null;
+        return { valor_accion_dos_etapas: red(sin, 2), etapa2_aporte_pct: sin ? red(pct(vpa - sin, sin)) : null, etapa2_texto: `Con la etapa de transición de ${dcfBase.etapa2.anios} años el DCF da ${fmt(vpa, 2)} por acción; sin ella (crecimiento terminal desde ${lista(dcfIn.anios).at(-1)?.periodo}), ${fmt(sin, 2)}.` };
+      })() : {}),
       sensibilidad: sens1, sensibilidad2: sens2,
       rango_min: red(Math.min(...interior), 2), rango_max: red(Math.max(...interior), 2),
       inverso: {
@@ -388,6 +400,12 @@ export function calcularEmpresa(datos) {
     if (nwcPrimero !== null && nwcReal !== null) control('Circulante del primer año de proyección ≈ último real', Math.abs(nwcPrimero - nwcReal) <= 3, `Supuesto ${fmt(nwcPrimero)} % frente a ${fmt(nwcReal)} % real: genera una variación de circulante de ${fmt(dcfBase.proyeccion[0]?.variacion_circulante, 0)} M en el primer año. Converge de forma gradual.`);
     if (wacc !== null && base.g !== null && wacc - base.g < 3) control('WACC − g ≥ 3 puntos', false, `WACC ${fmt(wacc, 2)} % y g ${fmt(base.g, 2)} %: el valor terminal se dispara; revisa.`);
     control('Peso del valor terminal ≤ 80 % del valor empresa', dcfBase.peso_terminal_pct <= 80, `${fmt(dcfBase.peso_terminal_pct, 0)} %.`);
+    if (dcfBase.etapa2) {
+      // La etapa de transición alarga el crecimiento: solo vale para negocios que crean valor al crecer.
+      const roicU = rentUlt.roic_pct ?? null;
+      control('Etapa de transición justificada (ROIC ≥ WACC + 5 puntos)', roicU !== null && roicU >= wacc + 5, roicU === null ? 'Sin ROIC calculable: no se puede justificar alargar el crecimiento.' : `ROIC ${fmt(roicU, 1)} % frente a WACC ${fmt(wacc, 1)} %: ${roicU >= wacc + 5 ? '' : 'crecer apenas crea valor; la etapa de transición infla el DCF sin base.'}`);
+      if (!dcfIn.etapa2?.justificacion) control('Etapa de transición con justificación', false, 'Falta dcf.etapa2.justificacion: recorrido del mercado, penetración y ventaja que sostienen el crecimiento.');
+    }
     if (base.g !== null) control('Crecimiento a perpetuidad ≤ 3 %', base.g <= 3, `${fmt(base.g, 2)} %.`);
   } else {
     control('DCF calculable', false, 'Faltan datos: año base, proyección, WACC o crecimiento terminal.');
@@ -588,6 +606,34 @@ export function calcularEmpresa(datos) {
   control('Pesos de la síntesis suman 100', Math.abs(pesosDeclarados - 100) < 0.5, Math.abs(pesosDeclarados - 100) < 0.5 ? '' : `Suman ${fmt(pesosDeclarados, 1)}.`);
   const valorObjetivo = sumaPesos ? red(acumulado2 / sumaPesos, 2) : null;
 
+  // ── Valor con la prima implícita del mercado (regla relativa) ──
+  // DCF y escenarios se recalculan con ese WACC; comparables, transacciones y suma de partes ya son
+  // precios de mercado y no cambian. Mismos pesos.
+  let relativo = null;
+  if (waccRel !== null && dcf) {
+    const dRel = valorarDcf(dcfIn, ctx, { ...base, wacc: waccRel });
+    const escRel = lista(d.escenarios?.casos).map((e) => {
+      const aj = { dg: n(e.ajuste_crecimiento_pp) ?? 0, dm: n(e.ajuste_margen_pp) ?? 0, perfil: Object.fromEntries(lista(e.perfil).filter((x) => x?.periodo).map((x) => [String(x.periodo), x])) };
+      const r = valorarDcf(dcfIn, ctx, { ...base, wacc: waccRel + (n(e.ajuste_wacc_pp) ?? 0), g: n(e.crecimiento_terminal_pct) ?? base.g, multiplo: n(e.multiplo_salida) ?? base.multiplo }, aj);
+      return { escenario: e.escenario, probabilidad_pct: n(e.probabilidad_pct), valor: r ? r.valor_accion : null };
+    });
+    const pRel = sumaLaxa(...escRel.map((e) => e.probabilidad_pct));
+    const pondRel = escRel.length && escRel.every((e) => e.valor !== null) ? escRel.reduce((a, e) => a + e.valor * (e.probabilidad_pct ?? 0), 0) / (pRel || 1) : null;
+    const cRel = { ...centrales, dcf: dRel?.valor_accion ?? null, escenarios: pondRel };
+    let sp = 0, ac = 0;
+    for (const [k, v] of Object.entries(cRel)) { const p = n(pesos[k]) ?? 0; if (v !== null && p > 0) { sp += p; ac += v * p; } }
+    const rangoRel = [-0.5, 0.5].map((x) => valorarDcf(dcfIn, ctx, { ...base, wacc: waccRel + x })?.valor_accion).filter((x) => x !== null && x !== undefined);
+    relativo = {
+      prima_implicita_pct: primaImpl, wacc: red(waccRel, 2), ke: red(keRel, 2), dcf: red(dRel?.valor_accion, 2),
+      dcf_min: rangoRel.length ? red(Math.min(...rangoRel), 2) : null, dcf_max: rangoRel.length ? red(Math.max(...rangoRel), 2) : null,
+      valor_objetivo: sp ? red(ac / sp, 2) : null,
+      alcista: escRel.find((e) => /alcista/i.test(e.escenario || ''))?.valor ?? null,
+      bajista: escRel.find((e) => /bajista/i.test(e.escenario || ''))?.valor ?? null,
+      mercado: refMercado.mercado ?? null, fecha: refMercado.fecha ?? null,
+    };
+    if (dRel && precio) rangos.splice(rangos.length - (precio !== null ? 1 : 0), 0, { metodo: 'DCF con la prima del mercado', etiqueta: `DCF con la prima implícita del mercado (${fmt(primaImpl, 1)} %)`, min: relativo.dcf_min ?? relativo.dcf, central: relativo.dcf, max: relativo.dcf_max ?? relativo.dcf });
+  }
+
   // ── Recomendación ──
   // Regla: rentabilidad total esperada a 12 meses (potencial hasta el valor objetivo + dividendo ordinario)
   // y asimetría (lo que se gana en el alcista frente a lo que se pierde en el bajista).
@@ -602,9 +648,23 @@ export function calcularEmpresa(datos) {
   const esc = (nombre) => escenarios.find((e) => new RegExp(nombre, 'i').test(e.escenario || ''));
   const potAlc = esc('alcista')?.potencial_pct ?? null, potBaj = esc('bajista')?.potencial_pct ?? null;
   const asimetria = potAlc !== null && potBaj !== null && potBaj < 0 ? potAlc / Math.abs(potBaj) : null;
-  const regla = rte === null ? null
+  // La misma regla para cualquier valor objetivo y sus escenarios, a un precio dado
+  const reglaCon = (vObj, vA, vB, p) => {
+    if (vObj === null || vObj === undefined || !p) return null;
+    const r = (100 * (vObj - p)) / p + (100 * dpaOrdinario) / p;
+    const a = vA !== null && vA !== undefined && vB !== null && vB !== undefined && vB < p ? (vA / p - 1) / Math.abs(vB / p - 1) : null;
+    return r >= 15 && (a === null || a >= 1) ? 'Comprar' : r <= -10 || (r < 0 && a !== null && a < 0.5) ? 'Vender' : 'Mantener';
+  };
+  // Las dos reglas: manda la relativa (el coste de oportunidad real es el mercado), salvo que la absoluta
+  // diga lo contrario (Comprar frente a Vender): entonces Mantener.
+  const combinar = (abs, rel) => (!rel ? abs : !abs ? rel : (abs === 'Comprar' && rel === 'Vender') || (abs === 'Vender' && rel === 'Comprar') ? 'Mantener' : rel);
+  const reglaAbs = rte === null ? null
     : rte >= 15 && (asimetria === null || asimetria >= 1) ? 'Comprar'
       : rte <= -10 || (rte < 0 && asimetria !== null && asimetria < 0.5) ? 'Vender' : 'Mantener';
+  const reglaRel = relativo ? reglaCon(relativo.valor_objetivo, relativo.alcista, relativo.bajista, precio) : null;
+  const regla = combinar(reglaAbs, reglaRel);
+  const potRel = relativo?.valor_objetivo && precio ? pct(relativo.valor_objetivo - precio, precio) : null;
+  const asimRel = relativo && relativo.alcista !== null && relativo.bajista !== null && relativo.bajista < precio ? (relativo.alcista / precio - 1) / Math.abs(relativo.bajista / precio - 1) : null;
   const recomendacionFinal = res.recomendacion || regla;
   const coincide = !res.recomendacion || !regla || res.recomendacion === regla;
   control('Recomendación coherente con la regla de decisión', coincide || !!res.justificacion_recomendacion,
@@ -618,11 +678,7 @@ export function calcularEmpresa(datos) {
   // Precio a partir del cual cambia la regla, con todas sus condiciones (también la asimetría, que depende
   // del precio): se recorre una rejilla de precios alrededor del valor objetivo.
   const vAlc = esc('alcista')?.valor ?? null, vBaj = esc('bajista')?.valor ?? null;
-  const reglaEn = (p) => {
-    const r = (100 * (valorObjetivo - p)) / p + (100 * dpaOrdinario) / p;
-    const a = vAlc !== null && vBaj !== null && vBaj < p ? (vAlc / p - 1) / Math.abs(vBaj / p - 1) : null;
-    return r >= 15 && (a === null || a >= 1) ? 'Comprar' : r <= -10 || (r < 0 && a !== null && a < 0.5) ? 'Vender' : 'Mantener';
-  };
+  const reglaEn = (p) => combinar(reglaCon(valorObjetivo, vAlc, vBaj, p), relativo ? reglaCon(relativo.valor_objetivo, relativo.alcista, relativo.bajista, p) : null);
   let nivelCompra = null, nivelVenta = null;
   if (valorObjetivo) {
     for (let k = 0; k <= 3000; k++) {
@@ -632,9 +688,13 @@ export function calcularEmpresa(datos) {
       if (r === 'Vender' && nivelVenta === null) nivelVenta = p;
     }
   }
+  if (primaImpl === null) control('Prima implícita del mercado (regla relativa)', false, 'Falta valoracion.referencia_mercado.prima_implicita_pct: la recomendación sale solo de la regla absoluta.');
   if (meta.divisa_cotizacion && meta.divisa_cotizacion !== meta.divisa && !tc) control('Tipo de cambio de la divisa de cotización', false, 'Falta meta.tipo_cambio: los precios de la decisión solo salen en la divisa de las cuentas.');
   const recomendacion = {
-    recomendacion: recomendacionFinal, regla, coincide, conviccion: res.conviccion ?? null,
+    recomendacion: recomendacionFinal, regla, regla_absoluta: reglaAbs, regla_relativa: reglaRel, coincide, conviccion: res.conviccion ?? null,
+    reglas_discrepan: !!(reglaRel && reglaAbs && reglaRel !== reglaAbs),
+    relativo: relativo ? { ...relativo, potencial_pct: red(potRel), rentabilidad_total_pct: potRel === null ? null : red(potRel + rentDiv), asimetria: red(asimRel, 2) } : null,
+    objetivo_mercado_txt: relativo?.valor_objetivo ? ` · con la prima implícita del mercado: ${fmt(relativo.valor_objetivo, 2)}${enCot(relativo.valor_objetivo)} (${potRel >= 0 ? '+' : ''}${fmt(potRel, 1)} %)` : '',
     potencial_pct: red(potObj), dividendo_pct: red(rentDiv), rentabilidad_total_pct: red(rte),
     alcista_pct: potAlc, bajista_pct: potBaj, asimetria: red(asimetria, 2),
     comprar_por_debajo: red(nivelCompra, 2),
@@ -647,13 +707,20 @@ export function calcularEmpresa(datos) {
       { concepto: 'Rentabilidad total esperada a 12 meses', valor: rte === null ? 'n.d.' : `${fmt(rte, 1)} %` },
       { concepto: 'Escenario alcista / bajista', valor: potAlc === null || potBaj === null ? 'n.d.' : `${fmt(potAlc, 1)} % / ${fmt(potBaj, 1)} %` },
       { concepto: 'Asimetría (ganancia alcista / pérdida bajista)', valor: asimetria === null ? 'n.d.' : `${fmt(asimetria, 2)}x` },
-      ...(dcf?.inverso?.rentabilidad_implicita_pct !== null && dcf?.inverso?.rentabilidad_implicita_pct !== undefined ? [{ concepto: 'Rentabilidad anual implícita en el precio frente al WACC', valor: `${fmt(dcf.inverso.rentabilidad_implicita_pct, 1)} % frente a ${fmt(dcf.wacc, 1)} %` }] : []),
-      { concepto: 'Recomendación según la regla', valor: regla ?? 'n.d.' },
+      ...(dcf?.inverso?.rentabilidad_implicita_pct !== null && dcf?.inverso?.rentabilidad_implicita_pct !== undefined ? [{ concepto: relativo ? 'Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado' : 'Rentabilidad anual implícita en el precio frente al WACC', valor: `${fmt(dcf.inverso.rentabilidad_implicita_pct, 1)} % frente a ${fmt(dcf.wacc, 1)} %${relativo ? ` y ${fmt(relativo.wacc, 1)} %` : ''}` }] : []),
+      ...(relativo ? [
+        { concepto: `Valor objetivo con la prima implícita del mercado (${fmt(primaImpl, 1)} %, WACC ${fmt(relativo.wacc, 1)} %)`, valor: relativo.valor_objetivo === null ? 'n.d.' : `${fmt(relativo.valor_objetivo, 2)} ${meta.divisa || ''}${enCot(relativo.valor_objetivo)}` },
+        { concepto: 'Rentabilidad total esperada con la prima del mercado', valor: potRel === null ? 'n.d.' : `${fmt(potRel + rentDiv, 1)} %` },
+        { concepto: 'Asimetría con la prima del mercado', valor: asimRel === null ? 'n.d.' : `${fmt(asimRel, 2)}x` },
+        { concepto: 'Regla absoluta (frente a su coste de capital)', valor: reglaAbs ?? 'n.d.' },
+        { concepto: 'Regla relativa (frente a lo que pide el mercado)', valor: reglaRel ?? 'n.d.' },
+      ] : []),
+      { concepto: relativo ? 'Recomendación según las reglas (manda la relativa salvo contradicción)' : 'Recomendación según la regla', valor: regla ?? 'n.d.' },
     ],
     niveles: valorObjetivo ? [
-      { accion: 'Comprar', condicion: nivelCompra ? `Por debajo de ${fmt(nivelCompra, 2)}${enCot(nivelCompra)} (rentabilidad total esperada ≥ 15 % y el alcista compensa al bajista)` : 'Ningún precio cercano cumple a la vez rentabilidad ≥ 15 % y asimetría ≥ 1' },
+      { accion: 'Comprar', condicion: nivelCompra ? `Por debajo de ${fmt(nivelCompra, 2)}${enCot(nivelCompra)} (rentabilidad total esperada ≥ 15 % y el alcista compensa al bajista${relativo ? ', con la regla combinada' : ''})` : 'Ningún precio cercano cumple a la vez rentabilidad ≥ 15 % y asimetría ≥ 1' },
       { accion: 'Mantener', condicion: nivelCompra && nivelVenta ? `Entre ${fmt(nivelCompra, 2)} y ${fmt(nivelVenta, 2)}${divCot ? ` (${fmt(nivelCompra / tc, 2)} y ${fmt(nivelVenta / tc, 2)} ${divCot})` : ''}` : nivelVenta ? `Por debajo de ${fmt(nivelVenta, 2)}${enCot(nivelVenta)}` : 'En el resto de precios' },
-      { accion: 'Vender o reducir', condicion: nivelVenta ? `Por encima de ${fmt(nivelVenta, 2)}${enCot(nivelVenta)} (rentabilidad total esperada ≤ −10 %, o negativa con un bajista que pesa el doble que el alcista)` : 'Ningún precio cercano' },
+      { accion: 'Vender o reducir', condicion: nivelVenta ? `Por encima de ${fmt(nivelVenta, 2)}${enCot(nivelVenta)} (rentabilidad total esperada ≤ −10 %, o negativa con un bajista que pesa el doble que el alcista${relativo ? ', con la regla combinada' : ''})` : 'Ningún precio cercano' },
     ] : [],
     precio_txt: enCot(precio), valor_objetivo_txt: enCot(valorObjetivo),
   };
@@ -753,7 +820,37 @@ function valorarDcf(dcfIn, ctx, p, aj = {}) {
     sumaVp += vp;
     filas.push({ periodo: a.periodo, ingresos, crecimiento_pct: g, ebitda, margen_ebitda_pct: margen, amortizacion: da, ebit, impuestos, capex, variacion_circulante: dnwc, fcff, fraccion, factor: fd, vp, t_fin: anios(ctx.fechaCorte, fin) });
   }
-  const ult = filas[filas.length - 1];
+  // Etapa de transición (DCF en tres etapas): el crecimiento baja en línea recta desde el del último año
+  // explícito hasta el terminal; margen, amortización e impuestos se quedan en los del último año (o el margen
+  // va hacia `margen_final_pct`), y la inversión neta (capex − amortización) se escala con el crecimiento,
+  // porque crecer menos exige invertir menos. Solo si `dcf.etapa2.usar` y no se pide sin ella.
+  const e2In = dcfIn.etapa2 || {};
+  const nE2 = e2In.usar && !p.sinEtapa2 ? Math.min(15, Math.max(0, Math.round(n(e2In.anios) ?? 0))) : 0;
+  const filasE2 = [];
+  let vpE2 = 0;
+  if (nE2 > 0) {
+    const uE = filas[filas.length - 1], aU = proy[proy.length - 1];
+    const g0 = uE.crecimiento_pct, gT = p.g ?? n(dcfIn.terminal?.crecimiento_pct) ?? 2;
+    const m0 = uE.margen_ebitda_pct, mF = n(e2In.margen_final_pct) !== null ? n(e2In.margen_final_pct) + (aj.dm ?? 0) : m0;
+    const daP = n(aU.amortizacion_pct_ventas) ?? 0, capP = n(aU.capex_pct_ventas) ?? 0, nwcP = n(aU.nwc_pct_ventas) ?? 0, tP = n(aU.tasa_impositiva_pct) ?? 25;
+    const anioU = anioDe(aU.periodo);
+    for (let k = 1; k <= nE2; k++) {
+      const gk = g0 + ((gT - g0) * k) / nE2;
+      const mk = m0 + ((mF - m0) * k) / nE2;
+      ingresos *= 1 + gk / 100;
+      const ebitda = (ingresos * mk) / 100, da = (ingresos * daP) / 100, ebit = ebitda - da;
+      const impuestos = (Math.max(0, ebit) * tP) / 100;
+      const capex = da + (ingresos * (capP - daP) * (g0 > 0 ? Math.max(0, gk) / g0 : 1)) / 100;
+      const nwc = (ingresos * nwcP) / 100, dnwc = nwc - nwcAnt; nwcAnt = nwc;
+      const fcff = ebit - impuestos + da - capex - dnwc;
+      const fin = finEjercicio(anioU + k + (ctx.desfase || 0), ctx.mesCierre);
+      const tFin = anios(ctx.fechaCorte, fin), t = Math.max(0, tFin - (p.mitad ? 0.5 : 0));
+      const fd = (1 + wacc) ** -t, vp = fcff * fd;
+      vpE2 += vp;
+      filasE2.push({ periodo: String(aU.periodo).replace(/\d{4}/, String(anioU + k)), ingresos, crecimiento_pct: gk, ebitda, margen_ebitda_pct: mk, amortizacion: da, ebit, impuestos, capex, variacion_circulante: dnwc, fcff, fraccion: 1, factor: fd, vp, t_fin: tFin });
+    }
+  }
+  const ult = filasE2.length ? filasE2[filasE2.length - 1] : filas[filas.length - 1];
   const g = (p.g ?? 0) / 100;
   const vtGordon = p.wacc > (p.g ?? -99) ? (ult.fcff * (1 + g)) / (wacc - g) : null;
   const vtMultiplo = p.multiplo !== null && p.multiplo !== undefined ? p.multiplo * ult.ebitda : null;
@@ -761,7 +858,7 @@ function valorarDcf(dcfIn, ctx, p, aj = {}) {
   if (vt === null) return null;
   const fdT = (1 + wacc) ** -ult.t_fin;
   const vpVt = vt * fdT;
-  const ev = sumaVp + vpVt;
+  const ev = sumaVp + vpE2 + vpVt;
   const equity = ev - ctx.deudaNeta - ctx.ajustesPuente;
   const vpa = equity / ctx.acciones;
   // implícitos cruzados
@@ -773,6 +870,10 @@ function valorarDcf(dcfIn, ctx, p, aj = {}) {
       amortizacion: red(f.amortizacion, 0), ebit: red(f.ebit, 0), impuestos: red(f.impuestos, 0), capex: red(f.capex, 0), variacion_circulante: red(f.variacion_circulante, 0),
       fcff: red(f.fcff, 0), fraccion: red(f.fraccion, 2), factor: red(f.factor, 3), vp: red(f.vp, 0),
     })),
+    etapa2: filasE2.length ? {
+      anios: filasE2.length, vp: red(vpE2, 0), peso_pct: red(pct(vpE2, ev), 0),
+      filas: filasE2.map((f) => ({ periodo: f.periodo, ingresos: red(f.ingresos, 0), crecimiento_pct: red(f.crecimiento_pct), margen_ebitda_pct: red(f.margen_ebitda_pct), capex: red(f.capex, 0), fcff: red(f.fcff, 0), factor: red(f.factor, 3), vp: red(f.vp, 0) })),
+    } : null,
     suma_vp: red(sumaVp, 0), valor_terminal: red(vt, 0), vp_terminal: red(vpVt, 0), valor_empresa: red(ev, 0),
     peso_terminal_pct: red(pct(vpVt, ev), 0), valor_acciones: red(equity, 0), valor_accion: red(vpa, 2),
     vt_gordon: red(vtGordon, 0), vt_multiplo: red(vtMultiplo, 0), multiplo_implicito: red(multImpl, 1), g_implicito_pct: red(gImpl, 2),
@@ -789,6 +890,7 @@ function valorarDcf(dcfIn, ctx, p, aj = {}) {
     ],
     puente: [
       { concepto: 'Valor actual de los flujos proyectados', valor: fmt(sumaVp, 0) },
+      ...(filasE2.length ? [{ concepto: `Valor actual de la etapa de transición (${filasE2.length} años)`, valor: fmt(vpE2, 0) }] : []),
       { concepto: 'Valor actual del valor terminal', valor: fmt(vpVt, 0) },
       { concepto: 'Valor empresa', valor: fmt(ev, 0) },
       { concepto: '− Deuda financiera neta (con arrendamientos)', valor: fmt(-ctx.deudaNeta, 0) },
@@ -797,7 +899,7 @@ function valorarDcf(dcfIn, ctx, p, aj = {}) {
       { concepto: 'Acciones diluidas (millones)', valor: fmt(ctx.acciones, 1) },
       { concepto: 'Valor por acción', valor: fmt(vpa, 2) },
     ],
-    composicion: [{ parte: 'Flujos proyectados', valor: red(sumaVp, 0) }, { parte: 'Valor terminal', valor: red(vpVt, 0) }],
+    composicion: [{ parte: 'Flujos proyectados', valor: red(sumaVp, 0) }, ...(filasE2.length ? [{ parte: 'Etapa de transición', valor: red(vpE2, 0) }] : []), { parte: 'Valor terminal', valor: red(vpVt, 0) }],
   };
 }
 

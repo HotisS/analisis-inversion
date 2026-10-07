@@ -54,7 +54,7 @@ export default {
     ['si', 'resumen.sintesis', [
       ['salto'],
       ['h1', 'Síntesis y recomendación'],
-      ['p', '**{{calc.recomendacion.recomendacion}}** · Convicción {{resumen.conviccion}} · Valor objetivo **{{calc.sintesis.valor_objetivo|2}} {{meta.divisa}}{{calc.recomendacion.valor_objetivo_txt|opc}}** frente a {{identificacion.precio|2}}{{calc.recomendacion.precio_txt|opc}} · Rentabilidad total esperada a 12 meses **{{calc.recomendacion.rentabilidad_total_pct|+pct}}** · Alcista / bajista {{calc.recomendacion.alcista_pct|+pct}} / {{calc.recomendacion.bajista_pct|+pct}}'],
+      ['p', '**{{calc.recomendacion.recomendacion}}** · Convicción {{resumen.conviccion}} · Valor objetivo **{{calc.sintesis.valor_objetivo|2}} {{meta.divisa}}{{calc.recomendacion.valor_objetivo_txt|opc}}** frente a {{identificacion.precio|2}}{{calc.recomendacion.precio_txt|opc}}{{calc.recomendacion.objetivo_mercado_txt|opc}} · Rentabilidad total esperada a 12 meses **{{calc.recomendacion.rentabilidad_total_pct|+pct}}** · Alcista / bajista {{calc.recomendacion.alcista_pct|+pct}} / {{calc.recomendacion.bajista_pct|+pct}}'],
       ['texto', 'resumen.sintesis'],
     ]],
 
@@ -63,11 +63,11 @@ export default {
     ['h1', 'Resumen ejecutivo'],
     ['confianza', 'resumen'],
     ['aviso', '{{_meta.aviso_nucleo}}'],
-    ['p', '**Recomendación: {{calc.recomendacion.recomendacion}}** · Convicción: {{resumen.conviccion}} · Horizonte: {{resumen.horizonte}} · Valor objetivo: **{{calc.sintesis.valor_objetivo|2}} {{meta.divisa}}{{calc.recomendacion.valor_objetivo_txt|opc}}** ({{calc.sintesis.potencial_pct|+pct}} sobre {{identificacion.precio|2}}; rentabilidad total esperada {{calc.recomendacion.rentabilidad_total_pct|+pct}})'],
+    ['p', '**Recomendación: {{calc.recomendacion.recomendacion}}** · Convicción: {{resumen.conviccion}} · Horizonte: {{resumen.horizonte}} · Valor objetivo: **{{calc.sintesis.valor_objetivo|2}} {{meta.divisa}}{{calc.recomendacion.valor_objetivo_txt|opc}}** ({{calc.sintesis.potencial_pct|+pct}} sobre {{identificacion.precio|2}}; rentabilidad total esperada {{calc.recomendacion.rentabilidad_total_pct|+pct}}){{calc.recomendacion.objetivo_mercado_txt|opc}}'],
     ['texto', 'resumen.tesis'],
     ['sub', 'La decisión', 'calc.recomendacion.tabla', [
       ['tabla', 'calc.recomendacion.tabla', [['Elemento de la decisión', 'concepto', '', 4], ['Valor', 'valor', '', 2, 'd']]],
-      ['nota', 'Regla: Comprar si la rentabilidad total esperada a 12 meses es ≥ 15 % y el alcista gana al menos lo que pierde el bajista; Vender si es ≤ −10 %, o negativa con asimetría < 0,5; Mantener en el resto.'],
+      ['nota', 'Regla: Comprar si la rentabilidad total esperada a 12 meses es ≥ 15 % y el alcista gana al menos lo que pierde el bajista; Vender si es ≤ −10 %, o negativa con asimetría < 0,5; Mantener en el resto. Se aplica dos veces: con el WACC del análisis (regla absoluta: ¿rinde más que su coste de capital?) y con el WACC que resulta de la prima de riesgo implícita del mercado (regla relativa: ¿rinde más que lo que hoy pide el mercado, ajustado por su beta?). Manda la relativa, salvo que las dos se contradigan (una Comprar y otra Vender): entonces, Mantener.'],
       ['tabla', 'calc.recomendacion.niveles', [['Acción', 'accion', '', 1.2], ['A qué precio', 'condicion', '', 6]]],
       ['si', 'resumen.justificacion_recomendacion', [['p', '**Por qué la recomendación se aparta de la regla.**'], ['texto', 'resumen.justificacion_recomendacion']]],
     ]],
@@ -318,6 +318,12 @@ export default {
           ['Amort.', 'amortizacion', '0', 0.75, 'd'], ['Impuestos', 'impuestos', '0', 0.8, 'd'], ['Capex', 'capex', '0', 0.75, 'd'], ['Δ Circ.', 'variacion_circulante', '0', 0.7, 'd'], ['FCFF', 'fcff', '0', 0.8, 'd'], ['Fracción', 'fraccion', '2', 0.7, 'd'], ['VA', 'vp', '0', 0.75, 'd']]],
         ['nota', 'FCFF = EBIT × (1 − t) + amortizaciones − capex − variación del circulante. «Fracción» es la parte del ejercicio que queda por delante desde la fecha de valoración; VA, el valor actual.'],
         ['grafico', 'dcf_fcff'],
+      ]),
+      sub('Etapa de transición (DCF en tres etapas)', 'calc.dcf.etapa2', [
+        ['p', '{{calc.dcf.etapa2_texto}}'],
+        ['tabla', 'calc.dcf.etapa2.filas', [['Año', 'periodo', '', 0.8], ['Ingresos', 'ingresos', '0', 1, 'd'], ['Crec.', 'crecimiento_pct', 'pct', 0.8, 'd'], ['M. EBITDA', 'margen_ebitda_pct', 'pct', 0.9, 'd'], ['Capex', 'capex', '0', 0.9, 'd'], ['FCFF', 'fcff', '0', 0.9, 'd'], ['Factor', 'factor', '3', 0.8, 'd'], ['VA', 'vp', '0', 0.9, 'd']]],
+        ['nota', 'Entre la proyección explícita y el valor terminal, el crecimiento baja en línea recta hasta el terminal; el margen y los ratios son los del último año explícito, y la inversión neta (capex − amortización) se reduce en proporción al crecimiento.'],
+        etiquetado('Por qué el crecimiento dura más allá de la proyección.', 'dcf.etapa2.justificacion'),
       ]),
       sub('Valor terminal', 'calc.dcf.terminal_tabla', [['tabla', 'calc.dcf.terminal_tabla', [['Concepto', 'concepto', '', 4], ['Valor', 'valor', '', 1.4, 'd']]]]),
       sub('Del valor empresa al valor por acción', 'calc.dcf.puente', [['tabla', 'calc.dcf.puente', [['Concepto', 'concepto', '', 4], ['Importe', 'valor', '', 1.4, 'd']]], ['grafico', 'dcf_composicion']]),
