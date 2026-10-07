@@ -1,4 +1,4 @@
-# Abre un .docx con Word y lo exporta a PDF (sirve para revisar que Word lo abre sin quejarse).
+﻿# Abre un .docx con Word y lo exporta a PDF (sirve para revisar que Word lo abre sin quejarse).
 #   powershell -File construccion/a-pdf.ps1 informes/ejemplo-empresa.docx [-Salida ruta.pdf]
 # El PDF va por defecto a la carpeta temporal de Windows (%TEMP%\analisis-inversion): fuera de OneDrive,
 # con un nombre único (no pisa revisiones anteriores),
@@ -9,7 +9,8 @@ $ruta = (Resolve-Path $Docx).Path
 $tmp = Join-Path $env:TEMP 'analisis-inversion'
 New-Item -ItemType Directory -Force $tmp | Out-Null
 # [string]: el resultado de Join-Path llega a COM envuelto en un PSObject y Word se queda esperando.
-[string]$pdf = if ($Salida) { $Salida } else { Join-Path $tmp ([System.IO.Path]::GetFileNameWithoutExtension($ruta) + '-' + (Get-Date -Format 'yyyyMMdd-HHmmss') + '.pdf') }
+# -Salida relativa: se resuelve contra la carpeta actual (Word no la entiende y falla).
+[string]$pdf = if ($Salida) { if ([System.IO.Path]::IsPathRooted($Salida)) { $Salida } else { Join-Path (Get-Location).Path $Salida } } else { Join-Path $tmp ([System.IO.Path]::GetFileNameWithoutExtension($ruta) + '-' + (Get-Date -Format 'yyyyMMdd-HHmmss') + '.pdf') }
 $word = $null; $doc = $null
 try {
   $word = New-Object -ComObject Word.Application
