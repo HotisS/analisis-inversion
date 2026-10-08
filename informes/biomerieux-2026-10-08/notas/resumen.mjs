@@ -1,0 +1,58 @@
+// Resumen ejecutivo (bioMérieux, corte 2026-10-08). Se escribe el último; cifras del motor tal cual.
+export const resumen = {
+  recomendacion: 'Comprar',
+  conviccion: 'Baja',
+  justificacion_recomendacion: null,
+  horizonte: '12 meses',
+  sintesis: [
+    '**La recomendación y por qué.** Comprar, con convicción baja. El valor objetivo, 80,93 EUR, es casi el precio de 80,75 EUR (+0,2 %; rentabilidad total esperada del 1,4 %), y con nuestro WACC del 8,57 % la regla absoluta da Mantener. Manda la relativa: con la prima de riesgo que hoy pide el mercado (4,2 %), el valor objetivo sube a 93,63 EUR, la rentabilidad total al 17,2 % y la asimetría a 3,86 veces. La compra sale de la tasa de descuento, no de cifras mejores que las del consenso (las nuestras están un 2-5 % por debajo en EBITDA): rinde más que el mercado, pero no cubre con holgura su coste de capital, y si el mercado corrige, también caerá.',
+    '**El negocio.** Cuchilla y hoja de afeitar: el 83,4 % de las ventas son reactivos [A1] que consumen unas 28.550 unidades de BIOFIRE y más de 7.200 de SPOTFIRE [A1, A3]. Tiene en torno al 70 % de la PCR sindrómica y el 40 % de la microbiología clínica [B1]. Crea valor sin holgura: ROIC del 12,7 % frente al WACC del 8,57 % (22,4 % en 2021) y margen EBITDA del 23,9 %, 9-12 puntos por debajo de DiaSorin y Qiagen [E10, E11].',
+    '**Sector y ciclo.** Los paneles respiratorios cayeron un 17 % en el primer semestre de 2026 por una gripe débil, mientras el resto crecía un 6 % [A3]. La empresa rebajó en abril la guía de 2026 a +3/+5 % y en julio la de 2027-2028, del 7 % anual a +3/+6 % [C21, A3]. China restó un 14 % a sus ventas allí en 2025 [B1] y Medicare solo paga en ambulatorio paneles de menos de seis patógenos [P3].',
+    '**Finanzas.** Caja neta de 236 M [A2]. El flujo libre (5,9 % de la capitalización) está inflado por la reforma fiscal de EE. UU.: el impuesto pagado bajó de 123 M a 28 M en el semestre [A3]. Hybiome y Specific Diagnostics suman unos 340 M de deterioros en 2022-2025 [A1]. Altman, Piotroski y Beneish (6,38, 7 y −2,88) no muestran alertas.',
+    '**Equipo y gobierno.** Restan. Institut Mérieux tiene el 59,9 % del capital y el 72,4 % del voto, solo 3 de 8 consejeros son independientes, el control presta la auditoría interna y el capital libre votó en mayoría contra la remuneración del consejero delegado en tres juntas (49-67 %) [C1-C4]. A favor: la familia compró un 1 % más a 70,6 EUR en 2026 [C6, C7]. La guía se cumplió en 2020-2024, en parte en 2025 y falló en 2026 [C20, C21].',
+    '**Valoración.** DCF de 78,38 EUR, escenarios ponderados de 77,03 EUR y comparables de diagnóstico puro de 90,19 EUR. El precio descuenta un crecimiento del 5,5 % anual en 2027-2033 o un margen final del 26,0 %, frente a nuestro 4,4 % y 25,5 %: poco exigente frente a 2023-2025, exigente frente al primer semestre de 2026. Cotiza a 10,1 veces el EBITDA, bajo su mínimo de siete años (13,4x), y a 8,9x el de los próximos 12 meses frente a 9,7x de los comparables. El precio objetivo medio de los analistas es 79,54 EUR [D13].',
+    '**Riesgos y catalizadores.** Otra temporada respiratoria floja (−24 % en el bajista), la competencia de QIAstat-Dx y Cepheid (−12 % con dos puntos menos de margen) y que el criterio de MolDX llegue al hospital (−9 %). Catalizadores: ventas del tercer trimestre el 30 de octubre, la gripe, la FDA sobre el panel de vaginitis de SPOTFIRE y los resultados de 2026 en febrero.',
+    '**Qué cambiaría la decisión.** La regla compra por debajo de 81,90 EUR y vende por encima de 98,17 EUR: el precio está un 1,4 % por debajo del umbral de compra. Pasaríamos a Mantener si el tercer trimestre crece menos del +5 % orgánico o si el margen CEBIT de 2026 baja del 16 %.',
+  ].join('\n\n'),
+  tesis: [
+    'bioMérieux es el líder mundial de la microbiología clínica (≈ 40 %) y de la PCR sindrómica (≈ 70 % con BIOFIRE) [B1], con un 83 % de las ventas en reactivos que consume su base instalada [A1]. Esa recurrencia y la caja neta (236 M) [A2] hacen del negocio uno de los más previsibles del diagnóstico, con un ROIC del 12,7 % en 2025.',
+    'A 80,75 EUR, el precio descuenta un crecimiento del 5,5 % anual en 2027-2033, dentro del nuevo rango de la empresa (+3/+6 %) [A3], y la acción cotiza a 8,9 veces el EBITDA de los próximos 12 meses, por debajo de los comparables de diagnóstico puro (9,7x) y del mínimo de sus siete últimos años (13,4x a los últimos 12 meses). Nuestro DCF da 78,38 EUR y el valor objetivo 80,93 EUR: con nuestro coste de capital, el precio es justo.',
+    'El mercado acierta en lo esencial: la empresa ha recortado dos veces su guía en 2026, los paneles respiratorios dependen de la gripe y China y Medicare presionan el precio [A3, B1, P3]. Para invertir hay que creer que el crecimiento vuelve al 5 % con SPOTFIRE y los paneles no respiratorios, o aceptar la prima de riesgo que hoy pide el mercado, con la que el valor sube a 93,63 EUR. Es una compra por coste de oportunidad, no por una visión distinta.',
+  ].join('\n\n'),
+  vision_diferencial: {
+    mercado_descuenta: 'Un crecimiento del 5,5 % anual en 2027-2033, en la mitad alta del nuevo rango de +3/+6 % de la empresa, con un margen EBITDA que llega al 25,5 %. El consenso pide un 1-2,5 % más de ventas y un 2-5 % más de EBITDA que nosotros en 2026-2028 [D12], y su precio objetivo medio (79,54 EUR) está casi en el precio [D13].',
+    nuestra_vision: 'No tenemos una visión distinta del negocio: proyectamos un 4,4 % anual y un margen del 25,5 % en 2033, algo por debajo del consenso por el margen del primer semestre de 2026 (22,4 %). Donde diferimos es en la lectura del precio: a 80,75 EUR la acción rinde un 8,4 % anual, por encima del 7,5 % que hoy pide el mercado a una acción con su beta.',
+    por_que: 'La acción ha caído un 47 % desde agosto de 2025 [D1] y cotiza por debajo de su mínimo de siete años en EV/EBITDA. El precio ya recoge la rebaja de la guía y un 2026 plano; si la temporada respiratoria es normal, el segundo semestre debería crecer en torno al +6 % que exige la guía.',
+  },
+  a_favor: [
+    '**Recurrencia**: el 83,4 % de las ventas son reactivos sobre una base instalada que crece (SPOTFIRE pasó de 3.000 a más de 7.200 equipos en 18 meses) [A1, A3].',
+    '**Liderazgo**: ≈ 70 % de la PCR sindrómica y ≈ 40 % de la microbiología clínica [B1].',
+    '**Precio**: 8,9 veces el EBITDA de los próximos 12 meses, por debajo de los comparables puros (9,7x) y del mínimo de siete años (13,4x a los últimos 12 meses).',
+    '**Balance**: caja neta de 236 M y un flujo libre del 5,9 % de la capitalización [A2].',
+    '**El control compra**: Institut Mérieux añadió un 1 % del capital a unos 70,6 EUR en abril y mayo de 2026 [C6, C7].',
+  ],
+  en_contra: [
+    '**Guía rebajada dos veces en 2026**: de +5/+7 % a +3/+5 % para 2026 y del 7 % anual a +3/+6 % para 2027-2028 [C21, A3].',
+    '**Paneles respiratorios**: −17 % en el primer semestre de 2026, y la empresa no publica su importe [A3].',
+    '**Margen inferior a sus pares**: 23,9 % de margen EBITDA frente al 33,0 % de DiaSorin y el 35,7 % de Qiagen [E10, E11].',
+    '**Gobierno**: 3 de 8 consejeros independientes y rechazo mayoritario del capital libre a la remuneración del consejero delegado en tres juntas (49-67 %) [C1-C4].',
+    '**Compras fallidas**: unos 340 M de deterioros de Hybiome y Specific Diagnostics en 2022-2025 [A1].',
+    '**Solo compra relativa**: con nuestro WACC del 8,57 % el valor objetivo (80,93 EUR) apenas supera el precio.',
+  ],
+  que_vigilar: 'La tesis depende de que el segundo semestre de 2026 crezca en torno al +6 % orgánico que exige el bajo de la guía, con los paneles no respiratorios de BIOFIRE por encima del +5 % y una temporada respiratoria normal. La señal de que no se cumple sería un tercer trimestre (30 de octubre) por debajo del +5 % orgánico o una nueva rebaja de la guía de 2026; con ella, el caso bajista (61,51 EUR) pasaría a ser el central.',
+  cambiaria_recomendacion: [
+    'Si el precio sube por encima de 81,90 EUR sin cambios en las cifras, pasaríamos a Mantener (fin del margen de la regla).',
+    'Si las ventas del tercer trimestre de 2026 crecen menos del +5 % orgánico o la empresa rebaja otra vez la guía, pasaríamos a Mantener.',
+    'Si el margen CEBIT de 2026 queda por debajo del 16 % (17,9 % en 2025), pasaríamos a Mantener.',
+    'Si Medicare revisa la LCD L39001 para limitar paneles de hospital, revisaríamos el caso base a la baja.',
+    'Si el precio supera 98,17 EUR, pasaríamos a Vender.',
+  ],
+  kpis_seguimiento: [
+    { kpi: 'Crecimiento orgánico de las ventas', nivel_actual: '+0,2 % en el 1S26; +5,0 % en el 2T26', umbral_alerta: 'Por debajo del +5 % en el 3T26', por_que: 'El bajo de la guía exige un segundo semestre de +6 %.' },
+    { kpi: 'Paneles no respiratorios de BIOFIRE', nivel_actual: '+5,5 % orgánico en el 1S26 (598 M en 2025)', umbral_alerta: 'Por debajo del +5 %', por_que: 'Es el motor del crecimiento recurrente sin estacionalidad.' },
+    { kpi: 'Margen CEBIT', nivel_actual: '15,9 % en el 1S26; 17,9 % en 2025', umbral_alerta: 'Por debajo del 16 % en 2026', por_que: 'Cada punto de margen EBITDA vale unos 4,9 EUR por acción.' },
+    { kpi: 'Base instalada de SPOTFIRE', nivel_actual: 'Más de 7.200 equipos (jun-26)', umbral_alerta: 'Menos de 300 colocaciones por trimestre', por_que: 'Mide el crecimiento futuro de reactivos en el punto de atención.' },
+    { kpi: 'EUR/USD', nivel_actual: '1,1177 (7-oct-2026) [E1]', umbral_alerta: 'Por encima de 1,25', por_que: 'El 47 % de las ventas está en dólares.' },
+  ],
+  confianza: 'Media',
+};
