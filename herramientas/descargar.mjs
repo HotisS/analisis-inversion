@@ -37,7 +37,7 @@ mkdirSync(dir, { recursive: true });
 
 // EDGAR exige un User-Agent con nombre de aplicación; el resto de webs, uno de navegador.
 function cabeceras(url) { return (/sec\.gov/.test(url)
-  ? { 'User-Agent': 'analisis-inversion (uso personal, investigacion)', 'Accept-Encoding': 'gzip, deflate' }
+  ? { 'User-Agent': process.env.SEC_UA || 'analisis-inversion research admin@example.com', 'Accept-Encoding': 'gzip, deflate' }
   : { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36', 'Accept-Language': 'es-ES,es;q=0.9,en;q=0.8' }); }
 
 export function htmlATexto(h) {

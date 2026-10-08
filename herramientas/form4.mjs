@@ -15,7 +15,7 @@ const a = {};
 const argv = process.argv.slice(2);
 for (let i = 0; i < argv.length; i++) if (argv[i].startsWith('--')) a[argv[i].slice(2)] = argv[i + 1];
 if ((!a.ticker && !a.cik) || !a.desde) { console.error('Uso: node herramientas/form4.mjs --ticker XXX | --cik N --desde AAAA-MM-DD [--hasta AAAA-MM-DD] [--salida archivo.json]'); process.exit(1); }
-const UA = { 'User-Agent': 'analisis-inversion (uso personal, investigacion)', 'Accept-Encoding': 'gzip, deflate' };
+const UA = { 'User-Agent': process.env.SEC_UA || 'analisis-inversion research admin@example.com', 'Accept-Encoding': 'gzip, deflate' };
 const pausa = (ms) => new Promise((r) => setTimeout(r, ms)); // la SEC admite 10 peticiones por segundo
 const get = async (url, json = true) => { await pausa(130); const r = await fetch(url, { headers: UA, signal: AbortSignal.timeout(60000) }); if (!r.ok) throw new Error(`${url}: HTTP ${r.status}`); return json ? r.json() : r.text(); };
 
