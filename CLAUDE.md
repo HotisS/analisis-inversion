@@ -6,6 +6,10 @@ Este repo produce informes Word de análisis de inversión en tres verticales: e
 
 Para empresas, el procedimiento está en `.claude/commands/analiza-empresa.md` (con `verticales/empresa/lecciones.md` y las herramientas de `herramientas/`: descargas, datos de bolsa, extracto del prompt por subagente; y `motor/integrar.mjs` para juntar las notas) (también si el usuario lo pide con otras palabras: «analiza Viscofan»). Es un análisis largo, de 30-60 minutos, en dos pasos de código: `motor/calcular-empresa.mjs` hace todas las cuentas (DCF, comparables, indicadores, controles) y `motor/rellenar.mjs` genera el Word. Las secciones sin información tras tres búsquedas no se imprimen y se avisan (protocolo de huecos del prompt).
 
+## Buscar candidatas: usa `/escanea-mercado`
+
+Para buscar qué analizar («busca oportunidades», «escanea Europa», «qué nichos de agua hay»), el procedimiento está en `.claude/commands/escanea-mercado.md`: `herramientas/escaner.mjs` filtra todas las cotizadas de las tres regiones con los perfiles editables de `escaner/perfiles.json` y deja un Excel en `escaneos/`. Es código, sin coste de API; las candidatas se proponen al usuario y no se lanzan análisis sin su visto bueno.
+
 ## ETF y sector
 
 «Analiza la empresa X», «analiza el ETF X», «analiza el sector X (en España)»:
