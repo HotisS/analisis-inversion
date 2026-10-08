@@ -1,0 +1,40 @@
+# Encargo común a los subagentes A-D (Cochlear, corte 2026-10-08)
+
+Repo: C:\Users\HugoSol\OneDrive - SUMA CAPITAL SGEIC SA\Escritorio\Vela\analisis-inversion
+Carpeta de trabajo: informes/cochlear-2026-10-08/notas/ (documentos en notas/docs/, con prefijo de tu letra: A_fy25_informe_anual, B_sonova_ar, ...)
+Temporales: %TEMP%\analisis-inversion\cochlear<letra> (por ejemplo C:\Users\HugoSol\AppData\Local\Temp\analisis-inversion\cochlearA). Nada de usar y tirar dentro del repo.
+
+## REGLA ESTRICTA DE CARPETAS (no se negocia)
+El repo vive dentro del OneDrive corporativo del usuario. Trabaja SOLO dentro de `informes/cochlear-2026-10-08/` (escritura) y del resto del repo (solo lectura: herramientas/, verticales/, motor/ si hace falta), y en %TEMP%. Está TERMINANTEMENTE PROHIBIDO entrar en cualquier otra carpeta de ese OneDrive: ni buscar, ni leer, ni escribir, ni borrar, ni hacer Glob, Grep o listados por encima de la carpeta `analisis-inversion`. No toques otros informes, ni el código del repo, ni `seguimiento.xlsx`. Sin commits.
+No abras, cierres ni mates ningún proceso de Word (el usuario tiene uno abierto).
+NUNCA descargues documentos con el navegador integrado (al usuario le sale un cuadro de «Guardar»): todo documento se baja con `node herramientas/descargar.mjs`. Si una web corta las descargas, reintenta con espera (y `TIEMPO_DESCARGA` para PDF grandes).
+
+## Antes de nada
+1. `node herramientas/prompt-de.mjs <tu letra>` (tu parte del prompt, con las claves JSON exactas). NO leas el prompt entero.
+2. Lee `verticales/empresa/lecciones.md` (corto).
+3. Descarga con: `node herramientas/descargar.mjs --dir informes/cochlear-2026-10-08/notas/docs nombre url [nombre url ...]` (deja .txt y .tabla.txt al lado; busca con `grep -n` y lee solo las páginas que hacen falta). Si una tabla del .txt sale desordenada: `pdftotext -table -f N -l N archivo.pdf -` o míralo como imagen con `construccion/pdf-a-png.ps1 <pdf> -Paginas "N"`.
+
+## Empresa
+- **Cochlear Limited**. ASX: **COH** (Yahoo `COH.AX`). ISIN **AU000000COH5**. Sede: 1 University Avenue, Macquarie University, NSW (Sídney). Índices: S&P/ASX 20/50/200.
+- Cuentas en **AUD**, normas contables australianas (AASB, conformes con las NIIF). Cuenta **por función** (cost of sales, selling/marketing/general, R&D, administration, other, FX contract gains/losses).
+- Ejercicio cierra el **30 de junio**. La empresa lo nombra por el año en que **termina**: FY26 = julio 2025 - junio 2026. Periodos: `"FY2017"` ... `"FY2026"`; estimaciones `"FY2027e"`, `"FY2028e"`, `"FY2029e"`; semestres `"1S25"` (jul-dic 2024 = HY25), `"2S25"` (ene-jun 2025), ... `"2S26"` (ene-jun 2026). Cochlear publica **semestres**, no trimestres.
+- Último informe antes del corte: **resultados FY26 e informe anual FY26 (18-ago-2026)**. Próximos: junta 26-oct-2026; **Capital Markets Day 13-nov-2026**; resultados HY27 hacia mediados de febrero de 2027 (HY26 salió el 13-feb-2026; confírmalo si lo encuentras).
+- Fecha de corte: **2026-10-08**. No uses nada publicado después.
+- Contexto clave ya leído: FY26 ventas 2.343,4 M AUD (+2 % en moneda constante, −1 % reportado); beneficio neto subyacente 322,4 M (−22 %), estatutario 147,3 M; margen bruto 71 % (74 %); recorte de guía el 22-abr-2026; **demanda colectiva** (29-sep-2026) por la previsión de beneficio de FY26 (compradores 15-ago-2025 a 21-abr-2026); guía FY27: ventas «low single-digit» en moneda constante y beneficio subyacente 330-350 M; partidas significativas fuera del subyacente: gasto en la nube (cloud, 66,0 M después de impuestos en FY26) y deterioros/valor razonable de inversiones (109,1 M, sobre todo Epiminder); caja neta 188 M; recompras inactivas (objetivo de caja neta ~200 M); payout objetivo 70 % del subyacente.
+- Líneas: Cochlear Implants (implantes, unidades 56.692 en FY26), Services (procesadores de sonido de reemplazo y actualización, accesorios), Acoustics (Osia, Baha). Regiones: Americas, EMEA, Asia Pacific. Más del 90 % de las ventas fuera de Australia.
+- **Anuncios de la ASX ya resueltos a PDF**: `informes/cochlear-2026-10-08/notas/anuncios_asx.tsv` (URL directa del PDF + id, fecha y título; 2022-2026: resultados, informes anuales, presentaciones, Appendix 3Y/3X/3Z de consejeros, juntas, guías, Oticon). Úsalos con descargar.mjs: no busques en la web lo que ya está ahí. Si necesitas otro anuncio (por ejemplo «Change in substantial holding»), el listado anual está en `https://www.asx.com.au/asx/v2/statistics/announcements.do?by=asxCode&asxCode=COH&timeframe=Y&year=2026` y el PDF se resuelve leyendo `https://www.asx.com.au/asx/v2/statistics/displayAnnouncement.do?display=pdf&idsId=<id>` (contiene un enlace a announcements.asx.com.au/asxpdf/...pdf).
+- Ya descargados (léelos, no los vuelvas a bajar): `notas/docs/comun_informe_anual_fy26.pdf/.txt/.tabla.txt` (informe anual FY26, 204 págs.: informe de gestión, remuneración, cuentas y notas), `P_fy26_comunicado`, `P_fy26_presentacion`, `P_trading_update_abr26`, `P_class_action_sep26`, `P_cmd_aviso_sep26`, `P_tariff_jul26`.
+
+## Reglas que no se negocian (prompt.md §4)
+0. **Ninguna cifra sale del resumen de un buscador.** Toda cifra se copia del documento original abierto y leído. WebFetch también resume con un modelo: para cifras clave pídele el TEXTO LITERAL, o descarga con descargar.mjs y usa grep.
+1. Nunca inventes una cifra. Tras **tres intentos distintos** (1: fuente primaria directa; 2: otra vía / otro documento / otro término; 3: derivarlo o fuente secundaria fiable citada) sin éxito: `null` y una entrada en `huecos`: {"seccion","campo","tipo":"Núcleo|Complemento","intentos":"1) ...; 2) ...; 3) ...","decision":"Omitido|Calculado y marcado como estimación"}.
+2. Unidades: magnitudes en **millones de AUD**; precio, BPA, DPA en AUD; acciones en millones. Si conviertes desde otra divisa (competidores en CHF, DKK, USD...), usa el tipo de cierre del ejercicio (datos contables) o el de la fecha de corte (datos de mercado), y dilo. Porcentajes en puntos (12,5 % → 12.5). Números como números. Gastos e inversiones en positivo.
+3. Fuentes: lista `fuentes` propia numerada desde 1: {"id","titulo","editor","tipo":"Primaria|Datos de mercado|Sectorial|Prensa|Analistas","fecha":"AAAA-MM-DD (o AAAA-MM)","url"}. Cita con [n] (tus números locales). Una entrada por documento realmente leído y usado; cita el PDF concreto (la URL de announcements.asx.com.au), no «la web de inversores».
+4. **Guardar por partes (HOY ES CRÍTICO: ha habido cortes de red que han parado sesiones).** Escribe tu `notas/<letra>.json` en los **primeros 5 minutos** con lo que ya tengas (aunque sea un campo) y reescríbelo **después de cada campo que termines, y como mínimo cada 10-15 minutos**. JSON válido, **UTF-8 sin BOM** (escribe con la herramienta Write o con Node `fs.writeFileSync(ruta, JSON.stringify(obj,null,1), 'utf8')`; nunca con PowerShell Set-Content/Out-File, que meten BOM). Claves de primer nivel del prompt + `fuentes` + `huecos`.
+5. Escribe **solo hechos** con su fuente. Los textos de juicio (comentario, lectura, veredictos...) los redacta el analista principal: déjalos sin escribir o muy factuales, y vuelca los hechos útiles en un objeto `extra` dentro de cada sección (frases cortas con cifra y [n]).
+6. Solo fuentes gratuitas. No resuelvas captchas ni comprobaciones antibot.
+7. **Búsquedas web: el límite es compartido entre los cuatro y se agota en unos 15 minutos.** Resérvalas para lo que no está en los documentos de la empresa (competencia, reembolso, gobierno/prensa). Todo lo demás, de los documentos de la ASX y de la empresa.
+8. Respeta las claves exactas de tu parte del prompt. Presupuesto: unos 20-25 minutos y unas 80 llamadas a herramientas. Prioriza por impacto en la decisión; al llegar al límite cierra con lo que tengas y registra lo que falte como hueco.
+
+## Al terminar
+Devuelve en tu respuesta un resumen de diez líneas: qué has encontrado, qué falta y qué te ha parecido raro. Y, aparte, 3-5 líneas sobre **fallos o fricciones de las herramientas del repo** (herramientas/*.mjs, lecciones.md) que hayas encontrado, con el arreglo que propondrías.
