@@ -1,6 +1,8 @@
 // Resumen de todos los informes de empresa en una hoja: seguimiento.xlsx, en la raíz del repo.
-// Una fila por empresa (la última versión de cada carpeta de informes/), con la señal, los precios y una
+// Una fila por análisis (la última versión de cada carpeta de informes/), con la señal, los precios y una
 // batería de criterios marcados con ✓ (bien), = (neutro) o ✗ (mal). La hoja «Criterios» explica cada umbral.
+// Una empresa que se vuelve a analizar en otra fecha tiene carpeta propia y fila propia: la columna «Iteración»
+// las numera 1, 2, 3… por fecha (agrupadas por ticker) para seguir cómo evoluciona la valoración.
 // Sin dependencias.
 //
 //   node herramientas/seguimiento.mjs [--salida seguimiento.xlsx]
@@ -66,15 +68,23 @@ for (const dir of readdirSync('informes', { withFileTypes: true }).filter((e) =>
     informe: `informes/${dir}/${existsSync(join('informes', dir, pdf)) ? pdf : base}`,
   });
 }
+// Iteraciones: los análisis de una misma empresa (mismo ticker), numerados por fecha de corte.
+const clave = (f) => String(f.ticker || f.empresa).trim().toUpperCase();
+const grupos = new Map();
+for (const f of filas) { if (!grupos.has(clave(f))) grupos.set(clave(f), []); grupos.get(clave(f)).push(f); }
+for (const g of grupos.values()) { g.sort((a, b) => String(a.fecha).localeCompare(String(b.fecha)) || a.informe.localeCompare(b.informe)); g.forEach((f, i) => { f.iteracion = i + 1; }); }
 // Sector en español y sin la industria entre paréntesis (algunos informes lo traen en inglés, como en GICS).
 const SECTORES = { "information technology": "Tecnologías de la información", "consumer discretionary": "Consumo discrecional", "consumer staples": "Consumo básico", "health care": "Salud", industrials: "Industria", utilities: "Utilities", financials: "Finanzas", materials: "Materiales", energy: "Energía", "communication services": "Comunicaciones", "real estate": "Inmobiliario" };
 for (const f of filas) { const s = String(f.sector || "").replace(/\s*[(/].*$/, "").trim(); f.sector = SECTORES[s.toLowerCase()] || s; }
 const ORDEN = { Comprar: 0, Mantener: 1, Vender: 2 };
-filas.sort((a, b) => (ORDEN[a.senal] ?? 3) - (ORDEN[b.senal] ?? 3) || (b.rte_mercado ?? b.rte ?? -999) - (a.rte_mercado ?? a.rte ?? -999));
+// Las empresas se ordenan por la señal y la rentabilidad de su último análisis; debajo, sus iteraciones de la primera a la última.
+const porSenal = (a, b) => (ORDEN[a.senal] ?? 3) - (ORDEN[b.senal] ?? 3) || (b.rte_mercado ?? b.rte ?? -999) - (a.rte_mercado ?? a.rte ?? -999);
+filas.length = 0;
+for (const g of [...grupos.values()].sort((a, b) => porSenal(a.at(-1), b.at(-1)))) filas.push(...g);
 
 // ── Hoja ──
 const COLS = [
-  ['Empresa', 18], ['Ticker', 9], ['Fecha', 11], ['Geografía', 13], ['Sector', 20], ['Señal', 11], ['Convicción', 11], ['Divisa', 7],
+  ['Iteración', 9], ['Empresa', 18], ['Ticker', 9], ['Fecha', 11], ['Geografía', 13], ['Sector', 20], ['Señal', 11], ['Convicción', 11], ['Divisa', 7],
   ['Precio actual', 11], ['Precio objetivo 12 m', 12], ['Objetivo con la prima del mercado', 13], ['Rentabilidad total esperada', 12],
   ['Rentabilidad con la prima del mercado', 13], ['Objetivo analistas', 11], ['Comprar por debajo de', 11], ['Vender por encima de', 11],
   ['Regla absoluta', 10], ['Regla relativa', 10], ...CRITERIOS.map(([c]) => [c, 11]), ['Informe', 46],
@@ -89,8 +99,9 @@ const S = { cab: 1, num: 2, pct: 3, '✓': 4, '✗': 5, '=': 6, Comprar: 7, Mant
 const enlaces = [];
 const filasXml = [`<row r="1" ht="45" customHeight="1">${COLS.map(([c], i) => texto(`${letra(i)}1`, c, S.cab)).join('')}</row>`];
 filas.forEach((f, k) => {
-  const r = k + 2, c = (i) => `${letra(i)}${r}`;
+  const r = k + 2, c = (i) => `${letra(i + 1)}${r}`; // la columna A es la iteración
   const celdas = [
+    num(`A${r}`, f.iteracion, S.centro),
     texto(c(0), f.empresa), texto(c(1), f.ticker, S.centro), num(c(2), serie(f.fecha), S.fecha), texto(c(3), f.geografia), texto(c(4), f.sector),
     texto(c(5), f.senal, S[f.senal] ?? S.centro), texto(c(6), f.conviccion, S.centro), texto(c(7), f.divisa, S.centro),
     num(c(8), f.precio, S.num), num(c(9), f.objetivo, S.num), num(c(10), f.objetivo_mercado, S.num),
@@ -108,7 +119,7 @@ const ultima = letra(COLS.length - 1);
 const hoja = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
 <sheetPr><pageSetUpPr fitToPage="1"/></sheetPr>
-<sheetViews><sheetView workbookViewId="0" tabSelected="1"><pane xSplit="2" ySplit="1" topLeftCell="C2" activePane="bottomRight" state="frozen"/></sheetView></sheetViews>
+<sheetViews><sheetView workbookViewId="0" tabSelected="1"><pane xSplit="3" ySplit="1" topLeftCell="D2" activePane="bottomRight" state="frozen"/></sheetView></sheetViews>
 <sheetFormatPr defaultRowHeight="15"/>
 <cols>${COLS.map(([, w], i) => `<col min="${i + 1}" max="${i + 1}" width="${w}" customWidth="1"/>`).join('')}</cols>
 <sheetData>${filasXml.join('')}</sheetData>
@@ -122,6 +133,7 @@ const relsHoja = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 
 const criterios = [
   ['Columna', 'Qué mide'],
+  ['Iteración', 'Número de análisis de la empresa (mismo ticker), por orden de fecha: 1 es el primero. Cada nuevo análisis en otra fecha va en su propia carpeta y su propia fila, sin pisar los anteriores, para seguir la evolución de la valoración.'],
   ['Señal', 'Recomendación del informe. Rentabilidad total esperada (RTE) = subida al objetivo + dividendo. Comprar: RTE ≥ 15 % y asimetría ≥ 1. Vender: RTE ≤ −10 %, o RTE < 0 con asimetría < 0,5. Mantener: el resto. Se aplica con nuestro coste de capital (regla absoluta) y con la prima de riesgo que pide hoy el mercado (regla relativa); manda la relativa salvo que una diga Comprar y la otra Vender, que da Mantener.'],
   ['Precio objetivo 12 m', 'Valor objetivo del informe con nuestro coste de capital (síntesis ponderada de DCF, comparables y demás métodos), en la divisa de las cuentas.'],
   ['Objetivo con la prima del mercado', 'El mismo valor objetivo con el coste de capital que sale de la prima de riesgo implícita del mercado (Damodaran).'],
@@ -129,7 +141,7 @@ const criterios = [
   ['Objetivo analistas', 'Precio objetivo medio del consenso de analistas en la fecha del informe.'],
   ...CRITERIOS.map(([c, e]) => [c, e]),
   ['n.d.', 'El informe no tiene el dato (por ejemplo, sin consenso o sin lista de gobierno).'],
-  ['Informe', 'Ruta del PDF (o del Word si no hay PDF) de la última versión, relativa a la raíz del repo.'],
+  ['Informe', 'Ruta del PDF (o del Word si no hay PDF) de la última versión de ese análisis, relativa a la raíz del repo.'],
 ];
 const hoja2 = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><sheetFormatPr defaultRowHeight="15"/>
@@ -189,5 +201,5 @@ const entradas = new Map([
   ['xl/styles.xml', estilos],
 ]);
 writeFileSync(salida, escribirZip(entradas));
-console.log(`${salida}: ${filas.length} empresas (${filas.filter((f) => f.senal === 'Comprar').length} Comprar, ${filas.filter((f) => f.senal === 'Mantener').length} Mantener, ${filas.filter((f) => f.senal === 'Vender').length} Vender)`);
+console.log(`${salida}: ${filas.length} análisis de ${grupos.size} empresas (${filas.filter((f) => f.senal === 'Comprar').length} Comprar, ${filas.filter((f) => f.senal === 'Mantener').length} Mantener, ${filas.filter((f) => f.senal === 'Vender').length} Vender)`);
 for (const f of filas) console.log(`  ${f.empresa.padEnd(20)} ${String(f.senal).padEnd(9)} ${f.criterios.map((v) => v ?? '·').join(' ')}`);
