@@ -53,6 +53,8 @@ for (const dir of readdirSync('informes', { withFileTypes: true }).filter((e) =>
   const base = vs.length ? archivos.find((f) => f.endsWith(` v${vs[0][1]}.docx`)) : archivos.find((f) => /\d{4}-\d{2}-\d{2}\.docx$/.test(f));
   if (!base) continue;
   const pdf = base.replace(/\.docx$/, '.pdf');
+  // El PDF es lo último que se genera: sin él, el análisis sigue en curso (puede haber un Word de prueba).
+  if (!existsSync(join('informes', dir, pdf))) continue;
   const R = d.calc.recomendacion, rel = R.relativo || {};
   filas.push({
     empresa: d.identificacion.nombre_corto || d.identificacion.nombre, ticker: d.identificacion.ticker, fecha: d.meta.fecha_corte,
