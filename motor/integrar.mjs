@@ -20,14 +20,17 @@ const ORDEN = ['meta', 'identificacion', 'resumen', 'historia', 'negocio', 'sect
 const BASE = ['A', 'B', 'C', 'D']; // las cuatro de siempre; las extra (E, F…) se leen si existen
 
 const esObjeto = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
-function combinar(a, b) {
+// `choques` (opcional) recoge las listas no vacías que una nota sustituye entera a otra: en Kongsberg y Tomra
+// la nota de sector borró los segmentos de la de cuentas sin que nadie lo viera.
+function combinar(a, b, ruta = '', choques = null) {
   if (b === null || b === undefined) return a;
   if (esObjeto(a) && esObjeto(b)) {
     const o = { ...a };
-    for (const [k, v] of Object.entries(b)) o[k] = combinar(a[k], v);
+    for (const [k, v] of Object.entries(b)) o[k] = combinar(a[k], v, ruta ? `${ruta}.${k}` : k, choques);
     return o;
   }
   if (Array.isArray(b) && b.length === 0 && Array.isArray(a) && a.length) return a;
+  if (choques && Array.isArray(a) && a.length && Array.isArray(b) && b.length && JSON.stringify(a) !== JSON.stringify(b)) choques.push(ruta);
   return b;
 }
 
@@ -97,7 +100,9 @@ export async function integrar(dir) {
     if (!N[L]) continue;
     const nota = recorrer(N[L], locales(L));
     huecos.push(...(nota.huecos || []), ...(nota.meta?.huecos || []));
-    for (const k of ORDEN) if (k !== 'fuentes' && nota[k] !== undefined) datos[k] = combinar(datos[k], nota[k]);
+    const choques = [];
+    for (const k of ORDEN) if (k !== 'fuentes' && nota[k] !== undefined) datos[k] = combinar(datos[k], nota[k], k, choques);
+    for (const r of choques) avisos.add(`La nota ${L} sustituye entera la lista «${r}» que traía otra nota: fusiónalas en propio si las dos tenían datos.`);
   }
   const propio = recorrer(P, prefijo);
   const huecosPropios = [...(propio.huecos || []), ...(propio.meta?.huecos || [])].map((h) => ({ ...h, _propio: true }));
@@ -124,7 +129,7 @@ export async function integrar(dir) {
   const limpiar = (o) => { if (Array.isArray(o)) o.forEach(limpiar); else if (esObjeto(o)) { delete o.notas_integrador; Object.values(o).forEach(limpiar); } };
   limpiar(datos);
   const revisarTextos = (o, ruta) => {
-    if (typeof o === 'string') { if (/\b(el|al|del) integrador\b|\bpendiente de (decidir|revisar)\b/i.test(o) || /\b(TODO|FIXME|TBD)\b/.test(o)) avisos.add(`Nota de trabajo en un campo que se imprime: ${ruta}: «${o.slice(0, 80)}…»`); }
+    if (typeof o === 'string') { if (/\b(el|al|del) integrador\b|\bpendiente de (decidir|revisar)\b|\bsubagentes?\b/i.test(o) || /\b(TODO|FIXME|TBD)\b|`|\bcalc\.[a-z]/.test(o)) avisos.add(`Nota de trabajo en un campo que se imprime: ${ruta}: «${o.slice(0, 80)}…»`); }
     else if (Array.isArray(o)) o.forEach((x, i) => revisarTextos(x, `${ruta}[${i}]`));
     else if (esObjeto(o)) for (const [k, v] of Object.entries(o)) if (k !== 'fuentes') revisarTextos(v, ruta ? `${ruta}.${k}` : k);
   };

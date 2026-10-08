@@ -201,7 +201,7 @@ const ejemplo = {
   },
   financieros: {
     cuenta,
-    ltm: { periodo: 'LTM jun-26', fecha_fin: '2026-06-30', dpa_extraordinario: 0, ingresos: r(ult.ingresos * 1.03), ebitda: r(ult.ebitda * 1.04), ebit: r(ult.ebit * 1.04), beneficio_neto: r(ult.beneficio_neto * 1.05), bpa: r(ult.bpa * 1.05, 2), dpa: ult.dpa, fcf: 205 },
+    ltm: { periodo: 'LTM jun-26', fecha_fin: '2026-06-30', dpa_extraordinario: 0, ingresos: r(ult.ingresos * 1.03), ebitda: r(ult.ebitda * 1.04), ebit: r(ult.ebit * 1.04), beneficio_neto: r(ult.beneficio_neto * 1.05), bpa: r(ult.bpa * 1.05, 2), dpa: ult.dpa, fcf: 205, participadas_en_ebitda: null, no_recurrentes_en_ebitda: null },
     comentario: 'Los ingresos crecieron un 5,5 % anual en 2016-2025, con un 2020 de caída (−7,5 %) por automoción. El margen EBITDA pasó del 14,1 % al 15,9 % por el mayor peso de redes [1][2][3].',
     cambios_perimetro: [{ periodo: '2022', descripcion: 'compra de Aparamenta Boreal (ficticia), consolidada desde octubre: tres meses en la cuenta y el balance completo' }],
     ajustes: 'Las cifras son las reportadas. Los no recurrentes (reestructuración en 2020 y 2023) fueron inferiores al 3 % del EBIT [1][3].',

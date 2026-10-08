@@ -123,8 +123,10 @@ export function calcularEmpresa(datos) {
     if (bai !== null && imp !== null && bn !== null && Math.abs(bai - imp - mino - bn) > Math.max(0.03 * Math.abs(bn), 1)) {
       control(`BAI − impuestos − minoritarios = beneficio neto (${c.periodo})`, false, `Diferencia de ${fmt(bai - imp - mino - bn, 0)} (¿operaciones interrumpidas?).`);
     }
-    if (ebit !== null && rf !== null && bai !== null && Math.abs(ebit + rf - bai) > Math.max(0.05 * Math.abs(bai), 1)) {
-      control(`EBIT + resultado financiero = BAI (${c.periodo})`, false, `Diferencia de ${fmt(ebit + rf - bai, 0)} (¿asociadas o extraordinarios?).`);
+    // Con el EBIT publicado: el no recurrente que se devolvió al EBIT sigue dentro del BAI (Rentokil, bioMérieux).
+    const ebitPub = ebit !== null ? ebit - (n(c.no_recurrentes_en_ebitda) ?? 0) : null;
+    if (ebitPub !== null && rf !== null && bai !== null && Math.abs(ebitPub + rf - bai) > Math.max(0.05 * Math.abs(bai), 1)) {
+      control(`EBIT + resultado financiero = BAI (${c.periodo})`, false, `Diferencia de ${fmt(ebitPub + rf - bai, 0)} (¿asociadas o extraordinarios?).`);
     }
     const accs = n(c.acciones_diluidas);
     if (bn !== null && accs && n(c.bpa) !== null && Math.abs(bn / accs - n(c.bpa)) > 0.06 * Math.abs(n(c.bpa)) + 0.01) {
@@ -617,10 +619,12 @@ export function calcularEmpresa(datos) {
     escenarios: valorPonderado,
   };
   let sumaPesos = 0, acumulado2 = 0;
+  // Con un bajista casi en el precio la división se dispara (DSV: 136,78x); por encima de 20x ya no informa.
+  const fmtAsim = (x) => (x > 20 ? 'más de 20x' : `${fmt(x, 2)}x`);
   const tablaSintesis = Object.entries(centrales).map(([k, v]) => {
     const p = n(pesos[k]) ?? 0;
     if (v !== null && p > 0) { sumaPesos += p; acumulado2 += v * p; }
-    return { metodo: { dcf: 'DCF', comparables: 'Comparables (mediana EV/EBITDA y PER)', transacciones: 'Transacciones precedentes', suma_partes: 'Suma de partes', escenarios: 'Escenarios ponderados' }[k], valor: red(v, 2), peso_pct: v === null ? null : p, potencial_pct: red(pct(v - precio, precio)) };
+    return { metodo: { dcf: 'DCF', comparables: 'Comparables (mediana EV/EBITDA y PER)', transacciones: 'Transacciones precedentes', suma_partes: 'Suma de partes', escenarios: 'Escenarios ponderados' }[k] + (p === 0 && v !== null ? ' (no se usa)' : ''), valor: red(v, 2), peso_pct: v === null ? null : p, potencial_pct: red(pct(v - precio, precio)) };
   }).filter((x) => x.valor !== null);
   const pesosDeclarados = sumaLaxa(...Object.values(pesos).map(n));
   control('Pesos de la síntesis suman 100', Math.abs(pesosDeclarados - 100) < 0.5, Math.abs(pesosDeclarados - 100) < 0.5 ? '' : `Suman ${fmt(pesosDeclarados, 1)}.`);
@@ -730,12 +734,12 @@ export function calcularEmpresa(datos) {
       { concepto: 'Rentabilidad por dividendo ordinario', valor: `${fmt(rentDiv, 1)} %` },
       { concepto: 'Rentabilidad total esperada a 12 meses', valor: rte === null ? 'n.d.' : `${fmt(rte, 1)} %` },
       { concepto: 'Escenario alcista / bajista', valor: potAlc === null || potBaj === null ? 'n.d.' : `${fmt(potAlc, 1)} % / ${fmt(potBaj, 1)} %` },
-      { concepto: 'Asimetría (ganancia alcista / pérdida bajista)', valor: asimetria === null ? 'n.d.' : `${fmt(asimetria, 2)}x` },
+      { concepto: 'Asimetría (ganancia alcista / pérdida bajista)', valor: asimetria === null ? 'n.d.' : fmtAsim(asimetria) },
       ...(dcf?.inverso?.rentabilidad_implicita_pct !== null && dcf?.inverso?.rentabilidad_implicita_pct !== undefined ? [{ concepto: relativo ? 'Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado' : 'Rentabilidad anual implícita en el precio frente al WACC', valor: `${fmt(dcf.inverso.rentabilidad_implicita_pct, 1)} % frente a ${fmt(dcf.wacc, 1)} %${relativo ? ` y ${fmt(relativo.wacc, 1)} %` : ''}` }] : []),
       ...(relativo ? [
         { concepto: `Valor objetivo con la prima implícita del mercado (${fmt(primaImpl, 1)} %, WACC ${fmt(relativo.wacc, 1)} %)`, valor: relativo.valor_objetivo === null ? 'n.d.' : `${fmt(relativo.valor_objetivo, 2)} ${meta.divisa || ''}${enCot(relativo.valor_objetivo)}` },
         { concepto: 'Rentabilidad total esperada con la prima del mercado', valor: potRel === null ? 'n.d.' : `${fmt(potRel + rentDiv, 1)} %` },
-        { concepto: 'Asimetría con la prima del mercado', valor: asimRel === null ? 'n.d.' : `${fmt(asimRel, 2)}x` },
+        { concepto: 'Asimetría con la prima del mercado', valor: asimRel === null ? 'n.d.' : fmtAsim(asimRel) },
         { concepto: 'Regla absoluta (frente a su coste de capital)', valor: reglaAbs ?? 'n.d.' },
         { concepto: 'Regla relativa (frente a lo que pide el mercado)', valor: reglaRel ?? 'n.d.' },
       ] : []),
