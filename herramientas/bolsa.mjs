@@ -2,7 +2,7 @@
 // de Yahoo Finance (cierre y cierre ajustado por dividendos). Sin dependencias.
 //
 //   node herramientas/bolsa.mjs --accion ITX.MC --indice ^IBEX --sector EXH1.DE --corte 2026-10-05 \
-//        [--cierre-mes 1] [--cierre-dia 20] [--indice-beta SIMBOLO] [--dir informes/x/notas/docs] [--salida informes/x/notas/bolsa.json]
+//        [--cierre-mes 1] [--cierre-dia 20] [--etiqueta fin|inicio] [--indice-beta SIMBOLO] [--dir informes/x/notas/docs] [--salida informes/x/notas/bolsa.json]
 //
 // Devuelve (y guarda en --salida) lo que piden `bolsa`, parte de `identificacion` (precio, rango de 52
 // semanas, volumen) y `multiplos_historicos.serie[].precio_cierre` (cierre de cada ejercicio). Los
@@ -17,7 +17,12 @@ const argv = process.argv.slice(2);
 for (let i = 0; i < argv.length; i++) if (argv[i].startsWith('--')) a[argv[i].slice(2)] = argv[i + 1];
 if (!a.accion || !a.corte) { console.error('Uso: node herramientas/bolsa.mjs --accion SIMBOLO --indice SIMBOLO [--sector SIMBOLO] --corte AAAA-MM-DD [--cierre-mes 12] [--dir carpeta] [--salida bolsa.json]'); process.exit(1); }
 const CORTE = a.corte, MES = +(a['cierre-mes'] || 12), DIA = a['cierre-dia'] ? +a['cierre-dia'] : null;
-// La sesión de hoy no está cerrada: su «cierre» es el último precio del día. Se usa la anterior salvo --incluir-hoy 1.
+// Nombre del ejercicio que no cierra en diciembre: por el año en que termina (Microsoft, Cochlear: FY2026 acaba en
+// junio de 2026) o por el que empieza (Japón: FY2025 acaba en marzo de 2026). Por defecto, «inicio» si cierra en
+// enero-marzo y «fin» en el resto; --etiqueta fin|inicio lo fuerza.
+const ETIQUETA = a.etiqueta || (MES <= 3 ? 'inicio' : 'fin');
+// Una sesión en curso no tiene cierre: su «cierre» es el último precio. Se quita salvo --incluir-hoy 1. Se mira la
+// hora de la bolsa (no la de Madrid): Sídney o Tokio ya han cerrado el día cuando aquí es por la mañana.
 const HOY = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
 
 async function serie(simbolo) {
@@ -31,8 +36,10 @@ async function serie(simbolo) {
   if (!x?.timestamp) throw new Error(`${simbolo}: sin datos`);
   if (a.dir) { mkdirSync(a.dir, { recursive: true }); writeFileSync(`${a.dir}/yahoo_${simbolo.replace(/[^\w.-]/g, '_')}.json`, JSON.stringify(j)); }
   const q = x.indicators.quote[0], adj = x.indicators.adjclose?.[0]?.adjclose || q.close;
+  const tp = x.meta.currentTradingPeriod?.regular;
+  const enCurso = tp ? (Date.now() / 1000 < tp.end ? new Date((tp.start + x.meta.gmtoffset) * 1000).toISOString().slice(0, 10) : null) : HOY;
   const filas = x.timestamp.map((t, i) => ({ d: new Date((t + x.meta.gmtoffset) * 1000).toISOString().slice(0, 10), c: q.close[i], a: adj[i], h: q.high[i], l: q.low[i], v: q.volume[i] }))
-    .filter((f) => f.c != null && f.d <= CORTE && (a['incluir-hoy'] || f.d < HOY));
+    .filter((f) => f.c != null && f.d <= CORTE && (a['incluir-hoy'] || f.d !== enCurso) && (tp || a['incluir-hoy'] || f.d < HOY));
   const dividendos = Object.values(x.events?.dividends || {}).length;
   // Saltos falsos: un cierre que se aparta más de un 50 % del día anterior y del siguiente, que a su vez
   // se parecen entre sí, es un error del dato (pasó con el ETF 1306.T y dio una beta de 0,03): se quita.
@@ -110,7 +117,7 @@ for (let y = anioCorte - 10; y <= anioCorte; y++) {
   const fin = (DIA ? new Date(Date.UTC(y, MES - 1, DIA)) : new Date(Date.UTC(y, MES, 0))).toISOString().slice(0, 10);
   if (fin > CORTE) continue;
   const f = en(acc, fin);
-  if (f && f.d.slice(0, 7) === fin.slice(0, 7)) cierres.push({ anio: MES === 12 ? String(y) : `FY${MES <= 6 ? y - 1 : y}`, fecha: f.d, precio_cierre: r2(f.c) });
+  if (f && f.d.slice(0, 7) === fin.slice(0, 7)) cierres.push({ anio: MES === 12 ? String(y) : `FY${ETIQUETA === 'inicio' ? y - 1 : y}`, fecha: f.d, precio_cierre: r2(f.c) });
 }
 
 const fMax = ano.reduce((m, f) => ((f.h ?? f.c) > (m.h ?? m.c) ? f : m), ano[0]), fMin = ano.reduce((m, f) => ((f.l ?? f.c) < (m.l ?? m.c) ? f : m), ano[0]);

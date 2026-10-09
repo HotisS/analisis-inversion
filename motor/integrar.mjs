@@ -48,7 +48,8 @@ function recorrer(v, f) {
 
 export async function integrar(dir) {
   const notas = join(dir, 'notas');
-  const leer = (f) => (existsSync(join(notas, f)) ? JSON.parse(readFileSync(join(notas, f), 'utf8')) : null);
+  // Algunos subagentes guardan con marca BOM (PowerShell): se quita antes de leer.
+  const leer = (f) => (existsSync(join(notas, f)) ? JSON.parse(readFileSync(join(notas, f), 'utf8').replace(/^﻿/, '')) : null);
   const LETRAS = [...new Set([...BASE, ...(existsSync(notas) ? readdirSync(notas) : []).map((f) => (f.match(/^([A-OQ-Z])\.json$/) || [])[1]).filter(Boolean)])].sort();
   const N = Object.fromEntries(LETRAS.map((L) => [L, leer(`${L}.json`)]));
   let P = leer('propio.json');
@@ -129,7 +130,7 @@ export async function integrar(dir) {
   const limpiar = (o) => { if (Array.isArray(o)) o.forEach(limpiar); else if (esObjeto(o)) { delete o.notas_integrador; Object.values(o).forEach(limpiar); } };
   limpiar(datos);
   const revisarTextos = (o, ruta) => {
-    if (typeof o === 'string') { if (/\b(el|al|del) integrador\b|\bpendiente de (decidir|revisar)\b|\bsubagentes?\b/i.test(o) || /\b(TODO|FIXME|TBD)\b|`|\bcalc\.[a-z]/.test(o)) avisos.add(`Nota de trabajo en un campo que se imprime: ${ruta}: «${o.slice(0, 80)}…»`); }
+    if (typeof o === 'string') { if (/\b(el|al|del) integrador\b|\bpendiente de (decidir|revisar)\b|\bsubagentes?\b|\bborrador\b/i.test(o) || /\b(TODO|FIXME|TBD)\b|`|\bcalc\.[a-z]/.test(o)) avisos.add(`Nota de trabajo en un campo que se imprime: ${ruta}: «${o.slice(0, 80)}…»`); }
     else if (Array.isArray(o)) o.forEach((x, i) => revisarTextos(x, `${ruta}[${i}]`));
     else if (esObjeto(o)) for (const [k, v] of Object.entries(o)) if (k !== 'fuentes') revisarTextos(v, ruta ? `${ruta}.${k}` : k);
   };

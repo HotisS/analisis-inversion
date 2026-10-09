@@ -78,3 +78,13 @@ Lo aprendido en los análisis de octubre de 2026 (de Viscofan a Vertiv). Ahorra 
 - **Deterioros o reestructuración dentro del LTM**: `ltm.no_recurrentes_en_ebitda` (ya en el esquema); sin él el EV/EBITDA LTM sale inflado (Rentokil: 11,9x frente a 9,5x).
 - **Notas de trabajo en el informe**: `integrar` avisa ya de «subagente», comillas invertidas y «calc.» en campos que se imprimen. Tampoco cursivas raras: `*así*` sale en cursiva, pero no lo uses para nombres de campo.
 - **La síntesis**: ≤ 650 palabras y las mismas cifras que la portada (Zoetis escribió 1,9x y la portada daba 2,0x). Relee la portada antes de cerrar.
+
+## Vuelta 11 (8-9 oct 2026: Equifax, Daiichi, Microsoft, ICE, Novo, Alphabet, Uber, LVMH, Cochlear, Wolters Kluwer)
+- **Consenso de MarketScreener: comprueba la definición antes de usarlo.** Su EBITDA histórico y el previsto no siempre coinciden (Microsoft y Alphabet sumaban los pagos en acciones; LVMH, provisiones), y su BPA puede incluir ganancias de participadas (Alphabet) o partidas que la empresa excluye (Cochlear, la nube). Si tu EBITDA ya excluye una partida, no la restes otra vez en el ajuste del consenso.
+- **Comparables con EBITDA «ajustado» que excluye los pagos en acciones** (Uber, tecnológicas de EE. UU.): ponlos en la misma base que el tuyo o el múltiplo engaña (en Uber, 76 frente a 55 USD).
+- **Lo que se repite casi todos los años no es no recurrente**: costes de adquisición, reservas legales de Uber, reestructuraciones anuales.
+- **El rating suele estar en EDGAR o en el folleto de la última emisión de bonos**: no gastes búsquedas web en él.
+- **Webs tras Cloudflare** (Wolters Kluwer): lee los enlaces con el navegador integrado sin descargar nada allí y baja luego los PDF con `descargar.mjs`.
+- **Australia**: los anuncios antiguos salen del listado anual de la ASX (la API solo da los 5 últimos); operaciones de directivos en los «Appendix 3Y»; accionistas significativos en los formularios 603/604/605; posiciones cortas en `download.asic.gov.au/short-selling/RR<AAAAMMDD>-001-SSDailyAggShortPos.csv` (unos 4 días hábiles de retraso); tasa libre en la tabla F2 del RBA.
+- **`bolsa.mjs`** ya mira la hora de la bolsa (no la de Madrid) para saber si la sesión ha cerrado, y nombra los ejercicios por el año en que terminan salvo los que cierran en enero-marzo (Japón); `--etiqueta fin|inicio` lo fuerza. **`form4.mjs`** descarta los Form 4 en los que la empresa es accionista de otra. **`integrar.mjs`** quita la marca BOM y avisa de «BORRADOR».
+- **Guarda la nota desde el principio**: en ICE y Microsoft las notas siguieron vacías 30-45 minutos y un corte de red habría perdido todo.

@@ -36,11 +36,16 @@ if (sub.filings.files?.length && rec.filingDate.at(-1) > a.desde) console.error(
 
 const etiqueta = (x, t) => { const m = x.match(new RegExp(`<${t}>([\\s\\S]*?)</${t}>`)); if (!m) return null; const v = m[1].match(/<value>([\s\S]*?)<\/value>/); return (v ? v[1] : m[1].replace(/<[^>]+>/g, "")).trim() || null; };
 const ops = [];
+let otrosEmisores = 0;
 for (const f of filings) {
   // El documento principal es la versión con estilo (xslF345X0N/…); el XML en bruto está en la raíz.
   const xmlDoc = f.doc.replace(/^xslF345X\d+\//, '');
   let x;
   try { x = await get(`https://www.sec.gov/Archives/edgar/data/${cik}/${f.acc.replace(/-/g, '')}/${xmlDoc}`, false); } catch (e) { console.error(`AVISO: ${f.acc}: ${e.message}`); continue; }
+  // Una empresa también presenta Form 4 como accionista del 10 % de OTRA (Uber vendiendo Aurora, ICE en
+  // otras sociedades): solo cuentan los que tienen a esta empresa como emisor.
+  const emisor = etiqueta(x, 'issuerCik');
+  if (emisor && String(+emisor) !== cik) { otrosEmisores++; continue; }
   const nombre = (etiqueta(x, 'rptOwnerName') || '').replace(/&amp;/g, '&'), cargo = (etiqueta(x, 'officerTitle') || '').replace(/&amp;/g, '&') || (/<isDirector>\s*(1|true)/.test(x) ? 'Consejero' : null);
   const plan = /10b5-1/i.test(x);
   for (const m of x.matchAll(/<nonDerivativeTransaction>([\s\S]*?)<\/nonDerivativeTransaction>/g)) {
@@ -50,6 +55,7 @@ for (const f of filings) {
   }
 }
 
+if (otrosEmisores) console.error(`Fuera ${otrosEmisores} Form 4 en los que ${sub.name} es accionista de otra empresa (no son operaciones de sus directivos).`);
 const NOMBRES = { P: 'compra en mercado', S: 'venta en mercado', A: 'concesión', M: 'ejercicio de opciones', F: 'retención fiscal', G: 'donación', C: 'conversión' };
 const porPersona = {};
 for (const o of ops) {
