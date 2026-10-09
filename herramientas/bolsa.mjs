@@ -40,6 +40,14 @@ async function serie(simbolo) {
   const enCurso = tp ? (Date.now() / 1000 < tp.end ? new Date((tp.start + x.meta.gmtoffset) * 1000).toISOString().slice(0, 10) : null) : HOY;
   const filas = x.timestamp.map((t, i) => ({ d: new Date((t + x.meta.gmtoffset) * 1000).toISOString().slice(0, 10), c: q.close[i], a: adj[i], h: q.high[i], l: q.low[i], v: q.volume[i] }))
     .filter((f) => f.c != null && f.d <= CORTE && (a['incluir-hoy'] || f.d !== enCurso) && (tp || a['incluir-hoy'] || f.d < HOY));
+  // Yahoo a veces tarda horas en publicar una sesión ya cerrada (Krones, Uber): si la última fila es anterior al
+  // último día hábil cerrado, avisa para tomar el cierre de otra fuente (no se puede distinguir de un festivo).
+  if (filas.length) {
+    let esperada = new Date(Math.min(Date.parse(CORTE + 'T00:00:00Z'), Date.parse((enCurso || HOY) + 'T00:00:00Z') - (enCurso ? 86400000 : 0)));
+    while ([0, 6].includes(esperada.getUTCDay())) esperada = new Date(esperada - 86400000);
+    const e = esperada.toISOString().slice(0, 10);
+    if (filas.at(-1).d < e) console.error(`AVISO: ${simbolo}: el último cierre de Yahoo es del ${filas.at(-1).d}, pero el ${e} ya debería estar cerrado (¿festivo o Yahoo aún no lo tiene?). Compruébalo en otra fuente.`);
+  }
   const dividendos = Object.values(x.events?.dividends || {}).length;
   // Saltos falsos: un cierre que se aparta más de un 50 % del día anterior y del siguiente, que a su vez
   // se parecen entre sí, es un error del dato (pasó con el ETF 1306.T y dio una beta de 0,03): se quita.
