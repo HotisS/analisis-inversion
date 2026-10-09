@@ -12,6 +12,7 @@
 
 import { readFileSync, writeFileSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
+import { conviccionSugerida } from './conviccion.mjs';
 
 // ───────────────────────────── utilidades ─────────────────────────────
 
@@ -680,13 +681,19 @@ export function calcularEmpresa(datos) {
     return r >= 15 && (a === null || a >= 1) ? 'Comprar' : r <= -10 || (r < 0 && a !== null && a < 0.5) ? 'Vender' : 'Mantener';
   };
   // Las dos reglas: manda la relativa (el coste de oportunidad real es el mercado), salvo que la absoluta
-  // diga lo contrario (Comprar frente a Vender): entonces Mantener.
-  const combinar = (abs, rel) => (!rel ? abs : !abs ? rel : (abs === 'Comprar' && rel === 'Vender') || (abs === 'Vender' && rel === 'Comprar') ? 'Mantener' : rel);
+  // diga lo contrario (Comprar frente a Vender): entonces Mantener. Y un Comprar que solo da la relativa exige
+  // además al menos un 5 % de rentabilidad con nuestro coste de capital (aprobado el 9 oct 2026): «Comprar»
+  // con una rentabilidad propia nula (Rentokil −2 %, bioMérieux +1 %) no se sostiene ante el comité.
+  const RTE_MIN_SOLO_RELATIVA = 5;
+  const combinar = (abs, rel, rAbs) => (!rel ? abs : !abs ? rel
+    : (abs === 'Comprar' && rel === 'Vender') || (abs === 'Vender' && rel === 'Comprar') ? 'Mantener'
+      : rel === 'Comprar' && abs !== 'Comprar' && rAbs !== null && rAbs !== undefined && rAbs < RTE_MIN_SOLO_RELATIVA ? 'Mantener' : rel);
+  const rteEn = (vObj, p) => (vObj === null || vObj === undefined || !p ? null : (100 * (vObj - p)) / p + (100 * dpaOrdinario) / p);
   const reglaAbs = rte === null ? null
     : rte >= 15 && (asimetria === null || asimetria >= 1) ? 'Comprar'
       : rte <= -10 || (rte < 0 && asimetria !== null && asimetria < 0.5) ? 'Vender' : 'Mantener';
   const reglaRel = relativo ? reglaCon(relativo.valor_objetivo, relativo.alcista, relativo.bajista, precio) : null;
-  const regla = combinar(reglaAbs, reglaRel);
+  const regla = combinar(reglaAbs, reglaRel, rte);
   const potRel = relativo?.valor_objetivo && precio ? pct(relativo.valor_objetivo - precio, precio) : null;
   const asimRel = relativo && relativo.alcista !== null && relativo.bajista !== null && relativo.bajista < precio ? (relativo.alcista / precio - 1) / Math.abs(relativo.bajista / precio - 1) : null;
   const recomendacionFinal = res.recomendacion || regla;
@@ -702,7 +709,7 @@ export function calcularEmpresa(datos) {
   // Precio a partir del cual cambia la regla, con todas sus condiciones (también la asimetría, que depende
   // del precio): se recorre una rejilla de precios alrededor del valor objetivo.
   const vAlc = esc('alcista')?.valor ?? null, vBaj = esc('bajista')?.valor ?? null;
-  const reglaEn = (p) => combinar(reglaCon(valorObjetivo, vAlc, vBaj, p), relativo ? reglaCon(relativo.valor_objetivo, relativo.alcista, relativo.bajista, p) : null);
+  const reglaEn = (p) => combinar(reglaCon(valorObjetivo, vAlc, vBaj, p), relativo ? reglaCon(relativo.valor_objetivo, relativo.alcista, relativo.bajista, p) : null, rteEn(valorObjetivo, p));
   let nivelCompra = null, nivelVenta = null;
   if (valorObjetivo) {
     for (let k = 0; k <= 3000; k++) {
@@ -712,10 +719,18 @@ export function calcularEmpresa(datos) {
       if (r === 'Vender' && nivelVenta === null) nivelVenta = p;
     }
   }
+  const sug = conviccionSugerida({ recomendacion: recomendacionFinal, reglaAbs, reglaRel, rte, rteRel: potRel === null ? null : potRel + rentDiv,
+    asimetria, bajista: potBaj, gImplicito: dcf?.inverso?.crecimiento_implicito_pct, gBase: dcf?.inverso?.crecimiento_base_pct });
+  const convSintesis = String(res.sintesis || '').match(/convicci[oó]n/gi)?.length ?? 0;
+  if (res.conviccion && sug.conviccion && res.conviccion.toLowerCase() !== sug.conviccion.toLowerCase())
+    control('Convicción frente a la sugerida por los criterios', convSintesis >= 2,
+      `Los criterios dan «${sug.conviccion}» (${sug.razones.join('; ')}) y el análisis pone «${res.conviccion}»: explica en la síntesis por qué te apartas.`);
+  if (res.sintesis) control('La síntesis explica la convicción', convSintesis >= 2, 'La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría.');
   if (primaImpl === null) control('Prima implícita del mercado (regla relativa)', false, 'Falta valoracion.referencia_mercado.prima_implicita_pct: la recomendación sale solo de la regla absoluta.');
   if (meta.divisa_cotizacion && meta.divisa_cotizacion !== meta.divisa && !tc) control('Tipo de cambio de la divisa de cotización', false, 'Falta meta.tipo_cambio: los precios de la decisión solo salen en la divisa de las cuentas.');
   const recomendacion = {
     recomendacion: recomendacionFinal, regla, regla_absoluta: reglaAbs, regla_relativa: reglaRel, coincide, conviccion: res.conviccion ?? null,
+    conviccion_sugerida: sug.conviccion, conviccion_razones: sug.razones,
     reglas_discrepan: !!(reglaRel && reglaAbs && reglaRel !== reglaAbs),
     relativo: relativo ? { ...relativo, potencial_pct: red(potRel), rentabilidad_total_pct: potRel === null ? null : red(potRel + rentDiv), asimetria: red(asimRel, 2) } : null,
     objetivo_mercado_txt: relativo?.valor_objetivo ? ` · con la prima implícita del mercado: ${fmt(relativo.valor_objetivo, 2)}${enCot(relativo.valor_objetivo)} (${potRel >= 0 ? '+' : ''}${fmt(potRel, 1)} %)` : '',
@@ -744,7 +759,8 @@ export function calcularEmpresa(datos) {
         { concepto: 'Regla relativa (frente a lo que pide el mercado)', valor: reglaRel ?? 'n.d.' },
       ] : []),
       ...(dcf?.inverso?.crecimiento_implicito_pct !== null && dcf?.inverso?.crecimiento_implicito_pct !== undefined && n(d.sector?.tcac_previsto_pct) !== null ? [{ concepto: `Crecimiento anual implícito en el precio (${dcf.inverso.periodo}) frente al previsto para su mercado`, valor: `${fmt(dcf.inverso.crecimiento_implicito_pct, 1)} % frente a ${fmt(n(d.sector.tcac_previsto_pct), 1)} %` }] : []),
-      { concepto: relativo ? 'Recomendación según las reglas (manda la relativa salvo contradicción)' : 'Recomendación según la regla', valor: regla ?? 'n.d.' },
+      { concepto: relativo ? 'Recomendación según las reglas (manda la relativa salvo contradicción; un Comprar solo relativo exige ≥ 5 % con nuestro coste de capital)' : 'Recomendación según la regla', valor: regla ?? 'n.d.' },
+      ...(sug.conviccion ? [{ concepto: `Convicción según los criterios (${sug.razones.join('; ')})`, valor: sug.conviccion }] : []),
     ],
     niveles: valorObjetivo ? [
       { accion: 'Comprar', condicion: nivelCompra ? `Por debajo de ${fmt(nivelCompra, 2)}${enCot(nivelCompra)} (rentabilidad total esperada ≥ 15 % y el alcista compensa al bajista${relativo ? ', con la regla combinada' : ''})` : 'Ningún precio cercano cumple a la vez rentabilidad ≥ 15 % y asimetría ≥ 1' },

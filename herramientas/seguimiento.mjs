@@ -12,6 +12,7 @@
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { escribirZip } from '../motor/rellenar.mjs';
+import { conviccionSugerida } from '../motor/conviccion.mjs';
 
 const argv = process.argv.slice(2);
 const salida = argv.includes('--salida') ? argv[argv.indexOf('--salida') + 1] : 'seguimiento.xlsx';
@@ -64,6 +65,10 @@ for (const dir of readdirSync('informes', { withFileTypes: true }).filter((e) =>
     divisa: d.meta.divisa, precio: n(d.identificacion.precio), objetivo: n(d.calc.sintesis?.valor_objetivo), objetivo_mercado: n(rel.valor_objetivo),
     rte: n(R.rentabilidad_total_pct), rte_mercado: n(rel.rentabilidad_total_pct), analistas: n(d.consenso?.recomendaciones?.po_medio),
     compra: n(R.comprar_por_debajo), venta: n(R.vender_por_encima), regla_abs: R.regla_absoluta, regla_rel: R.regla_relativa,
+    // Convicción con los criterios del 9 oct 2026 (los informes anteriores la decidían a ojo).
+    conviccion_criterios: R.conviccion_sugerida ?? conviccionSugerida({ recomendacion: R.recomendacion, reglaAbs: R.regla_absoluta, reglaRel: R.regla_relativa,
+      rte: n(R.rentabilidad_total_pct), rteRel: n(rel.rentabilidad_total_pct), asimetria: n(R.asimetria), bajista: n(R.bajista_pct),
+      gImplicito: n(d.calc.dcf?.inverso?.crecimiento_implicito_pct), gBase: n(d.calc.dcf?.inverso?.crecimiento_base_pct) }).conviccion,
     criterios: CRITERIOS.map(([, , f]) => { try { return f(d); } catch { return null; } }),
     informe: `informes/${dir}/${existsSync(join('informes', dir, pdf)) ? pdf : base}`,
   });
@@ -84,7 +89,7 @@ for (const g of [...grupos.values()].sort((a, b) => porSenal(a.at(-1), b.at(-1))
 
 // ── Hoja ──
 const COLS = [
-  ['Iteración', 9], ['Empresa', 18], ['Ticker', 9], ['Fecha', 11], ['Geografía', 13], ['Sector', 20], ['Señal', 11], ['Convicción', 11], ['Divisa', 7],
+  ['Iteración', 9], ['Empresa', 18], ['Ticker', 9], ['Fecha', 11], ['Geografía', 13], ['Sector', 20], ['Señal', 11], ['Convicción', 11], ['Convicción según criterios', 11], ['Divisa', 7],
   ['Precio actual', 11], ['Precio objetivo 12 m', 12], ['Objetivo con la prima del mercado', 13], ['Rentabilidad total esperada', 12],
   ['Rentabilidad con la prima del mercado', 13], ['Objetivo analistas', 11], ['Comprar por debajo de', 11], ['Vender por encima de', 11],
   ['Regla absoluta', 10], ['Regla relativa', 10], ...CRITERIOS.map(([c]) => [c, 11]), ['Informe', 46],
@@ -103,14 +108,14 @@ filas.forEach((f, k) => {
   const celdas = [
     num(`A${r}`, f.iteracion, S.centro),
     texto(c(0), f.empresa), texto(c(1), f.ticker, S.centro), num(c(2), serie(f.fecha), S.fecha), texto(c(3), f.geografia), texto(c(4), f.sector),
-    texto(c(5), f.senal, S[f.senal] ?? S.centro), texto(c(6), f.conviccion, S.centro), texto(c(7), f.divisa, S.centro),
-    num(c(8), f.precio, S.num), num(c(9), f.objetivo, S.num), num(c(10), f.objetivo_mercado, S.num),
-    num(c(11), f.rte === null ? null : f.rte / 100, S.pct), num(c(12), f.rte_mercado === null ? null : f.rte_mercado / 100, S.pct),
-    num(c(13), f.analistas, S.num), num(c(14), f.compra, S.num), num(c(15), f.venta, S.num),
-    texto(c(16), f.regla_abs, S.centro), texto(c(17), f.regla_rel, S.centro),
-    ...f.criterios.map((v, i) => texto(c(18 + i), v ?? 'n.d.', v ? S[v] : S.centro)),
+    texto(c(5), f.senal, S[f.senal] ?? S.centro), texto(c(6), f.conviccion, S.centro), texto(c(7), f.conviccion_criterios, S.centro), texto(c(8), f.divisa, S.centro),
+    num(c(9), f.precio, S.num), num(c(10), f.objetivo, S.num), num(c(11), f.objetivo_mercado, S.num),
+    num(c(12), f.rte === null ? null : f.rte / 100, S.pct), num(c(13), f.rte_mercado === null ? null : f.rte_mercado / 100, S.pct),
+    num(c(14), f.analistas, S.num), num(c(15), f.compra, S.num), num(c(16), f.venta, S.num),
+    texto(c(17), f.regla_abs, S.centro), texto(c(18), f.regla_rel, S.centro),
+    ...f.criterios.map((v, i) => texto(c(19 + i), v ?? 'n.d.', v ? S[v] : S.centro)),
   ];
-  const ci = 18 + CRITERIOS.length;
+  const ci = 19 + CRITERIOS.length;
   celdas.push(texto(c(ci), f.informe, S.enlace));
   enlaces.push({ ref: c(ci), destino: f.informe });
   filasXml.push(`<row r="${r}">${celdas.join('')}</row>`);
@@ -134,7 +139,8 @@ const relsHoja = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 const criterios = [
   ['Columna', 'Qué mide'],
   ['Iteración', 'Número de análisis de la empresa (mismo ticker), por orden de fecha: 1 es el primero. Cada nuevo análisis en otra fecha va en su propia carpeta y su propia fila, sin pisar los anteriores, para seguir la evolución de la valoración.'],
-  ['Señal', 'Recomendación del informe. Rentabilidad total esperada (RTE) = subida al objetivo + dividendo. Comprar: RTE ≥ 15 % y asimetría ≥ 1. Vender: RTE ≤ −10 %, o RTE < 0 con asimetría < 0,5. Mantener: el resto. Se aplica con nuestro coste de capital (regla absoluta) y con la prima de riesgo que pide hoy el mercado (regla relativa); manda la relativa salvo que una diga Comprar y la otra Vender, que da Mantener.'],
+  ['Convicción según criterios', 'Convicción con los criterios fijos aprobados el 9 oct 2026 (motor/conviccion.mjs). Alta para Comprar: las dos reglas dan Comprar, rentabilidad total ≥ 25 %, asimetría ≥ 2, bajista no peor del −25 % y el precio descuenta al menos 3 puntos menos de crecimiento que el caso base. Alta para Vender: las dos reglas dan Vender, rentabilidad ≤ −20 % (≤ −15 % con la prima del mercado) y el precio pide al menos 5 puntos más de crecimiento que el caso base. Baja: las reglas discrepan o la rentabilidad que decide está a menos de 3 puntos del umbral. Media: el resto. En los informes anteriores al 9 oct la columna «Convicción» se decidió a ojo.'],
+  ['Señal', 'Recomendación del informe. Rentabilidad total esperada (RTE) = subida al objetivo + dividendo. Comprar: RTE ≥ 15 % y asimetría ≥ 1 (si solo lo da la regla relativa, además RTE ≥ 5 % con nuestro coste de capital, desde el 9 oct 2026). Vender: RTE ≤ −10 %, o RTE < 0 con asimetría < 0,5. Mantener: el resto. Se aplica con nuestro coste de capital (regla absoluta) y con la prima de riesgo que pide hoy el mercado (regla relativa); manda la relativa salvo que una diga Comprar y la otra Vender, que da Mantener.'],
   ['Precio objetivo 12 m', 'Valor objetivo del informe con nuestro coste de capital (síntesis ponderada de DCF, comparables y demás métodos), en la divisa de las cuentas.'],
   ['Objetivo con la prima del mercado', 'El mismo valor objetivo con el coste de capital que sale de la prima de riesgo implícita del mercado (Damodaran).'],
   ['Comprar por debajo de / Vender por encima de', 'Precios a los que cambiaría la señal, con la regla combinada.'],
