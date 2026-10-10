@@ -12,6 +12,7 @@ Lo que cualquier sesión de Claude, en cualquier equipo, tiene que saber antes d
 - Al cerrar cada empresa se comunica: recomendación y convicción, valor objetivo y rentabilidad esperada, cifras clave, commit y rutas del Word y del PDF.
 
 ## Decisiones
+- 11-oct-2026: el usuario pidió cerrar solo Dunelm e Intuit y dejar la cola en pausa (Nemetschek a medias).
 - 10-oct-2026: el usuario paró la cola y la reanudó de cuatro en cuatro.
 - 10-oct-2026: la lista de 14 empresas que seguía a Constellation y Auto Trader se perdió (no estaba en GitHub); se rehízo con el escáner (`cola.md`).
 - 10-oct-2026: Games Workshop adelantada al par 2, a petición del usuario; Uber entra como iteración 2.

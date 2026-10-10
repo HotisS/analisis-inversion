@@ -13,7 +13,7 @@ Cola rehecha el 10-oct-2026 con el escáner (`escaneos/escaneo-2026-10-10.xlsx`,
 | 3 | Dunelm | DNLM.L | Reino Unido | Valor | ROIC 72 % (ojo: arrendamientos), FCF 14 %, −32 % | Hecha (11-oct): Comprar, convicción media |
 | 3 | Uber | UBER | EE. UU. | Crecimiento | Iteración 2 (la 1, del 8-oct, dio Mantener, convicción media); ventas +18 %, FCF 6,9 %, −29 % | Hecha (10-oct): Mantener, convicción media (sin cambios frente a la del 8-oct) |
 | 4 | Nemetschek | NEM.DE | Alemania | Crecimiento | Software para construcción; ventas +14 %, ROIC 20 %, −38 % | Parada (10-oct): notas A-C y sentimiento hechos; D (mercado) cortada a medias; faltan valoración, textos, Word y PDF |
-| 4 | Intuit | INTU | EE. UU. | Valor | FCF 10,7 %, PER 11x, −56 % desde máximos | Parada (10-oct): notas A-D y sentimiento hechos; faltan valoración, textos, Word y PDF |
+| 4 | Intuit | INTU | EE. UU. | Valor | FCF 10,7 %, PER 11x, −56 % desde máximos | Hecha (11-oct): Comprar, convicción media |
 | 5 | Trigano | TRI.PA | Francia | Valor | Autocaravanas; EV/EBITDA 5x, FCF 22 %; el precio descuenta −14 % de crecimiento | Pendiente |
 | 5 | ATOSS Software | AOF.DE | Alemania | Crecimiento | ROIC 60 %, −30 % | Pendiente |
 | 6 | Gartner | IT | EE. UU. | Valor | ROIC 34 %, FCF 10,7 %, −27 % | Pendiente |
@@ -23,6 +23,6 @@ Cola rehecha el 10-oct-2026 con el escáner (`escaneos/escaneo-2026-10-10.xlsx`,
 | 8 | Deckers Outdoor | DECK | EE. UU. | Valor | ROIC 40 %, FCF 9,9 %, −32 % | Pendiente |
 | 8 | CTS Eventim | EVD.DE | Alemania | Crecimiento | ROIC 35 %, FCF 4,1 %, −32 % | Pendiente |
 
-**Cola parada el 10-oct-2026 a petición del usuario.** Al retomarla: generar Word y PDF de Dunelm; completar D de Nemetschek (bolsa, consenso, comparables, puente con HCSS); valorar y redactar Intuit y Nemetschek.
+**Cola en pausa desde el 11-oct-2026 a petición del usuario.** Queda a medias Nemetschek (notas A-C y sentimiento hechos; D de mercado cortada: falta bolsa, consenso, comparables y el puente con HCSS, cerrada el 1-jul-2026). Al retomarla: completar D de Nemetschek, valorar y redactar; después, el par 5 (Trigano y ATOSS).
 
 Suplentes si alguna no se puede valorar: Burkhalter (BRKN.SW, valor), Booking (BKNG, crecimiento), ANYCOLOR (5032.T, crecimiento), Moncler (MONC.MI), Sectra (SECT-B.ST), Yelp (YELP, valor).
