@@ -327,6 +327,16 @@ const ejemplo = {
       wacc: 'Bono español a 10 años del 3,2 % [15], beta ajustada de 1,05 y prima de mercado del 5,5 %, más 0,5 puntos por tamaño [15].',
       terminal: 'Crecimiento a perpetuidad del 2 %, en línea con la inflación a largo plazo; el múltiplo implícito se compara con los comparables [15].',
     },
+    sostenibilidad: {
+      puente_ingresos: [
+        { periodo: '2026e', volumen_pct: 4.1, precio_pct: 2.5, otros_pct: 0.0, comentario: 'Cartera de redes de 1,4 años de ventas y subidas indexadas al cobre [5].' },
+        { periodo: '2027e', volumen_pct: 3.7, precio_pct: 2.5, otros_pct: 0.0, comentario: 'Plan de capacidad: +12 % de producción de transformadores [8].' },
+        { periodo: '2028e', volumen_pct: 3.3, precio_pct: 2.5, otros_pct: 0.0, comentario: 'Inversión regulada en redes [20].' },
+      ],
+      mercado_final: { periodo: '2032e', tamano: 68000 },
+      veredicto: 'Sí',
+      justificacion: 'El crecimiento proyectado (5 % de media) está por debajo del previsto para el mercado (7,3 %) [19] y se apoya en una cartera de pedidos que ya cubre 1,4 años de ventas [5]. La reinversión prevista lo financia con el ROIC actual y la cuota apenas cambia. El poder de precios es limitado (la competencia asiática presiona en transformadores [26]), por eso el precio aporta solo 2,5 puntos al año.',
+    },
     lectura: 'El DCF base da un valor cercano al precio actual; el valor terminal pesa en torno al 70 %. El DCF inverso dice que el mercado descuenta un crecimiento similar al de nuestra proyección: no hay margen de seguridad sin una mejora adicional del margen [16].',
     confianza: 'Media',
   },

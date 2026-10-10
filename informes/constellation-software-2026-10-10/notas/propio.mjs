@@ -17,6 +17,11 @@ export default {
   dcf: {
     anios, wacc, terminal, etapa2: { ...etapa2, justificacion: T.etapa2_justificacion ?? null }, mitad_de_anio: true,
     justificacion: T.dcf_justificacion ?? null,
+    sostenibilidad: { puente_ingresos: [
+      { periodo: '2026e', volumen_pct: 3.0, precio_pct: 0.0, otros_pct: 15.9, comentario: 'Orgánico del 2-4 % (la empresa no separa precio y volumen) y compras del 1S26 más 818 M comprometidos después [A9, B2, D2].' },
+      { periodo: '2027e', volumen_pct: 3.0, precio_pct: 0.0, otros_pct: 11.0, comentario: 'Orgánico como en 2024-2025 y compras de ≈2.000 M, el FCFA2S de un año [A10].' },
+      { periodo: '2028e', volumen_pct: 3.0, precio_pct: 0.0, otros_pct: 9.0, comentario: 'Las compras crecen menos que el grupo: el crecimiento comprado baja [A1].' },
+    ], mercado_final: { periodo: '2031e', tamano: 282980 }, veredicto: T.sostenibilidad_veredicto ?? null, justificacion: T.sostenibilidad_justificacion ?? null },
     lectura: T.dcf_lectura ?? null,
     confianza: 'Media',
   },

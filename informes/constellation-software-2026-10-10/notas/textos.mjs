@@ -99,3 +99,6 @@ export const preguntas = {
 
 export const fuentes = [];
 export const huecos = [];
+
+export const sostenibilidad_veredicto = 'En parte';
+export const sostenibilidad_justificacion = `El crecimiento del caso base (10,1 % anual de media) es, sobre todo, comprado. Ese tramo es financiable: comprar el 11 % de crecimiento de 2027e cuesta unos 2.000 M (1,3 veces las ventas que compra), lo mismo que el FCFA2S de un año (2.031 M) [A10]. El orgánico es lo que flojea: del 2-4 % en 2024-2025 bajó al 1 % sin divisa en el 2T26, el más bajo de la década, y las licencias caen [A10, B2]. El foso de cada nicho y el 74,9 % de ingresos recurrentes sostienen un 3 % orgánico, pero no lo garantizan con la IA. La cuota del mercado de software vertical apenas sube (del 7,9 % al 8,3 % en 2031e). Por eso el crecimiento baja del 14 % al 5 % y el bajista quita 4 puntos al año.`;

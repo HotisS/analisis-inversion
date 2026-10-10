@@ -17,6 +17,11 @@ export default {
   dcf: {
     anios, wacc, terminal, etapa2: { ...etapa2, justificacion: T.etapa2_justificacion ?? null }, mitad_de_anio: true,
     justificacion: T.dcf_justificacion ?? null,
+    sostenibilidad: { puente_ingresos: [
+      { periodo: 'FY2027e', volumen_pct: -1.5, precio_pct: 3.0, otros_pct: 2.1, comentario: 'Guía: forecourts −1-2 %, palanca de precio +85-95 GBP (≈3 % del ARPR), producto y stock +35 GBP netos y Autorama con ≈40 M de ventas de vehículos [A2].' },
+      { periodo: 'FY2028e', volumen_pct: 0.0, precio_pct: 2.8, otros_pct: 1.7, comentario: 'Forecourts estables y precio en línea con FY2023-FY2026 (+78-117 GBP al año) [A2-A4].' },
+      { periodo: 'FY2029e', volumen_pct: 0.5, precio_pct: 2.8, otros_pct: 1.7, comentario: 'Producto (Deal Builder, Co-Driver) como en FY2025-FY2026 (+72-77 GBP) [A2, A3].' },
+    ], mercado_final: null, veredicto: T.sostenibilidad_veredicto ?? null, justificacion: T.sostenibilidad_justificacion ?? null },
     lectura: T.dcf_lectura ?? null,
     confianza: 'Media',
   },

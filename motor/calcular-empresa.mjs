@@ -407,6 +407,54 @@ export function calcularEmpresa(datos) {
         rentabilidad_implicita_pct: red(waccImpl, 1),
       },
     };
+    // Sostenibilidad del crecimiento: ¿puede la empresa financiar el crecimiento que proyectamos? Reinversión neta de la
+    // proyección (capex − amortización + variación del circulante) sobre el NOPAT; con el ROIC eso da el crecimiento que
+    // se puede financiar, y el aumento del NOPAT sobre la reinversión, el rendimiento que la proyección supone para el capital nuevo.
+    {
+      const sIn = dcfIn.sostenibilidad || {};
+      const filasP = (dcfBase.proyeccion || []).filter((f) => n(f.ebit) !== null);
+      const nopatP = filasP.map((f) => n(f.ebit) - (n(f.impuestos) ?? 0));
+      const reinvP = filasP.map((f) => (n(f.capex) ?? 0) - (n(f.amortizacion) ?? 0) + (n(f.variacion_circulante) ?? 0));
+      const sumN = nopatP.reduce((a, b) => a + b, 0), sumR = reinvP.reduce((a, b) => a + b, 0);
+      const tasaR = filasP.length && sumN > 0 ? (sumR / sumN) * 100 : null;
+      const crecP = media(filasP.map((f) => n(f.crecimiento_pct)));
+      const capexBruto = media(filasP.map((f) => (n(f.ingresos) ? (n(f.capex) / n(f.ingresos)) * 100 : null)));
+      const roicU = rentUlt.roic_pct ?? null, nopat0 = rentUlt.nopat ?? null;
+      const financiable = roicU !== null && tasaR !== null && sumR > 0 ? (roicU * tasaR) / 100 : null;
+      const roicImpl = nopat0 !== null && sumR > 0 && nopatP.length ? ((nopatP.at(-1) - nopat0) / sumR) * 100 : null;
+      const filaMerc = filasP.find((f) => f.periodo === sIn.mercado_final?.periodo) ?? filasP.at(-1);
+      const ingFin = n(filaMerc?.ingresos), merc = n(sIn.mercado_final?.tamano), cuotaHoy = n(d.competencia?.cuota_pct);
+      const cuotaFin = ingFin !== null && merc ? (ingFin / merc) * 100 : null;
+      const puente = lista(sIn.puente_ingresos).map((p) => {
+        const anio = lista(dcfIn.anios).find((a) => a.periodo === p.periodo);
+        const suma = [p.volumen_pct, p.precio_pct, p.otros_pct].map(n).reduce((a, b) => a + (b ?? 0), 0);
+        return { ...p, suma_pct: red(suma), crecimiento_pct: anio ? n(anio.crecimiento_pct) : null };
+      });
+      const descuadres = puente.filter((p) => p.crecimiento_pct !== null && Math.abs(p.suma_pct - p.crecimiento_pct) > 1);
+      if (puente.length) control('Puente de ingresos (volumen + precio + otros) = crecimiento del DCF', !descuadres.length, descuadres.map((p) => `${p.periodo}: ${fmt(p.suma_pct, 1)} % frente a ${fmt(p.crecimiento_pct, 1)} %`).join('; '));
+      const tope = Math.max(roicU ?? 0, roicIncremental ?? 0);
+      if (roicImpl !== null && roicU !== null) control('Rendimiento del capital nuevo de la proyección ≤ 1,25 × el histórico', roicImpl <= tope * 1.25 || roicImpl <= wacc + 5,
+        `La proyección supone que la inversión nueva rinde un ${fmt(roicImpl, 1)} % frente a un ROIC de ${fmt(roicU, 1)} %${roicIncremental !== null ? ` y un incremental histórico de ${fmt(roicIncremental, 1)} %` : ''}: crecimiento que la empresa no ha demostrado poder comprar.`);
+      if (cuotaFin !== null && cuotaHoy !== null) control('Cuota implícita al final de la proyección ≤ 1,5 × la actual (o +10 puntos)', cuotaFin <= Math.max(cuotaHoy * 1.5, cuotaHoy + 10),
+        `Cuota de ${fmt(cuotaFin, 1)} % en ${filaMerc?.periodo ?? "el último año"} frente al ${fmt(cuotaHoy, 1)} % de hoy.`);
+      const texto = !filasP.length ? null : sumR <= 0
+        ? `La proyección no necesita inversión neta de la amortización (reinversión acumulada de ${fmt(sumR, 0)} M, con un capex bruto medio del ${fmt(capexBruto, 1)} % de las ventas). En un negocio de activos ligeros, el crecimiento medio del ${fmt(crecP, 1)} % tiene que salir de subir precios y de ganar volumen sin capital nuevo, y la prueba es el poder de precios y la cuota${cuotaFin !== null ? ` (${fmt(cuotaFin, 1)} % del mercado en ${filaMerc?.periodo ?? 'el último año'}${cuotaHoy !== null ? `, frente al ${fmt(cuotaHoy, 1)} % de hoy` : ''})` : ''}; en un comprador en serie, la amortización es de intangibles comprados y la prueba es el capex bruto (las compras) frente al crecimiento comprado.`
+        : `La proyección reinvierte el ${fmt(tasaR, 0)} % del NOPAT. Con el ROIC del último ejercicio (${fmt(roicU, 1)} %), eso financia un crecimiento del ${fmt(financiable, 1)} % anual, frente al ${fmt(crecP, 1)} % de ingresos proyectado. Supone que el capital nuevo rinde un ${fmt(roicImpl, 1)} %${roicIncremental !== null ? `, frente a un ROIC incremental histórico del ${fmt(roicIncremental, 1)} %` : ''}${cuotaFin !== null ? `; la cuota de mercado pasaría al ${fmt(cuotaFin, 1)} %${cuotaHoy !== null ? ` desde el ${fmt(cuotaHoy, 1)} %` : ''}` : ''}.`;
+      dcf.sostenibilidad = filasP.length ? {
+        veredicto: sIn.veredicto ?? null,
+        crecimiento_proyectado_pct: red(crecP), tasa_reinversion_pct: red(tasaR, 0), crecimiento_financiable_pct: red(financiable),
+        roic_pct: roicU, roic_incremental_historico_pct: roicIncremental, roic_implicito_pct: red(roicImpl),
+        cuota_actual_pct: cuotaHoy, cuota_final_pct: red(cuotaFin), puente, texto,
+        tabla: [
+          { concepto: 'Crecimiento medio de ingresos proyectado', valor: `${fmt(crecP, 1)} %` },
+          { concepto: 'Capex bruto medio (incluidas compras si van como inversión)', valor: `${fmt(capexBruto, 1)} % de las ventas` },
+          { concepto: 'Reinversión neta acumulada (capex − amortización + circulante)', valor: `${fmt(sumR, 0)} M${tasaR !== null ? ` (${fmt(tasaR, 0)} % del NOPAT)` : ''}` },
+          ...(financiable !== null ? [{ concepto: 'Crecimiento que financia esa reinversión al ROIC actual', valor: `${fmt(financiable, 1)} % (ROIC ${fmt(roicU, 1)} %)` }] : []),
+          ...(roicImpl !== null ? [{ concepto: 'Rendimiento que la proyección supone para el capital nuevo', valor: `${fmt(roicImpl, 1)} %${roicIncremental !== null ? ` (histórico: ${fmt(roicIncremental, 1)} %)` : ''}` }] : []),
+          ...(cuotaFin !== null ? [{ concepto: `Cuota de mercado implícita en ${filaMerc?.periodo ?? 'el último año'}`, valor: `${fmt(cuotaFin, 1)} %${cuotaHoy !== null ? ` (hoy: ${fmt(cuotaHoy, 1)} %)` : ''}` }] : []),
+        ],
+      } : null;
+    }
     const nwcPrimero = n(lista(dcfIn.anios)[0]?.nwc_pct_ventas), nwcReal = balUlt.circulante_ventas_pct ?? null;
     if (nwcPrimero !== null && nwcReal !== null) control('Circulante del primer año de proyección ≈ último real', Math.abs(nwcPrimero - nwcReal) <= 3, `Supuesto ${fmt(nwcPrimero)} % frente a ${fmt(nwcReal)} % real: genera una variación de circulante de ${fmt(dcfBase.proyeccion[0]?.variacion_circulante, 0)} M en el primer año. Converge de forma gradual.`);
     if (wacc !== null && base.g !== null && wacc - base.g < 3) control('WACC − g ≥ 3 puntos', false, `WACC ${fmt(wacc, 2)} % y g ${fmt(base.g, 2)} %: el valor terminal se dispara; revisa.`);
@@ -759,6 +807,7 @@ export function calcularEmpresa(datos) {
         { concepto: 'Regla relativa (frente a lo que pide el mercado)', valor: reglaRel ?? 'n.d.' },
       ] : []),
       ...(dcf?.inverso?.crecimiento_implicito_pct !== null && dcf?.inverso?.crecimiento_implicito_pct !== undefined && n(d.sector?.tcac_previsto_pct) !== null ? [{ concepto: `Crecimiento anual implícito en el precio (${dcf.inverso.periodo}) frente al previsto para su mercado`, valor: `${fmt(dcf.inverso.crecimiento_implicito_pct, 1)} % frente a ${fmt(n(d.sector.tcac_previsto_pct), 1)} %` }] : []),
+      ...(dcf?.sostenibilidad ? [{ concepto: '¿La calidad de la empresa sostiene el crecimiento previsto?', valor: `${dcf.sostenibilidad.veredicto ?? 'n.d.'} (${fmt(dcf.sostenibilidad.crecimiento_proyectado_pct, 1)} % anual proyectado${dcf.sostenibilidad.crecimiento_financiable_pct !== null ? `; financiable al ROIC actual: ${fmt(dcf.sostenibilidad.crecimiento_financiable_pct, 1)} %` : '; sin inversión neta'})` }] : []),
       { concepto: relativo ? 'Recomendación según las reglas (manda la relativa salvo contradicción; un Comprar solo relativo exige ≥ 5 % con nuestro coste de capital)' : 'Recomendación según la regla', valor: regla ?? 'n.d.' },
       ...(sug.conviccion ? [{ concepto: `Convicción según los criterios (${sug.razones.join('; ')})`, valor: sug.conviccion }] : []),
     ],

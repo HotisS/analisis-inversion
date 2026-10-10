@@ -329,6 +329,13 @@ export default {
       sub('Del valor empresa al valor por acción', 'calc.dcf.puente', [['tabla', 'calc.dcf.puente', [['Concepto', 'concepto', '', 4], ['Importe', 'valor', '', 1.4, 'd']]], ['grafico', 'dcf_composicion']]),
       sub('Sensibilidad: WACC × {{calc.dcf.sensibilidad.eje_columnas}}', 'calc.dcf.sensibilidad', [['tabla', 'calc.dcf.sensibilidad.filas', [['WACC', 'wacc', '', 1], ['{{calc.dcf.sensibilidad.columnas[0]}}', 'v0', '2', 1, 'd'], ['{{calc.dcf.sensibilidad.columnas[1]}}', 'v1', '2', 1, 'd'], ['{{calc.dcf.sensibilidad.columnas[2]}}', 'v2', '2', 1, 'd'], ['{{calc.dcf.sensibilidad.columnas[3]}}', 'v3', '2', 1, 'd'], ['{{calc.dcf.sensibilidad.columnas[4]}}', 'v4', '2', 1, 'd']]]]),
       sub('Sensibilidad: margen EBITDA × crecimiento de ingresos (desplazamiento de toda la proyección)', 'calc.dcf.sensibilidad2', [['tabla', 'calc.dcf.sensibilidad2.filas', [['Margen \\ crec.', 'margen', '', 1], ['{{calc.dcf.sensibilidad2.columnas[0]}}', 'v0', '2', 1, 'd'], ['{{calc.dcf.sensibilidad2.columnas[1]}}', 'v1', '2', 1, 'd'], ['{{calc.dcf.sensibilidad2.columnas[2]}}', 'v2', '2', 1, 'd'], ['{{calc.dcf.sensibilidad2.columnas[3]}}', 'v3', '2', 1, 'd'], ['{{calc.dcf.sensibilidad2.columnas[4]}}', 'v4', '2', 1, 'd']]]]),
+      sub('¿Puede la empresa sostener el crecimiento previsto?', 'calc.dcf.sostenibilidad,dcf.sostenibilidad', [
+        ['p', '**Veredicto: {{dcf.sostenibilidad.veredicto}}.**'],
+        ['tabla', 'calc.dcf.sostenibilidad.tabla', [['Prueba', 'concepto', '', 4], ['Valor', 'valor', '', 1.8, 'd']]],
+        ['texto', 'calc.dcf.sostenibilidad.texto'],
+        ['tabla', 'calc.dcf.sostenibilidad.puente', [['Año', 'periodo', '', 0.8], ['Volumen', 'volumen_pct', '+pct', 0.8, 'd'], ['Precio', 'precio_pct', '+pct', 0.8, 'd'], ['Otros (mezcla, compras)', 'otros_pct', '+pct', 1, 'd'], ['Crecimiento', 'crecimiento_pct', '+pct', 0.9, 'd'], ['De dónde sale', 'comentario', '', 3.2]]],
+        ['texto', 'dcf.sostenibilidad.justificacion'],
+      ]),
       sub('DCF inverso: qué descuenta el precio actual', 'calc.dcf.inverso,dcf.lectura', [
         ['kv', [
           ['Crecimiento anual implícito en el precio ({{calc.dcf.inverso.periodo}})', '{{calc.dcf.inverso.crecimiento_implicito_pct|pct}} (base: {{calc.dcf.inverso.crecimiento_base_pct|pct}})'],

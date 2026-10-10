@@ -85,3 +85,6 @@ export const preguntas = {
 
 export const fuentes = [];
 export const huecos = [];
+
+export const sostenibilidad_veredicto = 'Sí';
+export const sostenibilidad_justificacion = `El crecimiento del caso base (4,1 % anual) no necesita capital: sale del precio y del producto, y la empresa ha demostrado ese poder de precios cada año de la década salvo FY2021 (el ARPR pasó de 1.546 a 2.995 GBP al mes) [A2, A11]. La palanca de precio de FY2023-FY2026 fue de +78 a +117 GBP al año, el 3-4 % del ARPR [A2-A4], y la guía de FY2027 pide +85-95 GBP [A2]. El foso (más del 75 % de los minutos en portales de coches) la sostiene [B1]. El límite está en el volumen: los forecourts caen y el mercado de usados apenas crece (+0,9 % anual en 2021-2025) [B3], así que el caso base no cuenta con ellos.`;

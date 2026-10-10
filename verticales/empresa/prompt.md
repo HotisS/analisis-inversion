@@ -503,6 +503,11 @@ El motor calcula ROIC, ROE, ROA, la descomposición DuPont y el ROIC incremental
 - `etapa2` (**DCF en tres etapas**): para negocios cuyo crecimiento dura claramente más que la proyección explícita (mercado poco penetrado, ventaja que se refuerza con la escala), `usar: true` y `anios` (5-10): tras el último año explícito, el motor añade una etapa de transición en la que el crecimiento baja en línea recta hasta el terminal; el margen se queda en el del último año (o va hacia `margen_final_pct`) y la inversión neta se reduce con el crecimiento. Entonces el último año explícito puede crecer por encima del terminal. **Solo** si el ROIC supera al WACC en más de 5 puntos (si no, crecer no crea valor y el motor lo marca) y con `justificacion` (60-120 palabras: penetración, tamaño del mercado, por qué la ventaja aguanta) [n]. El informe da el valor con y sin ella. En los demás, `usar: false`.
 - `mitad_de_anio`: `true` (flujos a mitad de año, lo habitual).
 - `justificacion`: un texto por bloque (crecimiento, márgenes, inversión, WACC, terminal; 60-120 palabras cada uno), comparando cada supuesto con su historia (`calc.cuenta`, `calc.flujos`, `calc.balance`), con el consenso y con el sector [n].
+- `sostenibilidad`: **¿la calidad de la empresa permite el crecimiento que proyectas?** Tres pruebas, que el motor junta en una tabla (`calc.dcf.sostenibilidad`):
+  - `puente_ingresos`: para los 3-5 primeros años de la proyección, de dónde sale el crecimiento: `volumen_pct` (clientes, unidades, ocupación), `precio_pct` (subidas de tarifa, ARPU) y `otros_pct` (mezcla, divisa, compras), con `comentario` que diga en qué se apoya cada parte (guía, palancas de la empresa, cartera de pedidos, historia) [n]. Deben sumar el `crecimiento_pct` del año (el motor lo comprueba con ±1 punto).
+  - `mercado_final`: tamaño del mercado de la sección 3 al final de la proyección (`periodo` y `tamano` en millones de `meta.divisa`, con el mismo perímetro que `competencia.cuota_pct`). El motor calcula la cuota implícita y avisa si pasa de 1,5 veces la actual (o de 10 puntos más).
+  - El motor calcula además la **reinversión** de la proyección y el crecimiento que financia al ROIC actual (ROIC × tasa de reinversión), y el rendimiento que la proyección supone para el capital nuevo frente al ROIC y al ROIC incremental históricos; avisa si supera en un 25 % al histórico. En negocios que no necesitan inversión neta, la prueba es el poder de precios y la cuota.
+  - `veredicto`: «Sí», «En parte» o «No». `justificacion` (60-120 palabras): por qué, con el foso, el poder de precios demostrado, el crecimiento a lo largo del ciclo y las tres pruebas. Si es «En parte» o «No», el caso base debe estar por debajo de lo que pide la prueba o la síntesis tiene que explicar por qué no. El veredicto sale en la tabla «La decisión» y, en una frase, en la síntesis.
 - `lectura` (120-200 palabras): se escribe **después de calcular**. Valor por acción, peso del valor terminal, qué dice el DCF inverso (`calc.dcf.inverso`: crecimiento, margen y rentabilidad implícitos en el precio) y si eso es exigente o conservador frente a la historia. Es el párrafo más importante de la valoración.
 
 ```json
@@ -513,6 +518,11 @@ El motor calcula ROIC, ROE, ROA, la descomposición DuPont y el ROIC incremental
   "etapa2": { "usar": false, "anios": 10, "margen_final_pct": null, "justificacion": "texto" },
   "mitad_de_anio": true,
   "justificacion": { "crecimiento": "texto", "margenes": "texto", "inversion": "texto", "wacc": "texto", "terminal": "texto" },
+  "sostenibilidad": {
+    "puente_ingresos": [{ "periodo": "2026e", "volumen_pct": 0.0, "precio_pct": 0.0, "otros_pct": 0.0, "comentario": "texto" }],
+    "mercado_final": { "periodo": "2030e", "tamano": 0 },
+    "veredicto": "Sí|En parte|No", "justificacion": "texto"
+  },
   "lectura": "texto",
   "confianza": "Alta|Media|Baja"
 }
@@ -641,7 +651,7 @@ El motor calcula ROIC, ROE, ROA, la descomposición DuPont y el ROIC incremental
 - `cambiaria_recomendacion`: 3-5 hechos concretos y observables que te harían cambiar la recomendación, con el umbral («si el margen EBITDA del 3T baja del 22 %, pasaríamos a Vender»).
 - `sintesis` (**500-650 palabras: una página**). La síntesis del informe entero para tomar la decisión; va en página propia, antes del resumen ejecutivo, y es lo único que leerá parte del comité. Se escribe **la última**, después de la revisión de comité, a partir de todo el informe. Párrafos separados por una línea en blanco, cada uno con un rótulo en negrita, en este orden y **solo los que pesan en la decisión**: si una sección no cambia nada (un ESG sin controversias, una historia sin lecciones), se omite; nunca se rellena.
   1. **La recomendación y por qué** (3-5 frases): recomendación y convicción, valor objetivo frente al precio, rentabilidad total esperada, asimetría de los escenarios y la razón principal en una frase. **Una frase obligatoria sobre la convicción: por qué es esa y qué la subiría o la bajaría** (un dato con su umbral o una fecha).
-  2. **El negocio**: qué lo hace valioso o vulnerable (foso, ROIC frente al WACC, márgenes frente a los competidores), con cifras.
+  2. **El negocio**: qué lo hace valioso o vulnerable (foso, ROIC frente al WACC, márgenes frente a los competidores), con cifras. **Una frase obligatoria con el veredicto de `dcf.sostenibilidad`**: si la calidad de la empresa sostiene el crecimiento que proyectamos, y por qué.
   3. **Sector y ciclo**: solo si mueve la tesis (punto del ciclo, crecimiento del mercado, regulación).
   4. **Finanzas**: crecimiento, márgenes, conversión en caja, deuda neta ajustada, calidad contable; solo lo que cambia el valor o el riesgo (por ejemplo, un FCF inflado por anticipos, un cambio de perímetro).
   5. **Equipo y gobierno**: si suma o resta, y por qué (control, rotación, remuneración, operaciones de directivos, cumplimiento de la guía).
@@ -681,7 +691,7 @@ Antes de entregar, responde por escrito para ti a estas preguntas y corrige el i
 
 1. ¿Puedo explicar en dos frases por qué el precio va a converger a mi valor? Si no, la tesis no está clara. ¿La recomendación (Comprar/Mantener/Vender) se sigue de la regla o está justificada si se aparta?
 2. ¿El DCF inverso muestra que el mercado descuenta algo exigente o algo conservador? ¿Lo dice el resumen?
-3. ¿Cada supuesto del DCF tiene un precedente en la historia de la empresa o del sector? ¿Cuál es el más agresivo?
+3. ¿Cada supuesto del DCF tiene un precedente en la historia de la empresa o del sector? ¿Cuál es el más agresivo? ¿La calidad de la empresa (foso, poder de precios, ROIC y reinversión) sostiene el crecimiento proyectado, según `calc.dcf.sostenibilidad`?
 4. ¿La proyección se aparta del consenso más de un 10 %? ¿Está explicado por qué?
 5. ¿Los comparables son de verdad comparables (modelo, tamaño, crecimiento)? ¿Hay alguno que distorsione la mediana?
 6. ¿Qué dice la calidad contable? ¿Hay algo en las notas que no aparece en el resumen y debería?
