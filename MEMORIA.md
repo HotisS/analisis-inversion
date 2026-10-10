@@ -5,7 +5,7 @@ Lo que cualquier sesión de Claude, en cualquier equipo, tiene que saber antes d
 ## Cómo trabajar
 - **El repo de GitHub (HotisS/analisis-inversion) es la única fuente.** El proyecto debe poder seguirse desde cualquier ordenador: al empezar, `git pull` (o clonar con la cuenta de gh); nada importante vive solo en un equipo.
 - **Cada cambio va a la vez a GitHub y a la copia local**: commit y push al terminar cada pieza (informe, cambio de plantilla, cola).
-- **La cola (`cola.md`) va de dos en dos**: dos empresas en paralelo, y después las dos siguientes.
+- **La cola (`cola.md`) va de dos en dos**: dos empresas en paralelo, y después las dos siguientes. Cada par mezcla una de valor y una de crecimiento.
 - **Cada análisis lleva la capa de sentimiento** (sección 28, subagente E): opiniones actuales en foros y comentarios, contrastadas con los datos; nunca fuente de cifras.
 - **Nunca datos personales** (el correo del usuario, su nombre…) en ninguna consulta externa, URL ni cabecera, tampoco en el User-Agent de la SEC.
 - **Siempre Word y PDF** de cada informe entregado (`construccion/a-pdf.ps1`).
