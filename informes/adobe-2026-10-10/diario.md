@@ -1,0 +1,9 @@
+# Diario — Adobe (ADBE), corte 2026-10-10
+
+- Commit de partida: ff3158d Sostenibilidad del crecimiento en el DCF: puente volumen × precio, cuota implícita, reinversión y veredicto; aplicada a Constellation y Auto Trader.
+- 13:52 Fase 1: US GAAP, USD, ejercicio de 52/53 semanas a finales de noviembre (FY2025 cerró el 28-nov-2025), etiqueta fin; último 10-Q del 3T26 (22-sep-2026). Lanzo los subagentes A-D; el sentimiento (E) lo hago yo (Reddit bloqueado).
+- 14:01 C terminado: Chakravarthy consejero delegado desde 1-dic-2026 (Narayen presidente ejecutivo), director financiero interino desde jun-2026; voto de remuneración de 2026 con el 49,23 % en contra; Narayen vendió 49,6 M USD; acuerdo con el DOJ (ROSCA) en mar-2026.
+- 14:03 A terminado: FY2016-FY2025 (ingresos 23.769 M en FY2025, EBIT 36,6 %), LTM ago-26 ingresos 25.970 M, FCF 10.592 M; no recurrentes Figma (1.000 M, FY2024); un solo segmento desde FY2026 (se dejan los tres anteriores con ingresos, explicado en limitaciones); ARR total 27,50 mil M (+11,2 %, con Semrush); recompras > flujo libre en FY2024-25.
+- 14:05 B terminado: Creative Cloud Pro +16,7 % (59,99 a 69,99 USD) en jun-ago 2025 y ARR +11,2 % después; competidores de EDGAR; Canva 4.000 M de ARR; mercado creativo de terceros (9.800 M) menor que Digital Media: sin cuota; pacto con el DOJ de 150 M (mar-2026); Getty suspendida, fuera de comparables.
+- 14:07 D terminado: 242,27 USD, 389,2 M acciones (cap. ~94.290 M); consenso FY26e-28e con EBITDA no GAAP (ajuste de pagos en acciones 8,3 %); 39 analistas, PO medio 275,06; beta ajustada 1,26; 7 comparables (mediana ~16x NTM frente a ~8,5x de Adobe); puente a 28-ago con 475 M de recompras posteriores.
+- 14:15 Valoración y textos hechos: DCF 295,24 USD, valor objetivo 306,45 (+26,5 %), Comprar, convicción Media (la sugerida). Word y PDF (57 páginas) generados. Parado aquí a petición del usuario: falta revisar el PDF a ojo y comunicarlo.

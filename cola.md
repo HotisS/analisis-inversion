@@ -8,8 +8,8 @@ Cola rehecha el 10-oct-2026 con el escáner (`escaneos/escaneo-2026-10-10.xlsx`,
 |---|---|---|---|---|---|---|
 | 1 | Constellation Software | CSU.TO | Canadá | Crecimiento | Compounder de software vertical tras la caída por la IA y la salida de Mark Leonard | Hecha (10-oct): Comprar, convicción baja |
 | 1 | Auto Trader Group | AUTO.L | Reino Unido | Valor | ROIC 47 %, FCF 7,9 %, −41 % desde máximos | Hecha (10-oct): Comprar, convicción media |
-| 2 | Adobe | ADBE | EE. UU. | Valor | ROIC 29 %, FCF 11 %, PER 8,8x; el precio descuenta crecimiento negativo | En curso (10-oct) |
-| 2 | Games Workshop (Warhammer) | GAW.L | Reino Unido | Crecimiento | ROIC 65 %, −30 %; adelantada a petición del usuario (10-oct) | En curso (10-oct) |
+| 2 | Adobe | ADBE | EE. UU. | Valor | ROIC 29 %, FCF 11 %, PER 8,8x; el precio descuenta crecimiento negativo | Parada (10-oct): Word y PDF generados (Comprar, convicción media); falta revisar el PDF a ojo y comunicarlo |
+| 2 | Games Workshop (Warhammer) | GAW.L | Reino Unido | Crecimiento | ROIC 65 %, −30 %; adelantada a petición del usuario (10-oct) | Parada (10-oct): Word y PDF generados (Vender, convicción media); falta revisar el PDF a ojo y comunicarlo |
 | 3 | Dunelm | DNLM.L | Reino Unido | Valor | ROIC 72 % (ojo: arrendamientos), FCF 14 %, −32 % | Pendiente |
 | 3 | Uber | UBER | EE. UU. | Crecimiento | Iteración 2 (la 1, del 8-oct, dio Mantener, convicción media); ventas +18 %, FCF 6,9 %, −29 % | Pendiente |
 | 4 | Nemetschek | NEM.DE | Alemania | Crecimiento | Software para construcción; ventas +14 %, ROIC 20 %, −38 % | Pendiente |
@@ -22,5 +22,7 @@ Cola rehecha el 10-oct-2026 con el escáner (`escaneos/escaneo-2026-10-10.xlsx`,
 | 7 | Medpace | MEDP | EE. UU. | Crecimiento | ROIC 56 %, FCF 4,1 % | Pendiente |
 | 8 | Deckers Outdoor | DECK | EE. UU. | Valor | ROIC 40 %, FCF 9,9 %, −32 % | Pendiente |
 | 8 | CTS Eventim | EVD.DE | Alemania | Crecimiento | ROIC 35 %, FCF 4,1 %, −32 % | Pendiente |
+
+**Cola parada el 10-oct-2026 a petición del usuario.** Al retomarla: revisar a ojo las páginas 1-4 de los PDF de Adobe y Games Workshop, comunicar sus resultados y seguir con el par 3.
 
 Suplentes si alguna no se puede valorar: Burkhalter (BRKN.SW, valor), Booking (BKNG, crecimiento), ANYCOLOR (5032.T, crecimiento), Moncler (MONC.MI), Sectra (SECT-B.ST), Yelp (YELP, valor).

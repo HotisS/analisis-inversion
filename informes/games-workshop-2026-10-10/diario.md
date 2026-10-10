@@ -1,0 +1,9 @@
+# Diario — Games Workshop (GAW.L), corte 2026-10-10
+
+- Commit de partida: ff3158d Sostenibilidad del crecimiento en el DCF: puente volumen × precio, cuota implícita, reinversión y veredicto; aplicada a Constellation y Auto Trader.
+- 13:52 Fase 1: NIIF (Reino Unido), GBP, ejercicio a finales de mayo, etiqueta fin, semestres. Adelantada al par 2 a petición del usuario. Lanzo los subagentes A-D; el sentimiento (E) lo hago yo.
+- 14:01 C terminado: Rountree sigue (reelegido con el 98,36 %); 3 independientes de 7; CEO 2,307 M GBP; votos de remuneración conflictivos en 2024-2025 (hasta 29,30 % en contra), 4,90 % en 2026; se usan las tres últimas juntas (88,21 % / 11,79 %) y se explica el historial en el texto; solo compras de directivos.
+- 14:04 A terminado: FY2017-FY2026 (ingresos 659,7 M, EBIT 275,0 M, 41,7 %); 2S26 solo +3,0 %; licencias de 52,5 a 32,9 M; sin deuda, caja 182,9 M; altas de derechos de uso 23,6 M en FY2026 (capex+RoU 73,0 M) a sumar al capex del DCF; 598 tiendas; dividendo de toda la caja sobre 120 M.
+- 14:06 D terminado: 163,90 GBP, 33,125 M acciones, capitalización ~5.429 M; consenso (3 analistas) FY27e BPA 6,02 por debajo de FY26 (6,225); 8 comparables (solo Sanrio parecido); 5 transacciones 10,5-16,7x (EA 29,3x); puente con 76 M de dividendos pagados tras el balance; beta 0,99; cortos 1,23 %.
+- 14:06 B terminado: subidas de precio del 2-6 % al año; Core +12,2 % a tipo constante en FY26; ICv2 y Arizton para el mercado; competidores con márgenes de 0-22 % (Wizards 46 %); Amazon y videojuegos con hechos. Primer cálculo con +5 % de crecimiento: DCF 85,24 GBP (−48 %). El consenso de MarketScreener es solo del Core (+10,4 % en FY27e): subo el caso base.
+- 14:15 Valoración y textos hechos: DCF 99,10 GBP, valor objetivo 102,00 (−37,8 %), Vender, convicción Media (sugerida Alta; explicado en la síntesis). Word y PDF (62 páginas) generados. Parado aquí a petición del usuario: falta revisar el PDF a ojo y comunicarlo.
