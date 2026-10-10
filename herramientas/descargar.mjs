@@ -27,6 +27,8 @@ if (argv[0] === '--lista') {
   }
   for (const [u, t] of enlaces) console.log(`${t.slice(0, 90)} | ${u}`);
   if (!enlaces.size) console.log(`Sin enlaces a PDF${h.length < 3000 ? ' (página casi vacía: ¿antibot o contenido cargado por JavaScript? prueba con el navegador)' : ''}.`);
+  // En Windows, process.exit() con la conexión aún cerrándose dispara un assert de libuv: se espera a que cierre.
+  await new Promise((ok) => setTimeout(ok, 300));
   process.exit(0);
 }
 const i = argv.indexOf('--dir');
