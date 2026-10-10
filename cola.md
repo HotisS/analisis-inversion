@@ -9,11 +9,11 @@ Cola rehecha el 10-oct-2026 con el escáner (`escaneos/escaneo-2026-10-10.xlsx`,
 | 1 | Constellation Software | CSU.TO | Canadá | Crecimiento | Compounder de software vertical tras la caída por la IA y la salida de Mark Leonard | En curso (10-oct) |
 | 1 | Auto Trader Group | AUTO.L | Reino Unido | Valor | ROIC 47 %, FCF 7,9 %, −41 % desde máximos | En curso (10-oct) |
 | 2 | Adobe | ADBE | EE. UU. | Valor | ROIC 29 %, FCF 11 %, PER 8,8x; el precio descuenta crecimiento negativo | Pendiente |
-| 2 | Nemetschek | NEM.DE | Alemania | Crecimiento | Software para construcción; ventas +14 %, ROIC 20 %, −38 % | Pendiente |
+| 2 | Games Workshop (Warhammer) | GAW.L | Reino Unido | Crecimiento | ROIC 65 %, −30 %; adelantada a petición del usuario (10-oct) | Pendiente |
 | 3 | Dunelm | DNLM.L | Reino Unido | Valor | ROIC 72 % (ojo: arrendamientos), FCF 14 %, −32 % | Pendiente |
 | 3 | Uber | UBER | EE. UU. | Crecimiento | Iteración 2 (la 1, del 8-oct, dio Mantener, convicción media); ventas +18 %, FCF 6,9 %, −29 % | Pendiente |
+| 4 | Nemetschek | NEM.DE | Alemania | Crecimiento | Software para construcción; ventas +14 %, ROIC 20 %, −38 % | Pendiente |
 | 4 | Intuit | INTU | EE. UU. | Valor | FCF 10,7 %, PER 11x, −56 % desde máximos | Pendiente |
-| 4 | Games Workshop (Warhammer) | GAW.L | Reino Unido | Crecimiento | ROIC 65 %, −30 % | Pendiente |
 | 5 | Trigano | TRI.PA | Francia | Valor | Autocaravanas; EV/EBITDA 5x, FCF 22 %; el precio descuenta −14 % de crecimiento | Pendiente |
 | 5 | ATOSS Software | AOF.DE | Alemania | Crecimiento | ROIC 60 %, −30 % | Pendiente |
 | 6 | Gartner | IT | EE. UU. | Valor | ROIC 34 %, FCF 10,7 %, −27 % | Pendiente |

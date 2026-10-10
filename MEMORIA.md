@@ -13,4 +13,5 @@ Lo que cualquier sesión de Claude, en cualquier equipo, tiene que saber antes d
 
 ## Decisiones
 - 10-oct-2026: la lista de 14 empresas que seguía a Constellation y Auto Trader se perdió (no estaba en GitHub); se rehízo con el escáner (`cola.md`).
+- 10-oct-2026: Games Workshop adelantada al par 2, a petición del usuario; Uber entra como iteración 2.
 - 10-oct-2026: el análisis de Constellation empezado en otro equipo no llegó a GitHub; se rehace desde cero.
