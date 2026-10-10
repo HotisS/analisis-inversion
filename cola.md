@@ -1,4 +1,4 @@
-En curso (10-oct) |En curso (10-oct) |En curso (10-oct) |En curso (10-oct) |# Cola de análisis de empresas
+# Cola de análisis de empresas
 
 Se analizan **de cuatro en cuatro, en paralelo** (dos pares seguidos de la tabla, para que haya dos de valor y dos de crecimiento; hasta el 10-oct eran de dos en dos) (`/analiza-empresa`), en el orden de la tabla. Al cerrar cada empresa: marca su estado aquí, `node herramientas/seguimiento.mjs`, commit y push. La cola vive en el repo para que cualquier equipo pueda seguirla tras un `git pull`.
 
@@ -10,7 +10,7 @@ Cola rehecha el 10-oct-2026 con el escáner (`escaneos/escaneo-2026-10-10.xlsx`,
 | 1 | Auto Trader Group | AUTO.L | Reino Unido | Valor | ROIC 47 %, FCF 7,9 %, −41 % desde máximos | Hecha (10-oct): Comprar, convicción media |
 | 2 | Adobe | ADBE | EE. UU. | Valor | ROIC 29 %, FCF 11 %, PER 8,8x; el precio descuenta crecimiento negativo | Hecha (10-oct): Comprar, convicción media |
 | 2 | Games Workshop (Warhammer) | GAW.L | Reino Unido | Crecimiento | ROIC 65 %, −30 %; adelantada a petición del usuario (10-oct) | Hecha (10-oct): Vender, convicción media |
-| 3 | Dunelm | DNLM.L | Reino Unido | Valor | ROIC 72 % (ojo: arrendamientos), FCF 14 %, −32 % | Parada (10-oct): valoración y textos hechos (Comprar, convicción media); faltan Word, PDF y revisión |
+| 3 | Dunelm | DNLM.L | Reino Unido | Valor | ROIC 72 % (ojo: arrendamientos), FCF 14 %, −32 % | Hecha (11-oct): Comprar, convicción media |
 | 3 | Uber | UBER | EE. UU. | Crecimiento | Iteración 2 (la 1, del 8-oct, dio Mantener, convicción media); ventas +18 %, FCF 6,9 %, −29 % | Hecha (10-oct): Mantener, convicción media (sin cambios frente a la del 8-oct) |
 | 4 | Nemetschek | NEM.DE | Alemania | Crecimiento | Software para construcción; ventas +14 %, ROIC 20 %, −38 % | Parada (10-oct): notas A-C y sentimiento hechos; D (mercado) cortada a medias; faltan valoración, textos, Word y PDF |
 | 4 | Intuit | INTU | EE. UU. | Valor | FCF 10,7 %, PER 11x, −56 % desde máximos | Parada (10-oct): notas A-D y sentimiento hechos; faltan valoración, textos, Word y PDF |

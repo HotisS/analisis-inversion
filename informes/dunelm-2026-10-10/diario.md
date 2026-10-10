@@ -8,3 +8,4 @@
 - 14:43 D terminado: 7,995 GBP, 202,2 M acciones; consenso FY27e ventas 1.894, EBITDA 316,3 (NIIF 16), BPA 0,741; beta 1,11; 7 comparables británicos (mediana EV/EBITDA NTM 5,5x frente a 6,2x de Dunelm); puente a 27-jun-2026 sin ajustes; cortos 1,32 %.
 - 14:44 Primer cálculo: DCF 9,38 GBP (+17,3 %), WACC 10,17 %; DCF inverso 0,8 % frente a 3,4 %; valor objetivo 8,79 (+9,9 %), rentabilidad total 15,6 % con el dividendo ordinario (5,7 %); las dos reglas Comprar; convicción sugerida Media.
 - 14:46 Parado a petición del usuario: valoración y textos hechos (Comprar, convicción media, valor objetivo 8,79 GBP); faltan Word, PDF y revisión.
+- 01:18 (11-oct) Reanudado a petición del usuario: Word y PDF (52 páginas), portada y síntesis revisadas como imagen. Comprar, convicción Media, valor objetivo 8,79 GBP (+9,9 %), rentabilidad total 15,6 %.
