@@ -6,8 +6,8 @@ Cola rehecha el 10-oct-2026 con el escáner (`escaneos/escaneo-2026-10-10.xlsx`,
 
 | Par | Empresa | Ticker | País | Estilo | Por qué (cifras del escáner) | Estado |
 |---|---|---|---|---|---|---|
-| 1 | Constellation Software | CSU.TO | Canadá | Crecimiento | Compounder de software vertical tras la caída por la IA y la salida de Mark Leonard | En curso (10-oct) |
-| 1 | Auto Trader Group | AUTO.L | Reino Unido | Valor | ROIC 47 %, FCF 7,9 %, −41 % desde máximos | En curso (10-oct) |
+| 1 | Constellation Software | CSU.TO | Canadá | Crecimiento | Compounder de software vertical tras la caída por la IA y la salida de Mark Leonard | Hecha (10-oct): Comprar, convicción baja |
+| 1 | Auto Trader Group | AUTO.L | Reino Unido | Valor | ROIC 47 %, FCF 7,9 %, −41 % desde máximos | Hecha (10-oct): Comprar, convicción media |
 | 2 | Adobe | ADBE | EE. UU. | Valor | ROIC 29 %, FCF 11 %, PER 8,8x; el precio descuenta crecimiento negativo | Pendiente |
 | 2 | Games Workshop (Warhammer) | GAW.L | Reino Unido | Crecimiento | ROIC 65 %, −30 %; adelantada a petición del usuario (10-oct) | Pendiente |
 | 3 | Dunelm | DNLM.L | Reino Unido | Valor | ROIC 72 % (ojo: arrendamientos), FCF 14 %, −32 % | Pendiente |
