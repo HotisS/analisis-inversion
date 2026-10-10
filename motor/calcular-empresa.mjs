@@ -417,11 +417,14 @@ export function calcularEmpresa(datos) {
       const reinvP = filasP.map((f) => (n(f.capex) ?? 0) - (n(f.amortizacion) ?? 0) + (n(f.variacion_circulante) ?? 0));
       const sumN = nopatP.reduce((a, b) => a + b, 0), sumR = reinvP.reduce((a, b) => a + b, 0);
       const tasaR = filasP.length && sumN > 0 ? (sumR / sumN) * 100 : null;
+      // Con una reinversión pequeña (menos del 15 % del NOPAT) el negocio es de activos ligeros: el ROIC × reinversión y el
+      // rendimiento del capital nuevo pierden sentido (dividen por casi cero) y la prueba pasa a ser el poder de precios.
+      const ligero = sumR <= 0 || tasaR === null || tasaR < 15;
       const crecP = media(filasP.map((f) => n(f.crecimiento_pct)));
       const capexBruto = media(filasP.map((f) => (n(f.ingresos) ? (n(f.capex) / n(f.ingresos)) * 100 : null)));
       const roicU = rentUlt.roic_pct ?? null, nopat0 = rentUlt.nopat ?? null;
-      const financiable = roicU !== null && tasaR !== null && sumR > 0 ? (roicU * tasaR) / 100 : null;
-      const roicImpl = nopat0 !== null && sumR > 0 && nopatP.length ? ((nopatP.at(-1) - nopat0) / sumR) * 100 : null;
+      const financiable = !ligero && roicU !== null ? (roicU * tasaR) / 100 : null;
+      const roicImpl = !ligero && nopat0 !== null && nopatP.length ? ((nopatP.at(-1) - nopat0) / sumR) * 100 : null;
       const filaMerc = filasP.find((f) => f.periodo === sIn.mercado_final?.periodo) ?? filasP.at(-1);
       const ingFin = n(filaMerc?.ingresos), merc = n(sIn.mercado_final?.tamano), cuotaHoy = n(d.competencia?.cuota_pct);
       const cuotaFin = ingFin !== null && merc ? (ingFin / merc) * 100 : null;
@@ -437,8 +440,8 @@ export function calcularEmpresa(datos) {
         `La proyección supone que la inversión nueva rinde un ${fmt(roicImpl, 1)} % frente a un ROIC de ${fmt(roicU, 1)} %${roicIncremental !== null ? ` y un incremental histórico de ${fmt(roicIncremental, 1)} %` : ''}: crecimiento que la empresa no ha demostrado poder comprar.`);
       if (cuotaFin !== null && cuotaHoy !== null) control('Cuota implícita al final de la proyección ≤ 1,5 × la actual (o +10 puntos)', cuotaFin <= Math.max(cuotaHoy * 1.5, cuotaHoy + 10),
         `Cuota de ${fmt(cuotaFin, 1)} % en ${filaMerc?.periodo ?? "el último año"} frente al ${fmt(cuotaHoy, 1)} % de hoy.`);
-      const texto = !filasP.length ? null : sumR <= 0
-        ? `La proyección no necesita inversión neta de la amortización (reinversión acumulada de ${fmt(sumR, 0)} M, con un capex bruto medio del ${fmt(capexBruto, 1)} % de las ventas). En un negocio de activos ligeros, el crecimiento medio del ${fmt(crecP, 1)} % tiene que salir de subir precios y de ganar volumen sin capital nuevo, y la prueba es el poder de precios y la cuota${cuotaFin !== null ? ` (${fmt(cuotaFin, 1)} % del mercado en ${filaMerc?.periodo ?? 'el último año'}${cuotaHoy !== null ? `, frente al ${fmt(cuotaHoy, 1)} % de hoy` : ''})` : ''}; en un comprador en serie, la amortización es de intangibles comprados y la prueba es el capex bruto (las compras) frente al crecimiento comprado.`
+      const texto = !filasP.length ? null : ligero
+        ? `La proyección apenas necesita inversión neta de la amortización (reinversión acumulada de ${fmt(sumR, 0)} M${tasaR !== null && sumR > 0 ? `, el ${fmt(tasaR, 0)} % del NOPAT` : ""}, con un capex bruto medio del ${fmt(capexBruto, 1)} % de las ventas). En un negocio de activos ligeros, el crecimiento medio del ${fmt(crecP, 1)} % tiene que salir de subir precios y de ganar volumen sin capital nuevo, y la prueba es el poder de precios y la cuota${cuotaFin !== null ? ` (${fmt(cuotaFin, 1)} % del mercado en ${filaMerc?.periodo ?? 'el último año'}${cuotaHoy !== null ? `, frente al ${fmt(cuotaHoy, 1)} % de hoy` : ''})` : ''}; en un comprador en serie, la amortización es de intangibles comprados y la prueba es el capex bruto (las compras) frente al crecimiento comprado.`
         : `La proyección reinvierte el ${fmt(tasaR, 0)} % del NOPAT. Con el ROIC del último ejercicio (${fmt(roicU, 1)} %), eso financia un crecimiento del ${fmt(financiable, 1)} % anual, frente al ${fmt(crecP, 1)} % de ingresos proyectado. Supone que el capital nuevo rinde un ${fmt(roicImpl, 1)} %${roicIncremental !== null ? `, frente a un ROIC incremental histórico del ${fmt(roicIncremental, 1)} %` : ''}${cuotaFin !== null ? `; la cuota de mercado pasaría al ${fmt(cuotaFin, 1)} %${cuotaHoy !== null ? ` desde el ${fmt(cuotaHoy, 1)} %` : ''}` : ''}.`;
       dcf.sostenibilidad = filasP.length ? {
         veredicto: sIn.veredicto ?? null,

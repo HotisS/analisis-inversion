@@ -11,7 +11,7 @@ Cola rehecha el 10-oct-2026 con el escáner (`escaneos/escaneo-2026-10-10.xlsx`,
 | 2 | Adobe | ADBE | EE. UU. | Valor | ROIC 29 %, FCF 11 %, PER 8,8x; el precio descuenta crecimiento negativo | Hecha (10-oct): Comprar, convicción media |
 | 2 | Games Workshop (Warhammer) | GAW.L | Reino Unido | Crecimiento | ROIC 65 %, −30 %; adelantada a petición del usuario (10-oct) | Hecha (10-oct): Vender, convicción media |
 | 3 | Dunelm | DNLM.L | Reino Unido | Valor | ROIC 72 % (ojo: arrendamientos), FCF 14 %, −32 % | En curso (10-oct) |
-| 3 | Uber | UBER | EE. UU. | Crecimiento | Iteración 2 (la 1, del 8-oct, dio Mantener, convicción media); ventas +18 %, FCF 6,9 %, −29 % | En curso (10-oct) |
+| 3 | Uber | UBER | EE. UU. | Crecimiento | Iteración 2 (la 1, del 8-oct, dio Mantener, convicción media); ventas +18 %, FCF 6,9 %, −29 % | Hecha (10-oct): Mantener, convicción media (sin cambios frente a la del 8-oct) |
 | 4 | Nemetschek | NEM.DE | Alemania | Crecimiento | Software para construcción; ventas +14 %, ROIC 20 %, −38 % | En curso (10-oct) |
 | 4 | Intuit | INTU | EE. UU. | Valor | FCF 10,7 %, PER 11x, −56 % desde máximos | En curso (10-oct) |
 | 5 | Trigano | TRI.PA | Francia | Valor | Autocaravanas; EV/EBITDA 5x, FCF 22 %; el precio descuenta −14 % de crecimiento | Pendiente |
