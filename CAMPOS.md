@@ -6,7 +6,7 @@ Criterio común a las tres: **primero los hechos verificables, después la opini
 
 ---
 
-## Empresa cotizada — 17 campos
+## Empresa cotizada — 18 campos
 
 | # | Campo | Por qué importa | En el informe |
 |---|---|---|---|
@@ -27,6 +27,7 @@ Criterio común a las tres: **primero los hechos verificables, después la opini
 | 14 | Catalizadores | Qué hechos con fecha pueden hacer que el mercado cambie de opinión. | Tabla |
 | 15 | Riesgos | Qué rompe la tesis y qué señal avisaría a tiempo. | Tabla numerada |
 | 16 | ESG y controversias | Lo que puede afectar a las cifras o impedir invertir. | Tabla de calificaciones, texto |
+| 17 | Sentimiento en foros y comentarios | Qué preocupa o entusiasma hoy al inversor de a pie: riesgos que el análisis no recoge y euforias o capitulaciones frente a las cifras. Opinión, nunca fuente de cifras. | Tono y tendencia, tabla de sitios leídos, tabla de temas contrastados con los datos |
 | — | Resumen ejecutivo | La conclusión en una página, coherente con los escenarios. | Primera página |
 
 ## ETF — 13 campos

@@ -2,7 +2,7 @@
 // (papel, documentación, protocolo de huecos, reglas de datos, qué calcula el motor, meta y fuentes)
 // y solo los campos de su encargo. Así cada subagente no lee el prompt entero.
 //
-//   node herramientas/prompt-de.mjs A|B|C|D
+//   node herramientas/prompt-de.mjs A|B|C|D|E
 
 import { readFileSync } from 'node:fs';
 
@@ -11,9 +11,10 @@ const GRUPOS = {
   B: ['historia', 'negocio', 'sector', 'competencia', 'esg'],
   C: ['directivos', 'gobierno'],
   D: ['identificacion', 'consenso', 'bolsa', 'multiplos_historicos', 'comparables', 'transacciones', 'dcf', 'valoracion'],
+  E: ['sentimiento'],
 };
 const g = (process.argv[2] || '').toUpperCase();
-if (!GRUPOS[g]) { console.error('Uso: node herramientas/prompt-de.mjs A|B|C|D'); process.exit(1); }
+if (!GRUPOS[g]) { console.error('Uso: node herramientas/prompt-de.mjs A|B|C|D|E'); process.exit(1); }
 
 const texto = readFileSync(new URL('../verticales/empresa/prompt.md', import.meta.url), 'utf8');
 // Trocea por encabezados de nivel 2 y 3

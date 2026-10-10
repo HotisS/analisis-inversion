@@ -104,6 +104,8 @@ const fuentesLista = [
   ['Informe anual 2025 de Grupo Alfa (ficticio)', 'Grupo Alfa', 'Primaria', '2026-03-05'], ['Informe anual 2025 de Beta Energy (ficticio)', 'Beta Energy', 'Primaria', '2026-03-10'],
   ['Base de operaciones corporativas (ficticia)', 'Proveedor de datos C', 'Datos de mercado', '2026-09-30'], ['Calificaciones ESG (ficticio)', 'Proveedor ESG', 'Datos de mercado', '2026-05-31'],
   ['Nota de inicio de cobertura (ficticia)', 'Banco de inversión', 'Analistas', '2026-06-10'], ['Artículo sobre la entrada de fabricantes asiáticos (ficticio)', 'Prensa económica', 'Prensa', '2026-08-18'],
+  ['Hilo «Compañía Ejemplo tras el 1S 2026» (ficticio)', 'Foro de inversores A', 'Foros y redes', '2026-07-30'], ['Comentarios de lectores a la noticia de resultados del 1S (ficticios)', 'Prensa económica', 'Foros y redes', '2026-07-25'],
+  ['Hilo sobre transformadores asiáticos (ficticio)', 'Foro de inversores B', 'Foros y redes', '2026-09-12'],
 ];
 
 const ejemplo = {
@@ -392,6 +394,21 @@ const ejemplo = {
       { tema: 'Norteamérica', pregunta: '¿Qué cartera tiene en Norteamérica y con qué margen?', por_que: 'Es la palanca del escenario alcista [25].' },
     ],
     confianza: 'Media',
+  },
+  sentimiento: {
+    tono: 'Dividido', tendencia: 'Empeora',
+    revisadas: [
+      { plataforma: 'Foro de inversores A', fecha: '2026-07', n_comentarios: 140, tono: 'Positivo', resumen: 'Los inversores particulares celebran la cartera de redes y piden más dividendo [27].' },
+      { plataforma: 'Comentarios de lectores (prensa económica)', fecha: '2026-07', n_comentarios: 35, tono: 'Neutro', resumen: 'Dudas sobre el margen de automoción; pocos comentarios con datos [28].' },
+      { plataforma: 'Foro de inversores B', fecha: '2026-09', n_comentarios: 60, tono: 'Negativo', resumen: 'Inquietud por los precios de los fabricantes asiáticos en transformadores [29].' },
+    ],
+    temas: [
+      { tema: 'Cartera de redes', postura: 'Alcista', peso: 'Alto', contraste: 'Los datos lo respaldan: la cartera crece y cubre 1,4 años de ventas [5].' },
+      { tema: 'Competencia asiática', postura: 'Bajista', peso: 'Medio', contraste: 'Coincide con el riesgo principal del informe; el margen aún no lo refleja [26].' },
+      { tema: 'Dividendo', postura: 'Dividida', peso: 'Bajo', contraste: 'El payout ya está en la parte alta de la política [1].' },
+    ],
+    lectura: 'El tono se ha enfriado desde los resultados del 1S: el optimismo por las redes sigue, pero el hilo más activo de septiembre gira en torno a la competencia asiática [27, 29]. No aporta cifras nuevas; confirma que el mercado ya mira el riesgo de margen que el informe sitúa en primer lugar, de modo que no es un catalizador oculto.',
+    confianza: 'Baja',
   },
   fuentes: fuentesLista.map(([titulo, editor, tipo, fecha], i) => ({ id: i + 1, titulo, editor, tipo, fecha, url: 'https://example.com' })),
 };

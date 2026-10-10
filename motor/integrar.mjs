@@ -16,7 +16,7 @@ import { readFileSync, writeFileSync, existsSync, readdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
-const ORDEN = ['meta', 'identificacion', 'resumen', 'historia', 'negocio', 'sector', 'competencia', 'financieros', 'trimestres', 'balance', 'flujos', 'calidad', 'rentabilidad', 'capital', 'directivos', 'gobierno', 'consenso', 'bolsa', 'multiplos_historicos', 'comparables', 'transacciones', 'dcf', 'escenarios', 'suma_partes', 'valoracion', 'catalizadores', 'riesgos', 'esg', 'preguntas', 'fuentes'];
+const ORDEN = ['meta', 'identificacion', 'resumen', 'historia', 'negocio', 'sector', 'competencia', 'financieros', 'trimestres', 'balance', 'flujos', 'calidad', 'rentabilidad', 'capital', 'directivos', 'gobierno', 'consenso', 'bolsa', 'multiplos_historicos', 'comparables', 'transacciones', 'dcf', 'escenarios', 'suma_partes', 'valoracion', 'catalizadores', 'riesgos', 'esg', 'preguntas', 'sentimiento', 'fuentes'];
 const BASE = ['A', 'B', 'C', 'D']; // las cuatro de siempre; las extra (E, F…) se leen si existen
 
 const esObjeto = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);

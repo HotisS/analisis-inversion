@@ -4,7 +4,7 @@ Plantillas Word, prompts y un motor para producir informes de análisis de inver
 
 | Vertical | Se le da | Campos | Gráficos |
 |---|---|---|---|
-| **Empresa cotizada** (extensa: 30-60 min, 30-50 páginas) | nombre, ticker o ISIN | 27 secciones | 28 |
+| **Empresa cotizada** (extensa: 30-60 min, 30-50 páginas) | nombre, ticker o ISIN | 28 secciones | 28 |
 | **ETF** | nombre, ticker o ISIN | 13 | 10 |
 | **Industria o sector** | nombre + ámbito geográfico | 18 | 11 |
 
@@ -30,7 +30,7 @@ prompt.md ──► el modelo investiga y escribe datos.json ──► rellenar.
 
 Y escribe, por ejemplo: `EMPRESA: Viscofan`, `ETF: IE00B4L5Y983` o `SECTOR: residencias de mayores` / `ÁMBITO: España`.
 
-**En Claude Code, dentro de este repo.** Para empresas, `/analiza-empresa Viscofan` (reparte la investigación entre cuatro subagentes y tarda 30-60 minutos). Para ETF y sectores, «analiza el ETF …» o «analiza el sector …». El [CLAUDE.md](CLAUDE.md) explica el procedimiento y el informe queda en `informes/`.
+**En Claude Code, dentro de este repo.** Para empresas, `/analiza-empresa Viscofan` (reparte la investigación entre cinco subagentes y tarda 30-60 minutos). Para ETF y sectores, «analiza el ETF …» o «analiza el sector …». El [CLAUDE.md](CLAUDE.md) explica el procedimiento y el informe queda en `informes/`.
 
 **A mano, con un datos.json ya hecho:**
 
@@ -63,8 +63,8 @@ herramientas/                 Para los análisis de empresa
   seguimiento.mjs             seguimiento.xlsx en la raíz: una fila por análisis (iteraciones 1, 2, 3… por empresa) con señal, precios y criterios ✓ = ✗
   escaner.mjs                 Escáner de mercado (Europa, Américas, Asia-Pacífico) → escaneos/escaneo-AAAA-MM-DD.xlsx; perfiles en escaner/perfiles.json
   yahoo.mjs, xlsx.mjs         Buscador, fichas y tipos de cambio de Yahoo (con caché); escritor de .xlsx
-  prompt-de.mjs               Parte del prompt de cada subagente (A-D)
-motor/integrar.mjs            Junta las notas A-D y la parte del analista en datos.json
+  prompt-de.mjs               Parte del prompt de cada subagente (A-E)
+motor/integrar.mjs            Junta las notas A-E y la parte del analista en datos.json
 informes/                     Informes generados (los ejemplos se versionan)
 ```
 

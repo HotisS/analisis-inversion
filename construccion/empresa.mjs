@@ -45,7 +45,7 @@ export default {
       'Parte II — Finanzas: 5. Cuenta de resultados · 6. Resultados recientes · 7. Balance y circulante · 8. Flujos de caja · 9. Calidad contable · 10. Rentabilidad · 11. Deuda y solvencia · 12. Asignación de capital',
       'Parte III — Equipo y gobierno: 13. Equipo directivo · 14. Gobierno corporativo',
       'Parte IV — Mercado y valoración: 15. Consenso · 16. Bolsa · 17. Múltiplos históricos · 18. Comparables · 19. Transacciones · 20. DCF · 21. Escenarios · 22. Suma de partes · 23. Síntesis',
-      'Parte V — Tesis, riesgos y seguimiento: 24. Catalizadores · 25. Riesgos y pre-mortem · 26. ESG · 27. Preguntas abiertas',
+      'Parte V — Tesis, riesgos y seguimiento: 24. Catalizadores · 25. Riesgos y pre-mortem · 26. ESG · 27. Preguntas abiertas · 28. Sentimiento en foros y comentarios',
       'Anexos: controles de calidad, información no disponible y fuentes',
       'Las secciones sin información verificable no se imprimen; quedan listadas en el anexo «Información no disponible».',
     ]],
@@ -379,6 +379,14 @@ export default {
 
     ['seccion', '27. Preguntas abiertas para la dirección y la due diligence', 'preguntas', 'Complemento', [
       ['tabla', 'preguntas.items', [['Tema', 'tema', '', 1.3], ['Pregunta', 'pregunta', '', 3.6], ['Por qué importa', 'por_que', '', 2.6]], { numerar: true }],
+    ]],
+
+    ['seccion', '28. Sentimiento en foros y comentarios', 'sentimiento', 'Complemento', [
+      ['p', '**Tono:** {{sentimiento.tono}} · **Tendencia:** {{sentimiento.tendencia}}'],
+      ['tabla', 'sentimiento.revisadas', [['Dónde', 'plataforma', '', 1.8], ['Fecha', 'fecha', '', 0.8], ['Comentarios', 'n_comentarios', '0', 0.9, 'd'], ['Tono', 'tono', '', 0.9, 'c'], ['Qué se dice', 'resumen', '', 3.6]]],
+      ['tabla', 'sentimiento.temas', [['Tema', 'tema', '', 1.6], ['Postura', 'postura', '', 0.9, 'c'], ['Peso', 'peso', '', 0.7, 'c'], ['Qué dicen los datos', 'contraste', '', 3.8]]],
+      ['texto', 'sentimiento.lectura'],
+      ['nota', 'Opiniones de inversores en foros, redes y comentarios de prensa: sirven para saber qué preocupa o entusiasma al mercado, no como fuente de cifras. No entran en la valoración.'],
     ]],
 
     // ───────── Anexos ─────────

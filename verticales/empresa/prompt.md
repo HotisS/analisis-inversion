@@ -8,7 +8,7 @@
 
 ## 0. Qué se espera de ti
 
-Un informe de inversión **completo y profundo**, del nivel de una iniciación de cobertura de un banco de inversión o del memorando de un comité de inversiones: 35-50 páginas, 27 secciones, en torno a 27 gráficos y más de 40 tablas. Para llegar a ese nivel hay que **leer los documentos**, no solo buscarlos. Un análisis bien hecho lleva **entre 30 y 60 minutos de trabajo**. Si terminas en diez, no lo has hecho: vuelve a la fase que hayas despachado deprisa.
+Un informe de inversión **completo y profundo**, del nivel de una iniciación de cobertura de un banco de inversión o del memorando de un comité de inversiones: 35-50 páginas, 28 secciones, en torno a 27 gráficos y más de 40 tablas. Para llegar a ese nivel hay que **leer los documentos**, no solo buscarlos. Un análisis bien hecho lleva **entre 30 y 60 minutos de trabajo**. Si terminas en diez, no lo has hecho: vuelve a la fase que hayas despachado deprisa.
 
 La profundidad no es extensión. Cada párrafo tiene que decir algo que el lector no sabía, con una cifra y una fuente. Prohibido el relleno: «la compañía es un referente en su sector», «sólido balance», «interesante oportunidad».
 
@@ -62,6 +62,11 @@ Localiza **y lee** como mínimo:
 - **Transacciones precedentes**: 5-10 operaciones del sector en los últimos 5-7 años, con múltiplo pagado cuando se publique.
 - **Múltiplos históricos** de la propia empresa: 5-10 años.
 
+### Fase 4 bis — Sentimiento en foros y comentarios (≈ 5 min)
+- Lee lo que opinan **hoy** los inversores: foros (Reddit, Seeking Alpha, Stocktwits, Rankia, Forocoches Inversión, HotCopper en Australia, Stockhouse en Canadá, ADVFN o LSE Chat en Reino Unido…), comentarios de lectores en la prensa económica y publicaciones con debate de los **últimos tres meses** (sobre todo desde los últimos resultados).
+- Es **opinión, no dato**: de aquí no sale ninguna cifra del informe (regla 0). Sirve para saber qué preocupa o entusiasma al mercado, qué riesgo ve la gente que el análisis no recoge y si el consenso de los particulares va en contra del de los analistas.
+- Cita cada hilo o página leída (tipo `"Foros y redes"`) y contrasta cada tema con los datos del informe. Nunca copies nombres de usuario ni datos personales; resume.
+
 ### Fase 5 — Primer cálculo (≈ 3 min)
 - Escribe `datos.json` con todos los **hechos** (fases 2-4) y deja todavía vacíos los supuestos del DCF y los textos.
 - Ejecuta `node calcular-empresa.mjs --datos datos.json`. Mira los ratios históricos que calcula (márgenes, circulante sobre ventas, capex sobre ventas, tipo impositivo, ROIC): son la base de los supuestos.
@@ -84,7 +89,7 @@ Haz de abogado del diablo con las preguntas de la sección 7 y corrige lo que fa
 - `node rellenar.mjs --plantilla plantilla.docx --datos datos.json --salida "Informe - <EMPRESA>.docx"`
 - Corrige hasta que no queden avisos evitables. En el chat, como máximo diez líneas: recomendación y convicción, valor objetivo, potencial, DCF inverso en una frase, cobertura, controles en «Revisar» que quedan y por qué, y las secciones o datos omitidos por falta de información (los de núcleo, primero).
 
-**Si dispones de subagentes** (Claude Code), reparte las fases 2-4 entre varios que trabajen en paralelo: cuentas y trimestres; sector y competencia; gobierno y directivos; mercado, comparables y transacciones. Cada uno debe devolver hechos con su fuente, no opiniones. Tú integras, calculas, redactas y revisas.
+**Si dispones de subagentes** (Claude Code), reparte las fases 2-4 bis entre varios que trabajen en paralelo: cuentas y trimestres; sector y competencia; gobierno y directivos; mercado, comparables y transacciones; sentimiento en foros. Cada uno debe devolver hechos con su fuente, no opiniones. Tú integras, calculas, redactas y revisas.
 
 **Si no puedes ejecutar código**, entrega el `datos.json` completo y di que falta ejecutar los dos comandos.
 
@@ -111,7 +116,7 @@ Cuando un dato o una sección no aparecen, **no te rindas al primer intento ni r
 
 | Núcleo (sin ellas el informe no se sostiene) | Complemento (enriquecen, pero se puede prescindir) |
 |---|---|
-| negocio, sector, competencia, financieros, balance, flujos, rentabilidad, capital, directivos, gobierno, consenso, comparables, dcf, escenarios, valoracion, riesgos | historia, trimestres, calidad, bolsa, multiplos_historicos, transacciones, suma_partes, catalizadores, esg, preguntas |
+| negocio, sector, competencia, financieros, balance, flujos, rentabilidad, capital, directivos, gobierno, consenso, comparables, dcf, escenarios, valoracion, riesgos | historia, trimestres, calidad, bolsa, multiplos_historicos, transacciones, suma_partes, catalizadores, esg, preguntas, sentimiento |
 
 Una sección de núcleo no se pone a `null` si tiene algo que aportar: mejor una sección de gobierno con el consejo y sin operaciones de directivos que ninguna sección.
 
@@ -119,7 +124,7 @@ Una sección de núcleo no se pone a `null` si tiene algo que aportar: mejor una
 
 0. **Ninguna cifra sale del resumen de un buscador.** Los resúmenes de WebSearch inventan números con aplomo (EBITDA semestrales que no existen, bonos al 6 %, múltiplos «calculados»). Toda cifra se copia **de la página o el documento original** que la publica, abierto y leído. Si WebFetch no abre un documento (certificado, tamaño, JavaScript), descárgalo con `curl` y extrae el texto (`pdftotext`, o un lector propio para xlsx). WebFetch abre la página original, así que vale como fuente, pero también la resume un modelo: para las cifras que mueven la valoración (acciones, deuda, EBITDA, consenso, múltiplos de los comparables) pídele el **texto literal** de la tabla o contrasta con un segundo documento.
 1. **Nunca inventes una cifra.** Si no hay dato fiable tras el protocolo de huecos, `null` (o `[]`) y el informe no lo imprime. Las estimaciones propias se marcan en el texto («estimación propia: …») con el cálculo explicado.
-2. **Fuentes.** Cada documento leído **y usado** va en `fuentes` con `id`, `tipo` y fecha (`AAAA-MM-DD`; si el documento no tiene fecha visible, `AAAA-MM` o `AAAA` del periodo al que se refiere), y se cita con `[n]` en los textos (también `[3, 5]` o `[3-5]`). No metas citas solo para cumplir: una fuente de contexto puede quedarse sin citar (el motor tolera hasta un 15 %). Las cifras que calcula el motor **no llevan cita ni la palabra «motor»**: son cálculos del propio informe. Tipos: `"Primaria"` (empresa o regulador), `"Datos de mercado"` (proveedores), `"Sectorial"` (asociaciones, estadística, estudios), `"Prensa"`, `"Analistas"`. Prioridad: Primaria > Datos de mercado > Sectorial > Analistas > Prensa.
+2. **Fuentes.** Cada documento leído **y usado** va en `fuentes` con `id`, `tipo` y fecha (`AAAA-MM-DD`; si el documento no tiene fecha visible, `AAAA-MM` o `AAAA` del periodo al que se refiere), y se cita con `[n]` en los textos (también `[3, 5]` o `[3-5]`). No metas citas solo para cumplir: una fuente de contexto puede quedarse sin citar (el motor tolera hasta un 15 %). Las cifras que calcula el motor **no llevan cita ni la palabra «motor»**: son cálculos del propio informe. Tipos: `"Primaria"` (empresa o regulador), `"Datos de mercado"` (proveedores), `"Sectorial"` (asociaciones, estadística, estudios), `"Prensa"`, `"Analistas"`, `"Foros y redes"` (foros, redes sociales y comentarios de lectores: solo para la sección `sentimiento`, nunca para una cifra). Prioridad: Primaria > Datos de mercado > Sectorial > Analistas > Prensa > Foros y redes.
 3. **Unidades.** Todas las magnitudes de las cuentas, la capitalización, el valor empresa y los comparables van **en millones** de `meta.divisa`. El precio, el BPA, el DPA y los valores por acción, en unidades de la divisa. Las acciones, en millones. Si conviertes desde otra divisa, usa el tipo de cierre de cada ejercicio (o el de la fecha de corte para datos de mercado) y dilo en `meta.limitaciones`.
 4. **Números como números**: punto decimal, sin separadores de miles ni unidades. Porcentajes en puntos: 12,5 % se escribe `12.5`.
 5. **Signos.** Gastos e inversiones **en positivo** (`coste_ventas`, `gastos_generales`, `amortizaciones`, `impuestos`, `capex`, `dividendos`, `recompras`, `adquisiciones`, `pagos_arrendamientos`). `resultado_financiero` con signo (negativo si es gasto neto). `minoritarios` de la cuenta en positivo si es beneficio atribuido a minoritarios.
@@ -156,7 +161,7 @@ Datos que el motor deriva solos: los **LTM** salen de `financieros.ltm` (o del �
 
 ## 6. Campos
 
-Las claves de primer nivel, en este orden: `meta`, `identificacion`, `resumen`, `historia`, `negocio`, `sector`, `competencia`, `financieros`, `trimestres`, `balance`, `flujos`, `calidad`, `rentabilidad`, `capital`, `directivos`, `gobierno`, `consenso`, `bolsa`, `multiplos_historicos`, `comparables`, `transacciones`, `dcf`, `escenarios`, `suma_partes`, `valoracion`, `catalizadores`, `riesgos`, `esg`, `preguntas`, `fuentes`.
+Las claves de primer nivel, en este orden: `meta`, `identificacion`, `resumen`, `historia`, `negocio`, `sector`, `competencia`, `financieros`, `trimestres`, `balance`, `flujos`, `calidad`, `rentabilidad`, `capital`, `directivos`, `gobierno`, `consenso`, `bolsa`, `multiplos_historicos`, `comparables`, `transacciones`, `dcf`, `escenarios`, `suma_partes`, `valoracion`, `catalizadores`, `riesgos`, `esg`, `preguntas`, `sentimiento`, `fuentes`.
 
 ```json
 "meta": {
@@ -603,6 +608,26 @@ El motor calcula ROIC, ROE, ROA, la descomposición DuPont y el ROIC incremental
 "preguntas": { "items": [{ "tema": "texto", "pregunta": "texto", "por_que": "texto" }], "confianza": "Alta|Media|Baja" }
 ```
 
+### 28. Sentimiento en foros y comentarios · `sentimiento`
+
+**Objetivo.** Saber qué opina hoy el inversor de a pie y la gente que comenta, para detectar riesgos o entusiasmos que el análisis no recoge y si el sentimiento va con o contra la tesis. **No es una fuente de cifras ni entra en la valoración.**
+- `revisadas`: 4-8 sitios leídos de los **últimos tres meses** (foros de inversores, Reddit, Seeking Alpha, Stocktwits, foros del país de la empresa, comentarios de lectores en la prensa económica), con el mes, el número aproximado de comentarios leídos, su tono («Positivo», «Neutro», «Negativo» o «Dividido») y un resumen de una o dos frases con cita [n]. Un sitio sin debate real (cinco mensajes sin contenido) no cuenta.
+- `tono` y `tendencia`: el tono general («Positivo», «Neutro», «Negativo» o «Dividido») y si mejora, sigue estable o empeora frente a hace tres-seis meses («Mejora», «Estable» o «Empeora»).
+- `temas`: 3-6 temas que más se repiten, con la `postura` dominante («Alcista», «Bajista» o «Dividida»), su `peso` en la conversación («Alto», «Medio» o «Bajo») y el `contraste`: qué dicen los datos del informe sobre ese tema (si la gente tiene razón, exagera o ve algo que el análisis no recogía) [n].
+- `lectura` (80-140 palabras): qué aporta a la decisión. Si el sentimiento es extremo (euforia o capitulación) frente a lo que dicen las cifras, si anticipa un riesgo o un catalizador y si contradice al consenso de analistas. Si no aporta nada, dilo en una frase.
+- **Nada de nombres de usuario ni datos personales**: se resume, no se copia. Las cifras que circulen en foros no se usan; si una cifra importa, se comprueba en su fuente original.
+- Si tras tres intentos no hay debate apreciable (empresa poco seguida), la sección va a `null` y se registra en `meta.huecos`.
+
+```json
+"sentimiento": {
+  "tono": "Positivo|Neutro|Negativo|Dividido", "tendencia": "Mejora|Estable|Empeora",
+  "revisadas": [{ "plataforma": "texto", "fecha": "AAAA-MM", "n_comentarios": 0, "tono": "Positivo|Neutro|Negativo|Dividido", "resumen": "texto" }],
+  "temas": [{ "tema": "texto", "postura": "Alcista|Bajista|Dividida", "peso": "Alto|Medio|Bajo", "contraste": "texto" }],
+  "lectura": "texto",
+  "confianza": "Alta|Media|Baja"
+}
+```
+
 ### Resumen ejecutivo (se escribe al final) · `resumen`
 
 - `recomendacion`: **«Comprar», «Mantener» o «Vender»**. El motor calcula la recomendación que sale de la regla (`calc.recomendacion.regla`): rentabilidad total esperada a 12 meses (potencial hasta el valor objetivo + dividendo ordinario) **≥ 15 % y asimetría ≥ 1** (el alcista gana al menos lo que pierde el bajista) → Comprar; **≤ −10 %**, o negativa con asimetría < 0,5 → Vender; el resto, Mantener. La regla se aplica **dos veces**: con tu WACC (`regla_absoluta`: ¿rinde más que su coste de capital?) y con la prima implícita del mercado (`regla_relativa`: ¿rinde más que lo que hoy pide el mercado, ajustado por su beta?). **Manda la relativa**, salvo que se contradigan (una Comprar y otra Vender), y entonces Mantener; y un **Comprar que solo da la relativa exige además una rentabilidad total ≥ 5 % con tu WACC** (si no, Mantener: «Comprar» con una rentabilidad propia nula no se sostiene). Si las dos discrepan (`calc.recomendacion.reglas_discrepan`), dilo en la síntesis: un Comprar solo relativo significa que gana al mercado pero no cubre su coste de capital histórico (si el mercado entero corrige, también cae); un Vender solo absoluto, que está tan cara como el mercado. **Ojo con la causa**: si la regla da Vender o Comprar solo porque tu tasa de descuento difiere de la que implica el precio (la tabla «La decisión» muestra la rentabilidad implícita frente al WACC y al mercado) y tus cifras coinciden con el consenso, la convicción es **baja** salvo que haya un catalizador con fecha; dilo en la síntesis. Puedes apartarte de la regla si hay una razón que la valoración no recoge (un catalizador con fecha, un riesgo binario, la calidad del gobierno), pero entonces `justificacion_recomendacion` (80-150 palabras) es obligatoria; si coincides con la regla, `null`.
@@ -621,7 +646,7 @@ El motor calcula ROIC, ROE, ROA, la descomposición DuPont y el ROIC incremental
   4. **Finanzas**: crecimiento, márgenes, conversión en caja, deuda neta ajustada, calidad contable; solo lo que cambia el valor o el riesgo (por ejemplo, un FCF inflado por anticipos, un cambio de perímetro).
   5. **Equipo y gobierno**: si suma o resta, y por qué (control, rotación, remuneración, operaciones de directivos, cumplimiento de la guía).
   6. **Valoración**: qué dice cada método y por qué pesan así, qué descuenta el precio (DCF inverso) frente a la historia y al consenso, y dónde discrepamos del mercado.
-  7. **Riesgos y catalizadores**: los dos o tres riesgos de mayor impacto por probabilidad, con su efecto en el valor por acción, y los catalizadores con fecha.
+  7. **Riesgos y catalizadores**: los dos o tres riesgos de mayor impacto por probabilidad, con su efecto en el valor por acción, y los catalizadores con fecha. Si el sentimiento de los foros (`sentimiento`) es extremo, contradice la tesis o señala un riesgo que el informe no tenía, dilo aquí en una frase.
   8. **Qué cambiaría la decisión**: los precios de compra y de venta, y los hechos observables con su umbral.
   Cada afirmación con su cifra; las del motor tal cual (`calc`), los hechos con cita [n]. Explica las relaciones (por qué un dato lleva a la conclusión), no enumeres. No copies la tesis ni las listas a favor y en contra: integra. Tono de comité, sin adjetivos de folleto.
 - `tesis` (200-300 palabras, 3 párrafos): (1) qué es la empresa y qué la hace valiosa, con cifras; (2) qué descuenta el precio, según el DCF inverso y los múltiplos; (3) por qué el mercado se equivoca o acierta, y qué hay que creer para invertir. Cita [n].
@@ -664,6 +689,7 @@ Antes de entregar, responde por escrito para ti a estas preguntas y corrige el i
 8. ¿El bajista es verosímil o es cosmético? ¿Cuánto se pierde de verdad si sale mal?
 9. ¿Qué dato, si estuviera mal, cambiaría la conclusión? ¿Lo he verificado en dos fuentes?
 10. ¿Hay alguna frase de relleno, sin cifra ni fuente? Bórrala.
+11. ¿Qué preocupa hoy a los inversores en los foros (`sentimiento`)? ¿Está ese riesgo en el informe, y alguna cifra del informe sale de un foro (no debe)?
 
 ## 8. Comprobaciones finales
 
