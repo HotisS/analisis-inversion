@@ -2,6 +2,8 @@
 
 Continúa `informes/cartera-2026-10-11.md`, que suponía pesos iguales; aquí van los títulos reales de la captura del 10-oct. Precios al cierre del viernes 9-oct-2026 (Yahoo Finance). Tipos de cambio: 1 EUR = 1,1206 USD = 177,2 JPY = 0,8461 GBP. Las rentabilidades esperadas son las de cada informe recalculadas a esos precios.
 
+**Corrección (12-oct):** el efectivo inicial era 2.920 EUR, no 3.000; las cifras corregidas (total 25.562 EUR, rentabilidad esperada +11,5 % → +23,8 %) están en `informes/cartera-2026-10-11.md`.
+
 Es la lectura de nuestros informes con nuestro método, no asesoramiento financiero personalizado.
 
 ## Tamaño y pesos actuales
