@@ -23,6 +23,6 @@ Cola rehecha el 10-oct-2026 con el escáner (`escaneos/escaneo-2026-10-10.xlsx`,
 | 8 | Deckers Outdoor | DECK | EE. UU. | Valor | ROIC 40 %, FCF 9,9 %, −32 % | Pendiente |
 | 8 | CTS Eventim | EVD.DE | Alemania | Crecimiento | ROIC 35 %, FCF 4,1 %, −32 % | Pendiente |
 
-**Cola en pausa desde el 11-oct-2026 a petición del usuario.** Queda a medias Nemetschek (notas A-C y sentimiento hechos; D de mercado cortada: falta bolsa, consenso, comparables y el puente con HCSS, cerrada el 1-jul-2026). Al retomarla: completar D de Nemetschek, valorar y redactar; después, el par 5 (Trigano y ATOSS).
+**Reanudada el 11-oct-2026 (10:55) en tres tandas**: 1) Nemetschek, Deckers, Gartner y Trigano (en curso); 2) Burkhalter (BRKN.SW), CTS Eventim y ATOSS; 3) Pluxee (PLX.PA), Technip Energies (TE.PA) y Betsson. Medpace y Pro Medicus salen (PER 32x y 73x). Las filas de la tabla se quitan al cerrar cada empresa.
 
 Suplentes si alguna no se puede valorar: Burkhalter (BRKN.SW, valor), Booking (BKNG, crecimiento), ANYCOLOR (5032.T, crecimiento), Moncler (MONC.MI), Sectra (SECT-B.ST), Yelp (YELP, valor).
