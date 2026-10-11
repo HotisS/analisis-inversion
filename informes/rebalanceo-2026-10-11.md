@@ -135,7 +135,7 @@ La señal es el volumen de Norteamérica: dos trimestres seguidos en negativo se
 
 ## Cartera final con los cambios
 
-Total: 25.642 EUR, al cierre del 9-oct. El oro no se toca.
+Total: 25.642 EUR, al cierre del 9-oct. El oro no se toca. Actualizada con Deckers (ver «Actualizaciones con los análisis nuevos»).
 
 | Posición | Títulos | Importe (EUR) | Peso del total |
 |---|---|---|---|
@@ -149,12 +149,12 @@ Total: 25.642 EUR, al cierre del 9-oct. El oro no se toca.
 | Daiichi Sankyo | 100 | 1.480 | 5,8 % |
 | Fluidra | 85 | 1.458 | 5,7 % |
 | SAP | 7 | 1.340 | 5,2 % |
-| Netflix | 17 | 1.066 | 4,2 % |
+| Deckers Outdoor | 14 | 1.036 | 4,0 % |
 | ICE | 6 | 836 | 3,3 % |
 | Grifols | 84 | 830 | 3,2 % |
 | Equifax | 6 | 781 | 3,0 % |
 | Alphabet | 2 | 628 | 2,4 % |
-| Efectivo | | 1.026 | 4,0 % |
+| Efectivo | | 1.056 | 4,1 % |
 | **Total** | | **25.642** | **100 %** |
 
 ## ¿Son las tres compras las mejores de lo analizado?
@@ -208,3 +208,12 @@ Orden propuesto:
 - **Tanda 1**: Nemetschek, Deckers, Gartner y Trigano.
 - **Tanda 2**: Burkhalter, CTS Eventim y ATOSS.
 - **Tanda 3**: Pluxee, Technip Energies y Betsson.
+
+## Actualizaciones con los análisis nuevos
+
+Cada análisis nuevo se compara con Wolters Kluwer, Auto Trader y Fluidra: rentabilidad esperada, bajista, asimetría, convicción y encaje en la cartera.
+
+- **Nemetschek** (Comprar, convicción baja; +9,8 %, alcista +44 % / bajista −40 %, asimetría 1,1x): no supera a las tres. Sin cambios.
+- **Deckers** (Comprar, **convicción alta**; 82,89 → 108,87 USD, +31,3 %, alcista +53 % / bajista −18,5 %, asimetría 2,9x; calidad «Sí»): no desplaza a ninguna de las tres. Rinde menos que Wolters Kluwer y Auto Trader, y algo menos que Fluidra con un bajista algo mayor. Pero es la única Comprar con convicción alta y es claramente mejor que lo que queda de Netflix (−13,1 % esperado). **Cambio: vender los 17 Netflix que quedaban (≈ 1.066 EUR) y comprar 14 Deckers (≈ 1.161 USD, 1.036 EUR).** La divisa no cambia (dólar por dólar) y el efectivo sube a 1.056 EUR.
+
+Efecto: la rentabilidad esperada de las acciones pasa del +26,6 % al **+29,0 %**, y la del total (oro y efectivo al 0 %) del +20,4 % al **+22,2 %**. El bajista medio de las acciones mejora del −30,0 % al −28,4 %.
