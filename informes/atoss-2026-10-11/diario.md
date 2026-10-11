@@ -1,0 +1,4 @@
+# Diario — ATOSS Software SE (AOF.DE), corte 2026-10-11
+
+- Commit de partida: aa6fbbb Informe de Burkhalter (Mantener, convicción baja).
+- Fase 1: ATOSS Software SE, Xetra AOF, ISIN DE0005104400, EUR, NIIF-UE, ejercicio natural. Índices comprobados en el informe semestral 2026: SDAX y TecDAX (no MDAX). bolsa.mjs frente a EXSE.DE (SDAX, rentabilidad total) y EXS2.DE (TecDAX). Corte en domingo: cierre del viernes 9-oct-2026, 87,30 EUR (mín. 52s 65,0 el 26-jun; máx. 124,0 el 13-ene). Acciones 15.906.272. Obereder 23,90 %, General Atlantic 21,59 %. Relevo del CEO fundador a final de 2026. Último anual: 2025; último intermedio: 1S26 (11-ago-2026). Próximos resultados: 3T26 el 23-oct-2026. Software con nube: pasivos de contrato en el circulante desde el principio. Lanzo A-D; E (sentimiento) lo hago yo.
