@@ -19,6 +19,6 @@ Cola rehecha el 10-oct-2026 con el escáner (`escaneos/escaneo-2026-10-10.xlsx`,
 | 7 | Medpace | MEDP | EE. UU. | Crecimiento | ROIC 56 %, FCF 4,1 % | Pendiente |
 | 8 | CTS Eventim | EVD.DE | Alemania | Crecimiento | ROIC 35 %, FCF 4,1 %, −32 % | Pendiente |
 
-**Reanudada el 11-oct-2026; desde las 16:05, de dos en dos** (a las 13:10 un límite de uso cortó Deckers, Gartner, Trigano y Burkhalter a medias; sus notas están en sus carpetas). Orden: Deckers y Trigano (en curso), Gartner y Burkhalter, y después de dos en dos CTS Eventim, ATOSS, Pluxee (PLX.PA), Technip Energies (TE.PA) y Betsson. Nemetschek hecha (Comprar, convicción baja). Medpace y Pro Medicus salen (PER 32x y 73x). Las filas de la tabla se quitan al cerrar cada empresa.
+**Reanudada el 11-oct-2026; desde las 16:05, de dos en dos** (a las 13:10 un límite de uso cortó Deckers, Gartner, Trigano y Burkhalter a medias; sus notas están en sus carpetas). Orden: Deckers y Trigano (en curso), Gartner y Burkhalter (hechas), y después de dos en dos CTS Eventim, ATOSS, Pluxee (PLX.PA), Technip Energies (TE.PA) y Betsson. Nemetschek hecha (Comprar, convicción baja). Medpace y Pro Medicus salen (PER 32x y 73x). Las filas de la tabla se quitan al cerrar cada empresa.
 
 Suplentes si alguna no se puede valorar: Burkhalter (BRKN.SW, valor), Booking (BKNG, crecimiento), ANYCOLOR (5032.T, crecimiento), Moncler (MONC.MI), Sectra (SECT-B.ST), Yelp (YELP, valor).

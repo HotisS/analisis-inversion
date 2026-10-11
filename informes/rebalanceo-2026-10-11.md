@@ -221,3 +221,4 @@ Efecto: la rentabilidad esperada de las acciones pasa del +26,6 % al **+29,0 %**
 
 Efecto: la rentabilidad esperada de las acciones pasa del +29,0 % al **+30,8 %**, y la del total del +22,2 % al **+23,7 %**. El bajista medio mejora del −28,4 % al −27,9 %.
 - **Gartner** (Comprar, convicción media; 191,15 → 258,48 USD, +35,2 %, alcista +80 % / bajista −39 %, asimetría 2,0x; calidad «En parte»): no supera a ninguna. Rinde menos que Auto Trader con más bajista, y repite el riesgo de IA (investigación por suscripción) de Wolters Kluwer y SAP. Sin cambios.
+- **Burkhalter** (Mantener, convicción baja; 124,60 → 111,78 CHF, rentabilidad total −6,1 %, alcista +13,5 % / bajista −37 %): no entra. El ROIC publicado está inflado por las normas suizas (≈ 11 % real) y su crecimiento orgánico es negativo. Sin cambios; la cartera sigue sin francos suizos.

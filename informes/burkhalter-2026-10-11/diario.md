@@ -1,0 +1,7 @@
+# Diario — Burkhalter Holding AG (BRKN.SW), corte 2026-10-11
+
+- Commit de partida: 3998d43 Informe de Nemetschek (Comprar, convicción baja).
+- Fase 1: Burkhalter Holding AG, SIX (BRKN), CHF, ejercicio natural, publica anual y semestral. Corte en domingo: cierre del viernes 9-oct-2026, 124,60 CHF (bolsa.mjs; rango 116,6-192,4; −36 % desde el máximo del 22-abr-2026). Último informe: 1S26 (7-sep-2026: ventas +0,1 %, BPA +8 %, guía de BPA «moderadamente» al alza); la acción cayó ≈ 8 % ese día. Análisis en paralelo con CTS Eventim y ATOSS. Lanzo A-D en primer plano; E lo hago yo.
+- Reanudación (11-oct, tarde): A, B, C y D relanzados en paralelo con el ENCARGO_COMUN existente (terminaron en 6-12 minutos); E lo hice yo (debate de particulares casi inexistente: foros de cash.ch, Investing y wikifolio sin mensajes; finanzen.ch/net y Stocktwits dan 403).
+- Propio: Swiss GAAP FER (fondo de comercio compensado: ROIC publicado 55,8 %, ≈ 11 % con él), sin NIIF 16; proyección orgánica sin compras; WACC 6,39 % (bono 0,59 %, beta 0,90, prima adicional 1 punto); terminal 1,0 %. Comfort Systems fuera de comparables; transacciones sin peso (ninguna con múltiplo utilizable).
+- Resultado: Mantener, convicción Baja (la sugerida; reglas absoluta Vender y relativa Mantener). Valor objetivo 111,78 CHF (−10,3 %), rentabilidad total −6,1 %, asimetría 0,36x; con la prima del mercado 136,60 CHF. DCF 119,25; DCF inverso: crecimiento 3,3 % frente a 1,9 % o margen EBITDA 7,7 %. Controles 17 de 19 y 2 explicados. Word y PDF (49 páginas).
