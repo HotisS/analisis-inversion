@@ -135,7 +135,7 @@ La señal es el volumen de Norteamérica: dos trimestres seguidos en negativo se
 
 ## Cartera final con los cambios
 
-Total: 25.642 EUR, al cierre del 9-oct. El oro no se toca. Actualizada con Deckers (ver «Actualizaciones con los análisis nuevos»).
+Total: 25.642 EUR, al cierre del 9-oct. El oro no se toca. Actualizada con Deckers y Trigano (ver «Actualizaciones con los análisis nuevos»).
 
 | Posición | Títulos | Importe (EUR) | Peso del total |
 |---|---|---|---|
@@ -147,14 +147,14 @@ Total: 25.642 EUR, al cierre del 9-oct. El oro no se toca. Actualizada con Decke
 | Puig | 92 | 1.663 | 6,5 % |
 | Auto Trader | 287 | 1.658 | 6,5 % |
 | Daiichi Sankyo | 100 | 1.480 | 5,8 % |
-| Fluidra | 85 | 1.458 | 5,7 % |
+| Trigano | 12 | 1.504 | 5,9 % |
 | SAP | 7 | 1.340 | 5,2 % |
 | Deckers Outdoor | 14 | 1.036 | 4,0 % |
 | ICE | 6 | 836 | 3,3 % |
 | Grifols | 84 | 830 | 3,2 % |
 | Equifax | 6 | 781 | 3,0 % |
 | Alphabet | 2 | 628 | 2,4 % |
-| Efectivo | | 1.056 | 4,1 % |
+| Efectivo | | 1.010 | 3,9 % |
 | **Total** | | **25.642** | **100 %** |
 
 ## ¿Son las tres compras las mejores de lo analizado?
@@ -217,3 +217,6 @@ Cada análisis nuevo se compara con Wolters Kluwer, Auto Trader y Fluidra: renta
 - **Deckers** (Comprar, **convicción alta**; 82,89 → 108,87 USD, +31,3 %, alcista +53 % / bajista −18,5 %, asimetría 2,9x; calidad «Sí»): no desplaza a ninguna de las tres. Rinde menos que Wolters Kluwer y Auto Trader, y algo menos que Fluidra con un bajista algo mayor. Pero es la única Comprar con convicción alta y es claramente mejor que lo que queda de Netflix (−13,1 % esperado). **Cambio: vender los 17 Netflix que quedaban (≈ 1.066 EUR) y comprar 14 Deckers (≈ 1.161 USD, 1.036 EUR).** La divisa no cambia (dólar por dólar) y el efectivo sube a 1.056 EUR.
 
 Efecto: la rentabilidad esperada de las acciones pasa del +26,6 % al **+29,0 %**, y la del total (oro y efectivo al 0 %) del +20,4 % al **+22,2 %**. El bajista medio de las acciones mejora del −30,0 % al −28,4 %.
+- **Trigano** (Comprar, convicción media; 125,30 → 193,43 EUR, rentabilidad total +57,2 % con dividendo, alcista +81 % / bajista −9,7 %, asimetría 8,4x; calidad «En parte»): **supera a Fluidra** en rentabilidad, bajista y asimetría, y es la mejor relación entre retorno y riesgo de todo lo analizado. Las dos son la misma apuesta: bienes de ocio caros en Europa, sensibles al ciclo y a los tipos. Tener las dos duplicaría el riesgo, así que sustituye a Fluidra. **Cambio: no comprar Fluidra (85 títulos) y comprar 12 Trigano (≈ 1.504 EUR).** El efectivo queda en 1.010 EUR. Dos matices. La calidad solo sostiene «en parte» el crecimiento: dos tercios vienen de subir precios y no ha demostrado poder de precios desde 2024. Y su bajista es pequeño porque tiene caja neta y en una recesión libera circulante, pero el momento del ciclo es incierto (la empresa habla de clientes a la espera y producción estable en el primer semestre). Fluidra pasa a ser la alternativa.
+
+Efecto: la rentabilidad esperada de las acciones pasa del +29,0 % al **+30,8 %**, y la del total del +22,2 % al **+23,7 %**. El bajista medio mejora del −28,4 % al −27,9 %.
