@@ -1,0 +1,8 @@
+# Diario — Grifols (GRF.MC), corte 2026-10-11
+
+- Commit de partida: 9babbe2 Top 6 para invertir (11-oct-2026) con precios del 9-oct.
+- Fase 1: Grifols, S.A.; clase A (GRF.MC, ES0171996087) es la que se valora; clase B sin voto (GRF-P.MC, ES0171996095) y ADR GRFS (1 ADR = 1 B). EUR, NIIF-UE, ejercicio natural. Corte en domingo: cierres del viernes 9-oct-2026 (A 9,88 EUR; B 6,74 EUR; ADR 7,46 USD), de `bolsa.mjs`. Análisis en paralelo con Puig, SAP, Netflix y Hermès: sin git ni seguimiento.
+- Lanzo A-E con `notas/ENCARGO_COMUN.md`.
+- A-E terminados en 4-14 min. A: cuentas 2016-2025 de los 20-F (2022-2023 reexpresados; 457 M de SRAAS restados en 2020-2021), no recurrentes 132-159 M que se repiten. B: MRB > 35.000 M USD (2024), cuota 18,2 %, foso estrecho. C: presidenta independiente desde jun-2025, familia ≈ 51 % de los votos presentes, voto en contra de remuneración 24,63 % (2024); operaciones de directivos sin registro accesible (CNMV 403). D: 598,51 M acciones A-equivalentes (B a su precio relativo), consenso EBITDA ajustado (ajuste 1,75 %), 7 comparables, una transacción con múltiplo. E: solo foros españoles (Rankia, Investing).
+- Propio: puente con 403 M de factoring sin recurso y 59 M de dividendo pagado; posición corta 1,81 % (Kintbury, CNMV, registro abierto). WACC 8,23 % (Bund 3,53, beta 1,42, +1 punto de prima por gobierno, 55 % de deuda). DCF 14,21 EUR (+43,8 %); DCF inverso 0,2 % de crecimiento o 23,3 % de margen. Valor objetivo 13,99 (+41,6 %), rentabilidad total 43,9 %, asimetría 1,08; Comprar, convicción Media (sugerida). Sostenibilidad «En parte».
+- Word (61 páginas) y PDF; portada, resumen y «La decisión» revisados. Controles: 17 correctos y 3 explicados.
