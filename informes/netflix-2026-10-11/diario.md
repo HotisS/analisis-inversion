@@ -1,0 +1,9 @@
+# Diario — Netflix (NFLX), corte 2026-10-11
+
+- Commit de partida: 9babbe2 Top 6 para invertir (11-oct-2026) con precios del 9-oct.
+- 11:15 Fase 1: Netflix, Inc., NFLX (Nasdaq), ISIN US64110L1061, CIK 1065280; USD, US GAAP, ejercicio natural. Corte domingo 11-oct-2026: precio del viernes 9-oct (70,30 USD, bolsa.mjs). Último informe: 10-Q del 2T26 (17-jul-2026); 3T26 aún sin publicar (mediados de octubre, D confirma la fecha). Desdoblamiento 10 por 1 en nov-2025. Criterio contable: EBITDA con la amortización de contenidos como gasto; el exceso de pagos de contenidos sobre su amortización va al capex del DCF. Bloque de cinco análisis en paralelo (Puig, SAP, Grifols, Hermès, Netflix): sin commits ni seguimiento. Lanzo A-E.
+- 11:20 No se pueden lanzar subagentes (límite de concurrencia del equipo: 20, ocupado por los otros análisis). Hago yo las fases A-E en orden, con notas A-E igualmente.
+- 11:58 A y D escritos por mí (XBRL, 10-K 2017-2025, 10-Q 2T26, cartas 3T24-2T26, MarketScreener, Stock Analysis, proxies de WBD). Resultados del 3T26: 20-oct-2026.
+- 12:20 B, C y E escritos por mí (10-K de Disney, Comcast, Alphabet y Paramount; proxy 2026 y 8-K de juntas; form4.mjs; Nielsen; Investing.com y Motley Fool). Reddit, Stocktwits y Seeking Alpha: 403.
+- 12:30 Supuestos: guía 2026 (+13,4 %, fija), consenso 2027-2028, margen EBITDA del 32,3 % al 39,5 %; capex = inmovilizado + exceso de pagos de contenidos sobre su amortización (5,1 % → 3,3 %); WACC 11,47 % (beta 1,20); etapa de transición de 7 años. DCF 60,38 USD; objetivo 61,10 (−13,1 %); con la prima del mercado 73,49 (+4,5 %). Regla: Mantener (absoluta Vender, relativa Mantener), convicción Baja (sugerida). Sostenibilidad «Sí».
+- 12:40 Word y PDF (50 páginas); portada, síntesis y «La decisión» revisadas. Quedan 2 controles en «Revisar», explicados (comparables).
