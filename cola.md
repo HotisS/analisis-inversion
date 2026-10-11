@@ -1,6 +1,8 @@
 # Cola de análisis de empresas
 
-Se analizan **de cuatro en cuatro, en paralelo** (dos pares seguidos de la tabla, para que haya dos de valor y dos de crecimiento; hasta el 10-oct eran de dos en dos) (`/analiza-empresa`), en el orden de la tabla. Al cerrar cada empresa: marca su estado aquí, `node herramientas/seguimiento.mjs`, commit y push. La cola vive en el repo para que cualquier equipo pueda seguirla tras un `git pull`.
+**Prioridad al reanudar (pedida el 12-oct-2026), de 3 en 3:** S&P Global (SPGI), Amazon (AMZN) y LVMH (MC.PA; iteración 2, la 1 es del 8-oct: carpeta nueva con la fecha del día). Después, ATOSS, Pluxee, Technip Energies y Betsson, también de 3 en 3.
+
+Se analizan **de tres en tres, en paralelo** (desde el 12-oct; antes de cuatro en cuatro y, hasta el 10-oct, de dos en dos) (`/analiza-empresa`), en el orden de la tabla. Al cerrar cada empresa: marca su estado aquí, `node herramientas/seguimiento.mjs`, commit y push. La cola vive en el repo para que cualquier equipo pueda seguirla tras un `git pull`.
 
 Cola rehecha el 10-oct-2026 con el escáner (`escaneos/escaneo-2026-10-10.xlsx`, perfiles por defecto en las tres regiones: 2.382 empresas con ficha, 180 candidatas), porque la lista anterior no llegó a subirse a GitHub. Criterio: cada par mezcla una de **valor** (múltiplo bajo y mucha caja) y una de **crecimiento** (ventas al alza con ROIC alto), a petición del usuario (10-oct); todas que el motor sepa valorar, fuera bancos, aseguradoras, materias primas y holdings. Las cifras son del escáner (Yahoo) y se comprueban en cada análisis.
 
@@ -17,8 +19,6 @@ Cola rehecha el 10-oct-2026 con el escáner (`escaneos/escaneo-2026-10-10.xlsx`,
 | 6 | Pro Medicus | PME.AX | Australia | Crecimiento | ROIC 46 %, −46 % (múltiplo aún alto) | Pendiente |
 | 7 | Betsson | BETS-B.ST | Suecia | Valor | EV/EBITDA 4x, FCF 12 %, ventas +15 %, −40 % | Pendiente |
 | 7 | Medpace | MEDP | EE. UU. | Crecimiento | ROIC 56 %, FCF 4,1 % | Pendiente |
-
-**Prioridad al reanudar (pedida el 12-oct-2026), de 3 en 3:** S&P Global (SPGI), Amazon (AMZN) y LVMH (MC.PA; iteración 2, la 1 es del 8-oct: carpeta nueva con la fecha del día). Después, ATOSS, Pluxee, Technip Energies y Betsson, también de 3 en 3.
 
 **En pausa desde el 11-oct-2026 (17:17) a petición del usuario.** Hechas ese día: Nemetschek, Deckers, Trigano, Gartner, Burkhalter y CTS Eventim. A medias: **ATOSS** (notas A-E completas y propio, supuestos y textos empezados; faltan resumen, integración, cálculo, Word y PDF) y **Pluxee** (solo `bolsa.json`; recién empezado). Pendientes: **Technip Energies** (TE.PA) y **Betsson**. Desde el 12-oct, de 3 en 3. Medpace y Pro Medicus salen (PER 32x y 73x). Las filas de la tabla se quitan al cerrar cada empresa.
 
