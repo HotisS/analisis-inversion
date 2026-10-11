@@ -1,6 +1,6 @@
 # Cola de análisis de empresas
 
-**Prioridad al reanudar (pedida el 12-oct-2026), de 3 en 3:** S&P Global (SPGI), Amazon (AMZN) y LVMH (MC.PA; iteración 2, la 1 es del 8-oct: carpeta nueva con la fecha del día). Después, ATOSS, Pluxee, Technip Energies y Betsson, también de 3 en 3.
+**Prioridad al reanudar (pedida el 12-oct-2026), de 3 en 3:** S&P Global (SPGI), Amazon (AMZN) y ATOSS (a medias). Después, Pluxee, Technip Energies y Betsson. LVMH no se repite: ya tiene informe del 8-oct (decisión del usuario, 12-oct).
 
 Se analizan **de tres en tres, en paralelo** (desde el 12-oct; antes de cuatro en cuatro y, hasta el 10-oct, de dos en dos) (`/analiza-empresa`), en el orden de la tabla. Al cerrar cada empresa: marca su estado aquí, `node herramientas/seguimiento.mjs`, commit y push. La cola vive en el repo para que cualquier equipo pueda seguirla tras un `git pull`.
 

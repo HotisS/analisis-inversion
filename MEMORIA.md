@@ -12,7 +12,7 @@ Lo que cualquier sesión de Claude, en cualquier equipo, tiene que saber antes d
 - Al cerrar cada empresa se comunica: recomendación y convicción, valor objetivo y rentabilidad esperada, cifras clave, commit y rutas del Word y del PDF.
 
 ## Decisiones
-- 12-oct-2026: el usuario pone por delante S&P Global, Amazon y LVMH (iteración 2) y pasa a de 3 en 3; la pausa sigue hasta que diga que sigamos.
+- 12-oct-2026: el usuario pone por delante S&P Global y Amazon y pasa a de 3 en 3; LVMH no se repite porque ya tiene informe (del 8-oct). La pausa sigue hasta que diga que sigamos.
 - 11-oct-2026: el usuario reanudó la cola con diez empresas en tres tandas (desde las 16:05, de dos en dos a petición del usuario): 1) Nemetschek, Deckers, Gartner, Trigano; 2) Burkhalter, CTS Eventim, ATOSS; 3) Pluxee, Technip Energies, Betsson. Medpace y Pro Medicus salen de la cola por caras. Ese día se analizaron Puig, SAP, Grifols, Netflix y Hermès (su cartera) y se propuso un rebalanceo (`informes/rebalanceo-2026-10-11.md`).
 - 11-oct-2026: el usuario pidió cerrar solo Dunelm e Intuit y dejar la cola en pausa (Nemetschek a medias).
 - 10-oct-2026: el usuario paró la cola y la reanudó de cuatro en cuatro.
