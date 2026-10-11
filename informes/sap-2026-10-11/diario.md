@@ -1,0 +1,9 @@
+# Diario — SAP SE (SAP.DE), corte 2026-10-11
+
+- Commit de partida: 9babbe2 Top 6 para invertir (11-oct-2026) con precios del 9-oct.
+- Fase 1: SAP SE, Xetra SAP, ISIN DE0007164600, EUR, NIIF, ejercicio natural, cuenta por función. Presenta 20-F/6-K en EDGAR (CIK 1000184). Último anual: 20-F 2025 (26-feb-2026); último trimestre: 2T26 (23-jul-2026). Próximos resultados: 3T26 el 21-oct-2026 (calendario de SAP). Corte en domingo: precio del viernes 9-oct-2026. Análisis en paralelo con Puig, Grifols, Netflix y Hermès. Lanzo los subagentes A-E.
+- Retomado a petición del coordinador: los subagentes en segundo plano murieron. Al relanzar A-E, límite de subagentes concurrentes alcanzado (20, entre todos los análisis): hago yo las fases 2-4 bis, reutilizando notas/docs.
+- 11:16 Los subagentes originales siguen vivos (E terminó a las 11:16; C y D escriben notas; A y B descargan). No relanzo: espero sus avisos y adelanto el análisis propio.
+- 11:25 A-E terminados. Integración: parches de beneficio de actividades continuadas 2021-2023, pasivos de contrato en el circulante, múltiplos EV/ventas de cinco transacciones (estimación propia con XBRL de los 10-K) y empleados.
+- Supuestos: crecimiento 9,0 % (2026e) → 11,5 % (2027-28e) → 4 % (2035e), media 8,2 %; margen EBITDA 31,5 % → 36 %; capex 2,8 % con arrendamientos; circulante −4 %; WACC 9,30 % (Bund 3,53 %, beta 1,10); g 2,5 %. Proyección a menos de un 1 % del consenso de 2026-2028.
+- Resultado: DCF 192,86 EUR (+0,7 %); DCF inverso 8,1 % frente a 8,2 % de base; valor objetivo 191,35 (−0,1 %), rentabilidad total 1,2 %; Mantener, convicción Baja (reglas discrepan: relativa Comprar 230,58). Sostenibilidad «Sí». Controles: ninguno en Revisar (regresión explicada). Word (55 páginas, cobertura 91,2 %) y PDF; portada y «La decisión» revisadas.
