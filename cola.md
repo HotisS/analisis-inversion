@@ -19,7 +19,6 @@ Cola rehecha el 10-oct-2026 con el escáner (`escaneos/escaneo-2026-10-10.xlsx`,
 | 6 | Pro Medicus | PME.AX | Australia | Crecimiento | ROIC 46 %, −46 % (múltiplo aún alto) | Pendiente |
 | 7 | Betsson | BETS-B.ST | Suecia | Valor | EV/EBITDA 4x, FCF 12 %, ventas +15 %, −40 % | Pendiente |
 | 7 | Medpace | MEDP | EE. UU. | Crecimiento | ROIC 56 %, FCF 4,1 % | Pendiente |
-| 8 | Deckers Outdoor | DECK | EE. UU. | Valor | ROIC 40 %, FCF 9,9 %, −32 % | Pendiente |
 | 8 | CTS Eventim | EVD.DE | Alemania | Crecimiento | ROIC 35 %, FCF 4,1 %, −32 % | Pendiente |
 
 **Reanudada el 11-oct-2026; desde las 16:05, de dos en dos** (a las 13:10 un límite de uso cortó Deckers, Gartner, Trigano y Burkhalter a medias; sus notas están en sus carpetas). Orden: Deckers y Trigano (en curso), Gartner y Burkhalter, y después de dos en dos CTS Eventim, ATOSS, Pluxee (PLX.PA), Technip Energies (TE.PA) y Betsson. Nemetschek hecha (Comprar, convicción baja). Medpace y Pro Medicus salen (PER 32x y 73x). Las filas de la tabla se quitan al cerrar cada empresa.
