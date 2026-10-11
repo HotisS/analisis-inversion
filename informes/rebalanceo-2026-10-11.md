@@ -132,3 +132,79 @@ El 63 % de las ventas viene de Norteamérica.
 - **Deuda**: 2,6x EBITDA.
 
 La señal es el volumen de Norteamérica: dos trimestres seguidos en negativo serían mala noticia. Próximo dato: 29-oct.
+
+## Cartera final con los cambios
+
+Total: 25.642 EUR, al cierre del 9-oct. El oro no se toca.
+
+| Posición | Títulos | Importe (EUR) | Peso del total |
+|---|---|---|---|
+| iShares Physical Gold (IGLN) | 68 | 4.933 | 19,2 % |
+| Edenred | 81 | 2.288 | 8,9 % |
+| Wolters Kluwer | 28 | 2.100 | 8,2 % |
+| Zoetis | 28 | 1.869 | 7,3 % |
+| PepsiCo | 15 | 1.686 | 6,6 % |
+| Puig | 92 | 1.663 | 6,5 % |
+| Auto Trader | 287 | 1.658 | 6,5 % |
+| Daiichi Sankyo | 100 | 1.480 | 5,8 % |
+| Fluidra | 85 | 1.458 | 5,7 % |
+| SAP | 7 | 1.340 | 5,2 % |
+| Netflix | 17 | 1.066 | 4,2 % |
+| ICE | 6 | 836 | 3,3 % |
+| Grifols | 84 | 830 | 3,2 % |
+| Equifax | 6 | 781 | 3,0 % |
+| Alphabet | 2 | 628 | 2,4 % |
+| Efectivo | | 1.026 | 4,0 % |
+| **Total** | | **25.642** | **100 %** |
+
+## ¿Son las tres compras las mejores de lo analizado?
+
+Se han comparado con las 26 empresas con señal de Comprar del repo, todas con el precio del 9-oct. Ordenadas por rentabilidad esperada, las que la cartera aún no tiene son estas:
+
+| Empresa | Divisa | Rent. esperada | Alcista / bajista | Asimetría | Convicción | Calidad del crecimiento |
+|---|---|---|---|---|---|---|
+| **Wolters Kluwer** | EUR | +55,0 % | +113 % / −22 % | **5,3x** | Media | (anterior al apartado) |
+| Intuit | USD | +43,7 % | +72 % / −30 % | 2,4x | Media | En parte |
+| **Auto Trader** | GBP | +42,2 % | +65 % / −25 % | 2,7x | Media | **Sí** |
+| Lululemon | USD | +40,4 % | +89 % / −21 % | 4,3x | Media | (anterior al apartado) |
+| Fielmann | EUR | +35,3 % | +71 % / −30 % | 2,3x | Media | (anterior al apartado) |
+| **Fluidra** | EUR | +33,4 % | +67 % / −16 % | **4,1x** | Media | (anterior al apartado) |
+| Novo Nordisk | DKK | +28,2 % | +57 % / −29 % | 2,0x | Media | (anterior al apartado) |
+| Krones | EUR | +26,7 % | +61 % / −26 % | 2,3x | Media | (anterior al apartado) |
+| Adobe | USD | +26,5 % | +38 % / −30 % | 1,3x | Media | Sí |
+
+Las demás Comprar quedan por debajo del 17 %: DSV, Dassault, Dunelm, Evolution, LVMH, Tomra, Constellation, Cooper, bioMérieux y Rentokil.
+
+**Veredicto.**
+
+- **Wolters Kluwer y Fluidra son claramente las mejores** por relación entre rentabilidad y riesgo: las asimetrías más altas de toda la lista, y Fluidra con el bajista más pequeño. Además, encajan en lo que falta en la cartera.
+- **Auto Trader frente a Lululemon es un empate.** Lululemon tiene mejores números (rentabilidad parecida, bajista menor y asimetría de 4,3x frente a 2,7x). Auto Trader es mejor negocio (foso amplio y estable, ROIC del 51 %, veredicto de calidad «Sí»), y Lululemon tiene un foso estrecho que retrocede frente a Alo y Vuori. Además, Auto Trader aporta la libra, que la cartera no tiene; Lululemon añadiría más dólares (ya son el 35 % de las acciones). **Me quedo con Auto Trader.** Lululemon sería la primera alternativa, por ejemplo con los 1.026 EUR de efectivo si la votación de Edenred no sale bien.
+- **Intuit no entra.** Rinde algo más que Auto Trader, pero repite el riesgo de IA de Wolters Kluwer y SAP, y su calidad es solo «en parte».
+- **Fielmann, Novo Nordisk, Krones y Adobe** tienen peor asimetría (de 1,3x a 2,3x) que las tres elegidas.
+
+**Conclusión: el rebalanceo se queda igual.**
+
+## Diez candidatas nuevas para analizar
+
+Salen del escáner del 10-oct (`escaneos/escaneo-2026-10-10.xlsx`) y de la cola en pausa. Ninguna tiene informe. Las cifras son del escáner (Yahoo) y se comprobarían en cada análisis. Según las lecciones, conviene lanzarlas en tandas de tres o cuatro.
+
+| # | Empresa | Ticker | Divisa | Por qué |
+|---|---|---|---|---|
+| 1 | Nemetschek | NEM.DE | EUR | Está a medias (notas A-C y sentimiento hechos), así que es la más barata de cerrar. Software de diseño para construcción, ROIC 20 %, ventas +14 %, −38 % desde máximos |
+| 2 | Deckers Outdoor (Hoka, UGG) | DECK | USD | ROIC 40 %, caja neta, PER 10x, flujo libre del 10 %; el precio descuenta −2 % de crecimiento |
+| 3 | Gartner | IT | USD | Investigación y consultoría por suscripción: ROIC 34 %, flujo libre del 11 %, PER 11,7x, −27 % |
+| 4 | Trigano | TRI.PA | EUR | Autocaravanas, líder europeo: PER 7,9x, flujo libre del 22 %, caja neta; descuenta −14 % de crecimiento |
+| 5 | Burkhalter | BRKN.SW | CHF | Instalaciones eléctricas en Suiza: primera del escáner, ROIC 32 %, flujo libre del 8 %, caja neta. Aportaría francos suizos |
+| 6 | CTS Eventim | EVD.DE | EUR | Venta de entradas (Ticketmaster europeo) y conciertos: ROIC 35 %, caja neta, −32 % |
+| 7 | ATOSS Software | AOF.DE | EUR | Software de gestión de plantillas: ROIC 60 %, ventas +18 %, caja neta, −30 % |
+| 8 | Pluxee | PLX.PA | EUR | Competidora directa de Edenred: PER 9,5x y flujo libre del 23 %. Sirve para decidir dónde tener esa exposición |
+| 9 | Technip Energies | TE.PA | EUR | Ingeniería de GNL y transición energética: PER 9,8x, flujo libre del 18 %, mucha caja neta; descuenta −21 % |
+| 10 | Betsson | BETS-B.ST | SEK | Apuestas online: PER 8x, flujo libre del 12 %, ventas +15 %, −40 % |
+
+Descartadas de la cola: Medpace, que ya solo está un 10 % por debajo de máximos y cotiza a 32 veces beneficio, y Pro Medicus, a 73 veces. Suplentes: Vusion (VU.PA, etiquetas electrónicas, ventas +33 %, −52 %) y Chewy (CHWY, ROIC 32 %, −52 %).
+
+Orden propuesto:
+
+- **Tanda 1**: Nemetschek, Deckers, Gartner y Trigano.
+- **Tanda 2**: Burkhalter, CTS Eventim y ATOSS.
+- **Tanda 3**: Pluxee, Technip Energies y Betsson.
