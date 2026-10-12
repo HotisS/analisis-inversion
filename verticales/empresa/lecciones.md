@@ -157,3 +157,8 @@ Lo aprendido en los análisis de octubre de 2026 (de Viscofan a Vertiv). Ahorra 
 - **Prueba de cuota con volumen procesado** (Adyen, como Pro Medicus): si la cuota es en volumen, el mercado final va al precio unitario de la empresa (volumen × comisión media); en millones de volumen la cuota sale 0.
 - **Parches sobre `meta.huecos[i]`** no se aplican (otra vez, como en Verisk): usa `huecos_resueltos` y registra el hueco de nuevo en `propio`.
 - **Beta de una antigua burbuja** (Adyen: 2,33 mensual a 5 años; WACC por encima del 13 %): usa la semanal a 2 años ajustada y di en la síntesis cuánto depende la recomendación de la beta.
+- **Fondos de clientes de nóminas** (Paychex, ADP): a diferencia de Pluxee, basta con poner en `caja` la caja corporativa; los fondos y sus obligaciones no entran en el circulante comercial, así que el motor no se distorsiona. En el puente, el neto de fondos menos obligaciones es pequeño (−92 M) y se deja fuera.
+- **Comisiones activadas también en nóminas** (Paychex: 342,5 M capitalizadas frente a 249,2 M amortizadas, 1,4 % de las ventas): súmalas al capex, como en ATOSS; quitan ~2 USD por acción.
+- **Stocktwits por API** (`api.stocktwits.com/api/2/streams/symbol/<T>.json`) sí abre y da 30 mensajes; MarketBeat (`/stocks/NASDAQ/<T>/news/`) sirve de índice de columnas.
+- `form4.mjs` mezcla las donaciones (código G) de un accionista del 10 % con las operaciones de directivos: fíltralas.
+- `descargar.mjs` no deja `.tabla.txt` en los HTML de EDGAR ni decodifica entidades HTML en el `.txt`; `prompt-de.mjs` a veces no imprime las lecciones (salidas de 33-38 KB): diles a los subagentes que lean `lecciones.md` aparte.
