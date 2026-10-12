@@ -1,6 +1,6 @@
 # Cola de análisis de empresas
 
-**Reanudada el 12-oct-2026 (11:15), de 3 en 3.** Hechas: ATOSS, S&P Global, Amazon, Pluxee y Betsson. En curso: Technip Energies, Pro Medicus y Medpace (las dos últimas vuelven a la cola). LVMH no se repite: ya tiene informe del 8-oct. Ninguna empresa con informe se repite. Al cerrar cada una se compara con las compras propuestas en `informes/cartera-2026-10-11.md`. Pendiente de vigilar: el resultado del pleno sobre el título restaurante (12-oct); si fija un tope a la comisión o el Gobierno anuncia el decreto, Edenred pasa a Mantener y se rehacen Edenred y Pluxee en la cartera.
+**Reanudada el 12-oct-2026 (11:15), de 3 en 3.** Hechas: ATOSS, S&P Global, Amazon, Pluxee, Betsson y Technip Energies. En curso: Pro Medicus y Medpace (vuelven a la cola). LVMH no se repite: ya tiene informe del 8-oct. Ninguna empresa con informe se repite. Al cerrar cada una se compara con las compras propuestas en `informes/cartera-2026-10-11.md`. Pendiente de vigilar: el resultado del pleno sobre el título restaurante (12-oct); si fija un tope a la comisión o el Gobierno anuncia el decreto, Edenred pasa a Mantener y se rehacen Edenred y Pluxee en la cartera.
 
 Se analizan **de tres en tres, en paralelo** (desde el 12-oct; antes de cuatro en cuatro y, hasta el 10-oct, de dos en dos) (`/analiza-empresa`), en el orden de la tabla. Al cerrar cada empresa: marca su estado aquí, `node herramientas/seguimiento.mjs`, commit y push. La cola vive en el repo para que cualquier equipo pueda seguirla tras un `git pull`.
 
@@ -17,7 +17,7 @@ Cola rehecha el 10-oct-2026 con el escáner (`escaneos/escaneo-2026-10-10.xlsx`,
 | 4 | Intuit | INTU | EE. UU. | Valor | FCF 10,7 %, PER 11x, −56 % desde máximos | Hecha (11-oct): Comprar, convicción media |
 | 5 | ATOSS Software | AOF.DE | Alemania | Crecimiento | ROIC 60 %, −30 % | Hecha (12-oct): Mantener, convicción baja (objetivo 80,89 EUR, −4,7 %) |
 | 8 | S&P Global | SPGI | EE. UU. | Crecimiento | Prioridad del usuario (12-oct) | Hecha (12-oct): Mantener, convicción baja (objetivo 351,69 USD, −12,8 %) |
-| 9 | Technip Energies | TE.PA | Francia | Valor | Tanda 2 (12-oct) | En curso (12-oct) |
+| 9 | Technip Energies | TE.PA | Francia | Valor | Tanda 2 (12-oct) | Hecha (12-oct): Comprar, convicción media (objetivo 39,94 EUR, +40,5 %); entra en la cartera con efectivo |
 | 9 | Pluxee | PLX.PA | Francia | Valor | Tanda 2 (12-oct) | Hecha (12-oct): Comprar, convicción media (objetivo 22,02 EUR, +54,6 %); entra en la cartera |
 | 8 | Amazon | AMZN | EE. UU. | Crecimiento | Prioridad del usuario (12-oct) | Hecha (12-oct): Mantener, convicción baja (objetivo 213,96 USD, −18,5 %) |
 | 6 | Pro Medicus | PME.AX | Australia | Crecimiento | ROIC 46 %, −46 % (múltiplo aún alto) | En curso (12-oct) |
