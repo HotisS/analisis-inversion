@@ -22,7 +22,7 @@ Cola rehecha el 10-oct-2026 con el escáner (`escaneos/escaneo-2026-10-10.xlsx`,
 | 8 | Amazon | AMZN | EE. UU. | Crecimiento | Prioridad del usuario (12-oct) | Hecha (12-oct): Mantener, convicción baja (objetivo 213,96 USD, −18,5 %) |
 | 6 | Pro Medicus | PME.AX | Australia | Crecimiento | ROIC 46 %, −46 % (múltiplo aún alto) | Hecha (12-oct): Vender, convicción alta (objetivo 50,61 AUD, −69,5 %) |
 | 7 | Betsson | BETS-B.ST | Suecia | Valor | EV/EBITDA 4x, FCF 12 %, ventas +15 %, −40 % | Hecha (12-oct): Comprar, convicción media (+68,4 %); fuera de la cartera: el usuario no quiere juego ni apuestas |
-| 7 | Medpace | MEDP | EE. UU. | Crecimiento | ROIC 56 %, FCF 4,1 % | En curso (12-oct) |
+| 7 | Medpace | MEDP | EE. UU. | Crecimiento | ROIC 56 %, FCF 4,1 % | Hecha (12-oct): Vender, convicción media (objetivo 326,15 USD, −46,7 %) |
 
 **Estuvo en pausa del 11-oct (17:17) al 12-oct.** Hechas ese día: Nemetschek, Deckers, Trigano, Gartner, Burkhalter y CTS Eventim. A medias: **ATOSS** (notas A-E completas y propio, supuestos y textos empezados; faltan resumen, integración, cálculo, Word y PDF) y **Pluxee** (solo `bolsa.json`; recién empezado). Pendientes: **Technip Energies** (TE.PA) y **Betsson**. Desde el 12-oct, de 3 en 3. Medpace y Pro Medicus salieron (PER 32x y 73x) y vuelven el 12-oct en la tanda 3. Las filas de la tabla se quitan al cerrar cada empresa.
 

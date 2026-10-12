@@ -138,3 +138,8 @@ Lo aprendido en los análisis de octubre de 2026 (de Viscofan a Vertiv). Ahorra 
 - **Sentimiento en Australia**: HotCopper, Strawman, Market Index, Livewire y Simply Wall St dan 403 o piden JavaScript; solo abre Motley Fool Australia (`fool.com.au/tickers/asx-<ticker>/page/N/`).
 - **Beta tras una burbuja**: la mensual de 5 años recoge la subida y la caída; contrástala con la semanal de 2 años y la sectorial de Damodaran corregida por caja.
 - `bolsa.mjs` con rutas `/c/...` desde Git Bash no escribe la salida y no avisa: usa rutas relativas. El Excel F2 del RBA ocupa 8 MB.
+- **Comparables de un análisis vecino** (ICON del 9-oct para Medpace del 12-oct): si otra carpeta tiene la tabla de comparables de hace 1-3 días, reutilízala llevando capitalización, valor empresa y múltiplos al nuevo cierre con la variación de precio, y añade la empresa de aquella carpeta como comparable en la misma base. Ahorra un subagente.
+- **CRO con anticipos y recompras** (Medpace): el capital invertido se acerca a cero y el ROIC del motor sale en cientos por cien; la prueba de reinversión no da crecimiento financiable. Usa los años con capital apreciable y explica el control.
+- **Gordon con WACC alto en negocios sin inversión**: el terminal equivale a ~1/(WACC − g) veces el NOPAT (9,7x EBITDA en Medpace), muy por debajo del múltiplo histórico; dilo en la justificación del terminal.
+- **«La decisión» usa el crecimiento medio de toda la proyección** y el DCF inverso el de los años no fijos: no mezcles las dos cifras en la misma frase.
+- **Los niveles de compra y venta cambian al escribir la recomendación**: reléelos en `calc.recomendacion.niveles` tras el último cálculo.
