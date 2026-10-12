@@ -1,6 +1,6 @@
 # Cola de análisis de empresas
 
-**Reanudada el 12-oct-2026 (11:15), de 3 en 3.** Hechas: ATOSS, S&P Global, Amazon, Pluxee, Betsson y Technip Energies. En curso: Pro Medicus y Medpace (vuelven a la cola). LVMH no se repite: ya tiene informe del 8-oct. Ninguna empresa con informe se repite. **El juego y las apuestas quedan excluidos** de futuros análisis y propuestas (decisión del usuario, 12-oct). Al cerrar cada una se compara con las compras propuestas en `informes/cartera-2026-10-11.md`. Pendiente de vigilar: el resultado del pleno sobre el título restaurante (12-oct); si fija un tope a la comisión o el Gobierno anuncia el decreto, Edenred pasa a Mantener y se rehacen Edenred y Pluxee en la cartera.
+**Reanudada el 12-oct-2026 (11:15), de 3 en 3.** Hechas: ATOSS, S&P Global, Amazon, Pluxee, Betsson, Technip Energies y Pro Medicus. En curso: Medpace (se cortó por el límite de uso; se cierra desde sus notas). LVMH no se repite: ya tiene informe del 8-oct. Ninguna empresa con informe se repite. **El juego y las apuestas quedan excluidos** de futuros análisis y propuestas (decisión del usuario, 12-oct). Al cerrar cada una se compara con las compras propuestas en `informes/cartera-2026-10-11.md`. Pendiente de vigilar: el resultado del pleno sobre el título restaurante (12-oct); si fija un tope a la comisión o el Gobierno anuncia el decreto, Edenred pasa a Mantener y se rehacen Edenred y Pluxee en la cartera.
 
 Se analizan **de tres en tres, en paralelo** (desde el 12-oct; antes de cuatro en cuatro y, hasta el 10-oct, de dos en dos) (`/analiza-empresa`), en el orden de la tabla. Al cerrar cada empresa: marca su estado aquí, `node herramientas/seguimiento.mjs`, commit y push. La cola vive en el repo para que cualquier equipo pueda seguirla tras un `git pull`.
 
@@ -20,7 +20,7 @@ Cola rehecha el 10-oct-2026 con el escáner (`escaneos/escaneo-2026-10-10.xlsx`,
 | 9 | Technip Energies | TE.PA | Francia | Valor | Tanda 2 (12-oct) | Hecha (12-oct): Comprar, convicción media (objetivo 39,94 EUR, +40,5 %); entra en la cartera con efectivo |
 | 9 | Pluxee | PLX.PA | Francia | Valor | Tanda 2 (12-oct) | Hecha (12-oct): Comprar, convicción media (objetivo 22,02 EUR, +54,6 %); entra en la cartera |
 | 8 | Amazon | AMZN | EE. UU. | Crecimiento | Prioridad del usuario (12-oct) | Hecha (12-oct): Mantener, convicción baja (objetivo 213,96 USD, −18,5 %) |
-| 6 | Pro Medicus | PME.AX | Australia | Crecimiento | ROIC 46 %, −46 % (múltiplo aún alto) | En curso (12-oct) |
+| 6 | Pro Medicus | PME.AX | Australia | Crecimiento | ROIC 46 %, −46 % (múltiplo aún alto) | Hecha (12-oct): Vender, convicción alta (objetivo 50,61 AUD, −69,5 %) |
 | 7 | Betsson | BETS-B.ST | Suecia | Valor | EV/EBITDA 4x, FCF 12 %, ventas +15 %, −40 % | Hecha (12-oct): Comprar, convicción media (+68,4 %); fuera de la cartera: el usuario no quiere juego ni apuestas |
 | 7 | Medpace | MEDP | EE. UU. | Crecimiento | ROIC 56 %, FCF 4,1 % | En curso (12-oct) |
 
