@@ -1,6 +1,6 @@
 # Cola de análisis de empresas
 
-**Reanudada el 12-oct-2026 (11:15), de 3 en 3.** Hechas: ATOSS, S&P Global, Amazon y Pluxee. En curso: Technip Energies, Betsson y Pro Medicus. Falta: Medpace (vuelve a la cola). LVMH no se repite: ya tiene informe del 8-oct. Ninguna empresa con informe se repite. Al cerrar cada una se compara con las compras propuestas en `informes/cartera-2026-10-11.md`.
+**Reanudada el 12-oct-2026 (11:15), de 3 en 3.** Hechas: ATOSS, S&P Global, Amazon y Pluxee. En curso: Technip Energies, Betsson y Pro Medicus. Falta: Medpace (vuelve a la cola). LVMH no se repite: ya tiene informe del 8-oct. Ninguna empresa con informe se repite. Al cerrar cada una se compara con las compras propuestas en `informes/cartera-2026-10-11.md`. Pendiente de vigilar: el resultado del pleno sobre el título restaurante (12-oct); si fija un tope a la comisión o el Gobierno anuncia el decreto, Edenred pasa a Mantener y se rehacen Edenred y Pluxee en la cartera.
 
 Se analizan **de tres en tres, en paralelo** (desde el 12-oct; antes de cuatro en cuatro y, hasta el 10-oct, de dos en dos) (`/analiza-empresa`), en el orden de la tabla. Al cerrar cada empresa: marca su estado aquí, `node herramientas/seguimiento.mjs`, commit y push. La cola vive en el repo para que cualquier equipo pueda seguirla tras un `git pull`.
 
