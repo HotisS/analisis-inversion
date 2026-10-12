@@ -147,3 +147,9 @@ Lo aprendido en los análisis de octubre de 2026 (de Viscofan a Vertiv). Ahorra 
 - **`_parches` no llega a `meta.huecos`**: `integrar` junta los huecos después de aplicar los parches. Para corregir un hueco de una nota, retíralo con `huecos_resueltos` y añade el tuyo con otro nombre de campo.
 - **Patrimonio negativo por recompras** (Verisk, −1.189 M): el ROE no tiene sentido y el ROIC incremental no se calcula; si el ROIC sube por la rotación (desinversiones y recompras) y no por el margen, dilo en `rentabilidad`.
 - **EBITDA ajustado que no excluye la remuneración en acciones** (Verisk): `base_ebitda: "NIIF"` vale si las partidas puntuales (costes de compras y litigios) van en `no_recurrentes_en_ebitda`, también en el LTM.
+- **ESEF de emisores de la UE** (Coloplast): filings.xbrl.org guarda gratis los informes en ESEF (API `/api/filings?filter[entity.identifier]=<LEI>`); fue la vía con la web de la empresa bloqueada. El `.txt` que saca `descargar.mjs` de los XHTML parte las tablas.
+- **Comunicados nórdicos**: MFN (`https://www.mfn.se/all/a/<empresa>`) abre con `descargar.mjs` y enlaza los PDF de GlobeNewswire; las notas de Nasdaq Copenhague (`view.news.eu.nasdaq.com`) también bajan bien.
+- **Dinamarca**: posiciones cortas ≥ 0,5 % en un xlsx mensual de la Finanstilsynet; las juntas aprueban la remuneración sin recuento, así que el voto libre en contra no se puede calcular (hueco, con la asistencia de la junta). Tasa libre: el Bund (la corona está anclada al euro).
+- **Impuestos aplazados por traslados de propiedad intelectual** (Kerecis, en Coloplast: 2.422 M a largo plazo): asimilables a deuda en el puente.
+- **MarketScreener con base mixta** (Coloplast FY2026e): EBITDA y EBIT antes de partidas especiales, BPA después del deterioro; usa el BPA ajustado de Stock Analysis para el PER.
+- `prompt-de.mjs` imprime también las lecciones, que ya pesan unos 57 KB: léelas por partes.
