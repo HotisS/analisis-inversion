@@ -153,3 +153,7 @@ Lo aprendido en los análisis de octubre de 2026 (de Viscofan a Vertiv). Ahorra 
 - **Impuestos aplazados por traslados de propiedad intelectual** (Kerecis, en Coloplast: 2.422 M a largo plazo): asimilables a deuda en el puente.
 - **MarketScreener con base mixta** (Coloplast FY2026e): EBITDA y EBIT antes de partidas especiales, BPA después del deterioro; usa el BPA ajustado de Stock Analysis para el PER.
 - `prompt-de.mjs` imprime también las lecciones, que ya pesan unos 57 KB: léelas por partes.
+- **Procesadores de pagos con fondos de comerciantes** (Adyen): usa la caja propia que publica la empresa (caja − pasivos con comerciantes + cobros pendientes), que cuadra. Los intereses del flotante (≈ 60 % de los ingresos financieros) mueven ~4 % del valor: decide explícitamente si el DCF los recoge y ajústalo en `otros_ajustes`, explicado. El PER del consenso sí los incluye.
+- **Prueba de cuota con volumen procesado** (Adyen, como Pro Medicus): si la cuota es en volumen, el mercado final va al precio unitario de la empresa (volumen × comisión media); en millones de volumen la cuota sale 0.
+- **Parches sobre `meta.huecos[i]`** no se aplican (otra vez, como en Verisk): usa `huecos_resueltos` y registra el hueco de nuevo en `propio`.
+- **Beta de una antigua burbuja** (Adyen: 2,33 mensual a 5 años; WACC por encima del 13 %): usa la semanal a 2 años ajustada y di en la síntesis cuánto depende la recomendación de la beta.
