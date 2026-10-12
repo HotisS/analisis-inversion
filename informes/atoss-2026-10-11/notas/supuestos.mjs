@@ -6,21 +6,23 @@
 // 2028e: consenso +13,3 % y 38,1 %; nosotros +12,0 % y 38,0 %. Después, el crecimiento converge al 5 % en 2035e y el margen
 //   sube al 39,5 % (EBIT ≈ 37 %, el de 2024) por la escala de la nube; no se supone la vuelta al 39,8 % de EBITDA de 2024.
 // Inversión: capex de caja 0,5-1,2 % de las ventas + pagos de arrendamientos 1,8 % (NIIF 16) → 2,4 %; amortización 2,4 %.
+// Más el aumento de las comisiones activadas (costes de contrato, NIIF 15: 7,3 → 11,4 M en 2025, ≈ 6 % de las ventas), que no pasa
+//   por el EBITDA ni por el circulante: +0,5 puntos de capex mientras crece al 11-12 % y +0,2 al final → 2,9 % → 2,6 %.
 // Circulante comercial (clientes − proveedores − pasivos de contrato) 2,5 % de las ventas (2,4-2,9 % en 2023-2025).
 // Impuestos: 32,5 % (32,1-32,9 % en 2022-2025: Múnich, impuesto de sociedades + Gewerbesteuer).
 
 export const modelo = [
   //  periodo   crec  margen amort capex nwc  tasa  fijo
-  ['2026e', 12.5, 37.5, 2.4, 2.4, 2.5, 32.5, true],
-  ['2027e', 12.5, 37.5, 2.4, 2.4, 2.5, 32.5, false],
-  ['2028e', 12.0, 38.0, 2.4, 2.4, 2.5, 32.5, false],
-  ['2029e', 11.0, 38.5, 2.4, 2.4, 2.5, 32.5, false],
-  ['2030e', 10.0, 39.0, 2.4, 2.4, 2.5, 32.5, false],
-  ['2031e', 9.0, 39.5, 2.4, 2.4, 2.5, 32.5, false],
-  ['2032e', 8.0, 39.5, 2.4, 2.4, 2.5, 32.5, false],
-  ['2033e', 7.0, 39.5, 2.4, 2.4, 2.5, 32.5, false],
-  ['2034e', 6.0, 39.5, 2.4, 2.4, 2.5, 32.5, false],
-  ['2035e', 5.0, 39.5, 2.4, 2.4, 2.5, 32.5, false],
+  ['2026e', 12.5, 37.5, 2.4, 2.9, 2.5, 32.5, true],
+  ['2027e', 12.5, 37.5, 2.4, 2.9, 2.5, 32.5, false],
+  ['2028e', 12.0, 38.0, 2.4, 2.9, 2.5, 32.5, false],
+  ['2029e', 11.0, 38.5, 2.4, 2.8, 2.5, 32.5, false],
+  ['2030e', 10.0, 39.0, 2.4, 2.8, 2.5, 32.5, false],
+  ['2031e', 9.0, 39.5, 2.4, 2.7, 2.5, 32.5, false],
+  ['2032e', 8.0, 39.5, 2.4, 2.7, 2.5, 32.5, false],
+  ['2033e', 7.0, 39.5, 2.4, 2.6, 2.5, 32.5, false],
+  ['2034e', 6.0, 39.5, 2.4, 2.6, 2.5, 32.5, false],
+  ['2035e', 5.0, 39.5, 2.4, 2.6, 2.5, 32.5, false],
 ];
 
 export const anios = modelo.map(([periodo, crecimiento_pct, margen_ebitda_pct, amortizacion_pct_ventas, capex_pct_ventas, nwc_pct_ventas, tasa_impositiva_pct, fijo]) => ({

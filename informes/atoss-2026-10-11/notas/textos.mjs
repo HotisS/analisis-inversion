@@ -32,6 +32,7 @@ const negocio = {
 export const parches = [
   { ruta: 'sector.regulacion', valor: sinBorrador(B.sector.regulacion) },
   { ruta: 'sector.drivers[0].evidencia', valor: sinBorrador(B.sector.drivers[0].evidencia) },
+  { ruta: 'sector.extra[3]', valor: sinBorrador(B.sector.extra[3]) },
   { ruta: 'gobierno.consejo[1].tipo', valor: 'Otro externo' },
   { ruta: 'identificacion.fundacion', valor: '1987' },
   ...(X.parches ?? []),

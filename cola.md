@@ -15,7 +15,7 @@ Cola rehecha el 10-oct-2026 con el escáner (`escaneos/escaneo-2026-10-10.xlsx`,
 | 3 | Dunelm | DNLM.L | Reino Unido | Valor | ROIC 72 % (ojo: arrendamientos), FCF 14 %, −32 % | Hecha (11-oct): Comprar, convicción media |
 | 3 | Uber | UBER | EE. UU. | Crecimiento | Iteración 2 (la 1, del 8-oct, dio Mantener, convicción media); ventas +18 %, FCF 6,9 %, −29 % | Hecha (10-oct): Mantener, convicción media (sin cambios frente a la del 8-oct) |
 | 4 | Intuit | INTU | EE. UU. | Valor | FCF 10,7 %, PER 11x, −56 % desde máximos | Hecha (11-oct): Comprar, convicción media |
-| 5 | ATOSS Software | AOF.DE | Alemania | Crecimiento | ROIC 60 %, −30 % | En curso (12-oct, tanda 1): notas A-E hechas; cerrando resumen, cálculo, Word y PDF |
+| 5 | ATOSS Software | AOF.DE | Alemania | Crecimiento | ROIC 60 %, −30 % | Hecha (12-oct): Mantener, convicción baja (objetivo 80,89 EUR, −4,7 %) |
 | 6 | Pro Medicus | PME.AX | Australia | Crecimiento | ROIC 46 %, −46 % (múltiplo aún alto) | Pendiente (tanda 3) |
 | 7 | Betsson | BETS-B.ST | Suecia | Valor | EV/EBITDA 4x, FCF 12 %, ventas +15 %, −40 % | Pendiente (tanda 2) |
 | 7 | Medpace | MEDP | EE. UU. | Crecimiento | ROIC 56 %, FCF 4,1 % | Pendiente (tanda 3) |
