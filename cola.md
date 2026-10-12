@@ -1,6 +1,6 @@
 # Cola de análisis de empresas
 
-**Prioridad al reanudar (pedida el 12-oct-2026), de 3 en 3:** S&P Global (SPGI), Amazon (AMZN) y ATOSS (a medias). Después, Pluxee, Technip Energies y Betsson. LVMH no se repite: ya tiene informe del 8-oct (decisión del usuario, 12-oct).
+**Reanudada el 12-oct-2026 (11:15), de 3 en 3.** Tanda 1, en curso: S&P Global (SPGI), Amazon (AMZN) y ATOSS (cierre del informe). Tanda 2: Pluxee, Technip Energies y Betsson. Tanda 3: Pro Medicus y Medpace (vuelven a la cola). LVMH no se repite: ya tiene informe del 8-oct. Ninguna empresa con informe se repite. Al cerrar cada una se compara con las compras propuestas en `informes/cartera-2026-10-11.md`.
 
 Se analizan **de tres en tres, en paralelo** (desde el 12-oct; antes de cuatro en cuatro y, hasta el 10-oct, de dos en dos) (`/analiza-empresa`), en el orden de la tabla. Al cerrar cada empresa: marca su estado aquí, `node herramientas/seguimiento.mjs`, commit y push. La cola vive en el repo para que cualquier equipo pueda seguirla tras un `git pull`.
 
@@ -15,11 +15,11 @@ Cola rehecha el 10-oct-2026 con el escáner (`escaneos/escaneo-2026-10-10.xlsx`,
 | 3 | Dunelm | DNLM.L | Reino Unido | Valor | ROIC 72 % (ojo: arrendamientos), FCF 14 %, −32 % | Hecha (11-oct): Comprar, convicción media |
 | 3 | Uber | UBER | EE. UU. | Crecimiento | Iteración 2 (la 1, del 8-oct, dio Mantener, convicción media); ventas +18 %, FCF 6,9 %, −29 % | Hecha (10-oct): Mantener, convicción media (sin cambios frente a la del 8-oct) |
 | 4 | Intuit | INTU | EE. UU. | Valor | FCF 10,7 %, PER 11x, −56 % desde máximos | Hecha (11-oct): Comprar, convicción media |
-| 5 | ATOSS Software | AOF.DE | Alemania | Crecimiento | ROIC 60 %, −30 % | A medias (11-oct): notas A-E hechas; faltan resumen, cálculo, Word y PDF |
-| 6 | Pro Medicus | PME.AX | Australia | Crecimiento | ROIC 46 %, −46 % (múltiplo aún alto) | Pendiente |
-| 7 | Betsson | BETS-B.ST | Suecia | Valor | EV/EBITDA 4x, FCF 12 %, ventas +15 %, −40 % | Pendiente |
-| 7 | Medpace | MEDP | EE. UU. | Crecimiento | ROIC 56 %, FCF 4,1 % | Pendiente |
+| 5 | ATOSS Software | AOF.DE | Alemania | Crecimiento | ROIC 60 %, −30 % | En curso (12-oct, tanda 1): notas A-E hechas; cerrando resumen, cálculo, Word y PDF |
+| 6 | Pro Medicus | PME.AX | Australia | Crecimiento | ROIC 46 %, −46 % (múltiplo aún alto) | Pendiente (tanda 3) |
+| 7 | Betsson | BETS-B.ST | Suecia | Valor | EV/EBITDA 4x, FCF 12 %, ventas +15 %, −40 % | Pendiente (tanda 2) |
+| 7 | Medpace | MEDP | EE. UU. | Crecimiento | ROIC 56 %, FCF 4,1 % | Pendiente (tanda 3) |
 
-**En pausa desde el 11-oct-2026 (17:17) a petición del usuario.** Hechas ese día: Nemetschek, Deckers, Trigano, Gartner, Burkhalter y CTS Eventim. A medias: **ATOSS** (notas A-E completas y propio, supuestos y textos empezados; faltan resumen, integración, cálculo, Word y PDF) y **Pluxee** (solo `bolsa.json`; recién empezado). Pendientes: **Technip Energies** (TE.PA) y **Betsson**. Desde el 12-oct, de 3 en 3. Medpace y Pro Medicus salen (PER 32x y 73x). Las filas de la tabla se quitan al cerrar cada empresa.
+**Estuvo en pausa del 11-oct (17:17) al 12-oct.** Hechas ese día: Nemetschek, Deckers, Trigano, Gartner, Burkhalter y CTS Eventim. A medias: **ATOSS** (notas A-E completas y propio, supuestos y textos empezados; faltan resumen, integración, cálculo, Word y PDF) y **Pluxee** (solo `bolsa.json`; recién empezado). Pendientes: **Technip Energies** (TE.PA) y **Betsson**. Desde el 12-oct, de 3 en 3. Medpace y Pro Medicus salieron (PER 32x y 73x) y vuelven el 12-oct en la tanda 3. Las filas de la tabla se quitan al cerrar cada empresa.
 
 Suplentes si alguna no se puede valorar: Burkhalter (BRKN.SW, valor), Booking (BKNG, crecimiento), ANYCOLOR (5032.T, crecimiento), Moncler (MONC.MI), Sectra (SECT-B.ST), Yelp (YELP, valor).
