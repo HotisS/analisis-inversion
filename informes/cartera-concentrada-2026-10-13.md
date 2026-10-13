@@ -89,7 +89,21 @@ El técnico **no cambia qué se vende ni qué se compra**. Solo cambia **cuándo
 | Equifax | Bajista fuerte, por debajo de todas sus medias (164-213); RSI diario de 30 a 40, rebotando del mínimo (≈ 138). Toca la media de 1.000 semanal (143,5). | Límite 162 USD (media SAMA de 164). Stop si cierra < 138. Resultados el 20-oct. |
 | Hermès | Bajista fuerte, por debajo de todas sus medias; RSI semanal de 28, el más bajo desde 2018; justo en la media de 1.000 de 3 días (1.294). | Límite 1.420 EUR (SAMA de 1.458). Stop si cierra < 1.250 (mínimo del 8-oct: 1.262,50). Ventas el 22-oct. |
 
-**Orden de las compras.** Con el efectivo y las ventas inmediatas (≈ 5.450 EUR): Nemetschek, Uber y Viscofan. Wolters Kluwer, Auto Trader e Intuit, a medida que se ejecuten las otras cuatro ventas.
+**Compras con el técnico y el precio de hoy (gráficos del usuario, 13-oct).** Varias han subido desde el informe, y a 12 meses rinden menos al precio actual. Por eso cada orden lleva un precio límite: el que mantiene la rentabilidad que justificó la compra.
+
+| Valor | Precio informe → hoy | Ponderada / base a 12 m hoy | Técnico | Orden |
+|---|---|---|---|---|
+| Uber | 71,51 → 71,30 USD | +18,5 % / +19,4 % | Lateral-bajista desde 2025, bajo sus medias (72,4-76,2), sobre el soporte de la media de 1.000 (68,1). RSI de 42 a 52. | **La mitad ya** (14). La otra mitad (14) con límite en 69 USD; si no llega antes del 7-nov, a mercado (cumple hasta 73,4). |
+| Viscofan | 52,90 → 53,20 EUR | +19,5 % / +13,9 % | Bajista, bajo todas sus medias (55,5-58,0); RSI de 38 a 40. Sobre el soporte de la media de 1.000 de 3 días (52,4). | **La mitad ya** (17). La otra mitad (16) con límite en 50 EUR (mínimo de fin de 2025 ≈ 48-49); si no llega, a mercado el 7-nov (el base cumple hasta 54,18). |
+| Nemetschek | 67,40 → 71,25 EUR | +14,1 % / +15,0 % | Rebote desde el mínimo de julio (≈ 55), con el RSI diario en ≈ 72 (sobrecompra a corto) y la EMA 365 (≈ 77) como resistencia. | Límite en **68 EUR** (26 acciones); la ponderada vuelve al 15 % a 70,70. |
+| Intuit | 302,75 → 309,38 USD | +14,6 % / +14,4 % | Bajista, por debajo de sus medias (313,9-503,9); rebota de un doble suelo de 270-280; RSI de 40 a 55. | Límite en **300 USD** (5 acciones); la ponderada vuelve al 15 % a 308,3. |
+| Auto Trader | 4,887 → 5,10 GBP | +21,8 % / +4,6 % | Base lateral de 4,50 a 5,60 tras la caída desde 9; rebota sobre la media SAMA (4,97-4,99). | Límite en **4,95 GBP** (240 acciones). |
+| Wolters Kluwer | 71,78 → 78,46 EUR | +16,0 % / **+0,5 %** | Ruptura fuerte (+9 %), RSI de 75 (sobrecompra) e impulso alto; resistencia en la media de 1.000 de 3 días (83,6). | Límite en **72 EUR** (19 acciones), en la zona de la ruptura (SAMA 68,2). |
+
+**Qué pasa si una orden no se ejecuta.**
+- **Nemetschek, Intuit, Auto Trader y Wolters Kluwer:** si el 7-nov no se ha llegado al límite, **no se compra a mercado**. Se revisa con el precio de ese día, porque más caro rinde menos de lo que pide el usuario. El dinero espera en efectivo o va a las suplentes.
+- **Uber y Viscofan:** cumplen a cualquier precio razonable, así que la segunda mitad se compra a mercado el 7-nov.
+- **Wolters Kluwer:** al precio de hoy el base es casi nulo. Si no baja, es la primera que se cae de la lista.
 
 **Lo que vale esto.** El técnico predice poco. Aquí sirve para no vender en el peor momento: Equifax y Hermès están en sobreventa y sobre soportes de largo plazo, mientras ICE y Puig tienen la tendencia a favor. La diferencia esperada es de unos pocos puntos sobre ≈ 4.200 EUR, a favor o en contra. Si el usuario prefiere sencillez, vender todo ya es igual de válido.
 

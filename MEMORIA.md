@@ -31,6 +31,7 @@ Lo que cualquier sesión de Claude, en cualquier equipo, tiene que saber antes d
 - Cartera vigente: `informes/cartera-concentrada-2026-10-13.md`.
 
 ## Decisiones
+- 13-oct-2026 (noche): compras con precio límite según el técnico y la rentabilidad al precio del día (Uber y Viscofan, la mitad ya; Nemetschek ≤ 68 EUR, Intuit ≤ 300 USD, Auto Trader ≤ 4,95 GBP, Wolters Kluwer ≤ 72 EUR). Si no se ejecutan antes del 7-nov, no se compra a mercado: se revisa. **Regla**: antes de comprar, recalcular la rentabilidad a 12 meses con el precio del día (objetivos de `objetivo12m-revisados.json`).
 - 13-oct-2026 (noche): plan de ejecución técnico de las ventas: Grifols y PepsiCo ya; ICE, Puig, Equifax y Hermès con precio límite y stop, y fecha tope el 7-nov (`informes/cartera-concentrada-2026-10-13.md`).
 - 13-oct-2026 (noche): cartera versión 9: **Adobe fuera** (decisión del usuario); entra **Intuit** (5 títulos, 5,3 %; base +16,9 %, valor intrínseco +44 %, sostenibilidad «En parte»). Ponderada del +15,6 % al +18,4 %; base del +9,1 % al +11,8 %.
 - 13-oct-2026 (noche): cartera versión 8: **se venden Grifols, Puig e ICE**; **tope del 7 %** por valor salvo Edenred y oro; entra **Adobe** (calidad alta y valor intrínseco +26,5 %, base +10,2 %) porque con el tope las tres compras que pasan todo no absorben el dinero. Ponderada del +15,6 % al +18,7 %; base del +9,1 % al +11,5 %.
