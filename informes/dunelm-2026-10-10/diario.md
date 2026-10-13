@@ -9,3 +9,4 @@
 - 14:44 Primer cálculo: DCF 9,38 GBP (+17,3 %), WACC 10,17 %; DCF inverso 0,8 % frente a 3,4 %; valor objetivo 8,79 (+9,9 %), rentabilidad total 15,6 % con el dividendo ordinario (5,7 %); las dos reglas Comprar; convicción sugerida Media.
 - 14:46 Parado a petición del usuario: valoración y textos hechos (Comprar, convicción media, valor objetivo 8,79 GBP); faltan Word, PDF y revisión.
 - 01:18 (11-oct) Reanudado a petición del usuario: Word y PDF (52 páginas), portada y síntesis revisadas como imagen. Comprar, convicción Media, valor objetivo 8,79 GBP (+9,9 %), rentabilidad total 15,6 %.
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 9,42 GBP, rentabilidad 23,5 %, señal Comprar (`revision-12m-2026-10-13.md`).
