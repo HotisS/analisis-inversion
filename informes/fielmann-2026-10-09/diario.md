@@ -31,3 +31,27 @@
 4. **`bolsa.mjs` con un índice equivocado**: el subagente lanzó la herramienta contra el ETF del MDAX (el encargo decía MDAX) y la empresa está en el SDAX; además trata `^SDAXI` como índice de precio aunque es de rendimiento, y hubo que calcular las rentabilidades con un script propio. Arreglo: lista de índices de rendimiento conocidos (SDAXI, MDAXI, DAX) en la herramienta, y comprobar el índice en el informe anual antes de lanzarla.
 5. **Comparables mezclan fabricantes y minoristas**: la mediana (13x) duplica el valor. El motor avisa de fragilidad pero no hay un campo para excluir un comparable de la mediana como en transacciones. Arreglo: `excluir` también en `comparables.empresas`.
 6. **Circulante por defecto**: el primer supuesto (3 %) liberaba 143 M de caja en 2026 y subía el DCF un 28 %. El control lo cazó; conviene que `supuestos` parta siempre de `calc.balance[].circulante_ventas_pct` del último año.
+
+## Actualización v2 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.json`), salida `datos-v2.json`, `Fielmann Group - 2026-10-09 v2.docx` y su PDF. Mismo precio (37,15 EUR, cierre del 8-oct) y fecha de corte. Sin cambios en los supuestos del DCF.
+
+| | v1 | v2 |
+|---|---|---|
+| Recomendación · convicción | Comprar · Media | Comprar · Media |
+| Valor objetivo (WACC 7,74 %) | 49,13 EUR, RTE 36,0 %, asimetría 2,38x | 49,13 EUR, RTE 36,0 %, asimetría 2,38x |
+| Objetivo con la prima del mercado (WACC 6,81 %) | 59,79 EUR, RTE 64,7 % | 59,79 EUR, RTE 64,7 % |
+| Comprar por debajo / vender por encima | 51,14 / 64,46 EUR | 48,10 / 64,46 EUR (cambio del motor, no de supuestos) |
+| Sostenibilidad del crecimiento | — | **En parte** (4,5 % proyectado; 2,8 % financiable al ROIC actual) |
+
+- **Puente 2026e-2029e** (estimación propia sobre KPI, semestral y ZVA): volumen 1,6-3,2 puntos (aperturas, EE. UU., España, audiología), precio 1,1-1,6 (cristales de más valor; el mercado alemán crece en valor con menos unidades) y otros 0,5-0,7 (audiología, compras pequeñas, divisa).
+- **Mercado final en null**: la cuota publicada (25,1 %) es solo de la óptica minorista alemana en valor con IVA y la proyección es del grupo; no hay perímetro comparable.
+- **Reinversión**: la proyección reinvierte el 20 % del NOPAT, que al ROIC del 13,9 % financia un 2,8 % anual frente al 4,5 % proyectado; el capital nuevo tendría que rendir un 21,5 % frente a un incremental histórico del 6,5 %. Salta el control y se explica: unos dos puntos al año son precio, mezcla y audiología, y el incremental lo hunden las compras de EE. UU. y la caída de margen de 2022-2024.
+- **No se recorta el base**: recalculado aparte con el crecimiento limitado al 2,9 % medio (2027e-2033e: 3 / 3,5 / 3,5 / 3 / 2,5 / 2,25 / 2,25 %), el DCF da 39,79 EUR, el objetivo 42,89 EUR (RTE 19,2 %; relativa 51,94 EUR, +43,6 %) y sigue en Comprar. Lo dice la síntesis en «El negocio».
+- Síntesis: frase del veredicto en «El negocio», frase de la convicción en el primer párrafo (control nuevo «La síntesis explica la convicción») y nivel de compra 48,10 EUR (también en `cambiaria_recomendacion`). 614 palabras.
+
+**Fallos del sistema vistos**
+1. Los niveles de compra cambian al recalcular con el motor nuevo (51,14 → 48,10 EUR con los mismos datos): una actualización «de método» mueve cifras impresas sin que el diario lo note. Arreglo: que el motor imprima la diferencia con el `calc` anterior.
+2. La prueba de reinversión trata todo el crecimiento como comprado con capital: en un minorista con poder de precios penaliza el componente de precio y mezcla del puente, que el motor ya conoce. Arreglo: comparar el crecimiento financiable con el volumen del puente, no con el total.
+3. El ROIC incremental histórico mezcla compras (EE. UU.) con crecimiento orgánico; en un comprador ocasional el control compara con una referencia que la proyección no repite.
+4. No hay forma de dar la sensibilidad «crecimiento limitado a lo financiable» dentro del informe: hubo que recalcular a mano en una copia. Arreglo: que el motor la calcule cuando el veredicto es «En parte» o «No».
