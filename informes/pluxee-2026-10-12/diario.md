@@ -42,3 +42,5 @@
 - **Flotante y motor**: con la visión operativa no basta con el puente; hay que limpiar también el balance histórico (caja propia y cuentas a cobrar sin las del flotante), porque el motor parte del circulante del último balance y calcula el ROIC con esa caja. Sin ello, el circulante salía en +72 % de las ventas y el ROIC en −33 %. Mismo fallo de sistema que en Edenred (falta un campo `float` en el motor).
 - **Múltiplos históricos con menos de tres ejercicios cotizados** (escisiones recientes): el motor omite la sección; regístralo sin buscar más.
 - **Subagente C y encargos con nombres**: no pongas en el encargo nombres de cargos que no hayas comprobado (presidenta de Pluxee); C lo corrigió, pero pudo contaminar la nota.
+
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 16,49 EUR, rentabilidad +16,4 %, señal Comprar (`revision-12m-2026-10-13.md`).

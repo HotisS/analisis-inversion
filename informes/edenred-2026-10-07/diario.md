@@ -74,3 +74,5 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 2. **La cuota de `competencia.cuota_pct` es de un solo país** y no hay campo para el perímetro: el motor no puede saber que no compara con los ingresos del grupo. Arreglo: `competencia.cuota_perimetro` (o `mercado_final.ingresos_perimetro`) para comparar la cuota con los ingresos del mismo segmento.
 3. **«Comprar por debajo» pasa de 48,17 a 41,46 EUR con las mismas cifras** por un cambio del motor posterior al 7-oct; el informe v1 publicado queda con otro nivel. Arreglo: anotar en el registro de cambios del motor qué informes cambian de niveles al recalcular.
 4. **La división volumen/precio en un negocio de comisiones sobre volumen** no está definida en el prompt (¿el valor facial es volumen o precio?). Aquí: volumen = volumen de negocio a comisión media constante (incluye valor facial); precio = cambio de la comisión media. Arreglo: una línea en el prompt para plataformas con tasa sobre volumen.
+
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 39,63 EUR, rentabilidad +48,3 %, señal Comprar (`revision-12m-2026-10-13.md`).
