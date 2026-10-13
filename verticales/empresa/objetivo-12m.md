@@ -26,7 +26,7 @@
 ## Dónde queda
 
 - Revisión de cada empresa: `informes/<carpeta>/revision-12m-AAAA-MM-DD.md`, con la tabla de BPA (ventas → EBIT → beneficio → BPA por escenario), la tabla de PER histórico, la tabla de escenarios (supuesto, cálculo, objetivo y rentabilidad), el contraste con el consenso y una línea en `diario.md`.
-- Resultado: `verticales/empresa/objetivo12m-revisados.json` (`revisados.<TICKER>`: fecha, objetivo, rentabilidad, señal y nota con los tres cálculos). **Manda sobre todo lo demás.**
+- Resultado: `verticales/empresa/objetivo12m-revisados.json`, apuntado con `node herramientas/apuntar-12m.mjs '<línea JSON>'` (calcula la ponderada, el base y la señal igual para todas) (`revisados.<TICKER>`: fecha, objetivo, rentabilidad, señal y nota con los tres cálculos). **Manda sobre todo lo demás.**
 - `herramientas/objetivo12m.mjs`: calculadora de apoyo. Hace los pasos 1-4 con los datos del informe, sin ajustes de dilución ni de partidas financieras y con la media de todos los años de PER. **No es la revisión**: aplicada a ciegas da disparates (PER de burbuja en el alcista, BPA en otra base). Sirve de punto de partida. Con `--sin-revisiones` ignora el JSON.
 - `seguimiento.xlsx`: columnas «Objetivo 12 m», «Rentabilidad 12 m», «Señal 12 m» y «Origen del objetivo 12 m». Solo se rellenan con revisiones hechas: lo que no tiene revisión sale vacío.
 - **Cartera y compras**: se ordenan por esta rentabilidad a 12 meses. El valor intrínseco del informe se da al lado como «valor real».

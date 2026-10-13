@@ -51,5 +51,19 @@ Si no puedes lanzar subagentes, haz las fases 2-4 bis tú mismo, en ese orden y 
 ## Rentabilidad a 12 meses (v2), después del PDF
 Con el informe cerrado, haz la revisión a 12 meses de `verticales/empresa/objetivo-12m.md` (PER propio × BPA propio del ejercicio que mirará el mercado en un año, en bajista, base y alcista): media ponderada con las probabilidades de los escenarios (la cifra) y rentabilidad del base (el filtro de valor real: ≥ 12 % para comprar). Escríbela en `informes/<carpeta>/revision-12m-<AAAA-MM-DD>.md` (ejemplo: `informes/alphabet-2026-10-08/revision-12m-2026-10-12.md`), apunta el resultado en `verticales/empresa/objetivo12m-revisados.json` y ejecuta `node herramientas/seguimiento.mjs`. Un informe no está terminado sin las dos facetas: **sostenibilidad del crecimiento** en el DCF (`dcf.sostenibilidad`, con el caso base rebajado si falla) y **rentabilidad a 12 meses v2**.
 
+## Análisis terminado: lista de comprobación (igual para todas las empresas)
+En `informes/<carpeta>/`:
+- `datos.json` (o `datos-vN.json`) calculado, con `dcf.sostenibilidad` (veredicto, puente de ingresos, mercado final o `null` explicado) y el caso base dentro de lo financiable;
+- `<Nombre> - <AAAA-MM-DD>.docx` y su `.pdf` con el mismo nombre (versiones: ` vN` al final);
+- `revision-12m-<AAAA-MM-DD>.md` con las tablas del método (BPA por escenario, PER histórico con exclusiones, escenarios, ponderada, base y contraste con el consenso);
+- `diario.md` con el commit de partida, los tiempos, las decisiones y la línea de la revisión a 12 meses;
+- `notas/` con las notas A-E y `propio`, y `notas/actualizacion-vN.mjs` para cada versión rápida.
+Fuera de la carpeta:
+- la revisión apuntada con `node herramientas/apuntar-12m.mjs '<línea JSON>'` (calcula la ponderada, la rentabilidad del base y la señal);
+- `node herramientas/seguimiento.mjs` (columnas «Metodología» = Nueva y «… 12 m» llenas);
+- `cola.md` marcada, las lecciones nuevas en `verticales/empresa/lecciones.md`, y commit y push.
+
+Encargos de subagentes para trabajos repetidos sobre informes ya hechos, en `verticales/empresa/encargos/`: `actualizacion-sostenibilidad.md` (pasar un informe viejo a la metodología nueva), `recorte-caso-base.md` (cuando falla la prueba), `revision-12m.md` (rentabilidad a 12 meses) y `actualizacion-completa.md` (las dos cosas seguidas).
+
 ## Entrega
 Responde con la ruta del informe (Word y PDF) y, en diez líneas como máximo: recomendación (Comprar/Mantener/Vender) y convicción, valor objetivo y rentabilidad total esperada, rentabilidad a 12 meses v2 (ponderada y base) y veredicto de sostenibilidad, qué descuenta el precio (DCF inverso), cobertura, controles en «Revisar» que quedan y por qué, y las secciones o datos omitidos (los de núcleo, primero).
