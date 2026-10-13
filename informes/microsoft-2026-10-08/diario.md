@@ -39,3 +39,31 @@
 8. **EBITDA del consenso con otra amortización** (MarketScreener 198.685 M frente a 193.771 M en FY2026): D lo marcó como «NIIF» y habría inflado el EV/EBITDA de los próximos 12 meses. Arreglo: que el motor compare el EBITDA del último ejercicio real del proveedor con el de las cuentas y avise si difieren más de un 1 %.
 9. **Recuento de palabras de la síntesis**: no lo hace ninguna herramienta (salió 672 y hubo que recortar). Arreglo: que integrar.mjs avise si pasa de 650.
 10. **Claves de trabajo fuera del esquema** con nombres distintos en cada nota (notas_para_integrar, nota_segmentos, notas_integrador). Arreglo: una sola clave de primer nivel notas_integrador en el prompt de cada subagente.
+
+## Actualización v2 (13 oct 2026): sostenibilidad del crecimiento y caso base al crecimiento financiable
+
+Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.json`), salida `datos-v2.json`, `Microsoft - 2026-10-08 v2.docx` y su PDF (52 páginas). Mismo precio (529,76 USD, cierre del 7-oct) y fecha de corte. La prueba fallaba con los supuestos de v1, así que el recorte del caso base (`encargo-recorte`) va en esta misma versión.
+
+| | v1 | v2 |
+|---|---|---|
+| Recomendación · convicción | Mantener · Baja | **Vender · Baja** (la sugerida también es Baja: la relativa está a 0,7 puntos del umbral) |
+| DCF (WACC 10,34 %) | 463,46 USD | 419,91 USD |
+| Valor objetivo | 450,46 USD, RTE −14,3 %, asimetría 0,25x | 413,69 USD, RTE −21,2 %, asimetría 0,04x |
+| Con la prima del mercado (4,2 %, WACC 9,52 %) | 511,38 USD, RTE −2,8 % | 469,70 USD, RTE −10,7 % |
+| Regla absoluta / relativa | Vender / Mantener | Vender / Vender |
+| Comprar por debajo / vender por encima | 447,76 / 568,48 (el motor actual daría 432,44 / 568,48) | 397,14 / 517,94 |
+| Crecimiento medio proyectado · financiable al ROIC (30,9 %) | 12,4 % · 7,1 % (reinversión del 23 % del NOPAT) | 12,4 % · 10,5 % (34 %) |
+| Capital nuevo frente al incremental histórico (27,7 %; tope 1,25 × 30,9 = 38,6 %) | 42,9 % (falla) | 29,3 % (pasa) |
+| Sostenibilidad del crecimiento | — | **En parte** |
+
+- **Por qué fallaba**: no por el crecimiento de los primeros años (guía y cartera), sino por la cola. En FY2031-FY2036 el capex se acercaba a la amortización (inversión neta del 1,5-4,5 % de las ventas) con las ventas creciendo un 6,5-13 %: las ventas sobre el capital invertido subían de 0,82 (FY2026: 331.839 / 405.335) a 1,07 en FY2036. Un negocio que se ha vuelto de infraestructura no tiene precedente de eso.
+- **Supuesto cambiado** (solo uno): capex de FY2030e-FY2036e de 28 / 25 / 23 / 22 / 21 / 20,5 / 20 % a 32,5 / 29,5 / 28 / 27 / 25,5 / 25 / 24,5 % de las ventas (+4,5 puntos). Es el mínimo para que el financiable (10,5 %) más la parte de precio del puente (≈ 2 puntos, que no pide capital) cubra el 12,4 % proyectado; la rotación queda en 0,84. Crecimiento, márgenes, WACC, terminal, etapa de transición y escenarios, sin cambios. Se descartó bajar solo el crecimiento: con −1,5 puntos en FY2031-FY2036 el financiable apenas se mueve (7,2 %) y el DCF cae a 427 USD sin pasar la prueba; haría falta quitar más de tres puntos al año. Medido con el motor: cada punto de capex en la cola resta ≈ 9,5 USD; medio punto de crecimiento, ≈ 13 USD.
+- **Puente FY2027e-FY2030e** (estimación propia a nivel de grupo): volumen 15/16/15/13, precio 2,5/2/2/2, otros 0. Precio: E3 +8 %, E5 +5 % y Office 365 E3 +13 % desde el 1-jul-2026 [27] y el ingreso por usuario de Microsoft 365 (+17 % de ingresos con +6-7 % de puestos en FY2026) [1, 8, 19]. **`mercado_final`: null**: la cuota del 20 % es de Azure (algo más de 100.000 M) en la nube de infraestructura de Synergy, y el DCF proyecta el grupo.
+- **Cambia la señal**: Mantener → Vender, porque la relativa pasa de −2,8 % a −10,7 % (umbral −10 %). Está en el borde: con el precio por debajo de 517,94 USD volvería a Mantener. Convicción Baja, la misma que dan los criterios. Textos reescritos con las cifras de `calc`: síntesis (645 palabras), tesis, visión diferencial, `en_contra`, `cambiaria_recomendacion`, `dcf.justificacion.inversion` y `.terminal` (múltiplo implícito 7,7x), `dcf.etapa2.justificacion` (571.166 M), `dcf.lectura`, narrativa del base, `escenarios.comentario`, `valoracion.comentario`, efectos en valor de los riesgos, primera pregunta de comité y el control explicado del terminal (405,64 USD con un 3,0 %). Controles: 17 de 20 correctos y 3 explicados (los de v1). Avisos del Word: los tres de v1 (suma de partes, ESG, gráfico de sector).
+
+**Fallos del sistema vistos**
+1. La prueba de reinversión mezcla años: el capex de FY2026-FY2027 (52 % de las ventas) construye capacidad que se factura después, y el ROIC de FY2026 ya está deprimido por obra en curso. El financiable (ROIC × tasa de reinversión de toda la proyección) castiga las proyecciones con la inversión al principio y la cola ligera, y no avisa de la rotación del capital, que es lo que de verdad fallaba. Arreglo: dar en la tabla las ventas sobre el capital invertido del último real y del último proyectado.
+2. La regla «financiable más la parte de precio» no tiene campo: el motor compara el financiable con el crecimiento total y no resta el `precio_pct` del puente. Arreglo: una fila con el crecimiento en volumen frente al financiable.
+3. Los escenarios desplazan crecimiento y margen pero no el capex: el bajista conserva la intensidad de capital del base aunque crezca tres puntos menos, y por eso empeora de −44,8 % a −51,9 % con este cambio. Arreglo: `ajuste_capex_pp` en los escenarios.
+4. Como en otros informes viejos, el motor actual mueve el nivel de compra de v1 (447,76 → 432,44) sin cambiar datos.
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 592,56 USD (media ponderada; base 611,46), rentabilidad +12,6 %, señal Mantener (`revision-12m-2026-10-13.md`).
