@@ -92,3 +92,26 @@ Sin investigación nueva. Script: `notas/actualizacion-v3.mjs` (parte de `datos-
 1. La portada pone «Comprar» al lado del valor objetivo absoluto (55,98 €) y de una rentabilidad del +12,0 %, por debajo del 15 % de la regla. El lector ve una contradicción. Cuando manda la relativa, la portada debería dar su objetivo y su rentabilidad, o los dos.
 2. El motor no da la prima a la que cambia la regla relativa: tuve que buscarla probando valores. Es el número que mide el riesgo de un Comprar relativo.
 3. Explicar las dos reglas cuesta 60-80 palabras de síntesis. La v2 ya estaba en 648, así que hubo que recortar finanzas, gobierno y riesgos.
+
+## Actualización v4 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v4.mjs` (parte de `datos-v3.json`, escribe `datos-v4.json`, `Viscofan - 2026-10-06 v4.docx` y su PDF). Mismo precio (52,90 €) y fecha de corte (6-oct-2026); no se cambia ningún supuesto del DCF.
+
+| | v3 | v4 |
+|---|---|---|
+| Recomendación · convicción | Comprar · Baja | Comprar · Baja |
+| Valor objetivo (nuestro WACC 7,99 %) | 55,98 € (RTE +12,0 %, asimetría 0,94) | igual |
+| Valor objetivo con la prima del mercado (WACC 7,24 %) | 62,50 € (RTE +24,4 %, asimetría 3,24) | igual |
+| Comprar por debajo de / vender por encima de | 57,16 € / 65,83 € | **56,43 €** / 65,83 € |
+| ¿La calidad sostiene el crecimiento? | — | **Sí** (4,9 % proyectado; financiable al ROIC: 3,2 %) |
+
+- **Veredicto: Sí.** El base pide poco: 4,9 % anual frente al 6,5 % de 2020-2025. Puente 2026e-2029e: volumen del 3,5-4 % (media histórica y mercado al 3,4-4 % [26][41]), precio del 1,5-2,5 % (repercusión de pieles y gas, con retraso) y otros entre −1,5 (divisa en 2026e) y +0,5 (nuevos negocios). El reparto volumen/precio es estimación propia: Viscofan solo publica el crecimiento comparable (+4,9 % en el 2T26).
+- **Reinversión**: el 20 % del NOPAT, que al ROIC del 16,4 % financia un 3,2 % anual, el volumen; el resto es precio, que no pide capital. El capital nuevo rinde un 16,4 %, por debajo del 17,6 % incremental histórico: el control pasa.
+- **Mercado final: null.** La cuota (≈ 22 %) es solo de envolturas y el motor divide los ingresos totales (con un 17 % de nuevos negocios y energía). A mano: envolturas de 1.033,7 M [2] al 4,9 % → ≈ 1.450 M en 2032e, sobre un mercado de ≈ 6.440 M (5.100 M al 3,4 %): del 20,3 % al ≈ 22,5 %.
+- **Textos**: frase del veredicto en «El negocio»; para seguir en 650 palabras se quitó de «Valoración» la frase de las tres etapas (ya la cubre el veredicto) y la coletilla de los resultados de 9M26. El nivel de compra pasa a 56,43 € en la síntesis y en `cambiaria_recomendacion`.
+
+**Fallos del sistema vistos**
+1. El nivel de compra cambia de 57,16 € a 56,43 € sin que cambie ningún dato: el motor actual ya da 56,43 € recalculando `datos-v3.json`. Un cambio del motor mueve cifras citadas en textos de informes anteriores y nada avisa; haría falta un control que compare los niveles citados en la síntesis con `calc.recomendacion.niveles`.
+2. La prueba de cuota divide los ingresos totales entre el mercado del segmento: con un 17 % de ingresos fuera de envolturas, la cuota implícita sale inflada (≈ 27 % frente al 22 %). Faltaría un campo `ingresos_perimetro_pct` (o el segmento) para no tener que dejar `mercado_final` en null.
+3. El puente volumen/precio no tiene fuente primaria en empresas que solo publican el crecimiento «comparable» (volumen + precio sin divisa): el reparto es estimación propia y el control solo comprueba la suma.
+4. `meta.controles_explicados` no existe en esta carpeta y los dos controles en «Revisar» (tipo impositivo de 2025 y regresión con R² 0,24) siguen sin marcarse como explicados, aunque el texto los explica.
