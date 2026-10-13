@@ -115,3 +115,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v4.mjs` (parte de `datos-
 2. La prueba de cuota divide los ingresos totales entre el mercado del segmento: con un 17 % de ingresos fuera de envolturas, la cuota implícita sale inflada (≈ 27 % frente al 22 %). Faltaría un campo `ingresos_perimetro_pct` (o el segmento) para no tener que dejar `mercado_final` en null.
 3. El puente volumen/precio no tiene fuente primaria en empresas que solo publican el crecimiento «comparable» (volumen + precio sin divisa): el reparto es estimación propia y el control solo comprueba la suma.
 4. `meta.controles_explicados` no existe en esta carpeta y los dos controles en «Revisar» (tipo impositivo de 2025 y regresión con R² 0,24) siguen sin marcarse como explicados, aunque el texto los explica.
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 61,23 EUR, rentabilidad +22,0 %, señal Comprar (`revision-12m-2026-10-13.md`).
