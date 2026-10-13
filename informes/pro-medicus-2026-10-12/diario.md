@@ -25,3 +25,4 @@
 - **Sentimiento en Australia**: HotCopper, Strawman, Market Index, Livewire y Simply Wall St dan 403 o necesitan JavaScript; solo abre Motley Fool Australia (`fool.com.au/tickers/asx-pme/page/N/`). E terminó en 3 minutos con confianza baja.
 - **Beta de valores que pasaron por una burbuja**: la mensual de 5 años (1,58; 1,39 ajustada) recoge la subida y caída de 2025-26; contrastar con la semanal de 2 años y la sectorial de Damodaran corregida por caja.
 - `bolsa.mjs` con rutas `/c/...` desde Git Bash no escribe la salida y no avisa (D). El xlsx F2 del RBA ocupa 8 MB y hubo que leerlo con un lector propio: una `herramientas/tasa.mjs --pais AU|US|EU` ahorraría tiempo en cada análisis.
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 210 AUD ponderado (211 AUD con la media simple), rentabilidad +25,3 % (base +23,4 %), señal Comprar, convicción baja (`revision-12m-2026-10-13.md`).

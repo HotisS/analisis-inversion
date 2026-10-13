@@ -17,3 +17,4 @@
 - **integrar**: una nota que trae menos años de segmentos (B) pisa a otra con más (A); restaurar en propio leyendo A.json desde propio.mjs (fs + fileURLToPath) funciona y evita copiar listas.
 - **propio sin meta.fecha_corte/meta.divisa**: rellenar avisa al final, pero el motor calcula igual; ponlos siempre en propio desde el primer cálculo.
 - **Relanzar subagentes cortados**: dar la lista de lo ya descargado en notas/docs ahorró tiempo; E acabó en 3 minutos.
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 439,16 USD (ponderado; media simple 443,29), rentabilidad +18,2 % (+19,3 % con la media simple; base +14,9 %), señal Comprar (`revision-12m-2026-10-13.md`).
