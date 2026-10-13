@@ -13,6 +13,8 @@ Lo que cualquier sesión de Claude, en cualquier equipo, tiene que saber antes d
 
 ## Preferencias de cartera (13-oct-2026; aplicarlas siempre que pida la cartera)
 - **Edenred, el oro (IGLN) y Grifols no se tocan** salvo que lo pida (si quedan por debajo del 5 %, se amplían hasta el 5 %).
+- **Wolters Kluwer y Auto Trader entran** por decisión del usuario (13-oct), aunque su base a 12 meses quede bajo el 12 %.
+- **Antes de recomendar vender algo que ya tiene, se investiga a fondo** (situación, novedades, argumentos a favor y en contra, qué cambiaría la decisión) y se deja un memorando `investigacion-cartera-AAAA-MM-DD.md` en la carpeta del informe (13-oct: Grifols, Alphabet, Hermès y Equifax).
 - **Ninguna posición por debajo del 5 %** de la cartera; **no hay máximo de valores** (13-oct: «no me importa tener más de 10»). Lo que quede por debajo del 5 % se amplía o se vende.
 - **Tres requisitos a la vez** para comprar o ampliar:
   1. **Rentabilidad**: a 12 meses ponderada ≥ 15 % (método v2, `verticales/empresa/objetivo-12m.md`).
@@ -24,6 +26,7 @@ Lo que cualquier sesión de Claude, en cualquier equipo, tiene que saber antes d
 - Cartera vigente: `informes/cartera-concentrada-2026-10-13.md`.
 
 ## Decisiones
+- 13-oct-2026 (tarde): cartera versión 3 (`informes/cartera-concentrada-2026-10-13.md`): entran Wolters Kluwer y Auto Trader; tras investigar a fondo, **Grifols se mantiene sin ampliar** (130 títulos solo por el mínimo del 5 %), **Alphabet y Hermès se venden** y **Equifax se mantiene y se amplía a 10 títulos después de los resultados del 20-oct**, como excepción a la regla de calidad (ROIC contable bajo el WACC por el fondo de comercio; sin fondo de comercio, 30,5 %), pendiente de que el usuario la acepte. Ponderada del +15,6 % al +21,0 %; base del +9,1 % al +12,3 %.
 - 13-oct-2026 (cierre): **todo el universo al día con las dos facetas** (73 empresas; fuera Betsson y Evolution por juego, y las iteraciones antiguas de PepsiCo y Uber): sostenibilidad del crecimiento en el informe, con el caso base rebajado si falla (Fielmann, Tomra, On, bioMérieux, CAF, Olympus, Kongsberg, Fanuc, Microsoft, Intuitive, Indra, CSL), y rentabilidad a 12 meses v2. **Tres filtros para comprar**: ponderada ≥ 15 %; valor real = base a 12 meses ≥ 12 % y valor intrínseco del informe ≥ precio; sostenibilidad distinta de «No». Para mantener: ponderada ≥ 10 %, base ≥ 5 % y valor intrínseco no más de un 15 % por debajo del precio. Cartera final con el motivo de negocio de cada operación: `informes/cartera-optima-2026-10-13.md` (ponderada del +15,6 % al +21,4 %; base del +9,1 % al +12,5 %).
 - 13-oct-2026: cambian de señal en el informe al actualizar: Olympus, Microsoft y Kongsberg (convicción) a Vender; Tomra, On, Rentokil y bioMérieux a Mantener; Indra a convicción baja. Las causas están en el diario de cada carpeta.
 - 13-oct-2026 (noche): **rentabilidad a 12 meses = media ponderada** con las probabilidades de los escenarios de cada informe (no la media simple del hilo, que inflaba por el alcista con el PER histórico), y **filtro de valor real = escenario base ≥ 12 %** para comprar (≥ 5 % y ponderada ≥ 10 % para mantener). Cartera propuesta: `informes/cartera-optima-2026-10-13.md` (ponderada del +15,6 % al +22,5 %; base del +9,1 % al +12,4 %).
