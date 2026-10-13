@@ -35,3 +35,26 @@
 9. **Circulante comercial frente a devengos**: el motor usa clientes + existencias − proveedores (13 % de ventas) y la nota de balance de A dice que el circulante es negativo con devengos y reparto de ingresos. Arreglo: campo opcional de otros pasivos operativos en balance.historico.
 10. **Control del terminal fijo en el 3 %** (repetido de Microsoft): con el Tesoro al 5,27 % el 3,5 % es coherente. Arreglo: umbral ligado a la tasa libre.
 - Fin: 22:26 (sin contar el corte, unos 30 minutos de 18:37 a 18:55 y unos 20 de 22:07 a 22:26).
+
+## Actualización v2 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.json`), salida `datos-v2.json`, `Alphabet - 2026-10-08 v2.docx` y su PDF (55 páginas). Mismo precio (350,50 USD, cierre del 7-oct) y fecha de corte. No se tocan supuestos del DCF.
+
+| | v1 | v2 |
+|---|---|---|
+| Recomendación · convicción | Vender · Baja | Vender · Baja (los criterios dan Media; explicado en la síntesis) |
+| Valor objetivo (WACC 10,74 %) | 252,74 USD, RTE −27,6 % | 252,74 USD, RTE −27,6 % |
+| Con la prima del mercado (4,20 %, WACC 9,86 %) | 281,33 USD, RTE −19,5 % | 281,33 USD, RTE −19,5 % |
+| Comprar por debajo / vender por encima | 245,16 / 313,65 | 241,37 / 313,65 |
+| Sostenibilidad del crecimiento | — | **Sí** (13,1 % proyectado; financiable al ROIC actual: 18,6 %) |
+
+- **Prueba de reinversión (la clave con este capex)**: la proyección reinvierte 1.256.681 M netos, el 49 % del NOPAT (capex bruto medio del 27,5 % de las ventas). Al ROIC de 2025 (37,7 %) eso financiaría un 18,6 % anual; el base crece un 13,1 %. El capital nuevo solo tiene que rendir un 20,2 %, frente a un ROIC incremental histórico del 37,1 %. El base no pide más de lo que la calidad da: el Vender ya supone que la inversión en IA rinde la mitad que el negocio histórico. Por eso no hay que bajar el caso base.
+- **Cuota**: `mercado_final` en null. La cuota publicada (24,8 %) es publicidad sobre el gasto publicitario mundial de WARC, y los ingresos del DCF incluyen Cloud, suscripciones y dispositivos (27 % en 2025). Prueba a mano (estimación propia): con el mercado publicitario al +6,3 % desde 2027e (≈ 2,29 billones en 2035) y la publicidad de Alphabet en el 24,8 % (≈ 567.000 M), el resto tiene que llegar a ≈ 793.000 M en 2035, un 22 % anual desde los 108.145 M de 2025; Cloud creció un 37 % anual en 2019-2025 y tiene 514.000 M contratados.
+- **Puente 2026e-2029e** (estimación propia a nivel de grupo): volumen 18,5/16,5/13/11, precio 3,5/3/3/3, otros 1,5/0,5/0/0 (divisa y Wiz en 2026e: 24,2 % publicado frente a 23 % orgánico en el 2T26). Cuadra con el DCF.
+- **Cambia el nivel de compra** (245,16 → 241,37) con los mismos supuestos: lo calcula así el motor actual (no viene de la sostenibilidad). Actualizados la síntesis y `cambiaria_recomendacion`. Control nuevo «Convicción frente a la sugerida»: los criterios dan Media (el precio pide 4,7 puntos más de crecimiento que el base, menos de 5); se mantiene Baja porque el Vender depende del WACC y de un capex cuyo rendimiento aún no se ve en la caja, con 57 de 62 analistas en comprar.
+- Textos cambiados: frase del veredicto en «El negocio», explicación de la convicción en «Valoración», niveles en «Qué cambiaría la decisión» y primer punto de `cambiaria_recomendacion`. Controles: 18 de 20 correctos y 2 explicados (los mismos de v1). Sin avisos en el Word; cobertura 91,8 %.
+
+**Fallos del sistema vistos**
+1. La prueba de cuota compara los ingresos totales con un solo mercado: en conglomerados (publicidad + nube) no hay perímetro comparable y `mercado_final` queda en null. Arreglo: admitir `mercado_final` por segmento (segmento, tamaño) y comparar con los ingresos de ese segmento.
+2. Con capex muy alto, la prueba sale holgada si el base supone un rendimiento bajo del capital nuevo (20,2 % frente a 37,1 %): no avisa de que el base puede ser *demasiado* prudente. Arreglo: aviso informativo si el rendimiento implícito queda por debajo de la mitad del histórico, para que la síntesis lo diga.
+3. El nivel de compra cambió entre versiones del motor sin cambiar datos (245,16 → 241,37): el diario de v1 no deja rastro de la regla con la que se calculó. Arreglo: guardar `calc.version` en la tabla del diario o avisar al recalcular si los niveles se mueven sin cambios en los supuestos.
