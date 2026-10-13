@@ -10,53 +10,53 @@
 
 **Análisis completo pendiente (pedido el 13-oct): Group 1 Automotive (GPI, EE. UU.)**, con `/analiza-empresa`. No se pudo hacer en la nube de Claude Code (la red bloquea sec.gov, Yahoo, MarketScreener y FRED): hacerlo en el ordenador del usuario o con esos dominios abiertos.
 
-**Rentabilidad a 12 meses v2 (13-oct)**: hechas las 38 de la cartera y con señal Comprar (`verticales/empresa/objetivo12m-revisados.json`). Pendientes: las Mantener y Vender, y cada informe nuevo al cerrarlo. Cartera propuesta: `informes/cartera-optima-2026-10-13.md`.
+**Estado del 13-oct (cierre)**: las 73 empresas (sin juego) tienen sostenibilidad y rentabilidad a 12 meses v2; la tabla de actualización de abajo está completa (las 41, más las de 10-12 oct que faltaban). Cartera: `informes/cartera-optima-2026-10-13.md`. Lo único pendiente es Group 1 Automotive.
 
 Pendiente de vigilar: el resultado del pleno sobre el título restaurante (12-oct). Si fija un tope a la comisión o el Gobierno anuncia el decreto, Edenred pasa a Mantener y se rehacen Edenred y Pluxee en la cartera; la actualización de Edenred lo recoge.
 
 | Tanda | Empresa | Ticker | Informe anterior | Señal anterior (rent. 12 m) | Por qué en este orden | Estado |
 |---|---|---|---|---|---|---|
-| 1 | Edenred | EDEN.PA | 7-oct | Comprar, media (+57,7 %) | Cartera (mayor posición); ley del título restaurante | Pendiente |
-| 1 | Wolters Kluwer | WKL.AS | 8-oct | Comprar, media (+61,8 %) | Mayor compra propuesta (28 títulos); resultados el 4-nov | Pendiente |
-| 1 | Alphabet | GOOGL | 8-oct | Vender, baja (−27,6 %) | Cartera; recorte propuesto | Pendiente |
-| 2 | Zoetis | ZTS | 7-oct | Comprar, media (+31,6 %) | Cartera | Pendiente |
-| 2 | PepsiCo | PEP | 9-oct | Comprar, baja (+23,4 %) | Cartera | Pendiente |
-| 2 | Daiichi Sankyo | 4568.T | 8-oct | Mantener, media (+9,8 %) | Cartera | Pendiente |
-| 3 | Equifax | EFX | 8-oct | Comprar, baja (+15,4 %) | Cartera | Pendiente |
-| 3 | ICE | ICE | 8-oct | Comprar, baja (+6,4 %) | Cartera | Pendiente |
-| 3 | Fluidra | FDR.MC | 8-oct | Comprar, media (+34,5 %) | Alternativa de compra del top 6 | Pendiente |
-| 4 | Lululemon | LULU | 7-oct | Comprar, media (+41,8 %) | Comprar | Pendiente |
-| 4 | Fielmann | FIE.DE | 9-oct | Comprar, media (+36,0 %) | Comprar | Pendiente |
-| 4 | Novo Nordisk | NOVO-B.CO | 8-oct | Comprar, media (+30,8 %) | Comprar | Pendiente |
-| 5 | Krones | KRN.DE | 9-oct | Comprar, media (+29,1 %) | Comprar | Pendiente |
-| 5 | DSV | DSV.CO | 7-oct | Comprar, media (+20,0 %) | Comprar | Pendiente |
-| 5 | Dassault Systèmes | DSY.PA | 7-oct | Comprar, media (+17,9 %) | Comprar | Pendiente |
-| 6 | Viscofan | VIS.MC | 6-oct | Comprar, baja (+12,0 %) | Comprar | Pendiente |
-| 6 | Tomra | TOM.OL | 8-oct | Comprar, baja (+11,2 %) | Comprar | Pendiente |
-| 6 | LVMH | MC.PA | 8-oct | Comprar, baja (+11,1 %) | Comprar | Pendiente |
-| 7 | CAF | CAF.MC | 6-oct | Comprar, baja (+9,3 %) | Comprar | Pendiente |
-| 7 | Cooper Companies | COO | 9-oct | Comprar, baja (+5,2 %) | Comprar | Pendiente |
-| 7 | On Holding | ONON | 6-oct | Comprar, baja (+4,5 %) | Comprar | Pendiente |
-| 8 | bioMérieux | BIM.PA | 8-oct | Comprar, baja (+1,4 %) | Comprar | Pendiente |
-| 8 | Rentokil | RTO.L | 7-oct | Comprar, baja (−2,1 %) | Comprar (señal y rentabilidad no cuadran: revisar) | Pendiente |
-| 8 | Almirall | ALM.MC | 7-oct | Mantener, baja (+4,1 %) | Mantener | Pendiente |
-| 9 | AO Smith | AOS | 9-oct | Mantener, media (+0,2 %) | Mantener | Pendiente |
-| 9 | ICON | ICLR | 9-oct | Mantener, baja (−0,8 %) | Mantener | Pendiente |
-| 9 | Indra | IDR.MC | 6-oct | Mantener, media (−1,4 %) | Mantener | Pendiente |
-| 10 | Olympus | 7733.T | 9-oct | Mantener, media (−1,9 %) | Mantener | Pendiente |
-| 10 | Copart | CPRT | 7-oct | Mantener, media (−4,1 %) | Mantener | Pendiente |
-| 10 | Enagás | ENG.MC | 7-oct | Mantener, baja (−7,7 %) | Mantener | Pendiente |
-| 11 | Microsoft | MSFT | 8-oct | Mantener, baja (−14,3 %) | Mantener | Pendiente |
-| 11 | Rational | RAA.DE | 7-oct | Mantener, media (−16,4 %) | Mantener | Pendiente |
-| 11 | Keyence | 6861.T | 7-oct | Mantener, baja (−17,6 %) | Mantener | Pendiente |
-| 12 | CSL | CSL.AX | 9-oct | Mantener, baja (−20,6 %) | Mantener | Pendiente |
-| 12 | Inditex | ITX.MC | 6-oct | Vender, baja (−15,1 %) | Vender | Pendiente |
-| 12 | Cochlear | COH.AX | 8-oct | Vender, baja (−19,7 %) | Vender | Pendiente |
-| 13 | Fanuc | 6954.T | 7-oct | Vender, baja (−26,6 %) | Vender | Pendiente |
-| 13 | Kongsberg | KOG.OL | 7-oct | Vender, baja (−30,8 %) | Vender | Pendiente |
-| 13 | Vertiv | VRT | 7-oct | Vender, baja (−33,5 %) | Vender | Pendiente |
-| 14 | Intuitive Surgical | ISRG | 6-oct | Vender, baja (−45,0 %) | Vender | Pendiente |
-| 14 | VAT Group | VACN.SW | 6-oct | Vender, baja (−60,0 %) | Vender | Pendiente |
+| 1 | Edenred | EDEN.PA | 7-oct | Comprar, media (+57,7 %) | Cartera (mayor posición); ley del título restaurante | Hecha (13-oct) |
+| 1 | Wolters Kluwer | WKL.AS | 8-oct | Comprar, media (+61,8 %) | Mayor compra propuesta (28 títulos); resultados el 4-nov | Hecha (13-oct) |
+| 1 | Alphabet | GOOGL | 8-oct | Vender, baja (−27,6 %) | Cartera; recorte propuesto | Hecha (13-oct) |
+| 2 | Zoetis | ZTS | 7-oct | Comprar, media (+31,6 %) | Cartera | Hecha (13-oct) |
+| 2 | PepsiCo | PEP | 9-oct | Comprar, baja (+23,4 %) | Cartera | Hecha (13-oct) |
+| 2 | Daiichi Sankyo | 4568.T | 8-oct | Mantener, media (+9,8 %) | Cartera | Hecha (13-oct) |
+| 3 | Equifax | EFX | 8-oct | Comprar, baja (+15,4 %) | Cartera | Hecha (13-oct) |
+| 3 | ICE | ICE | 8-oct | Comprar, baja (+6,4 %) | Cartera | Hecha (13-oct) |
+| 3 | Fluidra | FDR.MC | 8-oct | Comprar, media (+34,5 %) | Alternativa de compra del top 6 | Hecha (13-oct) |
+| 4 | Lululemon | LULU | 7-oct | Comprar, media (+41,8 %) | Comprar | Hecha (13-oct) |
+| 4 | Fielmann | FIE.DE | 9-oct | Comprar, media (+36,0 %) | Comprar | Hecha (13-oct) |
+| 4 | Novo Nordisk | NOVO-B.CO | 8-oct | Comprar, media (+30,8 %) | Comprar | Hecha (13-oct) |
+| 5 | Krones | KRN.DE | 9-oct | Comprar, media (+29,1 %) | Comprar | Hecha (13-oct) |
+| 5 | DSV | DSV.CO | 7-oct | Comprar, media (+20,0 %) | Comprar | Hecha (13-oct) |
+| 5 | Dassault Systèmes | DSY.PA | 7-oct | Comprar, media (+17,9 %) | Comprar | Hecha (13-oct) |
+| 6 | Viscofan | VIS.MC | 6-oct | Comprar, baja (+12,0 %) | Comprar | Hecha (13-oct) |
+| 6 | Tomra | TOM.OL | 8-oct | Comprar, baja (+11,2 %) | Comprar | Hecha (13-oct) |
+| 6 | LVMH | MC.PA | 8-oct | Comprar, baja (+11,1 %) | Comprar | Hecha (13-oct) |
+| 7 | CAF | CAF.MC | 6-oct | Comprar, baja (+9,3 %) | Comprar | Hecha (13-oct) |
+| 7 | Cooper Companies | COO | 9-oct | Comprar, baja (+5,2 %) | Comprar | Hecha (13-oct) |
+| 7 | On Holding | ONON | 6-oct | Comprar, baja (+4,5 %) | Comprar | Hecha (13-oct) |
+| 8 | bioMérieux | BIM.PA | 8-oct | Comprar, baja (+1,4 %) | Comprar | Hecha (13-oct) |
+| 8 | Rentokil | RTO.L | 7-oct | Comprar, baja (−2,1 %) | Comprar (señal y rentabilidad no cuadran: revisar) | Hecha (13-oct) |
+| 8 | Almirall | ALM.MC | 7-oct | Mantener, baja (+4,1 %) | Mantener | Hecha (13-oct) |
+| 9 | AO Smith | AOS | 9-oct | Mantener, media (+0,2 %) | Mantener | Hecha (13-oct) |
+| 9 | ICON | ICLR | 9-oct | Mantener, baja (−0,8 %) | Mantener | Hecha (13-oct) |
+| 9 | Indra | IDR.MC | 6-oct | Mantener, media (−1,4 %) | Mantener | Hecha (13-oct) |
+| 10 | Olympus | 7733.T | 9-oct | Mantener, media (−1,9 %) | Mantener | Hecha (13-oct) |
+| 10 | Copart | CPRT | 7-oct | Mantener, media (−4,1 %) | Mantener | Hecha (13-oct) |
+| 10 | Enagás | ENG.MC | 7-oct | Mantener, baja (−7,7 %) | Mantener | Hecha (13-oct) |
+| 11 | Microsoft | MSFT | 8-oct | Mantener, baja (−14,3 %) | Mantener | Hecha (13-oct) |
+| 11 | Rational | RAA.DE | 7-oct | Mantener, media (−16,4 %) | Mantener | Hecha (13-oct) |
+| 11 | Keyence | 6861.T | 7-oct | Mantener, baja (−17,6 %) | Mantener | Hecha (13-oct) |
+| 12 | CSL | CSL.AX | 9-oct | Mantener, baja (−20,6 %) | Mantener | Hecha (13-oct) |
+| 12 | Inditex | ITX.MC | 6-oct | Vender, baja (−15,1 %) | Vender | Hecha (13-oct) |
+| 12 | Cochlear | COH.AX | 8-oct | Vender, baja (−19,7 %) | Vender | Hecha (13-oct) |
+| 13 | Fanuc | 6954.T | 7-oct | Vender, baja (−26,6 %) | Vender | Hecha (13-oct) |
+| 13 | Kongsberg | KOG.OL | 7-oct | Vender, baja (−30,8 %) | Vender | Hecha (13-oct) |
+| 13 | Vertiv | VRT | 7-oct | Vender, baja (−33,5 %) | Vender | Hecha (13-oct) |
+| 14 | Intuitive Surgical | ISRG | 6-oct | Vender, baja (−45,0 %) | Vender | Hecha (13-oct) |
+| 14 | VAT Group | VACN.SW | 6-oct | Vender, baja (−60,0 %) | Vender | Hecha (13-oct) |
 
 ## Cola anterior (cerrada el 12-oct)
 

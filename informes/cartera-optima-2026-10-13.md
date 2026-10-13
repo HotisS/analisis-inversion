@@ -1,52 +1,75 @@
-# Cartera óptima (13-oct-2026) con la rentabilidad a 12 meses v2
+# Cartera óptima (13-oct-2026, revisión final)
 
-**Método** (`verticales/empresa/objetivo-12m.md`, el del hilo «PROYECTOS GH - INV» del 12-oct): objetivo a 12 meses = PER propio × BPA propio del ejercicio que mirará el mercado en un año, en bajista, base y alcista, ponderados con las probabilidades de los escenarios de cada informe. Las 38 empresas de la cartera y con señal Comprar están revisadas una a una (`informes/<carpeta>/revision-12m-2026-10-13.md`; Alphabet, la del hilo del 12-oct). Resultados en `verticales/empresa/objetivo12m-revisados.json` y en las columnas «… 12 m» de `seguimiento.xlsx`.
+Sustituye a la versión anterior de este archivo. Todo el universo está ya al día: **73 empresas** (todas menos Betsson y Evolution, que son juego) con la **metodología nueva del informe** (sostenibilidad del crecimiento; si la prueba fallaba, el caso base se rebajó) y con la **revisión a 12 meses v2** (`verticales/empresa/objetivo-12m.md`). Detalle por empresa: `informes/<carpeta>/revision-12m-2026-10-13.md` y `verticales/empresa/objetivo12m-revisados.json`. Resumen: `seguimiento.xlsx`.
 
-**Dos cifras por valor** (decisión del usuario, 13-oct). La **ponderada** es la rentabilidad esperada: bajista, base y alcista ponderados con las probabilidades de los escenarios de cada informe, en vez de la media simple del hilo, que inflaba la cifra porque el alcista supone volver al PER histórico y hoy muchas cotizan muy por debajo. La **base** (solo el escenario base: el BPA propio al PER de hoy o a la mediana de cinco años) mide el **valor real**: lo que rinde sin que el mercado vuelva a pagar el múltiplo histórico. Es el filtro.
+## Las tres facetas que decide cada operación
 
-**Reglas.**
-1. **Vender** lo que queda por debajo del 10 % ponderado o del 5 % en el base: Alphabet (+1,8 %), PepsiCo (+9,7 %) y Puig (+6,9 %).
-2. **Comprar** solo con ponderada ≥ 15 % **y** base ≥ 12 %. Se ordena por la ponderada, con unos 1.000-1.200 EUR por valor (≈ 4-5 %), sin repetir apuesta: Pluxee no, porque ya está Edenred; Intuit, Constellation y Gartner no, porque con SAP y Nemetschek ya hay bastante software con riesgo de IA. Nada de juego.
-3. **Mantener** lo que tiene ponderada ≥ 10 % y base ≥ 5 %, sin ampliar. Edenred se recorta de 136 a 100 títulos (del 15 % al 11 %) por el riesgo binario de la ley del título restaurante.
-4. El oro se queda: es la cobertura de la cartera y no tiene informe.
+1. **Rentabilidad a 12 meses** (la cifra): PER propio × BPA propio en bajista, base y alcista, ponderados con las probabilidades de los escenarios del informe. Para comprar, **≥ 15 %**.
+2. **Valor real** (el filtro): el escenario base a 12 meses, sin que el PER vuelva a su media, rinde **≥ 12 %**, **y** el valor intrínseco del informe (DCF y síntesis, con nuestro WACC) está **por encima del precio**.
+3. **Calidad del crecimiento**: el veredicto de sostenibilidad no es «No». Si es «En parte», el caso base ya está rebajado a lo financiable.
 
-**Datos.** Cartera de la captura del usuario (importes con los precios del 9-oct; 25.562 EUR con 2.920 de efectivo). Las compras van al precio de su informe (6-12 oct), pasado a euros con los tipos implícitos en la captura (1 USD = 0,893 EUR, 1 GBP = 1,182 EUR, 1 DKK = 0,134 EUR). Desde la nube de Claude Code no se pueden bajar precios de hoy (la red bloquea Yahoo): **antes de operar, comprueba los precios**. Si alguno ha subido más de un 10 %, su rentabilidad baja en la misma medida.
+Para **mantener** lo que ya está en cartera: ponderada ≥ 10 %, base ≥ 5 % y un valor intrínseco no más de un 15 % por debajo del precio.
 
-| Valor | Títulos actuales | EUR actuales | Títulos nuevos | EUR nuevos | Peso nuevo | Rent. 12 m (ponderada) | Rent. 12 m (base) | Qué hacer |
-|---|---|---|---|---|---|---|---|---|
-| Oro IGLN | 68 | 4933 | 68 | 4933 | 19,3 % | 0,0 % | 0,0 % | Mantener (cobertura, sin informe) |
-| Edenred | 136 | 3842 | 100 | 2825 | 11,1 % | +31,0 % | +16,6 % | Recortar 36: riesgo binario de la ley; 15 % → 11 % |
-| Grifols A | 120 | 1186 | 120 | 1186 | 4,6 % | +18,7 % | +18,1 % | Mantener |
-| PepsiCo | 12 | 1349 | 0 | 0 | 0,0 % | +9,7 % | +9,6 % | Vender (ponderada < 10 %) |
-| Zoetis | 20 | 1335 | 20 | 1335 | 5,2 % | +18,3 % | +6,8 % | Mantener, sin ampliar (base débil) |
-| Puig | 70 | 1266 | 0 | 0 | 0,0 % | +6,9 % | +9,0 % | Vender (ponderada < 10 %) |
-| Daiichi Sankyo | 100 | 1480 | 100 | 1480 | 5,8 % | +31,9 % | +18,3 % | Mantener |
-| SAP | 7 | 1340 | 7 | 1340 | 5,2 % | +23,4 % | +16,8 % | Mantener |
-| Alphabet A | 5 | 1570 | 0 | 0 | 0,0 % | +1,8 % | +6,6 % | Vender (revisión del hilo) |
-| Netflix | 23 | 1442 | 23 | 1442 | 5,6 % | +31,8 % | +16,1 % | Mantener |
-| Hermès | 1 | 1283 | 1 | 1283 | 5,0 % | +30,0 % | +9,4 % | Mantener (depende del alcista; vender si hace falta liquidez) |
-| ICE | 6 | 836 | 6 | 836 | 3,3 % | +15,1 % | +8,4 % | Mantener |
-| Equifax | 6 | 781 | 6 | 781 | 3,1 % | +41,0 % | +15,1 % | Mantener |
-| DSV | 0 | 0 | 8 | 1217 | 4,8 % | +38,7 % | +15,8 % | Comprar |
-| Tomra | 0 | 0 | 115 | 998 | 3,9 % | +54,1 % | +22,7 % | Comprar (convicción baja: posición pequeña) |
-| Fluidra | 0 | 0 | 70 | 1190 | 4,7 % | +24,6 % | +17,9 % | Comprar |
-| LVMH | 0 | 0 | 3 | 1143 | 4,5 % | +29,0 % | +14,0 % | Comprar |
-| Nemetschek | 0 | 0 | 18 | 1213 | 4,7 % | +20,6 % | +21,5 % | Comprar |
-| Dunelm | 0 | 0 | 110 | 1040 | 4,1 % | +21,3 % | +14,9 % | Comprar |
-| Viscofan | 0 | 0 | 21 | 1111 | 4,3 % | +20,1 % | +14,6 % | Comprar |
-| Efectivo | | 2.920 | | 211 | 0,8 % | 0 % | 0 % | Reserva |
-| **Total** | | **25.563** | | **25.563** | | **15,6 → 22,5 %** | **9,1 → 12,4 %** | |
+**Datos.** Cartera de la captura del usuario (importes con los precios del 9-oct; 25.562 EUR con 2.920 de efectivo). Las compras van al precio de su informe (6-12 oct), pasado a euros con los tipos implícitos en la captura. Desde la nube de Claude Code no se pueden bajar precios de hoy: **antes de operar, comprueba los precios**.
 
-**Rentabilidad esperada a 12 meses de la cartera** (con el oro al 0 %): **ponderada del +15,6 % al +22,5 %** (de ≈ 3.980 a ≈ 5.750 EUR) y **base del +9,1 % al +12,4 %**. Con la media simple del hilo saldría del +21,6 % al +29,2 %, una cifra que se descarta por optimista. La mejora sale de vender lo que rinde por debajo del 10 % y de comprar valores cuyo escenario base, sin revalorizar el múltiplo, ya rinde un 14-23 %.
+| Valor | Títulos | EUR | Peso nuevo | Rent. 12 m (ponderada) | Rent. 12 m (base) | Valor intrínseco frente al precio |
+|---|---|---|---|---|---|---|
+| Oro IGLN | 68 → 68 | 4933 → 4933 | 19,3 % | — | — | — |
+| Edenred | 136 → 100 | 3842 → 2825 | 11,1 % | +31,0 % | +16,6 % | +57,7 % |
+| Grifols A | 120 → 120 | 1186 → 1186 | 4,6 % | +18,7 % | +18,1 % | +43,9 % |
+| PepsiCo | 12 → 0 | 1349 → 0 | 0,0 % | +9,7 % | +9,6 % | +23,4 % |
+| Zoetis | 20 → 20 | 1335 → 1335 | 5,2 % | +18,3 % | +6,8 % | +31,6 % |
+| Puig | 70 → 0 | 1266 → 0 | 0,0 % | +6,9 % | +9,0 % | +21,0 % |
+| Daiichi Sankyo | 100 → 100 | 1480 → 1480 | 5,8 % | +31,9 % | +18,3 % | +9,8 % |
+| SAP | 7 → 7 | 1340 → 1340 | 5,2 % | +23,4 % | +16,8 % | +1,2 % |
+| Alphabet A | 5 → 0 | 1570 → 0 | 0,0 % | +1,8 % | +6,6 % | -27,6 % |
+| Netflix | 23 → 23 | 1442 → 1442 | 5,6 % | +31,8 % | +16,1 % | -13,1 % |
+| Hermès | 1 → 0 | 1283 → 0 | 0,0 % | +30,0 % | +9,4 % | -25,5 % |
+| ICE | 6 → 6 | 836 → 836 | 3,3 % | +15,1 % | +8,4 % | +6,4 % |
+| Equifax | 6 → 6 | 781 → 781 | 3,1 % | +41,0 % | +15,1 % | +15,4 % |
+| Adyen | 0 → 1 | 0 → 886 | 3,5 % | +50,9 % | +19,5 % | +2,6 % |
+| DSV | 0 → 8 | 0 → 1217 | 4,8 % | +38,7 % | +15,8 % | +20,0 % |
+| LVMH | 0 → 3 | 0 → 1143 | 4,5 % | +29,0 % | +14,0 % | +11,1 % |
+| Fluidra | 0 → 70 | 0 → 1190 | 4,7 % | +24,6 % | +17,9 % | +34,5 % |
+| Nemetschek | 0 → 18 | 0 → 1213 | 4,7 % | +20,6 % | +21,5 % | +9,8 % |
+| Dunelm | 0 → 110 | 0 → 1040 | 4,1 % | +21,3 % | +14,9 % | +15,6 % |
+| Viscofan | 0 → 21 | 0 → 1111 | 4,3 % | +20,1 % | +14,6 % | +12,0 % |
+| Intuit | 0 → 4 | 0 → 1081 | 4,2 % | +17,1 % | +16,9 % | +43,7 % |
+| Efectivo | | 2.920 → 525 | 2,1 % | | | |
 
-**Operaciones.** Ventas: 5 Alphabet, 12 PepsiCo, 70 Puig y 36 Edenred (≈ 5.200 EUR). Compras: 8 DSV, 115 Tomra, 70 Fluidra, 3 LVMH, 18 Nemetschek, 110 Dunelm y 21 Viscofan (≈ 7.910 EUR). Quedan ≈ 210 EUR de efectivo.
+**Rentabilidad esperada a 12 meses** (oro al 0 %): **ponderada del +15,6 % al +21,4 %** (de ≈ 3.980 a ≈ 5.460 EUR) y **base del +9,1 % al +12,5 %**.
 
-**Diferencias con el plan del hilo del 12-oct** (que vendía Alphabet, Netflix, Hermès, 18 Grifols, ICE y Equifax, y compraba Wolters Kluwer, Auto Trader, Trigano, Deckers, Technip Energies y Coloplast): con la v2 aplicada a todas cambian las cifras.
-- **Netflix (+31,8 %, base +16 %), Equifax (+41 %, base +15 %), ICE (+15,1 %) y Grifols (+18,7 %, base +18 %) ya no se venden.** Las cifras del hilo eran v1 y el propio hilo avisó de que podían cambiar con la v2.
-- **Trigano (+1 %) y Technip Energies (−5,9 %) salen.** Con BPA y PER propios, el ciclo y el margen pesan más.
-- **Wolters Kluwer (+26,5 %, base +9,5 %), Auto Trader (+27,1 %, base +9 %) y Deckers (+18,1 %, base +6 %)** no entran: dependen de que el múltiplo vuelva a su historia (base por debajo del 12 %). **Coloplast** (+14,8 %) queda por debajo del 15 %. Sin el filtro del base, Wolters Kluwer y Auto Trader entrarían en lugar de LVMH y Viscofan.
-- **Hermès se mantiene, pero es la primera que vendería** si hace falta liquidez: la base solo da +9,4 % y la convicción es baja.
+## Ventas, y por qué (más allá de la rentabilidad)
 
-**Riesgos.** Tomra y Nemetschek tienen convicción baja (posiciones pequeñas). Edenred sigue siendo la mayor (11 %) con la ley pendiente. Dos de lujo (Hermès y LVMH) y dos de software (SAP y Nemetschek). Por divisa, las acciones quedan en ≈ 55 % EUR, 20 % USD, 7 % JPY, 8 % DKK y NOK, y 4 % GBP.
+- **Alphabet (5 títulos).** El negocio va mejor que nunca (búsqueda +17 %, Cloud +82 % y su cartera de pedidos), pero **por primera vez el crecimiento no se autofinancia**. El capex de IA de ≈ 200.000 M USD se paga con deuda y con ampliaciones (≈ 85.000 M en acciones), sin recompras y con dilución, y los dos juicios antimonopolio siguen abiertos. El valor intrínseco queda un 28 % por debajo del precio (revisión del hilo del 12-oct).
+- **Hermès (1 título).** Es el mejor negocio del lujo, pero **el precio pide casi el doble de crecimiento que nuestro caso base**: el valor intrínseco está un 25 % por debajo del precio, y a 12 meses todo depende de que el mercado siga pagando unas 30-48 veces el beneficio. La exposición al lujo pasa a LVMH, a la mitad de múltiplo.
+- **PepsiCo (12).** **Se ha agotado el poder de precios**: en 2026 la división de snacks de Norteamérica baja precios para recuperar volumen, y el crecimiento de 2027-2029 depende de ese volumen. La sostenibilidad sale «En parte» y la convicción, baja. El dividendo (4,5 %) no compensa que a 12 meses no llegue al 10 %.
+- **Puig (70).** **Solo lleva dos años en bolsa** (convicción baja, sin historia de múltiplos). La compra del 50 % restante de ISDIN (≈ 1.200 M) no está en la proyección y la perfumería de prestigio viene de unos años de crecimiento excepcional. Rinde un 7 % a 12 meses.
+- **Edenred (36 de 136).** **Riesgo regulatorio binario y concentración.** La ley francesa del título restaurante puede permitir topar la comisión por decreto, Italia y Brasil ya la toparon y la comisión media baja. Pesaba un 15 % de la cartera. Se queda en 100 títulos (11 %), porque el negocio (volumen de 49.000 M con circulante negativo) y el precio siguen siendo atractivos.
+
+## Compras, y por qué (más allá de la rentabilidad)
+
+- **Adyen (1).** Plataforma de pagos de un solo sistema, con caja neta y un ROIC muy alto: **aporta la exposición a pagos digitales sin el riesgo regulatorio de Edenred**. El base solo ya rinde +19,5 % a 12 meses. Riesgo: la beta y la competencia en precios. Convicción media-baja.
+- **DSV (8).** **Número uno mundial de transitarios tras comprar DB Schenker**: la tesis es la integración (conversión del 30,5 % al 41 %), no el ciclo de fletes. Negocio de pocos activos, sostenibilidad «Sí». Aporta transporte y corona danesa.
+- **LVMH (3).** Líder diversificado del lujo (moda, vinos, relojes y perfumes) que, **tras caer un 40 %, cotiza a unas 16 veces el beneficio**, un mínimo de su historia. Sostenibilidad «Sí». Sustituye a Hermès como apuesta de lujo con mucho más margen de seguridad.
+- **Fluidra (70).** **Líder mundial en equipamiento de piscinas**, con poder de precios demostrado (+3 % en el 1S26) y el bajista más pequeño de las compras. Aporta la industria cíclica que le faltaba a la cartera.
+- **Nemetschek (18).** **Software para la construcción** (BIM), con ingresos de suscripción y costes de cambio altos. Es la única compra cuyo escenario base solo, sin revalorizar el múltiplo, ya rinde más del 20 %. Riesgo: el minoritario de Thoma Bravo en Build (≈ 17 % del beneficio).
+- **Dunelm (110).** **Líder del hogar en el Reino Unido**, con ROIC alto y un dividendo ordinario del 5,7 %. Aporta libra y consumo defensivo europeo.
+- **Viscofan (21).** **Líder mundial en envolturas para cárnicos** (≈ 22 % de cuota), con balance sólido y un dividendo del 6,2 %. Valor defensivo español con sostenibilidad «Sí».
+- **Intuit (4).** TurboTax y QuickBooks: un ecosistema con costes de cambio muy altos. Es **la compra con más margen de seguridad**: su valor intrínseco está un 44 % por encima del precio. Riesgo: la IA en la declaración de impuestos y en la contabilidad de pymes.
+
+## Lo que se queda, con la vigilancia
+
+- **Netflix (23).** Rinde +31,8 % a 12 meses, pero su valor intrínseco queda un 13 % por debajo del precio. Se mantiene sin ampliar y es la primera candidata a vender si hace falta liquidez.
+- **Zoetis (20).** Rinde +18,3 %, pero el base solo +6,8 %: depende de que el múltiplo vuelva a subir. Se mantiene sin ampliar.
+- **ICE (6).** En el límite (+15,1 %, base +8,4 %). Se mantiene sin ampliar.
+- **Grifols (120), Daiichi Sankyo (100), SAP (7) y Equifax (6).** Pasan los tres filtros y se mantienen. El riesgo de cola sigue siendo Grifols (bajista de −82 % en su informe), con un peso del 4,6 %.
+- **Oro (68).** Es la cobertura de la cartera y no tiene informe.
+
+## No entran, y por qué
+
+- **Lululemon, Wolters Kluwer, Auto Trader, Deckers, Gartner, Zoetis (para ampliar), Fielmann, Adobe y Novo Nordisk**: la ponderada sale alta, pero el base no llega al 12 %. Dependen de que el mercado vuelva a pagar su PER histórico.
+- **Tomra, Rentokil, Amazon, ATOSS, Salesforce, Paychex, ICON, Kongsberg, Vertiv, Intuitive Surgical y Pro Medicus**: rinden a 12 meses, pero su valor intrínseco está por debajo del precio, así que no pasan el filtro de valor real.
+- **Constellation, UnitedHealth, Uber y Almirall**: pasan los tres filtros, pero quedan por detrás. Constellation porque una sola acción pesa unos 1.900 EUR; UnitedHealth porque presenta el 3T26 hoy; Uber porque no tiene un PER histórico usable; Almirall porque depende de Ebglyss (9-nov). Son las primeras suplentes.
 
 Es la lectura de nuestros informes con nuestro método, no asesoramiento financiero personalizado.
