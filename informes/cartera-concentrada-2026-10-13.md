@@ -91,6 +91,16 @@ Primero las ventas y después las compras. Precios de referencia de los informes
   - Wolters Kluwer (19): límite 72 EUR.
   - Prioridad, por base a 12 meses: Nemetschek, después Auto Trader y por último Wolters Kluwer.
 
+**Rentabilidad esperada a 12 meses con los precios de las 17:37 del 13-oct** (objetivos de `objetivo12m-revisados.json`; oro e IBKR al 0 %):
+
+| Situación | Ponderada | Base | Sin oro ni efectivo: ponderada | Sin oro ni efectivo: base |
+|---|---|---|---|---|
+| Hoy, con lo ya ejecutado | +15,5 % | +8,9 % | +19,6 % | +11,3 % |
+| Terminando hoy a precio de mercado | +15,5 % | +9,0 % | +19,2 % | +11,2 % |
+| Terminando con los precios límite | +16,2 % | +9,8 % | +20,6 % | +12,5 % |
+
+El +18,4 % de la versión 9 usaba los precios de los informes. Desde entonces han subido Edenred (+6 %, de +31 % a +24 % ponderada), Wolters Kluwer (+9 %), Nemetschek (+6 %) y Auto Trader (+4 %). A precio de mercado, terminar el plan **no sube la rentabilidad esperada**. Solo mejora la calidad: fuera Equifax e ICE (ROIC bajo el WACC), Hermès (valor intrínseco −25 %) y Puig. Por eso las compras llevan precio límite.
+
 ## Plan de ejecución con el análisis técnico (13-oct, gráficos del usuario)
 
 El técnico **no cambia qué se vende ni qué se compra**. Solo cambia **cuándo**. Las órdenes de venta llevan un precio límite (cerca de resistencias o de nuestro objetivo) y un stop (por debajo del soporte). Todo lo que no se haya vendido el **7-nov** se vende a mercado.
