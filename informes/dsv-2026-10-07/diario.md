@@ -52,3 +52,26 @@
 7. **El motor no sabe modelar margen bruto × conversión** (transitarios): los supuestos se construyen en `supuestos.mjs` y se traducen a crecimiento y margen EBITDA de ingresos. Arreglo: modo `dcf.base: "margen_bruto"` con `margen_bruto_pct` y `conversion_pct` por año.
 8. **La conversión a PDF tardó más de 5 minutos la segunda vez** (la herramienta se pasó a segundo plano y terminó bien). Arreglo: subir el tiempo de espera en el procedimiento o lanzarla siempre en segundo plano.
 - Fin: 09:27 del 8-oct. Tiempo ≈ 28 min el 7-oct (18:05-18:33) + 58 min el 8-oct (08:29-09:27) ≈ 86 min, con el corte por límite de uso entre medias.
+
+## Actualización v2 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.json`), salida `datos-v2.json`, `DSV - 2026-10-07 v2.docx` y su PDF. Mismo precio (1.137,5 DKK) y fecha de corte (7-oct-2026). No cambia ningún supuesto del DCF.
+
+| | v1 | v2 |
+|---|---|---|
+| Recomendación · convicción | Comprar · Media | Comprar · Media (sugerida: Media) |
+| Valor objetivo (WACC 7,97 %) | 1.357,81 DKK, RTE +20,0 %, asimetría 2,34x | igual |
+| Objetivo con la prima del mercado (4,20 %, WACC 6,81 %) | 1.747,71 DKK, RTE +54,3 % | igual |
+| Comprar por debajo / vender por encima | 1.481,37 / 1.949,82 DKK | **1.299,42** / 1.949,82 DKK |
+| Sostenibilidad del crecimiento | — | **Sí** |
+
+- **Puente de ingresos (2026e-2029e)**: 2026e +20,4 % = 18,9 puntos comprados (Schenker doce meses frente a ocho; frente a los ingresos proforma de 2025, 293.368 M, el crecimiento es del 1,5 %) en `otros_pct` + 0,5 de volumen + 1,0 de precio (reparto propio). 2027e: +2,5 volumen, −1,1 precio (normalización de fletes). 2028e-2029e: +2,5 volumen, +1,5 precio. Sin compras nuevas en el DCF.
+- **mercado_final: null**. La cuota del 6 % es la estimación de DSV con sus ingresos totales de 2024 proforma; el mercado de Ti (208.100 M EUR) es solo transitario aéreo y marítimo, y los ingresos de DSV (con Road y Contract Logistics) serían ≈ 19 % de él. Prueba a mano en volumen: 5,4 % de los TEU y 8,0 % de la carga aérea; con volumen al 2,5 % frente al 2,3 % del mercado, ≈ 5,6 % en 2035. Verosímil.
+- **Reinversión**: 31.213 M acumulados, el 11 % del NOPAT; para el motor es de activos ligeros y la prueba es precio y cuota. El poder de precios es escaso (margen bruto por TEU de 4.752 a 3.964 DKK), así que el crecimiento es volumen, y el volumen proyectado apenas supera al del mercado. Veredicto Sí: la apuesta del caso base es la conversión (30,5 % → 41 %), no el crecimiento; dicho en «El negocio».
+- **El nivel de compra baja de 1.481,37 a 1.299,42 DKK** sin cambiar una cifra: el motor exige ahora que, si solo la regla relativa da Comprar, la rentabilidad total absoluta sea de al menos un 5 %. Actualizados la síntesis («Qué cambiaría la decisión») y `cambiaria_recomendacion`.
+
+**Fallos del sistema vistos**
+1. El «crecimiento medio de ingresos proyectado» de la tabla de sostenibilidad (4,9 %) incluye el +20,4 % comprado de 2026e aunque el puente lo separe en `otros_pct`: en un comprador en serie exagera el crecimiento que se pide a la calidad (orgánico: 3,2 % en 2027e-2035e). Arreglo: restar `otros_pct` marcado como compras, o calcular la media desde el primer año sin compras.
+2. El texto de «activos ligeros» del motor menciona siempre al comprador en serie; aquí no hay compras proyectadas y sobra.
+3. La condición de «Comprar» en los niveles sigue diciendo «rentabilidad total esperada ≥ 15 %» y no menciona el mínimo absoluto del 5 % que fija ahora el nivel (1.299,42 DKK, donde la RTE absoluta es del 5 %, no del 15 %).
+4. La cobertura de campos baja del 89,7 % al 86,5 % sin quitar datos (cambios del motor o de la plantilla desde el 7-oct).
