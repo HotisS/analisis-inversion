@@ -42,3 +42,27 @@
 7. **Avisos de «nota de trabajo» que no se ven en todos los campos.** El integrador detectó la palabra «subagente» en un hueco, pero no los nombres de campo en `huecos[].campo` («posicion_corta_pct», «insiders», «vs_consenso») ni «analista principal» en el editor de una fuente. Propuesta: ampliar la detección a nombres con guion bajo y a `fuentes[].editor`.
 8. **Transacciones con un solo múltiplo.** En farmacia y biotecnología las compras de ADC no tienen EBITDA; el motor exige 3 con múltiplo y dibuja un gráfico vacío. Propuesta: admitir EV/ventas esperadas o marcar la sección como «solo referencia» sin aviso.
 9. **Gráfico del mapa de comparables vacío** porque el proveedor gratuito no da EV/EBITDA de los próximos 12 meses. Propuesta: que el mapa use el PER de los próximos 12 meses cuando falte el EV/EBITDA.
+
+## Actualización v2 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.json`), salida `datos-v2.json`, `Daiichi Sankyo - 2026-10-08 v2.docx` y su PDF. Mismo precio (2.702,5 JPY) y fecha de corte; no se cambia ningún supuesto del DCF.
+
+| | v1 | v2 |
+|---|---|---|
+| Recomendación · convicción | Mantener · Media | Mantener · Media |
+| Valor objetivo (WACC 7,30 %) | 2.888,64 JPY, RTE +9,8 %, asimetría 1,62x | igual |
+| Con la prima del mercado (4,20 %) | 2.897,35 JPY, RTE +10,1 %, asimetría 1,66x | igual |
+| Comprar por debajo / vender por encima | 2.585,33 / 3.307,49 JPY | igual |
+| Sostenibilidad del crecimiento | — | **Sí** |
+
+- **Puente por producto (FY2026e-FY2030e)**: el volumen (Enhertu y Datroway en indicaciones nuevas, menos Lixiana y American Regent) da +6,5 a +11 puntos al año; el precio, −1 punto al año (NHI −4,02 % sobre el 27,3 % de ventas en Japón); otros, +1,5 en FY2026e (yen e hitos) y −7 en FY2027e (fin de los hitos de ventas de Enhertu, ≈ 4 puntos, y salida de Daiichi Sankyo Healthcare, ≈ 3 puntos). Reparto volumen/precio: estimación propia.
+- **mercado_final = null**: la cuota del 35,8 % es de dos productos (ventas combinadas con AstraZeneca) sobre la suma de ADC de cinco grupos; los ingresos del grupo no comparan con ese perímetro. A mano: ≈ 20.000 M USD de ingresos del grupo en FY2035e frente a 48.100 M USD de mercado de ADC previsto.
+- **Veredicto «Sí»**: el base crece un 4,1 % anual, menos de la mitad del 10,4 % histórico y del 11,2 % previsto para el mercado, y ya incluye el fin de la exclusividad de Enhertu. No hay que bajar el base.
+- La prueba de reinversión da «activos ligeros» (12 % del NOPAT) porque en farmacia el crecimiento lo compra la I+D, que va a resultados; dicho en la justificación.
+- Se añade a «La recomendación y por qué» una frase sobre la convicción (control nuevo «La síntesis explica la convicción»); la frase obligatoria del veredicto va en «El negocio».
+
+**Fallos del sistema vistos**
+1. En farmacia (y en software) la prueba de reinversión mide capex y circulante, pero el crecimiento lo compra la I+D expensada: sale «activos ligeros» y no prueba nada. Arreglo: opción para sumar la I+D (o la parte de desarrollo) a la reinversión.
+2. La cuota implícita divide los ingresos del grupo entre el mercado: no sirve cuando la cuota es de una línea de productos y, además, con ventas de un socio dentro (Enhertu combinado). Arreglo: un campo `ingresos_perimetro` en `mercado_final`.
+3. El control «La síntesis explica la convicción» es nuevo y salta en un informe que no tocaba la convicción: cuenta la palabra, no el contenido.
+4. Los avisos de `rellenar` (suma de partes vacía, mapa de comparables y transacciones sin datos) son los mismos de la v1.
