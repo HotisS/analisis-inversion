@@ -162,3 +162,26 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 **Fallos del sistema**
 1. Los disparadores de cambio de recomendación se escriben a mano y no se comprueban contra la regla: la parte de la asimetría del Vender (negativa con asimetría < 0,5) invalidaba dos de los cuatro. Arreglo: que el motor calcule la recomendación de las sensibilidades que ya hace (WACC −0,5, crecimiento +1) para poder contrastar el texto.
 2. La tabla «La decisión» compara el crecimiento implícito (8,2 %) con un 2,6 % «previsto para su mercado» (`sector.tcac_previsto_pct`), mientras el texto del informe usa el 3-4 % de Euromonitor: dos cifras del mismo mercado en el mismo informe.
+
+## Actualización v3 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v3.mjs` (parte de `datos-v2.json`), salida `datos-v3.json`, `Inditex - 2026-10-06 v3.docx` y su PDF. El `Inditex - 2026-10-06.docx` modificado por el usuario no se ha tocado. No cambia ningún supuesto del DCF, ni el precio (53,82 EUR) ni la fecha de corte.
+
+| | v2 | v3 |
+|---|---|---|
+| Recomendación · convicción | Vender · Baja | Vender · Baja |
+| Valor objetivo (WACC 8,51 %) | 44,48 EUR, RTE −15,1 % | igual |
+| Objetivo con la prima del mercado (WACC 8,48 %) | 44,65 EUR, RTE −14,8 % | igual |
+| Niveles | compra < 39,85, venta > 48,84 | igual |
+| Sostenibilidad del crecimiento | — | **Sí** (5,3 % proyectado; reinversión del 6 % del NOPAT; cuota del 2,4 % al 2,9 % en FY2035e) |
+
+- **Puente FY2026e-FY2029e**: volumen = superficie (5 → 3,5 puntos, con la guía del +5 % para 2026), precio y mezcla 2,5-3,5 puntos, divisa −1 en FY2026e (guía). Reparto entre volumen y precio, estimación propia: Inditex no publica ventas comparables ni precio medio.
+- **Mercado final**: venta minorista mundial de prendas y calzado de Euromonitor (el perímetro del 2,4 % de `competencia.cuota_pct`), 1.646.000 M EUR en 2025 extrapolados al 3,5 % hasta FY2035e: 2.321.846 M EUR (estimación propia). Cuota implícita 2,9 %, 1,2 veces la actual: pasa.
+- **Reinversión**: el motor lo trata como activos ligeros (6 % del NOPAT) y no calcula el crecimiento financiable, porque el circulante negativo (−9,5 % de las ventas) aporta caja al crecer. Sin el circulante, el capex neto de amortización es el 9 % del NOPAT y, al ROIC del 42,4 %, financia ≈ 3,8 % anual, lo que pide el volumen del puente; el precio no pide capital. Ninguna prueba falla: no se rebaja el base.
+- Síntesis: solo la frase obligatoria en «El negocio» (670 palabras en total).
+
+**Fallos del sistema vistos**
+1. Igual que en LVMH y PepsiCo: con reinversión < 15 % del NOPAT el motor escribe «activos ligeros… en un comprador en serie…», aunque Inditex invierte ≈ 10 % de las ventas y no compra empresas; la reinversión baja viene del circulante negativo. Arreglo: calcular el crecimiento financiable siempre y separar el circulante.
+2. El control «Comparables estables al quitar una empresa» sigue en «Revisar» desde la v1 (mediana de 11,0x a 13,3x); el texto de valoración ya lo explica, pero no está en `meta.controles_explicados`.
+
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 55,89 EUR (media ponderada; base 57,24 EUR), rentabilidad +6,0 % (base +8,6 %), señal Mantener (`revision-12m-2026-10-13.md`).
