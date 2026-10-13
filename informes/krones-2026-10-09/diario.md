@@ -41,3 +41,5 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 1. La prueba de cuota del motor divide las ventas del **grupo** entre el mercado; cuando la cuota publicada es de un segmento (aquí el 84 % de las ventas), no hay forma de indicar el perímetro y hay que dejar `mercado_final` en null y hacerla a mano. Arreglo: un campo opcional `mercado_final.ingresos_pct` (peso del segmento) o `segmento`.
 2. Al recalcular un informe viejo con el motor nuevo cambian cifras que no dependen de la actualización (umbral de compra) y aparecen controles nuevos (convicción); el script tiene que buscar a mano qué textos citan las cifras viejas. Arreglo: que el motor liste las cifras de `calc` que cambian frente al `calc` anterior.
 3. El primer `soffice --convert-to pdf` con ruta relativa no generó el PDF y no dio error (probablemente otra instancia de LibreOffice abierta en paralelo); con rutas absolutas funcionó.
+
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 127,8 EUR, rentabilidad +25,6 %, señal Comprar (`revision-12m-2026-10-13.md`).

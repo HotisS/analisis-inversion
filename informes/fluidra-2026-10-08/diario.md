@@ -56,3 +56,5 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 3. Los niveles de compra y venta cambian al recalcular con el motor nuevo aunque no cambie ninguna cifra: cualquier actualización debe releer `calc.recomendacion.niveles` y buscar el nivel antiguo en todos los textos.
 4. `soffice` falla en silencio (código 1, sin mensaje ni PDF) si otra instancia usa el perfil por defecto (varias actualizaciones en paralelo); funciona con `-env:UserInstallation=file://<carpeta propia>`.
 5. `competencia.cuota_pct` es 13 (redondeado) y el sector da 12,6 %: la tabla de la prueba compara 11,7 % con 13,0 %.
+
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 21,9 EUR, rentabilidad +32,5 %, señal Comprar (`revision-12m-2026-10-13.md`).
