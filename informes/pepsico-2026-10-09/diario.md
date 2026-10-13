@@ -21,3 +21,25 @@
 1. La sesión anterior se cortó tras la fase 1 sin dejar notas; se retomó copiando las de la iteración 1.
 2. El subagente C hizo una consulta a EDGAR con `curl` poniendo el correo del usuario en el User-Agent. **Arreglo:** lección añadida; que el comando prohíba datos personales en cabeceras.
 3. `integrar` no borra con `null` un campo de una nota (`ajuste_ebitda_pct_ventas` 0,9 de D queda en datos.json aunque la base sea «NIIF»); el motor lo ignora, pero confunde.
+
+## Actualización v2 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.json`), salida `datos-v2.json` y `PepsiCo - 2026-10-09 v2.docx` / `.pdf`. Mismo precio (128,34 USD) y fecha de corte. Añade `dcf.sostenibilidad` y reescribe solo la frase del veredicto en «El negocio» de la síntesis.
+
+| | v1 | v2 |
+|---|---|---|
+| Recomendación · convicción | Comprar · Baja (sugerida Media) | Comprar · Baja (sugerida Media) |
+| Valor objetivo (WACC 7,54 %) | 152,55 USD, RTE 23,4 %, asimetría 2,05x | igual |
+| Con la prima del mercado (WACC 7,14 %) | 166,39 USD, RTE 34,2 %, asimetría 3,69x | igual |
+| Niveles | Comprar < 149,65; Vender > 182,91 | igual |
+| ¿La calidad sostiene el crecimiento? | — | **En parte** (3,4 % medio proyectado) |
+
+- **Puente**: 2026e = 0,5 volumen + 2,5 precio + 2,8 otros (divisa y compras de 2025, guía del 6 %) [21, 23]; 2027e = 1,0 + 1,8; 2028e = 1,5 + 2,0. **Mercado final: null**: la única cuota con perímetro es la de patatas fritas de bolsa en EE. UU. (56 % de 11.600 M) [50], ≈ 7 % de las ventas; no hay tamaño mundial (hueco del informe).
+- **En parte**: foso de marcas y reparto directo y ROIC del 21,3 %, ventas al alza todos los años de 2017-2025; pero el poder de precios se agotó (PFNA baja precio en 2026 para recuperar volumen) y el base pide volumen en Norteamérica sin recortar precios.
+- El motor no avisa de crecimiento sin financiar ni de cuota (reinversión neta del 9 % del NOPAT; capex 4,6-4,8 % frente a 3,7 % de amortización): **no se tocan supuestos**. Como es «En parte», la síntesis explica por qué el base queda por encima del orgánico de 2024-2025: el precio descuenta un 0,2 %, y con un 2 % anual desde 2027 (cálculo aparte con el mismo motor) el objetivo sería 141,29 USD (RTE 14,6 %): seguiría en Comprar.
+- Convicción: el control ya estaba explicado en la síntesis (baja por la tercera rebaja de guía); no cambia.
+
+**Fallos del sistema vistos**
+1. La tabla «La decisión» dice «sin inversión neta» aunque la reinversión neta acumulada es de 13.175 M (9 % del NOPAT): el umbral de «activos ligeros» es demasiado amplio para un fabricante con capex por encima de la amortización. Arreglo: decir «inversión neta baja (9 % del NOPAT)» y calcular el crecimiento financiable igualmente.
+2. El texto del motor mezcla dos casos («en un negocio de activos ligeros… en un comprador en serie…») en vez de elegir el que aplica.
+3. Con `mercado_final` null no hay prueba de cuota en la tabla; para un grupo multicategoría sin tamaño de mercado mundial, la prueba queda en manos del texto.
