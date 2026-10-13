@@ -25,11 +25,13 @@ Lo que cualquier sesión de Claude, en cualquier equipo, tiene que saber antes d
   2. **Valor real**: base a 12 meses ≥ 12 % y valor intrínseco del informe ≥ precio.
   3. **Calidad del negocio**: sostenibilidad del crecimiento «Sí» y ROIC − WACC ≥ 5 puntos.
 - **Mantener**: calidad, ponderada ≥ 10 %, base ≥ 5 % y valor intrínseco no más de un 15 % por debajo del precio.
+- **Análisis técnico** (gráficos del usuario: medias SAMA, EMA 365 y 1.000, SMA 200, RSI, ChandeMO): solo para decidir **cuándo** ejecutar (precio límite, stop, fecha tope), nunca qué se compra o se vende (13-oct).
 - **Cada compra y venta con su motivo de negocio**, no solo la rentabilidad; tabla antes → después con la rentabilidad a 12 meses de cada activo (ponderada y base), el valor intrínseco frente al precio y la calidad.
 - Sin juego ni apuestas. Sin cambios de un valor por otro que el usuario haya rechazado (13-oct: no cambiar LVMH y Viscofan por Wolters Kluwer y Auto Trader).
 - Cartera vigente: `informes/cartera-concentrada-2026-10-13.md`.
 
 ## Decisiones
+- 13-oct-2026 (noche): plan de ejecución técnico de las ventas: Grifols y PepsiCo ya; ICE, Puig, Equifax y Hermès con precio límite y stop, y fecha tope el 7-nov (`informes/cartera-concentrada-2026-10-13.md`).
 - 13-oct-2026 (noche): cartera versión 9: **Adobe fuera** (decisión del usuario); entra **Intuit** (5 títulos, 5,3 %; base +16,9 %, valor intrínseco +44 %, sostenibilidad «En parte»). Ponderada del +15,6 % al +18,4 %; base del +9,1 % al +11,8 %.
 - 13-oct-2026 (noche): cartera versión 8: **se venden Grifols, Puig e ICE**; **tope del 7 %** por valor salvo Edenred y oro; entra **Adobe** (calidad alta y valor intrínseco +26,5 %, base +10,2 %) porque con el tope las tres compras que pasan todo no absorben el dinero. Ponderada del +15,6 % al +18,7 %; base del +9,1 % al +11,5 %.
 - 13-oct-2026 (noche): el usuario **confirma vender Puig e ICE** tras revisarlas con el impulso de octubre (memorandos en sus carpetas). Duda de Grifols (volatilidad y deuda); alternativa sin Grifols calculada: misma rentabilidad (ponderada +18,6 %, base +12,0 %), con el dinero en Nemetschek, Uber y Viscofan. Decidido después: se vende (versión 8).

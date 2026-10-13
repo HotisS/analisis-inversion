@@ -76,6 +76,23 @@ Primero las ventas y después las compras. Precios de referencia de los informes
 
 **Sin cambios:** oro IGLN (68), Edenred (136), Daiichi Sankyo (100), Netflix (23), SAP (7), Zoetis (20) y Alphabet (5). Quedan ≈ 230 EUR de efectivo.
 
+## Plan de ejecución con el análisis técnico (13-oct, gráficos del usuario)
+
+El técnico **no cambia qué se vende ni qué se compra**. Solo cambia **cuándo**. Las órdenes de venta llevan un precio límite (cerca de resistencias o de nuestro objetivo) y un stop (por debajo del soporte). Todo lo que no se haya vendido el **7-nov** se vende a mercado.
+
+| Valor | Técnico (precio del gráfico) | Orden |
+|---|---|---|
+| Grifols | Lateral de dos años (8,5-11 EUR), en sus medias (9,7-10,1), RSI neutro. Sin señal. | **Vender ya.** |
+| PepsiCo | Sin gráfico. | **Vender ya.** |
+| ICE | Tendencia alcista desde el mínimo de julio (≈ 122), por encima de todas sus medias (152,8-155,6), ChandeMO +27 y RSI 59. El mejor técnico de los cinco. | Límite 172 USD (objetivo ponderado 173,7; máximo de 52 semanas 176). Stop si cierra < 152. Resultados el 29-oct. |
+| Puig | Tendencia alcista desde el mínimo de 2025 (≈ 13,5), por encima de sus medias (16,8-17,4), RSI 64, a un paso del máximo de 52 semanas (18,89). | Límite 19,20 EUR (base 19,30). Stop si cierra < 17,30. Ventas el 21-oct; día del inversor el 28-oct. |
+| Equifax | Bajista fuerte, por debajo de todas sus medias (164-213); RSI diario de 30 a 40, rebotando del mínimo (≈ 138). Toca la media de 1.000 semanal (143,5). | Límite 162 USD (media SAMA de 164). Stop si cierra < 138. Resultados el 20-oct. |
+| Hermès | Bajista fuerte, por debajo de todas sus medias; RSI semanal de 28, el más bajo desde 2018; justo en la media de 1.000 de 3 días (1.294). | Límite 1.420 EUR (SAMA de 1.458). Stop si cierra < 1.250 (mínimo del 8-oct: 1.262,50). Ventas el 22-oct. |
+
+**Orden de las compras.** Con el efectivo y las ventas inmediatas (≈ 5.450 EUR): Nemetschek, Uber y Viscofan. Wolters Kluwer, Auto Trader e Intuit, a medida que se ejecuten las otras cuatro ventas.
+
+**Lo que vale esto.** El técnico predice poco. Aquí sirve para no vender en el peor momento: Equifax y Hermès están en sobreventa y sobre soportes de largo plazo, mientras ICE y Puig tienen la tendencia a favor. La diferencia esperada es de unos pocos puntos sobre ≈ 4.200 EUR, a favor o en contra. Si el usuario prefiere sencillez, vender todo ya es igual de válido.
+
 ## Compras, y por qué
 
 - **Nemetschek (26, 6,9 %).** Software de construcción (BIM) por suscripción, con costes de cambio altos y ROIC 11 puntos sobre el WACC. Es el mejor base de la lista (+21,5 %): no necesita que suba el múltiplo. Riesgo: el minoritario de Thoma Bravo en Build y la IA.
