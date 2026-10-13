@@ -34,3 +34,26 @@
 7. **Notas a medias en el control de los 10 minutos** (A sin fuentes). Bastó el recordatorio.
 8. **Esperas**: el bloqueo de `sleep` obligó a usar bucles `until` con la hora; el comando del procedimiento debería decir cómo esperar a los subagentes sin terminar el turno.
 - Fin: 17:24. Tiempo efectivo ≈ 45 min (10:16-10:48 y 17:11-17:24), más la pausa por el límite de uso.
+
+## Actualización v2 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.json`), salida `datos-v2.json`, `Equifax - 2026-10-08 v2.docx` y su PDF (56 páginas). Mismo precio (142,43 USD) y fecha de corte. Sin fuentes nuevas.
+
+| | v1 | v2 |
+|---|---|---|
+| Recomendación · convicción | Comprar · Baja | Comprar · Baja (el motor sugiere Media) |
+| Valor objetivo (WACC 10,08 %) | 162,26 USD, RTE 15,4 %, asimetría 1,36x | igual |
+| Con la prima del mercado (4,20 %, WACC 8,89 %) | 191,49 USD, RTE 35,9 % | igual |
+| Comprar por debajo / vender por encima | 164,86 / 208,83 | **156,42** / 208,83 |
+| Sostenibilidad del crecimiento | — | **En parte** (6,4 % anual proyectado; sin inversión neta; cuota 31,8 % → 36,1 % en 2035e) |
+
+- **Veredicto «En parte»**: activos ligeros (capex por debajo de la amortización; reinversión neta acumulada de −837 M), así que la prueba es precio y cuota. La cuota de las tres agencias pasa del 31,8 % al 36,1 % con el mercado al 5 % anual (estimación propia; la prueba solo fallaría por debajo del 2,1 %). El volumen tiene base (registros de The Work Number al +10 %, Medicaid y contratos públicos), pero casi la mitad del crecimiento propio de 2026-2029 es precio (reparto volumen/precio: estimación propia), y el precio está bajo la CFPB, los estados, el informe doble y FICO.
+- **Puente** 2026e-2029e: otros = reventa de FICO a margen nulo (+3,4 puntos en 2026e; −0,6 y −0,4 en 2028e-2029e por VantageScore), como en `supuestos.mjs`. Cuadra con el DCF (±0,1).
+- **Sin cambios de supuestos**: la prueba no dice que la proyección pida más de lo financiable ni una cuota inverosímil. La síntesis explica por qué no se rebaja el base: ya está en la parte baja del marco de la dirección (7-10 % orgánico), sin recuperación hipotecaria y por debajo del consenso, y el bajista (25 %) recoge el recorte de precio.
+- **Nivel de compra 164,86 → 156,42 USD**: no por la sostenibilidad sino por la regla del motor de 10-oct (un Comprar solo relativo exige ≥ 5 % con nuestro coste de capital). Corregido en «Qué cambiaría la decisión». Convicción: se mantiene Baja (la absoluta pasa por 0,4 puntos y ahora el veredicto es «En parte»).
+
+**Fallos del sistema vistos**
+1. Con reinversión neta negativa, la tabla de sostenibilidad imprime «−837 M (−5 % del NOPAT)»: un porcentaje negativo de reinversión no se lee. Arreglo: decir «la amortización supera al capex: no hay inversión neta».
+2. El texto de la prueba dice «crecimiento medio del 6,3 %» y la fila de «La decisión» «6,4 %» (redondeo de la misma cifra por dos caminos), y la síntesis y el DCF inverso hablan del 5,8 % (años no fijos): tres cifras de crecimiento medio en el informe.
+3. `mercado_final` no admite una tasa de crecimiento del mercado con su fuente: el tamaño a 2035e sale de un supuesto que solo se puede explicar en la justificación. Arreglo: campos `tamano_actual` y `crecimiento_pct` y que el motor calcule el umbral de crecimiento del mercado que haría saltar la prueba (aquí 2,1 %).
+4. La cobertura de campos baja de 91,2 % a 87,9 % sin cambios de contenido (plantilla o motor nuevos; sentimiento por debajo del 60 %).
