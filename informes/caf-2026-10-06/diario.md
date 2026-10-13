@@ -95,3 +95,26 @@ Sin investigación nueva. Script: `notas/actualizacion-v3.mjs` (parte de `datos-
 3. El cambio de regla del 10-oct movió los niveles de los informes ya publicados (86,50 → 81,45 en CAF) sin que nada lo avise; los informes v2 citan niveles que el motor actual ya no da.
 
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 82,6 EUR, rentabilidad +7,4 %, señal Mantener (`revision-12m-2026-10-13.md`).
+
+## Actualización v4 (13 oct 2026): caso base al crecimiento financiable
+
+Sin investigación nueva. Lectura prudente de la sostenibilidad (decisión del usuario del 13-oct): el base tiene que quedar en lo que la empresa puede financiar. Script: `notas/actualizacion-v4.mjs` (parte de `datos-v3.json`), salida `datos-v4.json`, `CAF - 2026-10-06 v4.docx` y su PDF. Mismo precio (78,30 EUR, cierre del 6-oct) y fecha de corte.
+
+| | v3 | v4 |
+|---|---|---|
+| Recomendación · convicción | Comprar · Baja | Comprar · Baja (la sugerida; en el límite) |
+| Valor objetivo (WACC 8,11 %) | 84,06 EUR, RTE 9,3 %, asimetría 1,21x | 80,97 EUR, RTE 5,4 %, asimetría 0,98x |
+| Objetivo con la prima del mercado (WACC 7,20 %) | 97,98 EUR, RTE 27,1 % | 94,34 EUR, RTE 22,4 % |
+| DCF · escenarios (bajista / alcista) | 85,68 · 42,34 / 121,73 EUR | 81,56 · 39,18 / 116,74 EUR |
+| Comprar por debajo / vender por encima | 81,45 / 110,62 EUR | 78,54 / 106,56 EUR |
+| Crecimiento medio proyectado · financiable | 5,0 % (4,4 % en 2027-2035) · 4,1 % | 5,0 % (4,4 %) · 4,2 % |
+| Capital nuevo (tope 1,25 × 13,6 % = 17,0 %) | 18,1 % (control explicado) | 16,7 % (pasa) |
+| Sostenibilidad del crecimiento | En parte (base sin recortar) | En parte (base dentro de lo financiable) |
+
+- **Supuesto cambiado: solo el margen EBITDA de 2027e-2035e**, de 8,5 % (2027e) y 8,6 % (desde 2028e) a 8,4 % estable, el de 2026e (consenso 8,4 %; 8,2 % en el 1S26). El exceso del control venía de subir el margen, no del crecimiento: a margen de 2025 el capital nuevo rendía un 12,8 %. Pruebas: 8,5 % → 17,3 % y 8,45 % → 17,1 % (no pasan); 8,4 % → 16,7 % (pasa).
+- **Crecimiento sin tocar**: el 4,4 % de 2027-2035 es el financiable (4,2 %) más parte de los 1,5 puntos de precio por indexación del puente, que no piden capital. El puente sigue cuadrando.
+- **Sin cambios** en crecimiento, capex, circulante, WACC, terminal ni desplazamientos de los escenarios (−1,5 / +0,8 puntos de margen); el bajista queda en un EBITDA del 6,9 % y el alcista en el 9,2 %, y se corrigen sus narrativas.
+- Fuera la explicación del control del capital nuevo (ahora pasa). Controles: 16 de 23 correctos y 7 explicados.
+- Textos reescritos: síntesis entera (649 palabras; recortada desde 755), tesis (párrafos 2 y 3), visión diferencial, `a_favor` (precio), primer KPI, `cambiaria_recomendacion[0]` (78,54 / 106,56 EUR), `dcf.justificacion.margenes`, `dcf.lectura` (inverso 3,6 % frente a 4,4 %; margen 8,2 %; rentabilidad implícita 8,3 %; −1 punto de margen 60,41 EUR), narrativas y comentario de los escenarios, `valoracion.comentario`, efecto en valor del riesgo de contratos y justificación de la sostenibilidad.
+- **No cambia la señal**, pero queda en el borde: Comprar solo relativo con un 5,4 % de rentabilidad total con nuestro WACC (el mínimo es un 5 %) y el nivel de compra (78,54 EUR) 24 céntimos por encima del precio. La asimetría con nuestro WACC pasa a ser desfavorable (0,98x).
+- 13-oct-2026: revisión v2 a 12 meses rehecha con la v4 del informe (PER propio × BPA propio): objetivo 81,2 EUR (ponderado), rentabilidad +5,6 %, base +10,0 %, señal Mantener (`revision-12m-2026-10-13.md`).

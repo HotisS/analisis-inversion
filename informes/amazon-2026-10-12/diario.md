@@ -14,3 +14,5 @@
 - Amazon (US GAAP): la línea de amortizaciones del estado de flujos mezcla inmovilizado, contenidos y derechos de uso operativos; el EBITDA del consenso de MarketScreener suma todo eso y la remuneración en acciones (+6,6 % de las ventas). El BPA 2026e de MarketScreener incluye las ganancias de Anthropic (12,89 frente a 8,31 de Stock Analysis): el PER NTM no sirve.
 - Sentimiento: el feed RSS de Seeking Alpha (`seekingalpha.com/api/sa/combined/<TICKER>.xml`) y los índices mensuales de Motley Fool (`fool.com/sitemap/AAAA/MM`) abren y dan artículos con fecha; Stocktwits y los artículos de Seeking Alpha dan 403.
 - `descargar.mjs` duplica la extensión si el nombre ya la lleva (`X.json.json`).
+
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 351 USD (ponderado; base 338), rentabilidad +33,9 % (base +28,7 %), señal Comprar (`revision-12m-2026-10-13.md`).
