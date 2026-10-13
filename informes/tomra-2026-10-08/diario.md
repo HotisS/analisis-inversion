@@ -73,3 +73,5 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 1. **La prueba de reinversión no separa margen de capital nuevo**: atribuye al capital nuevo toda la subida del NOPAT, también la recuperación de margen sobre el capital existente. En empresas con el ROIC deprimido (Tomra: 9,8 % frente a 15,0 %) el 39,3 % exagera. Arreglo: dar también el ROIC del último año proyectado frente al máximo histórico (aquí 18,2 % frente a 15,0 %), que es la comparación que se entiende.
 2. **Los niveles cambian con la versión del motor** sin aviso: los textos de la v1 citaban 9,65 EUR y `rellenar` no lo detectó. Arreglo: que `rellenar` o el motor avisen si un texto cita un precio de compra o venta distinto de `calc.recomendacion.niveles`.
 3. **Sin `cuota_pct` la prueba de cuota desaparece en silencio**: el motor no avisa de que falta. Arreglo: un control «Prueba de cuota no calculable» que exija decirlo en la justificación.
+
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 14,08 EUR (150,8 NOK), rentabilidad 64,6 %, señal Comprar (`revision-12m-2026-10-13.md`).

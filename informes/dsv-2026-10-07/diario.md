@@ -75,3 +75,5 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 2. El texto de «activos ligeros» del motor menciona siempre al comprador en serie; aquí no hay compras proyectadas y sobra.
 3. La condición de «Comprar» en los niveles sigue diciendo «rentabilidad total esperada ≥ 15 %» y no menciona el mínimo absoluto del 5 % que fija ahora el nivel (1.299,42 DKK, donde la RTE absoluta es del 5 %, no del 15 %).
 4. La cobertura de campos baja del 89,7 % al 86,5 % sin quitar datos (cambios del motor o de la plantilla desde el 7-oct).
+
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 1.657 DKK, rentabilidad 46,3 %, señal Comprar (`revision-12m-2026-10-13.md`).
