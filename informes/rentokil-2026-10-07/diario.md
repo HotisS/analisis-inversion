@@ -39,3 +39,27 @@
 7. **Sin modo para partidas «one-off» recurrentes en el DCF**: hay que bajarlas a mano del margen. Arreglo: un campo dcf.anios[].no_recurrentes_pct_ventas que el motor reste y que el informe muestre.
 8. **El comentario de rentabilidad de A era una nota de trabajo** («Datos para el ROIC de 2025 (estimación propia)…»): reescrito. Arreglo: recordar a los subagentes que los comentarios se imprimen y que el ROIC lo calcula el motor.
 9. **Texto desfasado en B**: decía que la dirección busca un margen del 20 % en Norteamérica en 2027, objetivo retirado en julio de 2026. Reescrito. Arreglo: pasar a B el último hecho relevante de guía antes de empezar.
+
+## Actualización v2 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.json`), salida `datos-v2.json`, `Rentokil Initial - 2026-10-07 v2.docx` y su PDF (53 páginas). Mismo precio (299 GBp, 3,97 USD) y fecha de corte. Sin fuentes nuevas.
+
+| | v1 | v2 |
+|---|---|---|
+| Recomendación · convicción | Comprar · Baja | **Mantener · Baja** (la sugerida) |
+| Valor objetivo (WACC 8,74 %) | 3,76 USD (283 GBp), RTE −2,1 %, asimetría 0,62x | igual |
+| Con la prima del mercado (4,2 %, WACC 7,87 %) | 4,53 USD (341 GBp), RTE 17,3 %, asimetría 2,42x | igual |
+| Regla absoluta / relativa / combinada | Mantener / Comprar / Comprar | Mantener / Comprar / **Mantener** |
+| Comprar por debajo / vender por encima | 4,05 (305 GBp) / 5,05 (380 GBp) | **3,70 (279 GBp)** / 5,05 (380 GBp) |
+| Sostenibilidad del crecimiento | — | **En parte** (3,8 % anual proyectado; sin inversión neta: reinversión acumulada −143 M) |
+
+- **Señal Comprar → Mantener sin cambiar cifras**: el motor del 9/10-oct exige que un Comprar que solo da la regla relativa rinda al menos un 5 % con nuestro coste de capital; Rentokil rinde −2,1 % (el propio comentario del motor la pone de ejemplo). Se sigue la regla; la síntesis lo explica y el nivel de compra pasa de 4,05 a 3,70 USD (donde la absoluta llega al 5 %).
+- **Veredicto «En parte»**: precio sí (sube por encima de la inflación sin más bajas; Rollins saca 3-4 puntos del precio), volumen no demostrado (retención del 80,7 % en Norteamérica, clientes a la baja, orgánico del 2,8 % y 2,6 % en 2024-2025). El puente 2026e-2030e es ≈ 3,5-4 puntos de precio, volumen de −0,5 a +0,5 y otros (divisa, compras pequeñas, salida de SOLitude en 2027e). Reparto volumen/precio: estimación propia.
+- **Mercado final en null**: `competencia.cuota_pct` (17,4 %) es solo control de plagas y el motor divide los ingresos del grupo entero. Prueba a mano: con el grupo al 3,8 % y el mercado al 6,2 %, la cuota de plagas bajaría a ≈ 15 % en 2033e: no pide cuota.
+- **Sin cambios de supuestos**: la prueba no dice que la proyección pida más de lo financiable ni una cuota inverosímil. La síntesis explica por qué no se rebaja el base (ya por debajo del 5 % prometido, del consenso y del mercado; el bajista repite 2024). Las compras pequeñas aportan 0,5-0,7 puntos al año sin que el DCF reste su coste: sin ese crecimiento el DCF sería de 3,72 USD (−2,6 %); la regla seguiría en Mantener. Dicho en el comentario del puente.
+
+**Fallos del sistema vistos**
+1. **Las compras no se cobran en el DCF**: el puente admite crecimiento comprado en `otros_pct`, pero `dcf.anios` no tiene una línea de gasto en adquisiciones, y la prueba de reinversión clasifica la proyección como «activos ligeros» (−2 % del NOPAT) aunque la empresa gaste ≈120 M al año en compras. Arreglo: un campo `compras_pct_ventas` en `dcf.anios` que el motor reste del flujo y sume a la reinversión, o un aviso cuando `otros_pct` > 0 y no hay compras en el flujo.
+2. La tabla imprime «−143 M (−2 % del NOPAT)» (ya visto en Equifax).
+3. `mercado_final` exige el perímetro de `cuota_pct`, pero el motor compara con los ingresos de todo el grupo: con una cuota de un solo segmento (plagas, 83 % de las ventas) no hay forma de hacer la prueba. Arreglo: `mercado_final.ingresos_perimetro_pct` (peso del segmento) para escalar los ingresos.
+4. La cobertura de campos baja de 91,8 % a 88,4 % sin cambios de contenido (sentimiento por debajo del 60 %).
