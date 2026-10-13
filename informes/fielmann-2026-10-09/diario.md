@@ -56,3 +56,26 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 3. El ROIC incremental histórico mezcla compras (EE. UU.) con crecimiento orgánico; en un comprador ocasional el control compara con una referencia que la proyección no repite.
 4. No hay forma de dar la sensibilidad «crecimiento limitado a lo financiable» dentro del informe: hubo que recalcular a mano en una copia. Arreglo: que el motor la calcule cuando el veredicto es «En parte» o «No».
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 50,5 EUR, rentabilidad +39,7 %, señal Comprar (`revision-12m-2026-10-13.md`).
+
+## Actualización v3 (13 oct 2026): caso base al crecimiento financiable
+
+Sin investigación nueva. Lectura prudente de la sostenibilidad (decisión del usuario del 13-oct): el base tiene que quedar en lo que la empresa puede financiar. Script: `notas/actualizacion-v3.mjs` (parte de `datos-v2.json`), salida `datos-v3.json`, `Fielmann Group - 2026-10-09 v3.docx` y su PDF. Mismo precio (37,15 EUR, cierre del 8-oct) y fecha de corte.
+
+| | v2 | v3 |
+|---|---|---|
+| Recomendación · convicción | Comprar · Media | Comprar · Media |
+| Valor objetivo (WACC 7,74 %) | 49,13 EUR, RTE 36,0 %, asimetría 2,38x | 44,79 EUR, RTE 24,3 %, asimetría 1,65x |
+| Objetivo con la prima del mercado (WACC 6,81 %) | 59,79 EUR, RTE 64,7 % | 54,31 EUR, RTE 50,0 % |
+| DCF · escenarios (bajista / alcista) | 47,10 · 26,02 / 63,72 EUR | 41,96 · 24,82 / 57,53 EUR |
+| Comprar por debajo / vender por encima | 48,10 / 64,46 EUR | 43,98 / 58,72 EUR |
+| Crecimiento medio proyectado · financiable | 4,5 % · 2,8 % | 3,4 % · 2,7 % |
+| Capital nuevo (tope 1,25 × 13,9 % = 17,4 %) | 21,5 % (control explicado) | 17,1 % (pasa) |
+| Sostenibilidad del crecimiento | En parte (base sin recortar) | En parte (base dentro de lo financiable) |
+
+- **Supuesto cambiado: solo el crecimiento de 2027e-2033e**, de 5 / 5,5 / 5,5 / 5 / 4,5 / 4 / 3,5 % a 4 / 4,5 / 4 / 3,5 / 3 / 2,75 / 2,5 %. Medio 3,4 % = financiable (2,7 %) + 0,7 puntos de precio, por debajo de los 1,4-1,5 puntos de precio del puente, que no piden capital. Lo que ataba era el control del capital nuevo (17,1 % frente a 17,4 %): recortes menores (3,6 % medio) lo dejaban en 17,7 %.
+- **Puente** reajustado: el recorte sale del volumen (2027e-2029e: 2,0 / 2,3 / 1,9 puntos frente a 2,9 / 3,2 / 3,2), con precio 1,4-1,5 y otros 0,6-0,7. Sigue cuadrando con el DCF.
+- **Sin cambios** en margen, capex (11-12 % de las ventas con derechos de uso: se mantiene la inversión con menos crecimiento, lo prudente), circulante, WACC, terminal ni desplazamientos de los escenarios; solo sus narrativas (bajista 1,5-2 %, base 4-4,5 %, alcista 6-6,5 % en 2027-2029).
+- Fuera la explicación del control del capital nuevo (ahora pasa). Controles: 17 de 18 correctos y 1 explicado (comparables).
+- Textos reescritos: síntesis (párrafos 1, 2, 5, 6 y 7; 634 palabras), tesis, visión diferencial, `en_contra` (inversión), qué vigilar, `cambiaria_recomendacion` (43,98 EUR; margen bajo el 22 % → zona de 35 EUR), `dcf.justificacion.crecimiento`, `dcf.lectura` (inverso 2,5 % frente a 3,5 %; margen 22,2 %; −1 punto de margen 37,70 EUR), `escenarios.comentario`, `valoracion.comentario`, riesgo del bajista, pregunta de crecimiento y justificación de la sostenibilidad.
+- **No cambia la señal**: Comprar con convicción media (la sugerida); el colchón se estrecha (DCF +12,9 %, y medio punto más de WACC lo deja en 37,62 EUR, casi el precio).
+- 13-oct-2026: revisión v2 a 12 meses rehecha con la v3 del informe (PER propio × BPA propio): objetivo 47,25 EUR (ponderado), rentabilidad +31,0 %, base +10,7 %, señal Mantener por el filtro del base (`revision-12m-2026-10-13.md`).
