@@ -32,3 +32,4 @@
 - **Lista de la web de inversores de Adyen**: el orden de los enlaces de `--lista` no coincide con las filas de la tabla; descodificar el id/fecha del enlace ayuda, pero hay que abrir cada PDF (el id122309 era el Pillar 3).
 - **Parches sobre `meta.huecos[i]`** no se aplican (los huecos de las notas se juntan después); usa `huecos_resueltos` y vuelve a registrar el hueco en `propio`.
 - **Beta de una ex-burbuja**: Adyen da 2,33 mensual a 5 años frente al Stoxx 600; con ella el WACC pasa del 13 %. La decisión depende de la beta (con una más baja la regla absoluta se acercaría a Comprar): dilo en la síntesis.
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 1.337,2 EUR, rentabilidad +50,9 %, señal Comprar (`revision-12m-2026-10-13.md`).

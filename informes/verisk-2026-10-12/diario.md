@@ -31,3 +31,4 @@
 - **`_parches` no llega a `meta.huecos`**: integrar junta los huecos después de aplicar los parches. Para corregir el texto de un hueco de una nota, retíralo con `huecos_resueltos` y añade el tuyo en `huecos` con otro nombre de campo.
 - **Patrimonio negativo por recompras** (Verisk, −1.189 M): ROE sin sentido y ROIC incremental no calculable; el ROIC sube por la rotación (venta de Energy y recompras), no por el margen. Dilo en `rentabilidad`.
 - **EBITDA ajustado que no excluye la remuneración en acciones** (Verisk): `base_ebitda: "NIIF"` vale si las partidas puntuales (costes de compras y litigios) van en `no_recurrentes_en_ebitda`, también en el LTM.
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 218,4 USD, rentabilidad +24,0 %, señal Mantener (`revision-12m-2026-10-13.md`).
