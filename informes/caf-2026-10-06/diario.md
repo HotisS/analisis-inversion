@@ -71,3 +71,25 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 1. La portada pone «Comprar» con el objetivo absoluto (84,06 EUR) y una rentabilidad del +9,3 %; el objetivo relativo solo aparece en la línea de la síntesis y en «La decisión».
 2. El objetivo relativo (97,98 EUR) queda un 42 % por encima del objetivo medio de los analistas (69,22 EUR) y el motor no lo marca. Con un WACC del 7,2 %, el DCF de un contratista de margen bajo es muy sensible: 0,9 puntos de WACC suben el DCF unos 19 EUR. Haría falta un control de distancia frente al consenso cuando manda la relativa.
 3. El motor no da la prima a la que cambia la regla relativa.
+
+## Actualización v3 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v3.mjs` (parte de `datos-v2.json`, escribe `datos-v3.json`), salida `CAF - 2026-10-06 v3.docx` y su PDF. Mismo precio (78,30 EUR) y fecha de corte (6-oct-2026); sin cambios en los supuestos del DCF.
+
+| | v2 | v3 |
+|---|---|---|
+| Recomendación · convicción | Comprar · Baja | Comprar · Baja (la sugerida por el motor también es Baja) |
+| Valor objetivo (nuestro WACC 8,11 %) | 84,06 EUR, RTE +9,3 % | igual |
+| Valor objetivo con la prima del mercado (WACC 7,20 %) | 97,98 EUR, RTE +27,1 % | igual |
+| Comprar por debajo de / vender por encima de | 86,50 / 110,62 EUR | **81,45** / 110,62 EUR |
+| ¿La calidad sostiene el crecimiento? | — | **En parte** |
+
+- **Puente de ingresos con la cartera** (2026e-2029e; volumen + precio + otros = crecimiento): 6,5 + 1,5 + 2 = 10 %; 5,5 + 1,5 + 0,5 = 7,5 %; 5 + 1,5 + 0,5 = 7 %; 3,5 + 1,5 + 0,5 = 5,5 %. El volumen es la ejecución de la cartera: CAF prevé ejecutar el 26 % y el 29 % de los 17.743 M de jun-26 en 2026 y 2027, el 93 % y el 97 % de nuestras ventas [8]. Precio, 1,5 puntos por la indexación de los contratos desde 2022 [15]; otros, la mezcla de autobuses de cero emisiones y servicios. Reparto, estimación propia.
+- **Veredicto «En parte»**: el volumen sí (cartera; la reinversión del 30 % del NOPAT financia un 4,1 % anual al ROIC del 13,6 %, frente al 4,4 % de 2027-2035), el margen no: el motor marca que el capital nuevo rendiría un 18,1 %, y eso es la subida del EBITDA del 7,8 % al 8,6 %; a margen de 2025 serían un 12,8 %, por debajo del ROIC. No bajamos el base: el 8,6 % ya está por debajo del consenso (8,9 % en 2028) y el riesgo está medido en la síntesis (≈ 21 EUR por punto). Control explicado en `meta.controles_explicados`.
+- **mercado_final: null.** La cuota de `competencia` (1,5 %) es solo Ferroviario frente al WRMS de UNIFE; la proyección es del grupo y Autobuses solo tiene mercado en unidades. Prueba a mano: del 1,5 % a ≈ 1,7 % de ≈ 312.000 M en 2035 (2030e de UNIFE al +3,2 %).
+- **El nivel de compra baja de 86,50 a 81,45 EUR por el motor, no por la actualización**: desde el 10-oct, un Comprar solo relativo exige una rentabilidad total de al menos un 5 % con nuestro WACC (`RTE_MIN_SOLO_RELATIVA`). Recalculando `datos-v2.json` con el motor de hoy sale lo mismo. Corregidos «Qué cambiaría la decisión» y `cambiaria_recomendacion[0]`.
+
+**Fallos del sistema vistos**
+1. El motor calcula la cuota implícita con los ingresos del grupo; cuando la cuota publicada es de un segmento (aquí Ferroviario, el 74 %), no hay forma de dar el mercado final: haría falta un `segmento_pct` o unos ingresos del segmento en `mercado_final`.
+2. El «rendimiento del capital nuevo» mezcla crecimiento y subida de margen: en un negocio de margen bajo que mejora un punto, el control salta aunque el crecimiento sea financiable. Convendría separar el ΔNOPAT a margen constante.
+3. El cambio de regla del 10-oct movió los niveles de los informes ya publicados (86,50 → 81,45 en CAF) sin que nada lo avise; los informes v2 citan niveles que el motor actual ya no da.
