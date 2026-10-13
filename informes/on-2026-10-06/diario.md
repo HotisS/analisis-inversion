@@ -108,3 +108,32 @@ Sin investigación nueva. Script: `notas/actualizacion-v4.mjs` (parte de `datos-
 2. La cuota implícita divide las ventas totales entre un mercado de un solo producto (calzado) y no hay campo para el peso del perímetro. Arreglo: `mercado_final.ventas_en_perimetro_pct` (aquí ≈ 92 %).
 3. Con la prueba de reinversión, un financiable (6,0 %) muy por debajo del proyectado (11,3 %) no genera control si el ROIC implícito queda dentro de 1,25 veces el histórico: la tabla dice una cosa y los controles otra. Arreglo: un aviso cuando el financiable sea menos de dos tercios del proyectado y el veredicto sea «Sí».
 4. El motor no da la sensibilidad «caso base al límite de la prueba» (valor y regla con la cuota en 1,5 veces o con el crecimiento financiable); hubo que calcularla con una copia del JSON.
+
+## Actualización v5 (13 oct 2026): caso base al crecimiento financiable
+
+Sin investigación nueva. Script: `notas/actualizacion-v5.mjs` (parte de `datos-v4.json`), salida `datos-v5.json`, `On Holding - 2026-10-06 v5.docx` y su PDF. Mismo precio (26,48 CHF / 31,88 USD) y corte (6-oct). Lectura prudente de la sostenibilidad (decisión del usuario del 13-oct): la v4 fallaba la reinversión (financiable 6,0 % frente a 11,3 % proyectado) y la cuota (2,1 % → 4,0 %, más de 1,5 veces); el capital nuevo (58,4 % frente a 48,6 %, 1,20 veces) pasaba por poco.
+
+| | v4 | v5 |
+|---|---|---|
+| Recomendación · convicción | Mantener · Baja | Mantener · Baja (sin cambio) |
+| Valor objetivo (WACC 10,01 %) | 27,68 CHF (33,33 USD), RTE +4,5 % | **23,88 CHF (28,75 USD), RTE −9,8 %** (a 0,2 puntos de Vender en la regla absoluta) |
+| Objetivo con la prima del mercado (WACC 7,91 %) | 36,62 CHF (44,09 USD), RTE +38,3 %, asimetría 10,98x | **30,88 CHF (37,18 USD), RTE +16,6 %, asimetría 2,94x** |
+| Regla absoluta / relativa / combinada | Mantener / Comprar / Mantener | Mantener / Comprar / Mantener |
+| Niveles (combinada) | compra < 26,35 CHF (31,73 USD), venta > 40,69 CHF (48,99 USD) | compra < 22,73 CHF (27,37 USD), venta > 34,32 CHF (41,32 USD) |
+| DCF · escenarios (bajista / base / alcista) | 30,07 · 18,18 / 30,07 / 39,72 | 25,27 · 15,61 / 25,27 / 33,14 (asimetría 0,61x) |
+| Crecimiento medio proyectado (2026e-2035e) | 11,3 % | 8,3 % |
+| Financiable al ROIC actual | 6,0 % (reinversión 16 % del NOPAT) | ≈ 4,7 % (reinversión 12 %; + 3,6 puntos de precio del puente = 8,3 %) |
+| Capital nuevo · cuota 2035e | 58,4 % (48,6 % hist.) · 4,0 % | ≈ 55,0 % (1,13x) · 3,0 % (tope 3,15 %) |
+| Veredicto | En parte | **Sí** (el base queda en el límite de las tres pruebas) |
+
+- **Supuesto cambiado: solo el crecimiento** (márgenes, inversión, WACC, terminal y escenarios iguales). 2027e-2029e: 17/16/15 → 16/14/12 (solo volumen; el puente pasa a 13/11/9 de volumen, 3,5 de precio y −0,5 de divisa). 2030e-2035e: 13/11/9/7/5/3,5 → 8/5/4/3/2,5/2, convergiendo al 2 % del terminal. Ventas de 2029e: 5.205 M CHF (−7 % frente al objetivo de 5.600); de 2035e: 6.610 M CHF (antes 8.720).
+- **Por qué así**: la cuota limita las ventas de 2035e (≤ 1,5 × 2,1 % de 218.138 M CHF = 6.871 M CHF), y el financiable más la parte de precio (media del puente 2026e-2029e, 3,6 puntos) limita el crecimiento medio. Se recorta sobre todo el final; el plan a 2029 solo pierde 1-3 puntos de volumen, porque el recorte de los mayoristas del 2T26 aún no ha tocado fondo. Con la senda elegida la cuota sube hasta ≈ 3,3 % en 2031 (con el mercado al 5 % anual, estimación propia) y vuelve al 3,0 % en 2035: On crece por debajo de su mercado al final, como ya supone el terminal.
+- **La señal no cambia**, pero sí la lectura: el DCF inverso (8,4 % anual en 2027-2035) está ahora por encima del caso base (7,4 %); el precio pide más de lo financiable. La relativa da Comprar solo hasta una prima implícita del 4,26 % (WACC 8,0 %); con un terminal del 1,0 %, la relativa ya da Mantener (28,41 CHF, +7,3 %). Escenarios sin cambios: el bajista (−5 pp) supone ahora ventas que caen desde 2032 (−41,0 %).
+- Textos reescritos: síntesis (636 palabras), tesis, visión diferencial, a favor (se quita el DCF inverso como argumento) y en contra (+1), justificación de crecimiento, márgenes y terminal, etapa 2, lectura del DCF, sostenibilidad, narrativas del bajista y del base, comentario de escenarios y de valoración, efectos de los riesgos, qué vigilar y qué cambiaría la recomendación.
+
+**Fallos del sistema vistos**
+1. Al recortar el crecimiento, la reinversión cae del 16 % al 12 % del NOPAT (menos circulante) y el motor pasa a tratar a On como «activos ligeros»: deja de imprimir el financiable y el rendimiento del capital nuevo, desaparece el control del capital nuevo (21 → 20 controles) y la tabla «La decisión» dice «sin inversión neta». El umbral fijo del 15 % convierte el propio recorte en un cambio de prueba. Arreglo: calcular siempre el financiable y el ROIC implícito cuando la reinversión sea positiva, y usar el 15 % solo para el texto.
+2. La prueba de cuota solo mira el último año: una senda que sube la cuota por encima del tope a mitad de la proyección y la devuelve al final pasa sin aviso. Arreglo: cuota implícita de cada año con el crecimiento del mercado, o al menos la máxima.
+3. La regla «crecimiento medio ≤ financiable + precio» no está en el motor: la parte de precio y el financiable con reinversión baja se calculan a mano.
+
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio, sobre la v5): objetivo 28,46 CHF (34,27 USD), rentabilidad +7,5 % (ponderada; base +17,6 %), señal Mantener (`revision-12m-2026-10-13.md`).
