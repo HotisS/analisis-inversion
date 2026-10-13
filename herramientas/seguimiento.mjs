@@ -99,7 +99,7 @@ const COLS = [
   ['Iteración', 9], ['Empresa', 18], ['Ticker', 9], ['Fecha', 11], ['Geografía', 13], ['Sector', 20], ['Señal', 11], ['Convicción', 11], ['Convicción según criterios', 11], ['Divisa', 7],
   ['Precio actual', 11], ['Precio objetivo 12 m', 12], ['Objetivo con la prima del mercado', 13], ['Rentabilidad total esperada', 12],
   ['Rentabilidad con la prima del mercado', 13], ['Objetivo analistas', 11], ['Comprar por debajo de', 11], ['Vender por encima de', 11],
-  ['Regla absoluta', 10], ['Regla relativa', 10], ...CRITERIOS.map(([c]) => [c, 11]), ['Metodología', 11], ['Objetivo 12 m', 12], ['Rentabilidad 12 m', 12], ['Señal 12 m', 11], ['Origen del objetivo 12 m', 40], ['Informe', 46],
+  ['Regla absoluta', 10], ['Regla relativa', 10], ...CRITERIOS.map(([c]) => [c, 11]), ['Metodología', 11], ['Objetivo 12 m', 12], ['Rentabilidad 12 m', 12], ['Rentabilidad 12 m (base)', 12], ['Señal 12 m', 11], ['Origen del objetivo 12 m', 40], ['Informe', 46],
 ];
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const letra = (i) => (i >= 26 ? String.fromCharCode(64 + Math.floor(i / 26)) : '') + String.fromCharCode(65 + (i % 26));
@@ -122,9 +122,9 @@ filas.forEach((f, k) => {
     texto(c(17), f.regla_abs, S.centro), texto(c(18), f.regla_rel, S.centro),
     ...f.criterios.map((v, i) => texto(c(19 + i), v ?? 'n.d.', v ? S[v] : S.centro)),
   ];
-  const ci = 24 + CRITERIOS.length;
-  celdas.push(texto(c(ci - 5), f.metodologia, S.centro));
-  celdas.push(num(c(ci - 4), f.o12.objetivo, S.num), num(c(ci - 3), f.o12.rte === null ? null : f.o12.rte / 100, S.pct));
+  const ci = 25 + CRITERIOS.length;
+  celdas.push(texto(c(ci - 6), f.metodologia, S.centro));
+  celdas.push(num(c(ci - 5), f.o12.objetivo, S.num), num(c(ci - 4), f.o12.rte === null ? null : f.o12.rte / 100, S.pct), num(c(ci - 3), f.o12.rte_base == null ? null : f.o12.rte_base / 100, S.pct));
   celdas.push(texto(c(ci - 2), f.o12.senal, S[f.o12.senal] ?? S.centro), texto(c(ci - 1), f.o12.origen));
   celdas.push(texto(c(ci), f.informe, S.enlace));
   enlaces.push({ ref: c(ci), destino: f.informe });
@@ -157,9 +157,10 @@ const criterios = [
   ['Objetivo analistas', 'Precio objetivo medio del consenso de analistas en la fecha del informe.'],
   ...CRITERIOS.map(([c, e]) => [c, e]),
   ['Metodología', 'Nueva: el DCF lleva la prueba de sostenibilidad del crecimiento (puente volumen × precio, cuota implícita y reinversión, con veredicto), en uso desde el 10-oct-2026. Vieja: informe anterior, pendiente de actualizar en rápido (script `notas/actualizacion-vN.mjs`, sin investigación nueva).'],
-  ['Objetivo 12 m', 'Método v2 del 12-oct-2026 (verticales/empresa/objetivo-12m.md): PER propio × BPA propio del ejercicio que mirará el mercado en 12 meses, media de bajista, base y alcista. Solo empresas con revisión hecha (verticales/empresa/objetivo12m-revisados.json).'],
-  ['Rentabilidad 12 m', 'Objetivo 12 m sobre el precio del informe, más el dividendo. Es la que ordena compras y cartera; la «Rentabilidad total esperada» toma el valor intrínseco del DCF como objetivo.'],
-  ['Señal 12 m', 'Con la rentabilidad 12 m: Comprar desde el 15 %, Vender desde el −10 %, Mantener en medio.'],
+  ['Objetivo 12 m', 'Método v2 (verticales/empresa/objetivo-12m.md): PER propio × BPA propio del ejercicio que mirará el mercado en 12 meses, en bajista, base y alcista, ponderados con las probabilidades de los escenarios del informe. Solo empresas con revisión hecha (verticales/empresa/objetivo12m-revisados.json).'],
+  ['Rentabilidad 12 m', 'Objetivo 12 m (ponderado) sobre el precio del informe, más el dividendo. Es la cifra de rentabilidad esperada que ordena compras y cartera.'],
+  ['Rentabilidad 12 m (base)', 'Solo el escenario base (BPA propio al PER de hoy o a la mediana de 5 años, sin que el múltiplo vuelva a su historia), más el dividendo. Es el filtro de valor real: para comprar, al menos un 12 %.'],
+  ['Señal 12 m', 'Con la rentabilidad 12 m ponderada: Comprar desde el 15 %, Vender desde el −10 %, Mantener en medio. Para comprar hace falta además el base ≥ 12 %.'],
   ['n.d.', 'El informe no tiene el dato (por ejemplo, sin consenso o sin lista de gobierno).'],
   ['Informe', 'Ruta del PDF (o del Word si no hay PDF) de la última versión de ese análisis, relativa a la raíz del repo.'],
 ];

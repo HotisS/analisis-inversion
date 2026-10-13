@@ -37,7 +37,9 @@ export function objetivo12m(d, { sinRevisiones = false } = {}) {
   const precio = n(id.precio), div = n(R.dividendo_pct) ?? 0, acciones = n(id.acciones);
   const base = { ticker, precio, po_consenso: n(d.consenso?.recomendaciones?.po_medio) };
   const rev = sinRevisiones ? null : revisados[ticker];
-  if (rev) return { ...base, objetivo: n(rev.objetivo_12m), rte: n(rev.rentabilidad_12m_pct), senal: rev.senal, origen: `Revisión a fondo (${rev.fecha}): ${rev.nota}` };
+  // Cifra: media ponderada con las probabilidades de los escenarios del informe; filtro de valor real: el base (13-oct).
+  if (rev) return { ...base, objetivo: n(rev.objetivo_ponderado ?? rev.objetivo_12m), rte: n(rev.rentabilidad_ponderada_pct ?? rev.rentabilidad_12m_pct), rte_base: n(rev.rentabilidad_base_pct),
+    rte_media_simple: n(rev.rentabilidad_12m_pct), senal: rev.senal_ponderada ?? rev.senal, origen: `Revisión v2 (${rev.fecha}): ${rev.nota}` };
 
   const cuenta = (d.calc?.cuenta || []).filter((f) => !/e$/i.test(String(f.periodo)) && n(f.ingresos) !== null);
   const anios = d.dcf?.anios || [];

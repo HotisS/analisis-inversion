@@ -17,8 +17,9 @@
    - **Base**: el más prudente entre el PER actual sobre el BPA propio del ejercicio siguiente y la mediana de cinco años. Se contrasta con la media de los comparables (`comparables`).
    - **Bajista**: el mínimo de cinco años, si queda por debajo del precio de hoy; si no, el siguiente más bajo que lo haga. Se contrasta con el percentil 25 de los comparables.
    - **Alcista**: la media histórica larga (ocho años), **sin años de pérdidas, de burbuja o con un BPA atípico**: se excluyen y se dice cuáles.
-4. **Objetivo a 12 meses** = media simple de bajista, base y alcista (PER × BPA de cada uno). **Rentabilidad** = objetivo / precio − 1 + dividendo. **Asimetría** = alcista frente a bajista.
-5. **Señal**: Comprar ≥ 15 %, Vender ≤ −10 %, Mantener en medio. La convicción se razona como en el informe.
+4. **Objetivo a 12 meses** = media de bajista, base y alcista (PER × BPA de cada uno) **ponderada con las probabilidades de los escenarios del informe** (`escenarios.casos[].probabilidad_pct`). **Rentabilidad 12 m** = objetivo / precio − 1 + dividendo. Se da también la **rentabilidad del base** (solo el escenario base) y la **asimetría** (alcista frente a bajista).
+   *Decisión del usuario, 13-oct.* El hilo usaba la media simple de los tres. Aplicada a las 38 empresas, inflaba la cifra: muchas cotizan muy por debajo de su PER histórico, y el alcista, que supone volver a él, pesaba un tercio (Wolters Kluwer: +44 % con la media simple, +26,5 % ponderada y +9,5 % en el base). La media simple se guarda en el JSON solo para comparar.
+5. **Señal**: con la rentabilidad ponderada, Comprar ≥ 15 %, Vender ≤ −10 %, Mantener en medio. **Filtro de valor real para comprar: el base ≥ 12 %** (que el precio esté justificado sin revalorizar el múltiplo). Para mantener lo que ya está en cartera: ponderada ≥ 10 % y base ≥ 5 %. La convicción se razona como en el informe.
 6. **Contraste con el consenso** (no entra en el cálculo): el BPA de los analistas del mismo ejercicio y el objetivo medio. Si nos separamos más de un 10 %, se explica de dónde sale la diferencia (ventas, margen, dilución, múltiplo).
 7. **Comparar**: la cifra se pone junto a las demás (cartera y compras) y se dice si cambia alguna decisión.
 
