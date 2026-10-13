@@ -13,6 +13,7 @@ Lo que cualquier sesión de Claude, en cualquier equipo, tiene que saber antes d
 
 ## Preferencias de cartera (13-oct-2026; aplicarlas siempre que pida la cartera)
 - **Edenred, el oro (IGLN) y Grifols no se tocan** salvo que lo pida (si quedan por debajo del 5 %, se amplían hasta el 5 %).
+- **Comercio minorista: no le convence** (13-oct, Dunelm fuera aunque pasara los tres requisitos). No proponer minoristas salvo que lo pida.
 - **Alphabet se queda** por decisión del usuario (13-oct), aunque no pase el filtro de mantener: no proponer venderla salvo que cambie la tesis (punto de control: 3T26, 28-oct).
 - **Wolters Kluwer y Auto Trader entran** por decisión del usuario (13-oct), aunque su base a 12 meses quede bajo el 12 %.
 - **Antes de recomendar vender algo que ya tiene, se investiga a fondo** (situación, novedades, argumentos a favor y en contra, qué cambiaría la decisión) y se deja un memorando `investigacion-cartera-AAAA-MM-DD.md` en la carpeta del informe (13-oct: Grifols, Alphabet, Hermès y Equifax).
@@ -27,6 +28,7 @@ Lo que cualquier sesión de Claude, en cualquier equipo, tiene que saber antes d
 - Cartera vigente: `informes/cartera-concentrada-2026-10-13.md`.
 
 ## Decisiones
+- 13-oct-2026 (noche): cartera versión 6: **Dunelm fuera** (al usuario no le convence el comercio minorista); su dinero va a Nemetschek, Uber y SAP. Ponderada del +15,6 % al +18,7 %; base del +9,1 % al +12,0 %.
 - 13-oct-2026 (noche): cartera versión 5: **Alphabet se queda** (decisión del usuario); se financia bajando Nemetschek, Uber, Dunelm y Viscofan. Ponderada del +15,6 % al +18,7 %; base del +9,1 % al +11,8 %.
 - 13-oct-2026 (noche): cartera versión 4: **Daiichi Sankyo no se amplía** (decisión del usuario) y **Equifax se vende** (falla la calidad tal como está escrita: sostenibilidad «En parte» y ROIC contable bajo el WACC; no se hace la excepción). Ponderada del +15,6 % al +19,9 %; base del +9,1 % al +12,5 %.
 - 13-oct-2026 (tarde): cartera versión 3 (`informes/cartera-concentrada-2026-10-13.md`): entran Wolters Kluwer y Auto Trader; tras investigar a fondo, **Grifols se mantiene sin ampliar** (130 títulos solo por el mínimo del 5 %), **Alphabet y Hermès se venden** y **Equifax se mantiene y se amplía a 10 títulos después de los resultados del 20-oct**, como excepción a la regla de calidad (ROIC contable bajo el WACC por el fondo de comercio; sin fondo de comercio, 30,5 %), pendiente de que el usuario la acepte. Ponderada del +15,6 % al +21,0 %; base del +9,1 % al +12,3 %.
