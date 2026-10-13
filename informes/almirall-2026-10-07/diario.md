@@ -59,3 +59,20 @@ Commit de partida: `21591ac Empresa, vuelta 8 (Enagás): niveles con la regla en
 - `a-pdf.ps1` y `pdf-a-png.ps1` funcionaron (los PNG se llaman `p01.png`, no `p1.png`). No se cerró ningún WINWORD.
 - Subagentes: el límite semanal de la cuenta los cortó a los 3 minutos; lo guardado por partes (A: cuentas; B: historia y negocio; D: identificación y bolsa; E: dos PDF descargados) se aprovechó entero.
 - En dos ocasiones un heredoc con comillas mezcladas falló en la shell (Git Bash): mejor escribir los textos largos con la herramienta de archivos.
+
+## Actualización v3 (13 oct 2026): sostenibilidad del crecimiento
+- **Sin investigación nueva.** Script `notas/actualizacion-v3.mjs` sobre `datos-v2.json` (la v2, de la regla relativa, no dejó script ni sección en el diario) → `datos-v3.json`, `Almirall - 2026-10-07 v3.docx` y `.pdf`. Mismo precio (10,18 EUR) y fecha de corte.
+- Añade `dcf.sostenibilidad`: puente 2026e-2028e (volumen +10,0/+10,0/+8,3; precio −0,8 cada año por los recortes europeos; otros +1,3/−1,2/0 por Actithiol; cuadra con 10,5/8,0/7,5 %), `mercado_final` null (cuota no publicada; Evaluate Pharma es mundial en USD, otro perímetro) y veredicto **Sí**.
+
+| | v2 | v3 |
+|---|---|---|
+| Recomendación · convicción | Mantener · Baja | Mantener · Baja |
+| Valor objetivo (nuestro WACC) · rentabilidad total | 10,41 EUR · 4,1 % | 10,41 EUR · 4,1 % |
+| Con la prima del mercado | 11,23 EUR · 12,2 % | 11,23 EUR · 12,2 % |
+| Comprar por debajo / vender por encima | 9,92 / 12,34 EUR | 9,92 / 12,34 EUR |
+| Sostenibilidad | — | Sí (5,6 % anual proyectado; sin inversión neta) |
+
+- **Por qué Sí**: el crecimiento es de volumen de dos licencias ya pagadas (Ebglyss, Ilumetri) en un mercado que crece al 11,4 %; el precio resta; la dermatología crece menos que el mercado (cuota a la baja, prueba a mano); el margen EBITDA de 2030e (24,5 %) queda por debajo de la guía (~25 % en 2028). Ninguna prueba falla: no se toca el DCF. El ROIC (3,0 %) bajo el WACC significa que crecer no crea valor, no que el crecimiento no sea sostenible.
+- Textos: frase del veredicto en «El negocio»; la convicción Baja se explica en la síntesis (los criterios del motor sugieren Media; todo depende del dato de Ebglyss del 3T26); el control de comparables (EV/EBITDA frente a PER), que la v2 dejaba en «Revisar», pasa a `controles_explicados`. Controles: 17 de 21 correctos y 4 explicados.
+- **Fallos del sistema vistos**: (1) la síntesis y `cambiaria_recomendacion` de la v2 seguían con los niveles de la v1 (9,21 / 10,60 EUR) aunque el motor ya daba 9,92 / 12,34: corregidos; (2) «activos ligeros» engañoso otra vez: el capex de Almirall (10-11 % de las ventas) son hitos de licencias que se amortizan al mismo ritmo, y el motor no calcula crecimiento financiable ni rendimiento del capital nuevo, aunque el NOPAT pase de 45 a 179 M con 8 M de reinversión neta (el salto es de margen: amortización del 13,6 % al 10 % de las ventas); (3) el «crecimiento medio proyectado» de la tabla (5,6 %) incluye el año fijo 2026e, mientras el DCF inverso usa 2027-2033e (4,9 %): dos medias distintas en el mismo informe.
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 11,89 EUR, rentabilidad 18,6 %, señal Comprar (`revision-12m-2026-10-13.md`).
