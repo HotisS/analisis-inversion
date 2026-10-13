@@ -42,3 +42,25 @@
 ## Huecos que quedan
 - Núcleo: segunda fuente independiente del tamaño del mercado (estimación propia); desglose comprar/mantener/vender y segunda fuente de estimaciones del consenso; votos exactos del grupo familiar por junta (estimación).
 - Complemento: transcripciones y preguntas de analistas; vs_consenso por semestre; MSCI ESG; Kering-Valentino; Diageo, Estée Lauder, Rémy y Ulta como comparables; ROIC de comparables; participaciones individuales de cuatro directivos; historial de objetivos 2021-2024 (LVMH no da guía numérica).
+
+## Actualización v2 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.json`), salida `datos-v2.json`, `LVMH - 2026-10-08 v2.docx` y su PDF. Mismo precio (380,90 EUR) y fecha de corte; supuestos del DCF sin cambios.
+
+| | v1 | v2 |
+|---|---|---|
+| Recomendación · convicción | Comprar · Baja | Comprar · Baja |
+| Valor objetivo (WACC 9,25 %) | 410,00 EUR, +7,6 %, RTE +11,1 % | 410,00 EUR, +7,6 %, RTE +11,1 % |
+| Con la prima del mercado (4,20 %, WACC 7,88 %) | 478,01 EUR, RTE +28,9 % | 478,01 EUR, RTE +28,9 % |
+| Comprar por debajo / vender por encima | 422,71 / 530,95 EUR | **402,62** / 530,95 EUR |
+| Sostenibilidad del crecimiento | (no existía) | **Sí** (3,5 % anual proyectado; reinversión neta del 12 % del NOPAT) |
+
+- **Puente 2026e-2030e** (estimación propia del reparto; LVMH no publica volumen frente a precio): 2026e 0 volumen + 2,5 precio − 5,4 otros (divisa ≈ −4, salida de DFS ≈ −1,5) = −2,9 %; 2027e 1,5 + 2,2 − 0,5 = 3,2 %; 2028e-2029e 3 + 2,5 = 5,5 %; 2030e 2,6 + 2,5 = 5,1 %. Cuadra con el DCF.
+- **Mercado final en null**: `competencia.cuota_pct` (15,8 %) solo cubre Moda, Relojería y Perfumes (56.430 M de 80.807 M) y el motor divide las ventas totales. Prueba a mano: esos grupos suman 81.666 M en 2035e frente a ≈ 572.000 M de lujo personal (369.000 M en 2026e al 5 % anual): 14,3 % (15,5 % con el mercado al 4 %). El base pierde algo de cuota.
+- **Reinversión**: 12 % del NOPAT (capex con altas de derechos de uso del 9,7 % de las ventas frente a una amortización del 8,2-8,5 %): el motor lo trata como activos ligeros y no calcula el crecimiento financiable; el ROIC incremental histórico es negativo (−3,4 %, 2021-2025), así que la prueba que vale es precio y cuota. Ninguna prueba pide más de lo que la empresa puede dar: no se tocan supuestos.
+- **Lo único que cambia en cifras es el nivel de compra** (422,71 → 402,62 EUR), y no por el veredicto: el motor del 10-oct exige, cuando solo la regla relativa da Comprar, una rentabilidad total del 5 % con nuestro WACC (la absoluta da +11,1 %, así que la recomendación no cambia). Se corrigió en la síntesis y en `cambiaria_recomendacion`.
+
+**Fallos del sistema vistos**
+1. La tabla «La decisión» dice «sin inversión neta» siempre que el negocio se clasifica como de activos ligeros (< 15 % del NOPAT), aunque aquí haya 20.511 M de reinversión neta. Arreglo: «reinversión baja (12 % del NOPAT)».
+2. La cuota implícita divide las ventas totales del grupo; en conglomerados con cuota de un subconjunto de segmentos haría falta un campo `ingresos_perimetro_pct` (o mercado_final por segmentos) para no dejarla en null.
+3. El cambio de la regla combinada del 10-oct mueve los niveles de los informes anteriores sin tocar datos; un informe regenerado con el motor nuevo contradice su síntesis si no se reescribe (aquí, 422,71 frente a 402,62).
