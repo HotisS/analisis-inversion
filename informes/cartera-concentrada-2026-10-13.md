@@ -76,6 +76,21 @@ Primero las ventas y después las compras. Precios de referencia de los informes
 
 **Sin cambios:** oro IGLN (68), Edenred (136), Daiichi Sankyo (100), Netflix (23), SAP (7), Zoetis (20) y Alphabet (5). Quedan ≈ 230 EUR de efectivo.
 
+## Estado de la ejecución (13-oct, 17:37, captura del usuario)
+
+- **Hecho**: vendidas Grifols (120) y PepsiCo (12); compradas Uber (28), Viscofan (32) e Intuit (5, a ≈ 309 USD). Valor de la cuenta: 25.998 EUR; efectivo: 583 EUR. Aparece una posición pequeña de IBKR (1,8164 acciones, ≈ 140 EUR) que no estaba en el plan.
+- **Ventas pendientes** (precio límite y stop; si no se ejecutan, a mercado el 7-nov):
+  - Equifax (6): límite 162 USD; stop 138 USD.
+  - ICE (6): límite 172 USD; stop 152 USD.
+  - Hermès (1): límite 1.420 EUR; stop 1.250 EUR.
+  - Puig (70): límite 19,20 EUR; stop 17,30 EUR.
+  - Juntas suman ≈ 4.200 EUR a los precios de la captura.
+- **Compras pendientes** (≈ 4.540 EUR, solo con el dinero de esas ventas; si el 7-nov no se han ejecutado, se revisan con el precio del día):
+  - Nemetschek (26): límite 68 EUR.
+  - Auto Trader (240): límite 4,95 GBP.
+  - Wolters Kluwer (19): límite 72 EUR.
+  - Prioridad, por base a 12 meses: Nemetschek, después Auto Trader y por último Wolters Kluwer.
+
 ## Plan de ejecución con el análisis técnico (13-oct, gráficos del usuario)
 
 El técnico **no cambia qué se vende ni qué se compra**. Solo cambia **cuándo**. Las órdenes de venta llevan un precio límite (cerca de resistencias o de nuestro objetivo) y un stop (por debajo del soporte). Todo lo que no se haya vendido el **7-nov** se vende a mercado.
