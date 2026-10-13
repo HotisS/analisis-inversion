@@ -12,8 +12,8 @@ Lo que cualquier sesión de Claude, en cualquier equipo, tiene que saber antes d
 - Al cerrar cada empresa se comunica: recomendación y convicción, valor objetivo y rentabilidad esperada, cifras clave, commit y rutas del Word y del PDF.
 
 ## Preferencias de cartera (13-oct-2026; aplicarlas siempre que pida la cartera)
-- **Edenred y el oro (IGLN) no se tocan** salvo que lo pida.
-- **Concentración**: ninguna posición por debajo del **5 %** de la cartera; 7-10 valores además del oro. Lo que quede por debajo del 5 % se amplía o se vende.
+- **Edenred, el oro (IGLN) y Grifols no se tocan** salvo que lo pida (si quedan por debajo del 5 %, se amplían hasta el 5 %).
+- **Ninguna posición por debajo del 5 %** de la cartera; **no hay máximo de valores** (13-oct: «no me importa tener más de 10»). Lo que quede por debajo del 5 % se amplía o se vende.
 - **Tres requisitos a la vez** para comprar o ampliar:
   1. **Rentabilidad**: a 12 meses ponderada ≥ 15 % (método v2, `verticales/empresa/objetivo-12m.md`).
   2. **Valor real**: base a 12 meses ≥ 12 % y valor intrínseco del informe ≥ precio.
