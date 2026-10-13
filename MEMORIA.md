@@ -12,12 +12,13 @@ Lo que cualquier sesión de Claude, en cualquier equipo, tiene que saber antes d
 - Al cerrar cada empresa se comunica: recomendación y convicción, valor objetivo y rentabilidad esperada, cifras clave, commit y rutas del Word y del PDF.
 
 ## Preferencias de cartera (13-oct-2026; aplicarlas siempre que pida la cartera)
-- **Edenred, el oro (IGLN) y Grifols no se tocan** salvo que lo pida (si quedan por debajo del 5 %, se amplían hasta el 5 %).
+- **Edenred, el oro (IGLN) y Grifols no se tocan** salvo que lo pida, **ni siquiera para llegar al 5 %** (13-oct: Grifols se queda en 120 títulos, 4,6 %).
+- **No se amplían las posiciones que ya tiene** (13-oct, «no ampliamos ninguna»): el dinero de las ventas va a valores nuevos.
 - **Comercio minorista: no le convence** (13-oct, Dunelm fuera aunque pasara los tres requisitos). No proponer minoristas salvo que lo pida.
 - **Alphabet se queda** por decisión del usuario (13-oct), aunque no pase el filtro de mantener: no proponer venderla salvo que cambie la tesis (punto de control: 3T26, 28-oct).
 - **Wolters Kluwer y Auto Trader entran** por decisión del usuario (13-oct), aunque su base a 12 meses quede bajo el 12 %.
 - **Antes de recomendar vender algo que ya tiene, se investiga a fondo** (situación, novedades, argumentos a favor y en contra, qué cambiaría la decisión) y se deja un memorando `investigacion-cartera-AAAA-MM-DD.md` en la carpeta del informe (13-oct: Grifols, Alphabet, Hermès y Equifax).
-- **Ninguna posición por debajo del 5 %** de la cartera; **no hay máximo de valores** (13-oct: «no me importa tener más de 10»). Lo que quede por debajo del 5 % se amplía o se vende.
+- **Ninguna posición por debajo del 5 %** de la cartera; **no hay máximo de valores** (13-oct: «no me importa tener más de 10»). Lo que quede por debajo del 5 % se vende, salvo Grifols (no se amplía nada que ya tenga).
 - **Tres requisitos a la vez** para comprar o ampliar:
   1. **Rentabilidad**: a 12 meses ponderada ≥ 15 % (método v2, `verticales/empresa/objetivo-12m.md`).
   2. **Valor real**: base a 12 meses ≥ 12 % y valor intrínseco del informe ≥ precio.
@@ -28,6 +29,7 @@ Lo que cualquier sesión de Claude, en cualquier equipo, tiene que saber antes d
 - Cartera vigente: `informes/cartera-concentrada-2026-10-13.md`.
 
 ## Decisiones
+- 13-oct-2026 (noche): cartera versión 7: **no se amplía ninguna posición existente** (Grifols se queda en 120, SAP en 7, Daiichi en 100); el dinero va a Nemetschek (31) y Viscofan (31). Ponderada del +15,6 % al +18,6 %; base del +9,1 % al +12,0 %.
 - 13-oct-2026 (noche): cartera versión 6: **Dunelm fuera** (al usuario no le convence el comercio minorista); su dinero va a Nemetschek, Uber y SAP. Ponderada del +15,6 % al +18,7 %; base del +9,1 % al +12,0 %.
 - 13-oct-2026 (noche): cartera versión 5: **Alphabet se queda** (decisión del usuario); se financia bajando Nemetschek, Uber, Dunelm y Viscofan. Ponderada del +15,6 % al +18,7 %; base del +9,1 % al +11,8 %.
 - 13-oct-2026 (noche): cartera versión 4: **Daiichi Sankyo no se amplía** (decisión del usuario) y **Equifax se vende** (falla la calidad tal como está escrita: sostenibilidad «En parte» y ROIC contable bajo el WACC; no se hace la excepción). Ponderada del +15,6 % al +19,9 %; base del +9,1 % al +12,5 %.
