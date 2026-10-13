@@ -84,3 +84,27 @@ Sin investigación nueva. Script: `notas/actualizacion-v3.mjs` (parte de `datos-
 1. La portada pone «Comprar» al lado del valor objetivo absoluto (27,68 CHF) y de una rentabilidad del +4,5 %: el lector ve un Comprar con un 4,5 % de potencial. Arreglo: cuando discrepan y manda la relativa, que la portada dé también el objetivo y la RTE de la regla que manda.
 2. La regla del terminal no tiene solución en divisas de tipos muy bajos (CHF: intervalo vacío). Arreglo: «si la tasa libre − 0,5 queda por debajo de la inflación esperada, el terminal es la inflación esperada», o un control del motor que lo avise.
 3. El motor no da la prima de equilibrio de la regla relativa (aquí ≈ 5,0 %), la cifra que dice cuánto depende el Comprar de la prima y de la beta; hubo que buscarla a mano.
+
+## Actualización v4 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v4.mjs` (parte de `datos-v3.json`), salida `datos-v4.json`, `On Holding - 2026-10-06 v4.docx` y su PDF. Sin fuentes nuevas; mismo precio (26,48 CHF / 31,88 USD) y corte (6-oct). Supuestos del DCF sin cambios.
+
+| | v3 | v4 |
+|---|---|---|
+| Recomendación · convicción | Comprar · Baja | **Mantener · Baja** |
+| Valor objetivo (WACC 10,01 %) | 27,68 CHF (33,33 USD), RTE +4,5 % | igual |
+| Objetivo con la prima del mercado (WACC 7,91 %) | 36,62 CHF (44,09 USD), RTE +38,3 %, asimetría 10,98x | igual |
+| Regla absoluta / relativa / combinada | Mantener / Comprar / Comprar | Mantener / Comprar / **Mantener** (Comprar solo relativo con RTE propia < 5 %) |
+| Niveles | compra < 30,75 CHF (37,03 USD), venta > 40,69 CHF (48,99 USD) | compra < 26,35 CHF (31,73 USD), venta > 40,69 CHF (48,99 USD) |
+| Sostenibilidad | — | **En parte** (11,3 % proyectado; financiable al ROIC actual 6,0 %; capital nuevo al 58,4 % frente al 48,6 % histórico; cuota 2,1 % → 4,0 % en 2035e) |
+
+- **Puente 2026e-2029e**: volumen 17/14/13/12, precio 4/3,5/3,5/3,5, otros (divisa) −4,4/−0,5/−0,5/−0,5. Reparto volumen/precio, estimación propia: On no publica unidades ni subidas de precio [40]. **Mercado final**: calzado deportivo mundial de Grand View (el perímetro del 2,1 %), 205.800 M USD en 2030e extrapolado al 5 % hasta 2035e y pasado a CHF al 0,8305: 218.138 M CHF. El motor divide las ventas totales (con 7-8 % de ropa): la cuota sale ≈ 0,3 puntos alta (≈ 3,7 % solo calzado).
+- **Veredicto «En parte»**: poder de precios demostrado (margen bruto 56,0 → 64,8 %) y plan con guía hasta 2029; después, foso estrecho (solo marca), crecimiento sin ciclo y las tres pruebas por encima de lo histórico. Ningún control de la prueba salta (la cuota pasa por la vía de «+10 puntos» y el capital nuevo queda a 1,20 veces el histórico), pero el financiable (6,0 %) es la mitad del proyectado.
+- **El base no se recorta, y la síntesis dice por qué**: el precio ya descuenta casi el límite de la prueba. Con la cuota de 2035 en 1,5 veces la actual (−2,9 puntos al año en 2027-2035: 7,8 % medio, cuota 3,2 %) el objetivo sería 24,57 CHF (−7,2 %) con nuestro WACC y 31,95 CHF (+20,7 %) con la prima del mercado: Mantener igual (cálculo en el scratchpad, no publicado).
+- **El paso a Mantener no lo da la sostenibilidad sino la regla del 9-oct** (un Comprar solo relativo exige RTE ≥ 5 % con nuestro WACC), que la v3 (7-oct) no tenía: 4,5 % no llega. El veredicto «En parte» apoya no apartarse de la regla. El nivel de compra baja de 30,75 a 26,35 CHF, un 0,5 % bajo el precio.
+
+**Fallos del sistema vistos**
+1. El control de cuota usa «1,5 veces o +10 puntos»: con cuotas pequeñas (2 %) el +10 lo deja pasar todo, y On casi duplica su cuota sin aviso. Arreglo: «+10 puntos» solo si la cuota actual pasa del 20 %, o bien el mínimo de los dos.
+2. La cuota implícita divide las ventas totales entre un mercado de un solo producto (calzado) y no hay campo para el peso del perímetro. Arreglo: `mercado_final.ventas_en_perimetro_pct` (aquí ≈ 92 %).
+3. Con la prueba de reinversión, un financiable (6,0 %) muy por debajo del proyectado (11,3 %) no genera control si el ROIC implícito queda dentro de 1,25 veces el histórico: la tabla dice una cosa y los controles otra. Arreglo: un aviso cuando el financiable sea menos de dos tercios del proyectado y el veredicto sea «Sí».
+4. El motor no da la sensibilidad «caso base al límite de la prueba» (valor y regla con la cuota en 1,5 veces o con el crecimiento financiable); hubo que calcularla con una copia del JSON.
