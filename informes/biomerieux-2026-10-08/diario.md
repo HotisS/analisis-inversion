@@ -41,3 +41,27 @@
 8. **Tasa libre en el euro ambigua**: el prompt pide «el bono del país de la divisa»; para el euro hay que elegir entre el Bund y la OAT (1,3 puntos de diferencia, unos 11 EUR por acción). Arreglo: fijar en el prompt el Bund más prima país por ventas, y en lecciones que la API de Bundesbank funciona y Banque de France/AFT dan 403.
 9. **Longitud de la síntesis sin control**: la primera versión tenía 769 palabras. Arreglo: control del motor que cuente las palabras de `resumen.sintesis` (≤ 650).
 10. **Edición de scripts propios**: un `node -e` con comillas anidadas dentro de bash falló y un reemplazo por índices dejó `resumen.mjs` truncado (índice −1). Arreglo (lección): escribir y reescribir los `.mjs` enteros con Write, nunca con reemplazos por posición.
+
+## Actualización v2 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.json`), salida `datos-v2.json`, `bioMérieux - 2026-10-08 v2.docx` y su PDF (53 páginas). Mismo precio (80,75 EUR) y fecha de corte; sin fuentes nuevas.
+
+| | v1 | v2 |
+|---|---|---|
+| Recomendación · convicción | Comprar · Baja | **Mantener · Baja** |
+| Valor objetivo (WACC 8,57 %) | 80,93 EUR, RTE 1,4 %, asimetría 0,47x | 80,93 EUR, RTE 1,4 %, asimetría 0,47x |
+| Con la prima del mercado (4,2 %, WACC 7,49 %) | 93,63 EUR, RTE 17,2 %, asimetría 3,86x | 93,63 EUR, RTE 17,2 %, asimetría 3,86x |
+| Regla absoluta / relativa / combinada | Mantener / Comprar / Comprar | Mantener / Comprar / **Mantener** |
+| Comprar por debajo / vender por encima | 81,90 / 98,17 EUR | **77,94** / 98,17 EUR |
+| Sostenibilidad del crecimiento | (no existía) | **En parte** (3,9 % proyectado; financiable al ROIC actual: 2,5 %) |
+
+- **Veredicto En parte**: foso real (83 % reactivos, ≈ 70 % de la PCR sindrómica, ≈ 40 % de la microbiología clínica) y poder de precios corto (margen bruto +90 pb en 2025, efecto precio en el 2T26, China a la baja). La prueba de reinversión no pasa: el 20 % del NOPAT al ROIC del 12,7 % financia un 2,5 % anual frente al 3,9 % proyectado; el capital nuevo rendiría un 22,7 % frente al 15,1 % incremental (control explicado en `meta.controles_explicados`). Sin el fondo de comercio y los intangibles (1.129 M, sobre todo de compras), el ROIC es del 17,5 % y financia un 3,5 %.
+- **El base no se rebaja**: está en el centro de la guía (+3/+6 %) y por debajo del consenso. Probado en el scratchpad: con medio punto menos de crecimiento cada año, DCF 77,25, valor objetivo ≈ 80,09 (RTE 0,4 %) y relativa 15,8 %: la recomendación no cambia. Dicho en «El negocio» de la síntesis.
+- **Puente** 2026e-2030e: 2026e volumen 2 + precio 1 + divisa −2,5 = 0,5; 2027e-2028e 3 + 1,5; 2029e-2030e 3,5 + 1,5 (reparto volumen/precio: estimación propia). `mercado_final` = null: el 70 % de cuota es de la PCR sindrómica multiplex, sin tamaño publicado, y el DIV clínico (72.000 M) no tiene cuota en `competencia`.
+- **Comprar → Mantener**: no por la sostenibilidad sino por la regla del motor del 10-oct (un Comprar solo relativo exige ≥ 5 % con nuestro coste de capital; aquí, 1,4 %). Por eso el umbral de compra baja a 77,94 EUR. Cambiados: recomendación, síntesis (párrafos 1, 2 y 8, y recortes en 3, 5, 6 y 7 para quedar en 650 palabras), tercer párrafo de la tesis, `en_contra[5]` y `cambiaria_recomendacion[0-2]`. Convicción: Baja, la sugerida.
+
+**Fallos del sistema vistos**
+1. **Una actualización «de método» cambia la recomendación sin aviso propio**: la regla nueva del Comprar solo relativo pasó de Comprar a Mantener y el motor solo lo muestra como «Recomendación coherente con la regla». Arreglo: que el motor compare con la recomendación de la versión anterior y lo diga en la salida.
+2. **La prueba de reinversión usa el ROIC con el fondo de comercio** de las compras: en empresas que crecieron comprando (BioFire en 2014) infravalora el crecimiento orgánico financiable. Arreglo: dar también el ROIC sin fondo de comercio en `calc.dcf.sostenibilidad` (el balance ya trae `fondo_comercio`).
+3. **Síntesis en 647 palabras en v1**: no había sitio para la frase obligatoria y hubo que recortar cuatro párrafos. Repite el fallo 9 (sin control de palabras en el motor).
+4. **Cobertura 90,6 % → 87,4 %** por la sección `sentimiento` de la plantilla nueva, que v1 no tenía; no viene de esta actualización.
