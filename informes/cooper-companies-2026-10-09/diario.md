@@ -23,3 +23,26 @@ Comprar, convicción baja. Precio 54,30 USD (cierre 8-oct, verificado en Yahoo, 
 7. **Tasa libre de FRED con un día de retraso**: DGS10 no tenía el 8-oct; se usó el 7-oct. Arreglo: que la herramienta de bolsa o un lector de FRED lo diga y ofrezca el Tesoro (home.treasury.gov) como segunda fuente del día.
 8. **bolsa.mjs dio bien la sesión del 8-oct** esta vez (D lo contrastó con tres fuentes): sin fallo, pero la comprobación manual sigue siendo necesaria hasta que la herramienta compare con el calendario de sesiones.
 9. **Tiempos**: análisis completo en unos 26 minutos (de 10:03 a 10:29); subagentes de 9-14 minutos. B tardó 11 minutos en escribir algo en su nota pese al encargo (hubo que recordárselo).
+
+## Actualización v2 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.json`), salida `datos-v2.json`, `Cooper Companies - 2026-10-09 v2.docx` y su PDF. Mismo precio (54,30 USD) y fecha de corte; ningún supuesto del DCF cambia.
+
+| | v1 | v2 |
+|---|---|---|
+| Recomendación · convicción | Comprar · Baja | Comprar · Baja |
+| Valor objetivo (WACC 9,15 %) | 57,10 USD, RTE +5,2 %, asimetría 1,56x | 57,10 USD, RTE +5,2 %, asimetría 1,56x |
+| Objetivo con la prima del mercado (WACC 8,23 %) | 66,21 USD, RTE +21,9 % | 66,21 USD, RTE +21,9 % |
+| Regla absoluta / relativa | Mantener / Comprar | Mantener / Comprar (manda la relativa) |
+| Niveles | Comprar < 57,56; Vender > 73,60 | **Comprar < 54,36**; Vender > 73,60 |
+| Sostenibilidad del crecimiento | — | **Sí** (3,8 % anual; reinversión del 3 % del NOPAT: prueba de precio y cuota) |
+
+- **Veredicto «Sí», decidido antes de calcular**: la proyección (3,8 % anual) pide menos que el 5,3 % previsto para el mercado de lentes. Puente FY2026e-FY2029e: precio del 2 % anual (los cuatro fabricantes suben precios) y volumen del 0,5 % al 2,5 %, más 1,1 puntos de divisa en FY2026e. Con CooperVision al ritmo del grupo, su cuota bajaría del 26,6 % al 23 % en FY2035e (cálculo a mano): el caso base ya supone perder cuota.
+- **`mercado_final` en null**: la cuota del informe (26,3 %) es solo de CooperVision en lentes y el DCF proyecta el grupo (con CooperSurgical, un 33 % de las ventas); dividir por el mercado de lentes daría una cuota sin sentido. La prueba de cuota va en la justificación.
+- **Reinversión**: 318 M acumulados, el 3 % del NOPAT (capex por debajo de la amortización, que incluye intangibles comprados): el motor la trata como de activos ligeros. El ROIC del 4,6 % no entra en la prueba.
+- **Lo único que cambia en la decisión no es el método nuevo**: el motor actual aplica la regla del 9-oct (un Comprar que solo da la relativa exige ≥ 5 % con nuestro WACC). Con un 5,2 %, el nivel de compra baja de 57,56 a 54,36 USD, un 0,1 % sobre el precio. La recomendación se mantiene, pero en el borde; dicho en la síntesis y en `cambiaria_recomendacion`.
+
+**Fallos del sistema vistos**
+1. La cuota implícita del motor divide los ingresos del grupo por el mercado: en empresas con dos negocios (CooperVision y CooperSurgical) no se puede usar. Arreglo: `mercado_final.ingresos_perimetro` (o un segmento) para la cuota.
+2. El texto de los niveles dice «Por debajo de 54,36 (rentabilidad total esperada ≥ 15 % …)», pero la condición que manda en 54,36 es el 5 % mínimo con nuestro WACC. Arreglo: que la condición nombre la regla que fija el nivel.
+3. El texto de activos ligeros habla de un comprador en serie en genérico; aquí el capex bruto es del 7,3 % y el crecimiento proyectado es orgánico (sin compras): la frase no aplica y no se puede quitar.
