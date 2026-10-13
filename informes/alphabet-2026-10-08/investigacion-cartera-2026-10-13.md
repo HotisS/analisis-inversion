@@ -20,3 +20,5 @@ Informe del repo más noticias de julio a octubre (búsqueda web; sin descargas)
 - **Precio de recompra:** por debajo de ≈ 310 USD llegaría al +15 % ponderado; por debajo de ≈ 253 USD cumpliría el filtro de valor.
 
 Fuentes de la búsqueda: ad-hoc-news (13-oct), tikr (11-oct), 247wallst (3-sep), TheNextWeb y S&P Global (jul), Benzinga (oct), Bloomberg Law e IFRE (ago), BusinessDay (2-sep), MLex (28-jul), GBM y TechNews (30-sep), SEC (424B5 y 10-Q del 2T26).
+
+**Decisión final (13-oct, noche): se queda**, por decisión del usuario. Ver `informes/cartera-concentrada-2026-10-13.md` (versión 5). Punto de control: 3T26 (28-oct).
