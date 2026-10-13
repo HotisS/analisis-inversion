@@ -35,3 +35,31 @@ Commit de partida: `232dd63 Empresa: DCF en tres etapas y regla relativa (prima 
 9. **Presupuesto de los subagentes**: B gastó 129 llamadas y 28 minutos, D 102 llamadas; A y C cumplieron. B rebuscó MSCI/Sustainalytics y el tamaño de submercados sin éxito. *Arreglo*: tope duro en el encargo para los campos de complemento (máximo 10 llamadas cada uno).
 10. **Prima implícita: columna equivocada.** D leyó «ERP (T12m)» (3,70 %) en vez de «ERP (T12 m with sustainable payout)» (4,20 %), el mismo error que en Rational y Copart. *Arreglo*: que el prompt de D nombre la columna exacta y que una herramienta (`herramientas/erp.mjs`) la lea del xlsx con su fecha (el libro usa el sistema de fechas de 1904).
 11. **`rellenar.mjs`**: aviso por la tabla vacía de suma de partes cuando `aplica: false` es lo esperado. *Arreglo*: no avisar si `suma_partes.aplica` es false.
+
+## Actualización v2 (13 oct 2026): sostenibilidad del crecimiento y caso base al crecimiento financiable
+
+Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.json`, escribe `datos-v2.json`), salida `Kongsberg - 2026-10-07 v2.docx` y su PDF. Mismo precio (299,00 NOK) y fecha de corte (7-oct-2026). La prueba falla (cuota) y el recorte va en la misma versión (lectura prudente, decisión del usuario del 13-oct).
+
+| | v1 | v2 |
+|---|---|---|
+| Recomendación · convicción | Vender · Baja | Vender · **Media** (la sugerida por el motor es Alta) |
+| DCF (WACC 10,10 %) | 214,56 NOK | 168,63 NOK (VT 57 %) |
+| Valor objetivo (nuestro WACC) | 204,75 NOK, RTE −30,8 %, asimetría −0,01x | 175,75 NOK, RTE −40,5 %, asimetría 0,03x |
+| Con la prima del mercado (4,20 %, WACC 8,82 %) | 239,87 NOK, RTE −19,0 %, asimetría 0,47x | 203,50 NOK, RTE −31,2 %, asimetría 0,44x |
+| Alcista / bajista | 298,12 / 122,25 NOK | 303,98 / 97,18 NOK |
+| Comprar por debajo de / vender por encima de | 210,48 / 269,04 NOK | 169,42 / 228,65 NOK |
+| Crecimiento medio proyectado (2026e-2035e) · financiable | 17,2 % · sin prueba (reinversión del 12 % del NOPAT: «ligero») | 13,9 % · 6,5 % (reinversión del 16 %; 2028e-2035e: 7,3 %) |
+| Cuota final (prueba a mano) | 2,0 veces la de 2025 | 1,49 veces |
+| ¿La calidad sostiene el crecimiento? | — | **En parte** |
+
+- **Puente de ingresos** (2026e-2029e): volumen = crecimiento − 1,5; precio 1,5 (contratos largos de precio fijo, el 75 % por grado de avance [3]: solo los contratos nuevos repreciarían; estimación propia); otros 0. El volumen es la entrega de la cartera (19.328 M para el 2S26, 41.944 M para 2027, 91.484 M para 2028+) [1, 2].
+- **Prueba de cuota a mano** (`mercado_final: null`, porque `competencia.cuota_pct` es null: la ≈ 0,5 % del gasto de OTAN Europa y Canadá es un orden de magnitud que mezcla ventas a EE. UU.). Con el gasto de OTAN Europa y Canadá de 653.806 M USD en 2025e y 777.066 M en 2026e, al +7,5 % previsto hasta 2035 (≈ 1,49 billones, 2,28 veces 2025) [15], el base v1 multiplicaba las ventas por 4,56 (143.968 M en 2035): cuota de 2,0 veces. Tope de 1,5 veces → ventas 2035 ≤ 3,42 veces 2025.
+- **Supuestos cambiados** (crecimiento de ventas): 2026e 34,7 % (fijo) y 2027e 46 % sin cambios (cartera y consenso); 2028e 30 → 25; 2029e 18 → 9; 2030e 12 → 5; 2031e 9 → 4,5; 2032e 7 → 4; 2033e 6 → 3,5; 2034e 5 → 3,5; 2035e 4 → 3,5. Ventas 2035e: 106.999 M (3,39 veces 2025). Alcista: +3 → +7 puntos para seguir siendo el plan de la dirección (99.600 M en 2029 y 152.600 M en 2033). Márgenes, capex, circulante, WACC y terminal, sin cambios. Bajista igual en puntos (narrativa: 2028 al 15 %).
+- **Control nuevo tras el recorte**: con menos crecimiento, la reinversión pasa del 12 % al 16 % del NOPAT, el motor deja de tratar a Kongsberg como «ligera» y marca el capital nuevo (54,9 % frente al tope de 50,5 %). Explicado en `meta.controles_explicados`: sale de la subida del margen EBIT del 14,9 % al 16,0 % (el objetivo de la empresa, ya visto en el 1S26); a margen de 2025 rendiría un 49,7 %. El financiable (6,5 %) queda por debajo del 13,9 % medio por 2026e-2027e, que van en cartera y con anticipos; 2028e-2035e crece un 7,3 %.
+- **Convicción de Baja a Media**: el Vender ya no depende de la tasa ni del recorte (con el base v1 era −30,8 %; con la prima del mercado ahora −31,2 %). No Alta: el recorte depende de medir la cuota contra el gasto total en defensa, y el consenso (397,27 NOK de objetivo medio) está muy arriba.
+
+**Fallos del sistema vistos**
+1. **El umbral de «activos ligeros» (reinversión < 15 % del NOPAT) es discontinuo**: el base v1, más agresivo, se libraba de la prueba de reinversión porque los anticipos (circulante negativo creciente) bajaban la reinversión al 12 %; al recortar el crecimiento, la reinversión sube al 16 % y aparece el control. El recorte «destapa» una prueba que el base optimista esquivaba. Arreglo: aplicar la prueba siempre que la reinversión sea positiva y separar el circulante negativo (anticipos) del capital.
+2. **Sin `competencia.cuota_pct` no hay prueba de cuota en el motor**, aunque haya serie de mercado (`sector.serie` y `tcac_previsto_pct`): el motor podría hacer la prueba relativa (crecimiento de ventas frente al del mercado) sin necesitar la cuota absoluta.
+3. Mercado en USD y ventas en NOK: la prueba relativa supone tipo de cambio constante; el motor no tiene dónde decirlo.
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 344,69 NOK, rentabilidad +16,0 %, señal Comprar (`revision-12m-2026-10-13.md`).
