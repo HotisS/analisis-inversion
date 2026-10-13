@@ -14,6 +14,7 @@ Lo que cualquier sesión de Claude, en cualquier equipo, tiene que saber antes d
 ## Preferencias de cartera (13-oct-2026; aplicarlas siempre que pida la cartera)
 - **Edenred y el oro (IGLN) no se tocan** salvo que lo pida. (Grifols también estaba aquí; el 13-oct, noche, el usuario decidió venderla por la volatilidad y la deuda.)
 - **No se amplían las posiciones que ya tiene** (13-oct, «no ampliamos ninguna»): el dinero de las ventas va a valores nuevos.
+- **Adobe fuera** (13-oct, decisión del usuario, sin motivo dado): no proponerla.
 - **Comercio minorista: no le convence** (13-oct, Dunelm fuera aunque pasara los tres requisitos). No proponer minoristas salvo que lo pida.
 - **Alphabet se queda** por decisión del usuario (13-oct), aunque no pase el filtro de mantener: no proponer venderla salvo que cambie la tesis (punto de control: 3T26, 28-oct).
 - **Wolters Kluwer y Auto Trader entran** por decisión del usuario (13-oct), aunque su base a 12 meses quede bajo el 12 %.
@@ -29,6 +30,7 @@ Lo que cualquier sesión de Claude, en cualquier equipo, tiene que saber antes d
 - Cartera vigente: `informes/cartera-concentrada-2026-10-13.md`.
 
 ## Decisiones
+- 13-oct-2026 (noche): cartera versión 9: **Adobe fuera** (decisión del usuario); entra **Intuit** (5 títulos, 5,3 %; base +16,9 %, valor intrínseco +44 %, sostenibilidad «En parte»). Ponderada del +15,6 % al +18,4 %; base del +9,1 % al +11,8 %.
 - 13-oct-2026 (noche): cartera versión 8: **se venden Grifols, Puig e ICE**; **tope del 7 %** por valor salvo Edenred y oro; entra **Adobe** (calidad alta y valor intrínseco +26,5 %, base +10,2 %) porque con el tope las tres compras que pasan todo no absorben el dinero. Ponderada del +15,6 % al +18,7 %; base del +9,1 % al +11,5 %.
 - 13-oct-2026 (noche): el usuario **confirma vender Puig e ICE** tras revisarlas con el impulso de octubre (memorandos en sus carpetas). Duda de Grifols (volatilidad y deuda); alternativa sin Grifols calculada: misma rentabilidad (ponderada +18,6 %, base +12,0 %), con el dinero en Nemetschek, Uber y Viscofan. Decidido después: se vende (versión 8).
 - 13-oct-2026 (noche): cartera versión 7: **no se amplía ninguna posición existente** (Grifols se queda en 120, SAP en 7, Daiichi en 100); el dinero va a Nemetschek (31) y Viscofan (31). Ponderada del +15,6 % al +18,6 %; base del +9,1 % al +12,0 %.

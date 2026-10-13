@@ -1,6 +1,6 @@
-# Cartera concentrada de calidad (13-oct-2026, versión 8)
+# Cartera concentrada de calidad (13-oct-2026, versión 9)
 
-**La cartera vigente.** Sustituye a `informes/cartera-optima-2026-10-13.md` (versión amplia, para comparar) y a las versiones 1-7 de este archivo (en el historial de git). Sigue las **preferencias de cartera del usuario** (`MEMORIA.md`, «Preferencias de cartera»).
+**La cartera vigente.** Sustituye a `informes/cartera-optima-2026-10-13.md` (versión amplia, para comparar) y a las versiones 1-8 de este archivo (en el historial de git). Sigue las **preferencias de cartera del usuario** (`MEMORIA.md`, «Preferencias de cartera»).
 
 ## Reglas aplicadas
 
@@ -16,7 +16,8 @@
   - Alphabet se queda.
   - Wolters Kluwer y Auto Trader entran con el base bajo el 12 %.
   - No entra comercio minorista (Dunelm fuera).
-  - Adobe entra con el base al 10,2 % para cubrir el hueco del tope del 7 % (ver abajo).
+  - Adobe fuera.
+  - Intuit entra con la sostenibilidad «En parte» para cubrir el hueco del tope del 7 % (ver abajo).
 
 | Valor | Títulos | EUR | Peso | Rent. 12 m (ponderada) | Rent. 12 m (base) | Valor intrínseco frente al precio | ROIC − WACC (puntos) | Sostenibilidad |
 |---|---|---|---|---|---|---|---|---|
@@ -28,7 +29,7 @@
 | Viscofan | 0 → 33 | 0 → 1746 | 0,0 % → 6,8 % | +20,1 % | +14,6 % | +12,0 % | +8,4 | Sí |
 | Wolters Kluwer | 0 → 19 | 0 → 1364 | 0,0 % → 5,3 % | +26,5 % | +9,5 % | +61,8 % | +18,6 | Sí |
 | Auto Trader | 0 → 240 | 0 → 1386 | 0,0 % → 5,4 % | +27,1 % | +9,0 % | +42,1 % | +41,9 | Sí |
-| Adobe | 0 → 7 | 0 → 1514 | 0,0 % → 5,9 % | +19,7 % | +10,2 % | +26,5 % | +50,0 | Sí |
+| Intuit | 0 → 5 | 0 → 1352 | 0,0 % → 5,3 % | +17,1 % | +16,9 % | +43,7 % | +13,1 | En parte |
 | Netflix | 23 → 23 | 1442 → 1442 | 5,6 % → 5,6 % | +31,8 % | +16,1 % | -13,1 % | +26,5 | Sí |
 | SAP | 7 → 7 | 1340 → 1340 | 5,2 % → 5,2 % | +23,4 % | +16,8 % | +1,2 % | +6,2 | Sí |
 | Zoetis | 20 → 20 | 1335 → 1335 | 5,2 % → 5,2 % | +18,3 % | +6,8 % | +31,6 % | +20,5 | Sí |
@@ -39,13 +40,13 @@
 | Alphabet A | 5 → 5 | 1570 → 1570 | 6,1 % → 6,1 % | +1,8 % | +6,6 % | -27,6 % | +27,0 | Sí |
 | PepsiCo | 12 → 0 | 1349 → 0 | 5,3 % → 0,0 % | +9,7 % | +9,6 % | +23,4 % | +13,8 | En parte |
 | Puig | 70 → 0 | 1266 → 0 | 5,0 % → 0,0 % | +6,9 % | +9,0 % | +21,0 % | +5,0 | Sí |
-| Efectivo | | 2.920 → 70 | 11,4 % → 0,3 % | | | | | |
+| Efectivo | | 2.920 → 233 | 11,4 % → 0,9 % | | | | | |
 
 **Rentabilidad esperada a 12 meses** (oro al 0 %):
-- **Ponderada: del +15,6 % al +18,7 %** (de ≈ 3.980 a ≈ 4.780 EUR).
-- **Base: del +9,1 % al +11,5 %.**
+- **Ponderada: del +15,6 % al +18,4 %** (de ≈ 3.980 a ≈ 4.710 EUR).
+- **Base: del +9,1 % al +11,8 %.**
 
-Precios de los informes (6-12 oct) y de la captura del usuario (9-oct): **compruébalos antes de operar**.
+Precios de los informes (6-12 oct) y de la captura del usuario (9-oct): **compruébalos antes de operar**. Quedan ≈ 230 EUR de efectivo (0,9 %) como colchón: una sexta acción de Intuit lo dejaría en negativo.
 
 ## Compras, y por qué
 
@@ -54,7 +55,7 @@ Precios de los informes (6-12 oct) y de la captura del usuario (9-oct): **compru
 - **Viscofan (33, 6,8 %).** Líder mundial en envolturas para cárnicos (≈ 22 % de cuota), con balance sólido y dividendo del 6,2 %. Defensiva española con poder de precios.
 - **Wolters Kluwer (19, 5,3 %).** Información profesional (salud, fiscal, legal) por suscripción, con el 80 % de ingresos recurrentes y ROIC 19 puntos sobre el WACC. Valor intrínseco +62 %. El base (+9,5 %) no llega al 12 % porque no supone recuperar el múltiplo perdido por el miedo a la IA. Entra por decisión del usuario. Cumpliría el base a ≤ 70,11 EUR.
 - **Auto Trader (240, 5,4 %).** El portal dominante de coches en el Reino Unido, con margen operativo por encima del 60 % y ROIC 42 puntos sobre el WACC. Valor intrínseco +42 %; base +9,0 %. Entra por decisión del usuario. Cumpliría el base a ≤ 4,75 GBP.
-- **Adobe (7, 5,9 %).** El estándar del trabajo creativo y de documentos (Creative Cloud, Acrobat), con margen EBIT del 36,6 %, ROIC del 61,6 % y un flujo libre del 11 % de su capitalización. Cotiza a 9,4 veces el EBITDA porque el mercado descuenta que la IA generativa le quita el poder de precios. Pasa la calidad (sostenibilidad «Sí») y el valor intrínseco (+26,5 %); ponderada +19,7 %, base +10,2 % (le faltan 1,8 puntos; cumpliría a ≤ 238 USD). **Por qué entra:** con el tope del 7 %, las tres compras que pasan todo (Nemetschek, Uber, Viscofan) no absorben el dinero de las ventas, y no quedan más empresas que pasen los tres requisitos sin ser minoristas ni posiciones que ya tiene. De las que casi pasan, es la de más calidad. La alternativa era Intuit (base +16,9 %, valor intrínseco +44 %), que falla la sostenibilidad («En parte»).
+- **Intuit (5, 5,3 %).** El software financiero del contribuyente y la pyme de EE. UU.: TurboTax (39 millones de declaraciones federales), QuickBooks y Credit Karma, con unos 100 millones de clientes. Ingresos de 21.448 M en FY2026 (+14 %), margen EBIT del 28,8 % y ROIC 13 puntos sobre el WACC. Cotiza un 56 % bajo su máximo por el miedo a la IA. Pasa la rentabilidad (ponderada +17,1 %) y el valor real con holgura: base +16,9 % y valor intrínseco +44 %. El objetivo a 12 meses es prudente: PER de 15,1x en el base y 19,2x en el alcista, frente a los 45-60x de su historia, que se excluyen. **Falla un punto de la calidad**: sostenibilidad «En parte», porque TurboTax ha agotado el poder de precios (−2 % de declaraciones en 2026). El informe ya rebajó por eso el caso base del 9,5 % al 4 % de crecimiento, y las cifras de arriba lo incluyen. **Por qué entra** (Adobe fuera, por decisión del usuario): con el tope del 7 % hace falta otro valor. Entre los que casi pasan, es el que más valor real da sin depender del escenario alcista. Dassault Systèmes (+28,1 % ponderada) depende de volver a 41,9x en el alcista y su base es +10,1 %.
 
 ## Se mantienen
 
@@ -76,7 +77,7 @@ Antes de vender lo que ya tenía, cada una se investigó a fondo: memorandos `in
 - **ICE (6).** Revisada el 13-oct por su impulso: a 157,42 USD, ponderada +11,6 % y base +5,1 %. Falla la calidad (ROIC bajo el WACC por el fondo de comercio, como Equifax) y pesaba un 3,3 %.
 - **PepsiCo (12):** +9,7 % a 12 meses; ha agotado el poder de precios (sostenibilidad «En parte»).
 
-**Suplentes**, por orden, si alguna compra no se puede hacer: Intuit (base +16,9 %, valor intrínseco +44 %, sostenibilidad «En parte») y Dassault Systèmes (calidad, valor intrínseco +18 %, base +10,1 %).
+**Suplentes**, por orden, si alguna compra no se puede hacer: Dassault Systèmes (calidad, valor intrínseco +18 %, base +10,1 %; la ponderada depende del alcista) y Verisk (calidad, ROIC del 37,5 %, base +10,5 %, valor intrínseco +4 %).
 
 ## Historial del 13-oct
 
@@ -88,5 +89,6 @@ Versiones 1-7 en git:
 - **Versión 6.** Dunelm fuera.
 - **Versión 7.** No se amplía ninguna posición existente.
 - **Versión 8.** Se confirman las ventas de Puig, ICE y Grifols. Tope del 7 % salvo Edenred y oro. Entra Adobe.
+- **Versión 9.** Adobe fuera (decisión del usuario); entra Intuit.
 
 Es la lectura de nuestros informes con nuestro método, no asesoramiento financiero personalizado.
