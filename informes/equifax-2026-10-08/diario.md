@@ -57,3 +57,5 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 2. El texto de la prueba dice «crecimiento medio del 6,3 %» y la fila de «La decisión» «6,4 %» (redondeo de la misma cifra por dos caminos), y la síntesis y el DCF inverso hablan del 5,8 % (años no fijos): tres cifras de crecimiento medio en el informe.
 3. `mercado_final` no admite una tasa de crecimiento del mercado con su fuente: el tamaño a 2035e sale de un supuesto que solo se puede explicar en la justificación. Arreglo: campos `tamano_actual` y `crecimiento_pct` y que el motor calcule el umbral de crecimiento del mercado que haría saltar la prueba (aquí 2,1 %).
 4. La cobertura de campos baja de 91,2 % a 87,9 % sin cambios de contenido (plantilla o motor nuevos; sentimiento por debajo del 60 %).
+
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 210,9 USD, rentabilidad +49,6 %, señal Comprar (`revision-12m-2026-10-13.md`).

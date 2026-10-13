@@ -73,3 +73,5 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 1. Con ROIC < WACC (8,1 % frente a 8,84 %, por el fondo de comercio) el motor no da `crecimiento_financiable_pct` ni avisa: en un negocio de activos ligeros la prueba de reinversión no dice nada y todo descansa en el puente, que es estimación propia.
 2. El texto del motor da el crecimiento medio con 2026e (5,3 %) y la tabla «La decisión» compara el implícito 2027e-2035e (4,6 %): dos medias distintas para la misma pregunta.
 3. Sin perímetro comparable de cuota (empresas multimercado), la prueba de cuota queda vacía sin aviso en el Word; convendría una fila «No aplica: sin cuota publicada».
+
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 177,1 USD, rentabilidad +17,4 %, señal Comprar (`revision-12m-2026-10-13.md`).
