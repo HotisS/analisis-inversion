@@ -15,6 +15,8 @@ Para empresas, el procedimiento está en `.claude/commands/analiza-empresa.md` (
 
 Todo análisis nuevo cumple la lista «Análisis terminado» de `.claude/commands/analiza-empresa.md`; los encargos de subagentes para actualizar informes ya hechos están en `verticales/empresa/encargos/`, y la revisión a 12 meses se apunta con `herramientas/apuntar-12m.mjs`.
 
+**Si pide la cartera**, aplica las «Preferencias de cartera» de `MEMORIA.md` (concentración, mínimo del 5 %, rentabilidad + valor real + calidad, motivo de negocio de cada operación).
+
 **Lo que se decida en otro sitio (chat de claude.ai, Cowork, otro equipo) no existe hasta que está en el repo**: si el usuario cita un método, una revisión o una cartera que no está en el repo, pídele el texto o reconstrúyelo, y déjalo escrito aquí (método en `verticales/`, decisión en `MEMORIA.md`) antes de aplicarlo.
 
 ## Buscar candidatas: usa `/escanea-mercado`

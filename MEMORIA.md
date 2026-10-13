@@ -11,6 +11,18 @@ Lo que cualquier sesión de Claude, en cualquier equipo, tiene que saber antes d
 - **Siempre Word y PDF** de cada informe entregado (`construccion/a-pdf.ps1`).
 - Al cerrar cada empresa se comunica: recomendación y convicción, valor objetivo y rentabilidad esperada, cifras clave, commit y rutas del Word y del PDF.
 
+## Preferencias de cartera (13-oct-2026; aplicarlas siempre que pida la cartera)
+- **Edenred y el oro (IGLN) no se tocan** salvo que lo pida.
+- **Concentración**: ninguna posición por debajo del **5 %** de la cartera; 7-10 valores además del oro. Lo que quede por debajo del 5 % se amplía o se vende.
+- **Tres requisitos a la vez** para comprar o ampliar:
+  1. **Rentabilidad**: a 12 meses ponderada ≥ 15 % (método v2, `verticales/empresa/objetivo-12m.md`).
+  2. **Valor real**: base a 12 meses ≥ 12 % y valor intrínseco del informe ≥ precio.
+  3. **Calidad del negocio**: sostenibilidad del crecimiento «Sí» y ROIC − WACC ≥ 5 puntos.
+- **Mantener**: calidad, ponderada ≥ 10 %, base ≥ 5 % y valor intrínseco no más de un 15 % por debajo del precio.
+- **Cada compra y venta con su motivo de negocio**, no solo la rentabilidad; tabla antes → después con la rentabilidad a 12 meses de cada activo (ponderada y base), el valor intrínseco frente al precio y la calidad.
+- Sin juego ni apuestas. Sin cambios de un valor por otro que el usuario haya rechazado (13-oct: no cambiar LVMH y Viscofan por Wolters Kluwer y Auto Trader).
+- Cartera vigente: `informes/cartera-concentrada-2026-10-13.md`.
+
 ## Decisiones
 - 13-oct-2026 (cierre): **todo el universo al día con las dos facetas** (73 empresas; fuera Betsson y Evolution por juego, y las iteraciones antiguas de PepsiCo y Uber): sostenibilidad del crecimiento en el informe, con el caso base rebajado si falla (Fielmann, Tomra, On, bioMérieux, CAF, Olympus, Kongsberg, Fanuc, Microsoft, Intuitive, Indra, CSL), y rentabilidad a 12 meses v2. **Tres filtros para comprar**: ponderada ≥ 15 %; valor real = base a 12 meses ≥ 12 % y valor intrínseco del informe ≥ precio; sostenibilidad distinta de «No». Para mantener: ponderada ≥ 10 %, base ≥ 5 % y valor intrínseco no más de un 15 % por debajo del precio. Cartera final con el motivo de negocio de cada operación: `informes/cartera-optima-2026-10-13.md` (ponderada del +15,6 % al +21,4 %; base del +9,1 % al +12,5 %).
 - 13-oct-2026: cambian de señal en el informe al actualizar: Olympus, Microsoft y Kongsberg (convicción) a Vender; Tomra, On, Rentokil y bioMérieux a Mantener; Indra a convicción baja. Las causas están en el diario de cada carpeta.

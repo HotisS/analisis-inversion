@@ -1,5 +1,7 @@
 # Cartera óptima (13-oct-2026, revisión final)
 
+> **Sustituida** por `informes/cartera-concentrada-2026-10-13.md` (13-oct, preferencias de cartera del usuario). Se guarda como versión amplia para comparar.
+
 Sustituye a la versión anterior de este archivo. Todo el universo está ya al día: **73 empresas** (todas menos Betsson y Evolution, que son juego) con la **metodología nueva del informe** (sostenibilidad del crecimiento; si la prueba fallaba, el caso base se rebajó) y con la **revisión a 12 meses v2** (`verticales/empresa/objetivo-12m.md`). Detalle por empresa: `informes/<carpeta>/revision-12m-2026-10-13.md` y `verticales/empresa/objetivo12m-revisados.json`. Resumen: `seguimiento.xlsx`.
 
 ## Las tres facetas que decide cada operación
