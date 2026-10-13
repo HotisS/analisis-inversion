@@ -65,3 +65,30 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 2. **La prueba de reinversión usa el ROIC con el fondo de comercio** de las compras: en empresas que crecieron comprando (BioFire en 2014) infravalora el crecimiento orgánico financiable. Arreglo: dar también el ROIC sin fondo de comercio en `calc.dcf.sostenibilidad` (el balance ya trae `fondo_comercio`).
 3. **Síntesis en 647 palabras en v1**: no había sitio para la frase obligatoria y hubo que recortar cuatro párrafos. Repite el fallo 9 (sin control de palabras en el motor).
 4. **Cobertura 90,6 % → 87,4 %** por la sección `sentimiento` de la plantilla nueva, que v1 no tenía; no viene de esta actualización.
+
+## Actualización v3 (13 oct 2026): caso base al crecimiento financiable
+
+Sin investigación nueva. Lectura prudente de la sostenibilidad (decisión del usuario del 13-oct): el caso base tiene que quedar en lo que la empresa puede financiar. Script: `notas/actualizacion-v3.mjs` (parte de `datos-v2.json`), salida `datos-v3.json`, `bioMérieux - 2026-10-08 v3.docx` y su PDF. Mismo precio (80,75 EUR) y fecha de corte; 16 de 16 controles correctos, sin controles explicados de sostenibilidad.
+
+| | v2 | v3 |
+|---|---|---|
+| Recomendación · convicción | Mantener · Baja | Mantener · Baja |
+| Valor objetivo (WACC 8,57 %) | 80,93 EUR, RTE 1,4 %, asimetría 0,47x | **77,57 EUR, RTE −2,7 %, asimetría 0,17x** |
+| Con la prima del mercado (4,2 %, WACC 7,49 %) | 93,63 EUR, RTE 17,2 %, asimetría 3,86x | **89,41 EUR, RTE 11,9 %, asimetría 1,93x** |
+| Regla absoluta / relativa / combinada | Mantener / Comprar / Mantener | **Vender / Mantener** / Mantener |
+| DCF · escenarios ponderados | 78,38 · 77,03 EUR | 73,87 · 72,60 EUR |
+| Comprar por debajo / vender por encima | 77,94 / 98,17 EUR | **74,78 / 92,39 EUR** |
+| Crecimiento medio proyectado · financiable al ROIC | 3,9 % · 2,5 % | 3,9 % · 2,6 % (+1,4 % de precio sin capital) |
+| Rendimiento del capital nuevo (incremental 15,1 %; tope 18,9 %) | 22,7 % (control explicado) | **18,1 % (pasa)** |
+| Sostenibilidad | En parte (base por encima de lo financiable) | En parte (base dentro de lo financiable) |
+
+- **Supuesto cambiado: margen EBITDA de 2029e-2033e**, de 24,8 / 25,1 / 25,3 / 25,4 / 25,5 % a 24,4 % plano. El exceso del capital nuevo venía del margen, no del crecimiento: con el margen plano en el 23,9 % el control daba 16,0 %, y bajando medio punto de crecimiento al año seguía en 21,1 %. La guía (CEBIT que crece más que las ventas [3]) respalda la mejora hasta 2028 (24,4 %); desde ahí, nada, y el 24,4 % ya supera el máximo de 2019-2025 fuera de la COVID (24,1 %). Crecimiento, capex, circulante, impuestos, WACC y terminal sin cambios; escenarios iguales (desplazamientos sobre el base), solo sus narrativas con los nuevos márgenes finales (22,9 / 24,4 / 25,4 %).
+- **Crecimiento no rebajado**: el 3,9 % medio supera el 2,6 % que financia la reinversión al ROIC del 12,7 %, pero la diferencia es el precio del puente (1 punto en 2026e y 1,5 en 2027e-2030e, 1,4 de media), que no pide capital; sin fondo de comercio ni intangibles, la reinversión financia un 3,5 %.
+- **La señal no cambia** (Mantener, convicción Baja, la sugerida: las reglas discrepan). La regla absoluta pasa a Vender (RTE −2,7 % y un bajista de −28,2 % frente a un alcista de +4,9 %); manda la relativa, Mantener (11,9 %, por debajo del 15 %).
+- **DCF inverso**: el precio descuenta un margen final del 25,8 % (antes 26,0 %) o un crecimiento del 7,9 % (antes 5,5 %), porque el base tiene ahora menos margen.
+- Textos reescritos: síntesis entera (650 palabras), tesis (párrafos 2 y 3), `vision_diferencial` (mercado y nuestra visión), `en_contra[5]`, `que_vigilar`, `cambiaria_recomendacion[0, 1, 4]`, `dcf.justificacion.margenes` y `terminal` (7,8x), `dcf.lectura`, `dcf.sostenibilidad.justificacion`, narrativas y comentario de escenarios, `valoracion.comentario` y efecto en valor de los riesgos 0, 2 y 3. Fuera la explicación del control del capital nuevo en `meta.controles_explicados` (ya pasa).
+
+**Fallos del sistema vistos**
+1. **El motor no compara el crecimiento financiable con el proyectado**: solo controla el capital nuevo y la cuota; la tercera prueba (financiable < proyectado) queda a juicio y sin descontar el precio del puente. Arreglo: control «proyectado ≤ financiable + precio medio del puente».
+2. **Bajar el crecimiento apenas mueve el control del capital nuevo** con circulante alto (35,5 % de las ventas): menos crecimiento también es menos reinversión. Conviene decirlo en `encargo-recorte.md`: mirar primero si el exceso viene del margen.
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 99,31 EUR (ponderado; base 86,42 EUR), rentabilidad 24,2 % (base 8,2 %), señal Mantener (`revision-12m-2026-10-13.md`).
