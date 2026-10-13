@@ -37,3 +37,26 @@
 6. **Transacciones escasas**: solo dos operaciones con EV/EBITDA publicado (IHS Markit, Dun & Bradstreet); el mínimo de tres con múltiplo se cumple con un EV/ventas estimado de Marosa. Peso 0. Arreglo: lista de operaciones de información profesional con nota oficial y múltiplo, reutilizable entre análisis.
 7. **La comparación del crecimiento implícito con «el previsto para su mercado»** usa el 9,5 % que estima Thomson Reuters para su propio mercado, más amplio que el de Wolters: el motor compara con lo que haya en `sector.tcac_previsto_pct` sin mirar el perímetro. Arreglo: avisar cuando la fuente del TCAC es un competidor.
 8. **Serie de tamaño de mercado vacía**: el gráfico de sector sale sin valores (aviso de rellenar). Sin arreglo de código: es un hueco registrado.
+
+## Actualización v2 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.json`), salida `datos-v2.json`, `Wolters Kluwer - 2026-10-08 v2.docx` y su PDF. Mismo precio (71,78 EUR) y fecha de corte (8-oct-2026). Sin fuentes nuevas.
+
+| | v1 | v2 |
+|---|---|---|
+| Recomendación · convicción | Comprar · Media | Comprar · Media (la sugerida por los criterios es Alta; la síntesis ya explica por qué media) |
+| Valor objetivo (WACC 6,84 %) | 113,57 EUR, RTE 61,8 % | 113,57 EUR, RTE 61,8 % (sin cambios) |
+| Objetivo con la prima del mercado (WACC 6,03 %) | 135,30 EUR, RTE 92,1 % | 135,30 EUR, RTE 92,1 % |
+| Niveles | Comprar < 119,82; Vender > 153,32 | **Comprar < 110,62**; Vender > 153,32 |
+| Sostenibilidad del crecimiento | — | **Sí** (3,9 % anual proyectado; activos ligeros, reinversión neta del 2 % del NOPAT) |
+
+- **Veredicto Sí**: el base (4,0-4,5 % desde 2027) queda por debajo del orgánico del 5-6 % demostrado cada año de 2021 al 1S26 y del consenso. Puente 2026e-2029e: precio 3 puntos al año (subida anual y paquetes con IA), volumen 1-2 puntos, y en 2026e −2,5 puntos de divisa y venta de FRR. El reparto volumen/precio es estimación propia: la empresa no publica su subida de precios (hueco ya registrado).
+- **`mercado_final` = null**: la cuota del 14,4 % es de tres divisiones (T&A, FCC, L&R) sobre el mercado de 31.000 M USD de Thomson Reuters, y el motor dividiría los ingresos de todo el grupo. Prueba a mano en la justificación: esas divisiones crecerían a la mitad que el mercado previsto (8-11 %), así que pierden cuota.
+- Sin cambios de supuestos ni de cifras del DCF. Textos cambiados: la frase del veredicto en «El negocio» de la síntesis y el umbral de Mantener (119,82 → 110,62 EUR) en la síntesis y en `cambiaria_recomendacion`.
+- El umbral de compra baja porque el motor actual exige que un Comprar solo relativo dé ≥ 5 % con nuestro coste de capital: entre 110,62 y 119,82 la regla relativa daría Comprar pero la absoluta no llega a ese 5 %.
+
+**Fallos del sistema vistos**
+1. El motor cambió el umbral de Comprar (119,82 → 110,62) sin que el informe cambiase: una actualización «de método» mueve un nivel de decisión publicado. Arreglo: que el calcular avise cuando un nivel de `calc.recomendacion` cambia frente a la versión anterior del mismo informe, y comprobar los textos que lo citan.
+2. La prueba de cuota divide los ingresos de todo el grupo por el mercado: no sirve cuando `competencia.cuota_pct` es de unas divisiones (aquí 3 de 5). Arreglo: admitir en `mercado_final` unos `ingresos_perimetro_pct` (peso de las divisiones en el perímetro) o un campo con los ingresos del perímetro al final.
+3. El crecimiento medio proyectado (3,9 %) incluye el año fijo 2026e (+2,5 %, con divisa y desinversión), que rebaja la media frente a lo que de verdad pide la proyección (4,0-4,5 %).
+4. La cobertura del Word baja (93,1 % → 89,6 %) por campos nuevos de la plantilla, no por datos: con `datos.json` sin tocar la plantilla actual da 86,6 %.
