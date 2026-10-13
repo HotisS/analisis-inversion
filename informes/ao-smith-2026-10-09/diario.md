@@ -35,3 +35,25 @@
 4. **Esperar a las notas con bucles de `sleep` en segundo plano** dejó una espera colgada hasta su límite de 10 minutos sin aportar nada (los agentes avisan solos). Arreglo: en el comando, una sola comprobación a los 10 minutos y nada más.
 5. **El hueco de rating se retira solo** porque A escribió «Sin rating público…» en `balance.rating`. Es correcto según el prompt, pero el anexo pierde los tres intentos. Arreglo: que `integrar` no retire el hueco si el valor empieza por «Sin rating».
 6. **Inyección en una página web**: la transcripción de Motley Fool traía instrucciones para el modelo. B las ignoró. Arreglo: añadir a lecciones.md que las transcripciones de terceros pueden traer texto dirigido al resumidor y que se citan solo cifras contrastadas.
+
+## Actualización v2 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.json`), salida `datos-v2.json` y `A. O. Smith - 2026-10-09 v2.docx` (y PDF). Añade `dcf.sostenibilidad` con fuentes ya citadas; no cambia ninguna cifra del DCF ni los escenarios. Mismo precio (56,56 USD) y fecha de corte.
+
+| | v1 | v2 |
+|---|---|---|
+| Recomendación · convicción | Mantener · Media | Mantener · Media (la sugerida por los criterios) |
+| Valor objetivo (WACC 10,46 %) | 55,24 USD, RTE 0,2 %, asimetría 0,28x | 55,24 USD, RTE 0,2 %, asimetría 0,28x |
+| Con la prima del mercado (WACC 9,22 %) | 62,35 USD, RTE 12,7 %, asimetría 3,54x | igual |
+| Comprar por debajo / vender por encima | 55,41 / 65,90 | **53,91** / 65,90 |
+| Sostenibilidad | — | **Sí** (3,4 % anual proyectado; reinversión neta 73 M, el 2 % del NOPAT; ROIC 30,7 %, incremental 32,5 %) |
+
+- **Veredicto Sí**: el crecimiento es casi todo precio (+2,5-3 % al año) sobre un volumen plano, por debajo del 4,0 % de 2016-2025 (que incluyó compras). El poder de precios está demostrado (2025: ventas de Norteamérica al alza por precio con menos unidades y margen del segmento del 24,0 % al 24,4 %; 2026: +4-7 %). El volumen proyectado (−2,5 % a +1 %) no pide cuota.
+- **Prueba de reinversión**: con el 2 % del NOPAT el motor la trata como activos ligeros y no da crecimiento financiable; no lo es del todo (el capex iguala a una amortización con intangibles de compras), pero el crecimiento no pide capital nuevo. **Prueba de cuota**: `mercado_final` en null; AOS no publica cuota y el mercado está en unidades (AHRI); la cifra en USD de Arizton no es comparable.
+- Textos: frase del veredicto en «El negocio», convicción explicada (control nuevo «La síntesis explica la convicción») y el nivel de compra, que el motor actual baja de 55,41 a 53,91 sin cambiar datos (regla del 9/10-oct). Para dejar la síntesis en 646 palabras se quitaron tres frases secundarias (EBITDA frente al consenso, peso de China en el valor, cumplimiento de la guía), que siguen en sus secciones.
+- Word: 28 gráficos, cobertura del 89,7 %; aviso único, la tabla ESG vacía (hueco, como en v1).
+
+**Fallos del sistema vistos**
+1. El texto del motor para reinversión < 15 % del NOPAT («apenas necesita inversión neta… activos ligeros») se lee como si AOS no invirtiera; aquí el capex es el 2,2 % de las ventas. Ya anotado en lecciones; sigue pendiente en el motor.
+2. El control «La síntesis explica la convicción» solo cuenta que la palabra «convicción» aparezca dos veces: una síntesis que lo explica con otras palabras no pasa, y una que la repite sin explicar sí.
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 66,12 USD (media ponderada; base 59,92), rentabilidad 19,4 %, señal Mantener (el base, +8,4 %, no pasa el filtro del 12 %) (`revision-12m-2026-10-13.md`).
