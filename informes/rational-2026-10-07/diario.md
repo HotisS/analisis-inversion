@@ -56,3 +56,26 @@
 ## Corrección de la prima implícita (17:16-17:25)
 - El coordinador señaló que la prima de referencia es «ERP (T12m with sustainable payout)» de ERPbymonth.xlsx: **4,20 %** en oct-2026, no 3,70 % («ERP (T12m)» sin ajustar, la que tomó D). Sobrescrita en `propio.mjs` (`valoracion.referencia_mercado`), recalculado y textos actualizados (síntesis, tesis, visión diferencial, cambiaría, justificación del WACC, lectura, escenarios, valoración). Nuevo: WACC relativo 7,89 %, objetivo con la prima del mercado 564,55 EUR (−2,2 %), rentabilidad total +0,5 %, asimetría 1,35x, niveles 504,42 / 645,34. La regla relativa sigue en Mantener. Mismo .docx regenerado (51 páginas) y revisadas portada, síntesis y «La decisión».
 - Fallo del sistema añadido: el subagente D eligió la columna equivocada de Damodaran. Arreglo: que `prompt-de.mjs D` nombre la columna exacta («ERP (T12m with sustainable payout)») y que el motor avise si la prima es menor que la del mes anterior en más de 0,4 puntos o si no coincide con la cabecera de la página de Damodaran.
+
+## Actualización v2 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.json`), salida `datos-v2.json`, `Rational - 2026-10-07 v2.docx` y su PDF. Mismo precio (577,50 EUR, cierre del 6-oct) y fecha de corte. No cambia ninguna cifra del DCF.
+
+| | v1 | v2 |
+|---|---|---|
+| Recomendación · convicción | Mantener · Media | **Mantener · Baja** |
+| Valor objetivo (WACC 9,24 %) | 466,62 EUR, RTE −16,4 % | 466,62 EUR, RTE −16,4 % (asimetría 0,16x) |
+| Con la prima del mercado (4,20 %, WACC 7,89 %) | 564,55 EUR, RTE +0,5 % | 564,55 EUR, RTE +0,5 % (asimetría 1,35x) |
+| Comprar por debajo / vender por encima | 504,42 / 645,34 EUR | **459,62** / 645,34 EUR |
+| Sostenibilidad del crecimiento | — | **Sí**: 6,2 % proyectado; financiable ≈ 6,1 % al ROIC del 61,2 % con un 10 % del NOPAT reinvertido, más ≈ 3 puntos de precio; capital nuevo al 56,6 % (incremental histórico 84,6 %) |
+
+- **La prueba pasa**. Puente 2026e: 5,5 volumen + 2 precio − 1,5 divisa; 2027e-2030e: 4 + 3 (el reparto que ya daba `dcf.justificacion.crecimiento`). El motor clasifica el caso como «activos ligeros» (reinversión < 15 % del NOPAT) y no da el financiable ni el rendimiento del capital nuevo: se calcularon a mano con su misma fórmula (346 M de reinversión sobre 3.484 M de NOPAT; NOPAT de 247 M en 2025 a 443 M en 2035e).
+- **Cuota a mano** (`mercado_final` en null): el 50 % es de hornos combinados y los ingresos del grupo incluyen el iVario. Con el iCombi (1.108 M en 2025) al ritmo del grupo, 2.022 M en 2035e; con el mercado al 6,3 % histórico (4.085 M), cuota del 49,5 %; solo pasaría de 1,5 veces la actual si el mercado creciera menos del 2 % anual.
+- **Convicción de Media a Baja**: con el motor actual salta «Convicción frente a la sugerida» (las reglas discrepan: absoluta Vender, relativa Mantener). Es la misma situación que Keyence; la decisión depende de la prima de riesgo (con la nuestra, del 5,5 %, ambas reglas dirían Vender) y de la beta (1,04 MDAX frente a 1,35 DAX). Dicho en la síntesis.
+- **Nivel de compra 504,42 → 459,62 EUR** sin cambiar datos: regla del 9/10-oct (un Comprar solo relativo exige un 5 % con nuestro WACC). Corregido en la síntesis y en `cambiaria_recomendacion`.
+- Controles: 17 de 18 correctos y 1 explicado (regresión, como en v1). Avisos de `rellenar`: los tres de v1 (suma de partes, ESG, vencimientos). Cobertura 86,6 % (89,8 % en v1: el motor actual mide también «sentimiento»).
+
+**Fallos del sistema vistos**
+1. Con reinversión entre el 0 % y el 15 % del NOPAT el motor no calcula el crecimiento financiable ni el rendimiento del capital nuevo, aunque aquí salgan con sentido (6,1 % y 56,6 %) y la proyección casi iguale al financiable. Arreglo: calcularlos siempre que la reinversión sea positiva y dar el texto de «activos ligeros» solo como lectura adicional.
+2. La prueba de cuota sigue sin campo de ingresos del perímetro (iCombi frente al grupo): otra vez a mano.
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 698,12 EUR, rentabilidad 23,7 %, señal Mantener (la ponderada pasa del 15 % pero el base, +10,6 %, no llega al filtro del 12 %) (`revision-12m-2026-10-13.md`).
