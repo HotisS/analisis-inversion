@@ -31,3 +31,4 @@
 - `form4.mjs` mezcla las donaciones (código G) del accionista del 10 % con las operaciones de directivos; hay que filtrarlas a mano.
 - `descargar.mjs` no deja `.tabla.txt` en los HTML de EDGAR y no decodifica entidades HTML (`&#x2022;`) en el `.txt`.
 - `prompt-de.mjs` no imprimió las lecciones a B y D (salida de 33-38 KB).
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 121,26 USD (ponderado; base 113,18), rentabilidad +21,0 % con dividendo, señal Comprar, convicción media (`revision-12m-2026-10-13.md`).
