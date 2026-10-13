@@ -24,3 +24,5 @@ Informe del repo más noticias de julio a octubre (búsqueda web; sin descargas)
 **Errores del informe a corregir:** la síntesis llama «sin ajustes» al margen del 24,3 % de 2025, que es el ajustado (el publicado es 22,5 %); la síntesis da 9.305 M de deuda neta «ajustada» y el balance 8.843 M.
 
 Fuentes: Grifols (1S26, 28-jul; Fitch, 7-nov-2025), Merca2 (29-jul, 27-jul, 28-may), Quartr (2T26), Bolsamanía/CapitalBolsa (3-ago), CP24 (13-ago, 23-sep), ad-hoc-news (12-oct); `datos.json` y `revision-12m-2026-10-13.md`.
+
+**Decisión final (13-oct, noche): vender.** El usuario duda por la volatilidad y la deuda; con su regla de calidad (ROIC bajo el WACC, sostenibilidad «En parte») no pasa, y venderla no cambia la rentabilidad esperada de la cartera. Ver `informes/cartera-concentrada-2026-10-13.md` (versión 8).
