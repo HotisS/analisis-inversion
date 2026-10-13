@@ -48,3 +48,28 @@
 7. **Parchear `propio.mjs` desde un heredoc perdió las barras de una expresión regular** y la integración falló una vez (y las citas de B se tradujeron mal hasta corregirlo). Ya estaba en lecciones («scripts con Write, no con heredocs»); arreglo: que `integrar.mjs` valide que las citas de cada texto llevan letra de nota cuando vienen de `propio`.
 8. **La herramienta de cierre de Yahoo no trae el 7-oct en Oslo**: D tuvo que ir a Euronext para el cierre oficial. Arreglo: `bolsa.mjs` podría aceptar `--precio` manual y citarlo aparte.
 - Fin: 10:15. Tiempo total ≈ 55 min (09:20-10:15).
+
+## Actualización v2 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.json`), salida `datos-v2.json`, `Tomra - 2026-10-08 v2.docx` y su PDF. Mismo precio (92,95 NOK, 8,68 EUR) y fecha de corte. No se tocan supuestos del DCF: solo `dcf.sostenibilidad`, dos párrafos de la síntesis, los niveles en el texto y un control explicado.
+
+| | v1 | v2 |
+|---|---|---|
+| Recomendación · convicción | Comprar · Baja | Comprar · Baja |
+| Valor objetivo (WACC 8,26 %) | 9,45 EUR (101,23 NOK), RTE 11,2 % | igual |
+| Con la prima del mercado (4,20 %, WACC 7,14 %) | 11,42 EUR (122,33 NOK), RTE 33,9 % | igual |
+| Regla absoluta / relativa | Mantener / Comprar | Mantener / Comprar |
+| Comprar por debajo / vender por encima | 9,65 / 12,54 EUR (103,35 / 134,33 NOK) | **9,19** / 12,54 EUR (**98,39** / 134,33 NOK) |
+| Sostenibilidad del crecimiento | — | **En parte** (6,1 % proyectado; financiable al ROIC actual: 2,0 %) |
+
+- **Puente 2026e-2030e** (estimación propia; Tomra no separa volumen y precio): volumen 11 / 9,5 / 4 / 2,5 / 4 puntos (Polonia, Reino Unido, hueco tras el pico, PPWR), precio 2 puntos al año (indexación de servicio y throughput), divisa −1 en 2026e (Collection +12 % frente a +15 % a tipo constante en el 1T26). **`mercado_final: null`**: `competencia.cuota_pct` es null y la serie del sector es solo venta de RVM en USD, sin el servicio ni el material que sí cuentan en los ingresos de Collection.
+- **La prueba de reinversión salta**: la proyección reinvierte el 20 % del NOPAT, que al ROIC del 9,8 % financia un 2,0 % de crecimiento; supone que el capital nuevo rinde un 39,3 % (ROIC incremental histórico: −1,1 %) y que el ROIC llega al 18,2 % en 2035e, por encima del máximo de la serie (15,0 % en 2021). Casi todo es margen (EBIT del 11,0 % al 15,8 %) sobre el capital ya invertido en 2024-2025.
+- **No se recorta el base** y la síntesis lo explica: el margen queda por debajo de la ambición de 2030 y del consenso, y con el ROIC topado en el 15 % (−2,7 puntos de margen desde 2028e, cálculo aparte en el scratchpad) el DCF bajaría a 6,48 EUR, cerca del bajista (5,74). Es la cifra que justifica la convicción baja, ahora explicada en la síntesis (control nuevo «La síntesis explica la convicción»).
+- **El nivel de compra baja de 9,65 a 9,19 EUR** por la regla nueva del motor (un Comprar solo relativo exige ≥ 5 % con nuestro coste de capital), no por la sostenibilidad. Corregido en «Qué cambiaría la decisión» y en `cambiaria_recomendacion`.
+- Revisión de comité, pregunta 3: el supuesto más agresivo sigue siendo el margen (EBITA de Collection del 19 % desde 2028e), y la prueba lo confirma por la vía del capital.
+- Controles: 15 correctos y 4 explicados. Word sin avisos, cobertura 89,9 %; PDF de 1,5 MB.
+
+**Fallos del sistema vistos**
+1. **La prueba de reinversión no separa margen de capital nuevo**: atribuye al capital nuevo toda la subida del NOPAT, también la recuperación de margen sobre el capital existente. En empresas con el ROIC deprimido (Tomra: 9,8 % frente a 15,0 %) el 39,3 % exagera. Arreglo: dar también el ROIC del último año proyectado frente al máximo histórico (aquí 18,2 % frente a 15,0 %), que es la comparación que se entiende.
+2. **Los niveles cambian con la versión del motor** sin aviso: los textos de la v1 citaban 9,65 EUR y `rellenar` no lo detectó. Arreglo: que `rellenar` o el motor avisen si un texto cita un precio de compra o venta distinto de `calc.recomendacion.niveles`.
+3. **Sin `cuota_pct` la prueba de cuota desaparece en silencio**: el motor no avisa de que falta. Arreglo: un control «Prueba de cuota no calculable» que exija decirlo en la justificación.
