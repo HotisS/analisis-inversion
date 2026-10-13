@@ -48,6 +48,34 @@
 
 Precios de los informes (6-12 oct) y de la captura del usuario (9-oct): **compruébalos antes de operar**. Quedan ≈ 230 EUR de efectivo (0,9 %) como colchón: una sexta acción de Intuit lo dejaría en negativo.
 
+## Órdenes (versión 9, final)
+
+Primero las ventas y después las compras. Precios de referencia de los informes y de la captura del 9-oct; comprobar en vivo.
+
+**Ventas (≈ 6.700 EUR)**
+
+| Valor | Acciones | Precio de referencia | ≈ EUR |
+|---|---|---|---|
+| Grifols A | 120 (todas) | ≈ 9,9 EUR | 1.186 |
+| PepsiCo | 12 (todas) | — | 1.349 |
+| Hermès | 1 (todas) | 1.283 EUR | 1.283 |
+| Puig | 70 (todas) | ≈ 18,1-18,7 EUR | 1.266 |
+| ICE | 6 (todas) | ≈ 152,6-157,4 USD | 836 |
+| Equifax | 6 (todas) | ≈ 142,4 USD | 781 |
+
+**Compras (≈ 9.390 EUR)**, con los ≈ 2.920 EUR de efectivo y las ventas
+
+| Valor | Acciones | Precio de referencia | ≈ EUR |
+|---|---|---|---|
+| Uber | 28 | 71,51 USD | 1.788 |
+| Nemetschek | 26 | 67,40 EUR | 1.752 |
+| Viscofan | 33 | 52,90 EUR | 1.746 |
+| Auto Trader | 240 | 4,887 GBP | 1.386 |
+| Wolters Kluwer | 19 | 71,78 EUR | 1.364 |
+| Intuit | 5 | 302,75 USD | 1.352 |
+
+**Sin cambios:** oro IGLN (68), Edenred (136), Daiichi Sankyo (100), Netflix (23), SAP (7), Zoetis (20) y Alphabet (5). Quedan ≈ 230 EUR de efectivo.
+
 ## Compras, y por qué
 
 - **Nemetschek (26, 6,9 %).** Software de construcción (BIM) por suscripción, con costes de cambio altos y ROIC 11 puntos sobre el WACC. Es el mejor base de la lista (+21,5 %): no necesita que suba el múltiplo. Riesgo: el minoritario de Thoma Bravo en Build y la IA.
