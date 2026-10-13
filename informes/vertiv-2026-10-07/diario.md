@@ -58,3 +58,31 @@
 - `bolsa.mjs`: una llamada para todo lo de mercado, con aviso de sesión no cerrada; le faltan fechas de extremos.
 - `integrar.mjs`: sin una sola cita huérfana; `_parches`, `huecos_resueltos` y `controles_explicados` (nuevos desde Intuitive) funcionaron a la primera, también para un campo que no es de lista (`gobierno.presidente_ceo_separados`).
 - Presupuesto: B se pasó (104 llamadas, 25 min); A llegó a 89. El resto, dentro.
+
+## Actualización v3 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v3.mjs` (parte de `datos-v2.json`, que añadió la regla relativa sin script ni entrada en el diario). Salidas: `datos-v3.json`, `Vertiv - 2026-10-07 v3.docx` y su PDF (57 páginas). Mismo precio (253,14 USD, cierre del 6-oct) y fecha de corte. No se tocan supuestos del DCF: la prueba pasa.
+
+| | v2 | v3 |
+|---|---|---|
+| Recomendación · convicción | Vender · Baja | Vender · Baja (los criterios dan Alta; explicado en la síntesis) |
+| Valor objetivo (WACC 11,39 %) | 168,18 USD, RTE −33,5 % | 168,18 USD, RTE −33,5 % |
+| Con la prima del mercado (4,20 %, WACC 11,39 %: es la misma que usa el informe) | 168,18 USD, RTE −33,5 % | 168,18 USD, RTE −33,5 % |
+| Comprar por debajo / vender por encima | 146,32 / 187,18 | 146,32 / 187,18 |
+| Sostenibilidad del crecimiento | — | **Sí** (13,2 % anual proyectado; reinversión del 9 % del NOPAT; cuota implícita del 21,9 % en 2030e) |
+
+- **Reinversión**: la proyección reinvierte 4.068 M netos, el 9 % del NOPAT, porque los anticipos de clientes (3.633,7 M a junio) financian el circulante hasta 2026 y su normalización (5,5 % → 11 %) es gradual. El motor la trata como «activos ligeros» y no calcula el crecimiento financiable. No lo es: el capex (3,6 % de las ventas) supera la amortización. Lo dice la justificación.
+- **Cuota**: `mercado_final` = 120.000 M USD en 2030e (Dell'Oro [33]). Es el último año con previsión del mercado, no el último año explícito (2035e). Las ventas del grupo sobre ese mercado dan un 21,9 %, por debajo del 23 % de 2025 con el mismo cálculo y cerca del 20 % estimado para centros de datos. El base crece un 13,2 % frente al 22 % del mercado.
+- **Puente 2026e-2029e** (estimación propia: Vertiv no separa volumen y precio): volumen 28 / 25 / 17,5 / 9,5, precio 3 / 3 / 2,5 / 2,5, otros 5,9 / 0 / 0 / 0. Otros son compras y divisa de 2026e: 36,9 % publicado frente a 31 % orgánico de la guía. Cuadra con el DCF.
+- Textos cambiados (síntesis de 650 palabras):
+  - frase del veredicto en «El negocio»;
+  - explicación de la convicción en el primer párrafo. El control nuevo «Convicción frente a la sugerida» da Alta: las dos reglas dan Vender y el precio pide 9,3 puntos más de crecimiento que el base. Se mantiene Baja porque la discrepancia es de tasa y de duración del ciclo, sin catalizador con fecha;
+  - tres recortes de frases para no pasar de 650 palabras.
+- Niveles sin cambios. Controles: 17 de 22 correctos y 5 explicados, los mismos de v2. Avisos del Word: solo las dos tablas vacías de siempre (suma de partes y ESG). Cobertura del 87,9 %.
+
+**Fallos del sistema vistos**
+1. `mercado_final` exige el último año explícito, pero las previsiones de mercado suelen acabar antes (Dell'Oro, 2030). El motor acepta cualquier periodo de la proyección, y el prompt debería decirlo: «el último año con previsión del mercado si no llega al final».
+2. La regla de «activos ligeros» (reinversión < 15 % del NOPAT) se activa por anticipos de clientes que se devolverán al normalizarse, no por un negocio sin capital, como en LVMH, Novo o Fluidra. Arreglo: medir la reinversión sin el circulante o avisar cuando el circulante proyectado sube.
+3. `datos-v2.json` se hizo sin script ni entrada en el diario: no queda rastro de cómo se generó. Arreglo: que `rellenar` o `calcular` avisen si hay un `datos-vN.json` sin `notas/actualizacion-vN.mjs`.
+
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 314,93 USD, rentabilidad +24,5 %, señal Comprar (`revision-12m-2026-10-13.md`).
