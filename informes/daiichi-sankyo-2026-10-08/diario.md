@@ -66,3 +66,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 2. La cuota implícita divide los ingresos del grupo entre el mercado: no sirve cuando la cuota es de una línea de productos y, además, con ventas de un socio dentro (Enhertu combinado). Arreglo: un campo `ingresos_perimetro` en `mercado_final`.
 3. El control «La síntesis explica la convicción» es nuevo y salta en un informe que no tocaba la convicción: cuenta la palabra, no el contenido.
 4. Los avisos de `rellenar` (suma de partes vacía, mapa de comparables y transacciones sin datos) son los mismos de la v1.
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 3.608 JPY, rentabilidad 36,4 %, señal Comprar (`revision-12m-2026-10-13.md`).

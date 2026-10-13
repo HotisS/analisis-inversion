@@ -55,3 +55,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 2. La prueba de reinversión trata todo el crecimiento como comprado con capital: en un minorista con poder de precios penaliza el componente de precio y mezcla del puente, que el motor ya conoce. Arreglo: comparar el crecimiento financiable con el volumen del puente, no con el total.
 3. El ROIC incremental histórico mezcla compras (EE. UU.) con crecimiento orgánico; en un comprador ocasional el control compara con una referencia que la proyección no repite.
 4. No hay forma de dar la sensibilidad «crecimiento limitado a lo financiable» dentro del informe: hubo que recalcular a mano en una copia. Arreglo: que el motor la calcule cuando el veredicto es «En parte» o «No».
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 50,5 EUR, rentabilidad +39,7 %, señal Comprar (`revision-12m-2026-10-13.md`).

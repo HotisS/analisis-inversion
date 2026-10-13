@@ -7,3 +7,4 @@
 - 12:20 B, C y E escritos por mí (10-K de Disney, Comcast, Alphabet y Paramount; proxy 2026 y 8-K de juntas; form4.mjs; Nielsen; Investing.com y Motley Fool). Reddit, Stocktwits y Seeking Alpha: 403.
 - 12:30 Supuestos: guía 2026 (+13,4 %, fija), consenso 2027-2028, margen EBITDA del 32,3 % al 39,5 %; capex = inmovilizado + exceso de pagos de contenidos sobre su amortización (5,1 % → 3,3 %); WACC 11,47 % (beta 1,20); etapa de transición de 7 años. DCF 60,38 USD; objetivo 61,10 (−13,1 %); con la prima del mercado 73,49 (+4,5 %). Regla: Mantener (absoluta Vender, relativa Mantener), convicción Baja (sugerida). Sostenibilidad «Sí».
 - 12:40 Word y PDF (50 páginas); portada, síntesis y «La decisión» revisadas. Quedan 2 controles en «Revisar», explicados (comparables).
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 103,3 USD, rentabilidad +47,0 %, señal Comprar (`revision-12m-2026-10-13.md`).
