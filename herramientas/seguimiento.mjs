@@ -70,6 +70,8 @@ for (const dir of readdirSync('informes', { withFileTypes: true }).filter((e) =>
       rte: n(R.rentabilidad_total_pct), rteRel: n(rel.rentabilidad_total_pct), asimetria: n(R.asimetria), bajista: n(R.bajista_pct),
       gImplicito: n(d.calc.dcf?.inverso?.crecimiento_implicito_pct), gBase: n(d.calc.dcf?.inverso?.crecimiento_base_pct) }).conviccion,
     criterios: CRITERIOS.map(([, , f]) => { try { return f(d); } catch { return null; } }),
+    // Metodología nueva (desde el 10-oct-2026): DCF con la prueba de sostenibilidad del crecimiento.
+    metodologia: d.calc.dcf?.sostenibilidad ? 'Nueva' : 'Vieja',
     informe: `informes/${dir}/${existsSync(join('informes', dir, pdf)) ? pdf : base}`,
   });
 }
@@ -92,7 +94,7 @@ const COLS = [
   ['Iteración', 9], ['Empresa', 18], ['Ticker', 9], ['Fecha', 11], ['Geografía', 13], ['Sector', 20], ['Señal', 11], ['Convicción', 11], ['Convicción según criterios', 11], ['Divisa', 7],
   ['Precio actual', 11], ['Precio objetivo 12 m', 12], ['Objetivo con la prima del mercado', 13], ['Rentabilidad total esperada', 12],
   ['Rentabilidad con la prima del mercado', 13], ['Objetivo analistas', 11], ['Comprar por debajo de', 11], ['Vender por encima de', 11],
-  ['Regla absoluta', 10], ['Regla relativa', 10], ...CRITERIOS.map(([c]) => [c, 11]), ['Informe', 46],
+  ['Regla absoluta', 10], ['Regla relativa', 10], ...CRITERIOS.map(([c]) => [c, 11]), ['Metodología', 11], ['Informe', 46],
 ];
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const letra = (i) => (i >= 26 ? String.fromCharCode(64 + Math.floor(i / 26)) : '') + String.fromCharCode(65 + (i % 26));
@@ -115,7 +117,8 @@ filas.forEach((f, k) => {
     texto(c(17), f.regla_abs, S.centro), texto(c(18), f.regla_rel, S.centro),
     ...f.criterios.map((v, i) => texto(c(19 + i), v ?? 'n.d.', v ? S[v] : S.centro)),
   ];
-  const ci = 19 + CRITERIOS.length;
+  const ci = 20 + CRITERIOS.length;
+  celdas.push(texto(c(ci - 1), f.metodologia, S.centro));
   celdas.push(texto(c(ci), f.informe, S.enlace));
   enlaces.push({ ref: c(ci), destino: f.informe });
   filasXml.push(`<row r="${r}">${celdas.join('')}</row>`);
@@ -146,6 +149,7 @@ const criterios = [
   ['Comprar por debajo de / Vender por encima de', 'Precios a los que cambiaría la señal, con la regla combinada.'],
   ['Objetivo analistas', 'Precio objetivo medio del consenso de analistas en la fecha del informe.'],
   ...CRITERIOS.map(([c, e]) => [c, e]),
+  ['Metodología', 'Nueva: el DCF lleva la prueba de sostenibilidad del crecimiento (puente volumen × precio, cuota implícita y reinversión, con veredicto), en uso desde el 10-oct-2026. Vieja: informe anterior, pendiente de actualizar en rápido (script `notas/actualizacion-vN.mjs`, sin investigación nueva).'],
   ['n.d.', 'El informe no tiene el dato (por ejemplo, sin consenso o sin lista de gobierno).'],
   ['Informe', 'Ruta del PDF (o del Word si no hay PDF) de la última versión de ese análisis, relativa a la raíz del repo.'],
 ];
