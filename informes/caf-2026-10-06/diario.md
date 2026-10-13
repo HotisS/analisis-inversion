@@ -93,3 +93,5 @@ Sin investigación nueva. Script: `notas/actualizacion-v3.mjs` (parte de `datos-
 1. El motor calcula la cuota implícita con los ingresos del grupo; cuando la cuota publicada es de un segmento (aquí Ferroviario, el 74 %), no hay forma de dar el mercado final: haría falta un `segmento_pct` o unos ingresos del segmento en `mercado_final`.
 2. El «rendimiento del capital nuevo» mezcla crecimiento y subida de margen: en un negocio de margen bajo que mejora un punto, el control salta aunque el crecimiento sea financiable. Convendría separar el ΔNOPAT a margen constante.
 3. El cambio de regla del 10-oct movió los niveles de los informes ya publicados (86,50 → 81,45 en CAF) sin que nada lo avise; los informes v2 citan niveles que el motor actual ya no da.
+
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 82,6 EUR, rentabilidad +7,4 %, señal Mantener (`revision-12m-2026-10-13.md`).

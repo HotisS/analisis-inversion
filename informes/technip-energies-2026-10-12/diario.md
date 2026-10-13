@@ -25,3 +25,4 @@
 - **Anticipos en el DCF**: la forma coherente fue dejar los pasivos por contrato en el circulante, proyectar que su peso baje (float que se devuelve) y llevar a `otros_ajustes` solo la subida del semestre del puente; dar aparte el efecto por acción de la «caja asociada a proyectos» que publica la empresa.
 - **Emisores neerlandeses en París**: participaciones y operaciones de directivos en el registro AFM (exportación CSV), no en la BDIF de la AMF. La web de Technip Energies es ten.com.
 - El circulante normalizado con `nwc_pct_ventas` y el primer año con `fraccion` (~0,22 en octubre): la caja del puente de junio no ve los flujos jul-oct; con anticipos estacionales importa.
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 26,4 EUR, rentabilidad −5,9 %, señal Mantener (`revision-12m-2026-10-13.md`).
