@@ -84,3 +84,30 @@ B y D superaron las 80 llamadas (97 y 103) y todos tardaron 23-25 min en vez de 
 - **Tasa libre**: JGB a 10 años del 3,103 % (oct-2026), lejos del ~0 % de 2016-2022: el múltiplo histórico de las japonesas de calidad es de otra época. CSV diario del MoF (`jgbcme.csv` y `historical/jgbcme_all.csv`).
 - Comparables japoneses con ejercicio a marzo: el LTM queda 18 meses por detrás del NTM; en un año de recuperación el salto LTM→NTM dispara el control del motor.
 - Las presentaciones usan miles de millones de yenes («billions of yen»); las cuentas, millones.
+
+## Actualización v3 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v3.mjs` (parte de `datos-v2.json`), salida `datos-v3.json` y `Fanuc - 2026-10-07 v3.docx` / `.pdf`. Mismo precio (6.220 JPY, 6-oct) y fecha de corte. La prueba falló con los supuestos de v2 y el caso base se rebajó dentro de esta misma versión (lectura prudente, decisión del usuario del 13-oct).
+
+| | v2 | v3 |
+|---|---|---|
+| Recomendación · convicción | Vender · Baja | Vender · Baja (el motor sugiere Media) |
+| DCF (WACC 9,58 %) | 3.544,66 JPY | 2.938,60 JPY |
+| Valor objetivo · rentabilidad total | 4.460,49 JPY, −26,6 %, asimetría −0,47x | 4.124,66 JPY, −32,0 %, asimetría −0,64x |
+| Con la prima del mercado (4,20 %, WACC 8,4 %) | 4.713,09 JPY, −22,5 % | 4.313,09 JPY, −28,9 % |
+| Comprar por debajo / vender por encima | 4.188,40 / 4.821,79 (la síntesis aún decía 3.724,51 / 4.572,00) | 3.481,21 / 4.421,64 |
+| Crecimiento medio proyectado · financiable al ROIC | 4,3 % · n.d. («sin inversión neta»; a mano, 12,1 % × 9 % = 1,1 %) | 4,3 % · 3,8 % (+ ≈ 0,5 puntos de precio y divisa) |
+| Rendimiento del capital nuevo (tope 1,25 × 12,1 % = 15,1 %) | 49,4 % (a mano) | 14,3 % |
+| Veredicto de sostenibilidad | — | En parte |
+
+- **Por qué falló**: el capex de v2 (4,0-5,0 % de las ventas) no llegaba a la amortización (4,8-5,2 %) mientras las ventas crecían un 51 % en diez años: la reinversión era solo el circulante (9 % del NOPAT) y el capital nuevo «rendía» un 49 %, frente a un ROIC del 12,1 % y un incremental histórico del 3,9 % (el capital invertido pasó de 594.696 M en FY2016 a 1.131.231 M en FY2025).
+- **Supuesto cambiado**: capex de FY2027e-FY2035e del 4,5-5,0 % al **9,0 %** de las ventas, la media de FY2016-FY2025 (9,4 %). FY2026e (4,0 %) no se toca. Es el mínimo uniforme que pasa las dos pruebas (con 8,8 % el capital nuevo rinde 14,9 %, pero el financiable, 3,6 %, más el precio no llega al 4,3 %). Recortar el crecimiento no servía: el cociente NOPAT nuevo / capital nuevo no depende del crecimiento cuando el capex no cubre la amortización. Bajar el capex al final (6,5-7 %) hace fallar la prueba.
+- **Puente** FY2026e-FY2028e: volumen 9,5/6/3, precio 1/1/1, divisa 1,5/0/0 (el yen a 158 frente a los 150 de la guía); reparto volumen/precio, estimación propia. `mercado_final` en null: no hay cuota publicada (hueco de la sección de competencia).
+- **Textos**: síntesis (recomendación, negocio con la frase del veredicto, valoración, riesgos, niveles), tesis, visión, en contra, qué vigilar, cambiaría (nuevo disparador: crecer un ciclo con capex del 4-5 % devolvería el DCF de v2), justificación de inversión y terminal (Gordon implica 5,5x; el 15x, un 6,65 %), lectura, comentario de escenarios (ponderado 3.012,65), valoración, riesgo 1 y pregunta 1. Síntesis de 649 palabras. Control nuevo explicado: DCF inverso sin solución.
+- La señal no cambia; la convicción se queda en Baja aunque el motor sugiera Media: la diferencia sigue saliendo de la tasa (y ahora de la inversión), no de las previsiones de ventas y márgenes, y los comparables (5.352-5.747 JPY) están mucho más cerca del precio que el DCF.
+
+**Fallos del sistema vistos**
+1. Con una reinversión < 15 % del NOPAT el motor declara la empresa «de activos ligeros» y no calcula ni el financiable ni el capital nuevo, aunque aquí la causa sea un capex por debajo de la amortización en una industrial con rotación de 0,76: la prueba de v2 habría pasado en silencio. Arreglo: no tratar como ligero un negocio con capital invertido / ventas > 0,5, o avisar cuando el capex proyectado < amortización con crecimiento > 3 %.
+2. Con capex en la media histórica el DCF inverso no encuentra solución y el control dice «supuesto extremo»; aquí es la consecuencia lógica de un ROIC marginal cerca del WACC. Arreglo: que el motor distinga «crecer no crea valor» (ROIC del capital nuevo < WACC + 5) y lo diga así.
+3. El capex del 9 % se aplica también al año terminal (crecimiento del 2 %), lo que sobreinvierte en la perpetuidad; bajar el capex al final hace fallar la prueba porque el motor mide el rendimiento del capital nuevo sobre los diez años. Arreglo: que el terminal normalice la inversión neta a g / ROIC, como hace la etapa de transición.
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 6.043 JPY (ponderado; base 6.221), rentabilidad −1,1 %, señal Mantener (`revision-12m-2026-10-13.md`).
