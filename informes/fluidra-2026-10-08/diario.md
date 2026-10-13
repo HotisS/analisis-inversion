@@ -29,3 +29,30 @@
 6. **Recompra cerrada sin número de acciones** (CNMV 403, noticia de pago): acciones estimadas con el precio medio ponderado. Arreglo: el comunicado semanal de la recompra está en OIR; probar descargar.mjs con la URL directa del PDF de la CNMV.
 7. **Cifras de las notas que no casaban con el motor**: D escribió 7,6x de EV/EBITDA NTM y 8,7x LTM con su propio cálculo; el motor da 8,4x y 9,4x. Se reescribieron los comentarios de comparables y múltiplos históricos. D también daba el margen ajustado de 2025 como «máximo histórico» (falso: 2021 fue mayor). Arreglo: que los subagentes no calculen múltiplos de la propia empresa en textos; que dejen el cálculo al motor.
 8. **Síntesis con DN/EBITDA 2,4x y portada 2,6x (ajustada)**: corregido. El control de coherencia síntesis-portada sigue siendo manual. Arreglo: que integrar avise si la síntesis cita un DN/EBITDA distinto del de la portada.
+
+## Actualización v2 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.json`), salida `datos-v2.json`, `Fluidra - 2026-10-08 v2.docx` y su PDF. Mismo precio (17,00 EUR) y fecha de corte (8-oct-2026). No se cambia ningún supuesto del DCF.
+
+| | v1 | v2 |
+|---|---|---|
+| Recomendación · convicción | Comprar · Media | Comprar · Media (los criterios sugieren Alta; explicado en la síntesis) |
+| DCF (WACC 8,17 %) | 23,80 EUR | 23,80 EUR |
+| Valor objetivo | 22,22 EUR, RTE 34,5 %, asimetría 4,42x | 22,22 EUR, RTE 34,5 %, asimetría 4,42x |
+| Objetivo con la prima del mercado (WACC 7,13 %) | 26,89 EUR, RTE 62,0 % | 26,89 EUR, RTE 62,0 % |
+| Niveles | Comprar < 23,89; Vender > 30,42 | Comprar < 21,78; Vender > 30,42 |
+| Sostenibilidad del crecimiento | — | **Sí** (4,1 % anual proyectado; cuota del 13,0 % al 11,7 % en 2033e; sin inversión neta) |
+
+- **Veredicto Sí**: la proyección crece por debajo del mercado (4-6 % según Fluidra, 4,6-4,7 % según dos estudios) y del objetivo de la empresa (6-8 %), con la cuota a la baja. Puente 2026e-2030e: volumen 2,5-3 % y precio 2-3 % (2026e con −2 puntos de divisa), calibrado con el 1S26 (volumen +2 %, precio +3 %) y el 2T26 (precio +2 %, volumen +3 %); el precio cae al 2 % por la fatiga de precios que cita la dirección.
+- **Mercado final**: 25.700 M EUR en 2033e = 17.400 M de 2025 (mismo perímetro que la cuota) al 5 % anual, punto medio de la previsión de Fluidra. Con el 4,7 % de los estudios, 25.100 M y cuota del 12,0 %: igual conclusión.
+- **Reinversión**: el motor da −3 M acumulados (tasa del 0 %) y trata a Fluidra como de activos ligeros, porque la amortización incluye la de la asignación del precio de Zodiac (57 M en 2025), que no hay que reponer. Dicho en la justificación; la prueba útil es la cuota y el precio.
+- **Nivel de compra 23,89 → 21,78 EUR**: no lo mueve la sostenibilidad sino el motor actual (regla combinada: un Comprar solo relativo exige ≥ 5 % con nuestro coste de capital). Actualizado en la síntesis y en `cambiaria_recomendacion`.
+- **Convicción**: el control nuevo sugiere Alta; se queda en Media porque las cifras son las del consenso y el precio puede seguir descontando el valle mientras la obra nueva no repunte. Dicho en la síntesis.
+- Controles: 18 de 19 correctos y 1 explicado (regresión, como en v1). Aviso de `rellenar`: solo la tabla vacía de suma de partes.
+
+**Fallos del sistema vistos**
+1. La prueba de reinversión no separa la amortización de intangibles de compras (PPA): en un industrial con 2.759 M de capital invertido sale «activos ligeros» y el texto del motor habla de «negocio de activos ligeros» o «comprador en serie», que no es el caso. Arreglo: un campo `amortizacion_ppa_pct_ventas` (o similar) que la prueba reste de la amortización.
+2. El ROIC incremental histórico sale nulo (ventas y capital de 2025 por debajo de 2021): la prueba no tiene referencia histórica con la que comparar.
+3. Los niveles de compra y venta cambian al recalcular con el motor nuevo aunque no cambie ninguna cifra: cualquier actualización debe releer `calc.recomendacion.niveles` y buscar el nivel antiguo en todos los textos.
+4. `soffice` falla en silencio (código 1, sin mensaje ni PDF) si otra instancia usa el perfil por defecto (varias actualizaciones en paralelo); funciona con `-env:UserInstallation=file://<carpeta propia>`.
+5. `competencia.cuota_pct` es 13 (redondeado) y el sector da 12,6 %: la tabla de la prueba compara 11,7 % con 13,0 %.
