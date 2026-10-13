@@ -86,3 +86,26 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 3. La cabecera de la síntesis da el potencial con la prima del mercado (−7,7 %) y la tabla la rentabilidad total (−7,0 %): dos cifras distintas en dos páginas seguidas.
 4. La regla del terminal no dice si vale para los escenarios: el alcista usa un 3,0 %, por encima del techo del 2,6 %.
 5. En «Del valor empresa al valor por acción», la caja neta aparece como «− Deuda financiera neta» con importe positivo (2.995.278): se lee como una resta.
+
+## Actualización v3 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v3.mjs` (parte de `datos-v2.json`), salida `datos-v3.json`, `Keyence - 2026-10-07 v3.docx` y su PDF. Añade `dcf.sostenibilidad` (puente FY2026e-FY2030e, `mercado_final` en null y veredicto «Sí»). **Ningún supuesto del DCF cambia**: la prueba pasa, así que no hay recorte del caso base.
+
+| | v2 | v3 |
+|---|---|---|
+| Recomendación · convicción | Mantener · Baja | Mantener · Baja (sugerida: Baja) |
+| Valor objetivo (WACC 8,50 %) | 66.566,47 JPY, RTE −17,6 % | 66.566,47 JPY, RTE −17,6 % |
+| Con la prima del mercado (WACC 7,51 %) | 75.201,52 JPY, RTE −7,0 % | 75.201,52 JPY, RTE −7,0 % |
+| Comprar por debajo / vender por encima | 65.834,24 / 84.206,58 | **63.903,81** / 84.206,58 |
+| Sostenibilidad del crecimiento | — | **Sí** (8,35 % anual proyectado; financiable ≈ 7,8 % al ROIC + ≈ 1 punto de precio) |
+
+- **Por qué Sí.** La reinversión de la proyección es de 575.553 M JPY, el 8 % del NOPAT (casi todo circulante: 38 % de las ventas). Al ROIC del 94,6 % financia ≈ 7,8 % anual (cálculo a mano: el motor no lo da, ver fallos); el ≈ 1 punto de precio del puente no pide capital y cubre el resto hasta el 8,35 %. El capital nuevo rinde un 87,2 % ((919.190 − 417.178) / 575.553), igual que el incremental histórico (87,6 %) y por debajo de 1,25 × 94,6 %. Cuota: Keyence no publica cuota ni ventas de visión (`competencia.cuota_pct` en null), así que `mercado_final` va en null; a mano, el 8,35 % proyectado es el ritmo del mercado de visión (+8,3 % hasta 2030 [36]): la cuota no sube.
+- **Puente** (estimación propia, Keyence no separa volumen y precio): FY2026e 16 + 1 + 5 de divisa (el 1T llevó ≈ 10 puntos de divisa [15]); FY2027e 10 + 1; FY2028e 8 + 1; FY2029e −6 + 1; FY2030e 9 + 1. El punto de precio se apoya en un margen bruto del 81-85 % sostenido con la inflación de costes [1, 15].
+- **Textos cambiados**: frase del veredicto en «El negocio» (y, para no pasar de 650 palabras, se acortó la enumeración del recorrido en «Valoración»); el nivel de compra en «Qué cambiaría» y en `cambiaria_recomendacion` (65.834,24 → 63.903,81: lo mueve el motor actual sin cambiar datos, regla del 9/10-oct).
+- Controles: 17 de 19 correctos y 2 explicados, los mismos que en v2. Avisos de `rellenar`: los tres de siempre (suma de partes, calificaciones ESG, vencimientos).
+
+**Fallos del sistema vistos**
+1. **«Activos ligeros» con ROIC muy alto**: con una reinversión del 8 % del NOPAT (575.553 M JPY, sobre todo circulante) el motor declara «sin inversión neta» y no calcula ni el crecimiento financiable ni el rendimiento del capital nuevo, justo en el caso en que el ROIC (94,6 %) hace que poca reinversión financie mucho crecimiento. Arreglo: que el umbral de «ligero» sea por importe (reinversión ≤ 0) o que, por debajo del 15 %, calcule igualmente los dos números y los dé como orientativos.
+2. **Redondeo distinto**: `crecimiento_proyectado_pct` es 8,4 y la tabla y el texto del motor dicen 8,3 % (media exacta 8,35 %), mientras el DCF inverso y la justificación dicen 8,4 %. Arreglo: formatear desde el valor ya redondeado.
+3. Ya conocido: recalcular con el motor actual mueve el nivel de compra sin cambiar datos.
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 88.110,83 JPY (media ponderada; base 87.637,55), rentabilidad +8,8 %, señal Mantener (`revision-12m-2026-10-13.md`).
