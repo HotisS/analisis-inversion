@@ -39,3 +39,26 @@
 5. **Partidas no recurrentes en las ventas**: la reversión 340B (26.760 M DKK) entra en ventas, no solo en EBITDA; el esquema solo tiene no_recurrentes_en_ebitda, así que el LTM de ventas hubo que parchearlo a mano a ventas ajustadas. Arreglo: un campo `no_recurrentes_en_ingresos` en `financieros.ltm` y en `cuenta`.
 6. **D citó [16, 17] sin crear esas fuentes** (cortado antes de guardarlas); integrar avisa, pero el texto final lo sustituí en propio. Arreglo: que integrar marque en rojo las citas sin fuente que llegan al documento, no solo en las notas.
 7. **Transacciones con múltiplo: 2** (mínimo 3). En obesidad y metabolismo casi todo son compras de biotecnológicas sin ventas; no hay forma honesta de llegar a 3. El control no lo marcó: revisar si debería.
+
+## Actualización v2 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.json`), salida `datos-v2.json`, `Novo Nordisk - 2026-10-08 v2.docx` y su PDF. Mismo precio (249,90 DKK) y fecha de corte (8-oct-2026). Ningún supuesto del DCF cambia.
+
+| | v1 | v2 |
+|---|---|---|
+| Recomendación · convicción | Comprar · Media | Comprar · Media |
+| Valor objetivo (WACC 6,85 %) | 315,19 DKK, RTE +30,8 %, asimetría 2,19x | 315,19 DKK, RTE +30,8 %, asimetría 2,19x |
+| Objetivo con la prima del mercado (WACC 6,24 %) | 350,05 DKK, RTE +44,8 %, asimetría 4,41x | 350,05 DKK, RTE +44,8 %, asimetría 4,41x |
+| Niveles | Comprar < 314,56; Vender > 377,91 | Comprar < 311,09; Vender > 377,91 |
+| Sostenibilidad del crecimiento | — | **En parte** (−0,3 % anual proyectado; reinversión del 8 % del NOPAT) |
+
+- **Puente volumen/precio 2026e-2030e** (estimación propia; la empresa no cuantifica el reparto): volumen +8/+10/+9/+8/+7 %, precio −11/−10/−5/−4/−3 %, divisa −1 en 2026e. Cuadra con el −4/0/+4/+4/+4 % del DCF. El escalón de precio de 2027 (lista a 675 USD, Medicare a 274 USD) y los genéricos fuera de EE. UU. se compensan con volumen (Medicare Bridge, Wegovy oral, CagriSema), que crece por debajo del mercado.
+- **Veredicto «En parte»**: la escala sostiene el volumen; el poder de precios está invertido y el foso se estrecha. Pero el caso base no pide precio ni cuota: supone precio a la baja todos los años y que la cuota en valor de 2030e quede en menos de la mitad. Por eso la regla de «En parte» (base por debajo de lo que pide la prueba) se cumple sin tocar supuestos.
+- **mercado_final = null**: la cuota del 47,5 % es solo de GLP-1 e incretinas (Novo + Lilly) y el motor divide las ventas totales (con insulinas y enfermedades raras); además no hay tamaño de mercado para 2035e. Prueba a mano: en 2030e todas las ventas de Novo (333.749 M DKK) serían el 26 % de los 200.000 M USD (≈ 1.271.300 M DKK) de J.P. Morgan; las de GLP-1, ≈ 20 %.
+- Síntesis: frase obligatoria del veredicto en «El negocio» y frase de la convicción (media porque el bajista pierde un 27,4 %, más del 25 %; la sube una guía de 2027 estable, la baja que la Wegovy oral baje de 200.000 recetas semanales), que pedía el control nuevo «La síntesis explica la convicción». Recortes para quedar en 646 palabras. Nivel de compra actualizado a 311,09 DKK.
+
+**Fallos del sistema vistos**
+1. El motor clasifica a Novo como «activos ligeros» (reinversión del 8 % del NOPAT, por debajo del 15 %) y el texto habla de «subir precios», pero aquí la reinversión baja porque el capex se normaliza tras el pico de 2025 (18,7 % → 8 % de las ventas), y el crecimiento sale de volumen con precio a la baja. La tabla «La decisión» dice «sin inversión neta» con 70.012 M de reinversión. Arreglo: distinguir «capex que se normaliza» de «activos ligeros» (por ejemplo, con el capex medio de la proyección frente a la amortización) y no presuponer el signo del precio en el texto.
+2. La prueba de cuota usa las ventas totales de la empresa frente a un mercado de una línea: con farmacéuticas multiproducto siempre obliga a `null`. Arreglo: un campo `ingresos_perimetro_pct` (peso del segmento en las ventas) en `mercado_final`.
+3. El nivel de «Comprar por debajo» pasó de 314,56 a 311,09 DKK sin cambiar ninguna cifra: el motor cambió desde el 8-oct. Las versiones recalculadas pueden mover niveles sin que el informe lo diga.
+4. El aviso «Tabla sin filas: calc.suma_partes.partes» sigue (ya estaba en v1).
