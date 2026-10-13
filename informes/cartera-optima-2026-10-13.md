@@ -1,6 +1,6 @@
 # Cartera óptima (13-oct-2026) con la rentabilidad a 12 meses v2
 
-**Método** (`verticales/empresa/objetivo-12m.md`, el del hilo «PROYECTOS GH - INV» del 12-oct): objetivo a 12 meses = PER propio × BPA propio del ejercicio que mirará el mercado en un año, media de bajista, base y alcista. Las 38 empresas de la cartera y con señal Comprar están revisadas una a una (`informes/<carpeta>/revision-12m-2026-10-13.md`; Alphabet, la del hilo del 12-oct). Resultados en `verticales/empresa/objetivo12m-revisados.json` y en las columnas «… 12 m» de `seguimiento.xlsx`.
+**Método** (`verticales/empresa/objetivo-12m.md`, el del hilo «PROYECTOS GH - INV» del 12-oct): objetivo a 12 meses = PER propio × BPA propio del ejercicio que mirará el mercado en un año, en bajista, base y alcista, ponderados con las probabilidades de los escenarios de cada informe. Las 38 empresas de la cartera y con señal Comprar están revisadas una a una (`informes/<carpeta>/revision-12m-2026-10-13.md`; Alphabet, la del hilo del 12-oct). Resultados en `verticales/empresa/objetivo12m-revisados.json` y en las columnas «… 12 m» de `seguimiento.xlsx`.
 
 **Dos cifras por valor** (decisión del usuario, 13-oct). La **ponderada** es la rentabilidad esperada: bajista, base y alcista ponderados con las probabilidades de los escenarios de cada informe, en vez de la media simple del hilo, que inflaba la cifra porque el alcista supone volver al PER histórico y hoy muchas cotizan muy por debajo. La **base** (solo el escenario base: el BPA propio al PER de hoy o a la mediana de cinco años) mide el **valor real**: lo que rinde sin que el mercado vuelva a pagar el múltiplo histórico. Es el filtro.
 
@@ -37,7 +37,7 @@
 | Efectivo | | 2.920 | | 211 | 0,8 % | 0 % | 0 % | Reserva |
 | **Total** | | **25.563** | | **25.563** | | **15,6 → 22,5 %** | **9,1 → 12,4 %** | |
 
-**Rentabilidad esperada a 12 meses de la cartera** (con el oro al 0 %): **ponderada del +15,6 % al +22,5 %** (de ≈ 3.980 a ≈ 5.750 EUR) y **base del +9,1 % al +12,4 %**. Con la media simple del hilo saldría del +21,6 % al +29,2 %, una cifra que se descarta por optimista. La mejora sale de vender lo que el método deja por debajo del 15 % y de comprar valores cuyo escenario base, sin revalorizar el múltiplo, ya rinde un 14-23 %.
+**Rentabilidad esperada a 12 meses de la cartera** (con el oro al 0 %): **ponderada del +15,6 % al +22,5 %** (de ≈ 3.980 a ≈ 5.750 EUR) y **base del +9,1 % al +12,4 %**. Con la media simple del hilo saldría del +21,6 % al +29,2 %, una cifra que se descarta por optimista. La mejora sale de vender lo que rinde por debajo del 10 % y de comprar valores cuyo escenario base, sin revalorizar el múltiplo, ya rinde un 14-23 %.
 
 **Operaciones.** Ventas: 5 Alphabet, 12 PepsiCo, 70 Puig y 36 Edenred (≈ 5.200 EUR). Compras: 8 DSV, 115 Tomra, 70 Fluidra, 3 LVMH, 18 Nemetschek, 110 Dunelm y 21 Viscofan (≈ 7.910 EUR). Quedan ≈ 210 EUR de efectivo.
 
