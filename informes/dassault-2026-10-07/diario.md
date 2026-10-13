@@ -42,3 +42,25 @@
 5. **Riesgo de divisa sin sensibilidad en el motor**: se sacó con copias de `datos.json` en %TEMP% modificando el DCF. Proponer una tabla de sensibilidad a la divisa (porcentaje de ingresos y costes en moneda extranjera).
 6. **Los subagentes dejan notas de trabajo en campos impresos** (nombres de campo entre comillas invertidas, «PENDIENTE», «subagente C»). El integrador solo avisa de «PENDIENTE». Ampliar el aviso a comillas invertidas y a «subagente».
 7. **Cifra del motor que cambia tras redactar** (EV/EBITDA NTM 11,8x → 11,9x al fijar el ajuste). Proponer una comprobación final que busque en los textos las cifras de `calc.clave` con un decimal distinto.
+
+## Actualización v2 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.json`), salida `datos-v2.json`, `Dassault Systèmes - 2026-10-07 v2.docx` y su PDF. Mismo precio (21,51 EUR, cierre del 6-oct) y fecha de corte. No se tocan supuestos del DCF.
+
+| | v1 | v2 |
+|---|---|---|
+| Recomendación · convicción | Comprar · Media | Comprar · Media (la sugerida por los criterios) |
+| Valor objetivo (WACC 8,13 %) | 25,08 EUR, RTE 17,9 % | 25,08 EUR, RTE 17,9 % |
+| Objetivo con la prima del mercado (4,2 %, WACC 7,03 %) | 30,22 EUR, RTE 41,7 % | 30,22 EUR, RTE 41,7 % |
+| Comprar por debajo / vender por encima | 25,73 / 31,95 EUR | 24,13 / 31,95 EUR (cambio del motor, no de supuestos) |
+| Sostenibilidad del crecimiento | — | **Sí** (4,1 % anual; sin inversión neta; cuota 8,3 % → 8,6 % en 2035e) |
+
+- **Veredicto «Sí»**: el base pide un 4,1 % anual, en línea con el 4 % a tipo constante de 2025 y por debajo del ARR (+6 %) y del 9,6 % previsto para el PLM amplio [1, 2, 27]. Reinversión neta de 665 M en diez años (3 % del NOPAT): la prueba es la cuota y el precio, no el capital.
+- **Mercado final**: mismo perímetro que la cuota (PLM amplio de CIMdata). CIMdata solo prevé hasta 2029e (126.700 M USD); para 2035e se congela en ese nivel y se pasa a EUR a 1,175 (107.830 M EUR). Es una cota baja del mercado y, por tanto, alta de la cuota implícita (8,6 %).
+- **Puente volumen/precio** (2026e-2028e): la empresa no publica precios ni renovaciones; el reparto (≈ 1,5 puntos de precio al año) es estimación propia, apoyada solo en el margen non-IFRS estable con inflación salarial. La divisa resta 1,9 puntos en 2026e (guía +3-5 % a tipo constante, +1-3 % publicado).
+- **Textos**: frase del veredicto en «El negocio», explicación de la convicción en la síntesis (control nuevo «La síntesis explica la convicción») y el nivel de compra de 25,73 a 24,13 EUR en la síntesis y en `cambiaria_recomendacion`.
+
+**Fallos del sistema vistos**
+1. El motor nuevo cambia el nivel de «comprar por debajo» (25,73 → 24,13 EUR) sin tocar ningún dato: las actualizaciones de método deben releer `calc.recomendacion.niveles` y buscar la cifra vieja en todos los textos.
+2. La prueba de cuota necesita el mercado en el último año explícito, pero las fuentes de mercado rara vez llegan a diez años; el prompt no dice cómo extrapolar (aquí, congelar en el último año previsto como cota conservadora).
+3. «Crecimiento medio proyectado» (4,1 %, toda la proyección) y el crecimiento base del DCF inverso (4,3 %, años no fijos) conviven en el informe; fácil mezclarlos en la justificación.
