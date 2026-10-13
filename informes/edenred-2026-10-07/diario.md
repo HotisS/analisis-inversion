@@ -51,3 +51,26 @@
 8. **Corte de sesión hacia las 17:42**: no se perdió nada (notas, `supuestos.mjs`, `variantes.mjs` y diario en disco). El aviso de guardar antes de la llamada 15 funcionó: a los 10 minutos los cuatro subagentes tenían nota (fallo 1 del diario de Rational, resuelto por el encargo).
 9. **OAT diaria sin fuente oficial gratuita** (Banque de France pide clave, BCE solo mensual): se usó la media de agosto. Arreglo: añadir a `lecciones.md` la serie diaria de rendimientos del BCE para la zona euro o la del Bundesbank más el diferencial, y documentar la fuente francesa.
 - Fin: 18:04. Tiempo ≈ 49 min (17:15-18:04), con el corte de sesión hacia las 17:42 y la reanudación.
+
+## Actualización v2 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.json`), salida `datos-v2.json`, `Edenred - 2026-10-07 v2.docx` y su PDF. Mismo precio (27,61 EUR, cierre del 6-oct) y fecha de corte. Sin cambios en los supuestos del DCF.
+
+| | v1 | v2 |
+|---|---|---|
+| Recomendación · convicción | Comprar · Media | Comprar · Media (los criterios sugieren Alta; explicado en la síntesis) |
+| Valor objetivo (WACC 8,65 %) | 42,22 EUR, RTE +57,7 %, asimetría 7,40x | 42,22 EUR, RTE +57,7 %, asimetría 7,40x |
+| Con la prima del mercado (4,20 %, WACC 7,64 %) | 54,10 EUR, RTE +100,8 % | 54,10 EUR, RTE +100,8 % |
+| Comprar por debajo / vender por encima | 48,17 / 61,60 | 41,46 / 61,60 (cambio del motor, mismas cifras) |
+| Sostenibilidad del crecimiento | — | **En parte** (4,8 % anual proyectado; reinversión neta −6 % del NOPAT; sin mercado final comparable) |
+
+- **Puente 2026e-2029e** (estimación propia con los dos motores de `supuestos.mjs`, ponderado por el 92-93 % de ingresos operativos): 2026e volumen +7,4 (intrínseco del 8,0 % del 1S26), precio −6,0 (topes de Italia y Brasil, −6,5 puntos), otros −0,1 (other revenue −0,6, divisa y perímetro +0,5); 2027e +6,5 / −0,9 / −0,1; 2028e +6,5 / 0 / 0; 2029e +6,1 / 0 / +0,1. Cuadra con el DCF.
+- **Mercado final: null.** La cuota del 35 % es la de títulos restaurante en Francia (valor facial); los ingresos del DCF son del grupo (44 países y Mobility). El mercado francés a la comisión media de Edenred (≈5,6 %) daría una cuota de cientos por cien. No hay estadística global del sector. La prueba de cuota se hizo a mano: volumen de negocio de 49.000 M, el doble que Pluxee, y penetración inferior al 40 % en sus mercados históricos.
+- **Veredicto «En parte»**: el volumen se sostiene y lo financia el circulante negativo (activos ligeros: la prueba es precio y cuota), pero el precio lo fija en parte el regulador y la comisión media ya bajaba en 2025 (volumen +9 % frente a ingresos +6,2 %). No se baja el base porque ya crece por debajo del intrínseco (6-7 % frente al 8,0 %), supone comisión constante sin subidas y el tope francés está en el bajista (30 %): dicho en la síntesis.
+- Convicción: el control nuevo sugiere Alta; se mantiene Media por el veredicto «En parte», la dependencia del trato del float (11,96 EUR/acción) y de la beta (41,80-55,06 EUR), y la ley francesa pendiente.
+
+**Fallos del sistema vistos**
+1. **El ROIC del motor (130,8 %) entra en la prueba de sostenibilidad y en la tabla** aunque el capital invertido es casi nulo por el float; el incremental histórico (26,7 %) mezcla años con capital negativo. Arreglo: el campo de flotante pendiente (fallo 1 de v1) y no imprimir el ROIC si el capital invertido es inferior al 10 % de las ventas.
+2. **La cuota de `competencia.cuota_pct` es de un solo país** y no hay campo para el perímetro: el motor no puede saber que no compara con los ingresos del grupo. Arreglo: `competencia.cuota_perimetro` (o `mercado_final.ingresos_perimetro`) para comparar la cuota con los ingresos del mismo segmento.
+3. **«Comprar por debajo» pasa de 48,17 a 41,46 EUR con las mismas cifras** por un cambio del motor posterior al 7-oct; el informe v1 publicado queda con otro nivel. Arreglo: anotar en el registro de cambios del motor qué informes cambian de niveles al recalcular.
+4. **La división volumen/precio en un negocio de comisiones sobre volumen** no está definida en el prompt (¿el valor facial es volumen o precio?). Aquí: volumen = volumen de negocio a comisión media constante (incluye valor facial); precio = cambio de la comisión media. Arreglo: una línea en el prompt para plataformas con tasa sobre volumen.
