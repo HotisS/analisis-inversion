@@ -30,3 +30,4 @@
 - **Cuota de un solo mercado frente a mercado accesible total**: si la empresa publica cuotas por área, la prueba de sostenibilidad compara mejor con el total accesible (suma de puntos medios de los rangos, marcada como estimación) y la cuota de ventas sobre él.
 - **MarketScreener con base mixta** (Coloplast FY2026e): EBITDA y EBIT antes de especiales, BPA después del deterioro; su EBITDA FY2026e implica una amortización de 1.856 M frente a ~1.470 M: usar el BPA ajustado de S&P Global (Stock Analysis) para el PER.
 - Damodaran `betaEurope.xls` es BIFF binario y `descargar.mjs` lo guarda como .xlsx: no hay lector. `prompt-de.mjs` imprime también las lecciones (57 KB) y obliga a leer a trozos.
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 503 DKK, rentabilidad +18,0 %, señal Comprar (`revision-12m-2026-10-13.md`).
