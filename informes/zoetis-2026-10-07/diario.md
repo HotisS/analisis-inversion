@@ -55,3 +55,26 @@
    - Fallo: la sesión se paró dos veces (regla de rutas y límite de uso); las notas sobrevivieron porque estaban en disco, pero los subagentes A y B casi no.
    - Arreglo: el punto 1 y un `estado.json` en la carpeta del informe con la fase en curso, para retomar sin reconstruir.
 - Fin: 2026-10-08 08:34.
+
+## Actualización v2 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.json`), salida `datos-v2.json`, `Zoetis - 2026-10-07 v2.docx` y `.pdf`. Mismo precio (71,33 USD, cierre del 6-oct) y misma fecha de corte. Sin cambios en los supuestos del DCF.
+
+| | v1 | v2 |
+|---|---|---|
+| Recomendación · convicción | Comprar · Media | Comprar · Media (los criterios sugieren Alta) |
+| Valor objetivo (WACC 8,53 %) | 91,77 USD, RTE 31,6 % | 91,77 USD, RTE 31,6 % |
+| Con la prima del mercado (4,20 %, WACC 8,00 %) | 101,61 USD, RTE 45,4 % | 101,61 USD, RTE 45,4 % |
+| Comprar por debajo / vender por encima | 90,12 / 108,20 | 89,38 / 108,20 |
+| Sostenibilidad del crecimiento | — | **Sí** (2,8 % anual proyectado; cuota del 23,6 % al 23,7 % en 2035e; reinversión neta del 4 % del NOPAT) |
+
+- **Puente de ingresos 2026e-2030e** (reparto entre volumen y precio, estimación propia): 2026e −1,5 volumen / −0,5 precio / −0,6 otros (guía orgánica de −3 % a −1 % y descuentos «del bruto al neto»); 2027e +0,5 / +1,5 / +0,5; 2028e-2029e +1,5 / +2 / +0,5; 2030e +2 / +1 / +0,5 (vence Apoquel). Precio de 1-2 % anual, la mitad de lo que Zoetis subía hasta 2025, porque el poder de precios se agrieta en 2026.
+- **Mercado final**: 52.419 M USD en 2035e, la serie de IMARC (45.881 M en 2030e) prolongada al +2,7 %; es el mismo perímetro de la cuota del 23,6 % (9.467 / 40.100). IMARC infravalora las mascotas: la cuota implícita es un techo.
+- **Veredicto Sí**: la proyección pide poco (menos de la mitad del 7,6 % de 2016-2025, cerca del mercado y sin ganar cuota). El motor la trata como de activos ligeros (sin crecimiento financiable calculable), así que la prueba es precio y cuota, y las dos pasan. Volver al 7-8 % no lo sostiene la calidad actual: es el alcista.
+- **Convicción**: el control nuevo sugiere Alta; se mantiene Media, ya explicada en la síntesis (la discrepancia con el mercado es si 2026 es un escalón o una pendiente; depende del 3T26 y de la guía de 2027).
+- **Textos**: frase del veredicto en «El negocio» y nivel de compra (89,38, que el motor del 10-oct recalcula con la regla combinada). Para no pasar de 650 palabras se quitaron de la síntesis los nombres de los rivales y la fecha del cierre (siguen en el cuerpo). Cobertura del Word: 88,2 % (v1 daba 91,5 % con la plantilla de entonces y da 85,3 % con la de hoy, que añade campos como «sentimiento»; la sostenibilidad la sube).
+
+**Fallos del sistema vistos**
+1. El motor no dice que la cuota final depende de cómo se prolonga el mercado más allá de la serie del sector (aquí la serie acaba en 2030e y la proyección en 2035e): cada analista lo extrapola a mano. Arreglo: que `calcular-empresa.mjs` prolongue `sector.serie` con `tcac_previsto_pct` si `mercado_final.periodo` es posterior, y lo diga.
+2. Con una reinversión neta del 4 % del NOPAT, el motor da `crecimiento_financiable_pct` nulo y la etiqueta de «activos ligeros» a una farmacéutica veterinaria con un capex del 5,9 % de las ventas; la etiqueta confunde. Arreglo: llamar a la rama «reinversión neta baja» y dar igualmente ROIC × tasa de reinversión (1,2 % aquí) como referencia.
+3. El nivel de compra cambió (90,12 → 89,38) solo por la versión del motor, sin aviso: la síntesis quedaba con una cifra vieja. Arreglo: un control que busque en la síntesis los niveles de `calc.recomendacion` y avise si no aparecen.
