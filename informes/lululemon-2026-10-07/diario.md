@@ -54,3 +54,26 @@
    - Fallo: hechos de gobierno pendientes con fecha que no son catalizadores ni alertas.
    - Arreglo: `gobierno.pendientes: [{hecho, fecha_limite, fuente}]`.
 - Fin: 18:01. Duración total ≈ 44 min, de ellos 14 parados por el corte.
+
+## Actualización v2 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.json`), salida `datos-v2.json`, `Lululemon - 2026-10-07 v2.docx` y su PDF (LibreOffice). Mismo precio (93,61 USD, cierre del 6-oct-2026) y misma fecha de corte. Ningún supuesto del DCF cambia.
+
+| | v1 | v2 |
+|---|---|---|
+| Recomendación · convicción | Comprar · Media | Comprar · Media (los criterios dan Alta; explicado en la síntesis) |
+| Valor objetivo (WACC 10,96 %) | 132,71 USD, RTE +41,8 % | 132,71 USD, RTE +41,8 % |
+| Con la prima del mercado (4,20 %, WACC 10,06 %) | 146,21 USD, RTE +56,2 % | 146,21 USD, RTE +56,2 % |
+| Comprar por debajo / vender por encima | 127,14 / 162,30 | 126,34 / 162,30 |
+| Sostenibilidad del crecimiento | (no existía) | **En parte**: 2,1 % anual proyectado, reinversión del 5 % del NOPAT, cuota mundial del 2,6 % al 1,9 % en FY2035e |
+
+- **Puente FY2026e-FY2029e** (estimación propia; la empresa solo da tráfico, conversión y ticket en cualitativo): FY2026e −6 volumen, −1 precio (rebajas +40 pb), +1 divisa = −6 %; FY2027e −2/+1/0; FY2028e +1,5/+1/0; FY2029e +2/+1,5/0. El motor confirma las sumas.
+- **Mercado final**: 735.300 M USD en FY2035e, el mundial de Euromonitor vía McKinsey (mismo perímetro que la cuota del 2,6 %) al 6,1 % previsto hasta 2029 y al 5,0 % histórico después [26]. Cuota implícita 1,9 %: la prueba no salta.
+- **Por qué «En parte» y no «Sí»**: ROIC del 56,8 % y margen bruto del 56,6 % financian de sobra un crecimiento del 2-4 %, pero el poder de precios no está demostrado (en FY2025 no repercutió los aranceles; en 2026 más rebajas y tráfico a la baja en Américas). Ninguna prueba del motor salta y el caso base ya queda por debajo: crece menos que el mercado, pierde cuota y el precio solo sigue a la inflación. Por eso no se tocan supuestos; la síntesis lo dice en «El negocio».
+- El umbral de compra baja de 127,14 a 126,34 USD sin cambiar ningún dato: es la versión actual del motor (v1 se calculó con la anterior). Se corrigió en la síntesis.
+- Controles: 18 de 20 correctos y 2 explicados (los dos nuevos de sostenibilidad, correctos).
+
+**Fallos del sistema vistos**
+1. Recalcular con el motor nuevo mueve el umbral de compra (127,14 → 126,34) sin tocar datos y nada lo avisa: las cifras escritas a mano en la síntesis quedan desfasadas en silencio. Arreglo: que el motor compare las cifras de `calc.recomendacion` citadas en `resumen.sintesis` con las nuevas y avise.
+2. El texto de `calc.dcf.sostenibilidad` para activos ligeros habla de «comprador en serie» aunque no lo sea (Lululemon no compra): frase genérica que se imprime en todos los informes. Arreglo: mostrarla solo si hay `cambios_perimetro` o fondo de comercio relevante.
+3. La fila de «La decisión» dice «sin inversión neta» aunque la reinversión acumulada es de 610 M (5 % del NOPAT): el umbral del 15 % convierte «poca» en «ninguna». Arreglo: «inversión neta pequeña (5 % del NOPAT)».
