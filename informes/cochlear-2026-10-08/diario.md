@@ -30,3 +30,26 @@
 5. **Partida significativa que cambia de criterio a mitad de la serie** (la nube dentro del subyacente hasta FY24, fuera desde FY25 reexpresado). A la dejó la serie mezclada; hubo que parchear tres años. *Arreglo*: en la parte A del prompt, pedir que `no_recurrentes_en_ebitda` siga el **criterio vigente** en todos los años, igual que los segmentos.
 6. **Comparables sin campo `excluir`.** Para sacar a GN Store Nord hubo que poner a `null` sus múltiplos con `_parches`. *Arreglo*: `excluir: true` en `comparables.empresas`, como ya existe en transacciones y en múltiplos históricos.
 7. **`integrar` avisa de «nota de trabajo en un campo que se imprime» en `financieros.extra`**, que no se imprime (lo dice el aviso siguiente). *Arreglo*: no revisar las claves `extra`.
+
+## Actualización v2 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.json`), salida `datos-v2.json`, `Cochlear - 2026-10-08 v2.docx` y su PDF. Mismo precio (129,00 AUD) y fecha de corte (8-oct-2026). La prueba pasa: no cambia ningún supuesto del DCF.
+
+| | v1 | v2 |
+|---|---|---|
+| Recomendación · convicción | Vender · Baja | Vender · Baja (igual) |
+| Valor objetivo (WACC 10,46 %) | 100,16 AUD, RTE −19,7 % | 100,16 AUD, RTE −19,7 % |
+| Con la prima del mercado (WACC 9,25 %) | 115,11 AUD, RTE −8,1 %, asimetría 0,47 | igual |
+| Comprar por debajo / vender por encima | 103,06 / 128,20 | **98,66** / 128,20 (motor actual, sin cambiar datos) |
+| Sostenibilidad del crecimiento | — | **Sí** (5,5 % anual proyectado; activos ligeros según el motor: reinversión del 13 % del NOPAT) |
+
+- **Reinversión**: 629 M acumulados en FY2027e-FY2036e (13 % del NOPAT): el motor no calcula el crecimiento financiable. Es engañoso, porque el circulante baja del 32 % al 29 % de las ventas; a mano, 0,38 AUD de capital por AUD de ventas nuevas, dentro del 0,19 (FY2021-FY2024) y el 0,58 (FY2021-FY2026) históricos, y el margen del NOPAT de FY2036e (16,7 %) queda por debajo del 17,0-18,0 % de FY2022-FY2025.
+- **Cuota**: `mercado_final` en null. El 60 % de `competencia.cuota_pct` es de implantes cocleares y de conducción ósea (dato de la empresa) y el mercado de GMI es solo de implantes cocleares, sin servicios ni Acoustics. A mano: implantes de Cochlear 1.435,2 M AUD en FY2026 frente a ≈ 2.877 M en 2025 (49,9 %); al ritmo del grupo, 2.320 M en FY2035e frente a 6.042 M en 2035e (38,4 %). La cuota baja.
+- **Puente**: unidades + precio + divisa (FY2027e: 3 + 1 − 3,5 = 0,5 %); reparto de estimación propia.
+- Textos: frase del veredicto en «El negocio»; convicción explicada en la síntesis (control nuevo «La síntesis explica la convicción»); nivel de compra 103,06 → 98,66 en la síntesis, `cambiaria_recomendacion` y `escenarios.comentario`. Para seguir en ≤ 650 palabras (647) salieron de la síntesis la frase del gasto en la nube y la del EV/EBITDA frente a la media histórica (siguen en el cuerpo).
+
+**Fallos del sistema vistos**
+1. Con el circulante a la baja, la reinversión cae por debajo del 15 % del NOPAT y el motor declara «activos ligeros» en una empresa con capex del 5,4 % de las ventas: falta un cálculo que separe el circulante liberado de la inversión en crecimiento.
+2. El ROIC incremental histórico (1,2 %) y el ROIC actual (16,2 %) salen de un FY2026 deprimido (gasto en la nube, partidas significativas): con ellos la prueba de capital nuevo no dice nada. Arreglo: usar la media de cinco años o el año normalizado.
+3. Sin campo de ingresos del perímetro de la cuota, la prueba de cuota se hace a mano (ya anotado en `lecciones.md`).
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 165,23 AUD (ponderado; base 140,76), rentabilidad +30,8 % (base +11,8 %), señal Mantener (`revision-12m-2026-10-13.md`).
