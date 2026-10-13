@@ -107,3 +107,27 @@
 10. **El diario no tiene sitio para los cortes.**
     - Fallo: no hay forma estándar de registrar un corte por límite de uso.
     - Arreglo: una línea fija en la plantilla del diario: «Cortes: inicio-fin, qué se perdió».
+
+## Actualización v2 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.json`), salida `datos-v2.json`, `Copart - 2026-10-07 v2.docx` y su PDF. Mismo precio (26,82 USD, 6-oct) y fecha de corte. Añade `dcf.sostenibilidad` con las fuentes que ya estaban; ninguna cifra del DCF cambia.
+
+| | v1 | v2 |
+|---|---|---|
+| Recomendación · convicción | Mantener · Media | Mantener · Media |
+| Valor objetivo (WACC 10,41 %) | 25,71 USD, RTE −4,1 %, asimetría 0,77x | 25,71 USD, RTE −4,1 %, asimetría 0,77x |
+| Con la prima del mercado (4,20 %, WACC 9,59 %) | 27,88 USD, RTE +4,0 %, asimetría 1,51x | 27,88 USD, RTE +4,0 %, asimetría 1,51x |
+| Comprar por debajo / vender por encima | 24,22 / 30,98 USD | 24,22 / 30,98 USD |
+| Sostenibilidad del crecimiento | — | **Sí** (crecimiento medio 4,5 %; reinversión 1.707 M, 10 % del NOPAT; ROIC 29,5 %; cuota en null) |
+| Controles | 15 de 18 y 3 explicados | 17 de 20 y 3 explicados |
+
+- **Por qué «Sí»**: el 4,5 % anual (frente al 13,9 % de la década) sale sobre todo del ingreso por unidad (+3,5-5 % en el puente; ≈ +5,7 % en FY2026 con las unidades a la baja [16]), que no pide capital. El volumen (−1,5 % a +1,5 %) no exige ganar cuota y lo financia de sobra la reinversión al ROIC actual (29,5 % × 10 % ≈ 3 %). En 2008-09 los ingresos solo cayeron un 5,3 % [27].
+- **`mercado_final` en null**: la cuota (≈ 62 %) es una estimación propia por unidades del par Copart-IAA, sin tamaño en USD ni previsión de crecimiento (`sector.tcac_*` en null). Prueba a mano: con el volumen del puente por debajo del 1,5 % anual, la cuota de unidades no tiene que subir; el riesgo va al revés (IAA gana cuota [28]) y está en el bajista.
+- **Textos**: frase del veredicto en «El negocio» de la síntesis y por qué la convicción es media (qué la subiría o bajaría), porque saltaba el control nuevo «La síntesis explica la convicción». Nada más cambia.
+- Avisos del Word (suma de partes sin filas, gráfico de vencimientos sin deuda) son de v1, no de este cambio.
+
+**Fallos del sistema vistos**
+1. El motor escribe «apenas necesita inversión neta… activos ligeros» con un capex medio del 8 % de las ventas (terrenos) porque la reinversión neta es < 15 % del NOPAT; y en esa rama deja `crecimiento_financiable_pct` en null, aunque ROIC × reinversión (≈ 3 %) es justo la cifra útil. Arreglo: dar siempre el financiable.
+2. El control «La síntesis explica la convicción» solo cuenta dos veces la palabra «convicción»: lo pasa cualquier frase.
+3. `herramientas/objetivo12m.mjs` espera el nombre de la carpeta, no la ruta: con `informes/copart-…` busca en `informes/informes/…`.
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 33,07 USD (media ponderada; base 28,41), rentabilidad +23,3 % (base +5,9 %), señal Mantener (`revision-12m-2026-10-13.md`).
