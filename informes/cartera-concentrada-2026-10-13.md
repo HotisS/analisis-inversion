@@ -80,6 +80,8 @@ Para hacer sitio a Wolters Kluwer y Auto Trader, las compras de las que pasan to
 
 ## Ventas, y por qué
 
+*Puig e ICE se revisaron con los precios del 13-oct por su impulso reciente (memorandos en sus carpetas). La venta se mantiene: al subir el precio, su rentabilidad a 12 meses baja (Puig: ponderada +3,6 %, base +5,7 %; ICE: ponderada +11,6 %, base +5,1 %).*
+
 - **Equifax (6):** The Work Number es una franquicia excelente y a 12 meses da +41 % ponderado y +15 % en el base, pero falla la calidad tal como la pide el usuario: sostenibilidad «En parte» y ROIC contable (9,3 %) bajo el WACC (10,08 %) por el fondo de comercio y la amortización de compras que rentan poco (ROIC incremental ≈ 7 %). Suma riesgo regulatorio por cuatro frentes (FHFA, FICO, CFPB y la investigación del Senado sobre Medicaid) y deuda de 2,7 veces el EBITDA con la compra de Círculo de Crédito pendiente. Se recompraría si la regla de calidad pasa a usar el ROIC sin fondo de comercio (30,5 %) y el 3T26 (20-oct) mantiene la guía.
 - **Hermès (1):** el mejor negocio del lujo (margen del 41 %, ROIC del 55 %), pero falla el filtro de mantener: el valor intrínseco está un 25,5 % por debajo del precio. El +30 % ponderado sale del alcista (volver a 47,6x); con el PER actual, +9,8 %. Las estimaciones bajan (UBS a Vender) y hoy crece la joyería, no la marroquinería. Se recompra por debajo de ≈ 1.100 EUR o tras dos trimestres seguidos por encima del 9 %.
 - **ICE (6):** falla la calidad (con el fondo de comercio de sus compras, el ROIC no cubre el WACC), el base es +8,4 % y pesaba menos del 5 %.
