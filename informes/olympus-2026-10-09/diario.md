@@ -41,3 +41,32 @@
 6. **Transacciones casi sin EV/EBITDA publicado** (solo Hologic). El motor usa EV/ventas y da 4.267,58 JPY, un 113 % sobre el precio; con peso 0 no deforma la decisión, pero ocupa la tabla de síntesis. Arreglo: el ya propuesto en Daiichi (marcar la sección como «solo referencia»).
 7. **Esperas largas con `until … sleep`** en Bash: el límite de 600 s pasó una de ellas a segundo plano. Arreglo: esperar siempre en segundo plano y no bloquear.
 8. **Un subagente devolvió el resumen en inglés** (la nota sí estaba en español). Arreglo: recordar en el encargo «responde en español».
+
+## Actualización v2 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.json`), salida `datos-v2.json`, `Olympus - 2026-10-09 v2.docx` y su PDF. Mismo precio (2.000 JPY) y fecha de corte. Añade `dcf.sostenibilidad` y, como la prueba fallaba, el recorte mínimo del caso base (lectura prudente, `encargo-recorte.md`) en la misma versión.
+
+| | v1 | v2 |
+|---|---|---|
+| Recomendación · convicción | Mantener · Media | **Vender · Baja** |
+| DCF (WACC 7,18 %) | 1.947,70 JPY | 1.905,08 JPY |
+| Valor objetivo | 1.932,11 JPY, RTE −1,9 %, asimetría 0,52x | 1.902,53 JPY, RTE −3,4 %, asimetría 0,44x |
+| Con la prima del mercado (4,20 %) | 1.939,91 JPY, RTE −1,5 % | 1.910,16 JPY, RTE −3,0 %, asimetría 0,46x |
+| Regla absoluta / relativa | Mantener / Mantener | Vender / Vender |
+| Niveles | Comprar < 1.711,85; Vender > 2.020,99 | Comprar < 1.685,64; Vender > 1.978,63 (el precio, un 1,1 % por encima) |
+| Margen EBITDA final | 23,0 % | 22,7 % (el de FY2025) |
+| Crecimiento medio proyectado / financiable | 3,7 % / 1,7 % (ROIC FY2026 7,9 %) | 3,7 % / 1,7 % (3,3 % con el ROIC de FY2025, 15,1 %) |
+| Capital nuevo (implícito) | 31,9 % | 30,9 % (control explicado) |
+| Sostenibilidad | — | En parte |
+
+- **La prueba falla por el año de partida, no por el crecimiento.** Con el ROIC de FY2026 (7,9 %, hundido por 26.872 M del programa de plantilla, ≈ 30.000 M de ventas retenidas por la FDA y 18.000 M de aranceles) la reinversión (22 % del NOPAT) financia un 1,7 % anual, y la vuelta del margen desde el 15,9 % parece un 31,9 % de rendimiento del capital nuevo. Bajar el crecimiento no lo arregla: con un 3,0 % de media sale financiable 1,6 % e implícito 31,2 %, porque la reinversión baja con él. Pasar la prueba al pie de la letra exigiría un margen casi plano en el 16 %, contra la guía y el consenso.
+- **Recorte mínimo**: lo único por encima de lo demostrado era el margen final (23,0 % frente al 22,7 % de FY2025, el último ejercicio limpio): se limita al 22,7 % desde FY2030e. El crecimiento no se toca: el 3,7 % apenas supera el 3,4 % del mercado (la cuota casi no se mueve; prueba a mano porque el 70 % es de un segmento) y con el ROIC de FY2025 la reinversión financia un 3,3 %, más ≈ 0,6 puntos de precio del puente. El control del capital nuevo va a `controles_explicados` (medido desde FY2025 rinde ≈ 16 %).
+- **La señal cambia a Vender** por 0,3 puntos de margen: la asimetría baja de 0,52x a 0,44x (bajista que pesa más del doble que el alcista con RTE negativa) en las dos reglas. Convicción baja frente a la media que sugieren los criterios (dicho en la síntesis): el precio está a un 1,1 % del umbral y es reducir, no salir.
+- Textos reescritos: síntesis (645 palabras), tesis, visión diferencial, «en contra», qué cambiaría, márgenes y terminal del DCF (8,9x implícito), lectura, escenarios (base al 22,7 %, alcista al 24,7 %), comentarios de valoración y rentabilidad, efectos de tres riesgos.
+
+**Fallos del sistema vistos**
+1. La prueba de reinversión usa el ROIC y el NOPAT del último ejercicio. Con un año de partida deprimido por partidas puntuales (Olympus FY2026), el crecimiento financiable sale bajo y el «capital nuevo» rinde un 31 % aunque la proyección solo vuelva al margen de FY2025; ninguna rebaja razonable del crecimiento lo arregla. Arreglo: que el motor admita un año base normalizado (`sostenibilidad.anio_base`) o use la mediana del ROIC de cinco años.
+2. La regla de recomendación salta de Mantener a Vender con 0,3 puntos de margen final por el umbral de asimetría de 0,5x (ya visto en v1 con el terminal del bajista). Arreglo: avisar cuando la asimetría está a menos de 0,05 del umbral.
+3. El aviso «Tabla sin filas: calc.suma_partes.partes» sigue saliendo en un informe sin suma de partes.
+
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 2.247 JPY, rentabilidad +13,9 %, señal Mantener (`revision-12m-2026-10-13.md`).
