@@ -79,3 +79,24 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 1. **La regla es un precipicio.** Una diferencia de 0,2 puntos en la prima implícita del mercado o de 0,04 en la asimetría cambia Mantener por Vender. No hay banda ni histéresis. En las reguladas, con betas bajas y rentabilidades totales cerca de cero, la recomendación cae casi siempre al borde.
 2. La relativa compara con una prima del S&P 500, pero la absoluta de las reguladas usa la prima de la CNMC. Las dos referencias no son homogéneas: la diferencia entre reglas es menor que en una industrial por construcción, no por el negocio.
 3. Sin tocar (no es de esta actualización): la tesis dice ≈ 73,5 % de la retribución del transporte y la regasificación, y la síntesis da un 85,5 % del transporte y un 53,9 % de la regasificación. Son perímetros distintos, pero leídos juntos parecen una contradicción.
+
+## Actualización v3 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v3.mjs` (parte de `datos-v2.json`, escribe `datos-v3.json`). Añade `dcf.sostenibilidad`: puente de ingresos 2026e-2030e sacado de `notas/regulado.mjs` (precio = retribución unitaria de la CNMC e indexación del resto regulado; volumen = RAB que se amortiza; otros = obras de Castor e ingresos no regulados) y mercado final = retribución reconocida del transporte y la regasificación del sector en 2032 (940,1 M [23], último año con cifra de la CNMC; 2033-2035 no tienen metodología). No cambia supuestos, precio ni fecha de corte. Word «Enagás - 2026-10-07 v3.docx» y PDF.
+
+| | v2 | v3 |
+|---|---|---|
+| Recomendación / convicción | Mantener / Baja | igual |
+| Valor objetivo (nuestro WACC 5,63 %) | 13,97 EUR (RTE −7,7 %, asimetría 0,27) | igual |
+| Con la prima del mercado (WACC 5,30 %) | 14,66 EUR (RTE −3,5 %, asimetría 0,54) | igual |
+| Comprar por debajo de / vender por encima de | 13,61 / 16,41 EUR | igual |
+| Sostenibilidad del crecimiento | — | **Sí** (−0,3 % anual proyectado; reinversión −819 M, −48 % del NOPAT; cuota 100,6 % mecánica, 73,5 % en el mismo perímetro) |
+
+- **Por qué «Sí».** Proyectamos casi nada (−0,3 % anual) y lo que hay sale de la tarifa ya publicada por la CNMC (TRF del 6,46 % desde 2027) [22, 23], no de capital nuevo ni de ganar cuota. Hasta 2032 el capex queda por debajo de la amortización: la reinversión es negativa y el motor no calcula el crecimiento financiable ni el rendimiento del capital nuevo. Los tres controles nuevos pasan (puente, cuota); 17 de 18 correctos y 1 explicado (regresión). No hay recorte.
+- Síntesis: frase del veredicto en «El negocio»; para seguir en ≤ 650 palabras se acortan los catalizadores y se quita «Sin DCF en tres etapas…» (sigue en `dcf.etapa2`). 647 palabras.
+
+**Fallos del sistema vistos**
+1. **Cuota con perímetro distinto.** El motor divide los ingresos del grupo (con almacenamiento, GTS y otros, ≈ 255 M en 2032e) entre la retribución del transporte y la regasificación del sector: sale un 100,6 % «frente al 73,5 %» en la tabla del Word, aunque en el mismo perímetro la cuota no cambia. Falta un campo de ingresos del perímetro (lo mismo que en Krones o CAF).
+2. **«Activos ligeros» con desinversión.** Con reinversión negativa (−819 M), el texto del motor dice «activos ligeros» y «comprador en serie»: en una regulada es una base de activos que se amortiza sin reponerse. Se dice en la justificación.
+3. **El mercado final de una regulada no llega al último año explícito** (la CNMC publica hasta 2032 y el DCF va hasta 2035): se usa `periodo: "2032e"`, que el motor acepta.
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 14,24 EUR, rentabilidad −6,1 %, señal Mantener (`revision-12m-2026-10-13.md`).
