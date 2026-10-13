@@ -64,3 +64,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 1. La tabla «La decisión» dice «sin inversión neta» siempre que el negocio se clasifica como de activos ligeros (< 15 % del NOPAT), aunque aquí haya 20.511 M de reinversión neta. Arreglo: «reinversión baja (12 % del NOPAT)».
 2. La cuota implícita divide las ventas totales del grupo; en conglomerados con cuota de un subconjunto de segmentos haría falta un campo `ingresos_perimetro_pct` (o mercado_final por segmentos) para no dejarla en null.
 3. El cambio de la regla combinada del 10-oct mueve los niveles de los informes anteriores sin tocar datos; un informe regenerado con el motor nuevo contradice su síntesis si no se reescribe (aquí, 422,71 frente a 402,62).
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 497,6 EUR, rentabilidad 34,0 %, señal Comprar (`revision-12m-2026-10-13.md`).
