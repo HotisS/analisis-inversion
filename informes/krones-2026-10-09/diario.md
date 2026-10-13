@@ -19,3 +19,25 @@ Comprar, convicción media. Precio 104,00 EUR (cierre 8-oct). Objetivo 131,42 EU
 5. **Fuente del puente**: A no encontró los arrendamientos a 30-jun (los dio de diciembre) y D sí, en la tabla de instrumentos financieros del semestral (139,6 M). Arreglo: en lecciones, «en Alemania los arrendamientos del semestral están en la tabla NIIF 7 por categorías».
 6. **Criterio de gobierno con cogestión alemana**: los ocho representantes de los trabajadores van como «Otro externo», y el criterio «ningún otro externo con más de 12 años» falla por uno de ellos (Josef Weitzer), lo que no mide independencia frente al control. Arreglo: tipo propio para representantes de los trabajadores o excluirlos de ese criterio.
 7. **Comparables de márgenes muy superiores**: la mediana da 192 EUR por acción frente a 104; se pesó un 10 %. El motor no avisa de que la empresa queda fuera del rango de margen de la muestra. Arreglo: aviso si el margen de la empresa queda por debajo del percentil 25 de los comparables.
+
+## Actualización v2 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.json`), salida `datos-v2.json`, `Krones - 2026-10-09 v2.docx` y su PDF. Mismo precio (104,00 EUR, cierre 8-oct) y fecha de corte. No se cambia ningún supuesto del DCF.
+
+| | v1 | v2 |
+|---|---|---|
+| Recomendación · convicción | Comprar · Media | Comprar · Media (los criterios sugieren Alta; explicado en la síntesis) |
+| Valor objetivo (WACC 9,08 %) | 131,42 EUR, RTE +29,1 % | 131,42 EUR, RTE +29,1 % |
+| Con la prima del mercado (4,20 %, WACC 7,76 %) | 157,08 EUR, RTE +53,7 % | 157,08 EUR, RTE +53,7 % |
+| Comprar por debajo / vender por encima | 138,91 / 173,47 EUR | 127,74 / 173,47 EUR |
+| Sostenibilidad del crecimiento | (no existía) | **Sí**: 3,1 % anual proyectado; financiable al ROIC actual 3,7 %; capital nuevo al 10,8 % (histórico incremental 31,7 %); reinversión del 21 % del NOPAT |
+
+- **Veredicto Sí**: el caso base crece un 3,1 % anual, en línea con su mercado (maquinaria +3 %, bebidas envasadas +2,6 %, PET +4,8 %) y por debajo de 2022-2025. Las tres pruebas pasan sin control: puente volumen/precio cuadra (2026e-2029e: volumen 2-2,5 %, precio 1,3-1,5 %, divisa −1,5 en 2026e; reparto estimación propia), la reinversión financia más de lo que pedimos y el capital nuevo rinde menos que el histórico.
+- **`mercado_final` en null**: la cuota del 25 % es solo del segmento de llenado y envasado (4.774 M de 5.664 M) y el motor la compararía con las ventas del grupo. Cálculo a mano en la justificación: segmento al ritmo del grupo (≈ 6.460 M en 2035e) frente a un mercado de ≈ 19.000 M al +3 % (≈ 25.500 M) = 25,3 %, la cuota de hoy.
+- **Umbral de compra 138,91 → 127,74 EUR**: no es opinión, es el motor actual (un Comprar solo relativo exige ahora ≥ 5 % con nuestro coste de capital). Actualizados la síntesis y `cambiaria_recomendacion[0]`.
+- **Convicción**: el control nuevo sugiere Alta (dos reglas Comprar, RTE 29,1 %, asimetría 2,58). Se mantiene Media porque es cíclica (−16,1 % en 2020), los pedidos llevan tres años planos y el valor depende de cuánto dure el margen; dicho en la síntesis con qué la subiría o bajaría.
+
+**Fallos del sistema vistos**
+1. La prueba de cuota del motor divide las ventas del **grupo** entre el mercado; cuando la cuota publicada es de un segmento (aquí el 84 % de las ventas), no hay forma de indicar el perímetro y hay que dejar `mercado_final` en null y hacerla a mano. Arreglo: un campo opcional `mercado_final.ingresos_pct` (peso del segmento) o `segmento`.
+2. Al recalcular un informe viejo con el motor nuevo cambian cifras que no dependen de la actualización (umbral de compra) y aparecen controles nuevos (convicción); el script tiene que buscar a mano qué textos citan las cifras viejas. Arreglo: que el motor liste las cifras de `calc` que cambian frente al `calc` anterior.
+3. El primer `soffice --convert-to pdf` con ruta relativa no generó el PDF y no dio error (probablemente otra instancia de LibreOffice abierta en paralelo); con rutas absolutas funcionó.
