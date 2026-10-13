@@ -98,3 +98,33 @@ Sin investigación nueva. Script: `notas/actualizacion-v3.mjs` (parte de `datos-
 **Fallos del sistema vistos en esta actualización**
 1. `etapa2` arranca del crecimiento del último año explícito. Los informes hechos antes del cambio convergen al terminal dentro de la proyección, como pedía el prompt, así que la etapa añade casi nada (+3,8 %). Para que pese hay que subir el crecimiento de los últimos años explícitos. Eso es rehacer supuestos, no actualizar, y el prompt no dice qué hacer con un informe antiguo.
 2. El motor no da la prima a la que cambia la regla relativa.
+
+## Actualización v4 (13 oct 2026): sostenibilidad del crecimiento y caso base al crecimiento financiable
+
+Sin investigación nueva. Script: `notas/actualizacion-v4.mjs` (parte de `datos-v3.json`), salida `datos-v4.json`, `Indra - 2026-10-06 v4.docx` y su PDF. Mismo precio (59,72 €) y fecha de corte (6-oct-2026); sin fuentes nuevas. La prueba falló con los supuestos de v3 y, siguiendo la lectura prudente (decisión del usuario del 13-oct), el recorte del base va en esta misma versión.
+
+| | v3 | v4 |
+|---|---|---|
+| Recomendación · convicción | Mantener · Media | Mantener · **Baja** (las reglas discrepan; la sugerida también es Baja) |
+| DCF (WACC 9,11 %) | 56,99 € | 50,19 € |
+| Valor objetivo | 58,59 €, RTE −1,4 %, asimetría 0,57x | 54,54 €, RTE −8,2 %, asimetría 0,20x |
+| Objetivo con la prima del mercado (WACC 7,98 %) | 66,22 €, RTE +11,4 %, asimetría 1,70x | 61,54 €, RTE +3,5 %, asimetría 0,90x |
+| Regla absoluta / relativa | Mantener / Mantener | **Vender** / Mantener (manda la relativa) |
+| Comprar por debajo / vender por encima | 57,83 / 73,94 € | 52,19 / 66,16 € |
+| Crecimiento medio proyectado · financiable | 10,1 % · 3,4 % (reinversión 18 % del NOPAT) | 8,7 % · 5,6 % (reinversión 31 %); 2027e-2032e: 5,3 % |
+| Capital nuevo (tope 1,25 × 23,3 % = 29,1 %) | 53,7 % (falla) | 28,9 % (pasa) |
+| Sostenibilidad | — | **En parte** |
+
+- **Supuestos cambiados.** Capex 5,0/4,6/4,3/4,1/4,0/3,9/3,8 % → 6/6/6/6/5,5/4,5/3,8 % (2026e-2032e): el ritmo del 1S26 (205 M, ≈ 6 % de las ventas, fábricas de vehículos y satélites) [6], que el propio informe ya anunciaba («el ROIC de 2026-2027 será menor»). Crecimiento 2028e-2032e 10/8/6/4,5/3 % → 8/5/3,5/3/2,5 %; 2026e (+29 %, guía) y 2027e (+10 %, cartera) igual. Márgenes, WACC, terminal y escenarios, igual.
+- **Por qué las dos palancas.** Bajar solo el crecimiento no arregla la prueba: el circulante (12 % de las ventas) baja con él, la reinversión cae y el capital nuevo sigue rindiendo ≈ 51 % (2027e-2032e al 5-2,5 %). Subir solo el capex en toda la proyección hunde el terminal (con capex del 5,5 % fijo, DCF de 44,53 €). El capex alto hasta 2029 y la cola de crecimiento más baja son el recorte menor que pasa el control (28,9 % frente a 29,1 %) y deja 2027e-2032e (5,3 %) por debajo del financiable (5,6 %). El 8,7 % medio incluye el +29 % de 2026e: guía, y 9,5 puntos de compras cuyo capital ya está en el balance de 2025.
+- **Puente** 2026e-2029e (volumen + precio + otros): 18,5 + 1 + 9,5 = 29; 10 + 1 − 1 = 10 (venta de BPO y Business Consulting); 7 + 1 = 8; 4 + 1 = 5. Reparto entre volumen y precio, estimación propia: Indra no publica precios. **Mercado final en null**: `competencia.cuota_pct` es un hueco del informe (no hay cuotas por contratista).
+- **Señal y convicción.** La absoluta pasa a Vender (RTE −8,2 % con un bajista de −50,2 % que pesa más del doble que el alcista); la relativa sigue en Mantener (+3,5 %), y manda. La convicción baja a Baja porque las reglas discrepan; la síntesis lo dice. El nivel de compra ya bajaba de 57,83 a 56,07 € con los datos de v3 por el motor del 10-oct (Comprar solo relativo exige ≥ 5 % con nuestro WACC); con el recorte, 52,19 €.
+- **Escenarios sin tocar**, pero el bajista empeora (34,64 → 29,72 €): sobre la cola nueva, −3 puntos dejan 2031e-2032e en 0 % y −0,5 %, con el capex más alto.
+- Síntesis reescrita (649 palabras), tesis, visión diferencial, `en_contra`, `cambiaria_recomendacion` (fuera el disparador de la prima del 3,8 %: ya no da Comprar), `dcf.justificacion` (crecimiento, inversión, terminal 8,3x), `dcf.lectura`, narrativa del base, comentarios de escenarios y valoración, y efecto en valor de dos riesgos (−50 % bajista; −22 % del DCF por 2 puntos de margen: la v3 decía −9 %, que no salía de la tabla de sensibilidad). Cobertura del Word: 87,3 %, sin avisos.
+
+**Fallos del sistema vistos**
+1. El ROIC incremental histórico del motor (23,3 %, 2021-2025) lo hunde el salto de perímetro: el capital de 2025 incluye Hispasat e Hisdesat (+701 M) sin su beneficio. De 2021 a 2024 fue del 69 % (142 M de NOPAT sobre 206 M de capital). El tope del control (1,25 veces) sale de una referencia distorsionada. Arreglo: permitir un año base pro forma o excluir del incremental el año del salto de perímetro.
+2. «Crecimiento financiable = ROIC × reinversión» supone que el capital nuevo rinde el ROIC medio; con circulante del 12 % y poca inversión neta, el financiable casi no se mueve al bajar el crecimiento (≈ 0,28 × g + 1,4 %), así que recortar crecimiento no cierra la prueba. Arreglo: que el motor diga qué parte del hueco es reinversión y cuál crecimiento, y dé la sensibilidad.
+3. El crecimiento medio de la tabla incluye la compra de 2026e (9,5 puntos) aunque su capital ya está en la base; con el puente, el motor podría restar `otros_pct` de compras.
+4. El recorte del base cambia los escenarios sin tocarlos (son desplazamientos): el bajista pasa a −50 % y mueve la regla absoluta a Vender. El encargo dice «normalmente no tocar los escenarios»; convendría que el motor avise cuando el bajista empeora más de 10 puntos por un cambio del base.
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 45,98 EUR, rentabilidad −22,5 %, señal Vender (`revision-12m-2026-10-13.md`).
