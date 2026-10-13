@@ -60,3 +60,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 2. La prueba de cuota divide los ingresos de todo el grupo por el mercado: no sirve cuando `competencia.cuota_pct` es de unas divisiones (aquí 3 de 5). Arreglo: admitir en `mercado_final` unos `ingresos_perimetro_pct` (peso de las divisiones en el perímetro) o un campo con los ingresos del perímetro al final.
 3. El crecimiento medio proyectado (3,9 %) incluye el año fijo 2026e (+2,5 %, con divisa y desinversión), que rebaja la media frente a lo que de verdad pide la proyección (4,0-4,5 %).
 4. La cobertura del Word baja (93,1 % → 89,6 %) por campos nuevos de la plantilla, no por datos: con `datos.json` sin tocar la plantilla actual da 86,6 %.
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 101,0 EUR, rentabilidad 44,3 %, señal Comprar (`revision-12m-2026-10-13.md`).
