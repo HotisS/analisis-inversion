@@ -24,3 +24,5 @@ Informe del repo más noticias de septiembre y octubre (búsqueda web; sin desca
 - **Sin fecha:** vender ante una sanción de la CFPB o precios máximos en Medicaid; por encima de 208,83 USD, vender por valoración.
 
 Fuentes: HousingWire (bi-merge), Scotsman Guide (Pulte), Finviz (fecha del 3T26), Barchart y MarketBeat (2T26), Fannie Mae LL-2026-06, Trading Economics, Investing.com, Senado de EE. UU. (Warren, Wyden, Sanders); `datos-v2.json` y `revision-12m-2026-10-13.md`.
+
+**Decisión final (13-oct, noche): vender.** El usuario no acepta la excepción a la regla de calidad: sostenibilidad «En parte» y ROIC contable bajo el WACC. Ver `informes/cartera-concentrada-2026-10-13.md` (versión 4).
