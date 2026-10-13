@@ -69,3 +69,27 @@
 ## Nota sobre las herramientas
 - **Qué ahorraron.** `prompt-de.mjs` (cada subagente leyó solo su parte); `descargar.mjs` (PDF de VAT, SEMI vía réplicas, EDGAR para los comparables, todo con texto al lado y búsqueda por grep); `bolsa.mjs` (precio, rango, volumen, rentabilidades, beta, caída máxima y cierres de diez ejercicios en una llamada, sin mezclar total y precio); `integrar.mjs` (96 fuentes de cuatro notas renumeradas sin escribir un script de fusión, y retirada automática de huecos resueltos); los controles del motor (señalaron la fragilidad de los comparables y el salto LTM→NTM, que obligaron a explicarlos); `lecciones.md` (MarketScreener con `descargar.mjs`, regla de las cifras de buscador, comparables con ejercicios no naturales).
 - **Qué les falta.** Escenarios por perfil anual y variantes de robustez en el motor; herramienta de comparables; render por páginas; detección de tablas descolocadas; fuentes suizas y de transcripciones en `lecciones.md`; aviso de claves desconocidas en el integrador; formato del eje en el gráfico de síntesis.
+
+## Actualización v3 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v3.mjs` (parte de `datos-v2.json`), salida `datos-v3.json`, `VAT Group - 2026-10-06 v3.docx` y su PDF. Sin fuentes nuevas; mismo precio (698,20 CHF) y corte (6-oct). Supuestos del DCF sin cambios.
+
+| | v2 | v3 |
+|---|---|---|
+| Recomendación · convicción | Vender · Baja | Vender · Baja |
+| Valor objetivo (WACC 8,12 %) | 272,01 CHF, RTE −60,0 %, asimetría −0,63x | igual |
+| Objetivo con la prima del mercado (WACC 6,33 %) | 348,90 CHF, RTE −49,0 %, asimetría −0,34x | igual |
+| Regla absoluta / relativa | Vender / Vender | Vender / Vender |
+| Niveles | Comprar < 282,35; Vender > 395,50 (síntesis con los de v1: 238,61 / 305,64) | Comprar < 265,48; Vender > 395,50 (síntesis y `cambiaria_recomendacion` corregidas) |
+| Sostenibilidad del crecimiento | — | **Sí** (9,1 % medio proyectado, 8,3 % compuesto 2025-2035; reinversión del 10 % del NOPAT: «sin inversión neta» para el motor) |
+
+- **Puente 2026e-2029e**: volumen 30/37/11/−16, precio 1/1/1/1, otros (divisa) −7,4/0/0/0. 2026e: el 1S26 cayó un 8 % en francos y quedó plano a tipo constante [9]. Reparto volumen/precio, estimación propia: VAT no publica subidas de precio.
+- **`mercado_final` en null**: la cuota del ≈ 70 % es del nicho de válvulas para semiconductores (unidad Semiconductors sin adyacencias, 632,7 M de 1.073,5 M). Prueba a mano: nicho de ≈ 900 M en 2025 al ritmo del WFE de SEMI (+23 / +21,8 / +14,1 %) = 1.538 M en 2028e; ventas de VAT en el nicho al ritmo del grupo = 1.209 M → cuota ≈ 79 % (límite 105 %), en línea con el objetivo de la empresa (> 80 % en 2029). Después de 2028 el base crece un 2,2 % anual: la cuota no sube más. Tasas de SEMI en USD; en CHF la cuota saldría algo mayor, lejos aún del límite.
+- **Reinversión**: 494 M acumulados (10 % del NOPAT), capex medio del 5,4 % frente a una amortización del ≈ 4,6 %. No es un negocio de activos ligeros (circulante del 24 % de las ventas): la reinversión es baja porque hay capacidad instalada para hasta 2.500 M de ventas [7] y el base acaba en 2.390 M, y porque el valle de 2029e libera circulante. Capital nuevo a mano: (594 − 227) / 494 = 74 % (56 % a margen constante), bajo el límite de 1,25 × 61,2 % = 76,5 %. Ninguna prueba falla: no se recorta el base (no aplica `encargo-recorte.md`).
+- **Por qué no cambia nada más**: la tesis es de valoración (el precio pide un 26,1 % anual o una rentabilidad del 3,8 %), no de calidad. El nivel de compra baja de 282,35 a 265,48 CHF por las reglas de niveles del motor actual, no por la sostenibilidad. Textos cambiados: frase del veredicto en «El negocio», niveles en «Qué cambiaría la decisión» y en `cambiaria_recomendacion`; tres recortes menores para quedar en 645 palabras.
+
+**Fallos del sistema vistos**
+1. La síntesis y `cambiaria_recomendacion` de v2 conservaban los niveles de v1 (238,61 / 305,64) mientras la tabla daba 282,35 / 395,50: la actualización v2 no tiene script ni sección en el diario. Arreglo: un control que compare las cifras de nivel citadas en la síntesis con `calc.recomendacion`.
+2. Con reinversión < 15 % del NOPAT el motor no calcula el rendimiento del capital nuevo, aunque aquí es la prueba útil (74 % frente a un límite del 76,5 %, muy cerca). Arreglo: calcularlo siempre que la reinversión sea positiva, y decir «reinversión baja» en vez de «sin inversión neta».
+3. El «crecimiento medio proyectado» es la media aritmética (9,1 %) e incluye el año fijo (+23,6 %); en una cíclica que sale de un suelo, la tasa compuesta (8,3 %) es la comparable con la historia.
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 685,29 CHF, rentabilidad −0,8 %, señal Mantener (`revision-12m-2026-10-13.md`).
