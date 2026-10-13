@@ -29,6 +29,7 @@ Lo que cualquier sesión de Claude, en cualquier equipo, tiene que saber antes d
 - Cartera vigente: `informes/cartera-concentrada-2026-10-13.md`.
 
 ## Decisiones
+- 13-oct-2026 (noche): el usuario **confirma vender Puig e ICE** tras revisarlas con el impulso de octubre (memorandos en sus carpetas). Duda de Grifols (volatilidad y deuda); alternativa sin Grifols calculada: misma rentabilidad (ponderada +18,6 %, base +12,0 %), con el dinero en Nemetschek, Uber y Viscofan. Pendiente de su decisión.
 - 13-oct-2026 (noche): cartera versión 7: **no se amplía ninguna posición existente** (Grifols se queda en 120, SAP en 7, Daiichi en 100); el dinero va a Nemetschek (31) y Viscofan (31). Ponderada del +15,6 % al +18,6 %; base del +9,1 % al +12,0 %.
 - 13-oct-2026 (noche): cartera versión 6: **Dunelm fuera** (al usuario no le convence el comercio minorista); su dinero va a Nemetschek, Uber y SAP. Ponderada del +15,6 % al +18,7 %; base del +9,1 % al +12,0 %.
 - 13-oct-2026 (noche): cartera versión 5: **Alphabet se queda** (decisión del usuario); se financia bajando Nemetschek, Uber, Dunelm y Viscofan. Ponderada del +15,6 % al +18,7 %; base del +9,1 % al +11,8 %.
