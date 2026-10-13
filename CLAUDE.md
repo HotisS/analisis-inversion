@@ -11,7 +11,7 @@ Para empresas, el procedimiento está en `.claude/commands/analiza-empresa.md` (
 ## Dos conceptos que no hay que confundir (13-oct-2026)
 
 1. **Metodología del informe**: la del DCF. La «nueva», desde el 10-oct, lleva la prueba de **sostenibilidad del crecimiento** (`dcf.sostenibilidad`). Si la prueba falla, se rebaja el caso base. La columna «Metodología» de `seguimiento.xlsx` dice qué informes la tienen. Para pasar uno viejo: actualización rápida con `notas/actualizacion-vN.mjs` (sin investigación nueva).
-2. **Objetivo realista a 12 meses**: el informe toma el valor intrínseco como objetivo; para comprar y para la cartera se usa `herramientas/objetivo12m.mjs` (regla y revisiones manuales en `verticales/empresa/objetivo-12m.md`). Columnas «… 12 m realista» del Excel.
+2. **Rentabilidad a 12 meses (v2)**: PER propio × BPA propio, empresa por empresa (`verticales/empresa/objetivo-12m.md`); el resultado va a `verticales/empresa/objetivo12m-revisados.json` y a las columnas «… 12 m» del Excel. Ordena compras y cartera; el valor intrínseco del informe es el «valor real».
 
 **Lo que se decida en otro sitio (chat de claude.ai, Cowork, otro equipo) no existe hasta que está en el repo**: si el usuario cita un método, una revisión o una cartera que no está en el repo, pídele el texto o reconstrúyelo, y déjalo escrito aquí (método en `verticales/`, decisión en `MEMORIA.md`) antes de aplicarlo.
 

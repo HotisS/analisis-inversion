@@ -1,46 +1,35 @@
-# Objetivo realista a 12 meses (método del 12/13-oct-2026)
+# Rentabilidad esperada a 12 meses: PER propio × BPA propio (método «v2», 12-oct-2026)
 
-**Qué problema resuelve.** Los informes (`motor/calcular-empresa.mjs`) toman el valor intrínseco de la síntesis (DCF, escenarios y comparables ponderados) como «precio objetivo a 12 meses». Eso supone que el mercado cierra todo el descuento en un año, e infla la rentabilidad esperada de las empresas baratas (Trigano +57 %, Wolters Kluwer +55 %) y la pérdida de las caras. Para decidir compras y la cartera se usa este objetivo realista. El valor intrínseco sigue siendo la referencia de «valor real del activo».
+**Origen.** Lo definió el usuario el 12-oct en el hilo del proyecto de claude.ai «PROYECTOS GH - INV», con la revisión a fondo de Alphabet (que pasó de −28 % a +1,5 %). Ese hilo no tenía acceso al repo y aquí no llegó nada. El 13-oct se copió el método desde el texto que pegó el usuario. **Una regla anterior de este archivo (cerrar la mitad del descuento al valor intrínseco, «k») era una reconstrucción equivocada y queda retirada.**
 
-**Origen.** El usuario lo pidió el 12-oct en el hilo del proyecto de claude.ai «PROYECTOS GH - INV», que revisó a mano Alphabet y las seis compras del rebalanceo sin poder abrir el repo. Ese hilo no dejó su regla en el repo. El 13-oct se reconstruyó la regla con sus resultados y se dejó aquí y en `herramientas/objetivo12m.mjs` (sesión de Claude Code «¿Puedo?»).
+**Por qué.** El informe toma el valor intrínseco del DCF como objetivo a 12 meses. Con flujos de caja deprimidos (capex de IA en Alphabet) o con un descuento que el mercado tardará años en cerrar, la cifra no sirve para comparar compras a un año. Este método valora a 12 meses con beneficio y múltiplo propios. **El consenso solo se usa de contraste, nunca en el cálculo.**
 
-## La regla
+## Pasos (por empresa, con criterio)
 
-```
-objetivo_12m     = precio + k × (valor_intrínseco − precio)
-k                = 0,5 por defecto (en un año se cierra la mitad del descuento o de la prima)
-                 = 0,25 con convicción «Baja» o con un evento binario en los próximos ~3 meses (EVENTOS en la herramienta)
-recorte          = si objetivo_12m > objetivo máximo del consenso, se queda en ese máximo
-                   (el consenso solo recorta: no sube nuestro objetivo; si su objetivo medio no está entre 0,4 y 2,5 veces
-                   el precio, se entiende que está en otra unidad, como GBp frente a GBP o un ADS, y no se usa)
-rentabilidad_12m = objetivo_12m / precio − 1 + dividendo
-señal_12m        = Comprar ≥ 15 % · Vender ≤ −10 % · Mantener en medio (los umbrales del motor)
-```
+1. **Ejercicio objetivo**: el que mirará el mercado dentro de 12 meses. Es el primero que cierra más de 18 meses después de la fecha de corte; con corte en octubre de 2026 y cierre en diciembre, 2028e.
+2. **BPA propio en tres escenarios**, a partir de la proyección del propio informe (`dcf.anios`, sobre las ventas del último ejercicio real):
+   - ventas × margen EBITDA − amortización (% de ventas del DCF) = EBIT;
+   - − resultado financiero neto (intereses de la deuda; sin ganancias de participadas que no se repiten; ingresos de la caja solo si son recurrentes);
+   - − impuestos (tipo del DCF) − minoritarios − dividendos de preferentes;
+   - ÷ acciones: las de hoy más la dilución conocida (ampliaciones, convertibles, ATM) y **sin recompras que no estén anunciadas**.
+   - Escenarios: los desplazamientos de crecimiento y margen de `escenarios.casos` del informe en los años no fijos. Si la amortización es de capex ya comprometido, no se baja en el bajista.
+3. **PER propio**, con la historia del PER de los últimos 12 meses al cierre de cada año (precio de cierre ÷ BPA real, del informe):
+   - **Base**: el más prudente entre el PER actual sobre el BPA propio del ejercicio siguiente y la mediana de cinco años. Se contrasta con la media de los comparables (`comparables`).
+   - **Bajista**: el mínimo de cinco años, si queda por debajo del precio de hoy; si no, el siguiente más bajo que lo haga. Se contrasta con el percentil 25 de los comparables.
+   - **Alcista**: la media histórica larga (ocho años), **sin años de pérdidas, de burbuja o con un BPA atípico**: se excluyen y se dice cuáles.
+4. **Objetivo a 12 meses** = media simple de bajista, base y alcista (PER × BPA de cada uno). **Rentabilidad** = objetivo / precio − 1 + dividendo. **Asimetría** = alcista frente a bajista.
+5. **Señal**: Comprar ≥ 15 %, Vender ≤ −10 %, Mantener en medio. La convicción se razona como en el informe.
+6. **Contraste con el consenso** (no entra en el cálculo): el BPA de los analistas del mismo ejercicio y el objetivo medio. Si nos separamos más de un 10 %, se explica de dónde sale la diferencia (ventas, margen, dilución, múltiplo).
+7. **Comparar**: la cifra se pone junto a las demás (cartera y compras) y se dice si cambia alguna decisión.
 
-`valor_intrínseco` = `calc.sintesis.valor_objetivo` de la **última versión** del informe (con nuestro WACC, no con la prima del mercado: prima el valor real). Precio y dividendo, los del informe.
+## Dónde queda
 
-**Revisiones manuales.** `verticales/empresa/objetivo12m-revisados.json` guarda las del hilo del 12-oct y **mandan sobre la regla**:
-
-| Empresa | Antes (DCF) | Revisión 12-oct | Regla, para comparar |
-|---|---|---|---|
-| Alphabet | −28 % | ≈ 0 %, Mantener (valoración rehecha: capex de IA normalizado) | — |
-| Trigano | +57 % | +27 % | +30 % |
-| Wolters Kluwer | +55 % | +28 % | +29 % |
-| Auto Trader | +42 % | +26 % | +22 % |
-| Deckers | +31 % | +16 %, Mantener | +16 % |
-| Coloplast | +29,5 % | +9 %, Mantener | +11 % |
-| Technip Energies | +40,5 % | +15 % (esperar al 29-oct) | +13 % |
-
-## Cómo se usa
-
-- `node herramientas/objetivo12m.mjs` imprime la tabla de todos los informes.
-- `node herramientas/seguimiento.mjs` la lleva al Excel: columnas «Objetivo 12 m realista», «Rentabilidad 12 m realista», «Señal 12 m» y «Origen del objetivo 12 m».
-- **Cartera y compras**: se ordenan por la rentabilidad a 12 meses realista. El valor intrínseco y la rentabilidad del informe se dan al lado como «valor real».
-- **Al cerrar un informe nuevo**: comunicar las dos rentabilidades, la del informe (al valor intrínseco) y la realista a 12 meses.
-- Una revisión manual nueva (empresa a fondo) va a `objetivo12m-revisados.json`, con fecha y nota, y se dice en el diario de la carpeta.
+- Revisión de cada empresa: `informes/<carpeta>/revision-12m-AAAA-MM-DD.md`, con la tabla de BPA (ventas → EBIT → beneficio → BPA por escenario), la tabla de PER histórico, la tabla de escenarios (supuesto, cálculo, objetivo y rentabilidad), el contraste con el consenso y una línea en `diario.md`.
+- Resultado: `verticales/empresa/objetivo12m-revisados.json` (`revisados.<TICKER>`: fecha, objetivo, rentabilidad, señal y nota con los tres cálculos). **Manda sobre todo lo demás.**
+- `herramientas/objetivo12m.mjs`: calculadora de apoyo. Hace los pasos 1-4 con los datos del informe, sin ajustes de dilución ni de partidas financieras y con la media de todos los años de PER. **No es la revisión**: aplicada a ciegas da disparates (PER de burbuja en el alcista, BPA en otra base). Sirve de punto de partida. Con `--sin-revisiones` ignora el JSON.
+- `seguimiento.xlsx`: columnas «Objetivo 12 m», «Rentabilidad 12 m», «Señal 12 m» y «Origen del objetivo 12 m». Solo se rellenan con revisiones hechas: lo que no tiene revisión sale vacío.
+- **Cartera y compras**: se ordenan por esta rentabilidad a 12 meses. El valor intrínseco del informe se da al lado como «valor real».
 
 ## Qué no es
 
-- No es la «metodología nueva» del 10-oct. Esa es la **sostenibilidad del crecimiento** en el DCF: `dcf.sostenibilidad`, columna «Metodología» del Excel. Son dos cosas distintas:
-  1. **Metodología del informe** (columna «Metodología»): la del DCF. «Nueva» = con la prueba de sostenibilidad. El 13-oct se pasaron a «Nueva» la cartera y todas las Comprar (actualización rápida, `notas/actualizacion-vN.mjs`). Si la prueba falla, se rebaja el caso base al crecimiento financiable.
-  2. **Objetivo a 12 meses** (este documento): cómo se pasa del valor intrínseco a una rentabilidad esperada en un año.
+No es la «metodología nueva» del informe del 10-oct, la **sostenibilidad del crecimiento** en el DCF (columna «Metodología» del Excel). Son dos cosas distintas: el método del informe y el paso a una rentabilidad a 12 meses.
