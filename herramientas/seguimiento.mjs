@@ -13,6 +13,7 @@ import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { escribirZip } from '../motor/rellenar.mjs';
 import { conviccionSugerida } from '../motor/conviccion.mjs';
+import { objetivo12m } from './objetivo12m.mjs';
 
 const argv = process.argv.slice(2);
 const salida = argv.includes('--salida') ? argv[argv.indexOf('--salida') + 1] : 'seguimiento.xlsx';
@@ -72,6 +73,7 @@ for (const dir of readdirSync('informes', { withFileTypes: true }).filter((e) =>
     criterios: CRITERIOS.map(([, , f]) => { try { return f(d); } catch { return null; } }),
     // Metodología nueva (desde el 10-oct-2026): DCF con la prueba de sostenibilidad del crecimiento.
     metodologia: d.calc.dcf?.sostenibilidad ? 'Nueva' : 'Vieja',
+    o12: objetivo12m(d),
     informe: `informes/${dir}/${existsSync(join('informes', dir, pdf)) ? pdf : base}`,
   });
 }
@@ -94,7 +96,7 @@ const COLS = [
   ['Iteración', 9], ['Empresa', 18], ['Ticker', 9], ['Fecha', 11], ['Geografía', 13], ['Sector', 20], ['Señal', 11], ['Convicción', 11], ['Convicción según criterios', 11], ['Divisa', 7],
   ['Precio actual', 11], ['Precio objetivo 12 m', 12], ['Objetivo con la prima del mercado', 13], ['Rentabilidad total esperada', 12],
   ['Rentabilidad con la prima del mercado', 13], ['Objetivo analistas', 11], ['Comprar por debajo de', 11], ['Vender por encima de', 11],
-  ['Regla absoluta', 10], ['Regla relativa', 10], ...CRITERIOS.map(([c]) => [c, 11]), ['Metodología', 11], ['Informe', 46],
+  ['Regla absoluta', 10], ['Regla relativa', 10], ...CRITERIOS.map(([c]) => [c, 11]), ['Metodología', 11], ['Objetivo 12 m realista', 12], ['Rentabilidad 12 m realista', 12], ['Señal 12 m', 11], ['Origen del objetivo 12 m', 40], ['Informe', 46],
 ];
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const letra = (i) => (i >= 26 ? String.fromCharCode(64 + Math.floor(i / 26)) : '') + String.fromCharCode(65 + (i % 26));
@@ -117,8 +119,10 @@ filas.forEach((f, k) => {
     texto(c(17), f.regla_abs, S.centro), texto(c(18), f.regla_rel, S.centro),
     ...f.criterios.map((v, i) => texto(c(19 + i), v ?? 'n.d.', v ? S[v] : S.centro)),
   ];
-  const ci = 20 + CRITERIOS.length;
-  celdas.push(texto(c(ci - 1), f.metodologia, S.centro));
+  const ci = 24 + CRITERIOS.length;
+  celdas.push(texto(c(ci - 5), f.metodologia, S.centro));
+  celdas.push(num(c(ci - 4), f.o12.objetivo, S.num), num(c(ci - 3), f.o12.rte === null ? null : f.o12.rte / 100, S.pct));
+  celdas.push(texto(c(ci - 2), f.o12.senal, S[f.o12.senal] ?? S.centro), texto(c(ci - 1), f.o12.origen));
   celdas.push(texto(c(ci), f.informe, S.enlace));
   enlaces.push({ ref: c(ci), destino: f.informe });
   filasXml.push(`<row r="${r}">${celdas.join('')}</row>`);
@@ -150,6 +154,9 @@ const criterios = [
   ['Objetivo analistas', 'Precio objetivo medio del consenso de analistas en la fecha del informe.'],
   ...CRITERIOS.map(([c, e]) => [c, e]),
   ['Metodología', 'Nueva: el DCF lleva la prueba de sostenibilidad del crecimiento (puente volumen × precio, cuota implícita y reinversión, con veredicto), en uso desde el 10-oct-2026. Vieja: informe anterior, pendiente de actualizar en rápido (script `notas/actualizacion-vN.mjs`, sin investigación nueva).'],
+  ['Objetivo 12 m realista', 'Método del 12/13-oct-2026 (verticales/empresa/objetivo-12m.md, herramientas/objetivo12m.mjs): precio + k × (valor intrínseco − precio), con k = 0,5 (0,25 con convicción baja o evento binario cercano), recortado al objetivo máximo del consenso. Las revisiones manuales de verticales/empresa/objetivo12m-revisados.json mandan sobre la regla.'],
+  ['Rentabilidad 12 m realista', 'Objetivo 12 m realista sobre el precio del informe, más el dividendo. Es la que se usa para ordenar compras y para la cartera; la «Rentabilidad total esperada» supone que el precio llega al valor intrínseco en 12 meses.'],
+  ['Señal 12 m', 'Con la rentabilidad 12 m realista: Comprar desde el 15 %, Vender desde el −10 %, Mantener en medio (umbrales del motor).'],
   ['n.d.', 'El informe no tiene el dato (por ejemplo, sin consenso o sin lista de gobierno).'],
   ['Informe', 'Ruta del PDF (o del Word si no hay PDF) de la última versión de ese análisis, relativa a la raíz del repo.'],
 ];
