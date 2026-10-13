@@ -62,3 +62,31 @@ Notados por los subagentes (resumen de sus informes):
 - **`herramientas/bolsa.mjs`**: sí, mucho. Precio, rango, volumen, rentabilidades totales frente a SPY e IHI, beta, volatilidad, caída máxima y cierres de cada ejercicio ajustados por el desdoblamiento de 2021, en una sola llamada y sin errores. Le falta la comprobación de sesión abierta y las fechas de los extremos.
 - **`motor/integrar.mjs`**: sí. Sustituye los cuatro scripts de fusión que escribió Inditex (≈ 69 KB entre `construir.mjs`, `redaccion.mjs`, `textos.mjs` y `resumen.mjs`): aquí bastó `propio.mjs` + `supuestos.mjs` + `resumen.mjs`. Renumeró 153 fuentes y tradujo todas las citas sin una sola cita huérfana. Fallos: duplica fuentes con títulos distintos, no deja retirar huecos, las listas no admiten parches y no quita `extra` (fallos 2, 3, 4 y 10).
 - **`lecciones.md`**: sí. Tres lecciones se aplicaron directamente: el EBITDA ajustado del consenso (D lo comprobó y lo cuantificó), no leer el motor (solo un grep del DCF inverso) y la trampa de NIIF 16, que me hizo buscar su equivalente en un arrendador (fallo 1). Le falta lo de EE. UU.: curl bloqueado en EDGAR, el uso de companyfacts, que el BPA de MarketScreener cambia de base según la empresa (GAAP para Intuitive, ajustado para Stryker), que el valor empresa de Stock Analysis no resta las inversiones a largo plazo, la URL del FRED y los sistemas arrendados fuera del capex.
+
+## Actualización v3 (13 oct 2026): sostenibilidad del crecimiento y caso base al crecimiento financiable
+
+Sin investigación nueva. Script: `notas/actualizacion-v3.mjs` (parte de `datos-v2.json`), salida `datos-v3.json`, `Intuitive Surgical - 2026-10-06 v3.docx` y su PDF. Sin fuentes nuevas; mismo precio (404,76 USD) y fecha de corte (6-oct). La prueba fallaba con los supuestos de la v2, así que el recorte (lectura prudente, decisión del usuario del 13-oct) va en la misma versión.
+
+| | v2 | v3 |
+|---|---|---|
+| Recomendación · convicción | Vender · Baja | Vender · Baja (los criterios sugieren Alta) |
+| DCF (WACC 10,10 %) | 226,95 USD | 200,29 USD (Gordon puro: 168,58) |
+| Valor objetivo | 222,49 USD, RTE −45,0 %, asimetría −0,44x | 199,71 USD, RTE −50,7 %, asimetría −0,55x |
+| Con la prima del mercado (4,20 %, WACC 10,10 %) | 222,49 USD, RTE −45,0 % | 199,71 USD, RTE −50,7 % (la prima implícita es la que ya usa el WACC) |
+| Comprar por debajo / vender por encima | 193,34 / 247,41 USD (la síntesis decía 193,47 / 247,21) | 173,55 / 222,08 USD |
+| Crecimiento medio proyectado · financiable al ROIC (30,2 %) | 10,8 % · 5,9 % (reinversión del 20 % del NOPAT) | 9,8 % · 8,1 % (27 % del NOPAT) + ≈ 1,7 puntos de precio y mezcla |
+| Rendimiento del capital nuevo (tope 1,25 × 30,2 % = 37,8 %) | 45,8 % (control falla) | 30,7 % |
+| Sostenibilidad del crecimiento | — | **En parte**; el base ya dentro de lo financiable |
+
+- **Por qué fallaba**: no por el margen (el NOPAT sobre ventas de 2035, 25,5 %, es el de 2025) sino por la inversión: el capex (con los sistemas cedidos en arrendamiento) bajaba del 12 % al 8 % de las ventas con una amortización que sube al 7,5 %, y el capital por unidad de ventas caía de 0,84 a 0,66. Bajar solo el crecimiento no basta (con 2028-2035 entre 1 y 1,5 puntos más bajos, el capital nuevo seguía al 41 %): la inversión neta de la cola era casi cero.
+- **Supuestos cambiados**: capex 2028e-2033e del 11,5/11/10,5/10/9,5/9 % al 12 %, y 2034e-2035e del 8,5/8 % al 11,5 % (nivel de 2025, 12,3 %, con el 51-54 % de las colocaciones en arrendamiento). Crecimiento 2029e-2034e de 12/11,5/11/10/9/7 % a 11/10/9/8/7/6 %. Sin cambios: 2026e (fijo), 2027e-2028e (en el consenso, ±0,2 %), 2035e (5 %), márgenes, WACC, terminal y escenarios.
+- **Puente 2026e-2029e** (reparto estimación propia): volumen 13/11/10,5/9,5 (procedimientos, guía del 13,5-15,5 %), precio y mezcla 2/2/2/1,5 (I&A por procedimiento +2-6 %, ASP de 1,50 a 1,59 M USD), otros 1,8 en 2026e (distribuidores de Italia, España y Portugal y divisa).
+- **Mercado final en null**: la cuota (≈ 83 %) es de unidades multipuerto de 2024, los ingresos incluyen Ion (fuera de la serie de Frost & Sullivan) y la serie acaba en 2028e. A mano: 14.944 M USD en 2028e frente a 18.422 M de mercado, el 81 %, igual que en 2025; después crecemos por debajo del 16,1 % del mercado.
+- **Convicción**: el control nuevo sugiere Alta (las dos reglas y los tres escenarios dan Vender); se mantiene Baja, explicada en la síntesis: la discrepancia es de tasa de descuento (el precio rinde un 5,3 %, lo mismo que el Tesoro) y no hay catalizador con fecha. Textos reescritos: síntesis (650 palabras), tesis, visión diferencial, en contra, niveles, justificación del crecimiento, inversión y terminal, lectura, escenarios, valoración, riesgos y preguntas.
+
+**Fallos del sistema vistos**
+1. El control del motor solo mira el rendimiento del capital nuevo; el «crecimiento financiable por debajo del proyectado» no genera control, y la regla «financiable + precio» se aplica a ojo. Arreglo: un control con `puente_ingresos.precio_pct` medio sumado al financiable.
+2. Bajar el crecimiento apenas mueve la prueba cuando el fallo es de inversión (el circulante y el NOPAT bajan a la vez): el encargo de recorte empieza por el crecimiento y aquí no sirve. Arreglo: en el prompt, «mira primero el capital por unidad de ventas al final de la proyección frente al actual».
+3. La síntesis de la v2 tenía niveles de compra y venta (193,47 / 247,21) que ya no eran los de su `calc` (193,34 / 247,41): mismo fallo que en Zoetis y Fielmann.
+4. La prima implícita del mercado (4,20 %) es la misma que la de nuestro WACC: la fila «con la prima del mercado» repite el objetivo propio y ocupa sitio.
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 469,30 USD, rentabilidad +15,9 % (base +12,6 %), señal Comprar (`revision-12m-2026-10-13.md`).
