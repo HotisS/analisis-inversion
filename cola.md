@@ -1,5 +1,62 @@
 # Cola de análisis de empresas
 
+## Actualización a la metodología nueva (desde el 13-oct-2026)
+
+**Metodología nueva** = la de los informes desde el 10-oct (commit ff3158d): DCF con **sostenibilidad del crecimiento** (puente volumen × precio, cuota implícita, reinversión y veredicto) y **capa de sentimiento** (sección 28, subagente E). Se reconoce en `datos.json` porque lleva `calc.dcf.sostenibilidad` y `sentimiento.lectura`. Los informes del 6 al 9-oct no lo llevan.
+
+**Ya con la metodología nueva (33):** Adobe, Adyen, Amazon, ATOSS, Auto Trader, Betsson, Burkhalter, Coloplast, Constellation Software, CTS Eventim, Deckers, Diageo, Dunelm, Games Workshop, Gartner, Grifols, Hermès, Intuit, Medpace, Nemetschek, Netflix, Paychex, Pluxee, Pro Medicus, Puig, Salesforce, SAP, S&P Global, Technip Energies, Trigano, Uber (iteración 2, 10-oct), UnitedHealth y Verisk.
+
+**Faltan 41**, más Evolution, que no se actualiza: es juego y queda excluida (decisión del 12-oct). Cada actualización es una **iteración nueva** (`/analiza-empresa`): carpeta nueva con la fecha del día, sin tocar la anterior; se parte de ella, se comprueba cada dato a la nueva fecha de corte y la síntesis dice qué ha cambiado. De **tres en tres**, en el orden de la tabla: primero la cartera actual, luego las compras propuestas, después el resto de Comprar (de más a menos rentabilidad esperada), Mantener y Vender. Al cerrar cada una: marca su estado aquí, `node herramientas/seguimiento.mjs`, compárala con `informes/cartera-2026-10-11.md`, commit y push.
+
+Pendiente de vigilar: el resultado del pleno sobre el título restaurante (12-oct). Si fija un tope a la comisión o el Gobierno anuncia el decreto, Edenred pasa a Mantener y se rehacen Edenred y Pluxee en la cartera; la actualización de Edenred lo recoge.
+
+| Tanda | Empresa | Ticker | Informe anterior | Señal anterior (rent. 12 m) | Por qué en este orden | Estado |
+|---|---|---|---|---|---|---|
+| 1 | Edenred | EDEN.PA | 7-oct | Comprar, media (+57,7 %) | Cartera (mayor posición); ley del título restaurante | Pendiente |
+| 1 | Wolters Kluwer | WKL.AS | 8-oct | Comprar, media (+61,8 %) | Mayor compra propuesta (28 títulos); resultados el 4-nov | Pendiente |
+| 1 | Alphabet | GOOGL | 8-oct | Vender, baja (−27,6 %) | Cartera; recorte propuesto | Pendiente |
+| 2 | Zoetis | ZTS | 7-oct | Comprar, media (+31,6 %) | Cartera | Pendiente |
+| 2 | PepsiCo | PEP | 9-oct | Comprar, baja (+23,4 %) | Cartera | Pendiente |
+| 2 | Daiichi Sankyo | 4568.T | 8-oct | Mantener, media (+9,8 %) | Cartera | Pendiente |
+| 3 | Equifax | EFX | 8-oct | Comprar, baja (+15,4 %) | Cartera | Pendiente |
+| 3 | ICE | ICE | 8-oct | Comprar, baja (+6,4 %) | Cartera | Pendiente |
+| 3 | Fluidra | FDR.MC | 8-oct | Comprar, media (+34,5 %) | Alternativa de compra del top 6 | Pendiente |
+| 4 | Lululemon | LULU | 7-oct | Comprar, media (+41,8 %) | Comprar | Pendiente |
+| 4 | Fielmann | FIE.DE | 9-oct | Comprar, media (+36,0 %) | Comprar | Pendiente |
+| 4 | Novo Nordisk | NOVO-B.CO | 8-oct | Comprar, media (+30,8 %) | Comprar | Pendiente |
+| 5 | Krones | KRN.DE | 9-oct | Comprar, media (+29,1 %) | Comprar | Pendiente |
+| 5 | DSV | DSV.CO | 7-oct | Comprar, media (+20,0 %) | Comprar | Pendiente |
+| 5 | Dassault Systèmes | DSY.PA | 7-oct | Comprar, media (+17,9 %) | Comprar | Pendiente |
+| 6 | Viscofan | VIS.MC | 6-oct | Comprar, baja (+12,0 %) | Comprar | Pendiente |
+| 6 | Tomra | TOM.OL | 8-oct | Comprar, baja (+11,2 %) | Comprar | Pendiente |
+| 6 | LVMH | MC.PA | 8-oct | Comprar, baja (+11,1 %) | Comprar | Pendiente |
+| 7 | CAF | CAF.MC | 6-oct | Comprar, baja (+9,3 %) | Comprar | Pendiente |
+| 7 | Cooper Companies | COO | 9-oct | Comprar, baja (+5,2 %) | Comprar | Pendiente |
+| 7 | On Holding | ONON | 6-oct | Comprar, baja (+4,5 %) | Comprar | Pendiente |
+| 8 | bioMérieux | BIM.PA | 8-oct | Comprar, baja (+1,4 %) | Comprar | Pendiente |
+| 8 | Rentokil | RTO.L | 7-oct | Comprar, baja (−2,1 %) | Comprar (señal y rentabilidad no cuadran: revisar) | Pendiente |
+| 8 | Almirall | ALM.MC | 7-oct | Mantener, baja (+4,1 %) | Mantener | Pendiente |
+| 9 | AO Smith | AOS | 9-oct | Mantener, media (+0,2 %) | Mantener | Pendiente |
+| 9 | ICON | ICLR | 9-oct | Mantener, baja (−0,8 %) | Mantener | Pendiente |
+| 9 | Indra | IDR.MC | 6-oct | Mantener, media (−1,4 %) | Mantener | Pendiente |
+| 10 | Olympus | 7733.T | 9-oct | Mantener, media (−1,9 %) | Mantener | Pendiente |
+| 10 | Copart | CPRT | 7-oct | Mantener, media (−4,1 %) | Mantener | Pendiente |
+| 10 | Enagás | ENG.MC | 7-oct | Mantener, baja (−7,7 %) | Mantener | Pendiente |
+| 11 | Microsoft | MSFT | 8-oct | Mantener, baja (−14,3 %) | Mantener | Pendiente |
+| 11 | Rational | RAA.DE | 7-oct | Mantener, media (−16,4 %) | Mantener | Pendiente |
+| 11 | Keyence | 6861.T | 7-oct | Mantener, baja (−17,6 %) | Mantener | Pendiente |
+| 12 | CSL | CSL.AX | 9-oct | Mantener, baja (−20,6 %) | Mantener | Pendiente |
+| 12 | Inditex | ITX.MC | 6-oct | Vender, baja (−15,1 %) | Vender | Pendiente |
+| 12 | Cochlear | COH.AX | 8-oct | Vender, baja (−19,7 %) | Vender | Pendiente |
+| 13 | Fanuc | 6954.T | 7-oct | Vender, baja (−26,6 %) | Vender | Pendiente |
+| 13 | Kongsberg | KOG.OL | 7-oct | Vender, baja (−30,8 %) | Vender | Pendiente |
+| 13 | Vertiv | VRT | 7-oct | Vender, baja (−33,5 %) | Vender | Pendiente |
+| 14 | Intuitive Surgical | ISRG | 6-oct | Vender, baja (−45,0 %) | Vender | Pendiente |
+| 14 | VAT Group | VACN.SW | 6-oct | Vender, baja (−60,0 %) | Vender | Pendiente |
+
+## Cola anterior (cerrada el 12-oct)
+
+
 **Reanudada el 12-oct-2026 (11:15), de 3 en 3.** Hechas: ATOSS, S&P Global, Amazon, Pluxee, Betsson, Technip Energies y Pro Medicus. En curso: Medpace (se cortó por el límite de uso; se cierra desde sus notas). LVMH no se repite: ya tiene informe del 8-oct. Ninguna empresa con informe se repite. **El juego y las apuestas quedan excluidos** de futuros análisis y propuestas (decisión del usuario, 12-oct). Al cerrar cada una se compara con las compras propuestas en `informes/cartera-2026-10-11.md`. Pendiente de vigilar: el resultado del pleno sobre el título restaurante (12-oct); si fija un tope a la comisión o el Gobierno anuncia el decreto, Edenred pasa a Mantener y se rehacen Edenred y Pluxee en la cartera.
 
 Se analizan **de tres en tres, en paralelo** (desde el 12-oct; antes de cuatro en cuatro y, hasta el 10-oct, de dos en dos) (`/analiza-empresa`), en el orden de la tabla. Al cerrar cada empresa: marca su estado aquí, `node herramientas/seguimiento.mjs`, commit y push. La cola vive en el repo para que cualquier equipo pueda seguirla tras un `git pull`.
