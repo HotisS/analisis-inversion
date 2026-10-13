@@ -51,3 +51,25 @@
 5. **Corte de sesión a las 18:55** con los subagentes a medio cerrar: se perdió el cierre de textos de A. Arreglo: el guardado por partes funcionó (no se perdió nada guardado); mantenerlo.
 6. **El consenso mezcla bases** (EBITDA ajustado, BPA de 2026e GAAP). D lo detectó; el ajuste del 0,7 % de ventas se aplicó con `base_ebitda: "ajustado"`.
 7. **Cuota de mercado de Encompass/MSP**: núcleo sin dato (la demanda de la FTC daba 404). Queda en huecos.
+
+## Actualización v2 (13 oct 2026): sostenibilidad del crecimiento
+
+Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.json`), salida `datos-v2.json` y `Intercontinental Exchange - 2026-10-08 v2.docx` (y .pdf). Mismo precio (152,59 USD) y corte. Sin fuentes nuevas: el puente cita [1, 6, 7, 8, 27, 33, 34, 35, 56].
+
+| | v1 | v2 |
+|---|---|---|
+| Recomendación · convicción | Comprar · Baja | Comprar · Baja (sin cambio) |
+| Valor objetivo y rentabilidad total (WACC 8,84 %) | 160,42 USD, RTE +6,4 %, asimetría 0,85x | igual |
+| Con la prima del mercado (4,20 %, WACC 8,25 %) | 173,73 USD, RTE +15,2 %, asimetría 1,93x | igual |
+| Comprar por debajo / vender por encima | 152,72 / 186,57 USD | igual |
+| Sostenibilidad del crecimiento | (no existía) | **Sí** |
+
+- **Veredicto: Sí.** El base pide un 4,7 % anual en 2027e-2035e (5,3 % con 2026e), menos que el 8,6 % de 2021-2025 y que el 7,9 % previsto para el mercado; el DCF inverso pide lo mismo (4,6 %). Foso amplio, poder de precios demostrado (ingreso por contrato de energía 1,70 → 1,74 USD; subidas contractuales en el software hipotecario) y activos ligeros: reinversión neta acumulada de 1.962 M, el 3 % del NOPAT, con ROIC incremental del 11,5 %.
+- **Puente** 2026e-2030e: volumen 9 / 2,5 / 3,5 / 3,5 / 3 y precio 1,5 / 2,5 / 2,5 / 2,5 / 2,5 (2026e, +0,5 de divisa). El reparto es estimación propia: ICE no separa volumen y precio en el grupo.
+- **Mercado final: null.** `competencia.cuota_pct` es null (no hay cuota de Encompass, MSP ni del TTF en un documento primario) y el sector no tiene un tamaño único con el perímetro de ICE: no hay prueba de cuota; dicho en la justificación.
+- **Sin cambios de supuestos** (la prueba no pide nada que la empresa no pueda financiar). Textos: solo la frase obligatoria en «El negocio»; para no pasar de las 650 palabras se quitó de «Finanzas» la frase sobre la amortización de intangibles (la síntesis ya tenía 653 en v1; queda en 673).
+
+**Fallos del sistema vistos**
+1. Con ROIC < WACC (8,1 % frente a 8,84 %, por el fondo de comercio) el motor no da `crecimiento_financiable_pct` ni avisa: en un negocio de activos ligeros la prueba de reinversión no dice nada y todo descansa en el puente, que es estimación propia.
+2. El texto del motor da el crecimiento medio con 2026e (5,3 %) y la tabla «La decisión» compara el implícito 2027e-2035e (4,6 %): dos medias distintas para la misma pregunta.
+3. Sin perímetro comparable de cuota (empresas multimercado), la prueba de cuota queda vacía sin aviso en el Word; convendría una fila «No aplica: sin cuota publicada».
