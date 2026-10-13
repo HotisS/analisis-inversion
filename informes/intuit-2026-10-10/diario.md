@@ -8,3 +8,4 @@
 - 14:45 D terminado: 302,75 USD, 269,4 M acciones; consenso FY27e ventas 23.408, EBITDA 10.520 (sin pagos en acciones: ajuste 8,6 %), BPA GAAP 20,30; −54,3 % en el año; beta 0,97 mensual (0,48 semanal a 2 años); 9 comparables en GAAP (mediana NTM 12,2x); puente con 970 M de líneas sin recurso de QuickBooks Capital.
 - 14:46 Parado a petición del usuario: notas A-D y sentimiento hechos; faltan valoración, textos, Word y PDF.
 - 01:22 (11-oct) Reanudado a petición del usuario: supuestos (guía FY2027 +9-10 %, margen EBITDA GAAP 35,5 % a 38,5 %), bajista endurecido (ingresos planos, como Chegg), textos y síntesis. DCF 440,34 USD (+45,4 %), valor objetivo 430,22 (+42,1 %), rentabilidad total 43,7 %; Comprar, convicción Media (la sugerida). Sostenibilidad «En parte». Word y PDF (57 páginas), portada y síntesis revisadas.
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 358 USD, rentabilidad 20,0 %, señal Comprar (`revision-12m-2026-10-13.md`).

@@ -64,3 +64,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 1. El motor nuevo cambia el nivel de «comprar por debajo» (25,73 → 24,13 EUR) sin tocar ningún dato: las actualizaciones de método deben releer `calc.recomendacion.niveles` y buscar la cifra vieja en todos los textos.
 2. La prueba de cuota necesita el mercado en el último año explícito, pero las fuentes de mercado rara vez llegan a diez años; el prompt no dice cómo extrapolar (aquí, congelar en el último año previsto como cota conservadora).
 3. «Crecimiento medio proyectado» (4,1 %, toda la proyección) y el crecimiento base del DCF inverso (4,3 %, años no fijos) conviven en el informe; fácil mezclarlos en la justificación.
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 30,60 EUR, rentabilidad 43,6 %, señal Comprar (`revision-12m-2026-10-13.md`).
