@@ -75,3 +75,33 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 3. **Sin `cuota_pct` la prueba de cuota desaparece en silencio**: el motor no avisa de que falta. Arreglo: un control «Prueba de cuota no calculable» que exija decirlo en la justificación.
 
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 14,08 EUR (150,8 NOK), rentabilidad 64,6 %, señal Comprar (`revision-12m-2026-10-13.md`).
+
+## Actualización v3 (13 oct 2026): caso base al crecimiento financiable
+
+Sin investigación nueva. Script: `notas/actualizacion-v3.mjs` (parte de `datos-v2.json`), salida `datos-v3.json`, `Tomra - 2026-10-08 v3.docx` y su PDF. Mismo precio (92,95 NOK, 8,68 EUR) y fecha de corte. Lectura prudente de la sostenibilidad, decidida por el usuario: la v2 dejó la prueba de reinversión fallando y lo explicaba en la síntesis; ahora el caso base se rebaja.
+
+| | v2 | v3 |
+|---|---|---|
+| Recomendación · convicción | Comprar · Baja | **Mantener** · Baja |
+| Valor objetivo (WACC 8,26 %) | 9,45 EUR (101,23 NOK), RTE 11,2 % | **8,10 EUR (86,77 NOK), RTE −4,3 %** |
+| Con la prima del mercado (4,20 %, WACC 7,14 %) | 11,42 EUR (122,33 NOK), RTE 33,9 % | 9,74 EUR (104,34 NOK), RTE 14,6 % |
+| Regla absoluta / relativa | Mantener / Comprar | Mantener / **Mantener** |
+| Comprar por debajo / vender por encima | 9,19 / 12,54 EUR (98,39 / 134,33 NOK) | 7,90 / 11,05 EUR (84,60 / 118,35 NOK) |
+| DCF · bajista / alcista | 8,70 · 5,74 / 11,27 EUR | 6,49 · 3,90 / 11,27 EUR |
+| Crecimiento medio proyectado · financiable al ROIC actual | 6,1 % · 2,0 % | 6,1 % · 2,4 % (3,6 % al ROIC del 15 %) |
+| Capital nuevo · ROIC de 2035e | 39,3 % · 18,2 % | 28,4 % · 15,1 % |
+| Margen EBITDA de 2035e | 23,0 % | 20,3 % |
+| Sostenibilidad | En parte (base por encima de lo financiable, explicado) | En parte (base dentro de lo financiable) |
+
+- **Qué cambió**: solo el margen EBITDA del caso base, de 2027e en adelante (21,2 / 22,3 / 22,6 / 22,8 … 23,0 % → 19,5 / 19,8 / 20,0 / 20,1 … 20,3 %). 2027e recupera solo lo identificable (los 13 M de reestructuración de Recycling de 2026 no se repiten y los 16 M de ahorros tienen efecto pleno [4]); después sube despacio hasta un 20,3 %, entre el 19,7 % de 2025 y el 22,1 % de 2021 (EBITA del 13,8 % frente al 13,2 % de 2025). Es el margen con el que el ROIC de 2035e queda en el máximo de la serie 2021-2025 (15,0 % en 2021).
+- **Por qué el margen y no el crecimiento**: el exceso de la v2 venía de subir el EBIT del 11,0 % al 15,8 %, no del volumen. El crecimiento (6,1 % de media; 5,4 % en 2027e-2035e) no se toca: 2026e es la guía (fijo) y, al ROIC del 15 %, la reinversión (24 % del NOPAT) financia un 3,6 % anual, que con los 2 puntos de precio del puente cubre el 5,4 %.
+- **El control de capital nuevo sigue saltando (28,4 %) y queda explicado**: la prueba atribuye al capital nuevo toda la subida del NOPAT (de 110 a 236 M). Si los 1.121 M de capital de 2025 vuelven al 15 % de 2021 dan 58 M más, y los 443 M de reinversión al mismo 15 %, unos 67 M: es la vuelta del capital de 2024-2025 a su rendimiento histórico, no un base optimista. La prueba frente al incremental (−1,1 %) no se puede pasar con ningún margen razonable.
+- **Escenarios**: el alcista se deja igual que en la v2 (son las ambiciones de la dirección: margen EBITDA final del 24,5 %), con un perfil por año que compensa el recorte; el bajista sigue dos puntos por debajo del base y baja a 3,90 EUR (−55,1 %).
+- **La señal cambia de Comprar a Mantener**: con nuestro WACC la rentabilidad pasa al −4,3 % y con la prima del mercado al 14,6 %, a 0,4 puntos del umbral de compra. El DCF inverso ya no paga nuestro base: el precio descuenta un margen del 22,9 % (o una rentabilidad del 7,2 %).
+- Textos reescritos: síntesis entera (812 → 649 palabras), tesis, visión diferencial, `cambiaria_recomendacion`, `dcf.justificacion.margenes`, `wacc` y `terminal`, `dcf.lectura`, justificación de la sostenibilidad, narrativa del base, comentarios de escenarios y valoración, efectos en valor de seis riesgos, pregunta 1, comparables y dos controles explicados (capital nuevo y consenso: EBITDA un 18,3 % y un 16,3 % por debajo en 2027e-2028e).
+- Controles: 16 correctos y 6 explicados. Word sin avisos, cobertura 89,9 %; PDF de 1,5 MB.
+
+**Fallos del sistema vistos**
+1. **La suma de partes no sigue al DCF**: usa el EBITA por división de 2027e como dato de entrada (244 M), que ya no cuadra con el base recortado (214 M); con el mismo recorte bajaría a ≈ 7,5 EUR y el objetivo a ≈ 7,9 EUR. Se dice en el comentario de valoración. Arreglo: que el motor avise si la suma de las métricas de la suma de partes se aleja más de un 5 % del EBITA del DCF del mismo año.
+2. **El techo de la prueba de capital nuevo es inalcanzable con un incremental negativo**: el motor toma el máximo entre el ROIC actual y el incremental (9,8 %), ×1,25, o el WACC + 5; con el capital de 2024-2025 sin rendir, ni un margen plano lo pasa. Arreglo (ya apuntado en la v2): comparar el ROIC del último año proyectado con el máximo histórico.
+- 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio) rehecha con el informe v3: objetivo 12,49 EUR (133,8 NOK; ponderado 25/50/25; base 9,92 EUR, +16,6 %), rentabilidad +46,2 %, señal Comprar (`revision-12m-2026-10-13.md`).
