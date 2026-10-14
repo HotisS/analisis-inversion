@@ -1,6 +1,6 @@
 # Método vigente (documento vivo)
 
-**Léelo antes de analizar, revisar una cartera o cambiar el método.** Aquí está lo que decide hoy, con fecha, y el registro de cada descubrimiento: qué fallo se vio, en qué empresa, cómo se probó, qué se adoptó y qué se rechazó y por qué. Cada cambio del método se apunta aquí el mismo día (y el detalle en `verticales/empresa/objetivo-12m.md` o `verticales/growth/metodo.md`; la historia larga, en `archivo/HISTORICO.md`). Última actualización: 14-oct-2026, 17:30 UTC.
+**Léelo antes de analizar, revisar una cartera o cambiar el método.** Aquí está lo que decide hoy, con fecha, y el registro de cada descubrimiento: qué fallo se vio, en qué empresa, cómo se probó, qué se adoptó y qué se rechazó y por qué. Cada cambio del método se apunta aquí el mismo día (y el detalle en `verticales/empresa/objetivo-12m.md` o `verticales/growth/metodo.md`; la historia larga, en `archivo/HISTORICO.md`). Última actualización: 14-oct-2026, 17:45 UTC.
 
 ## 1. Versiones en vigor
 
@@ -11,6 +11,7 @@
 | Value | Informes anteriores | Migrados a v3 sin rehacer la investigación (`historia-adelantada.mjs`); Word regenerado con `regenerar.mjs`; 11 se quedan en v2 porque su historia no sirve (lista en §6) | 14-oct-2026 | `objetivo-12m.md` §«Migración» | `herramientas/historia-adelantada.mjs`, `herramientas/regenerar.mjs` |
 | Growth | Puntuación, objetivo, señal | **v9** (= v7 + el crecimiento de partida es el menor entre el mecánico y la guía de la empresa más lo que suele batirla) | 14-oct-2026, 16:48 | `verticales/growth/metodo.md` | `motor/growth.mjs` (`VIGENTE`; `--version v7` da la referencia) |
 | Cartera | Requisitos, tamaño, liquidez | Preferencias de `MEMORIA.md` (resumen en §4) | 14-oct-2026 | `MEMORIA.md` | `herramientas/apuntar-12m.mjs`, `seguimiento.mjs` |
+| Value y growth | Pruebas de robustez | **Obligatorias** antes de dar una señal, revisar un informe o proponer una orden: variantes razonables, tratamientos CORREGIR / VARIANTE / CONFIANZA / AVISO, veredicto SÓLIDA / FRÁGIL / BLOQUEADA y «acción robusta» (la peor de las variantes razonables) | 14-oct-2026, 17:30 | `verticales/empresa/robustez.md` | `herramientas/robustez.mjs`, `robustez-growth.mjs` |
 
 ## 2. Value: la regla a 12 meses (v3, tope ×1,1), exacta
 
@@ -33,14 +34,15 @@ Puntuación 0-100 (crecimiento, tecnología, giro de percepción, calidad del cr
 
 ## 4. Filtros de cartera (resumen de `MEMORIA.md`, que manda)
 
-1. **Tres requisitos a la vez para comprar o ampliar**: rentabilidad ponderada a 12 meses ≥ 15 % (regla vigente); valor real (base ≥ 12 % y valor intrínseco ≥ precio); calidad (sostenibilidad «Sí» y ROIC − WACC ≥ 5 puntos; LVMH aceptada como excepción el 14-oct).
+1. **Tres requisitos a la vez para comprar o ampliar**: rentabilidad ponderada a 12 meses ≥ 15 % con la regla vigente (v3 tope ×1,1), **con v2 como control**: si v2 < 10 % y v3 > 15 %, la empresa se marca y no se compra sin motivo de negocio propio; entre dos compras que compiten por la misma liquidez gana la «robusta» (la que pasa con los dos métodos); valor real (base ≥ 12 % y valor intrínseco ≥ precio); calidad (sostenibilidad «Sí» y ROIC − WACC ≥ 5 puntos; LVMH aceptada como excepción el 14-oct).
 2. **Mantener**: calidad, ponderada ≥ 10 %, base ≥ 5 % y valor intrínseco no más de un 15 % por debajo del precio.
 3. **Confianza baja = no Comprar.**
 4. **Tamaño**: mínimo 1.000 EUR por posición; guía de no más del 7 % salvo Edenred y el oro; se amplía lo que cumple los tres requisitos; rotar una por otra solo si la diferencia de rentabilidad supera el coste.
 5. **Liquidez**: nunca negativa; si quedan ≥ 3.000 EUR sin destino ≥ 3 meses, XEON (ningún ETF hoy, 14-oct).
-6. **Precio actual antes de cada orden, con el objetivo fijo**: `node herramientas/precios.mjs` y `node herramientas/apuntar-12m.mjs --precios --actual --simular <carpetas>`; en la tabla, precio y hora del dato y si la orden sigue en pie.
-7. **Exclusiones**: juego y apuestas, Accenture, Rightmove, Adobe, comercio minorista (salvo que lo pida); Edenred y el oro no se tocan salvo que lo pida.
-8. Cada orden con su motivo de negocio; tabla antes → después; volatilidad y Sharpe (optimista y realista); la rentabilidad realista es la mitad de la optimista.
+6. **Pruebas de robustez** (`robustez.mjs`) antes de cada señal u orden; se comunica la acción robusta con las objeciones más fuertes y su respuesta.
+7. **Precio actual antes de cada orden, con el objetivo fijo**: `node herramientas/precios.mjs` y `node herramientas/apuntar-12m.mjs --precios --actual --simular <carpetas>`; en la tabla, precio y hora del dato y si la orden sigue en pie.
+8. **Exclusiones**: juego y apuestas, Accenture, Rightmove, Adobe, comercio minorista (salvo que lo pida); Edenred y el oro no se tocan salvo que lo pida.
+9. Cada orden con su motivo de negocio; tabla antes → después; volatilidad y Sharpe (optimista y realista); la rentabilidad realista es la mitad de la optimista.
 
 ## 5. Flujo y herramientas (value)
 
@@ -65,7 +67,8 @@ Puntuación 0-100 (crecimiento, tecnología, giro de percepción, calidad del cr
 | 14-oct 15:29 | **Triaje con ficha corta antes del Word**: rechazado por el usuario («se comerá buenas»). Confianza baja = no Comprar: aceptado. Ficha sectorial corta (`verticales/sector/ficha.md`): aceptada. | Propuesta de mejoras | Decisión del usuario | Word completo para todas; ficha sectorial antes de la primera empresa de un sector. |
 | 14-oct 15:00 | **Cifras de las cuentas copiadas de terceros**: desde hoy, XBRL del regulador (`cuentas.mjs`, SEC y ESEF; Japón, Suiza y Australia no). | Apple, ASML, Bureau Veritas (pruebas) | Comparación con los informes | **Adoptado** como paso 1 del análisis. |
 | 10 a 13-oct | **Sostenibilidad del crecimiento**: el DCF proyectaba crecimientos incompatibles con el tamaño del mercado final. | Todas (metodología «nueva») | Prueba de cuota en `dcf.sostenibilidad` | **Adoptado**: si falla, se rebaja el base; columna «Metodología» de `seguimiento.xlsx`. |
-| **Pendiente** | **Margen EBITDA objetivo en industriales** en vez de congelar el de hoy (vale ~10 pp). | GE Vernova, Siemens Energy, Celestica (tanda growth 7) | Falta backtest | Sin decidir. También pendientes (growth): `ebitda_ntm_m`, guía en otra métrica (Toast), pagos en bruto, dilución, comparables con fuente del día; lista en `cola-growth.md`. |
+| 14-oct 17:30 | **Un mismo tipo de fallo en seis empresas el mismo día** (Uber, Experian, el tope v3, Edenred, Nu, Constellation): datos o reglas que no se habían puesto a prueba antes de dar la señal. | Hilo de robustez | Procedimiento `verticales/empresa/robustez.md` | **Adoptadas las pruebas de robustez obligatorias** (`robustez.mjs`, `robustez-growth.mjs`): veredicto SÓLIDA / FRÁGIL / BLOQUEADA y acción robusta. |
+| 14-oct 17:20 | **Margen EBITDA objetivo en industriales** en vez de congelar el de hoy (vale ~10 pp): candidata growth v10. | GE Vernova, Siemens Energy, Celestica; 13 casos de industriales (tanda growth 8) | Backtest growth: neutro | **No adoptada**: queda como contraste; VIGENTE sigue v9. También pendientes (growth): `ebitda_ntm_m`, guía en otra métrica (Toast), pagos en bruto, dilución, comparables con fuente del día; lista en `cola-growth.md`. |
 | **Pendiente** | **Ancla sectorial para el base v3** (PER de los comparables como ancla en vez de la historia propia). | Edenred (hilo de Edenred: +18,7 % con base a los comparables) | No hay historia de comparables en el repo para un backtest | Sin decidir; el alcista ya usa la mediana de los comparables. |
 
 **Se quedan en v2 (14-oct):** Puig y Pluxee (recién cotizadas), Almirall (pérdidas), Lonza (dos años de BPA), Diageo, Constellation, Cochlear, Pro Medicus, Nvidia y ServiceNow (BPA propio en otra base que el publicado) y Uber (liberaciones fiscales).
