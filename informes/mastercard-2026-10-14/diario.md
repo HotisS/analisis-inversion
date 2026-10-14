@@ -1,0 +1,17 @@
+# Diario · Mastercard (MA) · 14-oct-2026
+
+- Commit de partida: cacd4ce (Iberdrola, 14-oct; método v2 con regla de múltiplos común).
+- Entorno: nube de Claude Code, red limitada a WebSearch (sin WebFetch, curl, descargar.mjs ni bolsa.mjs). Cifras de extractos de búsqueda con su URL.
+- Fecha de corte: 2026-10-14. Divisa: USD. Ejercicio natural (diciembre); próximos resultados (3T) el 29-oct-2026. Ejercicio objetivo 12 m: 2028e.
+- Inicio ≈13:43 UTC (reloj del contenedor).
+- Fuentes: 8-K de resultados (3T25, 4T25, 1T26, 2T26), 10-K FY2022, FY2024 y FY2025, 8-K de la junta de 2026, Stock Analysis (cuenta, balance y flujos 2021-2025), Fintel y Barchart (caja y deuda), Profitbridge/Macrotrends (cierres anuales ajustados por dividendos), MarketBeat/Zacks/Investing/Tickflow (consenso), Yahoo (cierre del 9-oct). Sector, Porter, transacciones y comparables reutilizados del análisis de Visa del mismo día (y de Adyen del 12-oct, cierre del 9-oct, pasados a USD al 1,1181); Visa sustituye a Mastercard en la tabla de comparables. Bono a 10 años (5,22 %, 13-oct) y prima de Damodaran (4,20 %) de esos mismos análisis. Unas 22 búsquedas web.
+- Confianza: media-alta en la cuenta 2021-2025 (EBIT, financiero, impuestos y beneficio cuadran línea a línea), trimestres recientes, guía y BPA de consenso; media en flujos (faltan recompras de 2021 y 2025); baja en balance (caja y deuda de proveedores distintos, sin corriente), gobierno (solo presidenta, CEO y votos de la junta: sin consejo completo, 13G, Form 4 ni remuneración), bolsa (sin beta ni rentabilidades) y sentimiento (sin Reddit ni Stocktwits).
+- Decisiones: precio del 9-oct (589,14 USD), el último cierre fechado que dio la búsqueda (no se verificó el del 13-oct). Acciones 886 M (estimación: 893 M de media diluida del 2T26 menos recompras de julio-septiembre). BPA y PER en base ajustada; margen EBITDA proyectado (62,5-63,5 %) ≈1 punto por debajo del ajustado para dejar sitio a los litigios recurrentes. Beta 1,0 sin dato verificado (cada 0,1 mueve el DCF un 8-10 %). Terminal 3,0 %. 2026e fijo (+14 %). Historia del PER 2022-2025 (2021 excluido por BPA deprimido por la pandemia). Consejo con solo dos miembros verificados: el criterio de independientes del motor sale en 50 %, no representativo (hueco registrado).
+- Subagentes: no (encargo). Notas A-E escritas a mano; propio.mjs + supuestos.mjs + textos.mjs + resumen.mjs.
+- ≈13:56 UTC: integración y cálculo con 16 de 16 controles; Word (rellenar.mjs, cobertura 77,7 %) y PDF con soffice. Síntesis de 632 palabras.
+- Línea 12 m: Mastercard · 2028e · BPA 22,43 / 24,97 / 26,32 · PER 22,6x / 26,6x / 33,9x · objetivo ponderado 681,89 USD (+16,3 %), base 664,20 (+13,3 %) · VI 410,13 (−30,4 %) · Mantener, convicción media · compra < 410,13 · venta > 761,35 · consenso 667,30. Detalle en revision-12m-2026-10-14.md.
+- Fin: ≈14:00 UTC.
+
+## Lecciones
+- Con red limitada a WebSearch, la cuenta de resultados de 5 años de una estadounidense se reconstruye bien con dos búsquedas (ingresos/EBIT/beneficio/BPA y BAI/impuestos/no operativos de Stock Analysis) que cuadran línea a línea; el balance y las recompras son lo que no sale: dejarlos en hueco y no gastar más búsquedas.
+- Cuando el último cierre fechado es de varios días antes del corte, usarlo y decirlo en `limitaciones` y en la síntesis («cierre del 9 de octubre») mejor que estimar el precio de hoy.
