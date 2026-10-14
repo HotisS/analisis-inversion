@@ -1,6 +1,6 @@
 # Memoria del proyecto (reglas del usuario y decisiones)
 
-Lo que cualquier sesión de Claude, en cualquier equipo, tiene que saber antes de seguir. Se lee junto con `CLAUDE.md` y `cola.md` (y las lecciones, solo si se analiza una empresa). Solo reglas y decisiones **vigentes**: el registro completo de decisiones hasta el 14-oct-2026 está en `archivo/memoria-decisiones-hasta-2026-10-14.md` (no hace falta leerlo).
+Lo que cualquier sesión de Claude, en cualquier equipo, tiene que saber antes de seguir. Se lee junto con `CLAUDE.md` y `cola.md` (y las lecciones, solo si se analiza una empresa). Solo reglas y decisiones **vigentes**: los cambios importantes y las decisiones ya sustituidas están en `archivo/HISTORICO.md` (memoria histórica: no se lee en el día a día).
 
 ## Cómo trabajar
 - **El repo de GitHub (HotisS/analisis-inversion) es la única fuente.** El proyecto debe poder seguirse desde cualquier ordenador: al empezar, `git pull` (o clonar con la cuenta de gh); nada importante vive solo en un equipo.
@@ -29,11 +29,12 @@ Lo que cualquier sesión de Claude, en cualquier equipo, tiene que saber antes d
 - **Análisis técnico** (gráficos del usuario: medias SAMA, EMA 365 y 1.000, SMA 200, RSI, ChandeMO): solo para decidir **cuándo** ejecutar (precio límite, stop, fecha tope), nunca qué se compra o se vende (13-oct).
 - **Cada compra y venta con su motivo de negocio**, no solo la rentabilidad; tabla antes → después con la rentabilidad a 12 meses de cada activo (ponderada y base), el valor intrínseco frente al precio y la calidad.
 - Sin juego ni apuestas. Sin cambios de un valor por otro que el usuario haya rechazado (13-oct: no cambiar LVMH y Viscofan por Wolters Kluwer y Auto Trader).
-- Cartera vigente: `informes/cartera-concentrada-2026-10-13.md`.
+- Cartera vigente: `informes/cartera-2026-10-14.md` (propuesta del 14-oct con la regla de múltiplos común; sustituye a la de `informes/cartera-concentrada-2026-10-13.md`).
 
 ## Decisiones vigentes
 - 14-oct-2026: **regla de múltiplos común para el objetivo a 12 meses**, aplicada por el motor (`motor/objetivo12m.mjs`; método en `verticales/empresa/objetivo-12m.md`): base = menor entre PER actual y mediana de 5 años; bajista = mínimo de 5 años o base × 0,85; alcista = mayor entre media larga y comparables, con techo base × 1,30. Vive en `valoracion.objetivo_12m` y **manda en la recomendación**. Las 73 empresas ya recalculadas; los Word se rehacen con la próxima versión de cada informe.
+- 14-oct-2026: **cartera propuesta con la regla común** (`informes/cartera-2026-10-14.md`): vender Zoetis (+0,3 %), Puig, Hermès, ICE, Equifax e IBKR; comprar Nemetschek (23) y LVMH (4, excepción de calidad: ROIC − WACC 3,4); cancelar Wolters Kluwer y Auto Trader (−2,2 % y +7,4 % con la regla común); liquidez ≈3.100 EUR con suplentes Coloplast ≤ 440 DKK y Constellation ≤ 2.050 CAD hasta el 7-nov. Ponderada de +9,4 % a +9,6 % (sin oro ni liquidez, de +12,0 % a +13,9 %). Pendiente de que el usuario la acepte.
 - 13-oct-2026 (noche): **órdenes abiertas hasta el 7-nov** (`informes/cartera-concentrada-2026-10-13.md`). Compras con precio límite: Uber y Viscofan, la mitad ya; Nemetschek ≤ 68 EUR, Intuit ≤ 300 USD, Auto Trader ≤ 4,95 GBP, Wolters Kluwer ≤ 72 EUR. Ventas: Grifols y PepsiCo ya; ICE, Puig, Equifax y Hermès con precio límite y stop. Lo que no se ejecute antes del 7-nov no se hace a mercado: se revisa. **Regla**: antes de comprar, recalcular la rentabilidad a 12 meses con el precio del día (objetivos de `objetivo12m-revisados.json`).
-- 13-oct-2026 (noche): **cartera vigente = versión 9** del mismo archivo: Adobe fuera, entra Intuit (5 títulos, 5,3 %); ponderada +18,4 %, base +11,8 %. Las versiones 3-8 y sus motivos, en el archivo de decisiones.
-- 13-oct-2026: todo el universo (73 empresas, sin juego) tiene la metodología nueva (sostenibilidad del crecimiento) y la rentabilidad a 12 meses. Lo único pendiente de análisis es Group 1 Automotive (`cola.md`).
+- 13-oct-2026 (noche): **última cartera aceptada = versión 9** de `informes/cartera-concentrada-2026-10-13.md` (Adobe fuera, entra Intuit), parcialmente ejecutada el 13-oct. La sustituye la propuesta del 14-oct cuando el usuario la acepte.
+- 13-oct-2026: todo el universo (73 empresas, sin juego) tiene la metodología nueva (sostenibilidad del crecimiento) y la rentabilidad a 12 meses; Group 1 Automotive, hecho el 14-oct.
 - 13-oct-2026: presupuesto del usuario para la nube, 210 USD (≈ 39 USD gastados al decidirlo). Actualización rápida ≈ 1-2 USD; una orquestación larga, bastante más. **Ahorra tokens**: no leas archivos que no hagan falta (archivo/, diarios, código del motor).

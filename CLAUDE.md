@@ -14,6 +14,7 @@ Lo que se lee al empezar (`CLAUDE.md`, `MEMORIA.md`, `cola.md`) y en cada análi
 - `cola.md`: quita lo terminado (el histórico va a `archivo/`, si merece guardarse; si no, ya está en git).
 - `MEMORIA.md`: solo reglas y decisiones vigentes; si una decisión nueva sustituye a otra, **reemplázala** en vez de añadir debajo (una cartera nueva sustituye a la anterior). El registro antiguo, en `archivo/`.
 - `lecciones.md`: una lección nueva solo si es general y no está ya; las de un país van a `lecciones-paises.md` y las de un sector o caso contable a `lecciones-casos.md`. Si una herramienta se arregla, borra la lección que avisaba del fallo.
+- **Cambios importantes** (método, reglas, una cartera que sustituye a otra, estructura del repo o del flujo, lo que se retira de estos archivos): una entrada corta en `archivo/HISTORICO.md`, la más reciente arriba. Es la memoria histórica: **no se lee en el día a día**, solo cuando el usuario pide revisar cambios pasados o hace falta saber por qué se decidió algo.
 - No leas `archivo/`, los `diario.md` de otros informes ni el código de `motor/` salvo que haga falta para la tarea.
 
 Si el usuario pide «limpieza», repasa estos archivos con ese criterio.

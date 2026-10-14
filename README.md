@@ -66,7 +66,7 @@ herramientas/                 Para los análisis de empresa
   prompt-de.mjs               Parte del prompt de cada subagente (A-E)
 motor/integrar.mjs            Junta las notas A-E y la parte del analista en datos.json
 informes/                     Informes generados (los ejemplos se versionan)
-archivo/                      Colas y decisiones ya cerradas (no se leen al empezar una sesión)
+archivo/                      Memoria histórica: HISTORICO.md (cambios importantes) y colas y decisiones cerradas; no se lee en el día a día
 ```
 
 ## Cambiar las plantillas
