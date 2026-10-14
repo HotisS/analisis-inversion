@@ -46,7 +46,13 @@ NODE_USE_ENV_PROXY=1 node herramientas/cartera-real.mjs --partida         # prim
 - `IBKR_FLEX_TOKEN`;
 - `IBKR_FLEX_QUERY_CUENTA2` (otra cuenta: `IBKR_FLEX_QUERY_CUENTA3`, y así).
 
-`--importar-ibkr` descarga el informe (SendRequest, y GetStatement con reintentos mientras se genera), lo convierte al formato del conector en `ibkr/foto-…-cuenta-2.json` y `ibkr/operaciones-cuenta-2.json` (junta las operaciones con las que ya había, sin repetir) y lo combina con la cuenta 1. **El token no se escribe nunca** en el repo, en el disco, en el registro ni en un mensaje. Sin las variables, el paso se salta sin avisar. El número de cuenta del XML no se guarda. El historial anterior a 365 días se sube a mano en XML o CSV: `--importar-flex archivo --cuenta cuenta-2`.
+`--importar-ibkr` descarga el informe con SendRequest y luego GetStatement, con reintentos mientras se genera. Lo convierte al formato del conector en `ibkr/foto-flex-…-cuenta-N.json` y `ibkr/operaciones-flex-cuenta-N.json`, juntando las operaciones con las que ya había sin repetir.
+
+Un mismo informe puede traer **varias cuentas**, con una FlexStatement por cuenta. Cada número de cuenta se guarda solo como huella (sha-256) en `cuentas.json`, junto a su seudónimo estable:
+- la cuenta cuyas posiciones coinciden con las del conector se queda con su nombre (cuenta-1);
+- las demás son cuenta-2, cuenta-3…
+
+Si una cuenta llega por el conector y por el Flex, **manda el Flex**, que trae dividendos e ingresos. Del conector solo se toman las operaciones anteriores a lo que cubre el Flex y la rentabilidad por periodos. **El token no se escribe nunca** en el repo, en el disco, en el registro ni en un mensaje. Sin las variables, el paso se salta sin avisar. El número de cuenta del XML no se guarda. El historial anterior a 365 días se sube a mano en XML o CSV: `--importar-flex archivo --cuenta cuenta-2`.
 
 **Pasada diaria (9:25) y rutina del domingo** (las lanza la tarea programada del escáner):
 1. Con el conector de IBKR, en solo lectura, guardar en `ibkr/` la foto del día y el historial de operaciones de la cuenta 1 (formato abajo). Nunca se lanza ni se prepara una orden.

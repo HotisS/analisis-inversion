@@ -23,6 +23,7 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from 
 import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
+import { createHash } from 'node:crypto';
 
 const RAIZ = fileURLToPath(new URL('..', import.meta.url));
 const DATOS = process.env.CARTERA_REAL || '/mnt/project-files/cartera/real';
@@ -237,12 +238,33 @@ function cargarIbkr(dir = join(DATOS, 'ibkr')) {
   const cuentas = new Map();
   if (!existsSync(dir)) return cuentas;
   const objetos = (j) => (Array.isArray(j) ? j : Array.isArray(j?.cuentas) ? j.cuentas : j ? [j] : []);
-  const de = (c) => { if (!cuentas.has(c)) cuentas.set(c, { cuenta: c, foto: null, hist: null }); return cuentas.get(c); };
+  const de = (c) => { if (!cuentas.has(c)) cuentas.set(c, { cuenta: c, foto: null, hist: null, histFlex: null, rentabilidad: null }); return cuentas.get(c); };
+  const fechaDe = (j, a) => (String(j.leido || '').match(/\d{4}-\d{2}-\d{2}/) || String(a).match(/\d{4}-\d{2}-\d{2}/) || [''])[0];
   for (const a of readdirSync(dir).filter((x) => /^foto-.*\.json$/.test(x)).sort()) {
-    for (const j of objetos(leer(join(dir, a)))) { if (!j?.cuenta) continue; const x = de(j.cuenta); if (!x.foto || String(j.leido || a) >= String(x.foto.leido || '')) x.foto = j; }
+    for (const j of objetos(leer(join(dir, a)))) {
+      if (!j?.cuenta) continue;
+      const x = de(j.cuenta), f = fechaDe(j, a);
+      if (j.rentabilidad?.por_periodo_pct && (!x.rentabilidad || f >= x.rentabilidad.f)) x.rentabilidad = { f, v: j.rentabilidad };
+      // Misma fecha: manda el conector (precios del momento); más reciente: manda la más reciente.
+      if (!x.foto || f > x.fotoF || (f === x.fotoF && !/Flex/i.test(j.fuente || ''))) { x.foto = j; x.fotoF = f; }
+    }
   }
   for (const a of readdirSync(dir).filter((x) => /^operaciones.*\.json$/.test(x)).sort()) {
-    for (const j of objetos(leer(join(dir, a)))) { if (!j?.cuenta || !Array.isArray(j.operaciones)) continue; const x = de(j.cuenta); x.hist = x.hist ? { ...x.hist, operaciones: x.hist.operaciones.concat(j.operaciones) } : j; }
+    for (const j of objetos(leer(join(dir, a)))) {
+      if (!j?.cuenta || !Array.isArray(j.operaciones)) continue;
+      const x = de(j.cuenta), k = /Flex/i.test(j.fuente || '') ? 'histFlex' : 'hist';
+      x[k] = x[k] ? { ...x[k], operaciones: x[k].operaciones.concat(j.operaciones), movimientos: (x[k].movimientos || []).concat(j.movimientos || []) } : j;
+    }
+  }
+  for (const x of cuentas.values()) {
+    if (x.histFlex) { // manda el Flex (trae dividendos e ingresos); del conector, solo lo que el Flex no cubre
+      const k = (o) => `${o.trade_time.slice(0, 10)}|${ALIAS_IBKR[o.symbol] || o.symbol}|${/SELL/i.test(o.side) ? 'S' : 'B'}|${+o.size}|${(+o.price).toFixed(4)}`;
+      const enFlex = new Set(x.histFlex.operaciones.map(k)), desdeFlex = x.histFlex.periodo?.desde || '9999';
+      const solo = (x.hist?.operaciones || []).filter((o) => !enFlex.has(k(o)) && o.trade_time.slice(0, 10) < desdeFlex);
+      x.hist = { ...x.histFlex, operaciones: solo.concat(x.histFlex.operaciones).sort((a, b) => a.trade_time.localeCompare(b.trade_time)),
+        periodo: { desde: [x.hist?.periodo?.desde, desdeFlex].filter(Boolean).sort()[0], hasta: x.histFlex.periodo?.hasta } };
+    }
+    if (x.foto && x.rentabilidad && !x.foto.rentabilidad) x.foto = { ...x.foto, rentabilidad: x.rentabilidad.v };
   }
   return cuentas;
 }
@@ -615,6 +637,7 @@ function filasFlexCsv(texto) {
     else if (c.some((k) => /^(ClientAccountID|Symbol|CurrencyPrimary)$/i.test(k))) { cab = c.map(nk); continue; }
     if (!cab) continue;
     const x = Object.fromEntries(cab.map((k, i) => [k, c[i]]));
+    x._cuenta = x.clientaccountid || x.accountid || null;
     x._tag = x.buysell !== undefined ? 'Trade' : x.type !== undefined && x.amount !== undefined ? 'CashTransaction' : x.position !== undefined ? 'OpenPosition' : x.endingcash !== undefined ? 'CashReportCurrency' : null;
     if (x._tag) filas.push(x);
   }
@@ -623,9 +646,12 @@ function filasFlexCsv(texto) {
 function filasFlexXml(texto) {
   const filas = [];
   const des = (v) => v.replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+  let actual = null;
   for (const m of texto.matchAll(/<(\w+)\s([^<>]*?)\/?>/g)) {
     const x = { _tag: m[1] };
     for (const a of m[2].matchAll(/(\w+)="([^"]*)"/g)) x[nk(a[1])] = des(a[2]);
+    if (m[1] === 'FlexStatement') actual = x.accountid || null;
+    x._cuenta = x.accountid || actual;
     filas.push(x);
   }
   return filas;
@@ -665,10 +691,40 @@ async function flexAEstructura(filas, cuenta) {
     hist: { cuenta, fuente: 'IBKR Flex Query', periodo: { desde, hasta }, operaciones, movimientos: dividendos },
   };
 }
+// Un informe puede traer varias cuentas (una FlexStatement por cuenta). Cada número de cuenta se guarda solo como huella
+// (sha-256) en cuentas.json, en la carpeta privada, con su seudónimo estable. La que coincide en posiciones con la que da
+// el conector se llama como ella (cuenta-1); las demás, cuenta-2, cuenta-3…
+async function procesarFlex(texto, forzada = null) {
+  const filas = /^\s*</.test(texto) ? filasFlexXml(texto) : filasFlexCsv(texto);
+  const grupos = new Map();
+  for (const x of filas) { const k = x._cuenta || '?'; if (!grupos.has(k)) grupos.set(k, []); grupos.get(k).push(x); }
+  if (grupos.size > 1 && grupos.has('?')) grupos.delete('?');
+  const rutaAlias = join(DATOS, 'cuentas.json'), alias = leer(rutaAlias, {});
+  for (const k of Object.keys(alias)) if (!/^[0-9a-f]{16}$/.test(k)) delete alias[k]; // nunca números en claro
+  const huella = (n) => createHash('sha256').update(`cartera-real|${n}`).digest('hex').slice(0, 16);
+  const conector = [...cargarIbkr().values()].filter((x) => x.foto && !/Flex/i.test(x.foto.fuente || ''));
+  const firma = (pos) => (pos || []).map((p) => `${ALIAS_IBKR[p.simbolo] || p.simbolo}:${+p.titulos}`).sort().join(',');
+  let n = 0;
+  for (const [num0, g] of grupos) {
+    let cuenta = forzada && grupos.size === 1 ? forzada : alias[huella(num0)];
+    const est = await flexAEstructura(g, 'x');
+    if (!cuenta) {
+      const igual = conector.find((c) => firma(c.foto.posiciones) === firma(est.foto.posiciones) && firma(est.foto.posiciones));
+      const usadas = new Set(Object.values(alias).concat(conector.map((c) => c.cuenta)));
+      cuenta = igual?.cuenta; for (let i = 2; !cuenta; i++) if (!usadas.has(`cuenta-${i}`)) cuenta = `cuenta-${i}`;
+    }
+    if (num0 !== '?') alias[huella(num0)] = cuenta;
+    est.foto.cuenta = est.hist.cuenta = cuenta;
+    guardarFlex(est, cuenta); n++;
+  }
+  mkdirSync(DATOS, { recursive: true }); guardar(rutaAlias, alias);
+  return n;
+}
+
 // Junta un informe Flex nuevo con lo que ya había de esa cuenta (sin repetir operaciones) y lo deja en ibkr/.
 function guardarFlex({ foto, hist }, cuenta) {
   const dir = join(DATOS, 'ibkr'); mkdirSync(dir, { recursive: true });
-  const rutaOps = join(dir, `operaciones-${cuenta}.json`), previo = leer(rutaOps);
+  const rutaOps = join(dir, `operaciones-flex-${cuenta}.json`), previo = leer(rutaOps);
   if (previo?.operaciones) {
     const clave = (o) => o.trade_id || `${o.trade_time}|${o.symbol}|${o.side}|${o.size}|${o.price}`;
     const vistas = new Set(hist.operaciones.map(clave)), vistosM = new Set((hist.movimientos || []).map((m) => `${m.fecha}|${m.symbol}|${m.importe_eur}`));
@@ -678,7 +734,7 @@ function guardarFlex({ foto, hist }, cuenta) {
   }
   guardar(rutaOps, hist);
   // La foto solo se sustituye si el informe es igual o más reciente que la que había.
-  const fotoRuta = join(dir, `foto-${String(foto.leido).slice(0, 10)}-${cuenta}.json`);
+  const fotoRuta = join(dir, `foto-flex-${String(foto.leido).slice(0, 10)}-${cuenta}.json`);
   if (foto.posiciones.length || Object.keys(foto.resumen.liquidez_por_divisa).length) guardar(fotoRuta, foto);
   console.log(`Flex ${cuenta}: ${hist.operaciones.length} operaciones (${hist.periodo.desde} a ${hist.periodo.hasta}), ${foto.posiciones.length} posiciones.`);
 }
@@ -686,7 +742,8 @@ function guardarFlex({ foto, hist }, cuenta) {
 // El token no se escribe nunca en disco, en el registro ni en mensajes. Sin variables, no hace nada.
 async function descargarFlex() {
   const token = process.env.IBKR_FLEX_TOKEN;
-  const consultas = Object.entries(process.env).filter(([k, v]) => /^IBKR_FLEX_QUERY_/.test(k) && v).map(([k, v]) => [`cuenta-${k.replace('IBKR_FLEX_QUERY_', '').toLowerCase().replace(/^cuenta/, '')}`, v]);
+  // Cada variable IBKR_FLEX_QUERY_* es una consulta; puede traer una cuenta o varias (se reparten solas).
+  const consultas = Object.entries(process.env).filter(([k, v]) => /^IBKR_FLEX_QUERY_/.test(k) && v).map(([k, v]) => [k.replace('IBKR_FLEX_QUERY_', '').toLowerCase(), v]);
   if (!token || !consultas.length) return 0;
   const BASE = 'https://ndcdyn.interactivebrokers.com/AccountManagement/FlexWebService';
   const pedirTexto = async (url) => { for (let i = 0; ; i++) { try { const r1 = await fetch(url, { headers: { 'User-Agent': 'analisis-inversion/1.0' }, signal: AbortSignal.timeout(60000) }); return await r1.text(); } catch (e) { if (i >= 4) throw new Error('sin conexión con IBKR'); await espera(3000 * (i + 1)); } } };
@@ -705,8 +762,7 @@ async function descargarFlex() {
         if (cod && !['1019', '1018', '1009', '1021'].includes(cod)) { console.error(`Flex ${cuenta}: error ${cod} (${r2.match(/<ErrorMessage>([^<]+)</)?.[1] || ''})`); break; }
       }
       if (!xml) continue;
-      guardarFlex(await flexAEstructura(filasFlexXml(xml), cuenta), cuenta);
-      hechas++;
+      hechas += await procesarFlex(xml);
     } catch (e) { console.error(`Flex ${cuenta}: ${e.message}`); }
   }
   return hechas;
@@ -804,8 +860,7 @@ async function importarIbkr() {
 if (argv.includes('--partida')) await partida();
 else if (argv.includes('--importar-ibkr')) { await descargarFlex(); await importarIbkr(); }
 else if (opt('--importar-flex')) {
-  const archivo = opt('--importar-flex'), texto = readFileSync(archivo, 'utf8'), cuenta = opt('--cuenta') || 'cuenta-2';
-  guardarFlex(await flexAEstructura(/^\s*</.test(texto) ? filasFlexXml(texto) : filasFlexCsv(texto), cuenta), cuenta);
+  await procesarFlex(readFileSync(opt('--importar-flex'), 'utf8'), opt('--cuenta'));
   await importarIbkr();
 }
 else if (argv.includes('--flex-web')) { if (await descargarFlex()) await importarIbkr(); }
