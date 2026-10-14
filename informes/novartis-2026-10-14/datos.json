@@ -1,0 +1,3881 @@
+{
+  "meta": {
+    "fecha_corte": "2026-10-14",
+    "divisa": "USD",
+    "divisa_cotizacion": "CHF",
+    "tipo_cambio": 1.25,
+    "unidades": "millones",
+    "cierre_ejercicio_mes": 12,
+    "etiqueta_ejercicio": "fin",
+    "normas_contables": "NIIF",
+    "formato_cuenta": "funcion",
+    "limitaciones": "Análisis hecho desde la nube con la red limitada a la búsqueda web: la web de Novartis, la SIX, EDGAR y los proveedores de datos no se pudieron abrir, así que las cifras salen de los extractos de búsqueda de los comunicados de Novartis y de Stock Analysis, con la URL como fuente; lo que no cuadraba quedó en null. Divisa: Novartis publica en dólares, así que todo el informe va en USD y el precio en francos se da al tipo de 1,25 USD por CHF (estimación entre el 1,237 de OFX del 4-sep y el ≈1,29 que usó el informe de Roche del 14-oct) [29]. Precio: 140,93 USD, cierre del ADR NVS del 5-oct-2026 (1 ADR = 1 acción) [28]; en francos, 112,74 CHF, coherente con el cierre de 111,80 CHF del 8-sep [20]. Acciones: 1.923 M = capitalización de blue News ÷ precio (estimación). Cuenta de 2021-2022 reexpresada sin Sandoz (Stock Analysis); balance de 2021-2022 con Sandoz. Deuda bruta de 2021-2024 = solo la de largo plazo. El BPA de la rentabilidad a 12 meses es el core (el que guía Novartis y sigue el mercado). Comparables reutilizados del informe de Roche del 14-oct (datos del 8-oct), pasados a USD a 1,25.",
+    "controles_explicados": [],
+    "huecos": [
+      {
+        "seccion": "financieros",
+        "campo": "coste de ventas, gastos generales, resultado financiero, impuestos, BPA y acciones de 2021-2024",
+        "tipo": "Complemento",
+        "intentos": "1) 20-F 2025 y comunicados anuales: la búsqueda solo devuelve cifras de cabecera; 2) Stock Analysis: el extracto da ingresos, resultado de explotación, beneficio y amortizaciones; 3) AlphaQuery y Chartrow: líneas sin año claro; entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "balance",
+        "campo": "activo y pasivo corriente, existencias, proveedores, fondo de comercio, intangibles, deuda a corto y arrendamientos",
+        "tipo": "Complemento",
+        "intentos": "1) balance del 20-F 2025: no accesible; 2) Stock Analysis: el extracto corta antes de esas filas; 3) vcpscanner: trimestres sin fecha clara; entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido; deuda de 2021-2024 = solo largo plazo (la neta queda infravalorada); 2025 = deuda neta publicada + caja"
+      },
+      {
+        "seccion": "flujos",
+        "campo": "flujos de 2021-2022 (operaciones continuadas) y compras de negocios por año",
+        "tipo": "Complemento",
+        "intentos": "1) 20-F 2023 (reexpresión sin Sandoz): no accesible; 2) Stock Analysis y Chartrow: 2021-2022 incluyen Sandoz; 3) comunicados de cada compra: importes sueltos sin calendario de pagos",
+        "decision": "Omitido (tres ejercicios de flujos)"
+      },
+      {
+        "seccion": "negocio",
+        "campo": "segmentos (Novartis reporta un solo segmento) y ventas por producto y por geografía de 2021-2025",
+        "tipo": "Complemento",
+        "intentos": "1) informe anual 2025: no accesible; 2) comunicados trimestrales: solo marcas sueltas; 3) prensa: cifras parciales; entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "calidad",
+        "campo": "auditor y opinión",
+        "tipo": "Complemento",
+        "intentos": "1) 20-F 2025: no accesible; 2) búsqueda no hecha por cupo compartido; 3) entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sector",
+        "campo": "tamaño del mercado farmacéutico, serie, TCAC, CR5 y Porter",
+        "tipo": "Núcleo",
+        "intentos": "1) IQVIA Global Use of Medicines y EvaluatePharma: no accesibles; 2) búsqueda de tamaño de mercado: no hecha por el cupo compartido; 3) informe anual de Novartis: no accesible; entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "competencia",
+        "campo": "cuota de mercado y margen EBIT de los competidores",
+        "tipo": "Núcleo",
+        "intentos": "1) informes anuales de los competidores: no accesibles; 2) Stock Analysis da EBITDA, no EBIT; 3) prensa: sin cifras comparables",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "esg",
+        "campo": "calificaciones ESG y controversias",
+        "tipo": "Complemento",
+        "intentos": "1) MSCI y Sustainalytics: no consultados por cupo; 2) informe de sostenibilidad: no accesible; 3) entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "consejo completo, comisiones, remuneración del consejero delegado y accionistas significativos",
+        "tipo": "Núcleo",
+        "intentos": "1) Compensation Report 2025 y Corporate Governance Report: no accesibles; 2) SIX (participaciones significativas): sin red; 3) prensa suiza: sin desglose; entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido; se usan los votos de la junta"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "operaciones de directivos (insiders)",
+        "tipo": "Complemento",
+        "intentos": "1) SIX Management Transactions: anónimas y no accesibles; 2) Form 144 de NVS: sin red a EDGAR; 3) prensa: sin operaciones relevantes",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "directivos",
+        "campo": "director financiero y directores de división",
+        "tipo": "Complemento",
+        "intentos": "1) web de Novartis (comité ejecutivo): no accesible; 2) búsqueda no hecha por cupo; 3) comunicados: sin nombres en el extracto",
+        "decision": "Omitido (no se ponen cargos sin comprobar)"
+      },
+      {
+        "seccion": "identificacion",
+        "campo": "precio de cierre del 13-oct-2026 en la SIX",
+        "tipo": "Núcleo",
+        "intentos": "1) SIX y cash.ch: sin acceso; 2) búsqueda de cierres de octubre en francos: solo 111,80 CHF del 8-sep; 3) ADR NVS: 140,93 USD el 5-oct (AAII), 1 ADR = 1 acción",
+        "decision": "Calculado y marcado como estimación (precio en USD del ADR; en francos, ÷ 1,25)"
+      },
+      {
+        "seccion": "identificacion",
+        "campo": "acciones en circulación",
+        "tipo": "Núcleo",
+        "intentos": "1) informe trimestral del 2T26: sin extracto; 2) Stock Analysis: solo acciones diluidas medias de 2025 (1.955 M); 3) capitalización de blue News (215.000 M CHF) ÷ 111,80 CHF = 1.923 M",
+        "decision": "Calculado y marcado como estimación"
+      },
+      {
+        "seccion": "consenso",
+        "campo": "estimaciones anuales de ventas, EBITDA y BPA core de 2027e-2028e",
+        "tipo": "Núcleo",
+        "intentos": "1) consenso compilado por Novartis: no aparece en la búsqueda; 2) aktien.guide y MarketScreener: estimaciones tras registro; 3) Benzinga: solo trimestres hasta el 2T27",
+        "decision": "Omitido; BPA core 2026e sumando trimestres"
+      },
+      {
+        "seccion": "bolsa",
+        "campo": "rentabilidades frente a índices, beta, volatilidad y caída máxima",
+        "tipo": "Complemento",
+        "intentos": "1) bolsa.mjs sin red; 2) Yahoo y SIX: no accesibles; 3) búsquedas de beta: sin cifras fiables; en Suiza no hay registro público de cortos; entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido; se dan solo las rentabilidades anuales del ADR"
+      },
+      {
+        "seccion": "transacciones",
+        "campo": "transacciones precedentes con múltiplo",
+        "tipo": "Complemento",
+        "intentos": "1) compras farmacéuticas 2020-2026: biotecnológicas sin EBITDA; 2) Avidity: precio sin múltiplo; 3) operaciones de control de grandes farmacéuticas: ninguna comparable",
+        "decision": "Omitido (sección a null)"
+      },
+      {
+        "seccion": "sentimiento",
+        "campo": "Reddit, Stocktwits, Seeking Alpha y foros en alemán (finanzen.net, wallstreet-online)",
+        "tipo": "Complemento",
+        "intentos": "1) búsqueda de hilos de Reddit y Seeking Alpha sobre NVS tras los fracasos: sin resultados de 2026; 2) búsqueda de foros en alemán y de Rankia: sin hilos en el extracto; 3) API de Stocktwits y RSS de Seeking Alpha: sin red",
+        "decision": "Omitido; el tono se lee en cash.ch, TIKR, XTB, blue News y portales de análisis"
+      },
+      {
+        "seccion": "valoracion",
+        "campo": "pensiones (déficit neto) y minoritarios",
+        "tipo": "Complemento",
+        "intentos": "1) nota de pensiones del 20-F 2025: no accesible; 2) Stock Analysis no lo separa; 3) búsqueda no hecha por cupo; entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido (0 en el puente; minoritarios ≈100 M por estimación: el valor por acción estaría algo sobrestimado)"
+      },
+      {
+        "seccion": "rentabilidad",
+        "campo": "ROIC de los competidores en la misma definición",
+        "tipo": "Complemento",
+        "intentos": "1) informes anuales de los competidores: no accesibles; 2) Stock Analysis: ROIC con otra definición (se usa la de los comparables); 3) prensa: sin datos",
+        "decision": "Se usan los ROIC de la tabla de comparables"
+      }
+    ]
+  },
+  "identificacion": {
+    "nombre": "Novartis AG",
+    "nombre_corto": "Novartis",
+    "ticker": "NOVN",
+    "isin": "CH0012005267",
+    "mercado": "SIX Swiss Exchange (ADR NVS en la NYSE)",
+    "indice_referencia": "SMI",
+    "pais": "Suiza",
+    "pais_iso": "CH",
+    "sector": "Salud",
+    "industria": "Farmacéuticas",
+    "sede": "Basilea (Suiza)",
+    "fundacion": "1996",
+    "empleados": null,
+    "web": "www.novartis.com",
+    "precio": 140.93,
+    "fecha_precio": "2026-10-05",
+    "acciones": 1923,
+    "capitalizacion_publicada": 271008,
+    "free_float_pct": null,
+    "max_52s": null,
+    "min_52s": null,
+    "volumen_medio_diario": null,
+    "proximos_resultados": "2026-10-27"
+  },
+  "resumen": {
+    "recomendacion": "Mantener",
+    "conviccion": "Media",
+    "justificacion_recomendacion": null,
+    "horizonte": "12 meses (la tesis de valor intrínseco es a más de un año y negativa)",
+    "sintesis": "**La recomendación y por qué.** Mantener, con convicción media. Nuestro objetivo a 12 meses es de 150,49 USD (120,39 CHF): nuestro BPA core de 2028e por el PER de la regla común, ponderado 25/50/25. Da un +10,1 % con el dividendo frente a 140,93 USD (112,74 CHF), y un +12,8 % en el caso base, con una asimetría de 1,54 veces. El valor intrínseco es de 115,63 USD (92,50 CHF), un 18,0 % por debajo del precio, y el objetivo medio de los analistas, de 160,53 USD (128,42 CHF) [30], queda dentro de nuestro rango. La razón principal: el BPA core de 2026-2028 crece con productos ya vendidos (Kisqali +44 % en el 2T26) [2], pero el precio descuenta que la cartera reponga también las patentes de principios de los años 2030 justo después de dos fracasos de fase III. La convicción es media porque las dos reglas coinciden y la rentabilidad está lejos de los umbrales; subiría por debajo de 115,63 USD o si la guía de 2027 confirma el 5-6 % anual con datos de cartera; bajaría si el 27-oct recorta la guía.\n\n**El negocio.** Farmacéutica pura tras escindir Sandoz, con un margen operativo core del 40,1 % en 2025 y del 41,2 % en el 2T26 [1, 2] y un ROIC del 24,6 % frente a un WACC del 8,14 % (16,5 puntos). La calidad sostiene el crecimiento que proyectamos solo «en parte»: el 4,8 % anual de 2026e-2030e sale de marcas con patente y va medio punto por debajo de la guía, pero el de después de 2030 depende de una cartera y unas compras que acaban de fallar (pelacarsen, del-desiran de Avidity) [15, 21].\n\n**Finanzas.** Convierte en caja el 137 % del beneficio (47.247 M USD de flujo libre en 2023-2025) y devolvió al accionista más de lo que generó (22.690 M en dividendos y 26.090 M en recompras) [7]. La compra de Avidity llevó la deuda neta de 21.900 M a 39.400 M en el 1S26 (1,7 veces el EBITDA) [11]; el flujo libre no recoge esas compras, que el DCF carga como inversión recurrente.\n\n**Equipo y gobierno.** Accionariado disperso, una acción un voto y presidente independiente (Caforio, 97,5 % de apoyo) [25]. La guía anual se cumplió en 2024-2025; el fallo es de I+D y de asignación de capital (Avidity), no comercial.\n\n**Valoración.** El DCF da 109,83 USD con un WACC del 8,14 % (bono estadounidense al 5,22 %, porque los flujos son en dólares). El precio descuenta un crecimiento del 6,1 % anual en 2027e-2035e frente a nuestro 2,6 %, que incluye dos años sin crecimiento por los vencimientos. Con la prima implícita del mercado el valor sube a 128,19 USD (−9,0 %): incluso así está caro a largo plazo. A 12 meses, en cambio, cotiza a 14,6x nuestro BPA core de 2027e, por debajo de su mediana de 2022-2025 (15,5x): ahí está el +10,1 %.\n\n**Riesgos y catalizadores.** El mayor riesgo es que la cartera no reponga Cosentyx, Kisqali y Kesimpta (bajista del DCF: 82,32 USD, −41,6 %); después, los precios en EE. UU. y un deterioro de Avidity. Catalizadores: resultados del 3T26 el 27-oct [36], datos completos de Lp(a)HORIZON y la guía de 2027 en febrero. Los foros son negativos tras septiembre, sin capitulación; recogen el mismo riesgo que nuestro DCF.\n\n**Qué cambiaría la decisión.** Compraríamos por debajo de 115,63 USD (92,50 CHF), donde se cumplen la rentabilidad a 12 meses y el valor intrínseco; venderíamos por encima de 172,36 USD (137,89 CHF). Un recorte de la guía a medio plazo por debajo del 5 % anual bajaría nuestro BPA de 2028e y el objetivo.",
+    "tesis": "Novartis es una farmacéutica pura de medicamentos innovadores con 54.500 M USD de ventas en 2025, un margen operativo core del 40,1 % y un ROIC del 24,6 % [1]. Kisqali, Kesimpta, Pluvicto, Leqvio y Scemblix crecen a doble dígito y compensan la caída de Entresto [2, 12].\n\nEl precio (140,93 USD) es 14,6 veces nuestro BPA core de 2027e: el mercado paga el crecimiento de 2026-2030 que la guía promete (5-6 % anual) [19]. El DCF inverso pide más: un 6,1 % anual hasta 2035, sin el valle de patentes de principios de los años 2030 que nuestro base sí incluye.\n\nA 12 meses el mercado acierta: el BPA core sube con productos ya vendidos y el múltiplo está por debajo de su mediana. A largo plazo creemos que se equivoca: tras pelacarsen y del-desiran, para invertir hay que creer que la I+D y las compras reponen 2031-2033, y la evidencia reciente va en contra [15, 21].",
+    "vision_diferencial": {
+      "mercado_descuenta": "Que Novartis crece al 5-6 % anual hasta 2030 y que después la cartera repone las patentes, con un crecimiento medio del 6,1 % en 2027e-2035e según el DCF inverso.",
+      "nuestra_vision": "Coincidimos en 2026-2030 (4,8 % anual, algo por debajo) pero no después: modelamos 0 % y −2 % en 2031e-2032e y un margen que vuelve al 38 %.",
+      "por_que": "Los dos fracasos de septiembre quitan al menos ≈1.000-2.000 M USD de ventas de 2030 y Avidity perdió su activo principal [15, 22]; la productividad de las compras recientes no justifica pagar hoy el crecimiento de después de 2030."
+    },
+    "a_favor": [
+      "**Margen de primera**: 40,1 % de margen operativo core en 2025 y 41,2 % en el 2T26 [1, 2].",
+      "**Motores ya comercializados**: Kisqali +44 % en el 2T26 (1.700 M USD) [2].",
+      "**Caja**: 17.596 M USD de flujo libre en 2025 y 137 % de conversión en 2023-2025 [5].",
+      "**Retorno al accionista**: dividendo de 3,70 CHF (29 subidas seguidas) y 5.600 M USD de recompra pendiente [11, 17].",
+      "**Múltiplo**: 14,6x nuestro BPA core de 2027e, por debajo de su mediana de 15,5x."
+    ],
+    "en_contra": [
+      "**Valor intrínseco por debajo del precio**: 115,63 USD, −18,0 %.",
+      "**Dos fases III fallidas en una semana** (pelacarsen y del-desiran) [21].",
+      "**Avidity**: ≈12.000 M USD pagados por un activo que falló siete meses después [15].",
+      "**Precipicio de patentes** a principios de los años 2030 (Cosentyx, Kisqali, Kesimpta) [22].",
+      "**Deuda neta duplicada**: 39.400 M USD a junio de 2026 [11]."
+    ],
+    "que_vigilar": "La tesis a 12 meses depende de que el BPA core vuelva a crecer en el 2S26 y en 2027: si el 27-oct la dirección recorta la guía de 2026 o en febrero no guía crecimiento de un dígito medio en el resultado operativo core para 2027, nuestro BPA de 2028e (10,57 USD) no se sostiene. Señal temprana: Entresto y Kisqali en el 3T26.",
+    "cambiaria_recomendacion": [
+      "Precio por debajo de 115,63 USD (92,50 CHF): pasaríamos a Comprar.",
+      "Precio por encima de 172,36 USD (137,89 CHF): pasaríamos a Vender.",
+      "Recorte de la guía a medio plazo por debajo del 5 % anual: bajaríamos el BPA de 2028e y el objetivo.",
+      "Datos de fase III positivos en 2027 en productos con ventas máximas de más de 3.000 M USD: subiríamos el crecimiento de después de 2030."
+    ],
+    "kpis_seguimiento": [
+      {
+        "kpi": "BPA core trimestral",
+        "nivel_actual": "2,41 USD (2T26)",
+        "umbral_alerta": "< 2,10 en el 3T26",
+        "por_que": "Valida la aceleración del 2S."
+      },
+      {
+        "kpi": "Ventas de Kisqali",
+        "nivel_actual": "1.700 M USD (2T26, +44 %)",
+        "umbral_alerta": "Crecimiento < 25 %",
+        "por_que": "Primer motor del BPA de 2028e."
+      },
+      {
+        "kpi": "Margen operativo core",
+        "nivel_actual": "41,2 % (2T26)",
+        "umbral_alerta": "< 38 %",
+        "por_que": "Base del objetivo de más del 40 % en 2029."
+      },
+      {
+        "kpi": "Deuda neta",
+        "nivel_actual": "39.400 M USD (jun-26)",
+        "umbral_alerta": "> 50.000 M",
+        "por_que": "Otra compra grande sin ventas."
+      },
+      {
+        "kpi": "Guía de ventas 2025-2030",
+        "nivel_actual": "+5-6 % anual",
+        "umbral_alerta": "< 5 %",
+        "por_que": "Sostiene el múltiplo."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "historia": {
+    "hitos": [
+      {
+        "anio": "1996",
+        "hito": "Fusión de Ciba-Geigy y Sandoz, la mayor de su tiempo en el sector, que crea Novartis en Basilea."
+      },
+      {
+        "anio": "2018",
+        "hito": "Vas Narasimhan, consejero delegado; empieza la reducción a medicamentos innovadores (venta de Alcon en 2019) [C3]."
+      },
+      {
+        "anio": "2021",
+        "hito": "Vende a Roche su 33 % de acciones al portador por 19.024 M CHF [A16]."
+      },
+      {
+        "anio": "2023",
+        "hito": "Escisión de Sandoz: Novartis queda como farmacéutica pura [A10]."
+      },
+      {
+        "anio": "2025",
+        "hito": "Genéricos de Entresto en EE. UU.; margen core del 40,1 % y BPA core de 8,98 USD [A1]."
+      },
+      {
+        "anio": "2026",
+        "hito": "Compra de Avidity (≈12.000 M USD, febrero); en septiembre fallan pelacarsen (Lp(a)HORIZON) y del-desiran (HARBOR) y la acción cae un 10,9 % en un día [A15, 1, 2]."
+      }
+    ],
+    "confianza": "Media",
+    "resumen": "Novartis nació en 1996 de la fusión de Ciba-Geigy y Sandoz. Con Vas Narasimhan al frente desde 2018 se quedó solo con los medicamentos innovadores: vendió su 33 % de las acciones al portador de Roche por 19.024 M CHF en 2021 [16], sacó a bolsa Alcon en 2019 y escindió Sandoz en 2023 [10]. El resultado es una farmacéutica pura con un margen operativo core que pasó del 38,7 % en 2024 al 40,1 % en 2025 [1, 9]. En 2025 perdió la patente de Entresto en EE. UU. y en 2026 compró Avidity por ≈12.000 M USD [15]; en septiembre fallaron dos fases III (pelacarsen y del-desiran) y la acción cayó un 10,9 % en un día [20]."
+  },
+  "negocio": {
+    "segmentos": [],
+    "kpis": [
+      {
+        "kpi": "Ventas netas (M USD)",
+        "valor_anterior": "50.300 (2024)",
+        "valor_actual": "54.500 (2025)",
+        "variacion": "+8 % a tipo constante",
+        "comentario": "Volumen +15 puntos, genéricos −6 y precio −1 [1]."
+      },
+      {
+        "kpi": "Margen operativo core",
+        "valor_anterior": "38,7 % (2024)",
+        "valor_actual": "40,1 % (2025)",
+        "variacion": "+1,4 puntos",
+        "comentario": "En el 2T26, 41,2 % [1, 2, 9]."
+      },
+      {
+        "kpi": "BPA core (USD)",
+        "valor_anterior": "7,81 (2024)",
+        "valor_actual": "8,98 (2025)",
+        "variacion": "+15 % en USD",
+        "comentario": "1S26: 4,39 USD (−6 % en USD) por los genéricos de Entresto [1, 2]."
+      },
+      {
+        "kpi": "Kisqali, ventas trimestrales (M USD)",
+        "valor_anterior": "≈1.180 (2T25)",
+        "valor_actual": "1.700 (2T26)",
+        "variacion": "+44 %",
+        "comentario": "Primer motor de crecimiento; en el 1T26, 1.520 M (+59 %) [3, 12]."
+      },
+      {
+        "kpi": "Entresto, ventas trimestrales (M USD)",
+        "valor_anterior": "≈2.400 (2T25)",
+        "valor_actual": "1.200 (2T26)",
+        "variacion": "−50 %",
+        "comentario": "Genéricos en EE. UU. desde mediados de 2025 [12]."
+      },
+      {
+        "kpi": "Flujo libre (M USD)",
+        "valor_anterior": "16.253 (2024)",
+        "valor_actual": "17.596 (2025)",
+        "variacion": "+8 %",
+        "comentario": "Últimos 12 meses a jun-26: 16.763 M [1, 5]."
+      }
+    ],
+    "confianza": "Media",
+    "descripcion": "Novartis vende medicamentos innovadores con receta en cuatro áreas: cardiovascular, renal y metabolismo (Entresto, Leqvio), inmunología (Cosentyx, remibrutinib), neurociencia (Kesimpta, Zolgensma) y oncología (Kisqali, Pluvicto, Scemblix) [1, 2]. En 2025 facturó 54.500 M USD de ventas netas y 56.674 M de ingresos totales, con regalías y otros ingresos [1, 4]. Vende a mayoristas, hospitales y sistemas públicos; EE. UU. es el primer mercado. Tras escindir Sandoz no tiene genéricos ni dispositivos: todo el beneficio depende de patentes y de la cartera de I+D.",
+    "como_gana_dinero": "El margen sale de patentes: un medicamento protegido cuesta poco de fabricar y se vende con margen bruto alto, así que el apalancamiento operativo es grande. En 2025 el volumen sumó 15 puntos al crecimiento, los genéricos restaron 6 y el precio 1 [1]. El margen operativo core llegó al 40,1 % en 2025 y al 41,2 % en el 2T26 [1, 2]. La contrapartida es el vencimiento de patentes: Entresto, que perdió la exclusividad en EE. UU. a mediados de 2025, cayó un 50 % en el 2T26 [12], y la empresa tiene que reponer ventas con lanzamientos y compras de biotecnológicas.",
+    "clientes": "No hay concentración relevante de clientes finales, pero sí de pagadores: en EE. UU. tres grandes mayoristas distribuyen la mayor parte de las ventas y los planes de salud y el Gobierno (Medicare, IRA) negocian los precios. El poder de precios es limitado: el precio restó 1 punto al crecimiento de 2025 [1]. La fortaleza está en el volumen de los productos nuevos: Kisqali creció un 44 % en el 2T26 hasta 1.700 M USD [2]."
+  },
+  "sector": {
+    "drivers": [
+      {
+        "driver": "Pérdidas de exclusividad",
+        "efecto": "−",
+        "horizonte": "Estructural",
+        "evidencia": "Los genéricos restaron 6 puntos al crecimiento de 2025 y Entresto cayó un 50 % en el 2T26 [A1, A12]; Cosentyx, Kisqali y Kesimpta vencen a principios de los años 2030 [22]."
+      },
+      {
+        "driver": "Precios de medicamentos en EE. UU.",
+        "efecto": "−",
+        "horizonte": "Estructural",
+        "evidencia": "El precio restó 1 punto en 2025 [A1]; el sector cotizó a ≈12x beneficios en el mínimo de 2025 por los acuerdos de nación más favorecida [23]."
+      },
+      {
+        "driver": "Nuevos medicamentos en oncología, inmunología y neurociencia",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "El volumen sumó 15 puntos en 2025; Kisqali creció un 44 % en el 2T26 [A1, A2]."
+      },
+      {
+        "driver": "Productividad de la I+D en cardiología",
+        "efecto": "−",
+        "horizonte": "Cíclico",
+        "evidencia": "Pelacarsen bajó el Lp(a) pero no los episodios cardiovasculares en Lp(a)HORIZON [21]."
+      }
+    ],
+    "confianza": "Baja",
+    "definicion": "El mercado relevante es el de medicamentos innovadores con receta, sobre todo en EE. UU. y Europa. No hemos podido abrir una fuente de tamaño de mercado (IQVIA, EvaluatePharma), así que la sección se apoya en los motores de demanda y en la evolución de las grandes farmacéuticas comparables [23].",
+    "ciclo": {
+      "posicion": "Madurez del ciclo",
+      "comentario": "La demanda de medicamentos no depende del ciclo económico; lo que cambia es la ola de vencimientos de patentes y la presión de precios en EE. UU. El sector cotizó a ≈12x beneficios en el mínimo de 2025 por los acuerdos de nación más favorecida [23]. Para Novartis, 2026 es el año bajo del ciclo de producto (Entresto) y el siguiente valle llega a principios de los años 2030 con Cosentyx, Kisqali y Kesimpta [22]."
+    },
+    "regulacion": "En EE. UU., la ley de reducción de la inflación (IRA) permite a Medicare negociar precios de los fármacos más vendidos y los acuerdos de nación más favorecida de 2025 ligan precios a los de otros países ricos [23]. En Europa, la reforma de la legislación farmacéutica acorta la exclusividad de datos. Ninguna de estas normas aparece cuantificada en la guía de Novartis, que mantiene un crecimiento de ventas del 5-6 % anual en 2025-2030 a tipo constante [19].",
+    "tendencias": "Las nuevas modalidades (radioligandos como Pluvicto, ARN interferente como Leqvio, ARN dirigido a músculo de Avidity) son el campo de Novartis. La obesidad, donde no tiene producto, concentra el crecimiento del sector y el múltiplo de Lilly (26,7x beneficios) [23]. Los fracasos de pelacarsen y del-desiran muestran el riesgo de apostar por mecanismos nuevos sin datos de resultados clínicos [21, 24]."
+  },
+  "competencia": {
+    "competidores": [
+      {
+        "nombre": "Roche",
+        "pais": "Suiza",
+        "ticker": "ROP",
+        "ingresos": 79195,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Ingresos de 63.356 M CHF en 2025 (≈79.200 M USD a 1,25); margen EBITDA del 34,5 % [23]."
+      },
+      {
+        "nombre": "AstraZeneca",
+        "pais": "Reino Unido",
+        "ticker": "AZN",
+        "ingresos": 61370,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Oncología y cardiometabólico; 61.370 M USD de ventas en 12 meses, margen EBITDA del 33 % [23]."
+      },
+      {
+        "nombre": "Merck & Co",
+        "pais": "EE. UU.",
+        "ticker": "MRK",
+        "ingresos": 66570,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Rival en oncología; 66.570 M USD, margen EBITDA del 43,4 % [23]."
+      },
+      {
+        "nombre": "Sanofi",
+        "pais": "Francia",
+        "ticker": "SAN",
+        "ingresos": 55890,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Inmunología (Dupixent frente a Cosentyx en dermatología); 55.890 M USD, margen EBITDA del 27,7 % [23]."
+      },
+      {
+        "nombre": "Eli Lilly",
+        "pais": "EE. UU.",
+        "ticker": "LLY",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Margen EBITDA del 52,4 % y crecimiento del 24 %: la referencia del sector por la obesidad [23]."
+      }
+    ],
+    "confianza": "Baja",
+    "posicion": "Entre las diez mayores farmacéuticas del mundo por ventas (54.500 M USD en 2025) y la de mayor margen operativo core de Europa (40,1 %) [1]. Líder en radioligandos (Pluvicto) y en el inhibidor CDK4/6 de cáncer de mama precoz (Kisqali) [2].",
+    "foso": {
+      "veredicto": "Estrecho",
+      "tendencia": "Estable",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 0,
+          "evidencia": "No aplica a un fabricante de medicamentos."
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 2,
+          "evidencia": "Moderados en tratamientos crónicos (esclerosis múltiple, psoriasis), pero el pagador cambia al genérico en cuanto existe: Entresto −50 % en un trimestre [A12]."
+        },
+        {
+          "fuente": "Intangibles (marca, patentes, licencias)",
+          "puntuacion": 4,
+          "evidencia": "Patentes de Kisqali, Kesimpta, Cosentyx y Pluvicto hasta principios de los años 2030; margen core del 40,1 % [A1, B4]."
+        },
+        {
+          "fuente": "Ventaja en costes",
+          "puntuacion": 2,
+          "evidencia": "Escala de fabricación de radioligandos y de biológicos; no se traduce en precio."
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 3,
+          "evidencia": "I+D de más de 10.000 M USD al año y red comercial mundial: pocas empresas pueden lanzar a la vez en 100 países."
+        }
+      ]
+    },
+    "amenazas": "La principal es el calendario de patentes: tras Entresto (2025), Cosentyx, Kisqali y Kesimpta vencen a principios de los años 2030 [22], y los dos fracasos de septiembre quitan opciones para sustituirlos [21]. La segunda, los precios en EE. UU. (IRA y nación más favorecida). La tercera, que la obesidad atrae el gasto de los pagadores y el capital del sector hacia Lilly y Novo, donde Novartis no está."
+  },
+  "financieros": {
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 43974,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 15615,
+        "amortizaciones": 5559,
+        "ebit": 10056,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 22905,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": null,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": null
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 43461,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 14911,
+        "amortizaciones": 6965,
+        "ebit": 7946,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 6049,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": null,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": null
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 46660,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 18152,
+        "amortizaciones": 8383,
+        "ebit": 9769,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 8572,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": null,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": null
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 51722,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 20658,
+        "amortizaciones": 6114,
+        "ebit": 14544,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 11939,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": null,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": null
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 56674,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 22919,
+        "amortizaciones": 5275,
+        "ebit": 17644,
+        "resultado_financiero": -1292,
+        "bai": 16352,
+        "impuestos": 2385,
+        "minoritarios": -17,
+        "beneficio_neto": 13984,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 7.15,
+        "dpa": 4.63,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 1955
+      }
+    ],
+    "ltm": {
+      "periodo": "LTM dic-25",
+      "fecha_fin": "2025-12-31",
+      "ingresos": 56674,
+      "ebitda": 22919,
+      "ebit": 17644,
+      "beneficio_neto": 13984,
+      "bpa": 7.15,
+      "dpa": 4.63,
+      "dpa_extraordinario": 0,
+      "fcf": 17596,
+      "participadas_en_ebitda": null,
+      "no_recurrentes_en_ebitda": null
+    },
+    "cambios_perimetro": [
+      {
+        "periodo": "2023",
+        "descripcion": "Escisión de Sandoz (genéricos) en octubre de 2023: la cuenta de 2021-2022 está reexpresada sin Sandoz (operaciones continuadas), pero el balance de 2021-2022 la incluye."
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "Los ingresos de operaciones continuadas pasaron de 43.974 M USD en 2021 a 56.674 M en 2025, con el crecimiento concentrado en 2024-2025 (+10,9 % y +9,6 %) [4]. El EBITDA subió de 15.615 M a 22.919 M y el margen del 35,5 % al 40,4 %: el volumen de Kisqali, Kesimpta, Pluvicto y Leqvio diluyó los costes fijos [1]. 2026 es un año de pausa: la guía pide ventas +un dígito bajo y resultado operativo core −un dígito bajo a tipo constante por los genéricos de Entresto [2]. Años no comparables: 2021 lleva la plusvalía de la venta del paquete de Roche (beneficio neto de 22.905 M) y 2022-2023 la reorganización previa a la escisión de Sandoz [4, 16].",
+    "ajustes": "Novartis guía y el mercado sigue cifras core, que excluyen la amortización de intangibles, los deterioros, las reestructuraciones y otras partidas: en 2025 el resultado operativo core fue de 21.900 M USD frente a 17.644 M de resultado de explotación NIIF, y el BPA core de 8,98 USD frente a 7,15 diluido NIIF [1, 8]. La diferencia es recurrente (amortización de compras). El DCF usa el EBITDA NIIF; la rentabilidad a 12 meses usa el BPA core, con un margen operativo core ≈1,8 puntos por debajo del EBITDA NIIF sobre ingresos (2025: 40,4 % frente a 38,6 %)."
+  },
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "4T25",
+        "ingresos": null,
+        "crecimiento_pct": 1,
+        "crecimiento_organico_pct": -1,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 2.03,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1T26",
+        "ingresos": 13100,
+        "crecimiento_pct": -1,
+        "crecimiento_organico_pct": -5,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 1.99,
+        "vs_consenso": "Inferior"
+      },
+      {
+        "periodo": "2T26",
+        "ingresos": 14400,
+        "crecimiento_pct": 3,
+        "crecimiento_organico_pct": 1,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 2.41,
+        "vs_consenso": "Superior"
+      }
+    ],
+    "confianza": "Media",
+    "ultima_presentacion": "En el 2T26 (21-jul) Novartis vendió 14.400 M USD (+3 %, +1 % a tipo constante) y ganó 2,41 USD de BPA core, por encima de los 2,20 que esperaba el mercado [2, 13]. El margen core subió al 41,2 %. Kisqali creció un 44 % (1.700 M) y Entresto cayó un 50 % (1.200 M) [12]. La dirección confirmó la guía de 2026 y anticipó un segundo semestre con ventas +un dígito medio y resultado operativo core +un dígito medio-alto, al moderarse la erosión de genéricos en EE. UU. [18]. El 1T26 había decepcionado (BPA core 1,99 frente a 2,11 esperados) [14]. Lo que más se preguntó: la curva de Entresto, el efecto de los precios en EE. UU. y la cartera de 2026 (pelacarsen, del-desiran), que en septiembre falló [21]. La dirección mantuvo tras los fracasos el crecimiento del 5-6 % anual en 2025-2030 [19]."
+  },
+  "balance": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "activo_total": 131795,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 63973,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": 8005,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 12407,
+        "deuda_financiera": 22902,
+        "arrendamientos": null,
+        "patrimonio_neto": 67822,
+        "minoritarios": null,
+        "reservas": null
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 117453,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 58030,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": 8066,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 7517,
+        "deuda_financiera": 20244,
+        "arrendamientos": null,
+        "patrimonio_neto": 59423,
+        "minoritarios": null,
+        "reservas": null
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 99945,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 53195,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": 7107,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 13393,
+        "deuda_financiera": 18436,
+        "arrendamientos": null,
+        "patrimonio_neto": 46750,
+        "minoritarios": null,
+        "reservas": null
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 102246,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 58120,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": 7423,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 11459,
+        "deuda_financiera": 21366,
+        "arrendamientos": null,
+        "patrimonio_neto": 44126,
+        "minoritarios": null,
+        "reservas": null
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 110949,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 64400,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": 8937,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 11435,
+        "deuda_financiera": 33335,
+        "arrendamientos": null,
+        "patrimonio_neto": 46549,
+        "minoritarios": null,
+        "reservas": null
+      }
+    ],
+    "vencimientos": [],
+    "liquidez": "Caja de 11.435 M USD a dic-25 [6]; deuda neta de 21.900 M a dic-25 y de 39.400 M a jun-26 tras pagar Avidity (≈12.000 M) y el dividendo [11, 15].",
+    "rating": null,
+    "coste_deuda_pct": null,
+    "vida_media_anios": null,
+    "confianza": "Media",
+    "otros_pasivos": "No hemos podido leer las notas de pensiones, provisiones y litigios del 20-F (hueco). Novartis tiene planes de prestación definida en Suiza y EE. UU.; su déficit no está en el puente, lo que sobrestima algo el valor por acción. Tras Avidity, la deuda neta subió de 21.900 M USD a 39.400 M en el 1S26 [11]; queda por ejecutar 5.600 M de la recompra de 10.000 M anunciada en julio de 2025 [11].",
+    "comentario": "La deuda neta de 39.400 M USD a junio de 2026 equivale a 1,7 veces el EBITDA de 2025: holgada para una farmacéutica con 17.596 M de flujo libre al año [5, 11]. La subida viene de la compra de Avidity (≈12.000 M) y del dividendo de marzo (≈8.900 M) [15, 17]. Los clientes subieron del 13,1 % al 15,8 % de los ingresos en 2023-2025 [6]. No tenemos la deuda a corto plazo de 2021-2024: la deuda neta de esos años en el informe está infravalorada (hueco)."
+  },
+  "flujos": {
+    "historico": [
+      {
+        "periodo": "2023",
+        "flujo_operativo": 14500,
+        "capex": 1102,
+        "pagos_arrendamientos": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 7250,
+        "recompras": 8520,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 17600,
+        "capex": 1347,
+        "pagos_arrendamientos": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 7620,
+        "recompras": 8450,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 19100,
+        "capex": 1504,
+        "pagos_arrendamientos": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 7820,
+        "recompras": 9120,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "Novartis convierte en caja más de lo que gana: 47.247 M USD de flujo libre en 2023-2025, el 137 % del beneficio, porque la amortización de intangibles no es caja [5, 7]. El capex en inmovilizado es pequeño (≈2,5 % de los ingresos), pero el flujo libre de la empresa no recoge las compras de biotecnológicas y licencias, que son la verdadera inversión de mantenimiento de la cartera: Avidity costó ≈12.000 M en 2026 [15]. Por eso el DCF carga un capex del 10 % de los ingresos (inmovilizado más ≈7 puntos de compras; estimación propia). Toda la caja de 2023-2025 volvió al accionista: 22.690 M en dividendos y 26.090 M en recompras [7]."
+  },
+  "calidad": {
+    "auditor": null,
+    "anios_auditor": null,
+    "opinion": null,
+    "senales": [
+      {
+        "senal": "Posible deterioro de los intangibles de Avidity tras el fracaso de HARBOR",
+        "nivel": "Media",
+        "comentario": "Hasta ≈11.000 M USD de valor empresa pagado; no afecta al BPA core ni a la caja [15, 21]."
+      },
+      {
+        "senal": "Diferencia core/NIIF recurrente",
+        "nivel": "Baja",
+        "comentario": "Amortización de intangibles comprados: se repite cada año; el variable de la dirección se mide en core [1]."
+      }
+    ],
+    "confianza": "Baja",
+    "comentario": "Altman Z de 3,56 y Piotroski de 5: balance sólido, sin señales de tensión. El Beneish M (−2,53) no apunta a manipulación. La cuestión contable principal es la distancia entre core y NIIF (≈4.300 M USD de resultado operativo en 2025), que la dirección usa para su variable [1]. Riesgo de deterioro: del-desiran era el activo principal de Avidity (≈11.000 M de valor empresa) y falló en septiembre; un deterioro en el 3T o 4T26 bajaría el beneficio NIIF, no la caja [15, 21]. No hemos podido leer el informe del auditor (hueco)."
+  },
+  "rentabilidad": {
+    "comentario": "Novartis crea valor: ROIC del 24,6 % en 2025 frente a un WACC del 8,14 %, 16,5 puntos de diferencia. No siempre fue así: el 7,9 % de 2022 y el 11,8 % de 2023 llevaban Sandoz y la reorganización; la subida a 20,6 % en 2024 y 24,6 % en 2025 viene del margen (beneficio del 24,7 % de los ingresos) más que de la rotación (0,53 veces). Frente a los comparables, solo Lilly (42,2 %), Novo (39,2 %) y Roche (27,1 %) están por encima [23]. El riesgo es el capital que entra con las compras: Avidity añade ≈12.000 M al capital invertido sin ventas a la vista tras HARBOR [15, 21].",
+    "confianza": "Media"
+  },
+  "capital": {
+    "adquisiciones": [
+      {
+        "anio": "2021",
+        "objetivo": "Venta a Roche del 33 % de sus acciones al portador (53,3 M de acciones)",
+        "importe": -19024,
+        "ev_ebitda": null,
+        "financiacion": "Desinversión (19.024 M CHF cobrados)",
+        "resultado": "Plusvalía que infla el beneficio de 2021; la caja financió recompras [16]."
+      },
+      {
+        "anio": "2023",
+        "objetivo": "Escisión de Sandoz (genéricos y biosimilares) a sus accionistas",
+        "importe": null,
+        "ev_ebitda": null,
+        "financiacion": "Escisión sin caja",
+        "resultado": "Novartis queda como farmacéutica pura de medicamentos innovadores; el margen core sube de ≈36 % a 40 % en dos años [1, 10]."
+      },
+      {
+        "anio": "2026",
+        "objetivo": "Avidity Biosciences (ARN dirigido a músculo: DM1, FSHD, Duchenne)",
+        "importe": 12000,
+        "ev_ebitda": null,
+        "financiacion": "Caja y deuda",
+        "resultado": "Cerrada el 27-feb-2026 (72 USD por acción; valor empresa ≈11.000 M). En septiembre, del-desiran (DM1), su activo principal, falló la fase III HARBOR: riesgo de deterioro [15, B3]."
+      }
+    ],
+    "confianza": "Media",
+    "politica": "Dividendo creciente en francos (3,70 CHF por 2025, +5,7 %, 29 subidas seguidas desde 1996) [17] y recompras: queda por ejecutar 5.600 M USD del programa de 10.000 M de julio de 2025 [11]. La prioridad declarada es invertir en la cartera (I+D interna y compras de complemento), después el dividendo y luego las recompras.",
+    "comentario": "La dirección ha creado valor con la reestructuración del perímetro (Alcon, Roche, Sandoz): el ROIC pasó del 7,9 % en 2022 al 24,6 % en 2025. Con la caja ha sido generosa con el accionista (49.000 M USD de dividendos y recompras en 2023-2025, por encima del flujo libre de 47.247 M) [7]. Las compras son el punto débil: Avidity (≈12.000 M) perdió su activo principal siete meses después de cerrarse [15, 21], y la deuda neta se duplicó. Con ese historial reciente, la proyección del DCF carga las compras como un coste recurrente y no les atribuye crecimiento propio."
+  },
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "Vasant (Vas) Narasimhan",
+        "cargo": "Consejero delegado",
+        "desde": "2018",
+        "participacion_pct": null,
+        "trayectoria": "Médico; antes, director de desarrollo de fármacos del grupo. Ha llevado a Novartis a farmacéutica pura (Alcon en 2019, Sandoz en 2023) y del 36 % al 40 % de margen core [A1, A10]."
+      },
+      {
+        "nombre": "Giovanni Caforio",
+        "cargo": "Presidente",
+        "desde": "2025",
+        "participacion_pct": null,
+        "trayectoria": "Antiguo consejero delegado de Bristol Myers Squibb; reelegido presidente en 2026 con el 97,5 % de los votos [25]."
+      }
+    ],
+    "historial_guidance": [
+      {
+        "anio": "2024",
+        "guia": "Ventas: crecimiento de un dígito alto; resultado operativo core: de dos dígitos bajos (tipo constante)",
+        "real": "Ventas +12 % y resultado operativo core +22 % a tipo constante",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2025",
+        "guia": "Ventas: un dígito alto; resultado operativo core: de dos dígitos bajos",
+        "real": "Ventas +8 %, resultado operativo core +14 % a tipo constante",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2026",
+        "guia": "Ventas: un dígito bajo; resultado operativo core: caída de un dígito bajo (tipo constante)",
+        "real": "1S26: ventas −2 % a tipo constante; guía confirmada en julio, con un 2S de crecimiento de un dígito medio",
+        "cumplida": "Parcial"
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "Equipo estable: Narasimhan es consejero delegado desde 2018 y Caforio presidente desde 2025, reelegido con el 97,5 % [25]. La guía anual se cumplió con holgura en 2024 y 2025 (resultado operativo core +22 % y +14 % a tipo constante) y la de 2026 sigue confirmada [1, 2, 25]. El fallo es de I+D, no de ejecución comercial: dos de tres lecturas clave de septiembre fallaron [19]. No hemos podido comprobar quién es el director financiero (hueco)."
+  },
+  "gobierno": {
+    "consejo": [
+      {
+        "nombre": "Giovanni Caforio",
+        "cargo": "Presidente",
+        "tipo": "Independiente",
+        "desde": "2025",
+        "comisiones": null
+      }
+    ],
+    "presidente_ceo_separados": true,
+    "presidente_ejecutivo": false,
+    "consejero_coordinador": null,
+    "una_accion_un_voto": true,
+    "operaciones_vinculadas_relevantes": false,
+    "variable_ligado_rentabilidad": null,
+    "auditoria_independiente": null,
+    "insiders_sin_operaciones": null,
+    "accionista_control": false,
+    "presidente_vinculado_control": false,
+    "cambios_cupula_24m": 1,
+    "voto_remuneracion_pct": 87.2,
+    "voto_remuneracion_contra_pct": 11.6,
+    "voto_remuneracion_contra_libre_pct": null,
+    "voto_cupula_pct": null,
+    "remuneracion_ceo": null,
+    "accionistas": [],
+    "insiders": [],
+    "alertas": [
+      "Ninguna relevante detectada en los extractos revisados (junta de 2026 con todas las propuestas aprobadas); el informe de remuneración y el de gobierno no se pudieron leer."
+    ],
+    "confianza": "Baja",
+    "remuneracion": "No hemos podido leer el informe de remuneración 2025 (hueco). La junta de 2026 aprobó el informe con un 87,9 % a favor y un 11,6 % en contra (2025: 87,2 % a favor), y el máximo de remuneración del comité ejecutivo con un 90,3 % [25, 27]. El voto en contra está por debajo del 20 %, pero es el más alto de las propuestas: una parte de los inversores discute el peso de las métricas core en el variable.",
+    "control_y_defensas": "Accionariado disperso, sin accionista de control y con una acción, un voto [26]. Los estatutos suizos limitan el registro con voto de un solo accionista (tradicionalmente al 2 % para nominativos sin divulgar), un límite que no hemos podido comprobar en la versión vigente. No hay operaciones vinculadas relevantes en los extractos revisados."
+  },
+  "consenso": {
+    "estimaciones": [
+      {
+        "periodo": "2026e",
+        "ingresos": null,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 8.74,
+        "dpa": null,
+        "fuente": "BPA core: 4,39 del 1S26 real + 2,23 (3T26e) + 2,12 (4T26e) del consenso trimestral de Benzinga [A2, 7]"
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 60000,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": null,
+        "dpa": null,
+        "fuente": "Ventas: modelo de VCP Scanner (no es consenso) [40]"
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 61800,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": null,
+        "dpa": null,
+        "fuente": "Ventas: modelo de VCP Scanner [40]"
+      }
+    ],
+    "recomendaciones": {
+      "n_analistas": 34,
+      "comprar": 17,
+      "mantener": 14,
+      "vender": 3,
+      "po_medio": 128.42,
+      "po_min": 95.95,
+      "po_max": 150.69
+    },
+    "base_ebitda": "NIIF",
+    "ajuste_ebitda_pct_ventas": null,
+    "confianza": "Baja",
+    "guidance": "Guía de 2026 (confirmada el 21-jul): ventas +un dígito bajo y resultado operativo core −un dígito bajo a tipo constante, con un segundo semestre de ventas +un dígito medio [2, 18]. A medio plazo: ventas +5-6 % anual en 2025-2030 a tipo constante y margen core por encima del 40 % hacia 2029; la dirección mantuvo ese objetivo tras los fracasos de septiembre [19]. Próximos resultados: 27-oct-2026 [36].",
+    "revisiones": "Tras el 8-sep, recortes: Deutsche Bank pasó a Mantener y bajó su objetivo de 140 a 120 CHF; ZKB quitó del modelo hasta 1.300 M USD de ventas de pelacarsen; JPMorgan cifró el efecto en un 2-3 % del valor [22]. Jefferies está en Mantener con 110 CHF [38]. Solo tenemos una fuente de objetivos (aktien.guide, 128,42 CHF de media) y el BPA core de 2026e sumando trimestres (8,74 USD); no hay estimaciones anuales gratuitas de 2027-2028 (hueco)."
+  },
+  "bolsa": {
+    "tipo_rentabilidad": "de precio (sin dividendos)",
+    "rentabilidades": [],
+    "anual": [
+      {
+        "anio": "2021",
+        "accion_pct": -7.9,
+        "indice_pct": null
+      },
+      {
+        "anio": "2022",
+        "accion_pct": 3.6,
+        "indice_pct": null
+      },
+      {
+        "anio": "2023",
+        "accion_pct": 17.1,
+        "indice_pct": null
+      },
+      {
+        "anio": "2024",
+        "accion_pct": -2.8,
+        "indice_pct": null
+      },
+      {
+        "anio": "2025",
+        "accion_pct": 42.3,
+        "indice_pct": null
+      }
+    ],
+    "beta": null,
+    "volatilidad_pct": null,
+    "max_drawdown_pct": null,
+    "posicion_corta_pct": null,
+    "confianza": "Baja",
+    "comentario": "El ADR ganó un 42,3 % en 2025 por el margen y la recompra, y siguió subiendo hasta el verano de 2026 (131,32 CHF el 20-ago) [33, 39]. El 4-sep falló pelacarsen y el 8-sep del-desiran: la acción cayó un 10,9 % en un día, su peor sesión, y la capitalización bajó de 239.000 a 215.000 M CHF [20]. Desde entonces se mueve entre 137 y 163 USD en el ADR [28]. No tenemos beta ni volatilidad con datos propios (hueco)."
+  },
+  "multiplos_historicos": {
+    "serie": [
+      {
+        "anio": "2021",
+        "precio_cierre": 82.77,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": true
+      },
+      {
+        "anio": "2022",
+        "precio_cierre": 85.85,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2023",
+        "precio_cierre": 100.97,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2024",
+        "precio_cierre": 97.31,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2025",
+        "precio_cierre": 138.72,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "Con el BPA core en USD y el cierre del ADR ajustado por la escisión, el PER fue de 15,7x en 2022, 15,6x en 2023, 12,5x en 2024 y 15,4x en 2025 [1, 9, 10, 33]. Hoy, a 140,93 USD, cotiza a 14,6x nuestro BPA core de 2027e: por debajo de la mediana de esos cuatro años (15,5x) y por encima del mínimo de 2024. El descuento frente a 2025 refleja el riesgo de cartera tras septiembre y el valle de patentes de principios de los años 2030."
+  },
+  "comparables": {
+    "empresas": [
+      {
+        "nombre": "Eli Lilly",
+        "ticker": "LLY",
+        "pais": "US",
+        "capitalizacion": 1060832,
+        "ev_ventas": 13.34,
+        "ev_ebitda_ltm": 25.5,
+        "ev_ebitda_ntm": 20.6,
+        "per_ntm": 26.7,
+        "crecimiento_pct": 24.4,
+        "margen_ebitda_pct": 52.4,
+        "roic_pct": 42.2,
+        "dn_ebitda": 1.08,
+        "fcf_yield_pct": 1.75
+      },
+      {
+        "nombre": "AstraZeneca",
+        "ticker": "AZN",
+        "pais": "GB",
+        "capitalizacion": 255429,
+        "ev_ventas": 4.44,
+        "ev_ebitda_ltm": 13.5,
+        "ev_ebitda_ntm": 11.4,
+        "per_ntm": 18.3,
+        "crecimiento_pct": 7.8,
+        "margen_ebitda_pct": 33,
+        "roic_pct": 16.1,
+        "dn_ebitda": 1.35,
+        "fcf_yield_pct": 4.28
+      },
+      {
+        "nombre": "Sanofi",
+        "ticker": "SAN",
+        "pais": "FR",
+        "capitalizacion": 98993,
+        "ev_ventas": 2.05,
+        "ev_ebitda_ltm": 7.4,
+        "ev_ebitda_ntm": 6.6,
+        "per_ntm": 9.9,
+        "crecimiento_pct": 0.2,
+        "margen_ebitda_pct": 27.7,
+        "roic_pct": 9.1,
+        "dn_ebitda": 1.27,
+        "fcf_yield_pct": 11.66
+      },
+      {
+        "nombre": "Merck & Co",
+        "ticker": "MRK",
+        "pais": "US",
+        "capitalizacion": 358935,
+        "ev_ventas": 5.88,
+        "ev_ebitda_ltm": 13.6,
+        "ev_ebitda_ntm": 13.3,
+        "per_ntm": 20.9,
+        "crecimiento_pct": 4.3,
+        "margen_ebitda_pct": 43.4,
+        "roic_pct": 14.1,
+        "dn_ebitda": 1.62,
+        "fcf_yield_pct": 4.56
+      },
+      {
+        "nombre": "GSK",
+        "ticker": "GSK",
+        "pais": "GB",
+        "capitalizacion": 96440,
+        "ev_ventas": 2.54,
+        "ev_ebitda_ltm": 7.8,
+        "ev_ebitda_ntm": 6.9,
+        "per_ntm": 11.7,
+        "crecimiento_pct": 5.4,
+        "margen_ebitda_pct": 32.6,
+        "roic_pct": 26.4,
+        "dn_ebitda": 1.4,
+        "fcf_yield_pct": 9.63
+      },
+      {
+        "nombre": "Novo Nordisk",
+        "ticker": "NOVO B",
+        "pais": "DK",
+        "capitalizacion": 167628,
+        "ev_ventas": 3.64,
+        "ev_ebitda_ltm": 6.9,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 11.7,
+        "crecimiento_pct": -2.7,
+        "margen_ebitda_pct": 52.7,
+        "roic_pct": 39.2,
+        "dn_ebitda": 0.55,
+        "fcf_yield_pct": 6.9
+      },
+      {
+        "nombre": "Roche",
+        "ticker": "ROP",
+        "pais": "CH",
+        "capitalizacion": 332470,
+        "ev_ventas": 4.95,
+        "ev_ebitda_ltm": 14.3,
+        "ev_ebitda_ntm": 12.8,
+        "per_ntm": 15.5,
+        "crecimiento_pct": 1.6,
+        "margen_ebitda_pct": 34.5,
+        "roic_pct": 27.1,
+        "dn_ebitda": 1.1,
+        "fcf_yield_pct": 5.7
+      }
+    ],
+    "confianza": "Media",
+    "criterio": "Siete grandes farmacéuticas de innovación con más de 50.000 M USD de capitalización: Roche, AstraZeneca, Merck & Co, Sanofi, GSK, Eli Lilly y Novo Nordisk. Lilly y Novo están por la obesidad: su múltiplo refleja otro crecimiento y la mediana amortigua su efecto. Las cifras son las del informe de Roche del 14-oct (datos del 8-oct), pasadas a USD a 1,25 por franco [23].",
+    "comentario": "Novartis cotiza a 16,1x el PER de los próximos 12 meses, encima de la mediana de los comparables (15,5x), con un margen EBITDA (40,4 %) y un ROIC (24,6 %) del tercio superior. La prima es pequeña y se explica por el margen; el crecimiento que pide el precio es el problema: el PER de los comparables da 135,47 USD por acción, un 3,9 % por debajo del precio. Sanofi (9,9x) y GSK (11,7x) muestran a cuánto cotiza una farmacéutica con un vencimiento grande a la vista."
+  },
+  "transacciones": null,
+  "dcf": {
+    "anios": [
+      {
+        "periodo": "2026e",
+        "crecimiento_pct": 3.5,
+        "margen_ebitda_pct": 38.8,
+        "amortizacion_pct_ventas": 9.5,
+        "capex_pct_ventas": 10,
+        "nwc_pct_ventas": 15.5,
+        "tasa_impositiva_pct": 16.5,
+        "fijo": true
+      },
+      {
+        "periodo": "2027e",
+        "crecimiento_pct": 5.5,
+        "margen_ebitda_pct": 40,
+        "amortizacion_pct_ventas": 9.5,
+        "capex_pct_ventas": 10,
+        "nwc_pct_ventas": 15.5,
+        "tasa_impositiva_pct": 16.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2028e",
+        "crecimiento_pct": 5.5,
+        "margen_ebitda_pct": 41,
+        "amortizacion_pct_ventas": 9.5,
+        "capex_pct_ventas": 10,
+        "nwc_pct_ventas": 15.5,
+        "tasa_impositiva_pct": 16.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2029e",
+        "crecimiento_pct": 5,
+        "margen_ebitda_pct": 41.5,
+        "amortizacion_pct_ventas": 9.5,
+        "capex_pct_ventas": 10,
+        "nwc_pct_ventas": 15.5,
+        "tasa_impositiva_pct": 16.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2030e",
+        "crecimiento_pct": 4.5,
+        "margen_ebitda_pct": 41.5,
+        "amortizacion_pct_ventas": 9.5,
+        "capex_pct_ventas": 10,
+        "nwc_pct_ventas": 15.5,
+        "tasa_impositiva_pct": 16.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2031e",
+        "crecimiento_pct": 0,
+        "margen_ebitda_pct": 40,
+        "amortizacion_pct_ventas": 9.5,
+        "capex_pct_ventas": 9.5,
+        "nwc_pct_ventas": 15.5,
+        "tasa_impositiva_pct": 16.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2032e",
+        "crecimiento_pct": -2,
+        "margen_ebitda_pct": 38.5,
+        "amortizacion_pct_ventas": 9.5,
+        "capex_pct_ventas": 9.5,
+        "nwc_pct_ventas": 15.5,
+        "tasa_impositiva_pct": 16.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2033e",
+        "crecimiento_pct": 1,
+        "margen_ebitda_pct": 38,
+        "amortizacion_pct_ventas": 9.5,
+        "capex_pct_ventas": 9.5,
+        "nwc_pct_ventas": 15.5,
+        "tasa_impositiva_pct": 16.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2034e",
+        "crecimiento_pct": 2,
+        "margen_ebitda_pct": 38,
+        "amortizacion_pct_ventas": 9.5,
+        "capex_pct_ventas": 9.5,
+        "nwc_pct_ventas": 15.5,
+        "tasa_impositiva_pct": 16.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2035e",
+        "crecimiento_pct": 2,
+        "margen_ebitda_pct": 38,
+        "amortizacion_pct_ventas": 9.5,
+        "capex_pct_ventas": 9.5,
+        "nwc_pct_ventas": 15.5,
+        "tasa_impositiva_pct": 16.5,
+        "fijo": false
+      }
+    ],
+    "wacc": {
+      "tasa_libre_pct": 5.22,
+      "beta": 0.65,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 0,
+      "coste_deuda_pct": 4.5,
+      "tasa_impositiva_pct": 16.5,
+      "peso_deuda_pct": 13
+    },
+    "terminal": {
+      "metodo": "gordon",
+      "crecimiento_pct": 2,
+      "multiplo_salida": 12
+    },
+    "etapa2": {
+      "usar": false,
+      "anios": 5,
+      "margen_final_pct": null,
+      "justificacion": null
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "Partimos de 56.674 M USD de ingresos en 2025 [4]. 2026e: +3,5 % (fijo), la guía de ventas de un dígito bajo a tipo constante más el efecto del dólar débil [2]. 2027e-2030e: +5,5 %, +5,5 %, +5,0 % y +4,5 %, medio punto por debajo de la guía del 5-6 % anual que la dirección mantuvo tras los fracasos [19], porque pelacarsen y del-desiran estaban en ella. 2031e-2033e: 0 %, −2 % y +1 % por los vencimientos de Cosentyx, Kisqali y Kesimpta [22]; después, 2 %.",
+      "margenes": "EBITDA NIIF del 38,8 % en 2026e (resultado operativo core −un dígito bajo con ventas al alza), 40,0 % en 2027e y 41,0-41,5 % en 2028e-2030e, en línea con el objetivo de margen core por encima del 40 % hacia 2029 [19]; en 2025 fue del 40,4 %. Con los vencimientos baja al 38 % desde 2033e: el margen de 2023-2024 (38,9-39,9 %).",
+      "inversion": "Capex del 10 % de los ingresos hasta 2030e y del 9,5 % después: ≈2,5 puntos de inmovilizado y ≈7 de compras de biotecnológicas y licencias, que son el coste de reponer la cartera y que el flujo libre de la empresa no recoge (Avidity: ≈12.000 M en 2026) [15]. Amortización del 9,5 % (9,3 % en 2025) [5]. Circulante del 15,5 % de los ingresos (clientes de 2025: 15,8 %) [6].",
+      "wacc": "Flujos en dólares, así que la tasa libre es el bono estadounidense a 10 años (5,22 %) [35], no el suizo. Beta de 0,65 (farmacéutica defensiva; no hemos podido calcularla, hueco), prima de mercado del 5,5 % y coste de los recursos propios del 8,8 %. Deuda al 4,5 % antes de impuestos con un peso del 13 % (39.400 M de deuda neta frente a 271.008 M de capitalización). WACC del 8,14 %. Con la prima implícita del mercado (4,2 %) baja al 7,4 % [37].",
+      "terminal": "Gordon con un 2,0 % de crecimiento, por debajo de la inflación esperada en dólares más un crecimiento real modesto y 3,2 puntos por debajo de la tasa libre. El valor terminal pesa un 56 % del valor. Un múltiplo de salida de 12 veces el EBITDA, en la parte baja de los comparables, se da como contraste."
+    },
+    "sostenibilidad": {
+      "puente_ingresos": [
+        {
+          "periodo": "2026e",
+          "volumen_pct": 7,
+          "precio_pct": -1,
+          "otros_pct": -2.5,
+          "comentario": "Volumen de Kisqali, Kesimpta, Pluvicto, Leqvio y Scemblix (+7 puntos) frente a genéricos de Entresto (−2,5 puntos en otros) y precio (−1): la guía de ventas de un dígito bajo [1, 2]."
+        },
+        {
+          "periodo": "2027e",
+          "volumen_pct": 9,
+          "precio_pct": -1,
+          "otros_pct": -2.5,
+          "comentario": "Sin el gran escalón de Entresto, el volumen de las marcas prioritarias (+9) domina; los genéricos y el precio restan 3,5 puntos. Medio punto por debajo de la guía a medio plazo [19]."
+        },
+        {
+          "periodo": "2028e",
+          "volumen_pct": 8.5,
+          "precio_pct": -1,
+          "otros_pct": -2,
+          "comentario": "Igual que 2027e, con algo menos de volumen: Kisqali madura en cáncer de mama precoz."
+        },
+        {
+          "periodo": "2029e",
+          "volumen_pct": 8,
+          "precio_pct": -1,
+          "otros_pct": -2,
+          "comentario": "Lanzamientos de remibrutinib y Pluvicto en nuevas indicaciones; genéricos y precio −3 puntos."
+        },
+        {
+          "periodo": "2030e",
+          "volumen_pct": 7.5,
+          "precio_pct": -1,
+          "otros_pct": -2,
+          "comentario": "Último año antes de los vencimientos de principios de los años 2030 [22]."
+        }
+      ],
+      "mercado_final": null,
+      "veredicto": "En parte",
+      "justificacion": "En parte. Hecha a mano, porque la reinversión neta de la proyección es solo el 2 % del NOPAT (la amortización de intangibles comprados se compensa con el capex de compras) y el motor no puede hacer la prueba de financiación. El crecimiento de 2026e-2030e (4,8 % de media) sale de productos ya comercializados con patente hasta principios de los años 2030 y está por debajo de la guía del 5-6 % [19]: lo sostienen el foso de patentes y un ROIC del 24,6 %. Lo que no sostiene la calidad demostrada es el crecimiento de después de 2030: las compras recientes (Avidity) y dos fases III han fallado [15, 21]. Por eso el base ya va medio punto por debajo de la guía y cae a 0 % y −2 % en 2031e-2032e; no hace falta otra rebaja."
+    },
+    "lectura": "El DCF da 109,83 USD por acción (87,86 CHF), un 22,1 % por debajo del precio, con un WACC del 8,14 % y un valor terminal del 56 %; la sensibilidad (WACC y crecimiento ± 0,5 puntos) va de 95,65 a 129,36 USD. El DCF inverso dice que el precio descuenta un crecimiento del 6,1 % anual en 2027e-2035e (frente a nuestro 2,6 %), o un margen EBITDA del 44,9 % (frente a nuestro 38 % final), o una rentabilidad del 6,9 % anual. Es exigente: supone que la cartera repone por completo las patentes de principios de los años 2030, justo después de dos fracasos de fase III. Parte de la distancia es de tasa: con la prima implícita del mercado (WACC 7,4 %) el DCF sube a 126,77 USD, todavía un 10 % por debajo del precio.",
+    "confianza": "Media"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": -2,
+        "ajuste_margen_pp": -2,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": 1.5,
+        "multiplo_salida": null,
+        "narrativa": "La erosión de Entresto y los precios en EE. UU. dejan el crecimiento 2 puntos por debajo del base y el margen 2 puntos más bajo, como en 2022-2023; otra compra cara no aporta ventas y los vencimientos de 2031-2033 golpean sin reemplazo."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Las marcas prioritarias cumplen un crecimiento del 5-5,5 % en 2027e-2030e (medio punto por debajo de la guía), el margen EBITDA llega al 41,5 % y los vencimientos de principios de los años 2030 dejan dos años sin crecimiento."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": 1.5,
+        "ajuste_margen_pp": 1,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Kisqali, Pluvicto y remibrutinib superan las previsiones, la guía del 5-6 % se cumple por arriba y el margen sube un punto más; alguna compra o fase III compensa en parte el valle de 2031."
+      }
+    ],
+    "comentario": "En valor intrínseco la asimetría es negativa (−0,23 veces): incluso el alcista (127,51 USD) queda por debajo del precio, y el bajista (82,32) pierde un 41,6 %. A 12 meses es distinta (1,54 veces): con la regla de múltiplos, el alcista (173,45) gana un 26,4 % con dividendo y el bajista (119,88) pierde un 11,7 %, porque el BPA core de 2028e sigue creciendo con productos ya vendidos. El precio paga el corto plazo y una parte del largo que nuestro DCF no ve.",
+    "confianza": "Media"
+  },
+  "suma_partes": {
+    "aplica": false,
+    "descuento_holding_pct": 0,
+    "partes": [],
+    "comentario": "No aplica: Novartis es una farmacéutica de un solo segmento tras la escisión de Sandoz.",
+    "confianza": "Media"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2026-06-30",
+      "deuda_financiera": 39400,
+      "arrendamientos": 0,
+      "caja": 0,
+      "minoritarios": 100,
+      "pensiones": 0,
+      "asociadas": 0,
+      "otros_ajustes": 0
+    },
+    "rab": null,
+    "referencia_mercado": {
+      "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+      "prima_implicita_pct": 4.2,
+      "fecha": "2026-10",
+      "fuente": "Damodaran, ERPbymonth.xlsx [37]"
+    },
+    "pesos": {
+      "dcf": 50,
+      "comparables": 25,
+      "transacciones": 0,
+      "suma_partes": 0,
+      "escenarios": 25
+    },
+    "objetivo_12m": {
+      "ejercicio": "2028e",
+      "casos": [
+        {
+          "escenario": "Bajista",
+          "metrica": "PER 2028e (BPA core)",
+          "beneficio_por_accion": 9.59,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ingresos de 62.836 M USD en 2028e (−2 puntos de crecimiento en 2027-28) y margen EBITDA del 39 % (core 37,2 %): resultado operativo core de 23.375 M, 1.600 M de gastos financieros, impuesto del 16,5 % y 1.895 M de acciones: 9,59 USD."
+        },
+        {
+          "escenario": "Base",
+          "metrica": "PER 2028e (BPA core)",
+          "beneficio_por_accion": 10.57,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ingresos de 65.288 M USD (+5,5 % en 2027-28) y margen EBITDA del 41 % (core 39,2 %): resultado operativo core de 25.593 M, 1.600 M de gastos financieros, impuesto del 16,5 % y 1.895 M de acciones tras la recompra anunciada que queda: 10,57 USD."
+        },
+        {
+          "escenario": "Alcista",
+          "metrica": "PER 2028e (BPA core)",
+          "beneficio_por_accion": 11.19,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ingresos de 67.157 M USD (+7 % en 2027-28) y margen del 42 % (core 40,2 %): resultado operativo core de 26.997 M y el resto igual: 11,19 USD."
+        }
+      ],
+      "per_historico": {
+        "actual": 14.6,
+        "mediana_5a": 15.5,
+        "minimo_5a": 12.5,
+        "media_larga": 14.8,
+        "excluidos": "2021 excluido: no hay BPA core de operaciones continuadas (sin Sandoz) y el beneficio NIIF lleva la venta del paquete de Roche. Quedan cuatro años (la «mediana de 5 años» es la de esos cuatro), con el BPA core en USD y el cierre de diciembre del ADR ajustado por la escisión: 2022 15,7x (85,85 ÷ 5,48, BPA core continuado derivado del +18 % de 2023), 2023 15,6x (100,97 ÷ 6,47), 2024 12,5x (97,31 ÷ 7,81) y 2025 15,4x (138,72 ÷ 8,98) [1, 9, 10, 33]."
+      },
+      "comparables_per": {
+        "mediana": 15.5
+      },
+      "consenso": {
+        "bpa_ano1": 8.74,
+        "bpa_ano2": null,
+        "objetivo_medio": 160.53,
+        "objetivo_min": 119.94,
+        "objetivo_max": 188.36,
+        "analistas": 27,
+        "tendencia_3m": "recortes",
+        "fuente": "aktien.guide (128,42 CHF de media, 95,95-150,69; × 1,25 USD/CHF) [30]; BPA core 2026e sumando el 1S26 real y el consenso trimestral de Benzinga [32]; Deutsche Bank recortó a 120 CHF [22]"
+      },
+      "diferencia_consenso": "No hay estimaciones anuales gratuitas de 2028e (hueco); el contraste es el objetivo. Nuestro precio base (154,32 USD, 123,46 CHF) queda un 3,9 % por debajo del objetivo medio de los analistas (160,53 USD, 128,42 CHF) [30]: coincidimos en lo esencial. Nuestro BPA core de 2026e (8,74 en el consenso sumando trimestres [32]) y de 2027e (9,66 USD, +10 %) es coherente con la guía. La tendencia de los objetivos es a la baja tras septiembre (Deutsche Bank de 140 a 120 CHF) [22].",
+      "media": null,
+      "comentario": "El objetivo a 12 meses (150,49 USD, 120,39 CHF; +10,1 % con dividendo) está un 30 % por encima del valor intrínseco (115,63 USD): el mercado paga 14-15 veces un BPA core que sigue creciendo hasta 2030, y nuestro DCF descuenta además el valle de patentes de después de 2030 con un tipo en dólares del 5,22 %. Esa distancia no se cierra en un año: necesitaría una cartera que demuestre que repone Cosentyx, Kisqali y Kesimpta, o tipos más bajos. La tesis de valor es a más de un año y negativa; la de 12 meses, modestamente positiva."
+    },
+    "comentario": "El DCF pesa un 50 %: recoge el ROIC alto, la caja y, sobre todo, el valle de patentes de después de 2030, que los múltiplos a 12 meses no ven. Los comparables pesan un 25 % (PER a 12 meses: 135,47 USD) y los escenarios otro 25 %. No hay transacciones de control comparables. El valor ponderado es de 115,63 USD (92,50 CHF), un 18,0 % por debajo del precio; con la prima implícita del mercado sube a 128,19 USD (−9,0 %). La recomendación la decide el objetivo a 12 meses (150,49 USD, +10,1 % con dividendo), no el valor intrínseco.",
+    "confianza": "Media"
+  },
+  "catalizadores": {
+    "items": [
+      {
+        "fecha": "27-oct-2026",
+        "evento": "Resultados del 3T26",
+        "efecto": "Prueba de la aceleración del 2S que guía la dirección y primera lectura del posible deterioro de Avidity [36].",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "4T26",
+        "evento": "Datos completos de Lp(a)HORIZON en un congreso",
+        "efecto": "Si algún subgrupo muestra beneficio, opción regulatoria; si no, cierre del programa [21].",
+        "probabilidad": "Media",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "Febrero de 2027",
+        "evento": "Resultados de 2026 y guía de 2027",
+        "efecto": "La guía debería volver a crecimiento del resultado operativo core; un recorte del 5-6 % a medio plazo bajaría el BPA de 2028e [19].",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2026-2027",
+        "evento": "Ejecución de los 5.600 M USD que quedan de la recompra",
+        "efecto": "≈2 % del capital: sostiene el BPA [11].",
+        "probabilidad": "Alta",
+        "sentido": "+"
+      },
+      {
+        "fecha": "Marzo de 2027",
+        "evento": "Junta y dividendo de 2026",
+        "efecto": "Trigésima subida seguida en francos (≈3,3 % de rentabilidad) [17].",
+        "probabilidad": "Alta",
+        "sentido": "+"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "riesgos": {
+    "items": [
+      {
+        "riesgo": "La cartera no repone los vencimientos de principios de los años 2030 (Cosentyx, Kisqali, Kesimpta)",
+        "tipo": "Negocio",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−25 % (bajista del DCF: 82,32 USD)",
+        "mitigante": "Ventas de Kisqali y Pluvicto todavía creciendo; caja para compras.",
+        "senal": "Lecturas de fase III de 2027 y guía a medio plazo."
+      },
+      {
+        "riesgo": "Deterioro de Avidity y nuevas compras caras",
+        "tipo": "Asignación de capital",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−4 % (≈11.000 M USD de valor empresa pagado)",
+        "mitigante": "Quedan los programas de FSHD y Duchenne.",
+        "senal": "Deterioros en el 3T-4T26."
+      },
+      {
+        "riesgo": "Precios en EE. UU. (IRA, nación más favorecida, aranceles)",
+        "tipo": "Regulatorio",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−10 % por cada punto menos de margen sostenido",
+        "mitigante": "Acuerdos de 2025 y fabricación en EE. UU.",
+        "senal": "Lista de fármacos negociados por Medicare."
+      },
+      {
+        "riesgo": "Erosión de Entresto más rápida o genéricos de otros productos antes de lo previsto",
+        "tipo": "Negocio",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−5 %",
+        "mitigante": "Guía del 2S que ya asume menos erosión.",
+        "senal": "Ventas de Entresto del 3T26."
+      },
+      {
+        "riesgo": "Tipos en dólares altos (bono a 10 años al 5,22 %)",
+        "tipo": "Mercado",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "±0,5 puntos de WACC mueven el DCF entre 95,65 y 129,36 USD",
+        "mitigante": "Flujo libre estable.",
+        "senal": "Bono estadounidense a 10 años."
+      },
+      {
+        "riesgo": "Franco fuerte frente al dólar",
+        "tipo": "Divisa",
+        "probabilidad": "Media",
+        "impacto": "Bajo",
+        "efecto_valor": "Para el inversor en francos, un 5 % de dólar más débil resta un 5 % al valor en CHF",
+        "mitigante": "Costes en francos en Suiza.",
+        "senal": "USD/CHF."
+      }
+    ],
+    "premortem": "Octubre de 2029: la acción ha perdido un 40 %. La historia más probable empieza en septiembre de 2026: tras pelacarsen y del-desiran, la dirección compró otra biotecnológica cara para tapar el hueco de 2031 y la deuda neta pasó de 1,7 a 3 veces el EBITDA. En 2028 la guía del 5-6 % anual se recortó al 3 % porque Pluvicto y remibrutinib vendieron menos de lo previsto y Medicare negoció el precio de Cosentyx. El mercado dejó de pagar 14-15 veces un BPA que iba a caer con los genéricos de Kisqali y la valoró como Sanofi o GSK, a 10-12 veces. La señal temprana habría sido la guía de 2027 (febrero): si el resultado operativo core no vuelve a crecer al menos un dígito medio, el BPA de 2028e (10,57 USD en nuestro base) no se alcanza.",
+    "confianza": "Media"
+  },
+  "esg": {
+    "calificaciones": [],
+    "confianza": "Baja",
+    "materialidad": "Los asuntos ESG que más pesan en las cifras son el acceso y el precio de los medicamentos (IRA y nación más favorecida en EE. UU.) y la ética de la investigación clínica. No hemos podido leer el informe de sostenibilidad ni las calificaciones de MSCI o Sustainalytics (hueco).",
+    "controversias": "No hemos encontrado sanciones nuevas en los últimos doce meses en los extractos revisados; la búsqueda específica no se hizo por el cupo compartido (hueco)."
+  },
+  "preguntas": {
+    "items": [
+      {
+        "tema": "Avidity",
+        "pregunta": "¿Qué valor contable queda de Avidity tras HARBOR y qué esperan de los programas de FSHD y Duchenne?",
+        "por_que": "Hasta ≈11.000 M USD pagados; define si hay deterioro y cómo se mide el éxito de las compras [15]."
+      },
+      {
+        "tema": "Precipicio de patentes",
+        "pregunta": "¿Qué ventas de productos aún en fase III cuenta el objetivo del 5-6 % anual hasta 2030 y cuánto de Kisqali, Cosentyx y Kesimpta se pierde en 2031-2033?",
+        "por_que": "Es lo que separa nuestro DCF del precio."
+      },
+      {
+        "tema": "Pelacarsen",
+        "pregunta": "¿Hay algún subgrupo con beneficio que justifique un registro?",
+        "por_que": "El consenso llevaba ≈1.000 M USD en 2030 [22]."
+      },
+      {
+        "tema": "Capital",
+        "pregunta": "¿Mantienen la recompra de 10.000 M con la deuda neta en 39.400 M o priorizan compras?",
+        "por_que": "La recompra sostiene el BPA de 2028e."
+      },
+      {
+        "tema": "Precios en EE. UU.",
+        "pregunta": "¿Qué efecto tienen los acuerdos de nación más favorecida en el margen core de 2027?",
+        "por_que": "Un punto de margen sostenido mueve el valor ≈10 %."
+      },
+      {
+        "tema": "Remuneración",
+        "pregunta": "¿Qué peso tienen las métricas core frente a las NIIF y el TSR en el variable a largo plazo?",
+        "por_que": "El 11,6 % en contra en la junta de 2026 [25]."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sentimiento": {
+    "tono": "Negativo",
+    "tendencia": "Empeora",
+    "revisadas": [
+      {
+        "plataforma": "cash.ch (noticias de pelacarsen y del-desiran con comentarios de lectores)",
+        "fecha": "2026-09",
+        "n_comentarios": 20,
+        "tono": "Negativo",
+        "resumen": "Los lectores se preguntan si la compra de Avidity fue un error y si la I+D cardiovascular de Novartis sirve; pocos defienden comprar en la caída [22, 41]."
+      },
+      {
+        "plataforma": "TIKR (blog con debate de inversores)",
+        "fecha": "2026-09",
+        "n_comentarios": 10,
+        "tono": "Dividido",
+        "resumen": "Peor día de la historia de la acción; el escenario medio del autor sigue siendo alcista, pero los analistas quedan repartidos (9 a favor, 10 neutrales, 4 en contra) [31]."
+      },
+      {
+        "plataforma": "XTB y blue News (análisis de mercado para particulares)",
+        "fecha": "2026-09",
+        "n_comentarios": 10,
+        "tono": "Negativo",
+        "resumen": "Dos de tres estudios clave fallan en una semana: dudas sobre las fuentes de crecimiento tras los vencimientos de patentes [19, 20]."
+      },
+      {
+        "plataforma": "Allmind y portales de análisis automático",
+        "fecha": "2026-09",
+        "n_comentarios": 5,
+        "tono": "Negativo",
+        "resumen": "Recomiendan no comprar la caída hasta los resultados del 3T: la acción quedaría en un rango si la guía se recorta [42]."
+      }
+    ],
+    "temas": [
+      {
+        "tema": "Fracasos de pelacarsen y del-desiran",
+        "postura": "Bajista",
+        "peso": "Alto",
+        "contraste": "Correcto en el riesgo de cartera: el consenso no llevaba más de ≈1.000 M USD de pelacarsen en 2030 (ZKB lo quitó entero); en nuestras cifras no cambia 2026-2028, sí el crecimiento de después de 2030 [B4]."
+      },
+      {
+        "tema": "La compra de Avidity (≈12.000 M USD) pierde su activo principal",
+        "postura": "Bajista",
+        "peso": "Alto",
+        "contraste": "Fundado: la deuda neta pasó de 21.900 a 39.400 M USD en el 1S26 y del-desiran era el programa más avanzado; queda la opción de FSHD y Duchenne [A11, A15]."
+      },
+      {
+        "tema": "Precipicio de patentes de principios de los años 2030",
+        "postura": "Bajista",
+        "peso": "Medio",
+        "contraste": "Lo recoge nuestro DCF con crecimiento cero y negativo en 2031e-2032e y margen a la baja [B4]."
+      },
+      {
+        "tema": "Dividendo y recompras",
+        "postura": "Alcista",
+        "peso": "Medio",
+        "contraste": "Correcto: 7.820 M USD de dividendos y 9.120 M de recompras en 2025, y quedan 5.600 M del programa de 10.000 M [A7, A11]."
+      }
+    ],
+    "confianza": "Baja",
+    "lectura": "El sentimiento es negativo y empeora desde el 4-sep: lectores de cash.ch, blogs y portales de análisis hablan de la compra de Avidity como un error y de una I+D que no repone las patentes [31, 41, 42]. No es capitulación: los analistas siguen repartidos (17 comprar, 14 mantener y 3 vender en aktien.guide) y el precio ya recuperó parte de la caída [28, 30]. Coincide con nuestra lectura en el riesgo (crecimiento después de 2030) y discrepa en el corto plazo: el BPA de 2026-2028 depende de productos ya comercializados (Kisqali, Kesimpta, Pluvicto, Leqvio), no de los dos fármacos que fallaron."
+  },
+  "fuentes": [
+    {
+      "id": 1,
+      "titulo": "Novartis delivered high single-digit sales growth, achieved 40% core margin and further advanced the pipeline in 2025 (ad hoc, resultados 2025)",
+      "editor": "Novartis",
+      "tipo": "Primaria",
+      "fecha": "2026-02-04",
+      "url": "https://www.novartis.com/news/media-releases/novartis-delivered-high-single-digit-sales-growth-achieved-40-core-margin-and-further-advanced-pipeline-2025"
+    },
+    {
+      "id": 2,
+      "titulo": "Q2 2026 media release: Novartis delivered sales growth in Q2 and further advanced the pipeline; full-year guidance reaffirmed",
+      "editor": "Novartis",
+      "tipo": "Primaria",
+      "fecha": "2026-07-21",
+      "url": "https://prod1.novartis.com/sites/novartis_com/files/q2-2026-media-release-en.pdf"
+    },
+    {
+      "id": 3,
+      "titulo": "Q1 2026 media release",
+      "editor": "Novartis",
+      "tipo": "Primaria",
+      "fecha": "2026-04-28",
+      "url": "https://prod1.novartis.com/sites/novartis_com/files/q1-2026-media-release-en.pdf"
+    },
+    {
+      "id": 4,
+      "titulo": "Novartis AG (NVS): income statement (ingresos, resultado de explotación y beneficio 2021-2025)",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07-28",
+      "url": "https://stockanalysis.com/stocks/nvs/financials/income-statement/"
+    },
+    {
+      "id": 5,
+      "titulo": "Novartis AG (NVS): cash flow statement (amortizaciones y flujo libre 2021-2025 y LTM)",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07",
+      "url": "https://stockanalysis.com/stocks/nvs/financials/cash-flow-statement/"
+    },
+    {
+      "id": 6,
+      "titulo": "Novartis AG (NVS): balance sheet 2021-2025",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07",
+      "url": "https://stockanalysis.com/stocks/nvs/financials/balance-sheet/"
+    },
+    {
+      "id": 7,
+      "titulo": "NVS financial statements (flujo operativo, recompras y dividendos de los 20-F)",
+      "editor": "Chartrow",
+      "tipo": "Datos de mercado",
+      "fecha": "2026",
+      "url": "https://chartrow.com/quote/nvs/financials"
+    },
+    {
+      "id": 8,
+      "titulo": "Form 6-K: estados financieros consolidados 2025 (BAI 16.352 M, impuestos 2.385 M, BPA diluido 7,15)",
+      "editor": "Novartis / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-02-04",
+      "url": "https://www.sec.gov/Archives/edgar/data/1114448/000111444826000008/a260204-99_1.pdf"
+    },
+    {
+      "id": 9,
+      "titulo": "Q4 2024 media release: ventas 50.300 M, BPA core 7,81, flujo libre 16.300 M",
+      "editor": "Novartis",
+      "tipo": "Primaria",
+      "fecha": "2025-01-31",
+      "url": "https://novartis.com/sites/novartis_com/files/q4-2024-media-release-en.pdf"
+    },
+    {
+      "id": 10,
+      "titulo": "Form 6-K FY2023: ventas continuadas 45.400 M, BPA core 6,47 (+18 % en USD), flujo libre 13.200 M",
+      "editor": "Novartis / SEC",
+      "tipo": "Primaria",
+      "fecha": "2024-01-31",
+      "url": "https://www.sec.gov/Archives/edgar/data/1114448/000137036824000007/a240131-99_1.htm"
+    },
+    {
+      "id": 11,
+      "titulo": "Novartis Aktie: Verschuldung verdoppelt sich (deuda neta 39.400 M a jun-26; quedan 5.600 M de la recompra de 10.000 M)",
+      "editor": "Börse Express",
+      "tipo": "Prensa",
+      "fecha": "2026-07-21",
+      "url": "https://www.boerse-express.com/news/articles/novartis-aktie-verschuldung-verdoppelt-sich-930795"
+    },
+    {
+      "id": 12,
+      "titulo": "Novartis Aktie: Entresto-Umsatz um 42 Prozent eingebrochen (1T26: Kisqali 1.520 M)",
+      "editor": "Börse Express",
+      "tipo": "Prensa",
+      "fecha": "2026-04-28",
+      "url": "https://www.boerse-express.com/news/articles/novartis-aktie-entresto-umsatz-um-42-prozent-eingebrochen-899232"
+    },
+    {
+      "id": 13,
+      "titulo": "Novartis Q2 2026: ingresos 14.400 M (esperado 14.100), BPA core 2,41 (esperado 2,20)",
+      "editor": "Newsquawk",
+      "tipo": "Prensa",
+      "fecha": "2026-07-21",
+      "url": "https://www.newsquawk.com/headlines/novartis-novn-sw---q2-2026-usd-net-revenue-144bln-exp-141bln-core-eps-241-exp-220-operating-income-475bln-prev-486bln-yy-net-income-326bln-prev-402bln-yy-backs-fy26-view"
+    },
+    {
+      "id": 14,
+      "titulo": "Novartis Q1 2026: BPA core 1,99 (esperado 2,11), ingresos 13.100 M (esperado 13.600)",
+      "editor": "Newsquawk",
+      "tipo": "Prensa",
+      "fecha": "2026-04-28",
+      "url": "https://www.newsquawk.com/headlines/novartis-novn-sw-q1-2026-usd-core-eps-199-exp-211-revenue-131bln-exp-136bln-adj-op-income-49bln-exp-509bln-reaffirms-2026-guidance-"
+    },
+    {
+      "id": 15,
+      "titulo": "Novartis successfully completes acquisition of Avidity Biosciences (27-feb-2026)",
+      "editor": "Novartis",
+      "tipo": "Primaria",
+      "fecha": "2026-02-27",
+      "url": "https://www.novartis.com/news/media-releases/novartis-successfully-completes-acquisition-avidity-biosciences-strengthening-late-stage-neuroscience-pipeline-and-advancing-xrna-strategy"
+    },
+    {
+      "id": 16,
+      "titulo": "Roche to repurchase equity stake held by Novartis (19.024 M CHF)",
+      "editor": "Roche",
+      "tipo": "Primaria",
+      "fecha": "2021-11-04",
+      "url": "https://www.roche.com/investors/updates/inv-update-2021-11-04"
+    },
+    {
+      "id": 17,
+      "titulo": "Dividend information: 3,70 CHF por acción por 2025 (+5,7 %, 29.ª subida seguida; ≈8.900 M USD al cambio del 31-dic-2025)",
+      "editor": "Novartis",
+      "tipo": "Primaria",
+      "fecha": "2026-03-06",
+      "url": "https://www.novartis.com/investors/share-data-analysis/dividend-information"
+    },
+    {
+      "id": 18,
+      "titulo": "Novartis (NOVN) Q2 2026 earnings summary (guía del 2S: ventas de un dígito medio)",
+      "editor": "Quartr",
+      "tipo": "Prensa",
+      "fecha": "2026-07-21",
+      "url": "https://quartr.com/events/novartis-ag-novn-q2-2026_36kHrICq"
+    },
+    {
+      "id": 19,
+      "titulo": "Novartis shares fall the most since 2020: what is behind the 10% decline (guía a medio plazo de +5-6 % anual mantenida)",
+      "editor": "XTB",
+      "tipo": "Prensa",
+      "fecha": "2026-09-08",
+      "url": "https://www.xtb.com/en/market-analysis/novartis-shares-fall-the-most-since-2020-what-is-behind-the-10-decline"
+    },
+    {
+      "id": 20,
+      "titulo": "Novartis loses 24 billion francs in market value in a single day (cierre de 111,80 CHF)",
+      "editor": "blue News",
+      "tipo": "Prensa",
+      "fecha": "2026-09-08",
+      "url": "https://www.bluewin.ch/en/news/novartis-loses-24-billion-francs-in-market-value-in-a-single-day-li.3592726"
+    },
+    {
+      "id": 21,
+      "titulo": "Novartis announces Lp(a)HORIZON Phase III topline results for pelacarsen",
+      "editor": "Novartis",
+      "tipo": "Primaria",
+      "fecha": "2026-09-04",
+      "url": "https://novartis.com/news/media-releases/novartis-announces-lpahorizon-phase-iii-topline-results-pelacarsen-patients-elevated-lpa-and-established-cardiovascular-disease-cvd"
+    },
+    {
+      "id": 22,
+      "titulo": "Rückschlag für Novartis: so schätzen Analysten den Studienflop bei Pelacarsen ein (Deutsche Bank a Mantener, 120 CHF)",
+      "editor": "cash.ch",
+      "tipo": "Analistas",
+      "fecha": "2026-09",
+      "url": "https://www.cash.ch/news/top-news/ruckschlag-fur-novartis-so-schatzen-analysten-den-studienflop-bei-pelacarsen-ein-966520"
+    },
+    {
+      "id": 23,
+      "titulo": "Comparables farmacéuticos (Stock Analysis y MarketScreener, 8-oct-2026) recogidos en el informe de Roche del 14-oct-2026 del repo",
+      "editor": "Stock Analysis / MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-08",
+      "url": "https://stockanalysis.com/"
+    },
+    {
+      "id": 24,
+      "titulo": "Novartis Phase III misses compound Novo’s cardiovascular setback",
+      "editor": "BioCentury",
+      "tipo": "Prensa",
+      "fecha": "2026-09-08",
+      "url": "https://www.biocentury.com/article/660735/novartis-phase-iii-misses-compound-novo-s-cardiovascular-setback"
+    },
+    {
+      "id": 25,
+      "titulo": "Novartis AGM 2026 voting results (informe de remuneración 87,9 % a favor y 11,6 % en contra; Caforio 97,5 %)",
+      "editor": "Novartis",
+      "tipo": "Primaria",
+      "fecha": "2026-03-06",
+      "url": "https://www.novartis.com/sites/novartis_com/files/novartis-agm-2026-voting-results-en.pdf"
+    },
+    {
+      "id": 26,
+      "titulo": "Novartis shareholders approve all resolutions proposed by the Board of Directors at the 2026 Annual General Meeting",
+      "editor": "Novartis",
+      "tipo": "Primaria",
+      "fecha": "2026-03-06",
+      "url": "https://novartis.com/news/media-releases/novartis-shareholders-approve-all-resolutions-proposed-board-directors-2026-annual-general-meeting"
+    },
+    {
+      "id": 27,
+      "titulo": "Novartis AGM 2025 voting results (informe de remuneración 2024: 87,2 % a favor)",
+      "editor": "Novartis",
+      "tipo": "Primaria",
+      "fecha": "2025-03-07",
+      "url": "https://prod1.biome.novartis.com/sites/novartis_com/files/novartis-agm-2025-voting-results-en.pdf"
+    },
+    {
+      "id": 28,
+      "titulo": "Why Novartis AG’s (NVS) stock is down 12.46% (cierre de 140,93 USD el 5-oct-2026)",
+      "editor": "AAII",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-05",
+      "url": "https://www.aaii.com/investingideas/article/539319-why-novartis-ag8217s-nvs-stock-is-down-1246"
+    },
+    {
+      "id": 29,
+      "titulo": "USD to CHF exchange rate history (0,8088 el 5-ago; 1 CHF = 1,2370 USD el 4-sep-2026)",
+      "editor": "OFX",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-09-04",
+      "url": "https://www.ofx.com/en-us/exchange-rates/chf-to-usd/"
+    },
+    {
+      "id": 30,
+      "titulo": "Novartis Kursziel: 27 objetivos, media 128,42 CHF (95,95-150,69); 17 comprar, 14 mantener, 3 vender",
+      "editor": "aktien.guide",
+      "tipo": "Analistas",
+      "fecha": "2026-10",
+      "url": "https://aktien.guide/kursziel/Novartis-CH0012005267"
+    },
+    {
+      "id": 31,
+      "titulo": "Novartis stock crashed 11% on Tuesday: two failed trials are to blame (23 analistas: 5 comprar, 4 sobreponderar, 10 mantener, 1 infraponderar, 3 vender)",
+      "editor": "TIKR",
+      "tipo": "Analistas",
+      "fecha": "2026-09-09",
+      "url": "https://www.tikr.com/blog/novartis-stock-crashed-11-on-tuesday-two-failed-trials-are-to-blame"
+    },
+    {
+      "id": 32,
+      "titulo": "NVS earnings forecasts (consenso trimestral: 3T26e 2,23; 4T26e 2,12; 1T27e 2,29; 2T27e 2,54 USD)",
+      "editor": "Benzinga",
+      "tipo": "Analistas",
+      "fecha": "2026-10",
+      "url": "https://www.benzinga.com/quote/NVS/earnings-forecasts"
+    },
+    {
+      "id": 33,
+      "titulo": "Novartis (NVS) historical price data: cierres de diciembre 2021-2025 (82,77; 85,85; 100,97; 97,31; 138,72 USD)",
+      "editor": "Traders Union",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://tradersunion.com/currencies/price-history/nvs-usd/"
+    },
+    {
+      "id": 34,
+      "titulo": "NVS returns by year (cierres ajustados por dividendos: 2025 137,87 USD)",
+      "editor": "Chartrow",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://chartrow.com/quote/nvs/returns"
+    },
+    {
+      "id": 35,
+      "titulo": "US Treasury yields (13-oct-2026): bono a 10 años en el 5,21-5,24 % (FRED DGS10 y Forbes)",
+      "editor": "CNBC / FRED",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-13",
+      "url": "https://www.cnbc.com/2026/10/13/us-treasurys-bonds-yields.html"
+    },
+    {
+      "id": 36,
+      "titulo": "Novartis financial results Q3 2026 (27-oct-2026)",
+      "editor": "Novartis",
+      "tipo": "Primaria",
+      "fecha": "2026-10",
+      "url": "https://prod1.novartis.com/events/novartis-financial-results-q3-2026"
+    },
+    {
+      "id": 37,
+      "titulo": "Implied ERP by month (ERPbymonth.xlsx): prima implícita de octubre de 2026, 4,20 % (dato del repo, verticales/empresa/prompt.md)",
+      "editor": "Aswath Damodaran (NYU Stern)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx"
+    },
+    {
+      "id": 38,
+      "titulo": "Novartis assumed with a Hold at Jefferies (objetivo 110 CHF)",
+      "editor": "TipRanks / The Fly",
+      "tipo": "Analistas",
+      "fecha": "2026",
+      "url": "https://www.tipranks.com/news/the-fly/novartis-assumed-with-a-hold-at-jefferies-thefly"
+    },
+    {
+      "id": 39,
+      "titulo": "Novartis shares: cotización de 131,32 CHF y capitalización de 249.600 M CHF (20-ago-2026)",
+      "editor": "Simply Wall St",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-08-20",
+      "url": "https://www.simplywall.st/stocks/ch/pharmaceuticals-biotech/vtx-novn/novartis-shares"
+    },
+    {
+      "id": 40,
+      "titulo": "Novartis AG (NVS) estimates: modelo propio de ventas y BPA 2026e-2028e",
+      "editor": "VCP Scanner",
+      "tipo": "Analistas",
+      "fecha": "2026-10",
+      "url": "https://www.vcpscanner.com/valuation/nvs/estimates"
+    },
+    {
+      "id": 41,
+      "titulo": "Novartis-Aktien nach Forschungsrückschlag satt im Minus",
+      "editor": "cash.ch",
+      "tipo": "Foros y redes",
+      "fecha": "2026-09-04",
+      "url": "https://www.cash.ch/news/novartis-aktien-nach-forschungsruckschlag-satt-im-minus-966513"
+    },
+    {
+      "id": 42,
+      "titulo": "Novartis stock falls 10% after second drug setback in a week; analyst cuts PT",
+      "editor": "Allmind",
+      "tipo": "Foros y redes",
+      "fecha": "2026-09-08",
+      "url": "https://allmind.ai/news/0f693f85a0d642c2251d49701895531c454158322422471cb33ba6b67f76b222"
+    }
+  ],
+  "calc": {
+    "version": 4,
+    "etiquetas": {
+      "margen_bruto": "M. bruto",
+      "margen_bruto_largo": "Margen bruto",
+      "dias_base": "sobre el coste de ventas"
+    },
+    "recomendacion": {
+      "recomendacion": "Mantener",
+      "regla": "Mantener",
+      "regla_absoluta": "Vender",
+      "regla_relativa": "Vender",
+      "coincide": true,
+      "conviccion": "Media",
+      "conviccion_sugerida": "Media",
+      "conviccion_razones": [
+        "Mantener con las dos reglas de acuerdo y lejos de los umbrales"
+      ],
+      "reglas_discrepan": false,
+      "relativo": {
+        "prima_implicita_pct": 4.2,
+        "wacc": 7.4,
+        "ke": 7.95,
+        "dcf": 126.77,
+        "dcf_min": 114.79,
+        "dcf_max": 141.19,
+        "valor_objetivo": 128.19,
+        "alcista": 147.23,
+        "bajista": 94.15,
+        "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+        "fecha": "2026-10",
+        "potencial_pct": -9,
+        "rentabilidad_total_pct": -5.8,
+        "asimetria": 0.13
+      },
+      "objetivo_mercado_txt": " · con la prima implícita del mercado: 128,19 (102,55 CHF) (-9,0 %)",
+      "objetivo_mercado_corto": " · mercado 128,19",
+      "rentabilidad_mercado_corto": " · mercado -5,8 %",
+      "potencial_pct": -18,
+      "dividendo_pct": 3.3,
+      "rentabilidad_total_pct": -14.7,
+      "alcista_pct": -9.5,
+      "bajista_pct": -41.6,
+      "asimetria": -0.23,
+      "comprar_por_debajo": 115.63,
+      "vender_por_encima": 172.36,
+      "tabla": [
+        {
+          "concepto": "Objetivo a 12 meses (nuestro PER × nuestro BPA 2028e, ponderado 25/50/25)",
+          "valor": "150,49 USD (120,39 CHF)"
+        },
+        {
+          "concepto": "Bajista / base / alcista a 12 meses",
+          "valor": "12,5x × 9,59 = 119,88 · 14,6x × 10,57 = 154,32 · 15,5x × 11,19 = 173,45"
+        },
+        {
+          "concepto": "Rentabilidad a 12 meses: ponderada / del base (con dividendo)",
+          "valor": "10,1 % / 12,8 %"
+        },
+        {
+          "concepto": "Objetivo medio de los analistas (solo contraste)",
+          "valor": "160,53 (nuestro base -3,9 %)"
+        },
+        {
+          "concepto": "Valor intrínseco (síntesis ponderada, largo plazo)",
+          "valor": "115,63 USD (92,50 CHF)"
+        },
+        {
+          "concepto": "Precio actual (CHF al tipo de 1,2500 USD por CHF)",
+          "valor": "140,93 USD (112,74 CHF)"
+        },
+        {
+          "concepto": "Potencial sobre el precio actual",
+          "valor": "-18,0 %"
+        },
+        {
+          "concepto": "Rentabilidad por dividendo ordinario",
+          "valor": "3,3 %"
+        },
+        {
+          "concepto": "Rentabilidad total esperada a 12 meses",
+          "valor": "-14,7 %"
+        },
+        {
+          "concepto": "Escenario alcista / bajista",
+          "valor": "-9,5 % / -41,6 %"
+        },
+        {
+          "concepto": "Asimetría (ganancia alcista / pérdida bajista)",
+          "valor": "-0,23x"
+        },
+        {
+          "concepto": "Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado",
+          "valor": "6,9 % frente a 8,1 % y 7,4 %"
+        },
+        {
+          "concepto": "Valor objetivo con la prima implícita del mercado (4,2 %, WACC 7,4 %)",
+          "valor": "128,19 USD (102,55 CHF)"
+        },
+        {
+          "concepto": "Rentabilidad total esperada con la prima del mercado",
+          "valor": "-5,8 %"
+        },
+        {
+          "concepto": "Asimetría con la prima del mercado",
+          "valor": "0,13x"
+        },
+        {
+          "concepto": "Regla absoluta (frente a su coste de capital)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Regla relativa (frente a lo que pide el mercado)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "¿La calidad de la empresa sostiene el crecimiento previsto?",
+          "valor": "En parte (2,7 % anual proyectado; sin inversión neta)"
+        },
+        {
+          "concepto": "Señal del valor intrínseco (regla del DCF, referencia)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Recomendación según la regla a 12 meses (Comprar: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender: ponderada ≤ -10 %)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Convicción según los criterios (Mantener con las dos reglas de acuerdo y lejos de los umbrales)",
+          "valor": "Media"
+        }
+      ],
+      "niveles": [
+        {
+          "accion": "Comprar",
+          "condicion": "Por debajo de 115,63 (92,50 CHF) (ponderada a 12 meses ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco)"
+        },
+        {
+          "accion": "Mantener",
+          "condicion": "Entre 115,63 y 172,36 (92,50 y 137,89 CHF)"
+        },
+        {
+          "accion": "Vender o reducir",
+          "condicion": "Por encima de 172,36 (137,89 CHF) (ponderada a 12 meses ≤ -10 %)"
+        }
+      ],
+      "precio_txt": " (112,74 CHF)",
+      "valor_objetivo_txt": " (92,50 CHF)",
+      "regla_valor_intrinseco": "Vender",
+      "objetivo_12m": {
+        "completo": true,
+        "filas": [
+          {
+            "escenario": "Bajista",
+            "metrica": "PER 2028e (BPA core)",
+            "beneficio_por_accion": 9.59,
+            "multiplo": 12.5,
+            "multiplo_informe": null,
+            "origen": "mínimo de 5 años",
+            "precio": 119.88,
+            "rentabilidad_pct": -11.7,
+            "justificacion": "Ingresos de 62.836 M USD en 2028e (−2 puntos de crecimiento en 2027-28) y margen EBITDA del 39 % (core 37,2 %): resultado operativo core de 23.375 M, 1.600 M de gastos financieros, impuesto del 16,5 % y 1.895 M de acciones: 9,59 USD."
+          },
+          {
+            "escenario": "Base",
+            "metrica": "PER 2028e (BPA core)",
+            "beneficio_por_accion": 10.57,
+            "multiplo": 14.6,
+            "multiplo_informe": null,
+            "origen": "PER actual",
+            "precio": 154.32,
+            "rentabilidad_pct": 12.8,
+            "justificacion": "Ingresos de 65.288 M USD (+5,5 % en 2027-28) y margen EBITDA del 41 % (core 39,2 %): resultado operativo core de 25.593 M, 1.600 M de gastos financieros, impuesto del 16,5 % y 1.895 M de acciones tras la recompra anunciada que queda: 10,57 USD."
+          },
+          {
+            "escenario": "Alcista",
+            "metrica": "PER 2028e (BPA core)",
+            "beneficio_por_accion": 11.19,
+            "multiplo": 15.5,
+            "multiplo_informe": null,
+            "origen": "mediana de los comparables",
+            "precio": 173.45,
+            "rentabilidad_pct": 26.4,
+            "justificacion": "Ingresos de 67.157 M USD (+7 % en 2027-28) y margen del 42 % (core 40,2 %): resultado operativo core de 26.997 M y el resto igual: 11,19 USD."
+          }
+        ],
+        "regla": {
+          "bajista": 12.5,
+          "base": 14.6,
+          "alcista": 15.5,
+          "bajista_origen": "mínimo de 5 años",
+          "base_origen": "PER actual",
+          "alcista_origen": "mediana de los comparables"
+        },
+        "probabilidades": [
+          25,
+          50,
+          25
+        ],
+        "objetivo_ponderado": 150.49,
+        "objetivo_simple": 149.22,
+        "objetivo_base": 154.32,
+        "rentabilidad_ponderada_pct": 10.1,
+        "rentabilidad_simple_pct": 9.2,
+        "rentabilidad_base_pct": 12.8,
+        "asimetria": 1.54,
+        "senal": "Mantener",
+        "comprar_por_debajo": 115.63,
+        "vender_por_encima": 172.36,
+        "consenso_objetivo": 160.53,
+        "diferencia_consenso_pct": -3.9
+      },
+      "rentabilidad_12m_pct": 10.1,
+      "rentabilidad_12m_txt": "+10,1 % (base +12,8 %)",
+      "objetivo_12m_txt": "150,49 USD (120,39 CHF)"
+    },
+    "mercado": {
+      "precio": 140.93,
+      "acciones": 1923,
+      "capitalizacion": 271008,
+      "deuda_neta": 39400,
+      "deuda_neta_ajustada": null,
+      "asimilables_deuda": null,
+      "ajustes_puente": 100,
+      "valor_empresa": 310508,
+      "fecha_puente": "2026-06-30"
+    },
+    "clave": {
+      "capitalizacion": 271008,
+      "valor_empresa": 310508,
+      "deuda_neta": 39400,
+      "ev_ventas_ltm": 5.48,
+      "ev_ebitda_ltm": 13.5,
+      "ev_ebitda_ntm": null,
+      "ev_ebit_ltm": 17.6,
+      "per_ltm": 19.7,
+      "per_ntm": 16.1,
+      "fcf_yield_pct": 6.5,
+      "dividendo_pct": 3.3,
+      "dn_ebitda": 1.7,
+      "roic_pct": 24.6,
+      "margen_ebitda_pct": 40.4,
+      "deuda_neta_ajustada": 39400,
+      "dn_ebitda_ajustada": 1.7,
+      "crecimiento_tcac_pct": 6.5,
+      "ingresos_ntm": 60000,
+      "ebitda_ntm": null,
+      "bpa_ntm": 8.74,
+      "ebitda_ltm": 22919,
+      "ingresos_ltm": 56674,
+      "ev_rab": null
+    },
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 43974,
+        "crecimiento_pct": null,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 15615,
+        "margen_ebitda_pct": 35.5,
+        "ebit": 10056,
+        "margen_ebit_pct": 22.9,
+        "beneficio_neto": 22905,
+        "margen_neto_pct": 52.1,
+        "bpa": null,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": null
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 43461,
+        "crecimiento_pct": -1.2,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 14911,
+        "margen_ebitda_pct": 34.3,
+        "ebit": 7946,
+        "margen_ebit_pct": 18.3,
+        "beneficio_neto": 6049,
+        "margen_neto_pct": 13.9,
+        "bpa": null,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": null
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 46660,
+        "crecimiento_pct": 7.4,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 18152,
+        "margen_ebitda_pct": 38.9,
+        "ebit": 9769,
+        "margen_ebit_pct": 20.9,
+        "beneficio_neto": 8572,
+        "margen_neto_pct": 18.4,
+        "bpa": null,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": null
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 51722,
+        "crecimiento_pct": 10.8,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 20658,
+        "margen_ebitda_pct": 39.9,
+        "ebit": 14544,
+        "margen_ebit_pct": 28.1,
+        "beneficio_neto": 11939,
+        "margen_neto_pct": 23.1,
+        "bpa": null,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": null
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 56674,
+        "crecimiento_pct": 9.6,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 22919,
+        "margen_ebitda_pct": 40.4,
+        "ebit": 17644,
+        "margen_ebit_pct": 31.1,
+        "beneficio_neto": 13984,
+        "margen_neto_pct": 24.7,
+        "bpa": 7.15,
+        "dpa": 4.63,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 14.6,
+        "payout_pct": 65
+      }
+    ],
+    "tcac": {
+      "periodo": "2021-2025",
+      "ingresos_pct": 6.5,
+      "ebitda_pct": 10.1,
+      "bpa_pct": null
+    },
+    "cuenta_y_prevision": [
+      {
+        "periodo": "2021",
+        "ingresos": 43974,
+        "ebitda": 15615
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 43461,
+        "ebitda": 14911
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 46660,
+        "ebitda": 18152
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 51722,
+        "ebitda": 20658
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 56674,
+        "ebitda": 22919
+      },
+      {
+        "periodo": "2026e",
+        "ingresos": 58658,
+        "ebitda": 22759
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 61884,
+        "ebitda": 24754
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 65287,
+        "ebitda": 26768
+      },
+      {
+        "periodo": "2029e",
+        "ingresos": 68552,
+        "ebitda": 28449
+      },
+      {
+        "periodo": "2030e",
+        "ingresos": 71637,
+        "ebitda": 29729
+      },
+      {
+        "periodo": "2031e",
+        "ingresos": 71637,
+        "ebitda": 28655
+      },
+      {
+        "periodo": "2032e",
+        "ingresos": 70204,
+        "ebitda": 27028
+      },
+      {
+        "periodo": "2033e",
+        "ingresos": 70906,
+        "ebitda": 26944
+      },
+      {
+        "periodo": "2034e",
+        "ingresos": 72324,
+        "ebitda": 27483
+      },
+      {
+        "periodo": "2035e",
+        "ingresos": 73770,
+        "ebitda": 28033
+      }
+    ],
+    "segmentos_ultimo": [],
+    "segmentos_tabla": {
+      "periodos": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "filas": []
+    },
+    "segmentos_periodo": null,
+    "balance": [
+      {
+        "periodo": "2021",
+        "activo_total": 131795,
+        "intangibles": 0,
+        "circulante": 8005,
+        "circulante_ventas_pct": 18.2,
+        "caja": 12407,
+        "deuda_financiera": 22902,
+        "arrendamientos": null,
+        "deuda_neta": 10495,
+        "patrimonio": 67822,
+        "minoritarios": null,
+        "dn_ebitda": 0.67,
+        "dn_patrimonio_pct": 15,
+        "dso": 66,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 78317,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 117453,
+        "intangibles": 0,
+        "circulante": 8066,
+        "circulante_ventas_pct": 18.6,
+        "caja": 7517,
+        "deuda_financiera": 20244,
+        "arrendamientos": null,
+        "deuda_neta": 12727,
+        "patrimonio": 59423,
+        "minoritarios": null,
+        "dn_ebitda": 0.85,
+        "dn_patrimonio_pct": 21,
+        "dso": 68,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 72150,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 99945,
+        "intangibles": 0,
+        "circulante": 7107,
+        "circulante_ventas_pct": 15.2,
+        "caja": 13393,
+        "deuda_financiera": 18436,
+        "arrendamientos": null,
+        "deuda_neta": 5043,
+        "patrimonio": 46750,
+        "minoritarios": null,
+        "dn_ebitda": 0.28,
+        "dn_patrimonio_pct": 11,
+        "dso": 56,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 51793,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 102246,
+        "intangibles": 0,
+        "circulante": 7423,
+        "circulante_ventas_pct": 14.4,
+        "caja": 11459,
+        "deuda_financiera": 21366,
+        "arrendamientos": null,
+        "deuda_neta": 9907,
+        "patrimonio": 44126,
+        "minoritarios": null,
+        "dn_ebitda": 0.48,
+        "dn_patrimonio_pct": 22,
+        "dso": 52,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 54033,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 110949,
+        "intangibles": 0,
+        "circulante": 8937,
+        "circulante_ventas_pct": 15.8,
+        "caja": 11435,
+        "deuda_financiera": 33335,
+        "arrendamientos": null,
+        "deuda_neta": 21900,
+        "patrimonio": 46549,
+        "minoritarios": null,
+        "dn_ebitda": 0.96,
+        "dn_patrimonio_pct": 47,
+        "dso": 58,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 13.7,
+        "capital_invertido": 68449,
+        "liquidez_corriente": null
+      }
+    ],
+    "perimetro_nota": "Cambio de perímetro (2023: Escisión de Sandoz (genéricos) en octubre de 2023: la cuenta de 2021-2022 está reexpresada sin Sandoz (operaciones continuadas), pero el balance de 2021-2022 la incluye.). Los ratios de balance de ese año (días, circulante, deuda neta / EBITDA, ROIC) y los indicadores de calidad contable no son comparables con los anteriores.",
+    "flujos": [
+      {
+        "periodo": "2023",
+        "flujo_operativo": 14500,
+        "capex": 1102,
+        "pagos_arrendamientos": null,
+        "fcf": 13398,
+        "beneficio_neto": 8572,
+        "conversion_pct": 156,
+        "capex_ventas_pct": 2.4,
+        "capex_amortizacion": 0.13,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 7250,
+        "recompras": 8520,
+        "emision_acciones": 0,
+        "retorno_accionista": 15770,
+        "payout_caja_pct": 184,
+        "acciones": null,
+        "fcf_por_accion": null
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 17600,
+        "capex": 1347,
+        "pagos_arrendamientos": null,
+        "fcf": 16253,
+        "beneficio_neto": 11939,
+        "conversion_pct": 136,
+        "capex_ventas_pct": 2.6,
+        "capex_amortizacion": 0.22,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 7620,
+        "recompras": 8450,
+        "emision_acciones": 0,
+        "retorno_accionista": 16070,
+        "payout_caja_pct": 135,
+        "acciones": null,
+        "fcf_por_accion": null
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 19100,
+        "capex": 1504,
+        "pagos_arrendamientos": null,
+        "fcf": 17596,
+        "beneficio_neto": 13984,
+        "conversion_pct": 126,
+        "capex_ventas_pct": 2.7,
+        "capex_amortizacion": 0.29,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 7820,
+        "recompras": 9120,
+        "emision_acciones": 0,
+        "retorno_accionista": 16940,
+        "payout_caja_pct": 121,
+        "acciones": 1955,
+        "fcf_por_accion": 9
+      }
+    ],
+    "flujos_acumulado": {
+      "periodo": "2023-2025",
+      "fcf": 47247,
+      "adquisiciones": 0,
+      "dividendos": 22690,
+      "recompras": 26090,
+      "conversion_pct": 137
+    },
+    "rentabilidad": [
+      {
+        "periodo": "2021",
+        "nopat": 7542,
+        "capital_invertido": 78317,
+        "roic_pct": 9.6,
+        "roe_pct": 33.8,
+        "roa_pct": 17.4,
+        "margen_neto_pct": 52.1,
+        "rotacion": 0.33,
+        "apalancamiento": 1.94
+      },
+      {
+        "periodo": "2022",
+        "nopat": 5960,
+        "capital_invertido": 75234,
+        "roic_pct": 7.9,
+        "roe_pct": 9.5,
+        "roa_pct": 4.9,
+        "margen_neto_pct": 13.9,
+        "rotacion": 0.35,
+        "apalancamiento": 1.96
+      },
+      {
+        "periodo": "2023",
+        "nopat": 7327,
+        "capital_invertido": 61972,
+        "roic_pct": 11.8,
+        "roe_pct": 16.1,
+        "roa_pct": 7.9,
+        "margen_neto_pct": 18.4,
+        "rotacion": 0.43,
+        "apalancamiento": 2.05
+      },
+      {
+        "periodo": "2024",
+        "nopat": 10908,
+        "capital_invertido": 52913,
+        "roic_pct": 20.6,
+        "roe_pct": 26.3,
+        "roa_pct": 11.8,
+        "margen_neto_pct": 23.1,
+        "rotacion": 0.51,
+        "apalancamiento": 2.22
+      },
+      {
+        "periodo": "2025",
+        "nopat": 15071,
+        "capital_invertido": 61241,
+        "roic_pct": 24.6,
+        "roe_pct": 30.8,
+        "roa_pct": 13.1,
+        "margen_neto_pct": 24.7,
+        "rotacion": 0.53,
+        "apalancamiento": 2.35
+      }
+    ],
+    "roic_incremental_pct": null,
+    "roic_frente_wacc": [
+      {
+        "periodo": "2021",
+        "roic_pct": 9.6,
+        "roe_pct": 33.8,
+        "wacc_pct": 8.1
+      },
+      {
+        "periodo": "2022",
+        "roic_pct": 7.9,
+        "roe_pct": 9.5,
+        "wacc_pct": 8.1
+      },
+      {
+        "periodo": "2023",
+        "roic_pct": 11.8,
+        "roe_pct": 16.1,
+        "wacc_pct": 8.1
+      },
+      {
+        "periodo": "2024",
+        "roic_pct": 20.6,
+        "roe_pct": 26.3,
+        "wacc_pct": 8.1
+      },
+      {
+        "periodo": "2025",
+        "roic_pct": 24.6,
+        "roe_pct": 30.8,
+        "wacc_pct": 8.1
+      }
+    ],
+    "calidad": {
+      "periodo": "2025",
+      "altman_z": 3.56,
+      "altman_zona": "Zona segura",
+      "piotroski_f": 5,
+      "piotroski_detalle": [
+        {
+          "criterio": "Beneficio neto positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "ROA mejora",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo > beneficio neto",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Baja el endeudamiento (deuda / activo)",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Mejora la liquidez corriente",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "No emite acciones",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "Mejora el margen bruto",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "Mejora la rotación del activo",
+          "resultado": "Sí"
+        }
+      ],
+      "beneish_m": -2.53,
+      "beneish_fiable": true,
+      "beneish_variables": [
+        {
+          "variable": "DSRI",
+          "valor": 1.1
+        },
+        {
+          "variable": "GMI",
+          "valor": 1
+        },
+        {
+          "variable": "AQI",
+          "valor": 1
+        },
+        {
+          "variable": "SGI",
+          "valor": 1.1
+        },
+        {
+          "variable": "DEPI",
+          "valor": 1
+        },
+        {
+          "variable": "SGAI",
+          "valor": 1
+        },
+        {
+          "variable": "LVGI",
+          "valor": 1.02
+        },
+        {
+          "variable": "TATA",
+          "valor": -0.05
+        }
+      ],
+      "tabla": [
+        {
+          "indicador": "Altman Z",
+          "valor": "3,56",
+          "lectura": "Zona segura (> 2,99 seguro; < 1,81 riesgo). No aplica a bancos ni aseguradoras, y subestima la solvencia de empresas con grandes anticipos de clientes o prefinanciación pública (contratistas, construcción), que inflan el pasivo."
+        },
+        {
+          "indicador": "Piotroski F",
+          "valor": "5 / 6",
+          "lectura": "Intermedio (4-6)."
+        },
+        {
+          "indicador": "Beneish M",
+          "valor": "-2,53",
+          "lectura": "Por debajo de −1,78: sin señal de manipulación."
+        },
+        {
+          "indicador": "Flujo operativo / beneficio neto (acumulado)",
+          "valor": "0,81x",
+          "lectura": "El beneficio se cobra solo en parte: mirar circulante y ajustes."
+        }
+      ]
+    },
+    "dcf": {
+      "proyeccion": [
+        {
+          "periodo": "2026e",
+          "ingresos": 58658,
+          "crecimiento_pct": 3.5,
+          "ebitda": 22759,
+          "margen_ebitda_pct": 38.8,
+          "amortizacion": 5572,
+          "ebit": 17187,
+          "impuestos": 2836,
+          "capex": 5866,
+          "variacion_circulante": 155,
+          "fcff": 13903,
+          "fraccion": 0.21,
+          "factor": 0.992,
+          "vp": 2944
+        },
+        {
+          "periodo": "2027e",
+          "ingresos": 61884,
+          "crecimiento_pct": 5.5,
+          "ebitda": 24754,
+          "margen_ebitda_pct": 40,
+          "amortizacion": 5879,
+          "ebit": 18875,
+          "impuestos": 3114,
+          "capex": 6188,
+          "variacion_circulante": 500,
+          "fcff": 14951,
+          "fraccion": 1,
+          "factor": 0.946,
+          "vp": 14129
+        },
+        {
+          "periodo": "2028e",
+          "ingresos": 65287,
+          "crecimiento_pct": 5.5,
+          "ebitda": 26768,
+          "margen_ebitda_pct": 41,
+          "amortizacion": 6202,
+          "ebit": 20566,
+          "impuestos": 3393,
+          "capex": 6529,
+          "variacion_circulante": 528,
+          "fcff": 16318,
+          "fraccion": 1,
+          "factor": 0.874,
+          "vp": 14269
+        },
+        {
+          "periodo": "2029e",
+          "ingresos": 68552,
+          "crecimiento_pct": 5,
+          "ebitda": 28449,
+          "margen_ebitda_pct": 41.5,
+          "amortizacion": 6512,
+          "ebit": 21937,
+          "impuestos": 3620,
+          "capex": 6855,
+          "variacion_circulante": 506,
+          "fcff": 17468,
+          "fraccion": 1,
+          "factor": 0.809,
+          "vp": 14115
+        },
+        {
+          "periodo": "2030e",
+          "ingresos": 71637,
+          "crecimiento_pct": 4.5,
+          "ebitda": 29729,
+          "margen_ebitda_pct": 41.5,
+          "amortizacion": 6805,
+          "ebit": 22924,
+          "impuestos": 3782,
+          "capex": 7164,
+          "variacion_circulante": 478,
+          "fcff": 18305,
+          "fraccion": 1,
+          "factor": 0.748,
+          "vp": 13679
+        },
+        {
+          "periodo": "2031e",
+          "ingresos": 71637,
+          "crecimiento_pct": 0,
+          "ebitda": 28655,
+          "margen_ebitda_pct": 40,
+          "amortizacion": 6805,
+          "ebit": 21849,
+          "impuestos": 3605,
+          "capex": 6805,
+          "variacion_circulante": 0,
+          "fcff": 18244,
+          "fraccion": 1,
+          "factor": 0.692,
+          "vp": 12608
+        },
+        {
+          "periodo": "2032e",
+          "ingresos": 70204,
+          "crecimiento_pct": -2,
+          "ebitda": 27028,
+          "margen_ebitda_pct": 38.5,
+          "amortizacion": 6669,
+          "ebit": 20359,
+          "impuestos": 3359,
+          "capex": 6669,
+          "variacion_circulante": -222,
+          "fcff": 17222,
+          "fraccion": 1,
+          "factor": 0.639,
+          "vp": 11012
+        },
+        {
+          "periodo": "2033e",
+          "ingresos": 70906,
+          "crecimiento_pct": 1,
+          "ebitda": 26944,
+          "margen_ebitda_pct": 38,
+          "amortizacion": 6736,
+          "ebit": 20208,
+          "impuestos": 3334,
+          "capex": 6736,
+          "variacion_circulante": 109,
+          "fcff": 16765,
+          "fraccion": 1,
+          "factor": 0.591,
+          "vp": 9906
+        },
+        {
+          "periodo": "2034e",
+          "ingresos": 72324,
+          "crecimiento_pct": 2,
+          "ebitda": 27483,
+          "margen_ebitda_pct": 38,
+          "amortizacion": 6871,
+          "ebit": 20612,
+          "impuestos": 3401,
+          "capex": 6871,
+          "variacion_circulante": 220,
+          "fcff": 16991,
+          "fraccion": 1,
+          "factor": 0.547,
+          "vp": 9285
+        },
+        {
+          "periodo": "2035e",
+          "ingresos": 73770,
+          "crecimiento_pct": 2,
+          "ebitda": 28033,
+          "margen_ebitda_pct": 38,
+          "amortizacion": 7008,
+          "ebit": 21025,
+          "impuestos": 3469,
+          "capex": 7008,
+          "variacion_circulante": 224,
+          "fcff": 17331,
+          "fraccion": 1,
+          "factor": 0.506,
+          "vp": 8758
+        }
+      ],
+      "etapa2": null,
+      "suma_vp": 110705,
+      "valor_terminal": 287909,
+      "vp_terminal": 140003,
+      "valor_empresa": 250708,
+      "peso_terminal_pct": 56,
+      "valor_acciones": 211208,
+      "valor_accion": 109.83,
+      "vt_gordon": 287909,
+      "vt_multiplo": 336393,
+      "multiplo_implicito": 10.3,
+      "g_implicito_pct": 2.84,
+      "metodo_terminal": "gordon",
+      "terminal_tabla": [
+        {
+          "concepto": "Método principal",
+          "valor": "Crecimiento a perpetuidad"
+        },
+        {
+          "concepto": "Crecimiento a perpetuidad",
+          "valor": "2,0 %"
+        },
+        {
+          "concepto": "Múltiplo EV/EBITDA de salida",
+          "valor": "12,0x"
+        },
+        {
+          "concepto": "Valor terminal (Gordon)",
+          "valor": "287.909"
+        },
+        {
+          "concepto": "Valor terminal (múltiplo)",
+          "valor": "336.393"
+        },
+        {
+          "concepto": "Múltiplo de salida implícito en Gordon",
+          "valor": "10,3x"
+        },
+        {
+          "concepto": "Crecimiento implícito en el múltiplo",
+          "valor": "2,84 %"
+        },
+        {
+          "concepto": "Peso del valor terminal en el valor empresa",
+          "valor": "56 %"
+        }
+      ],
+      "puente": [
+        {
+          "concepto": "Valor actual de los flujos proyectados",
+          "valor": "110.705"
+        },
+        {
+          "concepto": "Valor actual del valor terminal",
+          "valor": "140.003"
+        },
+        {
+          "concepto": "Valor empresa",
+          "valor": "250.708"
+        },
+        {
+          "concepto": "− Deuda financiera neta (con arrendamientos)",
+          "valor": "-39.400"
+        },
+        {
+          "concepto": "− Minoritarios, pensiones y otros; + asociadas",
+          "valor": "-100"
+        },
+        {
+          "concepto": "Valor de los fondos propios",
+          "valor": "211.208"
+        },
+        {
+          "concepto": "Acciones diluidas (millones)",
+          "valor": "1.923,0"
+        },
+        {
+          "concepto": "Valor por acción",
+          "valor": "109,83"
+        }
+      ],
+      "composicion": [
+        {
+          "parte": "Flujos proyectados",
+          "valor": 110705
+        },
+        {
+          "parte": "Valor terminal",
+          "valor": 140003
+        }
+      ],
+      "wacc": 8.14,
+      "ke": 8.8,
+      "kd_despues": 3.76,
+      "wacc_tabla": [
+        {
+          "concepto": "Tasa libre de riesgo",
+          "valor": "5,22 %"
+        },
+        {
+          "concepto": "Beta",
+          "valor": "0,65"
+        },
+        {
+          "concepto": "Prima de riesgo de mercado",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Prima adicional (país, tamaño, específica)",
+          "valor": "0,00 %"
+        },
+        {
+          "concepto": "Coste de los fondos propios",
+          "valor": "8,79 %"
+        },
+        {
+          "concepto": "Coste de la deuda antes de impuestos",
+          "valor": "4,50 %"
+        },
+        {
+          "concepto": "Tipo impositivo",
+          "valor": "16,50 %"
+        },
+        {
+          "concepto": "Coste de la deuda después de impuestos",
+          "valor": "3,76 %"
+        },
+        {
+          "concepto": "Peso de la deuda (D / (D + E))",
+          "valor": "13,00 %"
+        },
+        {
+          "concepto": "WACC",
+          "valor": "8,14 %"
+        },
+        {
+          "concepto": "Prima de riesgo implícita del mercado (regla relativa)",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "WACC con la prima implícita del mercado",
+          "valor": "7,40 %"
+        }
+      ],
+      "potencial_pct": -22.1,
+      "sensibilidad": {
+        "eje_columnas": "Crecimiento a perpetuidad",
+        "columnas": [
+          "1,0 %",
+          "1,5 %",
+          "2,0 %",
+          "2,5 %",
+          "3,0 %"
+        ],
+        "filas": [
+          {
+            "wacc": "7,1 %",
+            "v0": 117.85,
+            "v1": 125.23,
+            "v2": 134.05,
+            "v3": 144.78,
+            "v4": 158.09
+          },
+          {
+            "wacc": "7,6 %",
+            "v0": 107.72,
+            "v1": 113.76,
+            "v2": 120.87,
+            "v3": 129.36,
+            "v4": 139.68
+          },
+          {
+            "wacc": "8,1 %",
+            "v0": 99.02,
+            "v1": 104.02,
+            "v2": 109.83,
+            "v3": 116.68,
+            "v4": 124.85
+          },
+          {
+            "wacc": "8,6 %",
+            "v0": 91.46,
+            "v1": 95.65,
+            "v2": 100.46,
+            "v3": 106.05,
+            "v4": 112.64
+          },
+          {
+            "wacc": "9,1 %",
+            "v0": 84.84,
+            "v1": 88.37,
+            "v2": 92.4,
+            "v3": 97.03,
+            "v4": 102.42
+          }
+        ]
+      },
+      "sensibilidad2": {
+        "columnas": [
+          "-2 pp",
+          "-1 pp",
+          "0 pp",
+          "+1 pp",
+          "+2 pp"
+        ],
+        "filas": [
+          {
+            "margen": "-2 pp",
+            "v0": 86.9,
+            "v1": 93.65,
+            "v2": 100.86,
+            "v3": 108.54,
+            "v4": 116.72
+          },
+          {
+            "margen": "-1 pp",
+            "v0": 90.81,
+            "v1": 97.84,
+            "v2": 105.34,
+            "v3": 113.35,
+            "v4": 121.88
+          },
+          {
+            "margen": "0 pp",
+            "v0": 94.72,
+            "v1": 102.03,
+            "v2": 109.83,
+            "v3": 118.16,
+            "v4": 127.04
+          },
+          {
+            "margen": "+1 pp",
+            "v0": 98.62,
+            "v1": 106.21,
+            "v2": 114.32,
+            "v3": 122.97,
+            "v4": 132.19
+          },
+          {
+            "margen": "+2 pp",
+            "v0": 102.53,
+            "v1": 110.4,
+            "v2": 118.81,
+            "v3": 127.78,
+            "v4": 137.35
+          }
+        ]
+      },
+      "rango_min": 95.65,
+      "rango_max": 129.36,
+      "inverso": {
+        "crecimiento_implicito_pct": 6.1,
+        "crecimiento_base_pct": 2.6,
+        "periodo": "2027e-2035e",
+        "margen_implicito_pct": 44.9,
+        "margen_implicito_texto": null,
+        "margen_base_pct": 38,
+        "rentabilidad_implicita_pct": 6.9
+      },
+      "sostenibilidad": {
+        "veredicto": "En parte",
+        "crecimiento_proyectado_pct": 2.7,
+        "tasa_reinversion_pct": 2,
+        "crecimiento_financiable_pct": null,
+        "roic_pct": 24.6,
+        "roic_incremental_historico_pct": null,
+        "roic_implicito_pct": null,
+        "cuota_actual_pct": null,
+        "cuota_final_pct": null,
+        "puente": [
+          {
+            "periodo": "2026e",
+            "volumen_pct": 7,
+            "precio_pct": -1,
+            "otros_pct": -2.5,
+            "comentario": "Volumen de Kisqali, Kesimpta, Pluvicto, Leqvio y Scemblix (+7 puntos) frente a genéricos de Entresto (−2,5 puntos en otros) y precio (−1): la guía de ventas de un dígito bajo [1, 2].",
+            "suma_pct": 3.5,
+            "crecimiento_pct": 3.5
+          },
+          {
+            "periodo": "2027e",
+            "volumen_pct": 9,
+            "precio_pct": -1,
+            "otros_pct": -2.5,
+            "comentario": "Sin el gran escalón de Entresto, el volumen de las marcas prioritarias (+9) domina; los genéricos y el precio restan 3,5 puntos. Medio punto por debajo de la guía a medio plazo [19].",
+            "suma_pct": 5.5,
+            "crecimiento_pct": 5.5
+          },
+          {
+            "periodo": "2028e",
+            "volumen_pct": 8.5,
+            "precio_pct": -1,
+            "otros_pct": -2,
+            "comentario": "Igual que 2027e, con algo menos de volumen: Kisqali madura en cáncer de mama precoz.",
+            "suma_pct": 5.5,
+            "crecimiento_pct": 5.5
+          },
+          {
+            "periodo": "2029e",
+            "volumen_pct": 8,
+            "precio_pct": -1,
+            "otros_pct": -2,
+            "comentario": "Lanzamientos de remibrutinib y Pluvicto en nuevas indicaciones; genéricos y precio −3 puntos.",
+            "suma_pct": 5,
+            "crecimiento_pct": 5
+          },
+          {
+            "periodo": "2030e",
+            "volumen_pct": 7.5,
+            "precio_pct": -1,
+            "otros_pct": -2,
+            "comentario": "Último año antes de los vencimientos de principios de los años 2030 [22].",
+            "suma_pct": 4.5,
+            "crecimiento_pct": 4.5
+          }
+        ],
+        "texto": "La proyección apenas necesita inversión neta de la amortización (reinversión acumulada de 4.130 M, el 2 % del NOPAT, con un capex bruto medio del 9,7 % de las ventas). En un negocio de activos ligeros, el crecimiento medio del 2,7 % tiene que salir de subir precios y de ganar volumen sin capital nuevo, y la prueba es el poder de precios y la cuota; en un comprador en serie, la amortización es de intangibles comprados y la prueba es el capex bruto (las compras) frente al crecimiento comprado.",
+        "tabla": [
+          {
+            "concepto": "Crecimiento medio de ingresos proyectado",
+            "valor": "2,7 %"
+          },
+          {
+            "concepto": "Capex bruto medio (incluidas compras si van como inversión)",
+            "valor": "9,7 % de las ventas"
+          },
+          {
+            "concepto": "Reinversión neta acumulada (capex − amortización + circulante)",
+            "valor": "4.130 M (2 % del NOPAT)"
+          }
+        ]
+      }
+    },
+    "escenarios": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "narrativa": "La erosión de Entresto y los precios en EE. UU. dejan el crecimiento 2 puntos por debajo del base y el margen 2 puntos más bajo, como en 2022-2023; otra compra cara no aporta ventas y los vencimientos de 2031-2033 golpean sin reemplazo.",
+        "crecimiento_medio_pct": 0.6,
+        "margen_final_pct": 36,
+        "wacc_pct": 8.1,
+        "valor": 82.32,
+        "potencial_pct": -41.6
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "narrativa": "Las marcas prioritarias cumplen un crecimiento del 5-5,5 % en 2027e-2030e (medio punto por debajo de la guía), el margen EBITDA llega al 41,5 % y los vencimientos de principios de los años 2030 dejan dos años sin crecimiento.",
+        "crecimiento_medio_pct": 2.6,
+        "margen_final_pct": 38,
+        "wacc_pct": 8.1,
+        "valor": 109.83,
+        "potencial_pct": -22.1
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "narrativa": "Kisqali, Pluvicto y remibrutinib superan las previsiones, la guía del 5-6 % se cumple por arriba y el margen sube un punto más; alguna compra o fase III compensa en parte el valle de 2031.",
+        "crecimiento_medio_pct": 4.1,
+        "margen_final_pct": 39,
+        "wacc_pct": 8.1,
+        "valor": 127.51,
+        "potencial_pct": -9.5
+      }
+    ],
+    "valor_ponderado": 107.37,
+    "potencial_ponderado_pct": -23.8,
+    "comparables": {
+      "tabla": [
+        {
+          "nombre": "Novartis",
+          "ticker": "NOVN",
+          "pais": "CH",
+          "capitalizacion": 271008,
+          "ev_ventas": 5.48,
+          "ev_ebitda_ltm": 13.5,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 16.1,
+          "crecimiento_pct": 3.2,
+          "margen_ebitda_pct": 40.4,
+          "roic_pct": 24.6,
+          "dn_ebitda": 1.7,
+          "fcf_yield_pct": 6.5,
+          "es_objetivo": true
+        },
+        {
+          "nombre": "Eli Lilly",
+          "ticker": "LLY",
+          "pais": "US",
+          "capitalizacion": 1060832,
+          "ev_ventas": 13.34,
+          "ev_ebitda_ltm": 25.5,
+          "ev_ebitda_ntm": 20.6,
+          "per_ntm": 26.7,
+          "crecimiento_pct": 24.4,
+          "margen_ebitda_pct": 52.4,
+          "roic_pct": 42.2,
+          "dn_ebitda": 1.08,
+          "fcf_yield_pct": 1.75,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "AstraZeneca",
+          "ticker": "AZN",
+          "pais": "GB",
+          "capitalizacion": 255429,
+          "ev_ventas": 4.44,
+          "ev_ebitda_ltm": 13.5,
+          "ev_ebitda_ntm": 11.4,
+          "per_ntm": 18.3,
+          "crecimiento_pct": 7.8,
+          "margen_ebitda_pct": 33,
+          "roic_pct": 16.1,
+          "dn_ebitda": 1.35,
+          "fcf_yield_pct": 4.28,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Sanofi",
+          "ticker": "SAN",
+          "pais": "FR",
+          "capitalizacion": 98993,
+          "ev_ventas": 2.05,
+          "ev_ebitda_ltm": 7.4,
+          "ev_ebitda_ntm": 6.6,
+          "per_ntm": 9.9,
+          "crecimiento_pct": 0.2,
+          "margen_ebitda_pct": 27.7,
+          "roic_pct": 9.1,
+          "dn_ebitda": 1.27,
+          "fcf_yield_pct": 11.66,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Merck & Co",
+          "ticker": "MRK",
+          "pais": "US",
+          "capitalizacion": 358935,
+          "ev_ventas": 5.88,
+          "ev_ebitda_ltm": 13.6,
+          "ev_ebitda_ntm": 13.3,
+          "per_ntm": 20.9,
+          "crecimiento_pct": 4.3,
+          "margen_ebitda_pct": 43.4,
+          "roic_pct": 14.1,
+          "dn_ebitda": 1.62,
+          "fcf_yield_pct": 4.56,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "GSK",
+          "ticker": "GSK",
+          "pais": "GB",
+          "capitalizacion": 96440,
+          "ev_ventas": 2.54,
+          "ev_ebitda_ltm": 7.8,
+          "ev_ebitda_ntm": 6.9,
+          "per_ntm": 11.7,
+          "crecimiento_pct": 5.4,
+          "margen_ebitda_pct": 32.6,
+          "roic_pct": 26.4,
+          "dn_ebitda": 1.4,
+          "fcf_yield_pct": 9.63,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Novo Nordisk",
+          "ticker": "NOVO B",
+          "pais": "DK",
+          "capitalizacion": 167628,
+          "ev_ventas": 3.64,
+          "ev_ebitda_ltm": 6.9,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 11.7,
+          "crecimiento_pct": -2.7,
+          "margen_ebitda_pct": 52.7,
+          "roic_pct": 39.2,
+          "dn_ebitda": 0.55,
+          "fcf_yield_pct": 6.9,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Roche",
+          "ticker": "ROP",
+          "pais": "CH",
+          "capitalizacion": 332470,
+          "ev_ventas": 4.95,
+          "ev_ebitda_ltm": 14.3,
+          "ev_ebitda_ntm": 12.8,
+          "per_ntm": 15.5,
+          "crecimiento_pct": 1.6,
+          "margen_ebitda_pct": 34.5,
+          "roic_pct": 27.1,
+          "dn_ebitda": 1.1,
+          "fcf_yield_pct": 5.7,
+          "es_objetivo": false
+        }
+      ],
+      "estadisticos": [
+        {
+          "estadistico": "Mediana",
+          "ev_ventas": 4.4,
+          "ev_ebitda_ltm": 13.5,
+          "ev_ebitda_ntm": 12.1,
+          "per_ntm": 15.5,
+          "crecimiento_pct": 4.3,
+          "margen_ebitda_pct": 34.5,
+          "roic_pct": 26.4,
+          "dn_ebitda": 1.3,
+          "fcf_yield_pct": 5.7
+        },
+        {
+          "estadistico": "Media",
+          "ev_ventas": 5.3,
+          "ev_ebitda_ltm": 12.7,
+          "ev_ebitda_ntm": 11.9,
+          "per_ntm": 16.4,
+          "crecimiento_pct": 5.9,
+          "margen_ebitda_pct": 39.5,
+          "roic_pct": 24.9,
+          "dn_ebitda": 1.2,
+          "fcf_yield_pct": 6.4
+        },
+        {
+          "estadistico": "Percentil 25",
+          "ev_ventas": 3.1,
+          "ev_ebitda_ltm": 7.6,
+          "ev_ebitda_ntm": 8,
+          "per_ntm": 11.7,
+          "crecimiento_pct": 0.9,
+          "margen_ebitda_pct": 32.8,
+          "roic_pct": 15.1,
+          "dn_ebitda": 1.1,
+          "fcf_yield_pct": 4.4
+        },
+        {
+          "estadistico": "Percentil 75",
+          "ev_ventas": 5.4,
+          "ev_ebitda_ltm": 14,
+          "ev_ebitda_ntm": 13.2,
+          "per_ntm": 19.6,
+          "crecimiento_pct": 6.6,
+          "margen_ebitda_pct": 47.9,
+          "roic_pct": 33.2,
+          "dn_ebitda": 1.4,
+          "fcf_yield_pct": 8.3
+        }
+      ],
+      "implicito": [
+        {
+          "metodo": "EV/EBITDA últimos 12 meses",
+          "metrica_empresa": 22919,
+          "multiplo_p25": 7.6,
+          "multiplo_mediana": 13.5,
+          "multiplo_p75": 14,
+          "multiplos": "7,6x / 13,5x / 13,9x",
+          "valor_p25": 70.04,
+          "valor_mediana": 140.36,
+          "valor_p75": 145.72,
+          "potencial_pct": -0.4
+        },
+        {
+          "metodo": "PER próximos 12 meses",
+          "metrica_empresa": 8.74,
+          "multiplo_p25": 11.7,
+          "multiplo_mediana": 15.5,
+          "multiplo_p75": 19.6,
+          "multiplos": "11,7x / 15,5x / 19,6x",
+          "valor_p25": 102.26,
+          "valor_mediana": 135.47,
+          "valor_p75": 171.3,
+          "potencial_pct": -3.9
+        },
+        {
+          "metodo": "EV/Ventas últimos 12 meses",
+          "metrica_empresa": 56674,
+          "multiplo_p25": 3.1,
+          "multiplo_mediana": 4.4,
+          "multiplo_p75": 5.4,
+          "multiplos": "3,1x / 4,4x / 5,4x",
+          "valor_p25": 70.53,
+          "valor_mediana": 110.31,
+          "valor_p75": 139.05,
+          "potencial_pct": -21.7
+        }
+      ],
+      "regresion": {
+        "pendiente": 0.4800065263781607,
+        "ordenada": 8.437285799545732,
+        "r2": 0.6786110780757764,
+        "n": 6
+      },
+      "n": 7
+    },
+    "transacciones": null,
+    "suma_partes": null,
+    "multiplos_historicos": [],
+    "multiplos_serie": [],
+    "multiplos_titulo": null,
+    "consenso_vs_propio": [
+      {
+        "periodo": "2026e",
+        "ingresos_propio": 58658,
+        "ingresos_consenso": null,
+        "ingresos_dif_pct": null,
+        "ebitda_propio": 22759,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      },
+      {
+        "periodo": "2027e",
+        "ingresos_propio": 61884,
+        "ingresos_consenso": 60000,
+        "ingresos_dif_pct": 3.1,
+        "ebitda_propio": 24754,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      },
+      {
+        "periodo": "2028e",
+        "ingresos_propio": 65287,
+        "ingresos_consenso": 61800,
+        "ingresos_dif_pct": 5.6,
+        "ebitda_propio": 26768,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      }
+    ],
+    "gobierno": {
+      "n_consejeros": 1,
+      "independientes_pct": 100,
+      "antiguedad_media": 1,
+      "composicion": [
+        {
+          "tipo": "Independiente",
+          "num": 1
+        }
+      ],
+      "checklist": [
+        {
+          "criterio": "Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)",
+          "resultado": "Cumple",
+          "valor": "100 %"
+        },
+        {
+          "criterio": "Presidencia sin vínculo familiar ni profesional con el accionista de control",
+          "resultado": "Cumple",
+          "valor": "Sin control"
+        },
+        {
+          "criterio": "Presidente no ejecutivo, o consejero coordinador independiente",
+          "resultado": "Cumple",
+          "valor": "No ejecutivo"
+        },
+        {
+          "criterio": "Comisión de auditoría con mayoría de independientes y presidida por uno",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Ningún consejero «otro externo» con más de 12 años",
+          "resultado": "Cumple",
+          "valor": "Ninguno"
+        },
+        {
+          "criterio": "Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses",
+          "resultado": "Cumple",
+          "valor": "1 cambio"
+        },
+        {
+          "criterio": "Peor voto en contra sobre remuneración (3 juntas) ≤ 20 %",
+          "resultado": "Cumple",
+          "valor": "11,6 % en contra"
+        },
+        {
+          "criterio": "Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Una acción, un voto, sin blindajes ni límites de voto estatutarios",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Sin operaciones vinculadas relevantes",
+          "resultado": "Cumple",
+          "valor": "No hay"
+        },
+        {
+          "criterio": "Auditor con 10 años o menos en el cargo",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Opinión de auditoría sin salvedades",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Directivos compradores netos en 12 meses (o sin ventas relevantes)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        }
+      ],
+      "puntuacion": "8 de 13 (5 sin dato)",
+      "puntuacion_pct": 62,
+      "compras_insiders": 0,
+      "ventas_insiders": 0
+    },
+    "competidores_margen": [
+      {
+        "nombre": "Novartis",
+        "margen_ebit_pct": 31.1
+      },
+      {
+        "nombre": "Roche",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "AstraZeneca",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Merck & Co",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Sanofi",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Eli Lilly",
+        "margen_ebit_pct": null
+      }
+    ],
+    "sintesis": {
+      "formato_eje": "#,##0",
+      "rangos": [
+        {
+          "metodo": "Precio objetivo de los analistas",
+          "etiqueta": "Precio objetivo de los analistas (95,95 – 150,69)",
+          "min": 95.95,
+          "central": 128.42,
+          "max": 150.69,
+          "gris": true
+        },
+        {
+          "metodo": "Comparables: PER NTM",
+          "etiqueta": "Comparables: PER NTM (102,26 – 171,30)",
+          "min": 102.26,
+          "central": 135.47,
+          "max": 171.3,
+          "gris": false
+        },
+        {
+          "metodo": "DCF (WACC y g ± 0,5)",
+          "etiqueta": "DCF (WACC y g ± 0,5) (95,65 – 129,36)",
+          "min": 95.65,
+          "central": 109.83,
+          "max": 129.36,
+          "gris": false
+        },
+        {
+          "metodo": "Escenarios (bajista – alcista)",
+          "etiqueta": "Escenarios (bajista – alcista) (82,32 – 127,51)",
+          "min": 82.32,
+          "central": 107.37,
+          "max": 127.51,
+          "gris": false
+        },
+        {
+          "metodo": "DCF con la prima del mercado",
+          "etiqueta": "DCF con la prima implícita del mercado (4,2 %)",
+          "min": 114.79,
+          "central": 126.77,
+          "max": 141.19
+        },
+        {
+          "metodo": "Precio actual",
+          "etiqueta": "Precio actual (140,93)",
+          "min": 140.23,
+          "central": 140.93,
+          "max": 141.63,
+          "gris": true
+        }
+      ],
+      "tabla": [
+        {
+          "metodo": "DCF",
+          "valor": 109.83,
+          "peso_pct": 50,
+          "potencial_pct": -22.1
+        },
+        {
+          "metodo": "Comparables (mediana EV/EBITDA y PER)",
+          "valor": 135.47,
+          "peso_pct": 25,
+          "potencial_pct": -3.9
+        },
+        {
+          "metodo": "Escenarios ponderados",
+          "valor": 107.37,
+          "peso_pct": 25,
+          "potencial_pct": -23.8
+        }
+      ],
+      "valor_objetivo": 115.63,
+      "potencial_pct": -18
+    },
+    "fuentes": {
+      "n_fuentes": 42,
+      "n_primarias": 14,
+      "por_tipo": [
+        {
+          "tipo": "Primaria",
+          "num": 14
+        },
+        {
+          "tipo": "Datos de mercado",
+          "num": 12
+        },
+        {
+          "tipo": "Prensa",
+          "num": 8
+        },
+        {
+          "tipo": "Analistas",
+          "num": 6
+        },
+        {
+          "tipo": "Foros y redes",
+          "num": 2
+        }
+      ],
+      "n_citadas": 41,
+      "citas_sin_fuente": [],
+      "fuentes_sin_citar": [
+        "34"
+      ]
+    },
+    "controles": [
+      {
+        "control": "DCF inverso calculable",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Puente de ingresos (volumen + precio + otros) = crecimiento del DCF",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "resultado": "OK",
+        "detalle": "Supuesto 15,5 % frente a 15,8 % real: genera una variación de circulante de 155 M en el primer año. Converge de forma gradual."
+      },
+      {
+        "control": "Peso del valor terminal ≤ 80 % del valor empresa",
+        "resultado": "OK",
+        "detalle": "56 %."
+      },
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "resultado": "OK",
+        "detalle": "2,00 %."
+      },
+      {
+        "control": "Probabilidades de los escenarios suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 5 comparables",
+        "resultado": "OK",
+        "detalle": "7 comparables."
+      },
+      {
+        "control": "Pesos de la síntesis suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Múltiplos del objetivo a 12 m según la regla común",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Objetivo 12 m frente al consenso",
+        "resultado": "OK",
+        "detalle": "El base se separa un -3,9 % del objetivo medio de los analistas: explícalo en diferencia_consenso (nunca se acerca la cifra)."
+      },
+      {
+        "control": "Recomendación coherente con la regla de decisión",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "La síntesis explica la convicción",
+        "resultado": "OK",
+        "detalle": "La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría."
+      },
+      {
+        "control": "Capitalización calculada ≈ publicada",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 25 fuentes",
+        "resultado": "OK",
+        "detalle": "42 fuentes (14 primarias)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "resultado": "OK",
+        "detalle": "14."
+      },
+      {
+        "control": "Toda cita [n] existe en fuentes",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Fuentes sin citar ≤ 15 %",
+        "resultado": "OK",
+        "detalle": "Sin citar: 34."
+      }
+    ],
+    "controles_resumen": "17 de 17 controles correctos"
+  }
+}

@@ -1,0 +1,15 @@
+# Diario · Novartis (NOVN; ADR NVS) · 14-oct-2026
+
+- Commit de partida: 9ec165d.
+- Entorno: nube de Claude Code. La red solo deja salir a la búsqueda web (WebSearch); WebFetch, curl, `descargar.mjs` y `bolsa.mjs` no se usaron. Las cifras salen de los extractos de búsqueda de los comunicados de Novartis (resultados 2023, 2024, 2025, 1T26 y 2T26; 6-K; votos de la junta 2026; dividendo) y de Stock Analysis, Chartrow y Traders Union, con la URL como fuente. 21 búsquedas, sin subagentes. Confianza: media en cuentas, BPA core y flujos (la fórmula reproduce el BPA core de 2025: ≈9,0 frente a 8,98); baja en precio de hoy (ADR del 5-oct y cambio USD/CHF estimado), consenso (una sola fuente de objetivos, sin BPA anual de 2027-2028), sector, gobierno y bolsa (huecos registrados).
+- Tiempos: 13:40-14:10 (≈30-35 min). Notas A-E con `notas/construir-notas.mjs`; supuestos en `supuestos.mjs`, textos en `textos.mjs` y `resumen.mjs`.
+- Identificación: Novartis AG, NOVN, CH0012005267, SIX (ADR NVS en la NYSE), NIIF, cierre en diciembre, **cuentas en USD** (divisa del informe) y cotización en CHF (tipo 1,25 USD/CHF, estimación). Próximos resultados: 27-oct-2026 (3T26).
+- Hecho clave: 4-sep falla pelacarsen (Lp(a)HORIZON) y 8-sep del-desiran (HARBOR, de Avidity, comprada por ≈12.000 M USD en febrero); la acción cae un 10,9 % (111,80 CHF). La dirección mantiene la guía del 5-6 % anual 2025-2030.
+- Decisiones: precio = ADR 140,93 USD (5-oct); acciones 1.923 M (capitalización ÷ precio de blue News). DCF en EBITDA NIIF con capex del 10 % (inmovilizado + compras de biotecnológicas), crecimiento medio punto bajo la guía en 2027-2030 y 0 % / −2 % en 2031-2032 por vencimientos; WACC 8,14 % con el bono estadounidense (5,22 %) porque los flujos son en USD; terminal 2 %. Puente: deuda neta de jun-26 (39.400 M) sin pensiones (hueco). Comparables reutilizados del informe de Roche (14-oct) pasados a USD. Objetivo 12 m en BPA core; PER histórico 2022-2025 (2021 excluido).
+- Sostenibilidad: «En parte», hecha a mano (reinversión neta del 2 % del NOPAT: el motor no puede probarla); el base ya va por debajo de la guía, sin otra rebaja.
+- 14-oct, 13:59: informe cerrado, 17 de 17 controles; Word (35 páginas) y PDF (soffice). Rentabilidad a 12 meses v2: ponderada +10,1 %, base +12,8 % → **Mantener, convicción media** (compra < 115,63 USD / 92,50 CHF; venta > 172,36 USD / 137,89 CHF). Valor intrínseco 115,63 USD (−18,0 %); DCF 109,83. Consenso: objetivo medio 128,42 CHF (≈160,53 USD). Detalle en revision-12m-2026-10-14.md.
+
+## Lecciones
+
+- Empresas suizas que publican en USD (Novartis): todo en USD con la tasa libre estadounidense (≈5,2 %) y `tipo_cambio` USD por CHF; el precio del ADR (1 ADR = 1 acción) sirve directamente como precio en la divisa de las cuentas cuando no hay cierre legible en la SIX.
+- Farmacéuticas que compran cartera (Novartis, Roche): el flujo libre publicado no incluye las compras de biotecnológicas; cargarlas en el capex deja la reinversión neta casi en cero y el motor no hace la prueba de sostenibilidad: hacerla a mano.
