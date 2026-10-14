@@ -128,3 +128,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v4.mjs` (parte de `datos-
 3. El crecimiento medio de la tabla incluye la compra de 2026e (9,5 puntos) aunque su capital ya está en la base; con el puente, el motor podría restar `otros_pct` de compras.
 4. El recorte del base cambia los escenarios sin tocarlos (son desplazamientos): el bajista pasa a −50 % y mueve la regla absoluta a Vender. El encargo dice «normalmente no tocar los escenarios»; convendría que el motor avise cuando el bajista empeora más de 10 puntos por un cambio del base.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 45,98 EUR, rentabilidad −22,5 %, señal Vender (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada -22,5 % → -19,3 %, base -23,3 %, señal Vender (`revision-12m-2026-10-13.md`).

@@ -47,3 +47,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 1. La reinversión neta sale negativa porque la amortización incluye 227 M de intangibles de PRA: el motor escribe «activos ligeros» y menciona al «comprador en serie» sin serlo (ya anotado en lecciones como «Activos ligeros engañoso»). Arreglo: separar la amortización de intangibles comprados de la depreciación al medir la reinversión.
 2. El motor pasa la prueba de cuota cuando la cuota baja, pero no avisa de años concretos que la recuperan (aquí 2028-2030 a +5 % frente a un mercado al 4,5 %): la prueba es de punto final, no de trayectoria.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 196,15 USD, rentabilidad +19,2 %, señal Comprar (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +19,2 % → +20,0 %, base +17,8 %, señal Mantener (`revision-12m-2026-10-13.md`).

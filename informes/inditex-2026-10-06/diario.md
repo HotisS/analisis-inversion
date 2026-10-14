@@ -185,3 +185,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v3.mjs` (parte de `datos-
 2. El control «Comparables estables al quitar una empresa» sigue en «Revisar» desde la v1 (mediana de 11,0x a 13,3x); el texto de valoración ya lo explica, pero no está en `meta.controles_explicados`.
 
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 55,89 EUR (media ponderada; base 57,24 EUR), rentabilidad +6,0 % (base +8,6 %), señal Mantener (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +6,0 % → +6,1 %, base +8,8 %, señal Mantener (`revision-12m-2026-10-13.md`).
