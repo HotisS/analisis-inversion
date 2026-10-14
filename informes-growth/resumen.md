@@ -27,6 +27,7 @@ Lo genera `node motor/growth.mjs --todos` (no editar a mano). Método v11: [vert
 | Ypsomed Holding AG | YPSN | 60.3 | 4/8 | +6,6 % | +9,6 % | Comprar (baja) | 3.5 % | 361.9 CHF | 2026-10-14 |
 | ALK-Abelló | ALK-B | 58.3 | 2/8 | +6,4 % | +8,3 % | Mantener | — | 230.2 DKK | 2026-10-14 |
 | Siemens Energy AG | ENR | 57.5 | 3/8 | +5,8 % | +6,4 % | Mantener | — | 144.1 EUR | 2026-10-14 |
+| Medacta Group SA | MOVE | 50 | 2/8 | +5,1 % | +4,6 % | Mantener | — | 114.1 CHF | 2026-10-14 |
 | Madrigal Pharmaceuticals | MDGL | 61.8 | 1/8 | +4,4 % | +15,2 % | Mantener | — | 449.6 USD | 2026-10-14 |
 | Wise Group | WSE | 62.8 | 1/8 | +3,9 % | +4,5 % | Mantener | — | 12.1 USD | 2026-10-14 |
 | Rheinmetall AG | RHM | 64.3 | 2/8 | +3,5 % | -2,1 % | Mantener | — | 847 EUR | 2026-10-14 |
@@ -47,11 +48,14 @@ Lo genera `node motor/growth.mjs --todos` (no editar a mano). Método v11: [vert
 | Rolls-Royce Holdings | RR | 65.3 | 4/8 | -5,3 % | -3,6 % | Mantener | — | 1212.2 GBp | 2026-10-14 |
 | Axsome Therapeutics | AXSM | 57.7 | 2/8 | -5,4 % | +1,1 % | Mantener | — | 139.5 USD | 2026-10-14 |
 | Celsius | CELH | 49.3 | 2/8 | -7,1 % | -1,2 % | Vender | — | 24.7 USD | 2026-10-14 |
+| Exosens | EXENS | 56.2 | 3/8 | -9 % | -6,8 % | Mantener | — | 49.4 EUR | 2026-10-14 |
 | TransMedics | TMDX | 51.2 | 1/8 | -9 % | -1,6 % | Mantener | — | 68.6 USD | 2026-10-14 |
 | Cameco | CCJ | 40.5 | 1/8 | -9,7 % | -7,3 % | Vender | — | 74.1 USD | 2026-10-14 |
 | Howmet Aerospace | HWM | 59.7 | 2/8 | -9,8 % | -7 % | Mantener | — | 186.2 USD | 2026-10-14 |
 | Alnylam Pharmaceuticals | ALNY | 62.7 | 2/8 | -10,1 % | -5 % | Vender | — | 191.7 USD | 2026-10-14 |
 | Boston Scientific | BSX | 46 | 2/8 | -10,2 % | -4 % | Vender | — | 37 USD | 2026-10-14 |
+| Hensoldt AG | HAG | 57 | 2/8 | -13,3 % | -10,8 % | Vender | — | 65.3 EUR | 2026-10-14 |
+| Addtech AB | ADDT-B | 46.8 | 1/8 | -14,4 % | -12 % | Vender | — | 262 SEK | 2026-10-14 |
 | GE Vernova Inc. | GEV | 61.8 | 3/8 | -14,8 % | -12,6 % | Vender | — | 814 USD | 2026-10-14 |
 | Camurus | CAMX | 67 | 6/8 | -15,5 % | -10,6 % | Vender | — | 505.3 SEK | 2026-10-14 |
 | Palantir Technologies | PLTR | 93.8 | 7/8 | -15,5 % | -13,3 % | Vender | — | 141.2 USD | 2026-10-14 |
