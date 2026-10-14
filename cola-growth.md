@@ -4,10 +4,6 @@ Análisis growth: método en `verticales/growth/metodo.md`, procedimiento en `.c
 
 | Tanda | Empresa | Ticker | Por qué growth |
 |---|---|---|---|
-| 2 | Cloudflare | NET | Red global para seguridad, rendimiento e IA en el borde; crecimiento ~30 % con pocas bajas de clientes |
-| 2 | Nu Holdings | NU | Banco digital en Brasil, México y Colombia; más de 100 millones de clientes, crece y ya gana dinero |
-| 2 | Axon Enterprise | AXON | Táseres, cámaras y software para policía; ventas recurrentes crecientes y nuevos productos con IA |
-| 2 | argenx | ARGX | Biotecnológica con Vyvgart: ventas que se multiplican con nuevas indicaciones; ya rentable |
 | 3 | Shopify | SHOP | Plataforma de comercio para marcas (no es minorista); crecimiento ~25 % y margen FCF al alza |
 | 3 | Rocket Lab | RKLB | Lanzadores y satélites; Neutron como catalizador; aún en pérdidas: el caso de «tecnología nueva» |
 | 3 | BE Semiconductor | BESI.AS | Máquinas de hybrid bonding para chips de IA; tecnología que puede cambiar el empaquetado |
