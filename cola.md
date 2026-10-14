@@ -6,31 +6,21 @@ Solo lo pendiente. Lo cerrado está en `archivo/` (índice en `archivo/HISTORICO
 
 ## Pendiente
 
-Cola del 14-oct (12:00), de 4 en 4 durante una hora, mezclando valor y crecimiento (propuesta al usuario en el hilo; si cambia algo, se aplica desde la siguiente tanda). Hechas: tandas 1 y 2. En curso: Roche, Sectra, ANYCOLOR y Atlas Copco. Las «P» van delante de lo que queda:
+Tercera hora (desde las 13:00 del 14-oct), de 4 en 4. En curso: Alibaba, Watches of Switzerland, Rovi, Endesa y Repsol (prioridad del usuario). Después, en este orden:
 
-| Tanda | Empresa | Ticker | Estilo | Por qué |
-|---|---|---|---|---|
-| 1 | RELX | REL.L | Valor | Datos y análisis como Wolters Kluwer, castigada por el miedo a la IA |
-| 1 | Booking Holdings | BKNG | Crecimiento | ROIC muy alto, recompras, PER moderado para su crecimiento |
-| 1 | Moncler | MONC.MI | Valor | Lujo de calidad en la parte baja del ciclo, sin deuda |
-| 1 | Fair Isaac (FICO) | FICO | Crecimiento | Monopolio de la puntuación de crédito, muy castigada en 2025-26 |
-| 2 | L'Oréal | OR.PA | Valor | Líder mundial de belleza, cotiza bajo su media |
-| 2 | Hoya | 7741.T | Crecimiento | Óptica y máscaras de semiconductores, ROIC alto |
-| 2 | Rightmove | RMV.L | Valor | Portal dominante como Auto Trader, márgenes del 70 % |
-| 2 | Moody's | MCO | Crecimiento | Duopolio de calificaciones, ROIC muy alto |
-| P | Alibaba | 9988.HK / BABA | Valor | Prioridad del usuario (14-oct 12:27) |
-| P | Watches of Switzerland | WOSG.L | Valor | Prioridad del usuario (14-oct 12:27); minorista, pedido expresamente |
-| P | Rovi | ROVI.MC | Crecimiento | Prioridad del usuario (14-oct 12:27) |
-| P | Endesa | ELE.MC | Valor | Prioridad del usuario (14-oct 12:27) |
-| P | Repsol | REP.MC | Valor | Prioridad del usuario (14-oct 12:27) |
-| 3 | Roche | ROG.SW | Valor | Farmacia y diagnóstico barata con dividendo alto |
-| 3 | Sectra | SECT-B.ST | Crecimiento | Software de imagen médica (suplente del escáner) |
-| 3 | ANYCOLOR | 5032.T | Valor | Barata con caja neta y crecimiento (suplente del escáner) |
-| 3 | Atlas Copco | ATCO-A.ST | Crecimiento | Compresores y vacío, ROIC alto y disciplina |
-| 4 | Shimano | 7309.T | Valor | Líder de componentes de bicicleta en mínimos, caja neta |
-| 4 | Mettler-Toledo | MTD | Crecimiento | Instrumentos de precisión con ROIC altísimo |
-| 4 | Deutsche Börse | DB1.DE | Valor | Bolsa y datos con crecimiento estable |
-| 4 | Ferrari | RACE.MI | Crecimiento | Poder de precio único; probablemente cara, para tenerla medida |
+| Empresa | Ticker | Estilo | Por qué |
+|---|---|---|---|
+| Shimano | 7309.T | Valor | Líder de componentes de bicicleta en mínimos, caja neta |
+| Mettler-Toledo | MTD | Crecimiento | Instrumentos de precisión con ROIC altísimo |
+| Deutsche Börse | DB1.DE | Valor | Bolsa y datos con crecimiento estable |
+| Ferrari | RACE.MI | Crecimiento | Poder de precio único; probablemente cara |
+| Amadeus | AMS.MC | Valor | Reservas de viaje, casi monopolio, cotiza bajo su media |
+| Sanofi | SAN.PA | Valor | Farmacéutica barata con dividendo y vacunas |
+| Givaudan | GIVN.SW | Crecimiento | Aromas y sabores, líder mundial |
+| CME Group | CME | Valor | Bolsa de derivados con márgenes muy altos |
+| Garmin | GRMN | Crecimiento | Caja neta, crecimiento en fitness y aviación |
+| Merck KGaA | MRK.DE | Valor | Ciencias de la vida y semiconductores, castigada |
+| Iberdrola | IBE.MC | Valor | Redes reguladas y renovables, España |
 
 ## Vigilar
 
