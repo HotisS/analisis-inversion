@@ -67,3 +67,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 3. Los escenarios desplazan crecimiento y margen pero no el capex: el bajista conserva la intensidad de capital del base aunque crezca tres puntos menos, y por eso empeora de −44,8 % a −51,9 % con este cambio. Arreglo: `ajuste_capex_pp` en los escenarios.
 4. Como en otros informes viejos, el motor actual mueve el nivel de compra de v1 (447,76 → 432,44) sin cambiar datos.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 592,56 USD (media ponderada; base 611,46), rentabilidad +12,6 %, señal Mantener (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +12,6 % → +12,6 %, base +16,1 %, señal Mantener (`revision-12m-2026-10-13.md`).

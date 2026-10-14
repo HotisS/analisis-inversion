@@ -63,3 +63,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 3. El nivel de «Comprar por debajo» pasó de 314,56 a 311,09 DKK sin cambiar ninguna cifra: el motor cambió desde el 8-oct. Las versiones recalculadas pueden mover niveles sin que el informe lo diga.
 4. El aviso «Tabla sin filas: calc.suma_partes.partes» sigue (ya estaba en v1).
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 313,2 DKK, rentabilidad 30,0 %, señal Comprar (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +20,0 % → +9,0 %, base +9,3 %, señal Mantener (`revision-12m-2026-10-13.md`).
