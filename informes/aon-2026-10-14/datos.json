@@ -1,0 +1,4807 @@
+{
+  "meta": {
+    "fecha_corte": "2026-10-14",
+    "divisa": "USD",
+    "divisa_cotizacion": "USD",
+    "tipo_cambio": 1,
+    "unidades": "millones",
+    "cierre_ejercicio_mes": 12,
+    "etiqueta_ejercicio": "fin",
+    "normas_contables": "US GAAP",
+    "formato_cuenta": "funcion",
+    "limitaciones": "Aon plc está domiciliada en Irlanda pero presenta 10-K en la SEC (US GAAP, USD, CIK 315293). El precio es el último cierre disponible (275,32 USD, 14-oct-2026). Los resultados del 3T26 se publican el 28-oct-2026, dos semanas después del corte. La compra de USI (17.000 M USD en efectivo) está firmada pero no cerrada (previsto en el 4T26): la proyección la incluye desde 2027e y su precio va al puente como deuda; si no cerrase, el valor cambia. El XBRL de la SEC no suma a la deuda la parte a corto plazo ni los pagarés (papel comercial): la deuda total se ha rehecho a mano con el balance de los 10-K (por ejemplo, 15.249 M en 2025 frente a 14.660 M del XBRL). La amortización del XBRL era solo la del inmovilizado: se suma la de intangibles de la conciliación de la empresa. El balance se presenta sin los activos y pasivos fiduciarios (17.889 M en 2025), que se compensan. La revisión a 12 meses usa el BPA ajustado de la empresa (sin amortización de intangibles comprados ni reestructuración), no el publicado: USI añade unos 1.060 M de amortización al año y rompería la comparación histórica. El consenso sale de Yahoo Finance y MarketScreener; los arrendamientos operativos no van a la deuda.",
+    "controles_explicados": [
+      {
+        "control": "Regresión múltiplo-crecimiento explicativa (R² ≥ 0,3)",
+        "explicacion": "Con seis corredores el crecimiento no explica el múltiplo (R² 0,16): el de Gallagher y Brown & Brown es comprado y el de Aon de 2027 lleva USI. No se usa la regresión; se usa el PER de los comparables con BPA ajustado."
+      },
+      {
+        "control": "Objetivo 12 m frente al consenso",
+        "explicacion": "El base queda por debajo del objetivo medio de los analistas (354,21): nuestro PER objetivo (15,2x, con el tope de ×1,1 sobre el actual) es mucho más bajo que el que usan los analistas, que siguen anclados en 18-20 veces; el BPA de 2028e es parecido al que implica el consenso."
+      }
+    ],
+    "huecos": [
+      {
+        "seccion": "negocio",
+        "campo": "geografias",
+        "tipo": "Complemento",
+        "intentos": "1) 10-K 2025 (nota de ingresos: por línea de solución, la tabla geográfica no se extrajo con grep); 2) notas de resultados (sin geografía); 3) impuestos pagados por país (no son ingresos)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "negocio",
+        "campo": "segmentos 2019-2022",
+        "tipo": "Complemento",
+        "intentos": "1) 10-K 2025 (reexpresa 2023-2025); 2) 10-K 2023 (un solo segmento hasta 2022); 3) sin cifras reexpresadas de la empresa",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "trimestres",
+        "campo": "EBITDA trimestral y comparación con el consenso",
+        "tipo": "Complemento",
+        "intentos": "1) notas de resultados 3T25-2T26 (sin EBITDA); 2) consenso previo de cada trimestre no archivado; 3) —",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "balance",
+        "campo": "vida_media_anios",
+        "tipo": "Complemento",
+        "intentos": "1) nota de deuda del 10-K 2025 (calendario de cinco años); 2) 8-K de bonos; 3) no se calcula sin la lista completa",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sector",
+        "campo": "cr5_pct",
+        "tipo": "Complemento",
+        "intentos": "1) 10-K 2025 (sin cuotas); 2) Mordor Intelligence (solo «concentración media»); 3) suma de ingresos de los cinco grandes (mezcla perímetros)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "esg",
+        "campo": "calificaciones",
+        "tipo": "Complemento",
+        "intentos": "1) 10-K y proxy 2026; 2) búsqueda no hecha por presupuesto; 3) —",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "voto en contra de la remuneración y ratio salarial",
+        "tipo": "Complemento",
+        "intentos": "1) proxy 2026 (solo «89 % a favor» en 2025); 2) 8-K de la junta de 2026 (no recoge el voto); 3) ratio salarial: no extraído del proxy por presupuesto",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "bolsa",
+        "campo": "posición corta",
+        "tipo": "Complemento",
+        "intentos": "1) bolsa.mjs (no la da); 2) FINRA (no consultado por presupuesto); 3) Yahoo (sin dato)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "consenso",
+        "campo": "reparto de recomendaciones y BPA ajustado de 2028",
+        "tipo": "Complemento",
+        "intentos": "1) MarketScreener («Outperform» sin desglose; BPA publicado); 2) Yahoo (solo 2026-2027); 3) Stock Analysis (bloqueo antibot)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sentimiento",
+        "campo": "Reddit y comentarios de lectores",
+        "tipo": "Complemento",
+        "intentos": "1) Reddit (403, según lecciones); 2) comentarios de Seeking Alpha (requieren registro); 3) Stocktwits (leído)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "rentabilidad",
+        "campo": "ROIC de los competidores con el mismo criterio",
+        "tipo": "Complemento",
+        "intentos": "1) informe de Marsh de hoy (ROIC de Yahoo de 2025 de los cinco rivales); 2) 10-K de los rivales (no descargados por presupuesto); 3) MarketScreener (solo ROE)",
+        "decision": "Calculado y marcado como estimación"
+      }
+    ]
+  },
+  "identificacion": {
+    "nombre": "Aon plc",
+    "nombre_corto": "Aon",
+    "ticker": "AON",
+    "isin": "IE00BLP1HW54",
+    "mercado": "New York Stock Exchange",
+    "indice_referencia": "S&P 500",
+    "pais": "Irlanda",
+    "pais_iso": "IE",
+    "sector": "Financiero",
+    "industria": "Corredores de seguros",
+    "sede": "Dublín (Irlanda); sede operativa en Londres",
+    "fundacion": "1982",
+    "empleados": 62159,
+    "web": "https://www.aon.com",
+    "precio": 275.32,
+    "fecha_precio": "2026-10-14",
+    "acciones": 212.4,
+    "capitalizacion_publicada": 58436,
+    "free_float_pct": 99,
+    "max_52s": 382.34,
+    "min_52s": 266.33,
+    "volumen_medio_diario": "≈ 503 M USD/día (1,58 M de acciones; 3 meses)",
+    "proximos_resultados": "2026-10-28"
+  },
+  "resumen": {
+    "recomendacion": "Comprar",
+    "conviccion": "Media",
+    "justificacion_recomendacion": null,
+    "horizonte": "12 meses",
+    "sintesis": "**La recomendación y por qué.** Comprar con convicción media. Al precio de 275,32 USD (cierre del 14-oct-2026; 245,93 EUR al cambio del BCE de 1,1195), nuestro objetivo a 12 meses es de 360,60 USD: una rentabilidad ponderada del 32,1 % con dividendo y del 26,5 % en el caso base (345,34), con un valor intrínseco de 342,28 (+24,3 %) y un objetivo medio de los analistas de 354,21, dentro de nuestro rango (244,73-506,97). Con la regla anterior de múltiplos (v2) también sale Comprar: 19,8 % ponderada y 15,0 % en el base. La razón de negocio: el mercado paga 13,8 veces nuestro BPA ajustado de 2027e, el PER adelantado más bajo en una década, por el corredor con más margen y más ROIC del sector, porque teme que la compra de USI (17.000 M a 22 veces el EBITDA sin sinergias) sea un error; el DCF inverso dice que el precio supone que el grupo combinado casi no crece por sí mismo. Los criterios del motor sugieren convicción alta (las dos reglas dan Comprar, asimetría de 4,06); la dejamos en media porque USI aún no ha cerrado, el director financiero es interino desde agosto, el BPA que decide es el ajustado (excluye una reestructuración que se repite) y los resultados del 3T26 salen el 28-oct-2026. Subiría con el cierre de USI sin cambios y un orgánico del 5 % en el 3T26; bajaría con un orgánico por debajo del 4 % o fugas de productores de USI.\n\n**Frente a Marsh.** Las dos dan Comprar hoy, pero Aon es la apuesta más barata y más arriesgada. Aon cotiza a 13,9 veces el BPA ajustado de los próximos 12 meses y Marsh a 15,8x; Aon tiene más margen EBIT (25,3 % frente a 23,1 %) y más ROIC (15,6 % frente a 15,0 %), y su valor intrínseco queda un 24 % por encima del precio frente al 8 % de Marsh. A cambio, Aon se apalanca a ≈4,5 veces el EBITDA con USI y deja de recomprar, mientras que Marsh está a 2,6 veces y recompra. Si se elige una, Aon paga mejor el riesgo; si se quiere el negocio más tranquilo, Marsh.\n\n**El negocio.** Segundo corredor de seguros y reaseguros del mundo (≈4 % de un mercado de ≈276.500 M USD) y gran consultora de beneficios sociales [16]. Foso amplio: renovaciones, escala en grandes riesgos y reaseguro, y datos propios. **Veredicto de calidad: Sí** (ROIC del 15,6 % frente a un WACC del 8,03 %, 7,6 puntos; tras USI, ≈12-13 % sin amortización de intangibles). La calidad sostiene el crecimiento orgánico que proyectamos (4,5-5 %), por debajo de su historia y sin inversión neta.\n\n**NFP y USI.** NFP (13.400 M en 2024, a 22 veces el EBITDA) es la prueba de que Aon sabe integrar: el orgánico siguió en el 5-6 %, el margen ajustado subió y vendió NFP Wealth con 1.201 M de plusvalía [1, 8]. Pero su precio bajó el ROIC del 33,9 % al 15,6 % y la deuda total pasó de 11.199 M a 15.249 M. USI repite la jugada más grande: 13.500 M de bonos al 5,35-6,45 % y 4.000 M de préstamo, deuda pro forma de ≈32.300 M, objetivo de 2,8-3,0 veces en unos 24 meses y BPA ajustado diluido en 2027 [11, 12, 13].\n\n**Sector y ciclo.** El seguro comercial está en fase blanda: tarifas −6 % en el 2T26 [18]. Aon ha mantenido el orgánico en el 5 % porque la mitad de sus ingresos (Human Capital) no depende de las tarifas.\n\n**Finanzas.** Ingresos de 17.181 M en 2025 y flujo operativo de 3.481 M. Deuda total de 14.967 M a junio de 2026 (2,5 veces el EBITDA), que sube a ≈4,5 veces con USI; rating BBB+/Baa2/A- confirmado [1, 6].\n\n**Equipo y gobierno.** Consejo mayoritariamente independiente, una acción un voto y un 89 % a favor de la remuneración. El presidente compró 6,55 M USD en acciones el 2-sep-2026, tras la caída por USI [25]; resta la salida del director financiero en plena operación [24].\n\n**Valoración.** El DCF da 373,27 y el DCF inverso, un crecimiento implícito del 3,1 % anual con USI dentro frente al 7,5 % de nuestro base. Los comparables dan menos (PER 268-314) porque todo el sector ha bajado de múltiplo con la IA, el ciclo y el bono al 5,21 %.\n\n**Riesgos y catalizadores.** Riesgo de que la IA se coma el negocio: medio a cinco años y mayor que hace dos, porque NFP y USI llevan a Aon a la mediana empresa de EE. UU., el segmento que antes puede comprar directo; en grandes riesgos, reaseguro y consultoría el sustituto es lento y Aon usa sus datos y la IA para bajar costes. Si el orgánico cae al 2 %, el valor baja un 20 %. Los otros riesgos: la integración de USI (bajista 229,98, −16,5 %) y la deuda. Los foros están divididos y empeoran (USI, deuda y fin de las recompras), sin capitulación: el presidente compra.\n\n**Qué cambiaría la decisión.** Comprar por debajo de 311,07 USD; vender por encima de 404,06. Pasaríamos a Mantener si el orgánico baja del 4 % dos trimestres o si la deuda neta sigue por encima de 4 veces el EBITDA a finales de 2027.",
+    "tesis": "Aon es el segundo corredor de seguros y reaseguros del mundo y una gran consultora de beneficios sociales: 17.181 M USD de ingresos en 2025, orgánico del 5-7 % en cinco años, margen operativo publicado del 25,3 % (el más alto de los grandes) y un ROIC del 15,6 % [1].\n\nEl precio descuenta que la compra de USI (17.000 M, a 22 veces el EBITDA sin sinergias) destruye valor: 13,8 veces el BPA ajustado de 2027e, el PER adelantado más bajo en una década, y un DCF inverso en el que el grupo combinado casi no crece por sí mismo. A eso se suman el ciclo blando de tarifas y el miedo a la IA [18, 19, 27].\n\nPara invertir hay que creer que Aon integra USI como integró NFP (orgánico intacto, margen al alza) y que la deuda baja a 3 veces en dos años. Es la mayor apuesta de la historia de la empresa y por eso la convicción es media y no alta.",
+    "vision_diferencial": {
+      "mercado_descuenta": "Que USI es una compra cara que tardará años en rendir, que la deuda impide recomprar y que el orgánico de los corredores se queda en el 2-3 % por el ciclo y la IA: 13,8 veces el BPA ajustado de 2027e y recortes de objetivos tras el anuncio [29, 37].",
+      "nuestra_vision": "Orgánico del 4,5-5 %, sinergias de USI en 2029 y margen EBITDA publicado que sube del 31 % al 34,5 %; BPA ajustado de 22,72 USD en 2028e y deuda en 3 veces a finales de 2028.",
+      "por_que": "NFP (22 veces el EBITDA en 2024) se integró sin perder orgánico y con margen al alza; el negocio genera 3.500-4.500 M de flujo libre al año para bajar deuda, y la IA golpea antes a los seguros personales que a los grandes riesgos y la consultoría."
+    },
+    "a_favor": [
+      "**PER adelantado de 13,8x** con BPA ajustado, frente a una mediana de 21,0x en cinco años.",
+      "**El más barato de los grandes**: 13,9x frente a 15,8x de mediana, con el ROIC más alto.",
+      "**Orgánico del 5 %** en el 2T26 con tarifas −6 %.",
+      "**DCF inverso del 3,1 %** de crecimiento con USI dentro, frente a nuestro 7,5 %.",
+      "**El presidente compró 6,55 M USD** de acciones el 2-sep-2026."
+    ],
+    "en_contra": [
+      "**USI cara**: 22 veces el EBITDA sin sinergias y deuda a 4,5 veces.",
+      "**Sin recompras** hasta 2028 y BPA ajustado de 2027 diluido.",
+      "**IA**: NFP y USI elevan la exposición a la mediana empresa.",
+      "**Ciclo blando**: tarifas comerciales −6 % en el 2T26.",
+      "**Director financiero interino** desde agosto de 2026."
+    ],
+    "que_vigilar": "La tesis depende de que USI conserve a sus productores y su orgánico mientras la deuda baja. La señal de que no se cumple: un orgánico del grupo por debajo del 4 % en 2027, o deuda neta/EBITDA por encima de 4 veces a finales de 2027. La primera lectura llega el 28-oct-2026 con el 3T26.",
+    "cambiaria_recomendacion": [
+      "Si USI no cierra o cierra con cambios de precio, revisaríamos el valor.",
+      "Si el orgánico del grupo baja del 4 % en dos trimestres, pasaríamos a Mantener.",
+      "Si la deuda neta/EBITDA sigue por encima de 4 veces a finales de 2027, pasaríamos a Mantener.",
+      "Por encima de 404,06 USD, Vender; por debajo de 311,07 la compra se mantiene."
+    ],
+    "kpis_seguimiento": [
+      {
+        "kpi": "Crecimiento orgánico del grupo",
+        "nivel_actual": "5 % (2T26)",
+        "umbral_alerta": "< 4 % dos trimestres",
+        "por_que": "Mide el ciclo, la IA y la integración."
+      },
+      {
+        "kpi": "Orgánico de USI",
+        "nivel_actual": "n.d. (no cerrada)",
+        "umbral_alerta": "< 3 %",
+        "por_que": "Fuga de productores."
+      },
+      {
+        "kpi": "Deuda neta/EBITDA",
+        "nivel_actual": "≈4,5x al cierre (estimado)",
+        "umbral_alerta": "> 4x a finales de 2027",
+        "por_que": "Rating y recompras."
+      },
+      {
+        "kpi": "Margen operativo ajustado",
+        "nivel_actual": "28,9 % (2T26)",
+        "umbral_alerta": "Baja interanual",
+        "por_que": "Sinergias y Aon United."
+      },
+      {
+        "kpi": "Sinergias de USI acumuladas",
+        "nivel_actual": "0",
+        "umbral_alerta": "< 150 M a finales de 2027",
+        "por_que": "Justifican el precio."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "historia": {
+    "resumen": "Aon nace en 1982 cuando Combined International (seguros, de Patrick Ryan) se fusiona con Ryan Insurance Group; adopta el nombre Aon en 1987 [1]. En los noventa y dos mil compró Alexander & Alexander (1997) y Benfield (2008, reaseguro), y en 2010 Hewitt Associates (consultoría de recursos humanos) [1]. Trasladó la sede a Londres en 2012 y a Dublín en 2020 [1]. En 2017 vendió la externalización de beneficios a Blackstone (4.300 M) y se centró en asesoramiento. La fusión con Willis Towers Watson, anunciada en 2020, se canceló en 2021 por la oposición antimonopolio de EE. UU. y costó 1.000 M de indemnización [1]. Desde entonces la estrategia «Aon United» une los negocios y, desde 2024, compra en la mediana empresa de EE. UU.: NFP (2024) y USI (anunciada en agosto de 2026) [15].",
+    "hitos": [
+      {
+        "anio": "1982",
+        "hito": "Fusión de Combined International y Ryan Insurance Group; nombre Aon desde 1987."
+      },
+      {
+        "anio": "2008",
+        "hito": "Compra de Benfield (reaseguro)."
+      },
+      {
+        "anio": "2010",
+        "hito": "Compra de Hewitt Associates (recursos humanos)."
+      },
+      {
+        "anio": "2017",
+        "hito": "Venta de la externalización de beneficios a Blackstone."
+      },
+      {
+        "anio": "2020",
+        "hito": "Sede legal en Dublín (Irlanda); anuncio de la fusión con Willis Towers Watson."
+      },
+      {
+        "anio": "2021",
+        "hito": "Fusión con WTW cancelada; 1.000 M de indemnización."
+      },
+      {
+        "anio": "2024",
+        "hito": "Compra de NFP (13.400 M); plan 3x3."
+      },
+      {
+        "anio": "2025",
+        "hito": "Venta de NFP Wealth (plusvalía de 1.201 M)."
+      },
+      {
+        "anio": "2026",
+        "hito": "Anuncio de la compra de USI por 17.000 M (31-ago)."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "negocio": {
+    "segmentos": [
+      {
+        "nombre": "Risk Capital (Commercial Risk Solutions y Reinsurance Solutions)",
+        "descripcion": "Correduría de seguros para empresas, riesgos especiales, consultoría de riesgos, cautivas y correduría de reaseguro; incluye los intereses del dinero fiduciario.",
+        "tipo_resultado": "EBIT",
+        "historico": [
+          {
+            "periodo": "2023",
+            "ingresos": 9524,
+            "resultado": 2946
+          },
+          {
+            "periodo": "2024",
+            "ingresos": 10517,
+            "resultado": 3292
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 11290,
+            "resultado": 3436
+          }
+        ]
+      },
+      {
+        "nombre": "Human Capital (Health Solutions y Wealth Solutions)",
+        "descripcion": "Consultoría y correduría de beneficios sociales y salud, análisis de talento, consultoría de pensiones y gestión patrimonial (NFP Wealth vendido en 2025).",
+        "tipo_resultado": "EBIT",
+        "historico": [
+          {
+            "periodo": "2023",
+            "ingresos": 3864,
+            "resultado": 1097
+          },
+          {
+            "periodo": "2024",
+            "ingresos": 5209,
+            "resultado": 1143
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 5907,
+            "resultado": 1410
+          }
+        ]
+      },
+      {
+        "nombre": "Corporativo y eliminaciones",
+        "descripcion": "Eliminaciones entre segmentos y gastos centrales no asignados (incluye el programa Accelerating Aon United).",
+        "tipo_resultado": "EBIT",
+        "historico": [
+          {
+            "periodo": "2023",
+            "ingresos": -12,
+            "resultado": -258
+          },
+          {
+            "periodo": "2024",
+            "ingresos": -28,
+            "resultado": -600
+          },
+          {
+            "periodo": "2025",
+            "ingresos": -16,
+            "resultado": -502
+          }
+        ]
+      }
+    ],
+    "geografias": null,
+    "geografias_criterio": null,
+    "kpis": [
+      {
+        "kpi": "Crecimiento orgánico de los ingresos (grupo)",
+        "valor_anterior": "6 % (2024)",
+        "valor_actual": "6 % (2025); 5 % 1T26 y 5 % 2T26",
+        "variacion": "−1 pp",
+        "comentario": "Sin divisa, compras ni intereses fiduciarios; la guía 2026 es «un dígito medio o más» [6, 8]."
+      },
+      {
+        "kpi": "Crecimiento orgánico Commercial Risk Solutions",
+        "valor_anterior": "5 % (2024)",
+        "valor_actual": "6 % (2025); 5 % 2T26",
+        "variacion": "−1 pp",
+        "comentario": "Negocio nuevo y retención; efecto mercado «modestamente positivo» en el 2T26 [1, 6]."
+      },
+      {
+        "kpi": "Crecimiento orgánico Reinsurance Solutions",
+        "valor_anterior": "7 % (2024)",
+        "valor_actual": "6 % (2025); 5 % 2T26",
+        "variacion": "−2 pp",
+        "comentario": "Efecto mercado desfavorable en el 2T26: el reaseguro abarata [6]."
+      },
+      {
+        "kpi": "Margen operativo ajustado",
+        "valor_anterior": "31,5 % (2024)",
+        "valor_actual": "32,4 % (2025); 34,4 % 1S26",
+        "variacion": "+0,9 pp",
+        "comentario": "Excluye amortización de intangibles, reestructuración y costes de operaciones; guía 2026 +70-80 pb [6, 8]."
+      },
+      {
+        "kpi": "BPA ajustado",
+        "valor_anterior": "15,60 USD (2024)",
+        "valor_actual": "17,07 USD (2025); 10,29 1S26 (+12 %)",
+        "variacion": "+9 %",
+        "comentario": "Base de la revisión a 12 meses de este informe [6, 10]."
+      },
+      {
+        "kpi": "Intereses fiduciarios",
+        "valor_anterior": "315 M (2024)",
+        "valor_actual": "271 M (2025)",
+        "variacion": "−14 %",
+        "comentario": "Bajan con los tipos; casi puro margen [1]."
+      },
+      {
+        "kpi": "Apalancamiento (deuda total / EBITDA)",
+        "valor_anterior": "3,4x (2024)",
+        "valor_actual": "2,9x (2025); ≈4,5x al cierre de USI",
+        "variacion": "sube",
+        "comentario": "Objetivo 2,8-3,0x unos 24 meses después del cierre [10]."
+      }
+    ],
+    "confianza": "Alta",
+    "descripcion": "Aon es el segundo corredor de seguros y consultor de riesgos y recursos humanos del mundo: 17.181 M USD de ingresos en 2025, unos 60.000 empleados (62.159 en diciembre de 2025) y clientes en más de 120 países [1]. Tiene dos segmentos. Risk Capital (66 % de los ingresos) agrupa Commercial Risk Solutions (49 %: correduría de seguros para empresas, riesgos especiales, consultoría de riesgos y cautivas) y Reinsurance Solutions (16 %: correduría de reaseguro y mercados de capitales, segundo del mundo tras Guy Carpenter de Marsh según la empresa) [1]. Human Capital (34 %) agrupa Health Solutions (22 %: beneficios de salud, talento) y Wealth Solutions (12 %: consultoría de pensiones e inversiones) [1]. Con USI (≈3.000 M de ingresos, 10.500 empleados, casi 200 oficinas en EE. UU.) la mediana empresa de EE. UU. pasará a pesar mucho más [15].",
+    "como_gana_dinero": "En correduría cobra comisiones sobre la prima que coloca y honorarios en grandes cuentas; no asume el riesgo del seguro. El ingreso sube con las tarifas, el valor asegurado de los clientes y el negocio nuevo; 271 M salen de los intereses del dinero de clientes que custodia [1]. En Human Capital cobra honorarios y comisiones de beneficios. El coste es casi todo personal (compensación y beneficios = 52 % de los ingresos en 2025), así que el margen sale de crecer más que la plantilla y de la plataforma común Aon Business Services [1]. Es muy estacional: el primer trimestre concentra las renovaciones de enero (margen ajustado del 1S26: 34,4 %; del 2T26: 28,9 %) [6].",
+    "clientes": "No hay concentración: ningún cliente relevante [1]. La retención es alta (la empresa habla de «fuerte retención» en todas las líneas y de 40 pb de mejora desde el plan 3x3) [6, 15]. El poder de precios es indirecto: la comisión sigue a la prima. En el 2T26 el efecto mercado fue «modestamente positivo» en seguros comerciales pero desfavorable en reaseguro [6], mientras el índice de tarifas comerciales de Marsh cayó un 6 % (octavo trimestre de bajadas) [18]. El crecimiento orgánico se sostiene en el 5 % gracias al negocio nuevo."
+  },
+  "sector": {
+    "definicion": "El mercado relevante es la intermediación de seguros y reaseguros en todo el mundo (ficha sectorial del 14-oct-2026): corredores que colocan riesgos por comisión u honorario. Global Market Insights lo sitúa en 276.500 M USD en 2025 y Mordor Intelligence en 359.270 M en 2026 [16, 17]. Usamos la primera, más prudente, comparada solo con Risk Capital (11.290 M); Human Capital es en parte correduría de beneficios y en parte consultoría, otro mercado [21]. Para USI, el mercado medio de EE. UU. supera los 40.000 M USD según Aon [15].",
+    "tamano": "≈ 276.500 M USD en 2025 (Global Market Insights) [16]; 359.270 M en 2026 según Mordor Intelligence [17]",
+    "unidad_serie": "millones de USD",
+    "serie": [
+      {
+        "anio": "2025",
+        "tamano": 276500
+      },
+      {
+        "anio": "2026e",
+        "tamano": 301700
+      },
+      {
+        "anio": "2027e",
+        "tamano": 329100
+      },
+      {
+        "anio": "2028e",
+        "tamano": 359100
+      },
+      {
+        "anio": "2030e",
+        "tamano": 427400
+      }
+    ],
+    "tcac_historico_pct": null,
+    "tcac_previsto_pct": 9.1,
+    "cr5_pct": null,
+    "estructura": "Moderadamente concentrada",
+    "drivers": [
+      {
+        "driver": "Tarifas de los seguros comerciales y del reaseguro",
+        "efecto": "−",
+        "horizonte": "Cíclico",
+        "evidencia": "Índice de Marsh: −6 % en el 2T26, octavo trimestre de bajadas; daños −12 % [18]. Aon: efecto mercado desfavorable en reaseguro en el 2T26 [6]."
+      },
+      {
+        "driver": "Valores asegurados y economía",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Crecimiento orgánico de Aon del 5 % en el 2T26 pese a las tarifas [6]."
+      },
+      {
+        "driver": "Consolidación de corredurías medianas",
+        "efecto": "+/−",
+        "horizonte": "Estructural",
+        "evidencia": "NFP (13.400 M), AssuredPartners (13.450 M), Accession (9.825 M), USI (17.000 M): más escala, pero a 14-22 veces el EBITDA [15, 21]."
+      },
+      {
+        "driver": "Tipos de interés (intereses fiduciarios)",
+        "efecto": "−",
+        "horizonte": "Cíclico",
+        "evidencia": "Intereses fiduciarios de Aon: 315 M en 2024, 271 M en 2025 [1]."
+      },
+      {
+        "driver": "IA y venta directa",
+        "efecto": "+/−",
+        "horizonte": "Estructural",
+        "evidencia": "Caída media del 9 % de los corredores el 9-feb-2026 por aplicaciones de cotización con ChatGPT; Aon cayó un 9,3 % ese día [19, 20]."
+      },
+      {
+        "driver": "Riesgos excedentes (E&S) y mercados de capitales",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "E&S = 26 % de las primas comerciales de EE. UU., el segmento que más crece; capital alternativo en reaseguro [15]."
+      }
+    ],
+    "porter": [
+      {
+        "fuerza": "Rivalidad",
+        "intensidad": 3,
+        "justificacion": "Cuatro globales (Marsh, Aon, WTW, Gallagher) y una larga cola regional respaldada por capital privado; competencia intensa por equipos [21]."
+      },
+      {
+        "fuerza": "Poder de los clientes",
+        "intensidad": 3,
+        "justificacion": "Las grandes cuentas negocian honorarios; la mediana empresa es menos sensible al precio [1]."
+      },
+      {
+        "fuerza": "Poder de los proveedores",
+        "intensidad": 2,
+        "justificacion": "Las aseguradoras dependen de los corredores; el «proveedor» crítico es el talento (52 % de los ingresos en personal) [1]."
+      },
+      {
+        "fuerza": "Amenaza de entrada",
+        "intensidad": 2,
+        "justificacion": "Licencias, datos y relaciones; los nuevos entran comprando corredurías [21]."
+      },
+      {
+        "fuerza": "Amenaza de sustitutos",
+        "intensidad": 3,
+        "justificacion": "Venta directa y digital en riesgos sencillos (particulares, pymes); poco probable en grandes riesgos y reaseguro [19, 20]."
+      }
+    ],
+    "ciclo": {
+      "posicion": "Contracción",
+      "comentario": "Las tarifas comerciales llevan ocho trimestres bajando (−6 % en el 2T26) por exceso de capacidad y reaseguro más barato [18]. El crecimiento orgánico de Aon pasó del 7 % del 3T25 al 5 % de 2026 [6]. En 2008-09 el sector creció casi cero (recesión y tarifas blandas); en 2020 Aon siguió creciendo (+2 % orgánico); en 2022-24, con tarifas duras, creció un 6-7 % [21]. Un año de grandes catástrofes endurecería el mercado."
+    },
+    "regulacion": "La correduría está regulada por los supervisores de seguros de cada estado y país (FCA en Reino Unido) y la consultoría de inversión por la SEC y el Departamento de Trabajo [1]. Las comisiones contingentes siguen vigiladas desde 2004. USI necesita aprobaciones regulatorias (antimonopolio de EE. UU.); el acuerdo vence el 1-jun-2027 con prórroga de tres meses [15]. La experiencia de WTW (2021) muestra que el Departamento de Justicia puede bloquear, aunque USI es de mediana empresa y solapa menos.",
+    "tendencias": "La IA abarata la colocación y el análisis (Aon habla de «ventaja de contexto»: datos propios y analítica) pero abre la puerta a la venta directa en riesgos sencillos [15, 19]. El capital privado consolida corredurías medianas y encarece las compras [21]. Los mercados de capitales sustituyen parte del reaseguro; Aon lo convierte en negocio (Strategy and Technology Group creció a doble dígito en el 2T26) [6]. Aon gana en grandes riesgos y datos; con USI y NFP se expone más a la mediana empresa, donde la IA puede presionar antes.",
+    "confianza": "Media"
+  },
+  "competencia": {
+    "cuota_pct": 4.1,
+    "posicion": "2.º mundial en correduría de seguros y reaseguros (≈4 % de un mercado de ≈276.500 M USD con los 11.290 M de Risk Capital; ≈6 % contando la correduría de beneficios de Human Capital); 2.º en reaseguro y de los tres primeros en consultoría de beneficios.",
+    "competidores": [
+      {
+        "nombre": "Marsh",
+        "pais": "EE. UU.",
+        "ticker": "MRSH",
+        "ingresos": 26981,
+        "cuota_pct": 6.2,
+        "margen_ebit_pct": 23.1,
+        "comentario": "El líder; 17.265 M en correduría; compró McGriff (7.750 M) en 2024; Comprar con convicción baja en el informe de hoy [22]."
+      },
+      {
+        "nombre": "Arthur J. Gallagher",
+        "pais": "EE. UU.",
+        "ticker": "AJG",
+        "ingresos": 13751,
+        "cuota_pct": 5,
+        "margen_ebit_pct": 24.5,
+        "comentario": "Comprador en serie de mediana empresa; AssuredPartners por 13.450 M [21]."
+      },
+      {
+        "nombre": "WTW",
+        "pais": "Irlanda/Reino Unido",
+        "ticker": "WTW",
+        "ingresos": 9708,
+        "cuota_pct": 2.5,
+        "margen_ebit_pct": 25.2,
+        "comentario": "Correduría y consultoría de recursos humanos; la fusión con Aon se canceló en 2021 [21]."
+      },
+      {
+        "nombre": "Brown & Brown",
+        "pais": "EE. UU.",
+        "ticker": "BRO",
+        "ingresos": 5902,
+        "cuota_pct": 2.1,
+        "margen_ebit_pct": 28.7,
+        "comentario": "Pymes y mayorista; Accession por 9.825 M [21]."
+      },
+      {
+        "nombre": "Ryan Specialty",
+        "pais": "EE. UU.",
+        "ticker": "RYAN",
+        "ingresos": 3051,
+        "cuota_pct": 1.1,
+        "margen_ebit_pct": 16.2,
+        "comentario": "Mayorista E&S [21]."
+      },
+      {
+        "nombre": "Hub International",
+        "pais": "EE. UU.",
+        "ticker": null,
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Privada; rival directo de USI en la mediana empresa [21]."
+      }
+    ],
+    "foso": {
+      "veredicto": "Amplio",
+      "tendencia": "Estable",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 3,
+          "evidencia": "Más primas colocadas dan más datos y facilidades propias (Aon Client Treaty); el reaseguro exige escala [1]."
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 4,
+          "evidencia": "Programas complejos y retención alta; crecimiento orgánico del 5-7 % durante ocho trimestres de tarifas a la baja [9, 4]."
+        },
+        {
+          "fuente": "Intangibles (marca, patentes, licencias)",
+          "puntuacion": 4,
+          "evidencia": "Marca global, licencias en 120 países, datos de colocación [1]."
+        },
+        {
+          "fuente": "Ventaja en costes",
+          "puntuacion": 4,
+          "evidencia": "Margen operativo ajustado del 32,4 % en 2025, el más alto de los globales (Marsh ≈ 26 % ajustado en su informe) [1, 10]."
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 4,
+          "evidencia": "Dos globales en grandes riesgos y reaseguro; difícil de replicar [1]."
+        }
+      ]
+    },
+    "amenazas": "La IA puede abaratar la colocación de riesgos estándar (pymes, particulares) y empujar las comisiones a la baja; con NFP y USI, Aon aumenta su peso precisamente en la mediana empresa de EE. UU., más expuesta que los grandes riesgos [15, 19, 20]. Un ciclo blando largo en daños y reaseguro. Y la integración de dos compras grandes seguidas puede costar equipos comerciales a rivales de capital privado. Probabilidad de erosión significativa del foso a cinco años: baja-media.",
+    "confianza": "Media"
+  },
+  "financieros": {
+    "cuenta": [
+      {
+        "periodo": "2019",
+        "ingresos": 11013,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 2733,
+        "amortizaciones": 564,
+        "ebit": 2169,
+        "resultado_financiero": -299,
+        "bai": 1870,
+        "impuestos": 297,
+        "minoritarios": 41,
+        "beneficio_neto": 1532,
+        "gastos_financieros": 307,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 6.37,
+        "dpa": 1.72,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 241
+      },
+      {
+        "periodo": "2020",
+        "ingresos": 11066,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 3194,
+        "amortizaciones": 413,
+        "ebit": 2781,
+        "resultado_financiero": -315,
+        "bai": 2466,
+        "impuestos": 448,
+        "minoritarios": 49,
+        "beneficio_neto": 1969,
+        "gastos_financieros": 334,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 8.45,
+        "dpa": 1.78,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 233
+      },
+      {
+        "periodo": "2021",
+        "ingresos": 12193,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 2416,
+        "amortizaciones": 326,
+        "ebit": 2090,
+        "resultado_financiero": -159,
+        "bai": 1931,
+        "impuestos": 623,
+        "minoritarios": 53,
+        "beneficio_neto": 1255,
+        "gastos_financieros": 322,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": 1436,
+        "bpa": 5.55,
+        "dpa": 1.99,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 226
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 12479,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 3933,
+        "amortizaciones": 264,
+        "ebit": 3669,
+        "resultado_financiero": -513,
+        "bai": 3156,
+        "impuestos": 510,
+        "minoritarios": 57,
+        "beneficio_neto": 2589,
+        "gastos_financieros": 406,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 12.14,
+        "dpa": 2.19,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 213
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 13376,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 4041,
+        "amortizaciones": 256,
+        "ebit": 3785,
+        "resultado_financiero": -616,
+        "bai": 3169,
+        "impuestos": 541,
+        "minoritarios": 64,
+        "beneficio_neto": 2564,
+        "gastos_financieros": 484,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 12.51,
+        "dpa": 2.41,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 205
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 15698,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 4521,
+        "amortizaciones": 686,
+        "ebit": 3835,
+        "resultado_financiero": -373,
+        "bai": 3462,
+        "impuestos": 742,
+        "minoritarios": 66,
+        "beneficio_neto": 2654,
+        "gastos_financieros": 788,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 12.49,
+        "dpa": 2.64,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 213
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 17181,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 5310,
+        "amortizaciones": 966,
+        "ebit": 4344,
+        "resultado_financiero": 415,
+        "bai": 4759,
+        "impuestos": 1009,
+        "minoritarios": 55,
+        "beneficio_neto": 3695,
+        "gastos_financieros": 815,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 17.02,
+        "dpa": 2.91,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 217
+      }
+    ],
+    "ltm": {
+      "periodo": "LTM jun-26",
+      "fecha_fin": "2026-06-30",
+      "ingresos": 17577,
+      "ebitda": 5548,
+      "ebit": 4654,
+      "beneficio_neto": 3918,
+      "bpa": 18.14,
+      "dpa": 3.06,
+      "dpa_extraordinario": 0,
+      "fcf": 3248,
+      "participadas_en_ebitda": null,
+      "no_recurrentes_en_ebitda": null
+    },
+    "cambios_perimetro": [
+      {
+        "periodo": "2024",
+        "descripcion": "NFP, consolidada desde el 25-abr-2024 (13.400 M USD con deuda asumida): entra en ocho meses de la cuenta y en todo el balance."
+      },
+      {
+        "periodo": "2025",
+        "descripcion": "Venta de NFP Wealth (cuarto trimestre de 2025): plusvalía de 1.201 M en «otros ingresos»; sale del balance y de parte de la cuenta."
+      }
+    ],
+    "comentario": "Los ingresos pasan de 11.013 M (2019) a 17.181 M (2025), un 7,6 % anual: unos 6 puntos son crecimiento orgánico (6 % en 2023, 2024 y 2025) y el resto NFP (25-abr-2024), que añadió 11 puntos en 2024 y 2 en 2025, menos ventas pequeñas [1, 10]. El margen operativo ajustado sube de 27,5 % en 2019 a 32,4 % en 2025, 490 pb en seis años, por escala, la plataforma común de servicios (Aon Business Services) y el programa de reestructuración [10]. El margen publicado es mucho más bajo y errático (25,3 % en 2025) por la amortización de intangibles (778 M en 2025 frente a 89 M en 2023, por NFP), la reestructuración (365 M) y, en 2021, los 1.436 M de costes de la fusión fallida con WTW, incluida la indemnización de 1.000 M [10]. 2025 lleva además una plusvalía de 1.201 M por NFP Wealth fuera del resultado operativo: el BPA publicado (17,02) y el ajustado (17,07) coinciden por casualidad [8, 10].",
+    "ajustes": "Las cifras de la cuenta son las publicadas (US GAAP). Para la revisión a 12 meses se usa el BPA ajustado de la empresa (17,07 USD en 2025), que excluye la amortización de intangibles comprados, la reestructuración, los costes de operaciones, las liquidaciones de pensiones y las plusvalías [10]. Motivo: la compra de USI (cierre previsto en el 4T26) añade unos 1.060 M al año de amortización de intangibles y el BPA publicado pro forma de 2025 cae a 11,24 USD (con la plusvalía) frente a 17,02 [11]; con el publicado, la historia del PER no es comparable. La reestructuración se repite (485 M en 2018, 451 M en 2019, 135-389 M en 2023-2025) y no es del todo extraordinaria: el informe la resta en el EBITDA del DCF.",
+    "confianza": "Alta"
+  },
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "1T25",
+        "ingresos": 4729,
+        "crecimiento_pct": 16,
+        "crecimiento_organico_pct": 5,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 4.43,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "2T25",
+        "ingresos": 4155,
+        "crecimiento_pct": 11,
+        "crecimiento_organico_pct": 6,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 2.66,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "3T25",
+        "ingresos": 3997,
+        "crecimiento_pct": 7.4,
+        "crecimiento_organico_pct": 7,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 2.11,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "4T25",
+        "ingresos": 4300,
+        "crecimiento_pct": 3.7,
+        "crecimiento_organico_pct": 5,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 7.82,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1T26",
+        "ingresos": 5034,
+        "crecimiento_pct": 6.4,
+        "crecimiento_organico_pct": 5,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 5.63,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "2T26",
+        "ingresos": 4246,
+        "crecimiento_pct": 2.2,
+        "crecimiento_organico_pct": 5,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 2.58,
+        "vs_consenso": null
+      }
+    ],
+    "ultima_presentacion": "En el 2T26 (29-jul-2026) Aon creció un 5 % orgánico, un 2 % en total por la venta de NFP Wealth y Stroz Friedberg, amplió 70 pb el margen operativo ajustado (28,9 %) y subió un 9 % el BPA ajustado (3,81 USD); el publicado bajó un 3 % (2,58) [6]. Reafirmó la guía 2026: crecimiento orgánico de «un dígito medio o más», +70-80 pb de margen ajustado, «fuerte» crecimiento del BPA ajustado y crecimiento de dos dígitos del flujo libre; recompró 600 M en el trimestre y ya superaba el objetivo anual de 1.000 M [6]. Un mes después anunció la compra de USI por 17.000 M y suspendió las recompras «a corto plazo» para reducir deuda [15]. Los mensajes cambiaron: de «balance robusto y flexibilidad» en julio a «desapalancar a 2,8-3,0x en unos 24 meses» en agosto [6, 10]. El flujo de caja operativo del 2T26 cayó un 30 % (556 M) por el impuesto de la venta de NFP Wealth y el circulante [6]. El BPA de la tabla es el publicado (diluido); el ajustado fue 5,67, 3,49, 3,05, 4,85, 6,48 y 3,81 USD [6, 7, 8, 9].",
+    "confianza": "Alta"
+  },
+  "balance": {
+    "historico": [
+      {
+        "periodo": "2019",
+        "activo_total": 17571,
+        "activo_corriente": 4642,
+        "pasivo_corriente": 3737,
+        "pasivo_total": 14122,
+        "fondo_comercio": 8165,
+        "intangibles": 783,
+        "inmovilizado_material": 621,
+        "existencias": 0,
+        "clientes": 3112,
+        "proveedores": 1939,
+        "activos_contrato": 335,
+        "pasivos_contrato": 270,
+        "caja": 928,
+        "deuda_financiera": 7339,
+        "arrendamientos": 0,
+        "patrimonio_neto": 3375,
+        "minoritarios": 74,
+        "reservas": 1254
+      },
+      {
+        "periodo": "2020",
+        "activo_total": 18316,
+        "activo_corriente": 4886,
+        "pasivo_corriente": 3635,
+        "pasivo_total": 14733,
+        "fondo_comercio": 8666,
+        "intangibles": 640,
+        "inmovilizado_material": 599,
+        "existencias": 0,
+        "clientes": 3070,
+        "proveedores": 2016,
+        "activos_contrato": 339,
+        "pasivos_contrato": 296,
+        "caja": 1192,
+        "deuda_financiera": 7729,
+        "arrendamientos": 0,
+        "patrimonio_neto": 3495,
+        "minoritarios": 88,
+        "reservas": 1042
+      },
+      {
+        "periodo": "2021",
+        "activo_total": 17531,
+        "activo_corriente": 4646,
+        "pasivo_corriente": 4687,
+        "pasivo_total": 16373,
+        "fondo_comercio": 8434,
+        "intangibles": 492,
+        "inmovilizado_material": 529,
+        "existencias": 0,
+        "clientes": 3094,
+        "proveedores": 2192,
+        "activos_contrato": 361,
+        "pasivos_contrato": 321,
+        "caja": 836,
+        "deuda_financiera": 9392,
+        "arrendamientos": 0,
+        "patrimonio_neto": 1061,
+        "minoritarios": 97,
+        "reservas": -1694
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 16804,
+        "activo_corriente": 4823,
+        "pasivo_corriente": 4406,
+        "pasivo_total": 17233,
+        "fondo_comercio": 8292,
+        "intangibles": 447,
+        "inmovilizado_material": 558,
+        "existencias": 0,
+        "clientes": 3035,
+        "proveedores": 2114,
+        "activos_contrato": 355,
+        "pasivos_contrato": 250,
+        "caja": 1142,
+        "deuda_financiera": 10770,
+        "arrendamientos": 0,
+        "patrimonio_neto": -529,
+        "minoritarios": 100,
+        "reservas": -2772
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 17652,
+        "activo_corriente": 5397,
+        "pasivo_corriente": 5344,
+        "pasivo_total": 18394,
+        "fondo_comercio": 8414,
+        "intangibles": 234,
+        "inmovilizado_material": 638,
+        "existencias": 0,
+        "clientes": 3254,
+        "proveedores": 2262,
+        "activos_contrato": 370,
+        "pasivos_contrato": 270,
+        "caja": 1147,
+        "deuda_financiera": 11199,
+        "arrendamientos": 0,
+        "patrimonio_neto": -826,
+        "minoritarios": 84,
+        "reservas": -3399
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 31399,
+        "activo_corriente": 5866,
+        "pasivo_corriente": 5429,
+        "pasivo_total": 24969,
+        "fondo_comercio": 15234,
+        "intangibles": 6743,
+        "inmovilizado_material": 637,
+        "existencias": 0,
+        "clientes": 3803,
+        "proveedores": 2905,
+        "activos_contrato": 424,
+        "pasivos_contrato": 280,
+        "caja": 1304,
+        "deuda_financiera": 17016,
+        "arrendamientos": 0,
+        "patrimonio_neto": 6121,
+        "minoritarios": 106,
+        "reservas": -2309
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 32895,
+        "activo_corriente": 7885,
+        "pasivo_corriente": 5337,
+        "pasivo_total": 23347,
+        "fondo_comercio": 15797,
+        "intangibles": 5727,
+        "inmovilizado_material": 702,
+        "existencias": 0,
+        "clientes": 4209,
+        "proveedores": 2861,
+        "activos_contrato": 450,
+        "pasivos_contrato": 259,
+        "caja": 2798,
+        "deuda_financiera": 15249,
+        "arrendamientos": 0,
+        "patrimonio_neto": 9352,
+        "minoritarios": 107,
+        "reservas": -245
+      }
+    ],
+    "vencimientos": [
+      {
+        "anio": "2026",
+        "importe": 589
+      },
+      {
+        "anio": "2027",
+        "importe": 1723
+      },
+      {
+        "anio": "2028",
+        "importe": 352
+      },
+      {
+        "anio": "2029",
+        "importe": 1752
+      },
+      {
+        "anio": "2030",
+        "importe": 1000
+      },
+      {
+        "anio": "2031+",
+        "importe": 10006
+      }
+    ],
+    "liquidez": "Caja 1.062 M e inversiones a corto 205 M a 30-jun-26 (2.798 M al cierre de 2025, inflado por la venta de NFP Wealth), programas de pagarés de ≈2.000 M y, desde el 18-sep-2026, una línea de crédito comprometida de 3.000 M que sustituye a dos de 1.000 M; no incluye 8.001 M de efectivo fiduciario de clientes [1, 6, 13].",
+    "rating": "S&P A- (estable), Moody’s Baa2 (perspectiva positiva a feb-2026; rating confirmado tras anunciar USI), Fitch BBB+ (estable) [1, 15]",
+    "coste_deuda_pct": 5,
+    "vida_media_anios": null,
+    "otros_pasivos": "Deuda de la compra de USI, posterior al último balance: 13.500 M de bonos emitidos el 17-sep-2026 en siete tramos (5,35 % a 2029 hasta 6,45 % a 2056; cupón medio supuesto en el pro forma, 5,92 %) y un préstamo a plazo de 4.000 M a dos y tres años (SOFR + margen) que se dispone al cierre [11, 12, 13]. El préstamo exige deuda neta/EBITDA ajustado ≤ 4,75x tras el cierre, con escalones hasta 3,50x en ocho trimestres, y cobertura de intereses ≥ 4x [13]. El pro forma a 30-jun-26 da 32.335 M de deuda bruta, 27.014 M de fondo de comercio y 13.136 M de intangibles [11]. Pensiones: pasivos de 1.002 M frente a un prepago de 596 M a 30-jun-26 (déficit neto ≈406 M) [6]. Arrendamientos operativos (730 M no corrientes) fuera del puente por US GAAP. Costes comprometidos de USI: 160 M de operación, 550 M de integración hasta 2028 y hasta 400 M de retención [10].",
+    "comentario": "La deuda financiera pasa de 7.339 M (2019) a 17.016 M en 2024 por NFP y baja a 15.249 M en 2025 (1.900 M amortizados con la venta de NFP Wealth); a junio de 2026 es de 14.967 M [1, 6]. Con USI saltará a unos 32.300 M (≈4,5x el EBITDA, 4,8x con la reestructuración, frente al 2,9x de 2025) [10, 11]. El patrimonio fue negativo en 2022-2023 por las recompras (13.300 M en 2019-2023) y se recuperó con NFP, pagada en parte con acciones [2]. El circulante operativo es pequeño (clientes menos acreedores ≈8 % de las ventas) y estacional: el cobro de las renovaciones de enero consume caja en el primer semestre [6]. La herramienta del XBRL daba solo la deuda a largo: le faltaban entre 251 M y 1.204 M de deuda a corto y pagarés por año [1, 3, 4, 5].",
+    "confianza": "Alta"
+  },
+  "flujos": {
+    "historico": [
+      {
+        "periodo": "2019",
+        "flujo_operativo": 1835,
+        "capex": 225,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 39,
+        "desinversiones": 52,
+        "dividendos": 410,
+        "recompras": 1960,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2020",
+        "flujo_operativo": 2783,
+        "capex": 141,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 368,
+        "desinversiones": 30,
+        "dividendos": 412,
+        "recompras": 1763,
+        "emision_acciones": 44,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2021",
+        "flujo_operativo": 2182,
+        "capex": 137,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 14,
+        "desinversiones": 218,
+        "dividendos": 447,
+        "recompras": 3543,
+        "emision_acciones": 55,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 3219,
+        "capex": 196,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 162,
+        "desinversiones": 81,
+        "dividendos": 463,
+        "recompras": 3203,
+        "emision_acciones": 58,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 3435,
+        "capex": 252,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 35,
+        "desinversiones": 5,
+        "dividendos": 489,
+        "recompras": 2700,
+        "emision_acciones": 72,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 3035,
+        "capex": 218,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 3506,
+        "desinversiones": 700,
+        "dividendos": 562,
+        "recompras": 1000,
+        "emision_acciones": 79,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 3481,
+        "capex": 263,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 394,
+        "desinversiones": 2349,
+        "dividendos": 629,
+        "recompras": 1000,
+        "emision_acciones": 70,
+        "intereses_en_financiacion": 0
+      }
+    ],
+    "comentario": "El flujo operativo pasa de 1.835 M (2019) a 3.481 M (2025); 2021 cae por el pago de 1.000 M a WTW y 2024 por los costes de NFP [1, 2]. El flujo libre de 2025 (3.218 M, +14 %) equivale al 87 % del beneficio publicado, que lleva 1.201 M de plusvalía; frente al beneficio ajustado (3.706 M) la conversión es del 87 % [8, 10]. El capex es pequeño (263 M, 1,5 % de las ventas) y casi todo tecnología. La caja ha ido sobre todo a recompras: 15.169 M en 2019-2025, más de cinco veces los dividendos (3.412 M) [2]. Las compras de 2024 aparecen netas: NFP se pagó con 3.506 M de caja, unos 6.300 M de acciones y deuda asumida [1].",
+    "confianza": "Alta"
+  },
+  "calidad": {
+    "auditor": "Ernst & Young LLP",
+    "anios_auditor": 39,
+    "opinion": "Favorable (cuentas y control interno a 31-dic-2025)",
+    "comentario": "Cuentas US GAAP sin salvedades de EY, auditor desde 1986 (39 años: rotación muy larga) [1]. Tres asuntos. Primero, el BPA ajustado que usa la empresa excluye cada año la reestructuración (135-485 M en cinco de los últimos ocho años), los costes de operaciones y la amortización de intangibles: lo recurrente se presenta como extraordinario, y este informe lo trata con cuidado (el DCF resta la reestructuración y los costes de integración de USI) [10]. Segundo, 2025 lleva una plusvalía de 1.201 M por NFP Wealth y 2024 otra de 337 M: el beneficio publicado de esos años no es repetible [2]. Tercero, la contabilidad de USI añadirá ≈7.400 M de fondo de comercio y ≈6.500 M de intangibles, con ≈1.060 M de amortización anual [11]. El balance de Aon incluye activos y pasivos fiduciarios iguales (17.889 M en 2025), que aquí se restan para que el circulante y el Altman Z no salgan deformados; con patrimonio negativo en 2022-2023 por las recompras, el Altman Z no es interpretable en esos años.",
+    "senales": [
+      {
+        "senal": "Reestructuración recurrente fuera del BPA ajustado",
+        "nivel": "Media",
+        "comentario": "Programas en 2017-2019 (≈1.430 M) y Accelerating Aon United en 2023-2026 (≈1.100 M en tres años) [10]."
+      },
+      {
+        "senal": "Plusvalías en el beneficio publicado",
+        "nivel": "Media",
+        "comentario": "1.201 M en 2025 (NFP Wealth) y 337 M en 2024 [2]."
+      },
+      {
+        "senal": "Auditor con 39 años de mandato",
+        "nivel": "Baja",
+        "comentario": "EY desde 1986 [1]."
+      },
+      {
+        "senal": "Fondo de comercio e intangibles crecientes",
+        "nivel": "Media",
+        "comentario": "21.524 M en 2025 y ≈40.000 M pro forma con USI, más que el patrimonio [1, 11]."
+      }
+    ],
+    "confianza": "Alta"
+  },
+  "rentabilidad": {
+    "comentario": "Aon ha sido el corredor más rentable sobre capital del sector: ROIC del motor entre el 18,5 % y el 33,9 % en 2019-2023, con un capital invertido de solo 9.300-10.000 M porque recompraba en vez de comprar [1]. NFP lo cambió: el capital invertido saltó a 15.625 M en 2024 y 21.925 M en 2025 y el ROIC bajó al 19,3 % y al 15,6 %, aún 7,6 puntos por encima de nuestro WACC del 8,03 % [1, 10]. USI lo vuelve a bajar: con 17.000 M más de capital y un NOPAT de unos 5.000 M en 2027e (sin la amortización de intangibles comprados), el ROIC pro forma queda en torno al 12-13 %; con la amortización de intangibles de USI y NFP, en torno al 9 % [11]. Sigue por encima del WACC sin quitar el fondo de comercio; sin él (capital invertido sin fondo de comercio, ≈6.100 M en 2025) el ROIC pasa del 50 %, lo que dice que el negocio orgánico apenas usa capital y que todo el riesgo de rentabilidad está en el precio de las compras. ROIC incremental histórico del 13,2 %. Frente a los rivales (Yahoo, 2025, estimación): Aon 17,9 %, Marsh 14,3-15,0 %, WTW 13,0 %, Brown & Brown 6,5 % y Gallagher 5,6 % [22].",
+    "confianza": "Media"
+  },
+  "capital": {
+    "politica": "Prioridades declaradas: desapalancar hasta 2,8-3,0x de deuda/EBITDA unos 24 meses después del cierre de USI, dividendo «estable y creciente» (0,82 USD trimestrales desde el 2T26) y equilibrar compras con devolución de capital [6, 10]. Tras anunciar USI, la empresa no espera recomprar acciones «a corto plazo» [15]. Antes de NFP, Aon era una máquina de recompras (1.763-3.543 M al año en 2019-2023) [2]. Quedaban 7.700 M de autorización de recompra a junio de 2026 [6].",
+    "adquisiciones": [
+      {
+        "anio": "2021",
+        "objetivo": "Willis Towers Watson (fusión cancelada por la oposición del Departamento de Justicia de EE. UU.)",
+        "importe": 1000,
+        "ev_ebitda": null,
+        "financiacion": "Caja (indemnización)",
+        "resultado": "Fallida: 1.000 M de indemnización a WTW y 1.436 M de costes en 2021; Aon vendió activos y se volcó en el plan Aon United [10]."
+      },
+      {
+        "anio": "2024",
+        "objetivo": "NFP (corredor de mediana empresa y patrimonios de EE. UU.)",
+        "importe": 13400,
+        "ev_ebitda": 22,
+        "financiacion": "Caja y deuda (≈7.000 M) y acciones (≈19 millones)",
+        "resultado": "Integrada; Aon cita 10 % más de captación de clientes; vendió NFP Wealth en 2025 con 1.201 M de plusvalía; amortización de intangibles de 503-778 M al año [2, 10]."
+      },
+      {
+        "anio": "2026",
+        "objetivo": "USI (décimo corredor de EE. UU., ≈3.000 M de ingresos)",
+        "importe": 17000,
+        "ev_ebitda": 14.5,
+        "financiacion": "13.500 M de bonos y 4.000 M de préstamo a plazo",
+        "resultado": "Pendiente de cierre (previsto en el 4T26). 14,5x el EBITDA «con sinergias» (1.151 M); sin sinergias, ≈22x los 756 M ajustados por el comprador; 395 M de sinergias netas hasta 2029 [10, 15]."
+      }
+    ],
+    "comentario": "Aon ha devuelto 18.581 M a los accionistas en 2019-2025 (15.169 M en recompras), lo que redujo las acciones de 241 a 217 millones aun con la ampliación para NFP [2]. Hasta 2023 fue un asignador disciplinado: sin compras grandes, ROIC alto y BPA ajustado de 9,17 a 14,14 USD (+11 % anual) [10]. Desde 2024 cambia de modelo: NFP (22x el EBITDAC) y USI (≈22x sin sinergias, 14,5x con ellas) suman 30.400 M en compras de corredores de mediana empresa en EE. UU., el segmento que más se ha encarecido por el capital privado [10, 15]. NFP salió bien en lo financiero (venta de Wealth con plusvalía y crecimiento orgánico del 5-6 %), pero el ROIC con fondo de comercio baja y la deuda sube a 4,5x. El veredicto depende de que USI se integre como NFP.",
+    "confianza": "Alta"
+  },
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "Gregory C. Case",
+        "cargo": "Presidente (President) y consejero delegado",
+        "desde": "2005",
+        "participacion_pct": 0.4,
+        "trayectoria": "Antes socio de McKinsey. En 21 años ha llevado a Aon de conglomerado con seguros a corredor y consultor puro: margen ajustado de ≈20 % (2015) a 32,4 % (2025) y BPA ajustado de 6,18 a 17,07 USD [8, 23]. Firmó la fusión fallida con WTW y las compras de NFP y USI."
+      },
+      {
+        "nombre": "Nadin Virani",
+        "cargo": "Director financiero interino",
+        "desde": "2026",
+        "participacion_pct": null,
+        "trayectoria": "Jefe de planificación corporativa desde enero de 2025; antes Broadridge y American Express. Interino desde el 17-ago-2026 tras la salida de Edmund Reese, que llevaba dos años [24]."
+      },
+      {
+        "nombre": "Lester B. Knight",
+        "cargo": "Presidente no ejecutivo del consejo",
+        "desde": "1999",
+        "participacion_pct": null,
+        "trayectoria": "Fundador de RoundTable Healthcare Partners, ex vicepresidente de Cardinal Health; preside el consejo desde 2008. Compró 6,5 M USD de acciones el 2-sep-2026 tras la caída por USI [23, 25]."
+      },
+      {
+        "nombre": "Lisa Stevens",
+        "cargo": "Directora de administración",
+        "desde": "2023",
+        "participacion_pct": null,
+        "trayectoria": "Responsable de la plataforma común Aon Business Services, clave en la mejora del margen [23]."
+      },
+      {
+        "nombre": "Andy Marcell",
+        "cargo": "Consejero delegado de Global Solutions",
+        "desde": "2025",
+        "participacion_pct": null,
+        "trayectoria": "Dirige las líneas de solución; antes al frente de Risk Capital [23]."
+      },
+      {
+        "nombre": "Mike Sicard",
+        "cargo": "Presidente de Aon plc y consejero delegado de Middle Market (tras el cierre de USI)",
+        "desde": "2026",
+        "participacion_pct": null,
+        "trayectoria": "Casi dos décadas al frente de USI; posible sucesor de Case [15]."
+      }
+    ],
+    "historial_guidance": [
+      {
+        "anio": "2023",
+        "guia": "Crecimiento orgánico de un dígito medio o más, mejora del margen ajustado, crecimiento del flujo libre",
+        "real": "Orgánico 6 %, margen ajustado 31,6 % (+80 pb), flujo libre 3.183 M",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2024",
+        "guia": "Orgánico de un dígito medio o más, margen ajustado al alza sin NFP, crecimiento del BPA ajustado",
+        "real": "Orgánico 6 %, margen 31,5 % con NFP, BPA ajustado 15,60 (+10 %)",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2025",
+        "guia": "Orgánico de un dígito medio o más, mejora del margen, fuerte crecimiento del BPA ajustado y del flujo libre de dos dígitos",
+        "real": "Orgánico 6 %, margen 32,4 % (+90 pb), BPA ajustado 17,07 (+9 %), flujo libre +14 %",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2026",
+        "guia": "Orgánico de un dígito medio o más, +70-80 pb de margen ajustado, fuerte crecimiento del BPA ajustado, flujo libre de dos dígitos; recompras de al menos 1.000 M",
+        "real": "1S26: orgánico 5 %, margen +80 pb, BPA ajustado +12 %; recompras suspendidas tras USI",
+        "cumplida": "Parcial"
+      }
+    ],
+    "comentario": "La dirección cumple su guía de forma sistemática desde 2023 [8]. Dos señales a vigilar: el director financiero salió en agosto de 2026 tras dos años, en plena preparación de la mayor compra de la historia de Aon, y hay un interino [24]; y la sucesión de Greg Case (63 años, 21 en el cargo) gana un candidato con la llegada de Mike Sicard como presidente de Aon plc [15]. El acuerdo de expatriación de Case se prorrogó hasta junio de 2027 [26].",
+    "confianza": "Media"
+  },
+  "gobierno": {
+    "consejo": [
+      {
+        "nombre": "Lester B. Knight",
+        "cargo": "Presidente no ejecutivo",
+        "tipo": "Independiente",
+        "desde": "1999",
+        "comisiones": "Ejecutiva (presidente); Gobierno y Nombramientos (presidente)"
+      },
+      {
+        "nombre": "Gregory C. Case",
+        "cargo": "Consejero delegado",
+        "tipo": "Ejecutivo",
+        "desde": "2005",
+        "comisiones": "Ejecutiva"
+      },
+      {
+        "nombre": "José Antonio Álvarez",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2024",
+        "comisiones": "Auditoría; Retribuciones"
+      },
+      {
+        "nombre": "Jin-Yong Cai",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2016",
+        "comisiones": "Finanzas (presidente); Ejecutiva; Retribuciones"
+      },
+      {
+        "nombre": "Jeffrey C. Campbell",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2018",
+        "comisiones": "Auditoría (presidente); Ejecutiva; Retribuciones"
+      },
+      {
+        "nombre": "Cheryl A. Francis",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2010",
+        "comisiones": "Personas (presidenta); Gobierno; Finanzas; Retribuciones"
+      },
+      {
+        "nombre": "Jo Ann Jenkins",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2025",
+        "comisiones": "Auditoría"
+      },
+      {
+        "nombre": "Adriana Karaboutis",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2022",
+        "comisiones": "Auditoría; Gobierno"
+      },
+      {
+        "nombre": "Richard C. Notebaert",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "1998",
+        "comisiones": "Ejecutiva; Finanzas; Gobierno; Retribuciones"
+      },
+      {
+        "nombre": "Gloria Santona",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2004",
+        "comisiones": "Auditoría; Gobierno"
+      },
+      {
+        "nombre": "Sarah E. Smith",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2023",
+        "comisiones": "Finanzas"
+      },
+      {
+        "nombre": "Byron O. Spruell",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2020",
+        "comisiones": "Retribuciones (presidente); Ejecutiva; Auditoría"
+      },
+      {
+        "nombre": "James G. Stavridis",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2024",
+        "comisiones": "Finanzas"
+      }
+    ],
+    "presidente_ceo_separados": true,
+    "presidente_ejecutivo": false,
+    "consejero_coordinador": false,
+    "una_accion_un_voto": true,
+    "operaciones_vinculadas_relevantes": false,
+    "variable_ligado_rentabilidad": true,
+    "auditoria_independiente": true,
+    "insiders_sin_operaciones": false,
+    "accionista_control": false,
+    "presidente_vinculado_control": false,
+    "cambios_cupula_24m": 0,
+    "voto_remuneracion_pct": 89,
+    "voto_remuneracion_contra_pct": null,
+    "voto_remuneracion_contra_libre_pct": null,
+    "voto_cupula_pct": null,
+    "remuneracion_ceo": {
+      "anio": "2025",
+      "total": 73.74,
+      "fijo": 1.5,
+      "variable_corto": 2.44,
+      "variable_largo": 68.77,
+      "ratio_salario_medio": null
+    },
+    "remuneracion": "Greg Case devengó 73,74 M USD en 2025 (26,21 M en 2024): 1,5 M de fijo, 2,44 M de bonus en efectivo y 68,77 M en acciones, casi todo una concesión extraordinaria ligada al plan 3x3 [23]. El variable a largo plazo (PSU del plan LPP) se mide por el BPA ajustado acumulado de tres años: el LPP 18 (2023-2025) pagó el 120,1 % con 45,02 USD frente a 44,32 de objetivo, y el comité excluyó el efecto de los ahorros de reestructuración y, en 2023, el de los intereses fiduciarios [23]. Premiar el BPA ajustado favorece las compras financiadas con deuda (USI es «acretiva en 2028»), no el ROIC. Hay recuperación (clawback) por fraude o incumplimiento. El voto consultivo de 2025 fue del 89 % a favor [23].",
+    "accionistas": [
+      {
+        "nombre": "BlackRock",
+        "pct": 6.29,
+        "tipo": "Institucional",
+        "variacion": "n.d."
+      },
+      {
+        "nombre": "Capital World Investors",
+        "pct": 5.69,
+        "tipo": "Institucional",
+        "variacion": "n.d."
+      },
+      {
+        "nombre": "The Vanguard Group",
+        "pct": null,
+        "tipo": "Institucional",
+        "variacion": "Desagregado por la reorganización interna de Vanguard (13G/A de marzo de 2026)"
+      },
+      {
+        "nombre": "Consejeros y directivos",
+        "pct": 1,
+        "tipo": "Insiders",
+        "variacion": "Menos del 1 % en conjunto"
+      }
+    ],
+    "insiders": [
+      {
+        "fecha": "2026-09-02",
+        "persona": "Lester B. Knight (presidente del consejo)",
+        "operacion": "Compra",
+        "acciones": 20000,
+        "importe": 6.55
+      },
+      {
+        "fecha": "2026-02-10",
+        "persona": "Lester B. Knight (presidente del consejo)",
+        "operacion": "Compra",
+        "acciones": 4000,
+        "importe": 1.28
+      },
+      {
+        "fecha": "2026-07-28",
+        "persona": "Darren Zeidel (secretario general)",
+        "operacion": "Venta",
+        "acciones": 1900,
+        "importe": 0.72
+      },
+      {
+        "fecha": "2026-02-26",
+        "persona": "Darren Zeidel (secretario general)",
+        "operacion": "Venta",
+        "acciones": 4300,
+        "importe": 1.42
+      },
+      {
+        "fecha": "2025-11-05",
+        "persona": "Darren Zeidel (secretario general)",
+        "operacion": "Venta",
+        "acciones": 8800,
+        "importe": 3.03
+      }
+    ],
+    "control_y_defensas": "Capital disperso sin accionista de control: BlackRock (6,3 %) y Capital World (5,7 %) son los mayores declarados [23]. Una acción, un voto; 12 de 13 consejeros independientes, presidente no ejecutivo separado del consejero delegado, elección anual y mayoría de votos [23]. Sociedad irlandesa: las recompras y dividendos necesitan «beneficios distribuibles» según la ley irlandesa [23]. Consejo con mandatos muy largos (Notebaert desde 1998, Knight desde 1999, Santona desde 2004).",
+    "alertas": [
+      "Salida del director financiero el 17-ago-2026, dos semanas antes de anunciar USI; interino en el cargo [24].",
+      "Remuneración extraordinaria del consejero delegado en 2025 (73,7 M USD) [23].",
+      "Compras del presidente del consejo por 7,8 M USD en 12 meses (señal positiva); ventas del secretario general por 7,8 M [25]."
+    ],
+    "confianza": "Alta"
+  },
+  "consenso": {
+    "guidance": "Guía 2026 (presentada el 30-ene-2026 y reafirmada el 29-jul-2026): crecimiento orgánico de «un dígito medio o más», +70-80 pb de margen operativo ajustado, «fuerte» crecimiento del BPA ajustado y crecimiento de dos dígitos del flujo libre [6]. Con USI (31-ago-2026): dilutiva para el BPA ajustado en 2027 y acretiva desde 2028; 395 M de sinergias netas de EBITDA hasta 2029; apalancamiento de ≈4,5x al cierre y 2,8-3,0x en unos 24 meses; sin recompras a corto plazo [10]. Resultados del 3T26 el 28-oct-2026 [34].",
+    "estimaciones": [
+      {
+        "periodo": "2026e",
+        "ingresos": 17919,
+        "ebitda": 6129,
+        "ebit": 5940,
+        "bpa": 18.57,
+        "dpa": 3.18,
+        "fuente": "Yahoo (BPA normalizado, 22 analistas) y MarketScreener (ingresos, EBITDA y EBIT ajustados, DPA) [28, 30]"
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 21662,
+        "ebitda": 7344,
+        "ebit": 7145,
+        "bpa": 20.21,
+        "dpa": 3.47,
+        "fuente": "Yahoo (20 analistas, con USI) y MarketScreener [28, 30]"
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 22796,
+        "ebitda": 7985,
+        "ebit": 7819,
+        "bpa": null,
+        "dpa": 3.82,
+        "fuente": "MarketScreener (sin BPA ajustado de 2028) [28]"
+      }
+    ],
+    "recomendaciones": {
+      "n_analistas": 21,
+      "comprar": null,
+      "mantener": null,
+      "vender": null,
+      "po_medio": 354.21,
+      "po_min": 229,
+      "po_max": 435
+    },
+    "revisiones": "El BPA normalizado de 2027 ha bajado de 21,35 a 20,21 USD en 90 días (−5 %), casi todo por USI (deuda y fin de las recompras); el de 2026, de 19,10 a 18,57 [30]. Los objetivos van a la baja: desde el 1-sep, KBW (417 a 342), Wells Fargo (383 a 323), BofA (339 a 322), Evercore (423 a 375), Mizuho (366 a 324), Barclays (382 a 317), Morgan Stanley (410 a 350), BMO (360 a 286) y JPMorgan (412 a 362) recortaron [29]. El BPA de MarketScreener es el publicado (14,24 en 2026, 15,03 en 2027 con la amortización de USI) y no se usa [28].",
+    "base_ebitda": "ajustado",
+    "ajuste_ebitda_pct_ventas": 2.1,
+    "confianza": "Media"
+  },
+  "bolsa": {
+    "tipo_rentabilidad": "de precio (sin dividendos)",
+    "rentabilidades": [
+      {
+        "periodo": "En el año",
+        "accion_pct": -22,
+        "indice_pct": 12.8,
+        "sector_pct": 1.3
+      },
+      {
+        "periodo": "1 año",
+        "accion_pct": -23.6,
+        "indice_pct": 16.2,
+        "sector_pct": 2.4
+      },
+      {
+        "periodo": "3 años (anual.)",
+        "accion_pct": -5.5,
+        "indice_pct": 21.3,
+        "sector_pct": 12.2
+      },
+      {
+        "periodo": "5 años (anual.)",
+        "accion_pct": -2.2,
+        "indice_pct": 11.7,
+        "sector_pct": 8.5
+      },
+      {
+        "periodo": "10 años (anual.)",
+        "accion_pct": 9.5,
+        "indice_pct": 13.7,
+        "sector_pct": 9.2
+      }
+    ],
+    "anual": [
+      {
+        "anio": "2016",
+        "accion_pct": 21,
+        "indice_pct": 9.5
+      },
+      {
+        "anio": "2017",
+        "accion_pct": 20.1,
+        "indice_pct": 19.4
+      },
+      {
+        "anio": "2018",
+        "accion_pct": 8.5,
+        "indice_pct": -6.2
+      },
+      {
+        "anio": "2019",
+        "accion_pct": 43.3,
+        "indice_pct": 28.9
+      },
+      {
+        "anio": "2020",
+        "accion_pct": 1.4,
+        "indice_pct": 16.3
+      },
+      {
+        "anio": "2021",
+        "accion_pct": 42.3,
+        "indice_pct": 26.9
+      },
+      {
+        "anio": "2022",
+        "accion_pct": -0.1,
+        "indice_pct": -19.4
+      },
+      {
+        "anio": "2023",
+        "accion_pct": -3,
+        "indice_pct": 24.2
+      },
+      {
+        "anio": "2024",
+        "accion_pct": 23.4,
+        "indice_pct": 23.3
+      },
+      {
+        "anio": "2025",
+        "accion_pct": -1.7,
+        "indice_pct": 16.4
+      }
+    ],
+    "beta": 0.65,
+    "volatilidad_pct": 28.2,
+    "max_drawdown_pct": -33.6,
+    "tramo_drawdown": "2025-03-03 → 2026-10-02",
+    "posicion_corta_pct": null,
+    "comentario": "La acción pierde un 23,6 % en un año frente al +16,2 % del S&P 500 y el +2,4 % del ETF de seguros KIE (todo de precio) [27]. Tres golpes: −9,3 % el 9-feb-2026 por el pánico a la IA en los corredores, −9,5 % el 31-ago-2026 por la compra de USI (más deuda, sin recompras) y una caída continua en septiembre y octubre hasta el mínimo de 266,33 USD del 5-oct [27]. Había marcado máximo de 52 semanas (382,34) el 28-jul, la víspera de los resultados del 2T26: en dos meses y medio pierde un 28 %. A cinco años va un −2,2 % anual frente al +11,7 % del índice. Beta mensual de 5 años de 0,65 (0,77 ajustada) [27].",
+    "confianza": "Alta"
+  },
+  "multiplos_historicos": {
+    "serie": [
+      {
+        "anio": "2019",
+        "precio_cierre": 208.29,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2020",
+        "precio_cierre": 211.27,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2021",
+        "precio_cierre": 300.56,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": true
+      },
+      {
+        "anio": "2022",
+        "precio_cierre": 300.14,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2023",
+        "precio_cierre": 291.02,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2024",
+        "precio_cierre": 359.16,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2025",
+        "precio_cierre": 352.88,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "Con BPA ajustado (el que usa la empresa y el mercado), Aon cotiza a 13,8 veces nuestro BPA de 2027e (19,89 USD), el PER adelantado más bajo desde al menos 2017: el precio de cierre de cada año fue de 15,9 a 22,5 veces el BPA ajustado del año siguiente, con una mediana de 21,0x en 2021-2025 y un mínimo de 18,7x [10, 27]. La caída es del 28 % desde el máximo de julio (382,34) y tiene tres capas: el miedo a la IA en la intermediación (febrero), el ciclo blando de tarifas y, sobre todo, USI (−10 % el día del anuncio, 31-ago): deuda a ≈4,5 veces el EBITDA, fin de las recompras y BPA de 2027 diluido [27, 37]. El bono a 10 años en el 5,21 % también pesa frente a la historia, formada con tipos del 1-4 % [32]. Ningún año se excluye: el BPA ajustado de 2019-2021 no está deprimido por compras."
+  },
+  "comparables": {
+    "criterio": "Los cinco corredores cotizados con negocio comparable: Marsh y WTW (globales con consultoría de recursos humanos, los más parecidos), Gallagher y Brown & Brown (mediana empresa y compradores en serie, el perfil al que se acerca Aon con NFP y USI) y Ryan Specialty (mayorista E&S). Fuera: Baldwin (pérdidas), Hub y Acrisure (privadas). Capitalización, EV/EBITDA, margen, ROIC y deuda de la ficha sectorial del 14-oct-2026 (MarketScreener y Yahoo); el PER NTM, recalculado con el BPA normalizado de Yahoo (Marsh, ajustado de Stock Analysis) para que esté en la misma base que el BPA ajustado de Aon [21, 31].",
+    "empresas": [
+      {
+        "nombre": "Marsh",
+        "ticker": "MRSH",
+        "pais": "US",
+        "capitalizacion": 84469,
+        "ev_ventas": 3.76,
+        "ev_ebitda_ltm": 13.2,
+        "ev_ebitda_ntm": 11.9,
+        "per_ntm": 15.8,
+        "crecimiento_pct": 6.8,
+        "margen_ebitda_pct": 28.4,
+        "roic_pct": 14.3,
+        "dn_ebitda": 2.2,
+        "fcf_yield_pct": 5.9
+      },
+      {
+        "nombre": "WTW",
+        "ticker": "WTW",
+        "pais": "IE",
+        "capitalizacion": 27716,
+        "ev_ventas": 3.18,
+        "ev_ebitda_ltm": 11.7,
+        "ev_ebitda_ntm": 9.8,
+        "per_ntm": 13.4,
+        "crecimiento_pct": 8.1,
+        "margen_ebitda_pct": 27.2,
+        "roic_pct": 13,
+        "dn_ebitda": 1.2,
+        "fcf_yield_pct": 5.6
+      },
+      {
+        "nombre": "Arthur J. Gallagher",
+        "ticker": "AJG",
+        "pais": "US",
+        "capitalizacion": 60311,
+        "ev_ventas": 5.21,
+        "ev_ebitda_ltm": 16,
+        "ev_ebitda_ntm": 12.2,
+        "per_ntm": 16.3,
+        "crecimiento_pct": 17,
+        "margen_ebitda_pct": 32.7,
+        "roic_pct": 5.6,
+        "dn_ebitda": 2.5,
+        "fcf_yield_pct": 3
+      },
+      {
+        "nombre": "Brown & Brown",
+        "ticker": "BRO",
+        "pais": "US",
+        "capitalizacion": 21552,
+        "ev_ventas": 4.8,
+        "ev_ebitda_ltm": 13.4,
+        "ev_ebitda_ntm": 11.1,
+        "per_ntm": 13.5,
+        "crecimiento_pct": 12.2,
+        "margen_ebitda_pct": 35.9,
+        "roic_pct": 6.5,
+        "dn_ebitda": 3.2,
+        "fcf_yield_pct": 6.4
+      },
+      {
+        "nombre": "Ryan Specialty",
+        "ticker": "RYAN",
+        "pais": "US",
+        "capitalizacion": 9666,
+        "ev_ventas": 4.21,
+        "ev_ebitda_ltm": 13.3,
+        "ev_ebitda_ntm": 11.9,
+        "per_ntm": 15.8,
+        "crecimiento_pct": 9.7,
+        "margen_ebitda_pct": 31.7,
+        "roic_pct": 9.4,
+        "dn_ebitda": 3.3,
+        "fcf_yield_pct": 6
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "Aon es el corredor grande más barato por PER adelantado: 13,9 veces el BPA ajustado de los próximos 12 meses frente a una mediana de 15,8x (Marsh 15,8x, Gallagher 16,3x, Ryan 15,8x, Brown & Brown 13,5x y WTW 13,4x), recalculados todos con BPA normalizado [21, 31]. Con un ROIC más alto que todos y un margen EBIT del 25,3 % (Marsh 23,1 %), el descuento se explica por USI: es el único que se apalanca a ≈4,5 veces y deja de recomprar. Por EV/EBITDA de los próximos 12 meses (13,5x) parece más cara que el resto (10-12x), pero es un efecto de mezcla: nuestro valor empresa ya incluye el precio de USI y el EBITDA de los próximos 12 meses solo lleva unos meses de USI. El múltiplo útil es el PER."
+  },
+  "transacciones": {
+    "operaciones": [
+      {
+        "fecha": "2026-08",
+        "objetivo": "USI",
+        "comprador": "Aon",
+        "ev": 17000,
+        "ev_ventas": 5.67,
+        "ev_ebitda": 22.5,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "16.700 M netos de créditos fiscales; 14,5x el EBITDA con sinergias (1.151 M), ≈22x los 756 M ajustados por el comprador; 17,1x los 995 M del vendedor [10]."
+      },
+      {
+        "fecha": "2024-12",
+        "objetivo": "AssuredPartners",
+        "comprador": "Arthur J. Gallagher",
+        "ev": 13450,
+        "ev_ventas": 4.6,
+        "ev_ebitda": 14.3,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "EBITDAC pro forma [35]."
+      },
+      {
+        "fecha": "2024-11",
+        "objetivo": "McGriff Insurance Services",
+        "comprador": "Marsh McLennan",
+        "ev": 7750,
+        "ev_ventas": null,
+        "ev_ebitda": 21,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Según una nota de analistas citada por la prensa [35]."
+      },
+      {
+        "fecha": "2023-12",
+        "objetivo": "NFP",
+        "comprador": "Aon",
+        "ev": 13400,
+        "ev_ventas": null,
+        "ev_ebitda": 22,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Incluye deuda asumida [35]."
+      },
+      {
+        "fecha": "2025-06",
+        "objetivo": "Accession (Risk Strategies)",
+        "comprador": "Brown & Brown",
+        "ev": 9825,
+        "ev_ventas": 5.8,
+        "ev_ebitda": 15.6,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Unos 630 M de EBITDA ajustado de 2024 [36]."
+      }
+    ],
+    "comentario": "Las plataformas de corretaje de mediana empresa se han pagado a 14-22 veces el EBITDA en 2023-2026 [35, 36]. Aon ha pagado dos veces en lo alto del rango (NFP 22x y USI ≈22x sin sinergias). Es valor de control y sirve de techo para la correduría, no de catalizador: Aon (58.400 M de capitalización y 32.000 M de deuda pro forma) no es objetivo plausible de una operación.",
+    "confianza": "Media"
+  },
+  "dcf": {
+    "anios": [
+      {
+        "periodo": "2026e",
+        "crecimiento_pct": 4.3,
+        "margen_ebitda_pct": 31.5,
+        "amortizacion_pct_ventas": 2.2,
+        "capex_pct_ventas": 2.5,
+        "nwc_pct_ventas": 9,
+        "tasa_impositiva_pct": 21,
+        "fijo": true
+      },
+      {
+        "periodo": "2027e",
+        "crecimiento_pct": 22.9,
+        "margen_ebitda_pct": 31,
+        "amortizacion_pct_ventas": 2.2,
+        "capex_pct_ventas": 2.5,
+        "nwc_pct_ventas": 9,
+        "tasa_impositiva_pct": 21,
+        "fijo": false
+      },
+      {
+        "periodo": "2028e",
+        "crecimiento_pct": 5,
+        "margen_ebitda_pct": 32.5,
+        "amortizacion_pct_ventas": 2.2,
+        "capex_pct_ventas": 2.5,
+        "nwc_pct_ventas": 9,
+        "tasa_impositiva_pct": 21,
+        "fijo": false
+      },
+      {
+        "periodo": "2029e",
+        "crecimiento_pct": 5,
+        "margen_ebitda_pct": 33.5,
+        "amortizacion_pct_ventas": 2.2,
+        "capex_pct_ventas": 2.5,
+        "nwc_pct_ventas": 9,
+        "tasa_impositiva_pct": 21,
+        "fijo": false
+      },
+      {
+        "periodo": "2030e",
+        "crecimiento_pct": 4.5,
+        "margen_ebitda_pct": 34,
+        "amortizacion_pct_ventas": 2.2,
+        "capex_pct_ventas": 2.5,
+        "nwc_pct_ventas": 9,
+        "tasa_impositiva_pct": 21,
+        "fijo": false
+      },
+      {
+        "periodo": "2031e",
+        "crecimiento_pct": 4,
+        "margen_ebitda_pct": 34.5,
+        "amortizacion_pct_ventas": 2.2,
+        "capex_pct_ventas": 2.5,
+        "nwc_pct_ventas": 9,
+        "tasa_impositiva_pct": 21,
+        "fijo": false
+      },
+      {
+        "periodo": "2032e",
+        "crecimiento_pct": 3.5,
+        "margen_ebitda_pct": 34.5,
+        "amortizacion_pct_ventas": 2.2,
+        "capex_pct_ventas": 2.5,
+        "nwc_pct_ventas": 9,
+        "tasa_impositiva_pct": 21,
+        "fijo": false
+      }
+    ],
+    "wacc": {
+      "tasa_libre_pct": 5.21,
+      "beta": 0.85,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 0,
+      "coste_deuda_pct": 5.8,
+      "tasa_impositiva_pct": 21,
+      "peso_deuda_pct": 35
+    },
+    "terminal": {
+      "metodo": "media",
+      "crecimiento_pct": 3,
+      "multiplo_salida": 13.5
+    },
+    "etapa2": {
+      "usar": false,
+      "anios": 10,
+      "margen_final_pct": null,
+      "justificacion": null
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "Ventas de 17.920 M en 2026e (+4,3 %): orgánico del 5 % en el semestre, guía de «un dígito medio o más», menos la venta de NFP Wealth y Stroz Friedberg (−2 a −3 puntos) [6]; el consenso espera 17.919 M [28]. 2027e +22,9 %: unos 3.200 M de USI (3.000 M en 2025, creciendo al 5-6 %) y un 5 % del resto [11]. Después, 5 % en 2028-2029 y bajada al 3,5 % en 2032: 4-5 puntos de orgánico (5-7 % en 2021-2026) y algo de compras pequeñas. El consenso espera 21.662 M en 2027e y 22.796 M en 2028e; vamos un 1,4-1,7 % por encima porque suponemos el cierre de USI a finales de 2026 [28].",
+      "margenes": "Margen EBITDA publicado del 30,9 % en 2025, con unos 360 M de reestructuración de Aon United dentro [1]. 2026e en el 31,5 %: la guía es +70-80 pb de margen ajustado y la reestructuración termina este año [6]. 2027e baja al 31,0 % por la mezcla con USI (margen del 25 % tras los ajustes del comprador) y ≈300 M de costes de integración; sube al 32,5 % en 2028 y al 34,5 % en 2031 con 395 M de sinergias netas y el fin de la integración [10, 11]. El consenso de EBITDA ajustado es del 33,9 % en 2027e y del 35,0 % en 2028e [28]; el nuestro, publicado, va 1-3 puntos por debajo.",
+      "inversion": "Capex propio del 1,5 % de las ventas (263 M en 2025) más ≈1,0 % para compras pequeñas, en total el 2,5 % [1]. Amortización del 2,2 % (inmovilizado y software); la de intangibles comprados no se proyecta, lo que sobrestima algo los impuestos (conservador). Circulante del 9,0 % de las ventas, el de 2025 sin partidas fiduciarias. Tipo impositivo del 21 % (21,2 % en 2025) [1].",
+      "wacc": "Tasa libre del 5,21 % (bono a 10 años del Tesoro del 13-oct-2026) [32]. Beta de 0,85: la ajustada histórica es 0,77 (mensual 0,65), medida con un 20-25 % de deuda; la reapalancamos al 35 % de deuda que tendrá con USI [27]. Prima de mercado del 5,5 %. Coste de la deuda del 5,8 % antes de impuestos: cupón medio del 5,92 % de los 13.500 M nuevos y 4-5 % de la deuda antigua [11, 12]. Peso de la deuda del 35 % (≈32.300 M pro forma frente a 58.478 M de capitalización). Resultado: WACC del 8,03 %.",
+      "terminal": "Media de Gordon con un crecimiento del 3,0 % y un múltiplo de salida de 13,5 veces el EBITDA, por debajo de lo que paga Aon por USI con sinergias (14,5x) y de las grandes transacciones del sector (15-22x), y en la zona alta de lo que cotiza hoy el sector (10-12x adelantado) [10, 35]."
+    },
+    "sostenibilidad": {
+      "puente_ingresos": [
+        {
+          "periodo": "2026e",
+          "volumen_pct": 3,
+          "precio_pct": 2,
+          "otros_pct": -0.7,
+          "comentario": "Volumen 3 % y precio 2 % (orgánico del 5 %), y otros −0,7 % (ventas de NFP Wealth y Stroz Friedberg, compensadas en parte por la divisa) [6]."
+        },
+        {
+          "periodo": "2027e",
+          "volumen_pct": 3,
+          "precio_pct": 1.5,
+          "otros_pct": 18.4,
+          "comentario": "Orgánico del 4,5 % (las tarifas siguen bajando) y USI: ≈18 puntos de crecimiento comprado [11]."
+        },
+        {
+          "periodo": "2028e",
+          "volumen_pct": 3,
+          "precio_pct": 1.5,
+          "otros_pct": 0.5,
+          "comentario": "Orgánico del 4,5 % y medio punto de compras pequeñas; supone que las tarifas dejan de restar."
+        },
+        {
+          "periodo": "2029e",
+          "volumen_pct": 3,
+          "precio_pct": 1.5,
+          "otros_pct": 0.5,
+          "comentario": "Igual que 2028e; el orgánico de USI se suma al del grupo."
+        },
+        {
+          "periodo": "2030e",
+          "volumen_pct": 2.5,
+          "precio_pct": 1.5,
+          "otros_pct": 0.5,
+          "comentario": "Convergencia hacia el terminal; la IA abarata la colocación de riesgos sencillos."
+        }
+      ],
+      "mercado_final": null,
+      "veredicto": "Sí",
+      "justificacion": "Sí, con una salvedad: el crecimiento de 2027e no es orgánico, es la compra de USI pagada con deuda. Sin USI, el crecimiento proyectado (4,5-5 % en 2028-2030, 3,5 % en 2032) está por debajo del orgánico de los últimos cinco años (5-7 %, también con tarifas a la baja en 2025-2026) y no exige capital: la reinversión orgánica es la de un negocio de servicios (capex del 1,5 % de las ventas) [1, 14]. El crecimiento comprado se paga entero: los 17.000 M de USI van al puente y el ≈1 % de compras pequeñas, al capex. Cuota: con el mercado de corredores al 9,1 % anual según Global Market Insights, la de Aon (≈4 %) se mantendría con un 4-5 %; con un mercado al 4 %, también [16]. El foso (renovaciones, escala en grandes riesgos, reaseguro y datos) y un ROIC aún por encima del WACC tras USI lo sostienen. La salvedad es USI: si las sinergias (395 M) no llegan y se pierden productores, el margen de 2029-2032 no sube y el ROIC se acerca al WACC."
+    },
+    "lectura": "El DCF da 373,27 USD por acción, un 35,6 % por encima del precio, con un 75 % del valor en el terminal. El DCF inverso es lo importante: al precio de 275,32 el mercado descuenta un crecimiento de las ventas del 3,1 % anual en 2027-2032, frente al 7,5 % de nuestro base. Como USI sola aporta casi 3 puntos de esa media, el precio supone que el grupo combinado casi no crece por sí mismo (≈0,3 % orgánico anual), o que USI destruye valor; la rentabilidad implícita es del 10,0 % frente a un WACC del 8,03 %. Es una hipótesis muy pesimista frente a una historia de orgánico del 5-7 % y 18 años sin un año negativo salvo 2009. Con la prima de riesgo que hoy pide el mercado (4,2 %) el DCF sube a 427,76. La sensibilidad es alta: medio punto de WACC o de crecimiento terminal mueve el valor entre 342,56 y 409,63; con un WACC del 9 % y un crecimiento del 2 %, 292,04, aún un 6 % por encima del precio.",
+    "confianza": "Media"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": -2,
+        "ajuste_margen_pp": -1.5,
+        "ajuste_wacc_pp": 0.5,
+        "crecimiento_terminal_pct": 2.5,
+        "multiplo_salida": 10.5,
+        "narrativa": "USI se integra mal (fuga de productores, sinergias a la mitad), las tarifas siguen cayendo dos años más y la IA lleva a las pymes a comprar directo: el orgánico baja al 2-3 % y el margen pierde 1,5 puntos. La deuda tarda en bajar y el WACC sube medio punto; el mercado paga 10,5 veces el EBITDA."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "USI cierra a finales de 2026, el orgánico se queda en el 4,5-5 %, las sinergias llegan en 2029 y el margen EBITDA publicado sube al 34,5 %; la deuda baja a 3 veces en 2028 y vuelven las recompras."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": 1.5,
+        "ajuste_margen_pp": 1,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": 15.5,
+        "narrativa": "Un año de grandes catástrofes endurece las tarifas en 2027, USI aporta más sinergias de ingresos que las prometidas (reaseguro y riesgos especiales para su cartera) y el orgánico vuelve al 6-7 %, con un punto más de margen."
+      }
+    ],
+    "comentario": "El bajista vale 229,98 USD (−16,5 %) y el alcista 459,67 (+67,0 %): la asimetría es de 4,06 veces a favor. El bajista no es cosmético: combina un orgánico del 2-3 %, 1,5 puntos menos de margen, un WACC del 8,5 % y 10,5 veces el EBITDA, que es lo que cotizan hoy WTW y el sector en sus peores días. Con probabilidades de 25/50/25 el valor ponderado es de 359,05.",
+    "confianza": "Media"
+  },
+  "suma_partes": {
+    "aplica": false,
+    "descuento_holding_pct": 0,
+    "partes": [],
+    "comentario": "No se usa: Risk Capital y Human Capital comparten clientes, plataforma (Aon Business Services) y marca; no hay comparables cotizados puros de consultoría de beneficios con cifras homogéneas y USI aún no ha cerrado. El DCF y los comparables de corredores ya recogen la mezcla.",
+    "confianza": "Media"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2026-06-30",
+      "deuda_financiera": 14967,
+      "arrendamientos": 0,
+      "caja": 1267,
+      "minoritarios": 112,
+      "pensiones": 406,
+      "asociadas": 0,
+      "otros_ajustes": 17160
+    },
+    "rab": null,
+    "referencia_mercado": {
+      "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+      "prima_implicita_pct": 4.2,
+      "fecha": "2026-10",
+      "fuente": "Damodaran, ERPbymonth.xlsx [33]"
+    },
+    "pesos": {
+      "dcf": 40,
+      "comparables": 25,
+      "transacciones": 0,
+      "suma_partes": 0,
+      "escenarios": 35
+    },
+    "objetivo_12m": {
+      "ejercicio": "2028e",
+      "casos": [
+        {
+          "escenario": "Bajista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 20.06,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "BPA ajustado. Ventas de 22.100 M en 2028e (orgánico del 2 %) y margen operativo ajustado del 32,6 %: 7.205 M; intereses −1.800 M, otros +40 M, impuestos al 19,5 % y 40 M de minoritarios: 4.343 M entre 216,5 M de acciones (sin recompras). Supone sinergias a la mitad."
+        },
+        {
+          "escenario": "Base",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 22.72,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "BPA ajustado. Ventas de 23.100 M (orgánico del 4,5-5 % más USI) y margen operativo ajustado del 34,2 %: 7.900 M; intereses −1.780 M (cupón medio de 5,92 % de los bonos nuevos, deuda bajando), otros +40 M, impuestos al 19,5 % y 40 M de minoritarios: 4.919 M entre 216,5 M de acciones. Cuadre con 2025: BPA ajustado de 17,07 USD [10]; 2026e 18,60 (consenso 18,57) y 2027e 19,89 (consenso 20,21, con USI diluyendo) [30]."
+        },
+        {
+          "escenario": "Alcista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 24.61,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "BPA ajustado. Ventas de 23.800 M (orgánico del 6-7 %) y margen operativo ajustado del 35,2 %: 8.378 M; intereses −1.750 M, otros +40 M, impuestos al 19,5 % y 40 M de minoritarios: 5.328 M entre 216,5 M de acciones."
+        }
+      ],
+      "per_historico": {
+        "base": "adelantado",
+        "actual": 13.84,
+        "mediana_5a": 21.04,
+        "minimo_5a": 18.66,
+        "media_larga": 19.63,
+        "excluidos": "Historia adelantada con BPA ajustado (precio de cierre ÷ BPA ajustado del año siguiente): 2018 15,9x, 2019 21,2x, 2020 17,6x, 2021 22,5x, 2022 21,2x, 2023 18,7x, 2024 21,0x y 2025 19,0x (352,88 ÷ nuestro BPA ajustado de 2026e de 18,60). Mediana y mínimo de 2021-2025; media larga de 2018-2025. Ningún año excluido. Actual: 275,32 ÷ 19,89 (nuestro BPA ajustado de 2027e) = 13,8x. Base de BPA: ajustado de la empresa (sin amortización de intangibles comprados, reestructuración ni plusvalías), igual que los casos, los comparables y el consenso; con el publicado, USI rompe la serie (BPA pro forma de 2025: 11,24 frente a 17,02) [10, 11].",
+        "v2": {
+          "mediana_5a": 22.42,
+          "minimo_5a": 20.58,
+          "media_larga": 21.73,
+          "excluidos": "Historia al cierre con BPA ajustado (precio ÷ BPA ajustado del mismo año): 2021 25,0x, 2022 22,4x, 2023 20,6x, 2024 23,0x y 2025 20,7x; media larga de 2018-2025 con 2018 17,8x, 2019 22,7x y 2020 21,5x. Ninguno excluido."
+        }
+      },
+      "comparables_per": {
+        "mediana": 15.8
+      },
+      "consenso": {
+        "bpa_ano1": 18.57,
+        "bpa_ano2": 20.21,
+        "objetivo_medio": 354.21,
+        "objetivo_min": 229,
+        "objetivo_max": 435,
+        "analistas": 21,
+        "tendencia_3m": "recortes",
+        "fuente": "Yahoo Finance (análisis: BPA ajustado 2026-2027, ventas y objetivos de 21 analistas, 14-oct-2026) [29, 30]"
+      },
+      "diferencia_consenso": "Nuestro BPA ajustado de 2027e (19,89) queda un 1,6 % por debajo del consenso (20,21) porque suponemos el cierre de USI a finales de 2026 y algo más de coste financiero; en 2026e coincidimos (18,60 frente a 18,57) [30]. La diferencia está en el múltiplo: el objetivo medio de los analistas (354,21) supone volver a 17-18 veces el BPA ajustado de 2027, mientras que la regla común solo deja subir el PER adelantado un 10 % (de 13,8x a 15,2x). Los analistas han recortado objetivos tras USI (de una media de ≈400 a 354) [29].",
+      "media": null,
+      "comentario": "El objetivo a 12 meses (360,60 USD ponderado; 345,34 en el base) queda un 5,4 % por encima del valor intrínseco (342,28): la regla común sube el PER adelantado solo un 10 % (de 13,8x a 15,2x) y el DCF da un valor parecido con un WACC del 8,03 %. Para que el precio se acerque al objetivo hace falta que el 3T26 (28-oct-2026) mantenga el orgánico en el 5 %, que USI cierre sin sorpresas y que la deuda empiece a bajar; el siguiente hito es la guía de 2027 con los resultados del 4T26 (finales de enero de 2027). Con la regla anterior (v2, historia al cierre) el base sería el PER actual (13,8x × 22,72 = 313,54) y la ponderada del 19,8 % (15,0 % en el base): también Comprar."
+    },
+    "comentario": "Pesos: DCF 40 %, escenarios 35 % y comparables 25 %; las transacciones (mediana 400,80) no se usan porque llevan prima de control. Los comparables dan menos que el DCF (EV/EBITDA 199-225 y PER 268-314) porque el sector entero ha bajado de múltiplo y porque el EBITDA de los próximos 12 meses solo lleva unos meses de USI mientras la deuda ya la incluye. El valor objetivo es de 342,28 USD (+24,3 %); con la prima del mercado, 381,94. La dispersión (200-460) dice que el valor depende de dos cosas: que USI cumpla y que el mercado vuelva a pagar algo más de 14 veces por un corredor.",
+    "confianza": "Media"
+  },
+  "catalizadores": {
+    "items": [
+      {
+        "fecha": "28-oct-2026",
+        "evento": "Resultados del 3T26",
+        "efecto": "Orgánico frente al 5 % del semestre y primera actualización de USI y de la financiación [34].",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "4T26 (antes del 1-jun-2027)",
+        "evento": "Cierre de la compra de USI",
+        "efecto": "Despeja el riesgo de ejecución de la operación; empieza la cuenta atrás de las sinergias (395 M a 2029) [15].",
+        "probabilidad": "Alta",
+        "sentido": "+"
+      },
+      {
+        "fecha": "Finales de enero de 2027",
+        "evento": "Resultados de 2026 y guía de 2027 con USI",
+        "efecto": "Dilución del BPA de 2027, ritmo de desapalancamiento y fecha de vuelta de las recompras.",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2026-2027",
+        "evento": "Nombramiento del director financiero definitivo",
+        "efecto": "Reese salió el 17-ago-2026, en plena financiación de USI; un nombre sólido quita incertidumbre [24].",
+        "probabilidad": "Media",
+        "sentido": "+"
+      },
+      {
+        "fecha": "Oct-nov de 2026",
+        "evento": "Final de la temporada de huracanes del Atlántico",
+        "efecto": "Un año de catástrofes grandes frenaría la caída de tarifas de daños y reaseguro (−6 % global en el 2T26) [18].",
+        "probabilidad": "Media",
+        "sentido": "+"
+      },
+      {
+        "fecha": "2028",
+        "evento": "Vuelta de las recompras",
+        "efecto": "Con la deuda en 2,8-3,0 veces; antes de NFP recompraba 2.000-3.500 M al año [1].",
+        "probabilidad": "Media",
+        "sentido": "+"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "riesgos": {
+    "items": [
+      {
+        "riesgo": "Integración de USI: fuga de productores y sinergias que no llegan",
+        "tipo": "Ejecución",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−15 % a −20 % (bajista 229,98)",
+        "mitigante": "Aon integró NFP sin perder el orgánico; hasta 400 M de retención para los equipos de USI y presidente de USI en el comité de Aon [10, 15].",
+        "senal": "Orgánico de USI por debajo del 3 % o salidas de equipos a rivales de capital privado."
+      },
+      {
+        "riesgo": "Deuda de la compra: 4,5 veces el EBITDA al cierre",
+        "tipo": "Financiero",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−5 % a −10 % si el desapalancamiento se retrasa un año",
+        "mitigante": "Bonos a tipo fijo hasta 2056, flujo libre de ≈3.500-4.500 M al año, sin recompras hasta bajar a 3 veces y rating BBB+/Baa2/A- confirmado [12, 13].",
+        "senal": "Deuda neta/EBITDA por encima de 4 veces a finales de 2027 o una rebaja de rating."
+      },
+      {
+        "riesgo": "La IA se come la intermediación en pymes y mediana empresa",
+        "tipo": "Tecnológico",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−20 % si el orgánico cae al 2 % y el margen no mejora",
+        "mitigante": "El negocio de Aon es de grandes cuentas, reaseguro y consultoría con datos propios; pero NFP y USI (mediana empresa de EE. UU.) aumentan la exposición al segmento más expuesto [1, 19].",
+        "senal": "Retención de clientes de mediana empresa por debajo del 90 % o comisiones medias a la baja en EE. UU."
+      },
+      {
+        "riesgo": "Ciclo blando largo de tarifas comerciales y de reaseguro",
+        "tipo": "Mercado",
+        "probabilidad": "Alta",
+        "impacto": "Medio",
+        "efecto_valor": "−10 % (2 puntos menos de orgánico)",
+        "mitigante": "Ocho trimestres de tarifas a la baja con el orgánico en el 5 %; la mitad de los ingresos (Human Capital) no depende de las tarifas [6].",
+        "senal": "Orgánico de Commercial Risk por debajo del 3 % o Reinsurance en negativo."
+      },
+      {
+        "riesgo": "Salida del director financiero en plena operación",
+        "tipo": "Gobierno",
+        "probabilidad": "Baja",
+        "impacto": "Medio",
+        "efecto_valor": "−3 %",
+        "mitigante": "Interina con experiencia en la casa; el presidente compró 6,55 M USD en acciones el 2-sep-2026 [24, 25].",
+        "senal": "Más salidas en la cúpula o retraso del cierre."
+      },
+      {
+        "riesgo": "Bajada de tipos: menos intereses fiduciarios",
+        "tipo": "Financiero",
+        "probabilidad": "Alta",
+        "impacto": "Bajo",
+        "efecto_valor": "−1 % a −2 %",
+        "mitigante": "La deuda nueva es a tipo fijo; los tipos bajos abaratan la refinanciación.",
+        "senal": "Ingresos fiduciarios trimestrales a la baja."
+      }
+    ],
+    "premortem": "Octubre de 2029: la acción vale 165 USD, un 40 % menos. Lo más probable: USI se integra mal. Los productores estrella de USI se van con su cartera a corredores de capital privado que pagan más, el orgánico de USI cae a cero y las sinergias se quedan en 150 M. A la vez el ciclo blando dura hasta 2028 y las aseguradoras lanzan agentes de IA que cotizan pólizas de pymes y mediana empresa en minutos, justo el segmento que Aon compró con NFP y USI. El orgánico del grupo baja al 2 %, el margen no sube y la deuda sigue en 4 veces en 2028; S&P rebaja el rating, no vuelven las recompras y el mercado paga 11-12 veces el BPA ajustado, como a una aseguradora. Los indicadores que lo habrían anticipado: el orgánico de USI en 2027, la retención de clientes de mediana empresa y la deuda neta/EBITDA a finales de 2027.",
+    "confianza": "Media"
+  },
+  "esg": {
+    "calificaciones": [],
+    "materialidad": "Lo material para las cifras es el capital humano (personal = 52 % de los ingresos; retener a los productores de USI, con hasta 400 M de incentivos de retención) y la ética comercial (remuneración de las aseguradoras, sanciones, anticorrupción) [1, 15]. El clima es riesgo y negocio: las catástrofes endurecen el mercado y suben las comisiones de reaseguro [18].",
+    "controversias": "Sin sanciones relevantes localizadas en los últimos tres años en el 10-K 2025; la fusión con WTW (2021) acabó con una demanda antimonopolio del Departamento de Justicia y 1.000 M de indemnización [1].",
+    "confianza": "Media"
+  },
+  "preguntas": {
+    "items": [
+      {
+        "tema": "USI",
+        "pregunta": "¿Qué orgánico ha tenido USI en 2026 y cuántos productores con más de 1 M de cartera se han ido desde el anuncio?",
+        "por_que": "Decide si el bajista es realista."
+      },
+      {
+        "tema": "Sinergias",
+        "pregunta": "¿Cuánto de los 395 M de sinergias netas son de ingresos (reaseguro, riesgos especiales) y cuánto de costes, y cuándo se reconocen?",
+        "por_que": "Las de ingresos son las menos seguras."
+      },
+      {
+        "tema": "Deuda",
+        "pregunta": "¿Qué deuda neta/EBITDA espera la empresa a finales de 2027 y cuándo vuelven las recompras?",
+        "por_que": "El mercado castiga la pausa de recompras."
+      },
+      {
+        "tema": "IA y pymes",
+        "pregunta": "¿Qué parte de los ingresos de NFP y USI viene de pólizas de pymes con tarifa estándar, y cómo han ido las comisiones medias?",
+        "por_que": "Es la parte expuesta a la venta directa con IA."
+      },
+      {
+        "tema": "BPA ajustado",
+        "pregunta": "¿Termina la reestructuración en 2026 o habrá un programa nuevo con USI?",
+        "por_que": "La reestructuración se ha repetido en cinco de los últimos ocho años y queda fuera del BPA ajustado."
+      },
+      {
+        "tema": "Director financiero",
+        "pregunta": "¿Por qué salió Edmund Reese y cuándo habrá sustituto definitivo?",
+        "por_que": "Coincide con la mayor compra de la historia de Aon."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sentimiento": {
+    "tono": "Dividido",
+    "tendencia": "Empeora",
+    "revisadas": [
+      {
+        "plataforma": "Seeking Alpha (artículos de autores externos)",
+        "fecha": "2026-09",
+        "n_comentarios": 3,
+        "tono": "Dividido",
+        "resumen": "Tres artículos en tres meses: «fundamentalmente fuerte, pero tiene que abaratarse» (agosto), «cautela con USI» (31-ago) y «la compra cara de USI crea atractivo; espero una caída para entrar» (30-sep) [38, 39, 40]."
+      },
+      {
+        "plataforma": "Seeking Alpha (noticias y titulares)",
+        "fecha": "2026-10",
+        "n_comentarios": 18,
+        "tono": "Negativo",
+        "resumen": "Domina USI: caída del 10 % el día del anuncio, rebajas de la calificación cuantitativa en septiembre, salida del director financiero en agosto; dividendo de 0,82 USD mantenido [37]."
+      },
+      {
+        "plataforma": "Stocktwits",
+        "fecha": "2026-10",
+        "n_comentarios": 30,
+        "tono": "Negativo",
+        "resumen": "Mensajes de «nuevo mínimo de 52 semanas» casi a diario en septiembre; quejas por la deuda y el fin de las recompras; algún comprador oportunista y eco de la compra de 6,5 M USD del presidente [41]."
+      }
+    ],
+    "temas": [
+      {
+        "tema": "USI: precio alto, deuda y fin de las recompras",
+        "postura": "Bajista",
+        "peso": "Alto",
+        "contraste": "Cierto en cifras: ≈22x el EBITDA sin sinergias, apalancamiento a ≈4,5x y BPA ajustado de 2027 rebajado un 5 % por el consenso; la empresa promete acreción en 2028 [Ver A y D]."
+      },
+      {
+        "tema": "La IA se come la intermediación",
+        "postura": "Dividida",
+        "peso": "Medio",
+        "contraste": "El susto de febrero (−9,3 %) vino de seguros personales; el orgánico de Aon sigue en el 5 %; pero USI y NFP aumentan el peso de la mediana empresa, más expuesta."
+      },
+      {
+        "tema": "Valoración en mínimos de una década",
+        "postura": "Alcista",
+        "peso": "Medio",
+        "contraste": "PER adelantado de ≈13,8 veces el BPA ajustado de 2027 frente a una mediana de 21 en cinco años."
+      },
+      {
+        "tema": "Compras del presidente del consejo",
+        "postura": "Alcista",
+        "peso": "Bajo",
+        "contraste": "Confirmado en el Form 4: 6,55 M USD el 2-sep-2026 a ≈327 USD."
+      }
+    ],
+    "lectura": "El inversor particular pasó de ver a Aon como «buena pero cara» (agosto) a castigarla por USI: deuda, recompras suspendidas y una compra cara en el segmento más disputado. El tono es negativo y empeora, con mínimos de 52 semanas casi diarios en septiembre, mientras los analistas recortan objetivos pero mantienen sobreponderar (objetivo medio 354 USD). Hay rasgos de capitulación (−28 % en dos meses y medio) que no se corresponden con un deterioro del negocio actual (orgánico del 5 %, margen al alza). Ninguna cifra del informe sale de estas fuentes.",
+    "confianza": "Baja"
+  },
+  "fuentes": [
+    {
+      "id": 1,
+      "titulo": "Form 10-K 2025 (cuentas, segmentos Risk Capital y Human Capital, deuda, rating, plantilla, auditor)",
+      "editor": "Aon plc",
+      "tipo": "Primaria",
+      "fecha": "2026-02-13",
+      "url": "https://www.sec.gov/Archives/edgar/data/315293/000162828026008116/aon-20251231.htm"
+    },
+    {
+      "id": 2,
+      "titulo": "XBRL companyfacts (serie 2016-2025 de cuenta, balance y flujos)",
+      "editor": "SEC EDGAR",
+      "tipo": "Primaria",
+      "fecha": "2026-10-14",
+      "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000315293.json"
+    },
+    {
+      "id": 3,
+      "titulo": "Form 10-K 2023 (balance 2022-2023: activos fiduciarios, inversiones a corto, deuda a corto)",
+      "editor": "Aon plc",
+      "tipo": "Primaria",
+      "fecha": "2024-02-16",
+      "url": "https://www.sec.gov/Archives/edgar/data/315293/000162828024005392/aon-20231231.htm"
+    },
+    {
+      "id": 4,
+      "titulo": "Form 10-K 2021 (balance 2020-2021)",
+      "editor": "Aon plc",
+      "tipo": "Primaria",
+      "fecha": "2022-02-18",
+      "url": "https://www.sec.gov/Archives/edgar/data/315293/000162828022003180/aon-20211231.htm"
+    },
+    {
+      "id": 5,
+      "titulo": "Form 10-K 2019 (balance 2018-2019)",
+      "editor": "Aon plc",
+      "tipo": "Primaria",
+      "fecha": "2020-02-14",
+      "url": "https://www.sec.gov/Archives/edgar/data/315293/000162828020001607/aonplc201910-k.htm"
+    },
+    {
+      "id": 6,
+      "titulo": "Nota de resultados 2T26 (Exhibit 99.1): cuenta, balance a 30-jun-2026 y flujos del semestre; guía 2026",
+      "editor": "Aon plc",
+      "tipo": "Primaria",
+      "fecha": "2026-07-29",
+      "url": "https://www.sec.gov/Archives/edgar/data/315293/000162828026050367/ex991prq22026.htm"
+    },
+    {
+      "id": 7,
+      "titulo": "Nota de resultados 1T26 (Exhibit 99.1)",
+      "editor": "Aon plc",
+      "tipo": "Primaria",
+      "fecha": "2026-05-01",
+      "url": "https://www.sec.gov/Archives/edgar/data/315293/000162828026029093/ex991prq12026.htm"
+    },
+    {
+      "id": 8,
+      "titulo": "Nota de resultados 4T25 y ejercicio 2025 (Exhibit 99.1)",
+      "editor": "Aon plc",
+      "tipo": "Primaria",
+      "fecha": "2026-01-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/315293/000162828026004273/ex991prq42025.htm"
+    },
+    {
+      "id": 9,
+      "titulo": "Nota de resultados 3T25 (Exhibit 99.1)",
+      "editor": "Aon plc",
+      "tipo": "Primaria",
+      "fecha": "2025-10-31",
+      "url": "https://www.sec.gov/Archives/edgar/data/315293/000162828025047660/ex991prq32025.htm"
+    },
+    {
+      "id": 10,
+      "titulo": "Presentación de la compra de USI (8-K, Exhibit 99.2), con la conciliación del BPA ajustado 2015-2025 y del apalancamiento",
+      "editor": "Aon plc",
+      "tipo": "Primaria",
+      "fecha": "2026-08-31",
+      "url": "https://www.sec.gov/Archives/edgar/data/315293/000119312526375328/d108801dex992.htm"
+    },
+    {
+      "id": 11,
+      "titulo": "Información financiera pro forma combinada Aon + USI (8-K, Exhibit 99.3)",
+      "editor": "Aon plc",
+      "tipo": "Primaria",
+      "fecha": "2026-09-11",
+      "url": "https://www.sec.gov/Archives/edgar/data/315293/000119312526388699/d67980dex993.htm"
+    },
+    {
+      "id": 12,
+      "titulo": "8-K: emisión de 13.500 M USD de bonos en siete tramos (5,35 %-6,45 %, 2029-2056)",
+      "editor": "Aon plc",
+      "tipo": "Primaria",
+      "fecha": "2026-09-17",
+      "url": "https://www.sec.gov/Archives/edgar/data/315293/000119312526394533/d105587d8k.htm"
+    },
+    {
+      "id": 13,
+      "titulo": "8-K: préstamo a plazo de 4.000 M USD (Citibank) y nueva línea de crédito de 3.000 M USD",
+      "editor": "Aon plc",
+      "tipo": "Primaria",
+      "fecha": "2026-09-22",
+      "url": "https://www.sec.gov/Archives/edgar/data/315293/000119312526397203/d38875d8k.htm"
+    },
+    {
+      "id": 14,
+      "titulo": "Notas de resultados de los cierres 2017-2024 (BPA ajustado y crecimiento orgánico)",
+      "editor": "Aon plc",
+      "tipo": "Primaria",
+      "fecha": "2025-01-31",
+      "url": "https://www.sec.gov/Archives/edgar/data/315293/000162828025003243/ex991prq42024.htm"
+    },
+    {
+      "id": 15,
+      "titulo": "Nota de prensa: Aon to acquire USI (8-K, Exhibit 99.1)",
+      "editor": "Aon plc",
+      "tipo": "Primaria",
+      "fecha": "2026-08-31",
+      "url": "https://www.sec.gov/Archives/edgar/data/315293/000119312526375328/d108801dex991.htm"
+    },
+    {
+      "id": 16,
+      "titulo": "Insurance Brokers and Agents Market Size (276.500 M USD en 2025; 9,1 % anual 2026-2035)",
+      "editor": "Global Market Insights",
+      "tipo": "Sectorial",
+      "fecha": "2026-08",
+      "url": "https://www.gminsights.com/industry-analysis/insurance-brokers-and-agents-market"
+    },
+    {
+      "id": 17,
+      "titulo": "Insurance Brokerage Market (359.270 M USD en 2026; 572.470 M en 2031)",
+      "editor": "Mordor Intelligence",
+      "tipo": "Sectorial",
+      "fecha": "2026",
+      "url": "https://www.mordorintelligence.com/industry-reports/insurance-brokerage-market"
+    },
+    {
+      "id": 18,
+      "titulo": "Global commercial insurance rates fall 6% in Q2 2026 (Global Insurance Market Index)",
+      "editor": "Marsh",
+      "tipo": "Sectorial",
+      "fecha": "2026-07-23",
+      "url": "https://www.marsh.com/en/corp/about/news/global-commercial-insurance-falls-6-percent-q2-2026.html"
+    },
+    {
+      "id": 19,
+      "titulo": "Insurance brokers plunge on AI fears",
+      "editor": "Leader's Edge (The Council)",
+      "tipo": "Prensa",
+      "fecha": "2026-03",
+      "url": "https://www.leadersedge.com/industry/insurance-brokers-plunge-on-ai-fears"
+    },
+    {
+      "id": 20,
+      "titulo": "AI-Fueled Selloff in Insurance Brokers Overdone, Analysts Say",
+      "editor": "Bloomberg Law",
+      "tipo": "Prensa",
+      "fecha": "2026-02",
+      "url": "https://news.bloomberglaw.com/insurance/ai-fueled-selloff-in-insurance-brokers-overdone-analysts-say"
+    },
+    {
+      "id": 21,
+      "titulo": "Ficha sectorial corta: corredores de seguros (comparables y economía del sector)",
+      "editor": "Repositorio de análisis (sectores/corredores-seguros-2026-10-14.md)",
+      "tipo": "Sectorial",
+      "fecha": "2026-10-14",
+      "url": "https://github.com/"
+    },
+    {
+      "id": 22,
+      "titulo": "Análisis value de Marsh del 14-oct-2026 (cifras de Marsh y competidores)",
+      "editor": "Repositorio de análisis (informes/marsh-mclennan-2026-10-14)",
+      "tipo": "Analistas",
+      "fecha": "2026-10-14",
+      "url": "https://github.com/"
+    },
+    {
+      "id": 23,
+      "titulo": "Proxy statement 2026 (DEF 14A): consejo, remuneración, ratio salarial, accionistas",
+      "editor": "Aon plc",
+      "tipo": "Primaria",
+      "fecha": "2026-04-28",
+      "url": "https://www.sec.gov/Archives/edgar/data/315293/000119312526187428/aon-20260428.htm"
+    },
+    {
+      "id": 24,
+      "titulo": "8-K: salida del director financiero Edmund Reese y nombramiento interino de Nadin Virani",
+      "editor": "Aon plc",
+      "tipo": "Primaria",
+      "fecha": "2026-08-17",
+      "url": "https://www.sec.gov/Archives/edgar/data/315293/000119312526354083/d376816d8k.htm"
+    },
+    {
+      "id": 25,
+      "titulo": "Form 4 de consejeros y directivos (oct-2025 a oct-2026; form4.mjs)",
+      "editor": "SEC EDGAR",
+      "tipo": "Primaria",
+      "fecha": "2026-10-14",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000315293&type=4"
+    },
+    {
+      "id": 26,
+      "titulo": "8-K: junta de 2026 y prórroga del acuerdo de expatriación del consejero delegado",
+      "editor": "Aon plc",
+      "tipo": "Primaria",
+      "fecha": "2026-07-01",
+      "url": "https://www.sec.gov/Archives/edgar/data/315293/000119312526292736/d76205d8k.htm"
+    },
+    {
+      "id": 27,
+      "titulo": "Históricos diarios de AON, ^GSPC y KIE (precio, rango, volumen, beta, rentabilidades, cierres anuales)",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-14",
+      "url": "https://finance.yahoo.com/quote/AON/history/"
+    },
+    {
+      "id": 28,
+      "titulo": "Aon plc: Financial Data, Forecasts, Estimates (BPA publicado, EBITDA ajustado, deuda neta, FCF 2024-2028)",
+      "editor": "MarketScreener",
+      "tipo": "Analistas",
+      "fecha": "2026-10-14",
+      "url": "https://www.marketscreener.com/quote/stock/AON-PLC-11994390/finances/"
+    },
+    {
+      "id": 29,
+      "titulo": "Aon plc: consensus and target prices (21 analistas; cambios de objetivo jul-oct 2026)",
+      "editor": "MarketScreener",
+      "tipo": "Analistas",
+      "fecha": "2026-10-14",
+      "url": "https://www.marketscreener.com/quote/stock/AON-PLC-11994390/consensus/"
+    },
+    {
+      "id": 30,
+      "titulo": "AON Analysis: estimaciones de BPA normalizado 2026-2027, ingresos y tendencia de 90 días",
+      "editor": "Yahoo Finance",
+      "tipo": "Analistas",
+      "fecha": "2026-10-14",
+      "url": "https://finance.yahoo.com/quote/AON/analysis/"
+    },
+    {
+      "id": 31,
+      "titulo": "Estimaciones de BPA normalizado 2026-2027 de WTW, Gallagher, Brown & Brown y Ryan Specialty",
+      "editor": "Yahoo Finance",
+      "tipo": "Analistas",
+      "fecha": "2026-10-14",
+      "url": "https://finance.yahoo.com/quote/WTW/analysis/"
+    },
+    {
+      "id": 32,
+      "titulo": "Daily Treasury Par Yield Curve Rates 2026 (10 años: 5,21 % el 13-oct-2026)",
+      "editor": "U.S. Department of the Treasury",
+      "tipo": "Primaria",
+      "fecha": "2026-10-13",
+      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
+    },
+    {
+      "id": 33,
+      "titulo": "Implied ERP by month (ERPbymonth.xlsx): 4,20 % en octubre de 2026",
+      "editor": "Aswath Damodaran (NYU Stern)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx"
+    },
+    {
+      "id": 34,
+      "titulo": "Aon Announces Third-Quarter 2026 Earnings Release and Conference Call Date (28-oct-2026)",
+      "editor": "Aon plc (Cision, vía Placera)",
+      "tipo": "Primaria",
+      "fecha": "2026-10-09",
+      "url": "https://placera.se/pressmeddelanden/aon-announces-third-quarter-2026-earnings-release-and-conference-call-date-20261009"
+    },
+    {
+      "id": 35,
+      "titulo": "Gallagher set to ramp up M&A deals after $13B purchase of AssuredPartners (múltiplos de AssuredPartners, NFP y McGriff)",
+      "editor": "Business Insurance",
+      "tipo": "Prensa",
+      "fecha": "2024-12-09",
+      "url": "https://www.businessinsurance.com/gallagher-set-to-ramp-up-ma-deals-after-13b-purchase-of-assuredpartners/"
+    },
+    {
+      "id": 36,
+      "titulo": "What made this Boston agency worth $9.8 billion to buyers (Accession: ≈15,6 veces el EBITDA ajustado)",
+      "editor": "Agency Checklists",
+      "tipo": "Prensa",
+      "fecha": "2025-06-16",
+      "url": "https://agencychecklists.com/2025/06/16/what-made-this-boston-agency-worth-9-8-billion-to-buyers-76080/"
+    },
+    {
+      "id": 37,
+      "titulo": "Feed de Seeking Alpha de AON (artículos y noticias, jul-oct 2026)",
+      "editor": "Seeking Alpha",
+      "tipo": "Foros y redes",
+      "fecha": "2026-10-14",
+      "url": "https://seekingalpha.com/api/sa/combined/AON.xml"
+    },
+    {
+      "id": 38,
+      "titulo": "Aon: A Pricey USI Acquisition Ironically Creates Appeal, Holding On For A Dip",
+      "editor": "Seeking Alpha (autor externo)",
+      "tipo": "Foros y redes",
+      "fecha": "2026-09-30",
+      "url": "https://seekingalpha.com/article/4950912-aon-stock-pricey-usi-acquisition-ironically-creates-appeal"
+    },
+    {
+      "id": 39,
+      "titulo": "Aon: Remaining Cautious Amid USI Acquisition",
+      "editor": "Seeking Alpha (autor externo)",
+      "tipo": "Foros y redes",
+      "fecha": "2026-08-31",
+      "url": "https://seekingalpha.com/article/4941881-aon-remaining-cautious-amid-usi-acquisition"
+    },
+    {
+      "id": 40,
+      "titulo": "Aon: Fundamentally Strong, But Needs To Become Cheaper",
+      "editor": "Seeking Alpha (autor externo)",
+      "tipo": "Foros y redes",
+      "fecha": "2026-08-10",
+      "url": "https://seekingalpha.com/article/4934459-aon-stock-fundamentally-strong-but-needs-to-become-cheaper"
+    },
+    {
+      "id": 41,
+      "titulo": "Stream de Stocktwits de AON (API pública, 30 mensajes de ago-oct 2026)",
+      "editor": "Stocktwits",
+      "tipo": "Foros y redes",
+      "fecha": "2026-10-14",
+      "url": "https://api.stocktwits.com/api/2/streams/symbol/AON.json"
+    }
+  ],
+  "calc": {
+    "version": 4,
+    "etiquetas": {
+      "margen_bruto": "M. bruto",
+      "margen_bruto_largo": "Margen bruto",
+      "dias_base": "sobre el coste de ventas"
+    },
+    "recomendacion": {
+      "recomendacion": "Comprar",
+      "regla": "Comprar",
+      "regla_absoluta": "Comprar",
+      "regla_relativa": "Comprar",
+      "coincide": true,
+      "conviccion": "Media",
+      "conviccion_sugerida": "Alta",
+      "conviccion_razones": [
+        "las dos reglas dan Comprar, rentabilidad del 25,4 %, asimetría de 4,06, bajista del -16,5 % y el precio descuenta 4,4 puntos menos de crecimiento que el caso base"
+      ],
+      "reglas_discrepan": false,
+      "relativo": {
+        "prima_implicita_pct": 4.2,
+        "wacc": 7.31,
+        "ke": 8.78,
+        "dcf": 427.76,
+        "dcf_min": 388.35,
+        "dcf_max": 476.07,
+        "valor_objetivo": 381.94,
+        "alcista": 521.74,
+        "bajista": 263.11,
+        "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+        "fecha": "2026-10",
+        "potencial_pct": 38.7,
+        "rentabilidad_total_pct": 39.8,
+        "asimetria": 20.18
+      },
+      "objetivo_mercado_txt": " · con la prima implícita del mercado: 381,94 (+38,7 %)",
+      "objetivo_mercado_corto": " · mercado 381,94",
+      "rentabilidad_mercado_corto": " · mercado +39,8 %",
+      "potencial_pct": 24.3,
+      "dividendo_pct": 1.1,
+      "rentabilidad_total_pct": 25.4,
+      "alcista_pct": 67,
+      "bajista_pct": -16.5,
+      "asimetria": 4.06,
+      "comprar_por_debajo": 311.07,
+      "vender_por_encima": 404.06,
+      "tabla": [
+        {
+          "concepto": "Objetivo a 12 meses (nuestro PER × nuestro BPA 2028e, ponderado 25/50/25)",
+          "valor": "360,60 USD"
+        },
+        {
+          "concepto": "Bajista / base / alcista a 12 meses",
+          "valor": "12,2x × 20,06 = 244,73 · 15,2x × 22,72 = 345,34 · 20,6x × 24,61 = 506,97"
+        },
+        {
+          "concepto": "Rentabilidad a 12 meses: ponderada / del base (con dividendo)",
+          "valor": "32,1 % / 26,5 %"
+        },
+        {
+          "concepto": "Regla de múltiplos aplicada",
+          "valor": "v3: base a mitad de camino hacia la mediana adelantada, sin alejarse del actual más de ×1,1; bajista mín. 5 a (adelantado) o base × 0,80; alcista techo base × 1,35 (selector de método: sin marcas: decide la v3)"
+        },
+        {
+          "concepto": "Objetivo medio de los analistas (solo contraste)",
+          "valor": "354,21 (nuestro base -2,5 %)"
+        },
+        {
+          "concepto": "Valor intrínseco (síntesis ponderada, largo plazo)",
+          "valor": "342,28 USD"
+        },
+        {
+          "concepto": "Potencial sobre el precio actual",
+          "valor": "24,3 %"
+        },
+        {
+          "concepto": "Rentabilidad por dividendo ordinario",
+          "valor": "1,1 %"
+        },
+        {
+          "concepto": "Rentabilidad total esperada a 12 meses",
+          "valor": "25,4 %"
+        },
+        {
+          "concepto": "Escenario alcista / bajista",
+          "valor": "67,0 % / -16,5 %"
+        },
+        {
+          "concepto": "Asimetría (ganancia alcista / pérdida bajista)",
+          "valor": "4,06x"
+        },
+        {
+          "concepto": "Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado",
+          "valor": "10,0 % frente a 8,0 % y 7,3 %"
+        },
+        {
+          "concepto": "Valor objetivo con la prima implícita del mercado (4,2 %, WACC 7,3 %)",
+          "valor": "381,94 USD"
+        },
+        {
+          "concepto": "Rentabilidad total esperada con la prima del mercado",
+          "valor": "39,8 %"
+        },
+        {
+          "concepto": "Asimetría con la prima del mercado",
+          "valor": "más de 20x"
+        },
+        {
+          "concepto": "Regla absoluta (frente a su coste de capital)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "Regla relativa (frente a lo que pide el mercado)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "Crecimiento anual implícito en el precio (2027e-2032e) frente al previsto para su mercado",
+          "valor": "3,1 % frente a 9,1 %"
+        },
+        {
+          "concepto": "¿La calidad de la empresa sostiene el crecimiento previsto?",
+          "valor": "Sí (7,0 % anual proyectado; sin inversión neta)"
+        },
+        {
+          "concepto": "Señal del valor intrínseco (regla del DCF, referencia)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "Recomendación según la regla a 12 meses (Comprar: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender: ponderada ≤ -10 %)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "Convicción según los criterios (las dos reglas dan Comprar, rentabilidad del 25,4 %, asimetría de 4,06, bajista del -16,5 % y el precio descuenta 4,4 puntos menos de crecimiento que el caso base)",
+          "valor": "Alta"
+        }
+      ],
+      "niveles": [
+        {
+          "accion": "Comprar",
+          "condicion": "Por debajo de 311,07 (ponderada a 12 meses ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco)"
+        },
+        {
+          "accion": "Mantener",
+          "condicion": "Entre 311,07 y 404,06"
+        },
+        {
+          "accion": "Vender o reducir",
+          "condicion": "Por encima de 404,06 (ponderada a 12 meses ≤ -10 %)"
+        }
+      ],
+      "precio_txt": "",
+      "valor_objetivo_txt": "",
+      "regla_valor_intrinseco": "Comprar",
+      "objetivo_12m": {
+        "completo": true,
+        "filas": [
+          {
+            "escenario": "Bajista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 20.06,
+            "multiplo": 12.2,
+            "multiplo_informe": null,
+            "origen": "base × 0.8",
+            "precio": 244.73,
+            "rentabilidad_pct": -10,
+            "justificacion": "BPA ajustado. Ventas de 22.100 M en 2028e (orgánico del 2 %) y margen operativo ajustado del 32,6 %: 7.205 M; intereses −1.800 M, otros +40 M, impuestos al 19,5 % y 40 M de minoritarios: 4.343 M entre 216,5 M de acciones (sin recompras). Supone sinergias a la mitad."
+          },
+          {
+            "escenario": "Base",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 22.72,
+            "multiplo": 15.2,
+            "multiplo_informe": null,
+            "origen": "PER actual (13.8x) × 1.1 (tope: la mediana de 5 años, 21x, queda más lejos)",
+            "precio": 345.34,
+            "rentabilidad_pct": 26.5,
+            "justificacion": "BPA ajustado. Ventas de 23.100 M (orgánico del 4,5-5 % más USI) y margen operativo ajustado del 34,2 %: 7.900 M; intereses −1.780 M (cupón medio de 5,92 % de los bonos nuevos, deuda bajando), otros +40 M, impuestos al 19,5 % y 40 M de minoritarios: 4.919 M entre 216,5 M de acciones. Cuadre con 2025: BPA ajustado de 17,07 USD [10]; 2026e 18,60 (consenso 18,57) y 2027e 19,89 (consenso 20,21, con USI diluyendo) [30]."
+          },
+          {
+            "escenario": "Alcista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 24.61,
+            "multiplo": 20.6,
+            "multiplo_informe": null,
+            "origen": "techo de base × 1.35",
+            "precio": 506.97,
+            "rentabilidad_pct": 85.2,
+            "justificacion": "BPA ajustado. Ventas de 23.800 M (orgánico del 6-7 %) y margen operativo ajustado del 35,2 %: 8.378 M; intereses −1.750 M, otros +40 M, impuestos al 19,5 % y 40 M de minoritarios: 5.328 M entre 216,5 M de acciones."
+          }
+        ],
+        "regla": {
+          "version": "v3",
+          "bajista": 12.2,
+          "base": 15.2,
+          "alcista": 20.6,
+          "bajista_origen": "base × 0.8",
+          "base_origen": "PER actual (13.8x) × 1.1 (tope: la mediana de 5 años, 21x, queda más lejos)",
+          "alcista_origen": "techo de base × 1.35"
+        },
+        "version": "v3",
+        "probabilidades": [
+          25,
+          50,
+          25
+        ],
+        "objetivo_ponderado": 360.6,
+        "objetivo_simple": 365.68,
+        "objetivo_base": 345.34,
+        "rentabilidad_ponderada_pct": 32.1,
+        "rentabilidad_simple_pct": 33.9,
+        "rentabilidad_base_pct": 26.5,
+        "asimetria": 7.57,
+        "senal": "Comprar",
+        "senal_sin_confirmar": null,
+        "confianza_baja": false,
+        "comprar_por_debajo": 311.07,
+        "vender_por_encima": 404.06,
+        "consenso_objetivo": 354.21,
+        "diferencia_consenso_pct": -2.5,
+        "selector": {
+          "regla": "v3",
+          "motivo": "sin marcas: decide la v3",
+          "v3_sin_selector": {
+            "version": "v3",
+            "rentabilidad_ponderada_pct": 32.1,
+            "rentabilidad_base_pct": 26.5,
+            "senal": "Comprar",
+            "objetivo_ponderado": 360.6
+          },
+          "v2": {
+            "version": "v2",
+            "rentabilidad_ponderada_pct": 19.8,
+            "rentabilidad_base_pct": 15,
+            "senal": "Comprar",
+            "objetivo_ponderado": 326.69
+          }
+        },
+        "v2": {
+          "rentabilidad_ponderada_pct": 19.8,
+          "rentabilidad_base_pct": 15,
+          "senal": "Comprar",
+          "multiplos": [
+            11.8,
+            13.8,
+            18
+          ]
+        },
+        "v3_tope_anterior": {
+          "tope": 1.3,
+          "rentabilidad_ponderada_pct": 43.6,
+          "senal": "Comprar"
+        },
+        "comparacion_txt": "Para comparar, con la regla v2 (historia al cierre, mismo precio): 11,8x / 13,8x / 18,0x, 19,8 % Comprar; con el tope anterior del base (×1,3, 14-oct mediodía): 43,6 % Comprar. Decide la v3 con tope ×1,1, elegida por el selector de método (sin marcas: decide la v3; METODO-VIGENTE.md)."
+      },
+      "rentabilidad_12m_pct": 32.1,
+      "rentabilidad_12m_txt": "+32,1 % (base +26,5 %)",
+      "objetivo_12m_txt": "360,60 USD"
+    },
+    "mercado": {
+      "precio": 275.32,
+      "acciones": 212.4,
+      "capitalizacion": 58478,
+      "deuda_neta": 13700,
+      "deuda_neta_ajustada": 31266,
+      "asimilables_deuda": 17566,
+      "ajustes_puente": 17678,
+      "valor_empresa": 89856,
+      "fecha_puente": "2026-06-30"
+    },
+    "clave": {
+      "capitalizacion": 58478,
+      "valor_empresa": 89856,
+      "deuda_neta": 13700,
+      "ev_ventas_ltm": 5.11,
+      "ev_ebitda_ltm": 16.2,
+      "ev_ebitda_ntm": 13.5,
+      "ev_ebit_ltm": 19.3,
+      "per_ltm": 15.2,
+      "per_ntm": 13.9,
+      "fcf_yield_pct": 5.6,
+      "dividendo_pct": 1.1,
+      "dn_ebitda": 2.5,
+      "roic_pct": 15.6,
+      "margen_ebitda_pct": 31.6,
+      "deuda_neta_ajustada": 31266,
+      "dn_ebitda_ajustada": 5.6,
+      "crecimiento_tcac_pct": 7.7,
+      "ingresos_ntm": 20863,
+      "ebitda_ntm": 6646,
+      "bpa_ntm": 19.86,
+      "ebitda_ltm": 5548,
+      "ingresos_ltm": 17577,
+      "ev_rab": null
+    },
+    "cuenta": [
+      {
+        "periodo": "2019",
+        "ingresos": 11013,
+        "crecimiento_pct": null,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 2733,
+        "margen_ebitda_pct": 24.8,
+        "ebit": 2169,
+        "margen_ebit_pct": 19.7,
+        "beneficio_neto": 1532,
+        "margen_neto_pct": 13.9,
+        "bpa": 6.37,
+        "dpa": 1.72,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 15.9,
+        "payout_pct": 27
+      },
+      {
+        "periodo": "2020",
+        "ingresos": 11066,
+        "crecimiento_pct": 0.5,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 3194,
+        "margen_ebitda_pct": 28.9,
+        "ebit": 2781,
+        "margen_ebit_pct": 25.1,
+        "beneficio_neto": 1969,
+        "margen_neto_pct": 17.8,
+        "bpa": 8.45,
+        "dpa": 1.78,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 18.2,
+        "payout_pct": 21
+      },
+      {
+        "periodo": "2021",
+        "ingresos": 12193,
+        "crecimiento_pct": 10.2,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 3852,
+        "margen_ebitda_pct": 31.6,
+        "ebit": 3526,
+        "margen_ebit_pct": 28.9,
+        "beneficio_neto": 1255,
+        "margen_neto_pct": 10.3,
+        "bpa": 5.55,
+        "dpa": 1.99,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 32.3,
+        "payout_pct": 36
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 12479,
+        "crecimiento_pct": 2.3,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 3933,
+        "margen_ebitda_pct": 31.5,
+        "ebit": 3669,
+        "margen_ebit_pct": 29.4,
+        "beneficio_neto": 2589,
+        "margen_neto_pct": 20.7,
+        "bpa": 12.14,
+        "dpa": 2.19,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 16.2,
+        "payout_pct": 18
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 13376,
+        "crecimiento_pct": 7.2,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 4041,
+        "margen_ebitda_pct": 30.2,
+        "ebit": 3785,
+        "margen_ebit_pct": 28.3,
+        "beneficio_neto": 2564,
+        "margen_neto_pct": 19.2,
+        "bpa": 12.51,
+        "dpa": 2.41,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 17.1,
+        "payout_pct": 19
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 15698,
+        "crecimiento_pct": 17.4,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 4521,
+        "margen_ebitda_pct": 28.8,
+        "ebit": 3835,
+        "margen_ebit_pct": 24.4,
+        "beneficio_neto": 2654,
+        "margen_neto_pct": 16.9,
+        "bpa": 12.49,
+        "dpa": 2.64,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 21.4,
+        "payout_pct": 21
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 17181,
+        "crecimiento_pct": 9.4,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 5310,
+        "margen_ebitda_pct": 30.9,
+        "ebit": 4344,
+        "margen_ebit_pct": 25.3,
+        "beneficio_neto": 3695,
+        "margen_neto_pct": 21.5,
+        "bpa": 17.02,
+        "dpa": 2.91,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 21.2,
+        "payout_pct": 17
+      }
+    ],
+    "tcac": {
+      "periodo": "2019-2025",
+      "ingresos_pct": 7.7,
+      "ebitda_pct": 11.7,
+      "bpa_pct": 17.8
+    },
+    "cuenta_y_prevision": [
+      {
+        "periodo": "2019",
+        "ingresos": 11013,
+        "ebitda": 2733
+      },
+      {
+        "periodo": "2020",
+        "ingresos": 11066,
+        "ebitda": 3194
+      },
+      {
+        "periodo": "2021",
+        "ingresos": 12193,
+        "ebitda": 3852
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 12479,
+        "ebitda": 3933
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 13376,
+        "ebitda": 4041
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 15698,
+        "ebitda": 4521
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 17181,
+        "ebitda": 5310
+      },
+      {
+        "periodo": "2026e",
+        "ingresos": 17920,
+        "ebitda": 5645
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 22023,
+        "ebitda": 6827
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 23125,
+        "ebitda": 7515
+      },
+      {
+        "periodo": "2029e",
+        "ingresos": 24281,
+        "ebitda": 8134
+      },
+      {
+        "periodo": "2030e",
+        "ingresos": 25373,
+        "ebitda": 8627
+      },
+      {
+        "periodo": "2031e",
+        "ingresos": 26388,
+        "ebitda": 9104
+      },
+      {
+        "periodo": "2032e",
+        "ingresos": 27312,
+        "ebitda": 9423
+      }
+    ],
+    "segmentos_ultimo": [
+      {
+        "nombre": "Risk Capital (Commercial Risk Solutions y Reinsurance Solutions)",
+        "ingresos": 11290,
+        "peso_pct": 65.7,
+        "crecimiento_pct": 7.4,
+        "margen_pct": 30.4,
+        "tipo_margen": "EBIT"
+      },
+      {
+        "nombre": "Human Capital (Health Solutions y Wealth Solutions)",
+        "ingresos": 5907,
+        "peso_pct": 34.4,
+        "crecimiento_pct": 13.4,
+        "margen_pct": 23.9,
+        "tipo_margen": "EBIT"
+      },
+      {
+        "nombre": "Corporativo y eliminaciones",
+        "ingresos": -16,
+        "peso_pct": -0.1,
+        "crecimiento_pct": -42.9,
+        "margen_pct": 3137.5,
+        "tipo_margen": "EBIT"
+      }
+    ],
+    "segmentos_tabla": {
+      "periodos": [
+        "",
+        "",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "filas": [
+        {
+          "nombre": "Risk Capital (Commercial Risk Solutions y Reinsurance Solutions)",
+          "v0": null,
+          "v1": null,
+          "v2": 9524,
+          "v3": 10517,
+          "v4": 11290
+        },
+        {
+          "nombre": "Human Capital (Health Solutions y Wealth Solutions)",
+          "v0": null,
+          "v1": null,
+          "v2": 3864,
+          "v3": 5209,
+          "v4": 5907
+        },
+        {
+          "nombre": "Corporativo y eliminaciones",
+          "v0": null,
+          "v1": null,
+          "v2": -12,
+          "v3": -28,
+          "v4": -16
+        }
+      ]
+    },
+    "segmentos_periodo": "2025",
+    "balance": [
+      {
+        "periodo": "2019",
+        "activo_total": 17571,
+        "intangibles": 8948,
+        "circulante": 1238,
+        "circulante_ventas_pct": 11.2,
+        "caja": 928,
+        "deuda_financiera": 7339,
+        "arrendamientos": 0,
+        "deuda_neta": 6411,
+        "patrimonio": 3375,
+        "minoritarios": 74,
+        "dn_ebitda": 2.35,
+        "dn_patrimonio_pct": 186,
+        "dso": 103,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 7.1,
+        "capital_invertido": 9860,
+        "liquidez_corriente": 1.24
+      },
+      {
+        "periodo": "2020",
+        "activo_total": 18316,
+        "intangibles": 9306,
+        "circulante": 1097,
+        "circulante_ventas_pct": 9.9,
+        "caja": 1192,
+        "deuda_financiera": 7729,
+        "arrendamientos": 0,
+        "deuda_neta": 6537,
+        "patrimonio": 3495,
+        "minoritarios": 88,
+        "dn_ebitda": 2.05,
+        "dn_patrimonio_pct": 182,
+        "dso": 101,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 8.3,
+        "capital_invertido": 10120,
+        "liquidez_corriente": 1.34
+      },
+      {
+        "periodo": "2021",
+        "activo_total": 17531,
+        "intangibles": 8926,
+        "circulante": 942,
+        "circulante_ventas_pct": 7.7,
+        "caja": 836,
+        "deuda_financiera": 9392,
+        "arrendamientos": 0,
+        "deuda_neta": 8556,
+        "patrimonio": 1061,
+        "minoritarios": 97,
+        "dn_ebitda": 2.22,
+        "dn_patrimonio_pct": 739,
+        "dso": 93,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 11,
+        "capital_invertido": 9714,
+        "liquidez_corriente": 0.99
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 16804,
+        "intangibles": 8739,
+        "circulante": 1026,
+        "circulante_ventas_pct": 8.2,
+        "caja": 1142,
+        "deuda_financiera": 10770,
+        "arrendamientos": 0,
+        "deuda_neta": 9628,
+        "patrimonio": -529,
+        "minoritarios": 100,
+        "dn_ebitda": 2.45,
+        "dn_patrimonio_pct": -2244,
+        "dso": 89,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 9,
+        "capital_invertido": 9199,
+        "liquidez_corriente": 1.09
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 17652,
+        "intangibles": 8648,
+        "circulante": 1092,
+        "circulante_ventas_pct": 8.2,
+        "caja": 1147,
+        "deuda_financiera": 11199,
+        "arrendamientos": 0,
+        "deuda_neta": 10052,
+        "patrimonio": -826,
+        "minoritarios": 84,
+        "dn_ebitda": 2.49,
+        "dn_patrimonio_pct": -1355,
+        "dso": 89,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 7.8,
+        "capital_invertido": 9310,
+        "liquidez_corriente": 1.01
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 31399,
+        "intangibles": 21977,
+        "circulante": 1042,
+        "circulante_ventas_pct": 6.6,
+        "caja": 1304,
+        "deuda_financiera": 17016,
+        "arrendamientos": 0,
+        "deuda_neta": 15712,
+        "patrimonio": 6121,
+        "minoritarios": 106,
+        "dn_ebitda": 3.48,
+        "dn_patrimonio_pct": 252,
+        "dso": 88,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 4.9,
+        "capital_invertido": 21939,
+        "liquidez_corriente": 1.08
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 32895,
+        "intangibles": 21524,
+        "circulante": 1539,
+        "circulante_ventas_pct": 9,
+        "caja": 2798,
+        "deuda_financiera": 15249,
+        "arrendamientos": 0,
+        "deuda_neta": 12451,
+        "patrimonio": 9352,
+        "minoritarios": 107,
+        "dn_ebitda": 2.34,
+        "dn_patrimonio_pct": 132,
+        "dso": 89,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 5.3,
+        "capital_invertido": 21910,
+        "liquidez_corriente": 1.48
+      }
+    ],
+    "perimetro_nota": "Cambio de perímetro (2024: NFP, consolidada desde el 25-abr-2024 (13.400 M USD con deuda asumida): entra en ocho meses de la cuenta y en todo el balance.; 2025: Venta de NFP Wealth (cuarto trimestre de 2025): plusvalía de 1.201 M en «otros ingresos»; sale del balance y de parte de la cuenta.). Los ratios de balance de ese año (días, circulante, deuda neta / EBITDA, ROIC) y los indicadores de calidad contable no son comparables con los anteriores.",
+    "flujos": [
+      {
+        "periodo": "2019",
+        "flujo_operativo": 1835,
+        "capex": 225,
+        "pagos_arrendamientos": 0,
+        "fcf": 1610,
+        "beneficio_neto": 1532,
+        "conversion_pct": 105,
+        "capex_ventas_pct": 2,
+        "capex_amortizacion": 0.4,
+        "adquisiciones": 39,
+        "desinversiones": 52,
+        "dividendos": 410,
+        "recompras": 1960,
+        "emision_acciones": 0,
+        "retorno_accionista": 2370,
+        "payout_caja_pct": 155,
+        "acciones": 241,
+        "fcf_por_accion": 6.68
+      },
+      {
+        "periodo": "2020",
+        "flujo_operativo": 2783,
+        "capex": 141,
+        "pagos_arrendamientos": 0,
+        "fcf": 2642,
+        "beneficio_neto": 1969,
+        "conversion_pct": 134,
+        "capex_ventas_pct": 1.3,
+        "capex_amortizacion": 0.34,
+        "adquisiciones": 368,
+        "desinversiones": 30,
+        "dividendos": 412,
+        "recompras": 1763,
+        "emision_acciones": 44,
+        "retorno_accionista": 2175,
+        "payout_caja_pct": 110,
+        "acciones": 233,
+        "fcf_por_accion": 11.34
+      },
+      {
+        "periodo": "2021",
+        "flujo_operativo": 2182,
+        "capex": 137,
+        "pagos_arrendamientos": 0,
+        "fcf": 2045,
+        "beneficio_neto": 1255,
+        "conversion_pct": 163,
+        "capex_ventas_pct": 1.1,
+        "capex_amortizacion": 0.42,
+        "adquisiciones": 14,
+        "desinversiones": 218,
+        "dividendos": 447,
+        "recompras": 3543,
+        "emision_acciones": 55,
+        "retorno_accionista": 3990,
+        "payout_caja_pct": 318,
+        "acciones": 226,
+        "fcf_por_accion": 9.05
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 3219,
+        "capex": 196,
+        "pagos_arrendamientos": 0,
+        "fcf": 3023,
+        "beneficio_neto": 2589,
+        "conversion_pct": 117,
+        "capex_ventas_pct": 1.6,
+        "capex_amortizacion": 0.74,
+        "adquisiciones": 162,
+        "desinversiones": 81,
+        "dividendos": 463,
+        "recompras": 3203,
+        "emision_acciones": 58,
+        "retorno_accionista": 3666,
+        "payout_caja_pct": 142,
+        "acciones": 213,
+        "fcf_por_accion": 14.19
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 3435,
+        "capex": 252,
+        "pagos_arrendamientos": 0,
+        "fcf": 3183,
+        "beneficio_neto": 2564,
+        "conversion_pct": 124,
+        "capex_ventas_pct": 1.9,
+        "capex_amortizacion": 0.98,
+        "adquisiciones": 35,
+        "desinversiones": 5,
+        "dividendos": 489,
+        "recompras": 2700,
+        "emision_acciones": 72,
+        "retorno_accionista": 3189,
+        "payout_caja_pct": 124,
+        "acciones": 205,
+        "fcf_por_accion": 15.53
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 3035,
+        "capex": 218,
+        "pagos_arrendamientos": 0,
+        "fcf": 2817,
+        "beneficio_neto": 2654,
+        "conversion_pct": 106,
+        "capex_ventas_pct": 1.4,
+        "capex_amortizacion": 0.32,
+        "adquisiciones": 3506,
+        "desinversiones": 700,
+        "dividendos": 562,
+        "recompras": 1000,
+        "emision_acciones": 79,
+        "retorno_accionista": 1562,
+        "payout_caja_pct": 59,
+        "acciones": 213,
+        "fcf_por_accion": 13.23
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 3481,
+        "capex": 263,
+        "pagos_arrendamientos": 0,
+        "fcf": 3218,
+        "beneficio_neto": 3695,
+        "conversion_pct": 87,
+        "capex_ventas_pct": 1.5,
+        "capex_amortizacion": 0.27,
+        "adquisiciones": 394,
+        "desinversiones": 2349,
+        "dividendos": 629,
+        "recompras": 1000,
+        "emision_acciones": 70,
+        "retorno_accionista": 1629,
+        "payout_caja_pct": 44,
+        "acciones": 217,
+        "fcf_por_accion": 14.83
+      }
+    ],
+    "flujos_acumulado": {
+      "periodo": "2019-2025",
+      "fcf": 18538,
+      "adquisiciones": 4518,
+      "dividendos": 3412,
+      "recompras": 15169,
+      "conversion_pct": 114
+    },
+    "rentabilidad": [
+      {
+        "periodo": "2019",
+        "nopat": 1825,
+        "capital_invertido": 9860,
+        "roic_pct": 18.5,
+        "roic_nota": null,
+        "roe_pct": 45.4,
+        "roa_pct": 8.7,
+        "margen_neto_pct": 13.9,
+        "rotacion": 0.63,
+        "apalancamiento": 5.21
+      },
+      {
+        "periodo": "2020",
+        "nopat": 2276,
+        "capital_invertido": 9990,
+        "roic_pct": 22.8,
+        "roic_nota": null,
+        "roe_pct": 57.3,
+        "roa_pct": 11,
+        "margen_neto_pct": 17.8,
+        "rotacion": 0.62,
+        "apalancamiento": 5.22
+      },
+      {
+        "periodo": "2021",
+        "nopat": 2388,
+        "capital_invertido": 9917,
+        "roic_pct": 24.1,
+        "roic_nota": null,
+        "roe_pct": 55.1,
+        "roa_pct": 7,
+        "margen_neto_pct": 10.3,
+        "rotacion": 0.68,
+        "apalancamiento": 7.87
+      },
+      {
+        "periodo": "2022",
+        "nopat": 3076,
+        "capital_invertido": 9457,
+        "roic_pct": 32.5,
+        "roic_nota": null,
+        "roe_pct": 973.3,
+        "roa_pct": 15.1,
+        "margen_neto_pct": 20.7,
+        "rotacion": 0.73,
+        "apalancamiento": 64.54
+      },
+      {
+        "periodo": "2023",
+        "nopat": 3139,
+        "capital_invertido": 9255,
+        "roic_pct": 33.9,
+        "roic_nota": null,
+        "roe_pct": -378.5,
+        "roa_pct": 14.9,
+        "margen_neto_pct": 19.2,
+        "rotacion": 0.78,
+        "apalancamiento": -25.43
+      },
+      {
+        "periodo": "2024",
+        "nopat": 3013,
+        "capital_invertido": 15625,
+        "roic_pct": 19.3,
+        "roic_nota": null,
+        "roe_pct": 100.2,
+        "roa_pct": 10.8,
+        "margen_neto_pct": 16.9,
+        "rotacion": 0.64,
+        "apalancamiento": 9.26
+      },
+      {
+        "periodo": "2025",
+        "nopat": 3423,
+        "capital_invertido": 21925,
+        "roic_pct": 15.6,
+        "roic_nota": null,
+        "roe_pct": 47.8,
+        "roa_pct": 11.5,
+        "margen_neto_pct": 21.5,
+        "rotacion": 0.53,
+        "apalancamiento": 4.16
+      }
+    ],
+    "roic_incremental_pct": 13.2,
+    "roic_frente_wacc": [
+      {
+        "periodo": "2019",
+        "roic_pct": 18.5,
+        "roe_pct": 45.4,
+        "wacc_pct": 8
+      },
+      {
+        "periodo": "2020",
+        "roic_pct": 22.8,
+        "roe_pct": 57.3,
+        "wacc_pct": 8
+      },
+      {
+        "periodo": "2021",
+        "roic_pct": 24.1,
+        "roe_pct": 55.1,
+        "wacc_pct": 8
+      },
+      {
+        "periodo": "2022",
+        "roic_pct": 32.5,
+        "roe_pct": 973.3,
+        "wacc_pct": 8
+      },
+      {
+        "periodo": "2023",
+        "roic_pct": 33.9,
+        "roe_pct": -378.5,
+        "wacc_pct": 8
+      },
+      {
+        "periodo": "2024",
+        "roic_pct": 19.3,
+        "roe_pct": 100.2,
+        "wacc_pct": 8
+      },
+      {
+        "periodo": "2025",
+        "roic_pct": 15.6,
+        "roe_pct": 47.8,
+        "wacc_pct": 8
+      }
+    ],
+    "calidad": {
+      "periodo": "2025",
+      "altman_z": 2.54,
+      "altman_zona": "Zona gris",
+      "piotroski_f": 6,
+      "piotroski_detalle": [
+        {
+          "criterio": "Beneficio neto positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "ROA mejora",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo > beneficio neto",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Baja el endeudamiento (deuda / activo)",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora la liquidez corriente",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "No emite acciones",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Mejora el margen bruto",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "Mejora la rotación del activo",
+          "resultado": "Sí"
+        }
+      ],
+      "beneish_m": -2.36,
+      "beneish_fiable": false,
+      "beneish_variables": [
+        {
+          "variable": "DSRI",
+          "valor": 1.01
+        },
+        {
+          "variable": "GMI",
+          "valor": 1
+        },
+        {
+          "variable": "AQI",
+          "valor": 0.93
+        },
+        {
+          "variable": "SGI",
+          "valor": 1.09
+        },
+        {
+          "variable": "DEPI",
+          "valor": 0.9
+        },
+        {
+          "variable": "SGAI",
+          "valor": 1
+        },
+        {
+          "variable": "LVGI",
+          "valor": 0.89
+        },
+        {
+          "variable": "TATA",
+          "valor": 0.01
+        }
+      ],
+      "tabla": [
+        {
+          "indicador": "Altman Z",
+          "valor": "2,54",
+          "lectura": "Zona gris (> 2,99 seguro; < 1,81 riesgo). No aplica a bancos ni aseguradoras, y subestima la solvencia de empresas con grandes anticipos de clientes o prefinanciación pública (contratistas, construcción), que inflan el pasivo. No fiable en 2025: cambio de perímetro (el balance incluye negocios sin su cuenta de resultados completa)."
+        },
+        {
+          "indicador": "Piotroski F",
+          "valor": "6 / 8",
+          "lectura": "Intermedio (4-6)."
+        },
+        {
+          "indicador": "Beneish M",
+          "valor": "-2,36",
+          "lectura": "No interpretable en 2025: con un cambio de perímetro, los índices de activos, amortización y ventas (AQI, DEPI, SGI) comparan grupos distintos y el umbral de −1,78 no sirve."
+        },
+        {
+          "indicador": "Flujo operativo / beneficio neto (acumulado)",
+          "valor": "1,23x",
+          "lectura": "El beneficio se cobra."
+        }
+      ]
+    },
+    "dcf": {
+      "proyeccion": [
+        {
+          "periodo": "2026e",
+          "ingresos": 17920,
+          "crecimiento_pct": 4.3,
+          "ebitda": 5645,
+          "margen_ebitda_pct": 31.5,
+          "amortizacion": 394,
+          "ebit": 5250,
+          "impuestos": 1103,
+          "capex": 448,
+          "variacion_circulante": 74,
+          "fcff": 4020,
+          "fraccion": 0.21,
+          "factor": 0.992,
+          "vp": 852
+        },
+        {
+          "periodo": "2027e",
+          "ingresos": 22023,
+          "crecimiento_pct": 22.9,
+          "ebitda": 6827,
+          "margen_ebitda_pct": 31,
+          "amortizacion": 485,
+          "ebit": 6343,
+          "impuestos": 1332,
+          "capex": 551,
+          "variacion_circulante": 369,
+          "fcff": 4575,
+          "fraccion": 1,
+          "factor": 0.946,
+          "vp": 4327
+        },
+        {
+          "periodo": "2028e",
+          "ingresos": 23125,
+          "crecimiento_pct": 5,
+          "ebitda": 7515,
+          "margen_ebitda_pct": 32.5,
+          "amortizacion": 509,
+          "ebit": 7007,
+          "impuestos": 1471,
+          "capex": 578,
+          "variacion_circulante": 99,
+          "fcff": 5367,
+          "fraccion": 1,
+          "factor": 0.876,
+          "vp": 4701
+        },
+        {
+          "periodo": "2029e",
+          "ingresos": 24281,
+          "crecimiento_pct": 5,
+          "ebitda": 8134,
+          "margen_ebitda_pct": 33.5,
+          "amortizacion": 534,
+          "ebit": 7600,
+          "impuestos": 1596,
+          "capex": 607,
+          "variacion_circulante": 104,
+          "fcff": 5827,
+          "fraccion": 1,
+          "factor": 0.811,
+          "vp": 4722
+        },
+        {
+          "periodo": "2030e",
+          "ingresos": 25373,
+          "crecimiento_pct": 4.5,
+          "ebitda": 8627,
+          "margen_ebitda_pct": 34,
+          "amortizacion": 558,
+          "ebit": 8069,
+          "impuestos": 1694,
+          "capex": 634,
+          "variacion_circulante": 98,
+          "fcff": 6200,
+          "fraccion": 1,
+          "factor": 0.751,
+          "vp": 4651
+        },
+        {
+          "periodo": "2031e",
+          "ingresos": 26388,
+          "crecimiento_pct": 4,
+          "ebitda": 9104,
+          "margen_ebitda_pct": 34.5,
+          "amortizacion": 581,
+          "ebit": 8523,
+          "impuestos": 1790,
+          "capex": 660,
+          "variacion_circulante": 91,
+          "fcff": 6563,
+          "fraccion": 1,
+          "factor": 0.695,
+          "vp": 4557
+        },
+        {
+          "periodo": "2032e",
+          "ingresos": 27312,
+          "crecimiento_pct": 3.5,
+          "ebitda": 9423,
+          "margen_ebitda_pct": 34.5,
+          "amortizacion": 601,
+          "ebit": 8822,
+          "impuestos": 1853,
+          "capex": 683,
+          "variacion_circulante": 83,
+          "fcff": 6804,
+          "fraccion": 1,
+          "factor": 0.643,
+          "vp": 4376
+        }
+      ],
+      "etapa2": null,
+      "suma_vp": 28186,
+      "valor_terminal": 133282,
+      "vp_terminal": 82475,
+      "valor_empresa": 110661,
+      "peso_terminal_pct": 75,
+      "valor_acciones": 79283,
+      "valor_accion": 373.27,
+      "vt_gordon": 139358,
+      "vt_multiplo": 127206,
+      "multiplo_implicito": 14.8,
+      "g_implicito_pct": 2.54,
+      "metodo_terminal": "media",
+      "terminal_tabla": [
+        {
+          "concepto": "Método principal",
+          "valor": "Media de ambos"
+        },
+        {
+          "concepto": "Crecimiento a perpetuidad",
+          "valor": "3,0 %"
+        },
+        {
+          "concepto": "Múltiplo EV/EBITDA de salida",
+          "valor": "13,5x"
+        },
+        {
+          "concepto": "Valor terminal (Gordon)",
+          "valor": "139.358"
+        },
+        {
+          "concepto": "Valor terminal (múltiplo)",
+          "valor": "127.206"
+        },
+        {
+          "concepto": "Múltiplo de salida implícito en Gordon",
+          "valor": "14,8x"
+        },
+        {
+          "concepto": "Crecimiento implícito en el múltiplo",
+          "valor": "2,54 %"
+        },
+        {
+          "concepto": "Peso del valor terminal en el valor empresa",
+          "valor": "75 %"
+        }
+      ],
+      "puente": [
+        {
+          "concepto": "Valor actual de los flujos proyectados",
+          "valor": "28.186"
+        },
+        {
+          "concepto": "Valor actual del valor terminal",
+          "valor": "82.475"
+        },
+        {
+          "concepto": "Valor empresa",
+          "valor": "110.661"
+        },
+        {
+          "concepto": "− Deuda financiera neta (con arrendamientos)",
+          "valor": "-13.700"
+        },
+        {
+          "concepto": "− Minoritarios, pensiones y otros; + asociadas",
+          "valor": "-17.678"
+        },
+        {
+          "concepto": "Valor de los fondos propios",
+          "valor": "79.283"
+        },
+        {
+          "concepto": "Acciones diluidas (millones)",
+          "valor": "212,4"
+        },
+        {
+          "concepto": "Valor por acción",
+          "valor": "373,27"
+        }
+      ],
+      "composicion": [
+        {
+          "parte": "Flujos proyectados",
+          "valor": 28186
+        },
+        {
+          "parte": "Valor terminal",
+          "valor": 82475
+        }
+      ],
+      "wacc": 8.03,
+      "ke": 9.89,
+      "kd_despues": 4.58,
+      "wacc_tabla": [
+        {
+          "concepto": "Tasa libre de riesgo",
+          "valor": "5,21 %"
+        },
+        {
+          "concepto": "Beta",
+          "valor": "0,85"
+        },
+        {
+          "concepto": "Prima de riesgo de mercado",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Prima adicional (país, tamaño, específica)",
+          "valor": "0,00 %"
+        },
+        {
+          "concepto": "Coste de los fondos propios",
+          "valor": "9,88 %"
+        },
+        {
+          "concepto": "Coste de la deuda antes de impuestos",
+          "valor": "5,80 %"
+        },
+        {
+          "concepto": "Tipo impositivo",
+          "valor": "21,00 %"
+        },
+        {
+          "concepto": "Coste de la deuda después de impuestos",
+          "valor": "4,58 %"
+        },
+        {
+          "concepto": "Peso de la deuda (D / (D + E))",
+          "valor": "35,00 %"
+        },
+        {
+          "concepto": "WACC",
+          "valor": "8,03 %"
+        },
+        {
+          "concepto": "Prima de riesgo implícita del mercado (regla relativa)",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "WACC con la prima implícita del mercado",
+          "valor": "7,31 %"
+        }
+      ],
+      "potencial_pct": 35.6,
+      "sensibilidad": {
+        "eje_columnas": "Crecimiento a perpetuidad",
+        "columnas": [
+          "2,0 %",
+          "2,5 %",
+          "3,0 %",
+          "3,5 %",
+          "4,0 %"
+        ],
+        "filas": [
+          {
+            "wacc": "7,0 %",
+            "v0": 398.21,
+            "v1": 422.88,
+            "v2": 453.68,
+            "v3": 493.2,
+            "v4": 545.78
+          },
+          {
+            "wacc": "7,5 %",
+            "v0": 365.83,
+            "v1": 385.55,
+            "v2": 409.63,
+            "v3": 439.69,
+            "v4": 478.27
+          },
+          {
+            "wacc": "8,0 %",
+            "v0": 337.96,
+            "v1": 354.02,
+            "v2": 373.27,
+            "v3": 396.78,
+            "v4": 426.12
+          },
+          {
+            "wacc": "8,5 %",
+            "v0": 313.6,
+            "v1": 326.88,
+            "v2": 342.56,
+            "v3": 361.35,
+            "v4": 384.3
+          },
+          {
+            "wacc": "9,0 %",
+            "v0": 292.04,
+            "v1": 303.16,
+            "v2": 316.12,
+            "v3": 331.43,
+            "v4": 349.78
+          }
+        ]
+      },
+      "sensibilidad2": {
+        "columnas": [
+          "-2 pp",
+          "-1 pp",
+          "0 pp",
+          "+1 pp",
+          "+2 pp"
+        ],
+        "filas": [
+          {
+            "margen": "-2 pp",
+            "v0": 296.64,
+            "v1": 318.37,
+            "v2": 341.05,
+            "v3": 364.72,
+            "v4": 389.41
+          },
+          {
+            "margen": "-1 pp",
+            "v0": 311.23,
+            "v1": 333.7,
+            "v2": 357.16,
+            "v3": 381.64,
+            "v4": 407.19
+          },
+          {
+            "margen": "0 pp",
+            "v0": 325.82,
+            "v1": 349.03,
+            "v2": 373.27,
+            "v3": 398.57,
+            "v4": 424.96
+          },
+          {
+            "margen": "+1 pp",
+            "v0": 340.41,
+            "v1": 364.37,
+            "v2": 389.38,
+            "v3": 415.49,
+            "v4": 442.73
+          },
+          {
+            "margen": "+2 pp",
+            "v0": 355,
+            "v1": 379.7,
+            "v2": 405.49,
+            "v3": 432.42,
+            "v4": 460.51
+          }
+        ]
+      },
+      "rango_min": 326.88,
+      "rango_max": 439.69,
+      "inverso": {
+        "crecimiento_implicito_pct": 3.1,
+        "crecimiento_base_pct": 7.5,
+        "periodo": "2027e-2032e",
+        "margen_implicito_pct": 28.4,
+        "margen_implicito_texto": null,
+        "margen_base_pct": 34.5,
+        "rentabilidad_implicita_pct": 10
+      },
+      "sostenibilidad": {
+        "veredicto": "Sí",
+        "crecimiento_proyectado_pct": 7,
+        "tasa_reinversion_pct": 3,
+        "crecimiento_financiable_pct": null,
+        "roic_pct": 15.6,
+        "roic_incremental_historico_pct": 13.2,
+        "roic_implicito_pct": null,
+        "cuota_actual_pct": 4.1,
+        "cuota_final_pct": null,
+        "puente": [
+          {
+            "periodo": "2026e",
+            "volumen_pct": 3,
+            "precio_pct": 2,
+            "otros_pct": -0.7,
+            "comentario": "Volumen 3 % y precio 2 % (orgánico del 5 %), y otros −0,7 % (ventas de NFP Wealth y Stroz Friedberg, compensadas en parte por la divisa) [6].",
+            "suma_pct": 4.3,
+            "crecimiento_pct": 4.3
+          },
+          {
+            "periodo": "2027e",
+            "volumen_pct": 3,
+            "precio_pct": 1.5,
+            "otros_pct": 18.4,
+            "comentario": "Orgánico del 4,5 % (las tarifas siguen bajando) y USI: ≈18 puntos de crecimiento comprado [11].",
+            "suma_pct": 22.9,
+            "crecimiento_pct": 22.9
+          },
+          {
+            "periodo": "2028e",
+            "volumen_pct": 3,
+            "precio_pct": 1.5,
+            "otros_pct": 0.5,
+            "comentario": "Orgánico del 4,5 % y medio punto de compras pequeñas; supone que las tarifas dejan de restar.",
+            "suma_pct": 5,
+            "crecimiento_pct": 5
+          },
+          {
+            "periodo": "2029e",
+            "volumen_pct": 3,
+            "precio_pct": 1.5,
+            "otros_pct": 0.5,
+            "comentario": "Igual que 2028e; el orgánico de USI se suma al del grupo.",
+            "suma_pct": 5,
+            "crecimiento_pct": 5
+          },
+          {
+            "periodo": "2030e",
+            "volumen_pct": 2.5,
+            "precio_pct": 1.5,
+            "otros_pct": 0.5,
+            "comentario": "Convergencia hacia el terminal; la IA abarata la colocación de riesgos sencillos.",
+            "suma_pct": 4.5,
+            "crecimiento_pct": 4.5
+          }
+        ],
+        "texto": "La proyección apenas necesita inversión neta de la amortización (reinversión acumulada de 1.417 M, el 3 % del NOPAT, con un capex bruto medio del 2,5 % de las ventas). En un negocio de activos ligeros, el crecimiento medio del 7,0 % tiene que salir de subir precios y de ganar volumen sin capital nuevo, y la prueba es el poder de precios y la cuota; en un comprador en serie, la amortización es de intangibles comprados y la prueba es el capex bruto (las compras) frente al crecimiento comprado.",
+        "tabla": [
+          {
+            "concepto": "Crecimiento medio de ingresos proyectado",
+            "valor": "7,0 %"
+          },
+          {
+            "concepto": "Capex bruto medio (incluidas compras si van como inversión)",
+            "valor": "2,5 % de las ventas"
+          },
+          {
+            "concepto": "Reinversión neta acumulada (capex − amortización + circulante)",
+            "valor": "1.417 M (3 % del NOPAT)"
+          }
+        ]
+      }
+    },
+    "escenarios": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "narrativa": "USI se integra mal (fuga de productores, sinergias a la mitad), las tarifas siguen cayendo dos años más y la IA lleva a las pymes a comprar directo: el orgánico baja al 2-3 % y el margen pierde 1,5 puntos. La deuda tarda en bajar y el WACC sube medio punto; el mercado paga 10,5 veces el EBITDA.",
+        "crecimiento_medio_pct": 5.5,
+        "margen_final_pct": 33,
+        "wacc_pct": 8.5,
+        "valor": 229.98,
+        "potencial_pct": -16.5
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "narrativa": "USI cierra a finales de 2026, el orgánico se queda en el 4,5-5 %, las sinergias llegan en 2029 y el margen EBITDA publicado sube al 34,5 %; la deuda baja a 3 veces en 2028 y vuelven las recompras.",
+        "crecimiento_medio_pct": 7.5,
+        "margen_final_pct": 34.5,
+        "wacc_pct": 8,
+        "valor": 373.27,
+        "potencial_pct": 35.6
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "narrativa": "Un año de grandes catástrofes endurece las tarifas en 2027, USI aporta más sinergias de ingresos que las prometidas (reaseguro y riesgos especiales para su cartera) y el orgánico vuelve al 6-7 %, con un punto más de margen.",
+        "crecimiento_medio_pct": 9,
+        "margen_final_pct": 35.5,
+        "wacc_pct": 8,
+        "valor": 459.67,
+        "potencial_pct": 67
+      }
+    ],
+    "valor_ponderado": 359.05,
+    "potencial_ponderado_pct": 30.4,
+    "comparables": {
+      "tabla": [
+        {
+          "nombre": "Aon",
+          "ticker": "AON",
+          "pais": "IE",
+          "capitalizacion": 58478,
+          "ev_ventas": 5.11,
+          "ev_ebitda_ltm": 16.2,
+          "ev_ebitda_ntm": 13.5,
+          "per_ntm": 13.9,
+          "crecimiento_pct": 14.2,
+          "margen_ebitda_pct": 31.6,
+          "roic_pct": 15.6,
+          "dn_ebitda": 2.5,
+          "fcf_yield_pct": 5.6,
+          "es_objetivo": true
+        },
+        {
+          "nombre": "Marsh",
+          "ticker": "MRSH",
+          "pais": "US",
+          "capitalizacion": 84469,
+          "ev_ventas": 3.76,
+          "ev_ebitda_ltm": 13.2,
+          "ev_ebitda_ntm": 11.9,
+          "per_ntm": 15.8,
+          "crecimiento_pct": 6.8,
+          "margen_ebitda_pct": 28.4,
+          "roic_pct": 14.3,
+          "dn_ebitda": 2.2,
+          "fcf_yield_pct": 5.9,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "WTW",
+          "ticker": "WTW",
+          "pais": "IE",
+          "capitalizacion": 27716,
+          "ev_ventas": 3.18,
+          "ev_ebitda_ltm": 11.7,
+          "ev_ebitda_ntm": 9.8,
+          "per_ntm": 13.4,
+          "crecimiento_pct": 8.1,
+          "margen_ebitda_pct": 27.2,
+          "roic_pct": 13,
+          "dn_ebitda": 1.2,
+          "fcf_yield_pct": 5.6,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Arthur J. Gallagher",
+          "ticker": "AJG",
+          "pais": "US",
+          "capitalizacion": 60311,
+          "ev_ventas": 5.21,
+          "ev_ebitda_ltm": 16,
+          "ev_ebitda_ntm": 12.2,
+          "per_ntm": 16.3,
+          "crecimiento_pct": 17,
+          "margen_ebitda_pct": 32.7,
+          "roic_pct": 5.6,
+          "dn_ebitda": 2.5,
+          "fcf_yield_pct": 3,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Brown & Brown",
+          "ticker": "BRO",
+          "pais": "US",
+          "capitalizacion": 21552,
+          "ev_ventas": 4.8,
+          "ev_ebitda_ltm": 13.4,
+          "ev_ebitda_ntm": 11.1,
+          "per_ntm": 13.5,
+          "crecimiento_pct": 12.2,
+          "margen_ebitda_pct": 35.9,
+          "roic_pct": 6.5,
+          "dn_ebitda": 3.2,
+          "fcf_yield_pct": 6.4,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Ryan Specialty",
+          "ticker": "RYAN",
+          "pais": "US",
+          "capitalizacion": 9666,
+          "ev_ventas": 4.21,
+          "ev_ebitda_ltm": 13.3,
+          "ev_ebitda_ntm": 11.9,
+          "per_ntm": 15.8,
+          "crecimiento_pct": 9.7,
+          "margen_ebitda_pct": 31.7,
+          "roic_pct": 9.4,
+          "dn_ebitda": 3.3,
+          "fcf_yield_pct": 6,
+          "es_objetivo": false
+        }
+      ],
+      "estadisticos": [
+        {
+          "estadistico": "Mediana",
+          "ev_ventas": 4.2,
+          "ev_ebitda_ltm": 13.3,
+          "ev_ebitda_ntm": 11.9,
+          "per_ntm": 15.8,
+          "crecimiento_pct": 9.7,
+          "margen_ebitda_pct": 31.7,
+          "roic_pct": 9.4,
+          "dn_ebitda": 2.5,
+          "fcf_yield_pct": 5.9
+        },
+        {
+          "estadistico": "Media",
+          "ev_ventas": 4.2,
+          "ev_ebitda_ltm": 13.5,
+          "ev_ebitda_ntm": 11.4,
+          "per_ntm": 15,
+          "crecimiento_pct": 10.8,
+          "margen_ebitda_pct": 31.2,
+          "roic_pct": 9.8,
+          "dn_ebitda": 2.5,
+          "fcf_yield_pct": 5.4
+        },
+        {
+          "estadistico": "Percentil 25",
+          "ev_ventas": 3.8,
+          "ev_ebitda_ltm": 13.2,
+          "ev_ebitda_ntm": 11.1,
+          "per_ntm": 13.5,
+          "crecimiento_pct": 8.1,
+          "margen_ebitda_pct": 28.4,
+          "roic_pct": 6.5,
+          "dn_ebitda": 2.2,
+          "fcf_yield_pct": 5.6
+        },
+        {
+          "estadistico": "Percentil 75",
+          "ev_ventas": 4.8,
+          "ev_ebitda_ltm": 13.4,
+          "ev_ebitda_ntm": 11.9,
+          "per_ntm": 15.8,
+          "crecimiento_pct": 12.2,
+          "margen_ebitda_pct": 32.7,
+          "roic_pct": 13,
+          "dn_ebitda": 3.2,
+          "fcf_yield_pct": 6
+        }
+      ],
+      "implicito": [
+        {
+          "metodo": "EV/EBITDA próximos 12 meses",
+          "metrica_empresa": 6646.42,
+          "multiplo_p25": 11.1,
+          "multiplo_mediana": 11.9,
+          "multiplo_p75": 11.9,
+          "multiplos": "11,1x / 11,9x / 11,9x",
+          "valor_p25": 199.61,
+          "valor_mediana": 224.64,
+          "valor_p75": 224.64,
+          "potencial_pct": -18.4
+        },
+        {
+          "metodo": "EV/EBITDA últimos 12 meses",
+          "metrica_empresa": 5548,
+          "multiplo_p25": 13.2,
+          "multiplo_mediana": 13.3,
+          "multiplo_p75": 13.4,
+          "multiplos": "13,2x / 13,3x / 13,4x",
+          "valor_p25": 197.06,
+          "valor_mediana": 199.67,
+          "valor_p75": 202.28,
+          "potencial_pct": -27.5
+        },
+        {
+          "metodo": "PER próximos 12 meses",
+          "metrica_empresa": 19.86,
+          "multiplo_p25": 13.5,
+          "multiplo_mediana": 15.8,
+          "multiplo_p75": 15.8,
+          "multiplos": "13,5x / 15,8x / 15,8x",
+          "valor_p25": 268.11,
+          "valor_mediana": 313.78,
+          "valor_p75": 313.78,
+          "potencial_pct": 14
+        },
+        {
+          "metodo": "EV/Ventas últimos 12 meses",
+          "metrica_empresa": 17577,
+          "multiplo_p25": 3.8,
+          "multiplo_mediana": 4.2,
+          "multiplo_p75": 4.8,
+          "multiplos": "3,8x / 4,2x / 4,8x",
+          "valor_p25": 163.43,
+          "valor_mediana": 200.66,
+          "valor_p75": 249.49,
+          "potencial_pct": -27.1
+        }
+      ],
+      "regresion": {
+        "pendiente": 0.1,
+        "ordenada": 10.3,
+        "r2": 0.16,
+        "n": 5,
+        "multiplo_ajustado": 11.7,
+        "valor_accion": 218.39,
+        "fiable": false,
+        "texto": "**Regresión EV/EBITDA NTM sobre crecimiento** (5 comparables): múltiplo = 10,3 + 0,10 × crecimiento; R² = 0,16. El crecimiento explica poco los múltiplos de estos comparables (R² < 0,3): la regresión no se usa en la valoración."
+      },
+      "n": 5
+    },
+    "transacciones": {
+      "metrica": "EV/EBITDA",
+      "n": 5,
+      "mediana_ev_ebitda": 21,
+      "p25_ev_ebitda": 15.6,
+      "p75_ev_ebitda": 22,
+      "mediana_ev_ventas": 5.67,
+      "prima_mediana_pct": null,
+      "valor_p25": 259.75,
+      "valor_mediana": 400.8,
+      "valor_p75": 426.92
+    },
+    "suma_partes": null,
+    "multiplos_historicos": [
+      {
+        "metrica": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+        "campo": "ev_ebitda_ltm",
+        "actual": 16.2,
+        "media": 18.1,
+        "minimo": 16.8,
+        "maximo": 20.7,
+        "percentil": 0,
+        "prima_pct": -10,
+        "anios": 6
+      },
+      {
+        "metrica": "PER últimos 12 meses (cierre de cada año)",
+        "campo": "per_ltm",
+        "actual": 15.2,
+        "media": 24.9,
+        "minimo": 20.7,
+        "maximo": 32.7,
+        "percentil": 0,
+        "prima_pct": -39,
+        "anios": 6
+      }
+    ],
+    "multiplos_serie": [
+      {
+        "anio": "2019",
+        "multiplo": 20.7,
+        "media": 18.1
+      },
+      {
+        "anio": "2020",
+        "multiplo": 17.5,
+        "media": 18.1
+      },
+      {
+        "anio": "2021",
+        "multiplo": 19.9,
+        "media": 18.1
+      },
+      {
+        "anio": "2022",
+        "multiplo": 18.7,
+        "media": 18.1
+      },
+      {
+        "anio": "2023",
+        "multiplo": 17.3,
+        "media": 18.1
+      },
+      {
+        "anio": "2024",
+        "multiplo": 20.4,
+        "media": 18.1
+      },
+      {
+        "anio": "2025",
+        "multiplo": 16.8,
+        "media": 18.1
+      }
+    ],
+    "multiplos_titulo": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+    "consenso_vs_propio": [
+      {
+        "periodo": "2026e",
+        "ingresos_propio": 17920,
+        "ingresos_consenso": 17919,
+        "ingresos_dif_pct": 0,
+        "ebitda_propio": 5645,
+        "ebitda_consenso": 5752.701,
+        "ebitda_dif_pct": -1.9
+      },
+      {
+        "periodo": "2027e",
+        "ingresos_propio": 22023,
+        "ingresos_consenso": 21662,
+        "ingresos_dif_pct": 1.7,
+        "ebitda_propio": 6827,
+        "ebitda_consenso": 6889.098,
+        "ebitda_dif_pct": -0.9
+      },
+      {
+        "periodo": "2028e",
+        "ingresos_propio": 23125,
+        "ingresos_consenso": 22796,
+        "ingresos_dif_pct": 1.4,
+        "ebitda_propio": 7515,
+        "ebitda_consenso": 7506.284,
+        "ebitda_dif_pct": 0.1
+      }
+    ],
+    "gobierno": {
+      "n_consejeros": 13,
+      "independientes_pct": 92,
+      "antiguedad_media": 11.5,
+      "composicion": [
+        {
+          "tipo": "Independiente",
+          "num": 12
+        },
+        {
+          "tipo": "Ejecutivo",
+          "num": 1
+        }
+      ],
+      "checklist": [
+        {
+          "criterio": "Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)",
+          "resultado": "Cumple",
+          "valor": "92 %"
+        },
+        {
+          "criterio": "Presidencia sin vínculo familiar ni profesional con el accionista de control",
+          "resultado": "Cumple",
+          "valor": "Sin control"
+        },
+        {
+          "criterio": "Presidente no ejecutivo, o consejero coordinador independiente",
+          "resultado": "Cumple",
+          "valor": "No ejecutivo"
+        },
+        {
+          "criterio": "Comisión de auditoría con mayoría de independientes y presidida por uno",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Ningún consejero «otro externo» con más de 12 años",
+          "resultado": "Cumple",
+          "valor": "Ninguno"
+        },
+        {
+          "criterio": "Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses",
+          "resultado": "Cumple",
+          "valor": "0 cambios"
+        },
+        {
+          "criterio": "Peor voto a favor sobre remuneración (3 juntas) ≥ 80 %",
+          "resultado": "Cumple",
+          "valor": "89,0 % a favor"
+        },
+        {
+          "criterio": "Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Una acción, un voto, sin blindajes ni límites de voto estatutarios",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Sin operaciones vinculadas relevantes",
+          "resultado": "Cumple",
+          "valor": "No hay"
+        },
+        {
+          "criterio": "Auditor con 10 años o menos en el cargo",
+          "resultado": "No cumple",
+          "valor": "39 años"
+        },
+        {
+          "criterio": "Opinión de auditoría sin salvedades",
+          "resultado": "Cumple",
+          "valor": "Favorable (cuentas y control interno a 31-dic-2025)"
+        },
+        {
+          "criterio": "Directivos compradores netos en 12 meses (o sin ventas relevantes)",
+          "resultado": "Cumple",
+          "valor": "Compras 7,83 / ventas 5,17 M"
+        }
+      ],
+      "puntuacion": "12 de 13",
+      "puntuacion_pct": 92,
+      "compras_insiders": 7.83,
+      "ventas_insiders": 5.17
+    },
+    "competidores_margen": [
+      {
+        "nombre": "Aon",
+        "margen_ebit_pct": 25.3
+      },
+      {
+        "nombre": "Marsh",
+        "margen_ebit_pct": 23.1
+      },
+      {
+        "nombre": "Arthur J. Gallagher",
+        "margen_ebit_pct": 24.5
+      },
+      {
+        "nombre": "WTW",
+        "margen_ebit_pct": 25.2
+      },
+      {
+        "nombre": "Brown & Brown",
+        "margen_ebit_pct": 28.7
+      },
+      {
+        "nombre": "Ryan Specialty",
+        "margen_ebit_pct": 16.2
+      },
+      {
+        "nombre": "Hub International",
+        "margen_ebit_pct": null
+      }
+    ],
+    "sintesis": {
+      "formato_eje": "#,##0",
+      "rangos": [
+        {
+          "metodo": "Cotización 52 semanas",
+          "etiqueta": "Cotización 52 semanas (266,33 – 382,34)",
+          "min": 266.33,
+          "central": 275.32,
+          "max": 382.34,
+          "gris": true
+        },
+        {
+          "metodo": "Precio objetivo de los analistas",
+          "etiqueta": "Precio objetivo de los analistas (229,00 – 435,00)",
+          "min": 229,
+          "central": 354.21,
+          "max": 435,
+          "gris": true
+        },
+        {
+          "metodo": "Comparables: EV/EBITDA NTM",
+          "etiqueta": "Comparables: EV/EBITDA NTM (199,61 – 224,64)",
+          "min": 199.61,
+          "central": 224.64,
+          "max": 224.64,
+          "gris": false
+        },
+        {
+          "metodo": "Comparables: PER NTM",
+          "etiqueta": "Comparables: PER NTM (268,11 – 313,78)",
+          "min": 268.11,
+          "central": 313.78,
+          "max": 313.78,
+          "gris": false
+        },
+        {
+          "metodo": "Transacciones precedentes (EV/EBITDA)",
+          "etiqueta": "Transacciones precedentes (EV/EBITDA) (259,75 – 426,92)",
+          "min": 259.75,
+          "central": 400.8,
+          "max": 426.92,
+          "gris": false
+        },
+        {
+          "metodo": "DCF (WACC y g ± 0,5)",
+          "etiqueta": "DCF (WACC y g ± 0,5) (326,88 – 439,69)",
+          "min": 326.88,
+          "central": 373.27,
+          "max": 439.69,
+          "gris": false
+        },
+        {
+          "metodo": "Escenarios (bajista – alcista)",
+          "etiqueta": "Escenarios (bajista – alcista) (229,98 – 459,67)",
+          "min": 229.98,
+          "central": 359.05,
+          "max": 459.67,
+          "gris": false
+        },
+        {
+          "metodo": "DCF con la prima del mercado",
+          "etiqueta": "DCF con la prima implícita del mercado (4,2 %)",
+          "min": 388.35,
+          "central": 427.76,
+          "max": 476.07
+        },
+        {
+          "metodo": "Precio actual",
+          "etiqueta": "Precio actual (275,32)",
+          "min": 273.94,
+          "central": 275.32,
+          "max": 276.7,
+          "gris": true
+        }
+      ],
+      "tabla": [
+        {
+          "metodo": "DCF",
+          "valor": 373.27,
+          "peso_pct": 40,
+          "potencial_pct": 35.6
+        },
+        {
+          "metodo": "Comparables (mediana EV/EBITDA y PER)",
+          "valor": 269.21,
+          "peso_pct": 25,
+          "potencial_pct": -2.2
+        },
+        {
+          "metodo": "Transacciones precedentes (no se usa)",
+          "valor": 400.8,
+          "peso_pct": 0,
+          "potencial_pct": 45.6
+        },
+        {
+          "metodo": "Escenarios ponderados",
+          "valor": 359.05,
+          "peso_pct": 35,
+          "potencial_pct": 30.4
+        }
+      ],
+      "valor_objetivo": 342.28,
+      "potencial_pct": 24.3
+    },
+    "fuentes": {
+      "n_fuentes": 41,
+      "n_primarias": 21,
+      "por_tipo": [
+        {
+          "tipo": "Primaria",
+          "num": 21
+        },
+        {
+          "tipo": "Sectorial",
+          "num": 4
+        },
+        {
+          "tipo": "Prensa",
+          "num": 4
+        },
+        {
+          "tipo": "Analistas",
+          "num": 5
+        },
+        {
+          "tipo": "Datos de mercado",
+          "num": 2
+        },
+        {
+          "tipo": "Foros y redes",
+          "num": 5
+        }
+      ],
+      "n_citadas": 41,
+      "citas_sin_fuente": [],
+      "fuentes_sin_citar": []
+    },
+    "controles": [
+      {
+        "control": "DCF inverso calculable",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Puente de ingresos (volumen + precio + otros) = crecimiento del DCF",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "resultado": "OK",
+        "detalle": "Supuesto 9,0 % frente a 9,0 % real: genera una variación de circulante de 74 M en el primer año. Converge de forma gradual."
+      },
+      {
+        "control": "Peso del valor terminal ≤ 80 % del valor empresa",
+        "resultado": "OK",
+        "detalle": "75 %."
+      },
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "resultado": "OK",
+        "detalle": "3,00 %."
+      },
+      {
+        "control": "Probabilidades de los escenarios suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Regresión múltiplo-crecimiento explicativa (R² ≥ 0,3)",
+        "resultado": "Explicado",
+        "detalle": "R² = 0,16: el crecimiento no explica los múltiplos de estos comparables; no uses el valor de la regresión. Explicación: Con seis corredores el crecimiento no explica el múltiplo (R² 0,16): el de Gallagher y Brown & Brown es comprado y el de Aon de 2027 lleva USI. No se usa la regresión; se usa el PER de los comparables con BPA ajustado."
+      },
+      {
+        "control": "Al menos 5 comparables",
+        "resultado": "OK",
+        "detalle": "5 comparables."
+      },
+      {
+        "control": "Pesos de la síntesis suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Compra robusta (v3 y v2 dan Comprar)",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Crecimiento del BPA base ≤ 25 % anual desde el último real",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Precio del cierre de la fecha de corte (o de las dos sesiones anteriores)",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Recomendación coherente con la regla de decisión",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Convicción frente a la sugerida por los criterios",
+        "resultado": "OK",
+        "detalle": "Los criterios dan «Alta» (las dos reglas dan Comprar, rentabilidad del 25,4 %, asimetría de 4,06, bajista del -16,5 % y el precio descuenta 4,4 puntos menos de crecimiento que el caso base) y el análisis pone «Media»: explica en la síntesis por qué te apartas."
+      },
+      {
+        "control": "La síntesis explica la convicción",
+        "resultado": "OK",
+        "detalle": "La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría."
+      },
+      {
+        "control": "Capitalización calculada ≈ publicada",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 25 fuentes",
+        "resultado": "OK",
+        "detalle": "41 fuentes (21 primarias)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "resultado": "OK",
+        "detalle": "21."
+      },
+      {
+        "control": "Toda cita [n] existe en fuentes",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Fuentes sin citar ≤ 15 %",
+        "resultado": "OK",
+        "detalle": ""
+      }
+    ],
+    "controles_resumen": "19 de 20 controles correctos y 1 explicados"
+  }
+}
