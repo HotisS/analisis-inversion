@@ -59,3 +59,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 4. La cobertura de campos baja de 91,2 % a 87,9 % sin cambios de contenido (plantilla o motor nuevos; sentimiento por debajo del 60 %).
 
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 210,9 USD, rentabilidad +49,6 %, señal Comprar (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +41,0 % → +19,9 %, base +15,1 %, señal Comprar (`revision-12m-2026-10-13.md`).
