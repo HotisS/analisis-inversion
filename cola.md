@@ -6,7 +6,7 @@ Solo lo pendiente. Lo cerrado está en `archivo/` (índice en `archivo/HISTORICO
 
 ## Pendiente
 
-Cola del 14-oct (12:00), de 4 en 4 durante una hora, mezclando valor y crecimiento (propuesta al usuario en el hilo; si cambia algo, se aplica desde la siguiente tanda):
+Cola del 14-oct (12:00), de 4 en 4 durante una hora, mezclando valor y crecimiento (propuesta al usuario en el hilo; si cambia algo, se aplica desde la siguiente tanda). Hechas: tandas 1 y 2. En curso: Roche, Sectra, ANYCOLOR y Atlas Copco. Las «P» van delante de lo que queda:
 
 | Tanda | Empresa | Ticker | Estilo | Por qué |
 |---|---|---|---|---|
@@ -18,6 +18,11 @@ Cola del 14-oct (12:00), de 4 en 4 durante una hora, mezclando valor y crecimien
 | 2 | Hoya | 7741.T | Crecimiento | Óptica y máscaras de semiconductores, ROIC alto |
 | 2 | Rightmove | RMV.L | Valor | Portal dominante como Auto Trader, márgenes del 70 % |
 | 2 | Moody's | MCO | Crecimiento | Duopolio de calificaciones, ROIC muy alto |
+| P | Alibaba | 9988.HK / BABA | Valor | Prioridad del usuario (14-oct 12:27) |
+| P | Watches of Switzerland | WOSG.L | Valor | Prioridad del usuario (14-oct 12:27); minorista, pedido expresamente |
+| P | Rovi | ROVI.MC | Crecimiento | Prioridad del usuario (14-oct 12:27) |
+| P | Endesa | ELE.MC | Valor | Prioridad del usuario (14-oct 12:27) |
+| P | Repsol | REP.MC | Valor | Prioridad del usuario (14-oct 12:27) |
 | 3 | Roche | ROG.SW | Valor | Farmacia y diagnóstico barata con dividendo alto |
 | 3 | Sectra | SECT-B.ST | Crecimiento | Software de imagen médica (suplente del escáner) |
 | 3 | ANYCOLOR | 5032.T | Valor | Barata con caja neta y crecimiento (suplente del escáner) |
