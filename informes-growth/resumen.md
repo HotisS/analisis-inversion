@@ -28,6 +28,7 @@ Lo genera `node motor/growth.mjs --todos` (no editar a mano). Método v11: [vert
 | Wise Group | WSE | 62.8 | 1/8 | +3,9 % | +4,5 % | Mantener | — | 12.1 USD | 2026-10-14 |
 | Rheinmetall AG | RHM | 64.3 | 2/8 | +3,5 % | -2,1 % | Mantener | — | 847 EUR | 2026-10-14 |
 | Construction Partners | ROAD | 57.2 | 1/8 | +2,6 % | -3,7 % | Mantener | — | 63.6 USD | 2026-10-14 |
+| Glaukos | GKOS | 82.5 | 7/8 | +2,5 % | +5,7 % | Mantener | — | 161.6 USD | 2026-10-14 |
 | Arista Networks, Inc. | ANET | 78.8 | 5/8 | +2,1 % | +4,8 % | Mantener | — | 198.9 USD | 2026-10-14 |
 | Remitly Global | RELY | 70.5 | 7/8 | +1,5 % | +3,6 % | Mantener | — | 23 USD | 2026-10-14 |
 | Rocket Lab Corporation | RKLB | 63.8 | 3/8 | +1,3 % | +15,7 % | Mantener | — | 28.7 USD | 2026-10-14 |
@@ -40,15 +41,18 @@ Lo genera `node motor/growth.mjs --todos` (no editar a mano). Método v11: [vert
 | Rolls-Royce Holdings | RR | 65.3 | 4/8 | -5,3 % | -3,6 % | Mantener | — | 1212.2 GBp | 2026-10-14 |
 | Celsius | CELH | 49.3 | 2/8 | -7,1 % | -1,2 % | Vender | — | 24.7 USD | 2026-10-14 |
 | TransMedics | TMDX | 51.2 | 1/8 | -9 % | -1,6 % | Mantener | — | 68.6 USD | 2026-10-14 |
+| Cameco | CCJ | 40.5 | 1/8 | -9,7 % | -7,3 % | Vender | — | 74.1 USD | 2026-10-14 |
 | Howmet Aerospace | HWM | 59.7 | 2/8 | -9,8 % | -7 % | Mantener | — | 186.2 USD | 2026-10-14 |
 | Alnylam Pharmaceuticals | ALNY | 62.7 | 2/8 | -10,1 % | -5 % | Vender | — | 191.7 USD | 2026-10-14 |
 | Boston Scientific | BSX | 46 | 2/8 | -10,2 % | -4 % | Vender | — | 37 USD | 2026-10-14 |
 | GE Vernova Inc. | GEV | 61.8 | 3/8 | -14,8 % | -12,6 % | Vender | — | 814 USD | 2026-10-14 |
 | Palantir Technologies | PLTR | 93.8 | 7/8 | -15,5 % | -13,3 % | Vender | — | 141.2 USD | 2026-10-14 |
 | Ascendis Pharma A/S | ASND | 68.8 | 3/8 | -16 % | -11 % | Vender | — | 178.5 USD | 2026-10-14 |
+| Kratos Defense & Security Solutions | KTOS | 40.8 | 1/8 | -16,9 % | -14,9 % | Vender | — | 32 USD | 2026-10-14 |
 | Comfort Systems USA | FIX | 76.7 | 4/8 | -17,6 % | -15,6 % | Vender | — | 1276.2 USD | 2026-10-14 |
 | Quanta Services | PWR | 71.5 | 5/8 | -18,8 % | -17,4 % | Vender | — | 532.4 USD | 2026-10-14 |
 | Monolithic Power Systems, Inc. | MPWR | 70.7 | 4/8 | -19 % | -16,9 % | Vender | — | 1015.8 USD | 2026-10-14 |
+| iRhythm | IRTC | 59 | 4/8 | -21 % | -15,6 % | Vender | — | 81.1 USD | 2026-10-14 |
 | BE Semiconductor Industries (Besi) | BESI | 63.3 | 2/8 | -23 % | -26,9 % | Vender | — | 124 EUR | 2026-10-14 |
 | Celestica Inc. | CLS | 66.2 | 3/8 | -26,2 % | -24,4 % | Vender | — | 251.1 USD | 2026-10-14 |
 | Insmed | INSM | 71.5 | 3/8 | -30,2 % | -23,8 % | Vender | — | 58 USD | 2026-10-14 |
