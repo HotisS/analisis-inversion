@@ -1,26 +1,57 @@
-// Objetivo de precio a 12 meses (método v2, `verticales/empresa/objetivo-12m.md`): NUESTRO BPA × NUESTRO PER,
+// Objetivo de precio a 12 meses (método v2/v3, `verticales/empresa/objetivo-12m.md`): NUESTRO BPA × NUESTRO PER,
 // con la misma regla de múltiplos para todas las empresas. El consenso solo se compara, nunca entra en el cálculo.
 // Sin dependencias: lo usan el motor (`calcular-empresa.mjs`) y `herramientas/apuntar-12m.mjs`.
 //
-// Regla de múltiplos (v2, cerrada el 14-oct-2026 para que sea igual en todas):
+// Regla de múltiplos v2 (cerrada el 14-oct-2026 para que sea igual en todas; historia del PER «al cierre»):
 //   base    = el menor entre el PER actual (precio ÷ nuestro BPA del ejercicio siguiente) y la mediana de 5 años;
 //   bajista = el mínimo de 5 años si queda por debajo del base; si no (la empresa ya cotiza en mínimos), base × 0,85;
 //   alcista = la mayor entre la media histórica larga (sin años de pérdidas, burbuja o BPA atípico) y la mediana
-//             de los comparables, sin bajar del base y con un techo de base × 1,30 (en un año el mercado no
-//             revaloriza más de un 30 % el múltiplo: es lo que salió, caso a caso, en las revisiones del 12-oct).
+//             de los comparables, sin bajar del base y con un techo de base × 1,30.
+// Regla de múltiplos v3 (14-oct-2026, tras el backtest de `motor/backtest-multiplos.mjs`; solo si la historia
+// viene en la MISMA base que el actual, `per_historico.base: "adelantado"` = precio de cierre de cada año ÷ BPA del
+// año siguiente). El backtest con 188 cierres de 117 empresas mostró que v2 compara un PER adelantado con una
+// historia al cierre (más alta) y por eso en el 83 % de los informes el base no supone ninguna revalorización, aunque
+// las acciones por debajo de su mediana la revalorizaron un 11 % de mediana al año siguiente:
+//   base    = el actual con la MITAD del camino hacia la mediana de 5 años (media geométrica), en los dos sentidos;
+//   bajista = el menor entre el mínimo de 5 años y base × 0,80;
+//   alcista = la mayor entre la media larga, la mediana de 5 años y la de los comparables, sin bajar del base y con
+//             un techo de base × 1,35.
+// Con historia al cierre (informes anteriores al 14-oct) se sigue aplicando v2: el backtest enseñó que v3 sobre esa
+// historia sobrestima (+12 % fuera de muestra).
 // Objetivo = media de los tres ponderada con las probabilidades de los escenarios del informe (decisión del usuario,
-// 13-oct); la media simple se da al lado. Rentabilidad = objetivo / precio − 1 + dividendo.
+// 13-oct); la media simple se da al lado. Rentabilidad = objetivo / precio − 1 + dividendo. Los pesos 15/70/15 se
+// probaron en el backtest y no mejoran: se mantienen las probabilidades del informe (25/50/25 por defecto).
 // Señal: Comprar si la ponderada ≥ 15 %, la del base ≥ 12 % y el valor intrínseco ≥ precio; Vender si la
-// ponderada ≤ −10 %; Mantener en el resto.
+// ponderada ≤ −10 %; Mantener en el resto. Con confianza de datos «Baja» (decisión del usuario, 14-oct), un
+// Comprar se queda en Mantener hasta confirmar las cifras con fuente primaria (`senal_sin_confirmar` guarda el Comprar).
 
-export const REGLA_12M = { descuentoBajista: 0.85, techoAlcista: 1.3, comprar: 15, comprarBase: 12, vender: -10 };
+export const REGLA_12M = {
+  descuentoBajista: 0.85, techoAlcista: 1.3, comprar: 15, comprarBase: 12, vender: -10,
+  v3: { reversion: 0.5, descuentoBajista: 0.8, techoAlcista: 1.35 },
+};
 
 const num = (v) => (v === null || v === undefined || v === '' || Number.isNaN(Number(v)) ? null : Number(v));
 const r = (x, d = 2) => (x === null || !Number.isFinite(x) ? null : Math.round(x * 10 ** d) / 10 ** d);
 
-// PER de cada escenario con la regla. h = { actual, mediana_5a, minimo_5a, media_larga }, comps = { mediana }.
+// PER de cada escenario con la regla. h = { actual, mediana_5a, minimo_5a, media_larga, base? }, comps = { mediana }.
+// h.base: "adelantado" (historia en la misma base que el actual → regla v3) o "cierre" / ausente (regla v2).
 export function multiplosRegla(h = {}, comps = {}) {
   const actual = num(h.actual), med = num(h.mediana_5a), min = num(h.minimo_5a), larga = num(h.media_larga), cm = num(comps.mediana);
+  const v3 = /^adelantad/i.test(String(h.base || ''));
+  if (v3 && actual > 0 && med > 0) {
+    const P = REGLA_12M.v3;
+    const base = actual * (med / actual) ** P.reversion;
+    const bajista = min !== null && min > 0 && min < base * P.descuentoBajista ? min : base * P.descuentoBajista;
+    const arriba = Math.max(...[larga, med, cm].filter((x) => x !== null && x > 0), base);
+    const alcista = Math.min(arriba, base * P.techoAlcista);
+    return {
+      version: 'v3', bajista: r(bajista, 1), base: r(base, 1), alcista: r(alcista, 1),
+      bajista_origen: bajista === min ? 'mínimo de 5 años' : `base × ${P.descuentoBajista}`,
+      base_origen: Math.abs(med - actual) < 1e-9 ? 'PER actual (igual a la mediana)' : actual < med ? `PER actual (${r(actual, 1)}x) a mitad de camino hacia la mediana de 5 años (${r(med, 1)}x)` : `PER actual (${r(actual, 1)}x) a mitad de camino hacia abajo, hacia la mediana de 5 años (${r(med, 1)}x)`,
+      alcista_origen: alcista === base ? 'el base (ni la historia ni los comparables pagan más)'
+        : alcista < arriba - 1e-9 ? `techo de base × ${P.techoAlcista}` : arriba === larga ? 'media histórica larga' : arriba === med ? 'mediana de 5 años' : 'mediana de los comparables',
+    };
+  }
   const cand = [actual, med].filter((x) => x !== null && x > 0);
   if (!cand.length) return null;
   const base = Math.min(...cand);
@@ -28,7 +59,7 @@ export function multiplosRegla(h = {}, comps = {}) {
   const arriba = Math.max(...[larga, cm].filter((x) => x !== null && x > 0), base);
   const alcista = Math.min(arriba, base * REGLA_12M.techoAlcista);
   return {
-    bajista: r(bajista, 1), base: r(base, 1), alcista: r(alcista, 1),
+    version: 'v2', bajista: r(bajista, 1), base: r(base, 1), alcista: r(alcista, 1),
     bajista_origen: bajista === min ? 'mínimo de 5 años' : `base × ${REGLA_12M.descuentoBajista} (el mínimo de 5 años no queda por debajo del base)`,
     base_origen: base === actual ? 'PER actual' : 'mediana de 5 años',
     alcista_origen: alcista === base ? 'el base (ni la historia ni los comparables pagan más)'
@@ -43,9 +74,10 @@ export function senal12m(pond, base, vi = null, precio = null) {
   return pond >= REGLA_12M.comprar && base !== null && base >= REGLA_12M.comprarBase && valorReal ? 'Comprar' : 'Mantener';
 }
 
-// o = valoracion.objetivo_12m del informe; prob = [bajista, base, alcista] en %; dpa = dividendo por acción ordinario.
+// o = valoracion.objetivo_12m del informe; prob = [bajista, base, alcista] en %; dpa = dividendo por acción ordinario;
+// confianza = la del resumen del informe («Baja» deja un Comprar en Mantener hasta confirmar los datos).
 // Los casos con métrica distinta del PER (EV/EBITDA) llevan su precio y no se recalculan.
-export function calcularObjetivo12m(o, { precio, dpa = 0, prob = null, valorIntrinseco = null } = {}) {
+export function calcularObjetivo12m(o, { precio, dpa = 0, prob = null, valorIntrinseco = null, confianza = null } = {}) {
   if (!o || !Array.isArray(o.casos) || !precio) return null;
   const caso = (e) => o.casos.find((c) => new RegExp(e, 'i').test(c?.escenario || '')) || null;
   const regla = multiplosRegla(o.per_historico, o.comparables_per);
@@ -66,12 +98,15 @@ export function calcularObjetivo12m(o, { precio, dpa = 0, prob = null, valorIntr
   const [baj, bas, alc] = filas;
   const rp = rent(ponderado), rb = rent(bas.precio);
   const cons = num(o.consenso?.objetivo_medio);
+  const senalRegla = senal12m(rp, rb, valorIntrinseco, precio);
+  const confianzaBaja = /^baja/i.test(String(confianza || ''));
+  const senal = confianzaBaja && senalRegla === 'Comprar' ? 'Mantener' : senalRegla;
   return {
-    completo: true, filas, regla, probabilidades: p,
+    completo: true, filas, regla, version: regla?.version ?? 'v2', probabilidades: p,
     objetivo_ponderado: r(ponderado), objetivo_simple: r(simple), objetivo_base: bas.precio,
     rentabilidad_ponderada_pct: r(rp, 1), rentabilidad_simple_pct: r(rent(simple), 1), rentabilidad_base_pct: r(rb, 1),
     asimetria: baj.precio < precio ? r((alc.precio / precio - 1) / Math.abs(baj.precio / precio - 1), 2) : null,
-    senal: senal12m(rp, rb, valorIntrinseco, precio),
+    senal, senal_sin_confirmar: senal !== senalRegla ? senalRegla : null, confianza_baja: confianzaBaja,
     // Precios a los que cambia la señal (con el dividendo por acción fijo).
     comprar_por_debajo: r(Math.min((ponderado + dpa) / (1 + REGLA_12M.comprar / 100), (bas.precio + dpa) / (1 + REGLA_12M.comprarBase / 100), valorIntrinseco ?? Infinity)),
     vender_por_encima: r((ponderado + dpa) / (1 + REGLA_12M.vender / 100)),

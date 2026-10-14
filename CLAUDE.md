@@ -41,6 +41,8 @@ Para buscar qué analizar («busca oportunidades», «escanea Europa», «qué n
 
 ## ETF y sector
 
+**Sector, desde el 14-oct-2026: ficha corta primero.** Antes de analizar la primera empresa de un sector sin ficha (o cuando una tanda trae dos o más del mismo sector), se hace `verticales/sector/ficha.md` (6 campos, 15-20 minutos, queda en `sectores/`) y los informes value reutilizan su perímetro, su `mercado_final` y sus comparables. El informe Word de 18 campos de abajo solo si el usuario lo pide expresamente.
+
 «Analiza la empresa X», «analiza el ETF X», «analiza el sector X (en España)»:
 
 1. Elige la vertical: `empresa`, `etf` o `sector`. Si no está claro (por ejemplo, un nombre que es a la vez empresa y ETF), pregunta.

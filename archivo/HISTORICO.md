@@ -12,6 +12,7 @@
 ## Cambios
 
 ### 14-oct-2026
+- **Regla de múltiplos v3 del objetivo a 12 meses** (`motor/objetivo12m.mjs`, `verticales/empresa/objetivo-12m.md`), tras el backtest con los datos del repo (`motor/backtest-multiplos.mjs`, resultados en `verticales/empresa/backtest/`): la historia del PER pasa a la misma base que el actual (adelantada) y el base va a mitad de camino hacia la mediana. Solo para informes nuevos (`per_historico.base: "adelantado"`); los 131 anteriores siguen en v2. Pesos 15/70/15 probados y descartados. **Confianza baja = no Comprar** aplicado por el motor. Vertical sector reducida a una ficha corta reutilizable (`verticales/sector/ficha.md`).
 - **Cartera de las 14:50** (`informes/cartera-2026-10-14-15h.md`) sustituye a la de las 13:45: entra Bureau Veritas (pasa los tres requisitos). 16 análisis value de la cuarta hora; suplente nuevo Unilever. Desde las 14:22 estos análisis se llaman «value» (hay una vertical growth aparte).
 - **Cartera de las 13:45** (`informes/cartera-2026-10-14-14h.md`) sustituye a la de las 13:00: Rightmove fuera por decisión del usuario; 16 análisis de la tercera hora, ninguno pasa los requisitos (Sanofi falla calidad). Suplentes nuevos: Deutsche Börse y Amadeus.
 - **Cartera de las 13:00** (`informes/cartera-2026-10-14-13h.md`) sustituye a la de las 11:50: entra Rightmove (pasa los tres requisitos al límite). 12 análisis más en la segunda hora.

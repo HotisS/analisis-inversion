@@ -24,12 +24,12 @@ for (const carpeta of args) {
   if (!o) throw new Error(`${carpeta}: falta valoracion.objetivo_12m`);
   const precio = +d.identificacion.precio, div = +(d.calc?.recomendacion?.dividendo_pct || 0);
   const prob = ['bajista', 'base', 'alcista'].map((k) => (d.escenarios?.casos || []).find((e) => new RegExp(k, 'i').test(e.escenario || ''))?.probabilidad_pct ?? null);
-  const c = calcularObjetivo12m(o, { precio, dpa: (div / 100) * precio, prob: prob.every((x) => x !== null) ? prob : null, valorIntrinseco: d.calc?.sintesis?.valor_objetivo ?? null });
+  const c = calcularObjetivo12m(o, { precio, dpa: (div / 100) * precio, prob: prob.every((x) => x !== null) ? prob : null, valorIntrinseco: d.calc?.sintesis?.valor_objetivo ?? null, confianza: d.resumen?.confianza ?? null });
   if (!c?.completo) throw new Error(`${carpeta}: objetivo_12m incompleto`);
   const previo = Object.entries(J.revisados).find(([, v]) => v.carpeta === carpeta)?.[0];
   const t = previo || String(d.identificacion.ticker).trim().toUpperCase().replace(/\s+/g, '-');
   const [b, m, a] = c.filas;
-  const nota = `v2 regla común: bajista ${f(b.multiplo, 1)}x × ${f(b.beneficio_por_accion)} = ${f(b.precio)}; base ${f(m.multiplo, 1)}x × ${f(m.beneficio_por_accion)} = ${f(m.precio)}; alcista ${f(a.multiplo, 1)}x × ${f(a.beneficio_por_accion)} = ${f(a.precio)}; ejercicio ${o.ejercicio}; precio ${f(precio)}`;
+  const nota = `${c.version} regla común${c.senal_sin_confirmar ? ` (${c.senal_sin_confirmar} pendiente de confirmar datos: confianza baja)` : ''}: bajista ${f(b.multiplo, 1)}x × ${f(b.beneficio_por_accion)} = ${f(b.precio)}; base ${f(m.multiplo, 1)}x × ${f(m.beneficio_por_accion)} = ${f(m.precio)}; alcista ${f(a.multiplo, 1)}x × ${f(a.beneficio_por_accion)} = ${f(a.precio)}; ejercicio ${o.ejercicio}; precio ${f(precio)}`;
   J.revisados[t] = { fecha, carpeta, precio_ref: precio, objetivo_12m: c.objetivo_ponderado, rentabilidad_12m_pct: c.rentabilidad_simple_pct, senal: c.senal,
     objetivo_base: c.objetivo_base, nota, objetivo_bajista: b.precio, objetivo_alcista: a.precio, multiplos: c.filas.map((x) => x.multiplo),
     probabilidades: c.probabilidades, objetivo_ponderado: c.objetivo_ponderado, rentabilidad_ponderada_pct: c.rentabilidad_ponderada_pct,

@@ -750,7 +750,7 @@ export function calcularEmpresa(datos) {
   // la recomendación sigue a su rentabilidad; el valor intrínseco queda como referencia a largo plazo y como filtro
   // de valor real para comprar. El consenso solo se compara.
   const prob12 = ['bajista', 'base', 'alcista'].map((k) => n(lista(d.escenarios?.casos).find((e) => new RegExp(k, 'i').test(e.escenario || ''))?.probabilidad_pct));
-  const o12 = calcularObjetivo12m(d.valoracion?.objetivo_12m, { precio, dpa: dpaOrdinario, prob: prob12.every((x) => x !== null) ? prob12 : null, valorIntrinseco: valorObjetivo });
+  const o12 = calcularObjetivo12m(d.valoracion?.objetivo_12m, { precio, dpa: dpaOrdinario, prob: prob12.every((x) => x !== null) ? prob12 : null, valorIntrinseco: valorObjetivo, confianza: res.confianza });
   const con12 = !!o12?.completo;
   if (!con12) control('Objetivo a 12 meses (PER propio × BPA propio)', false, 'Falta valoracion.objetivo_12m: la rentabilidad a 12 meses sale del valor intrínseco.');
   else {
@@ -761,6 +761,10 @@ export function calcularEmpresa(datos) {
       `El base se separa un ${fmt(dc, 1)} % del objetivo medio de los analistas: explícalo en diferencia_consenso (nunca se acerca la cifra).`);
   }
   const regla = con12 ? o12.senal : reglaValor;
+  // Confianza de datos «Baja» (decisión del usuario, 14-oct-2026): la regla da Comprar pero la señal se queda en
+  // Mantener hasta confirmar las cifras con fuente primaria; se avisa en los controles y en «La decisión».
+  if (con12 && o12.senal_sin_confirmar) control('Comprar pendiente de confirmar los datos (confianza baja)', false, `La regla a 12 meses da «${o12.senal_sin_confirmar}» pero la confianza del resumen es Baja: la señal se queda en Mantener; di en la síntesis qué cifras hay que confirmar con fuente primaria.`);
+  if (con12 && !/^adelantad/i.test(String(d.valoracion?.objetivo_12m?.per_historico?.base || ''))) control('Historia del PER en la misma base que el actual (regla v3)', false, 'per_historico no lleva base: "adelantado" (precio de cierre ÷ BPA del año siguiente): el motor aplica la regla v2 antigua, sesgada contra las empresas baratas. En un informe nuevo, rellena la historia adelantada.');
   const potRel = relativo?.valor_objetivo && precio ? pct(relativo.valor_objetivo - precio, precio) : null;
   const asimRel = relativo && relativo.alcista !== null && relativo.bajista !== null && relativo.bajista < precio ? (relativo.alcista / precio - 1) / Math.abs(relativo.bajista / precio - 1) : null;
   const recomendacionFinal = res.recomendacion || regla;
@@ -814,6 +818,8 @@ export function calcularEmpresa(datos) {
         { concepto: `Objetivo a 12 meses (nuestro PER × nuestro BPA ${d.valoracion.objetivo_12m.ejercicio || ''}, ponderado ${o12.probabilidades.join('/')})`, valor: `${fmt(o12.objetivo_ponderado, 2)} ${meta.divisa || ''}${enCot(o12.objetivo_ponderado)}` },
         { concepto: 'Bajista / base / alcista a 12 meses', valor: o12.filas.map((f) => `${fmt(f.multiplo, 1)}x × ${fmt(f.beneficio_por_accion, 2)} = ${fmt(f.precio, 2)}`).join(' · ') },
         { concepto: 'Rentabilidad a 12 meses: ponderada / del base (con dividendo)', valor: `${fmt(o12.rentabilidad_ponderada_pct, 1)} % / ${fmt(o12.rentabilidad_base_pct, 1)} %` },
+        { concepto: 'Regla de múltiplos aplicada', valor: o12.version === 'v3' ? 'v3: base a mitad de camino hacia la mediana (historia adelantada); bajista mín. 5 a o base × 0,80; alcista techo base × 1,35' : 'v2: base = mín(actual, mediana 5 a) con la historia al cierre; bajista mín. 5 a o base × 0,85; alcista techo base × 1,30' },
+        ...(o12.senal_sin_confirmar ? [{ concepto: 'Señal pendiente de confirmar (confianza de datos baja)', valor: `La regla da ${o12.senal_sin_confirmar}; se queda en Mantener hasta confirmar las cifras con fuente primaria` }] : []),
         ...(o12.consenso_objetivo ? [{ concepto: 'Objetivo medio de los analistas (solo contraste)', valor: `${fmt(o12.consenso_objetivo, 2)} (nuestro base ${o12.diferencia_consenso_pct >= 0 ? '+' : ''}${fmt(o12.diferencia_consenso_pct, 1)} %)` }] : []),
       ] : []),
       { concepto: con12 ? 'Valor intrínseco (síntesis ponderada, largo plazo)' : 'Valor objetivo (síntesis ponderada)', valor: valorObjetivo === null ? 'n.d.' : `${fmt(valorObjetivo, 2)} ${meta.divisa || ''}${enCot(valorObjetivo)}` },

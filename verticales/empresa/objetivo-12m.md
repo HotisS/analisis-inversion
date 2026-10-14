@@ -1,4 +1,4 @@
-# Rentabilidad esperada a 12 meses: PER propio × BPA propio (método «v2», 12-oct-2026)
+# Rentabilidad esperada a 12 meses: PER propio × BPA propio (método «v2», 12-oct-2026; regla de múltiplos «v3» desde el 14-oct-2026)
 
 **Origen.** Lo definió el usuario el 12-oct en el hilo del proyecto de claude.ai «PROYECTOS GH - INV», con la revisión a fondo de Alphabet (que pasó de −28 % a +1,5 %). Ese hilo no tenía acceso al repo y aquí no llegó nada. El 13-oct se copió el método desde el texto que pegó el usuario. **Una regla anterior de este archivo (cerrar la mitad del descuento al valor intrínseco, «k») era una reconstrucción equivocada y queda retirada.**
 
@@ -24,6 +24,21 @@
 5. **Señal**: **Comprar** si la ponderada ≥ 15 %, la del base ≥ 12 % y el valor intrínseco del informe ≥ precio (valor real); **Vender** si la ponderada ≤ −10 %; **Mantener** en medio. Para seguir en cartera: ponderada ≥ 10 % y base ≥ 5 % (MEMORIA). La convicción se razona como en el informe.
 6. **Contraste con el consenso** (no entra en el cálculo): el BPA de los analistas del mismo ejercicio y el objetivo medio. Si nos separamos más de un 10 %, se explica de dónde sale la diferencia (ventas, margen, dilución, múltiplo).
 7. **Comparar**: la cifra se pone junto a las demás (cartera y compras) y se dice si cambia alguna decisión.
+
+## Regla de múltiplos v3 (14-oct-2026, tras el backtest; para los informes nuevos)
+
+**Qué falló en la v2.** El PER «actual» es adelantado (precio de hoy ÷ nuestro BPA del ejercicio siguiente) pero la historia era «al cierre» (precio de cierre ÷ BPA del mismo año), que es más alta en cualquier empresa que crece. Por eso en el 83 % de los informes el base era el PER actual y la rentabilidad base se reducía a «crecimiento del BPA + dividendo». El backtest (`motor/backtest-multiplos.mjs`, resultados en `verticales/empresa/backtest/`) con 188 cierres de 117 empresas del repo (2020-2025) midió que las acciones por debajo de su mediana adelantada revalorizaron su múltiplo un 11 % de mediana al año siguiente, y las que estaban por encima lo recortaron un 8 %; la v2 suponía 0 % para las primeras (sesgo de −10 % en ese grupo).
+
+**La regla v3** (la aplica el motor cuando `per_historico.base` es `"adelantado"`; si no, sigue la v2, porque aplicada a la historia al cierre sobrestima):
+1. **Historia en la misma base que el actual**: PER al cierre de cada año = precio de cierre ÷ BPA real del **año siguiente**; `actual`, `mediana_5a`, `minimo_5a` y `media_larga` todos así, sin años de pérdidas, burbuja o BPA atípico.
+2. **Base** = el actual a **mitad de camino** hacia la mediana de 5 años (media geométrica), en los dos sentidos: una empresa barata recupera la mitad de la distancia a su historia en un año; una cara pierde la mitad.
+3. **Bajista** = el menor entre el mínimo de 5 años y base × 0,80.
+4. **Alcista** = la mayor entre la media larga, la mediana de 5 años y la mediana de los comparables, sin bajar del base y con techo base × 1,35.
+5. Probabilidades, ponderada, señal y umbrales, igual que antes (los pesos 15/70/15 se probaron y no mejoran).
+
+**Lo que dio el backtest** (las tres iteraciones que pidió el usuario; detalle en `verticales/empresa/backtest/resultados-2026-10-14.md`): la iteración 1 (solo cambiar la base de la historia) empeora el sesgo (−8,5 % fuera de muestra: la mediana adelantada es más baja y el base cae); la iteración 2 (misma base + mitad de camino) deja el sesgo global cerca de cero (−2,1 % en todas las observaciones frente a −7,5 % de la v2) y corrige el de las baratas (+2,4 % frente a −10,2 %), con el mismo error (≈20 %) y, con un BPA estimado de forma ingenua, elige menos Comprar (36 % frente a 52 %) que rinden más (mediana +18,4 % frente a +11,7 %) y pierden menos (20 % frente a 24 %); la iteración 3 (parámetros calibrados fuera de muestra) salió inestable (48 observaciones de entrenamiento, alcista × 2,03) y se descarta. Límite honesto: fuera de muestra (2022-2025, con la caída de múltiplos de 2022) la v3 queda un 3,6 % optimista donde la v2 queda un 1,2 % pesimista; el error del múltiplo a un año (≈19-21 % de mediana) no lo reduce ninguna regla. Se adopta por coherencia (compara lo mismo con lo mismo) y por la selección de compras, no porque acierte más el precio.
+
+**Convivencia**: los 131 informes anteriores al 14-oct conservan su revisión v2 (no se rehacen). Cada informe nuevo, y cada iteración de uno antiguo, rellena la historia adelantada y queda en v3; `apuntar-12m.mjs` escribe la versión en la nota de `objetivo12m-revisados.json`. **Confianza de datos «Baja»**: un Comprar de la regla se queda en Mantener hasta confirmar con fuente primaria (decisión del usuario, 14-oct); el motor lo marca en «La decisión» y en los controles.
 
 ## Dónde queda
 
