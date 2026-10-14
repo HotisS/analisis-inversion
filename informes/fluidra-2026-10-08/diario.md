@@ -58,3 +58,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 5. `competencia.cuota_pct` es 13 (redondeado) y el sector da 12,6 %: la tabla de la prueba compara 11,7 % con 13,0 %.
 
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 21,9 EUR, rentabilidad +32,5 %, señal Comprar (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +24,6 % → +14,0 %, base +17,9 %, señal Mantener (`revision-12m-2026-10-13.md`).
