@@ -9,22 +9,22 @@
 //       1) precios de todas las analizadas (herramientas/precios.mjs, sesión en curso) y de las growth (Yahoo)
 //       2) pruebas de robustez al precio de ahora (robustez.mjs --actual y robustez-growth.mjs --precios), objetivo fijo
 //       3) reglas de MEMORIA.md (escaner/reglas.json) contra la cartera (carpeta privada: escaner-cartera.json)
-//       → escaner/escaneo-ultimo.json: «candidatas» (necesitan Vup antes de ser señal), «observaciones» (tocan banda pero
+//       → <privada>/escaner/escaneo-ultimo.json: «candidatas» (necesitan Vup antes de ser señal), «observaciones» (tocan banda pero
 //         no hay liquidez, ya están en órdenes…) y «activas» (señales ya emitidas que siguen en pie)
 //   … --sin-precios         no vuelve a pedir precios (usa los de verticales/empresa/precios.json)
 //   node herramientas/escaner-diario.mjs --vup <clave> --bpa 0,95
 //       recalcula una candidata value con el BPA de los tres escenarios × factor (resultados publicados después del
 //       informe) y dice si la compra robusta sigue en pie y a qué límite
-//   NODE_USE_ENV_PROXY=1 node herramientas/escaner-diario.mjs --registrar escaner/decisiones.json
-//       apunta en escaner/registro-senales.json las señales decididas tras el Vup y las observaciones, actualiza el
-//       seguimiento de todas las señales (frente al índice) y escribe escaner/SENALES.md y el mensaje para el chat
-//       (escaner/mensaje-ultimo.md)
+//   NODE_USE_ENV_PROXY=1 node herramientas/escaner-diario.mjs --registrar   (lee <privada>/escaner/decisiones.json)
+//       apunta en <privada>/escaner/registro-senales.json las señales decididas tras el Vup y las observaciones, actualiza el
+//       seguimiento de todas las señales (frente al índice) y escribe <privada>/escaner/SENALES.md y el mensaje para el chat
+//       (<privada>/escaner/mensaje-ultimo.md; <privada> = /mnt/project-files/cartera/real o CARTERA_REAL)
 //   NODE_USE_ENV_PROXY=1 node herramientas/escaner-diario.mjs --seguimiento   solo el seguimiento y SENALES.md
 //   node herramientas/escaner-diario.mjs --vigilancia   (mañana) qué vigiladas publicaron resultados desde la última pasada,
 //       cuáles los publican en 7 días y la lista para las alertas de riesgo (escaner/calendario.json manda en las fechas)
 //   NODE_USE_ENV_PROXY=1 node herramientas/escaner-diario.mjs --semanal   (domingo) informe semanal: cartera frente al
 //       índice, señales y aciertos, lista de espera, suplentes, liquidez ociosa, robustez de todo e informes viejos
-import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { ultimoDatos } from './objetivo12m.mjs';
@@ -34,6 +34,10 @@ import { leerCalendario, fechaResultados } from './calendario.mjs';
 const RAIZ = fileURLToPath(new URL('..', import.meta.url));
 process.chdir(RAIZ);
 const E = 'escaner/';
+// Las salidas llevan datos de la cuenta (posiciones, liquidez, títulos de cada aviso): van a la carpeta privada del
+// proyecto, nunca al repo (público). En el repo solo quedan reglas, calendario y control de rutinas.
+const P = `${process.env.CARTERA_REAL || '/mnt/project-files/cartera/real'}/escaner/`;
+mkdirSync(P, { recursive: true });
 const leer = (p, def = null) => (existsSync(p) ? JSON.parse(readFileSync(p, 'utf8')) : def);
 const guardar = (p, x) => writeFileSync(p, JSON.stringify(x, null, 1) + '\n');
 const num = (v) => (v === null || v === undefined || v === '' || Number.isNaN(Number(v)) ? null : Number(v));
@@ -52,7 +56,7 @@ const nodo = (script, a) => execFileSync(process.execPath, [script, ...a], { cwd
 const args = process.argv.slice(2);
 const opcion = (k) => { const i = args.indexOf(k); return i >= 0 ? args.splice(i, 2)[1] : null; };
 const bandera = (k) => { const i = args.indexOf(k); if (i >= 0) args.splice(i, 1); return i >= 0; };
-const vup = opcion('--vup'), bpa = opcion('--bpa'), registrar = opcion('--registrar');
+const vup = opcion('--vup'), bpa = opcion('--bpa'), registrar = (() => { const i = args.indexOf('--registrar'); if (i < 0) return null; const v = args[i + 1]; if (v && !v.startsWith('--')) { args.splice(i, 2); return v; } args.splice(i, 1); return `${P}decisiones.json`; })();
 const sinPrecios = bandera('--sin-precios'), soloSeguimiento = bandera('--seguimiento');
 
 const REGLAS = leer(`${E}reglas.json`);
@@ -63,7 +67,7 @@ const RUTA_CARTERA = `${process.env.CARTERA_REAL || '/mnt/project-files/cartera/
 const CARTERA = leer(RUTA_CARTERA) ?? (console.error(`Aviso: no está ${RUTA_CARTERA}; el escáner sigue con la cartera vacía.`),
   { posiciones: [], liquidez_eur: 0, liquidez_libre_eur: 0, ordenes_pendientes: {} });
 const REV = leer('verticales/empresa/objetivo12m-revisados.json').revisados;
-const RUTA_REG = `${E}registro-senales.json`, RUTA_ESC = `${E}escaneo-ultimo.json`;
+const RUTA_REG = `${P}registro-senales.json`, RUTA_ESC = `${P}escaneo-ultimo.json`;
 
 // ---------- Tipos de cambio (EUR por unidad de la divisa de cotización) ----------
 const FX = { EUR: 1 };
@@ -285,7 +289,7 @@ async function escanear() {
   if (activas.length) console.log(`\nACTIVAS: ${activas.map((a) => `${a.tipo} ${a.nombre} (desde ${fechaCorta(a.desde)})`).join('; ')}`);
   if (recientes.length) console.log(`\nDescartadas en un Vup de los últimos 7 días (no se repiten): ${recientes.join(', ')}`);
   if (descartesCalidad.length) console.log(`\nTocan banda pero no pasan calidad: ${descartesCalidad.join('; ')}`);
-  console.log(`\nSiguiente paso: Vup de cada candidata (escaner/README.md) → escaner/decisiones.json → --registrar.`);
+  console.log(`\nSiguiente paso: Vup de cada candidata (escaner/README.md) → ${P}decisiones.json → --registrar.`);
 }
 function q_calidad_manual(c) { return / n\.d\./.test(c.calidad || ''); }
 
@@ -343,7 +347,7 @@ function escribirSenalesMd(reg) {
   const fila = (s) => `| ${fechaCorta(s.fecha)} ${s.hora} | ${s.tipo} | ${s.nombre} | ${s.estado} | ${fPrecio(s.precio)} ${s.divisa} | ${s.limite !== null && s.limite !== undefined ? fPrecio(s.limite) : '—'} | ${fp(s.rentabilidad_12m_pct)} | ${s.seguimiento ? fp(s.seguimiento.variacion_eur_pct) : '—'} | ${s.seguimiento ? fp(s.seguimiento.indice_pct) : '—'} | ${s.seguimiento?.exceso_pct !== null && s.seguimiento?.exceso_pct !== undefined ? fp(s.seguimiento.exceso_pct) : '—'} | ${(s.estado === 'emitida' ? s.motivo : s.estado === 'descartada tras Vup' ? s.vup : s.nota || '').replace(/\|/g, '/').slice(0, 220)} |`;
   const md = `# Señales del escáner diario
 
-Registro de todas las señales del escáner (\`herramientas/escaner-diario.mjs\`, procedimiento en \`escaner/README.md\`). Se rehace en cada ejecución; los datos están en \`escaner/registro-senales.json\`. Última actualización: ${reg.actualizado}.
+Registro de todas las señales del escáner (\`herramientas/escaner-diario.mjs\`, procedimiento en \`escaner/README.md\`). Se rehace en cada ejecución; los datos están en \`<privada>/escaner/registro-senales.json\`. Última actualización: ${reg.actualizado}.
 
 **Cómo se mide si acierta.** Desde el precio de la señal, en euros, frente al índice mundial (${REGLAS.indice_referencia.nombre}). Una compra acierta si lo hace mejor que el índice; una venta acierta si, después de vender, la acción lo hace peor que el índice. También se siguen las que tocaron banda y no se emitieron (sin liquidez, descartadas tras el Vup), para saber si el filtro ayuda. Se guarda la foto a 1, 3, 6 y 12 meses.
 
@@ -359,7 +363,7 @@ ${res.map((x) => `| ${x.estado} | ${x.n} | ${x.bien} | ${fp(x.mediana_exceso)} |
 |---|---|---|---|---|---|---|---|---|---|---|
 ${[...reg.senales].reverse().map(fila).join('\n')}
 `;
-  writeFileSync(`${E}SENALES.md`, md);
+  writeFileSync(`${P}SENALES.md`, md);
 }
 function mensaje(esc, nuevas, reg, avisos = []) {
   const emit = nuevas.filter((s) => s.estado === 'emitida');
@@ -388,7 +392,7 @@ function mensaje(esc, nuevas, reg, avisos = []) {
 }
 async function registrarDecisiones(ruta) {
   const esc = leer(RUTA_ESC);
-  if (!esc) throw new Error('No hay escaner/escaneo-ultimo.json: lanza antes el escáner.');
+  if (!esc) throw new Error('No hay <privada>/escaner/escaneo-ultimo.json: lanza antes el escáner.');
   // decisiones.json: la lista de decisiones, o { "decisiones": [...], "avisos": ["Wise publicó…", …] } con los avisos de
   // resultados y de riesgo de la vigilancia de la mañana (--vigilancia).
   const bruto = leer(ruta, []);
@@ -418,7 +422,7 @@ async function registrarDecisiones(ruta) {
   guardar(RUTA_REG, reg);
   escribirSenalesMd(reg);
   const m = mensaje(esc, nuevas, reg, avisos);
-  writeFileSync(`${E}mensaje-ultimo.md`, m + '\n');
+  writeFileSync(`${P}mensaje-ultimo.md`, m + '\n');
   console.log(m);
 }
 
@@ -452,20 +456,20 @@ function vigilados() {
 }
 function vigilancia() {
   const hoy = madrid().fecha;
-  const ult = leer(`${E}vigilancia-ultima.json`)?.fecha || new Date(Date.now() - 3 * 864e5).toISOString().slice(0, 10);
+  const ult = leer(`${P}vigilancia-ultima.json`)?.fecha || new Date(Date.now() - 3 * 864e5).toISOString().slice(0, 10);
   const vs = vigilados();
   const publicaron = vs.filter((v) => v.proximos_resultados && v.proximos_resultados > ult && v.proximos_resultados <= hoy);
   const sinActualizar = vs.filter((v) => v.proximos_resultados && v.fecha_corte && v.proximos_resultados > v.fecha_corte && v.proximos_resultados <= ult);
   const pronto = vs.filter((v) => v.proximos_resultados && v.proximos_resultados > hoy && dias(hoy, v.proximos_resultados) <= 7);
   const res = { fecha: hoy, desde: ult, publicaron, sin_actualizar: sinActualizar, proximos_7_dias: pronto, riesgo: vs.filter((v) => v.papel === 'cartera').map((v) => v.nombre) };
-  guardar(`${E}vigilancia-ultima.json`, res);
+  guardar(`${P}vigilancia-ultima.json`, res);
   console.log(`Vigilancia ${fechaCorta(hoy)} (desde el ${fechaCorta(ult)}): ${vs.length} empresas vigiladas.`);
   console.log(`\nPUBLICARON RESULTADOS (actualizar análisis y revisar señal): ${publicaron.length ? '' : 'ninguna'}`);
   for (const v of publicaron) console.log(`· ${v.nombre} [${v.clave}, ${v.papel}] el ${fechaCorta(v.proximos_resultados)}; informe ${v.carpeta || 'sin informe'} con corte ${v.fecha_corte || 'n.d.'}`);
   if (sinActualizar.length) console.log(`\nRESULTADOS YA PUBLICADOS QUE EL INFORME NO RECOGE (pendientes de versión nueva): ${sinActualizar.map((v) => `${v.nombre} (${fechaCorta(v.proximos_resultados)})`).join(', ')}`);
   console.log(`\nPRÓXIMOS 7 DÍAS: ${pronto.map((v) => `${v.nombre} ${fechaCorta(v.proximos_resultados)}`).join(', ') || 'ninguno'}`);
   console.log(`\nALERTAS DE RIESGO (buscar noticias desde el ${fechaCorta(ult)}: salida del consejero delegado, recorte de previsión, investigación abierta; y la ley francesa de Edenred): ${res.riesgo.join(', ')}`);
-  console.log('\nLo que salga va a "avisos" de escaner/decisiones.json (una frase llana por aviso). Fechas nuevas de resultados: escaner/calendario.json.');
+  console.log(`\nLo que salga va a "avisos" de ${P}decisiones.json (una frase llana por aviso). Fechas nuevas de resultados: escaner/calendario.json.`);
 }
 
 // ---------- Informe semanal ----------
@@ -535,7 +539,7 @@ async function semanal() {
     conVertical ? '' : `Liquidez libre: ${f(CARTERA.liquidez_libre_eur, 0)} EUR${ociosa ? '. Lleva 3 meses o más sin destino: toca pasarla a XEON (regla de liquidez).' : '. No toca XEON (hace falta ≥ 3.000 EUR ociosos durante 3 meses).'}`, '',
     `Repaso del método: ${rob.length} informes value probados al precio de hoy (${Object.entries(ver).map(([k, v]) => `${v} ${k.toLowerCase()}`).join(', ')}). ${viejos.length ? `Se han quedado viejos ${viejos.length} y conviene ponerlos en la cola: ${viejos.join('; ')}.` : 'Ningún informe se ha quedado viejo.'}`];
   const m = L.filter((x, i, a) => !(x === '' && a[i - 1] === '')).join('\n').trim();
-  writeFileSync(`${E}semanal-ultimo.md`, m + '\n');
+  writeFileSync(`${P}semanal-ultimo.md`, m + '\n');
   console.log(m);
 }
 

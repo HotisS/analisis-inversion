@@ -513,7 +513,7 @@ async function calcularAvisos(filas, cartera, hist, hoy) {
 
 // ───────────────────────── Señales del escáner (su registro) ─────────────────────────
 function resumenSenales() {
-  const reg = leer(join(RAIZ, 'escaner/registro-senales.json'), { senales: [] }).senales;
+  const reg = leer(join(DATOS, 'escaner/registro-senales.json'), { senales: [] }).senales;
   const emitidas = reg.filter((s) => s.estado === 'emitida');
   const conMes = emitidas.filter((s) => s.a_1m);
   const vivas = emitidas.filter((s) => s.seguimiento && s.seguimiento.exceso_pct !== null && s.seguimiento.exceso_pct !== undefined);
@@ -593,7 +593,7 @@ function informe({ filas, cartera, avisos, senales, ahora, inicio }) {
     L.push(`- Registradas ${s.total}; emitidas ${s.emitidas}.`);
     L.push(`- Con un mes de vida: ${s.a_1m ? `${s.aciertan_1m} de ${s.a_1m} baten al índice` : 'aún ninguna (las primeras cumplen un mes a mediados de noviembre)'}.${s.a_3m ? ` A tres meses: ${s.aciertan_3m} de ${s.a_3m}.` : ''}`);
     if (s.exceso_medio_emitidas !== null) L.push(`- Hasta hoy, las emitidas van de media ${fp(s.exceso_medio_emitidas)} frente al índice; las que no se emitieron (sin liquidez o descartadas), ${fp(s.exceso_medio_no_emitidas)}.`);
-    L.push('- Detalle: escaner/SENALES.md del repo.');
+    L.push('- Detalle: escaner/SENALES.md de la carpeta privada de la cartera.');
   }
   L.push('');
   return L.join('\n');

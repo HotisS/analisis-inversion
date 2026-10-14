@@ -80,7 +80,7 @@ Si el conector no está en la sesión, se salta el paso 1 y se usa la última fo
   - Una compra nueva arranca el día de la compra, a su precio medio.
   - Una posición que ya estaba antes de la vertical arranca el día del alta, al precio de ese día, porque no se sabe qué esperaba el método cuando se compró.
   - «Previsto hasta hoy» = la rentabilidad prevista × días ÷ 365 (lineal, hasta 12 meses). «Real» = lo que ha hecho el precio en su moneda desde el arranque, que es lo que mide el método.
-- **Señales del escáner**: se leen de `escaner/registro-senales.json`. Cuenta cuántas, a 1 y a 3 meses, baten al índice, y compara las emitidas con las que no se emitieron.
+- **Señales del escáner**: se leen de `escaner/registro-senales.json` de la carpeta privada (`/mnt/project-files/cartera/real/`). Cuenta cuántas, a 1 y a 3 meses, baten al índice, y compara las emitidas con las que no se emitieron.
 
 ## Avisos
 

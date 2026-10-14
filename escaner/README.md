@@ -24,17 +24,19 @@ Si no hay nada nuevo, el mensaje del escáner es una sola línea. Las tareas des
 
 ## Archivos
 
+**Privacidad (14-oct):** todo lo que lleva datos de la cuenta (la cartera, los escaneos, las decisiones, el registro de señales y los mensajes) vive en la carpeta privada del proyecto, `/mnt/project-files/cartera/real/` (o `$CARTERA_REAL`): la cartera en `escaner-cartera.json` y las salidas del escáner en `escaner/`. En el repo, que es público, solo quedan las reglas, el calendario, el control de rutinas y este procedimiento. En la tabla, «privada/» es esa carpeta.
+
 | Archivo | Qué es | Quién lo cambia |
 |---|---|---|
 | `/mnt/project-files/cartera/real/escaner-cartera.json` (privado; plantilla en `cartera.ejemplo.json`) | Posiciones reales, liquidez, liquidez libre y órdenes ya decididas | El hilo value (dueño de la cartera), cuando el usuario confirma una orden ejecutada |
 | `reglas.json` | Reglas de MEMORIA.md y METODO-VIGENTE.md §4 que aplica el escáner: tamaño, calidad, exclusiones, no vender, umbrales de venta | Quien cambie esas reglas en MEMORIA.md |
-| `escaneo-ultimo.json` | Resultado del último escaneo: candidatas, observaciones, señales activas | La herramienta |
-| `decisiones.json` | Lo que sale del Vup de cada candidata | Claude, en cada ejecución |
-| `registro-senales.json` | Registro histórico de todas las señales y su seguimiento | La herramienta (no editar a mano) |
-| `SENALES.md` | El registro en tabla, con el resumen de aciertos | La herramienta |
-| `mensaje-ultimo.md` | El mensaje para el chat del proyecto | La herramienta |
+| privada/`escaner/escaneo-ultimo.json` | Resultado del último escaneo: candidatas, observaciones, señales activas | La herramienta |
+| privada/`escaner/decisiones.json` | Lo que sale del Vup de cada candidata | Claude, en cada ejecución |
+| privada/`escaner/registro-senales.json` | Registro histórico de todas las señales y su seguimiento | La herramienta (no editar a mano) |
+| privada/`escaner/SENALES.md` | El registro en tabla, con el resumen de aciertos | La herramienta |
+| privada/`escaner/mensaje-ultimo.md` | El mensaje para el chat del proyecto | La herramienta |
 | `calendario.json` | **Calendario de resultados único** (cartera, órdenes, lista de espera y suplentes; fecha, si está confirmada y fuente). Manda sobre la fecha del informe. Lo leen el escáner, el Excel (`seguimiento.mjs`, columna «Próximos resultados») y los análisis (`node herramientas/calendario.mjs --aplicar` escribe la fecha en cada datos*.json, sin rehacer cálculos) | La vigilancia de la mañana: comprueba las fechas que caen en los próximos 14 días y añade las que se anuncian; después `calendario.mjs --aplicar` y `seguimiento.mjs` |
-| `vigilancia-ultima.json`, `semanal-ultimo.md` | Última vigilancia y último informe semanal | La herramienta |
+| privada/`escaner/vigilancia-ultima.json`, `escaner/semanal-ultimo.md` | Última vigilancia y último informe semanal | La herramienta |
 
 ## Pasos de cada ejecución
 
@@ -43,10 +45,10 @@ Si no hay nada nuevo, el mensaje del escáner es una sola línea. Las tareas des
    - **Candidatas**: necesitan Vup antes de ser señal.
    - **Observaciones**: tocan banda pero no hay liquidez libre (o el bolsillo growth está lleno), o ya están en una orden decidida. Se apuntan en el registro sin Vup, para medir después si habría acertado.
    - **Activas**: señales emitidas en los últimos 30 días que siguen en pie. No se repiten.
-3. **Vup de cada candidata** (abajo) y `escaner/decisiones.json`.
-4. `NODE_USE_ENV_PROXY=1 node herramientas/escaner-diario.mjs --registrar escaner/decisiones.json` — apunta todo, actualiza el seguimiento y escribe `SENALES.md` y `mensaje-ultimo.md`.
-5. Commit y push (`escaner/`, `verticales/empresa/precios.json`), con `git pull --rebase` antes.
-6. Publicar `mensaje-ultimo.md` en el proyecto, tal cual (lenguaje llano, una cifra por dato).
+3. **Vup de cada candidata** (abajo) y `decisiones.json` en la carpeta privada (`/mnt/project-files/cartera/real/escaner/decisiones.json`).
+4. `NODE_USE_ENV_PROXY=1 node herramientas/escaner-diario.mjs --registrar` (lee el `decisiones.json` privado) — apunta todo, actualiza el seguimiento y escribe `SENALES.md` y `mensaje-ultimo.md`.
+5. Commit y push de lo que sea del repo (`escaner/calendario.json`, `escaner/ejecuciones.json`, `verticales/empresa/precios.json`, análisis), con `git pull --rebase` antes. Las salidas privadas no se suben.
+6. Publicar el `mensaje-ultimo.md` privado en el proyecto, tal cual (lenguaje llano, una cifra por dato).
 
 ## Cuándo una acción es candidata
 
@@ -69,7 +71,7 @@ Para cada candidata, antes de convertirla en señal:
 3. **Pruebas de robustez.** Ya van en el escaneo (y en `--vup`); repasar las marcas que salen con la candidata.
 4. **Decisión.** Emitir solo si la señal se sostiene tras los tres pasos; si no, descartar y decir por qué. Con resultados en menos de 14 días, la compra se propone en dos tramos (el segundo tras los resultados). Si el cambio es grande (BPA ±10 % o tesis tocada), además se pide al coordinador una versión nueva del informe.
 
-`escaner/decisiones.json` (una entrada por candidata; el ejemplo es ilustrativo):
+`decisiones.json` (una entrada por candidata; el ejemplo es ilustrativo):
 
 ```json
 [
