@@ -21,7 +21,8 @@ Lo que cualquier sesión de Claude, en cualquier equipo, tiene que saber antes d
 - **Rightmove fuera** (14-oct, 12:53, «no la quiero en el portfolio»): no proponerla aunque pase los requisitos.
 - **Comercio minorista: no le convence** (13-oct, Dunelm fuera aunque pasara los tres requisitos). No proponer minoristas salvo que lo pida.
 - **Alphabet se vende** (14-oct, 16:50; sustituye a «Alphabet se queda» del 13-oct). El usuario preguntó «¿alphabet tú venderías?» y había delegado las órdenes. Con v2 da +1,8 % y el valor intrínseco está un 28 % por debajo del precio. Con ese dinero entra ANYCOLOR (100 a ≤ 3.137 JPY). Si el usuario quiere conservarla, se deshace.
-- **Claude decide las órdenes** con la información de los informes (14-oct, 15:39: «las órdenes tú mandas»). Si el usuario opina sobre un valor, manda su opinión. **LVMH es excepción de calidad aceptada** (ROIC − WACC 3,4).
+- **REGLA DURA (14-oct, 18:04): no se emite ninguna orden de compra o venta en el broker salvo que el usuario lo diga explícitamente en el chat Y lo confirme tras pedirle confirmación.** La tabla de órdenes es una propuesta que ejecuta él.
+- **Claude propone las órdenes** con la información de los informes (14-oct, 15:39: «las órdenes tú mandas»: decide qué va en la propuesta, no las lanza). Si el usuario opina sobre un valor, manda su opinión. **LVMH es excepción de calidad aceptada** (ROIC − WACC 3,4).
 - **Antes de recomendar vender algo que ya tiene, se investiga a fondo** (situación, novedades, argumentos a favor y en contra, qué cambiaría la decisión) y se deja un memorando `investigacion-cartera-AAAA-MM-DD.md` en la carpeta del informe (13-oct: Grifols, Alphabet, Hermès y Equifax).
 - **Tamaño: mínimo 1.000 EUR por posición** (12-oct; el mínimo del 5 % se retiró el 14-oct, 15:39) y, como guía, no más del 7 % salvo Edenred y el oro; **no hay máximo de valores** (13-oct).
 - **Tres requisitos a la vez** para comprar o ampliar:
