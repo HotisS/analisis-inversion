@@ -18,3 +18,4 @@
 - **propio sin meta.fecha_corte/meta.divisa**: rellenar avisa al final, pero el motor calcula igual; ponlos siempre en propio desde el primer cálculo.
 - **Relanzar subagentes cortados**: dar la lista de lo ya descargado en notas/docs ahorró tiempo; E acabó en 3 minutos.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 439,16 USD (ponderado; media simple 443,29), rentabilidad +18,2 % (+19,3 % con la media simple; base +14,9 %), señal Comprar (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +18,2 % → +18,3 %, base +14,9 %, señal Mantener (`revision-12m-2026-10-13.md`).

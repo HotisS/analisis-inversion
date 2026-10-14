@@ -32,3 +32,4 @@
 - **Patrimonio negativo por recompras** (Verisk, −1.189 M): ROE sin sentido y ROIC incremental no calculable; el ROIC sube por la rotación (venta de Energy y recompras), no por el margen. Dilo en `rentabilidad`.
 - **EBITDA ajustado que no excluye la remuneración en acciones** (Verisk): `base_ebitda: "NIIF"` vale si las partidas puntuales (costes de compras y litigios) van en `no_recurrentes_en_ebitda`, también en el LTM.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 218,4 USD, rentabilidad +24,0 %, señal Mantener (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +24,1 % → +12,4 %, base +10,6 %, señal Mantener (`revision-12m-2026-10-13.md`).

@@ -93,3 +93,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v3.mjs` (parte de `datos-
 2. Con reinversión < 15 % del NOPAT el motor no calcula el rendimiento del capital nuevo, aunque aquí es la prueba útil (74 % frente a un límite del 76,5 %, muy cerca). Arreglo: calcularlo siempre que la reinversión sea positiva, y decir «reinversión baja» en vez de «sin inversión neta».
 3. El «crecimiento medio proyectado» es la media aritmética (9,1 %) e incluye el año fijo (+23,6 %); en una cíclica que sale de un suelo, la tasa compuesta (8,3 %) es la comparable con la historia.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 685,29 CHF, rentabilidad −0,8 %, señal Mantener (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada -0,8 % → +2,3 %, base +16,7 %, señal Mantener (`revision-12m-2026-10-13.md`).
