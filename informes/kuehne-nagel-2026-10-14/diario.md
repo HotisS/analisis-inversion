@@ -1,0 +1,18 @@
+# Diario · Kuehne+Nagel (KNIN.SW) · 14-oct-2026
+
+- Commit de partida: 55341c9 (regla de múltiplos v3 en main desde 0ab5dfd; `git pull --rebase` al empezar: al día).
+- Entorno: nube de Claude Code. La red solo deja la búsqueda web (WebSearch); WebFetch, curl, descargar.mjs y bolsa.mjs no se usaron. Unas 30 búsquedas. Las cifras salen de resultados de búsqueda que citan notas ad hoc e informes anuales de la empresa (2021-2025, 1T26, 2T26), prensa suiza (AWP, cash.ch) y agregadores (Stock Analysis para balance y flujos; CompaniesMarketCap para los cierres de año), con la URL como fuente.
+- Reutilizado del repositorio: sector, competidores (con sus fuentes), comparables a 7-oct (MarketScreener) y transacciones del análisis de DSV del 7-oct, pasados a CHF con el BCE de ese día (8,03 DKK/CHF). Tasa libre suiza 0,54 % como Roche, Givaudan y Lonza.
+- Fecha de corte 2026-10-14; divisa CHF; ejercicio natural. Notas A-E y propio hechos por mí sin subagentes (`notas/construir-notas.mjs` escribe A-E; `propio.mjs` + `supuestos.mjs` + `textos.mjs`).
+- **Confianza de los datos de núcleo: baja.** Precio = cotización en tiempo real de MarketScreener del 13-oct (230,05; CNBC: cierre de 228,50 el 9-oct), no un cierre oficial de la SIX. Balance 2023-2025 solo con totales de Stock Analysis; reparto deuda financiera/arrendamientos estimado; pagos de arrendamientos derivados de la caja libre publicada (2022-2023 interpolados). Resultado financiero e impuestos de 2021-2023 sin dato. Cierres de año para el PER estimados con capitalización en USD. Sin consenso de EBITDA (EV/EBITDA NTM n.d.) ni BPA 2027-2028 de consenso. Sin beta (1,0 estimada).
+- Decisiones: EBIT y BPA publicados; costes del programa de ahorro en `no_recurrentes_en_ebitda` (138 M en 2025). Segmentos sin ingresos accesibles: fuera (EBIT recurrente por unidad en los KPI). Circulante del DCF a 0 (sin proveedores en el balance; en el primer cálculo el 3 % generaba una salida ficticia de 745 M). Capex = amortización (3,7 %) con las altas de derechos de uso. Sostenibilidad «En parte»: activos ligeros, ninguna prueba falla (no hay rebaja del base); el margen es lo cíclico. Pesos DCF 40 / comparables 20 / escenarios 40.
+- Resultado: DCF 192,38 CHF; valor intrínseco 184,20 (−19,9 %); DCF inverso 6,3 % anual de crecimiento 2027-2032 (base 3,2 %) o margen 11,4 %; con la prima del mercado, 253,31. ROIC 16,3 % (Stock Analysis; el motor da 21,0 % con balance incompleto) frente a WACC 6,33 %.
+- **Línea 12 m (v3)**: objetivo 228,77 CHF, ponderada +2,1 %, base +8,4 % (dividendo 2,6 % incluido); **Mantener**, convicción baja (absoluta Vender, relativa Mantener). Comprar < 184,20; vender > 260,86. No pasa los requisitos de rentabilidad ni de valor real; sí el de calidad. Detalle en revision-12m-2026-10-14.md.
+- Para subir la confianza: cierre oficial de la SIX, balance y flujos del informe anual 2025 y del 1S26 (deuda, arrendamientos, proveedores, minoritarios de IMC), tamaño de la opción de Amazon y el 3T26 (22-oct-2026).
+- Word y PDF (soffice): 18 de 19 controles y 1 explicado (NX Holdings). Cobertura 77,6 %.
+- Tiempo: unos 17 minutos de reloj (16:19-16:36 UTC).
+
+## Lecciones
+
+- En la nube, los cierres de año en divisa local se pueden estimar con la capitalización de fin de año en USD de CompaniesMarketCap (una búsqueda) pasada a la divisa y dividida por las acciones emitidas; cuadran con los máximos y mínimos del informe anual. Marcar como estimación.
+- Si el balance no trae proveedores, poner el circulante del DCF a 0: con un % positivo el motor genera una salida de caja ficticia en el primer año (745 M aquí).
