@@ -77,3 +77,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 4. La cobertura de campos baja del 89,7 % al 86,5 % sin quitar datos (cambios del motor o de la plantilla desde el 7-oct).
 
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 1.657 DKK, rentabilidad 46,3 %, señal Comprar (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +38,7 % → +14,7 %, base +15,7 %, señal Mantener (`revision-12m-2026-10-13.md`).

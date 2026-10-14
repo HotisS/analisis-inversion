@@ -10,3 +10,4 @@
 - 14:46 Parado a petición del usuario: valoración y textos hechos (Comprar, convicción media, valor objetivo 8,79 GBP); faltan Word, PDF y revisión.
 - 01:18 (11-oct) Reanudado a petición del usuario: Word y PDF (52 páginas), portada y síntesis revisadas como imagen. Comprar, convicción Media, valor objetivo 8,79 GBP (+9,9 %), rentabilidad total 15,6 %.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 9,42 GBP, rentabilidad 23,5 %, señal Comprar (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +21,3 % → +20,7 %, base +14,9 %, señal Comprar (`revision-12m-2026-10-13.md`).
