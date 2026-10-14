@@ -6,7 +6,7 @@ Solo growth (la value es `cola.md`). Método vigente **v11** (`verticales/growth
 
 | Qué | Estado |
 |---|---|
-| Tanda 11: Alnylam (ALNY), AeroVironment (AVAV), dLocal (DLO), Celsius Holdings (CELH) | Propuesta el 14-oct tras la tanda 10 |
+| Tanda 11: Alnylam (ALNY), AeroVironment (AVAV), dLocal (DLO), Celsius Holdings (CELH) | En marcha desde el 14-oct 17:55 |
 | Revisar Wise con su actualización del 2T | 15-oct; si sube a convicción media, se propone como sustituta |
 | Revisar argenx con sus resultados del 3T | 22-oct; suplente desde el 14-oct |
 
