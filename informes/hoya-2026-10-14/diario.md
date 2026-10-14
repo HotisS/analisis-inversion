@@ -1,0 +1,15 @@
+# Diario · HOYA Corporation (7741.T) · 14-oct-2026
+
+- Commit de partida: b8fd9b3 (Moncler 14-oct; método v2 con regla de múltiplos común).
+- Entorno: nube de Claude Code. La red solo deja salir a la búsqueda web (WebSearch); WebFetch, curl, `descargar.mjs` y `bolsa.mjs` no funcionan. Las cifras salen de resultados de búsqueda (comunicados de resultados, informes anuales citados, prensa financiera, agregadores citados), con la URL como fuente; lo que no cuadre va a `null` y a `meta.huecos`.
+- Fecha de corte: 2026-10-14. Divisa: JPY (cuentas y cotización). Cierre del ejercicio: marzo; etiqueta «fin» (FY2026 = abr-2025 a mar-2026). Normas: NIIF (IFRS). Ejercicio objetivo a 12 meses: FY2028e.
+- 12:12 UTC: inicio.
+- Confianza de los datos: baja-media. Cuenta FY2022-FY2026 de agregadores (Stock Analysis, Stockopedia, Finboard, Investing) cruzada con el comunicado de FY2026 y el informe anual de FY2025 vistos en extractos de búsqueda; balance solo FY2025-FY2026 parcial; sin precios de cierre de marzo (PER histórico de año natural, Macrotrends/Yahoo); consenso con una sola fuente de BPA (Stockopedia, 791 JPY). Precio: cierre del 9-oct (25.055 JPY, Yahoo!ファイナンス).
+- Decisiones: comparables reutilizados de Olympus, Cooper, Fielmann y ASML (8-14 oct), en JPY a 158,30/USD y 180,1/EUR; Applied Materials fuera (LTM y NTM de definiciones distintas). Deuda con intereses (42.200 M) tratada como arrendamientos. Puente de mar-26 con dividendo final de junio y recompra de agosto en otros_ajustes; acciones 333,87 M. Tasa libre: bono japonés 3,089 % (MoF, 8-oct, del informe de Olympus); beta 0,9 estimada; terminal 2,5 %. Ingresos financieros recurrentes en el BPA: 25.000 M (no los 52.164 M de FY2026). ~21 búsquedas web.
+- Sostenibilidad: Sí (reinversión 5 % del NOPAT; prueba a mano: crecimiento financiable ≈ 2,3 %, el resto de precio y volumen con la capacidad existente, como en FY2022-26).
+- 14-oct, 12:26 UTC: informe cerrado, 15 de 16 controles (el de fuentes primarias, 9, explicado). Word y PDF (soffice, 35 páginas). DCF 17.859,10 JPY; valor intrínseco 16.972,10 JPY (−32,3 %); DCF inverso: 11,0 % de crecimiento frente al 6,1 % del base.
+- **Línea 12 m**: objetivo 26.719,23 JPY → ponderada +7,8 %, base +10,4 % (dividendo 1,2 %) → Mantener, convicción media; compra < 16.972,10 JPY; venta > 30.015,81 JPY. Detalle en revision-12m-2026-10-14.md. No se ha ejecutado apuntar-12m.mjs ni seguimiento.mjs (lo integra el orquestador).
+
+## Lecciones
+- Japón con tasa libre al 3,1 %: los «compounders» japoneses de PER 30x (HOYA) salen con el DCF un 30 % por debajo del precio aunque el BPA coincida con el consenso; la regla a 12 meses da Mantener por múltiplo, no por cifras. Decirlo en la síntesis.
+- HOYA presenta la cuenta por naturaleza y sin línea de beneficio operativo: el EBIT de los agregadores (Stockopedia) deja un «resultado financiero» de 52.000 M que es sobre todo divisa; en el BPA del objetivo a 12 meses usar solo el rendimiento recurrente de la caja.

@@ -1,0 +1,3682 @@
+{
+  "meta": {
+    "fecha_corte": "2026-10-14",
+    "divisa": "JPY",
+    "divisa_cotizacion": "JPY",
+    "tipo_cambio": 1,
+    "unidades": "millones",
+    "cierre_ejercicio_mes": 3,
+    "etiqueta_ejercicio": "fin",
+    "normas_contables": "NIIF (IFRS)",
+    "formato_cuenta": "naturaleza",
+    "limitaciones": "Análisis hecho desde la nube con la red limitada a la búsqueda web: la web de HOYA, EDINET, Yahoo y los proveedores de datos no se pudieron abrir, y las herramientas descargar.mjs y bolsa.mjs no funcionan aquí. Las cifras salen de los extractos de búsqueda del comunicado de resultados de FY2026, del documento de la junta de 2026 y de agregadores (Stock Analysis, Stockopedia, Finboard, Investing), cruzadas cuando fue posible; la confianza es menor que en un análisis normal y lo que no cuadró va a null y a los huecos. Cuentas y cotización en JPY, NIIF, gastos por naturaleza (sin coste de ventas). HOYA nombra el ejercicio por el año en que termina: FY2026 va de abril de 2025 a marzo de 2026. Precio: cierre del 9-oct-2026 en Tokio (25.055 JPY), el último encontrado [26]. Acciones: 333,87 M (334,84 M emitidas tras la amortización de mayo menos las 973.500 recompradas en agosto [16]); no incluye las compras de septiembre, ni en las acciones ni en la caja. Puente con el balance de mar-26 y, en otros ajustes, el dividendo final pagado en junio y la recompra de agosto. Balance solo de FY2025 y FY2026 y sin clientes ni proveedores: el circulante del DCF (14 % de las ventas) lo calcula el motor con lo que hay. Los comparables se reutilizan de los informes del repo del 9 al 14 de octubre, convertidos a 158,30 JPY/USD y 180,1 JPY/EUR. El PER histórico del objetivo a 12 meses es el de cierre de año natural (Macrotrends y Yahoo), no el de cierre de marzo.",
+    "controles_explicados": [
+      {
+        "control": "Sección de núcleo con datos: rentabilidad",
+        "explicacion": "El motor solo puede calcular el ROIC de FY2025 y FY2026 por falta de balance anterior; el texto lo comenta con esos dos años."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "explicacion": "Sin acceso a la web de HOYA ni a EDINET, la mayoría de las cifras salen de agregadores citados; las primarias usadas son el comunicado de FY2026, el informe anual de FY2025, la convocatoria de la junta, el informe de gobierno, las notas de recompra y el bono del Ministerio de Hacienda."
+      }
+    ],
+    "huecos": [
+      {
+        "seccion": "financieros",
+        "campo": "coste de ventas, gastos generales, resultado financiero y BAI de FY2022, dividendos por acción FY2022-FY2024",
+        "tipo": "Complemento",
+        "intentos": "1) Comunicado de resultados e informe anual buscados: solo cifras de cabecera en los extractos; 2) Stock Analysis, Finboard, Stockopedia y TipRanks: dan ventas, EBIT y beneficio, no el resto; 3) búsqueda del resultado antes de impuestos por año: aparecen FY2023-FY2026, no FY2022",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "balance",
+        "campo": "balance completo FY2022-FY2024 y partidas de FY2025-FY2026 (clientes, proveedores, inmovilizado, fondo de comercio)",
+        "tipo": "Núcleo",
+        "intentos": "1) Estado de situación del informe anual de FY2025 y del comunicado de FY2026: la búsqueda solo devolvió totales; 2) Yahoo, Simply Wall St y EDINET DB: totales discrepantes; 3) documento de la junta de 2026: totales, existencias y variaciones",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "flujos",
+        "campo": "dividendos pagados, recompras y pagos de arrendamientos por año",
+        "tipo": "Complemento",
+        "intentos": "1) Estado de flujos del comunicado de FY2026: la búsqueda devolvió solo el 4T; 2) Investing y Stock Analysis: flujo operativo y capex; 3) notas de recompra: importes de los programas, no por ejercicio",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "calidad",
+        "campo": "auditor y opinión",
+        "tipo": "Complemento",
+        "intentos": "1) Informe anual FY2025 sin abrir (solo búsqueda); 2) informe de gobierno corporativo: no aparece en el extracto; 3) prensa: sin dato",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sector",
+        "campo": "tamaño y crecimiento del mercado de blanks y de lentes oftálmicas",
+        "tipo": "Núcleo",
+        "intentos": "1) Informe anual de HOYA: no publica tamaño de mercado; 2) informes de mercado (Dataintelo, Reportprime): cifras contradictorias entre sí; 3) SEMI da 403 y no hay red para descargar",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "competencia",
+        "campo": "ingresos y margen EBIT de los competidores",
+        "tipo": "Núcleo",
+        "intentos": "1) Cuentas de AGC y Shin-Etsu: sin desglose de blanks; 2) EssilorLuxottica: no buscadas por presupuesto de búsquedas; 3) informes del repo: Olympus y EssilorLuxottica sin margen EBIT a mano",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "lista de consejeros, remuneración del CEO, accionistas significativos y votos de 2025-2026",
+        "tipo": "Núcleo",
+        "intentos": "1) Convocatoria de la junta de 2026: solo el CEO en el extracto; 2) resultados de la junta de 2026: publicados solo en japonés, no encontrados; 3) informe de gobierno 2025 y MarketScreener: votos de 2024",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "directivos",
+        "campo": "resto del equipo directivo y participaciones",
+        "tipo": "Núcleo",
+        "intentos": "1) Web de la empresa: sin red; 2) convocatoria de la junta: solo el CEO; 3) prensa: sin resultados útiles",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "multiplos_historicos",
+        "campo": "precio de cierre de marzo de cada ejercicio",
+        "tipo": "Complemento",
+        "intentos": "1) bolsa.mjs y Yahoo: sin red; 2) búsqueda de cierres de marzo 2019-2026: solo cotizaciones actuales y una tabla de oct-nov 2025 en TipRanks; 3) PER histórico por año: solo PER de cierre de año natural (Macrotrends, Yahoo), que usamos en el objetivo a 12 meses pero no sirve para el ejercicio a marzo",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "transacciones",
+        "campo": "operaciones precedentes con múltiplo",
+        "tipo": "Complemento",
+        "intentos": "1) Compras de fabricantes de lentes y de materiales de semiconductores: no buscadas por presupuesto de búsquedas compartido; 2) informes del repo (Cooper, Fielmann, EssilorLuxottica): transacciones de óptica minorista, no comparables; 3) prensa: sin búsqueda",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "bolsa",
+        "campo": "beta, volatilidad, caída máxima y rentabilidades a 1-10 años",
+        "tipo": "Complemento",
+        "intentos": "1) bolsa.mjs: sin red; 2) Yahoo y Morningstar en la búsqueda: solo precio y rango; 3) Stock Analysis: beta no citada en el extracto",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "consenso",
+        "campo": "ventas, EBITDA y BPA de consenso de FY2027e-FY2029e",
+        "tipo": "Núcleo",
+        "intentos": "1) MarketScreener: solo abre con WebFetch, sin red; 2) Investing y Stock Analysis: objetivos y recomendaciones; 3) Stockopedia: BPA del próximo ejercicio (791 JPY)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "rentabilidad",
+        "campo": "ROIC FY2022-FY2024 y ROIC incremental",
+        "tipo": "Núcleo",
+        "intentos": "1) Balance de los informes anuales: sin red para abrirlos; 2) Yahoo y Stock Analysis en la búsqueda: solo el último balance; 3) cálculo propio: imposible sin capital invertido de esos años",
+        "decision": "Omitido"
+      }
+    ]
+  },
+  "identificacion": {
+    "nombre": "HOYA Corporation",
+    "nombre_corto": "Hoya",
+    "ticker": "7741",
+    "isin": "JP3837800006",
+    "mercado": "Bolsa de Tokio (Prime)",
+    "indice_referencia": "Nikkei 225 / TOPIX",
+    "pais": "Japón",
+    "pais_iso": "JP",
+    "sector": "Salud",
+    "industria": "Equipos y suministros médicos (con negocio de materiales para semiconductores)",
+    "sede": "Tokio",
+    "fundacion": "1941",
+    "empleados": null,
+    "web": "https://www.hoya.com",
+    "precio": 25055,
+    "fecha_precio": "2026-10-09",
+    "acciones": 333.87,
+    "capitalizacion_publicada": null,
+    "free_float_pct": null,
+    "max_52s": 30400,
+    "min_52s": 21040,
+    "volumen_medio_diario": null,
+    "proximos_resultados": "2026-10-30"
+  },
+  "resumen": {
+    "recomendacion": "Mantener",
+    "conviccion": "Media",
+    "justificacion_recomendacion": null,
+    "horizonte": "12 meses",
+    "sintesis": "**La recomendación y por qué.** Mantener, con convicción media. Nuestro objetivo a 12 meses es de 26.719,23 JPY (+7,8 % con dividendo; +10,4 % en el caso base), frente a un precio de 25.055 JPY y un objetivo medio de los analistas de 27.771 JPY [29]. El valor intrínseco es mucho menor: 16.972,10 JPY, un 32,3 % por debajo del precio. HOYA es un negocio excelente a un precio que ya lo paga: el beneficio crecerá a doble dígito, pero el PER de 31,5x deja poco recorrido. La convicción es media porque las dos reglas coinciden y quedan lejos de sus umbrales; subiría si el precio bajara de 22.000 JPY sin cambios en el beneficio, y bajaría si el 2T del 30-oct mostrara un crecimiento a tipos constantes por debajo del 5 %.\n\n**El negocio.** HOYA tiene más del 75 % del mercado de blanks EUV para semiconductores y es la segunda mundial en lentes oftálmicas [14]. Information Technology aporta el 60 % del beneficio de segmento con un margen del 54 % [6]. El ROIC es del 45,2 %, 37,2 puntos por encima del WACC del 8,0 %. La sostenibilidad del crecimiento es **sí**: la proyección (6,1 % anual) apenas necesita capital y sale de precio y de volumen en un mercado donde HOYA ya domina, como en FY2022-FY2026, cuando las ventas crecieron un 9,4 % anual con un capex del 4-6 % de las ventas.\n\n**Finanzas.** En FY2026 las ventas fueron de 947.749 M JPY (+9,4 %) y el resultado antes de impuestos de 327.668 M JPY (+26 %) [6]. En el 1T de FY2027 las ventas crecieron un 16 %, pero solo un 7 % a tipos constantes, y el beneficio llevó un reembolso de aranceles [10]: la calidad del crecimiento es menor de lo que parece. La caja neta ajustada es de 449.992 M JPY y la caja libre de los últimos 12 meses, de 236.900 M JPY [12].\n\n**Equipo y gobierno.** Sin accionista de control, una sola clase de acciones y comisiones con mayoría de externos [18]. La dirección devuelve la caja: recompra de 100.000 M JPY en 2026, otra de hasta 200.000 M JPY en curso y dividendo casi doble (295 JPY) [15, 17].\n\n**Valoración.** El DCF da 17.859,10 JPY con un WACC del 8,0 % y el bono japonés al 3,089 % [38]; con la prima implícita del mercado sube a 22.386,54 JPY, aún por debajo del precio. El DCF inverso dice que el precio descuenta un crecimiento del 11,0 % anual durante diez años, frente a nuestro 6,1 %. Los comparables de óptica y salud cotizan a 17,8 veces beneficios. A 12 meses no discrepamos del mercado en el beneficio (nuestro BPA de FY2027e, 796 JPY, coincide con el consenso de 791 JPY [28]); discrepamos en que el múltiplo de 31,5x esté justificado a largo plazo.\n\n**Riesgos y catalizadores.** El riesgo principal es el múltiplo: en el bajista (PER de 26,7x, el mínimo de cinco años) la acción cae un 17,6 % en un año. Una pausa en los diseños de chips avanzados o un yen más fuerte recortarían el beneficio. Catalizadores: resultados del 2T el 30-oct-2026, guía anual a finales de enero de 2027 y el programa de recompra hasta mar-27. Los foros japoneses se enfriaron en septiembre con la acción en mínimos del año; no señalan riesgos que el informe no recoja.\n\n**Qué cambiaría la decisión.** Compraríamos por debajo de 16.972,10 JPY, donde coinciden la rentabilidad a 12 meses y el valor intrínseco; venderíamos por encima de 30.015,81 JPY. También revisaríamos con un crecimiento de Information Technology por debajo del 5 % o un margen del segmento por debajo del 50 %.",
+    "tesis": "HOYA es el líder casi único de los blanks EUV (más del 75 % del mercado) y el segundo fabricante mundial de lentes oftálmicas [14]. Con un margen EBITDA del 35 % y un ROIC del 45,2 %, genera unos 237.000 M JPY de caja libre al año sin deuda [12] y la devuelve con recompras y dividendos.\n\nEl precio de 25.055 JPY descuenta un crecimiento de ventas del 11,0 % anual durante diez años, casi el doble de nuestro 6,1 %, o un margen del 49,2 %. Cotiza a 31,7 veces el beneficio de los próximos 12 meses, frente a 17,8 veces sus comparables de óptica y salud.\n\nEl mercado acierta en la calidad y en el crecimiento a corto plazo: nuestro BPA de FY2027e coincide con el consenso. Para invertir hay que creer que el PER de 30 veces se mantiene con el bono japonés al 3,1 %, algo que el DCF no apoya. A 12 meses el beneficio sube un 9 % y el precio debería seguirlo, pero sin margen de seguridad.",
+    "vision_diferencial": {
+      "mercado_descuenta": "Un crecimiento de doble dígito durante una década por los blanks EUV y un múltiplo de empresa de semiconductores de calidad (PER de 31,5x).",
+      "nuestra_vision": "El crecimiento a corto plazo es real (BPA +9 % en FY2028e), pero a tipos constantes HOYA crece al 7 %, y con el bono japonés al 3,1 % el valor intrínseco es de 16.972,10 JPY.",
+      "por_que": "El mercado aún valora a HOYA con los múltiplos de la era de tipos cero; el DCF con tipos de hoy no los sostiene. La diferencia la cerraría el tiempo (crecimiento del beneficio) o el múltiplo."
+    },
+    "a_favor": [
+      "**Dominio de los blanks EUV**: más del 75 % del mercado [14].",
+      "**Rentabilidad excepcional**: ROIC del 45,2 % y margen de Information Technology del 54 % [6].",
+      "**Devolución de caja**: recompra en curso de hasta 200.000 M JPY y dividendo de 295 JPY [15].",
+      "**Beneficio al alza**: BPA de 743,82 JPY en FY2026 y 796 JPY estimados para FY2027e."
+    ],
+    "en_contra": [
+      "**Valoración exigente**: el DCF da 17.859,10 JPY, un 28,7 % por debajo del precio.",
+      "**Crecimiento con divisa**: 9 de los 16 puntos del 1T fueron yen débil [10].",
+      "**Múltiplo frente a comparables**: 31,7x frente a 17,8x.",
+      "**Tasa libre japonesa al 3,1 %** [38]: sube el coste de capital de un valor de duración larga."
+    ],
+    "que_vigilar": "La tesis depende de que los blanks EUV sigan creciendo a doble dígito y de que el mercado mantenga un PER cercano a 30x. La señal de que falla: crecimiento de Information Technology a tipos constantes por debajo del 5 % o un margen del segmento por debajo del 50 % en los resultados del 2T (30-oct) o del 3T (enero).",
+    "cambiaria_recomendacion": [
+      "Precio por debajo de 16.972,10 JPY con el beneficio intacto: pasaríamos a Comprar.",
+      "Precio por encima de 30.015,81 JPY: pasaríamos a Vender.",
+      "Margen de Information Technology por debajo del 50 % en dos trimestres: revisaríamos el bajista al alza de probabilidad.",
+      "Crecimiento de ventas a tipos constantes por debajo del 5 % en el 2T de FY2027."
+    ],
+    "kpis_seguimiento": [
+      {
+        "kpi": "Crecimiento de Information Technology",
+        "nivel_actual": "+22,7 % (1T FY2027)",
+        "umbral_alerta": "< 5 %",
+        "por_que": "Motor del beneficio."
+      },
+      {
+        "kpi": "Margen de segmento de Information Technology",
+        "nivel_actual": "55 % (1T FY2027)",
+        "umbral_alerta": "< 50 %",
+        "por_que": "Señal de competencia en EUV."
+      },
+      {
+        "kpi": "Crecimiento a tipos constantes del grupo",
+        "nivel_actual": "+7 % (1T FY2027)",
+        "umbral_alerta": "< 5 %",
+        "por_que": "Separa divisa de negocio."
+      },
+      {
+        "kpi": "PER a 12 meses vista",
+        "nivel_actual": "31,7x",
+        "umbral_alerta": "< 27x o > 36x",
+        "por_que": "Riesgo principal de la tesis."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "historia": {
+    "resumen": "HOYA nació en 1941 como fabricante de vidrio óptico en Tokio y pasó a cristalería y lentes oftálmicas en la posguerra. En los años setenta entró en las máscaras y los blanks para semiconductores, que hoy son su negocio más rentable. En 2008 compró Pentax, de la que conservó los endoscopios y vendió las cámaras. Desde 2003 es una «company with committees» con mayoría de consejeros externos, una rareza en Japón [18]. En la última década ha crecido con compras pequeñas en óptica y salud y ha devuelto caja con recompras.",
+    "hitos": [
+      {
+        "anio": "1941",
+        "hito": "Fundación como fabricante de vidrio óptico en Tokio."
+      },
+      {
+        "anio": "2008",
+        "hito": "Compra de Pentax; conserva los endoscopios médicos (Pentax Medical)."
+      },
+      {
+        "anio": "2024",
+        "hito": "Dominio de los blanks EUV: más del 75 % del mercado [14]."
+      },
+      {
+        "anio": "2025",
+        "hito": "Deterioros de las filiales de endoscopios en EE. UU. y Europa [6]."
+      },
+      {
+        "anio": "2026",
+        "hito": "Récord de beneficio en FY2026, dividendo casi doble (295 JPY) y nueva planta de EUV en Singapur (≈ 42.000 M JPY) [5]."
+      }
+    ],
+    "confianza": "Baja"
+  },
+  "negocio": {
+    "descripcion": "HOYA es un fabricante japonés de productos de vidrio óptico de alta precisión con dos segmentos [6]. **Life Care** (62 % de las ventas de FY2026): lentes oftálmicas (segundo fabricante mundial detrás de EssilorLuxottica), lentes de contacto con su cadena de tiendas Eyecity en Japón, endoscopios flexibles Pentax Medical, lentes intraoculares y otros productos médicos [6, 14]. **Information Technology** (37 %): máscaras en blanco (mask blanks) para fotolitografía de semiconductores, donde tiene más del 60 % del mercado total y más del 75 % del de EUV, máscaras para pantallas, sustratos de vidrio para discos duros, ópticas para cámaras y software [6, 14]. Vende en todo el mundo; la fabricación de blanks está en Japón y Singapur, donde construye una planta nueva de EUV de unos 42.000 M JPY con producción en masa prevista para FY2028 [6].",
+    "como_gana_dinero": "El beneficio sale sobre todo de Information Technology: con el 37 % de las ventas aportó 192.325 M JPY de beneficio de segmento en FY2026, un margen del 54 %, frente a 129.531 M JPY y el 22 % en Life Care [6]. Los blanks EUV son un consumible de cada máscara nueva: el volumen depende del número de diseños de chip avanzados (nodos de 3 y 2 nm, memoria de alto ancho de banda) y no del volumen de obleas, por lo que la demanda es más estable que la de los equipos [14]. Los sustratos de vidrio para discos duros dependen del almacenamiento de los centros de datos (discos HAMR). Life Care es recurrente: lentes oftálmicas a medida vendidas a ópticas con plazos de entrega cortos y lentes de contacto de reposición. El margen sube por mezcla (más EUV) y por apalancamiento operativo; la divisa pesa: en el 1T de FY2027 las ventas crecieron un 16 %, un 7 % a tipos constantes [10].",
+    "segmentos": [
+      {
+        "nombre": "Life Care",
+        "descripcion": "Lentes oftálmicas, lentes de contacto (Eyecity), endoscopios Pentax, lentes intraoculares y otros productos médicos.",
+        "tipo_resultado": "EBIT",
+        "historico": [
+          {
+            "periodo": "FY2025",
+            "ingresos": 551007,
+            "resultado": 90391
+          },
+          {
+            "periodo": "FY2026",
+            "ingresos": 590680,
+            "resultado": 129531
+          }
+        ]
+      },
+      {
+        "nombre": "Information Technology",
+        "descripcion": "Mask blanks y máscaras para semiconductores (EUV), máscaras para pantallas, sustratos de vidrio para discos duros, ópticas y software.",
+        "tipo_resultado": "EBIT",
+        "historico": [
+          {
+            "periodo": "FY2025",
+            "ingresos": 311097,
+            "resultado": 170373
+          },
+          {
+            "periodo": "FY2026",
+            "ingresos": 354751,
+            "resultado": 192325
+          }
+        ]
+      },
+      {
+        "nombre": "Otros",
+        "descripcion": "Diferencia entre el total del grupo y los dos segmentos (otros negocios y ajustes).",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "FY2025",
+            "ingresos": 3928,
+            "resultado": null
+          },
+          {
+            "periodo": "FY2026",
+            "ingresos": 2318,
+            "resultado": null
+          }
+        ]
+      }
+    ],
+    "segmentos_nota": "FY2026 y FY2025 de Information Technology y Life Care FY2026, del comunicado de resultados [6]. Life Care FY2025 = FY2026 entre 1,072 (ventas) y 1,433 (beneficio), crecimientos publicados [6]: estimación por división. «Otros» = total menos los dos segmentos (resta propia). El beneficio de segmento de HOYA se aproxima al resultado antes de impuestos y no es comparable con el EBIT del grupo.",
+    "geografias": null,
+    "geografias_criterio": null,
+    "clientes": "En Information Technology los clientes son pocos y grandes: los fabricantes de máscaras y las fundiciones y fabricantes de memoria de Taiwán y Corea, que en el último trimestre concentraron el aumento de pedidos de blanks [14]. HOYA no publica la concentración por cliente. El poder de precios se ve en el margen del segmento, estable por encima del 50 % (54 % en FY2026, 55 % en FY2025) con capacidad nueva en marcha [6]. En Life Care, la clientela son miles de ópticas y hospitales, sin concentración relevante.",
+    "kpis": [
+      {
+        "kpi": "Margen del beneficio de segmento, Information Technology",
+        "valor_anterior": "54,8 % (FY2025)",
+        "valor_actual": "54,2 % (FY2026)",
+        "variacion": "−0,6 pp",
+        "comentario": "Ventas +14,0 % y beneficio +12,9 % [6]."
+      },
+      {
+        "kpi": "Margen del beneficio de segmento, Life Care",
+        "valor_anterior": "16,4 % (FY2025)",
+        "valor_actual": "21,9 % (FY2026)",
+        "variacion": "+5,5 pp",
+        "comentario": "FY2025 llevaba deterioros de las filiales de endoscopios en EE. UU. y Europa; beneficio +43,3 % [6]."
+      },
+      {
+        "kpi": "Ventas del 1T, crecimiento a tipos constantes",
+        "valor_anterior": "n. d.",
+        "valor_actual": "+7 % (1T FY2027)",
+        "variacion": "+16 % publicado",
+        "comentario": "La debilidad del yen añade unos 9 puntos [10]."
+      },
+      {
+        "kpi": "Information Technology, ventas del 1T",
+        "valor_anterior": "82.300 M JPY (1T FY2026, derivado)",
+        "valor_actual": "100.950 M JPY (1T FY2027)",
+        "variacion": "+22,7 %",
+        "comentario": "Beneficio de segmento 55.620 M JPY, +27,8 % [10]."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sector": {
+    "definicion": "HOYA compite en dos mercados sin relación entre sí. El que más pesa en el beneficio es el de **mask blanks** para fotolitografía de semiconductores (el sustrato de cuarzo con capas reflectantes del que se fabrica cada máscara), dominado por tres empresas japonesas: HOYA, AGC y Shin-Etsu [14, 19]. El segundo es el de **lentes oftálmicas**, donde HOYA es la segunda mundial detrás de EssilorLuxottica, y el de lentes de contacto en Japón [14]. No hemos encontrado dos fuentes fiables de tamaño de ninguno de los dos mercados: los informes de mercado de blanks EUV que aparecen en la búsqueda se contradicen entre sí y no los usamos.",
+    "tamano": null,
+    "unidad_serie": null,
+    "serie": [],
+    "tcac_historico_pct": null,
+    "tcac_previsto_pct": null,
+    "cr5_pct": 90,
+    "estructura": "Concentrada",
+    "drivers": [
+      {
+        "driver": "Diseños de chips en nodos avanzados (3 y 2 nm) y memoria HBM",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Las ventas de Information Technology crecieron un 22,7 % en el 1T de FY2027 y las de blanks un 14 % en el 3T de FY2026, con pedidos de Taiwán y Corea [10, 20]."
+      },
+      {
+        "driver": "EUV de alta apertura numérica (High-NA)",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Cada nueva generación exige blanks con menos defectos, donde HOYA lidera [14]."
+      },
+      {
+        "driver": "Almacenamiento en discos duros para centros de datos (HAMR)",
+        "efecto": "+",
+        "horizonte": "Cíclico",
+        "evidencia": "La demanda de sustratos de vidrio se recupera con los discos HAMR [21]."
+      },
+      {
+        "driver": "Miopía y envejecimiento de la población",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Lentes de control de miopía y progresivas impulsan Life Care (+12,8 % en el 1T de FY2027) [10]."
+      },
+      {
+        "driver": "Ciclo de inversión en semiconductores",
+        "efecto": "+/−",
+        "horizonte": "Cíclico",
+        "evidencia": "En FY2024 el EBIT del grupo bajó un 1,9 % con la corrección de semiconductores y discos [6]."
+      }
+    ],
+    "porter": [
+      {
+        "fuerza": "Rivalidad",
+        "intensidad": 2,
+        "justificacion": "Tres proveedores de blanks y dos grandes en lentes; HOYA mantiene más del 75 % del EUV [14]."
+      },
+      {
+        "fuerza": "Poder de los clientes",
+        "intensidad": 3,
+        "justificacion": "Pocos clientes grandes (TSMC, Samsung, fabricantes de máscaras) que buscan segunda fuente (AGC)."
+      },
+      {
+        "fuerza": "Poder de los proveedores",
+        "intensidad": 2,
+        "justificacion": "Cuarzo sintético y materiales especiales con varios proveedores; no hay señal de presión en el margen del 54 % [6]."
+      },
+      {
+        "fuerza": "Amenaza de entrada",
+        "intensidad": 1,
+        "justificacion": "Calificación larga en cada nodo, conocimiento de defectos y capacidad de inspección."
+      },
+      {
+        "fuerza": "Amenaza de sustitutos",
+        "intensidad": 2,
+        "justificacion": "No hay sustituto de la máscara EUV a la vista; en lentes, la cirugía refractiva es marginal."
+      }
+    ],
+    "ciclo": {
+      "posicion": "Expansión",
+      "comentario": "Los pedidos de blanks y de sustratos crecen a doble dígito en 2026 por la inversión en IA [10, 20]. En la corrección de 2023-24 (FY2024) el EBIT del grupo cayó solo un 1,9 % porque Life Care compensó [6]: el negocio es menos cíclico que los equipos."
+    },
+    "regulacion": "Aranceles de EE. UU. sobre importaciones (HOYA recibió un reembolso en el 1T de FY2027 [10]) y controles de exportación de tecnología de semiconductores a China; en salud, regulación de dispositivos médicos (FDA, MDR europea) para endoscopios y lentes intraoculares.",
+    "tendencias": "La litografía EUV de alta apertura numérica y los nodos de 2 nm aumentan el número de capas EUV y la exigencia de defectos, lo que favorece al líder. AGC es la alternativa principal en EUV y los clientes buscan diversificar. En lentes oftálmicas crecen las de control de miopía. En endoscopia, HOYA es tercera detrás de Olympus y Fujifilm y no llega a escala rentable [6].",
+    "confianza": "Baja"
+  },
+  "competencia": {
+    "cuota_pct": 75,
+    "posicion": "1.ª mundial en mask blanks EUV (más del 75 %) y en blanks de semiconductores en general (más del 60 %); 2.ª mundial en lentes oftálmicas, detrás de EssilorLuxottica; 3.ª en endoscopia flexible [14].",
+    "competidores": [
+      {
+        "nombre": "AGC",
+        "pais": "Japón",
+        "ticker": "5201",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Segundo proveedor de blanks EUV; los blanks son una parte pequeña de un grupo de vidrio y química."
+      },
+      {
+        "nombre": "Shin-Etsu Chemical",
+        "pais": "Japón",
+        "ticker": "4063",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Blanks de generaciones anteriores y obleas de silicio."
+      },
+      {
+        "nombre": "EssilorLuxottica",
+        "pais": "Francia",
+        "ticker": "EL",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Líder mundial en lentes oftálmicas e integrado en monturas y tiendas."
+      },
+      {
+        "nombre": "Olympus",
+        "pais": "Japón",
+        "ticker": "7733",
+        "ingresos": null,
+        "cuota_pct": 70,
+        "margen_ebit_pct": null,
+        "comentario": "Líder en endoscopia gastrointestinal con alrededor del 70 % del mercado [22]."
+      }
+    ],
+    "foso": {
+      "veredicto": "Amplio",
+      "tendencia": "Estable",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 0,
+          "evidencia": "No aplica."
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 4,
+          "evidencia": "Cada nodo exige calificar el blank con el cliente; cambiar de proveedor retrasa la producción."
+        },
+        {
+          "fuente": "Intangibles (marca, patentes, licencias)",
+          "puntuacion": 4,
+          "evidencia": "Conocimiento de capas y control de defectos; más del 75 % del EUV [1]."
+        },
+        {
+          "fuente": "Ventaja en costes",
+          "puntuacion": 3,
+          "evidencia": "Margen de segmento del 54 % en Information Technology [2]."
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 4,
+          "evidencia": "Un mercado pequeño en valor con tres proveedores no atrae entrantes."
+        }
+      ]
+    },
+    "amenazas": "La amenaza principal es que AGC gane cuota en EUV con el apoyo de los clientes que quieren una segunda fuente; un fallo de calidad en un nodo nuevo podría acelerarlo. En lentes, EssilorLuxottica tiene más escala y canal propio. En endoscopia, HOYA ya ha hecho deterioros y podría salir del negocio [6].",
+    "confianza": "Baja"
+  },
+  "financieros": {
+    "cuenta": [
+      {
+        "periodo": "FY2022",
+        "ingresos": 661466,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 242498,
+        "amortizaciones": 43019,
+        "ebit": 199479,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 164507,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 445.93,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 368.9
+      },
+      {
+        "periodo": "FY2023",
+        "ingresos": 723582,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 257985,
+        "amortizaciones": 49615,
+        "ebit": 208370,
+        "resultado_financiero": 7462,
+        "bai": 215832,
+        "impuestos": 47194,
+        "minoritarios": 0,
+        "beneficio_neto": 168638,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 469.47,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 359.2
+      },
+      {
+        "periodo": "FY2024",
+        "ingresos": 762610,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 251613,
+        "amortizaciones": 47215,
+        "ebit": 204398,
+        "resultado_financiero": 32166,
+        "bai": 236564,
+        "impuestos": 53998,
+        "minoritarios": 1189,
+        "beneficio_neto": 181377,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 515.27,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 352
+      },
+      {
+        "periodo": "FY2025",
+        "ingresos": 866032,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 293431,
+        "amortizaciones": 48577,
+        "ebit": 244854,
+        "resultado_financiero": 15111,
+        "bai": 259965,
+        "impuestos": 57864,
+        "minoritarios": 0,
+        "beneficio_neto": 202101,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 581.26,
+        "dpa": 160,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 347.7
+      },
+      {
+        "periodo": "FY2026",
+        "ingresos": 947749,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 333722,
+        "amortizaciones": 58218,
+        "ebit": 275504,
+        "resultado_financiero": 52164,
+        "bai": 327668,
+        "impuestos": 74583,
+        "minoritarios": 0,
+        "beneficio_neto": 253085,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 743.82,
+        "dpa": 295,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 340.3
+      }
+    ],
+    "ltm": {
+      "periodo": "LTM jun-26",
+      "fecha_fin": "2026-06-30",
+      "ingresos": 983050,
+      "ebitda": 354600,
+      "ebit": 293000,
+      "beneficio_neto": 267036,
+      "bpa": 787,
+      "dpa": 295,
+      "dpa_extraordinario": 0,
+      "fcf": 236900,
+      "participadas_en_ebitda": null,
+      "no_recurrentes_en_ebitda": null
+    },
+    "cambios_perimetro": [],
+    "comentario": "Las ventas crecieron de 661.466 M JPY en FY2022 a 947.749 M JPY en FY2026 [1, 3], casi todo orgánico y con viento de cola de la divisa: el yen pasó de ≈ 112 a ≈ 150 por dólar en el periodo. FY2024 fue el año flojo (ventas +5,4 %, EBIT −1,9 %) por la corrección de la demanda de semiconductores y de discos duros [4]. Desde entonces el margen EBIT ha subido de 26,8 % a 29,1 % (FY2026) por la mezcla hacia EUV y por la recuperación de Life Care tras los deterioros de endoscopios de FY2025 [4, 6]. El resultado antes de impuestos crece más que el EBIT porque los ingresos financieros netos de una caja de ≈ 574.000 M JPY, sobre todo en divisas, sumaron 52.164 M JPY en FY2026 [1, 4]. En el 1T de FY2027 (abr-jun 2026) las ventas subieron un 16 % (7 % a tipos constantes), el resultado antes de impuestos un 28 % (20 % a tipos constantes) y el beneficio neto 65.790 M JPY, con un reembolso extraordinario de aranceles de EE. UU. [10].",
+    "ajustes": "HOYA publica en NIIF y presenta los gastos por naturaleza, sin línea de coste de ventas: el EBIT de esta tabla es el beneficio operativo que calcula Stockopedia [4], y el resultado financiero es la diferencia hasta el resultado antes de impuestos publicado (estimación propia). Los impuestos de FY2025 y FY2026 son el resultado antes de impuestos menos el beneficio atribuido (los minoritarios son pequeños: 14.544 M JPY de patrimonio [9]). Las amortizaciones salen de Investing con etiquetas de año dudosas [8]. FY2025 incluye deterioros de endoscopios dentro del EBIT que no hemos podido cuantificar. El BPA es el diluido publicado [2]. El LTM de jun-26 suma al FY2026 el 1T de FY2027 menos el 1T de FY2026 derivado de los crecimientos publicados [10]; beneficio neto y FCF LTM de Stock Analysis [12].",
+    "confianza": "Media"
+  },
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "1T FY2027",
+        "ingresos": 255700,
+        "crecimiento_pct": 16,
+        "crecimiento_organico_pct": 7,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 196.61,
+        "vs_consenso": "Superior"
+      }
+    ],
+    "ultima_presentacion": "En los resultados del 1T de FY2027 (31-jul-2026) HOYA dio una guía para el primer semestre de 521.000 M JPY de ventas y 170.000 M JPY de resultado antes de impuestos, y anunció una recompra de hasta 200.000 M JPY y 10 M de acciones [10, 15]. El BPA del trimestre (196,61 JPY) superó el consenso (180,97 JPY) [10]. La dirección señaló como motores las lentes oftálmicas, los blanks EUV, los sustratos para discos duros y las ópticas, y avisó de que parte de la mejora del beneficio venía de un reembolso de aranceles de EE. UU. que no se repite [10]. En la presentación anual (30-abr-2026) explicó la planta de EUV de Singapur y el plan de devolver la caja sobrante en tres años, sobre todo con recompras [5, 6]. No hemos podido leer la transcripción de las preguntas de los analistas.",
+    "confianza": "Baja"
+  },
+  "balance": {
+    "historico": [
+      {
+        "periodo": "FY2025",
+        "activo_total": null,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": null,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": 124551,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 533967,
+        "deuda_financiera": 0,
+        "arrendamientos": null,
+        "patrimonio_neto": 971629,
+        "minoritarios": null,
+        "reservas": null
+      },
+      {
+        "periodo": "FY2026",
+        "activo_total": 1300897,
+        "activo_corriente": 960752,
+        "pasivo_corriente": null,
+        "pasivo_total": 265893,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": 132482,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 574092,
+        "deuda_financiera": 0,
+        "arrendamientos": 42200,
+        "patrimonio_neto": 1020460,
+        "minoritarios": 14544,
+        "reservas": null
+      }
+    ],
+    "vencimientos": [],
+    "liquidez": "Caja y equivalentes de 574.092 M JPY a 31-mar-2026, sin deuda bancaria relevante; la deuda con intereses (≈ 42.200 M JPY) es casi toda arrendamientos [6, 11].",
+    "rating": "No buscado (sin deuda emitida relevante).",
+    "coste_deuda_pct": null,
+    "vida_media_anios": null,
+    "otros_pasivos": "El patrimonio es el 78,4 % del activo [9]. La única deuda con intereses son ≈ 42.200 M JPY (Yahoo y EDINET DB [11]), que tratamos como arrendamientos NIIF 16 porque HOYA no tiene bonos ni préstamos relevantes. No hemos encontrado pensiones ni litigios materiales en las búsquedas. El patrimonio de FY2025 (971.629 M JPY) es el total, con minoritarios; otra fuente da 974.023 M JPY de patrimonio atribuido, incoherente con el total [9].",
+    "comentario": "Balance de caja neta: 574.092 M JPY de caja frente a ≈ 42.200 M JPY de arrendamientos a mar-26 [6, 11]. La caja sube aunque la empresa recompró unos 200.000 M JPY de acciones entre 2025 y 2026, porque genera más de 220.000 M JPY de caja libre al año [8, 15]. Las existencias crecieron un 6,4 % (7.931 M JPY) y los deudores 32.468 M JPY en FY2026, por encima de las ventas [9].",
+    "confianza": "Baja"
+  },
+  "flujos": {
+    "historico": [
+      {
+        "periodo": "FY2022",
+        "flujo_operativo": 190055,
+        "capex": 28872,
+        "pagos_arrendamientos": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "FY2023",
+        "flujo_operativo": 201829,
+        "capex": 33473,
+        "pagos_arrendamientos": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "FY2024",
+        "flujo_operativo": 222802,
+        "capex": 41074,
+        "pagos_arrendamientos": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "FY2025",
+        "flujo_operativo": 235113,
+        "capex": 47922,
+        "pagos_arrendamientos": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "FY2026",
+        "flujo_operativo": 278446,
+        "capex": 56581,
+        "pagos_arrendamientos": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      }
+    ],
+    "comentario": "El flujo operativo pasó de 190.055 M JPY (FY2022) a 278.446 M JPY (FY2026) y el capex de 28.872 M a 56.581 M JPY [8]: la inversión se ha duplicado por la capacidad de EUV y de sustratos, pero sigue en el 6 % de las ventas. La caja libre antes de arrendamientos subió de ≈ 161.000 M a ≈ 222.000 M JPY y supera el beneficio neto menos de lo habitual (conversión ≈ 88 % en FY2026). En los últimos 12 meses a jun-26, flujo operativo 291.200 M, capex 54.400 M y caja libre 236.900 M JPY [12]. No hemos encontrado los pagos de arrendamientos (≈ 15.000 M JPY estimados por el pasivo de 42.200 M JPY): la caja libre de esta tabla los incluye. La planta de EUV de Singapur (≈ 42.000 M JPY) sube el capex de FY2027-FY2028 [6].",
+    "confianza": "Media"
+  },
+  "calidad": {
+    "auditor": null,
+    "anios_auditor": null,
+    "opinion": null,
+    "comentario": "Con cinco ejercicios de cuenta y dos de balance incompletos, el motor no puede calcular bien Altman, Piotroski ni Beneish. Lo que sí se ve: el flujo operativo supera al beneficio neto todos los años (278.446 frente a 253.085 M JPY en FY2026) [2, 8], la remuneración en acciones es pequeña y no hay capitalización de I+D relevante conocida. Señales a vigilar: la parte del resultado antes de impuestos que viene de ingresos financieros y de diferencias de cambio (52.164 M JPY en FY2026, el 16 %) y el reembolso de aranceles del 1T de FY2027 [10].",
+    "senales": [
+      {
+        "senal": "Peso del resultado financiero y de las diferencias de cambio",
+        "nivel": "Media",
+        "comentario": "52.164 M JPY en FY2026, el 16 % del resultado antes de impuestos; depende del yen y de los tipos del dólar."
+      },
+      {
+        "senal": "Partida no recurrente en el 1T de FY2027",
+        "nivel": "Baja",
+        "comentario": "Reembolso de aranceles de EE. UU. que la propia empresa separa [10]."
+      }
+    ],
+    "confianza": "Baja"
+  },
+  "rentabilidad": {
+    "comentario": "HOYA crea mucho valor: el ROIC fue del 45,2 % en FY2026 y del 43,5 % en FY2025, frente a un WACC del 8,0 %, 37,2 puntos por encima. El capital invertido es pequeño (470.387 M JPY frente a ventas de 947.749 M) porque el negocio de blanks y lentes necesita poco activo fijo y el circulante es bajo. El ROE (25,4 %) es menor que el ROIC porque los 574.092 M JPY de caja rinden poco: la devolución de esa caja con recompras sube el ROE sin cambiar el negocio. No podemos calcular el ROIC de FY2022-FY2024 ni el incremental por falta de balances (hueco), pero el NOPAT creció de 149.609 M a 212.794 M JPY en cuatro años con un capex acumulado de 179.050 M JPY en FY2023-FY2026 [8]. Los comparables de óptica y salud tienen ROIC del 4-5 % [33].",
+    "confianza": "Media"
+  },
+  "capital": {
+    "politica": "Dividendo con un objetivo de reparto del 40 % según Finboard [13]; el de FY2026 subió a 295 JPY desde 160 JPY [5]. En abril de 2026 la empresa dijo que devolverá la caja sobrante en tres años, sobre todo con recompras [6]. Recompras recientes: 100.000 M JPY entre febrero y abril de 2026 (3,58 M de acciones, amortizadas el 15-may-2026) y un programa nuevo de hasta 200.000 M JPY y 10 M de acciones (2,99 %) del 3-ago-2026 al 24-mar-2027, del que hasta el 31-ago se habían comprado 973.500 acciones por 24.998 M JPY [15, 16]. Todas las acciones recompradas se amortizan.",
+    "adquisiciones": [],
+    "comentario": "Buena asignación: la empresa no hace compras grandes, invierte lo justo en capacidad de EUV y devuelve la caja. Entre la recompra de 100.000 M JPY de 2026 y el programa de 200.000 M JPY en curso, más un dividendo de 295 JPY (≈ 98.000 M JPY), devolverá más del 100 % de su caja libre anual [15, 17]. Las acciones diluidas bajaron de 368,9 M en FY2022 a 340,3 M en FY2026 (−7,8 %). El único borrón es Pentax Medical, con deterioros en FY2025 [6].",
+    "confianza": "Media"
+  },
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "Eiichiro Ikeda",
+        "cargo": "Consejero y primer ejecutivo (CEO)",
+        "desde": null,
+        "participacion_pct": null,
+        "trayectoria": "Propuesto de nuevo como consejero y primer ejecutivo en la junta del 26-jun-2026 [9]. Con él al frente, el beneficio antes de impuestos subió un 26 % en FY2026 y la empresa duplicó el dividendo y aceleró las recompras [5]."
+      }
+    ],
+    "historial_guidance": [
+      {
+        "anio": "FY2026",
+        "guia": "Previsión anual elevada con los resultados del 3T (30-ene-2026)",
+        "real": "Resultado antes de impuestos 327.668 M JPY (+26 %), por encima de lo esperado por los analistas",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "1S FY2027",
+        "guia": "Ventas 521.000 M JPY y resultado antes de impuestos 170.000 M JPY",
+        "real": "Pendiente (30-oct-2026); el 1T llevó el 49 % de la guía de ventas y el 51 % de la de beneficio",
+        "cumplida": "Parcial"
+      }
+    ],
+    "comentario": "HOYA da guía solo semestral y la ha superado en los últimos ejercicios [5, 23]. La dirección es pequeña y la sucesión pasa por la comisión de nombramientos, con mayoría de externos [18]. No hemos podido verificar la trayectoria del resto del equipo (director financiero, responsables de segmento) ni su participación en el capital.",
+    "confianza": "Baja"
+  },
+  "gobierno": {
+    "consejo": [
+      {
+        "nombre": "Eiichiro Ikeda",
+        "cargo": "Consejero, CEO",
+        "tipo": "Ejecutivo",
+        "desde": null,
+        "comisiones": null
+      }
+    ],
+    "presidente_ceo_separados": true,
+    "presidente_ejecutivo": false,
+    "consejero_coordinador": null,
+    "una_accion_un_voto": true,
+    "operaciones_vinculadas_relevantes": false,
+    "variable_ligado_rentabilidad": null,
+    "auditoria_independiente": true,
+    "insiders_sin_operaciones": null,
+    "accionista_control": false,
+    "presidente_vinculado_control": false,
+    "cambios_cupula_24m": 0,
+    "voto_remuneracion_pct": null,
+    "voto_remuneracion_contra_pct": null,
+    "voto_remuneracion_contra_libre_pct": null,
+    "voto_cupula_pct": 96.87,
+    "remuneracion_ceo": null,
+    "remuneracion": null,
+    "accionistas": [],
+    "insiders": [],
+    "control_y_defensas": "HOYA no tiene accionista de control y su capital es mayoritariamente institucional; una sola clase de acciones. Es una «company with nomination committee, etc.»: la junta de 2026 eligió siete consejeros y, por ley, las comisiones de nombramientos, retribuciones y auditoría tienen mayoría de consejeros externos [9, 18]. No hemos podido verificar cuántos consejeros son ejecutivos. En la junta de 2024 la reelección del CEO obtuvo el 96,87 % de los votos a favor [24]. No hay registro público de operaciones de directivos en Japón.",
+    "alertas": [
+      "Ninguna relevante detectada en las búsquedas (sin acceso al informe de gobierno ni a los registros completos)."
+    ],
+    "confianza": "Baja"
+  },
+  "consenso": {
+    "guidance": "HOYA da guía semestral, no anual, al publicar el 1T. Para el primer semestre de FY2027 (abr-sep 2026): ventas de 521.000 M JPY y resultado antes de impuestos de 170.000 M JPY [27]. Con el 1T publicado (255.700 M y 86.000 M JPY), la guía implica para el 2T unas ventas de 265.300 M JPY (+3,8 % sobre el 1T) y un resultado antes de impuestos de 84.000 M JPY, por debajo del 1T porque este llevaba el reembolso de aranceles [27]. No hay plan a medio plazo con cifras; el objetivo de crecimiento de los blanks EUV citado por la prensa es de dos dígitos [27]. Resultados del 2T: 30-oct-2026 [25].",
+    "estimaciones": [
+      {
+        "periodo": "FY2027e",
+        "ingresos": null,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 791,
+        "dpa": null,
+        "fuente": "Stockopedia, consenso del próximo ejercicio [28]"
+      }
+    ],
+    "recomendaciones": {
+      "n_analistas": 15,
+      "comprar": 12,
+      "mantener": 3,
+      "vender": 0,
+      "po_medio": 27771,
+      "po_min": 22000,
+      "po_max": 31500
+    },
+    "revisiones": "Solo hemos encontrado una fuente con BPA de consenso (Stockopedia, 791 JPY para el próximo ejercicio) [28]. Los objetivos de precio difieren entre fuentes: 27.771 JPY de media con 14 analistas en Investing (rango 22.000-31.500; 12 compras y 3 mantener en tres meses) [29], 30.200-30.553 JPY con 16 analistas en Stock Analysis [30] y 29.594 JPY en Stockopedia [28]. Usamos Investing por ser la más reciente y la más baja. En septiembre SBI inició cobertura con opinión favorable por los sustratos de discos duros [26]. No hay datos de revisiones de BPA a 3 y 12 meses.",
+    "base_ebitda": "NIIF",
+    "ajuste_ebitda_pct_ventas": null,
+    "confianza": "Baja"
+  },
+  "bolsa": {
+    "tipo_rentabilidad": "de precio (sin dividendos)",
+    "rentabilidades": [
+      {
+        "periodo": "En el año",
+        "accion_pct": 2.7,
+        "indice_pct": 35.7,
+        "sector_pct": null
+      }
+    ],
+    "anual": [],
+    "beta": null,
+    "volatilidad_pct": null,
+    "max_drawdown_pct": null,
+    "posicion_corta_pct": null,
+    "comentario": "Hasta el 2-oct-2026 la acción subía un 2,7 % en el año frente al +35,7 % del Nikkei 225 [25]. Tocó ≈ 30.000 JPY en abril tras unos resultados anuales récord, cayó a 22.605 JPY el 18-sep (mínimo del año) y rebotó a 25.055 JPY el 9-oct [26]. El rango de 52 semanas es 21.040-30.400 JPY [31]. El mercado japonés lo han llevado los fabricantes de equipos de semiconductores y los bancos; HOYA, con dos tercios de su valor en óptica y salud, se ha quedado atrás pese a crecer al 16 % en el 1T.",
+    "confianza": "Baja"
+  },
+  "multiplos_historicos": null,
+  "comparables": {
+    "criterio": "Dos grupos, porque HOYA tiene dos negocios: óptica y salud (EssilorLuxottica, rival directo en lentes oftálmicas; Alcon, Cooper y Bausch + Lomb, en lentes de contacto; Terumo y Fujifilm, en tecnología médica japonesa) y semiconductores (KLA, proveedor de inspección de máscaras y obleas; Applied Materials se descarta porque su EV/EBITDA de los últimos 12 meses, 46,5x, y el de los próximos, 25,1x, vienen de definiciones distintas). No hay comparables puros de blanks: AGC y Shin-Etsu son conglomerados químicos donde los blanks pesan poco, y no encontramos sus cifras a la fecha. Las cifras se toman de los informes del repo de Olympus (9-oct), Cooper (9-oct), Fielmann (9-oct) y ASML (14-oct), convertidas a yenes a 158,30 JPY/USD y 180,1 JPY/EUR [32, 33, 34, 35]. Alcon y Bausch + Lomb no tienen PER a 12 meses en su fuente.",
+    "empresas": [
+      {
+        "nombre": "EssilorLuxottica",
+        "ticker": "EL",
+        "pais": "FR",
+        "capitalizacion": 11836352,
+        "ev_ventas": 2.7,
+        "ev_ebitda_ltm": 11.3,
+        "ev_ebitda_ntm": 10,
+        "per_ntm": 23.5,
+        "crecimiento_pct": 7.2,
+        "margen_ebitda_pct": 22.8,
+        "roic_pct": 5.4,
+        "dn_ebitda": 1.9,
+        "fcf_yield_pct": 5.9
+      },
+      {
+        "nombre": "Alcon",
+        "ticker": "ALC",
+        "pais": "CH",
+        "capitalizacion": 4830841,
+        "ev_ventas": 3.09,
+        "ev_ebitda_ltm": 11.7,
+        "ev_ebitda_ntm": 10.6,
+        "per_ntm": null,
+        "crecimiento_pct": 6.2,
+        "margen_ebitda_pct": 25.7,
+        "roic_pct": 4.75,
+        "dn_ebitda": 1.2,
+        "fcf_yield_pct": 5.74
+      },
+      {
+        "nombre": "Cooper Companies",
+        "ticker": "COO",
+        "pais": "US",
+        "capitalizacion": 1638405,
+        "ev_ventas": 3.07,
+        "ev_ebitda_ltm": 10.6,
+        "ev_ebitda_ntm": 10.3,
+        "per_ntm": 15.3,
+        "crecimiento_pct": 3.8,
+        "margen_ebitda_pct": 29.1,
+        "roic_pct": 4.6,
+        "dn_ebitda": 1.9,
+        "fcf_yield_pct": 6.6
+      },
+      {
+        "nombre": "Bausch + Lomb",
+        "ticker": "BLCO",
+        "pais": "CA",
+        "capitalizacion": 969588,
+        "ev_ventas": 2.01,
+        "ev_ebitda_ltm": 10.7,
+        "ev_ebitda_ntm": 9.5,
+        "per_ntm": null,
+        "crecimiento_pct": 6.3,
+        "margen_ebitda_pct": 17.5,
+        "roic_pct": 3.61,
+        "dn_ebitda": 5.3,
+        "fcf_yield_pct": 2.24
+      },
+      {
+        "nombre": "Terumo",
+        "ticker": "4543",
+        "pais": "JP",
+        "capitalizacion": 3405000,
+        "ev_ventas": 2.95,
+        "ev_ebitda_ltm": 11.9,
+        "ev_ebitda_ntm": 10,
+        "per_ntm": 17.8,
+        "crecimiento_pct": 9,
+        "margen_ebitda_pct": 24,
+        "roic_pct": null,
+        "dn_ebitda": 0.11,
+        "fcf_yield_pct": 4.4
+      },
+      {
+        "nombre": "Fujifilm",
+        "ticker": "4901",
+        "pais": "JP",
+        "capitalizacion": 4084000,
+        "ev_ventas": 1.45,
+        "ev_ebitda_ltm": 9.2,
+        "ev_ebitda_ntm": 8.1,
+        "per_ntm": 13.6,
+        "crecimiento_pct": 5.1,
+        "margen_ebitda_pct": 15.6,
+        "roic_pct": null,
+        "dn_ebitda": 1.58,
+        "fcf_yield_pct": 3.6
+      },
+      {
+        "nombre": "KLA",
+        "ticker": "KLAC",
+        "pais": "US",
+        "capitalizacion": 36119055,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": 32.65,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 31.85,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      }
+    ],
+    "comentario": "HOYA cotiza a un PER de 31,7x a 12 meses vista y a 22,4x EV/EBITDA de los últimos 12 meses, frente a una mediana de 17,8x y 11,3x de sus comparables de óptica y salud. La prima se explica por el margen EBITDA (36 % frente al 23 %), el ROIC (45 % frente al 5 %) y la exposición a semiconductores: KLA cotiza a 31,9x. Ninguno combina las dos cosas, así que el valor por comparables (14.079,80 JPY con el PER mediano) es un suelo, no una referencia central. Si el mercado deja de pagar a HOYA como a una empresa de semiconductores, ese es el riesgo de múltiplo.",
+    "confianza": "Baja"
+  },
+  "transacciones": null,
+  "dcf": {
+    "anios": [
+      {
+        "periodo": "FY2027e",
+        "crecimiento_pct": 9.5,
+        "margen_ebitda_pct": 36.8,
+        "amortizacion_pct_ventas": 6.2,
+        "capex_pct_ventas": 7.5,
+        "nwc_pct_ventas": 14,
+        "tasa_impositiva_pct": 23,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2028e",
+        "crecimiento_pct": 8,
+        "margen_ebitda_pct": 37,
+        "amortizacion_pct_ventas": 6.2,
+        "capex_pct_ventas": 7.5,
+        "nwc_pct_ventas": 14,
+        "tasa_impositiva_pct": 23,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2029e",
+        "crecimiento_pct": 7.5,
+        "margen_ebitda_pct": 37.2,
+        "amortizacion_pct_ventas": 6.4,
+        "capex_pct_ventas": 7,
+        "nwc_pct_ventas": 14,
+        "tasa_impositiva_pct": 23,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2030e",
+        "crecimiento_pct": 7,
+        "margen_ebitda_pct": 37.2,
+        "amortizacion_pct_ventas": 6.4,
+        "capex_pct_ventas": 6.8,
+        "nwc_pct_ventas": 14,
+        "tasa_impositiva_pct": 23,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2031e",
+        "crecimiento_pct": 6.5,
+        "margen_ebitda_pct": 37.2,
+        "amortizacion_pct_ventas": 6.4,
+        "capex_pct_ventas": 6.6,
+        "nwc_pct_ventas": 14,
+        "tasa_impositiva_pct": 23,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2032e",
+        "crecimiento_pct": 6,
+        "margen_ebitda_pct": 37,
+        "amortizacion_pct_ventas": 6.4,
+        "capex_pct_ventas": 6.5,
+        "nwc_pct_ventas": 14,
+        "tasa_impositiva_pct": 23,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2033e",
+        "crecimiento_pct": 5,
+        "margen_ebitda_pct": 36.8,
+        "amortizacion_pct_ventas": 6.4,
+        "capex_pct_ventas": 6.5,
+        "nwc_pct_ventas": 14,
+        "tasa_impositiva_pct": 23,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2034e",
+        "crecimiento_pct": 4.5,
+        "margen_ebitda_pct": 36.6,
+        "amortizacion_pct_ventas": 6.4,
+        "capex_pct_ventas": 6.5,
+        "nwc_pct_ventas": 14,
+        "tasa_impositiva_pct": 23,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2035e",
+        "crecimiento_pct": 3.5,
+        "margen_ebitda_pct": 36.5,
+        "amortizacion_pct_ventas": 6.4,
+        "capex_pct_ventas": 6.5,
+        "nwc_pct_ventas": 14,
+        "tasa_impositiva_pct": 23,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2036e",
+        "crecimiento_pct": 3,
+        "margen_ebitda_pct": 36.5,
+        "amortizacion_pct_ventas": 6.4,
+        "capex_pct_ventas": 6.5,
+        "nwc_pct_ventas": 14,
+        "tasa_impositiva_pct": 23,
+        "fijo": false
+      }
+    ],
+    "wacc": {
+      "tasa_libre_pct": 3.089,
+      "beta": 0.9,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 0,
+      "coste_deuda_pct": 1.5,
+      "tasa_impositiva_pct": 23,
+      "peso_deuda_pct": 0.5
+    },
+    "terminal": {
+      "metodo": "gordon",
+      "crecimiento_pct": 2.5,
+      "multiplo_salida": 15
+    },
+    "etapa2": {
+      "usar": false,
+      "anios": 5,
+      "margen_final_pct": null,
+      "justificacion": null
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "Las ventas crecieron un 9,4 % anual entre FY2022 y FY2026 [3], con 2-3 puntos al año de la debilidad del yen; a tipos constantes, el 1T de FY2027 creció un 7 % [10]. Proyectamos un 9,5 % en FY2027e (el 1T creció un 16 % con divisa y la guía del semestre implica un 2T más plano [27]), un 8,0 % en FY2028e con la planta de EUV de Singapur y después una bajada gradual hasta el 3,0 % en FY2036e. Es la media del 6,1 %, en línea con la historia a tipos constantes.",
+      "margenes": "El margen EBITDA pasó del 36,7 % de FY2022 al 33,0 % de FY2024 (corrección de semiconductores) y volvió al 35,2 % en FY2026; en los últimos 12 meses es del 36,1 % [4, 8]. Suponemos un 36,8-37,2 % por la mezcla: Information Technology tiene un margen de segmento del 54 % y crece el doble que Life Care [6]. Al final volvemos al 36,5 %, por si AGC gana cuota en EUV.",
+      "inversion": "El capex subió del 4,4 % de las ventas (FY2022) al 6,0 % (FY2026) [8]; lo subimos al 7,5 % en FY2027e-FY2028e por la planta de EUV de Singapur (≈ 42.000 M JPY [6]) y lo dejamos en el 6,5 %, por encima de una amortización del 6,2-6,4 %. El circulante, en el 14 % de las ventas que da el último balance.",
+      "wacc": "Tasa libre: bono japonés a 10 años del 3,089 % (Ministerio de Hacienda, 8-oct-2026 [38]). Beta de 0,9 (estimación propia: no hemos podido calcularla; el negocio de óptica y salud es defensivo y el de semiconductores, cíclico) y prima de mercado del 5,5 %. Sin deuda financiera: coste de los fondos propios ≈ WACC del 8,0 %. Con la prima implícita del mercado (4,2 % [39]) el WACC baja al 6,8 %.",
+      "terminal": "Crecimiento terminal del 2,5 %: crecimiento real del 0,5-1 % más una inflación esperada en Japón cercana al 2 %, y por debajo de la tasa libre menos medio punto (2,6 %). El múltiplo de salida implícito es alto porque el negocio apenas necesita inversión neta."
+    },
+    "sostenibilidad": {
+      "puente_ingresos": [
+        {
+          "periodo": "FY2027e",
+          "volumen_pct": 5,
+          "precio_pct": 1.5,
+          "otros_pct": 3,
+          "comentario": "Volumen del 5 % (blanks EUV y sustratos para discos, +22,7 % en el 1T de Information Technology [10]), 1,5 % de precio en lentes y 3 puntos de divisa (el 1T creció un 16 % publicado frente al 7 % a tipos constantes [10])."
+        },
+        {
+          "periodo": "FY2028e",
+          "volumen_pct": 6,
+          "precio_pct": 1.5,
+          "otros_pct": 0.5,
+          "comentario": "Entra la capacidad de EUV de Singapur [6]: 6 % de volumen, 1,5 % de precio y medio punto de mezcla."
+        },
+        {
+          "periodo": "FY2029e",
+          "volumen_pct": 6,
+          "precio_pct": 1.5,
+          "otros_pct": 0,
+          "comentario": "Volumen del 6 % por la adopción de High-NA y de nodos de 2 nm y precio del 1,5 %."
+        },
+        {
+          "periodo": "FY2030e",
+          "volumen_pct": 5.5,
+          "precio_pct": 1.5,
+          "otros_pct": 0,
+          "comentario": "Volumen del 5,5 %: madurez de la demanda de discos HAMR."
+        },
+        {
+          "periodo": "FY2031e",
+          "volumen_pct": 5,
+          "precio_pct": 1.5,
+          "otros_pct": 0,
+          "comentario": "Volumen del 5 % y precio del 1,5 %."
+        }
+      ],
+      "mercado_final": null,
+      "veredicto": "Sí",
+      "justificacion": "La proyección apenas necesita capital: la reinversión acumulada es el 5 % del NOPAT, así que el motor no hace la prueba de financiación y la hacemos a mano. Con un ROIC del 45,2 % y esa reinversión, el crecimiento financiable es del ≈ 2,3 %; el resto (hasta el 6,1 %) tiene que venir de precio y de volumen con capacidad existente, como ha pasado en FY2022-FY2026, cuando las ventas crecieron un 9,4 % anual con un capex del 4-6 % de las ventas [3, 8]. La cuota en blanks EUV (más del 75 % [14]) no tiene que subir: el crecimiento lo pone el mercado (más capas EUV por chip). El margen de Information Technology, estable por encima del 54 % [6], muestra poder de precios. Veredicto: sí, la calidad sostiene el crecimiento proyectado."
+    },
+    "lectura": "El DCF da 17.859,10 JPY por acción, un 28,7 % por debajo del precio, con el valor terminal en el 63 % del valor. El DCF inverso dice que el precio de 25.055 JPY descuenta un crecimiento de ventas del 11,0 % anual durante diez años (frente a nuestro 6,1 %) o un margen EBITDA del 49,2 % (frente al 36,5 %), y una rentabilidad implícita del 6,4 %, por debajo de nuestro WACC del 8,0 % y del 6,8 % que pide el mercado. Es exigente: HOYA creció un 9,4 % anual en FY2022-FY2026 con la ayuda del yen, y un 7 % a tipos constantes en el último trimestre. El precio supone que los blanks EUV crecen a doble dígito durante una década. Con la prima implícita del mercado el valor sube a 22.386,54 JPY, aún un 10,6 % por debajo. Lo que más mueve el valor es la tasa libre: con el bono japonés al 3,1 %, el múltiplo de 30 veces beneficios que el mercado pagaba con tipos cero ya no se sostiene en el DCF.",
+    "confianza": "Baja"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": -3,
+        "ajuste_margen_pp": -2.5,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": 2,
+        "multiplo_salida": null,
+        "narrativa": "Los fabricantes de chips frenan nuevos diseños en 2027 tras el gasto en IA, AGC gana un cliente de EUV y el yen se aprecia: crecimiento 3 puntos menor cada año y margen 2,5 puntos más bajo, como en FY2024 (EBIT −1,9 %)."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Los blanks EUV crecen a doble dígito con la planta de Singapur desde FY2028, Life Care al 5-6 % y el margen EBITDA se queda en el 37 %."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": 2,
+        "ajuste_margen_pp": 1,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "La litografía High-NA y los discos HAMR aceleran la demanda: 2 puntos más de crecimiento y un punto más de margen."
+      }
+    ],
+    "comentario": "Los tres escenarios del DCF quedan por debajo del precio: el alcista (21.124,49 JPY) pierde un 15,7 % y el bajista (12.845,23 JPY) un 48,7 %. La asimetría del valor intrínseco es negativa. A 12 meses, con el método de PER propio, la asimetría es de 1,43 veces (+28,0 % en el alcista frente a −17,6 % en el bajista) porque el múltiplo de partida (31,5x) es el que el mercado paga hoy. La diferencia entre las dos lecturas es el corazón de la tesis: el precio se sostiene por el múltiplo, no por los flujos.",
+    "confianza": "Baja"
+  },
+  "suma_partes": {
+    "aplica": false,
+    "descuento_holding_pct": 0,
+    "partes": [],
+    "comentario": "No la hacemos: sin comparables puros de blanks y sin el desglose de flujos por segmento, una suma de partes repetiría el DCF con más incertidumbre.",
+    "confianza": "Baja"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2026-03-31",
+      "deuda_financiera": 0,
+      "arrendamientos": 42200,
+      "caja": 574092,
+      "minoritarios": 14544,
+      "pensiones": 0,
+      "asociadas": 0,
+      "otros_ajustes": 81900
+    },
+    "rab": null,
+    "referencia_mercado": {
+      "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout; válida para mercados desarrollados)",
+      "prima_implicita_pct": 4.2,
+      "fecha": "2026-10",
+      "fuente": "Damodaran, ERPbymonth.xlsx [39]"
+    },
+    "pesos": {
+      "dcf": 50,
+      "comparables": 20,
+      "transacciones": 0,
+      "suma_partes": 0,
+      "escenarios": 30
+    },
+    "objetivo_12m": {
+      "ejercicio": "FY2028e",
+      "casos": [
+        {
+          "escenario": "Bajista",
+          "metrica": "PER FY2028e",
+          "beneficio_por_accion": 762.3,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 1.059.820 M JPY en FY2028e (3 puntos menos de crecimiento al año: pausa en los blanks EUV y yen más fuerte) y margen EBITDA 2,5 puntos más bajo (34,5 %): EBIT 299.929 M, 25.000 M de ingresos financieros recurrentes, impuesto del 23 % y 326,9 M de acciones tras el programa de recompra en curso."
+        },
+        {
+          "escenario": "Base",
+          "metrica": "PER FY2028e",
+          "beneficio_por_accion": 868.95,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 1.120.808 M JPY (+9,5 % y +8,0 %), margen EBITDA del 37,0 % por la mezcla hacia EUV: EBIT 345.209 M, 25.000 M de ingresos financieros, impuesto del 23 %, 1.000 M de minoritarios y 326,9 M de acciones (las de hoy menos el resto del programa de 200.000 M, sin recompras no anunciadas)."
+        },
+        {
+          "escenario": "Alcista",
+          "metrica": "PER FY2028e",
+          "beneficio_por_accion": 926.52,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 1.162.414 M JPY (2 puntos más de crecimiento: High-NA y discos HAMR) y margen del 38,0 %: EBIT 369.648 M y beneficio neto de 302.879 M JPY con las mismas acciones."
+        }
+      ],
+      "per_historico": {
+        "actual": 31.5,
+        "mediana_5a": 36.6,
+        "minimo_5a": 26.7,
+        "media_larga": 34.3,
+        "excluidos": "PER de cierre de año natural sobre el BPA publicado de los últimos 12 meses (Macrotrends para el ADR, misma ratio en yenes) [36, 37]: 2019 31,1x; 2021 38,0x; 2022 26,7x; 2023 36,6x; 2024 34,5x; 2025 39,0x. Se excluye 2020 (46,9x), año de la pandemia con el beneficio deprimido y la acción en máximos. Mediana 2021-2025: 36,6x; mínimo 26,7x; media de los seis años sin 2020: 34,3x. Actual = 25.055 ÷ 796,28 (nuestro BPA de FY2027e). No hay serie de PER a cierre de marzo (hueco)."
+      },
+      "comparables_per": {
+        "mediana": 17.8
+      },
+      "consenso": {
+        "bpa_ano1": 791,
+        "bpa_ano2": null,
+        "objetivo_medio": 27771,
+        "objetivo_min": 22000,
+        "objetivo_max": 31500,
+        "analistas": 14,
+        "tendencia_3m": "estables",
+        "fuente": "Stockopedia e Investing [28, 29]"
+      },
+      "diferencia_consenso": "Nuestro BPA de FY2027e (796 JPY) coincide con el del consenso (791 JPY, Stockopedia [28]): no discrepamos en las cifras del próximo año. Nuestro precio base (27.371,93 JPY) queda un 1,4 % por debajo del objetivo medio de los analistas (27.771 JPY, 14 analistas en Investing [29]), dentro de nuestro rango. La diferencia es de múltiplo: usamos el PER actual (31,5x), por debajo de la mediana de cinco años (36,6x), mientras otros proveedores dan objetivos de hasta 30.553 JPY [30].",
+      "media": null,
+      "comentario": "El objetivo a 12 meses (26.719,23 JPY, +7,8 % con dividendo) está un 57 % por encima del valor intrínseco (16.972,10 JPY): el precio de hoy ya paga un PER de 31,5x que el DCF no justifica con un WACC del 8,0 % y una tasa libre japonesa del 3,1 %. Para que el valor intrínseco alcance al precio haría falta un crecimiento de ventas del 11,0 % anual durante diez años, casi el doble de nuestro 6,1 %. No hay un catalizador que cierre esa distancia hacia arriba; el riesgo es que el múltiplo converja hacia el de los comparables (17,8x)."
+    },
+    "comentario": "Pesamos el DCF un 50 %, los escenarios un 30 % y los comparables un 20 %. El DCF es el método más fiable para un negocio con caja neta, ROIC del 45,2 % y un crecimiento visible, aunque depende mucho de la tasa libre japonesa (3,089 % [38]). Los comparables pesan poco porque ninguno tiene la mezcla de HOYA: los de óptica y salud cotizan a un PER mediano de 17,8x con márgenes EBITDA del 23 %, frente al 35 % de HOYA, y KLA, el único de semiconductores, a 31,9x. Las transacciones no se usan (hueco). La dispersión es grande: de 14.079,80 JPY por comparables a 22.386,54 JPY con la prima implícita del mercado, todos por debajo del precio (25.055 JPY). El mercado paga a HOYA como a un proveedor de semiconductores de calidad, no como a una empresa de óptica.",
+    "confianza": "Baja"
+  },
+  "catalizadores": {
+    "items": [
+      {
+        "fecha": "2026-10-30",
+        "evento": "Resultados del 2T de FY2027 y del primer semestre",
+        "efecto": "Comprobar la guía del semestre (521.000 M JPY de ventas y 170.000 M de resultado antes de impuestos) sin el reembolso de aranceles",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2027-01 (fin)",
+        "evento": "Resultados del 3T y guía anual de FY2027",
+        "efecto": "Primera guía anual; también suele anunciar recompras",
+        "probabilidad": "Alta",
+        "sentido": "+"
+      },
+      {
+        "fecha": "ago-2026 a mar-2027",
+        "evento": "Programa de recompra de hasta 200.000 M JPY",
+        "efecto": "Hasta el 2,99 % del capital, apoyo al precio",
+        "probabilidad": "Alta",
+        "sentido": "+"
+      },
+      {
+        "fecha": "FY2028",
+        "evento": "Producción en masa en la planta de EUV de Singapur",
+        "efecto": "Capacidad para el crecimiento de High-NA",
+        "probabilidad": "Media",
+        "sentido": "+"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "riesgos": {
+    "items": [
+      {
+        "riesgo": "Compresión del múltiplo hacia el de los comparables",
+        "tipo": "Valoración",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−17,6 % (bajista a 12 meses, PER de 26,7x)",
+        "mitigante": "Crecimiento de doble dígito del beneficio y recompras",
+        "senal": "PER por debajo de 27x sin cambio en los beneficios"
+      },
+      {
+        "riesgo": "Pausa en los diseños de chips avanzados",
+        "tipo": "Cíclico",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−48,7 % en el valor intrínseco (bajista del DCF)",
+        "mitigante": "Life Care (62 % de las ventas) amortigua, como en FY2024",
+        "senal": "Ventas de Information Technology con crecimiento por debajo del 5 %"
+      },
+      {
+        "riesgo": "AGC gana cuota en blanks EUV",
+        "tipo": "Competencia",
+        "probabilidad": "Baja",
+        "impacto": "Alto",
+        "efecto_valor": "−10 a −15 % (estimación propia: 2 puntos menos de margen)",
+        "mitigante": "Calificación por nodo y liderazgo en defectos",
+        "senal": "Margen de Information Technology por debajo del 50 %"
+      },
+      {
+        "riesgo": "Apreciación del yen",
+        "tipo": "Divisa",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−5 a −10 % del BPA (9 puntos de crecimiento del 1T fueron divisa [10])",
+        "mitigante": "Producción en el extranjero",
+        "senal": "USD/JPY por debajo de 140"
+      },
+      {
+        "riesgo": "Subida de la tasa libre japonesa",
+        "tipo": "Mercado",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "≈ −12 % por cada medio punto más de WACC (sensibilidad del DCF)",
+        "mitigante": "Caja neta",
+        "senal": "Bono a 10 años por encima del 3,5 %"
+      },
+      {
+        "riesgo": "Endoscopios Pentax sin escala",
+        "tipo": "Operativo",
+        "probabilidad": "Media",
+        "impacto": "Bajo",
+        "efecto_valor": "−2 %",
+        "mitigante": "Venta o cierre",
+        "senal": "Nuevos deterioros"
+      }
+    ],
+    "premortem": "Octubre de 2029: la acción ha perdido un 40 %. En 2027 los fabricantes de chips frenaron los nuevos diseños tras dos años de gasto en IA, y los pedidos de blanks EUV cayeron justo cuando entraba la capacidad de Singapur. AGC, con un cliente coreano que buscaba segunda fuente, ganó cuota en el nodo de 2 nm. El yen se recuperó hasta 135 por dólar y restó 8 puntos al crecimiento publicado. El beneficio por acción se quedó plano en 800 JPY durante dos años y el mercado, con el bono japonés por encima del 3,5 %, dejó de pagar 30 veces y pasó a pagar 20, el múltiplo de los comparables de óptica. La recompra no lo compensó. Las señales que lo habrían anticipado: el margen de Information Technology por debajo del 50 %, la caída de los pedidos de Taiwán y Corea en las presentaciones y el crecimiento a tipos constantes por debajo del 5 %.",
+    "confianza": "Media"
+  },
+  "esg": {
+    "calificaciones": [],
+    "materialidad": "Los asuntos más materiales son la seguridad de los productos médicos (endoscopios y lentes intraoculares), el consumo de energía y agua de las plantas de vidrio y blanks, y el gobierno corporativo, que en HOYA es un punto fuerte (mayoría de consejeros externos) [18]. No hemos encontrado calificaciones ESG con fecha en la búsqueda.",
+    "controversias": "No hemos encontrado sanciones ni litigios relevantes de los últimos tres años en las búsquedas hechas; la revisión es limitada (sin acceso a la web de la empresa ni a la prensa japonesa completa).",
+    "confianza": "Baja"
+  },
+  "preguntas": {
+    "items": [
+      {
+        "tema": "EUV",
+        "pregunta": "¿Qué parte del crecimiento de blanks viene de nuevos diseños y cuál de High-NA, y qué cuota tiene AGC en los nodos de 2 nm?",
+        "por_que": "Es la variable que más mueve el valor."
+      },
+      {
+        "tema": "Divisa",
+        "pregunta": "¿Cuánto del margen depende del yen débil?",
+        "por_que": "9 puntos del crecimiento del 1T fueron divisa."
+      },
+      {
+        "tema": "Caja",
+        "pregunta": "¿Cuál es la caja operativa mínima y cuánta queda por devolver tras el programa de 200.000 M JPY?",
+        "por_que": "Cambia la dilución negativa del BPA."
+      },
+      {
+        "tema": "Endoscopios",
+        "pregunta": "¿Hay plan de salida de Pentax Medical?",
+        "por_que": "Deterioros en FY2025 y tercer lugar del mercado."
+      },
+      {
+        "tema": "Ingresos financieros",
+        "pregunta": "¿Qué parte de los 52.164 M JPY de resultado financiero es recurrente?",
+        "por_que": "Pesa un 16 % del resultado antes de impuestos."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sentimiento": {
+    "tono": "Dividido",
+    "tendencia": "Empeora",
+    "revisadas": [
+      {
+        "plataforma": "Yahoo!ファイナンス掲示板 (foro de 7741)",
+        "fecha": "2026-09",
+        "n_comentarios": 30,
+        "tono": "Negativo",
+        "resumen": "En septiembre, con la acción en mínimos del año, los mensajes temen otra caída fuerte tras el rebote y algunos creen que el mercado descuenta un deterioro futuro del beneficio por el cambio de entorno [40]."
+      },
+      {
+        "plataforma": "Seeking Alpha (artículo y comentarios)",
+        "fecha": "2026",
+        "n_comentarios": 10,
+        "tono": "Neutro",
+        "resumen": "Bien situada para la demanda de IA y centros de datos (blanks EUV y sustratos para discos HAMR), pero con poco recorrido inmediato por valoración tras subir más de un 50 % en 18 meses [21]."
+      },
+      {
+        "plataforma": "getquin (foro de HOYA)",
+        "fecha": "2026-07",
+        "n_comentarios": 8,
+        "tono": "Positivo",
+        "resumen": "Los particulares ven Information Technology como beneficiaria de la IA y destacan el crecimiento del segmento; cifras sin fuente que no usamos [41]."
+      },
+      {
+        "plataforma": "IFIS株予報 y Kabuyoho (valoración de particulares y analistas)",
+        "fecha": "2026-10",
+        "n_comentarios": 5,
+        "tono": "Positivo",
+        "resumen": "Califican la acción de barata por objetivo de precio y PBR, con una opinión media de 4,7 sobre 5 [42]."
+      }
+    ],
+    "temas": [
+      {
+        "tema": "Caída de septiembre y miedo a un pico de beneficio",
+        "postura": "Bajista",
+        "peso": "Alto",
+        "contraste": "El 1T de FY2027 creció un 16 % en ventas y un 28 % en resultado antes de impuestos, pero 9 puntos del crecimiento son divisa y hubo un reembolso de aranceles [A10]: la preocupación por la calidad del crecimiento tiene base, no la de un pico inmediato."
+      },
+      {
+        "tema": "IA y blanks EUV",
+        "postura": "Alcista",
+        "peso": "Alto",
+        "contraste": "Information Technology creció un 22,7 % en el 1T con un margen del 55 % y HOYA tiene más del 75 % del EUV [A10, A14]: el entusiasmo está respaldado por los datos."
+      },
+      {
+        "tema": "Valoración exigente",
+        "postura": "Dividida",
+        "peso": "Medio",
+        "contraste": "A 25.055 JPY la acción cotiza a unas 32 veces nuestro BPA de FY2027e, por debajo de su mediana de 36,6 veces en 2021-2025 [D12, D13]."
+      },
+      {
+        "tema": "Recompras",
+        "postura": "Alcista",
+        "peso": "Bajo",
+        "contraste": "Programa de hasta 200.000 M JPY hasta mar-27, un 2,4 % de la capitalización [A15]."
+      }
+    ],
+    "lectura": "El sentimiento de los particulares japoneses se enfrió en septiembre, con la acción en mínimos del año y el temor a un techo del beneficio, mientras los analistas siguen con 12 compras y 3 mantener [D5]. No es capitulación: el rebote de octubre y las opiniones favorables de IFIS lo moderan. Lo útil para la decisión es que la duda del mercado se centra en la calidad del crecimiento (divisa y partidas puntuales), justo lo que mostrarán los resultados del 2T del 30-oct. No vemos en los foros ningún riesgo que el informe no recoja.",
+    "confianza": "Baja"
+  },
+  "fuentes": [
+    {
+      "id": 1,
+      "titulo": "Company profile (ventas y resultado antes de impuestos consolidados de FY2026)",
+      "editor": "HOYA Corporation",
+      "tipo": "Primaria",
+      "fecha": "2026-06",
+      "url": "https://www.hoya.com/en/company/profile/"
+    },
+    {
+      "id": 2,
+      "titulo": "HOYA Corporation (TYO:7741) Financials - Income Statement",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://stockanalysis.com/quote/tyo/7741/financials/"
+    },
+    {
+      "id": 3,
+      "titulo": "HOYA CORPORATION (7741) Income statement",
+      "editor": "Finboard",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://finboard.net/companies/JP:7741/income-statement"
+    },
+    {
+      "id": 4,
+      "titulo": "Hoya (TYO:7741) Income Statement",
+      "editor": "Stockopedia",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www-proxy.stockopedia.com/share-prices/hoya-TYO:7741/income-statement/"
+    },
+    {
+      "id": 5,
+      "titulo": "HOYA FY2026 Pre-Tax Profit Surges 26% to ¥328bn; Dividend Nearly Doubled to ¥295",
+      "editor": "Japan Stock Pulse",
+      "tipo": "Prensa",
+      "fecha": "2026-04-30",
+      "url": "https://japanstockpulse.com/article/2026/04/30/7741-1.html"
+    },
+    {
+      "id": 6,
+      "titulo": "Financial Results for the Fiscal Year Ended March 31, 2026 [IFRS] (Consolidated)",
+      "editor": "HOYA Corporation (TDnet, vía BigGo Finance)",
+      "tipo": "Primaria",
+      "fecha": "2026-04-30",
+      "url": "https://finance.biggo.com/news/jpx_tdnet_140120260428513910"
+    },
+    {
+      "id": 7,
+      "titulo": "Annual Report, year ended 31 March 2025 (estados financieros consolidados)",
+      "editor": "HOYA Corporation",
+      "tipo": "Primaria",
+      "fecha": "2025-07",
+      "url": "https://www.hoya.com/wp-content/uploads/2025/07/Annual-Report-Final-2.pdf"
+    },
+    {
+      "id": 8,
+      "titulo": "Hoya Cor (7741) Cash Flow",
+      "editor": "Investing.com",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www.investing.com/equities/hoya-cor-cash-flow"
+    },
+    {
+      "id": 9,
+      "titulo": "Paper-Based Documents for Delivery, 88th Ordinary General Meeting (estado de situación de FY2026)",
+      "editor": "HOYA Corporation",
+      "tipo": "Primaria",
+      "fecha": "2026-05",
+      "url": "https://www.hoya.com/wp-content/uploads/2026/05/88thAGMPBDD_E.pdf"
+    },
+    {
+      "id": 10,
+      "titulo": "HOYA (7741) Q1 FY2027 earnings summary y presentación del 1T",
+      "editor": "Quartr / BigGo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07-31",
+      "url": "https://finance.biggo.com/news/ir_7741.T_20260731_4f11eec74fb5"
+    },
+    {
+      "id": 11,
+      "titulo": "HOYA Corporation (7741.T) Balance Sheet",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://finance.yahoo.com/quote/7741.T/balance-sheet/"
+    },
+    {
+      "id": 12,
+      "titulo": "HOYA Corporation (TYO:7741) Statistics & Valuation Metrics",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://stockanalysis.com/quote/tyo/7741/statistics/"
+    },
+    {
+      "id": 13,
+      "titulo": "HOYA CORPORATION (7741) Dividends",
+      "editor": "Finboard",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://finboard.net/companies/JP:7741/dividends"
+    },
+    {
+      "id": 14,
+      "titulo": "Hoya Is the Second-Largest Eyeglass Lensmaker and the Dominant Leader in Mask Blanks",
+      "editor": "Morningstar",
+      "tipo": "Analistas",
+      "fecha": "2026-06",
+      "url": "https://www.morningstar.com/company-reports/1485209-hoya-is-the-second-largest-eyeglass-lensmaker-and-the-dominant-leader-in-mask-blanks"
+    },
+    {
+      "id": 15,
+      "titulo": "Hoya Launches ¥200 Billion Share Buyback to Boost Capital Efficiency",
+      "editor": "TipRanks",
+      "tipo": "Prensa",
+      "fecha": "2026-07-31",
+      "url": "https://www.tipranks.com/news/company-announcements/hoya-launches-200-billion-share-buyback-to-boost-capital-efficiency"
+    },
+    {
+      "id": 16,
+      "titulo": "Notice regarding the status of own share repurchase (agosto de 2026)",
+      "editor": "HOYA Corporation (TDnet)",
+      "tipo": "Primaria",
+      "fecha": "2026-09-01",
+      "url": "https://finance-frontend-pc-dist.west.edge.storage-yahoo.jp/disclosure/20260901/20260901529424.pdf"
+    },
+    {
+      "id": 17,
+      "titulo": "Hoya Ends ¥100 Billion Buyback and Cancels 1.06% of Its Shares",
+      "editor": "The Globe and Mail (TipRanks)",
+      "tipo": "Prensa",
+      "fecha": "2026-04-30",
+      "url": "https://www.theglobeandmail.com/investing/markets/markets-news/Tipranks/1638099/hoya-ends-yen100-billion-buyback-and-cancels-1-06-of-its-shares/"
+    },
+    {
+      "id": 18,
+      "titulo": "Corporate Governance Report",
+      "editor": "HOYA Corporation",
+      "tipo": "Primaria",
+      "fecha": "2025-06-27",
+      "url": "https://www.hoya.com/wp-content/uploads/2025/06/Corporate-Governance-Report_EN_20250627.pdf"
+    },
+    {
+      "id": 19,
+      "titulo": "EUV Mask Blanks Market (cuota conjunta de HOYA, AGC y Shin-Etsu en blanks de gama alta)",
+      "editor": "Reportprime",
+      "tipo": "Sectorial",
+      "fecha": "2026",
+      "url": "https://www.reportprime.com/euv-mask-blanks-r3197"
+    },
+    {
+      "id": 20,
+      "titulo": "HOYA (7741) Q3 FY2026 Earnings Commentary",
+      "editor": "note.com (stockpicker_lab)",
+      "tipo": "Prensa",
+      "fecha": "2026-02",
+      "url": "https://note.com/stockpicker_lab/n/n1facbefc8be0?hl=en"
+    },
+    {
+      "id": 21,
+      "titulo": "HOYA Well-Placed To Leverage AI And Data Center Demand, But Shares Reflect That",
+      "editor": "Seeking Alpha",
+      "tipo": "Analistas",
+      "fecha": "2026",
+      "url": "https://seekingalpha.com/article/4736452-hoya-well-placed-to-leverage-ai-and-data-center-demand-but-shares-reflect-that"
+    },
+    {
+      "id": 22,
+      "titulo": "Informe de Olympus del 9-oct-2026 (cuota en endoscopia GI)",
+      "editor": "Olympus Corporation, informe integrado 2025",
+      "tipo": "Primaria",
+      "fecha": "2025",
+      "url": "https://www.olympus-global.com/ir/data/integratedreport/"
+    },
+    {
+      "id": 23,
+      "titulo": "HOYA (7741.T) Reports Strong Q3 FY2026 Results, Raises Full-Year Forecast",
+      "editor": "BigGo Finance (TDnet)",
+      "tipo": "Prensa",
+      "fecha": "2026-01-30",
+      "url": "https://finance.biggo.com/news/jpx_tdnet_140120260130542632"
+    },
+    {
+      "id": 24,
+      "titulo": "Notice of the Results of the 86th Ordinary General Meeting of Shareholders",
+      "editor": "HOYA Corporation (vía MarketScreener)",
+      "tipo": "Primaria",
+      "fecha": "2024-06",
+      "url": "https://www.marketscreener.com/quote/stock/HOYA-CORPORATION-6491345/news/Hoya-Notice-of-the-Results-of-the-86th-Ordinary-General-Meeting-of-Shareholders-47262013/"
+    },
+    {
+      "id": 25,
+      "titulo": "HOYA Corporation (7741.T) Stock Price, News, Quote & History",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-02",
+      "url": "https://finance.yahoo.com/quote/7741.T/"
+    },
+    {
+      "id": 26,
+      "titulo": "HOYA(株)【7741】：株価・掲示板 (cierres del 9-oct y del 2-oct; IFIS: cierre del 18-sep)",
+      "editor": "Yahoo!ファイナンス / IFIS株予報",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-09",
+      "url": "https://finance.yahoo.co.jp/quote/7741.T"
+    },
+    {
+      "id": 27,
+      "titulo": "HOYA (7741) Q1 FY2027 earnings summary (guía del primer semestre)",
+      "editor": "Quartr",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07-31",
+      "url": "https://quartr.com/companies/hoya-corporation_15194"
+    },
+    {
+      "id": 28,
+      "titulo": "Hoya Share Price, Forecast & Financials (TYO:7741)",
+      "editor": "Stockopedia",
+      "tipo": "Analistas",
+      "fecha": "2026-10",
+      "url": "https://www.stockopedia.com/share-prices/hoya-TYO:7741/"
+    },
+    {
+      "id": 29,
+      "titulo": "Hoya Cor (7741) Stock Forecast & Price Target",
+      "editor": "Investing.com",
+      "tipo": "Analistas",
+      "fecha": "2026-10",
+      "url": "https://www.investing.com/equities/hoya-cor-consensus-estimates"
+    },
+    {
+      "id": 30,
+      "titulo": "HOYA Corporation (TYO:7741) Stock Price & Overview",
+      "editor": "Stock Analysis",
+      "tipo": "Analistas",
+      "fecha": "2026-10",
+      "url": "https://stockanalysis.com/quote/tyo/7741/"
+    },
+    {
+      "id": 31,
+      "titulo": "7741 Stock Price Quote",
+      "editor": "Morningstar",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-02",
+      "url": "https://www.morningstar.com/stocks/xtks/7741/quote"
+    },
+    {
+      "id": 32,
+      "titulo": "Comparables del informe de Olympus del 9-oct-2026 (MarketScreener: Terumo, Fujifilm)",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-09",
+      "url": "https://www.marketscreener.com/quote/stock/TERUMO-CORPORATION-6491240/finances/"
+    },
+    {
+      "id": 33,
+      "titulo": "Comparables del informe de Cooper Companies del 9-oct-2026 (Alcon, Bausch + Lomb, EssilorLuxottica, Cooper)",
+      "editor": "Stock Analysis / MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-09",
+      "url": "https://stockanalysis.com/stocks/alc/statistics/"
+    },
+    {
+      "id": 34,
+      "titulo": "Comparables del informe de Fielmann del 9-oct-2026 (EssilorLuxottica)",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-09",
+      "url": "https://www.marketscreener.com/quote/stock/ESSILORLUXOTTICA-4641/valuation/"
+    },
+    {
+      "id": 35,
+      "titulo": "Comparables del informe de ASML del 14-oct-2026 (Applied Materials, KLA)",
+      "editor": "VAT Group / Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-06",
+      "url": "https://finance.yahoo.com/quote/KLAC/key-statistics/"
+    },
+    {
+      "id": 36,
+      "titulo": "Hoya PE Ratio 2010-2024 | HOCPY (PER de cierre de año natural)",
+      "editor": "Macrotrends",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://macrotrends.net/stocks/charts/HOCPY/hoya/pe-ratio"
+    },
+    {
+      "id": 37,
+      "titulo": "HOYA Corporation (7741.T) Valuation Measures & Financial Statistics (PER de 31-dic-2025)",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://finance.yahoo.com/quote/7741.T/key-statistics/"
+    },
+    {
+      "id": 38,
+      "titulo": "Interest Rate (October 2026): JGB yield curve (10 años: 3,089 %)",
+      "editor": "Ministry of Finance Japan",
+      "tipo": "Primaria",
+      "fecha": "2026-10-08",
+      "url": "https://www.mof.go.jp/english/policy/jgbs/reference/interest_rate/jgbcme.csv"
+    },
+    {
+      "id": 39,
+      "titulo": "ERPbymonth.xlsx (prima implícita del S&P 500, octubre de 2026: 4,20 %)",
+      "editor": "Aswath Damodaran (NYU Stern)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx"
+    },
+    {
+      "id": 40,
+      "titulo": "HOYA(株)【7741】：掲示板",
+      "editor": "Yahoo!ファイナンス",
+      "tipo": "Foros y redes",
+      "fecha": "2026-09",
+      "url": "https://finance.yahoo.co.jp/quote/7741.T/forum"
+    },
+    {
+      "id": 41,
+      "titulo": "HOYA forum discussion",
+      "editor": "getquin",
+      "tipo": "Foros y redes",
+      "fecha": "2026-07",
+      "url": "https://app.getquin.com/en/stock/JP3837800006/hoya/forum-discussion"
+    },
+    {
+      "id": 42,
+      "titulo": "7741 ＨＯＹＡ - IFIS株予報 - レーティング、目標株価",
+      "editor": "IFIS",
+      "tipo": "Foros y redes",
+      "fecha": "2026-10",
+      "url": "https://kabuyoho.ifis.co.jp/index.php?action=tp1&sa=report_pbr&bcode=7741"
+    }
+  ],
+  "calc": {
+    "version": 4,
+    "etiquetas": {
+      "margen_bruto": "M. tras aprov.",
+      "margen_bruto_largo": "Margen tras aprovisionamientos",
+      "dias_base": "sobre costes operativos de caja (ingresos − EBITDA), por ser una cuenta por naturaleza"
+    },
+    "recomendacion": {
+      "recomendacion": "Mantener",
+      "regla": "Mantener",
+      "regla_absoluta": "Vender",
+      "regla_relativa": "Vender",
+      "coincide": true,
+      "conviccion": "Media",
+      "conviccion_sugerida": "Media",
+      "conviccion_razones": [
+        "Mantener con las dos reglas de acuerdo y lejos de los umbrales"
+      ],
+      "reglas_discrepan": false,
+      "relativo": {
+        "prima_implicita_pct": 4.2,
+        "wacc": 6.84,
+        "ke": 6.87,
+        "dcf": 22386.54,
+        "dcf_min": 20173.19,
+        "dcf_max": 25180.32,
+        "valor_objetivo": 20536.56,
+        "alcista": 26685.7,
+        "bajista": 15572.35,
+        "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout; válida para mercados desarrollados)",
+        "fecha": "2026-10",
+        "potencial_pct": -18,
+        "rentabilidad_total_pct": -16.9,
+        "asimetria": 0.17
+      },
+      "objetivo_mercado_txt": " · con la prima implícita del mercado: 20.536,56 (-18,0 %)",
+      "objetivo_mercado_corto": " · mercado 20.536,56",
+      "rentabilidad_mercado_corto": " · mercado -16,9 %",
+      "potencial_pct": -32.3,
+      "dividendo_pct": 1.2,
+      "rentabilidad_total_pct": -31.1,
+      "alcista_pct": -15.7,
+      "bajista_pct": -48.7,
+      "asimetria": -0.32,
+      "comprar_por_debajo": 16972.1,
+      "vender_por_encima": 30015.81,
+      "tabla": [
+        {
+          "concepto": "Objetivo a 12 meses (nuestro PER × nuestro BPA FY2028e, ponderado 25/50/25)",
+          "valor": "26.719,23 JPY"
+        },
+        {
+          "concepto": "Bajista / base / alcista a 12 meses",
+          "valor": "26,7x × 762,30 = 20.353,41 · 31,5x × 868,95 = 27.371,93 · 34,3x × 926,52 = 31.779,64"
+        },
+        {
+          "concepto": "Rentabilidad a 12 meses: ponderada / del base (con dividendo)",
+          "valor": "7,8 % / 10,4 %"
+        },
+        {
+          "concepto": "Objetivo medio de los analistas (solo contraste)",
+          "valor": "27.771,00 (nuestro base -1,4 %)"
+        },
+        {
+          "concepto": "Valor intrínseco (síntesis ponderada, largo plazo)",
+          "valor": "16.972,10 JPY"
+        },
+        {
+          "concepto": "Potencial sobre el precio actual",
+          "valor": "-32,3 %"
+        },
+        {
+          "concepto": "Rentabilidad por dividendo ordinario",
+          "valor": "1,2 %"
+        },
+        {
+          "concepto": "Rentabilidad total esperada a 12 meses",
+          "valor": "-31,1 %"
+        },
+        {
+          "concepto": "Escenario alcista / bajista",
+          "valor": "-15,7 % / -48,7 %"
+        },
+        {
+          "concepto": "Asimetría (ganancia alcista / pérdida bajista)",
+          "valor": "-0,32x"
+        },
+        {
+          "concepto": "Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado",
+          "valor": "6,4 % frente a 8,0 % y 6,8 %"
+        },
+        {
+          "concepto": "Valor objetivo con la prima implícita del mercado (4,2 %, WACC 6,8 %)",
+          "valor": "20.536,56 JPY"
+        },
+        {
+          "concepto": "Rentabilidad total esperada con la prima del mercado",
+          "valor": "-16,9 %"
+        },
+        {
+          "concepto": "Asimetría con la prima del mercado",
+          "valor": "0,17x"
+        },
+        {
+          "concepto": "Regla absoluta (frente a su coste de capital)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Regla relativa (frente a lo que pide el mercado)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "¿La calidad de la empresa sostiene el crecimiento previsto?",
+          "valor": "Sí (6,1 % anual proyectado; sin inversión neta)"
+        },
+        {
+          "concepto": "Señal del valor intrínseco (regla del DCF, referencia)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Recomendación según la regla a 12 meses (Comprar: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender: ponderada ≤ -10 %)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Convicción según los criterios (Mantener con las dos reglas de acuerdo y lejos de los umbrales)",
+          "valor": "Media"
+        }
+      ],
+      "niveles": [
+        {
+          "accion": "Comprar",
+          "condicion": "Por debajo de 16.972,10 (ponderada a 12 meses ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco)"
+        },
+        {
+          "accion": "Mantener",
+          "condicion": "Entre 16.972,10 y 30.015,81"
+        },
+        {
+          "accion": "Vender o reducir",
+          "condicion": "Por encima de 30.015,81 (ponderada a 12 meses ≤ -10 %)"
+        }
+      ],
+      "precio_txt": "",
+      "valor_objetivo_txt": "",
+      "regla_valor_intrinseco": "Vender",
+      "objetivo_12m": {
+        "completo": true,
+        "filas": [
+          {
+            "escenario": "Bajista",
+            "metrica": "PER FY2028e",
+            "beneficio_por_accion": 762.3,
+            "multiplo": 26.7,
+            "multiplo_informe": null,
+            "origen": "mínimo de 5 años",
+            "precio": 20353.41,
+            "rentabilidad_pct": -17.6,
+            "justificacion": "Ventas de 1.059.820 M JPY en FY2028e (3 puntos menos de crecimiento al año: pausa en los blanks EUV y yen más fuerte) y margen EBITDA 2,5 puntos más bajo (34,5 %): EBIT 299.929 M, 25.000 M de ingresos financieros recurrentes, impuesto del 23 % y 326,9 M de acciones tras el programa de recompra en curso."
+          },
+          {
+            "escenario": "Base",
+            "metrica": "PER FY2028e",
+            "beneficio_por_accion": 868.95,
+            "multiplo": 31.5,
+            "multiplo_informe": null,
+            "origen": "PER actual",
+            "precio": 27371.93,
+            "rentabilidad_pct": 10.4,
+            "justificacion": "Ventas de 1.120.808 M JPY (+9,5 % y +8,0 %), margen EBITDA del 37,0 % por la mezcla hacia EUV: EBIT 345.209 M, 25.000 M de ingresos financieros, impuesto del 23 %, 1.000 M de minoritarios y 326,9 M de acciones (las de hoy menos el resto del programa de 200.000 M, sin recompras no anunciadas)."
+          },
+          {
+            "escenario": "Alcista",
+            "metrica": "PER FY2028e",
+            "beneficio_por_accion": 926.52,
+            "multiplo": 34.3,
+            "multiplo_informe": null,
+            "origen": "media histórica larga",
+            "precio": 31779.64,
+            "rentabilidad_pct": 28,
+            "justificacion": "Ventas de 1.162.414 M JPY (2 puntos más de crecimiento: High-NA y discos HAMR) y margen del 38,0 %: EBIT 369.648 M y beneficio neto de 302.879 M JPY con las mismas acciones."
+          }
+        ],
+        "regla": {
+          "bajista": 26.7,
+          "base": 31.5,
+          "alcista": 34.3,
+          "bajista_origen": "mínimo de 5 años",
+          "base_origen": "PER actual",
+          "alcista_origen": "media histórica larga"
+        },
+        "probabilidades": [
+          25,
+          50,
+          25
+        ],
+        "objetivo_ponderado": 26719.23,
+        "objetivo_simple": 26501.66,
+        "objetivo_base": 27371.93,
+        "rentabilidad_ponderada_pct": 7.8,
+        "rentabilidad_simple_pct": 7,
+        "rentabilidad_base_pct": 10.4,
+        "asimetria": 1.43,
+        "senal": "Mantener",
+        "comprar_por_debajo": 16972.1,
+        "vender_por_encima": 30015.81,
+        "consenso_objetivo": 27771,
+        "diferencia_consenso_pct": -1.4
+      },
+      "rentabilidad_12m_pct": 7.8,
+      "rentabilidad_12m_txt": "+7,8 % (base +10,4 %)",
+      "objetivo_12m_txt": "26.719,23 JPY"
+    },
+    "mercado": {
+      "precio": 25055,
+      "acciones": 333.87,
+      "capitalizacion": 8365113,
+      "deuda_neta": -531892,
+      "deuda_neta_ajustada": -449992,
+      "asimilables_deuda": 81900,
+      "ajustes_puente": 96444,
+      "valor_empresa": 7929665,
+      "fecha_puente": "2026-03-31"
+    },
+    "clave": {
+      "capitalizacion": 8365113,
+      "valor_empresa": 7929665,
+      "deuda_neta": -531892,
+      "ev_ventas_ltm": 8.07,
+      "ev_ebitda_ltm": 22.4,
+      "ev_ebitda_ntm": null,
+      "ev_ebit_ltm": 27.1,
+      "per_ltm": 31.8,
+      "per_ntm": 31.7,
+      "fcf_yield_pct": 2.8,
+      "dividendo_pct": 1.2,
+      "dn_ebitda": -1.5,
+      "roic_pct": 45.2,
+      "margen_ebitda_pct": 36.1,
+      "deuda_neta_ajustada": -449992,
+      "dn_ebitda_ajustada": -1.3,
+      "crecimiento_tcac_pct": 9.4,
+      "ingresos_ntm": null,
+      "ebitda_ntm": null,
+      "bpa_ntm": 791,
+      "ebitda_ltm": 354600,
+      "ingresos_ltm": 983050,
+      "ev_rab": null
+    },
+    "cuenta": [
+      {
+        "periodo": "FY2022",
+        "ingresos": 661466,
+        "crecimiento_pct": null,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 242498,
+        "margen_ebitda_pct": 36.7,
+        "ebit": 199479,
+        "margen_ebit_pct": 30.2,
+        "beneficio_neto": 164507,
+        "margen_neto_pct": 24.9,
+        "bpa": 445.93,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": null
+      },
+      {
+        "periodo": "FY2023",
+        "ingresos": 723582,
+        "crecimiento_pct": 9.4,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 257985,
+        "margen_ebitda_pct": 35.7,
+        "ebit": 208370,
+        "margen_ebit_pct": 28.8,
+        "beneficio_neto": 168638,
+        "margen_neto_pct": 23.3,
+        "bpa": 469.47,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 21.9,
+        "payout_pct": null
+      },
+      {
+        "periodo": "FY2024",
+        "ingresos": 762610,
+        "crecimiento_pct": 5.4,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 251613,
+        "margen_ebitda_pct": 33,
+        "ebit": 204398,
+        "margen_ebit_pct": 26.8,
+        "beneficio_neto": 181377,
+        "margen_neto_pct": 23.8,
+        "bpa": 515.27,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 22.8,
+        "payout_pct": null
+      },
+      {
+        "periodo": "FY2025",
+        "ingresos": 866032,
+        "crecimiento_pct": 13.6,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 293431,
+        "margen_ebitda_pct": 33.9,
+        "ebit": 244854,
+        "margen_ebit_pct": 28.3,
+        "beneficio_neto": 202101,
+        "margen_neto_pct": 23.3,
+        "bpa": 581.26,
+        "dpa": 160,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 22.3,
+        "payout_pct": 28
+      },
+      {
+        "periodo": "FY2026",
+        "ingresos": 947749,
+        "crecimiento_pct": 9.4,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 333722,
+        "margen_ebitda_pct": 35.2,
+        "ebit": 275504,
+        "margen_ebit_pct": 29.1,
+        "beneficio_neto": 253085,
+        "margen_neto_pct": 26.7,
+        "bpa": 743.82,
+        "dpa": 295,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 22.8,
+        "payout_pct": 40
+      }
+    ],
+    "tcac": {
+      "periodo": "FY2022-FY2026",
+      "ingresos_pct": 9.4,
+      "ebitda_pct": 8.3,
+      "bpa_pct": 13.6
+    },
+    "cuenta_y_prevision": [
+      {
+        "periodo": "FY2022",
+        "ingresos": 661466,
+        "ebitda": 242498
+      },
+      {
+        "periodo": "FY2023",
+        "ingresos": 723582,
+        "ebitda": 257985
+      },
+      {
+        "periodo": "FY2024",
+        "ingresos": 762610,
+        "ebitda": 251613
+      },
+      {
+        "periodo": "FY2025",
+        "ingresos": 866032,
+        "ebitda": 293431
+      },
+      {
+        "periodo": "FY2026",
+        "ingresos": 947749,
+        "ebitda": 333722
+      },
+      {
+        "periodo": "FY2027e",
+        "ingresos": 1037785,
+        "ebitda": 381905
+      },
+      {
+        "periodo": "FY2028e",
+        "ingresos": 1120808,
+        "ebitda": 414699
+      },
+      {
+        "periodo": "FY2029e",
+        "ingresos": 1204869,
+        "ebitda": 448211
+      },
+      {
+        "periodo": "FY2030e",
+        "ingresos": 1289209,
+        "ebitda": 479586
+      },
+      {
+        "periodo": "FY2031e",
+        "ingresos": 1373008,
+        "ebitda": 510759
+      },
+      {
+        "periodo": "FY2032e",
+        "ingresos": 1455388,
+        "ebitda": 538494
+      },
+      {
+        "periodo": "FY2033e",
+        "ingresos": 1528158,
+        "ebitda": 562362
+      },
+      {
+        "periodo": "FY2034e",
+        "ingresos": 1596925,
+        "ebitda": 584475
+      },
+      {
+        "periodo": "FY2035e",
+        "ingresos": 1652817,
+        "ebitda": 603278
+      },
+      {
+        "periodo": "FY2036e",
+        "ingresos": 1702402,
+        "ebitda": 621377
+      }
+    ],
+    "segmentos_ultimo": [
+      {
+        "nombre": "Life Care",
+        "ingresos": 590680,
+        "peso_pct": 62.3,
+        "crecimiento_pct": 7.2,
+        "margen_pct": 21.9,
+        "tipo_margen": "EBIT"
+      },
+      {
+        "nombre": "Information Technology",
+        "ingresos": 354751,
+        "peso_pct": 37.4,
+        "crecimiento_pct": 14,
+        "margen_pct": 54.2,
+        "tipo_margen": "EBIT"
+      },
+      {
+        "nombre": "Otros",
+        "ingresos": 2318,
+        "peso_pct": 0.2,
+        "crecimiento_pct": -41,
+        "margen_pct": null,
+        "tipo_margen": null
+      }
+    ],
+    "segmentos_tabla": {
+      "periodos": [
+        "",
+        "",
+        "",
+        "FY2025",
+        "FY2026"
+      ],
+      "filas": [
+        {
+          "nombre": "Life Care",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": 551007,
+          "v4": 590680
+        },
+        {
+          "nombre": "Information Technology",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": 311097,
+          "v4": 354751
+        },
+        {
+          "nombre": "Otros",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": 3928,
+          "v4": 2318
+        }
+      ]
+    },
+    "segmentos_periodo": "FY2026",
+    "balance": [
+      {
+        "periodo": "FY2025",
+        "activo_total": null,
+        "intangibles": 0,
+        "circulante": 124551,
+        "circulante_ventas_pct": 14.4,
+        "caja": 533967,
+        "deuda_financiera": 0,
+        "arrendamientos": null,
+        "deuda_neta": -533967,
+        "patrimonio": 971629,
+        "minoritarios": null,
+        "dn_ebitda": -1.82,
+        "dn_patrimonio_pct": -55,
+        "dso": null,
+        "dio": 79,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 437662,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "FY2026",
+        "activo_total": 1300897,
+        "intangibles": 0,
+        "circulante": 132482,
+        "circulante_ventas_pct": 14,
+        "caja": 574092,
+        "deuda_financiera": 0,
+        "arrendamientos": 42200,
+        "deuda_neta": -531892,
+        "patrimonio": 1020460,
+        "minoritarios": 14544,
+        "dn_ebitda": -1.59,
+        "dn_patrimonio_pct": -51,
+        "dso": null,
+        "dio": 79,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 503112,
+        "liquidez_corriente": null
+      }
+    ],
+    "perimetro_nota": null,
+    "flujos": [
+      {
+        "periodo": "FY2022",
+        "flujo_operativo": 190055,
+        "capex": 28872,
+        "pagos_arrendamientos": null,
+        "fcf": 161183,
+        "beneficio_neto": 164507,
+        "conversion_pct": 98,
+        "capex_ventas_pct": 4.4,
+        "capex_amortizacion": 0.67,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": 0,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 368.9,
+        "fcf_por_accion": 436.93
+      },
+      {
+        "periodo": "FY2023",
+        "flujo_operativo": 201829,
+        "capex": 33473,
+        "pagos_arrendamientos": null,
+        "fcf": 168356,
+        "beneficio_neto": 168638,
+        "conversion_pct": 100,
+        "capex_ventas_pct": 4.6,
+        "capex_amortizacion": 0.67,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": 0,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 359.2,
+        "fcf_por_accion": 468.7
+      },
+      {
+        "periodo": "FY2024",
+        "flujo_operativo": 222802,
+        "capex": 41074,
+        "pagos_arrendamientos": null,
+        "fcf": 181728,
+        "beneficio_neto": 181377,
+        "conversion_pct": 100,
+        "capex_ventas_pct": 5.4,
+        "capex_amortizacion": 0.87,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": 0,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 352,
+        "fcf_por_accion": 516.27
+      },
+      {
+        "periodo": "FY2025",
+        "flujo_operativo": 235113,
+        "capex": 47922,
+        "pagos_arrendamientos": null,
+        "fcf": 187191,
+        "beneficio_neto": 202101,
+        "conversion_pct": 93,
+        "capex_ventas_pct": 5.5,
+        "capex_amortizacion": 0.99,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": 0,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 347.7,
+        "fcf_por_accion": 538.37
+      },
+      {
+        "periodo": "FY2026",
+        "flujo_operativo": 278446,
+        "capex": 56581,
+        "pagos_arrendamientos": null,
+        "fcf": 221865,
+        "beneficio_neto": 253085,
+        "conversion_pct": 88,
+        "capex_ventas_pct": 6,
+        "capex_amortizacion": 0.97,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": 0,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 340.3,
+        "fcf_por_accion": 651.97
+      }
+    ],
+    "flujos_acumulado": {
+      "periodo": "FY2022-FY2026",
+      "fcf": 920323,
+      "adquisiciones": 0,
+      "dividendos": 0,
+      "recompras": 0,
+      "conversion_pct": 95
+    },
+    "rentabilidad": [
+      {
+        "periodo": "FY2022",
+        "nopat": 149609,
+        "capital_invertido": null,
+        "roic_pct": null,
+        "roe_pct": null,
+        "roa_pct": null,
+        "margen_neto_pct": 24.9,
+        "rotacion": null,
+        "apalancamiento": null
+      },
+      {
+        "periodo": "FY2023",
+        "nopat": 162808,
+        "capital_invertido": null,
+        "roic_pct": null,
+        "roe_pct": null,
+        "roa_pct": null,
+        "margen_neto_pct": 23.3,
+        "rotacion": null,
+        "apalancamiento": null
+      },
+      {
+        "periodo": "FY2024",
+        "nopat": 157742,
+        "capital_invertido": null,
+        "roic_pct": null,
+        "roe_pct": null,
+        "roa_pct": null,
+        "margen_neto_pct": 23.8,
+        "rotacion": null,
+        "apalancamiento": null
+      },
+      {
+        "periodo": "FY2025",
+        "nopat": 190353,
+        "capital_invertido": 437662,
+        "roic_pct": 43.5,
+        "roe_pct": 20.8,
+        "roa_pct": null,
+        "margen_neto_pct": 23.3,
+        "rotacion": null,
+        "apalancamiento": null
+      },
+      {
+        "periodo": "FY2026",
+        "nopat": 212794,
+        "capital_invertido": 470387,
+        "roic_pct": 45.2,
+        "roe_pct": 25.4,
+        "roa_pct": 38.9,
+        "margen_neto_pct": 26.7,
+        "rotacion": 1.46,
+        "apalancamiento": 0.65
+      }
+    ],
+    "roic_incremental_pct": null,
+    "roic_frente_wacc": [
+      {
+        "periodo": "FY2022",
+        "roic_pct": null,
+        "roe_pct": null,
+        "wacc_pct": 8
+      },
+      {
+        "periodo": "FY2023",
+        "roic_pct": null,
+        "roe_pct": null,
+        "wacc_pct": 8
+      },
+      {
+        "periodo": "FY2024",
+        "roic_pct": null,
+        "roe_pct": null,
+        "wacc_pct": 8
+      },
+      {
+        "periodo": "FY2025",
+        "roic_pct": 43.5,
+        "roe_pct": 20.8,
+        "wacc_pct": 8
+      },
+      {
+        "periodo": "FY2026",
+        "roic_pct": 45.2,
+        "roe_pct": 25.4,
+        "wacc_pct": 8
+      }
+    ],
+    "calidad": {
+      "periodo": "FY2026",
+      "altman_z": 21.19,
+      "altman_zona": "Zona segura",
+      "piotroski_f": 4,
+      "piotroski_detalle": [
+        {
+          "criterio": "Beneficio neto positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "ROA mejora",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "Flujo operativo > beneficio neto",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Baja el endeudamiento (deuda / activo)",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "Mejora la liquidez corriente",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "No emite acciones",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora el margen bruto",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "Mejora la rotación del activo",
+          "resultado": "n.d."
+        }
+      ],
+      "tabla": [
+        {
+          "indicador": "Altman Z",
+          "valor": "21,19",
+          "lectura": "Zona segura (> 2,99 seguro; < 1,81 riesgo). No aplica a bancos ni aseguradoras, y subestima la solvencia de empresas con grandes anticipos de clientes o prefinanciación pública (contratistas, construcción), que inflan el pasivo."
+        },
+        {
+          "indicador": "Piotroski F",
+          "valor": "4 / 4",
+          "lectura": "Intermedio (4-6)."
+        },
+        {
+          "indicador": "Flujo operativo / beneficio neto (acumulado)",
+          "valor": "1,16x",
+          "lectura": "El beneficio se cobra."
+        }
+      ]
+    },
+    "dcf": {
+      "proyeccion": [
+        {
+          "periodo": "FY2027e",
+          "ingresos": 1037785,
+          "crecimiento_pct": 9.5,
+          "ebitda": 381905,
+          "margen_ebitda_pct": 36.8,
+          "amortizacion": 64343,
+          "ebit": 317562,
+          "impuestos": 73039,
+          "capex": 77834,
+          "variacion_circulante": 12808,
+          "fcff": 218224,
+          "fraccion": 0.46,
+          "factor": 0.982,
+          "vp": 98612
+        },
+        {
+          "periodo": "FY2028e",
+          "ingresos": 1120808,
+          "crecimiento_pct": 8,
+          "ebitda": 414699,
+          "margen_ebitda_pct": 37,
+          "amortizacion": 69490,
+          "ebit": 345209,
+          "impuestos": 79398,
+          "capex": 84061,
+          "variacion_circulante": 11623,
+          "fcff": 239617,
+          "fraccion": 1,
+          "factor": 0.929,
+          "vp": 222508
+        },
+        {
+          "periodo": "FY2029e",
+          "ingresos": 1204869,
+          "crecimiento_pct": 7.5,
+          "ebitda": 448211,
+          "margen_ebitda_pct": 37.2,
+          "amortizacion": 77112,
+          "ebit": 371100,
+          "impuestos": 85353,
+          "capex": 84341,
+          "variacion_circulante": 11768,
+          "fcff": 266749,
+          "fraccion": 1,
+          "factor": 0.86,
+          "vp": 229194
+        },
+        {
+          "periodo": "FY2030e",
+          "ingresos": 1289209,
+          "crecimiento_pct": 7,
+          "ebitda": 479586,
+          "margen_ebitda_pct": 37.2,
+          "amortizacion": 82509,
+          "ebit": 397076,
+          "impuestos": 91328,
+          "capex": 87666,
+          "variacion_circulante": 11808,
+          "fcff": 288784,
+          "fraccion": 1,
+          "factor": 0.796,
+          "vp": 229749
+        },
+        {
+          "periodo": "FY2031e",
+          "ingresos": 1373008,
+          "crecimiento_pct": 6.5,
+          "ebitda": 510759,
+          "margen_ebitda_pct": 37.2,
+          "amortizacion": 87873,
+          "ebit": 422886,
+          "impuestos": 97264,
+          "capex": 90619,
+          "variacion_circulante": 11732,
+          "fcff": 311145,
+          "fraccion": 1,
+          "factor": 0.737,
+          "vp": 229205
+        },
+        {
+          "periodo": "FY2032e",
+          "ingresos": 1455388,
+          "crecimiento_pct": 6,
+          "ebitda": 538494,
+          "margen_ebitda_pct": 37,
+          "amortizacion": 93145,
+          "ebit": 445349,
+          "impuestos": 102430,
+          "capex": 94600,
+          "variacion_circulante": 11533,
+          "fcff": 329930,
+          "fraccion": 1,
+          "factor": 0.682,
+          "vp": 225155
+        },
+        {
+          "periodo": "FY2033e",
+          "ingresos": 1528158,
+          "crecimiento_pct": 5,
+          "ebitda": 562362,
+          "margen_ebitda_pct": 36.8,
+          "amortizacion": 97802,
+          "ebit": 464560,
+          "impuestos": 106849,
+          "capex": 99330,
+          "variacion_circulante": 10188,
+          "fcff": 345995,
+          "fraccion": 1,
+          "factor": 0.632,
+          "vp": 218475
+        },
+        {
+          "periodo": "FY2034e",
+          "ingresos": 1596925,
+          "crecimiento_pct": 4.5,
+          "ebitda": 584475,
+          "margen_ebitda_pct": 36.6,
+          "amortizacion": 102203,
+          "ebit": 482271,
+          "impuestos": 110922,
+          "capex": 103800,
+          "variacion_circulante": 9627,
+          "fcff": 360125,
+          "fraccion": 1,
+          "factor": 0.585,
+          "vp": 210555
+        },
+        {
+          "periodo": "FY2035e",
+          "ingresos": 1652817,
+          "crecimiento_pct": 3.5,
+          "ebitda": 603278,
+          "margen_ebitda_pct": 36.5,
+          "amortizacion": 105780,
+          "ebit": 497498,
+          "impuestos": 114425,
+          "capex": 107433,
+          "variacion_circulante": 7825,
+          "fcff": 373596,
+          "fraccion": 1,
+          "factor": 0.542,
+          "vp": 202253
+        },
+        {
+          "periodo": "FY2036e",
+          "ingresos": 1702402,
+          "crecimiento_pct": 3,
+          "ebitda": 621377,
+          "margen_ebitda_pct": 36.5,
+          "amortizacion": 108954,
+          "ebit": 512423,
+          "impuestos": 117857,
+          "capex": 110656,
+          "variacion_circulante": 6942,
+          "fcff": 385921,
+          "fraccion": 1,
+          "factor": 0.502,
+          "vp": 193548
+        }
+      ],
+      "etapa2": null,
+      "suma_vp": 2059254,
+      "valor_terminal": 7186188,
+      "vp_terminal": 3467914,
+      "valor_empresa": 5527169,
+      "peso_terminal_pct": 63,
+      "valor_acciones": 5962617,
+      "valor_accion": 17859.1,
+      "vt_gordon": 7186188,
+      "vt_multiplo": 9320650,
+      "multiplo_implicito": 11.6,
+      "g_implicito_pct": 3.71,
+      "metodo_terminal": "gordon",
+      "terminal_tabla": [
+        {
+          "concepto": "Método principal",
+          "valor": "Crecimiento a perpetuidad"
+        },
+        {
+          "concepto": "Crecimiento a perpetuidad",
+          "valor": "2,5 %"
+        },
+        {
+          "concepto": "Múltiplo EV/EBITDA de salida",
+          "valor": "15,0x"
+        },
+        {
+          "concepto": "Valor terminal (Gordon)",
+          "valor": "7.186.188"
+        },
+        {
+          "concepto": "Valor terminal (múltiplo)",
+          "valor": "9.320.650"
+        },
+        {
+          "concepto": "Múltiplo de salida implícito en Gordon",
+          "valor": "11,6x"
+        },
+        {
+          "concepto": "Crecimiento implícito en el múltiplo",
+          "valor": "3,71 %"
+        },
+        {
+          "concepto": "Peso del valor terminal en el valor empresa",
+          "valor": "63 %"
+        }
+      ],
+      "puente": [
+        {
+          "concepto": "Valor actual de los flujos proyectados",
+          "valor": "2.059.254"
+        },
+        {
+          "concepto": "Valor actual del valor terminal",
+          "valor": "3.467.914"
+        },
+        {
+          "concepto": "Valor empresa",
+          "valor": "5.527.169"
+        },
+        {
+          "concepto": "− Deuda financiera neta (con arrendamientos)",
+          "valor": "531.892"
+        },
+        {
+          "concepto": "− Minoritarios, pensiones y otros; + asociadas",
+          "valor": "-96.444"
+        },
+        {
+          "concepto": "Valor de los fondos propios",
+          "valor": "5.962.617"
+        },
+        {
+          "concepto": "Acciones diluidas (millones)",
+          "valor": "333,9"
+        },
+        {
+          "concepto": "Valor por acción",
+          "valor": "17.859,10"
+        }
+      ],
+      "composicion": [
+        {
+          "parte": "Flujos proyectados",
+          "valor": 2059254
+        },
+        {
+          "parte": "Valor terminal",
+          "valor": 3467914
+        }
+      ],
+      "wacc": 8,
+      "ke": 8.04,
+      "kd_despues": 1.16,
+      "wacc_tabla": [
+        {
+          "concepto": "Tasa libre de riesgo",
+          "valor": "3,09 %"
+        },
+        {
+          "concepto": "Beta",
+          "valor": "0,90"
+        },
+        {
+          "concepto": "Prima de riesgo de mercado",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Prima adicional (país, tamaño, específica)",
+          "valor": "0,00 %"
+        },
+        {
+          "concepto": "Coste de los fondos propios",
+          "valor": "8,04 %"
+        },
+        {
+          "concepto": "Coste de la deuda antes de impuestos",
+          "valor": "1,50 %"
+        },
+        {
+          "concepto": "Tipo impositivo",
+          "valor": "23,00 %"
+        },
+        {
+          "concepto": "Coste de la deuda después de impuestos",
+          "valor": "1,16 %"
+        },
+        {
+          "concepto": "Peso de la deuda (D / (D + E))",
+          "valor": "0,50 %"
+        },
+        {
+          "concepto": "WACC",
+          "valor": "8,00 %"
+        },
+        {
+          "concepto": "Prima de riesgo implícita del mercado (regla relativa)",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "WACC con la prima implícita del mercado",
+          "valor": "6,84 %"
+        }
+      ],
+      "potencial_pct": -28.7,
+      "sensibilidad": {
+        "eje_columnas": "Crecimiento a perpetuidad",
+        "columnas": [
+          "1,5 %",
+          "2,0 %",
+          "2,5 %",
+          "3,0 %",
+          "3,5 %"
+        ],
+        "filas": [
+          {
+            "wacc": "7,0 %",
+            "v0": 18976.65,
+            "v1": 20159.69,
+            "v2": 21605.35,
+            "v3": 23412.01,
+            "v4": 25734.19
+          },
+          {
+            "wacc": "7,5 %",
+            "v0": 17458.49,
+            "v1": 18406.36,
+            "v2": 19543.63,
+            "v3": 20933.38,
+            "v4": 22670.16
+          },
+          {
+            "wacc": "8,0 %",
+            "v0": 16176.46,
+            "v1": 16947.72,
+            "v2": 17859.1,
+            "v3": 18952.58,
+            "v4": 20288.81
+          },
+          {
+            "wacc": "8,5 %",
+            "v0": 15079.85,
+            "v1": 15715.66,
+            "v2": 16457.36,
+            "v3": 17333.8,
+            "v4": 18385.37
+          },
+          {
+            "wacc": "9,0 %",
+            "v0": 14131.48,
+            "v1": 14661.54,
+            "v2": 15273.09,
+            "v3": 15986.48,
+            "v4": 16829.48
+          }
+        ]
+      },
+      "sensibilidad2": {
+        "columnas": [
+          "-2 pp",
+          "-1 pp",
+          "0 pp",
+          "+1 pp",
+          "+2 pp"
+        ],
+        "filas": [
+          {
+            "margen": "-2 pp",
+            "v0": 14641.26,
+            "v1": 15646.7,
+            "v2": 16728.08,
+            "v3": 17890.63,
+            "v4": 19139.93
+          },
+          {
+            "margen": "-1 pp",
+            "v0": 15124.55,
+            "v1": 16169.5,
+            "v2": 17293.59,
+            "v3": 18502.29,
+            "v4": 19801.45
+          },
+          {
+            "margen": "0 pp",
+            "v0": 15607.83,
+            "v1": 16692.3,
+            "v2": 17859.1,
+            "v3": 19113.96,
+            "v4": 20462.97
+          },
+          {
+            "margen": "+1 pp",
+            "v0": 16091.12,
+            "v1": 17215.1,
+            "v2": 18424.61,
+            "v3": 19725.63,
+            "v4": 21124.49
+          },
+          {
+            "margen": "+2 pp",
+            "v0": 16574.41,
+            "v1": 17737.89,
+            "v2": 18990.12,
+            "v3": 20337.29,
+            "v4": 21786.01
+          }
+        ]
+      },
+      "rango_min": 15715.66,
+      "rango_max": 20933.38,
+      "inverso": {
+        "crecimiento_implicito_pct": 11,
+        "crecimiento_base_pct": 6.1,
+        "periodo": "FY2027e-FY2036e",
+        "margen_implicito_pct": 49.2,
+        "margen_implicito_texto": null,
+        "margen_base_pct": 36.5,
+        "rentabilidad_implicita_pct": 6.4
+      },
+      "sostenibilidad": {
+        "veredicto": "Sí",
+        "crecimiento_proyectado_pct": 6.1,
+        "tasa_reinversion_pct": 5,
+        "crecimiento_financiable_pct": null,
+        "roic_pct": 45.2,
+        "roic_incremental_historico_pct": null,
+        "roic_implicito_pct": null,
+        "cuota_actual_pct": 75,
+        "cuota_final_pct": null,
+        "puente": [
+          {
+            "periodo": "FY2027e",
+            "volumen_pct": 5,
+            "precio_pct": 1.5,
+            "otros_pct": 3,
+            "comentario": "Volumen del 5 % (blanks EUV y sustratos para discos, +22,7 % en el 1T de Information Technology [10]), 1,5 % de precio en lentes y 3 puntos de divisa (el 1T creció un 16 % publicado frente al 7 % a tipos constantes [10]).",
+            "suma_pct": 9.5,
+            "crecimiento_pct": 9.5
+          },
+          {
+            "periodo": "FY2028e",
+            "volumen_pct": 6,
+            "precio_pct": 1.5,
+            "otros_pct": 0.5,
+            "comentario": "Entra la capacidad de EUV de Singapur [6]: 6 % de volumen, 1,5 % de precio y medio punto de mezcla.",
+            "suma_pct": 8,
+            "crecimiento_pct": 8
+          },
+          {
+            "periodo": "FY2029e",
+            "volumen_pct": 6,
+            "precio_pct": 1.5,
+            "otros_pct": 0,
+            "comentario": "Volumen del 6 % por la adopción de High-NA y de nodos de 2 nm y precio del 1,5 %.",
+            "suma_pct": 7.5,
+            "crecimiento_pct": 7.5
+          },
+          {
+            "periodo": "FY2030e",
+            "volumen_pct": 5.5,
+            "precio_pct": 1.5,
+            "otros_pct": 0,
+            "comentario": "Volumen del 5,5 %: madurez de la demanda de discos HAMR.",
+            "suma_pct": 7,
+            "crecimiento_pct": 7
+          },
+          {
+            "periodo": "FY2031e",
+            "volumen_pct": 5,
+            "precio_pct": 1.5,
+            "otros_pct": 0,
+            "comentario": "Volumen del 5 % y precio del 1,5 %.",
+            "suma_pct": 6.5,
+            "crecimiento_pct": 6.5
+          }
+        ],
+        "texto": "La proyección apenas necesita inversión neta de la amortización (reinversión acumulada de 156.983 M, el 5 % del NOPAT, con un capex bruto medio del 6,8 % de las ventas). En un negocio de activos ligeros, el crecimiento medio del 6,0 % tiene que salir de subir precios y de ganar volumen sin capital nuevo, y la prueba es el poder de precios y la cuota; en un comprador en serie, la amortización es de intangibles comprados y la prueba es el capex bruto (las compras) frente al crecimiento comprado.",
+        "tabla": [
+          {
+            "concepto": "Crecimiento medio de ingresos proyectado",
+            "valor": "6,0 %"
+          },
+          {
+            "concepto": "Capex bruto medio (incluidas compras si van como inversión)",
+            "valor": "6,8 % de las ventas"
+          },
+          {
+            "concepto": "Reinversión neta acumulada (capex − amortización + circulante)",
+            "valor": "156.983 M (5 % del NOPAT)"
+          }
+        ]
+      }
+    },
+    "escenarios": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "narrativa": "Los fabricantes de chips frenan nuevos diseños en 2027 tras el gasto en IA, AGC gana un cliente de EUV y el yen se aprecia: crecimiento 3 puntos menor cada año y margen 2,5 puntos más bajo, como en FY2024 (EBIT −1,9 %).",
+        "crecimiento_medio_pct": 3.1,
+        "margen_final_pct": 34,
+        "wacc_pct": 8,
+        "valor": 12845.23,
+        "potencial_pct": -48.7
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "narrativa": "Los blanks EUV crecen a doble dígito con la planta de Singapur desde FY2028, Life Care al 5-6 % y el margen EBITDA se queda en el 37 %.",
+        "crecimiento_medio_pct": 6.1,
+        "margen_final_pct": 36.5,
+        "wacc_pct": 8,
+        "valor": 17859.1,
+        "potencial_pct": -28.7
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "narrativa": "La litografía High-NA y los discos HAMR aceleran la demanda: 2 puntos más de crecimiento y un punto más de margen.",
+        "crecimiento_medio_pct": 8.1,
+        "margen_final_pct": 37.5,
+        "wacc_pct": 8,
+        "valor": 21124.49,
+        "potencial_pct": -15.7
+      }
+    ],
+    "valor_ponderado": 17421.98,
+    "potencial_ponderado_pct": -30.5,
+    "comparables": {
+      "tabla": [
+        {
+          "nombre": "Hoya",
+          "ticker": "7741",
+          "pais": "JP",
+          "capitalizacion": 8365113,
+          "ev_ventas": 8.07,
+          "ev_ebitda_ltm": 22.4,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 31.7,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": 36.1,
+          "roic_pct": 45.2,
+          "dn_ebitda": -1.5,
+          "fcf_yield_pct": 2.8,
+          "es_objetivo": true
+        },
+        {
+          "nombre": "EssilorLuxottica",
+          "ticker": "EL",
+          "pais": "FR",
+          "capitalizacion": 11836352,
+          "ev_ventas": 2.7,
+          "ev_ebitda_ltm": 11.3,
+          "ev_ebitda_ntm": 10,
+          "per_ntm": 23.5,
+          "crecimiento_pct": 7.2,
+          "margen_ebitda_pct": 22.8,
+          "roic_pct": 5.4,
+          "dn_ebitda": 1.9,
+          "fcf_yield_pct": 5.9,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Alcon",
+          "ticker": "ALC",
+          "pais": "CH",
+          "capitalizacion": 4830841,
+          "ev_ventas": 3.09,
+          "ev_ebitda_ltm": 11.7,
+          "ev_ebitda_ntm": 10.6,
+          "per_ntm": null,
+          "crecimiento_pct": 6.2,
+          "margen_ebitda_pct": 25.7,
+          "roic_pct": 4.75,
+          "dn_ebitda": 1.2,
+          "fcf_yield_pct": 5.74,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Cooper Companies",
+          "ticker": "COO",
+          "pais": "US",
+          "capitalizacion": 1638405,
+          "ev_ventas": 3.07,
+          "ev_ebitda_ltm": 10.6,
+          "ev_ebitda_ntm": 10.3,
+          "per_ntm": 15.3,
+          "crecimiento_pct": 3.8,
+          "margen_ebitda_pct": 29.1,
+          "roic_pct": 4.6,
+          "dn_ebitda": 1.9,
+          "fcf_yield_pct": 6.6,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Bausch + Lomb",
+          "ticker": "BLCO",
+          "pais": "CA",
+          "capitalizacion": 969588,
+          "ev_ventas": 2.01,
+          "ev_ebitda_ltm": 10.7,
+          "ev_ebitda_ntm": 9.5,
+          "per_ntm": null,
+          "crecimiento_pct": 6.3,
+          "margen_ebitda_pct": 17.5,
+          "roic_pct": 3.61,
+          "dn_ebitda": 5.3,
+          "fcf_yield_pct": 2.24,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Terumo",
+          "ticker": "4543",
+          "pais": "JP",
+          "capitalizacion": 3405000,
+          "ev_ventas": 2.95,
+          "ev_ebitda_ltm": 11.9,
+          "ev_ebitda_ntm": 10,
+          "per_ntm": 17.8,
+          "crecimiento_pct": 9,
+          "margen_ebitda_pct": 24,
+          "roic_pct": null,
+          "dn_ebitda": 0.11,
+          "fcf_yield_pct": 4.4,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Fujifilm",
+          "ticker": "4901",
+          "pais": "JP",
+          "capitalizacion": 4084000,
+          "ev_ventas": 1.45,
+          "ev_ebitda_ltm": 9.2,
+          "ev_ebitda_ntm": 8.1,
+          "per_ntm": 13.6,
+          "crecimiento_pct": 5.1,
+          "margen_ebitda_pct": 15.6,
+          "roic_pct": null,
+          "dn_ebitda": 1.58,
+          "fcf_yield_pct": 3.6,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "KLA",
+          "ticker": "KLAC",
+          "pais": "US",
+          "capitalizacion": 36119055,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": 32.65,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 31.85,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        }
+      ],
+      "estadisticos": [
+        {
+          "estadistico": "Mediana",
+          "ev_ventas": 2.8,
+          "ev_ebitda_ltm": 11.3,
+          "ev_ebitda_ntm": 10,
+          "per_ntm": 17.8,
+          "crecimiento_pct": 6.3,
+          "margen_ebitda_pct": 23.4,
+          "roic_pct": 4.7,
+          "dn_ebitda": 1.7,
+          "fcf_yield_pct": 5.1
+        },
+        {
+          "estadistico": "Media",
+          "ev_ventas": 2.5,
+          "ev_ebitda_ltm": 14,
+          "ev_ebitda_ntm": 9.8,
+          "per_ntm": 20.4,
+          "crecimiento_pct": 6.3,
+          "margen_ebitda_pct": 22.5,
+          "roic_pct": 4.6,
+          "dn_ebitda": 2,
+          "fcf_yield_pct": 4.7
+        },
+        {
+          "estadistico": "Percentil 25",
+          "ev_ventas": 2.2,
+          "ev_ebitda_ltm": 10.6,
+          "ev_ebitda_ntm": 9.6,
+          "per_ntm": 15.3,
+          "crecimiento_pct": 5.4,
+          "margen_ebitda_pct": 18.8,
+          "roic_pct": 4.4,
+          "dn_ebitda": 1.3,
+          "fcf_yield_pct": 3.8
+        },
+        {
+          "estadistico": "Percentil 75",
+          "ev_ventas": 3,
+          "ev_ebitda_ltm": 11.8,
+          "ev_ebitda_ntm": 10.2,
+          "per_ntm": 23.5,
+          "crecimiento_pct": 7,
+          "margen_ebitda_pct": 25.3,
+          "roic_pct": 4.9,
+          "dn_ebitda": 1.9,
+          "fcf_yield_pct": 5.9
+        }
+      ],
+      "implicito": [
+        {
+          "metodo": "EV/EBITDA últimos 12 meses",
+          "metrica_empresa": 354600,
+          "multiplo_p25": 10.6,
+          "multiplo_mediana": 11.3,
+          "multiplo_p75": 11.8,
+          "multiplos": "10,6x / 11,3x / 11,8x",
+          "valor_p25": 12615.5,
+          "valor_mediana": 13305.86,
+          "valor_p75": 13836.91,
+          "potencial_pct": -46.9
+        },
+        {
+          "metodo": "PER próximos 12 meses",
+          "metrica_empresa": 791,
+          "multiplo_p25": 15.3,
+          "multiplo_mediana": 17.8,
+          "multiplo_p75": 23.5,
+          "multiplos": "15,3x / 17,8x / 23,5x",
+          "valor_p25": 12102.3,
+          "valor_mediana": 14079.8,
+          "valor_p75": 18588.5,
+          "potencial_pct": -43.8
+        },
+        {
+          "metodo": "EV/Ventas últimos 12 meses",
+          "metrica_empresa": 983050,
+          "multiplo_p25": 2.2,
+          "multiplo_mediana": 2.8,
+          "multiplo_p75": 3,
+          "multiplos": "2,2x / 2,8x / 3,0x",
+          "valor_p25": 7730.42,
+          "valor_mediana": 9622.2,
+          "valor_p75": 10255.25,
+          "potencial_pct": -61.6
+        }
+      ],
+      "regresion": {
+        "pendiente": 0.08991135500211056,
+        "ordenada": 9.186555508653441,
+        "r2": 0.03244577486734346,
+        "n": 6
+      },
+      "n": 7
+    },
+    "transacciones": null,
+    "suma_partes": null,
+    "multiplos_historicos": [],
+    "multiplos_serie": [],
+    "multiplos_titulo": null,
+    "consenso_vs_propio": [
+      {
+        "periodo": "FY2027e",
+        "ingresos_propio": 1037785,
+        "ingresos_consenso": null,
+        "ingresos_dif_pct": null,
+        "ebitda_propio": 381905,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      }
+    ],
+    "gobierno": {
+      "n_consejeros": 1,
+      "independientes_pct": 0,
+      "antiguedad_media": null,
+      "composicion": [
+        {
+          "tipo": "Ejecutivo",
+          "num": 1
+        }
+      ],
+      "checklist": [
+        {
+          "criterio": "Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)",
+          "resultado": "No cumple",
+          "valor": "0 %"
+        },
+        {
+          "criterio": "Presidencia sin vínculo familiar ni profesional con el accionista de control",
+          "resultado": "Cumple",
+          "valor": "Sin control"
+        },
+        {
+          "criterio": "Presidente no ejecutivo, o consejero coordinador independiente",
+          "resultado": "Cumple",
+          "valor": "No ejecutivo"
+        },
+        {
+          "criterio": "Comisión de auditoría con mayoría de independientes y presidida por uno",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Ningún consejero «otro externo» con más de 12 años",
+          "resultado": "Cumple",
+          "valor": "Ninguno"
+        },
+        {
+          "criterio": "Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses",
+          "resultado": "Cumple",
+          "valor": "0 cambios"
+        },
+        {
+          "criterio": "Peor voto a favor a la reelección de presidente o primer ejecutivo (3 juntas) ≥ 80 %",
+          "resultado": "Cumple",
+          "valor": "96,9 % a favor (no se vota la remuneración)"
+        },
+        {
+          "criterio": "Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Una acción, un voto, sin blindajes ni límites de voto estatutarios",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Sin operaciones vinculadas relevantes",
+          "resultado": "Cumple",
+          "valor": "No hay"
+        },
+        {
+          "criterio": "Auditor con 10 años o menos en el cargo",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Opinión de auditoría sin salvedades",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Directivos compradores netos en 12 meses (o sin ventas relevantes)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        }
+      ],
+      "puntuacion": "8 de 13 (4 sin dato)",
+      "puntuacion_pct": 62,
+      "compras_insiders": 0,
+      "ventas_insiders": 0
+    },
+    "competidores_margen": [
+      {
+        "nombre": "Hoya",
+        "margen_ebit_pct": 29.1
+      },
+      {
+        "nombre": "AGC",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Shin-Etsu Chemical",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "EssilorLuxottica",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Olympus",
+        "margen_ebit_pct": null
+      }
+    ],
+    "sintesis": {
+      "formato_eje": "#,##0",
+      "rangos": [
+        {
+          "metodo": "Cotización 52 semanas",
+          "etiqueta": "Cotización 52 semanas (21.040,00 – 30.400,00)",
+          "min": 21040,
+          "central": 25055,
+          "max": 30400,
+          "gris": true
+        },
+        {
+          "metodo": "Precio objetivo de los analistas",
+          "etiqueta": "Precio objetivo de los analistas (22.000,00 – 31.500,00)",
+          "min": 22000,
+          "central": 27771,
+          "max": 31500,
+          "gris": true
+        },
+        {
+          "metodo": "Comparables: PER NTM",
+          "etiqueta": "Comparables: PER NTM (12.102,30 – 18.588,50)",
+          "min": 12102.3,
+          "central": 14079.8,
+          "max": 18588.5,
+          "gris": false
+        },
+        {
+          "metodo": "DCF (WACC y g ± 0,5)",
+          "etiqueta": "DCF (WACC y g ± 0,5) (15.715,66 – 20.933,38)",
+          "min": 15715.66,
+          "central": 17859.1,
+          "max": 20933.38,
+          "gris": false
+        },
+        {
+          "metodo": "Escenarios (bajista – alcista)",
+          "etiqueta": "Escenarios (bajista – alcista) (12.845,23 – 21.124,49)",
+          "min": 12845.23,
+          "central": 17421.98,
+          "max": 21124.49,
+          "gris": false
+        },
+        {
+          "metodo": "DCF con la prima del mercado",
+          "etiqueta": "DCF con la prima implícita del mercado (4,2 %)",
+          "min": 20173.19,
+          "central": 22386.54,
+          "max": 25180.32
+        },
+        {
+          "metodo": "Precio actual",
+          "etiqueta": "Precio actual (25.055,00)",
+          "min": 24929.73,
+          "central": 25055,
+          "max": 25180.28,
+          "gris": true
+        }
+      ],
+      "tabla": [
+        {
+          "metodo": "DCF",
+          "valor": 17859.1,
+          "peso_pct": 50,
+          "potencial_pct": -28.7
+        },
+        {
+          "metodo": "Comparables (mediana EV/EBITDA y PER)",
+          "valor": 14079.8,
+          "peso_pct": 20,
+          "potencial_pct": -43.8
+        },
+        {
+          "metodo": "Escenarios ponderados",
+          "valor": 17421.98,
+          "peso_pct": 30,
+          "potencial_pct": -30.5
+        }
+      ],
+      "valor_objetivo": 16972.1,
+      "potencial_pct": -32.3
+    },
+    "fuentes": {
+      "n_fuentes": 42,
+      "n_primarias": 9,
+      "por_tipo": [
+        {
+          "tipo": "Primaria",
+          "num": 9
+        },
+        {
+          "tipo": "Datos de mercado",
+          "num": 19
+        },
+        {
+          "tipo": "Prensa",
+          "num": 5
+        },
+        {
+          "tipo": "Analistas",
+          "num": 5
+        },
+        {
+          "tipo": "Sectorial",
+          "num": 1
+        },
+        {
+          "tipo": "Foros y redes",
+          "num": 3
+        }
+      ],
+      "n_citadas": 41,
+      "citas_sin_fuente": [],
+      "fuentes_sin_citar": [
+        "7"
+      ]
+    },
+    "controles": [
+      {
+        "control": "DCF inverso calculable",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Puente de ingresos (volumen + precio + otros) = crecimiento del DCF",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "resultado": "OK",
+        "detalle": "Supuesto 14,0 % frente a 14,0 % real: genera una variación de circulante de 12.808 M en el primer año. Converge de forma gradual."
+      },
+      {
+        "control": "Peso del valor terminal ≤ 80 % del valor empresa",
+        "resultado": "OK",
+        "detalle": "63 %."
+      },
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "resultado": "OK",
+        "detalle": "2,50 %."
+      },
+      {
+        "control": "Probabilidades de los escenarios suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 5 comparables",
+        "resultado": "OK",
+        "detalle": "7 comparables."
+      },
+      {
+        "control": "Pesos de la síntesis suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Múltiplos del objetivo a 12 m según la regla común",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Objetivo 12 m frente al consenso",
+        "resultado": "OK",
+        "detalle": "El base se separa un -1,4 % del objetivo medio de los analistas: explícalo en diferencia_consenso (nunca se acerca la cifra)."
+      },
+      {
+        "control": "Recomendación coherente con la regla de decisión",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "La síntesis explica la convicción",
+        "resultado": "OK",
+        "detalle": "La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría."
+      },
+      {
+        "control": "Al menos 25 fuentes",
+        "resultado": "OK",
+        "detalle": "42 fuentes (9 primarias)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "resultado": "Explicado",
+        "detalle": "9. Explicación: Sin acceso a la web de HOYA ni a EDINET, la mayoría de las cifras salen de agregadores citados; las primarias usadas son el comunicado de FY2026, el informe anual de FY2025, la convocatoria de la junta, el informe de gobierno, las notas de recompra y el bono del Ministerio de Hacienda."
+      },
+      {
+        "control": "Toda cita [n] existe en fuentes",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Fuentes sin citar ≤ 15 %",
+        "resultado": "OK",
+        "detalle": "Sin citar: 7."
+      }
+    ],
+    "controles_resumen": "15 de 16 controles correctos y 1 explicados"
+  }
+}
