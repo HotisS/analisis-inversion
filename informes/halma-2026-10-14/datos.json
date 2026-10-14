@@ -1,0 +1,4030 @@
+{
+  "meta": {
+    "fecha_corte": "2026-10-14",
+    "divisa": "GBP",
+    "divisa_cotizacion": "GBP",
+    "tipo_cambio": 1,
+    "unidades": "millones",
+    "cierre_ejercicio_mes": 3,
+    "etiqueta_ejercicio": "fin",
+    "normas_contables": "NIIF (UK-adopted IAS)",
+    "formato_cuenta": "funcion",
+    "limitaciones": "Análisis hecho desde la nube con la red limitada a la búsqueda web: halma.com, la bolsa de Londres, Yahoo y los proveedores de datos no se pudieron abrir, así que las cifras salen de extractos de búsqueda de las notas de resultados (RNS) y de agregadores, cruzadas cuando fue posible; la confianza es menor que en un análisis normal y lo que no cuadró está en null y en los huecos. Precio: último cierre con fecha encontrado, 36,34 GBP (3.634 p) el 24 de septiembre de 2026; no se encontró una cotización de octubre [34]. Cuentas en GBP con NIIF; ejercicio cerrado en marzo y nombrado por el año en que termina (FY2026 = abril de 2025 a marzo de 2026). La cuenta usa el beneficio estatutario (con la amortización de los intangibles comprados); el EBITDA solo está para FY2026 (656,8 M, TipRanks) y su amortización se deriva por diferencia [12]. Balance y flujos incompletos: el balance solo tiene FY2026 y la deuda financiera es derivada (deuda neta publicada de 769 M + caja de 189,8 M) [11, 14, 20]; los flujos de Weiss Ratings vienen en dólares y se convirtieron a 1,321 USD/GBP [21, 22]. Al no tener el circulante del balance, la inversión en circulante del DCF va dentro del capex (17 % de las ventas nuevas). El PER histórico usa el precio de marzo de la línea HLMAF en dólares convertido a libras.",
+    "controles_explicados": [
+      {
+        "control": "Objetivo 12 m frente al consenso",
+        "explicacion": "Nuestro base (39,31 GBP) queda un 18,3 % por debajo del objetivo medio de MarketBeat (48,09 GBP): el BPA es casi el del consenso (1,25 GBP en FY2028e frente a 1,26); la diferencia es el múltiplo (29,1 veces, el actual, frente a ≈ 36 que implica ese objetivo). Además, ese objetivo medio no se ha podido contrastar y los bancos citados van de 30,50 a 46,00 GBP."
+      },
+      {
+        "control": "Sección de núcleo con datos: rentabilidad",
+        "explicacion": "Sin balance histórico el motor solo calcula el ROIC del último año (13,0 %); el texto usa además el ROTIC que publica la empresa (16,2 %)."
+      }
+    ],
+    "huecos": [
+      {
+        "seccion": "financieros",
+        "campo": "coste de ventas, gastos generales, EBITDA y amortizaciones FY2022-FY2025; gastos financieros",
+        "tipo": "Núcleo",
+        "intentos": "1) nota de resultados de cada ejercicio en halma.com: la búsqueda solo devuelve las cifras de cabecera; 2) Stock Analysis, Stockopedia y Weiss Ratings: series parciales y en divisas distintas; 3) derivar el EBITDA con la amortización: no publicada en los extractos; entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido; EBITDA FY2026 de TipRanks (656,8 M) y amortización derivada como EBITDA − EBIT estatutario (incluye partidas de adquisiciones): estimación"
+      },
+      {
+        "seccion": "balance",
+        "campo": "balance FY2022-FY2025 y partidas de circulante de FY2026 (existencias, clientes, proveedores), vencimientos de deuda",
+        "tipo": "Núcleo",
+        "intentos": "1) informes anuales en halma.com: sin acceso a los PDF; 2) Weiss Ratings y Digrin: cifras en dólares de la línea OTC y discrepantes (activo total 3.710 M frente a 4.900 M); 3) búsqueda del balance consolidado en las notas de resultados: no aparece en los extractos; entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido; FY2026 con activo, pasivo y patrimonio del ESEF (FinancialFilings), caja y arrendamientos de Digrin y deuda financiera derivada (deuda neta publicada de 769 M + caja 189,8 M = 958,8 M, estimación)"
+      },
+      {
+        "seccion": "flujos",
+        "campo": "adquisiciones, dividendos y pagos de arrendamientos FY2022-FY2025",
+        "tipo": "Núcleo",
+        "intentos": "1) estados de flujos de los informes anuales: sin acceso; 2) Stockopedia: flujo operativo y capex, sin compras ni dividendos; 3) Weiss Ratings (en dólares): convertido con el tipo del Banco de Inglaterra al cierre solo para FY2025-26; entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido; FY2026 compras (570,3 M USD) y dividendos (119,8 M USD) convertidos a 1,321 USD/GBP; FY2025 dividendos 107,0 M USD a 1,289 (estimación)"
+      },
+      {
+        "seccion": "negocio",
+        "campo": "ingresos y resultado por sector (Seguridad, Salud) e historia de 5 años; geografías",
+        "tipo": "Núcleo",
+        "intentos": "1) nota de resultados FY2026 en halma.com: el extracto solo da Medio ambiente y análisis (1.040 M, +34 %); 2) resumen de la conferencia (Nasdaq) y prensa (ii, AJ Bell): sin cifras por sector ni por país; 3) aproximar con resultados anteriores: los sectores se reorganizaron y no hay series homogéneas; entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido; Seguridad y Salud se presentan agregados por diferencia"
+      },
+      {
+        "seccion": "calidad",
+        "campo": "auditor y años en el cargo",
+        "tipo": "Complemento",
+        "intentos": "1) informe anual FY2026: sin acceso; 2) búsqueda «Halma auditor»: sin resultado fiable; 3) notas de prensa de nombramiento: no encontradas; entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sector",
+        "campo": "tamaño y crecimiento del mercado (dos fuentes), CR5",
+        "tipo": "Núcleo",
+        "intentos": "1) informe anual de Halma (mercados por sector): sin acceso; 2) estudios de mercado de detección de gases, incendios y fotónica: perímetros que no corresponden al grupo; 3) estimación por suma de nichos: sin datos fiables; entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "competencia",
+        "campo": "ingresos, cuota y margen EBIT de los competidores",
+        "tipo": "Núcleo",
+        "intentos": "1) informes anuales de AMETEK, Roper, Spirax y Rotork: sin acceso; 2) Stock Analysis y MarketScreener: solo múltiplos en los extractos; 3) prensa: sin cifras comparables; entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido; se dan los competidores sin cifras"
+      },
+      {
+        "seccion": "esg",
+        "campo": "calificaciones ESG (MSCI, Sustainalytics, CDP)",
+        "tipo": "Complemento",
+        "intentos": "1) informe de sostenibilidad de Halma: sin acceso; 2) búsqueda de calificaciones: sin resultados fechados; 3) proveedores ESG: requieren registro; entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "composición completa del consejo, presidente, comisiones y antigüedad",
+        "tipo": "Núcleo",
+        "intentos": "1) informe anual FY2026 (gobierno corporativo): sin acceso; 2) resultado de la junta de 2026: solo el rango de votos de reelección; 3) prensa y agregadores (Simply Wall St, MarketScreener): extractos sin la lista; entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido; se dan el primer ejecutivo y el consejero con menos apoyo en la junta"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "participaciones significativas (TR-1) y autocartera",
+        "tipo": "Núcleo",
+        "intentos": "1) TR-1 del 24-jun-2026 en el RNS: la búsqueda da el título, no el contenido; 2) Simply Wall St y TipRanks: nombres sin porcentajes coherentes; 3) Fidelity (datos de 2025): cifras incoherentes; entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "directivos",
+        "campo": "director financiero, participación del primer ejecutivo y remuneración de FY2026",
+        "tipo": "Núcleo",
+        "intentos": "1) informe de remuneraciones FY2026: sin acceso; 2) MarketScreener (ficha de Marc Ronchetti): sin participación en el extracto; 3) prensa de la junta de 2026: sin cifra; entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "identificacion",
+        "campo": "precio de cierre del 13-oct-2026",
+        "tipo": "Núcleo",
+        "intentos": "1) bolsa.mjs (Yahoo HLMA.L): sin red; 2) búsquedas de la cotización de octubre (AJ Bell, Halifax, InvestSmart, eToro, LSE): páginas sin fecha o de agosto; 3) crónicas de mercado de octubre: no mencionan Halma; entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Se usa el último precio con fecha encontrado: 3.634 p el 24-sep-2026 (estimación del precio de hoy)"
+      },
+      {
+        "seccion": "bolsa",
+        "campo": "rentabilidades, beta, volatilidad, caída máxima, posición corta",
+        "tipo": "Complemento",
+        "intentos": "1) bolsa.mjs: sin red; 2) WebFetch a Yahoo: bloqueado; 3) búsquedas de la beta y de la posición corta (FCA): sin cifras fechadas; entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido; beta del WACC estimada (ver dcf.justificacion)"
+      },
+      {
+        "seccion": "multiplos_historicos",
+        "campo": "precios de cierre en peniques FY2018-FY2023",
+        "tipo": "Complemento",
+        "intentos": "1) bolsa.mjs: sin red; 2) búsqueda de cierres de marzo en GBp: no aparecen; 3) HLMAF (USD) de Digrin con el tipo de cambio de cada cierre: tipo de 2022 y 2023 no encontrado; entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido; FY2024-26 derivados de HLMAF en USD con el tipo de cambio (estimación)"
+      },
+      {
+        "seccion": "comparables",
+        "campo": "capitalización, EV/EBITDA, crecimiento, margen y ROIC de los comparables a la misma fecha",
+        "tipo": "Núcleo",
+        "intentos": "1) MarketScreener de cada comparable: solo PER en los extractos; 2) Yahoo, Benzinga, Dividend.watch: múltiplos sueltos de fechas distintas (junio-octubre); 3) Stock Analysis: sin acceso; entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido; comparables solo con PER de los próximos 12 meses"
+      },
+      {
+        "seccion": "consenso",
+        "campo": "estimaciones FY2029e y segunda fuente de estimaciones",
+        "tipo": "Complemento",
+        "intentos": "1) página de consenso de Halma: datos de julio de 2025; 2) MarketScreener: solo FY2027-28 con cifras; 3) Investing y Stockopedia: cifras sin ejercicio claro; entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sentimiento",
+        "campo": "Reddit, Stocktwits, LSE Chat y ADVFN",
+        "tipo": "Complemento",
+        "intentos": "1) búsqueda de hilos de r/UKInvesting sobre Halma: sin resultados; 2) Stocktwits y LSE Chat: sin páginas en los resultados de búsqueda; 3) Motley Fool UK (2026): sin artículos en los resultados; entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido; se usan columnas con comentarios y plataformas de particulares"
+      },
+      {
+        "seccion": "rentabilidad",
+        "campo": "ROIC histórico y ROIC incremental FY2022-25",
+        "tipo": "Núcleo",
+        "intentos": "1) balance de los informes anuales: sin acceso (entorno nube); 2) ROTIC de las notas de resultados: solo FY2026 (16,2 %); 3) agregadores (Stock Analysis, Weiss): sin capital invertido coherente",
+        "decision": "Omitido; ROIC del último año y ROTIC publicado en el texto"
+      }
+    ]
+  },
+  "identificacion": {
+    "nombre": "Halma plc",
+    "nombre_corto": "Halma",
+    "ticker": "HLMA",
+    "isin": "GB0004052071",
+    "mercado": "London Stock Exchange (Main Market)",
+    "indice_referencia": "FTSE 100",
+    "pais": "Reino Unido",
+    "pais_iso": "GB",
+    "sector": "Tecnología de la información / Industria",
+    "industria": "Equipos e instrumentos electrónicos",
+    "sede": "Amersham (Inglaterra)",
+    "fundacion": "1894",
+    "empleados": null,
+    "web": "www.halma.com",
+    "precio": 36.34,
+    "fecha_precio": "2026-09-24",
+    "acciones": 378,
+    "capitalizacion_publicada": null,
+    "free_float_pct": null,
+    "max_52s": 49.02,
+    "min_52s": 31.94,
+    "volumen_medio_diario": null,
+    "proximos_resultados": "2026-11-19"
+  },
+  "resumen": {
+    "recomendacion": "Mantener",
+    "conviccion": "Media",
+    "justificacion_recomendacion": null,
+    "horizonte": "12 meses",
+    "sintesis": "**La recomendación y por qué.** Mantener, con convicción media. Con nuestro BPA y el PER de la regla común, el objetivo a 12 meses es de 38,23 GBP frente a 36,34 GBP (último cierre con fecha, 24 de septiembre): +5,9 % con el dividendo y +8,9 % en el caso base, lejos del 15 % y el 12 % que pide una compra. El valor intrínseco es de 19,39 GBP, un 46,6 % por debajo del precio, y el objetivo medio de los analistas (48,09 GBP) queda entre nuestro base (39,31) y nuestro alcista (51,69). La razón principal: Halma es un negocio excelente a un precio que solo se sostiene si el mercado sigue pagando 29 veces el beneficio. La convicción es media y no alta porque las cifras salen de extractos de búsqueda y el balance está incompleto; subiría si los resultados del 19 de noviembre confirman una fotónica por encima del 25 % sin perder margen, y bajaría si el gilt supera el 5,5 %.\n\n**El negocio.** Unas 50 filiales líderes en nichos regulados de seguridad, medio ambiente y salud, con un margen EBIT ajustado del 23,0 % y 23 años seguidos de beneficio récord [1, 23]. El ROIC estatutario (13,0 %) supera al WACC (9,61 %) en 3,4 puntos, menos de los 5 que pedimos a un compounder: Halma paga sus compras a 5-8 veces las ventas [16, 17]. Sostenibilidad: «en parte». La calidad sostiene el crecimiento orgánico, pero no el 9 % que proyectábamos al principio: lo rebajamos al 7,5 % para que la reinversión lo financie. La fotónica (un cliente de hiperescala, ≈ 20 % de los ingresos) es a la vez el motor y el mayor riesgo [15].\n\n**Finanzas.** Ingresos de 2.582,3 M en FY2026 (+15 %), BPA estatutario de 0,9857 GBP (+26 %) y conversión de caja del 93 % [1]. Casi toda la caja libre se reinvierte en compras (447 M en FY2026 y 515 M en FY2027 hasta septiembre); la deuda neta, de 769 M, ronda una vez el EBITDA [7, 14].\n\n**Valoración.** El DCF da 13,91 GBP: el precio descuenta un crecimiento del 16,6 % anual durante diez años, frente al 6,4 % de nuestro base, o una rentabilidad anual del 6,2 %, por debajo del WACC y del 8,6 % que pide el mercado. Los múltiplos quedan más cerca: PER de 29,9 veces frente a 27,45 de mediana de los comparables (33,32 GBP) y 36,9 veces el BPA de los últimos 12 meses frente a una media de 33,3 [46, 48]. Nuestro BPA coincide con el consenso (1,25 GBP en FY2028e frente a 1,26) [38]; discrepamos en el múltiplo.\n\n**Riesgos y catalizadores.** Primero, que el cliente de fotónica diversifique proveedores: el bajista a 12 meses pierde un 23,8 %. Segundo, el bono británico (5,35 %) y cuatro subidas de tipos descontadas [45]. Catalizadores: resultados del 1S el 19 de noviembre y la guía de FY2028 en junio de 2027, el mismo momento que en 2026 hundió la acción un 15 % [14]. Los foros están divididos y empeoran desde junio: la conversación pasó de la calidad a la dependencia de la fotónica, lo mismo que vemos nosotros [24, 62].\n\n**Qué cambiaría la decisión.** Compraríamos por debajo de 19,39 GBP, donde el precio cae por debajo del valor intrínseco, y venderíamos por encima de 42,75 GBP. Subiríamos la recomendación si el ROTIC se mantiene por encima del 16 % con compras a menos de 5 veces las ventas y la fotónica supera el 25 %, y la bajaríamos si el cliente de hiperescala pasa a pesar menos del 15 % sin otro que lo sustituya.",
+    "tesis": "Halma es un grupo de unas 50 empresas que lideran nichos regulados de seguridad, medio ambiente y salud. Su modelo (filiales autónomas, márgenes EBIT ajustados del 23 %, compras pequeñas pagadas con la caja) ha dado 23 años seguidos de beneficio récord y un crecimiento de ingresos del 14,1 % anual desde FY2022, impulsado en 2025-26 por la fotónica para un cliente de hiperescala [1, 15].\n\nEl precio (36,34 GBP) paga 29,9 veces el BPA de los próximos 12 meses y 22,3 veces el EBITDA. Con un bono británico del 5,35 % y un WACC del 9,61 %, el DCF inverso exige un crecimiento del 16,6 % anual durante diez años: más que el año récord de la fotónica. El DCF da 13,91 GBP y el valor ponderado 19,39 GBP [45].\n\nEl mercado acierta en la calidad y paga por la continuidad: lleva años pagando más de 30 veces el beneficio de Halma. Para invertir hay que creer que las compras seguirán rindiendo como en su historia y que la fotónica no depende de un solo cliente. Nuestro BPA coincide con el consenso; lo que no compartimos es el múltiplo con tipos del 5 %. A 12 meses el múltiplo actual da +5,9 %: no compensa el riesgo.",
+    "vision_diferencial": {
+      "mercado_descuenta": "Que Halma mantiene un crecimiento de doble dígito y un PER cercano a 30 veces durante años, como en su historia, y que la fotónica es un motor duradero. Los analistas tienen un objetivo medio de 48,09 GBP y una recomendación de compra moderada [37].",
+      "nuestra_vision": "El BPA del consenso es razonable (1,25-1,26 GBP en FY2028e), pero el crecimiento sostenible es del 7-7,5 % (mitad comprado) y las compras se pagan cada vez más caras. Con el bono británico por encima del 5 %, el múltiplo no tiene recorrido al alza.",
+      "por_que": "Las compras de FY2026-27 se han pagado a 4,7-8,4 veces las ventas, más que el múltiplo al que cotiza el grupo, y el ROIC estatutario (13,0 %) está solo 3,4 puntos por encima del WACC [16, 17]. La concentración en un cliente (≈ 20 %) no se paga con descuento."
+    },
+    "a_favor": [
+      "**Historial**: 23 años seguidos de beneficio récord y dividendo al alza un 7 % anual [1].",
+      "**Margen en máximos**: EBIT ajustado del 23,0 % y guía de 23,5-24 % para FY2027 [1, 7].",
+      "**Crecimiento**: ingresos +15 % en FY2026 y orgánico de doble dígito bajo guiado para FY2027 [1].",
+      "**Balance**: deuda neta de 769 M, algo más de una vez el EBITDA [14].",
+      "**Nichos regulados**: demanda de reposición por normativa que suaviza el ciclo."
+    ],
+    "en_contra": [
+      "**Precio**: el DCF inverso pide un 16,6 % de crecimiento anual; el valor intrínseco es de 19,39 GBP.",
+      "**Concentración**: un cliente de hiperescala pesa ≈ 20 % de los ingresos [15].",
+      "**Compras caras**: E2S a 5,2 veces las ventas y Dreampath a ≈ 8,4 con el pago aplazado [16, 17].",
+      "**Tipos**: gilt a 10 años del 5,35 %, en máximos de 19 años [45].",
+      "**Ventas de la cúpula**: unos 2 M de ventas de directivos en 12 meses, sin compras [29, 30]."
+    ],
+    "que_vigilar": "La tesis depende de que la fotónica siga creciendo sin que el cliente de hiperescala diversifique proveedores, y de que el mercado mantenga un PER cercano a 29 veces con tipos altos. La señal de que no se cumple: un crecimiento de la fotónica por debajo del 20 % en el 1S FY2027 (19 de noviembre) o un gilt por encima del 5,5 %.",
+    "cambiaria_recomendacion": [
+      "Precio por debajo de 19,39 GBP (valor intrínseco): pasaríamos a Comprar si la rentabilidad a 12 meses supera el 15 %.",
+      "Precio por encima de 42,75 GBP: Vender.",
+      "Fotónica por debajo del 20 % de crecimiento en el 1S FY2027 o pérdida de cuota con el cliente: rebajaríamos el base y probablemente a Vender.",
+      "Gilt a 10 años por debajo del 4,5 % con la guía cumplida: revisaríamos el WACC y el valor intrínseco al alza."
+    ],
+    "kpis_seguimiento": [
+      {
+        "kpi": "Crecimiento de la fotónica",
+        "nivel_actual": "+52 % en FY2026; guía ≈ +30 % en FY2027",
+        "umbral_alerta": "< 20 %",
+        "por_que": "Explica unos 5 puntos del crecimiento del grupo [7]."
+      },
+      {
+        "kpi": "Peso del cliente de hiperescala",
+        "nivel_actual": "≈ 20 % de los ingresos",
+        "umbral_alerta": "> 25 % o caída por debajo del 15 % sin sustituto",
+        "por_que": "Riesgo de concentración [15]."
+      },
+      {
+        "kpi": "Margen EBIT ajustado",
+        "nivel_actual": "23,0 % (guía FY2027: 23,5-24 %)",
+        "umbral_alerta": "< 22 %",
+        "por_que": "Base del BPA de los escenarios [1]."
+      },
+      {
+        "kpi": "ROTIC ajustado",
+        "nivel_actual": "16,2 %",
+        "umbral_alerta": "< 15 %",
+        "por_que": "Mide si las compras siguen creando valor [1]."
+      },
+      {
+        "kpi": "Gilt a 10 años",
+        "nivel_actual": "≈ 5,35 %",
+        "umbral_alerta": "> 5,5 %",
+        "por_que": "Mueve el WACC y el múltiplo [45]."
+      }
+    ],
+    "confianza": "Baja"
+  },
+  "historia": {
+    "resumen": "Halma nació en 1894 en Malasia como Halma Tea Plantations y en los años setenta se convirtió en un grupo industrial británico de empresas de seguridad y detección compradas una a una [23]. Su modelo es descentralizado: unas 50 filiales con dirección propia, agrupadas en tres sectores (Seguridad, Medio ambiente y análisis, Salud), y un centro pequeño que compra empresas de nicho y reasigna la caja [1, 23]. Andrew Williams la dirigió de 2005 a 2023; Marc Ronchetti, antes director financiero, es el cuarto primer ejecutivo en 50 años [23]. En 2025-26 la fotónica para centros de datos convirtió un negocio de crecimiento medio en uno que crece al 15 % [1, 15].",
+    "hitos": [
+      {
+        "anio": "1894",
+        "hito": "Fundación como Halma Tea Plantations (Malasia) [23]."
+      },
+      {
+        "anio": "1972",
+        "hito": "Primeras compras industriales en el Reino Unido: nace el grupo de seguridad y detección [23]."
+      },
+      {
+        "anio": "2005",
+        "hito": "Andrew Williams, primer ejecutivo; Halma acelera las compras de nichos de salud y medio ambiente [23]."
+      },
+      {
+        "anio": "2022",
+        "hito": "Venta de Texecom con una plusvalía de 34,0 M [23]."
+      },
+      {
+        "anio": "2023",
+        "hito": "Marc Ronchetti sustituye a Andrew Williams como primer ejecutivo [23]."
+      },
+      {
+        "anio": "2025",
+        "hito": "La fotónica para un cliente de hiperescala dispara el crecimiento: Medio ambiente y análisis crece un 19 % orgánico en FY2025 [2, 15]."
+      },
+      {
+        "anio": "2026",
+        "hito": "Primer año con más de 2.500 M de ingresos; compra de E2S (230 M) y récord de 447 M en compras [1]."
+      },
+      {
+        "anio": "2026",
+        "hito": "Junio: la guía de fotónica (+30 % frente a +52 %) hunde la acción un 15 % en un día [24]."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "negocio": {
+    "segmentos": [
+      {
+        "nombre": "Medio ambiente y análisis",
+        "descripcion": "Fotónica, análisis óptico, agua y calidad ambiental; incluye el negocio de fotónica que vende a un gran cliente de centros de datos.",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "FY2026",
+            "ingresos": 1040,
+            "resultado": null
+          }
+        ]
+      },
+      {
+        "nombre": "Seguridad y Salud (agregado)",
+        "descripcion": "Seguridad (detección de incendios y gases, seguridad de personas, control de acceso) y Salud (diagnóstico, oftalmología, sensores médicos); agregados por diferencia porque no se encontraron sus ingresos por separado.",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "FY2026",
+            "ingresos": 1542.3,
+            "resultado": null
+          }
+        ]
+      }
+    ],
+    "geografias": [],
+    "geografias_criterio": null,
+    "kpis": [
+      {
+        "kpi": "Crecimiento orgánico a tipo constante",
+        "valor_anterior": "FY2025: ≈ +8 %",
+        "valor_actual": "FY2026: ≈ +15 %",
+        "variacion": "≈ +7 p.p.",
+        "comentario": "La guía de marzo de 2026 pedía un crecimiento orgánico de la mitad de la decena; la fotónica aportó unos 8 puntos [8, 14]."
+      },
+      {
+        "kpi": "Margen EBIT ajustado",
+        "valor_anterior": "FY2025: 21,6 %",
+        "valor_actual": "FY2026: 23,0 % (22,7 % sin extraordinarios)",
+        "variacion": "+1,4 p.p.",
+        "comentario": "Guía FY2027 elevada el 24-sep-2026 a 23,5-24 % [1, 7]."
+      },
+      {
+        "kpi": "Rentabilidad sobre el capital total invertido (ROTIC ajustado)",
+        "valor_anterior": "FY2025: n.d.",
+        "valor_actual": "FY2026: 16,2 %",
+        "variacion": null,
+        "comentario": "Indicador propio de la empresa, después de impuestos y con el fondo de comercio histórico añadido [1]."
+      },
+      {
+        "kpi": "Conversión de caja ajustada",
+        "valor_anterior": "FY2025: 112 %",
+        "valor_actual": "FY2026: 93 %",
+        "variacion": "−19 p.p.",
+        "comentario": "Objetivo de la empresa: 90 % [1]."
+      },
+      {
+        "kpi": "Peso del gran cliente de centros de datos (fotónica)",
+        "valor_anterior": "FY2025: ≈ 15 %",
+        "valor_actual": "FY2026: ≈ 20 %",
+        "variacion": "+5 p.p.",
+        "comentario": "Un solo cliente de hiperescala, no nombrado por la empresa, pesa en torno al 20 % de los ingresos del grupo [13, 15]."
+      },
+      {
+        "kpi": "Inversión en compras",
+        "valor_anterior": "FY2026: 447 M (5 compras)",
+        "valor_actual": "FY2027 hasta 24-sep: 515 M (6 compras) y 83 M de ventas",
+        "variacion": null,
+        "comentario": "Récord de compras en el ejercicio en curso [1, 7]."
+      }
+    ],
+    "descripcion": "Halma es un grupo de unas 50 empresas que fabrican equipos de nicho para la seguridad, el medio ambiente y la salud [1, 23]. Seguridad vende detección de incendios y gases, señalización de alarmas, seguridad de puertas y de máquinas a instaladores, constructoras e industria. Medio ambiente y análisis vende fotónica (componentes ópticos para centros de datos), análisis óptico, medición del agua y sensores ambientales; en FY2026 ingresó 1.040 M (+34 %) [13]. Salud vende diagnóstico de laboratorio, oftalmología y sensores para equipos médicos. Los clientes son fabricantes de equipos, laboratorios, hospitales y empresas reguladas; las filiales venden con marca propia y cada una dirige su canal [23].",
+    "como_gana_dinero": "Cada filial lidera un nicho pequeño y regulado (normas de incendio, seguridad industrial, sanidad), donde el producto es una parte pequeña del coste del cliente y el coste de fallar es alto: eso da poder de precios y márgenes EBIT ajustados del 22-23 % [1]. Buena parte de los ingresos es de reposición y mantenimiento por normativa, lo que suaviza el ciclo. El crecimiento combina un orgánico del 5-10 % con compras de nichos pagadas con la caja (447 M en FY2026) [1]. La excepción es la fotónica: crece con la inversión de un solo cliente de hiperescala (≈ 20 % de los ingresos del grupo), más cíclica y concentrada que el resto [13, 15].",
+    "clientes": "La base de clientes es amplia y atomizada en Seguridad y Salud, pero el grupo tiene ya una concentración significativa: un cliente de hiperescala (no nombrado; la prensa apunta a Google) supuso en torno al 20 % de los ingresos de FY2026, frente al 15 % de FY2025 y ≈ 12 % de FY2024 [13, 15, 25]. La relación es de colaboración técnica con propiedad intelectual del cliente, lo que crea dependencia en ambos sentidos [13]. El poder de precios del resto se ve en el margen: el EBIT ajustado pasó del 21,6 % al 23,0 % en un año con inflación de costes, y la guía de FY2027 sube a 23,5-24 % por mezcla y precio [1]. No hay datos de renovación ni de duración de contratos.",
+    "confianza": "Media"
+  },
+  "sector": {
+    "definicion": "Halma no compite en un mercado único sino en decenas de nichos de equipos de seguridad, medición ambiental y tecnología médica, sobre todo en Europa y EE. UU. No se ha encontrado una cifra de tamaño de mercado que corresponda a su perímetro; se usa la descripción cualitativa y los datos de la propia empresa [1, 23].",
+    "tamano": null,
+    "unidad_serie": null,
+    "serie": [],
+    "tcac_historico_pct": null,
+    "tcac_previsto_pct": null,
+    "cr5_pct": null,
+    "estructura": "Fragmentada",
+    "drivers": [
+      {
+        "driver": "Normativa de seguridad, salud y medio ambiente más exigente",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Demanda de reposición obligatoria; crecimiento en los tres sectores en FY2026 [1]."
+      },
+      {
+        "driver": "Inversión en centros de datos (fotónica)",
+        "efecto": "+/−",
+        "horizonte": "Cíclico",
+        "evidencia": "Fotónica +52 % en FY2026 y +30 % guiado para FY2027; un cliente pesa ≈ 20 % [13, 24]."
+      },
+      {
+        "driver": "Envejecimiento y gasto sanitario",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Salud recuperó en la segunda mitad de FY2025 tras la debilidad de los clientes fabricantes [2]."
+      },
+      {
+        "driver": "Tipos de interés y construcción",
+        "efecto": "−",
+        "horizonte": "Cíclico",
+        "evidencia": "La parte de Seguridad ligada a obra nueva sufre con tipos altos (bono británico por encima del 5 %)."
+      },
+      {
+        "driver": "Libra fuerte frente a dólar y euro",
+        "efecto": "−",
+        "horizonte": "Cíclico",
+        "evidencia": "La empresa estima −8 M de ingresos y −2 M de beneficio en FY2027 por divisa [1]."
+      }
+    ],
+    "porter": [
+      {
+        "fuerza": "Rivalidad",
+        "intensidad": 2,
+        "justificacion": "Nichos pequeños con pocos rivales especializados; los márgenes de Halma (23 %) lo reflejan [1]."
+      },
+      {
+        "fuerza": "Poder de los clientes",
+        "intensidad": 3,
+        "justificacion": "Bajo en los nichos regulados; alto en fotónica, donde un cliente pesa ≈ 20 % del grupo [15]."
+      },
+      {
+        "fuerza": "Poder de los proveedores",
+        "intensidad": 2,
+        "justificacion": "Componentes electrónicos y ópticos estándar; sin cuellos de botella declarados (la capacidad no limita, según la dirección) [13]."
+      },
+      {
+        "fuerza": "Amenaza de entrada",
+        "intensidad": 2,
+        "justificacion": "Certificaciones y homologaciones (incendio, ATEX, médico) y marcas reconocidas por los instaladores."
+      },
+      {
+        "fuerza": "Amenaza de sustitutos",
+        "intensidad": 2,
+        "justificacion": "Riesgo tecnológico en fotónica (cambio de arquitectura óptica del cliente); bajo en seguridad y salud."
+      }
+    ],
+    "ciclo": {
+      "posicion": "Expansión",
+      "comentario": "El grupo encadena 23 años de beneficio récord, lo que incluye 2008-09 y 2020, cuando el beneficio ajustado aún subió (FY2021: beneficio ajustado antes de impuestos +4 %) [1, 23]. En 2022 la acción cayó un 31 % por la subida de tipos, sin caída del beneficio. Hoy el ciclo lo marca la inversión en centros de datos, en plena expansión, y la construcción, débil por el bono británico por encima del 5 %."
+    },
+    "regulacion": "La demanda de Seguridad descansa en normas de incendios, gases y seguridad de máquinas (en el Reino Unido, el endurecimiento tras Grenfell con la Building Safety Act de 2022), y la de Salud en la regulación de productos sanitarios (MDR europeo, FDA), que encarece la entrada pero también la certificación de los productos propios. No se han encontrado cambios normativos en tramitación que muevan las cifras a 12 meses.",
+    "tendencias": "Tres tendencias favorecen al grupo: la digitalización de sensores (más contenido electrónico por instalación), la descarbonización (medición de emisiones y agua) y la inversión en centros de datos, que ha llevado a la fotónica a crecer un 52 % en FY2026 [13]. La última es también el riesgo: depende de la arquitectura de un solo cliente, y un cambio de proveedor o de tecnología se notaría en un 20 % de los ingresos [15, 24].",
+    "confianza": "Baja"
+  },
+  "competencia": {
+    "cuota_pct": null,
+    "posicion": "Líder o número dos en muchos nichos pequeños (detección de gases, señalización de alarmas en zonas peligrosas, seguridad de puertas, componentes ópticos); sin cuota de grupo publicada [1, 23].",
+    "competidores": [
+      {
+        "nombre": "AMETEK",
+        "pais": "EE. UU.",
+        "ticker": "AME",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Conglomerado de instrumentación con el mismo modelo de compras de nichos; mucho mayor."
+      },
+      {
+        "nombre": "Roper Technologies",
+        "pais": "EE. UU.",
+        "ticker": "ROP",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Compradora en serie, hoy más de software; referencia de modelo descentralizado."
+      },
+      {
+        "nombre": "Spirax Group",
+        "pais": "Reino Unido",
+        "ticker": "SPX",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Ingeniería de nichos (vapor, bombas); competidor por capital en el FTSE 100."
+      },
+      {
+        "nombre": "Rotork",
+        "pais": "Reino Unido",
+        "ticker": "ROR",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Actuadores de válvulas; coincide en clientes industriales y de agua."
+      },
+      {
+        "nombre": "Honeywell (Building Automation e Industrial Automation)",
+        "pais": "EE. UU.",
+        "ticker": "HON",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Competidor directo en detección de incendios y gases."
+      }
+    ],
+    "foso": {
+      "veredicto": "Estrecho",
+      "tendencia": "Estable",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 0,
+          "evidencia": "No aplica: productos físicos sin red de usuarios."
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 3,
+          "evidencia": "Productos homologados e integrados en instalaciones y equipos del cliente; en fotónica, desarrollo conjunto con la propiedad intelectual del cliente [5]."
+        },
+        {
+          "fuente": "Intangibles (marca, patentes, licencias)",
+          "puntuacion": 3,
+          "evidencia": "Certificaciones (incendio, ATEX, médicas) y marcas de nicho; margen EBIT ajustado del 23 % [1]."
+        },
+        {
+          "fuente": "Ventaja en costes",
+          "puntuacion": 1,
+          "evidencia": "Sin ventaja de coste: filiales pequeñas; el margen viene del precio, no del coste."
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 3,
+          "evidencia": "Nichos demasiado pequeños para atraer a un segundo o tercer competidor grande."
+        }
+      ]
+    },
+    "amenazas": "La amenaza principal es la concentración en un cliente de fotónica: si cambia de tecnología, internaliza la producción o diversifica proveedores, Halma perdería una parte de ≈ 20 % de sus ingresos con un margen probablemente superior a la media [15, 24]. Probabilidad media a tres años. En el resto, el riesgo es pagar más por las compras (E2S a 5,2 veces ventas) y diluir la rentabilidad del capital [1].",
+    "confianza": "Baja"
+  },
+  "financieros": {
+    "cuenta": [
+      {
+        "periodo": "FY2022",
+        "ingresos": 1525.3,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": null,
+        "amortizaciones": null,
+        "ebit": 278.9,
+        "resultado_financiero": 25.5,
+        "bai": 304.4,
+        "impuestos": 60.2,
+        "minoritarios": 0,
+        "beneficio_neto": 244.2,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 0.6454,
+        "dpa": 0.1888,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 378.4
+      },
+      {
+        "periodo": "FY2023",
+        "ingresos": 1852.8,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": null,
+        "amortizaciones": null,
+        "ebit": 308.4,
+        "resultado_financiero": -16.9,
+        "bai": 291.5,
+        "impuestos": 57.2,
+        "minoritarios": 0,
+        "beneficio_neto": 234.3,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 0.6204,
+        "dpa": 0.202,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 377.7
+      },
+      {
+        "periodo": "FY2024",
+        "ingresos": 2034.1,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": null,
+        "amortizaciones": null,
+        "ebit": 367.7,
+        "resultado_financiero": -27.4,
+        "bai": 340.3,
+        "impuestos": 71.5,
+        "minoritarios": 0,
+        "beneficio_neto": 268.8,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 0.7123,
+        "dpa": 0.2161,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 377.4
+      },
+      {
+        "periodo": "FY2025",
+        "ingresos": 2248.1,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": null,
+        "amortizaciones": null,
+        "ebit": 411.2,
+        "resultado_financiero": -26.9,
+        "bai": 384.3,
+        "impuestos": 87.9,
+        "minoritarios": 0,
+        "beneficio_neto": 296.4,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 0.7849,
+        "dpa": 0.2312,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 377.6
+      },
+      {
+        "periodo": "FY2026",
+        "ingresos": 2582.3,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 656.8,
+        "amortizaciones": 136.1,
+        "ebit": 520.7,
+        "resultado_financiero": -30,
+        "bai": 490.7,
+        "impuestos": 118.4,
+        "minoritarios": 0,
+        "beneficio_neto": 372.3,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 0.9857,
+        "dpa": 0.2474,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 377.7
+      }
+    ],
+    "ltm": {
+      "periodo": "LTM mar-26",
+      "fecha_fin": "2026-03-31",
+      "ingresos": 2582.3,
+      "ebitda": 656.8,
+      "ebit": 520.7,
+      "beneficio_neto": 372.3,
+      "bpa": 0.9857,
+      "dpa": 0.2474,
+      "dpa_extraordinario": 0,
+      "fcf": 410,
+      "participadas_en_ebitda": null,
+      "no_recurrentes_en_ebitda": null
+    },
+    "cambios_perimetro": [],
+    "confianza": "Media",
+    "comentario": "Halma ha pasado de 1.525,3 M de ingresos en FY2022 a 2.582,3 M en FY2026, una TCAC del 14,1 %, mitad orgánica y mitad comprada [1, 5]. FY2026 fue excepcional: +15 % de ingresos con un orgánico de la mitad de la decena, del que unos 8 puntos vinieron de la fotónica para un cliente de hiperescala [13, 14]. El margen operativo estatutario subió del 18,3 % al 20,2 % y el EBIT ajustado del 21,6 % al 23,0 % (22,7 % sin extraordinarios): precio, mezcla (fotónica) y apalancamiento operativo [1, 2]. El BPA estatutario creció de 0,6454 a 0,9857 GBP; FY2023 no es comparable porque FY2022 llevaba la plusvalía de 34,0 M de la venta de Texecom [4, 5]. Las cifras de cuenta de FY2022-24 son de Stock Analysis, cuadradas con los BPA de las notas de resultados [3, 9].",
+    "ajustes": "Halma publica un beneficio «ajustado» que excluye la amortización y el deterioro de los intangibles comprados, las partidas de compras (costes, revaluación de pagos aplazados) y las plusvalías de ventas de negocios [1]. La diferencia es grande y recurrente: en FY2026 el EBIT ajustado fue de 594,5 M frente a 520,7 M estatutario (73,8 M, el 2,9 % de las ventas) y el BPA ajustado de 1,1405 GBP frente a 0,9857 [1]. Como Halma compra empresas todos los años, la amortización de lo comprado es un coste recurrente: usamos el beneficio estatutario en la cuenta, en el PER y en el objetivo a 12 meses. FY2026 incluye además 9,3 M de ingresos extraordinarios en el EBIT ajustado (585,2 M sin ellos) [1]."
+  },
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "1S25",
+        "ingresos": 1074.1,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": null,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "2S25",
+        "ingresos": 1174,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": null,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1S26",
+        "ingresos": 1237.4,
+        "crecimiento_pct": 15.2,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": null,
+        "vs_consenso": "Superior"
+      },
+      {
+        "periodo": "2S26",
+        "ingresos": 1344.9,
+        "crecimiento_pct": 14.6,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": null,
+        "vs_consenso": "Superior"
+      }
+    ],
+    "ultima_presentacion": "En los resultados anuales del 11 de junio de 2026 la dirección presentó el 23.º año seguido de beneficio récord: ingresos de 2.582,3 M (+15 %) y EBIT ajustado de 594,5 M (+22 %), por encima del consenso que recopila la propia empresa (567,9 M) [1, 13]. El mensaje cambió respecto a noviembre de 2025: entonces la dirección subía la guía empujada por la fotónica (EBIT ajustado del 1S +26,7 %) [6]; en junio guió un crecimiento orgánico de «doble dígito bajo» para FY2027 y una fotónica que crecerá en torno al 30 % frente al 52 % del año anterior, y la acción cayó un 15 % en el día [14]. Las preguntas se centraron en la dependencia de un único cliente de hiperescala (≈ 20 % de los ingresos), en la visibilidad de sus pedidos y en si la capacidad limitaba; la dirección respondió que la guía refleja la visibilidad de 6-12 meses y que la capacidad no es el límite, sin dar la cifra de pedidos del cliente ni su contrato [13, 18]. El 24 de septiembre la empresa subió la guía de margen EBIT ajustado a 23,5-24 % (desde ≈ 22,7 %), mantuvo la de crecimiento y dijo que los pedidos van por delante de los ingresos [7, 19].",
+    "confianza": "Media"
+  },
+  "balance": {
+    "historico": [
+      {
+        "periodo": "FY2026",
+        "activo_total": 3710,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 1540,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 189.8,
+        "deuda_financiera": 958.8,
+        "arrendamientos": 109.3,
+        "patrimonio_neto": 2170,
+        "minoritarios": 0,
+        "reservas": null
+      }
+    ],
+    "vencimientos": [],
+    "liquidez": "Caja de 189,8 M a 31-mar-2026 [11] y deuda neta (sin arrendamientos) de 769 M, algo más de 1 vez el EBITDA [13, 14]; la empresa financia las compras con su línea de crédito revolvente (E2S se pagó con «líneas existentes») [16].",
+    "rating": "Sin rating público",
+    "coste_deuda_pct": null,
+    "vida_media_anios": null,
+    "confianza": "Baja",
+    "otros_pasivos": "Los pasivos asimilables a deuda más relevantes son los pagos aplazados de compras ligados a resultados: Dreampath lleva hasta 104 M (121 M EUR) pagaderos según los resultados de FY2027-28, que no están en el puente porque la compra es posterior al balance de marzo [17]. No se han encontrado datos de pensiones (Halma tuvo planes de prestación definida en el Reino Unido), covenants ni litigios relevantes en las fuentes accesibles. La deuda es sobre todo una línea de crédito revolvente y colocaciones privadas, sin rating público.",
+    "comentario": "La deuda neta subió de 536 M a 769 M en FY2026 por el récord de compras (447 M) y se mantiene en algo más de una vez el EBITDA, el rango que la empresa considera cómodo [13, 14]. En FY2027 ya lleva 515 M de compras y 83 M de ventas hasta septiembre, más que la caja libre de un semestre, así que la deuda neta probablemente se acerque a 1,3-1,5 veces el EBITDA en septiembre (estimación propia) [7]. Con un patrimonio de 2.170 M y un activo de 3.710 M a marzo de 2026, el balance no limita la estrategia [20]."
+  },
+  "flujos": {
+    "historico": [
+      {
+        "periodo": "FY2022",
+        "flujo_operativo": 237,
+        "capex": null,
+        "pagos_arrendamientos": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "FY2023",
+        "flujo_operativo": 258,
+        "capex": null,
+        "pagos_arrendamientos": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "FY2024",
+        "flujo_operativo": 385,
+        "capex": 51.6,
+        "pagos_arrendamientos": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "FY2025",
+        "flujo_operativo": 492,
+        "capex": 59.4,
+        "pagos_arrendamientos": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 83,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "FY2026",
+        "flujo_operativo": 481,
+        "capex": 71,
+        "pagos_arrendamientos": null,
+        "adquisiciones": 431.7,
+        "desinversiones": null,
+        "dividendos": 90.7,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      }
+    ],
+    "confianza": "Baja",
+    "comentario": "La conversión de caja ajustada fue del 93 % en FY2026, por encima del objetivo del 90 % pero por debajo del 112 % de FY2025, por la inversión en circulante de la fotónica [1, 18]. El flujo operativo de Stockopedia pasó de 237 M en FY2022 a 481 M en FY2026 y el capex fue de 71 M (2,7 % de las ventas): casi todo mantenimiento y capacidad, no hay grandes proyectos [10]. El uso dominante de la caja son las compras: 431,7 M en FY2026 (570,3 M USD en Weiss Ratings) frente a 90,7 M de dividendos; Halma no recompra acciones [21]. Para el DCF eso significa que la caja «libre» de 410 M se reinvierte casi entera en comprar empresas a 4,7-5,2 veces las ventas [16, 17]."
+  },
+  "calidad": {
+    "auditor": null,
+    "anios_auditor": null,
+    "opinion": "Favorable (sin salvedades conocidas)",
+    "confianza": "Baja",
+    "comentario": "No hay señales de manipulación contable en lo accesible: el beneficio estatutario crece con el ajustado y el flujo operativo cubre el beneficio neto (481 M frente a 372,3 M en FY2026) [1, 10]. El riesgo de calidad está en el perímetro: con 5-6 compras al año, el crecimiento orgánico lo calcula la empresa y las revaluaciones de pagos aplazados pasan por las partidas de compras, fuera del beneficio ajustado. El Altman Z del motor (6,51) indica un riesgo de quiebra nulo; el Piotroski F y el Beneish M no se pueden calcular sin balance histórico. La remuneración en acciones no se ha podido cuantificar.",
+    "senales": [
+      {
+        "senal": "Diferencia creciente entre beneficio ajustado y estatutario",
+        "nivel": "Media",
+        "comentario": "73,8 M de EBIT en FY2026 (2,9 % de las ventas) por amortización de intangibles y partidas de compras; recurrente en un comprador en serie [1]."
+      },
+      {
+        "senal": "Concentración de cliente al alza",
+        "nivel": "Media",
+        "comentario": "Un cliente de hiperescala pasa del ≈ 12 % al ≈ 20 % de los ingresos en dos años [13, 15]."
+      },
+      {
+        "senal": "Conversión de caja a la baja",
+        "nivel": "Baja",
+        "comentario": "Del 112 % al 93 %; aún por encima del objetivo del 90 % [1]."
+      }
+    ]
+  },
+  "rentabilidad": {
+    "comentario": "Halma crea valor, pero con menos margen del que sugiere su fama. El ROIC estatutario del motor es del 13,0 % en FY2026, frente a un WACC del 9,61 %: 3,4 puntos de diferencia, por debajo de los 5 que pedimos para un compounder [1]. La empresa publica un ROTIC ajustado del 16,2 %, que suma el beneficio antes de la amortización de lo comprado y el fondo de comercio histórico [1]. El ROIC lo mueve el margen (EBIT ajustado del 23,0 %) más que la rotación, que baja con cada compra pagada a 4,7-5,2 veces las ventas [16, 17]. El ROIC incremental no se puede calcular sin balance histórico; el margen sube y el capital crece con las compras, así que el incremental probablemente esté cerca del 13 %. Frente a la mediana de los comparables, el ROIC es similar al de AMETEK o Indutrade según sus propias cifras públicas, pero no se ha podido verificar.",
+    "confianza": "Baja"
+  },
+  "capital": {
+    "adquisiciones": [
+      {
+        "anio": "FY2026",
+        "objetivo": "E2S Group (señalización de alarmas para zonas peligrosas, Reino Unido)",
+        "importe": 230,
+        "ev_ebitda": null,
+        "financiacion": "Caja y líneas de crédito existentes",
+        "resultado": "Pagada a ≈ 5,2 veces los ingresos previstos de 2025 (≈ 44 M); demasiado reciente para juzgar [16]."
+      },
+      {
+        "anio": "FY2026",
+        "objetivo": "Total de cinco compras del ejercicio",
+        "importe": 447,
+        "ev_ebitda": null,
+        "financiacion": "Caja y deuda",
+        "resultado": "Récord de inversión anual en compras; el EBIT ajustado subió un 22 % en el año [1]."
+      },
+      {
+        "anio": "FY2027",
+        "objetivo": "Dreampath Diagnostics (gestión de muestras de laboratorio)",
+        "importe": 132,
+        "ev_ebitda": null,
+        "financiacion": "Caja; más un pago aplazado de hasta 104 M ligado a resultados de FY2027-28",
+        "resultado": "Pagada a ≈ 4,7 veces los ingresos previstos (28 M) sin contar el pago aplazado; en curso [17]."
+      },
+      {
+        "anio": "FY2027",
+        "objetivo": "Seis compras hasta el 24-sep-2026 (Dreampath incluida) y tres ventas",
+        "importe": 515,
+        "ev_ebitda": null,
+        "financiacion": "Caja, deuda y 83 M de ventas de negocios",
+        "resultado": "Récord; la empresa atribuye a la cartera parte de la subida de la guía de margen [7]."
+      }
+    ],
+    "confianza": "Media",
+    "politica": "Halma prioriza reinvertir en sus filiales y comprar empresas de nicho con márgenes altos; el dividendo sube un 7 % al año desde hace más de 45 años (24,74 p en FY2026) y no hay recompras [1, 2]. La deuda se mantiene en torno a 1-2 veces el EBITDA para tener capacidad de compra. En FY2026 invirtió un récord de 447 M en cinco compras y en FY2027 lleva 515 M en seis, con 83 M de ventas de negocios [1, 7].",
+    "comentario": "La dirección asigna bien el capital en lo que se puede medir: el ROTIC ajustado del 16,2 % supera su objetivo del 12 % y el beneficio ha crecido 23 años seguidos [1]. Pero el precio de las compras sube: E2S a ≈ 5,2 veces las ventas y Dreampath a ≈ 4,7 veces, hasta ≈ 8,4 veces con el pago aplazado, cuando el grupo cotiza a 5,7 veces las ventas [16, 17]. Con un ROIC estatutario del 13,0 % y un WACC del 9,61 %, cada compra crea valor solo si mejora el margen del comprado, algo que Halma ha conseguido históricamente pero no publica compra a compra. Sin recompras, la dilución es nula (acciones estables en ≈ 378 M desde FY2022)."
+  },
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "Marc Ronchetti",
+        "cargo": "Group Chief Executive",
+        "desde": "2023",
+        "participacion_pct": null,
+        "trayectoria": "Director financiero del grupo antes de ser nombrado primer ejecutivo en abril de 2023, el cuarto en 50 años [31]. Con él, los ingresos pasaron de 1.853 M (FY2023) a 2.582 M (FY2026) y el EBIT ajustado creció un 22 % en FY2026 [1]."
+      },
+      {
+        "nombre": "Jennifer Ward",
+        "cargo": "Chief Talent, Culture and Communications Executive",
+        "desde": null,
+        "participacion_pct": null,
+        "trayectoria": "Miembro del comité ejecutivo; vendió 21.393 acciones por 0,78 M en julio de 2026 y 15.000 por 0,51 M en septiembre de 2025 [29, 33]."
+      }
+    ],
+    "historial_guidance": [
+      {
+        "anio": "FY2026",
+        "guia": "Marzo de 2026: crecimiento orgánico de la mitad de la decena y margen EBIT ajustado ≈ 22 % [8]",
+        "real": "Ingresos +15 %, margen EBIT ajustado 23,0 % (22,7 % sin extraordinarios) [1]",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "FY2025",
+        "guia": "Crecimiento orgánico de un dígito alto y margen en el rango de 19-21 % (objetivo de la empresa) [2]",
+        "real": "Ingresos +11 %, beneficio ajustado antes de impuestos +16 % [2]",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "FY2027 (en curso)",
+        "guia": "Junio de 2026: orgánico de doble dígito bajo; margen ≈ 22,7 %; subida el 24-sep-2026 a 23,5-24 % [7]",
+        "real": "Pendiente (resultados del 1S el 19-nov-2026)",
+        "cumplida": "Parcial"
+      }
+    ],
+    "confianza": "Baja",
+    "comentario": "El equipo es estable y promociona desde dentro: Marc Ronchetti, director financiero desde 2018, sustituyó a Andrew Williams en 2023, y es el cuarto primer ejecutivo en 50 años [31]. La guía se ha cumplido o superado en FY2025 y FY2026, y en septiembre de 2026 subió la de margen de FY2027 [2, 7, 8]. Los puntos débiles son la falta de datos sobre la participación de la cúpula y las ventas repetidas de acciones de miembros del comité ejecutivo (unos 2 M en 12 meses, sin compras) [29, 30, 33]."
+  },
+  "gobierno": {
+    "consejo": [
+      {
+        "nombre": "Marc Ronchetti",
+        "cargo": "Group Chief Executive",
+        "tipo": "Ejecutivo",
+        "desde": "2023",
+        "comisiones": null
+      },
+      {
+        "nombre": "Giles Kerr",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": null,
+        "comisiones": null
+      }
+    ],
+    "presidente_ceo_separados": true,
+    "presidente_ejecutivo": false,
+    "consejero_coordinador": null,
+    "una_accion_un_voto": true,
+    "operaciones_vinculadas_relevantes": false,
+    "variable_ligado_rentabilidad": true,
+    "auditoria_independiente": null,
+    "insiders_sin_operaciones": false,
+    "accionista_control": false,
+    "presidente_vinculado_control": false,
+    "cambios_cupula_24m": 0,
+    "voto_remuneracion_pct": 92.79,
+    "voto_remuneracion_contra_pct": 7.21,
+    "voto_remuneracion_contra_libre_pct": null,
+    "voto_cupula_pct": null,
+    "remuneracion_ceo": {
+      "anio": "FY2025",
+      "total": 5,
+      "fijo": 1.01,
+      "variable_corto": 1.8,
+      "variable_largo": 2.2,
+      "ratio_salario_medio": null
+    },
+    "remuneracion": "El primer ejecutivo cobró unos 5,0 M en FY2025 (3,75 M el año anterior), la cifra más alta para el cargo en una década: 1,8 M de bonus anual (95 % del máximo) en efectivo y acciones diferidas y 2,2 M de incentivo a largo plazo con una consolidación del 85,72 % [28]. El salario base subió un 8 %, hasta 1,01 M [28]. El bonus anual depende en un 90 % del beneficio económico (valor económico añadido) frente al promedio de tres años, una métrica que penaliza comprar caro [28]. En la junta de 2026 el informe de remuneración recibió un 7,21 % en contra (4,68 % en 2025 y 4,85 % en 2024): sube la oposición, pero lejos del 20 % [26, 27]. No se ha encontrado la cifra de FY2026 ni las cláusulas de recuperación.",
+    "accionistas": [],
+    "insiders": [
+      {
+        "fecha": "2026-07-23",
+        "persona": "Jennifer Ward (comité ejecutivo)",
+        "operacion": "Venta",
+        "acciones": 21393,
+        "importe": 0.78
+      },
+      {
+        "fecha": "2025-09-25",
+        "persona": "Jennifer Ward (comité ejecutivo)",
+        "operacion": "Venta",
+        "acciones": 15000,
+        "importe": 0.51
+      },
+      {
+        "fecha": "2026",
+        "persona": "Primer ejecutivo de un sector (división)",
+        "operacion": "Venta",
+        "acciones": 17530,
+        "importe": 0.69
+      }
+    ],
+    "control_y_defensas": "Halma no tiene accionista de control ni clases de acciones: una acción, un voto, y un accionariado institucional disperso (los 25 primeros sumaban el 48,4 % a principios de 2026, según Simply Wall St) [32]. No se han encontrado pactos, blindajes ni operaciones vinculadas relevantes. Los consejeros fueron reelegidos con entre el 96,5 % y el 99,4 % a favor en julio de 2026 [26].",
+    "alertas": [
+      "Ventas repetidas de acciones por miembros del comité ejecutivo (unos 2 M en 12 meses), sin compras que las compensen [29, 30, 33].",
+      "El voto en contra del informe de remuneración subió al 7,21 % en 2026 tras una remuneración del primer ejecutivo récord en FY2025 [26, 28]."
+    ],
+    "confianza": "Baja"
+  },
+  "consenso": {
+    "guidance": "Para FY2027 (abril de 2026 a marzo de 2027) la empresa guía un crecimiento orgánico a tipo constante de «doble dígito bajo», con unos 5 puntos de la fotónica (≈ +30 %), y un margen EBIT ajustado del 23,5-24 %, subido el 24 de septiembre de 2026 desde ≈ 22,7 %; la divisa resta unos 8 M de ingresos y 2 M de beneficio [34, 41]. El objetivo de medio plazo es crecer el beneficio un 10 % anual con un margen del 19-21 % (ya superado) y una rentabilidad del capital invertido por encima del 12 % [40, 41].",
+    "estimaciones": [
+      {
+        "periodo": "FY2027e",
+        "ingresos": 2922,
+        "ebitda": 728.1,
+        "ebit": null,
+        "bpa": 1.16,
+        "dpa": 0.279,
+        "fuente": "MarketScreener [38, 39]"
+      },
+      {
+        "periodo": "FY2028e",
+        "ingresos": 3138,
+        "ebitda": 787.7,
+        "ebit": null,
+        "bpa": 1.26,
+        "dpa": 0.297,
+        "fuente": "MarketScreener [38, 39]"
+      }
+    ],
+    "recomendaciones": {
+      "n_analistas": 10,
+      "comprar": 6,
+      "mantener": 3,
+      "vender": 1,
+      "po_medio": 48.09,
+      "po_min": 30.5,
+      "po_max": null
+    },
+    "revisiones": "Tras los resultados de junio las estimaciones subieron: el BPA ajustado de FY2026 (114,05 p) superó el consenso de 110,7 p y el EBIT ajustado el de 567,9 M [41]. La subida de la guía de margen del 24 de septiembre (de ≈ 22,7 % a 23,5-24 %) debería añadir un 3-5 % al beneficio de FY2027 que el consenso de MarketScreener de julio aún no recoge [38]. Los objetivos están muy dispersos: Jefferies 30,50 GBP (vender) y Citi 46,00 GBP (comprar) en junio [37]. Solo una fuente tiene estimaciones completas; el consenso de la propia empresa es de julio de 2025 [40].",
+    "base_ebitda": "NIIF",
+    "ajuste_ebitda_pct_ventas": null,
+    "confianza": "Baja"
+  },
+  "bolsa": {
+    "tipo_rentabilidad": null,
+    "rentabilidades": [],
+    "anual": [],
+    "beta": null,
+    "volatilidad_pct": null,
+    "max_drawdown_pct": null,
+    "posicion_corta_pct": null,
+    "comentario": "La acción tocó un máximo de 49,02 GBP en la primavera de 2026, impulsada por la fotónica, y cayó un 15 % el 11 de junio (hasta ≈ 39,6 GBP) cuando la empresa guió una fotónica que crecerá la mitad que el año anterior [35, 59]. Desde entonces se ha movido entre 34,9 y 36,8 GBP; el 24 de septiembre cotizaba a 36,34 GBP tras subir la guía de margen [34, 61]. Está un 26 % por debajo del máximo de 52 semanas pese a un beneficio por acción que crece más del 20 %: el mercado ha recortado el múltiplo, no las cifras.",
+    "confianza": "Baja"
+  },
+  "multiplos_historicos": {
+    "serie": [
+      {
+        "anio": "FY2024",
+        "precio_cierre": 23.74,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "FY2025",
+        "precio_cierre": 25.9,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "FY2026",
+        "precio_cierre": 37.83,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      }
+    ],
+    "confianza": "Baja",
+    "comentario": "Halma cotiza a 36,9 veces el BPA estatutario de los últimos 12 meses, un 11 % por encima de su media de los tres últimos cierres (33,3 veces) aunque un 26 % por debajo del máximo de la primavera [35, 42]. La prima se explica por el salto del crecimiento (15 % en FY2026) y de la fotónica; el riesgo es que el múltiplo vuelva al de un compounder de crecimiento del 8-10 % mientras el bono británico está por encima del 5 % [45]. Con un precio fiable solo para tres ejercicios, la comparación es frágil."
+  },
+  "comparables": {
+    "empresas": [
+      {
+        "nombre": "AMETEK",
+        "ticker": "AME",
+        "pais": "US",
+        "capitalizacion": 43290,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 31,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "Roper Technologies",
+        "ticker": "ROP",
+        "pais": "US",
+        "capitalizacion": 29840,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": 12.3,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 17.4,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "Rotork",
+        "ticker": "ROR",
+        "pais": "GB",
+        "capitalizacion": null,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 27.7,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "Spirax Group",
+        "ticker": "SPX",
+        "pais": "GB",
+        "capitalizacion": null,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 21.6,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "Indutrade",
+        "ticker": "INDT",
+        "pais": "SE",
+        "capitalizacion": null,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 28,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "Diploma",
+        "ticker": "DPLM",
+        "pais": "GB",
+        "capitalizacion": 9660,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 27.2,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      }
+    ],
+    "confianza": "Baja",
+    "criterio": "Compradores en serie de nichos industriales y de instrumentación de calidad: AMETEK y Roper (EE. UU.), Indutrade (Suecia), Diploma, Spirax y Rotork (Reino Unido). Todas con márgenes altos, ROIC por encima del coste del capital y crecimiento mixto orgánico y comprado. No se incluyen Spectris (excluida de bolsa por KKR) ni Judges u Oxford Instruments, sin datos accesibles [46, 47, 48, 49, 50, 51, 52, 53].",
+    "comentario": "Halma cotiza a 29,9 veces el BPA de los próximos 12 meses del consenso, por encima de la mediana de sus comparables (27,45 veces) y solo por debajo de AMETEK (31,0) [46, 47]. La prima frente a Roper (17,4), Spirax (21,6) y Diploma (27,2) se apoya en un crecimiento previsto del 11,2 % y un margen EBITDA del 25,4 % [48, 49, 50, 51, 52, 53]. Aplicar la mediana de los comparables da 33,32 GBP por acción, un 8 % por debajo del precio. Las cifras son de proveedores y fechas distintas (junio-octubre de 2026): solo el PER es comparable."
+  },
+  "transacciones": {
+    "operaciones": [
+      {
+        "fecha": "2025-07",
+        "objetivo": "Spectris (instrumentos de precisión, Reino Unido)",
+        "comprador": "KKR",
+        "ev": 4700,
+        "ev_ventas": null,
+        "ev_ebitda": 19.5,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "19,5 veces el EBITDA ajustado y 23,0 veces el EBIT ajustado de 2024, según el anuncio de la oferta [54]."
+      },
+      {
+        "fecha": "2025-12",
+        "objetivo": "E2S Group (señalización en zonas peligrosas)",
+        "comprador": "Halma",
+        "ev": 230,
+        "ev_ventas": 5.2,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Libre de caja y deuda; ingresos previstos de 2025 ≈ 44 M [55]."
+      },
+      {
+        "fecha": "2026-07",
+        "objetivo": "Dreampath Diagnostics (gestión de muestras de laboratorio)",
+        "comprador": "Halma",
+        "ev": 132,
+        "ev_ventas": 4.7,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Pago inicial de 154 M EUR sobre ingresos previstos de 33 M EUR; hasta 121 M EUR más ligados a resultados [17]."
+      },
+      {
+        "fecha": "2023-04",
+        "objetivo": "National Instruments (instrumentos de medida, EE. UU.)",
+        "comprador": "Emerson",
+        "ev": 6150,
+        "ev_ventas": 4.9,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Valor de las acciones 8.200 M USD (≈ 6.150 M GBP) sobre ingresos de 2022 de 1.660 M USD; múltiplo de capital, sin la deuda neta [56, 57]."
+      }
+    ],
+    "confianza": "Baja",
+    "comentario": "Las transacciones dicen que el mercado de control paga mucho por estos activos: KKR pagó 19,5 veces el EBITDA de Spectris en 2025 y Halma paga 4,7-5,2 veces las ventas por nichos pequeños [17, 54, 55]. Aplicado a Halma (EV/ventas), da 31,15 GBP por acción, por debajo del precio: a 5,7 veces sus ventas, Halma ya cotiza por encima de lo que paga por sus compras. Es poco probable que sea objeto de una oferta por su tamaño (13.737 M de capitalización), y no ponderamos este método."
+  },
+  "dcf": {
+    "anios": [
+      {
+        "periodo": "FY2027e",
+        "crecimiento_pct": 14,
+        "margen_ebitda_pct": 26,
+        "amortizacion_pct_ventas": 5.2,
+        "capex_pct_ventas": 21.4,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 24.5,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2028e",
+        "crecimiento_pct": 7.5,
+        "margen_ebitda_pct": 26.3,
+        "amortizacion_pct_ventas": 5.2,
+        "capex_pct_ventas": 18.1,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 24.5,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2029e",
+        "crecimiento_pct": 7,
+        "margen_ebitda_pct": 26.5,
+        "amortizacion_pct_ventas": 5.2,
+        "capex_pct_ventas": 18.1,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 24.5,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2030e",
+        "crecimiento_pct": 6.5,
+        "margen_ebitda_pct": 26.5,
+        "amortizacion_pct_ventas": 5.2,
+        "capex_pct_ventas": 18.1,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 24.5,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2031e",
+        "crecimiento_pct": 6,
+        "margen_ebitda_pct": 26.5,
+        "amortizacion_pct_ventas": 5.2,
+        "capex_pct_ventas": 18.1,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 24.5,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2032e",
+        "crecimiento_pct": 5.5,
+        "margen_ebitda_pct": 26.5,
+        "amortizacion_pct_ventas": 5,
+        "capex_pct_ventas": 15.3,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 24.5,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2033e",
+        "crecimiento_pct": 5,
+        "margen_ebitda_pct": 26.5,
+        "amortizacion_pct_ventas": 4.8,
+        "capex_pct_ventas": 12.4,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 24.5,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2034e",
+        "crecimiento_pct": 4.5,
+        "margen_ebitda_pct": 26.5,
+        "amortizacion_pct_ventas": 4.6,
+        "capex_pct_ventas": 9.5,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 24.5,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2035e",
+        "crecimiento_pct": 4,
+        "margen_ebitda_pct": 26.5,
+        "amortizacion_pct_ventas": 4.4,
+        "capex_pct_ventas": 6.5,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 24.5,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2036e",
+        "crecimiento_pct": 3.5,
+        "margen_ebitda_pct": 26.5,
+        "amortizacion_pct_ventas": 4.2,
+        "capex_pct_ventas": 6.5,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 24.5,
+        "fijo": false
+      }
+    ],
+    "wacc": {
+      "tasa_libre_pct": 5.35,
+      "beta": 0.85,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 0,
+      "coste_deuda_pct": 5.5,
+      "tasa_impositiva_pct": 25,
+      "peso_deuda_pct": 7
+    },
+    "terminal": {
+      "metodo": "gordon",
+      "crecimiento_pct": 3,
+      "multiplo_salida": 20
+    },
+    "etapa2": {
+      "usar": false,
+      "anios": 5,
+      "margen_final_pct": null,
+      "justificacion": null
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "FY2027e +14,0 %: la guía de orgánico de doble dígito bajo (≈ 11 %) más ≈ 3 puntos netos de compras (515 M comprados y 83 M vendidos hasta septiembre) y −0,3 puntos de divisa [7, 19]. Después, 7,5 % en FY2028e bajando al 3,5 % en FY2036e: un orgánico de 4-5 % (precio 2,5 % y volumen) más 2,5 puntos de compras que se van reduciendo. Es menos que el consenso (FY2028e +7,4 %) en el primer año y lo rebajamos desde un 9 % para que pase la prueba de sostenibilidad [38]. La TCAC FY2022-26 fue del 14,1 % con la fotónica; no la extrapolamos.",
+      "margenes": "Margen EBITDA del 26,0 % en FY2027e y 26,5 % desde FY2029e, frente al 25,4 % de FY2026: es la guía de margen EBIT ajustado de 23,5-24 % más ≈ 2,4 puntos de amortización propia [7, 12]. El consenso de MarketScreener está en 24,9-25,1 % [38], con otra definición de EBITDA. No suponemos más mejora: el margen ya está por encima del rango histórico de la empresa (19-21 % de EBIT ajustado) gracias a la fotónica.",
+      "inversion": "Capex propio del 3,0 % de las ventas (2,7 % en FY2026) más las compras como inversión: 21,4 % de las ventas en FY2027e (≈ 480 M netos) y, después, 6,0 veces las ventas compradas (E2S 5,2 veces; Dreampath ≈ 8,4 veces con el pago aplazado) [10, 16, 17]. Como el balance no trae el circulante, su inversión (17 % de las ventas nuevas, estimación propia) va dentro del capex. La amortización (5,2 % de las ventas) incluye la de intangibles comprados y converge al 4,2 % al final, por debajo del capex (5,5 %).",
+      "wacc": "Tasa libre del 5,35 %: el gilt a 10 años cerró septiembre por debajo del 5,4 %, cerca de máximos de 19 años [45]. Beta de 0,85 (estimación propia: sin acceso a la serie de cotizaciones; Halma es un valor defensivo del FTSE 100) y prima de mercado del 5,5 %: coste del capital del 10,0 %. Coste de la deuda del 5,5 % antes de impuestos y peso de la deuda del 7 % a valor de mercado. WACC del 9,61 %. Con la prima implícita de Damodaran (4,2 %) baja al 8,6 % [58].",
+      "terminal": "Crecimiento terminal del 3,0 % en libras: 1-1,5 % real más una inflación británica en torno al 2-2,5 %, por debajo de la tasa libre menos medio punto. El método de Gordon con un WACC del 9,61 % implica un múltiplo de salida mucho menor que los 22 veces el EBITDA a los que cotiza hoy: es la diferencia entre lo que el mercado paga por la calidad y lo que justifica la caja con tipos del 5 %."
+    },
+    "sostenibilidad": {
+      "puente_ingresos": [
+        {
+          "periodo": "FY2027e",
+          "volumen_pct": 8.5,
+          "precio_pct": 2.5,
+          "otros_pct": 3,
+          "comentario": "Guía de orgánico de doble dígito bajo con ≈ 5 puntos de fotónica (volumen 8,5 y precio 2,5) más 3 puntos netos de compras [7]."
+        },
+        {
+          "periodo": "FY2028e",
+          "volumen_pct": 3,
+          "precio_pct": 2.5,
+          "otros_pct": 2.5,
+          "comentario": "Fotónica normalizada; orgánico del 5,5 % (precio 2,5 % por poder de precios en nichos regulados) y compras de 2,5 puntos."
+        },
+        {
+          "periodo": "FY2029e",
+          "volumen_pct": 2.5,
+          "precio_pct": 2.5,
+          "otros_pct": 2.5,
+          "comentario": "Orgánico del 5 % y compras de 2,5 puntos, el ritmo histórico de antes de la fotónica [2]."
+        },
+        {
+          "periodo": "FY2030e",
+          "volumen_pct": 2,
+          "precio_pct": 2.5,
+          "otros_pct": 2.5,
+          "comentario": "Orgánico del 4,5 % y compras de 2,5 puntos."
+        },
+        {
+          "periodo": "FY2031e",
+          "volumen_pct": 1.5,
+          "precio_pct": 2.5,
+          "otros_pct": 2.5,
+          "comentario": "Orgánico del 4 % y compras de 2,5 puntos."
+        }
+      ],
+      "mercado_final": null,
+      "veredicto": "En parte",
+      "justificacion": "La calidad sostiene el crecimiento orgánico (poder de precios en nichos regulados, margen EBIT ajustado del 23 %, 23 años de beneficio récord), pero no el crecimiento que pedía nuestro primer caso base. Con un ROIC del 13,0 % y compras pagadas a 5-8 veces las ventas, la reinversión financiaba menos crecimiento del proyectado: rebajamos el base de un 9 % a un 7,5 % en FY2028e y medio punto más en los años siguientes, y subimos el coste de las compras a 6 veces las ventas. Con eso el crecimiento financiable (7,0 %) supera al proyectado (6,4 %) y el capital nuevo rinde un 11,8 %, por debajo del ROIC actual. No hay prueba de cuota: Halma vende en decenas de nichos sin un mercado medible [1]. El «en parte» se debe a la dependencia de la fotónica de un solo cliente."
+    },
+    "lectura": "El DCF da 13,91 GBP por acción, un 61,7 % por debajo del precio, con el 74 % del valor en el terminal. El DCF inverso dice que, para justificar 36,34 GBP con un WACC del 9,61 %, Halma tendría que crecer un 16,6 % anual durante diez años (nuestro base: 6,4 %) o llevar el margen EBITDA al 46,8 %: ninguna de las dos cosas tiene precedente, ni siquiera en el año de la fotónica. Dicho de otra forma, el precio implica una rentabilidad anual del 6,2 %, por debajo del WACC (9,61 %) y de lo que pide hoy el mercado (8,6 %). La razón es doble: el bono británico por encima del 5 % y un modelo que reinvierte casi toda la caja en compras pagadas a 5-8 veces las ventas, que rinden poco más que su coste de capital. El mercado valora Halma como si sus compras rindieran lo que su historia de 23 años; el DCF solo da valor a lo que ya genera.",
+    "confianza": "Baja"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 30,
+        "ajuste_crecimiento_pp": -3,
+        "ajuste_margen_pp": -2,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": 2.5,
+        "multiplo_salida": null,
+        "narrativa": "El cliente de hiperescala diversifica proveedores o cambia de arquitectura óptica y la fotónica cae a la mitad en dos años; Seguridad sufre la construcción con tipos del 5 %. Crecimiento 3 puntos menor y margen EBITDA 2 puntos más bajo, como el de antes de la fotónica (EBIT ajustado del 21,6 % en FY2025) [2]."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "La guía de FY2027 se cumple (orgánico ≈ 11 %, margen EBIT ajustado del 23,5-24 %) y después el crecimiento vuelve a un 7-7,5 % mitad orgánico y mitad comprado, con el margen estable en el nivel actual."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 20,
+        "ajuste_crecimiento_pp": 1.5,
+        "ajuste_margen_pp": 1,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "La fotónica sigue creciendo al 30 % dos años más y Halma gana otros clientes de centros de datos; las compras de FY2027 mejoran su margen. Crecimiento 1,5 puntos mayor y margen 1 punto más alto."
+      }
+    ],
+    "comentario": "La asimetría del valor intrínseco es mala: el alcista vale 17,40 GBP (−52,1 %) y el bajista 7,77 GBP (−78,6 %), así que ni el alcista justifica el precio con nuestro WACC. A 12 meses, con nuestro BPA y el PER de la regla común, la asimetría es de 1,72 veces: el alcista gana un 42,9 % y el bajista pierde un 23,8 %. El bajista es verosímil: es la normalización del margen al de FY2025 y la pérdida de una parte del cliente que pesa ≈ 20 % de los ingresos [15].",
+    "confianza": "Baja"
+  },
+  "suma_partes": {
+    "aplica": false,
+    "descuento_holding_pct": 0,
+    "partes": [],
+    "comentario": "No aplica: los tres sectores tienen perfiles parecidos (nichos regulados, márgenes altos) y no hay ingresos ni beneficios por sector accesibles para valorarlos por separado.",
+    "confianza": "Baja"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2026-03-31",
+      "deuda_financiera": 958.8,
+      "arrendamientos": 109.3,
+      "caja": 189.8,
+      "minoritarios": 0,
+      "pensiones": 0,
+      "asociadas": 0,
+      "otros_ajustes": 0
+    },
+    "rab": null,
+    "referencia_mercado": {
+      "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+      "prima_implicita_pct": 4.2,
+      "fecha": "2026-10",
+      "fuente": "Damodaran, ERPbymonth [58]"
+    },
+    "pesos": {
+      "dcf": 40,
+      "comparables": 30,
+      "transacciones": 0,
+      "suma_partes": 0,
+      "escenarios": 30
+    },
+    "objetivo_12m": {
+      "ejercicio": "FY2029e",
+      "casos": [
+        {
+          "escenario": "Bajista",
+          "metrica": "PER",
+          "beneficio_por_accion": 1.111,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 3.115 M en FY2029 (−3 puntos de crecimiento al año: la fotónica se frena y el gran cliente diversifica proveedores) y margen EBITDA del 24,5 % (−2 puntos): EBIT de 601 M, 45 M de gasto financiero, impuesto del 24,5 % y 378 M de acciones: BPA de 1,11 GBP."
+        },
+        {
+          "escenario": "Base",
+          "metrica": "PER",
+          "beneficio_por_accion": 1.3507,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 3.386 M (FY2027 +14 % con la guía y las compras; después 7-7,5 %, rebajado para pasar la prueba de sostenibilidad) y margen EBITDA del 26,5 %, coherente con la guía de margen EBIT ajustado de 23,5-24 %: EBIT de 721 M tras 5,2 % de amortizaciones (incluida la de intangibles comprados), 45 M de intereses, impuesto del 24,5 % y 378 M de acciones sin recompras."
+        },
+        {
+          "escenario": "Alcista",
+          "metrica": "PER",
+          "beneficio_por_accion": 1.4812,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 3.527 M (+1,5 puntos al año: la fotónica sigue al 30 % y las compras se integran bien) y margen EBITDA del 27,5 %: EBIT de 787 M y BPA de 1,48 GBP."
+        }
+      ],
+      "per_historico": {
+        "actual": 29.1,
+        "mediana_5a": 33.3,
+        "minimo_5a": 33,
+        "media_larga": 34.9,
+        "excluidos": "Sin exclusiones, pero solo tres años con precio fiable: FY2024 33,3x; FY2025 33,0x; FY2026 38,4x (precio de marzo de la línea HLMAF en USD de Digrin entre el tipo GBP/USD de Pound Sterling Live, sobre el BPA estatutario) [1, 2, 3, 22, 42, 43, 44]. FY2022-23 sin precio en GBP. Wisesheets da una media de diez años de ≈ 36x [60]. Actual = 36,34 ÷ 1,2498 (nuestro BPA de FY2028e)."
+      },
+      "comparables_per": {
+        "mediana": 27.45
+      },
+      "consenso": {
+        "bpa_ano1": 1.16,
+        "bpa_ano2": 1.26,
+        "objetivo_medio": 48.09,
+        "objetivo_min": 30.5,
+        "objetivo_max": 46,
+        "analistas": 10,
+        "tendencia_3m": "estables",
+        "fuente": "MarketScreener y MarketBeat [37, 38]"
+      },
+      "diferencia_consenso": "Nuestro BPA casi coincide con el consenso: 1,25 GBP en FY2028e frente a 1,26 de MarketScreener [38]. La diferencia está en el múltiplo: nuestro base (39,31 GBP) aplica el PER actual (29,1 veces), y el objetivo medio de MarketBeat (48,09 GBP, un 18,3 % por encima) supone ≈ 36 veces o un BPA mayor [37]. Ese objetivo medio no se ha podido contrastar y los bancos citados van de 30,50 (Jefferies) a 46,00 GBP (Citi); el consenso de recomendaciones es de compra moderada.",
+      "media": null,
+      "comentario": "El objetivo a 12 meses (38,23 GBP) está un 97 % por encima del valor intrínseco (19,39 GBP). No es una contradicción: el objetivo supone que el mercado sigue pagando 29 veces el beneficio, como hoy, mientras que el valor intrínseco descuenta la caja al 9,61 %. Cerrar esa distancia a favor del valor intrínseco exigiría una caída del múltiplo (un bono británico aún más alto o una decepción de la fotónica); a favor del precio, años de crecimiento por encima del 10 % que hoy no vemos. La tesis de inversión es a más de un año."
+    },
+    "comentario": "Pesamos el DCF (40 %), los comparables (30 %) y los escenarios (30 %), sin transacciones: Halma es demasiado grande para una oferta. El valor ponderado es de 19,39 GBP, un 46,6 % por debajo del precio. La dispersión es enorme: los múltiplos (PER de comparables 33,32 GBP, transacciones 31,15) quedan cerca del precio y el DCF (13,91 GBP) muy por debajo. No es un error de cálculo: los comparables cotizan todos con primas parecidas, y el DCF con un bono del 5,35 % no las justifica. El método más fiable para un comprador en serie es el DCF con las compras como inversión, porque obliga a pagar el crecimiento comprado; pero es el más sensible a la tasa: con la prima implícita del mercado sube a 22,75 GBP.",
+    "confianza": "Baja"
+  },
+  "catalizadores": {
+    "items": [
+      {
+        "fecha": "2026-11-19",
+        "evento": "Resultados del 1S FY2027",
+        "efecto": "Primera cifra de la fotónica tras la guía de junio y de la deuda tras 515 M de compras [7].",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2027-03 (marzo)",
+        "evento": "Actualización de negocio antes del cierre de FY2027",
+        "efecto": "Confirmación de la guía de margen (23,5-24 %) y primera indicación de FY2028 [8].",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2027-06 (junio)",
+        "evento": "Resultados anuales FY2027 y guía de FY2028",
+        "efecto": "Guía de fotónica para FY2028: el mismo momento que hundió la acción un 15 % en 2026 [14].",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2026-12 a 2027-03",
+        "evento": "Decisiones del Banco de Inglaterra sobre tipos",
+        "efecto": "El mercado descuenta cuatro subidas hasta 2027; cada 50 p.b. de tasa libre mueven el DCF en torno a un 10 % [45].",
+        "probabilidad": "Media",
+        "sentido": "−"
+      },
+      {
+        "fecha": "2026-2027",
+        "evento": "Nuevas compras y pago aplazado de Dreampath",
+        "efecto": "Hasta 104 M adicionales según los resultados de FY2027-28 [17].",
+        "probabilidad": "Media",
+        "sentido": "+/−"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "riesgos": {
+    "items": [
+      {
+        "riesgo": "Pérdida o reducción del cliente de hiperescala de fotónica (≈ 20 % de los ingresos)",
+        "tipo": "Comercial",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−24 % a 12 meses (escenario bajista)",
+        "mitigante": "Desarrollo conjunto con propiedad intelectual del cliente; visibilidad de 6-12 meses [13]",
+        "senal": "Crecimiento de fotónica por debajo del 20 % en el 1S FY2027"
+      },
+      {
+        "riesgo": "Contracción del múltiplo con el bono británico por encima del 5 %",
+        "tipo": "Mercado",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−15 % por cada 5 puntos de PER (de 29 a 24,7 veces)",
+        "mitigante": "Crecimiento del BPA del 8-10 % anual",
+        "senal": "Gilt a 10 años por encima del 5,5 %"
+      },
+      {
+        "riesgo": "Compras cada vez más caras que diluyen el ROIC",
+        "tipo": "Asignación de capital",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−10 % en el DCF si las compras se pagan a 8 veces las ventas",
+        "mitigante": "Bonus ligado al beneficio económico (valor añadido) [28]",
+        "senal": "ROTIC por debajo del 15 %"
+      },
+      {
+        "riesgo": "Debilidad de la construcción y la industria en Seguridad",
+        "tipo": "Cíclico",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−5 %",
+        "mitigante": "Demanda de reposición por normativa",
+        "senal": "Orgánico de Seguridad por debajo del 5 %"
+      },
+      {
+        "riesgo": "Libra fuerte frente a dólar y euro",
+        "tipo": "Divisa",
+        "probabilidad": "Media",
+        "impacto": "Bajo",
+        "efecto_valor": "−1 a −2 %",
+        "mitigante": "Producción local en EE. UU. y Europa",
+        "senal": "GBP/USD por encima de 1,40 [19]"
+      },
+      {
+        "riesgo": "Sucesión y ventas de acciones de la cúpula",
+        "tipo": "Gobierno",
+        "probabilidad": "Baja",
+        "impacto": "Bajo",
+        "efecto_valor": "n.c.",
+        "mitigante": "Modelo descentralizado con 50 equipos directivos",
+        "senal": "Nuevas ventas de consejeros ejecutivos [29]"
+      }
+    ],
+    "premortem": "Octubre de 2029: la acción vale 22 GBP, un 40 % menos. En el 1S FY2027 la fotónica creció un 15 % en vez del 30 % guiado: el cliente de hiperescala había homologado un segundo proveedor y el pedido de FY2028 llegó a la mitad. La dirección compensó con compras (más de 600 M en dos años, a 6-8 veces las ventas) para mantener el crecimiento del 10 %, pero el margen EBIT ajustado volvió al 21 % y el ROTIC bajó del 16 % al 13 %. Al mismo tiempo, el gilt superó el 5,5 % y el mercado dejó de pagar 30 veces el beneficio a los compounders británicos: el PER bajó a 22 veces, el de Spirax hoy. Beneficio por acción plano y múltiplo un 25 % menor bastan para perder el 40 %. Las señales que lo habrían anticipado: el peso del cliente en los ingresos (≈ 20 %), el precio de las compras por encima de 5 veces las ventas y un bono británico en máximos de 19 años [15, 16, 45].",
+    "confianza": "Media"
+  },
+  "esg": {
+    "calificaciones": [],
+    "materialidad": "El grupo se presenta como una empresa con propósito («un futuro más seguro, limpio y sano») y una parte de sus ingresos procede de medición ambiental y del agua [1, 23]. Los asuntos que mueven cifras son dos: la seguridad del producto en sanidad (retiradas o sanciones regulatorias) y la exposición de la fotónica al consumo energético de los centros de datos. No se han encontrado calificaciones ESG fechadas ni datos de emisiones en las fuentes accesibles.",
+    "controversias": "No se han encontrado sanciones, litigios ni incidentes relevantes en los últimos tres años en las fuentes revisadas.",
+    "confianza": "Baja"
+  },
+  "preguntas": {
+    "items": [
+      {
+        "tema": "Fotónica",
+        "pregunta": "¿Qué parte de los ingresos de FY2027 del cliente de hiperescala está ya en pedidos firmes y cuántos proveedores tiene homologados para los mismos componentes?",
+        "por_que": "Un 20 % de los ingresos depende de él y es el origen del escenario bajista [13]."
+      },
+      {
+        "tema": "Compras",
+        "pregunta": "¿Qué rentabilidad sobre el capital han dado las compras de FY2022-24 en su tercer año, una a una?",
+        "por_que": "Pagar 5-8 veces las ventas solo crea valor si el margen del comprado sube; el DCF depende de ello [16, 17]."
+      },
+      {
+        "tema": "Margen",
+        "pregunta": "¿Cuánto del margen de FY2027 (23,5-24 %) viene de la mezcla de fotónica y cuánto del resto del grupo?",
+        "por_que": "Si la fotónica explica el salto, el margen no es sostenible en el bajista [7]."
+      },
+      {
+        "tema": "Balance",
+        "pregunta": "¿Cuál es la deuda neta a septiembre de 2026 tras 515 M de compras, y cuál el techo de apalancamiento?",
+        "por_que": "Determina la capacidad de seguir comprando sin ampliar capital."
+      },
+      {
+        "tema": "Remuneración",
+        "pregunta": "¿Por qué subió el voto en contra del informe de remuneración al 7,2 % y qué peso tiene el ROTIC en el incentivo a largo plazo?",
+        "por_que": "La métrica decide si se premia comprar caro [26, 28]."
+      },
+      {
+        "tema": "Ventas de la cúpula",
+        "pregunta": "¿Tienen los ejecutivos un mínimo de participación obligatorio y lo cumplen tras las ventas de 2025-26?",
+        "por_que": "Ventas repetidas sin compras [29, 33]."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sentimiento": {
+    "tono": "Dividido",
+    "tendencia": "Empeora",
+    "revisadas": [
+      {
+        "plataforma": "interactive investor (columna y comentarios tras la caída)",
+        "fecha": "2026-06",
+        "n_comentarios": 5,
+        "tono": "Dividido",
+        "resumen": "Plantea si la caída del 15 % es una oportunidad: recoge que UBS ve la acción «claramente atractiva» y que la caída devolvió dos meses de mejor comportamiento, frente a quienes creen que la fotónica ya tocó techo [62]."
+      },
+      {
+        "plataforma": "Business News Today (debate de inversores)",
+        "fecha": "2026-06",
+        "n_comentarios": 4,
+        "tono": "Negativo",
+        "resumen": "El debate gira en torno a cuánto puede durar el empuje de la fotónica y a la dependencia de un solo cliente de hiperescala [24]."
+      },
+      {
+        "plataforma": "Simply Wall St (valoración y narrativas de la comunidad)",
+        "fecha": "2026-07",
+        "n_comentarios": 3,
+        "tono": "Negativo",
+        "resumen": "Las valoraciones por flujos de la comunidad sitúan el valor razonable muy por debajo del precio y dan una nota de valoración de 1 sobre 6 [63]."
+      },
+      {
+        "plataforma": "TheScreener y Fintel (seguimiento de particulares)",
+        "fecha": "2026-07",
+        "n_comentarios": 2,
+        "tono": "Dividido",
+        "resumen": "Conviven la etiqueta de «muy sobrevalorada» de un filtro cuantitativo y la entrada en la lista de convicción de Goldman Sachs como «compounder» de máxima calidad, muy citada por particulares [64, 65]."
+      },
+      {
+        "plataforma": "MoneyAM (crónicas y comentarios del día)",
+        "fecha": "2026-06",
+        "n_comentarios": 3,
+        "tono": "Negativo",
+        "resumen": "Comentarios centrados en la guía de fotónica como decepción, pese a que los resultados superaron previsiones [66]."
+      }
+    ],
+    "temas": [
+      {
+        "tema": "Dependencia de la fotónica y de un cliente de hiperescala",
+        "postura": "Bajista",
+        "peso": "Alto",
+        "contraste": "Los datos dan la razón a la preocupación: el cliente pasó del ≈ 12 % al ≈ 20 % de los ingresos en dos años y la fotónica aportó unos 8 puntos del crecimiento de FY2026. Lo recogemos en el escenario bajista."
+      },
+      {
+        "tema": "Valoración exigente (PER por encima de 30)",
+        "postura": "Bajista",
+        "peso": "Alto",
+        "contraste": "Coincide con nuestro DCF: el precio pide más crecimiento del que financia la rentabilidad del capital de Halma con un bono británico por encima del 5 %."
+      },
+      {
+        "tema": "Calidad y historial (23 años de beneficio récord)",
+        "postura": "Alcista",
+        "peso": "Medio",
+        "contraste": "Cierto: beneficio récord cada año desde 2003 y margen EBIT ajustado del 23 %. La calidad no se discute; el precio sí."
+      },
+      {
+        "tema": "Caída de junio como punto de entrada",
+        "postura": "Dividida",
+        "peso": "Medio",
+        "contraste": "La acción está un 26 % por debajo del máximo, pero el PER estatutario sobre FY2026 sigue en ≈ 37 veces; la caída corrigió el múltiplo de la fotónica, no lo hizo barato."
+      }
+    ],
+    "lectura": "El sentimiento de los particulares está dividido y ha empeorado desde junio: la caída del 15 % rompió la idea de que Halma es un valor que solo sube, y el debate se ha movido de la calidad del negocio a la dependencia de la fotónica [24, 62]. No hay euforia ni capitulación: la acción no se ha hundido más tras junio y la subida de la guía de margen apenas la movió. Coincide con nuestra lectura (calidad alta, precio exigente) y no anticipa un riesgo que el informe no recoja; sí confirma que el catalizador a vigilar es la fotónica en los resultados del 19 de noviembre. Reddit y Stocktwits no dieron hilos útiles.",
+    "confianza": "Baja"
+  },
+  "fuentes": [
+    {
+      "id": 1,
+      "titulo": "Full Year Results 2025/26 (nota de resultados, 11-jun-2026)",
+      "editor": "Halma plc",
+      "tipo": "Primaria",
+      "fecha": "2026-06-11",
+      "url": "https://www.halma.com/news/press-releases/2026/full-year-results-2025-26"
+    },
+    {
+      "id": 2,
+      "titulo": "Full Year Results 2024/25",
+      "editor": "Halma plc",
+      "tipo": "Primaria",
+      "fecha": "2025-06-12",
+      "url": "https://halma.com/news/press-releases/2025/full-year-results-2024-25"
+    },
+    {
+      "id": 3,
+      "titulo": "Full Year Results 2023/24",
+      "editor": "Halma plc",
+      "tipo": "Primaria",
+      "fecha": "2024-06-13",
+      "url": "https://www.halma.com/news/press-releases/2024/full-year-results-2023-24"
+    },
+    {
+      "id": 4,
+      "titulo": "Full Year Results 2022/23",
+      "editor": "Halma plc",
+      "tipo": "Primaria",
+      "fecha": "2023-06-15",
+      "url": "https://halma.com/news/press-releases/2023/full-year-results-2022-23"
+    },
+    {
+      "id": 5,
+      "titulo": "Full Year Results 2021/22",
+      "editor": "Halma plc",
+      "tipo": "Primaria",
+      "fecha": "2022-06-16",
+      "url": "https://www.halma.com/news/press-releases/2022/full-year-results-2021-22"
+    },
+    {
+      "id": 6,
+      "titulo": "Half Year Results 2025/26",
+      "editor": "Halma plc",
+      "tipo": "Primaria",
+      "fecha": "2025-11-20",
+      "url": "https://www.halma.com/news/press-releases/2025/half-year-results-2025-26"
+    },
+    {
+      "id": 7,
+      "titulo": "Trading Update (RNS, 24-sep-2026)",
+      "editor": "Halma plc / Investegate",
+      "tipo": "Primaria",
+      "fecha": "2026-09-24",
+      "url": "https://www.investegate.co.uk/announcement/rns/halma--hlma/trading-update/9787947"
+    },
+    {
+      "id": 8,
+      "titulo": "Trading Update (RNS, 12-mar-2026)",
+      "editor": "Halma plc / ticker.app",
+      "tipo": "Primaria",
+      "fecha": "2026-03-12",
+      "url": "https://www.ticker.app/lse/HLMA/rns/2026-03-12/Trading-Update/3015W"
+    },
+    {
+      "id": 9,
+      "titulo": "Halma plc (LON:HLMA): cuenta de resultados anual FY2022-FY2026",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07",
+      "url": "https://stockanalysis.com/quote/lon/HLMA/financials/income-statement/"
+    },
+    {
+      "id": 10,
+      "titulo": "Halma: estado de flujos FY2022-FY2026",
+      "editor": "Stockopedia",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07",
+      "url": "https://www.stockopedia.com/share-prices/halma-LON:HLMA/cashflow/"
+    },
+    {
+      "id": 11,
+      "titulo": "Halma plc (HLMAF): balance a 31-mar-2026 (caja, deuda, arrendamientos)",
+      "editor": "Digrin",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-06",
+      "url": "https://www.digrin.com/stocks/detail/HLMAF/financials"
+    },
+    {
+      "id": 12,
+      "titulo": "Halma: estadísticas (EBITDA LTM, acciones)",
+      "editor": "TipRanks",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07",
+      "url": "https://www.tipranks.com/stocks/de:h11/statistics"
+    },
+    {
+      "id": 13,
+      "titulo": "Halma H2 Earnings Call Highlights",
+      "editor": "Nasdaq",
+      "tipo": "Prensa",
+      "fecha": "2026-06-11",
+      "url": "https://www.nasdaq.com/articles/halma-h2-earnings-call-highlights"
+    },
+    {
+      "id": 14,
+      "titulo": "ii view: Halma shares suffer biggest one-day fall in years",
+      "editor": "interactive investor",
+      "tipo": "Prensa",
+      "fecha": "2026-06-11",
+      "url": "https://www.ii.co.uk/analysis-commentary/ii-view-halma-shares-suffer-biggest-one-day-fall-years-ii539329"
+    },
+    {
+      "id": 15,
+      "titulo": "ii view: Halma breaks records amid data centre boom",
+      "editor": "interactive investor",
+      "tipo": "Prensa",
+      "fecha": "2025-11-20",
+      "url": "https://www.ii.co.uk/analysis-commentary/ii-view-halma-breaks-records-amid-data-centre-boom-ii537315"
+    },
+    {
+      "id": 16,
+      "titulo": "Halma buys hazard detection firm E2S for £230m",
+      "editor": "Hargreaves Lansdown",
+      "tipo": "Prensa",
+      "fecha": "2025-12-05",
+      "url": "https://www.hl.co.uk/shares/stock-market-news/company--news/halma-buys-hazard-detection-firm-e2s-for-230m"
+    },
+    {
+      "id": 17,
+      "titulo": "Halma buys lab sample management company Dreampath Diagnostics",
+      "editor": "AJ Bell (Alliance News)",
+      "tipo": "Prensa",
+      "fecha": "2026-07-07",
+      "url": "https://www.ajbell.co.uk/news/articles/halma-buys-lab-sample-management-company-dreampath-diagnostics"
+    },
+    {
+      "id": 18,
+      "titulo": "Halma PLC: transcripción de la conferencia de resultados del 1S 2025/26",
+      "editor": "GuruFocus",
+      "tipo": "Prensa",
+      "fecha": "2025-11-20",
+      "url": "https://www.gurufocus.com/stock/HLMAF/transcripts/3218415"
+    },
+    {
+      "id": 19,
+      "titulo": "Halma ups full-year margin view but leaves Photonics outlook unchanged",
+      "editor": "AJ Bell (Alliance News)",
+      "tipo": "Prensa",
+      "fecha": "2026-09-24",
+      "url": "https://www.ajbell.co.uk/news/articles/halma-ups-full-year-margin-view-leaves-photonics-outlook-unchanged"
+    },
+    {
+      "id": 20,
+      "titulo": "Halma plc: estados financieros (ESEF, informe anual 2025/26 presentado el 24-jun-2026)",
+      "editor": "FinancialFilings",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-06-24",
+      "url": "https://financialfilings.com/companies/halma-plc/"
+    },
+    {
+      "id": 21,
+      "titulo": "Halma: flujos de caja (dólares, línea OTC HLMAF)",
+      "editor": "Weiss Ratings",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-06",
+      "url": "https://weissratings.com/en/stock/hlmaf-otc-pk/cash-flow"
+    },
+    {
+      "id": 22,
+      "titulo": "U.S. Dollar / British Pound: tipos de referencia del Banco de Inglaterra 2026",
+      "editor": "Pound Sterling Live",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-03-31",
+      "url": "https://www.poundsterlinglive.com/bank-of-england-spot/historical-spot-exchange-rates/usd/USD-to-GBP-2026"
+    },
+    {
+      "id": 23,
+      "titulo": "Halma plc",
+      "editor": "Wikipedia",
+      "tipo": "Prensa",
+      "fecha": "2026",
+      "url": "https://en.wikipedia.org/wiki/Halma_plc"
+    },
+    {
+      "id": 24,
+      "titulo": "Halma stock slides as investors question how long photonics can keep powering growth",
+      "editor": "Business News Today",
+      "tipo": "Prensa",
+      "fecha": "2026-06",
+      "url": "https://business-news-today.com/halma-stock-slides-as-hlma-investors-question-how-long-photonics-can-keep-powering-growth/"
+    },
+    {
+      "id": 25,
+      "titulo": "Halma (fotónica): análisis del negocio de centros de datos",
+      "editor": "The Armchair Trader",
+      "tipo": "Prensa",
+      "fecha": "2026",
+      "url": "https://www.thearmchairtrader.com/uk-shares/halma-plc-photonics/"
+    },
+    {
+      "id": 26,
+      "titulo": "Result of AGM (23-jul-2026)",
+      "editor": "Halma plc / Investegate",
+      "tipo": "Primaria",
+      "fecha": "2026-07-23",
+      "url": "https://www.investegate.co.uk/announcement/rns/halma--hlma/result-of-agm/9684789"
+    },
+    {
+      "id": 27,
+      "titulo": "Halma AGM result 2025",
+      "editor": "Halma plc",
+      "tipo": "Primaria",
+      "fecha": "2025-07-24",
+      "url": "https://www.halma.com/~/media/Files/H/Halma/Corp-V2/agm-information/halma-agm-result-2025.pdf"
+    },
+    {
+      "id": 28,
+      "titulo": "AGM alert: find out how much these three CEOs earn",
+      "editor": "interactive investor",
+      "tipo": "Prensa",
+      "fecha": "2025-07",
+      "url": "https://ii.co.uk/analysis-commentary/agm-alert-find-out-how-much-these-three-ceos-earn-ii532246"
+    },
+    {
+      "id": 29,
+      "titulo": "Director/PDMR Shareholding (Jennifer Ward, 24-jul-2026)",
+      "editor": "Halma plc / Investegate",
+      "tipo": "Primaria",
+      "fecha": "2026-07-24",
+      "url": "https://www.investegate.co.uk/announcement/rns/halma--hlma/director-pdmr-shareholding/9687172"
+    },
+    {
+      "id": 30,
+      "titulo": "IN BRIEF: Halma divisional CEO sells £693,345 worth shares",
+      "editor": "AJ Bell (Alliance News)",
+      "tipo": "Prensa",
+      "fecha": "2026",
+      "url": "https://www.ajbell.co.uk/news/articles/brief-halma-divisional-ceo-sells-ps693345-worth-shares"
+    },
+    {
+      "id": 31,
+      "titulo": "London Briefing: Halma and Asos promote within for new leaders",
+      "editor": "AJ Bell (Alliance News)",
+      "tipo": "Prensa",
+      "fecha": "2022-11",
+      "url": "https://www.ajbell.co.uk/articles/latestnews/245767/london-briefing-halma-and-asos-promote-within-new-leaders"
+    },
+    {
+      "id": 32,
+      "titulo": "Halma: estructura accionarial",
+      "editor": "Simply Wall St",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-02-25",
+      "url": "https://simplywall.st/stocks/gb/tech/lse-hlma/halma-shares/ownership"
+    },
+    {
+      "id": 33,
+      "titulo": "Director/PDMR Shareholding (Jennifer Ward, 26-sep-2025)",
+      "editor": "Halma plc / ticker.app",
+      "tipo": "Primaria",
+      "fecha": "2025-09-26",
+      "url": "https://www.ticker.app/lse/HLMA/rns/2025-09-26/DirectorPDMR-Shareholding/0141B"
+    },
+    {
+      "id": 34,
+      "titulo": "Halma raises profit margin guidance after strong first half (precio 3.634 p el 24-sep-2026; cierre previo 3.584 p)",
+      "editor": "DirectorsTalk Interviews",
+      "tipo": "Prensa",
+      "fecha": "2026-09-24",
+      "url": "https://www.directorstalkinterviews.com/halma-raises-profit-margin-guidance-after-strong-first-half/4121263699"
+    },
+    {
+      "id": 35,
+      "titulo": "Halma plc: ficha de cotización (rango de 52 semanas)",
+      "editor": "Halifax Share Dealing",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-08-20",
+      "url": "https://www.investments.halifax.co.uk/share-centre/details/?csid=10207"
+    },
+    {
+      "id": 36,
+      "titulo": "Halma (LON:HLMA): acciones en circulación y capitalización",
+      "editor": "Stockopedia",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07",
+      "url": "https://www.stockopedia.com/share-prices/halma-LON:HLMA/"
+    },
+    {
+      "id": 37,
+      "titulo": "Halma (LON:HLMA) forecast: recomendaciones y precios objetivo",
+      "editor": "MarketBeat",
+      "tipo": "Analistas",
+      "fecha": "2026-07-24",
+      "url": "https://www.marketbeat.com/stocks/LON/HLMA/forecast"
+    },
+    {
+      "id": 38,
+      "titulo": "Halma plc: finanzas y previsiones del consenso FY2027-FY2028",
+      "editor": "MarketScreener",
+      "tipo": "Analistas",
+      "fecha": "2026-07",
+      "url": "https://in.marketscreener.com/quote/stock/HALMA-PLC-9590130/finances/"
+    },
+    {
+      "id": 39,
+      "titulo": "Halma plc: valoración y dividendo (consenso)",
+      "editor": "MarketScreener",
+      "tipo": "Analistas",
+      "fecha": "2026-07",
+      "url": "https://in.marketscreener.com/quote/stock/HALMA-PLC-9590130/valuation-dividend/"
+    },
+    {
+      "id": 40,
+      "titulo": "Consensus forecasts (recopilado por la empresa)",
+      "editor": "Halma plc",
+      "tipo": "Primaria",
+      "fecha": "2025-07-11",
+      "url": "https://halma.com/investors/consensus-forecasts"
+    },
+    {
+      "id": 41,
+      "titulo": "Halma outpaces expectations",
+      "editor": "MarketScreener",
+      "tipo": "Prensa",
+      "fecha": "2026-06-11",
+      "url": "https://uk.marketscreener.com/quote/stock/HALMA-PLC-9590130/news/Halma-outpaces-expectations-50233790/"
+    },
+    {
+      "id": 42,
+      "titulo": "Halma plc (HLMAF): histórico mensual de precios",
+      "editor": "Digrin",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-03",
+      "url": "https://www.digrin.com/stocks/detail/HLMAF/price"
+    },
+    {
+      "id": 43,
+      "titulo": "British Pound to US Dollar history 2012-2024",
+      "editor": "Pound Sterling Live",
+      "tipo": "Datos de mercado",
+      "fecha": "2024-03",
+      "url": "https://poundsterlinglive.com/best-exchange-rates/british-pound-to-us-dollar-history"
+    },
+    {
+      "id": 44,
+      "titulo": "British Pound / US Dollar: tipos de referencia del Banco de Inglaterra 2025",
+      "editor": "Pound Sterling Live",
+      "tipo": "Datos de mercado",
+      "fecha": "2025-03-26",
+      "url": "https://www.poundsterlinglive.com/bank-of-england-spot/historical-spot-exchange-rates/usd/GBP-to-USD-2025"
+    },
+    {
+      "id": 45,
+      "titulo": "UK Gilt Yields Ease but September Selloff Deepens",
+      "editor": "Trading Economics",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-09-30",
+      "url": "https://tradingeconomics.com/united-kingdom/government-bond-yield/news/588169"
+    },
+    {
+      "id": 46,
+      "titulo": "AMETEK: valoración (PER 2026e y 2027e del consenso)",
+      "editor": "MarketScreener",
+      "tipo": "Analistas",
+      "fecha": "2026-09",
+      "url": "https://ca.marketscreener.com/quote/stock/AMETEK-INC-11635/valuation/"
+    },
+    {
+      "id": 47,
+      "titulo": "AME: capitalización y PER",
+      "editor": "Dividend.watch",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-08",
+      "url": "https://dividend.watch/symbol/AME-NYSE"
+    },
+    {
+      "id": 48,
+      "titulo": "Roper Technologies (ROP): cotización y múltiplos",
+      "editor": "Benzinga",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-09-04",
+      "url": "https://www.benzinga.com/quote/rop"
+    },
+    {
+      "id": 49,
+      "titulo": "Rotork plc (ROR.L): estadísticas",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-08-21",
+      "url": "https://finance.yahoo.com/quote/ROR.l"
+    },
+    {
+      "id": 50,
+      "titulo": "Spirax Group (SPXSF): estadísticas",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-08",
+      "url": "https://finance.yahoo.com/quote/SPXSF"
+    },
+    {
+      "id": 51,
+      "titulo": "Indutrade AB: valoración (PER 2026e y 2027e)",
+      "editor": "MarketScreener",
+      "tipo": "Analistas",
+      "fecha": "2026-10-02",
+      "url": "https://www.marketscreener.com/quote/stock/INDUTRADE-AB-6498214/valuation/"
+    },
+    {
+      "id": 52,
+      "titulo": "Diploma PLC (DPLM): PER adelantado",
+      "editor": "Wealthyhood",
+      "tipo": "Datos de mercado",
+      "fecha": "2026",
+      "url": "https://wealthyhood.com/en/stocks/dplm.lse"
+    },
+    {
+      "id": 53,
+      "titulo": "Diploma PLC (DPLM.L): capitalización",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-08-24",
+      "url": "https://finance.yahoo.com/q?s=DPLM.L"
+    },
+    {
+      "id": 54,
+      "titulo": "Recommended cash acquisition of Spectris plc by KKR",
+      "editor": "Spectris plc / Investegate",
+      "tipo": "Primaria",
+      "fecha": "2025-07-02",
+      "url": "https://www.investegate.co.uk/announcement/rns/spectris--sxs/recommended-cash-acquisition/8958672"
+    },
+    {
+      "id": 55,
+      "titulo": "Halma plc expands safety sector with £230m acquisition of E2S Group",
+      "editor": "AskTraders",
+      "tipo": "Prensa",
+      "fecha": "2025-12-05",
+      "url": "https://www.asktraders.com/analysis/halma-plc-expands-safety-sector-with-230m-acquisition-of-e2s-group/"
+    },
+    {
+      "id": 56,
+      "titulo": "National Instruments: Form 8-K, acuerdo de compra por Emerson (60 USD por acción, 8.200 M)",
+      "editor": "National Instruments / SEC",
+      "tipo": "Primaria",
+      "fecha": "2023-04-12",
+      "url": "https://www.sec.gov/Archives/edgar/data/935494/000114036123017910/brhc20051360_ex99-1.htm"
+    },
+    {
+      "id": 57,
+      "titulo": "Emerson acquires NI for $8.2 billion (ingresos 2022 de 1.660 M USD)",
+      "editor": "EV Tech Insider",
+      "tipo": "Prensa",
+      "fecha": "2023-04",
+      "url": "https://evtechinsider.beehiiv.com/p/emerson-acquires-ni-national-instruments-for-8-2-billion"
+    },
+    {
+      "id": 58,
+      "titulo": "Implied ERP by month (ERPbymonth.xlsx), octubre de 2026: 4,20 %",
+      "editor": "Aswath Damodaran (NYU Stern)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx"
+    },
+    {
+      "id": 59,
+      "titulo": "British device maker Halma's shares slump on slower annual growth forecast (Reuters)",
+      "editor": "MarketScreener",
+      "tipo": "Prensa",
+      "fecha": "2026-06-11",
+      "url": "https://uk.marketscreener.com/news/british-device-maker-halma-s-shares-slump-on-slower-annual-growth-forecast-ce7f5cdbd08cf220"
+    },
+    {
+      "id": 60,
+      "titulo": "Halma: PER histórico (media de diez años)",
+      "editor": "Wisesheets",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-06",
+      "url": "https://www.wisesheets.io/pe-ratio/HLMAF"
+    },
+    {
+      "id": 61,
+      "titulo": "Halma PLC (LSE:HLMA): cotización a 17-jul-2026",
+      "editor": "Kalkine Media",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07-17",
+      "url": "https://kalkinemedia.com/ca/companies/lon-hlma"
+    },
+    {
+      "id": 62,
+      "titulo": "Is this FTSE 100 stock at an attractive entry point? (comentario tras la caída del 15 %)",
+      "editor": "interactive investor",
+      "tipo": "Foros y redes",
+      "fecha": "2026-06-17",
+      "url": "https://www.ii.co.uk/analysis-commentary/ftse-100-stock-attractive-entry-point-ii539391"
+    },
+    {
+      "id": 63,
+      "titulo": "Halma: valoración y narrativas de la comunidad",
+      "editor": "Simply Wall St",
+      "tipo": "Foros y redes",
+      "fecha": "2026-07",
+      "url": "https://simplywall.st/stocks/us/tech/otc-hlma.f/halma/valuation"
+    },
+    {
+      "id": 64,
+      "titulo": "Halma: calificación «strongly overvalued»",
+      "editor": "TheScreener (vía tradedirect)",
+      "tipo": "Foros y redes",
+      "fecha": "2026-01",
+      "url": "https://cug.tradedirect.ch/td/details/thescreener/387465,361,402?lang=en_GB"
+    },
+    {
+      "id": 65,
+      "titulo": "HLMA: noticias y lista de convicción de Goldman Sachs (julio de 2026)",
+      "editor": "Fintel",
+      "tipo": "Foros y redes",
+      "fecha": "2026-07",
+      "url": "https://fintel.io/s/gb/hlma"
+    },
+    {
+      "id": 66,
+      "titulo": "Halma notes / MoneyAM: crónica de la caída del 11-jun-2026",
+      "editor": "MoneyAM",
+      "tipo": "Foros y redes",
+      "fecha": "2026-06-11",
+      "url": "https://old.moneyam.com/action/news/showArticle?id=7366125"
+    }
+  ],
+  "calc": {
+    "version": 4,
+    "etiquetas": {
+      "margen_bruto": "M. bruto",
+      "margen_bruto_largo": "Margen bruto",
+      "dias_base": "sobre el coste de ventas"
+    },
+    "recomendacion": {
+      "recomendacion": "Mantener",
+      "regla": "Mantener",
+      "regla_absoluta": "Vender",
+      "regla_relativa": "Vender",
+      "coincide": true,
+      "conviccion": "Media",
+      "conviccion_sugerida": "Media",
+      "conviccion_razones": [
+        "Mantener con las dos reglas de acuerdo y lejos de los umbrales"
+      ],
+      "reglas_discrepan": false,
+      "relativo": {
+        "prima_implicita_pct": 4.2,
+        "wacc": 8.58,
+        "ke": 8.92,
+        "dcf": 17.69,
+        "dcf_min": 15.68,
+        "dcf_max": 20.11,
+        "valor_objetivo": 21.95,
+        "alcista": 21.98,
+        "bajista": 10.01,
+        "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+        "fecha": "2026-10",
+        "potencial_pct": -39.6,
+        "rentabilidad_total_pct": -38.9,
+        "asimetria": -0.55
+      },
+      "objetivo_mercado_txt": " · con la prima implícita del mercado: 21,95 (-39,6 %)",
+      "objetivo_mercado_corto": " · mercado 21,95",
+      "rentabilidad_mercado_corto": " · mercado -38,9 %",
+      "potencial_pct": -46.6,
+      "dividendo_pct": 0.7,
+      "rentabilidad_total_pct": -46,
+      "alcista_pct": -52.1,
+      "bajista_pct": -78.6,
+      "asimetria": -0.66,
+      "comprar_por_debajo": 19.39,
+      "vender_por_encima": 42.75,
+      "tabla": [
+        {
+          "concepto": "Objetivo a 12 meses (nuestro PER × nuestro BPA FY2029e, ponderado 30/50/20)",
+          "valor": "38,23 GBP"
+        },
+        {
+          "concepto": "Bajista / base / alcista a 12 meses",
+          "valor": "24,7x × 1,11 = 27,44 · 29,1x × 1,35 = 39,31 · 34,9x × 1,48 = 51,69"
+        },
+        {
+          "concepto": "Rentabilidad a 12 meses: ponderada / del base (con dividendo)",
+          "valor": "5,9 % / 8,9 %"
+        },
+        {
+          "concepto": "Objetivo medio de los analistas (solo contraste)",
+          "valor": "48,09 (nuestro base -18,3 %)"
+        },
+        {
+          "concepto": "Valor intrínseco (síntesis ponderada, largo plazo)",
+          "valor": "19,39 GBP"
+        },
+        {
+          "concepto": "Potencial sobre el precio actual",
+          "valor": "-46,6 %"
+        },
+        {
+          "concepto": "Rentabilidad por dividendo ordinario",
+          "valor": "0,7 %"
+        },
+        {
+          "concepto": "Rentabilidad total esperada a 12 meses",
+          "valor": "-46,0 %"
+        },
+        {
+          "concepto": "Escenario alcista / bajista",
+          "valor": "-52,1 % / -78,6 %"
+        },
+        {
+          "concepto": "Asimetría (ganancia alcista / pérdida bajista)",
+          "valor": "-0,66x"
+        },
+        {
+          "concepto": "Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado",
+          "valor": "6,2 % frente a 9,6 % y 8,6 %"
+        },
+        {
+          "concepto": "Valor objetivo con la prima implícita del mercado (4,2 %, WACC 8,6 %)",
+          "valor": "21,95 GBP"
+        },
+        {
+          "concepto": "Rentabilidad total esperada con la prima del mercado",
+          "valor": "-38,9 %"
+        },
+        {
+          "concepto": "Asimetría con la prima del mercado",
+          "valor": "-0,55x"
+        },
+        {
+          "concepto": "Regla absoluta (frente a su coste de capital)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Regla relativa (frente a lo que pide el mercado)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "¿La calidad de la empresa sostiene el crecimiento previsto?",
+          "valor": "En parte (6,4 % anual proyectado; financiable al ROIC actual: 7,0 %)"
+        },
+        {
+          "concepto": "Señal del valor intrínseco (regla del DCF, referencia)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Recomendación según la regla a 12 meses (Comprar: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender: ponderada ≤ -10 %)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Convicción según los criterios (Mantener con las dos reglas de acuerdo y lejos de los umbrales)",
+          "valor": "Media"
+        }
+      ],
+      "niveles": [
+        {
+          "accion": "Comprar",
+          "condicion": "Por debajo de 19,39 (ponderada a 12 meses ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco)"
+        },
+        {
+          "accion": "Mantener",
+          "condicion": "Entre 19,39 y 42,75"
+        },
+        {
+          "accion": "Vender o reducir",
+          "condicion": "Por encima de 42,75 (ponderada a 12 meses ≤ -10 %)"
+        }
+      ],
+      "precio_txt": "",
+      "valor_objetivo_txt": "",
+      "regla_valor_intrinseco": "Vender",
+      "objetivo_12m": {
+        "completo": true,
+        "filas": [
+          {
+            "escenario": "Bajista",
+            "metrica": "PER",
+            "beneficio_por_accion": 1.111,
+            "multiplo": 24.7,
+            "multiplo_informe": null,
+            "origen": "base × 0.85 (el mínimo de 5 años no queda por debajo del base)",
+            "precio": 27.44,
+            "rentabilidad_pct": -23.8,
+            "justificacion": "Ventas de 3.115 M en FY2029 (−3 puntos de crecimiento al año: la fotónica se frena y el gran cliente diversifica proveedores) y margen EBITDA del 24,5 % (−2 puntos): EBIT de 601 M, 45 M de gasto financiero, impuesto del 24,5 % y 378 M de acciones: BPA de 1,11 GBP."
+          },
+          {
+            "escenario": "Base",
+            "metrica": "PER",
+            "beneficio_por_accion": 1.3507,
+            "multiplo": 29.1,
+            "multiplo_informe": null,
+            "origen": "PER actual",
+            "precio": 39.31,
+            "rentabilidad_pct": 8.8,
+            "justificacion": "Ventas de 3.386 M (FY2027 +14 % con la guía y las compras; después 7-7,5 %, rebajado para pasar la prueba de sostenibilidad) y margen EBITDA del 26,5 %, coherente con la guía de margen EBIT ajustado de 23,5-24 %: EBIT de 721 M tras 5,2 % de amortizaciones (incluida la de intangibles comprados), 45 M de intereses, impuesto del 24,5 % y 378 M de acciones sin recompras."
+          },
+          {
+            "escenario": "Alcista",
+            "metrica": "PER",
+            "beneficio_por_accion": 1.4812,
+            "multiplo": 34.9,
+            "multiplo_informe": null,
+            "origen": "media histórica larga",
+            "precio": 51.69,
+            "rentabilidad_pct": 42.9,
+            "justificacion": "Ventas de 3.527 M (+1,5 puntos al año: la fotónica sigue al 30 % y las compras se integran bien) y margen EBITDA del 27,5 %: EBIT de 787 M y BPA de 1,48 GBP."
+          }
+        ],
+        "regla": {
+          "bajista": 24.7,
+          "base": 29.1,
+          "alcista": 34.9,
+          "bajista_origen": "base × 0.85 (el mínimo de 5 años no queda por debajo del base)",
+          "base_origen": "PER actual",
+          "alcista_origen": "media histórica larga"
+        },
+        "probabilidades": [
+          30,
+          50,
+          20
+        ],
+        "objetivo_ponderado": 38.23,
+        "objetivo_simple": 39.48,
+        "objetivo_base": 39.31,
+        "rentabilidad_ponderada_pct": 5.9,
+        "rentabilidad_simple_pct": 9.3,
+        "rentabilidad_base_pct": 8.9,
+        "asimetria": 1.72,
+        "senal": "Mantener",
+        "comprar_por_debajo": 19.39,
+        "vender_por_encima": 42.75,
+        "consenso_objetivo": 48.09,
+        "diferencia_consenso_pct": -18.3
+      },
+      "rentabilidad_12m_pct": 5.9,
+      "rentabilidad_12m_txt": "+5,9 % (base +8,9 %)",
+      "objetivo_12m_txt": "38,23 GBP"
+    },
+    "mercado": {
+      "precio": 36.34,
+      "acciones": 378,
+      "capitalizacion": 13737,
+      "deuda_neta": 878,
+      "deuda_neta_ajustada": null,
+      "asimilables_deuda": null,
+      "ajustes_puente": 0,
+      "valor_empresa": 14615,
+      "fecha_puente": "2026-03-31"
+    },
+    "clave": {
+      "capitalizacion": 13737,
+      "valor_empresa": 14615,
+      "deuda_neta": 878,
+      "ev_ventas_ltm": 5.66,
+      "ev_ebitda_ltm": 22.3,
+      "ev_ebitda_ntm": 19.2,
+      "ev_ebit_ltm": 28.1,
+      "per_ltm": 36.9,
+      "per_ntm": 29.9,
+      "fcf_yield_pct": 3,
+      "dividendo_pct": 0.7,
+      "dn_ebitda": 1.3,
+      "roic_pct": 13,
+      "margen_ebitda_pct": 25.4,
+      "deuda_neta_ajustada": 878,
+      "dn_ebitda_ajustada": 1.3,
+      "crecimiento_tcac_pct": 14.1,
+      "ingresos_ntm": 3039,
+      "ebitda_ntm": 760,
+      "bpa_ntm": 1.21,
+      "ebitda_ltm": 657,
+      "ingresos_ltm": 2582,
+      "ev_rab": null
+    },
+    "cuenta": [
+      {
+        "periodo": "FY2022",
+        "ingresos": 1525.3,
+        "crecimiento_pct": null,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "ebit": 278.9,
+        "margen_ebit_pct": 18.3,
+        "beneficio_neto": 244.2,
+        "margen_neto_pct": 16,
+        "bpa": 0.6454,
+        "dpa": 0.1888,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 19.8,
+        "payout_pct": 29
+      },
+      {
+        "periodo": "FY2023",
+        "ingresos": 1852.8,
+        "crecimiento_pct": 21.5,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "ebit": 308.4,
+        "margen_ebit_pct": 16.6,
+        "beneficio_neto": 234.3,
+        "margen_neto_pct": 12.6,
+        "bpa": 0.6204,
+        "dpa": 0.202,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 19.6,
+        "payout_pct": 33
+      },
+      {
+        "periodo": "FY2024",
+        "ingresos": 2034.1,
+        "crecimiento_pct": 9.8,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "ebit": 367.7,
+        "margen_ebit_pct": 18.1,
+        "beneficio_neto": 268.8,
+        "margen_neto_pct": 13.2,
+        "bpa": 0.7123,
+        "dpa": 0.2161,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 21,
+        "payout_pct": 30
+      },
+      {
+        "periodo": "FY2025",
+        "ingresos": 2248.1,
+        "crecimiento_pct": 10.5,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "ebit": 411.2,
+        "margen_ebit_pct": 18.3,
+        "beneficio_neto": 296.4,
+        "margen_neto_pct": 13.2,
+        "bpa": 0.7849,
+        "dpa": 0.2312,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 22.9,
+        "payout_pct": 29
+      },
+      {
+        "periodo": "FY2026",
+        "ingresos": 2582.3,
+        "crecimiento_pct": 14.9,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 656.8,
+        "margen_ebitda_pct": 25.4,
+        "ebit": 520.7,
+        "margen_ebit_pct": 20.2,
+        "beneficio_neto": 372.3,
+        "margen_neto_pct": 14.4,
+        "bpa": 0.9857,
+        "dpa": 0.2474,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 24.1,
+        "payout_pct": 25
+      }
+    ],
+    "tcac": {
+      "periodo": "FY2022-FY2026",
+      "ingresos_pct": 14.1,
+      "ebitda_pct": null,
+      "bpa_pct": 11.2
+    },
+    "cuenta_y_prevision": [
+      {
+        "periodo": "FY2022",
+        "ingresos": 1525.3,
+        "ebitda": null
+      },
+      {
+        "periodo": "FY2023",
+        "ingresos": 1852.8,
+        "ebitda": null
+      },
+      {
+        "periodo": "FY2024",
+        "ingresos": 2034.1,
+        "ebitda": null
+      },
+      {
+        "periodo": "FY2025",
+        "ingresos": 2248.1,
+        "ebitda": null
+      },
+      {
+        "periodo": "FY2026",
+        "ingresos": 2582.3,
+        "ebitda": 656.8
+      },
+      {
+        "periodo": "FY2027e",
+        "ingresos": 2944,
+        "ebitda": 765
+      },
+      {
+        "periodo": "FY2028e",
+        "ingresos": 3165,
+        "ebitda": 832
+      },
+      {
+        "periodo": "FY2029e",
+        "ingresos": 3386,
+        "ebitda": 897
+      },
+      {
+        "periodo": "FY2030e",
+        "ingresos": 3606,
+        "ebitda": 956
+      },
+      {
+        "periodo": "FY2031e",
+        "ingresos": 3823,
+        "ebitda": 1013
+      },
+      {
+        "periodo": "FY2032e",
+        "ingresos": 4033,
+        "ebitda": 1069
+      },
+      {
+        "periodo": "FY2033e",
+        "ingresos": 4234,
+        "ebitda": 1122
+      },
+      {
+        "periodo": "FY2034e",
+        "ingresos": 4425,
+        "ebitda": 1173
+      },
+      {
+        "periodo": "FY2035e",
+        "ingresos": 4602,
+        "ebitda": 1220
+      },
+      {
+        "periodo": "FY2036e",
+        "ingresos": 4763,
+        "ebitda": 1262
+      }
+    ],
+    "segmentos_ultimo": [
+      {
+        "nombre": "Medio ambiente y análisis",
+        "ingresos": 1040,
+        "peso_pct": 40.3,
+        "crecimiento_pct": null,
+        "margen_pct": null,
+        "tipo_margen": null
+      },
+      {
+        "nombre": "Seguridad y Salud (agregado)",
+        "ingresos": 1542.3,
+        "peso_pct": 59.7,
+        "crecimiento_pct": null,
+        "margen_pct": null,
+        "tipo_margen": null
+      }
+    ],
+    "segmentos_tabla": {
+      "periodos": [
+        "",
+        "",
+        "",
+        "",
+        "FY2026"
+      ],
+      "filas": [
+        {
+          "nombre": "Medio ambiente y análisis",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": null,
+          "v4": 1040
+        },
+        {
+          "nombre": "Seguridad y Salud (agregado)",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": null,
+          "v4": 1542.3
+        }
+      ]
+    },
+    "segmentos_periodo": "FY2026",
+    "balance": [
+      {
+        "periodo": "FY2026",
+        "activo_total": 3710,
+        "intangibles": 0,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 189.8,
+        "deuda_financiera": 958.8,
+        "arrendamientos": 109.3,
+        "deuda_neta": 878.3,
+        "patrimonio": 2170,
+        "minoritarios": 0,
+        "dn_ebitda": 1.34,
+        "dn_patrimonio_pct": 40,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 17.4,
+        "capital_invertido": 3048.3,
+        "liquidez_corriente": null
+      }
+    ],
+    "perimetro_nota": null,
+    "flujos": [
+      {
+        "periodo": "FY2022",
+        "flujo_operativo": 237,
+        "capex": null,
+        "pagos_arrendamientos": null,
+        "fcf": 237,
+        "beneficio_neto": 244.2,
+        "conversion_pct": 97,
+        "capex_ventas_pct": null,
+        "capex_amortizacion": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 378.4,
+        "fcf_por_accion": 0.63
+      },
+      {
+        "periodo": "FY2023",
+        "flujo_operativo": 258,
+        "capex": null,
+        "pagos_arrendamientos": null,
+        "fcf": 258,
+        "beneficio_neto": 234.3,
+        "conversion_pct": 110,
+        "capex_ventas_pct": null,
+        "capex_amortizacion": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 377.7,
+        "fcf_por_accion": 0.68
+      },
+      {
+        "periodo": "FY2024",
+        "flujo_operativo": 385,
+        "capex": 51.6,
+        "pagos_arrendamientos": null,
+        "fcf": 333.4,
+        "beneficio_neto": 268.8,
+        "conversion_pct": 124,
+        "capex_ventas_pct": 2.5,
+        "capex_amortizacion": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 377.4,
+        "fcf_por_accion": 0.88
+      },
+      {
+        "periodo": "FY2025",
+        "flujo_operativo": 492,
+        "capex": 59.4,
+        "pagos_arrendamientos": null,
+        "fcf": 432.6,
+        "beneficio_neto": 296.4,
+        "conversion_pct": 146,
+        "capex_ventas_pct": 2.6,
+        "capex_amortizacion": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 83,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 83,
+        "payout_caja_pct": 28,
+        "acciones": 377.6,
+        "fcf_por_accion": 1.15
+      },
+      {
+        "periodo": "FY2026",
+        "flujo_operativo": 481,
+        "capex": 71,
+        "pagos_arrendamientos": null,
+        "fcf": 410,
+        "beneficio_neto": 372.3,
+        "conversion_pct": 110,
+        "capex_ventas_pct": 2.7,
+        "capex_amortizacion": 0.52,
+        "adquisiciones": 431.7,
+        "desinversiones": null,
+        "dividendos": 90.7,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 90.7,
+        "payout_caja_pct": 24,
+        "acciones": 377.7,
+        "fcf_por_accion": 1.09
+      }
+    ],
+    "flujos_acumulado": {
+      "periodo": "FY2022-FY2026",
+      "fcf": 1671,
+      "adquisiciones": 432,
+      "dividendos": 174,
+      "recompras": 0,
+      "conversion_pct": 118
+    },
+    "rentabilidad": [
+      {
+        "periodo": "FY2022",
+        "nopat": 224,
+        "capital_invertido": null,
+        "roic_pct": null,
+        "roe_pct": null,
+        "roa_pct": null,
+        "margen_neto_pct": 16,
+        "rotacion": null,
+        "apalancamiento": null
+      },
+      {
+        "periodo": "FY2023",
+        "nopat": 248,
+        "capital_invertido": null,
+        "roic_pct": null,
+        "roe_pct": null,
+        "roa_pct": null,
+        "margen_neto_pct": 12.6,
+        "rotacion": null,
+        "apalancamiento": null
+      },
+      {
+        "periodo": "FY2024",
+        "nopat": 290,
+        "capital_invertido": null,
+        "roic_pct": null,
+        "roe_pct": null,
+        "roa_pct": null,
+        "margen_neto_pct": 13.2,
+        "rotacion": null,
+        "apalancamiento": null
+      },
+      {
+        "periodo": "FY2025",
+        "nopat": 317,
+        "capital_invertido": null,
+        "roic_pct": null,
+        "roe_pct": null,
+        "roa_pct": null,
+        "margen_neto_pct": 13.2,
+        "rotacion": null,
+        "apalancamiento": null
+      },
+      {
+        "periodo": "FY2026",
+        "nopat": 395,
+        "capital_invertido": 3048,
+        "roic_pct": 13,
+        "roe_pct": 17.2,
+        "roa_pct": 10,
+        "margen_neto_pct": 14.4,
+        "rotacion": 0.7,
+        "apalancamiento": 1.71
+      }
+    ],
+    "roic_incremental_pct": null,
+    "roic_frente_wacc": [
+      {
+        "periodo": "FY2022",
+        "roic_pct": null,
+        "roe_pct": null,
+        "wacc_pct": 9.6
+      },
+      {
+        "periodo": "FY2023",
+        "roic_pct": null,
+        "roe_pct": null,
+        "wacc_pct": 9.6
+      },
+      {
+        "periodo": "FY2024",
+        "roic_pct": null,
+        "roe_pct": null,
+        "wacc_pct": 9.6
+      },
+      {
+        "periodo": "FY2025",
+        "roic_pct": null,
+        "roe_pct": null,
+        "wacc_pct": 9.6
+      },
+      {
+        "periodo": "FY2026",
+        "roic_pct": 13,
+        "roe_pct": 17.2,
+        "wacc_pct": 9.6
+      }
+    ],
+    "calidad": {
+      "periodo": "FY2026",
+      "altman_z": 6.51,
+      "altman_zona": "Zona segura",
+      "tabla": [
+        {
+          "indicador": "Altman Z",
+          "valor": "6,51",
+          "lectura": "Zona segura (> 2,99 seguro; < 1,81 riesgo). No aplica a bancos ni aseguradoras, y subestima la solvencia de empresas con grandes anticipos de clientes o prefinanciación pública (contratistas, construcción), que inflan el pasivo."
+        },
+        {
+          "indicador": "Flujo operativo / beneficio neto (acumulado)",
+          "valor": "1,31x",
+          "lectura": "El beneficio se cobra."
+        }
+      ]
+    },
+    "dcf": {
+      "proyeccion": [
+        {
+          "periodo": "FY2027e",
+          "ingresos": 2944,
+          "crecimiento_pct": 14,
+          "ebitda": 765,
+          "margen_ebitda_pct": 26,
+          "amortizacion": 153,
+          "ebit": 612,
+          "impuestos": 150,
+          "capex": 630,
+          "variacion_circulante": 0,
+          "fcff": -15,
+          "fraccion": 0.46,
+          "factor": 0.979,
+          "vp": -7
+        },
+        {
+          "periodo": "FY2028e",
+          "ingresos": 3165,
+          "crecimiento_pct": 7.5,
+          "ebitda": 832,
+          "margen_ebitda_pct": 26.3,
+          "amortizacion": 165,
+          "ebit": 668,
+          "impuestos": 164,
+          "capex": 573,
+          "variacion_circulante": 0,
+          "fcff": 96,
+          "fraccion": 1,
+          "factor": 0.915,
+          "vp": 88
+        },
+        {
+          "periodo": "FY2029e",
+          "ingresos": 3386,
+          "crecimiento_pct": 7,
+          "ebitda": 897,
+          "margen_ebitda_pct": 26.5,
+          "amortizacion": 176,
+          "ebit": 721,
+          "impuestos": 177,
+          "capex": 613,
+          "variacion_circulante": 0,
+          "fcff": 108,
+          "fraccion": 1,
+          "factor": 0.835,
+          "vp": 90
+        },
+        {
+          "periodo": "FY2030e",
+          "ingresos": 3606,
+          "crecimiento_pct": 6.5,
+          "ebitda": 956,
+          "margen_ebitda_pct": 26.5,
+          "amortizacion": 188,
+          "ebit": 768,
+          "impuestos": 188,
+          "capex": 653,
+          "variacion_circulante": 0,
+          "fcff": 115,
+          "fraccion": 1,
+          "factor": 0.762,
+          "vp": 87
+        },
+        {
+          "periodo": "FY2031e",
+          "ingresos": 3823,
+          "crecimiento_pct": 6,
+          "ebitda": 1013,
+          "margen_ebitda_pct": 26.5,
+          "amortizacion": 199,
+          "ebit": 814,
+          "impuestos": 199,
+          "capex": 692,
+          "variacion_circulante": 0,
+          "fcff": 122,
+          "fraccion": 1,
+          "factor": 0.695,
+          "vp": 84
+        },
+        {
+          "periodo": "FY2032e",
+          "ingresos": 4033,
+          "crecimiento_pct": 5.5,
+          "ebitda": 1069,
+          "margen_ebitda_pct": 26.5,
+          "amortizacion": 202,
+          "ebit": 867,
+          "impuestos": 212,
+          "capex": 617,
+          "variacion_circulante": 0,
+          "fcff": 239,
+          "fraccion": 1,
+          "factor": 0.634,
+          "vp": 152
+        },
+        {
+          "periodo": "FY2033e",
+          "ingresos": 4234,
+          "crecimiento_pct": 5,
+          "ebitda": 1122,
+          "margen_ebitda_pct": 26.5,
+          "amortizacion": 203,
+          "ebit": 919,
+          "impuestos": 225,
+          "capex": 525,
+          "variacion_circulante": 0,
+          "fcff": 372,
+          "fraccion": 1,
+          "factor": 0.579,
+          "vp": 215
+        },
+        {
+          "periodo": "FY2034e",
+          "ingresos": 4425,
+          "crecimiento_pct": 4.5,
+          "ebitda": 1173,
+          "margen_ebitda_pct": 26.5,
+          "amortizacion": 204,
+          "ebit": 969,
+          "impuestos": 237,
+          "capex": 420,
+          "variacion_circulante": 0,
+          "fcff": 515,
+          "fraccion": 1,
+          "factor": 0.528,
+          "vp": 272
+        },
+        {
+          "periodo": "FY2035e",
+          "ingresos": 4602,
+          "crecimiento_pct": 4,
+          "ebitda": 1220,
+          "margen_ebitda_pct": 26.5,
+          "amortizacion": 202,
+          "ebit": 1017,
+          "impuestos": 249,
+          "capex": 299,
+          "variacion_circulante": 0,
+          "fcff": 671,
+          "fraccion": 1,
+          "factor": 0.482,
+          "vp": 323
+        },
+        {
+          "periodo": "FY2036e",
+          "ingresos": 4763,
+          "crecimiento_pct": 3.5,
+          "ebitda": 1262,
+          "margen_ebitda_pct": 26.5,
+          "amortizacion": 200,
+          "ebit": 1062,
+          "impuestos": 260,
+          "capex": 310,
+          "variacion_circulante": 0,
+          "fcff": 692,
+          "fraccion": 1,
+          "factor": 0.439,
+          "vp": 304
+        }
+      ],
+      "etapa2": null,
+      "suma_vp": 1609,
+      "valor_terminal": 10786,
+      "vp_terminal": 4526,
+      "valor_empresa": 6135,
+      "peso_terminal_pct": 74,
+      "valor_acciones": 5256,
+      "valor_accion": 13.91,
+      "vt_gordon": 10786,
+      "vt_multiplo": 25245,
+      "multiplo_implicito": 8.5,
+      "g_implicito_pct": 6.69,
+      "metodo_terminal": "gordon",
+      "terminal_tabla": [
+        {
+          "concepto": "Método principal",
+          "valor": "Crecimiento a perpetuidad"
+        },
+        {
+          "concepto": "Crecimiento a perpetuidad",
+          "valor": "3,0 %"
+        },
+        {
+          "concepto": "Múltiplo EV/EBITDA de salida",
+          "valor": "20,0x"
+        },
+        {
+          "concepto": "Valor terminal (Gordon)",
+          "valor": "10.786"
+        },
+        {
+          "concepto": "Valor terminal (múltiplo)",
+          "valor": "25.245"
+        },
+        {
+          "concepto": "Múltiplo de salida implícito en Gordon",
+          "valor": "8,5x"
+        },
+        {
+          "concepto": "Crecimiento implícito en el múltiplo",
+          "valor": "6,69 %"
+        },
+        {
+          "concepto": "Peso del valor terminal en el valor empresa",
+          "valor": "74 %"
+        }
+      ],
+      "puente": [
+        {
+          "concepto": "Valor actual de los flujos proyectados",
+          "valor": "1.609"
+        },
+        {
+          "concepto": "Valor actual del valor terminal",
+          "valor": "4.526"
+        },
+        {
+          "concepto": "Valor empresa",
+          "valor": "6.135"
+        },
+        {
+          "concepto": "− Deuda financiera neta (con arrendamientos)",
+          "valor": "-878"
+        },
+        {
+          "concepto": "− Minoritarios, pensiones y otros; + asociadas",
+          "valor": "0"
+        },
+        {
+          "concepto": "Valor de los fondos propios",
+          "valor": "5.256"
+        },
+        {
+          "concepto": "Acciones diluidas (millones)",
+          "valor": "378,0"
+        },
+        {
+          "concepto": "Valor por acción",
+          "valor": "13,91"
+        }
+      ],
+      "composicion": [
+        {
+          "parte": "Flujos proyectados",
+          "valor": 1609
+        },
+        {
+          "parte": "Valor terminal",
+          "valor": 4526
+        }
+      ],
+      "wacc": 9.61,
+      "ke": 10.02,
+      "kd_despues": 4.13,
+      "wacc_tabla": [
+        {
+          "concepto": "Tasa libre de riesgo",
+          "valor": "5,35 %"
+        },
+        {
+          "concepto": "Beta",
+          "valor": "0,85"
+        },
+        {
+          "concepto": "Prima de riesgo de mercado",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Prima adicional (país, tamaño, específica)",
+          "valor": "0,00 %"
+        },
+        {
+          "concepto": "Coste de los fondos propios",
+          "valor": "10,02 %"
+        },
+        {
+          "concepto": "Coste de la deuda antes de impuestos",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Tipo impositivo",
+          "valor": "25,00 %"
+        },
+        {
+          "concepto": "Coste de la deuda después de impuestos",
+          "valor": "4,13 %"
+        },
+        {
+          "concepto": "Peso de la deuda (D / (D + E))",
+          "valor": "7,00 %"
+        },
+        {
+          "concepto": "WACC",
+          "valor": "9,61 %"
+        },
+        {
+          "concepto": "Prima de riesgo implícita del mercado (regla relativa)",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "WACC con la prima implícita del mercado",
+          "valor": "8,58 %"
+        }
+      ],
+      "potencial_pct": -61.7,
+      "sensibilidad": {
+        "eje_columnas": "Crecimiento a perpetuidad",
+        "columnas": [
+          "2,0 %",
+          "2,5 %",
+          "3,0 %",
+          "3,5 %",
+          "4,0 %"
+        ],
+        "filas": [
+          {
+            "wacc": "8,6 %",
+            "v0": 15.12,
+            "v1": 16.24,
+            "v2": 17.57,
+            "v3": 19.16,
+            "v4": 21.09
+          },
+          {
+            "wacc": "9,1 %",
+            "v0": 13.57,
+            "v1": 14.5,
+            "v2": 15.58,
+            "v3": 16.86,
+            "v4": 18.38
+          },
+          {
+            "wacc": "9,6 %",
+            "v0": 12.23,
+            "v1": 13.01,
+            "v2": 13.91,
+            "v3": 14.95,
+            "v4": 16.18
+          },
+          {
+            "wacc": "10,1 %",
+            "v0": 11.07,
+            "v1": 11.73,
+            "v2": 12.48,
+            "v3": 13.34,
+            "v4": 14.34
+          },
+          {
+            "wacc": "10,6 %",
+            "v0": 10.05,
+            "v1": 10.61,
+            "v2": 11.24,
+            "v3": 11.96,
+            "v4": 12.79
+          }
+        ]
+      },
+      "sensibilidad2": {
+        "columnas": [
+          "-2 pp",
+          "-1 pp",
+          "0 pp",
+          "+1 pp",
+          "+2 pp"
+        ],
+        "filas": [
+          {
+            "margen": "-2 pp",
+            "v0": 9.39,
+            "v1": 10.5,
+            "v2": 11.7,
+            "v3": 13,
+            "v4": 14.42
+          },
+          {
+            "margen": "-1 pp",
+            "v0": 10.34,
+            "v1": 11.52,
+            "v2": 12.8,
+            "v3": 14.19,
+            "v4": 15.7
+          },
+          {
+            "margen": "0 pp",
+            "v0": 11.29,
+            "v1": 12.54,
+            "v2": 13.91,
+            "v3": 15.38,
+            "v4": 16.98
+          },
+          {
+            "margen": "+1 pp",
+            "v0": 12.24,
+            "v1": 13.57,
+            "v2": 15.01,
+            "v3": 16.57,
+            "v4": 18.26
+          },
+          {
+            "margen": "+2 pp",
+            "v0": 13.19,
+            "v1": 14.59,
+            "v2": 16.11,
+            "v3": 17.76,
+            "v4": 19.55
+          }
+        ]
+      },
+      "rango_min": 11.73,
+      "rango_max": 16.86,
+      "inverso": {
+        "crecimiento_implicito_pct": 16.6,
+        "crecimiento_base_pct": 6.4,
+        "periodo": "FY2027e-FY2036e",
+        "margen_implicito_pct": 46.8,
+        "margen_implicito_texto": null,
+        "margen_base_pct": 26.5,
+        "rentabilidad_implicita_pct": 6.2
+      },
+      "sostenibilidad": {
+        "veredicto": "En parte",
+        "crecimiento_proyectado_pct": 6.4,
+        "tasa_reinversion_pct": 54,
+        "crecimiento_financiable_pct": 7,
+        "roic_pct": 13,
+        "roic_incremental_historico_pct": null,
+        "roic_implicito_pct": 11.8,
+        "cuota_actual_pct": null,
+        "cuota_final_pct": null,
+        "puente": [
+          {
+            "periodo": "FY2027e",
+            "volumen_pct": 8.5,
+            "precio_pct": 2.5,
+            "otros_pct": 3,
+            "comentario": "Guía de orgánico de doble dígito bajo con ≈ 5 puntos de fotónica (volumen 8,5 y precio 2,5) más 3 puntos netos de compras [7].",
+            "suma_pct": 14,
+            "crecimiento_pct": 14
+          },
+          {
+            "periodo": "FY2028e",
+            "volumen_pct": 3,
+            "precio_pct": 2.5,
+            "otros_pct": 2.5,
+            "comentario": "Fotónica normalizada; orgánico del 5,5 % (precio 2,5 % por poder de precios en nichos regulados) y compras de 2,5 puntos.",
+            "suma_pct": 8,
+            "crecimiento_pct": 7.5
+          },
+          {
+            "periodo": "FY2029e",
+            "volumen_pct": 2.5,
+            "precio_pct": 2.5,
+            "otros_pct": 2.5,
+            "comentario": "Orgánico del 5 % y compras de 2,5 puntos, el ritmo histórico de antes de la fotónica [2].",
+            "suma_pct": 7.5,
+            "crecimiento_pct": 7
+          },
+          {
+            "periodo": "FY2030e",
+            "volumen_pct": 2,
+            "precio_pct": 2.5,
+            "otros_pct": 2.5,
+            "comentario": "Orgánico del 4,5 % y compras de 2,5 puntos.",
+            "suma_pct": 7,
+            "crecimiento_pct": 6.5
+          },
+          {
+            "periodo": "FY2031e",
+            "volumen_pct": 1.5,
+            "precio_pct": 2.5,
+            "otros_pct": 2.5,
+            "comentario": "Orgánico del 4 % y compras de 2,5 puntos.",
+            "suma_pct": 6.5,
+            "crecimiento_pct": 6
+          }
+        ],
+        "texto": "La proyección reinvierte el 54 % del NOPAT. Con el ROIC del último ejercicio (13,0 %), eso financia un crecimiento del 7,0 % anual, frente al 6,3 % de ingresos proyectado. Supone que el capital nuevo rinde un 11,8 %.",
+        "tabla": [
+          {
+            "concepto": "Crecimiento medio de ingresos proyectado",
+            "valor": "6,3 %"
+          },
+          {
+            "concepto": "Capex bruto medio (incluidas compras si van como inversión)",
+            "valor": "14,4 % de las ventas"
+          },
+          {
+            "concepto": "Reinversión neta acumulada (capex − amortización + circulante)",
+            "valor": "3.440 M (54 % del NOPAT)"
+          },
+          {
+            "concepto": "Crecimiento que financia esa reinversión al ROIC actual",
+            "valor": "7,0 % (ROIC 13,0 %)"
+          },
+          {
+            "concepto": "Rendimiento que la proyección supone para el capital nuevo",
+            "valor": "11,8 %"
+          }
+        ]
+      }
+    },
+    "escenarios": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 30,
+        "narrativa": "El cliente de hiperescala diversifica proveedores o cambia de arquitectura óptica y la fotónica cae a la mitad en dos años; Seguridad sufre la construcción con tipos del 5 %. Crecimiento 3 puntos menor y margen EBITDA 2 puntos más bajo, como el de antes de la fotónica (EBIT ajustado del 21,6 % en FY2025) [2].",
+        "crecimiento_medio_pct": 3.4,
+        "margen_final_pct": 24.5,
+        "wacc_pct": 9.6,
+        "valor": 7.77,
+        "potencial_pct": -78.6
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "narrativa": "La guía de FY2027 se cumple (orgánico ≈ 11 %, margen EBIT ajustado del 23,5-24 %) y después el crecimiento vuelve a un 7-7,5 % mitad orgánico y mitad comprado, con el margen estable en el nivel actual.",
+        "crecimiento_medio_pct": 6.4,
+        "margen_final_pct": 26.5,
+        "wacc_pct": 9.6,
+        "valor": 13.91,
+        "potencial_pct": -61.7
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 20,
+        "narrativa": "La fotónica sigue creciendo al 30 % dos años más y Halma gana otros clientes de centros de datos; las compras de FY2027 mejoran su margen. Crecimiento 1,5 puntos mayor y margen 1 punto más alto.",
+        "crecimiento_medio_pct": 7.9,
+        "margen_final_pct": 27.5,
+        "wacc_pct": 9.6,
+        "valor": 17.4,
+        "potencial_pct": -52.1
+      }
+    ],
+    "valor_ponderado": 12.77,
+    "potencial_ponderado_pct": -64.9,
+    "comparables": {
+      "tabla": [
+        {
+          "nombre": "Halma",
+          "ticker": "HLMA",
+          "pais": "GB",
+          "capitalizacion": 13737,
+          "ev_ventas": 5.66,
+          "ev_ebitda_ltm": 22.3,
+          "ev_ebitda_ntm": 19.2,
+          "per_ntm": 29.9,
+          "crecimiento_pct": 11.2,
+          "margen_ebitda_pct": 25.4,
+          "roic_pct": 13,
+          "dn_ebitda": 1.3,
+          "fcf_yield_pct": 3,
+          "es_objetivo": true
+        },
+        {
+          "nombre": "AMETEK",
+          "ticker": "AME",
+          "pais": "US",
+          "capitalizacion": 43290,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 31,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Roper Technologies",
+          "ticker": "ROP",
+          "pais": "US",
+          "capitalizacion": 29840,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": 12.3,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 17.4,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Rotork",
+          "ticker": "ROR",
+          "pais": "GB",
+          "capitalizacion": null,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 27.7,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Spirax Group",
+          "ticker": "SPX",
+          "pais": "GB",
+          "capitalizacion": null,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 21.6,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Indutrade",
+          "ticker": "INDT",
+          "pais": "SE",
+          "capitalizacion": null,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 28,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Diploma",
+          "ticker": "DPLM",
+          "pais": "GB",
+          "capitalizacion": 9660,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 27.2,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        }
+      ],
+      "estadisticos": [
+        {
+          "estadistico": "Mediana",
+          "ev_ventas": null,
+          "ev_ebitda_ltm": 12.3,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 27.5,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null
+        },
+        {
+          "estadistico": "Media",
+          "ev_ventas": null,
+          "ev_ebitda_ltm": 12.3,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 25.5,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null
+        },
+        {
+          "estadistico": "Percentil 25",
+          "ev_ventas": null,
+          "ev_ebitda_ltm": 12.3,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 23,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null
+        },
+        {
+          "estadistico": "Percentil 75",
+          "ev_ventas": null,
+          "ev_ebitda_ltm": 12.3,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 27.9,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null
+        }
+      ],
+      "implicito": [
+        {
+          "metodo": "PER próximos 12 meses",
+          "metrica_empresa": 1.21,
+          "multiplo_p25": 23,
+          "multiplo_mediana": 27.5,
+          "multiplo_p75": 27.9,
+          "multiplos": "23,0x / 27,4x / 27,9x",
+          "valor_p25": 27.92,
+          "valor_mediana": 33.32,
+          "valor_p75": 33.9,
+          "potencial_pct": -8.3
+        }
+      ],
+      "regresion": null,
+      "n": 6
+    },
+    "transacciones": {
+      "n": 4,
+      "metrica": "EV/ventas",
+      "mediana_ev_ebitda": null,
+      "p25_ev_ebitda": null,
+      "p75_ev_ebitda": null,
+      "mediana_ev_ventas": 4.9,
+      "prima_mediana_pct": null,
+      "valor_p25": 30.47,
+      "valor_mediana": 31.15,
+      "valor_p75": 32.18
+    },
+    "suma_partes": null,
+    "multiplos_historicos": [
+      {
+        "metrica": "PER últimos 12 meses (cierre de cada año)",
+        "campo": "per_ltm",
+        "actual": 36.9,
+        "media": 33.3,
+        "minimo": 33,
+        "maximo": 38.4,
+        "percentil": 67,
+        "prima_pct": 11,
+        "anios": 3
+      }
+    ],
+    "multiplos_serie": [],
+    "multiplos_titulo": null,
+    "consenso_vs_propio": [
+      {
+        "periodo": "FY2027e",
+        "ingresos_propio": 2944,
+        "ingresos_consenso": 2922,
+        "ingresos_dif_pct": 0.8,
+        "ebitda_propio": 765,
+        "ebitda_consenso": 728.1,
+        "ebitda_dif_pct": 5.1
+      },
+      {
+        "periodo": "FY2028e",
+        "ingresos_propio": 3165,
+        "ingresos_consenso": 3138,
+        "ingresos_dif_pct": 0.9,
+        "ebitda_propio": 832,
+        "ebitda_consenso": 787.7,
+        "ebitda_dif_pct": 5.6
+      }
+    ],
+    "gobierno": {
+      "n_consejeros": 2,
+      "independientes_pct": 50,
+      "antiguedad_media": 3,
+      "composicion": [
+        {
+          "tipo": "Ejecutivo",
+          "num": 1
+        },
+        {
+          "tipo": "Independiente",
+          "num": 1
+        }
+      ],
+      "checklist": [
+        {
+          "criterio": "Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)",
+          "resultado": "Cumple",
+          "valor": "50 %"
+        },
+        {
+          "criterio": "Presidencia sin vínculo familiar ni profesional con el accionista de control",
+          "resultado": "Cumple",
+          "valor": "Sin control"
+        },
+        {
+          "criterio": "Presidente no ejecutivo, o consejero coordinador independiente",
+          "resultado": "Cumple",
+          "valor": "No ejecutivo"
+        },
+        {
+          "criterio": "Comisión de auditoría con mayoría de independientes y presidida por uno",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Ningún consejero «otro externo» con más de 12 años",
+          "resultado": "Cumple",
+          "valor": "Ninguno"
+        },
+        {
+          "criterio": "Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses",
+          "resultado": "Cumple",
+          "valor": "0 cambios"
+        },
+        {
+          "criterio": "Peor voto en contra sobre remuneración (3 juntas) ≤ 20 %",
+          "resultado": "Cumple",
+          "valor": "7,2 % en contra"
+        },
+        {
+          "criterio": "Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Una acción, un voto, sin blindajes ni límites de voto estatutarios",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Sin operaciones vinculadas relevantes",
+          "resultado": "Cumple",
+          "valor": "No hay"
+        },
+        {
+          "criterio": "Auditor con 10 años o menos en el cargo",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Opinión de auditoría sin salvedades",
+          "resultado": "Cumple",
+          "valor": "Favorable (sin salvedades conocidas)"
+        },
+        {
+          "criterio": "Directivos compradores netos en 12 meses (o sin ventas relevantes)",
+          "resultado": "No cumple",
+          "valor": "Compras 0,00 / ventas 1,98 M"
+        }
+      ],
+      "puntuacion": "10 de 13 (2 sin dato)",
+      "puntuacion_pct": 77,
+      "compras_insiders": 0,
+      "ventas_insiders": 1.98
+    },
+    "competidores_margen": [
+      {
+        "nombre": "Halma",
+        "margen_ebit_pct": 20.2
+      },
+      {
+        "nombre": "AMETEK",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Roper Technologies",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Spirax Group",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Rotork",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Honeywell (Building Automation e Industrial Automation)",
+        "margen_ebit_pct": null
+      }
+    ],
+    "sintesis": {
+      "formato_eje": "#,##0.0",
+      "rangos": [
+        {
+          "metodo": "Cotización 52 semanas",
+          "etiqueta": "Cotización 52 semanas (31,94 – 49,02)",
+          "min": 31.94,
+          "central": 36.34,
+          "max": 49.02,
+          "gris": true
+        },
+        {
+          "metodo": "Comparables: PER NTM",
+          "etiqueta": "Comparables: PER NTM (27,92 – 33,90)",
+          "min": 27.92,
+          "central": 33.32,
+          "max": 33.9,
+          "gris": false
+        },
+        {
+          "metodo": "Transacciones precedentes (EV/ventas)",
+          "etiqueta": "Transacciones precedentes (EV/ventas) (30,47 – 32,18)",
+          "min": 30.47,
+          "central": 31.15,
+          "max": 32.18,
+          "gris": false
+        },
+        {
+          "metodo": "DCF (WACC y g ± 0,5)",
+          "etiqueta": "DCF (WACC y g ± 0,5) (11,73 – 16,86)",
+          "min": 11.73,
+          "central": 13.91,
+          "max": 16.86,
+          "gris": false
+        },
+        {
+          "metodo": "Escenarios (bajista – alcista)",
+          "etiqueta": "Escenarios (bajista – alcista) (7,77 – 17,40)",
+          "min": 7.77,
+          "central": 12.77,
+          "max": 17.4,
+          "gris": false
+        },
+        {
+          "metodo": "DCF con la prima del mercado",
+          "etiqueta": "DCF con la prima implícita del mercado (4,2 %)",
+          "min": 15.68,
+          "central": 17.69,
+          "max": 20.11
+        },
+        {
+          "metodo": "Precio actual",
+          "etiqueta": "Precio actual (36,34)",
+          "min": 36.16,
+          "central": 36.34,
+          "max": 36.52,
+          "gris": true
+        }
+      ],
+      "tabla": [
+        {
+          "metodo": "DCF",
+          "valor": 13.91,
+          "peso_pct": 40,
+          "potencial_pct": -61.7
+        },
+        {
+          "metodo": "Comparables (mediana EV/EBITDA y PER)",
+          "valor": 33.32,
+          "peso_pct": 30,
+          "potencial_pct": -8.3
+        },
+        {
+          "metodo": "Transacciones precedentes (no se usa)",
+          "valor": 31.15,
+          "peso_pct": 0,
+          "potencial_pct": -14.3
+        },
+        {
+          "metodo": "Escenarios ponderados",
+          "valor": 12.77,
+          "peso_pct": 30,
+          "potencial_pct": -64.9
+        }
+      ],
+      "valor_objetivo": 19.39,
+      "potencial_pct": -46.6
+    },
+    "fuentes": {
+      "n_fuentes": 66,
+      "n_primarias": 15,
+      "por_tipo": [
+        {
+          "tipo": "Primaria",
+          "num": 15
+        },
+        {
+          "tipo": "Datos de mercado",
+          "num": 23
+        },
+        {
+          "tipo": "Prensa",
+          "num": 18
+        },
+        {
+          "tipo": "Analistas",
+          "num": 5
+        },
+        {
+          "tipo": "Foros y redes",
+          "num": 5
+        }
+      ],
+      "n_citadas": 65,
+      "citas_sin_fuente": [],
+      "fuentes_sin_citar": [
+        "36"
+      ]
+    },
+    "controles": [
+      {
+        "control": "DCF inverso calculable",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Puente de ingresos (volumen + precio + otros) = crecimiento del DCF",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Rendimiento del capital nuevo de la proyección ≤ 1,25 × el histórico",
+        "resultado": "OK",
+        "detalle": "La proyección supone que la inversión nueva rinde un 11,8 % frente a un ROIC de 13,0 %: crecimiento que la empresa no ha demostrado poder comprar."
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "resultado": "OK",
+        "detalle": "Supuesto 0,0 % frente a 0,0 % real: genera una variación de circulante de 0 M en el primer año. Converge de forma gradual."
+      },
+      {
+        "control": "Peso del valor terminal ≤ 80 % del valor empresa",
+        "resultado": "OK",
+        "detalle": "74 %."
+      },
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "resultado": "OK",
+        "detalle": "3,00 %."
+      },
+      {
+        "control": "Probabilidades de los escenarios suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 5 comparables",
+        "resultado": "OK",
+        "detalle": "6 comparables."
+      },
+      {
+        "control": "Pesos de la síntesis suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Múltiplos del objetivo a 12 m según la regla común",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Objetivo 12 m frente al consenso",
+        "resultado": "OK",
+        "detalle": "El base se separa un -18,3 % del objetivo medio de los analistas: explícalo en diferencia_consenso (nunca se acerca la cifra)."
+      },
+      {
+        "control": "Recomendación coherente con la regla de decisión",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "La síntesis explica la convicción",
+        "resultado": "OK",
+        "detalle": "La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría."
+      },
+      {
+        "control": "Al menos 25 fuentes",
+        "resultado": "OK",
+        "detalle": "66 fuentes (15 primarias)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "resultado": "OK",
+        "detalle": "15."
+      },
+      {
+        "control": "Toda cita [n] existe en fuentes",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Fuentes sin citar ≤ 15 %",
+        "resultado": "OK",
+        "detalle": "Sin citar: 36."
+      }
+    ],
+    "controles_resumen": "17 de 17 controles correctos"
+  }
+}
