@@ -49,7 +49,7 @@ VERSIONES.v8 = { ...VERSIONES.v7, descripcion: 'v7 + proyección que respeta la 
 // para los 12 meses siguientes más lo que suele batirla (crecimiento.guia_12m_pct + exceso_guia_pp). Solo recorta; sin guía = v7.
 VERSIONES.v9 = { ...VERSIONES.v7, descripcion: 'v7 + el crecimiento de partida no pasa de la guía de la empresa más su exceso medio sobre la guía (solo recorta)',
   proy_guia: true };
-export const VIGENTE = 'v7';
+export const VIGENTE = 'v9';
 
 const escala = (v, cortes) => {
   if (v === null || v === undefined || Number.isNaN(v)) return 0;

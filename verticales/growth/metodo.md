@@ -1,4 +1,4 @@
-# Análisis growth: método (versión vigente v7, 14-oct-2026)
+# Análisis growth: método (versión vigente v9, 14-oct-2026; v7 como referencia)
 
 **Qué es.** El segundo tipo de análisis del repo, en paralelo al **análisis value** (el de siempre: informe Word de 28 secciones, DCF y objetivo a 12 meses por PER, `verticales/empresa/`). Lo pidió el usuario el 14-oct: buscar **cambios de tendencia en la valoración o en la percepción de los inversores, crecimiento muy alto, tecnología nueva y potencial comercial y de mercado, aunque la empresa aún no gane dinero**. Aquí no se exige ROIC − WACC ≥ 5 ni se valora por PER.
 
@@ -69,6 +69,7 @@ Dilución (pagos en acciones > 15 % de las ventas se dice en rojo), caja y venci
 | v6 (sin mínimo de señales) | 3, 100 % | 2, 50 % | 5, 80 % (38-96) |
 | **v7 (v6 + ponderada ≥ 5 %)** | **4, 100 %** | **2, 50 %** | **6, 83 % (44-97)** |
 | v8 (v7 + proyección con desaceleración + señal de múltiplo con tope) | 4, 100 % | 2, 50 % | 6, 83 % (44-97) |
+| **v9 (v7 + partida de la proyección = menor entre la mecánica y la guía de la empresa más lo que suele batirla)** | **4, 100 %** | **2, 50 %** | **6, 83 % (44-97)** |
 
 Regla fijada de antemano para elegir: la mejor precisión en el ajuste (fase 2 + fase 1) con al menos 5 compras, y a igualdad, el mayor exceso. v7 y v8 empatan en precisión (100 %); v7 tiene más exceso en la fase 1 (Tesla 2019, que v8 deja fuera), así que **gana v7**. Las mejoras de v8 quedan pendientes de más evidencia.
 
@@ -81,6 +82,8 @@ Regla fijada de antemano para elegir: la mejor precisión en el ajuste (fase 2 +
 ## 7. Cambios del método
 
 Cada mejora que salga de los informes se apunta aquí, con fecha y motivo, y se repasa el backtest para que no empeore.
+- 14-oct-2026 (16:50): **revisión de precio antes de una orden** con el objetivo del informe fijo (rentabilidad = objetivo ÷ precio − 1; la orden sigue si el precio está bajo el «compra hasta»). Recalcular el motor cambiando solo el precio movía el objetivo en las valoradas por beneficio o EBITDA (Nu, Dexcom, Arista) y bajaba el límite sin motivo.
+- 14-oct-2026 (16:48): **v7 → v9, vigente** por decisión del usuario (tarjeta, y «ves optimizando metodologías con las tandas»). v9 = v7, pero el crecimiento de partida de la proyección es el menor entre el mecánico y `guia_12m_pct + exceso_guia_pp` (solo recorta; sin guía, igual que v7). En el backtest es neutra: no cambia ninguna de las 71 compras ([backtest/resultados-v9.md](backtest/resultados-v9.md)); es una corrección de prudencia para no proyectar el pasado cuando la empresa ya anunció que frena (Duolingo, Wise, HubSpot). La tasa de acierto realista sigue siendo la de v7. v7 queda al lado como referencia (`node motor/growth.mjs <datos.json> --version v7`).
 - 14-oct-2026: v1 → v4 tras la fase 1 del backtest; v4 → v7 tras la fase 2 (universo neutral): fuera el mínimo de 4 señales y ponderada mínima del 5 %.
 - Propuestas de los informes pendientes de probar con el backtest: modo para bancos (Nu: PER o P/VC frente a ROE, morosidad y CET1); campo explícito del tipo de múltiplo; proyección que respete la desaceleración (argenx; es la v8); señal de múltiplo con tope (Cloudflare; v8); margen bruto del negocio recurrente en empresas mixtas (Axon); revisiones basadas en estimaciones, no en precios objetivo.
 
