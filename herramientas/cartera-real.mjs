@@ -33,7 +33,7 @@ const leer = (p, def = null) => (existsSync(p) ? JSON.parse(readFileSync(p, 'utf
 const guardar = (p, x) => writeFileSync(p, JSON.stringify(x, null, 1) + '\n');
 const num = (v) => (v === null || v === undefined || v === '' || Number.isNaN(Number(v)) ? null : Number(v));
 const r = (x, d = 1) => (x === null || x === undefined || !Number.isFinite(x) ? null : Math.round(x * 10 ** d) / 10 ** d);
-const f = (x, d = 1) => (x === null || x === undefined || !Number.isFinite(x) ? '—' : x.toLocaleString('es-ES', { minimumFractionDigits: d, maximumFractionDigits: d }));
+const f = (x, d = 1) => (x === null || x === undefined || !Number.isFinite(x) ? '—' : x.toLocaleString('es-ES', { minimumFractionDigits: d, maximumFractionDigits: d, useGrouping: 'always' }));
 const fp = (x) => { if (x === null || x === undefined || !Number.isFinite(x)) return '—'; const y = Math.round(x * 10) / 10 || 0; return `${y > 0 ? '+' : ''}${f(y, 1)} %`; };
 const fe = (x) => (x === null || x === undefined ? '—' : `${f(x, 0)} €`);
 const fPrecio = (x) => f(x, x >= 1000 ? 0 : 2);
@@ -273,7 +273,7 @@ function cargarIbkr(dir = join(DATOS, 'ibkr')) {
 }
 function ultimaFotoIbkr() { return [...cargarIbkr().values()].map((x) => x.foto).filter(Boolean); }
 const PERIODOS = { '7D': [7, 'Última semana'], MTD: [null, 'Mes en curso'], '1M': [30, 'Último mes'], '3M': [91, 'Últimos 3 meses'], '6M': [182, 'Últimos 6 meses'], YTD: [null, 'En el año'], '1Y': [365, 'Último año'], '2Y': [730, 'Últimos 2 años'], '3Y': [1095, 'Últimos 3 años'], '5Y': [1826, 'Últimos 5 años'] };
-async function rentabilidadBroker(hoy) {
+async function rentabilidadBroker(hoy, ops = []) {
   const out = [], si = await serie(INDICE.simbolo);
   for (const fb of ultimaFotoIbkr()) {
     const per = fb.rentabilidad?.por_periodo_pct;
@@ -290,17 +290,49 @@ async function rentabilidadBroker(hoy) {
     fila.anio = fila.periodos.YTD || null; fila.un_anio = fila.periodos['1Y'] || null;
     out.push(fila);
   }
-  // Todas las cuentas juntas: media por valor de cada cuenta (aproximación: pesos de hoy).
+  // Cuentas sin rentabilidad del broker (las del Flex): Dietz modificado con su historial, que descuenta las aportaciones.
+  const conTwr = new Set(out.map((x) => x.cuenta));
+  for (const c of [...new Set(ops.map((o) => o.cuenta))].filter((c) => c && !conTwr.has(c) && !['todas', 'sin-conectar'].includes(c))) {
+    const opsC = ops.filter((o) => o.cuenta === c), primera = opsC[0].fecha;
+    const v1 = await valorCuentaEn(opsC, hoy);
+    const fila = { cuenta: c, valor_eur: v1, propia: true, periodos: {} };
+    for (const [k, [d, nombre]] of Object.entries(PERIODOS)) {
+      const desde = k === 'YTD' ? `${+hoy.slice(0, 4) - 1}-12-31` : k === 'MTD' ? masDias(`${hoy.slice(0, 7)}-01`, -1) : masDias(hoy, -d);
+      if (desde < primera || k === '7D' && !d) continue; // el historial no llega
+      const v0 = await valorCuentaEn(opsC, desde);
+      const flujos = opsC.filter((o) => o.clave === 'EUR' && (o.tipo === 'ingreso' || o.tipo === 'retirada') && o.fecha > desde).map((o) => ({ fecha: o.fecha, eur: o.tipo === 'ingreso' ? +o.importe_eur : -Math.abs(o.importe_eur) }));
+      const x = await frenteAlIndice({ v0, desde, flujos, v1, hoy });
+      const i0 = precioEn(si, desde), i1 = precioEn(si, null);
+      fila.periodos[k] = { nombre, desde, rent: x.rent ?? 0, base: v0 + flujos.reduce((t, fl) => t + fl.eur * Math.max(dias(fl.fecha, hoy), 0) / Math.max(dias(desde, hoy), 1), 0), indice_rent: i0 && i1 ? 100 * (i1 / i0 - 1) : null };
+    }
+    fila.anio = fila.periodos.YTD || null; fila.un_anio = fila.periodos['1Y'] || null;
+    out.push(fila);
+  }
+  // Todas las cuentas juntas: cada cuenta pesa por el capital que tuvo dentro en el periodo (lo del broker: valor de hoy
+  // descontada su rentabilidad). Aproximación razonable; la exacta pide el historial completo (Flex desde el inicio).
   if (out.length > 1) {
-    const tot = out.reduce((t, x) => t + (x.valor_eur || 0), 0), periodos = {};
+    const periodos = {};
     for (const k of Object.keys(PERIODOS)) {
       const con = out.filter((x) => x.periodos[k] && x.valor_eur);
-      if (con.length !== out.length || !tot) continue;
-      periodos[k] = { ...con[0].periodos[k], rent: con.reduce((t, x) => t + x.periodos[k].rent * x.valor_eur, 0) / tot };
+      if (con.length !== out.length) continue;
+      const peso = (x) => x.periodos[k].base ?? x.valor_eur / (1 + x.periodos[k].rent / 100);
+      const tot = con.reduce((t, x) => t + peso(x), 0);
+      if (tot > 0) periodos[k] = { ...con[0].periodos[k], rent: con.reduce((t, x) => t + x.periodos[k].rent * peso(x), 0) / tot };
     }
-    out.unshift({ cuenta: 'todas', valor_eur: tot, periodos, anio: periodos.YTD || null, un_anio: periodos['1Y'] || null });
+    out.unshift({ cuenta: 'todas', valor_eur: out.reduce((t, x) => t + (x.valor_eur || 0), 0), periodos, anio: periodos.YTD || null, un_anio: periodos['1Y'] || null });
   }
   return out;
+}
+// Valor de una cuenta en una fecha: títulos de entonces a su cierre y la liquidez de entonces (el último saldo conocido
+// menos lo que se movió después).
+async function valorCuentaEn(opsC, fecha) {
+  const sinSaldo = opsC.filter((o) => o.tipo !== 'saldo'), saldos = opsC.filter((o) => o.tipo === 'saldo');
+  const r0 = await reconstruir(sinSaldo, fecha), rFin = await reconstruir(sinSaldo);
+  const ult = saldos.at(-1);
+  const caja = ult ? +ult.importe_eur - (rFin.liquidez - r0.liquidez) : r0.liquidez;
+  let v = caja;
+  for (const p of r0.pos.values()) { if (p.titulos <= 0) continue; const sx = await serie(p.simbolo); const px = precioEn(sx, fecha), fx = await eurPor(sx?.divisa || p.divisa, fecha); if (px && fx) v += p.titulos * px * fx; }
+  return v;
 }
 
 // ───────────────────────── Foto de hoy ─────────────────────────
@@ -380,7 +412,8 @@ async function foto({ semanal = false } = {}) {
     let v0 = r0.liquidez;
     for (const p of r0.pos.values()) { const s = await serie(p.simbolo); const p0 = precioEn(s, ini_anio), fx0 = await eurPor(s?.divisa || p.divisa, ini_anio); if (p0 && fx0) v0 += p.titulos * p0 * fx0; }
     cartera.anio = await frenteAlIndice({ v0, desde: ini_anio, flujos: flujos.filter((fl) => fl.fecha > ini_anio), v1: total, hoy });
-  } else cartera.broker = await rentabilidadBroker(hoy);
+  } else cartera.broker = await rentabilidadBroker(hoy, ops);
+  cartera.aportado_anio = ops.filter((o) => o.clave === 'EUR' && o.tipo === 'ingreso' && o.fecha > ini_anio).reduce((t, o) => t + (+o.importe_eur || 0), 0) - ops.filter((o) => o.clave === 'EUR' && o.tipo === 'retirada' && o.fecha > ini_anio).reduce((t, o) => t + Math.abs(+o.importe_eur || 0), 0);
   cartera.ganancias = {
     latente: filas.filter((x) => x.titulos > 0 && !x.partida).reduce((t, x) => t + x.valor_eur - x.coste_eur, 0),
     realizada: filas.reduce((t, x) => t + x.realizado_eur, 0), dividendos: filas.reduce((t, x) => t + x.dividendos_eur, 0),
@@ -463,7 +496,7 @@ async function calcularAvisos(filas, cartera, hist, hoy) {
   const desde90 = hist.fotos.filter((h) => dias(h.fecha, hoy) <= 92);
   if (cartera.liquidez >= 3000 && desde90.length && dias(desde90[0].fecha, hoy) >= 90 && desde90.every((h) => h.liquidez_eur >= 3000)) A.push({ nivel: 'liquidez', texto: `Llevas más de 3 meses con más de 3.000 € en liquidez (${fe(cartera.liquidez)}). La regla dice pasarlo a un fondo monetario (XEON).` });
   const anio = cartera.anio || cartera.broker?.[0]?.anio;
-  if (anio && anio.rent !== null && anio.indice_rent !== null && anio.rent - anio.indice_rent <= -5) A.push({ nivel: 'indice', texto: `En el año la cartera va ${f(anio.indice_rent - anio.rent)} puntos por detrás del índice mundial${cartera.anio ? '' : ' (cuenta conectada, según IBKR)'}.` });
+  if (anio && anio.rent !== null && anio.indice_rent !== null && anio.rent - anio.indice_rent <= -5) A.push({ nivel: 'indice', texto: `En el año la cartera va ${f(anio.indice_rent - anio.rent)} puntos por detrás del índice mundial${cartera.anio || cartera.broker?.[0]?.cuenta === 'todas' ? '' : ' (cuenta conectada, según IBKR)'}.` });
   // Cuadre con el broker.
   const fb = leer(RUTA.foto);
   if (fb?.posiciones) {
@@ -493,6 +526,7 @@ function resumenSenales() {
 }
 
 // ───────────────────────── Informe ─────────────────────────
+const ops_aport = (c) => c.aportado_anio || 0;
 function informe({ filas, cartera, avisos, senales, ahora, inicio }) {
   const c = cartera, L = [];
   const partida = filas.filter((x) => x.partida && x.titulos > 0), arrastre = filas.filter((x) => x.arrastre && x.titulos > 0);
@@ -517,7 +551,7 @@ function informe({ filas, cartera, avisos, senales, ahora, inicio }) {
   if (br && Object.keys(br.periodos).length) {
     L.push(`## Rentabilidad histórica${br.cuenta === 'todas' ? ' (cuentas conectadas)' : ` (${br.cuenta})`}`, '', '| Periodo | Cartera | Índice mundial | Diferencia |', '|---|---|---|---|');
     for (const [, x] of Object.entries(br.periodos)) L.push(`| ${x.nombre} | ${fp(x.rent)} | ${fp(x.indice_rent)} | ${x.rent !== null && x.indice_rent !== null ? `${x.rent - x.indice_rent >= 0 ? '+' : ''}${f(x.rent - x.indice_rent)} puntos` : '—'} |`);
-    L.push('', 'Rentabilidad por tiempo que da IBKR (descuenta las aportaciones), pasada a euros. El historial del conector llega a un año atrás; lo anterior, con el informe de operaciones (Flex Query).', '');
+    L.push('', `Rentabilidad en euros que descuenta las aportaciones${ops_aport(c) ? ` (los ${fe(ops_aport(c))} ingresados este año no cuentan como ganancia)` : ''}. ${(c.broker || []).some((b) => b.propia) ? 'Para las cuentas con rentabilidad de IBKR, la de IBKR; para las demás, calculada con su historial (Dietz modificado); juntas, cada una pesa por el capital que tuvo dentro.' : 'Es la que da IBKR.'} El historial llega a un año atrás.`, '');
     if ((c.broker || []).length > 2) { L.push('| Cuenta | En el año | Último año |', '|---|---|---|'); for (const b of c.broker.slice(1)) L.push(`| ${b.cuenta} | ${fp(b.anio?.rent)} | ${fp(b.un_anio?.rent)} |`); L.push(''); }
   }
 
