@@ -43,3 +43,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 3. El primer `soffice --convert-to pdf` con ruta relativa no generó el PDF y no dio error (probablemente otra instancia de LibreOffice abierta en paralelo); con rutas absolutas funcionó.
 
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 127,8 EUR, rentabilidad +25,6 %, señal Comprar (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +15,2 % → +3,4 %, base +8,9 %, señal Mantener (`revision-12m-2026-10-13.md`).

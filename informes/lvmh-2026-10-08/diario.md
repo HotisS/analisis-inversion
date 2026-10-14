@@ -65,3 +65,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 2. La cuota implícita divide las ventas totales del grupo; en conglomerados con cuota de un subconjunto de segmentos haría falta un campo `ingresos_perimetro_pct` (o mercado_final por segmentos) para no dejarla en null.
 3. El cambio de la regla combinada del 10-oct mueve los niveles de los informes anteriores sin tocar datos; un informe regenerado con el motor nuevo contradice su síntesis si no se reescribe (aquí, 422,71 frente a 402,62).
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 497,6 EUR, rentabilidad 34,0 %, señal Comprar (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +29,0 % → +17,7 %, base +14,0 %, señal Comprar (`revision-12m-2026-10-13.md`).
