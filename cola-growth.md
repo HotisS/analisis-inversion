@@ -9,7 +9,7 @@ Análisis growth: método en `verticales/growth/metodo.md`, procedimiento en `.c
 | 5 | Zscaler | ZS | Ciberseguridad en la nube (cero confianza); complementa a CrowdStrike y Cloudflare, en Mantener |
 | 5 | Dexcom | DXCM | Monitores continuos de glucosa; cayó por problemas de calidad y competencia: posible giro de percepción |
 
-Tanda 5 propuesta al usuario el 14-oct; no se arranca sin su visto bueno a la lista.
+Tanda 5 en marcha desde el 14-oct (16:05).
 
 Al acabar una empresa: se quita de aquí y queda en `informes-growth/resumen.md`.
 
