@@ -1,0 +1,121 @@
+// Textos del analista (Sunbelt Rentals / Ashtead, corte 2026-10-14). Cifras del motor tal cual; hechos con cita de la nota.
+export default {
+  limitaciones: 'Ashtead Group plc ya no es la cotizada: desde el 2-mar-2026 la dominante es Sunbelt Rentals Holdings, Inc., con cotización principal en la Bolsa de Nueva York (SUNB, en USD) y una línea secundaria en Londres; el análisis usa la de Nueva York [B3, B4]. Ejercicio a 30 de abril, etiquetado por el año en que termina (FY2026 = mayo de 2025 a abril de 2026). FY2022-FY2024 están en NIIF (Ashtead) y FY2025-FY2026 en US GAAP (10-K): en US GAAP el gasto de arrendamientos operativos resta en el EBITDA y sus pasivos no son deuda. Entorno sin acceso a documentos: todas las cifras salen de extractos de búsqueda de los comunicados, del 10-K y de proveedores; precio del 9-oct-2026 (último cierre encontrado); la deuda neta del puente es una estimación propia (apalancamiento publicado × EBITDA de 12 meses); balance y flujos solo de FY2026; precios de cierre de FY2022-FY2025 reconstruidos con el PER de Stock Analysis.',
+  controles_explicados: [
+    { control: 'Al menos 5 comparables', explicacion: 'Solo hay tres alquiladores de maquinaria cotizados en EE. UU. con datos accesibles (United Rentals, Herc, McGrath); los europeos no cotizan. Peso de los comparables en la síntesis: 0.' },
+  ],
+  huecos: [
+    { seccion: 'catalizadores', campo: 'fecha de resultados del 2T27', tipo: 'Complemento', intentos: '1) web de inversores (sin acceso); 2) búsqueda del aviso de resultados del 2T27; 3) calendario de MarketBeat: sin fecha confirmada', decision: 'Omitido; se da la ventana (diciembre de 2026) por la costumbre de la empresa' },
+  ],
+  secciones: {
+    rentabilidad: {
+      comentario: 'El ROIC de FY2026 sale del 11,5 % con el capital invertido completo (patrimonio de 7.410 M más ≈7.500 M de deuda neta) [A10], apenas 0,9 puntos por encima del WACC del 10,59 %: con un bono a 10 años del 5,22 % y una beta de 1,31, alquilar maquinaria ya no crea mucho valor. En NIIF y con la flota de 2022-2024 el ROIC era mayor (márgenes EBITDA del 45 % y crecimiento de dos dígitos [A5, A6, A7]), pero el beneficio operativo cayó de 2.654 M (FY2024, NIIF) a 2.188 M (FY2026, US GAAP con 134 M no recurrentes) mientras el fondo de comercio subía a 3.476 M: el ROIC incremental de los últimos años es negativo. United Rentals tiene márgenes EBITDA de ≈45 % sobre una base de ingresos un 60 % mayor [B10]. La serie del motor solo tiene FY2026 porque falta el balance de los años anteriores.',
+      confianza: 'Baja',
+    },
+    catalizadores: {
+      items: [
+        { fecha: 'Diciembre de 2026', evento: 'Resultados del 2T27 (ago-oct)', efecto: 'Confirmar el alquiler +7-10 % y el margen tras el combustible; la guía de EBITDA es de 4.920-5.120 M [A3].', probabilidad: 'Alta', sentido: '+/−' },
+        { fecha: '2026-2027', evento: 'Posible entrada en el S&P 500', efecto: 'Compras de fondos indexados tras la salida de los índices británicos; sin fecha ni confirmación [E5].', probabilidad: 'Baja', sentido: '+' },
+        { fecha: 'Hasta sep-2027', evento: 'Recompra de 1.500 M USD iniciada en marzo de 2026', efecto: '≈5 % del capital al precio actual; frenada en el 1T27 (56 M) por la inversión [A3, A11].', probabilidad: 'Media', sentido: '+' },
+        { fecha: 'Marzo de 2027', evento: 'Resultados del 3T27 y primeros indicios de la guía FY2028', efecto: 'La rentabilidad a 12 meses depende del BPA de FY2028.', probabilidad: 'Alta', sentido: '+/−' },
+        { fecha: '2027', evento: 'Tipos de interés en EE. UU.', efecto: 'Un bono a 10 años por debajo del 4,5 % bajaría el WACC y animaría la construcción local [B9].', probabilidad: 'Media', sentido: '+' },
+      ],
+      confianza: 'Media',
+    },
+    riesgos: {
+      items: [
+        { riesgo: 'Recesión de la construcción local no residencial', tipo: 'Cíclico', probabilidad: 'Media', impacto: 'Alto', efecto_valor: '−45 % (escenario bajista a 12 meses: 43,76 USD)', mitigante: 'Grandes proyectos y Specialty; la empresa recorta inversión y genera caja.', senal: 'Alquiler del trimestre por debajo del +3 % sin compras.' },
+        { riesgo: 'Coste de la flota y del combustible por encima de las tarifas', tipo: 'Margen', probabilidad: 'Media', impacto: 'Medio', efecto_valor: '−1 punto de margen ≈ −6 % del BPA FY2028e (estimación propia)', mitigante: 'Disciplina de precios de los dos grandes.', senal: 'Margen EBITDA ajustado por debajo del 41 % en dos trimestres.' },
+        { riesgo: 'Tipos altos: WACC y demanda', tipo: 'Financiero', probabilidad: 'Media', impacto: 'Alto', efecto_valor: 'Cada 0,5 puntos de WACC mueven el DCF ≈ ±3 USD (tabla de sensibilidad)', mitigante: 'Deuda a tipo fijo en bonos.', senal: 'Bono a 10 años por encima del 5,5 %.' },
+        { riesgo: 'Múltiplo: el precio ya descuenta un 9,1 % de crecimiento anual', tipo: 'Valoración', probabilidad: 'Media', impacto: 'Alto', efecto_valor: 'Un PER de 15,3x (mínimo de 5 años) sobre el BPA base da 64 USD (−15 %)', mitigante: 'Recompras.', senal: 'PER del próximo ejercicio por encima de 20x sin subida de la guía.' },
+        { riesgo: 'Integración de compras y exceso de inversión en Specialty', tipo: 'Ejecución', probabilidad: 'Baja', impacto: 'Medio', efecto_valor: '−5 % (estimación propia)', mitigante: 'Historial de cientos de compras pequeñas sin deterioros publicados [A7].', senal: 'Margen de Specialty a la baja con crecimiento comprado.' },
+        { riesgo: 'Reino Unido débil', tipo: 'Geográfico', probabilidad: 'Alta', impacto: 'Bajo', efecto_valor: '−2 % (peso pequeño en el beneficio)', mitigante: 'Reestructuración en curso [A2].', senal: 'Pérdidas en el segmento.' },
+      ],
+      premortem: 'Octubre de 2029: la acción vale 45 USD. En 2027 la construcción local no residencial cayó por los tipos al 5 % y el fin de los incentivos a las fábricas; los grandes proyectos se retrasaron y la utilización de la flota bajó del 70 %. Sunbelt, que había vuelto a invertir 3.000 M al año en FY2027, se encontró con flota de sobra: recortó tarifas para llenarla y el margen EBITDA cayó al 38 %. El BPA de FY2028 se quedó en 2,9 USD y el mercado, que pagaba 19x, volvió al 15x de sus mínimos. La recompra se detuvo para proteger el rating y el dividendo quedó plano. La señal que lo anticipaba: el alquiler orgánico (sin compras) creciendo menos del 3 % mientras la inversión bruta subía por encima del 25 % de las ventas, y el apalancamiento por encima de 2x.',
+      confianza: 'Media',
+    },
+    preguntas: {
+      items: [
+        { tema: 'Rendimiento del capital nuevo', pregunta: '¿Qué ROIC esperan de la inversión de 2.750-3.150 M de FY2027 y de las compras de Specialty, frente al 11,5 % actual?', por_que: 'El ROIC apenas supera al WACC: crecer solo crea valor si el capital nuevo rinde más.' },
+        { tema: 'Crecimiento orgánico', pregunta: '¿Cuánto del +12,5 % del alquiler del 1T27 es orgánico en mismos locales, sin compras ni aperturas?', por_que: 'El mercado de la ARA crece un 2,9 %; nuestro base supone ganar cuota.' },
+        { tema: 'Precio frente a coste', pregunta: '¿Cómo evolucionan las tarifas frente a la inflación del coste de la flota y del combustible?', por_que: 'Explica la caída del margen al 42,2 %.' },
+        { tema: 'Asignación de capital', pregunta: '¿Por qué frenar la recompra (56 M en el 1T27) si el apalancamiento está en 1,8x y el objetivo es 1-2x?', por_que: 'La recompra es la principal palanca del BPA.' },
+        { tema: 'Contabilidad', pregunta: '¿Qué partidas recurrentes quedan dentro del EBITDA ajustado (pagos en acciones, costes de traslado) y se repetirán?', por_que: 'El BPA ajustado se separa un 18 % del contable.' },
+        { tema: 'Gobierno', pregunta: '¿Qué defensas antiopa incorpora la nueva sociedad estadounidense y cómo se votó la remuneración en la junta de septiembre?', por_que: 'No se pudo leer el proxy.' },
+      ],
+      confianza: 'Media',
+    },
+    resumen: {
+      recomendacion: 'Mantener',
+      conviccion: 'Baja',
+      justificacion_recomendacion: null,
+      horizonte: '12 meses',
+      sintesis: '**La recomendación y por qué.** Mantener, con convicción baja. Nuestro objetivo a 12 meses es de 72,46 USD frente a un precio de 75,17 (9-oct-2026): rentabilidad ponderada del −2,1 % y del 5,4 % en el escenario base, ambas con dividendo. El valor intrínseco (41,22 USD) queda un 45,2 % por debajo del precio, y el objetivo medio de los analistas (84,80 USD) está por encima de nuestro base (78,12). La regla a 12 meses da Mantener; el valor intrínseco daría Vender. La convicción es baja, y no media como sugiere el motor, porque el balance, los flujos y la deuda neta del informe son incompletos o estimados: la subiría leer el 10-K completo y el resultado del 2T27 (diciembre).\n\n**El negocio.** Sunbelt (antes Ashtead) es el segundo alquilador de maquinaria de Norteamérica, con un margen EBITDA ajustado del 41,9 % en FY2026 [A1] y una cuota estimada del 12 % [B6]. Su ventaja es la escala, no un foso amplio: el ROIC es del 11,5 % frente a un WACC del 10,59 %, apenas 0,9 puntos. La sostenibilidad del crecimiento es «En parte»: la reinversión proyectada (32 % del NOPAT) al ROIC actual solo financia un 3,7 % anual, así que rebajamos el caso base del 4,9 % al 3,6 % de crecimiento medio y subimos la inversión al 24,5-28,5 % de las ventas.\n\n**Sector y ciclo.** El alquiler de EE. UU. crece un 2,9 % en 2026 según la ARA [B6]; Sunbelt crece más (+12,5 % en el alquiler del 1T27) gracias a los grandes proyectos y a las compras [A3]. La construcción local no residencial está estable tras dos años de moderación: estamos en la madurez del ciclo.\n\n**Finanzas.** FY2026 cerró con 11.154 M USD de ingresos (+3,4 % en alquiler), 1.325 M de beneficio neto y 2.055 M de flujo libre en un año de poca inversión [A1]. El 1T27 cambió el tono: ingresos +11,2 %, guía de EBITDA elevada a 4.920-5.120 M, pero solo 70 M de flujo libre por la vuelta de la inversión [A3, A13]. Deuda neta de ≈8.600 M (1,8x), dentro del objetivo de 1-2x.\n\n**Equipo y gobierno.** Consejero delegado de la casa y capital disperso. No hemos podido leer el proxy de 2026: gobierno sin puntuar.\n\n**Valoración.** El DCF da 41,28 USD (WACC del 10,59 %; 63 % del valor en el terminal); con la prima de riesgo que pide hoy el mercado, 50,31 USD. El DCF inverso dice que el precio descuenta un crecimiento del 9,1 % anual durante diez años, frente al 3,7 % de nuestro base y al 3,5 % previsto para el mercado: es exigente. Por múltiplos no está cara (7,9x EV/EBITDA y 17,6x PER de los próximos 12 meses) porque el mercado paga la flota y la caja, no el crecimiento. Nuestro BPA FY2028e (4,20 USD) está cerca del consenso en base contable; la diferencia con los analistas es de múltiplo.\n\n**Riesgos y catalizadores.** Una recesión de la construcción local llevaría el precio a 43,76 USD (bajista a 12 meses, −40,3 %); un coste de flota y combustible por encima de las tarifas recorta ≈6 % del BPA por punto de margen. Catalizadores: resultados del 2T27 en diciembre y la recompra de 1.500 M. El sentimiento de los foros está dividido y mejora tras el 1T27, sin euforia.\n\n**Qué cambiaría la decisión.** Compraríamos por debajo de 41,22 USD (los tres requisitos: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio) y venderíamos por encima de 81,76 USD. También pasaríamos a Vender si el margen EBITDA ajustado baja del 40 % en dos trimestres o el alquiler orgánico crece menos del 3 %.',
+      tesis: 'Sunbelt Rentals es el antiguo Ashtead: el segundo alquilador de maquinaria de Norteamérica, con 11.154 M USD de ingresos en FY2026, margen EBITDA ajustado del 41,9 % y 2.055 M de flujo libre [A1]. Desde marzo cotiza en Nueva York y crece de nuevo: alquiler +12,5 % en el 1T27 y guía elevada [A3].\n\nEl precio (75,17 USD) descuenta un crecimiento del 9,1 % anual durante diez años según el DCF inverso, frente al 3,7 % de nuestro base. En múltiplos parece razonable (7,9x EV/EBITDA de los próximos 12 meses), pero con un ROIC del 11,5 % y un WACC del 10,59 % crecer apenas crea valor.\n\nEl mercado acierta en que el ciclo de los grandes proyectos sostiene los próximos dos años y en que la recompra apoya el BPA; se equivoca, a nuestro juicio, en pagar 18-19x un beneficio cíclico con un ROIC tan ajustado. Para invertir hay que creer que el capital nuevo rinde muy por encima del 11,5 % y que la construcción local se recupera con tipos más bajos.',
+      vision_diferencial: {
+        mercado_descuenta: 'Un ciclo largo de grandes proyectos (centros de datos, fábricas, GNL) que sostiene un crecimiento cercano al 9 % anual y márgenes del 42-43 %, con el PER volviendo a la mediana de 18-19x y la recompra empujando el BPA.',
+        nuestra_vision: 'Crecimiento del 3,6 % medio en diez años, el que financia la reinversión al ROIC actual, y márgenes estables del 42-43 %. El BPA FY2028e de 4,20 USD vale 78 USD a la mediana de su PER: poco recorrido.',
+        por_que: 'El ROIC del 11,5 % solo supera en 0,9 puntos al WACC: crecer exige invertir 25-28 % de las ventas y el capital nuevo no rinde mucho más que el coste del dinero. La historia reciente (FY2025-FY2026 con beneficio a la baja) muestra lo rápido que se enfría el ciclo local.',
+      },
+      a_favor: [
+        '**Vuelve a crecer**: alquiler +12,5 % e ingresos +11,2 % en el 1T27, con la guía de EBITDA elevada a 4.920-5.120 M [A3].',
+        '**Caja abundante en la parte baja del ciclo**: 2.055 M de flujo libre en FY2026 [A1].',
+        '**Balance holgado**: deuda neta de 1,8x el EBITDA, dentro del objetivo de 1-2x.',
+        '**Specialty crece al 25 %** y diversifica fuera de la construcción [A8].',
+        '**Recompra de 1.500 M** en curso (≈5 % del capital) [A11].',
+      ],
+      en_contra: [
+        '**ROIC del 11,5 % frente a un WACC del 10,59 %**: crecer apenas crea valor.',
+        '**El precio descuenta un 9,1 % de crecimiento anual**, frente al 3,7 % de nuestro base.',
+        '**Márgenes a la baja**: 42,2 % en el 1T27 frente al 43,2 % por mezcla y combustible [A3].',
+        '**Inversión de vuelta**: solo 70 M de flujo libre en el 1T27 [A13].',
+        '**Datos incompletos**: balance, flujos y gobierno sin documento primario completo.',
+      ],
+      que_vigilar: 'La tesis depende de que el capital nuevo (2.750-3.150 M de inversión en FY2027 y las compras de Specialty) rinda por encima del 11,5 % actual. La señal en contra sería un alquiler orgánico por debajo del 3 % con la inversión bruta por encima del 25 % de las ventas, o un margen EBITDA ajustado por debajo del 40 %.',
+      cambiaria_recomendacion: [
+        'Precio por debajo de 41,22 USD: pasaría los tres requisitos de compra (Comprar).',
+        'Precio por encima de 81,76 USD: rentabilidad ponderada a 12 meses ≤ −10 % (Vender).',
+        'Margen EBITDA ajustado por debajo del 40 % en dos trimestres seguidos: Vender.',
+        'Guía de EBITDA FY2027 por encima de 5.200 M con alquiler orgánico > 6 %: revisar al alza el base.',
+      ],
+      kpis_seguimiento: [
+        { kpi: 'Crecimiento del alquiler', nivel_actual: '+12,5 % (1T27)', umbral_alerta: '< +3 % sin compras', por_que: 'Mide el ciclo y la cuota.' },
+        { kpi: 'Margen EBITDA ajustado', nivel_actual: '42,2 % (1T27)', umbral_alerta: '< 40 %', por_que: 'Coste de flota y combustible frente a tarifas.' },
+        { kpi: 'Deuda neta / EBITDA', nivel_actual: '1,8x (jul-26)', umbral_alerta: '> 2,0x', por_que: 'Fuera del rango objetivo frenaría la recompra.' },
+        { kpi: 'Inversión bruta / ventas', nivel_actual: 'Guía de 2.750-3.150 M (≈25 %)', umbral_alerta: '> 28 % con crecimiento < 5 %', por_que: 'Reinversión que no rinde.' },
+      ],
+      confianza: 'Baja',
+    },
+  },
+  dcf_justificacion: {
+    crecimiento: 'FY2027e +7,5 %: el punto medio de la guía (+6-9 %), con ≈1 punto de Reliant/Aries [A3]. Después baja al 4,0 % en FY2028e y al 3,0-3,5 % hasta FY2036e. El mercado de la ARA crece un 2,9 % en 2026 [B6]; Sunbelt creció un 12 % en FY2024 y un 3,4 % en FY2026 [A1, A7]. El base está rebajado desde una primera versión (4,9 % medio) porque la reinversión al ROIC actual no lo financiaba (prueba de sostenibilidad).',
+    margenes: 'Margen EBITDA (US GAAP, sin no recurrentes) del 41,9 % en FY2027e, en línea con la guía de 4.920-5.120 M [A3], y del 42,5-43 % después: por debajo del 43,2 % del 1T26 y del ≈45 % de United Rentals [B10]. La amortización se mantiene en el 20,5 % de las ventas (20,7 % en FY2026) [A1].',
+    inversion: 'Inversión neta de ventas de flota usada más compras: 28,5 % de las ventas en FY2027e (guía bruta de 2.950 M menos ≈500 M de ventas de flota y 669 M de compras [A3, A1]) y bajando al 24,5 % en FY2035e-FY2036e. Con la amortización al 20,5 %, la inversión neta financia el crecimiento con una intensidad de capital de ≈1,1 veces las ventas, la de la flota y los locales sin fondo de comercio. El circulante se deja en cero por falta de balance (efecto pequeño).',
+    wacc: 'Tasa libre del 5,22 % (bono a 10 años de EE. UU. del 13-oct [D19]); beta de 1,31 (5 años mensual de la línea de Londres [D11]; las de SUNB, 1,54-1,72, salen de pocos meses en EE. UU.); prima de mercado del 5,5 %; coste de la deuda del 5,5 % antes de impuestos (387 M de intereses sobre ≈7.500 M, más los bonos nuevos [A1, A13]); peso de la deuda del 22 % a valor de mercado. WACC: 10,59 %. Con la prima implícita de Damodaran (4,2 %) el WACC baja al 9,3 %.',
+    terminal: 'Media de Gordon con un crecimiento del 3,0 % (2 % real más inflación en USD, por debajo de la tasa libre menos medio punto) y de un múltiplo de salida de 8,5x EBITDA, entre las transacciones (6,9-7,4x [D17, D18]) y United Rentals (10,3x [D14]).',
+  },
+  puente_comentarios: {
+    'FY2027e': 'Volumen +3 % (grandes proyectos y 55 locales nuevos), precio +1,5 % y otros +3 % (Reliant/Aries y otra compra de 669 M) [A3, A13].',
+    'FY2028e': 'Volumen +1,5 % con el ciclo local estable, precio +1,5 % y otros +1 % (compras pequeñas).',
+    'FY2029e': 'Volumen +1,5 %, precio +1,5 % y otros +0,5 %.',
+    'FY2030e': 'Igual que FY2029e: crecimiento en línea con el mercado y algo de cuota en Specialty.',
+    'FY2031e': 'Volumen +1 %, precio +1,5 %, otros +0,5 %.',
+  },
+  veredicto: 'En parte',
+  sostenibilidad_justificacion: 'En parte. El ROIC del 11,5 % apenas supera al WACC y el ROIC incremental de FY2024-FY2026 es negativo (más flota y fondo de comercio con menos beneficio). La primera versión del caso base (4,9 % de crecimiento medio) no pasaba la prueba: la reinversión al ROIC actual solo financiaba un 3,6 %. Rebajamos el crecimiento (FY2028e +4 % y 3-3,5 % después) y subimos la inversión: ahora la reinversión (32 % del NOPAT) financia un 3,7 % frente al 3,6 % proyectado, el capital nuevo rinde un 12,4 % y la cuota sube del 12 % al 14,5 %, coherente con la ganancia de cuota de la última década. El poder de precios es limitado (el combustible no se trasladó entero en el 1T27 [A13]).',
+  dcf_lectura: 'El DCF base da 41,28 USD por acción, un 45,1 % por debajo del precio, con el 63 % del valor en el terminal. Las sensibilidades van de 34,66 USD (WACC del 11,6 %, crecimiento del 2 %) a 50,87 USD (9,6 % y 4 %): ninguna combinación razonable llega al precio. El DCF inverso explica por qué: para justificar 75,17 USD con nuestro margen hace falta un crecimiento del 9,1 % anual durante diez años, o un margen EBITDA del 54,1 % con nuestro crecimiento; la rentabilidad anual implícita en el precio es del 7,0 %, por debajo del WACC del 10,59 % y del 9,3 % que pide el mercado. Es una expectativa exigente frente a la historia: Sunbelt creció a dos dígitos en FY2022-FY2024 pero un 0-3 % en FY2025-FY2026 [A1, A7]. La diferencia con el precio es sobre todo de tasa de descuento: con la prima implícita del mercado el valor sube a 50,31 USD, todavía un tercio por debajo.',
+  narrativas: {
+    Bajista: 'La construcción local cae en 2027 como en 2009-2010 o 2020: el alquiler baja un 3,5 % en FY2028e y el margen pierde 5 puntos ese año; después el crecimiento queda 2 puntos por debajo del base y el margen 1,5 puntos. Ya pasó en FY2025-FY2026, con ingresos planos y beneficio a la baja.',
+    Base: 'La guía de FY2027 se cumple, el crecimiento se normaliza al 3-4 % con márgenes del 42-43 % e inversión del 25-28 % de las ventas.',
+    Alcista: 'Los grandes proyectos y Specialty sostienen un crecimiento 2 puntos por encima del base y un margen 1 punto mayor, con la salida a 9,5x EBITDA.',
+  },
+  escenarios_comentario: 'La asimetría del valor intrínseco es desfavorable: incluso el alcista (59,40 USD) queda un 21,0 % por debajo del precio, y el bajista (22,69 USD) un 69,8 %. Con la prima del mercado todo sube unos 9 USD, sin cambiar la conclusión. A 12 meses la asimetría es mejor (alcista 89,82 USD, +21,0 %; bajista 43,76, −40,3 %) porque el precio cotiza al múltiplo histórico, no al DCF: es esa lectura la que manda en la recomendación.',
+  valoracion_comentario: 'Pesos: 50 % DCF y 50 % escenarios. Los comparables no pesan: solo hay tres con datos parciales y fechas distintas. Las transacciones (6,9-7,4x EBITDA) tampoco: no hay comprador posible para una empresa de ≈39.000 M de valor. La dispersión entre métodos es amplia: el DCF (41,28) y los escenarios (22,69-59,40) quedan muy por debajo de la cotización de 52 semanas (61,03-86,68) y del rango de los analistas (62-90). El mercado valora a Sunbelt por múltiplos de beneficio de mitad de ciclo, no por el flujo descontado con un coste de capital del 10,6 %.',
+  o12: {
+    bajista: 'La construcción local cae en FY2028: ingresos FY2028e de ≈10.840 M (+4,5 % y −7 %), margen EBITDA del 39 %, amortización del 20,5 %, intereses de ≈430 M y tipo del 25,5 %: 1.174 M de beneficio, 2,86 USD por acción con 410 M de acciones.',
+    base: 'Guía FY2027 cumplida (+7,5 %, margen 41,9 %) y +4 % en FY2028e con margen del 42,5 %: ventas de 12.470 M, EBITDA de 5.300 M, EBIT de 2.744 M, intereses de 430 M y tipo del 25,5 %: 1.724 M, 4,20 USD por acción (410 M de acciones, sin recompras nuevas).',
+    alcista: 'Ventas de 12.947 M (+9,5 % y +6 %) con margen del 43,5 %: EBIT de 2.978 M y beneficio de 1.898 M, 4,63 USD por acción.',
+    diferencia: 'Nuestro BPA FY2028e (4,20 USD) queda un 8 % por debajo del consenso (4,57; 4,70 según otra fuente) [D3, D4], pero el consenso es ajustado: sin la amortización de intangibles (≈130 M, ≈0,24 USD tras impuestos) la diferencia baja a ≈3 %. Nuestro precio base (78,12) queda un 7,9 % por debajo del objetivo medio (84,80), por el múltiplo: usamos la mediana de cinco años (18,6x) y los analistas pagan ≈19-20x el BPA ajustado.',
+    comentario: 'El valor intrínseco (41,22 USD) está un 43 % por debajo del objetivo a 12 meses (72,46): el mercado paga un múltiplo de mitad de ciclo que nuestro DCF no justifica con un WACC del 10,6 %. Cerrar esa distancia exigiría tipos de interés más bajos (un WACC del 9 % sube el DCF a ≈50 USD) o un crecimiento muy superior, financiado con un capital nuevo que rinda mucho más que el 11,5 % actual. La tesis de valor, si la hay, es a más de un año y depende del ciclo.',
+  },
+};
