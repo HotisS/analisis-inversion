@@ -4,11 +4,15 @@ Plantillas Word, prompts y un motor para producir informes de análisis de inver
 
 | Vertical | Se le da | Campos | Gráficos |
 |---|---|---|---|
-| **Empresa cotizada** (extensa: 30-60 min, 30-50 páginas) | nombre, ticker o ISIN | 28 secciones | 28 |
+| **Empresa cotizada** (análisis value; extensa: 30-60 min, 30-50 páginas) | nombre, ticker o ISIN | 28 secciones | 28 |
 | **ETF** | nombre, ticker o ISIN | 13 | 10 |
 | **Industria o sector** | nombre + ámbito geográfico | 18 | 11 |
 
 Qué campos hay y por qué: [CAMPOS.md](CAMPOS.md).
+
+## Value y growth
+
+Hay dos tipos de análisis de empresa: el **análisis value** (la vertical «Empresa cotizada» de arriba: DCF, calidad y objetivo por PER) y el **análisis growth** (crecimiento, tecnología y cambio de tendencia, aunque no haya beneficios), con su método en [verticales/growth/metodo.md](verticales/growth/metodo.md), el cálculo en `motor/growth.mjs` y los informes en `informes-growth/`.
 
 ## Cómo funciona
 

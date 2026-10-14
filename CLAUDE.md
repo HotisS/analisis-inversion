@@ -2,9 +2,14 @@
 
 Este repo produce informes Word de análisis de inversión en tres verticales: empresa cotizada, ETF e industria/sector. El README explica la arquitectura.
 
+## Dos tipos de análisis de empresa (14-oct-2026)
+
+- **Análisis value** (el de siempre): informe Word de 28 secciones con DCF, calidad (ROIC − WACC) y objetivo a 12 meses por PER. Vive en `verticales/empresa/`, `informes/`, `cola.md` y `/analiza-empresa`. Todo lo que este archivo dice de «empresa», «informe», «cola» o «cartera» sin más se refiere a value.
+- **Análisis growth**: crecimiento muy alto, tecnología nueva y cambio de tendencia en la percepción, aunque la empresa aún no gane dinero. Método y plantilla en `verticales/growth/`, cálculo en `motor/growth.mjs`, informes en `informes-growth/` (resumen en `informes-growth/resumen.md`), cola en `cola-growth.md` y procedimiento en `/analiza-growth`. No usa los requisitos value (ROIC − WACC, PER): tiene su puntuación, sus señales y su regla de compra.
+
 **Antes de nada: `git pull`, y lee `MEMORIA.md` (reglas del usuario) y `cola.md` (qué queda pendiente).** El repo de GitHub es la única fuente: cada cambio, commit y push.
 
-## Empresa cotizada: usa `/analiza-empresa`
+## Empresa cotizada (análisis value): usa `/analiza-empresa`
 
 Para empresas, el procedimiento está en `.claude/commands/analiza-empresa.md` (con `verticales/empresa/lecciones.md` y las herramientas de `herramientas/`: descargas, datos de bolsa, extracto del prompt por subagente; y `motor/integrar.mjs` para juntar las notas) (también si el usuario lo pide con otras palabras: «analiza Viscofan»). Es un análisis largo, de 30-60 minutos, en dos pasos de código: `motor/calcular-empresa.mjs` hace todas las cuentas (DCF, comparables, indicadores, controles) y `motor/rellenar.mjs` genera el Word. Las secciones sin información tras tres búsquedas no se imprimen y se avisan (protocolo de huecos del prompt).
 
