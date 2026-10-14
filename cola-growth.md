@@ -6,7 +6,7 @@ Solo growth (la value es `cola.md`). Método vigente **v11** (`verticales/growth
 
 | Qué | Estado |
 |---|---|
-| Tanda 12: Madrigal Pharmaceuticals (MDGL), Ascendis Pharma (ASND), Remitly (RELY), Construction Partners (ROAD) | Propuesta el 14-oct tras la tanda 11 |
+| Tanda 12: Madrigal Pharmaceuticals (MDGL), Ascendis Pharma (ASND), Remitly (RELY), Construction Partners (ROAD) | En marcha desde el 14-oct 18:20 |
 | Hacer vigente v12 (crecimiento orgánico) | Probada y lista en el motor (`resultados-v12.md`); pendiente del visto bueno del usuario |
 | Revisar Wise con su actualización del 2T | 15-oct; si sube a convicción media, se propone como sustituta |
 | Revisar argenx con sus resultados del 3T | 22-oct; suplente desde el 14-oct |
