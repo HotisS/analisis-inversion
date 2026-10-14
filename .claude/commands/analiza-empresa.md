@@ -61,10 +61,11 @@ En `informes/<carpeta>/`:
 - `notas/` con las notas A-E y `propio`, `notas/cuentas-xbrl.json` (y `cuentas-mapa.json` si hizo falta) donde hay XBRL, y `notas/actualizacion-vN.mjs` para cada versión rápida.
 Fuera de la carpeta:
 - la revisión apuntada con `node herramientas/apuntar-12m.mjs <carpeta>` (lee `valoracion.objetivo_12m` y calcula la regla, la ponderada, el base y la señal);
+- **pruebas de robustez, obligatorias antes de dar la señal** (14-oct-2026): `node herramientas/robustez.mjs <carpeta>`. Un `CORREGIR` bloquea la señal hasta arreglar el dato; un `VARIANTE` dice qué cifra decide; un `CONFIANZA` deja un Comprar en Mantener; la «acción robusta» es la que se comunica. En la entrega van el veredicto (sólida o frágil, y con qué variante cambia), el colchón de BPA y las dos o tres objeciones más fuertes con su respuesta (`verticales/empresa/robustez.md`);
 - `node herramientas/seguimiento.mjs` (columnas «Metodología» = Nueva y «… 12 m» llenas);
 - `cola.md` marcada, las lecciones nuevas en `verticales/empresa/lecciones.md` o en su anexo (país o caso; una o dos líneas, solo si no están ya), y commit y push.
 
 Encargos de subagentes para trabajos repetidos sobre informes ya hechos, en `verticales/empresa/encargos/`: `actualizacion-sostenibilidad.md` (pasar un informe viejo a la metodología nueva), `recorte-caso-base.md` (cuando falla la prueba), `revision-12m.md` (rentabilidad a 12 meses) y `actualizacion-completa.md` (las dos cosas seguidas).
 
 ## Entrega
-Responde con la ruta del informe (Word y PDF) y, en diez líneas como máximo: recomendación (Comprar/Mantener/Vender) y convicción, objetivo a 12 meses y rentabilidad a 12 meses v2 (ponderada y base; manda en la recomendación), valor intrínseco con su rentabilidad y el objetivo medio de los analistas y veredicto de sostenibilidad, qué descuenta el precio (DCF inverso), cobertura, controles en «Revisar» que quedan y por qué, y las secciones o datos omitidos (los de núcleo, primero).
+Responde con la ruta del informe (Word y PDF) y, en diez líneas como máximo: veredicto de las pruebas de robustez y acción robusta, recomendación (Comprar/Mantener/Vender) y convicción, objetivo a 12 meses y rentabilidad a 12 meses v2 (ponderada y base; manda en la recomendación), valor intrínseco con su rentabilidad y el objetivo medio de los analistas y veredicto de sostenibilidad, qué descuenta el precio (DCF inverso), cobertura, controles en «Revisar» que quedan y por qué, y las secciones o datos omitidos (los de núcleo, primero).

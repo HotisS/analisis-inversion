@@ -40,6 +40,7 @@ Se sigue entera en cada empresa. Método y reglas: [metodo.md](metodo.md). Todo 
     "ejercicio_objetivo": "2028", "metrica": "EV/ventas", "anios_hasta_objetivo": 2,
     "ventas_objetivo_m": { "bajista": 0, "base": 0, "alcista": 0 },
     "multiplo_actual": 0, "mediana_3a": 0, "minimo_3a": 0, "mediana_comparables": 0,
+    "ebitda_ntm_m": null, "margen_ebitda_obj_pct": null, "nota_margen_obj": "",
     "comparables": ["…"],
     "crecimiento_actual_pct": 0, "crecimiento_obj_pct": 0,
     "probabilidades": { "bajista": 25, "base": 50, "alcista": 25 },
@@ -56,6 +57,7 @@ Notas de los campos:
 - `ultimo_trimestre_pct`: crecimiento interanual del último trimestre. `subida_12m_pct`: revalorización de la acción en 12 meses (la usa la regla de euforia). `ventas_objetivo_m`: la proyección del analista; desde v4 es solo contraste, la que cuenta la calcula el código.
 - `aceleracion_pp`: crecimiento interanual del último trimestre − media de los cuatro anteriores.
 - `guia_12m_pct`, `exceso_guia_pp`, `nota_guia` (opcionales; los usa la candidata v9, `backtest/resultados-v9.md`): crecimiento de ingresos que guía la empresa para los 12 meses siguientes (punto medio; si el ejercicio en curso ya pasó su primera mitad, el crecimiento implícito en lo que queda del año guiado, o la guía del año siguiente si ya existe; solo guía trimestral → `null`) y lo que de media la bate, en puntos de crecimiento (media de los 4 últimos trimestres; si solo hay guía anual, crecimiento real del último ejercicio − el de su primera guía; desconocido → `null` = 0). v9 parte como mucho de guía + exceso; solo recorta. Sin guía, `null`.
+- `ebitda_ntm_m`, `margen_ebitda_obj_pct`, `nota_margen_obj` (opcionales; solo con métrica EV/EBITDA; los usa la candidata v10, `backtest/resultados-v10.md`; v1-v9 no los leen): `ebitda_ntm_m` = EBITDA (ajustado) de los 12 meses siguientes, con fuente; con él v10 calcula `multiplo_actual` = EV / `ebitda_ntm_m` (el múltiplo deja de escribirse a mano; si el escrito difiere más de un 5 %, avisa y manda el calculado). `margen_ebitda_obj_pct` = margen EBITDA del ejercicio objetivo según la guía o los objetivos públicos a medio plazo de la empresa (punto medio; si el objetivo es de margen operativo, + amortizaciones sobre ventas; si su año pasa en más de uno del ejercicio objetivo, interpolación lineal desde el margen de hoy; nunca el consenso); sin objetivo, `null` (= v9). v10 usa el margen de hoy en el bajista, la media en el base y el objetivo en el alcista. `nota_margen_obj`: de dónde sale y cómo se convierte.
 - `tam_m`: mercado **alcanzable** en el ejercicio objetivo (no el «mercado total» de la presentación si es inflado); se dice de dónde sale.
 - `tecnologia_0a5`: 5 = tecnología propia que nadie replica en 3 años (patentes, datos, efecto red); 3 = buena pero con alternativas; 1 = producto commodity.
 - `posicion_0a5`: 5 = líder claro con cuota creciente; 3 = entre los 3 primeros; 1 = seguidor.

@@ -11,6 +11,7 @@ Lo genera `node motor/growth.mjs --todos` (no editar a mano). Método v9: [verti
 | Insulet | PODD | 54.5 | 1/8 | +22,5 % | +16,1 % | Mantener | — | 160.3 USD | 2026-10-14 |
 | Natera | NTRA | 74.7 | 6/8 | +21,8 % | +25,1 % | Comprar (baja) | 3.5 % | 459.1 USD | 2026-10-14 |
 | Samsara | IOT | 78.5 | 7/8 | +19,6 % | +22,8 % | Comprar (media) | 4 % | 47 USD | 2026-10-14 |
+| Eli Lilly | LLY | 85.5 | 7/8 | +16,3 % | +19,6 % | Comprar (media) | 4 % | 1292.5 USD | 2026-10-14 |
 | Shopify | SHOP | 77.8 | 5/8 | +14,9 % | +18,1 % | Comprar (media) | 4 % | 193.2 USD | 2026-10-14 |
 | Zscaler | ZS | 69 | 4/8 | +14,2 % | +8,7 % | Comprar (baja) | 3.5 % | 248.6 USD | 2026-10-14 |
 | Toast | TOST | 62.8 | 3/8 | +14 % | +16,3 % | Comprar (baja) | 3.5 % | 33.5 USD | 2026-10-14 |
@@ -28,7 +29,10 @@ Lo genera `node motor/growth.mjs --todos` (no editar a mano). Método v9: [verti
 | Arista Networks, Inc. | ANET | 78.8 | 5/8 | +2,1 % | +4,8 % | Mantener | — | 198.9 USD | 2026-10-14 |
 | Rocket Lab Corporation | RKLB | 63.8 | 3/8 | +1,3 % | +15,7 % | Mantener | — | 28.7 USD | 2026-10-14 |
 | Spotify Technology | SPOT | 54.5 | 3/8 | -0,6 % | -5 % | Mantener | — | 499.5 USD | 2026-10-14 |
+| Comfort Systems USA | FIX | 76.7 | 4/8 | -1,2 % | +1,4 % | Mantener | — | 1530.6 USD | 2026-10-14 |
+| Boston Scientific | BSX | 46 | 2/8 | -10,2 % | -4 % | Vender | — | 37 USD | 2026-10-14 |
 | GE Vernova Inc. | GEV | 61.8 | 3/8 | -14,8 % | -12,6 % | Vender | — | 814 USD | 2026-10-14 |
 | Palantir Technologies | PLTR | 93.8 | 7/8 | -15,5 % | -13,3 % | Vender | — | 141.2 USD | 2026-10-14 |
+| Monolithic Power Systems, Inc. | MPWR | 70.7 | 4/8 | -19 % | -16,9 % | Vender | — | 1015.8 USD | 2026-10-14 |
 | BE Semiconductor Industries (Besi) | BESI | 63.3 | 2/8 | -23 % | -26,9 % | Vender | — | 125.7 EUR | 2026-10-14 |
 | Celestica Inc. | CLS | 66.2 | 3/8 | -26,2 % | -24,4 % | Vender | — | 251.1 USD | 2026-10-14 |

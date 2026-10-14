@@ -1,0 +1,15 @@
+# Diario · MSCI (MSCI) · 14-oct-2026
+
+- Commit de partida: 10e6e66 (órdenes 15-oct). Sin `git pull` ni commits (encargo: los hace el coordinador).
+- Entorno: nube de Claude Code con red abierta. Sin subagentes: notas A-E escritas por mí con `notas/construir-notas.mjs`; `propio.mjs` + `supuestos.mjs` + `textos.mjs`.
+- Fuentes: XBRL de la SEC (`cuentas.mjs`) y companyfacts; 10-K 2025, 10-Q 2T26, notas de resultados de 2T25-2T26 y de los 4T de 2018, 2020, 2022 y 2024 (BPA ajustado), proxy 2026, 8-K (BlackRock, Pettit, director contable, junta) con `descargar.mjs`; Form 4 con `form4.mjs`; bolsa con `bolsa.mjs` (^GSPC, XLF); Tesoro (10 años 5,21 % el 13-oct); consenso de MarketScreener (WebFetch) y Stock Analysis; comparables de la ficha `sectores/bolsas-datos-financieros-2026-10-14` (reutilizada, no hecha por mí) + Morningstar de Stock Analysis; transacciones del informe de Moody's; foros: Stocktwits API y RSS de Seeking Alpha.
+- Tiempos (reloj del contenedor, UTC): 16:50 inicio · 16:57 cuentas, bolsa, documentos y consenso · 17:02 notas A-E y primer cálculo · 17:07 textos, Word y PDF · 17:09 revisión 12 m y diario (≈ 20 minutos de reloj).
+- Decisiones: amortización = depreciación + amortización de intangibles (el XBRL solo daba la depreciación; sin ello el EBITDA salía 170 M bajo); capex = inmovilizado + software activado; arrendamientos operativos fuera (US GAAP); integración de compras 2023-2024 en `no_recurrentes_en_ebitda`. Puente a jun-26: deuda 6.425 M de principal, caja 356,4, otros ajustes 153,9 (First Street 120 + contingentes 33,9). WACC 10,30 % (beta 1,10). Terminal media de Gordon 3,5 % y 17x EBITDA. Sostenibilidad «Sí» (prueba a mano: sin inversión neta; crecimiento proyectado 7,7 % < década 11,8 % y < mercado de índices 8 %). BPA de la rentabilidad a 12 meses en base ajustada, como el consenso y la historia.
+- Resultado: DCF 412,24; valor intrínseco 411,68 (−26,6 %); con la prima del mercado 461,59. DCF inverso: 11,7 % anual de crecimiento 2027-2033 (base 7,1 %). ROIC 44,5 % frente a WACC 10,30 % (+34,2 puntos): calidad Sí. 18 de 20 controles y 2 explicados (terminal 3,5 %, regresión). Cobertura 92,8 %.
+- **Línea 12 m**: v3 objetivo 701,04 USD, ponderada +26,4 %, base +28,6 %; v2 637,54, ponderada +15,1 %, base +11,7 %. **Mantener**, convicción media (valor intrínseco < precio). Comprar < 411,68; vender > 787,49. Próximos resultados: 20-oct-2026.
+- Confianza de los datos: alta en cuentas, balance, flujos y gobierno (primarias); media en consenso (un proveedor completo), comparables (ficha del repo llevada al cierre) y sector (Burton-Taylor de segunda mano).
+
+## Lecciones
+
+- MSCI (y otros con intangibles comprados y software activado en US GAAP): `cuentas.mjs` toma `DepreciationDepletionAndAmortization`, que en MSCI es solo la depreciación del inmovilizado; hay que sumar `AmortizationOfIntangibleAssets` y llevar `PaymentsForSoftware` al capex.
+- Con una ficha sectorial del mismo día en `sectores/`, su JSON de comparables ahorra la fase D casi entera.

@@ -1,0 +1,268 @@
+// Pruebas de robustez (14-oct-2026): detectan los informes en los que el método puede chirriar ANTES de dar una señal,
+// y dicen cómo se trata cada caso. No cambian el método ni los datos: leen el último datos*.json de cada informe,
+// `verticales/empresa/objetivo12m-revisados.json` y `verticales/empresa/precios.json`, y recalculan con la MISMA función
+// del motor (`motor/objetivo12m.mjs`) bajo variantes razonables. Procedimiento y significado de cada prueba:
+// `verticales/empresa/robustez.md`. Paso obligatorio de `/analiza-empresa` y de cualquier orden.
+//
+//   node herramientas/robustez.mjs <carpeta> [<carpeta> …]      informe de pruebas de esas empresas
+//   node herramientas/robustez.mjs --todas                      todas las de informes/ (escribe verticales/empresa/robustez.json
+//                                                               y verticales/empresa/robustez.md con --escribir)
+//   … --escribir                                                guarda los resultados (si no, solo imprime)
+//   … --json                                                    imprime el JSON en vez del texto
+//
+// Tratamientos (columna «tratamiento»):
+//   CORREGIR   el dato está mal (precio, divisa, BPA): no se da señal hasta corregirlo.
+//   VARIANTE   el dato está bien, pero la regla no sirve para esta empresa: decide la variante que se indica.
+//   CONFIANZA  la cifra depende de algo poco firme: un Comprar baja a Mantener (como la confianza «Baja»).
+//   AVISO      no cambia la señal; se dice en la defensa.
+// Veredicto de la señal: SÓLIDA (todas las variantes razonables dan la misma acción), FRÁGIL (alguna la cambia; se dice
+// cuál) o BLOQUEADA (hay un CORREGIR).
+import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
+import { ultimoDatos } from './objetivo12m.mjs';
+import { calcularObjetivo12m, multiplosRegla, REGLA_12M } from '../motor/objetivo12m.mjs';
+import { leerPrecios, factorDivisa } from './precios.mjs';
+
+const args = process.argv.slice(2);
+const bandera = (k) => { const i = args.indexOf(k); if (i >= 0) args.splice(i, 1); return i >= 0; };
+const todas = bandera('--todas'), escribir = bandera('--escribir'), comoJson = bandera('--json');
+const HOY = new Date().toISOString().slice(0, 10);
+const num = (v) => (v === null || v === undefined || v === '' || Number.isNaN(Number(v)) ? null : Number(v));
+const r = (x, d = 1) => (x === null || x === undefined || !Number.isFinite(x) ? null : Math.round(x * 10 ** d) / 10 ** d);
+const f = (x, d = 1) => (x === null || x === undefined ? 'n.d.' : x.toLocaleString('es-ES', { minimumFractionDigits: d, maximumFractionDigits: d }));
+const dias = (a, b) => Math.round((new Date(b) - new Date(a)) / 864e5);
+
+const REV = JSON.parse(readFileSync(new URL('../verticales/empresa/objetivo12m-revisados.json', import.meta.url), 'utf8')).revisados;
+const PRECIOS = leerPrecios()?.precios || {};
+// Umbrales de MEMORIA.md: comprar (motor) y seguir en cartera (ponderada ≥ 10 %, base ≥ 5 %, VI no más de un 15 % bajo el precio).
+const U = { comprar: REGLA_12M.comprar, comprarBase: REGLA_12M.comprarBase, mantener: 10, mantenerBase: 5, viMantener: 0.85 };
+// Tipos de cambio aproximados para reconocer un precio en otra divisa (prueba D2).
+const FX = { 'USD/EUR': 1.11, 'GBP/EUR': 0.85, 'USD/GBP': 1.32, 'CHF/EUR': 0.94, 'CAD/USD': 1.38, 'JPY/USD': 150, 'DKK/EUR': 7.46, 'SEK/EUR': 11, 'peniques': 100, 'AUD/USD': 1.5 };
+
+const carpetas = todas
+  ? readdirSync('informes', { withFileTypes: true }).filter((e) => e.isDirectory()).map((e) => e.name).sort()
+  : args.map((a) => a.replace(/\/$/, '').replace(/^informes\//, ''));
+if (!carpetas.length) throw new Error('Indica carpetas de informes/ o --todas');
+
+// ---------- Cálculo con variantes ----------
+// Igual que apuntar-12m: con otro precio, el PER actual se mueve en proporción; dividendo y VI fijos.
+function contexto(d) {
+  const o = d.valoracion?.objetivo_12m;
+  const precioInforme = num(d.identificacion?.precio);
+  const div = num(d.calc?.recomendacion?.dividendo_pct) || 0;
+  const prob = ['bajista', 'base', 'alcista'].map((e) => (d.escenarios?.casos || []).find((c) => new RegExp(e, 'i').test(c.escenario || ''))?.probabilidad_pct ?? null);
+  return { o, precioInforme, dpa: (div / 100) * precioInforme, div, prob: prob.every((x) => x !== null) ? prob : null,
+    vi: num(d.calc?.sintesis?.valor_objetivo), confianza: d.resumen?.confianza ?? null };
+}
+function evaluar(cx, { precio, historia = 'vigente', topeBase = null, prob = null, escalaBpa = 1, sinDobleCastigo = false, sinConfianza = false } = {}) {
+  const o2 = JSON.parse(JSON.stringify(cx.o));
+  const k = precio / cx.precioInforme;
+  const ph = o2.per_historico || {};
+  if (historia === 'v2' && ph.v2) o2.per_historico = { ...ph.v2, actual: ph.actual, base: 'cierre' };
+  if (o2.per_historico?.actual) o2.per_historico.actual = Math.round(+o2.per_historico.actual * k * 100) / 100;
+  for (const c of o2.casos) if (num(c.beneficio_por_accion) !== null) c.beneficio_por_accion = +c.beneficio_por_accion * escalaBpa;
+  if (sinDobleCastigo) {
+    // Si el BPA bajista ya recoge el riesgo (≥ 15 % bajo el base), el PER bajista no baja de base × 0,80 (propuesta Edenred).
+    const reg = multiplosRegla(o2.per_historico, o2.comparables_per, { topeBase });
+    const baj = o2.casos.find((c) => /bajista/i.test(c.escenario || '')), bas = o2.casos.find((c) => /base/i.test(c.escenario || ''));
+    if (reg && baj && bas && (!baj.metrica || /^PER/i.test(baj.metrica)) && +baj.beneficio_por_accion <= 0.85 * +bas.beneficio_por_accion && reg.bajista < 0.8 * reg.base) {
+      baj.metrica = 'Múltiplo corregido (PER base × 0,80)'; baj.precio = 0.8 * reg.base * +baj.beneficio_por_accion;
+    }
+  }
+  return calcularObjetivo12m(o2, { precio, dpa: cx.dpa, prob: prob || cx.prob, valorIntrinseco: cx.vi, confianza: sinConfianza ? null : cx.confianza, topeBase });
+}
+const pasaComprar = (c, precio, vi) => c && c.rentabilidad_ponderada_pct >= U.comprar && c.rentabilidad_base_pct >= U.comprarBase && (vi === null || vi >= precio);
+const pasaMantener = (c, precio, vi) => c && c.rentabilidad_ponderada_pct >= U.mantener && c.rentabilidad_base_pct >= U.mantenerBase && (vi === null || vi >= U.viMantener * precio);
+
+// ---------- Pruebas ----------
+function probar(carpeta) {
+  const d = ultimoDatos(carpeta);
+  if (!d?.valoracion?.objetivo_12m?.casos) return null;
+  const cx = contexto(d);
+  const id = d.identificacion || {}, meta = d.meta || {};
+  const rev = Object.entries(REV).find(([, v]) => v.carpeta === carpeta);
+  const clave = rev?.[0] || String(id.ticker || '').trim().toUpperCase().replace(/\s+/g, '-');
+  const pr = PRECIOS[clave] || Object.values(PRECIOS).find((x) => x.carpeta === carpeta) || null;
+  const tc = num(meta.tipo_cambio) || 1, divCot = meta.divisa_cotizacion || meta.divisa;
+  const fac = pr && !pr.error ? factorDivisa(pr.divisa, divCot) : null;
+  const precioYahoo = pr && fac !== null && !pr.error ? pr.precio * fac * tc : null; // en la divisa de las cuentas
+  const precio = precioYahoo ?? rev?.[1]?.precio_ref ?? cx.precioInforme;
+  const marcas = [];
+  const marca = (codigo, tratamiento, texto) => marcas.push({ codigo, tratamiento, texto });
+
+  // --- D: datos ---
+  // D1 precio del informe frente al mercado; D2 si la diferencia es un tipo de cambio o peniques.
+  if (precioYahoo) {
+    const ratio = cx.precioInforme / precioYahoo;
+    const min52 = num(id.min_52s), max52 = num(id.max_52s);
+    if (ratio < 0.8 || ratio > 1.25) {
+      const fx = Object.entries(FX).find(([, v]) => [v, 1 / v].some((x) => Math.abs(ratio / x - 1) < 0.08));
+      if (fx) marca('D2', 'CORREGIR', `El precio del informe (${f(cx.precioInforme, 2)}) es ${f(ratio, 3)} veces el de mercado (${f(precioYahoo, 2)}): parece otra divisa (${fx[0]}). Revisar divisa de cotización y tipo de cambio.`);
+      else marca('D1', 'CORREGIR', `El precio del informe (${f(cx.precioInforme, 2)}) se separa un ${f((ratio - 1) * 100, 0)} % del de mercado (${f(precioYahoo, 2)}). Comprobar el precio antes de usar el informe.`);
+    }
+    if (min52 && max52 && cx.precioInforme / tc > 0 && (cx.precioInforme < min52 * 0.9 || cx.precioInforme > max52 * 1.1)) {
+      // El rango de 52 semanas va en la divisa de cotización en unos informes y en la de cuentas en otros: se prueban las dos.
+      const pc = cx.precioInforme / tc;
+      if ((pc < min52 * 0.9 || pc > max52 * 1.1)) marca('D1', 'CORREGIR', `El precio del informe queda fuera de su rango de 52 semanas (${f(min52, 2)}-${f(max52, 2)}): precio o rango mal leídos.`);
+    }
+  } else marca('D3', 'AVISO', `Sin cierre de mercado en precios.json${pr?.error ? ` (${pr.error})` : ''}: no se puede comprobar el precio.`);
+  const fechaPrecio = pr?.fecha || rev?.[1]?.fecha_precio || id.fecha_precio;
+  if (fechaPrecio && dias(fechaPrecio, HOY) > 4) marca('D3', 'CORREGIR', `Precio del ${fechaPrecio} (${dias(fechaPrecio, HOY)} días): actualizar con herramientas/precios.mjs antes de dar señal.`);
+  // D4 BPA real coherente con beneficio ÷ acciones.
+  const cuenta = (d.financieros?.cuenta || []).filter((c) => num(c.bpa) !== null);
+  const u = cuenta.at(-1), pen = cuenta.at(-2);
+  if (u && num(u.beneficio_neto) && num(u.acciones_diluidas)) {
+    const calc = u.beneficio_neto / u.acciones_diluidas, q = u.bpa / calc;
+    if (q < 0.85 || q > 1.15) marca('D4', 'AVISO', `BPA ${u.periodo} (${f(u.bpa, 2)}) no casa con beneficio ÷ acciones (${f(calc, 2)}): ¿BPA ajustado, otra divisa o acciones en otra unidad? Comprobar que los escenarios usan la misma base.`);
+  }
+  // D5 beneficio con partidas que no se repiten: tipo efectivo raro, beneficio > EBIT, o salto de BPA sin salto de EBIT.
+  if (u && num(u.bai) > 0 && num(u.impuestos) !== null) {
+    const t = (100 * u.impuestos) / u.bai;
+    if (t < 8) marca('D5', 'VARIANTE', `Tipo impositivo efectivo ${u.periodo} del ${f(t, 0)} % (impuestos ${f(u.impuestos, 0)} sobre BAI ${f(u.bai, 0)}): BPA inflado por créditos o liberaciones fiscales (caso Uber). La historia del PER y el contraste deben ir con BPA normalizado (tipo del DCF); no usar la historia v3 construida con ese BPA.`);
+    if (t > 45) marca('D5', 'AVISO', `Tipo efectivo ${u.periodo} del ${f(t, 0)} %: BPA deprimido por algo puntual; la historia del PER de ese año sale alta.`);
+  }
+  if (u && num(u.ebit) > 0 && num(u.beneficio_neto) > 1.05 * u.ebit) marca('D5', 'VARIANTE', `Beneficio neto ${u.periodo} (${f(u.beneficio_neto, 0)}) mayor que el EBIT (${f(u.ebit, 0)}): hay ganancias que no son del negocio (participadas, ventas de activos, impuestos). Decidir con el BPA normalizado.`);
+  if (u && pen && pen.bpa > 0 && u.bpa / pen.bpa > 1.5 && num(u.ebit) && num(pen.ebit) > 0 && u.ebit / pen.ebit < 1.25) marca('D5', 'VARIANTE', `El BPA salta un ${f((u.bpa / pen.bpa - 1) * 100, 0)} % en ${u.periodo} con el EBIT subiendo solo un ${f((u.ebit / pen.ebit - 1) * 100, 0)} %: beneficio no recurrente.`);
+  // D6 crecimiento implícito del BPA hasta el ejercicio objetivo.
+  const o = cx.o, casos = o.casos || [];
+  const bpaBase = num(casos.find((c) => /base/i.test(c.escenario || ''))?.beneficio_por_accion);
+  const anioObj = num(String(o.ejercicio || '').match(/(\d{4})/)?.[1]);
+  const anioU = num(String(u?.periodo || '').match(/(\d{4})/)?.[1]);
+  let cagr = null;
+  if (bpaBase > 0 && u?.bpa > 0 && anioObj && anioU && anioObj > anioU) {
+    cagr = 100 * ((bpaBase / u.bpa) ** (1 / (anioObj - anioU)) - 1);
+    if (cagr > 25) marca('D6', 'CONFIANZA', `Nuestro BPA base ${o.ejercicio} (${f(bpaBase, 2)}) supone crecer un ${f(cagr, 0)} % al año desde ${u.periodo} (${f(u.bpa, 2)}). Si es un rebote de un año malo, decirlo; si no, la cifra depende de un crecimiento difícil de sostener.`);
+    if (cagr < -5) marca('D6', 'AVISO', `Nuestro BPA base cae un ${f(-cagr, 0)} % al año hasta ${o.ejercicio}: comprobar que no se castiga dos veces con el múltiplo.`);
+  }
+  // D7 contraste con el consenso del mismo ejercicio.
+  const cons = (d.consenso?.estimaciones || []).find((e) => String(e.periodo || '').includes(String(anioObj)) && num(e.bpa) > 0);
+  const bpaCons = num(cons?.bpa) ?? null;
+  const difCons = bpaCons && bpaBase ? 100 * (bpaBase / bpaCons - 1) : null;
+  if (difCons !== null && Math.abs(difCons) > 15) marca('D7', difCons > 0 ? 'VARIANTE' : 'AVISO', `Nuestro BPA base ${o.ejercicio} (${f(bpaBase, 2)}) se separa un ${f(difCons, 0)} % del consenso (${f(bpaCons, 2)}). ${difCons > 0 ? 'Por encima de la calle: la señal tiene que aguantar con el BPA del consenso (variante «BPA consenso»).' : 'Por debajo de la calle: somos prudentes; comprobar que no es un error de base (ajustado frente a publicado).'}`);
+
+  // --- M: múltiplo ---
+  const ph = o.per_historico || {};
+  const v3 = /^adelantad/i.test(String(ph.base || ''));
+  const kP = precio / cx.precioInforme;
+  const actualHoy = num(ph.actual) ? ph.actual * kP : null;
+  if (v3 && actualHoy && num(ph.mediana_5a)) {
+    const q = ph.mediana_5a / actualHoy;
+    if (q >= 1.8) marca('M1', 'VARIANTE', `Desrateada: la mediana adelantada de 5 años (${f(ph.mediana_5a, 1)}x) es ${f(q, 1)} veces el PER de hoy (${f(actualHoy, 1)}x). La v3 está en su tope (×${REGLA_12M.v3.topeBase}) y supone que una parte del múltiplo perdido vuelve en 12 meses. Si la caída es de régimen (regulación, IA, competencia, tipos), esa historia no vuelve: decide la v2 (control) o, si no hay, la v3 sin recuperación (base = PER actual).`);
+    else if (q <= 0.6) marca('M1', 'AVISO', `Sobrerrateada: cotiza a ${f(actualHoy, 1)}x frente a una mediana de ${f(ph.mediana_5a, 1)}x; la v3 ya le quita múltiplo.`);
+  }
+  // La historia adelantada pierde el último año (falta el BPA del siguiente): con 4 años es normal; con 3 o menos, poco firme.
+  if (v3 && num(ph.anios) !== null && ph.anios <= 3) marca('M2', 'CONFIANZA', `Historia del PER de solo ${ph.anios} años: el múltiplo de referencia es poco firme.`);
+  else if (v3 && num(ph.anios) === 4) marca('M2', 'AVISO', 'Historia del PER de 4 años (la adelantada pierde el último): la «mediana de 5 años» es de 4.');
+  if (!v3 && !num(ph.mediana_5a)) marca('M2', 'CONFIANZA', 'Sin historia del PER útil: el base es el PER actual y el alcista sale de los comparables. La rentabilidad es solo crecimiento del BPA + dividendo.');
+  // M3 dos reglas muy separadas.
+  const vig = evaluar(cx, { precio });
+  const cv2 = ph.v2 ? evaluar(cx, { precio, historia: 'v2' }) : null;
+  if (vig?.completo && cv2?.completo && Math.abs(vig.rentabilidad_ponderada_pct - cv2.rentabilidad_ponderada_pct) > 15) marca('M3', 'VARIANTE', `v3 (${f(vig.rentabilidad_ponderada_pct)} %) y v2 (${f(cv2.rentabilidad_ponderada_pct)} %) se separan ${f(Math.abs(vig.rentabilidad_ponderada_pct - cv2.rentabilidad_ponderada_pct), 0)} puntos: la cifra depende de qué historia del PER se crea. Decide la más baja hasta revisar la historia a mano.`);
+  // M4 doble castigo del bajista.
+  if (vig?.completo) {
+    const [b, m] = vig.filas;
+    if (b.multiplo && m.multiplo && b.multiplo / m.multiplo < 0.79 && b.beneficio_por_accion <= 0.85 * m.beneficio_por_accion) marca('M4', 'VARIANTE', `Doble castigo en el bajista: BPA un ${f((1 - b.beneficio_por_accion / m.beneficio_por_accion) * 100, 0)} % bajo el base y además PER ${f(b.multiplo, 1)}x (${f(b.multiplo / m.multiplo, 2)} del base). Variante «sin doble castigo»: PER bajista = base × 0,80.`);
+  }
+  if (cv2?.completo) {
+    const [b, m] = cv2.filas;
+    if (b.multiplo && m.multiplo && b.multiplo / m.multiplo < 0.79 && b.beneficio_por_accion <= 0.85 * m.beneficio_por_accion) marca('M4', 'VARIANTE', `Doble castigo en el bajista de la v2 (control): BPA un ${f((1 - b.beneficio_por_accion / m.beneficio_por_accion) * 100, 0)} % bajo el base y PER mínimo de 5 años al cierre ${f(b.multiplo, 1)}x (${f(b.multiplo / m.multiplo, 2)} del base). Variante «v2 sin doble castigo» (caso Edenred).`);
+  }
+  // M5 la rentabilidad sale del alcista.
+  if (vig?.completo && vig.rentabilidad_base_pct < 5 && vig.rentabilidad_ponderada_pct >= U.mantener) marca('M5', 'CONFIANZA', `La ponderada (${f(vig.rentabilidad_ponderada_pct)} %) sale del alcista: el base solo da ${f(vig.rentabilidad_base_pct)} %.`);
+
+  // --- V: valor real y confianza ---
+  if (cx.vi && precio) {
+    const q = cx.vi / precio;
+    if (q < U.viMantener) marca('V1', 'AVISO', `Valor intrínseco (${f(cx.vi, 2)}) un ${f((1 - q) * 100, 0)} % bajo el precio: no pasa el filtro de seguir en cartera.`);
+    if (vig?.completo && cx.vi > 1.6 * vig.objetivo_ponderado) marca('V2', 'AVISO', `El DCF (${f(cx.vi, 2)}) queda un ${f((cx.vi / vig.objetivo_ponderado - 1) * 100, 0)} % sobre el objetivo a 12 meses: tesis a varios años, o un DCF optimista (WACC, terminal). La señal la da el objetivo a 12 meses.`);
+  }
+  if (/^baja/i.test(String(cx.confianza || ''))) marca('V3', 'CONFIANZA', 'Confianza de datos «Baja»: un Comprar queda en Mantener hasta confirmar con fuente primaria.');
+
+  // --- E: eventos y vigencia ---
+  const prox = String(id.proximos_resultados || '').match(/\d{4}-\d{2}-\d{2}/)?.[0];
+  const corte = meta.fecha_corte;
+  if (prox && corte && prox > corte && prox <= HOY) marca('E1', 'CONFIANZA', `Publicó resultados el ${prox}, después del corte del informe (${corte}): las cifras no los recogen. Actualizar antes de comprar.`);
+  else if (prox && prox > HOY && dias(HOY, prox) <= 14) marca('E2', 'AVISO', `Resultados el ${prox} (en ${dias(HOY, prox)} días): comprar en dos tramos o después.`);
+  const mov = precio / cx.precioInforme - 1;
+  if (Math.abs(mov) > 0.15) marca('E3', 'CONFIANZA', `El precio se ha movido un ${f(mov * 100, 0)} % desde el informe (${f(cx.precioInforme, 2)} → ${f(precio, 2)}): algo ha cambiado; revisar la tesis antes de usar la cifra.`);
+
+  // --- S: estabilidad de la señal frente a variantes razonables ---
+  const variantes = [
+    ['vigente', {}],
+    ['v2 (control)', { historia: 'v2' }],
+    ['v3 tope ×1,3', { topeBase: REGLA_12M.v3.topeBaseAnterior }],
+    ['sin doble castigo', { sinDobleCastigo: true }],
+    ['v2 sin doble castigo', { historia: 'v2', sinDobleCastigo: true }],
+    ['pesos 25/50/25', { prob: [25, 50, 25] }],
+    ['BPA −10 %', { escalaBpa: 0.9 }],
+    // El BPA del consenso solo como prueba a la baja (si el nuestro va por encima de la calle).
+    ...(bpaCons && bpaBase && bpaCons < bpaBase ? [['BPA consenso', { escalaBpa: bpaCons / bpaBase }]] : []),
+    ['precio +5 %', { precioK: 1.05 }],
+    ['precio −5 %', { precioK: 0.95 }],
+  ].filter(([n]) => !/^v2/.test(n) || (ph.v2 && v3)).filter(([n]) => n !== 'v3 tope ×1,3' || v3);
+  const tabla = variantes.map(([nombre, op]) => {
+    const p = precio * (op.precioK || 1);
+    const c = evaluar(cx, { ...op, precio: p });
+    return c?.completo ? { variante: nombre, ponderada: c.rentabilidad_ponderada_pct, base: c.rentabilidad_base_pct, senal: c.senal,
+      comprar: pasaComprar(c, p, cx.vi), mantener: pasaMantener(c, p, cx.vi) } : { variante: nombre, error: 'incompleto' };
+  });
+  const v0 = tabla[0];
+  // Variantes que pesan en el veredicto: las que corrigen un fallo conocido o son igual de defendibles que la vigente.
+  // «BPA −10 %» y «precio ±5 %» miden el colchón (no cambian el veredicto, se dicen en la defensa).
+  const defendibles = tabla.filter((t) => !t.error && !/BPA −10|precio/.test(t.variante));
+  const accion = (t) => (t.comprar ? 'Comprar' : t.mantener ? 'Mantener en cartera' : 'No mantener');
+  const acciones = [...new Set(defendibles.map(accion))];
+  const bloq = marcas.some((m) => m.tratamiento === 'CORREGIR');
+  const frente = defendibles.filter((t) => accion(t) !== accion(v0)).map((t) => `${t.variante}: ${accion(t)} (${f(t.ponderada)} %)`);
+  const veredicto = bloq ? 'BLOQUEADA' : acciones.length === 1 ? 'SÓLIDA' : 'FRÁGIL';
+  // Acción robusta = la peor de las variantes defendibles (si una lectura igual de razonable no pasa, no se compra).
+  const orden = ['No mantener', 'Mantener en cartera', 'Comprar'];
+  let robusta = defendibles.length ? orden[Math.min(...defendibles.map((t) => orden.indexOf(accion(t))))] : null;
+  // Una marca de CONFIANZA baja el Comprar a Mantener. Excepción: la historia corta de la v3 (M2) no baja si la regla de
+  // control (v2, con su historia al cierre, más larga) también da Comprar.
+  const ctrlComprar = tabla.find((t) => t.variante === 'v2 (control)')?.comprar;
+  const confianza = marcas.filter((m) => m.tratamiento === 'CONFIANZA' && !(m.codigo === 'M2' && ctrlComprar));
+  if (confianza.length && robusta === 'Comprar') robusta = 'Mantener en cartera';
+  const colchon = v0 && !v0.error ? { comprar: r(v0.ponderada - U.comprar), mantener: r(v0.ponderada - U.mantener) } : null;
+  // Límites con el OBJETIVO FIJO (regla del 14-oct tras el caso Nu): si el precio sube, el objetivo no sube con él.
+  const limFijo = (c) => (c?.completo ? {
+    comprar: Math.min((c.objetivo_ponderado + cx.dpa) / (1 + U.comprar / 100), (c.objetivo_base + cx.dpa) / (1 + U.comprarBase / 100), cx.vi ?? Infinity),
+    mantener: Math.min((c.objetivo_ponderado + cx.dpa) / (1 + U.mantener / 100), (c.objetivo_base + cx.dpa) / (1 + U.mantenerBase / 100), cx.vi ? cx.vi / U.viMantener : Infinity),
+  } : null);
+  const lim = limFijo(vig), limCtrl = cv2?.completo ? limFijo(cv2) : null;
+  // M6: ¿el objetivo se mueve con el precio? (base = PER actual o PER actual × tope). Si sí, la rentabilidad no baja al
+  // subir el precio y un «límite» calculado recalculando a otro precio no limita nada (caso Nu en growth).
+  const sube = evaluar(cx, { precio: precio * 1.1 });
+  const elast = vig?.completo && sube?.completo ? (sube.objetivo_ponderado / vig.objetivo_ponderado - 1) / 0.1 : null;
+  if (elast !== null && elast > 0.5) marca('M6', 'AVISO', `El objetivo se mueve con el precio (elasticidad ${f(elast, 2)}: un 10 % más de precio sube el objetivo un ${f(elast * 10, 1)} %), porque el base es el PER de hoy${v3 ? ' con el tope' : ''}. La rentabilidad solo mide crecimiento del BPA + dividendo${v3 ? ' + el tope' : ''}; los límites de compra se calculan con el objetivo fijo (no recalculando a otro precio).`);
+  // Colchón de BPA: cuánto puede bajar nuestro BPA (los tres escenarios) antes de perder la acción de hoy.
+  const colchonBpa = (cond) => { if (!vig?.completo || !cond(vig, precio, cx.vi)) return null; for (let e = 1; e >= 0.5; e -= 0.01) { const c = evaluar(cx, { precio, escalaBpa: e }); if (!c?.completo || !cond(c, precio, cx.vi)) return r((1 - e) * 100, 0); } return 50; };
+  return {
+    carpeta, clave, nombre: id.nombre_corto || id.nombre, divisa: meta.divisa, precio: r(precio, 2), fecha_precio: fechaPrecio,
+    version: vig?.version, ponderada: vig?.rentabilidad_ponderada_pct ?? null, base: vig?.rentabilidad_base_pct ?? null, senal: vig?.senal ?? null,
+    v2: cv2?.completo ? cv2.rentabilidad_ponderada_pct : null, cagr_bpa: r(cagr), dif_consenso: r(difCons),
+    veredicto, accion_vigente: v0 && !v0.error ? accion(v0) : null, accion_robusta: bloq ? 'Sin señal (corregir dato)' : robusta, frente, colchon,
+    // Límites en la divisa de COTIZACIÓN (la del broker): el informe puede llevar las cuentas en otra (Constellation USD/CAD,
+    // Experian USD/GBp). Un límite en la divisa de las cuentas puesto en el broker es el fallo de Constellation.
+    divisa_cotizacion: divCot, limite_comprar_cot: lim ? r(lim.comprar / tc, 2) : null, limite_mantener_cot: lim ? r(lim.mantener / tc, 2) : null,
+    limite_comprar_control_cot: limCtrl ? r(limCtrl.comprar / tc, 2) : null, precio_cot: r(precio / tc, 2),
+    limite_comprar: r(lim?.comprar, 2), limite_comprar_control: r(limCtrl?.comprar, 2), limite_mantener: r(lim?.mantener, 2), limite_mantener_control: r(limCtrl?.mantener, 2),
+    elasticidad_objetivo: r(elast, 2), colchon_bpa_comprar: colchonBpa(pasaComprar), colchon_bpa_mantener: colchonBpa(pasaMantener),
+    marcas, variantes: tabla,
+  };
+}
+
+const res = carpetas.map((c) => { try { return probar(c); } catch (e) { return { carpeta: c, error: e.message }; } }).filter(Boolean);
+if (comoJson) { console.log(JSON.stringify(res, null, 1)); }
+else for (const x of res) {
+  if (x.error) { console.log(`${x.carpeta}: ERROR ${x.error}`); continue; }
+  console.log(`\n${x.nombre} (${x.carpeta}) · ${x.version} ${f(x.ponderada)} % / base ${f(x.base)} % → ${x.senal}${x.v2 !== null ? ` · v2 ${f(x.v2)} %` : ''} · precio ${f(x.precio, 2)} ${x.divisa} (${x.fecha_precio})`);
+  console.log(`  Veredicto: ${x.veredicto}. Acción vigente: ${x.accion_vigente}. Acción robusta: ${x.accion_robusta}.${x.frente.length ? ` Cambia con: ${x.frente.join('; ')}.` : ''}`);
+  console.log(`  En ${x.divisa_cotizacion} (broker): precio ${f(x.precio_cot, 2)}; límite de compra (objetivo fijo) ${f(x.limite_comprar_cot, 2)}${x.limite_comprar_control_cot !== null ? ` (v2: ${f(x.limite_comprar_control_cot, 2)})` : ''}; filtro de mantener hasta ${f(x.limite_mantener_cot, 2)}. Colchón de BPA: ${x.colchon_bpa_comprar ?? '—'} % para Comprar, ${x.colchon_bpa_mantener ?? '—'} % para mantener.`);
+  for (const m of x.marcas) console.log(`  [${m.codigo} ${m.tratamiento}] ${m.texto}`);
+  console.log(`  Variantes: ${x.variantes.filter((t) => !t.error).map((t) => `${t.variante} ${f(t.ponderada)}/${f(t.base)}`).join(' · ')}`);
+}
+if (escribir) {
+  const out = { fecha: HOY, nota: 'herramientas/robustez.mjs: pruebas de robustez por informe (verticales/empresa/robustez.md).', resultados: res };
+  writeFileSync(new URL('../verticales/empresa/robustez.json', import.meta.url), JSON.stringify(out, null, 1) + '\n');
+  console.error(`Escrito verticales/empresa/robustez.json (${res.length} informes).`);
+}

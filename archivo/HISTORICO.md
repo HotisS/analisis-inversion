@@ -12,6 +12,7 @@
 ## Cambios
 
 - **14-oct-2026 (tarde, 3).** `METODO-VIGENTE.md` en la raíz: documento vivo con las versiones en vigor (value v3 tope ×1,1, growth v9), las reglas exactas, los filtros y el registro fechado de descubrimientos (pedido del usuario). `apuntar-12m.mjs` deja el objetivo fijo con precio nuevo (antes escalaba el PER actual y el objetivo subía con la cotización; fallo visto en Nu). `herramientas/regenerar.mjs` rehace Word y PDF de los informes con el motor vigente; los 147 informes value regenerados con la cifra v2 y la del tope ×1,3 al lado (`comparacion_txt`). En `MEMORIA.md`, «v3 solo ordena» (16:45) queda sustituido por «decide v3 con tope ×1,1».
+- **14-oct-2026 (17:30): pruebas de robustez obligatorias.** El usuario pidió que las decisiones sean defendibles sin que él tenga que encontrar el fallo (Uber, Experian, v3, Edenred, Nu, Constellation). `herramientas/robustez.mjs` (value) y `robustez-growth.mjs` recalculan cada informe con variantes razonables, marcan los fallos de datos y de regla y dan la «acción robusta». Paso obligatorio de `/analiza-empresa`, `/analiza-growth` y de cada orden. Resultados y defensas en `informes/robustez-2026-10-14/`; método en `verticales/empresa/robustez.md`.
 
 - **14-oct-2026, 17:10: limpieza de MEMORIA y cola** (pedido del usuario). Se retiran de MEMORIA:
   - la regla de múltiplos v2 (base = menor entre el PER actual y la mediana; techo ×1,30), sustituida por v3 ×1,1;

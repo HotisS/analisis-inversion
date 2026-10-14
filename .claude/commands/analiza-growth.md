@@ -11,4 +11,5 @@ Análisis growth de: $ARGUMENTS
 5. Escribe `informe.md` con la plantilla, copiando las cifras de `calc`. Genera Word y PDF (pandoc y soffice).
 6. `node motor/growth.mjs --todos` para rehacer `informes-growth/resumen.md`; quita la empresa de `cola-growth.md`.
 7. Commit y `git pull --rebase` + push a main (otra sesión empuja a main a la vez).
-8. Entrega: señal y convicción, puntuación, señales activas, objetivo y rentabilidades, precio máximo de compra, peso orientativo, riesgo principal y rutas.
+8. **Pruebas de robustez, obligatorias antes de dar la señal** (14-oct-2026): `NODE_USE_ENV_PROXY=1 node herramientas/robustez-growth.mjs --precios <carpeta>` (`verticales/empresa/robustez.md`, sección growth). Si la proyección mecánica supera las ventas del propio informe o del consenso, la rentabilidad que se comunica es la menor; un `CORREGIR` bloquea la señal.
+9. Entrega: veredicto de robustez, señal y convicción, puntuación, señales activas, objetivo y rentabilidades, precio máximo de compra, peso orientativo, riesgo principal y rutas.
