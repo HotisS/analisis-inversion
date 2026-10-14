@@ -1,0 +1,12 @@
+# Diario · Aena (AENA.MC) · 14-oct-2026
+
+- Commit de partida: aca2778 (método v2 con regla de múltiplos común).
+- Entorno: nube de Claude Code, red limitada a WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs no funcionan). Todas las cifras salen de extractos de búsqueda (notas de prensa de resultados de Aena, prensa financiera, MarketScreener, Stock Analysis, Simply Wall St), con la URL como fuente. **Confianza baja**: no se leyó ningún documento completo; el balance (salvo deuda neta y patrimonio 2025), el capex publicado, el gobierno (consejo, remuneración) y los comparables completos quedan como huecos. Sin subagentes.
+- 13:31 inicio; ≈25 búsquedas web; 13:43 Word y PDF (soffice); ≈50 min en total (presupuesto 40).
+- Decisiones: fecha de corte 14-oct, precio 24,88 EUR del 9-oct (último cierre encontrado). Split 10:1 de 2025 comprobado: todo por acción nueva (1.500 M); DPA antiguos /10. EBIT y BAI 2024-2025 de MarketScreener; 2022-2023 estimados. Impuesto = BAI − beneficio (incluye minoritarios de Luton). 2023 con ≈154 M de reversión de deterioro de Brasil dentro del EBITDA (no recurrente). Puente con la deuda neta contable de jun-26 (6.724 M). DCF con la inversión del DORA III (capex 33-35 % de las ventas en 2027-2029). ROIC del motor (22,2 %) inflado por un capital invertido incompleto: ROIC ≈15 % con patrimonio + deuda neta (estimación propia). Sostenibilidad «En parte» (pruebas del motor pasan; el capital nuevo rinde la tasa regulada); no hubo que rebajar el base.
+- Resultado: Mantener, convicción baja (reglas discrepan). DCF 19,72; valor intrínseco (síntesis) 20,09 EUR (−19,3 %). DCF inverso: 6,4 % de crecimiento frente al 3,9 % del base. 17 de 18 controles (capitalización publicada de otra fecha, explicada).
+- Línea 12 m: objetivo 22,38 EUR, ponderada −5,7 %, base −4,6 % (dividendo 4,4 % incluido) → Mantener; compra < 20,09 EUR, venta > 26,08 EUR. Consenso 26,82 EUR. Detalle en revision-12m-2026-10-14.md. No se ha ejecutado apuntar-12m ni seguimiento (lo integra el orquestador).
+
+## Lecciones
+- En la nube, si una nota cita fuentes de otra con letra ([B4] dentro de A.json), `integrar` no las traduce y salen como «sin citar»: las notas citan con su numeración propia ([4]); `notas/build_notas.py` copia la fuente de la otra nota a la lista propia y renumera.
+- Sin balance completo, el ROIC del motor sale inflado (capital invertido casi vacío): dar el ROIC con patrimonio + deuda neta en el texto y en la entrega.
