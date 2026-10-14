@@ -2,34 +2,14 @@
 
 Solo lo pendiente. Lo cerrado está en `archivo/` (índice en `archivo/HISTORICO.md`); no hace falta leerlo.
 
-**Ritmo**: de tres en tres, en paralelo (desde el 12-oct). Al cerrar cada empresa: quítala de aquí, `node herramientas/seguimiento.mjs`, commit y push. Ninguna empresa con informe se repite salvo que el usuario lo pida (sería una iteración nueva). Sin juego ni apuestas.
+**Ritmo**: de cuatro en cuatro (desde el 14-oct; antes de tres en tres). Al cerrar cada empresa: quítala de aquí, `node herramientas/seguimiento.mjs`, commit y push. Ninguna empresa con informe se repite salvo que el usuario lo pida (sería una iteración nueva). Sin juego ni apuestas.
 
 ## Pendiente
 
-Tercera hora (desde las 13:00 del 14-oct), de 4 en 4. En curso: Alibaba, Watches of Switzerland, Rovi, Endesa y Repsol (prioridad del usuario). Después, en este orden:
-
-| Empresa | Ticker | Estilo | Por qué |
-|---|---|---|---|
-| Shimano | 7309.T | Valor | Líder de componentes de bicicleta en mínimos, caja neta |
-| Mettler-Toledo | MTD | Crecimiento | Instrumentos de precisión con ROIC altísimo |
-| Deutsche Börse | DB1.DE | Valor | Bolsa y datos con crecimiento estable |
-| Ferrari | RACE.MI | Crecimiento | Poder de precio único; probablemente cara |
-| Amadeus | AMS.MC | Valor | Reservas de viaje, casi monopolio, cotiza bajo su media |
-| Sanofi | SAN.PA | Valor | Farmacéutica barata con dividendo y vacunas |
-| Givaudan | GIVN.SW | Crecimiento | Aromas y sabores, líder mundial |
-| CME Group | CME | Valor | Bolsa de derivados con márgenes muy altos |
-| Garmin | GRMN | Crecimiento | Caja neta, crecimiento en fitness y aviación |
-| Merck KGaA | MRK.DE | Valor | Ciencias de la vida y semiconductores, castigada |
-| Iberdrola | IBE.MC | Valor | Redes reguladas y renovables, España |
-
-## Cuarta hora (preparada el 14-oct, 12:55; arranca al entregar la tercera), de 4 en 4
+Cuarta hora, de 4 en 4 (arrancó a las 13:30 del 14-oct al terminar la tercera). En curso: Aena, Meta, Nestlé y Mastercard. Después, en este orden:
 
 | Tanda | Empresa | Ticker | Estilo | Por qué |
 |---|---|---|---|---|
-| 1 | Aena | AENA.MC | Valor | Aeropuertos españoles, regulada con ROIC alto y dividendo |
-| 1 | Meta Platforms | META | Crecimiento | Publicidad con IA, márgenes altos, PER razonable |
-| 1 | Nestlé | NESN.SW | Valor | Alimentación defensiva en mínimos de varios años |
-| 1 | Mastercard | MA | Crecimiento | Red de pagos, comparar con Visa |
 | 2 | Novartis | NOVN.SW | Valor | Farmacia pura tras escindir Sandoz, dividendo |
 | 2 | Tencent | 0700.HK | Crecimiento | Juegos, pagos y nube en China, recompras fuertes |
 | 2 | Bureau Veritas | BVI.PA | Valor | Inspección y certificación, ingresos recurrentes |
@@ -42,6 +22,27 @@ Tercera hora (desde las 13:00 del 14-oct), de 4 en 4. En curso: Alibaba, Watches
 | 4 | Nvidia | NVDA | Crecimiento | Para tenerla medida con el método común |
 | 4 | Ashtead | AHT.L | Valor | Alquiler de maquinaria en EE. UU., cíclica de calidad |
 | 4 | Lonza | LONN.SW | Crecimiento | Fabricación para farmacéuticas (CDMO) |
+
+## Quinta hora (propuesta el 14-oct, 13:45; arranca al entregar la cuarta), de 4 en 4
+
+| Tanda | Empresa | Ticker | Estilo | Por qué |
+|---|---|---|---|---|
+| 1 | Ryanair | RYA.IR | Valor | Aerolínea de menor coste de Europa, caja neta |
+| 1 | ServiceNow | NOW | Crecimiento | Software de flujos de trabajo con márgenes crecientes |
+| 1 | Siemens Healthineers | SHL.DE | Valor | Imagen médica, cotiza bajo su media |
+| 1 | Linde | LIN | Crecimiento | Gases industriales, oligopolio con contratos largos |
+| 2 | Kering | KER.PA | Valor | Lujo castigado, posible giro |
+| 2 | Apple | AAPL | Crecimiento | Para tenerla medida con el método común |
+| 2 | Ferrovial | FER | Crecimiento | Autopistas de peaje (407 ETR), española |
+| 2 | Sika | SIKA.SW | Valor | Químicos de construcción, cotiza bajo su media |
+| 3 | Pernod Ricard | RI.PA | Valor | Bebidas premium en mínimos de años |
+| 3 | Alcon | ALC.SW | Crecimiento | Oftalmología, duopolio en lentes intraoculares |
+| 3 | Logista | LOG.MC | Valor | Distribución con dividendo alto, española |
+| 3 | Edwards Lifesciences | EW | Crecimiento | Válvulas cardiacas, líder |
+| 4 | Kuehne+Nagel | KNIN.SW | Valor | Transitario con poco capital, cíclico |
+| 4 | Veeva Systems | VEEV | Crecimiento | Software para farmacéuticas, caja neta |
+| 4 | Air Liquide | AI.PA | Valor | Gases industriales, compararla con Linde |
+| 4 | Partners Group | PGHN.SW | Crecimiento | Gestora de capital privado, comisiones recurrentes |
 
 ## Vigilar
 
