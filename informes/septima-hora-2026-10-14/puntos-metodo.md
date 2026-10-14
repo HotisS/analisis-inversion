@@ -14,3 +14,5 @@ Lo que se vea fallar o mejorable en los 16 análisis. Los puntos de la sexta hor
 - **Mapa de comparables vacío cuando Yahoo no da EV/EBITDA NTM** (Alfa Laval, Waste Connections): usar el PER NTM como eje alternativo.
 - **DPA del XBRL de la SEC con un dividendo de más** (Colgate 2024: 2,48 frente a 2,00, por el pago adelantado de un dividendo declarado): sumar por fecha de declaración, no de pago.
 - **Patrimonio casi nulo por recompras** (Colgate 54 M): el ROIC sobre capital invertido (deuda + patrimonio − caja) es la medida correcta; el motor debería avisar cuando el patrimonio es < 5 % de los activos.
+- **ESEF alemán ausente en filings.xbrl.org** (Beiersdorf, como Symrise en la sexta): `cuentas.mjs --esef` falla con Alemania. Buscar otra fuente (Unternehmensregister) o avisar de entrada para no gastar tiempo.
+- **M6 «el objetivo se mueve con el precio»** sale también en Beiersdorf: confirma que es un aviso general de `robustez.mjs` que conviene revisar.

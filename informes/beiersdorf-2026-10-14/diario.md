@@ -1,0 +1,18 @@
+# Diario · Beiersdorf (BEI.DE) · 14-oct-2026
+
+- Commit de partida: d3f7a7b (Séptima hora: propuesta de compra de Aon). Sin `git pull` (encargo: lo hace el coordinador).
+- Entorno: nube de Claude Code con red abierta. Fecha de corte 2026-10-14; EUR; ejercicio natural; NIIF-UE; cuenta por función. Notas A-E y propio hechos por mí sin subagentes (`notas/construir-notas.mjs` escribe A-E; `propio.mjs` + `textos.mjs`).
+- **Cuentas**: `cuentas.mjs --esef "Beiersdorf"` falla («Sin informes ESEF con xBRL-JSON», LEI L47NHHI0Z9X22DV46U41): filings.xbrl.org no tiene filings alemanes. Cuentas 2021-2025 copiadas a mano de los informes anuales 2022, 2023, 2024 y 2025 (`notas/docs`, `descargar.mjs`) y del semestral de 2026. Deuda = préstamos (incluye TROMA en 2021-2022) y arrendamientos por separado; caja = efectivo + valores a corto y largo (liquidez neta de la empresa).
+- Precio y bolsa: `bolsa.mjs` (BEI.DE, EXS1.DE, EXH7.DE): cierre de 81,00 EUR el 14-oct-2026. Una acción = 81 EUR (0,3 % de una cartera de 30.000 EUR).
+- Decisiones: cifras publicadas (los «factores especiales» se repiten todos los años); 2023 excluido de la historia del PER por el deterioro de Chantecaille. Acciones 218,07 M (30-jun-2026) con la recompra anunciada de 750 M en el BPA de 2027-2028. Puente a 30-jun-2026: caja 4.283, préstamos 44 y arrendamientos 194 (reparto estimado de 238), pensiones 102 netas de impuestos. WACC 7,60 % (Bund 3,51 %, beta 0,70 semanal de dos años). Sostenibilidad «En parte» (sin rebaja del base: ninguna prueba falla; poder de precios de NIVEA no demostrado). `mercado_final` en `null`: la cuota es de Consumer sobre el mercado de belleza, prueba a mano (2,7 % estable).
+- Comparables de Yahoo (mismo proveedor para EBITDA LTM y crecimiento; NTM estimado) y, para L'Oréal y Unilever, de sus informes llevados al cierre del 14-oct. Kenvue dentro pese a la oferta de Kimberly-Clark (dicho en el criterio).
+- Resultado: DCF 103,57 EUR; valor intrínseco 102,65 (+26,7 %); DCF inverso −2,3 % de crecimiento (base 3,4 %) o margen EBITDA 13,3 %. ROIC 22,1 % frente a WACC 7,60 % (14,5 pp).
+- **Línea 12 m (v3 ×1,1, el selector deja v3)**: objetivo 100,49 EUR, ponderada +25,3 %, base +21,7 % → la regla da Comprar; **v2 15,0 % / base 10,6 %** (Mantener). Recomendación del informe: **Mantener**, convicción media (justificada: compra no robusta, sostenibilidad En parte, resultados el 27-oct). Comprar < 88,02 (regla) / **79,97 robusto**; vender > 112,76.
+- Robustez: FRÁGIL; acción robusta Mantener; colchón de BPA 9 % para Comprar. Avisos: D3 (BEI.DE no está en `simbolos.json`/`precios.json`: el coordinador debe añadirlo), E2 (resultados en 13 días), M6.
+- Word y PDF (soffice): 18 de 19 controles y 1 explicado (compra robusta). Cobertura 90,6 %. Ficha sectorial nueva: `sectores/higiene-cosmetica-2026-10-14.md` y `-comparables.json`.
+- Tiempo: unos 20 minutos de reloj (20:24-20:45 UTC).
+
+## Lecciones
+
+- `cuentas.mjs --esef` no sirve para cotizadas alemanas: filings.xbrl.org no recoge los ESEF de Alemania (van al Unternehmensregister). La empresa publica el ESEF en su web (`Beiersdorf_AG_KA-2025_ESEF.xbri`, `…ESEF.zip`); una vía para la herramienta sería aceptar un archivo xBRL local.
+- Yahoo quoteSummary (`query2…/v10/finance/quoteSummary/<T>?modules=financialData,defaultKeyStatistics,earningsTrend,summaryDetail&crumb=…`, con la cookie de fc.yahoo.com) da en una llamada EV, EBITDA LTM, márgenes y estimaciones 0y/+1y para todos los comparables: comparables homogéneos en 2 minutos. Ojo: en cotizadas de Londres que publican en otra divisa (Unilever) el EV de Yahoo mezcla GBP y EUR.
