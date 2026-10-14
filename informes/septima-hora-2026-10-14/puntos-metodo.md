@@ -12,3 +12,5 @@ Lo que se vea fallar o mejorable en los 16 análisis. Los puntos de la sexta hor
 - **Aviso M6 de robustez en AMETEK** («el objetivo se mueve con el precio», elasticidad 0,5) pese a la regla de objetivo fijo: revisar si es un resto del cálculo antiguo en `robustez.mjs`.
 - **`per_historico.v2` no se imprime en el Word** (está fuera del esquema), aunque es el control oficial: el informe no enseña la cifra v2 que el usuario ve en las tablas. Añadirla a la sección 23.
 - **Mapa de comparables vacío cuando Yahoo no da EV/EBITDA NTM** (Alfa Laval, Waste Connections): usar el PER NTM como eje alternativo.
+- **DPA del XBRL de la SEC con un dividendo de más** (Colgate 2024: 2,48 frente a 2,00, por el pago adelantado de un dividendo declarado): sumar por fecha de declaración, no de pago.
+- **Patrimonio casi nulo por recompras** (Colgate 54 M): el ROIC sobre capital invertido (deuda + patrimonio − caja) es la medida correcta; el motor debería avisar cuando el patrimonio es < 5 % de los activos.
