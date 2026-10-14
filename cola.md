@@ -22,6 +22,27 @@ Tercera hora (desde las 13:00 del 14-oct), de 4 en 4. En curso: Alibaba, Watches
 | Merck KGaA | MRK.DE | Valor | Ciencias de la vida y semiconductores, castigada |
 | Iberdrola | IBE.MC | Valor | Redes reguladas y renovables, España |
 
+## Cuarta hora (preparada el 14-oct, 12:55; arranca al entregar la tercera), de 4 en 4
+
+| Tanda | Empresa | Ticker | Estilo | Por qué |
+|---|---|---|---|---|
+| 1 | Aena | AENA.MC | Valor | Aeropuertos españoles, regulada con ROIC alto y dividendo |
+| 1 | Meta Platforms | META | Crecimiento | Publicidad con IA, márgenes altos, PER razonable |
+| 1 | Nestlé | NESN.SW | Valor | Alimentación defensiva en mínimos de varios años |
+| 1 | Mastercard | MA | Crecimiento | Red de pagos, comparar con Visa |
+| 2 | Novartis | NOVN.SW | Valor | Farmacia pura tras escindir Sandoz, dividendo |
+| 2 | Tencent | 0700.HK | Crecimiento | Juegos, pagos y nube en China, recompras fuertes |
+| 2 | Bureau Veritas | BVI.PA | Valor | Inspección y certificación, ingresos recurrentes |
+| 2 | Cadence Design | CDNS | Crecimiento | Software de diseño de chips, duopolio |
+| 3 | Heineken | HEIA.AS | Valor | Cerveza premium castigada, cotiza bajo su media |
+| 3 | Straumann | STMN.SW | Crecimiento | Implantes dentales, líder mundial |
+| 3 | Unilever | ULVR.L | Valor | Consumo básico en reestructuración, dividendo |
+| 3 | EssilorLuxottica | EL.PA | Crecimiento | Óptica integrada, poder de precio |
+| 4 | Teleperformance | TEP.PA | Valor | Muy barata por el miedo a la IA; prueba de la tesis |
+| 4 | Nvidia | NVDA | Crecimiento | Para tenerla medida con el método común |
+| 4 | Ashtead | AHT.L | Valor | Alquiler de maquinaria en EE. UU., cíclica de calidad |
+| 4 | Lonza | LONN.SW | Crecimiento | Fabricación para farmacéuticas (CDMO) |
+
 ## Vigilar
 
 - **Rightmove**: fuera de la cartera por decisión del usuario (14-oct); no proponerla.
