@@ -1,0 +1,3429 @@
+{
+  "meta": {
+    "fecha_corte": "2026-10-14",
+    "divisa": "CHF",
+    "divisa_cotizacion": "CHF",
+    "tipo_cambio": 1,
+    "unidades": "millones",
+    "cierre_ejercicio_mes": 12,
+    "etiqueta_ejercicio": "fin",
+    "normas_contables": "NIIF",
+    "formato_cuenta": "funcion",
+    "limitaciones": "Análisis hecho desde la nube con la red limitada a la búsqueda web: la web de inversores de Givaudan, los PDF del informe anual y del semestre, la SIX y los proveedores de datos no se pudieron abrir, así que las cifras salen de los extractos de búsqueda de los comunicados de la empresa, de Stock Analysis, MarketScreener, Fintel y la prensa económica suiza, cruzadas cuando fue posible. La confianza es menor que en un análisis normal. Faltan los impuestos y el resultado financiero exactos (usamos un tipo efectivo del 15 %), la deuda bruta y la caja por separado (trabajamos con la deuda neta publicada) y la deuda neta de junio de 2026, que estimamos en ≈4.500 M CHF con el ratio de 2,8 veces el EBITDA. Precio: 3.714 CHF, el nivel que la prensa da para la sesión del 13-oct-2026 tras las ventas de nueve meses; el cierre del 14-oct no salió en la búsqueda. Los cierres anuales se deducen del PER anual de MarketScreener por el BPA publicado.",
+    "controles_explicados": [
+      {
+        "control": "Al menos 5 comparables",
+        "explicacion": "Solo cuatro competidores directos cotizan con un PER fiable en las fuentes disponibles (Symrise, DSM-Firmenich, IFF y Kerry). Sensient, Croda y Novonesis se buscaron sin dato (hueco). Por eso los comparables pesan solo un 20 %."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "explicacion": "Desde este entorno no se pueden abrir los informes anuales; las primarias son los comunicados de resultados citados por la búsqueda."
+      },
+      {
+        "control": "Crecimiento financiable",
+        "explicacion": "La amortización (4,9 % de las ventas) incluye la de intangibles comprados, así que el capex (3,9-4,2 %) queda por debajo y la reinversión neta sale negativa. Hecha a mano: la inversión orgánica (capex + circulante, ≈5 % de las ventas) sobre un capital operativo sin fondo de comercio de ≈3.500 M da un ROIC orgánico de más del 30 % y financia de sobra el 3,5 % proyectado; el ROIC con todo el fondo de comercio (14,2 %) también lo cubre con creces. Ver dcf.sostenibilidad."
+      }
+    ],
+    "huecos": [
+      {
+        "seccion": "financieros",
+        "campo": "Impuestos, resultado financiero y coste de ventas por año",
+        "tipo": "Núcleo",
+        "intentos": "1) informe anual 2025 en PDF (no se puede abrir: solo WebSearch); 2) Stock Analysis (extracto sin esas líneas); 3) resumen financiero de 2025 (sin el dato en el extracto). Se usa un tipo efectivo del 15 % (estimación propia) para separar impuestos.",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "balance",
+        "campo": "Deuda bruta, caja, existencias y proveedores por año",
+        "tipo": "Núcleo",
+        "intentos": "1) resumen financiero del 1S26 (PDF no accesible); 2) Stock Analysis y Fintel (cifras sueltas que no reconcilian); 3) búsqueda de la deuda neta a junio de 2026 (solo el ratio 2,8x)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "negocio",
+        "campo": "Ventas y EBITDA por división en cifras absolutas",
+        "tipo": "Complemento",
+        "intentos": "1) informe anual (no accesible); 2) prensa (solo crecimientos); 3) presentación del 1S26 (PDF no accesible)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "flujos",
+        "campo": "Flujo operativo y capex de 2021-2023",
+        "tipo": "Complemento",
+        "intentos": "1) comunicados de 2022 y 2023 (solo caja libre en el extracto); 2) Stock Analysis (sin extracto); 3) TipRanks (solo ratios)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "competencia",
+        "campo": "Cuota de mercado publicada",
+        "tipo": "Complemento",
+        "intentos": "1) IAL Consultants (sin cifras por empresa en el extracto); 2) IMARC (sin cuotas); 3) informe anual (no accesible). Cuota estimada con ventas / mercado de IAL (estimación propia).",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "esg",
+        "campo": "Calificaciones ESG",
+        "tipo": "Complemento",
+        "intentos": "1) informe integrado (no accesible); 2) MSCI y Sustainalytics (sin extracto); 3) no se buscó más por presupuesto compartido de búsquedas",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "Composición del consejo, remuneración, votos de la junta y accionistas significativos",
+        "tipo": "Núcleo",
+        "intentos": "1) informe de remuneraciones y de gobierno (PDF no accesible); 2) API de participaciones de la SIX (sin red); 3) búsqueda de resultados de la junta del 19-mar-2026 (sin extracto)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "identificacion",
+        "campo": "Precio de cierre del 13 y del 14-oct-2026 y rango de 52 semanas",
+        "tipo": "Núcleo",
+        "intentos": "1) bolsa.mjs sin red; 2) búsquedas de cierre en alemán e inglés (precios sin fecha, de 2.786 a 3.393 CHF); 3) prensa del 13-oct (máximo de la sesión, 3.714 CHF, que usamos como precio)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "bolsa",
+        "campo": "Rentabilidades, beta, volatilidad y caída máxima",
+        "tipo": "Complemento",
+        "intentos": "1) bolsa.mjs sin red; 2) búsqueda de beta (sin extracto); 3) históricos de MarketScreener (solo cierres sueltos)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "transacciones",
+        "campo": "Operaciones comparables en aromas y fragancias",
+        "tipo": "Complemento",
+        "intentos": "1) no buscado por presupuesto de búsquedas compartido; 2) fusión DSM-Firmenich (2023) sin múltiplo en las fuentes; 3) compras de IFF (Frutarom) sin múltiplo en extracto",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "comparables",
+        "campo": "Sensient, Novonesis y Croda (PER de los próximos 12 meses)",
+        "tipo": "Complemento",
+        "intentos": "1) búsqueda conjunta de PER adelantado (sin datos); 2) informes del repositorio (no los tienen); 3) Yahoo (sin extracto)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sentimiento",
+        "campo": "Hilos de Reddit, Stocktwits, Seeking Alpha y foro de cash.ch de los últimos tres meses",
+        "tipo": "Complemento",
+        "intentos": "1) búsqueda en inglés de Reddit y Seeking Alpha (sin hilos); 2) búsqueda en alemán de foros de cash.ch y finanzen.net (sin comentarios fechados); 3) API de Stocktwits (sin acceso: solo WebSearch)",
+        "decision": "Omitido"
+      }
+    ]
+  },
+  "identificacion": {
+    "nombre": "Givaudan SA",
+    "nombre_corto": "Givaudan",
+    "ticker": "GIVN",
+    "isin": "CH0010645932",
+    "mercado": "SIX Swiss Exchange",
+    "indice_referencia": "SMI",
+    "pais": "Suiza",
+    "pais_iso": "CH",
+    "sector": "Materiales",
+    "industria": "Productos químicos especiales (aromas y fragancias)",
+    "sede": "Vernier (Ginebra), Suiza",
+    "fundacion": "1895",
+    "empleados": null,
+    "web": "www.givaudan.com",
+    "precio": 3714,
+    "fecha_precio": "2026-10-13",
+    "acciones": 9.226,
+    "capitalizacion_publicada": null,
+    "free_float_pct": null,
+    "max_52s": 3714,
+    "min_52s": null,
+    "volumen_medio_diario": null,
+    "proximos_resultados": "2027-01-28"
+  },
+  "resumen": {
+    "recomendacion": "Mantener",
+    "conviccion": "Baja",
+    "justificacion_recomendacion": null,
+    "horizonte": "12 meses",
+    "sintesis": "**La recomendación y por qué.** Mantener, con convicción baja. Con nuestro BPA y la regla común de PER, el objetivo a 12 meses es de 3.880,86 CHF frente a 3.714 CHF tras las ventas de nueve meses del 13 de octubre: +6,4 % ponderado con el dividendo y +6,9 % en el caso base, lejos del 15 % y el 12 % que pedimos para comprar. El valor intrínseco es de 3.233,97 CHF, un 12,9 % por debajo del precio. El objetivo medio de los analistas (3.461 CHF, de julio) queda por debajo, aunque los más recientes rondan 3.800-3.970. La convicción es baja porque las cifras salen de extractos de búsqueda y porque la valoración depende sobre todo de la tasa de descuento: con la prima implícita del mercado el valor objetivo sube a 4.046,65 CHF.\n\n**El negocio.** Givaudan es el número uno mundial de aromas y fragancias, con ≈21 % de un mercado de ≈43.000 M USD [17]. Cobra por fórmulas a medida que el cliente no cambia durante la vida del producto: margen EBITDA del 23-24 %, caja libre del 14 % de las ventas y 25 subidas seguidas del dividendo [1]. El ROIC (14,2 %, con todo el fondo de comercio) supera en 9 puntos el WACC (5,19 %). La sostenibilidad del crecimiento es «En parte»: la cuota y el capital no limitan, pero el franco recorta cada año el crecimiento, y por eso rebajamos el base a un 3,5 % en francos en 2027-2030.\n\n**Sector y ciclo.** El sector crece un 3-4 % anual. La perfumería fina tira a doble dígito (+13,5 % en el tercer trimestre) y la alimentación de EE. UU. está floja (sabores de Norteamérica −3,3 %) [8, 9]. Las investigaciones de competencia en Europa, EE. UU., Reino Unido y Suiza son el riesgo regulatorio [6].\n\n**Finanzas.** 2025: ventas de 7.472 M CHF (+5,1 % comparable), EBITDA de 1.751 M y beneficio neto de 1.071 M [1]. El 1S26 fue flojo (margen ajustado del 24,3 %, caja libre negativa, 103 M de no recurrentes) [6], pero los nueve meses aceleraron al +5,2 % comparable frente a un consenso del 3,9 % [8, 9]. Deuda neta de 2,1 veces el EBITDA a fin de 2025 [1].\n\n**Equipo y gobierno.** Nuevo primer ejecutivo (Christian Stammkoetter, desde marzo) y el anterior, Gilles Andrier, de presidente: continuidad, pero menos independencia en el consejo [23]. Buen historial de cumplimiento del plan.\n\n**Valoración.** El DCF da 3.481,66 CHF (−6,3 %); el DCF inverso dice que el precio descuenta un crecimiento del 3,6 % anual (el nuestro, 2,7 %) o un margen del 25,7 % (el nuestro, 24,5 %): cumplir el plan sin pérdida por divisa. Cotiza a 29,5x nuestro BPA de 2027e, por debajo de su media de 2022-2025 (31,9x) y muy por encima de los comparables (18,8x). Es la valoración justa de una empresa excelente: sin margen de seguridad.\n\n**Riesgos y catalizadores.** El riesgo principal es que la perfumería fina se enfríe (bajista a 12 meses: 3.132,76 CHF, −13,7 % con el dividendo); después, una multa de competencia y el franco. Catalizadores: los resultados anuales de enero de 2027 (margen y caja libre del segundo semestre) y el cierre de las investigaciones.\n\n**Qué cambiaría la decisión.** Compraríamos por debajo de 3.233,97 CHF, donde el valor intrínseco cubre el precio, si la calidad se confirma. Venderíamos por encima de 4.392,07 CHF o si Fragrance & Beauty baja del 4 % en un semestre.",
+    "tesis": "Givaudan es el líder de un oligopolio de cuatro en aromas y fragancias, un negocio con costes de cambio altísimos: la fórmula va unida al producto del cliente durante toda su vida. Eso le da márgenes EBITDA del 23-24 %, una caja libre del 14 % de las ventas y un ROIC muy por encima del coste de capital [1].\n\nEl precio (3.714 CHF, 29,5x nuestro BPA de 2027e) descuenta que cumple el centro de su plan 2026-2030 (4-6 % comparable) sin que el franco se lo coma: el DCF inverso pide un 3,6 % anual en francos frente a nuestro 2,7 %. Los comparables cotizan a 18,8x.\n\nEl mercado acierta en la calidad y, tras la caída de 2025, el múltiplo ya no es el de 2020-2021. Pero a este precio la rentabilidad esperada a 12 meses (+6,4 %) es poco más que el dividendo y el crecimiento del beneficio: para ganar más hay que creer que el PER vuelve a 32-36x o que la perfumería fina sigue a doble dígito.",
+    "vision_diferencial": {
+      "mercado_descuenta": "El plan 2026-2030 cumplido con poca pérdida por divisa (crecimiento del 3,6 % anual en francos) y un PER de ≈30x. Los objetivos recientes de los analistas (3.800-3.970 CHF) dejan poco recorrido [33, 34].",
+      "nuestra_vision": "Mismo negocio, algo menos de crecimiento en francos (2,7 % de media en diez años) y el mismo margen: valor intrínseco de 3.233,97 CHF y objetivo a 12 meses de 3.880,86 CHF.",
+      "por_que": "El franco ha restado 2-3 puntos al año de crecimiento en 2019-2025, y el plan habla de crecimiento en moneda local. No vemos razón para que eso cambie."
+    },
+    "a_favor": [
+      "**Foso**: costes de cambio de las fórmulas y oligopolio de cuatro; ≈21 % del mercado.",
+      "**Caja**: caja libre del 14,1 % de las ventas en 2025 y dividendo creciente 25 años seguidos.",
+      "**Rentabilidad**: ROIC del 14,2 % frente a un WACC del 5,19 %.",
+      "**Momento**: nueve meses al +5,2 % comparable, por encima del consenso, con la perfumería fina al +13,5 % en el trimestre.",
+      "**Múltiplo**: 29,5x, por debajo de su media de 2022-2025 (31,9x)."
+    ],
+    "en_contra": [
+      "**Sin margen de seguridad**: valor intrínseco de 3.233,97 CHF (−12,9 %).",
+      "**Rentabilidad a 12 meses modesta**: +6,4 % ponderada y +6,9 % en el base.",
+      "**Divisa**: el franco recorta el crecimiento cada año.",
+      "**Competencia**: investigaciones abiertas en cuatro jurisdicciones.",
+      "**Prima frente a los rivales**: 29,5x frente a 18,8x."
+    ],
+    "que_vigilar": "La tesis depende de que Givaudan siga creciendo dentro del 4-6 % comparable y recupere el margen ajustado del 24,5 % y la caja libre del 12 % en el segundo semestre. La señal de que no se cumple: unos resultados de 2026 (enero de 2027) con caja libre por debajo del 10 % de las ventas o una multa europea grande.",
+    "cambiaria_recomendacion": [
+      "Precio por debajo de 3.233,97 CHF: el valor intrínseco cubriría el precio (Comprar si la calidad se confirma).",
+      "Precio por encima de 4.392,07 CHF: Vender.",
+      "Fragrance & Beauty por debajo del 4 % en un semestre: bajaríamos el BPA.",
+      "Bono de la Confederación por encima del 1 %: bajaría el valor intrínseco.",
+      "Cierre de las investigaciones de competencia sin multa relevante: subiría la convicción."
+    ],
+    "kpis_seguimiento": [
+      {
+        "kpi": "Crecimiento comparable del grupo",
+        "nivel_actual": "+5,2 % (9M26)",
+        "umbral_alerta": "< 4 %",
+        "por_que": "Plan 2026-2030 (4-6 %)."
+      },
+      {
+        "kpi": "Margen EBITDA ajustado",
+        "nivel_actual": "24,3 % (1S26)",
+        "umbral_alerta": "< 23,5 %",
+        "por_que": "Base del BPA a 12 meses."
+      },
+      {
+        "kpi": "Caja libre / ventas",
+        "nivel_actual": "14,1 % (2025)",
+        "umbral_alerta": "< 10 %",
+        "por_que": "Objetivo de más del 12 %."
+      },
+      {
+        "kpi": "Deuda neta / EBITDA",
+        "nivel_actual": "2,8 (jun-26)",
+        "umbral_alerta": "> 3,0",
+        "por_que": "Margen para una multa."
+      },
+      {
+        "kpi": "Bono suizo a 10 años",
+        "nivel_actual": "0,54 %",
+        "umbral_alerta": "> 1 %",
+        "por_que": "Mueve el valor intrínseco."
+      }
+    ],
+    "confianza": "Baja"
+  },
+  "historia": {
+    "resumen": "Givaudan nace en 1895 en Vernier (Ginebra) como fabricante de perfumes de los hermanos Léon y Xavier Givaudan. Fue filial de Roche desde 1963 hasta su escisión y salida a bolsa en la SIX en 2000. Desde entonces ha crecido con compras: la división de aromas de Quest (2007) la hizo número uno del mundo, y entre 2014 y 2021 compró Spicetec, Naturex, Albert Vieille, Fragrance Oils, Drom y otras para entrar en ingredientes naturales y activos cosméticos. Ha subido el dividendo todos los años desde la salida a bolsa (25 subidas seguidas en 2026) [1, 19].",
+    "hitos": [
+      {
+        "anio": "1895",
+        "hito": "Fundación en Ginebra por Léon y Xavier Givaudan."
+      },
+      {
+        "anio": "2000",
+        "hito": "Escisión de Roche y salida a bolsa en la SIX Swiss Exchange [1]."
+      },
+      {
+        "anio": "2007",
+        "hito": "Compra de Quest International: liderazgo mundial en aromas y fragancias."
+      },
+      {
+        "anio": "2018",
+        "hito": "Compra de Naturex (ingredientes naturales)."
+      },
+      {
+        "anio": "2025",
+        "hito": "Plan 2030: crecimiento comparable del 4-6 % y caja libre > 12 % de las ventas [13]."
+      },
+      {
+        "anio": "2026",
+        "hito": "Christian Stammkoetter, primer ejecutivo; Gilles Andrier pasa a presidir el consejo [23]."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "negocio": {
+    "descripcion": "Givaudan es el mayor fabricante mundial de aromas y fragancias. Diseña y produce fragancias para perfumería fina y para productos de consumo (detergentes, higiene, cosmética), ingredientes de fragancia y cosméticos activos (división Fragrance & Beauty), y aromas, sabores e ingredientes nutricionales para alimentación y bebidas (Taste & Wellbeing). Vende a grandes grupos de consumo (Nestlé, Unilever, P&G, L'Oréal, Coca-Cola…) y a clientes locales y regionales, con contratos plurianuales en los que es proveedor homologado (la llamada «core list») [1, 6].",
+    "como_gana_dinero": "Givaudan cobra por fórmulas a medida: el cliente encarga una fragancia o un sabor para un producto concreto y, si el producto se vende, Givaudan suministra el compuesto durante toda su vida comercial. El compuesto es una parte pequeña del coste del producto final (≈1-5 %) pero decide la preferencia del consumidor, así que el cliente rara vez cambia de proveedor a mitad de vida del producto: de ahí márgenes EBITDA del 21-25 % y una caja libre de 12-15 % de las ventas [1, 4]. Los dos motores son el volumen de consumo de sus clientes y el traslado a precio de los costes de materias primas, con unos meses de retraso.",
+    "segmentos": [
+      {
+        "nombre": "Fragrance & Beauty",
+        "descripcion": "Perfumería fina, fragancias de consumo, ingredientes de fragancia y activos cosméticos.",
+        "tipo_resultado": null,
+        "historico": []
+      },
+      {
+        "nombre": "Taste & Wellbeing",
+        "descripcion": "Aromas, sabores e ingredientes para alimentación, bebidas y nutrición.",
+        "tipo_resultado": null,
+        "historico": []
+      }
+    ],
+    "segmentos_nota": "No hemos podido leer las ventas por división en cifras absolutas de 2024-2025. Crecimiento comparable: 2025, Fragrance & Beauty +7,9 % (perfumería fina +18,3 %) y Taste & Wellbeing +2,4 % [1]; 1S26, +6,5 % y +0,5 % [6, 12]; 1T26, +5,9 % y −0,4 % [16]. En el 1T26 Fragrance & Beauty facturó 1.004 M de 1.875 M (≈54 %) [7]. En los nueve meses de 2026 la perfumería del 3T creció un 13,5 % y los sabores de Norteamérica cayeron un 3,3 % [8, 9].",
+    "geografias": [],
+    "clientes": "Clientes muy repartidos: los grandes grupos de consumo (alimentación, bebidas, higiene, cosmética y perfumería de lujo) y, cada vez más, clientes locales y regionales de mercados emergentes, que crecen más deprisa [21]. Givaudan está en las listas cortas de proveedores de los grandes, que encargan cada fórmula a dos o tres casas en concurso. El poder de precios es real pero con retraso: traslada los costes de materias primas a precio en unos meses, como en 2022-2023, cuando el margen EBITDA cayó al 20,7 % y se recuperó al 23,8 % en 2024 [2, 5].",
+    "kpis": [
+      {
+        "kpi": "Crecimiento comparable del grupo",
+        "valor_anterior": "+5,1 % (2025)",
+        "valor_actual": "+5,2 % (9M26)",
+        "variacion": "Aceleración en el 3T",
+        "comentario": "1T26 +2,8 %, 1S26 +3,6 %, 9M26 +5,2 %: el 3T rondó el +8 % (estimación propia por diferencia) [6, 7, 8]."
+      },
+      {
+        "kpi": "Margen EBITDA ajustado",
+        "valor_anterior": "25,2 % (1S25)",
+        "valor_actual": "24,3 % (1S26)",
+        "variacion": "−0,9 puntos",
+        "comentario": "Divisa, costes de materias primas y mezcla [6]."
+      },
+      {
+        "kpi": "Caja libre ajustada / ventas",
+        "valor_anterior": "14,1 % (2025)",
+        "valor_actual": "−3,1 % (1S26)",
+        "variacion": "Fuerte caída estacional",
+        "comentario": "Más inversión y capital circulante temporalmente alto [6]; objetivo > 12 % de media 2026-2030 [13]."
+      },
+      {
+        "kpi": "Deuda neta / EBITDA",
+        "valor_anterior": "2,1 (dic-25)",
+        "valor_actual": "2,8 (jun-26)",
+        "variacion": "+0,7",
+        "comentario": "Dividendo pagado en marzo y caja libre negativa del semestre [1, 6]."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sector": {
+    "definicion": "Mercado mundial de aromas y fragancias (compuestos e ingredientes) vendidos a la industria de alimentación, bebidas, cuidado personal, hogar y perfumería. Cuatro grandes (Givaudan, dsm-firmenich, IFF y Symrise) y una cola de proveedores regionales [17].",
+    "tamano": 43070,
+    "unidad_serie": "M USD",
+    "serie": [],
+    "tcac_historico_pct": null,
+    "tcac_previsto_pct": 4.2,
+    "cr5_pct": null,
+    "estructura": "Concentrada",
+    "drivers": [
+      {
+        "driver": "Perfumería fina",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Perfumería fina +18,3 % en 2025 y +13,5 % en el 3T26 en Givaudan [1, 9]."
+      },
+      {
+        "driver": "Volumen de los grandes grupos de alimentación",
+        "efecto": "−",
+        "horizonte": "Cíclico",
+        "evidencia": "Taste & Wellbeing +0,5 % en el 1S26; sabores de Norteamérica −3,3 % en nueve meses [6, 8]."
+      },
+      {
+        "driver": "Mercados emergentes",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Clientes locales y regionales de alto crecimiento [21]."
+      },
+      {
+        "driver": "Costes de materias primas",
+        "efecto": "+/−",
+        "horizonte": "Cíclico",
+        "evidencia": "Inflación de costes de un dígito bajo prevista para el 2S26 [12]."
+      },
+      {
+        "driver": "Investigaciones de competencia",
+        "efecto": "−",
+        "horizonte": "Regulatorio",
+        "evidencia": "Acuerdos y provisiones de litigios en los no recurrentes del 1S26 (103 M) [6]."
+      }
+    ],
+    "porter": [
+      {
+        "fuerza": "Rivalidad",
+        "intensidad": 3,
+        "justificacion": "Oligopolio de cuatro con competencia por los encargos de los grandes clientes [17]."
+      },
+      {
+        "fuerza": "Poder de los clientes",
+        "intensidad": 3,
+        "justificacion": "Grandes grupos de consumo con listas cortas de proveedores, pero el coste de cambiar una fórmula ya lanzada es alto [1]."
+      },
+      {
+        "fuerza": "Poder de los proveedores",
+        "intensidad": 2,
+        "justificacion": "Materias primas naturales y petroquímicas dispersas; Givaudan integra parte de los naturales."
+      },
+      {
+        "fuerza": "Amenaza de entrada",
+        "intensidad": 1,
+        "justificacion": "Bibliotecas de moléculas, regulación y relación con clientes: no ha entrado nadie relevante en décadas."
+      },
+      {
+        "fuerza": "Amenaza de sustitutos",
+        "intensidad": 1,
+        "justificacion": "No hay sustituto para el aroma o el sabor de un producto de consumo."
+      }
+    ],
+    "ciclo": {
+      "posicion": "Expansión",
+      "comentario": "Tras el ajuste de inventarios de 2022-2023, el sector volvió a crecer en 2024-2025. En 2026 la perfumería tira y la alimentación está floja en Norteamérica [8, 9]."
+    },
+    "regulacion": "Lo que más pesa son las investigaciones de competencia abiertas en 2023 por la Comisión Europea, el Departamento de Justicia de EE. UU., la CMA británica y la COMCO suiza sobre posibles acuerdos entre los cuatro grandes de fragancias; ya hay acuerdos de litigios en los no recurrentes de 2026 [6]. Las normas de ingredientes (REACH, IFRA) suben el coste de entrada y favorecen a los grandes.",
+    "tendencias": "La perfumería fina crece a doble dígito (+18,3 % en 2025 y +13,5 % en el 3T26 en Givaudan) por la «premiumización» y los mercados emergentes, mientras los sabores para alimentación crecen poco en EE. UU. y Europa [1, 8, 9]. El mercado total crece un 3-4 % anual según IAL e IMARC [17, 18].",
+    "confianza": "Media"
+  },
+  "competencia": {
+    "cuota_pct": 21,
+    "posicion": "Número uno mundial por ventas, con ventaja clara sobre dsm-firmenich, IFF y Symrise [17].",
+    "competidores": [
+      {
+        "nombre": "dsm-firmenich",
+        "pais": "Suiza / Países Bajos",
+        "ticker": "DSFIR",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Número dos; Firmenich se fusionó con DSM en 2023; cotiza también en la SIX [20]."
+      },
+      {
+        "nombre": "IFF",
+        "pais": "EE. UU.",
+        "ticker": "IFF",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Número tres; endeudada tras la compra de Frutarom y DuPont N&B [24]."
+      },
+      {
+        "nombre": "Symrise",
+        "pais": "Alemania",
+        "ticker": "SY1",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Número cuatro; fuerte en nutrición animal y sabores [25]."
+      }
+    ],
+    "foso": {
+      "veredicto": "Amplio",
+      "tendencia": "Estable",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 1,
+          "evidencia": "No aplica."
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 5,
+          "evidencia": "La fórmula va unida al producto durante toda su vida; cambiarla arriesga la preferencia del consumidor."
+        },
+        {
+          "fuente": "Intangibles (marca, patentes, licencias)",
+          "puntuacion": 4,
+          "evidencia": "Biblioteca de moléculas y perfumistas; 25 años de dividendo creciente [7]."
+        },
+        {
+          "fuente": "Ventaja en costes",
+          "puntuacion": 3,
+          "evidencia": "Escala de compras de materias primas; margen EBITDA del 23-24 % frente a 18-22 % de sus rivales [16]."
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 4,
+          "evidencia": "Cuatro grandes reparten casi todo el mercado de los grandes clientes [1]."
+        }
+      ]
+    },
+    "amenazas": "Ningún rival amenaza la posición: dsm-firmenich está en plena integración y separando negocios, IFF vende activos para reducir deuda y Symrise es más pequeña [20, 24]. La amenaza real es regulatoria (las investigaciones de competencia) y de mezcla: si la perfumería fina se enfría tras dos años de doble dígito, el crecimiento volvería al 3-4 %.",
+    "confianza": "Media"
+  },
+  "financieros": {
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 6684,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 1484,
+        "amortizaciones": 395,
+        "ebit": 1089,
+        "resultado_financiero": -123,
+        "bai": 966,
+        "impuestos": 145,
+        "minoritarios": 0,
+        "beneficio_neto": 821,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 88.37,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 9.29
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 7117,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 1476,
+        "amortizaciones": 364,
+        "ebit": 1112,
+        "resultado_financiero": -105,
+        "bai": 1007,
+        "impuestos": 151,
+        "minoritarios": 0,
+        "beneficio_neto": 856,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 92.51,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 9.253
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 6915,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 1473,
+        "amortizaciones": 357,
+        "ebit": 1116,
+        "resultado_financiero": -65,
+        "bai": 1051,
+        "impuestos": 158,
+        "minoritarios": 0,
+        "beneficio_neto": 893,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 96.47,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 9.257
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 7412,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 1765,
+        "amortizaciones": 371,
+        "ebit": 1394,
+        "resultado_financiero": -112,
+        "bai": 1282,
+        "impuestos": 192,
+        "minoritarios": 0,
+        "beneficio_neto": 1090,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 117.63,
+        "dpa": 70,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 9.266
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 7472,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 1751,
+        "amortizaciones": 370,
+        "ebit": 1381,
+        "resultado_financiero": -121,
+        "bai": 1260,
+        "impuestos": 189,
+        "minoritarios": 0,
+        "beneficio_neto": 1071,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 115.46,
+        "dpa": 72,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 9.276
+      }
+    ],
+    "ltm": {
+      "periodo": "LTM jun-26",
+      "fecha_fin": "2026-06-30",
+      "ingresos": 7407,
+      "ebitda": 1626,
+      "ebit": null,
+      "beneficio_neto": 954,
+      "bpa": 102.7,
+      "dpa": 72,
+      "dpa_extraordinario": 0,
+      "fcf": null,
+      "participadas_en_ebitda": null,
+      "no_recurrentes_en_ebitda": 103
+    },
+    "cambios_perimetro": [],
+    "comentario": "Las ventas pasaron de 6.203 M CHF en 2019 a 7.472 M en 2025: un 3,1 % anual en francos, con un crecimiento comparable de alrededor del 5 % que la divisa recorta cada año [1, 15]. El margen EBITDA cayó del 22,2 % de 2021 al 20,7 % de 2022 por la inflación de materias primas y volvió al 23,4-23,8 % en 2024-2025 con subidas de precio y ahorros [1, 4, 5]. El beneficio neto subió de 821 M en 2021 a 1.090 M en 2024 y bajó un 1,7 % en 2025 (1.071 M) por la divisa [1, 3]. En el 1S26 las ventas cayeron un 1,7 % en francos (+3,6 % comparable) y el beneficio neto, de 592 M a 475 M, con 103 M de costes no recurrentes por litigios, reestructuración y las investigaciones de competencia [6, 14]. Los nueve meses (+5,2 % comparable, +2,6 % en francos) muestran un tercer trimestre mucho mejor [8, 9].",
+    "ajustes": "Usamos cifras publicadas. El EBITDA «comparable» o ajustado de la empresa excluye reestructuraciones, litigios y costes de las investigaciones de competencia (2025: 1.807 M, 24,2 %, frente a 1.751 M publicados) [1]; en el DCF partimos de un margen recurrente del 23,8 % en 2026e, entre el publicado y el ajustado, porque parte de esos costes se repite. El tipo efectivo del 15 % es una estimación propia (no tenemos el impuesto de cada año), igual que el reparto entre impuestos y resultado financiero de la cuenta.",
+    "confianza": "Media"
+  },
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "1T26",
+        "ingresos": 1875,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": 2.8,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": null,
+        "vs_consenso": "Superior"
+      },
+      {
+        "periodo": "2T26",
+        "ingresos": 1924,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": 4.3,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": null,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "3T26",
+        "ingresos": 2092,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": null,
+        "vs_consenso": "Superior"
+      }
+    ],
+    "nota": "1T26: 1.875 M, +2,8 % comparable (consenso 1,9 %) [7, 16]. 2T26 = 1S26 (3.799 M) − 1T26 (estimación propia por diferencia); crecimiento comparable del 2T26 del 4,3 % según el AWP [6]. 3T26 = 9M26 (5.891 M) − 1S26 (estimación propia por diferencia); el crecimiento comparable de los nueve meses fue del 5,2 % frente a un consenso del 3,9 %, así que el del 3T rondó el 8 % (estimación propia) [8, 9]. La cifra de 3T en francos (+11 % implícito frente a 1.878 M del 3T25) no cuadra del todo con una divisa negativa: hay que verificarla con el comunicado.",
+    "ultima_presentacion": "En julio (1S26) la dirección presentó un semestre de crecimiento por debajo del objetivo (+3,6 %) y margen a la baja (EBITDA ajustado del 24,3 % frente al 25,2 %), con la caja libre negativa por más inversión y circulante, y prometió mejora secuencial en Taste & Wellbeing, fuerza en Fragrance & Beauty y una inflación de costes de un dígito bajo en el segundo semestre [6, 12]. El 13-oct-2026 cumplió: nueve meses al +5,2 % comparable frente a un consenso del 3,9 %, con la perfumería del trimestre al +13,5 % por la perfumería fina; los sabores de Norteamérica siguen débiles (−3,3 % en nueve meses) [8, 9, 38]. No hemos podido leer las transcripciones; según la prensa, las preguntas van sobre el margen del segundo semestre, la recuperación de Taste & Wellbeing y las investigaciones de competencia.",
+    "confianza": "Media"
+  },
+  "balance": {
+    "historico": [
+      {
+        "periodo": "2025",
+        "activo_total": 11864,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 7296,
+        "fondo_comercio": 4722,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": 1617,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 0,
+        "deuda_financiera": 3678,
+        "arrendamientos": 0,
+        "patrimonio_neto": 4568,
+        "minoritarios": 0,
+        "reservas": null
+      }
+    ],
+    "balance_nota": "Deuda financiera = deuda neta publicada (deuda a corto y largo plazo menos efectivo, definición de la empresa): 3.678 M a dic-25 y 4.002 M a dic-24 [1]; no hemos podido separar deuda bruta y caja (caja = 0 en la tabla). Activo total, pasivo y patrimonio de dic-25 de Fintel (Capital IQ) [10]; fondo de comercio y clientes de Stock Analysis [11]; existencias de dic-24 de la información semestral de 2025 citada por la búsqueda [11]. Junio de 2026: deuda neta/EBITDA de 2,8 [6]; estimamos la deuda neta en ≈4.500 M (3.678 M + dividendo de ≈664 M + caja libre ajustada de −119 M; estimación propia). Minoritarios despreciables.",
+    "vencimientos": [],
+    "liquidez": "Deuda neta de ≈4.500 M CHF a 30-jun-2026 (estimación propia), 2,8 veces el EBITDA [6].",
+    "rating": null,
+    "coste_deuda_pct": null,
+    "vida_media_anios": null,
+    "otros_pasivos": "El pasivo relevante es la deuda financiera (bonos en francos y euros y papel comercial), que solo tenemos en neto: 3.678 M a diciembre de 2025 y ≈4.500 M a junio de 2026 (estimación propia) [1, 6]. Las investigaciones de competencia en Europa, EE. UU., Reino Unido y Suiza ya han costado acuerdos y provisiones (parte de los 103 M de no recurrentes del 1S26) y son el principal pasivo contingente [6]. Pensiones y arrendamientos no los hemos podido separar (hueco); suelen ser unos cientos de millones en la empresa.",
+    "comentario": "Balance cómodo para un negocio tan estable: deuda neta de 2,1 veces el EBITDA a fin de 2025, que sube estacionalmente a 2,8 veces en junio por el pago del dividendo y la caja libre negativa del semestre [1, 6]. El fondo de comercio (4.722 M) es el 40 % del activo (11.864 M) y el patrimonio, 4.568 M [10, 11]. Sin compras grandes desde 2021, la deuda baja con la caja libre.",
+    "confianza": "Baja"
+  },
+  "flujos": {
+    "historico": [
+      {
+        "periodo": "2024",
+        "flujo_operativo": 1625,
+        "capex": 280,
+        "pagos_arrendamientos": null,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 627,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 1512,
+        "capex": 285,
+        "pagos_arrendamientos": null,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 646,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      }
+    ],
+    "flujos_nota": "Flujo operativo antes de inversiones de 1.512 M (2025) y 1.625 M (2024) [2]; inversión neta en inmovilizado material de 233 M y 223 M más intangibles de 52 M y 57 M (3,8 % de las ventas) [1]. Caja libre publicada (después de intereses y arrendamientos): 843 M (2021), 479 M (2022), 920 M (2023), 1.158 M (2024) y 1.053 M (2025) [1, 4, 5]. Dividendos pagados: dividendo por acción del ejercicio anterior × 9,23 M acciones (estimación propia: 68 CHF en 2024 y 70 CHF en 2025).",
+    "comentario": "La caja libre publicada (después de intereses y arrendamientos) fue de 843 M en 2021, 479 M en 2022 (circulante inflado por la crisis de suministro), 920 M en 2023, 1.158 M en 2024 y 1.053 M en 2025 (14,1 % de las ventas) [1, 4, 5]. Convierte en caja libre cerca del 100 % del beneficio neto. El capex neto es estable, ≈3,8 % de las ventas [1]. El 1S26 (caja libre ajustada de −119 M) refleja más inversión y circulante temporalmente alto [6]; el objetivo es una caja libre de más del 12 % de las ventas de media en 2026-2030 [13].",
+    "confianza": "Media"
+  },
+  "calidad": null,
+  "rentabilidad": {
+    "comentario": "El ROIC de 2025 es del 14,2 %: NOPAT de 1.174 M sobre un capital invertido de 8.246 M (patrimonio de 4.568 M más deuda neta de 3.678 M, con todo el fondo de comercio de las compras) [1, 10]. Supera en 9 puntos el WACC del 5,19 %. Sin el fondo de comercio de las compras, el ROIC orgánico pasa del 30 %. El ROE de ≈23 % (beneficio de 1.071 M sobre 4.568 M de patrimonio) refleja algo de apalancamiento. El ROIC incremental de 2021-2025 sale bajo porque la divisa recortó las ventas en francos mientras el capital crecía con las compras de 2021.",
+    "confianza": "Baja"
+  },
+  "capital": {
+    "politica": "Dividendo creciente desde la salida a bolsa en 2000: 72 CHF por acción con cargo a 2025 (+2,9 %), la 25.ª subida seguida, ≈60 % del beneficio [1]. No hay recompras. El resto de la caja libre se dedica a reducir deuda y a compras pequeñas de ingredientes y tecnologías.",
+    "adquisiciones": [],
+    "comentario": "Givaudan creció con compras en 2014-2021 (Naturex, Albert Vieille, Fragrance Oils, Drom) y desde 2022 ha frenado para desendeudarse: la deuda neta bajó de 4.002 M en 2024 a 3.678 M en 2025 [1]. El reparto, dos tercios del beneficio en dividendos y el resto para deuda, es prudente para un negocio que necesita poco capital. El fondo de comercio (4.722 M) recuerda que parte del crecimiento pasado fue comprado [11].",
+    "confianza": "Media"
+  },
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "Christian Stammkoetter",
+        "cargo": "Primer ejecutivo (CEO)",
+        "desde": "2026",
+        "participacion_pct": null,
+        "trayectoria": "Viene de Danone, donde presidía Asia, Oriente Medio y África [26]."
+      },
+      {
+        "nombre": "Gilles Andrier",
+        "cargo": "Presidente del consejo",
+        "desde": "2026",
+        "participacion_pct": null,
+        "trayectoria": "Primer ejecutivo durante unos 20 años (2005-2026); presidente desde la junta de marzo de 2026 [23]."
+      }
+    ],
+    "historial_guidance": [
+      {
+        "anio": "2021-2025",
+        "guia": "Crecimiento comparable del 4-5 % y caja libre del 12-17 % de las ventas (plan 2025)",
+        "real": "Crecimiento medio por encima del 5 % y caja libre del 6,7-15,6 %",
+        "cumplida": "Parcial"
+      },
+      {
+        "anio": "2026",
+        "guia": "Crecimiento comparable del 4-6 % de media 2026-2030 (sin guía anual)",
+        "real": "+5,2 % en nueve meses",
+        "cumplida": "Sí"
+      }
+    ],
+    "comentario": "Cambio de cúpula en 2026: Christian Stammkoetter, que viene de dirigir Asia, Oriente Medio y África en Danone, es primer ejecutivo desde el 1-mar-2026, y Gilles Andrier, primer ejecutivo durante unos 20 años, preside el consejo desde la junta del 19-mar-2026 [23, 26]. El historial de cumplimiento es bueno: el plan 2021-2025 (crecimiento comparable del 4-5 %) se cumplió y el de 2026-2030 (4-6 %) va al 5,2 % en nueve meses [8, 13]. La caja libre del plan anterior quedó por debajo del objetivo en 2022 (6,7 %) por el circulante [5].",
+    "confianza": "Media"
+  },
+  "gobierno": {
+    "consejo": [
+      {
+        "nombre": "Gilles Andrier",
+        "cargo": "Presidente",
+        "tipo": "No independiente",
+        "desde": "2026",
+        "comisiones": null
+      }
+    ],
+    "presidente_ceo_separados": true,
+    "presidente_ejecutivo": false,
+    "consejero_coordinador": null,
+    "una_accion_un_voto": true,
+    "operaciones_vinculadas_relevantes": false,
+    "variable_ligado_rentabilidad": null,
+    "auditoria_independiente": null,
+    "insiders_sin_operaciones": null,
+    "accionista_control": false,
+    "presidente_vinculado_control": false,
+    "cambios_cupula_24m": 2,
+    "voto_remuneracion_pct": null,
+    "voto_remuneracion_contra_pct": null,
+    "voto_remuneracion_contra_libre_pct": null,
+    "voto_cupula_pct": null,
+    "remuneracion_ceo": null,
+    "remuneracion": "No hemos podido leer el informe de remuneraciones ni los resultados de la junta (hueco). En Suiza los accionistas votan cada año la remuneración del consejo y de la dirección (ordenanza Minder).",
+    "accionistas": [],
+    "insiders": [],
+    "control_y_defensas": "Capital disperso, una acción un voto; sin accionista de control conocido en las fuentes disponibles. El antiguo primer ejecutivo preside el consejo desde marzo de 2026, algo que los códigos de buen gobierno desaconsejan porque reduce la independencia de la supervisión del nuevo equipo [23].",
+    "alertas": [
+      "El ex primer ejecutivo pasa a presidente del consejo (marzo de 2026) [23].",
+      "Investigaciones de competencia en el sector de fragancias (Europa, EE. UU., Reino Unido, Suiza): acuerdos y provisiones dentro de los 103 M de no recurrentes del 1S26 [6]."
+    ],
+    "confianza": "Baja"
+  },
+  "consenso": {
+    "guidance": "Sin guía anual cuantificada. Objetivos 2026-2030: crecimiento comparable medio del 4-6 % y caja libre ajustada de más del 12 % de las ventas [13]. Para el 2S26, la empresa espera mejora secuencial en Taste & Wellbeing, impulso fuerte en Fragrance & Beauty e inflación de costes de un dígito bajo [12]. Próxima cita: resultados anuales a finales de enero de 2027 (fecha exacta sin verificar).",
+    "estimaciones": [
+      {
+        "periodo": "2026e",
+        "ingresos": 7541,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 115.3,
+        "dpa": null,
+        "fuente": "MarketScreener [29]"
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 7893,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 126.1,
+        "dpa": null,
+        "fuente": "MarketScreener [29]"
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 8248,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 133.4,
+        "dpa": null,
+        "fuente": "MarketScreener [29]"
+      }
+    ],
+    "recomendaciones": {
+      "n_analistas": 19,
+      "comprar": null,
+      "mantener": null,
+      "vender": null,
+      "po_medio": 3461,
+      "po_min": 2800,
+      "po_max": 4500
+    },
+    "revisiones": "Antes de las ventas de nueve meses, el consenso del AWP esperaba 5.783 M de ventas y un 4,7 % comparable en el 3T; salieron 5.891 M y un +5,2 % en nueve meses [8, 38]. BPA de MarketScreener: 115,3 CHF (2026e), 126,1 (2027e) y 133,4 (2028e) [29]. Objetivo medio de 19 analistas ≈3.461 CHF en julio (de 2.800 a 4.500) [32]; el ZKB da 3.968 de valor razonable, JPMorgan subió a 3.800 (neutral) y la prensa cita 3.850 tras los nueve meses [33, 34, 39]. Tras el dato es probable que los objetivos suban.",
+    "base_ebitda": "NIIF",
+    "ajuste_ebitda_pct_ventas": null,
+    "confianza": "Baja"
+  },
+  "bolsa": null,
+  "multiplos_historicos": {
+    "serie": [
+      {
+        "anio": "2020",
+        "precio_cierre": 3755,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": true
+      },
+      {
+        "anio": "2021",
+        "precio_cierre": 4790,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": true
+      },
+      {
+        "anio": "2022",
+        "precio_cierre": 2831,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2023",
+        "precio_cierre": 3483,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2024",
+        "precio_cierre": 3964,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2025",
+        "precio_cierre": 3129,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      }
+    ],
+    "comentario": "El PER al cierre de cada año (BPA publicado) fue de 46,6x en 2020 y 54,2x en 2021, con tipos cero; bajó a 30,6x en 2022, subió a 36,1x en 2023 y 33,7x en 2024 y cayó a 27,1x en 2025, el mínimo de la serie [29]. El ZKB da una media de diez años de 35,7x sobre el BPA ajustado [33]. Hoy cotiza a ≈29,5x nuestro BPA de 2027e: por debajo de la media de 2022-2025 (31,9x) y muy por encima de los comparables. La acción cayó de ≈4.790 CHF a fin de 2021 a ≈3.130 a fin de 2025 y en 2026 fue de ≈2.940 en abril [37] a 3.714 tras las ventas de nueve meses [28].",
+    "confianza": "Baja"
+  },
+  "comparables": {
+    "criterio": "Los cuatro competidores con negocio parecido y PER disponible: Symrise y Kerry (del informe de Viscofan del 6-oct-2026 de este repositorio) [25], IFF (15,5-17,5x; usamos 16,5x) [24] y DSM-Firmenich (20,9x) [31]. Ninguno tiene el margen, la cuota ni la caja libre de Givaudan.",
+    "empresas": [
+      {
+        "nombre": "Symrise",
+        "ticker": "SY1",
+        "pais": "DE",
+        "capitalizacion": null,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": 12.4,
+        "per_ntm": 21.1,
+        "crecimiento_pct": 5.6,
+        "margen_ebitda_pct": 21.9,
+        "roic_pct": 7.02,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "DSM-Firmenich",
+        "ticker": "DSFIR",
+        "pais": "CH",
+        "capitalizacion": null,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 20.9,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "IFF",
+        "ticker": "IFF",
+        "pais": "US",
+        "capitalizacion": null,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 16.5,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "Kerry Group",
+        "ticker": "KRZ",
+        "pais": "IE",
+        "capitalizacion": null,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": 11.9,
+        "per_ntm": 17.5,
+        "crecimiento_pct": 4.9,
+        "margen_ebitda_pct": 17.9,
+        "roic_pct": 9.35,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      }
+    ],
+    "comentario": "La mediana del PER de los próximos 12 meses es de 18,8x frente a ≈30x de Givaudan: una prima del 60 % que el mercado lleva décadas pagando por el líder con el margen y la conversión de caja más altos del sector. Por comparables Givaudan valdría 2.135-2.594 CHF, muy por debajo del precio; por eso pesan solo un 20 %. Sirven de suelo para el escenario bajista, no de objetivo.",
+    "confianza": "Baja"
+  },
+  "transacciones": null,
+  "dcf": {
+    "anios": [
+      {
+        "periodo": "2026e",
+        "crecimiento_pct": 2.5,
+        "margen_ebitda_pct": 23.8,
+        "amortizacion_pct_ventas": 4.9,
+        "capex_pct_ventas": 4.2,
+        "nwc_pct_ventas": 21.6,
+        "tasa_impositiva_pct": 15,
+        "fijo": true
+      },
+      {
+        "periodo": "2027e",
+        "crecimiento_pct": 3.5,
+        "margen_ebitda_pct": 24,
+        "amortizacion_pct_ventas": 4.9,
+        "capex_pct_ventas": 4.2,
+        "nwc_pct_ventas": 21.6,
+        "tasa_impositiva_pct": 15,
+        "fijo": false
+      },
+      {
+        "periodo": "2028e",
+        "crecimiento_pct": 3.5,
+        "margen_ebitda_pct": 24.2,
+        "amortizacion_pct_ventas": 4.9,
+        "capex_pct_ventas": 3.9,
+        "nwc_pct_ventas": 21.6,
+        "tasa_impositiva_pct": 15,
+        "fijo": false
+      },
+      {
+        "periodo": "2029e",
+        "crecimiento_pct": 3.5,
+        "margen_ebitda_pct": 24.4,
+        "amortizacion_pct_ventas": 4.9,
+        "capex_pct_ventas": 3.9,
+        "nwc_pct_ventas": 21.6,
+        "tasa_impositiva_pct": 15,
+        "fijo": false
+      },
+      {
+        "periodo": "2030e",
+        "crecimiento_pct": 3.5,
+        "margen_ebitda_pct": 24.5,
+        "amortizacion_pct_ventas": 4.9,
+        "capex_pct_ventas": 3.9,
+        "nwc_pct_ventas": 21.6,
+        "tasa_impositiva_pct": 15,
+        "fijo": false
+      },
+      {
+        "periodo": "2031e",
+        "crecimiento_pct": 3,
+        "margen_ebitda_pct": 24.5,
+        "amortizacion_pct_ventas": 4.9,
+        "capex_pct_ventas": 3.9,
+        "nwc_pct_ventas": 21.6,
+        "tasa_impositiva_pct": 15,
+        "fijo": false
+      },
+      {
+        "periodo": "2032e",
+        "crecimiento_pct": 2.5,
+        "margen_ebitda_pct": 24.5,
+        "amortizacion_pct_ventas": 4.9,
+        "capex_pct_ventas": 3.9,
+        "nwc_pct_ventas": 21.6,
+        "tasa_impositiva_pct": 15,
+        "fijo": false
+      },
+      {
+        "periodo": "2033e",
+        "crecimiento_pct": 2,
+        "margen_ebitda_pct": 24.5,
+        "amortizacion_pct_ventas": 4.9,
+        "capex_pct_ventas": 3.9,
+        "nwc_pct_ventas": 21.6,
+        "tasa_impositiva_pct": 15,
+        "fijo": false
+      },
+      {
+        "periodo": "2034e",
+        "crecimiento_pct": 1.5,
+        "margen_ebitda_pct": 24.5,
+        "amortizacion_pct_ventas": 4.9,
+        "capex_pct_ventas": 3.9,
+        "nwc_pct_ventas": 21.6,
+        "tasa_impositiva_pct": 15,
+        "fijo": false
+      },
+      {
+        "periodo": "2035e",
+        "crecimiento_pct": 1,
+        "margen_ebitda_pct": 24.5,
+        "amortizacion_pct_ventas": 4.9,
+        "capex_pct_ventas": 3.9,
+        "nwc_pct_ventas": 21.6,
+        "tasa_impositiva_pct": 15,
+        "fijo": false
+      }
+    ],
+    "wacc": {
+      "tasa_libre_pct": 0.54,
+      "beta": 0.75,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 1,
+      "coste_deuda_pct": 2,
+      "tasa_impositiva_pct": 15,
+      "peso_deuda_pct": 12
+    },
+    "terminal": {
+      "metodo": "gordon",
+      "crecimiento_pct": 1,
+      "multiplo_salida": 15
+    },
+    "etapa2": {
+      "usar": false,
+      "anios": 5,
+      "margen_final_pct": null,
+      "justificacion": null
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "2026e fijo en +2,5 % en francos (nueve meses +2,6 %) [8]. Después, un 3,5 % anual en 2027-2030 y bajada hasta el 1 %: volumen +3 % y precio +1,5 % (el plan de crecimiento comparable del 4-6 %) menos ≈1 punto de divisa [13]. Es más que el 3,1 % anual en francos de 2019-2025 (que incluía compras) y menos que el consenso (7.893 y 8.248 M en 2027-2028e) [15, 29]. La primera versión, con un 4,5 %, suponía casi sin efecto divisa; la rebajamos tras la prueba de sostenibilidad.",
+      "margenes": "Margen EBITDA del 23,8 % en 2026e (ajustado del 1S26: 24,3 %, con parte de los no recurrentes como gasto habitual) [6], subiendo al 24,5 % en 2030e: el nivel comparable de 2024-2025 (24,2-24,5 %) [1]. No suponemos la mejora del plan 2030 más allá de eso. Cada punto de margen vale ≈180 CHF por acción (estimación propia con el DCF).",
+      "inversion": "Capex del 4,2 % de las ventas en 2026-27e (la empresa invierte más en 2026) y del 3,9 % después, frente al 3,8 % de 2024-2025 [1, 6]. Circulante del 21,6 % de las ventas (clientes de diciembre de 2025) [11, 45]. La amortización (4,9 %) incluye la de intangibles comprados y por eso supera al capex.",
+      "wacc": "Todo en francos. Tasa libre del 0,54 % (bono de la Confederación a 10 años, 8-oct-2026) [35]; beta de 0,75 (estimación propia: defensiva de consumo; no hemos podido leer la de la acción), prima de mercado del 5,5 % y 1 punto adicional, como en el informe de Roche, porque los flujos están en divisas y el bono suizo es anormalmente bajo. Coste de la deuda del 2 % antes de impuestos y un 12 % de deuda. WACC del 5,19 %. Con la prima implícita del mercado (4,2 %) [36], el WACC baja al 4,33 % y el DCF sube a 4.515 CHF: la valoración depende mucho de la tasa.",
+      "terminal": "Crecimiento a perpetuidad del 1,0 % en francos: inflación suiza esperada de ≈0,5-1 % sin crecimiento real en francos, por debajo de la tasa libre más medio punto; un terminal del 2 % sería incoherente con el bono al 0,54 %. El valor terminal pesa un 70 % y el múltiplo implícito es de 17,2x el EBITDA, por encima del de salida de contraste (15x) y de los comparables (≈12x) [25]."
+    },
+    "sostenibilidad": {
+      "puente_ingresos": [
+        {
+          "periodo": "2026e",
+          "volumen_pct": 3.5,
+          "precio_pct": 1.5,
+          "otros_pct": -2.5,
+          "comentario": "Nueve meses: +5,2 % comparable (volumen ≈3,5 % y precio ≈1,5 %) y −2,6 puntos de divisa [8]."
+        },
+        {
+          "periodo": "2027e",
+          "volumen_pct": 3,
+          "precio_pct": 1.5,
+          "otros_pct": -1,
+          "comentario": "Plan 2026-2030 (4-6 % comparable): volumen +3 %, precio +1,5 %, divisa −1 [13]."
+        },
+        {
+          "periodo": "2028e",
+          "volumen_pct": 3,
+          "precio_pct": 1.5,
+          "otros_pct": -1,
+          "comentario": "Igual que 2027e: perfumería fina y emergentes compensan la alimentación de EE. UU. [9]."
+        },
+        {
+          "periodo": "2029e",
+          "volumen_pct": 3,
+          "precio_pct": 1.5,
+          "otros_pct": -1,
+          "comentario": "Crecimiento de crucero dentro del plan [13]."
+        },
+        {
+          "periodo": "2030e",
+          "volumen_pct": 3,
+          "precio_pct": 1.5,
+          "otros_pct": -1,
+          "comentario": "Último año del plan; cuota estable en ≈21 % [17]."
+        }
+      ],
+      "mercado_final": {
+        "periodo": "2030e",
+        "tamano": 42000
+      },
+      "veredicto": "En parte",
+      "justificacion": "En parte, tras rebajar el base. La prueba de cuota pasa: con el mercado de IAL (43.070 M USD en 2025, +4,2 %; ≈34.500 M CHF) Givaudan tiene ≈21 % y la proyección lo deja en ≈21 % en 2030e [17]. El poder de precios y los costes de cambio sostienen el volumen. La reinversión no limita: el negocio necesita poco capital y el ROIC orgánico supera el 30 %. Lo que no cuadraba era el crecimiento en francos: la versión inicial (4,5 % anual) era más alta que el 3,1 % anual de 2019-2025, que además incluía compras. Rebajamos el base a un 3,5 % en 2027-2030 (crecimiento medio del 2,7 % en diez años), suponiendo ≈1 punto anual de divisa; el DCF bajó de 3.729 a 3.482 CHF. Queda «En parte» porque el crecimiento depende de una divisa que no controlamos."
+    },
+    "lectura": "El DCF da 3.481,66 CHF por acción, un 6,3 % por debajo del precio, con un WACC del 5,19 % y un valor terminal que pesa el 70 %. El DCF inverso dice que a 3.714 CHF el mercado descuenta un crecimiento del 3,6 % anual de 2027 a 2035 (nuestro base, 2,7 %) o un margen EBITDA del 25,7 % (el nuestro, 24,5 %): es decir, que Givaudan cumpla el centro de su plan sin pérdida por divisa, o que mejore un punto el margen. No es exigente para el líder del sector, pero tampoco deja margen de seguridad: el precio solo rinde un 5,0 % anual. Con la prima implícita del mercado (WACC del 4,33 %), el DCF sube a 4.515 CHF y el valor objetivo a 4.046,65 (+9,0 %): la conclusión depende de la tasa de descuento más que de las cifras.",
+    "confianza": "Baja"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": -2,
+        "ajuste_margen_pp": -1.5,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": 0.5,
+        "multiplo_salida": null,
+        "narrativa": "La perfumería fina se normaliza tras dos años de doble dígito, la alimentación de EE. UU. sigue cayendo y el franco se aprecia: crecimiento de ≈1,5 % en francos y margen del 23 %, como 2025 publicado. Es lo que pasó en 2022-2023 con los costes."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Plan 2026-2030 cumplido en moneda local (4-6 %) con ≈1 punto de divisa en contra: ventas +3,5 % en francos hasta 2030 y margen EBITDA del 24,5 %."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": 1.5,
+        "ajuste_margen_pp": 1,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Perfumería fina y emergentes mantienen el crecimiento en el 6 % comparable, la divisa es neutra y el margen sube al 25,5 %."
+      }
+    ],
+    "comentario": "El DCF da 2.514,48 CHF en el bajista (−32,3 %), 3.481,66 en el base (−6,3 %) y 4.092,51 en el alcista (+10,2 %). Asimetría negativa a largo plazo: con un WACC del 5,2 % y un terminal del 1 %, pequeños cambios de crecimiento mueven mucho el valor. El valor ponderado de los escenarios es de 3.392,58 CHF.",
+    "confianza": "Baja"
+  },
+  "suma_partes": {
+    "aplica": false,
+    "descuento_holding_pct": 0,
+    "partes": [],
+    "comentario": "No aplica: las dos divisiones comparten clientes, laboratorios y compras, y no hay cotizados puros de cada una que den un múltiplo más fiable que el del grupo.",
+    "confianza": "Baja"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2026-06-30",
+      "deuda_financiera": 4500,
+      "arrendamientos": 0,
+      "caja": 0,
+      "minoritarios": 0,
+      "pensiones": 0,
+      "asociadas": 0,
+      "otros_ajustes": 0
+    },
+    "rab": null,
+    "referencia_mercado": {
+      "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+      "prima_implicita_pct": 4.2,
+      "fecha": "2026-10",
+      "fuente": "Damodaran, ERPbymonth [36]"
+    },
+    "pesos": {
+      "dcf": 50,
+      "comparables": 20,
+      "transacciones": 0,
+      "suma_partes": 0,
+      "escenarios": 30
+    },
+    "objetivo_12m": {
+      "ejercicio": "2028e",
+      "casos": [
+        {
+          "escenario": "Bajista",
+          "metrica": "PER",
+          "beneficio_por_accion": 115.6,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 7.890 M en 2028e (+1,5 % anual) y margen EBITDA del 22,7 %: EBIT de 1.404 M, −150 M de resultado financiero, impuesto del 15 % y 9,226 M de acciones: BPA de 115,6 CHF."
+        },
+        {
+          "escenario": "Base",
+          "metrica": "PER",
+          "beneficio_por_accion": 132.1,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 8.204 M y margen EBITDA del 24,2 % en 2028e: EBITDA de 1.985 M, amortización del 4,9 % (402 M), EBIT de 1.583 M, −150 M de resultado financiero (deuda neta de ≈4.000 M al ≈3 %), impuesto del 15 % y 9,226 M de acciones: BPA de 132,1 CHF."
+        },
+        {
+          "escenario": "Alcista",
+          "metrica": "PER",
+          "beneficio_por_accion": 144.1,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 8.444 M (+5 % anual) y margen del 25,2 %: EBIT de 1.714 M; BPA de 144,1 CHF."
+        }
+      ],
+      "per_historico": {
+        "actual": 29.5,
+        "mediana_5a": 32.2,
+        "minimo_5a": 27.1,
+        "media_larga": 31.9,
+        "excluidos": "PER al cierre de cada año sobre el BPA publicado (MarketScreener) [29]; el BPA publicado de Givaudan apenas difiere del recurrente que usamos en los escenarios (2025: 115,5 publicado frente a ≈114 con nuestra fórmula), así que la base es la misma. Excluimos 2020 (46,6x) y 2021 (54,2x): múltiplos de burbuja de tipos cero, cuando los defensivos de calidad cotizaban a 45-55x. Quedan 2022 30,6x; 2023 36,1x; 2024 33,7x; 2025 27,1x. No tenemos 2018-2019, así que la media larga (31,9x) es la de esos cuatro años. Actual = 3.714 ÷ 125,7 (nuestro BPA de 2027e) = 29,5x."
+      },
+      "comparables_per": {
+        "mediana": 18.8
+      },
+      "consenso": {
+        "bpa_ano1": 126.1,
+        "bpa_ano2": 133.4,
+        "objetivo_medio": 3461,
+        "objetivo_min": 2800,
+        "objetivo_max": 4500,
+        "analistas": 19,
+        "tendencia_3m": "al alza",
+        "fuente": "MarketScreener y Simply Wall St; ZKB 3.968 y JPMorgan 3.800 tras subir [29, 32, 33, 34]"
+      },
+      "diferencia_consenso": "Nuestro base (3.896,95 CHF) queda un 12,6 % por encima del objetivo medio de los analistas (3.461 CHF, 19 analistas, julio) [32], pero en línea con los objetivos más recientes (JPMorgan 3.800, ZKB 3.968, prensa 3.850) [33, 34, 39]. Nuestro BPA de 2028e (132,1 CHF) coincide casi con el del consenso (133,4) [29]: la diferencia es de fecha del consenso, no de cifras.",
+      "media": null,
+      "comentario": "El objetivo a 12 meses (3.880,86 CHF, +6,4 % con el dividendo) queda un 20 % por encima del valor intrínseco (3.233,97 CHF). La distancia es el múltiplo: la regla común toma el PER actual (29,5x), por debajo de la media de 2022-2025, mientras el DCF con un bono suizo al 0,54 % y una prima adicional de 1 punto da menos. Con la prima implícita del mercado, el valor intrínseco subiría a 4.046,65 CHF, por encima del objetivo a 12 meses: la dispersión la explica la tasa, no el negocio."
+    },
+    "comentario": "El DCF pesa un 50 %: negocio estable, con caja previsible. Los escenarios, un 30 %, y los comparables, un 20 %, porque cotizan con un descuento estructural frente al líder. El valor objetivo es de 3.233,97 CHF (−12,9 %). Los comparables (2.135-2.594 CHF) tiran hacia abajo; con la prima implícita del mercado, el objetivo sube a 4.046,65 CHF. El precio está en la parte alta del rango razonable, no fuera de él.",
+    "confianza": "Baja"
+  },
+  "catalizadores": {
+    "items": [
+      {
+        "fecha": "Finales de enero de 2027",
+        "evento": "Resultados de 2026",
+        "efecto": "Margen del segundo semestre y caja libre: si el margen ajustado vuelve al 24,5 % y la caja libre al 12 %, el mercado premia",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2026-2027",
+        "evento": "Cierre de las investigaciones de competencia",
+        "efecto": "Un acuerdo global acotado quitaría incertidumbre; una multa europea grande restaría",
+        "probabilidad": "Media",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "Abril de 2027",
+        "evento": "Ventas del 1T27",
+        "efecto": "Confirmación de la recuperación de Taste & Wellbeing",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2027",
+        "evento": "Primera estrategia del nuevo primer ejecutivo",
+        "efecto": "Prioridades de margen y de compras",
+        "probabilidad": "Media",
+        "sentido": "+/−"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "riesgos": {
+    "items": [
+      {
+        "riesgo": "Se enfría la perfumería fina",
+        "tipo": "Mercado",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−14 % a 12 meses (bajista: 3.132,76 CHF)",
+        "mitigante": "Cartera diversificada en consumo y alimentación",
+        "senal": "Crecimiento de Fragrance & Beauty por debajo del 4 % en un semestre"
+      },
+      {
+        "riesgo": "Multa o acuerdos por las investigaciones de competencia",
+        "tipo": "Regulatorio",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−3 a −8 % (una multa de 1.000-2.500 M)",
+        "mitigante": "Balance con deuda de 2,1x el EBITDA",
+        "senal": "Pliego de cargos de la Comisión Europea"
+      },
+      {
+        "riesgo": "Apreciación del franco",
+        "tipo": "Divisa",
+        "probabilidad": "Alta",
+        "impacto": "Medio",
+        "efecto_valor": "−5 % por cada 2 puntos menos de crecimiento en francos",
+        "mitigante": "Costes repartidos por el mundo",
+        "senal": "Crecimiento en francos por debajo del 2 % con el comparable al 5 %"
+      },
+      {
+        "riesgo": "Subida de tipos en francos",
+        "tipo": "Valoración",
+        "probabilidad": "Baja",
+        "impacto": "Alto",
+        "efecto_valor": "−10 a −15 % por cada medio punto de WACC",
+        "mitigante": "Negocio defensivo con caja estable",
+        "senal": "Bono de la Confederación por encima del 1 %"
+      },
+      {
+        "riesgo": "Cambio de primer ejecutivo",
+        "tipo": "Gobierno",
+        "probabilidad": "Baja",
+        "impacto": "Medio",
+        "efecto_valor": "−5 %",
+        "mitigante": "El anterior preside el consejo",
+        "senal": "Salidas en la dirección o un cambio de plan"
+      }
+    ],
+    "premortem": "Es octubre de 2029 y la acción vale 2.800 CHF. La perfumería fina, que creció a doble dígito en 2024-2026, volvió al 3 % cuando los grandes grupos de lujo recortaron lanzamientos; la alimentación de EE. UU. siguió cayendo por los nuevos fármacos contra la obesidad y las marcas blancas, y el franco subió otro 10 %. El crecimiento en francos se quedó en el 1-2 % y la Comisión Europea impuso una multa de más de 1.000 M. El mercado dejó de pagar 30 veces y bajó al 25x de un químico de calidad. La señal que lo habría anticipado: dos semestres seguidos con Fragrance & Beauty por debajo del 4 %.",
+    "confianza": "Media"
+  },
+  "esg": null,
+  "preguntas": {
+    "items": [
+      {
+        "tema": "Margen",
+        "pregunta": "¿Qué parte de los 103 M de no recurrentes del 1S26 se repetirá en 2027?",
+        "por_que": "Separa el margen publicado del ajustado (23,4 % frente a 24,2 % en 2025)."
+      },
+      {
+        "tema": "Competencia",
+        "pregunta": "¿Qué provisión tiene dotada por las investigaciones de competencia y en qué plazo espera cerrarlas?",
+        "por_que": "Es el mayor pasivo contingente."
+      },
+      {
+        "tema": "Crecimiento",
+        "pregunta": "¿Cuánto del +13,5 % de la perfumería en el 3T es reposición de existencias de los clientes?",
+        "por_que": "Decide si el ritmo es repetible."
+      },
+      {
+        "tema": "Caja",
+        "pregunta": "¿Por qué la caja libre del 1S26 fue negativa y cuándo vuelve al 12 %?",
+        "por_que": "Es el objetivo del plan 2030."
+      },
+      {
+        "tema": "Divisa",
+        "pregunta": "¿Qué efecto divisa espera en 2027 con el franco actual?",
+        "por_que": "Es la diferencia entre nuestro base y el plan en moneda local."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sentimiento": {
+    "tono": "Positivo",
+    "tendencia": "Mejorando",
+    "revisadas": [
+      {
+        "plataforma": "Simply Wall St (narrativas de la comunidad)",
+        "fecha": "2026-08",
+        "n_comentarios": null,
+        "tono": "Dividido",
+        "resumen": "Tras el semestre flojo, la narrativa más seguida veía la acción algo por debajo de su valor (≈3.468 CHF) pero preocupada por la caída del margen neto y la caja libre negativa [40, 41]."
+      },
+      {
+        "plataforma": "Börse Express y aktien.guide (portales para particulares)",
+        "fecha": "2026-07",
+        "n_comentarios": null,
+        "tono": "Dividido",
+        "resumen": "Caídas tras avisos de analistas en verano; la mayoría recomienda comprar pero con poco potencial frente a los objetivos [42, 43]."
+      },
+      {
+        "plataforma": "Foro de finanzen.net",
+        "fecha": "2026",
+        "n_comentarios": null,
+        "tono": "Neutro",
+        "resumen": "Los particulares discuten que la acción cae aun con buenos números: lo que manda es el múltiplo [44]."
+      },
+      {
+        "plataforma": "Prensa económica tras los nueve meses",
+        "fecha": "2026-10-13",
+        "n_comentarios": null,
+        "tono": "Positivo",
+        "resumen": "Mejor valor del STOXX 600 el día de las ventas de nueve meses: la perfumería fina vuelve a tirar [9]."
+      }
+    ],
+    "temas": [
+      {
+        "tema": "¿Vuelve el crecimiento al 4-6 %?",
+        "postura": "Alcista",
+        "peso": "Alto",
+        "contraste": "Sí en nueve meses (+5,2 %) tras un 1S26 del 3,6 % [6, 8]."
+      },
+      {
+        "tema": "Margen y caja libre del 1S26",
+        "postura": "Bajista",
+        "peso": "Medio",
+        "contraste": "Margen EBITDA ajustado −0,9 puntos y caja libre ajustada de −119 M [6]."
+      },
+      {
+        "tema": "Valoración frente a la historia",
+        "postura": "Alcista",
+        "peso": "Medio",
+        "contraste": "PER de ≈29x nuestro BPA de 2027e frente a 30-36x de 2022-2024, pero por encima de los comparables (≈19x) [29]."
+      },
+      {
+        "tema": "Investigaciones de competencia",
+        "postura": "Bajista",
+        "peso": "Bajo",
+        "contraste": "Provisiones y acuerdos en el 1S26, sin cifra separada [6]."
+      }
+    ],
+    "lectura": "Sentimiento mejorando: de dividido en verano (margen y caja libre del semestre, avisos de analistas) a positivo tras los nueve meses, cuando Givaudan fue el mejor valor del STOXX 600 [9, 40, 42]. Los particulares ven calidad a un PER bajo para su historia; los escépticos, que la prima frente a los rivales sigue siendo grande. No hemos podido leer Reddit, Stocktwits ni el foro de cash.ch; la lectura se apoya en portales de particulares y en la prensa [41, 43, 44].",
+    "confianza": "Baja"
+  },
+  "fuentes": [
+    {
+      "id": 1,
+      "titulo": "2025 Full year results (ventas 7.472 M CHF, EBITDA 1.751 M, beneficio neto 1.071 M, caja libre 1.053 M, deuda neta 3.678 M, dividendo 72 CHF). Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "Givaudan SA",
+      "tipo": "Primaria",
+      "fecha": "2026-01-29",
+      "url": "https://www.givaudan.com/print/2745501"
+    },
+    {
+      "id": 2,
+      "titulo": "2025 Financial summary (EBITDA 2024 1.765 M, flujo operativo 1.512 M y 1.625 M). Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "Givaudan SA",
+      "tipo": "Primaria",
+      "fecha": "2026-01-29",
+      "url": "https://www.givaudan.com/files/giv-2025-financial-summary.pdf"
+    },
+    {
+      "id": 3,
+      "titulo": "Givaudan SA (SWX:GIVN) Income Statement 2021-2025 y LTM jun-26. Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://stockanalysis.com/quote/swx/GIVN/financials/income-statement/"
+    },
+    {
+      "id": 4,
+      "titulo": "2023 Full year results (EBITDA 1.473 M, 21,3 %; caja libre 920 M). Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "Givaudan SA",
+      "tipo": "Primaria",
+      "fecha": "2024-01-23",
+      "url": "https://www.givaudan.com/print/2733536"
+    },
+    {
+      "id": 5,
+      "titulo": "2022 Full year results (EBITDA 1.476 M, margen 2021 del 22,2 %; caja libre 479 M en 2022 y 843 M en 2021). Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "Givaudan SA",
+      "tipo": "Primaria",
+      "fecha": "2023-01-24",
+      "url": "https://givaudan.com/file/1312421/download"
+    },
+    {
+      "id": 6,
+      "titulo": "2026 Half-year results (ventas 3.799 M, +3,6 % comparable; EBITDA ajustado 923 M, 24,3 %; publicado 820 M; no recurrentes 103 M; caja libre ajustada −119 M; deuda neta/EBITDA 2,8; BPA ajustado 60,25 CHF). Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "Givaudan SA",
+      "tipo": "Primaria",
+      "fecha": "2026-07-23",
+      "url": "https://www.givaudan.com/print/2747956"
+    },
+    {
+      "id": 7,
+      "titulo": "2026 First quarter sales (1.875 M CHF, +2,8 % comparable). Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "Givaudan SA",
+      "tipo": "Primaria",
+      "fecha": "2026-04-14",
+      "url": "https://www.givaudan.com/print/2746761"
+    },
+    {
+      "id": 8,
+      "titulo": "2026 Nine month sales (5.891 M CHF, +5,2 % comparable, +2,6 % en francos). Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "Givaudan SA",
+      "tipo": "Primaria",
+      "fecha": "2026-10-13",
+      "url": "https://www.givaudan.com/media/media-releases/2026/2026-nine-month-sales"
+    },
+    {
+      "id": 9,
+      "titulo": "Givaudan sales beat market view on fine fragrance strength, boosting shares (Reuters: perfumería +13,5 % en el trimestre; consenso 3,9 %). Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "Euronext / Reuters",
+      "tipo": "Prensa",
+      "fecha": "2026-10-13",
+      "url": "https://live.euronext.com/en/financial-news/givaudan-sales-beat-market-view-fine-fragrance-strength-boosting-shares"
+    },
+    {
+      "id": 10,
+      "titulo": "Givaudan SA balance sheet (activo total 11.864 M y patrimonio 4.568 M a 31-dic-2025). Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "Fintel (Capital IQ)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://fintel.io/bs/mx/givn n"
+    },
+    {
+      "id": 11,
+      "titulo": "Givaudan SA (SWX:GIVN) Balance Sheet (fondo de comercio 4.722 M, existencias 1.425 M, clientes 1.617 M). Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://stockanalysis.com/quote/swx/GIVN/financials/balance-sheet/"
+    },
+    {
+      "id": 12,
+      "titulo": "Givaudan H1 Profit, Sales Down; Backs LFL Sales Growth View Ahead. Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "VZ VermögensZentrum (AWP)",
+      "tipo": "Prensa",
+      "fecha": "2026-07-23",
+      "url": "https://www.vermoegenszentrum.ch/en/stock-exchange-and-markets/news/givaudan-h1-profit-sales-down-backs-lfl-sales-growth-view-ahead"
+    },
+    {
+      "id": 13,
+      "titulo": "Givaudan keeps 2026-2030 like-for-like sales growth target at 4%-6% (caja libre ajustada > 12 % de las ventas). Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "VZ VermögensZentrum (AWP)",
+      "tipo": "Prensa",
+      "fecha": "2026",
+      "url": "https://www.vermoegenszentrum.ch/en/stock-exchange-and-markets/news/givaudan-keeps-2026-2030-sales-growth-target-4-6"
+    },
+    {
+      "id": 14,
+      "titulo": "Givaudan’s Fragrance & Beauty growth offsets weaker first-half profits. Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "Personal Care Insights",
+      "tipo": "Prensa",
+      "fecha": "2026-07",
+      "url": "https://www.personalcareinsights.com/news/givaudan-fragrance-beauty-results.html"
+    },
+    {
+      "id": 15,
+      "titulo": "Givaudan SA income statement 2019-2020 (ventas 6.203 y 6.322 M; beneficio neto 702 y 743 M). Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "Stockopedia",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://stockopedia.com/share-prices/givaudan-sa-SWX:GIVN/income-statement"
+    },
+    {
+      "id": 16,
+      "titulo": "Givaudan Beats Organic Growth Expectations (1T26: Taste & Wellbeing −0,4 %, Fragrance & Beauty +5,9 %). Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "Invezz / Reuters",
+      "tipo": "Prensa",
+      "fecha": "2026-04-14",
+      "url": "https://invezz.com/en-ae/news/2026/04/14/givaudan-beats-sales-estimates-as-fragrance-demand-lifts-shares/"
+    },
+    {
+      "id": 17,
+      "titulo": "Global F&F market heads toward 55 billion by 2030 (IAL Consultants: 43.070 M USD en 2025, +4,2 %; aromas 54 %, fragancias 46 %; Givaudan líder destacado, seguido de dsm-firmenich, IFF y Symrise). Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "Perfumer & Flavorist",
+      "tipo": "Sectorial",
+      "fecha": "2026",
+      "url": "https://www.perfumerflavorist.com/flavor/trends/news/22975125/global-ff-market-heads-toward-55-billion-by-2030"
+    },
+    {
+      "id": 18,
+      "titulo": "Flavors and Fragrances Market 2026-2034 (34.320 M USD en 2025; crecimiento del 3,0 % anual). Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "IMARC Group",
+      "tipo": "Sectorial",
+      "fecha": "2026",
+      "url": "https://www.imarcgroup.com/flavors-fragrances-market"
+    },
+    {
+      "id": 19,
+      "titulo": "Givaudan, Firmenich, IFF e Symrise: o «Santo Graal» das fragrâncias e sabores. Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "InfoMoney",
+      "tipo": "Prensa",
+      "fecha": "2022",
+      "url": "https://www.infomoney.com.br/?p=1945737"
+    },
+    {
+      "id": 20,
+      "titulo": "Givaudan Aktie: DSM-Firmenich belastet den Sektor. Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "Börse Express",
+      "tipo": "Prensa",
+      "fecha": "2026",
+      "url": "https://www.boerse-express.com/news/articles/givaudan-aktie-dsm-firmenich-belastet-den-sektor-913440"
+    },
+    {
+      "id": 21,
+      "titulo": "Givaudan – riecht es nach Erholung? (análisis del VZ). Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "VZ VermögensZentrum",
+      "tipo": "Analistas",
+      "fecha": "2026",
+      "url": "https://www.vermoegenszentrum.ch/boersen-und-maerkte/vz-analysen/givaudan-riecht-es-nach-erholung"
+    },
+    {
+      "id": 22,
+      "titulo": "Givaudan: Perfumery drives nine-month growth. Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "Premium Beauty News",
+      "tipo": "Sectorial",
+      "fecha": "2026-10-13",
+      "url": "https://www.premiumbeautynews.com/en/givaudan-perfumery-drives-nine,28347"
+    },
+    {
+      "id": 23,
+      "titulo": "Givaudan announces Chief Executive Officer and Chairman succession plans (Stammkoetter CEO desde el 1-mar-2026; Andrier propuesto como presidente en la junta del 19-mar-2026, sustituye a Calvin Grieder). Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "Givaudan SA",
+      "tipo": "Primaria",
+      "fecha": "2025-08-27",
+      "url": "https://www.givaudan.com/print/2741431"
+    },
+    {
+      "id": 24,
+      "titulo": "IFF: PER adelantado 15,5-17,5x (julio de 2026). Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "StockHub / Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07",
+      "url": "https://www.stockhub.kr/en/stock/IFF"
+    },
+    {
+      "id": 25,
+      "titulo": "Symrise y Kerry: PER de los próximos 12 meses (21,1x y 17,5x) recogidos en el informe de Viscofan del 6-oct-2026 de este repositorio",
+      "editor": "Repositorio analisis-inversion",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-06",
+      "url": "informes/viscofan-2026-10-06/datos.json"
+    },
+    {
+      "id": 26,
+      "titulo": "Christian Stammkoetter, new CEO of Givaudan from March 1, 2026 (antes presidente de Asia, Oriente Medio y África de Danone). Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "Industries Cosmétiques",
+      "tipo": "Prensa",
+      "fecha": "2025-08",
+      "url": "https://www.industries-cosmetiques.fr/en/christian-stammkoetter-new-givaudan-general-manager-from-march-1-2026"
+    },
+    {
+      "id": 27,
+      "titulo": "Fragrance Maker Givaudan Names New CEO, Unveils 2030 Growth Strategy. Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "ESM Magazine",
+      "tipo": "Prensa",
+      "fecha": "2025",
+      "url": "https://www.esmmagazine.com/supply-chain/fragrance-maker-givaudan-names-new-ceo-unveils-2030-growth-strategy-295083"
+    },
+    {
+      "id": 28,
+      "titulo": "Givaudan’s organic sales growth beats market view on fragrance strength / Why is Givaudan stock surging today (la acción sube ≈6,5-7 % y llega a 3.714 CHF el 13-oct-2026). Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "MarketScreener / Investing.com (Reuters)",
+      "tipo": "Prensa",
+      "fecha": "2026-10-13",
+      "url": "https://www.marketscreener.com/news/givaudan-s-organic-sales-growth-beats-market-view-on-fragrance-strength-ce785dddda8ff72c"
+    },
+    {
+      "id": 29,
+      "titulo": "Givaudan SA valuation: PER anual 2020-2025 (46,6x; 54,2x; 30,6x; 36,1x; 33,7x; 27,1x) y BPA estimado 2026-2028 (115,3; 126,1; 133,4 CHF). Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "MarketScreener",
+      "tipo": "Analistas",
+      "fecha": "2026",
+      "url": "https://www.marketscreener.com/quote/stock/GIVAUDAN-SA-2956033/valuation/"
+    },
+    {
+      "id": 30,
+      "titulo": "Givaudan SA quotes (cierre de 3.422 CHF el 17-jul-2026, +8,8 % en el año). Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07-17",
+      "url": "https://in.marketscreener.com/quote/stock/GIVAUDAN-SA-2956033/quotes/"
+    },
+    {
+      "id": 31,
+      "titulo": "DSM-Firmenich (DSFIR): PER adelantado 20,9x (16-sep-2026). Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-09-16",
+      "url": "https://finance.yahoo.com/quote/DSMFF"
+    },
+    {
+      "id": 32,
+      "titulo": "Givaudan (SWX:GIVN) after half-year results: 19 analistas, BPA de 2026 ≈113 CHF y objetivo medio ≈3.461 CHF (4.500 máximo, 2.800 mínimo). Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "Simply Wall St (vía Webull)",
+      "tipo": "Analistas",
+      "fecha": "2026-07",
+      "url": "https://www.webull.com/news/15292306654241792"
+    },
+    {
+      "id": 33,
+      "titulo": "Analyst düpiert SMI-Titel kurz vor Zahlenupdate mit Herunterstufung (ZKB: valor razonable 3.968 CHF; PER ajustado 26,7x frente a una media de 10 años de 35,7x). Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "cash.ch",
+      "tipo": "Analistas",
+      "fecha": "2026-10",
+      "url": "https://www.cash.ch/news/top-news/analyst-dupiert-smi-titel-kurz-vor-zahlenupdate-mit-herunterstufung-975891"
+    },
+    {
+      "id": 34,
+      "titulo": "Givaudan price target raised to CHF 3,800 from CHF 3,700 at JPMorgan (neutral). Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "TipRanks (The Fly)",
+      "tipo": "Analistas",
+      "fecha": "2026",
+      "url": "https://www.tipranks.com/news/the-fly/givaudan-price-target-raised-to-chf-3800-from-chf-3700-at-jpmorgan"
+    },
+    {
+      "id": 35,
+      "titulo": "Bono de la Confederación a 10 años (0,54 % el 8-oct-2026), tomado del informe de Roche del 14-oct-2026 de este repositorio",
+      "editor": "Repositorio analisis-inversion (SNB)",
+      "tipo": "Primaria",
+      "fecha": "2026-10-08",
+      "url": "informes/roche-2026-10-14/datos.json"
+    },
+    {
+      "id": 36,
+      "titulo": "ERPbymonth.xlsx (prima implícita del S&P 500, octubre de 2026: 4,20 %)",
+      "editor": "Aswath Damodaran (NYU Stern)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx"
+    },
+    {
+      "id": 37,
+      "titulo": "ROUNDUP: Givaudan überrascht trotz Umsatzrückgang positiv (la acción a ≈2.942 CHF el 14-abr-2026, un 6 % por debajo del inicio de año). Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "extraETF (dpa-AFX)",
+      "tipo": "Prensa",
+      "fecha": "2026-04-14",
+      "url": "https://extraetf.com/de/news/dpa-afx/roundup-givaudan-uberrascht-trotz-umsatzruckgang-positiv-aktie-legt-zu--1776161429-04494-1776161428252"
+    },
+    {
+      "id": 38,
+      "titulo": "Ausblick: Givaudan-Wachstum dürfte im dritten Quartal an Fahrt gewinnen (consenso AWP de 9M26: 5.783 M; 3T26 +4,7 %; resultados el 13-oct). Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "cash.ch (AWP)",
+      "tipo": "Analistas",
+      "fecha": "2026-10",
+      "url": "https://www.cash.ch/news/ausblick-givaudan-wachstum-durfte-im-dritten-quartal-an-fahrt-gewinnen-975980"
+    },
+    {
+      "id": 39,
+      "titulo": "Givaudan reports CHF 5.89 billion sales: target for Givaudan stock is CHF 3,850. Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "ad-hoc-news",
+      "tipo": "Prensa",
+      "fecha": "2026-10-13",
+      "url": "https://www.ad-hoc-news.de/boerse/news/corporate-news/givaudan-reports-chf-5-89-billion-sales-target-for-givaudan-stock-is-chf-3-850/70322204"
+    },
+    {
+      "id": 40,
+      "titulo": "Givaudan (SWX:GIVN) Following Weaker Half Year Results: Is Its Valuation Still Compelling? (narrativa más seguida de la comunidad: valor razonable 3.468 CHF). Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "Simply Wall St (vía Webull)",
+      "tipo": "Foros y redes",
+      "fecha": "2026-08",
+      "url": "https://www.webull.com/news/15303088664421376"
+    },
+    {
+      "id": 41,
+      "titulo": "10 analysts remain moderately optimistic on Givaudan (narrativa de la comunidad). Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "Simply Wall St Community",
+      "tipo": "Foros y redes",
+      "fecha": "2026",
+      "url": "https://simplywall.st/community/narratives/ch/materials/vtx-givn/givaudan-shares/kpm2mi6l-emerging-markets-and-sustainable-ingredients-will-drive-future-expansion-jn74/updates/10-analysts-remain-moderately-optimistic-on-givaudan-citing-lo"
+    },
+    {
+      "id": 42,
+      "titulo": "Givaudan Aktie: 3,64 Prozent Minus nach Analystenwarnungen. Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "Börse Express",
+      "tipo": "Foros y redes",
+      "fecha": "2026",
+      "url": "https://www.boerse-express.com/news/articles/givaudan-aktie-364-prozent-minus-nach-analystenwarnungen-909527"
+    },
+    {
+      "id": 43,
+      "titulo": "Givaudan Dividende und Kursziel (la mayoría de analistas recomienda comprar; potencial medio ≈1 %). Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "aktien.guide",
+      "tipo": "Foros y redes",
+      "fecha": "2026-07",
+      "url": "https://aktien.guide/kursziel/Givaudan-CH0010645932"
+    },
+    {
+      "id": 44,
+      "titulo": "Givaudan-Forum (hilo de particulares «Das Übliche: Kurssturz trotz Gewinnsprung»). Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "finanzen.net Forum",
+      "tipo": "Foros y redes",
+      "fecha": "2026",
+      "url": "https://forum.finanzen.net/forum/2024-t545128"
+    },
+    {
+      "id": 45,
+      "titulo": "2025 Half year results / Financial summary (existencias de 1.425 M a dic-24). Extracto de búsqueda",
+      "editor": "Givaudan SA",
+      "tipo": "Primaria",
+      "fecha": "2025-07-22",
+      "url": "https://www.givaudan.com/specials/file/giv-2025-hy-financial-summary.pdf"
+    }
+  ],
+  "calc": {
+    "version": 4,
+    "etiquetas": {
+      "margen_bruto": "M. bruto",
+      "margen_bruto_largo": "Margen bruto",
+      "dias_base": "sobre el coste de ventas"
+    },
+    "recomendacion": {
+      "recomendacion": "Mantener",
+      "regla": "Mantener",
+      "regla_absoluta": "Vender",
+      "regla_relativa": "Mantener",
+      "coincide": true,
+      "conviccion": "Baja",
+      "conviccion_sugerida": "Baja",
+      "conviccion_razones": [
+        "las reglas discrepan (absoluta Vender, relativa Mantener)"
+      ],
+      "reglas_discrepan": true,
+      "relativo": {
+        "prima_implicita_pct": 4.2,
+        "wacc": 4.33,
+        "ke": 4.69,
+        "dcf": 4515.13,
+        "dcf_min": 3856.32,
+        "dcf_max": 5407.72,
+        "valor_objetivo": 4046.65,
+        "alcista": 5304.39,
+        "bajista": 3181.53,
+        "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+        "fecha": "2026-10",
+        "potencial_pct": 9,
+        "rentabilidad_total_pct": 10.9,
+        "asimetria": 2.99
+      },
+      "objetivo_mercado_txt": " · con la prima implícita del mercado: 4.046,65 (+9,0 %)",
+      "objetivo_mercado_corto": " · mercado 4.046,65",
+      "rentabilidad_mercado_corto": " · mercado +10,9 %",
+      "potencial_pct": -12.9,
+      "dividendo_pct": 1.9,
+      "rentabilidad_total_pct": -11,
+      "alcista_pct": 10.2,
+      "bajista_pct": -32.3,
+      "asimetria": 0.32,
+      "comprar_por_debajo": 3233.97,
+      "vender_por_encima": 4392.07,
+      "tabla": [
+        {
+          "concepto": "Objetivo a 12 meses (nuestro PER × nuestro BPA 2028e, ponderado 25/50/25)",
+          "valor": "3.880,86 CHF"
+        },
+        {
+          "concepto": "Bajista / base / alcista a 12 meses",
+          "valor": "27,1x × 115,60 = 3.132,76 · 29,5x × 132,10 = 3.896,95 · 31,9x × 144,10 = 4.596,79"
+        },
+        {
+          "concepto": "Rentabilidad a 12 meses: ponderada / del base (con dividendo)",
+          "valor": "6,4 % / 6,9 %"
+        },
+        {
+          "concepto": "Objetivo medio de los analistas (solo contraste)",
+          "valor": "3.461,00 (nuestro base +12,6 %)"
+        },
+        {
+          "concepto": "Valor intrínseco (síntesis ponderada, largo plazo)",
+          "valor": "3.233,97 CHF"
+        },
+        {
+          "concepto": "Potencial sobre el precio actual",
+          "valor": "-12,9 %"
+        },
+        {
+          "concepto": "Rentabilidad por dividendo ordinario",
+          "valor": "1,9 %"
+        },
+        {
+          "concepto": "Rentabilidad total esperada a 12 meses",
+          "valor": "-11,0 %"
+        },
+        {
+          "concepto": "Escenario alcista / bajista",
+          "valor": "10,2 % / -32,3 %"
+        },
+        {
+          "concepto": "Asimetría (ganancia alcista / pérdida bajista)",
+          "valor": "0,32x"
+        },
+        {
+          "concepto": "Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado",
+          "valor": "5,0 % frente a 5,2 % y 4,3 %"
+        },
+        {
+          "concepto": "Valor objetivo con la prima implícita del mercado (4,2 %, WACC 4,3 %)",
+          "valor": "4.046,65 CHF"
+        },
+        {
+          "concepto": "Rentabilidad total esperada con la prima del mercado",
+          "valor": "10,9 %"
+        },
+        {
+          "concepto": "Asimetría con la prima del mercado",
+          "valor": "2,99x"
+        },
+        {
+          "concepto": "Regla absoluta (frente a su coste de capital)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Regla relativa (frente a lo que pide el mercado)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Crecimiento anual implícito en el precio (2027e-2035e) frente al previsto para su mercado",
+          "valor": "3,6 % frente a 4,2 %"
+        },
+        {
+          "concepto": "¿La calidad de la empresa sostiene el crecimiento previsto?",
+          "valor": "En parte (2,7 % anual proyectado; sin inversión neta)"
+        },
+        {
+          "concepto": "Señal del valor intrínseco (regla del DCF, referencia)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Recomendación según la regla a 12 meses (Comprar: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender: ponderada ≤ -10 %)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Convicción según los criterios (las reglas discrepan (absoluta Vender, relativa Mantener))",
+          "valor": "Baja"
+        }
+      ],
+      "niveles": [
+        {
+          "accion": "Comprar",
+          "condicion": "Por debajo de 3.233,97 (ponderada a 12 meses ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco)"
+        },
+        {
+          "accion": "Mantener",
+          "condicion": "Entre 3.233,97 y 4.392,07"
+        },
+        {
+          "accion": "Vender o reducir",
+          "condicion": "Por encima de 4.392,07 (ponderada a 12 meses ≤ -10 %)"
+        }
+      ],
+      "precio_txt": "",
+      "valor_objetivo_txt": "",
+      "regla_valor_intrinseco": "Mantener",
+      "objetivo_12m": {
+        "completo": true,
+        "filas": [
+          {
+            "escenario": "Bajista",
+            "metrica": "PER",
+            "beneficio_por_accion": 115.6,
+            "multiplo": 27.1,
+            "multiplo_informe": null,
+            "origen": "mínimo de 5 años",
+            "precio": 3132.76,
+            "rentabilidad_pct": -13.7,
+            "justificacion": "Ventas de 7.890 M en 2028e (+1,5 % anual) y margen EBITDA del 22,7 %: EBIT de 1.404 M, −150 M de resultado financiero, impuesto del 15 % y 9,226 M de acciones: BPA de 115,6 CHF."
+          },
+          {
+            "escenario": "Base",
+            "metrica": "PER",
+            "beneficio_por_accion": 132.1,
+            "multiplo": 29.5,
+            "multiplo_informe": null,
+            "origen": "PER actual",
+            "precio": 3896.95,
+            "rentabilidad_pct": 6.9,
+            "justificacion": "Ventas de 8.204 M y margen EBITDA del 24,2 % en 2028e: EBITDA de 1.985 M, amortización del 4,9 % (402 M), EBIT de 1.583 M, −150 M de resultado financiero (deuda neta de ≈4.000 M al ≈3 %), impuesto del 15 % y 9,226 M de acciones: BPA de 132,1 CHF."
+          },
+          {
+            "escenario": "Alcista",
+            "metrica": "PER",
+            "beneficio_por_accion": 144.1,
+            "multiplo": 31.9,
+            "multiplo_informe": null,
+            "origen": "media histórica larga",
+            "precio": 4596.79,
+            "rentabilidad_pct": 25.7,
+            "justificacion": "Ventas de 8.444 M (+5 % anual) y margen del 25,2 %: EBIT de 1.714 M; BPA de 144,1 CHF."
+          }
+        ],
+        "regla": {
+          "bajista": 27.1,
+          "base": 29.5,
+          "alcista": 31.9,
+          "bajista_origen": "mínimo de 5 años",
+          "base_origen": "PER actual",
+          "alcista_origen": "media histórica larga"
+        },
+        "probabilidades": [
+          25,
+          50,
+          25
+        ],
+        "objetivo_ponderado": 3880.86,
+        "objetivo_simple": 3875.5,
+        "objetivo_base": 3896.95,
+        "rentabilidad_ponderada_pct": 6.4,
+        "rentabilidad_simple_pct": 6.3,
+        "rentabilidad_base_pct": 6.9,
+        "asimetria": 1.52,
+        "senal": "Mantener",
+        "comprar_por_debajo": 3233.97,
+        "vender_por_encima": 4392.07,
+        "consenso_objetivo": 3461,
+        "diferencia_consenso_pct": 12.6
+      },
+      "rentabilidad_12m_pct": 6.4,
+      "rentabilidad_12m_txt": "+6,4 % (base +6,9 %)",
+      "objetivo_12m_txt": "3.880,86 CHF"
+    },
+    "mercado": {
+      "precio": 3714,
+      "acciones": 9.226,
+      "capitalizacion": 34265,
+      "deuda_neta": 4500,
+      "deuda_neta_ajustada": null,
+      "asimilables_deuda": null,
+      "ajustes_puente": 0,
+      "valor_empresa": 38765,
+      "fecha_puente": "2026-06-30"
+    },
+    "clave": {
+      "capitalizacion": 34265,
+      "valor_empresa": 38765,
+      "deuda_neta": 4500,
+      "ev_ventas_ltm": 5.23,
+      "ev_ebitda_ltm": 22.4,
+      "ev_ebitda_ntm": null,
+      "ev_ebit_ltm": 28.1,
+      "per_ltm": 36.2,
+      "per_ntm": 30,
+      "fcf_yield_pct": 3.6,
+      "dividendo_pct": 1.9,
+      "dn_ebitda": 2.6,
+      "roic_pct": 14.2,
+      "margen_ebitda_pct": 23.3,
+      "deuda_neta_ajustada": 4500,
+      "dn_ebitda_ajustada": 2.6,
+      "crecimiento_tcac_pct": 2.8,
+      "ingresos_ntm": 7818,
+      "ebitda_ntm": null,
+      "bpa_ntm": 123.79,
+      "ebitda_ltm": 1729,
+      "ingresos_ltm": 7407,
+      "ev_rab": null
+    },
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 6684,
+        "crecimiento_pct": null,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 1484,
+        "margen_ebitda_pct": 22.2,
+        "ebit": 1089,
+        "margen_ebit_pct": 16.3,
+        "beneficio_neto": 821,
+        "margen_neto_pct": 12.3,
+        "bpa": 88.37,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 15,
+        "payout_pct": null
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 7117,
+        "crecimiento_pct": 6.5,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 1476,
+        "margen_ebitda_pct": 20.7,
+        "ebit": 1112,
+        "margen_ebit_pct": 15.6,
+        "beneficio_neto": 856,
+        "margen_neto_pct": 12,
+        "bpa": 92.51,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 15,
+        "payout_pct": null
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 6915,
+        "crecimiento_pct": -2.8,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 1473,
+        "margen_ebitda_pct": 21.3,
+        "ebit": 1116,
+        "margen_ebit_pct": 16.1,
+        "beneficio_neto": 893,
+        "margen_neto_pct": 12.9,
+        "bpa": 96.47,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 15,
+        "payout_pct": null
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 7412,
+        "crecimiento_pct": 7.2,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 1765,
+        "margen_ebitda_pct": 23.8,
+        "ebit": 1394,
+        "margen_ebit_pct": 18.8,
+        "beneficio_neto": 1090,
+        "margen_neto_pct": 14.7,
+        "bpa": 117.63,
+        "dpa": 70,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 15,
+        "payout_pct": 60
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 7472,
+        "crecimiento_pct": 0.8,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 1751,
+        "margen_ebitda_pct": 23.4,
+        "ebit": 1381,
+        "margen_ebit_pct": 18.5,
+        "beneficio_neto": 1071,
+        "margen_neto_pct": 14.3,
+        "bpa": 115.46,
+        "dpa": 72,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 15,
+        "payout_pct": 62
+      }
+    ],
+    "tcac": {
+      "periodo": "2021-2025",
+      "ingresos_pct": 2.8,
+      "ebitda_pct": 4.2,
+      "bpa_pct": 6.9
+    },
+    "cuenta_y_prevision": [
+      {
+        "periodo": "2021",
+        "ingresos": 6684,
+        "ebitda": 1484
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 7117,
+        "ebitda": 1476
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 6915,
+        "ebitda": 1473
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 7412,
+        "ebitda": 1765
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 7472,
+        "ebitda": 1751
+      },
+      {
+        "periodo": "2026e",
+        "ingresos": 7659,
+        "ebitda": 1823
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 7927,
+        "ebitda": 1902
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 8204,
+        "ebitda": 1985
+      },
+      {
+        "periodo": "2029e",
+        "ingresos": 8491,
+        "ebitda": 2072
+      },
+      {
+        "periodo": "2030e",
+        "ingresos": 8789,
+        "ebitda": 2153
+      },
+      {
+        "periodo": "2031e",
+        "ingresos": 9052,
+        "ebitda": 2218
+      },
+      {
+        "periodo": "2032e",
+        "ingresos": 9279,
+        "ebitda": 2273
+      },
+      {
+        "periodo": "2033e",
+        "ingresos": 9464,
+        "ebitda": 2319
+      },
+      {
+        "periodo": "2034e",
+        "ingresos": 9606,
+        "ebitda": 2354
+      },
+      {
+        "periodo": "2035e",
+        "ingresos": 9702,
+        "ebitda": 2377
+      }
+    ],
+    "segmentos_ultimo": [
+      {
+        "nombre": "Fragrance & Beauty",
+        "ingresos": null,
+        "peso_pct": null,
+        "crecimiento_pct": null,
+        "margen_pct": null,
+        "tipo_margen": null
+      },
+      {
+        "nombre": "Taste & Wellbeing",
+        "ingresos": null,
+        "peso_pct": null,
+        "crecimiento_pct": null,
+        "margen_pct": null,
+        "tipo_margen": null
+      }
+    ],
+    "segmentos_tabla": {
+      "periodos": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "filas": [
+        {
+          "nombre": "Fragrance & Beauty",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": null,
+          "v4": null
+        },
+        {
+          "nombre": "Taste & Wellbeing",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": null,
+          "v4": null
+        }
+      ]
+    },
+    "segmentos_periodo": null,
+    "balance": [
+      {
+        "periodo": "2025",
+        "activo_total": 11864,
+        "intangibles": 4722,
+        "circulante": 1617,
+        "circulante_ventas_pct": 21.6,
+        "caja": 0,
+        "deuda_financiera": 3678,
+        "arrendamientos": 0,
+        "deuda_neta": 3678,
+        "patrimonio": 4568,
+        "minoritarios": 0,
+        "dn_ebitda": 2.1,
+        "dn_patrimonio_pct": 81,
+        "dso": 79,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 11.4,
+        "capital_invertido": 8246,
+        "liquidez_corriente": null
+      }
+    ],
+    "perimetro_nota": null,
+    "flujos": [
+      {
+        "periodo": "2024",
+        "flujo_operativo": 1625,
+        "capex": 280,
+        "pagos_arrendamientos": null,
+        "fcf": 1345,
+        "beneficio_neto": 1090,
+        "conversion_pct": 123,
+        "capex_ventas_pct": 3.8,
+        "capex_amortizacion": 0.75,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 627,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 627,
+        "payout_caja_pct": 58,
+        "acciones": 9.266,
+        "fcf_por_accion": 145.15
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 1512,
+        "capex": 285,
+        "pagos_arrendamientos": null,
+        "fcf": 1227,
+        "beneficio_neto": 1071,
+        "conversion_pct": 115,
+        "capex_ventas_pct": 3.8,
+        "capex_amortizacion": 0.77,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 646,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 646,
+        "payout_caja_pct": 60,
+        "acciones": 9.276,
+        "fcf_por_accion": 132.28
+      }
+    ],
+    "flujos_acumulado": {
+      "periodo": "2024-2025",
+      "fcf": 2572,
+      "adquisiciones": 0,
+      "dividendos": 1273,
+      "recompras": 0,
+      "conversion_pct": 119
+    },
+    "rentabilidad": [
+      {
+        "periodo": "2021",
+        "nopat": 926,
+        "capital_invertido": null,
+        "roic_pct": null,
+        "roe_pct": null,
+        "roa_pct": null,
+        "margen_neto_pct": 12.3,
+        "rotacion": null,
+        "apalancamiento": null
+      },
+      {
+        "periodo": "2022",
+        "nopat": 945,
+        "capital_invertido": null,
+        "roic_pct": null,
+        "roe_pct": null,
+        "roa_pct": null,
+        "margen_neto_pct": 12,
+        "rotacion": null,
+        "apalancamiento": null
+      },
+      {
+        "periodo": "2023",
+        "nopat": 948,
+        "capital_invertido": null,
+        "roic_pct": null,
+        "roe_pct": null,
+        "roa_pct": null,
+        "margen_neto_pct": 12.9,
+        "rotacion": null,
+        "apalancamiento": null
+      },
+      {
+        "periodo": "2024",
+        "nopat": 1185,
+        "capital_invertido": null,
+        "roic_pct": null,
+        "roe_pct": null,
+        "roa_pct": null,
+        "margen_neto_pct": 14.7,
+        "rotacion": null,
+        "apalancamiento": null
+      },
+      {
+        "periodo": "2025",
+        "nopat": 1174,
+        "capital_invertido": 8246,
+        "roic_pct": 14.2,
+        "roe_pct": 23.4,
+        "roa_pct": 9,
+        "margen_neto_pct": 14.3,
+        "rotacion": 0.63,
+        "apalancamiento": 2.6
+      }
+    ],
+    "roic_incremental_pct": null,
+    "roic_frente_wacc": [
+      {
+        "periodo": "2021",
+        "roic_pct": null,
+        "roe_pct": null,
+        "wacc_pct": 5.2
+      },
+      {
+        "periodo": "2022",
+        "roic_pct": null,
+        "roe_pct": null,
+        "wacc_pct": 5.2
+      },
+      {
+        "periodo": "2023",
+        "roic_pct": null,
+        "roe_pct": null,
+        "wacc_pct": 5.2
+      },
+      {
+        "periodo": "2024",
+        "roic_pct": null,
+        "roe_pct": null,
+        "wacc_pct": 5.2
+      },
+      {
+        "periodo": "2025",
+        "roic_pct": 14.2,
+        "roe_pct": 23.4,
+        "wacc_pct": 5.2
+      }
+    ],
+    "calidad": {
+      "periodo": "2025",
+      "altman_z": 3.83,
+      "altman_zona": "Zona segura",
+      "tabla": [
+        {
+          "indicador": "Altman Z",
+          "valor": "3,83",
+          "lectura": "Zona segura (> 2,99 seguro; < 1,81 riesgo). No aplica a bancos ni aseguradoras, y subestima la solvencia de empresas con grandes anticipos de clientes o prefinanciación pública (contratistas, construcción), que inflan el pasivo."
+        },
+        {
+          "indicador": "Flujo operativo / beneficio neto (acumulado)",
+          "valor": "0,66x",
+          "lectura": "El beneficio se cobra solo en parte: mirar circulante y ajustes."
+        }
+      ]
+    },
+    "dcf": {
+      "proyeccion": [
+        {
+          "periodo": "2026e",
+          "ingresos": 7659,
+          "crecimiento_pct": 2.5,
+          "ebitda": 1823,
+          "margen_ebitda_pct": 23.8,
+          "amortizacion": 375,
+          "ebit": 1448,
+          "impuestos": 217,
+          "capex": 322,
+          "variacion_circulante": 37,
+          "fcff": 1247,
+          "fraccion": 0.21,
+          "factor": 0.995,
+          "vp": 265
+        },
+        {
+          "periodo": "2027e",
+          "ingresos": 7927,
+          "crecimiento_pct": 3.5,
+          "ebitda": 1902,
+          "margen_ebitda_pct": 24,
+          "amortizacion": 388,
+          "ebit": 1514,
+          "impuestos": 227,
+          "capex": 333,
+          "variacion_circulante": 58,
+          "fcff": 1285,
+          "fraccion": 1,
+          "factor": 0.965,
+          "vp": 1238
+        },
+        {
+          "periodo": "2028e",
+          "ingresos": 8204,
+          "crecimiento_pct": 3.5,
+          "ebitda": 1985,
+          "margen_ebitda_pct": 24.2,
+          "amortizacion": 402,
+          "ebit": 1583,
+          "impuestos": 238,
+          "capex": 320,
+          "variacion_circulante": 60,
+          "fcff": 1368,
+          "fraccion": 1,
+          "factor": 0.917,
+          "vp": 1254
+        },
+        {
+          "periodo": "2029e",
+          "ingresos": 8491,
+          "crecimiento_pct": 3.5,
+          "ebitda": 2072,
+          "margen_ebitda_pct": 24.4,
+          "amortizacion": 416,
+          "ebit": 1656,
+          "impuestos": 248,
+          "capex": 331,
+          "variacion_circulante": 62,
+          "fcff": 1430,
+          "fraccion": 1,
+          "factor": 0.872,
+          "vp": 1246
+        },
+        {
+          "periodo": "2030e",
+          "ingresos": 8789,
+          "crecimiento_pct": 3.5,
+          "ebitda": 2153,
+          "margen_ebitda_pct": 24.5,
+          "amortizacion": 431,
+          "ebit": 1723,
+          "impuestos": 258,
+          "capex": 343,
+          "variacion_circulante": 64,
+          "fcff": 1488,
+          "fraccion": 1,
+          "factor": 0.829,
+          "vp": 1232
+        },
+        {
+          "periodo": "2031e",
+          "ingresos": 9052,
+          "crecimiento_pct": 3,
+          "ebitda": 2218,
+          "margen_ebitda_pct": 24.5,
+          "amortizacion": 444,
+          "ebit": 1774,
+          "impuestos": 266,
+          "capex": 353,
+          "variacion_circulante": 57,
+          "fcff": 1542,
+          "fraccion": 1,
+          "factor": 0.788,
+          "vp": 1214
+        },
+        {
+          "periodo": "2032e",
+          "ingresos": 9279,
+          "crecimiento_pct": 2.5,
+          "ebitda": 2273,
+          "margen_ebitda_pct": 24.5,
+          "amortizacion": 455,
+          "ebit": 1819,
+          "impuestos": 273,
+          "capex": 362,
+          "variacion_circulante": 49,
+          "fcff": 1590,
+          "fraccion": 1,
+          "factor": 0.749,
+          "vp": 1191
+        },
+        {
+          "periodo": "2033e",
+          "ingresos": 9464,
+          "crecimiento_pct": 2,
+          "ebitda": 2319,
+          "margen_ebitda_pct": 24.5,
+          "amortizacion": 464,
+          "ebit": 1855,
+          "impuestos": 278,
+          "capex": 369,
+          "variacion_circulante": 40,
+          "fcff": 1631,
+          "fraccion": 1,
+          "factor": 0.712,
+          "vp": 1161
+        },
+        {
+          "periodo": "2034e",
+          "ingresos": 9606,
+          "crecimiento_pct": 1.5,
+          "ebitda": 2354,
+          "margen_ebitda_pct": 24.5,
+          "amortizacion": 471,
+          "ebit": 1883,
+          "impuestos": 282,
+          "capex": 375,
+          "variacion_circulante": 31,
+          "fcff": 1666,
+          "fraccion": 1,
+          "factor": 0.677,
+          "vp": 1127
+        },
+        {
+          "periodo": "2035e",
+          "ingresos": 9702,
+          "crecimiento_pct": 1,
+          "ebitda": 2377,
+          "margen_ebitda_pct": 24.5,
+          "amortizacion": 475,
+          "ebit": 1902,
+          "impuestos": 285,
+          "capex": 378,
+          "variacion_circulante": 21,
+          "fcff": 1693,
+          "fraccion": 1,
+          "factor": 0.644,
+          "vp": 1089
+        }
+      ],
+      "etapa2": null,
+      "suma_vp": 11016,
+      "valor_terminal": 40809,
+      "vp_terminal": 25606,
+      "valor_empresa": 36622,
+      "peso_terminal_pct": 70,
+      "valor_acciones": 32122,
+      "valor_accion": 3481.66,
+      "vt_gordon": 40809,
+      "vt_multiplo": 35656,
+      "multiplo_implicito": 17.2,
+      "g_implicito_pct": 0.42,
+      "metodo_terminal": "gordon",
+      "terminal_tabla": [
+        {
+          "concepto": "Método principal",
+          "valor": "Crecimiento a perpetuidad"
+        },
+        {
+          "concepto": "Crecimiento a perpetuidad",
+          "valor": "1,0 %"
+        },
+        {
+          "concepto": "Múltiplo EV/EBITDA de salida",
+          "valor": "15,0x"
+        },
+        {
+          "concepto": "Valor terminal (Gordon)",
+          "valor": "40.809"
+        },
+        {
+          "concepto": "Valor terminal (múltiplo)",
+          "valor": "35.656"
+        },
+        {
+          "concepto": "Múltiplo de salida implícito en Gordon",
+          "valor": "17,2x"
+        },
+        {
+          "concepto": "Crecimiento implícito en el múltiplo",
+          "valor": "0,42 %"
+        },
+        {
+          "concepto": "Peso del valor terminal en el valor empresa",
+          "valor": "70 %"
+        }
+      ],
+      "puente": [
+        {
+          "concepto": "Valor actual de los flujos proyectados",
+          "valor": "11.016"
+        },
+        {
+          "concepto": "Valor actual del valor terminal",
+          "valor": "25.606"
+        },
+        {
+          "concepto": "Valor empresa",
+          "valor": "36.622"
+        },
+        {
+          "concepto": "− Deuda financiera neta (con arrendamientos)",
+          "valor": "-4.500"
+        },
+        {
+          "concepto": "− Minoritarios, pensiones y otros; + asociadas",
+          "valor": "0"
+        },
+        {
+          "concepto": "Valor de los fondos propios",
+          "valor": "32.122"
+        },
+        {
+          "concepto": "Acciones diluidas (millones)",
+          "valor": "9,2"
+        },
+        {
+          "concepto": "Valor por acción",
+          "valor": "3.481,66"
+        }
+      ],
+      "composicion": [
+        {
+          "parte": "Flujos proyectados",
+          "valor": 11016
+        },
+        {
+          "parte": "Valor terminal",
+          "valor": 25606
+        }
+      ],
+      "wacc": 5.19,
+      "ke": 5.67,
+      "kd_despues": 1.7,
+      "wacc_tabla": [
+        {
+          "concepto": "Tasa libre de riesgo",
+          "valor": "0,54 %"
+        },
+        {
+          "concepto": "Beta",
+          "valor": "0,75"
+        },
+        {
+          "concepto": "Prima de riesgo de mercado",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Prima adicional (país, tamaño, específica)",
+          "valor": "1,00 %"
+        },
+        {
+          "concepto": "Coste de los fondos propios",
+          "valor": "5,67 %"
+        },
+        {
+          "concepto": "Coste de la deuda antes de impuestos",
+          "valor": "2,00 %"
+        },
+        {
+          "concepto": "Tipo impositivo",
+          "valor": "15,00 %"
+        },
+        {
+          "concepto": "Coste de la deuda después de impuestos",
+          "valor": "1,70 %"
+        },
+        {
+          "concepto": "Peso de la deuda (D / (D + E))",
+          "valor": "12,00 %"
+        },
+        {
+          "concepto": "WACC",
+          "valor": "5,19 %"
+        },
+        {
+          "concepto": "Prima de riesgo implícita del mercado (regla relativa)",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "WACC con la prima implícita del mercado",
+          "valor": "4,33 %"
+        }
+      ],
+      "potencial_pct": -6.3,
+      "sensibilidad": {
+        "eje_columnas": "Crecimiento a perpetuidad",
+        "columnas": [
+          "0,0 %",
+          "0,5 %",
+          "1,0 %",
+          "1,5 %",
+          "2,0 %"
+        ],
+        "filas": [
+          {
+            "wacc": "4,2 %",
+            "v0": 3759.74,
+            "v1": 4183.47,
+            "v2": 4740.06,
+            "v3": 5503.63,
+            "v4": 6615.98
+          },
+          {
+            "wacc": "4,7 %",
+            "v0": 3297.28,
+            "v1": 3617.79,
+            "v2": 4025.19,
+            "v3": 4560.32,
+            "v4": 5294.44
+          },
+          {
+            "wacc": "5,2 %",
+            "v0": 2924.63,
+            "v1": 3173.45,
+            "v2": 3481.66,
+            "v3": 3873.42,
+            "v4": 4388.02
+          },
+          {
+            "wacc": "5,7 %",
+            "v0": 2618.08,
+            "v1": 2815.33,
+            "v2": 3054.64,
+            "v3": 3351.08,
+            "v4": 3727.88
+          },
+          {
+            "wacc": "6,2 %",
+            "v0": 2361.57,
+            "v1": 2520.66,
+            "v2": 2710.41,
+            "v3": 2940.63,
+            "v4": 3225.8
+          }
+        ]
+      },
+      "sensibilidad2": {
+        "columnas": [
+          "-2 pp",
+          "-1 pp",
+          "0 pp",
+          "+1 pp",
+          "+2 pp"
+        ],
+        "filas": [
+          {
+            "margen": "-2 pp",
+            "v0": 2676.97,
+            "v1": 2879.36,
+            "v2": 3094.42,
+            "v3": 3322.84,
+            "v4": 3565.31
+          },
+          {
+            "margen": "-1 pp",
+            "v0": 2843.44,
+            "v1": 3058.9,
+            "v2": 3288.04,
+            "v3": 3531.6,
+            "v4": 3790.34
+          },
+          {
+            "margen": "0 pp",
+            "v0": 3009.9,
+            "v1": 3238.45,
+            "v2": 3481.66,
+            "v3": 3740.35,
+            "v4": 4015.37
+          },
+          {
+            "margen": "+1 pp",
+            "v0": 3176.37,
+            "v1": 3417.99,
+            "v2": 3675.28,
+            "v3": 3949.11,
+            "v4": 4240.4
+          },
+          {
+            "margen": "+2 pp",
+            "v0": 3342.83,
+            "v1": 3597.54,
+            "v2": 3868.9,
+            "v3": 4157.87,
+            "v4": 4465.43
+          }
+        ]
+      },
+      "rango_min": 2815.33,
+      "rango_max": 4560.32,
+      "inverso": {
+        "crecimiento_implicito_pct": 3.6,
+        "crecimiento_base_pct": 2.7,
+        "periodo": "2027e-2035e",
+        "margen_implicito_pct": 25.7,
+        "margen_implicito_texto": null,
+        "margen_base_pct": 24.5,
+        "rentabilidad_implicita_pct": 5
+      },
+      "sostenibilidad": {
+        "veredicto": "En parte",
+        "crecimiento_proyectado_pct": 2.7,
+        "tasa_reinversion_pct": -2,
+        "crecimiento_financiable_pct": null,
+        "roic_pct": 14.2,
+        "roic_incremental_historico_pct": null,
+        "roic_implicito_pct": null,
+        "cuota_actual_pct": 21,
+        "cuota_final_pct": 20.9,
+        "puente": [
+          {
+            "periodo": "2026e",
+            "volumen_pct": 3.5,
+            "precio_pct": 1.5,
+            "otros_pct": -2.5,
+            "comentario": "Nueve meses: +5,2 % comparable (volumen ≈3,5 % y precio ≈1,5 %) y −2,6 puntos de divisa [8].",
+            "suma_pct": 2.5,
+            "crecimiento_pct": 2.5
+          },
+          {
+            "periodo": "2027e",
+            "volumen_pct": 3,
+            "precio_pct": 1.5,
+            "otros_pct": -1,
+            "comentario": "Plan 2026-2030 (4-6 % comparable): volumen +3 %, precio +1,5 %, divisa −1 [13].",
+            "suma_pct": 3.5,
+            "crecimiento_pct": 3.5
+          },
+          {
+            "periodo": "2028e",
+            "volumen_pct": 3,
+            "precio_pct": 1.5,
+            "otros_pct": -1,
+            "comentario": "Igual que 2027e: perfumería fina y emergentes compensan la alimentación de EE. UU. [9].",
+            "suma_pct": 3.5,
+            "crecimiento_pct": 3.5
+          },
+          {
+            "periodo": "2029e",
+            "volumen_pct": 3,
+            "precio_pct": 1.5,
+            "otros_pct": -1,
+            "comentario": "Crecimiento de crucero dentro del plan [13].",
+            "suma_pct": 3.5,
+            "crecimiento_pct": 3.5
+          },
+          {
+            "periodo": "2030e",
+            "volumen_pct": 3,
+            "precio_pct": 1.5,
+            "otros_pct": -1,
+            "comentario": "Último año del plan; cuota estable en ≈21 % [17].",
+            "suma_pct": 3.5,
+            "crecimiento_pct": 3.5
+          }
+        ],
+        "texto": "La proyección apenas necesita inversión neta de la amortización (reinversión acumulada de -356 M, con un capex bruto medio del 4,0 % de las ventas). En un negocio de activos ligeros, el crecimiento medio del 2,6 % tiene que salir de subir precios y de ganar volumen sin capital nuevo, y la prueba es el poder de precios y la cuota (20,9 % del mercado en 2030e, frente al 21,0 % de hoy); en un comprador en serie, la amortización es de intangibles comprados y la prueba es el capex bruto (las compras) frente al crecimiento comprado.",
+        "tabla": [
+          {
+            "concepto": "Crecimiento medio de ingresos proyectado",
+            "valor": "2,6 %"
+          },
+          {
+            "concepto": "Capex bruto medio (incluidas compras si van como inversión)",
+            "valor": "4,0 % de las ventas"
+          },
+          {
+            "concepto": "Reinversión neta acumulada (capex − amortización + circulante)",
+            "valor": "-356 M (-2 % del NOPAT)"
+          },
+          {
+            "concepto": "Cuota de mercado implícita en 2030e",
+            "valor": "20,9 % (hoy: 21,0 %)"
+          }
+        ]
+      }
+    },
+    "escenarios": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "narrativa": "La perfumería fina se normaliza tras dos años de doble dígito, la alimentación de EE. UU. sigue cayendo y el franco se aprecia: crecimiento de ≈1,5 % en francos y margen del 23 %, como 2025 publicado. Es lo que pasó en 2022-2023 con los costes.",
+        "crecimiento_medio_pct": 0.7,
+        "margen_final_pct": 23,
+        "wacc_pct": 5.2,
+        "valor": 2514.48,
+        "potencial_pct": -32.3
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "narrativa": "Plan 2026-2030 cumplido en moneda local (4-6 %) con ≈1 punto de divisa en contra: ventas +3,5 % en francos hasta 2030 y margen EBITDA del 24,5 %.",
+        "crecimiento_medio_pct": 2.7,
+        "margen_final_pct": 24.5,
+        "wacc_pct": 5.2,
+        "valor": 3481.66,
+        "potencial_pct": -6.3
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "narrativa": "Perfumería fina y emergentes mantienen el crecimiento en el 6 % comparable, la divisa es neutra y el margen sube al 25,5 %.",
+        "crecimiento_medio_pct": 4.2,
+        "margen_final_pct": 25.5,
+        "wacc_pct": 5.2,
+        "valor": 4092.51,
+        "potencial_pct": 10.2
+      }
+    ],
+    "valor_ponderado": 3392.58,
+    "potencial_ponderado_pct": -8.7,
+    "comparables": {
+      "tabla": [
+        {
+          "nombre": "Givaudan",
+          "ticker": "GIVN",
+          "pais": "CH",
+          "capitalizacion": 34265,
+          "ev_ventas": 5.23,
+          "ev_ebitda_ltm": 22.4,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 30,
+          "crecimiento_pct": 4.3,
+          "margen_ebitda_pct": 23.3,
+          "roic_pct": 14.2,
+          "dn_ebitda": 2.6,
+          "fcf_yield_pct": 3.6,
+          "es_objetivo": true
+        },
+        {
+          "nombre": "Symrise",
+          "ticker": "SY1",
+          "pais": "DE",
+          "capitalizacion": null,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": 12.4,
+          "per_ntm": 21.1,
+          "crecimiento_pct": 5.6,
+          "margen_ebitda_pct": 21.9,
+          "roic_pct": 7.02,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "DSM-Firmenich",
+          "ticker": "DSFIR",
+          "pais": "CH",
+          "capitalizacion": null,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 20.9,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "IFF",
+          "ticker": "IFF",
+          "pais": "US",
+          "capitalizacion": null,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 16.5,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Kerry Group",
+          "ticker": "KRZ",
+          "pais": "IE",
+          "capitalizacion": null,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": 11.9,
+          "per_ntm": 17.5,
+          "crecimiento_pct": 4.9,
+          "margen_ebitda_pct": 17.9,
+          "roic_pct": 9.35,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        }
+      ],
+      "estadisticos": [
+        {
+          "estadistico": "Mediana",
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": 12.2,
+          "per_ntm": 19.2,
+          "crecimiento_pct": 5.3,
+          "margen_ebitda_pct": 19.9,
+          "roic_pct": 8.2,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null
+        },
+        {
+          "estadistico": "Media",
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": 12.2,
+          "per_ntm": 19,
+          "crecimiento_pct": 5.3,
+          "margen_ebitda_pct": 19.9,
+          "roic_pct": 8.2,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null
+        },
+        {
+          "estadistico": "Percentil 25",
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": 12,
+          "per_ntm": 17.3,
+          "crecimiento_pct": 5.1,
+          "margen_ebitda_pct": 18.9,
+          "roic_pct": 7.6,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null
+        },
+        {
+          "estadistico": "Percentil 75",
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": 12.3,
+          "per_ntm": 21,
+          "crecimiento_pct": 5.4,
+          "margen_ebitda_pct": 20.9,
+          "roic_pct": 8.8,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null
+        }
+      ],
+      "implicito": [
+        {
+          "metodo": "PER próximos 12 meses",
+          "metrica_empresa": 123.79,
+          "multiplo_p25": 17.3,
+          "multiplo_mediana": 19.2,
+          "multiplo_p75": 21,
+          "multiplos": "17,3x / 19,2x / 20,9x",
+          "valor_p25": 2135.44,
+          "valor_mediana": 2376.84,
+          "valor_p75": 2593.48,
+          "potencial_pct": -36
+        }
+      ],
+      "regresion": null,
+      "n": 4
+    },
+    "transacciones": null,
+    "suma_partes": null,
+    "multiplos_historicos": [
+      {
+        "metrica": "PER últimos 12 meses (cierre de cada año)",
+        "campo": "per_ltm",
+        "actual": 36.2,
+        "media": 32.2,
+        "minimo": 27.1,
+        "maximo": 36.1,
+        "percentil": 100,
+        "prima_pct": 13,
+        "anios": 4
+      }
+    ],
+    "multiplos_serie": [],
+    "multiplos_titulo": null,
+    "consenso_vs_propio": [
+      {
+        "periodo": "2026e",
+        "ingresos_propio": 7659,
+        "ingresos_consenso": 7541,
+        "ingresos_dif_pct": 1.6,
+        "ebitda_propio": 1823,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      },
+      {
+        "periodo": "2027e",
+        "ingresos_propio": 7927,
+        "ingresos_consenso": 7893,
+        "ingresos_dif_pct": 0.4,
+        "ebitda_propio": 1902,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      },
+      {
+        "periodo": "2028e",
+        "ingresos_propio": 8204,
+        "ingresos_consenso": 8248,
+        "ingresos_dif_pct": -0.5,
+        "ebitda_propio": 1985,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      }
+    ],
+    "gobierno": {
+      "n_consejeros": 1,
+      "independientes_pct": 0,
+      "antiguedad_media": 0,
+      "composicion": [
+        {
+          "tipo": "No independiente",
+          "num": 1
+        }
+      ],
+      "checklist": [
+        {
+          "criterio": "Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)",
+          "resultado": "No cumple",
+          "valor": "0 %"
+        },
+        {
+          "criterio": "Presidencia sin vínculo familiar ni profesional con el accionista de control",
+          "resultado": "Cumple",
+          "valor": "Sin control"
+        },
+        {
+          "criterio": "Presidente no ejecutivo, o consejero coordinador independiente",
+          "resultado": "Cumple",
+          "valor": "No ejecutivo"
+        },
+        {
+          "criterio": "Comisión de auditoría con mayoría de independientes y presidida por uno",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Ningún consejero «otro externo» con más de 12 años",
+          "resultado": "Cumple",
+          "valor": "Ninguno"
+        },
+        {
+          "criterio": "Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses",
+          "resultado": "No cumple",
+          "valor": "2 cambios"
+        },
+        {
+          "criterio": "Peor voto a favor sobre remuneración (3 juntas) ≥ 80 %",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Una acción, un voto, sin blindajes ni límites de voto estatutarios",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Sin operaciones vinculadas relevantes",
+          "resultado": "Cumple",
+          "valor": "No hay"
+        },
+        {
+          "criterio": "Auditor con 10 años o menos en el cargo",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Opinión de auditoría sin salvedades",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Directivos compradores netos en 12 meses (o sin ventas relevantes)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        }
+      ],
+      "puntuacion": "5 de 13 (6 sin dato)",
+      "puntuacion_pct": 38,
+      "compras_insiders": 0,
+      "ventas_insiders": 0
+    },
+    "competidores_margen": [
+      {
+        "nombre": "Givaudan",
+        "margen_ebit_pct": 18.5
+      },
+      {
+        "nombre": "dsm-firmenich",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "IFF",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Symrise",
+        "margen_ebit_pct": null
+      }
+    ],
+    "sintesis": {
+      "formato_eje": "#,##0",
+      "rangos": [
+        {
+          "metodo": "Precio objetivo de los analistas",
+          "etiqueta": "Precio objetivo de los analistas (2.800,00 – 4.500,00)",
+          "min": 2800,
+          "central": 3461,
+          "max": 4500,
+          "gris": true
+        },
+        {
+          "metodo": "Comparables: PER NTM",
+          "etiqueta": "Comparables: PER NTM (2.135,44 – 2.593,48)",
+          "min": 2135.44,
+          "central": 2376.84,
+          "max": 2593.48,
+          "gris": false
+        },
+        {
+          "metodo": "DCF (WACC y g ± 0,5)",
+          "etiqueta": "DCF (WACC y g ± 0,5) (2.815,33 – 4.560,32)",
+          "min": 2815.33,
+          "central": 3481.66,
+          "max": 4560.32,
+          "gris": false
+        },
+        {
+          "metodo": "Escenarios (bajista – alcista)",
+          "etiqueta": "Escenarios (bajista – alcista) (2.514,48 – 4.092,51)",
+          "min": 2514.48,
+          "central": 3392.58,
+          "max": 4092.51,
+          "gris": false
+        },
+        {
+          "metodo": "DCF con la prima del mercado",
+          "etiqueta": "DCF con la prima implícita del mercado (4,2 %)",
+          "min": 3856.32,
+          "central": 4515.13,
+          "max": 5407.72
+        },
+        {
+          "metodo": "Precio actual",
+          "etiqueta": "Precio actual (3.714,00)",
+          "min": 3695.43,
+          "central": 3714,
+          "max": 3732.57,
+          "gris": true
+        }
+      ],
+      "tabla": [
+        {
+          "metodo": "DCF",
+          "valor": 3481.66,
+          "peso_pct": 50,
+          "potencial_pct": -6.3
+        },
+        {
+          "metodo": "Comparables (mediana EV/EBITDA y PER)",
+          "valor": 2376.84,
+          "peso_pct": 20,
+          "potencial_pct": -36
+        },
+        {
+          "metodo": "Escenarios ponderados",
+          "valor": 3392.58,
+          "peso_pct": 30,
+          "potencial_pct": -8.7
+        }
+      ],
+      "valor_objetivo": 3233.97,
+      "potencial_pct": -12.9
+    },
+    "fuentes": {
+      "n_fuentes": 45,
+      "n_primarias": 10,
+      "por_tipo": [
+        {
+          "tipo": "Primaria",
+          "num": 10
+        },
+        {
+          "tipo": "Datos de mercado",
+          "num": 9
+        },
+        {
+          "tipo": "Prensa",
+          "num": 12
+        },
+        {
+          "tipo": "Sectorial",
+          "num": 3
+        },
+        {
+          "tipo": "Analistas",
+          "num": 6
+        },
+        {
+          "tipo": "Foros y redes",
+          "num": 5
+        }
+      ],
+      "n_citadas": 42,
+      "citas_sin_fuente": [],
+      "fuentes_sin_citar": [
+        "22",
+        "27",
+        "30"
+      ]
+    },
+    "controles": [
+      {
+        "control": "DCF inverso calculable",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Puente de ingresos (volumen + precio + otros) = crecimiento del DCF",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Cuota implícita al final de la proyección ≤ 1,5 × la actual (o +10 puntos)",
+        "resultado": "OK",
+        "detalle": "Cuota de 20,9 % en 2030e frente al 21,0 % de hoy."
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "resultado": "OK",
+        "detalle": "Supuesto 21,6 % frente a 21,6 % real: genera una variación de circulante de 37 M en el primer año. Converge de forma gradual."
+      },
+      {
+        "control": "Peso del valor terminal ≤ 80 % del valor empresa",
+        "resultado": "OK",
+        "detalle": "70 %."
+      },
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "resultado": "OK",
+        "detalle": "1,00 %."
+      },
+      {
+        "control": "Probabilidades de los escenarios suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 5 comparables",
+        "resultado": "Explicado",
+        "detalle": "4 comparables. Explicación: Solo cuatro competidores directos cotizan con un PER fiable en las fuentes disponibles (Symrise, DSM-Firmenich, IFF y Kerry). Sensient, Croda y Novonesis se buscaron sin dato (hueco). Por eso los comparables pesan solo un 20 %."
+      },
+      {
+        "control": "Pesos de la síntesis suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Múltiplos del objetivo a 12 m según la regla común",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Objetivo 12 m frente al consenso",
+        "resultado": "OK",
+        "detalle": "El base se separa un 12,6 % del objetivo medio de los analistas: explícalo en diferencia_consenso (nunca se acerca la cifra)."
+      },
+      {
+        "control": "Recomendación coherente con la regla de decisión",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "La síntesis explica la convicción",
+        "resultado": "OK",
+        "detalle": "La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría."
+      },
+      {
+        "control": "Al menos 25 fuentes",
+        "resultado": "OK",
+        "detalle": "45 fuentes (10 primarias)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "resultado": "OK",
+        "detalle": "10."
+      },
+      {
+        "control": "Toda cita [n] existe en fuentes",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Fuentes sin citar ≤ 15 %",
+        "resultado": "OK",
+        "detalle": "Sin citar: 22, 27, 30."
+      }
+    ],
+    "controles_resumen": "16 de 17 controles correctos y 1 explicados"
+  }
+}
