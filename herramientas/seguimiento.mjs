@@ -16,6 +16,8 @@ import { conviccionSugerida } from '../motor/conviccion.mjs';
 import { objetivo12m } from './objetivo12m.mjs';
 import { readFileSync as leer } from 'node:fs';
 const REV12 = JSON.parse(leer(new URL('../verticales/empresa/objetivo12m-revisados.json', import.meta.url), 'utf8')).revisados;
+import { leerCalendario, fechaResultados } from './calendario.mjs';
+const CAL = leerCalendario();
 
 const argv = process.argv.slice(2);
 const salida = argv.includes('--salida') ? argv[argv.indexOf('--salida') + 1] : 'seguimiento.xlsx';
@@ -77,6 +79,8 @@ for (const dir of readdirSync('informes', { withFileTypes: true }).filter((e) =>
     metodologia: d.calc.dcf?.sostenibilidad ? 'Nueva' : 'Vieja',
     // Solo revisiones hechas (verticales/empresa/objetivo-12m.md): la calculadora a ciegas no se publica.
     o12: REV12[String(d.identificacion.ticker || '').trim().toUpperCase().replace(/\s+/g, '-')] ? objetivo12m(d) : { objetivo: null, rte: null, senal: null, origen: 'Sin revisión v2 todavía' },
+    // Calendario de resultados (escaner/calendario.json manda; si no está, la fecha del informe).
+    proximos: fechaResultados(Object.entries(REV12).find(([, v]) => v.carpeta === dir)?.[0] || String(d.identificacion.ticker || '').trim().toUpperCase().replace(/\s+/g, '-'), d, CAL),
     informe: `informes/${dir}/${existsSync(join('informes', dir, pdf)) ? pdf : base}`,
   });
 }
@@ -99,7 +103,7 @@ const COLS = [
   ['Iteración', 9], ['Empresa', 18], ['Ticker', 9], ['Fecha', 11], ['Geografía', 13], ['Sector', 20], ['Señal', 11], ['Convicción', 11], ['Convicción según criterios', 11], ['Divisa', 7],
   ['Precio actual', 11], ['Precio objetivo 12 m', 12], ['Objetivo con la prima del mercado', 13], ['Rentabilidad total esperada', 12],
   ['Rentabilidad con la prima del mercado', 13], ['Objetivo analistas', 11], ['Comprar por debajo de', 11], ['Vender por encima de', 11],
-  ['Regla absoluta', 10], ['Regla relativa', 10], ...CRITERIOS.map(([c]) => [c, 11]), ['Metodología', 11], ['Objetivo 12 m', 12], ['Rentabilidad 12 m', 12], ['Rentabilidad 12 m (base)', 12], ['Señal 12 m', 11], ['Origen del objetivo 12 m', 40], ['Informe', 46],
+  ['Regla absoluta', 10], ['Regla relativa', 10], ...CRITERIOS.map(([c]) => [c, 11]), ['Metodología', 11], ['Objetivo 12 m', 12], ['Rentabilidad 12 m', 12], ['Rentabilidad 12 m (base)', 12], ['Señal 12 m', 11], ['Origen del objetivo 12 m', 40], ['Próximos resultados', 12], ['Informe', 46],
 ];
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const letra = (i) => (i >= 26 ? String.fromCharCode(64 + Math.floor(i / 26)) : '') + String.fromCharCode(65 + (i % 26));
@@ -126,8 +130,9 @@ filas.forEach((f, k) => {
   celdas.push(texto(c(ci - 6), f.metodologia, S.centro));
   celdas.push(num(c(ci - 5), f.o12.objetivo, S.num), num(c(ci - 4), f.o12.rte === null ? null : f.o12.rte / 100, S.pct), num(c(ci - 3), f.o12.rte_base == null ? null : f.o12.rte_base / 100, S.pct));
   celdas.push(texto(c(ci - 2), f.o12.senal, S[f.o12.senal] ?? S.centro), texto(c(ci - 1), f.o12.origen));
-  celdas.push(texto(c(ci), f.informe, S.enlace));
-  enlaces.push({ ref: c(ci), destino: f.informe });
+  celdas.push(num(c(ci), f.proximos ? serie(f.proximos) : null, S.fecha));
+  celdas.push(texto(c(ci + 1), f.informe, S.enlace));
+  enlaces.push({ ref: c(ci + 1), destino: f.informe });
   filasXml.push(`<row r="${r}">${celdas.join('')}</row>`);
 });
 const ultima = letra(COLS.length - 1);
@@ -162,6 +167,7 @@ const criterios = [
   ['Rentabilidad 12 m (base)', 'Solo el escenario base (BPA propio al PER de hoy o a la mediana de 5 años, sin que el múltiplo vuelva a su historia), más el dividendo. Es el filtro de valor real: para comprar, al menos un 12 %.'],
   ['Señal 12 m', 'Con la rentabilidad 12 m ponderada: Comprar desde el 15 %, Vender desde el −10 %, Mantener en medio. Para comprar hace falta además el base ≥ 12 %.'],
   ['n.d.', 'El informe no tiene el dato (por ejemplo, sin consenso o sin lista de gobierno).'],
+  ['Próximos resultados', 'Fecha de los próximos resultados: la del calendario único (escaner/calendario.json, que pone al día la pasada de las 9:25) y, si la empresa no está en él, la del informe. Con resultados a menos de 10 días, las compras van en dos tramos; publicados después del informe, se revisan antes de cualquier orden.'],
   ['Informe', 'Ruta del PDF (o del Word si no hay PDF) de la última versión de ese análisis, relativa a la raíz del repo.'],
 ];
 const hoja2 = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>

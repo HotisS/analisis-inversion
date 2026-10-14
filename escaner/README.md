@@ -4,6 +4,8 @@ Pedido del usuario (14-oct-2026): «escáner diario de actualización de precios
 
 Se lanza solo, de lunes a viernes, a las **9:25 y a las 15:45 de Madrid** (Wall Street abre a las 15:30 de Madrid), con una tarea programada que hace los pasos de abajo y publica el resultado en el proyecto. (`perfiles.json` de esta carpeta es de otra herramienta: el buscador de candidatas `/escanea-mercado`.)
 
+> **REGLA DURA (usuario, 14-oct 18:04):** las señales del escáner son **avisos, nunca órdenes**. Ninguna rutina ni paso automático toca el broker ni herramientas de órdenes. Una compra o venta solo se lanza si el usuario la pide explícitamente en el chat **y** la confirma cuando se le pide confirmación.
+
 ## Rutinas (plan del 14-oct-2026; horas de Madrid)
 
 | Cuándo | Qué | Cómo |
@@ -31,7 +33,7 @@ Si no hay nada nuevo, el mensaje del escáner es una sola línea. Las tareas des
 | `registro-senales.json` | Registro histórico de todas las señales y su seguimiento | La herramienta (no editar a mano) |
 | `SENALES.md` | El registro en tabla, con el resumen de aciertos | La herramienta |
 | `mensaje-ultimo.md` | El mensaje para el chat del proyecto | La herramienta |
-| `calendario.json` | Próximos resultados de lo vigilado (manda sobre el informe) | La vigilancia de la mañana |
+| `calendario.json` | **Calendario de resultados único** (cartera, órdenes, lista de espera y suplentes; fecha, si está confirmada y fuente). Manda sobre la fecha del informe. Lo leen el escáner, el Excel (`seguimiento.mjs`, columna «Próximos resultados») y los análisis (`node herramientas/calendario.mjs --aplicar` escribe la fecha en cada datos*.json, sin rehacer cálculos) | La vigilancia de la mañana: comprueba las fechas que caen en los próximos 14 días y añade las que se anuncian; después `calendario.mjs --aplicar` y `seguimiento.mjs` |
 | `vigilancia-ultima.json`, `semanal-ultimo.md` | Última vigilancia y último informe semanal | La herramienta |
 
 ## Pasos de cada ejecución
@@ -51,6 +53,7 @@ Si no hay nada nuevo, el mensaje del escáner es una sola línea. Las tareas des
 **Compra (no está en cartera):**
 - Value: precio de ahora ≤ **límite robusto** = el menor de los límites de compra del método vigente y de v2 (pasa con los dos), con el objetivo fijo; acción robusta «Comprar» en `robustez.mjs --actual` (la confianza baja y las marcas de CONFIANZA la bajan a Mantener); calidad: ROIC − WACC ≥ 5 puntos (LVMH, excepción) y sostenibilidad «Sí»; no excluida (juego, Accenture, Rightmove, Adobe, comercio minorista, Duolingo, HubSpot). Si solo la frenan resultados publicados después del informe (E1) o un precio que se ha movido más de un 15 % (E3), también es candidata, con **Vup obligatorio**.
 - Growth: precio ≤ «compra hasta» del informe, señal robusta «Comprar», rentabilidad de hoy (objetivo fijo) por encima de los listones de v11.
+- Calendario: con resultados a menos de 10 días, la compra se da en dos tramos (el segundo tras los resultados); si publicó resultados después del informe, el Vup es obligatorio. Al día siguiente de unos resultados de algo vigilado, la vigilancia de la mañana los revisa y actualiza el análisis.
 - Y además: liquidez libre para una posición de al menos 1.000 EUR (5 % de la cartera, tope 7 %), y en growth hueco en el bolsillo (≤ 20 %). Varias candidatas se reparten la liquidez por orden de rentabilidad.
 
 **Venta (está en cartera; nunca Edenred ni el oro):**

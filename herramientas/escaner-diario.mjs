@@ -2,6 +2,8 @@
 // se lance cada día sobre las 9:30 y las 15:00 (EE. UU. y Europa abiertos); si una acción toca banda de comprar (y puede
 // entrar como candidata) o de vender (y está en cartera), se actualiza el análisis (Vup) y se emite señal»).
 // Procedimiento completo, con el paso «Vup» que hace Claude a mano: escaner/README.md. Sin dependencias.
+// REGLA DURA (usuario, 14-oct 18:04): las señales son avisos, nunca órdenes. Ninguna herramienta ni paso automático toca el
+// broker; una orden solo se lanza si el usuario la pide explícitamente en el chat y la confirma cuando se le pide confirmación.
 //
 //   NODE_USE_ENV_PROXY=1 node herramientas/escaner-diario.mjs
 //       1) precios de todas las analizadas (herramientas/precios.mjs, sesión en curso) y de las growth (Yahoo)
@@ -27,6 +29,7 @@ import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { ultimoDatos } from './objetivo12m.mjs';
 import { ultimoCierre, leerPrecios } from './precios.mjs';
+import { leerCalendario, fechaResultados } from './calendario.mjs';
 
 const RAIZ = fileURLToPath(new URL('..', import.meta.url));
 process.chdir(RAIZ);
@@ -150,7 +153,7 @@ async function escanear() {
       precio: x.precio_cot, divisa: x.divisa_cotizacion, hora_precio: x.fecha_precio === ahora.fecha ? horaPrecio : `cierre del ${fechaCorta(x.fecha_precio)}`,
       limite, rentabilidad_12m_pct: x.ponderada, rentabilidad_v2_pct: x.v2, base_pct: x.base, metodo: rev?.selector?.regla || x.version,
       accion_robusta: x.accion_robusta, veredicto: x.veredicto, calidad: q.txt,
-      fecha_corte: d?.meta?.fecha_corte || null, proximos_resultados: d?.identificacion?.proximos_resultados || null,
+      fecha_corte: d?.meta?.fecha_corte || null, proximos_resultados: fechaResultados(x.clave, d),
       senal_alarma: d?.resumen?.cambiaria_recomendacion || null, que_vigilar: d?.resumen?.que_vigilar || null,
       marcas: x.marcas.filter((m) => m.tratamiento !== 'AVISO' || /^E/.test(m.codigo)).map((m) => `[${m.codigo} ${m.tratamiento}] ${m.texto}`),
       motivo: `Toca su precio de compra robusto (${fPrecio(limite)} ${x.divisa_cotizacion}: pasa con el método vigente y con v2). Rentabilidad esperada a 12 meses ${fp(x.ponderada)}; ${q.txt}.`,
@@ -186,7 +189,7 @@ async function escanear() {
     if (!pasa) continue;
     const c = { fecha: ahora.fecha, hora: ahora.hora, tipo: 'COMPRA', vertical: 'growth', clave: g.ticker, nombre: g.empresa, carpeta: `informes-growth/${g.carpeta}`, simbolo: g.simbolo,
       precio: g.precio_hoy, divisa: g.divisa, hora_precio: g.fecha_hoy === ahora.fecha ? ahora.hora : `cierre del ${fechaCorta(g.fecha_hoy)}`, limite: g.precio_max_compra,
-      rentabilidad_12m_pct: g.ponderada_hoy, base_pct: g.base_hoy, conviccion: g.conviccion, accion_robusta: g.senal_robusta, veredicto: g.veredicto,
+      rentabilidad_12m_pct: g.ponderada_hoy, base_pct: g.base_hoy, conviccion: g.conviccion, fecha_corte: leer(`informes-growth/${g.carpeta}/datos.json`)?.fecha || null, proximos_resultados: fechaResultados(g.ticker, leer(`informes-growth/${g.carpeta}/datos.json`)), accion_robusta: g.senal_robusta, veredicto: g.veredicto,
       marcas: g.marcas.filter((m) => m.tratamiento !== 'AVISO').map((m) => `[${m.codigo} ${m.tratamiento}] ${m.texto}`),
       motivo: `Growth: por debajo de su «compra hasta» (${fPrecio(g.precio_max_compra)} ${g.divisa}); rentabilidad esperada a 12 meses ${fp(g.ponderada_hoy)}, convicción ${g.conviccion}.`,
       objecion_auto: g.frente?.[0] ? `Con otra lectura razonable cambia: ${g.frente[0]}.` : (g.marcas.find((m) => m.tratamiento !== 'AVISO')?.texto || g.marcas.find((m) => !['G2', 'G4'].includes(m.codigo))?.texto || 'Sin objeción fuerte en las pruebas de robustez.') };
@@ -229,7 +232,7 @@ async function escanear() {
       fila = { tipo: 'VENTA', vertical: 'value', clave: p.clave, nombre: p.nombre, carpeta: `informes/${x.carpeta}`, simbolo: PRECIOS.precios[p.clave]?.simbolo || null,
         precio: x.precio_cot, divisa: x.divisa_cotizacion, hora_precio: x.fecha_precio === ahora.fecha ? horaPrecio : `cierre del ${fechaCorta(x.fecha_precio)}`,
         limite: x.limite_mantener_cot, rentabilidad_12m_pct: x.ponderada, base_pct: x.base, calidad: q.txt, fecha_corte: d?.meta?.fecha_corte || null,
-        proximos_resultados: d?.identificacion?.proximos_resultados || null, senal_alarma: d?.resumen?.cambiaria_recomendacion || null,
+        proximos_resultados: fechaResultados(p.clave, d), senal_alarma: d?.resumen?.cambiaria_recomendacion || null,
         objecion_auto: x.colchon?.mantener !== null && x.ponderada >= 0 ? `La empresa sigue siendo buena; el problema es el precio: el objetivo del informe da ${fp(x.ponderada)}.` : 'La tesis puede volver con los próximos resultados.' };
     } else if (p.vertical === 'growth') {
       const g = gro.find((y) => y.ticker === p.clave);
@@ -248,6 +251,15 @@ async function escanear() {
     candidatas.push(fila);
   }
 
+  // Calendario de resultados (regla de orden: con resultados a menos de 10 días, comprar en dos tramos; con resultados ya
+  // publicados después del informe, revisión obligatoria en el Vup antes de dar la señal).
+  for (const c of [...candidatas, ...observaciones, ...activas]) {
+    const pr = c.proximos_resultados;
+    if (!pr) continue;
+    const dd = dias(ahora.fecha, pr);
+    if (dd >= 0 && dd <= 10) c.resultados_cerca = `resultados el ${fechaCorta(pr)} (en ${dd} días)${c.tipo === 'COMPRA' ? ': comprar en dos tramos, el segundo después de los resultados si no tocan la señal de alarma' : ': decidir la venta antes o después según la señal de alarma'}`;
+    if (dd < 0 && c.fecha_corte && pr > c.fecha_corte) c.vup_obligatorio = `${c.vup_obligatorio ? `${c.vup_obligatorio} ` : ''}Publicó resultados el ${fechaCorta(pr)}, después del informe (corte ${fechaCorta(c.fecha_corte)}): revisarlos antes de dar la señal.`;
+  }
   const esc = { fecha: ahora.fecha, hora: ahora.hora, precios_actualizados: PRECIOS.actualizado, valor_cartera_eur: r(total, 0), liquidez_libre_eur: CARTERA.liquidez_libre_eur,
     bolsillo_growth_pct: r(bolsilloPct), revisadas: { value: rob.length, growth: gro.length }, candidatas, observaciones, activas, descartes_calidad: descartesCalidad, descartadas_hace_poco: recientes };
   guardar(RUTA_ESC, esc);
@@ -258,6 +270,7 @@ async function escanear() {
     console.log(`  Motivo: ${c.motivo}\n  Objeción (automática): ${c.objecion_auto}`);
     if (c.fecha_corte) console.log(`  Informe con corte ${c.fecha_corte}; próximos resultados: ${c.proximos_resultados || 'n.d.'}`);
     if (c.vup_obligatorio) console.log(`  Vup OBLIGATORIO: ${c.vup_obligatorio}`);
+    if (c.resultados_cerca) console.log(`  Calendario: ${c.resultados_cerca}`);
     if (c.calidad_a_mano) console.log('  Calidad: ROIC no aplica o sin sostenibilidad: juzgarla con el informe.');
     for (const m of c.marcas || []) console.log(`  ${m}`);
     if (c.senal_alarma) console.log(`  Señal de alarma del informe: ${[].concat(c.senal_alarma).join(' | ')}`);
@@ -351,11 +364,13 @@ function mensaje(esc, nuevas, reg, avisos = []) {
   const L = [`**Escáner ${fechaCorta(esc.fecha)}, ${esc.hora} (Madrid)**`, ''];
   if (avisos.length) L.push('Resultados y avisos de riesgo:', ...avisos.map((a) => `- ${a}`), '');
   const linea = (s) => s.tipo === 'COMPRA'
-    ? `- **${s.nombre}**: comprar ${s.titulos} títulos con límite ${fPrecio(s.limite)} ${s.divisa} (ahora ${fPrecio(s.precio)} ${s.divisa}, ${s.hora_precio}). Rentabilidad esperada a 12 meses: ${fp(s.rentabilidad_12m_pct)}. Por qué: ${s.motivo_llano || s.motivo} Objeción más fuerte: ${s.objecion}`
-    : `- **${s.nombre}**: vender ${s.titulos} títulos (ahora ${fPrecio(s.precio)} ${s.divisa}, ${s.hora_precio}). Por qué: ${s.motivo_llano || s.motivo} Objeción más fuerte: ${s.objecion}`;
+    ? `- **${s.nombre}**: aviso de compra, ${s.titulos} títulos hasta ${fPrecio(s.limite)} ${s.divisa} (ahora ${fPrecio(s.precio)} ${s.divisa}, ${s.hora_precio}). Rentabilidad esperada a 12 meses: ${fp(s.rentabilidad_12m_pct)}. Por qué: ${s.motivo_llano || s.motivo} Objeción más fuerte: ${s.objecion}${s.resultados_cerca ? ` Ojo: ${s.resultados_cerca}.` : ''}`
+    : `- **${s.nombre}**: aviso de venta de los ${s.titulos} títulos (ahora ${fPrecio(s.precio)} ${s.divisa}, ${s.hora_precio}). Por qué: ${s.motivo_llano || s.motivo} Objeción más fuerte: ${s.objecion}${s.resultados_cerca ? ` Ojo: ${s.resultados_cerca}.` : ''}`;
   const c = emit.filter((s) => s.tipo === 'COMPRA'), v = emit.filter((s) => s.tipo === 'VENTA');
-  if (c.length) L.push('Señales de compra:', ...c.map(linea), '');
-  if (v.length) L.push('Señales de venta:', ...v.map(linea), '');
+  if (c.length) L.push('Avisos de compra:', ...c.map(linea), '');
+  if (v.length) L.push('Avisos de venta:', ...v.map(linea), '');
+  // Regla dura del usuario (14-oct 18:04): ninguna orden sin que lo diga en el chat y lo confirme cuando se le pida.
+  if (emit.length) L.push('Son avisos, no órdenes: no se lanza nada salvo que me lo digas en el chat y lo confirmes cuando te lo pregunte.', '');
   if (!emit.length) L.push('Hoy no hay señales nuevas de compra ni de venta.', '');
   const desc = nuevas.filter((s) => s.estado === 'descartada tras Vup');
   if (desc.length) L.push(`Descartadas al actualizar el análisis: ${desc.map((s) => `${s.nombre} (${s.vup})`).join('; ')}.`);
@@ -415,9 +430,9 @@ function vigilados() {
   ];
   const vistos = new Map();
   for (const v of lista) if (!vistos.has(v.clave)) vistos.set(v.clave, v);
-  const CAL = leer(`${E}calendario.json`, { fechas: {} }).fechas;
+  const CAL = leerCalendario();
   return [...vistos.values()].map((v) => {
-    let carpeta = null, corte = null, prox = CAL[v.clave] || null, nombre = v.nombre || v.clave;
+    let carpeta = null, corte = null, prox = CAL[v.clave]?.fecha || null, nombre = v.nombre || v.clave;
     if (v.vertical === 'value' && REV[v.clave]) {
       carpeta = `informes/${REV[v.clave].carpeta}`;
       const d = ultimoDatos(REV[v.clave].carpeta);
@@ -499,10 +514,10 @@ async function semanal() {
   const ociosa = CARTERA.liquidez_libre_eur >= 3000 && CARTERA.liquidez_libre_desde && dias(CARTERA.liquidez_libre_desde, hoy) >= 90;
   // 4. Método: robustez de todo y avisos de informes viejos.
   const ver = rob.reduce((t, x) => ({ ...t, [x.veredicto]: (t[x.veredicto] || 0) + 1 }), {});
-  const CAL = leer(`${E}calendario.json`, { fechas: {} }).fechas;
+  const CAL = leerCalendario();
   const viejos = [];
   for (const x of rob) {
-    const d = ultimoDatos(x.carpeta), corte = d?.meta?.fecha_corte, prox = CAL[x.clave] || String(d?.identificacion?.proximos_resultados || '').match(/\d{4}-\d{2}-\d{2}/)?.[0];
+    const d = ultimoDatos(x.carpeta), corte = d?.meta?.fecha_corte, prox = CAL[x.clave]?.fecha || String(d?.identificacion?.proximos_resultados || '').match(/\d{4}-\d{2}-\d{2}/)?.[0];
     if (corte && dias(corte, hoy) > 90) viejos.push(`${x.nombre} (informe de hace ${dias(corte, hoy)} días)`);
     else if (prox && corte && prox > corte && prox <= hoy) viejos.push(`${x.nombre} (resultados del ${fechaCorta(prox)} posteriores al informe)`);
   }
