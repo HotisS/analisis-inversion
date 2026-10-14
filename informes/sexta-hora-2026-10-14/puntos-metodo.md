@@ -30,3 +30,4 @@ Se rellena con lo que se vea fallar o mejorable en los 16 análisis (datos que f
 - **Clases de acciones** (Lindt LISN = 10 LISP; Epiroc A/B): el precio, las acciones y el BPA deben ir en la misma unidad; dejar la equivalencia en `identificacion`.
 - **`integrar.mjs` deja literal una cita con letra** ([A3]) cuando la escribe la propia nota y no avisa: debería avisar de citas sin resolver.
 - **PER adelantado de Yahoo en peniques** para cotizadas de Londres: cuidado al usarlo como contraste.
+- **ESEF: deuda solo a largo plazo y dividendo del año anterior** se repite en Lotus, Diploma, Demant y Euronext (4 de 7 europeas con XBRL). Es el fallo más frecuente de `cuentas.mjs` en esta hora: arreglarlo en la herramienta (sumar deuda corriente y arrendamientos; dividendo por ejercicio de devengo) ahorraría una corrección manual por informe.
