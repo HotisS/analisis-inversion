@@ -19,7 +19,7 @@ const RAIZ = 'informes-growth';
 const carpetas = args.length ? args.map((a) => a.replace(/\/$/, '').replace(/^informes-growth\//, ''))
   : readdirSync(RAIZ, { withFileTypes: true }).filter((e) => e.isDirectory() && existsSync(`${RAIZ}/${e.name}/datos.json`)).map((e) => e.name).sort();
 const V = VERSIONES[VIGENTE];
-const SUF = [[/nyse|nasdaq/i, ''], [/xetra|frankfurt/i, '.DE'], [/amsterdam|ámsterdam/i, '.AS'], [/london|londres|lse/i, '.L'], [/toronto|tsx/i, '.TO']];
+const SUF = [[/stockholm|estocolmo/i, '.ST'], [/nyse|nasdaq/i, ''], [/xetra|frankfurt/i, '.DE'], [/amsterdam|ámsterdam/i, '.AS'], [/london|londres|lse/i, '.L'], [/toronto|tsx/i, '.TO']];
 
 // Variante «ventas del analista»: cada caso con las ventas que estima el propio informe en vez de la proyección mecánica
 // (precio del caso × ventas del analista ÷ ventas mecánicas; vale para múltiplos de ventas y de beneficio), con los mismos listones.
