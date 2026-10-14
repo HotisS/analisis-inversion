@@ -14,6 +14,7 @@
 ### 14-oct-2026
 - **Repo más ligero** (petición del usuario: se gastaban demasiados tokens por sesión). `cola.md` y `MEMORIA.md` quedan solo con lo pendiente y vigente; lo cerrado, a `archivo/`. `verticales/empresa/lecciones.md` se parte en núcleo + `lecciones-paises.md` + `lecciones-casos.md`; se retiran lecciones obsoletas (fallos de herramientas ya arreglados, elección manual del PER del bajista y del alcista). Regla de mantenimiento en `CLAUDE.md` y este histórico.
 - **Cartera propuesta con la regla común** (`informes/cartera-2026-10-14.md`): vender Zoetis, Puig, Hermès, ICE, Equifax e IBKR; comprar Nemetschek y LVMH; cancelar Wolters Kluwer y Auto Trader. Con la regla común, la cartera del 13-oct rendía +9,4 % y no +15,5 %. Pendiente de que el usuario la acepte.
+- Explicación del día para el usuario (método, tres fotos de la cartera y por qué no entran Wolters Kluwer, Auto Trader y Group 1): `informes/cambios-2026-10-14.md`.
 - **Group 1 Automotive** analizado desde la nube solo con búsqueda web (confianza baja): Mantener.
 - **Regla de múltiplos común para el objetivo a 12 meses**, aplicada por el motor (`motor/objetivo12m.mjs`). Las 73 revisiones del 13-oct elegían los múltiplos a mano, casi siempre al alza; se recalcularon todas.
 
