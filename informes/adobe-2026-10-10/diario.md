@@ -8,3 +8,4 @@
 - 14:07 D terminado: 242,27 USD, 389,2 M acciones (cap. ~94.290 M); consenso FY26e-28e con EBITDA no GAAP (ajuste de pagos en acciones 8,3 %); 39 analistas, PO medio 275,06; beta ajustada 1,26; 7 comparables (mediana ~16x NTM frente a ~8,5x de Adobe); puente a 28-ago con 475 M de recompras posteriores.
 - 14:15 Valoración y textos hechos: DCF 295,24 USD, valor objetivo 306,45 (+26,5 %), Comprar, convicción Media (la sugerida). Word y PDF (57 páginas) generados. Parado aquí a petición del usuario: falta revisar el PDF a ojo y comunicarlo.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 316,4 USD, rentabilidad +30,6 %, señal Comprar (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +19,7 % → +6,4 %, base +10,0 %, señal Mantener (`revision-12m-2026-10-13.md`).

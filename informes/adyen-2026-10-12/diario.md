@@ -33,3 +33,4 @@
 - **Parches sobre `meta.huecos[i]`** no se aplican (los huecos de las notas se juntan después); usa `huecos_resueltos` y vuelve a registrar el hueco en `propio`.
 - **Beta de una ex-burbuja**: Adyen da 2,33 mensual a 5 años frente al Stoxx 600; con ella el WACC pasa del 13 %. La decisión depende de la beta (con una más baja la regla absoluta se acercaría a Comprar): dilo en la síntesis.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 1.337,2 EUR, rentabilidad +50,9 %, señal Comprar (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +50,9 % → +23,0 %, base +19,6 %, señal Comprar (`revision-12m-2026-10-13.md`).
