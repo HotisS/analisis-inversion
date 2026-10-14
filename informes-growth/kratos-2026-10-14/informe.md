@@ -189,7 +189,7 @@ Lectura: Kratos crece mucho más que AeroVironment y sin problemas contables, pe
 
 ## 13. Encaje en cartera
 
-- **Bolsillo growth lleno (~20 %)**: Nu (+19 %), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %), a precio actual con v11. La liquidez es de ≈27 EUR, así que solo cabe sustituir. Alphabet se vende mañana y no cuenta como exposición a IA.
+- **Bolsillo growth lleno (~20 %)**: Nu (+19 %), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %), a precio actual con v11. La liquidez libre es casi nula, así que solo cabe sustituir. Alphabet se vende mañana y no cuenta como exposición a IA.
 - **Kratos no sustituye a ninguna y no entra en la lista de suplentes.** La señal es Vender (no comprar), con −14,4 % al precio actual frente al +13 % de la peor del bolsillo (Snowflake). La lista de suplentes no cambia: MongoDB, Toast, Zscaler, dLocal, Dexcom, argenx, Datadog, Saab y Natera.
 - **Si se quiere defensa en el bolsillo**, la candidata sigue siendo **Saab** (Comprar con convicción baja): crece más (+30 % orgánico), cuesta menos (20x EBITDA), gana más y apenas diluye.
 - **Qué haría falta para revisarla**: caja libre positiva o claramente camino de serlo, dilución anual por debajo del 4 %, margen EBITDA hacia el 12 % y el programa hipersónico grande adjudicado. Con un precio de ~32 USD o menos y la puntuación por encima de 60, podría pasar a Comprar. Hoy está lejos.

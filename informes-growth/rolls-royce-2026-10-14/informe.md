@@ -135,7 +135,7 @@ Publica cuentas por semestres (no hay trimestres). Ventas y beneficio operativo 
 
 ## 13. Encaje en cartera
 
-- **Bolsillo growth lleno (~20 %):** Nu (+19 %), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %) al precio actual con v11. Liquidez ≈ 27 EUR: solo se entra sustituyendo.
+- **Bolsillo growth lleno (~20 %):** Nu (+19 %), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %) al precio actual con v11. Liquidez libre casi nula: solo se entra sustituyendo.
 - **Rolls-Royce no sustituye a ninguna:** da Mantener (−5,3 % al cierre, −6,4 % al precio actual con el objetivo fijo), frente a +13 % la peor de las cinco. Tampoco entra en la lista de suplentes, que es solo de Comprar (MongoDB, Toast, Zscaler, Dexcom, Datadog, argenx, Natera, Saab): queda en el grupo de **Mantener**, junto a Eli Lilly, Wise o Vertex.
 - **Qué aportaría si un día entra:** diversificación real (aviación, defensa y energía británicas; la cartera no tiene nada aeroespacial; la única defensa europea es Saab, de suplente) y una exposición a la IA **indirecta y física** (generación para centros de datos), distinta de la de Snowflake y Samsara; Alphabet se vende mañana y no cuenta.
 - **Cuándo se revisa:** si cotiza **≤ 1.212 p** (−11 % frente a hoy) sin cambio de tesis, o con los resultados de febrero si suben los objetivos a medio plazo (más EBITDA a igual precio sube el objetivo). Con Comprar baja entraría con un 3,5 % y en dos tramos, y aun así tendría que superar en rentabilidad a la peor de las cinco para sustituirla.

@@ -140,7 +140,7 @@ Supuestos (2028, propios; el consenso de ventas de 2028 no aparece de forma fiab
 
 ## 13. Encaje en cartera
 
-- **Cartera value propuesta (~29.800 EUR)**: IGLN (oro), Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y ~6.300 EUR de liquidez. No hay ninguna empresa de defensa ni industrial pesada: Rheinmetall diversificaría (gasto público europeo, ciclo propio, poco correlacionado con el software y el lujo).
+- **Cartera value propuesta **: IGLN (oro), Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y liquidez. No hay ninguna empresa de defensa ni industrial pesada: Rheinmetall diversificaría (gasto público europeo, ciclo propio, poco correlacionado con el software y el lujo).
 - **Por el método, no merece hueco hoy**: señal Vender (ponderada −14,4 %, base −19,2 %, solo 2 de 8 señales, puntuación 64,3 < 70). **Peso orientativo: 0 %.** La liquidez se queda para los suplentes value.
 - **Cuándo podría entrar**: si cae por debajo de **677 EUR** (precio máximo de compra) sin cambio de tesis, o si se dan a la vez una subida del múltiplo (≥ 20 % sobre el mínimo, ~13x), el precio sobre la media de 200 sesiones y revisiones al alza (por ejemplo, tras Arminius y un 2S con caja fuerte), y el recálculo da ponderada ≥ 20 %. En ese caso entraría como growth de convicción baja: **3,5 % de la cartera (~1.040 EUR, por encima del mínimo de 1.000 EUR)**, en dos tramos (mitad ya, mitad tras los resultados de mar-2027 o con una caída del 10 %), pagado con liquidez.
 - Bolsillo growth (≤ 20 % de la cartera, ≤ ~5.960 EUR): hoy sin ocupar por esta empresa.

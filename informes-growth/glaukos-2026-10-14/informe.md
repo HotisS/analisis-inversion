@@ -129,7 +129,7 @@ Thomas Burns, consejero delegado desde 2002 y presidente del consejo. **Historia
 
 ## 13. Encaje en cartera
 
-- **No entra hoy.** El bolsillo growth está lleno (~20 %: Nu +19 %, Axon +36 %, Shopify +18 %, Snowflake +13 % y Samsara +15 % al precio actual con v11; `informes-growth/cartera-growth.md`) y la liquidez es de unos 27 EUR, así que solo cabría sustituyendo a otra. Glaukos no da Comprar: ponderada +2,5 % (+1,6 % al precio de ahora con el objetivo fijo), muy por debajo de las cinco posiciones. No sustituye a ninguna.
+- **No entra hoy.** El bolsillo growth está lleno (~20 %: Nu +19 %, Axon +36 %, Shopify +18 %, Snowflake +13 % y Samsara +15 % al precio actual con v11; `informes-growth/cartera-growth.md`) y la liquidez libre es casi nula, así que solo cabría sustituyendo a otra. Glaukos no da Comprar: ponderada +2,5 % (+1,6 % al precio de ahora con el objetivo fijo), muy por debajo de las cinco posiciones. No sustituye a ninguna.
 - **Suplentes**: tampoco entra en la lista (MongoDB, Toast, Zscaler, dLocal, Dexcom, argenx, Datadog, Saab, Natera, todas en Comprar). Queda en el grupo de Mantener, como **la primera en vigilancia de ese grupo**: tiene la mejor puntuación (82,5) y 7 de 8 señales.
 - **Si baja a 161,6 USD o menos**, pasaría a Comprar con convicción media, pero con una ponderada justa del 5 %: entraría al final de la lista de suplentes, por detrás de Natera, salvo que el 3T suba las ventas esperadas. Competiría con Dexcom por el hueco de tecnología médica.
 - **No es exposición a IA** (Alphabet se vende mañana y no cuenta como tal): aportaría tecnología médica inmune a la IA.

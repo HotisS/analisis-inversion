@@ -186,7 +186,7 @@ Hoy no hay tesis rota.
 
 ## 13. Encaje en cartera
 
-- **Bolsillo growth lleno** (~20 %, `informes-growth/cartera-growth.md`): Nu +20 %, Axon +37 %, Shopify +18 %, Snowflake +14 % y Samsara +17 %, con v11 y al precio actual. Liquidez ≈ 27 EUR: solo cabe sustituir. Ninguna orden se emite sin que el usuario la pida y la confirme.
+- **Bolsillo growth lleno** (~20 %, `informes-growth/cartera-growth.md`): Nu +20 %, Axon +37 %, Shopify +18 %, Snowflake +14 % y Samsara +17 %, con v11 y al precio actual. Liquidez libre casi nula: solo cabe sustituir. Ninguna orden se emite sin que el usuario la pida y la confirme.
 - **Remitly no entra ni sustituye a ninguna**: su ponderada al precio de hoy (+4,1 %) es menor que la de las cinco y no pasa el listón de compra del 5 %.
 - **Tampoco entra en la lista de suplentes** (MongoDB, Toast, Zscaler, dLocal, Dexcom, Datadog, argenx, Natera, Saab), porque esa lista es de empresas en Comprar. Queda en **Mantener, en vigilancia**, junto a Wise. Si cayera por debajo de unos **22,9 USD** pasaría a Comprar con convicción baja y quedaría la última de suplentes, detrás de Saab (+6 %).
 - **Frente a dLocal**, la suplente de su sector: dLocal da más rentabilidad (+15 % frente a +2 %) pero su margen por volumen cae con fuerza. Remitly tiene un negocio más estable y más caro. Entre las dos, por el método, dLocal.

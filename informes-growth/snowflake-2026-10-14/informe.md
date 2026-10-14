@@ -177,7 +177,7 @@ Hoy no hay tesis rota.
 
 ## 13. Encaje en cartera
 
-**Cartera value vigente** (`informes/cartera-2026-10-14-15h.md`, ~29.800 EUR): IGLN (oro), Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y Bureau Veritas, con órdenes con límite hasta el 7-nov. **Bolsillo growth aprobado** (`informes-growth/cartera-growth.md`): Nu (4 %), argenx (4,9 %), Shopify (4 %), Axon (3,7 %) y Duolingo (3,5 %), **≈19,5 % de la cartera: lleno** (tope del 20 %). **No queda liquidez**: el tramo 1 de Duolingo se pagó cancelando la orden de Deutsche Börse.
+**Cartera value vigente** (`informes/cartera-2026-10-14-15h.md`): IGLN (oro), Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y Bureau Veritas, con órdenes con límite hasta el 7-nov. **Bolsillo growth aprobado** (`informes-growth/cartera-growth.md`): Nu (4 %), argenx (4,9 %), Shopify (4 %), Axon (3,7 %) y Duolingo (3,5 %), **≈19,5 % de la cartera: lleno** (tope del 20 %). **No queda liquidez**: el tramo 1 de Duolingo se pagó cancelando la orden de Deutsche Börse.
 
 **Snowflake no entra hoy, y tampoco propongo sustituir a ninguna growth ahora:**
 

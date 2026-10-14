@@ -194,7 +194,7 @@ El motor revisó y dio por buenos: el múltiplo de hoy no dobla su mediana (10,3
 
 ## 13. Encaje en cartera
 
-- **Bolsillo growth lleno (~20 %)**: Nu (+19 %), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %), al precio actual con v11. La liquidez es de ≈27 EUR, así que solo cabe sustituir. Alphabet se vende mañana y no cuenta como exposición a IA de la cartera.
+- **Bolsillo growth lleno (~20 %)**: Nu (+19 %), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %), al precio actual con v11. La liquidez libre es casi nula, así que solo cabe sustituir. Alphabet se vende mañana y no cuenta como exposición a IA de la cartera.
 - **dLocal al precio actual: +18,2 % de ponderada** (objetivo fijo de 17,1 USD frente a 14,63). Supera a Snowflake (+13 %) y a Samsara (+15 %), pero **no las sustituye**:
   - el margen frente a Snowflake es de unos 4 puntos y la convicción es menor (baja frente a media);
   - la señal es frágil al crecimiento de 2027-2028 (sección 11) y depende de la comisión, mientras que Snowflake y Samsara aceleran con márgenes al alza;

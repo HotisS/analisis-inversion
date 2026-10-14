@@ -149,7 +149,7 @@ Fuentes: [1][4][13].
 ## 13. Encaje en cartera
 
 - **No entra.** Señal Mantener en vigilancia: ponderada +1,8 % con el método vigente y +1,7 % al precio actual con el objetivo fijo. Le falta rentabilidad: compraría por debajo de 52,7 USD (un 3 % por debajo del precio de hoy).
-- **Bolsillo growth lleno** (~20 %): Nu (+19 %), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %), con v11 al precio actual. Liquidez de ≈27 EUR: solo se podría entrar sustituyendo a una. TG no sustituye a ninguna: su rentabilidad esperada es mucho menor que la de las cinco.
+- **Bolsillo growth lleno** (~20 %): Nu (+19 %), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %), con v11 al precio actual. Liquidez libre casi nula: solo se podría entrar sustituyendo a una. TG no sustituye a ninguna: su rentabilidad esperada es mucho menor que la de las cinco.
 - **Suplentes**: no entra en la lista (MongoDB, Toast, Zscaler, dLocal, Dexcom, argenx, Datadog, Saab, Natera). Va a «Mantener», como Glaukos: en vigilancia, con límite de 52,7 USD.
 - **Exposición**: sería otra biotecnológica de un solo producto, como argenx (suplente, Vyvgart). No suma exposición a IA (la venta de Alphabet de mañana no cambia nada aquí).
 - Se revisa con los resultados del 3T (noviembre) y los datos del subcutáneo.

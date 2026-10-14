@@ -149,7 +149,7 @@ Fuentes: notas de resultados y XBRL de la SEC [1][3].
 ## 13. Encaje en cartera
 
 - **Frente a `MEMORIA.md`:** no hay ninguna regla en contra (no es juego ni comercio minorista). Sería la primera aseguradora de salud de la cartera. Alphabet se vende mañana, así que Oscar no compensaría ninguna exposición a IA (y su uso de la IA no es el motivo de la tesis).
-- **Frente a `informes-growth/cartera-growth.md`:** el bolsillo growth está lleno (unos 20 %). Al precio actual y con v11, las cinco posiciones esperan: Nu +19 %, Axon +36 %, Shopify +18 %, Snowflake +13 % y Samsara +15 %. La liquidez es de unos 27 EUR, así que solo se podría entrar sustituyendo a una de ellas.
+- **Frente a `informes-growth/cartera-growth.md`:** el bolsillo growth está lleno (unos 20 %). Al precio actual y con v11, las cinco posiciones esperan: Nu +19 %, Axon +36 %, Shopify +18 %, Snowflake +13 % y Samsara +15 %. La liquidez libre es casi nula, así que solo se podría entrar sustituyendo a una de ellas.
 - **Resultado:** con Vender (−34,8 %, y −35,9 % al precio actual), **no sustituye a ninguna ni entra en la lista de suplentes**. Los suplentes siguen en este orden: MongoDB, Toast, Zscaler, dLocal, Dexcom, argenx, Datadog, Saab y Natera. Pasaría a estudiarse por debajo de 21 USD, o si la guía de 2027 (febrero) confirma un crecimiento de más del 20 % con un margen de más del 5 %. En ese caso se recalcula con resultados nuevos.
 - Recordatorio: no se emite ninguna orden salvo que el usuario la pida explícitamente en el chat y la confirme.
 

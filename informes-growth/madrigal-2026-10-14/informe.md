@@ -166,7 +166,7 @@ La mecánica parte del tope del 60 % de crecimiento, porque el CAGR de lanzamien
 
 ## 13. Encaje en cartera
 
-- **Bolsillo growth lleno** (~20 %): Nu (+19 %), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %), todas a precio actual con v11. La liquidez es de ≈27 EUR, así que solo cabe sustituir.
+- **Bolsillo growth lleno** (~20 %): Nu (+19 %), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %), todas a precio actual con v11. La liquidez libre es casi nula, así que solo cabe sustituir.
 - **Madrigal no sustituye a ninguna.** Al precio actual da +2,4 % de ponderada, frente a +13 % de la peor del bolsillo (Snowflake), y su señal es Mantener.
 - **No entra en la lista de suplentes.** Hoy la lista es MongoDB, Toast, Zscaler, dLocal, Dexcom, Datadog, argenx, Natera y Saab, y todas son Comprar. Si bajara de 449,6 USD pasaría a Comprar con convicción baja y una ponderada de solo el 5 %. Entonces iría la última, detrás de Saab (+6 %).
 - **Exposición**: no aporta exposición a la IA (Alphabet se vende mañana y no cuenta). Sí añadiría biotecnología de un solo producto a argenx, que es suplente. Para una cartera de ~13.000 EUR con posiciones de al menos 1.000 EUR, un bajista del −44 % pesa.

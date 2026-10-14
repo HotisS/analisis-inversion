@@ -136,7 +136,7 @@ EV de hoy: 6.668 M (86,33 × 56,55 M acciones + 1.880 M de deuda − 94,5 M de c
 
 ## 13. Encaje en cartera
 
-- **Señal: Mantener → no entra.** No es Comprar, así que no sustituye a ninguna del bolsillo growth (lleno, ~20 %: Nu +19 %, Axon +36 %, Shopify +18 %, Snowflake +13 %, Samsara +15 %, al precio actual con v11). Con una liquidez de ≈27 EUR, solo cabría sustituyendo, y no tiene ni la señal ni la rentabilidad para ello (+11 % al precio de hoy con el objetivo fijo, por debajo de Axon, Nu o Shopify, y con un bajista mucho peor).
+- **Señal: Mantener → no entra.** No es Comprar, así que no sustituye a ninguna del bolsillo growth (lleno, ~20 %: Nu +19 %, Axon +36 %, Shopify +18 %, Snowflake +13 %, Samsara +15 %, al precio actual con v11). Con una liquidez libre casi nula, solo cabría sustituyendo, y no tiene ni la señal ni la rentabilidad para ello (+11 % al precio de hoy con el objetivo fijo, por debajo de Axon, Nu o Shopify, y con un bajista mucho peor).
 - **Suplentes**: no entra en la lista (MongoDB, Toast, Zscaler, dLocal, Dexcom, Datadog, argenx, Natera, Saab), que es solo de Comprar. Queda en el grupo de Mantener, junto a Eli Lilly, Wise, Arista y el resto.
 - **Exposición**: no añade IA (riesgo bajo; Alphabet, que se vende mañana, no cuenta). Sí sumaría a la exposición industrial y de infraestructura de EE. UU. que ya analizan Quanta y Comfort Systems (ambas en Vender por caras). ROAD es la versión barata del tema, pero con más deuda y menos crecimiento propio.
 - **Qué la pasaría a Comprar**: precio ≤ 63,6 USD y al menos dos señales de giro (por ejemplo, revisiones al alza tras la guía FY2027 y precio otra vez sobre la media de 200 sesiones), con la deuda bajando hacia 3x.

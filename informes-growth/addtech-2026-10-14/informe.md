@@ -166,7 +166,7 @@ Qué tiene de nuevo: nada en el sentido de una tecnología propia. Una parte de 
 
 ## 13. Encaje en cartera
 
-- **Bolsillo growth lleno (~20 %)**: Nu (+19 %), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %), al precio actual con v11. La liquidez es de ≈27 EUR, así que solo cabe sustituir. Alphabet se vende mañana y no cuenta.
+- **Bolsillo growth lleno (~20 %)**: Nu (+19 %), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %), al precio actual con v11. La liquidez libre es casi nula, así que solo cabe sustituir. Alphabet se vende mañana y no cuenta.
 - **Addtech al precio actual: −16,0 % de ponderada** con el objetivo fijo (272,2 SEK frente a 328,40). Sale Vender: **no sustituye a ninguna y no entra en la lista de suplentes** (MongoDB, Toast, Zscaler, dLocal, Dexcom, argenx, Datadog, Saab, Natera, Ypsomed).
 - **Para la cartera value**: es una empresa de calidad (P/WC 81 %, rentabilidad sobre fondos propios del 28 %, deuda baja), y su sitio natural sería el análisis value, no el growth. Con PER de 39x y orgánico plano, tampoco pasaría hoy el objetivo a 12 meses por PER del método value. No se propone ninguna orden.
 - **Cuándo cambiaría**: con el orgánico de vuelta por encima del 5 % y el precio por debajo de ~260 SEK, o como candidata value si cae hacia 25-30 veces el beneficio.

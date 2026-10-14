@@ -156,7 +156,7 @@ Hoy no hay tesis rota: la señal sale de la valoración mecánica y de la falta 
 
 ## 13. Encaje en cartera
 
-La cartera value propuesta de Hotis es de ~29.800 EUR: IGLN (oro), Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y ~6.300 EUR de liquidez. Hay 8 empresas growth ya analizadas (`informes-growth/resumen.md`) y tres compras growth aprobadas: Nu, argenx y Axon, que suman ~12 % de la cartera (tope del 20 %).
+La cartera value propuesta de Hotis: IGLN (oro), Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y liquidez. Hay 8 empresas growth ya analizadas (`informes-growth/resumen.md`) y tres compras growth aprobadas: Nu, argenx y Axon, que suman ~12 % de la cartera (tope del 20 %).
 
 **Besi no merece hueco hoy: peso 0 %.** La regla da Vender (ponderada −23 %) y el precio máximo de compra es de 125,7 EUR, un 27 % por debajo. Además, la cartera no tiene equipos de semiconductores. Besi diversificaría frente al software (SAP, Intuit, Nemetschek, Alphabet), pero añadiría un riesgo cíclico y de una sola tecnología que el método todavía no paga. La liquidez de ~6.300 EUR se queda como está (ya comprometida en parte con las compras growth y las órdenes value).
 

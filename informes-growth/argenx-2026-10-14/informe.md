@@ -162,7 +162,7 @@ Las acciones dentro de 12 meses serían 65,8 M (+2 %). La caja se mantiene en 5.
 
 ## 13. Encaje en cartera
 
-Cartera value propuesta de Hotis (~29.800 EUR): IGLN (oro), Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y ~6.300 EUR de liquidez. Growth ya analizadas: Palantir, CrowdStrike, Spotify y Rheinmetall, ninguna en Comprar. El bolsillo growth podría llegar al 20 % (~5.960 EUR), con posiciones del 3,5-5 % (~1.040-1.490 EUR).
+Cartera value propuesta de Hotis : IGLN (oro), Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y liquidez. Growth ya analizadas: Palantir, CrowdStrike, Spotify y Rheinmetall, ninguna en Comprar. El bolsillo growth podría llegar al 20 % (~5.960 EUR), con posiciones del 3,5-5 % (~1.040-1.490 EUR).
 
 **argenx no entra hoy: peso 0 %.** Es la growth analizada con mejor relación entre precio y calidad: puntúa 70,5 y tiene un EV/beneficio bruto de 7,6x, frente a 54x de CrowdStrike. Además diversificaría de verdad: la cartera tiene mucho software y consumo, y la única farmacéutica es Daiichi Sankyo (oncología, sin solapamiento con argenx). Pero el método no compra sin giro de tendencia (3 de 8 señales), y con ventas realistas la rentabilidad esperada es de ~+11 %, justo en el listón.
 

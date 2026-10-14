@@ -200,9 +200,9 @@ Hoy no hay tesis rota.
 
 ## 13. Encaje en cartera
 
-**Situación** (`MEMORIA.md` e `informes-growth/cartera-growth.md`): el **bolsillo growth está lleno (~20 %)** con Nu, argenx, Shopify, Axon y Snowflake, y la liquidez libre es de ≈27 EUR. Solo cabe sustituir. Suplentes, por orden: Samsara, Datadog, MongoDB, Zscaler, Dexcom, Toast y Wise.
+**Situación** (`MEMORIA.md` e `informes-growth/cartera-growth.md`): el **bolsillo growth está lleno (~20 %)** con Nu, argenx, Shopify, Axon y Snowflake, y la liquidez libre es casi nula. Solo cabe sustituir. Suplentes, por orden: Samsara, Datadog, MongoDB, Zscaler, Dexcom, Toast y Wise.
 
-**Solapamiento con Uber**: el usuario **ya tiene Uber** en la cartera value (28 acciones, ~1.785 EUR, ~6 %), y Uber Eats es el nº 2 del reparto en EE. UU. y el gran rival de DoorDash fuera (con Delivery Hero). Tener las dos duplica los mismos riesgos: ciclo del consumo discrecional, regulación de repartidores independientes, seguros, agentes de IA y autónomos. No es una cobertura: si a uno le va mejor en cuota, al otro le va peor, pero los dos caen juntos en una recesión o con una ley laboral. Más que un growth nuevo, DoorDash sería **doblar la apuesta por el reparto**.
+**Solapamiento con Uber**: el usuario **ya tiene Uber** en la cartera value (~6 %), y Uber Eats es el nº 2 del reparto en EE. UU. y el gran rival de DoorDash fuera (con Delivery Hero). Tener las dos duplica los mismos riesgos: ciclo del consumo discrecional, regulación de repartidores independientes, seguros, agentes de IA y autónomos. No es una cobertura: si a uno le va mejor en cuota, al otro le va peor, pero los dos caen juntos en una recesión o con una ley laboral. Más que un growth nuevo, DoorDash sería **doblar la apuesta por el reparto**.
 
 | Valor | Convicción | Ponderada al precio actual | Bajista | EV/beneficio bruto |
 |---|---|---|---|---|

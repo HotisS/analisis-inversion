@@ -181,7 +181,7 @@ Ingresos por trimestre (M EUR, como los publica la empresa) [1][4]:
 
 ## 13. Encaje en cartera
 
-Según `MEMORIA.md` e `informes-growth/cartera-growth.md`, el **bolsillo growth está lleno** (~20 % de la cartera). Lo forman Nu (+19 %), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %), con la rentabilidad al precio actual según v11. Liquidez ≈27 EUR: solo cabe sustituir. Alphabet se vende mañana y no cuenta como exposición a IA.
+Según `MEMORIA.md` e `informes-growth/cartera-growth.md`, el **bolsillo growth está lleno** (~20 % de la cartera). Lo forman Nu (+19 %), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %), con la rentabilidad al precio actual según v11. Liquidez libre casi nula: solo cabe sustituir. Alphabet se vende mañana y no cuenta como exposición a IA.
 
 **Ascendis no entra: peso 0 %.** La señal es Vender / no comprar, con una ponderada del −17 % al precio actual. No sustituye a ninguna de las cinco, que esperan entre +13 % y +36 %, y **no entra en la lista de suplentes**: los nueve (MongoDB, Toast, Zscaler, dLocal, Dexcom, Datadog, argenx, Natera y Saab) son Comprar.
 

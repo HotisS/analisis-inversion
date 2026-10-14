@@ -169,7 +169,7 @@ Hoy no hay tesis rota.
 
 - **Señal**: al cierre, **Mantener en vigilancia** (v7 y v9). Al precio actual de 195,92 USD (16:38 UTC), **Comprar por la mínima**: ponderada +6,6 %, base +9,4 %, convicción media, 4 % por la regla. **Regla del precio actual cumplida**: la orden solo tendría sentido por debajo de 198,9 USD, y con prudencia por debajo de ~190 USD (ponderada ≥ 10 %).
 - **Frente a la cartera value** (`informes/cartera-2026-10-14-15h.md`) y a `MEMORIA.md`: la exposición al gasto en IA ya entra por **Alphabet**, que se queda por decisión del usuario, y en menor medida por SAP e Intuit. Celestica, el otro proveedor de redes para hiperescaladores analizado hoy, salió **no comprar**. El usuario ha dicho que le da miedo el ciclo de la IA (Duolingo, 14-oct). Arista es justo una apuesta al ciclo de inversión en IA de unos pocos clientes.
-- **Frente al bolsillo growth** (`informes-growth/cartera-growth.md`, **lleno, ~20 %**: Nu, argenx, Shopify, Axon y Snowflake; liquidez de ≈27 EUR): solo cabe sustituyendo. **No sustituye a ninguna.**
+- **Frente al bolsillo growth** (`informes-growth/cartera-growth.md`, **lleno, ~20 %**: Nu, argenx, Shopify, Axon y Snowflake; liquidez libre casi nula): solo cabe sustituyendo. **No sustituye a ninguna.**
   - Shopify: +17,7 % al precio actual, frente al +6,6 % de Arista. Le saca 11 pp.
   - Snowflake: +16,1 %, frente al +6,6 %. Le saca 9,5 pp, y su tramo 1 ya está decidido.
   - Rotar costaría comisión y daría menos rentabilidad, con más riesgo de ciclo y de concentración.

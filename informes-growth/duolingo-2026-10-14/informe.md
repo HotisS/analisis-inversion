@@ -160,7 +160,7 @@ Hoy no hay tesis rota.
 
 ## 13. Encaje en cartera
 
-Cartera value vigente (`informes/cartera-2026-10-14-15h.md`, ~29.800 EUR): IGLN (oro), Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y Bureau Veritas, con órdenes abiertas hasta el 7-nov. Bolsillo growth aprobado (`informes-growth/cartera-growth.md`): Nu (4 %), argenx (4,9 %), Axon (3,7 %) y Shopify (4 %), ~16 % de la cartera. **La liquidez está casi agotada**: quedaban ≈560 EUR antes de Shopify, y Shopify (≈1.250 EUR en dos tramos) los consume y los supera.
+Cartera value vigente (`informes/cartera-2026-10-14-15h.md`): IGLN (oro), Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y Bureau Veritas, con órdenes abiertas hasta el 7-nov. Bolsillo growth aprobado (`informes-growth/cartera-growth.md`): Nu (4 %), argenx (4,9 %), Axon (3,7 %) y Shopify (4 %), ~16 % de la cartera. **La liquidez está casi agotada**: quedaban ≈560 EUR antes de Shopify, y Shopify (≈1.250 EUR en dos tramos) los consume y los supera.
 
 **Duolingo merece un hueco del 3,5 % (convicción baja)**: 8 acciones ≈ **1.000 EUR** (a 1,1188 USD/EUR, BCE 13-oct). El bolsillo growth pasaría al ~19,5 % (tope 20 %). **No se puede pagar hoy sin dinero nuevo**, así que propongo, por este orden:
 1. **Si el usuario aporta ~1.000 EUR**: 4 acciones ya con **límite de 150 USD** (el precio máximo con la proyección prudente, no los 187,5 de la regla) y 4 tras los resultados del 3-nov si los bookings cumplen la guía (≥ 307 M) y los DAU crecen ≥ 20 %, o con una caída del 10 % sin cambio de tesis.

@@ -152,7 +152,7 @@ Hoy no hay tesis rota.
 
 ## 13. Encaje en cartera
 
-Cartera value propuesta (~29.800 EUR): IGLN (oro), Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y ~6.300 EUR de liquidez. Bolsillo growth: 8 empresas analizadas; compras aprobadas Nu (4 %), argenx (4,9 %) y Axon (3,7 %), ~12 % de la cartera y ~3.740 EUR de esa liquidez.
+Cartera value propuesta : IGLN (oro), Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y liquidez. Bolsillo growth: 8 empresas analizadas; compras aprobadas Nu (4 %), argenx (4,9 %) y Axon (3,7 %), ~12 % de la cartera y ~3.740 EUR de esa liquidez.
 
 **Shopify merece un hueco del 4 % (~1.190 EUR)**, con lo que el bolsillo growth pasaría a ~16 % (tope 20 %). Se pagaría con liquidez, que bajaría a ~1.400 EUR si se ejecutan también las compras growth aprobadas; ojo, comparte bolsa con las órdenes con límite de la propuesta value y no da para todo: si hay que elegir, primero las ya aprobadas.
 

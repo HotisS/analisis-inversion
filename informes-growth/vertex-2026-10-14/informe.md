@@ -159,7 +159,7 @@ Acciones dentro de 12 meses: 251,6 M (−1,4 %). **Asimetría: 0,8.** **Precio m
 
 ## 13. Encaje en cartera
 
-- **Bolsillo growth lleno** (~20 %): Nu (+19 %), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %), al precio actual con v11. Liquidez ≈ 27 EUR: solo cabe sustituir. Alphabet se vende mañana y no cuenta como exposición a IA.
+- **Bolsillo growth lleno** (~20 %): Nu (+19 %), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %), al precio actual con v11. Liquidez libre casi nula: solo cabe sustituir. Alphabet se vende mañana y no cuenta como exposición a IA.
 - **Vertex no sustituye a ninguna**: da Mantener con una ponderada de −2,6 % (−5,1 % al precio actual), frente a +13-36 % de las cinco en cartera.
 - **Suplentes** (MongoDB, Toast, Zscaler, Dexcom, Datadog, argenx, Natera): **no entra en la lista**, porque todas dan Comprar y Vertex no. **Frente a argenx** (sexta suplente; ponderada +11,4 % con v11 y compra hasta 866,8 USD, cotizando a ~803 USD): argenx crece siete veces más deprisa a un múltiplo de ventas menor. Vertex es más segura (monopolio, FCF del 30 %, caja neta) pero no ofrece rentabilidad esperada. Si el usuario quiere biotecnología en el bolsillo growth, la vía es argenx con sus resultados del 22-oct, no Vertex.
 - **Encaje en la cartera value**: por perfil (FCF estable, monopolio, sin dividendo), Vertex se mediría mejor con el método value (PER, ROIC − WACC). No tiene informe value; con un PER adelantado de ~33x [14] y un DCF inverso al 9,7 %, tampoco parece pasar el requisito de rentabilidad del 15 %. No se propone.

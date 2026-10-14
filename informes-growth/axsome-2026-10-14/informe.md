@@ -152,7 +152,7 @@ Fuentes: [1][4][5][13].
 ## 13. Encaje en cartera
 
 - **No entra.** Señal Mantener: ponderada −5,4 % con el método vigente y −8,8 % al precio actual con el objetivo fijo. Le faltan rentabilidad y puntuación (58, el mínimo es 60). Compraría por debajo de 139,5 USD (un 14 % por debajo del precio de hoy), y aun así solo si la puntuación pasa de 60 con el 3T.
-- **Bolsillo growth lleno** (~20 %): Nu (+19 %), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %), con v11 al precio actual. Liquidez de ≈27 EUR: solo se podría entrar sustituyendo a una. Axsome no sustituye a ninguna: su rentabilidad esperada es negativa.
+- **Bolsillo growth lleno** (~20 %): Nu (+19 %), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %), con v11 al precio actual. Liquidez libre casi nula: solo se podría entrar sustituyendo a una. Axsome no sustituye a ninguna: su rentabilidad esperada es negativa.
 - **Suplentes**: no entra en la lista (MongoDB, Toast, Zscaler, dLocal, Dexcom, argenx, Datadog, Saab, Natera). Va a «Mantener», junto a TG Therapeutics y Madrigal, sin vigilancia (ponderada negativa).
 - **Exposición**: sería otra farmacéutica de un solo producto, como argenx (suplente). No suma exposición a IA (la venta de Alphabet de mañana no cambia nada aquí).
 - Se revisa con los resultados del 3T (2-nov).

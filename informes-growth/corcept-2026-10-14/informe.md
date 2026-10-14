@@ -151,7 +151,7 @@ Fuentes: [1][4][13].
 ## 13. Encaje en cartera
 
 - **No entra.** Señal Vender (no comprar): ponderada −49,6 % con el método vigente y −49,0 % al precio actual con el objetivo fijo.
-- **Bolsillo growth lleno** (~20 %): Nu (+19 %), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %), con v11 al precio actual. Liquidez de ≈27 EUR: solo se podría entrar sustituyendo a una. Corcept no sustituye a ninguna.
+- **Bolsillo growth lleno** (~20 %): Nu (+19 %), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %), con v11 al precio actual. Liquidez libre casi nula: solo se podría entrar sustituyendo a una. Corcept no sustituye a ninguna.
 - **Suplentes**: no entra en la lista (MongoDB, Toast, Zscaler, dLocal, Dexcom, argenx, Datadog, Saab, Natera). Va a «No comprar».
 - **Exposición**: sería la tercera farmacéutica analizada en growth con argenx (suplente) y Vertex (Mantener). No suma exposición a IA (la venta de Alphabet de mañana no cambia nada aquí).
 - Se revisa con los resultados del 3T y la decisión de la FDA del 17-dic.

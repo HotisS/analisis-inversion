@@ -160,7 +160,7 @@ Hoy no hay tesis rota.
 
 ## 13. Encaje en cartera
 
-Cartera value vigente (`informes/cartera-2026-10-14-15h.md`, ~29.800 EUR): IGLN (oro), Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y Bureau Veritas, con órdenes abiertas hasta el 7-nov. Bolsillo growth aprobado (`informes-growth/cartera-growth.md`): Nu (4 %), argenx (4,9 %), Shopify (4 %), Axon (3,7 %) y Duolingo (3,5 %), **~19,5 % de la cartera (tope 20 %): lleno, y sin liquidez**. El tramo 1 de Duolingo ya se pagó cancelando la orden value de Deutsche Börse.
+Cartera value vigente (`informes/cartera-2026-10-14-15h.md`): IGLN (oro), Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y Bureau Veritas, con órdenes abiertas hasta el 7-nov. Bolsillo growth aprobado (`informes-growth/cartera-growth.md`): Nu (4 %), argenx (4,9 %), Shopify (4 %), Axon (3,7 %) y Duolingo (3,5 %), **~19,5 % de la cartera (tope 20 %): lleno, y sin liquidez**. El tramo 1 de Duolingo ya se pagó cancelando la orden value de Deutsche Börse.
 
 Samsara merece un 4 % (convicción media): **30 acciones, ~1.070 EUR** (a ~1,16 USD/EUR). No puede entrar sin sacar otra growth. Comparación con las cinco:
 

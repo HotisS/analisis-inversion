@@ -146,7 +146,7 @@ Margen implícito (beneficio / primas) del 28,5 % en los tres escenarios, con 22
 
 ## 13. Encaje en cartera
 
-- **Bolsillo growth lleno** (~20 %): Nu (+19 % al precio actual con v11), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %). Liquidez ≈27 EUR: solo cabe sustituir. Alphabet se vende mañana y no cuenta como exposición a IA.
+- **Bolsillo growth lleno** (~20 %): Nu (+19 % al precio actual con v11), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %). Liquidez libre casi nula: solo cabe sustituir. Alphabet se vende mañana y no cuenta como exposición a IA.
 - **Kinsale no entra.** Da Mantener con +6,5 % al precio actual, frente a +13 % o más de las cinco posiciones. **No sustituye a ninguna** y tampoco entra en la lista de suplentes (MongoDB, Toast, Zscaler, Dexcom, Datadog, argenx, Natera), que son todas Comprar.
 - **Diversificación:** el bolsillo ya tiene un financiero (Nu, banco). Una aseguradora E&S aportaría poca correlación con el software, pero eso no compensa una puntuación growth de 50.
 - **Recomendación:** pasarla al **análisis value** (ROE del 24 %, PER 16x, ciclo a la baja) si el usuario quiere exposición a aseguradoras de calidad. La regla mira el ROIC − WACC y un PER objetivo, que es como se valora este negocio. En growth, revisar tras el 3T26 solo si las primas emitidas vuelven a crecer más del 10 % (endurecimiento).

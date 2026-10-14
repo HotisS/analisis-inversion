@@ -144,7 +144,7 @@ Fuentes: [1][6].
 
 ## 13. Encaje en cartera
 
-- **Bolsillo growth lleno** (~20 %): Nu +19 %, Axon +36 %, Shopify +18 %, Snowflake +13 % y Samsara +15 %, al precio actual con la v11. La liquidez es de unos 27 EUR, así que solo cabe sustituir.
+- **Bolsillo growth lleno** (~20 %): Nu +19 %, Axon +36 %, Shopify +18 %, Snowflake +13 % y Samsara +15 %, al precio actual con la v11. La liquidez libre es casi nula, así que solo cabe sustituir.
 - **ALK sale Mantener**: no sustituye a nadie y no entra en la lista de suplentes, que solo recoge señales Comprar. Aunque pasara a Comprar (baja) con los resultados del 17-nov, su rentabilidad (+6,4 %, o +6,3 % al precio actual) es menos de la mitad que la de la peor posición del bolsillo (Snowflake, +13 %). No tendría ni margen ni convicción para sustituir. Quedaría última, detrás de Natera, en la orden nueva de suplentes: MongoDB, Toast, Zscaler, dLocal, Dexcom, argenx, Datadog, Saab, Natera.
 - **Diversificación**: aportaría salud europea defensiva y caja neta, y no depende de la IA. Alphabet se vende mañana y no cuenta como exposición a IA de la cartera, así que ALK no la compensaría ni la duplicaría. Ya hay salud growth entre los suplentes (Dexcom, argenx, Natera). Las preferencias de `MEMORIA.md` (sin juego ni minoristas) no la excluyen.
 - **Qué cambiaría el encaje**: el 17-nov, ventas del 3T con un +17 % o más y una guía que deje 2027 en dos dígitos pese a Alemania. Con eso se reharía el informe y, si llega a Comprar, se compararía con el último suplente. Tendría que bajar hacia 200 DKK para ofrecer una rentabilidad comparable a las del bolsillo.

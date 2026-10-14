@@ -186,7 +186,7 @@ Lectura: AeroVironment cuesta lo mismo que Saab en EBITDA, pero crece mucho meno
 
 ## 13. Encaje en cartera
 
-- **Bolsillo growth lleno (~20 %)**: Nu (+19 %), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %), a precio actual con v11. La liquidez es de ≈27 EUR, así que solo cabe sustituir. Alphabet se vende mañana y no cuenta como exposición a IA.
+- **Bolsillo growth lleno (~20 %)**: Nu (+19 %), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %), a precio actual con v11. La liquidez libre es casi nula, así que solo cabe sustituir. Alphabet se vende mañana y no cuenta como exposición a IA.
 - **AeroVironment no sustituye a ninguna y no entra en la lista de suplentes.** La señal es Vender (no comprar), con +1,6 % al precio actual frente al +13 % de la peor del bolsillo (Snowflake). La lista de suplentes no cambia: MongoDB, Toast, Zscaler, Dexcom, Datadog, argenx, Natera y Saab.
 - **Si se quiere defensa en el bolsillo**, la candidata sigue siendo **Saab** (8.ª suplente, Comprar con convicción baja): crece un 30 % orgánico frente al 1 % de AeroVironment, al mismo múltiplo, con caja neta y sin problemas contables. Rheinmetall (Mantener) es la alternativa barata.
 - **Qué haría falta para revisarla**: dos trimestres seguidos con crecimiento orgánico de más del 15 %, la guía del FY27 cumplida o subida, el control interno arreglado y que el precio deje de caer (sobre la media de 200 sesiones). Con todo eso, la puntuación podría acercarse a 60. Hoy está lejos.

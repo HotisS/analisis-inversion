@@ -157,7 +157,7 @@ Hoy no hay tesis rota.
 
 ## 13. Encaje en cartera
 
-**Cartera value vigente** (`informes/cartera-2026-10-14-15h.md`, ~29.800 EUR): IGLN (oro), Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y Bureau Veritas, con órdenes con límite hasta el 7-nov y suplentes. **Bolsillo growth aprobado** (`informes-growth/cartera-growth.md`): Nu (4 %), argenx (4,9 %), Shopify (4 %) y Axon (3,7 %), **≈16,6 % de la cartera**; la liquidez queda casi agotada (≈560 EUR sobrantes antes de Shopify, que la consume).
+**Cartera value vigente** (`informes/cartera-2026-10-14-15h.md`): IGLN (oro), Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y Bureau Veritas, con órdenes con límite hasta el 7-nov y suplentes. **Bolsillo growth aprobado** (`informes-growth/cartera-growth.md`): Nu (4 %), argenx (4,9 %), Shopify (4 %) y Axon (3,7 %), **≈16,6 % de la cartera**; la liquidez queda casi agotada (≈560 EUR sobrantes antes de Shopify, que la consume).
 
 **Datadog no entra hoy**, aunque la regla diga Comprar con un 4 %:
 - **Tope del 20 %**: con un 4 % más el bolsillo pasaría al ~20,6 %.

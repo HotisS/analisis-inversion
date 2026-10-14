@@ -179,7 +179,7 @@ Variantes de la herramienta: v7 −30,2/−23,8, Vender; ventas del analista −
 
 ## 13. Encaje en cartera
 
-- **Bolsillo growth lleno** (~20 %): Nu (+19 %), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %), al precio actual con v11 [`informes-growth/cartera-growth.md`]. Liquidez de ≈ 27 EUR: solo cabe sustituir. Alphabet se vende mañana y no cuenta como exposición a IA. Insmed tampoco la aporta (sección 4).
+- **Bolsillo growth lleno** (~20 %): Nu (+19 %), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %), al precio actual con v11 [`informes-growth/cartera-growth.md`]. Liquidez libre casi nula: solo cabe sustituir. Alphabet se vende mañana y no cuenta como exposición a IA. Insmed tampoco la aporta (sección 4).
 - **Insmed no sustituye a ninguna**: da Vender / no comprar con una ponderada de −30,2 % (−30,5 % al precio actual con el objetivo fijo), frente a +13-36 % de las cinco en cartera.
 - **Suplentes** (por orden: MongoDB, Toast, Zscaler, Dexcom, Datadog, argenx, Natera, Saab): **no entra en la lista**, porque todas dan Comprar e Insmed no. **Frente a argenx** (sexta suplente, la otra biotecnológica de crecimiento): argenx ya gana dinero (margen operativo del 32 %, FCF positivo), crece un 60 % a 6,9x ventas NTM y da +11 % con v11. Insmed crece más, pero quema caja, depende de un producto y cotiza más cara (9,4x). Si el usuario quiere biotecnología respiratoria en el bolsillo, la vía con el método es esperar: a ≤ 58 USD, o con unas ventas de 12 meses mucho más altas tras el 3T y el 4T.
 - **Encaje en la cartera value**: no aplica (sin beneficio estable ni ROIC). Cartera value vigente: `informes/ordenes-2026-10-15.md`. No se propone.

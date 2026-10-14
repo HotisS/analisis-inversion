@@ -154,7 +154,7 @@ Método: EV/EBITDA de los 12 meses siguientes, en proporcional (explicado en el 
 ## 13. Encaje en cartera
 
 - **No entra.** La señal es Vender, así que no se compra. No sustituye a ninguna de las cinco del bolsillo growth, que está lleno: Nu (+19 %), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %), todas a precio actual con v11 y por encima de Cameco (−4,5 % a precio actual). Tampoco entra en la lista de suplentes (MongoDB, Toast, Zscaler, dLocal, Dexcom, argenx, Datadog, Saab, Natera), porque todas son Comprar y Cameco no.
-- **Liquidez**: ≈27 EUR; solo cabría sustituyendo, y no procede.
+- **Liquidez libre**: casi nula; solo cabría sustituyendo, y no procede.
 - **Diversificación**: la cartera no tiene exposición nuclear ni a materias primas. Cameco aportaría algo distinto, pero no a este precio. Alphabet, que se vende mañana, no cuenta como exposición a la IA; Cameco tampoco la cubriría, y su prima depende de esa misma narrativa.
 - **Cuándo mirarla otra vez**: tras la guía de 2027 (febrero) o si cae por debajo de ~74 USD (el «compra hasta»). Aun así necesitaría que la puntuación pasara de 50, y para eso hace falta crecimiento real de ventas.
 - **Para la cartera value**: como negocio cíclico con caja y activos únicos, encaja mejor en el método value (beneficio normalizado del ciclo) que en el growth.

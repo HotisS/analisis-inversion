@@ -131,7 +131,7 @@ Métrica: **EV/EBITDA de los próximos 12 meses**, porque la empresa es rentable
 
 ## 13. Encaje en cartera
 
-- **Bolsillo growth lleno** (~20 %: Nu +19 %, Axon +36 %, Shopify +18 %, Snowflake +13 %, Samsara +15 %, rentabilidad al precio actual con v11) y liquidez de ~27 EUR: solo cabe sustituyendo. Exosens da **Mantener con −9 %** (−10,7 % al precio actual): no sustituye a ninguna y **no entra en la lista de suplentes** (MongoDB, Toast, Zscaler, dLocal, Dexcom, argenx, Datadog, Saab, Natera, Ypsomed).
+- **Bolsillo growth lleno** (~20 %: Nu +19 %, Axon +36 %, Shopify +18 %, Snowflake +13 %, Samsara +15 %, rentabilidad al precio actual con v11) y liquidez libre casi nula: solo cabe sustituyendo. Exosens da **Mantener con −9 %** (−10,7 % al precio actual): no sustituye a ninguna y **no entra en la lista de suplentes** (MongoDB, Toast, Zscaler, dLocal, Dexcom, argenx, Datadog, Saab, Natera, Ypsomed).
 - **Frente a la cartera value y a otras de defensa:** Alphabet se vende mañana y no cuenta como exposición a IA; Exosens no cambiaría eso (no es una empresa de IA). En defensa europea, Saab (suplente 8) da Comprar con +6 %; Exosens sería una segunda posición de defensa europea, con más dependencia de un cliente.
 - **A qué precio entraría:** necesitaría a la vez **más puntuación** (60; le faltan 3,8 puntos: por ejemplo, que el precio vuelva sobre su media de 200 sesiones y supere al CAC en seis meses, o que el crecimiento vuelva a acelerar en el 3T) **y un precio por debajo de 49,4 EUR**. Se revisa el 27-oct.
 - **Preferencias de `MEMORIA.md`:** sin conflicto (no es juego, apuestas ni comercio minorista).

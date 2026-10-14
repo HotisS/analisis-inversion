@@ -161,7 +161,7 @@ Qué tiene de nuevo: es de las pocas empresas del mundo que hacen a la vez un ca
 
 ## 13. Encaje en cartera
 
-- **Bolsillo growth lleno (~20 %)**: Nu (+19 %), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %), a precio actual con v11. La liquidez es de ≈27 EUR, así que solo cabe sustituir. Alphabet se vende mañana y no cuenta.
+- **Bolsillo growth lleno (~20 %)**: Nu (+19 %), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %), a precio actual con v11. La liquidez libre es casi nula, así que solo cabe sustituir. Alphabet se vende mañana y no cuenta.
 - **Saab al precio actual: +6,0 % de ponderada** (objetivo fijo de 644,7 SEK frente a 610,50). Rinde menos de la mitad que la peor de las cinco (Snowflake, +13 %), con una convicción menor (baja frente a media) y la puntuación más baja (63 frente a 78). **No sustituye a ninguna**: no tiene ni el margen ni la convicción. Sustituir a Snowflake por Saab sería cambiar +13 % por +6 % para ganar diversificación.
 - **Puesto de suplente: 8.º**, detrás de MongoDB, Toast, Zscaler, Dexcom, Datadog, argenx y Natera (Natera +7 %, Saab +6 %).
 - **A su favor (no puntúa en la regla, pero se dice)**: sería **la única empresa de defensa, europea y en coronas** del bolsillo growth, que hoy es todo tecnología, fintech y salud de EE. UU. Su riesgo (gasto público europeo, ciclo político) apenas se correlaciona con el software. Si el usuario quiere diversificar el bolsillo, Saab es mejor candidata que Rheinmetall (Mantener). Por la regla, sigue sin entrar.

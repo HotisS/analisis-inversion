@@ -10,6 +10,7 @@
 
 ## Archivos de detalle (en esta carpeta)
 
+- **14-oct-2026 (21:50), privacidad:** los datos reales de la cartera (títulos, precio medio, liquidez, cuentas, ganancias) salen del repo público a `/mnt/project-files/cartera/` (`real/escaner-cartera.json`, tabla de órdenes, carteras antiguas, riesgo, liquidez ETF, defensas y los archivos de memoria y cola antiguos en `historico-repo/`). Los informes growth ya no citan importes de la cuenta. Sin reescribir el historial de git.
 - `memoria-decisiones-hasta-2026-10-14.md`: `MEMORIA.md` completa tal como estaba el 14-oct, con todas las decisiones del 10 al 14-oct (versiones 3-9 de la cartera y sus motivos).
 - `cola-hasta-2026-10-13.md`: las colas del 10 al 13-oct con el estado y la señal de cada empresa.
 
@@ -45,7 +46,7 @@
 - **Cartera de las 14:50** (`informes/cartera-2026-10-14-15h.md`) sustituye a la de las 13:45: entra Bureau Veritas (pasa los tres requisitos). 16 análisis value de la cuarta hora; suplente nuevo Unilever. Desde las 14:22 estos análisis se llaman «value» (hay una vertical growth aparte).
 - **Cartera de las 13:45** (`informes/cartera-2026-10-14-14h.md`) sustituye a la de las 13:00: Rightmove fuera por decisión del usuario; 16 análisis de la tercera hora, ninguno pasa los requisitos (Sanofi falla calidad). Suplentes nuevos: Deutsche Börse y Amadeus.
 - **Cartera de las 13:00** (`informes/cartera-2026-10-14-13h.md`) sustituye a la de las 11:50: entra Rightmove (pasa los tres requisitos al límite). 12 análisis más en la segunda hora.
-- **Cartera de la tarde** (`informes/cartera-2026-10-14-tarde.md`) sustituye a la de la mañana: 4.000 EUR más de liquidez, Nemetschek 29 y LVMH 5, liquidez ≈6.300 EUR con suplentes (Experian nueva). 14 análisis nuevos desde la nube, ninguno pasa los tres requisitos al precio de hoy.
+- **Cartera de la tarde** (`informes/cartera-2026-10-14-tarde.md`) sustituye a la de la mañana: liquidez nueva, Nemetschek 29 y LVMH 5, con suplentes (Experian nueva). 14 análisis nuevos desde la nube, ninguno pasa los tres requisitos al precio de hoy.
 - **Repo más ligero** (petición del usuario: se gastaban demasiados tokens por sesión). `cola.md` y `MEMORIA.md` quedan solo con lo pendiente y vigente; lo cerrado, a `archivo/`. `verticales/empresa/lecciones.md` se parte en núcleo + `lecciones-paises.md` + `lecciones-casos.md`; se retiran lecciones obsoletas (fallos de herramientas ya arreglados, elección manual del PER del bajista y del alcista). Regla de mantenimiento en `CLAUDE.md` y este histórico.
 - **Cartera propuesta con la regla común** (`informes/cartera-2026-10-14.md`): vender Zoetis, Puig, Hermès, ICE, Equifax e IBKR; comprar Nemetschek y LVMH; cancelar Wolters Kluwer y Auto Trader. Con la regla común, la cartera del 13-oct rendía +9,4 % y no +15,5 %. Pendiente de que el usuario la acepte.
 - Explicación del día para el usuario (método, tres fotos de la cartera y por qué no entran Wolters Kluwer, Auto Trader y Group 1): `informes/cambios-2026-10-14.md`.

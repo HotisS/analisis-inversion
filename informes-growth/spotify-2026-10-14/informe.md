@@ -169,7 +169,7 @@ Fuentes: [1][3]. Las cifras en tipo constante son las que comunica la empresa, r
 
 ## 13. Encaje en cartera
 
-- **La cartera value propuesta** (≈29.800 EUR) tiene IGLN, Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek y LVMH, más ≈6.300 EUR de liquidez. El bolsillo growth puede llegar al 20 % (≈5.960 EUR).
+- **La cartera value propuesta** tiene IGLN, Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek y LVMH, más liquidez. El bolsillo growth puede llegar al 20 % (≈5.960 EUR).
 - **Spotify no merece hueco en el bolsillo growth hoy.**
   - La señal es Mantener: puntuación de 54,5 (mínimo 70) y ponderada de +14,5 % (mínimo 20 %).
   - A la puntuación le faltan 15,5 puntos, y no se arregla con el precio. El crecimiento (9 % en EUR) y la penetración (≈23 %) ya no son de empresa growth.

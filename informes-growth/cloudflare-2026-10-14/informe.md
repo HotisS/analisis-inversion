@@ -145,7 +145,7 @@ Ventas con la regla mecánica (crecimiento de partida del 32,6 %, que decae un 1
 
 ## 13. Encaje en cartera
 
-Con la cartera value propuesta de ~29.800 EUR (IGLN, Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y ~6.300 EUR de liquidez), el bolsillo growth podría llegar al 20 % (~5.960 EUR). Una posición de convicción media sería del 4 % (~1.190 EUR). De las growth ya analizadas (Palantir, CrowdStrike, Spotify, Rheinmetall), ninguna está en Comprar.
+Con la cartera value propuesta (IGLN, Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y liquidez), el bolsillo growth podría llegar al 20 % (~5.960 EUR). Una posición de convicción media sería del 4 % (~1.190 EUR). De las growth ya analizadas (Palantir, CrowdStrike, Spotify, Rheinmetall), ninguna está en Comprar.
 
 **Cloudflare no merece hueco hoy: peso 0 %.** La puntuación es alta (81,3) y la tendencia acompaña, pero pagar 56 veces el beneficio bruto deja un bajista del −45 % con una ponderada de solo +13 %. Además, la cartera ya está cargada de software y plataformas (Alphabet, SAP, Intuit, Nemetschek, Netflix, Uber) y Cloudflare añadiría el mismo factor (múltiplos de software de crecimiento) justo en máximos. La liquidez se queda donde está.
 

@@ -213,7 +213,7 @@ Con las acciones en circulación (77,3 M) en vez de 82 M, la ponderada sube a +1
 
 ## 13. Encaje en cartera
 
-- **Bolsillo growth lleno** (~20 %): Nu (+19 % al precio actual con v11), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %). Liquidez ≈27 EUR: solo cabe sustituir. Alphabet se vende mañana y no cuenta como exposición a IA.
+- **Bolsillo growth lleno** (~20 %): Nu (+19 % al precio actual con v11), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %). Liquidez libre casi nula: solo cabe sustituir. Alphabet se vende mañana y no cuenta como exposición a IA.
 - **Lemonade no entra.** Da Mantener (puntuación 59,3). Al precio de hoy, su rentabilidad esperada es del +13 %, como la de Snowflake, pero con un bajista del −43 % y un posible riesgo de ampliación de capital. **No sustituye a ninguna** de las cinco: no hay margen ni convicción para rotar.
 - **Suplentes:** no entra en la lista (MongoDB, Toast, Zscaler, dLocal, Dexcom, argenx, Datadog, Saab, Natera), que son todas Comprar. Si tras el 3T26 o el día del inversor pasara a Comprar, con baja convicción y +13 % iría por detrás de Toast y Dexcom: tienen rentabilidad parecida y un bajista mucho menor.
 - **Diversificación:** el bolsillo ya tiene un financiero (Nu). Una aseguradora aportaría poca correlación con el software, pero no compensa el riesgo de capital.

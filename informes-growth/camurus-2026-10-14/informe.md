@@ -154,7 +154,7 @@ Fuentes: [1][2][3][4][5][6].
 ## 13. Encaje en cartera
 
 - **No entra.** Señal Vender (no comprar): ponderada −15,5 % con el método vigente y −16,5 % al precio actual con el objetivo fijo.
-- **Bolsillo growth lleno** (~20 %): Nu (+19 %), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %), con v11 al precio actual. Liquidez de ≈27 EUR: solo se podría entrar sustituyendo a una. Camurus no sustituye a ninguna.
+- **Bolsillo growth lleno** (~20 %): Nu (+19 %), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %), con v11 al precio actual. Liquidez libre casi nula: solo se podría entrar sustituyendo a una. Camurus no sustituye a ninguna.
 - **Suplentes**: no entra en la lista (MongoDB, Toast, Zscaler, dLocal, Dexcom, argenx, Datadog, Saab, Natera). Va a «No comprar».
 - **Exposición**: sería la segunda empresa sueca del bolsillo junto a Saab (suplente) y aportaría salud europea, que la IA no amenaza, justo lo que buscaba la tanda 16. No cambia la exposición a IA de la cartera (la venta de Alphabet de mañana no influye aquí).
 - Se revisa con el 3T (5-nov), SORENTO y la FDA (18-dic). Con SORENTO positivo y el precio por debajo de 505 SEK, merecería repetir el cálculo.

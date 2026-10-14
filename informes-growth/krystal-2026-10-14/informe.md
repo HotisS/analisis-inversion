@@ -142,7 +142,7 @@ Fuentes: [1][2][4][13].
 
 ## 13. Encaje en cartera
 
-- **Bolsillo growth lleno** (~20 %): Nu +19 %, Axon +36 %, Shopify +18 %, Snowflake +13 % y Samsara +15 % (al precio actual con v11). Liquidez de ≈27 EUR: solo cabe sustituir. Alphabet se vende mañana y no cuenta como exposición a la IA de la cartera; Krystal no tiene relación con la IA.
+- **Bolsillo growth lleno** (~20 %): Nu +19 %, Axon +36 %, Shopify +18 %, Snowflake +13 % y Samsara +15 % (al precio actual con v11). Liquidez libre casi nula: solo cabe sustituir. Alphabet se vende mañana y no cuenta como exposición a la IA de la cartera; Krystal no tiene relación con la IA.
 - **Krystal sale Mantener (−3,6 % al precio actual)**: no tiene margen para sustituir a ninguna posición, que dan todas entre +13 % y +36 %.
 - **Suplentes** (orden vigente: MongoDB, Toast, Zscaler, dLocal, Dexcom, argenx, Datadog, Saab, Natera): **no entra**, porque todas las suplentes son Comprar. Queda entre los Mantener.
 - Aportaría diversificación (salud y enfermedades raras, sin relación con las tecnológicas de la cartera). Si el precio bajara de 303,5 USD, se revisaría frente a los suplentes de salud (Dexcom, argenx, Natera).

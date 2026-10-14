@@ -3,7 +3,7 @@
 **Señal (método v7, vigente): Comprar (convicción baja)** · Puntuación 74,7/100 · Señales de cambio de tendencia 6/8 · EV/beneficio bruto 27,3x
 Precio 395,66 USD (cierre del 13-oct; 400,32 USD intradía el 14-oct a las 16:40 UTC) · Objetivo 12 m 498,1 USD (ponderada +25,9 %, base +29,3 %, bajista −41,2 %, alcista +86,1 %) · Compra hasta 474,4 USD
 **Con la candidata v9 (la recomendación mientras se decide si se adopta): Comprar (convicción baja)** · Objetivo 482,0 USD (ponderada +21,8 %, base +25,1 %, bajista −42,3 %, alcista +79,2 %) · Compra hasta 459,1 USD
-Peso orientativo: 3,5 % por la regla, pero **hoy no entra**: el bolsillo growth está lleno (~20 %) y la liquidez es de ≈27 EUR. No sustituye a ninguna y queda como **suplente growth n.º 3**, detrás de Samsara y Datadog (sección 13) · Por qué: cumple todos los requisitos de compra
+Peso orientativo: 3,5 % por la regla, pero **hoy no entra**: el bolsillo growth está lleno (~20 %) y la liquidez libre es casi nula. No sustituye a ninguna y queda como **suplente growth n.º 3**, detrás de Samsara y Datadog (sección 13) · Por qué: cumple todos los requisitos de compra
 
 > **Calculado con el método v7** (`verticales/growth/metodo.md`) **por EV/ventas de los 12 meses siguientes**, porque Natera todavía pierde dinero en GAAP y su FCF es solo del 3 %. Las ventas del año objetivo salen de la regla mecánica: 5.039 M USD en el base, partiendo de un crecimiento del 39,4 %. Los múltiplos son 9,8x / 16,3x / 21,2x, el de hoy (17,8x) rebajado un 8 % por la desaceleración.
 >
@@ -198,7 +198,7 @@ Hoy no hay tesis rota.
 
 **Cartera value vigente** (`MEMORIA.md`, `informes/cartera-2026-10-14-15h.md`): no tiene diagnóstico genético. En salud están Daiichi Sankyo y Zoetis, esta última en venta. Para la regla value no es una compra: pierde dinero en GAAP y no pasa ROIC − WACC ≥ 5. Aquí se mira solo como growth.
 
-**Bolsillo growth** (`informes-growth/cartera-growth.md`): **lleno (~20 %)** con Nu, argenx, Shopify, Axon y Snowflake, y una **liquidez de ≈27 EUR**. Solo cabe sustituir.
+**Bolsillo growth** (`informes-growth/cartera-growth.md`): **lleno (~20 %)** con Nu, argenx, Shopify, Axon y Snowflake, y una **liquidez libre casi nula**. Solo cabe sustituir.
 
 **Precio actual antes de proponer nada** (regla del 14-oct): **400,32 USD a las 16:40 UTC**. Está por debajo de los límites (474,4 v7 y 459,1 v9), con una ponderada de +24,4 % (v7) / +20,4 % (v9). La señal sigue en Comprar (baja).
 

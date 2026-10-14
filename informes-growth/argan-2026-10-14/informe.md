@@ -176,7 +176,7 @@ Las tres refuerzan la señal.
 
 ## 13. Encaje en cartera
 
-- **Señal Vender / no comprar: no entra, no sustituye a ninguna y no va a la lista de suplentes.** El bolsillo growth está lleno, en torno al 20 %, con cinco posiciones y su ponderada al precio actual (v11): Nu +19 %, Axon +36 %, Shopify +18 %, Snowflake +13 % y Samsara +15 %. La liquidez es de unos 27 EUR, así que solo cabe sustituir. Argan da −21,1 % al cierre y −17,0 % al precio actual: unos 30 puntos por debajo de la más floja de las cinco.
+- **Señal Vender / no comprar: no entra, no sustituye a ninguna y no va a la lista de suplentes.** El bolsillo growth está lleno, en torno al 20 %, con cinco posiciones y su ponderada al precio actual (v11): Nu +19 %, Axon +36 %, Shopify +18 %, Snowflake +13 % y Samsara +15 %. La liquidez libre es casi nula, así que solo cabe sustituir. Argan da −21,1 % al cierre y −17,0 % al precio actual: unos 30 puntos por debajo de la más floja de las cinco.
 - **Suplentes** (por orden: MongoDB, Toast, Zscaler, dLocal, Dexcom, argenx, Datadog, Saab, Natera): no entra; la lista es solo de Comprar. Queda con las de No comprar, junto a Quanta, Comfort Systems, GE Vernova y Celestica.
 - **Frente a Quanta y Comfort Systems** (sus informes del 14-oct): las tres son Vender / no comprar por el mismo motivo, el precio.
 

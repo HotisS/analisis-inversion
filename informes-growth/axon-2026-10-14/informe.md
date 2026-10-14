@@ -146,7 +146,7 @@ Acciones dentro de 12 meses: 85,0 M (+3 %). **Asimetría 2,9.** **Precio máximo
 
 ## 13. Encaje en cartera
 
-La cartera value propuesta de Hotis (~29.800 EUR: IGLN, Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y ~6.300 EUR de liquidez) deja hasta un 20 % para growth (~5.960 EUR). Ninguna de las growth ya analizadas (Palantir, CrowdStrike, Spotify, Rheinmetall) está en Comprar.
+La cartera value propuesta de Hotis (IGLN, Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y liquidez) deja hasta un 20 % para growth (~5.960 EUR). Ninguna de las growth ya analizadas (Palantir, CrowdStrike, Spotify, Rheinmetall) está en Comprar.
 
 **Axon no entra hoy: peso 0 %.** Pero es la candidata más cercana a entrar de las cinco: a diferencia de CrowdStrike o Palantir, el problema no es el precio (EV/beneficio bruto 14,2x, compra hasta 504,4 USD) sino que la tendencia no ha girado. Además aporta algo que la cartera no tiene: seguridad pública y defensa (antidrones), poco correlacionada con el consumo (LVMH, Netflix, Uber) y distinta del software empresarial (SAP, Intuit, Nemetschek), aunque cotiza con el mismo factor de software de crecimiento.
 

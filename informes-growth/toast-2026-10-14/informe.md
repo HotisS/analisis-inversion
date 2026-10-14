@@ -174,7 +174,7 @@ Hoy no hay tesis rota.
 
 ## 13. Encaje en cartera
 
-**Situación** (`MEMORIA.md` e `informes-growth/cartera-growth.md`): cartera value propuesta de ~29.800 EUR sin liquidez libre. El **bolsillo growth está lleno (~20 %)** con Nu, argenx, Shopify, Axon y Snowflake. Suplentes, por orden: Dexcom, Datadog, Samsara, Zscaler y Wise. Cualquier Comprar nuevo tiene que decir a quién sustituye.
+**Situación** (`MEMORIA.md` e `informes-growth/cartera-growth.md`): cartera value propuesta sin liquidez libre. El **bolsillo growth está lleno (~20 %)** con Nu, argenx, Shopify, Axon y Snowflake. Suplentes, por orden: Dexcom, Datadog, Samsara, Zscaler y Wise. Cualquier Comprar nuevo tiene que decir a quién sustituye.
 
 | Valor | Convicción | Ponderada (regla) | Ponderada con la guía | Bajista | EV/beneficio bruto |
 |---|---|---|---|---|---|

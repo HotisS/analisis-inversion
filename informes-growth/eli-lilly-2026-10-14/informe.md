@@ -176,7 +176,7 @@ Con esa proyección **sería Mantener**, porque la ponderada queda por debajo de
 
 ## 13. Encaje en cartera
 
-- **Bolsillo growth lleno** (~20 %: Nu, argenx, Shopify, Axon y Snowflake) y liquidez de ≈27 EUR, así que solo cabe sustituir. Las más flojas son Shopify (≈+18 % al precio actual) y Snowflake (≈+16 %). **Lilly da +11,4 % al precio actual** (+12,0 % con el dividendo; objetivo fijo de 1.349,4 USD), menos que las dos. Además, ese +11 % depende de una proyección un 18 % por encima de la mía. **No sustituye a ninguna.**
+- **Bolsillo growth lleno** (~20 %: Nu, argenx, Shopify, Axon y Snowflake) y liquidez libre casi nula, así que solo cabe sustituir. Las más flojas son Shopify (≈+18 % al precio actual) y Snowflake (≈+16 %). **Lilly da +11,4 % al precio actual** (+12,0 % con el dividendo; objetivo fijo de 1.349,4 USD), menos que las dos. Además, ese +11 % depende de una proyección un 18 % por encima de la mía. **No sustituye a ninguna.**
 - **Frente a argenx**, la otra farmacéutica growth de la cartera:
 
 | | Eli Lilly | argenx |

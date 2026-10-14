@@ -193,7 +193,7 @@ Lectura: **Hensoldt paga casi el múltiplo de Saab con la mitad de su crecimient
 
 ## 13. Encaje en cartera
 
-- **Bolsillo growth lleno (~20 %)**: Nu (+19 %), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %), a precio actual con v11. La liquidez es de ≈27 EUR, así que solo cabe sustituir. Alphabet se vende mañana y no cuenta como exposición a IA de la cartera.
+- **Bolsillo growth lleno (~20 %)**: Nu (+19 %), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %), a precio actual con v11. La liquidez libre es casi nula, así que solo cabe sustituir. Alphabet se vende mañana y no cuenta como exposición a IA de la cartera.
 - **Hensoldt al precio actual: −15,0 % de ponderada** (objetivo fijo de 68,1 EUR frente a 80,78 EUR). **No sustituye a ninguna** y **no entra en la lista de suplentes**: solo entran las que dan Comprar, y la lista sigue MongoDB, Toast, Zscaler, dLocal, Dexcom, argenx, Datadog, Saab, Natera e Ypsomed. Pasa a la lista de no comprar.
 - **Si se quiere una empresa de defensa en el bolsillo**, la candidata es **Saab** (8.ª suplente, Comprar baja): crece casi el doble, cotiza a un múltiplo parecido y tiene liquidez neta. Hensoldt no es mejor alternativa.
 - **Cuándo se revisaría**:

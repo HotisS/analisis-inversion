@@ -164,7 +164,7 @@ Fuentes: notas de pro forma de los 10-Q y del 10-K [4][5][6], notas de resultado
 
 ## 13. Encaje en cartera
 
-- **Bolsillo growth lleno (~20 %)**: Nu (+19 %), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %), al precio actual con v11. Liquidez ≈27 EUR: solo cabe sustituir. Alphabet se vende mañana y no cuenta como exposición a IA.
+- **Bolsillo growth lleno (~20 %)**: Nu (+19 %), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %), al precio actual con v11. Liquidez libre casi nula: solo cabe sustituir. Alphabet se vende mañana y no cuenta como exposición a IA.
 - **Celsius al precio actual: −3,5 %** (objetivo fijo de 26,0 USD frente a 26,94). **No es Comprar**: no sustituye a ninguna y no entra en la lista de suplentes (MongoDB, Toast, Zscaler, Dexcom, Datadog, argenx, Natera y Saab). Queda con las de no comprar, junto a Insmed, Quanta Services o GE Vernova.
 - **Qué aportaría**: sería la única de consumo del bolsillo, sin relación con la IA. Diversifica, pero no compensa una rentabilidad esperada negativa.
 - **Cuándo cambiaría**: (a) que los resultados del 3T muestren a la marca CELSIUS estabilizada y el precio vuelva sobre su media de 200 sesiones (dos o tres señales más llevarían la puntuación por encima de 60); (b) y que el precio baje de **24,7 USD** (el «compra hasta») o el consenso de ventas suba. Las dos cosas a la vez; hoy no se da ninguna.

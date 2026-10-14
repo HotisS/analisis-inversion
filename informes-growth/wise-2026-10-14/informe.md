@@ -162,7 +162,7 @@ Hoy no hay tesis rota.
 
 ## 13. Encaje en cartera
 
-- **Cartera value vigente** (`informes/cartera-2026-10-14-15h.md`, ~29.800 EUR): oro, Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y Bureau Veritas, con ~4.300 EUR de liquidez comprometida con órdenes con límite hasta el 7-nov.
+- **Cartera value vigente** (`informes/cartera-2026-10-14-15h.md`): oro, Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y Bureau Veritas, con ~4.300 EUR de liquidez comprometida con órdenes con límite hasta el 7-nov.
 - **Bolsillo growth aprobado** (`informes-growth/cartera-growth.md`): Nu (4 %), argenx (4,9 %), Axon (3,7 %) y Shopify (4 %), ≈ 16 % de la cartera. Antes de Shopify sobraban ≈ 560 EUR de liquidez; con su primer tramo, prácticamente nada.
 
 **Wise merecería un hueco del 3,5 % (~1.045 EUR, ≈ 100 acciones a 12,22 USD con 1,16 USD/EUR), pero hoy no entra**, por tres motivos:

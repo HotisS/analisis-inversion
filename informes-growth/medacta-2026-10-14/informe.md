@@ -172,7 +172,7 @@ Las rentabilidades incluyen el dividendo del 1 %.
 ## 13. Encaje en cartera
 
 - **Frente a la cartera value** (`MEMORIA.md`): no hay ninguna empresa de ortopedia. Medacta no choca con ninguna exclusión: no es juego, ni comercio minorista, ni ninguna de las vetadas. Alphabet se vende mañana; en cualquier caso, Medacta no añade exposición a la IA.
-- **Frente al bolsillo growth** (`informes-growth/cartera-growth.md`): está **lleno**, con un ~20 % de la cartera. Rentabilidades al precio actual con v11: Nu +19 %, Axon +36 %, Shopify +18 %, Snowflake +13 % y Samsara +15 %. La liquidez es de ≈27 EUR, así que solo cabe sustituir. Medacta sale **Mantener** con +4,8 % al precio actual: **no sustituye a ninguna**.
+- **Frente al bolsillo growth** (`informes-growth/cartera-growth.md`): está **lleno**, con un ~20 % de la cartera. Rentabilidades al precio actual con v11: Nu +19 %, Axon +36 %, Shopify +18 %, Snowflake +13 % y Samsara +15 %. La liquidez libre es casi nula, así que solo cabe sustituir. Medacta sale **Mantener** con +4,8 % al precio actual: **no sustituye a ninguna**.
 - **Suplentes** (orden nuevo: MongoDB, Toast, Zscaler, dLocal, Dexcom, argenx, Datadog, Saab, Natera, Ypsomed): **no entra en la lista**, porque solo la forman empresas con señal de Comprar. Va al grupo de Mantener.
 - **Qué la haría Comprar:** subir de 50 a 60 puntos, y eso no se consigue con el precio. Haría falta que el crecimiento vuelva a acelerar (un 2S 2026 por encima del 12 %) y que se enciendan señales de giro: revisiones al alza, precio por encima de su media de 200 sesiones y mejor comportamiento que el índice. Se revisa con las ventas de febrero de 2027. Es una propuesta: no se emite ninguna orden sin que el usuario la pida explícitamente en el chat y la confirme.
 

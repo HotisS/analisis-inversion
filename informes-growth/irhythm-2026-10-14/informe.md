@@ -237,7 +237,7 @@ Fuentes: SEC XBRL y notas de resultados [1][3][6][7][8].
 
 ## 13. Encaje en cartera
 
-- **No entra.** El bolsillo growth está lleno (~20 % de la cartera) con cinco posiciones a precio actual y v11: Nu +19 %, Axon +36 %, Shopify +18 %, Snowflake +13 % y Samsara +15 % (`informes-growth/cartera-growth.md`). La liquidez es de ≈27 EUR, así que solo cabría sustituyendo a alguna. iRhythm no da Comprar: ponderada −19,5 % al precio de hoy con el objetivo fijo. No sustituye a ninguna.
+- **No entra.** El bolsillo growth está lleno (~20 % de la cartera) con cinco posiciones a precio actual y v11: Nu +19 %, Axon +36 %, Shopify +18 %, Snowflake +13 % y Samsara +15 % (`informes-growth/cartera-growth.md`). La liquidez libre es casi nula, así que solo cabría sustituyendo a alguna. iRhythm no da Comprar: ponderada −19,5 % al precio de hoy con el objetivo fijo. No sustituye a ninguna.
 - **Lista de suplentes**: no entra. El orden nuevo es MongoDB, Toast, Zscaler, dLocal, Dexcom, argenx, Datadog, Saab y Natera, todas en Comprar.
 - **Dónde queda**: en el grupo de no comprar. Si la señal pasa a Mantener (v12 o probabilidades 25/50/25), iría con TransMedics, Insulet y el resto de tecnología médica en Mantener. En tecnología médica, Dexcom (5.º suplente) va por delante.
 - **IA**: Alphabet se vende mañana y no cuenta como exposición a IA. iRhythm tampoco la aportaría: es tecnología médica que usa IA, no una apuesta por la IA.
