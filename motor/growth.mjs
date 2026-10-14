@@ -45,6 +45,10 @@ VERSIONES.v6 = { ...V4, descripcion: 'v4 sin mínimo de señales (cuentan solo d
 VERSIONES.v7 = { ...VERSIONES.v6, descripcion: 'v6 con ponderada ≥ 5 %', compra: { ...VERSIONES.v6.compra, ponderada: 5 } };
 VERSIONES.v8 = { ...VERSIONES.v7, descripcion: 'v7 + proyección que respeta la desaceleración + la señal de múltiplo no cuenta si ya está > 1,3 × su mediana',
   proy_desacel: true, senal_multiplo_tope: 1.3 };
+// Candidata v9 (14-oct, tandas 4-5; backtest/resultados-v9.md): el crecimiento de partida no pasa de la guía de la empresa
+// para los 12 meses siguientes más lo que suele batirla (crecimiento.guia_12m_pct + exceso_guia_pp). Solo recorta; sin guía = v7.
+VERSIONES.v9 = { ...VERSIONES.v7, descripcion: 'v7 + el crecimiento de partida no pasa de la guía de la empresa más su exceso medio sobre la guía (solo recorta)',
+  proy_guia: true };
 export const VIGENTE = 'v7';
 
 const escala = (v, cortes) => {
@@ -60,13 +64,16 @@ const RENTAB = { fcf_creciente: 5, fcf_positivo: 4, breakeven_12m: 3, breakeven_
 
 // Proyección mecánica de ventas (backtest, o si el analista no da la suya): crecimiento de partida =
 // media del de 12 meses y el del último trimestre (entre −20 % y +60 %), que decae un 15 % cada año.
-export function proyeccion(d, fwd = false, desacel = false) {
+export function proyeccion(d, fwd = false, desacel = false, guia = false) {
   const c = d.crecimiento, v = d.valoracion;
   const g12 = c.ventas_12m_pct ?? 0, gq = c.ultimo_trimestre_pct ?? g12;
   const pasado = (g12 + gq) / 2;
   let g1 = clamp(fwd && c.cagr_2a_propio_pct != null ? (pasado + c.cagr_2a_propio_pct) / 2 : pasado, -20, 60) / 100;
   const frena = desacel && (c.aceleracion_pp ?? 0) < -10;
   if (frena) g1 = Math.min(g1, gq / 100); // si frena fuerte, se parte como mucho del último trimestre
+  const gGuia = guia && c.guia_12m_pct != null ? (c.guia_12m_pct + (c.exceso_guia_pp ?? 0)) / 100 : null;
+  const recorte = gGuia !== null && gGuia < g1;
+  if (recorte) g1 = gGuia; // v9: como mucho la guía más el exceso habitual sobre ella
   const n = v.anios_hasta_objetivo ?? 2;
   const camino = f => {
     let s = d.mercado.ventas_12m_m, g = g1 * f, ult = g;
@@ -74,7 +81,7 @@ export function proyeccion(d, fwd = false, desacel = false) {
     return { ventas: s, g_final: ult };
   };
   const b = camino(1);
-  return { g1: g1 * 100, g_final: b.g_final * 100, bajista: camino(0.5).ventas, base: b.ventas, alcista: camino(1.2).ventas };
+  return { g1: g1 * 100, g_final: b.g_final * 100, bajista: camino(0.5).ventas, base: b.ventas, alcista: camino(1.2).ventas, ...(guia ? { recorte_guia: recorte } : {}) };
 }
 
 export function calcular(d, cfg = VERSIONES[VIGENTE]) {
@@ -96,7 +103,8 @@ export function calcular(d, cfg = VERSIONES[VIGENTE]) {
   const B = (b.reduce((s, y) => s + y, 0) / 15) * P.B;
 
   // Valor de empresa y múltiplo de ventas de los próximos 12 meses (para el filtro de valoración)
-  const pr = proyeccion(d, cfg.proy_forward, cfg.proy_desacel);
+  const pr = proyeccion(d, cfg.proy_forward, cfg.proy_desacel, cfg.proy_guia);
+  if (cfg.proy_guia && c.guia_12m_pct == null) avisos.push('Sin guía de la empresa (crecimiento.guia_12m_pct): proyección como v7.');
   const ev = d.precio * d.acciones_diluidas_m + (d.deuda_m ?? 0) - (d.caja_m ?? 0);
   const gNtm = v.crecimiento_actual_pct ?? pr.g1;
   const evVentasNtm = ev / (m.ventas_12m_m * (1 + gNtm / 100));
@@ -207,7 +215,7 @@ export function calcular(d, cfg = VERSIONES[VIGENTE]) {
     senales_activas: activas, n_senales: activas.length, euforia,
     penetracion_pct: r1(penetr), regla_40: r1(regla40), ev_ventas_ntm: r1(evVentasNtm), ev_bb_ntm: r1(evbb), ratio_crecimiento: Number.isFinite(ratio) ? Math.round(ratio * 100) / 100 : null,
     pista_meses: pista === Infinity ? 'FCF positivo' : r1(pista),
-    proyeccion: mecanica ? 'mecánica' : 'analista', factor_desaceleracion: Math.round(factorDesac * 100) / 100,
+    proyeccion: mecanica ? 'mecánica' : 'analista', ...(cfg.proy_guia ? { g1_pct: r1(pr.g1), recorte_guia: pr.recorte_guia } : {}), factor_desaceleracion: Math.round(factorDesac * 100) / 100,
     casos, probabilidades: p, objetivo_12m: r1(objetivo), rent_ponderada_pct: ponderada, rent_base_pct: casos.base.rent_pct,
     asimetria, senal, vigilar, motivo,
     ventas_analista_m: v.ventas_objetivo_m ?? null, conviccion, peso_orientativo_pct: peso, precio_max_compra: precioMax, avisos,

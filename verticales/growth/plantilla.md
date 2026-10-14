@@ -17,7 +17,7 @@ Se sigue entera en cada empresa. Método y reglas: [metodo.md](metodo.md). Todo 
 {
   "empresa": "Nombre", "ticker": "TICK", "bolsa": "NASDAQ", "moneda": "USD", "fecha": "AAAA-MM-DD",
   "precio": 0, "acciones_diluidas_m": 0, "caja_m": 0, "deuda_m": 0,
-  "crecimiento": { "ventas_12m_pct": 0, "ultimo_trimestre_pct": 0, "cagr_2a_propio_pct": 0, "aceleracion_pp": 0, "nrr_pct": null },
+  "crecimiento": { "ventas_12m_pct": 0, "ultimo_trimestre_pct": 0, "cagr_2a_propio_pct": 0, "aceleracion_pp": 0, "nrr_pct": null, "guia_12m_pct": null, "exceso_guia_pp": null, "nota_guia": "" },
   "mercado": { "tam_m": 0, "ventas_12m_m": 0, "tecnologia_0a5": 0, "posicion_0a5": 0 },
   "tendencia": {
     "senales": {
@@ -55,6 +55,7 @@ Se sigue entera en cada empresa. Método y reglas: [metodo.md](metodo.md). Todo 
 Notas de los campos:
 - `ultimo_trimestre_pct`: crecimiento interanual del último trimestre. `subida_12m_pct`: revalorización de la acción en 12 meses (la usa la regla de euforia). `ventas_objetivo_m`: la proyección del analista; desde v4 es solo contraste, la que cuenta la calcula el código.
 - `aceleracion_pp`: crecimiento interanual del último trimestre − media de los cuatro anteriores.
+- `guia_12m_pct`, `exceso_guia_pp`, `nota_guia` (opcionales; los usa la candidata v9, `backtest/resultados-v9.md`): crecimiento de ingresos que guía la empresa para los 12 meses siguientes (punto medio; si el ejercicio en curso ya pasó su primera mitad, el crecimiento implícito en lo que queda del año guiado, o la guía del año siguiente si ya existe; solo guía trimestral → `null`) y lo que de media la bate, en puntos de crecimiento (media de los 4 últimos trimestres; si solo hay guía anual, crecimiento real del último ejercicio − el de su primera guía; desconocido → `null` = 0). v9 parte como mucho de guía + exceso; solo recorta. Sin guía, `null`.
 - `tam_m`: mercado **alcanzable** en el ejercicio objetivo (no el «mercado total» de la presentación si es inflado); se dice de dónde sale.
 - `tecnologia_0a5`: 5 = tecnología propia que nadie replica en 3 años (patentes, datos, efecto red); 3 = buena pero con alternativas; 1 = producto commodity.
 - `posicion_0a5`: 5 = líder claro con cuota creciente; 3 = entre los 3 primeros; 1 = seguidor.
