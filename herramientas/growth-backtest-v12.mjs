@@ -19,7 +19,7 @@ const casos = [
 const V11 = VERSIONES.v11;
 const VARIANTES = {
   v11: V11,
-  '1 orgánico': { ...V11, organico: true, v12: true },
+  '1 orgánico': { ...V11, organico: true, proforma: true, v12: true },
   '2 euforia EBITDA, veto U=60': { ...V11, euforia_ebitda: { ratio: 1.5, subida: 60, modo: 'veto' }, v12: true },
   '2 euforia EBITDA, veto U=80': { ...V11, euforia_ebitda: { ratio: 1.5, subida: 80, modo: 'veto' }, v12: true },
   '2 euforia EBITDA, veto U=100': { ...V11, euforia_ebitda: { ratio: 1.5, subida: 100, modo: 'veto' }, v12: true },

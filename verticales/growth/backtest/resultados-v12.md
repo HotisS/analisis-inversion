@@ -114,4 +114,33 @@ Quanta y Comfort no dan una cifra orgánica de los 12 meses siguientes tal cual;
 
 ## 5. Borrador para `metodo.md` §7 (no aplicado)
 
-- 14-oct-2026 (noche): **candidata v12** (no vigente; [backtest/resultados-v12.md](backtest/resultados-v12.md)). v12 = v11 + **crecimiento orgánico**: con el campo `crecimiento.crecimiento_actual_organico_pct` (crecimiento de los 12 meses siguientes sin compras ni ventas de negocios; se rellena si estas mueven más de 2 pp), la proyección parte como mucho del orgánico y la rebaja del múltiplo por desaceleración se mide desde él, porque el crecimiento del año objetivo ya es orgánico. Además, dos alertas que no cambian nada: euforia en las valoradas por EBITDA (múltiplo > 1,5 × su mediana de 3 años y subida ≥ 80 % en 12 meses) y proyección mecánica < 0,85 × la del informe o el consenso. En el backtest es neutra (ningún caso tiene el dato; ninguna señal cambia en 84). En los informes cambia GE Vernova (Vender → Mantener) y sube la rentabilidad de Howmet, Quanta, Comfort Systems y DoorDash sin cambiar su señal; nada en cartera ni en suplentes. Probadas y rechazadas: medir la desaceleración desde la partida topada cuando se crece > 60 % (subía el objetivo de Snowflake 2021, Beyond Meat 2019 y Square 2021, tres fracasos), el veto de euforia por múltiplo de EBITDA (ningún caso para probarlo; con EV/ventas habría quitado Nvidia 2016 y Roku 2019) y la regla de guía anual o a medio plazo (sin efecto: v11 ya lo cubre).
+- 14-oct-2026 (noche): **candidata v12** (no vigente; [backtest/resultados-v12.md](backtest/resultados-v12.md)). v12 = v11 + **crecimiento orgánico**: con el campo `crecimiento.crecimiento_actual_organico_pct` (crecimiento de los 12 meses siguientes sin compras ni ventas de negocios; se rellena si estas mueven más de 2 pp), la proyección parte como mucho del orgánico, aplicado sobre ventas pro forma (con el año entero de las compras ya cerradas: ventas de 12 m × (1 + crecimiento total − orgánico)), y la rebaja del múltiplo por desaceleración se mide desde él, porque el crecimiento del año objetivo ya es orgánico. Además, dos alertas que no cambian nada: euforia en las valoradas por EBITDA (múltiplo > 1,5 × su mediana de 3 años y subida ≥ 80 % en 12 meses) y proyección mecánica < 0,85 × la del informe o el consenso. En el backtest es neutra (ningún caso tiene el dato; ninguna señal cambia en 84). En los informes cambia GE Vernova (Vender → Mantener) y sube la rentabilidad de Howmet, Quanta, Comfort Systems y DoorDash sin cambiar su señal; nada en cartera ni en suplentes. Probadas y rechazadas: medir la desaceleración desde la partida topada cuando se crece > 60 % (subía el objetivo de Snowflake 2021, Beyond Meat 2019 y Square 2021, tres fracasos), el veto de euforia por múltiplo de EBITDA (ningún caso para probarlo; con EV/ventas habría quitado Nvidia 2016 y Roku 2019) y la regla de guía anual o a medio plazo (sin efecto: v11 ya lo cubre).
+
+## 6. Corrección de v12 (14-oct-2026, noche): base pro forma con el orgánico
+
+**Fallo.** Con `crecimiento_actual_organico_pct`, v12 aplicaba el crecimiento orgánico sobre las ventas de los últimos 12 meses, que no llevan el año entero de las compras ya cerradas. La proyección quedaba por debajo de ventas casi aseguradas. Caso: Construction Partners, bajista mecánico de 3.740 M frente a 3.961 M de ventas de los próximos 12 meses (3.477,9 × 1,139, con compras ya cerradas).
+
+**Regla corregida (en `proyeccion()`, opción `proforma`, activa en v12 y v13):**
+
+1. Base de partida pro forma = ventas de 12 m × (1 + `crecimiento_actual_pct` − orgánico). Esa diferencia es lo que suman en los 12 meses siguientes las compras ya cerradas, que es la misma cifra que les falta a las ventas de 12 m para llevar el año entero. Si el informe escribe `crecimiento.ventas_proforma_12m_m` (opcional, con fuente), manda ese.
+2. Sobre esa base se aplica el orgánico como antes (como mucho la partida mecánica y la guía), en los tres escenarios. La parte comprada no se multiplica por el factor del escenario (0,5 / 1 / 1,2): ya está hecha.
+3. Cada escenario queda como mucho en la proyección de v11 (la regla solo recorta, como estaba diseñada v12).
+4. Sin base pro forma posible (ni `ventas_proforma_12m_m` ni `crecimiento_actual_pct`): proyección de v11. El orgánico sigue en la rebaja por desaceleración.
+
+**Por qué esta y no las otras.** No pide datos nuevos (los 7 informes con orgánico ya tienen las dos cifras); usar el crecimiento total solo el primer año daría casi lo mismo en el escenario base, pero en el bajista seguiría partiendo por la mitad las compras ya cerradas. No se ha escrito `ventas_proforma_12m_m` en ningún `datos.json`: no hace falta.
+
+**Comprobaciones.** Regresión con 132 archivos (84 casos y 48 informes) × 13 versiones = 1.716 cálculos: v1-v11, 0 diferencias; v12 y v13 cambian solo en los 7 informes con orgánico. Backtest (`growth-backtest-v12.mjs` y `-v13.mjs`): igual que antes, ninguna señal cambia en los 84 casos (ninguno tiene orgánico). En `growth-backtest-v12.mjs` la variante «1 orgánico» lleva ya la corrección. `VIGENTE` sigue en v11.
+
+**Efecto en los 7 informes** (señal, ponderada a 12 m, bajista, «compra hasta»; v13 = v12 corregida en los 7):
+
+| Informe | v11 | v12 antes | v12 corregida | Nota |
+|---|---|---|---|---|
+| Construction Partners | Mantener, +2,6 %, −63,2 %, 63,6 USD | Mantener, −0,2 %, −59,8 %, 69,4 | **Mantener, +7,8 %, −55,3 %, 77,1** | bajista mecánico 3.740 → 3.961 M (= ventas de los próximos 12 m); precio 86,3 |
+| Howmet | Mantener, −9,8 %, −53,0 %, 186,2 | Mantener, −4,5 %, −50,5 %, 197,2 | Mantener, −4,3 %, −50,0 %, 197,7 | manda la proyección de v11 (más baja) |
+| Quanta Services | Vender, −18,8 %, −60,7 %, 532,4 | Mantener, −9,2 %, −54,9 %, 595,4 | Mantener, −2,4 %, −52,0 %, 640,4 | ídem |
+| GE Vernova | Vender, −14,8 %, −52,6 %, 814 | Mantener, −3,2 %, −46,0 %, 925,6 | Mantener, −1,9 %, −45,7 %, 937,5 | ídem |
+| Comfort Systems | Vender, −17,6 %, −57,2 %, 1.276,2 | Vender, −14,7 %, −55,8 %, 1.320,9 | igual que antes | manda la cifra del analista (más baja) |
+| DoorDash | Mantener, +0,8 %, −44,9 %, 185,3 | Mantener, +3,3 %, −44,3 %, 190,0 | Mantener, +4,0 %, −43,5 %, 191,2 | le sigue faltando para Comprar |
+| Rheinmetall | Mantener, +3,5 %, −55,4 %, 847 EUR | Mantener, +7,9 %, −52,1 %, 911,5 | igual que antes | manda la proyección de v11 |
+
+Ninguna señal cambia frente a la v12 anterior. Ninguna está en cartera ni en suplentes.
