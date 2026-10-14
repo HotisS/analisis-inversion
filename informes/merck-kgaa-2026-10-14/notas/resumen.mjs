@@ -1,0 +1,50 @@
+// Resumen ejecutivo (Merck KGaA, corte 2026-10-14). Se escribe el último; cifras de calc tal cual.
+export default {
+  recomendacion: 'Mantener',
+  conviccion: 'Baja',
+  justificacion_recomendacion: null,
+  horizonte: '12 meses',
+  sintesis: [
+    '**La recomendación y por qué.** Mantener, con convicción baja. Nuestro objetivo a 12 meses es de 150,51 EUR (16,1 veces un BPA pre de 9,10 en el base de 2028e), una rentabilidad ponderada del 11,3 % con dividendo y del 8,4 % en el caso base, por debajo de los umbrales de compra (15 % y 12 %). El valor intrínseco es de 134,52 EUR, un 2,0 % por debajo del precio de 137,20 EUR, y el objetivo medio de los analistas (146,11 EUR) [D5] cae casi encima de nuestro base. A 12 meses la asimetría es buena (2,97x: el bajista pierde un 11,2 % y el alcista gana un 39,6 %) porque el PER ya está cerca de su mínimo de cinco años. La convicción es baja porque la regla relativa daría Comprar y la absoluta Mantener: la diferencia es solo de tasa de descuento. La subiría un 3T26 con Life Science por encima del 5 % orgánico y Healthcare mejor de −3 %; la bajaría una deuda neta por encima de 2,5 veces el EBITDA pre tras Bio-Techne.',
+    '**El negocio.** Merck son tres negocios: Life Science (43 % de las ventas, consumibles con altos costes de cambio), Healthcare (41 %, en plena pérdida de Mavenclad en EE. UU.) y Electronics (17 %, que crece un 11,7 % orgánico con la IA) [A8, A3]. El margen EBITDA pre es alto (28,9 % en 2025) pero el ROIC es del 7,5 %, igual que el WACC del 7,40 %, porque el balance arrastra 25.600 M de fondo de comercio e intangibles de compras [A2]. La prueba de sostenibilidad sale «En parte»: el crecimiento orgánico (3,1 % en 2025, 4,1 % en el 2T26) se financia con I+D y es sostenible, pero el comprado no ha rendido su coste; rebajamos medio punto el crecimiento de 2028e-2030e.',
+    '**Finanzas.** Las ventas llevan cuatro años en torno a 21.000 M y el BPA publicado ha bajado de 7,03 (2021) a 6,00 (2025) [A1]. La guía de 2026 se ha subido dos veces (BPA pre de 7,90-8,60) [A3]. La deuda neta ajustada (con pensiones) es de 10.674 M (1,8 veces el EBITDA) y subirá a ≈ 2,8 veces con Bio-Techne, que se paga a ≈ 26,5 veces el EBITDA [B4].',
+    '**Equipo y gobierno.** La familia Merck controla el 70 % a través de E. Merck KG, que nombra a la Dirección; el minoritario depende de la alineación por dividendo. Relevo ordenado del CEO (Kai Beckmann desde mayo de 2026) y guía cumplida en 2021, 2023 y 2025 [C1, C2].',
+    '**Valoración.** El DCF da 133,90 EUR y el DCF inverso dice que el precio descuenta un crecimiento del 3,6 % con un margen del 28,9 %, frente al 3,2 % y el 28,5 % de nuestro base: el mercado pide poco más que nosotros. Con la prima implícita del mercado (4,2 %) el valor objetivo sube a 159,74 EUR. Cotiza a 17,6 veces el beneficio de los próximos 12 meses, entre las herramientas estadounidenses (21-25x) y las farmacéuticas europeas (10-18x).',
+    '**Riesgos y catalizadores.** El mayor riesgo es pagar caro por Bio-Techne con un ROIC que ya no cubre su coste (≈ −10 % del valor); el segundo, otra pausa en los bioprocesos como la de 2023 (bajista del DCF, −27,3 %). Catalizadores: resultados del 3T26 en noviembre, cierre de Bio-Techne y guía de 2027 en marzo. Los foros critican el precio de Bio-Techne y ven barata la acción frente a Thermo Fisher; no señalan nada que el informe no recoja [E1, E5].',
+    '**Qué cambiaría la decisión.** Compraríamos por debajo de 132,78 EUR y venderíamos por encima de 169,68 EUR. Pasaríamos a Comprar si Life Science creciera por encima del 6 % orgánico dos trimestres seguidos (sube el BPA de 2028e), y a Vender si Healthcare cayera más de un 8 % orgánico o la deuda neta superara 3 veces el EBITDA pre.',
+  ].join('\n\n'),
+  tesis: 'Merck KGaA es un grupo de ciencia y tecnología con un 43 % de las ventas en consumibles de ciencias de la vida, un 41 % en farmacia y un 17 % en materiales para chips, con un margen EBITDA pre del 28,9 % y una deuda neta de 1,4 veces el EBITDA pre [A1, A15]. Lo que lo hace valioso es la recurrencia de Life Science y el empuje de Electronics; lo que lo frena es un ROIC del 7,5 % lastrado por compras caras.\n\nEl precio (137,20 EUR) descuenta un crecimiento del 3,6 % y un margen del 28,9 %, poco más que nuestro caso base, y 16,1 veces nuestro BPA pre de 2027e, cerca del mínimo de cinco años (14,7x) [D11].\n\nEl mercado acierta en lo esencial: la acción está en su valor intrínseco. Para invertir hay que creer que Bio-Techne y las nuevas plantas subirán el ROIC por encima del WACC; hasta verlo, la rentabilidad a 12 meses (11,3 %) no llega al umbral de compra.',
+  vision_diferencial: {
+    mercado_descuenta: 'Un crecimiento del 3,6 % anual y un margen del 28,9 %, con un PER de 16,1 veces nuestro BPA pre de 2027e: una empresa de crecimiento medio con Healthcare en declive.',
+    nuestra_vision: 'Coincidimos: nuestro base crece un 3,2 % con un margen del 28,5 %, y nuestro objetivo base a 12 meses (146,51 EUR) es casi el de los analistas (146,11).',
+    por_que: 'No tenemos una visión distinta de la del mercado. La única diferencia es la tasa: con la prima implícita del mercado la acción parecería barata (159,74 EUR), con la nuestra está en su precio.',
+  },
+  a_favor: [
+    '**Guía subida dos veces en 2026**: BPA pre de 7,90-8,60 EUR [A3].',
+    '**Electronics crece con la IA**: +11,7 % orgánico en el 2T26 [A3].',
+    '**PER cerca del mínimo**: 16,1x frente a una mediana de 17,0x y un mínimo de 14,7x.',
+    '**Life Science recurrente**: Process Solutions +10,3 % orgánico en el 3T25 [A7].',
+    '**Asimetría a 12 meses de 2,97x**: el bajista pierde un 11,2 % y el alcista gana un 39,6 %.',
+  ],
+  en_contra: [
+    '**ROIC igual al WACC**: 7,5 % frente a 7,40 %.',
+    '**Bio-Techne cara**: ≈ 26,5 veces el EBITDA y sin aportación al BPA hasta el tercer año [B4].',
+    '**Healthcare en declive**: −3,4 % orgánico en el 2T26 por Mavenclad [A3].',
+    '**Ventas planas cuatro años**: 21.102 M en 2025 frente a 22.232 M en 2022 [A1].',
+    '**Sin voto efectivo del minoritario**: E. Merck KG controla el 70 % y nombra a la Dirección [C1].',
+  ],
+  que_vigilar: 'La tesis depende de que Life Science y Electronics crezcan lo bastante para compensar la caída de Healthcare en 2027 y de que Bio-Techne no hunda el ROIC. Señal de que no se cumple: un crecimiento orgánico del grupo por debajo del 2 % en dos trimestres de 2027 o una deuda neta por encima de 2,5 veces el EBITDA pre un año después del cierre.',
+  cambiaria_recomendacion: [
+    'Precio por debajo de 132,78 EUR: la rentabilidad a 12 meses pasaría del 15 % (Comprar).',
+    'Precio por encima de 169,68 EUR: Vender.',
+    'Life Science por encima del 6 % orgánico dos trimestres seguidos: revisaríamos al alza el BPA de 2028e.',
+    'Healthcare por debajo de −8 % orgánico o deuda neta por encima de 3 veces el EBITDA pre: pasaríamos a Vender.',
+  ],
+  kpis_seguimiento: [
+    { kpi: 'Crecimiento orgánico de Life Science', nivel_actual: '+4,0 % (2025)', umbral_alerta: '< 2 %', por_que: 'Motor del 43 % de las ventas.' },
+    { kpi: 'Crecimiento orgánico de Healthcare', nivel_actual: '−3,4 % (2T26)', umbral_alerta: '< −8 %', por_que: 'Mide la erosión por patentes.' },
+    { kpi: 'Margen EBITDA pre del grupo', nivel_actual: '29,4 % (2T26)', umbral_alerta: '< 27 %', por_que: 'Base del BPA de 2028e (29,0 %).' },
+    { kpi: 'Deuda neta / EBITDA pre', nivel_actual: '1,4x (mar-26)', umbral_alerta: '> 2,5x tras Bio-Techne', por_que: 'Rating y dividendo.' },
+  ],
+  confianza: 'Media',
+};
