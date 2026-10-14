@@ -6,7 +6,7 @@ Solo growth (la value es `cola.md`). Método vigente **v11** (`verticales/growth
 
 | Qué | Estado |
 |---|---|
-| Tanda 15: Fabrinet (FN), Nextracker (NXT), Krystal Biotech (KRYS), TG Therapeutics (TGTX) | Propuesta el 14-oct tras la tanda 14 |
+| Tanda 15: Fabrinet (FN), Nextracker (NXT), Krystal Biotech (KRYS), TG Therapeutics (TGTX) | En marcha desde el 14-oct 20:20 |
 | Hacer vigentes v12 (crecimiento orgánico), v13 (exceso sobre la guía = 0 si la empresa recortó la guía) y v14 (35/50/15 automático por dependencia de un producto o decisión regulatoria; dilución prevista; escenarios con partida negativa; `resultados-v14.md`: con ella argenx y Dexcom pasan a Mantener) | Probadas y en el motor (`resultados-v12.md`, `resultados-v13.md`); no cambian señales de cartera ni suplentes; pendiente del visto bueno del usuario (tarjeta del 14-oct) |
 | Revisar Wise con su actualización del 2T | 15-oct; si sube a convicción media, se propone como sustituta |
 | Revisar argenx con sus resultados del 3T | 22-oct; suplente desde el 14-oct |
