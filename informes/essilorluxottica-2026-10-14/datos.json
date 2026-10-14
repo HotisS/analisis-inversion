@@ -1,0 +1,4486 @@
+{
+  "meta": {
+    "fecha_corte": "2026-10-14",
+    "divisa": "EUR",
+    "divisa_cotizacion": "EUR",
+    "tipo_cambio": 1,
+    "unidades": "millones",
+    "cierre_ejercicio_mes": 12,
+    "etiqueta_ejercicio": "fin",
+    "normas_contables": "NIIF-UE",
+    "formato_cuenta": "funcion",
+    "limitaciones": "Análisis hecho desde la nube con la red limitada a la búsqueda web: la web de la empresa, la AMF, Yahoo y los proveedores de datos no se pudieron abrir, así que las cifras salen de los extractos de búsqueda de los comunicados de resultados (2023-2026), de Stock Analysis, Fintel, Yahoo y Kalkine citados en la búsqueda y de la prensa financiera, cruzados cuando fue posible; la confianza es menor que en un análisis normal y lo que no cuadró está en null y en los huecos. Los comparables y las transacciones se toman de los informes del repo de Hoya (14-oct), Cooper y Fielmann (9-oct), convertidos a EUR con los tipos implícitos en esos informes (180,2 JPY y 1,1186 USD por EUR). El balance histórico está incompleto: el ROIC, el Altman Z y el Piotroski del motor no son fiables y damos aparte el ROIC sobre el capital total. Las amortizaciones de 2023 y 2025 y los pagos de arrendamientos son estimaciones propias explicadas en las cuentas. El puente usa la deuda neta con arrendamientos a 30-jun-2026 (13.390 M) [4] sin desglose. El objetivo a 12 meses y el PER histórico van en BPA ajustado (sin la amortización de intangibles de las compras), la base que publica la empresa y que usa el mercado.",
+    "controles_explicados": [
+      {
+        "control": "Objetivo 12 m frente al consenso",
+        "explicacion": "El objetivo medio (199,75 EUR) es la media de ocho objetivos revisados en septiembre-octubre; nuestro base (160,63) es menor por el múltiplo: usamos el PER actual (18,4x), no el histórico (27-40x) que siguen implícitamente los analistas. Ver diferencia_consenso."
+      },
+      {
+        "control": "Regresión múltiplo-crecimiento",
+        "explicacion": "Con R² de 0,27 la regresión no se usa; los comparables mezclan óptica, audición y tecnología médica."
+      },
+      {
+        "control": "Fuentes sin citar",
+        "explicacion": "Fuentes de contexto leídas para cuadrar cifras (Fintel, Yahoo, Kalkine, comunicados de 2025) que sostienen datos de las tablas."
+      }
+    ],
+    "huecos": [
+      {
+        "seccion": "balance",
+        "campo": "Balance completo 2021-2024 (activo corriente, proveedores, deuda bruta, arrendamientos, patrimonio)",
+        "tipo": "Núcleo",
+        "intentos": "1) Informe anual y comunicados en essilorluxottica.com: WebFetch y curl bloqueados; 2) Stock Analysis y Fintel por búsqueda: solo pasivo total y algunas partidas de 2024-2025; 3) Yahoo y Kalkine: sin balance",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "balance",
+        "campo": "Calendario de vencimientos, rating, coste y vida media de la deuda",
+        "tipo": "Complemento",
+        "intentos": "1) Nota de deuda del informe anual: sin acceso; 2) búsqueda de rating y folletos: sin resultado; 3) prensa: sin resultado",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "flujos",
+        "campo": "Dividendos y recompras pagados en caja",
+        "tipo": "Complemento",
+        "intentos": "1) Estado de flujos: sin acceso; 2) Stock Analysis por búsqueda: no los da; 3) MarketScreener: solo dividendo por acción",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "trimestres",
+        "campo": "EBITDA y BPA trimestral",
+        "tipo": "Complemento",
+        "intentos": "1) Comunicados: solo ventas trimestrales; 2) Quartr: solo semestre; 3) prensa: sin cifras",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "calidad",
+        "campo": "Auditor y años en el cargo",
+        "tipo": "Complemento",
+        "intentos": "1) Informe anual: sin acceso; 2) búsqueda: sin resultado; 3) prensa: sin resultado",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sector",
+        "campo": "Serie de tamaño del mercado y CR5",
+        "tipo": "Complemento",
+        "intentos": "1) Informes de la empresa: sin acceso; 2) estudios de mercado por búsqueda: rangos de 161.000-222.000 M USD sin serie homogénea; 3) asociaciones (Vision Council): sin resultado",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "competencia",
+        "campo": "Cuota de mercado de EssilorLuxottica y márgenes EBIT de los competidores",
+        "tipo": "Complemento",
+        "intentos": "1) Informes anuales de Hoya y Fielmann vía otros informes del repo: sin cuota global; 2) búsqueda: sin cifra; 3) Morningstar: solo posición",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "esg",
+        "campo": "Calificaciones ESG",
+        "tipo": "Complemento",
+        "intentos": "1) Informe de sostenibilidad: sin acceso; 2) búsqueda MSCI/Sustainalytics: sin resultado; 3) prensa: sin resultado",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "Consejo completo, comisiones, votaciones de remuneración y remuneración del primer ejecutivo",
+        "tipo": "Núcleo",
+        "intentos": "1) Documento de registro universal 2025: sin acceso; 2) resultados de la junta de 2026 por búsqueda: no publicados en los extractos; 3) AFG y prensa: solo la alerta sobre la política",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "Operaciones de directivos de 12 meses",
+        "tipo": "Complemento",
+        "intentos": "1) API de BDIF (AMF): sin red; 2) búsqueda: solo PDF sueltos sin contenido legible; 3) prensa: sin resultado",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "bolsa",
+        "campo": "Rentabilidades totales, beta calculada, volatilidad, caída máxima y posición corta",
+        "tipo": "Complemento",
+        "intentos": "1) bolsa.mjs sin red; 2) WebFetch a Yahoo bloqueado; 3) búsqueda: solo cifras sueltas (beta de 0,55-0,92 según línea)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "multiplos_historicos",
+        "campo": "Precios de cierre de 2021, 2023 y 2024",
+        "tipo": "Complemento",
+        "intentos": "1) bolsa.mjs sin red; 2) búsqueda en francés e inglés de los cierres anuales: sin cifra; 3) informes anuales (DEU) con el cierre: sin acceso",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "consenso",
+        "campo": "Número de analistas, reparto de recomendaciones y objetivo medio actualizado",
+        "tipo": "Complemento",
+        "intentos": "1) MarketScreener e Investing: sin acceso directo; 2) agregadores (stocksguide, aktien.guide): datos anteriores a los recortes de sep-oct; 3) prensa: objetivos sueltos (157-300 EUR)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sentimiento",
+        "campo": "Reddit, Stocktwits y foro de Boursorama",
+        "tipo": "Complemento",
+        "intentos": "1) Reddit y Stocktwits por búsqueda: sin hilos recientes en los resultados; 2) Boursorama por búsqueda: sin resultados; 3) getquin y narrativas de Simply Wall St: leídas",
+        "decision": "Omitido"
+      }
+    ]
+  },
+  "identificacion": {
+    "nombre": "EssilorLuxottica Société anonyme",
+    "nombre_corto": "EssilorLuxottica",
+    "ticker": "EL",
+    "isin": "FR0000121667",
+    "mercado": "Euronext París",
+    "indice_referencia": "CAC 40 / Euro Stoxx 50",
+    "pais": "Francia",
+    "pais_iso": "FR",
+    "sector": "Salud",
+    "industria": "Equipos y suministros sanitarios (óptica)",
+    "sede": "Charenton-le-Pont (París)",
+    "fundacion": "2018",
+    "empleados": null,
+    "web": "www.essilorluxottica.com",
+    "precio": 146.3,
+    "fecha_precio": "2026-10-13",
+    "acciones": 459.6,
+    "capitalizacion_publicada": null,
+    "free_float_pct": null,
+    "max_52s": 323.8,
+    "min_52s": null,
+    "volumen_medio_diario": null,
+    "proximos_resultados": "2026-10-20"
+  },
+  "resumen": {
+    "recomendacion": "Mantener",
+    "conviccion": "Baja",
+    "justificacion_recomendacion": null,
+    "horizonte": "12 meses",
+    "sintesis": "**La recomendación y por qué.** Mantener, con convicción baja. Con nuestro BPA ajustado y la regla común de múltiplos, el objetivo a 12 meses es de 160,39 EUR frente a 146,30 EUR de cierre del 13 de octubre: +12,4 % con el dividendo, y +12,5 % en el caso base. Supera el umbral del base (12 %) pero no el de la ponderada (15 %). El valor intrínseco de la síntesis es de 158,34 EUR (+8,2 %) y el DCF de 174,69 EUR; el objetivo medio de los ocho analistas que han revisado desde septiembre es de 199,75 EUR (157-260), por encima de nuestro rango a 12 meses en el base. La asimetría es buena (bajista −16,9 %, alcista +55,8 %), pero el bajista pesa un 30 % mientras los recortes de estimaciones no paren. La convicción es baja porque la rentabilidad decisiva está a 2,6 puntos del umbral y porque las cifras salen de extractos de búsqueda; subiría si las ventas del 3T (20 de octubre) crecen más de un 8 % a tipo constante sin nuevos recortes.\n\n**El negocio.** Primer grupo mundial de óptica: lentes (Varilux, Transitions), monturas (Ray-Ban, Oakley) y tiendas propias, 28.491 M EUR de ventas en 2025 con un 11,2 % de crecimiento a tipo constante y 2.800 M de flujo libre récord [1]. El foso en lentes es amplio, pero las compras con prima pesan: el ROIC sobre el capital total (5-6 %) está por debajo del WACC (7,32 %), aunque el negocio sin fondo de comercio rinde más del 25 %. La calidad del negocio sí sostiene el crecimiento que proyectamos (veredicto de sostenibilidad: Sí): pedimos un 5,2 % anual, por debajo del 6-11 % orgánico de 2024-2026.\n\n**Finanzas.** El beneficio neto ajustado apenas creció en 2025 (3.157 M frente a 3.122 M) por los aranceles de EE. UU. (≈300 M) y la mezcla de las gafas con IA; en el 1S26 el margen operativo ajustado subió al 18,6 % (+80 pb) [1, 3, 21]. La deuda neta con arrendamientos es de 13.390 M EUR, 2,0 veces el EBITDA [4].\n\n**Equipo y gobierno.** Resta. Delfin (32,4 %) controla la junta y su nuevo dueño, Leonardo Maria Del Vecchio, cuestiona al presidente y consejero delegado Francesco Milleri, que concentra los dos cargos; el consejo le renovó su confianza en septiembre [37, 38].\n\n**Valoración.** A 146,30 EUR el DCF inverso descuenta un crecimiento del 2,3 % anual y el margen de 2025, frente a nuestro 5,1 %: un supuesto conservador para una empresa que nunca ha crecido tan poco fuera de la pandemia. Cotiza a 12,5 veces el EBITDA, en la mediana de sus comparables, y a 18,4 veces nuestro BPA ajustado de 2027e, el PER más bajo en al menos cinco años. Nuestro base queda un 19,6 % por debajo del consenso por el múltiplo, no por el beneficio: aplicamos el PER actual, no el histórico.\n\n**Riesgos y catalizadores.** El mayor riesgo es que las gafas con IA se estanquen frente a Google, Samsung y Apple (bajista −16,9 %); el segundo, la disputa de gobierno. Catalizadores: ventas del 3T el 20 de octubre y resultados de 2026 en febrero. Los foros están divididos: el particular ve una ganga y la prensa sigue recortando; el riesgo de gobierno aparece más en ellos que en los analistas.\n\n**Qué cambiaría la decisión.** Compraríamos por debajo de 142,95 EUR o si el 3T confirma un crecimiento a tipo constante de más del 8 % y frena los recortes; venderíamos por encima de 182,65 EUR o si Milleri sale sin un sucesor claro. Aun por debajo de 142,95 EUR, la acción no cumpliría nuestro requisito de calidad (ROIC 5 puntos sobre el WACC) mientras el capital lleve 40.766 M de fondo de comercio e intangibles.",
+    "tesis": "EssilorLuxottica es el líder mundial de la óptica: fabrica las lentes de gama alta (61 % de margen bruto ajustado), posee las marcas de monturas más vendidas y controla el canal minorista en Norteamérica y Europa, con 28.491 M EUR de ventas y 2.800 M de flujo libre en 2025 [1]. Sus motores, el envejecimiento, la miopía infantil y las gafas con IA con Meta, le dieron en 2025 su primer año de crecimiento de dos dígitos.\n\nEl precio, 146,30 EUR (un 55 % por debajo del máximo de noviembre de 2025), descuenta un crecimiento del 2,3 % anual con el margen de 2025, y 18,4 veces nuestro BPA ajustado de 2027e [57]. El mercado ha pasado de pagar las gafas con IA como una opción tecnológica a tratarlas como un riesgo.\n\nPara invertir hay que creer que el núcleo de lentes y tiendas sigue creciendo al 6-7 % y que el margen operativo ajustado sigue subiendo, como en el 1S26 (18,6 %) [3], sin necesidad de que las gafas con IA triunfen. Eso da una rentabilidad a 12 meses del 12-13 %, cerca pero por debajo de lo que pedimos para comprar, con el gobierno como riesgo nuevo.",
+    "vision_diferencial": {
+      "mercado_descuenta": "Que el crecimiento de 2025 fue un pico de las gafas con IA que no se repetirá, que la competencia de Google, Samsung y Apple comerá esa línea y que el margen se queda en el nivel de 2025 con los aranceles: un 2,3 % de crecimiento anual en el DCF inverso.",
+      "nuestra_vision": "El núcleo de lentes y tiendas crece al 6-7 % por sí solo (6 % en 2024, antes de las gafas con IA) y el margen se recupera, como ya muestra el 1S26. Pero el mercado no volverá a pagar el PER de 2024-25 mientras los analistas recorten, así que la revalorización a 12 meses es moderada.",
+      "por_que": "La historia de crecimiento orgánico (6-11 % en 2024-2026) y la subida del margen ajustado de 80 pb en el 1S26 contradicen el 2,3 % que descuenta el precio [1, 3]. Coincidimos con el mercado en que el múltiplo no se recuperará pronto."
+    },
+    "a_favor": [
+      "**El precio descuenta muy poco**: un crecimiento del 2,3 % anual frente al 6-11 % orgánico de 2024-2026.",
+      "**Caja récord**: 2.800 M EUR de flujo libre en 2025 (4,2 % de rentabilidad sobre la capitalización) [1].",
+      "**El margen ya sube**: margen operativo ajustado del 18,6 % en el 1S26, +80 pb [3].",
+      "**Motores estructurales**: control de miopía +24 % en el 2T26 y envejecimiento [18].",
+      "**Múltiplo en mínimos**: 18,4 veces el BPA ajustado de 2027e frente a 27,5-39,8 veces en 2022-2025."
+    ],
+    "en_contra": [
+      "**Gafas con IA en duda**: crecieron a un dígito medio en el 1T26 frente al 18 % del final de 2025 [21].",
+      "**Gobierno en conflicto**: el dueño de Delfin (32,4 %) cuestiona al presidente y consejero delegado [37].",
+      "**ROIC del capital total del 5-6 %**, por debajo del WACC del 7,32 %, por el fondo de comercio.",
+      "**Recortes continuos**: ocho bancos bajaron su objetivo en septiembre-octubre (hasta 157 EUR) [50, 51, 52].",
+      "**Aranceles y dólar**: 300 M de coste en 2025 y 4 puntos de divisa en el 1S26 [3, 21]."
+    ],
+    "que_vigilar": "La tesis depende de que el núcleo de lentes y tiendas siga creciendo al 6-7 % a tipo constante y de que el margen operativo ajustado siga subiendo. La señal de que no se cumple sería un crecimiento a tipo constante por debajo del 6 % en el 3T o el 4T de 2026 con el margen ajustado plano, o la salida de Milleri sin sucesor en 2027.",
+    "cambiaria_recomendacion": [
+      "Si el precio baja de 142,95 EUR, la rentabilidad a 12 meses pasaría del 15 % (Comprar a 12 meses, aunque sin pasar nuestro filtro de calidad).",
+      "Si el precio supera 182,65 EUR, Vender o reducir.",
+      "Si las ventas del 3T crecen menos de un 6 % a tipo constante, bajaríamos el base y la recomendación iría hacia Vender.",
+      "Si Delfin no renueva a Milleri sin un plan de sucesión claro, subiríamos el peso del bajista."
+    ],
+    "kpis_seguimiento": [
+      {
+        "kpi": "Crecimiento a tipo constante",
+        "nivel_actual": "+9,7 % (1S26)",
+        "umbral_alerta": "< 6 % en un trimestre",
+        "por_que": "Base del caso central."
+      },
+      {
+        "kpi": "Margen operativo ajustado",
+        "nivel_actual": "18,6 % (1S26)",
+        "umbral_alerta": "Caída interanual",
+        "por_que": "La palanca del BPA de 2028e."
+      },
+      {
+        "kpi": "Gafas con IA",
+        "nivel_actual": "Casi el doble en el 2T26",
+        "umbral_alerta": "Caída interanual",
+        "por_que": "Separa base y bajista."
+      },
+      {
+        "kpi": "Deuda neta / EBITDA",
+        "nivel_actual": "2,0x (jun-26)",
+        "umbral_alerta": "> 2,5x",
+        "por_que": "Compras o caída del EBITDA."
+      },
+      {
+        "kpi": "Objetivo medio de los analistas",
+        "nivel_actual": "199,75 EUR (8 revisados)",
+        "umbral_alerta": "Por debajo de 160 EUR",
+        "por_que": "Los recortes mueven el múltiplo."
+      }
+    ],
+    "confianza": "Baja"
+  },
+  "historia": {
+    "resumen": "EssilorLuxottica nace en octubre de 2018 de la fusión entre Essilor (lentes oftálmicas, Francia, fundada en 1849 como cooperativa de ópticos) y Luxottica (monturas y gafas de sol, Italia, fundada en 1961 por Leonardo Del Vecchio). Delfin, el holding de la familia Del Vecchio, es el primer accionista con el 32,4 %. En 2021 compró GrandVision, la mayor cadena óptica europea, a HAL [35]. Desde 2019 fabrica con Meta las gafas Ray-Ban Stories, y desde 2023 las Ray-Ban Meta con IA, que se han convertido en la tercera palanca de crecimiento [1, 28]. En 2024 compró Supreme y el 80 % de Heidelberg Engineering (diagnóstico) [34].",
+    "hitos": [
+      {
+        "anio": "2018",
+        "hito": "Fusión de Essilor y Luxottica."
+      },
+      {
+        "anio": "2021",
+        "hito": "Compra de GrandVision (76,72 % a HAL a 28 EUR por acción y OPA posterior) [35]."
+      },
+      {
+        "anio": "2022",
+        "hito": "Muere Leonardo Del Vecchio; Francesco Milleri, presidente y consejero delegado."
+      },
+      {
+        "anio": "2023",
+        "hito": "Lanzamiento de Ray-Ban Meta con IA."
+      },
+      {
+        "anio": "2024",
+        "hito": "Compra de Supreme y del 80 % de Heidelberg Engineering [34]."
+      },
+      {
+        "anio": "2025",
+        "hito": "Primer año con crecimiento de dos dígitos a tipo constante (11,2 %); máximo histórico de la acción (323,80 EUR, 13-nov) [1]."
+      },
+      {
+        "anio": "2026",
+        "hito": "La acción cae más de un 45 % desde el máximo por la desaceleración de las gafas con IA y la competencia; disputa de gobierno en Delfin [28, 29]."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "negocio": {
+    "descripcion": "EssilorLuxottica diseña, fabrica y distribuye lentes oftálmicas (Varilux, Transitions, Stellest), monturas y gafas de sol (Ray-Ban, Oakley, licencias de lujo) y equipos de diagnóstico, y los vende a ópticas independientes y cadenas (Professional Solutions, 13.600 M EUR en 2025) y al público en sus propias tiendas y webs (Direct to Consumer, 14.891 M EUR: Sunglass Hut, LensCrafters, GrandVision, Supreme) [1]. Desde 2023 suma una tercera palanca: las gafas con inteligencia artificial que fabrica con Meta (Ray-Ban Meta, Oakley Meta), que vendieron unos 7 millones de pares en 2025 [21]. Norteamérica es el 45 % de las ventas [1].",
+    "como_gana_dinero": "El grueso del beneficio sale de las lentes graduadas: un producto médico de reposición (cada 2-3 años), con marca y tecnología propias y un margen bruto del 61 % para el grupo en 2025 (ajustado) [1, 2]. Las monturas y gafas de sol aportan marca y volumen; las tiendas propias capturan el margen minorista. El margen operativo ajustado fue del 16,0 % a tipo constante en 2025, 70 puntos básicos menos que en 2024 por los aranceles de EE. UU. (unos 300 M EUR) y por la mezcla de gafas inteligentes, de menor margen [1, 21]; en el primer semestre de 2026 subió al 18,6 % (18,9 % a tipo constante) [3]. La amortización del precio de la fusión de 2018 y de GrandVision (no caja) explica la diferencia entre el beneficio publicado (2.315 M EUR) y el ajustado (3.157 M EUR) [1].",
+    "segmentos": [
+      {
+        "nombre": "Professional Solutions",
+        "descripcion": "Venta a ópticas, cadenas y distribuidores: lentes, monturas, equipos.",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2024",
+            "ingresos": 12547,
+            "resultado": null
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 13600,
+            "resultado": null
+          }
+        ]
+      },
+      {
+        "nombre": "Direct to Consumer",
+        "descripcion": "Tiendas propias y comercio electrónico (Sunglass Hut, LensCrafters, GrandVision, Supreme).",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2024",
+            "ingresos": 13960,
+            "resultado": null
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 14891,
+            "resultado": null
+          }
+        ]
+      }
+    ],
+    "geografias": [
+      {
+        "nombre": "Norteamérica",
+        "peso_pct": 44.9
+      },
+      {
+        "nombre": "EMEA",
+        "peso_pct": 38.5
+      },
+      {
+        "nombre": "Asia-Pacífico",
+        "peso_pct": 11.4
+      },
+      {
+        "nombre": "Latinoamérica",
+        "peso_pct": 5.2
+      }
+    ],
+    "geografias_criterio": "destino",
+    "clientes": "Base muy atomizada: cientos de miles de ópticas independientes y cadenas en Professional Solutions y consumidores finales en Direct to Consumer; ningún cliente relevante en las cuentas [1]. El poder de precios se ve en la mezcla: el crecimiento a tipo constante del 11,2 % en 2025 combinó volumen (gafas con IA, control de miopía, que creció un 24 % en el 2T26) con precio y mezcla en lentes de gama alta [1, 18]. El riesgo de cliente está en el canal: Meta es socio y a la vez accionista (al menos un 3 % del capital) y sus decisiones de lanzamiento mueven las ventas de gafas inteligentes [21].",
+    "kpis": [
+      {
+        "kpi": "Crecimiento a tipo constante",
+        "valor_anterior": "+6,0 % (2024)",
+        "valor_actual": "+11,2 % (2025); +9,7 % (1S26)",
+        "variacion": "Acelera",
+        "comentario": "Primer año con crecimiento de dos dígitos [1, 3]."
+      },
+      {
+        "kpi": "Margen operativo ajustado",
+        "valor_anterior": "16,7 % (2024, tipo constante)",
+        "valor_actual": "16,0 % (2025); 18,6 % (1S26)",
+        "variacion": "−70 pb y recuperación",
+        "comentario": "Aranceles y mezcla de gafas con IA [1, 3]."
+      },
+      {
+        "kpi": "Gafas con IA (unidades)",
+        "valor_anterior": "n. d.",
+        "valor_actual": "≈7 millones de pares (2025)",
+        "variacion": "Casi se duplicaron en el 2T26",
+        "comentario": "Socio Meta [3, 21]."
+      },
+      {
+        "kpi": "Flujo de caja libre",
+        "valor_anterior": "2.400 M EUR (2024)",
+        "valor_actual": "2.800 M EUR (2025); 1.070 M EUR (1S26)",
+        "variacion": "+400 M",
+        "comentario": "Récord [1, 4]."
+      },
+      {
+        "kpi": "Control de miopía (Stellest)",
+        "valor_anterior": "n. d.",
+        "valor_actual": "+24 % en el 2T26",
+        "variacion": "Acelera",
+        "comentario": "[18]"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sector": {
+    "definicion": "El mercado relevante es el de la óptica mundial (lentes graduadas, monturas, gafas de sol y lentes de contacto, a precio de venta al público), donde EssilorLuxottica está en todos los eslabones: fabricación de lentes, marcas de monturas y venta minorista. Las estimaciones públicas varían mucho según el perímetro: Ken Research da unos 222.000 M USD en 2025 y Global Market Insights 161.000 M USD [26, 27]. Usamos el punto medio, unos 190.000 M USD (≈170.000 M EUR), como orden de magnitud. Las gafas con IA son un mercado nuevo que aún no recogen estas series.",
+    "tamano": "≈ 161.000-222.000 M USD en 2025 según la fuente (≈ 170.000 M EUR en el punto medio) [26, 27]",
+    "unidad_serie": "millones de EUR",
+    "serie": [],
+    "tcac_historico_pct": null,
+    "tcac_previsto_pct": 6.5,
+    "cr5_pct": null,
+    "estructura": "Moderadamente concentrada",
+    "drivers": [
+      {
+        "driver": "Envejecimiento y presbicia",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Las lentes progresivas (Varilux) son el producto de mayor precio; la población mayor de 50 años crece en todos los mercados desarrollados [1]."
+      },
+      {
+        "driver": "Miopía infantil",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "La cartera de control de miopía creció un 24 % en el 2T26 [1]."
+      },
+      {
+        "driver": "Gafas con IA",
+        "efecto": "+/−",
+        "horizonte": "Estructural",
+        "evidencia": "≈7 millones de pares en 2025, pero crecimiento de un dígito medio en el 1T26 y rivales de Google, Samsung y Apple [28, 30]."
+      },
+      {
+        "driver": "Aranceles de EE. UU. y dólar",
+        "efecto": "−",
+        "horizonte": "Cíclico",
+        "evidencia": "300 M EUR de coste en 2025; el dólar débil restó 4 puntos al crecimiento en el 1S26 (9,7 % a tipo constante, 5,7 % publicado) [1, 21]."
+      },
+      {
+        "driver": "Consumo de lujo",
+        "efecto": "−",
+        "horizonte": "Cíclico",
+        "evidencia": "Los analistas citan el retroceso del lujo como freno de las gafas de sol de licencia [29]."
+      }
+    ],
+    "porter": [
+      {
+        "fuerza": "Rivalidad",
+        "intensidad": 2,
+        "justificacion": "Duopolio de hecho en lentes con Hoya (2.º mundial) y Zeiss (privada) [31]."
+      },
+      {
+        "fuerza": "Poder de los clientes",
+        "intensidad": 2,
+        "justificacion": "Ópticas muy atomizadas; las grandes cadenas (Fielmann, Specsavers, National Vision) negocian más [32, 36]."
+      },
+      {
+        "fuerza": "Poder de los proveedores",
+        "intensidad": 2,
+        "justificacion": "Materias primas comunes; en gafas con IA depende de la tecnología y la plataforma de Meta."
+      },
+      {
+        "fuerza": "Amenaza de entrada",
+        "intensidad": 3,
+        "justificacion": "Baja en lentes (tecnología, regulación médica); alta en gafas inteligentes (Google, Samsung, Apple) [29]."
+      },
+      {
+        "fuerza": "Amenaza de sustitutos",
+        "intensidad": 2,
+        "justificacion": "Cirugía refractiva y lentes de contacto, de crecimiento lento frente a las gafas."
+      }
+    ],
+    "ciclo": {
+      "posicion": "Madurez del ciclo",
+      "comentario": "La óptica graduada es poco cíclica (es un producto de salud de reposición); las gafas de sol y las marcas de lujo sí lo son. En 2020 las ventas del grupo cayeron con el cierre de tiendas y se recuperaron en 2021; en 2022 el crecimiento a tipo constante se mantuvo. Hoy el ciclo lo marcan los aranceles, el consumo de lujo y la adopción de las gafas con IA [1, 29]."
+    },
+    "regulacion": "Las lentes graduadas son productos sanitarios (en la UE, reglamento de productos sanitarios), lo que exige registro y frena la entrada. En EE. UU., los aranceles a las importaciones desde 2025 costaron unos 300 M EUR al grupo, que fabrica buena parte de las monturas en Italia y China [21]. Las gafas con IA abren un frente de privacidad y protección de datos: el lanzamiento de nuevos modelos en septiembre de 2026 insistió en la confidentialidad [29].",
+    "tendencias": "Tres tendencias: la tecnología médica (diagnóstico, control de miopía, audición con Nuance Audio), en la que el grupo invierte para salir del comercio de monturas [1]; las gafas inteligentes, donde la alianza con Meta da ventaja pero llegan Google, Samsung y probablemente Apple en 2027 [29, 30]; y la presión de precios en la gama de entrada (Meta Glasses desde 299 USD en junio de 2026) [30].",
+    "confianza": "Baja"
+  },
+  "competencia": {
+    "cuota_pct": null,
+    "posicion": "1.º mundial en lentes oftálmicas (por delante de Hoya y Zeiss), en monturas y gafas de sol de marca y en óptica minorista; socio de Meta en gafas con IA [1, 31].",
+    "competidores": [
+      {
+        "nombre": "Hoya",
+        "pais": "Japón",
+        "ticker": "7741",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "2.º en lentes oftálmicas; su negocio de óptica crece a un dígito bajo y gana más con los semiconductores [31, 33]."
+      },
+      {
+        "nombre": "Carl Zeiss Vision",
+        "pais": "Alemania",
+        "ticker": null,
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "3.º en lentes; de la fundación Carl Zeiss, no cotiza."
+      },
+      {
+        "nombre": "Fielmann",
+        "pais": "Alemania",
+        "ticker": "FIE",
+        "ingresos": 2448,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Primera cadena de Alemania, cliente y rival en minorista [32]."
+      },
+      {
+        "nombre": "National Vision",
+        "pais": "EE. UU.",
+        "ticker": "EYE",
+        "ingresos": 1684,
+        "cuota_pct": null,
+        "margen_ebit_pct": 3,
+        "comentario": "Óptica de precio bajo en EE. UU. [36]."
+      },
+      {
+        "nombre": "Safilo",
+        "pais": "Italia",
+        "ticker": "SFL",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Monturas y gafas de sol con licencias; perdió licencias de lujo frente a Kering Eyewear y Thélios."
+      }
+    ],
+    "foso": {
+      "veredicto": "Amplio",
+      "tendencia": "Estable",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 1,
+          "evidencia": "La red de ópticas y tiendas propias da distribución a los lanzamientos (Ray-Ban Meta), pero no es un efecto de red en sentido estricto."
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 3,
+          "evidencia": "Las ópticas trabajan con su sistema de pedidos, laboratorio y crédito; el consumidor repite marca de lente."
+        },
+        {
+          "fuente": "Intangibles (marca, patentes, licencias)",
+          "puntuacion": 5,
+          "evidencia": "Ray-Ban, Oakley, Varilux, Transitions, Stellest; margen bruto ajustado del 61 % [3]."
+        },
+        {
+          "fuente": "Ventaja en costes",
+          "puntuacion": 3,
+          "evidencia": "Escala industrial mundial en lentes y monturas."
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 4,
+          "evidencia": "28.491 M EUR de ventas, más que el siguiente competidor en lentes multiplicado por varias veces [3, 9]."
+        }
+      ]
+    },
+    "amenazas": "La amenaza principal no está en las lentes sino en las gafas con IA: si Google (con Warby Parker y Gentle Monster), Samsung o Apple ganan cuota, el grupo pierde el motor de crecimiento que el mercado pagó en 2025 y se queda con un producto de menor margen [28, 29]. Probabilidad media en tres años. En lentes, la amenaza es más lenta: Hoya y Zeiss en gama alta y los fabricantes asiáticos en la de entrada. La compra de Supreme muestra que el grupo puede dispersarse fuera de su foso.",
+    "confianza": "Media"
+  },
+  "financieros": {
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 19820,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 4768,
+        "amortizaciones": 2461,
+        "ebit": 2307,
+        "resultado_financiero": -130,
+        "bai": 2177,
+        "impuestos": 587,
+        "minoritarios": 142,
+        "beneficio_neto": 1448,
+        "gastos_financieros": 130,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 3.25,
+        "dpa": 2.51,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 445.5
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 24494,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 6078,
+        "amortizaciones": 2921,
+        "ebit": 3157,
+        "resultado_financiero": -125,
+        "bai": 3032,
+        "impuestos": 751,
+        "minoritarios": 129,
+        "beneficio_neto": 2152,
+        "gastos_financieros": 148,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 4.83,
+        "dpa": 3.23,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 445.6
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 25395,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 6176,
+        "amortizaciones": 3000,
+        "ebit": 3176,
+        "resultado_financiero": -140,
+        "bai": 3036,
+        "impuestos": 609,
+        "minoritarios": 138,
+        "beneficio_neto": 2289,
+        "gastos_financieros": 140,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 5.08,
+        "dpa": 3.95,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 450.6
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 26508,
+        "coste_ventas": 9703,
+        "gastos_generales": null,
+        "ebitda": 6545,
+        "amortizaciones": 3097,
+        "ebit": 3448,
+        "resultado_financiero": -157,
+        "bai": 3291,
+        "impuestos": 800,
+        "minoritarios": 132,
+        "beneficio_neto": 2359,
+        "gastos_financieros": 184,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 5.13,
+        "dpa": 3.95,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 459.8
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 28491,
+        "coste_ventas": 11237,
+        "gastos_generales": null,
+        "ebitda": 6529,
+        "amortizaciones": 3150,
+        "ebit": 3379,
+        "resultado_financiero": -184,
+        "bai": 3195,
+        "impuestos": 752,
+        "minoritarios": 128,
+        "beneficio_neto": 2315,
+        "gastos_financieros": 264,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 4.98,
+        "dpa": 4,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 464.9
+      }
+    ],
+    "ltm": {
+      "periodo": "2025",
+      "fecha_fin": "2025-12-31",
+      "ingresos": 28491,
+      "ebitda": 6529,
+      "ebit": 3379,
+      "beneficio_neto": 2315,
+      "bpa": 4.98,
+      "dpa": 4,
+      "dpa_extraordinario": 0,
+      "fcf": 2800,
+      "participadas_en_ebitda": null,
+      "no_recurrentes_en_ebitda": null
+    },
+    "cambios_perimetro": [
+      {
+        "periodo": "2021",
+        "descripcion": "GrandVision, consolidada desde julio de 2021 (adquisiciones de 7.078 M EUR en el año)"
+      },
+      {
+        "periodo": "2024",
+        "descripcion": "Supreme (≈1.500 M USD) y el 80 % de Heidelberg Engineering, consolidadas desde el 4T24"
+      }
+    ],
+    "comentario": "Las ventas pasaron de 19.820 M EUR en 2021 a 28.491 M en 2025 (TCAC del 9,5 %), con dos saltos inorgánicos: GrandVision en 2021 (+37 % ese año) y Supreme y Heidelberg en el 4T24 [5, 23]. Sin compras, el grupo crece al 6-11 % a tipo constante (6,0 % en 2024, 11,2 % en 2025, 9,7 % en el 1S26) [1, 3, 14]. El margen EBIT publicado sube del 11,6 % en 2021 al 13,0 % en 2024 y cae al 11,9 % en 2025 por los aranceles de EE. UU. (≈300 M EUR) y la mezcla de gafas con IA [5, 21]. El beneficio neto atribuido se estanca en 2.289-2.359 M EUR desde 2023 [5]. Las amortizaciones de 2023 y 2025 son estimación propia: la de 2024 sale del EBITDA de los 12 meses a junio de 2025 (6.648 M) y de los semestres publicados [11]; la de 2025 duplica la del 1S25 (1.556 M), y la de 2023 interpola entre 2022 y 2024.",
+    "ajustes": "La empresa publica cifras «ajustadas» que excluyen sobre todo la amortización de los intangibles reconocidos en la fusión Essilor-Luxottica (2018) y en las compras posteriores, además de costes de integración y otros no recurrentes. El beneficio neto ajustado fue de 3.157 M EUR en 2025 (3.122 M en 2024; 2.946 M en 2023, según el comunicado de 2023) frente a 2.315 M publicados, una diferencia de 842 M EUR (1,81 EUR por acción) [1, 13, 14]. En 2022, el margen neto ajustado fue del 11,7 % de las ventas [13]. Usamos el BPA publicado en las cuentas y el ajustado para el objetivo a 12 meses, porque es el que mira el mercado.",
+    "confianza": "Media"
+  },
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "1T25",
+        "ingresos": 6849,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": null,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "2T25",
+        "ingresos": 7175,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": null,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "3T25",
+        "ingresos": 6867,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": 11.7,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": null,
+        "vs_consenso": "Superior"
+      },
+      {
+        "periodo": "4T25",
+        "ingresos": 7600,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": 18.4,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": null,
+        "vs_consenso": "Superior"
+      },
+      {
+        "periodo": "1T26",
+        "ingresos": 7126,
+        "crecimiento_pct": 4,
+        "crecimiento_organico_pct": 10.8,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": null,
+        "vs_consenso": "En línea"
+      },
+      {
+        "periodo": "2T26",
+        "ingresos": 7692,
+        "crecimiento_pct": 7.2,
+        "crecimiento_organico_pct": 8.7,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": null,
+        "vs_consenso": "En línea"
+      }
+    ],
+    "ultima_presentacion": "En febrero, con las cuentas de 2025, la dirección presentó el primer año de crecimiento de dos dígitos a tipo constante (11,2 %, con un 4T de +18,4 %) y sustituyó los objetivos a 2026 por una guía a cinco años: «crecimiento sólido» de las ventas y del beneficio operativo ajustado «ampliamente alineado» a tipo constante [1, 15]. En abril (1T26, +10,8 %) el mensaje cambió de tono: las gafas con IA crecieron solo a un dígito medio frente al 18 % del final de 2025, y el director financiero cifró en 300 M EUR el coste de los aranceles de 2025 [20, 21]. Las preguntas se repitieron sobre la desaceleración de las gafas inteligentes, su margen y la competencia de Google, Samsung y Apple; el consejero delegado dijo que no había visto productos rivales reales en el mercado [21]. En julio (1S26: +9,7 %, margen operativo ajustado del 18,6 %, +80 pb) la dirección avisó de una base de comparación más dura en el segundo semestre [3, 4]; los analistas leyeron después que había rebajado las expectativas de ventas de 2026.",
+    "confianza": "Media"
+  },
+  "balance": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "activo_total": null,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 23540,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": null,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "patrimonio_neto": null,
+        "minoritarios": null,
+        "reservas": null
+      },
+      {
+        "periodo": "2022",
+        "activo_total": null,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 22414,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": null,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "patrimonio_neto": null,
+        "minoritarios": null,
+        "reservas": null
+      },
+      {
+        "periodo": "2023",
+        "activo_total": null,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 21631,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": null,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "patrimonio_neto": null,
+        "minoritarios": null,
+        "reservas": null
+      },
+      {
+        "periodo": "2024",
+        "activo_total": null,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 23277,
+        "fondo_comercio": 32100,
+        "intangibles": 11000,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 2251,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "patrimonio_neto": null,
+        "minoritarios": null,
+        "reservas": null
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 63895,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 24402,
+        "fondo_comercio": 31013,
+        "intangibles": 9753,
+        "inmovilizado_material": null,
+        "existencias": 3542,
+        "clientes": 3765,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 3544,
+        "deuda_financiera": 10844,
+        "arrendamientos": null,
+        "patrimonio_neto": 39493,
+        "minoritarios": null,
+        "reservas": null
+      }
+    ],
+    "vencimientos": [],
+    "liquidez": "Caja de 3.544 M EUR a cierre de 2025 [7]; deuda neta de 13.390 M EUR a 30-jun-2026 incluidos arrendamientos, 2,0 veces el EBITDA de 12 meses [4].",
+    "rating": null,
+    "coste_deuda_pct": null,
+    "vida_media_anios": null,
+    "otros_pasivos": "No hemos podido leer las notas del informe anual (entorno sin acceso a la web de la empresa). La deuda neta sin arrendamientos ronda 7.300 M EUR según MarketScreener [19]; con arrendamientos, 13.390 M EUR a junio de 2026 [4]. La deuda financiera bruta de 2025 (10.844 M) es estimación propia: deuda neta sin arrendamientos más caja. Los minoritarios (128 M EUR de resultado en 2025) vienen de filiales no participadas al 100 % [5].",
+    "comentario": "El activo está dominado por el fondo de comercio (31.013 M EUR) y los intangibles (9.753 M), herencia de la fusión de 2018 y de GrandVision: el 64 % del activo total [7]. La deuda neta con arrendamientos subió de 10.250 M EUR a finales de 2022 a 13.390 M en junio de 2026, por Supreme y Heidelberg (2024) y por el pago del dividendo [4, 12]; aun así, la ratio sobre EBITDA es de 2,0 veces [4].",
+    "confianza": "Baja"
+  },
+  "flujos": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 4545,
+        "capex": 1030,
+        "pagos_arrendamientos": null,
+        "adquisiciones": 7078,
+        "desinversiones": 0,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 4783,
+        "capex": 1572,
+        "pagos_arrendamientos": null,
+        "adquisiciones": 965,
+        "desinversiones": 0,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 4861,
+        "capex": 1531,
+        "pagos_arrendamientos": 930,
+        "adquisiciones": 114,
+        "desinversiones": 0,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 4874,
+        "capex": 1522,
+        "pagos_arrendamientos": 952,
+        "adquisiciones": 1755,
+        "desinversiones": 0,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 5291,
+        "capex": 1525,
+        "pagos_arrendamientos": 966,
+        "adquisiciones": 911,
+        "desinversiones": 0,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      }
+    ],
+    "comentario": "El flujo operativo crece de 4.545 M EUR en 2021 a 5.291 M en 2025 y el capex se estabiliza en unos 1.525 M (5,4 % de las ventas) [6]. La empresa calcula el flujo de caja libre restando también los pagos de arrendamientos: 2.400 M en 2023 y 2024, y un récord de 2.800 M en 2025; 1.070 M en el 1S26, más de 100 M por encima del 1S25 [1, 3, 13, 14]. Los pagos de arrendamientos de 2023-2025 (930-966 M) son estimación propia: flujo operativo menos capex menos el flujo libre publicado. Los dividendos se pagan en parte en acciones (opción de dividendo en acciones a 175,06 EUR en 2026), por lo que la caja que sale es menor que el dividendo bruto. Las compras suman 10.823 M EUR en cinco años, dos tercios en 2021 (GrandVision) [6].",
+    "confianza": "Media"
+  },
+  "calidad": {
+    "auditor": null,
+    "anios_auditor": null,
+    "opinion": "Favorable (cuentas de 2025 auditadas; informe en emisión a 11-feb-2026)",
+    "comentario": "Las cuentas de 2025 estaban auditadas al publicar los resultados [1]. La calidad del beneficio depende de la lectura de los ajustes: el beneficio ajustado supera al publicado en 842 M EUR (36 %), sobre todo por la amortización de intangibles de la fusión, que no es caja; eso es razonable, pero el mercado y los analistas valoran sobre la cifra ajustada y la diferencia no se reduce deprisa [1]. El flujo de caja libre (2.800 M) es un 21 % mayor que el beneficio publicado y un 11 % menor que el ajustado, lo que da credibilidad a la cifra ajustada [1]. El motor no puede calcular bien Altman, Piotroski ni Beneish con el balance incompleto que tenemos: no los interpretamos.",
+    "senales": [
+      {
+        "senal": "Fondo de comercio e intangibles = 64 % del activo",
+        "nivel": "Media",
+        "comentario": "Un deterioro (GrandVision, Supreme) no afectaría a la caja pero sí al beneficio publicado [7]."
+      },
+      {
+        "senal": "Diferencia persistente entre beneficio ajustado y publicado (≈840 M EUR)",
+        "nivel": "Baja",
+        "comentario": "Es amortización de intangibles de compras; el FCF la respalda [1]."
+      }
+    ],
+    "confianza": "Baja"
+  },
+  "rentabilidad": {
+    "comentario": "El ROIC del motor (11,6 % en 2025) está inflado porque el balance que tenemos está incompleto. Medido sobre el capital total (patrimonio de 39.493 M más la deuda neta de 13.390 M), el rendimiento es bajo: un 4,8 % con el EBIT publicado y un 6,3 % con el EBIT ajustado de 4.459 M, ambos por debajo del WACC del 7,32 % [1, 7]. Es la huella de haber pagado con prima la fusión de 2018 y GrandVision: el fondo de comercio y los intangibles suman 40.766 M, el 64 % del activo [7]. Sin ellos, el negocio operativo rinde más del 25 % sobre unos 12.000 M de capital tangible (estimación propia), señal de foso. El ROIC incremental histórico que calcula el motor (4 %) confirma que el crecimiento reciente, muy apoyado en compras (Supreme, Heidelberg), ha creado poco valor. Hoya, su rival en lentes, rinde el 45 % sin fondo de comercio relevante [58].",
+    "confianza": "Baja"
+  },
+  "capital": {
+    "politica": "Dividendo de 4,00 EUR por acción con cargo a 2025 (3,95 EUR en 2023 y 2024), con opción de cobro en acciones, lo que diluye ligeramente el capital (de 445,5 a 464,9 millones de acciones diluidas entre 2021 y 2025) [1, 5, 24]. La prioridad declarada es crecer: compras de complemento (Supreme, Heidelberg, cadenas en EE. UU. y Europa), inversión en gafas inteligentes y tecnología médica, y mantener la deuda neta en torno a 2 veces el EBITDA [1, 4].",
+    "adquisiciones": [
+      {
+        "anio": "2021",
+        "objetivo": "GrandVision (cadena óptica europea)",
+        "importe": 7078,
+        "ev_ebitda": null,
+        "financiacion": "Caja y deuda",
+        "resultado": "Integrada; el canal propio crece al 6,7 % (2025) [1, 6]."
+      },
+      {
+        "anio": "2024",
+        "objetivo": "Supreme (marca de ropa)",
+        "importe": 1330,
+        "ev_ebitda": null,
+        "financiacion": "Caja (1.500 M USD)",
+        "resultado": "Diversificación lejos del núcleo; sin cifras propias publicadas [23]."
+      },
+      {
+        "anio": "2024",
+        "objetivo": "Heidelberg Engineering (80 %, diagnóstico oftálmico)",
+        "importe": 350,
+        "ev_ebitda": null,
+        "financiacion": "Caja",
+        "resultado": "Base del negocio de tecnología médica [23]."
+      }
+    ],
+    "comentario": "La dirección ha usado el balance sobre todo para comprar: 10.823 M EUR en cinco años, frente a un dividendo que sube despacio y sin recompras relevantes [6]. El rendimiento de ese capital es bajo: el ROIC publicado (≈5 %) está por debajo del coste del capital, porque el capital invertido incluye 40.766 M EUR de fondo de comercio e intangibles [7]. Con el beneficio ajustado el ROIC ronda el 8 %, apenas por encima del WACC. Supreme, una marca de ropa, es la compra más difícil de justificar por negocio. La dilución del dividendo en acciones (+4 % de acciones en cinco años) resta al BPA.",
+    "confianza": "Media"
+  },
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "Francesco Milleri",
+        "cargo": "Presidente y consejero delegado",
+        "desde": "2018",
+        "participacion_pct": null,
+        "trayectoria": "Consultor y empresario; consejero delegado de Luxottica desde 2017 y artífice de la fusión con Essilor. Presidente y consejero delegado desde 2022; bajo su mandato las ventas pasaron de 19.820 a 28.491 M EUR (2021-2025) [1]."
+      },
+      {
+        "nombre": "Paul du Saillant",
+        "cargo": "Consejero delegado adjunto",
+        "desde": "2020",
+        "participacion_pct": null,
+        "trayectoria": "Procedente de Essilor; responsable de la integración y de las operaciones."
+      },
+      {
+        "nombre": "Stefano Grassi",
+        "cargo": "Director financiero",
+        "desde": "2019",
+        "participacion_pct": null,
+        "trayectoria": "Director financiero de Luxottica antes de la fusión; cuantificó en 300 M EUR el coste de los aranceles de 2025 [21]."
+      }
+    ],
+    "historial_guidance": [
+      {
+        "anio": "2025",
+        "guia": "Objetivos 2022-2026: crecimiento anual de un dígito alto a tipo constante y margen operativo ajustado del 19-20 % en 2026",
+        "real": "+11,2 % a tipo constante en 2025; margen ajustado del 16,0 %",
+        "cumplida": "Parcial"
+      },
+      {
+        "anio": "2026",
+        "guia": "Guía a cinco años: crecimiento sólido de ventas y beneficio operativo ajustado alineado (feb-26)",
+        "real": "+9,7 % y margen del 18,6 % en el 1S26; la dirección rebajó después las expectativas de ventas del año",
+        "cumplida": "Parcial"
+      }
+    ],
+    "comentario": "El equipo es estable y viene de la fusión (Milleri, du Saillant, Grassi). La credibilidad está tocada en dos frentes: el objetivo de margen del 19-20 % de 2026 se abandonó en febrero por una guía cualitativa a cinco años, y en septiembre la dirección empujó a los analistas a bajar las ventas de 2026 [1]. La sucesión es el riesgo: Milleri concentra presidencia y dirección y su continuidad al frente de Delfin está en cuestión [37].",
+    "confianza": "Media"
+  },
+  "gobierno": {
+    "consejo": [
+      {
+        "nombre": "Francesco Milleri",
+        "cargo": "Presidente y consejero delegado",
+        "tipo": "Ejecutivo",
+        "desde": "2018",
+        "comisiones": null
+      },
+      {
+        "nombre": "Paul du Saillant",
+        "cargo": "Consejero delegado adjunto",
+        "tipo": "Ejecutivo",
+        "desde": "2020",
+        "comisiones": null
+      }
+    ],
+    "presidente_ceo_separados": false,
+    "presidente_ejecutivo": true,
+    "consejero_coordinador": null,
+    "una_accion_un_voto": null,
+    "operaciones_vinculadas_relevantes": false,
+    "variable_ligado_rentabilidad": null,
+    "auditoria_independiente": null,
+    "insiders_sin_operaciones": false,
+    "accionista_control": true,
+    "presidente_vinculado_control": true,
+    "cambios_cupula_24m": 0,
+    "voto_remuneracion_pct": null,
+    "voto_remuneracion_contra_pct": null,
+    "voto_remuneracion_contra_libre_pct": null,
+    "voto_cupula_pct": null,
+    "remuneracion_ceo": null,
+    "remuneracion": "La política de 2026 (resoluciones 9 y 10 de la junta del 28 de abril) permite una remuneración excepcional de hasta una vez la remuneración total máxima del directivo, algo que la AFG señaló como alerta [39, 40]. No hemos podido leer el informe de remuneraciones ni el resultado de las votaciones: no damos cifras.",
+    "accionistas": [
+      {
+        "nombre": "Delfin (familia Del Vecchio)",
+        "pct": 32.4,
+        "tipo": "Holding familiar",
+        "variacion": "Leonardo Maria Del Vecchio compra el 25 % de sus hermanos en Delfin (≈10.000 M EUR, abril de 2026) y pasaría al 37,5 % del holding [38]."
+      },
+      {
+        "nombre": "Meta Platforms",
+        "pct": 3,
+        "tipo": "Socio industrial",
+        "variacion": "Al menos un 3 %, confirmado por un consejero a finales de 2025 [41, 43]."
+      }
+    ],
+    "insiders": [],
+    "control_y_defensas": "Delfin controla de hecho la junta con el 32,4 % y el presidente y consejero delegado (Milleri) preside también Delfin [37, 38]. En septiembre de 2026, Leonardo Maria Del Vecchio, que se hace con el control de Delfin, se opuso al control de facto de Milleri y sugirió que los accionistas de Delfin podrían no renovarle la presidencia del holding el año próximo; el consejo de EssilorLuxottica respondió renovándole por unanimidad su confianza como presidente y consejero delegado [37]. Meta, socio comercial, tiene al menos un 3 % [41].",
+    "alertas": [
+      "Disputa entre el heredero que controla Delfin y el presidente y consejero delegado (septiembre de 2026) [37].",
+      "Presidencia y dirección ejecutiva en la misma persona, que preside además el accionista de control [37].",
+      "Política de remuneración con cláusula de remuneración excepcional señalada por la AFG [39]."
+    ],
+    "confianza": "Baja"
+  },
+  "consenso": {
+    "guidance": "En febrero de 2026, con las cuentas de 2025, la empresa sustituyó los objetivos del plan 2022-2026 por una guía a cinco años: crecimiento «sólido» de las ventas y del beneficio operativo ajustado «ampliamente alineado», a tipo constante [1]. La confirmó en abril y en julio, avisando de una base de comparación más exigente en el segundo semestre. A finales de septiembre, según Bernstein, la dirección empujó al mercado a rebajar las previsiones de ventas de 2026 [29]. Las ventas del tercer trimestre se publican el 20 de octubre [73].",
+    "estimaciones": [
+      {
+        "periodo": "2026e",
+        "ingresos": 30266,
+        "ebitda": 7221,
+        "ebit": null,
+        "bpa": 5.77,
+        "dpa": null,
+        "fuente": "MarketScreener, 23-sep-2026 (BPA = beneficio neto 2.650 M / 459,6 M acciones, base publicada) [47]"
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 32871,
+        "ebitda": 7936,
+        "ebit": null,
+        "bpa": 6.62,
+        "dpa": null,
+        "fuente": "MarketScreener, 23-sep-2026 (beneficio neto ≈3.040 M) [47]"
+      }
+    ],
+    "recomendaciones": {
+      "n_analistas": null,
+      "comprar": null,
+      "mantener": null,
+      "vender": null,
+      "po_medio": null,
+      "po_min": 157,
+      "po_max": 300
+    },
+    "revisiones": "Las revisiones son a la baja y continuas desde abril. En septiembre y octubre: Goldman de 200 a 165 EUR (neutral), RBC de 230 a 190 EUR, Barclays de 265 a 260 EUR, Deutsche Bank de 174 a 157 EUR (mantener), Oddo BHF de 220 a 186 EUR, Bernstein de 200 a 185 EUR, BofA de 237 a 205 EUR (comprar) y Jefferies a 250 EUR (comprar) [29, 50, 51, 52, 74]. El motivo es la desaceleración de las gafas con IA frente a una base alta, la competencia y los aranceles. Los objetivos medios publicados por los agregadores (261-279 EUR) son anteriores a estos recortes y no los usamos [48, 49].",
+    "base_ebitda": "NIIF",
+    "ajuste_ebitda_pct_ventas": null,
+    "confianza": "Baja"
+  },
+  "bolsa": null,
+  "multiplos_historicos": {
+    "serie": [
+      {
+        "anio": "2021",
+        "precio_cierre": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2022",
+        "precio_cierre": 177,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2023",
+        "precio_cierre": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2024",
+        "precio_cierre": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2025",
+        "precio_cierre": 269.9,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      }
+    ],
+    "comentario": "Solo tenemos dos cierres anuales fiables: unos 177 EUR al final de 2022 y unos 270 EUR al final de 2025 (deducido de la caída del 39,09 % en el año hasta 164,40 EUR del 22 de julio) [54, 55]. En 2024 la acción subió más de un 31 % [56]. Con el BPA ajustado, el PER fue de unas 27,5 veces en 2022 y 39,8 veces en 2025, máximo alcanzado con la euforia de las gafas con IA (323,80 EUR el 13-nov-2025) [57]. Hoy, a 146,30 EUR, cotiza a unas 21,5 veces el BPA ajustado de 2025 y a 18,4 veces nuestro BPA ajustado de 2027e: el múltiplo más bajo en al menos cinco años.",
+    "confianza": "Baja"
+  },
+  "comparables": {
+    "criterio": "Nueve cotizadas de salud visual y auditiva y tecnología médica de consumo: Hoya (2.º en lentes), Alcon, Cooper y Bausch + Lomb (lentes de contacto y cirugía ocular), Fielmann y National Vision (cadenas ópticas), Sonova y Demant (audición, mismo modelo de fabricante con red propia) y Terumo (tecnología médica). Warby Parker queda fuera (PER de 87 veces, sin beneficio estable). No hay comparable puro de monturas y gafas de sol de lujo cotizado y líquido (Safilo es pequeño). Cifras de los informes del repo de Hoya (14-oct), Cooper y Fielmann (9-oct), convertidas a EUR con 180,2 JPY y 1,1186 USD por EUR [36, 58, 59, 60, 61, 62, 63, 64].",
+    "empresas": [
+      {
+        "nombre": "Hoya",
+        "ticker": "7741",
+        "pais": "JP",
+        "capitalizacion": 46421,
+        "ev_ventas": 8.07,
+        "ev_ebitda_ltm": 22.4,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 31.7,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": 36.1,
+        "roic_pct": 45.2,
+        "dn_ebitda": -1.5,
+        "fcf_yield_pct": 2.8
+      },
+      {
+        "nombre": "Alcon",
+        "ticker": "ALC",
+        "pais": "CH",
+        "capitalizacion": 27281,
+        "ev_ventas": 3.09,
+        "ev_ebitda_ltm": 11.7,
+        "ev_ebitda_ntm": 10.6,
+        "per_ntm": null,
+        "crecimiento_pct": 6.2,
+        "margen_ebitda_pct": 25.7,
+        "roic_pct": 4.75,
+        "dn_ebitda": 1.2,
+        "fcf_yield_pct": 5.74
+      },
+      {
+        "nombre": "Cooper Companies",
+        "ticker": "COO",
+        "pais": "US",
+        "capitalizacion": 9253,
+        "ev_ventas": 3.07,
+        "ev_ebitda_ltm": 10.6,
+        "ev_ebitda_ntm": 10.3,
+        "per_ntm": 15.3,
+        "crecimiento_pct": 3.2,
+        "margen_ebitda_pct": 29.1,
+        "roic_pct": 4.6,
+        "dn_ebitda": 1.9,
+        "fcf_yield_pct": 6.6
+      },
+      {
+        "nombre": "Bausch + Lomb",
+        "ticker": "BLCO",
+        "pais": "CA",
+        "capitalizacion": 5476,
+        "ev_ventas": 2.01,
+        "ev_ebitda_ltm": 10.7,
+        "ev_ebitda_ntm": 9.5,
+        "per_ntm": null,
+        "crecimiento_pct": 6.3,
+        "margen_ebitda_pct": 17.5,
+        "roic_pct": 3.61,
+        "dn_ebitda": 5.3,
+        "fcf_yield_pct": 2.24
+      },
+      {
+        "nombre": "Fielmann",
+        "ticker": "FIE",
+        "pais": "DE",
+        "capitalizacion": 3115,
+        "ev_ventas": 1.58,
+        "ev_ebitda_ltm": 6.8,
+        "ev_ebitda_ntm": 6.6,
+        "per_ntm": 13.7,
+        "crecimiento_pct": 5.4,
+        "margen_ebitda_pct": 23,
+        "roic_pct": 13.9,
+        "dn_ebitda": 1.1,
+        "fcf_yield_pct": 6.5
+      },
+      {
+        "nombre": "National Vision",
+        "ticker": "EYE",
+        "pais": "US",
+        "capitalizacion": 1183,
+        "ev_ventas": 0.75,
+        "ev_ebitda_ltm": 7.4,
+        "ev_ebitda_ntm": 6.5,
+        "per_ntm": 18.7,
+        "crecimiento_pct": 4.5,
+        "margen_ebitda_pct": 9.7,
+        "roic_pct": 4.4,
+        "dn_ebitda": 0.9,
+        "fcf_yield_pct": 3.7
+      },
+      {
+        "nombre": "Sonova",
+        "ticker": "SOON",
+        "pais": "CH",
+        "capitalizacion": 16267,
+        "ev_ventas": 4.4,
+        "ev_ebitda_ltm": 16.7,
+        "ev_ebitda_ntm": 14.5,
+        "per_ntm": 22.8,
+        "crecimiento_pct": 7,
+        "margen_ebitda_pct": 26,
+        "roic_pct": 17,
+        "dn_ebitda": 1,
+        "fcf_yield_pct": 4.1
+      },
+      {
+        "nombre": "Demant",
+        "ticker": "DEMANT",
+        "pais": "DK",
+        "capitalizacion": 9069,
+        "ev_ventas": 3.51,
+        "ev_ebitda_ltm": 15.1,
+        "ev_ebitda_ntm": 13,
+        "per_ntm": 21.3,
+        "crecimiento_pct": 9.8,
+        "margen_ebitda_pct": 23.3,
+        "roic_pct": 10.7,
+        "dn_ebitda": 3.3,
+        "fcf_yield_pct": 4.9
+      },
+      {
+        "nombre": "Terumo",
+        "ticker": "4543",
+        "pais": "JP",
+        "capitalizacion": 18896,
+        "ev_ventas": 2.95,
+        "ev_ebitda_ltm": 11.9,
+        "ev_ebitda_ntm": 10,
+        "per_ntm": 17.8,
+        "crecimiento_pct": 9,
+        "margen_ebitda_pct": 24,
+        "roic_pct": null,
+        "dn_ebitda": 0.11,
+        "fcf_yield_pct": 4.4
+      }
+    ],
+    "comentario": "EssilorLuxottica cotiza a 12,5 veces el EBITDA de los últimos 12 meses y 10,5 veces el de los próximos, en la mediana de los comparables (11,7x y 10,2x), y a 22,7 veces el BPA publicado de los próximos 12 meses frente a 18,7x de mediana [36, 58, 59, 60, 61, 62]. Ese PER exagera la prima: el BPA publicado lleva unos 1,8 EUR por acción de amortización de intangibles de la fusión, mientras que la mayoría de los comparables (Hoya, Sonova, Demant, Cooper) cotizan sobre beneficio ajustado; con el BPA ajustado el PER es de unas 18-20 veces, en línea con la mediana. Por eso el valor por PER (120,40 EUR) es un suelo y el de EV/EBITDA (140,58 EUR) la referencia. El margen EBITDA (22,9 %) está en la mediana (24 %) y el crecimiento esperado (6,3 %) también; la prima de Hoya (31,7x) se debe a sus semiconductores [58]. La regresión múltiplo-crecimiento no explica nada (R² 0,27) y no se usa.",
+    "confianza": "Media"
+  },
+  "transacciones": {
+    "operaciones": [
+      {
+        "fecha": "2026-03",
+        "objetivo": "GN Hearing (audífonos)",
+        "comprador": "Amplifon",
+        "ev": 2300,
+        "ev_ventas": 2.3,
+        "ev_ebitda": 10.5,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "≈2.300 M EUR sin caja ni deuda; ventas ≈1.000 M y EBITDA ajustado ≈220 M EUR, sin sinergias [65]."
+      },
+      {
+        "fecha": "2025-10",
+        "objetivo": "Hologic (tecnología médica)",
+        "comprador": "Blackstone y TPG",
+        "ev": 16360,
+        "ev_ventas": 4.46,
+        "ev_ebitda": 13.7,
+        "prima_pct": 46,
+        "excluir": false,
+        "comentario": "Hasta 79 USD por acción; EBITDA ajustado de 1.339,7 M USD [66]."
+      },
+      {
+        "fecha": "2023-06",
+        "objetivo": "Xiidra (Novartis)",
+        "comprador": "Bausch + Lomb",
+        "ev": 1564,
+        "ev_ventas": 3.59,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Pago inicial de 1.750 M USD [68]."
+      },
+      {
+        "fecha": "2021-11",
+        "objetivo": "Generate Life Sciences",
+        "comprador": "Cooper Companies",
+        "ev": 1430,
+        "ev_ventas": 6.4,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Fertilidad y bancos de células; ventas ≈250 M USD [67]."
+      },
+      {
+        "fecha": "2024-07",
+        "objetivo": "Shopko Optical (cadena óptica de EE. UU.)",
+        "comprador": "Fielmann Group",
+        "ev": 278.5,
+        "ev_ventas": 1.62,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Ventas proforma de 171,4 M EUR [69]."
+      },
+      {
+        "fecha": "2019-07",
+        "objetivo": "GrandVision (76,72 %)",
+        "comprador": "EssilorLuxottica",
+        "ev": null,
+        "ev_ventas": null,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": true,
+        "comentario": "28 EUR por acción; el 76,72 % costaba unos 5.500 M EUR con 3.700 M EUR de ventas; sin valor empresa ni EBITDA publicados [35]."
+      }
+    ],
+    "comentario": "Las dos operaciones con EBITDA publicado se pagaron a 10,5 y 13,7 veces, por debajo o en línea con lo que hoy paga el mercado por EssilorLuxottica (unas 12 veces el EBITDA de 2025). Con Delfin al 32,4 % y una capitalización de 67.000 M EUR, una opa es improbable; la disputa en Delfin podría, como mucho, llevar a cambios en el holding, no en el capital de la cotizada [65, 66].",
+    "confianza": "Media"
+  },
+  "dcf": {
+    "anios": [
+      {
+        "periodo": "2026e",
+        "crecimiento_pct": 6,
+        "margen_ebitda_pct": 23.8,
+        "amortizacion_pct_ventas": 10.8,
+        "capex_pct_ventas": 8.7,
+        "nwc_pct_ventas": 25.5,
+        "tasa_impositiva_pct": 25,
+        "fijo": true
+      },
+      {
+        "periodo": "2027e",
+        "crecimiento_pct": 7.5,
+        "margen_ebitda_pct": 24.2,
+        "amortizacion_pct_ventas": 10.5,
+        "capex_pct_ventas": 8.6,
+        "nwc_pct_ventas": 25.5,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      },
+      {
+        "periodo": "2028e",
+        "crecimiento_pct": 7,
+        "margen_ebitda_pct": 24.6,
+        "amortizacion_pct_ventas": 10.2,
+        "capex_pct_ventas": 8.5,
+        "nwc_pct_ventas": 25.5,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      },
+      {
+        "periodo": "2029e",
+        "crecimiento_pct": 6,
+        "margen_ebitda_pct": 24.8,
+        "amortizacion_pct_ventas": 9.8,
+        "capex_pct_ventas": 8.4,
+        "nwc_pct_ventas": 25.5,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      },
+      {
+        "periodo": "2030e",
+        "crecimiento_pct": 5.5,
+        "margen_ebitda_pct": 25,
+        "amortizacion_pct_ventas": 9.5,
+        "capex_pct_ventas": 8.3,
+        "nwc_pct_ventas": 25.5,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      },
+      {
+        "periodo": "2031e",
+        "crecimiento_pct": 5,
+        "margen_ebitda_pct": 25,
+        "amortizacion_pct_ventas": 9,
+        "capex_pct_ventas": 8.2,
+        "nwc_pct_ventas": 25.5,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      },
+      {
+        "periodo": "2032e",
+        "crecimiento_pct": 4.5,
+        "margen_ebitda_pct": 25,
+        "amortizacion_pct_ventas": 8.5,
+        "capex_pct_ventas": 8,
+        "nwc_pct_ventas": 25.5,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      },
+      {
+        "periodo": "2033e",
+        "crecimiento_pct": 4,
+        "margen_ebitda_pct": 25,
+        "amortizacion_pct_ventas": 8,
+        "capex_pct_ventas": 7.8,
+        "nwc_pct_ventas": 25.5,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      },
+      {
+        "periodo": "2034e",
+        "crecimiento_pct": 3.5,
+        "margen_ebitda_pct": 25,
+        "amortizacion_pct_ventas": 7.5,
+        "capex_pct_ventas": 7.6,
+        "nwc_pct_ventas": 25.5,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      },
+      {
+        "periodo": "2035e",
+        "crecimiento_pct": 3,
+        "margen_ebitda_pct": 25,
+        "amortizacion_pct_ventas": 7,
+        "capex_pct_ventas": 7.5,
+        "nwc_pct_ventas": 25.5,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      }
+    ],
+    "wacc": {
+      "tasa_libre_pct": 3.2,
+      "beta": 0.9,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 0,
+      "coste_deuda_pct": 3.5,
+      "tasa_impositiva_pct": 25,
+      "peso_deuda_pct": 15
+    },
+    "terminal": {
+      "metodo": "gordon",
+      "crecimiento_pct": 2.5,
+      "multiplo_salida": 12
+    },
+    "etapa2": {
+      "usar": false,
+      "anios": 5,
+      "margen_final_pct": null,
+      "justificacion": null
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "Partimos de 2026e con un +6,0 % publicado (fijo: dos trimestres cerrados): +9,7 % a tipo constante en el 1S26 y un segundo semestre más flojo por la base de comparación, menos unos 3 puntos de dólar [3]. Para 2027-28 usamos 7,5 % y 7,0 %, por debajo del consenso (32.871 M en 2027e, +8,6 %) [47] y del crecimiento orgánico de 2025 (11,2 %), porque suponemos que las gafas con IA crecen menos [21]. Bajamos al 3 % en 2035, cerca del terminal. La media de la proyección es del 5,2 %, frente al 6-11 % a tipo constante de 2024-2026.",
+      "margenes": "El margen EBITDA publicado fue del 22,9 % en 2025, con los aranceles (≈300 M) y la mezcla de gafas con IA en contra [1, 21]. El consenso de 2026 (7.221 M) implica un 23,9 %; usamos 23,8 % y subimos medio punto al año hasta el 25 %, coherente con el margen operativo ajustado del 18,6 % del 1S26 (+80 pb) [3, 47]. No llegamos al objetivo antiguo del 19-20 % de margen ajustado. El margen de 2025 es el más bajo desde 2022 (24,8 % en 2022 según nuestras cifras).",
+      "inversion": "La amortización (10,8 % de las ventas en 2026e) incluye unos 2,5-3 puntos de intangibles de la fusión, que no hay que reponer; baja al 7 % en 2035. El capex (8,7 % al principio, 7,5 % al final) suma el capex del estado de flujos (5,4 % de las ventas en 2025) y las altas de derechos de uso (≈3,3 %, igual a los pagos de arrendamientos), porque los arrendamientos están en la deuda del puente [6]. En el último año el capex (7,5 %) supera a la amortización (7,0 %). El circulante se mantiene en el 25,5 % de las ventas: existencias más clientes, sin proveedores (no los tenemos), lo que exagera algo la inversión en circulante y es conservador.",
+      "wacc": "Bund a 10 años del 3,2 % (agosto de 2026, nivel más alto desde 2011) [71]; beta de 0,9, por encima de la de Yahoo para la línea extrabursátil (0,55) y en línea con la histórica de la línea de París (0,90) [72]; prima de mercado del 5,5 %; sin prima adicional (vende en todo el mundo). Coste de la deuda del 3,5 % antes de impuestos y peso de la deuda del 15 % (13.390 M sobre 67.239 M de capitalización más deuda). WACC del 7,32 %.",
+      "terminal": "Gordon con un 2,5 % de crecimiento: inflación del euro del 2 % más medio punto real, por debajo de la tasa libre (3,2 %) menos medio punto. El valor terminal pesa el 68 % del valor. Implica un múltiplo de salida de unas 12-13 veces el EBITDA, en línea con lo que hoy pagan el mercado (12,5x) y los comparables (11,7x) [36, 58, 59, 60, 61, 62]."
+    },
+    "sostenibilidad": {
+      "puente_ingresos": [
+        {
+          "periodo": "2026e",
+          "volumen_pct": 6,
+          "precio_pct": 3,
+          "otros_pct": -3,
+          "comentario": "Volumen (gafas con IA que casi se duplican en el 2T, miopía +24 %) y precio y mezcla en lentes dan +9 % a tipo constante; el dólar resta unos 3 puntos [3, 18]."
+        },
+        {
+          "periodo": "2027e",
+          "volumen_pct": 4.5,
+          "precio_pct": 2.5,
+          "otros_pct": 0.5,
+          "comentario": "Volumen del 4,5 % (lentes, tiendas propias, gafas con IA a menor ritmo), 2,5 % de precio y medio punto de compras pequeñas."
+        },
+        {
+          "periodo": "2028e",
+          "volumen_pct": 4.5,
+          "precio_pct": 2.5,
+          "otros_pct": 0,
+          "comentario": "Volumen del 4,5 % y precio del 2,5 %, por debajo del 6-11 % orgánico de 2024-2026 [1, 14]."
+        },
+        {
+          "periodo": "2029e",
+          "volumen_pct": 3.5,
+          "precio_pct": 2.5,
+          "otros_pct": 0,
+          "comentario": "El volumen se modera al 3,5 %; precio en línea con la inflación más mezcla."
+        },
+        {
+          "periodo": "2030e",
+          "volumen_pct": 3,
+          "precio_pct": 2.5,
+          "otros_pct": 0,
+          "comentario": "Volumen del 3 % (envejecimiento y miopía) y precio del 2,5 %."
+        }
+      ],
+      "mercado_final": null,
+      "veredicto": "Sí",
+      "justificacion": "La proyección pide un 5,2 % de crecimiento medio, por debajo de lo que la empresa ha hecho sin compras (6,0 % en 2024, 11,2 % en 2025 y 9,7 % en el 1S26 a tipo constante) [1, 3, 14]. El motor no puede hacer la prueba de reinversión porque la amortización incluye unos 800 M de intangibles de la fusión que no hay que reponer (reinversión del 3 % del NOPAT): hecha a mano, el capex con derechos de uso (8,2 % medio) supera a la amortización sin esos intangibles (≈7,5-8 %), así que la proyección sí financia el crecimiento. El poder de precios está demostrado en lentes (margen bruto ajustado del 61 %) y el foso es amplio; la cuota no la conocemos (mercado_final nulo) y el riesgo está en las gafas con IA, no en el núcleo."
+    },
+    "lectura": "El DCF da 174,69 EUR por acción (rango de 143,90 a 221,35 con el WACC y el crecimiento terminal ±0,5 puntos), un 19,4 % sobre el precio, con el valor terminal en el 68 %. El DCF inverso dice que a 146,30 EUR el mercado descuenta un crecimiento anual del 2,3 % en 2027-2035 (frente a nuestro 5,1 %) con un margen EBITDA del 22,8 %, el de 2025, o una rentabilidad implícita del 8,1 %, por encima de nuestro WACC del 7,32 %. Es un supuesto conservador: la empresa nunca ha crecido tan poco sin una pandemia, y el margen operativo ajustado ya sube en 2026. El precio descuenta que las gafas con IA no aportan y que los aranceles se quedan; no descuenta que el núcleo de lentes siga creciendo al 5-6 %. Con la prima implícita del mercado (4,2 %) el DCF sube a 229,69 EUR: la acción está barata frente al mercado, pero no tanto frente a un coste del capital exigente.",
+    "confianza": "Baja"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 30,
+        "ajuste_crecimiento_pp": -2.5,
+        "ajuste_margen_pp": -1.5,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": 2,
+        "multiplo_salida": null,
+        "narrativa": "Las gafas con IA se estancan ante Google, Samsung y Apple, los aranceles se quedan y el lujo sigue flojo: el crecimiento cae 2,5 puntos al año y el margen EBITDA 1,5 puntos, como en 2025 cuando los aranceles y la mezcla le quitaron 70 pb de margen ajustado."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "El núcleo de lentes y tiendas crece al 6-7 % con precio y mezcla, las gafas con IA crecen más despacio y el margen EBITDA sube al 25 % en 2030."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 20,
+        "ajuste_crecimiento_pp": 1.5,
+        "ajuste_margen_pp": 0.7,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Las gafas con IA y el control de miopía mantienen el crecimiento cerca del 9 % y el margen recupera el camino del antiguo objetivo del 19-20 % de margen operativo ajustado."
+      }
+    ],
+    "comentario": "En el DCF, el bajista (122,34 EUR) pierde un 16,4 % y el alcista (201,75 EUR) gana un 37,9 %: asimetría de 2,31 veces, favorable. A 12 meses, con el PER de la regla común, la asimetría es parecida (bajista −16,9 %, alcista +55,8 %), pero el bajista pesa un 30 % porque la desaceleración de las gafas con IA ya se está viendo en los recortes de los analistas [29, 50, 51, 52].",
+    "confianza": "Baja"
+  },
+  "suma_partes": {
+    "aplica": false,
+    "descuento_holding_pct": 0,
+    "partes": [],
+    "comentario": "No aplica: los segmentos (Professional Solutions y Direct to Consumer) no publican resultado y comparten marcas y fábricas; las gafas con IA no se desglosan.",
+    "confianza": "Baja"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2026-06-30",
+      "deuda_financiera": 13390,
+      "arrendamientos": 0,
+      "caja": 0,
+      "minoritarios": 1000,
+      "pensiones": 0,
+      "asociadas": 0,
+      "otros_ajustes": 0
+    },
+    "rab": null,
+    "referencia_mercado": {
+      "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+      "prima_implicita_pct": 4.2,
+      "fecha": "2026-10",
+      "fuente": "Damodaran, ERPbymonth [70]"
+    },
+    "pesos": {
+      "dcf": 40,
+      "comparables": 30,
+      "transacciones": 0,
+      "suma_partes": 0,
+      "escenarios": 30
+    },
+    "objetivo_12m": {
+      "ejercicio": "2028e",
+      "casos": [
+        {
+          "escenario": "Bajista",
+          "metrica": "PER 2028e (BPA ajustado)",
+          "beneficio_por_accion": 7.54,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 33.137 M (−2,5 puntos de crecimiento en 2027-28: las gafas con IA se estancan) y margen EBITDA del 23,1 %: EBIT de 4.275 M, 320 M de gastos financieros, impuesto del 25 %, 150 M de minoritarios y 650 M de amortización de intangibles de compras sumada (base ajustada) sobre 459,6 M de acciones."
+        },
+        {
+          "escenario": "Base",
+          "metrica": "PER 2028e (BPA ajustado)",
+          "beneficio_por_accion": 8.73,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 34.738 M (+6 %, +7,5 % y +7 % en 2026-28, con el dólar restando 3 puntos en 2026) y margen EBITDA del 24,6 %: EBIT de 5.002 M, 320 M de gastos financieros, impuesto del 25 %, 150 M de minoritarios y 650 M de amortización de intangibles sumada. Publicado: 7,32 EUR."
+        },
+        {
+          "escenario": "Alcista",
+          "metrica": "PER 2028e (BPA ajustado)",
+          "beneficio_por_accion": 9.37,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 35.717 M (+1,5 puntos: gafas con IA y control de miopía) y margen del 25,3 %, cerca del objetivo del 19-20 % de margen operativo ajustado que la empresa tenía para 2026."
+        }
+      ],
+      "per_historico": {
+        "actual": 18.4,
+        "mediana_5a": 33.7,
+        "minimo_5a": 27.5,
+        "media_larga": 33.7,
+        "excluidos": "Base: BPA ajustado (beneficio neto ajustado de la empresa ÷ acciones diluidas), la misma de los casos. Solo hay dos cierres fiables: 2022 (≈177 EUR ÷ 6,43 = 27,5x) y 2025 (≈270 EUR ÷ 6,79 = 39,8x, máximo de la euforia de las gafas con IA) [54, 55]; faltan 2021, 2023 y 2024. Ninguno excluido, pero la mediana de dos años es frágil; la regla da el mismo resultado mientras la historia quede por encima del PER actual. Actual = 146,30 ÷ 7,97 (nuestro BPA ajustado de 2027e)."
+      },
+      "comparables_per": {
+        "mediana": 18.7
+      },
+      "consenso": {
+        "bpa_ano1": 5.77,
+        "bpa_ano2": 6.62,
+        "objetivo_medio": 199.75,
+        "objetivo_min": 157,
+        "objetivo_max": 260,
+        "analistas": 8,
+        "tendencia_3m": "recortes",
+        "fuente": "MarketScreener (BPA publicado, no ajustado) [47]; objetivos revisados en sep-oct de Goldman, RBC, Barclays, Deutsche Bank, Oddo BHF, Bernstein, BofA y Jefferies [29, 50, 51, 52, 74]"
+      },
+      "diferencia_consenso": "Nuestro base a 12 meses (160,63 EUR) queda un 19,6 % por debajo del objetivo medio de los ocho analistas que han revisado en septiembre-octubre (199,75 EUR; 157-260). El BPA no explica la diferencia: nuestro BPA publicado de 2027e (≈6,45 EUR) está cerca del consenso de MarketScreener (6,62) [47]. La explica el múltiplo: aplicamos el PER actual (18,4x el BPA ajustado de 2027e) porque es menor que la mediana de cinco años, mientras que los objetivos de los analistas implican 22-25 veces, a medio camino de la historia. La tendencia de los objetivos es a la baja y algunos ya están por debajo de nuestro base (Deutsche Bank 157, Goldman 165) [50, 51, 52].",
+      "media": null,
+      "comentario": "Con la regla común, el objetivo ponderado es de 160,39 EUR (+12,4 % con el dividendo del 2,7 %) y el base de 160,63 (+12,5 %): Mantener, con la ponderada a 2,6 puntos del umbral de compra (15 %). El valor intrínseco de la síntesis (158,34 EUR) y el DCF (174,69 EUR) están algo por encima del objetivo a 12 meses; la distancia es pequeña, así que no hace falta una tesis a varios años. Lo que la cerraría es que las ventas del 3T (20 de octubre) y la guía de 2027 dejen de bajar las estimaciones. Compraríamos por debajo de 142,95 EUR."
+    },
+    "comentario": "Pesamos el DCF un 40 %, los escenarios un 30 % y los comparables un 30 %; las transacciones, nada (Delfin controla el 32,4 %, no hay opa posible). El DCF es el método más fiable aquí porque el negocio es estable y genera caja (2.800 M de FCF en 2025) [1]. Los comparables dan menos (120-141 EUR) porque el PER se aplica a un BPA publicado lastrado por la amortización de intangibles, y el EV/EBITDA de los próximos 12 meses queda en la mediana. La dispersión (106-245 EUR entre métodos) es amplia y el centro de gravedad está en 155-175 EUR, un 6-20 % por encima del precio.",
+    "confianza": "Baja"
+  },
+  "catalizadores": {
+    "items": [
+      {
+        "fecha": "20-oct-2026",
+        "evento": "Ventas del 3T26 [73]",
+        "efecto": "La prueba del segundo semestre con base de comparación alta; un crecimiento a tipo constante por debajo del 7 % confirmaría los recortes",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "Febrero de 2027",
+        "evento": "Resultados de 2026 y guía",
+        "efecto": "Margen operativo ajustado del año y objetivos de 2027; una guía cuantitativa devolvería visibilidad",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "Primavera de 2027",
+        "evento": "Junta de Delfin y renovación de su presidencia",
+        "efecto": "Si Milleri deja la presidencia del holding, riesgo de cambio en la dirección de EssilorLuxottica",
+        "probabilidad": "Media",
+        "sentido": "−"
+      },
+      {
+        "fecha": "2027",
+        "evento": "Lanzamiento de gafas con IA de Apple y de Google con sus socios",
+        "efecto": "Mide la ventaja de la alianza con Meta",
+        "probabilidad": "Media",
+        "sentido": "−"
+      },
+      {
+        "fecha": "2026-2027",
+        "evento": "Negociación arancelaria UE-EE. UU.",
+        "efecto": "Un arancel menor devolvería parte de los 300 M de coste de 2025",
+        "probabilidad": "Baja",
+        "sentido": "+"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "riesgos": {
+    "items": [
+      {
+        "riesgo": "Desaceleración de las gafas con IA y competencia de Google, Samsung y Apple",
+        "tipo": "Competitivo",
+        "probabilidad": "Alta",
+        "impacto": "Alto",
+        "efecto_valor": "−17 % (bajista a 12 meses)",
+        "mitigante": "Alianza con Meta y marcas Ray-Ban y Oakley; el núcleo de lentes no depende de ellas",
+        "senal": "Crecimiento de las gafas con IA por debajo de un dígito o precios de entrada a la baja (Meta Glasses desde 299 USD) [21]"
+      },
+      {
+        "riesgo": "Gobierno: disputa entre el heredero que controla Delfin y el presidente y consejero delegado",
+        "tipo": "Gobierno",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−10 % (descuento de gobierno)",
+        "mitigante": "El consejo renovó su confianza a Milleri por unanimidad (sep-26)",
+        "senal": "No renovación de Milleri en Delfin o cambios en el consejo"
+      },
+      {
+        "riesgo": "Aranceles de EE. UU. y dólar débil",
+        "tipo": "Macro",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−5 % por cada 100 pb de margen",
+        "mitigante": "Subidas de precio y producción local",
+        "senal": "Diferencia entre crecimiento a tipo constante y publicado superior a 4 puntos [3]"
+      },
+      {
+        "riesgo": "Rentabilidad baja del capital total (ROIC con fondo de comercio del 5-6 %, bajo el WACC)",
+        "tipo": "Asignación de capital",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "Múltiplo limitado",
+        "mitigante": "FCF récord de 2.800 M [1]",
+        "senal": "Nuevas compras fuera del núcleo (como Supreme)"
+      },
+      {
+        "riesgo": "Deterioro del fondo de comercio (31.013 M)",
+        "tipo": "Contable",
+        "probabilidad": "Baja",
+        "impacto": "Bajo",
+        "efecto_valor": "Sin efecto en caja",
+        "mitigante": "Margen de los negocios comprados",
+        "senal": "Caída de ventas comparables en GrandVision o Supreme"
+      }
+    ],
+    "premortem": "Es octubre de 2029 y la acción vale 90 EUR. Las gafas de Apple y Google se comieron el segmento de gama media en 2027-28 y Meta reabrió su acuerdo con otros fabricantes; las ventas de gafas con IA cayeron y dejaron capacidad ociosa. A la vez, Leonardo Maria Del Vecchio no renovó a Milleri en Delfin y el relevo en la dirección paralizó las decisiones un año. El núcleo de lentes siguió creciendo al 4 %, pero el margen cayó al 22 % por los aranceles y la mezcla, y el mercado dejó de pagar 18 veces el beneficio. La señal temprana fue la diferencia entre el crecimiento de las gafas con IA y el del grupo en los trimestres de 2026-27 y los recortes de objetivos, que nunca pararon.",
+    "confianza": "Media"
+  },
+  "esg": {
+    "calificaciones": [],
+    "materialidad": "Los asuntos materiales son la gobernanza (control de Delfin y disputa entre Leonardo Maria Del Vecchio y el presidente y consejero delegado Francesco Milleri en 2026), la privacidad de los datos de las gafas con IA y la cadena de suministro en China e Italia, expuesta a aranceles [29]. No hemos encontrado calificaciones ESG recientes en fuentes accesibles.",
+    "controversias": "Litigio con GrandVision y HAL resuelto a favor de EssilorLuxottica (2021). En 2026, disputa en el holding Delfin sobre la presidencia de Milleri; el consejo de EssilorLuxottica le renovó por unanimidad su confianza en septiembre.",
+    "confianza": "Baja"
+  },
+  "preguntas": {
+    "items": [
+      {
+        "tema": "Gafas con IA",
+        "pregunta": "¿Qué parte de las ventas y del beneficio operativo de 2026 dan las gafas con IA, y con qué margen frente al del grupo?",
+        "por_que": "Es la diferencia entre el escenario base y el bajista y la empresa no la desglosa."
+      },
+      {
+        "tema": "Gobierno",
+        "pregunta": "¿Qué pasa con la dirección de EssilorLuxottica si Delfin no renueva a Milleri en 2027?",
+        "por_que": "El accionista de control y el primer ejecutivo están enfrentados."
+      },
+      {
+        "tema": "Margen",
+        "pregunta": "¿Mantiene el grupo el objetivo de un margen operativo ajustado del 19-20 % a medio plazo?",
+        "por_que": "Se retiró en febrero y es la palanca del alcista."
+      },
+      {
+        "tema": "Capital",
+        "pregunta": "¿Qué rentabilidad esperan de Supreme y qué criterio de ROIC aplican a las compras?",
+        "por_que": "El ROIC del capital total está por debajo del WACC."
+      },
+      {
+        "tema": "Meta",
+        "pregunta": "¿Qué exclusividad y duración tiene el acuerdo con Meta y qué papel tiene su participación del 3 %?",
+        "por_que": "La plataforma es de Meta; el riesgo de que abra el acuerdo a otros fabricantes no está cuantificado."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sentimiento": {
+    "tono": "Dividido",
+    "tendencia": "Empeora",
+    "revisadas": [
+      {
+        "plataforma": "Simply Wall St (narrativas de particulares, vía Webull)",
+        "fecha": "2026-10",
+        "n_comentarios": 3,
+        "tono": "Positivo",
+        "resumen": "Las narrativas de la comunidad sitúan el valor razonable muy por encima del precio (un 38 % de descuento en la última) y ven la caída como exagerada, condicionada a que las gafas con IA no erosionen el margen [75, 76]."
+      },
+      {
+        "plataforma": "Tradingsat / BFM Bourse (noticia y comentarios)",
+        "fecha": "2026-09",
+        "n_comentarios": 5,
+        "tono": "Negativo",
+        "resumen": "Tras los recortes de objetivos de finales de septiembre, la conversación gira en torno a la caída continua y a la falta de suelo; se repite la idea de que la empresa vendió una historia tecnológica que no se cumple [74]."
+      },
+      {
+        "plataforma": "getquin (comunidad de inversores particulares)",
+        "fecha": "2026-10",
+        "n_comentarios": 4,
+        "tono": "Dividido",
+        "resumen": "Unos ven una oportunidad de comprar a la mitad del máximo una empresa con foso; otros temen una «trampa de valor» por la competencia de Google, Samsung y Apple en gafas con IA [78]."
+      },
+      {
+        "plataforma": "Prensa económica italiana y francesa (Il Sole 24 Ore, Option Finance)",
+        "fecha": "2026-09",
+        "n_comentarios": 2,
+        "tono": "Dividido",
+        "resumen": "Analistas divididos entre optimistas y prudentes; preocupación nueva por la gobernanza tras la disputa en Delfin [37, 77]."
+      }
+    ],
+    "temas": [
+      {
+        "tema": "Las gafas con IA: motor o trampa",
+        "postura": "Dividida",
+        "peso": "Alto",
+        "contraste": "Los datos dan razón a las dos partes: casi se duplicaron en el 2T26, pero frenaron en el 1T26 y su margen es menor que el del grupo. Nuestro base no depende de ellas."
+      },
+      {
+        "tema": "Valoración barata frente a la historia",
+        "postura": "Alcista",
+        "peso": "Medio",
+        "contraste": "Cierto: el PER sobre BPA ajustado (18,4 veces 2027e) es el más bajo en al menos cinco años; pero los foros usan valores razonables de modelos automáticos, no cifras propias."
+      },
+      {
+        "tema": "Gobierno: Del Vecchio frente a Milleri",
+        "postura": "Bajista",
+        "peso": "Medio",
+        "contraste": "Riesgo real y reciente (septiembre de 2026) [37]; lo recogemos en gobierno y en riesgos."
+      },
+      {
+        "tema": "Recortes de objetivos de los analistas",
+        "postura": "Bajista",
+        "peso": "Alto",
+        "contraste": "Ocho recortes en un mes (157-250 EUR); el sentimiento sigue al consenso, no se adelanta [53]."
+      }
+    ],
+    "lectura": "El sentimiento está dividido y empeorando: el particular ve una ganga a la mitad del máximo, y la prensa y los analistas siguen recortando. No es capitulación (no vemos ventas masivas ni pánico), sino cansancio tras una caída del 47 %. Lo que aporta a la decisión es el riesgo de gobierno, que apenas aparecía en el discurso de los analistas, y la confirmación de que el catalizador que falta es que las gafas con IA dejen de bajar las estimaciones; las ventas del 3T del 20 de octubre son la prueba.",
+    "confianza": "Baja"
+  },
+  "fuentes": [
+    {
+      "id": 1,
+      "titulo": "Q4/FY 2025 Results – Press Release",
+      "editor": "EssilorLuxottica",
+      "tipo": "Primaria",
+      "fecha": "2026-02-11",
+      "url": "https://www.essilorluxottica.com/cap/content/283060"
+    },
+    {
+      "id": 2,
+      "titulo": "EssilorLuxottica Q4/FY 2025 results (copia del comunicado)",
+      "editor": "BioSpace / EssilorLuxottica",
+      "tipo": "Primaria",
+      "fecha": "2026-02-11",
+      "url": "https://www.biospace.com/press-releases/essilorluxottica-q4-fy-2025-results-revenue-growing-18-4-in-q4-and-11-2-in-the-fy-adj-operating-margin-at-16-0-in-the-fy"
+    },
+    {
+      "id": 3,
+      "titulo": "Q2/H1 2026 results: solid revenue trajectory at 9.7% in H1 (comunicado)",
+      "editor": "EssilorLuxottica (MFN)",
+      "tipo": "Primaria",
+      "fecha": "2026-07-28",
+      "url": "https://mfn.se/one/a/essilorluxottica/essilorluxottica-q2-h1-2026-results-solid-revenue-trajectory-at-9-7-in-h1-with-q2-at-8-7-increasing-profitability-with-adj-operating-profit-15-a067ffa3.iframe"
+    },
+    {
+      "id": 4,
+      "titulo": "EssilorLuxottica (EL) H1 2026 earnings summary",
+      "editor": "Quartr",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07-29",
+      "url": "https://quartr.com/events/essilorluxottica-soci-t-anonyme-el-h1-2026_ofYbaHZW"
+    },
+    {
+      "id": 5,
+      "titulo": "EssilorLuxottica (EPA:EL) Income Statement",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07-24",
+      "url": "https://stockanalysis.com/quote/epa/EL/financials/income-statement/"
+    },
+    {
+      "id": 6,
+      "titulo": "EssilorLuxottica (EPA:EL) Cash Flow Statement",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07-24",
+      "url": "https://stockanalysis.com/quote/epa/EL/financials/cash-flow-statement/"
+    },
+    {
+      "id": 7,
+      "titulo": "EssilorLuxottica (EPA:EL) Balance Sheet",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07-24",
+      "url": "https://stockanalysis.com/quote/epa/EL/financials/balance-sheet/"
+    },
+    {
+      "id": 8,
+      "titulo": "EssilorLuxottica Société anonyme – Balance Sheet (Annual, Capital IQ)",
+      "editor": "Fintel",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07",
+      "url": "https://fintel.io/bs/fr/el"
+    },
+    {
+      "id": 9,
+      "titulo": "EssilorLuxottica (ESLOF) Financials",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07",
+      "url": "https://finance.yahoo.com/quote/ESLOF/financials/"
+    },
+    {
+      "id": 10,
+      "titulo": "EssilorLuxottica (OTC ESLOF) – estados financieros",
+      "editor": "Kalkine",
+      "tipo": "Datos de mercado",
+      "fecha": "2026",
+      "url": "https://kalkine.com.au/company/otc-eslof/"
+    },
+    {
+      "id": 11,
+      "titulo": "Interim Financial Report 2025",
+      "editor": "EssilorLuxottica",
+      "tipo": "Primaria",
+      "fecha": "2025-07-28",
+      "url": "https://www.essilorluxottica.com/api/getCapContent/?id=259816&download=false"
+    },
+    {
+      "id": 12,
+      "titulo": "Q2/H1 2023 results (comunicado depositado en la AMF)",
+      "editor": "EssilorLuxottica",
+      "tipo": "Primaria",
+      "fecha": "2023-07-25",
+      "url": "https://echanges.dila.gouv.fr/OPENDATA/AMF/MKW/2023/07/FCMKW111493_20230725.pdf"
+    },
+    {
+      "id": 13,
+      "titulo": "EssilorLuxottica publish Q4 & full year 2023 financial results",
+      "editor": "BoardSport Source",
+      "tipo": "Prensa",
+      "fecha": "2024-02-14",
+      "url": "https://www.boardsportsource.com/essilorluxottica-publish-q4-full-year-2023-financial-results/"
+    },
+    {
+      "id": 14,
+      "titulo": "EssilorLuxottica: sound sales growth and margin expansion in 2024",
+      "editor": "BoardSport Source",
+      "tipo": "Prensa",
+      "fecha": "2025-02-12",
+      "url": "https://www.boardsportsource.com/essilorluxottica-sound-sales-growth-and-margin-expansion-in-2024-with-smart-glasses-a-new-driver/"
+    },
+    {
+      "id": 15,
+      "titulo": "EssilorLuxottica FY25 profit down, revenues rise; sees growth ahead",
+      "editor": "FashionUnited",
+      "tipo": "Prensa",
+      "fecha": "2026-02-12",
+      "url": "https://fashionunited.uk/news/business/essilorluxottica-fy25-profit-down-revenues-rise-sees-growth-ahead/2026021286245"
+    },
+    {
+      "id": 16,
+      "titulo": "Q2/H1 2025 Results – Press Release",
+      "editor": "EssilorLuxottica",
+      "tipo": "Primaria",
+      "fecha": "2025-07-28",
+      "url": "https://www.essilorluxottica.com/cap/content/259500"
+    },
+    {
+      "id": 17,
+      "titulo": "Q3/9M 2025 Revenue – Press Release",
+      "editor": "EssilorLuxottica",
+      "tipo": "Primaria",
+      "fecha": "2025-10-23",
+      "url": "https://www.essilorluxottica.com/cap/content/262766"
+    },
+    {
+      "id": 18,
+      "titulo": "AI Smart Glasses and Myopia Management Portfolio Drive Q2 and First Half Revenue Growth",
+      "editor": "Vision Monday",
+      "tipo": "Prensa",
+      "fecha": "2026-07-28",
+      "url": "https://www.visionmonday.com/eyecare/article/ai-smart-glasses-and-myopia-management-portfolio-drive-q2-and-first-half-revenue-growth-for-essilorluxottica/"
+    },
+    {
+      "id": 19,
+      "titulo": "EssilorLuxottica and the price of reinventing eyewear",
+      "editor": "MarketScreener",
+      "tipo": "Prensa",
+      "fecha": "2026",
+      "url": "https://uk.marketscreener.com/news/essilorluxottica-and-the-price-of-reinventing-eyewear-ce7e51dcde8df722"
+    },
+    {
+      "id": 20,
+      "titulo": "EssilorLuxottica Q1 revenues up 10.8 percent",
+      "editor": "FashionUnited",
+      "tipo": "Prensa",
+      "fecha": "2026-04-23",
+      "url": "https://fashionunited.uk/news/business/essilorluxottica-q1-revenues-up-10-8-percent/2026042387640"
+    },
+    {
+      "id": 21,
+      "titulo": "EssilorLuxottica slips as doubts linger over smart glasses growth (Reuters)",
+      "editor": "Investing.com",
+      "tipo": "Prensa",
+      "fecha": "2026-04-23",
+      "url": "https://www.investing.com/news/stock-market-news/essilorluxottica-slips-as-doubts-linger-over-smart-glasses-growth-4631576"
+    },
+    {
+      "id": 22,
+      "titulo": "Essilorluxottica (ESLOF) Full Year 2025 Earnings Call Highlights",
+      "editor": "Yahoo Finance",
+      "tipo": "Prensa",
+      "fecha": "2026-02-12",
+      "url": "https://finance.yahoo.com/news/essilorluxottica-eslof-full-2025-earnings-010534221.html"
+    },
+    {
+      "id": 23,
+      "titulo": "EssilorLuxottica completa l'acquisizione di Supreme per 1,5 miliardi e dell'80% di Heidelberg",
+      "editor": "Milano Finanza",
+      "tipo": "Prensa",
+      "fecha": "2024-10-02",
+      "url": "https://www.milanofinanza.it/fashion/essilorluxottica-completa-l-acquisizione-di-supreme-per-1-5-miliardi-e-dell-80-di-heidelberg-202410021207237518"
+    },
+    {
+      "id": 24,
+      "titulo": "EssilorLuxottica: Financial Data, Forecasts (dividendos por acción)",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-09",
+      "url": "https://uk.marketscreener.com/quote/stock/ESSILORLUXOTTICA-50911031/finances/"
+    },
+    {
+      "id": 25,
+      "titulo": "Moodie Davitt: EssilorLuxottica delivers strong first-half growth",
+      "editor": "The Moodie Davitt Report",
+      "tipo": "Prensa",
+      "fecha": "2026-07-28",
+      "url": "https://moodiedavittreport.com/essilorluxottica-delivers-strong-first-half-growth-amid-challenging-market-conditions/"
+    },
+    {
+      "id": 26,
+      "titulo": "Global Eyewear Market Size, Share & Forecast 2026-2031",
+      "editor": "Ken Research",
+      "tipo": "Sectorial",
+      "fecha": "2026",
+      "url": "https://www.kenresearch.com/global-eyewear-market"
+    },
+    {
+      "id": 27,
+      "titulo": "Eyewear Market Size report 2025-2034",
+      "editor": "Global Market Insights",
+      "tipo": "Sectorial",
+      "fecha": "2025",
+      "url": "https://www.gminsights.com/industry-analysis/eyewear-Market"
+    },
+    {
+      "id": 28,
+      "titulo": "Meta AI glasses hype fades as Ray-Ban maker shares slip (Reuters)",
+      "editor": "Malay Mail",
+      "tipo": "Prensa",
+      "fecha": "2026-04-23",
+      "url": "https://www.malaymail.com/news/money/2026/04/23/meta-ai-glasses-hype-fades-as-ray-ban-maker-shares-slip/217404"
+    },
+    {
+      "id": 29,
+      "titulo": "EssilorLuxottica recule, les analystes rabotent toujours leurs objectifs",
+      "editor": "Option Finance",
+      "tipo": "Prensa",
+      "fecha": "2026-09-25",
+      "url": "https://www.optionfinance.fr/info-financiere-en-continu/d/2026-09-25-essilorluxottica-recule-les-analystes-rabotent-toujours-leurs-objectifs.html"
+    },
+    {
+      "id": 30,
+      "titulo": "EssilorLuxottica et Meta lancent une version plus accessible de leurs lunettes IA",
+      "editor": "Option Finance",
+      "tipo": "Prensa",
+      "fecha": "2026-06-23",
+      "url": "https://www.optionfinance.fr/info-financiere-en-continu/d/2026-06-23-essilorluxottica-et-meta-lancent-une-version-plus-accessible-de-leurs-lunettes-ia.html"
+    },
+    {
+      "id": 31,
+      "titulo": "Hoya Is the Second-Largest Eyeglass Lensmaker and the Dominant Leader in Mask Blanks",
+      "editor": "Morningstar",
+      "tipo": "Analistas",
+      "fecha": "2026-06",
+      "url": "https://www.morningstar.com/company-reports/1485209-hoya-is-the-second-largest-eyeglass-lensmaker-and-the-dominant-leader-in-mask-blanks"
+    },
+    {
+      "id": 32,
+      "titulo": "Fielmann Annual Report 2025",
+      "editor": "Fielmann Group AG",
+      "tipo": "Primaria",
+      "fecha": "2026",
+      "url": "https://www.fielmann-group.com/fileadmin/fielmann/Dokumente/Publikationen/Geschaeftsberichte/EN/Fielmann_Annual_Report_2025.pdf"
+    },
+    {
+      "id": 33,
+      "titulo": "HOYA Corporation (TYO:7741) Financials – Income Statement",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://stockanalysis.com/quote/tyo/7741/financials/"
+    },
+    {
+      "id": 34,
+      "titulo": "EssilorLuxottica acquires majority stake in Heidelberg Engineering",
+      "editor": "Eyewire News",
+      "tipo": "Prensa",
+      "fecha": "2024",
+      "url": "https://eyewire.news/news/essilorluxottica-acquires-majority-stake-in-heidelberg-engineering"
+    },
+    {
+      "id": 35,
+      "titulo": "EssilorLuxottica to acquire a 76.72% stake in GrandVision from HAL",
+      "editor": "EssilorLuxottica (AMF)",
+      "tipo": "Primaria",
+      "fecha": "2019-07-31",
+      "url": "https://echanges.dila.gouv.fr/OPENDATA/AMF/MKW/2019/07/FCMKW114936_20190731.pdf"
+    },
+    {
+      "id": 36,
+      "titulo": "National Vision Holdings: previsiones financieras",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-09",
+      "url": "https://www.marketscreener.com/quote/stock/NATIONAL-VISION-HOLDINGS--38226958/finances/"
+    },
+    {
+      "id": 37,
+      "titulo": "Mais que se passe-t-il avec la gouvernance d'EssilorLuxottica ?",
+      "editor": "Option Finance",
+      "tipo": "Prensa",
+      "fecha": "2026-09-07",
+      "url": "https://www.optionfinance.fr/info-financiere-en-continu/d/2026-09-07-mais-que-se-passe-t-il-avec-la-gouvernance-dessilorluxottica.html"
+    },
+    {
+      "id": 38,
+      "titulo": "EssilorLuxottica heir buys out siblings in €10 billion deal (Reuters)",
+      "editor": "Quartz",
+      "tipo": "Prensa",
+      "fecha": "2026-04-27",
+      "url": "https://qz.com/essilorluxottica-del-vecchio-heir-sibling-buyout-delfin-042726"
+    },
+    {
+      "id": 39,
+      "titulo": "Alerte AFG n° 25: EssilorLuxottica, assemblée générale 2026",
+      "editor": "AFG (Association française de la gestion financière)",
+      "tipo": "Analistas",
+      "fecha": "2026-04",
+      "url": "https://www.afg.asso.fr/app/uploads/2026/04/Div-n°-6493_04-_Alerte-n°-25-ESSILOR.pdf"
+    },
+    {
+      "id": 40,
+      "titulo": "Assemblée générale EssilorLuxottica 28 avril 2026",
+      "editor": "Rendement Bourse",
+      "tipo": "Prensa",
+      "fecha": "2026-04-28",
+      "url": "https://rendementbourse.com/el-essilorluxottica-sa/assemblee-generale"
+    },
+    {
+      "id": 41,
+      "titulo": "Meta renforce son influence sur EssilorLuxottica",
+      "editor": "Luxury Tribune",
+      "tipo": "Prensa",
+      "fecha": "2025",
+      "url": "https://www.luxurytribune.com/meta-renforce-son-influence-sur-essilorluxottica-et-parie-sur-les-lunettes-intelligentes"
+    },
+    {
+      "id": 42,
+      "titulo": "Déclarations des dirigeants (DD) 2026: dividende en actions à 175,06 EUR",
+      "editor": "AMF (BDIF)",
+      "tipo": "Primaria",
+      "fecha": "2026",
+      "url": "https://bdif.amf-france.org/back/api/v1/documents/2026/2026DD1119059/09AC7264423DB045A3D16F6D87CECC860435B469A2FD084583075FB039C834CC.pdf"
+    },
+    {
+      "id": 43,
+      "titulo": "Milleri: Meta vuole entrare nel capitale",
+      "editor": "Milano Finanza",
+      "tipo": "Prensa",
+      "fecha": "2024-07-25",
+      "url": "https://www.milanofinanza.it/fashion/essilorluxottica-francesco-milleri-conferma-meta-vuole-entrare-nel-capitale-202407252322184131"
+    },
+    {
+      "id": 44,
+      "titulo": "EssilorLuxottica Stock (EL) – Quote Euronext Paris",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-13",
+      "url": "https://www.marketscreener.com/quote/stock/ESSILORLUXOTTICA-4641/"
+    },
+    {
+      "id": 45,
+      "titulo": "EssilorLuxottica SA Share Price (EPA:EL)",
+      "editor": "Stockopedia",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-09",
+      "url": "https://www.stockopedia.com/share-prices/essilor-luxottica-sa-EPA:EL/"
+    },
+    {
+      "id": 46,
+      "titulo": "Valuation EssilorLuxottica (acciones en circulación)",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-08",
+      "url": "https://uk.marketscreener.com/quote/stock/ESSILORLUXOTTICA-438209/valuation/"
+    },
+    {
+      "id": 47,
+      "titulo": "EssilorLuxottica: Financial Data Forecasts (consenso)",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-09-23",
+      "url": "https://ca.marketscreener.com/quote/stock/ESSILORLUXOTTICA-4000692/finances/"
+    },
+    {
+      "id": 48,
+      "titulo": "EssilorLuxottica Kursziel (consenso de BPA 2026)",
+      "editor": "aktien.guide",
+      "tipo": "Datos de mercado",
+      "fecha": "2026",
+      "url": "https://aktien.guide/kursziel/EssilorLuxottica-FR0000121667"
+    },
+    {
+      "id": 49,
+      "titulo": "EssilorLuxottica forecast (objetivos de 30 analistas)",
+      "editor": "stocksguide",
+      "tipo": "Datos de mercado",
+      "fecha": "2026",
+      "url": "https://stocksguide.com/en/forecast/EssilorLuxottica-FR0000121667"
+    },
+    {
+      "id": 50,
+      "titulo": "EssilorLuxottica: Goldman senkt Kursziel auf 165 Euro",
+      "editor": "Goldesel",
+      "tipo": "Prensa",
+      "fecha": "2026-09-25",
+      "url": "https://goldesel.de/aktien/news/essilorluxottica-goldman-senkt-kursziel-auf-165-euro-und-bleibt-neutral"
+    },
+    {
+      "id": 51,
+      "titulo": "EssilorLuxottica: Deutsche Bank senkt Kursziel auf 174 Euro (157 EUR)",
+      "editor": "Goldesel",
+      "tipo": "Prensa",
+      "fecha": "2026-10-05",
+      "url": "https://goldesel.de/aktien/news/essilorluxottica-deutsche-bank-senkt-kursziel-auf-174-euro-aktie-mit-hold-bewertung-unter-beobachtung"
+    },
+    {
+      "id": 52,
+      "titulo": "EssilorLuxottica Aktie: BofA senkt Kursziel auf 205 Euro",
+      "editor": "Goldesel",
+      "tipo": "Prensa",
+      "fecha": "2026-10-09",
+      "url": "https://goldesel.de/aktien/news/essilorluxottica-aktie-bofa-senkt-kursziel-auf-205-euro-bleibt-bei-kaufen"
+    },
+    {
+      "id": 53,
+      "titulo": "EssilorLuxottica stock falls 47 percent as targets reset",
+      "editor": "ad-hoc-news",
+      "tipo": "Prensa",
+      "fecha": "2026-10",
+      "url": "https://www.ad-hoc-news.de/boerse/news/corporate-news/essilorluxottica-stock-falls-47-percent-as-targets-reset/70164942"
+    },
+    {
+      "id": 54,
+      "titulo": "EssilorLuxottica: cotation et variation depuis le 1er janvier",
+      "editor": "ABC Bourse",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07-22",
+      "url": "https://www.abcbourse.com/cotation/ELp"
+    },
+    {
+      "id": 55,
+      "titulo": "Action EssilorLuxottica: une année record, faut-il attendre ? (cierre de 2022)",
+      "editor": "Café de la Bourse",
+      "tipo": "Prensa",
+      "fecha": "2023",
+      "url": "https://www.cafedelabourse.com/bourse/action-essilorluxottica-annee-record-attendre"
+    },
+    {
+      "id": 56,
+      "titulo": "EssilorLuxottica dans le peloton de tête du CAC40 en 2024",
+      "editor": "Tradingsat (BFM Bourse)",
+      "tipo": "Prensa",
+      "fecha": "2024-12",
+      "url": "https://www.tradingsat.com/essilorluxottica-FR0000121667/actualites/essilorluxottica-essilorluxottica-dans-le-peloton-de-tete-du-cac40-en-2024-1129804.html"
+    },
+    {
+      "id": 57,
+      "titulo": "EssilorLuxottica (EURONEXT:EL): máximo histórico",
+      "editor": "TradingView",
+      "tipo": "Datos de mercado",
+      "fecha": "2026",
+      "url": "https://fr.tradingview.com/symbols/EURONEXT-EL/"
+    },
+    {
+      "id": 58,
+      "titulo": "HOYA Corporation (TYO:7741) Statistics & Valuation (comparables del informe de Hoya del 14-oct-2026)",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-14",
+      "url": "https://stockanalysis.com/quote/tyo/7741/statistics/"
+    },
+    {
+      "id": 59,
+      "titulo": "Previsiones de Cooper, Alcon, Bausch + Lomb (comparables del informe de Cooper del 9-oct-2026)",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-08",
+      "url": "https://www.marketscreener.com/quote/stock/THE-COOPER-COMPANIES-INC-12149/finances/"
+    },
+    {
+      "id": 60,
+      "titulo": "Sonova Holding AG: previsiones financieras (comparables del informe de Fielmann del 9-oct-2026)",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-09",
+      "url": "https://www.marketscreener.com/quote/stock/SONOVA-HOLDING-AG-70127/finances/"
+    },
+    {
+      "id": 61,
+      "titulo": "Demant A/S: previsiones financieras",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-09",
+      "url": "https://www.marketscreener.com/quote/stock/DEMANT-A-S-56225597/finances/"
+    },
+    {
+      "id": 62,
+      "titulo": "Terumo Corporation: previsiones financieras (comparables del informe de Olympus del 9-oct-2026)",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-09",
+      "url": "https://www.marketscreener.com/quote/stock/TERUMO-CORPORATION-6491240/finances/"
+    },
+    {
+      "id": 63,
+      "titulo": "Fielmann Group: informe semestral a 30-jun-2026 (múltiplos del informe de Fielmann del 9-oct-2026)",
+      "editor": "Fielmann Group AG",
+      "tipo": "Primaria",
+      "fecha": "2026-08-27",
+      "url": "https://www.fielmann-group.com/fileadmin/fielmann/Dokumente/Publikationen/Quartalsberichte/EN/2026/Fielmann_Group_AG_report_half_year_2026.pdf"
+    },
+    {
+      "id": 64,
+      "titulo": "Tipos de cambio de referencia del euro",
+      "editor": "Banco Central Europeo",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-08",
+      "url": "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"
+    },
+    {
+      "id": 65,
+      "titulo": "Amplifon: Company Update tras la compra de GN Hearing",
+      "editor": "Intermonte SIM",
+      "tipo": "Analistas",
+      "fecha": "2026-03-17",
+      "url": "https://www.websim.it/static/upload/amp/amplifon-17-03-26.pdf"
+    },
+    {
+      "id": 66,
+      "titulo": "Hologic to be Acquired by Blackstone and TPG",
+      "editor": "Hologic (SEC, 8-K)",
+      "tipo": "Primaria",
+      "fecha": "2025-10-21",
+      "url": "https://www.sec.gov/Archives/edgar/data/859737/000119312525244423/d72397dex991.htm"
+    },
+    {
+      "id": 67,
+      "titulo": "CooperCompanies to Acquire Generate Life Sciences",
+      "editor": "The Cooper Companies (SEC, 8-K)",
+      "tipo": "Primaria",
+      "fecha": "2021-11-10",
+      "url": "https://www.sec.gov/Archives/edgar/data/711404/000119312521326207/d204711dex991.htm"
+    },
+    {
+      "id": 68,
+      "titulo": "Bausch + Lomb to acquire XIIDRA from Novartis",
+      "editor": "Bausch + Lomb (SEC, 8-K)",
+      "tipo": "Primaria",
+      "fecha": "2023-06-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/1860742/000119312523179447/d493799dex991.htm"
+    },
+    {
+      "id": 69,
+      "titulo": "Fielmann Annual Report 2024 (Shopko Optical)",
+      "editor": "Fielmann Group AG",
+      "tipo": "Primaria",
+      "fecha": "2025",
+      "url": "https://www.fielmann-group.com/fileadmin/fielmann/Dokumente/Publikationen/Geschaeftsberichte/EN/Fielmann_Annual_Report_2024.pdf"
+    },
+    {
+      "id": 70,
+      "titulo": "Damodaran: Implied ERP by month (ERPbymonth.xlsx)",
+      "editor": "NYU Stern (A. Damodaran)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx"
+    },
+    {
+      "id": 71,
+      "titulo": "German 10-year Bund yield eases from 15-year high",
+      "editor": "Trading Economics",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-08-21",
+      "url": "https://tradingeconomics.com/germany/government-bond-yield/news/577250"
+    },
+    {
+      "id": 72,
+      "titulo": "EssilorLuxottica (ESLOF) key statistics (beta a 5 años)",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-08",
+      "url": "https://finance.yahoo.com/quote/ESLOF/key-statistics/"
+    },
+    {
+      "id": 73,
+      "titulo": "Aufnahme: EssilorLuxottica Umsatzzahlen kommen am 20. Oktober",
+      "editor": "Finanztrends",
+      "tipo": "Prensa",
+      "fecha": "2026-10",
+      "url": "https://www.finanztrends.de/news/essilorluxottica-aktie-umsatzzahlen-kommen-am-20-oktober/"
+    },
+    {
+      "id": 74,
+      "titulo": "Jefferies / Bernstein / Stifel: objetivos tras la presentación de las nuevas gafas IA",
+      "editor": "Tradingsat (BFM Bourse)",
+      "tipo": "Prensa",
+      "fecha": "2026-09-25",
+      "url": "https://www.tradingsat.com/essilorluxottica-FR0000121667/actualites/essilorluxottica-essilorluxottica-recule-les-analystes-rabotent-toujours-leurs-objectifs-1170792.html"
+    },
+    {
+      "id": 75,
+      "titulo": "EssilorLuxottica (ENXTPA:EL) Expands Smart Eyewear, Is It Still 38% Below Fair Value? (narrativas de la comunidad de Simply Wall St)",
+      "editor": "Webull / Simply Wall St",
+      "tipo": "Foros y redes",
+      "fecha": "2026-10",
+      "url": "https://www.webull.com/news/15699434643063808"
+    },
+    {
+      "id": 76,
+      "titulo": "EssilorLuxottica (ENXTPA:EL) Results Put Its Valuation Narrative Back In Focus",
+      "editor": "Webull / Simply Wall St",
+      "tipo": "Foros y redes",
+      "fecha": "2026-08",
+      "url": "https://www.webull.com/news/15310544008012800"
+    },
+    {
+      "id": 77,
+      "titulo": "In Paris, EssiLux falls; analysts divided between optimistic and cautious",
+      "editor": "Il Sole 24 Ore",
+      "tipo": "Prensa",
+      "fecha": "2026",
+      "url": "https://en.ilsole24ore.com/art/in-paris-essilux-accounts-fall-analysts-divided-optimistic-and-cautious-AIhf0ueC"
+    },
+    {
+      "id": 78,
+      "titulo": "EssilorLuxottica forum discussion",
+      "editor": "getquin",
+      "tipo": "Foros y redes",
+      "fecha": "2026-10",
+      "url": "https://app.getquin.com/es/acciones/FR0000121667/essilorluxottica"
+    }
+  ],
+  "calc": {
+    "version": 4,
+    "etiquetas": {
+      "margen_bruto": "M. bruto",
+      "margen_bruto_largo": "Margen bruto",
+      "dias_base": "sobre el coste de ventas"
+    },
+    "recomendacion": {
+      "recomendacion": "Mantener",
+      "regla": "Mantener",
+      "regla_absoluta": "Mantener",
+      "regla_relativa": "Comprar",
+      "coincide": true,
+      "conviccion": "Baja",
+      "conviccion_sugerida": "Baja",
+      "conviccion_razones": [
+        "las reglas discrepan (absoluta Mantener, relativa Comprar)"
+      ],
+      "reglas_discrepan": true,
+      "relativo": {
+        "prima_implicita_pct": 4.2,
+        "wacc": 6.33,
+        "ke": 6.98,
+        "dcf": 229.69,
+        "dcf_min": 198.86,
+        "dcf_max": 269.85,
+        "valor_objetivo": 195.58,
+        "alcista": 264.97,
+        "bajista": 157.79,
+        "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+        "fecha": "2026-10",
+        "potencial_pct": 33.7,
+        "rentabilidad_total_pct": 36.4,
+        "asimetria": null
+      },
+      "objetivo_mercado_txt": " · con la prima implícita del mercado: 195,58 (+33,7 %)",
+      "objetivo_mercado_corto": " · mercado 195,58",
+      "rentabilidad_mercado_corto": " · mercado +36,4 %",
+      "potencial_pct": 8.2,
+      "dividendo_pct": 2.7,
+      "rentabilidad_total_pct": 11,
+      "alcista_pct": 37.9,
+      "bajista_pct": -16.4,
+      "asimetria": 2.31,
+      "comprar_por_debajo": 142.95,
+      "vender_por_encima": 182.65,
+      "tabla": [
+        {
+          "concepto": "Objetivo a 12 meses (nuestro PER × nuestro BPA 2028e, ponderado 30/50/20)",
+          "valor": "160,39 EUR"
+        },
+        {
+          "concepto": "Bajista / base / alcista a 12 meses",
+          "valor": "15,6x × 7,54 = 117,62 · 18,4x × 8,73 = 160,63 · 23,9x × 9,37 = 223,94"
+        },
+        {
+          "concepto": "Rentabilidad a 12 meses: ponderada / del base (con dividendo)",
+          "valor": "12,4 % / 12,5 %"
+        },
+        {
+          "concepto": "Objetivo medio de los analistas (solo contraste)",
+          "valor": "199,75 (nuestro base -19,6 %)"
+        },
+        {
+          "concepto": "Valor intrínseco (síntesis ponderada, largo plazo)",
+          "valor": "158,34 EUR"
+        },
+        {
+          "concepto": "Potencial sobre el precio actual",
+          "valor": "8,2 %"
+        },
+        {
+          "concepto": "Rentabilidad por dividendo ordinario",
+          "valor": "2,7 %"
+        },
+        {
+          "concepto": "Rentabilidad total esperada a 12 meses",
+          "valor": "11,0 %"
+        },
+        {
+          "concepto": "Escenario alcista / bajista",
+          "valor": "37,9 % / -16,4 %"
+        },
+        {
+          "concepto": "Asimetría (ganancia alcista / pérdida bajista)",
+          "valor": "2,31x"
+        },
+        {
+          "concepto": "Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado",
+          "valor": "8,1 % frente a 7,3 % y 6,3 %"
+        },
+        {
+          "concepto": "Valor objetivo con la prima implícita del mercado (4,2 %, WACC 6,3 %)",
+          "valor": "195,58 EUR"
+        },
+        {
+          "concepto": "Rentabilidad total esperada con la prima del mercado",
+          "valor": "36,4 %"
+        },
+        {
+          "concepto": "Asimetría con la prima del mercado",
+          "valor": "n.d."
+        },
+        {
+          "concepto": "Regla absoluta (frente a su coste de capital)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Regla relativa (frente a lo que pide el mercado)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "Crecimiento anual implícito en el precio (2027e-2035e) frente al previsto para su mercado",
+          "valor": "2,3 % frente a 6,5 %"
+        },
+        {
+          "concepto": "¿La calidad de la empresa sostiene el crecimiento previsto?",
+          "valor": "Sí (5,2 % anual proyectado; sin inversión neta)"
+        },
+        {
+          "concepto": "Señal del valor intrínseco (regla del DCF, referencia)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "Recomendación según la regla a 12 meses (Comprar: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender: ponderada ≤ -10 %)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Convicción según los criterios (las reglas discrepan (absoluta Mantener, relativa Comprar))",
+          "valor": "Baja"
+        }
+      ],
+      "niveles": [
+        {
+          "accion": "Comprar",
+          "condicion": "Por debajo de 142,95 (ponderada a 12 meses ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco)"
+        },
+        {
+          "accion": "Mantener",
+          "condicion": "Entre 142,95 y 182,65"
+        },
+        {
+          "accion": "Vender o reducir",
+          "condicion": "Por encima de 182,65 (ponderada a 12 meses ≤ -10 %)"
+        }
+      ],
+      "precio_txt": "",
+      "valor_objetivo_txt": "",
+      "regla_valor_intrinseco": "Comprar",
+      "objetivo_12m": {
+        "completo": true,
+        "filas": [
+          {
+            "escenario": "Bajista",
+            "metrica": "PER 2028e (BPA ajustado)",
+            "beneficio_por_accion": 7.54,
+            "multiplo": 15.6,
+            "multiplo_informe": null,
+            "origen": "base × 0.85 (el mínimo de 5 años no queda por debajo del base)",
+            "precio": 117.62,
+            "rentabilidad_pct": -16.9,
+            "justificacion": "Ventas de 33.137 M (−2,5 puntos de crecimiento en 2027-28: las gafas con IA se estancan) y margen EBITDA del 23,1 %: EBIT de 4.275 M, 320 M de gastos financieros, impuesto del 25 %, 150 M de minoritarios y 650 M de amortización de intangibles de compras sumada (base ajustada) sobre 459,6 M de acciones."
+          },
+          {
+            "escenario": "Base",
+            "metrica": "PER 2028e (BPA ajustado)",
+            "beneficio_por_accion": 8.73,
+            "multiplo": 18.4,
+            "multiplo_informe": null,
+            "origen": "PER actual",
+            "precio": 160.63,
+            "rentabilidad_pct": 12.5,
+            "justificacion": "Ventas de 34.738 M (+6 %, +7,5 % y +7 % en 2026-28, con el dólar restando 3 puntos en 2026) y margen EBITDA del 24,6 %: EBIT de 5.002 M, 320 M de gastos financieros, impuesto del 25 %, 150 M de minoritarios y 650 M de amortización de intangibles sumada. Publicado: 7,32 EUR."
+          },
+          {
+            "escenario": "Alcista",
+            "metrica": "PER 2028e (BPA ajustado)",
+            "beneficio_por_accion": 9.37,
+            "multiplo": 23.9,
+            "multiplo_informe": null,
+            "origen": "techo de base × 1.3",
+            "precio": 223.94,
+            "rentabilidad_pct": 55.8,
+            "justificacion": "Ventas de 35.717 M (+1,5 puntos: gafas con IA y control de miopía) y margen del 25,3 %, cerca del objetivo del 19-20 % de margen operativo ajustado que la empresa tenía para 2026."
+          }
+        ],
+        "regla": {
+          "bajista": 15.6,
+          "base": 18.4,
+          "alcista": 23.9,
+          "bajista_origen": "base × 0.85 (el mínimo de 5 años no queda por debajo del base)",
+          "base_origen": "PER actual",
+          "alcista_origen": "techo de base × 1.3"
+        },
+        "probabilidades": [
+          30,
+          50,
+          20
+        ],
+        "objetivo_ponderado": 160.39,
+        "objetivo_simple": 167.4,
+        "objetivo_base": 160.63,
+        "rentabilidad_ponderada_pct": 12.4,
+        "rentabilidad_simple_pct": 17.2,
+        "rentabilidad_base_pct": 12.5,
+        "asimetria": 2.71,
+        "senal": "Mantener",
+        "comprar_por_debajo": 142.95,
+        "vender_por_encima": 182.65,
+        "consenso_objetivo": 199.75,
+        "diferencia_consenso_pct": -19.6
+      },
+      "rentabilidad_12m_pct": 12.4,
+      "rentabilidad_12m_txt": "+12,4 % (base +12,5 %)",
+      "objetivo_12m_txt": "160,39 EUR"
+    },
+    "mercado": {
+      "precio": 146.3,
+      "acciones": 459.6,
+      "capitalizacion": 67239,
+      "deuda_neta": 13390,
+      "deuda_neta_ajustada": null,
+      "asimilables_deuda": null,
+      "ajustes_puente": 1000,
+      "valor_empresa": 81629,
+      "fecha_puente": "2026-06-30"
+    },
+    "clave": {
+      "capitalizacion": 67239,
+      "valor_empresa": 81629,
+      "deuda_neta": 13390,
+      "ev_ventas_ltm": 2.87,
+      "ev_ebitda_ltm": 12.5,
+      "ev_ebitda_ntm": 10.5,
+      "ev_ebit_ltm": 24.2,
+      "per_ltm": 29.4,
+      "per_ntm": 22.7,
+      "fcf_yield_pct": 4.2,
+      "dividendo_pct": 2.7,
+      "dn_ebitda": 2.1,
+      "roic_pct": 11.6,
+      "margen_ebitda_pct": 22.9,
+      "deuda_neta_ajustada": 13390,
+      "dn_ebitda_ajustada": 2.1,
+      "crecimiento_tcac_pct": 9.5,
+      "ingresos_ntm": 32315,
+      "ebitda_ntm": 7783,
+      "bpa_ntm": 6.44,
+      "ebitda_ltm": 6529,
+      "ingresos_ltm": 28491,
+      "ev_rab": null
+    },
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 19820,
+        "crecimiento_pct": null,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 4768,
+        "margen_ebitda_pct": 24.1,
+        "ebit": 2307,
+        "margen_ebit_pct": 11.6,
+        "beneficio_neto": 1448,
+        "margen_neto_pct": 7.3,
+        "bpa": 3.25,
+        "dpa": 2.51,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 27,
+        "payout_pct": 77
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 24494,
+        "crecimiento_pct": 23.6,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 6078,
+        "margen_ebitda_pct": 24.8,
+        "ebit": 3157,
+        "margen_ebit_pct": 12.9,
+        "beneficio_neto": 2152,
+        "margen_neto_pct": 8.8,
+        "bpa": 4.83,
+        "dpa": 3.23,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 24.8,
+        "payout_pct": 67
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 25395,
+        "crecimiento_pct": 3.7,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 6176,
+        "margen_ebitda_pct": 24.3,
+        "ebit": 3176,
+        "margen_ebit_pct": 12.5,
+        "beneficio_neto": 2289,
+        "margen_neto_pct": 9,
+        "bpa": 5.08,
+        "dpa": 3.95,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 20.1,
+        "payout_pct": 78
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 26508,
+        "crecimiento_pct": 4.4,
+        "beneficio_bruto": 16805,
+        "margen_bruto_pct": 63.4,
+        "ebitda": 6545,
+        "margen_ebitda_pct": 24.7,
+        "ebit": 3448,
+        "margen_ebit_pct": 13,
+        "beneficio_neto": 2359,
+        "margen_neto_pct": 8.9,
+        "bpa": 5.13,
+        "dpa": 3.95,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 24.3,
+        "payout_pct": 77
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 28491,
+        "crecimiento_pct": 7.5,
+        "beneficio_bruto": 17254,
+        "margen_bruto_pct": 60.6,
+        "ebitda": 6529,
+        "margen_ebitda_pct": 22.9,
+        "ebit": 3379,
+        "margen_ebit_pct": 11.9,
+        "beneficio_neto": 2315,
+        "margen_neto_pct": 8.1,
+        "bpa": 4.98,
+        "dpa": 4,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 23.5,
+        "payout_pct": 80
+      }
+    ],
+    "tcac": {
+      "periodo": "2021-2025",
+      "ingresos_pct": 9.5,
+      "ebitda_pct": 8.2,
+      "bpa_pct": 11.3
+    },
+    "cuenta_y_prevision": [
+      {
+        "periodo": "2021",
+        "ingresos": 19820,
+        "ebitda": 4768
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 24494,
+        "ebitda": 6078
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 25395,
+        "ebitda": 6176
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 26508,
+        "ebitda": 6545
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 28491,
+        "ebitda": 6529
+      },
+      {
+        "periodo": "2026e",
+        "ingresos": 30200,
+        "ebitda": 7188
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 32465,
+        "ebitda": 7857
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 34738,
+        "ebitda": 8546
+      },
+      {
+        "periodo": "2029e",
+        "ingresos": 36822,
+        "ebitda": 9132
+      },
+      {
+        "periodo": "2030e",
+        "ingresos": 38848,
+        "ebitda": 9712
+      },
+      {
+        "periodo": "2031e",
+        "ingresos": 40790,
+        "ebitda": 10197
+      },
+      {
+        "periodo": "2032e",
+        "ingresos": 42626,
+        "ebitda": 10656
+      },
+      {
+        "periodo": "2033e",
+        "ingresos": 44331,
+        "ebitda": 11083
+      },
+      {
+        "periodo": "2034e",
+        "ingresos": 45882,
+        "ebitda": 11471
+      },
+      {
+        "periodo": "2035e",
+        "ingresos": 47259,
+        "ebitda": 11815
+      }
+    ],
+    "segmentos_ultimo": [
+      {
+        "nombre": "Professional Solutions",
+        "ingresos": 13600,
+        "peso_pct": 47.7,
+        "crecimiento_pct": 8.4,
+        "margen_pct": null,
+        "tipo_margen": null
+      },
+      {
+        "nombre": "Direct to Consumer",
+        "ingresos": 14891,
+        "peso_pct": 52.3,
+        "crecimiento_pct": 6.7,
+        "margen_pct": null,
+        "tipo_margen": null
+      }
+    ],
+    "segmentos_tabla": {
+      "periodos": [
+        "",
+        "",
+        "",
+        "2024",
+        "2025"
+      ],
+      "filas": [
+        {
+          "nombre": "Professional Solutions",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": 12547,
+          "v4": 13600
+        },
+        {
+          "nombre": "Direct to Consumer",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": 13960,
+          "v4": 14891
+        }
+      ]
+    },
+    "segmentos_periodo": "2025",
+    "balance": [
+      {
+        "periodo": "2021",
+        "activo_total": null,
+        "intangibles": 0,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": null,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "deuda_neta": 0,
+        "patrimonio": null,
+        "minoritarios": null,
+        "dn_ebitda": 0,
+        "dn_patrimonio_pct": null,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 17.7,
+        "capital_invertido": 0,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2022",
+        "activo_total": null,
+        "intangibles": 0,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": null,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "deuda_neta": 0,
+        "patrimonio": null,
+        "minoritarios": null,
+        "dn_ebitda": 0,
+        "dn_patrimonio_pct": null,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 21.3,
+        "capital_invertido": 0,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2023",
+        "activo_total": null,
+        "intangibles": 0,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": null,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "deuda_neta": 0,
+        "patrimonio": null,
+        "minoritarios": null,
+        "dn_ebitda": 0,
+        "dn_patrimonio_pct": null,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 22.7,
+        "capital_invertido": 0,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2024",
+        "activo_total": null,
+        "intangibles": 43100,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 2251,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "deuda_neta": -2251,
+        "patrimonio": null,
+        "minoritarios": null,
+        "dn_ebitda": -0.34,
+        "dn_patrimonio_pct": null,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 18.7,
+        "capital_invertido": -2251,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 63895,
+        "intangibles": 40766,
+        "circulante": 7307,
+        "circulante_ventas_pct": 25.6,
+        "caja": 3544,
+        "deuda_financiera": 10844,
+        "arrendamientos": null,
+        "deuda_neta": 7300,
+        "patrimonio": 39493,
+        "minoritarios": null,
+        "dn_ebitda": 1.12,
+        "dn_patrimonio_pct": 18,
+        "dso": 48,
+        "dio": 115,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 12.8,
+        "capital_invertido": 46793,
+        "liquidez_corriente": null
+      }
+    ],
+    "perimetro_nota": "Cambio de perímetro (2021: GrandVision, consolidada desde julio de 2021 (adquisiciones de 7.078 M EUR en el año); 2024: Supreme (≈1.500 M USD) y el 80 % de Heidelberg Engineering, consolidadas desde el 4T24). Los ratios de balance de ese año (días, circulante, deuda neta / EBITDA, ROIC) y los indicadores de calidad contable no son comparables con los anteriores.",
+    "flujos": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 4545,
+        "capex": 1030,
+        "pagos_arrendamientos": null,
+        "fcf": 3515,
+        "beneficio_neto": 1448,
+        "conversion_pct": 243,
+        "capex_ventas_pct": 5.2,
+        "capex_amortizacion": 0.42,
+        "adquisiciones": 7078,
+        "desinversiones": 0,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": 0,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 445.5,
+        "fcf_por_accion": 7.89
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 4783,
+        "capex": 1572,
+        "pagos_arrendamientos": null,
+        "fcf": 3211,
+        "beneficio_neto": 2152,
+        "conversion_pct": 149,
+        "capex_ventas_pct": 6.4,
+        "capex_amortizacion": 0.54,
+        "adquisiciones": 965,
+        "desinversiones": 0,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": 0,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 445.6,
+        "fcf_por_accion": 7.21
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 4861,
+        "capex": 1531,
+        "pagos_arrendamientos": 930,
+        "fcf": 2400,
+        "beneficio_neto": 2289,
+        "conversion_pct": 105,
+        "capex_ventas_pct": 6,
+        "capex_amortizacion": 0.51,
+        "adquisiciones": 114,
+        "desinversiones": 0,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": 0,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 450.6,
+        "fcf_por_accion": 5.33
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 4874,
+        "capex": 1522,
+        "pagos_arrendamientos": 952,
+        "fcf": 2400,
+        "beneficio_neto": 2359,
+        "conversion_pct": 102,
+        "capex_ventas_pct": 5.7,
+        "capex_amortizacion": 0.49,
+        "adquisiciones": 1755,
+        "desinversiones": 0,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": 0,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 459.8,
+        "fcf_por_accion": 5.22
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 5291,
+        "capex": 1525,
+        "pagos_arrendamientos": 966,
+        "fcf": 2800,
+        "beneficio_neto": 2315,
+        "conversion_pct": 121,
+        "capex_ventas_pct": 5.4,
+        "capex_amortizacion": 0.48,
+        "adquisiciones": 911,
+        "desinversiones": 0,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": 0,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 464.9,
+        "fcf_por_accion": 6.02
+      }
+    ],
+    "flujos_acumulado": {
+      "periodo": "2021-2025",
+      "fcf": 14326,
+      "adquisiciones": 10823,
+      "dividendos": 0,
+      "recompras": 0,
+      "conversion_pct": 136
+    },
+    "rentabilidad": [
+      {
+        "periodo": "2021",
+        "nopat": 1685,
+        "capital_invertido": 0,
+        "roic_pct": null,
+        "roe_pct": null,
+        "roa_pct": null,
+        "margen_neto_pct": 7.3,
+        "rotacion": null,
+        "apalancamiento": null
+      },
+      {
+        "periodo": "2022",
+        "nopat": 2375,
+        "capital_invertido": 0,
+        "roic_pct": null,
+        "roe_pct": null,
+        "roa_pct": null,
+        "margen_neto_pct": 8.8,
+        "rotacion": null,
+        "apalancamiento": null
+      },
+      {
+        "periodo": "2023",
+        "nopat": 2539,
+        "capital_invertido": 0,
+        "roic_pct": null,
+        "roe_pct": null,
+        "roa_pct": null,
+        "margen_neto_pct": 9,
+        "rotacion": null,
+        "apalancamiento": null
+      },
+      {
+        "periodo": "2024",
+        "nopat": 2610,
+        "capital_invertido": -1125,
+        "roic_pct": -231.9,
+        "roe_pct": null,
+        "roa_pct": null,
+        "margen_neto_pct": 8.9,
+        "rotacion": null,
+        "apalancamiento": null
+      },
+      {
+        "periodo": "2025",
+        "nopat": 2584,
+        "capital_invertido": 22271,
+        "roic_pct": 11.6,
+        "roe_pct": 11.7,
+        "roa_pct": 7.2,
+        "margen_neto_pct": 8.1,
+        "rotacion": 0.89,
+        "apalancamiento": 1.62
+      }
+    ],
+    "roic_incremental_pct": 4,
+    "roic_frente_wacc": [
+      {
+        "periodo": "2021",
+        "roic_pct": null,
+        "roe_pct": null,
+        "wacc_pct": 7.3
+      },
+      {
+        "periodo": "2022",
+        "roic_pct": null,
+        "roe_pct": null,
+        "wacc_pct": 7.3
+      },
+      {
+        "periodo": "2023",
+        "roic_pct": null,
+        "roe_pct": null,
+        "wacc_pct": 7.3
+      },
+      {
+        "periodo": "2024",
+        "roic_pct": -231.9,
+        "roe_pct": null,
+        "wacc_pct": 7.3
+      },
+      {
+        "periodo": "2025",
+        "roic_pct": 11.6,
+        "roe_pct": 11.7,
+        "wacc_pct": 7.3
+      }
+    ],
+    "calidad": {
+      "periodo": "2025",
+      "altman_z": 2.27,
+      "altman_zona": "Zona gris",
+      "piotroski_f": 3,
+      "piotroski_detalle": [
+        {
+          "criterio": "Beneficio neto positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "ROA mejora",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "Flujo operativo > beneficio neto",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Baja el endeudamiento (deuda / activo)",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "Mejora la liquidez corriente",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "No emite acciones",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Mejora el margen bruto",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Mejora la rotación del activo",
+          "resultado": "n.d."
+        }
+      ],
+      "tabla": [
+        {
+          "indicador": "Altman Z",
+          "valor": "2,27",
+          "lectura": "Zona gris (> 2,99 seguro; < 1,81 riesgo). No aplica a bancos ni aseguradoras, y subestima la solvencia de empresas con grandes anticipos de clientes o prefinanciación pública (contratistas, construcción), que inflan el pasivo."
+        },
+        {
+          "indicador": "Piotroski F",
+          "valor": "3 / 5",
+          "lectura": "Debilidad (0-3)."
+        },
+        {
+          "indicador": "Flujo operativo / beneficio neto (acumulado)",
+          "valor": "2,31x",
+          "lectura": "El beneficio se cobra."
+        }
+      ]
+    },
+    "dcf": {
+      "proyeccion": [
+        {
+          "periodo": "2026e",
+          "ingresos": 30200,
+          "crecimiento_pct": 6,
+          "ebitda": 7188,
+          "margen_ebitda_pct": 23.8,
+          "amortizacion": 3262,
+          "ebit": 3926,
+          "impuestos": 982,
+          "capex": 2627,
+          "variacion_circulante": 394,
+          "fcff": 3185,
+          "fraccion": 0.21,
+          "factor": 0.992,
+          "vp": 675
+        },
+        {
+          "periodo": "2027e",
+          "ingresos": 32465,
+          "crecimiento_pct": 7.5,
+          "ebitda": 7857,
+          "margen_ebitda_pct": 24.2,
+          "amortizacion": 3409,
+          "ebit": 4448,
+          "impuestos": 1112,
+          "capex": 2792,
+          "variacion_circulante": 578,
+          "fcff": 3375,
+          "fraccion": 1,
+          "factor": 0.951,
+          "vp": 3207
+        },
+        {
+          "periodo": "2028e",
+          "ingresos": 34738,
+          "crecimiento_pct": 7,
+          "ebitda": 8546,
+          "margen_ebitda_pct": 24.6,
+          "amortizacion": 3543,
+          "ebit": 5002,
+          "impuestos": 1251,
+          "capex": 2953,
+          "variacion_circulante": 580,
+          "fcff": 3763,
+          "fraccion": 1,
+          "factor": 0.886,
+          "vp": 3333
+        },
+        {
+          "periodo": "2029e",
+          "ingresos": 36822,
+          "crecimiento_pct": 6,
+          "ebitda": 9132,
+          "margen_ebitda_pct": 24.8,
+          "amortizacion": 3609,
+          "ebit": 5523,
+          "impuestos": 1381,
+          "capex": 3093,
+          "variacion_circulante": 531,
+          "fcff": 4127,
+          "fraccion": 1,
+          "factor": 0.825,
+          "vp": 3404
+        },
+        {
+          "periodo": "2030e",
+          "ingresos": 38848,
+          "crecimiento_pct": 5.5,
+          "ebitda": 9712,
+          "margen_ebitda_pct": 25,
+          "amortizacion": 3691,
+          "ebit": 6021,
+          "impuestos": 1505,
+          "capex": 3224,
+          "variacion_circulante": 516,
+          "fcff": 4466,
+          "fraccion": 1,
+          "factor": 0.769,
+          "vp": 3433
+        },
+        {
+          "periodo": "2031e",
+          "ingresos": 40790,
+          "crecimiento_pct": 5,
+          "ebitda": 10197,
+          "margen_ebitda_pct": 25,
+          "amortizacion": 3671,
+          "ebit": 6526,
+          "impuestos": 1632,
+          "capex": 3345,
+          "variacion_circulante": 495,
+          "fcff": 4726,
+          "fraccion": 1,
+          "factor": 0.717,
+          "vp": 3385
+        },
+        {
+          "periodo": "2032e",
+          "ingresos": 42626,
+          "crecimiento_pct": 4.5,
+          "ebitda": 10656,
+          "margen_ebitda_pct": 25,
+          "amortizacion": 3623,
+          "ebit": 7033,
+          "impuestos": 1758,
+          "capex": 3410,
+          "variacion_circulante": 468,
+          "fcff": 5020,
+          "fraccion": 1,
+          "factor": 0.668,
+          "vp": 3352
+        },
+        {
+          "periodo": "2033e",
+          "ingresos": 44331,
+          "crecimiento_pct": 4,
+          "ebitda": 11083,
+          "margen_ebitda_pct": 25,
+          "amortizacion": 3546,
+          "ebit": 7536,
+          "impuestos": 1884,
+          "capex": 3458,
+          "variacion_circulante": 435,
+          "fcff": 5306,
+          "fraccion": 1,
+          "factor": 0.622,
+          "vp": 3299
+        },
+        {
+          "periodo": "2034e",
+          "ingresos": 45882,
+          "crecimiento_pct": 3.5,
+          "ebitda": 11471,
+          "margen_ebitda_pct": 25,
+          "amortizacion": 3441,
+          "ebit": 8029,
+          "impuestos": 2007,
+          "capex": 3487,
+          "variacion_circulante": 396,
+          "fcff": 5580,
+          "fraccion": 1,
+          "factor": 0.58,
+          "vp": 3233
+        },
+        {
+          "periodo": "2035e",
+          "ingresos": 47259,
+          "crecimiento_pct": 3,
+          "ebitda": 11815,
+          "margen_ebitda_pct": 25,
+          "amortizacion": 3308,
+          "ebit": 8507,
+          "impuestos": 2127,
+          "capex": 3544,
+          "variacion_circulante": 351,
+          "fcff": 5793,
+          "fraccion": 1,
+          "factor": 0.54,
+          "vp": 3128
+        }
+      ],
+      "etapa2": null,
+      "suma_vp": 30450,
+      "valor_terminal": 123151,
+      "vp_terminal": 64230,
+      "valor_empresa": 94679,
+      "peso_terminal_pct": 68,
+      "valor_acciones": 80289,
+      "valor_accion": 174.69,
+      "vt_gordon": 123151,
+      "vt_multiplo": 141776,
+      "multiplo_implicito": 10.4,
+      "g_implicito_pct": 3.11,
+      "metodo_terminal": "gordon",
+      "terminal_tabla": [
+        {
+          "concepto": "Método principal",
+          "valor": "Crecimiento a perpetuidad"
+        },
+        {
+          "concepto": "Crecimiento a perpetuidad",
+          "valor": "2,5 %"
+        },
+        {
+          "concepto": "Múltiplo EV/EBITDA de salida",
+          "valor": "12,0x"
+        },
+        {
+          "concepto": "Valor terminal (Gordon)",
+          "valor": "123.151"
+        },
+        {
+          "concepto": "Valor terminal (múltiplo)",
+          "valor": "141.776"
+        },
+        {
+          "concepto": "Múltiplo de salida implícito en Gordon",
+          "valor": "10,4x"
+        },
+        {
+          "concepto": "Crecimiento implícito en el múltiplo",
+          "valor": "3,11 %"
+        },
+        {
+          "concepto": "Peso del valor terminal en el valor empresa",
+          "valor": "68 %"
+        }
+      ],
+      "puente": [
+        {
+          "concepto": "Valor actual de los flujos proyectados",
+          "valor": "30.450"
+        },
+        {
+          "concepto": "Valor actual del valor terminal",
+          "valor": "64.230"
+        },
+        {
+          "concepto": "Valor empresa",
+          "valor": "94.679"
+        },
+        {
+          "concepto": "− Deuda financiera neta (con arrendamientos)",
+          "valor": "-13.390"
+        },
+        {
+          "concepto": "− Minoritarios, pensiones y otros; + asociadas",
+          "valor": "-1.000"
+        },
+        {
+          "concepto": "Valor de los fondos propios",
+          "valor": "80.289"
+        },
+        {
+          "concepto": "Acciones diluidas (millones)",
+          "valor": "459,6"
+        },
+        {
+          "concepto": "Valor por acción",
+          "valor": "174,69"
+        }
+      ],
+      "composicion": [
+        {
+          "parte": "Flujos proyectados",
+          "valor": 30450
+        },
+        {
+          "parte": "Valor terminal",
+          "valor": 64230
+        }
+      ],
+      "wacc": 7.32,
+      "ke": 8.15,
+      "kd_despues": 2.63,
+      "wacc_tabla": [
+        {
+          "concepto": "Tasa libre de riesgo",
+          "valor": "3,20 %"
+        },
+        {
+          "concepto": "Beta",
+          "valor": "0,90"
+        },
+        {
+          "concepto": "Prima de riesgo de mercado",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Prima adicional (país, tamaño, específica)",
+          "valor": "0,00 %"
+        },
+        {
+          "concepto": "Coste de los fondos propios",
+          "valor": "8,15 %"
+        },
+        {
+          "concepto": "Coste de la deuda antes de impuestos",
+          "valor": "3,50 %"
+        },
+        {
+          "concepto": "Tipo impositivo",
+          "valor": "25,00 %"
+        },
+        {
+          "concepto": "Coste de la deuda después de impuestos",
+          "valor": "2,63 %"
+        },
+        {
+          "concepto": "Peso de la deuda (D / (D + E))",
+          "valor": "15,00 %"
+        },
+        {
+          "concepto": "WACC",
+          "valor": "7,32 %"
+        },
+        {
+          "concepto": "Prima de riesgo implícita del mercado (regla relativa)",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "WACC con la prima implícita del mercado",
+          "valor": "6,33 %"
+        }
+      ],
+      "potencial_pct": 19.4,
+      "sensibilidad": {
+        "eje_columnas": "Crecimiento a perpetuidad",
+        "columnas": [
+          "1,5 %",
+          "2,0 %",
+          "2,5 %",
+          "3,0 %",
+          "3,5 %"
+        ],
+        "filas": [
+          {
+            "wacc": "6,3 %",
+            "v0": 188.72,
+            "v1": 207,
+            "v2": 230.07,
+            "v3": 260.09,
+            "v4": 300.74
+          },
+          {
+            "wacc": "6,8 %",
+            "v0": 167.28,
+            "v1": 181.56,
+            "v2": 199.16,
+            "v3": 221.35,
+            "v4": 250.23
+          },
+          {
+            "wacc": "7,3 %",
+            "v0": 149.56,
+            "v1": 160.94,
+            "v2": 174.69,
+            "v3": 191.62,
+            "v4": 212.99
+          },
+          {
+            "wacc": "7,8 %",
+            "v0": 134.68,
+            "v1": 143.9,
+            "v2": 154.86,
+            "v3": 168.1,
+            "v4": 184.39
+          },
+          {
+            "wacc": "8,3 %",
+            "v0": 122.01,
+            "v1": 129.59,
+            "v2": 138.47,
+            "v3": 149.02,
+            "v4": 161.76
+          }
+        ]
+      },
+      "sensibilidad2": {
+        "columnas": [
+          "-2 pp",
+          "-1 pp",
+          "0 pp",
+          "+1 pp",
+          "+2 pp"
+        ],
+        "filas": [
+          {
+            "margen": "-2 pp",
+            "v0": 131.72,
+            "v1": 140.22,
+            "v2": 149.13,
+            "v3": 158.46,
+            "v4": 168.22
+          },
+          {
+            "margen": "-1 pp",
+            "v0": 142.78,
+            "v1": 152.11,
+            "v2": 161.91,
+            "v3": 172.2,
+            "v4": 182.99
+          },
+          {
+            "margen": "0 pp",
+            "v0": 153.83,
+            "v1": 164,
+            "v2": 174.69,
+            "v3": 185.94,
+            "v4": 197.76
+          },
+          {
+            "margen": "+1 pp",
+            "v0": 164.89,
+            "v1": 175.88,
+            "v2": 187.47,
+            "v3": 199.68,
+            "v4": 212.53
+          },
+          {
+            "margen": "+2 pp",
+            "v0": 175.94,
+            "v1": 187.77,
+            "v2": 200.26,
+            "v3": 213.42,
+            "v4": 227.3
+          }
+        ]
+      },
+      "rango_min": 143.9,
+      "rango_max": 221.35,
+      "inverso": {
+        "crecimiento_implicito_pct": 2.3,
+        "crecimiento_base_pct": 5.1,
+        "periodo": "2027e-2035e",
+        "margen_implicito_pct": 22.8,
+        "margen_implicito_texto": null,
+        "margen_base_pct": 25,
+        "rentabilidad_implicita_pct": 8.1
+      },
+      "sostenibilidad": {
+        "veredicto": "Sí",
+        "crecimiento_proyectado_pct": 5.2,
+        "tasa_reinversion_pct": 3,
+        "crecimiento_financiable_pct": null,
+        "roic_pct": 11.6,
+        "roic_incremental_historico_pct": 4,
+        "roic_implicito_pct": null,
+        "cuota_actual_pct": null,
+        "cuota_final_pct": null,
+        "puente": [
+          {
+            "periodo": "2026e",
+            "volumen_pct": 6,
+            "precio_pct": 3,
+            "otros_pct": -3,
+            "comentario": "Volumen (gafas con IA que casi se duplican en el 2T, miopía +24 %) y precio y mezcla en lentes dan +9 % a tipo constante; el dólar resta unos 3 puntos [3, 18].",
+            "suma_pct": 6,
+            "crecimiento_pct": 6
+          },
+          {
+            "periodo": "2027e",
+            "volumen_pct": 4.5,
+            "precio_pct": 2.5,
+            "otros_pct": 0.5,
+            "comentario": "Volumen del 4,5 % (lentes, tiendas propias, gafas con IA a menor ritmo), 2,5 % de precio y medio punto de compras pequeñas.",
+            "suma_pct": 7.5,
+            "crecimiento_pct": 7.5
+          },
+          {
+            "periodo": "2028e",
+            "volumen_pct": 4.5,
+            "precio_pct": 2.5,
+            "otros_pct": 0,
+            "comentario": "Volumen del 4,5 % y precio del 2,5 %, por debajo del 6-11 % orgánico de 2024-2026 [1, 14].",
+            "suma_pct": 7,
+            "crecimiento_pct": 7
+          },
+          {
+            "periodo": "2029e",
+            "volumen_pct": 3.5,
+            "precio_pct": 2.5,
+            "otros_pct": 0,
+            "comentario": "El volumen se modera al 3,5 %; precio en línea con la inflación más mezcla.",
+            "suma_pct": 6,
+            "crecimiento_pct": 6
+          },
+          {
+            "periodo": "2030e",
+            "volumen_pct": 3,
+            "precio_pct": 2.5,
+            "otros_pct": 0,
+            "comentario": "Volumen del 3 % (envejecimiento y miopía) y precio del 2,5 %.",
+            "suma_pct": 5.5,
+            "crecimiento_pct": 5.5
+          }
+        ],
+        "texto": "La proyección apenas necesita inversión neta de la amortización (reinversión acumulada de 1.574 M, el 3 % del NOPAT, con un capex bruto medio del 8,2 % de las ventas). En un negocio de activos ligeros, el crecimiento medio del 5,2 % tiene que salir de subir precios y de ganar volumen sin capital nuevo, y la prueba es el poder de precios y la cuota; en un comprador en serie, la amortización es de intangibles comprados y la prueba es el capex bruto (las compras) frente al crecimiento comprado.",
+        "tabla": [
+          {
+            "concepto": "Crecimiento medio de ingresos proyectado",
+            "valor": "5,2 %"
+          },
+          {
+            "concepto": "Capex bruto medio (incluidas compras si van como inversión)",
+            "valor": "8,2 % de las ventas"
+          },
+          {
+            "concepto": "Reinversión neta acumulada (capex − amortización + circulante)",
+            "valor": "1.574 M (3 % del NOPAT)"
+          }
+        ]
+      }
+    },
+    "escenarios": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 30,
+        "narrativa": "Las gafas con IA se estancan ante Google, Samsung y Apple, los aranceles se quedan y el lujo sigue flojo: el crecimiento cae 2,5 puntos al año y el margen EBITDA 1,5 puntos, como en 2025 cuando los aranceles y la mezcla le quitaron 70 pb de margen ajustado.",
+        "crecimiento_medio_pct": 2.6,
+        "margen_final_pct": 23.5,
+        "wacc_pct": 7.3,
+        "valor": 122.34,
+        "potencial_pct": -16.4
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "narrativa": "El núcleo de lentes y tiendas crece al 6-7 % con precio y mezcla, las gafas con IA crecen más despacio y el margen EBITDA sube al 25 % en 2030.",
+        "crecimiento_medio_pct": 5.1,
+        "margen_final_pct": 25,
+        "wacc_pct": 7.3,
+        "valor": 174.69,
+        "potencial_pct": 19.4
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 20,
+        "narrativa": "Las gafas con IA y el control de miopía mantienen el crecimiento cerca del 9 % y el margen recupera el camino del antiguo objetivo del 19-20 % de margen operativo ajustado.",
+        "crecimiento_medio_pct": 6.6,
+        "margen_final_pct": 25.7,
+        "wacc_pct": 7.3,
+        "valor": 201.75,
+        "potencial_pct": 37.9
+      }
+    ],
+    "valor_ponderado": 164.4,
+    "potencial_ponderado_pct": 12.4,
+    "comparables": {
+      "tabla": [
+        {
+          "nombre": "EssilorLuxottica",
+          "ticker": "EL",
+          "pais": "FR",
+          "capitalizacion": 67239,
+          "ev_ventas": 2.87,
+          "ev_ebitda_ltm": 12.5,
+          "ev_ebitda_ntm": 10.5,
+          "per_ntm": 22.7,
+          "crecimiento_pct": 7.3,
+          "margen_ebitda_pct": 22.9,
+          "roic_pct": 11.6,
+          "dn_ebitda": 2.1,
+          "fcf_yield_pct": 4.2,
+          "es_objetivo": true
+        },
+        {
+          "nombre": "Hoya",
+          "ticker": "7741",
+          "pais": "JP",
+          "capitalizacion": 46421,
+          "ev_ventas": 8.07,
+          "ev_ebitda_ltm": 22.4,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 31.7,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": 36.1,
+          "roic_pct": 45.2,
+          "dn_ebitda": -1.5,
+          "fcf_yield_pct": 2.8,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Alcon",
+          "ticker": "ALC",
+          "pais": "CH",
+          "capitalizacion": 27281,
+          "ev_ventas": 3.09,
+          "ev_ebitda_ltm": 11.7,
+          "ev_ebitda_ntm": 10.6,
+          "per_ntm": null,
+          "crecimiento_pct": 6.2,
+          "margen_ebitda_pct": 25.7,
+          "roic_pct": 4.75,
+          "dn_ebitda": 1.2,
+          "fcf_yield_pct": 5.74,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Cooper Companies",
+          "ticker": "COO",
+          "pais": "US",
+          "capitalizacion": 9253,
+          "ev_ventas": 3.07,
+          "ev_ebitda_ltm": 10.6,
+          "ev_ebitda_ntm": 10.3,
+          "per_ntm": 15.3,
+          "crecimiento_pct": 3.2,
+          "margen_ebitda_pct": 29.1,
+          "roic_pct": 4.6,
+          "dn_ebitda": 1.9,
+          "fcf_yield_pct": 6.6,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Bausch + Lomb",
+          "ticker": "BLCO",
+          "pais": "CA",
+          "capitalizacion": 5476,
+          "ev_ventas": 2.01,
+          "ev_ebitda_ltm": 10.7,
+          "ev_ebitda_ntm": 9.5,
+          "per_ntm": null,
+          "crecimiento_pct": 6.3,
+          "margen_ebitda_pct": 17.5,
+          "roic_pct": 3.61,
+          "dn_ebitda": 5.3,
+          "fcf_yield_pct": 2.24,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Fielmann",
+          "ticker": "FIE",
+          "pais": "DE",
+          "capitalizacion": 3115,
+          "ev_ventas": 1.58,
+          "ev_ebitda_ltm": 6.8,
+          "ev_ebitda_ntm": 6.6,
+          "per_ntm": 13.7,
+          "crecimiento_pct": 5.4,
+          "margen_ebitda_pct": 23,
+          "roic_pct": 13.9,
+          "dn_ebitda": 1.1,
+          "fcf_yield_pct": 6.5,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "National Vision",
+          "ticker": "EYE",
+          "pais": "US",
+          "capitalizacion": 1183,
+          "ev_ventas": 0.75,
+          "ev_ebitda_ltm": 7.4,
+          "ev_ebitda_ntm": 6.5,
+          "per_ntm": 18.7,
+          "crecimiento_pct": 4.5,
+          "margen_ebitda_pct": 9.7,
+          "roic_pct": 4.4,
+          "dn_ebitda": 0.9,
+          "fcf_yield_pct": 3.7,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Sonova",
+          "ticker": "SOON",
+          "pais": "CH",
+          "capitalizacion": 16267,
+          "ev_ventas": 4.4,
+          "ev_ebitda_ltm": 16.7,
+          "ev_ebitda_ntm": 14.5,
+          "per_ntm": 22.8,
+          "crecimiento_pct": 7,
+          "margen_ebitda_pct": 26,
+          "roic_pct": 17,
+          "dn_ebitda": 1,
+          "fcf_yield_pct": 4.1,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Demant",
+          "ticker": "DEMANT",
+          "pais": "DK",
+          "capitalizacion": 9069,
+          "ev_ventas": 3.51,
+          "ev_ebitda_ltm": 15.1,
+          "ev_ebitda_ntm": 13,
+          "per_ntm": 21.3,
+          "crecimiento_pct": 9.8,
+          "margen_ebitda_pct": 23.3,
+          "roic_pct": 10.7,
+          "dn_ebitda": 3.3,
+          "fcf_yield_pct": 4.9,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Terumo",
+          "ticker": "4543",
+          "pais": "JP",
+          "capitalizacion": 18896,
+          "ev_ventas": 2.95,
+          "ev_ebitda_ltm": 11.9,
+          "ev_ebitda_ntm": 10,
+          "per_ntm": 17.8,
+          "crecimiento_pct": 9,
+          "margen_ebitda_pct": 24,
+          "roic_pct": null,
+          "dn_ebitda": 0.11,
+          "fcf_yield_pct": 4.4,
+          "es_objetivo": false
+        }
+      ],
+      "estadisticos": [
+        {
+          "estadistico": "Mediana",
+          "ev_ventas": 3.1,
+          "ev_ebitda_ltm": 11.7,
+          "ev_ebitda_ntm": 10.2,
+          "per_ntm": 18.7,
+          "crecimiento_pct": 6.3,
+          "margen_ebitda_pct": 24,
+          "roic_pct": 7.7,
+          "dn_ebitda": 1.1,
+          "fcf_yield_pct": 4.4
+        },
+        {
+          "estadistico": "Media",
+          "ev_ventas": 3.3,
+          "ev_ebitda_ltm": 12.6,
+          "ev_ebitda_ntm": 10.1,
+          "per_ntm": 20.2,
+          "crecimiento_pct": 6.4,
+          "margen_ebitda_pct": 23.8,
+          "roic_pct": 13,
+          "dn_ebitda": 1.5,
+          "fcf_yield_pct": 4.6
+        },
+        {
+          "estadistico": "Percentil 25",
+          "ev_ventas": 2,
+          "ev_ebitda_ltm": 10.6,
+          "ev_ebitda_ntm": 8.8,
+          "per_ntm": 16.6,
+          "crecimiento_pct": 5.2,
+          "margen_ebitda_pct": 23,
+          "roic_pct": 4.6,
+          "dn_ebitda": 0.9,
+          "fcf_yield_pct": 3.7
+        },
+        {
+          "estadistico": "Percentil 75",
+          "ev_ventas": 3.5,
+          "ev_ebitda_ltm": 15.1,
+          "ev_ebitda_ntm": 11.2,
+          "per_ntm": 22.1,
+          "crecimiento_pct": 7.5,
+          "margen_ebitda_pct": 26,
+          "roic_pct": 14.7,
+          "dn_ebitda": 1.9,
+          "fcf_yield_pct": 5.7
+        }
+      ],
+      "implicito": [
+        {
+          "metodo": "EV/EBITDA próximos 12 meses",
+          "metrica_empresa": 7783.31,
+          "multiplo_p25": 8.8,
+          "multiplo_mediana": 10.2,
+          "multiplo_p75": 11.2,
+          "multiplos": "8,8x / 10,2x / 11,2x",
+          "valor_p25": 117.29,
+          "valor_mediana": 140.58,
+          "valor_p75": 158.36,
+          "potencial_pct": -3.9
+        },
+        {
+          "metodo": "EV/EBITDA últimos 12 meses",
+          "metrica_empresa": 6529,
+          "multiplo_p25": 10.6,
+          "multiplo_mediana": 11.7,
+          "multiplo_p75": 15.1,
+          "multiplos": "10,6x / 11,7x / 15,1x",
+          "valor_p25": 119.27,
+          "valor_mediana": 134.9,
+          "valor_p75": 183.2,
+          "potencial_pct": -7.8
+        },
+        {
+          "metodo": "PER próximos 12 meses",
+          "metrica_empresa": 6.44,
+          "multiplo_p25": 16.6,
+          "multiplo_mediana": 18.7,
+          "multiplo_p75": 22.1,
+          "multiplos": "16,6x / 18,7x / 22,1x",
+          "valor_p25": 106.56,
+          "valor_mediana": 120.4,
+          "valor_p75": 141.97,
+          "potencial_pct": -17.7
+        },
+        {
+          "metodo": "EV/Ventas últimos 12 meses",
+          "metrica_empresa": 28491,
+          "multiplo_p25": 2,
+          "multiplo_mediana": 3.1,
+          "multiplo_p75": 3.5,
+          "multiplos": "2,0x / 3,1x / 3,5x",
+          "valor_p25": 93.29,
+          "valor_mediana": 159,
+          "valor_p75": 186.28,
+          "potencial_pct": 8.7
+        }
+      ],
+      "regresion": {
+        "pendiente": 0.65,
+        "ordenada": 5.9,
+        "r2": 0.27,
+        "n": 8,
+        "multiplo_ajustado": 10.7,
+        "valor_accion": 149.89,
+        "fiable": false,
+        "texto": "**Regresión EV/EBITDA NTM sobre crecimiento** (8 comparables): múltiplo = 5,9 + 0,65 × crecimiento; R² = 0,27. El crecimiento explica poco los múltiplos de estos comparables (R² < 0,3): la regresión no se usa en la valoración."
+      },
+      "n": 9
+    },
+    "transacciones": {
+      "n": 5,
+      "metrica": "EV/ventas",
+      "mediana_ev_ebitda": null,
+      "p25_ev_ebitda": null,
+      "p75_ev_ebitda": null,
+      "mediana_ev_ventas": 3.59,
+      "prima_mediana_pct": 46,
+      "valor_p25": 111.27,
+      "valor_mediana": 191.24,
+      "valor_p75": 245.17
+    },
+    "suma_partes": null,
+    "multiplos_historicos": [],
+    "multiplos_serie": [],
+    "multiplos_titulo": null,
+    "consenso_vs_propio": [
+      {
+        "periodo": "2026e",
+        "ingresos_propio": 30200,
+        "ingresos_consenso": 30266,
+        "ingresos_dif_pct": -0.2,
+        "ebitda_propio": 7188,
+        "ebitda_consenso": 7221,
+        "ebitda_dif_pct": -0.5
+      },
+      {
+        "periodo": "2027e",
+        "ingresos_propio": 32465,
+        "ingresos_consenso": 32871,
+        "ingresos_dif_pct": -1.2,
+        "ebitda_propio": 7857,
+        "ebitda_consenso": 7936,
+        "ebitda_dif_pct": -1
+      }
+    ],
+    "gobierno": {
+      "n_consejeros": 2,
+      "independientes_pct": 0,
+      "antiguedad_media": 7,
+      "composicion": [
+        {
+          "tipo": "Ejecutivo",
+          "num": 2
+        }
+      ],
+      "checklist": [
+        {
+          "criterio": "Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)",
+          "resultado": "No cumple",
+          "valor": "0 % (con control)"
+        },
+        {
+          "criterio": "Presidencia sin vínculo familiar ni profesional con el accionista de control",
+          "resultado": "No cumple",
+          "valor": "Vinculada"
+        },
+        {
+          "criterio": "Presidente no ejecutivo, o consejero coordinador independiente",
+          "resultado": "No cumple",
+          "valor": "Ejecutivo, sin coordinador"
+        },
+        {
+          "criterio": "Comisión de auditoría con mayoría de independientes y presidida por uno",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Ningún consejero «otro externo» con más de 12 años",
+          "resultado": "Cumple",
+          "valor": "Ninguno"
+        },
+        {
+          "criterio": "Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses",
+          "resultado": "Cumple",
+          "valor": "0 cambios"
+        },
+        {
+          "criterio": "Peor voto a favor sobre remuneración (3 juntas) ≥ 80 %",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Una acción, un voto, sin blindajes ni límites de voto estatutarios",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Sin operaciones vinculadas relevantes",
+          "resultado": "Cumple",
+          "valor": "No hay"
+        },
+        {
+          "criterio": "Auditor con 10 años o menos en el cargo",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Opinión de auditoría sin salvedades",
+          "resultado": "Cumple",
+          "valor": "Favorable (cuentas de 2025 auditadas; informe en emisión a 11-feb-2026)"
+        },
+        {
+          "criterio": "Directivos compradores netos en 12 meses (o sin ventas relevantes)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        }
+      ],
+      "puntuacion": "4 de 13 (6 sin dato)",
+      "puntuacion_pct": 31,
+      "compras_insiders": 0,
+      "ventas_insiders": 0
+    },
+    "competidores_margen": [
+      {
+        "nombre": "EssilorLuxottica",
+        "margen_ebit_pct": 11.9
+      },
+      {
+        "nombre": "Hoya",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Carl Zeiss Vision",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Fielmann",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "National Vision",
+        "margen_ebit_pct": 3
+      },
+      {
+        "nombre": "Safilo",
+        "margen_ebit_pct": null
+      }
+    ],
+    "sintesis": {
+      "formato_eje": "#,##0",
+      "rangos": [
+        {
+          "metodo": "Precio objetivo de los analistas",
+          "etiqueta": "Precio objetivo de los analistas (157,00 – 300,00)",
+          "min": 157,
+          "central": null,
+          "max": 300,
+          "gris": true
+        },
+        {
+          "metodo": "Comparables: EV/EBITDA NTM",
+          "etiqueta": "Comparables: EV/EBITDA NTM (117,29 – 158,36)",
+          "min": 117.29,
+          "central": 140.58,
+          "max": 158.36,
+          "gris": false
+        },
+        {
+          "metodo": "Comparables: PER NTM",
+          "etiqueta": "Comparables: PER NTM (106,56 – 141,97)",
+          "min": 106.56,
+          "central": 120.4,
+          "max": 141.97,
+          "gris": false
+        },
+        {
+          "metodo": "Transacciones precedentes (EV/ventas)",
+          "etiqueta": "Transacciones precedentes (EV/ventas) (111,27 – 245,17)",
+          "min": 111.27,
+          "central": 191.24,
+          "max": 245.17,
+          "gris": false
+        },
+        {
+          "metodo": "DCF (WACC y g ± 0,5)",
+          "etiqueta": "DCF (WACC y g ± 0,5) (143,90 – 221,35)",
+          "min": 143.9,
+          "central": 174.69,
+          "max": 221.35,
+          "gris": false
+        },
+        {
+          "metodo": "Escenarios (bajista – alcista)",
+          "etiqueta": "Escenarios (bajista – alcista) (122,34 – 201,75)",
+          "min": 122.34,
+          "central": 164.4,
+          "max": 201.75,
+          "gris": false
+        },
+        {
+          "metodo": "DCF con la prima del mercado",
+          "etiqueta": "DCF con la prima implícita del mercado (4,2 %)",
+          "min": 198.86,
+          "central": 229.69,
+          "max": 269.85
+        },
+        {
+          "metodo": "Precio actual",
+          "etiqueta": "Precio actual (146,30)",
+          "min": 145.57,
+          "central": 146.3,
+          "max": 147.03,
+          "gris": true
+        }
+      ],
+      "tabla": [
+        {
+          "metodo": "DCF",
+          "valor": 174.69,
+          "peso_pct": 40,
+          "potencial_pct": 19.4
+        },
+        {
+          "metodo": "Comparables (mediana EV/EBITDA y PER)",
+          "valor": 130.49,
+          "peso_pct": 30,
+          "potencial_pct": -10.8
+        },
+        {
+          "metodo": "Transacciones precedentes (no se usa)",
+          "valor": 191.24,
+          "peso_pct": 0,
+          "potencial_pct": 30.7
+        },
+        {
+          "metodo": "Escenarios ponderados",
+          "valor": 164.4,
+          "peso_pct": 30,
+          "potencial_pct": 12.4
+        }
+      ],
+      "valor_objetivo": 158.34,
+      "potencial_pct": 8.2
+    },
+    "fuentes": {
+      "n_fuentes": 78,
+      "n_primarias": 15,
+      "por_tipo": [
+        {
+          "tipo": "Primaria",
+          "num": 15
+        },
+        {
+          "tipo": "Datos de mercado",
+          "num": 27
+        },
+        {
+          "tipo": "Prensa",
+          "num": 28
+        },
+        {
+          "tipo": "Sectorial",
+          "num": 2
+        },
+        {
+          "tipo": "Analistas",
+          "num": 3
+        },
+        {
+          "tipo": "Foros y redes",
+          "num": 3
+        }
+      ],
+      "n_citadas": 67,
+      "citas_sin_fuente": [],
+      "fuentes_sin_citar": [
+        "8",
+        "9",
+        "10",
+        "16",
+        "17",
+        "22",
+        "25",
+        "42",
+        "44",
+        "45",
+        "46"
+      ]
+    },
+    "controles": [
+      {
+        "control": "Geografías suman 100 %",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "DCF inverso calculable",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Puente de ingresos (volumen + precio + otros) = crecimiento del DCF",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "resultado": "OK",
+        "detalle": "Supuesto 25,5 % frente a 25,6 % real: genera una variación de circulante de 394 M en el primer año. Converge de forma gradual."
+      },
+      {
+        "control": "Peso del valor terminal ≤ 80 % del valor empresa",
+        "resultado": "OK",
+        "detalle": "68 %."
+      },
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "resultado": "OK",
+        "detalle": "2,50 %."
+      },
+      {
+        "control": "Probabilidades de los escenarios suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Regresión múltiplo-crecimiento explicativa (R² ≥ 0,3)",
+        "resultado": "Explicado",
+        "detalle": "R² = 0,27: el crecimiento no explica los múltiplos de estos comparables; no uses el valor de la regresión. Explicación: Con R² de 0,27 la regresión no se usa; los comparables mezclan óptica, audición y tecnología médica."
+      },
+      {
+        "control": "Al menos 5 comparables",
+        "resultado": "OK",
+        "detalle": "9 comparables."
+      },
+      {
+        "control": "Pesos de la síntesis suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Múltiplos del objetivo a 12 m según la regla común",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Objetivo 12 m frente al consenso",
+        "resultado": "OK",
+        "detalle": "El base se separa un -19,6 % del objetivo medio de los analistas: explícalo en diferencia_consenso (nunca se acerca la cifra)."
+      },
+      {
+        "control": "Recomendación coherente con la regla de decisión",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "La síntesis explica la convicción",
+        "resultado": "OK",
+        "detalle": "La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría."
+      },
+      {
+        "control": "Al menos 25 fuentes",
+        "resultado": "OK",
+        "detalle": "78 fuentes (15 primarias)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "resultado": "OK",
+        "detalle": "15."
+      },
+      {
+        "control": "Toda cita [n] existe en fuentes",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Fuentes sin citar ≤ 15 %",
+        "resultado": "OK",
+        "detalle": "Sin citar: 8, 9, 10, 16, 17, 22, 25, 42, 44, 45, 46."
+      }
+    ],
+    "controles_resumen": "17 de 18 controles correctos y 1 explicados"
+  }
+}
