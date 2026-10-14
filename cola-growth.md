@@ -9,7 +9,7 @@ Análisis growth: método en `verticales/growth/metodo.md`, procedimiento en `.c
 | 6 | Toast | TOST | Software y pagos para restaurantes; crece ~25 % y ya genera caja |
 | 6 | HubSpot | HUBS | CRM para pymes castigado por el miedo a la IA: posible giro de percepción si el crecimiento aguanta |
 
-Tanda 6 propuesta al usuario el 14-oct; se arranca al recibir el visto bueno o la orden de seguir.
+Tanda 6 en marcha desde el 14-oct (16:20), en paralelo con el backtest de la v9 (proyección desde la guía), que tiene prioridad antes de más tandas.
 
 Al acabar una empresa: se quita de aquí y queda en `informes-growth/resumen.md`.
 
