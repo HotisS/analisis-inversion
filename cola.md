@@ -35,16 +35,12 @@ Cómo seguir (sesión nueva):
 | 4 | Sartorius Stedim Biotech | DIM.PA | Valor | Consumibles de bioproducción, compararla con Lonza |
 | 4 | Lotus Bakeries | LOTB.BR | Crecimiento | Biscoff, crecimiento de marca propia |
 
-## Vigilar
+## Vigilar (cifras v3 ×1,1 al cierre del 14-oct)
 
-- **Quinta hora, cerca de Comprar pero bloqueadas** (14-oct): Siemens Healthineers (+39,7 %, confianza baja y ROIC − WACC ≈ +1), Alcon (+39,3 %, calidad −4,5), Kering (+16,2 %, calidad −4,1), Pernod Ricard (+22,9 %, calidad +0,5), Sika (+27,4 %, falla calidad y valor intrínseco −5,6 %). Kuehne+Nagel pasa los tres requisitos por debajo de 184,20 CHF. **Partners Group** (+54,3 % con v3, en el tope de ×1,3, sin cifra v2; hoy 597,20 CHF): Mantener por confianza baja; pasaría a Comprar por debajo de 791,87 CHF si se confirman con fuente primaria el balance del 30-jun y unos reembolsos del 3T26 por debajo del 5 %. Air Liquide falla calidad (ROIC − WACC 3,7).
-- **Rightmove**: fuera de la cartera por decisión del usuario (14-oct); no proponerla.
+- **Bloqueadas por calidad o confianza** (5ª hora): Siemens Healthineers +24,9 % (confianza baja; ROIC − WACC ≈ +1), Partners Group +31,8 % (confianza baja; Comprar por debajo de 679,76 CHF si se confirman balance y reembolsos), Alcon +26,3 %, Sika +25,6 %, Pernod Ricard +18,9 % y Air Liquide (fallan calidad). Kuehne+Nagel pasa los tres por debajo de 184,20 CHF.
+- **Edenred** (título-restaurante): si el Senado o un decreto fijan un tope a la comisión, pasa a Mantener y se rehacen Edenred y Pluxee. Si queda claro que no hay tope, se amplía (pasa los tres).
+- **Group 1 Automotive**: Mantener (−4,3 %); volver a mirar tras los resultados del 28-oct.
 
-- **Precios sin cierre del 13-oct** en los análisis del 14-oct (Halma, Spirax, KONE, Schneider, Experian, Texas Instruments, Danaher): recalcular con `herramientas/apuntar-12m.mjs <carpeta> --precio X` antes de comprar. Experian es la más cercana a Comprar (por debajo de ≈2.447 p).
+## Suplentes del escáner del 10-oct sin analizar
 
-- **Group 1 Automotive (GPI)**: analizado el 14-oct desde la nube solo con búsqueda web (confianza baja; Mantener, ponderada +7,5 %, base +9,0 %, compra por debajo de 216 USD). Volver a mirar tras los resultados del 28-oct.
-- **Título restaurante (Edenred, Pluxee)**: si el pleno fija un tope a la comisión o el Gobierno anuncia el decreto, Edenred pasa a Mantener y se rehacen Edenred y Pluxee en la cartera.
-
-## Suplentes (del escáner del 10-oct, sin analizar)
-
-Booking (BKNG), ANYCOLOR (5032.T), Moncler (MONC.MI), Sectra (SECT-B.ST), Yelp (YELP).
+Yelp (YELP).
