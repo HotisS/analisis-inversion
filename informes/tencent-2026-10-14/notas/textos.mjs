@@ -1,0 +1,115 @@
+// Textos del analista (Tencent, corte 2026-10-14). Cifras del motor tal cual; hechos con cita de la nota.
+export default {
+  limitaciones: 'Análisis hecho desde la nube con la red limitada a la búsqueda web: HKEX, la web de Tencent, Yahoo y los proveedores no se pudieron abrir, así que las cifras salen de los extractos de búsqueda de los comunicados de resultados, del informe anual 2025 y de agregadores (Stock Analysis, Stockopedia), con la URL como fuente; la confianza general es baja-media y lo que no cuadró está en null y en los huecos. Cuentas en RMB (NIIF), ejercicio natural; la acción cotiza en HKD en Hong Kong (también hay ADR TCEHY en el mercado extrabursátil de EE. UU., no usado). Tipo de cambio 0,859 RMB por HKD (6,70 RMB/USD a 30-sep-2026 ÷ 7,80 HKD/USD de la banda de cambio; OFX daba 0,853 a 5-ago) [D2, D3]; los cierres anuales y el dividendo se pasan a RMB con tipos aproximados de cierre de cada año (estimación propia). El EBITDA es el resultado operativo sin «otras ganancias» (revalorizaciones y ventas de participadas) más las amortizaciones de inmovilizado y derechos de uso que da Stock Analysis; la amortización de contenidos y juegos licenciados queda como gasto. Acciones: 9.250 M diluidas (9.118 M emitidas en mayo menos recompras y más ≈2,5 % de dilución de los planes en acciones), estimación propia [A17, A18]. Las participaciones (cotizadas a mercado y no cotizadas a valor contable, 875.100 M) se suman en el puente con un 20 % de descuento [D19].',
+  controles_explicados: [
+    { control: 'Objetivo 12 m frente al consenso', explicacion: 'Nuestro base queda un 32,7 % por debajo del objetivo medio de los analistas: lo explica diferencia_consenso (BPA menor por la amortización de la IA y PER actual en vez del histórico).' },
+  ],
+  parches: [],
+  huecos_resueltos: [],
+  secciones: {
+    financieros: {
+      comentario: 'Tencent pasó de 560.118 M de ingresos en 2021 a 751.766 M en 2025 (TCAC del 7,6 %), con un 2022 negativo (−1 %) por la congelación de licencias de juegos y los confinamientos, y un 2025 fuerte (+13,9 %) por juegos nuevos y publicidad con IA [A3, A5]. Todo es orgánico. El margen bruto subió del 43,9 % al 56,3 % y el EBITDA del 27,1 % al 37,2 %: más publicidad y juegos propios, menos contenido de vídeo caro y recorte de negocios con pérdidas desde 2022. En 2026 crece al 9-11 % (1T26 196.500 M, 2T26 204.785 M) [A1, A14], pero el beneficio se frena: el atribuido NIIF del 2T26 sube un 0,7 % y el no NIIF un 9 %, porque la amortización y el gasto de los nuevos productos de IA crecen más que las ventas [A1].',
+      ajustes: 'El beneficio NIIF no sirve para comparar años: incluye revalorizaciones, deterioros y repartos en especie de participadas (JD.com en 2021, Meituan en 2022), por eso va de 224.822 M en 2021 a 115.216 M en 2023 y vuelve a 224.842 M en 2025 [A7]. Tencent publica un beneficio no NIIF (123.788 M en 2021, 259.600 M en 2025) que excluye esas partidas, los pagos en acciones y la amortización de intangibles comprados [A3, A12]. Usamos el resultado operativo sin otras ganancias como EBIT del DCF y el BPA no NIIF para el PER, sabiendo que este excluye un coste real (pagos en acciones, ≈4-5 % de las ventas).',
+      confianza: 'Media',
+    },
+    trimestres: { confianza: 'Media' },
+    balance: {
+      otros_pasivos: 'No hemos podido leer las notas del informe anual (covenants, garantías, compromisos de compra de servidores). Lo relevante: (1) la caja neta bajó a 58.200 M en junio de 2026 (−22 % interanual) porque la deuda financia la IA [A1]; (2) los anticipos por capacidad de cálculo para IA salen de la caja antes de que el activo entre en el balance, de modo que la deuda neta seguirá subiendo en el segundo semestre; (3) la estructura VIE no crea pasivos en balance, pero sí un riesgo jurídico.',
+      comentario: 'El balance es de holding de internet: 2,04 billones de activo, 1,15 billones de patrimonio atribuido y una cartera de participaciones de 875.100 M (487.200 M cotizadas a valor de mercado y 387.900 M no cotizadas a coste) a junio de 2026 [A10, D19]. La deuda bruta ronda los 453.000 M frente a 511.200 M de caja: caja neta pequeña, 58.200 M [A1]. La caja de 2021-2023 sale de Stockopedia (caja e inversiones a corto) y no es comparable al 100 % con el «total cash» de Tencent de 2024; la deuda de esos años no se ha podido obtener.',
+      confianza: 'Baja',
+    },
+    flujos: {
+      comentario: 'El flujo operativo pasó de 175.186 M en 2021 a 303.052 M en 2025, y la caja libre propia de Tencent (después de inversión, contenidos y arrendamientos) a 182.600 M en 2025 (+18 %) [A3, A6]. La conversión del EBITDA en caja libre fue del 85 % en 2025. La inversión en inmovilizado e intangibles subió de 47.050 M en 2023 a 112.881 M en 2025 [A8], y en 2026 se dispara: 52.800 M solo en el 2T26 y caja libre negativa en el trimestre (−13.800 M; 37.600 M sin anticipos de IA) [A1]. Antes de la IA el capex de mantenimiento era de ≈5-7 % de las ventas (estimación propia: 2021-2023); el resto, ahora la mayoría, es de crecimiento en servidores de IA.',
+      confianza: 'Media',
+    },
+    calidad: {
+      comentario: 'Auditor PwC, opinión favorable [A10]. Los riesgos de calidad son de presentación más que de manipulación: (1) el beneficio NIIF depende de la cartera de participaciones; (2) el no NIIF excluye los pagos en acciones, un coste recurrente de ≈4-5 % de las ventas; (3) la inversión devengada y la pagada difieren por los anticipos de servidores [A19]. El Altman Z (3,31) es cómodo y el Piotroski F (7) bueno; el Beneish M no se calcula porque faltan clientes y activo corriente. Nada en las fuentes consultadas sugiere ingresos adelantados ni capitalización agresiva de gastos, pero no hemos podido leer las notas.',
+      confianza: 'Baja',
+    },
+    capital: {
+      comentario: 'Tencent ha repartido mucho y bien: dividendo de 1,60 a 5,30 HKD por acción entre 2021 y 2025 y recompras de ≈112.000 M HKD en 2024 [A4], que bajaron las acciones diluidas de 9.700 M a ≈9.312 M. Repartió en especie JD.com y Meituan en lugar de venderlas. El ROIC incremental de 2021-2025 (20,6 %) confirma que el crecimiento reciente ha creado valor. El cambio de 2026 es de fondo: recompras menores (34,98 M de acciones a julio) para financiar una inversión en IA que triplica la de 2025 [A1, A18]. Si la IA rinde como la publicidad (marketing +22 %), la decisión será buena; si se parece a los años de inversiones fallidas (2021-22), se habrá destruido parte del ROIC.',
+      confianza: 'Media',
+    },
+    multiplos_historicos: {
+      comentario: 'A 365,25 RMB (425,20 HKD) la acción cotiza a 9,7 veces el EBITDA de 2025, frente a una media de 16,8 veces en los cierres de 2022-2025, y a 15,2 veces el BPA NIIF frente a 20,9 de media. Con el BPA no NIIF, el PER de cierre fue de 23,8 en 2022 (beneficio deprimido), 16,3 en 2023, 16,8 en 2024 y 19,3 en 2025; hoy es de ≈11,7 sobre nuestro BPA de 2027e. El descuento tiene causa: el mercado ya no paga por el beneficio de hoy, sino por la caja libre, que la inversión en IA reduce a casi cero en 2026 [D17]. Faltan los cierres de 2018-2021.',
+      confianza: 'Baja',
+    },
+    comparables: {
+      comentario: 'Tencent cotiza a 11,0 veces el BPA de los próximos 12 meses del consenso, por debajo de la mediana de los comparables (15,3 veces) y en la zona de las chinas (Alibaba 15,3, Baidu 13,3, NetEase 12,8, PDD 9,4), muy por debajo de las estadounidenses (Meta 21,4, Alphabet 24,5, Netflix 18,7) [D10-D16]. El descuento frente a Meta, con márgenes y ROIC parecidos, es el descuento país (VIE, lista 1260H, regulación); frente a las chinas, Tencent tiene más margen y menos inversión relativa que Alibaba, lo que justificaría una prima, no un descuento. Usamos la mediana del PER para el objetivo alcista; el EV/EBITDA de los comparables (643,90 RMB) lo inflan las estadounidenses y no se usa.',
+      confianza: 'Baja',
+    },
+    transacciones: null,
+  },
+  dcf_justificacion: {
+    crecimiento: 'Ingresos +11 % en 2026e (fijo: +9 % en el 1T26 y +11 % en el 2T26 [A1, A14]) y en 2027e, bajando a +3 % en 2035e. Es la TCAC de 2021-2025 (7,6 %) más la nube y la publicidad con IA en los primeros años; el consenso implica un 9-10 % [D7]. El mercado de juegos de China crece al 7,7 % [B1].',
+    margenes: 'Margen EBITDA del 37,0 % en 2026e (37,2 % en 2025: los nuevos productos de IA restan) que sube al 40 % en 2030e por el apalancamiento de la publicidad y la nube. Es el gran supuesto: el margen subió diez puntos en 2021-2025, pero la IA añade costes de cálculo que no pasan por la amortización.',
+    inversion: 'Capex del 22 % de las ventas en 2026e (≈183.000 M; el 2T26 ya fue de 52.800 M y la dirección anuncia más en el segundo semestre [A1, A20]), 18 % en 2027e y 10,5 % al final (frente al 6,7 % de 2021-2023 y 15 % de 2025). La amortización sube del 4,5 % de las ventas en 2025 al 10,5 % en 2029e (servidores a 4-6 años). Circulante nulo: Tencent cobra por adelantado en juegos y publicidad.',
+    wacc: 'Todo en RMB: bono chino a 10 años del 1,67 % [D4], beta 1,0 (sin datos de bolsa; la de un grupo de internet diversificado), prima de mercado del 5,5 % y prima adicional de 2,9 puntos (estructura VIE, lista 1260H y riesgo regulatorio, igual que en el informe de Alibaba), coste de la deuda del 3,0 % y un 10 % de deuda: WACC del 9,31 %.',
+    terminal: 'Gordon con un 1,1 % (tasa libre china menos medio punto, por coherencia con la divisa de los flujos). El múltiplo implícito es de 7,4 veces el EBITDA terminal, por debajo de la media histórica (16,8 veces), lo que hace al terminal conservador; con un múltiplo de 10 veces el valor sería mayor.',
+  },
+  puente_comentarios: {
+    '2026e': 'Volumen: impresiones de publicidad (Video Accounts), usuarios de la nube y juegos nuevos; precio: subida del precio por impresión con la segmentación por IA (marketing +22 % en el 2T26) [A1]; otros: nuevos productos de IA y nube.',
+    '2027e': 'Igual que 2026e; el volumen de los juegos se modera y la nube gana peso con la capacidad nueva.',
+    '2028e': 'La publicidad sigue por precio; los juegos crecen con el mercado (≈7-8 % [B1]).',
+    '2029e': 'Converge hacia el crecimiento del consumo digital chino.',
+    '2030e': 'Mercado maduro: volumen 3,5 % y precio 2,5 %.',
+  },
+  veredicto: 'En parte',
+  sostenibilidad_justificacion: 'En parte. El motor no hace la prueba de reinversión porque la reinversión neta de toda la proyección es solo del 12 % del NOPAT; la hacemos a mano para 2026-2028, los años de la IA: la inversión neta (capex menos amortización) suma ≈268.000 M y el EBIT crece ≈50.000 M (≈41.000 M de NOPAT): el capital nuevo rinde ≈15 %, por debajo del ROIC incremental histórico (20,6 %) y del ROIC actual (17,5 %), así que la prueba no falla y no rebajamos el caso base. El foso (Weixin, juegos de diez años, publicidad que sube precio) sostiene un crecimiento del 7-9 % sin capital nuevo, como en 2023-2025. Lo que no está probado es que la IA rinda ese 15 %: es la apuesta de 2026-28 y la razón de «En parte».',
+  dcf_lectura: 'El DCF da 464,31 RMB por acción (540,5 HKD), un 27,1 % sobre el precio, con un WACC del 9,31 % y un valor terminal del 55 %. La sensibilidad (WACC y crecimiento ± 0,5 puntos) va de 428,09 a 510,26 RMB: el precio queda por debajo incluso del extremo bajo. El DCF inverso dice que a 365,25 RMB el mercado descuenta un crecimiento del 2,7 % anual en 2027-2035 (frente al 7,0 % de nuestro base) o un margen EBITDA del 32,9 % (frente al 40 %); la rentabilidad implícita es del 11,8 %. Es una expectativa conservadora para una empresa que ha crecido al 7,6 % con márgenes al alza, pero coherente con un mercado que duda de que la inversión en IA rinda y que aplica un descuento país. El DCF se fía de que el margen suba con la IA; si la IA solo defiende el negocio, el valor baja hacia el escenario bajista.',
+  narrativas: {
+    Bajista: 'La IA no se cobra: la inversión sigue alta y la amortización come el margen (−3 puntos), ByteDance gana tiempo de uso y el crecimiento cae tres puntos, como en 2021-22 con la regulación. Más riesgo país (WACC +1).',
+    Base: 'Ingresos al 11 % en 2026-27 bajando al 3 %, margen EBITDA hacia el 40 % con la publicidad y la nube, inversión que vuelve al 10,5 % de las ventas en 2034e.',
+    Alcista: 'La IA sube el precio de la publicidad y la nube crece deprisa: dos puntos más de crecimiento y 1,5 de margen; el mercado vuelve a pagar por el beneficio.',
+  },
+  escenarios_comentario: 'El DCF da 325,39 RMB en el bajista (−10,9 %), 464,31 en el base y 544,70 en el alcista (+49,1 %). La asimetría del valor intrínseco es favorable (4,50 veces), pero no es lo que manda: a 12 meses el bajista pierde un 19,4 % y el alcista gana un 51 %. Damos un 25 % a cada extremo: el bajista es verosímil (Tencent ya vivió un 2022 con ingresos a la baja) y el alcista exige que la IA se pague pronto.',
+  suma_partes_comentario: 'No se aplica como método: Tencent no publica el resultado de cada segmento en las fuentes consultadas. La cartera de participaciones (875.100 M, ≈95 RMB por acción antes del descuento) se suma en el puente con un 20 % de descuento (impuestos sobre plusvalías y descuento de holding): 700.080 M, ≈76 RMB por acción [D19].',
+  valoracion_comentario: 'El DCF pesa un 45 %: el negocio genera caja estable y la gran incógnita (la inversión en IA) está explícita en los supuestos. Los escenarios pesan un 30 % por esa incógnita y los comparables un 25 %, solo por PER, porque el EV/EBITDA de las estadounidenses no es comparable. No hay transacciones comparables. Todos los métodos quedan por encima del precio: el valor objetivo es de 470,61 RMB (547,9 HKD). La decisión, sin embargo, la toma el objetivo a 12 meses: el mercado paga hoy 11-12 veces el beneficio y no hay razón para que vuelva a 16-17 veces antes de ver la caja de la IA.',
+  rentabilidad_comentario: 'Tencent crea valor: el ROIC del motor fue del 15,2 % en 2021, del 24,8 % en 2023 y del 17,5 % en 2025, frente a un WACC del 9,31 %: 8,2 puntos de diferencial. Ese ROIC está deprimido por el método: el capital invertido incluye la cartera de participaciones (875.100 M a valor de mercado y contable [D19]), cuyo rendimiento no está en el EBIT; sin ella, el ROIC del negocio operativo pasaría del 40 % (estimación propia). Lo mueve el margen (EBITDA del 27,1 % al 37,2 % en 2021-2025), no la rotación (0,39 veces). El ROIC incremental (20,6 %) dice que el crecimiento reciente ha sido rentable; la caída de 2024-2025 (21,2 % a 17,5 %) recoge el primer año de capital para IA.',
+  diferencia_consenso: 'Nuestro base (391,37 RMB, 455,6 HKD) queda un 32,7 % por debajo del objetivo medio de los analistas (581,91 RMB, 677,42 HKD; 51 analistas) [D5, D6]. Un tercio sale del BPA: 31,10 RMB en 2027e frente a 33,83 del consenso (−8 %), porque llevamos la amortización de los servidores de IA al 8,5-10 % de las ventas en 2027-28. Dos tercios salen del múltiplo: usamos el PER actual (11,7 veces nuestro BPA de 2027e), menor que la mediana de 2023-2025 (16,8), mientras los objetivos de los analistas implican 17-20 veces. Los objetivos medios no se han movido en tres meses, aunque Mizuho bajó a 560 HKD [D20] y Citi subió a 765 HKD.',
+  objetivo12m_comentario: 'El valor intrínseco (470,61 RMB) queda un 16 % por encima del objetivo ponderado a 12 meses (404,75 RMB). Para cerrar la distancia hace falta que el mercado vuelva a pagar el PER histórico (16-17 veces) y eso exige ver que la IA rinde: caja libre positiva otra vez, nube creciendo por encima del 20 % o margen de publicidad al alza. El catalizador con fecha son los resultados del 3T26 (mediados de noviembre) y del 4T26 (marzo de 2027), con la guía de inversión de 2027. La distancia es menor del 25 %: la tesis cabe en 12-18 meses.',
+  just12: {
+    Bajista: 'Ventas de 964.302 M en 2028e (tres puntos menos de crecimiento en 2027-28) con un margen EBITDA del 36 %: EBIT de 250.719 M tras amortizar el 10 % de las ventas, más 4,5 % de pagos en acciones e intangibles, 35.995 M de participadas y financiero, impuesto del 18 % y 9.250 M de acciones.',
+    Base: 'Ventas de 1.018.876 M en 2028e (+11 % y +10 %) con margen EBITDA del 39 %: EBIT de 295.474 M tras la amortización de la IA (10 %), ajuste no NIIF del 4,5 %, 35.995 M de participadas y financiero neto, impuesto del 18 % y 9.250 M de acciones sin recompras nuevas.',
+    Alcista: 'Ventas de 1.056.093 M (dos puntos más de crecimiento) y margen del 40,5 %: la IA sube el precio de la publicidad y la nube. EBIT de 322.108 M; mismas partidas de abajo y acciones.',
+  },
+  per_excluidos: 'BPA no NIIF diluido (misma base que los casos): 2022 PER 23,8 (283,29 RMB ÷ 11,92, BPA estimado con el beneficio no NIIF de 115.649 M y 9.700 M de acciones) excluido por BPA deprimido (congelación de licencias y confinamientos); 2021 y anteriores sin precio de cierre. Quedan 2023 16,3 (266,30 ÷ 16,32), 2024 16,8 (394,61 ÷ 23,505) y 2025 19,3 (539,10 ÷ 27,877) [A3, A4, A12, D8]. Mediana 16,8, mínimo 16,3, media 17,5 (solo tres años). Actual = 365,25 ÷ 31,10 (nuestro BPA de 2027e) = 11,7.',
+  catalizadores: {
+    items: [
+      { fecha: 'Mediados de noviembre de 2026 (fecha por confirmar)', evento: 'Resultados del 3T26', efecto: 'Primera lectura de la inversión del segundo semestre y de la caja libre; consenso de BPA anual 30,61 RMB', probabilidad: 'Alta', sentido: '+/−' },
+      { fecha: 'Marzo de 2027', evento: 'Resultados de 2026 y dividendo', efecto: 'Dividendo (5,30 HKD en 2025) y plan de inversión y recompras de 2027', probabilidad: 'Alta', sentido: '+/−' },
+      { fecha: '2026-27', evento: 'Modelo Hunyuan Hy4 y despliegue de WorkBuddy', efecto: 'Prueba de que la IA se cobra en la nube y la publicidad', probabilidad: 'Media', sentido: '+' },
+      { fecha: 'Continuo', evento: 'Ventas de Prosus/Naspers', efecto: 'Vendedor permanente (≈23 % del capital)', probabilidad: 'Alta', sentido: '−' },
+      { fecha: '2027', evento: 'Revisión de la lista 1260H y controles de chips de EE. UU.', efecto: 'Salir de la lista abriría la acción a inversores de EE. UU.; más controles encarecerían la IA', probabilidad: 'Baja', sentido: '+/−' },
+    ],
+    confianza: 'Media',
+  },
+  riesgos: {
+    items: [
+      { riesgo: 'La inversión en IA no se recupera', tipo: 'Estratégico', probabilidad: 'Media', impacto: 'Alto', efecto_valor: '−30 % (escenario bajista: 325,39 RMB en el DCF; −19,4 % a 12 meses)', mitigante: 'El negocio de siempre crece un 19 % en resultado operativo sin la IA [A20]', senal: 'Caja libre negativa en el 3T26 y el 4T26; margen bruto a la baja' },
+      { riesgo: 'Regulación de juegos o fintech en China', tipo: 'Regulatorio', probabilidad: 'Media', impacto: 'Alto', efecto_valor: '−15 a −25 %', mitigante: 'Licencias normalizadas desde 2023; mercado de juegos +7,7 % en 2025 [B1]', senal: 'Congelación de licencias de la NPPA, nuevas normas de menores' },
+      { riesgo: 'Geopolítica: lista 1260H, controles de chips, sanciones', tipo: 'Geopolítico', probabilidad: 'Media', impacto: 'Alto', efecto_valor: '−10 a −20 % (más prima de riesgo)', mitigante: 'Chips ASIC chinos; ingresos casi solo en China', senal: 'Nuevas restricciones de EE. UU. sobre inversión en empresas de la lista' },
+      { riesgo: 'Competencia de ByteDance en tiempo de uso, publicidad e IA de consumo', tipo: 'Competitivo', probabilidad: 'Media', impacto: 'Medio', efecto_valor: '−10 %', mitigante: 'Weixin como plataforma de pagos y miniaplicaciones', senal: 'Crecimiento de marketing por debajo del 10 %' },
+      { riesgo: 'Venta continua de Prosus/Naspers', tipo: 'Mercado', probabilidad: 'Alta', impacto: 'Bajo', efecto_valor: 'Presión técnica sobre el precio', mitigante: 'Las recompras de Tencent absorben parte', senal: 'Aceleración de las ventas o colocación acelerada' },
+      { riesgo: 'Estructura VIE', tipo: 'Jurídico', probabilidad: 'Baja', impacto: 'Alto', efecto_valor: 'Binario', mitigante: 'Estructura usada por todo el sector desde hace 20 años', senal: 'Cambios en la regulación china de VIE o de cotización en el exterior' },
+      { riesgo: 'Caída de la cartera de participaciones', tipo: 'Financiero', probabilidad: 'Media', impacto: 'Medio', efecto_valor: '−5 a −10 % (≈76 RMB por acción en el puente)', mitigante: 'Diversificada; ya va con un 20 % de descuento', senal: 'Caída del valor de las cotizadas (−11 % en el 2T26 [D19])' },
+    ],
+    premortem: 'Octubre de 2029: la acción ha perdido un 40 %. Lo más probable es que la IA se haya convertido en un coste sin precio. Tencent invirtió ≈180.000 M en 2026 y otro tanto en 2027 porque ByteDance y Alibaba lo hacían; los modelos chinos se igualaron entre sí y con los de código abierto, la nube entró en guerra de precios y la publicidad no subió más de lo que habría subido sin IA. La amortización pasó del 4,5 % al 11 % de las ventas y el margen operativo cayó cinco puntos; el BPA de 2028 se quedó en 28 RMB en lugar de 33. A la vez, el mercado siguió pagando 10-11 veces el beneficio por el riesgo país, y Prosus siguió vendiendo. El indicador que lo habría anticipado: la caja libre de los cuatro trimestres de 2026-27 sin recuperarse y el crecimiento de la nube por debajo del 15 % pese a la inversión.',
+    confianza: 'Media',
+  },
+  preguntas: {
+    items: [
+      { tema: 'Inversión', pregunta: '¿Cuál es la inversión prevista para 2026 y 2027, y qué parte son anticipos por capacidad que no aparecen aún en el activo?', por_que: 'El 2T26 tuvo 52.800 M de inversión y caja libre negativa; nuestra proyección supone el 22 % de las ventas en 2026.' },
+      { tema: 'Rentabilidad de la IA', pregunta: '¿Qué ingresos de nube e IA atribuye a la inversión de 2025-26, y con qué margen?', por_que: 'Separa el resultado operativo «sin nuevos productos de IA» (+19 %) del total, pero no da el retorno.' },
+      { tema: 'Recompras', pregunta: '¿Qué volumen de recompras prevé en 2027 si la caja libre sigue cerca de cero?', por_que: 'Bajaron de ≈112.000 M HKD en 2024 a 29.100 M HKD hasta agosto de 2026.' },
+      { tema: 'Amortización', pregunta: '¿Qué vida útil aplica a los servidores de IA y cómo evoluciona la amortización en 2027-28?', por_que: 'Es lo que separa nuestro BPA de 2027e (31,10 RMB) del consenso (33,83).' },
+      { tema: 'Participaciones', pregunta: '¿Piensa monetizar la cartera de 875.100 M para financiar la IA en lugar de deuda?', por_que: 'La caja neta baja a 58.200 M y la cartera vale casi una cuarta parte de la capitalización.' },
+      { tema: 'Gobierno', pregunta: '¿Hay un plan de sucesión para Ma Huateng y un consejero coordinador independiente?', por_que: 'Presidente y consejero delegado en la misma persona desde 1998.' },
+    ],
+    confianza: 'Media',
+  },
+  fuentes: [],
+  huecos: [
+    { seccion: 'rentabilidad', campo: 'ROIC operativo sin la cartera de participaciones', tipo: 'Complemento', intentos: '1) Informe anual no accesible (valor contable de las participadas); 2) comunicado del 2T26: solo valor de mercado y contable total; 3) cálculo aproximado propio en el texto', decision: 'Calculado y marcado como estimación' },
+  ],
+};
