@@ -28,3 +28,5 @@ Tamaño del mercado y cifras de competidores (núcleo); consejo completo, voto d
 
 - Con la red limitada a WebSearch, los comparables de otras carpetas del mismo sector y de la misma semana (Medpace, bioMérieux) ahorran 3-4 búsquedas; los de Thermo Fisher en Medpace sirvieron además de contraste del propio múltiplo (PER NTM 24,3x a 8-oct).
 - En compradores en serie con BPA ajustado sin amortización de intangibles, el BPA del objetivo a 12 meses debe restar solo la depreciación; calibrarlo con la guía del año en curso (aquí −1,7 %) evita errores de base.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 33.9x, mínimo 29.3x, media larga 33.7x; antes v2 24.6x/23.7x/25.2x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

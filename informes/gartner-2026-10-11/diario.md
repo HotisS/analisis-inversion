@@ -8,3 +8,5 @@
 - Resultado: DCF 254,13; valor objetivo 258,48 USD (+35,2 %); bajista 115,79 / alcista 344,89 (asimetría 2,04); DCF inverso: ventas planas (0,0 %) o margen EBITDA 18,3 %. Comprar, convicción media (la sugerida: el bajista pierde más del 25 %). Sostenibilidad: En parte. Controles: 16 correctos y 2 explicados (tipo de 2024, regresión). Word (63 páginas, cobertura 91,8 %) y PDF.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 248,9 USD, rentabilidad 30,2 %, señal Comprar (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +17,7 % → +4,4 %, base +6,7 %, señal Mantener (`revision-12m-2026-10-13.md`).
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 30.3x, mínimo 17.4x, media larga 44.3x; antes v2 43.1x/22.6x/36.6x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

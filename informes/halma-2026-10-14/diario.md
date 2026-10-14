@@ -20,3 +20,5 @@
 - **Con la regla común, el PER del base es el actual**, que se mueve con el precio: la rentabilidad del base es casi el crecimiento del BPA entre el ejercicio siguiente y el objetivo, sea cual sea el precio. En compounders caros, el nivel de compra lo fija el valor intrínseco, no el objetivo a 12 meses.
 - **Weiss Ratings** da los estados de las líneas OTC en dólares aunque no lo diga; se reconoce porque los dividendos pagados no cuadran con el DPA × acciones en libras.
 - **Sin circulante en el balance**, el motor toma 0 % como último real y cualquier `nwc_pct_ventas` genera una inversión falsa el primer año: mejor meter la inversión en circulante en el capex y explicarlo.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 30.8x, mínimo 26.3x, media larga 32.1x; antes v2 33.3x/33x/34.9x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

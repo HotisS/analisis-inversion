@@ -12,7 +12,8 @@
 // año siguiente). El backtest con 188 cierres de 117 empresas mostró que v2 compara un PER adelantado con una
 // historia al cierre (más alta) y por eso en el 83 % de los informes el base no supone ninguna revalorización, aunque
 // las acciones por debajo de su mediana la revalorizaron un 11 % de mediana al año siguiente:
-//   base    = el actual con la MITAD del camino hacia la mediana de 5 años (media geométrica), en los dos sentidos;
+//   base    = el actual con la MITAD del camino hacia la mediana de 5 años (media geométrica), en los dos sentidos,
+//             sin alejarse del actual más de ×1,3 ni menos de ÷1,3 (tope añadido tras la migración masiva del 14-oct);
 //   bajista = el menor entre el mínimo de 5 años y base × 0,80;
 //   alcista = la mayor entre la media larga, la mediana de 5 años y la de los comparables, sin bajar del base y con
 //             un techo de base × 1,35.
@@ -27,7 +28,7 @@
 
 export const REGLA_12M = {
   descuentoBajista: 0.85, techoAlcista: 1.3, comprar: 15, comprarBase: 12, vender: -10,
-  v3: { reversion: 0.5, descuentoBajista: 0.8, techoAlcista: 1.35 },
+  v3: { reversion: 0.5, descuentoBajista: 0.8, techoAlcista: 1.35, topeBase: 1.3 },
 };
 
 const num = (v) => (v === null || v === undefined || v === '' || Number.isNaN(Number(v)) ? null : Number(v));
@@ -40,14 +41,19 @@ export function multiplosRegla(h = {}, comps = {}) {
   const v3 = /^adelantad/i.test(String(h.base || ''));
   if (v3 && actual > 0 && med > 0) {
     const P = REGLA_12M.v3;
-    const base = actual * (med / actual) ** P.reversion;
+    const sinTope = actual * (med / actual) ** P.reversion;
+    // Tope: el base no se aleja del actual más de ×1,3 ni menos de ÷1,3. Una acción que ha caído a un cuarto de su
+    // múltiplo (Adobe en 2026) no recupera la mitad del camino en un año; en el backtest el tope no cambia el sesgo
+    // (+3,5 %) y baja el error del base (17,5 % frente a 18,7 %).
+    const base = Math.min(Math.max(sinTope, actual / P.topeBase), actual * P.topeBase);
+    const conTope = Math.abs(base - sinTope) > 1e-9;
     const bajista = min !== null && min > 0 && min < base * P.descuentoBajista ? min : base * P.descuentoBajista;
     const arriba = Math.max(...[larga, med, cm].filter((x) => x !== null && x > 0), base);
     const alcista = Math.min(arriba, base * P.techoAlcista);
     return {
       version: 'v3', bajista: r(bajista, 1), base: r(base, 1), alcista: r(alcista, 1),
       bajista_origen: bajista === min ? 'mínimo de 5 años' : `base × ${P.descuentoBajista}`,
-      base_origen: Math.abs(med - actual) < 1e-9 ? 'PER actual (igual a la mediana)' : actual < med ? `PER actual (${r(actual, 1)}x) a mitad de camino hacia la mediana de 5 años (${r(med, 1)}x)` : `PER actual (${r(actual, 1)}x) a mitad de camino hacia abajo, hacia la mediana de 5 años (${r(med, 1)}x)`,
+      base_origen: Math.abs(med - actual) < 1e-9 ? 'PER actual (igual a la mediana)' : conTope ? `PER actual (${r(actual, 1)}x) ${actual < med ? '×' : '÷'} ${P.topeBase} (tope: la mediana de 5 años, ${r(med, 1)}x, queda más lejos)` : actual < med ? `PER actual (${r(actual, 1)}x) a mitad de camino hacia la mediana de 5 años (${r(med, 1)}x)` : `PER actual (${r(actual, 1)}x) a mitad de camino hacia abajo, hacia la mediana de 5 años (${r(med, 1)}x)`,
       alcista_origen: alcista === base ? 'el base (ni la historia ni los comparables pagan más)'
         : alcista < arriba - 1e-9 ? `techo de base × ${P.techoAlcista}` : arriba === larga ? 'media histórica larga' : arriba === med ? 'mediana de 5 años' : 'mediana de los comparables',
     };

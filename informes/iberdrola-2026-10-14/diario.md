@@ -13,3 +13,5 @@
 
 - Con el balance incompleto (sin patrimonio en los años antiguos), el ROIC del motor sale inflado y la prueba de sostenibilidad pasa sin merecerlo: rehacerla a mano con el capital total del último año (deuda neta + patrimonio) y decirlo en la justificación.
 - En los extractos de búsqueda, las notas sin la letra de la nota (`[A3]`) no se traducen: en `notas/<letra>.json` solo valen citas locales `[n]`; las de otra nota se quitan o se citan desde `propio`.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 14.8x, mínimo 14.1x, media larga 14.9x; antes v2 16.8x/15.8x/17.4x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

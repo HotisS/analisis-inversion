@@ -21,3 +21,5 @@ Cierre del 13-oct; cuenta de resultados publicada (EBIT, amortizaciones, impuest
 ## Lecciones
 - Con presupuesto de 18 minutos, copiar la estructura de notas y textos de un comparable del mismo día (Thermo Fisher) e importar sus textos de sector desde su `textos.mjs` ahorra la mitad del tiempo; ojo: arrastra citas a fuentes de la otra carpeta.
 - En Danaher el PER actual (22,9x sobre 2027e) queda muy por debajo de la mediana (30,5x): la regla usa el actual en el base y el alcista sube a 29,8x, lo que infla la ponderada; mirar el base.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 40.3x, mínimo 34.4x, media larga 40.1x; antes v2 30.5x/29.3x/30.2x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

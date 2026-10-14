@@ -12,3 +12,5 @@
 ## Lecciones
 
 - Con el PER base igual al PER actual, la rentabilidad del base apenas depende del precio (es el crecimiento del BPA de 2027e a 2028e más el dividendo); el «comprar por debajo de» del motor supone el objetivo fijo. Conviene decirlo así en la síntesis para no prometer un precio de compra que la regla recalculada no daría.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 40.7x, mínimo 38.1x, media larga 45.9x; antes v2 34.9x/31.2x/40x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

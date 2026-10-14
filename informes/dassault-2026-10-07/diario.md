@@ -66,3 +66,5 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 3. «Crecimiento medio proyectado» (4,1 %, toda la proyección) y el crecimiento base del DCF inverso (4,3 %, años no fijos) conviven en el informe; fácil mezclarlos en la justificación.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 30,60 EUR, rentabilidad 43,6 %, señal Comprar (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +28,1 % → +9,3 %, base +10,3 %, señal Mantener (`revision-12m-2026-10-13.md`).
+
+- 2026-10-14: datos-v3.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 49.2x, mínimo 37.2x, media larga 52.2x; antes v2 47.8x/26.5x/41.9x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

@@ -11,3 +11,5 @@
 ## Lecciones
 
 - Las notas A-E solo traducen citas locales `[n]`: una cita `[A1]` dentro de B-E queda sin traducir. Si una nota cita otra, copia la fuente a la nota (hecho con un paso al final de BCDE_build.mjs).
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 23.6x, mínimo 20.8x, media larga 30.3x; antes v2 23.5x/18.5x/26.6x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

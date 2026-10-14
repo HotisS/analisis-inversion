@@ -119,3 +119,5 @@ Sin investigación nueva. Lectura prudente de la sostenibilidad (decisión del u
 - **No cambia la señal**, pero queda en el borde: Comprar solo relativo con un 5,4 % de rentabilidad total con nuestro WACC (el mínimo es un 5 %) y el nivel de compra (78,54 EUR) 24 céntimos por encima del precio. La asimetría con nuestro WACC pasa a ser desfavorable (0,98x).
 - 13-oct-2026: revisión v2 a 12 meses rehecha con la v4 del informe (PER propio × BPA propio): objetivo 81,2 EUR (ponderado), rentabilidad +5,6 %, base +10,0 %, señal Mantener (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +5,6 % → +10,0 %, base +10,2 %, señal Mantener (`revision-12m-2026-10-13.md`).
+
+- 2026-10-14: datos-v5.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 10.8x, mínimo 8.2x, media larga 13.8x; antes v2 13.8x/11.6x/14x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

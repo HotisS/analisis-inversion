@@ -12,3 +12,5 @@
 
 - Con el PER base igual al actual (empresa que cotiza muy por debajo de su mediana histórica), la rentabilidad del base a 12 meses es casi solo crecimiento del BPA + dividendo y no mejora al bajar el precio; el «comprar por debajo de» del motor usa objetivos fijos y la sobrestima. Decirlo en la revisión.
 - Los extractos de búsqueda de notas de prensa de Amadeus no dan el desglose bajo el EBIT; el BPA ajustado se cuadra mejor partiendo del beneficio ajustado publicado (Global Report, capítulo Inversores).
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 22.2x, mínimo 19.4x, media larga 26.2x; antes v2 20.9x/19.4x/20.9x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

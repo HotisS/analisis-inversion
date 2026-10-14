@@ -11,3 +11,5 @@
 
 - En la nube, el número de acciones en circulación sale bien de los 6-K semanales de recompra (autocartera en % de las emitidas) y del dividendo total ÷ DPA de la junta.
 - Con el balance de algunos años a medias (sin deuda o sin patrimonio), el motor calcula un capital invertido absurdo (ROIC de −320 % o +1.000 %): mejor dejar solo los años completos que filas parciales.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 40.3x, mínimo 28.7x, media larga 38.8x; antes v2 41.5x/35.6x/41.7x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

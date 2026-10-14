@@ -14,3 +14,5 @@
 ## Lecciones
 - Dividendo de la rentabilidad a 12 meses: el motor usa `ltm.dpa` (pagado en los últimos 12 meses). Si la empresa ha anunciado un recorte (ANYCOLOR, de 75 a 62 JPY), el dividendo pagado infla la rentabilidad y puede cambiar la señal en el límite; poner el previsto y decirlo.
 - Empresas con caja grande y sin deuda cuyo patrimonio de años anteriores no se encuentra: el motor calcula el capital invertido como −caja y el ROIC sale negativo. Dar el ROIC del último año a mano y explicarlo en `controles_explicados`.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (3 años; mediana 16x, mínimo 11.8x, media larga 15.4x; antes v2 15x/12x/14.6x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

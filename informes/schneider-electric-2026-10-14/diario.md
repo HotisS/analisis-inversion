@@ -12,3 +12,5 @@
 ## Lecciones
 - Con 18 minutos: copiar la estructura de un informe nube pequeño (Spirax) y escribir A-E con un solo script Python; las secciones omitidas se cierran con `controles_explicados` por prefijo del control.
 - El valor intrínseco por DCF castiga a los compuestos de crecimiento con WACC del 9 %: la regla 12 m da Mantener aunque el base supere el 12 %, porque el filtro de valor real (VI ≥ precio) falla.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 23.1x, mínimo 18x, media larga 23x; antes v2 27.5x/18.4x/25.5x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

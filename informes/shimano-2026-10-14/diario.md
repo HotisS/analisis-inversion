@@ -19,3 +19,5 @@
 - Japón, empresas con mucha caja en divisas (Shimano): el beneficio neto lo mueven las diferencias de cambio (−55 % en 2025, ×7 en el 1S26). El objetivo a 12 meses y el PER histórico deben ir en BPA recurrente (EBIT + ingresos financieros normales), o la regla de múltiplos sale disparatada.
 - Sin existencias en las fuentes, el motor toma circulante real 0 y un `nwc_pct_ventas` positivo crea una inversión enorme el primer año: poner 0 y sumar el circulante incremental al capex.
 - La regla común da +17,6 % en el base a una empresa que siempre cotiza a 30-38x mientras el DCF da −23 %: el filtro de valor intrínseco ≥ precio es lo que la frena. Es la situación «calidad cara en fondo de ciclo».
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 28.2x, mínimo 21.8x, media larga 33.3x; antes v2 36x/31.3x/35.4x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

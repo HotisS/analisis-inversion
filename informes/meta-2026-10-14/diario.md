@@ -13,3 +13,5 @@
 
 - En la nube, el precio del día puede no aparecer en la búsqueda: la capitalización de MarketScreener que guardan los informes de otras empresas de la misma semana (tabla de comparables) entre las acciones da el cierre y sirve de contraste.
 - Con un ciclo de inversión como el de la IA (capex del 50-60 % de las ventas), el BPA del objetivo a 12 meses debe llevar la amortización creciente y el coste de la deuda nueva; si no, sale cerca del consenso por accidente y no por análisis.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 19.8x, mínimo 8.1x, media larga 21.7x; antes v2 23.69x/13.94x/21.91x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

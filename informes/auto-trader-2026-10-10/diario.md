@@ -8,3 +8,5 @@
 - 13:44 E (sentimiento) atascado: Reddit, LSE Chat y AM-online cerrados; lo hice yo (interactive investor y Car Dealer Magazine). Valor objetivo 6,83 GBP (+39,8 %), rentabilidad 42,1 %, asimetría 2,67; las dos reglas dan Comprar. Convicción sugerida Alta, bajada a Media por la guía de FY2026 incumplida, abril plano y la caída de forecourts (explicado en la síntesis). Word y PDF (55 páginas), páginas 1-4 revisadas.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 6,78 GBP, rentabilidad 41,1 %, señal Comprar (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +27,1 % → +8,7 %, base +9,2 %, señal Mantener (`revision-12m-2026-10-13.md`).
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 22x, mínimo 21.7x, media larga 23.4x; antes v2 24.8x/13.8x/22.1x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

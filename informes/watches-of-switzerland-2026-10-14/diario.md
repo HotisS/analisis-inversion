@@ -14,3 +14,5 @@
 - Minorista con NIIF 16 cuando no se pueden leer las cuentas: trabajar en la base antes de NIIF 16 que publica la empresa (EBITDA con alquiler, sin arrendamientos en el puente) es coherente y evita buscar las altas de derechos de uso.
 - Precio de cotización en la nube: el extracto de búsqueda de la página «share price information» de la propia empresa dio el cierre del día anterior; los avisos de recompra solo sirven si hay un programa en curso.
 - Con el balance de solo dos años, el ROIC incremental del motor sale sin sentido y hace fallar la prueba de capital nuevo: explicarlo y usar el ROCE publicado.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 13.7x, mínimo 7.5x, media larga 13.8x; antes v2 11.5x/8.2x/11.5x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

@@ -101,3 +101,5 @@ Sin investigación nueva. Script: `notas/actualizacion-v3.mjs` (parte de `datos-
 3. **El mercado final de una regulada no llega al último año explícito** (la CNMC publica hasta 2032 y el DCF va hasta 2035): se usa `periodo: "2032e"`, que el motor acepta.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 14,24 EUR, rentabilidad −6,1 %, señal Mantener (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada -6,0 % → -6,7 %, base -2,4 %, señal Mantener (`revision-12m-2026-10-13.md`).
+
+- 2026-10-14: datos-v4.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 11.7x, mínimo 9.1x, media larga 11.7x; antes v2 12.95x/9.9x/12.5x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

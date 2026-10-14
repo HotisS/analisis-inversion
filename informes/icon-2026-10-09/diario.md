@@ -48,3 +48,5 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 2. El motor pasa la prueba de cuota cuando la cuota baja, pero no avisa de años concretos que la recuperan (aquí 2028-2030 a +5 % frente a un mercado al 4,5 %): la prueba es de punto final, no de trayectoria.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 196,15 USD, rentabilidad +19,2 %, señal Comprar (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +19,2 % → +20,0 %, base +17,8 %, señal Mantener (`revision-12m-2026-10-13.md`).
+
+- 2026-10-14: datos-v3.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 50.5x, mínimo 29x, media larga 49.7x; antes v2 27.6x/23.6x/28.1x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

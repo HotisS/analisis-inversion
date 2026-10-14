@@ -13,3 +13,5 @@
 - Empresa que cotiza en GBp y publica en EUR: `meta.tipo_cambio` en EUR por penique (0,0118374) y precio en EUR; el motor da los niveles en peniques.
 - Escisión con agrupación de acciones (Unilever 8 por 9, dic-2025): el BPA publicado ya viene reexpresado con la agrupación; no mezclar con BPA antiguos de proveedores.
 - Venta pendiente de un negocio grande con reparto de acciones (Reverse Morris Trust): si el cierre cae dentro de los 12 meses, el BPA del perímetro actual × PER aproxima precio + lo recibido; dilo en limitaciones.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 19.2x, mínimo 16.8x, media larga 20.2x; antes v2 17.9x/17.1x/18.7x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

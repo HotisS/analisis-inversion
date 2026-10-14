@@ -11,3 +11,5 @@
 ## Lecciones
 - En TXN (y cíclicas con capex de capacidad), el PER de los años de fondo de ciclo (2024-25, 31-36x) es atípico por la amortización de fábricas vacías: excluirlo cambia el base en ≈6 % (23,8x→22,4x de mediana).
 - Sin acceso a bolsa.mjs, el precio del día puede no aparecer en la búsqueda para valores grandes: dejarlo como hueco de núcleo y fechar el precio usado.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 23.4x, mínimo 19.9x, media larga 24.3x; antes v2 22.4x/17.1x/21.7x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

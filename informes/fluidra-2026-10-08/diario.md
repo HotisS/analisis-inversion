@@ -59,3 +59,5 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 21,9 EUR, rentabilidad +32,5 %, señal Comprar (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +24,6 % → +14,0 %, base +17,9 %, señal Mantener (`revision-12m-2026-10-13.md`).
+
+- 2026-10-14: datos-v3.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 25.3x, mínimo 15.9x, media larga 26.5x; antes v2 26.7x/17.1x/21x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

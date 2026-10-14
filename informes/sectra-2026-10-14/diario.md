@@ -11,3 +11,5 @@
 ## Lecciones
 - Sectra: los agregadores (Stock Analysis, Fool, roic.ai) atribuyen a FY2025 un BPA de 2,92 que no cuadra con el beneficio publicado (475,6 M); cuadra el de FY2026 (2,93). Usar el comunicado.
 - Sin bolsa.mjs, el PER histórico de la regla a 12 meses queda estimado con PER publicados por la prensa; en empresas de PER muy alto el resultado depende mucho de esa estimación: rehacer con cierres reales cuando haya red.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 80.8x, mínimo 64x, media larga 81.7x; antes v2 90x/60x/95x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

@@ -18,3 +18,5 @@
 
 - Con la red limitada a WebSearch, buscar antes en `informes/` del repo si la empresa aparece como comparable en otros análisis del día o de la semana (Hoya, Fielmann y Cooper tenían a EssilorLuxottica con sus múltiplos y sus fuentes): ahorra muchas búsquedas de comparables y transacciones, y da los tipos de cambio implícitos.
 - EssilorLuxottica (y otros compradores grandes con PPA): el BPA publicado lleva ≈1,8 EUR de amortización de intangibles; el PER de comparables del motor se aplica al BPA publicado y sale bajo frente a pares que cotizan sobre BPA ajustado. Decirlo y pesar poco ese método.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 36.4x, mínimo 34.6x, media larga 38.7x; antes v2 33.7x/27.5x/33.7x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

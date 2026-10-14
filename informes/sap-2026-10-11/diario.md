@@ -9,3 +9,5 @@
 - Resultado: DCF 192,86 EUR (+0,7 %); DCF inverso 8,1 % frente a 8,2 % de base; valor objetivo 191,35 (−0,1 %), rentabilidad total 1,2 %; Mantener, convicción Baja (reglas discrepan: relativa Comprar 230,58). Sostenibilidad «Sí». Controles: ninguno en Revisar (regresión explicada). Word (55 páginas, cobertura 91,2 %) y PDF; portada y «La decisión» revisadas.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 245,74 EUR, rentabilidad 29,7 %, señal Comprar (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +23,4 % → +19,0 %, base +16,8 %, señal Mantener (`revision-12m-2026-10-13.md`).
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 38.7x, mínimo 19.7x, media larga 34.2x; antes v2 39.7x/34.2x/32.4x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

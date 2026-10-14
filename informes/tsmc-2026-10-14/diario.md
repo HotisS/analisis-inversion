@@ -24,3 +24,5 @@
 - **Emisores de Taiwán desde la nube**: los comunicados de TSMC (pr.tsmc.com) y sus 6-K salen bien en la búsqueda con cifras trimestrales completas; el balance histórico y los flujos anuales no. El EBITDA anual en TWD sale de StockAnalysis (página del ADR, que publica en TWD) y el beneficio operativo de Stockopedia: con los dos se obtiene la amortización.
 - **Precio del día en Taiwán**: Focus Taiwan/CNA y la prensa taiwanesa (Business Today, TechNews, en chino) dan el cierre; buscar en chino («台積電 收盤») encuentra más que en inglés.
 - **Sostenibilidad en industrias de capital intensivo**: con un capex por debajo del histórico, la prueba falla aunque el ROIC sea del 50 %; subir el capex hacia la media histórica es la corrección mínima (como Microsoft o Intuitive en las lecciones).
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 14.8x, mínimo 13.1x, media larga 14.7x; antes v2 21x/11.4x/nullx). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

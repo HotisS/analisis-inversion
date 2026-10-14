@@ -9,3 +9,5 @@
 - Resultado: DCF 65,88; valor objetivo 69,45 EUR (+18,2 %), rentabilidad total 20,7 %, asimetría 1,06 (bajista 39,41 / alcista 79,27); con la prima del mercado 81,19. DCF inverso: crecimiento 3,1 % (base 4,4 %) o margen 17,5 %. Comprar, convicción Media (la sugerida). Sostenibilidad «En parte». Controles 16 de 17 y 1 explicado (fragilidad de comparables). Word y PDF (54 páginas); portada, síntesis y decisión revisadas.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 70,3 EUR, rentabilidad +22,2 %, señal Comprar (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +18,8 % → +12,1 %, base +8,7 %, señal Mantener (`revision-12m-2026-10-13.md`).
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 28.3x, mínimo 18.9x, media larga 29.7x; antes v2 25.9x/21.9x/25.7x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

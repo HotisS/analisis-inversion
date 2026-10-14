@@ -19,3 +19,5 @@
 
 - Sin red para descargas, Stock Analysis da por búsqueda las líneas del balance que faltan (caja, deuda a largo y corto, arrendamientos a largo y corto) si se piden con sus rótulos exactos («Cash & Equivalents», «Long-Term Leases»); la búsqueda genérica no las devuelve.
 - Los precios de cierre de cada ejercicio se pueden sacar de la capitalización al cierre de MarketScreener ÷ acciones medias del año (beneficio ÷ BPA) y cuadrarlos con el rendimiento por dividendo de finanzen.at.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (3 años; mediana 22.2x, mínimo 18x, media larga 20.8x; antes v2 20.9x/18x/21.3x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

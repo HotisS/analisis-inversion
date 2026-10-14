@@ -93,3 +93,5 @@ Sin investigación nueva. Lectura prudente de la sostenibilidad (decisión del u
 2. **Bajar el crecimiento apenas mueve el control del capital nuevo** con circulante alto (35,5 % de las ventas): menos crecimiento también es menos reinversión. Conviene decirlo en `encargo-recorte.md`: mirar primero si el exceso viene del margen.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 99,31 EUR (ponderado; base 86,42 EUR), rentabilidad 24,2 % (base 8,2 %), señal Mantener (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +24,2 % → +12,3 %, base +8,2 %, señal Mantener (`revision-12m-2026-10-13.md`).
+
+- 2026-10-14: datos-v4.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 31x, mínimo 22.8x, media larga 28.3x; antes v2 24.9x/24.4x/28x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

@@ -17,3 +17,5 @@
 
 - Bolsas con balance bancario (Deutsche Börse, como ICE): el «resultado de tesorería» va en ingresos y EBITDA; decide y escribe cuánto se mantiene con los tipos del BCE, y deja el balance de cámara/banco fuera del puente y del ROIC.
 - En la búsqueda web, la «valoración» de MarketScreener da el BPA histórico y el consenso de tres años en una sola consulta; Börsengeflüster da los cierres anuales en euros.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 17.8x, mínimo 17.3x, media larga 18.3x; antes v2 20.5x/19.8x/20.7x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

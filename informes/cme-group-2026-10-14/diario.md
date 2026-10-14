@@ -18,3 +18,5 @@
 ## Lecciones
 
 - Bolsas y cámaras (CME, ICE, Cboe): el beneficio no operativo de las garantías reinvertidas y de las participadas (S&P DJI) es una quinta parte del beneficio y no entra en el EBITDA del DCF: hay que valorarlo en el puente (asociadas) y sumarlo al BPA del objetivo a 12 meses; el activo total (garantías de los miembros) dispara el control de perímetro y deja el Altman Z sin sentido.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 21.3x, mínimo 19x, media larga 23.1x; antes v2 22.6x/21.1x/24x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

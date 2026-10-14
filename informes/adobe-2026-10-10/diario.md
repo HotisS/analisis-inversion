@@ -9,3 +9,5 @@
 - 14:15 Valoración y textos hechos: DCF 295,24 USD, valor objetivo 306,45 (+26,5 %), Comprar, convicción Media (la sugerida). Word y PDF (57 páginas) generados. Parado aquí a petición del usuario: falta revisar el PDF a ojo y comunicarlo.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 316,4 USD, rentabilidad +30,6 %, señal Comprar (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +19,7 % → +6,4 %, base +10,0 %, señal Mantener (`revision-12m-2026-10-13.md`).
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 47.6x, mínimo 27.8x, media larga 41x; antes v2 41.6x/19.2x/37.8x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

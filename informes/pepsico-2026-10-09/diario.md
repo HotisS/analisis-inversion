@@ -45,3 +45,5 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 3. Con `mercado_final` null no hay prueba de cuota en la tabla; para un grupo multicategoría sin tamaño de mercado mundial, la prueba queda en manos del texto.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 140,41 USD, rentabilidad 13,9 %, señal Mantener (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +9,7 % → +8,3 %, base +9,6 %, señal Mantener (`revision-12m-2026-10-13.md`).
+
+- 2026-10-14: datos-v3.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 26.4x, mínimo 24.4x, media larga 24x; antes v2 25.9x/17.7x/25.6x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

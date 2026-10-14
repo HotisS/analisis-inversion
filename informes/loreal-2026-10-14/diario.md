@@ -12,3 +12,5 @@
 
 - En la nube, si no hay cierre fechado, la capitalización de MarketScreener recogida por otro informe del repo en los últimos días (aquí Puig, 9-oct) ÷ acciones da un precio fechado; dilo como estimación.
 - Una fila de balance con solo la caja hace que el motor calcule un capital invertido negativo (ROIC −159 %): mejor no poner el año.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 33.4x, mínimo 26.9x, media larga 33.6x; antes v2 31.7x/28.1x/31.3x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

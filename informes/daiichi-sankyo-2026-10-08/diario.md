@@ -68,3 +68,5 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 4. Los avisos de `rellenar` (suma de partes vacía, mapa de comparables y transacciones sin datos) son los mismos de la v1.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 3.608 JPY, rentabilidad 36,4 %, señal Comprar (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +31,9 % → +26,8 %, base +18,3 %, señal Comprar (`revision-12m-2026-10-13.md`).
+
+- 2026-10-14: datos-v3.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 46.1x, mínimo 23.2x, media larga 36x; antes v2 22.5x/18.3x/28.8x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

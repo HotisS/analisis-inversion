@@ -29,3 +29,5 @@ Cifras de competidores (núcleo); consejo completo, remuneración del consejero 
 
 - En las notas A-E las citas `[n]` se refieren a la lista de la propia nota: una cita `[A1]` escrita dentro de B.json no la traduce `integrar` (deja fuentes sin citar). Las citas con letra solo valen en `propio`.
 - Con el PER base = PER actual (precio / BPA del año siguiente), el objetivo a 12 meses baja con el precio: en empresas caras con valor intrínseco muy por debajo, el precio de compra lo fija el valor intrínseco, no la rentabilidad a 12 meses.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 35.1x, mínimo 29.1x, media larga 35.9x; antes v2 32.3x/29.8x/32.7x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

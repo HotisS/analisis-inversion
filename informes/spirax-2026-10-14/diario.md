@@ -19,3 +19,5 @@
 - **Amortización de intangibles de compras sin el estado de flujos**: la diferencia entre el beneficio operativo «antes de reestructuración» de un agregador (Kalkine) y el ajustado de la empresa la da con buena aproximación; con la D&A total del agregador se separa la de inmovilizado.
 - **Cierres anuales sin `bolsa.mjs`**: los cierres del ADR de Macrotrends × ratio ÷ tipo de cambio de fin de año sirven de estimación para el PER histórico; comprobar el ratio del ADR (aquí 1 ADR = 0,5 acciones) contra un precio conocido.
 - **Sin circulante en el balance**: poner `nwc_pct_ventas` a 0 y llevar la inversión en circulante al capex evita que el motor genere una salida de caja artificial el primer año (salía 317 M).
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 40.4x, mínimo 30.4x, media larga 41x; antes v2 26.1x/23.5x/27.2x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

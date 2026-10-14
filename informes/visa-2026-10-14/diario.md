@@ -15,3 +15,5 @@
 ## Lecciones
 - Visa (clase A con clases B/C y preferentes convertibles): usar acciones «clase A equivalentes» (base del BPA diluido) y tratar las provisiones de litigios cubiertos de EE. UU. como no caja para la clase A (las paga el escrow que diluye a la clase B); dejarlas fuera del EBITDA del DCF y del BPA del objetivo, y decirlo.
 - Los comparables de un análisis de 1-3 días antes con divisa distinta (Adyen en EUR) se reutilizan pasando la capitalización con el tipo del BCE de la misma fecha; los múltiplos no cambian.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 25.3x, mínimo 21.5x, media larga 26x; antes v2 26.8x/23.7x/26.8x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

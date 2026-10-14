@@ -19,3 +19,5 @@
 
 - Empresas holding de internet (Tencent): el ROIC del motor incluye la cartera de participaciones en el capital invertido; dar aparte el ROIC operativo y sumar la cartera en el puente con descuento.
 - Cotizada en HKD con cuentas en RMB: `tipo_cambio` = RMB por HKD (≈0,86 en oct-26) derivado del RMB/USD y la banda del HKD; precios de cierre históricos y dividendos en HKD pasados a RMB con el tipo de cada cierre.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 17.1x, mínimo 13x, media larga 17.8x; antes v2 16.8x/16.3x/17.5x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

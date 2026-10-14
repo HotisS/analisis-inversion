@@ -19,3 +19,5 @@
 - **Presupuesto de búsquedas compartido**: con varias sesiones en paralelo en la nube, el límite de 200 WebSearch por turno se agotó tras ≈40 búsquedas propias; hay que pedir primero lo que mueve la decisión (precio, guía, deuda, caja libre, consenso) y dejar sector y competidores para el final.
 - **Cambio de ticker**: comprobar siempre el ticker vigente (Fiserv volvió a FISV en Nasdaq en nov-2025); los proveedores mezclan páginas de FI y FISV, y Macrotrends da series distintas en cada una.
 - **Empresas con grandes compras (First Data)**: en el DCF, quitar de la amortización la de intangibles comprados (no deducible en su mayoría) y llevarla al capex; así el BPA del DCF coincide con el ajustado de la empresa y la regla a 12 meses compara en la misma base.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 25.7x, mínimo 20.3x, media larga 26x; antes v2 15.6x/7.8x/15.6x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

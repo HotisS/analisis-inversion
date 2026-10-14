@@ -98,6 +98,8 @@ const VARIANTES = {
   it1: { base: 'adelantado', regla: (actual, h) => VARIANTES.v2.regla(actual, h) },
   it2: { base: 'adelantado', regla: (actual, h) => reversion(actual, h, 0.5, 0.8, 1.35) },
   it2cierre: { base: 'cierre', regla: (actual, h) => reversion(actual, h, 0.5, 0.8, 1.35) },
+  it2tope: { base: 'adelantado', regla: (actual, h) => reversion(actual, h, 0.5, 0.8, 1.35, 1.3) },
+  it2tope2: { base: 'adelantado', regla: (actual, h) => reversion(actual, h, 0.5, 0.8, 1.35, 1.2) },
   it2b: { base: 'adelantado', regla: (actual, h) => asimetrica(actual, h, 0.5, 0.85, 1.3) },
   it2c: { base: 'adelantado', regla: (actual, h) => asimetrica(actual, h, 0.5, 0.8, 1.35) },
   it3: { base: 'adelantado', regla: null, calibrar: true },
@@ -110,8 +112,10 @@ function asimetrica(actual, h, lambda, fBaj, fAlc) {
   const alcista = Math.max(base, Math.min(Math.max(h.media_larga, h.mediana_5a), base * fAlc));
   return { bajista, base, alcista };
 }
-function reversion(actual, h, lambda, fBaj, fAlc) {
-  const base = actual * (h.mediana_5a / actual) ** lambda;
+// tope: el base no se aleja del actual más de ×tope ni menos de ÷tope (la vuelta a la mediana se reparte en varios años).
+function reversion(actual, h, lambda, fBaj, fAlc, tope = null) {
+  let base = actual * (h.mediana_5a / actual) ** lambda;
+  if (tope) base = Math.min(Math.max(base, actual / tope), actual * tope);
   const bajista = Math.min(h.minimo_5a, base * fBaj);
   const alcista = Math.max(base, Math.min(Math.max(h.media_larga, h.mediana_5a), base * fAlc));
   return { bajista, base, alcista };

@@ -6,3 +6,5 @@
 - 14:36 Resultado: Mantener, convicción Media (la sugerida), igual que en la iteración 1. Valor objetivo 73,59 USD (+2,9 %); con la prima del mercado 80,42 (+12,5 %). Word y PDF (63 páginas), síntesis revisada como imagen.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 84,46 USD (ponderado; base 85,14), rentabilidad +18,1 %, señal Comprar, convicción baja (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +18,1 % → +11,2 %, base +19,1 %, señal Mantener (`revision-12m-2026-10-13.md`).
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (3 años; mediana 13.5x, mínimo 12.8x, media larga 18.2x; antes v2 nullx/nullx/nullx). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

@@ -19,3 +19,5 @@
 - **«Caja» del balance histórico frente a la liquidez que publica la empresa**: ATOSS tiene ~32 M en depósitos y oro fuera de «efectivo»; la deuda neta histórica del motor sale menor que la publicada (no afecta al puente, que sí los incluye).
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 113,25 EUR, rentabilidad 32,3 %, señal Comprar (base +15,9 %, pasa el filtro del 12 %) (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +32,3 % → +19,9 %, base +15,9 %, señal Mantener (`revision-12m-2026-10-13.md`).
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 37.6x, mínimo 30.9x, media larga 42.6x; antes v2 46.4x/38x/38.1x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

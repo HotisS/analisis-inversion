@@ -12,3 +12,5 @@
 ## Lecciones
 
 - Sin acceso a `bolsa.mjs`, los cierres de ejercicio se pueden deducir de notas de prensa que dan precio y rentabilidad en el año («38,83 € y +25 % en el año» → cierre anterior ≈31,1 €); marcarlo como estimación. Con solo dos cierres la regla del PER queda frágil: decirlo en la convicción.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 10.2x, mínimo 8.4x, media larga 13.5x; antes v2 12.5x/11.2x/12.5x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

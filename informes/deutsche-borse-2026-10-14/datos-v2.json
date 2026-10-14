@@ -1,0 +1,3527 @@
+{
+  "meta": {
+    "fecha_corte": "2026-10-14",
+    "divisa": "EUR",
+    "divisa_cotizacion": "EUR",
+    "tipo_cambio": 1,
+    "unidades": "millones",
+    "cierre_ejercicio_mes": 12,
+    "etiqueta_ejercicio": "fin",
+    "normas_contables": "NIIF-UE",
+    "formato_cuenta": "funcion",
+    "limitaciones": "Análisis hecho desde un entorno sin descargas: solo búsqueda web. Las cifras salen de comunicados de resultados de la empresa citados por la búsqueda y de proveedores (MarketScreener, Fintel, Simply Wall St, Börsengeflüster); no se han leído las notas del informe anual. Ingresos = ingresos netos del grupo **con** resultado de tesorería, como los publica la empresa. 2021-2023 sin EBIT, impuestos ni amortizaciones (solo ingresos, EBITDA y beneficio). Impuestos y minoritarios de 2025 repartidos por estimación propia (tipo del 26,5 %). LTM a junio de 2026 estimado con los crecimientos redondeados del 1S26. Balance y flujos casi vacíos: el puente usa la deuda bruta de Simply Wall St (dic-24) y la deuda neta de MarketScreener (2025), y el capital invertido del ROIC es patrimonio (Fintel) + deuda neta. Acciones (180,6 M) estimadas tras la recompra de 2026. El balance bancario de Clearstream y Eurex Clearing (≈ 300.000 M de activos, saldos de clientes) queda fuera, como en el informe de ICE. Comparables tomados del informe de ICE del 8-oct-2026 (cifras de MarketScreener al 7-oct), pasados a euros a 1,175 USD/EUR. Bono alemán a 10 años de Cbonds a 15-jun-2026 (2,95 %). Sin bolsa.mjs: no hay rentabilidades, beta ni volatilidad medidas.",
+    "controles_explicados": [
+      {
+        "control": "Regresión múltiplo-crecimiento",
+        "explicacion": "Con siete comparables de modelos distintos (bolsas, datos puros, plataformas) el crecimiento no explica el múltiplo: no se usa la regresión, solo las medianas."
+      }
+    ],
+    "huecos": [
+      {
+        "seccion": "financieros",
+        "campo": "amortizaciones, EBIT, resultado financiero e impuestos 2021-2023",
+        "tipo": "Núcleo",
+        "intentos": "1) comunicados de resultados de 2022 y 2023 (solo EBITDA y beneficio en el resumen de búsqueda); 2) presentación a analistas de feb-2024 (tabla ilegible en el extracto); 3) proveedores (TipRanks, MarketScreener) con definiciones distintas",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "financieros",
+        "campo": "impuestos y minoritarios 2025 (separados)",
+        "tipo": "Complemento",
+        "intentos": "1) comunicado del 4T25 (no aparece en el extracto); 2) cuentas consolidadas 2025 (extracto sin la línea); 3) se reparten los 862 M de diferencia entre BAI y beneficio con un tipo del 26,5 %",
+        "decision": "Calculado y marcado como estimación"
+      },
+      {
+        "seccion": "balance",
+        "campo": "balance completo, vencimientos, rating y coste de la deuda",
+        "tipo": "Núcleo",
+        "intentos": "1) cuentas consolidadas 2025 (la búsqueda no devuelve las líneas del activo); 2) Fintel y Simply Wall St (solo patrimonio y deuda); 3) MarketScreener (deuda neta 2025 ≈ 3,75 mil M)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "flujos",
+        "campo": "estado de flujos 2021-2024",
+        "tipo": "Núcleo",
+        "intentos": "1) informes anuales (no accesibles en este entorno); 2) TipRanks (cifra ilegible); 3) MarketScreener (solo 2025: capex ≈ 355 M y FCF ≈ 2.097 M)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "negocio",
+        "campo": "segmentos con historia",
+        "tipo": "Núcleo",
+        "intentos": "1) comunicado del 4T25; 2) presentación del 2T26; 3) MarketScreener segmentos (sin cifras en el extracto)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sector",
+        "campo": "tamaño del mercado con dos fuentes y serie",
+        "tipo": "Núcleo",
+        "intentos": "1) informe anual 2025 (no legible en este entorno); 2) informe de ICE del repo (no da tamaño); 3) búsqueda web limitada por presupuesto compartido",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "esg",
+        "campo": "calificaciones, materialidad y controversias",
+        "tipo": "Complemento",
+        "intentos": "1) informe de sostenibilidad (no accesible); 2) MSCI/Sustainalytics (sin búsqueda por presupuesto); 3) prensa (sin resultados)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "consejo de supervisión, remuneración, votos en junta, accionistas significativos y operaciones de directivos",
+        "tipo": "Núcleo",
+        "intentos": "1) declaración de gobierno corporativo e informe de remuneraciones 2025 (no accesibles: sin descargas en este entorno); 2) registro de operaciones de directivos de la BaFin (sin acceso); 3) resultados de la junta de 2026 (presencia publicada en PDF, sin votos en el extracto)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "bolsa",
+        "campo": "rentabilidades, beta, volatilidad, caída máxima y posiciones cortas",
+        "tipo": "Complemento",
+        "intentos": "1) herramientas/bolsa.mjs (sin red en este entorno); 2) búsqueda web de históricos (solo cierres sueltos); 3) proveedores (MarketBeat, TipRanks) sin series",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "identificacion",
+        "campo": "acciones en circulación exactas tras la recompra de 2026",
+        "tipo": "Núcleo",
+        "intentos": "1) informe semestral 2026 (no legible); 2) comunicado del 2T26 (solo el importe de la recompra, 500 M); 3) estimación: 1.995 M / 10,90 = 183,0 M de media en 2025, menos ≈2,4 M recompradas en 2026 a ≈ 230-260 EUR",
+        "decision": "Calculado y marcado como estimación"
+      },
+      {
+        "seccion": "valoracion",
+        "campo": "deuda bruta y caja del balance a 30-jun-2026",
+        "tipo": "Núcleo",
+        "intentos": "1) informe semestral 2026; 2) cuentas 2025 (extracto sin pasivo financiero); 3) MarketScreener (deuda neta 2025 ≈ 3.750 M) y Simply Wall St (deuda ≈ 7.200 M a dic-24)",
+        "decision": "Calculado y marcado como estimación"
+      },
+      {
+        "seccion": "dcf",
+        "campo": "bono alemán a 10 años a la fecha de corte",
+        "tipo": "Complemento",
+        "intentos": "1) Bundesbank (tabla mensual sin el 10 años); 2) Cbonds (2,95 % a 15-jun-2026); 3) prensa de mercados (≈ 3 % previsto para fin de 2026)",
+        "decision": "Calculado y marcado como estimación"
+      },
+      {
+        "seccion": "sentimiento",
+        "campo": "Reddit, Seeking Alpha y wallstreet-online",
+        "tipo": "Complemento",
+        "intentos": "1) búsqueda de hilos de Reddit (r/Finanzen, r/eupersonalfinance; sin resultados); 2) Seeking Alpha DBOEY (sin artículos de 2026 en la búsqueda); 3) foro de wallstreet-online (sin resultados)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "bolsa",
+        "campo": "sección entera",
+        "tipo": "Complemento",
+        "intentos": "1) bolsa.mjs (sin red); 2) búsqueda de históricos (solo cierres sueltos); 3) proveedores sin series completas",
+        "decision": "Omitido"
+      }
+    ]
+  },
+  "identificacion": {
+    "nombre": "Deutsche Börse AG",
+    "nombre_corto": "Deutsche Börse",
+    "ticker": "DB1",
+    "isin": "DE0005810055",
+    "mercado": "Xetra (Fráncfort)",
+    "indice_referencia": "DAX",
+    "pais": "Alemania",
+    "pais_iso": "DE",
+    "sector": "Financieros",
+    "industria": "Bolsas y datos financieros",
+    "sede": "Eschborn (Fráncfort)",
+    "fundacion": "1992",
+    "empleados": null,
+    "web": "deutsche-boerse.com",
+    "precio": 298.9,
+    "fecha_precio": "2026-10-13",
+    "acciones": 180.6,
+    "capitalizacion_publicada": null,
+    "free_float_pct": 100,
+    "max_52s": 302.8,
+    "min_52s": 200.1,
+    "volumen_medio_diario": null,
+    "proximos_resultados": "2026-10-20"
+  },
+  "resumen": {
+    "recomendacion": "Mantener",
+    "conviccion": "Baja",
+    "justificacion_recomendacion": null,
+    "horizonte": "12 meses",
+    "sintesis": "**La recomendación y por qué.** Mantener, con convicción baja. El objetivo a 12 meses es de 320,35 EUR (nuestro BPA de 2028e por el PER de la regla común), una rentabilidad ponderada del 8,6 % y del 6,0 % en el caso base, con dividendo; el valor intrínseco (síntesis de métodos) es de 327,36 EUR, un 9,5 % sobre los 298,90 EUR de hoy (el DCF solo, 334,87 EUR), y el objetivo medio de los analistas (286 EUR) queda por debajo del precio [25]. La asimetría a 12 meses es favorable (3,27 veces), pero la acción ha subido un 34 % desde el cierre de 2025 y cotiza a 23,1 veces el beneficio de los próximos 12 meses, por encima de la mediana de su historia (20,5 veces). La convicción es baja porque la regla con nuestro WACC dice Mantener y la del mercado, Comprar: la diferencia es de tasa de descuento, no de cifras. Subiría si el precio bajara de 282,21 EUR o si el 3T26 (20-oct) confirmara una tesorería por encima de 700 M con la parte sin tesorería creciendo más del 10 %.\n\n**El negocio.** Infraestructura de mercados con foso amplio: liquidez de Eurex en derivados europeos, custodia de Clearstream y, desde 2023, software (SimCorp) e índices y datos (ISS STOXX). Margen EBITDA del 58,9 % en los últimos 12 meses y ROIC del 13 % frente a un WACC del 7,08 % [1]. La calidad sostiene el crecimiento proyectado (veredicto: Sí): el 5,5 % medio está por debajo del +9-11 % orgánico sin tesorería de 2025-2026 y no necesita capital nuevo [1, 2].\n\n**Finanzas.** Los ingresos netos pasaron de 3.510 M a 6.026 M entre 2021 y 2025, pero la mitad del salto vino de los tipos y de SimCorp [1, 9]. El resultado de tesorería (intereses de los saldos de clientes) cae de 1.050 M en 2024 a 837 M en 2025 y más de 700 M en 2026: el DCF lo incluye y lo baja a ≈ 650 M estables. Deuda neta ajustada de 5.350 M (1,4 veces el EBITDA), con la compra del 20 % de ISS STOXX y la recompra de 2026. Datos de balance y flujos incompletos: confianza baja.\n\n**Valoración.** El DCF inverso dice que el precio descuenta un crecimiento del 3,2 % anual en 2027e-2032e, frente al 5,3 % de nuestro base: el mercado no es exigente con el negocio, pero sí con el múltiplo. Los comparables (mediana de 23,9 veces el beneficio, 15,7 veces el EBITDA) dan entre 287 y 367 EUR; con la prima implícita del mercado el DCF sube a 430,73 EUR. Nuestro BPA de 2028e (15,25 EUR) supera en un 5 % al del consenso.\n\n**Riesgos y catalizadores.** El primero es la tesorería: cada 300 M menos restan alrededor de un 6 % al valor. El segundo, Allfunds (5.300 M, cierre previsto en el 1S27, revisión de competencia en Bruselas y ≈ 7,5 M de acciones nuevas) [6]. Catalizadores: 3T26 el 20-oct-2026 y la guía de 2027 en febrero. Los foros y la prensa bursátil están positivos, con la acción en máximos de 52 semanas [23, 33]: no es euforia, pero el precio ya supera los objetivos medios publicados.\n\n**Qué cambiaría la decisión.** Compraríamos por debajo de 282,21 EUR y venderíamos por encima de 360,61 EUR. Pasaríamos a Comprar si la guía de 2027 situara la tesorería por encima de 750 M o el crecimiento sin tesorería por encima del 10 %; a Vender, si Bruselas exigiera concesiones que destruyan el valor de Allfunds o la tesorería bajara de 500 M.",
+    "tesis": "Deutsche Börse es la infraestructura central de los mercados europeos: Eurex concentra la liquidez de los derivados de tipos en euros, Clearstream custodia los valores de los inversores internacionales y SimCorp e ISS STOXX añaden software e índices con ingresos recurrentes. Gana un margen EBITDA del 58,9 % y un ROIC del 13 % [1].\n\nEl precio (298,90 EUR, 23,1 veces el beneficio de los próximos 12 meses) descuenta un crecimiento del 3,2 % anual, menos de la mitad del orgánico sin tesorería, pero un múltiplo por encima de su historia (mediana de 20,5 veces).\n\nPara invertir hay que creer que el crecimiento estructural compensará la caída del resultado de tesorería y que el mercado mantendrá el múltiplo actual. A 12 meses, con la regla común, la acción rinde un 8,6 %: no basta para comprar al precio de hoy.",
+    "vision_diferencial": {
+      "mercado_descuenta": "Un crecimiento del 3,2 % anual y un PER de 23 veces que el mercado paga por la calidad del negocio y por la diversificación hacia software y datos.",
+      "nuestra_vision": "El negocio crecerá más (5,3 % en el base), pero el PER a un año tenderá a su mediana histórica (20,5 veces): la ganancia de beneficio se la come la normalización del múltiplo.",
+      "por_que": "La tesorería, casi todo margen, baja con los tipos del BCE y el mercado suele castigar las compras grandes durante su integración (Allfunds, cierre en el 1S27)."
+    },
+    "a_favor": [
+      "**Foso amplio**: margen EBITDA del 58,9 % y ROIC del 13 % frente a un WACC del 7,08 %.",
+      "**Crecimiento sin tesorería del 9-11 %** en 2025-2026 [1, 2].",
+      "**El precio descuenta poco crecimiento**: 3,2 % anual frente al 5,3 % del base.",
+      "**Deuda baja**: 1,4 veces el EBITDA la ajustada."
+    ],
+    "en_contra": [
+      "**Tesorería a la baja**: de 1.050 M (2024) a más de 700 M (2026) [1, 2].",
+      "**Múltiplo exigente**: 23,1 veces el beneficio de los próximos 12 meses frente a una mediana histórica de 20,5.",
+      "**Allfunds**: 5.300 M y riesgo de competencia [6].",
+      "**Rentabilidad a 12 meses del 8,6 %**, por debajo del 15 % que exigimos."
+    ],
+    "que_vigilar": "La tesis depende de que la parte sin tesorería siga creciendo cerca del 10 % mientras la tesorería se estabiliza en torno a 650-700 M. La señal de que no se cumple sería una guía de 2027 con la tesorería por debajo de 600 M o un crecimiento sin tesorería por debajo del 7 %.",
+    "cambiaria_recomendacion": [
+      "Precio por debajo de 282,21 EUR: pasaríamos a Comprar.",
+      "Precio por encima de 360,61 EUR: Vender o reducir.",
+      "Guía de 2027 con tesorería > 750 M y crecimiento sin tesorería > 10 %: revisaríamos al alza el BPA.",
+      "Fase II de la Comisión Europea sobre Allfunds con concesiones relevantes: revisaríamos a la baja."
+    ],
+    "kpis_seguimiento": [
+      {
+        "kpi": "Resultado de tesorería anual",
+        "nivel_actual": "> 700 M (guía 2026)",
+        "umbral_alerta": "< 600 M",
+        "por_que": "Casi todo margen: mueve el BPA."
+      },
+      {
+        "kpi": "Crecimiento de ingresos sin tesorería",
+        "nivel_actual": "+11 % (1S26)",
+        "umbral_alerta": "< 7 %",
+        "por_que": "Es la tesis de crecimiento estructural."
+      },
+      {
+        "kpi": "Margen EBITDA sin tesorería",
+        "nivel_actual": "55 % (1S26)",
+        "umbral_alerta": "< 52 %",
+        "por_que": "Apalancamiento operativo."
+      },
+      {
+        "kpi": "Estado de la compra de Allfunds",
+        "nivel_actual": "Pendiente (cierre 1S27)",
+        "umbral_alerta": "Fase II o concesiones",
+        "por_que": "Mayor compra de su historia."
+      }
+    ],
+    "confianza": "Baja"
+  },
+  "historia": {
+    "resumen": "Deutsche Börse AG nace en 1992 como operadora de la bolsa de Fráncfort y sale a bolsa en 2001. Su forma actual la dan tres apuestas: la integración vertical de negociación y compensación (Eurex y Eurex Clearing), la custodia y liquidación de valores con Clearstream (100 % desde 2002) y, desde 2023, el salto al software y los datos para gestores de inversión con la compra de SimCorp (≈ 3.900 M EUR) y la unión con ISS bajo ISS STOXX. En enero de 2026 firmó la compra de Allfunds por unos 5.300 M EUR, la mayor de su historia, que se cerraría en el 1S27 [2, 15].",
+    "hitos": [
+      {
+        "anio": "1992",
+        "hito": "Creación de Deutsche Börse AG como operadora de la Bolsa de Fráncfort."
+      },
+      {
+        "anio": "1998",
+        "hito": "Nace Eurex, el mercado de derivados germano-suizo, con negociación electrónica."
+      },
+      {
+        "anio": "2001",
+        "hito": "Salida a bolsa."
+      },
+      {
+        "anio": "2002",
+        "hito": "Toma el 100 % de Clearstream (custodia y liquidación)."
+      },
+      {
+        "anio": "2023",
+        "hito": "Compra SimCorp (≈ 3.900 M EUR) y crea el segmento Investment Management Solutions con ISS STOXX."
+      },
+      {
+        "anio": "2025",
+        "hito": "Stephan Leithner sustituye a Theodor Weimer como primer ejecutivo."
+      },
+      {
+        "anio": "2026",
+        "hito": "Compra el 20 % restante de ISS STOXX (≈ 1.100 M EUR) y firma la adquisición de Allfunds (≈ 5.300 M EUR) [2, 15]."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "negocio": {
+    "kpis": [
+      {
+        "kpi": "Ingresos netos sin resultado de tesorería",
+        "valor_anterior": "≈ 4,8 mil M EUR (2024)",
+        "valor_actual": "5.189 M EUR (2025)",
+        "variacion": "+9 %",
+        "comentario": "Crecimiento estructural; guía 2026 ≈ 5,7 mil M [1, 2]."
+      },
+      {
+        "kpi": "EBITDA sin resultado de tesorería",
+        "valor_anterior": "2.346 M EUR (2024)",
+        "valor_actual": "2.675 M EUR (2025)",
+        "variacion": "+14 %",
+        "comentario": "Guía 2026 ≈ 3,1 mil M [1, 2]."
+      },
+      {
+        "kpi": "Resultado de tesorería (intereses de saldos de clientes)",
+        "valor_anterior": "1.050 M EUR (2024)",
+        "valor_actual": "837 M EUR (2025)",
+        "variacion": "−20 %",
+        "comentario": "Baja por los tipos del BCE. Guía 2026: más de 0,7 mil M [1, 2]."
+      },
+      {
+        "kpi": "BPA antes de PPA (cash EPS)",
+        "valor_anterior": "11,36 EUR (2024)",
+        "valor_actual": "11,65 EUR (2025)",
+        "variacion": "+3 %",
+        "comentario": "1S26: 6,73 EUR, +12 % [1, 4]."
+      }
+    ],
+    "descripcion": "Infraestructura de mercados europea en cuatro negocios: Trading & Clearing (Eurex en derivados, Xetra en contado, EEX en energía y Eurex Clearing como cámara), Fund Services (procesamiento y distribución de fondos, que Allfunds ampliaría), Securities Services (Clearstream: custodia y liquidación, con los saldos en efectivo de los clientes) e Investment Management Solutions (software de SimCorp, índices STOXX y DAX, datos y voto por delegación de ISS). Sus clientes son bancos, intermediarios, gestoras y aseguradoras de todo el mundo [15, 16].",
+    "geografias": [],
+    "confianza": "Media",
+    "como_gana_dinero": "Cobra comisiones por contrato negociado y compensado (Eurex, EEX), por custodia y liquidación sobre los activos depositados (Clearstream), licencias de índices y datos, y suscripciones de software (SimCorp). Además gana intereses sobre los saldos de efectivo que los clientes dejan en Clearstream y como garantía en Eurex Clearing: el **resultado de tesorería**, 837 M EUR en 2025 (14 % de los ingresos netos, frente a 1.050 M en 2024) y más de 700 M previstos en 2026 [1, 2]. Casi todo el coste es de personal y tecnología, así que el apalancamiento operativo es alto: el EBITDA sin tesorería creció un 14 % en 2025 con ingresos netos sin tesorería un 9 % mayores [1]. Lo cíclico (volatilidad, tipos) pesa menos que en 2022, cuando explicó 14 de los 24 puntos de crecimiento [9].",
+    "clientes": "Bancos, intermediarios, gestoras, aseguradoras y empresas energéticas de todo el mundo. No hay concentración relevante publicada en las fuentes leídas. El poder de precios se ve en el margen: EBITDA del 58 % del total en 2025 (3.512 M sobre 6.026 M) y del 51,6 % sin tesorería (2.675 M sobre 5.189 M) [1]."
+  },
+  "sector": {
+    "definicion": "Infraestructura de mercados financieros: negociación y compensación de derivados y contado, post-contratación (custodia y liquidación), datos, índices y software para gestores. El mercado relevante es mundial para derivados, datos e índices y europeo para la post-contratación. No hay una cifra de tamaño de mercado fiable y comparable en las fuentes leídas.",
+    "tamano": null,
+    "unidad_serie": null,
+    "serie": [],
+    "tcac_historico_pct": null,
+    "tcac_previsto_pct": null,
+    "cr5_pct": null,
+    "estructura": "Concentrada",
+    "drivers": [
+      {
+        "driver": "Volatilidad y volúmenes de negociación",
+        "efecto": "+/−",
+        "horizonte": "Cíclico",
+        "evidencia": "Deutsche Börse atribuyó el crecimiento de 2022 en 14 puntos a efectos cíclicos (volatilidad e intereses) [17]."
+      },
+      {
+        "driver": "Tipos de interés sobre los saldos de clientes",
+        "efecto": "−",
+        "horizonte": "Cíclico",
+        "evidencia": "El resultado de tesorería pasa de ≈ 1.050 M EUR en 2024 a ≈ 837 M en 2025 y más de 700 M previstos en 2026 por las bajadas del BCE [2, 15]."
+      },
+      {
+        "driver": "Paso de la gestión activa a la pasiva e indexación",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Sostiene las licencias de índices STOXX/DAX y los datos de ISS [16]."
+      },
+      {
+        "driver": "Externalización de software y datos por los gestores",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "SimCorp crece con el paso a la nube (SaaS) [16]."
+      },
+      {
+        "driver": "Unión de los mercados de capitales en la UE (consolidación de la post-contratación)",
+        "efecto": "+/−",
+        "horizonte": "Estructural",
+        "evidencia": "Oportunidad para Clearstream, pero con presión regulatoria sobre precios."
+      }
+    ],
+    "porter": [
+      {
+        "fuerza": "Rivalidad",
+        "intensidad": 2,
+        "justificacion": "Mercados de derivados y post-contratación con pocos actores y efectos de red (Eurex frente a ICE y CME en derivados europeos)."
+      },
+      {
+        "fuerza": "Poder de los clientes",
+        "intensidad": 3,
+        "justificacion": "Los grandes bancos negocian tarifas y han promovido plataformas alternativas."
+      },
+      {
+        "fuerza": "Poder de los proveedores",
+        "intensidad": 1,
+        "justificacion": "Insumos sobre todo de personal y tecnología."
+      },
+      {
+        "fuerza": "Amenaza de entrada",
+        "intensidad": 2,
+        "justificacion": "Licencias de cámara y banco, liquidez acumulada y regulación levantan barreras."
+      },
+      {
+        "fuerza": "Amenaza de sustitutos",
+        "intensidad": 2,
+        "justificacion": "Mercados OTC y negociación fuera de bolsa compiten en contado; menos en derivados compensados."
+      }
+    ],
+    "ciclo": {
+      "posicion": "Madurez del ciclo",
+      "comentario": "La parte cíclica (volatilidad e intereses) estuvo alta en 2022-2024; el resultado de tesorería ya baja con los tipos del BCE, mientras el crecimiento estructural sin tesorería sigue en torno al 9-11 % anual [2, 15]."
+    },
+    "regulacion": "Eurex Clearing y Clearstream están supervisados como cámara y como banco (BaFin, Bundesbank, CSSF en Luxemburgo), con exigencias de capital propias. La revisión de EMIR (cuentas activas en cámaras de la UE) favorece a Eurex Clearing frente a Londres. La compra de Allfunds está sujeta a la revisión de competencia de la Comisión Europea, que la prensa considera estricta [18].",
+    "tendencias": "La diversificación hacia software, índices y datos (SimCorp, ISS STOXX, Allfunds) reduce el peso de lo cíclico y del resultado de tesorería; la tokenización y la liquidación en T+1 en Europa (2027) son retos tecnológicos para Clearstream.",
+    "confianza": "Baja"
+  },
+  "competencia": {
+    "cuota_pct": null,
+    "posicion": "Primer operador europeo de derivados (Eurex) y uno de los dos grandes depositarios internacionales (Clearstream, junto a Euroclear).",
+    "competidores": [
+      {
+        "nombre": "Intercontinental Exchange",
+        "pais": "EE. UU.",
+        "ticker": "ICE",
+        "ingresos": 8452,
+        "cuota_pct": null,
+        "margen_ebit_pct": 49.6,
+        "comentario": "Rival en derivados europeos (ICE Futures Europe); 9.931 M USD de ingresos y 4.929 M de EBIT en 2025, a 1,175 USD/EUR [19]."
+      },
+      {
+        "nombre": "CME Group",
+        "pais": "EE. UU.",
+        "ticker": "CME",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Líder mundial en derivados de tipos; margen EBITDA del 71 % [19]."
+      },
+      {
+        "nombre": "London Stock Exchange Group",
+        "pais": "Reino Unido",
+        "ticker": "LSEG",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Datos (Refinitiv) y compensación (LCH): rival en swaps y datos; margen EBITDA del 48 % [19]."
+      },
+      {
+        "nombre": "Euronext",
+        "pais": "Francia/Países Bajos",
+        "ticker": "ENX",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Rival en contado y en post-contratación europea; intentó comprar Allfunds en 2024 [18]."
+      }
+    ],
+    "foso": {
+      "veredicto": "Amplio",
+      "tendencia": "Estable",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 5,
+          "evidencia": "La liquidez en derivados de tipos europeos (Bund, Euribor) se concentra en Eurex: quien negocia va donde está la contrapartida."
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 4,
+          "evidencia": "Mover custodia (Clearstream) o el software de gestión (SimCorp) cuesta años de proyecto."
+        },
+        {
+          "fuente": "Intangibles (marca, patentes, licencias)",
+          "puntuacion": 4,
+          "evidencia": "Licencias de cámara y banco; marcas de índices DAX y STOXX."
+        },
+        {
+          "fuente": "Ventaja en costes",
+          "puntuacion": 3,
+          "evidencia": "Escala tecnológica compartida entre negocios."
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 4,
+          "evidencia": "Margen EBITDA del 58 % en 2025 (3.512 M sobre 6.026 M) [1]."
+        }
+      ]
+    },
+    "amenazas": "La caída de tipos del BCE reduce el resultado de tesorería (≈ 14 % de los ingresos netos en 2025). La regulación europea puede forzar más competencia en la post-contratación. La integración de Allfunds y SimCorp exige ejecutar bien en software, donde la empresa tiene menos historial.",
+    "confianza": "Media"
+  },
+  "financieros": {
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 3509.5,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 2043.1,
+        "amortizaciones": null,
+        "ebit": null,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 1209.7,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 6.59,
+        "dpa": 3.2,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 183.6
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 4337.6,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 2525.6,
+        "amortizaciones": null,
+        "ebit": null,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 1494.4,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 8.14,
+        "dpa": 3.6,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 183.6
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 5076.6,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 2944.3,
+        "amortizaciones": null,
+        "ebit": null,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 1724,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 9.35,
+        "dpa": 3.8,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 184.4
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 5829,
+        "coste_ventas": null,
+        "gastos_generales": 2469,
+        "ebitda": 3395.6,
+        "amortizaciones": 495.6,
+        "ebit": 2900,
+        "resultado_financiero": -155,
+        "bai": 2745,
+        "impuestos": 698.9,
+        "minoritarios": 97.1,
+        "beneficio_neto": 1949,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 10.6,
+        "dpa": 4,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 183.9
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 6026,
+        "coste_ventas": null,
+        "gastos_generales": 2534,
+        "ebitda": 3512,
+        "amortizaciones": 502,
+        "ebit": 3010,
+        "resultado_financiero": -153,
+        "bai": 2857,
+        "impuestos": 757,
+        "minoritarios": 105,
+        "beneficio_neto": 1995,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 10.9,
+        "dpa": 4.2,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 183
+      }
+    ],
+    "ltm": {
+      "periodo": "LTM jun-26",
+      "fecha_fin": "2026-06-30",
+      "ingresos": 6267,
+      "ebitda": 3693,
+      "ebit": null,
+      "beneficio_neto": 2119,
+      "bpa": 11.62,
+      "dpa": 4.2,
+      "dpa_extraordinario": 0,
+      "fcf": null,
+      "participadas_en_ebitda": null,
+      "no_recurrentes_en_ebitda": null
+    },
+    "cambios_perimetro": [
+      {
+        "periodo": "2023",
+        "descripcion": "SimCorp, consolidada desde octubre de 2023 (unos 3.900 M EUR): entra el último trimestre en la cuenta y entera en el balance."
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "Los ingresos netos pasan de 3.510 M EUR en 2021 a 6.026 M en 2025 [1, 9]: un crecimiento compuesto alto por tres motores que no se repetirán igual. Los tipos de interés llevaron el resultado de tesorería de casi nada a ≈ 1.050 M en 2024; SimCorp (desde octubre de 2023) sumó crecimiento comprado; y la volatilidad de 2022 infló la negociación [3, 8, 9]. En 2025 el crecimiento total fue solo del 3 % porque la tesorería cayó un 20 %, de 1.050 M a 837 M, mientras la parte sin tesorería subió un 9 % [1]. El margen EBITDA total sube de 58,2 % (2021) a 58,3 % (2025) con un pico en 2024; sin tesorería pasa del 49 % al 51,5 % [1, 3]. El 1S26 confirma la tendencia: ingresos sin tesorería +11 % y EBITDA sin tesorería +16 % [2].",
+    "ajustes": "Usamos cifras reportadas. La empresa destaca el BPA antes de los efectos del precio de compra (cash EPS: 11,65 EUR en 2025 frente a 10,90 reportado), que excluye la amortización de intangibles comprados (SimCorp, ISS) [1]. El 1S26 incluye 20 M de costes de la compra de Allfunds [14]. No hay deterioros relevantes en las fuentes leídas."
+  },
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "1S25",
+        "ingresos": 3014,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": 1806,
+        "margen_ebitda_pct": null,
+        "bpa": null,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "2S25",
+        "ingresos": 3012,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": 1706,
+        "margen_ebitda_pct": null,
+        "bpa": null,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1S26",
+        "ingresos": 3255,
+        "crecimiento_pct": 8,
+        "crecimiento_organico_pct": null,
+        "ebitda": 1987,
+        "margen_ebitda_pct": null,
+        "bpa": 6.38,
+        "vs_consenso": "Superior"
+      }
+    ],
+    "confianza": "Media",
+    "ultima_presentacion": "En el 2T26 (22-jul) la dirección presentó un crecimiento «estructural y diversificado»: ingresos sin tesorería +9 % hasta 1.412 M EUR y EBITDA sin tesorería +13 % hasta 775 M, con 205 M de tesorería [2]. Subió la previsión de tesorería a más de 700 M (con lo que espera más de 6.400 M de ingresos netos y más de 3.800 M de EBITDA) y mantuvo la de la parte sin tesorería (≈ 5.700 M y ≈ 3.100 M) [2]. Terminó la recompra de 500 M el 26-jun [2]. La acción bajó tras la cifra pese a la mejora: el mercado ya esperaba más tesorería [34]. Las preguntas giraron en torno a los tipos del BCE, Allfunds (calendario y competencia) y el crecimiento de SimCorp en la nube [21]. El 3T26 se publica el 20-oct-2026 [26]."
+  },
+  "balance": {
+    "historico": [
+      {
+        "periodo": "2024",
+        "activo_total": null,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": null,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": 0,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": null,
+        "deuda_financiera": 7200,
+        "arrendamientos": null,
+        "patrimonio_neto": 11300,
+        "minoritarios": null,
+        "reservas": null
+      },
+      {
+        "periodo": "2025",
+        "activo_total": null,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": null,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": 0,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 3450,
+        "deuda_financiera": 7200,
+        "arrendamientos": null,
+        "patrimonio_neto": 11829,
+        "minoritarios": null,
+        "reservas": null
+      }
+    ],
+    "vencimientos": [],
+    "liquidez": "Deuda neta corporativa ≈ 3.750 M EUR a dic-25 según MarketScreener (1,0 veces el EBITDA de los últimos 12 meses) [13]; con los 1.100 M de ISS STOXX y los 500 M de la recompra, la ajustada es de 5.350 M (1,4 veces).",
+    "rating": null,
+    "coste_deuda_pct": null,
+    "vida_media_anios": null,
+    "confianza": "Baja",
+    "otros_pasivos": "El balance consolidado incluye ≈ 300.000 M EUR de activos y pasivos de las actividades de cámara (Eurex Clearing) y de banco (Clearstream), sobre todo saldos de clientes y garantías [11]. No se suman a la deuda: son pasivos de los clientes con su activo enfrente, y su rendimiento es el resultado de tesorería que ya está en el EBITDA. La compra de Allfunds exigirá ≈ 3.700 M en efectivo (estimación propia: 6,00 EUR por cada una de unas 615 M de acciones) y elevará la deuda neta en el 1S27 [6].",
+    "comentario": "No hemos podido leer el balance completo. Con los datos disponibles, la deuda es baja frente al EBITDA (1,0 veces la neta) y el patrimonio crece de 11.300 M a 11.829 M en 2025 [11, 12]. La deuda bruta de ≈ 7.200 M procede de la compra de SimCorp [12]."
+  },
+  "flujos": {
+    "historico": [
+      {
+        "periodo": "2025",
+        "flujo_operativo": 2452,
+        "capex": 355,
+        "pagos_arrendamientos": null,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 736,
+        "recompras": 500,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      }
+    ],
+    "confianza": "Baja",
+    "comentario": "Solo tenemos el FCF de 2025 de MarketScreener (≈ 2.097 M EUR, con un capex de ≈ 355 M, el 5,9 % de los ingresos) [13]: una conversión de alrededor del 105 % del beneficio neto. Es un negocio de activos ligeros: el capex es sobre todo desarrollo de software y la amortización incluye ≈ 190 M de intangibles comprados (estimación a partir de la diferencia entre BPA de caja y reportado)."
+  },
+  "calidad": {
+    "auditor": null,
+    "anios_auditor": null,
+    "opinion": null,
+    "comentario": "No hemos leído el informe de auditoría. Altman y Beneish no se calculan (faltan partidas de balance) y el Piotroski de 4 no es interpretable con tan pocos datos. La diferencia entre BPA reportado y de caja (0,75 EUR en 2025) es la amortización de intangibles de compras, recurrente mientras siga comprando [1].",
+    "senales": [
+      {
+        "senal": "Ninguna relevante",
+        "nivel": "Baja",
+        "comentario": "Revisados los comunicados de 2022-2026: sin cambios de criterio ni deterioros publicados; cobertura limitada."
+      }
+    ],
+    "confianza": "Baja"
+  },
+  "rentabilidad": {
+    "comentario": "El ROIC de 2025 es del 13 % con el capital invertido estimado (patrimonio más deuda neta), frente a un WACC del 7,08 %: crea valor, aunque menos que antes de SimCorp, que añadió fondo de comercio [11]. El ROE es del 17,3 %. ICE, con más fondo de comercio, tiene un 8,1 %; CME, un 12,2 % [30]. El ROIC sin el resultado de tesorería sería unos 2 puntos menor (estimación propia: la tesorería aporta ≈ 600 M de NOPAT), así que la creación de valor depende en parte de los tipos.",
+    "confianza": "Baja"
+  },
+  "capital": {
+    "adquisiciones": [
+      {
+        "anio": "2023",
+        "objetivo": "SimCorp (software de gestión de inversiones, Dinamarca)",
+        "importe": 3900,
+        "ev_ebitda": null,
+        "financiacion": "Caja y deuda (bonos e híbridos)",
+        "resultado": "Integrada en Investment Management Solutions; sin deterioros conocidos a 2025."
+      },
+      {
+        "anio": "2026",
+        "objetivo": "ISS STOXX: 20 % restante (minoritarios de General Atlantic)",
+        "importe": 1100,
+        "ev_ebitda": null,
+        "financiacion": "Caja",
+        "resultado": "Anunciada en febrero de 2026 [5]."
+      },
+      {
+        "anio": "2026",
+        "objetivo": "Allfunds (plataforma de distribución de fondos)",
+        "importe": 5300,
+        "ev_ebitda": null,
+        "financiacion": "6,00 EUR en efectivo y 0,0122 acciones nuevas de Deutsche Börse por acción, más dividendos permitidos",
+        "resultado": "Pendiente: acuerdo vinculante de enero de 2026, cierre previsto en el 1S27 tras autorizaciones de competencia [6, 7]."
+      }
+    ],
+    "confianza": "Media",
+    "politica": "Reparte el 30-40 % del beneficio en dividendo creciente (4,20 EUR por 2025, +5 %) y desde 2025 recompra con regularidad: 500 M en 2025 y otros 500 M terminados en junio de 2026 [1, 2]. La prioridad sigue siendo crecer con compras en software y datos: SimCorp (2023), el 20 % de ISS STOXX (2026) y Allfunds (pendiente) [5, 6].",
+    "comentario": "La dirección es una compradora en serie disciplinada en deuda: tras SimCorp mantuvo la deuda neta en torno a una vez el EBITDA. El crecimiento por acción ha sido bueno (BPA de 6,59 a 10,90 EUR entre 2021 y 2025) con acciones estables [1, 9]. El riesgo está en Allfunds: 5.300 M por una plataforma de distribución de fondos con márgenes presionados, que emitirá ≈ 7,5 M de acciones nuevas (estimación propia) y exige pasar la revisión de competencia de Bruselas [6, 18]."
+  },
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "Stephan Leithner",
+        "cargo": "Primer ejecutivo (CEO)",
+        "desde": "2025",
+        "participacion_pct": null,
+        "trayectoria": "Antes responsable de Pre- & Post-Trading en el consejo de dirección de Deutsche Börse; sucedió a Theodor Weimer el 1-ene-2025 (sucesión anunciada con antelación) [20]."
+      },
+      {
+        "nombre": "Jens Schulte",
+        "cargo": "Director financiero (CFO)",
+        "desde": "2025",
+        "participacion_pct": null,
+        "trayectoria": "Director financiero y responsable de Trading & Clearing [21]."
+      }
+    ],
+    "historial_guidance": [
+      {
+        "anio": "2025",
+        "guia": "Ingresos netos sin tesorería ≈ 5,2 mil M EUR y EBITDA sin tesorería ≈ 2,7 mil M",
+        "real": "≈ 5,2 mil M y 2.675 M",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2022",
+        "guia": "Objetivos de Compass 2023 (plan a medio plazo)",
+        "real": "Alcanzados un año antes de lo previsto",
+        "cumplida": "Sí"
+      }
+    ],
+    "confianza": "Baja",
+    "comentario": "Equipo nuevo en la cúpula desde 2025 (Leithner, promoción interna con sucesión anunciada), que ha cumplido la guía de 2025 y la ha mejorado en 2026 [1, 2, 20]. Hereda una estrategia de compras (Horizon 2026) que ahora tiene que ejecutar con Allfunds. No hemos podido verificar la remuneración ni las operaciones de directivos."
+  },
+  "gobierno": {
+    "consejo": [],
+    "presidente_ceo_separados": true,
+    "presidente_ejecutivo": false,
+    "consejero_coordinador": null,
+    "una_accion_un_voto": true,
+    "operaciones_vinculadas_relevantes": false,
+    "variable_ligado_rentabilidad": null,
+    "auditoria_independiente": null,
+    "insiders_sin_operaciones": null,
+    "accionista_control": false,
+    "presidente_vinculado_control": false,
+    "cambios_cupula_24m": 0,
+    "voto_remuneracion_pct": null,
+    "voto_remuneracion_contra_pct": null,
+    "voto_remuneracion_contra_libre_pct": null,
+    "voto_cupula_pct": null,
+    "remuneracion_ceo": null,
+    "remuneracion": null,
+    "accionistas": [],
+    "insiders": [],
+    "control_y_defensas": "Sociedad anónima alemana con estructura dual (consejo de dirección y consejo de supervisión), capital disperso entre institucionales y sin accionista de control; una acción, un voto. La compra de Allfunds se hace mediante un esquema británico que no requiere votación de los accionistas de Deutsche Börse, pero emite unas 7-8 millones de acciones nuevas (estimación propia: 0,0122 por cada acción de Allfunds). En la junta del 13-may-2026 estuvo representado el 73,40 % del capital; la gestión del consejo de dirección se aprobó con el 98,34 % y la del de supervisión con el 99,45 % [22].",
+    "alertas": [
+      "Ninguna relevante detectada en la prensa revisada; no se han podido leer la declaración de gobierno ni el informe de remuneraciones."
+    ],
+    "confianza": "Baja"
+  },
+  "consenso": {
+    "estimaciones": [
+      {
+        "periodo": "2026e",
+        "ingresos": 6479,
+        "ebitda": 3877,
+        "ebit": null,
+        "bpa": 12.19,
+        "dpa": null,
+        "fuente": "MarketScreener, jul-2026 [24]"
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 6757,
+        "ebitda": 4108,
+        "ebit": null,
+        "bpa": 13.11,
+        "dpa": null,
+        "fuente": "MarketScreener, jul-2026 [24]"
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 7202,
+        "ebitda": 4453,
+        "ebit": null,
+        "bpa": 14.51,
+        "dpa": null,
+        "fuente": "MarketScreener, jul-2026 [24]"
+      }
+    ],
+    "recomendaciones": {
+      "n_analistas": 11,
+      "comprar": 8,
+      "mantener": 3,
+      "vender": 0,
+      "po_medio": 286,
+      "po_min": null,
+      "po_max": 330
+    },
+    "base_ebitda": "NIIF",
+    "ajuste_ebitda_pct_ventas": null,
+    "confianza": "Media",
+    "guidance": "Para 2026: ingresos netos sin tesorería ≈ 5.700 M EUR y EBITDA sin tesorería ≈ 3.100 M; resultado de tesorería de más de 700 M (subido en julio); con tesorería, más de 6.400 M y más de 3.800 M (confirmado el 22-jul-2026) [2]. El plan Horizon 2026 apuntaba a un crecimiento orgánico de los ingresos sin tesorería de en torno al 10 % anual [3].",
+    "revisiones": "Las estimaciones de MarketScreener son de julio de 2026 y no tienen número de analistas [24]. Las recomendaciones salen de Google Finance (11 analistas: 8 comprar, 3 mantener) y se contrastan con TipRanks (3 comprar, 9 mantener; objetivo medio 267,64 EUR) [25, 32]. En octubre suben los objetivos: Deutsche Bank a 313 EUR y Jefferies a 330 EUR [31]. JP Morgan recortó en mayo sus BPA hasta 2028 y UBS los subió en marzo, por la negociación del 1T [31]."
+  },
+  "bolsa": null,
+  "multiplos_historicos": {
+    "serie": [
+      {
+        "anio": "2021",
+        "precio_cierre": 147.1,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2022",
+        "precio_cierre": 161.4,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2023",
+        "precio_cierre": 186.5,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2024",
+        "precio_cierre": 222.4,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2025",
+        "precio_cierre": 223.7,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "Al cierre de cada año, el PER sobre el BPA reportado se ha movido entre 19,8 veces (2022) y 22,3 veces (2021), con una mediana de 20,5 veces en 2021-2025 [27, 28]. Hoy cotiza a 25,7 veces el BPA de los últimos 12 meses publicados de 2025 y a 23,1 veces el de los próximos 12 meses: una prima de unos 2,5 puntos sobre su historia. El cambio estructural (más software y datos, con menos peso de lo cíclico) la justificaría en parte; la caída del resultado de tesorería, no."
+  },
+  "comparables": {
+    "empresas": [
+      {
+        "nombre": "CME Group",
+        "ticker": "CME",
+        "pais": "US",
+        "capitalizacion": 82710,
+        "ev_ventas": 14.73,
+        "ev_ebitda_ltm": 20.7,
+        "ev_ebitda_ntm": 18.5,
+        "per_ntm": 21.7,
+        "crecimiento_pct": 6.6,
+        "margen_ebitda_pct": 71,
+        "roic_pct": 12.2,
+        "dn_ebitda": -0.24,
+        "fcf_yield_pct": 4.3
+      },
+      {
+        "nombre": "Nasdaq",
+        "ticker": "NDAQ",
+        "pais": "US",
+        "capitalizacion": 43734,
+        "ev_ventas": 11.34,
+        "ev_ebitda_ltm": 19.4,
+        "ev_ebitda_ntm": 15.7,
+        "per_ntm": 23.9,
+        "crecimiento_pct": 10.9,
+        "margen_ebitda_pct": 58.4,
+        "roic_pct": 10.4,
+        "dn_ebitda": 2.66,
+        "fcf_yield_pct": 3.9
+      },
+      {
+        "nombre": "London Stock Exchange Group",
+        "ticker": "LSEG",
+        "pais": "GB",
+        "capitalizacion": 44934,
+        "ev_ventas": 5.09,
+        "ev_ebitda_ltm": 10.5,
+        "ev_ebitda_ntm": 9,
+        "per_ntm": 24.1,
+        "crecimiento_pct": 6.2,
+        "margen_ebitda_pct": 48.4,
+        "roic_pct": 6.5,
+        "dn_ebitda": 1.68,
+        "fcf_yield_pct": 6.6
+      },
+      {
+        "nombre": "S&P Global",
+        "ticker": "SPGI",
+        "pais": "US",
+        "capitalizacion": 99138,
+        "ev_ventas": 8.34,
+        "ev_ebitda_ltm": 16.3,
+        "ev_ebitda_ntm": 15.6,
+        "per_ntm": 22.8,
+        "crecimiento_pct": 0.1,
+        "margen_ebitda_pct": 51.1,
+        "roic_pct": 11.1,
+        "dn_ebitda": 1.45,
+        "fcf_yield_pct": 4.7
+      },
+      {
+        "nombre": "MSCI",
+        "ticker": "MSCI",
+        "pais": "US",
+        "capitalizacion": 34363,
+        "ev_ventas": 14.7,
+        "ev_ebitda_ltm": 24.2,
+        "ev_ebitda_ntm": 19.8,
+        "per_ntm": 26.1,
+        "crecimiento_pct": 10.8,
+        "margen_ebitda_pct": 60.8,
+        "roic_pct": 39.9,
+        "dn_ebitda": 2.98,
+        "fcf_yield_pct": 3.6
+      },
+      {
+        "nombre": "Tradeweb Markets",
+        "ticker": "TW",
+        "pais": "US",
+        "capitalizacion": 21391,
+        "ev_ventas": 11.23,
+        "ev_ebitda_ltm": 20.8,
+        "ev_ebitda_ntm": 16.4,
+        "per_ntm": 28.1,
+        "crecimiento_pct": 13.3,
+        "margen_ebitda_pct": 54,
+        "roic_pct": 10.1,
+        "dn_ebitda": -1.88,
+        "fcf_yield_pct": 4.2
+      },
+      {
+        "nombre": "Intercontinental Exchange",
+        "ticker": "ICE",
+        "pais": "US",
+        "capitalizacion": 73165,
+        "ev_ventas": 9.66,
+        "ev_ebitda_ltm": 14.4,
+        "ev_ebitda_ntm": 13.3,
+        "per_ntm": 21,
+        "crecimiento_pct": 9.1,
+        "margen_ebitda_pct": 67.2,
+        "roic_pct": 8.1,
+        "dn_ebitda": 2.6,
+        "fcf_yield_pct": 5.4
+      }
+    ],
+    "confianza": "Media",
+    "criterio": "Siete infraestructuras de mercado y datos: bolsas con cámara y datos (ICE, CME, Nasdaq, LSEG), una plataforma de renta fija (Tradeweb) y dos de datos e índices (S&P Global, MSCI), que se parecen a ISS STOXX y SimCorp. Las cifras son del informe de ICE del 8-oct-2026 (MarketScreener al 7-oct), con la capitalización pasada a euros [30]. Euronext y Cboe quedan fuera por falta de estimaciones del mismo proveedor. Ojo: el PER de los estadounidenses es sobre BPA ajustado; el de Deutsche Börse, sobre el reportado (el de caja es un 7 % mayor).",
+    "comentario": "Deutsche Börse cotiza a 14,6 veces el EBITDA de los próximos 12 meses y 23,1 veces el beneficio, frente a medianas de 15,7 y 23,9 veces. El descuento en EV/EBITDA se explica por el resultado de tesorería, que el mercado paga a menos múltiplo, y el PER similar, por un ROIC (13 %) y un margen (58,9 %) en línea con la mediana. CME e ICE, las más parecidas en derivados y compensación, cotizan a 21,7 y 21,0 veces el beneficio: frente a ellas no hay descuento. La regresión no explica nada (R² 0,06) y no se usa."
+  },
+  "transacciones": {
+    "operaciones": [
+      {
+        "fecha": "2026-07",
+        "objetivo": "MarketAxess Holdings",
+        "comprador": "Intercontinental Exchange",
+        "ev": 4749,
+        "ev_ventas": 6.41,
+        "ev_ebitda": 13,
+        "prima_pct": 33,
+        "excluir": false,
+        "comentario": "Pendiente de cierre (1S27). Valor empresa de 5.580 M USD pasado a euros a 1,175 [30]."
+      },
+      {
+        "fecha": "2023-06",
+        "objetivo": "Adenza",
+        "comprador": "Nasdaq",
+        "ev": 9600,
+        "ev_ventas": 17.8,
+        "ev_ebitda": 30.7,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "10.500 M USD; múltiplos sobre las previsiones de 2023 publicadas por Nasdaq (estimación del informe de ICE) [30]."
+      },
+      {
+        "fecha": "2020-11",
+        "objetivo": "IHS Markit",
+        "comprador": "S&P Global",
+        "ev": 36000,
+        "ev_ventas": 10.26,
+        "ev_ebitda": 24,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Fusión en acciones; 44.000 M USD de valor empresa publicado [30]."
+      },
+      {
+        "fecha": "2026-01",
+        "objetivo": "Allfunds Group",
+        "comprador": "Deutsche Börse",
+        "ev": 5300,
+        "ev_ventas": null,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": true,
+        "comentario": "8,80 EUR por acción (6,00 en efectivo y 0,0122 acciones de Deutsche Börse), unos 5.300 M EUR de capital; sin múltiplo oficial en las fuentes leídas [7]."
+      },
+      {
+        "fecha": "2023-04",
+        "objetivo": "SimCorp",
+        "comprador": "Deutsche Börse",
+        "ev": 3900,
+        "ev_ventas": null,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": true,
+        "comentario": "Cerrada en octubre de 2023; sin múltiplo oficial en las fuentes leídas."
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "Las compras de datos y software financiero se pagan caras (24-31 veces el EBITDA: IHS Markit, Adenza) y las de plataformas de negociación, menos (MarketAxess, 13 veces) [30]. No ponderamos transacciones: Deutsche Börse es compradora y, con 54.000 M de capitalización y sin accionista de control, no es objeto probable de una oferta."
+  },
+  "dcf": {
+    "wacc": {
+      "tasa_libre_pct": 2.95,
+      "beta": 0.85,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 0,
+      "coste_deuda_pct": 3,
+      "tasa_impositiva_pct": 26,
+      "peso_deuda_pct": 10
+    },
+    "anios": [
+      {
+        "periodo": "2026e",
+        "crecimiento_pct": 7,
+        "margen_ebitda_pct": 59.7,
+        "amortizacion_pct_ventas": 8,
+        "capex_pct_ventas": 6,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 26,
+        "fijo": true
+      },
+      {
+        "periodo": "2027e",
+        "crecimiento_pct": 4.7,
+        "margen_ebitda_pct": 60.8,
+        "amortizacion_pct_ventas": 7.8,
+        "capex_pct_ventas": 6,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 26,
+        "fijo": false
+      },
+      {
+        "periodo": "2028e",
+        "crecimiento_pct": 6.4,
+        "margen_ebitda_pct": 61.8,
+        "amortizacion_pct_ventas": 7.5,
+        "capex_pct_ventas": 6,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 26,
+        "fijo": false
+      },
+      {
+        "periodo": "2029e",
+        "crecimiento_pct": 6,
+        "margen_ebitda_pct": 61.8,
+        "amortizacion_pct_ventas": 7.2,
+        "capex_pct_ventas": 6.2,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 26,
+        "fijo": false
+      },
+      {
+        "periodo": "2030e",
+        "crecimiento_pct": 5.5,
+        "margen_ebitda_pct": 61.8,
+        "amortizacion_pct_ventas": 7,
+        "capex_pct_ventas": 6.3,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 26,
+        "fijo": false
+      },
+      {
+        "periodo": "2031e",
+        "crecimiento_pct": 5,
+        "margen_ebitda_pct": 61.5,
+        "amortizacion_pct_ventas": 6.8,
+        "capex_pct_ventas": 6.4,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 26,
+        "fijo": false
+      },
+      {
+        "periodo": "2032e",
+        "crecimiento_pct": 4,
+        "margen_ebitda_pct": 61.5,
+        "amortizacion_pct_ventas": 6.5,
+        "capex_pct_ventas": 6.5,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 26,
+        "fijo": false
+      }
+    ],
+    "terminal": {
+      "metodo": "gordon",
+      "crecimiento_pct": 2.3,
+      "multiplo_salida": 17
+    },
+    "etapa2": {
+      "usar": false,
+      "anios": 5,
+      "margen_final_pct": null,
+      "justificacion": null
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "2026e (+7,0 %) sigue la guía: más de 6.400 M de ingresos netos con tesorería [2]. 2027e (+4,7 %) y 2028e (+6,4 %) suponen que la parte sin tesorería crece un 7 % al año, por debajo del +9-11 % reciente, y que la tesorería baja hasta ≈ 650 M y se estabiliza: quedan en línea con el consenso (6.757 M y 7.202 M) [24]. Después baja del 6 % al 4 %. No incluye Allfunds (no ha cerrado).",
+      "margenes": "Margen EBITDA del 59,7 % en 2026e (guía: más de 3.800 M) y del 61,8 % desde 2028e, por el apalancamiento operativo de la parte sin tesorería (51 % en 2025, 55 % en el 1S26) [1, 2]. El consenso está en 60,8 % y 61,8 % para 2027e y 2028e [24]. Bajamos al 61,5 % al final por la mezcla con menos tesorería.",
+      "inversion": "Capex del 6 % de los ingresos (≈ 355 M en 2025, el 5,9 %) [13], hasta el 6,5 % al final, igual a la amortización, que baja del 8 % al 6,5 % al terminarse la amortización de intangibles de SimCorp. Circulante nulo: los saldos de clientes no son circulante de la empresa.",
+      "wacc": "Tasa libre del 2,95 % (Bund a 10 años, Cbonds, 15-jun-2026; dato de octubre no disponible) [29]. Beta de 0,85, estimación propia para una bolsa europea con ingresos recurrentes (no hemos podido medirla). Prima de mercado del 5,5 %, sin prima adicional. Coste de la deuda del 3 % y peso del 10 %. WACC: 7,08 %. Con la prima implícita del mercado (4,2 %) el WACC baja al 6,09 % y el valor sube a 430,73 EUR: la recomendación depende mucho de la tasa.",
+      "terminal": "Gordon con un 2,3 % (inflación del euro del 2 % y algo de crecimiento real; por debajo de la tasa libre menos medio punto). El valor terminal es el 76 % del valor. El múltiplo implícito es coherente con los comparables."
+    },
+    "sostenibilidad": {
+      "puente_ingresos": [
+        {
+          "periodo": "2026e",
+          "volumen_pct": 6,
+          "precio_pct": 2,
+          "otros_pct": -1,
+          "comentario": "Volumen: negociación y custodia al alza (+9 % sin tesorería en el 1S26) [2]; precio: tarifas e índices; otros: caída de la tesorería."
+        },
+        {
+          "periodo": "2027e",
+          "volumen_pct": 5,
+          "precio_pct": 1.7,
+          "otros_pct": -2,
+          "comentario": "Volumen y SaaS de SimCorp; la tesorería resta unos 2 puntos con el BCE al 2 %."
+        },
+        {
+          "periodo": "2028e",
+          "volumen_pct": 4.5,
+          "precio_pct": 1.9,
+          "otros_pct": 0,
+          "comentario": "Crecimiento estructural sin efecto de tesorería (estable en ≈ 650 M)."
+        }
+      ],
+      "mercado_final": null,
+      "veredicto": "Sí",
+      "justificacion": "Prueba a mano: la reinversión neta es negativa (amortización de intangibles comprados por encima del capex), así que el motor no puede medir el crecimiento financiable. El 5,5 % medio proyectado está por debajo del crecimiento orgánico sin tesorería de los últimos años (+9 % en 2025, +11 % en el 1S26) [1, 2] y se apoya en volumen (efectos de red de Eurex y Clearstream) y en precios (índices, software con costes de cambio altos). No necesita cuota nueva: el mercado de derivados y datos crece por sí mismo. El ROIC del 13 % frente al 7,08 % de WACC da margen. Por eso el veredicto es Sí; el riesgo está en la tesorería, no en la capacidad del negocio."
+    },
+    "lectura": "El DCF da 334,87 EUR por acción, un 12,0 % sobre el precio, con un WACC del 7,08 % y el 76 % del valor en el terminal. El DCF inverso dice que el precio descuenta un crecimiento del 3,2 % anual en 2027e-2032e, frente al 5,3 % de nuestro caso base, o un margen del 56 % frente al 61,5 %: no es exigente para un negocio que crece al 9-11 % sin tesorería. La rentabilidad implícita es del 7,6 %, algo por encima del WACC. La diferencia con el mercado está en la tesorería: si bajara a cero, el valor caería en torno a un 15-20 % (estimación propia), y eso es lo que el precio parece guardar como colchón. Con la prima implícita del mercado (4,2 %), el valor sube a 430,73 EUR: con tasas de mercado, la acción está barata; con la nuestra, cerca de su valor.",
+    "confianza": "Baja"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": -2.5,
+        "ajuste_margen_pp": -2.5,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": 2,
+        "multiplo_salida": null,
+        "narrativa": "El BCE baja al 1 % y la tesorería cae a la mitad; la volatilidad se normaliza y Eurex negocia menos (como en 2017-2019). Crecimiento 2,5 puntos menor y margen 2,5 puntos menor."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Guía de 2026 cumplida; la parte sin tesorería crece un 7 % y la tesorería se estabiliza en ≈ 650 M."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": 1.5,
+        "ajuste_margen_pp": 1,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Tipos estables, volatilidad alta y SimCorp acelera en la nube: crecimiento 1,5 puntos mayor y margen 1 punto mayor."
+      }
+    ],
+    "comentario": "Asimetría de 1,97 veces: el alcista gana un 24,0 % y el bajista pierde un 12,2 % sobre el valor intrínseco. El bajista es verosímil (tipos más bajos y menos volatilidad ya ocurrieron en 2015-2019) y no destruye la tesis: el negocio sigue creciendo. Compensa a largo plazo, pero a 12 meses el precio ya recoge buena parte del base.",
+    "confianza": "Baja"
+  },
+  "suma_partes": {
+    "aplica": false,
+    "descuento_holding_pct": 0,
+    "partes": [],
+    "comentario": "No aplica: los segmentos comparten clientes, tecnología y balance, y no hemos podido obtener el resultado por segmento.",
+    "confianza": "Baja"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2025-12-31",
+      "deuda_financiera": 7200,
+      "arrendamientos": 0,
+      "caja": 3450,
+      "minoritarios": 0,
+      "pensiones": 0,
+      "asociadas": 0,
+      "otros_ajustes": 1600
+    },
+    "referencia_mercado": {
+      "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+      "prima_implicita_pct": 4.2,
+      "fecha": "2026-10",
+      "fuente": "Damodaran, ERPbymonth.xlsx [37]"
+    },
+    "pesos": {
+      "dcf": 50,
+      "comparables": 30,
+      "transacciones": 0,
+      "suma_partes": 0,
+      "escenarios": 20
+    },
+    "objetivo_12m": {
+      "ejercicio": "2028e",
+      "casos": [
+        {
+          "escenario": "Bajista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 13.8,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 6.850 M (crecimiento 2,5 puntos menor en 2027e-2028e) y margen EBITDA del 59,3 %: EBIT de ≈ 3.546 M, menos 150 M de intereses, 26 % de impuestos y 20 M de minoritarios, entre 180,6 M de acciones."
+        },
+        {
+          "escenario": "Base",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 15.25,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 7.183 M y margen del 61,8 %: EBIT de 3.900 M, menos 150 M de intereses y 26 % de impuestos (2.775 M), menos 20 M de minoritarios, entre 180,6 M de acciones. Sin Allfunds ni recompras no anunciadas. La fórmula da 1.995 M en 2025 (cuadra con el publicado)."
+        },
+        {
+          "escenario": "Alcista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 16.02,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de ≈ 7.390 M (1,5 puntos más de crecimiento) y margen del 62,8 %: EBIT de ≈ 4.086 M; mismos intereses, impuestos y acciones."
+        }
+      ],
+      "per_historico": {
+        "actual": 21.4,
+        "mediana_5a": 17.8,
+        "minimo_5a": 17.3,
+        "media_larga": 18.3,
+        "base": "adelantado",
+        "anios": 4,
+        "excluidos": "Historia ADELANTADA (precio de cierre de cada año ÷ BPA real del año siguiente, como el PER actual), construida el 2026-10-14 con los cierres y el BPA del informe: 2021 18.1x; 2022 17.3x; 2023 17.6x; 2024 20.4x. Sin años de pérdidas, PER ≥ 150x ni atípicos (a más de 3 veces o menos de un tercio de la mediana del resto, con cinco años o más); mediana y mínimo de los últimos 4 años, media larga de 4. Contraste de base: BPA propio del año siguiente 13.967 frente a 10.9 publicado en 2025 (+13.2 % anual). Historia corta (menos de cinco años). Historia al cierre anterior (v2): Ninguno: 2021-2025 (PER de cierre sobre el BPA reportado: 22,3; 19,8; 19,9; 21,0; 20,5). No hay años de pérdidas; 2018-2020 sin BPA verificado. Actual: 298,90 EUR entre nuestro BPA de 2027e (13,94 EUR).",
+        "v2": {
+          "actual": 21.4,
+          "mediana_5a": 20.5,
+          "minimo_5a": 19.8,
+          "media_larga": 20.7,
+          "base": "cierre"
+        }
+      },
+      "comparables_per": {
+        "mediana": 23.9
+      },
+      "consenso": {
+        "bpa_ano1": 13.11,
+        "bpa_ano2": 14.51,
+        "objetivo_medio": 286,
+        "objetivo_min": null,
+        "objetivo_max": 330,
+        "analistas": 11,
+        "tendencia_3m": "subidas",
+        "fuente": "MarketScreener (BPA, jul-2026), Google Finance (objetivo medio) y finanzen.net (Jefferies 330 EUR) [24, 25, 31]"
+      },
+      "diferencia_consenso": "Nuestro BPA de 2028e (15,25 EUR) supera en un 5 % al del consenso (14,51 EUR) con ventas casi iguales (7.183 M frente a 7.202 M): la diferencia está en la amortización y en los minoritarios, que bajan al comprar el 20 % de ISS STOXX, y en que el consenso de julio es anterior a la mejora de la guía de tesorería. Nuestro objetivo base queda por encima del objetivo medio de los analistas (286 EUR), que el precio ya supera.",
+      "media": null,
+      "comentario": "El objetivo a 12 meses (320,35 EUR) y el valor intrínseco (327,36 EUR; 334,87 EUR el DCF) están cerca: no hay una tesis de varios años esperando a cerrarse, sino una acción que ya cotiza cerca de su valor tras subir un 34 % en el año. Para ganar más del 15 % en un año haría falta que el mercado pagara un PER superior al de su historia o que la tesorería sorprendiera al alza."
+    },
+    "comentario": "Pesamos el DCF (50 %), los comparables (30 %) y los escenarios (20 %). Los comparables son fiables para la parte de bolsa y datos; el DCF recoge mejor la caída de la tesorería. No usamos transacciones (prima de control) ni suma de partes. La dispersión es moderada: los comparables dan entre 287 y 367 EUR y el DCF, 335 EUR; las transacciones (461 EUR) son las únicas muy por encima, por las primas pagadas en datos.",
+    "confianza": "Baja"
+  },
+  "catalizadores": {
+    "items": [
+      {
+        "fecha": "20-oct-2026",
+        "evento": "Resultados del 3T26",
+        "efecto": "Confirma o no la guía de tesorería (> 700 M) y el crecimiento sin tesorería del 9-11 %",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "Febrero de 2027",
+        "evento": "Resultados de 2026 y guía de 2027",
+        "efecto": "Primera guía con el BCE en torno al 2 %: mide cuánto cae la tesorería",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "1S27",
+        "evento": "Decisión de competencia de la Comisión Europea sobre Allfunds y cierre",
+        "efecto": "Unos 7,5 M de acciones nuevas y ≈ 3.700 M de deuda; 60 M de sinergias de costes",
+        "probabilidad": "Media",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2026-2027",
+        "evento": "Nueva recompra anual (desde 2025 la empresa recompra cada año)",
+        "efecto": "Apoya el BPA en ≈ 1 %",
+        "probabilidad": "Media",
+        "sentido": "+"
+      },
+      {
+        "fecha": "Octubre de 2027",
+        "evento": "Paso a la liquidación T+1 en Europa",
+        "efecto": "Inversión y riesgo operativo para Clearstream",
+        "probabilidad": "Alta",
+        "sentido": "−"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "riesgos": {
+    "items": [
+      {
+        "riesgo": "Bajada de tipos del BCE más profunda",
+        "tipo": "Mercado",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−6 % por cada 300 M menos de resultado de tesorería (estimación propia)",
+        "mitigante": "Crecimiento estructural sin tesorería del 9-11 %",
+        "senal": "Tipo de depósito del BCE por debajo del 1,5 % o saldos de efectivo en Clearstream por debajo de 15.000 M"
+      },
+      {
+        "riesgo": "Allfunds: sobreprecio o bloqueo de competencia",
+        "tipo": "Ejecución",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−3 a −5 % si destruye valor",
+        "mitigante": "60 M de sinergias de costes anunciadas",
+        "senal": "Fase II de la Comisión Europea o deterioros de SimCorp/Allfunds"
+      },
+      {
+        "riesgo": "Normalización de la volatilidad y de los volúmenes de Eurex",
+        "tipo": "Cíclico",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−12,2 % (escenario bajista)",
+        "mitigante": "Diversificación hacia software y datos",
+        "senal": "Contratos de Eurex por debajo del año anterior dos trimestres seguidos"
+      },
+      {
+        "riesgo": "Regulación europea de la post-contratación y de las cámaras",
+        "tipo": "Regulatorio",
+        "probabilidad": "Baja",
+        "impacto": "Medio",
+        "efecto_valor": "n.d.",
+        "mitigante": "EMIR 3 favorece a Eurex Clearing",
+        "senal": "Propuestas de la Comisión sobre tarifas o consolidación de depositarios"
+      },
+      {
+        "riesgo": "Ejecución en software (SimCorp en la nube)",
+        "tipo": "Operativo",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−3 % (estimación propia)",
+        "mitigante": "Cartera de clientes con costes de cambio altos",
+        "senal": "ARR de SimCorp por debajo del 10 % de crecimiento"
+      },
+      {
+        "riesgo": "Valoración: el precio ya está en máximos",
+        "tipo": "Mercado",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−4 % si vuelve a la mediana de su PER histórico (20,5 veces)",
+        "mitigante": "Calidad del negocio",
+        "senal": "PER de los próximos 12 meses por encima de 25 veces"
+      }
+    ],
+    "premortem": "Octubre de 2029: la acción ha perdido un 40 %. El BCE bajó el tipo de depósito al 1 % en 2027 y los saldos de clientes en Clearstream se redujeron: el resultado de tesorería cayó a menos de 300 M, y el beneficio dejó de crecer dos años seguidos. A la vez, la volatilidad se normalizó y Eurex negoció menos. Allfunds se cerró tras una larga revisión de competencia con concesiones, pagó la deuda con flujo que antes iba a recompras y sus márgenes siguieron bajando con la presión de las gestoras. El mercado dejó de pagar 23 veces por un BPA que ya no crecía y el PER volvió a 17-18 veces, como en 2018-2019. Las señales eran visibles: guía de tesorería a la baja en febrero de 2027, revisiones de BPA a la baja y la fase II de Bruselas.",
+    "confianza": "Media"
+  },
+  "esg": {
+    "calificaciones": [],
+    "materialidad": null,
+    "controversias": null,
+    "confianza": "Baja"
+  },
+  "preguntas": {
+    "items": [
+      {
+        "tema": "Tesorería",
+        "pregunta": "¿Qué resultado de tesorería esperan con el depósito del BCE al 2 % y con qué saldos medios?",
+        "por_que": "Es el 14 % de los ingresos y casi todo margen: mueve el BPA más que ningún otro dato."
+      },
+      {
+        "tema": "Allfunds",
+        "pregunta": "¿Qué ROIC esperan de Allfunds en el tercer año y qué concesiones aceptarían ante Bruselas?",
+        "por_que": "Es la mayor compra de su historia y emite ≈ 7,5 M de acciones."
+      },
+      {
+        "tema": "SimCorp",
+        "pregunta": "¿Cómo evoluciona el ARR de SimCorp y qué parte ya está en la nube?",
+        "por_que": "Sostiene la tesis de crecimiento estructural sin tesorería."
+      },
+      {
+        "tema": "Capital",
+        "pregunta": "¿Seguirá la recompra anual tras Allfunds?",
+        "por_que": "Afecta al BPA de 2027-2028 y a la regla de 12 meses."
+      },
+      {
+        "tema": "Balance",
+        "pregunta": "¿Cuánta caja propia libre tiene el grupo fuera de los requisitos regulatorios de Clearstream y Eurex Clearing?",
+        "por_que": "No hemos podido cuadrar la deuda neta: cambia el puente."
+      },
+      {
+        "tema": "Precios",
+        "pregunta": "¿Qué subidas de tarifas han aplicado en custodia y en índices en 2025-2026?",
+        "por_que": "Mide el poder de precios que sostiene el crecimiento sin capital nuevo."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sentimiento": {
+    "tono": "Positivo",
+    "tendencia": "Mejora",
+    "revisadas": [
+      {
+        "plataforma": "Prensa bursátil alemana con comentarios (ad-hoc-news, finanzen.net, stock3)",
+        "fecha": "2026-10",
+        "n_comentarios": 10,
+        "tono": "Positivo",
+        "resumen": "La acción marca máximos de 52 semanas (≈ 299-303 EUR) antes del 3T26; el discurso es de «crecimiento estructural» y subidas de objetivos (Deutsche Bank a 313 EUR) [23, 33]."
+      },
+      {
+        "plataforma": "stock3 (análisis técnico y comentarios de lectores)",
+        "fecha": "2026-07",
+        "n_comentarios": 5,
+        "tono": "Dividido",
+        "resumen": "Tras el 2T26 la acción cayó pese a subir la guía de tesorería: parte del mercado ve el resultado de tesorería como un techo y el crecimiento ya en precio [34]."
+      },
+      {
+        "plataforma": "Simply Wall St (narrativas de la comunidad)",
+        "fecha": "2026-08",
+        "n_comentarios": 5,
+        "tono": "Positivo",
+        "resumen": "Narrativa de crecimiento por innovación en mercados de capitales e integración; valor razonable de la comunidad por encima del precio de entonces [35]."
+      },
+      {
+        "plataforma": "MarketBeat (ADR DBOEY) y TipRanks",
+        "fecha": "2026-07",
+        "n_comentarios": 4,
+        "tono": "Neutro",
+        "resumen": "Consenso «Hold» en el ADR y en TipRanks (3 compras, 9 mantener), con objetivo medio de 267,64 EUR, por debajo del precio actual [32, 36]."
+      }
+    ],
+    "temas": [
+      {
+        "tema": "Tipos de interés y resultado de tesorería",
+        "postura": "Bajista",
+        "peso": "Alto",
+        "contraste": "Fundado: la tesorería baja de ≈ 1.050 M (2024) a ≈ 837 M (2025) y más de 700 M en 2026; pero el crecimiento sin tesorería (+9-11 %) lo compensa."
+      },
+      {
+        "tema": "Compra de Allfunds",
+        "postura": "Dividida",
+        "peso": "Medio",
+        "contraste": "Precio de ≈ 5.300 M y riesgo de competencia en Bruselas; 60 M de sinergias de costes anunciadas. No entra en nuestra proyección hasta que cierre."
+      },
+      {
+        "tema": "Valoración tras el máximo",
+        "postura": "Dividida",
+        "peso": "Medio",
+        "contraste": "El PER de cierre de 2025 era 20,5 veces; al precio de hoy, unas 25,7 veces el BPA de 2025: la acción ha subido más que el beneficio."
+      }
+    ],
+    "lectura": "El sentimiento es positivo y mejora: la acción está en máximos y los analistas suben objetivos antes del 3T26. No hay euforia propia de particulares (Deutsche Börse apenas se discute en foros), pero el precio ya supera los objetivos medios de TipRanks y Google Finance, lo que sugiere que buena parte de la mejora está descontada. El único riesgo que los comentarios repiten es el de tipos sobre la tesorería, que el informe recoge.",
+    "confianza": "Baja"
+  },
+  "fuentes": [
+    {
+      "id": 1,
+      "titulo": "Deutsche Börse Group Achieves Record Results in Financial Year 2025 (company release Q4 2025)",
+      "editor": "Deutsche Börse",
+      "tipo": "Primaria",
+      "fecha": "2026-02-11",
+      "url": "https://deutsche-boerse.com/resource/blob/4887536/a68752b1b7c85f9cf530531c0c221dc4/data/company-release-q4-2025-en.pdf"
+    },
+    {
+      "id": 2,
+      "titulo": "Q2/2026: Broad-Based Secular Growth and Operating Leverage in the Second Quarter",
+      "editor": "Deutsche Börse",
+      "tipo": "Primaria",
+      "fecha": "2026-07-22",
+      "url": "https://deutsche-boerse.com/dbg-en/media/news-stories/press-releases/Q2-2026-Broad-Based-Secular-Growth-and-Operating-Leverage-in-the-Second-Quarter-5397468"
+    },
+    {
+      "id": 3,
+      "titulo": "Deutsche Börse ends financial year 2024 with strong organic growth and announces new share buyback program",
+      "editor": "Deutsche Börse",
+      "tipo": "Primaria",
+      "fecha": "2025-02-12",
+      "url": "https://www.deutsche-boerse.com/dbg-en/media/news-stories/press-releases/Deutsche-B-rse-ends-financial-year-2024-with-strong-organic-growth-and-announces-new-share-buyback-program-4288154"
+    },
+    {
+      "id": 4,
+      "titulo": "Deutsche Börse (DB1) Q2 2026 earnings summary",
+      "editor": "Quartr",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07-22",
+      "url": "https://quartr.com/events/deutsche-b-rse-ag-db1-q2-2026_3eF3tOEL"
+    },
+    {
+      "id": 5,
+      "titulo": "ROUNDUP: Deutsche Börse steigert Ergebnis zu Jahresbeginn – Prognose bestätigt (dpa-AFX)",
+      "editor": "extraETF / dpa-AFX",
+      "tipo": "Prensa",
+      "fecha": "2026-04-28",
+      "url": "https://extraetf.com/de/news/dpa-afx/roundup-deutsche-borse-steigert-ergebnis-zu-jahresbeginn-prognose-bestatigt--1777364457-03662-1777364455678"
+    },
+    {
+      "id": 6,
+      "titulo": "Deutsche Börse Group and Allfunds Group Sign Agreement on Recommended Acquisition of Allfunds Group",
+      "editor": "Deutsche Börse",
+      "tipo": "Primaria",
+      "fecha": "2026-01-22",
+      "url": "https://www.eurexchange.com/dbcm-en/newsroom/press-releases/Deutsche-B-rse-Group-and-Allfunds-Group-Sign-Agreement-on-Recommended-Acquisition-of-Allfunds-Group-4914918"
+    },
+    {
+      "id": 7,
+      "titulo": "Deutsche Börse To Buy Allfunds In €5.3 Billion Deal",
+      "editor": "Pulse 2.0",
+      "tipo": "Prensa",
+      "fecha": "2026-01-22",
+      "url": "https://pulse2.com/deutsche-borse-to-buy-allfunds-in-e5-3-billion-deal/"
+    },
+    {
+      "id": 8,
+      "titulo": "Deutsche Börse completes 2023 with strong results and remains on growth path",
+      "editor": "Deutsche Börse",
+      "tipo": "Primaria",
+      "fecha": "2024-02-07",
+      "url": "https://deutsche-boerse.com/dbg-en/media/press-releases/Deutsche-B-rse-completes-2023-with-strong-results-and-remains-on-growth-path-3848778"
+    },
+    {
+      "id": 9,
+      "titulo": "Company release Q4 2022",
+      "editor": "Deutsche Börse",
+      "tipo": "Primaria",
+      "fecha": "2023-02-08",
+      "url": "https://www.eurexchange.com/resource/blob/3389178/51fb42b7cc9d518821a52e28786aecff/data/company-release-q4-2022_en.pdf"
+    },
+    {
+      "id": 10,
+      "titulo": "Consolidated financial statements and notes, Annual Report 2025 (extracto)",
+      "editor": "Deutsche Börse",
+      "tipo": "Primaria",
+      "fecha": "2026-03",
+      "url": "https://www.deutsche-boerse.com/resource/blob/4728238/9dc14bbacfaf2b3ed2f8bd74d38c9128/data/DBG-Consolidated-financial-statements-and-notes-AR-2025.pdf"
+    },
+    {
+      "id": 11,
+      "titulo": "Deutsche Börse AG – Balance Sheet (annual)",
+      "editor": "Fintel (Capital IQ)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-03",
+      "url": "https://fintel.io/bs/de/db1?t=annual"
+    },
+    {
+      "id": 12,
+      "titulo": "Deutsche Börse Balance Sheet Health",
+      "editor": "Simply Wall St",
+      "tipo": "Datos de mercado",
+      "fecha": "2025-12",
+      "url": "https://simplywall.st/stocks/de/diversified-financials/etr-db1/deutsche-borse-shares/health"
+    },
+    {
+      "id": 13,
+      "titulo": "Deutsche Börse AG: datos financieros y estimaciones",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07",
+      "url": "https://uk.marketscreener.com/quote/stock/DEUTSCHE-BORSE-AG-449617/finances/"
+    },
+    {
+      "id": 14,
+      "titulo": "Half-yearly financial report 2026 (Leading the transformation)",
+      "editor": "Deutsche Börse",
+      "tipo": "Primaria",
+      "fecha": "2026-07-22",
+      "url": "https://www.deutsche-boerse.com/resource/blob/5302530/683d446f9d49b88f194990b24a79aee8/data/gdb-quarterly-statement-q2-2026_en.pdf"
+    },
+    {
+      "id": 15,
+      "titulo": "Deutsche Börse Group Achieves Record Results in Financial Year 2025",
+      "editor": "Deutsche Börse",
+      "tipo": "Primaria",
+      "fecha": "2026-02-11",
+      "url": "https://www.deutsche-boerse.com/dbg-en/media/news-stories/press-releases/Deutsche-B-rse-Group-Achieves-Record-Results-in-Financial-Year-2025-4948690"
+    },
+    {
+      "id": 16,
+      "titulo": "Annual Report 2025",
+      "editor": "Deutsche Börse",
+      "tipo": "Primaria",
+      "fecha": "2026-03",
+      "url": "https://www.deutsche-boerse.com/dbg-en/investor-relations/financial-reports/annual-report-2025"
+    },
+    {
+      "id": 17,
+      "titulo": "Deutsche Börse registers 24% Y/Y increase in revenues in 2022",
+      "editor": "FX News Group",
+      "tipo": "Prensa",
+      "fecha": "2023-02-08",
+      "url": "https://fxnewsgroup.com/forex-news/exchanges/deutsche-borse-registers-24-y-y-increase-in-revenues-in-2022"
+    },
+    {
+      "id": 18,
+      "titulo": "ROUNDUP: Deutsche Börse bietet Milliarden für Fondsplattform Allfunds (dpa-AFX)",
+      "editor": "extraETF / dpa-AFX",
+      "tipo": "Prensa",
+      "fecha": "2025-11-27",
+      "url": "https://extraetf.com/de/news/dpa-afx/roundup-deutsche-borse-bietet-milliarden-fur-fondsplattform-allfunds--1764267044-05708-1764267041850"
+    },
+    {
+      "id": 19,
+      "titulo": "Intercontinental Exchange – informe del 8-oct-2026 (cuentas 2025 y comparables)",
+      "editor": "Informe propio (repo)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-08",
+      "url": "informes/ice-2026-10-08/datos-v2.json"
+    },
+    {
+      "id": 20,
+      "titulo": "Stephan Leithner",
+      "editor": "Wikipedia",
+      "tipo": "Prensa",
+      "fecha": "2026",
+      "url": "https://en.wikipedia.org/wiki/Stephan_Leithner"
+    },
+    {
+      "id": 21,
+      "titulo": "Deutsche Börse Q2 Earnings Call Highlights",
+      "editor": "Nasdaq / MarketBeat",
+      "tipo": "Prensa",
+      "fecha": "2026-07-23",
+      "url": "https://www.nasdaq.com/articles/deutsche-borse-q2-earnings-call-highlights"
+    },
+    {
+      "id": 22,
+      "titulo": "Ordentliche Hauptversammlung 2026: Abstimmungsergebnisse",
+      "editor": "Deutsche Börse",
+      "tipo": "Primaria",
+      "fecha": "2026-05-13",
+      "url": "https://www.deutsche-boerse.com/resource/blob/4718336/423340ff3132f8571ebe0c3cb98e6830/data/agm-2026-results-de.pdf"
+    },
+    {
+      "id": 23,
+      "titulo": "Deutsche Börse-Aktie: cotización en Lang & Schwarz y cierre de Xetra del 13-oct-2026",
+      "editor": "boerse.de / ad-hoc-news / finanzen.net",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-14",
+      "url": "https://www.finanzen.net/nachricht/aktien/deutsche_boerse-aktie-chartanalyse-13-10-2026-8023350"
+    },
+    {
+      "id": 24,
+      "titulo": "Deutsche Börse AG: valoración y estimaciones",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07",
+      "url": "https://uk.marketscreener.com/quote/stock/DEUTSCHE-BORSE-AG-449617/valuation-dividend/"
+    },
+    {
+      "id": 25,
+      "titulo": "Deutsche Börse (DB1:ETR): recomendaciones de analistas",
+      "editor": "Google Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www.google.com/finance/quote/DB1:ETR"
+    },
+    {
+      "id": 26,
+      "titulo": "Deutsche-Börse-Aktie liegt 1,45 Prozent unter Jahreshoch vor Quartalszahlen",
+      "editor": "ad-hoc-news",
+      "tipo": "Prensa",
+      "fecha": "2026-10",
+      "url": "https://www.ad-hoc-news.de/boerse/news/corporate-news/deutsche-boerse-aktie-liegt-1-45-prozent-unter-jahreshoch-vor-quartalszahlen/70322112"
+    },
+    {
+      "id": 27,
+      "titulo": "Key figures & dividend (cierres de 2021-2023)",
+      "editor": "Deutsche Börse",
+      "tipo": "Primaria",
+      "fecha": "2026",
+      "url": "https://deutsche-boerse.com/dbg-en/investor-relations/share-and-bonds/key-figures-and-dividend"
+    },
+    {
+      "id": 28,
+      "titulo": "Deutsche Börse: histórico de cotizaciones de cierre anual",
+      "editor": "Börsengeflüster",
+      "tipo": "Datos de mercado",
+      "fecha": "2026",
+      "url": "https://app.boersengefluester.de/en/c/profile/p/DE0005810055/histories"
+    },
+    {
+      "id": 29,
+      "titulo": "Germany 10Y YTM (Bund)",
+      "editor": "Cbonds",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-06-15",
+      "url": "https://cbonds.com.tr/indexes/208/"
+    },
+    {
+      "id": 30,
+      "titulo": "Intercontinental Exchange – informe del 8-oct-2026, notas de comparables y transacciones (MarketScreener, Stock Analysis, EDGAR)",
+      "editor": "Informe propio (repo)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-08",
+      "url": "informes/ice-2026-10-08/notas/D.json"
+    },
+    {
+      "id": 31,
+      "titulo": "Deutsche Börse: Kursziele der Analysten (Deutsche Bank 313 EUR, Goldman Sachs 295 EUR, Jefferies 330 EUR)",
+      "editor": "finanzen.net",
+      "tipo": "Analistas",
+      "fecha": "2026-10-09",
+      "url": "https://www.finanzen.net/analyse/deutsche_börse_buy-deutsche_bank_ag_1093946"
+    },
+    {
+      "id": 32,
+      "titulo": "Deutsche Börse (DE:DB1) forecast",
+      "editor": "TipRanks",
+      "tipo": "Analistas",
+      "fecha": "2026-10",
+      "url": "https://www.tipranks.com/stocks/de:db1/forecast"
+    },
+    {
+      "id": 33,
+      "titulo": "Deutsche-Börse-Aktie liegt 0,78 Prozent unter Jahreshoch",
+      "editor": "ad-hoc-news",
+      "tipo": "Foros y redes",
+      "fecha": "2026-10",
+      "url": "https://www.ad-hoc-news.de/boerse/news/corporate-news/deutsche-boerse-aktie-liegt-0-78-prozent-unter-jahreshoch/70263794"
+    },
+    {
+      "id": 34,
+      "titulo": "Deutsche Börse nach guten Zahlen schwach: Tradingchance mit (Turbo)-Calls",
+      "editor": "stock3",
+      "tipo": "Foros y redes",
+      "fecha": "2026-07",
+      "url": "https://stock3.com/news/deutsche-boerse-nach-guten-zahlen-schwach-tradingchance-mit-turbo-calls-17201255"
+    },
+    {
+      "id": 35,
+      "titulo": "Capital markets innovation and critical integration propel future growth potential",
+      "editor": "Simply Wall St (comunidad)",
+      "tipo": "Foros y redes",
+      "fecha": "2026-08",
+      "url": "https://simplywall.st/narratives/capital-markets-innovation-and-critical-integration-propel-future-growth-potential"
+    },
+    {
+      "id": 36,
+      "titulo": "Deutsche Boerse AG (OTCMKTS:DBOEY) short interest up in July",
+      "editor": "MarketBeat",
+      "tipo": "Foros y redes",
+      "fecha": "2026-07-24",
+      "url": "https://www.marketbeat.com/instant-alerts/deutsche-boerse-ag-otcmktsdboey-short-interest-up-78519-in-july-2026-07-24/"
+    },
+    {
+      "id": 37,
+      "titulo": "Implied ERP by month (ERPbymonth.xlsx)",
+      "editor": "Aswath Damodaran, NYU Stern",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx"
+    }
+  ],
+  "calc": {
+    "version": 4,
+    "etiquetas": {
+      "margen_bruto": "M. bruto",
+      "margen_bruto_largo": "Margen bruto",
+      "dias_base": "sobre el coste de ventas"
+    },
+    "recomendacion": {
+      "recomendacion": "Mantener",
+      "regla": "Mantener",
+      "regla_absoluta": "Mantener",
+      "regla_relativa": "Comprar",
+      "coincide": true,
+      "conviccion": "Baja",
+      "conviccion_sugerida": "Baja",
+      "conviccion_razones": [
+        "las reglas discrepan (absoluta Mantener, relativa Comprar)"
+      ],
+      "reglas_discrepan": true,
+      "relativo": {
+        "prima_implicita_pct": 4.2,
+        "wacc": 6.09,
+        "ke": 6.52,
+        "dcf": 430.73,
+        "dcf_min": 376.95,
+        "dcf_max": 500.9,
+        "valor_objetivo": 393.7,
+        "alcista": 476.88,
+        "bajista": 332.75,
+        "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+        "fecha": "2026-10",
+        "potencial_pct": 31.7,
+        "rentabilidad_total_pct": 33.1,
+        "asimetria": null
+      },
+      "objetivo_mercado_txt": " · con la prima implícita del mercado: 393,70 (+31,7 %)",
+      "objetivo_mercado_corto": " · mercado 393,70",
+      "rentabilidad_mercado_corto": " · mercado +33,1 %",
+      "potencial_pct": 9.5,
+      "dividendo_pct": 1.4,
+      "rentabilidad_total_pct": 10.9,
+      "alcista_pct": 24,
+      "bajista_pct": -12.2,
+      "asimetria": 1.97,
+      "comprar_por_debajo": 262.98,
+      "vender_por_encima": 336.03,
+      "tabla": [
+        {
+          "concepto": "Objetivo a 12 meses (nuestro PER × nuestro BPA 2028e, ponderado 25/50/25)",
+          "valor": "298,23 EUR"
+        },
+        {
+          "concepto": "Bajista / base / alcista a 12 meses",
+          "valor": "15,6x × 13,80 = 215,28 · 19,5x × 15,25 = 297,38 · 23,9x × 16,02 = 382,88"
+        },
+        {
+          "concepto": "Rentabilidad a 12 meses: ponderada / del base (con dividendo)",
+          "valor": "1,2 % / 0,9 %"
+        },
+        {
+          "concepto": "Regla de múltiplos aplicada",
+          "valor": "v3: base a mitad de camino hacia la mediana (historia adelantada); bajista mín. 5 a o base × 0,80; alcista techo base × 1,35"
+        },
+        {
+          "concepto": "Objetivo medio de los analistas (solo contraste)",
+          "valor": "286,00 (nuestro base +4,0 %)"
+        },
+        {
+          "concepto": "Valor intrínseco (síntesis ponderada, largo plazo)",
+          "valor": "327,36 EUR"
+        },
+        {
+          "concepto": "Potencial sobre el precio actual",
+          "valor": "9,5 %"
+        },
+        {
+          "concepto": "Rentabilidad por dividendo ordinario",
+          "valor": "1,4 %"
+        },
+        {
+          "concepto": "Rentabilidad total esperada a 12 meses",
+          "valor": "10,9 %"
+        },
+        {
+          "concepto": "Escenario alcista / bajista",
+          "valor": "24,0 % / -12,2 %"
+        },
+        {
+          "concepto": "Asimetría (ganancia alcista / pérdida bajista)",
+          "valor": "1,97x"
+        },
+        {
+          "concepto": "Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado",
+          "valor": "7,6 % frente a 7,1 % y 6,1 %"
+        },
+        {
+          "concepto": "Valor objetivo con la prima implícita del mercado (4,2 %, WACC 6,1 %)",
+          "valor": "393,70 EUR"
+        },
+        {
+          "concepto": "Rentabilidad total esperada con la prima del mercado",
+          "valor": "33,1 %"
+        },
+        {
+          "concepto": "Asimetría con la prima del mercado",
+          "valor": "n.d."
+        },
+        {
+          "concepto": "Regla absoluta (frente a su coste de capital)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Regla relativa (frente a lo que pide el mercado)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "¿La calidad de la empresa sostiene el crecimiento previsto?",
+          "valor": "Sí (5,5 % anual proyectado; sin inversión neta)"
+        },
+        {
+          "concepto": "Señal del valor intrínseco (regla del DCF, referencia)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "Recomendación según la regla a 12 meses (Comprar: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender: ponderada ≤ -10 %)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Convicción según los criterios (las reglas discrepan (absoluta Mantener, relativa Comprar))",
+          "valor": "Baja"
+        }
+      ],
+      "niveles": [
+        {
+          "accion": "Comprar",
+          "condicion": "Por debajo de 262,98 (ponderada a 12 meses ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco)"
+        },
+        {
+          "accion": "Mantener",
+          "condicion": "Entre 262,98 y 336,03"
+        },
+        {
+          "accion": "Vender o reducir",
+          "condicion": "Por encima de 336,03 (ponderada a 12 meses ≤ -10 %)"
+        }
+      ],
+      "precio_txt": "",
+      "valor_objetivo_txt": "",
+      "regla_valor_intrinseco": "Comprar",
+      "objetivo_12m": {
+        "completo": true,
+        "filas": [
+          {
+            "escenario": "Bajista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 13.8,
+            "multiplo": 15.6,
+            "multiplo_informe": null,
+            "origen": "base × 0.8",
+            "precio": 215.28,
+            "rentabilidad_pct": -26.6,
+            "justificacion": "Ventas de 6.850 M (crecimiento 2,5 puntos menor en 2027e-2028e) y margen EBITDA del 59,3 %: EBIT de ≈ 3.546 M, menos 150 M de intereses, 26 % de impuestos y 20 M de minoritarios, entre 180,6 M de acciones."
+          },
+          {
+            "escenario": "Base",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 15.25,
+            "multiplo": 19.5,
+            "multiplo_informe": null,
+            "origen": "PER actual (21.4x) a mitad de camino hacia abajo, hacia la mediana de 5 años (17.8x)",
+            "precio": 297.38,
+            "rentabilidad_pct": 0.9,
+            "justificacion": "Ventas de 7.183 M y margen del 61,8 %: EBIT de 3.900 M, menos 150 M de intereses y 26 % de impuestos (2.775 M), menos 20 M de minoritarios, entre 180,6 M de acciones. Sin Allfunds ni recompras no anunciadas. La fórmula da 1.995 M en 2025 (cuadra con el publicado)."
+          },
+          {
+            "escenario": "Alcista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 16.02,
+            "multiplo": 23.9,
+            "multiplo_informe": null,
+            "origen": "mediana de los comparables",
+            "precio": 382.88,
+            "rentabilidad_pct": 29.5,
+            "justificacion": "Ventas de ≈ 7.390 M (1,5 puntos más de crecimiento) y margen del 62,8 %: EBIT de ≈ 4.086 M; mismos intereses, impuestos y acciones."
+          }
+        ],
+        "regla": {
+          "version": "v3",
+          "bajista": 15.6,
+          "base": 19.5,
+          "alcista": 23.9,
+          "bajista_origen": "base × 0.8",
+          "base_origen": "PER actual (21.4x) a mitad de camino hacia abajo, hacia la mediana de 5 años (17.8x)",
+          "alcista_origen": "mediana de los comparables"
+        },
+        "version": "v3",
+        "probabilidades": [
+          25,
+          50,
+          25
+        ],
+        "objetivo_ponderado": 298.23,
+        "objetivo_simple": 298.51,
+        "objetivo_base": 297.38,
+        "rentabilidad_ponderada_pct": 1.2,
+        "rentabilidad_simple_pct": 1.3,
+        "rentabilidad_base_pct": 0.9,
+        "asimetria": 1,
+        "senal": "Mantener",
+        "senal_sin_confirmar": null,
+        "confianza_baja": true,
+        "comprar_por_debajo": 262.98,
+        "vender_por_encima": 336.03,
+        "consenso_objetivo": 286,
+        "diferencia_consenso_pct": 4
+      },
+      "rentabilidad_12m_pct": 1.2,
+      "rentabilidad_12m_txt": "+1,2 % (base +0,9 %)",
+      "objetivo_12m_txt": "298,23 EUR"
+    },
+    "mercado": {
+      "precio": 298.9,
+      "acciones": 180.6,
+      "capitalizacion": 53981,
+      "deuda_neta": 3750,
+      "deuda_neta_ajustada": 5350,
+      "asimilables_deuda": 1600,
+      "ajustes_puente": 1600,
+      "valor_empresa": 59331,
+      "fecha_puente": "2025-12-31"
+    },
+    "clave": {
+      "capitalizacion": 53981,
+      "valor_empresa": 59331,
+      "deuda_neta": 3750,
+      "ev_ventas_ltm": 9.47,
+      "ev_ebitda_ltm": 16.1,
+      "ev_ebitda_ntm": 14.6,
+      "ev_ebit_ltm": 19.7,
+      "per_ltm": 25.7,
+      "per_ntm": 23.1,
+      "fcf_yield_pct": 3.9,
+      "dividendo_pct": 1.4,
+      "dn_ebitda": 1,
+      "roic_pct": 13,
+      "margen_ebitda_pct": 58.9,
+      "deuda_neta_ajustada": 5350,
+      "dn_ebitda_ajustada": 1.4,
+      "crecimiento_tcac_pct": 14.5,
+      "ingresos_ntm": 6698,
+      "ebitda_ntm": 4059,
+      "bpa_ntm": 12.91,
+      "ebitda_ltm": 3693,
+      "ingresos_ltm": 6267,
+      "ev_rab": null
+    },
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 3509.5,
+        "crecimiento_pct": null,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 2043.1,
+        "margen_ebitda_pct": 58.2,
+        "ebit": null,
+        "margen_ebit_pct": null,
+        "beneficio_neto": 1209.7,
+        "margen_neto_pct": 34.5,
+        "bpa": 6.59,
+        "dpa": 3.2,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 49
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 4337.6,
+        "crecimiento_pct": 23.6,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 2525.6,
+        "margen_ebitda_pct": 58.2,
+        "ebit": null,
+        "margen_ebit_pct": null,
+        "beneficio_neto": 1494.4,
+        "margen_neto_pct": 34.5,
+        "bpa": 8.14,
+        "dpa": 3.6,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 44
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 5076.6,
+        "crecimiento_pct": 17,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 2944.3,
+        "margen_ebitda_pct": 58,
+        "ebit": null,
+        "margen_ebit_pct": null,
+        "beneficio_neto": 1724,
+        "margen_neto_pct": 34,
+        "bpa": 9.35,
+        "dpa": 3.8,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 41
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 5829,
+        "crecimiento_pct": 14.8,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 3395.6,
+        "margen_ebitda_pct": 58.3,
+        "ebit": 2900,
+        "margen_ebit_pct": 49.8,
+        "beneficio_neto": 1949,
+        "margen_neto_pct": 33.4,
+        "bpa": 10.6,
+        "dpa": 4,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 25.5,
+        "payout_pct": 38
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 6026,
+        "crecimiento_pct": 3.4,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 3512,
+        "margen_ebitda_pct": 58.3,
+        "ebit": 3010,
+        "margen_ebit_pct": 50,
+        "beneficio_neto": 1995,
+        "margen_neto_pct": 33.1,
+        "bpa": 10.9,
+        "dpa": 4.2,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 26.5,
+        "payout_pct": 39
+      }
+    ],
+    "tcac": {
+      "periodo": "2021-2025",
+      "ingresos_pct": 14.5,
+      "ebitda_pct": 14.5,
+      "bpa_pct": 13.4
+    },
+    "cuenta_y_prevision": [
+      {
+        "periodo": "2021",
+        "ingresos": 3509.5,
+        "ebitda": 2043.1
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 4337.6,
+        "ebitda": 2525.6
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 5076.6,
+        "ebitda": 2944.3
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 5829,
+        "ebitda": 3395.6
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 6026,
+        "ebitda": 3512
+      },
+      {
+        "periodo": "2026e",
+        "ingresos": 6448,
+        "ebitda": 3849
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 6751,
+        "ebitda": 4105
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 7183,
+        "ebitda": 4439
+      },
+      {
+        "periodo": "2029e",
+        "ingresos": 7614,
+        "ebitda": 4705
+      },
+      {
+        "periodo": "2030e",
+        "ingresos": 8033,
+        "ebitda": 4964
+      },
+      {
+        "periodo": "2031e",
+        "ingresos": 8434,
+        "ebitda": 5187
+      },
+      {
+        "periodo": "2032e",
+        "ingresos": 8772,
+        "ebitda": 5395
+      }
+    ],
+    "segmentos_ultimo": [],
+    "segmentos_tabla": {
+      "periodos": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "filas": []
+    },
+    "segmentos_periodo": null,
+    "balance": [
+      {
+        "periodo": "2024",
+        "activo_total": null,
+        "intangibles": 0,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": null,
+        "deuda_financiera": 7200,
+        "arrendamientos": null,
+        "deuda_neta": 7200,
+        "patrimonio": 11300,
+        "minoritarios": null,
+        "dn_ebitda": 2.12,
+        "dn_patrimonio_pct": 64,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 18.7,
+        "capital_invertido": 18500,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2025",
+        "activo_total": null,
+        "intangibles": 0,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 3450,
+        "deuda_financiera": 7200,
+        "arrendamientos": null,
+        "deuda_neta": 3750,
+        "patrimonio": 11829,
+        "minoritarios": null,
+        "dn_ebitda": 1.07,
+        "dn_patrimonio_pct": 32,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 19.7,
+        "capital_invertido": 15579,
+        "liquidez_corriente": null
+      }
+    ],
+    "perimetro_nota": "Cambio de perímetro (2023: SimCorp, consolidada desde octubre de 2023 (unos 3.900 M EUR): entra el último trimestre en la cuenta y entera en el balance.). Los ratios de balance de ese año (días, circulante, deuda neta / EBITDA, ROIC) y los indicadores de calidad contable no son comparables con los anteriores.",
+    "flujos": [
+      {
+        "periodo": "2025",
+        "flujo_operativo": 2452,
+        "capex": 355,
+        "pagos_arrendamientos": null,
+        "fcf": 2097,
+        "beneficio_neto": 1995,
+        "conversion_pct": 105,
+        "capex_ventas_pct": 5.9,
+        "capex_amortizacion": 0.71,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 736,
+        "recompras": 500,
+        "emision_acciones": 0,
+        "retorno_accionista": 1236,
+        "payout_caja_pct": 62,
+        "acciones": 183,
+        "fcf_por_accion": 11.46
+      }
+    ],
+    "flujos_acumulado": {
+      "periodo": "2025-2025",
+      "fcf": 2097,
+      "adquisiciones": 0,
+      "dividendos": 736,
+      "recompras": 500,
+      "conversion_pct": 105
+    },
+    "rentabilidad": [
+      {
+        "periodo": "2021",
+        "nopat": null,
+        "capital_invertido": null,
+        "roic_pct": null,
+        "roe_pct": null,
+        "roa_pct": null,
+        "margen_neto_pct": 34.5,
+        "rotacion": null,
+        "apalancamiento": null
+      },
+      {
+        "periodo": "2022",
+        "nopat": null,
+        "capital_invertido": null,
+        "roic_pct": null,
+        "roe_pct": null,
+        "roa_pct": null,
+        "margen_neto_pct": 34.5,
+        "rotacion": null,
+        "apalancamiento": null
+      },
+      {
+        "periodo": "2023",
+        "nopat": null,
+        "capital_invertido": null,
+        "roic_pct": null,
+        "roe_pct": null,
+        "roa_pct": null,
+        "margen_neto_pct": 34,
+        "rotacion": null,
+        "apalancamiento": null
+      },
+      {
+        "periodo": "2024",
+        "nopat": 2162,
+        "capital_invertido": 18500,
+        "roic_pct": 11.7,
+        "roe_pct": 17.2,
+        "roa_pct": null,
+        "margen_neto_pct": 33.4,
+        "rotacion": null,
+        "apalancamiento": null
+      },
+      {
+        "periodo": "2025",
+        "nopat": 2212,
+        "capital_invertido": 17040,
+        "roic_pct": 13,
+        "roe_pct": 17.3,
+        "roa_pct": null,
+        "margen_neto_pct": 33.1,
+        "rotacion": null,
+        "apalancamiento": 0
+      }
+    ],
+    "roic_incremental_pct": null,
+    "roic_frente_wacc": [
+      {
+        "periodo": "2021",
+        "roic_pct": null,
+        "roe_pct": null,
+        "wacc_pct": 7.1
+      },
+      {
+        "periodo": "2022",
+        "roic_pct": null,
+        "roe_pct": null,
+        "wacc_pct": 7.1
+      },
+      {
+        "periodo": "2023",
+        "roic_pct": null,
+        "roe_pct": null,
+        "wacc_pct": 7.1
+      },
+      {
+        "periodo": "2024",
+        "roic_pct": 11.7,
+        "roe_pct": 17.2,
+        "wacc_pct": 7.1
+      },
+      {
+        "periodo": "2025",
+        "roic_pct": 13,
+        "roe_pct": 17.3,
+        "wacc_pct": 7.1
+      }
+    ],
+    "calidad": {
+      "periodo": "2025",
+      "piotroski_f": 4,
+      "piotroski_detalle": [
+        {
+          "criterio": "Beneficio neto positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "ROA mejora",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "Flujo operativo > beneficio neto",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Baja el endeudamiento (deuda / activo)",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "Mejora la liquidez corriente",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "No emite acciones",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora el margen bruto",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "Mejora la rotación del activo",
+          "resultado": "n.d."
+        }
+      ],
+      "tabla": [
+        {
+          "indicador": "Piotroski F",
+          "valor": "4 / 4",
+          "lectura": "Intermedio (4-6)."
+        },
+        {
+          "indicador": "Flujo operativo / beneficio neto (acumulado)",
+          "valor": "0,29x",
+          "lectura": "El beneficio se cobra solo en parte: mirar circulante y ajustes."
+        }
+      ]
+    },
+    "dcf": {
+      "proyeccion": [
+        {
+          "periodo": "2026e",
+          "ingresos": 6448,
+          "crecimiento_pct": 7,
+          "ebitda": 3849,
+          "margen_ebitda_pct": 59.7,
+          "amortizacion": 516,
+          "ebit": 3334,
+          "impuestos": 867,
+          "capex": 387,
+          "variacion_circulante": 0,
+          "fcff": 2596,
+          "fraccion": 0.21,
+          "factor": 0.993,
+          "vp": 550
+        },
+        {
+          "periodo": "2027e",
+          "ingresos": 6751,
+          "crecimiento_pct": 4.7,
+          "ebitda": 4105,
+          "margen_ebitda_pct": 60.8,
+          "amortizacion": 527,
+          "ebit": 3578,
+          "impuestos": 930,
+          "capex": 405,
+          "variacion_circulante": 0,
+          "fcff": 2769,
+          "fraccion": 1,
+          "factor": 0.952,
+          "vp": 2635
+        },
+        {
+          "periodo": "2028e",
+          "ingresos": 7183,
+          "crecimiento_pct": 6.4,
+          "ebitda": 4439,
+          "margen_ebitda_pct": 61.8,
+          "amortizacion": 539,
+          "ebit": 3900,
+          "impuestos": 1014,
+          "capex": 431,
+          "variacion_circulante": 0,
+          "fcff": 2994,
+          "fraccion": 1,
+          "factor": 0.889,
+          "vp": 2662
+        },
+        {
+          "periodo": "2029e",
+          "ingresos": 7614,
+          "crecimiento_pct": 6,
+          "ebitda": 4705,
+          "margen_ebitda_pct": 61.8,
+          "amortizacion": 548,
+          "ebit": 4157,
+          "impuestos": 1081,
+          "capex": 472,
+          "variacion_circulante": 0,
+          "fcff": 3152,
+          "fraccion": 1,
+          "factor": 0.83,
+          "vp": 2616
+        },
+        {
+          "periodo": "2030e",
+          "ingresos": 8033,
+          "crecimiento_pct": 5.5,
+          "ebitda": 4964,
+          "margen_ebitda_pct": 61.8,
+          "amortizacion": 562,
+          "ebit": 4402,
+          "impuestos": 1144,
+          "capex": 506,
+          "variacion_circulante": 0,
+          "fcff": 3314,
+          "fraccion": 1,
+          "factor": 0.776,
+          "vp": 2568
+        },
+        {
+          "periodo": "2031e",
+          "ingresos": 8434,
+          "crecimiento_pct": 5,
+          "ebitda": 5187,
+          "margen_ebitda_pct": 61.5,
+          "amortizacion": 574,
+          "ebit": 4614,
+          "impuestos": 1200,
+          "capex": 540,
+          "variacion_circulante": 0,
+          "fcff": 3448,
+          "fraccion": 1,
+          "factor": 0.724,
+          "vp": 2495
+        },
+        {
+          "periodo": "2032e",
+          "ingresos": 8772,
+          "crecimiento_pct": 4,
+          "ebitda": 5395,
+          "margen_ebitda_pct": 61.5,
+          "amortizacion": 570,
+          "ebit": 4824,
+          "impuestos": 1254,
+          "capex": 570,
+          "variacion_circulante": 0,
+          "fcff": 3570,
+          "fraccion": 1,
+          "factor": 0.676,
+          "vp": 2414
+        }
+      ],
+      "etapa2": null,
+      "suma_vp": 15942,
+      "valor_terminal": 76334,
+      "vp_terminal": 49885,
+      "valor_empresa": 65827,
+      "peso_terminal_pct": 76,
+      "valor_acciones": 60477,
+      "valor_accion": 334.87,
+      "vt_gordon": 76334,
+      "vt_multiplo": 91708,
+      "multiplo_implicito": 14.2,
+      "g_implicito_pct": 3.07,
+      "metodo_terminal": "gordon",
+      "terminal_tabla": [
+        {
+          "concepto": "Método principal",
+          "valor": "Crecimiento a perpetuidad"
+        },
+        {
+          "concepto": "Crecimiento a perpetuidad",
+          "valor": "2,3 %"
+        },
+        {
+          "concepto": "Múltiplo EV/EBITDA de salida",
+          "valor": "17,0x"
+        },
+        {
+          "concepto": "Valor terminal (Gordon)",
+          "valor": "76.334"
+        },
+        {
+          "concepto": "Valor terminal (múltiplo)",
+          "valor": "91.708"
+        },
+        {
+          "concepto": "Múltiplo de salida implícito en Gordon",
+          "valor": "14,2x"
+        },
+        {
+          "concepto": "Crecimiento implícito en el múltiplo",
+          "valor": "3,07 %"
+        },
+        {
+          "concepto": "Peso del valor terminal en el valor empresa",
+          "valor": "76 %"
+        }
+      ],
+      "puente": [
+        {
+          "concepto": "Valor actual de los flujos proyectados",
+          "valor": "15.942"
+        },
+        {
+          "concepto": "Valor actual del valor terminal",
+          "valor": "49.885"
+        },
+        {
+          "concepto": "Valor empresa",
+          "valor": "65.827"
+        },
+        {
+          "concepto": "− Deuda financiera neta (con arrendamientos)",
+          "valor": "-3.750"
+        },
+        {
+          "concepto": "− Minoritarios, pensiones y otros; + asociadas",
+          "valor": "-1.600"
+        },
+        {
+          "concepto": "Valor de los fondos propios",
+          "valor": "60.477"
+        },
+        {
+          "concepto": "Acciones diluidas (millones)",
+          "valor": "180,6"
+        },
+        {
+          "concepto": "Valor por acción",
+          "valor": "334,87"
+        }
+      ],
+      "composicion": [
+        {
+          "parte": "Flujos proyectados",
+          "valor": 15942
+        },
+        {
+          "parte": "Valor terminal",
+          "valor": 49885
+        }
+      ],
+      "wacc": 7.08,
+      "ke": 7.63,
+      "kd_despues": 2.22,
+      "wacc_tabla": [
+        {
+          "concepto": "Tasa libre de riesgo",
+          "valor": "2,95 %"
+        },
+        {
+          "concepto": "Beta",
+          "valor": "0,85"
+        },
+        {
+          "concepto": "Prima de riesgo de mercado",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Prima adicional (país, tamaño, específica)",
+          "valor": "0,00 %"
+        },
+        {
+          "concepto": "Coste de los fondos propios",
+          "valor": "7,63 %"
+        },
+        {
+          "concepto": "Coste de la deuda antes de impuestos",
+          "valor": "3,00 %"
+        },
+        {
+          "concepto": "Tipo impositivo",
+          "valor": "26,00 %"
+        },
+        {
+          "concepto": "Coste de la deuda después de impuestos",
+          "valor": "2,22 %"
+        },
+        {
+          "concepto": "Peso de la deuda (D / (D + E))",
+          "valor": "10,00 %"
+        },
+        {
+          "concepto": "WACC",
+          "valor": "7,08 %"
+        },
+        {
+          "concepto": "Prima de riesgo implícita del mercado (regla relativa)",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "WACC con la prima implícita del mercado",
+          "valor": "6,09 %"
+        }
+      ],
+      "potencial_pct": 12,
+      "sensibilidad": {
+        "eje_columnas": "Crecimiento a perpetuidad",
+        "columnas": [
+          "1,3 %",
+          "1,8 %",
+          "2,3 %",
+          "2,8 %",
+          "3,3 %"
+        ],
+        "filas": [
+          {
+            "wacc": "6,1 %",
+            "v0": 351.17,
+            "v1": 386.6,
+            "v2": 431.4,
+            "v3": 489.83,
+            "v4": 569.26
+          },
+          {
+            "wacc": "6,6 %",
+            "v0": 314.87,
+            "v1": 342.9,
+            "v2": 377.48,
+            "v3": 421.19,
+            "v4": 478.21
+          },
+          {
+            "wacc": "7,1 %",
+            "v0": 284.88,
+            "v1": 307.51,
+            "v2": 334.87,
+            "v3": 368.61,
+            "v4": 411.26
+          },
+          {
+            "wacc": "7,6 %",
+            "v0": 259.7,
+            "v1": 278.27,
+            "v2": 300.35,
+            "v3": 327.05,
+            "v4": 359.98
+          },
+          {
+            "wacc": "8,1 %",
+            "v0": 238.25,
+            "v1": 253.7,
+            "v2": 271.83,
+            "v3": 293.39,
+            "v4": 319.45
+          }
+        ]
+      },
+      "sensibilidad2": {
+        "columnas": [
+          "-2 pp",
+          "-1 pp",
+          "0 pp",
+          "+1 pp",
+          "+2 pp"
+        ],
+        "filas": [
+          {
+            "margen": "-2 pp",
+            "v0": 287.61,
+            "v1": 304.3,
+            "v2": 321.76,
+            "v3": 340.02,
+            "v4": 359.12
+          },
+          {
+            "margen": "-1 pp",
+            "v0": 293.52,
+            "v1": 310.52,
+            "v2": 328.31,
+            "v3": 346.92,
+            "v4": 366.38
+          },
+          {
+            "margen": "0 pp",
+            "v0": 299.43,
+            "v1": 316.75,
+            "v2": 334.87,
+            "v3": 353.82,
+            "v4": 373.64
+          },
+          {
+            "margen": "+1 pp",
+            "v0": 305.35,
+            "v1": 322.97,
+            "v2": 341.42,
+            "v3": 360.72,
+            "v4": 380.89
+          },
+          {
+            "margen": "+2 pp",
+            "v0": 311.26,
+            "v1": 329.2,
+            "v2": 347.97,
+            "v3": 367.61,
+            "v4": 388.15
+          }
+        ]
+      },
+      "rango_min": 278.27,
+      "rango_max": 421.19,
+      "inverso": {
+        "crecimiento_implicito_pct": 3.2,
+        "crecimiento_base_pct": 5.3,
+        "periodo": "2027e-2032e",
+        "margen_implicito_pct": 56,
+        "margen_implicito_texto": null,
+        "margen_base_pct": 61.5,
+        "rentabilidad_implicita_pct": 7.6
+      },
+      "sostenibilidad": {
+        "veredicto": "Sí",
+        "crecimiento_proyectado_pct": 5.5,
+        "tasa_reinversion_pct": -2,
+        "crecimiento_financiable_pct": null,
+        "roic_pct": 13,
+        "roic_incremental_historico_pct": null,
+        "roic_implicito_pct": null,
+        "cuota_actual_pct": null,
+        "cuota_final_pct": null,
+        "puente": [
+          {
+            "periodo": "2026e",
+            "volumen_pct": 6,
+            "precio_pct": 2,
+            "otros_pct": -1,
+            "comentario": "Volumen: negociación y custodia al alza (+9 % sin tesorería en el 1S26) [2]; precio: tarifas e índices; otros: caída de la tesorería.",
+            "suma_pct": 7,
+            "crecimiento_pct": 7
+          },
+          {
+            "periodo": "2027e",
+            "volumen_pct": 5,
+            "precio_pct": 1.7,
+            "otros_pct": -2,
+            "comentario": "Volumen y SaaS de SimCorp; la tesorería resta unos 2 puntos con el BCE al 2 %.",
+            "suma_pct": 4.7,
+            "crecimiento_pct": 4.7
+          },
+          {
+            "periodo": "2028e",
+            "volumen_pct": 4.5,
+            "precio_pct": 1.9,
+            "otros_pct": 0,
+            "comentario": "Crecimiento estructural sin efecto de tesorería (estable en ≈ 650 M).",
+            "suma_pct": 6.4,
+            "crecimiento_pct": 6.4
+          }
+        ],
+        "texto": "La proyección apenas necesita inversión neta de la amortización (reinversión acumulada de -525 M, con un capex bruto medio del 6,2 % de las ventas). En un negocio de activos ligeros, el crecimiento medio del 5,5 % tiene que salir de subir precios y de ganar volumen sin capital nuevo, y la prueba es el poder de precios y la cuota; en un comprador en serie, la amortización es de intangibles comprados y la prueba es el capex bruto (las compras) frente al crecimiento comprado.",
+        "tabla": [
+          {
+            "concepto": "Crecimiento medio de ingresos proyectado",
+            "valor": "5,5 %"
+          },
+          {
+            "concepto": "Capex bruto medio (incluidas compras si van como inversión)",
+            "valor": "6,2 % de las ventas"
+          },
+          {
+            "concepto": "Reinversión neta acumulada (capex − amortización + circulante)",
+            "valor": "-525 M (-2 % del NOPAT)"
+          }
+        ]
+      }
+    },
+    "escenarios": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "narrativa": "El BCE baja al 1 % y la tesorería cae a la mitad; la volatilidad se normaliza y Eurex negocia menos (como en 2017-2019). Crecimiento 2,5 puntos menor y margen 2,5 puntos menor.",
+        "crecimiento_medio_pct": 2.8,
+        "margen_final_pct": 59,
+        "wacc_pct": 7.1,
+        "valor": 262.58,
+        "potencial_pct": -12.2
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "narrativa": "Guía de 2026 cumplida; la parte sin tesorería crece un 7 % y la tesorería se estabiliza en ≈ 650 M.",
+        "crecimiento_medio_pct": 5.3,
+        "margen_final_pct": 61.5,
+        "wacc_pct": 7.1,
+        "valor": 334.87,
+        "potencial_pct": 12
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "narrativa": "Tipos estables, volatilidad alta y SimCorp acelera en la nube: crecimiento 1,5 puntos mayor y margen 1 punto mayor.",
+        "crecimiento_medio_pct": 6.8,
+        "margen_final_pct": 62.5,
+        "wacc_pct": 7.1,
+        "valor": 370.69,
+        "potencial_pct": 24
+      }
+    ],
+    "valor_ponderado": 325.75,
+    "potencial_ponderado_pct": 9,
+    "comparables": {
+      "tabla": [
+        {
+          "nombre": "Deutsche Börse",
+          "ticker": "DB1",
+          "pais": "DE",
+          "capitalizacion": 53981,
+          "ev_ventas": 9.47,
+          "ev_ebitda_ltm": 16.1,
+          "ev_ebitda_ntm": 14.6,
+          "per_ntm": 23.1,
+          "crecimiento_pct": 5.3,
+          "margen_ebitda_pct": 58.9,
+          "roic_pct": 13,
+          "dn_ebitda": 1,
+          "fcf_yield_pct": 3.9,
+          "es_objetivo": true
+        },
+        {
+          "nombre": "CME Group",
+          "ticker": "CME",
+          "pais": "US",
+          "capitalizacion": 82710,
+          "ev_ventas": 14.73,
+          "ev_ebitda_ltm": 20.7,
+          "ev_ebitda_ntm": 18.5,
+          "per_ntm": 21.7,
+          "crecimiento_pct": 6.6,
+          "margen_ebitda_pct": 71,
+          "roic_pct": 12.2,
+          "dn_ebitda": -0.24,
+          "fcf_yield_pct": 4.3,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Nasdaq",
+          "ticker": "NDAQ",
+          "pais": "US",
+          "capitalizacion": 43734,
+          "ev_ventas": 11.34,
+          "ev_ebitda_ltm": 19.4,
+          "ev_ebitda_ntm": 15.7,
+          "per_ntm": 23.9,
+          "crecimiento_pct": 10.9,
+          "margen_ebitda_pct": 58.4,
+          "roic_pct": 10.4,
+          "dn_ebitda": 2.66,
+          "fcf_yield_pct": 3.9,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "London Stock Exchange Group",
+          "ticker": "LSEG",
+          "pais": "GB",
+          "capitalizacion": 44934,
+          "ev_ventas": 5.09,
+          "ev_ebitda_ltm": 10.5,
+          "ev_ebitda_ntm": 9,
+          "per_ntm": 24.1,
+          "crecimiento_pct": 6.2,
+          "margen_ebitda_pct": 48.4,
+          "roic_pct": 6.5,
+          "dn_ebitda": 1.68,
+          "fcf_yield_pct": 6.6,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "S&P Global",
+          "ticker": "SPGI",
+          "pais": "US",
+          "capitalizacion": 99138,
+          "ev_ventas": 8.34,
+          "ev_ebitda_ltm": 16.3,
+          "ev_ebitda_ntm": 15.6,
+          "per_ntm": 22.8,
+          "crecimiento_pct": 0.1,
+          "margen_ebitda_pct": 51.1,
+          "roic_pct": 11.1,
+          "dn_ebitda": 1.45,
+          "fcf_yield_pct": 4.7,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "MSCI",
+          "ticker": "MSCI",
+          "pais": "US",
+          "capitalizacion": 34363,
+          "ev_ventas": 14.7,
+          "ev_ebitda_ltm": 24.2,
+          "ev_ebitda_ntm": 19.8,
+          "per_ntm": 26.1,
+          "crecimiento_pct": 10.8,
+          "margen_ebitda_pct": 60.8,
+          "roic_pct": 39.9,
+          "dn_ebitda": 2.98,
+          "fcf_yield_pct": 3.6,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Tradeweb Markets",
+          "ticker": "TW",
+          "pais": "US",
+          "capitalizacion": 21391,
+          "ev_ventas": 11.23,
+          "ev_ebitda_ltm": 20.8,
+          "ev_ebitda_ntm": 16.4,
+          "per_ntm": 28.1,
+          "crecimiento_pct": 13.3,
+          "margen_ebitda_pct": 54,
+          "roic_pct": 10.1,
+          "dn_ebitda": -1.88,
+          "fcf_yield_pct": 4.2,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Intercontinental Exchange",
+          "ticker": "ICE",
+          "pais": "US",
+          "capitalizacion": 73165,
+          "ev_ventas": 9.66,
+          "ev_ebitda_ltm": 14.4,
+          "ev_ebitda_ntm": 13.3,
+          "per_ntm": 21,
+          "crecimiento_pct": 9.1,
+          "margen_ebitda_pct": 67.2,
+          "roic_pct": 8.1,
+          "dn_ebitda": 2.6,
+          "fcf_yield_pct": 5.4,
+          "es_objetivo": false
+        }
+      ],
+      "estadisticos": [
+        {
+          "estadistico": "Mediana",
+          "ev_ventas": 11.2,
+          "ev_ebitda_ltm": 19.4,
+          "ev_ebitda_ntm": 15.7,
+          "per_ntm": 23.9,
+          "crecimiento_pct": 9.1,
+          "margen_ebitda_pct": 58.4,
+          "roic_pct": 10.4,
+          "dn_ebitda": 1.7,
+          "fcf_yield_pct": 4.3
+        },
+        {
+          "estadistico": "Media",
+          "ev_ventas": 10.7,
+          "ev_ebitda_ltm": 18,
+          "ev_ebitda_ntm": 15.5,
+          "per_ntm": 24,
+          "crecimiento_pct": 8.1,
+          "margen_ebitda_pct": 58.7,
+          "roic_pct": 14,
+          "dn_ebitda": 1.3,
+          "fcf_yield_pct": 4.7
+        },
+        {
+          "estadistico": "Percentil 25",
+          "ev_ventas": 9,
+          "ev_ebitda_ltm": 15.4,
+          "ev_ebitda_ntm": 14.5,
+          "per_ntm": 22.3,
+          "crecimiento_pct": 6.4,
+          "margen_ebitda_pct": 52.6,
+          "roic_pct": 9.1,
+          "dn_ebitda": 0.6,
+          "fcf_yield_pct": 4.1
+        },
+        {
+          "estadistico": "Percentil 75",
+          "ev_ventas": 13,
+          "ev_ebitda_ltm": 20.8,
+          "ev_ebitda_ntm": 17.5,
+          "per_ntm": 25.1,
+          "crecimiento_pct": 10.9,
+          "margen_ebitda_pct": 64,
+          "roic_pct": 11.6,
+          "dn_ebitda": 2.6,
+          "fcf_yield_pct": 5.1
+        }
+      ],
+      "implicito": [
+        {
+          "metodo": "EV/EBITDA próximos 12 meses",
+          "metrica_empresa": 4058.67,
+          "multiplo_p25": 14.5,
+          "multiplo_mediana": 15.7,
+          "multiplo_p75": 17.5,
+          "multiplos": "14,4x / 15,7x / 17,4x",
+          "valor_p25": 295.12,
+          "valor_mediana": 323.21,
+          "valor_p75": 362.53,
+          "potencial_pct": 8.1
+        },
+        {
+          "metodo": "EV/EBITDA últimos 12 meses",
+          "metrica_empresa": 3693,
+          "multiplo_p25": 15.4,
+          "multiplo_mediana": 19.4,
+          "multiplo_p75": 20.8,
+          "multiplos": "15,4x / 19,4x / 20,8x",
+          "valor_p25": 284.26,
+          "valor_mediana": 367.08,
+          "valor_p75": 394.68,
+          "potencial_pct": 22.8
+        },
+        {
+          "metodo": "PER próximos 12 meses",
+          "metrica_empresa": 12.91,
+          "multiplo_p25": 22.3,
+          "multiplo_mediana": 23.9,
+          "multiplo_p75": 25.1,
+          "multiplos": "22,3x / 23,9x / 25,1x",
+          "valor_p25": 287.33,
+          "valor_mediana": 308.63,
+          "valor_p75": 324.13,
+          "potencial_pct": 3.3
+        },
+        {
+          "metodo": "EV/Ventas últimos 12 meses",
+          "metrica_empresa": 6267,
+          "multiplo_p25": 9,
+          "multiplo_mediana": 11.2,
+          "multiplo_p75": 13,
+          "multiplos": "9,0x / 11,2x / 13,0x",
+          "valor_p25": 282.69,
+          "valor_mediana": 360.07,
+          "valor_p75": 422.18,
+          "potencial_pct": 20.5
+        }
+      ],
+      "regresion": {
+        "pendiente": 0.19,
+        "ordenada": 13.9,
+        "r2": 0.06,
+        "n": 7,
+        "multiplo_ajustado": 14.9,
+        "valor_accion": 305.23,
+        "fiable": false,
+        "texto": "**Regresión EV/EBITDA NTM sobre crecimiento** (7 comparables): múltiplo = 13,9 + 0,19 × crecimiento; R² = 0,06. El crecimiento explica poco los múltiplos de estos comparables (R² < 0,3): la regresión no se usa en la valoración."
+      },
+      "n": 7
+    },
+    "transacciones": {
+      "metrica": "EV/EBITDA",
+      "n": 3,
+      "mediana_ev_ebitda": 24,
+      "p25_ev_ebitda": 18.5,
+      "p75_ev_ebitda": 27.4,
+      "mediana_ev_ventas": 10.26,
+      "prima_mediana_pct": 33,
+      "valor_p25": 348.67,
+      "valor_mediana": 461.14,
+      "valor_p75": 529.64
+    },
+    "suma_partes": null,
+    "multiplos_historicos": [
+      {
+        "metrica": "PER últimos 12 meses (cierre de cada año)",
+        "campo": "per_ltm",
+        "actual": 25.7,
+        "media": 20.5,
+        "minimo": 19.8,
+        "maximo": 22.3,
+        "percentil": 100,
+        "prima_pct": 25,
+        "anios": 5
+      }
+    ],
+    "multiplos_serie": [],
+    "multiplos_titulo": null,
+    "consenso_vs_propio": [
+      {
+        "periodo": "2026e",
+        "ingresos_propio": 6448,
+        "ingresos_consenso": 6479,
+        "ingresos_dif_pct": -0.5,
+        "ebitda_propio": 3849,
+        "ebitda_consenso": 3877,
+        "ebitda_dif_pct": -0.7
+      },
+      {
+        "periodo": "2027e",
+        "ingresos_propio": 6751,
+        "ingresos_consenso": 6757,
+        "ingresos_dif_pct": -0.1,
+        "ebitda_propio": 4105,
+        "ebitda_consenso": 4108,
+        "ebitda_dif_pct": -0.1
+      },
+      {
+        "periodo": "2028e",
+        "ingresos_propio": 7183,
+        "ingresos_consenso": 7202,
+        "ingresos_dif_pct": -0.3,
+        "ebitda_propio": 4439,
+        "ebitda_consenso": 4453,
+        "ebitda_dif_pct": -0.3
+      }
+    ],
+    "gobierno": {
+      "n_consejeros": 0,
+      "independientes_pct": null,
+      "antiguedad_media": null,
+      "composicion": [],
+      "checklist": [
+        {
+          "criterio": "Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Presidencia sin vínculo familiar ni profesional con el accionista de control",
+          "resultado": "Cumple",
+          "valor": "Sin control"
+        },
+        {
+          "criterio": "Presidente no ejecutivo, o consejero coordinador independiente",
+          "resultado": "Cumple",
+          "valor": "No ejecutivo"
+        },
+        {
+          "criterio": "Comisión de auditoría con mayoría de independientes y presidida por uno",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Ningún consejero «otro externo» con más de 12 años",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses",
+          "resultado": "Cumple",
+          "valor": "0 cambios"
+        },
+        {
+          "criterio": "Peor voto a favor sobre remuneración (3 juntas) ≥ 80 %",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Una acción, un voto, sin blindajes ni límites de voto estatutarios",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Sin operaciones vinculadas relevantes",
+          "resultado": "Cumple",
+          "valor": "No hay"
+        },
+        {
+          "criterio": "Auditor con 10 años o menos en el cargo",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Opinión de auditoría sin salvedades",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Directivos compradores netos en 12 meses (o sin ventas relevantes)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        }
+      ],
+      "puntuacion": "5 de 13 (8 sin dato)",
+      "puntuacion_pct": 38,
+      "compras_insiders": 0,
+      "ventas_insiders": 0
+    },
+    "competidores_margen": [
+      {
+        "nombre": "Deutsche Börse",
+        "margen_ebit_pct": 50
+      },
+      {
+        "nombre": "Intercontinental Exchange",
+        "margen_ebit_pct": 49.6
+      },
+      {
+        "nombre": "CME Group",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "London Stock Exchange Group",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Euronext",
+        "margen_ebit_pct": null
+      }
+    ],
+    "sintesis": {
+      "formato_eje": "#,##0",
+      "rangos": [
+        {
+          "metodo": "Cotización 52 semanas",
+          "etiqueta": "Cotización 52 semanas (200,10 – 302,80)",
+          "min": 200.1,
+          "central": 298.9,
+          "max": 302.8,
+          "gris": true
+        },
+        {
+          "metodo": "Comparables: EV/EBITDA NTM",
+          "etiqueta": "Comparables: EV/EBITDA NTM (295,12 – 362,53)",
+          "min": 295.12,
+          "central": 323.21,
+          "max": 362.53,
+          "gris": false
+        },
+        {
+          "metodo": "Comparables: PER NTM",
+          "etiqueta": "Comparables: PER NTM (287,33 – 324,13)",
+          "min": 287.33,
+          "central": 308.63,
+          "max": 324.13,
+          "gris": false
+        },
+        {
+          "metodo": "Transacciones precedentes (EV/EBITDA)",
+          "etiqueta": "Transacciones precedentes (EV/EBITDA) (348,67 – 529,64)",
+          "min": 348.67,
+          "central": 461.14,
+          "max": 529.64,
+          "gris": false
+        },
+        {
+          "metodo": "DCF (WACC y g ± 0,5)",
+          "etiqueta": "DCF (WACC y g ± 0,5) (278,27 – 421,19)",
+          "min": 278.27,
+          "central": 334.87,
+          "max": 421.19,
+          "gris": false
+        },
+        {
+          "metodo": "Escenarios (bajista – alcista)",
+          "etiqueta": "Escenarios (bajista – alcista) (262,58 – 370,69)",
+          "min": 262.58,
+          "central": 325.75,
+          "max": 370.69,
+          "gris": false
+        },
+        {
+          "metodo": "DCF con la prima del mercado",
+          "etiqueta": "DCF con la prima implícita del mercado (4,2 %)",
+          "min": 376.95,
+          "central": 430.73,
+          "max": 500.9
+        },
+        {
+          "metodo": "Precio actual",
+          "etiqueta": "Precio actual (298,90)",
+          "min": 297.41,
+          "central": 298.9,
+          "max": 300.39,
+          "gris": true
+        }
+      ],
+      "tabla": [
+        {
+          "metodo": "DCF",
+          "valor": 334.87,
+          "peso_pct": 50,
+          "potencial_pct": 12
+        },
+        {
+          "metodo": "Comparables (mediana EV/EBITDA y PER)",
+          "valor": 315.92,
+          "peso_pct": 30,
+          "potencial_pct": 5.7
+        },
+        {
+          "metodo": "Transacciones precedentes (no se usa)",
+          "valor": 461.14,
+          "peso_pct": 0,
+          "potencial_pct": 54.3
+        },
+        {
+          "metodo": "Escenarios ponderados",
+          "valor": 325.75,
+          "peso_pct": 20,
+          "potencial_pct": 9
+        }
+      ],
+      "valor_objetivo": 327.36,
+      "potencial_pct": 9.5
+    },
+    "fuentes": {
+      "n_fuentes": 37,
+      "n_primarias": 12,
+      "por_tipo": [
+        {
+          "tipo": "Primaria",
+          "num": 12
+        },
+        {
+          "tipo": "Datos de mercado",
+          "num": 12
+        },
+        {
+          "tipo": "Prensa",
+          "num": 7
+        },
+        {
+          "tipo": "Analistas",
+          "num": 2
+        },
+        {
+          "tipo": "Foros y redes",
+          "num": 4
+        }
+      ],
+      "n_citadas": 36,
+      "citas_sin_fuente": [],
+      "fuentes_sin_citar": [
+        "10"
+      ]
+    },
+    "controles": [
+      {
+        "control": "DCF inverso calculable",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Puente de ingresos (volumen + precio + otros) = crecimiento del DCF",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "resultado": "OK",
+        "detalle": "Supuesto 0,0 % frente a 0,0 % real: genera una variación de circulante de 0 M en el primer año. Converge de forma gradual."
+      },
+      {
+        "control": "Peso del valor terminal ≤ 80 % del valor empresa",
+        "resultado": "OK",
+        "detalle": "76 %."
+      },
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "resultado": "OK",
+        "detalle": "2,30 %."
+      },
+      {
+        "control": "Probabilidades de los escenarios suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Regresión múltiplo-crecimiento explicativa (R² ≥ 0,3)",
+        "resultado": "Explicado",
+        "detalle": "R² = 0,06: el crecimiento no explica los múltiplos de estos comparables; no uses el valor de la regresión. Explicación: Con siete comparables de modelos distintos (bolsas, datos puros, plataformas) el crecimiento no explica el múltiplo: no se usa la regresión, solo las medianas."
+      },
+      {
+        "control": "Al menos 5 comparables",
+        "resultado": "OK",
+        "detalle": "7 comparables."
+      },
+      {
+        "control": "Pesos de la síntesis suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Múltiplos del objetivo a 12 m según la regla común",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Objetivo 12 m frente al consenso",
+        "resultado": "OK",
+        "detalle": "El base se separa un 4,0 % del objetivo medio de los analistas: explícalo en diferencia_consenso (nunca se acerca la cifra)."
+      },
+      {
+        "control": "Precio del cierre de la fecha de corte (o de las dos sesiones anteriores)",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Recomendación coherente con la regla de decisión",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "La síntesis explica la convicción",
+        "resultado": "OK",
+        "detalle": "La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría."
+      },
+      {
+        "control": "Al menos 25 fuentes",
+        "resultado": "OK",
+        "detalle": "37 fuentes (12 primarias)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "resultado": "OK",
+        "detalle": "12."
+      },
+      {
+        "control": "Toda cita [n] existe en fuentes",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Fuentes sin citar ≤ 15 %",
+        "resultado": "OK",
+        "detalle": "Sin citar: 10."
+      }
+    ],
+    "controles_resumen": "17 de 18 controles correctos y 1 explicados"
+  }
+}

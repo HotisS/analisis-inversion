@@ -11,3 +11,5 @@
 ## Lecciones
 
 - Sin red: el precio de una cotizada europea puede salir de la capitalización de MarketScreener que guardó otro análisis del repositorio (comparables) dividida por el número de acciones que usa el proveedor, contrastada con un «último cierre» citado; los cierres anuales, del ADR × ratio ÷ tipo del BCE de fin de año (Digrin da precios reales, no ajustados).
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 21.2x, mínimo 15.8x, media larga 26.1x; antes v2 16.2x/13.9x/16.5x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

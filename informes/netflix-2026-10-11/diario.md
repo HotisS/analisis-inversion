@@ -9,3 +9,5 @@
 - 12:40 Word y PDF (50 páginas); portada, síntesis y «La decisión» revisadas. Quedan 2 controles en «Revisar», explicados (comparables).
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 103,3 USD, rentabilidad +47,0 %, señal Comprar (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +31,8 % → +18,5 %, base +16,0 %, señal Mantener (`revision-12m-2026-10-13.md`).
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 35.2x, mínimo 24.6x, media larga 47.8x; antes v2 40.6x/29.6x/38.1x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

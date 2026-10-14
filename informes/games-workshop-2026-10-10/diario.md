@@ -9,3 +9,5 @@
 - 14:15 Valoración y textos hechos: DCF 99,10 GBP, valor objetivo 102,00 (−37,8 %), Vender, convicción Media (sugerida Alta; explicado en la síntesis). Word y PDF (62 páginas) generados. Parado aquí a petición del usuario: falta revisar el PDF a ojo y comunicarlo.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 159,82 GBP, rentabilidad 0,5 % (base 4,6 %), señal Mantener (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +0,5 % → +0,5 %, base +4,6 %, señal Mantener (`revision-12m-2026-10-13.md`).
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 20.6x, mínimo 16.8x, media larga 20.9x; antes v2 23.1x/18.8x/23.9x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

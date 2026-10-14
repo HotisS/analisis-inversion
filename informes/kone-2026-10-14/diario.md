@@ -17,3 +17,5 @@
 
 - Empresa con una operación transformadora pendiente (TKE): conviene valorarla sola y decirlo, porque el ejercicio objetivo (2028e) cae después del cierre previsto y el BPA combinado depende de la asignación del precio, las sinergias y la dilución. Merecería un campo o una nota estándar en el prompt para «operación pendiente».
 - En la nube, el precio del día de una acción europea no aparece en la búsqueda: las páginas de cotización (Halo, eToro) dan cierres de días anteriores; anota la fecha y no la del corte.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 27x, mínimo 24.4x, media larga 30.4x; antes v2 28.6x/25.1x/30.6x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

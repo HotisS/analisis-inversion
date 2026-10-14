@@ -20,3 +20,5 @@
 
 - RELX publica el BPA ajustado de cada año con el del anterior entre paréntesis en el RNS de resultados: una búsqueda por año da la serie limpia para el PER. Los cierres anuales en peniques no salen en la búsqueda; el ADR (1:1) en Chartrow/Digrin convertido con el cambio de fin de año sí, y cuadra.
 - StockAlarm rotula en USD estimaciones que están en la divisa de las cuentas: comprobarlo contra el último año real antes de usarlas.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 29.2x, mínimo 24.3x, media larga 28.7x; antes v2 27.3x/22.4x/26.2x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

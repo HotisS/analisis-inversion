@@ -19,3 +19,5 @@
 - **Relanzar subagentes cortados**: dar la lista de lo ya descargado en notas/docs ahorró tiempo; E acabó en 3 minutos.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 439,16 USD (ponderado; media simple 443,29), rentabilidad +18,2 % (+19,3 % con la media simple; base +14,9 %), señal Comprar (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +18,2 % → +18,3 %, base +14,9 %, señal Mantener (`revision-12m-2026-10-13.md`).
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 23.7x, mínimo 19.4x, media larga 23.9x; antes v2 22.1x/20.5x/23x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

@@ -18,3 +18,5 @@
 
 - En la nube, el BPA del escenario cuadra mal sin resultado financiero publicado: usar el BAI de los últimos 12 meses de Stock Analysis (que sale en la búsqueda) frente al EBIT para fijar el gasto financiero recurrente.
 - Con la cuenta y el balance de agregadores, el motor calcula un capital invertido incompleto: dar el ROIC propio en `rentabilidad.comentario` y usar ese en la decisión.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 18.7x, mínimo 9.9x, media larga 20.9x; antes v2 11.35x/7.36x/12.7x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

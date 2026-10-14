@@ -19,3 +19,5 @@
 
 - Con un solo consejero en `gobierno.consejo` el motor calcula «0 % de independientes» y puntúa el criterio como incumplido: si no se puede leer el consejo, mejor lista vacía y hueco registrado.
 - Empresas de software de EE. UU. con remuneración en acciones alta (8-9 % de ventas): el DCF GAAP queda un 50-60 % por debajo del precio y el objetivo a 12 meses en base non-GAAP lo supera; la regla «VI ≥ precio» bloquea el Comprar casi siempre. Decirlo en la síntesis y no forzar ninguna de las dos cifras.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 65.5x, mínimo 42.1x, media larga 61.8x; antes v2 47.1x/37.6x/39.9x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

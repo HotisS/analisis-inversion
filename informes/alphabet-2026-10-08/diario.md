@@ -59,3 +59,5 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 2. Con capex muy alto, la prueba sale holgada si el base supone un rendimiento bajo del capital nuevo (20,2 % frente a 37,1 %): no avisa de que el base puede ser *demasiado* prudente. Arreglo: aviso informativo si el rendimiento implícito queda por debajo de la mitad del histórico, para que la síntesis lo diga.
 3. El nivel de compra cambió entre versiones del motor sin cambiar datos (245,16 → 241,37): el diario de v1 no deja rastro de la regla con la que se calculó. Arreglo: guardar `calc.version` en la tabla del diario o avisar al recalcular si los niveles se mueven sin cambios en los supuestos.
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +1,8 % → +2,0 %, base +6,8 %, señal Mantener (`revision-12m-2026-10-12.md`).
+
+- 2026-10-14: datos-v3.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 17.4x, mínimo 15.2x, media larga 20.7x; antes v2 24.1x/19.3x/25x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

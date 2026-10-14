@@ -7,3 +7,5 @@
 - Resultado: Mantener, convicción Baja (la sugerida; reglas absoluta Vender y relativa Mantener). Valor objetivo 111,78 CHF (−10,3 %), rentabilidad total −6,1 %, asimetría 0,36x; con la prima del mercado 136,60 CHF. DCF 119,25; DCF inverso: crecimiento 3,3 % frente a 1,9 % o margen EBITDA 7,7 %. Controles 17 de 19 y 2 explicados. Word y PDF (49 páginas).
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 107,63 CHF (ponderado; media simple 106,50), rentabilidad −9,4 % (−10,3 % con la media simple; base −6,7 %), señal Mantener (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada -9,4 % → -9,4 %, base -6,7 %, señal Mantener (`revision-12m-2026-10-13.md`).
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 15.7x, mínimo 13.3x, media larga 18.3x; antes v2 16.9x/15.8x/18.4x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

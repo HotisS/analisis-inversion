@@ -10,3 +10,5 @@
 ## Lecciones
 - En la nube, si una nota cita fuentes de otra con letra ([B4] dentro de A.json), `integrar` no las traduce y salen como «sin citar»: las notas citan con su numeración propia ([4]); `notas/build_notas.py` copia la fuente de la otra nota a la lista propia y renumera.
 - Sin balance completo, el ROIC del motor sale inflado (capital invertido casi vacío): dar el ROIC con patrimonio + deuda neta en el texto y en la entrega.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (3 años; mediana 12.7x, mínimo 10.8x, media larga 12.5x; antes v2 15.3x/15.1x/15.7x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

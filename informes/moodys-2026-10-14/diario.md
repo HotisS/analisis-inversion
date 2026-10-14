@@ -11,3 +11,5 @@
 ## Lecciones
 - Con un competidor directo analizado días antes (S&P Global), su `datos.json` sirve para sector, competidores, comparables y transacciones: basta un remapeo de citas `[n]` a la lista de fuentes de la nota (función `Lista.remap` en `construir_notas.py`).
 - En entorno solo-búsqueda, el precio de cierre del día anterior al corte puede no aparecer; usar el último cierre fechado (Yahoo) y decirlo.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 34.7x, mínimo 31.9x, media larga 38.4x; antes v2 36.1x/31.8x/35.9x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

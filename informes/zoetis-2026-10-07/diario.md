@@ -80,3 +80,5 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 3. El nivel de compra cambió (90,12 → 89,38) solo por la versión del motor, sin aviso: la síntesis quedaba con una cifra vieja. Arreglo: un control que busque en la síntesis los niveles de `calc.recomendacion` y avise si no aparecen.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 89,89 USD, rentabilidad +28,9 %, señal Comprar (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +18,3 % → +5,6 %, base +6,5 %, señal Mantener (`revision-12m-2026-10-13.md`).
+
+- 2026-10-14: datos-v3.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 36.1x, mínimo 27.1x, media larga 34.5x; antes v2 31.2x/20.9x/20.9x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

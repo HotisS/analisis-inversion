@@ -19,3 +19,5 @@
 
 - Sin balance completo, `nwc_pct_ventas` distinto de 0 hace que el motor compare con un circulante real de 0 y meta toda la necesidad de circulante en el primer año: pon 0 y súmalo al capex, explicándolo.
 - Precio sin `bolsa.mjs`: las notas de ad-hoc-news dan la cotización en euros del día; el EUR/SEK sale de otra nota del mismo día con precio en coronas (ASSA ABLOY).
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 29.7x, mínimo 21.3x, media larga 28.3x; antes v2 28.85x/25.5x/28.16x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

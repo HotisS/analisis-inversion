@@ -14,3 +14,5 @@
 - **Resultados el mismo día del corte (ASML, 3T26 el 14-oct)**: la búsqueda web ya trae el comunicado y la nota del 6-K a primera hora; las plusvalías de participadas (Mistral AI, 509,7 M) solo aparecen en los resúmenes del 6-K, no en el titular: búscalas antes de comparar el BPA con el consenso.
 - **Empresas con anticipos de clientes y sin balance desglosado** (ASML en la nube): poner solo las existencias en el balance hace que el motor proyecte un circulante del 35 % de las ventas; sin los pasivos de contrato, mejor dejar el circulante a cero y explicarlo. Y un año de balance a medias (todo null) deja el capital invertido medio a cero y dobla el ROIC: quítalo.
 - **Comparables desde un informe vecino en otra divisa** (tabla de VAT en CHF): pasa la capitalización a la divisa del informe con el tipo que usó aquel informe; los múltiplos no cambian.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 30.9x, mínimo 25.1x, media larga 34.2x; antes v2 34.9x/33.9x/35.2x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

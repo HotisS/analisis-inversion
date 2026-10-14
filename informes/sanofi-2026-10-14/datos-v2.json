@@ -1,0 +1,3616 @@
+{
+  "meta": {
+    "fecha_corte": "2026-10-14",
+    "divisa": "EUR",
+    "divisa_cotizacion": "EUR",
+    "tipo_cambio": 1,
+    "unidades": "millones",
+    "cierre_ejercicio_mes": 12,
+    "etiqueta_ejercicio": "fin",
+    "normas_contables": "NIIF-UE",
+    "formato_cuenta": "funcion",
+    "limitaciones": "Análisis hecho desde la nube con solo búsqueda web: ninguna cuenta se ha leído en el documento original, todas las cifras salen de los extractos de búsqueda de los comunicados de Sanofi (resultados 2023, 2025 y 2T26, 20-F 2024), de Stock Analysis y Stockopedia, con su URL. Las cuentas están en **base «business»** de Sanofi (sin amortización de intangibles adquiridos, deterioros, reestructuración ni otras partidas no recurrentes), la que guía la empresa y sigue el consenso; el EBITDA es el resultado operativo business más la amortización del inmovilizado (1.776 M en 2025 según Stock Analysis; 2024 estimado al 4 % de las ventas). 2022 incluye Opella (consumo); 2023-2025 no (reexpresados por la empresa). Faltan 2021 y anteriores, el balance anterior a 2025 y casi todo el gobierno. Precio de cierre del 3-oct-2026 (73,10 EUR), el último que publica una fuente legible; no hay cotización del 13-oct. Acciones: 1.207,8 M emitidas a 31-ago-2026 menos ≈7,2 M de autocartera más ≈2,4 M de planes, 1.203 M (estimación propia).",
+    "controles_explicados": [
+      {
+        "control": "Circulante",
+        "explicacion": "Sin cuentas a pagar legibles, el circulante del balance es existencias + clientes (48,7 % de las ventas); el DCF usa el 48 % constante, de modo que no libera ni consume caja por este concepto."
+      },
+      {
+        "control": "Sección de núcleo con datos: sector",
+        "explicacion": "Sin red para IQVIA ni EFPIA y con las búsquedas compartidas reservadas a cuentas y valoración; la sección lleva definición, motores y regulación cualitativos, con el hueco registrado."
+      }
+    ],
+    "huecos": [
+      {
+        "seccion": "financieros",
+        "campo": "cuenta 2021 y anteriores",
+        "tipo": "Núcleo",
+        "intentos": "1) resultados anuales 2021-2022 de Sanofi (no aparecen en la búsqueda); 2) Stock Analysis (cifras NIIF con perímetros mezclados); 3) prensa. entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "balance",
+        "campo": "balance 2022-2024 y desglose de circulante y arrendamientos",
+        "tipo": "Núcleo",
+        "intentos": "1) 20-F 2024 y 2025 (no legibles desde la búsqueda); 2) Stock Analysis y Weiss (cifras discrepantes); 3) solo deuda neta 2024 (8.772 M) y 2025 (11.008 M). entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "trimestres",
+        "campo": "ventas, margen y BPA trimestrales",
+        "tipo": "Complemento",
+        "intentos": "1) comunicados trimestrales; 2) Quartr; 3) prensa: solo 2T26 (11.597 M, BPA 2,09) y semestres. entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sector",
+        "campo": "tamaño del mercado farmacéutico y de inmunología tipo 2 con dos fuentes",
+        "tipo": "Núcleo",
+        "intentos": "1) IQVIA y EFPIA (no consultados por el límite de búsquedas); 2) informes de mercado de dermatitis atópica; 3) prensa. entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red); búsquedas compartidas reservadas a cuentas y valoración",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "competencia",
+        "campo": "ingresos, cuota y margen EBIT de los competidores",
+        "tipo": "Núcleo",
+        "intentos": "1) cuentas de cada competidor; 2) Stock Analysis; 3) comparables de la sección 18 (sin ventas por área terapéutica). entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "esg",
+        "campo": "calificaciones ESG",
+        "tipo": "Complemento",
+        "intentos": "1) MSCI y Sustainalytics; 2) informe de sostenibilidad; 3) prensa. entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "consejo completo, comisiones, votos de remuneración y remuneración del consejero delegado",
+        "tipo": "Núcleo",
+        "intentos": "1) Document d’enregistrement universel 2025 (no legible); 2) actas de la junta del 29-abr-2026; 3) prensa: solo presidente y consejera delegada. entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "operaciones de directivos (BDIF de la AMF)",
+        "tipo": "Complemento",
+        "intentos": "1) API de la BDIF (sin red); 2) prensa; 3) Form 144 del ADR. entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "bolsa",
+        "campo": "rentabilidades, beta, volatilidad y caída máxima",
+        "tipo": "Complemento",
+        "intentos": "1) bolsa.mjs (sin red); 2) Yahoo y Stock Analysis vía búsqueda (sin series); 3) Simply Wall St da beta 0,37, no comparable con la mensual de 5 años. entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "transacciones",
+        "campo": "operaciones con múltiplo publicado",
+        "tipo": "Complemento",
+        "intentos": "1) comunicados de Sanofi (Blueprint, Opella); 2) prensa; 3) Mergermarket. Sin múltiplos legibles. entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "consenso",
+        "campo": "estimaciones de ventas, EBITDA y BPA 2027e-2028e",
+        "tipo": "Núcleo",
+        "intentos": "1) MarketScreener y Zonebourse (no indexados); 2) MarketBeat (en USD por ADR, fechas dudosas); 3) Idéal Investisseur: solo PER 2026e. entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "multiplos_historicos",
+        "campo": "precio de cierre de 2022",
+        "tipo": "Complemento",
+        "intentos": "1) Trade Direct (solo 2023-2025); 2) Digrin (ADR en USD); 3) MarketScreener. entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sentimiento",
+        "campo": "foros de particulares (Reddit, Stocktwits, foro de Boursorama)",
+        "tipo": "Complemento",
+        "intentos": "1) Reddit (sin hilos indexados); 2) foro de Boursorama (no indexado); 3) Seeking Alpha (último artículo indexado de oct-2025). Se usa prensa con comentarios. entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "rentabilidad",
+        "campo": "ROIC de los competidores",
+        "tipo": "Complemento",
+        "intentos": "1) cuentas de los competidores; 2) Stock Analysis; 3) tabla de comparables (ROIC de 14-42 %). entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Calculado y marcado como estimación"
+      }
+    ]
+  },
+  "identificacion": {
+    "nombre": "Sanofi S.A.",
+    "nombre_corto": "Sanofi",
+    "ticker": "SAN",
+    "isin": "FR0000120578",
+    "mercado": "Euronext París",
+    "indice_referencia": "CAC 40",
+    "pais": "Francia",
+    "pais_iso": "FR",
+    "sector": "Salud",
+    "industria": "Farmacéutica",
+    "sede": "París",
+    "fundacion": "1973",
+    "empleados": null,
+    "web": "https://www.sanofi.com",
+    "precio": 73.1,
+    "fecha_precio": "2026-10-03",
+    "acciones": 1203,
+    "capitalizacion_publicada": null,
+    "free_float_pct": null,
+    "max_52s": 84.97,
+    "min_52s": 70.96,
+    "volumen_medio_diario": null,
+    "proximos_resultados": "2026-10-30"
+  },
+  "resumen": {
+    "recomendacion": "Comprar",
+    "conviccion": "Baja",
+    "justificacion_recomendacion": null,
+    "horizonte": "12 meses (el valor intrínseco es una tesis a varios años)",
+    "sintesis": "**La recomendación y por qué.** Comprar con convicción baja. A 73,10 EUR (cierre del 3-oct), el objetivo a 12 meses es de 81,43 EUR: nuestro BPA business de 2028e (9,79 EUR en el base) por el PER que hoy paga el mercado (8,0 veces), con un dividendo del 5,6 %. La rentabilidad ponderada a 12 meses es del 17,0 % y la del base del 12,8 %; el valor intrínseco, 98,70 EUR (+35,0 %). Los analistas ponen 90 EUR de objetivo medio [29]. La razón principal: el precio ya descuenta un precipicio de Dupixent peor que nuestro bajista, y el BPA sigue creciendo hasta 2028. **La convicción es baja** porque el base supera su umbral del 12 % por menos de un punto y todas las cifras salen de extractos de búsqueda, no de las cuentas leídas; subiría si los resultados del 3T26 (30-oct) confirman la guía y el precio sigue por debajo de 73,61 EUR, y bajaría si Dupixent crece menos del 15 % en 2027.\n\n**El negocio.** Dupixent (15.700 M en 2025, +37,6 % en el 2T26) lleva el crecimiento, pero su patente principal en EE. UU. vence en marzo de 2031 y la empresa admite que no podrá compensar esas ventas [1, 10, 15]. El ROIC del 11,7 % supera en 5 puntos al WACC del 6,69 %, poco para una farmacéutica de patente, por el fondo de comercio de compras pasadas. **Sostenibilidad: «En parte»**: la reinversión financia de sobra el 1,3 % de crecimiento medio proyectado (2,3 % financiable), pero ese crecimiento depende de un producto con fecha de caducidad y de una cartera que acaba de fallar (amlitelimab, itepekimab) [18].\n\n**Finanzas.** Ventas de 43.626 M en 2025 (+9,9 % a tipo constante) y BPA business de 7,83 EUR; flujo libre de 8.100 M [2, 12]. En el 1S26, ventas +15,7 % y BPA business +22,7 % a tipo constante, con efectos puntuales [1, 9]. Deuda neta de 15.513 M (≈1,1 veces el EBITDA) tras el dividendo y la recompra de 1.000 M [8]. El beneficio NIIF queda muy por debajo del business por reestructuraciones recurrentes, que restamos en el DCF.\n\n**Equipo y gobierno.** Relevo abrupto: el consejo no renovó a Paul Hudson y Belén Garijo dirige desde abril; en cinco meses ha cortado programas y cerrado un acuerdo de hasta 8.000 M USD con Regeneron [19, 21]. Sin accionista de control (L’Oréal, 7,2 % del capital y 13,1 % de los votos) [24]. Gobierno con pocos datos legibles.\n\n**Valoración.** El DCF da 93,36 EUR; el inverso dice que el precio descuenta una caída de las ventas del 4,9 % anual frente al 0,6 % de nuestro base, o una rentabilidad implícita del 8,1 % frente al WACC del 6,69 %. Los comparables (mediana de PER de 17,2 veces frente a 8,5) darían mucho más, pero pesan solo un 10 % porque ignoran 2031. Discrepamos del mercado en el plazo: descuenta hoy una caída que llega dentro de cinco años.\n\n**Riesgos y catalizadores.** Una caída de Dupixent más profunda o anticipada (bajista: 73,51 EUR de valor y 60,59 EUR a 12 meses), una compra cara para rellenar la cartera y los precios en EE. UU. Catalizadores: resultados del 3T26 el 30-oct y la guía de 2027 en enero. Los foros y la prensa están escépticos: vendieron tanto los buenos resultados del 2T26 como el acuerdo con Regeneron [34, 35].\n\n**Qué cambiaría la decisión.** Comprar por debajo de 73,61 EUR; mantener entre 73,61 y 95,05; vender por encima de 95,05. Pasaríamos a Mantener si el 3T26 rebaja la guía, si Dupixent crece menos del 15 % en 2027 o si se anuncia una compra de más de 15.000 M a múltiplos de crecimiento.",
+    "tesis": "Sanofi es la farmacéutica de Dupixent: el biológico de referencia en inflamación tipo 2, con 15.700 M de ventas en 2025 y creciendo por encima del 30 % [1, 10]. Con él, el grupo creció un 9,9 % a tipo constante en 2025 y ha subido la guía de 2026 a ≈+10 % [1, 12]. Genera 8.100 M de flujo libre y paga un dividendo de 4,12 EUR [12, 29].\n\nEl precio descuenta lo contrario: a 8,5 veces el beneficio de los próximos 12 meses y 7,5 veces el EBITDA, el DCF inverso implica una caída de las ventas del 4,9 % anual, como si la patente de 2031 ya hubiera vencido. Los comparables cotizan a una mediana de 17,2 veces.\n\nEl mercado acierta en que la cartera no repone a Dupixent y en que la asignación de capital ha sido mala (recompras a más de 100 EUR, fracasos clínicos) [18, 24]. Se equivoca, creemos, en el calendario: hasta 2028 el BPA sigue creciendo ≈7 % al año y el dividendo paga la espera. Para invertir hay que creer que la caída de 2031-2032 será de ≈14 % de las ventas y no del 30 %.",
+    "vision_diferencial": {
+      "mercado_descuenta": "Una caída inmediata y permanente: el PER de 8,0 veces nuestro BPA de 2027e y una contracción de las ventas del 4,9 % anual en el DCF inverso, propia de una empresa que ya ha perdido su producto estrella.",
+      "nuestra_vision": "Cinco años más de crecimiento de Dupixent y una caída del 14 % de las ventas en 2031-2033, compensada a medias por la cartera y las compras; BPA business de 9,79 EUR en 2028e.",
+      "por_que": "La guía se ha cumplido o superado en 2025 y 2026 y Dupixent aún suma indicaciones (EPOC, urticaria); el mercado castiga a la vez la cartera fallida y una caída que no llega hasta 2031."
+    },
+    "a_favor": [
+      "**Dupixent sigue acelerando**: +37,6 % en el 2T26, 5.150 M en el trimestre [1].",
+      "**Guía elevada**: ventas de ≈+10 % a tipo constante en 2026 y BPA algo por encima [1].",
+      "**Barata frente a su historia y al sector**: PER de 8,5 veces frente a 11,1 de mediana histórica y 17,2 de los comparables.",
+      "**Dividendo del 5,6 %** con 8.100 M de flujo libre en 2025 [12].",
+      "**Balance con margen**: deuda neta de ≈1,1 veces el EBITDA [8]."
+    ],
+    "en_contra": [
+      "**Patente de Dupixent en marzo de 2031**: el producto es el 36 % de las ventas [16].",
+      "**Cartera fallida**: deterioro de 952 M por amlitelimab e itepekimab abandonado [18].",
+      "**ROIC de solo el 11,7 %**, 5 puntos sobre el WACC, por el fondo de comercio.",
+      "**Relevo de la dirección** hace cinco meses y revisión estratégica sin terminar [21].",
+      "**Riesgo de una compra cara** para rellenar el hueco de 2031."
+    ],
+    "que_vigilar": "La tesis depende de que Dupixent siga creciendo hasta 2030 y de que la caída posterior sea moderada. La señal de que no se cumple: crecimiento de Dupixent por debajo del 15 % en 2027, pérdida de cuota en dermatitis frente a Ebglyss y Rinvoq o un fallo judicial que adelante los biosimilares.",
+    "cambiaria_recomendacion": [
+      "Precio por encima de 73,61 EUR sin cambio de cifras: pasaríamos a Mantener (la regla a 12 meses dejaría de dar Comprar).",
+      "Guía de ventas de 2026 rebajada por debajo del +8 % a tipo constante en el 3T26 (30-oct).",
+      "Dupixent creciendo menos del 15 % en algún trimestre de 2027.",
+      "Una compra de más de 15.000 M a más de 10 veces ventas."
+    ],
+    "kpis_seguimiento": [
+      {
+        "kpi": "Crecimiento de Dupixent",
+        "nivel_actual": "+37,6 % (2T26)",
+        "umbral_alerta": "< 15 %",
+        "por_que": "Es el motor del BPA hasta 2030."
+      },
+      {
+        "kpi": "Margen operativo business",
+        "nivel_actual": "27,8 % (2025)",
+        "umbral_alerta": "< 27 %",
+        "por_que": "La guía supone BPA por encima de las ventas."
+      },
+      {
+        "kpi": "Deuda neta / EBITDA",
+        "nivel_actual": "≈1,1x (jun-26)",
+        "umbral_alerta": "> 2,5x",
+        "por_que": "Señal de una compra grande."
+      },
+      {
+        "kpi": "Deterioros de cartera",
+        "nivel_actual": "952 M (1S26)",
+        "umbral_alerta": "Otro > 1.000 M",
+        "por_que": "Mide si la cartera repone."
+      }
+    ],
+    "confianza": "Baja"
+  },
+  "historia": {
+    "resumen": "Sanofi nace de la fusión de Sanofi-Synthélabo y Aventis en 2004 y durante una década vivió de la insulina Lantus y de las vacunas. La alianza con Regeneron le dio Dupixent (2017), que hoy es el 36 % de las ventas [16]. En 2025 vendió el 50 % de Opella, su negocio de consumo, a CD&R y compró Blueprint Medicines para entrar en enfermedades raras inmunológicas [2, 11]. En febrero de 2026 el consejo no renovó a Paul Hudson tras una serie de fracasos clínicos y nombró a Belén Garijo, ex consejera delegada de Merck KGaA, que en cinco meses ha abandonado amlitelimab e itepekimab y ha cerrado un nuevo acuerdo con Regeneron [17, 18, 19].",
+    "hitos": [
+      {
+        "anio": "2004",
+        "hito": "Fusión de Sanofi-Synthélabo y Aventis."
+      },
+      {
+        "anio": "2017",
+        "hito": "Lanzamiento de Dupixent con Regeneron, hoy el 36 % de las ventas del grupo [16]."
+      },
+      {
+        "anio": "2025",
+        "hito": "Venta del 50 % de Opella (consumo) a CD&R por unos 10.400 M de caja neta; compra de Blueprint Medicines [2, 11]."
+      },
+      {
+        "anio": "2026",
+        "hito": "El consejo no renueva a Paul Hudson; Belén Garijo (ex Merck KGaA) es consejera delegada desde la junta del 29-abr [17]."
+      },
+      {
+        "anio": "2026",
+        "hito": "Abandono de amlitelimab e itepekimab (deterioro de 952 M en el 1S26) y nuevo acuerdo con Regeneron de hasta 8.000 M USD (1-oct) [18, 19]."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "negocio": {
+    "segmentos": [
+      {
+        "nombre": "Dupixent",
+        "descripcion": "Anticuerpo anti-IL-4/IL-13 (con Regeneron) para dermatitis atópica, asma, EPOC, urticaria y otras inflamaciones tipo 2; patente principal en EE. UU. hasta marzo de 2031.",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2025",
+            "ingresos": 15700,
+            "resultado": null
+          }
+        ]
+      },
+      {
+        "nombre": "Vacunas",
+        "descripcion": "Gripe, pediátricas, meningitis, refuerzos y Beyfortus (anticuerpo frente al VRS en lactantes, con AstraZeneca).",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2025",
+            "ingresos": 7900,
+            "resultado": null
+          }
+        ]
+      },
+      {
+        "nombre": "Resto de farma",
+        "descripcion": "Lanzamientos (ALTUVIIIO, Sarclisa, Nexviazyme, Qfitlia…), enfermedades raras, Blueprint (Ayvakit), medicina general (insulinas, cardiovascular, trombosis) y otros.",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2025",
+            "ingresos": 20026,
+            "resultado": null
+          }
+        ]
+      }
+    ],
+    "geografias": [
+      {
+        "nombre": "Estados Unidos",
+        "peso_pct": 47.9
+      },
+      {
+        "nombre": "Europa",
+        "peso_pct": 20.8
+      },
+      {
+        "nombre": "Resto del mundo",
+        "peso_pct": 31.2
+      }
+    ],
+    "kpis": [
+      {
+        "kpi": "Ventas netas (M EUR)",
+        "valor_anterior": "41.081 (2024)",
+        "valor_actual": "43.626 (2025)",
+        "variacion": "+6,2 % publicado; +9,9 % a tipo constante",
+        "comentario": "En el extremo alto de la guía [2, 12]."
+      },
+      {
+        "kpi": "Ventas de Dupixent (M EUR)",
+        "valor_anterior": "≈3.830 (2T25)",
+        "valor_actual": "5.150 (2T26)",
+        "variacion": "+37,6 %",
+        "comentario": "Ventas anuales de 15.700 M en 2025; ≈42 % de las ventas del 1S26 [1, 10]."
+      },
+      {
+        "kpi": "BPA business (EUR)",
+        "valor_anterior": "7,12 (2024)",
+        "valor_actual": "7,83 (2025)",
+        "variacion": "+10,0 % publicado; +15,0 % a tipo constante",
+        "comentario": "Incluye el efecto de las recompras (sin ellas, +12,2 %) [2, 12]."
+      },
+      {
+        "kpi": "Margen operativo business",
+        "valor_anterior": "27,6 % (2024)",
+        "valor_actual": "27,8 % (2025)",
+        "variacion": "+0,2 pp",
+        "comentario": "Resultado operativo business sobre ventas netas [3, 12]."
+      },
+      {
+        "kpi": "Flujo de caja libre (definición Sanofi, M EUR)",
+        "valor_anterior": "≈5.960 (2024)",
+        "valor_actual": "8.100 (2025)",
+        "variacion": "+35,8 %",
+        "comentario": "Reducción de casi 30 días de existencias; 3.724 M en el 1S26 (+51,5 %) [8, 12]."
+      }
+    ],
+    "confianza": "Media",
+    "geografias_criterio": "destino",
+    "descripcion": "Sanofi es un grupo farmacéutico francés con ventas netas de 43.626 M EUR en 2025 [2]. Tiene tres bloques: **Dupixent** (15.700 M en 2025; 5.150 M en el 2T26, +37,6 %), el anticuerpo para inflamación tipo 2 que comparte con Regeneron [1, 10]; **vacunas** (7.900 M: gripe, pediátricas, meningitis y Beyfortus, 1.800 M) [10]; y el **resto de farma**: lanzamientos, enfermedades raras (Blueprint desde julio de 2025), hematología y medicina general [2]. Vende sobre todo a mayoristas, sistemas públicos y aseguradoras; en el 1S25 Estados Unidos fue el 48 % de las ventas, Europa el 21 % y el resto del mundo el 31 % [11].",
+    "como_gana_dinero": "Margen operativo business del 27,8 % en 2025 [12]: los medicamentos con patente (Dupixent sobre todo) tienen márgenes brutos muy altos; la I+D (≈16-17 % de las ventas) y la red comercial son los grandes costes. El beneficio depende de la mezcla: Dupixent aporta ≈80 % del crecimiento del semestre [36] y comparte beneficios con Regeneron. Las vacunas de gripe concentran ventas en el 3T-4T y bajan con las comparaciones altas (−4,7 % en el 2T26) [1]. Ingresos poco cíclicos pero con fechas de caducidad: cada patente que vence se lleva entre el 50 % y el 90 % de las ventas del producto en dos o tres años.",
+    "clientes": "Sin concentración relevante por cliente final; en EE. UU. tres mayoristas distribuyen la mayor parte, como en todo el sector. El poder de precios es desigual: Dupixent crece en volumen con precio estable, mientras las insulinas y las vacunas de gripe sufren presión de precios y de los programas públicos. La reforma de precios de EE. UU. (negociación de Medicare) es el principal riesgo de precio a medio plazo; no hemos podido leer la exposición concreta."
+  },
+  "sector": {
+    "definicion": "El mercado relevante es el farmacéutico mundial de medicamentos innovadores con patente y de vacunas, con foco en inmunología tipo 2 (dermatitis atópica, asma, EPOC), donde Dupixent es el líder. No hemos podido leer un tamaño de mercado con dos fuentes desde la nube (hueco registrado).",
+    "tamano": null,
+    "unidad_serie": null,
+    "serie": [],
+    "tcac_historico_pct": null,
+    "tcac_previsto_pct": null,
+    "cr5_pct": null,
+    "estructura": "Moderadamente concentrada",
+    "drivers": [
+      {
+        "driver": "Penetración de biológicos en inflamación tipo 2",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Dupixent creció un 37,6 % en el 2T26 y ya factura más de 20.000 M anualizados [1]."
+      },
+      {
+        "driver": "Vencimiento de patentes",
+        "efecto": "−",
+        "horizonte": "Estructural",
+        "evidencia": "La patente principal de Dupixent vence en EE. UU. en marzo de 2031; JPMorgan cifra en 17.300 M las ventas en riesgo en 2030-2035 [15, 20]."
+      },
+      {
+        "driver": "Precios en EE. UU.",
+        "efecto": "−",
+        "horizonte": "Estructural",
+        "evidencia": "Negociación de precios de Medicare y presión política sobre los precios; sin cifra legible para Sanofi."
+      },
+      {
+        "driver": "Vacunación de gripe y VRS",
+        "efecto": "+/−",
+        "horizonte": "Cíclico",
+        "evidencia": "Vacunas −4,7 % en el 2T26 por una base alta en gripe; Beyfortus +9,5 % en 2025 [1, 10]."
+      }
+    ],
+    "porter": [
+      {
+        "fuerza": "Rivalidad",
+        "intensidad": 3,
+        "justificacion": "Lilly (Ebglyss) y AbbVie (Rinvoq) compiten con Dupixent; en vacunas, GSK, Pfizer y MSD."
+      },
+      {
+        "fuerza": "Poder de los clientes",
+        "intensidad": 4,
+        "justificacion": "Pagadores públicos en Europa y aseguradoras y Medicare en EE. UU. negocian precio."
+      },
+      {
+        "fuerza": "Poder de los proveedores",
+        "intensidad": 2,
+        "justificacion": "Materias primas e inputs de bajo peso; el socio Regeneron sí captura la mitad del beneficio de Dupixent."
+      },
+      {
+        "fuerza": "Amenaza de entrada",
+        "intensidad": 2,
+        "justificacion": "Patentes, ensayos de miles de millones y aprobación regulatoria; los biosimilares solo entran al vencer la patente."
+      },
+      {
+        "fuerza": "Amenaza de sustitutos",
+        "intensidad": 3,
+        "justificacion": "Biosimilares de Dupixent desde 2031 y nuevas moléculas orales o de dosis espaciadas."
+      }
+    ],
+    "ciclo": {
+      "posicion": "Madurez del ciclo",
+      "comentario": "La demanda de medicamentos apenas depende del ciclo económico: Sanofi creció en 2008-09 y en 2020. Lo que marca el ciclo propio de cada empresa es el calendario de patentes: Sanofi está en la fase alta de Dupixent, con cinco años de crecimiento por delante antes del vencimiento de 2031 [15]."
+    },
+    "regulacion": "En EE. UU., la negociación de precios de Medicare y la presión de la administración sobre los precios de los medicamentos; en Europa, la reforma farmacéutica de la UE, que recorta la protección de datos. La defensa de la exclusividad de Dupixent más allá de marzo de 2031 depende de patentes secundarias y de formulaciones nuevas [15].",
+    "tendencias": "Más biológicos en inflamación y moléculas biespecíficas o de dosificación espaciada que pueden desplazar a Dupixent; la nueva dirección apuesta por acuerdos (Regeneron, 1-oct-2026) y por compras para rellenar la cartera [19].",
+    "confianza": "Baja"
+  },
+  "competencia": {
+    "cuota_pct": null,
+    "posicion": "Líder mundial en inflamación tipo 2 con Dupixent; entre los cuatro primeros en vacunas.",
+    "competidores": [
+      {
+        "nombre": "Eli Lilly",
+        "pais": "EE. UU.",
+        "ticker": "LLY",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Ebglyss (lebrikizumab) compite con Dupixent en dermatitis atópica."
+      },
+      {
+        "nombre": "AbbVie",
+        "pais": "EE. UU.",
+        "ticker": "ABBV",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Rinvoq (inhibidor JAK oral) en dermatitis atópica."
+      },
+      {
+        "nombre": "GSK",
+        "pais": "Reino Unido",
+        "ticker": "GSK",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Rival directo en vacunas (gripe, meningitis, VRS en adultos)."
+      },
+      {
+        "nombre": "Pfizer",
+        "pais": "EE. UU.",
+        "ticker": "PFE",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Vacunas (Prevnar, VRS) e inmunología."
+      },
+      {
+        "nombre": "AstraZeneca",
+        "pais": "Reino Unido",
+        "ticker": "AZN",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Socio en Beyfortus y rival en respiratorio (Tezspire, Fasenra)."
+      }
+    ],
+    "confianza": "Baja",
+    "foso": {
+      "veredicto": "Estrecho",
+      "tendencia": "Se estrecha",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 0,
+          "evidencia": "No aplica en farmacia."
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 2,
+          "evidencia": "Pacientes estables con un biológico rara vez cambian; Dupixent sigue ganando cuota (+37,6 % en el 2T26) [A1]."
+        },
+        {
+          "fuente": "Intangibles (marca, patentes, licencias)",
+          "puntuacion": 4,
+          "evidencia": "Patentes de Dupixent hasta 2031 y franquicia de vacunas con barreras de fabricación; pero la cartera de relevo ha fallado (amlitelimab, itepekimab, tolebrutinib) [B6]."
+        },
+        {
+          "fuente": "Ventaja en costes",
+          "puntuacion": 2,
+          "evidencia": "Escala de fabricación en vacunas; margen operativo business del 27,8 %, por debajo de Novartis o Merck (EBITDA del 40-43 %) [A12, D6]."
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 3,
+          "evidencia": "Pocos fabricantes de vacunas de gripe a escala mundial."
+        }
+      ]
+    },
+    "amenazas": "La mayor amenaza es la propia patente de Dupixent: la empresa reconoce que no podrá compensar en ventas su pérdida de exclusividad [15]. Le siguen la competencia de Ebglyss y Rinvoq en dermatitis, la presión de precios en EE. UU. y la erosión de las vacunas de gripe. Probabilidad alta de una caída de ventas en 2031-2032; la duda es su tamaño."
+  },
+  "financieros": {
+    "cuenta": [
+      {
+        "periodo": "2022",
+        "ingresos": 42997,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": null,
+        "amortizaciones": null,
+        "ebit": 13040,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 10341,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 8.26,
+        "dpa": 3.56,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 1252
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 37817,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": null,
+        "amortizaciones": null,
+        "ebit": 11178,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 9077,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 7.25,
+        "dpa": 3.76,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 1252
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 41081,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 12986,
+        "amortizaciones": 1643,
+        "ebit": 11343,
+        "resultado_financiero": -231,
+        "bai": 11112,
+        "impuestos": 2200,
+        "minoritarios": 0,
+        "beneficio_neto": 8912,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 7.12,
+        "dpa": 3.92,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 1251.4
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 43626,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 13904,
+        "amortizaciones": 1776,
+        "ebit": 12128,
+        "resultado_financiero": -199,
+        "bai": 11929,
+        "impuestos": 2374,
+        "minoritarios": 0,
+        "beneficio_neto": 9555,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 7.83,
+        "dpa": 4.12,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 1220.4
+      }
+    ],
+    "ltm": {
+      "periodo": "LTM dic-25",
+      "fecha_fin": "2025-12-31",
+      "ingresos": 43626,
+      "ebitda": 13904,
+      "ebit": 12128,
+      "beneficio_neto": 9555,
+      "bpa": 7.83,
+      "dpa": 4.12,
+      "dpa_extraordinario": 0,
+      "fcf": 8100,
+      "participadas_en_ebitda": null,
+      "no_recurrentes_en_ebitda": null
+    },
+    "cambios_perimetro": [
+      {
+        "periodo": "2023",
+        "descripcion": "Opella (salud de consumo) pasa a actividad interrumpida a finales de 2024 y la empresa reexpresa 2023: las ventas bajan de 43.070 a 37.817 M; 2022 no está reexpresado en lo que hemos podido leer."
+      },
+      {
+        "periodo": "2025",
+        "descripcion": "Venta del 50 % de Opella a CD&R (30-abr-2025; Sanofi conserva el 48,2 %, por puesta en equivalencia) y compra de Blueprint Medicines (julio de 2025)."
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "Sin Opella, las ventas pasan de 37.817 M en 2023 a 43.626 M en 2025 (+7,4 % anual en euros) [2, 3], con un 9,9 % a tipo constante en 2025 [12]. El margen operativo business baja de 29,6 % en 2023 a 27,6 % en 2024 por la inversión en I+D y lanzamientos, y se recupera al 27,8 % en 2025 [3, 12]. En el 1S26 las ventas crecen un 15,7 % a tipo constante y el BPA business un 22,7 %, con efectos puntuales y recompras [1, 9]; el 2T26 dio 11.597 M de ventas y 2,09 EUR de BPA business [1]. El beneficio business pasó de 8.912 M a 9.555 M (+7,2 %) [2].",
+    "ajustes": "Usamos la base business de Sanofi. En 2025 el beneficio NIIF fue de 7.813 M, de los que 2.874 M salen de Opella (plusvalía de 2.610 M por la pérdida de control) [2]; el BPA NIIF fue de 6,40 EUR frente a 7,83 de business. La diferencia recurrente son la amortización de intangibles adquiridos (no es caja) y la reestructuración (≈1.000-1.500 M al año, sí es caja, por eso el DCF resta 2,5 puntos de margen). En el 1S26 hay un deterioro de 952 M por amlitelimab [18], fuera del business."
+  },
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "1S25",
+        "ingresos": 19889,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": null,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "2S25",
+        "ingresos": 23737,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": null,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1S26",
+        "ingresos": null,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": 15.7,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": null,
+        "vs_consenso": "Superior"
+      }
+    ],
+    "confianza": "Media",
+    "ultima_presentacion": "En el 2T26 (30-jul) la dirección subió la guía de ventas a ≈+10 % a tipo constante, con el BPA business creciendo algo más, y avisó de que el segundo semestre será más lento por comparaciones más duras; tipo impositivo del ≈21 % [1, 9]. Garijo presentó su visión: revisión estratégica de la cartera en fase avanzada «todavía en curso» y más disciplina en costes [18]. Los analistas preguntaron sobre todo por el relevo de Dupixent y por los efectos puntuales del trimestre: sin recompras ni partidas puntuales, el BPA habría crecido ≈21 % y no 33 % [9]. La acción cayó un 8-9 % ese día [35]. En el 4T25 (29-ene) el director financiero había dicho que la pérdida de exclusividad de Dupixent «no se puede compensar» en ventas [15]."
+  },
+  "balance": {
+    "historico": [
+      {
+        "periodo": "2025",
+        "activo_total": 126805,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 55095,
+        "fondo_comercio": 41300,
+        "intangibles": 17530,
+        "inmovilizado_material": null,
+        "existencias": 10214,
+        "clientes": 11046,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 7657,
+        "deuda_financiera": 18665,
+        "arrendamientos": null,
+        "patrimonio_neto": 71710,
+        "minoritarios": null,
+        "reservas": null
+      }
+    ],
+    "vencimientos": [],
+    "liquidez": "Caja de 7.657 M EUR a 31-dic-2025 [2]; emisión de 2.300 M en bonos EMTN en el 2T26 [13].",
+    "rating": null,
+    "coste_deuda_pct": null,
+    "vida_media_anios": null,
+    "confianza": "Baja",
+    "otros_pasivos": "Sin el balance completo no podemos detallar pensiones, provisiones ni litigios. Sabemos que la deuda neta pasó de 8.772 M (2024) a 11.008 M (2025) y a 15.513 M en junio de 2026, tras pagar el dividendo de mayo, la recompra de 1.000 M y compras de desarrollo; Sanofi emitió 2.300 M de bonos en el 2T26 [2, 8, 13]. El pago inicial de 1.000 M USD a Regeneron (oct-2026) va como deuda en el puente. Los litigios del Zantac en EE. UU. siguen siendo una contingencia que no hemos podido cuantificar.",
+    "comentario": "La deuda neta de 15.513 M es poco más de una vez el EBITDA business (1,1 veces): holgura para seguir comprando. El circulante es alto (existencias de 10.214 M y clientes de 11.046 M, el 48,7 % de las ventas) [6], aunque en 2025 bajó casi 30 días de existencias, lo que explica parte del salto del flujo de caja libre [12]."
+  },
+  "flujos": {
+    "historico": [
+      {
+        "periodo": "2023",
+        "flujo_operativo": 10258,
+        "capex": 2906,
+        "pagos_arrendamientos": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": null,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 8914,
+        "capex": 3195,
+        "pagos_arrendamientos": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": null,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 10917,
+        "capex": 2817,
+        "pagos_arrendamientos": null,
+        "adquisiciones": null,
+        "desinversiones": 10400,
+        "dividendos": null,
+        "recompras": 5000,
+        "emision_acciones": null,
+        "intereses_en_financiacion": 0
+      }
+    ],
+    "confianza": "Baja",
+    "comentario": "El flujo operativo pasó de 10.258 M (2023) a 8.914 M (2024) y 10.917 M (2025) [7]; el flujo libre según Sanofi llegó a 8.100 M en 2025 (18,5 % de las ventas, +35,8 %) y a 3.724 M en el 1S26 [8, 12]. Parte de 2025 es la caída de existencias, no repetible. El capex de 2025 (2.817 M) es estimación propia: flujo operativo menos flujo libre. En 2025 entraron ≈10.400 M netos por Opella y salieron 5.000 M en recompras (3.000 M a L’Oréal) [2, 24]."
+  },
+  "calidad": {
+    "auditor": null,
+    "anios_auditor": null,
+    "opinion": null,
+    "comentario": "La distancia entre el beneficio business (9.555 M) y el NIIF de operaciones continuadas es grande y recurrente: amortización de intangibles comprados y reestructuraciones de 1.000-1.500 M todos los años [2]. Tratamos la reestructuración como coste de caja. En 2025 el BPA NIIF lo infla la plusvalía de Opella (2.610 M) [2]; en 2026 lo rebaja el deterioro de amlitelimab (952 M) [18]. El Altman Z de 1,62 no es significativo en una farmacéutica con 58.830 M de fondo de comercio e intangibles; Piotroski y Beneish no se pueden calcular sin balance de varios años. No hemos podido leer el informe del auditor.",
+    "senales": [
+      {
+        "senal": "Beneficio business muy por encima del NIIF",
+        "nivel": "Media",
+        "comentario": "La reestructuración se repite cada año; la restamos en el DCF."
+      },
+      {
+        "senal": "Efectos puntuales en el 2T26",
+        "nivel": "Baja",
+        "comentario": "La propia empresa reconoce que sin ellos y sin recompras el BPA crece ≈21 % [9]."
+      }
+    ],
+    "confianza": "Baja"
+  },
+  "rentabilidad": {
+    "comentario": "Con la base business, el ROIC de 2025 es del 11,7 %, unos 5 puntos por encima del WACC del 6,69 %: crea valor, pero poco para una farmacéutica de patente, porque el capital invertido (82.718 M) lleva 41.300 M de fondo de comercio de compras pasadas (Genzyme, Bioverativ, Blueprint) [6]. El ROE es del 13,3 %. Los comparables están entre el 14 % (Merck) y el 42 % (Lilly) [31]. No tenemos serie de capital para el ROIC incremental. Lo que mueve el ROIC es el margen: la rotación (0,34 veces) es baja por los intangibles.",
+    "confianza": "Media"
+  },
+  "capital": {
+    "politica": "Dividendo creciente: 4,12 EUR por acción por 2025, pagado en mayo de 2026 (+5 %) [29, 35]. Recompras: 5.000 M terminados en 2025 (incluidos 3.000 M a L’Oréal a 101,50 EUR) y 1.000 M en 2026, ya ejecutados en el 1S26 (12,6 M de acciones) [14, 24]. Prioridades declaradas: dividendo, desarrollo de negocio para rellenar la cartera antes de 2031 y recompras con lo que sobre [15].",
+    "adquisiciones": [
+      {
+        "anio": "2025",
+        "objetivo": "Venta del 50 % de Opella (consumo) a CD&R",
+        "importe": 10400,
+        "ev_ebitda": null,
+        "financiacion": "Entrada de caja neta",
+        "resultado": "Plusvalía de 2.610 M; Sanofi conserva el 48,2 % [2, 11]."
+      },
+      {
+        "anio": "2025",
+        "objetivo": "Recompra del 2,3 % del capital a L’Oréal",
+        "importe": 3000,
+        "ev_ebitda": null,
+        "financiacion": "Caja",
+        "resultado": "A 101,50 EUR por acción, un 39 % por encima del precio actual [24]."
+      },
+      {
+        "anio": "2026",
+        "objetivo": "Acuerdo con Regeneron: cuatro moléculas nuevas y fin de litigios",
+        "importe": 892,
+        "ev_ebitda": null,
+        "financiacion": "Caja (1.000 M USD iniciales y hasta 7.000 M USD por hitos)",
+        "resultado": "Pendiente; el mercado lo castigó al día siguiente [19, 34]."
+      }
+    ],
+    "comentario": "La asignación de capital de 2019-2025 deja un saldo pobre: se recompraron acciones a más de 100 EUR (hoy 73,10) y las grandes apuestas de I+D (amlitelimab, itepekimab, tolebrutinib) han fallado [18, 24]. La venta de Opella sí se hizo a buen precio. La nueva dirección empieza con acuerdos de riesgo compartido, más baratos que una gran compra, pero todavía sin resultados.",
+    "confianza": "Media"
+  },
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "Belén Garijo",
+        "cargo": "Consejera delegada",
+        "desde": "2026",
+        "participacion_pct": null,
+        "trayectoria": "Consejera delegada de Merck KGaA desde 2021; antes, 15 años en Sanofi al frente de las operaciones farmacéuticas en Europa y Canadá y miembro del comité ejecutivo [17, 21]. En sus primeros cinco meses ha cortado amlitelimab e itepekimab y ha cerrado la paz con Regeneron con un acuerdo de hasta 8.000 M USD [22, 23]."
+      },
+      {
+        "nombre": "Frédéric Oudéa",
+        "cargo": "Presidente no ejecutivo",
+        "desde": null,
+        "participacion_pct": null,
+        "trayectoria": "Ex consejero delegado de Société Générale; respaldó públicamente el relevo de Paul Hudson por Garijo [21]."
+      },
+      {
+        "nombre": "Olivier Charmeil",
+        "cargo": "Vicepresidente ejecutivo, Medicina General (consejero delegado interino feb-abr 2026)",
+        "desde": null,
+        "participacion_pct": null,
+        "trayectoria": "Dirigió el grupo entre la salida de Hudson (17-feb-2026) y la llegada de Garijo [21]."
+      }
+    ],
+    "historial_guidance": [
+      {
+        "anio": "2025",
+        "guia": "Crecimiento de ventas de un dígito alto a tipo constante y BPA business con crecimiento de doble dígito bajo",
+        "real": "Ventas +9,9 % y BPA business +15,0 % a tipo constante",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2026",
+        "guia": "Inicial: ventas de un dígito alto y BPA algo por encima; elevada en julio a ≈+10 % de ventas",
+        "real": "1S26: ventas +15,7 % y BPA business +22,7 % a tipo constante",
+        "cumplida": "Parcial"
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "Equipo en transición: la consejera delegada lleva cinco meses y su predecesor salió de forma abrupta, sin sucesión anunciada [21]. Garijo conoce la casa (15 años en Sanofi) y ha actuado rápido: revisión de la cartera, cortes de programas y acuerdo con Regeneron [22, 23]. La guía se ha cumplido o superado en 2025 y 2026, lo que da credibilidad a las cifras de corto plazo; la duda es la cartera."
+  },
+  "gobierno": {
+    "consejo": [
+      {
+        "nombre": "Frédéric Oudéa",
+        "cargo": "Presidente",
+        "tipo": "Independiente",
+        "desde": null,
+        "comisiones": null
+      },
+      {
+        "nombre": "Belén Garijo",
+        "cargo": "Consejera delegada",
+        "tipo": "Ejecutivo",
+        "desde": "2026",
+        "comisiones": null
+      }
+    ],
+    "presidente_ceo_separados": true,
+    "presidente_ejecutivo": false,
+    "consejero_coordinador": null,
+    "una_accion_un_voto": false,
+    "operaciones_vinculadas_relevantes": false,
+    "variable_ligado_rentabilidad": null,
+    "auditoria_independiente": null,
+    "insiders_sin_operaciones": false,
+    "accionista_control": false,
+    "presidente_vinculado_control": false,
+    "cambios_cupula_24m": 2,
+    "voto_remuneracion_pct": null,
+    "voto_remuneracion_contra_pct": null,
+    "voto_remuneracion_contra_libre_pct": null,
+    "voto_cupula_pct": null,
+    "remuneracion_ceo": null,
+    "accionistas": [
+      {
+        "nombre": "L’Oréal",
+        "pct": 7.2,
+        "tipo": "Industrial (13,1 % de los derechos de voto)",
+        "variacion": "Bajó del 9,4 % al vender 29,6 M de acciones a Sanofi por 3.000 M EUR (101,50 EUR/acción) en febrero de 2025 [24]"
+      },
+      {
+        "nombre": "Empleados y antiguos empleados",
+        "pct": 2.93,
+        "tipo": "Plan de accionariado",
+        "variacion": "Plan «Action 2026» a 59,87 EUR (descuento del 20 %) en junio de 2026 [25]"
+      },
+      {
+        "nombre": "Autocartera",
+        "pct": 0.6,
+        "tipo": "Autocartera",
+        "variacion": "Estimación propia: derechos de voto teóricos menos reales a 31-ago-2026 (≈7,2 M de acciones) [26]"
+      }
+    ],
+    "insiders": [],
+    "alertas": [
+      "Relevo no previsto del consejero delegado: el consejo no renovó a Paul Hudson (salida el 17-feb-2026) [21].",
+      "Doble derecho de voto: 1.343 M de derechos teóricos sobre 1.208 M de acciones (31-ago-2026) [26]."
+    ],
+    "confianza": "Baja",
+    "remuneracion": "No hemos podido leer la política de remuneración ni el resultado de los votos de la junta del 29-abr-2026 (hueco registrado).",
+    "control_y_defensas": "No hay accionista de control: L’Oréal tiene el 7,2 % del capital y el 13,1 % de los votos por el doble derecho de voto francés a los títulos nominativos de más de dos años [24]. Ese doble voto (1.343 M de derechos teóricos sobre 1.208 M de acciones) da más peso a L’Oréal y a los empleados (2,93 %) que a los fondos [25, 26]. Presidente no ejecutivo separado de la consejera delegada."
+  },
+  "consenso": {
+    "estimaciones": [
+      {
+        "periodo": "2026e",
+        "ingresos": null,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 8.58,
+        "dpa": null,
+        "fuente": "Idéal Investisseur, 15-sep-2026: PER 2026e de consenso de 8,65 a 74,21 EUR (BPA implícito, cálculo propio) [29]"
+      }
+    ],
+    "recomendaciones": {
+      "n_analistas": 24,
+      "comprar": null,
+      "mantener": null,
+      "vender": null,
+      "po_medio": 90,
+      "po_min": 78,
+      "po_max": 100
+    },
+    "base_ebitda": "NIIF",
+    "ajuste_ebitda_pct_ventas": null,
+    "confianza": "Baja",
+    "guidance": "Guía de 2026, elevada el 30-jul: ventas ≈+10 % a tipo constante y BPA business algo por encima, tipo impositivo del ≈21 % [1]. No hay objetivos a medio plazo vigentes de la nueva dirección; la anterior decía que no podrá compensar en ventas la pérdida de Dupixent [15].",
+    "revisiones": "Solo una fuente legible con datos de consenso en euros: Idéal Investisseur. El objetivo mediano bajó de 95 EUR (20-jul, 23 analistas, mayoría «comprar») a 90 EUR (15-sep, 24 analistas, «pondérer») [29, 33]. UBS rebajó a Neutral en enero (objetivo de 105 a 88 EUR) por la cartera y la patente de Dupixent [30]. El BPA 2026e implícito es de ≈8,58 EUR (PER de 8,65 a 74,21)."
+  },
+  "bolsa": null,
+  "multiplos_historicos": {
+    "serie": [
+      {
+        "anio": "2022",
+        "precio_cierre": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2023",
+        "precio_cierre": 89.76,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2024",
+        "precio_cierre": 91.5,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2025",
+        "precio_cierre": 82.72,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "A 73,10 EUR, el PER sobre el BPA business de 2025 es de 9,3 veces, frente a 11,1 (2023), 12,9 (2024) y 10,6 (2025) al cierre de cada año [2, 28]. El descuento se ha ampliado por el fracaso de la cartera y la cercanía de 2031: a cinco años del vencimiento el mercado ya descuenta una caída del beneficio."
+  },
+  "comparables": {
+    "empresas": [
+      {
+        "nombre": "Eli Lilly",
+        "ticker": "LLY",
+        "pais": "US",
+        "capitalizacion": 910000,
+        "ev_ventas": 13.34,
+        "ev_ebitda_ltm": 25.5,
+        "ev_ebitda_ntm": 20.6,
+        "per_ntm": 26.7,
+        "crecimiento_pct": 24.4,
+        "margen_ebitda_pct": 52.4,
+        "roic_pct": 42.2,
+        "dn_ebitda": 1.08,
+        "fcf_yield_pct": 1.75
+      },
+      {
+        "nombre": "AstraZeneca",
+        "ticker": "AZN",
+        "pais": "GB",
+        "capitalizacion": 219111,
+        "ev_ventas": 4.44,
+        "ev_ebitda_ltm": 13.5,
+        "ev_ebitda_ntm": 11.4,
+        "per_ntm": 18.3,
+        "crecimiento_pct": 7.8,
+        "margen_ebitda_pct": 33,
+        "roic_pct": 16.1,
+        "dn_ebitda": 1.35,
+        "fcf_yield_pct": 4.28
+      },
+      {
+        "nombre": "Novartis",
+        "ticker": "NOVN",
+        "pais": "CH",
+        "capitalizacion": 241237,
+        "ev_ventas": 5.47,
+        "ev_ebitda_ltm": 13.4,
+        "ev_ebitda_ntm": 12.5,
+        "per_ntm": 17.2,
+        "crecimiento_pct": 7,
+        "margen_ebitda_pct": 40.7,
+        "roic_pct": 18.8,
+        "dn_ebitda": 1.79,
+        "fcf_yield_pct": 6.13
+      },
+      {
+        "nombre": "Merck & Co",
+        "ticker": "MRK",
+        "pais": "US",
+        "capitalizacion": 307900,
+        "ev_ventas": 5.88,
+        "ev_ebitda_ltm": 13.6,
+        "ev_ebitda_ntm": 13.3,
+        "per_ntm": 20.9,
+        "crecimiento_pct": 4.3,
+        "margen_ebitda_pct": 43.4,
+        "roic_pct": 14.1,
+        "dn_ebitda": 1.62,
+        "fcf_yield_pct": 4.56
+      },
+      {
+        "nombre": "GSK",
+        "ticker": "GSK",
+        "pais": "GB",
+        "capitalizacion": 82728,
+        "ev_ventas": 2.54,
+        "ev_ebitda_ltm": 7.8,
+        "ev_ebitda_ntm": 6.9,
+        "per_ntm": 11.7,
+        "crecimiento_pct": 5.4,
+        "margen_ebitda_pct": 32.6,
+        "roic_pct": 26.4,
+        "dn_ebitda": 1.4,
+        "fcf_yield_pct": 9.63
+      },
+      {
+        "nombre": "Novo Nordisk",
+        "ticker": "NOVO B",
+        "pais": "DK",
+        "capitalizacion": 139660,
+        "ev_ventas": 3.64,
+        "ev_ebitda_ltm": 6.9,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 11.7,
+        "crecimiento_pct": -2.7,
+        "margen_ebitda_pct": 52.7,
+        "roic_pct": 39.2,
+        "dn_ebitda": 0.55,
+        "fcf_yield_pct": 6.9
+      }
+    ],
+    "confianza": "Media",
+    "criterio": "Grandes farmacéuticas europeas y estadounidenses con cartera de patentes y vacunas: AstraZeneca, Novartis, GSK (la más parecida por vacunas y descuento), Merck & Co (vencimiento de Keytruda en 2028), Novo Nordisk y Eli Lilly. Lilly cotiza con múltiplos de crecimiento (obesidad) y distorsiona la media: pesamos la mediana. Cifras del informe de Roche de este repositorio (8-oct-2026), pasadas de CHF a EUR [31].",
+    "comentario": "Sanofi cotiza a 8,5 veces el beneficio de los próximos 12 meses frente a una mediana de 17,2 en los comparables, y a 7,5 veces el EBITDA. Solo GSK y Novo (11,7 veces) se acercan. Parte del descuento está justificada: menor ROIC (11,7 %), precipicio de Dupixent en 2031 y cartera fallida. Por eso damos solo un 10 % de peso a los comparables: aplicar su mediana daría valores de 140-170 EUR que suponen un perfil de patentes que Sanofi no tiene."
+  },
+  "transacciones": null,
+  "dcf": {
+    "anios": [
+      {
+        "periodo": "2026e",
+        "crecimiento_pct": 8,
+        "margen_ebitda_pct": 30,
+        "amortizacion_pct_ventas": 4,
+        "capex_pct_ventas": 7.5,
+        "nwc_pct_ventas": 48,
+        "tasa_impositiva_pct": 21,
+        "fijo": true
+      },
+      {
+        "periodo": "2027e",
+        "crecimiento_pct": 6,
+        "margen_ebitda_pct": 30.5,
+        "amortizacion_pct_ventas": 4,
+        "capex_pct_ventas": 7.5,
+        "nwc_pct_ventas": 48,
+        "tasa_impositiva_pct": 21,
+        "fijo": false
+      },
+      {
+        "periodo": "2028e",
+        "crecimiento_pct": 5,
+        "margen_ebitda_pct": 31,
+        "amortizacion_pct_ventas": 4,
+        "capex_pct_ventas": 7.5,
+        "nwc_pct_ventas": 48,
+        "tasa_impositiva_pct": 21,
+        "fijo": false
+      },
+      {
+        "periodo": "2029e",
+        "crecimiento_pct": 4,
+        "margen_ebitda_pct": 31,
+        "amortizacion_pct_ventas": 4,
+        "capex_pct_ventas": 7.5,
+        "nwc_pct_ventas": 48,
+        "tasa_impositiva_pct": 21,
+        "fijo": false
+      },
+      {
+        "periodo": "2030e",
+        "crecimiento_pct": 2,
+        "margen_ebitda_pct": 30.5,
+        "amortizacion_pct_ventas": 4,
+        "capex_pct_ventas": 7.5,
+        "nwc_pct_ventas": 48,
+        "tasa_impositiva_pct": 21,
+        "fijo": false
+      },
+      {
+        "periodo": "2031e",
+        "crecimiento_pct": -6,
+        "margen_ebitda_pct": 28.5,
+        "amortizacion_pct_ventas": 4,
+        "capex_pct_ventas": 7.5,
+        "nwc_pct_ventas": 48,
+        "tasa_impositiva_pct": 21,
+        "fijo": false
+      },
+      {
+        "periodo": "2032e",
+        "crecimiento_pct": -8,
+        "margen_ebitda_pct": 26.5,
+        "amortizacion_pct_ventas": 4,
+        "capex_pct_ventas": 7.5,
+        "nwc_pct_ventas": 48,
+        "tasa_impositiva_pct": 21,
+        "fijo": false
+      },
+      {
+        "periodo": "2033e",
+        "crecimiento_pct": -2,
+        "margen_ebitda_pct": 26.5,
+        "amortizacion_pct_ventas": 4,
+        "capex_pct_ventas": 7.5,
+        "nwc_pct_ventas": 48,
+        "tasa_impositiva_pct": 21,
+        "fijo": false
+      },
+      {
+        "periodo": "2034e",
+        "crecimiento_pct": 2,
+        "margen_ebitda_pct": 27,
+        "amortizacion_pct_ventas": 4,
+        "capex_pct_ventas": 7.5,
+        "nwc_pct_ventas": 48,
+        "tasa_impositiva_pct": 21,
+        "fijo": false
+      },
+      {
+        "periodo": "2035e",
+        "crecimiento_pct": 2,
+        "margen_ebitda_pct": 27,
+        "amortizacion_pct_ventas": 4,
+        "capex_pct_ventas": 7.5,
+        "nwc_pct_ventas": 48,
+        "tasa_impositiva_pct": 21,
+        "fijo": false
+      }
+    ],
+    "wacc": {
+      "tasa_libre_pct": 3.53,
+      "beta": 0.7,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 0,
+      "coste_deuda_pct": 3.5,
+      "tasa_impositiva_pct": 21,
+      "peso_deuda_pct": 15
+    },
+    "terminal": {
+      "metodo": "gordon",
+      "crecimiento_pct": 1.5,
+      "multiplo_salida": 8
+    },
+    "etapa2": {
+      "usar": false,
+      "anios": 5,
+      "margen_final_pct": null,
+      "justificacion": null
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "Ventas de 2026e +8 % en euros (guía de ≈+10 % a tipo constante con −2 puntos de divisa) [1]; +6 % y +5 % en 2027e-2028e por Dupixent y lanzamientos, frente al +7,4 % anual de 2023-2025 [2, 3]; +4 % y +2 % en 2029e-2030e y caídas del 6 % y del 8 % en 2031e-2032e por la pérdida de exclusividad de Dupixent en EE. UU. (marzo de 2031) [15]; −2 % en 2033e y +2 % después. La caída acumulada (≈−14 %) es menor que los 17.300 M de ventas de Dupixent en riesgo según JPMorgan porque suponemos que el resto de la cartera y las compras compensan la mitad [20].",
+      "margenes": "Margen EBITDA del DCF = margen business (resultado operativo business + amortización) − 2,5 puntos por la reestructuración recurrente. El margen business con amortización fue del 31,9 % en 2025 [2, 5]; proyectamos 30,0-31,0 % hasta 2029e (equivale a un margen operativo business del 28,5-29,5 %, en línea con la guía de BPA algo por encima de las ventas) y una bajada a 26,5-27,0 % tras el vencimiento, porque Dupixent es el producto de más margen.",
+      "inversion": "Capex del 7,5 % de las ventas: el 6,4 % de 2025 (2.817 M, estimación propia) más ≈1 punto de licencias y pagos iniciales de desarrollo de negocio, recurrentes en una farmacéutica que debe rellenar su cartera [7, 12]. Amortización del 4,0 % (1.776 M en 2025) [5]. Circulante del 48 % de las ventas, constante (existencias + clientes sin proveedores).",
+      "wacc": "Tasa libre del 3,53 % (Bund a 10 años, 12-oct-2026) [32]; beta de 0,7 (farmacéutica defensiva; la de 0,37 de Simply Wall St no es la mensual de 5 años y no la usamos); prima de mercado del 5,5 %; sin prima adicional. Deuda del 15 % al 3,5 % antes de impuestos. WACC del 6,69 %. Con la prima implícita del mercado (4,2 %) baja al 5,91 %.",
+      "terminal": "Crecimiento terminal del 1,5 %, por debajo de la inflación esperada en euros más un crecimiento real, porque cada década la farmacéutica pierde sus productos estrella: el terminal supone que Sanofi repone su cartera, no que la amplía. El valor terminal pesa el 56 % del DCF."
+    },
+    "sostenibilidad": {
+      "puente_ingresos": [
+        {
+          "periodo": "2026e",
+          "volumen_pct": 12,
+          "precio_pct": -1.5,
+          "otros_pct": -2.5,
+          "comentario": "Guía de ≈+10 % a tipo constante: volumen de Dupixent y lanzamientos (+12 %), precio −1,5 % (insulinas y gripe) y −2,5 % de divisa [1]."
+        },
+        {
+          "periodo": "2027e",
+          "volumen_pct": 8,
+          "precio_pct": -1.5,
+          "otros_pct": -0.5,
+          "comentario": "Dupixent sigue creciendo en nuevas indicaciones (EPOC, urticaria); vacunas planas."
+        },
+        {
+          "periodo": "2028e",
+          "volumen_pct": 7,
+          "precio_pct": -1.5,
+          "otros_pct": -0.5,
+          "comentario": "Menor crecimiento de Dupixent, aporte de Blueprint y lanzamientos."
+        },
+        {
+          "periodo": "2029e",
+          "volumen_pct": 6,
+          "precio_pct": -1.5,
+          "otros_pct": -0.5,
+          "comentario": "Último año completo de exclusividad de Dupixent en EE. UU."
+        },
+        {
+          "periodo": "2030e",
+          "volumen_pct": 4,
+          "precio_pct": -1.5,
+          "otros_pct": -0.5,
+          "comentario": "Comparaciones más duras; anticipación del vencimiento en las negociaciones de precios."
+        }
+      ],
+      "mercado_final": null,
+      "veredicto": "En parte",
+      "justificacion": "El crecimiento medio proyectado (1,3 % anual) es inferior al financiable con la reinversión prevista (2,3 % al ROIC del 11,7 %), así que la prueba de reinversión pasa sin rebajar el base. Pero el crecimiento de 2026-2030 descansa en un solo producto cuya patente vence en 2031 y en una cartera que acaba de fallar; la caída de 2031-2032 está en el modelo, su tamaño no se puede contrastar con cuotas de mercado (sin dato) y el «rendimiento del capital nuevo» del −4,0 % refleja precisamente esa caída. Por eso el veredicto es «En parte»."
+    },
+    "lectura": "El DCF da 93,36 EUR por acción, un 27,7 % por encima de los 73,10 EUR, con el valor terminal en el 56 %. El DCF inverso dice que el precio descuenta una caída de las ventas del 4,9 % anual en los años no fijos, frente al 0,6 % de nuestro caso base, o, visto de otra forma, una rentabilidad implícita del 8,1 % frente a un WACC del 6,69 %. Es una lectura conservadora: el mercado valora a Sanofi como si el precipicio de Dupixent llegara mañana y no hubiera reposición, cuando la empresa todavía tiene cinco años de crecimiento con una guía que viene cumpliendo. El riesgo es que tenga razón en el largo plazo: si la caída de 2031-2032 duplica la nuestra y el margen no se recupera, el valor se acerca al del bajista (73,51 EUR).",
+    "confianza": "Media"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": -2,
+        "ajuste_margen_pp": -1.5,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": 1,
+        "multiplo_salida": null,
+        "narrativa": "Dupixent pierde cuota antes de 2031 frente a moléculas de dosis espaciada y la caída tras el vencimiento es más profunda; la cartera no repone y el margen baja 1,5 puntos. Es lo que vivió Sanofi con Lantus en 2015-2018."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Se cumple la guía de 2026, Dupixent crece hasta 2030, las ventas caen un 14 % en 2031-2033 y el resto de la cartera y las compras compensan la mitad de la pérdida."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": 1.5,
+        "ajuste_margen_pp": 1,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Las patentes secundarias retrasan los biosimilares y la nueva dirección cierra acuerdos que reponen el crecimiento: +1,5 puntos de crecimiento y +1 de margen."
+      }
+    ],
+    "comentario": "El bajista (73,51 EUR) queda prácticamente en el precio actual (+0,6 %), el base da 93,36 y el alcista 105,89 (+44,9 %): el precio ya descuenta algo peor que nuestro bajista. La asimetría no se puede calcular como cociente porque el bajista no pierde, lo que dice que el riesgo está más en el tiempo (cuándo reconoce el mercado el valor) que en la cifra.",
+    "confianza": "Media"
+  },
+  "suma_partes": {
+    "aplica": false,
+    "descuento_holding_pct": 0,
+    "partes": [],
+    "comentario": "No aplica: Dupixent, vacunas y el resto de farma comparten I+D, fabricación y red comercial, y no publican resultado por segmento.",
+    "confianza": "Media"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2026-06-30",
+      "deuda_financiera": 15513,
+      "arrendamientos": 0,
+      "caja": 0,
+      "minoritarios": 0,
+      "pensiones": 0,
+      "asociadas": 0,
+      "otros_ajustes": 892
+    },
+    "rab": null,
+    "referencia_mercado": {
+      "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+      "prima_implicita_pct": 4.2,
+      "fecha": "2026-10",
+      "fuente": "Damodaran, ERPbymonth.xlsx [38]"
+    },
+    "pesos": {
+      "dcf": 60,
+      "comparables": 10,
+      "transacciones": 0,
+      "suma_partes": 0,
+      "escenarios": 30
+    },
+    "objetivo_12m": {
+      "ejercicio": "2028e",
+      "casos": [
+        {
+          "escenario": "Bajista",
+          "metrica": "PER 2028e (BPA business)",
+          "beneficio_por_accion": 8.91,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 2028e de 50.473 M (−2 puntos de crecimiento anual) y margen operativo business del 28,0 %: BPA de 8,91 EUR. Dupixent se frena y el mercado aplica un PER aún más bajo."
+        },
+        {
+          "escenario": "Base",
+          "metrica": "PER 2028e (BPA business)",
+          "beneficio_por_accion": 9.79,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 52.440 M, margen operativo business del 29,5 %, intereses de 500 M e impuestos del 21 %: BPA de 9,79 EUR sobre 1.203 M de acciones, sin recompras nuevas."
+        },
+        {
+          "escenario": "Alcista",
+          "metrica": "PER 2028e (BPA business)",
+          "beneficio_por_accion": 10.43,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 53.942 M y margen del 30,5 %: BPA de 10,43 EUR; el mercado devuelve parte del descuento a la vista de una cartera que repone."
+        }
+      ],
+      "per_historico": {
+        "actual": 8,
+        "mediana_5a": 12.4,
+        "minimo_5a": 11.7,
+        "media_larga": 12.2,
+        "base": "adelantado",
+        "anios": 3,
+        "excluidos": "Historia ADELANTADA (precio de cierre de cada año ÷ BPA real del año siguiente, como el PER actual), construida el 2026-10-14 con los cierres y el BPA del informe y cierres de Yahoo Finance para los años sin cierre: 2022 12.4x [Yahoo/informe]; 2023 12.6x; 2024 11.7x. Sin años de pérdidas, PER ≥ 150x ni atípicos (a más de 3 veces o menos de un tercio de la mediana del resto, con cinco años o más); mediana y mínimo de los últimos 3 años, media larga de 3. Contraste de base: BPA propio del año siguiente 9.137 frente a 7.83 publicado en 2025 (+8 % anual). Historia corta (menos de cinco años). Historia al cierre anterior (v2): Ninguno excluido; solo hay precio de cierre de 2023-2025, así que la «mediana de 5 años» es la de tres años: 11,1x (2023: 89,76 ÷ 8,11, BPA business publicado entonces, con Opella), 12,9x (2024: 91,50 ÷ 7,12) y 10,6x (2025: 82,72 ÷ 7,83) [2, 4, 28]. Falta el cierre de 2022.",
+        "v2": {
+          "actual": 8,
+          "mediana_5a": 11.1,
+          "minimo_5a": 10.6,
+          "media_larga": 11.5,
+          "base": "cierre"
+        }
+      },
+      "comparables_per": {
+        "mediana": 17.2
+      },
+      "consenso": {
+        "bpa_ano1": 8.58,
+        "bpa_ano2": null,
+        "objetivo_medio": 90,
+        "objetivo_min": 78,
+        "objetivo_max": 100,
+        "analistas": 24,
+        "tendencia_3m": "recortes",
+        "fuente": "Idéal Investisseur, 15-sep-2026 y 20-jul-2026 [29, 33]"
+      },
+      "diferencia_consenso": "Nuestro BPA de 2026e (≈8,51 EUR) coincide con el implícito en el consenso (≈8,58) [29]. Nuestro precio base a 12 meses (78,32 EUR) queda un 13,0 % por debajo del objetivo medio de los analistas (90 EUR): la diferencia es el múltiplo, no el beneficio. Aplicamos la regla común (el PER actual de 8,0 veces, el menor frente a la mediana de 11,1), mientras los analistas suponen que el PER vuelve a ≈10 veces. No acercamos la cifra: es la regla.",
+      "media": null,
+      "comentario": "El objetivo a 12 meses (81,43 EUR) queda un 17 % por debajo del valor intrínseco (98,70 EUR). La distancia la cierra solo una prueba de que el hueco de 2031 es menor de lo que descuenta el mercado: victorias judiciales en las patentes de Dupixent o resultados de fase III de la cartera nueva. Ninguna tiene fecha en los próximos 12 meses, así que la tesis del valor intrínseco es a varios años; la de 12 meses descansa en el crecimiento del BPA (≈+7 % anual) y en el dividendo (5,6 %), sin necesidad de que el múltiplo suba."
+    },
+    "comentario": "Pesos: 60 % DCF, 30 % escenarios y 10 % comparables; sin transacciones (no hay múltiplos legibles). El DCF es el método que recoge el precipicio de 2031, que los múltiplos a 12 meses ignoran; por eso los comparables, que darían 140-170 EUR, pesan poco. El resultado, 98,70 EUR de valor intrínseco, queda un 35,0 % por encima del precio. La dispersión entre métodos es grande y se debe al calendario de patentes, no a los datos.",
+    "confianza": "Media"
+  },
+  "catalizadores": {
+    "items": [
+      {
+        "fecha": "30-oct-2026",
+        "evento": "Resultados del 3T26",
+        "efecto": "Confirmación de la guía de ≈+10 % y de Dupixent; prueba de que el 2S se modera como avisaron",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "Ene-2027",
+        "evento": "Resultados de 2026 y guía de 2027 con la nueva dirección",
+        "efecto": "Primera guía y posibles objetivos a medio plazo de Garijo",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2026-2027",
+        "evento": "Fin de la revisión estratégica de la cartera",
+        "efecto": "Más recortes o compras para rellenar el hueco de 2031",
+        "probabilidad": "Media",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "Abr-2027",
+        "evento": "Junta y dividendo de 2026",
+        "efecto": "Dividendo de ≈4,3 EUR si sigue la política de subidas",
+        "probabilidad": "Alta",
+        "sentido": "+"
+      },
+      {
+        "fecha": "2027-2028",
+        "evento": "Litigios de patentes de Dupixent",
+        "efecto": "Cada año de exclusividad extra más allá de marzo de 2031 vale varios euros por acción",
+        "probabilidad": "Media",
+        "sentido": "+/−"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "riesgos": {
+    "items": [
+      {
+        "riesgo": "Caída de Dupixent mayor o antes de lo previsto (biosimilares en 2031 o competencia de Ebglyss y Rinvoq)",
+        "tipo": "Patentes",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−21 % (escenario bajista: 73,51 EUR)",
+        "mitigante": "Patentes secundarias y nueva formulación de dosis espaciada [15]",
+        "senal": "Crecimiento de Dupixent por debajo del 15 % en 2027"
+      },
+      {
+        "riesgo": "Nuevos fracasos de la cartera tras amlitelimab, itepekimab y tolebrutinib",
+        "tipo": "I+D",
+        "probabilidad": "Alta",
+        "impacto": "Medio",
+        "efecto_valor": "−5 a −10 %",
+        "mitigante": "Acuerdo con Regeneron y compras",
+        "senal": "Deterioros en los resultados semestrales"
+      },
+      {
+        "riesgo": "Compra cara para rellenar el hueco de 2031",
+        "tipo": "Asignación de capital",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−5 %",
+        "mitigante": "Deuda neta de solo 1,1 veces el EBITDA",
+        "senal": "Anuncio de una compra de más de 15.000 M"
+      },
+      {
+        "riesgo": "Precios de medicamentos en EE. UU. (Medicare, nación más favorecida)",
+        "tipo": "Regulación",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−5 a −10 %",
+        "mitigante": "Dupixent fuera de las primeras listas de negociación",
+        "senal": "Inclusión de Dupixent en la negociación de Medicare"
+      },
+      {
+        "riesgo": "Vacunas de gripe a la baja en EE. UU.",
+        "tipo": "Comercial",
+        "probabilidad": "Media",
+        "impacto": "Bajo",
+        "efecto_valor": "−3 %",
+        "mitigante": "Beyfortus y expansión internacional [10]",
+        "senal": "Vacunas por debajo de 7.500 M anuales"
+      },
+      {
+        "riesgo": "Euro fuerte frente al dólar",
+        "tipo": "Divisa",
+        "probabilidad": "Media",
+        "impacto": "Bajo",
+        "efecto_valor": "−3 %",
+        "mitigante": "Costes parcialmente en dólares",
+        "senal": "EUR/USD por encima de 1,25"
+      }
+    ],
+    "premortem": "Octubre de 2029: la acción está en 45 EUR. Dupixent siguió creciendo hasta 2028, pero Lilly y AbbVie ganaron cuota en dermatitis con moléculas de dosis espaciada y los tribunales no extendieron la exclusividad más allá de marzo de 2031. La revisión de Garijo acabó en una compra de 20.000 M de una biotecnológica a 25 veces ventas que no aportó beneficio hasta 2030, y el mercado empezó a valorar a Sanofi por el beneficio de 2032, un 30 % inferior al de 2028. El dividendo dejó de subir. Las señales que lo habrían anticipado: el crecimiento de Dupixent por debajo del 15 % en 2027, la ausencia de victorias judiciales en las patentes secundarias y el tamaño de la compra.",
+    "confianza": "Media"
+  },
+  "esg": {
+    "calificaciones": [],
+    "materialidad": "Lo material para Sanofi es el acceso y precio de los medicamentos (presión política en EE. UU.), la seguridad del paciente y la calidad de fabricación de vacunas. No hemos podido leer calificaciones ESG desde la nube (hueco registrado).",
+    "controversias": "Litigios del Zantac en EE. UU. (ranitidina) y antiguas disputas con Regeneron, cerradas en el acuerdo del 1-oct-2026 [19]. No hemos podido cuantificar las provisiones.",
+    "confianza": "Baja"
+  },
+  "preguntas": {
+    "items": [
+      {
+        "tema": "Dupixent",
+        "pregunta": "¿Qué parte de las ventas de Dupixent de 2030 protegen las patentes secundarias más allá de marzo de 2031, y con qué calendario de litigios?",
+        "por_que": "Cada año de exclusividad extra vale varios euros por acción y decide entre nuestro base y nuestro bajista."
+      },
+      {
+        "tema": "Cartera",
+        "pregunta": "¿Qué activos de fase III quedan tras la revisión y qué ventas máximas esperan de ellos?",
+        "por_que": "Sin ellos, el valor terminal descansa en compras aún no hechas."
+      },
+      {
+        "tema": "Compras",
+        "pregunta": "¿Cuál es el tope de deuda neta que aceptaría la dirección para comprar?",
+        "por_que": "Con 1,1 veces el EBITDA hay margen para 30.000 M, que podrían destruir valor si se pagan caros."
+      },
+      {
+        "tema": "Regeneron",
+        "pregunta": "¿Qué hitos y qué calendario tienen los 7.000 M USD condicionados del nuevo acuerdo?",
+        "por_que": "Es una salida de caja de hasta el 7 % de la capitalización."
+      },
+      {
+        "tema": "Márgenes",
+        "pregunta": "¿Cuánto de la mejora del margen del 1S26 es recurrente?",
+        "por_que": "La propia empresa reconoce efectos puntuales en el BPA del 2T26."
+      },
+      {
+        "tema": "Opella",
+        "pregunta": "¿Cuál es el valor contable y el plan de salida del 48,2 % de Opella?",
+        "por_que": "No lo hemos incluido en el puente; podría añadir varios euros por acción."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sentimiento": {
+    "tono": "Negativo",
+    "tendencia": "Estable",
+    "revisadas": [
+      {
+        "plataforma": "Tradingsat / BFM Bourse (noticias con comentarios de lectores)",
+        "fecha": "2026-10",
+        "n_comentarios": 10,
+        "tono": "Dividido",
+        "resumen": "El acuerdo con Regeneron se celebra el 1-oct como «victoria» de Garijo y al día siguiente la acción es la peor del CAC 40: el mercado duda de pagar 1.000 M USD por cuatro moléculas tempranas [23, 34]."
+      },
+      {
+        "plataforma": "Tradingsat (resultados del 2T26)",
+        "fecha": "2026-07",
+        "n_comentarios": 10,
+        "tono": "Negativo",
+        "resumen": "Pese a subir la guía, la acción cae un 9 %: los lectores hablan de beneficios «de una sola vez» y de una cartera que no sustituye a Dupixent [35]."
+      },
+      {
+        "plataforma": "Tickeron (blog para particulares)",
+        "fecha": "2026-09",
+        "n_comentarios": 5,
+        "tono": "Dividido",
+        "resumen": "−8,3 % en 30 días: «reinicio de la cartera» frente al impulso de Dupixent, que pesa ≈42 % de las ventas del semestre [36]."
+      },
+      {
+        "plataforma": "ABC Bourse (análisis técnico y comentarios)",
+        "fecha": "2026-08",
+        "n_comentarios": 5,
+        "tono": "Neutro",
+        "resumen": "Horizonte estratégico «frágil», con un soporte técnico que aguanta; descuento frente al sector [37]."
+      }
+    ],
+    "temas": [
+      {
+        "tema": "El precipicio de Dupixent en 2031",
+        "postura": "Bajista",
+        "peso": "Alto",
+        "contraste": "Es el riesgo central también en nuestro modelo: suponemos caídas de ventas del 6 % y del 8 % en 2031e-2032e; JPMorgan cifra en 17.300 M las ventas en riesgo."
+      },
+      {
+        "tema": "Credibilidad de la cartera tras amlitelimab e itepekimab",
+        "postura": "Bajista",
+        "peso": "Alto",
+        "contraste": "Fundado: deterioro de 952 M en el 1S26 y abandono de dos de las grandes apuestas; nuestro bajista no da valor a la cartera temprana."
+      },
+      {
+        "tema": "Valoración barata y dividendo del 5-6 %",
+        "postura": "Alcista",
+        "peso": "Medio",
+        "contraste": "El PER de ≈8,5 veces el BPA de 2026e y el dividendo de 4,12 EUR lo confirman; la cuestión es si es una trampa de valor."
+      },
+      {
+        "tema": "Nueva consejera delegada y acuerdo con Regeneron",
+        "postura": "Dividida",
+        "peso": "Medio",
+        "contraste": "Analistas (Jefferies, Oddo) lo leen como primer paso; el mercado lo castigó un día después [23, 34]."
+      }
+    ],
+    "confianza": "Baja",
+    "lectura": "El sentimiento es negativo y escéptico: las buenas cifras del 2T26 y el acuerdo con Regeneron se vendieron en uno o dos días [34, 35]. No es capitulación (el objetivo de los analistas, 90 EUR, sigue un 23 % por encima del precio) pero sí cansancio con la cartera. Va en la línea de nuestro bajista y no aporta un riesgo nuevo; sí sugiere que un catalizador positivo (resultados del 3T26) tiene poco optimismo descontado."
+  },
+  "fuentes": [
+    {
+      "id": 1,
+      "titulo": "Press release Q2 2026: double-digit sales growth and strong business EPS growth; 2026 guidance upgraded (Form 6-K)",
+      "editor": "Sanofi",
+      "tipo": "Primaria",
+      "fecha": "2026-07-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001121404/000112140426000008/pressreleaseq22026english.htm"
+    },
+    {
+      "id": 2,
+      "titulo": "Press release Q4 and full year 2025 results (Form 6-K)",
+      "editor": "Sanofi",
+      "tipo": "Primaria",
+      "fecha": "2026-01-29",
+      "url": "https://www.sec.gov/Archives/edgar/data/1121404/000112140426000001/pressreleaseq42025english.htm"
+    },
+    {
+      "id": 3,
+      "titulo": "Form 20-F 2024 (resultado operativo business 2024 y 2023 reexpresado; ventas 2023 sin Opella)",
+      "editor": "Sanofi",
+      "tipo": "Primaria",
+      "fecha": "2025-02",
+      "url": "https://www.sec.gov/Archives/edgar/data/1121404/000112140425000010/sny-20241231.htm"
+    },
+    {
+      "id": 4,
+      "titulo": "Press release Q4 and full year 2023 results (Form 6-K)",
+      "editor": "Sanofi",
+      "tipo": "Primaria",
+      "fecha": "2024-02-01",
+      "url": "https://www.sec.gov/Archives/edgar/data/1121404/000112140424000003/pressreleaseq42023english.htm"
+    },
+    {
+      "id": 5,
+      "titulo": "Sanofi (SNY) financials: income statement (D&A 2025: 1.776 M EUR)",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://stockanalysis.com/stocks/sny/financials/"
+    },
+    {
+      "id": 6,
+      "titulo": "Sanofi (SNY) balance sheet 2025",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://stockanalysis.com/stocks/sny/financials/balance-sheet/"
+    },
+    {
+      "id": 7,
+      "titulo": "Sanofi SA cash flow statement (flujo operativo y capex 2023-2025)",
+      "editor": "Stockopedia",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://stockopedia.com/share-prices/sanofi-sa-NSQ:SNY/cashflow"
+    },
+    {
+      "id": 8,
+      "titulo": "Sanofi (SAN) Q2 2026 earnings summary (deuda neta 15.513 M a 30-jun-2026; FCF 1S26 3.724 M)",
+      "editor": "Quartr",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07-30",
+      "url": "https://quartr.com/events/sanofi-san-q2-2026_3erTN0T6"
+    },
+    {
+      "id": 9,
+      "titulo": "Sanofi Q2 earnings call highlights",
+      "editor": "Nasdaq",
+      "tipo": "Prensa",
+      "fecha": "2026-07-30",
+      "url": "https://www.nasdaq.com/articles/sanofi-q2-earnings-call-highlights"
+    },
+    {
+      "id": 10,
+      "titulo": "Sanofi FY2025 sales results (Dupixent 15.700 M; vacunas 7.900 M; Beyfortus 1.800 M)",
+      "editor": "Pharmaceutical Technology",
+      "tipo": "Prensa",
+      "fecha": "2026-01-29",
+      "url": "https://www.pharmaceutical-technology.com/news/sanofi-fy2025-sales-results/"
+    },
+    {
+      "id": 11,
+      "titulo": "Half-year financial report 2025 (ventas por región del 1S25)",
+      "editor": "Sanofi",
+      "tipo": "Primaria",
+      "fecha": "2025-07-31",
+      "url": "https://www.sec.gov/Archives/edgar/data/1121404/000112140425000022/exhibit992-2025halfyearman.htm"
+    },
+    {
+      "id": 12,
+      "titulo": "Sanofi posts strong full year figures despite development setbacks",
+      "editor": "Hargreaves Lansdown",
+      "tipo": "Prensa",
+      "fecha": "2026-01-29",
+      "url": "https://www.hl.co.uk/shares/stock-market-news/company--news/sanofi-posts-strong-full-year-figures-despite-development-setbacks"
+    },
+    {
+      "id": 13,
+      "titulo": "Q2 2026 aide-mémoire (deuda neta 1T26 12.900 M; emisión EMTN de 2.300 M; recompra de 1.000 M)",
+      "editor": "Sanofi",
+      "tipo": "Primaria",
+      "fecha": "2026-07-01",
+      "url": "https://www.sanofi.com/assets/dotcom/content-app/events/quaterly-results/2026/2026-q2-2026-results/20260701-sanofi-q2-2026-aide-me-moire.pdf"
+    },
+    {
+      "id": 14,
+      "titulo": "Half-year 2026 financial report (Form 6-K): recompra de 12.571.455 acciones por ≈1.003 M EUR",
+      "editor": "Sanofi",
+      "tipo": "Primaria",
+      "fecha": "2026-07-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001121404/000162828026050803/sny-20260630_d2.htm"
+    },
+    {
+      "id": 15,
+      "titulo": "With Dupixent driving growth, Sanofi touts «vigorous defense» to extend US exclusivity",
+      "editor": "Fierce Pharma",
+      "tipo": "Prensa",
+      "fecha": "2026-01",
+      "url": "https://www.fiercepharma.com/pharma/sanofi-expects-extend-its-loe-dupixent-beyond-2031"
+    },
+    {
+      "id": 16,
+      "titulo": "Sanofi pénalisé en Bourse par l’abandon du développement de l’amlitelimab (Dupixent, 36 % de los ingresos; dominio público en 2031)",
+      "editor": "ABC Bourse",
+      "tipo": "Prensa",
+      "fecha": "2026-07-24",
+      "url": "https://www.abcbourse.com/marches/sanofi-penalise-en-bourse-par-l-abandon-du-developpement-de-l-amlitelimab-dans-l_700300"
+    },
+    {
+      "id": 17,
+      "titulo": "Sanofi officially appoints Belén Garijo chief executive officer following shareholder vote",
+      "editor": "Pharmaceutical Executive",
+      "tipo": "Prensa",
+      "fecha": "2026-04-30",
+      "url": "https://pharmexec.com/view/sanofi-officially-appoints-belen-garijo-chief-executive-officer-following-shareholder-vote"
+    },
+    {
+      "id": 18,
+      "titulo": "Sanofi raises sales outlook on Dupixent strength in boost for new CEO (Reuters; deterioro de 952 M por amlitelimab)",
+      "editor": "Reuters (vía WMBD)",
+      "tipo": "Prensa",
+      "fecha": "2026-07-30",
+      "url": "https://wmbdradio.com/2026/07/30/sanofi-raises-sales-outlook-on-dupixent-strength-in-boost-for-new-ceo/"
+    },
+    {
+      "id": 19,
+      "titulo": "Sanofi élargit son partenariat avec Regeneron dans le cadre d’un accord à 8 milliards de dollars",
+      "editor": "ABC Bourse",
+      "tipo": "Prensa",
+      "fecha": "2026-10-01",
+      "url": "https://www.abcbourse.com/marches/sanofi-elargit-son-partenariat-avec-regeneron-dans-le-cadre-d-un-accord-a-8-mill_703528"
+    },
+    {
+      "id": 20,
+      "titulo": "Pourquoi 2026 s’annonce encore morne en Bourse pour Sanofi selon JPMorgan (17.300 M EUR de ventas en riesgo 2030-2035)",
+      "editor": "Tradingsat / BFM Bourse",
+      "tipo": "Analistas",
+      "fecha": "2026-01",
+      "url": "https://www.tradingsat.com/sanofi-FR0000120578/actualites/sanofi-sanofi-pourquoi-2026-s-annonce-encore-morne-en-bourse-pour-sanofi-selon-jpmorgan-1152143.html"
+    },
+    {
+      "id": 21,
+      "titulo": "Belén Garijo to succeed Paul Hudson as CEO of Sanofi",
+      "editor": "Paperjam",
+      "tipo": "Prensa",
+      "fecha": "2026-02-12",
+      "url": "https://en.paperjam.lu/article/belen-garijo-to-succeed-paul-hudson-as-ceo-of-sanofi"
+    },
+    {
+      "id": 22,
+      "titulo": "New CEO Garijo sketches out vision to reverse Sanofi’s fortunes as Q2 delivers impressive sales beat",
+      "editor": "Fierce Pharma",
+      "tipo": "Prensa",
+      "fecha": "2026-07-30",
+      "url": "https://www.fiercepharma.com/pharma/new-ceo-garijo-sketches-out-vision-reverse-sanofis-fortunes-q2-delivers-impressive-sales"
+    },
+    {
+      "id": 23,
+      "titulo": "Une victoire importante pour la nouvelle DG: Sanofi se rabiboche avec l’allié qui lui a fourni sa locomotive de croissance",
+      "editor": "Tradingsat / BFM Bourse",
+      "tipo": "Prensa",
+      "fecha": "2026-10-01",
+      "url": "https://www.tradingsat.com/sanofi-FR0000120578/actualites/sanofi-sanofi-une-victoire-importante-pour-la-nouvelle-dg-sanofi-se-rabiboche-avec-l-allie-qui-lui-a-fourni-sa-locomotive-de-croissance-et-retrouve-un-peu-de-credit-aupres-des-analystes-1171141.html"
+    },
+    {
+      "id": 24,
+      "titulo": "Agreement between L’Oréal and Sanofi for the repurchase by Sanofi of 2.3% of its own shares held by L’Oréal",
+      "editor": "L’Oréal",
+      "tipo": "Primaria",
+      "fecha": "2025-02-03",
+      "url": "https://www.loreal.com/en/press-release/group/agreement-between-loreal-and-sanofi-for-the-repurchase-by-sanofi-of-2-3-percent-of-its-own-shares-held-by-l-oreal/"
+    },
+    {
+      "id": 25,
+      "titulo": "Sanofi va démarrer un plan mondial d’actionnariat salarié (Action 2026)",
+      "editor": "Tradingsat / Zonebourse",
+      "tipo": "Prensa",
+      "fecha": "2026-06-04",
+      "url": "https://www.tradingsat.com/sanofi-FR0000120578/actualites/sanofi-sanofi-va-demarrer-un-plan-mondial-d-actionnariat-salarie-1164457.html"
+    },
+    {
+      "id": 26,
+      "titulo": "Sanofi: information concerning the total number of voting rights and shares, August 2026",
+      "editor": "Sanofi (vía BiopharmaWatch)",
+      "tipo": "Primaria",
+      "fecha": "2026-09",
+      "url": "https://www.biopharmawatch.com/news/SNY/sanofi-voting-rights-shares-august-2026"
+    },
+    {
+      "id": 27,
+      "titulo": "Sanofi (SAN, Euronext París): cierres diarios del 16-sep al 3-oct-2026 (73,10 EUR el 3-oct; rango de 2026: 70,96-84,97; cierre de 2025: 82,24)",
+      "editor": "InvestSMART",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-03",
+      "url": "https://www.investsmart.com.au/security/par/san/sanofi/share-price"
+    },
+    {
+      "id": 28,
+      "titulo": "Sanofi: cierre del año anterior 89,76 EUR (29-dic-2023), 91,50 EUR (19-dic-2024) y 82,72 EUR (31-dic-2025)",
+      "editor": "Trade Direct (Cornèr)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-01",
+      "url": "https://cug.tradedirect.ch/td/details/overview/699381,25,814?lang=en_GB"
+    },
+    {
+      "id": 29,
+      "titulo": "Action Sanofi: consensus de 24 analystes, objectif médian 90 EUR (78-100), PER 2026e 8,65 (15-sep-2026)",
+      "editor": "Idéal Investisseur",
+      "tipo": "Analistas",
+      "fecha": "2026-09-15",
+      "url": "https://www.ideal-investisseur.fr/actions/sanofi.html"
+    },
+    {
+      "id": 30,
+      "titulo": "UBS cuts Sanofi to Neutral amid pipeline setbacks and Dupixent patent concerns (objetivo de 105 a 88 EUR)",
+      "editor": "StockInvest.us",
+      "tipo": "Analistas",
+      "fecha": "2026-01",
+      "url": "https://stockinvest.us/digest/ubs-cuts-sanofi-to-neutral-amid-pipeline-setbacks-and-dupixent-patent-concerns"
+    },
+    {
+      "id": 31,
+      "titulo": "Comparables farmacéuticos del informe de Roche de este repositorio (14-oct-2026; Stock Analysis y MarketScreener, 8-oct-2026), en CHF",
+      "editor": "Stock Analysis / MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-08",
+      "url": "https://stockanalysis.com/"
+    },
+    {
+      "id": 32,
+      "titulo": "Rendimiento del Bund a 10 años (12-oct-2026, 3,53 %), serie BBSIS (vía informe de Endesa de este repositorio)",
+      "editor": "Deutsche Bundesbank",
+      "tipo": "Primaria",
+      "fecha": "2026-10-12",
+      "url": "https://api.statistiken.bundesbank.de/rest/download/BBSIS/D.I.ZST.ZI.EUR.S1311.B.A604.R10XX.R.A.A._Z._Z.A?format=csv&lang=en"
+    },
+    {
+      "id": 33,
+      "titulo": "Idéal Investisseur, 20-jul-2026: objetivo mediano de 95 EUR (23 analistas), mayoría «comprar»",
+      "editor": "Idéal Investisseur",
+      "tipo": "Analistas",
+      "fecha": "2026-07-20",
+      "url": "https://www.ideal-investisseur.fr/actions/sanofi-FR0000120578.html"
+    },
+    {
+      "id": 34,
+      "titulo": "Pourquoi la Bourse révise son jugement sur l’armistice et le nouveau partenariat entre Sanofi et Regeneron (lanterne rouge du CAC 40)",
+      "editor": "Tradingsat / BFM Bourse",
+      "tipo": "Prensa",
+      "fecha": "2026-10-02",
+      "url": "https://www.tradingsat.com/sanofi-FR0000120578/actualites/sanofi-pourquoi-la-bourse-revise-son-jugement-sur-l-armistice-et-le-nouveau-partenariat-entre-sanofi-et-son-allie-americain-regeneron-l-action-etant-lanterne-rouge-du-cac-40-36-ce-vendredi-1171193.html"
+    },
+    {
+      "id": 35,
+      "titulo": "Malgré des objectifs relevés et des résultats supérieurs aux attentes, Sanofi dévisse de 9 % en Bourse",
+      "editor": "Tradingsat / BFM Bourse",
+      "tipo": "Prensa",
+      "fecha": "2026-07-30",
+      "url": "https://www.tradingsat.com/sanofi-FR0000120578/actualites/sanofi-malgre-des-objectifs-releves-et-des-resultats-superieurs-aux-attentes-sanofi-devisse-de-9-en-bourse-voici-pourquoi-1167857.html"
+    },
+    {
+      "id": 36,
+      "titulo": "Sanofi (SNY) down 8.3% over 30 days: pipeline reset and Dupixent momentum",
+      "editor": "Tickeron",
+      "tipo": "Foros y redes",
+      "fecha": "2026-09",
+      "url": "https://tickeron.com/blogs/sanofi-sny-down-8-3-over-30-days-pipeline-reset-and-dupixent-momentum-17253/"
+    },
+    {
+      "id": 37,
+      "titulo": "Sanofi: un horizon stratégique encore fragile mais un support technique qui résiste",
+      "editor": "ABC Bourse",
+      "tipo": "Foros y redes",
+      "fecha": "2026-08",
+      "url": "https://www.abcbourse.com/analyses/sanofi_un_horizon_strategique_encore_fragile_mais_un_support_techniq-7000"
+    },
+    {
+      "id": 38,
+      "titulo": "Implied ERP by month (ERPbymonth.xlsx): prima implícita del S&P 500 de octubre de 2026, 4,20 % (dato del repo, verticales/empresa/prompt.md)",
+      "editor": "Aswath Damodaran (NYU Stern)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx"
+    }
+  ],
+  "calc": {
+    "version": 4,
+    "etiquetas": {
+      "margen_bruto": "M. bruto",
+      "margen_bruto_largo": "Margen bruto",
+      "dias_base": "sobre el coste de ventas"
+    },
+    "recomendacion": {
+      "recomendacion": "Comprar",
+      "regla": "Mantener",
+      "regla_absoluta": "Comprar",
+      "regla_relativa": "Comprar",
+      "coincide": false,
+      "conviccion": "Baja",
+      "conviccion_sugerida": "Media",
+      "conviccion_razones": [
+        "no llega a Alta: asimetría de n.d. (< 2)"
+      ],
+      "reglas_discrepan": false,
+      "relativo": {
+        "prima_implicita_pct": 4.2,
+        "wacc": 5.91,
+        "ke": 6.47,
+        "dcf": 110.26,
+        "dcf_min": 98.73,
+        "dcf_max": 124.7,
+        "valor_objetivo": 113.73,
+        "alcista": 125.28,
+        "bajista": 85.41,
+        "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+        "fecha": "2026-10",
+        "potencial_pct": 55.6,
+        "rentabilidad_total_pct": 61.2,
+        "asimetria": null
+      },
+      "objetivo_mercado_txt": " · con la prima implícita del mercado: 113,73 (+55,6 %)",
+      "objetivo_mercado_corto": " · mercado 113,73",
+      "rentabilidad_mercado_corto": " · mercado +61,2 %",
+      "potencial_pct": 35,
+      "dividendo_pct": 5.6,
+      "rentabilidad_total_pct": 40.7,
+      "alcista_pct": 44.9,
+      "bajista_pct": 0.6,
+      "asimetria": null,
+      "comprar_por_debajo": 91.09,
+      "vender_por_encima": 117.59,
+      "tabla": [
+        {
+          "concepto": "Objetivo a 12 meses (nuestro PER × nuestro BPA 2028e, ponderado 25/50/25)",
+          "valor": "101,71 EUR"
+        },
+        {
+          "concepto": "Bajista / base / alcista a 12 meses",
+          "valor": "8,0x × 8,91 = 71,28 · 10,0x × 9,79 = 97,90 · 13,4x × 10,43 = 139,76"
+        },
+        {
+          "concepto": "Rentabilidad a 12 meses: ponderada / del base (con dividendo)",
+          "valor": "44,8 % / 39,6 %"
+        },
+        {
+          "concepto": "Regla de múltiplos aplicada",
+          "valor": "v3: base a mitad de camino hacia la mediana (historia adelantada); bajista mín. 5 a o base × 0,80; alcista techo base × 1,35"
+        },
+        {
+          "concepto": "Señal pendiente de confirmar (confianza de datos baja)",
+          "valor": "La regla da Comprar; se queda en Mantener hasta confirmar las cifras con fuente primaria"
+        },
+        {
+          "concepto": "Objetivo medio de los analistas (solo contraste)",
+          "valor": "90,00 (nuestro base +8,8 %)"
+        },
+        {
+          "concepto": "Valor intrínseco (síntesis ponderada, largo plazo)",
+          "valor": "98,70 EUR"
+        },
+        {
+          "concepto": "Potencial sobre el precio actual",
+          "valor": "35,0 %"
+        },
+        {
+          "concepto": "Rentabilidad por dividendo ordinario",
+          "valor": "5,6 %"
+        },
+        {
+          "concepto": "Rentabilidad total esperada a 12 meses",
+          "valor": "40,7 %"
+        },
+        {
+          "concepto": "Escenario alcista / bajista",
+          "valor": "44,9 % / 0,6 %"
+        },
+        {
+          "concepto": "Asimetría (ganancia alcista / pérdida bajista)",
+          "valor": "n.d."
+        },
+        {
+          "concepto": "Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado",
+          "valor": "8,1 % frente a 6,7 % y 5,9 %"
+        },
+        {
+          "concepto": "Valor objetivo con la prima implícita del mercado (4,2 %, WACC 5,9 %)",
+          "valor": "113,73 EUR"
+        },
+        {
+          "concepto": "Rentabilidad total esperada con la prima del mercado",
+          "valor": "61,2 %"
+        },
+        {
+          "concepto": "Asimetría con la prima del mercado",
+          "valor": "n.d."
+        },
+        {
+          "concepto": "Regla absoluta (frente a su coste de capital)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "Regla relativa (frente a lo que pide el mercado)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "¿La calidad de la empresa sostiene el crecimiento previsto?",
+          "valor": "En parte (1,3 % anual proyectado; financiable al ROIC actual: 2,3 %)"
+        },
+        {
+          "concepto": "Señal del valor intrínseco (regla del DCF, referencia)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "Recomendación según la regla a 12 meses (Comprar: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender: ponderada ≤ -10 %)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Convicción según los criterios (no llega a Alta: asimetría de n.d. (< 2))",
+          "valor": "Media"
+        }
+      ],
+      "niveles": [
+        {
+          "accion": "Comprar",
+          "condicion": "Por debajo de 91,09 (ponderada a 12 meses ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco)"
+        },
+        {
+          "accion": "Mantener",
+          "condicion": "Entre 91,09 y 117,59"
+        },
+        {
+          "accion": "Vender o reducir",
+          "condicion": "Por encima de 117,59 (ponderada a 12 meses ≤ -10 %)"
+        }
+      ],
+      "precio_txt": "",
+      "valor_objetivo_txt": "",
+      "regla_valor_intrinseco": "Comprar",
+      "objetivo_12m": {
+        "completo": true,
+        "filas": [
+          {
+            "escenario": "Bajista",
+            "metrica": "PER 2028e (BPA business)",
+            "beneficio_por_accion": 8.91,
+            "multiplo": 8,
+            "multiplo_informe": null,
+            "origen": "base × 0.8",
+            "precio": 71.28,
+            "rentabilidad_pct": 3.1,
+            "justificacion": "Ventas de 2028e de 50.473 M (−2 puntos de crecimiento anual) y margen operativo business del 28,0 %: BPA de 8,91 EUR. Dupixent se frena y el mercado aplica un PER aún más bajo."
+          },
+          {
+            "escenario": "Base",
+            "metrica": "PER 2028e (BPA business)",
+            "beneficio_por_accion": 9.79,
+            "multiplo": 10,
+            "multiplo_informe": null,
+            "origen": "PER actual (8x) a mitad de camino hacia la mediana de 5 años (12.4x)",
+            "precio": 97.9,
+            "rentabilidad_pct": 39.6,
+            "justificacion": "Ventas de 52.440 M, margen operativo business del 29,5 %, intereses de 500 M e impuestos del 21 %: BPA de 9,79 EUR sobre 1.203 M de acciones, sin recompras nuevas."
+          },
+          {
+            "escenario": "Alcista",
+            "metrica": "PER 2028e (BPA business)",
+            "beneficio_por_accion": 10.43,
+            "multiplo": 13.4,
+            "multiplo_informe": null,
+            "origen": "techo de base × 1.35",
+            "precio": 139.76,
+            "rentabilidad_pct": 96.8,
+            "justificacion": "Ventas de 53.942 M y margen del 30,5 %: BPA de 10,43 EUR; el mercado devuelve parte del descuento a la vista de una cartera que repone."
+          }
+        ],
+        "regla": {
+          "version": "v3",
+          "bajista": 8,
+          "base": 10,
+          "alcista": 13.4,
+          "bajista_origen": "base × 0.8",
+          "base_origen": "PER actual (8x) a mitad de camino hacia la mediana de 5 años (12.4x)",
+          "alcista_origen": "techo de base × 1.35"
+        },
+        "version": "v3",
+        "probabilidades": [
+          25,
+          50,
+          25
+        ],
+        "objetivo_ponderado": 101.71,
+        "objetivo_simple": 102.98,
+        "objetivo_base": 97.9,
+        "rentabilidad_ponderada_pct": 44.8,
+        "rentabilidad_simple_pct": 46.5,
+        "rentabilidad_base_pct": 39.6,
+        "asimetria": 36.63,
+        "senal": "Mantener",
+        "senal_sin_confirmar": "Comprar",
+        "confianza_baja": true,
+        "comprar_por_debajo": 91.09,
+        "vender_por_encima": 117.59,
+        "consenso_objetivo": 90,
+        "diferencia_consenso_pct": 8.8
+      },
+      "rentabilidad_12m_pct": 44.8,
+      "rentabilidad_12m_txt": "+44,8 % (base +39,6 %)",
+      "objetivo_12m_txt": "101,71 EUR"
+    },
+    "mercado": {
+      "precio": 73.1,
+      "acciones": 1203,
+      "capitalizacion": 87939,
+      "deuda_neta": 15513,
+      "deuda_neta_ajustada": 16405,
+      "asimilables_deuda": 892,
+      "ajustes_puente": 892,
+      "valor_empresa": 104344,
+      "fecha_puente": "2026-06-30"
+    },
+    "clave": {
+      "capitalizacion": 87939,
+      "valor_empresa": 104344,
+      "deuda_neta": 15513,
+      "ev_ventas_ltm": 2.39,
+      "ev_ebitda_ltm": 7.5,
+      "ev_ebitda_ntm": null,
+      "ev_ebit_ltm": 8.6,
+      "per_ltm": 9.3,
+      "per_ntm": 8.5,
+      "fcf_yield_pct": 9.2,
+      "dividendo_pct": 5.6,
+      "dn_ebitda": 1.1,
+      "roic_pct": 11.7,
+      "margen_ebitda_pct": 31.9,
+      "deuda_neta_ajustada": 16405,
+      "dn_ebitda_ajustada": 1.2,
+      "crecimiento_tcac_pct": 0.5,
+      "ingresos_ntm": null,
+      "ebitda_ntm": null,
+      "bpa_ntm": 8.58,
+      "ebitda_ltm": 13904,
+      "ingresos_ltm": 43626,
+      "ev_rab": null
+    },
+    "cuenta": [
+      {
+        "periodo": "2022",
+        "ingresos": 42997,
+        "crecimiento_pct": null,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "ebit": 13040,
+        "margen_ebit_pct": 30.3,
+        "beneficio_neto": 10341,
+        "margen_neto_pct": 24.1,
+        "bpa": 8.26,
+        "dpa": 3.56,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 43
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 37817,
+        "crecimiento_pct": -12,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "ebit": 11178,
+        "margen_ebit_pct": 29.6,
+        "beneficio_neto": 9077,
+        "margen_neto_pct": 24,
+        "bpa": 7.25,
+        "dpa": 3.76,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 52
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 41081,
+        "crecimiento_pct": 8.6,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 12986,
+        "margen_ebitda_pct": 31.6,
+        "ebit": 11343,
+        "margen_ebit_pct": 27.6,
+        "beneficio_neto": 8912,
+        "margen_neto_pct": 21.7,
+        "bpa": 7.12,
+        "dpa": 3.92,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 19.8,
+        "payout_pct": 55
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 43626,
+        "crecimiento_pct": 6.2,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 13904,
+        "margen_ebitda_pct": 31.9,
+        "ebit": 12128,
+        "margen_ebit_pct": 27.8,
+        "beneficio_neto": 9555,
+        "margen_neto_pct": 21.9,
+        "bpa": 7.83,
+        "dpa": 4.12,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 19.9,
+        "payout_pct": 53
+      }
+    ],
+    "tcac": {
+      "periodo": "2022-2025",
+      "ingresos_pct": 0.5,
+      "ebitda_pct": null,
+      "bpa_pct": -1.8
+    },
+    "cuenta_y_prevision": [
+      {
+        "periodo": "2022",
+        "ingresos": 42997,
+        "ebitda": null
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 37817,
+        "ebitda": null
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 41081,
+        "ebitda": 12986
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 43626,
+        "ebitda": 13904
+      },
+      {
+        "periodo": "2026e",
+        "ingresos": 47116,
+        "ebitda": 14135
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 49943,
+        "ebitda": 15233
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 52440,
+        "ebitda": 16256
+      },
+      {
+        "periodo": "2029e",
+        "ingresos": 54538,
+        "ebitda": 16907
+      },
+      {
+        "periodo": "2030e",
+        "ingresos": 55629,
+        "ebitda": 16967
+      },
+      {
+        "periodo": "2031e",
+        "ingresos": 52291,
+        "ebitda": 14903
+      },
+      {
+        "periodo": "2032e",
+        "ingresos": 48108,
+        "ebitda": 12749
+      },
+      {
+        "periodo": "2033e",
+        "ingresos": 47145,
+        "ebitda": 12494
+      },
+      {
+        "periodo": "2034e",
+        "ingresos": 48088,
+        "ebitda": 12984
+      },
+      {
+        "periodo": "2035e",
+        "ingresos": 49050,
+        "ebitda": 13244
+      }
+    ],
+    "segmentos_ultimo": [
+      {
+        "nombre": "Dupixent",
+        "ingresos": 15700,
+        "peso_pct": 36,
+        "crecimiento_pct": null,
+        "margen_pct": null,
+        "tipo_margen": null
+      },
+      {
+        "nombre": "Vacunas",
+        "ingresos": 7900,
+        "peso_pct": 18.1,
+        "crecimiento_pct": null,
+        "margen_pct": null,
+        "tipo_margen": null
+      },
+      {
+        "nombre": "Resto de farma",
+        "ingresos": 20026,
+        "peso_pct": 45.9,
+        "crecimiento_pct": null,
+        "margen_pct": null,
+        "tipo_margen": null
+      }
+    ],
+    "segmentos_tabla": {
+      "periodos": [
+        "",
+        "",
+        "",
+        "",
+        "2025"
+      ],
+      "filas": [
+        {
+          "nombre": "Dupixent",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": null,
+          "v4": 15700
+        },
+        {
+          "nombre": "Vacunas",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": null,
+          "v4": 7900
+        },
+        {
+          "nombre": "Resto de farma",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": null,
+          "v4": 20026
+        }
+      ]
+    },
+    "segmentos_periodo": "2025",
+    "balance": [
+      {
+        "periodo": "2025",
+        "activo_total": 126805,
+        "intangibles": 58830,
+        "circulante": 21260,
+        "circulante_ventas_pct": 48.7,
+        "caja": 7657,
+        "deuda_financiera": 18665,
+        "arrendamientos": null,
+        "deuda_neta": 11008,
+        "patrimonio": 71710,
+        "minoritarios": null,
+        "dn_ebitda": 0.79,
+        "dn_patrimonio_pct": 15,
+        "dso": 92,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 60.9,
+        "capital_invertido": 82718,
+        "liquidez_corriente": null
+      }
+    ],
+    "perimetro_nota": "Cambio de perímetro (2023: Opella (salud de consumo) pasa a actividad interrumpida a finales de 2024 y la empresa reexpresa 2023: las ventas bajan de 43.070 a 37.817 M; 2022 no está reexpresado en lo que hemos podido leer.; 2025: Venta del 50 % de Opella a CD&R (30-abr-2025; Sanofi conserva el 48,2 %, por puesta en equivalencia) y compra de Blueprint Medicines (julio de 2025).). Los ratios de balance de ese año (días, circulante, deuda neta / EBITDA, ROIC) y los indicadores de calidad contable no son comparables con los anteriores.",
+    "flujos": [
+      {
+        "periodo": "2023",
+        "flujo_operativo": 10258,
+        "capex": 2906,
+        "pagos_arrendamientos": null,
+        "fcf": 7352,
+        "beneficio_neto": 9077,
+        "conversion_pct": 81,
+        "capex_ventas_pct": 7.7,
+        "capex_amortizacion": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": null,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 1252,
+        "fcf_por_accion": 5.87
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 8914,
+        "capex": 3195,
+        "pagos_arrendamientos": null,
+        "fcf": 5719,
+        "beneficio_neto": 8912,
+        "conversion_pct": 64,
+        "capex_ventas_pct": 7.8,
+        "capex_amortizacion": 1.94,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": null,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 1251.4,
+        "fcf_por_accion": 4.57
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 10917,
+        "capex": 2817,
+        "pagos_arrendamientos": null,
+        "fcf": 8100,
+        "beneficio_neto": 9555,
+        "conversion_pct": 85,
+        "capex_ventas_pct": 6.5,
+        "capex_amortizacion": 1.59,
+        "adquisiciones": null,
+        "desinversiones": 10400,
+        "dividendos": null,
+        "recompras": 5000,
+        "emision_acciones": null,
+        "retorno_accionista": 5000,
+        "payout_caja_pct": 52,
+        "acciones": 1220.4,
+        "fcf_por_accion": 6.64
+      }
+    ],
+    "flujos_acumulado": {
+      "periodo": "2023-2025",
+      "fcf": 21171,
+      "adquisiciones": 0,
+      "dividendos": 0,
+      "recompras": 5000,
+      "conversion_pct": 77
+    },
+    "rentabilidad": [
+      {
+        "periodo": "2022",
+        "nopat": 9780,
+        "capital_invertido": null,
+        "roic_pct": null,
+        "roe_pct": null,
+        "roa_pct": null,
+        "margen_neto_pct": 24.1,
+        "rotacion": null,
+        "apalancamiento": null
+      },
+      {
+        "periodo": "2023",
+        "nopat": 8384,
+        "capital_invertido": null,
+        "roic_pct": null,
+        "roe_pct": null,
+        "roa_pct": null,
+        "margen_neto_pct": 24,
+        "rotacion": null,
+        "apalancamiento": null
+      },
+      {
+        "periodo": "2024",
+        "nopat": 9097,
+        "capital_invertido": null,
+        "roic_pct": null,
+        "roe_pct": null,
+        "roa_pct": null,
+        "margen_neto_pct": 21.7,
+        "rotacion": null,
+        "apalancamiento": null
+      },
+      {
+        "periodo": "2025",
+        "nopat": 9714,
+        "capital_invertido": 82718,
+        "roic_pct": 11.7,
+        "roe_pct": 13.3,
+        "roa_pct": 7.5,
+        "margen_neto_pct": 21.9,
+        "rotacion": 0.34,
+        "apalancamiento": 1.77
+      }
+    ],
+    "roic_incremental_pct": null,
+    "roic_frente_wacc": [
+      {
+        "periodo": "2022",
+        "roic_pct": null,
+        "roe_pct": null,
+        "wacc_pct": 6.7
+      },
+      {
+        "periodo": "2023",
+        "roic_pct": null,
+        "roe_pct": null,
+        "wacc_pct": 6.7
+      },
+      {
+        "periodo": "2024",
+        "roic_pct": null,
+        "roe_pct": null,
+        "wacc_pct": 6.7
+      },
+      {
+        "periodo": "2025",
+        "roic_pct": 11.7,
+        "roe_pct": 13.3,
+        "wacc_pct": 6.7
+      }
+    ],
+    "calidad": {
+      "periodo": "2025",
+      "altman_z": 1.62,
+      "altman_zona": "Zona de riesgo",
+      "tabla": [
+        {
+          "indicador": "Altman Z",
+          "valor": "1,62",
+          "lectura": "Zona de riesgo (> 2,99 seguro; < 1,81 riesgo). No aplica a bancos ni aseguradoras, y subestima la solvencia de empresas con grandes anticipos de clientes o prefinanciación pública (contratistas, construcción), que inflan el pasivo. No fiable en 2025: cambio de perímetro (el balance incluye negocios sin su cuenta de resultados completa)."
+        },
+        {
+          "indicador": "Flujo operativo / beneficio neto (acumulado)",
+          "valor": "0,79x",
+          "lectura": "El beneficio se cobra solo en parte: mirar circulante y ajustes."
+        }
+      ]
+    },
+    "dcf": {
+      "proyeccion": [
+        {
+          "periodo": "2026e",
+          "ingresos": 47116,
+          "crecimiento_pct": 8,
+          "ebitda": 14135,
+          "margen_ebitda_pct": 30,
+          "amortizacion": 1885,
+          "ebit": 12250,
+          "impuestos": 2573,
+          "capex": 3534,
+          "variacion_circulante": 1356,
+          "fcff": 6673,
+          "fraccion": 0.21,
+          "factor": 0.993,
+          "vp": 1415
+        },
+        {
+          "periodo": "2027e",
+          "ingresos": 49943,
+          "crecimiento_pct": 6,
+          "ebitda": 15233,
+          "margen_ebitda_pct": 30.5,
+          "amortizacion": 1998,
+          "ebit": 13235,
+          "impuestos": 2779,
+          "capex": 3746,
+          "variacion_circulante": 1357,
+          "fcff": 7351,
+          "fraccion": 1,
+          "factor": 0.955,
+          "vp": 7014
+        },
+        {
+          "periodo": "2028e",
+          "ingresos": 52440,
+          "crecimiento_pct": 5,
+          "ebitda": 16256,
+          "margen_ebitda_pct": 31,
+          "amortizacion": 2098,
+          "ebit": 14159,
+          "impuestos": 2973,
+          "capex": 3933,
+          "variacion_circulante": 1199,
+          "fcff": 8151,
+          "fraccion": 1,
+          "factor": 0.895,
+          "vp": 7295
+        },
+        {
+          "periodo": "2029e",
+          "ingresos": 54538,
+          "crecimiento_pct": 4,
+          "ebitda": 16907,
+          "margen_ebitda_pct": 31,
+          "amortizacion": 2182,
+          "ebit": 14725,
+          "impuestos": 3092,
+          "capex": 4090,
+          "variacion_circulante": 1007,
+          "fcff": 8717,
+          "fraccion": 1,
+          "factor": 0.839,
+          "vp": 7307
+        },
+        {
+          "periodo": "2030e",
+          "ingresos": 55629,
+          "crecimiento_pct": 2,
+          "ebitda": 16967,
+          "margen_ebitda_pct": 30.5,
+          "amortizacion": 2225,
+          "ebit": 14742,
+          "impuestos": 3096,
+          "capex": 4172,
+          "variacion_circulante": 524,
+          "fcff": 9175,
+          "fraccion": 1,
+          "factor": 0.786,
+          "vp": 7210
+        },
+        {
+          "periodo": "2031e",
+          "ingresos": 52291,
+          "crecimiento_pct": -6,
+          "ebitda": 14903,
+          "margen_ebitda_pct": 28.5,
+          "amortizacion": 2092,
+          "ebit": 12811,
+          "impuestos": 2690,
+          "capex": 3922,
+          "variacion_circulante": -1602,
+          "fcff": 9893,
+          "fraccion": 1,
+          "factor": 0.737,
+          "vp": 7286
+        },
+        {
+          "periodo": "2032e",
+          "ingresos": 48108,
+          "crecimiento_pct": -8,
+          "ebitda": 12749,
+          "margen_ebitda_pct": 26.5,
+          "amortizacion": 1924,
+          "ebit": 10824,
+          "impuestos": 2273,
+          "capex": 3608,
+          "variacion_circulante": -2008,
+          "fcff": 8875,
+          "fraccion": 1,
+          "factor": 0.691,
+          "vp": 6131
+        },
+        {
+          "periodo": "2033e",
+          "ingresos": 47145,
+          "crecimiento_pct": -2,
+          "ebitda": 12494,
+          "margen_ebitda_pct": 26.5,
+          "amortizacion": 1886,
+          "ebit": 10608,
+          "impuestos": 2228,
+          "capex": 3536,
+          "variacion_circulante": -462,
+          "fcff": 7192,
+          "fraccion": 1,
+          "factor": 0.647,
+          "vp": 4653
+        },
+        {
+          "periodo": "2034e",
+          "ingresos": 48088,
+          "crecimiento_pct": 2,
+          "ebitda": 12984,
+          "margen_ebitda_pct": 27,
+          "amortizacion": 1924,
+          "ebit": 11060,
+          "impuestos": 2323,
+          "capex": 3607,
+          "variacion_circulante": 453,
+          "fcff": 6602,
+          "fraccion": 1,
+          "factor": 0.607,
+          "vp": 4004
+        },
+        {
+          "periodo": "2035e",
+          "ingresos": 49050,
+          "crecimiento_pct": 2,
+          "ebitda": 13244,
+          "margen_ebitda_pct": 27,
+          "amortizacion": 1962,
+          "ebit": 11282,
+          "impuestos": 2369,
+          "capex": 3679,
+          "variacion_circulante": 462,
+          "fcff": 6734,
+          "fraccion": 1,
+          "factor": 0.569,
+          "vp": 3828
+        }
+      ],
+      "etapa2": null,
+      "suma_vp": 56144,
+      "valor_terminal": 131753,
+      "vp_terminal": 72568,
+      "valor_empresa": 128712,
+      "peso_terminal_pct": 56,
+      "valor_acciones": 112307,
+      "valor_accion": 93.36,
+      "vt_gordon": 131753,
+      "vt_multiplo": 105948,
+      "multiplo_implicito": 9.9,
+      "g_implicito_pct": 0.31,
+      "metodo_terminal": "gordon",
+      "terminal_tabla": [
+        {
+          "concepto": "Método principal",
+          "valor": "Crecimiento a perpetuidad"
+        },
+        {
+          "concepto": "Crecimiento a perpetuidad",
+          "valor": "1,5 %"
+        },
+        {
+          "concepto": "Múltiplo EV/EBITDA de salida",
+          "valor": "8,0x"
+        },
+        {
+          "concepto": "Valor terminal (Gordon)",
+          "valor": "131.753"
+        },
+        {
+          "concepto": "Valor terminal (múltiplo)",
+          "valor": "105.948"
+        },
+        {
+          "concepto": "Múltiplo de salida implícito en Gordon",
+          "valor": "9,9x"
+        },
+        {
+          "concepto": "Crecimiento implícito en el múltiplo",
+          "valor": "0,31 %"
+        },
+        {
+          "concepto": "Peso del valor terminal en el valor empresa",
+          "valor": "56 %"
+        }
+      ],
+      "puente": [
+        {
+          "concepto": "Valor actual de los flujos proyectados",
+          "valor": "56.144"
+        },
+        {
+          "concepto": "Valor actual del valor terminal",
+          "valor": "72.568"
+        },
+        {
+          "concepto": "Valor empresa",
+          "valor": "128.712"
+        },
+        {
+          "concepto": "− Deuda financiera neta (con arrendamientos)",
+          "valor": "-15.513"
+        },
+        {
+          "concepto": "− Minoritarios, pensiones y otros; + asociadas",
+          "valor": "-892"
+        },
+        {
+          "concepto": "Valor de los fondos propios",
+          "valor": "112.307"
+        },
+        {
+          "concepto": "Acciones diluidas (millones)",
+          "valor": "1.203,0"
+        },
+        {
+          "concepto": "Valor por acción",
+          "valor": "93,36"
+        }
+      ],
+      "composicion": [
+        {
+          "parte": "Flujos proyectados",
+          "valor": 56144
+        },
+        {
+          "parte": "Valor terminal",
+          "valor": 72568
+        }
+      ],
+      "wacc": 6.69,
+      "ke": 7.38,
+      "kd_despues": 2.77,
+      "wacc_tabla": [
+        {
+          "concepto": "Tasa libre de riesgo",
+          "valor": "3,53 %"
+        },
+        {
+          "concepto": "Beta",
+          "valor": "0,70"
+        },
+        {
+          "concepto": "Prima de riesgo de mercado",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Prima adicional (país, tamaño, específica)",
+          "valor": "0,00 %"
+        },
+        {
+          "concepto": "Coste de los fondos propios",
+          "valor": "7,38 %"
+        },
+        {
+          "concepto": "Coste de la deuda antes de impuestos",
+          "valor": "3,50 %"
+        },
+        {
+          "concepto": "Tipo impositivo",
+          "valor": "21,00 %"
+        },
+        {
+          "concepto": "Coste de la deuda después de impuestos",
+          "valor": "2,77 %"
+        },
+        {
+          "concepto": "Peso de la deuda (D / (D + E))",
+          "valor": "15,00 %"
+        },
+        {
+          "concepto": "WACC",
+          "valor": "6,69 %"
+        },
+        {
+          "concepto": "Prima de riesgo implícita del mercado (regla relativa)",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "WACC con la prima implícita del mercado",
+          "valor": "5,91 %"
+        }
+      ],
+      "potencial_pct": 27.7,
+      "sensibilidad": {
+        "eje_columnas": "Crecimiento a perpetuidad",
+        "columnas": [
+          "0,5 %",
+          "1,0 %",
+          "1,5 %",
+          "2,0 %",
+          "2,5 %"
+        ],
+        "filas": [
+          {
+            "wacc": "5,7 %",
+            "v0": 100.02,
+            "v1": 107.32,
+            "v2": 116.38,
+            "v3": 127.88,
+            "v4": 143
+          },
+          {
+            "wacc": "6,2 %",
+            "v0": 90.83,
+            "v1": 96.62,
+            "v2": 103.65,
+            "v3": 112.36,
+            "v4": 123.42
+          },
+          {
+            "wacc": "6,7 %",
+            "v0": 83.11,
+            "v1": 87.78,
+            "v2": 93.36,
+            "v3": 100.12,
+            "v4": 108.5
+          },
+          {
+            "wacc": "7,2 %",
+            "v0": 76.53,
+            "v1": 80.36,
+            "v2": 84.85,
+            "v3": 90.22,
+            "v4": 96.73
+          },
+          {
+            "wacc": "7,7 %",
+            "v0": 70.86,
+            "v1": 74.03,
+            "v2": 77.71,
+            "v3": 82.04,
+            "v4": 87.2
+          }
+        ]
+      },
+      "sensibilidad2": {
+        "columnas": [
+          "-2 pp",
+          "-1 pp",
+          "0 pp",
+          "+1 pp",
+          "+2 pp"
+        ],
+        "filas": [
+          {
+            "margen": "-2 pp",
+            "v0": 75.59,
+            "v1": 78.72,
+            "v2": 81.9,
+            "v3": 85.13,
+            "v4": 88.4
+          },
+          {
+            "margen": "-1 pp",
+            "v0": 80.56,
+            "v1": 84.05,
+            "v2": 87.63,
+            "v3": 91.29,
+            "v4": 95.01
+          },
+          {
+            "margen": "0 pp",
+            "v0": 85.52,
+            "v1": 89.38,
+            "v2": 93.36,
+            "v3": 97.44,
+            "v4": 101.62
+          },
+          {
+            "margen": "+1 pp",
+            "v0": 90.48,
+            "v1": 94.71,
+            "v2": 99.08,
+            "v3": 103.59,
+            "v4": 108.23
+          },
+          {
+            "margen": "+2 pp",
+            "v0": 95.44,
+            "v1": 100.04,
+            "v2": 104.81,
+            "v3": 109.74,
+            "v4": 114.84
+          }
+        ]
+      },
+      "rango_min": 80.36,
+      "rango_max": 112.36,
+      "inverso": {
+        "crecimiento_implicito_pct": -4.9,
+        "crecimiento_base_pct": 0.6,
+        "periodo": "2027e-2035e",
+        "margen_implicito_pct": 23.5,
+        "margen_implicito_texto": null,
+        "margen_base_pct": 27,
+        "rentabilidad_implicita_pct": 8.1
+      },
+      "sostenibilidad": {
+        "veredicto": "En parte",
+        "crecimiento_proyectado_pct": 1.3,
+        "tasa_reinversion_pct": 20,
+        "crecimiento_financiable_pct": 2.3,
+        "roic_pct": 11.7,
+        "roic_incremental_historico_pct": null,
+        "roic_implicito_pct": -4,
+        "cuota_actual_pct": null,
+        "cuota_final_pct": null,
+        "puente": [
+          {
+            "periodo": "2026e",
+            "volumen_pct": 12,
+            "precio_pct": -1.5,
+            "otros_pct": -2.5,
+            "comentario": "Guía de ≈+10 % a tipo constante: volumen de Dupixent y lanzamientos (+12 %), precio −1,5 % (insulinas y gripe) y −2,5 % de divisa [1].",
+            "suma_pct": 8,
+            "crecimiento_pct": 8
+          },
+          {
+            "periodo": "2027e",
+            "volumen_pct": 8,
+            "precio_pct": -1.5,
+            "otros_pct": -0.5,
+            "comentario": "Dupixent sigue creciendo en nuevas indicaciones (EPOC, urticaria); vacunas planas.",
+            "suma_pct": 6,
+            "crecimiento_pct": 6
+          },
+          {
+            "periodo": "2028e",
+            "volumen_pct": 7,
+            "precio_pct": -1.5,
+            "otros_pct": -0.5,
+            "comentario": "Menor crecimiento de Dupixent, aporte de Blueprint y lanzamientos.",
+            "suma_pct": 5,
+            "crecimiento_pct": 5
+          },
+          {
+            "periodo": "2029e",
+            "volumen_pct": 6,
+            "precio_pct": -1.5,
+            "otros_pct": -0.5,
+            "comentario": "Último año completo de exclusividad de Dupixent en EE. UU.",
+            "suma_pct": 4,
+            "crecimiento_pct": 4
+          },
+          {
+            "periodo": "2030e",
+            "volumen_pct": 4,
+            "precio_pct": -1.5,
+            "otros_pct": -0.5,
+            "comentario": "Comparaciones más duras; anticipación del vencimiento en las negociaciones de precios.",
+            "suma_pct": 2,
+            "crecimiento_pct": 2
+          }
+        ],
+        "texto": "La proyección reinvierte el 20 % del NOPAT. Con el ROIC del último ejercicio (11,7 %), eso financia un crecimiento del 2,3 % anual, frente al 1,3 % de ingresos proyectado. Supone que el capital nuevo rinde un -4,0 %.",
+        "tabla": [
+          {
+            "concepto": "Crecimiento medio de ingresos proyectado",
+            "valor": "1,3 %"
+          },
+          {
+            "concepto": "Capex bruto medio (incluidas compras si van como inversión)",
+            "valor": "7,5 % de las ventas"
+          },
+          {
+            "concepto": "Reinversión neta acumulada (capex − amortización + circulante)",
+            "valor": "19.937 M (20 % del NOPAT)"
+          },
+          {
+            "concepto": "Crecimiento que financia esa reinversión al ROIC actual",
+            "valor": "2,3 % (ROIC 11,7 %)"
+          },
+          {
+            "concepto": "Rendimiento que la proyección supone para el capital nuevo",
+            "valor": "-4,0 %"
+          }
+        ]
+      }
+    },
+    "escenarios": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "narrativa": "Dupixent pierde cuota antes de 2031 frente a moléculas de dosis espaciada y la caída tras el vencimiento es más profunda; la cartera no repone y el margen baja 1,5 puntos. Es lo que vivió Sanofi con Lantus en 2015-2018.",
+        "crecimiento_medio_pct": -1.4,
+        "margen_final_pct": 25.5,
+        "wacc_pct": 6.7,
+        "valor": 73.51,
+        "potencial_pct": 0.6
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "narrativa": "Se cumple la guía de 2026, Dupixent crece hasta 2030, las ventas caen un 14 % en 2031-2033 y el resto de la cartera y las compras compensan la mitad de la pérdida.",
+        "crecimiento_medio_pct": 0.6,
+        "margen_final_pct": 27,
+        "wacc_pct": 6.7,
+        "valor": 93.36,
+        "potencial_pct": 27.7
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "narrativa": "Las patentes secundarias retrasan los biosimilares y la nueva dirección cierra acuerdos que reponen el crecimiento: +1,5 puntos de crecimiento y +1 de margen.",
+        "crecimiento_medio_pct": 2.1,
+        "margen_final_pct": 28,
+        "wacc_pct": 6.7,
+        "valor": 105.89,
+        "potencial_pct": 44.9
+      }
+    ],
+    "valor_ponderado": 91.53,
+    "potencial_ponderado_pct": 25.2,
+    "comparables": {
+      "tabla": [
+        {
+          "nombre": "Sanofi",
+          "ticker": "SAN",
+          "pais": "FR",
+          "capitalizacion": 87939,
+          "ev_ventas": 2.39,
+          "ev_ebitda_ltm": 7.5,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 8.5,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": 31.9,
+          "roic_pct": 11.7,
+          "dn_ebitda": 1.1,
+          "fcf_yield_pct": 9.2,
+          "es_objetivo": true
+        },
+        {
+          "nombre": "Eli Lilly",
+          "ticker": "LLY",
+          "pais": "US",
+          "capitalizacion": 910000,
+          "ev_ventas": 13.34,
+          "ev_ebitda_ltm": 25.5,
+          "ev_ebitda_ntm": 20.6,
+          "per_ntm": 26.7,
+          "crecimiento_pct": 24.4,
+          "margen_ebitda_pct": 52.4,
+          "roic_pct": 42.2,
+          "dn_ebitda": 1.08,
+          "fcf_yield_pct": 1.75,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "AstraZeneca",
+          "ticker": "AZN",
+          "pais": "GB",
+          "capitalizacion": 219111,
+          "ev_ventas": 4.44,
+          "ev_ebitda_ltm": 13.5,
+          "ev_ebitda_ntm": 11.4,
+          "per_ntm": 18.3,
+          "crecimiento_pct": 7.8,
+          "margen_ebitda_pct": 33,
+          "roic_pct": 16.1,
+          "dn_ebitda": 1.35,
+          "fcf_yield_pct": 4.28,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Novartis",
+          "ticker": "NOVN",
+          "pais": "CH",
+          "capitalizacion": 241237,
+          "ev_ventas": 5.47,
+          "ev_ebitda_ltm": 13.4,
+          "ev_ebitda_ntm": 12.5,
+          "per_ntm": 17.2,
+          "crecimiento_pct": 7,
+          "margen_ebitda_pct": 40.7,
+          "roic_pct": 18.8,
+          "dn_ebitda": 1.79,
+          "fcf_yield_pct": 6.13,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Merck & Co",
+          "ticker": "MRK",
+          "pais": "US",
+          "capitalizacion": 307900,
+          "ev_ventas": 5.88,
+          "ev_ebitda_ltm": 13.6,
+          "ev_ebitda_ntm": 13.3,
+          "per_ntm": 20.9,
+          "crecimiento_pct": 4.3,
+          "margen_ebitda_pct": 43.4,
+          "roic_pct": 14.1,
+          "dn_ebitda": 1.62,
+          "fcf_yield_pct": 4.56,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "GSK",
+          "ticker": "GSK",
+          "pais": "GB",
+          "capitalizacion": 82728,
+          "ev_ventas": 2.54,
+          "ev_ebitda_ltm": 7.8,
+          "ev_ebitda_ntm": 6.9,
+          "per_ntm": 11.7,
+          "crecimiento_pct": 5.4,
+          "margen_ebitda_pct": 32.6,
+          "roic_pct": 26.4,
+          "dn_ebitda": 1.4,
+          "fcf_yield_pct": 9.63,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Novo Nordisk",
+          "ticker": "NOVO B",
+          "pais": "DK",
+          "capitalizacion": 139660,
+          "ev_ventas": 3.64,
+          "ev_ebitda_ltm": 6.9,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 11.7,
+          "crecimiento_pct": -2.7,
+          "margen_ebitda_pct": 52.7,
+          "roic_pct": 39.2,
+          "dn_ebitda": 0.55,
+          "fcf_yield_pct": 6.9,
+          "es_objetivo": false
+        }
+      ],
+      "estadisticos": [
+        {
+          "estadistico": "Mediana",
+          "ev_ventas": 5,
+          "ev_ebitda_ltm": 13.5,
+          "ev_ebitda_ntm": 12.5,
+          "per_ntm": 17.8,
+          "crecimiento_pct": 6.2,
+          "margen_ebitda_pct": 42.1,
+          "roic_pct": 22.6,
+          "dn_ebitda": 1.4,
+          "fcf_yield_pct": 5.3
+        },
+        {
+          "estadistico": "Media",
+          "ev_ventas": 5.9,
+          "ev_ebitda_ltm": 13.5,
+          "ev_ebitda_ntm": 12.9,
+          "per_ntm": 17.8,
+          "crecimiento_pct": 7.7,
+          "margen_ebitda_pct": 42.5,
+          "roic_pct": 26.1,
+          "dn_ebitda": 1.3,
+          "fcf_yield_pct": 5.5
+        },
+        {
+          "estadistico": "Percentil 25",
+          "ev_ventas": 3.8,
+          "ev_ebitda_ltm": 9.2,
+          "ev_ebitda_ntm": 11.4,
+          "per_ntm": 13.1,
+          "crecimiento_pct": 4.6,
+          "margen_ebitda_pct": 34.9,
+          "roic_pct": 16.8,
+          "dn_ebitda": 1.1,
+          "fcf_yield_pct": 4.4
+        },
+        {
+          "estadistico": "Percentil 75",
+          "ev_ventas": 5.8,
+          "ev_ebitda_ltm": 13.6,
+          "ev_ebitda_ntm": 13.3,
+          "per_ntm": 20.3,
+          "crecimiento_pct": 7.6,
+          "margen_ebitda_pct": 50.2,
+          "roic_pct": 36,
+          "dn_ebitda": 1.6,
+          "fcf_yield_pct": 6.7
+        }
+      ],
+      "implicito": [
+        {
+          "metodo": "EV/EBITDA últimos 12 meses",
+          "metrica_empresa": 13904,
+          "multiplo_p25": 9.2,
+          "multiplo_mediana": 13.5,
+          "multiplo_p75": 13.6,
+          "multiplos": "9,2x / 13,4x / 13,6x",
+          "valor_p25": 92.69,
+          "valor_mediana": 141.82,
+          "valor_p75": 143.26,
+          "potencial_pct": 94
+        },
+        {
+          "metodo": "PER próximos 12 meses",
+          "metrica_empresa": 8.58,
+          "multiplo_p25": 13.1,
+          "multiplo_mediana": 17.8,
+          "multiplo_p75": 20.3,
+          "multiplos": "13,1x / 17,8x / 20,3x",
+          "valor_p25": 112.18,
+          "valor_mediana": 152.29,
+          "valor_p75": 173.75,
+          "potencial_pct": 108.3
+        },
+        {
+          "metodo": "EV/Ventas últimos 12 meses",
+          "metrica_empresa": 43626,
+          "multiplo_p25": 3.8,
+          "multiplo_mediana": 5,
+          "multiplo_p75": 5.8,
+          "multiplos": "3,8x / 5,0x / 5,8x",
+          "valor_p25": 125.62,
+          "valor_mediana": 166.05,
+          "valor_p75": 195.88,
+          "potencial_pct": 127.2
+        }
+      ],
+      "regresion": {
+        "pendiente": 0.5125269475033503,
+        "ordenada": 7.927486453417237,
+        "r2": 0.7371856752995496,
+        "n": 5
+      },
+      "n": 6
+    },
+    "transacciones": null,
+    "suma_partes": null,
+    "multiplos_historicos": [
+      {
+        "metrica": "PER últimos 12 meses (cierre de cada año)",
+        "campo": "per_ltm",
+        "actual": 9.3,
+        "media": 12.4,
+        "minimo": 10.6,
+        "maximo": 12.9,
+        "percentil": 0,
+        "prima_pct": -25,
+        "anios": 3
+      }
+    ],
+    "multiplos_serie": [],
+    "multiplos_titulo": null,
+    "consenso_vs_propio": [
+      {
+        "periodo": "2026e",
+        "ingresos_propio": 47116,
+        "ingresos_consenso": null,
+        "ingresos_dif_pct": null,
+        "ebitda_propio": 14135,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      }
+    ],
+    "gobierno": {
+      "n_consejeros": 2,
+      "independientes_pct": 50,
+      "antiguedad_media": 0,
+      "composicion": [
+        {
+          "tipo": "Independiente",
+          "num": 1
+        },
+        {
+          "tipo": "Ejecutivo",
+          "num": 1
+        }
+      ],
+      "checklist": [
+        {
+          "criterio": "Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)",
+          "resultado": "Cumple",
+          "valor": "50 %"
+        },
+        {
+          "criterio": "Presidencia sin vínculo familiar ni profesional con el accionista de control",
+          "resultado": "Cumple",
+          "valor": "Sin control"
+        },
+        {
+          "criterio": "Presidente no ejecutivo, o consejero coordinador independiente",
+          "resultado": "Cumple",
+          "valor": "No ejecutivo"
+        },
+        {
+          "criterio": "Comisión de auditoría con mayoría de independientes y presidida por uno",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Ningún consejero «otro externo» con más de 12 años",
+          "resultado": "Cumple",
+          "valor": "Ninguno"
+        },
+        {
+          "criterio": "Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses",
+          "resultado": "No cumple",
+          "valor": "2 cambios"
+        },
+        {
+          "criterio": "Peor voto a favor sobre remuneración (3 juntas) ≥ 80 %",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Una acción, un voto, sin blindajes ni límites de voto estatutarios",
+          "resultado": "No cumple",
+          "valor": "No"
+        },
+        {
+          "criterio": "Sin operaciones vinculadas relevantes",
+          "resultado": "Cumple",
+          "valor": "No hay"
+        },
+        {
+          "criterio": "Auditor con 10 años o menos en el cargo",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Opinión de auditoría sin salvedades",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Directivos compradores netos en 12 meses (o sin ventas relevantes)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        }
+      ],
+      "puntuacion": "5 de 13 (6 sin dato)",
+      "puntuacion_pct": 38,
+      "compras_insiders": 0,
+      "ventas_insiders": 0
+    },
+    "competidores_margen": [
+      {
+        "nombre": "Sanofi",
+        "margen_ebit_pct": 27.8
+      },
+      {
+        "nombre": "Eli Lilly",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "AbbVie",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "GSK",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Pfizer",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "AstraZeneca",
+        "margen_ebit_pct": null
+      }
+    ],
+    "sintesis": {
+      "formato_eje": "#,##0",
+      "rangos": [
+        {
+          "metodo": "Cotización 52 semanas",
+          "etiqueta": "Cotización 52 semanas (70,96 – 84,97)",
+          "min": 70.96,
+          "central": 73.1,
+          "max": 84.97,
+          "gris": true
+        },
+        {
+          "metodo": "Precio objetivo de los analistas",
+          "etiqueta": "Precio objetivo de los analistas (78,00 – 100,00)",
+          "min": 78,
+          "central": 90,
+          "max": 100,
+          "gris": true
+        },
+        {
+          "metodo": "Comparables: PER NTM",
+          "etiqueta": "Comparables: PER NTM (112,18 – 173,75)",
+          "min": 112.18,
+          "central": 152.29,
+          "max": 173.75,
+          "gris": false
+        },
+        {
+          "metodo": "DCF (WACC y g ± 0,5)",
+          "etiqueta": "DCF (WACC y g ± 0,5) (80,36 – 112,36)",
+          "min": 80.36,
+          "central": 93.36,
+          "max": 112.36,
+          "gris": false
+        },
+        {
+          "metodo": "Escenarios (bajista – alcista)",
+          "etiqueta": "Escenarios (bajista – alcista) (73,51 – 105,89)",
+          "min": 73.51,
+          "central": 91.53,
+          "max": 105.89,
+          "gris": false
+        },
+        {
+          "metodo": "DCF con la prima del mercado",
+          "etiqueta": "DCF con la prima implícita del mercado (4,2 %)",
+          "min": 98.73,
+          "central": 110.26,
+          "max": 124.7
+        },
+        {
+          "metodo": "Precio actual",
+          "etiqueta": "Precio actual (73,10)",
+          "min": 72.73,
+          "central": 73.1,
+          "max": 73.47,
+          "gris": true
+        }
+      ],
+      "tabla": [
+        {
+          "metodo": "DCF",
+          "valor": 93.36,
+          "peso_pct": 60,
+          "potencial_pct": 27.7
+        },
+        {
+          "metodo": "Comparables (mediana EV/EBITDA y PER)",
+          "valor": 152.29,
+          "peso_pct": 10,
+          "potencial_pct": 108.3
+        },
+        {
+          "metodo": "Escenarios ponderados",
+          "valor": 91.53,
+          "peso_pct": 30,
+          "potencial_pct": 25.2
+        }
+      ],
+      "valor_objetivo": 98.7,
+      "potencial_pct": 35
+    },
+    "fuentes": {
+      "n_fuentes": 38,
+      "n_primarias": 10,
+      "por_tipo": [
+        {
+          "tipo": "Primaria",
+          "num": 10
+        },
+        {
+          "tipo": "Datos de mercado",
+          "num": 8
+        },
+        {
+          "tipo": "Prensa",
+          "num": 14
+        },
+        {
+          "tipo": "Analistas",
+          "num": 4
+        },
+        {
+          "tipo": "Foros y redes",
+          "num": 2
+        }
+      ],
+      "n_citadas": 37,
+      "citas_sin_fuente": [],
+      "fuentes_sin_citar": [
+        "27"
+      ]
+    },
+    "controles": [
+      {
+        "control": "Geografías suman 100 %",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "DCF inverso calculable",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Puente de ingresos (volumen + precio + otros) = crecimiento del DCF",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Rendimiento del capital nuevo de la proyección ≤ 1,25 × el histórico",
+        "resultado": "OK",
+        "detalle": "La proyección supone que la inversión nueva rinde un -4,0 % frente a un ROIC de 11,7 %: crecimiento que la empresa no ha demostrado poder comprar."
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "resultado": "OK",
+        "detalle": "Supuesto 48,0 % frente a 48,7 % real: genera una variación de circulante de 1.356 M en el primer año. Converge de forma gradual."
+      },
+      {
+        "control": "Peso del valor terminal ≤ 80 % del valor empresa",
+        "resultado": "OK",
+        "detalle": "56 %."
+      },
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "resultado": "OK",
+        "detalle": "1,50 %."
+      },
+      {
+        "control": "Probabilidades de los escenarios suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 5 comparables",
+        "resultado": "OK",
+        "detalle": "6 comparables."
+      },
+      {
+        "control": "Pesos de la síntesis suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Múltiplos del objetivo a 12 m según la regla común",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Objetivo 12 m frente al consenso",
+        "resultado": "OK",
+        "detalle": "El base se separa un 8,8 % del objetivo medio de los analistas: explícalo en diferencia_consenso (nunca se acerca la cifra)."
+      },
+      {
+        "control": "Comprar pendiente de confirmar los datos (confianza baja)",
+        "resultado": "Revisar",
+        "detalle": "La regla a 12 meses da «Comprar» pero la confianza del resumen es Baja: la señal se queda en Mantener; di en la síntesis qué cifras hay que confirmar con fuente primaria."
+      },
+      {
+        "control": "Precio del cierre de la fecha de corte (o de las dos sesiones anteriores)",
+        "resultado": "Revisar",
+        "detalle": "El precio es del 2026-10-03, 7 sesiones antes del corte (2026-10-14): con un precio viejo no se cierra un Comprar. Último cierre: node herramientas/precios.mjs <ticker>; luego herramientas/apuntar-12m.mjs --precios."
+      },
+      {
+        "control": "Recomendación coherente con la regla de decisión",
+        "resultado": "Revisar",
+        "detalle": "La regla da «Mantener» y el análisis recomienda «Comprar»: hace falta «justificacion_recomendacion»."
+      },
+      {
+        "control": "Convicción frente a la sugerida por los criterios",
+        "resultado": "OK",
+        "detalle": "Los criterios dan «Media» (no llega a Alta: asimetría de n.d. (< 2)) y el análisis pone «Baja»: explica en la síntesis por qué te apartas."
+      },
+      {
+        "control": "La síntesis explica la convicción",
+        "resultado": "OK",
+        "detalle": "La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría."
+      },
+      {
+        "control": "Al menos 25 fuentes",
+        "resultado": "OK",
+        "detalle": "38 fuentes (10 primarias)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "resultado": "OK",
+        "detalle": "10."
+      },
+      {
+        "control": "Toda cita [n] existe en fuentes",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Fuentes sin citar ≤ 15 %",
+        "resultado": "OK",
+        "detalle": "Sin citar: 27."
+      }
+    ],
+    "controles_resumen": "18 de 21 controles correctos"
+  }
+}

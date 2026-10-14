@@ -13,3 +13,5 @@
 ## Lecciones
 - Japón con tasa libre al 3,1 %: los «compounders» japoneses de PER 30x (HOYA) salen con el DCF un 30 % por debajo del precio aunque el BPA coincida con el consenso; la regla a 12 meses da Mantener por múltiplo, no por cifras. Decirlo en la síntesis.
 - HOYA presenta la cuenta por naturaleza y sin línea de beneficio operativo: el EBIT de los agregadores (Stockopedia) deja un «resultado financiero» de 52.000 M que es sobre todo divisa; en el BPA del objetivo a 12 meses usar solo el rendimiento recurrente de la caja.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 29.1x, mínimo 22.6x, media larga 28.3x; antes v2 36.6x/26.7x/34.3x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

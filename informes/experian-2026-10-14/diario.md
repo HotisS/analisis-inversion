@@ -11,3 +11,5 @@
 ## Lecciones
 
 - Con la red solo de búsqueda, los avisos de recompra («Transaction in own shares») de Investegate dan el último precio fiable de las británicas que recompran: la búsqueda lista varios con su precio medio.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 27.7x, mínimo 23x, media larga 26.6x; antes v2 29.4x/19.2x/27.8x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

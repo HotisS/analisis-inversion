@@ -13,3 +13,5 @@
 
 - Empresas suizas que publican en USD (Novartis): todo en USD con la tasa libre estadounidense (≈5,2 %) y `tipo_cambio` USD por CHF; el precio del ADR (1 ADR = 1 acción) sirve directamente como precio en la divisa de las cuentas cuando no hay cierre legible en la SIX.
 - Farmacéuticas que compran cartera (Novartis, Roche): el flujo libre publicado no incluye las compras de biotecnológicas; cargarlas en el capex deja la reinversión neta casi en cero y el motor no hace la prueba de sostenibilidad: hacerla a mano.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 13.6x, mínimo 8.5x, media larga 16.3x; antes v2 15.5x/12.5x/14.8x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

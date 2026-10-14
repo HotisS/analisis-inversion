@@ -80,3 +80,5 @@ Sin investigación nueva. Lectura prudente de la sostenibilidad (decisión del u
 - **No cambia la señal**: Comprar con convicción media (la sugerida); el colchón se estrecha (DCF +12,9 %, y medio punto más de WACC lo deja en 37,62 EUR, casi el precio).
 - 13-oct-2026: revisión v2 a 12 meses rehecha con la v3 del informe (PER propio × BPA propio): objetivo 47,25 EUR (ponderado), rentabilidad +31,0 %, base +10,7 %, señal Mantener por el filtro del base (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +31,0 % → +14,5 %, base +10,7 %, señal Mantener (`revision-12m-2026-10-13.md`).
+
+- 2026-10-14: datos-v4.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 26.9x, mínimo 17x, media larga 34.9x; antes v2 30.1x/17.9x/25.3x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

@@ -34,3 +34,5 @@
 - **Beta de una ex-burbuja**: Adyen da 2,33 mensual a 5 años frente al Stoxx 600; con ella el WACC pasa del 13 %. La decisión depende de la beta (con una más baja la regla absoluta se acercaría a Comprar): dilo en la síntesis.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 1.337,2 EUR, rentabilidad +50,9 %, señal Comprar (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +50,9 % → +23,0 %, base +19,6 %, señal Comprar (`revision-12m-2026-10-13.md`).
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 57.5x, mínimo 39.4x, media larga 77x; antes v2 52.1x/40.9x/47.2x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

@@ -1,0 +1,4075 @@
+{
+  "meta": {
+    "fecha_corte": "2026-10-14",
+    "divisa": "CHF",
+    "divisa_cotizacion": "CHF",
+    "tipo_cambio": 1,
+    "unidades": "millones",
+    "cierre_ejercicio_mes": 12,
+    "etiqueta_ejercicio": "fin",
+    "normas_contables": "NIIF (IFRS)",
+    "formato_cuenta": "funcion",
+    "limitaciones": "Análisis hecho desde la nube con la red limitada a la búsqueda web: la web de la empresa, Yahoo y los proveedores de datos no se pudieron abrir, así que las cifras salen de los extractos de búsqueda de las notas de prensa y presentaciones de Straumann, de Stock Analysis, Stockopedia y Fintel y de la prensa financiera suiza (AWP), cruzadas cuando fue posible. La confianza es menor que en un análisis normal: el balance solo tiene activo total, patrimonio, caja e intangibles, y la deuda solo el total de 2025 (509 M con arrendamientos). **Precio**: no se encontró un cierre fechado del 13-oct-2026; se usa 92,00 CHF, la cotización citada el 3-oct-2026 [37] (las páginas sin fecha daban 88,7-98,0 CHF) [44]. **Cuenta en base core** (la de la empresa: sin amortización de intangibles de compras, deterioros ni reestructuración), que es la que sigue el mercado y la del objetivo a 12 meses; el beneficio IFRS de 2025 fue ≈356 M frente a 478 M core [1, 2, 5]. 2021-2022 incluyen DrSmile; 2023 en adelante, sin ella. Acción desdoblada 1:10 en 2022: precios y BPA anteriores divididos por diez [11]. El circulante no se pudo reconstruir: la inversión en circulante se suma al capex del DCF (≈1,2 puntos de las ventas).",
+    "controles_explicados": [
+      {
+        "control": "Rendimiento del capital nuevo",
+        "explicacion": "El ROIC incremental histórico (5,8 %) sale de un capital invertido incompleto (sin deuda en 2021-2024) y mezcla la pérdida de DrSmile; no es representativo. La prueba se hace a mano en dcf.sostenibilidad."
+      },
+      {
+        "control": "Circulante",
+        "explicacion": "Sin existencias, clientes ni proveedores publicados en las fuentes accesibles; la inversión en circulante va dentro del capex (≈1,2 puntos de las ventas)."
+      },
+      {
+        "control": "Objetivo 12 m frente al consenso",
+        "explicacion": "Nuestro base (100,39) queda un 12,5 % por debajo del objetivo medio (114,75): explicado en diferencia_consenso."
+      }
+    ],
+    "huecos": [
+      {
+        "seccion": "balance",
+        "campo": "circulante, fondo de comercio y deuda por año (2021-2024)",
+        "tipo": "Núcleo",
+        "intentos": "1) WebSearch del informe anual 2025 (AR25 Financial Report): el buscador indexa el PDF pero no devuelve el balance; 2) Stock Analysis, Stockopedia y Fintel: solo activo total, patrimonio, caja e intangibles; 3) Simply Wall St: deuda de ≈231 M a mediados de 2025, sin serie",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "financieros",
+        "campo": "cuenta IFRS completa (coste de ventas, gastos, impuestos, resultado financiero)",
+        "tipo": "Núcleo",
+        "intentos": "1) Nota de prensa FY2025 en PDF (no abre); 2) Stock Analysis (extracto solo con ingresos, EBIT y beneficio); 3) Google Finance (datos trimestrales mezclados)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "trimestres",
+        "campo": "8 trimestres con EBITDA y consenso previo",
+        "tipo": "Complemento",
+        "intentos": "1) Notas trimestrales de la empresa (solo ventas en 1T y 3T); 2) Quartr y AWP; 3) derivación por semestres",
+        "decision": "Calculado y marcado como estimación"
+      },
+      {
+        "seccion": "negocio",
+        "campo": "geografias (peso de cada región en 2025)",
+        "tipo": "Complemento",
+        "intentos": "1) Nota de prensa FY2025; 2) AWP por trimestres; 3) suma de trimestres de EMEA (solo dos)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "competencia",
+        "campo": "ingresos y margen EBIT de los competidores",
+        "tipo": "Núcleo",
+        "intentos": "1) WebSearch de Envista y Dentsply Sirona (solo devolvió Align); 2) búsqueda de cuotas de iData (sin porcentajes); 3) informes anuales de los competidores (no abren desde este entorno)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "esg",
+        "campo": "calificaciones",
+        "tipo": "Complemento",
+        "intentos": "1) MSCI; 2) Sustainalytics; 3) informe de sostenibilidad 2025 (no se buscaron por presupuesto de búsquedas compartido)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "consejo completo, comisiones, remuneración del primer ejecutivo y operaciones de directivos",
+        "tipo": "Núcleo",
+        "intentos": "1) Informe de gobierno y de remuneraciones 2025 (PDF no accesible); 2) resultados de la junta 2026 (solo votos); 3) registro de operaciones de directivos de la SIX (anónimo y no accesible desde aquí)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "identificacion",
+        "campo": "precio de cierre del 13-oct-2026",
+        "tipo": "Núcleo",
+        "intentos": "1) bolsa.mjs y Yahoo (sin red); 2) WebSearch de la cotización de octubre en alemán e inglés (solo páginas sin fecha: 88,7-98,0 CHF); 3) artículo fechado del 3-oct-2026 con ≈92 CHF",
+        "decision": "Calculado y marcado como estimación"
+      },
+      {
+        "seccion": "bolsa",
+        "campo": "rentabilidades, beta, volatilidad y caída máxima",
+        "tipo": "Complemento",
+        "intentos": "1) bolsa.mjs (sin red); 2) Yahoo Finance (no abre); 3) WebSearch (solo cotizaciones sueltas sin fecha)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "transacciones",
+        "campo": "operaciones del sector dental con múltiplo",
+        "tipo": "Complemento",
+        "intentos": "1) OPA de MBK sobre Osstem (2023), sin múltiplo en las búsquedas; 2) compra de Byte por Dentsply (2021), sin EBITDA; 3) no hay más búsquedas por el presupuesto compartido",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "multiplos_historicos",
+        "campo": "precio de cierre de 2024",
+        "tipo": "Complemento",
+        "intentos": "1) página de la empresa (solo hasta 2023); 2) finanzen.net y boerse.de (sin dato en el extracto); 3) Macrotrends (en USD del ADR)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sentimiento",
+        "campo": "revisadas (Reddit, Stocktwits y comentarios de lectores)",
+        "tipo": "Complemento",
+        "intentos": "1) WebSearch de Reddit y Seeking Alpha sobre Straumann en 2026 (sin hilos); 2) foro de cash.ch (vacío); 3) búsqueda en alemán de foros de inversores (solo prensa y blogs)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "dcf",
+        "campo": "beta propia de la acción",
+        "tipo": "Complemento",
+        "intentos": "1) bolsa.mjs (sin red); 2) Yahoo y Stock Analysis (no abren); 3) WebSearch (sin beta fechada)",
+        "decision": "Omitido"
+      }
+    ]
+  },
+  "identificacion": {
+    "nombre": "Straumann Holding AG",
+    "nombre_corto": "Straumann",
+    "ticker": "STMN",
+    "isin": "CH1175448666",
+    "mercado": "SIX Swiss Exchange",
+    "indice_referencia": "SMI",
+    "pais": "Suiza",
+    "pais_iso": "CH",
+    "sector": "Salud",
+    "industria": "Equipos y suministros sanitarios (dental)",
+    "sede": "Basilea (Suiza)",
+    "fundacion": "1954",
+    "empleados": null,
+    "web": "https://www.straumann.com",
+    "precio": 92,
+    "fecha_precio": "2026-10-03",
+    "acciones": 159.5,
+    "capitalizacion_publicada": null,
+    "free_float_pct": null,
+    "max_52s": null,
+    "min_52s": 73,
+    "volumen_medio_diario": null,
+    "proximos_resultados": "2026-10-28"
+  },
+  "resumen": {
+    "recomendacion": "Mantener",
+    "conviccion": "Baja",
+    "justificacion_recomendacion": null,
+    "horizonte": "12 meses",
+    "sintesis": "**La recomendación y por qué.** Mantener con convicción baja. El objetivo a 12 meses es de 104,34 CHF (nuestro PER por nuestro BPA de 2028e), una rentabilidad ponderada del 14,5 % y del 10,2 % en el caso base, con dividendo; el valor intrínseco es de 75,97 CHF (−17,4 %) y el objetivo medio de los analistas, de 114,75 CHF. No llega a Comprar porque la base queda por debajo del 12 % y el valor intrínseco por debajo del precio de 92,00 CHF. La convicción es baja porque las reglas discrepan (Vender con nuestro WACC, Mantener con la prima del mercado) y la diferencia es de tasa de descuento, no de cifras; subiría si los resultados de febrero de 2027 confirman un margen core publicado por encima del 26 % y APAC vuelve a crecer.\n\n**El negocio.** Straumann es el primer fabricante mundial de implantes dentales (>32 % de cuota) con un margen bruto del 70 % y un ROIC del 25,6 %, más de 18 puntos por encima del WACC (7,41 %) [24, 26]. **Sostenibilidad: Sí**: el 5,7 % anual que proyectamos está por debajo del orgánico de cada uno de los últimos cinco años y del mercado (6,9-8,3 %), y no necesita ganar cuota. El problema no es el negocio sino que su BPA core apenas ha subido desde 2021 (2,85 a 3,00) [10, 11].\n\n**Finanzas.** El crecimiento orgánico fue del 8,9 % en 2025 y del 7,8 % en el 1S26, pero en francos solo del 4,1 % y del 2,3 %: la divisa resta ≈5 puntos y ≈1,2 de margen [1, 3]. La caja libre fue de 290 M en 2025 (11,1 % de las ventas) por un capex alto del 8,6 %; la deuda neta es casi nula. El beneficio IFRS (≈356 M) queda ≈120 M por debajo del core [2].\n\n**Equipo y gobierno.** En 2026 coinciden la salida del fundador del consejo y el relevo del primer ejecutivo (Norbye desde el 1-dic); el bono de retención solo obtuvo un 74 % de votos [31]. Sin accionista de control: los dos fundadores suman el 25,7 % [21].\n\n**Valoración.** El DCF da 75,15 CHF y el DCF inverso dice que el precio descuenta un crecimiento del 9,3 % anual de 2027e a 2032e, frente al 6,2 % de nuestro base: exigente. Con la prima implícita del mercado (4,2 %) el valor sube a 92,49 CHF, el precio. Los comparables cotizan a ≈23x frente a 26,2x de Straumann. El PER core está en mínimos de su historia limpia (28,6x frente a una mediana de 34,9x), y por eso el objetivo a 12 meses, que usa el PER actual de 26,7x, sí da rentabilidad: es apuesta por el crecimiento del BPA (≈10 % anual hasta 2028e), no por la expansión del múltiplo. Nuestro base queda un 12,5 % por debajo del consenso porque proyectamos menos ventas en francos.\n\n**Riesgos y catalizadores.** El mayor riesgo es la segunda licitación de implantes en China, que puede favorecer a los locales (APAC creció un 0,5 % en el 1T26) [16]; el segundo, el franco. Catalizadores: ventas del 3T26 el 28-oct, llegada de Norbye el 1-dic y resultados y guía en febrero de 2027. Los foros están divididos y no señalan un riesgo nuevo.\n\n**Qué cambiaría la decisión.** Compraríamos por debajo de 75,97 CHF, donde el precio quedaría bajo el valor intrínseco y, con el objetivo de hoy fijo, la ponderada y la base superarían el 15 % y el 12 %; venderíamos por encima de 117,05 CHF. Pasaríamos a Comprar si el BPA core de 2026 supera 3,40 CHF con guía de margen al alza para 2027, y a Vender si APAC cae dos trimestres o el nuevo CEO rebaja los objetivos.",
+    "tesis": "Straumann es el líder mundial de implantes dentales, con un 32 % de cuota, un margen bruto del 70 % y un ROIC del 25,6 %; crece al 8-9 % orgánico en un mercado que lo hará al 7-8 % durante una década [1, 24, 26]. Su foso (evidencia clínica, costes de cambio de los componentes y ecosistema digital) es amplio y estable.\n\nEl precio (92,00 CHF, 26,2x el BPA de los próximos 12 meses) descuenta un crecimiento del 9,3 % anual hasta 2032, más del que esperamos (6,2 %) y del previsto para el mercado; el DCF da 75,15 CHF con nuestro WACC y 92,49 CHF con la prima de riesgo que hoy pide el mercado.\n\nEl mercado acierta al pagar calidad, pero lleva cuatro años sin que el BPA crezca por la divisa, China y el capex. Para invertir hay que creer que el BPA core sube un 10 % anual hasta 2028 y que el franco deja de restar: entonces el PER actual basta para ganar un 10 % al año. No da margen de seguridad frente al valor intrínseco.",
+    "vision_diferencial": {
+      "mercado_descuenta": "Que Straumann volverá a crecer al ritmo de 2022-2024 (≈9 % anual) y que su prima sobre los comparables se mantiene; los analistas, con un objetivo medio de 114,75 CHF, esperan un BPA de 4,17 CHF en 2028.",
+      "nuestra_vision": "El negocio es igual de bueno, pero la divisa y China dejan el crecimiento en francos en el 6-7 % y el BPA de 2028e en 3,76 CHF; a nuestro coste de capital el valor es de 75,97 CHF.",
+      "por_que": "Cuatro años de BPA plano con crecimiento orgánico alto demuestran que la divisa no es un efecto pasajero para una empresa con costes en francos; el consenso de ingresos ya ha bajado de 2.818 a 2.749 M para 2026 desde diciembre [32]."
+    },
+    "a_favor": [
+      "**Líder con foso amplio**: >32 % de cuota mundial y margen bruto del 70 % [24, 26].",
+      "**ROIC del 25,6 %**, más de 18 puntos por encima del WACC.",
+      "**PER en mínimos**: 28,6x los últimos 12 meses frente a una mediana histórica de 34,9x.",
+      "**Guía de margen al alza**: +140-170 pb a tipos constantes en 2026, confirmada en agosto [3, 15].",
+      "**Balance sin deuda neta** y caja libre del 11-12 % de las ventas [2, 3]."
+    ],
+    "en_contra": [
+      "**BPA core plano** desde 2021 (2,85 a 3,00 CHF) [10, 11].",
+      "**Valor intrínseco de 75,97 CHF**, un 17,4 % bajo el precio.",
+      "**China**: APAC creció un 0,5 % en el 1T26 y la licitación puede favorecer a los locales [16].",
+      "**Divisa**: resta ≈5 puntos de crecimiento y ≈1,2 de margen [3].",
+      "**Doble relevo** (fundador y CEO) en 2026 con un bono de retención al 74 % de votos [31]."
+    ],
+    "que_vigilar": "La tesis depende de que el BPA core crezca al 10 % anual hasta 2028e (de 3,00 a 3,76 CHF). La señal de que no se cumple sería un margen EBIT core publicado de 2026 por debajo del 25 %, APAC por debajo del 3 % orgánico dos trimestres seguidos o una rebaja de los objetivos a medio plazo del nuevo CEO en febrero de 2027.",
+    "cambiaria_recomendacion": [
+      "Precio por debajo de 75,97 CHF: pasaríamos a Comprar (valor intrínseco ≥ precio; con el objetivo fijo, ponderada > 15 % y base > 12 %).",
+      "Precio por encima de 117,05 CHF: Vender.",
+      "BPA core de 2026 por encima de 3,40 CHF con guía de margen al alza para 2027: revisaríamos al alza la base.",
+      "Crecimiento de APAC negativo en el 3T26 o en el 4T26: rebajaríamos a la mitad la probabilidad del alcista."
+    ],
+    "kpis_seguimiento": [
+      {
+        "kpi": "Crecimiento orgánico del grupo",
+        "nivel_actual": "8,5 % (2T26)",
+        "umbral_alerta": "< 6 %",
+        "por_que": "Base del crecimiento del BPA."
+      },
+      {
+        "kpi": "Margen EBIT core publicado",
+        "nivel_actual": "25,7 % (1S26)",
+        "umbral_alerta": "< 25 % en 2026",
+        "por_que": "Guía de +140-170 pb."
+      },
+      {
+        "kpi": "Crecimiento orgánico de APAC",
+        "nivel_actual": "0,5 % (1T26)",
+        "umbral_alerta": "< 0 % dos trimestres",
+        "por_que": "Licitación china."
+      },
+      {
+        "kpi": "Diferencia orgánico − francos",
+        "nivel_actual": "5,5 puntos (1S26)",
+        "umbral_alerta": "> 6 puntos",
+        "por_que": "Efecto divisa."
+      },
+      {
+        "kpi": "Caja libre sobre ventas",
+        "nivel_actual": "12,2 % (1S26)",
+        "umbral_alerta": "< 10 %",
+        "por_que": "Fin del ciclo de capex."
+      }
+    ],
+    "confianza": "Baja"
+  },
+  "historia": {
+    "resumen": "Fundada en 1954 en Waldenburg (Suiza) como instituto de investigación de metalurgia, Straumann se especializó en implantes dentales en los años setenta y salió a bolsa en 1998. Desde 2012 ha pasado de ser un fabricante premium a un grupo multimarca: compró Neodent (Brasil) para entrar en el segmento de valor, añadió Anthogyr, Medentika y ClearCorrect (ortodoncia invisible) y escáneres y software digitales. La apuesta por la ortodoncia directa al paciente (DrSmile) terminó en una pérdida de 202 M en 2023 y su venta en 2024. En 2022 desdobló la acción 1:10. En 2026 el fundador Thomas Straumann dejó el consejo y Christopher Norbye sustituirá a Guillaume Daniellot como primer ejecutivo el 1-dic-2026 [18, 21, 22].",
+    "hitos": [
+      {
+        "anio": "1954",
+        "hito": "Reinhard Straumann funda el instituto en Waldenburg [21]."
+      },
+      {
+        "anio": "1998",
+        "hito": "Salida a bolsa en la SIX [21]."
+      },
+      {
+        "anio": "2012-2015",
+        "hito": "Entrada en Neodent (Brasil), base del negocio de valor en Latinoamérica y Asia [21]."
+      },
+      {
+        "anio": "2017",
+        "hito": "ClearCorrect: entrada en la ortodoncia invisible [21]."
+      },
+      {
+        "anio": "2022",
+        "hito": "Desdoblamiento 1:10 de la acción (20-abr-2022) [11]."
+      },
+      {
+        "anio": "2023-2024",
+        "hito": "DrSmile pasa a operación interrumpida (−202 M en 2023) y se vende [5]."
+      },
+      {
+        "anio": "2026",
+        "hito": "Thomas Straumann deja la presidencia de honor del consejo; Petra Rumpf, presidenta; Norbye, CEO desde el 1-dic [18, 22]."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "negocio": {
+    "segmentos": [
+      {
+        "nombre": "Grupo (un solo segmento operativo publicado por regiones)",
+        "descripcion": "Implantes premium (Straumann) y de valor (Neodent, Anthogyr, Medentika), ortodoncia invisible (ClearCorrect), biomateriales y soluciones digitales (escáneres, CADCAM, impresión 3D).",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2021",
+            "ingresos": 2022,
+            "resultado": null
+          },
+          {
+            "periodo": "2022",
+            "ingresos": 2321,
+            "resultado": null
+          },
+          {
+            "periodo": "2023",
+            "ingresos": 2277,
+            "resultado": null
+          },
+          {
+            "periodo": "2024",
+            "ingresos": 2504,
+            "resultado": null
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 2605,
+            "resultado": null
+          }
+        ]
+      }
+    ],
+    "geografias": null,
+    "kpis": [
+      {
+        "kpi": "Crecimiento orgánico del grupo",
+        "valor_anterior": "13,7 % (2024)",
+        "valor_actual": "8,9 % (2025); 7,8 % en el 1S26",
+        "variacion": "−4,8 puntos",
+        "comentario": "Normalización tras el rebote pospandemia; el 2T26 acelera al 8,5 % [1, 3, 9]."
+      },
+      {
+        "kpi": "Margen EBIT core",
+        "valor_anterior": "26,0 % (2024)",
+        "valor_actual": "25,2 % (2025); 25,7 % en el 1S26",
+        "variacion": "−0,8 puntos",
+        "comentario": "Divisa: a tipos constantes 26,5 % en 2025 y 26,9 % en el 1S26 [1, 3]."
+      },
+      {
+        "kpi": "Caja libre sobre ventas",
+        "valor_anterior": "n.d. (2024)",
+        "valor_actual": "11,1 % (2025); 12,2 % en el 1S26",
+        "variacion": "+1,1 puntos",
+        "comentario": "Ciclo de capex alto en 2025 (8,6 % de las ventas) [2, 3]."
+      },
+      {
+        "kpi": "Capex sobre ventas",
+        "valor_anterior": "6,7 % (2024, estimación con el estado de flujos)",
+        "valor_actual": "8,6 % (2025)",
+        "variacion": "+1,9 puntos",
+        "comentario": "Ampliaciones de capacidad y digital [2, 6]."
+      },
+      {
+        "kpi": "Crecimiento orgánico de EMEA",
+        "valor_anterior": "10,0 % (1T25)",
+        "valor_actual": "15,3 % (4T25)",
+        "variacion": "+5,3 puntos",
+        "comentario": "La región más grande (~43 % de las ventas) [1, 17]."
+      },
+      {
+        "kpi": "Crecimiento orgánico de China",
+        "valor_anterior": "débil en 2025",
+        "valor_actual": "+0,5 % en APAC en el 1T26 por el retraso de la segunda licitación centralizada (VBP)",
+        "variacion": "",
+        "comentario": "Sin China, el grupo habría crecido ~10 % en el 1T26 [16]."
+      }
+    ],
+    "confianza": "Media",
+    "descripcion": "Straumann es el mayor fabricante mundial de implantes dentales y uno de los primeros de ortodoncia invisible. Vende implantes, pilares y prótesis (marcas Straumann en premium y Neodent, Anthogyr y Medentika en el segmento de valor), biomateriales para regenerar hueso, alineadores transparentes (ClearCorrect) y un ecosistema digital (escáneres intraorales, software de planificación, fresado e impresión 3D). Sus clientes son clínicas dentales, cirujanos maxilofaciales, ortodoncistas y laboratorios en más de 100 países, a los que llega sobre todo con fuerza de ventas propia. EMEA es la primera región (≈43 % de las ventas), seguida de Norteamérica, Asia-Pacífico (con China) y Latinoamérica [2, 23].",
+    "como_gana_dinero": "El implante es un producto de bajo coste de fabricación y precio alto: el margen bruto ronda el 70 % [24]. El beneficio depende del volumen de tratamientos (pacientes que pagan de su bolsillo, sensible a la confianza del consumidor), de la mezcla premium/valor (el valor crece más, pero con menos margen) y de la divisa: más del 95 % de las ventas está fuera de Suiza y los costes en francos pesan, por lo que el franco fuerte resta ≈1,3 puntos de margen en 2025. Los consumibles y la recompra de componentes por los mismos dentistas dan ingresos muy recurrentes; la formación clínica fideliza [2, 23].",
+    "clientes": "Muy atomizados: decenas de miles de clínicas, ningún cliente relevante. El poder de precios se ve en el margen bruto estable (≈70 %) y en que el grupo absorbió los aranceles de EE. UU. de 2025-2026 y aun así elevó la guía de margen (+140-170 puntos básicos a tipos constantes) [15, 24]. En China, la compra centralizada (VBP) de 2023 bajó los precios de los implantes un 50-60 % pero multiplicó el volumen; la segunda ronda, retrasada a 2026, puede favorecer a los fabricantes locales [25]."
+  },
+  "sector": {
+    "definicion": "Mercado mundial de implantes dentales (implantes y pilares), el que más pesa en el beneficio de Straumann. Las estimaciones varían por perímetro: 4.000 M USD (iData, solo implantes) a 7.000 M USD con pilares finales; uso como referencia Global Market Insights (5.200 M USD en 2025) porque publica también cuotas [26, 27]. La ortodoncia invisible es otro mercado (Align domina) que no se suma aquí.",
+    "tamano": "≈5.200 M USD en 2025 (Global Market Insights), 5.640 M USD (Market Research Future) [26, 28]",
+    "unidad_serie": "millones de USD",
+    "serie": [
+      {
+        "anio": "2025",
+        "tamano": 5200
+      },
+      {
+        "anio": "2034e",
+        "tamano": 9600
+      }
+    ],
+    "tcac_historico_pct": null,
+    "tcac_previsto_pct": 6.9,
+    "cr5_pct": 80,
+    "estructura": "Concentrada",
+    "drivers": [
+      {
+        "driver": "Envejecimiento y pérdida de piezas",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Previsiones de 6,9-8,3 % anual hasta 2034-2035 [26, 28]."
+      },
+      {
+        "driver": "Penetración baja en países emergentes",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "China multiplicó volúmenes tras la VBP de 2023; Latinoamérica crece a doble dígito [23, 25]."
+      },
+      {
+        "driver": "Pago del bolsillo del paciente",
+        "efecto": "+/−",
+        "horizonte": "Cíclico",
+        "evidencia": "Norteamérica creció solo 1,8 % orgánico en el 1T25 con consumo débil, y 7,7 % en el 1T26 [16, 23]."
+      },
+      {
+        "driver": "Compra centralizada en China (VBP)",
+        "efecto": "−",
+        "horizonte": "Estructural",
+        "evidencia": "Segunda ronda retrasada; APAC creció 0,5 % en el 1T26 [16, 25]."
+      },
+      {
+        "driver": "Digitalización del flujo clínico",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Escáneres y planificación digital fidelizan al dentista y suben el ticket [2]."
+      }
+    ],
+    "porter": [
+      {
+        "fuerza": "Rivalidad",
+        "intensidad": 3,
+        "justificacion": "Cuatro grandes (Straumann, Envista/Nobel, Dentsply Sirona, Osstem) con el 80 % del mercado, pero guerra de precios en el segmento de valor [26]."
+      },
+      {
+        "fuerza": "Poder de los clientes",
+        "intensidad": 2,
+        "justificacion": "Clientes atomizados; solo los compradores públicos chinos (VBP) negocian precio [25]."
+      },
+      {
+        "fuerza": "Poder de los proveedores",
+        "intensidad": 1,
+        "justificacion": "Titanio y cerámica, coste pequeño frente al precio (margen bruto ≈70 %) [24]."
+      },
+      {
+        "fuerza": "Amenaza de entrada",
+        "intensidad": 3,
+        "justificacion": "Barreras clínicas y regulatorias en premium; fabricantes coreanos y chinos entran por precio [26]."
+      },
+      {
+        "fuerza": "Amenaza de sustitutos",
+        "intensidad": 2,
+        "justificacion": "Puentes y prótesis removibles son peores clínicamente; el implante gana cuota a largo plazo [26]."
+      }
+    ],
+    "ciclo": {
+      "posicion": "Recuperación",
+      "comentario": "Tras el pico pospandemia (2021-2022, crecimiento orgánico del 15,7 % en 2022) el mercado se enfrió en 2023-2025 con el consumo débil en EE. UU. y China; en 2026 Norteamérica vuelve al 7-8 % orgánico. En 2008-09 y en 2020 los tratamientos electivos cayeron de forma brusca y se recuperaron en uno o dos años; el mercado no tiene ciclo de inventario largo [10, 16, 23]."
+    },
+    "regulacion": "Reglamento europeo de productos sanitarios (MDR) que encarece la certificación de los fabricantes pequeños; aranceles de EE. UU. sobre importaciones suizas (2025-2026), que Straumann absorbió mejor de lo esperado y por los que subió la guía en junio de 2026; segunda ronda de compra centralizada de implantes en China, retrasada a 2026, en la que los productos locales pueden tener preferencia [15, 25].",
+    "tendencias": "Flujo digital (escáner intraoral, planificación guiada, impresión 3D) que favorece a quien tiene el ecosistema completo; segmento de valor que crece más rápido que el premium, donde Straumann compite con Neodent; fabricantes coreanos (Osstem, Dentium, Megagen) y chinos que ganan cuota en Asia; consolidación de clínicas (DSO) que compran con volumen [26, 27].",
+    "confianza": "Media"
+  },
+  "competencia": {
+    "cuota_pct": 32,
+    "posicion": "1.º mundial en implantes dentales (>32 % en 2024); también relevante en ortodoncia invisible (2.º-3.º tras Align)",
+    "competidores": [
+      {
+        "nombre": "Envista (Nobel Biocare, Implant Direct)",
+        "pais": "EE. UU.",
+        "ticker": "NVST",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "N.º 2 en implantes, a pocos puntos de Straumann en implantes y pilares según iData [27]."
+      },
+      {
+        "nombre": "Dentsply Sirona (MIS, Astra Tech)",
+        "pais": "EE. UU.",
+        "ticker": "XRAY",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "N.º 3; MIS en el segmento de valor [26]."
+      },
+      {
+        "nombre": "Osstem Implant",
+        "pais": "Corea del Sur",
+        "ticker": null,
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Líder en Asia por precio; excluido de bolsa tras la OPA de MBK en 2023 [26]."
+      },
+      {
+        "nombre": "Align Technology",
+        "pais": "EE. UU.",
+        "ticker": "ALGN",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Líder en alineadores (Invisalign) y escáneres iTero; competidor de ClearCorrect [29]."
+      }
+    ],
+    "foso": {
+      "veredicto": "Amplio",
+      "tendencia": "Estable",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 2,
+          "evidencia": "Red de formación clínica (ITI) y comunidad de dentistas que forman a otros en el sistema Straumann [6]."
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 4,
+          "evidencia": "Componentes protésicos y kits quirúrgicos propios: el dentista que coloca el implante compra los pilares durante años [6]."
+        },
+        {
+          "fuente": "Intangibles (marca, patentes, licencias)",
+          "puntuacion": 5,
+          "evidencia": "Marca premium con evidencia clínica de décadas; cuota del 32 % y margen bruto ≈70 % estables [8, 11]."
+        },
+        {
+          "fuente": "Ventaja en costes",
+          "puntuacion": 3,
+          "evidencia": "Neodent y producción en Brasil y China permiten competir en valor [6]."
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 3,
+          "evidencia": "Fuerza de ventas directa y logística global que los nuevos no igualan [11]."
+        }
+      ]
+    },
+    "amenazas": "La principal es el precio en China: una segunda VBP que prime a los locales recortaría volumen y precio en el mercado que más crecía (probabilidad media). La segunda, la entrada de fabricantes coreanos y chinos en el segmento de valor fuera de Asia (Latinoamérica, Europa del Este), que presiona a Neodent. La tercera, la consolidación de clínicas (DSO) en EE. UU., que negocian precio [25, 26].",
+    "confianza": "Media"
+  },
+  "financieros": {
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 2022,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": null,
+        "amortizaciones": null,
+        "ebit": 554,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 456,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 2.85,
+        "dpa": 0.675,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 160
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 2321,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": null,
+        "amortizaciones": null,
+        "ebit": 603,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 482,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 3.03,
+        "dpa": 0.8,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 159.1
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 2277,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": null,
+        "amortizaciones": null,
+        "ebit": null,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 440,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 2.76,
+        "dpa": 0.85,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 159.4
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 2504,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 796,
+        "amortizaciones": 145,
+        "ebit": 651,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 502,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 3.14,
+        "dpa": 0.95,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 159.9
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 2605,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 797,
+        "amortizaciones": 141,
+        "ebit": 656,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 478,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 3,
+        "dpa": 1,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 159.5
+      }
+    ],
+    "ltm": {
+      "periodo": "LTM jun-26",
+      "fecha_fin": "2026-06-30",
+      "ingresos": 2636,
+      "ebitda": 793,
+      "ebit": 652,
+      "beneficio_neto": 514,
+      "bpa": 3.22,
+      "dpa": 1,
+      "dpa_extraordinario": 0,
+      "fcf": 346,
+      "participadas_en_ebitda": null,
+      "no_recurrentes_en_ebitda": null
+    },
+    "cambios_perimetro": [
+      {
+        "periodo": "2023",
+        "descripcion": "DrSmile (alineadores directos al paciente) pasa a operación interrumpida y se vende en 2024: los ingresos de 2023 están reexpresados sin ella (2.277 M); 2021-2022 la incluyen. El BPA core de 2023 (2,76) es el publicado entonces, con DrSmile."
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "Las ventas pasaron de 2.022 M en 2021 a 2.605 M en 2025 (con DrSmile fuera desde 2023): el crecimiento orgánico fue del 15,7 % en 2022, del 13,7 % en 2024 y del 8,9 % en 2025, pero el franco fuerte lo recorta mucho en la cifra publicada (+4,1 % en 2025 y +2,3 % en el 1S26, frente a +7,8 % orgánico) [1, 3, 9, 10]. El margen EBIT core bajó del 27,4 % de 2021 al 25,2 % de 2025; a tipos constantes fue del 26,5 %, así que casi toda la erosión es divisa (costes en francos, ventas en euros, dólares, reales y yuanes) [1, 10]. En 2026 la guía pide +140-170 puntos básicos a tipos constantes; el 1S26 dio un 26,9 % a tipos constantes y un 25,7 % publicado [3, 15]. El BPA core apenas se ha movido en cinco años (2,85 en 2021, 3,00 en 2025): el crecimiento orgánico se lo ha comido la divisa y el ciclo de inversión [9, 10, 11].",
+    "ajustes": "Usamos las cifras core de la empresa. La diferencia con el IFRS es la amortización de intangibles de compras (PPA), deterioros y reestructuración: ≈120 M en 2025 (BPA IFRS 2,23 frente a 3,00 core) y ≈43 M en 2024 (2,87 frente a 3,14) [1, 2, 5, 9]. En 2023 la pérdida de DrSmile (−202 M) va como operación interrumpida [5]. La amortización de PPA es recurrente mientras haya intangibles comprados, pero no es caja; la reestructuración de 2025 sí se ha repetido dos años y es la parte que más sobrestima el core."
+  },
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "1S25",
+        "ingresos": 1349,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 1.42,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "2S25",
+        "ingresos": 1256,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 1.58,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1S26",
+        "ingresos": 1380,
+        "crecimiento_pct": 2.3,
+        "crecimiento_organico_pct": 7.8,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 1.64,
+        "vs_consenso": "Superior"
+      }
+    ],
+    "confianza": "Media",
+    "ultima_presentacion": "En el 2T26 (19-ago) el crecimiento orgánico aceleró al 8,5 % (7,1 % en el 1T26), con ventas de 707,0 M; el margen EBIT core del semestre fue del 25,7 % publicado y del 26,9 % a tipos constantes, y el beneficio core subió un 15,7 % hasta 262 M [3, 4, 14]. La dirección confirmó la guía elevada en junio (+140-170 pb de margen a tipos constantes), repartida por igual entre semestres, y anunció que Christopher Norbye sustituirá a Guillaume Daniellot como primer ejecutivo el 1-dic-2026 [18]. Frente a febrero, el discurso cambió de «prudencia por aranceles» a «aranceles menores de lo previsto» [15]. Las preguntas se centraron en China (APAC creció solo un 0,5 % en el 1T26 por el retraso de la segunda licitación centralizada) y en la divisa; sin China el grupo habría crecido ≈10 % [16]. La caja libre del semestre fue de 169 M (12,2 % de las ventas, +49 %) [3, 12]."
+  },
+  "balance": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "activo_total": 2968,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 1468,
+        "fondo_comercio": null,
+        "intangibles": 639,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 880,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "patrimonio_neto": 1500,
+        "minoritarios": null,
+        "reservas": null
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 3373,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 1519,
+        "fondo_comercio": null,
+        "intangibles": 778,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 696,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "patrimonio_neto": 1854,
+        "minoritarios": null,
+        "reservas": null
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 3322,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 1483,
+        "fondo_comercio": null,
+        "intangibles": 908,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 410,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "patrimonio_neto": 1839,
+        "minoritarios": null,
+        "reservas": null
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 3619,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 1575,
+        "fondo_comercio": null,
+        "intangibles": 904,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 375,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "patrimonio_neto": 2044,
+        "minoritarios": null,
+        "reservas": null
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 3758,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 1593,
+        "fondo_comercio": null,
+        "intangibles": 872,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 504,
+        "deuda_financiera": 509,
+        "arrendamientos": 0,
+        "patrimonio_neto": 2165,
+        "minoritarios": null,
+        "reservas": null
+      }
+    ],
+    "vencimientos": [],
+    "liquidez": "Caja de 504 M al cierre de 2025 y de 381 M a 30-jun-2026 (tras pagar 160 M de dividendo en abril) [2, 19]; deuda total de ≈509 M a cierre de 2025 según Stock Analysis (incluye arrendamientos) [7].",
+    "rating": "Sin rating público localizado",
+    "coste_deuda_pct": null,
+    "vida_media_anios": null,
+    "confianza": "Baja",
+    "otros_pasivos": "No se han podido leer las notas del informe anual: sin datos de provisiones, garantías, pagos aplazados de compras ni opciones de venta de minoritarios. El grupo no tiene rating público ni covenants conocidos. La deuda total de 509 M de 2025 incluye arrendamientos según Stock Analysis [7]; Simply Wall St daba ≈231 M de deuda financiera a mediados de 2025, lo que dejaría ≈280 M de arrendamientos (estimación sin verificar).",
+    "comentario": "El balance es de caja neta casi nula: 504 M de caja frente a ≈509 M de deuda con arrendamientos al cierre de 2025, y 381 M de caja en junio de 2026 tras pagar el dividendo [2, 7, 19]. El patrimonio subió de 1.500 M (2021) a 2.165 M (2025) y el activo total, de 2.968 M a 3.758 M [8]. La caja bajó de 880 M en 2021 a 375 M en 2024 por el ciclo de capex y las compras de distribuidores; en 2025 se recupera. No hay presión financiera: el riesgo del balance es nulo frente al de la cuenta."
+  },
+  "flujos": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 560.3,
+        "capex": 105.1,
+        "pagos_arrendamientos": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 92,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 415.2,
+        "capex": 161.6,
+        "pagos_arrendamientos": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 108,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 504,
+        "capex": 151.7,
+        "pagos_arrendamientos": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 128,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 483.4,
+        "capex": 167.8,
+        "pagos_arrendamientos": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 136,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 504,
+        "capex": 223.4,
+        "pagos_arrendamientos": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 151,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "El flujo operativo ha sido estable (415-560 M), pero el capex subió del 5,2 % de las ventas en 2021 al 8,6 % en 2025 (223 M con intangibles), y la caja libre de la empresa fue de 290 M en 2025 (11,1 % de las ventas): una conversión de ≈61 % del beneficio core [2, 6]. En el 1S26 la caja libre subió un 49 % a 169 M por menos capex [3, 19]. La dirección habla de un «ciclo alto de capex» (capacidad en implantes y alineadores y digital) que ya baja; estimación propia: el mantenimiento ronda la amortización (≈5,4 % de las ventas) y el resto (≈3 puntos) es crecimiento [2]."
+  },
+  "calidad": {
+    "auditor": null,
+    "anios_auditor": null,
+    "opinion": "Favorable (sin salvedades conocidas)",
+    "senales": [
+      {
+        "senal": "Diferencia persistente entre beneficio core e IFRS",
+        "nivel": "Media",
+        "comentario": "En 2025 el core (478 M) supera al IFRS (≈356 M) en ≈120 M por amortización de intangibles de compras, deterioros y reestructuración; en 2024 la distancia fue de ≈43 M (BPA core 3,14 frente a 2,87 IFRS) [1, 2, 5, 9]."
+      },
+      {
+        "senal": "Ciberataque en abril de 2026",
+        "nivel": "Baja",
+        "comentario": "La acción cayó ≈2 % ese día; sin efecto visible en el 2T26 [20]."
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "La calidad contable es buena pero la base core exige vigilancia: la distancia con el IFRS pasó de ≈43 M en 2024 a ≈120 M en 2025 por deterioros y reestructuración [1, 2, 9]. El Altman Z (6,80) sitúa a la empresa lejos de cualquier tensión; el Piotroski (5) es mediocre porque la cuenta y el balance llegan incompletos, y el Beneish no se puede calcular sin circulante. No hay señales de capitalización agresiva ni de cambios de criterio en las fuentes leídas; la venta de DrSmile limpió un negocio con pérdidas. Lo que más pesa es la divisa, que no es contable."
+  },
+  "rentabilidad": {
+    "comentario": "Straumann crea mucho valor: el ROIC (NOPAT core entre capital invertido) es del 25,6 % en 2025 frente a un WACC del 7,41 %, más de 18 puntos de diferencia, aunque baja desde el 31,5 % de 2024 porque el capital invertido sube con el ciclo de capex y el NOPAT apenas crece. Lo mueve el margen (EBIT core del 25-27 %) más que la rotación (0,7 veces). El ROIC incremental que calcula el motor (5,8 %) no es representativo: el capital de 2021-2024 llega sin deuda y mezcla la pérdida de DrSmile. Frente a los comparables, solo Edwards y los audífonos premium se le acercan; Coloplast rinde un 11,9 % [39].",
+    "confianza": "Media"
+  },
+  "capital": {
+    "politica": "Dividendo de ≈1/3 del BPA core, creciente: 1,00 CHF por 2025 (+5 %, payout ≈33 %) [1]. Sin recompras: la caja se dedica a capex (8,6 % de las ventas en 2025) y a compras pequeñas de distribuidores y tecnología digital [2].",
+    "adquisiciones": [
+      {
+        "anio": "2024",
+        "objetivo": "Venta de DrSmile (alineadores directos al paciente)",
+        "importe": null,
+        "ev_ebitda": null,
+        "financiacion": "Desinversión",
+        "resultado": "Pérdida por operación interrumpida de 202 M en 2023: la apuesta por el canal directo al consumidor no funcionó [5]."
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "La asignación de capital es correcta pero sin brillo en la última década: el ROIC sigue alto (25,6 % en 2025), pero el BPA core apenas ha subido desde 2021 (2,85 a 3,00) por la divisa, el ciclo de capex y la aventura de DrSmile, que costó 202 M de pérdida en 2023 [5, 9, 10]. No hay recompras y el dividendo crece despacio (payout ≈33 %) [1]. La caja libre acumulada se ha dedicado a capex y a comprar distribuidores; con caja neta nula, la empresa no tiene margen para recompras grandes sin deuda."
+  },
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "Guillaume Daniellot",
+        "cargo": "Primer ejecutivo (hasta el 30-nov-2026)",
+        "desde": "2021",
+        "participacion_pct": null,
+        "trayectoria": "Bajo su mandato el grupo creció un 8,9 % orgánico en 2025 y elevó la guía de margen de 2026; deja el cargo en diciembre de 2026 [18, 30]."
+      },
+      {
+        "nombre": "Christopher Norbye",
+        "cargo": "Primer ejecutivo desde el 1-dic-2026",
+        "desde": "2026",
+        "participacion_pct": null,
+        "trayectoria": "Nombrado sucesor en la presentación del 1S26; trayectoria previa no verificada en las fuentes disponibles [18, 30]."
+      },
+      {
+        "nombre": "Petra Rumpf",
+        "cargo": "Presidenta del consejo",
+        "desde": null,
+        "participacion_pct": null,
+        "trayectoria": "Reelegida presidenta en la junta del 17-abr-2026 con el 96,73 % de los votos [31]."
+      },
+      {
+        "nombre": "Thomas Straumann",
+        "cargo": "Presidente de honor (fuera del consejo desde abril de 2026)",
+        "desde": null,
+        "participacion_pct": 15.5,
+        "trayectoria": "Fundador de la etapa moderna del grupo y primer accionista (15,5 %) [21, 31]."
+      }
+    ],
+    "historial_guidance": [
+      {
+        "anio": "2025",
+        "guia": "Crecimiento orgánico de un dígito alto y mejora del margen EBIT core a tipos constantes",
+        "real": "8,9 % orgánico; margen core 26,5 % a tipos constantes (25,2 % con divisa)",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2026",
+        "guia": "Febrero: dígito alto orgánico y +30-60 pb de margen a tipos constantes; junio: +140-170 pb",
+        "real": "1S26: 7,8 % orgánico y margen core del 26,9 % a tipos constantes (+≈1,3 puntos); confirmado en agosto",
+        "cumplida": "Parcial"
+      }
+    ],
+    "comentario": "El equipo ha cumplido la guía de 2025 y en junio de 2026 subió la de margen (de +30-60 a +140-170 puntos básicos) al pesar menos los aranceles de EE. UU. El cambio de primer ejecutivo (Daniellot sale el 30-nov-2026, entra Norbye) y la salida del fundador del consejo concentran dos relevos en un año: el riesgo es de continuidad estratégica, no de credibilidad. La sucesión se anunció con tres meses y medio de antelación [18, 30, 31].",
+    "confianza": "Media"
+  },
+  "gobierno": {
+    "consejo": [
+      {
+        "nombre": "Petra Rumpf",
+        "cargo": "Presidenta",
+        "tipo": "Independiente",
+        "desde": null,
+        "comisiones": null
+      },
+      {
+        "nombre": "Wolfgang Becker",
+        "cargo": "Consejero (nuevo en 2026)",
+        "tipo": "Independiente",
+        "desde": "2026",
+        "comisiones": null
+      },
+      {
+        "nombre": "Sébastien Schatzmann",
+        "cargo": "Consejero (nuevo en 2026)",
+        "tipo": "Independiente",
+        "desde": "2026",
+        "comisiones": null
+      }
+    ],
+    "presidente_ceo_separados": true,
+    "presidente_ejecutivo": false,
+    "consejero_coordinador": null,
+    "una_accion_un_voto": true,
+    "operaciones_vinculadas_relevantes": false,
+    "variable_ligado_rentabilidad": null,
+    "auditoria_independiente": null,
+    "insiders_sin_operaciones": null,
+    "accionista_control": false,
+    "presidente_vinculado_control": false,
+    "cambios_cupula_24m": 1,
+    "voto_remuneracion_pct": 74.02,
+    "voto_remuneracion_contra_pct": null,
+    "voto_remuneracion_contra_libre_pct": null,
+    "voto_cupula_pct": null,
+    "remuneracion_ceo": null,
+    "remuneracion": "En la junta de 2026 el informe de remuneración de 2025 obtuvo un 85,59 % a favor y el importe máximo del consejo un 94,37 %; el punto más contestado fue un bono único de retención para la dirección, aprobado con solo un 74,02 % a favor, lo que indica que una parte relevante del capital no presente en el control familiar rechaza pagar por quedarse en plena sucesión [31]. No se ha podido leer el informe de remuneraciones (métricas del variable).",
+    "accionistas": [
+      {
+        "nombre": "Thomas Straumann",
+        "pct": 15.5,
+        "tipo": "Fundador / persona física",
+        "variacion": "Estable"
+      },
+      {
+        "nombre": "Rudolf Maag",
+        "pct": 10.2,
+        "tipo": "Persona física",
+        "variacion": "Estable"
+      },
+      {
+        "nombre": "UBS Fund Management (Switzerland)",
+        "pct": 5.1,
+        "tipo": "Institucional",
+        "variacion": "n.d."
+      },
+      {
+        "nombre": "BlackRock",
+        "pct": 4.7,
+        "tipo": "Institucional",
+        "variacion": "n.d."
+      },
+      {
+        "nombre": "Gabriella Straumann",
+        "pct": 3,
+        "tipo": "Persona física",
+        "variacion": "n.d."
+      }
+    ],
+    "insiders": [],
+    "control_y_defensas": "No hay accionista de control: los dos mayores (Thomas Straumann, 15,5 %, y Rudolf Maag, 10,2 %) suman un 25,7 % y los participantes significativos, un 38,5 % (42,0 % un año antes) [21]. Acción única nominativa. Con una asistencia del 68,1 % del capital en la junta de 2026, los dos fundadores pesan ≈38 % de los votos presentes, suficiente para bloquear pero no para imponer [21, 31].",
+    "alertas": [
+      "Relevo del primer ejecutivo (1-dic-2026) y salida del fundador del consejo en el mismo año.",
+      "Bono de retención aprobado con solo un 74 % a favor (junta 2026).",
+      "Ciberataque en abril de 2026."
+    ],
+    "confianza": "Baja"
+  },
+  "consenso": {
+    "guidance": "2026: crecimiento orgánico de un dígito alto y mejora del margen EBIT core de 140-170 puntos básicos a tipos de 2025 (subida desde +30-60 pb el 17-jun-2026 por aranceles de EE. UU. menores de lo previsto), confirmada el 19-ago-2026 con la mejora repartida por igual entre semestres [3, 15].",
+    "estimaciones": [
+      {
+        "periodo": "2026e",
+        "ingresos": 2749,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 3.12,
+        "dpa": null,
+        "fuente": "Simply Wall St (15 analistas; BPA = beneficio 497 M ÷ 159,5 M acciones) [32]"
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 3019,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 3.62,
+        "dpa": null,
+        "fuente": "Simply Wall St (15 analistas; beneficio 578 M) [32]"
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 3306,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 4.17,
+        "dpa": null,
+        "fuente": "Simply Wall St (12 analistas; beneficio 665 M) [32]"
+      }
+    ],
+    "recomendaciones": {
+      "n_analistas": 22,
+      "comprar": 14,
+      "mantener": 6,
+      "vender": 2,
+      "po_medio": 114.75,
+      "po_min": 81.11,
+      "po_max": 152.83
+    },
+    "revisiones": "El consenso de ingresos de 2026 bajó de 2.818 M (diciembre de 2025) a 2.749 M (julio de 2026) por la divisa, mientras los de beneficio subieron tras la nueva guía de margen; TheScreener señala revisiones al alza del BPA en las siete semanas previas a julio [32, 33]. Tras el 2T26, UBS subió a Comprar (1-sep, objetivo 115 CHF) y Deutsche Bank bajó a Mantener (objetivo 119 CHF) [34]. Solo hay una fuente con estimaciones completas; el objetivo y las recomendaciones se contrastan con Stocksguide y Fintel [35, 36].",
+    "base_ebitda": "NIIF",
+    "ajuste_ebitda_pct_ventas": null,
+    "confianza": "Baja"
+  },
+  "bolsa": null,
+  "multiplos_historicos": {
+    "serie": [
+      {
+        "anio": "2021",
+        "precio_cierre": 193.7,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": true
+      },
+      {
+        "anio": "2022",
+        "precio_cierre": 105.6,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2023",
+        "precio_cierre": 135.6,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2024",
+        "precio_cierre": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2025",
+        "precio_cierre": 93.46,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      }
+    ],
+    "confianza": "Baja",
+    "comentario": "El PER core de los últimos 12 meses (28,6x) está en el mínimo de su historia limpia (2022: 34,9x; 2023: 49,1x; 2025: 31,2x) [11, 38]. Excluimos 2021 (68x, burbuja pospandemia) y no hay precio de cierre de 2024. El descuento se explica por el BPA estancado cuatro años y por la entrada de competidores de valor en China; no por un deterioro de la rentabilidad, que sigue por encima del 25 %. 2019 (44,8x sobre un BPA core de 2,12) confirma que la media larga (≈40x) es de otra época de tipos [13]."
+  },
+  "comparables": {
+    "empresas": [
+      {
+        "nombre": "Sonova",
+        "ticker": "SOON.SW",
+        "pais": "CH",
+        "capitalizacion": null,
+        "ev_ventas": 4.61,
+        "ev_ebitda_ltm": 17.5,
+        "ev_ebitda_ntm": 15.2,
+        "per_ntm": 23.9,
+        "crecimiento_pct": 7,
+        "margen_ebitda_pct": 26,
+        "roic_pct": null,
+        "dn_ebitda": 1.1,
+        "fcf_yield_pct": 3.8
+      },
+      {
+        "nombre": "Demant",
+        "ticker": "DEMANT.CO",
+        "pais": "DK",
+        "capitalizacion": null,
+        "ev_ventas": 3.75,
+        "ev_ebitda_ltm": 16,
+        "ev_ebitda_ntm": 13.7,
+        "per_ntm": 22.9,
+        "crecimiento_pct": 10.2,
+        "margen_ebitda_pct": 23.3,
+        "roic_pct": null,
+        "dn_ebitda": 3.5,
+        "fcf_yield_pct": 4.2
+      },
+      {
+        "nombre": "Coloplast",
+        "ticker": "COLO-B.CO",
+        "pais": "DK",
+        "capitalizacion": null,
+        "ev_ventas": 4.42,
+        "ev_ebitda_ltm": 13.9,
+        "ev_ebitda_ntm": 13.3,
+        "per_ntm": 17.1,
+        "crecimiento_pct": 7.6,
+        "margen_ebitda_pct": 31.8,
+        "roic_pct": 11.9,
+        "dn_ebitda": 2.5,
+        "fcf_yield_pct": 5.8
+      },
+      {
+        "nombre": "Cochlear",
+        "ticker": "COH.AX",
+        "pais": "AU",
+        "capitalizacion": null,
+        "ev_ventas": 3.54,
+        "ev_ebitda_ltm": 15.4,
+        "ev_ebitda_ntm": 14.6,
+        "per_ntm": 27.4,
+        "crecimiento_pct": 2,
+        "margen_ebitda_pct": 23,
+        "roic_pct": null,
+        "dn_ebitda": -0.3,
+        "fcf_yield_pct": 3.3
+      },
+      {
+        "nombre": "Smith & Nephew",
+        "ticker": "SN.L",
+        "pais": "GB",
+        "capitalizacion": null,
+        "ev_ventas": 2.26,
+        "ev_ebitda_ltm": 8.7,
+        "ev_ebitda_ntm": 8.2,
+        "per_ntm": 15.2,
+        "crecimiento_pct": 5.1,
+        "margen_ebitda_pct": 26.1,
+        "roic_pct": null,
+        "dn_ebitda": 1.7,
+        "fcf_yield_pct": 7.4
+      },
+      {
+        "nombre": "Align Technology",
+        "ticker": "ALGN",
+        "pais": "US",
+        "capitalizacion": null,
+        "ev_ventas": 2.16,
+        "ev_ebitda_ltm": 7.7,
+        "ev_ebitda_ntm": 7.4,
+        "per_ntm": 15,
+        "crecimiento_pct": 3.6,
+        "margen_ebitda_pct": 28.1,
+        "roic_pct": 17.2,
+        "dn_ebitda": -1,
+        "fcf_yield_pct": 6.3
+      },
+      {
+        "nombre": "Edwards Lifesciences",
+        "ticker": "EW",
+        "pais": "US",
+        "capitalizacion": null,
+        "ev_ventas": 7,
+        "ev_ebitda_ltm": 22.9,
+        "ev_ebitda_ntm": 19.4,
+        "per_ntm": 27.1,
+        "crecimiento_pct": 10.5,
+        "margen_ebitda_pct": 29.7,
+        "roic_pct": null,
+        "dn_ebitda": -1.85,
+        "fcf_yield_pct": 2.2
+      },
+      {
+        "nombre": "Alcon",
+        "ticker": "ALC",
+        "pais": "CH",
+        "capitalizacion": null,
+        "ev_ventas": 3.09,
+        "ev_ebitda_ltm": 11.7,
+        "ev_ebitda_ntm": 10.6,
+        "per_ntm": null,
+        "crecimiento_pct": 6.2,
+        "margen_ebitda_pct": 25.7,
+        "roic_pct": 4.75,
+        "dn_ebitda": 1.2,
+        "fcf_yield_pct": 5.7
+      }
+    ],
+    "confianza": "Media",
+    "criterio": "Fabricantes europeos, australianos y estadounidenses de tecnología médica con consumibles recurrentes, pago parcial del paciente y márgenes altos: Sonova, Demant y Cochlear (audición), Coloplast y Smith & Nephew (consumibles y ortopedia), Align (el único rival dental cotizado con datos homogéneos), Edwards (implantes de nicho) y Alcon (oftalmología). Envista y Dentsply Sirona no se incluyen porque no se obtuvieron sus cifras; Osstem ya no cotiza [29, 39, 40, 41].",
+    "comentario": "Straumann cotiza a 26,2x el PER de los próximos 12 meses y 18,7x el EV/EBITDA de los últimos 12, por encima de la mediana de los comparables (PER ≈23x) y muy por encima de Align (15x), que es su competidor más directo pero crece menos [29]. La prima se justifica en parte por el ROIC (25,6 %) y el crecimiento orgánico del 8-9 %, por encima de casi todos, pero el crecimiento publicado en francos (≈3 % en 2026) no la sostiene. El valor implícito por comparables (PER NTM) es de 56,74-89,59 CHF, por debajo del precio."
+  },
+  "transacciones": null,
+  "dcf": {
+    "anios": [
+      {
+        "periodo": "2026e",
+        "crecimiento_pct": 3,
+        "margen_ebitda_pct": 30.8,
+        "amortizacion_pct_ventas": 5.4,
+        "capex_pct_ventas": 8.5,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 21,
+        "fijo": true
+      },
+      {
+        "periodo": "2027e",
+        "crecimiento_pct": 7,
+        "margen_ebitda_pct": 31.6,
+        "amortizacion_pct_ventas": 5.4,
+        "capex_pct_ventas": 8.5,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 21,
+        "fijo": false
+      },
+      {
+        "periodo": "2028e",
+        "crecimiento_pct": 7,
+        "margen_ebitda_pct": 32.2,
+        "amortizacion_pct_ventas": 5.4,
+        "capex_pct_ventas": 8.2,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 21,
+        "fijo": false
+      },
+      {
+        "periodo": "2029e",
+        "crecimiento_pct": 6.5,
+        "margen_ebitda_pct": 32.6,
+        "amortizacion_pct_ventas": 5.4,
+        "capex_pct_ventas": 8,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 21,
+        "fijo": false
+      },
+      {
+        "periodo": "2030e",
+        "crecimiento_pct": 6,
+        "margen_ebitda_pct": 32.8,
+        "amortizacion_pct_ventas": 5.4,
+        "capex_pct_ventas": 7.7,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 21,
+        "fijo": false
+      },
+      {
+        "periodo": "2031e",
+        "crecimiento_pct": 5.5,
+        "margen_ebitda_pct": 33,
+        "amortizacion_pct_ventas": 5.4,
+        "capex_pct_ventas": 7.4,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 21,
+        "fijo": false
+      },
+      {
+        "periodo": "2032e",
+        "crecimiento_pct": 5,
+        "margen_ebitda_pct": 33,
+        "amortizacion_pct_ventas": 5.5,
+        "capex_pct_ventas": 7,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 21,
+        "fijo": false
+      }
+    ],
+    "wacc": {
+      "tasa_libre_pct": 0.54,
+      "beta": 1.1,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 1,
+      "coste_deuda_pct": 2,
+      "tasa_impositiva_pct": 21,
+      "peso_deuda_pct": 3
+    },
+    "terminal": {
+      "metodo": "gordon",
+      "crecimiento_pct": 1,
+      "multiplo_salida": 18
+    },
+    "etapa2": {
+      "usar": true,
+      "anios": 5,
+      "margen_final_pct": null,
+      "justificacion": "El implante dental está poco penetrado fuera de Europa y EE. UU. (China multiplicó volúmenes tras la licitación de 2023, y Latinoamérica y Asia crecen a doble dígito), y el mercado crecería un 6,9-8,3 % anual hasta 2034-2035 [26, 28]. Straumann es el primero con >32 % de cuota y su ROIC (25,6 %) supera al WACC en más de 18 puntos: crecer crea valor. Cinco años de transición desde el 5,0 % de 2032e hasta el 1,0 % terminal recogen que la ventaja (marca clínica, costes de cambio, ecosistema digital) dura más que la proyección explícita [26]."
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "2026e queda fijo en +3,0 % en francos: 7,8 % orgánico en el 1S26 y guía de un dígito alto, menos ≈5 puntos de divisa (2,3 % publicado en el 1S26) [3, 15]. De 2027e a 2029e, 7,0-6,5 %: orgánico del 7-8 % (la mitad baja de la historia y en línea con el mercado) sin efecto divisa; luego baja al 5 % en 2032e. El consenso de ingresos de 2028e (3.306 M) es un 7,6 % superior a nuestro 3.072 M: asume menos divisa [32].",
+      "margenes": "Margen EBITDA core del 30,8 % en 2026e (EBIT core ≈25,4 % publicado con la guía de +140-170 pb a tipos constantes y la divisa del 1S26) que sube al 33,0 % en 2031e por apalancamiento operativo y fin del ciclo de capex. Es el nivel de 2021 (EBIT core 27,4 %) con algo más de mezcla de valor [3, 10].",
+      "inversion": "Capex del 8,5 % de las ventas en 2026e-2027e, bajando al 7,0 % en 2032e; incluye ≈1,2 puntos de inversión en circulante, porque no se pudo reconstruir el circulante. Amortización del 5,4 % de las ventas (la core de 2025) [2, 6].",
+      "wacc": "Tasa libre del 0,54 % (bono suizo a 10 años del 8-oct-2026) [42]; beta de 1,10 (dispositivos de pago privado, más cíclicos que la media del sector salud; no se pudo calcular con bolsa.mjs); prima de mercado del 5,5 % y prima adicional de 1 punto porque los flujos están en euros, dólares, reales y yuanes y el bono suizo es anormalmente bajo, igual que en Roche y Givaudan en este repositorio. Coste de la deuda del 2 % y peso del 3 %. WACC del 7,41 %; con la prima implícita del mercado (4,2 %), el 6,0 %.",
+      "terminal": "Gordon al 1,0 %: crecimiento real bajo en francos con inflación suiza del ≈0,5-1 %. Queda por encima de la tasa libre menos medio punto, pero el bono suizo no refleja la inflación de las divisas en que se vende; con 0,5 % el valor baja ≈5 %. El múltiplo de salida implícito es coherente con la historia de la empresa."
+    },
+    "sostenibilidad": {
+      "puente_ingresos": [
+        {
+          "periodo": "2026e",
+          "volumen_pct": 5.8,
+          "precio_pct": 2,
+          "otros_pct": -4.8,
+          "comentario": "Volumen 5,8 % y precio 2,0 % (guía de crecimiento orgánico de un dígito alto: 7,8 % en el 1S26); divisa −4,8 puntos (1S26: −5,5) [3]."
+        },
+        {
+          "periodo": "2027e",
+          "volumen_pct": 5,
+          "precio_pct": 2,
+          "otros_pct": 0,
+          "comentario": "Volumen 5 % (mercado 6,9-8,3 %, China estabilizada tras la licitación) y precio 2 % (historia de subidas anuales en premium); sin efecto divisa [26, 28]."
+        },
+        {
+          "periodo": "2028e",
+          "volumen_pct": 5,
+          "precio_pct": 2,
+          "otros_pct": 0,
+          "comentario": "Igual que 2027e; ningún aumento de cuota."
+        },
+        {
+          "periodo": "2029e",
+          "volumen_pct": 4.5,
+          "precio_pct": 2,
+          "otros_pct": 0,
+          "comentario": "El volumen se modera al 4,5 % con el mercado."
+        },
+        {
+          "periodo": "2030e",
+          "volumen_pct": 4,
+          "precio_pct": 2,
+          "otros_pct": 0,
+          "comentario": "Volumen 4 % y precio 2 %: crecimiento por debajo del mercado previsto."
+        }
+      ],
+      "mercado_final": null,
+      "veredicto": "Sí",
+      "justificacion": "Sí. El crecimiento proyectado (5,7 % anual medio) es inferior al orgánico que la empresa ha logrado en cada uno de los últimos cinco años (8,9-15,7 %) y al del mercado de implantes (6,9-8,3 %), así que no exige ganar cuota (32 % hoy) [1, 26]. La reinversión es pequeña (≈11 % del NOPAT con capex del 7-8,5 % de las ventas) y el motor no hace la prueba por «activos ligeros»; a mano: con un ROIC del 25,6 %, cada punto de crecimiento pide ≈4 % del NOPAT, y el resto lo pone el poder de precios demostrado (margen bruto ≈70 % estable y aranceles absorbidos en 2026) [15, 24]. El riesgo no es de capacidad sino de precio en China."
+    },
+    "lectura": "El DCF da 75,15 CHF por acción (−18,3 % sobre 92,00), con un WACC del 7,41 % y un valor terminal del 55 %; la sensibilidad (WACC y crecimiento ± 0,5 puntos) va de 66,40 a 87,05 CHF, siempre por debajo del precio. El DCF inverso dice que el mercado descuenta un crecimiento del 9,3 % anual de 2027e a 2032e, frente al 6,2 % de nuestro caso base y al 6,9 % previsto para el mercado de implantes: exigente, porque supone recuperar el crecimiento de 2022-2024 y ganar cuota. La rentabilidad implícita en el precio es del 6,3 %, por debajo de nuestro WACC (7,41 %) y por encima de lo que pide hoy el mercado (6,0 %). Con la prima implícita del mercado el valor sube a 92,49 CHF: el precio es justo si se acepta el coste de capital del mercado de hoy, no el nuestro. La diferencia es de tasa más que de cifras.",
+    "confianza": "Baja"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": -3,
+        "ajuste_margen_pp": -1.5,
+        "ajuste_wacc_pp": 0.5,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "La segunda licitación china prima a los fabricantes locales y el franco sigue fuerte: el crecimiento cae 3 puntos al año y el margen 1,5 puntos, como en 2023-2025, cuando el BPA no creció [9, 25]."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Crecimiento orgánico del 7-8 %, divisa neutra desde 2027 y margen EBITDA core hasta el 33 % con el fin del ciclo de capex."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": 2,
+        "ajuste_margen_pp": 1,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Norteamérica sigue al 7-8 %, China se estabiliza y la ortodoncia y el digital suman: 2 puntos más de crecimiento y 1 de margen."
+      }
+    ],
+    "comentario": "El DCF da 53,18 CHF en el bajista (−42,2 %), 75,15 en el base y 88,96 en el alcista (−3,3 %): ni el alcista llega al precio con nuestro WACC. Con la prima del mercado el rango sube a 67,87-114,82. La asimetría del valor intrínseco es negativa; la del objetivo a 12 meses es favorable (3,04x) porque el PER actual ya está en mínimos de su historia.",
+    "confianza": "Baja"
+  },
+  "suma_partes": {
+    "aplica": false,
+    "descuento_holding_pct": 0,
+    "partes": [],
+    "comentario": "No aplica: la empresa publica un solo segmento operativo.",
+    "confianza": "Media"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2026-06-30",
+      "deuda_financiera": 509,
+      "arrendamientos": 0,
+      "caja": 381,
+      "minoritarios": 0,
+      "pensiones": 0,
+      "asociadas": 0,
+      "otros_ajustes": 0
+    },
+    "rab": null,
+    "referencia_mercado": {
+      "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout; válida para mercados desarrollados)",
+      "prima_implicita_pct": 4.2,
+      "fecha": "2026-10",
+      "fuente": "Damodaran, ERPbymonth.xlsx [43]"
+    },
+    "pesos": {
+      "dcf": 50,
+      "comparables": 25,
+      "transacciones": 0,
+      "suma_partes": 0,
+      "escenarios": 25
+    },
+    "objetivo_12m": {
+      "ejercicio": "2028e",
+      "casos": [
+        {
+          "escenario": "Bajista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 3.35,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas 2028e de 2.902 M (−3 puntos al año en 2027-2028) y margen EBIT core del 25,3 %: EBIT de 734 M, conversión a beneficio neto core del 72,9 % (la de 2025: 478/656), 159,5 M de acciones sin recompras."
+        },
+        {
+          "escenario": "Base",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 3.76,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas 2028e de 3.072 M (7 % en 2027 y 2028) y margen EBIT core del 26,8 % (EBITDA 32,2 % menos amortización 5,4 %): EBIT de 823 M, conversión del 72,9 % como en 2025, beneficio core de 600 M y 159,5 M de acciones."
+        },
+        {
+          "escenario": "Alcista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 4.05,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas 2028e de 3.188 M (+2 puntos) y margen EBIT core del 27,8 % (+1 punto): EBIT de 886 M, beneficio core de 646 M y 159,5 M de acciones."
+        }
+      ],
+      "per_historico": {
+        "actual": 26.7,
+        "mediana_5a": 40.7,
+        "minimo_5a": 38.1,
+        "media_larga": 45.9,
+        "base": "adelantado",
+        "anios": 4,
+        "excluidos": "Historia ADELANTADA (precio de cierre de cada año ÷ BPA real del año siguiente, como el PER actual), construida el 2026-10-14 con los cierres y el BPA del informe y cierres de Yahoo Finance para los años sin cierre: 2021 63.9x [Yahoo/informe]; 2022 38.3x; 2023 43.2x; 2024 38.1x [Yahoo/informe]. Sin años de pérdidas, PER ≥ 150x ni atípicos (a más de 3 veces o menos de un tercio de la mediana del resto, con cinco años o más); mediana y mínimo de los últimos 4 años, media larga de 4. Contraste de base: BPA propio del año siguiente 3.446 frente a 3 publicado en 2025 (+7.2 % anual). Historia corta (menos de cinco años). Historia al cierre anterior (v2): PER core al cierre de cada año (precio ÷ BPA core): 2019 44,8x (95,04 ÷ 2,12); 2021 excluido (68,0x, burbuja pospandemia); 2022 34,9x (105,60 ÷ 3,03); 2023 49,1x (135,60 ÷ 2,76); 2024 sin precio de cierre verificado; 2025 31,2x (93,46 ÷ 3,00) [10, 11, 13, 38]. Mediana de cinco años con los disponibles: 34,9x; mínimo 31,2x; media larga (2019, 2022, 2023, 2025): 40,0x. Actual = 92,00 ÷ 3,44 (nuestro BPA core de 2027e) = 26,7x. Comparables: mediana del PER NTM 22,9x [29, 39, 40, 41].",
+        "v2": {
+          "actual": 26.7,
+          "mediana_5a": 34.9,
+          "minimo_5a": 31.2,
+          "media_larga": 40,
+          "base": "cierre"
+        }
+      },
+      "comparables_per": {
+        "mediana": 22.9
+      },
+      "consenso": {
+        "bpa_ano1": 3.12,
+        "bpa_ano2": 3.62,
+        "objetivo_medio": 114.75,
+        "objetivo_min": 81.11,
+        "objetivo_max": 152.83,
+        "analistas": 22,
+        "tendencia_3m": "estables",
+        "fuente": "Simply Wall St, Stocksguide y Fintel [32, 35, 36]"
+      },
+      "diferencia_consenso": "Nuestro base (100,39 CHF) queda un 12,5 % por debajo del objetivo medio de los analistas (114,75; 81-153). Casi todo sale del BPA: 3,44 en 2027e y 3,76 en 2028e frente a 3,62 y 4,17 del consenso (−5 % y −10 %) [32]. El consenso proyecta ventas de 3.306 M en 2028e frente a nuestros 3.072 M: supone menos divisa en contra; además nuestra conversión de EBIT a beneficio (72,9 %, la de 2025) no mejora. El múltiplo es parecido: 26,7x frente a ≈27-28x implícito en los objetivos.",
+      "media": null,
+      "comentario": "El objetivo a 12 meses (104,34 CHF ponderado; 100,39 el base) queda un 37 % por encima del valor intrínseco (75,97 CHF): el mercado paga por Straumann un coste de capital menor que el nuestro y lo seguirá haciendo mientras el BPA crezca al 10 % anual que proyectamos para 2026-2028. Para cerrar la distancia con el valor intrínseco haría falta una caída del PER hacia 20x, que solo se vio fuera de esta muestra, o una subida de tipos en francos. La tesis a 12 meses depende de que el BPA core crezca del 3,00 de 2025 al 3,76 de 2028e; el catalizador son los resultados anuales de febrero de 2027, con la guía de margen."
+    },
+    "comentario": "El DCF pesa un 50 %: es un negocio de caja estable con poca inversión. Los comparables, un 25 %, porque el sector cotiza por PER y Straumann lleva prima; los escenarios, el 25 % restante. No hay transacciones con múltiplo. Todos los métodos quedan por debajo del precio (valor objetivo de 75,97 CHF, −17,4 %); solo el DCF con la prima del mercado (92,49) y el objetivo medio de los analistas (114,75) lo superan. La dispersión dice que el precio paga el crecimiento de 2022-2024 y un coste de capital bajo.",
+    "confianza": "Baja"
+  },
+  "catalizadores": {
+    "items": [
+      {
+        "fecha": "28-oct-2026",
+        "evento": "Ventas del 3T26",
+        "efecto": "Confirmación del crecimiento orgánico del 7-9 % y de China",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "1-dic-2026",
+        "evento": "Christopher Norbye, primer ejecutivo",
+        "efecto": "Riesgo de cambio de prioridades o de revisión de objetivos a medio plazo",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "Feb-2027",
+        "evento": "Resultados de 2026 y guía de 2027",
+        "efecto": "Margen core tras +140-170 pb y primera guía del nuevo CEO",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2026-2027",
+        "evento": "Segunda licitación centralizada de implantes en China (VBP)",
+        "efecto": "Precio y cuota en China; preferencia por productos locales",
+        "probabilidad": "Media",
+        "sentido": "−"
+      },
+      {
+        "fecha": "Abr-2027",
+        "evento": "Junta general",
+        "efecto": "Dividendo (≈1,05 CHF) y votos de remuneración tras el bono de retención de 2026",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "riesgos": {
+    "items": [
+      {
+        "riesgo": "China: segunda licitación (VBP) que favorece a fabricantes locales",
+        "tipo": "Regulatorio / competencia",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−10 % a −15 % (hacia el bajista)",
+        "mitigante": "Producción local y Neodent en el segmento de valor",
+        "senal": "Crecimiento de APAC por debajo del 3 % dos trimestres seguidos"
+      },
+      {
+        "riesgo": "Franco fuerte",
+        "tipo": "Divisa",
+        "probabilidad": "Alta",
+        "impacto": "Medio",
+        "efecto_valor": "−5 % por cada 5 % de apreciación sostenida",
+        "mitigante": "Costes en Brasil, China y EE. UU.",
+        "senal": "Diferencia entre crecimiento orgánico y en francos > 5 puntos"
+      },
+      {
+        "riesgo": "Relevo del primer ejecutivo y salida del fundador",
+        "tipo": "Gobierno",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−5 % a −10 % si cambia la guía",
+        "mitigante": "Consejo con presidenta en el cargo y accionistas de referencia estables",
+        "senal": "Revisión de los objetivos a medio plazo en febrero de 2027"
+      },
+      {
+        "riesgo": "Consumo de EE. UU. y pago del bolsillo",
+        "tipo": "Ciclo",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−10 %",
+        "mitigante": "Diversificación geográfica (EMEA ≈43 %)",
+        "senal": "Norteamérica por debajo del 3 % orgánico"
+      },
+      {
+        "riesgo": "Competencia de valor (coreanos y chinos) fuera de Asia",
+        "tipo": "Competencia",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−5 % a −10 % por margen",
+        "mitigante": "Neodent y Anthogyr en valor",
+        "senal": "Margen bruto por debajo del 68 %"
+      },
+      {
+        "riesgo": "Aranceles de EE. UU. sobre importaciones suizas",
+        "tipo": "Regulatorio",
+        "probabilidad": "Baja",
+        "impacto": "Medio",
+        "efecto_valor": "−5 %",
+        "mitigante": "Producción fuera de Suiza; guía ya subida por aranceles menores",
+        "senal": "Nueva subida arancelaria a Suiza"
+      }
+    ],
+    "premortem": "Es octubre de 2029 y la acción ha perdido un 40 %. China celebró la segunda licitación a finales de 2026 y los fabricantes locales se quedaron con los lotes de mayor volumen; Straumann mantuvo el precio en premium y perdió cuota en el que había sido su motor de crecimiento. A la vez, el franco siguió fuerte y el nuevo primer ejecutivo, llegado en diciembre de 2026, rebajó en febrero de 2027 los objetivos a medio plazo para «recentrar» la cartera y anunció reestructuración. El BPA core, que ya llevaba cinco años plano, cayó a 2,8 CHF y el mercado, que pagaba 27x por una recuperación, pasó a pagar 20x, como a Align. La señal estaba en los trimestres: APAC por debajo del 3 % orgánico dos veces seguidas y la diferencia entre crecimiento orgánico y en francos por encima de los 5 puntos.",
+    "confianza": "Media"
+  },
+  "esg": {
+    "calificaciones": [],
+    "materialidad": "Lo material es la seguridad del producto y la evidencia clínica (un fallo de implante a gran escala dañaría la marca premium), la ciberseguridad (ataque en abril de 2026) y el acceso a tratamientos en China (precios regulados). Las emisiones son pequeñas para el tamaño del grupo [20].",
+    "controversias": "Ciberataque en abril de 2026, sin efecto visible en las ventas del 2T26 [20]. No se han encontrado sanciones ni litigios relevantes en tres años.",
+    "confianza": "Baja"
+  },
+  "preguntas": {
+    "items": [
+      {
+        "tema": "China",
+        "pregunta": "¿Qué parte de las ventas de APAC depende de la segunda licitación y qué cuota de lotes espera con producción local?",
+        "por_que": "Es el riesgo con más efecto en el valor (bajista −42 %)."
+      },
+      {
+        "tema": "Divisa",
+        "pregunta": "¿Qué porcentaje de costes está en francos y qué cobertura natural queda tras las ampliaciones fuera de Suiza?",
+        "por_que": "La divisa explica casi toda la erosión del margen publicado desde 2021."
+      },
+      {
+        "tema": "Sucesión",
+        "pregunta": "¿Mantendrá el nuevo CEO los objetivos de margen a medio plazo y por qué hizo falta un bono de retención?",
+        "por_que": "Solo el 74 % del capital presente lo aprobó."
+      },
+      {
+        "tema": "Capex",
+        "pregunta": "¿Cuándo vuelve el capex al 6 % de las ventas y cuánto es mantenimiento?",
+        "por_que": "La caja libre (11 % de las ventas) depende de ello."
+      },
+      {
+        "tema": "Core frente a IFRS",
+        "pregunta": "¿Qué parte de los ≈120 M de ajustes de 2025 es reestructuración que se repetirá?",
+        "por_que": "El objetivo a 12 meses se hace sobre BPA core."
+      },
+      {
+        "tema": "Capital",
+        "pregunta": "¿Contempla recompras ahora que el PER está en mínimos de una década?",
+        "por_que": "Con caja neta nula, una recompra pediría deuda."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sentimiento": {
+    "tono": "Dividido",
+    "tendencia": "Mejora",
+    "revisadas": [
+      {
+        "plataforma": "Aktienwelt360 (blog de inversión en alemán)",
+        "fecha": "2026-10",
+        "n_comentarios": 1,
+        "tono": "Dividido",
+        "resumen": "Se pregunta si la acción es compra a 92 CHF: resultados del 2T26 muy buenos pero la cotización «dormita», recuperada del mínimo de marzo (73 CHF) sin romper al alza [37]."
+      },
+      {
+        "plataforma": "cash.ch (prensa con foro de lectores)",
+        "fecha": "2026-06",
+        "n_comentarios": 0,
+        "tono": "Positivo",
+        "resumen": "«Acción de la semana» tras la subida de la guía de margen (+12,8 % en una semana, máximo de once meses); el foro de la acción no tiene mensajes [45, 46]."
+      },
+      {
+        "plataforma": "Seeking Alpha",
+        "fecha": "2025-05",
+        "n_comentarios": 1,
+        "tono": "Neutro",
+        "resumen": "El artículo más reciente encontrado mantiene «Hold»: fundamentales excelentes pero PER por encima de 30x que limita el potencial; anterior a los tres últimos meses, solo de contexto [47]."
+      },
+      {
+        "plataforma": "Kapitalmarktexperten y Goldesel (prensa de inversión alemana)",
+        "fecha": "2026-08",
+        "n_comentarios": 2,
+        "tono": "Positivo",
+        "resumen": "Straumann como «top pick 2026» de varios analistas y lectura positiva del 2T26 con el relevo de CEO [30, 48]."
+      },
+      {
+        "plataforma": "Simply Wall St (narrativas de la comunidad)",
+        "fecha": "2026-07",
+        "n_comentarios": 2,
+        "tono": "Dividido",
+        "resumen": "Una narrativa alcista por la digitalización en Asia y Latinoamérica y otra centrada en el riesgo de la recuperación de EE. UU. y la estabilidad del margen [49]."
+      }
+    ],
+    "temas": [
+      {
+        "tema": "Valoración frente a la historia (PER de 30x a 25x)",
+        "postura": "Dividida",
+        "peso": "Alto",
+        "contraste": "El PER core sobre el BPA de 2027e de nuestra proyección es de ≈26x, el más bajo de la última década fuera de 2025: la gente tiene razón en que ya no es cara frente a su historia, pero sigue por encima de los comparables de tecnología médica (≈23x)."
+      },
+      {
+        "tema": "China y la segunda licitación centralizada (VBP)",
+        "postura": "Bajista",
+        "peso": "Medio",
+        "contraste": "APAC creció un 0,5 % en el 1T26; sin China el grupo crecía ≈10 %. Es el riesgo con fecha más claro y está en el bajista."
+      },
+      {
+        "tema": "Relevo del CEO y salida del fundador",
+        "postura": "Dividida",
+        "peso": "Medio",
+        "contraste": "La guía se ha cumplido y subido con Daniellot; el bono de retención se aprobó con solo un 74 %: el informe lo trata como riesgo de continuidad, no de cifras."
+      },
+      {
+        "tema": "Divisa (franco fuerte)",
+        "postura": "Bajista",
+        "peso": "Medio",
+        "contraste": "Restó ≈5,5 puntos al crecimiento en francos en el 1S26 (7,8 % orgánico frente a 2,3 % en CHF) y ≈1,2 puntos al margen: es real y está en la proyección."
+      }
+    ],
+    "lectura": "El inversor particular de habla alemana ve a Straumann como un valor de calidad que lleva dos años sin premiar: reconoce el crecimiento orgánico del 8 % y la subida de la guía, pero desconfía de China, del franco y del relevo en la cúpula. No hay euforia ni capitulación; el debate es escaso (el foro de cash.ch está vacío) y no contradice a los analistas, que mayoritariamente recomiendan comprar. No aporta un riesgo que el análisis no recoja.",
+    "confianza": "Baja"
+  },
+  "fuentes": [
+    {
+      "id": 1,
+      "titulo": "Straumann Group delivers strong 2025 performance (nota de prensa FY2025). Extracto de búsqueda; la página no se pudo abrir (solo WebSearch en este entorno)",
+      "editor": "Straumann Group",
+      "tipo": "Primaria",
+      "fecha": "2026-02-18",
+      "url": "https://www.straumann.com/content/dam/media-center/group/en/documents/annual-report/2025/StraumannGroup-Press-Release-FY2025.pdf"
+    },
+    {
+      "id": 2,
+      "titulo": "Straumann Group webcast presentation FY2025 (puente core-IFRS, FCF 290 M, capex 223 M, caja). Extracto de búsqueda",
+      "editor": "Straumann Group",
+      "tipo": "Primaria",
+      "fecha": "2026-02-18",
+      "url": "https://www.straumann.com/content/dam/data/media-release/de/2026/32053e54-7676-4f7e-9d3d-92d71b19e0ea/Straumann+Group_Webcast+presentation_FY2025.pdf"
+    },
+    {
+      "id": 3,
+      "titulo": "Straumann Group delivers strong second quarter performance and confirms upgraded profitability outlook for 2026. Extracto de búsqueda",
+      "editor": "Straumann Group (vía Deutsche Börse)",
+      "tipo": "Primaria",
+      "fecha": "2026-08-19",
+      "url": "https://live.deutsche-boerse.com/news/Straumann-Group-delivers-strong-second-quarter-performance-and-confirms-upgraded-profitability-outlook-for-2026-1bcb2130-eee5-44e7-b9a6-e7c5d020d7bb"
+    },
+    {
+      "id": 4,
+      "titulo": "Webcast presentation Q2 2026. Extracto de búsqueda",
+      "editor": "Straumann Group",
+      "tipo": "Primaria",
+      "fecha": "2026-08-19",
+      "url": "https://www.straumann.com/content/dam/media-center/group/en/documents/presentation/2026/20260819_EN_StraumannGroup_Webcast-presentation_Q2_2026.pdf"
+    },
+    {
+      "id": 5,
+      "titulo": "Straumann Holding AG (SWX:STMN) Income Statement",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07-31",
+      "url": "https://stockanalysis.com/quote/swx/STMN/financials/income-statement/"
+    },
+    {
+      "id": 6,
+      "titulo": "Straumann Holding AG (SWX:STMN) Cash Flow Statement",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07-31",
+      "url": "https://stockanalysis.com/quote/swx/STMN/financials/cash-flow-statement/"
+    },
+    {
+      "id": 7,
+      "titulo": "Straumann Holding AG (SWX:STMN) Balance Sheet",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07-31",
+      "url": "https://stockanalysis.com/quote/swx/STMN/financials/balance-sheet/"
+    },
+    {
+      "id": 8,
+      "titulo": "STMN Balance Sheet (activo total anual)",
+      "editor": "Stockopedia",
+      "tipo": "Datos de mercado",
+      "fecha": "2026",
+      "url": "https://www-proxy.stockopedia.com/share-prices/straumann-holding-ag-SWX:STMN/balance-sheet/"
+    },
+    {
+      "id": 9,
+      "titulo": "Full Year Results 2024 Straumann Group Media Release (BPA core 3,14; IFRS 2,87; beneficio core 502 M)",
+      "editor": "Straumann Group",
+      "tipo": "Primaria",
+      "fecha": "2025-02-19",
+      "url": "https://www.straumann.com/content/dam/media-center/group/en/documents/media-release/2024/Full_Year_Results_2024_Straumann_Group_Media_Release.pdf"
+    },
+    {
+      "id": 10,
+      "titulo": "Straumann Group 2022 FY Media Release (BPA core 3,03 y 2,85; margen EBIT core 26,0 % y 27,4 %)",
+      "editor": "Straumann Group",
+      "tipo": "Primaria",
+      "fecha": "2023-02-21",
+      "url": "https://straumann.com/content/dam/media-center/group/en/documents/media-release/2023/Straumann-Group-2022-FY-Media-Release.pdf"
+    },
+    {
+      "id": 11,
+      "titulo": "Share information (cotización al cierre de cada año, BPA core 2023 y dividendos)",
+      "editor": "Straumann Group",
+      "tipo": "Primaria",
+      "fecha": "2026",
+      "url": "https://straumann.com/group/en/home/investors/share-information.html"
+    },
+    {
+      "id": 12,
+      "titulo": "Straumann H1 FY26 IFRS net profit rises 5.3% to CHF 250.7 million; revenue increases 2.3% to CHF 1.38 billion",
+      "editor": "VZ VermögensZentrum (AWP)",
+      "tipo": "Prensa",
+      "fecha": "2026-08-19",
+      "url": "https://www.vermoegenszentrum.ch/en/stock-exchange-and-markets/news/straumann-h1-fy26-ifrs-net-profit-rises-53-chf-2507-million-revenue"
+    },
+    {
+      "id": 13,
+      "titulo": "Straumann 2019 FY Presentation (BPA core 21,21 CHF antes del desdoblamiento 1:10)",
+      "editor": "Straumann Group",
+      "tipo": "Primaria",
+      "fecha": "2020-02-18",
+      "url": "https://straumann.com/content/dam/data/media-release/de/2020/aaed4c01-b76c-4718-8677-ba90155650a3/Straumann-2019-FY-Presentation.pdf"
+    },
+    {
+      "id": 14,
+      "titulo": "Straumann Group (STMN) Q2 2026 earnings summary",
+      "editor": "Quartr",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-08-19",
+      "url": "https://quartr.com/events/straumann-holding-ag-stmn-q2-2026_oqgU6eg2"
+    },
+    {
+      "id": 15,
+      "titulo": "Ad hoc: Straumann Group raises its profitability guidance for 2026",
+      "editor": "Straumann Group",
+      "tipo": "Primaria",
+      "fecha": "2026-06-17",
+      "url": "https://www.straumann.com/content/dam/data/media-release/en/2026/25aba1a4-df97-4995-a415-07a6b3bf6956/20260617_StraumannGroup_Press+Release_Guidance2026.pdf"
+    },
+    {
+      "id": 16,
+      "titulo": "Straumann startet stärker als erwartet ins 2026 (1T26)",
+      "editor": "Südostschweiz (AWP)",
+      "tipo": "Prensa",
+      "fecha": "2026-04-28",
+      "url": "https://www.suedostschweiz.ch/schweiz-und-welt/straumann-startet-staerker-als-erwartet-ins-2026-2-1644731"
+    },
+    {
+      "id": 17,
+      "titulo": "Straumann generates higher sales in the third quarter - EMEA region drives growth",
+      "editor": "blue News (AWP)",
+      "tipo": "Prensa",
+      "fecha": "2025-10-29",
+      "url": "https://www.bluewin.ch/en/news/straumann-generates-higher-sales-in-the-third-quarter-emea-region-drives-growth-2939086.html"
+    },
+    {
+      "id": 18,
+      "titulo": "Straumann on track after first semester, gets new CEO",
+      "editor": "blue News (AWP)",
+      "tipo": "Prensa",
+      "fecha": "2026-08-19",
+      "url": "https://www.bluewin.ch/en/news/straumann-on-track-after-first-semester-gets-new-ceo-li.3567966"
+    },
+    {
+      "id": 19,
+      "titulo": "Straumann Group Medienmitteilung H1 2026 (caja de 381 M a 30-jun-2026; FCF 168,6 M)",
+      "editor": "Straumann Group",
+      "tipo": "Primaria",
+      "fecha": "2026-08-19",
+      "url": "https://www.straumann.com/content/dam/data/media-release/de/2026/21928121-0ef4-46ed-9f32-1134d927069b/20260819_DE_Straumann_Group_Medienmitteilung_H1_2026.pdf"
+    },
+    {
+      "id": 20,
+      "titulo": "Straumann-Aktie: Hacker-Attacke",
+      "editor": "Börse Express",
+      "tipo": "Prensa",
+      "fecha": "2026-04",
+      "url": "https://www.boerse-express.com/news/articles/straumann-aktie-hacker-attacke-892088"
+    },
+    {
+      "id": 21,
+      "titulo": "Straumann Group: historia y estructura del grupo (web corporativa). Extracto de búsqueda",
+      "editor": "Straumann Group",
+      "tipo": "Primaria",
+      "fecha": "2026",
+      "url": "https://www.straumann.com/group/en/home/investors/corporate-governance/group-structure.html"
+    },
+    {
+      "id": 22,
+      "titulo": "Straumann Group shareholders approve all proposals (junta 2026)",
+      "editor": "Straumann Group (vía Deutsche Börse)",
+      "tipo": "Primaria",
+      "fecha": "2026-04-17",
+      "url": "https://live.deutsche-boerse.com/nachrichten/Straumann-Group-shareholders-approve-all-proposals-cebc7088-17eb-4215-8174-1e6d33cc4aab"
+    },
+    {
+      "id": 23,
+      "titulo": "Straumann Group nota de prensa FY2025 y notas trimestrales 2025 (regiones). Extracto de búsqueda",
+      "editor": "Straumann Group",
+      "tipo": "Primaria",
+      "fecha": "2026-02-18",
+      "url": "https://www.straumann.com/content/dam/data/media-release/en/2026/32053e54-7676-4f7e-9d3d-92d71b19e0ea/StraumannGroup_Press+Release_FY2025.pdf"
+    },
+    {
+      "id": 24,
+      "titulo": "Straumann Holding AG: margen bruto de los últimos 12 meses (70,1 %)",
+      "editor": "Simply Wall St",
+      "tipo": "Datos de mercado",
+      "fecha": "2026",
+      "url": "https://simplywall.st/stocks/at/healthcare/vie-stmn/straumann-holding-shares"
+    },
+    {
+      "id": 25,
+      "titulo": "Straumann beats earnings expectations (VBP china retrasada; preferencia por productos locales)",
+      "editor": "Reuters (vía Global Banking & Finance)",
+      "tipo": "Prensa",
+      "fecha": "2026-02-18",
+      "url": "https://www.globalbankingandfinance.com/straumann-beats-earnings-expectations/"
+    },
+    {
+      "id": 26,
+      "titulo": "Dental Implants Market Size & Share Report 2025-2034",
+      "editor": "Global Market Insights",
+      "tipo": "Sectorial",
+      "fecha": "2025",
+      "url": "https://www.gminsights.com/industry-analysis/dental-implants-market/amp"
+    },
+    {
+      "id": 27,
+      "titulo": "Top 5 Dental Implant Companies Leading the Global Market",
+      "editor": "iData Research",
+      "tipo": "Sectorial",
+      "fecha": "2025",
+      "url": "https://idataresearch.com/news/dental-implant-companies-leading-the-global-market/"
+    },
+    {
+      "id": 28,
+      "titulo": "Dental Implants Market Research Report 2025-2035",
+      "editor": "Market Research Future",
+      "tipo": "Sectorial",
+      "fecha": "2025",
+      "url": "https://www.marketresearchfuture.com/reports/dental-implants-market-2753%C2%A0"
+    },
+    {
+      "id": 29,
+      "titulo": "Align Technology: estadísticas de valoración (junio-julio de 2026)",
+      "editor": "Yahoo Finance / StockHub",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07-13",
+      "url": "https://www.stockhub.kr/en/stock/ALGN"
+    },
+    {
+      "id": 30,
+      "titulo": "Straumann liefert starkes Q2: Norbye wird ab Dezember CEO",
+      "editor": "Goldesel",
+      "tipo": "Prensa",
+      "fecha": "2026-08-19",
+      "url": "https://goldesel.de/aktien/news/straumann-liefert-starkes-q2-norbye-wird-ab-dezember-ceo-2026er-profitabilitat-bleibt-auf-kurs"
+    },
+    {
+      "id": 31,
+      "titulo": "Straumann Holding AG voting results AGM 2026",
+      "editor": "Straumann Group",
+      "tipo": "Primaria",
+      "fecha": "2026-04-17",
+      "url": "https://www.straumann.com/content/dam/data/media-release/en/2026/01595361-daed-4503-9515-495dcf705cfc/Straumann+Holding+AG_voting+results_AGM2026_EN.pdf"
+    },
+    {
+      "id": 32,
+      "titulo": "Straumann Holding Future Growth (previsiones de ingresos y beneficio 2026-2028, actualizado el 7-jul-2026)",
+      "editor": "Simply Wall St",
+      "tipo": "Analistas",
+      "fecha": "2026-07-07",
+      "url": "https://simplywall.st/stocks/at/healthcare/vie-stmn/straumann-holding-shares/future"
+    },
+    {
+      "id": 33,
+      "titulo": "Straumann Hldg Rg (TheScreener, revisiones de BPA)",
+      "editor": "TheScreener",
+      "tipo": "Analistas",
+      "fecha": "2026-07",
+      "url": "https://cug.tradedirect.ch/td/details/thescreener/117544866,4,1"
+    },
+    {
+      "id": 34,
+      "titulo": "Straumann Holding AG (STMN): recomendaciones de analistas",
+      "editor": "Investing.com",
+      "tipo": "Analistas",
+      "fecha": "2026-09-01",
+      "url": "https://za.investing.com/equities/straumann-holding-ag"
+    },
+    {
+      "id": 35,
+      "titulo": "Straumann forecast (objetivo medio 114,75 CHF, 22 recomendaciones)",
+      "editor": "Stocksguide",
+      "tipo": "Analistas",
+      "fecha": "2026",
+      "url": "https://stocksguide.com/en/forecast/Straumann-CH1175448666"
+    },
+    {
+      "id": 36,
+      "titulo": "STMN - Straumann Holding AG (SWX): objetivos de analistas (81,11-152,83)",
+      "editor": "Fintel",
+      "tipo": "Analistas",
+      "fecha": "2026-04",
+      "url": "https://fintel.io/s/ch/stmn"
+    },
+    {
+      "id": 37,
+      "titulo": "Ist die Straumann-Aktie bei 92 Franken ein Kauf? (cotización de referencia y mínimo de marzo en 73 CHF)",
+      "editor": "Aktienwelt360",
+      "tipo": "Prensa",
+      "fecha": "2026-10-03",
+      "url": "https://www.aktienwelt360.de/2026/10/03/ist-die-straumann-aktie-bei-92-franken-ein-kauf/"
+    },
+    {
+      "id": 38,
+      "titulo": "Straumann (STMN) quote: precio al inicio del periodo 93,46 CHF el 30-dic-2025",
+      "editor": "Motley Fool",
+      "tipo": "Datos de mercado",
+      "fecha": "2026",
+      "url": "https://www.fool.com/quote/xswx/stmn/"
+    },
+    {
+      "id": 39,
+      "titulo": "Comparables de tecnología médica (Sonova, Demant, Coloplast, Cochlear, Smith & Nephew) a 12-oct-2026, MarketScreener; tomados del informe de Coloplast de este repositorio",
+      "editor": "MarketScreener (vía informes/coloplast-2026-10-12)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-12",
+      "url": "https://www.marketscreener.com/quote/stock/SONOVA-HOLDING-AG-70127/finances/"
+    },
+    {
+      "id": 40,
+      "titulo": "Comparables Align Technology y Alcon a 8-oct-2026, MarketScreener; tomados del informe de Cooper Companies de este repositorio",
+      "editor": "MarketScreener (vía informes/cooper-companies-2026-10-09)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-08",
+      "url": "https://www.marketscreener.com/quote/stock/THE-COOPER-COMPANIES-INC-12149/finances/"
+    },
+    {
+      "id": 41,
+      "titulo": "Comparable Edwards Lifesciences a 8-oct-2026; tomado del informe de Cochlear de este repositorio",
+      "editor": "MarketScreener (vía informes/cochlear-2026-10-08)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-08",
+      "url": "https://www.marketscreener.com/quote/stock/COCHLEAR-LIMITED-6491483/finances/"
+    },
+    {
+      "id": 42,
+      "titulo": "Swiss Bond Yield at One-Week High (0,54 %, 8-oct-2026)",
+      "editor": "Trading Economics",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-08",
+      "url": "https://tradingeconomics.com/switzerland/government-bond-yield/news/590510"
+    },
+    {
+      "id": 43,
+      "titulo": "Implied ERP by month (ERPbymonth.xlsx), octubre de 2026: 4,20 %",
+      "editor": "Damodaran (NYU Stern)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx"
+    },
+    {
+      "id": 44,
+      "titulo": "STMN share price (Stockopedia: capitalización ≈15.600 M CHF, PER adelantado 29x)",
+      "editor": "Stockopedia",
+      "tipo": "Datos de mercado",
+      "fecha": "2026",
+      "url": "https://stockopedia.com/share-prices/straumann-holding-ag-SWX:STMN"
+    },
+    {
+      "id": 45,
+      "titulo": "Aktie der Woche: verbesserte Margenprognose treibt Schweizer Medtech-Titel auf ein Elf-Monate-Hoch",
+      "editor": "cash.ch",
+      "tipo": "Foros y redes",
+      "fecha": "2026-06",
+      "url": "https://www.cash.ch/news/top-news/aktie-der-woche-verbesserte-margenprognose-treibt-schweizer-medtech-titel-auf-ein-elf-monate-hoch-946815"
+    },
+    {
+      "id": 46,
+      "titulo": "Straumann Hldg N: página de la acción y foro (sin mensajes)",
+      "editor": "cash.ch",
+      "tipo": "Foros y redes",
+      "fecha": "2026-10",
+      "url": "https://www.cash.ch/aktien/straumann-hldg-n-117544866/swx/chf"
+    },
+    {
+      "id": 47,
+      "titulo": "Straumann: A 'Hold' Despite Nice Growth Numbers",
+      "editor": "Seeking Alpha",
+      "tipo": "Foros y redes",
+      "fecha": "2025-05",
+      "url": "https://seekingalpha.com/article/4789933-straumann-a-hold-despite-nice-growth-numbers"
+    },
+    {
+      "id": 48,
+      "titulo": "Straumann Aktie: Top-Pick 2026",
+      "editor": "Kapitalmarktexperten",
+      "tipo": "Foros y redes",
+      "fecha": "2026",
+      "url": "https://www.kapitalmarktexperten.de/straumann-aktie-top-pick-2026/"
+    },
+    {
+      "id": 49,
+      "titulo": "STMN future performance will depend on U.S. operational recovery and margin stability (narrativa)",
+      "editor": "Simply Wall St (comunidad)",
+      "tipo": "Foros y redes",
+      "fecha": "2026-07",
+      "url": "https://www.simplywall.st/narratives/zvhaoc2x-stmn-future-performance-will-depend-on-u-s-operational-recovery-and-margin-stability"
+    }
+  ],
+  "calc": {
+    "version": 4,
+    "etiquetas": {
+      "margen_bruto": "M. bruto",
+      "margen_bruto_largo": "Margen bruto",
+      "dias_base": "sobre el coste de ventas"
+    },
+    "recomendacion": {
+      "recomendacion": "Mantener",
+      "regla": "Mantener",
+      "regla_absoluta": "Vender",
+      "regla_relativa": "Mantener",
+      "coincide": true,
+      "conviccion": "Baja",
+      "conviccion_sugerida": "Baja",
+      "conviccion_razones": [
+        "las reglas discrepan (absoluta Vender, relativa Mantener)"
+      ],
+      "reglas_discrepan": true,
+      "relativo": {
+        "prima_implicita_pct": 4.2,
+        "wacc": 6.02,
+        "ke": 6.16,
+        "dcf": 97.5,
+        "dcf_min": 88.13,
+        "dcf_max": 108.98,
+        "valor_objetivo": 92.49,
+        "alcista": 115.92,
+        "bajista": 67.06,
+        "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout; válida para mercados desarrollados)",
+        "fecha": "2026-10",
+        "potencial_pct": 0.5,
+        "rentabilidad_total_pct": 1.6,
+        "asimetria": 0.96
+      },
+      "objetivo_mercado_txt": " · con la prima implícita del mercado: 92,49 (+0,5 %)",
+      "objetivo_mercado_corto": " · mercado 92,49",
+      "rentabilidad_mercado_corto": " · mercado +1,6 %",
+      "potencial_pct": -17.4,
+      "dividendo_pct": 1.1,
+      "rentabilidad_total_pct": -16.3,
+      "alcista_pct": -3.3,
+      "bajista_pct": -42.2,
+      "asimetria": -0.08,
+      "comprar_por_debajo": 75.97,
+      "vender_por_encima": 144.68,
+      "tabla": [
+        {
+          "concepto": "Objetivo a 12 meses (nuestro PER × nuestro BPA 2028e, ponderado 25/50/25)",
+          "valor": "129,21 CHF"
+        },
+        {
+          "concepto": "Bajista / base / alcista a 12 meses",
+          "valor": "26,4x × 3,35 = 88,44 · 33,0x × 3,76 = 124,08 · 44,5x × 4,05 = 180,23"
+        },
+        {
+          "concepto": "Rentabilidad a 12 meses: ponderada / del base (con dividendo)",
+          "valor": "41,5 % / 36,0 %"
+        },
+        {
+          "concepto": "Regla de múltiplos aplicada",
+          "valor": "v3: base a mitad de camino hacia la mediana (historia adelantada); bajista mín. 5 a o base × 0,80; alcista techo base × 1,35"
+        },
+        {
+          "concepto": "Objetivo medio de los analistas (solo contraste)",
+          "valor": "114,75 (nuestro base +8,1 %)"
+        },
+        {
+          "concepto": "Valor intrínseco (síntesis ponderada, largo plazo)",
+          "valor": "75,97 CHF"
+        },
+        {
+          "concepto": "Potencial sobre el precio actual",
+          "valor": "-17,4 %"
+        },
+        {
+          "concepto": "Rentabilidad por dividendo ordinario",
+          "valor": "1,1 %"
+        },
+        {
+          "concepto": "Rentabilidad total esperada a 12 meses",
+          "valor": "-16,3 %"
+        },
+        {
+          "concepto": "Escenario alcista / bajista",
+          "valor": "-3,3 % / -42,2 %"
+        },
+        {
+          "concepto": "Asimetría (ganancia alcista / pérdida bajista)",
+          "valor": "-0,08x"
+        },
+        {
+          "concepto": "Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado",
+          "valor": "6,3 % frente a 7,4 % y 6,0 %"
+        },
+        {
+          "concepto": "Valor objetivo con la prima implícita del mercado (4,2 %, WACC 6,0 %)",
+          "valor": "92,49 CHF"
+        },
+        {
+          "concepto": "Rentabilidad total esperada con la prima del mercado",
+          "valor": "1,6 %"
+        },
+        {
+          "concepto": "Asimetría con la prima del mercado",
+          "valor": "0,96x"
+        },
+        {
+          "concepto": "Regla absoluta (frente a su coste de capital)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Regla relativa (frente a lo que pide el mercado)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Crecimiento anual implícito en el precio (2027e-2032e) frente al previsto para su mercado",
+          "valor": "9,3 % frente a 6,9 %"
+        },
+        {
+          "concepto": "¿La calidad de la empresa sostiene el crecimiento previsto?",
+          "valor": "Sí (5,7 % anual proyectado; sin inversión neta)"
+        },
+        {
+          "concepto": "Señal del valor intrínseco (regla del DCF, referencia)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Recomendación según la regla a 12 meses (Comprar: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender: ponderada ≤ -10 %)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Convicción según los criterios (las reglas discrepan (absoluta Vender, relativa Mantener))",
+          "valor": "Baja"
+        }
+      ],
+      "niveles": [
+        {
+          "accion": "Comprar",
+          "condicion": "Por debajo de 75,97 (ponderada a 12 meses ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco)"
+        },
+        {
+          "accion": "Mantener",
+          "condicion": "Entre 75,97 y 144,68"
+        },
+        {
+          "accion": "Vender o reducir",
+          "condicion": "Por encima de 144,68 (ponderada a 12 meses ≤ -10 %)"
+        }
+      ],
+      "precio_txt": "",
+      "valor_objetivo_txt": "",
+      "regla_valor_intrinseco": "Mantener",
+      "objetivo_12m": {
+        "completo": true,
+        "filas": [
+          {
+            "escenario": "Bajista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 3.35,
+            "multiplo": 26.4,
+            "multiplo_informe": null,
+            "origen": "base × 0.8",
+            "precio": 88.44,
+            "rentabilidad_pct": -2.8,
+            "justificacion": "Ventas 2028e de 2.902 M (−3 puntos al año en 2027-2028) y margen EBIT core del 25,3 %: EBIT de 734 M, conversión a beneficio neto core del 72,9 % (la de 2025: 478/656), 159,5 M de acciones sin recompras."
+          },
+          {
+            "escenario": "Base",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 3.76,
+            "multiplo": 33,
+            "multiplo_informe": null,
+            "origen": "PER actual (26.7x) a mitad de camino hacia la mediana de 5 años (40.7x)",
+            "precio": 124.08,
+            "rentabilidad_pct": 36,
+            "justificacion": "Ventas 2028e de 3.072 M (7 % en 2027 y 2028) y margen EBIT core del 26,8 % (EBITDA 32,2 % menos amortización 5,4 %): EBIT de 823 M, conversión del 72,9 % como en 2025, beneficio core de 600 M y 159,5 M de acciones."
+          },
+          {
+            "escenario": "Alcista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 4.05,
+            "multiplo": 44.5,
+            "multiplo_informe": null,
+            "origen": "techo de base × 1.35",
+            "precio": 180.23,
+            "rentabilidad_pct": 97,
+            "justificacion": "Ventas 2028e de 3.188 M (+2 puntos) y margen EBIT core del 27,8 % (+1 punto): EBIT de 886 M, beneficio core de 646 M y 159,5 M de acciones."
+          }
+        ],
+        "regla": {
+          "version": "v3",
+          "bajista": 26.4,
+          "base": 33,
+          "alcista": 44.5,
+          "bajista_origen": "base × 0.8",
+          "base_origen": "PER actual (26.7x) a mitad de camino hacia la mediana de 5 años (40.7x)",
+          "alcista_origen": "techo de base × 1.35"
+        },
+        "version": "v3",
+        "probabilidades": [
+          25,
+          50,
+          25
+        ],
+        "objetivo_ponderado": 129.21,
+        "objetivo_simple": 130.92,
+        "objetivo_base": 124.08,
+        "rentabilidad_ponderada_pct": 41.5,
+        "rentabilidad_simple_pct": 43.4,
+        "rentabilidad_base_pct": 36,
+        "asimetria": 24.78,
+        "senal": "Mantener",
+        "senal_sin_confirmar": null,
+        "confianza_baja": true,
+        "comprar_por_debajo": 75.97,
+        "vender_por_encima": 144.68,
+        "consenso_objetivo": 114.75,
+        "diferencia_consenso_pct": 8.1
+      },
+      "rentabilidad_12m_pct": 41.5,
+      "rentabilidad_12m_txt": "+41,5 % (base +36,0 %)",
+      "objetivo_12m_txt": "129,21 CHF"
+    },
+    "mercado": {
+      "precio": 92,
+      "acciones": 159.5,
+      "capitalizacion": 14674,
+      "deuda_neta": 128,
+      "deuda_neta_ajustada": null,
+      "asimilables_deuda": null,
+      "ajustes_puente": 0,
+      "valor_empresa": 14802,
+      "fecha_puente": "2026-06-30"
+    },
+    "clave": {
+      "capitalizacion": 14674,
+      "valor_empresa": 14802,
+      "deuda_neta": 128,
+      "ev_ventas_ltm": 5.62,
+      "ev_ebitda_ltm": 18.7,
+      "ev_ebitda_ntm": null,
+      "ev_ebit_ltm": 22.7,
+      "per_ltm": 28.6,
+      "per_ntm": 26.2,
+      "fcf_yield_pct": 2.4,
+      "dividendo_pct": 1.1,
+      "dn_ebitda": 0.2,
+      "roic_pct": 25.6,
+      "margen_ebitda_pct": 30.1,
+      "deuda_neta_ajustada": 128,
+      "dn_ebitda_ajustada": 0.2,
+      "crecimiento_tcac_pct": 6.5,
+      "ingresos_ntm": 2961,
+      "ebitda_ntm": null,
+      "bpa_ntm": 3.51,
+      "ebitda_ltm": 793,
+      "ingresos_ltm": 2636,
+      "ev_rab": null
+    },
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 2022,
+        "crecimiento_pct": null,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "ebit": 554,
+        "margen_ebit_pct": 27.4,
+        "beneficio_neto": 456,
+        "margen_neto_pct": 22.6,
+        "bpa": 2.85,
+        "dpa": 0.675,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 24
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 2321,
+        "crecimiento_pct": 14.8,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "ebit": 603,
+        "margen_ebit_pct": 26,
+        "beneficio_neto": 482,
+        "margen_neto_pct": 20.8,
+        "bpa": 3.03,
+        "dpa": 0.8,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 26
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 2277,
+        "crecimiento_pct": -1.9,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "ebit": null,
+        "margen_ebit_pct": null,
+        "beneficio_neto": 440,
+        "margen_neto_pct": 19.3,
+        "bpa": 2.76,
+        "dpa": 0.85,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 31
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 2504,
+        "crecimiento_pct": 10,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 796,
+        "margen_ebitda_pct": 31.8,
+        "ebit": 651,
+        "margen_ebit_pct": 26,
+        "beneficio_neto": 502,
+        "margen_neto_pct": 20,
+        "bpa": 3.14,
+        "dpa": 0.95,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 30
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 2605,
+        "crecimiento_pct": 4,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 797,
+        "margen_ebitda_pct": 30.6,
+        "ebit": 656,
+        "margen_ebit_pct": 25.2,
+        "beneficio_neto": 478,
+        "margen_neto_pct": 18.3,
+        "bpa": 3,
+        "dpa": 1,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 33
+      }
+    ],
+    "tcac": {
+      "periodo": "2021-2025",
+      "ingresos_pct": 6.5,
+      "ebitda_pct": null,
+      "bpa_pct": 1.3
+    },
+    "cuenta_y_prevision": [
+      {
+        "periodo": "2021",
+        "ingresos": 2022,
+        "ebitda": null
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 2321,
+        "ebitda": null
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 2277,
+        "ebitda": null
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 2504,
+        "ebitda": 796
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 2605,
+        "ebitda": 797
+      },
+      {
+        "periodo": "2026e",
+        "ingresos": 2683,
+        "ebitda": 826
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 2871,
+        "ebitda": 907
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 3072,
+        "ebitda": 989
+      },
+      {
+        "periodo": "2029e",
+        "ingresos": 3272,
+        "ebitda": 1067
+      },
+      {
+        "periodo": "2030e",
+        "ingresos": 3468,
+        "ebitda": 1137
+      },
+      {
+        "periodo": "2031e",
+        "ingresos": 3659,
+        "ebitda": 1207
+      },
+      {
+        "periodo": "2032e",
+        "ingresos": 3842,
+        "ebitda": 1268
+      }
+    ],
+    "segmentos_ultimo": [
+      {
+        "nombre": "Grupo (un solo segmento operativo publicado por regiones)",
+        "ingresos": 2605,
+        "peso_pct": 100,
+        "crecimiento_pct": 4,
+        "margen_pct": null,
+        "tipo_margen": null
+      }
+    ],
+    "segmentos_tabla": {
+      "periodos": [
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "filas": [
+        {
+          "nombre": "Grupo (un solo segmento operativo publicado por regiones)",
+          "v0": 2022,
+          "v1": 2321,
+          "v2": 2277,
+          "v3": 2504,
+          "v4": 2605
+        }
+      ]
+    },
+    "segmentos_periodo": "2025",
+    "balance": [
+      {
+        "periodo": "2021",
+        "activo_total": 2968,
+        "intangibles": 639,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 880,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "deuda_neta": -880,
+        "patrimonio": 1500,
+        "minoritarios": null,
+        "dn_ebitda": null,
+        "dn_patrimonio_pct": -59,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 620,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 3373,
+        "intangibles": 778,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 696,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "deuda_neta": -696,
+        "patrimonio": 1854,
+        "minoritarios": null,
+        "dn_ebitda": null,
+        "dn_patrimonio_pct": -38,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 1158,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 3322,
+        "intangibles": 908,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 410,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "deuda_neta": -410,
+        "patrimonio": 1839,
+        "minoritarios": null,
+        "dn_ebitda": null,
+        "dn_patrimonio_pct": -22,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 1429,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 3619,
+        "intangibles": 904,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 375,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "deuda_neta": -375,
+        "patrimonio": 2044,
+        "minoritarios": null,
+        "dn_ebitda": -0.47,
+        "dn_patrimonio_pct": -18,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 1669,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 3758,
+        "intangibles": 872,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 504,
+        "deuda_financiera": 509,
+        "arrendamientos": 0,
+        "deuda_neta": 5,
+        "patrimonio": 2165,
+        "minoritarios": null,
+        "dn_ebitda": 0.01,
+        "dn_patrimonio_pct": 0,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 2170,
+        "liquidez_corriente": null
+      }
+    ],
+    "perimetro_nota": "Cambio de perímetro (2023: DrSmile (alineadores directos al paciente) pasa a operación interrumpida y se vende en 2024: los ingresos de 2023 están reexpresados sin ella (2.277 M); 2021-2022 la incluyen. El BPA core de 2023 (2,76) es el publicado entonces, con DrSmile.). Los ratios de balance de ese año (días, circulante, deuda neta / EBITDA, ROIC) y los indicadores de calidad contable no son comparables con los anteriores.",
+    "flujos": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 560.3,
+        "capex": 105.1,
+        "pagos_arrendamientos": null,
+        "fcf": 455.19999999999993,
+        "beneficio_neto": 456,
+        "conversion_pct": 100,
+        "capex_ventas_pct": 5.2,
+        "capex_amortizacion": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 92,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 92,
+        "payout_caja_pct": 20,
+        "acciones": 160,
+        "fcf_por_accion": 2.85
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 415.2,
+        "capex": 161.6,
+        "pagos_arrendamientos": null,
+        "fcf": 253.6,
+        "beneficio_neto": 482,
+        "conversion_pct": 53,
+        "capex_ventas_pct": 7,
+        "capex_amortizacion": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 108,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 108,
+        "payout_caja_pct": 22,
+        "acciones": 159.1,
+        "fcf_por_accion": 1.59
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 504,
+        "capex": 151.7,
+        "pagos_arrendamientos": null,
+        "fcf": 352.3,
+        "beneficio_neto": 440,
+        "conversion_pct": 80,
+        "capex_ventas_pct": 6.7,
+        "capex_amortizacion": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 128,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 128,
+        "payout_caja_pct": 29,
+        "acciones": 159.4,
+        "fcf_por_accion": 2.21
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 483.4,
+        "capex": 167.8,
+        "pagos_arrendamientos": null,
+        "fcf": 315.59999999999997,
+        "beneficio_neto": 502,
+        "conversion_pct": 63,
+        "capex_ventas_pct": 6.7,
+        "capex_amortizacion": 1.16,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 136,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 136,
+        "payout_caja_pct": 27,
+        "acciones": 159.9,
+        "fcf_por_accion": 1.97
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 504,
+        "capex": 223.4,
+        "pagos_arrendamientos": null,
+        "fcf": 280.6,
+        "beneficio_neto": 478,
+        "conversion_pct": 59,
+        "capex_ventas_pct": 8.6,
+        "capex_amortizacion": 1.58,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 151,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 151,
+        "payout_caja_pct": 32,
+        "acciones": 159.5,
+        "fcf_por_accion": 1.76
+      }
+    ],
+    "flujos_acumulado": {
+      "periodo": "2021-2025",
+      "fcf": 1657,
+      "adquisiciones": 0,
+      "dividendos": 615,
+      "recompras": 0,
+      "conversion_pct": 70
+    },
+    "rentabilidad": [
+      {
+        "periodo": "2021",
+        "nopat": 416,
+        "capital_invertido": 620,
+        "roic_pct": 67,
+        "roe_pct": 30.4,
+        "roa_pct": 15.4,
+        "margen_neto_pct": 22.6,
+        "rotacion": 0.68,
+        "apalancamiento": 1.98
+      },
+      {
+        "periodo": "2022",
+        "nopat": 452,
+        "capital_invertido": 889,
+        "roic_pct": 50.9,
+        "roe_pct": 28.7,
+        "roa_pct": 15.2,
+        "margen_neto_pct": 20.8,
+        "rotacion": 0.73,
+        "apalancamiento": 1.89
+      },
+      {
+        "periodo": "2023",
+        "nopat": null,
+        "capital_invertido": 1294,
+        "roic_pct": null,
+        "roe_pct": 23.8,
+        "roa_pct": 13.1,
+        "margen_neto_pct": 19.3,
+        "rotacion": 0.68,
+        "apalancamiento": 1.81
+      },
+      {
+        "periodo": "2024",
+        "nopat": 488,
+        "capital_invertido": 1549,
+        "roic_pct": 31.5,
+        "roe_pct": 25.9,
+        "roa_pct": 14.5,
+        "margen_neto_pct": 20,
+        "rotacion": 0.72,
+        "apalancamiento": 1.79
+      },
+      {
+        "periodo": "2025",
+        "nopat": 492,
+        "capital_invertido": 1920,
+        "roic_pct": 25.6,
+        "roe_pct": 22.7,
+        "roa_pct": 13,
+        "margen_neto_pct": 18.3,
+        "rotacion": 0.71,
+        "apalancamiento": 1.75
+      }
+    ],
+    "roic_incremental_pct": 5.8,
+    "roic_frente_wacc": [
+      {
+        "periodo": "2021",
+        "roic_pct": 67,
+        "roe_pct": 30.4,
+        "wacc_pct": 7.4
+      },
+      {
+        "periodo": "2022",
+        "roic_pct": 50.9,
+        "roe_pct": 28.7,
+        "wacc_pct": 7.4
+      },
+      {
+        "periodo": "2023",
+        "roic_pct": null,
+        "roe_pct": 23.8,
+        "wacc_pct": 7.4
+      },
+      {
+        "periodo": "2024",
+        "roic_pct": 31.5,
+        "roe_pct": 25.9,
+        "wacc_pct": 7.4
+      },
+      {
+        "periodo": "2025",
+        "roic_pct": 25.6,
+        "roe_pct": 22.7,
+        "wacc_pct": 7.4
+      }
+    ],
+    "calidad": {
+      "periodo": "2025",
+      "altman_z": 6.8,
+      "altman_zona": "Zona segura",
+      "piotroski_f": 5,
+      "piotroski_detalle": [
+        {
+          "criterio": "Beneficio neto positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "ROA mejora",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Flujo operativo > beneficio neto",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Baja el endeudamiento (deuda / activo)",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "Mejora la liquidez corriente",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "No emite acciones",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora el margen bruto",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "Mejora la rotación del activo",
+          "resultado": "Sí"
+        }
+      ],
+      "tabla": [
+        {
+          "indicador": "Altman Z",
+          "valor": "6,80",
+          "lectura": "Zona segura (> 2,99 seguro; < 1,81 riesgo). No aplica a bancos ni aseguradoras, y subestima la solvencia de empresas con grandes anticipos de clientes o prefinanciación pública (contratistas, construcción), que inflan el pasivo."
+        },
+        {
+          "indicador": "Piotroski F",
+          "valor": "5 / 6",
+          "lectura": "Intermedio (4-6)."
+        },
+        {
+          "indicador": "Flujo operativo / beneficio neto (acumulado)",
+          "valor": "1,05x",
+          "lectura": "El beneficio se cobra."
+        }
+      ]
+    },
+    "dcf": {
+      "proyeccion": [
+        {
+          "periodo": "2026e",
+          "ingresos": 2683,
+          "crecimiento_pct": 3,
+          "ebitda": 826,
+          "margen_ebitda_pct": 30.8,
+          "amortizacion": 145,
+          "ebit": 682,
+          "impuestos": 143,
+          "capex": 228,
+          "variacion_circulante": 0,
+          "fcff": 455,
+          "fraccion": 0.21,
+          "factor": 0.992,
+          "vp": 96
+        },
+        {
+          "periodo": "2027e",
+          "ingresos": 2871,
+          "crecimiento_pct": 7,
+          "ebitda": 907,
+          "margen_ebitda_pct": 31.6,
+          "amortizacion": 155,
+          "ebit": 752,
+          "impuestos": 158,
+          "capex": 244,
+          "variacion_circulante": 0,
+          "fcff": 505,
+          "fraccion": 1,
+          "factor": 0.95,
+          "vp": 480
+        },
+        {
+          "periodo": "2028e",
+          "ingresos": 3072,
+          "crecimiento_pct": 7,
+          "ebitda": 989,
+          "margen_ebitda_pct": 32.2,
+          "amortizacion": 166,
+          "ebit": 823,
+          "impuestos": 173,
+          "capex": 252,
+          "variacion_circulante": 0,
+          "fcff": 564,
+          "fraccion": 1,
+          "factor": 0.885,
+          "vp": 499
+        },
+        {
+          "periodo": "2029e",
+          "ingresos": 3272,
+          "crecimiento_pct": 6.5,
+          "ebitda": 1067,
+          "margen_ebitda_pct": 32.6,
+          "amortizacion": 177,
+          "ebit": 890,
+          "impuestos": 187,
+          "capex": 262,
+          "variacion_circulante": 0,
+          "fcff": 618,
+          "fraccion": 1,
+          "factor": 0.824,
+          "vp": 509
+        },
+        {
+          "periodo": "2030e",
+          "ingresos": 3468,
+          "crecimiento_pct": 6,
+          "ebitda": 1137,
+          "margen_ebitda_pct": 32.8,
+          "amortizacion": 187,
+          "ebit": 950,
+          "impuestos": 200,
+          "capex": 267,
+          "variacion_circulante": 0,
+          "fcff": 671,
+          "fraccion": 1,
+          "factor": 0.767,
+          "vp": 514
+        },
+        {
+          "periodo": "2031e",
+          "ingresos": 3659,
+          "crecimiento_pct": 5.5,
+          "ebitda": 1207,
+          "margen_ebitda_pct": 33,
+          "amortizacion": 198,
+          "ebit": 1010,
+          "impuestos": 212,
+          "capex": 271,
+          "variacion_circulante": 0,
+          "fcff": 725,
+          "fraccion": 1,
+          "factor": 0.714,
+          "vp": 517
+        },
+        {
+          "periodo": "2032e",
+          "ingresos": 3842,
+          "crecimiento_pct": 5,
+          "ebitda": 1268,
+          "margen_ebitda_pct": 33,
+          "amortizacion": 211,
+          "ebit": 1056,
+          "impuestos": 222,
+          "capex": 269,
+          "variacion_circulante": 0,
+          "fcff": 777,
+          "fraccion": 1,
+          "factor": 0.665,
+          "vp": 516
+        }
+      ],
+      "etapa2": {
+        "anios": 5,
+        "vp": 2370,
+        "peso_pct": 20,
+        "filas": [
+          {
+            "periodo": "2033e",
+            "ingresos": 4003,
+            "crecimiento_pct": 4.2,
+            "margen_ebitda_pct": 33,
+            "capex": 271,
+            "fcff": 819,
+            "factor": 0.619,
+            "vp": 507
+          },
+          {
+            "periodo": "2034e",
+            "ingresos": 4139,
+            "crecimiento_pct": 3.4,
+            "margen_ebitda_pct": 33,
+            "capex": 270,
+            "fcff": 857,
+            "factor": 0.576,
+            "vp": 494
+          },
+          {
+            "periodo": "2035e",
+            "ingresos": 4247,
+            "crecimiento_pct": 2.6,
+            "margen_ebitda_pct": 33,
+            "capex": 267,
+            "fcff": 889,
+            "factor": 0.536,
+            "vp": 477
+          },
+          {
+            "periodo": "2036e",
+            "ingresos": 4323,
+            "crecimiento_pct": 1.8,
+            "margen_ebitda_pct": 33,
+            "capex": 261,
+            "fcff": 916,
+            "factor": 0.499,
+            "vp": 457
+          },
+          {
+            "periodo": "2037e",
+            "ingresos": 4366,
+            "crecimiento_pct": 1,
+            "margen_ebitda_pct": 33,
+            "capex": 253,
+            "fcff": 935,
+            "factor": 0.465,
+            "vp": 435
+          }
+        ]
+      },
+      "suma_vp": 3132,
+      "valor_terminal": 14741,
+      "vp_terminal": 6613,
+      "valor_empresa": 12115,
+      "peso_terminal_pct": 55,
+      "valor_acciones": 11987,
+      "valor_accion": 75.15,
+      "vt_gordon": 14741,
+      "vt_multiplo": 25936,
+      "multiplo_implicito": 10.2,
+      "g_implicito_pct": 3.67,
+      "metodo_terminal": "gordon",
+      "terminal_tabla": [
+        {
+          "concepto": "Método principal",
+          "valor": "Crecimiento a perpetuidad"
+        },
+        {
+          "concepto": "Crecimiento a perpetuidad",
+          "valor": "1,0 %"
+        },
+        {
+          "concepto": "Múltiplo EV/EBITDA de salida",
+          "valor": "18,0x"
+        },
+        {
+          "concepto": "Valor terminal (Gordon)",
+          "valor": "14.741"
+        },
+        {
+          "concepto": "Valor terminal (múltiplo)",
+          "valor": "25.936"
+        },
+        {
+          "concepto": "Múltiplo de salida implícito en Gordon",
+          "valor": "10,2x"
+        },
+        {
+          "concepto": "Crecimiento implícito en el múltiplo",
+          "valor": "3,67 %"
+        },
+        {
+          "concepto": "Peso del valor terminal en el valor empresa",
+          "valor": "55 %"
+        }
+      ],
+      "puente": [
+        {
+          "concepto": "Valor actual de los flujos proyectados",
+          "valor": "3.132"
+        },
+        {
+          "concepto": "Valor actual de la etapa de transición (5 años)",
+          "valor": "2.370"
+        },
+        {
+          "concepto": "Valor actual del valor terminal",
+          "valor": "6.613"
+        },
+        {
+          "concepto": "Valor empresa",
+          "valor": "12.115"
+        },
+        {
+          "concepto": "− Deuda financiera neta (con arrendamientos)",
+          "valor": "-128"
+        },
+        {
+          "concepto": "− Minoritarios, pensiones y otros; + asociadas",
+          "valor": "0"
+        },
+        {
+          "concepto": "Valor de los fondos propios",
+          "valor": "11.987"
+        },
+        {
+          "concepto": "Acciones diluidas (millones)",
+          "valor": "159,5"
+        },
+        {
+          "concepto": "Valor por acción",
+          "valor": "75,15"
+        }
+      ],
+      "composicion": [
+        {
+          "parte": "Flujos proyectados",
+          "valor": 3132
+        },
+        {
+          "parte": "Etapa de transición",
+          "valor": 2370
+        },
+        {
+          "parte": "Valor terminal",
+          "valor": 6613
+        }
+      ],
+      "wacc": 7.41,
+      "ke": 7.59,
+      "kd_despues": 1.58,
+      "wacc_tabla": [
+        {
+          "concepto": "Tasa libre de riesgo",
+          "valor": "0,54 %"
+        },
+        {
+          "concepto": "Beta",
+          "valor": "1,10"
+        },
+        {
+          "concepto": "Prima de riesgo de mercado",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Prima adicional (país, tamaño, específica)",
+          "valor": "1,00 %"
+        },
+        {
+          "concepto": "Coste de los fondos propios",
+          "valor": "7,59 %"
+        },
+        {
+          "concepto": "Coste de la deuda antes de impuestos",
+          "valor": "2,00 %"
+        },
+        {
+          "concepto": "Tipo impositivo",
+          "valor": "21,00 %"
+        },
+        {
+          "concepto": "Coste de la deuda después de impuestos",
+          "valor": "1,58 %"
+        },
+        {
+          "concepto": "Peso de la deuda (D / (D + E))",
+          "valor": "3,00 %"
+        },
+        {
+          "concepto": "WACC",
+          "valor": "7,41 %"
+        },
+        {
+          "concepto": "Prima de riesgo implícita del mercado (regla relativa)",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "WACC con la prima implícita del mercado",
+          "valor": "6,02 %"
+        }
+      ],
+      "potencial_pct": -18.3,
+      "valor_accion_dos_etapas": 68.06,
+      "etapa2_aporte_pct": 10.4,
+      "etapa2_texto": "Con la etapa de transición de 5 años el DCF da 75,15 por acción; sin ella (crecimiento terminal desde 2032e), 68,06.",
+      "sensibilidad": {
+        "eje_columnas": "Crecimiento a perpetuidad",
+        "columnas": [
+          "0,0 %",
+          "0,5 %",
+          "1,0 %",
+          "1,5 %",
+          "2,0 %"
+        ],
+        "filas": [
+          {
+            "wacc": "6,4 %",
+            "v0": 80.34,
+            "v1": 84.8,
+            "v2": 90.09,
+            "v3": 96.45,
+            "v4": 104.24
+          },
+          {
+            "wacc": "6,9 %",
+            "v0": 74.02,
+            "v1": 77.69,
+            "v2": 81.98,
+            "v3": 87.05,
+            "v4": 93.15
+          },
+          {
+            "wacc": "7,4 %",
+            "v0": 68.58,
+            "v1": 71.63,
+            "v2": 75.15,
+            "v3": 79.26,
+            "v4": 84.13
+          },
+          {
+            "wacc": "7,9 %",
+            "v0": 63.84,
+            "v1": 66.4,
+            "v2": 69.33,
+            "v3": 72.71,
+            "v4": 76.66
+          },
+          {
+            "wacc": "8,4 %",
+            "v0": 59.68,
+            "v1": 61.85,
+            "v2": 64.31,
+            "v3": 67.12,
+            "v4": 70.36
+          }
+        ]
+      },
+      "sensibilidad2": {
+        "columnas": [
+          "-2 pp",
+          "-1 pp",
+          "0 pp",
+          "+1 pp",
+          "+2 pp"
+        ],
+        "filas": [
+          {
+            "margen": "-2 pp",
+            "v0": 60.56,
+            "v1": 64.88,
+            "v2": 69.39,
+            "v3": 74.14,
+            "v4": 79.16
+          },
+          {
+            "margen": "-1 pp",
+            "v0": 63.1,
+            "v1": 67.59,
+            "v2": 72.27,
+            "v3": 77.21,
+            "v4": 82.43
+          },
+          {
+            "margen": "0 pp",
+            "v0": 65.64,
+            "v1": 70.29,
+            "v2": 75.15,
+            "v3": 80.27,
+            "v4": 85.69
+          },
+          {
+            "margen": "+1 pp",
+            "v0": 68.18,
+            "v1": 73,
+            "v2": 78.03,
+            "v3": 83.34,
+            "v4": 88.96
+          },
+          {
+            "margen": "+2 pp",
+            "v0": 70.71,
+            "v1": 75.7,
+            "v2": 80.91,
+            "v3": 86.41,
+            "v4": 92.23
+          }
+        ]
+      },
+      "rango_min": 66.4,
+      "rango_max": 87.05,
+      "inverso": {
+        "crecimiento_implicito_pct": 9.3,
+        "crecimiento_base_pct": 6.2,
+        "periodo": "2027e-2032e",
+        "margen_implicito_pct": 38.8,
+        "margen_implicito_texto": null,
+        "margen_base_pct": 33,
+        "rentabilidad_implicita_pct": 6.3
+      },
+      "sostenibilidad": {
+        "veredicto": "Sí",
+        "crecimiento_proyectado_pct": 5.7,
+        "tasa_reinversion_pct": 11,
+        "crecimiento_financiable_pct": null,
+        "roic_pct": 25.6,
+        "roic_incremental_historico_pct": 5.8,
+        "roic_implicito_pct": null,
+        "cuota_actual_pct": 32,
+        "cuota_final_pct": null,
+        "puente": [
+          {
+            "periodo": "2026e",
+            "volumen_pct": 5.8,
+            "precio_pct": 2,
+            "otros_pct": -4.8,
+            "comentario": "Volumen 5,8 % y precio 2,0 % (guía de crecimiento orgánico de un dígito alto: 7,8 % en el 1S26); divisa −4,8 puntos (1S26: −5,5) [3].",
+            "suma_pct": 3,
+            "crecimiento_pct": 3
+          },
+          {
+            "periodo": "2027e",
+            "volumen_pct": 5,
+            "precio_pct": 2,
+            "otros_pct": 0,
+            "comentario": "Volumen 5 % (mercado 6,9-8,3 %, China estabilizada tras la licitación) y precio 2 % (historia de subidas anuales en premium); sin efecto divisa [26, 28].",
+            "suma_pct": 7,
+            "crecimiento_pct": 7
+          },
+          {
+            "periodo": "2028e",
+            "volumen_pct": 5,
+            "precio_pct": 2,
+            "otros_pct": 0,
+            "comentario": "Igual que 2027e; ningún aumento de cuota.",
+            "suma_pct": 7,
+            "crecimiento_pct": 7
+          },
+          {
+            "periodo": "2029e",
+            "volumen_pct": 4.5,
+            "precio_pct": 2,
+            "otros_pct": 0,
+            "comentario": "El volumen se modera al 4,5 % con el mercado.",
+            "suma_pct": 6.5,
+            "crecimiento_pct": 6.5
+          },
+          {
+            "periodo": "2030e",
+            "volumen_pct": 4,
+            "precio_pct": 2,
+            "otros_pct": 0,
+            "comentario": "Volumen 4 % y precio 2 %: crecimiento por debajo del mercado previsto.",
+            "suma_pct": 6,
+            "crecimiento_pct": 6
+          }
+        ],
+        "texto": "La proyección apenas necesita inversión neta de la amortización (reinversión acumulada de 554 M, el 11 % del NOPAT, con un capex bruto medio del 7,9 % de las ventas). En un negocio de activos ligeros, el crecimiento medio del 5,7 % tiene que salir de subir precios y de ganar volumen sin capital nuevo, y la prueba es el poder de precios y la cuota; en un comprador en serie, la amortización es de intangibles comprados y la prueba es el capex bruto (las compras) frente al crecimiento comprado.",
+        "tabla": [
+          {
+            "concepto": "Crecimiento medio de ingresos proyectado",
+            "valor": "5,7 %"
+          },
+          {
+            "concepto": "Capex bruto medio (incluidas compras si van como inversión)",
+            "valor": "7,9 % de las ventas"
+          },
+          {
+            "concepto": "Reinversión neta acumulada (capex − amortización + circulante)",
+            "valor": "554 M (11 % del NOPAT)"
+          }
+        ]
+      }
+    },
+    "escenarios": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "narrativa": "La segunda licitación china prima a los fabricantes locales y el franco sigue fuerte: el crecimiento cae 3 puntos al año y el margen 1,5 puntos, como en 2023-2025, cuando el BPA no creció [9, 25].",
+        "crecimiento_medio_pct": 3.2,
+        "margen_final_pct": 31.5,
+        "wacc_pct": 7.9,
+        "valor": 53.18,
+        "potencial_pct": -42.2
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "narrativa": "Crecimiento orgánico del 7-8 %, divisa neutra desde 2027 y margen EBITDA core hasta el 33 % con el fin del ciclo de capex.",
+        "crecimiento_medio_pct": 6.2,
+        "margen_final_pct": 33,
+        "wacc_pct": 7.4,
+        "valor": 75.15,
+        "potencial_pct": -18.3
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "narrativa": "Norteamérica sigue al 7-8 %, China se estabiliza y la ortodoncia y el digital suman: 2 puntos más de crecimiento y 1 de margen.",
+        "crecimiento_medio_pct": 8.2,
+        "margen_final_pct": 34,
+        "wacc_pct": 7.4,
+        "valor": 88.96,
+        "potencial_pct": -3.3
+      }
+    ],
+    "valor_ponderado": 73.11,
+    "potencial_ponderado_pct": -20.5,
+    "comparables": {
+      "tabla": [
+        {
+          "nombre": "Straumann",
+          "ticker": "STMN",
+          "pais": "CH",
+          "capitalizacion": 14674,
+          "ev_ventas": 5.62,
+          "ev_ebitda_ltm": 18.7,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 26.2,
+          "crecimiento_pct": 9.4,
+          "margen_ebitda_pct": 30.1,
+          "roic_pct": 25.6,
+          "dn_ebitda": 0.2,
+          "fcf_yield_pct": 2.4,
+          "es_objetivo": true
+        },
+        {
+          "nombre": "Sonova",
+          "ticker": "SOON.SW",
+          "pais": "CH",
+          "capitalizacion": null,
+          "ev_ventas": 4.61,
+          "ev_ebitda_ltm": 17.5,
+          "ev_ebitda_ntm": 15.2,
+          "per_ntm": 23.9,
+          "crecimiento_pct": 7,
+          "margen_ebitda_pct": 26,
+          "roic_pct": null,
+          "dn_ebitda": 1.1,
+          "fcf_yield_pct": 3.8,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Demant",
+          "ticker": "DEMANT.CO",
+          "pais": "DK",
+          "capitalizacion": null,
+          "ev_ventas": 3.75,
+          "ev_ebitda_ltm": 16,
+          "ev_ebitda_ntm": 13.7,
+          "per_ntm": 22.9,
+          "crecimiento_pct": 10.2,
+          "margen_ebitda_pct": 23.3,
+          "roic_pct": null,
+          "dn_ebitda": 3.5,
+          "fcf_yield_pct": 4.2,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Coloplast",
+          "ticker": "COLO-B.CO",
+          "pais": "DK",
+          "capitalizacion": null,
+          "ev_ventas": 4.42,
+          "ev_ebitda_ltm": 13.9,
+          "ev_ebitda_ntm": 13.3,
+          "per_ntm": 17.1,
+          "crecimiento_pct": 7.6,
+          "margen_ebitda_pct": 31.8,
+          "roic_pct": 11.9,
+          "dn_ebitda": 2.5,
+          "fcf_yield_pct": 5.8,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Cochlear",
+          "ticker": "COH.AX",
+          "pais": "AU",
+          "capitalizacion": null,
+          "ev_ventas": 3.54,
+          "ev_ebitda_ltm": 15.4,
+          "ev_ebitda_ntm": 14.6,
+          "per_ntm": 27.4,
+          "crecimiento_pct": 2,
+          "margen_ebitda_pct": 23,
+          "roic_pct": null,
+          "dn_ebitda": -0.3,
+          "fcf_yield_pct": 3.3,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Smith & Nephew",
+          "ticker": "SN.L",
+          "pais": "GB",
+          "capitalizacion": null,
+          "ev_ventas": 2.26,
+          "ev_ebitda_ltm": 8.7,
+          "ev_ebitda_ntm": 8.2,
+          "per_ntm": 15.2,
+          "crecimiento_pct": 5.1,
+          "margen_ebitda_pct": 26.1,
+          "roic_pct": null,
+          "dn_ebitda": 1.7,
+          "fcf_yield_pct": 7.4,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Align Technology",
+          "ticker": "ALGN",
+          "pais": "US",
+          "capitalizacion": null,
+          "ev_ventas": 2.16,
+          "ev_ebitda_ltm": 7.7,
+          "ev_ebitda_ntm": 7.4,
+          "per_ntm": 15,
+          "crecimiento_pct": 3.6,
+          "margen_ebitda_pct": 28.1,
+          "roic_pct": 17.2,
+          "dn_ebitda": -1,
+          "fcf_yield_pct": 6.3,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Edwards Lifesciences",
+          "ticker": "EW",
+          "pais": "US",
+          "capitalizacion": null,
+          "ev_ventas": 7,
+          "ev_ebitda_ltm": 22.9,
+          "ev_ebitda_ntm": 19.4,
+          "per_ntm": 27.1,
+          "crecimiento_pct": 10.5,
+          "margen_ebitda_pct": 29.7,
+          "roic_pct": null,
+          "dn_ebitda": -1.85,
+          "fcf_yield_pct": 2.2,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Alcon",
+          "ticker": "ALC",
+          "pais": "CH",
+          "capitalizacion": null,
+          "ev_ventas": 3.09,
+          "ev_ebitda_ltm": 11.7,
+          "ev_ebitda_ntm": 10.6,
+          "per_ntm": null,
+          "crecimiento_pct": 6.2,
+          "margen_ebitda_pct": 25.7,
+          "roic_pct": 4.75,
+          "dn_ebitda": 1.2,
+          "fcf_yield_pct": 5.7,
+          "es_objetivo": false
+        }
+      ],
+      "estadisticos": [
+        {
+          "estadistico": "Mediana",
+          "ev_ventas": 3.6,
+          "ev_ebitda_ltm": 14.7,
+          "ev_ebitda_ntm": 13.5,
+          "per_ntm": 22.9,
+          "crecimiento_pct": 6.6,
+          "margen_ebitda_pct": 26.1,
+          "roic_pct": 11.9,
+          "dn_ebitda": 1.2,
+          "fcf_yield_pct": 5
+        },
+        {
+          "estadistico": "Media",
+          "ev_ventas": 3.9,
+          "ev_ebitda_ltm": 14.2,
+          "ev_ebitda_ntm": 12.8,
+          "per_ntm": 21.2,
+          "crecimiento_pct": 6.5,
+          "margen_ebitda_pct": 26.7,
+          "roic_pct": 11.3,
+          "dn_ebitda": 0.9,
+          "fcf_yield_pct": 4.8
+        },
+        {
+          "estadistico": "Percentil 25",
+          "ev_ventas": 2.9,
+          "ev_ebitda_ltm": 11,
+          "ev_ebitda_ntm": 10,
+          "per_ntm": 16.2,
+          "crecimiento_pct": 4.7,
+          "margen_ebitda_pct": 25.1,
+          "roic_pct": 8.3,
+          "dn_ebitda": -0.5,
+          "fcf_yield_pct": 3.7
+        },
+        {
+          "estadistico": "Percentil 75",
+          "ev_ventas": 4.5,
+          "ev_ebitda_ltm": 16.4,
+          "ev_ebitda_ntm": 14.8,
+          "per_ntm": 25.5,
+          "crecimiento_pct": 8.3,
+          "margen_ebitda_pct": 28.5,
+          "roic_pct": 14.6,
+          "dn_ebitda": 1.9,
+          "fcf_yield_pct": 5.9
+        }
+      ],
+      "implicito": [
+        {
+          "metodo": "EV/EBITDA últimos 12 meses",
+          "metrica_empresa": 793,
+          "multiplo_p25": 11,
+          "multiplo_mediana": 14.7,
+          "multiplo_p75": 16.4,
+          "multiplos": "10,9x / 14,7x / 16,4x",
+          "valor_p25": 53.64,
+          "valor_mediana": 72.03,
+          "valor_p75": 80.61,
+          "potencial_pct": -21.7
+        },
+        {
+          "metodo": "PER próximos 12 meses",
+          "metrica_empresa": 3.51,
+          "multiplo_p25": 16.2,
+          "multiplo_mediana": 22.9,
+          "multiplo_p75": 25.5,
+          "multiplos": "16,1x / 22,9x / 25,5x",
+          "valor_p25": 56.74,
+          "valor_mediana": 80.45,
+          "valor_p75": 89.59,
+          "potencial_pct": -12.6
+        },
+        {
+          "metodo": "EV/Ventas últimos 12 meses",
+          "metrica_empresa": 2636,
+          "multiplo_p25": 2.9,
+          "multiplo_mediana": 3.6,
+          "multiplo_p75": 4.5,
+          "multiplos": "2,9x / 3,6x / 4,5x",
+          "valor_p25": 46.84,
+          "valor_mediana": 59.44,
+          "valor_p75": 73.03,
+          "potencial_pct": -35.4
+        }
+      ],
+      "regresion": {
+        "pendiente": 0.7459380809958776,
+        "ordenada": 7.932754021501899,
+        "r2": 0.3163962406430392,
+        "n": 8
+      },
+      "n": 8
+    },
+    "transacciones": null,
+    "suma_partes": null,
+    "multiplos_historicos": [
+      {
+        "metrica": "PER últimos 12 meses (cierre de cada año)",
+        "campo": "per_ltm",
+        "actual": 28.6,
+        "media": 34.9,
+        "minimo": 31.2,
+        "maximo": 49.1,
+        "percentil": 0,
+        "prima_pct": -18,
+        "anios": 3
+      }
+    ],
+    "multiplos_serie": [],
+    "multiplos_titulo": null,
+    "consenso_vs_propio": [
+      {
+        "periodo": "2026e",
+        "ingresos_propio": 2683,
+        "ingresos_consenso": 2749,
+        "ingresos_dif_pct": -2.4,
+        "ebitda_propio": 826,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      },
+      {
+        "periodo": "2027e",
+        "ingresos_propio": 2871,
+        "ingresos_consenso": 3019,
+        "ingresos_dif_pct": -4.9,
+        "ebitda_propio": 907,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      },
+      {
+        "periodo": "2028e",
+        "ingresos_propio": 3072,
+        "ingresos_consenso": 3306,
+        "ingresos_dif_pct": -7.1,
+        "ebitda_propio": 989,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      }
+    ],
+    "gobierno": {
+      "n_consejeros": 3,
+      "independientes_pct": 100,
+      "antiguedad_media": 0,
+      "composicion": [
+        {
+          "tipo": "Independiente",
+          "num": 3
+        }
+      ],
+      "checklist": [
+        {
+          "criterio": "Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)",
+          "resultado": "Cumple",
+          "valor": "100 %"
+        },
+        {
+          "criterio": "Presidencia sin vínculo familiar ni profesional con el accionista de control",
+          "resultado": "Cumple",
+          "valor": "Sin control"
+        },
+        {
+          "criterio": "Presidente no ejecutivo, o consejero coordinador independiente",
+          "resultado": "Cumple",
+          "valor": "No ejecutivo"
+        },
+        {
+          "criterio": "Comisión de auditoría con mayoría de independientes y presidida por uno",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Ningún consejero «otro externo» con más de 12 años",
+          "resultado": "Cumple",
+          "valor": "Ninguno"
+        },
+        {
+          "criterio": "Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses",
+          "resultado": "Cumple",
+          "valor": "1 cambio"
+        },
+        {
+          "criterio": "Peor voto a favor sobre remuneración (3 juntas) ≥ 80 %",
+          "resultado": "No cumple",
+          "valor": "74,0 % a favor"
+        },
+        {
+          "criterio": "Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Una acción, un voto, sin blindajes ni límites de voto estatutarios",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Sin operaciones vinculadas relevantes",
+          "resultado": "Cumple",
+          "valor": "No hay"
+        },
+        {
+          "criterio": "Auditor con 10 años o menos en el cargo",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Opinión de auditoría sin salvedades",
+          "resultado": "Cumple",
+          "valor": "Favorable (sin salvedades conocidas)"
+        },
+        {
+          "criterio": "Directivos compradores netos en 12 meses (o sin ventas relevantes)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        }
+      ],
+      "puntuacion": "8 de 13 (4 sin dato)",
+      "puntuacion_pct": 62,
+      "compras_insiders": 0,
+      "ventas_insiders": 0
+    },
+    "competidores_margen": [
+      {
+        "nombre": "Straumann",
+        "margen_ebit_pct": 25.2
+      },
+      {
+        "nombre": "Envista (Nobel Biocare, Implant Direct)",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Dentsply Sirona (MIS, Astra Tech)",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Osstem Implant",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Align Technology",
+        "margen_ebit_pct": null
+      }
+    ],
+    "sintesis": {
+      "formato_eje": "#,##0",
+      "rangos": [
+        {
+          "metodo": "Precio objetivo de los analistas",
+          "etiqueta": "Precio objetivo de los analistas (81,11 – 152,83)",
+          "min": 81.11,
+          "central": 114.75,
+          "max": 152.83,
+          "gris": true
+        },
+        {
+          "metodo": "Comparables: PER NTM",
+          "etiqueta": "Comparables: PER NTM (56,74 – 89,59)",
+          "min": 56.74,
+          "central": 80.45,
+          "max": 89.59,
+          "gris": false
+        },
+        {
+          "metodo": "DCF (WACC y g ± 0,5)",
+          "etiqueta": "DCF (WACC y g ± 0,5) (66,40 – 87,05)",
+          "min": 66.4,
+          "central": 75.15,
+          "max": 87.05,
+          "gris": false
+        },
+        {
+          "metodo": "Escenarios (bajista – alcista)",
+          "etiqueta": "Escenarios (bajista – alcista) (53,18 – 88,96)",
+          "min": 53.18,
+          "central": 73.11,
+          "max": 88.96,
+          "gris": false
+        },
+        {
+          "metodo": "DCF con la prima del mercado",
+          "etiqueta": "DCF con la prima implícita del mercado (4,2 %)",
+          "min": 88.13,
+          "central": 97.5,
+          "max": 108.98
+        },
+        {
+          "metodo": "Precio actual",
+          "etiqueta": "Precio actual (92,00)",
+          "min": 91.54,
+          "central": 92,
+          "max": 92.46,
+          "gris": true
+        }
+      ],
+      "tabla": [
+        {
+          "metodo": "DCF",
+          "valor": 75.15,
+          "peso_pct": 50,
+          "potencial_pct": -18.3
+        },
+        {
+          "metodo": "Comparables (mediana EV/EBITDA y PER)",
+          "valor": 80.45,
+          "peso_pct": 25,
+          "potencial_pct": -12.6
+        },
+        {
+          "metodo": "Escenarios ponderados",
+          "valor": 73.11,
+          "peso_pct": 25,
+          "potencial_pct": -20.5
+        }
+      ],
+      "valor_objetivo": 75.97,
+      "potencial_pct": -17.4
+    },
+    "fuentes": {
+      "n_fuentes": 49,
+      "n_primarias": 14,
+      "por_tipo": [
+        {
+          "tipo": "Primaria",
+          "num": 14
+        },
+        {
+          "tipo": "Datos de mercado",
+          "num": 14
+        },
+        {
+          "tipo": "Prensa",
+          "num": 8
+        },
+        {
+          "tipo": "Sectorial",
+          "num": 3
+        },
+        {
+          "tipo": "Analistas",
+          "num": 5
+        },
+        {
+          "tipo": "Foros y redes",
+          "num": 5
+        }
+      ],
+      "n_citadas": 49,
+      "citas_sin_fuente": [],
+      "fuentes_sin_citar": []
+    },
+    "controles": [
+      {
+        "control": "DCF inverso calculable",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Puente de ingresos (volumen + precio + otros) = crecimiento del DCF",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "resultado": "OK",
+        "detalle": "Supuesto 0,0 % frente a 0,0 % real: genera una variación de circulante de 0 M en el primer año. Converge de forma gradual."
+      },
+      {
+        "control": "Peso del valor terminal ≤ 80 % del valor empresa",
+        "resultado": "OK",
+        "detalle": "55 %."
+      },
+      {
+        "control": "Etapa de transición justificada (ROIC ≥ WACC + 5 puntos)",
+        "resultado": "OK",
+        "detalle": "ROIC 25,6 % frente a WACC 7,4 %: "
+      },
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "resultado": "OK",
+        "detalle": "1,00 %."
+      },
+      {
+        "control": "Probabilidades de los escenarios suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 5 comparables",
+        "resultado": "OK",
+        "detalle": "8 comparables."
+      },
+      {
+        "control": "Pesos de la síntesis suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Múltiplos del objetivo a 12 m según la regla común",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Objetivo 12 m frente al consenso",
+        "resultado": "OK",
+        "detalle": "El base se separa un 8,1 % del objetivo medio de los analistas: explícalo en diferencia_consenso (nunca se acerca la cifra)."
+      },
+      {
+        "control": "Precio del cierre de la fecha de corte (o de las dos sesiones anteriores)",
+        "resultado": "Revisar",
+        "detalle": "El precio es del 2026-10-03, 7 sesiones antes del corte (2026-10-14): con un precio viejo no se cierra un Comprar. Último cierre: node herramientas/precios.mjs <ticker>; luego herramientas/apuntar-12m.mjs --precios."
+      },
+      {
+        "control": "Recomendación coherente con la regla de decisión",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "La síntesis explica la convicción",
+        "resultado": "OK",
+        "detalle": "La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría."
+      },
+      {
+        "control": "Al menos 25 fuentes",
+        "resultado": "OK",
+        "detalle": "49 fuentes (14 primarias)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "resultado": "OK",
+        "detalle": "14."
+      },
+      {
+        "control": "Toda cita [n] existe en fuentes",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Fuentes sin citar ≤ 15 %",
+        "resultado": "OK",
+        "detalle": ""
+      }
+    ],
+    "controles_resumen": "17 de 18 controles correctos"
+  }
+}

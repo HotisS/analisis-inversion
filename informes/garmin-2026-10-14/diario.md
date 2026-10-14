@@ -11,3 +11,5 @@
 
 - En empresas de calidad sin deuda y con PER alto, con el bono de EE. UU. al 5,2 % el DCF queda muy por debajo (−47 %) y el filtro «valor intrínseco ≥ precio» fija el precio de compra mucho más abajo que la ponderada a 12 meses: dilo en la síntesis.
 - El motor no hace la prueba de sostenibilidad con reinversión < 15 % del NOPAT (ya en lecciones): ROIC × reinversión + precio frente al crecimiento proyectado, a mano, sirvió.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 20.8x, mínimo 13.8x, media larga 20.6x; antes v2 23.35x/18.3x/23.3x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

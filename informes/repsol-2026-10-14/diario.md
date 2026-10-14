@@ -11,3 +11,5 @@
 
 - Petroleras integradas en el pico del ciclo: el PER histórico con BPA ajustado sale de beneficios de pico y la regla común da objetivos absurdos (base 5,7x); usar EV/EBITDA de mitad de ciclo en los tres casos y explicarlo. (Candidata a `lecciones-casos.md`, «cíclicas de materias primas».)
 - Repsol cambió su modelo de información en 2025: el EBITDA ajustado nuevo (5.312 M en 2025) no es comparable con el CCS anterior (7.678 M en MarketScreener) ni la deuda neta (4.487 frente a 5.877 M). Fijar una base y decirlo.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 6.5x, mínimo 3.5x, media larga 6.5x; antes v2 5.7x/4.3x/5.7x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

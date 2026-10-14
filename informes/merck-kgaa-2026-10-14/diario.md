@@ -23,3 +23,5 @@
 
 ## Lecciones
 - En conglomerados con mucho fondo de comercio (Merck KGaA), la prueba de sostenibilidad con el ROIC contable falla siempre; hazla también con el capital operativo sin intangibles comprados y dilo, y calibra el BPA del objetivo a 12 meses en la base «pre» de la empresa cuadrando el último ejercicio (aquí 8,34 exacto con una amortización propia del 5,5 % de ventas).
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 25.6x, mínimo 22.6x, media larga 25.9x; antes v2 17x/14.7x/17.4x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

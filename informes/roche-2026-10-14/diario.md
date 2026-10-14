@@ -11,3 +11,5 @@
 
 - Suiza: Roche canjeó los Genussscheine (ROG) por Partizipationsscheine (ROP, ISIN CH1499059983) el 17-mar-2026; los proveedores con ROG.SW pueden dar precios congelados (Rankia y Digrin: 322,30).
 - Empresas con filial cotizada consolidada al 100 % y minoritarios grandes (Roche-Chugai): minoritarios del puente a valor de mercado, no en libros (24.000 frente a 4.078 M CHF), o el EV/EBITDA y el DCF salen inflados.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (3 años; mediana 23.7x, mínimo 15.9x, media larga 21.4x; antes v2 13.95x/13.2x/14.5x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

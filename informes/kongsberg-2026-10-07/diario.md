@@ -64,3 +64,5 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 3. Mercado en USD y ventas en NOK: la prueba relativa supone tipo de cambio constante; el motor no tiene dónde decirlo.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 344,69 NOK, rentabilidad +16,0 %, señal Comprar (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +16,0 % → +18,2 %, base +25,5 %, señal Mantener (`revision-12m-2026-10-13.md`).
+
+- 2026-10-14: datos-v3.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 14.3x, mínimo 2.9x, media larga 19x; antes v2 57.6x/44.8x/nullx). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

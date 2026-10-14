@@ -12,3 +12,5 @@
 
 - En la nube, cuando no aparece el cierre de la bolsa principal, el histórico de Stock Analysis de otra plaza europea en la misma divisa (aquí Viena, VIE:MONC) da un cierre fechado reciente.
 - Las notas citan con su propia numeración: si se redactan con citas de letra ([A13]) hay que traducirlas (y copiar la fuente) antes de integrar, o el motor da casi todas las fuentes como no citadas. Ojo: `competencia.foso.fuentes` es una lista de textos, no de fuentes.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 22.8x, mínimo 21.9x, media larga 24x; antes v2 22.9x/21.6x/23x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

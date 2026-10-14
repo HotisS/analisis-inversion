@@ -30,3 +30,5 @@
 - **Los niveles de compra y venta cambian al escribir la recomendación** (274/350 → 310/425 en Medpace): reléelos en `calc.recomendacion.niveles` después del último cálculo.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 627 USD ponderado (612 USD con la media simple), rentabilidad +2,4 % (base +9,7 %), señal Mantener (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +2,4 % → +3,7 %, base +9,8 %, señal Mantener (`revision-12m-2026-10-13.md`).
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 24.3x, mínimo 21.7x, media larga 23.6x; antes v2 34.5x/26.3x/31.6x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

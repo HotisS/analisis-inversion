@@ -117,3 +117,5 @@ Sin investigación nueva. Script: `notas/actualizacion-v4.mjs` (parte de `datos-
 4. `meta.controles_explicados` no existe en esta carpeta y los dos controles en «Revisar» (tipo impositivo de 2025 y regresión con R² 0,24) siguen sin marcarse como explicados, aunque el texto los explica.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 61,23 EUR, rentabilidad +22,0 %, señal Comprar (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +20,1 % → +16,9 %, base +14,6 %, señal Comprar (`revision-12m-2026-10-13.md`).
+
+- 2026-10-14: datos-v5.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 19x, mínimo 15.6x, media larga 18.4x; antes v2 17.7x/15.2x/18.1x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

@@ -19,3 +19,5 @@
 - Emisor chino en ADS con cuentas en RMB: todo por ADS en RMB, `tipo_cambio` = RMB por USD; el PER histórico necesita el cierre de marzo × el tipo de conveniencia de cada comunicado.
 - Alibaba: el BPA publicado no sirve para el PER (revalorizaciones de participadas cada año); el no GAAP de la empresa sí, y la fórmula del BPA propio cuadra sumando los pagos en acciones y ≈15.000-20.000 M de intereses netos y participadas.
 - Con tasa libre china (1,67 %) el terminal queda en ≈1,1 % por la regla de coherencia; el riesgo VIE/geopolítico va en `prima_adicional_pct`.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 22.1x, mínimo 9.7x, media larga 19.8x; antes v2 12.98x/8.4x/12.26x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

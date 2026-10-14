@@ -79,3 +79,5 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 3. La fila de «La decisión» dice «sin inversión neta» aunque la reinversión acumulada es de 610 M (5 % del NOPAT): el umbral del 15 % convierte «poca» en «ninguna». Arreglo: «inversión neta pequeña (5 % del NOPAT)».
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 181,24 USD, rentabilidad 93,6 %, señal Comprar (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +54,5 % → +3,2 %, base +7,4 %, señal Mantener (`revision-12m-2026-10-13.md`).
+
+- 2026-10-14: datos-v3.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 32.7x, mínimo 25.5x, media larga 35.7x; antes v2 39.2x/13.2x/35.3x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

@@ -129,3 +129,5 @@ Sin investigación nueva. Script: `notas/actualizacion-v4.mjs` (parte de `datos-
 4. El recorte del base cambia los escenarios sin tocarlos (son desplazamientos): el bajista pasa a −50 % y mueve la regla absoluta a Vender. El encargo dice «normalmente no tocar los escenarios»; convendría que el motor avise cuando el bajista empeora más de 10 puntos por un cambio del base.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 45,98 EUR, rentabilidad −22,5 %, señal Vender (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada -22,5 % → -19,3 %, base -23,3 %, señal Vender (`revision-12m-2026-10-13.md`).
+
+- 2026-10-14: datos-v5.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 9.3x, mínimo 6.9x, media larga 9x; antes v2 12.6x/10.8x/14.7x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

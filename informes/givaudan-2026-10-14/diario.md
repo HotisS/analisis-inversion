@@ -20,3 +20,5 @@
 
 - Empresas con mucha amortización de intangibles comprados (Givaudan): con circulante y capex razonables la reinversión neta sale negativa y el motor no hace la prueba de sostenibilidad; la prueba útil es el crecimiento en la divisa de las cuentas frente al histórico, porque el plan de la empresa habla en moneda local (en Suiza, el franco resta 1-3 puntos al año).
 - Con el balance a medias (solo deuda neta de un año), el motor calcula el capital invertido sin patrimonio y saca un ROIC disparatado: mejor no meter esa fila.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 32x, mínimo 29.3x, media larga 36.3x; antes v2 32.2x/27.1x/31.9x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

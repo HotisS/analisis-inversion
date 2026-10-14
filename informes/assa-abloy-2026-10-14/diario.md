@@ -18,3 +18,5 @@
 
 - Comprador en serie con ROIC bajo por fondo de comercio (ASSA ABLOY, 10,5 %): la prueba de sostenibilidad solo pasa con el coste real de las compras (≈2,5 veces las ventas, no 1,3) y eso hunde el DCF frente al precio; el valor intrínseco queda por debajo del objetivo a 12 meses y la convicción baja por la tasa. Dilo en la síntesis.
 - Sin `bolsa.mjs`, los precios de cierre anuales salen bien de multiplicar el PER de cierre de MarketScreener por el BPA del año (comprobable con el BPA × acciones = beneficio).
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 21.9x, mínimo 18.2x, media larga 21.7x; antes v2 23.45x/18.7x/22.65x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

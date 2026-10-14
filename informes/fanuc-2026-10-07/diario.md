@@ -112,3 +112,5 @@ Sin investigación nueva. Script: `notas/actualizacion-v3.mjs` (parte de `datos-
 3. El capex del 9 % se aplica también al año terminal (crecimiento del 2 %), lo que sobreinvierte en la perpetuidad; bajar el capex al final hace fallar la prueba porque el motor mide el rendimiento del capital nuevo sobre los diez años. Arreglo: que el terminal normalice la inversión neta a g / ROIC, como hace la etapa de transición.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 6.043 JPY (ponderado; base 6.221), rentabilidad −1,1 %, señal Mantener (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada -1,1 % → -1,1 %, base +1,7 %, señal Mantener (`revision-12m-2026-10-13.md`).
+
+- 2026-10-14: datos-v4.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 26.6x, mínimo 22.7x, media larga 31.6x; antes v2 26.7x/25.8x/27.1x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

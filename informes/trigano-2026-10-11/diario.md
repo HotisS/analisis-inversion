@@ -7,3 +7,5 @@
 - Resultado: Comprar, convicción Media (la sugerida es Alta; se baja por riesgo de calendario del ciclo). Valor objetivo 193,43 EUR (+54,4 %), rentabilidad total 57,2 %, asimetría 8,37x; DCF 197,79; DCF inverso: margen EBITDA implícito del 8,0 % o ventas −15,5 % anual. Controles: 17 de 18 y 1 explicado (regresión). Word y PDF generados (60 páginas).
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 122,9 EUR, rentabilidad +1,0 %, señal Mantener (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada -4,4 % → -8,1 %, base +8,1 %, señal Mantener (`revision-12m-2026-10-13.md`).
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 8.6x, mínimo 5.4x, media larga 10x; antes v2 13x/10x/12.5x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

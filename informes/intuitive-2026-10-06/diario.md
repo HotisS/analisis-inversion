@@ -91,3 +91,5 @@ Sin investigación nueva. Script: `notas/actualizacion-v3.mjs` (parte de `datos-
 4. La prima implícita del mercado (4,20 %) es la misma que la de nuestro WACC: la fila «con la prima del mercado» repite el objetivo propio y ocupa sitio.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 469,30 USD, rentabilidad +15,9 % (base +12,6 %), señal Comprar (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +15,9 % → +17,2 %, base +12,6 %, señal Mantener (`revision-12m-2026-10-13.md`).
+
+- 2026-10-14: datos-v4.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 58.5x, mínimo 52.5x, media larga 59.4x; antes v2 72.7x/67.1x/65.5x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

@@ -110,3 +110,5 @@ Sin investigación nueva. Script: `notas/actualizacion-v3.mjs` (parte de `datos-
 3. Ya conocido: recalcular con el motor actual mueve el nivel de compra sin cambiar datos.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 88.110,83 JPY (media ponderada; base 87.637,55), rentabilidad +8,8 %, señal Mantener (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +8,8 % → +8,8 %, base +8,2 %, señal Mantener (`revision-12m-2026-10-13.md`).
+
+- 2026-10-14: datos-v4.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 40.2x, mínimo 31.9x, media larga 39.4x; antes v2 43.1x/29.9x/40x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

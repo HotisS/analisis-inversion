@@ -16,3 +16,5 @@
 ## Lecciones
 
 - En las notas A-E, las citas a fuentes de **otra** nota (`[A1]` dentro de B.json) no las traduce `integrar.mjs`: se quedan literales y la fuente queda sin citar. En las notas, cita solo la lista propia (copia la fuente si hace falta); las letras, solo en `propio`.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 24.3x, mínimo 21.3x, media larga 26.8x; antes v2 19.1x/15.7x/19.1x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

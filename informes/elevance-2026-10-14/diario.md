@@ -18,3 +18,5 @@
 
 - Aseguradoras de salud: además de dejar fuera la caja regulada del puente, el capital estatutario que exige el crecimiento de las primas no llega al accionista; sumarlo al capex del DCF (≈ 10-12 % del aumento de ventas) evita que la proyección parezca de «activos ligeros» con FCF íntegramente distribuible.
 - Con el BPA ajustado de las aseguradoras (sin amortización de intangibles), la fórmula del BPA de los escenarios debe sumar esa amortización al EBIT para quedar en la misma base que el PER histórico.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 18.5x, mínimo 14.6x, media larga 18x; antes v2 14.2x/11.2x/14.8x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

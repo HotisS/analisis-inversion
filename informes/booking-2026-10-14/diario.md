@@ -27,3 +27,5 @@
 ## Lecciones
 - Con el PER base igual al PER actual, la rentabilidad del base es casi el crecimiento del BPA del año objetivo más el dividendo, y no mejora si el precio baja: el «comprar por debajo de X» del motor supone el PER actual fijo. En empresas que recompran mucho (Booking, ≈6 % de acciones al año) el método sin recompras deja el base siempre por debajo del 12 % si el BPA crece menos del 11 %. Convendría decidir si una autorización de recompra vigente cuenta como «anunciada».
 - Tras un desdoblamiento, los agregadores mezclan precios sin ajustar (Yahoo antiguo con rango de 52 semanas de 3.765-5.839) y ajustados: dividir entre el factor y comprobar con la capitalización.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 25.3x, mínimo 17.2x, media larga 24.8x; antes v2 23.4x/20.1x/21.9x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

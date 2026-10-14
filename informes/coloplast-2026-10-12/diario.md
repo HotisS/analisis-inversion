@@ -32,3 +32,5 @@
 - Damodaran `betaEurope.xls` es BIFF binario y `descargar.mjs` lo guarda como .xlsx: no hay lector. `prompt-de.mjs` imprime también las lecciones (57 KB) y obliga a leer a trozos.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 503 DKK, rentabilidad +18,0 %, señal Comprar (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +14,8 % → +14,8 %, base +14,6 %, señal Mantener (`revision-12m-2026-10-13.md`).
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 44.3x, mínimo 33.3x, media larga 39.8x; antes v2 35.1x/23.8x/33.6x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

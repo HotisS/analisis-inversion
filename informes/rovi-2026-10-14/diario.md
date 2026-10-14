@@ -13,3 +13,5 @@
 
 - Con un ROIC incremental histórico negativo por un contrato extraordinario que se acaba (vacuna de Moderna), la prueba de capital nuevo compara contra el ROIC del último año; explicarlo en `controles_explicados`.
 - Un badwill dentro del EBITDA se pone en `ltm.no_recurrentes_en_ebitda` con signo negativo; el PER LTM del motor sigue incluyéndolo en el beneficio neto, así que hay que decirlo en `multiplos_historicos.comentario`.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 21.2x, mínimo 11x, media larga 19.1x; antes v2 23.2x/18.3x/21.7x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.

@@ -12,3 +12,5 @@
 
 - Francia: los avisos mensuales de derechos de voto de Sanofi (repetidos en Santelog, BiopharmaWatch, MFN) dan acciones emitidas y, por diferencia entre derechos teóricos y reales, la autocartera; ojo, los derechos teóricos incluyen el doble voto.
 - Farmacéuticas con un producto que vence a 4-6 años (Sanofi-Dupixent 2031): la regla a 12 meses puede dar Comprar con un PER actual hundido (base = PER actual) mientras el valor intrínseco depende del tamaño de la caída post-patente; modelar la caída año a año en el DCF y pesar poco los comparables a 12 meses.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (3 años; mediana 12.4x, mínimo 11.7x, media larga 12.2x; antes v2 11.1x/10.6x/11.5x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
