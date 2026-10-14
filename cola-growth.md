@@ -6,13 +6,13 @@ Solo growth (la value es `cola.md`). Método vigente **v11** (`verticales/growth
 
 | Qué | Estado |
 |---|---|
-| Tanda 10: MercadoLibre (MELI), Rolls-Royce (RR.L), Howmet Aerospace (HWM), Quanta Services (PWR) | Propuesta el 14-oct tras la tanda 9 |
+| Tanda 10: Insmed (INSM), Rolls-Royce (RR.L), Howmet Aerospace (HWM), Quanta Services (PWR) | En marcha desde el 14-oct 17:40 |
 | Revisar Wise con su actualización del 2T | 15-oct; si sube a convicción media, se propone como sustituta |
 | Revisar argenx con sus resultados del 3T | 22-oct; suplente desde el 14-oct |
 
 Hecho el 14-oct: tandas 1 a 9 (36 empresas growth; la 9: Saab Comprar baja, 8.ª suplente; Vertex, Kinsale y TransMedics Mantener); v9 (guía) y v11 (ventas del analista como tope, «compra hasta» con el bajista y alertas de robustez) adoptadas; v10 (margen EBITDA objetivo) probada, queda de contraste; revisión de precio con el objetivo fijo. El detalle está en git y en `verticales/growth/metodo.md` §7.
 
-Por qué la tanda 10: negocios que la IA no puede sustituir y fuera de lo que ya hay (ninguna con informe value ni growth). MercadoLibre (comercio y banca digital en Latinoamérica, crece > 30 %; plataforma, no minorista propio); Rolls-Royce (motores de avión con ingresos por hora de vuelo, giro de márgenes; cotiza en peniques); Howmet (piezas de motor de avión, márgenes al alza, pocos competidores); Quanta Services (construye redes eléctricas, demanda de centros de datos; ojo a la euforia).
+Por qué la tanda 10: negocios que la IA no puede sustituir y fuera de lo que ya hay (ninguna con informe value ni growth). Insmed (fármaco nuevo para bronquiectasias, Brinsupri, en pleno lanzamiento; sustituye a MercadoLibre, fuera por ser sobre todo comercio electrónico); Rolls-Royce (motores de avión con ingresos por hora de vuelo, giro de márgenes; cotiza en peniques); Howmet (piezas de motor de avión, márgenes al alza, pocos competidores); Quanta Services (construye redes eléctricas, demanda de centros de datos; ojo a la euforia).
 
 ## Cómo se hace una tanda
 
