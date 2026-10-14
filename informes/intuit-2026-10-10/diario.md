@@ -9,3 +9,4 @@
 - 14:46 Parado a petición del usuario: notas A-D y sentimiento hechos; faltan valoración, textos, Word y PDF.
 - 01:22 (11-oct) Reanudado a petición del usuario: supuestos (guía FY2027 +9-10 %, margen EBITDA GAAP 35,5 % a 38,5 %), bajista endurecido (ingresos planos, como Chegg), textos y síntesis. DCF 440,34 USD (+45,4 %), valor objetivo 430,22 (+42,1 %), rentabilidad total 43,7 %; Comprar, convicción Media (la sugerida). Sostenibilidad «En parte». Word y PDF (57 páginas), portada y síntesis revisadas.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 358 USD, rentabilidad 20,0 %, señal Comprar (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +17,1 % → +14,6 %, base +16,8 %, señal Mantener (`revision-12m-2026-10-13.md`).

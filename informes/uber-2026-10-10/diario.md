@@ -5,3 +5,4 @@
 - 14:36 Capas nuevas: sentimiento (nota F: 13 opiniones de gestores en Stockchase, divididas) y sostenibilidad del crecimiento (puente de ingresos y veredicto «Sí»). El motor trata ahora como de activos ligeros las proyecciones que reinvierten menos del 15 % del NOPAT (con Uber daba un rendimiento del capital nuevo del 207 %).
 - 14:36 Resultado: Mantener, convicción Media (la sugerida), igual que en la iteración 1. Valor objetivo 73,59 USD (+2,9 %); con la prima del mercado 80,42 (+12,5 %). Word y PDF (63 páginas), síntesis revisada como imagen.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 84,46 USD (ponderado; base 85,14), rentabilidad +18,1 %, señal Comprar, convicción baja (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +18,1 % → +11,2 %, base +19,1 %, señal Mantener (`revision-12m-2026-10-13.md`).

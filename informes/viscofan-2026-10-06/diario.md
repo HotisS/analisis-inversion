@@ -116,3 +116,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v4.mjs` (parte de `datos-
 3. El puente volumen/precio no tiene fuente primaria en empresas que solo publican el crecimiento «comparable» (volumen + precio sin divisa): el reparto es estimación propia y el control solo comprueba la suma.
 4. `meta.controles_explicados` no existe en esta carpeta y los dos controles en «Revisar» (tipo impositivo de 2025 y regresión con R² 0,24) siguen sin marcarse como explicados, aunque el texto los explica.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 61,23 EUR, rentabilidad +22,0 %, señal Comprar (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +20,1 % → +16,9 %, base +14,6 %, señal Comprar (`revision-12m-2026-10-13.md`).
