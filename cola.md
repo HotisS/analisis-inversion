@@ -6,6 +6,8 @@ Solo lo pendiente. Lo cerrado está en `archivo/` (índice en `archivo/HISTORICO
 
 ## Pendiente
 
+- **UnitedHealth** (`informes/unitedhealth-2026-10-12/`): ha publicado resultados después de la fecha del informe. Revisarlos (regla E1 de robustez) y actualizar el objetivo a 12 meses como LVMH (`informes/lvmh-2026-10-08/notas/actualizacion-v4.mjs`).
+
 **Sexta hora: EN MARCHA desde el 14-oct 16:50 UTC (sesión del hilo «sexta hora», tanda 1 en curso).** La quinta hora se cerró el 14-oct (resumen en `archivo/HISTORICO.md`). La sexta la hace **una sesión nueva** (con red abierta), de 4 en 4. El usuario quiere ver la lista antes de cada hora: se le enseña y se arranca la tanda 1 mientras tanto (MEMORIA).
 
 Cómo seguir (sesión nueva):
