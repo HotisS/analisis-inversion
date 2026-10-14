@@ -2,11 +2,21 @@
 
 Este repo produce informes Word de análisis de inversión en tres verticales: empresa cotizada, ETF e industria/sector. El README explica la arquitectura.
 
-**Antes de nada: `git pull`, y lee `MEMORIA.md` (reglas del usuario) y `cola.md` (qué empresas tocan, de dos en dos).** El repo de GitHub es la única fuente: cada cambio, commit y push.
+**Antes de nada: `git pull`, y lee `MEMORIA.md` (reglas del usuario) y `cola.md` (qué queda pendiente).** El repo de GitHub es la única fuente: cada cambio, commit y push.
 
 ## Empresa cotizada: usa `/analiza-empresa`
 
 Para empresas, el procedimiento está en `.claude/commands/analiza-empresa.md` (con `verticales/empresa/lecciones.md` y las herramientas de `herramientas/`: descargas, datos de bolsa, extracto del prompt por subagente; y `motor/integrar.mjs` para juntar las notas) (también si el usuario lo pide con otras palabras: «analiza Viscofan»). Es un análisis largo, de 30-60 minutos, en dos pasos de código: `motor/calcular-empresa.mjs` hace todas las cuentas (DCF, comparables, indicadores, controles) y `motor/rellenar.mjs` genera el Word. Las secciones sin información tras tres búsquedas no se imprimen y se avisan (protocolo de huecos del prompt).
+
+## Mantener el repo ligero (14-oct-2026: cada sesión gastaba demasiados tokens)
+
+Lo que se lee al empezar (`CLAUDE.md`, `MEMORIA.md`, `cola.md`) y en cada análisis (`verticales/empresa/lecciones.md`, que leen también los cinco subagentes) tiene que ser corto y estar al día. **Al cerrar una tarea, antes del último commit:**
+- `cola.md`: quita lo terminado (el histórico va a `archivo/`, si merece guardarse; si no, ya está en git).
+- `MEMORIA.md`: solo reglas y decisiones vigentes; si una decisión nueva sustituye a otra, **reemplázala** en vez de añadir debajo (una cartera nueva sustituye a la anterior). El registro antiguo, en `archivo/`.
+- `lecciones.md`: una lección nueva solo si es general y no está ya; las de un país van a `lecciones-paises.md` y las de un sector o caso contable a `lecciones-casos.md`. Si una herramienta se arregla, borra la lección que avisaba del fallo.
+- No leas `archivo/`, los `diario.md` de otros informes ni el código de `motor/` salvo que haga falta para la tarea.
+
+Si el usuario pide «limpieza», repasa estos archivos con ese criterio.
 
 ## Dos conceptos que no hay que confundir (13-oct-2026)
 

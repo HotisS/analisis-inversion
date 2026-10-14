@@ -10,13 +10,13 @@ El repo vive dentro del OneDrive corporativo del usuario. Trabaja **solo** dentr
 
 ## Antes de empezar
 1. Lee **entero** `verticales/empresa/prompt.md`. Es tu especificación: papel, protocolo por fases, protocolo de huecos, reglas de datos, los 28 campos con su formato JSON, la revisión de comité y las comprobaciones finales. Síguelo al pie de la letra.
-2. Lee `verticales/empresa/lecciones.md` (corto): herramientas del repo, fuentes que funcionan y trampas ya conocidas. No hace falta leer los diarios de análisis anteriores ni el código de `motor/`.
+2. Lee `verticales/empresa/lecciones.md` (el núcleo: herramientas, fuentes y trampas comunes), la sección del país de la empresa en `lecciones-paises.md` y, con `grep`, lo que toque de su sector en `lecciones-casos.md`. No hace falta leer los diarios de análisis anteriores ni el código de `motor/`.
 3. Anota en el diario el commit con el que empiezas (`git log -1 --oneline`) y no cambies de versión del prompt a mitad del análisis.
 4. Crea la carpeta de trabajo `informes/<nombre-corto>-<AAAA-MM-DD>/` y dentro `notas/` y `notas/docs/`. Ahí vivirán `datos.json`, las notas de investigación, los documentos descargados y el informe. **Si la empresa ya tiene análisis anteriores en `informes/`, este es una iteración nueva: carpeta nueva con la fecha de hoy, sin tocar, mover ni pisar las anteriores** (el Excel de seguimiento las numera 1, 2, 3… para ver cómo evoluciona la valoración). Puedes leer la última como punto de partida, pero vuelve a comprobar cada dato a la nueva fecha de corte y di en la síntesis qué ha cambiado desde la anterior. Usa el mismo ticker que en ella. Las versiones v2, v3… dentro de una misma carpeta son correcciones del mismo análisis, no iteraciones.
 5. Fija la fecha de corte (hoy salvo que el usuario diga otra) y dedica entre 30 y 60 minutos al análisis. Prima la profundidad: leer los documentos que importan, no hojearlos ni leerlos enteros cuando basta con una nota.
 
 ## Fases 2-4 en paralelo (si puedes lanzar subagentes)
-Tras la fase 1 (identificación, que incluye leer el calendario financiero de la última presentación para fijar la fecha de los próximos resultados), lanza **cinco subagentes a la vez**. A cada uno pásale este encargo, la identificación exacta de la empresa (nombre, ticker, ISIN, divisa, cierre del ejercicio, carpeta de trabajo) y estas instrucciones: ejecutar `node herramientas/prompt-de.mjs <letra>` y leer su salida (es su parte del prompt; **no** el prompt entero), leer `verticales/empresa/lecciones.md` y descargar con `herramientas/descargar.mjs` en `notas/docs/`.
+Tras la fase 1 (identificación, que incluye leer el calendario financiero de la última presentación para fijar la fecha de los próximos resultados), lanza **cinco subagentes a la vez**. A cada uno pásale este encargo, la identificación exacta de la empresa (nombre, ticker, ISIN, divisa, cierre del ejercicio, carpeta de trabajo) y estas instrucciones: ejecutar `node herramientas/prompt-de.mjs <letra>` y leer su salida (es su parte del prompt; **no** el prompt entero), leer `verticales/empresa/lecciones.md` y la sección del país de la empresa en `verticales/empresa/lecciones-paises.md` (no el resto), y descargar con `herramientas/descargar.mjs` en `notas/docs/`.
 
 - **A. Cuentas**: `financieros`, `trimestres`, `balance`, `flujos`, `calidad`, `capital` y la parte de datos de `negocio` (segmentos, geografías, KPI). Informes anuales con notas (5-10 ejercicios), informes trimestrales y transcripciones de las dos últimas conferencias.
 - **B. Sector y competencia**: `sector`, `competencia`, `historia`, `esg`, y la parte descriptiva de `negocio`. Al menos dos fuentes de tamaño de mercado e informes anuales de 3-5 competidores.
@@ -61,7 +61,7 @@ En `informes/<carpeta>/`:
 Fuera de la carpeta:
 - la revisión apuntada con `node herramientas/apuntar-12m.mjs <carpeta>` (lee `valoracion.objetivo_12m` y calcula la regla, la ponderada, el base y la señal);
 - `node herramientas/seguimiento.mjs` (columnas «Metodología» = Nueva y «… 12 m» llenas);
-- `cola.md` marcada, las lecciones nuevas en `verticales/empresa/lecciones.md`, y commit y push.
+- `cola.md` marcada, las lecciones nuevas en `verticales/empresa/lecciones.md` o en su anexo (país o caso; una o dos líneas, solo si no están ya), y commit y push.
 
 Encargos de subagentes para trabajos repetidos sobre informes ya hechos, en `verticales/empresa/encargos/`: `actualizacion-sostenibilidad.md` (pasar un informe viejo a la metodología nueva), `recorte-caso-base.md` (cuando falla la prueba), `revision-12m.md` (rentabilidad a 12 meses) y `actualizacion-completa.md` (las dos cosas seguidas).
 
