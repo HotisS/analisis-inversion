@@ -9,3 +9,4 @@
 
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 2.766 USD, rentabilidad +31,6 %, señal Comprar (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +22,4 % → +15,1 %, base +17,0 %, señal Comprar (`revision-12m-2026-10-13.md`).
+- 2026-10-14: datos-v2.json y «Constellation Software - 2026-10-10 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v2 Comprar 15,1 %.

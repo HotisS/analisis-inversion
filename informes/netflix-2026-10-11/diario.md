@@ -11,3 +11,4 @@
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +31,8 % → +18,5 %, base +16,0 %, señal Mantener (`revision-12m-2026-10-13.md`).
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 35.2x, mínimo 24.6x, media larga 47.8x; antes v2 40.6x/29.6x/38.1x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Netflix - 2026-10-11 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 30,6 % (antes v3 Mantener 54,3 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 16,2x / 19,1x / 24,8x, 18,5 % Mantener; con el tope anterior del base (×1,3, 14-oct mediodía): 54,3 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

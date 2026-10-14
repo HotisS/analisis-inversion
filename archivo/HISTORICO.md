@@ -11,6 +11,8 @@
 
 ## Cambios
 
+- **14-oct-2026 (tarde, 3).** `METODO-VIGENTE.md` en la raíz: documento vivo con las versiones en vigor (value v3 tope ×1,1, growth v9), las reglas exactas, los filtros y el registro fechado de descubrimientos (pedido del usuario). `apuntar-12m.mjs` deja el objetivo fijo con precio nuevo (antes escalaba el PER actual y el objetivo subía con la cotización; fallo visto en Nu). `herramientas/regenerar.mjs` rehace Word y PDF de los informes con el motor vigente; los 147 informes value regenerados con la cifra v2 y la del tope ×1,3 al lado (`comparacion_txt`). En `MEMORIA.md`, «v3 solo ordena» (16:45) queda sustituido por «decide v3 con tope ×1,1».
+
 - **14-oct-2026, 17:10: limpieza de MEMORIA y cola** (pedido del usuario). Se retiran de MEMORIA:
   - la regla de múltiplos v2 (base = menor entre el PER actual y la mediana; techo ×1,30), sustituida por v3 ×1,1;
   - las órdenes del 13-oct (`informes/cartera-concentrada-2026-10-13.md`: Nemetschek ≤ 68, Intuit ≤ 300, Auto Trader ≤ 4,95, Wolters Kluwer ≤ 72, ventas con stop) y la «versión 9» de la cartera;

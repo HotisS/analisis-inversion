@@ -10,3 +10,4 @@
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (3 años; mediana 13.5x, mínimo 12.8x, media larga 18.2x; antes v2 nullx/nullx/nullx). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
 
 - 14-oct-2026: datos-v3.json vuelve a la regla v2 (historia del PER adelantado descartada a mano: BPA publicado 2024-2025 inflado por liberaciones fiscales).
+- 2026-10-14: datos-v3.json y «Uber Technologies - 2026-10-10 v3.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v2 Mantener 11,2 % (antes v2 Mantener 11,2 %).

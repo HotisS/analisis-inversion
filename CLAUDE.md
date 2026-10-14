@@ -7,7 +7,7 @@ Este repo produce informes Word de análisis de inversión en tres verticales: e
 - **Análisis value** (el de siempre): informe Word de 28 secciones con DCF, calidad (ROIC − WACC) y objetivo a 12 meses por PER. Vive en `verticales/empresa/`, `informes/`, `cola.md` y `/analiza-empresa`. Todo lo que este archivo dice de «empresa», «informe», «cola» o «cartera» sin más se refiere a value.
 - **Análisis growth**: crecimiento muy alto, tecnología nueva y cambio de tendencia en la percepción, aunque la empresa aún no gane dinero. Método y plantilla en `verticales/growth/`, cálculo en `motor/growth.mjs`, informes en `informes-growth/` (resumen en `informes-growth/resumen.md`), cola en `cola-growth.md` y procedimiento en `/analiza-growth`. No usa los requisitos value (ROIC − WACC, PER): tiene su puntuación, sus señales y su regla de compra.
 
-**Antes de nada: `git pull`, y lee `MEMORIA.md` (reglas del usuario) y `cola.md` (qué queda pendiente).** El repo de GitHub es la única fuente: cada cambio, commit y push. En la nube de Claude, las herramientas de Node que salen a internet van con `NODE_USE_ENV_PROXY=1 node …`.
+**Antes de nada: `git pull`, y lee `METODO-VIGENTE.md` (qué versión del método decide hoy, las reglas exactas, los filtros y el registro de descubrimientos; se actualiza con cada cambio), `MEMORIA.md` (reglas del usuario) y `cola.md` (qué queda pendiente).** El repo de GitHub es la única fuente: cada cambio, commit y push. En la nube de Claude, las herramientas de Node que salen a internet van con `NODE_USE_ENV_PROXY=1 node …`.
 
 ## Empresa cotizada (análisis value): usa `/analiza-empresa`
 
@@ -27,9 +27,9 @@ Si el usuario pide «limpieza», repasa estos archivos con ese criterio.
 ## Dos conceptos que no hay que confundir (13-oct-2026)
 
 1. **Metodología del informe**: la del DCF. La «nueva», desde el 10-oct, lleva la prueba de **sostenibilidad del crecimiento** (`dcf.sostenibilidad`). Si la prueba falla, se rebaja el caso base. La columna «Metodología» de `seguimiento.xlsx` dice qué informes la tienen. Para pasar uno viejo: actualización rápida con `notas/actualizacion-vN.mjs` (sin investigación nueva).
-2. **Rentabilidad a 12 meses (v2)**: BPA propio × PER propio con una **regla de múltiplos común** que aplica el código (`verticales/empresa/objetivo-12m.md`, `motor/objetivo12m.mjs`); vive en `valoracion.objetivo_12m` de cada informe, **manda en la recomendación** y el resultado va a `verticales/empresa/objetivo12m-revisados.json` y a las columnas «… 12 m» del Excel. Ordena compras y cartera; el valor intrínseco del informe es el «valor real».
+2. **Rentabilidad a 12 meses (regla v3 con tope ×1,1 desde el 14-oct por la tarde; v2 solo en 11 informes sin historia útil)**: BPA propio × PER propio con una **regla de múltiplos común** que aplica el código (`verticales/empresa/objetivo-12m.md`, `motor/objetivo12m.mjs`); vive en `valoracion.objetivo_12m` de cada informe, **manda en la recomendación** y el resultado va a `verticales/empresa/objetivo12m-revisados.json` y a las columnas «… 12 m» del Excel. Ordena compras y cartera; el valor intrínseco del informe es el «valor real».
 
-Todo análisis nuevo cumple la lista «Análisis terminado» de `.claude/commands/analiza-empresa.md`; los encargos de subagentes para actualizar informes ya hechos están en `verticales/empresa/encargos/`, y la revisión a 12 meses se apunta con `herramientas/apuntar-12m.mjs`.
+Para rehacer el Word de informes hechos con el motor vigente (sin investigar de nuevo): `node herramientas/regenerar.mjs <carpeta…>`. Todo análisis nuevo cumple la lista «Análisis terminado» de `.claude/commands/analiza-empresa.md`; los encargos de subagentes para actualizar informes ya hechos están en `verticales/empresa/encargos/`, y la revisión a 12 meses se apunta con `herramientas/apuntar-12m.mjs`.
 
 **Si pide la cartera**, aplica las «Preferencias de cartera» de `MEMORIA.md` (concentración, mínimo del 5 %, rentabilidad + valor real + calidad, motivo de negocio de cada operación).
 

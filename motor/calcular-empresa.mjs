@@ -752,6 +752,20 @@ export function calcularEmpresa(datos) {
   const prob12 = ['bajista', 'base', 'alcista'].map((k) => n(lista(d.escenarios?.casos).find((e) => new RegExp(k, 'i').test(e.escenario || ''))?.probabilidad_pct));
   const o12 = calcularObjetivo12m(d.valoracion?.objetivo_12m, { precio, dpa: dpaOrdinario, prob: prob12.every((x) => x !== null) ? prob12 : null, valorIntrinseco: valorObjetivo, confianza: res.confianza });
   const con12 = !!o12?.completo;
+  // Al lado, para comparar (14-oct-2026): la cifra con la regla v2 (historia al cierre, guardada en per_historico.v2 por la
+  // migración) y con el tope anterior del base (×1,3). Decide siempre la regla vigente.
+  if (con12 && o12.version === 'v3') {
+    const oh = d.valoracion.objetivo_12m, opc = { precio, dpa: dpaOrdinario, prob: prob12.every((x) => x !== null) ? prob12 : null, valorIntrinseco: valorObjetivo, confianza: res.confianza }, partes = [];
+    if (oh.per_historico?.v2) {
+      const c2 = calcularObjetivo12m({ ...oh, per_historico: { ...oh.per_historico.v2, actual: oh.per_historico.actual, base: 'cierre' } }, opc);
+      if (c2?.completo) { o12.v2 = { rentabilidad_ponderada_pct: c2.rentabilidad_ponderada_pct, rentabilidad_base_pct: c2.rentabilidad_base_pct, senal: c2.senal, multiplos: c2.filas.map((f) => f.multiplo) }; partes.push(`con la regla v2 (historia al cierre, mismo precio): ${c2.filas.map((f) => `${fmt(f.multiplo, 1)}x`).join(' / ')}, ${fmt(c2.rentabilidad_ponderada_pct, 1)} % ${c2.senal}`); }
+    }
+    if (REGLA_12M.v3.topeBaseAnterior) {
+      const c3 = calcularObjetivo12m(oh, { ...opc, topeBase: REGLA_12M.v3.topeBaseAnterior });
+      if (c3?.completo && Math.abs(c3.rentabilidad_ponderada_pct - o12.rentabilidad_ponderada_pct) > 0.05) { o12.v3_tope_anterior = { tope: REGLA_12M.v3.topeBaseAnterior, rentabilidad_ponderada_pct: c3.rentabilidad_ponderada_pct, senal: c3.senal }; partes.push(`con el tope anterior del base (×${String(REGLA_12M.v3.topeBaseAnterior).replace('.', ',')}, 14-oct mediodía): ${fmt(c3.rentabilidad_ponderada_pct, 1)} % ${c3.senal}`); }
+    }
+    if (partes.length) o12.comparacion_txt = `Para comparar, ${partes.join('; ')}. Decide la regla vigente (v3 con tope ×${String(REGLA_12M.v3.topeBase).replace('.', ',')}; METODO-VIGENTE.md).`;
+  }
   if (!con12) control('Objetivo a 12 meses (PER propio × BPA propio)', false, 'Falta valoracion.objetivo_12m: la rentabilidad a 12 meses sale del valor intrínseco.');
   else {
     const fuera = o12.filas.filter((f) => f.multiplo_informe !== null && f.multiplo !== null && Math.abs(f.multiplo_informe / f.multiplo - 1) > 0.02);
@@ -827,7 +841,7 @@ export function calcularEmpresa(datos) {
         { concepto: `Objetivo a 12 meses (nuestro PER × nuestro BPA ${d.valoracion.objetivo_12m.ejercicio || ''}, ponderado ${o12.probabilidades.join('/')})`, valor: `${fmt(o12.objetivo_ponderado, 2)} ${meta.divisa || ''}${enCot(o12.objetivo_ponderado)}` },
         { concepto: 'Bajista / base / alcista a 12 meses', valor: o12.filas.map((f) => `${fmt(f.multiplo, 1)}x × ${fmt(f.beneficio_por_accion, 2)} = ${fmt(f.precio, 2)}`).join(' · ') },
         { concepto: 'Rentabilidad a 12 meses: ponderada / del base (con dividendo)', valor: `${fmt(o12.rentabilidad_ponderada_pct, 1)} % / ${fmt(o12.rentabilidad_base_pct, 1)} %` },
-        { concepto: 'Regla de múltiplos aplicada', valor: o12.version === 'v3' ? 'v3: base a mitad de camino hacia la mediana (historia adelantada); bajista mín. 5 a o base × 0,80; alcista techo base × 1,35' : 'v2: base = mín(actual, mediana 5 a) con la historia al cierre; bajista mín. 5 a o base × 0,85; alcista techo base × 1,30' },
+        { concepto: 'Regla de múltiplos aplicada', valor: o12.version === 'v3' ? `v3: base a mitad de camino hacia la mediana adelantada, sin alejarse del actual más de ×${String(REGLA_12M.v3.topeBase).replace('.', ',')}; bajista mín. 5 a (adelantado) o base × 0,80; alcista techo base × 1,35` : 'v2: base = mín(actual, mediana 5 a) con la historia al cierre; bajista mín. 5 a o base × 0,85; alcista techo base × 1,30' },
         ...(o12.senal_sin_confirmar ? [{ concepto: 'Señal pendiente de confirmar (confianza de datos baja)', valor: `La regla da ${o12.senal_sin_confirmar}; se queda en Mantener hasta confirmar las cifras con fuente primaria` }] : []),
         ...(o12.consenso_objetivo ? [{ concepto: 'Objetivo medio de los analistas (solo contraste)', valor: `${fmt(o12.consenso_objetivo, 2)} (nuestro base ${o12.diferencia_consenso_pct >= 0 ? '+' : ''}${fmt(o12.diferencia_consenso_pct, 1)} %)` }] : []),
       ] : []),

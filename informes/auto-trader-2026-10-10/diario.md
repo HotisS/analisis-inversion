@@ -10,3 +10,4 @@
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +27,1 % → +8,7 %, base +9,2 %, señal Mantener (`revision-12m-2026-10-13.md`).
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 22x, mínimo 21.7x, media larga 23.4x; antes v2 24.8x/13.8x/22.1x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Auto Trader - 2026-10-10 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Comprar 19,3 % (antes v3 Comprar 40,8 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 9,5x / 11,2x / 14,6x, 8,7 % Mantener; con el tope anterior del base (×1,3, 14-oct mediodía): 40,8 % Comprar. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

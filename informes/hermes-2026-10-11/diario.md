@@ -10,3 +10,4 @@
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +30,0 % → +13,1 %, base +9,3 %, señal Mantener (`revision-12m-2026-10-13.md`).
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 43.7x, mínimo 35.1x, media larga 43.7x; antes v2 46.7x/45x/47.6x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Hermès - 2026-10-11 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 24,6 % (antes v3 Mantener 45,6 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 21,8x / 25,6x / 33,3x, 13,1 % Mantener; con el tope anterior del base (×1,3, 14-oct mediodía): 45,6 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

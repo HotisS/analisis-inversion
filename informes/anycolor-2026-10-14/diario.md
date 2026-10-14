@@ -16,3 +16,4 @@
 - Empresas con caja grande y sin deuda cuyo patrimonio de años anteriores no se encuentra: el motor calcula el capital invertido como −caja y el ROIC sale negativo. Dar el ROIC del último año a mano y explicarlo en `controles_explicados`.
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (3 años; mediana 16x, mínimo 11.8x, media larga 15.4x; antes v2 15x/12x/14.6x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «ANYCOLOR - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Comprar 24,4 % (antes v3 Comprar 24,4 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 12,0x / 13,7x / 17,8x, 16,1 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

@@ -14,3 +14,4 @@
 - Los extractos de búsqueda de notas de prensa de Amadeus no dan el desglose bajo el EBIT; el BPA ajustado se cuadra mejor partiendo del beneficio ajustado publicado (Global Report, capítulo Inversores).
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 22.2x, mínimo 19.4x, media larga 26.2x; antes v2 20.9x/19.4x/20.9x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Amadeus - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 25,6 % (antes v3 Mantener 42,6 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 12,1x / 14,2x / 18,5x, 14,3 % Mantener; con el tope anterior del base (×1,3, 14-oct mediodía): 42,6 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

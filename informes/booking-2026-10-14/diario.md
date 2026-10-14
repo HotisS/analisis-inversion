@@ -29,3 +29,4 @@
 - Tras un desdoblamiento, los agregadores mezclan precios sin ajustar (Yahoo antiguo con rango de 52 semanas de 3.765-5.839) y ajustados: dividir entre el factor y comprobar con la capitalización.
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 25.3x, mínimo 17.2x, media larga 24.8x; antes v2 23.4x/20.1x/21.9x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Booking Holdings - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Comprar 25,9 % (antes v3 Comprar 48,6 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 12,0x / 14,1x / 18,3x, 14,4 % Mantener; con el tope anterior del base (×1,3, 14-oct mediodía): 48,6 % Comprar. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

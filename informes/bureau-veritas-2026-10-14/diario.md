@@ -21,3 +21,4 @@
 - Los precios de cierre de cada ejercicio se pueden sacar de la capitalización al cierre de MarketScreener ÷ acciones medias del año (beneficio ÷ BPA) y cuadrarlos con el rendimiento por dividendo de finanzen.at.
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (3 años; mediana 22.2x, mínimo 18x, media larga 20.8x; antes v2 20.9x/18x/21.3x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Bureau Veritas - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Comprar 29,1 % (antes v3 Comprar 33,3 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 14,1x / 16,6x / 21,6x, 19,7 % Comprar; con el tope anterior del base (×1,3, 14-oct mediodía): 33,3 % Comprar. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

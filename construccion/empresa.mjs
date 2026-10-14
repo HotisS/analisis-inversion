@@ -369,6 +369,7 @@ export default {
       ['sub', 'Objetivo a 12 meses: nuestro PER × nuestro BPA', 'calc.recomendacion.objetivo_12m.filas', [
         ['tabla', 'calc.recomendacion.objetivo_12m.filas', [['Escenario', 'escenario', '', 1], ['BPA', 'beneficio_por_accion', '2', 0.8, 'd'], ['PER', 'multiplo', 'x', 0.7, 'd'], ['De dónde sale el PER', 'origen', '', 2.6], ['Precio', 'precio', '2', 0.9, 'd'], ['Rentabilidad', 'rentabilidad_pct', '+pct', 1, 'd']]],
         ['p', '**Objetivo a 12 meses (ponderado):** {{calc.recomendacion.objetivo_12m_txt}} · rentabilidad {{calc.recomendacion.rentabilidad_12m_txt}} · señal {{calc.recomendacion.objetivo_12m.senal}}.'],
+        ['p', '{{calc.recomendacion.objetivo_12m.comparacion_txt|opc}}'],
         etiquetado('Frente al consenso (solo contraste).', 'valoracion.objetivo_12m.diferencia_consenso'),
         etiquetado('Del valor intrínseco al objetivo a 12 meses.', 'valoracion.objetivo_12m.comentario'),
       ]],

@@ -3,6 +3,7 @@
 Lo que cualquier sesión de Claude, en cualquier equipo, tiene que saber antes de seguir. Se lee junto con `CLAUDE.md` y `cola.md` (y las lecciones, solo si se analiza una empresa). Solo reglas y decisiones **vigentes**: los cambios importantes y las decisiones ya sustituidas están en `archivo/HISTORICO.md` (memoria histórica: no se lee en el día a día).
 
 ## Cómo trabajar
+- **`METODO-VIGENTE.md` (raíz) dice qué versión del método decide hoy y lleva el registro fechado de descubrimientos** (14-oct, pedido del usuario: «apunta muy bien todos los descubrimientos y metodología vigente siempre»). Se lee antes de analizar y se actualiza con cada cambio.
 - **El repo de GitHub (HotisS/analisis-inversion) es la única fuente.** El proyecto debe poder seguirse desde cualquier ordenador: al empezar, `git pull` (o clonar con la cuenta de gh); nada importante vive solo en un equipo.
 - **Cada cambio va a la vez a GitHub y a la copia local**: commit y push al terminar cada pieza (informe, cambio de plantilla, cola).
 - **La cola (`cola.md`) va de cuatro en cuatro** en paralelo (desde el 14-oct-2026), mezclando valor y crecimiento. Sin empresas «para tenerla medida»; las que no ganan dinero van a la cola growth (`cola-growth.md`) (14-oct).
@@ -24,7 +25,7 @@ Lo que cualquier sesión de Claude, en cualquier equipo, tiene que saber antes d
 - **Antes de recomendar vender algo que ya tiene, se investiga a fondo** (situación, novedades, argumentos a favor y en contra, qué cambiaría la decisión) y se deja un memorando `investigacion-cartera-AAAA-MM-DD.md` en la carpeta del informe (13-oct: Grifols, Alphabet, Hermès y Equifax).
 - **Tamaño: mínimo 1.000 EUR por posición** (12-oct; el mínimo del 5 % se retiró el 14-oct, 15:39) y, como guía, no más del 7 % salvo Edenred y el oro; **no hay máximo de valores** (13-oct).
 - **Tres requisitos a la vez** para comprar o ampliar:
-  1. **Rentabilidad**: a 12 meses ponderada ≥ 15 % (`verticales/empresa/objetivo-12m.md`). **Decide v3 con tope ×1,1** (14-oct, 17:05; calibrada por backtest) y **v2 es el control**: si v2 < 10 % y v3 > 15 %, la empresa se marca y no se compra sin motivo de negocio propio. Entre dos compras que compiten por la misma liquidez, gana la «robusta» (la que pasa con los dos métodos).
+  1. **Rentabilidad**: a 12 meses ponderada ≥ 15 % (`verticales/empresa/objetivo-12m.md`). **Decide v3 con tope ×1,1** (14-oct, 17:05; calibrada por backtest; reglas exactas en `METODO-VIGENTE.md` §2) y **v2 es el control**: si v2 < 10 % y v3 > 15 %, la empresa se marca y no se compra sin motivo de negocio propio. Entre dos compras que compiten por la misma liquidez, gana la «robusta» (la que pasa con los dos métodos).
   2. **Valor real**: base a 12 meses ≥ 12 % y valor intrínseco del informe ≥ precio.
   3. **Calidad del negocio**: sostenibilidad del crecimiento «Sí» y ROIC − WACC ≥ 5 puntos.
 - **Divisas: el objetivo y el precio en la misma moneda** (14-oct). Constellation tiene las cuentas en USD y cotiza en CAD: comparar sin convertir dio un falso −19 %. Antes de usar un objetivo, comprobar la divisa de las cuentas frente a la de cotización. Mismo problema con las cotizaciones de Londres en peniques (GBp).

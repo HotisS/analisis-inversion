@@ -14,9 +14,11 @@
 //                                                                      cada orden» (MEMORIA.md), normalmente con --simular
 //   … --simular                                                        enseña lo que cambia sin escribir
 //
-// Con un precio nuevo, el PER actual de la historia (`per_historico.actual` = precio ÷ BPA) se mueve en la misma
-// proporción; el dividendo por acción y el valor intrínseco no cambian. El precio se guarda en la divisa de las
-// cuentas (la del informe), pasado con `meta.tipo_cambio` del informe.
+// Con un precio nuevo, EL OBJETIVO QUEDA FIJO (los múltiplos y el BPA del informe no cambian) y solo se mueve la
+// rentabilidad: objetivo ÷ precio actual. Hasta el 14-oct por la tarde el PER actual se escalaba con el precio y, como
+// el base de la regla parte del actual, el objetivo subía con la cotización y un Comprar nunca dejaba de serlo
+// (descubierto en Nu, growth; mismo fallo aquí). El precio se guarda en la divisa de las cuentas (la del informe),
+// pasado con `meta.tipo_cambio` del informe. Recalcular el objetivo con el precio nuevo es hacer una versión del informe.
 //
 // Después: node herramientas/seguimiento.mjs.
 import { readFileSync, writeFileSync } from 'node:fs';
@@ -63,8 +65,7 @@ for (const carpeta of carpetas) {
     else { precio = p.precio * fac * tc; fechaPrecio = p.fecha; origen = `cierre Yahoo ${p.simbolo}`; }
   }
   const k = precio / precioInforme;
-  const o2 = JSON.parse(JSON.stringify(o));
-  if (k !== 1 && o2.per_historico?.actual) o2.per_historico.actual = r(+o2.per_historico.actual * k, 2);
+  const o2 = JSON.parse(JSON.stringify(o)); // objetivo fijo: no se toca per_historico.actual
   const prob = ['bajista', 'base', 'alcista'].map((e) => (d.escenarios?.casos || []).find((c) => new RegExp(e, 'i').test(c.escenario || ''))?.probabilidad_pct ?? null);
   const c = calcularObjetivo12m(o2, { precio, dpa: (div / 100) * precioInforme, prob: prob.every((x) => x !== null) ? prob : null, valorIntrinseco: d.calc?.sintesis?.valor_objetivo ?? null, confianza: d.resumen?.confianza ?? null });
   if (!c?.completo) throw new Error(`${carpeta}: objetivo_12m incompleto`);

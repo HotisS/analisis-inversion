@@ -1,0 +1,77 @@
+# Método vigente (documento vivo)
+
+**Léelo antes de analizar, revisar una cartera o cambiar el método.** Aquí está lo que decide hoy, con fecha, y el registro de cada descubrimiento: qué fallo se vio, en qué empresa, cómo se probó, qué se adoptó y qué se rechazó y por qué. Cada cambio del método se apunta aquí el mismo día (y el detalle en `verticales/empresa/objetivo-12m.md` o `verticales/growth/metodo.md`; la historia larga, en `archivo/HISTORICO.md`). Última actualización: 14-oct-2026, 17:30 UTC.
+
+## 1. Versiones en vigor
+
+| Vertical | Qué | Versión vigente | Desde | Dónde está la regla | Cálculo |
+|---|---|---|---|---|---|
+| Value | Informe (DCF, calidad, controles) | Metodología «nueva»: DCF con prueba de **sostenibilidad del crecimiento** (`dcf.sostenibilidad`; si falla, se rebaja el base) | 10-oct-2026 | `verticales/empresa/prompt.md` | `motor/calcular-empresa.mjs` |
+| Value | Objetivo y rentabilidad a 12 meses | **Regla v3 con tope ×1,1** (historia del PER adelantada, base a mitad de camino hacia la mediana, tope ×1,1) | 14-oct-2026, 17:00 | `verticales/empresa/objetivo-12m.md` | `motor/objetivo12m.mjs` (`REGLA_12M.v3`) |
+| Value | Informes anteriores | Migrados a v3 sin rehacer la investigación (`historia-adelantada.mjs`); Word regenerado con `regenerar.mjs`; 11 se quedan en v2 porque su historia no sirve (lista en §6) | 14-oct-2026 | `objetivo-12m.md` §«Migración» | `herramientas/historia-adelantada.mjs`, `herramientas/regenerar.mjs` |
+| Growth | Puntuación, objetivo, señal | **v9** (= v7 + el crecimiento de partida es el menor entre el mecánico y la guía de la empresa más lo que suele batirla) | 14-oct-2026, 16:48 | `verticales/growth/metodo.md` | `motor/growth.mjs` (`VIGENTE`; `--version v7` da la referencia) |
+| Cartera | Requisitos, tamaño, liquidez | Preferencias de `MEMORIA.md` (resumen en §4) | 14-oct-2026 | `MEMORIA.md` | `herramientas/apuntar-12m.mjs`, `seguimiento.mjs` |
+
+## 2. Value: la regla a 12 meses (v3, tope ×1,1), exacta
+
+Entrada del informe: `valoracion.objetivo_12m` = BPA propio de los tres escenarios para el ejercicio objetivo (el primero que cierra más de 18 meses después del corte), probabilidades de `escenarios.casos` (por defecto 25/50/25), `per_historico` y `comparables_per.mediana`.
+
+- **PER actual** = precio del informe (cierre de la fecha de corte) ÷ BPA propio del ejercicio siguiente (adelantado).
+- **Historia adelantada** (`per_historico.base: "adelantado"`): PER al cierre de cada año = precio de cierre del año ÷ **BPA real del año siguiente** (misma base que el actual). Fuera los años de pérdidas, PER ≥ 150x y atípicos (más de 3 veces o menos de un tercio de la mediana del resto, solo con 5 años o más). Mínimo 3 años. `mediana_5a`, `minimo_5a`, `media_larga` (8 años). Para informes migrados, `per_historico.v2` guarda la historia antigua (al cierre).
+- **Base** = actual × √(mediana 5a ÷ actual), **sin alejarse del actual más de ×1,1 ni menos de ÷1,1** (`topeBase`). Sube si cotiza por debajo de su historia, baja si cotiza por encima.
+- **Bajista** = el menor entre el mínimo de 5 años (adelantado) y base × 0,80.
+- **Alcista** = el mayor entre la media larga, la mediana de 5 años y la mediana del PER de los comparables, sin bajar del base y con techo base × 1,35.
+- **Objetivo ponderado** = Σ probabilidad × (PER del escenario × BPA del escenario). **Rentabilidad** = (objetivo + dividendo) ÷ precio − 1; se da la ponderada y la del base.
+- **Señal**: Comprar si ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender si ponderada ≤ −10 %; Mantener en el resto. **Confianza de datos «Baja» → un Comprar se queda en Mantener** (`senal_sin_confirmar`) hasta confirmar con fuente primaria.
+- **Qué decide y qué es control.** Decide la rentabilidad ponderada a 12 meses de la regla (`calc.recomendacion.objetivo_12m`), con los filtros de §4. El valor intrínseco del DCF es el «valor real» (filtro, no objetivo). El consenso solo se compara (control «Objetivo 12 m frente al consenso»). Las cifras «al lado» (v2 y tope ×1,3, en `comparacion_txt` y en `objetivo12m-revisados.json`) son para comparar, nunca deciden.
+- **Regla v2 (solo los 11 informes que no pueden pasar a v3)**: base = menor entre actual y mediana 5a (historia al cierre); bajista = mínimo 5a si es menor, si no base × 0,85; alcista = mayor entre media larga y comparables con techo base × 1,30. Está sesgada contra las baratas (backtest) y tiene un escalón (Lonza); se usa solo cuando no hay otra.
+- **Un precio, una fecha.** El precio del informe es el cierre de la fecha de corte (o de las dos sesiones anteriores; si no, el motor avisa y no se cierra un Comprar). **El objetivo queda fijo**: con un precio nuevo solo se mueve la rentabilidad (`apuntar-12m.mjs --precios`), nunca el objetivo; recalcular el objetivo es hacer una versión nueva del informe.
+
+## 3. Growth: v9, en dos líneas
+
+Puntuación 0-100 (crecimiento, tecnología, giro de percepción, calidad del crecimiento), proyección de ventas a 12 meses (partida = menor entre el crecimiento mecánico y `guia_12m_pct + exceso_guia_pp`), objetivo = múltiplo con tope (35x beneficio bruto a 12 meses), veto por euforia, «En vigilancia», señal Comprar/Mantener/No con precio máximo de compra; bolsillo growth ≤ 20 % de la cartera, posiciones de 3,5-5 % (≥ 1.000 EUR). Backtest neutral (17 mayores de ARKK en 2019/2021/2023, 51 empresas, 24 meses frente al Nasdaq-100): v7 y v9 iguales, 5 de 6 compras baten al índice; acierto realista «algo más de la mitad». Detalle y pendientes en `verticales/growth/metodo.md` §6-7 y `cola-growth.md`.
+
+## 4. Filtros de cartera (resumen de `MEMORIA.md`, que manda)
+
+1. **Tres requisitos a la vez para comprar o ampliar**: rentabilidad ponderada a 12 meses ≥ 15 % (regla vigente); valor real (base ≥ 12 % y valor intrínseco ≥ precio); calidad (sostenibilidad «Sí» y ROIC − WACC ≥ 5 puntos; LVMH aceptada como excepción el 14-oct).
+2. **Mantener**: calidad, ponderada ≥ 10 %, base ≥ 5 % y valor intrínseco no más de un 15 % por debajo del precio.
+3. **Confianza baja = no Comprar.**
+4. **Tamaño**: mínimo 1.000 EUR por posición; guía de no más del 7 % salvo Edenred y el oro; se amplía lo que cumple los tres requisitos; rotar una por otra solo si la diferencia de rentabilidad supera el coste.
+5. **Liquidez**: nunca negativa; si quedan ≥ 3.000 EUR sin destino ≥ 3 meses, XEON (ningún ETF hoy, 14-oct).
+6. **Precio actual antes de cada orden, con el objetivo fijo**: `node herramientas/precios.mjs` y `node herramientas/apuntar-12m.mjs --precios --actual --simular <carpetas>`; en la tabla, precio y hora del dato y si la orden sigue en pie.
+7. **Exclusiones**: juego y apuestas, Accenture, Rightmove, Adobe, comercio minorista (salvo que lo pida); Edenred y el oro no se tocan salvo que lo pida.
+8. Cada orden con su motivo de negocio; tabla antes → después; volatilidad y Sharpe (optimista y realista); la rentabilidad realista es la mitad de la optimista.
+
+## 5. Flujo y herramientas (value)
+
+`cuentas.mjs` (XBRL de SEC y ESEF) → análisis con `/analiza-empresa` → `calcular-empresa.mjs` → `rellenar.mjs` (Word) y PDF → `apuntar-12m.mjs` → `seguimiento.mjs`. Para informes hechos: `historia-adelantada.mjs` (pasa a v3), `regenerar.mjs` (Word y PDF con el motor vigente, versión nueva, sin investigación), `precios.mjs` + `apuntar-12m.mjs --precios --todos` (todas al mismo cierre). En la nube, Node sale a internet con `NODE_USE_ENV_PROXY=1`.
+
+## 6. Registro de descubrimientos (el más reciente arriba)
+
+| Fecha | Fallo visto | Dónde | Cómo se probó | Decisión |
+|---|---|---|---|---|
+| 14-oct 17:20 | **El objetivo se movía con el precio en value.** `apuntar-12m.mjs` escalaba el PER actual con el precio nuevo; como el base parte del actual, el objetivo subía con la cotización y un Comprar nunca dejaba de serlo. | Mismo fallo que Nu (growth, 16:50) | Revisión del código tras el aviso de growth | **Adoptado**: objetivo fijo; con precio nuevo solo cambia la rentabilidad. Recalcular el objetivo = versión nueva del informe (`regenerar.mjs`). |
+| 14-oct 17:10 | **Bajista v2 mal medido**: el mínimo de 5 años se medía al cierre (precio ÷ BPA del mismo año) y se aplicaba a un BPA del año siguiente; si el año del mínimo precede a una caída del BPA, sale demasiado bajo (8,9x frente a 10,9x). | Edenred (hilo de Edenred) | Ya resuelto en v3 (mínimo adelantado); los 15 nombres con el bajista más castigado están en v3 | **Resuelto por v3.** Segunda propuesta, **suelo del bajista en base × 0,80 sin el mínimo: rechazada** (`it2t110suelo`: error de la ponderada 15,3 → 16,1 %, compras con menos aciertos y más pérdidas, cola corta con BPA ingenuo). |
+| 14-oct 17:00 | **Tope ×1,3 demasiado generoso**: 48 de 135 informes v3 en el tope; cartera a +35 %. En las desrateadas (mediana adelantada ≥ 1,5 × actual) el sesgo del base era +21 % fuera de muestra. | Intuit 49x frente a 15x, Equifax, Zoetis (hilo value) | Backtest de 12 variantes: tope ×1,0-1,2, reversión 0,25, percentil 40/25, mediana de 10 años, mediana sin 2020-21, media geométrica mínimo-mediana, topes asimétricos (`motor/backtest-multiplos.mjs`, tablas «Solo desrateadas») | **Adoptado tope ×1,1** (desrateadas: sesgo +2,6 %, error 15 %; conjunto: error de la ponderada 15,3 %, el más bajo, mismas compras). Cambiar el ancla **no arregla nada**: el problema es cuánto camino recorre el múltiplo en un año (×1,11 de mediana real). Mediana v3 27 → 18,4 %; Comprar 36 → 34; Vender 16 → 7. Ancla sectorial: sin datos para probarla. |
+| 14-oct 16:50 | **El objetivo growth se movía con el precio** al revisar el precio actual: la rentabilidad no cambiaba. | Nu (hilo growth) | Revisión | **Adoptado**: el objetivo del informe queda fijo; rentabilidad = objetivo ÷ precio actual. |
+| 14-oct 16:48 | **Proyectar el pasado cuando la empresa ya anunció que frena** sobrevalora el crecimiento (Duolingo +40,6 → +12,5 %; Datadog y Wise a Mantener). | Datadog, Duolingo, Wise, Samsara, Zscaler, Dexcom (tandas growth 4-5) | Backtest growth v9: neutro en las 71 compras; recorta Wise y HubSpot | **Adoptado v9** (decisión del usuario). v7 al lado como referencia. |
+| 14-oct 16:40 | **Uber: historia adelantada rota.** El BPA publicado de 2024-25 lleva liberaciones fiscales; el BPA propio (3,61) está un 24 % por debajo; v3 daba −3,7 %. | Uber | Revisión manual de la cartera | **Uber se queda en v2** (+11,5 %). Lección: el contraste de base (crecimiento implícito −30 %/+60 %) no caza todo; en cartera, mirar la historia a mano. |
+| 14-oct 16:40 | **Experian «con el precio mal»**: el 33,18 del informe parecía GBP (hoy 26,96). | Experian (tabla de órdenes) | Yahoo: 2.457 peniques el 2-oct = 33,17 USD | **No era un fallo**: el precio del informe va en la divisa de las cuentas (USD) y se convierte con `meta.tipo_cambio`. Regla: en las tablas, decir la divisa. |
+| 14-oct 16:30 | **Constellation: límite de orden con un precio mal leído** (hoy 3.088 CAD, −19 % con su objetivo). | Constellation Software (tabla de órdenes) | Precio actual con `precios.mjs` | Orden cancelada. Lección: todo límite se fija con `precios.mjs` (cierre o sesión en curso), nunca con un precio copiado de un texto. |
+| 14-oct 16:00 | **Las 73 revisiones del 13-oct elegían los múltiplos caso a caso** y casi siempre hacia arriba (alcista con medias de épocas altas; bajista igual al base en 25 empresas). | Edenred, Lululemon, Hermès, Netflix, DSV, Fluidra, Krones | Comparación con las del 12-oct hechas a mano | **Adoptada la regla común de múltiplos (v2) aplicada por el motor**; después v3. |
+| 14-oct 15:46 | **ETF para la liquidez**: ninguno hoy. | `informes/etf-liquidez-2026-10-14/` | Análisis ETF | Regla XEON (LU0290358497) si quedan ≥ 3.000 EUR sin destino ≥ 3 meses. |
+| 14-oct 15:43 | **La regla v2 compara cosas distintas** (PER actual adelantado frente a historia al cierre) y sale sesgada contra las empresas baratas; bajista con escalón cuando el mínimo cruza el base (Lonza: +2,7 % de precio y la ponderada sube 15,7 → 18,0 %). | Todas; Lonza | Backtest `motor/backtest-multiplos.mjs` (188 cierres, 117 empresas): compras v3 +18,4 % mediana real frente a v2 +11,7 % y resto +7,7 %; error del múltiplo ~19 % en todas | **Adoptada v3** (0ab5dfd). Pesos 15/70/15 no mejoran: se quedan 25/50/25. Sin tope v3 daba +100-130 % a Adobe, Intuit, Fiserv → tope ×1,3 (mediodía) → ×1,1 (17:00). |
+| 14-oct 15:30 | **Precio viejo al cerrar un Comprar** (Bureau Veritas con un cierre de 6 días antes). | Bureau Veritas | Control del motor | **Adoptado**: control «Precio del cierre de la fecha de corte (o dos sesiones)»; `precios.mjs` para todas. |
+| 14-oct 15:29 | **Triaje con ficha corta antes del Word**: rechazado por el usuario («se comerá buenas»). Confianza baja = no Comprar: aceptado. Ficha sectorial corta (`verticales/sector/ficha.md`): aceptada. | Propuesta de mejoras | Decisión del usuario | Word completo para todas; ficha sectorial antes de la primera empresa de un sector. |
+| 14-oct 15:00 | **Cifras de las cuentas copiadas de terceros**: desde hoy, XBRL del regulador (`cuentas.mjs`, SEC y ESEF; Japón, Suiza y Australia no). | Apple, ASML, Bureau Veritas (pruebas) | Comparación con los informes | **Adoptado** como paso 1 del análisis. |
+| 10 a 13-oct | **Sostenibilidad del crecimiento**: el DCF proyectaba crecimientos incompatibles con el tamaño del mercado final. | Todas (metodología «nueva») | Prueba de cuota en `dcf.sostenibilidad` | **Adoptado**: si falla, se rebaja el base; columna «Metodología» de `seguimiento.xlsx`. |
+| **Pendiente** | **Margen EBITDA objetivo en industriales** en vez de congelar el de hoy (vale ~10 pp). | GE Vernova, Siemens Energy, Celestica (tanda growth 7) | Falta backtest | Sin decidir. También pendientes (growth): `ebitda_ntm_m`, guía en otra métrica (Toast), pagos en bruto, dilución, comparables con fuente del día; lista en `cola-growth.md`. |
+| **Pendiente** | **Ancla sectorial para el base v3** (PER de los comparables como ancla en vez de la historia propia). | Edenred (hilo de Edenred: +18,7 % con base a los comparables) | No hay historia de comparables en el repo para un backtest | Sin decidir; el alcista ya usa la mediana de los comparables. |
+
+**Se quedan en v2 (14-oct):** Puig y Pluxee (recién cotizadas), Almirall (pérdidas), Lonza (dos años de BPA), Diageo, Constellation, Cochlear, Pro Medicus, Nvidia y ServiceNow (BPA propio en otra base que el publicado) y Uber (liberaciones fiscales).
+
+## 7. Cómo se mantiene este documento
+
+- Cada cambio de método: una fila en §6 el mismo día (fallo, dónde, prueba, decisión), la versión en §1 si cambia, y el detalle en el documento de la vertical. Lo rechazado también se apunta, con el porqué, para no volver a probarlo sin motivo nuevo.
+- Lo que no está aquí no está en vigor: una regla decidida en un chat o en un hilo existe cuando está escrita aquí y en el repo.
+- Al cerrar una tarea, quien cambie el método hace commit y push de este archivo junto con el código.

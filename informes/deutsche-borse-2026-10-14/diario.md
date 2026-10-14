@@ -19,3 +19,4 @@
 - En la búsqueda web, la «valoración» de MarketScreener da el BPA histórico y el consenso de tres años en una sola consulta; Börsengeflüster da los cierres anuales en euros.
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 17.8x, mínimo 17.3x, media larga 18.3x; antes v2 20.5x/19.8x/20.7x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Deutsche Börse - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 1,2 % (antes v3 Mantener 1,2 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 19,8x / 20,5x / 23,9x, 8,6 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

@@ -13,3 +13,4 @@
 - Con la red solo de búsqueda, los avisos de recompra («Transaction in own shares») de Investegate dan el último precio fiable de las británicas que recompran: la búsqueda lista varios con su precio medio.
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 27.7x, mínimo 23x, media larga 26.6x; antes v2 29.4x/19.2x/27.8x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Experian - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 27,2 % (antes v3 Mantener 49,9 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 12,5x / 14,7x / 19,1x, 15,6 % Mantener; con el tope anterior del base (×1,3, 14-oct mediodía): 49,9 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).
