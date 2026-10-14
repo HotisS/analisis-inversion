@@ -63,3 +63,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 2. **Sin `competencia.cuota_pct` no hay prueba de cuota en el motor**, aunque haya serie de mercado (`sector.serie` y `tcac_previsto_pct`): el motor podría hacer la prueba relativa (crecimiento de ventas frente al del mercado) sin necesitar la cuota absoluta.
 3. Mercado en USD y ventas en NOK: la prueba relativa supone tipo de cambio constante; el motor no tiene dónde decirlo.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 344,69 NOK, rentabilidad +16,0 %, señal Comprar (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +16,0 % → +18,2 %, base +25,5 %, señal Mantener (`revision-12m-2026-10-13.md`).

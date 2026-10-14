@@ -109,3 +109,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v3.mjs` (parte de `datos-
 2. **Redondeo distinto**: `crecimiento_proyectado_pct` es 8,4 y la tabla y el texto del motor dicen 8,3 % (media exacta 8,35 %), mientras el DCF inverso y la justificación dicen 8,4 %. Arreglo: formatear desde el valor ya redondeado.
 3. Ya conocido: recalcular con el motor actual mueve el nivel de compra sin cambiar datos.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 88.110,83 JPY (media ponderada; base 87.637,55), rentabilidad +8,8 %, señal Mantener (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +8,8 % → +8,8 %, base +8,2 %, señal Mantener (`revision-12m-2026-10-13.md`).

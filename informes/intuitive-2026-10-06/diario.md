@@ -90,3 +90,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v3.mjs` (parte de `datos-
 3. La síntesis de la v2 tenía niveles de compra y venta (193,47 / 247,21) que ya no eran los de su `calc` (193,34 / 247,41): mismo fallo que en Zoetis y Fielmann.
 4. La prima implícita del mercado (4,20 %) es la misma que la de nuestro WACC: la fila «con la prima del mercado» repite el objetivo propio y ocupa sitio.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 469,30 USD, rentabilidad +15,9 % (base +12,6 %), señal Comprar (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +15,9 % → +17,2 %, base +12,6 %, señal Mantener (`revision-12m-2026-10-13.md`).
