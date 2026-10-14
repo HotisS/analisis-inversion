@@ -6,7 +6,7 @@ Solo growth (la value es `cola.md`). Método vigente **v11** (`verticales/growth
 
 | Qué | Estado |
 |---|---|
-| Tanda 18 PROPUESTA tras el filtro previo (`verticales/growth/filtro-previo.md`): Rubrik (RBRK), Credo (CRDO), Reddit (RDDT), Zeta Global (ZETA); reserva Klaviyo o Cellebrite (AppLovin FUERA: casino social cuenta como juego, coordinador 14-oct 21:29). Rubrik: aplicar la alerta de euforia a 6 meses (+118 %). NO arrancar sin el visto bueno del coordinador/Hotis. Renk, Theon, Mycronic y ASM International aparcadas (no pasan o no se comprobó el filtro) | Propuesta |
+| Tanda 18 EN MARCHA (Hotis «si» 14-oct 21:30) tras el filtro previo (`verticales/growth/filtro-previo.md`): Rubrik (RBRK), Credo (CRDO), Reddit (RDDT), Zeta Global (ZETA); reserva Klaviyo o Cellebrite (AppLovin FUERA: casino social cuenta como juego, coordinador 14-oct 21:29). Rubrik: aplicar la alerta de euforia a 6 meses (+118 %). Renk, Theon, Mycronic y ASM International aparcadas (no pasan o no se comprobó el filtro) | Propuesta |
 | Hacer vigentes v12 (crecimiento orgánico), v13 (exceso sobre la guía = 0 si la empresa recortó la guía) y v14 (35/50/15 automático por dependencia de un producto o decisión regulatoria; dilución prevista; escenarios con partida negativa; `resultados-v14.md`: con ella argenx y Dexcom pasan a Mantener) | Probadas y en el motor (`resultados-v12.md`, `resultados-v13.md`); no cambian señales de cartera ni suplentes; pendiente del visto bueno del usuario (tarjeta del 14-oct) |
 | Revisar Wise con su actualización del 2T | 15-oct; si sube a convicción media, se propone como sustituta |
 | Revisar argenx con sus resultados del 3T | 22-oct; suplente desde el 14-oct |
