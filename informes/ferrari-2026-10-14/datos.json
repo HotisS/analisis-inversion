@@ -1,0 +1,3952 @@
+{
+  "meta": {
+    "fecha_corte": "2026-10-14",
+    "divisa": "EUR",
+    "divisa_cotizacion": "EUR",
+    "tipo_cambio": 1,
+    "unidades": "millones",
+    "cierre_ejercicio_mes": 12,
+    "etiqueta_ejercicio": "fin",
+    "normas_contables": "NIIF (IASB/UE)",
+    "formato_cuenta": "funcion",
+    "limitaciones": "Análisis hecho desde la nube con la red limitada a la búsqueda web: la web de Ferrari, EDGAR, Borsa Italiana y los proveedores de datos no se pudieron abrir, así que las cifras salen de los extractos de búsqueda de los comunicados de resultados, del 20-F y de la prensa financiera, cruzadas cuando fue posible; lo que no cuadró está en null y en los huecos. **Precio**: no se encontró el cierre de Milán del 13-oct-2026; se usa el último cierre fechado, 345,25 EUR del 7-oct-2026 (el 5-oct cerró a 341,05 EUR) [31, 41]. **Acciones**: 175,9 M en circulación, estimación propia a partir de la autocartera publicada a 9-oct-2026 (1,92 M de acciones, el 1,08 % de las emitidas) [20]. **Doble cotización** (Milán y NYSE): usamos Milán, en euros. **Puente**: deuda neta industrial publicada a 30-jun-2026 (131 M, con arrendamientos dentro); la deuda de la financiación a clientes de EE. UU. (1.385 M netos a dic-25) se trata como negocio aparte respaldado por sus préstamos [1, 2]. **Balance**: solo 2024 y 2025. **Múltiplos históricos**: cierres anuales estimados desde la cotización de Nueva York. Comparables y transacciones reutilizados de los informes de LVMH, Hermès y Moncler de este repositorio (MarketScreener, 8-oct-2026) [38]; Bund del 3,53 % y prima de Damodaran del 4,20 % también de ahí. Sin sección de bolsa.",
+    "controles_explicados": [
+      {
+        "control": "Comparables estables al quitar una empresa",
+        "explicacion": "No hay comparables puros cotizados (Lamborghini y McLaren no cotizan); los siete grupos de lujo van de Prada a 6,4x a Hermès a 15,6x de EV/EBITDA NTM y Ferrari cotiza muy por encima de todos (19,3x). Por eso los comparables pesan solo un 20 % y no entran en la decisión a 12 meses más que por la mediana del PER, que la regla común no usa porque queda por debajo del base."
+      }
+    ],
+    "huecos": [
+      {
+        "seccion": "financieros",
+        "campo": "coste de ventas, resultado financiero, BAI e impuestos por año",
+        "tipo": "Complemento",
+        "intentos": "1) 20-F 2025 en EDGAR: sin red (solo búsqueda); 2) Stock Analysis y Fintel por búsqueda: solo líneas sueltas; 3) ChartRow: cifras en USD",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "balance",
+        "campo": "balance de 2021-2023 (deuda bruta, patrimonio de 2022), desglose del circulante y vencimientos",
+        "tipo": "Complemento",
+        "intentos": "1) 20-F 2025 por búsqueda; 2) 6-K trimestrales; 3) Stock Analysis (solo deuda a largo plazo)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "negocio",
+        "campo": "segmentos (coches y repuestos, patrocinio y marca, otros) y geografías",
+        "tipo": "Complemento",
+        "intentos": "1) Comunicado de 2025 por búsqueda; 2) 20-F; 3) prensa",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sector",
+        "campo": "tamaño del mercado de deportivos de lujo en dos fuentes, serie y CR5",
+        "tipo": "Núcleo",
+        "intentos": "1) Búsqueda de estudios de mercado de superdeportivos; 2) asociaciones (ACEA) sin dato del nicho; 3) suma de fabricantes que publican cuentas",
+        "decision": "Calculado y marcado como estimación (suma parcial); serie y CR5 omitidos"
+      },
+      {
+        "seccion": "competencia",
+        "campo": "cuota de mercado de Ferrari",
+        "tipo": "Núcleo",
+        "intentos": "1) Informe anual; 2) prensa sectorial; 3) derivarla: sin tamaño de mercado fiable",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "esg",
+        "campo": "calificaciones ESG (MSCI, Sustainalytics)",
+        "tipo": "Complemento",
+        "intentos": "1) Informe de sostenibilidad: sin red; 2) búsqueda; 3) proveedores: sin acceso",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "consejo completo, comisiones, remuneración del consejero delegado y votos de la junta",
+        "tipo": "Núcleo",
+        "intentos": "1) Informe anual 2025 (remuneration report): sin red; 2) 20-F Item 6 por búsqueda: sin cifras; 3) prensa italiana: sin importes de 2025",
+        "decision": "Omitido; se dejan los tres consejeros comprobados"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "operaciones de directivos (insiders)",
+        "tipo": "Complemento",
+        "intentos": "1) AFM (registro neerlandés): sin red; 2) Form 144 en EDGAR: sin red; 3) prensa: nada",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "bolsa",
+        "campo": "sección entera (rentabilidades, beta, volatilidad, caída máxima)",
+        "tipo": "Complemento",
+        "intentos": "1) bolsa.mjs sin red; 2) WebFetch a Yahoo bloqueado; 3) búsqueda: solo cotizaciones sueltas",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "identificacion",
+        "campo": "precio de cierre del 13-oct-2026 en Milán",
+        "tipo": "Núcleo",
+        "intentos": "1) Borsa Italiana y Teleborsa por búsqueda: último dato del 5-oct (341,05 EUR); 2) Euronext: sin cotización indexada; 3) prensa: cierre del 7-oct-2026 a 345,25 EUR",
+        "decision": "Calculado y marcado como estimación: se usa el cierre del 7-oct-2026"
+      },
+      {
+        "seccion": "multiplos_historicos",
+        "campo": "precio de cierre en Milán de cada ejercicio",
+        "tipo": "Complemento",
+        "intentos": "1) bolsa.mjs sin red; 2) búsqueda de cierres anuales en euros: sin dato; 3) cierres de NYSE de Macrotrends convertidos a euros",
+        "decision": "Calculado y marcado como estimación (2021 sin dato)"
+      },
+      {
+        "seccion": "identificacion",
+        "campo": "máximo y mínimo de 52 semanas en euros y volumen",
+        "tipo": "Complemento",
+        "intentos": "1) Borsa Italiana; 2) TradingView (solo en USD); 3) Eulerpool",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sentimiento",
+        "campo": "Reddit, Stocktwits y foros italianos (FinanzaOnline) de los últimos tres meses",
+        "tipo": "Complemento",
+        "intentos": "1) Búsqueda de hilos de Reddit y Stocktwits sobre RACE en sep-oct 2026: sin resultados; 2) FinanzaOnline: sin hilos fechados; 3) API de Stocktwits: sin red",
+        "decision": "Omitido; se usan comentarios de plataformas y prensa con lectores"
+      },
+      {
+        "seccion": "dcf",
+        "campo": "sostenibilidad.mercado_final",
+        "tipo": "Complemento",
+        "intentos": "1) Estudios de mercado de superdeportivos; 2) asociaciones sectoriales; 3) suma de fabricantes (incompleta)",
+        "decision": "Omitido: la prueba de cuota se hace a mano con el volumen"
+      }
+    ]
+  },
+  "identificacion": {
+    "nombre": "Ferrari N.V.",
+    "nombre_corto": "Ferrari",
+    "ticker": "RACE.MI",
+    "isin": "NL0011585146",
+    "mercado": "Euronext Milan (también NYSE: RACE)",
+    "indice_referencia": "FTSE MIB",
+    "pais": "Italia (sociedad neerlandesa)",
+    "pais_iso": "IT",
+    "sector": "Consumo discrecional",
+    "industria": "Automóviles",
+    "sede": "Maranello (Italia); domicilio social en Ámsterdam",
+    "fundacion": "1947",
+    "empleados": null,
+    "web": "www.ferrari.com",
+    "precio": 345.25,
+    "fecha_precio": "2026-10-07",
+    "acciones": 175.9,
+    "capitalizacion_publicada": null,
+    "free_float_pct": 67,
+    "max_52s": null,
+    "min_52s": null,
+    "volumen_medio_diario": null,
+    "proximos_resultados": "2026-11-03"
+  },
+  "resumen": {
+    "recomendacion": "Mantener",
+    "conviccion": "Media",
+    "justificacion_recomendacion": null,
+    "horizonte": "12 meses",
+    "sintesis": "**La recomendación y por qué.** Mantener, con convicción media. Con nuestro BPA y la regla común de múltiplos, el objetivo a 12 meses es de 371,15 EUR frente a 345,25 EUR (último cierre fechado, 7 de octubre): +8,5 % con el dividendo y +6,5 % en el caso base, lejos de los umbrales de compra (15 % y 12 %) y de venta (−10 %). El valor intrínseco es de 179,02 EUR (−48,1 %) y el objetivo medio de los analistas, ≈423 EUR, queda un 14,0 % por encima de nuestro base [31]. Asimetría a 12 meses: −20,3 % en el bajista y +41,5 % en el alcista, que exige volver a un PER de 42x. La convicción es media porque las dos reglas coinciden y la rentabilidad está lejos de los umbrales; subiría si el 3T26 (3 de noviembre) volviera a elevar la guía con la cartera intacta, y bajaría si la recortara; para comprar haría falta además un precio por debajo del valor intrínseco.\n\n**El negocio.** Ferrari es el mejor negocio del automóvil: margen EBITDA del 38,8 % y EBIT del 29,5 % en 2025, frente al 24 % de Lamborghini y las pérdidas de Aston Martin, y un ROIC del 30,2 % frente a un WACC del 8,90 % [1, 22, 23]. Crece por precio y personalización con los envíos planos: 13.640 coches en 2025 y un 4 % menos en el 1S26, con la guía de 2026 elevada [2, 15]. **Sostenibilidad: Sí.** La proyección (4,2 % anual) es la mitad de lo que creció en 2021-2025 y coincide con su plan a 2030; el poder de precio está demostrado (ingresos por coche +38 % de 2021 a 2025) y la reinversión es baja.\n\n**Finanzas.** Ventas de 7.146 M y BPA de 8,96 EUR en 2025 (+6 %); en el 1S26, ventas +5,8 % y BPA de 4,95 EUR [1, 2]. La deuda neta industrial es de solo 131 M (jun-26) (la deuda bruta mayor financia préstamos a clientes de EE. UU.). Flujo libre industrial de 1.538 M en 2025 y guía de al menos 1.550 M; reparte el 40 % del beneficio y recompra ≈3.500 M en 2026-2030 [1, 19].\n\n**Equipo y gobierno.** Vigna ha cumplido o superado la guía cada año desde 2022. Resta el control: Exor y Piero Ferrari tienen ≈48 % de los votos con ≈32 % del capital por el voto de lealtad, con pacto hasta 2029 [27, 28].\n\n**Valoración.** Todos los métodos quedan por debajo del precio: DCF de 176,92 EUR, 214,06 EUR con la prima implícita del mercado, 232,57 EUR con el PER de los comparables de lujo y 276,02 EUR con las transacciones. El DCF inverso dice que 345,25 EUR descuentan un crecimiento del 13,8 % anual en 2027-2035 frente al 3,9 % de nuestro base, o una rentabilidad del 5,8 % anual con nuestras cifras. El mercado paga la escasez con un PER de 33,3 veces nuestro BPA de 2027e, el más bajo de los últimos cinco años (mediana de 41,5x). A 12 meses manda el múltiplo; a largo plazo, el precio no deja margen de seguridad.\n\n**Riesgos y catalizadores.** El riesgo principal es que el múltiplo siga bajando sin que caiga el beneficio (bajista: 271,68 EUR, −20,3 %); el segundo, que el Luce diluya la marca, lo que más preocupa en los foros (−6-7 % el día de su presentación) [24]. Catalizadores: 3T26 el 3 de noviembre, guía de 2027 en febrero y las primeras entregas del Luce.\n\n**Qué cambiaría la decisión.** Compraríamos por debajo de 179,02 EUR, donde se cumplen las tres condiciones (ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio); venderíamos por encima de 416,40 EUR. Una guía de 2027 por debajo del 4 % de crecimiento o una cartera de pedidos que baje de 18 meses nos llevaría al bajista.",
+    "tesis": "Ferrari es una marca de lujo que vende ≈13.600 coches al año a ≈524.000 EUR de media, con un margen EBIT del 29,5 %, un ROIC del 30 % y una cartera de pedidos hasta casi finales de 2027 [1, 17]. Crece por precio y personalización, no por volumen, y devuelve casi toda la caja: dividendo del 40 % del beneficio y ≈3.500 M de recompras en 2026-2030 [19].\n\nA 345,25 EUR el mercado paga 33,3 veces el beneficio de los próximos 12 meses y 19,3 veces el EBITDA, por encima de todo el lujo (Hermès: 27,0x y 15,6x) [38]. El DCF inverso dice que el precio descuenta un crecimiento del 13,8 % anual en 2027-2035; el plan de la propia empresa da un 4,7 % hasta 2030. El precio no paga flujos: paga la escasez y la marca.\n\nPara invertir a un año hay que creer que el múltiplo deja de bajar: tras un −19 % en doce meses, el PER está en el mínimo de los últimos cinco años y el BPA crece un 8-10 % al año con las recompras. Eso da un +8,5 % ponderado, insuficiente para comprar. A largo plazo hay que creer que el mercado pagará siempre 30-40 veces beneficios a Ferrari: con un coste de capital normal, el valor es de 179,02 EUR.",
+    "vision_diferencial": {
+      "mercado_descuenta": "Que Ferrari es un activo único que merece una prima permanente sobre todo el lujo, aunque ha recortado el múltiplo tras el plan a 2030 (crecimiento del ≈5 %) y el Luce: el PER pasó de 48x a finales de 2024 a ≈33x sobre el BPA de 2027e.",
+      "nuestra_vision": "Coincidimos en el beneficio (nuestro BPA de 2028e es un 2,8 % menor que el del consenso) y en la calidad del negocio. Discrepamos en el precio a largo plazo: ningún coste de capital razonable justifica 345 EUR con un crecimiento del 4-5 %; a 12 meses, el múltiplo actual da una rentabilidad modesta (+8,5 %).",
+      "por_que": "El propio plan a 2030 de la empresa da un 4,7 % anual de ventas y un BPA de al menos 11,50 EUR: a 33 veces, eso son ≈380 EUR con el beneficio de 2030, apenas un 10 % más que hoy en más de tres años."
+    },
+    "a_favor": [
+      "**Márgenes únicos**: EBITDA del 38,8 % y EBIT del 29,5 % en 2025; 39,0 % de EBITDA en el 2T26 [1, 2].",
+      "**Poder de precio**: ventas +8 % en el 2T26 con envíos del semestre −4 % [2, 12].",
+      "**Visibilidad**: cartera de pedidos hasta casi finales de 2027 [17].",
+      "**ROIC del 30,2 %** frente a un WACC del 8,90 %.",
+      "**Reparto de caja**: 3,615 EUR de dividendo y 627,7 M de recompras en 2026 [11, 20]."
+    ],
+    "en_contra": [
+      "**Precio muy exigente**: el DCF inverso descuenta un 13,8 % anual de crecimiento frente al 4,7 % del plan.",
+      "**Valor intrínseco de 179,02 EUR**: −48,1 % frente al precio.",
+      "**Eléctrico incierto**: la acción cayó un 6-7 % el día del Luce [24].",
+      "**Prima sobre el lujo**: PER de 33,3x frente a 27,0x de Hermès [38].",
+      "**Control blindado**: ≈48 % de los votos con ≈32 % del capital [28]."
+    ],
+    "que_vigilar": "La tesis a 12 meses depende de que el PER deje de bajar con el BPA creciendo un 8-10 % al año. La señal de que no se cumple sería una guía de 2027 por debajo del 4 % de crecimiento, una cartera de pedidos que se acorte por debajo de 18 meses o descuentos en la reventa de los modelos limitados: serían la pérdida del poder de precio, no un trimestre flojo.",
+    "cambiaria_recomendacion": [
+      "Si el precio baja de 179,02 EUR, pasaríamos a Comprar (se cumplen las tres condiciones).",
+      "Si el precio supera 416,40 EUR, pasaríamos a Vender.",
+      "Si el 3T26 (3-nov) recorta la guía de 2026 o la cartera baja de 18 meses, rebajaríamos el base hacia el bajista y probablemente a Vender.",
+      "Si la guía de 2027 apunta a un crecimiento del 7 % o más con margen ≥ 40 %, revisaríamos el BPA de 2028e al alza."
+    ],
+    "kpis_seguimiento": [
+      {
+        "kpi": "Crecimiento de ventas a tipos constantes",
+        "nivel_actual": "+11 % en el 2T26",
+        "umbral_alerta": "Por debajo del 4 %",
+        "por_que": "Define si el base del 5-6 % es creíble."
+      },
+      {
+        "kpi": "Margen EBITDA",
+        "nivel_actual": "39,0 % en el 2T26",
+        "umbral_alerta": "Por debajo del 38 %",
+        "por_que": "Mide el poder de precio frente a aranceles y amortización."
+      },
+      {
+        "kpi": "Cartera de pedidos",
+        "nivel_actual": "Hasta casi finales de 2027",
+        "umbral_alerta": "Menos de 18 meses",
+        "por_que": "Indicador adelantado de la demanda."
+      },
+      {
+        "kpi": "PER sobre el BPA del año siguiente",
+        "nivel_actual": "33,3x",
+        "umbral_alerta": "Por debajo de 28x",
+        "por_que": "Es la variable que decide la rentabilidad a 12 meses."
+      },
+      {
+        "kpi": "Deuda neta industrial",
+        "nivel_actual": "131 M (jun-26)",
+        "umbral_alerta": "Más de 1.000 M",
+        "por_que": "Recompras financiadas con deuda en vez de caja."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "historia": {
+    "resumen": "Fundada por Enzo Ferrari en Maranello en 1947 a partir de la Scuderia de carreras (1929), Ferrari vende coches para financiar la Fórmula 1, donde compite desde 1950. Fiat entró en el capital en 1969 y tuvo el 90 % desde 1988; Piero Ferrari conservó el 10 %. En octubre de 2015 FCA la sacó a bolsa en Nueva York y en enero de 2016 la escindió a sus accionistas, con cotización también en Milán y Exor como primer accionista. Desde entonces ha pasado de ≈8.000 a ≈13.600 coches al año, de 2.900 a 7.146 M EUR de ventas, con un margen EBIT del 29,5 %. Benedetto Vigna, de la industria de semiconductores, es consejero delegado desde 2021 [1, 19].",
+    "hitos": [
+      {
+        "anio": "1947",
+        "hito": "Primer coche con el nombre Ferrari (125 S) en Maranello."
+      },
+      {
+        "anio": "1969",
+        "hito": "Fiat compra el 50 % (90 % desde 1988)."
+      },
+      {
+        "anio": "2015",
+        "hito": "Salida a bolsa en Nueva York (octubre)."
+      },
+      {
+        "anio": "2016",
+        "hito": "Escisión de FCA y cotización en Milán (enero); Exor, primer accionista."
+      },
+      {
+        "anio": "2021",
+        "hito": "Benedetto Vigna, consejero delegado."
+      },
+      {
+        "anio": "2022",
+        "hito": "Purosangue, primer cuatro puertas, con cupo limitado al 20 % de las ventas."
+      },
+      {
+        "anio": "2025",
+        "hito": "Día del inversor (9-oct): objetivos de 2030 y el 20 % de la gama eléctrica en vez del 40 %; la acción cae ≈15 % en el mes [19, 24]."
+      },
+      {
+        "anio": "2026",
+        "hito": "Presentación del Luce, primer Ferrari eléctrico (25-may), a ≈550.000 EUR [24]."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "negocio": {
+    "segmentos": [],
+    "geografias": [],
+    "kpis": [
+      {
+        "kpi": "Coches entregados (envíos)",
+        "valor_anterior": "13.752 (2024)",
+        "valor_actual": "13.640 (2025)",
+        "variacion": "−0,8 %",
+        "comentario": "Volumen plano a propósito: la empresa prima el valor sobre el volumen [15]."
+      },
+      {
+        "kpi": "Envíos del primer semestre",
+        "valor_anterior": "7.087 (1S25)",
+        "valor_actual": "6.802 (1S26)",
+        "variacion": "−4,0 %",
+        "comentario": "Bajada deliberada por el cambio de gama; los ingresos crecen igual por mezcla y personalización [12]."
+      },
+      {
+        "kpi": "Margen EBITDA",
+        "valor_anterior": "38,3 % (2024)",
+        "valor_actual": "38,8 % (2025)",
+        "variacion": "+0,5 puntos",
+        "comentario": "39,0 % en el 2T26 y guía de al menos el 39 % en 2026 [1, 2]."
+      },
+      {
+        "kpi": "Flujo de caja libre industrial",
+        "valor_anterior": "1.025 M (2024, estimación por la subida publicada del 50 %)",
+        "valor_actual": "1.538 M (2025)",
+        "variacion": "+50 %",
+        "comentario": "Guía 2026 de al menos 1.550 M [1, 12]."
+      },
+      {
+        "kpi": "Cartera de pedidos",
+        "valor_anterior": "Cubre 2026 (feb-26)",
+        "valor_actual": "Llega casi a finales de 2027 (may-26)",
+        "variacion": "Se alarga",
+        "comentario": "Visibilidad de casi dos años de producción [17]."
+      },
+      {
+        "kpi": "I+D sobre ventas",
+        "valor_anterior": "13,4 % (2024)",
+        "valor_actual": "12,9 % (2025)",
+        "variacion": "−0,5 puntos",
+        "comentario": "919 M EUR en 2025 [9]."
+      }
+    ],
+    "descripcion": "Ferrari diseña, fabrica y vende deportivos de lujo en Maranello: gama de serie (Roma/Amalfi, 296, 12Cilindri, Purosangue), series especiales (296 Speciale, 849 Testarossa) y modelos limitados (F80, Icona) a precios de 250.000 a más de 3 millones de euros. Vende ≈13.600 coches al año por una red de concesionarios independientes, con los coches asignados por cliente y cartera de pedidos hasta casi finales de 2027 [15, 17]. Ingresa además por patrocinio, derechos comerciales y marca (la Scuderia de Fórmula 1, ropa, museos, Ferrari World), por la venta de motores a otro equipo de F1 y por repuestos. Financia a clientes en EE. UU. a través de Ferrari Financial Services. En 2026 llega el Luce, primer eléctrico [24].",
+    "como_gana_dinero": "La economía unitaria es la de un fabricante de muy pocas unidades con precio de lujo: crece por precio, mezcla (más modelos caros y limitados) y personalización (≈20 % de los ingresos de coches según la empresa), no por volumen. En 2025 ingresó ≈524.000 EUR por coche (7.146 M ÷ 13.640) y en el 1S26 ≈557.000 EUR (3.786 M ÷ 6.802) [1, 2, 12]. El margen EBITDA del 39 % depende de la mezcla y del ciclo de producto (los limitados como el F80 tienen el margen más alto) y la inversión en producto es ≈13 % de las ventas. La cartera de pedidos de casi dos años y la escasez deliberada dan visibilidad y poder de precio; la Fórmula 1 aporta patrocinio y marca. Hay poca estacionalidad.",
+    "clientes": "Ningún cliente pesa: son ≈13.600 compradores particulares, muchos repetidores, por una red de concesionarios independientes [15]. La empresa limita las unidades y asigna los modelos especiales a los mejores clientes, lo que fideliza. El poder de precio está demostrado: los ingresos por coche subieron de ≈380.000 EUR en 2021 (4.271 M ÷ ≈11.155 coches) a ≈524.000 EUR en 2025 con márgenes al alza, en años de inflación de costes y aranceles en EE. UU. [1, 6]. La cartera llega hasta casi finales de 2027 [17].",
+    "confianza": "Media"
+  },
+  "sector": {
+    "definicion": "El mercado relevante son los deportivos y gran turismo de lujo de más de ≈200.000 EUR, un nicho mundial de unas 40.000-50.000 unidades al año en el que compiten Ferrari, Lamborghini (Volkswagen), McLaren, Aston Martin, Bentley, Rolls-Royce y la gama alta de Porsche. No hay estadística oficial de su tamaño: lo aproximamos sumando las ventas de los fabricantes que publican cuentas, y por eso la prueba de cuota de la sostenibilidad se hace a mano y no con el tamaño de mercado.",
+    "tamano": "Sin dato oficial; suma de los principales: Ferrari 7.146 M, Lamborghini ≈3.200 M y Aston Martin ≈1.440 M EUR en 2025 [1, 22, 23]",
+    "unidad_serie": null,
+    "serie": [],
+    "tcac_historico_pct": null,
+    "tcac_previsto_pct": null,
+    "cr5_pct": null,
+    "estructura": "Concentrada",
+    "drivers": [
+      {
+        "driver": "Riqueza de las grandes fortunas",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "La cartera de Ferrari llega a finales de 2027 pese a la desaceleración del lujo personal [17]."
+      },
+      {
+        "driver": "Aranceles de EE. UU. a coches europeos",
+        "efecto": "−",
+        "horizonte": "Cíclico",
+        "evidencia": "Lamborghini atribuyó a los aranceles y a la divisa la caída de su margen del 27 % al 24 % en 2025 [22]."
+      },
+      {
+        "driver": "Electrificación y normas de emisiones",
+        "efecto": "+/−",
+        "horizonte": "Estructural",
+        "evidencia": "Ferrari bajó del 40 % al 20 % el peso de los eléctricos en su gama de 2030 y el mercado castigó la presentación del Luce (−6 a −7 % el día) [19, 24]."
+      },
+      {
+        "driver": "Divisa (dólar y yen frente al euro)",
+        "efecto": "−",
+        "horizonte": "Cíclico",
+        "evidencia": "En el 2T26 la divisa restó ≈3 puntos al crecimiento de Ferrari (8 % frente a 11 %) [2]."
+      },
+      {
+        "driver": "Demanda china",
+        "efecto": "−",
+        "horizonte": "Cíclico",
+        "evidencia": "Porsche vendió un 9,5 % menos en 2025 con China débil [25]."
+      }
+    ],
+    "porter": [
+      {
+        "fuerza": "Rivalidad",
+        "intensidad": 2,
+        "justificacion": "Pocos fabricantes y marcas muy diferenciadas; Ferrari tiene el margen más alto (29,5 % de EBIT frente al 24 % de Lamborghini y pérdidas en Aston Martin) [22, 23]."
+      },
+      {
+        "fuerza": "Poder de los clientes",
+        "intensidad": 1,
+        "justificacion": "Clientes atomizados y con lista de espera; la empresa elige a quién vende los limitados [17]."
+      },
+      {
+        "fuerza": "Poder de los proveedores",
+        "intensidad": 2,
+        "justificacion": "Proveedores especializados (frenos, baterías, electrónica), pero Ferrari hace motores y carrocerías en Maranello."
+      },
+      {
+        "fuerza": "Amenaza de entrada",
+        "intensidad": 1,
+        "justificacion": "La marca, la historia en F1 y la red de clientes no se replican; los nuevos eléctricos de lujo (Rimac) son marginales."
+      },
+      {
+        "fuerza": "Amenaza de sustitutos",
+        "intensidad": 2,
+        "justificacion": "Otros bienes de lujo y experiencias compiten por la misma riqueza; el eléctrico puede reducir la diferencia del motor térmico."
+      }
+    ],
+    "ciclo": {
+      "posicion": "Madurez del ciclo",
+      "comentario": "El lujo personal lleva dos años plano (Moncler, Kering) y Porsche cae, pero el segmento más alto aguanta: Lamborghini creció un 3,3 % en 2025 y Ferrari un 7 % [1, 22]. En 2008-09 Ferrari redujo envíos (de 6.587 en 2008 a 6.250 en 2009) mucho menos que el mercado del automóvil; en 2020 los ingresos bajaron un 8 % y en 2022 subieron un 19 %. La cartera de casi dos años amortigua el ciclo."
+    },
+    "regulacion": "La UE prohíbe vender coches nuevos con emisiones de CO2 desde 2035, con excepciones para fabricantes de pequeño volumen (menos de 10.000 coches al año en la UE) que Ferrari puede usar; la norma se revisa en 2026. EE. UU. aplica aranceles a los coches europeos desde 2025: Ferrari subió precios hasta un 10 % en algunos modelos para compensarlo. En F1, el nuevo reglamento técnico de 2026 cambia los motores y puede mover la competitividad de la Scuderia.",
+    "tendencias": "Electrificación con dudas de demanda en el lujo (Ferrari y Lamborghini retrasan o recortan eléctricos), personalización como fuente de margen, modelos limitados que se revalorizan en el mercado de segunda mano y clientes más jóvenes y de Asia y Oriente Medio. Ferrari gana con la personalización y los limitados; el riesgo está en el eléctrico, donde el motor térmico deja de ser diferencial [19, 24].",
+    "confianza": "Baja"
+  },
+  "competencia": {
+    "cuota_pct": null,
+    "posicion": "1.º mundial en deportivos de lujo por ingresos (7.146 M EUR en 2025, más del doble que Lamborghini) y por margen [1, 22].",
+    "competidores": [
+      {
+        "nombre": "Automobili Lamborghini (Volkswagen/Audi)",
+        "pais": "Italia",
+        "ticker": null,
+        "ingresos": 3200,
+        "cuota_pct": null,
+        "margen_ebit_pct": 24,
+        "comentario": "El rival directo: superdeportivos y el Urus; margen del 24 % en 2025 (27 % en 2024) [22]."
+      },
+      {
+        "nombre": "Aston Martin Lagonda",
+        "pais": "Reino Unido",
+        "ticker": "AML.L",
+        "ingresos": 1440,
+        "cuota_pct": null,
+        "margen_ebit_pct": -20.6,
+        "comentario": "Gran turismo; pérdida operativa de ≈297 M en 2025 [23]."
+      },
+      {
+        "nombre": "McLaren Automotive (Forseven)",
+        "pais": "Reino Unido",
+        "ticker": null,
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Superdeportivos; en pérdidas y vendida a un fondo de Abu Dabi en 2025."
+      },
+      {
+        "nombre": "Porsche AG",
+        "pais": "Alemania",
+        "ticker": "P911.DE",
+        "ingresos": 36000,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Solo su gama alta (911 GT, Turbo) compite con Ferrari; ventas −9,5 % en 2025 [25]."
+      }
+    ],
+    "foso": {
+      "veredicto": "Amplio",
+      "tendencia": "Estable",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 2,
+          "evidencia": "Comunidad de coleccionistas y acceso a modelos limitados reservado a clientes fieles."
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 2,
+          "evidencia": "Cambiar de marca hace perder el acceso a los limitados (F80, Icona)."
+        },
+        {
+          "fuente": "Intangibles (marca, patentes, licencias)",
+          "puntuacion": 5,
+          "evidencia": "Margen EBIT del 29,5 % frente al 24 % de Lamborghini y pérdidas en Aston Martin; precio por coche +38 % de 2021 a 2025 [8, 4, 5]."
+        },
+        {
+          "fuente": "Ventaja en costes",
+          "puntuacion": 2,
+          "evidencia": "Fabricación propia en Maranello, pero sin escala frente a los generalistas."
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 3,
+          "evidencia": "Nicho pequeño en el que Ferrari tiene más del doble de ingresos que su rival más cercano [4]."
+        }
+      ]
+    },
+    "amenazas": "La amenaza principal es la electrificación: si el cliente de lujo acepta el eléctrico, el motor y el sonido dejan de diferenciar y entran rivales tecnológicos; la acogida fría del Luce (−6 a −7 % en bolsa el día de la presentación) muestra que el mercado lo teme [24]. La segunda es la sobreexpansión: más coches, el Purosangue o el eléctrico pueden diluir la escasez que sostiene los precios. Probabilidad baja en cinco años, media en diez.",
+    "confianza": "Media"
+  },
+  "financieros": {
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 4271,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 1531,
+        "amortizaciones": 456,
+        "ebit": 1075,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 833,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 4.5,
+        "dpa": 1.362,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 185.1
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 5095,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 1773,
+        "amortizaciones": 546,
+        "ebit": 1227,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 939,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 5.09,
+        "dpa": 1.81,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 184.5
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 5970,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 2279,
+        "amortizaciones": 662,
+        "ebit": 1617,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 1257,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 6.9,
+        "dpa": 2.443,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 182.2
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 6677,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 2555,
+        "amortizaciones": 667,
+        "ebit": 1888,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 1526,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 8.46,
+        "dpa": 2.986,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 180.4
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 7146,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 2772,
+        "amortizaciones": 662,
+        "ebit": 2110,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 1600,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 8.96,
+        "dpa": 3.615,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 178.6
+      }
+    ],
+    "ltm": {
+      "periodo": "LTM jun-26",
+      "fecha_fin": "2026-06-30",
+      "ingresos": 7353,
+      "ebitda": 2847,
+      "ebit": 2167,
+      "beneficio_neto": 1650,
+      "bpa": 9.23,
+      "dpa": 3.615,
+      "dpa_extraordinario": 0,
+      "fcf": null,
+      "participadas_en_ebitda": null,
+      "no_recurrentes_en_ebitda": null
+    },
+    "cambios_perimetro": [],
+    "comentario": "Ventas de 4.271 M EUR en 2021 a 7.146 M en 2025 (TCAC del 13,7 %), todo orgánico: Ferrari no compra empresas [1, 6]. El crecimiento sale del precio, la mezcla y la personalización, no del volumen: los envíos de 2025 (13.640) fueron menores que los de 2024 (13.752) [15]. El margen EBITDA pasó del 35,8 % en 2021 al 38,8 % en 2025 y el EBIT del 25,2 % al 29,5 %, con la gama renovada (Purosangue, 12Cilindri, F80) y la Fórmula 1 con más patrocinio [1, 4]. En el 1S26 las ventas suben un 5,8 % (8 % en el 2T26, 11 % a tipos constantes) con envíos un 4 % menores, y el margen EBITDA se mantiene en el 39 % [2, 3]. El LTM de junio de 2026 es estimación propia: 2025 más el 1S26 menos el 1S25.",
+    "ajustes": "Ferrari publica cifras ajustadas (EBITDA, EBIT, BPA diluido ajustado) que en 2021-2025 coinciden con las publicadas: no hubo partidas no recurrentes relevantes [1, 4]. Usamos el beneficio y el BPA diluido publicados. El beneficio neto de 2024 (1.526 M) es el del comunicado; el BPA diluido (8,46 EUR), el de Stock Analysis [1, 6]. Las amortizaciones son EBITDA − EBIT. El coste de ventas, el resultado financiero y los impuestos por año no se pudieron leer: el tipo efectivo normalizado (≈22 %, con el patent box italiano) es estimación propia a partir del 20-F [9]. El DPA de 2021-2024 es el pagado con cargo a cada ejercicio (dividendos pagados ÷ acciones) [8]; el de 2025, 3,615 EUR aprobado en la junta de 2026 [11].",
+    "confianza": "Media"
+  },
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "1T25",
+        "ingresos": 1791,
+        "crecimiento_pct": 13,
+        "crecimiento_organico_pct": null,
+        "ebitda": 693,
+        "margen_ebitda_pct": 38.7,
+        "bpa": 2.3,
+        "vs_consenso": "Superior"
+      },
+      {
+        "periodo": "2T25",
+        "ingresos": 1788,
+        "crecimiento_pct": 4.4,
+        "crecimiento_organico_pct": null,
+        "ebitda": 709,
+        "margen_ebitda_pct": 39.7,
+        "bpa": 2.38,
+        "vs_consenso": "Inferior"
+      },
+      {
+        "periodo": "3T25",
+        "ingresos": 1766,
+        "crecimiento_pct": 7.4,
+        "crecimiento_organico_pct": null,
+        "ebitda": 670,
+        "margen_ebitda_pct": 37.9,
+        "bpa": 2.14,
+        "vs_consenso": "Superior"
+      },
+      {
+        "periodo": "4T25",
+        "ingresos": 1801,
+        "crecimiento_pct": 3.7,
+        "crecimiento_organico_pct": null,
+        "ebitda": 700,
+        "margen_ebitda_pct": 38.9,
+        "bpa": 2.14,
+        "vs_consenso": "Superior"
+      },
+      {
+        "periodo": "1T26",
+        "ingresos": 1848,
+        "crecimiento_pct": 3.2,
+        "crecimiento_organico_pct": 6,
+        "ebitda": 722,
+        "margen_ebitda_pct": 39.1,
+        "bpa": 2.33,
+        "vs_consenso": "Superior"
+      },
+      {
+        "periodo": "2T26",
+        "ingresos": 1938,
+        "crecimiento_pct": 8.4,
+        "crecimiento_organico_pct": 11,
+        "ebitda": 755,
+        "margen_ebitda_pct": 39,
+        "bpa": 2.62,
+        "vs_consenso": "Superior"
+      }
+    ],
+    "ultima_presentacion": "En el 1T26 (5 de mayo) la dirección bajó a propósito los envíos (3.436) para facilitar el cambio de modelos, confirmó la guía de 2026 y dijo que la cartera de pedidos se alarga hasta casi finales de 2027; el BPA (2,33 EUR) superó el consenso de ≈2,27 [13, 17]. En el 2T26 (30 de julio) el tono subió: ventas de 1.938 M (+8 %, +11 % a tipos constantes) frente a un consenso de ≈1.870 M, BPA de 2,62 EUR frente a 2,47 y subida de la guía del año (ventas de ≈7.600 M, EBITDA ajustado de al menos 2.970 M, BPA ajustado de al menos 9,68 EUR) [2, 12]. El mensaje se apoya en la personalización y la mezcla, con envíos del semestre un 4 % menores (6.802). Los analistas preguntaron por la demanda del Luce, el primer eléctrico (presentado el 25 de mayo), y por los aranceles de EE. UU.; la dirección avisó de más gastos de estructura, I+D y amortización en el segundo semestre (amortización de más de 700 M en el año) y no dio cifras de pedidos del Luce [12]. Del 4T25 al 2T26 el discurso pasa de «defender el margen con menos coches» a «subir la guía con menos coches».",
+    "confianza": "Media"
+  },
+  "balance": {
+    "historico": [
+      {
+        "periodo": "2024",
+        "activo_total": 9497,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 5954,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 1742,
+        "deuda_financiera": 3352,
+        "arrendamientos": null,
+        "patrimonio_neto": 3543,
+        "minoritarios": null,
+        "reservas": null
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 9628,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 5713,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 1417,
+        "deuda_financiera": 2834,
+        "arrendamientos": null,
+        "patrimonio_neto": 3915,
+        "minoritarios": null,
+        "reservas": null
+      }
+    ],
+    "vencimientos": [],
+    "liquidez": "Deuda industrial neta de solo 131 M EUR a 30-jun-2026 (caja neta de 388 M a marzo, antes de pagar más de 800 M a los accionistas en el trimestre) [2]. A 31-dic-2025: deuda neta total de 1.417 M, de la que 1.385 M es de servicios financieros (titulizaciones de préstamos a clientes de EE. UU.) y 32 M industrial [1].",
+    "rating": null,
+    "coste_deuda_pct": null,
+    "vida_media_anios": null,
+    "otros_pasivos": "La mayor parte de la deuda bruta (2.834 M a dic-25, con los arrendamientos dentro) financia la cartera de préstamos a clientes de Ferrari Financial Services en EE. UU. mediante titulizaciones: su deuda neta (1.385 M) está respaldada por esos préstamos, así que la tratamos como un negocio aparte y no la llevamos al puente [1, 14]. Ferrari incluye los arrendamientos (NIIF 16) dentro de la deuda. No hay pensiones relevantes. Los anticipos de clientes por pedidos (que financian parte del circulante) no se pudieron cuantificar. Los detalles de covenants, vencimientos y rating no se pudieron leer desde este entorno.",
+    "comentario": "Ferrari financia su crecimiento, sus inversiones (≈950 M al año) y el reparto a los accionistas con su propia caja: la deuda industrial neta bajó de 180 M a 32 M en 2025 después de repartir más de 1.300 M entre dividendos y recompras [1]. Subió a 131 M en junio de 2026 por el dividendo de mayo (≈638 M) y las recompras [2, 11]. El balance agregado mezcla dos negocios: el industrial, casi sin deuda, y el de financiación a clientes, con deuda titulizada respaldada por préstamos. Solo damos el balance de 2024 y 2025: de 2021-2023 no se pudo leer la deuda bruta ni el patrimonio de 2022, y con medio balance el ROIC sale sin sentido. El pasivo total es activo menos patrimonio; el desglose del circulante no se pudo leer.",
+    "confianza": "Media"
+  },
+  "flujos": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 1283,
+        "capex": null,
+        "pagos_arrendamientos": null,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 160.1,
+        "recompras": 230.9,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 1403,
+        "capex": 805,
+        "pagos_arrendamientos": null,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 249.5,
+        "recompras": 396.5,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 1717,
+        "capex": 867,
+        "pagos_arrendamientos": null,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 328.6,
+        "recompras": 460.6,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 1927,
+        "capex": 940,
+        "pagos_arrendamientos": null,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 439.9,
+        "recompras": 581.1,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 2349,
+        "capex": 947,
+        "pagos_arrendamientos": null,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 529.7,
+        "recompras": 785.3,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      }
+    ],
+    "comentario": "El flujo operativo pasó de 1.283 M en 2021 a 2.349 M en 2025 [8, 9]. La inversión total (material más intangible, casi todo desarrollo de modelos) ronda los 950 M al año desde 2024, un 13 % de las ventas: 485 M de material y 462 M de intangible en 2025 [8]. En 2022-2023 usamos la salida de caja de inversión del 20-F (805 y 867 M), que es casi toda capex; en 2021 no tenemos el intangible y el capex queda vacío [9]. El flujo libre industrial que publica la empresa (1.538 M en 2025, +50 %) excluye la variación de la cartera de préstamos a clientes [1]. El plan 2026-2030 prevé ≈4.700 M de capex (≈940 M al año, el 80 % en producto) y ≈8.000 M de flujo libre industrial acumulado [18, 19]. No hay compras: todo el capex es crecimiento orgánico y renovación de gama.",
+    "confianza": "Media"
+  },
+  "calidad": {
+    "auditor": null,
+    "anios_auditor": null,
+    "opinion": null,
+    "comentario": "Las cuentas son sencillas: un solo negocio de coches con Fórmula 1, patrocinio y marca, sin compras ni deterioros, y cifras ajustadas iguales a las publicadas en 2021-2025 [1, 4]. El punto que más mueve el beneficio es la capitalización del desarrollo de modelos: de 919 M de I+D en 2025, una parte se capitaliza como intangible (462 M de inversión en intangible en 2025) y se amortiza en la vida del modelo [8, 9]. La amortización sube (más de 700 M en 2026) a medida que entran los modelos nuevos. El otro punto es el negocio de financiación a clientes de EE. UU., que infla el balance y la deuda bruta. El auditor, su antigüedad y la opinión no se pudieron leer desde este entorno.",
+    "senales": [
+      {
+        "senal": "Capitalización del desarrollo",
+        "nivel": "Baja",
+        "comentario": "Capitaliza ≈460 M al año de desarrollo; es práctica del sector y la amortización ya crece al mismo ritmo [8]."
+      },
+      {
+        "senal": "Financiación a clientes",
+        "nivel": "Baja",
+        "comentario": "Deuda titulizada de 1.385 M respaldada por préstamos de clientes de EE. UU.; riesgo de crédito acotado a una clientela muy solvente [1]."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "rentabilidad": {
+    "comentario": "Ferrari crea mucho valor: ROIC del 27,5 % en 2024 y del 30,2 % en 2025 frente a un WACC del 8,90 %, unos 21 puntos de diferencial. Lo mueve el margen (beneficio neto del 22,4 % de las ventas), no la rotación (0,75 veces). El capital invertido incluye la financiación a clientes de EE. UU. (1.385 M netos de deuda a dic-25), que no es capital operativo: sin ella, el ROIC del negocio industrial sería mayor [1]. Solo damos 2024-2025 porque el balance de 2021-2023 no se pudo completar desde este entorno. GuruFocus da un ROIC del 23 % y TipRanks del 19 %, con otras definiciones [37]. Es el más alto del sector: Lamborghini tiene un margen EBIT del 24 % y Aston Martin pierde dinero [22, 23].",
+    "confianza": "Media"
+  },
+  "capital": {
+    "politica": "Reparto del 40 % del beneficio neto ajustado en dividendo (antes, 35 %) y recompras de ≈3.500 M en 2026-2030, aprobadas con el plan del día del inversor de octubre de 2025 [15, 19]. Con cargo a 2025 se pagaron 3,615 EUR por acción (≈638-640 M) el 5 de mayo de 2026 [11]. El primer programa de ≈2.000 M terminó un año antes de lo previsto; del nuevo se llevaban comprados 627,7 M desde el 5-ene-2026 hasta el 9-oct-2026 [20]. La junta de abril de 2026 aprobó amortizar la autocartera acumulada [20].",
+    "adquisiciones": [],
+    "comentario": "Ferrari es un asignador de capital disciplinado y simple: no compra empresas, reinvierte ≈950 M al año en producto y devuelve casi todo lo demás. De 2021 a 2025 repartió 1.708 M en dividendos y 2.454 M en recompras frente a 8.679 M de flujo operativo [8]. Las acciones diluidas bajaron de 185,1 M a 178,6 M (−3,5 %) y hoy hay ≈175,9 M en circulación tras la amortización de abril de 2026 [6, 20]. El riesgo es haber recomprado caro: el precio medio de 2026 ronda los 309 EUR por acción (627,7 M ÷ 2,03 M de acciones), por debajo del precio actual.",
+    "confianza": "Media"
+  },
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "Benedetto Vigna",
+        "cargo": "Consejero delegado",
+        "desde": "2021",
+        "participacion_pct": null,
+        "trayectoria": "Venía de STMicroelectronics, donde dirigía la división de sensores y analógicos. Con él las ventas pasaron de 4.271 M EUR (2021) a 7.146 M (2025) y el margen EBIT del 25,2 % al 29,5 %; cumplió o superó la guía cada año [1, 6]."
+      },
+      {
+        "nombre": "John Elkann",
+        "cargo": "Presidente ejecutivo",
+        "desde": "2018",
+        "participacion_pct": null,
+        "trayectoria": "Consejero delegado de Exor, primer accionista de Ferrari (≈21 % del capital y ≈32 % de los votos) [26]."
+      },
+      {
+        "nombre": "Piero Ferrari",
+        "cargo": "Vicepresidente",
+        "desde": "2016",
+        "participacion_pct": 10.61,
+        "trayectoria": "Hijo del fundador; conserva el ≈10,6 % del capital y el ≈16 % de los votos a través de un trust del que tiene el usufructo [26, 27]."
+      }
+    ],
+    "historial_guidance": [
+      {
+        "anio": "2025",
+        "guia": "Ventas de ≈7.000 M y EBITDA ajustado ≥ 2.680 M; BPA ajustado ≥ 8,60 EUR (guía elevada en el año)",
+        "real": "Ventas de 7.146 M, EBITDA de 2.772 M y BPA de 8,96 EUR",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2024",
+        "guia": "Ventas > 6.400 M y EBITDA ajustado ≥ 2.450 M (guía elevada en el año)",
+        "real": "Ventas de 6.677 M y EBITDA de 2.555 M",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2026",
+        "guia": "Ventas de ≈7.600 M, EBITDA ajustado ≥ 2.970 M y BPA ajustado ≥ 9,68 EUR (elevada el 30-jul-2026)",
+        "real": "En curso: 1S26 con ventas de 3.786 M y EBITDA de 1.477 M",
+        "cumplida": "Parcial"
+      },
+      {
+        "anio": "2022-2026 (plan de 2022)",
+        "guia": "Ventas de 6.700-7.100 M y EBITDA de 2.500-2.700 M en 2026",
+        "real": "Superado en 2025: 7.146 M de ventas y 2.772 M de EBITDA",
+        "cumplida": "Sí"
+      }
+    ],
+    "comentario": "Equipo estable y creíble: Vigna ha cumplido o superado la guía de los cuatro últimos años y alcanzó el plan de 2026 un año antes [1, 2]. La guía de 2026 se elevó en julio con los envíos cayendo un 4 %, lo que confirma que el crecimiento viene del precio y la mezcla. La duda de credibilidad no está en las cifras sino en la estrategia eléctrica: el objetivo de gama eléctrica en 2030 se recortó del 40 % al 20 % en el día del inversor de 2025 [19]. Sucesión: Vigna no tiene sustituto público; Elkann da continuidad desde la presidencia.",
+    "confianza": "Media"
+  },
+  "gobierno": {
+    "consejo": [
+      {
+        "nombre": "John Elkann",
+        "cargo": "Presidente ejecutivo",
+        "tipo": "Dominical",
+        "desde": "2016",
+        "comisiones": null
+      },
+      {
+        "nombre": "Benedetto Vigna",
+        "cargo": "Consejero delegado",
+        "tipo": "Ejecutivo",
+        "desde": "2021",
+        "comisiones": null
+      },
+      {
+        "nombre": "Piero Ferrari",
+        "cargo": "Vicepresidente",
+        "tipo": "Dominical",
+        "desde": "2016",
+        "comisiones": null
+      }
+    ],
+    "presidente_ceo_separados": true,
+    "presidente_ejecutivo": true,
+    "consejero_coordinador": null,
+    "una_accion_un_voto": false,
+    "operaciones_vinculadas_relevantes": false,
+    "variable_ligado_rentabilidad": null,
+    "auditoria_independiente": null,
+    "insiders_sin_operaciones": null,
+    "accionista_control": true,
+    "presidente_vinculado_control": true,
+    "cambios_cupula_24m": 0,
+    "voto_remuneracion_pct": null,
+    "voto_remuneracion_contra_pct": null,
+    "voto_remuneracion_contra_libre_pct": null,
+    "voto_cupula_pct": null,
+    "remuneracion_ceo": null,
+    "remuneracion": "La política de remuneración se votó en la junta del 15 de abril de 2026, que aprobó todas las propuestas [30]. No se pudieron leer los importes de 2025, las métricas del variable ni el porcentaje de votos en contra desde este entorno: la sección de remuneración queda incompleta.",
+    "accionistas": [
+      {
+        "nombre": "Exor N.V. (familia Agnelli)",
+        "pct": 21.2,
+        "tipo": "Control (pacto con Piero Ferrari)",
+        "variacion": "Sube de forma pasiva con las amortizaciones de autocartera; 32,2 % de los votos (mar-25) [26]"
+      },
+      {
+        "nombre": "Piero Ferrari (trust)",
+        "pct": 10.61,
+        "tipo": "Pacto con Exor",
+        "variacion": "16,1 % de los votos; el nuevo pacto le permite vender un 5 % [26, 29]"
+      },
+      {
+        "nombre": "Autocartera",
+        "pct": 1.08,
+        "tipo": "Autocartera",
+        "variacion": "1,92 M de acciones a 9-oct-2026, tras amortizar la acumulada en abril de 2026 [20]"
+      }
+    ],
+    "insiders": [],
+    "control_y_defensas": "Exor y Piero Ferrari controlan la junta con un pacto renovado hasta 2029 que reúne ≈32 % del capital y ≈48 % de los votos [28]. El control se apoya en acciones especiales de voto por lealtad (63,3 M emitidas): cada acción común con tres años de registro da un voto especial adicional; Exor tiene 37,8 M y el trust de Piero Ferrari 18,9 M [27]. Es un blindaje: sin el pacto nadie puede lanzar una OPA con éxito. El pacto se disuelve si los votos pasan del usufructo de Piero Ferrari al trust, para evitar una OPA conjunta obligatoria [28, 29]. Es una sociedad neerlandesa con sede fiscal en Italia.",
+    "alertas": [
+      "Voto por lealtad que da a Exor y a Piero Ferrari ≈48 % de los votos con ≈32 % del capital [27, 28].",
+      "Presidente ejecutivo que es el consejero delegado del accionista de control (Exor) [26]."
+    ],
+    "confianza": "Baja"
+  },
+  "consenso": {
+    "guidance": "Guía de 2026 elevada el 30-jul-2026: ventas de ≈7.600 M EUR (antes ≈7.500 M), EBITDA ajustado de al menos 2.970 M (margen ≥ 39 %), EBIT ajustado de al menos 2.260 M (≥ 29,5 %), BPA diluido ajustado de al menos 9,68 EUR (antes 9,45) y flujo libre industrial de al menos 1.550 M [2, 12]. Plan a 2030 (día del inversor del 9-oct-2025): ventas de ≈9.000 M, EBITDA ajustado ≥ 3.600 M (≥ 40 %), EBIT ajustado ≥ 2.750 M (≥ 30 %), BPA ajustado ≥ 11,50 EUR, flujo libre industrial acumulado de ≈8.000 M en 2026-2030 y capex de ≈4.700 M [18, 19, 21].",
+    "estimaciones": [
+      {
+        "periodo": "2026e",
+        "ingresos": null,
+        "ebitda": 2962,
+        "ebit": 2244,
+        "bpa": 9.73,
+        "dpa": null,
+        "fuente": "MarketScreener (beneficio neto de 1.712 M ÷ 175,9 M de acciones) [32]"
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": null,
+        "ebitda": 3214,
+        "ebit": 2439,
+        "bpa": 10.56,
+        "dpa": null,
+        "fuente": "MarketScreener (1.857 M ÷ 175,9 M) [32]"
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": null,
+        "ebitda": 3428,
+        "ebit": 2620,
+        "bpa": 11.25,
+        "dpa": null,
+        "fuente": "MarketScreener (1.979 M ÷ 175,9 M) [32]"
+      }
+    ],
+    "recomendaciones": {
+      "n_analistas": 18,
+      "comprar": 12,
+      "mantener": 6,
+      "vender": 0,
+      "po_medio": 423,
+      "po_min": null,
+      "po_max": null
+    },
+    "revisiones": "El consenso de beneficio subió algo tras el 2T26: a finales de 2025 Equita citaba un BPA de consenso de 9,74 / 10,62 / 11,28 EUR para 2026-2028 y hoy MarketScreener da un beneficio neto equivalente a 9,73 / 10,56 / 11,25 EUR con nuestras acciones: estable [32, 33]. Los precios objetivo se movieron poco: Bank of America subió a 400 EUR en julio y Goldman Sachs de 407 a 421 EUR, mientras Jefferies recortó estimaciones y objetivo [34, 42]. El objetivo medio ronda los 423 EUR con 12 de 18 analistas en comprar [31]. Solo una fuente con estimaciones completas (MarketScreener); el reparto de mantener y vender es estimación (18 − 12, sin ventas citadas).",
+    "base_ebitda": "NIIF",
+    "ajuste_ebitda_pct_ventas": null,
+    "confianza": "Baja"
+  },
+  "bolsa": null,
+  "multiplos_historicos": {
+    "serie": [
+      {
+        "anio": "2021",
+        "precio_cierre": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2022",
+        "precio_cierre": 198.1,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2023",
+        "precio_cierre": 304.3,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2024",
+        "precio_cierre": 408.9,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2025",
+        "precio_cierre": 319,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      }
+    ],
+    "comentario": "Los cierres de 2022-2024 son estimación propia: el cierre anual de la acción en Nueva York (Macrotrends, ajustado por dividendos) convertido a euros con el tipo del BCE de fin de año [35]; el de 2025 se deriva de una subida del ≈1 % en el año con la acción a ≈322 EUR el 12-ene-2026 [36]. Con ellos, el PER de cierre fue de 38,9x en 2022, 44,1x en 2023, 48,3x en 2024 y 35,6x en 2025 (mediana 41,5x). Hoy, a 345,25 EUR, Ferrari cotiza a ≈37x el BPA de los últimos 12 meses y a ≈33x nuestro BPA de 2027e: el mercado ha recortado el múltiplo tras el día del inversor de octubre de 2025 (crecimiento a 2030 del ≈5 % anual) y la acogida fría del Luce [19, 24].",
+    "confianza": "Baja"
+  },
+  "comparables": {
+    "criterio": "No hay comparables puros cotizados: Lamborghini es de Volkswagen, McLaren no cotiza y Aston Martin pierde dinero. Usamos los grupos europeos de lujo, que es como valora el mercado a Ferrari: LVMH, Hermès, Richemont, Kering, Prada, Brunello Cucinelli y Moncler, con las cifras de MarketScreener a 8-9 de octubre de 2026 recogidas para los informes de LVMH, Hermès y Moncler de este repositorio [38]. Fuera Porsche AG y Aston Martin (fabricantes de coches en caída o en pérdidas, sin cifras comparables gratuitas).",
+    "empresas": [
+      {
+        "nombre": "LVMH",
+        "ticker": "MC.PA",
+        "pais": "FR",
+        "capitalizacion": 187963,
+        "ev_ventas": 2.73,
+        "ev_ebitda_ltm": 9.1,
+        "ev_ebitda_ntm": 8.5,
+        "per_ntm": 15.9,
+        "crecimiento_pct": 3.7,
+        "margen_ebitda_pct": 30.1,
+        "roic_pct": 12.7,
+        "dn_ebitda": 1,
+        "fcf_yield_pct": 6.1
+      },
+      {
+        "nombre": "Hermès",
+        "ticker": "RMS.PA",
+        "pais": "FR",
+        "capitalizacion": 134070,
+        "ev_ventas": 7.76,
+        "ev_ebitda_ltm": 16.6,
+        "ev_ebitda_ntm": 15.6,
+        "per_ntm": 27,
+        "crecimiento_pct": 5.8,
+        "margen_ebitda_pct": 46.8,
+        "roic_pct": null,
+        "dn_ebitda": -1.32,
+        "fcf_yield_pct": 3.1
+      },
+      {
+        "nombre": "Richemont",
+        "ticker": "CFR.SW",
+        "pais": "CH",
+        "capitalizacion": 106204,
+        "ev_ventas": 4.36,
+        "ev_ebitda_ltm": 16,
+        "ev_ebitda_ntm": 12.8,
+        "per_ntm": 22.4,
+        "crecimiento_pct": 16.7,
+        "margen_ebitda_pct": 27.2,
+        "roic_pct": null,
+        "dn_ebitda": -1.39,
+        "fcf_yield_pct": 3.7
+      },
+      {
+        "nombre": "Kering",
+        "ticker": "KER.PA",
+        "pais": "FR",
+        "capitalizacion": 25995,
+        "ev_ventas": 2.32,
+        "ev_ebitda_ltm": 9.3,
+        "ev_ebitda_ntm": 8.3,
+        "per_ntm": 26.6,
+        "crecimiento_pct": 2.4,
+        "margen_ebitda_pct": 25,
+        "roic_pct": null,
+        "dn_ebitda": 2.19,
+        "fcf_yield_pct": 8.8
+      },
+      {
+        "nombre": "Prada",
+        "ticker": "1913.HK",
+        "pais": "IT",
+        "capitalizacion": 10784,
+        "ev_ventas": 2.51,
+        "ev_ebitda_ltm": 6.7,
+        "ev_ebitda_ntm": 6.4,
+        "per_ntm": 13,
+        "crecimiento_pct": 9,
+        "margen_ebitda_pct": 37.4,
+        "roic_pct": null,
+        "dn_ebitda": 1.67,
+        "fcf_yield_pct": 9.7
+      },
+      {
+        "nombre": "Brunello Cucinelli",
+        "ticker": "BC.MI",
+        "pais": "IT",
+        "capitalizacion": 5447,
+        "ev_ventas": 4.57,
+        "ev_ebitda_ltm": 15.4,
+        "ev_ebitda_ntm": 12.8,
+        "per_ntm": 31.7,
+        "crecimiento_pct": 10.2,
+        "margen_ebitda_pct": 29.6,
+        "roic_pct": null,
+        "dn_ebitda": 2.36,
+        "fcf_yield_pct": 1.9
+      },
+      {
+        "nombre": "Moncler",
+        "ticker": "MONC.MI",
+        "pais": "IT",
+        "capitalizacion": 11816,
+        "ev_ventas": 3.7,
+        "ev_ebitda_ltm": 9.2,
+        "ev_ebitda_ntm": 8.9,
+        "per_ntm": 17,
+        "crecimiento_pct": 4.6,
+        "margen_ebitda_pct": 40.2,
+        "roic_pct": 20.4,
+        "dn_ebitda": 0,
+        "fcf_yield_pct": 4.6
+      }
+    ],
+    "comentario": "Ferrari cotiza a 19,3 veces el EBITDA de los próximos 12 meses y a 33,3 veces el beneficio, por encima de todos los grupos de lujo: Hermès, el más caro, cotiza a 15,6x y 27,0x [38]. La prima se ha justificado históricamente por un crecimiento y una visibilidad (cartera de casi dos años) que el lujo personal no tiene, y por un ROIC del 30 % [17]. Pero la prima sobre Hermès ya no se apoya en el crecimiento: el plan de Ferrari a 2030 da un 4,7 % anual de ventas, en línea con Hermès [19]. Aplicar la mediana del grupo da 159,15 EUR por acción (EV/EBITDA) y 232,57 EUR (PER): los comparables no sostienen el precio. Usaríamos el PER, porque el EV/EBITDA penaliza a Ferrari por la amortización del desarrollo de modelos.",
+    "confianza": "Media"
+  },
+  "transacciones": {
+    "operaciones": [
+      {
+        "fecha": "2021-01",
+        "objetivo": "Tiffany & Co.",
+        "comprador": "LVMH",
+        "ev": 16561,
+        "ev_ventas": 3.83,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Lujo, no automóvil: precio renegociado tras la pandemia [38]."
+      },
+      {
+        "fecha": "2018-12",
+        "objetivo": "Belmond",
+        "comprador": "LVMH",
+        "ev": 2836,
+        "ev_ventas": 5.59,
+        "ev_ebitda": 22.9,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Hoteles de lujo [38]."
+      },
+      {
+        "fecha": "2020-12",
+        "objetivo": "Stone Island",
+        "comprador": "Moncler",
+        "ev": 1150,
+        "ev_ventas": 4.79,
+        "ev_ebitda": 17.1,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Ropa de lujo [38]."
+      },
+      {
+        "fecha": "2023-08",
+        "objetivo": "Capri Holdings",
+        "comprador": "Tapestry",
+        "ev": 7714,
+        "ev_ventas": 1.51,
+        "ev_ebitda": 9,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Lujo asequible; operación bloqueada y cancelada [38]."
+      },
+      {
+        "fecha": "2025-04",
+        "objetivo": "Versace",
+        "comprador": "Prada",
+        "ev": 1250,
+        "ev_ventas": 1.67,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Marca en pérdidas [38]."
+      }
+    ],
+    "comentario": "No hay operaciones de deportivos de lujo con múltiplo público reciente: McLaren y Aston Martin cambiaron de manos en pérdidas, y Lamborghini no se vende. Las transacciones del lujo (1,5-5,6 veces las ventas) dan una mediana de 276,02 EUR por acción, también por debajo del precio. Ferrari no es objeto de OPA: Exor y Piero Ferrari controlan ≈48 % de los votos con un pacto hasta 2029 [28]. Las transacciones no pesan en el valor objetivo.",
+    "confianza": "Baja"
+  },
+  "dcf": {
+    "anios": [
+      {
+        "periodo": "2026e",
+        "crecimiento_pct": 6.4,
+        "margen_ebitda_pct": 39.1,
+        "amortizacion_pct_ventas": 9.5,
+        "capex_pct_ventas": 12.5,
+        "nwc_pct_ventas": 3,
+        "tasa_impositiva_pct": 22,
+        "fijo": true
+      },
+      {
+        "periodo": "2027e",
+        "crecimiento_pct": 5.5,
+        "margen_ebitda_pct": 39.3,
+        "amortizacion_pct_ventas": 9.7,
+        "capex_pct_ventas": 12,
+        "nwc_pct_ventas": 3,
+        "tasa_impositiva_pct": 22,
+        "fijo": false
+      },
+      {
+        "periodo": "2028e",
+        "crecimiento_pct": 5,
+        "margen_ebitda_pct": 39.5,
+        "amortizacion_pct_ventas": 9.8,
+        "capex_pct_ventas": 11.5,
+        "nwc_pct_ventas": 3,
+        "tasa_impositiva_pct": 22,
+        "fijo": false
+      },
+      {
+        "periodo": "2029e",
+        "crecimiento_pct": 4,
+        "margen_ebitda_pct": 39.7,
+        "amortizacion_pct_ventas": 9.8,
+        "capex_pct_ventas": 11,
+        "nwc_pct_ventas": 3,
+        "tasa_impositiva_pct": 22,
+        "fijo": false
+      },
+      {
+        "periodo": "2030e",
+        "crecimiento_pct": 4,
+        "margen_ebitda_pct": 40,
+        "amortizacion_pct_ventas": 9.8,
+        "capex_pct_ventas": 11,
+        "nwc_pct_ventas": 3,
+        "tasa_impositiva_pct": 22,
+        "fijo": false
+      },
+      {
+        "periodo": "2031e",
+        "crecimiento_pct": 4,
+        "margen_ebitda_pct": 40,
+        "amortizacion_pct_ventas": 9.8,
+        "capex_pct_ventas": 10.5,
+        "nwc_pct_ventas": 3,
+        "tasa_impositiva_pct": 22,
+        "fijo": false
+      },
+      {
+        "periodo": "2032e",
+        "crecimiento_pct": 3.5,
+        "margen_ebitda_pct": 40,
+        "amortizacion_pct_ventas": 9.8,
+        "capex_pct_ventas": 10.5,
+        "nwc_pct_ventas": 3,
+        "tasa_impositiva_pct": 22,
+        "fijo": false
+      },
+      {
+        "periodo": "2033e",
+        "crecimiento_pct": 3.5,
+        "margen_ebitda_pct": 40,
+        "amortizacion_pct_ventas": 9.8,
+        "capex_pct_ventas": 10,
+        "nwc_pct_ventas": 3,
+        "tasa_impositiva_pct": 22,
+        "fijo": false
+      },
+      {
+        "periodo": "2034e",
+        "crecimiento_pct": 3,
+        "margen_ebitda_pct": 40,
+        "amortizacion_pct_ventas": 9.8,
+        "capex_pct_ventas": 10,
+        "nwc_pct_ventas": 3,
+        "tasa_impositiva_pct": 22,
+        "fijo": false
+      },
+      {
+        "periodo": "2035e",
+        "crecimiento_pct": 3,
+        "margen_ebitda_pct": 40,
+        "amortizacion_pct_ventas": 9.8,
+        "capex_pct_ventas": 10,
+        "nwc_pct_ventas": 3,
+        "tasa_impositiva_pct": 22,
+        "fijo": false
+      }
+    ],
+    "wacc": {
+      "tasa_libre_pct": 3.53,
+      "beta": 1,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 0,
+      "coste_deuda_pct": 3.5,
+      "tasa_impositiva_pct": 22,
+      "peso_deuda_pct": 2
+    },
+    "terminal": {
+      "metodo": "gordon",
+      "crecimiento_pct": 2.5,
+      "multiplo_salida": 20
+    },
+    "etapa2": {
+      "usar": false,
+      "anios": 5,
+      "margen_final_pct": null,
+      "justificacion": null
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "Partimos de 2025 (7.146 M EUR) [1]. 2026e queda fijo en +6,4 % (≈7.600 M, la guía elevada en julio con dos trimestres publicados: +5,8 % en el 1S26 y +11 % a tipos constantes en el 2T26) [2]. Después, +5,5 % y +5 % en 2027-2028 y +4 % en 2029-2031, que llevan a 9.109 M en 2030e, en línea con el objetivo del plan (≈9.000 M) [19]; el consenso de EBITDA de 2028e (3.428 M) implica algo más [32]. Bajamos al 3 % al final. Es menos que el 13,7 % anual de 2021-2025, que llevaba la salida de la pandemia y una renovación completa de gama.",
+      "margenes": "Margen EBITDA del 39,1 % en 2026e (guía ≥ 39 %), 39,5 % en 2028e y 40,0 % desde 2030e, el objetivo del plan (≥ 40 %) [2, 19]. Ha subido del 35,8 % en 2021 al 38,8 % en 2025 [1, 6]. No suponemos más mejora: la amortización y el I+D del eléctrico suben.",
+      "inversion": "Capex del 12,5 % de las ventas en 2026e, bajando al 11 % en 2029-2030 y al 10 % al final: el plan prevé ≈4.700 M en 2026-2030 (≈11-12 % de las ventas) frente al 13 % de 2025 [8, 18]. Amortización del 9,5-9,8 % (9,3 % en 2025; más de 700 M en 2026) [12]. Circulante del 3 % de las ventas, estimación propia: los anticipos de clientes financian buena parte de existencias y clientes. Tipo impositivo del 22 % (patent box).",
+      "wacc": "Bund a 10 años del 3,53 % (9-oct-2026) [39]; beta de 1,0 (Ferrari ha sido menos volátil que el lujo, para el que usamos 1,2 en Hermès y Moncler, pero no tenemos su beta de 5 años); prima de mercado del 5,5 %; coste de la deuda del 3,5 % con un peso del 2 %. WACC del 8,90 %. Con la prima implícita del mercado (4,2 %) el WACC baja al 7,63 % [40]. La recomendación no depende de la beta: ni con un WACC del 7,6 % el DCF llega al precio.",
+      "terminal": "Crecimiento a perpetuidad del 2,5 %: inflación del euro (2 %) más medio punto real, por debajo del Bund menos medio punto (3,03 %). Con un margen EBITDA del 40 % y un capex del 10 %, el valor terminal es el 58 % del valor. Equivale a ≈19 veces el NOPAT final: menos de lo que el mercado ha pagado por Ferrari (PER de 36-48x en 2022-2025), y esa es la razón de la distancia con el precio."
+    },
+    "sostenibilidad": {
+      "puente_ingresos": [
+        {
+          "periodo": "2026e",
+          "volumen_pct": -3,
+          "precio_pct": 11.4,
+          "otros_pct": -2,
+          "comentario": "Envíos un 3 % menores (−4 % en el 1S26) por el cambio de gama; precio, mezcla y personalización de +11,4 % (F80, 849 Testarossa, 296 Speciale) y −2 puntos de divisa [2, 12]."
+        },
+        {
+          "periodo": "2027e",
+          "volumen_pct": 1,
+          "precio_pct": 4.5,
+          "otros_pct": 0,
+          "comentario": "Entregas del Luce y de los modelos nuevos: volumen +1 %; precio y mezcla +4,5 %."
+        },
+        {
+          "periodo": "2028e",
+          "volumen_pct": 1,
+          "precio_pct": 4,
+          "otros_pct": 0,
+          "comentario": "Volumen +1 % y precio +4 %: el ritmo del plan a 2030 [19]."
+        },
+        {
+          "periodo": "2029e",
+          "volumen_pct": 0.5,
+          "precio_pct": 3.5,
+          "otros_pct": 0,
+          "comentario": "Volumen casi plano (escasez deliberada) y precio +3,5 %."
+        },
+        {
+          "periodo": "2030e",
+          "volumen_pct": 0.5,
+          "precio_pct": 3.5,
+          "otros_pct": 0,
+          "comentario": "Igual que 2029e: ventas de 9.109 M, el objetivo del plan."
+        }
+      ],
+      "mercado_final": null,
+      "veredicto": "Sí",
+      "justificacion": "Sí. La proyección (4,2 % anual de media) pide menos de la mitad de lo que Ferrari creció en 2021-2025 (13,7 %) y coincide con su propio plan a 2030 [19]. La reinversión neta es baja (6 % del NOPAT; el motor no hace la prueba con menos del 15 %), así que la prueba es de poder de precio, y está demostrada: ingresos por coche de ≈380.000 EUR en 2021 a ≈524.000 en 2025 con márgenes al alza y envíos planos, y una guía de 2026 elevada con envíos un 4 % menores [1, 2]. La prueba de cuota se hace a mano: con el volumen casi plano (+0,5-1 % al año) la cuota en unidades no sube. El ROIC del 30,2 % frente a un WACC del 8,90 % da margen. La duda no es la calidad sino el precio que se paga por ella."
+    },
+    "lectura": "El DCF da 176,92 EUR por acción, un 48,8 % por debajo de 345,25 EUR, con un WACC del 8,90 % y un valor terminal del 58 %. El DCF inverso dice que el precio descuenta un crecimiento del 13,8 % anual en 2027-2035, frente al 3,9 % de nuestro base en esos años, o una rentabilidad del 5,8 % anual con nuestras cifras: menos que nuestro WACC (8,90 %) y que el que hoy pide el mercado (7,63 %). Es muy exigente: Ferrari tendría que repetir durante nueve años el crecimiento de la salida de la pandemia, cuando su propio plan da un 4,7 % anual hasta 2030. Ni con la prima implícita del mercado (214,06 EUR) ni con un WACC del 7,9 % y un crecimiento terminal del 3,5 % (242,19 EUR) el DCF se acerca al precio. El precio no paga flujos: paga la escasez y la marca con un múltiplo que el mercado lleva diez años sosteniendo y que ya ha empezado a recortar.",
+    "confianza": "Baja"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": -3,
+        "ajuste_margen_pp": -2,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": 2,
+        "multiplo_salida": null,
+        "narrativa": "El Luce no convence, China y Oriente Medio frenan y los aranceles comen margen: ventas +2-3 % al año y margen EBITDA del 37,5 %, como en 2023-2024 sin los modelos limitados. El mercado deja de pagar la prima y el PER baja a 28x."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Ferrari cumple su plan: ventas del 5-6 % hasta 2028 y del 4 % después, por precio y personalización con volumen casi plano; margen EBITDA hacia el 40 %."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": 1.5,
+        "ajuste_margen_pp": 1,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "El F80, la personalización y un Luce bien recibido llevan las ventas al 6,5-7 % anual y el margen al 40,5 %; el mercado vuelve a pagar el PER medio de 2022-2025 (≈42x)."
+      }
+    ],
+    "comentario": "Con el DCF los tres escenarios quedan por debajo del precio: 128,65 EUR en el bajista (−62,7 %), 176,92 en el base (−48,8 %) y 202,68 en el alcista (−41,3 %). La lectura a 12 meses es otra, porque el mercado valora a Ferrari por múltiplo: el bajista pierde un 20,3 % (271,68 EUR), el base gana un 6,5 % y el alcista un 41,5 % (484,97 EUR). La asimetría a 12 meses es favorable (≈2x), pero solo porque el alcista supone volver al PER de 42x; con el DCF no hay escenario que justifique el precio.",
+    "confianza": "Baja"
+  },
+  "suma_partes": {
+    "aplica": false,
+    "descuento_holding_pct": 0,
+    "partes": [],
+    "comentario": "No aplica: coches, patrocinio y marca forman un solo negocio (la Fórmula 1 es marketing de los coches); la financiación a clientes se trata aparte en el puente. Ferrari no publica el resultado por línea de ingresos.",
+    "confianza": "Baja"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2026-06-30",
+      "deuda_financiera": 131,
+      "arrendamientos": 0,
+      "caja": 0,
+      "minoritarios": 0,
+      "pensiones": 0,
+      "asociadas": 0,
+      "otros_ajustes": 0
+    },
+    "rab": null,
+    "referencia_mercado": {
+      "mercado": "S&P 500, prima implícita de Damodaran (válida para mercados desarrollados)",
+      "prima_implicita_pct": 4.2,
+      "fecha": "2026-10",
+      "fuente": "Damodaran, ERPbymonth.xlsx, columna «ERP (T12m with sustainable payout)» [40]"
+    },
+    "pesos": {
+      "dcf": 50,
+      "comparables": 20,
+      "transacciones": 0,
+      "suma_partes": 0,
+      "escenarios": 30
+    },
+    "objetivo_12m": {
+      "ejercicio": "2028e",
+      "casos": [
+        {
+          "escenario": "Bajista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 9.6,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 7.949 M en 2028e (+2,5 % en 2027 y +2 % en 2028: el Luce no vende, los aranceles y China frenan la mezcla) con un margen EBITDA del 37,5 %: EBIT de ≈2.200 M, 30 M de coste financiero neto, impuesto del 22 %, 5 M de minoritarios y 175,9 M de acciones sin recompras no anunciadas."
+        },
+        {
+          "escenario": "Base",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 10.93,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 8.422 M (+6,4 % en 2026 con la guía, +5,5 % y +5 %) y margen EBITDA del 39,5 %, camino del 40 % del plan de 2030: EBIT de 2.502 M (amortización del 9,8 %), 30 M de coste financiero neto, impuesto del 22 %, 5 M de minoritarios y 175,9 M de acciones."
+        },
+        {
+          "escenario": "Alcista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 11.63,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 8.664 M (+7 % y +6,5 % con el F80, la personalización y el Luce bien recibido) y margen EBITDA del 40,5 %: EBIT de 2.660 M."
+        }
+      ],
+      "per_historico": {
+        "actual": 33.3,
+        "mediana_5a": 41.5,
+        "minimo_5a": 35.6,
+        "media_larga": 41.7,
+        "excluidos": "Ningún año excluido, pero la serie es corta: 2022-2025, porque el cierre de 2021 en euros no se pudo obtener. PER de cierre sobre el BPA diluido publicado: 2022 38,9x (198,1 ÷ 5,09); 2023 44,1x (304,3 ÷ 6,90); 2024 48,3x (408,9 ÷ 8,46); 2025 35,6x (319,0 ÷ 8,96). Los precios de cierre son estimación propia (NYSE convertido a euros; 2025 derivado de la evolución de enero de 2026) [35, 36]. Actual = 345,25 ÷ 10,37 (nuestro BPA de 2027e)."
+      },
+      "comparables_per": {
+        "mediana": 22.4
+      },
+      "consenso": {
+        "bpa_ano1": 10.56,
+        "bpa_ano2": 11.25,
+        "objetivo_medio": 423,
+        "objetivo_min": null,
+        "objetivo_max": null,
+        "analistas": 18,
+        "tendencia_3m": "estables",
+        "fuente": "MarketScreener y Economia Italia [31, 32]"
+      },
+      "diferencia_consenso": "Nuestro base (363,97 EUR) queda un 14,0 % por debajo del objetivo medio de los analistas (≈423 EUR) [31]. El beneficio apenas lo explica: nuestro BPA de 2028e (10,93 EUR) es un 2,8 % menor que el del consenso (11,25 EUR) porque no contamos recompras no anunciadas por acción ni más margen que el del plan [32]. La diferencia sale del múltiplo: la regla común usa el PER actual (33,3x sobre nuestro BPA de 2027e) porque es menor que la mediana de 2022-2025 (41,5x), mientras los objetivos de los analistas implican ≈38-40 veces. Si el mercado vuelve a esa media, el alcista (484,97 EUR) la recoge.",
+      "media": null,
+      "comentario": "El objetivo a 12 meses (371,15 EUR) queda un 107 % por encima del valor intrínseco (179,02 EUR): el precio no se explica por los flujos con ningún coste de capital razonable, sino por el múltiplo que el mercado paga por la escasez y la marca. Cerrar esa distancia exigiría una caída del PER a la mitad, algo que no ha pasado en diez años de cotización; por eso la recomendación sigue a la regla de 12 meses y el valor intrínseco se da como aviso: la tesis a largo plazo es de valoración exigente y el margen de seguridad es nulo."
+    },
+    "comentario": "El DCF pesa un 50 %: es un negocio previsible, con guía y plan a 2030 que la empresa cumple. Los escenarios pesan un 30 % y los comparables un 20 %, porque no hay comparables puros: el lujo cotiza muy por debajo de Ferrari. Las transacciones (276,02 EUR de mediana) no pesan: el control está blindado. Todos los métodos quedan por debajo del precio, de 159,15 EUR (EV/EBITDA de comparables) a 276,02 EUR (transacciones): el valor objetivo es de 179,02 EUR (−48,1 %). La decisión la toma el objetivo a 12 meses (PER propio × BPA propio), 371,15 EUR, porque el mercado no va a cerrar en un año una distancia que lleva una década abierta.",
+    "confianza": "Baja"
+  },
+  "catalizadores": {
+    "items": [
+      {
+        "fecha": "3-nov-2026",
+        "evento": "Resultados del 3T26",
+        "efecto": "Confirmación de la guía elevada (≈7.600 M de ventas, BPA ≥ 9,68 EUR) y primeras cifras de pedidos del Luce",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "Feb-2027",
+        "evento": "Resultados de 2026 y guía de 2027",
+        "efecto": "La guía de 2027 dirá si el crecimiento del 5-6 % sigue con menos envíos",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2026-2027",
+        "evento": "Primeras entregas del Luce (eléctrico, ≈550.000 EUR)",
+        "efecto": "Prueba de demanda del eléctrico y de la marca fuera del motor térmico",
+        "probabilidad": "Media",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2026-2030",
+        "evento": "Recompras de ≈3.500 M",
+        "efecto": "≈1 % del capital al año al precio actual; sostiene el BPA",
+        "probabilidad": "Alta",
+        "sentido": "+"
+      },
+      {
+        "fecha": "2026",
+        "evento": "Revisión de la norma europea de CO2 de 2035 y aranceles de EE. UU.",
+        "efecto": "Exención de pequeños fabricantes y precios en EE. UU.",
+        "probabilidad": "Media",
+        "sentido": "+/−"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "riesgos": {
+    "items": [
+      {
+        "riesgo": "Compresión del múltiplo de un valor de calidad",
+        "tipo": "Mercado",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−20 % a 12 meses (bajista: 271,68 EUR)",
+        "mitigante": "BPA que crece un 8-10 % al año y recompras",
+        "senal": "PER por debajo de 30x sin caída de beneficios"
+      },
+      {
+        "riesgo": "El Luce y la electrificación diluyen la marca",
+        "tipo": "Negocio",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−15 a −25 %",
+        "mitigante": "Eléctrico limitado al 20 % de la gama en 2030 [19]",
+        "senal": "Pedidos del Luce y cartera por debajo de 18 meses"
+      },
+      {
+        "riesgo": "Frenazo de la demanda de los muy ricos (China, Oriente Medio, EE. UU.)",
+        "tipo": "Mercado",
+        "probabilidad": "Baja",
+        "impacto": "Alto",
+        "efecto_valor": "−20 %",
+        "mitigante": "Cartera de pedidos hasta casi finales de 2027 [17]",
+        "senal": "Cancelaciones o cartera que se acorta"
+      },
+      {
+        "riesgo": "Aranceles de EE. UU. y divisa",
+        "tipo": "Regulatorio",
+        "probabilidad": "Alta",
+        "impacto": "Medio",
+        "efecto_valor": "−5 % del BPA",
+        "mitigante": "Subidas de precio de hasta el 10 % en EE. UU.",
+        "senal": "Margen EBITDA por debajo del 38 %"
+      },
+      {
+        "riesgo": "Pérdida de competitividad en Fórmula 1 con el reglamento de 2026",
+        "tipo": "Negocio",
+        "probabilidad": "Media",
+        "impacto": "Bajo",
+        "efecto_valor": "−3 %",
+        "mitigante": "El patrocinio está firmado a varios años",
+        "senal": "Ingresos de patrocinio y marca a la baja"
+      },
+      {
+        "riesgo": "Gobierno: control con voto por lealtad",
+        "tipo": "Gobierno",
+        "probabilidad": "Baja",
+        "impacto": "Medio",
+        "efecto_valor": "Sin efecto directo; impide una OPA",
+        "mitigante": "Exor ha sido un accionista disciplinado",
+        "senal": "Ventas de Exor o cambios en el pacto"
+      }
+    ],
+    "premortem": "Octubre de 2029: la acción vale 210 EUR. Empezó con el Luce: las entregas de 2027 se retrasaron y los clientes lo compraron poco y con descuentos en la reventa; la prensa habló de «la Ferrari que no suena». La dirección siguió subiendo precios en los térmicos, pero la cartera bajó de 24 a 12 meses en 2028 porque los compradores de China y Oriente Medio frenaron con el lujo y los aranceles de EE. UU. subieron. Los ingresos crecieron un 3 % al año y el margen EBITDA bajó al 37 % con más amortización del desarrollo eléctrico. El BPA siguió creciendo gracias a las recompras, pero el mercado dejó de pagar 33 veces: Ferrari pasó a cotizar a 22 veces, como Hermès en sus años malos. La señal estaba en la cartera de pedidos y en los precios de reventa de los modelos limitados: cuando dejaron de cotizar con prima, el poder de precio se había ido.",
+    "confianza": "Media"
+  },
+  "esg": {
+    "calificaciones": [],
+    "materialidad": "Lo material es la transición a la electrificación y las emisiones de CO2 de la gama: Ferrari prevé que en 2030 el 20 % de su gama sea eléctrica, el 40 % híbrida y el 40 % térmica (antes 40/40/20), y aprovecha la exención de pequeños fabricantes de la UE [19]. El coste de la transición está en el capex (≈4.700 M en 2026-2030) y en el I+D (≈13 % de las ventas) [9, 18]. La seguridad laboral y las relaciones con los empleados (prima de resultados anual) son el otro asunto.",
+    "controversias": "No se encontraron sanciones ni litigios relevantes en los últimos tres años en las búsquedas hechas. Ha habido llamadas a revisión por frenos en EE. UU. (2022-2023) sin efecto material en las cuentas.",
+    "confianza": "Baja"
+  },
+  "preguntas": {
+    "items": [
+      {
+        "tema": "Luce",
+        "pregunta": "¿Cuántos pedidos firmes tiene el Luce y qué parte son clientes nuevos?",
+        "por_que": "Decide si el eléctrico amplía la base o canibaliza los térmicos."
+      },
+      {
+        "tema": "Cartera de pedidos",
+        "pregunta": "¿Cuántos meses cubre hoy la cartera y cómo ha cambiado desde mayo?",
+        "por_que": "Es el indicador adelantado de la demanda y del poder de precio."
+      },
+      {
+        "tema": "Precio y mezcla",
+        "pregunta": "¿Cuánto del +11 % a tipos constantes del 2T26 es precio de lista, mezcla de modelos y personalización?",
+        "por_que": "Separa lo repetible (personalización) de lo que depende del ciclo de producto (F80)."
+      },
+      {
+        "tema": "Amortización",
+        "pregunta": "¿Cuál es la amortización prevista en 2027-2028 con la gama eléctrica?",
+        "por_que": "Mueve el BPA de 2028e, base del objetivo a 12 meses."
+      },
+      {
+        "tema": "Financiación a clientes",
+        "pregunta": "¿Cuál es la morosidad de la cartera de EE. UU. y su crecimiento?",
+        "por_que": "Es la única deuda relevante del grupo (1.385 M netos)."
+      },
+      {
+        "tema": "Aranceles",
+        "pregunta": "¿Qué parte del arancel de EE. UU. se ha trasladado al precio?",
+        "por_que": "EE. UU. es el primer mercado y fija el margen."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sentimiento": {
+    "tono": "Dividido",
+    "tendencia": "Mejora",
+    "revisadas": [
+      {
+        "plataforma": "The Motley Fool / Nasdaq («Ferrari beat estimates, so why is the stock down?»)",
+        "fecha": "2026-05",
+        "n_comentarios": 6,
+        "tono": "Dividido",
+        "resumen": "Resultados buenos que no mueven la acción: el debate es si el múltiplo ya descuenta la calidad [43]."
+      },
+      {
+        "plataforma": "XTB y TIKR (reacción al Luce)",
+        "fecha": "2026-05",
+        "n_comentarios": 10,
+        "tono": "Negativo",
+        "resumen": "Rechazo al diseño, a las cinco plazas y al precio de ≈550.000 EUR del primer eléctrico; temor a diluir la marca [24, 46]."
+      },
+      {
+        "plataforma": "Simply Wall St (vía Webull): «¿ya está en precio el Luce?»",
+        "fecha": "2026-08",
+        "n_comentarios": 6,
+        "tono": "Positivo",
+        "resumen": "Tras el 2T26 la comunidad ve un valor razonable por encima del precio y destaca la guía elevada [44]."
+      },
+      {
+        "plataforma": "TradingView (ideas sobre MIL:RACE)",
+        "fecha": "2026-09",
+        "n_comentarios": 8,
+        "tono": "Negativo",
+        "resumen": "«Semáforo rojo»: la acción sigue cara por fundamentales pese a la caída; otros ven soporte en mínimos de 2023 [45]."
+      },
+      {
+        "plataforma": "Money.it y Economia Italia (prensa italiana con lectores)",
+        "fecha": "2026-10",
+        "n_comentarios": 6,
+        "tono": "Dividido",
+        "resumen": "«Trimestrale solida ma il titolo scivola»: cuentas buenas, valoración exigente; 12 de 18 analistas siguen en comprar [31, 47]."
+      }
+    ],
+    "temas": [
+      {
+        "tema": "El Luce y la estrategia eléctrica",
+        "postura": "Bajista",
+        "peso": "Alto",
+        "contraste": "Riesgo real pero acotado: el eléctrico será ≈20 % de la gama en 2030 y la guía de 2026 se elevó tras el Luce [12, 19]."
+      },
+      {
+        "tema": "Valoración (PER de 30-35x)",
+        "postura": "Bajista",
+        "peso": "Alto",
+        "contraste": "Tienen razón en que nuestro DCF queda muy por debajo del precio; a 12 meses el PER actual es el más bajo de los últimos cinco años."
+      },
+      {
+        "tema": "Crecimiento con menos coches (precio y personalización)",
+        "postura": "Alcista",
+        "peso": "Medio",
+        "contraste": "Confirmado: ventas del 2T26 +8 % con envíos del semestre −4 % [2]."
+      },
+      {
+        "tema": "Recompras como soporte",
+        "postura": "Alcista",
+        "peso": "Medio",
+        "contraste": "Cierto: 627,7 M recomprados en 2026 (≈1 % del capital) [20]."
+      }
+    ],
+    "lectura": "El inversor particular está más dividido que los analistas (12 de 18 en comprar, objetivo medio de ≈423 EUR) y el precio le da la razón: −19 % en doce meses. Los foros temen dos cosas que el informe recoge: que el eléctrico diluya la marca y que el múltiplo siga bajando. No hay euforia ni capitulación: es una revisión del múltiplo de un valor de calidad. No cambia la decisión, pero confirma que el catalizador es el 3T26 del 3 de noviembre y la acogida comercial del Luce.",
+    "confianza": "Baja"
+  },
+  "fuentes": [
+    {
+      "id": 1,
+      "titulo": "Ferrari FY 2025 Results Press Release (10-feb-2026) y 6-K de resultados de 2025",
+      "editor": "Ferrari N.V.",
+      "tipo": "Primaria",
+      "fecha": "2026-02-10",
+      "url": "https://www.sec.gov/Archives/edgar/data/1648416/000164841626000018/fnvfy2025results.htm"
+    },
+    {
+      "id": 2,
+      "titulo": "Ferrari N.V. 6-K: resultados del 2T26 (30-jul-2026)",
+      "editor": "Ferrari N.V. (SEC)",
+      "tipo": "Primaria",
+      "fecha": "2026-07-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001648416/000164841626000106/fnvq22026results.htm"
+    },
+    {
+      "id": 3,
+      "titulo": "Ferrari Q1 2026 Results Press Release (5-may-2026)",
+      "editor": "Ferrari N.V.",
+      "tipo": "Primaria",
+      "fecha": "2026-05-05",
+      "url": "https://cdn.ferrari.com/cms/network/media/pdf/2026_05_05%20-%20%20Ferrari%20Q1%202026%20Results%20Press%20Release.pdf"
+    },
+    {
+      "id": 4,
+      "titulo": "2023 full year and fourth quarter financial results (con comparativas de 2022)",
+      "editor": "Ferrari N.V.",
+      "tipo": "Primaria",
+      "fecha": "2024-02-01",
+      "url": "https://ferrari.com/en-KR/corporate/articles/2023-full-year-and-fourth-quarter-financial-results?amp=true"
+    },
+    {
+      "id": 5,
+      "titulo": "Consistent execution: strong Q3 2025 results",
+      "editor": "Ferrari N.V. (GlobeNewswire)",
+      "tipo": "Primaria",
+      "fecha": "2025-11-04",
+      "url": "https://www.globenewswire.com/news-release/2025/11/04/3180074/0/en/CONSISTENT-EXECUTION-STRONG-Q3-2025-RESULTS.html"
+    },
+    {
+      "id": 6,
+      "titulo": "Ferrari N.V. (BIT:RACE): cuenta de resultados 2021-2025",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://stockanalysis.com/quote/bit/RACE/financials/income-statement/"
+    },
+    {
+      "id": 7,
+      "titulo": "Ferrari N.V. (BIT:RACE): balance 2021-2025",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://stockanalysis.com/quote/bit/RACE/financials/balance-sheet/"
+    },
+    {
+      "id": 8,
+      "titulo": "Ferrari N.V. (BIT:RACE): estado de flujos 2021-2025",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://stockanalysis.com/quote/bit/RACE/financials/cash-flow-statement/"
+    },
+    {
+      "id": 9,
+      "titulo": "Ferrari N.V. Form 20-F 2025",
+      "editor": "Ferrari N.V. (SEC)",
+      "tipo": "Primaria",
+      "fecha": "2026-02",
+      "url": "https://www.sec.gov/Archives/edgar/data/1648416/000164841626000024/race-20251231.htm"
+    },
+    {
+      "id": 10,
+      "titulo": "Ferrari N.V.: balance trimestral (patrimonio neto)",
+      "editor": "Fintel",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://fintel.io/bs/de/2fe"
+    },
+    {
+      "id": 11,
+      "titulo": "Ferrari N.V. 6-K: informe intermedio a 30-jun-2026 (dividendo pagado)",
+      "editor": "Ferrari N.V. (SEC)",
+      "tipo": "Primaria",
+      "fecha": "2026-07-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001648416/000164841626000107/ferrarinvinterimreport-063.htm"
+    },
+    {
+      "id": 12,
+      "titulo": "Ferrari Raises Full-Year Guidance And Reported €1.94 Billion In Q2 2026 Revenue",
+      "editor": "Pulse 2.0",
+      "tipo": "Prensa",
+      "fecha": "2026-07-30",
+      "url": "https://pulse2.com/ferrari-raises-full-year-guidance-and-reported-e1-94-billion-in-q2-2026-revenue/"
+    },
+    {
+      "id": 13,
+      "titulo": "Ferrari Q1 2026 earnings beat, reaffirms full-year guidance",
+      "editor": "Yahoo Finance",
+      "tipo": "Prensa",
+      "fecha": "2026-05-05",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/ferrari-q1-2026-earnings-beat-132427256.html"
+    },
+    {
+      "id": 14,
+      "titulo": "Ferrari N.V. 6-K: resultados del 2T25 (tabla de deuda neta industrial a 31-dic-2024)",
+      "editor": "Ferrari N.V. (SEC)",
+      "tipo": "Primaria",
+      "fecha": "2025-07-31",
+      "url": "https://www.sec.gov/Archives/edgar/data/1648416/000164841625000064/fnvq22025results.htm"
+    },
+    {
+      "id": 15,
+      "titulo": "Ferrari 2025 Financial Results: Record Revenues, Strong Margins, and a Bold Electric Future",
+      "editor": "Dukascopy Bank",
+      "tipo": "Prensa",
+      "fecha": "2026-02",
+      "url": "https://www.dukascopy.com/swiss/spanish/marketwatch/market-news/Stock-Analysis/154287/"
+    },
+    {
+      "id": 16,
+      "titulo": "Ferrari heads higher on better-than-expected earnings (4T25)",
+      "editor": "Yahoo Finance",
+      "tipo": "Prensa",
+      "fecha": "2026-02-10",
+      "url": "https://finance.yahoo.com/news/ferrari-drives-higher-better-expected-163100169.html"
+    },
+    {
+      "id": 17,
+      "titulo": "Ferrari revenues up 3% to 1.8 billion, Q1 profit 413 million",
+      "editor": "ANSA",
+      "tipo": "Prensa",
+      "fecha": "2026-05-05",
+      "url": "https://www.ansa.it/english/news/2026/05/05/ferrari-revenues-up-3-to-1.8-billion-q1-profit-413-million_f4da7cd3-3787-4f8f-9ab0-6f8d6307a02c.html"
+    },
+    {
+      "id": 18,
+      "titulo": "Ferrari targets $16b revenue by 2030 as electric era begins",
+      "editor": "Mandurah Mail (AAP)",
+      "tipo": "Prensa",
+      "fecha": "2025-10-09",
+      "url": "https://www.mandurahmail.com.au/story/9085380/ferrari-targets-16b-revenue-by-2030-as-electric-era-begins"
+    },
+    {
+      "id": 19,
+      "titulo": "Ferrari Capital Markets Day: targeting new heights (9-oct-2025)",
+      "editor": "Ferrari N.V.",
+      "tipo": "Primaria",
+      "fecha": "2025-10-09",
+      "url": "https://www.ferrari.com/en-BQ/corporate/articles/ferrari-capital-markets-day-targeting-new-heights"
+    },
+    {
+      "id": 20,
+      "titulo": "Ferrari N.V. 6-K: informe periódico de recompra (12-oct-2026)",
+      "editor": "Ferrari N.V. (SEC)",
+      "tipo": "Primaria",
+      "fecha": "2026-10-12",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001648416/000164841626000129/fnvbb121026prex.htm"
+    },
+    {
+      "id": 21,
+      "titulo": "Ferrari N.V. 6-K: Capital Markets Day 2025, parte financiera",
+      "editor": "Ferrari N.V. (SEC)",
+      "tipo": "Primaria",
+      "fecha": "2025-10-09",
+      "url": "https://www.sec.gov/Archives/edgar/data/1648416/000164841625000096/fnv_cmd2025xfinancialpart.htm"
+    },
+    {
+      "id": 22,
+      "titulo": "Lamborghini posts 3.3% revenue rise in 2025 but operating profit falls",
+      "editor": "Yahoo Finance",
+      "tipo": "Prensa",
+      "fecha": "2026-03",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/lamborghini-posts-3-3-revenue-093604954.html"
+    },
+    {
+      "id": 23,
+      "titulo": "Ferrari, Lamborghini, Aston Martin: chi è in vantaggio?",
+      "editor": "Motor1 Italia",
+      "tipo": "Prensa",
+      "fecha": "2026-03",
+      "url": "https://it.motor1.com/news/791500/ferrari-lamborghini-aston-martin-vendite-2025/"
+    },
+    {
+      "id": 24,
+      "titulo": "Ferrari plummets over 6%: the market says no to the electric Luce",
+      "editor": "XTB",
+      "tipo": "Prensa",
+      "fecha": "2026-05-26",
+      "url": "https://www.xtb.com/sca-en/market-analysis/news-and-research/ferrari-plummets-over-6-the-market-says-no-to-the-electric-luce"
+    },
+    {
+      "id": 25,
+      "titulo": "Automobile de luxe : une année 2025 à deux vitesses",
+      "editor": "Journal du Luxe",
+      "tipo": "Prensa",
+      "fecha": "2026-03",
+      "url": "https://www.journalduluxe.fr/fr/lifestyle/automobile-luxe-annee-2025-deux-vitesses/amp"
+    },
+    {
+      "id": 26,
+      "titulo": "Ferrari: shareholders structure (3-mar-2025)",
+      "editor": "Ferrari N.V.",
+      "tipo": "Primaria",
+      "fecha": "2025-03-03",
+      "url": "https://www.ferrari.com/en-EN/corporate/shareholders-structure"
+    },
+    {
+      "id": 27,
+      "titulo": "Ferrari N.V. Schedule 13D/A (Exor y Piero Ferrari, dic-2025)",
+      "editor": "SEC",
+      "tipo": "Primaria",
+      "fecha": "2025-12",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001648416/000119312526004642/primary_doc.xml"
+    },
+    {
+      "id": 28,
+      "titulo": "Ferrari: new agreement strengthens Piero Ferrari and limits Exor",
+      "editor": "MarketScreener",
+      "tipo": "Prensa",
+      "fecha": "2026-01",
+      "url": "https://www.marketscreener.com/news/ferrari-new-agreement-strengthens-piero-ferrari-and-limits-exor-ce7e58dedd8bf426"
+    },
+    {
+      "id": 29,
+      "titulo": "Ferrari, the new deal: Drake heirs can sell 5 per cent",
+      "editor": "Il Sole 24 Ore",
+      "tipo": "Prensa",
+      "fecha": "2026-01",
+      "url": "https://en.ilsole24ore.com/art/ferrari-the-new-deal-drake-heirs-can-sell-5-per-cent-AIVe0Ut"
+    },
+    {
+      "id": 30,
+      "titulo": "Ferrari announces voting results from its Annual General Meeting (15-abr-2026)",
+      "editor": "Ferrari N.V. (Finviz)",
+      "tipo": "Primaria",
+      "fecha": "2026-04-15",
+      "url": "https://finviz.com/news/344640/ferrari-announces-voting-results-from-its-annual-general-meeting"
+    },
+    {
+      "id": 31,
+      "titulo": "Ferrari ha perso il 19% in un anno, ma 12 analisti su 18 dicono di comprare (cierre del 7-oct-2026)",
+      "editor": "Economia Italia",
+      "tipo": "Prensa",
+      "fecha": "2026-10-07",
+      "url": "https://finanza.economia-italia.com/azioni-ferrari-7-ottobre-2026"
+    },
+    {
+      "id": 32,
+      "titulo": "Ferrari N.V.: calendario y estimaciones anuales (beneficio neto, EBITDA y EBIT 2026-2028)",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www.marketscreener.com/quote/stock/FERRARI-N-V-25531423/calendar/"
+    },
+    {
+      "id": 33,
+      "titulo": "Ferrari, atteso rispetto della guidance 2025 da Equita (consenso de BPA 2026-2028)",
+      "editor": "Orafinanza",
+      "tipo": "Analistas",
+      "fecha": "2025-12",
+      "url": "https://www.orafinanza.it/it/ferrari-atteso-rispetto-della-guidance-2025-da-equita"
+    },
+    {
+      "id": 34,
+      "titulo": "Ferrari, BofA alza target price: la 12Cilindri manuale allevia le preoccupazioni su Luce",
+      "editor": "Teleborsa",
+      "tipo": "Prensa",
+      "fecha": "2026-07-06",
+      "url": "https://www.teleborsa.it/News/2026/07/06/ferrari-bofa-alza-target-price-la-12-cilindri-manuale-allevia-le-preoccupazioni-su-luce-87.html"
+    },
+    {
+      "id": 35,
+      "titulo": "Ferrari: 10 Year Stock Price History (RACE, NYSE)",
+      "editor": "Macrotrends",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www.macrotrends.net/stocks/charts/RACE/ferrari/stock-price-history"
+    },
+    {
+      "id": 36,
+      "titulo": "Titolo Ferrari in Borsa: non meglio della pista (evolución desde inicio de 2026)",
+      "editor": "Investire Oggi",
+      "tipo": "Prensa",
+      "fecha": "2026",
+      "url": "https://www.investireoggi.it/titolo-ferrari-borsa-non-meglio-pista-crollo-inizio-anno/"
+    },
+    {
+      "id": 37,
+      "titulo": "Ferrari (RACE): ROIC, EV/EBITDA y PER adelantado",
+      "editor": "GuruFocus",
+      "tipo": "Datos de mercado",
+      "fecha": "2026",
+      "url": "https://www.gurufocus.com/stock/RACE/summary"
+    },
+    {
+      "id": 38,
+      "titulo": "Informes de LVMH, Hermès y Moncler de este repositorio: comparables y transacciones de MarketScreener a 8-oct-2026",
+      "editor": "MarketScreener (vía informes/hermes-2026-10-11 y moncler-2026-10-14)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-08",
+      "url": "https://www.marketscreener.com/quote/stock/MONCLER-S-P-A-15098901/valuation/"
+    },
+    {
+      "id": 39,
+      "titulo": "Rendimiento del Bund a 10 años (9-oct-2026), serie BBSIS",
+      "editor": "Deutsche Bundesbank",
+      "tipo": "Primaria",
+      "fecha": "2026-10-09",
+      "url": "https://api.statistiken.bundesbank.de/rest/download/BBSIS/D.I.ZST.ZI.EUR.S1311.B.A604.R10XX.R.A.A._Z._Z.A?format=csv&lang=en"
+    },
+    {
+      "id": 40,
+      "titulo": "Implied ERP by month (ERPbymonth.xlsx), fila de octubre de 2026",
+      "editor": "Aswath Damodaran, NYU Stern",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx"
+    },
+    {
+      "id": 41,
+      "titulo": "Ferrari rafforza il piano di buyback con acquisti per oltre 25,6 milioni di euro (5-oct-2026)",
+      "editor": "Teleborsa (Borsa Italiana)",
+      "tipo": "Prensa",
+      "fecha": "2026-10-05",
+      "url": "https://www.borsaitaliana.it/borsa/notizie/teleborsa/finanza/ferrari-rafforza-il-piano-di-buyback-con-acquisti-per-oltre-256-milioni-di-euro-153_2026-10-05_TLB.html?lang=it"
+    },
+    {
+      "id": 42,
+      "titulo": "Ferrari at a slow pace, Jefferies cuts next three years estimates and target price",
+      "editor": "Il Sole 24 Ore",
+      "tipo": "Prensa",
+      "fecha": "2026",
+      "url": "https://en.ilsole24ore.com/art/ferrari-slow-pace-jefferies-cuts-next-three-year-estimates-and-target-price-AI6Vq2K"
+    },
+    {
+      "id": 43,
+      "titulo": "Ferrari beat estimates. So why is the stock down?",
+      "editor": "The Motley Fool",
+      "tipo": "Foros y redes",
+      "fecha": "2026-05-09",
+      "url": "https://fool.com/investing/2026/05/09/ferrari-beat-estimates-so-why-is-the-stock-down/"
+    },
+    {
+      "id": 44,
+      "titulo": "Ferrari (BIT:RACE) hits Luce target early, is the upside already priced in?",
+      "editor": "Webull (Simply Wall St)",
+      "tipo": "Foros y redes",
+      "fecha": "2026-08",
+      "url": "https://www.webull.com/news/15317401774138368"
+    },
+    {
+      "id": 45,
+      "titulo": "FERRARI: ancora semaforo rosso (ideas sobre MIL:RACE)",
+      "editor": "TradingView",
+      "tipo": "Foros y redes",
+      "fecha": "2026-09",
+      "url": "https://it.tradingview.com/symbols/MIL-RACE/ideas"
+    },
+    {
+      "id": 46,
+      "titulo": "Ferrari stock falls 5% following launch of first fully electric vehicle Luce in Rome",
+      "editor": "TIKR",
+      "tipo": "Foros y redes",
+      "fecha": "2026-05",
+      "url": "https://www.tikr.com/blog/ferrari-nyse-stock-falls-5-following-launch-of-first-fully-electric-vehicle-luce-in-rome"
+    },
+    {
+      "id": 47,
+      "titulo": "Azioni Ferrari, trimestrale solida ma il titolo scivola. Conviene comprare ora?",
+      "editor": "Money.it",
+      "tipo": "Foros y redes",
+      "fecha": "2026-05",
+      "url": "https://www.money.it/azioni-ferrari-trimestrale-solida-ma-il-titolo-scivola-conviene-comprare-ora"
+    }
+  ],
+  "calc": {
+    "version": 4,
+    "etiquetas": {
+      "margen_bruto": "M. bruto",
+      "margen_bruto_largo": "Margen bruto",
+      "dias_base": "sobre el coste de ventas"
+    },
+    "recomendacion": {
+      "recomendacion": "Mantener",
+      "regla": "Mantener",
+      "regla_absoluta": "Vender",
+      "regla_relativa": "Vender",
+      "coincide": true,
+      "conviccion": "Media",
+      "conviccion_sugerida": "Media",
+      "conviccion_razones": [
+        "Mantener con las dos reglas de acuerdo y lejos de los umbrales"
+      ],
+      "reglas_discrepan": false,
+      "relativo": {
+        "prima_implicita_pct": 4.2,
+        "wacc": 7.63,
+        "ke": 7.73,
+        "dcf": 221.53,
+        "dcf_min": 201.6,
+        "dcf_max": 245.8,
+        "valor_objetivo": 214.06,
+        "alcista": 254.86,
+        "bajista": 157.04,
+        "mercado": "S&P 500, prima implícita de Damodaran (válida para mercados desarrollados)",
+        "fecha": "2026-10",
+        "potencial_pct": -38,
+        "rentabilidad_total_pct": -37,
+        "asimetria": -0.48
+      },
+      "objetivo_mercado_txt": " · con la prima implícita del mercado: 214,06 (-38,0 %)",
+      "objetivo_mercado_corto": " · mercado 214,06",
+      "rentabilidad_mercado_corto": " · mercado -37,0 %",
+      "potencial_pct": -48.1,
+      "dividendo_pct": 1,
+      "rentabilidad_total_pct": -47.1,
+      "alcista_pct": -41.3,
+      "bajista_pct": -62.7,
+      "asimetria": -0.66,
+      "comprar_por_debajo": 179.02,
+      "vender_por_encima": 416.4,
+      "tabla": [
+        {
+          "concepto": "Objetivo a 12 meses (nuestro PER × nuestro BPA 2028e, ponderado 25/50/25)",
+          "valor": "371,15 EUR"
+        },
+        {
+          "concepto": "Bajista / base / alcista a 12 meses",
+          "valor": "28,3x × 9,60 = 271,68 · 33,3x × 10,93 = 363,97 · 41,7x × 11,63 = 484,97"
+        },
+        {
+          "concepto": "Rentabilidad a 12 meses: ponderada / del base (con dividendo)",
+          "valor": "8,5 % / 6,5 %"
+        },
+        {
+          "concepto": "Objetivo medio de los analistas (solo contraste)",
+          "valor": "423,00 (nuestro base -14,0 %)"
+        },
+        {
+          "concepto": "Valor intrínseco (síntesis ponderada, largo plazo)",
+          "valor": "179,02 EUR"
+        },
+        {
+          "concepto": "Potencial sobre el precio actual",
+          "valor": "-48,1 %"
+        },
+        {
+          "concepto": "Rentabilidad por dividendo ordinario",
+          "valor": "1,0 %"
+        },
+        {
+          "concepto": "Rentabilidad total esperada a 12 meses",
+          "valor": "-47,1 %"
+        },
+        {
+          "concepto": "Escenario alcista / bajista",
+          "valor": "-41,3 % / -62,7 %"
+        },
+        {
+          "concepto": "Asimetría (ganancia alcista / pérdida bajista)",
+          "valor": "-0,66x"
+        },
+        {
+          "concepto": "Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado",
+          "valor": "5,8 % frente a 8,9 % y 7,6 %"
+        },
+        {
+          "concepto": "Valor objetivo con la prima implícita del mercado (4,2 %, WACC 7,6 %)",
+          "valor": "214,06 EUR"
+        },
+        {
+          "concepto": "Rentabilidad total esperada con la prima del mercado",
+          "valor": "-37,0 %"
+        },
+        {
+          "concepto": "Asimetría con la prima del mercado",
+          "valor": "-0,48x"
+        },
+        {
+          "concepto": "Regla absoluta (frente a su coste de capital)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Regla relativa (frente a lo que pide el mercado)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "¿La calidad de la empresa sostiene el crecimiento previsto?",
+          "valor": "Sí (4,2 % anual proyectado; sin inversión neta)"
+        },
+        {
+          "concepto": "Señal del valor intrínseco (regla del DCF, referencia)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Recomendación según la regla a 12 meses (Comprar: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender: ponderada ≤ -10 %)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Convicción según los criterios (Mantener con las dos reglas de acuerdo y lejos de los umbrales)",
+          "valor": "Media"
+        }
+      ],
+      "niveles": [
+        {
+          "accion": "Comprar",
+          "condicion": "Por debajo de 179,02 (ponderada a 12 meses ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco)"
+        },
+        {
+          "accion": "Mantener",
+          "condicion": "Entre 179,02 y 416,40"
+        },
+        {
+          "accion": "Vender o reducir",
+          "condicion": "Por encima de 416,40 (ponderada a 12 meses ≤ -10 %)"
+        }
+      ],
+      "precio_txt": "",
+      "valor_objetivo_txt": "",
+      "regla_valor_intrinseco": "Vender",
+      "objetivo_12m": {
+        "completo": true,
+        "filas": [
+          {
+            "escenario": "Bajista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 9.6,
+            "multiplo": 28.3,
+            "multiplo_informe": null,
+            "origen": "base × 0.85 (el mínimo de 5 años no queda por debajo del base)",
+            "precio": 271.68,
+            "rentabilidad_pct": -20.3,
+            "justificacion": "Ventas de 7.949 M en 2028e (+2,5 % en 2027 y +2 % en 2028: el Luce no vende, los aranceles y China frenan la mezcla) con un margen EBITDA del 37,5 %: EBIT de ≈2.200 M, 30 M de coste financiero neto, impuesto del 22 %, 5 M de minoritarios y 175,9 M de acciones sin recompras no anunciadas."
+          },
+          {
+            "escenario": "Base",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 10.93,
+            "multiplo": 33.3,
+            "multiplo_informe": null,
+            "origen": "PER actual",
+            "precio": 363.97,
+            "rentabilidad_pct": 6.5,
+            "justificacion": "Ventas de 8.422 M (+6,4 % en 2026 con la guía, +5,5 % y +5 %) y margen EBITDA del 39,5 %, camino del 40 % del plan de 2030: EBIT de 2.502 M (amortización del 9,8 %), 30 M de coste financiero neto, impuesto del 22 %, 5 M de minoritarios y 175,9 M de acciones."
+          },
+          {
+            "escenario": "Alcista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 11.63,
+            "multiplo": 41.7,
+            "multiplo_informe": null,
+            "origen": "media histórica larga",
+            "precio": 484.97,
+            "rentabilidad_pct": 41.5,
+            "justificacion": "Ventas de 8.664 M (+7 % y +6,5 % con el F80, la personalización y el Luce bien recibido) y margen EBITDA del 40,5 %: EBIT de 2.660 M."
+          }
+        ],
+        "regla": {
+          "bajista": 28.3,
+          "base": 33.3,
+          "alcista": 41.7,
+          "bajista_origen": "base × 0.85 (el mínimo de 5 años no queda por debajo del base)",
+          "base_origen": "PER actual",
+          "alcista_origen": "media histórica larga"
+        },
+        "probabilidades": [
+          25,
+          50,
+          25
+        ],
+        "objetivo_ponderado": 371.15,
+        "objetivo_simple": 373.54,
+        "objetivo_base": 363.97,
+        "rentabilidad_ponderada_pct": 8.5,
+        "rentabilidad_simple_pct": 9.2,
+        "rentabilidad_base_pct": 6.5,
+        "asimetria": 1.9,
+        "senal": "Mantener",
+        "comprar_por_debajo": 179.02,
+        "vender_por_encima": 416.4,
+        "consenso_objetivo": 423,
+        "diferencia_consenso_pct": -14
+      },
+      "rentabilidad_12m_pct": 8.5,
+      "rentabilidad_12m_txt": "+8,5 % (base +6,5 %)",
+      "objetivo_12m_txt": "371,15 EUR"
+    },
+    "mercado": {
+      "precio": 345.25,
+      "acciones": 175.9,
+      "capitalizacion": 60729,
+      "deuda_neta": 131,
+      "deuda_neta_ajustada": null,
+      "asimilables_deuda": null,
+      "ajustes_puente": 0,
+      "valor_empresa": 60860,
+      "fecha_puente": "2026-06-30"
+    },
+    "clave": {
+      "capitalizacion": 60729,
+      "valor_empresa": 60860,
+      "deuda_neta": 131,
+      "ev_ventas_ltm": 8.28,
+      "ev_ebitda_ltm": 21.4,
+      "ev_ebitda_ntm": 19.3,
+      "ev_ebit_ltm": 28.1,
+      "per_ltm": 37.4,
+      "per_ntm": 33.3,
+      "fcf_yield_pct": 2.3,
+      "dividendo_pct": 1,
+      "dn_ebitda": 0,
+      "roic_pct": 30.2,
+      "margen_ebitda_pct": 38.7,
+      "deuda_neta_ajustada": 131,
+      "dn_ebitda_ajustada": 0,
+      "crecimiento_tcac_pct": 13.7,
+      "ingresos_ntm": null,
+      "ebitda_ntm": 3160,
+      "bpa_ntm": 10.38,
+      "ebitda_ltm": 2847,
+      "ingresos_ltm": 7353,
+      "ev_rab": null
+    },
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 4271,
+        "crecimiento_pct": null,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 1531,
+        "margen_ebitda_pct": 35.8,
+        "ebit": 1075,
+        "margen_ebit_pct": 25.2,
+        "beneficio_neto": 833,
+        "margen_neto_pct": 19.5,
+        "bpa": 4.5,
+        "dpa": 1.362,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 30
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 5095,
+        "crecimiento_pct": 19.3,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 1773,
+        "margen_ebitda_pct": 34.8,
+        "ebit": 1227,
+        "margen_ebit_pct": 24.1,
+        "beneficio_neto": 939,
+        "margen_neto_pct": 18.4,
+        "bpa": 5.09,
+        "dpa": 1.81,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 36
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 5970,
+        "crecimiento_pct": 17.2,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 2279,
+        "margen_ebitda_pct": 38.2,
+        "ebit": 1617,
+        "margen_ebit_pct": 27.1,
+        "beneficio_neto": 1257,
+        "margen_neto_pct": 21.1,
+        "bpa": 6.9,
+        "dpa": 2.443,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 35
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 6677,
+        "crecimiento_pct": 11.8,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 2555,
+        "margen_ebitda_pct": 38.3,
+        "ebit": 1888,
+        "margen_ebit_pct": 28.3,
+        "beneficio_neto": 1526,
+        "margen_neto_pct": 22.9,
+        "bpa": 8.46,
+        "dpa": 2.986,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 35
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 7146,
+        "crecimiento_pct": 7,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 2772,
+        "margen_ebitda_pct": 38.8,
+        "ebit": 2110,
+        "margen_ebit_pct": 29.5,
+        "beneficio_neto": 1600,
+        "margen_neto_pct": 22.4,
+        "bpa": 8.96,
+        "dpa": 3.615,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 40
+      }
+    ],
+    "tcac": {
+      "periodo": "2021-2025",
+      "ingresos_pct": 13.7,
+      "ebitda_pct": 16,
+      "bpa_pct": 18.8
+    },
+    "cuenta_y_prevision": [
+      {
+        "periodo": "2021",
+        "ingresos": 4271,
+        "ebitda": 1531
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 5095,
+        "ebitda": 1773
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 5970,
+        "ebitda": 2279
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 6677,
+        "ebitda": 2555
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 7146,
+        "ebitda": 2772
+      },
+      {
+        "periodo": "2026e",
+        "ingresos": 7603,
+        "ebitda": 2973
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 8022,
+        "ebitda": 3152
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 8423,
+        "ebitda": 3327
+      },
+      {
+        "periodo": "2029e",
+        "ingresos": 8760,
+        "ebitda": 3478
+      },
+      {
+        "periodo": "2030e",
+        "ingresos": 9110,
+        "ebitda": 3644
+      },
+      {
+        "periodo": "2031e",
+        "ingresos": 9474,
+        "ebitda": 3790
+      },
+      {
+        "periodo": "2032e",
+        "ingresos": 9806,
+        "ebitda": 3922
+      },
+      {
+        "periodo": "2033e",
+        "ingresos": 10149,
+        "ebitda": 4060
+      },
+      {
+        "periodo": "2034e",
+        "ingresos": 10454,
+        "ebitda": 4181
+      },
+      {
+        "periodo": "2035e",
+        "ingresos": 10767,
+        "ebitda": 4307
+      }
+    ],
+    "segmentos_ultimo": [],
+    "segmentos_tabla": {
+      "periodos": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "filas": []
+    },
+    "segmentos_periodo": null,
+    "balance": [
+      {
+        "periodo": "2024",
+        "activo_total": 9497,
+        "intangibles": 0,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 1742,
+        "deuda_financiera": 3352,
+        "arrendamientos": null,
+        "deuda_neta": 1610,
+        "patrimonio": 3543,
+        "minoritarios": null,
+        "dn_ebitda": 0.63,
+        "dn_patrimonio_pct": 45,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 5153,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 9628,
+        "intangibles": 0,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 1417,
+        "deuda_financiera": 2834,
+        "arrendamientos": null,
+        "deuda_neta": 1417,
+        "patrimonio": 3915,
+        "minoritarios": null,
+        "dn_ebitda": 0.51,
+        "dn_patrimonio_pct": 36,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 5332,
+        "liquidez_corriente": null
+      }
+    ],
+    "perimetro_nota": null,
+    "flujos": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 1283,
+        "capex": null,
+        "pagos_arrendamientos": null,
+        "fcf": 1283,
+        "beneficio_neto": 833,
+        "conversion_pct": 154,
+        "capex_ventas_pct": null,
+        "capex_amortizacion": null,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 160.1,
+        "recompras": 230.9,
+        "emision_acciones": 0,
+        "retorno_accionista": 391,
+        "payout_caja_pct": 47,
+        "acciones": 185.1,
+        "fcf_por_accion": 6.93
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 1403,
+        "capex": 805,
+        "pagos_arrendamientos": null,
+        "fcf": 598,
+        "beneficio_neto": 939,
+        "conversion_pct": 64,
+        "capex_ventas_pct": 15.8,
+        "capex_amortizacion": 1.47,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 249.5,
+        "recompras": 396.5,
+        "emision_acciones": 0,
+        "retorno_accionista": 646,
+        "payout_caja_pct": 69,
+        "acciones": 184.5,
+        "fcf_por_accion": 3.24
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 1717,
+        "capex": 867,
+        "pagos_arrendamientos": null,
+        "fcf": 850,
+        "beneficio_neto": 1257,
+        "conversion_pct": 68,
+        "capex_ventas_pct": 14.5,
+        "capex_amortizacion": 1.31,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 328.6,
+        "recompras": 460.6,
+        "emision_acciones": 0,
+        "retorno_accionista": 789.2,
+        "payout_caja_pct": 63,
+        "acciones": 182.2,
+        "fcf_por_accion": 4.67
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 1927,
+        "capex": 940,
+        "pagos_arrendamientos": null,
+        "fcf": 987,
+        "beneficio_neto": 1526,
+        "conversion_pct": 65,
+        "capex_ventas_pct": 14.1,
+        "capex_amortizacion": 1.41,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 439.9,
+        "recompras": 581.1,
+        "emision_acciones": 0,
+        "retorno_accionista": 1021,
+        "payout_caja_pct": 67,
+        "acciones": 180.4,
+        "fcf_por_accion": 5.47
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 2349,
+        "capex": 947,
+        "pagos_arrendamientos": null,
+        "fcf": 1402,
+        "beneficio_neto": 1600,
+        "conversion_pct": 88,
+        "capex_ventas_pct": 13.3,
+        "capex_amortizacion": 1.43,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 529.7,
+        "recompras": 785.3,
+        "emision_acciones": 0,
+        "retorno_accionista": 1315,
+        "payout_caja_pct": 82,
+        "acciones": 178.6,
+        "fcf_por_accion": 7.85
+      }
+    ],
+    "flujos_acumulado": {
+      "periodo": "2021-2025",
+      "fcf": 5120,
+      "adquisiciones": 0,
+      "dividendos": 1708,
+      "recompras": 2454,
+      "conversion_pct": 83
+    },
+    "rentabilidad": [
+      {
+        "periodo": "2021",
+        "nopat": 806,
+        "capital_invertido": null,
+        "roic_pct": null,
+        "roe_pct": null,
+        "roa_pct": null,
+        "margen_neto_pct": 19.5,
+        "rotacion": null,
+        "apalancamiento": null
+      },
+      {
+        "periodo": "2022",
+        "nopat": 920,
+        "capital_invertido": null,
+        "roic_pct": null,
+        "roe_pct": null,
+        "roa_pct": null,
+        "margen_neto_pct": 18.4,
+        "rotacion": null,
+        "apalancamiento": null
+      },
+      {
+        "periodo": "2023",
+        "nopat": 1213,
+        "capital_invertido": null,
+        "roic_pct": null,
+        "roe_pct": null,
+        "roa_pct": null,
+        "margen_neto_pct": 21.1,
+        "rotacion": null,
+        "apalancamiento": null
+      },
+      {
+        "periodo": "2024",
+        "nopat": 1416,
+        "capital_invertido": 5153,
+        "roic_pct": 27.5,
+        "roe_pct": 43.1,
+        "roa_pct": 16.1,
+        "margen_neto_pct": 22.9,
+        "rotacion": 0.7,
+        "apalancamiento": 2.68
+      },
+      {
+        "periodo": "2025",
+        "nopat": 1583,
+        "capital_invertido": 5243,
+        "roic_pct": 30.2,
+        "roe_pct": 42.9,
+        "roa_pct": 16.7,
+        "margen_neto_pct": 22.4,
+        "rotacion": 0.75,
+        "apalancamiento": 2.56
+      }
+    ],
+    "roic_incremental_pct": null,
+    "roic_frente_wacc": [
+      {
+        "periodo": "2021",
+        "roic_pct": null,
+        "roe_pct": null,
+        "wacc_pct": 8.9
+      },
+      {
+        "periodo": "2022",
+        "roic_pct": null,
+        "roe_pct": null,
+        "wacc_pct": 8.9
+      },
+      {
+        "periodo": "2023",
+        "roic_pct": null,
+        "roe_pct": null,
+        "wacc_pct": 8.9
+      },
+      {
+        "periodo": "2024",
+        "roic_pct": 27.5,
+        "roe_pct": 43.1,
+        "wacc_pct": 8.9
+      },
+      {
+        "periodo": "2025",
+        "roic_pct": 30.2,
+        "roe_pct": 42.9,
+        "wacc_pct": 8.9
+      }
+    ],
+    "calidad": {
+      "periodo": "2025",
+      "altman_z": 7.84,
+      "altman_zona": "Zona segura",
+      "piotroski_f": 7,
+      "piotroski_detalle": [
+        {
+          "criterio": "Beneficio neto positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "ROA mejora",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo > beneficio neto",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Baja el endeudamiento (deuda / activo)",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora la liquidez corriente",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "No emite acciones",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora el margen bruto",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "Mejora la rotación del activo",
+          "resultado": "Sí"
+        }
+      ],
+      "tabla": [
+        {
+          "indicador": "Altman Z",
+          "valor": "7,84",
+          "lectura": "Zona segura (> 2,99 seguro; < 1,81 riesgo). No aplica a bancos ni aseguradoras, y subestima la solvencia de empresas con grandes anticipos de clientes o prefinanciación pública (contratistas, construcción), que inflan el pasivo."
+        },
+        {
+          "indicador": "Piotroski F",
+          "valor": "7 / 7",
+          "lectura": "Fortaleza financiera alta (7-9)."
+        },
+        {
+          "indicador": "Flujo operativo / beneficio neto (acumulado)",
+          "valor": "1,41x",
+          "lectura": "El beneficio se cobra."
+        }
+      ]
+    },
+    "dcf": {
+      "proyeccion": [
+        {
+          "periodo": "2026e",
+          "ingresos": 7603,
+          "crecimiento_pct": 6.4,
+          "ebitda": 2973,
+          "margen_ebitda_pct": 39.1,
+          "amortizacion": 722,
+          "ebit": 2251,
+          "impuestos": 495,
+          "capex": 950,
+          "variacion_circulante": 228,
+          "fcff": 1299,
+          "fraccion": 0.21,
+          "factor": 0.991,
+          "vp": 275
+        },
+        {
+          "periodo": "2027e",
+          "ingresos": 8022,
+          "crecimiento_pct": 5.5,
+          "ebitda": 3152,
+          "margen_ebitda_pct": 39.3,
+          "amortizacion": 778,
+          "ebit": 2374,
+          "impuestos": 522,
+          "capex": 963,
+          "variacion_circulante": 13,
+          "fcff": 1655,
+          "fraccion": 1,
+          "factor": 0.941,
+          "vp": 1556
+        },
+        {
+          "periodo": "2028e",
+          "ingresos": 8423,
+          "crecimiento_pct": 5,
+          "ebitda": 3327,
+          "margen_ebitda_pct": 39.5,
+          "amortizacion": 825,
+          "ebit": 2502,
+          "impuestos": 550,
+          "capex": 969,
+          "variacion_circulante": 12,
+          "fcff": 1796,
+          "fraccion": 1,
+          "factor": 0.864,
+          "vp": 1552
+        },
+        {
+          "periodo": "2029e",
+          "ingresos": 8760,
+          "crecimiento_pct": 4,
+          "ebitda": 3478,
+          "margen_ebitda_pct": 39.7,
+          "amortizacion": 858,
+          "ebit": 2619,
+          "impuestos": 576,
+          "capex": 964,
+          "variacion_circulante": 10,
+          "fcff": 1928,
+          "fraccion": 1,
+          "factor": 0.793,
+          "vp": 1528
+        },
+        {
+          "periodo": "2030e",
+          "ingresos": 9110,
+          "crecimiento_pct": 4,
+          "ebitda": 3644,
+          "margen_ebitda_pct": 40,
+          "amortizacion": 893,
+          "ebit": 2751,
+          "impuestos": 605,
+          "capex": 1002,
+          "variacion_circulante": 11,
+          "fcff": 2026,
+          "fraccion": 1,
+          "factor": 0.728,
+          "vp": 1475
+        },
+        {
+          "periodo": "2031e",
+          "ingresos": 9474,
+          "crecimiento_pct": 4,
+          "ebitda": 3790,
+          "margen_ebitda_pct": 40,
+          "amortizacion": 928,
+          "ebit": 2861,
+          "impuestos": 629,
+          "capex": 995,
+          "variacion_circulante": 11,
+          "fcff": 2155,
+          "fraccion": 1,
+          "factor": 0.669,
+          "vp": 1440
+        },
+        {
+          "periodo": "2032e",
+          "ingresos": 9806,
+          "crecimiento_pct": 3.5,
+          "ebitda": 3922,
+          "margen_ebitda_pct": 40,
+          "amortizacion": 961,
+          "ebit": 2961,
+          "impuestos": 652,
+          "capex": 1030,
+          "variacion_circulante": 10,
+          "fcff": 2231,
+          "fraccion": 1,
+          "factor": 0.614,
+          "vp": 1370
+        },
+        {
+          "periodo": "2033e",
+          "ingresos": 10149,
+          "crecimiento_pct": 3.5,
+          "ebitda": 4060,
+          "margen_ebitda_pct": 40,
+          "amortizacion": 995,
+          "ebit": 3065,
+          "impuestos": 674,
+          "capex": 1015,
+          "variacion_circulante": 10,
+          "fcff": 2360,
+          "fraccion": 1,
+          "factor": 0.564,
+          "vp": 1330
+        },
+        {
+          "periodo": "2034e",
+          "ingresos": 10454,
+          "crecimiento_pct": 3,
+          "ebitda": 4181,
+          "margen_ebitda_pct": 40,
+          "amortizacion": 1024,
+          "ebit": 3157,
+          "impuestos": 695,
+          "capex": 1045,
+          "variacion_circulante": 9,
+          "fcff": 2432,
+          "fraccion": 1,
+          "factor": 0.518,
+          "vp": 1259
+        },
+        {
+          "periodo": "2035e",
+          "ingresos": 10767,
+          "crecimiento_pct": 3,
+          "ebitda": 4307,
+          "margen_ebitda_pct": 40,
+          "amortizacion": 1055,
+          "ebit": 3252,
+          "impuestos": 715,
+          "capex": 1077,
+          "variacion_circulante": 9,
+          "fcff": 2505,
+          "fraccion": 1,
+          "factor": 0.476,
+          "vp": 1191
+        }
+      ],
+      "etapa2": null,
+      "suma_vp": 12976,
+      "valor_terminal": 40100,
+      "vp_terminal": 18275,
+      "valor_empresa": 31252,
+      "peso_terminal_pct": 58,
+      "valor_acciones": 31121,
+      "valor_accion": 176.92,
+      "vt_gordon": 40100,
+      "vt_multiplo": 86137,
+      "multiplo_implicito": 9.3,
+      "g_implicito_pct": 5.83,
+      "metodo_terminal": "gordon",
+      "terminal_tabla": [
+        {
+          "concepto": "Método principal",
+          "valor": "Crecimiento a perpetuidad"
+        },
+        {
+          "concepto": "Crecimiento a perpetuidad",
+          "valor": "2,5 %"
+        },
+        {
+          "concepto": "Múltiplo EV/EBITDA de salida",
+          "valor": "20,0x"
+        },
+        {
+          "concepto": "Valor terminal (Gordon)",
+          "valor": "40.100"
+        },
+        {
+          "concepto": "Valor terminal (múltiplo)",
+          "valor": "86.137"
+        },
+        {
+          "concepto": "Múltiplo de salida implícito en Gordon",
+          "valor": "9,3x"
+        },
+        {
+          "concepto": "Crecimiento implícito en el múltiplo",
+          "valor": "5,83 %"
+        },
+        {
+          "concepto": "Peso del valor terminal en el valor empresa",
+          "valor": "58 %"
+        }
+      ],
+      "puente": [
+        {
+          "concepto": "Valor actual de los flujos proyectados",
+          "valor": "12.976"
+        },
+        {
+          "concepto": "Valor actual del valor terminal",
+          "valor": "18.275"
+        },
+        {
+          "concepto": "Valor empresa",
+          "valor": "31.252"
+        },
+        {
+          "concepto": "− Deuda financiera neta (con arrendamientos)",
+          "valor": "-131"
+        },
+        {
+          "concepto": "− Minoritarios, pensiones y otros; + asociadas",
+          "valor": "0"
+        },
+        {
+          "concepto": "Valor de los fondos propios",
+          "valor": "31.121"
+        },
+        {
+          "concepto": "Acciones diluidas (millones)",
+          "valor": "175,9"
+        },
+        {
+          "concepto": "Valor por acción",
+          "valor": "176,92"
+        }
+      ],
+      "composicion": [
+        {
+          "parte": "Flujos proyectados",
+          "valor": 12976
+        },
+        {
+          "parte": "Valor terminal",
+          "valor": 18275
+        }
+      ],
+      "wacc": 8.9,
+      "ke": 9.03,
+      "kd_despues": 2.73,
+      "wacc_tabla": [
+        {
+          "concepto": "Tasa libre de riesgo",
+          "valor": "3,53 %"
+        },
+        {
+          "concepto": "Beta",
+          "valor": "1,00"
+        },
+        {
+          "concepto": "Prima de riesgo de mercado",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Prima adicional (país, tamaño, específica)",
+          "valor": "0,00 %"
+        },
+        {
+          "concepto": "Coste de los fondos propios",
+          "valor": "9,03 %"
+        },
+        {
+          "concepto": "Coste de la deuda antes de impuestos",
+          "valor": "3,50 %"
+        },
+        {
+          "concepto": "Tipo impositivo",
+          "valor": "22,00 %"
+        },
+        {
+          "concepto": "Coste de la deuda después de impuestos",
+          "valor": "2,73 %"
+        },
+        {
+          "concepto": "Peso de la deuda (D / (D + E))",
+          "valor": "2,00 %"
+        },
+        {
+          "concepto": "WACC",
+          "valor": "8,90 %"
+        },
+        {
+          "concepto": "Prima de riesgo implícita del mercado (regla relativa)",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "WACC con la prima implícita del mercado",
+          "valor": "7,63 %"
+        }
+      ],
+      "potencial_pct": -48.8,
+      "sensibilidad": {
+        "eje_columnas": "Crecimiento a perpetuidad",
+        "columnas": [
+          "1,5 %",
+          "2,0 %",
+          "2,5 %",
+          "3,0 %",
+          "3,5 %"
+        ],
+        "filas": [
+          {
+            "wacc": "7,9 %",
+            "v0": 188.11,
+            "v1": 198.2,
+            "v2": 210.15,
+            "v3": 224.53,
+            "v4": 242.19
+          },
+          {
+            "wacc": "8,4 %",
+            "v0": 174.1,
+            "v1": 182.41,
+            "v2": 192.12,
+            "v3": 203.62,
+            "v4": 217.47
+          },
+          {
+            "wacc": "8,9 %",
+            "v0": 162.01,
+            "v1": 168.93,
+            "v2": 176.92,
+            "v3": 186.27,
+            "v4": 197.35
+          },
+          {
+            "wacc": "9,4 %",
+            "v0": 151.47,
+            "v1": 157.29,
+            "v2": 163.95,
+            "v3": 171.65,
+            "v4": 180.65
+          },
+          {
+            "wacc": "9,9 %",
+            "v0": 142.21,
+            "v1": 147.14,
+            "v2": 152.75,
+            "v3": 159.16,
+            "v4": 166.58
+          }
+        ]
+      },
+      "sensibilidad2": {
+        "columnas": [
+          "-2 pp",
+          "-1 pp",
+          "0 pp",
+          "+1 pp",
+          "+2 pp"
+        ],
+        "filas": [
+          {
+            "margen": "-2 pp",
+            "v0": 143.87,
+            "v1": 154.02,
+            "v2": 164.9,
+            "v3": 176.55,
+            "v4": 189.02
+          },
+          {
+            "margen": "-1 pp",
+            "v0": 149.11,
+            "v1": 159.63,
+            "v2": 170.91,
+            "v3": 182.99,
+            "v4": 195.92
+          },
+          {
+            "margen": "0 pp",
+            "v0": 154.34,
+            "v1": 165.24,
+            "v2": 176.92,
+            "v3": 189.43,
+            "v4": 202.82
+          },
+          {
+            "margen": "+1 pp",
+            "v0": 159.58,
+            "v1": 170.85,
+            "v2": 182.93,
+            "v3": 195.87,
+            "v4": 209.72
+          },
+          {
+            "margen": "+2 pp",
+            "v0": 164.82,
+            "v1": 176.46,
+            "v2": 188.94,
+            "v3": 202.31,
+            "v4": 216.62
+          }
+        ]
+      },
+      "rango_min": 157.29,
+      "rango_max": 203.62,
+      "inverso": {
+        "crecimiento_implicito_pct": 13.8,
+        "crecimiento_base_pct": 3.9,
+        "periodo": "2027e-2035e",
+        "margen_implicito_pct": 68,
+        "margen_implicito_texto": null,
+        "margen_base_pct": 40,
+        "rentabilidad_implicita_pct": 5.8
+      },
+      "sostenibilidad": {
+        "veredicto": "Sí",
+        "crecimiento_proyectado_pct": 4.2,
+        "tasa_reinversion_pct": 6,
+        "crecimiento_financiable_pct": null,
+        "roic_pct": 30.2,
+        "roic_incremental_historico_pct": null,
+        "roic_implicito_pct": null,
+        "cuota_actual_pct": null,
+        "cuota_final_pct": null,
+        "puente": [
+          {
+            "periodo": "2026e",
+            "volumen_pct": -3,
+            "precio_pct": 11.4,
+            "otros_pct": -2,
+            "comentario": "Envíos un 3 % menores (−4 % en el 1S26) por el cambio de gama; precio, mezcla y personalización de +11,4 % (F80, 849 Testarossa, 296 Speciale) y −2 puntos de divisa [2, 12].",
+            "suma_pct": 6.4,
+            "crecimiento_pct": 6.4
+          },
+          {
+            "periodo": "2027e",
+            "volumen_pct": 1,
+            "precio_pct": 4.5,
+            "otros_pct": 0,
+            "comentario": "Entregas del Luce y de los modelos nuevos: volumen +1 %; precio y mezcla +4,5 %.",
+            "suma_pct": 5.5,
+            "crecimiento_pct": 5.5
+          },
+          {
+            "periodo": "2028e",
+            "volumen_pct": 1,
+            "precio_pct": 4,
+            "otros_pct": 0,
+            "comentario": "Volumen +1 % y precio +4 %: el ritmo del plan a 2030 [19].",
+            "suma_pct": 5,
+            "crecimiento_pct": 5
+          },
+          {
+            "periodo": "2029e",
+            "volumen_pct": 0.5,
+            "precio_pct": 3.5,
+            "otros_pct": 0,
+            "comentario": "Volumen casi plano (escasez deliberada) y precio +3,5 %.",
+            "suma_pct": 4,
+            "crecimiento_pct": 4
+          },
+          {
+            "periodo": "2030e",
+            "volumen_pct": 0.5,
+            "precio_pct": 3.5,
+            "otros_pct": 0,
+            "comentario": "Igual que 2029e: ventas de 9.109 M, el objetivo del plan.",
+            "suma_pct": 4,
+            "crecimiento_pct": 4
+          }
+        ],
+        "texto": "La proyección apenas necesita inversión neta de la amortización (reinversión acumulada de 1.294 M, el 6 % del NOPAT, con un capex bruto medio del 10,9 % de las ventas). En un negocio de activos ligeros, el crecimiento medio del 4,2 % tiene que salir de subir precios y de ganar volumen sin capital nuevo, y la prueba es el poder de precios y la cuota; en un comprador en serie, la amortización es de intangibles comprados y la prueba es el capex bruto (las compras) frente al crecimiento comprado.",
+        "tabla": [
+          {
+            "concepto": "Crecimiento medio de ingresos proyectado",
+            "valor": "4,2 %"
+          },
+          {
+            "concepto": "Capex bruto medio (incluidas compras si van como inversión)",
+            "valor": "10,9 % de las ventas"
+          },
+          {
+            "concepto": "Reinversión neta acumulada (capex − amortización + circulante)",
+            "valor": "1.294 M (6 % del NOPAT)"
+          }
+        ]
+      }
+    },
+    "escenarios": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "narrativa": "El Luce no convence, China y Oriente Medio frenan y los aranceles comen margen: ventas +2-3 % al año y margen EBITDA del 37,5 %, como en 2023-2024 sin los modelos limitados. El mercado deja de pagar la prima y el PER baja a 28x.",
+        "crecimiento_medio_pct": 0.9,
+        "margen_final_pct": 38,
+        "wacc_pct": 8.9,
+        "valor": 128.65,
+        "potencial_pct": -62.7
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "narrativa": "Ferrari cumple su plan: ventas del 5-6 % hasta 2028 y del 4 % después, por precio y personalización con volumen casi plano; margen EBITDA hacia el 40 %.",
+        "crecimiento_medio_pct": 3.9,
+        "margen_final_pct": 40,
+        "wacc_pct": 8.9,
+        "valor": 176.92,
+        "potencial_pct": -48.8
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "narrativa": "El F80, la personalización y un Luce bien recibido llevan las ventas al 6,5-7 % anual y el margen al 40,5 %; el mercado vuelve a pagar el PER medio de 2022-2025 (≈42x).",
+        "crecimiento_medio_pct": 5.4,
+        "margen_final_pct": 41,
+        "wacc_pct": 8.9,
+        "valor": 202.68,
+        "potencial_pct": -41.3
+      }
+    ],
+    "valor_ponderado": 171.29,
+    "potencial_ponderado_pct": -50.4,
+    "comparables": {
+      "tabla": [
+        {
+          "nombre": "Ferrari",
+          "ticker": "RACE.MI",
+          "pais": "IT",
+          "capitalizacion": 60729,
+          "ev_ventas": 8.28,
+          "ev_ebitda_ltm": 21.4,
+          "ev_ebitda_ntm": 19.3,
+          "per_ntm": 33.3,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": 38.7,
+          "roic_pct": 30.2,
+          "dn_ebitda": 0,
+          "fcf_yield_pct": 2.3,
+          "es_objetivo": true
+        },
+        {
+          "nombre": "LVMH",
+          "ticker": "MC.PA",
+          "pais": "FR",
+          "capitalizacion": 187963,
+          "ev_ventas": 2.73,
+          "ev_ebitda_ltm": 9.1,
+          "ev_ebitda_ntm": 8.5,
+          "per_ntm": 15.9,
+          "crecimiento_pct": 3.7,
+          "margen_ebitda_pct": 30.1,
+          "roic_pct": 12.7,
+          "dn_ebitda": 1,
+          "fcf_yield_pct": 6.1,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Hermès",
+          "ticker": "RMS.PA",
+          "pais": "FR",
+          "capitalizacion": 134070,
+          "ev_ventas": 7.76,
+          "ev_ebitda_ltm": 16.6,
+          "ev_ebitda_ntm": 15.6,
+          "per_ntm": 27,
+          "crecimiento_pct": 5.8,
+          "margen_ebitda_pct": 46.8,
+          "roic_pct": null,
+          "dn_ebitda": -1.32,
+          "fcf_yield_pct": 3.1,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Richemont",
+          "ticker": "CFR.SW",
+          "pais": "CH",
+          "capitalizacion": 106204,
+          "ev_ventas": 4.36,
+          "ev_ebitda_ltm": 16,
+          "ev_ebitda_ntm": 12.8,
+          "per_ntm": 22.4,
+          "crecimiento_pct": 16.7,
+          "margen_ebitda_pct": 27.2,
+          "roic_pct": null,
+          "dn_ebitda": -1.39,
+          "fcf_yield_pct": 3.7,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Kering",
+          "ticker": "KER.PA",
+          "pais": "FR",
+          "capitalizacion": 25995,
+          "ev_ventas": 2.32,
+          "ev_ebitda_ltm": 9.3,
+          "ev_ebitda_ntm": 8.3,
+          "per_ntm": 26.6,
+          "crecimiento_pct": 2.4,
+          "margen_ebitda_pct": 25,
+          "roic_pct": null,
+          "dn_ebitda": 2.19,
+          "fcf_yield_pct": 8.8,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Prada",
+          "ticker": "1913.HK",
+          "pais": "IT",
+          "capitalizacion": 10784,
+          "ev_ventas": 2.51,
+          "ev_ebitda_ltm": 6.7,
+          "ev_ebitda_ntm": 6.4,
+          "per_ntm": 13,
+          "crecimiento_pct": 9,
+          "margen_ebitda_pct": 37.4,
+          "roic_pct": null,
+          "dn_ebitda": 1.67,
+          "fcf_yield_pct": 9.7,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Brunello Cucinelli",
+          "ticker": "BC.MI",
+          "pais": "IT",
+          "capitalizacion": 5447,
+          "ev_ventas": 4.57,
+          "ev_ebitda_ltm": 15.4,
+          "ev_ebitda_ntm": 12.8,
+          "per_ntm": 31.7,
+          "crecimiento_pct": 10.2,
+          "margen_ebitda_pct": 29.6,
+          "roic_pct": null,
+          "dn_ebitda": 2.36,
+          "fcf_yield_pct": 1.9,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Moncler",
+          "ticker": "MONC.MI",
+          "pais": "IT",
+          "capitalizacion": 11816,
+          "ev_ventas": 3.7,
+          "ev_ebitda_ltm": 9.2,
+          "ev_ebitda_ntm": 8.9,
+          "per_ntm": 17,
+          "crecimiento_pct": 4.6,
+          "margen_ebitda_pct": 40.2,
+          "roic_pct": 20.4,
+          "dn_ebitda": 0,
+          "fcf_yield_pct": 4.6,
+          "es_objetivo": false
+        }
+      ],
+      "estadisticos": [
+        {
+          "estadistico": "Mediana",
+          "ev_ventas": 3.7,
+          "ev_ebitda_ltm": 9.3,
+          "ev_ebitda_ntm": 8.9,
+          "per_ntm": 22.4,
+          "crecimiento_pct": 5.8,
+          "margen_ebitda_pct": 30.1,
+          "roic_pct": 16.5,
+          "dn_ebitda": 1,
+          "fcf_yield_pct": 4.6
+        },
+        {
+          "estadistico": "Media",
+          "ev_ventas": 4,
+          "ev_ebitda_ltm": 11.8,
+          "ev_ebitda_ntm": 10.5,
+          "per_ntm": 21.9,
+          "crecimiento_pct": 7.5,
+          "margen_ebitda_pct": 33.8,
+          "roic_pct": 16.5,
+          "dn_ebitda": 0.6,
+          "fcf_yield_pct": 5.4
+        },
+        {
+          "estadistico": "Percentil 25",
+          "ev_ventas": 2.6,
+          "ev_ebitda_ltm": 9.1,
+          "ev_ebitda_ntm": 8.4,
+          "per_ntm": 16.5,
+          "crecimiento_pct": 4.2,
+          "margen_ebitda_pct": 28.4,
+          "roic_pct": 14.6,
+          "dn_ebitda": -0.7,
+          "fcf_yield_pct": 3.4
+        },
+        {
+          "estadistico": "Percentil 75",
+          "ev_ventas": 4.5,
+          "ev_ebitda_ltm": 15.7,
+          "ev_ebitda_ntm": 12.8,
+          "per_ntm": 26.8,
+          "crecimiento_pct": 9.6,
+          "margen_ebitda_pct": 38.8,
+          "roic_pct": 18.5,
+          "dn_ebitda": 1.9,
+          "fcf_yield_pct": 7.5
+        }
+      ],
+      "implicito": [
+        {
+          "metodo": "EV/EBITDA próximos 12 meses",
+          "metrica_empresa": 3160.18,
+          "multiplo_p25": 8.4,
+          "multiplo_mediana": 8.9,
+          "multiplo_p75": 12.8,
+          "multiplos": "8,4x / 8,9x / 12,8x",
+          "valor_p25": 150.17,
+          "valor_mediana": 159.15,
+          "valor_p75": 229.22,
+          "potencial_pct": -53.9
+        },
+        {
+          "metodo": "EV/EBITDA últimos 12 meses",
+          "metrica_empresa": 2847,
+          "multiplo_p25": 9.1,
+          "multiplo_mediana": 9.3,
+          "multiplo_p75": 15.7,
+          "multiplos": "9,1x / 9,3x / 15,7x",
+          "valor_p25": 147.35,
+          "valor_mediana": 149.78,
+          "valor_p75": 253.36,
+          "potencial_pct": -56.6
+        },
+        {
+          "metodo": "PER próximos 12 meses",
+          "metrica_empresa": 10.38,
+          "multiplo_p25": 16.5,
+          "multiplo_mediana": 22.4,
+          "multiplo_p75": 26.8,
+          "multiplos": "16,4x / 22,4x / 26,8x",
+          "valor_p25": 170.8,
+          "valor_mediana": 232.57,
+          "valor_p75": 278.26,
+          "potencial_pct": -32.6
+        },
+        {
+          "metodo": "EV/Ventas últimos 12 meses",
+          "metrica_empresa": 7353,
+          "multiplo_p25": 2.6,
+          "multiplo_mediana": 3.7,
+          "multiplo_p75": 4.5,
+          "multiplos": "2,6x / 3,7x / 4,5x",
+          "valor_p25": 108.78,
+          "valor_mediana": 153.92,
+          "valor_p75": 185.9,
+          "potencial_pct": -55.4
+        }
+      ],
+      "regresion": {
+        "pendiente": 0.24674498286833094,
+        "ordenada": 8.624366128242782,
+        "r2": 0.13711983625531965,
+        "n": 7
+      },
+      "n": 7
+    },
+    "transacciones": {
+      "metrica": "EV/EBITDA",
+      "n": 5,
+      "mediana_ev_ebitda": 17.1,
+      "p25_ev_ebitda": 13.1,
+      "p75_ev_ebitda": 20,
+      "mediana_ev_ventas": 3.83,
+      "prima_mediana_pct": null,
+      "valor_p25": 210.47,
+      "valor_mediana": 276.02,
+      "valor_p75": 322.96
+    },
+    "suma_partes": null,
+    "multiplos_historicos": [
+      {
+        "metrica": "PER últimos 12 meses (cierre de cada año)",
+        "campo": "per_ltm",
+        "actual": 37.4,
+        "media": 41.5,
+        "minimo": 35.6,
+        "maximo": 48.3,
+        "percentil": 25,
+        "prima_pct": -10,
+        "anios": 4
+      }
+    ],
+    "multiplos_serie": [],
+    "multiplos_titulo": null,
+    "consenso_vs_propio": [
+      {
+        "periodo": "2026e",
+        "ingresos_propio": 7603,
+        "ingresos_consenso": null,
+        "ingresos_dif_pct": null,
+        "ebitda_propio": 2973,
+        "ebitda_consenso": 2962,
+        "ebitda_dif_pct": 0.4
+      },
+      {
+        "periodo": "2027e",
+        "ingresos_propio": 8022,
+        "ingresos_consenso": null,
+        "ingresos_dif_pct": null,
+        "ebitda_propio": 3152,
+        "ebitda_consenso": 3214,
+        "ebitda_dif_pct": -1.9
+      },
+      {
+        "periodo": "2028e",
+        "ingresos_propio": 8423,
+        "ingresos_consenso": null,
+        "ingresos_dif_pct": null,
+        "ebitda_propio": 3327,
+        "ebitda_consenso": 3428,
+        "ebitda_dif_pct": -2.9
+      }
+    ],
+    "gobierno": {
+      "n_consejeros": 3,
+      "independientes_pct": 0,
+      "antiguedad_media": 8.3,
+      "composicion": [
+        {
+          "tipo": "Dominical",
+          "num": 2
+        },
+        {
+          "tipo": "Ejecutivo",
+          "num": 1
+        }
+      ],
+      "checklist": [
+        {
+          "criterio": "Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)",
+          "resultado": "No cumple",
+          "valor": "0 % (con control)"
+        },
+        {
+          "criterio": "Presidencia sin vínculo familiar ni profesional con el accionista de control",
+          "resultado": "No cumple",
+          "valor": "Vinculada"
+        },
+        {
+          "criterio": "Presidente no ejecutivo, o consejero coordinador independiente",
+          "resultado": "No cumple",
+          "valor": "Ejecutivo, sin coordinador"
+        },
+        {
+          "criterio": "Comisión de auditoría con mayoría de independientes y presidida por uno",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Ningún consejero «otro externo» con más de 12 años",
+          "resultado": "Cumple",
+          "valor": "Ninguno"
+        },
+        {
+          "criterio": "Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses",
+          "resultado": "Cumple",
+          "valor": "0 cambios"
+        },
+        {
+          "criterio": "Peor voto a favor sobre remuneración (3 juntas) ≥ 80 %",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Una acción, un voto, sin blindajes ni límites de voto estatutarios",
+          "resultado": "No cumple",
+          "valor": "No"
+        },
+        {
+          "criterio": "Sin operaciones vinculadas relevantes",
+          "resultado": "Cumple",
+          "valor": "No hay"
+        },
+        {
+          "criterio": "Auditor con 10 años o menos en el cargo",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Opinión de auditoría sin salvedades",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Directivos compradores netos en 12 meses (o sin ventas relevantes)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        }
+      ],
+      "puntuacion": "3 de 13 (6 sin dato)",
+      "puntuacion_pct": 23,
+      "compras_insiders": 0,
+      "ventas_insiders": 0
+    },
+    "competidores_margen": [
+      {
+        "nombre": "Ferrari",
+        "margen_ebit_pct": 29.5
+      },
+      {
+        "nombre": "Automobili Lamborghini (Volkswagen/Audi)",
+        "margen_ebit_pct": 24
+      },
+      {
+        "nombre": "Aston Martin Lagonda",
+        "margen_ebit_pct": -20.6
+      },
+      {
+        "nombre": "McLaren Automotive (Forseven)",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Porsche AG",
+        "margen_ebit_pct": null
+      }
+    ],
+    "sintesis": {
+      "formato_eje": "#,##0",
+      "rangos": [
+        {
+          "metodo": "Comparables: EV/EBITDA NTM",
+          "etiqueta": "Comparables: EV/EBITDA NTM (150,17 – 229,22)",
+          "min": 150.17,
+          "central": 159.15,
+          "max": 229.22,
+          "gris": false
+        },
+        {
+          "metodo": "Comparables: PER NTM",
+          "etiqueta": "Comparables: PER NTM (170,80 – 278,26)",
+          "min": 170.8,
+          "central": 232.57,
+          "max": 278.26,
+          "gris": false
+        },
+        {
+          "metodo": "Transacciones precedentes (EV/EBITDA)",
+          "etiqueta": "Transacciones precedentes (EV/EBITDA) (210,47 – 322,96)",
+          "min": 210.47,
+          "central": 276.02,
+          "max": 322.96,
+          "gris": false
+        },
+        {
+          "metodo": "DCF (WACC y g ± 0,5)",
+          "etiqueta": "DCF (WACC y g ± 0,5) (157,29 – 203,62)",
+          "min": 157.29,
+          "central": 176.92,
+          "max": 203.62,
+          "gris": false
+        },
+        {
+          "metodo": "Escenarios (bajista – alcista)",
+          "etiqueta": "Escenarios (bajista – alcista) (128,65 – 202,68)",
+          "min": 128.65,
+          "central": 171.29,
+          "max": 202.68,
+          "gris": false
+        },
+        {
+          "metodo": "DCF con la prima del mercado",
+          "etiqueta": "DCF con la prima implícita del mercado (4,2 %)",
+          "min": 201.6,
+          "central": 221.53,
+          "max": 245.8
+        },
+        {
+          "metodo": "Precio actual",
+          "etiqueta": "Precio actual (345,25)",
+          "min": 343.52,
+          "central": 345.25,
+          "max": 346.98,
+          "gris": true
+        }
+      ],
+      "tabla": [
+        {
+          "metodo": "DCF",
+          "valor": 176.92,
+          "peso_pct": 50,
+          "potencial_pct": -48.8
+        },
+        {
+          "metodo": "Comparables (mediana EV/EBITDA y PER)",
+          "valor": 195.86,
+          "peso_pct": 20,
+          "potencial_pct": -43.3
+        },
+        {
+          "metodo": "Transacciones precedentes (no se usa)",
+          "valor": 276.02,
+          "peso_pct": 0,
+          "potencial_pct": -20.1
+        },
+        {
+          "metodo": "Escenarios ponderados",
+          "valor": 171.29,
+          "peso_pct": 30,
+          "potencial_pct": -50.4
+        }
+      ],
+      "valor_objetivo": 179.02,
+      "potencial_pct": -48.1
+    },
+    "fuentes": {
+      "n_fuentes": 47,
+      "n_primarias": 15,
+      "por_tipo": [
+        {
+          "tipo": "Primaria",
+          "num": 15
+        },
+        {
+          "tipo": "Datos de mercado",
+          "num": 9
+        },
+        {
+          "tipo": "Prensa",
+          "num": 17
+        },
+        {
+          "tipo": "Analistas",
+          "num": 1
+        },
+        {
+          "tipo": "Foros y redes",
+          "num": 5
+        }
+      ],
+      "n_citadas": 43,
+      "citas_sin_fuente": [],
+      "fuentes_sin_citar": [
+        "5",
+        "7",
+        "10",
+        "16"
+      ]
+    },
+    "controles": [
+      {
+        "control": "DCF inverso calculable",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Puente de ingresos (volumen + precio + otros) = crecimiento del DCF",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "resultado": "OK",
+        "detalle": "Supuesto 3,0 % frente a 0,0 % real: genera una variación de circulante de 228 M en el primer año. Converge de forma gradual."
+      },
+      {
+        "control": "Peso del valor terminal ≤ 80 % del valor empresa",
+        "resultado": "OK",
+        "detalle": "58 %."
+      },
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "resultado": "OK",
+        "detalle": "2,50 %."
+      },
+      {
+        "control": "Probabilidades de los escenarios suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 5 comparables",
+        "resultado": "OK",
+        "detalle": "7 comparables."
+      },
+      {
+        "control": "Comparables estables al quitar una empresa",
+        "resultado": "Explicado",
+        "detalle": "La mediana del EV/EBITDA NTM va de 8,7x a 10,9x según qué comparable se quite (155,56 a 194,18 por acción): la muestra es frágil; explícalo y no le des mucho peso. Explicación: No hay comparables puros cotizados (Lamborghini y McLaren no cotizan); los siete grupos de lujo van de Prada a 6,4x a Hermès a 15,6x de EV/EBITDA NTM y Ferrari cotiza muy por encima de todos (19,3x). Por eso los comparables pesan solo un 20 % y no entran en la decisión a 12 meses más que por la mediana del PER, que la regla común no usa porque queda por debajo del base."
+      },
+      {
+        "control": "Pesos de la síntesis suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Múltiplos del objetivo a 12 m según la regla común",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Objetivo 12 m frente al consenso",
+        "resultado": "OK",
+        "detalle": "El base se separa un -14,0 % del objetivo medio de los analistas: explícalo en diferencia_consenso (nunca se acerca la cifra)."
+      },
+      {
+        "control": "Recomendación coherente con la regla de decisión",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "La síntesis explica la convicción",
+        "resultado": "OK",
+        "detalle": "La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría."
+      },
+      {
+        "control": "Al menos 25 fuentes",
+        "resultado": "OK",
+        "detalle": "47 fuentes (15 primarias)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "resultado": "OK",
+        "detalle": "15."
+      },
+      {
+        "control": "Toda cita [n] existe en fuentes",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Fuentes sin citar ≤ 15 %",
+        "resultado": "OK",
+        "detalle": "Sin citar: 5, 7, 10, 16."
+      }
+    ],
+    "controles_resumen": "16 de 17 controles correctos y 1 explicados"
+  }
+}

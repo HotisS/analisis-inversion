@@ -1,0 +1,13 @@
+# Diario · Ferrari (RACE.MI) · 14-oct-2026
+
+- Commit de partida: bd0ac6c (Repsol, 14-oct).
+- Entorno: nube de Claude Code. La red solo deja salir a la búsqueda web (WebSearch); WebFetch, curl, `descargar.mjs` y `bolsa.mjs` no funcionan. Unas 25 búsquedas. Las cifras salen de los extractos de búsqueda de los comunicados de resultados y 6-K de Ferrari (FY2025, 1T26, 2T26, día del inversor de 2025, recompras), del 20-F citado, de Stock Analysis, MarketScreener y prensa italiana, con la URL como fuente; lo que no cuadró va a `null` y a `meta.huecos`. **Confianza media-baja**: cuenta de resultados, trimestres, guía y deuda industrial, buena; balance (solo 2024-2025), cierres anuales para el PER (estimados desde NYSE) y gobierno (consejo y remuneración incompletos), baja.
+- Fecha de corte: 2026-10-14. Divisa: EUR. Cierre: diciembre. Precio: 345,25 EUR, cierre del 7-oct-2026 en Milán (no hay cierre posterior en la búsqueda). Próximos resultados: 3-nov-2026.
+- Sin subagentes: notas A-E con `notas/construir.mjs`; parte propia en `propio.mjs` + `supuestos.mjs` + `textos.mjs` + `resumen.mjs`.
+- Decisiones: acciones 175,9 M (autocartera de 1,92 M = 1,08 % de las emitidas a 9-oct); puente con la deuda neta industrial publicada (131 M a jun-26, arrendamientos dentro) y la financiación a clientes de EE. UU. tratada como negocio aparte; balance solo 2024-2025 (con 2021-2023 a medias el ROIC salía absurdo); 2026e fijo con la guía elevada (+6,4 %); proyección hacia el plan a 2030 (≈9.000 M, EBITDA 40 %); beta 1,0, Bund 3,53 %, prima 5,5 % → WACC 8,90 %; comparables de lujo de MarketScreener (8-oct) reutilizados de LVMH/Hermès/Moncler; pesos DCF 50 / comparables 20 / escenarios 30; sostenibilidad «Sí» a mano (reinversión del 6 % del NOPAT, poder de precio).
+- 14-oct, ≈13:20: informe cerrado, 16 de 17 controles (el de comparables frágiles, explicado); Word (37 páginas) y PDF (soffice). Valor intrínseco 179,02 EUR (−48,1 %); DCF inverso: 13,8 % de crecimiento anual frente al 3,9 % del base. Rentabilidad a 12 meses v2: ponderada +8,5 %, base +6,5 % → **Mantener**, convicción Media (comprar < 179,02 EUR; vender > 416,40 EUR); ROIC 30,2 % − WACC 8,90 % ≈ +21,3 puntos. Detalle en revision-12m-2026-10-14.md.
+
+## Lecciones
+
+- En la nube, el número de acciones en circulación sale bien de los 6-K semanales de recompra (autocartera en % de las emitidas) y del dividendo total ÷ DPA de la junta.
+- Con el balance de algunos años a medias (sin deuda o sin patrimonio), el motor calcula un capital invertido absurdo (ROIC de −320 % o +1.000 %): mejor dejar solo los años completos que filas parciales.
