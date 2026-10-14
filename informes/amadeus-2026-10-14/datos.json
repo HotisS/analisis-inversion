@@ -1,0 +1,4326 @@
+{
+  "meta": {
+    "fecha_corte": "2026-10-14",
+    "divisa": "EUR",
+    "divisa_cotizacion": "EUR",
+    "tipo_cambio": 1,
+    "unidades": "millones",
+    "cierre_ejercicio_mes": 12,
+    "etiqueta_ejercicio": "fin",
+    "normas_contables": "NIIF-UE",
+    "formato_cuenta": "funcion",
+    "limitaciones": "Análisis hecho desde la nube con la red limitada a la búsqueda web: amadeus.com, la CNMV, los proveedores de datos y Yahoo no se pudieron abrir, así que las cifras salen de los extractos de búsqueda de las notas de prensa de Amadeus, de agregadores (Kalkine, Simply Wall St, Chartmill, Tracenable, TipRanks, Alpha Spread, Stock Analysis) y de la prensa financiera, cruzadas cuando fue posible; la confianza es menor que en un análisis normal y lo que no cuadró está en null y en los huecos. Precio: 52,68 € a media sesión del 14-oct-2026 (Bolsamanía; el cierre del 13-oct fue de 52,62 €) [45]. Acciones: 431,6 M, el capital tras amortizar 18,9 M de acciones propias el 30-jun-2026 [31]; no se descuenta la autocartera comprada después (hueco). Puente: deuda financiera neta de junio (2.577,5 M, que no incluye arrendamientos, no localizados) más el dividendo complementario pagado el 3-jul (436,2 M) [1, 18]. La compra de IDEMIA Public Security (1.200 M más hasta 150 M; cierre a mediados de 2027) no entra ni en la proyección ni en el puente: se supone que se paga a su valor [23]. El balance histórico solo tiene activo total, patrimonio, fondo de comercio, caja y deuda neta; el resultado financiero y los impuestos de 2024-2025 son estimación propia. Los cierres de 2024 y 2025 se deducen de rentabilidades publicadas. Los comparables se toman de informes del repositorio de la misma semana. Beta estimada (1,05), sin serie de cotizaciones.",
+    "controles_explicados": [
+      {
+        "control": "Fuentes sin citar",
+        "explicacion": "Algunas fuentes de contexto (agregadores de balance, foros) se usan solo para cruzar cifras de otras."
+      },
+      {
+        "control": "Circulante",
+        "explicacion": "Sin datos de clientes y proveedores el circulante se proyecta en 0 % de las ventas: neutro para el DCF. Amadeus trabaja con circulante negativo, así que el supuesto es conservador."
+      }
+    ],
+    "huecos": [
+      {
+        "seccion": "balance",
+        "campo": "circulante comercial, intangibles, inmovilizado, reservas, arrendamientos, vencimientos, rating y coste de la deuda",
+        "tipo": "Núcleo",
+        "intentos": "1) Cuentas anuales 2025 y Management Review en amadeus.com: no accesibles (solo búsqueda web); 2) Stock Analysis, Tracenable, TipRanks y Alpha Spread vía búsqueda: solo activo total, patrimonio, fondo de comercio y caja; 3) prensa financiera: solo deuda neta y apalancamiento",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "financieros",
+        "campo": "resultado financiero, impuestos, BPA 2021-2022 y acciones 2021-2022",
+        "tipo": "Núcleo",
+        "intentos": "1) Notas de prensa anuales: el extracto de búsqueda no da el desglose; 2) Kalkine, Stockopedia y macrotrends: series incompletas o en USD; 3) derivado con un tipo del 21 % para 2024-2025",
+        "decision": "Calculado y marcado como estimación"
+      },
+      {
+        "seccion": "flujos",
+        "campo": "dividendos pagados, adquisiciones y pagos de arrendamientos por año",
+        "tipo": "Complemento",
+        "intentos": "1) Estado de flujos de la empresa: no accesible; 2) Chartmill y Barchart: solo flujo operativo y capex; 3) notas de prensa: solo dividendo por acción y recompras",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "calidad",
+        "campo": "auditor, años y opinión",
+        "tipo": "Complemento",
+        "intentos": "1) Informe de auditoría 2025: no accesible; 2) IAGC en la CNMV: no accesible; 3) prensa: sin resultados",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sector",
+        "campo": "tamaño y crecimiento del mercado de tecnología del viaje",
+        "tipo": "Núcleo",
+        "intentos": "1) Informes de Amadeus (Global Report): no accesibles; 2) búsqueda de estudios de mercado de GDS y travel tech: sin cifra fiable; 3) Morningstar y prensa sectorial: solo cuotas",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "negocio",
+        "campo": "segmentos 2021-2025 y geografías",
+        "tipo": "Núcleo",
+        "intentos": "1) Notas de prensa anuales: el extracto solo da el grupo; 2) infografías: solo el 1S26; 3) agregadores: sin segmentos",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "competencia",
+        "campo": "ingresos y margen EBIT de Sabre, Travelport y Oracle Hospitality",
+        "tipo": "Complemento",
+        "intentos": "1) 8-K de Sabre: el extracto solo da el trimestre; 2) Barchart y Zacks: trimestres y EBITDA ajustado; 3) Travelport es privada",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "esg",
+        "campo": "calificaciones ESG",
+        "tipo": "Complemento",
+        "intentos": "1) Global Report 2025: no accesible; 2) MSCI y Sustainalytics: no accesibles; 3) prensa: sin resultados",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "composición completa del consejo, comisiones, votos de la junta e IARC",
+        "tipo": "Núcleo",
+        "intentos": "1) IAGC e IARC 2025 en la CNMV y amadeus.com: no accesibles; 2) acta de la junta de 2026: no accesible; 3) prensa: solo presidente, consejero delegado y retribuciones",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "operaciones de consejeros y directivos de 12 meses",
+        "tipo": "Complemento",
+        "intentos": "1) Registro de la CNMV: no accesible; 2) búsqueda de compras y ventas de directivos: sin resultados; 3) MarketScreener (insiders): no accesible",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "transacciones",
+        "campo": "operaciones precedentes con múltiplo",
+        "tipo": "Complemento",
+        "intentos": "1) Nota de IDEMIA Public Security: sin EBITDA publicado; 2) Travelport (2019) y Sabre Hospitality (2025): múltiplos no localizados en la búsqueda; 3) prensa: sin múltiplos fiables",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "bolsa",
+        "campo": "beta, volatilidad, caída máxima, rentabilidades a 1-10 años, índices y posiciones cortas",
+        "tipo": "Complemento",
+        "intentos": "1) bolsa.mjs (Yahoo): sin red; 2) Investing y Bolsamanía vía búsqueda: solo precios sueltos; 3) CNMV posiciones cortas: no accesible",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "multiplos_historicos",
+        "campo": "cierres de 2021-2023",
+        "tipo": "Complemento",
+        "intentos": "1) Históricos de Bolsamanía e Investing vía búsqueda: solo 2026; 2) prensa de fin de año: variaciones sin precio; 3) derivados de rentabilidades: solo 2024 y 2025",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "consenso",
+        "campo": "ingresos y EBITDA de consenso 2026-2028",
+        "tipo": "Complemento",
+        "intentos": "1) MarketScreener: no accesible (solo con WebFetch); 2) Yahoo: solo BPA; 3) Simply Wall St: solo beneficio",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sentimiento",
+        "campo": "Reddit, Stocktwits y Seeking Alpha",
+        "tipo": "Complemento",
+        "intentos": "1) Búsqueda en Reddit (r/EuropeanStocks, r/ValueInvesting): sin hilos; 2) Seeking Alpha: solo transcripciones antiguas; 3) Stocktwits: sin acceso en este entorno",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "valoracion",
+        "campo": "pasivos por arrendamiento (NIIF 16) y autocartera posterior a junio de 2026",
+        "tipo": "Núcleo",
+        "intentos": "1) Cuentas semestrales del 1S26: no accesibles; 2) agregadores de balance: sin la línea; 3) MarketScreener (recompras): solo el inicio del programa",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "dcf",
+        "campo": "beta de la acción",
+        "tipo": "Complemento",
+        "intentos": "1) bolsa.mjs: sin red; 2) Yahoo e Investing: no accesibles; 3) agregadores vía búsqueda: sin dato fiable",
+        "decision": "Calculado y marcado como estimación"
+      }
+    ]
+  },
+  "identificacion": {
+    "nombre": "Amadeus IT Group, S.A.",
+    "nombre_corto": "Amadeus",
+    "ticker": "AMS",
+    "isin": "ES0109067019",
+    "mercado": "Bolsas y Mercados Españoles (Mercado Continuo, Madrid)",
+    "indice_referencia": "IBEX 35",
+    "pais": "España",
+    "pais_iso": "ES",
+    "sector": "Consumo discrecional (GICS)",
+    "industria": "Tecnología para viajes (servicios de reservas y software para aerolíneas y hoteles)",
+    "sede": "Madrid",
+    "fundacion": "1987",
+    "empleados": null,
+    "web": "amadeus.com",
+    "precio": 52.68,
+    "fecha_precio": "2026-10-14",
+    "acciones": 431.6,
+    "capitalizacion_publicada": null,
+    "free_float_pct": null,
+    "max_52s": 69.3,
+    "min_52s": 46.21,
+    "volumen_medio_diario": null,
+    "proximos_resultados": "2026-11-06"
+  },
+  "resumen": {
+    "recomendacion": "Mantener",
+    "conviccion": "Baja",
+    "justificacion_recomendacion": null,
+    "horizonte": "12 meses",
+    "sintesis": "**La recomendación y por qué.** Mantener, con convicción baja. El objetivo a 12 meses es de 58,69 € (nuestro BPA ajustado de 2028e por el PER de la regla común, ponderado 25/50/25), un +14,3 % con dividendo (+11,0 % en el base), justo por debajo de los umbrales de compra (15 % y 12 %); el valor intrínseco es de 63,75 € (+21,0 %) y el objetivo medio de los analistas, de 67,20 € [48]. La razón principal: la acción ya descuenta poco crecimiento, pero sin un hecho que devuelva el múltiplo a su historia la cotización solo subirá con el beneficio (≈8 % al año) y el dividendo (2,9 %). La convicción es baja porque la rentabilidad que decide está a menos de un punto del umbral y porque el balance y la historia del PER vienen de agregadores; subiría si las reservas de distribución vuelven a crecer en los resultados del 3T (6-nov) o si el precio baja de 52,21 €.\n\n**El negocio.** Amadeus mueve casi la mitad de las reservas aéreas de agencias del mundo y gestiona los sistemas de pasajeros de buena parte de las aerolíneas de red [32]: dos fosos (red y costes de cambio) que se ven en un margen EBITDA del 38,5 % y en un ROIC del 19,7 % frente a un WACC del 8,52 %. Sostenibilidad del crecimiento: **en parte**; la proyección apenas pide capital (reinversión del 2 % del NOPAT) y el poder de precios está demostrado (ingreso por pasajero +7,5 % en el 1S26) [1], pero el volumen de distribución depende de que la IA y la venta directa no lo desvíen.\n\n**Finanzas.** Ingresos de 6.517 M en 2025 (+8,5 % a tipo constante), EBITDA de 2.506,6 M y caja libre de 1.302 M [2, 4]. En el 1S26 el crecimiento bajó al 5,1 % a tipo constante por la guerra en Oriente Medio (reservas −3,7 %) y la empresa rebajó la guía de ingresos y de BPA, aunque mantuvo la de caja [1, 27]. Deuda neta de 2.577,5 M en junio (1,0x EBITDA), que subirá con IDEMIA Public Security (1.200 M más hasta 150 M, mediados de 2027) [23].\n\n**Equipo y gobierno.** Accionariado disperso sin control, presidente independiente y consejero delegado con quince años en el cargo [31]. Resta algo: el director financiero es interino desde septiembre de 2024 y Maroto fue reelegido solo por un año en junio de 2026 [18, 26].\n\n**Valoración.** DCF de 66,65 €, PER de los comparables 58,75 € y escenarios entre 44,99 € y 77,62 €. El DCF inverso dice que el precio descuenta un crecimiento del 2,4 % anual frente al 5,4 % de nuestro base, o un margen del 34,3 % frente al 39,7 %: es un precio conservador frente a la historia. Con la prima implícita del mercado el valor sería de 76,61 €. Nuestro BPA coincide con el consenso (−4 % en 2027e) [47]; la diferencia con los analistas está en el múltiplo: la regla toma el PER actual (14,2x), no los 19-22x de 2024-2025.\n\n**Riesgos y catalizadores.** El riesgo mayor es la desintermediación por agentes de IA y venta directa: es el bajista (44,99 €, −14,6 %). Le siguen el tráfico aéreo y la presión de tarifas. Catalizadores con fecha: resultados del 3T (6-nov-2026) y guía de 2027 (febrero). Los foros están divididos con sesgo alcista, sin euforia ni capitulación.\n\n**Qué cambiaría la decisión.** Compraríamos por debajo de 52,21 € (con nuestros objetivos fijos) o si una guía de 2027 con crecimiento de un dígito alto sube el BPA esperado; venderíamos por encima de 66,92 € o si las reservas de distribución caen por debajo del tráfico aéreo dos trimestres seguidos.",
+    "tesis": "Amadeus es la infraestructura del viaje aéreo: casi la mitad de las reservas de agencias del mundo pasan por su sistema de distribución y buena parte de las aerolíneas de red embarcan a sus pasajeros con Altéa [1, 32]. Con 6.517 M de ingresos, un margen EBITDA del 38,5 % y 1.302 M de caja libre en 2025 [2, 4], convierte casi todo su beneficio en caja y lo devuelve con dividendos y recompras.\n\nEl precio (52,68 €, ≈14x el BPA ajustado de 2027e) descuenta, según el DCF inverso, un crecimiento del 2,4 % anual o una pérdida de cinco puntos de margen: el mercado valora a Amadeus como si los agentes de IA ya estuvieran erosionando la distribución. Hace dos años pagaba 22x [17, 51].\n\nPara invertir hay que creer que la reserva de un vuelo seguirá necesitando a Amadeus aunque la búsqueda la haga una IA: inventario, tarifas, emisión y liquidación. Los datos del 1S26 lo apoyan (precio por pasajero +7,5 %) [1], pero hasta que las reservas de distribución vuelvan a crecer no hay un catalizador que cambie el múltiplo. A 12 meses, la rentabilidad esperada (+14,3 %) es la del beneficio y el dividendo.",
+    "vision_diferencial": {
+      "mercado_descuenta": "Un crecimiento del 2,4 % anual (o un margen del 34,3 %): que la IA y la venta directa reduzcan el volumen de distribución y la tarifa de forma permanente, con un PER que ha bajado de 22x a 14x en dos años.",
+      "nuestra_vision": "El crecimiento vuelve al 7 % en 2027-2028 con el tráfico y el precio por unidad, y el margen se mantiene por encima del 39 %. Pero a 12 meses no suponemos que el múltiplo se recupere: el objetivo sube solo con el beneficio.",
+      "por_que": "El poder de precios sigue intacto (ingreso por pasajero +7,5 % con el volumen al 1,1 %) y Amadeus ya cobra por las búsquedas de los agentes y es socio de Google y Microsoft [1, 36, 37]. Lo que no sabemos es cuándo lo verá el mercado."
+    },
+    "a_favor": [
+      "**Precio que descuenta poco**: el DCF inverso pide un crecimiento del 2,4 % frente al 5,4 % de nuestro base.",
+      "**Rentabilidad alta sobre el capital**: ROIC del 19,7 % frente a un WACC del 8,52 %.",
+      "**Poder de precios demostrado**: ingreso por pasajero embarcado +7,5 % en el 1S26 con el volumen al 1,1 % [1].",
+      "**Caja y devolución al accionista**: caja libre de 1.302 M en 2025, dividendo del 2,9 % y recompra de hasta 500 M [2, 24].",
+      "**Asimetría en valor intrínseco**: alcista +47,3 % frente a bajista −14,6 %."
+    ],
+    "en_contra": [
+      "**Sin catalizador para el múltiplo**: el objetivo a 12 meses (+14,3 %) depende solo del beneficio.",
+      "**Riesgo de desintermediación por IA**: la distribución es casi la mitad de los ingresos; el bajista vale 44,99 €.",
+      "**Guía rebajada en julio**: reservas −3,7 % en el 1S26 y crecimiento de ingresos al 2,3 % en euros [1].",
+      "**Más deuda en 2027**: IDEMIA Public Security cuesta 1.200-1.350 M [23].",
+      "**Datos de menor calidad**: balance e historia del PER de agregadores (dos cierres fiables)."
+    ],
+    "que_vigilar": "La tesis depende de que las reservas de distribución vuelvan a crecer en 2027 tras Oriente Medio y de que el ingreso por reserva siga subiendo. La señal de que no se cumple: reservas por debajo del tráfico aéreo dos trimestres seguidos, o un anuncio de reserva directa en un asistente de IA importante sin Amadeus como socio.",
+    "cambiaria_recomendacion": [
+      "Si el precio baja de 52,21 €, la rentabilidad a 12 meses superaría los umbrales de compra (pasaríamos a Comprar).",
+      "Si la guía de 2027 (febrero) apunta a ingresos con crecimiento de un dígito alto y BPA de dos dígitos, revisaríamos el BPA al alza.",
+      "Si las reservas de distribución caen por debajo del tráfico aéreo dos trimestres seguidos, pasaríamos al escenario bajista y revisaríamos la recomendación.",
+      "Si el precio supera 66,92 €, pasaríamos a Vender."
+    ],
+    "kpis_seguimiento": [
+      {
+        "kpi": "Reservas aéreas de distribución (variación)",
+        "nivel_actual": "−3,7 % (1S26)",
+        "umbral_alerta": "Por debajo del tráfico aéreo dos trimestres",
+        "por_que": "Mide la desintermediación"
+      },
+      {
+        "kpi": "Ingreso por pasajero embarcado (Air IT)",
+        "nivel_actual": "+7,5 % (1S26)",
+        "umbral_alerta": "Por debajo del 3 %",
+        "por_que": "Poder de precios"
+      },
+      {
+        "kpi": "Margen EBITDA",
+        "nivel_actual": "38,5 % (2025); 40,0 % (1S26)",
+        "umbral_alerta": "Por debajo del 37 %",
+        "por_que": "Presión de tarifas e inversión en IA"
+      },
+      {
+        "kpi": "Caja libre",
+        "nivel_actual": "1.302 M (2025)",
+        "umbral_alerta": "Por debajo de 1.300 M en 2026",
+        "por_que": "Sostiene dividendo y recompras"
+      },
+      {
+        "kpi": "Deuda neta / EBITDA",
+        "nivel_actual": "1,0x (jun-26)",
+        "umbral_alerta": "Por encima de 1,8x tras IDEMIA",
+        "por_que": "Margen para recompras"
+      }
+    ],
+    "confianza": "Baja"
+  },
+  "historia": {
+    "resumen": "Amadeus nació en 1987 como sistema de reservas compartido de Air France, Iberia, Lufthansa y SAS, para competir con los sistemas de las aerolíneas estadounidenses. Salió a bolsa en 1999, fue excluida en 2005 por un consorcio de capital riesgo (BC Partners y Cinven) con las aerolíneas, y volvió al mercado en 2010. Desde entonces ha pasado de distribuidor (GDS) a proveedor de los sistemas centrales de las aerolíneas (Altéa, Navitaire) y, con TravelClick (2018), de los hoteles. En 2020 la pandemia hundió sus ingresos a 2.174 M; en 2023 recuperó los niveles de 2019 [2]. En 2026 compra IDEMIA Public Security para crecer en biometría de fronteras [23].",
+    "hitos": [
+      {
+        "anio": "1987",
+        "hito": "Fundación por Air France, Iberia, Lufthansa y SAS"
+      },
+      {
+        "anio": "1999",
+        "hito": "Salida a bolsa en Madrid"
+      },
+      {
+        "anio": "2005",
+        "hito": "Exclusión de bolsa por BC Partners y Cinven con las aerolíneas fundadoras"
+      },
+      {
+        "anio": "2010",
+        "hito": "Vuelta a bolsa; entra en el IBEX 35"
+      },
+      {
+        "anio": "2016",
+        "hito": "Compra de Navitaire (sistemas para aerolíneas de bajo coste)"
+      },
+      {
+        "anio": "2018",
+        "hito": "Compra de TravelClick: entrada fuerte en tecnología hotelera"
+      },
+      {
+        "anio": "2020",
+        "hito": "Pandemia: ingresos −61 % y pérdidas; ampliación de capital y convertible"
+      },
+      {
+        "anio": "2024",
+        "hito": "Compra de Vision-Box (biometría aeroportuaria)"
+      },
+      {
+        "anio": "2026",
+        "hito": "Compra de SkyLink (IA conversacional) y acuerdo para comprar IDEMIA Public Security (1.200 M) [23]"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "negocio": {
+    "descripcion": "Amadeus es la plataforma tecnológica que conecta a proveedores de viajes (aerolíneas, hoteles, ferrocarriles) con quienes los venden (agencias, agencias en línea, empresas) y que gestiona los sistemas centrales de muchas aerolíneas. Tiene tres segmentos: Air Distribution (el sistema de distribución global o GDS; 1.585 M de ingresos y 238 M de reservas en el 1S26), Air IT Solutions (sistema de pasajeros Altéa y Navitaire, 1.089 M de pasajeros embarcados y 1.207 M de ingresos en el 1S26) y Hospitality & Other Solutions (software hotelero, pagos y biometría; 543 M) [1]. Sus clientes son unas 200 aerolíneas en sus sistemas de pasajeros, decenas de miles de agencias y más de 40.000 hoteles; opera en la nube pública (Microsoft Azure) tras migrar desde su centro de datos de Erding.",
+    "como_gana_dinero": "Casi todo es transaccional y recurrente: en distribución cobra a la aerolínea una tarifa por reserva hecha a través de su GDS (y paga un incentivo a la agencia); en Air IT cobra por pasajero embarcado en las aerolíneas que usan Altéa o Navitaire, con contratos de varios años; en hoteles, licencias, suscripciones y transacciones [1]. El ingreso depende del volumen de viajes (reservas y pasajeros) y del precio por unidad, que sube por nuevas funciones (el ingreso por pasajero embarcado creció un 7,5 % en el 1S26) [1]. Los costes de desarrollo son en buena parte fijos y el margen EBITDA pasó del 35 % al 38,5 % en tres años; la distribución es más cíclica (cayó un 3,7 % en volumen en el 1S26 por Oriente Medio) y las soluciones para aerolíneas y hoteles, más estables.",
+    "segmentos": [
+      {
+        "nombre": "Air Distribution",
+        "descripcion": "GDS: reservas de agencias y agencias en línea",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "1S26",
+            "ingresos": 1585,
+            "resultado": null
+          }
+        ]
+      },
+      {
+        "nombre": "Air IT Solutions",
+        "descripcion": "Sistemas de pasajeros (Altéa, Navitaire) y soluciones aeroportuarias",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "1S26",
+            "ingresos": 1207,
+            "resultado": null
+          }
+        ]
+      },
+      {
+        "nombre": "Hospitality & Other Solutions",
+        "descripcion": "Software hotelero, pagos y biometría",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "1S26",
+            "ingresos": 543,
+            "resultado": null
+          }
+        ]
+      }
+    ],
+    "geografias": [],
+    "geografias_criterio": null,
+    "clientes": "Concentración baja: ninguna aerolínea pesa de forma relevante en los ingresos (no se publica el primer cliente) y el GDS reparte el volumen entre decenas de miles de agencias. Los contratos de Air IT son de 10 años o más y la migración de un sistema de pasajeros cuesta años, de ahí que los cambios de proveedor sean raros. El poder de precios se ve en el ingreso por pasajero embarcado (+7,5 % a tipo constante en el 1S26, con pasajeros +1,1 %) y en la tarifa media de distribución, que siguió subiendo con las reservas a la baja [1]; Amadeus empezó a cobrar a los agentes de IA y a las agencias en línea por el exceso de búsquedas por encima de unas 1.000 por reserva [37, 39]. El riesgo está en la distribución: las aerolíneas empujan la venta directa (NDC) para pagar menos tarifa de GDS.",
+    "kpis": [
+      {
+        "kpi": "Reservas aéreas en agencias (1S)",
+        "valor_anterior": "≈247 M (1S25)",
+        "valor_actual": "238 M (1S26)",
+        "variacion": "−3,7 %",
+        "comentario": "Guerra en Oriente Medio desde marzo [1]"
+      },
+      {
+        "kpi": "Pasajeros embarcados (1S)",
+        "valor_anterior": "≈1.077 M (1S25)",
+        "valor_actual": "1.089 M (1S26)",
+        "variacion": "+1,1 %",
+        "comentario": "Tráfico aéreo más lento [1]"
+      },
+      {
+        "kpi": "Ingreso por pasajero embarcado (Air IT)",
+        "valor_anterior": "—",
+        "valor_actual": "+7,5 % a tipo constante",
+        "variacion": "+7,5 %",
+        "comentario": "Nuevas funciones y aerolíneas migradas [1]"
+      },
+      {
+        "kpi": "Ingresos de Hospitality & Other (1S)",
+        "valor_anterior": "—",
+        "valor_actual": "543 M",
+        "variacion": "+9,2 % a tipo constante",
+        "comentario": "Nuevos clientes y pagos [1]"
+      },
+      {
+        "kpi": "Inversión en I+D (año)",
+        "valor_anterior": "—",
+        "valor_actual": "> 1.400 M (2025)",
+        "variacion": "—",
+        "comentario": "Más del 20 % de los ingresos [2]"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sector": {
+    "definicion": "El mercado relevante es la tecnología para la industria del viaje: la distribución electrónica de vuelos y hoteles a agencias (GDS), los sistemas de pasajeros de las aerolíneas y el software hotelero. En el GDS mundial compiten tres empresas: Amadeus, Sabre y Travelport (privada), que se reparten casi todo el volumen de reservas de agencias [32]. No se pudo leer ninguna estimación independiente del tamaño del mercado en euros con fuente fiable en este entorno, así que la sección se apoya en las cuotas y en los volúmenes (reservas y pasajeros) que publican las propias empresas.",
+    "tamano": null,
+    "unidad_serie": null,
+    "serie": [],
+    "tcac_historico_pct": null,
+    "tcac_previsto_pct": null,
+    "cr5_pct": 100,
+    "estructura": "Concentrada",
+    "drivers": [
+      {
+        "driver": "Tráfico aéreo mundial",
+        "efecto": "+/−",
+        "horizonte": "Cíclico",
+        "evidencia": "IATA rebajó en 2026 su previsión de crecimiento del tráfico hacia el 2 % por la guerra en Oriente Medio; la guía de Amadeus partía del 4,5 % [38]"
+      },
+      {
+        "driver": "Precio por unidad (funciones nuevas, NDC, merchandising)",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Ingreso por pasajero embarcado +7,5 % en el 1S26 [1]"
+      },
+      {
+        "driver": "Venta directa de las aerolíneas (NDC)",
+        "efecto": "−",
+        "horizonte": "Estructural",
+        "evidencia": "Las aerolíneas usan NDC para pagar menos al GDS; Amadeus lo integra en su plataforma [32, 39]"
+      },
+      {
+        "driver": "Agentes de IA y búsqueda conversacional",
+        "efecto": "+/−",
+        "horizonte": "Estructural",
+        "evidencia": "Más búsquedas por reserva (cobro por exceso) y riesgo de que los agentes reserven directo; Amadeus es socio de Google en su protocolo de comercio [36, 37]"
+      },
+      {
+        "driver": "Digitalización hotelera y biometría",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Hospitality +9,2 % en el 1S26; compra de IDEMIA Public Security [1, 23]"
+      }
+    ],
+    "porter": [
+      {
+        "fuerza": "Rivalidad",
+        "intensidad": 2,
+        "justificacion": "Tres GDS; Sabre en pérdidas y con capitalización de ≈840 M USD, sin capacidad de guerra de precios [34]"
+      },
+      {
+        "fuerza": "Poder de los clientes",
+        "intensidad": 3,
+        "justificacion": "Grandes aerolíneas y agencias en línea negocian tarifas e incentivos y empujan la venta directa (NDC) [32]"
+      },
+      {
+        "fuerza": "Poder de los proveedores",
+        "intensidad": 2,
+        "justificacion": "Nube pública (Microsoft) y talento de ingeniería; sin dependencia crítica de un proveedor"
+      },
+      {
+        "fuerza": "Amenaza de entrada",
+        "intensidad": 2,
+        "justificacion": "Construir un sistema de pasajeros o un GDS con miles de conexiones lleva décadas; la IA reduce algo la barrera en la búsqueda, no en la reserva y la liquidación [39]"
+      },
+      {
+        "fuerza": "Amenaza de sustitutos",
+        "intensidad": 3,
+        "justificacion": "Venta directa de aerolíneas y agentes de IA que reserven sin pasar por el GDS [36, 37]"
+      }
+    ],
+    "ciclo": {
+      "posicion": "Madurez del ciclo",
+      "comentario": "El tráfico aéreo superó los niveles de 2019 en 2024 y crece ya a ritmos de un dígito; en 2026 el conflicto en Oriente Medio frenó las reservas desde marzo (−3,7 % en el 1S) [1, 38]. En 2008-09 las reservas cayeron en torno a un 10 %, en 2020 los ingresos de Amadeus se hundieron un 61 % y en 2022 recuperaron con fuerza [2]: la distribución es cíclica y las soluciones para aerolíneas y hoteles amortiguan."
+    },
+    "regulacion": "La distribución aérea por GDS está regulada en la UE por el Código de Conducta de los sistemas de reserva (Reglamento 80/2009), que obliga a mostrar las ofertas de forma neutral; en EE. UU. la norma equivalente se derogó. La nueva Ley de Mercados Digitales y la regulación de la IA pueden cambiar cómo los asistentes de IA muestran y reservan viajes. La compra de IDEMIA Public Security necesita aprobaciones regulatorias y de seguridad nacional en varios países (cierre previsto a mediados de 2027) [23].",
+    "tendencias": "La IA es la gran pregunta: el mercado teme que los agentes de IA reserven directamente en las webs de aerolíneas y hoteles y salten el GDS. Amadeus responde integrándose como infraestructura (socio de Google en su protocolo de comercio universal, acuerdos con Microsoft, compra de SkyLink) y cobrando por el exceso de búsquedas que generan los agentes [36, 37, 40]. La venta directa por NDC avanza despacio y Amadeus agrega también ese contenido. Ganan los que controlan el inventario, el precio y la liquidación; pierde la intermediación pura de búsqueda.",
+    "confianza": "Baja"
+  },
+  "competencia": {
+    "cuota_pct": 45,
+    "posicion": "1.º GDS mundial, con entre el 40 % y la mitad de las reservas aéreas de agencias según la fuente [32, 35]; 1.º en sistemas de pasajeros de aerolíneas de red (Altéa) y uno de los principales proveedores de software hotelero.",
+    "competidores": [
+      {
+        "nombre": "Sabre",
+        "pais": "EE. UU.",
+        "ticker": "SABR",
+        "ingresos": null,
+        "cuota_pct": 30,
+        "margen_ebit_pct": null,
+        "comentario": "2.º GDS (≈30 %); vendió su negocio hotelero en 2025, sigue con pérdidas; EBITDA ajustado previsto ≈600 M USD en 2026 [33, 35]"
+      },
+      {
+        "nombre": "Travelport",
+        "pais": "Reino Unido",
+        "ticker": null,
+        "ingresos": null,
+        "cuota_pct": 17.5,
+        "margen_ebit_pct": null,
+        "comentario": "3.º GDS (15-20 %), propiedad de fondos desde 2019; pierde cuota [35]"
+      },
+      {
+        "nombre": "Oracle Hospitality",
+        "pais": "EE. UU.",
+        "ticker": "ORCL",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Competidor en software hotelero (gestión de propiedades)"
+      }
+    ],
+    "foso": {
+      "veredicto": "Amplio",
+      "tendencia": "Estable",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 5,
+          "evidencia": "Más agencias atraen más contenido de aerolíneas y viceversa: la mitad de las reservas aéreas de agencias pasan por su plataforma [1]"
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 5,
+          "evidencia": "Migrar un sistema de pasajeros lleva años y los contratos duran más de diez; ingreso por pasajero +7,5 % con volumen +1,1 % [2]"
+        },
+        {
+          "fuente": "Intangibles (marca, patentes, licencias)",
+          "puntuacion": 3,
+          "evidencia": "Software propio con más de 1.400 M de I+D al año; poca marca ante el consumidor [12]"
+        },
+        {
+          "fuente": "Ventaja en costes",
+          "puntuacion": 3,
+          "evidencia": "Escala de desarrollo: margen EBITDA del 38,5 % frente a pérdidas de Sabre [3]"
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 4,
+          "evidencia": "Tres GDS en el mundo; nadie ha entrado en treinta años [1]"
+        }
+      ]
+    },
+    "amenazas": "La amenaza principal es la desintermediación por IA: si los asistentes de Google, OpenAI o las agencias en línea reservan directamente con las aerolíneas por NDC, la tarifa de distribución (casi la mitad de los ingresos) perdería volumen. Probabilidad media a cinco años: la reserva de un vuelo exige inventario, tarifas, emisión del billete y liquidación que hoy solo dan los GDS y los sistemas de pasajeros, y Amadeus está dentro de ese circuito (Google, Microsoft) [36, 39]. Amenaza secundaria: la presión de las grandes aerolíneas para bajar tarifas al renovar contratos.",
+    "confianza": "Media"
+  },
+  "financieros": {
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 2670.4,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 575.9,
+        "amortizaciones": null,
+        "ebit": null,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": -136.7,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": null,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": null
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 4485.9,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 1589.2,
+        "amortizaciones": null,
+        "ebit": null,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 664.4,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": null,
+        "dpa": 0.74,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": null
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 5441.2,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 2063.2,
+        "amortizaciones": 680,
+        "ebit": 1383.2,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 1117.6,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 2.5,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 447
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 6141.7,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 2327.7,
+        "amortizaciones": 692.8,
+        "ebit": 1634.9,
+        "resultado_financiero": -41.7,
+        "bai": 1593.2,
+        "impuestos": 334.6,
+        "minoritarios": 0,
+        "beneficio_neto": 1258.6,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": 7.4,
+        "bpa": 2.87,
+        "dpa": 1.39,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 438.5
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 6517,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 2506.6,
+        "amortizaciones": 748.2,
+        "ebit": 1758.4,
+        "resultado_financiero": -67.8,
+        "bai": 1690.6,
+        "impuestos": 355,
+        "minoritarios": 0,
+        "beneficio_neto": 1335.6,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 3.1,
+        "dpa": 1.54,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 430.8
+      }
+    ],
+    "ltm": {
+      "periodo": "LTM dic-25",
+      "fecha_fin": "2025-12-31",
+      "ingresos": 6517,
+      "ebitda": 2506.6,
+      "ebit": 1758.4,
+      "beneficio_neto": 1335.6,
+      "bpa": 3.1,
+      "dpa": 1.54,
+      "dpa_extraordinario": 0,
+      "fcf": 1302.2,
+      "participadas_en_ebitda": null,
+      "no_recurrentes_en_ebitda": null
+    },
+    "cambios_perimetro": [],
+    "comentario": "Los ingresos pasaron de 2.670 M en 2021 (aún con el tráfico aéreo hundido por la pandemia) a 4.486 M en 2022, 5.441 M en 2023, 6.142 M en 2024 y 6.517 M en 2025 [2, 5, 6, 7, 10]. Desde 2023 el crecimiento es casi todo orgánico: +12,9 % en 2024 y +6,1 % en 2025 (+8,5 % a tipo constante; el dólar restó 2,4 puntos) [2, 5]. El EBITDA subió de 576 M en 2021 a 2.507 M en 2025, con el margen del 35,4 % de 2022 al 37,9 % de 2024 y el 38,5 % de 2025 [4, 5, 7]: el apalancamiento operativo de una plataforma con costes de desarrollo fijos. En el 1S26 los ingresos solo crecieron un 2,3 % (5,1 % a tipo constante) porque las reservas de distribución aérea cayeron un 3,7 % desde marzo por la guerra en Oriente Medio; Air IT Solutions (+8,7 % a tipo constante) y Hospitality (+9,2 %) lo compensaron, y el EBIT ajustado creció un 4,9 % [1, 9]. 2021 y 2022 no son comparables (pandemia).",
+    "ajustes": "Amadeus publica un beneficio y un BPA «ajustados» que excluyen, sobre todo, la amortización de los intangibles surgidos en compras (asignación del precio de compra), las diferencias de cambio no realizadas y los costes de adquisiciones: el beneficio ajustado de 2025 fue de 1.420,2 M frente a 1.335,6 M contables (≈85 M de diferencia) y el BPA ajustado diluido de 3,23 € [2, 3, 4]; en 2024, 1.347,9 M ajustados frente a 1.258,6 M [5, 21]; en 2023 el BPA ajustado fue de 2,51 € y en 2022 de 1,56 € [6]. El EBITDA de 2024 publicado (2.335,1 M) excluye 7,4 M de costes de adquisiciones, que aquí se devuelven como no recurrentes [5]. El resultado financiero y los impuestos de 2024 y 2025 son estimación propia (tipo efectivo del 21 %), porque el desglose no se pudo leer; el EBIT de 2023 se deduce del +18,2 % publicado para 2024 [5]. La diferencia entre el beneficio de 2024 de la nota original (1.258,6 M) y el comparativo de 2025 (1.252,7 M) es una reexpresión menor [20, 21].",
+    "confianza": "Media"
+  },
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "1T25",
+        "ingresos": 1632,
+        "crecimiento_pct": 9,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": null,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "2T25",
+        "ingresos": 1628,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": null,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1T26",
+        "ingresos": 1682.6,
+        "crecimiento_pct": 3.1,
+        "crecimiento_organico_pct": null,
+        "ebitda": 661.4,
+        "margen_ebitda_pct": 39.3,
+        "bpa": null,
+        "vs_consenso": "Superior"
+      },
+      {
+        "periodo": "2T26",
+        "ingresos": 1652.3,
+        "crecimiento_pct": 1.5,
+        "crecimiento_organico_pct": 2.2,
+        "ebitda": 673,
+        "margen_ebitda_pct": 40.7,
+        "bpa": null,
+        "vs_consenso": "Superior"
+      }
+    ],
+    "ultima_presentacion": "En la conferencia del 1T26 (8-may) la dirección mantuvo la guía anual (ingresos con crecimiento de un dígito alto a tipo constante, BPA ajustado con crecimiento de dos dígitos bajos y caja libre de 1.350-1.450 M) y los resultados superaron ligeramente las previsiones de Renta 4 [8, 29]. En la del 1S26 (31-jul) el tono cambió: la guerra en Oriente Medio hizo caer las reservas aéreas desde marzo (−3,7 % en el semestre), la dirección rebajó el crecimiento de ingresos del grupo a «un dígito medio-alto», el de distribución aérea a «un dígito bajo-medio» y el del BPA ajustado a «un dígito alto o dos dígitos bajos», y mantuvo el margen EBIT ajustado (29,8 %) y la caja libre [1, 27]. El crecimiento de ingresos del 2T bajó al 2,2 % a tipo constante desde el 7,9 % del 1T, pero el EBITDA del trimestre (673 M) batió al consenso en un 3 % [17]. Las preguntas se centraron en el efecto de los agentes de IA sobre la distribución, la recuperación del tráfico en Oriente Medio y la compra de IDEMIA Public Security (1.200 M más hasta 150 M variables, cierre previsto a mediados de 2027) [23, 27]; la dirección no dio una cifra del efecto de la IA ni un objetivo de margen para 2027. Ingresos del 2T25 y del 2T26 deducidos de los semestrales (estimación propia).",
+    "confianza": "Media"
+  },
+  "balance": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "activo_total": 11180,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 7430,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": null,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "patrimonio_neto": 3750,
+        "minoritarios": null,
+        "reservas": null
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 11710,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 7130,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": null,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "patrimonio_neto": 4580,
+        "minoritarios": null,
+        "reservas": null
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 10795.4,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 6315.4,
+        "fondo_comercio": 3710.8,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 1038,
+        "deuda_financiera": 3178.6,
+        "arrendamientos": null,
+        "patrimonio_neto": 4480,
+        "minoritarios": null,
+        "reservas": null
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 11784.3,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 6724.3,
+        "fondo_comercio": 4090.6,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 1049.1,
+        "deuda_financiera": 3160.4,
+        "arrendamientos": null,
+        "patrimonio_neto": 5060,
+        "minoritarios": null,
+        "reservas": null
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 11471,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 6671,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 1115.2,
+        "deuda_financiera": 3256.6,
+        "arrendamientos": null,
+        "patrimonio_neto": 4800,
+        "minoritarios": null,
+        "reservas": null
+      }
+    ],
+    "vencimientos": [],
+    "liquidez": "Caja y equivalentes de 791,8 M más 323,4 M de inversiones a corto plazo a cierre de 2025 [16]; deuda financiera neta de 2.141,4 M (dic-25) y 2.577,5 M a 30-jun-2026, 1,0 veces el EBITDA de los últimos 12 meses [1, 2]. Líneas de crédito no dispuestas: no localizadas.",
+    "rating": null,
+    "coste_deuda_pct": null,
+    "vida_media_anios": null,
+    "otros_pasivos": "La deuda financiera neta que publica Amadeus (según el contrato de financiación) no incluye los pasivos por arrendamiento (NIIF 16), que no se pudieron localizar en este entorno (hueco); por su tamaño (oficinas y centro de datos de Erding, ya muy migrado a la nube pública) su efecto por acción es pequeño. Compromisos que no figuran todavía en el balance: la compra de IDEMIA Public Security por 1.200 M en efectivo más hasta 150 M de pago variable, con cierre previsto a mediados de 2027 [23], y el dividendo complementario de 1,01 €/acción (436,2 M) pagado el 3-jul-2026, después del balance de junio [18]. Las pensiones y provisiones por litigios no se pudieron leer.",
+    "comentario": "La deuda neta se ha mantenido en torno a 2.100-2.150 M de 2023 a 2025 (1,0x, 0,91x y ≈0,85x el EBITDA) [2, 5, 6] pese a pagar dividendos del 50 % del beneficio y a recomprar 1.300 M en 2025: la caja libre (1.302 M en 2025) lo financia casi todo [2]. Sube a 2.577,5 M en junio de 2026 por el dividendo a cuenta (0,53 €/acción en enero), la nueva recompra de hasta 500 M y la estacionalidad [1, 24], y subirá ≈1.200-1.350 M más con IDEMIA en 2027 [23]: el apalancamiento iría a ≈1,4-1,5x, todavía dentro de lo que la empresa considera prudente. El balance histórico solo tiene las líneas que dan los agregadores (sin circulante comercial ni intangibles): ROIC y Altman/Beneish se leen con cautela.",
+    "confianza": "Baja"
+  },
+  "flujos": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": null,
+        "capex": null,
+        "pagos_arrendamientos": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 0,
+        "recompras": 0,
+        "emision_acciones": null,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 1440,
+        "capex": 566.7,
+        "pagos_arrendamientos": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 0,
+        "recompras": 0,
+        "emision_acciones": null,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 1790,
+        "capex": 600.5,
+        "pagos_arrendamientos": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": 0,
+        "emision_acciones": null,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 2150,
+        "capex": 788.1,
+        "pagos_arrendamientos": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": 0,
+        "emision_acciones": null,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 2200,
+        "capex": 814.6,
+        "pagos_arrendamientos": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": 1300,
+        "emision_acciones": null,
+        "intereses_en_financiacion": 0
+      }
+    ],
+    "comentario": "El flujo operativo pasó de 1.440 M en 2022 a 2.200 M en 2025 y el capex (sobre todo desarrollo de software capitalizado) de 567 M a 815 M, un 12,5 % de las ventas en 2025 [12]. La caja libre que define la empresa (después de capex, intereses e impuestos) fue de 805 M en 2022, 1.149 M en 2023, 1.335 M en 2024 y 1.302 M en 2025, un 97 % del beneficio contable de 2025 [2, 5, 6]: conversión alta y estable. En el 1S26 la caja libre fue de 472,2 M (+0,8 %) con el capex un 16,8 % más bajo (327,6 M, 9,8 % de las ventas) [1, 22]; la guía de 1.350-1.450 M para el año se mantuvo [27]. La empresa invierte más de 1.400 M al año en I+D (más del 20 % de las ventas), de los que la mitad larga se capitaliza [2]: la amortización (748 M en 2025) es casi igual al capex, así que la inversión neta es pequeña; estimación propia: ≈70 % del capex es mantenimiento y evolución de plataformas existentes. Dividendos pagados por año y adquisiciones: no localizados (hueco).",
+    "confianza": "Media"
+  },
+  "calidad": {
+    "auditor": null,
+    "anios_auditor": null,
+    "opinion": null,
+    "comentario": "No se pudieron abrir las cuentas auditadas ni el informe de auditoría (solo búsqueda web). Lo relevante para la calidad del beneficio: (1) Amadeus capitaliza una parte grande de su I+D (más de 1.400 M de inversión en 2025, más del 20 % de los ingresos [2]); el capex de 815 M es casi igual a la amortización de 748 M, así que el beneficio no está inflado por una capitalización creciente, pero sí depende de la vida útil que se asigne al software; (2) el BPA «ajustado» excluye la amortización de intangibles de compras y efectos de cambio (≈85 M en 2025) [3, 4]: la diferencia es estable y pequeña, y el informe usa el ajustado solo para el PER, en la misma base en la historia y en la proyección; (3) la caja libre convierte ≈97 % del beneficio contable [2]. Los indicadores del motor (Altman, Piotroski, Beneish) se calculan con huecos de circulante y deben leerse con cautela.",
+    "senales": [
+      {
+        "senal": "Capitalización de I+D elevada",
+        "nivel": "Media",
+        "comentario": "Más de 1.400 M de I+D al año; si la vida útil del software se acortara, la amortización subiría. Capex y amortización están igualados (815 frente a 748 M en 2025) [2, 12]."
+      },
+      {
+        "senal": "Beneficio ajustado frente a contable",
+        "nivel": "Baja",
+        "comentario": "Diferencia estable de ≈85-90 M al año (amortización de intangibles de compras y cambio) [3, 5]."
+      }
+    ],
+    "confianza": "Baja"
+  },
+  "rentabilidad": {
+    "comentario": "El ROIC de 2025 es del 19,7 % frente a un WACC del 8,52 %: crea valor con unos 11 puntos de margen, y lo hace desde 2023, cuando el beneficio superó al de 2019 [6]. Lo mueve el margen (beneficio neto del 20,5 % de las ventas), no la rotación (0,56 veces), porque el capital invertido incluye ≈4.000 M de fondo de comercio de compras (Navitaire, TravelClick, Vision-Box) [13]: sin él, el ROIC operativo sería más del doble. El ROIC incremental histórico es del 24,2 %: el crecimiento de 2023-2025 ha rendido por encima del capital existente, sobre todo porque la recuperación del tráfico apenas pidió capital nuevo. Frente a Sabre, que pierde dinero [33], la diferencia es de escala y de mezcla (Air IT y hoteles). Hay que leerlo con cautela: el capital invertido sale de patrimonio y deuda neta de agregadores, sin circulante.",
+    "confianza": "Baja"
+  },
+  "capital": {
+    "politica": "Dividendo del 50 % del beneficio (1,54 €/acción con cargo a 2025, +6 %; 664,6 M), en dos pagos: 0,53 € a cuenta en enero y 1,01 € complementario en julio [3, 18]. Recompras: 1.300 M terminados en el 4T25 [2] y un nuevo programa de hasta 500 M desde el 2-mar-2026, en tramos (el de junio, hasta 150 M) [18, 24]; la junta de 2026 autorizó comprar hasta el 10 % del capital en cinco años y amortizar 18,9 M de acciones propias, con lo que el capital quedó en 431,57 M de acciones el 30-jun-2026 [31]. Prioridades: inversión en I+D, compras selectivas (IDEMIA Public Security, SkyLink) y devolución del exceso con un apalancamiento objetivo de 1-1,5x el EBITDA [23, 28].",
+    "adquisiciones": [
+      {
+        "anio": "2026",
+        "objetivo": "IDEMIA Public Security (biometría, control de fronteras y seguridad pública)",
+        "importe": 1200,
+        "ev_ebitda": null,
+        "financiacion": "Caja y deuda; hasta 150 M de pago variable adicional; cierre previsto a mediados de 2027",
+        "resultado": "Pendiente de aprobaciones regulatorias [23]"
+      },
+      {
+        "anio": "2026",
+        "objetivo": "SkyLink (IA conversacional para reservas)",
+        "importe": null,
+        "ev_ebitda": null,
+        "financiacion": "Caja",
+        "resultado": "Integración en la oferta de IA agéntica; importe no publicado [28]"
+      }
+    ],
+    "comentario": "La dirección ha devuelto en 2025 casi el doble de su caja libre (1.300 M de recompra más ≈620 M de dividendos frente a 1.302 M de caja libre) manteniendo la deuda neta en ≈0,85x el EBITDA [2]: el balance tenía holgura. La compra de IDEMIA Public Security (1.200-1.350 M) es la mayor desde TravelClick (2018) y diversifica hacia la biometría de fronteras, donde Amadeus ya había entrado con Vision-Box; su rentabilidad no se puede juzgar todavía (sin múltiplo publicado) [23]. El ROIC incremental y la dilución están en las tablas del motor; con acciones en ≈431,6 M frente a 447 M en 2023, las recompras han reducido el número de acciones ≈3,5 % en dos años [11, 31].",
+    "confianza": "Media"
+  },
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "Luis Maroto",
+        "cargo": "Consejero delegado",
+        "desde": "2011",
+        "participacion_pct": null,
+        "trayectoria": "En Amadeus desde 1999 (antes director financiero y de operaciones); consejero delegado desde 2011. Llevó a la empresa de ≈2.700 M de ingresos en 2010 a 6.517 M en 2025 y por la pandemia sin perder ningún gran cliente; asumió además la dirección financiera de forma transitoria tras la salida de Till Streichert en septiembre de 2024 [2, 26, 43]. Reelegido consejero por un año en junio de 2026 [18]."
+      },
+      {
+        "nombre": "William Connelly",
+        "cargo": "Presidente no ejecutivo",
+        "desde": null,
+        "participacion_pct": null,
+        "trayectoria": "Consejero independiente reelegido por periodos de un año; presidente del consejo, con una retribución de 430.000 € en 2025 [41]."
+      }
+    ],
+    "historial_guidance": [
+      {
+        "anio": "2024",
+        "guia": "Crecimiento de dos dígitos en ingresos y EBITDA",
+        "real": "Ingresos +12,9 %, EBITDA +13,2 % [5]",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2025",
+        "guia": "Ingresos de 6.690-6.840 M y EBITDA de hasta 2.580 M [26]",
+        "real": "Ingresos 6.517 M (+8,5 % a tipo constante; el dólar restó) y EBITDA 2.506,6 M [2]",
+        "cumplida": "Parcial"
+      },
+      {
+        "anio": "2026",
+        "guia": "Ingresos +dígito alto a tipo constante, BPA ajustado +dos dígitos bajos, caja libre 1.350-1.450 M (febrero)",
+        "real": "Rebajada en julio: ingresos +dígito medio-alto, BPA +dígito alto/dos dígitos bajos; caja libre mantenida [1]",
+        "cumplida": "Parcial"
+      }
+    ],
+    "comentario": "La cúpula es estable: Maroto lleva quince años como consejero delegado y dos décadas largas en la casa, y la dirección cumplió la guía de 2024 y la de 2025 a tipo constante; en 2025 el dólar dejó los ingresos en euros por debajo del rango [2, 26]. Dos puntos débiles: el puesto de director financiero lo ocupa el propio consejero delegado de forma transitoria desde septiembre de 2024 (no se localizó un nombramiento posterior) [26], y la reelección de Maroto por solo un año en 2026 sugiere que la sucesión está abierta sin un plan público [18]. Es una pregunta para la dirección.",
+    "confianza": "Media"
+  },
+  "gobierno": {
+    "consejo": [
+      {
+        "nombre": "William Connelly",
+        "cargo": "Presidente",
+        "tipo": "Independiente",
+        "desde": null,
+        "comisiones": null
+      },
+      {
+        "nombre": "Luis Maroto",
+        "cargo": "Consejero delegado",
+        "tipo": "Ejecutivo",
+        "desde": null,
+        "comisiones": null
+      }
+    ],
+    "presidente_ceo_separados": true,
+    "presidente_ejecutivo": false,
+    "consejero_coordinador": null,
+    "una_accion_un_voto": true,
+    "operaciones_vinculadas_relevantes": false,
+    "variable_ligado_rentabilidad": null,
+    "auditoria_independiente": null,
+    "insiders_sin_operaciones": false,
+    "accionista_control": false,
+    "presidente_vinculado_control": false,
+    "cambios_cupula_24m": 0,
+    "voto_remuneracion_pct": null,
+    "voto_remuneracion_contra_pct": null,
+    "voto_remuneracion_contra_libre_pct": null,
+    "voto_cupula_pct": null,
+    "remuneracion_ceo": {
+      "anio": "2025",
+      "total": 4.37,
+      "fijo": null,
+      "variable_corto": null,
+      "variable_largo": null,
+      "ratio_salario_medio": null
+    },
+    "remuneracion": "El consejero delegado devengó 4,37 M € en 2025, un 9,6 % más que en 2024 [41]; el presidente, 0,43 M € (+25 %) [41]. No se pudo leer el IARC, así que no hay detalle de las métricas y pesos del variable, del plan a largo plazo ni de las cláusulas de recuperación; en ejercicios anteriores el plan a largo plazo de Amadeus usaba el BPA ajustado, la caja libre y el TSR relativo (dato no verificado en este análisis).",
+    "accionistas": [
+      {
+        "nombre": "BlackRock",
+        "pct": 5.498,
+        "tipo": "Institucional",
+        "variacion": "≈+0,25 puntos frente a 2024"
+      },
+      {
+        "nombre": "Massachusetts Financial Services",
+        "pct": 5.09,
+        "tipo": "Institucional",
+        "variacion": "n.d."
+      },
+      {
+        "nombre": "Capital Research and Management",
+        "pct": 5.032,
+        "tipo": "Institucional",
+        "variacion": "n.d."
+      },
+      {
+        "nombre": "Fidelity International",
+        "pct": 4.082,
+        "tipo": "Institucional",
+        "variacion": "n.d."
+      },
+      {
+        "nombre": "Fundsmith",
+        "pct": 3.02,
+        "tipo": "Institucional",
+        "variacion": "n.d."
+      },
+      {
+        "nombre": "Citigroup",
+        "pct": 1.268,
+        "tipo": "Institucional",
+        "variacion": "Bajó desde el 3,097 % (jul-2026) [42]"
+      }
+    ],
+    "insiders": [],
+    "control_y_defensas": "Amadeus no tiene accionista de control: las aerolíneas fundadoras salieron del capital tras la vuelta a bolsa y hoy los mayores accionistas son gestoras institucionales con un 3-5,5 % cada una (BlackRock, MFS, Capital Research, Fidelity, Fundsmith) [31]. Una acción, un voto, sin límites estatutarios conocidos. El presidente es independiente y está separado del consejero delegado. La empresa es, por tamaño y accionariado disperso, un posible objetivo de una opa, aunque la participación en sistemas críticos de aerolíneas y fronteras (IDEMIA) haría probable un control de inversiones extranjeras.",
+    "alertas": [
+      "Director financiero interino (el propio consejero delegado) desde septiembre de 2024; no se localizó nombramiento posterior [26].",
+      "Reelección del consejero delegado por un solo año (junio de 2026): sucesión sin plan público [18]."
+    ],
+    "confianza": "Baja"
+  },
+  "consenso": {
+    "guidance": "Guía de 2026 publicada el 27-feb-2026: ingresos del grupo con crecimiento de un dígito alto a tipo constante, BPA ajustado diluido con crecimiento de dos dígitos bajos y caja libre de 1.350-1.450 M, con un tráfico aéreo mundial del +4,5 %. El 31-jul-2026, con el 1S, la rebajó por la guerra en Oriente Medio: ingresos con crecimiento de un dígito medio-alto, distribución aérea de un dígito bajo-medio y BPA ajustado de un dígito alto a dos dígitos bajos; mantuvo el margen EBIT ajustado (29,8 %) y la caja libre. No hay un plan a medio plazo con cifras publicado en 2026. Próxima actualización: resultados del 3T el 6-nov-2026 [46].",
+    "estimaciones": [
+      {
+        "periodo": "2026e",
+        "ingresos": null,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 3.46,
+        "dpa": null,
+        "fuente": "Yahoo Finance, 19 analistas (BPA ajustado) [47]"
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": null,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 3.88,
+        "dpa": null,
+        "fuente": "Yahoo Finance [47]"
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": null,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 4.01,
+        "dpa": null,
+        "fuente": "Simply Wall St: beneficio de ≈1.730 M ÷ 431,6 M de acciones (estimación propia) [49]"
+      }
+    ],
+    "recomendaciones": {
+      "n_analistas": 22,
+      "comprar": 18,
+      "mantener": 2,
+      "vender": 2,
+      "po_medio": 67.2,
+      "po_min": 50,
+      "po_max": 80.9
+    },
+    "revisiones": "Los objetivos han bajado en 2026: Jefferies de 78 a 60 € y después a 65 € tras el 1S [17, 64], Oddo BHF de 63 a 60 € (neutral) [50], BNP Paribas de 79 a 78 € [64], y Kepler Cheuvreux pasó a «reducir» con 50 € en junio [48]. El objetivo medio de Reuters pasó de 66,69 € (junio) a 66,40 € [52] y el de MarketScreener es de 67,20 € (julio, 22 analistas) [48]; Yahoo da 69,15 € [47]. Las estimaciones de BPA de 2026-2027 subieron ligeramente en 90 días según Yahoo [47], porque la recompra compensa el menor volumen. Solo hay una fuente gratuita con estimaciones completas de BPA (Yahoo); el resto se contrasta con objetivos y recomendaciones.",
+    "base_ebitda": "NIIF",
+    "ajuste_ebitda_pct_ventas": null,
+    "confianza": "Media"
+  },
+  "bolsa": {
+    "tipo_rentabilidad": "de precio (sin dividendos)",
+    "rentabilidades": [
+      {
+        "periodo": "En el año",
+        "accion_pct": -15.9,
+        "indice_pct": null,
+        "sector_pct": null
+      }
+    ],
+    "anual": [
+      {
+        "anio": "2025",
+        "accion_pct": -7.2,
+        "indice_pct": null
+      }
+    ],
+    "beta": null,
+    "volatilidad_pct": null,
+    "max_drawdown_pct": null,
+    "posicion_corta_pct": null,
+    "comentario": "La acción cae ≈16 % en 2026 (52,68 € frente a un cierre de 2025 estimado en ≈62,7 €) tras perder un 7,2 % en 2025, cuando el IBEX vivió uno de sus mejores años [17, 51]: es de los valores más castigados del índice. Dos causas: el miedo a que los agentes de IA desintermedien la distribución (desde finales de 2025) y la guerra en Oriente Medio, que frenó las reservas desde marzo [17]. Marcó mínimos de 46,21 € el 17-feb-2026, rebotó tras el 1T (8-may) y el 1S (31-jul, +2,9 % en la sesión) y desde septiembre oscila entre 51 y 57 € [45, 46]. No se pudieron calcular beta, volatilidad ni caída máxima (sin acceso a históricos).",
+    "confianza": "Baja"
+  },
+  "multiplos_historicos": {
+    "serie": [
+      {
+        "anio": "2024",
+        "precio_cierre": 67.5,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2025",
+        "precio_cierre": 62.67,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      }
+    ],
+    "comentario": "Solo hay dos cierres de ejercicio fiables, estimados desde rentabilidades publicadas: ≈62,67 € en 2025 (54,90 € el 3-ago-2026 con −12,4 % en el año) [17] y ≈67,50 € en 2024 (el de 2025 deshaciendo la caída del 7,16 % del año) [51]. Con el BPA ajustado diluido (3,23 € en 2025 y ≈3,02 € estimado en 2024), el PER de cierre fue de ≈19,4x en 2025 y ≈22,4x en 2024; hoy, 52,68 € sobre el BPA de consenso de 2026 (3,46 €) son 15,2x [47]. La compresión del múltiplo (de 22x a 15x en dos años) con el beneficio creciendo al 7-10 % es la tesis del mercado: paga por Amadeus como por un negocio que la IA puede erosionar.",
+    "confianza": "Baja"
+  },
+  "comparables": {
+    "criterio": "Dos grupos: (1) plataformas de viajes con las que comparte demanda y ciclo (Booking, Expedia, Trip.com, Airbnb); (2) software e información europeos de alta recurrencia y margen parecido (SAP, Dassault Systèmes, Experian, RELX, Wolters Kluwer), que es como valoraba el mercado a Amadeus antes de 2025. Sabre, el competidor directo, se excluye: tiene pérdidas y una deuda que hace su PER inservible [34]; Travelport no cotiza. Los múltiplos vienen de informes del repositorio de la misma semana (9-14 oct) [59, 60, 61, 62] y de agregadores [56, 57, 58]; las capitalizaciones en USD se pasan a 1,1206 USD/EUR y las de GBP a ≈1,15 EUR/GBP (aproximado).",
+    "empresas": [
+      {
+        "nombre": "Booking Holdings",
+        "ticker": "BKNG",
+        "pais": "US",
+        "capitalizacion": 108155,
+        "ev_ventas": 4.38,
+        "ev_ebitda_ltm": 11.9,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 13.2,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": 36.7,
+        "roic_pct": null,
+        "dn_ebitda": 0.3,
+        "fcf_yield_pct": 7.5
+      },
+      {
+        "nombre": "Expedia Group",
+        "ticker": "EXPE",
+        "pais": "US",
+        "capitalizacion": 28378,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": 8.3,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 10.8,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "Trip.com Group",
+        "ticker": "TCOM",
+        "pais": "CN",
+        "capitalizacion": 36052,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 9,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "Airbnb",
+        "ticker": "ABNB",
+        "pais": "US",
+        "capitalizacion": 97269,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": 36.7,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 29.2,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "SAP",
+        "ticker": "SAP",
+        "pais": "DE",
+        "capitalizacion": 221940,
+        "ev_ventas": 5.65,
+        "ev_ebitda_ltm": 18.2,
+        "ev_ebitda_ntm": 15.1,
+        "per_ntm": 24.2,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": 31.1,
+        "roic_pct": 15.5,
+        "dn_ebitda": -0.1,
+        "fcf_yield_pct": 3.6
+      },
+      {
+        "nombre": "Dassault Systèmes",
+        "ticker": "DSY",
+        "pais": "FR",
+        "capitalizacion": 28794,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": 11.2,
+        "per_ntm": 20.7,
+        "crecimiento_pct": 5.3,
+        "margen_ebitda_pct": 35.1,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "Experian",
+        "ticker": "EXPN",
+        "pais": "GB",
+        "capitalizacion": 26796,
+        "ev_ventas": 4.17,
+        "ev_ebitda_ltm": 11.5,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 15.5,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": 36.1,
+        "roic_pct": 17.9,
+        "dn_ebitda": 1.7,
+        "fcf_yield_pct": 7.3
+      },
+      {
+        "nombre": "RELX",
+        "ticker": "REL",
+        "pais": "GB",
+        "capitalizacion": 51422,
+        "ev_ventas": 5.55,
+        "ev_ebitda_ltm": 14,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 17.8,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": 39.7,
+        "roic_pct": 33.2,
+        "dn_ebitda": 2.3,
+        "fcf_yield_pct": 5.1
+      },
+      {
+        "nombre": "Wolters Kluwer",
+        "ticker": "WKL",
+        "pais": "NL",
+        "capitalizacion": 15783,
+        "ev_ventas": 3.35,
+        "ev_ebitda_ltm": 10.2,
+        "ev_ebitda_ntm": 9.3,
+        "per_ntm": 12.9,
+        "crecimiento_pct": 7.3,
+        "margen_ebitda_pct": 32.9,
+        "roic_pct": 25.4,
+        "dn_ebitda": 2,
+        "fcf_yield_pct": 8.3
+      }
+    ],
+    "comentario": "La mediana del PER de los próximos 12 meses de los nueve comparables es de 15,5x, con un rango de 9x (Trip.com) a 29x (Airbnb); Amadeus cotiza a ≈15x el BPA de consenso de 2026, en la mediana y por debajo de todo el grupo de software europeo (13-24x) salvo Wolters Kluwer, que también sufre el miedo a la IA. Por margen EBITDA (38,5 %), conversión de caja y deuda (≈1x EBITDA), Amadeus se parece más al grupo de software (mediana ≈18x) que al de agencias en línea (mediana ≈12x). El descuento frente a su propia historia (22x en 2024) y frente a SAP o RELX solo se justifica si la distribución pierde volumen de forma permanente.",
+    "confianza": "Baja"
+  },
+  "transacciones": null,
+  "dcf": {
+    "anios": [
+      {
+        "periodo": "2026e",
+        "crecimiento_pct": 3.5,
+        "margen_ebitda_pct": 38.8,
+        "amortizacion_pct_ventas": 11.4,
+        "capex_pct_ventas": 11.5,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 21,
+        "fijo": true
+      },
+      {
+        "periodo": "2027e",
+        "crecimiento_pct": 7,
+        "margen_ebitda_pct": 39.2,
+        "amortizacion_pct_ventas": 11.5,
+        "capex_pct_ventas": 12,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 21,
+        "fijo": false
+      },
+      {
+        "periodo": "2028e",
+        "crecimiento_pct": 7,
+        "margen_ebitda_pct": 39.5,
+        "amortizacion_pct_ventas": 11.5,
+        "capex_pct_ventas": 12,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 21,
+        "fijo": false
+      },
+      {
+        "periodo": "2029e",
+        "crecimiento_pct": 6.5,
+        "margen_ebitda_pct": 39.6,
+        "amortizacion_pct_ventas": 11.4,
+        "capex_pct_ventas": 12,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 21,
+        "fijo": false
+      },
+      {
+        "periodo": "2030e",
+        "crecimiento_pct": 6,
+        "margen_ebitda_pct": 39.7,
+        "amortizacion_pct_ventas": 11.3,
+        "capex_pct_ventas": 11.8,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 21,
+        "fijo": false
+      },
+      {
+        "periodo": "2031e",
+        "crecimiento_pct": 5.5,
+        "margen_ebitda_pct": 39.7,
+        "amortizacion_pct_ventas": 11.2,
+        "capex_pct_ventas": 11.7,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 21,
+        "fijo": false
+      },
+      {
+        "periodo": "2032e",
+        "crecimiento_pct": 5,
+        "margen_ebitda_pct": 39.7,
+        "amortizacion_pct_ventas": 11.1,
+        "capex_pct_ventas": 11.6,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 21,
+        "fijo": false
+      },
+      {
+        "periodo": "2033e",
+        "crecimiento_pct": 4.5,
+        "margen_ebitda_pct": 39.7,
+        "amortizacion_pct_ventas": 11,
+        "capex_pct_ventas": 11.5,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 21,
+        "fijo": false
+      },
+      {
+        "periodo": "2034e",
+        "crecimiento_pct": 4,
+        "margen_ebitda_pct": 39.7,
+        "amortizacion_pct_ventas": 11,
+        "capex_pct_ventas": 11.5,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 21,
+        "fijo": false
+      },
+      {
+        "periodo": "2035e",
+        "crecimiento_pct": 3.5,
+        "margen_ebitda_pct": 39.7,
+        "amortizacion_pct_ventas": 11,
+        "capex_pct_ventas": 11.5,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 21,
+        "fijo": false
+      }
+    ],
+    "wacc": {
+      "tasa_libre_pct": 3.53,
+      "beta": 1.05,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 0,
+      "coste_deuda_pct": 3.5,
+      "tasa_impositiva_pct": 21,
+      "peso_deuda_pct": 12
+    },
+    "terminal": {
+      "metodo": "gordon",
+      "crecimiento_pct": 2.5,
+      "multiplo_salida": 13
+    },
+    "etapa2": {
+      "usar": false,
+      "anios": 10,
+      "margen_final_pct": null,
+      "justificacion": null
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "2026e se fija en +3,5 % en euros: el 1S creció un 2,3 % (5,1 % a tipo constante) y la guía rebajada habla de un dígito medio-alto a tipo constante, con el dólar restando ≈2,5-3 puntos [1, 27]. En 2027e-2028e, +7 %: por debajo del +8,5 % a tipo constante de 2025 y del +12,9 % de 2024 [2, 5], con la distribución recuperando volumen tras Oriente Medio y Air IT y hoteles creciendo al 8-9 % como en el 1S26 [1]. Después converge al 3,5 % en 2035e. El consenso de BPA (3,46 € en 2026 y 3,88 € en 2027) [47] supone algo más de crecimiento que nosotros en 2027.",
+      "margenes": "Margen EBITDA del 38,8 % en 2026e (40,0 % en el 1S26 con el segundo semestre estacionalmente más bajo; 38,5 % en 2025) [1, 4], que sube al 39,7 % en 2030e: un punto en cuatro años, frente a tres puntos ganados en 2022-2025 por apalancamiento operativo. La empresa mantiene la guía de margen EBIT ajustado del 29,8 % para 2026 [27]. No suponemos más expansión porque la IA exige inversión en producto y las aerolíneas presionan la tarifa de distribución.",
+      "inversion": "Capex del 11,5-12 % de las ventas (12,5 % en 2025 y 9,8 % en el 1S26) [12, 22], con la amortización entre el 11,0 % y el 11,5 % (11,5 % en 2025) [4]; en el último año el capex (11,5 %) supera a la amortización (11,0 %). Es inversión en software: Amadeus gasta más de 1.400 M al año en I+D [2]. Circulante neutro (0 %): sin datos de clientes y proveedores no se proyecta liberación de caja.",
+      "wacc": "Tasa libre: Bund a 10 años al 3,53 % (12-oct) [55]. Beta 1,05 (estimación: no se pudo calcular la de la acción; software y servicios de viaje europeos se mueven entre 0,9 y 1,2). Prima de mercado del 5,5 %, sin prima adicional: Amadeus vende en todo el mundo. Coste de la deuda del 3,5 % antes de impuestos y peso de la deuda del 12 % a valor de mercado. Resultado: WACC del 8,52 %. Con la prima implícita del mercado (4,2 %) [54] el WACC baja al 7,32 % y el valor sube a 85,31 €.",
+      "terminal": "Gordon con un crecimiento del 2,5 %: inflación del euro (≈2 %) más un crecimiento real moderado, por debajo de la tasa libre menos medio punto (3,03 %). El valor terminal pesa el 61 % del valor. El múltiplo de salida de referencia (13x el EBITDA) queda cerca de la mediana de los comparables en EV/EBITDA de los últimos 12 meses (11,9x) y por debajo del de SAP o RELX [59, 60, 61, 62]."
+    },
+    "sostenibilidad": {
+      "puente_ingresos": [
+        {
+          "periodo": "2026e",
+          "volumen_pct": 1,
+          "precio_pct": 4.5,
+          "otros_pct": -2,
+          "comentario": "Volumen +1 %: reservas −3,7 % y pasajeros +1,1 % en el 1S26, con hoteles y pagos creciendo; precio +4,5 %: ingreso por pasajero embarcado +7,5 % y tarifa media de distribución al alza; otros −2 %: divisa (el dólar restó ≈2,8 puntos en el 1S26) [1]."
+        },
+        {
+          "periodo": "2027e",
+          "volumen_pct": 3,
+          "precio_pct": 3.5,
+          "otros_pct": 0.5,
+          "comentario": "Volumen +3 %: recuperación parcial de las reservas en Oriente Medio y tráfico aéreo en línea con su tendencia; precio +3,5 %: nuevas funciones (NDC, merchandising, cobro por exceso de búsquedas de agentes de IA) [37]; otros +0,5 %: mezcla hacia hoteles y pagos."
+        },
+        {
+          "periodo": "2028e",
+          "volumen_pct": 3,
+          "precio_pct": 3.5,
+          "otros_pct": 0.5,
+          "comentario": "Igual que 2027e: volumen +3 % (tráfico y nuevos clientes de Air IT), precio +3,5 % y mezcla +0,5 %; sin la compra de IDEMIA Public Security."
+        },
+        {
+          "periodo": "2029e",
+          "volumen_pct": 3,
+          "precio_pct": 3,
+          "otros_pct": 0.5,
+          "comentario": "Volumen +3 %, precio +3 % (la subida por pasajero se modera al madurar las migraciones) y mezcla +0,5 %."
+        }
+      ],
+      "mercado_final": null,
+      "veredicto": "En parte",
+      "justificacion": "La proyección apenas necesita capital: la reinversión neta acumulada es de 426 M, el 2 % del NOPAT, porque el capex de software casi iguala a la amortización. Así que la prueba no es la reinversión sino el poder de precios y la cuota. El precio aguanta: el ingreso por pasajero embarcado sube un 7,5 % con el volumen al 1,1 % y el ROIC incremental histórico es del 24,2 % [1]. El volumen que proyectamos (+3 % al año) no exige ganar cuota: es el crecimiento tendencial del tráfico aéreo. La parte que no se puede asegurar es la distribución (casi la mitad de los ingresos): si los agentes de IA o la venta directa le quitan volumen, el +7 % de 2027-2028 no se cumple. Ninguna prueba numérica falla, así que el base no se rebaja; el riesgo está en el escenario bajista. Cuota de mercado final: no aplica (la cuota publicada es la del GDS y no la del grupo)."
+    },
+    "lectura": "El DCF da 66,65 € por acción, un 26,5 % por encima de los 52,68 € de hoy, con un WACC del 8,52 % y un valor terminal que pesa el 61 %. El DCF inverso dice que el precio descuenta un crecimiento del 2,4 % anual en 2027-2035 frente al 5,4 % de nuestro base, o un margen EBITDA del 34,3 % frente al 39,7 %: una empresa que deja de crecer por encima de la inflación o que pierde cinco puntos de margen. La rentabilidad implícita en el precio es del 9,9 %, por encima de nuestro WACC (8,5 %) y de lo que hoy pide el mercado (7,3 %). Es un precio conservador frente a la historia (ingresos +8,5 % a tipo constante en 2025 y márgenes al alza durante tres años) [2]: el mercado valora a Amadeus como si la IA ya hubiera empezado a erosionar la distribución. Pero ese valor no es un objetivo a 12 meses: sin un catalizador que cambie el múltiplo, la cotización seguirá al beneficio (ver el objetivo a 12 meses).",
+    "confianza": "Baja"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": -3,
+        "ajuste_margen_pp": -2.5,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": 2,
+        "multiplo_salida": null,
+        "perfil": [],
+        "narrativa": "Los agentes de IA y la venta directa por NDC desvían reservas de agencias: la distribución pierde volumen tres años seguidos y las aerolíneas negocian tarifas más bajas al renovar. Es lo que ya le pasó a Sabre y Travelport en cuota; el crecimiento cae ≈3 puntos al año y el margen 2,5 puntos."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "perfil": [],
+        "narrativa": "El tráfico se recupera de Oriente Medio en 2027, la distribución vuelve a crecer al 3-4 % y Air IT y hoteles siguen al 8-9 %. Crecimiento del 7 % en 2027-2028 y margen EBITDA del 39-40 %."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": 1.5,
+        "ajuste_margen_pp": 1,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "perfil": [],
+        "narrativa": "Amadeus se convierte en la infraestructura que usan los agentes de IA (Google, Microsoft) y cobra por las búsquedas; IDEMIA y los pagos añaden crecimiento. 1,5 puntos más de crecimiento y un punto más de margen."
+      }
+    ],
+    "comentario": "El alcista vale 77,62 € (+47,3 %) y el bajista 44,99 € (−14,6 %): la asimetría es de 3,24 veces en valor intrínseco, porque el precio ya descuenta casi el bajista (crecimiento implícito del 2,4 %). A 12 meses, con la regla común de múltiplos, la asimetría se reduce a 2,43 veces (78,99 € frente a 41,87 €), porque el bajista combina menos beneficio con un PER un 15 % menor. El bajista es verosímil: la desintermediación de la distribución es el riesgo que hoy debate el mercado y el que ha castigado la cotización.",
+    "confianza": "Baja"
+  },
+  "suma_partes": {
+    "aplica": false,
+    "descuento_holding_pct": 0,
+    "partes": [],
+    "comentario": "No aplica: los tres segmentos comparten plataforma, clientes y costes de desarrollo, y la empresa no publica el resultado por segmento desde el cambio de presentación; los comparables de cada parte (GDS con Sabre en pérdidas; software hotelero sin cotizadas puras) no darían una referencia mejor que la del grupo.",
+    "confianza": "Baja"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2026-06-30",
+      "deuda_financiera": 2577.5,
+      "arrendamientos": 0,
+      "caja": 0,
+      "minoritarios": 0,
+      "pensiones": 0,
+      "asociadas": 0,
+      "otros_ajustes": 436.2
+    },
+    "rab": null,
+    "referencia_mercado": {
+      "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+      "prima_implicita_pct": 4.2,
+      "fecha": "2026-10",
+      "fuente": "Damodaran, ERPbymonth [54]"
+    },
+    "pesos": {
+      "dcf": 50,
+      "comparables": 30,
+      "transacciones": 0,
+      "suma_partes": 0,
+      "escenarios": 20
+    },
+    "objetivo_12m": {
+      "ejercicio": "2028e",
+      "casos": [
+        {
+          "escenario": "Bajista",
+          "metrica": "PER",
+          "beneficio_por_accion": 3.46,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "BPA ajustado de 3,46 € en 2028e: la distribución pierde volumen por la IA y la venta directa, el crecimiento baja 3 puntos al año y el margen 2,5 puntos (36,7-37,0 %). El PER cae a 12,1x (85 % del actual), un nivel de agencia en línea."
+        },
+        {
+          "escenario": "Base",
+          "metrica": "PER",
+          "beneficio_por_accion": 4.01,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "BPA ajustado de 4,01 € en 2028e (ventas de 7.722 M, margen EBITDA del 39,5 %): recuperación del tráfico en 2027 y crecimiento del 7 %. PER de 14,2x, el actual sobre nuestro BPA de 2027e (menor que la mediana de 20,9x de 2024-2025)."
+        },
+        {
+          "escenario": "Alcista",
+          "metrica": "PER",
+          "beneficio_por_accion": 4.27,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "BPA ajustado de 4,27 € en 2028e con 1,5 puntos más de crecimiento y un punto más de margen. El PER sube a 18,5x (techo de 1,3 veces el base), aún por debajo de la mediana histórica (20,9x)."
+        }
+      ],
+      "per_historico": {
+        "actual": 14.2,
+        "mediana_5a": 20.9,
+        "minimo_5a": 19.4,
+        "media_larga": 20.9,
+        "excluidos": "Solo hay dos cierres de ejercicio fiables (estimados desde rentabilidades publicadas): 2024 ≈67,50 € ÷ BPA ajustado ≈3,02 € (estimación: 1.347,9 M de beneficio ajustado ÷ ≈446 M de acciones diluidas) = 22,4x, y 2025 ≈62,67 € ÷ 3,23 € = 19,4x [3, 5, 17, 51]. 2020-2022 se excluirían (pérdidas en 2020-2021 y beneficio deprimido por la pandemia en 2022, BPA ajustado de 1,56 €) y 2023 no tiene cierre fiable en este entorno. Base: BPA ajustado diluido (sin amortización de intangibles de compras), la misma que los escenarios. Actual = 52,68 € ÷ nuestro BPA ajustado de 2027e."
+      },
+      "comparables_per": {
+        "mediana": 15.5
+      },
+      "consenso": {
+        "bpa_ano1": 3.46,
+        "bpa_ano2": 3.88,
+        "objetivo_medio": 67.2,
+        "objetivo_min": 50,
+        "objetivo_max": 80.9,
+        "analistas": 22,
+        "tendencia_3m": "recortes",
+        "fuente": "Yahoo Finance (BPA, 19 analistas) y MarketScreener (objetivos, 22 analistas, 10-jul) [47, 48]"
+      },
+      "diferencia_consenso": "Nuestro BPA ajustado de 2027e (3,71 €) queda un 4 % por debajo del consenso (3,88 €) [47] y el de 2028e (4,01 €) coincide con el implícito en las previsiones de beneficio de Simply Wall St (≈4,01 €) [49]: la diferencia de beneficio es pequeña y sale de suponer menos recuperación de la distribución en 2027. La distancia está en el múltiplo: nuestro base (56,94 €) queda un 15,3 % por debajo del objetivo medio de los analistas (67,20 €) [48], porque la regla común toma el PER actual (14,2x) y los analistas suponen, de media, ≈17x. No acercamos la cifra: el mercado lleva dos años bajando el múltiplo y no hay un hecho con fecha que lo vaya a subir.",
+      "media": null,
+      "comentario": "El objetivo a 12 meses (58,69 €, +14,3 % con dividendo; base +11,0 %) queda un 8 % por debajo del valor intrínseco (63,75 €). La distancia es pequeña porque el precio ya descuenta poco crecimiento: el objetivo sube con el beneficio (+8 % de 2027 a 2028) y no supone ninguna revalorización del múltiplo. Para cerrar la distancia hasta el valor intrínseco haría falta que el mercado dejara de descontar la desintermediación por IA: la señal sería que las reservas de distribución vuelvan a crecer (resultados del 3T, 6-nov-2026, y del 4T, febrero de 2027) y que el ingreso por reserva siga subiendo."
+    },
+    "comentario": "Pesos: DCF 50 %, comparables 30 % y escenarios 20 %; sin transacciones (no hay operaciones con múltiplo publicado) ni suma de partes. El DCF pesa más porque Amadeus es un negocio maduro, con caja libre estable (1.302 M en 2025) [2] y una inversión que apenas varía. Los comparables (mediana de PER de 15,5x, 58,75 €) están en un rango muy amplio (de 9x a 29x) porque mezclan agencias en línea y software europeo. Los métodos dan entre 58,75 € (PER) y 66,65 € (DCF), con el bajista en 44,99 €: todos por encima del precio, y la síntesis ponderada es de 63,75 € (+21,0 %). Con la prima implícita del mercado el objetivo sería de 76,61 €. La dispersión pequeña entre métodos da algo de confianza; la que no la da es la calidad de los datos de balance.",
+    "confianza": "Baja"
+  },
+  "catalizadores": {
+    "items": [
+      {
+        "fecha": "6-nov-2026",
+        "evento": "Resultados del 3T26",
+        "efecto": "Primera lectura de las reservas tras Oriente Medio y confirmación de la guía rebajada",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "Feb-2027",
+        "evento": "Resultados de 2026 y guía de 2027",
+        "efecto": "Si la guía de 2027 vuelve a un crecimiento de ingresos de un dígito alto, el múltiplo podría recuperarse",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2026-2027",
+        "evento": "Ejecución de la recompra de hasta 500 M",
+        "efecto": "≈2 % del capital; sostiene el BPA",
+        "probabilidad": "Alta",
+        "sentido": "+"
+      },
+      {
+        "fecha": "Mediados de 2027",
+        "evento": "Cierre de la compra de IDEMIA Public Security",
+        "efecto": "Diversifica hacia biometría; sube la deuda neta ≈1.200-1.350 M",
+        "probabilidad": "Media",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "12-18 meses",
+        "evento": "Acuerdos con plataformas de IA (Google, Microsoft, OpenAI) para reservar a través de Amadeus",
+        "efecto": "Prueba de que la IA usa el GDS en vez de saltárselo",
+        "probabilidad": "Media",
+        "sentido": "+"
+      },
+      {
+        "fecha": "Junio de 2027",
+        "evento": "Junta: sucesión del consejero delegado (reelegido por un año)",
+        "efecto": "Riesgo de transición sin director financiero titular",
+        "probabilidad": "Media",
+        "sentido": "+/−"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "riesgos": {
+    "items": [
+      {
+        "riesgo": "Desintermediación por agentes de IA y venta directa (NDC)",
+        "tipo": "Estratégico",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−32 % (escenario bajista, 44,99 €)",
+        "mitigante": "Amadeus integra NDC y cobra por las búsquedas de agentes; socio de Google y Microsoft [36, 37]",
+        "senal": "Reservas de distribución por debajo del tráfico aéreo dos trimestres seguidos"
+      },
+      {
+        "riesgo": "Caída del tráfico aéreo (geopolítica, recesión)",
+        "tipo": "Cíclico",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−10 % a −15 %",
+        "mitigante": "Air IT cobra por pasajero con contratos largos; hoteles y pagos menos cíclicos",
+        "senal": "Revisiones de IATA del tráfico por debajo del 2 %"
+      },
+      {
+        "riesgo": "Presión de tarifas de las grandes aerolíneas al renovar",
+        "tipo": "Comercial",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−5 % a −10 %",
+        "mitigante": "Costes de cambio altos y funciones nuevas",
+        "senal": "Ingreso por reserva estable o a la baja"
+      },
+      {
+        "riesgo": "Integración y precio de IDEMIA Public Security",
+        "tipo": "Asignación de capital",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−3 % a −5 %",
+        "mitigante": "Experiencia previa con Vision-Box; pago variable ligado a resultados [23]",
+        "senal": "Deterioros o margen del segmento a la baja tras el cierre"
+      },
+      {
+        "riesgo": "Sucesión del consejero delegado y director financiero interino",
+        "tipo": "Gobierno",
+        "probabilidad": "Media",
+        "impacto": "Bajo",
+        "efecto_valor": "−3 %",
+        "mitigante": "Equipo directivo estable con veteranos de la casa",
+        "senal": "Salida anunciada sin sucesor o cambio de estrategia"
+      },
+      {
+        "riesgo": "Divisa (dólar)",
+        "tipo": "Financiero",
+        "probabilidad": "Alta",
+        "impacto": "Bajo",
+        "efecto_valor": "−2 % a −3 % por cada 10 % de caída del dólar",
+        "mitigante": "Parte de los costes en dólares",
+        "senal": "Euro/dólar por encima de 1,20"
+      },
+      {
+        "riesgo": "Ciberataque o caída de la plataforma en la nube",
+        "tipo": "Operativo",
+        "probabilidad": "Baja",
+        "impacto": "Alto",
+        "efecto_valor": "−5 % a −10 %",
+        "mitigante": "Nube pública con redundancia",
+        "senal": "Incidentes de servicio en aerolíneas clientes"
+      }
+    ],
+    "premortem": "Octubre de 2029: la acción cotiza a 32 €. Lo que pasó: en 2027 Google y OpenAI lanzaron la reserva de vuelos dentro de sus asistentes conectándose directamente a las aerolíneas por NDC, y las grandes agencias en línea siguieron el camino. Las reservas de distribución de Amadeus, que ya cayeron un 3,7 % en el 1S26 por Oriente Medio, no se recuperaron: bajaron un 4-5 % al año, y las aerolíneas aprovecharon las renovaciones para recortar la tarifa por reserva. Air IT y hoteles siguieron creciendo, pero no compensaron la mitad del negocio que se encogía con margen alto, y el margen EBITDA cayó del 39 % al 35 %. La compra de IDEMIA, pagada en 2027, añadió deuda y un negocio de contratos públicos de menor margen, y el nuevo consejero delegado (Maroto se retiró en 2027) cambió las prioridades. El mercado, que en 2026 ya pagaba 14x, bajó el múltiplo a 11x, como el de una agencia en línea. Las señales que lo habrían anticipado: reservas por debajo del tráfico aéreo dos trimestres seguidos en 2027, un ingreso por reserva estancado y anuncios de reserva directa en los asistentes de IA sin Amadeus como socio.",
+    "confianza": "Media"
+  },
+  "esg": {
+    "calificaciones": [],
+    "materialidad": "Los asuntos materiales son la ciberseguridad y la continuidad del servicio (un fallo deja sin facturar a cientos de aerolíneas y aeropuertos), la privacidad de los datos de los viajeros (el negocio de biometría con IDEMIA Public Security añade datos sensibles y escrutinio regulatorio) [23] y la huella energética de la nube, ya trasladada a Microsoft Azure. No se localizaron cifras de emisiones ni de alineamiento con la taxonomía.",
+    "controversias": "No se encontraron sanciones ni litigios relevantes en los últimos tres años en la búsqueda realizada (prensa española e internacional); las calificaciones ESG no se pudieron leer.",
+    "confianza": "Baja"
+  },
+  "preguntas": {
+    "items": [
+      {
+        "tema": "IA",
+        "pregunta": "¿Qué parte de las búsquedas y de las reservas de 2026 vino de agentes de IA, y cuánto ingreso dio el cobro por exceso de búsquedas?",
+        "por_que": "Es el riesgo que explica la caída del múltiplo y no hay cifras públicas."
+      },
+      {
+        "tema": "Distribución",
+        "pregunta": "¿Cuánto del −3,7 % de reservas del 1S26 se explica por Oriente Medio y cuánto por pérdida de cuota o venta directa?",
+        "por_que": "Separa un efecto cíclico de uno estructural."
+      },
+      {
+        "tema": "IDEMIA",
+        "pregunta": "¿Qué EBITDA y qué crecimiento tiene IDEMIA Public Security y qué múltiplo se pagó?",
+        "por_que": "Sin ello no se puede saber si la compra crea valor."
+      },
+      {
+        "tema": "Gobierno",
+        "pregunta": "¿Cuándo se nombrará un director financiero titular y cuál es el plan de sucesión del consejero delegado?",
+        "por_que": "El director financiero es interino desde septiembre de 2024 y la reelección es por un año."
+      },
+      {
+        "tema": "Precio",
+        "pregunta": "¿Cuántos contratos de grandes aerolíneas se renuevan en 2027-2028 y con qué tarifa?",
+        "por_que": "La presión de tarifas es el segundo riesgo del caso base."
+      },
+      {
+        "tema": "Capital",
+        "pregunta": "¿Qué apalancamiento objetivo tras IDEMIA y qué recompras quedan en 2027?",
+        "por_que": "Determina el BPA de 2028 y la parte de la caja que vuelve al accionista."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sentimiento": {
+    "tono": "Dividido",
+    "tendencia": "Mejora",
+    "revisadas": [
+      {
+        "plataforma": "Rankia (hilo de seguimiento de Amadeus)",
+        "fecha": "2026-09",
+        "n_comentarios": 30,
+        "tono": "Neutro",
+        "resumen": "Mensajes sobre todo informativos (resultados, amortización de acciones, dividendo) y técnicos: zonas de entrada en 50-52 € y dudas sobre si el suelo de febrero aguanta [65, 69]."
+      },
+      {
+        "plataforma": "Simply Wall St (narrativas de la comunidad)",
+        "fecha": "2026-08",
+        "n_comentarios": 20,
+        "tono": "Positivo",
+        "resumen": "La tesis más repetida es «arbitraje del miedo a la IA»: los agentes de IA necesitan inventario, precios, emisión y liquidación, que controla Amadeus; valores razonables de 62-87 € [66, 67]."
+      },
+      {
+        "plataforma": "Investor.fm (presentación y preguntas)",
+        "fecha": "2026-06",
+        "n_comentarios": 10,
+        "tono": "Positivo",
+        "resumen": "Defiende que la IA no puede sustituir sistemas de pasajeros con requisitos de disponibilidad y responsabilidad, que las agencias en línea vuelven al GDS y que el valor cotiza a ≈15x beneficios [39]."
+      },
+      {
+        "plataforma": "Webull / Simply Wall St (artículos con comentarios)",
+        "fecha": "2026-09",
+        "n_comentarios": 10,
+        "tono": "Dividido",
+        "resumen": "Unos lo ven barato frente a su historia; otros señalan que su PER de los últimos 12 meses (≈18,6x) sigue por encima de la media de su grupo y deja poco margen si el volumen no vuelve [68, 70]."
+      }
+    ],
+    "temas": [
+      {
+        "tema": "La IA como amenaza o como oportunidad",
+        "postura": "Dividida",
+        "peso": "Alto",
+        "contraste": "Los datos no muestran todavía pérdida de cuota: el ingreso por pasajero sube un 7,5 % y Amadeus cobra ya por el exceso de búsquedas de agentes; el riesgo es real a cinco años y está en el escenario bajista."
+      },
+      {
+        "tema": "Valoración barata frente a la historia",
+        "postura": "Alcista",
+        "peso": "Alto",
+        "contraste": "Correcto en múltiplo (≈15x frente a 19-22x en 2024-2025), pero la regla de múltiplos del informe no supone que vuelva a la mediana histórica en el caso base."
+      },
+      {
+        "tema": "Tráfico aéreo y Oriente Medio",
+        "postura": "Bajista",
+        "peso": "Medio",
+        "contraste": "Las reservas cayeron un 3,7 % en el 1S26; el informe proyecta recuperación gradual en 2027, no un rebote."
+      },
+      {
+        "tema": "Recompras y dividendo",
+        "postura": "Alcista",
+        "peso": "Medio",
+        "contraste": "Rentabilidad por dividendo ≈2,9 % y recompra de hasta 500 M en 2026; la compra de IDEMIA (1.200 M) reduce el margen para más recompras en 2027."
+      }
+    ],
+    "lectura": "El sentimiento de los particulares es dividido con sesgo alcista: casi nadie discute la calidad del negocio y la mayoría ve la caída como un exceso del miedo a la IA, pero el foro español es más técnico que fundamental y no hay euforia. No es un extremo de capitulación ni de euforia, así que no aporta una señal contraria. Coincide con los analistas (18 de 22 recomiendan comprar) en ver valor, y ninguno de los dos grupos tiene una prueba de que la IA no vaya a reducir el volumen del GDS: ese es el riesgo que el informe pone en el escenario bajista.",
+    "confianza": "Baja"
+  },
+  "fuentes": [
+    {
+      "id": 1,
+      "titulo": "Amadeus H1 2026: Amadeus delivers resilient performance (nota de prensa)",
+      "editor": "Amadeus",
+      "tipo": "Primaria",
+      "fecha": "2026-07-31",
+      "url": "https://amadeus.com/en/newsroom/press-releases/amadeus-h1-2026-resilient-performance"
+    },
+    {
+      "id": 2,
+      "titulo": "Amadeus FY 2025 results: revenue growth (nota de prensa)",
+      "editor": "Amadeus",
+      "tipo": "Primaria",
+      "fecha": "2026-02-27",
+      "url": "https://amadeus.com/en/newsroom/press-releases/amadeus-fy-2025-results-revenue-growth"
+    },
+    {
+      "id": 3,
+      "titulo": "Global Report 2025: capítulo Inversores (BPA ajustado y dividendo por acción)",
+      "editor": "Amadeus",
+      "tipo": "Primaria",
+      "fecha": "2026-02",
+      "url": "https://amadeus.com/documents/en/global-report-2025/chapters/investors.pdf"
+    },
+    {
+      "id": 4,
+      "titulo": "Global Report 2025: perfil y desempeño corporativo (EBITDA 2025)",
+      "editor": "Amadeus",
+      "tipo": "Primaria",
+      "fecha": "2026-02",
+      "url": "https://amadeus.com/documents/en/global-report-2025/chapters/amadeus-profile-and-corporate-performance.pdf"
+    },
+    {
+      "id": 5,
+      "titulo": "FY 2024 results press release",
+      "editor": "Amadeus",
+      "tipo": "Primaria",
+      "fecha": "2025-02-28",
+      "url": "https://corporate.amadeus.com/documents/en/investors/2024/financial-results/q4-2024/fy-2024-results-press-release.pdf"
+    },
+    {
+      "id": 6,
+      "titulo": "FY 2023 Management Review",
+      "editor": "Amadeus",
+      "tipo": "Primaria",
+      "fecha": "2024-02-29",
+      "url": "https://corporate.amadeus.com/documents/en/investors/2023/quarterly-results/q4-2023/fy-2023-management-review.pdf"
+    },
+    {
+      "id": 7,
+      "titulo": "Amadeus returns to positive annual profit and its target leverage levels in 2022, resuming dividend",
+      "editor": "Amadeus",
+      "tipo": "Primaria",
+      "fecha": "2023-02-28",
+      "url": "https://amadeus.com/en/newsroom/press-releases/amadeus-returns-to-positive-annual-profit-and-its-target-leverage-levels-in-2022-resuming-dividend"
+    },
+    {
+      "id": 8,
+      "titulo": "Amadeus 1T 2026: resultados de sólido crecimiento (nota de prensa)",
+      "editor": "Amadeus",
+      "tipo": "Primaria",
+      "fecha": "2026-05-08",
+      "url": "https://amadeus.com/es/sala-de-prensa/notas-de-prensa/amadeus-1t-2026-resultados-solido-crecimiento"
+    },
+    {
+      "id": 9,
+      "titulo": "Infografía de resultados del 1S 2026 (segmentos y volúmenes)",
+      "editor": "Amadeus",
+      "tipo": "Primaria",
+      "fecha": "2026-07-31",
+      "url": "https://amadeus.com/content/dam/amadeuswebevo/press-releases/2026/07/infographic-fr-h1-2026.pdf"
+    },
+    {
+      "id": 10,
+      "titulo": "Amadeus IT Group S.A. (BME:AMS): ficha financiera (beneficio neto y EBITDA 2021-2023)",
+      "editor": "Kalkine Media",
+      "tipo": "Datos de mercado",
+      "fecha": "2026",
+      "url": "https://kalkinemedia.com/au/companies/bme-ams"
+    },
+    {
+      "id": 11,
+      "titulo": "Amadeus IT Group Full Year 2024 Earnings: EPS Beats Expectations (BPA 2023-2024 y BPA de los últimos 12 meses)",
+      "editor": "Simply Wall St",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-02",
+      "url": "https://simplywall.st/stocks/es/consumer-services/bme-ams/amadeus-it-group-shares/news/amadeus-it-group-full-year-2024-earnings-eps-beats-expectati/amp"
+    },
+    {
+      "id": 12,
+      "titulo": "AMADEUS IT GROUP SA (AI3A.DE) Stock Cash Flow (flujo operativo y capex 2022-2025)",
+      "editor": "Chartmill",
+      "tipo": "Datos de mercado",
+      "fecha": "2026",
+      "url": "https://www.chartmill.com/stock/quote/AI3A.DE/financials/cash-flow"
+    },
+    {
+      "id": 13,
+      "titulo": "Amadeus IT Group: balance sheet (activo total, fondo de comercio y caja 2023-2024)",
+      "editor": "Tracenable",
+      "tipo": "Datos de mercado",
+      "fecha": "2026",
+      "url": "https://tracenable.com/company/amadeus-it-group/balance-sheet"
+    },
+    {
+      "id": 14,
+      "titulo": "AMADY balance sheet (activo total y patrimonio 2020-2024)",
+      "editor": "TipRanks",
+      "tipo": "Datos de mercado",
+      "fecha": "2026",
+      "url": "https://www.tipranks.com/stocks/amady/financials/balance-sheet"
+    },
+    {
+      "id": 15,
+      "titulo": "Amadeus IT Group SA: balance sheet (activo total a dic-2025)",
+      "editor": "Alpha Spread",
+      "tipo": "Datos de mercado",
+      "fecha": "2026",
+      "url": "https://new.alphaspread.com/security/mad/ams/financials/balance-sheet"
+    },
+    {
+      "id": 16,
+      "titulo": "Amadeus IT Group (BME:AMS) balance sheet (caja e inversiones a corto 2025)",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026",
+      "url": "https://stockanalysis.com/quote/bme/AMS/financials/balance-sheet/"
+    },
+    {
+      "id": 17,
+      "titulo": "Potencial de más del 20 % para una acción del Ibex 35 que empieza a ver la luz al final del túnel (EBITDA del 2T26)",
+      "editor": "Estrategias de Inversión",
+      "tipo": "Prensa",
+      "fecha": "2026-08-03",
+      "url": "https://www.estrategiasdeinversion.com/analisis/los-brokers-recomiendan/recomendaciones-espana/potencial-de-mas-del-20-para-una-accion-del-ibex-n-940325"
+    },
+    {
+      "id": 18,
+      "titulo": "Amadeus da luz verde al dividendo de 664,6 millones y la reelección de Maroto",
+      "editor": "Estrategias de Inversión",
+      "tipo": "Prensa",
+      "fecha": "2026-06-03",
+      "url": "https://www.estrategiasdeinversion.com/actualidad/noticias/bolsa-espana/amadeus-da-luz-verde-al-dividendo-de-6646-millones-n-923055"
+    },
+    {
+      "id": 19,
+      "titulo": "Resultados Amadeus primer semestre: 700,2 millones, un 3,7 % menos por el impacto de Oriente Próximo",
+      "editor": "Merca2",
+      "tipo": "Prensa",
+      "fecha": "2026-07-31",
+      "url": "https://www.merca2.es/2026/07/31/resultados-amadeus-primer-semestre-2428155/"
+    },
+    {
+      "id": 20,
+      "titulo": "Amadeus logra beneficio récord de 1.335,6 millones en 2025 y propone un dividendo de 664,6 millones",
+      "editor": "Forbes España",
+      "tipo": "Prensa",
+      "fecha": "2026-02-27",
+      "url": "https://forbes.es/forbestravel/881261/amadeus-logra-beneficio-record-de-1-3479-millones-en-2025-y-propone-un-pago-de-diviendo-de-6646-millones/"
+    },
+    {
+      "id": 21,
+      "titulo": "Amadeus cierra con alza del 4,7 % en bolsa tras ganar 1.258 millones en 2024",
+      "editor": "Forbes España",
+      "tipo": "Prensa",
+      "fecha": "2025-02-28",
+      "url": "https://forbes.es/turismo/636143/amadeus-cierra-con-alza-del-47-en-bolsa-tras-ganar-1-258-millones-en-2024-y-anunciar-dividendo-del-50-del-beneficio/"
+    },
+    {
+      "id": 22,
+      "titulo": "Amadeus (AMS) Q2 2026 earnings summary (capex del 1S26)",
+      "editor": "Quartr",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07-31",
+      "url": "https://quartr.com/events/amadeus-it-group-s-a-ams-q2-2026_3gfMG9yt"
+    },
+    {
+      "id": 23,
+      "titulo": "Amadeus to acquire IDEMIA Public Security (nota de prensa)",
+      "editor": "Amadeus",
+      "tipo": "Primaria",
+      "fecha": "2026-04-29",
+      "url": "https://amadeus.com/en/newsroom/press-releases/amadeus-to-acquire-idemia-public-security-ips"
+    },
+    {
+      "id": 24,
+      "titulo": "Amadeus IT Group: news and key events (recompra de hasta 500 M desde el 2-mar-2026)",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www.marketscreener.com/quote/stock/AMADEUS-IT-GROUP-S-A-4027320/news-key-events/"
+    },
+    {
+      "id": 25,
+      "titulo": "Amadeus IT Group, S.A. - Balance Sheet (Quarterly) (patrimonio a 31-mar-2026)",
+      "editor": "Fintel",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-05",
+      "url": "https://fintel.io/bs/es/ams"
+    },
+    {
+      "id": 26,
+      "titulo": "Amadeus prevé ingresar hasta 6.840 millones en 2025 con un EBITDA de hasta 2.580 millones",
+      "editor": "Forbes España",
+      "tipo": "Prensa",
+      "fecha": "2025-02-28",
+      "url": "https://forbes.es/forbestravel/730201/amadeus-preve-ingresar-hasta-6-840-millones-en-2025-con-un-114-mas-y-un-ebitda-de-2-580-millones-11/"
+    },
+    {
+      "id": 27,
+      "titulo": "Amadeus IT Group SA: transcripción de la conferencia del 1S 2026 (resumen)",
+      "editor": "GuruFocus",
+      "tipo": "Analistas",
+      "fecha": "2026-07-31",
+      "url": "https://www.gurufocus.com/stock/AMADF/transcripts/8995527"
+    },
+    {
+      "id": 28,
+      "titulo": "Amadeus adquiere SkyLink para acelerar el despliegue de la IA en los viajes",
+      "editor": "Bolsamanía",
+      "tipo": "Prensa",
+      "fecha": "2026-02",
+      "url": "https://www.bolsamania.com/noticias_amp/empresas/amadeus-adquiere-skylink-acelerar-uso-ia-viajes--21831348.html"
+    },
+    {
+      "id": 29,
+      "titulo": "Amadeus: resultados 1T26 que superan ligeramente las previsiones",
+      "editor": "Renta 4",
+      "tipo": "Analistas",
+      "fecha": "2026-05-08",
+      "url": "https://www.r4.com/articulos-y-analisis/valores/amadeus-resultados-1t26-que-superan-ligeramente-las-previsiones"
+    },
+    {
+      "id": 30,
+      "titulo": "Amadeus gana 364 millones en el primer trimestre de 2025 y eleva sus ingresos a 1.632 millones",
+      "editor": "Forbes España",
+      "tipo": "Prensa",
+      "fecha": "2025-05-08",
+      "url": "https://forbes.es/forbestravel/704900/amadeus-gana-364-millones-de-euros-en-el-primer-trimestre-de-2025-y-eleva-sus-ingresos-a-1-632-millones-un-9-mas/"
+    },
+    {
+      "id": 31,
+      "titulo": "Capital social (participaciones significativas y reducción de capital)",
+      "editor": "Amadeus",
+      "tipo": "Primaria",
+      "fecha": "2026-07",
+      "url": "https://amadeus.com/es/centro-inversores/capital-social"
+    },
+    {
+      "id": 32,
+      "titulo": "Amadeus IT Group SA AMS: perfil y foso (cuota de las reservas aéreas de la industria)",
+      "editor": "Morningstar",
+      "tipo": "Analistas",
+      "fecha": "2026",
+      "url": "https://www.morningstar.com/quotes/0P0000P5MC"
+    },
+    {
+      "id": 33,
+      "titulo": "Sabre Corp: resultados del 2T 2026 (Form 8-K)",
+      "editor": "Sabre / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-08-07",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001597033/000162828026053858/q22026earningsrelease.htm"
+    },
+    {
+      "id": 34,
+      "titulo": "Sabre exceeds Q2 CY2026 expectations, stock jumps 11 % (capitalización)",
+      "editor": "Barchart",
+      "tipo": "Prensa",
+      "fecha": "2026-08-07",
+      "url": "https://www.barchart.com/story/news/3690735/sabre-nasdaqsabr-exceeds-q2-cy2026-expectations-stock-jumps-11-1"
+    },
+    {
+      "id": 35,
+      "titulo": "Cuotas de los GDS: Amadeus ≈40 %, Sabre ≈30 %, Travelport 15-20 % (comentario sectorial)",
+      "editor": "10 Minutes News for Hoteliers",
+      "tipo": "Sectorial",
+      "fecha": "2025-09",
+      "url": "https://en.10minhotel.com/?p=157239"
+    },
+    {
+      "id": 36,
+      "titulo": "Amadeus AI hotel tools strategy (HITEC, comercio con IA y Google UCP)",
+      "editor": "Skift",
+      "tipo": "Sectorial",
+      "fecha": "2026-06-16",
+      "url": "https://skift.com/es/2026/06/16/amadeus-ai-hotel-tools-strategy-hitec-exclusive/"
+    },
+    {
+      "id": 37,
+      "titulo": "Amadeus has an answer for AI's infinite search problem (cobro por búsquedas de agentes)",
+      "editor": "Skift",
+      "tipo": "Sectorial",
+      "fecha": "2026-06-23",
+      "url": "https://skift.com/es/2026/06/23/amadeus-has-an-answer-for-ais-infinite-search-problem/"
+    },
+    {
+      "id": 38,
+      "titulo": "JP Morgan recorta el precio a Amadeus ante las presiones derivadas de Oriente Medio (previsión de tráfico de IATA)",
+      "editor": "Bolsamanía",
+      "tipo": "Prensa",
+      "fecha": "2026-07",
+      "url": "https://www.bolsamania.com/noticias_print/analisis-fundamental/jp-morgan-recorta-precio-amadeus-presiones-oriente-medio--22773648.html"
+    },
+    {
+      "id": 39,
+      "titulo": "Amadeus IT Group (conferencia de inversores: tesis sobre IA, OTA y cobro por exceso de búsquedas)",
+      "editor": "Investor.fm",
+      "tipo": "Analistas",
+      "fecha": "2026",
+      "url": "https://conference.investor.fm/amadeus-it-group-2/"
+    },
+    {
+      "id": 40,
+      "titulo": "Amadeus revela una gran expansión de su estrategia de IA en hospitality (nota de prensa)",
+      "editor": "Amadeus",
+      "tipo": "Primaria",
+      "fecha": "2026-06",
+      "url": "https://amadeus.com/es/sala-de-prensa/notas-de-prensa/amadeus-revela-gran-expansion-estrategia-ia-sector-hospitality"
+    },
+    {
+      "id": 41,
+      "titulo": "El consejero delegado de Amadeus, Luis Maroto, ganó 4,37 millones en 2025, un 9,6 % más",
+      "editor": "Forbes España",
+      "tipo": "Prensa",
+      "fecha": "2026-02-27",
+      "url": "https://forbes.es/economia/881289/el-consejero-delegado-de-amadeus-luis-maroto-gano-437-millones-en-2025-un-96-mas/"
+    },
+    {
+      "id": 42,
+      "titulo": "Citi reduce a la mitad su peso en Amadeus hasta el 1,2 %",
+      "editor": "Demócrata / Europa Press",
+      "tipo": "Prensa",
+      "fecha": "2026-07",
+      "url": "https://www.democrata.es/ca/economia/citi-redueix-a-la-meitat-el-seu-pes-en-amadeus-fins-al-1-2-valorat-en-269-milions/"
+    },
+    {
+      "id": 43,
+      "titulo": "Luis Maroto, consejero delegado (biografía)",
+      "editor": "Amadeus",
+      "tipo": "Primaria",
+      "fecha": "2026",
+      "url": "https://amadeus.com/es/quienes-somos/liderazgo/luis-maroto"
+    },
+    {
+      "id": 44,
+      "titulo": "La junta de Amadeus aprueba la reelección de Maroto como consejero delegado",
+      "editor": "Valencia Plaza",
+      "tipo": "Prensa",
+      "fecha": "2026-06",
+      "url": "https://valenciaplaza.com/valenciaplaza/la-junta-de-amadeus-aprueba-la-reeleccion-de-maroto-como-ceo-y-la-renovacion-de-maroto-como-ceo"
+    },
+    {
+      "id": 45,
+      "titulo": "Precios históricos de Amadeus-A (14-oct-2026, 11:44: 52,68 €; cierre anterior 52,62 €; 8-oct 51,28 €; 9-oct 52,30 €)",
+      "editor": "Bolsamanía",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-14",
+      "url": "https://www.bolsamania.com/accion/AMADEUS-IT-GRP-BR-A/historico-precios"
+    },
+    {
+      "id": 46,
+      "titulo": "Amadeus Stock Price Today (rango de 52 semanas 46,21-69,30 €; próximos resultados 6-nov-2026)",
+      "editor": "Investing.com",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www.investing.com/equities/amadeus"
+    },
+    {
+      "id": 47,
+      "titulo": "Amadeus IT Group (AMS.MC) Analyst Ratings, Estimates & Forecasts (BPA 2026e 3,46 €, 2027e 3,88 €)",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://finance.yahoo.com/quote/AMS.MC/analysis/"
+    },
+    {
+      "id": 48,
+      "titulo": "Amadeus IT Group: consenso (objetivo medio 67,20 €, 22 analistas, 50,00-80,90 €)",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07-10",
+      "url": "https://es.marketscreener.com/cotizacion/accion/AMADEUS-IT-GROUP-S-A-4027320/consenso/"
+    },
+    {
+      "id": 49,
+      "titulo": "Amadeus IT Group: previsiones de beneficio 2026-2028",
+      "editor": "Simply Wall St",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://simplywall.st/stocks/us/consumer-services/otc-amad.f/amadeus-it-group/future"
+    },
+    {
+      "id": 50,
+      "titulo": "Amadeus empieza a agotar la paciencia de los analistas: Oddo le recorta la valoración",
+      "editor": "Estrategias de Inversión",
+      "tipo": "Prensa",
+      "fecha": "2026-07",
+      "url": "https://www.estrategiasdeinversion.com/analisis/los-brokers-recomiendan/recomendaciones-espana/amadeus-empieza-a-agotar-la-paciencia-de-los-analistas-n-929103"
+    },
+    {
+      "id": 51,
+      "titulo": "Es el farolillo rojo del Ibex 35 en 2026… (caída del 7,16 % en 2025)",
+      "editor": "Estrategias de Inversión",
+      "tipo": "Prensa",
+      "fecha": "2026-04",
+      "url": "https://www.estrategiasdeinversion.com/analisis/los-brokers-recomiendan/recomendaciones-espana/es-el-farolillo-rojo-del-ibex-35-en-2026-y-algunos-n-909217"
+    },
+    {
+      "id": 52,
+      "titulo": "Una acción del Ibex 35 ofrece más del 25 % de potencial (objetivo medio de Reuters 66,69 €)",
+      "editor": "Merca2",
+      "tipo": "Prensa",
+      "fecha": "2026-06-16",
+      "url": "https://www.merca2.es/2026/06/16/acciones-ibex-35-dividendo-potencial-25-2398534/"
+    },
+    {
+      "id": 53,
+      "titulo": "Amadeus (AMS): recomendaciones (18 comprar, 2 mantener, 2 vender)",
+      "editor": "Investing.com",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://es.investing.com/equities/amadeus"
+    },
+    {
+      "id": 54,
+      "titulo": "Prima de riesgo implícita del S&P 500 (ERPbymonth.xlsx, octubre de 2026: 4,20 %)",
+      "editor": "Aswath Damodaran (NYU Stern)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx"
+    },
+    {
+      "id": 55,
+      "titulo": "Rendimiento del Bund alemán a 10 años (3,53 %, 12-oct-2026)",
+      "editor": "Deutsche Bundesbank",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-12",
+      "url": "https://www.bundesbank.de/en/statistics/money-and-capital-markets/interest-rates-and-yields"
+    },
+    {
+      "id": 56,
+      "titulo": "Expedia Group: previsiones y estadísticas (cotización del 2-oct-2026)",
+      "editor": "Finviz",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-02",
+      "url": "https://finviz.com/stock?t=EXPE&ty=fc"
+    },
+    {
+      "id": 57,
+      "titulo": "EV/EBITDA y capitalización de Expedia y Airbnb (septiembre de 2026)",
+      "editor": "FinanceCharts",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-09",
+      "url": "https://www.financecharts.com/stocks/EXPE/value/ev-to-ebitda"
+    },
+    {
+      "id": 58,
+      "titulo": "Trip.com Group: valoración (PER futuro y capitalización)",
+      "editor": "Simply Wall St",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://simplywall.st/stocks/us/consumer-services/nasdaq-tcom/tripcom-group/valuation"
+    },
+    {
+      "id": 59,
+      "titulo": "Análisis de Booking Holdings (14-oct-2026): múltiplos calculados con precio 158,43 USD, consenso y puente",
+      "editor": "Repositorio de análisis (informe propio)",
+      "tipo": "Analistas",
+      "fecha": "2026-10-14",
+      "url": "https://github.com/HotisS/analisis-inversion/tree/main/informes/booking-2026-10-14"
+    },
+    {
+      "id": 60,
+      "titulo": "Análisis de SAP (11-oct-2026): múltiplos de SAP y de Dassault Systèmes",
+      "editor": "Repositorio de análisis (informe propio)",
+      "tipo": "Analistas",
+      "fecha": "2026-10-11",
+      "url": "https://github.com/HotisS/analisis-inversion/tree/main/informes/sap-2026-10-11"
+    },
+    {
+      "id": 61,
+      "titulo": "Análisis de Experian (14-oct-2026): múltiplos calculados",
+      "editor": "Repositorio de análisis (informe propio)",
+      "tipo": "Analistas",
+      "fecha": "2026-10-14",
+      "url": "https://github.com/HotisS/analisis-inversion/tree/main/informes/experian-2026-10-14"
+    },
+    {
+      "id": 62,
+      "titulo": "Análisis de RELX (14-oct-2026): múltiplos de RELX y de Wolters Kluwer",
+      "editor": "Repositorio de análisis (informe propio)",
+      "tipo": "Analistas",
+      "fecha": "2026-10-14",
+      "url": "https://github.com/HotisS/analisis-inversion/tree/main/informes/relx-2026-10-14"
+    },
+    {
+      "id": 63,
+      "titulo": "Rentabilidad de Amadeus en 2026 (−19,2 % en el año)",
+      "editor": "extraETF",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://extraetf.com/es/stock-profile/ES0109067019"
+    },
+    {
+      "id": 64,
+      "titulo": "Amadeus nuevo recorte… potencial del 15 % (Jefferies 60 €, BNP 78 €)",
+      "editor": "Estrategias de Inversión",
+      "tipo": "Prensa",
+      "fecha": "2026-07",
+      "url": "https://www.estrategiasdeinversion.com/analisis/los-brokers-recomiendan/recomendaciones-espana/nuevo-recorte-para-amadeus-pero-el-potencial-alcista-n-929531"
+    },
+    {
+      "id": 65,
+      "titulo": "Amadeus (AMS): seguimiento de la acción (hilo del foro, ≈590 respuestas)",
+      "editor": "Rankia",
+      "tipo": "Foros y redes",
+      "fecha": "2026-09",
+      "url": "https://www.rankia.com/foros/bolsa/temas/582421-amadeus-ams-seguimiento-accion"
+    },
+    {
+      "id": 66,
+      "titulo": "The AI fear arbitrage opportunity (narrativa de la comunidad)",
+      "editor": "Simply Wall St (comunidad)",
+      "tipo": "Foros y redes",
+      "fecha": "2026-08",
+      "url": "https://www.simplywall.st/narratives/rnsdijbj-the-ai-fear-arbitrage-opportunity"
+    },
+    {
+      "id": 67,
+      "titulo": "10 analysts have lowered their price target for Amadeus (narrativa y comentarios)",
+      "editor": "Simply Wall St (comunidad)",
+      "tipo": "Foros y redes",
+      "fecha": "2026-08",
+      "url": "https://simplywall.st/community/narratives/es/consumer-services/bme-ams/amadeus-it-group-shares/401ywxn4-cloud-migration-and-asia-pacific-trends-will-unlock-travel-opportunities-tzq9/updates/10-analysts-have-lowered-their-price-target-for-amadeus-it-grou"
+    },
+    {
+      "id": 68,
+      "titulo": "Amadeus IT Group (BME:AMS) lifted 2026 revenue guidance, is the stock still cheap? (comentarios)",
+      "editor": "Webull / Simply Wall St",
+      "tipo": "Foros y redes",
+      "fecha": "2026-09",
+      "url": "https://www.webull.com/news/15346476103394304"
+    },
+    {
+      "id": 69,
+      "titulo": "Foro de Amadeus (AMS) en Rankia (ficha y comentarios recientes)",
+      "editor": "Rankia",
+      "tipo": "Foros y redes",
+      "fecha": "2026-10",
+      "url": "https://www.rankia.com/acciones/amadeus-ams/foro"
+    },
+    {
+      "id": 70,
+      "titulo": "Assessing whether Amadeus IT Group looks undervalued after recent share price weakness",
+      "editor": "Simply Wall St",
+      "tipo": "Foros y redes",
+      "fecha": "2026-09",
+      "url": "https://simplywall.st/stocks/es/consumer-services/bme-ams/amadeus-it-group-shares/news/assessing-whether-amadeus-it-group-bmeams-looks-undervalued/amp"
+    }
+  ],
+  "calc": {
+    "version": 4,
+    "etiquetas": {
+      "margen_bruto": "M. bruto",
+      "margen_bruto_largo": "Margen bruto",
+      "dias_base": "sobre el coste de ventas"
+    },
+    "recomendacion": {
+      "recomendacion": "Mantener",
+      "regla": "Mantener",
+      "regla_absoluta": "Comprar",
+      "regla_relativa": "Comprar",
+      "coincide": true,
+      "conviccion": "Baja",
+      "conviccion_sugerida": "Media",
+      "conviccion_razones": [
+        "Mantener con las dos reglas de acuerdo y lejos de los umbrales"
+      ],
+      "reglas_discrepan": false,
+      "relativo": {
+        "prima_implicita_pct": 4.2,
+        "wacc": 7.32,
+        "ke": 7.94,
+        "dcf": 85.31,
+        "dcf_min": 76.51,
+        "dcf_max": 96.17,
+        "valor_objetivo": 76.61,
+        "alcista": 99.5,
+        "bajista": 56.46,
+        "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+        "fecha": "2026-10",
+        "potencial_pct": 45.4,
+        "rentabilidad_total_pct": 48.3,
+        "asimetria": null
+      },
+      "objetivo_mercado_txt": " · con la prima implícita del mercado: 76,61 (+45,4 %)",
+      "objetivo_mercado_corto": " · mercado 76,61",
+      "rentabilidad_mercado_corto": " · mercado +48,3 %",
+      "potencial_pct": 21,
+      "dividendo_pct": 2.9,
+      "rentabilidad_total_pct": 23.9,
+      "alcista_pct": 47.3,
+      "bajista_pct": -14.6,
+      "asimetria": 3.24,
+      "comprar_por_debajo": 52.21,
+      "vender_por_encima": 66.92,
+      "tabla": [
+        {
+          "concepto": "Objetivo a 12 meses (nuestro PER × nuestro BPA 2028e, ponderado 25/50/25)",
+          "valor": "58,69 EUR"
+        },
+        {
+          "concepto": "Bajista / base / alcista a 12 meses",
+          "valor": "12,1x × 3,46 = 41,87 · 14,2x × 4,01 = 56,94 · 18,5x × 4,27 = 78,99"
+        },
+        {
+          "concepto": "Rentabilidad a 12 meses: ponderada / del base (con dividendo)",
+          "valor": "14,3 % / 11,0 %"
+        },
+        {
+          "concepto": "Objetivo medio de los analistas (solo contraste)",
+          "valor": "67,20 (nuestro base -15,3 %)"
+        },
+        {
+          "concepto": "Valor intrínseco (síntesis ponderada, largo plazo)",
+          "valor": "63,75 EUR"
+        },
+        {
+          "concepto": "Potencial sobre el precio actual",
+          "valor": "21,0 %"
+        },
+        {
+          "concepto": "Rentabilidad por dividendo ordinario",
+          "valor": "2,9 %"
+        },
+        {
+          "concepto": "Rentabilidad total esperada a 12 meses",
+          "valor": "23,9 %"
+        },
+        {
+          "concepto": "Escenario alcista / bajista",
+          "valor": "47,3 % / -14,6 %"
+        },
+        {
+          "concepto": "Asimetría (ganancia alcista / pérdida bajista)",
+          "valor": "3,24x"
+        },
+        {
+          "concepto": "Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado",
+          "valor": "9,9 % frente a 8,5 % y 7,3 %"
+        },
+        {
+          "concepto": "Valor objetivo con la prima implícita del mercado (4,2 %, WACC 7,3 %)",
+          "valor": "76,61 EUR"
+        },
+        {
+          "concepto": "Rentabilidad total esperada con la prima del mercado",
+          "valor": "48,3 %"
+        },
+        {
+          "concepto": "Asimetría con la prima del mercado",
+          "valor": "n.d."
+        },
+        {
+          "concepto": "Regla absoluta (frente a su coste de capital)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "Regla relativa (frente a lo que pide el mercado)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "¿La calidad de la empresa sostiene el crecimiento previsto?",
+          "valor": "En parte (5,3 % anual proyectado; sin inversión neta)"
+        },
+        {
+          "concepto": "Señal del valor intrínseco (regla del DCF, referencia)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "Recomendación según la regla a 12 meses (Comprar: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender: ponderada ≤ -10 %)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Convicción según los criterios (Mantener con las dos reglas de acuerdo y lejos de los umbrales)",
+          "valor": "Media"
+        }
+      ],
+      "niveles": [
+        {
+          "accion": "Comprar",
+          "condicion": "Por debajo de 52,21 (ponderada a 12 meses ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco)"
+        },
+        {
+          "accion": "Mantener",
+          "condicion": "Entre 52,21 y 66,92"
+        },
+        {
+          "accion": "Vender o reducir",
+          "condicion": "Por encima de 66,92 (ponderada a 12 meses ≤ -10 %)"
+        }
+      ],
+      "precio_txt": "",
+      "valor_objetivo_txt": "",
+      "regla_valor_intrinseco": "Comprar",
+      "objetivo_12m": {
+        "completo": true,
+        "filas": [
+          {
+            "escenario": "Bajista",
+            "metrica": "PER",
+            "beneficio_por_accion": 3.46,
+            "multiplo": 12.1,
+            "multiplo_informe": null,
+            "origen": "base × 0.85 (el mínimo de 5 años no queda por debajo del base)",
+            "precio": 41.87,
+            "rentabilidad_pct": -17.6,
+            "justificacion": "BPA ajustado de 3,46 € en 2028e: la distribución pierde volumen por la IA y la venta directa, el crecimiento baja 3 puntos al año y el margen 2,5 puntos (36,7-37,0 %). El PER cae a 12,1x (85 % del actual), un nivel de agencia en línea."
+          },
+          {
+            "escenario": "Base",
+            "metrica": "PER",
+            "beneficio_por_accion": 4.01,
+            "multiplo": 14.2,
+            "multiplo_informe": null,
+            "origen": "PER actual",
+            "precio": 56.94,
+            "rentabilidad_pct": 11,
+            "justificacion": "BPA ajustado de 4,01 € en 2028e (ventas de 7.722 M, margen EBITDA del 39,5 %): recuperación del tráfico en 2027 y crecimiento del 7 %. PER de 14,2x, el actual sobre nuestro BPA de 2027e (menor que la mediana de 20,9x de 2024-2025)."
+          },
+          {
+            "escenario": "Alcista",
+            "metrica": "PER",
+            "beneficio_por_accion": 4.27,
+            "multiplo": 18.5,
+            "multiplo_informe": null,
+            "origen": "techo de base × 1.3",
+            "precio": 78.99,
+            "rentabilidad_pct": 52.9,
+            "justificacion": "BPA ajustado de 4,27 € en 2028e con 1,5 puntos más de crecimiento y un punto más de margen. El PER sube a 18,5x (techo de 1,3 veces el base), aún por debajo de la mediana histórica (20,9x)."
+          }
+        ],
+        "regla": {
+          "bajista": 12.1,
+          "base": 14.2,
+          "alcista": 18.5,
+          "bajista_origen": "base × 0.85 (el mínimo de 5 años no queda por debajo del base)",
+          "base_origen": "PER actual",
+          "alcista_origen": "techo de base × 1.3"
+        },
+        "probabilidades": [
+          25,
+          50,
+          25
+        ],
+        "objetivo_ponderado": 58.69,
+        "objetivo_simple": 59.27,
+        "objetivo_base": 56.94,
+        "rentabilidad_ponderada_pct": 14.3,
+        "rentabilidad_simple_pct": 15.4,
+        "rentabilidad_base_pct": 11,
+        "asimetria": 2.43,
+        "senal": "Mantener",
+        "comprar_por_debajo": 52.21,
+        "vender_por_encima": 66.92,
+        "consenso_objetivo": 67.2,
+        "diferencia_consenso_pct": -15.3
+      },
+      "rentabilidad_12m_pct": 14.3,
+      "rentabilidad_12m_txt": "+14,3 % (base +11,0 %)",
+      "objetivo_12m_txt": "58,69 EUR"
+    },
+    "mercado": {
+      "precio": 52.68,
+      "acciones": 431.6,
+      "capitalizacion": 22737,
+      "deuda_neta": 2578,
+      "deuda_neta_ajustada": 3014,
+      "asimilables_deuda": 436,
+      "ajustes_puente": 436,
+      "valor_empresa": 25750,
+      "fecha_puente": "2026-06-30"
+    },
+    "clave": {
+      "capitalizacion": 22737,
+      "valor_empresa": 25750,
+      "deuda_neta": 2578,
+      "ev_ventas_ltm": 3.95,
+      "ev_ebitda_ltm": 10.3,
+      "ev_ebitda_ntm": null,
+      "ev_ebit_ltm": 14.6,
+      "per_ltm": 17,
+      "per_ntm": 13.9,
+      "fcf_yield_pct": 5.7,
+      "dividendo_pct": 2.9,
+      "dn_ebitda": 1,
+      "roic_pct": 19.7,
+      "margen_ebitda_pct": 38.5,
+      "deuda_neta_ajustada": 3014,
+      "dn_ebitda_ajustada": 1.2,
+      "crecimiento_tcac_pct": 25,
+      "ingresos_ntm": null,
+      "ebitda_ntm": null,
+      "bpa_ntm": 3.79,
+      "ebitda_ltm": 2507,
+      "ingresos_ltm": 6517,
+      "ev_rab": null
+    },
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 2670.4,
+        "crecimiento_pct": null,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 575.9,
+        "margen_ebitda_pct": 21.6,
+        "ebit": null,
+        "margen_ebit_pct": null,
+        "beneficio_neto": -136.7,
+        "margen_neto_pct": -5.1,
+        "bpa": null,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": null
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 4485.9,
+        "crecimiento_pct": 68,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 1589.2,
+        "margen_ebitda_pct": 35.4,
+        "ebit": null,
+        "margen_ebit_pct": null,
+        "beneficio_neto": 664.4,
+        "margen_neto_pct": 14.8,
+        "bpa": null,
+        "dpa": 0.74,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": null
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 5441.2,
+        "crecimiento_pct": 21.3,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 2063.2,
+        "margen_ebitda_pct": 37.9,
+        "ebit": 1383.2,
+        "margen_ebit_pct": 25.4,
+        "beneficio_neto": 1117.6,
+        "margen_neto_pct": 20.5,
+        "bpa": 2.5,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": null
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 6141.7,
+        "crecimiento_pct": 12.9,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 2335.1,
+        "margen_ebitda_pct": 38,
+        "ebit": 1642.3000000000002,
+        "margen_ebit_pct": 26.7,
+        "beneficio_neto": 1258.6,
+        "margen_neto_pct": 20.5,
+        "bpa": 2.87,
+        "dpa": 1.39,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 21,
+        "payout_pct": 48
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 6517,
+        "crecimiento_pct": 6.1,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 2506.6,
+        "margen_ebitda_pct": 38.5,
+        "ebit": 1758.4,
+        "margen_ebit_pct": 27,
+        "beneficio_neto": 1335.6,
+        "margen_neto_pct": 20.5,
+        "bpa": 3.1,
+        "dpa": 1.54,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 21,
+        "payout_pct": 50
+      }
+    ],
+    "tcac": {
+      "periodo": "2021-2025",
+      "ingresos_pct": 25,
+      "ebitda_pct": 44.4,
+      "bpa_pct": null
+    },
+    "cuenta_y_prevision": [
+      {
+        "periodo": "2021",
+        "ingresos": 2670.4,
+        "ebitda": 575.9
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 4485.9,
+        "ebitda": 1589.2
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 5441.2,
+        "ebitda": 2063.2
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 6141.7,
+        "ebitda": 2335.1
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 6517,
+        "ebitda": 2506.6
+      },
+      {
+        "periodo": "2026e",
+        "ingresos": 6745,
+        "ebitda": 2617
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 7217,
+        "ebitda": 2829
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 7722,
+        "ebitda": 3050
+      },
+      {
+        "periodo": "2029e",
+        "ingresos": 8224,
+        "ebitda": 3257
+      },
+      {
+        "periodo": "2030e",
+        "ingresos": 8718,
+        "ebitda": 3461
+      },
+      {
+        "periodo": "2031e",
+        "ingresos": 9197,
+        "ebitda": 3651
+      },
+      {
+        "periodo": "2032e",
+        "ingresos": 9657,
+        "ebitda": 3834
+      },
+      {
+        "periodo": "2033e",
+        "ingresos": 10092,
+        "ebitda": 4006
+      },
+      {
+        "periodo": "2034e",
+        "ingresos": 10495,
+        "ebitda": 4167
+      },
+      {
+        "periodo": "2035e",
+        "ingresos": 10863,
+        "ebitda": 4313
+      }
+    ],
+    "segmentos_ultimo": [
+      {
+        "nombre": "Air Distribution",
+        "ingresos": 1585,
+        "peso_pct": 47.5,
+        "crecimiento_pct": null,
+        "margen_pct": null,
+        "tipo_margen": null
+      },
+      {
+        "nombre": "Air IT Solutions",
+        "ingresos": 1207,
+        "peso_pct": 36.2,
+        "crecimiento_pct": null,
+        "margen_pct": null,
+        "tipo_margen": null
+      },
+      {
+        "nombre": "Hospitality & Other Solutions",
+        "ingresos": 543,
+        "peso_pct": 16.3,
+        "crecimiento_pct": null,
+        "margen_pct": null,
+        "tipo_margen": null
+      }
+    ],
+    "segmentos_tabla": {
+      "periodos": [
+        "",
+        "",
+        "",
+        "",
+        "1S26"
+      ],
+      "filas": [
+        {
+          "nombre": "Air Distribution",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": null,
+          "v4": 1585
+        },
+        {
+          "nombre": "Air IT Solutions",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": null,
+          "v4": 1207
+        },
+        {
+          "nombre": "Hospitality & Other Solutions",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": null,
+          "v4": 543
+        }
+      ]
+    },
+    "segmentos_periodo": "1S26",
+    "balance": [
+      {
+        "periodo": "2021",
+        "activo_total": 11180,
+        "intangibles": 0,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": null,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "deuda_neta": 0,
+        "patrimonio": 3750,
+        "minoritarios": null,
+        "dn_ebitda": 0,
+        "dn_patrimonio_pct": 0,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 3750,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 11710,
+        "intangibles": 0,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": null,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "deuda_neta": 0,
+        "patrimonio": 4580,
+        "minoritarios": null,
+        "dn_ebitda": 0,
+        "dn_patrimonio_pct": 0,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 4580,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 10795.4,
+        "intangibles": 3710.8,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 1038,
+        "deuda_financiera": 3178.6,
+        "arrendamientos": null,
+        "deuda_neta": 2140.6,
+        "patrimonio": 4480,
+        "minoritarios": null,
+        "dn_ebitda": 1.04,
+        "dn_patrimonio_pct": 48,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 6620.6,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 11784.3,
+        "intangibles": 4090.6,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 1049.1,
+        "deuda_financiera": 3160.4,
+        "arrendamientos": null,
+        "deuda_neta": 2111.3,
+        "patrimonio": 5060,
+        "minoritarios": null,
+        "dn_ebitda": 0.9,
+        "dn_patrimonio_pct": 42,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 39.4,
+        "capital_invertido": 7171.3,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 11471,
+        "intangibles": 0,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 1115.2,
+        "deuda_financiera": 3256.6,
+        "arrendamientos": null,
+        "deuda_neta": 2141.3999999999996,
+        "patrimonio": 4800,
+        "minoritarios": null,
+        "dn_ebitda": 0.85,
+        "dn_patrimonio_pct": 45,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 25.9,
+        "capital_invertido": 6941.4,
+        "liquidez_corriente": null
+      }
+    ],
+    "perimetro_nota": null,
+    "flujos": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": null,
+        "capex": null,
+        "pagos_arrendamientos": null,
+        "fcf": null,
+        "beneficio_neto": -136.7,
+        "conversion_pct": null,
+        "capex_ventas_pct": null,
+        "capex_amortizacion": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 0,
+        "recompras": 0,
+        "emision_acciones": null,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": null,
+        "fcf_por_accion": null
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 1440,
+        "capex": 566.7,
+        "pagos_arrendamientos": null,
+        "fcf": 873.3,
+        "beneficio_neto": 664.4,
+        "conversion_pct": 131,
+        "capex_ventas_pct": 12.6,
+        "capex_amortizacion": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 0,
+        "recompras": 0,
+        "emision_acciones": null,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": null,
+        "fcf_por_accion": null
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 1790,
+        "capex": 600.5,
+        "pagos_arrendamientos": null,
+        "fcf": 1189.5,
+        "beneficio_neto": 1117.6,
+        "conversion_pct": 106,
+        "capex_ventas_pct": 11,
+        "capex_amortizacion": 0.88,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": 0,
+        "emision_acciones": null,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 447,
+        "fcf_por_accion": 2.66
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 2150,
+        "capex": 788.1,
+        "pagos_arrendamientos": null,
+        "fcf": 1361.9,
+        "beneficio_neto": 1258.6,
+        "conversion_pct": 108,
+        "capex_ventas_pct": 12.8,
+        "capex_amortizacion": 1.14,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": 0,
+        "emision_acciones": null,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 438.5,
+        "fcf_por_accion": 3.11
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 2200,
+        "capex": 814.6,
+        "pagos_arrendamientos": null,
+        "fcf": 1385.4,
+        "beneficio_neto": 1335.6,
+        "conversion_pct": 104,
+        "capex_ventas_pct": 12.5,
+        "capex_amortizacion": 1.09,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": 1300,
+        "emision_acciones": null,
+        "retorno_accionista": 1300,
+        "payout_caja_pct": 97,
+        "acciones": 430.8,
+        "fcf_por_accion": 3.22
+      }
+    ],
+    "flujos_acumulado": {
+      "periodo": "2021-2025",
+      "fcf": 4810,
+      "adquisiciones": 0,
+      "dividendos": 0,
+      "recompras": 1300,
+      "conversion_pct": 113
+    },
+    "rentabilidad": [
+      {
+        "periodo": "2021",
+        "nopat": null,
+        "capital_invertido": 3750,
+        "roic_pct": null,
+        "roe_pct": -3.6,
+        "roa_pct": -1.2,
+        "margen_neto_pct": -5.1,
+        "rotacion": 0.24,
+        "apalancamiento": 2.98
+      },
+      {
+        "periodo": "2022",
+        "nopat": null,
+        "capital_invertido": 4165,
+        "roic_pct": null,
+        "roe_pct": 16,
+        "roa_pct": 5.8,
+        "margen_neto_pct": 14.8,
+        "rotacion": 0.39,
+        "apalancamiento": 2.75
+      },
+      {
+        "periodo": "2023",
+        "nopat": 1037,
+        "capital_invertido": 5600,
+        "roic_pct": 18.5,
+        "roe_pct": 24.7,
+        "roa_pct": 9.9,
+        "margen_neto_pct": 20.5,
+        "rotacion": 0.48,
+        "apalancamiento": 2.48
+      },
+      {
+        "periodo": "2024",
+        "nopat": 1297,
+        "capital_invertido": 6896,
+        "roic_pct": 18.8,
+        "roe_pct": 26.4,
+        "roa_pct": 11.1,
+        "margen_neto_pct": 20.5,
+        "rotacion": 0.54,
+        "apalancamiento": 2.37
+      },
+      {
+        "periodo": "2025",
+        "nopat": 1389,
+        "capital_invertido": 7056,
+        "roic_pct": 19.7,
+        "roe_pct": 27.1,
+        "roa_pct": 11.5,
+        "margen_neto_pct": 20.5,
+        "rotacion": 0.56,
+        "apalancamiento": 2.36
+      }
+    ],
+    "roic_incremental_pct": 24.2,
+    "roic_frente_wacc": [
+      {
+        "periodo": "2021",
+        "roic_pct": null,
+        "roe_pct": -3.6,
+        "wacc_pct": 8.5
+      },
+      {
+        "periodo": "2022",
+        "roic_pct": null,
+        "roe_pct": 16,
+        "wacc_pct": 8.5
+      },
+      {
+        "periodo": "2023",
+        "roic_pct": 18.5,
+        "roe_pct": 24.7,
+        "wacc_pct": 8.5
+      },
+      {
+        "periodo": "2024",
+        "roic_pct": 18.8,
+        "roe_pct": 26.4,
+        "wacc_pct": 8.5
+      },
+      {
+        "periodo": "2025",
+        "roic_pct": 19.7,
+        "roe_pct": 27.1,
+        "wacc_pct": 8.5
+      }
+    ],
+    "calidad": {
+      "periodo": "2025",
+      "altman_z": 3.12,
+      "altman_zona": "Zona segura",
+      "piotroski_f": 6,
+      "piotroski_detalle": [
+        {
+          "criterio": "Beneficio neto positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "ROA mejora",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo > beneficio neto",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Baja el endeudamiento (deuda / activo)",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Mejora la liquidez corriente",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "No emite acciones",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora el margen bruto",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "Mejora la rotación del activo",
+          "resultado": "Sí"
+        }
+      ],
+      "tabla": [
+        {
+          "indicador": "Altman Z",
+          "valor": "3,12",
+          "lectura": "Zona segura (> 2,99 seguro; < 1,81 riesgo). No aplica a bancos ni aseguradoras, y subestima la solvencia de empresas con grandes anticipos de clientes o prefinanciación pública (contratistas, construcción), que inflan el pasivo."
+        },
+        {
+          "indicador": "Piotroski F",
+          "valor": "6 / 7",
+          "lectura": "Intermedio (4-6)."
+        },
+        {
+          "indicador": "Flujo operativo / beneficio neto (acumulado)",
+          "valor": "1,79x",
+          "lectura": "El beneficio se cobra."
+        }
+      ]
+    },
+    "dcf": {
+      "proyeccion": [
+        {
+          "periodo": "2026e",
+          "ingresos": 6745,
+          "crecimiento_pct": 3.5,
+          "ebitda": 2617,
+          "margen_ebitda_pct": 38.8,
+          "amortizacion": 769,
+          "ebit": 1848,
+          "impuestos": 388,
+          "capex": 776,
+          "variacion_circulante": 0,
+          "fcff": 1453,
+          "fraccion": 0.21,
+          "factor": 0.991,
+          "vp": 308
+        },
+        {
+          "periodo": "2027e",
+          "ingresos": 7217,
+          "crecimiento_pct": 7,
+          "ebitda": 2829,
+          "margen_ebitda_pct": 39.2,
+          "amortizacion": 830,
+          "ebit": 1999,
+          "impuestos": 420,
+          "capex": 866,
+          "variacion_circulante": 0,
+          "fcff": 1543,
+          "fraccion": 1,
+          "factor": 0.943,
+          "vp": 1455
+        },
+        {
+          "periodo": "2028e",
+          "ingresos": 7722,
+          "crecimiento_pct": 7,
+          "ebitda": 3050,
+          "margen_ebitda_pct": 39.5,
+          "amortizacion": 888,
+          "ebit": 2162,
+          "impuestos": 454,
+          "capex": 927,
+          "variacion_circulante": 0,
+          "fcff": 1670,
+          "fraccion": 1,
+          "factor": 0.869,
+          "vp": 1451
+        },
+        {
+          "periodo": "2029e",
+          "ingresos": 8224,
+          "crecimiento_pct": 6.5,
+          "ebitda": 3257,
+          "margen_ebitda_pct": 39.6,
+          "amortizacion": 938,
+          "ebit": 2319,
+          "impuestos": 487,
+          "capex": 987,
+          "variacion_circulante": 0,
+          "fcff": 1783,
+          "fraccion": 1,
+          "factor": 0.801,
+          "vp": 1427
+        },
+        {
+          "periodo": "2030e",
+          "ingresos": 8718,
+          "crecimiento_pct": 6,
+          "ebitda": 3461,
+          "margen_ebitda_pct": 39.7,
+          "amortizacion": 985,
+          "ebit": 2476,
+          "impuestos": 520,
+          "capex": 1029,
+          "variacion_circulante": 0,
+          "fcff": 1912,
+          "fraccion": 1,
+          "factor": 0.738,
+          "vp": 1411
+        },
+        {
+          "periodo": "2031e",
+          "ingresos": 9197,
+          "crecimiento_pct": 5.5,
+          "ebitda": 3651,
+          "margen_ebitda_pct": 39.7,
+          "amortizacion": 1030,
+          "ebit": 2621,
+          "impuestos": 550,
+          "capex": 1076,
+          "variacion_circulante": 0,
+          "fcff": 2025,
+          "fraccion": 1,
+          "factor": 0.68,
+          "vp": 1376
+        },
+        {
+          "periodo": "2032e",
+          "ingresos": 9657,
+          "crecimiento_pct": 5,
+          "ebitda": 3834,
+          "margen_ebitda_pct": 39.7,
+          "amortizacion": 1072,
+          "ebit": 2762,
+          "impuestos": 580,
+          "capex": 1120,
+          "variacion_circulante": 0,
+          "fcff": 2134,
+          "fraccion": 1,
+          "factor": 0.627,
+          "vp": 1337
+        },
+        {
+          "periodo": "2033e",
+          "ingresos": 10092,
+          "crecimiento_pct": 4.5,
+          "ebitda": 4006,
+          "margen_ebitda_pct": 39.7,
+          "amortizacion": 1110,
+          "ebit": 2896,
+          "impuestos": 608,
+          "capex": 1161,
+          "variacion_circulante": 0,
+          "fcff": 2238,
+          "fraccion": 1,
+          "factor": 0.578,
+          "vp": 1291
+        },
+        {
+          "periodo": "2034e",
+          "ingresos": 10495,
+          "crecimiento_pct": 4,
+          "ebitda": 4167,
+          "margen_ebitda_pct": 39.7,
+          "amortizacion": 1155,
+          "ebit": 3012,
+          "impuestos": 633,
+          "capex": 1207,
+          "variacion_circulante": 0,
+          "fcff": 2327,
+          "fraccion": 1,
+          "factor": 0.532,
+          "vp": 1238
+        },
+        {
+          "periodo": "2035e",
+          "ingresos": 10863,
+          "crecimiento_pct": 3.5,
+          "ebitda": 4313,
+          "margen_ebitda_pct": 39.7,
+          "amortizacion": 1195,
+          "ebit": 3118,
+          "impuestos": 655,
+          "capex": 1249,
+          "variacion_circulante": 0,
+          "fcff": 2409,
+          "fraccion": 1,
+          "factor": 0.49,
+          "vp": 1180
+        }
+      ],
+      "etapa2": null,
+      "suma_vp": 12474,
+      "valor_terminal": 41009,
+      "vp_terminal": 19307,
+      "valor_empresa": 31782,
+      "peso_terminal_pct": 61,
+      "valor_acciones": 28768,
+      "valor_accion": 66.65,
+      "vt_gordon": 41009,
+      "vt_multiplo": 56063,
+      "multiplo_implicito": 9.5,
+      "g_implicito_pct": 4.05,
+      "metodo_terminal": "gordon",
+      "terminal_tabla": [
+        {
+          "concepto": "Método principal",
+          "valor": "Crecimiento a perpetuidad"
+        },
+        {
+          "concepto": "Crecimiento a perpetuidad",
+          "valor": "2,5 %"
+        },
+        {
+          "concepto": "Múltiplo EV/EBITDA de salida",
+          "valor": "13,0x"
+        },
+        {
+          "concepto": "Valor terminal (Gordon)",
+          "valor": "41.009"
+        },
+        {
+          "concepto": "Valor terminal (múltiplo)",
+          "valor": "56.063"
+        },
+        {
+          "concepto": "Múltiplo de salida implícito en Gordon",
+          "valor": "9,5x"
+        },
+        {
+          "concepto": "Crecimiento implícito en el múltiplo",
+          "valor": "4,05 %"
+        },
+        {
+          "concepto": "Peso del valor terminal en el valor empresa",
+          "valor": "61 %"
+        }
+      ],
+      "puente": [
+        {
+          "concepto": "Valor actual de los flujos proyectados",
+          "valor": "12.474"
+        },
+        {
+          "concepto": "Valor actual del valor terminal",
+          "valor": "19.307"
+        },
+        {
+          "concepto": "Valor empresa",
+          "valor": "31.782"
+        },
+        {
+          "concepto": "− Deuda financiera neta (con arrendamientos)",
+          "valor": "-2.578"
+        },
+        {
+          "concepto": "− Minoritarios, pensiones y otros; + asociadas",
+          "valor": "-436"
+        },
+        {
+          "concepto": "Valor de los fondos propios",
+          "valor": "28.768"
+        },
+        {
+          "concepto": "Acciones diluidas (millones)",
+          "valor": "431,6"
+        },
+        {
+          "concepto": "Valor por acción",
+          "valor": "66,65"
+        }
+      ],
+      "composicion": [
+        {
+          "parte": "Flujos proyectados",
+          "valor": 12474
+        },
+        {
+          "parte": "Valor terminal",
+          "valor": 19307
+        }
+      ],
+      "wacc": 8.52,
+      "ke": 9.31,
+      "kd_despues": 2.77,
+      "wacc_tabla": [
+        {
+          "concepto": "Tasa libre de riesgo",
+          "valor": "3,53 %"
+        },
+        {
+          "concepto": "Beta",
+          "valor": "1,05"
+        },
+        {
+          "concepto": "Prima de riesgo de mercado",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Prima adicional (país, tamaño, específica)",
+          "valor": "0,00 %"
+        },
+        {
+          "concepto": "Coste de los fondos propios",
+          "valor": "9,30 %"
+        },
+        {
+          "concepto": "Coste de la deuda antes de impuestos",
+          "valor": "3,50 %"
+        },
+        {
+          "concepto": "Tipo impositivo",
+          "valor": "21,00 %"
+        },
+        {
+          "concepto": "Coste de la deuda después de impuestos",
+          "valor": "2,77 %"
+        },
+        {
+          "concepto": "Peso de la deuda (D / (D + E))",
+          "valor": "12,00 %"
+        },
+        {
+          "concepto": "WACC",
+          "valor": "8,52 %"
+        },
+        {
+          "concepto": "Prima de riesgo implícita del mercado (regla relativa)",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "WACC con la prima implícita del mercado",
+          "valor": "7,32 %"
+        }
+      ],
+      "potencial_pct": 26.5,
+      "sensibilidad": {
+        "eje_columnas": "Crecimiento a perpetuidad",
+        "columnas": [
+          "1,5 %",
+          "2,0 %",
+          "2,5 %",
+          "3,0 %",
+          "3,5 %"
+        ],
+        "filas": [
+          {
+            "wacc": "7,5 %",
+            "v0": 71.38,
+            "v1": 76.01,
+            "v2": 81.56,
+            "v3": 88.34,
+            "v4": 96.81
+          },
+          {
+            "wacc": "8,0 %",
+            "v0": 65.2,
+            "v1": 68.97,
+            "v2": 73.43,
+            "v3": 78.77,
+            "v4": 85.3
+          },
+          {
+            "wacc": "8,5 %",
+            "v0": 59.91,
+            "v1": 63.02,
+            "v2": 66.65,
+            "v3": 70.94,
+            "v4": 76.09
+          },
+          {
+            "wacc": "9,0 %",
+            "v0": 55.33,
+            "v1": 57.93,
+            "v2": 60.93,
+            "v3": 64.43,
+            "v4": 68.56
+          },
+          {
+            "wacc": "9,5 %",
+            "v0": 51.33,
+            "v1": 53.53,
+            "v2": 56.03,
+            "v3": 58.92,
+            "v4": 62.29
+          }
+        ]
+      },
+      "sensibilidad2": {
+        "columnas": [
+          "-2 pp",
+          "-1 pp",
+          "0 pp",
+          "+1 pp",
+          "+2 pp"
+        ],
+        "filas": [
+          {
+            "margen": "-2 pp",
+            "v0": 52.59,
+            "v1": 56.86,
+            "v2": 61.43,
+            "v3": 66.34,
+            "v4": 71.59
+          },
+          {
+            "margen": "-1 pp",
+            "v0": 54.86,
+            "v1": 59.29,
+            "v2": 64.04,
+            "v3": 69.14,
+            "v4": 74.59
+          },
+          {
+            "margen": "0 pp",
+            "v0": 57.13,
+            "v1": 61.73,
+            "v2": 66.65,
+            "v3": 71.94,
+            "v4": 77.59
+          },
+          {
+            "margen": "+1 pp",
+            "v0": 59.4,
+            "v1": 64.16,
+            "v2": 69.27,
+            "v3": 74.74,
+            "v4": 80.6
+          },
+          {
+            "margen": "+2 pp",
+            "v0": 61.67,
+            "v1": 66.6,
+            "v2": 71.88,
+            "v3": 77.54,
+            "v4": 83.6
+          }
+        ]
+      },
+      "rango_min": 57.93,
+      "rango_max": 78.77,
+      "inverso": {
+        "crecimiento_implicito_pct": 2.4,
+        "crecimiento_base_pct": 5.4,
+        "periodo": "2027e-2035e",
+        "margen_implicito_pct": 34.3,
+        "margen_implicito_texto": null,
+        "margen_base_pct": 39.7,
+        "rentabilidad_implicita_pct": 9.9
+      },
+      "sostenibilidad": {
+        "veredicto": "En parte",
+        "crecimiento_proyectado_pct": 5.3,
+        "tasa_reinversion_pct": 2,
+        "crecimiento_financiable_pct": null,
+        "roic_pct": 19.7,
+        "roic_incremental_historico_pct": 24.2,
+        "roic_implicito_pct": null,
+        "cuota_actual_pct": 45,
+        "cuota_final_pct": null,
+        "puente": [
+          {
+            "periodo": "2026e",
+            "volumen_pct": 1,
+            "precio_pct": 4.5,
+            "otros_pct": -2,
+            "comentario": "Volumen +1 %: reservas −3,7 % y pasajeros +1,1 % en el 1S26, con hoteles y pagos creciendo; precio +4,5 %: ingreso por pasajero embarcado +7,5 % y tarifa media de distribución al alza; otros −2 %: divisa (el dólar restó ≈2,8 puntos en el 1S26) [1].",
+            "suma_pct": 3.5,
+            "crecimiento_pct": 3.5
+          },
+          {
+            "periodo": "2027e",
+            "volumen_pct": 3,
+            "precio_pct": 3.5,
+            "otros_pct": 0.5,
+            "comentario": "Volumen +3 %: recuperación parcial de las reservas en Oriente Medio y tráfico aéreo en línea con su tendencia; precio +3,5 %: nuevas funciones (NDC, merchandising, cobro por exceso de búsquedas de agentes de IA) [37]; otros +0,5 %: mezcla hacia hoteles y pagos.",
+            "suma_pct": 7,
+            "crecimiento_pct": 7
+          },
+          {
+            "periodo": "2028e",
+            "volumen_pct": 3,
+            "precio_pct": 3.5,
+            "otros_pct": 0.5,
+            "comentario": "Igual que 2027e: volumen +3 % (tráfico y nuevos clientes de Air IT), precio +3,5 % y mezcla +0,5 %; sin la compra de IDEMIA Public Security.",
+            "suma_pct": 7,
+            "crecimiento_pct": 7
+          },
+          {
+            "periodo": "2029e",
+            "volumen_pct": 3,
+            "precio_pct": 3,
+            "otros_pct": 0.5,
+            "comentario": "Volumen +3 %, precio +3 % (la subida por pasajero se modera al madurar las migraciones) y mezcla +0,5 %.",
+            "suma_pct": 6.5,
+            "crecimiento_pct": 6.5
+          }
+        ],
+        "texto": "La proyección apenas necesita inversión neta de la amortización (reinversión acumulada de 426 M, el 2 % del NOPAT, con un capex bruto medio del 11,7 % de las ventas). En un negocio de activos ligeros, el crecimiento medio del 5,3 % tiene que salir de subir precios y de ganar volumen sin capital nuevo, y la prueba es el poder de precios y la cuota; en un comprador en serie, la amortización es de intangibles comprados y la prueba es el capex bruto (las compras) frente al crecimiento comprado.",
+        "tabla": [
+          {
+            "concepto": "Crecimiento medio de ingresos proyectado",
+            "valor": "5,3 %"
+          },
+          {
+            "concepto": "Capex bruto medio (incluidas compras si van como inversión)",
+            "valor": "11,7 % de las ventas"
+          },
+          {
+            "concepto": "Reinversión neta acumulada (capex − amortización + circulante)",
+            "valor": "426 M (2 % del NOPAT)"
+          }
+        ]
+      }
+    },
+    "escenarios": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "narrativa": "Los agentes de IA y la venta directa por NDC desvían reservas de agencias: la distribución pierde volumen tres años seguidos y las aerolíneas negocian tarifas más bajas al renovar. Es lo que ya le pasó a Sabre y Travelport en cuota; el crecimiento cae ≈3 puntos al año y el margen 2,5 puntos.",
+        "crecimiento_medio_pct": 2.4,
+        "margen_final_pct": 37.2,
+        "wacc_pct": 8.5,
+        "valor": 44.99,
+        "potencial_pct": -14.6
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "narrativa": "El tráfico se recupera de Oriente Medio en 2027, la distribución vuelve a crecer al 3-4 % y Air IT y hoteles siguen al 8-9 %. Crecimiento del 7 % en 2027-2028 y margen EBITDA del 39-40 %.",
+        "crecimiento_medio_pct": 5.4,
+        "margen_final_pct": 39.7,
+        "wacc_pct": 8.5,
+        "valor": 66.65,
+        "potencial_pct": 26.5
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "narrativa": "Amadeus se convierte en la infraestructura que usan los agentes de IA (Google, Microsoft) y cobra por las búsquedas; IDEMIA y los pagos añaden crecimiento. 1,5 puntos más de crecimiento y un punto más de margen.",
+        "crecimiento_medio_pct": 6.9,
+        "margen_final_pct": 40.7,
+        "wacc_pct": 8.5,
+        "valor": 77.62,
+        "potencial_pct": 47.3
+      }
+    ],
+    "valor_ponderado": 63.98,
+    "potencial_ponderado_pct": 21.5,
+    "comparables": {
+      "tabla": [
+        {
+          "nombre": "Amadeus",
+          "ticker": "AMS",
+          "pais": "ES",
+          "capitalizacion": 22737,
+          "ev_ventas": 3.95,
+          "ev_ebitda_ltm": 10.3,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 13.9,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": 38.5,
+          "roic_pct": 19.7,
+          "dn_ebitda": 1,
+          "fcf_yield_pct": 5.7,
+          "es_objetivo": true
+        },
+        {
+          "nombre": "Booking Holdings",
+          "ticker": "BKNG",
+          "pais": "US",
+          "capitalizacion": 108155,
+          "ev_ventas": 4.38,
+          "ev_ebitda_ltm": 11.9,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 13.2,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": 36.7,
+          "roic_pct": null,
+          "dn_ebitda": 0.3,
+          "fcf_yield_pct": 7.5,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Expedia Group",
+          "ticker": "EXPE",
+          "pais": "US",
+          "capitalizacion": 28378,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": 8.3,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 10.8,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Trip.com Group",
+          "ticker": "TCOM",
+          "pais": "CN",
+          "capitalizacion": 36052,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 9,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Airbnb",
+          "ticker": "ABNB",
+          "pais": "US",
+          "capitalizacion": 97269,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": 36.7,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 29.2,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "SAP",
+          "ticker": "SAP",
+          "pais": "DE",
+          "capitalizacion": 221940,
+          "ev_ventas": 5.65,
+          "ev_ebitda_ltm": 18.2,
+          "ev_ebitda_ntm": 15.1,
+          "per_ntm": 24.2,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": 31.1,
+          "roic_pct": 15.5,
+          "dn_ebitda": -0.1,
+          "fcf_yield_pct": 3.6,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Dassault Systèmes",
+          "ticker": "DSY",
+          "pais": "FR",
+          "capitalizacion": 28794,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": 11.2,
+          "per_ntm": 20.7,
+          "crecimiento_pct": 5.3,
+          "margen_ebitda_pct": 35.1,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Experian",
+          "ticker": "EXPN",
+          "pais": "GB",
+          "capitalizacion": 26796,
+          "ev_ventas": 4.17,
+          "ev_ebitda_ltm": 11.5,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 15.5,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": 36.1,
+          "roic_pct": 17.9,
+          "dn_ebitda": 1.7,
+          "fcf_yield_pct": 7.3,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "RELX",
+          "ticker": "REL",
+          "pais": "GB",
+          "capitalizacion": 51422,
+          "ev_ventas": 5.55,
+          "ev_ebitda_ltm": 14,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 17.8,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": 39.7,
+          "roic_pct": 33.2,
+          "dn_ebitda": 2.3,
+          "fcf_yield_pct": 5.1,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Wolters Kluwer",
+          "ticker": "WKL",
+          "pais": "NL",
+          "capitalizacion": 15783,
+          "ev_ventas": 3.35,
+          "ev_ebitda_ltm": 10.2,
+          "ev_ebitda_ntm": 9.3,
+          "per_ntm": 12.9,
+          "crecimiento_pct": 7.3,
+          "margen_ebitda_pct": 32.9,
+          "roic_pct": 25.4,
+          "dn_ebitda": 2,
+          "fcf_yield_pct": 8.3,
+          "es_objetivo": false
+        }
+      ],
+      "estadisticos": [
+        {
+          "estadistico": "Mediana",
+          "ev_ventas": 4.4,
+          "ev_ebitda_ltm": 11.9,
+          "ev_ebitda_ntm": 11.2,
+          "per_ntm": 15.5,
+          "crecimiento_pct": 6.3,
+          "margen_ebitda_pct": 35.6,
+          "roic_pct": 21.7,
+          "dn_ebitda": 1.7,
+          "fcf_yield_pct": 7.3
+        },
+        {
+          "estadistico": "Media",
+          "ev_ventas": 4.6,
+          "ev_ebitda_ltm": 15.8,
+          "ev_ebitda_ntm": 11.9,
+          "per_ntm": 17,
+          "crecimiento_pct": 6.3,
+          "margen_ebitda_pct": 35.3,
+          "roic_pct": 23,
+          "dn_ebitda": 1.2,
+          "fcf_yield_pct": 6.4
+        },
+        {
+          "estadistico": "Percentil 25",
+          "ev_ventas": 4.2,
+          "ev_ebitda_ltm": 10.9,
+          "ev_ebitda_ntm": 10.3,
+          "per_ntm": 12.9,
+          "crecimiento_pct": 5.8,
+          "margen_ebitda_pct": 33.5,
+          "roic_pct": 17.3,
+          "dn_ebitda": 0.3,
+          "fcf_yield_pct": 5.1
+        },
+        {
+          "estadistico": "Percentil 75",
+          "ev_ventas": 5.6,
+          "ev_ebitda_ltm": 16.1,
+          "ev_ebitda_ntm": 13.2,
+          "per_ntm": 20.7,
+          "crecimiento_pct": 6.8,
+          "margen_ebitda_pct": 36.6,
+          "roic_pct": 27.4,
+          "dn_ebitda": 2,
+          "fcf_yield_pct": 7.5
+        }
+      ],
+      "implicito": [
+        {
+          "metodo": "EV/EBITDA últimos 12 meses",
+          "metrica_empresa": 2506.6,
+          "multiplo_p25": 10.9,
+          "multiplo_mediana": 11.9,
+          "multiplo_p75": 16.1,
+          "multiplos": "10,8x / 11,9x / 16,1x",
+          "valor_p25": 56.03,
+          "valor_mediana": 62.13,
+          "valor_p75": 86.52,
+          "potencial_pct": 17.9
+        },
+        {
+          "metodo": "PER próximos 12 meses",
+          "metrica_empresa": 3.79,
+          "multiplo_p25": 12.9,
+          "multiplo_mediana": 15.5,
+          "multiplo_p75": 20.7,
+          "multiplos": "12,9x / 15,5x / 20,7x",
+          "valor_p25": 48.89,
+          "valor_mediana": 58.75,
+          "valor_p75": 78.46,
+          "potencial_pct": 11.5
+        },
+        {
+          "metodo": "EV/Ventas últimos 12 meses",
+          "metrica_empresa": 6517,
+          "multiplo_p25": 4.2,
+          "multiplo_mediana": 4.4,
+          "multiplo_p75": 5.6,
+          "multiplos": "4,2x / 4,4x / 5,5x",
+          "valor_p25": 55.98,
+          "valor_mediana": 59.15,
+          "valor_p75": 76.82,
+          "potencial_pct": 12.3
+        }
+      ],
+      "regresion": null,
+      "n": 9
+    },
+    "transacciones": null,
+    "suma_partes": null,
+    "multiplos_historicos": [],
+    "multiplos_serie": [],
+    "multiplos_titulo": null,
+    "consenso_vs_propio": [
+      {
+        "periodo": "2026e",
+        "ingresos_propio": 6745,
+        "ingresos_consenso": null,
+        "ingresos_dif_pct": null,
+        "ebitda_propio": 2617,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      },
+      {
+        "periodo": "2027e",
+        "ingresos_propio": 7217,
+        "ingresos_consenso": null,
+        "ingresos_dif_pct": null,
+        "ebitda_propio": 2829,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      },
+      {
+        "periodo": "2028e",
+        "ingresos_propio": 7722,
+        "ingresos_consenso": null,
+        "ingresos_dif_pct": null,
+        "ebitda_propio": 3050,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      }
+    ],
+    "gobierno": {
+      "n_consejeros": 2,
+      "independientes_pct": 50,
+      "antiguedad_media": null,
+      "composicion": [
+        {
+          "tipo": "Independiente",
+          "num": 1
+        },
+        {
+          "tipo": "Ejecutivo",
+          "num": 1
+        }
+      ],
+      "checklist": [
+        {
+          "criterio": "Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)",
+          "resultado": "Cumple",
+          "valor": "50 %"
+        },
+        {
+          "criterio": "Presidencia sin vínculo familiar ni profesional con el accionista de control",
+          "resultado": "Cumple",
+          "valor": "Sin control"
+        },
+        {
+          "criterio": "Presidente no ejecutivo, o consejero coordinador independiente",
+          "resultado": "Cumple",
+          "valor": "No ejecutivo"
+        },
+        {
+          "criterio": "Comisión de auditoría con mayoría de independientes y presidida por uno",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Ningún consejero «otro externo» con más de 12 años",
+          "resultado": "Cumple",
+          "valor": "Ninguno"
+        },
+        {
+          "criterio": "Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses",
+          "resultado": "Cumple",
+          "valor": "0 cambios"
+        },
+        {
+          "criterio": "Peor voto a favor sobre remuneración (3 juntas) ≥ 80 %",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Una acción, un voto, sin blindajes ni límites de voto estatutarios",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Sin operaciones vinculadas relevantes",
+          "resultado": "Cumple",
+          "valor": "No hay"
+        },
+        {
+          "criterio": "Auditor con 10 años o menos en el cargo",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Opinión de auditoría sin salvedades",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Directivos compradores netos en 12 meses (o sin ventas relevantes)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        }
+      ],
+      "puntuacion": "7 de 13 (6 sin dato)",
+      "puntuacion_pct": 54,
+      "compras_insiders": 0,
+      "ventas_insiders": 0
+    },
+    "competidores_margen": [
+      {
+        "nombre": "Amadeus",
+        "margen_ebit_pct": 27
+      },
+      {
+        "nombre": "Sabre",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Travelport",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Oracle Hospitality",
+        "margen_ebit_pct": null
+      }
+    ],
+    "sintesis": {
+      "formato_eje": "#,##0.0",
+      "rangos": [
+        {
+          "metodo": "Cotización 52 semanas",
+          "etiqueta": "Cotización 52 semanas (46,21 – 69,30)",
+          "min": 46.21,
+          "central": 52.68,
+          "max": 69.3,
+          "gris": true
+        },
+        {
+          "metodo": "Precio objetivo de los analistas",
+          "etiqueta": "Precio objetivo de los analistas (50,00 – 80,90)",
+          "min": 50,
+          "central": 67.2,
+          "max": 80.9,
+          "gris": true
+        },
+        {
+          "metodo": "Comparables: PER NTM",
+          "etiqueta": "Comparables: PER NTM (48,89 – 78,46)",
+          "min": 48.89,
+          "central": 58.75,
+          "max": 78.46,
+          "gris": false
+        },
+        {
+          "metodo": "DCF (WACC y g ± 0,5)",
+          "etiqueta": "DCF (WACC y g ± 0,5) (57,93 – 78,77)",
+          "min": 57.93,
+          "central": 66.65,
+          "max": 78.77,
+          "gris": false
+        },
+        {
+          "metodo": "Escenarios (bajista – alcista)",
+          "etiqueta": "Escenarios (bajista – alcista) (44,99 – 77,62)",
+          "min": 44.99,
+          "central": 63.98,
+          "max": 77.62,
+          "gris": false
+        },
+        {
+          "metodo": "DCF con la prima del mercado",
+          "etiqueta": "DCF con la prima implícita del mercado (4,2 %)",
+          "min": 76.51,
+          "central": 85.31,
+          "max": 96.17
+        },
+        {
+          "metodo": "Precio actual",
+          "etiqueta": "Precio actual (52,68)",
+          "min": 52.42,
+          "central": 52.68,
+          "max": 52.94,
+          "gris": true
+        }
+      ],
+      "tabla": [
+        {
+          "metodo": "DCF",
+          "valor": 66.65,
+          "peso_pct": 50,
+          "potencial_pct": 26.5
+        },
+        {
+          "metodo": "Comparables (mediana EV/EBITDA y PER)",
+          "valor": 58.75,
+          "peso_pct": 30,
+          "potencial_pct": 11.5
+        },
+        {
+          "metodo": "Escenarios ponderados",
+          "valor": 63.98,
+          "peso_pct": 20,
+          "potencial_pct": 21.5
+        }
+      ],
+      "valor_objetivo": 63.75,
+      "potencial_pct": 21
+    },
+    "fuentes": {
+      "n_fuentes": 70,
+      "n_primarias": 14,
+      "por_tipo": [
+        {
+          "tipo": "Primaria",
+          "num": 14
+        },
+        {
+          "tipo": "Datos de mercado",
+          "num": 22
+        },
+        {
+          "tipo": "Prensa",
+          "num": 17
+        },
+        {
+          "tipo": "Analistas",
+          "num": 8
+        },
+        {
+          "tipo": "Sectorial",
+          "num": 3
+        },
+        {
+          "tipo": "Foros y redes",
+          "num": 6
+        }
+      ],
+      "n_citadas": 62,
+      "citas_sin_fuente": [],
+      "fuentes_sin_citar": [
+        "14",
+        "15",
+        "19",
+        "25",
+        "30",
+        "44",
+        "53",
+        "63"
+      ]
+    },
+    "controles": [
+      {
+        "control": "DCF inverso calculable",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Puente de ingresos (volumen + precio + otros) = crecimiento del DCF",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "resultado": "OK",
+        "detalle": "Supuesto 0,0 % frente a 0,0 % real: genera una variación de circulante de 0 M en el primer año. Converge de forma gradual."
+      },
+      {
+        "control": "Peso del valor terminal ≤ 80 % del valor empresa",
+        "resultado": "OK",
+        "detalle": "61 %."
+      },
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "resultado": "OK",
+        "detalle": "2,50 %."
+      },
+      {
+        "control": "Probabilidades de los escenarios suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 5 comparables",
+        "resultado": "OK",
+        "detalle": "9 comparables."
+      },
+      {
+        "control": "Pesos de la síntesis suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Múltiplos del objetivo a 12 m según la regla común",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Objetivo 12 m frente al consenso",
+        "resultado": "OK",
+        "detalle": "El base se separa un -15,3 % del objetivo medio de los analistas: explícalo en diferencia_consenso (nunca se acerca la cifra)."
+      },
+      {
+        "control": "Recomendación coherente con la regla de decisión",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Convicción frente a la sugerida por los criterios",
+        "resultado": "OK",
+        "detalle": "Los criterios dan «Media» (Mantener con las dos reglas de acuerdo y lejos de los umbrales) y el análisis pone «Baja»: explica en la síntesis por qué te apartas."
+      },
+      {
+        "control": "La síntesis explica la convicción",
+        "resultado": "OK",
+        "detalle": "La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría."
+      },
+      {
+        "control": "Al menos 25 fuentes",
+        "resultado": "OK",
+        "detalle": "70 fuentes (14 primarias)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "resultado": "OK",
+        "detalle": "14."
+      },
+      {
+        "control": "Toda cita [n] existe en fuentes",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Fuentes sin citar ≤ 15 %",
+        "resultado": "OK",
+        "detalle": "Sin citar: 14, 15, 19, 25, 30, 44, 53, 63."
+      }
+    ],
+    "controles_resumen": "17 de 17 controles correctos"
+  }
+}
