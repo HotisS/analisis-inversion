@@ -79,3 +79,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 1. Con reinversión entre el 0 % y el 15 % del NOPAT el motor no calcula el crecimiento financiable ni el rendimiento del capital nuevo, aunque aquí salgan con sentido (6,1 % y 56,6 %) y la proyección casi iguale al financiable. Arreglo: calcularlos siempre que la reinversión sea positiva y dar el texto de «activos ligeros» solo como lectura adicional.
 2. La prueba de cuota sigue sin campo de ingresos del perímetro (iCombi frente al grupo): otra vez a mano.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 698,12 EUR, rentabilidad 23,7 %, señal Mantener (la ponderada pasa del 15 % pero el base, +10,6 %, no llega al filtro del 12 %) (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +23,7 % → +12,5 %, base +10,6 %, señal Mantener (`revision-12m-2026-10-13.md`).

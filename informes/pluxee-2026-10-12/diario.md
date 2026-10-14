@@ -44,3 +44,4 @@
 - **Subagente C y encargos con nombres**: no pongas en el encargo nombres de cargos que no hayas comprobado (presidenta de Pluxee); C lo corrigió, pero pudo contaminar la nota.
 
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 16,49 EUR, rentabilidad +16,4 %, señal Comprar (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +11,4 % → +8,2 %, base +11,0 %, señal Mantener (`revision-12m-2026-10-13.md`).
