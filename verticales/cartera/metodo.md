@@ -6,6 +6,17 @@ Las otras verticales dicen **qué comprar** (value, growth) y el escáner dice *
 
 Herramienta: `herramientas/cartera-real.mjs`, sin dependencias.
 
+## Regla dura: nada de órdenes (14-oct-2026)
+
+Palabras del usuario: «de momento regla dura no emitir órdenes de compra o venta SALVO EXPLÍCITAMENTE DICHO EN CHAT y CONFIRMADO TRAS TU PEDIR CONFIRMACIÓN».
+
+- Con el conector de IBKR solo se lee: posiciones, saldos, operaciones, rentabilidad y cotizaciones.
+- Una orden (lanzarla, prepararla, cambiarla o cancelarla) necesita estos tres pasos, en este orden:
+  1. el usuario la pide expresamente en el chat;
+  2. Claude le pide confirmación, con valor, títulos, límite y cuenta;
+  3. el usuario la confirma.
+- Una propuesta de órdenes en un informe no cuenta como petición. La delegación «las órdenes tú mandas» se refiere a decidir las propuestas, no a ejecutarlas en el broker.
+
 ## Dónde viven los datos (privado)
 
 El repo es **público**: aquí solo van el código y el método. Las operaciones, los precios de compra, los importes y las cuentas viven en la carpeta privada del proyecto, `/mnt/project-files/cartera/real/`, o en la que diga la variable `CARTERA_REAL`. Las cuentas se guardan como `cuenta-1` y `cuenta-2`, nunca con su número.
