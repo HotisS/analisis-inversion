@@ -15,6 +15,7 @@ Lo genera `node motor/growth.mjs --todos` (no editar a mano). Método v11: [vert
 | Duolingo | DUOL | 70.8 | 5/8 | +12,1 % | +7 % | Comprar (baja) | 3.5 % | 149.5 USD | 2026-10-14 |
 | Cloudflare | NET | 81.3 | 6/8 | +12 % | +16,5 % | Mantener | — | 226.2 USD | 2026-10-14 |
 | argenx SE | ARGX | 70.5 | 3/8 | +11,4 % | +6,4 % | Comprar (baja) | 3.5 % | 866.8 USD | 2026-10-14 |
+| Lemonade | LMND | 59.3 | 2/8 | +10,7 % | +14,3 % | Mantener | — | 47.1 USD | 2026-10-14 |
 | CrowdStrike Holdings | CRWD | 81.2 | 7/8 | +10,6 % | +13,6 % | Mantener | — | 170.3 USD | 2026-10-14 |
 | Dexcom | DXCM | 68.2 | 7/8 | +10,5 % | +13,4 % | Comprar (baja) | 3.5 % | 89.5 USD | 2026-10-14 |
 | Toast | TOST | 62.8 | 3/8 | +9,3 % | +11,1 % | Comprar (baja) | 3.5 % | 32.1 USD | 2026-10-14 |
@@ -53,6 +54,9 @@ Lo genera `node motor/growth.mjs --todos` (no editar a mano). Método v11: [vert
 | Quanta Services | PWR | 71.5 | 5/8 | -18,8 % | -17,4 % | Vender | — | 532.4 USD | 2026-10-14 |
 | Monolithic Power Systems, Inc. | MPWR | 70.7 | 4/8 | -19 % | -16,9 % | Vender | — | 1015.8 USD | 2026-10-14 |
 | iRhythm | IRTC | 59 | 4/8 | -21 % | -15,6 % | Vender | — | 81.1 USD | 2026-10-14 |
+| Argan | AGX | 62.7 | 2/8 | -21,1 % | -20,2 % | Vender | — | 291 USD | 2026-10-14 |
 | BE Semiconductor Industries (Besi) | BESI | 63.3 | 2/8 | -23 % | -26,9 % | Vender | — | 124 EUR | 2026-10-14 |
 | Celestica Inc. | CLS | 66.2 | 3/8 | -26,2 % | -24,4 % | Vender | — | 251.1 USD | 2026-10-14 |
 | Insmed | INSM | 71.5 | 3/8 | -30,2 % | -23,8 % | Vender | — | 58 USD | 2026-10-14 |
+| Oscar Health | OSCR | 72.5 | 7/8 | -34,8 % | -27,7 % | Vender | — | 21 USD | 2026-10-14 |
+| Corcept Therapeutics | CORT | 70 | 6/8 | -49,6 % | -43,6 % | Vender | — | 56.5 USD | 2026-10-14 |

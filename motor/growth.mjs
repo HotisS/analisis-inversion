@@ -76,6 +76,14 @@ VERSIONES.v12 = { ...VERSIONES.v11, descripcion: 'v11 + crecimiento orgánico en
 // de 5 casos marcados 4 ya tenían la euforia de 12 meses).
 VERSIONES.v13 = { ...VERSIONES.v12, descripcion: 'v12 + exceso sobre la guía = 0 si ya recortó la guía del año + alertas de múltiplo > 2 × mediana (bajista en la mediana), euforia a 6 meses y regla del 40 restando pagos en acciones',
   guia_recortada: true, multiplo_caro: { ratio: 2, modo: 'alerta' }, euforia_6m: { subida: 100, evbb: 20, modo: 'alerta' }, alerta_sbc: 15, v13: true };
+// Candidata v14 (14-oct, noche; backtest/resultados-v14.md): v13 + (1) probabilidades 35/50/15 automáticas si un producto es > 70 % de las
+// ventas (mercado.peso_primer_producto_pct) o hay una decisión de reembolso o regulatoria abierta sobre > 30 % (riesgos.decision_pendiente_pct),
+// salvo que las del analista ya sean tan prudentes; (2) dilución prevista (finanzas.dilucion_esperada_pct) en vez de la pasada en las acciones
+// a 12 meses cuando la pasada es una ampliación ya cobrada (con pista < 24 meses, la mayor de las dos; la puntuación sigue con la pasada);
+// (3) con crecimiento de partida negativo, bajista 1,5 g y alcista 0,8 g (g + (f − 1) × |g|); (4) alerta (no cambia nada) si el margen por
+// volumen de un procesador de pagos cae > 10 % en un año (mercado.margen_volumen_cambio_pct), con la ponderada proyectando sobre beneficio bruto.
+VERSIONES.v14 = { ...VERSIONES.v13, descripcion: 'v13 + probabilidades 35/50/15 automáticas (producto > 70 % o decisión pendiente > 30 %) + dilución prevista separada de la pasada + escenarios coherentes con partida negativa + alerta de margen por volumen en pagos',
+  prob_auto: { producto: 70, decision: 30, probs: { bajista: 35, base: 50, alcista: 15 } }, dil_esperada: true, esc_neg: true, alerta_pagos: { caida: 10 }, v14: true };
 export const VIGENTE = 'v11';
 
 const escala = (v, cortes) => {
@@ -116,7 +124,8 @@ export function proyeccion(d, fwd = false, desacel = false, guia = false, op = {
   if (recorte) g1 = gGuia; // v9: como mucho la guía más el exceso habitual sobre ella
   const n = v.anios_hasta_objetivo ?? 2;
   const camino = (f, s = d.mercado.ventas_12m_m, g0 = g1) => {
-    let g = g0 * f, ult = g;
+    // v14: con partida negativa, el bajista crece menos (cae más) y el alcista más: g + (f − 1) × |g| (con g ≥ 0 es g × f)
+    let g = op.esc_neg && g0 < 0 ? g0 + (f - 1) * Math.abs(g0) : g0 * f, ult = g;
     for (let i = 0; i < n; i++) { const tramo = Math.min(1, n - i); s *= Math.pow(1 + g, tramo); ult = g; g *= frena ? 0.75 : 0.85; }
     return { ventas: s, g_final: ult };
   };
@@ -160,7 +169,7 @@ export function calcular(d, cfg = VERSIONES[VIGENTE]) {
   const B = (b.reduce((s, y) => s + y, 0) / 15) * P.B;
 
   // Valor de empresa y múltiplo de ventas de los próximos 12 meses (para el filtro de valoración)
-  const pr = proyeccion(d, cfg.proy_forward, cfg.proy_desacel, cfg.proy_guia, { organico: cfg.organico, proforma: cfg.proforma, guia_tipo: cfg.guia_tipo, guia_recortada: cfg.guia_recortada });
+  const pr = proyeccion(d, cfg.proy_forward, cfg.proy_desacel, cfg.proy_guia, { organico: cfg.organico, proforma: cfg.proforma, guia_tipo: cfg.guia_tipo, guia_recortada: cfg.guia_recortada, esc_neg: cfg.esc_neg });
   if (cfg.proy_guia && c.guia_12m_pct == null) avisos.push('Sin guía de la empresa (crecimiento.guia_12m_pct): proyección como v7.');
   const ev = d.precio * d.acciones_diluidas_m + (d.deuda_m ?? 0) - (d.caja_m ?? 0);
   const gNtm = v.crecimiento_actual_pct ?? pr.g1;
@@ -245,7 +254,12 @@ export function calcular(d, cfg = VERSIONES[VIGENTE]) {
   const multCaro = !!(mc && v.mediana_3a > 0 && multActual > mc.ratio * v.mediana_3a);
   const mBaj12 = mBaj;
   if (multCaro && mc.modo === 'bajista') mBaj = Math.min(mBaj, v.mediana_3a);
-  const acciones = d.acciones_diluidas_m * (1 + (f.dilucion_anual_pct ?? 0) / 100);
+  // v14: dilución prevista (finanzas.dilucion_esperada_pct, o caja.dilucion_esperada_pct) en lugar de la pasada cuando esta viene de una
+  // ampliación ya cobrada (ya en caja_m y en acciones_diluidas_m); con pista < 24 meses, la mayor de las dos. La puntuación sigue con la pasada.
+  const dilEsp = f.dilucion_esperada_pct ?? (d.caja && typeof d.caja === 'object' ? d.caja.dilucion_esperada_pct : null) ?? null;
+  const dilUsada = cfg.dil_esperada && dilEsp != null
+    ? (pista < 24 ? Math.max(dilEsp, f.dilucion_anual_pct ?? 0) : dilEsp) : (f.dilucion_anual_pct ?? 0);
+  const acciones = d.acciones_diluidas_m * (1 + dilUsada / 100);
   const cajaFutura = (d.caja_m ?? 0) - quema;
   const precioDe = (mult, vtas, marg = margenImpl) => (mult * vtas * marg + cajaFutura - (d.deuda_m ?? 0)) / acciones;
   const casos = {
@@ -261,7 +275,13 @@ export function calcular(d, cfg = VERSIONES[VIGENTE]) {
     casos[k].precio = r1(p);
     casos[k].rent_pct = r1((p / d.precio - 1) * 100 + div);
   }
-  const p = v.probabilidades ?? { bajista: 25, base: 50, alcista: 25 };
+  let p = v.probabilidades ?? { bajista: 25, base: 50, alcista: 25 };
+  // v14: 35/50/15 automáticas si un producto pesa > 70 % de las ventas o hay una decisión de reembolso o regulatoria abierta sobre > 30 %
+  // (salvo que las del analista ya sean al menos tan prudentes)
+  const pa = cfg.prob_auto, pesoProd = m.peso_primer_producto_pct ?? null, decPend = d.riesgos?.decision_pendiente_pct ?? null;
+  const probAuto = !!(pa && (pesoProd > pa.producto || decPend > pa.decision));
+  const probAutoCambia = probAuto && !(p.bajista >= pa.probs.bajista && p.alcista <= pa.probs.alcista);
+  if (probAutoCambia && pa.modo !== 'alerta') p = { ...pa.probs };
   const objetivo = (casos.bajista.precio * p.bajista + casos.base.precio * p.base + casos.alcista.precio * p.alcista) / 100;
   const ponderada = r1((objetivo / d.precio - 1) * 100 + div);
   const asimetria = casos.bajista.rent_pct < 0 ? r1(casos.alcista.rent_pct / -casos.bajista.rent_pct) : null;
@@ -352,6 +372,18 @@ export function calcular(d, cfg = VERSIONES[VIGENTE]) {
     if (euforia6 && e6.modo === 'alerta') alertas.push(`Euforia a 6 meses: +${fx(sub6)} % en 6 meses (≥ ${e6.subida} %) con EV/beneficio bruto ${fx(evbb, 1)} (> ${e6.evbb})${euforia ? ' (también la de 12 meses)' : ''}: no veta. En el backtest, 0 de 5 casos así batieron al Nasdaq-100, pero 4 ya tenían la euforia de 12 meses: solo 1 caso nuevo.`);
     if (sbcAlerta) alertas.push(`Pagos en acciones del ${fx(f.sbc_sobre_ventas_pct, 1)} % de las ventas (> ${cfg.alerta_sbc} %): restándolos, la regla del 40 sería ${fx(regla40Sbc, 1)} (no ${fx(regla40, 1)}) y la puntuación ${fx(puntuacion + dSbc, 1)} (no ${fx(puntuacion, 1)})${puntuacion + dSbc < k.puntuacion && puntuacion >= k.puntuacion ? `, por debajo del listón de compra (${k.puntuacion})` : ''}. No cambia nada: en el backtest las de pagos > 15 % batieron algo menos (6 de 20 frente a 26 de 64), sin llegar a demostrar un sesgo.`);
     else if (f.sbc_sobre_ventas_pct > 15 && cfg.alerta_sbc == null) alertas.push(`Pagos en acciones del ${fx(f.sbc_sobre_ventas_pct, 1)} % de las ventas (> 15 %): la regla del 40 y el FCF no los restan.`);
+    // v14 (alerta): procesadores de pagos con el margen por volumen cayendo > umbral en un año
+    const ap = cfg.alerta_pagos, mv = m.margen_volumen_cambio_pct;
+    if (ap && mv != null && mv < -ap.caida) {
+      let alt = null;
+      if (c.beneficio_bruto_12m_pct != null) {
+        const d2 = structuredClone(d);
+        d2.crecimiento = { ...d2.crecimiento, ventas_12m_pct: c.beneficio_bruto_12m_pct, ultimo_trimestre_pct: c.beneficio_bruto_trimestre_pct ?? c.beneficio_bruto_12m_pct };
+        alt = calcular(d2, { ...cfg, alerta_pagos: null });
+      }
+      alertas.push(`Margen por volumen ${fx(mv, 1)} % en un año (cae más del ${ap.caida} %): las ventas crecen más que el beneficio bruto y la proyección sobre ventas lo exagera${alt ? `; proyectando con el crecimiento del beneficio bruto (${fx(c.beneficio_bruto_12m_pct, 1)} %), la ponderada sería ${fx(alt.rent_ponderada_pct, 1)} % (no ${fx(ponderada, 1)} %) y la señal ${alt.senal}` : ''}. No cambia nada (sin casos en el backtest para probarlo).`);
+    }
+    if (probAutoCambia && pa.modo === 'alerta') alertas.push(`Probabilidades: ${pesoProd > pa.producto ? `un producto es el ${fx(pesoProd)} % de las ventas` : `decisión pendiente sobre el ${fx(decPend)} % de las ventas`}; con 35/50/15 la ponderada cambiaría.`);
   }
 
   return {
@@ -369,6 +401,8 @@ export function calcular(d, cfg = VERSIONES[VIGENTE]) {
     ventas_analista_m: v.ventas_objetivo_m ?? null, conviccion, peso_orientativo_pct: peso, precio_max_compra: precioMax, avisos,
     ...(cfg.alertas ? { alertas } : {}),
     ...(cfg.v13 ? { multiplo_caro: multCaro, euforia_6m: euforia6, regla_40_resta_sbc: sbcResta > 0 } : {}),
+    ...(cfg.v14 ? { prob_auto: probAuto ? (pesoProd > pa.producto ? `producto ${pesoProd} %` : `decisión pendiente ${decPend} %`) : null, prob_auto_cambia: probAutoCambia,
+      dilucion_usada_pct: r1(dilUsada) } : {}),
     ...(cfg.v12 ? { ...(pr.ventas_proforma != null ? { ventas_proforma_12m_m: Math.round(pr.ventas_proforma) } : {}), g_actual_desac_pct: r1(gAct), exceso_guia_usado_pp: r1(pr.exceso_usado), euforia_ebitda: euforiaEbitda } : {}),
   };
 }
