@@ -133,7 +133,9 @@ const GROWTH = (() => {
   return m;
 })();
 
-const yahooDe = (clave, simbolo) => simbolo || MAPA.empresas?.[clave]?.yahoo || MAPA.extra?.[clave]?.yahoo || clave;
+// Lo vendido sin informe: símbolo de Yahoo de su bolsa (IBKR no da el sufijo en el historial).
+const YAHOO_EXTRA = { TEF: 'TEF.MC', GEST: 'GEST.MC', PSG: 'PSG.MC', XEON: 'XEON.DE', SPYD: 'SPYD.DE', ERNS: 'ERNS.L', PHPP: 'PHPP.L', ANX: 'ANX.PA', IMAE: 'IMAE.AS', GRF: 'GRF.MC', ROVI: 'ROVI.MC', FDR: 'FDR.MC' };
+const yahooDe = (clave, simbolo) => (simbolo && simbolo.includes('.') ? simbolo : null) || MAPA.empresas?.[clave]?.yahoo || MAPA.extra?.[clave]?.yahoo || YAHOO_EXTRA[clave] || simbolo || clave;
 let NOMBRES_IBKR = null; // nombres que da IBKR para lo que no tiene informe (lo vendido)
 const titulo = (t) => String(t).toLowerCase().replace(/(^|[\s-])(\p{L})/gu, (m, a, b) => a + b.toUpperCase()).replace(/\b(Etf|Adr|Acc|Eur|Usd|Gbp|Ucits)\b/g, (m) => m.toUpperCase());
 const nombreDe = (clave) => {
@@ -913,7 +915,12 @@ async function importarIbkr() {
   if (resto.length) console.log(`Sin conectar (de la cartera apuntada): ${resto.map((o) => (o.clave === 'EUR' ? `liquidez ${fe(o.importe_eur)}` : `${o.clave} ${o.titulos}`)).join(', ')}.`);
 }
 
-if (argv.includes('--partida')) await partida();
+// Para otras herramientas de la vertical (atribución): se importan las piezas sin lanzar nada.
+export { leerOps, reconstruir, serie, precioEn, eurPor, nombreDe, yahooDe, frenteAlIndice, INDICE, DATOS, REGLAS, madrid, fechaCorta, f, fp, fe, masDias, dias, r, leer, guardar };
+export const fijarDesde = (d) => { DESDE = d; };
+const principal = process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1];
+if (!principal) { /* importado */ }
+else if (argv.includes('--partida')) await partida();
 else if (argv.includes('--importar-ibkr')) { await descargarFlex(); await importarIbkr(); }
 else if (opt('--importar-flex')) {
   await procesarFlex(readFileSync(opt('--importar-flex'), 'utf8'), opt('--cuenta'));

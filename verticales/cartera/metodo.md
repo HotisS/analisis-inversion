@@ -133,6 +133,14 @@ Son los campos que devuelve `get_account_trades`. Las operaciones de divisa (`CA
 2. Secciones: **Trades** (Execution), **Cash Transactions** y **Open Positions**, con todos sus campos.
 3. Formato CSV y periodo «desde el inicio». Si no deja más de un año, se hace un informe por año.
 
+## Atribución: por qué va por delante o por detrás del índice
+
+`NODE_USE_ENV_PROXY=1 node herramientas/cartera-atribucion.mjs [--desde AAAA-MM-DD]` (por defecto, desde el 31-dic del año anterior) deja en la carpeta privada `atribucion-AAAA-MM-DD.md` y `.json`.
+- Reconstruye la cartera cada día de bolsa, todas las cuentas, con la liquidez anclada a los «saldo» de cada cuenta.
+- Cada valor (también los vendidos) y la liquidez: puntos que aporta (Dietz modificado sobre el capital medio, que descuenta los ingresos; suman la rentabilidad total) y puntos frente al índice (lo que aporta menos peso medio × rentabilidad del índice; suman la diferencia). Se separa la parte que es divisa.
+- Además: cambio de cada divisa frente al euro, qué empujó al índice (grandes valores y sectores con fondos de EE. UU. como aproximación), la rotación (lo vendido si se hubiera quedado) y las compras del año frente al índice el mismo tiempo.
+- La rentabilidad Dietz puede diferir algo de la de IBKR (tiempo ponderado); en la atribución manda la Dietz para que las partes sumen. `--depurar` imprime la liquidez y el valor cada 15 días para comprobar la reconstrucción.
+
 ## Límites conocidos (14-oct-2026)
 
 - El conector llega como mucho a 4 trimestres atrás. Lo anterior se ve como arrastre: precio medio sí, fecha no. La Flex Query lo completa.
