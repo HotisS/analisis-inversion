@@ -154,11 +154,11 @@ Hoy no hay tesis rota.
 
 ## 13. Encaje en cartera
 
-Con la cartera value propuesta (IGLN, Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y liquidez), el bolsillo growth puede llegar al 20 % (~5.960 EUR). Ya hay compras growth aprobadas en Nu, argenx y Axon (~3.740 EUR, ~12 %), y se han analizado 8 growth antes de esta.
+Con la cartera value propuesta (IGLN, Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y liquidez), el bolsillo growth puede llegar al 20 %. Ya hay compras growth aprobadas en Nu, argenx y Axon, ~12 %), y se han analizado 8 growth antes de esta.
 
 **Siemens Energy no entra hoy: peso 0 %.** La regla da Mantener porque la puntuación (57,5) no llega a 60, aunque la valoración sí acompaña (base +9,7 %, precio máximo de 147,9 EUR, por encima del de hoy). A favor de darle hueco más adelante: no se parece a nada de la cartera (industrial europea en euros, ligada a la electricidad y no al software) y diversificaría frente a Alphabet, SAP, Intuit y Nemetschek. En contra: depende del mismo ciclo de gasto en IA que mueve a Alphabet, y es más cíclica que cualquier valor de la cartera.
 
-**Cuándo reconsiderarla**: pasaría a **Comprar (baja, 3,5 %, ~1.040 EUR)** con una señal más, sin cambio de valoración. La más probable es que el precio vuelva por encima de la media de 200 sesiones (~150 EUR); pero entonces estaría por encima del precio máximo, así que habría que recalcularlo con la guía FY27 del 11-nov. Si se compra, sería en dos tramos, con la liquidez. Conviene apuntarla en la cola growth para revisarla tras el 11-nov.
+**Cuándo reconsiderarla**: pasaría a **Comprar (baja, 3,5 %,** con una señal más, sin cambio de valoración. La más probable es que el precio vuelva por encima de la media de 200 sesiones; pero entonces estaría por encima del precio máximo, así que habría que recalcularlo con la guía FY27 del 11-nov. Si se compra, sería en dos tramos, con la liquidez. Conviene apuntarla en la cola growth para revisarla tras el 11-nov.
 
 ## 14. Puntuación
 

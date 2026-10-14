@@ -111,7 +111,7 @@ Fuentes: [1][2].
 
 Incluye el dividendo del 0,9 %. Acciones dentro de 12 meses: 80,7 M. **Asimetría**: 0,4. **Precio máximo de compra: 125,7 EUR** (−27 %).
 
-- **Contraste con el consenso**: el consenso de ventas es de ~1.340 M en 2027 y ~1.670 M en 2028 [4], muy por encima de la base mecánica de 1.178 M para jun-2028, que es casi lo que ya da la cartera de pedidos para los próximos 12 meses. El precio objetivo medio es de ~271 EUR, pero no recoge del todo las rebajas de octubre: UBS 159, BofA 212, Morningstar 265 [4][7][14].
+- **Contraste con el consenso**: el consenso de ventas es de ~1.340 M en 2027 y ~1.670 M en 2028 [4], muy por encima de la base mecánica de 1.178 M para jun-2028, que es casi lo que ya da la cartera de pedidos para los próximos 12 meses. El precio objetivo medio es de, pero no recoge del todo las rebajas de octubre: UBS 159, BofA 212, Morningstar 265 [4][7][14].
 - **Sensibilidad** (las cuentas son nuestras, con el mismo código):
   - Con el crecimiento NTM de la propia regla (+28,9 %) en vez del +55 %, el factor de desaceleración pasa a 0,85 y la ponderada a **−12,4 %**: sigue en Vender.
   - Con el crecimiento de pedidos (+34,6 %) como crecimiento de 12 meses: ponderada **−19,5 %**.
@@ -158,10 +158,10 @@ Hoy no hay tesis rota: la señal sale de la valoración mecánica y de la falta 
 
 La cartera value propuesta de Hotis: IGLN (oro), Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y liquidez. Hay 8 empresas growth ya analizadas (`informes-growth/resumen.md`) y tres compras growth aprobadas: Nu, argenx y Axon, que suman ~12 % de la cartera (tope del 20 %).
 
-**Besi no merece hueco hoy: peso 0 %.** La regla da Vender (ponderada −23 %) y el precio máximo de compra es de 125,7 EUR, un 27 % por debajo. Además, la cartera no tiene equipos de semiconductores. Besi diversificaría frente al software (SAP, Intuit, Nemetschek, Alphabet), pero añadiría un riesgo cíclico y de una sola tecnología que el método todavía no paga. La liquidez de ~6.300 EUR se queda como está (ya comprometida en parte con las compras growth y las órdenes value).
+**Besi no merece hueco hoy: peso 0 %.** La regla da Vender (ponderada −23 %) y el precio máximo de compra es de 125,7 EUR, un 27 % por debajo. Además, la cartera no tiene equipos de semiconductores. Besi diversificaría frente al software (SAP, Intuit, Nemetschek, Alphabet), pero añadiría un riesgo cíclico y de una sola tecnología que el método todavía no paga. La liquidez se queda como está (ya comprometida en parte con las compras growth y las órdenes value).
 
 **Cuándo reconsiderarla**:
-- Por debajo de ~126 EUR sin cambio de tesis, en dos tramos (mitad a ese precio y mitad tras los siguientes resultados), con un peso del 3,5 %.
+- Por debajo de sin cambio de tesis, en dos tramos (mitad a ese precio y mitad tras los siguientes resultados), con un peso del 3,5 %.
 - Si los resultados del 3T y del 4T confirman el giro: ventas de 12 meses por encima de 1.000 M (que suben el crecimiento de partida de la regla), precio de nuevo sobre la media de 200 sesiones y revisiones al alza.
 
 Conviene ponerla en la cola growth para revisarla tras el 22-oct.

@@ -206,7 +206,7 @@ Celestica crece más y puntúa más, pero su precio exige más: su propia guía 
 - **Fabrinet no sustituye a ninguna**: es Mantener (ponderada −1,0 % al cierre del 13-oct y +7,8 % al de hoy con el objetivo fijo, puntuación de 58,8). Las cinco de la cartera tienen más rentabilidad esperada y más señales.
 - **Suplentes**: no entra en la lista (MongoDB, Toast, Zscaler, dLocal, Dexcom, argenx, Datadog, Saab, Natera), porque todas son Comprar. Queda en **Mantener**, junto a Lemonade y Glaukos, como candidata a vigilar: si en noviembre gana una señal (subidas de las previsiones, o el precio vuelve sobre la media de 200 sesiones) y el precio sigue por debajo de 403 USD, sería Comprar con convicción baja. Por rentabilidad entraría al final de la lista, detrás de Saab y Natera.
 - **Exposición a IA**: con Alphabet vendida mañana (que no cuenta como exposición a IA de la cartera), la IA del bolsillo growth queda en Snowflake, por los datos. Fabrinet añadiría la parte física de la IA (óptica para centros de datos), que hoy no tiene la cartera. Es un argumento de diversificación, pero no basta para saltarse la regla. Celestica, la otra opción de ese mismo terreno, es Vender.
-- **Preferencias de `MEMORIA.md`**: cumple (no es juego, ni comercio minorista, ni ninguna de las excluidas). Si entrara, sería con un peso del 3,5 % (convicción baja), en dos tramos y nunca por debajo de 1.000 EUR.
+- **Preferencias de `MEMORIA.md`**: cumple (no es juego, ni comercio minorista, ni ninguna de las excluidas). Si entrara, sería con un peso del 3,5 % (convicción baja), en dos tramos y nunca por debajo.
 - No hay órdenes: regla dura del usuario (no se emite ninguna orden salvo que él la pida explícitamente en el chat y la confirme).
 
 ## 14. Puntuación

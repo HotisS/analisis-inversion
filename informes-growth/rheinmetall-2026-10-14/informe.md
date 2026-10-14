@@ -111,7 +111,7 @@ Supuestos (2028, propios; el consenso de ventas de 2028 no aparece de forma fiab
 
 ## 10. Foros y sentimiento
 
-- **Foros alemanes (wallstreet-online)**: resumen de la comunidad «neutral» a 8-sep; se discute si 1.000 EUR es soporte, la estocástica y el aumento de posiciones cortas [12]. **Börse-Express / Goldesel / 4investors**: titulares de «¿Es por fin el suelo?», «Insiderkäufe stützen», y a la vez «Albtraum» y «hier rast sie abwärts» [13][15].
+- **Foros alemanes (wallstreet-online)**: resumen de la comunidad «neutral» a 8-sep; se discute si es soporte, la estocástica y el aumento de posiciones cortas [12]. **Börse-Express / Goldesel / 4investors**: titulares de «¿Es por fin el suelo?», «Insiderkäufe stützen», y a la vez «Albtraum» y «hier rast sie abwärts» [13][15].
 - **TradingView / getquin**: dividido; unos compran porque compra Papperger, otros ven el gráfico bajista y la guía recortada [13].
 - **Reddit (r/stocks, r/investing, r/eupersonalfinance) y Seeking Alpha**: no he encontrado hilos ni artículos recientes en las búsquedas (en sí mismo es un dato: el interés minorista anglosajón se ha enfriado mucho desde el boom de 2025).
 - **Castellano (Rankia, Investing ES)**: sin hilos recientes localizados; la prensa (Bolsamanía, CapitalBolsa con Bankinter, XTB) habla de «resultados sobresalientes que no bastan» y de que «los inversores ya no se conforman con titulares de gasto militar» [3].
@@ -142,8 +142,8 @@ Supuestos (2028, propios; el consenso de ventas de 2028 no aparece de forma fiab
 
 - **Cartera value propuesta **: IGLN (oro), Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y liquidez. No hay ninguna empresa de defensa ni industrial pesada: Rheinmetall diversificaría (gasto público europeo, ciclo propio, poco correlacionado con el software y el lujo).
 - **Por el método, no merece hueco hoy**: señal Vender (ponderada −14,4 %, base −19,2 %, solo 2 de 8 señales, puntuación 64,3 < 70). **Peso orientativo: 0 %.** La liquidez se queda para los suplentes value.
-- **Cuándo podría entrar**: si cae por debajo de **677 EUR** (precio máximo de compra) sin cambio de tesis, o si se dan a la vez una subida del múltiplo (≥ 20 % sobre el mínimo, ~13x), el precio sobre la media de 200 sesiones y revisiones al alza (por ejemplo, tras Arminius y un 2S con caja fuerte), y el recálculo da ponderada ≥ 20 %. En ese caso entraría como growth de convicción baja: **3,5 % de la cartera (~1.040 EUR, por encima del mínimo de 1.000 EUR)**, en dos tramos (mitad ya, mitad tras los resultados de mar-2027 o con una caída del 10 %), pagado con liquidez.
-- Bolsillo growth (≤ 20 % de la cartera, ≤ ~5.960 EUR): hoy sin ocupar por esta empresa.
+- **Cuándo podría entrar**: si cae por debajo de **677 EUR** (precio máximo de compra) sin cambio de tesis, o si se dan a la vez una subida del múltiplo (≥ 20 % sobre el mínimo, ~13x), el precio sobre la media de 200 sesiones y revisiones al alza (por ejemplo, tras Arminius y un 2S con caja fuerte), y el recálculo da ponderada ≥ 20 %. En ese caso entraría como growth de convicción baja: **3,5 % de la cartera, por encima del mínimo**, en dos tramos (mitad ya, mitad tras los resultados de mar-2027 o con una caída del 10 %), pagado con liquidez.
+- Bolsillo growth (≤ 20 % de la cartera,: hoy sin ocupar por esta empresa.
 - Nota: Rheinmetall no tiene informe value en el repositorio; la regla value (PER, ROIC − WACC ≥ 5) quizá la trataría mejor que la regla growth, porque es una industrial rentable con un crecimiento alto. Si interesa, conviene un análisis value aparte.
 
 ## 14. Puntuación

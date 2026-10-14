@@ -197,7 +197,7 @@ Hoy no hay tesis rota.
 
 **Qué hacer:**
 1. **Snowflake pasa a ser la primera suplente growth, por delante de Datadog.** Tiene ponderada parecida (+11,1 % frente a +10,9 %), pero en Datadog la guía la rebaja a +4,7 %, y aquí la guía la sube.
-2. **Sustitución condicionada a Duolingo**: si el 3T de Duolingo (3-nov) sale por debajo de su guía (ventas < 302 M o bookings < 307 M), su tramo 2 ya se cancela por regla. Con dos trimestres de frenazo la tesis quedaría rota, así que se vendería el tramo 1. Ese hueco (≈3,5 %, ~1.000-1.200 EUR) iría a Snowflake: **3 acciones** (a ~320 EUR por acción con 1,1188 USD/EUR). Serían 2 con **límite de 374 USD** (el máximo con el crecimiento NTM propio, más prudente que los 378,5 de la regla) y 1 tras los resultados del 2-dic, si el producto crece ≥ 35 % y la guía de FY27 sube otra vez, o con una caída del 10 % sin cambio de tesis.
+2. **Sustitución condicionada a Duolingo**: si el 3T de Duolingo (3-nov) sale por debajo de su guía (ventas < 302 M o bookings < 307 M), su tramo 2 ya se cancela por regla. Con dos trimestres de frenazo la tesis quedaría rota, así que se vendería el tramo 1. Ese hueco (≈3,5 %, ~1.000- iría a Snowflake: **3 acciones** (a por acción con 1,1188 USD/EUR). Serían 2 con **límite de 374 USD** (el máximo con el crecimiento NTM propio, más prudente que los 378,5 de la regla) y 1 tras los resultados del 2-dic, si el producto crece ≥ 35 % y la guía de FY27 sube otra vez, o con una caída del 10 % sin cambio de tesis.
 3. **Con dinero nuevo**: no entraría sin sacar otra, por el tope del 20 %. Si el usuario decide subir el tope del bolsillo, es la primera candidata, con el mismo límite y los mismos tramos.
 
 ## 14. Puntuación

@@ -192,7 +192,7 @@ Con esa proyección **sería Mantener**, porque la ponderada queda por debajo de
   argenx es más barata, con más recorrido y más riesgo de un solo producto. Lilly es más diversificada, con mejor tendencia, pero ya cotiza como la ganadora. **Lilly no sustituye a argenx.** Tener las dos subiría la farmacéutica al ~9 % de la cartera, todo en EE. UU. y expuesto a la misma política de precios. Si algún día entra, mejor en lugar de una de software que junto a argenx sin quitar nada.
 - **Alphabet** se vende mañana y no cuenta como exposición a IA. Lilly tampoco la añade: su riesgo de IA es bajo. Eso la hace complementaria al resto del bolsillo y a los suplentes, casi todos de software (Samsara, Datadog, MongoDB, Toast, Zscaler).
 - **Puesto en la lista de suplentes: cuarta.** Lista: 1) Samsara, 2) Datadog, 3) Natera, **4) Eli Lilly** (Comprar media; +11,4 % al precio actual; compra hasta 1.292,5 USD por la regla, ≤ 1.163 USD prudente), 5) MongoDB, 6) Toast, 7) Zscaler, 8) Dexcom. Queda por encima de MongoDB, Toast, Zscaler y Dexcom por la calidad del negocio, el bajo riesgo de IA y la convicción media. Queda por debajo de Natera (+20 %) y de Datadog porque su rentabilidad depende de batir al consenso.
-- **Si entrara**: 4 % (~1.250 EUR, 1 acción, que cuesta ~1.040 EUR) en un solo tramo, porque el mínimo de 1.000 EUR no admite dividir una acción de este precio. Mejor después de la guía 2027 (febrero) o con una caída hacia ≤ 1.163 USD sin cambio de tesis.
+- **Si entrara**: 4 %, 1 acción, que cuesta en un solo tramo, porque el mínimo no admite dividir una acción de este precio. Mejor después de la guía 2027 (febrero) o con una caída hacia ≤ 1.163 USD sin cambio de tesis.
 
 ## 14. Puntuación
 

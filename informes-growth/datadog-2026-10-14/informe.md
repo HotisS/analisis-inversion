@@ -157,15 +157,15 @@ Hoy no hay tesis rota.
 
 ## 13. Encaje en cartera
 
-**Cartera value vigente** (`informes/cartera-2026-10-14-15h.md`): IGLN (oro), Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y Bureau Veritas, con órdenes con límite hasta el 7-nov y suplentes. **Bolsillo growth aprobado** (`informes-growth/cartera-growth.md`): Nu (4 %), argenx (4,9 %), Shopify (4 %) y Axon (3,7 %), **≈16,6 % de la cartera**; la liquidez queda casi agotada (≈560 EUR sobrantes antes de Shopify, que la consume).
+**Cartera value vigente** (`informes/cartera-2026-10-14-15h.md`): IGLN (oro), Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y Bureau Veritas, con órdenes con límite hasta el 7-nov y suplentes. **Bolsillo growth aprobado** (`informes-growth/cartera-growth.md`): Nu (4 %), argenx (4,9 %), Shopify (4 %) y Axon (3,7 %), **≈16,6 % de la cartera**; la liquidez queda casi agotada sobrantes antes de Shopify, que la consume).
 
 **Datadog no entra hoy**, aunque la regla diga Comprar con un 4 %:
 - **Tope del 20 %**: con un 4 % más el bolsillo pasaría al ~20,6 %.
-- **Liquidez**: no hay 1.000 EUR libres (el mínimo por posición) sin cancelar órdenes ya decididas.
+- **Liquidez**: no hay libres (el mínimo por posición) sin cancelar órdenes ya decididas.
 - **Rentabilidad relativa**: su ponderada (+10,9 %) es la más baja de las compras growth (argenx +45,7 %, Axon +34,2 %, Nu +27,4 %, Shopify +14,9 %) y la más frágil (con la guía, +4,7 %). No justifica sustituir a ninguna.
 - **Solapamiento**: añade software e IA a una cartera que ya tiene Alphabet, SAP, Intuit, Nemetschek y, en growth, Shopify. Diversifica poco.
 
-**Qué hacer**: queda **en vigilancia como suplente growth**. Se revisa con los resultados del 3T (principios de noviembre). Entraría solo si llega liquidez nueva o se libera hueco (por ejemplo, una orden value que caduque el 7-nov), y si se cumplen dos condiciones: el crecimiento del 3T supera el ~28 % de la guía y el crecimiento sin el mayor cliente sigue acelerando. Entonces, ~4 % (~1.190 EUR, unas 4-5 acciones a ~1,16 USD/EUR) en dos tramos: la mitad con límite de **~282 USD** (el máximo de compra con la guía como partida, más prudente que los 299 de la regla) y la otra mitad tras el 4T o con una caída del 10 % sin cambio de tesis.
+**Qué hacer**: queda **en vigilancia como suplente growth**. Se revisa con los resultados del 3T (principios de noviembre). Entraría solo si llega liquidez nueva o se libera hueco (por ejemplo, una orden value que caduque el 7-nov), y si se cumplen dos condiciones: el crecimiento del 3T supera el ~28 % de la guía y el crecimiento sin el mayor cliente sigue acelerando. Entonces, ~4 %, unas 4-5 acciones a ~1,16 USD/EUR) en dos tramos: la mitad con límite de **~282 USD** (el máximo de compra con la guía como partida, más prudente que los 299 de la regla) y la otra mitad tras el 4T o con una caída del 10 % sin cambio de tesis.
 
 ## 14. Puntuación
 

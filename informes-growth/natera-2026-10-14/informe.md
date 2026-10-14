@@ -226,7 +226,7 @@ Por eso entra en la lista y no al final.
 - ventas de al menos ~780 M (≥ 30 % sin *true-ups*);
 - unidades de Signatera por encima del +40 %.
 
-Además, el precio tendría que seguir por debajo de la subida de +150 % que activa el veto (~435 USD). Entonces entraría con un 3,5 % (~1.000 EUR, unas 3 acciones) en dos tramos, con un **límite prudente de ~407 USD**: el que da una ponderada del 5 % con las ventas del consenso, más exigente que los 459 USD de la regla. Lo ideal sería comprar en un recorte hacia 330-350 USD.
+Además, el precio tendría que seguir por debajo de la subida de +150 % que activa el veto (~435 USD). Entonces entraría con un 3,5 %, unas 3 acciones) en dos tramos, con un **límite prudente de ~407 USD**: el que da una ponderada del 5 % con las ventas del consenso, más exigente que los 459 USD de la regla. Lo ideal sería comprar en un recorte hacia 330-350 USD.
 
 ## 14. Puntuación
 

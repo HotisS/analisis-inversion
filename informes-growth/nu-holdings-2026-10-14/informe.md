@@ -176,10 +176,10 @@ Por eso las «ventas» del método son el beneficio bruto (lo que queda tras la 
 
 ## 13. Encaje en cartera
 
-La cartera value propuesta de Hotis  está formada por IGLN (oro), Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y liquidez. Con ella, el bolsillo growth podría llegar al 20 % (~5.960 EUR). De las growth ya analizadas (Palantir, CrowdStrike, Spotify y Rheinmetall), **ninguna está en Comprar: Nu sería la primera**.
+La cartera value propuesta de Hotis  está formada por IGLN (oro), Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y liquidez. Con ella, el bolsillo growth podría llegar al 20 %. De las growth ya analizadas (Palantir, CrowdStrike, Spotify y Rheinmetall), **ninguna está en Comprar: Nu sería la primera**.
 
-- **Peso: 4 % (convicción media), ~1.190 EUR**, con cargo a la liquidez (que bajaría a ~5.100 EUR).
-- **Tramos**: ~600 EUR ya (hasta 18,0 USD) y ~600 EUR tras los resultados del 3T26 (12-nov), si la morosidad temprana no empeora. También si cae un 10 % sin cambio de tesis, por ejemplo por la segunda vuelta. Por encima de 18,0 USD no se compra.
+- **Peso: 4 % (convicción media),** con cargo a la liquidez.
+- **Tramos**: ya (hasta 18,0 USD) y tras los resultados del 3T26 (12-nov), si la morosidad temprana no empeora. También si cae un 10 % sin cambio de tesis, por ejemplo por la segunda vuelta. Por encima de 18,0 USD no se compra.
 - **Qué aporta**: es la única exposición a un banco y a Latinoamérica, y no correlaciona con el software (Alphabet, SAP, Intuit, Nemetschek) que domina la cartera. **Ojo con Edenred**: también tiene mucha exposición a Brasil (vales de comida, regulación), así que las dos juntas concentran el riesgo del real y de la política brasileña. Entre las dos, mejor no superar ~8-9 % de la cartera.
 - **Salida por tesis**, no por precio: ver las señales de venta de la sección 11.
 

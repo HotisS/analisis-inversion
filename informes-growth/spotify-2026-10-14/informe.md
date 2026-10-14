@@ -169,13 +169,13 @@ Fuentes: [1][3]. Las cifras en tipo constante son las que comunica la empresa, r
 
 ## 13. Encaje en cartera
 
-- **La cartera value propuesta** tiene IGLN, Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek y LVMH, más liquidez. El bolsillo growth puede llegar al 20 % (≈5.960 EUR).
+- **La cartera value propuesta** tiene IGLN, Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek y LVMH, más liquidez. El bolsillo growth puede llegar al 20 %.
 - **Spotify no merece hueco en el bolsillo growth hoy.**
   - La señal es Mantener: puntuación de 54,5 (mínimo 70) y ponderada de +14,5 % (mínimo 20 %).
   - A la puntuación le faltan 15,5 puntos, y no se arregla con el precio. El crecimiento (9 % en EUR) y la penetración (≈23 %) ya no son de empresa growth.
   - Ni siquiera por debajo de 503 USD pasaría a Comprar. Solo cambiaría con una aceleración real a tipo constante (más del 18-20 %), revisiones al alza y un giro del sentimiento, y aun así le costaría llegar a 70.
 - **Solape con Netflix**: los dos son suscripción de entretenimiento al consumidor y compiten por el tiempo y el gasto del mismo cliente. Les afectan los mismos riesgos (IA generativa en contenido, saturación de suscripciones, subidas de precio) y los dos se valoran por la mejora del margen. Netflix ya pesa ≈4,9 % (1.448 EUR). Sumar Spotify concentraría el riesgo de «streaming de consumo» sin añadir un motor nuevo.
-- **Si algún día diera Comprar con convicción baja**, el método le asignaría un 3,5 % (≈1.040 EUR, justo por encima del mínimo de 1.000 EUR). Se pagaría con liquidez y entraría en dos tramos.
+- **Si algún día diera Comprar con convicción baja**, el método le asignaría un 3,5 %, justo por encima del mínimo. Se pagaría con liquidez y entraría en dos tramos.
 - **Recomendación**: no entra. Si interesa, estudiarla en la vertical value, donde su FCF, su balance sin deuda y su margen al alza encajan mejor, y siempre frente a Netflix.
 
 ## 14. Puntuación

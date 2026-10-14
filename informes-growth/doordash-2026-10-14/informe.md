@@ -216,7 +216,7 @@ Hoy no hay tesis rota.
 
 **Puesto**: al precio de corte es **Mantener en vigilancia, no suplente** (junto a HubSpot e Insulet). Si se toma el precio de hoy con la convención de solo cambiar el precio, sería Comprar (baja) con +11,1 % y quedaría **suplente nº 7, detrás de Toast** (mismo ciclo de restauración, pero sin solapar con Uber y a 7,8x el beneficio bruto) **y por delante de Wise** (+5,5 %). Se revisa el 4-nov: pasaría a suplente firme si el GOV orgánico guiado para el 4T26 va por encima del +20 % y la acción sigue por debajo de ~180-186 USD (el precio máximo con la guía).
 
-**Si algún día entrara** (hueco libre y Comprar confirmado): 3,5 % (~1.040 EUR, ~6 acciones), en dos tramos, con límite de 180 USD. **Motivo de negocio**: líder del reparto local de EE. UU. con FCF de 2.100 M que crece +24 % orgánico. **Encaje**: no es comercio minorista (plataforma de servicios con comisión), no es juego y no choca con `MEMORIA.md`, pero solapa con Uber: si entrara, habría que pensar en reducir Uber.
+**Si algún día entrara** (hueco libre y Comprar confirmado): 3,5 %, ~6 acciones), en dos tramos, con límite de 180 USD. **Motivo de negocio**: líder del reparto local de EE. UU. con FCF de 2.100 M que crece +24 % orgánico. **Encaje**: no es comercio minorista (plataforma de servicios con comisión), no es juego y no choca con `MEMORIA.md`, pero solapa con Uber: si entrara, habría que pensar en reducir Uber.
 
 ## 14. Puntuación
 

@@ -2,7 +2,7 @@
 
 **Señal (método v7): Comprar (convicción baja)** · Puntuación 70,8/100 · Señales de cambio de tendencia 5/8 · EV/beneficio bruto 6,2x
 Precio 140,10 USD · Objetivo 12 m 196,9 USD (ponderada +40,6 %, base +34,3 %, bajista −25,4 %, alcista +119,0 %) · Compra hasta 187,5 USD
-Peso orientativo: 3,5 % (~1.000 EUR, 8 acciones en dos tramos), pero **no hay liquidez para pagarlo**: ver sección 13 · Por qué: cumple todos los requisitos de compra
+Peso orientativo: 3,5 %, 8 acciones en dos tramos), pero **no hay liquidez para pagarlo**: ver sección 13 · Por qué: cumple todos los requisitos de compra
 
 > **Calculado con el método v7** (`verticales/growth/metodo.md`). Las ventas del año objetivo salen de la regla mecánica (1.843 M USD en el base) y el múltiplo, del de hoy (2,7x / 4,5x / 7,2x EV/ventas NTM). **Aviso importante**: aquí la regla mecánica exagera. Parte del crecimiento pasado (+29 % en 12 meses y +34 % de media a 2 años), pero la empresa ha frenado a propósito y su guía es de +11 % en el 3T. Con mi proyección, que sigue la guía (1.274 / 1.404 / 1.501 M USD), la señal **sigue siendo Comprar (baja)**, pero con ponderada +12,5 %, base +7,0 %, bajista −32,8 % y **compra hasta ~150 USD**. Este es el límite que recomiendo para la orden (sección 9).
 
@@ -160,9 +160,9 @@ Hoy no hay tesis rota.
 
 ## 13. Encaje en cartera
 
-Cartera value vigente (`informes/cartera-2026-10-14-15h.md`): IGLN (oro), Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y Bureau Veritas, con órdenes abiertas hasta el 7-nov. Bolsillo growth aprobado (`informes-growth/cartera-growth.md`): Nu (4 %), argenx (4,9 %), Axon (3,7 %) y Shopify (4 %), ~16 % de la cartera. **La liquidez está casi agotada**: quedaban ≈560 EUR antes de Shopify, y Shopify (≈1.250 EUR en dos tramos) los consume y los supera.
+Cartera value vigente (`informes/cartera-2026-10-14-15h.md`): IGLN (oro), Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y Bureau Veritas, con órdenes abiertas hasta el 7-nov. Bolsillo growth aprobado (`informes-growth/cartera-growth.md`): Nu (4 %), argenx (4,9 %), Axon (3,7 %) y Shopify (4 %), ~16 % de la cartera. **La liquidez está casi agotada**: quedaban antes de Shopify, y Shopify en dos tramos) los consume y los supera.
 
-**Duolingo merece un hueco del 3,5 % (convicción baja)**: 8 acciones ≈ **1.000 EUR** (a 1,1188 USD/EUR, BCE 13-oct). El bolsillo growth pasaría al ~19,5 % (tope 20 %). **No se puede pagar hoy sin dinero nuevo**, así que propongo, por este orden:
+**Duolingo merece un hueco del 3,5 % (convicción baja)**: 8 acciones. El bolsillo growth pasaría al ~19,5 % (tope 20 %). **No se puede pagar hoy sin dinero nuevo**, así que propongo, por este orden:
 1. **Si el usuario aporta ~1.000 EUR**: 4 acciones ya con **límite de 150 USD** (el precio máximo con la proyección prudente, no los 187,5 de la regla) y 4 tras los resultados del 3-nov si los bookings cumplen la guía (≥ 307 M) y los DAU crecen ≥ 20 %, o con una caída del 10 % sin cambio de tesis.
 2. **Si no hay aportación**: queda **en espera** hasta el 7-nov. Entra con la liquidez de las órdenes value que no se ejecuten o con el tramo 2 de alguna growth que no se haga (por ejemplo, si Nu o Axon no cumplen sus condiciones tras resultados). No propongo vender ninguna posición para pagarla: con convicción baja no compensa el coste de rotar.
 

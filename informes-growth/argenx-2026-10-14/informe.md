@@ -162,11 +162,11 @@ Las acciones dentro de 12 meses serían 65,8 M (+2 %). La caja se mantiene en 5.
 
 ## 13. Encaje en cartera
 
-Cartera value propuesta de Hotis : IGLN (oro), Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y liquidez. Growth ya analizadas: Palantir, CrowdStrike, Spotify y Rheinmetall, ninguna en Comprar. El bolsillo growth podría llegar al 20 % (~5.960 EUR), con posiciones del 3,5-5 % (~1.040-1.490 EUR).
+Cartera value propuesta de Hotis : IGLN (oro), Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y liquidez. Growth ya analizadas: Palantir, CrowdStrike, Spotify y Rheinmetall, ninguna en Comprar. El bolsillo growth podría llegar al 20 %, con posiciones del 3,5-5 % (~1.040-.
 
 **argenx no entra hoy: peso 0 %.** Es la growth analizada con mejor relación entre precio y calidad: puntúa 70,5 y tiene un EV/beneficio bruto de 7,6x, frente a 54x de CrowdStrike. Además diversificaría de verdad: la cartera tiene mucho software y consumo, y la única farmacéutica es Daiichi Sankyo (oncología, sin solapamiento con argenx). Pero el método no compra sin giro de tendencia (3 de 8 señales), y con ventas realistas la rentabilidad esperada es de ~+11 %, justo en el listón.
 
-**Plan si gira**: si tras los resultados del 3T (22-oct) o la lectura de EMPASSION recupera la media de 200 sesiones (~850-880 USD) y el sentimiento se estabiliza, tendría 4-5 señales y pasaría a Comprar con convicción baja. Peso del 3,5 % (~1.040 EUR) a costa de la liquidez, en dos tramos: la mitad al confirmarse la señal y la otra mitad tras los resultados del 4T (feb-2027) o con una caída del 10 % sin cambio de tesis. Precio máximo de compra según la regla: 1.082,5 USD. Con la proyección realista, conviene no pasar de ~900 USD. Comprando en Bruselas en EUR se evita el ADR y la conversión de divisas.
+**Plan si gira**: si tras los resultados del 3T (22-oct) o la lectura de EMPASSION recupera la media de 200 sesiones (~850-880 USD) y el sentimiento se estabiliza, tendría 4-5 señales y pasaría a Comprar con convicción baja. Peso del 3,5 % a costa de la liquidez, en dos tramos: la mitad al confirmarse la señal y la otra mitad tras los resultados del 4T (feb-2027) o con una caída del 10 % sin cambio de tesis. Precio máximo de compra según la regla: 1.082,5 USD. Con la proyección realista, conviene no pasar de ~900 USD. Comprando en Bruselas en EUR se evita el ADR y la conversión de divisas.
 
 ## 14. Puntuación
 

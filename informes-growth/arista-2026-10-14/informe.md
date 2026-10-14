@@ -174,7 +174,7 @@ Hoy no hay tesis rota.
   - Snowflake: +16,1 %, frente al +6,6 %. Le saca 9,5 pp, y su tramo 1 ya está decidido.
   - Rotar costaría comisión y daría menos rentabilidad, con más riesgo de ciclo y de concentración.
 - **Puesto en suplentes: 7.º, detrás de Toast (~+11 %) y delante de Wise** (+5,5 % con v7; con v9 pasa a Mantener). Las seis primeras (Samsara, Datadog, MongoDB, Zscaler, Dexcom y Toast) dan más rentabilidad y no añaden riesgo de IA. La única que da menos es Wise. Arista subiría puestos solo con una caída por debajo de ~180-185 USD (ponderada ≥ 12-15 %), sin cambio de tesis tras el 3-nov.
-- **Si entrara** (liquidez nueva o una salida por tesis): 4 % (≈1.170 EUR, unas 7 acciones a ~169 EUR, con 1,16 USD/EUR), en dos tramos. El primero con límite de 190 USD; el segundo tras los resultados del 3-nov si la indicación de 2027 es ≥ +20 %, o con una caída del 10 % sin cambio de tesis.
+- **Si entrara** (liquidez nueva o una salida por tesis): 4 % (unas 7 acciones a ~169 EUR), en dos tramos. El primero con límite de 190 USD; el segundo tras los resultados del 3-nov si la indicación de 2027 es ≥ +20 %, o con una caída del 10 % sin cambio de tesis.
 
 ## 14. Puntuación
 

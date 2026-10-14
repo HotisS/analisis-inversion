@@ -178,7 +178,7 @@ Conclusión: la compra **aguanta con la guía, pero la rentabilidad cae a menos 
 1. Duolingo sale por debajo de su guía el 3-nov (la cartera ya prevé entonces cancelar su tramo 2) o se rompe su tesis de usuarios.
 2. El 1T FY27 de Zscaler (finales de noviembre) bate la guía de ventas, con ARR neto nuevo orgánico en línea con el ~15 % del año y sin nuevas salidas comerciales.
 
-Entonces, 3,5 % (unas 6 acciones, ~1.100 EUR a 212 USD, por encima del mínimo de 1.000 EUR) en dos tramos: la mitad con límite **≤ 212 USD**, el máximo de compra con la guía y probabilidades 35/50/15, el más prudente; con la guía y 25/50/25 sería ~238. La otra mitad, tras el 2T FY27 (febrero). Si llega liquidez nueva antes (órdenes value que venzan el 7-nov sin ejecutarse), puede entrar con esa liquidez sin sustituir a nadie, con el mismo límite y las mismas condiciones.
+Entonces, 3,5 % (unas 6 acciones, a 212 USD, por encima del mínimo en dos tramos: la mitad con límite **≤ 212 USD**, el máximo de compra con la guía y probabilidades 35/50/15, el más prudente; con la guía y 25/50/25 sería ~238. La otra mitad, tras el 2T FY27 (febrero). Si llega liquidez nueva antes (órdenes value que venzan el 7-nov sin ejecutarse), puede entrar con esa liquidez sin sustituir a nadie, con el mismo límite y las mismas condiciones.
 
 ## 14. Puntuación
 

@@ -152,9 +152,9 @@ Hoy no hay tesis rota: la señal de venta sale solo de la valoración.
 
 ## 13. Encaje en cartera
 
-Con la cartera value propuesta (IGLN, Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y liquidez), el bolsillo growth podría llegar al 20 % (~5.960 EUR). Una posición de convicción media sería del 4 % (~1.190 EUR).
+Con la cartera value propuesta (IGLN, Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y liquidez), el bolsillo growth podría llegar al 20 %. Una posición de convicción media sería del 4 %.
 
-**CrowdStrike no merece hueco hoy: peso 0 %.** El negocio puntúa 81,2/100, pero la regla da Vender (ponderada −47 %) y el precio máximo de compra es 115,3 USD, un 56 % por debajo del actual. Además, la cartera ya tiene mucho software y tecnología de crecimiento (Alphabet, SAP, Intuit, Nemetschek, Netflix, Uber): CRWD añadiría correlación con el mismo factor (múltiplos de software) justo en máximos. La liquidez de ~6.300 EUR se queda donde está.
+**CrowdStrike no merece hueco hoy: peso 0 %.** El negocio puntúa 81,2/100, pero la regla da Vender (ponderada −47 %) y el precio máximo de compra es 115,3 USD, un 56 % por debajo del actual. Además, la cartera ya tiene mucho software y tecnología de crecimiento (Alphabet, SAP, Intuit, Nemetschek, Netflix, Uber): CRWD añadiría correlación con el mismo factor (múltiplos de software) justo en máximos. La liquidez se queda donde está.
 
 **Cuándo reconsiderarla**: si cae por debajo de ~115 USD sin cambio de tesis (sería entrar en dos tramos, la mitad a ese precio y la otra mitad tras los siguientes resultados). También si las ventas se aceleran por encima del 30 % de forma sostenida: subiría el crecimiento objetivo y con él el múltiplo base. Conviene apuntarla en la cola growth para revisarla tras los resultados del 3T FY27.
 

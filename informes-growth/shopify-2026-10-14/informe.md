@@ -2,7 +2,7 @@
 
 **Señal (método v7): Comprar (convicción media)** · Puntuación 77,8/100 · Señales de cambio de tendencia 5/8 · EV/beneficio bruto 27,7x
 Precio 176,52 USD · Objetivo 12 m 202,9 USD (ponderada +14,9 %, base +18,1 %, bajista −43,2 %, alcista +66,9 %) · Compra hasta 193,2 USD
-Peso orientativo: 4 % (~1.190 EUR, en dos tramos) · Por qué: cumple todos los requisitos de compra
+Peso orientativo: 4 % (en dos tramos) · Por qué: cumple todos los requisitos de compra
 
 > **Calculado con el método v7** (`verticales/growth/metodo.md`). Las ventas del año objetivo salen de la regla mecánica (22.234 M USD en el base) y el múltiplo, del de hoy rebajado por desaceleración (7,2x / 12,0x / 15,6x EV/ventas NTM). La proyección propia (20.100 / 22.600 / 23.900 M USD) es solo contraste.
 
@@ -152,9 +152,9 @@ Hoy no hay tesis rota.
 
 ## 13. Encaje en cartera
 
-Cartera value propuesta : IGLN (oro), Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y liquidez. Bolsillo growth: 8 empresas analizadas; compras aprobadas Nu (4 %), argenx (4,9 %) y Axon (3,7 %), ~12 % de la cartera y ~3.740 EUR de esa liquidez.
+Cartera value propuesta : IGLN (oro), Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y liquidez. Bolsillo growth: 8 empresas analizadas; compras aprobadas Nu (4 %), argenx (4,9 %) y Axon (3,7 %), ~12 % de la cartera y de esa liquidez.
 
-**Shopify merece un hueco del 4 % (~1.190 EUR)**, con lo que el bolsillo growth pasaría a ~16 % (tope 20 %). Se pagaría con liquidez, que bajaría a ~1.400 EUR si se ejecutan también las compras growth aprobadas; ojo, comparte bolsa con las órdenes con límite de la propuesta value y no da para todo: si hay que elegir, primero las ya aprobadas.
+**Shopify merece un hueco del 4 %**, con lo que el bolsillo growth pasaría a ~16 % (tope 20 %). Se pagaría con liquidez, que bajaría si se ejecutan también las compras growth aprobadas; ojo, comparte bolsa con las órdenes con límite de la propuesta value y no da para todo: si hay que elegir, primero las ya aprobadas.
 
 - **Tramos**: ~8 acciones en total (a ~1,16 USD/EUR, tipo aproximado): **4 ya, con límite de 193 USD**, y 4 tras los resultados del 3-nov si el crecimiento se mantiene por encima del 28 % (o con una caída del 10 % sin cambio de tesis).
 - **Motivo de negocio**: la plataforma del comercio independiente que crece al 34 % con FCF y casi sin pagos en acciones, a 13x ventas, en su media histórica.

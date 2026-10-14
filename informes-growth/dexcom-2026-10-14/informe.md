@@ -2,7 +2,7 @@
 
 **Señal (método v7): Comprar (convicción baja)** · Puntuación 68,2/100 · Señales de cambio de tendencia 7/8 · EV/beneficio bruto 9,3x
 Precio 85,06 USD · Objetivo 12 m 99,3 USD (ponderada +16,7 %, base +19,8 %, bajista −34,8 %, alcista +61,9 %) · Compra hasta 94,5 USD
-Peso orientativo: 3,5 % (~1.000 EUR, 13 acciones en dos tramos), pero **el bolsillo growth está lleno y no hay liquidez**: hoy no sustituye a ninguna (sección 13) · Por qué: cumple todos los requisitos de compra
+Peso orientativo: 3,5 %, 13 acciones en dos tramos), pero **el bolsillo growth está lleno y no hay liquidez**: hoy no sustituye a ninguna (sección 13) · Por qué: cumple todos los requisitos de compra
 
 > **Calculado con el método v7** (`verticales/growth/metodo.md`) y **valorado por EV/EBITDA ajustado de los 12 meses siguientes**, porque Dexcom gana dinero de forma estable (margen operativo GAAP de más del 20 % y FCF positivo desde hace años). Múltiplos: 10,7x / 17,8x / 23,1x. Las ventas del año objetivo salen de la regla mecánica (6.272 M USD en el base, con un crecimiento del +13,4 % y el +11,3 %). **Con la guía de la empresa la proyección es menor** (+10 % anual: 6.013 M en el base). Recalculado a mano con ella, la señal **sigue siendo Comprar (baja)**, con ponderada +12,0 %, base +15,0 %, bajista −36,1 % y **compra hasta ~90,7 USD**. Este es el límite que recomiendo (sección 9).
 
@@ -177,7 +177,7 @@ Hoy no hay tesis rota.
 | Shopify | 77,8 | media | +14,9 % | — | −43,2 % | 28x |
 
 - **¿A quién sustituiría?** La candidata natural es **Shopify**, la de menor ponderada (+14,9 %). Dexcom solo la supera en 1,8 puntos con la regla y queda por debajo con la guía (+12,0 %). Tiene menos riesgo de caída (−35 % frente a −43 %) y un múltiplo mucho menor, pero también menos puntuación y convicción (baja frente a media) y la mitad de crecimiento. La otra comparable es **Duolingo**, la más parecida (rentable y castigada, convicción baja): con la guía empatan en ponderada (+12,5 % frente a +12,0 %), y Duolingo tiene mejor bajista y menor múltiplo. **La diferencia no paga el coste de rotar**, ni las comisiones ni el riesgo de cambiar de tesis a dos semanas de los resultados de las tres.
-- **Recomendación: no sustituir hoy.** Dexcom entra como **primera suplente growth**, con límite **≤ 90,7 USD** (el de la guía) y ~1.000 EUR (13 acciones, en dos tramos de 7 y 6). Pasaría a sustituir:
+- **Recomendación: no sustituir hoy.** Dexcom entra como **primera suplente growth**, con límite **≤ 90,7 USD** (el de la guía; 13 acciones, en dos tramos de 7 y 6). Pasaría a sustituir:
   1. a **Duolingo**, si su 3T (3-nov) sale por debajo de la guía (la condición que ya cancela su tramo 2) y el 3T de Dexcom (29-oct) cumple;
   2. o a **Shopify**, si su 3T (3-nov) rompe la tesis.
   En ambos casos aporta lo que le falta al bolsillo: diversificar fuera del software y el consumo digital, con un negocio ya rentable y menos caída en el bajista. Si los CMS aprueban la cobertura de los tipo 2 antes de fin de año, se recalcula: la convicción podría subir.

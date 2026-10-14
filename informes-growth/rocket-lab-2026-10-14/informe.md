@@ -155,7 +155,7 @@ Hoy no hay tesis rota.
 
 ## 13. Encaje en cartera
 
-La cartera value propuesta suma : IGLN (oro), Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y liquidez. Ya hay 8 empresas growth analizadas (`informes-growth/resumen.md`) y tres compras growth aprobadas: Nu, argenx y Axon (≈ 12 % de la cartera, `informes-growth/cartera-growth.md`). El bolsillo growth podría llegar al 20 % (~5.960 EUR). Una posición de convicción baja sería del 3,5 % (~1.040 EUR).
+La cartera value propuesta suma : IGLN (oro), Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y liquidez. Ya hay 8 empresas growth analizadas (`informes-growth/resumen.md`) y tres compras growth aprobadas: Nu, argenx y Axon (≈ 12 % de la cartera, `informes-growth/cartera-growth.md`). El bolsillo growth podría llegar al 20 %. Una posición de convicción baja sería del 3,5 %.
 
 **Rocket Lab no entra hoy: peso 0 %.** La regla da Mantener. Le faltan rentabilidad (ponderada del +1,3 %, frente al 5 % que se exige) y valoración (90,8x el beneficio bruto, frente a un máximo de 35x). Sería además la única exposición al espacio y a la defensa de EE. UU. de la cartera. Eso diversifica, pero el riesgo es binario (Neutron). Axon ya cubre el gasto público en seguridad con un negocio rentable. La liquidez se queda donde está.
 

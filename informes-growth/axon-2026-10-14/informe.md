@@ -146,11 +146,11 @@ Acciones dentro de 12 meses: 85,0 M (+3 %). **Asimetría 2,9.** **Precio máximo
 
 ## 13. Encaje en cartera
 
-La cartera value propuesta de Hotis (IGLN, Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y liquidez) deja hasta un 20 % para growth (~5.960 EUR). Ninguna de las growth ya analizadas (Palantir, CrowdStrike, Spotify, Rheinmetall) está en Comprar.
+La cartera value propuesta de Hotis (IGLN, Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y liquidez) deja hasta un 20 % para growth. Ninguna de las growth ya analizadas (Palantir, CrowdStrike, Spotify, Rheinmetall) está en Comprar.
 
 **Axon no entra hoy: peso 0 %.** Pero es la candidata más cercana a entrar de las cinco: a diferencia de CrowdStrike o Palantir, el problema no es el precio (EV/beneficio bruto 14,2x, compra hasta 504,4 USD) sino que la tendencia no ha girado. Además aporta algo que la cartera no tiene: seguridad pública y defensa (antidrones), poco correlacionada con el consumo (LVMH, Netflix, Uber) y distinta del software empresarial (SAP, Intuit, Nemetschek), aunque cotiza con el mismo factor de software de crecimiento.
 
-**Plan si se activa la cuarta señal**: convicción baja → **3,5 % (~1.040 EUR)**, de la liquidez, en dos tramos: la mitad cuando se cumpla el disparador (precio > ~450 USD con el múltiplo +20 % sobre el mínimo, vuelta sobre la media de 200 sesiones o mejora clara del sentimiento tras el 3T) y la otra mitad tras los resultados del 4T (feb-2027) si confirman el FCF. Se recalcula tras el 3T.
+**Plan si se activa la cuarta señal**: convicción baja → **3,5 %**, de la liquidez, en dos tramos: la mitad cuando se cumpla el disparador (precio > ~450 USD con el múltiplo +20 % sobre el mínimo, vuelta sobre la media de 200 sesiones o mejora clara del sentimiento tras el 3T) y la otra mitad tras los resultados del 4T (feb-2027) si confirman el FCF. Se recalcula tras el 3T.
 
 ## 14. Puntuación
 

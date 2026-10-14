@@ -148,7 +148,7 @@ Fuentes: [1][2][6]. Trimestres sacados por diferencia de los acumulados XBRL. El
 
 ## 13. Encaje en cartera
 
-- **Señal: Vender / no comprar. No entra** ni sustituye a nadie. El bolsillo growth está lleno (~20 %) con Nu (+19 % al precio actual con v11), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %), todas en Comprar. Una ponderada negativa no puede desplazar a ninguna, y con una liquidez de unos 27 EUR solo cabe sustituir.
+- **Señal: Vender / no comprar. No entra** ni sustituye a nadie. El bolsillo growth está lleno (~20 %) con Nu (+19 % al precio actual con v11), Axon (+36 %), Shopify (+18 %), Snowflake (+13 %) y Samsara (+15 %), todas en Comprar. Una ponderada negativa no puede desplazar a ninguna, y con una liquidez de solo cabe sustituir.
 - **No entra en la lista de suplentes** (orden vigente: MongoDB, Toast, Zscaler, dLocal, Dexcom, argenx, Datadog, Saab, Natera). Todas están en Comprar; Nextpower queda entre las de «no comprar».
 - **Exposición a IA**: con la venta de Alphabet mañana, la cartera pierde su apuesta directa en IA. Nextpower no sería un sustituto: su relación con la IA es indirecta (electricidad para centros de datos) y depende de la política de EE. UU.
 - **Frente a la cartera value** (`MEMORIA.md`): no es juego ni comercio minorista, así que sería admisible, pero hoy no cumple el método growth y su calidad depende de un subsidio. Si interesa la tesis de «electricidad para la IA», en growth ya se analizaron Quanta, GE Vernova y Comfort Systems, y ninguna está en Comprar.

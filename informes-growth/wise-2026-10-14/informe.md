@@ -2,7 +2,7 @@
 
 **Señal (método v7): Comprar (convicción baja)** · Puntuación 62,8/100 · Señales de cambio de tendencia 1/8 · EV/beneficio bruto 4,3x
 Precio 12,22 USD (Nasdaq, cierre del 13-oct) · Objetivo 12 m 13,2 USD (ponderada +7,6 %, base +8,8 %, bajista −37,9 %, alcista +50,7 %) · Compra hasta 12,5 USD (≈ 950 p en Londres)
-Peso orientativo: 3,5 % (~1.045 EUR, en dos tramos), pero **hoy no entra**: no queda liquidez en el bolsillo growth y mañana (15-oct) publica la actualización del 2T. Por qué: cumple los requisitos de compra, aunque por poco.
+Peso orientativo: 3,5 %, en dos tramos), pero **hoy no entra**: no queda liquidez en el bolsillo growth y mañana (15-oct) publica la actualización del 2T. Por qué: cumple los requisitos de compra, aunque por poco.
 
 > **Calculado con el método v7** (`verticales/growth/metodo.md`). Las ventas del año objetivo salen de la regla mecánica (3.790 M USD en el base) y el múltiplo, del de hoy rebajado por desaceleración (1,9x / 3,1x / 4,2x EV/ventas NTM). La proyección propia (3.140 / 3.620 / 3.870 M USD) es solo contraste. **La compra es frágil**: con la proyección de la guía de la empresa o con probabilidades 35/50/15 pasaría a Mantener (apartado 9).
 
@@ -162,10 +162,10 @@ Hoy no hay tesis rota.
 
 ## 13. Encaje en cartera
 
-- **Cartera value vigente** (`informes/cartera-2026-10-14-15h.md`): oro, Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y Bureau Veritas, con ~4.300 EUR de liquidez comprometida con órdenes con límite hasta el 7-nov.
-- **Bolsillo growth aprobado** (`informes-growth/cartera-growth.md`): Nu (4 %), argenx (4,9 %), Axon (3,7 %) y Shopify (4 %), ≈ 16 % de la cartera. Antes de Shopify sobraban ≈ 560 EUR de liquidez; con su primer tramo, prácticamente nada.
+- **Cartera value vigente** (`informes/cartera-2026-10-14-15h.md`): oro, Edenred, Daiichi Sankyo, Uber, Viscofan, Alphabet, Netflix, SAP, Intuit, Nemetschek, LVMH y Bureau Veritas, con de liquidez comprometida con órdenes con límite hasta el 7-nov.
+- **Bolsillo growth aprobado** (`informes-growth/cartera-growth.md`): Nu (4 %), argenx (4,9 %), Axon (3,7 %) y Shopify (4 %), ≈ 16 % de la cartera. Antes de Shopify sobraban de liquidez; con su primer tramo, prácticamente nada.
 
-**Wise merecería un hueco del 3,5 % (~1.045 EUR, ≈ 100 acciones a 12,22 USD con 1,16 USD/EUR), pero hoy no entra**, por tres motivos:
+**Wise merecería un hueco del 3,5 %, ≈ 100 acciones a 12,22 USD con 1,16 USD/EUR), pero hoy no entra**, por tres motivos:
 1. **No hay liquidez**: con Wise, el bolsillo growth subiría a ~19,5 % (cabe en el tope del 20 %), pero no hay con qué pagarla sin vender algo. Además, Edenred y el oro no se tocan.
 2. **Es la más floja del bolsillo**: convicción baja, 1/8 señales, ponderada +7,6 % frente a +14,9 % de Shopify o +27 % de Nu, y una compra que desaparece con supuestos algo más prudentes.
 3. **Mañana publica el 2T**: no tiene sentido comprar el día antes de un dato que puede mover la acción un 10 %.
