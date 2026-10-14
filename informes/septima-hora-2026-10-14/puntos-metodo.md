@@ -10,3 +10,5 @@ Lo que se vea fallar o mejorable en los 16 análisis. Los puntos de la sexta hor
 - **Compras grandes que rompen la serie del BPA** (Aon con USI: BPA pro forma 2025 11,24 frente a 17,02): la historia del PER adelantado y el BPA del ejercicio objetivo quedan en perímetros distintos. Proponer un campo `perimetro_cambia` que obligue a explicar la base.
 - **Compras cerradas después del último balance** (AMETEK: Indicor, 5.000 M, cerró el 26-ago): el EV/EBITDA LTM del motor mezcla la deuda nueva con un EBITDA que no la incluye. Un campo de «compra posterior» en el puente que ajuste también el EBITDA LTM pro forma.
 - **Aviso M6 de robustez en AMETEK** («el objetivo se mueve con el precio», elasticidad 0,5) pese a la regla de objetivo fijo: revisar si es un resto del cálculo antiguo en `robustez.mjs`.
+- **`per_historico.v2` no se imprime en el Word** (está fuera del esquema), aunque es el control oficial: el informe no enseña la cifra v2 que el usuario ve en las tablas. Añadirla a la sección 23.
+- **Mapa de comparables vacío cuando Yahoo no da EV/EBITDA NTM** (Alfa Laval, Waste Connections): usar el PER NTM como eje alternativo.
