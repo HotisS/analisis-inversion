@@ -17,3 +17,5 @@ Lo que se vea fallar o mejorable en los 16 análisis. Los puntos de la sexta hor
 - **ESEF alemán ausente en filings.xbrl.org** (Beiersdorf, como Symrise en la sexta): `cuentas.mjs --esef` falla con Alemania. Buscar otra fuente (Unternehmensregister) o avisar de entrada para no gastar tiempo.
 - **M6 «el objetivo se mueve con el precio»** sale también en Beiersdorf: confirma que es un aviso general de `robustez.mjs` que conviene revisar.
 - **BPA con derivados a valor razonable** (Hershey: coberturas de cacao): el ajustado de la empresa (sin derivados ni reorganización) es la base buena y la robustez lo marca (D4); pedir siempre la conciliación publicado → ajustado en la nota A.
+- **ESEF corregido: la deuda incluye arrendamientos y los años de antes de una escisión mezclan el negocio separado** (Sandvik con Alleima 2020-21): avisar de cambios de perímetro y separar arrendamientos.
+- **Beneficios extraordinarios por precio de materia prima** (Sandvik: efecto tungsteno de 750 M en 2026): el BPA del año base sale inflado; la robustez no lo ve. Proponer un campo «efecto temporal» en la nota A que el motor reste del BPA normalizado.
