@@ -33,6 +33,7 @@ Lee solo la sección del país que toque.
 - Dinamarca: posiciones cortas ≥ 0,5 % en un xlsx mensual de la Finanstilsynet; las juntas aprueban la remuneración sin recuento (voto libre en contra: hueco, con la asistencia). Tasa libre: el Bund (corona anclada al euro).
 
 ## Reino Unido
+- PER adelantado de Yahoo y otros agregadores en PENIQUES para cotizadas de Londres: comprobar la unidad antes de usarlo de contraste (precio en GBp, BPA en GBP). ESEF británico: la deuda a corto y el dividendo a cuenta van en conceptos aparte; `cuentas.mjs` los marca en `parciales` y `dpa_base`.
 - Las notas de prensa de resultados anuales traen cuentas y notas completas en ~40 páginas: la vía más barata para series de diez años.
 - Investegate: el `.txt` empieza por un «Summary by AI» con cifras; no lo uses, lee el cuerpo del RNS.
 - Cotizaciones en GBp: `bolsa.mjs` no las pasa a GBP.

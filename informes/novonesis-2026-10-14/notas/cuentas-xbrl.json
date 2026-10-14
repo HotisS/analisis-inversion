@@ -32,7 +32,8 @@
         "bpa": 0.67,
         "dpa": 4.2,
         "dpa_extraordinario": null,
-        "acciones_diluidas": null
+        "acciones_diluidas": null,
+        "dpa_base": "solo el final propuesto del ejercicio (sin a cuenta): comprobar"
       },
       {
         "periodo": "2025",
@@ -54,7 +55,8 @@
         "bpa": 1.25,
         "dpa": 4.25,
         "dpa_extraordinario": null,
-        "acciones_diluidas": null
+        "acciones_diluidas": null,
+        "dpa_base": "solo el final propuesto del ejercicio (sin a cuenta): comprobar"
       }
     ]
   },
@@ -147,7 +149,7 @@
     "cuenta.beneficio_neto": "ProfitLossAttributableToOwnersOfParent",
     "cuenta.gastos_financieros": "FinanceCosts",
     "cuenta.bpa": "DilutedEarningsLossPerShare",
-    "cuenta.dpa": "DividendsProposedOrDeclaredBeforeFinancialStatementsAuthorisedForIssueButNotRecognisedAsDistributionToOwnersPerShare",
+    "cuenta.dpa": "solo el final propuesto del ejercicio (sin a cuenta) (DividendsProposedOrDeclaredBeforeFinancialStatementsAuthorisedForIssueButNotRecognisedAsDistributionToOwnersPerShare)",
     "balance.activo_total": "Assets",
     "balance.activo_corriente": "CurrentAssets",
     "balance.pasivo_corriente": "CurrentLiabilities",
@@ -189,7 +191,14 @@
       "emision_acciones"
     ]
   },
+  "parciales": {
+    "cuenta.gastos_generales": [
+      "2024: AdministrativeExpense (faltan DistributionCosts)",
+      "2025: AdministrativeExpense (faltan DistributionCosts)"
+    ]
+  },
   "avisos": [
+    "cuenta.gastos_generales INCOMPLETO en 2 ejercicio(s): 2024: AdministrativeExpense (faltan DistributionCosts); 2025: AdministrativeExpense (faltan DistributionCosts). Comprobar en el balance y completar a mano.",
     "BPA, DPA y acciones de cada ejercicio son los publicados ENTONCES: un split posterior (Apple 4:1 en 2020) no está reexpresado en los años viejos; ajústalos para que toda la serie esté en acciones de hoy.",
     "`participadas_en_ebitda`, `no_recurrentes_en_ebitda` y `dpa_extraordinario` no están en el XBRL: míralos en el informe anual. `ebitda` = EBIT + amortizaciones del XBRL (sin ajustes de la empresa)."
   ],

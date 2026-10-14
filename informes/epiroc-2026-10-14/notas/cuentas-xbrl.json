@@ -79,7 +79,8 @@
         "bpa": 6.95,
         "dpa": 3.4,
         "dpa_extraordinario": null,
-        "acciones_diluidas": null
+        "acciones_diluidas": null,
+        "dpa_base": "solo el final propuesto del ejercicio (sin a cuenta): comprobar"
       },
       {
         "periodo": "2023",
@@ -101,7 +102,8 @@
         "bpa": 7.81,
         "dpa": 3.8,
         "dpa_extraordinario": null,
-        "acciones_diluidas": null
+        "acciones_diluidas": null,
+        "dpa_base": "solo el final propuesto del ejercicio (sin a cuenta): comprobar"
       },
       {
         "periodo": "2024",
@@ -123,7 +125,8 @@
         "bpa": 7.23,
         "dpa": 3.8,
         "dpa_extraordinario": null,
-        "acciones_diluidas": null
+        "acciones_diluidas": null,
+        "dpa_base": "solo el final propuesto del ejercicio (sin a cuenta): comprobar"
       }
     ]
   },
@@ -322,7 +325,7 @@
     "cuenta.beneficio_neto": "ProfitLossAttributableToOwnersOfParent",
     "cuenta.gastos_financieros": "FinanceCosts",
     "cuenta.bpa": "DilutedEarningsLossPerShare",
-    "cuenta.dpa": "DividendsProposedOrDeclaredBeforeFinancialStatementsAuthorisedForIssueButNotRecognisedAsDistributionToOwnersPerShare",
+    "cuenta.dpa": "solo el final propuesto del ejercicio (sin a cuenta) (DividendsProposedOrDeclaredBeforeFinancialStatementsAuthorisedForIssueButNotRecognisedAsDistributionToOwnersPerShare)",
     "balance.activo_total": "Assets",
     "balance.activo_corriente": "CurrentAssets",
     "balance.pasivo_corriente": "CurrentLiabilities",
@@ -364,7 +367,28 @@
       "emision_acciones"
     ]
   },
+  "parciales": {
+    "cuenta.gastos_generales": [
+      "2020: AdministrativeExpense (faltan DistributionCosts)",
+      "2021: AdministrativeExpense (faltan DistributionCosts)",
+      "2022: AdministrativeExpense (faltan DistributionCosts)",
+      "2023: AdministrativeExpense (faltan DistributionCosts)",
+      "2024: AdministrativeExpense (faltan DistributionCosts)"
+    ],
+    "flujos.capex": [
+      "2022: PurchaseOfIntangibleAssetsClassifiedAsInvestingActivities (faltan PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities)",
+      "2023: PurchaseOfIntangibleAssetsClassifiedAsInvestingActivities (faltan PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities)",
+      "2024: PurchaseOfIntangibleAssetsClassifiedAsInvestingActivities (faltan PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities)"
+    ],
+    "flujos.desinversiones": [
+      "2022: CashFlowsFromLosingControlOfSubsidiariesOrOtherBusinessesClassifiedAsInvestingActivities (faltan ProceedsFromSalesOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities)",
+      "2023: CashFlowsFromLosingControlOfSubsidiariesOrOtherBusinessesClassifiedAsInvestingActivities (faltan ProceedsFromSalesOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities)"
+    ]
+  },
   "avisos": [
+    "cuenta.gastos_generales INCOMPLETO en 5 ejercicio(s): 2020: AdministrativeExpense (faltan DistributionCosts); 2021: AdministrativeExpense (faltan DistributionCosts); 2022: AdministrativeExpense (faltan DistributionCosts); 2023: AdministrativeExpense (faltan DistributionCosts); 2024: AdministrativeExpense (faltan DistributionCosts). Comprobar en el balance y completar a mano.",
+    "flujos.capex INCOMPLETO en 3 ejercicio(s): 2022: PurchaseOfIntangibleAssetsClassifiedAsInvestingActivities (faltan PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities); 2023: PurchaseOfIntangibleAssetsClassifiedAsInvestingActivities (faltan PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities); 2024: PurchaseOfIntangibleAssetsClassifiedAsInvestingActivities (faltan PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities). Comprobar en el balance y completar a mano.",
+    "flujos.desinversiones INCOMPLETO en 2 ejercicio(s): 2022: CashFlowsFromLosingControlOfSubsidiariesOrOtherBusinessesClassifiedAsInvestingActivities (faltan ProceedsFromSalesOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities); 2023: CashFlowsFromLosingControlOfSubsidiariesOrOtherBusinessesClassifiedAsInvestingActivities (faltan ProceedsFromSalesOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities). Comprobar en el balance y completar a mano.",
     "BPA, DPA y acciones de cada ejercicio son los publicados ENTONCES: un split posterior (Apple 4:1 en 2020) no está reexpresado en los años viejos; ajústalos para que toda la serie esté en acciones de hoy.",
     "`participadas_en_ebitda`, `no_recurrentes_en_ebitda` y `dpa_extraordinario` no están en el XBRL: míralos en el informe anual. `ebitda` = EBIT + amortizaciones del XBRL (sin ajustes de la empresa)."
   ],

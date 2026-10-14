@@ -101,7 +101,8 @@
         "bpa": 21.08,
         "dpa": 1400,
         "dpa_extraordinario": null,
-        "acciones_diluidas": null
+        "acciones_diluidas": null,
+        "dpa_base": "PAGADO en el ejercicio (final del año anterior + a cuenta): NO es el dividendo del año; corregir con el informe anual"
       },
       {
         "periodo": "2024",
@@ -123,7 +124,8 @@
         "bpa": 29.14,
         "dpa": 22,
         "dpa_extraordinario": null,
-        "acciones_diluidas": null
+        "acciones_diluidas": null,
+        "dpa_base": "PAGADO en el ejercicio (final del año anterior + a cuenta): NO es el dividendo del año; corregir con el informe anual"
       }
     ]
   },
@@ -145,7 +147,7 @@
         "activos_contrato": 5784,
         "pasivos_contrato": 11217,
         "caja": 7420,
-        "deuda_financiera": 1971,
+        "deuda_financiera": 3471,
         "arrendamientos": 2092,
         "patrimonio_neto": 13246,
         "minoritarios": 55,
@@ -189,7 +191,7 @@
         "activos_contrato": 8031,
         "pasivos_contrato": 14159,
         "caja": 3932,
-        "deuda_financiera": 2003,
+        "deuda_financiera": 2453,
         "arrendamientos": 1945,
         "patrimonio_neto": 13535,
         "minoritarios": 209,
@@ -211,7 +213,7 @@
         "activos_contrato": 10500,
         "pasivos_contrato": 19825,
         "caja": 5975,
-        "deuda_financiera": 2500,
+        "deuda_financiera": 3000,
         "arrendamientos": 1890,
         "patrimonio_neto": 15968,
         "minoritarios": 497,
@@ -320,7 +322,7 @@
     "cuenta.beneficio_neto": "ProfitLossAttributableToOwnersOfParent",
     "cuenta.bpa": "DilutedEarningsLossPerShare",
     "cuenta.gastos_financieros": "FinanceCosts",
-    "cuenta.dpa": "DividendsRecognisedAsDistributionsToOwnersPerShare",
+    "cuenta.dpa": "PAGADO en el ejercicio (final del año anterior + a cuenta) (DividendsRecognisedAsDistributionsToOwnersPerShare)",
     "balance.activo_total": "Assets",
     "balance.activo_corriente": "CurrentAssets",
     "balance.pasivo_corriente": "CurrentLiabilities",
@@ -332,7 +334,7 @@
     "balance.activos_contrato": "CurrentContractAssets",
     "balance.pasivos_contrato": "CurrentContractLiabilities",
     "balance.caja": "CashAndCashEquivalents",
-    "balance.deuda_financiera": "LongtermBorrowings",
+    "balance.deuda_financiera": "LongtermBorrowings + CurrentPortionOfLongtermBorrowings",
     "balance.arrendamientos": "NoncurrentLeaseLiabilities + CurrentLeaseLiabilities",
     "balance.patrimonio_neto": "EquityAttributableToOwnersOfParent",
     "balance.minoritarios": "NoncontrollingInterests",
@@ -362,7 +364,19 @@
       "emision_acciones"
     ]
   },
+  "parciales": {
+    "cuenta.amortizaciones": [
+      "2020: AdjustmentsForAmortisationExpense (faltan AdjustmentsForDepreciationExpense)",
+      "2021: AdjustmentsForAmortisationExpense (faltan AdjustmentsForDepreciationExpense)"
+    ],
+    "flujos.capex": [
+      "2020: PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities (faltan PurchaseOfIntangibleAssetsClassifiedAsInvestingActivities)"
+    ]
+  },
   "avisos": [
+    "cuenta.amortizaciones INCOMPLETO en 2 ejercicio(s): 2020: AdjustmentsForAmortisationExpense (faltan AdjustmentsForDepreciationExpense); 2021: AdjustmentsForAmortisationExpense (faltan AdjustmentsForDepreciationExpense). Comprobar en el balance y completar a mano.",
+    "flujos.capex INCOMPLETO en 1 ejercicio(s): 2020: PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities (faltan PurchaseOfIntangibleAssetsClassifiedAsInvestingActivities). Comprobar en el balance y completar a mano.",
+    "DPA: el XBRL solo trae el dividendo PAGADO en el ejercicio (final del año anterior + a cuenta), no el del año: corregir con el informe anual (ver `dpa_base` en cada ejercicio).",
     "BPA, DPA y acciones de cada ejercicio son los publicados ENTONCES: un split posterior (Apple 4:1 en 2020) no está reexpresado en los años viejos; ajústalos para que toda la serie esté en acciones de hoy.",
     "`participadas_en_ebitda`, `no_recurrentes_en_ebitda` y `dpa_extraordinario` no están en el XBRL: míralos en el informe anual. `ebitda` = EBIT + amortizaciones del XBRL (sin ajustes de la empresa)."
   ],

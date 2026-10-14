@@ -62,6 +62,7 @@ En `informes/<carpeta>/`:
 Fuera de la carpeta:
 - la revisión apuntada con `node herramientas/apuntar-12m.mjs <carpeta>` (lee `valoracion.objetivo_12m` y calcula la regla, la ponderada, el base y la señal);
 - **pruebas de robustez, obligatorias antes de dar la señal** (14-oct-2026): `node herramientas/robustez.mjs <carpeta>`. Un `CORREGIR` bloquea la señal hasta arreglar el dato; un `VARIANTE` dice qué cifra decide; un `CONFIANZA` deja un Comprar en Mantener; la «acción robusta» es la que se comunica. En la entrega van el veredicto (sólida o frágil, y con qué variante cambia), el colchón de BPA y las dos o tres objeciones más fuertes con su respuesta (`verticales/empresa/robustez.md`);
+- el símbolo en `verticales/empresa/simbolos.json` si la empresa es nueva, para que `precios.mjs` la incluya (Cintas quedó fuera, aviso D3);
 - `node herramientas/seguimiento.mjs` (columnas «Metodología» = Nueva y «… 12 m» llenas);
 - `cola.md` marcada, las lecciones nuevas en `verticales/empresa/lecciones.md` o en su anexo (país o caso; una o dos líneas, solo si no están ya), y commit y push.
 

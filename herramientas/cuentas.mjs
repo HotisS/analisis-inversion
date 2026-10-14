@@ -123,8 +123,11 @@ const MAPA_IFRS = {
     proveedores: ['TradeAndOtherCurrentPayables', 'TradeAndOtherCurrentPayablesToTradeSuppliers', 'TradeAndOtherPayables'],
     activos_contrato: ['CurrentContractAssets', 'ContractAssets'], pasivos_contrato: ['CurrentContractLiabilities', 'ContractLiabilities'],
     caja: ['CashAndCashEquivalents'],
-    deuda_financiera: ['Borrowings', { suma: ['LongtermBorrowings', 'CurrentBorrowingsAndCurrentPortionOfNoncurrentBorrowings'] }, { suma: ['LongtermBorrowings', 'ShorttermBorrowings'] }, { suma: ['NoncurrentPortionOfNoncurrentBorrowings', 'CurrentPortionOfNoncurrentBorrowings', 'ShorttermBorrowings'] }],
-    arrendamientos: ['LeaseLiabilities', { suma: ['NoncurrentLeaseLiabilities', 'CurrentLeaseLiabilities'] }],
+    // Deuda = largo + corto. Antes (hasta el 14-oct-2026 por la noche) la suma se daba por buena con solo el largo y en 4 de 7
+    // europeas faltaba la deuda a corto (Heineken: 3.088 M de ShorttermBorrowings fuera). Con {partes} el corto se busca en
+    // varios conceptos y, si no aparece, el campo queda marcado en `parciales` y en `avisos` para comprobarlo en el balance.
+    deuda_financiera: ['Borrowings', { partes: [['LongtermBorrowings', 'NoncurrentPortionOfNoncurrentBorrowings'], ['CurrentBorrowingsAndCurrentPortionOfNoncurrentBorrowings', { suma: ['ShorttermBorrowings', 'CurrentPortionOfLongtermBorrowings'] }, 'CurrentPortionOfNoncurrentBorrowings']], nombres: ['deuda a largo', 'deuda a corto'] }],
+    arrendamientos: ['LeaseLiabilities', { partes: [['NoncurrentLeaseLiabilities'], ['CurrentLeaseLiabilities']], nombres: ['arrendamientos a largo', 'arrendamientos a corto'] }],
     patrimonio_neto: ['EquityAttributableToOwnersOfParent'], minoritarios: ['NoncontrollingInterests'], reservas: ['RetainedEarnings'],
   },
   flujos: {
@@ -210,8 +213,17 @@ function valorDe(hechos, fin, alternativas, unidadPedida) {
   const uno = (c) => (indice.has(c) ? indice.get(c) : null);
   for (const alt of alternativas) {
     if (typeof alt === 'string') { const h = uno(alt); if (h) return { valor: h.valor, origen: alt, unidad: h.unidad }; continue; }
-    if (alt.suma) { const hs = alt.suma.map(uno); if (hs[0] || hs.some(Boolean)) { const v = hs.reduce((s, h) => s + (h ? h.valor : 0), 0); return { valor: v, origen: `${alt.suma.filter((c, i) => hs[i]).join(' + ')}`, unidad: hs.find(Boolean).unidad }; } }
+    if (alt.suma) { const hs = alt.suma.map(uno); if (hs[0] || hs.some(Boolean)) { const v = hs.reduce((s, h) => s + (h ? h.valor : 0), 0); return { valor: v, origen: `${alt.suma.filter((c, i) => hs[i]).join(' + ')}`, unidad: hs.find(Boolean).unidad, parcial: hs.some((h) => !h) ? `faltan ${alt.suma.filter((c, i) => !hs[i]).join(', ')}` : null }; } }
     if (alt.resta) { const [x, y] = alt.resta.map(uno); if (x && y) return { valor: x.valor - y.valor, origen: `${alt.resta[0]} − ${alt.resta[1]}`, unidad: x.unidad }; }
+    if (alt.partes) {
+      // Cada parte es una lista de alternativas; el total es la suma de las partes encontradas. Si falta alguna, `parcial` lo dice.
+      const encontradas = alt.partes.map((lista) => valorDe(hechos, fin, lista, unidadPedida));
+      if (encontradas.some(Boolean)) {
+        const v = encontradas.reduce((s, e) => s + (e ? e.valor : 0), 0);
+        const faltan = encontradas.map((e, i) => (e ? null : alt.nombres?.[i] || `parte ${i + 1}`)).filter(Boolean);
+        return { valor: v, origen: encontradas.filter(Boolean).map((e) => e.origen).join(' + '), unidad: encontradas.find(Boolean).unidad, parcial: faltan.length ? `sin ${faltan.join(' ni ')} en el XBRL` : null };
+      }
+    }
   }
   return null;
 }
@@ -220,7 +232,7 @@ function construirSeries(hechos, mapa, mapaExtra = {}) {
   // Ejercicios: fechas de cierre con ingresos o activo total; nos quedamos con los últimos ANIOS.
   const cierres = [...new Set(hechos.filter((h) => h.inicio && /^(iso4217:)?[A-Z]{3}$/.test(h.unidad)).map((h) => h.fin))].sort();
   const fines = cierres.slice(-ANIOS);
-  const salida = { cuenta: [], balance: [], flujos: [] }, usado = {}, faltan = {};
+  const salida = { cuenta: [], balance: [], flujos: [] }, usado = {}, faltan = {}, parciales = {};
   const divisas = new Map();
   for (const bloque of ['cuenta', 'balance', 'flujos']) {
     for (const fin of fines) {
@@ -232,6 +244,7 @@ function construirSeries(hechos, mapa, mapaExtra = {}) {
         if (v) {
           fila[campo] = tipo === 'por_accion' ? r2(v.valor, 2) : M(v.valor);
           usado[`${bloque}.${campo}`] ??= v.origen;
+          if (v.parcial) (parciales[`${bloque}.${campo}`] ??= []).push(`${fin.slice(0, 4)}: ${v.origen} (${v.parcial})`);
           if (tipo === 'dinero') divisas.set(v.unidad.replace(/^iso4217:/, ''), (divisas.get(v.unidad.replace(/^iso4217:/, '')) || 0) + 1);
         } else fila[campo] = null;
       }
@@ -240,8 +253,26 @@ function construirSeries(hechos, mapa, mapaExtra = {}) {
     }
     for (const campo of CAMPOS[bloque]) if (salida[bloque].every((f) => f[campo] === null)) (faltan[bloque] ??= []).push(campo);
   }
+  // DPA por ejercicio de DEVENGO en NIIF (14-oct-2026): «DividendsRecognisedAsDistributionsToOwnersPerShare» es lo pagado en el
+  // año (final del año anterior + a cuenta de este), no el dividendo del año. Si el XBRL trae el final propuesto
+  // (DividendsProposedOrDeclared…PerShare) de este año y del anterior, dividendo del año = final propuesto + (pagado − final del año anterior).
+  if (mapa === MAPA_IFRS) {
+    const P = 'DividendsProposedOrDeclaredBeforeFinancialStatementsAuthorisedForIssueButNotRecognisedAsDistributionToOwnersPerShare';
+    const R = ['DividendsRecognisedAsDistributionsToOwnersPerShare', 'DividendsPaidOrdinarySharesPerShare'];
+    const todosFines = cierres;
+    salida.cuenta.forEach((fila) => {
+      const positivo = (v) => (v && v.valor > 0 ? v : null); // LSEG etiqueta el final propuesto de 2025 como 0,0: se trata como ausente.
+      const prop = positivo(valorDe(hechos, fila.fin, [P], 'por_accion')), pag = positivo(valorDe(hechos, fila.fin, R, 'por_accion'));
+      const iPrev = todosFines.indexOf(fila.fin) - 1, propPrev = iPrev >= 0 ? positivo(valorDe(hechos, todosFines[iPrev], [P], 'por_accion')) : null;
+      if (prop && pag && propPrev) { const aCuenta = pag.valor - propPrev.valor; fila.dpa = r2(prop.valor + Math.max(0, aCuenta), 2); fila.dpa_base = aCuenta > 0 ? 'devengo: final propuesto + a cuenta (pagado − final del año anterior)' : 'solo el final propuesto (el a cuenta no se deduce del XBRL): comprobar'; }
+      else if (prop) { fila.dpa = r2(prop.valor, 2); fila.dpa_base = 'solo el final propuesto del ejercicio (sin a cuenta): comprobar'; }
+      else if (pag) { fila.dpa = r2(pag.valor, 2); fila.dpa_base = 'PAGADO en el ejercicio (final del año anterior + a cuenta): NO es el dividendo del año; corregir con el informe anual'; }
+      if (fila.dpa_base) usado['cuenta.dpa'] = fila.dpa_base.split(':')[0] + ` (${prop ? P : ''}${prop && pag ? ' + ' : ''}${pag ? pag.origen : ''})`;
+    });
+  }
   const divisa = [...divisas.entries()].sort((x, y) => y[1] - x[1])[0]?.[0] || null;
-  return { series: salida, usado, faltan, divisa, fines };
+  if (divisas.size > 1) parciales['divisa'] = [`el XBRL mezcla divisas entre ejercicios (${[...divisas.keys()].join(', ')}): la serie NO es homogénea (caso Novonesis, DKK hasta 2023 y EUR después); convertir antes de comparar`];
+  return { series: salida, usado, faltan, parciales, divisa, fines };
 }
 
 // ---------- Fuentes ----------
@@ -302,8 +333,10 @@ async function desdeEsef(nombreOLei) {
 
 const origen = a.sec ? await desdeSec(String(a.sec)) : await desdeEsef(String(a.esef));
 const mapaExtra = a.mapa ? JSON.parse(readFileSync(a.mapa, 'utf8')) : {};
-const { series, usado, faltan, divisa, fines } = construirSeries(origen.hechos, origen.mapa, mapaExtra);
+const { series, usado, faltan, parciales, divisa, fines } = construirSeries(origen.hechos, origen.mapa, mapaExtra);
 const avisos = [];
+for (const [campo, lista] of Object.entries(parciales)) avisos.push(`${campo} INCOMPLETO en ${lista.length} ejercicio(s): ${lista.join('; ')}. Comprobar en el balance y completar a mano.`);
+if (series.cuenta.some((f) => /PAGADO/.test(f.dpa_base || ''))) avisos.push('DPA: el XBRL solo trae el dividendo PAGADO en el ejercicio (final del año anterior + a cuenta), no el del año: corregir con el informe anual (ver `dpa_base` en cada ejercicio).');
 if (origen.normas === 'US GAAP') avisos.push('US GAAP: los intereses pagados van en explotación (intereses_en_financiacion = 0); `deuda_financiera` sale de los conceptos de deuda a largo y corto y puede incluir arrendamientos financieros: compruébalo en la nota de deuda.');
 avisos.push('BPA, DPA y acciones de cada ejercicio son los publicados ENTONCES: un split posterior (Apple 4:1 en 2020) no está reexpresado en los años viejos; ajústalos para que toda la serie esté en acciones de hoy.');
 avisos.push('`participadas_en_ebitda`, `no_recurrentes_en_ebitda` y `dpa_extraordinario` no están en el XBRL: míralos en el informe anual. `ebitda` = EBIT + amortizaciones del XBRL (sin ajustes de la empresa).');
@@ -311,7 +344,7 @@ if (series.cuenta.some((f) => f.ingresos === null)) avisos.push('Algún ejercici
 const resultado = {
   fuente: origen.fuente, entidad: origen.entidad, identificador: origen.identificador, normas: origen.normas, divisa, unidades: 'millones (BPA y DPA en unidades; acciones en millones)',
   generado: new Date().toISOString().slice(0, 10), ejercicios: fines, financieros: { cuenta: series.cuenta }, balance: { historico: series.balance }, flujos: { historico: series.flujos },
-  mapa: usado, faltan, avisos, documentos: origen.documentos,
+  mapa: usado, faltan, parciales, avisos, documentos: origen.documentos,
 };
 const dir = a.dir || '.';
 mkdirSync(dir, { recursive: true });

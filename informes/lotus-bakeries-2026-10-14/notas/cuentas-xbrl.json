@@ -78,9 +78,10 @@
         "participadas_en_ebitda": null,
         "no_recurrentes_en_ebitda": null,
         "bpa": 127.18,
-        "dpa": 40,
+        "dpa": 45,
         "dpa_extraordinario": null,
-        "acciones_diluidas": 0.8
+        "acciones_diluidas": 0.8,
+        "dpa_base": "solo el final propuesto del ejercicio (sin a cuenta): comprobar"
       },
       {
         "periodo": "2023",
@@ -100,9 +101,10 @@
         "participadas_en_ebitda": null,
         "no_recurrentes_en_ebitda": null,
         "bpa": 159.2,
-        "dpa": 45,
+        "dpa": 58,
         "dpa_extraordinario": null,
-        "acciones_diluidas": 0.8
+        "acciones_diluidas": 0.8,
+        "dpa_base": "devengo: final propuesto + a cuenta (pagado − final del año anterior)"
       },
       {
         "periodo": "2024",
@@ -122,9 +124,10 @@
         "participadas_en_ebitda": null,
         "no_recurrentes_en_ebitda": null,
         "bpa": 187.54,
-        "dpa": 58,
+        "dpa": 76,
         "dpa_extraordinario": null,
-        "acciones_diluidas": 0.8
+        "acciones_diluidas": 0.8,
+        "dpa_base": "devengo: final propuesto + a cuenta (pagado − final del año anterior)"
       },
       {
         "periodo": "2025",
@@ -144,9 +147,10 @@
         "participadas_en_ebitda": null,
         "no_recurrentes_en_ebitda": null,
         "bpa": 211.89,
-        "dpa": 76,
+        "dpa": 90,
         "dpa_extraordinario": null,
-        "acciones_diluidas": 0.8
+        "acciones_diluidas": 0.8,
+        "dpa_base": "devengo: final propuesto + a cuenta (pagado − final del año anterior)"
       }
     ]
   },
@@ -168,7 +172,7 @@
         "activos_contrato": null,
         "pasivos_contrato": null,
         "caja": 81.3,
-        "deuda_financiera": 198.2,
+        "deuda_financiera": 210.7,
         "arrendamientos": null,
         "patrimonio_neto": null,
         "minoritarios": 0.1,
@@ -190,7 +194,7 @@
         "activos_contrato": null,
         "pasivos_contrato": null,
         "caja": 132.2,
-        "deuda_financiera": 218.8,
+        "deuda_financiera": 236.3,
         "arrendamientos": null,
         "patrimonio_neto": null,
         "minoritarios": 0,
@@ -212,7 +216,7 @@
         "activos_contrato": null,
         "pasivos_contrato": null,
         "caja": 76.4,
-        "deuda_financiera": 196.1,
+        "deuda_financiera": 266.2,
         "arrendamientos": null,
         "patrimonio_neto": null,
         "minoritarios": 0,
@@ -234,7 +238,7 @@
         "activos_contrato": null,
         "pasivos_contrato": null,
         "caja": 131.2,
-        "deuda_financiera": 275.8,
+        "deuda_financiera": 290.5,
         "arrendamientos": null,
         "patrimonio_neto": null,
         "minoritarios": 0,
@@ -256,7 +260,7 @@
         "activos_contrato": null,
         "pasivos_contrato": null,
         "caja": 98.3,
-        "deuda_financiera": 180.5,
+        "deuda_financiera": 281.3,
         "arrendamientos": null,
         "patrimonio_neto": null,
         "minoritarios": 0,
@@ -278,7 +282,7 @@
         "activos_contrato": null,
         "pasivos_contrato": null,
         "caja": 121.9,
-        "deuda_financiera": 249.9,
+        "deuda_financiera": 312.3,
         "arrendamientos": null,
         "patrimonio_neto": null,
         "minoritarios": 0,
@@ -379,7 +383,7 @@
     "cuenta.acciones_diluidas": "AdjustedWeightedAverageShares",
     "cuenta.amortizaciones": "DepreciationAndAmortisationExpense",
     "cuenta.bpa": "DilutedEarningsLossPerShare",
-    "cuenta.dpa": "DividendsRecognisedAsDistributionsToOwnersPerShare",
+    "cuenta.dpa": "devengo (DividendsProposedOrDeclaredBeforeFinancialStatementsAuthorisedForIssueButNotRecognisedAsDistributionToOwnersPerShare + DividendsRecognisedAsDistributionsToOwnersPerShare)",
     "balance.activo_total": "Assets",
     "balance.activo_corriente": "CurrentAssets",
     "balance.pasivo_corriente": "CurrentLiabilities",
@@ -391,7 +395,7 @@
     "balance.clientes": "CurrentTradeReceivables",
     "balance.proveedores": "TradeAndOtherCurrentPayablesToTradeSuppliers",
     "balance.caja": "CashAndCashEquivalents",
-    "balance.deuda_financiera": "LongtermBorrowings",
+    "balance.deuda_financiera": "LongtermBorrowings + ShorttermBorrowings",
     "balance.minoritarios": "NoncontrollingInterests",
     "balance.reservas": "RetainedEarnings",
     "flujos.flujo_operativo": "CashFlowsFromUsedInOperatingActivities",
@@ -422,6 +426,7 @@
       "emision_acciones"
     ]
   },
+  "parciales": {},
   "avisos": [
     "BPA, DPA y acciones de cada ejercicio son los publicados ENTONCES: un split posterior (Apple 4:1 en 2020) no está reexpresado en los años viejos; ajústalos para que toda la serie esté en acciones de hoy.",
     "`participadas_en_ebitda`, `no_recurrentes_en_ebitda` y `dpa_extraordinario` no están en el XBRL: míralos en el informe anual. `ebitda` = EBIT + amortizaciones del XBRL (sin ajustes de la empresa)."

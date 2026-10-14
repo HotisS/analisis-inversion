@@ -58,3 +58,10 @@ No se lee entero: busca con `grep -n -i` la palabra del caso (arrendamiento, ant
 
 ## Sectores sueltos
 - **Semiconductores**: SEMI da 403.
+
+## Casos de la 6ª hora (14-oct-2026)
+- **Ticker cambiado** (Marsh McLennan MMC → MRSH el 14-ene-2026): `cuentas.mjs` y `form4.mjs` con el CIK; `simbolos.json` y `precios.mjs` con el ticker nuevo.
+- **Clases de acciones** (Lindt LISN = 10 LISP; Epiroc A/B): precio, número de acciones y BPA en la misma unidad; dejar la equivalencia en `identificacion`.
+- **Bolsas con cámara de compensación** (Euronext, Deutsche Börse, LSEG): el XBRL da como ingresos solo los de contratos con clientes (faltan los de tesorería) y la deuda a corto va aparte; corregir las dos cosas a mano. **Participadas cotizadas con minoritarios grandes** (Tradeweb en LSEG, ≈43 % económico): pedir el porcentaje económico en la nota A.
+- **Compradores en serie** (Diploma, Halma, Roper): el BPA estatutario resta la amortización de lo comprado y queda ≈28 % por debajo del ajustado del consenso; vale, pero historia del PER y PER actual en la misma base. ROIC publicado (con fondo de comercio) es la cifra correcta para ellos; para una compra única y grande (Refinitiv en LSEG, Borsa Italiana en Euronext) el ROIC sin fondo de comercio dice más del negocio (pendiente de regla, `METODO-VIGENTE.md`).
+- **Deuda asimilada fuera del XBRL** (factoring y confirming: Sartorius Stedim 307,8 M): pedirla en la nota A como dato del puente. **Deterioros grandes** (Symrise 2025: 299 M; BPA publicado 1,78 frente a 3,67 ajustado): el crecimiento del BPA parece del 36 % anual y es falso; usar el BPA normalizado en la historia y en el contraste de robustez.

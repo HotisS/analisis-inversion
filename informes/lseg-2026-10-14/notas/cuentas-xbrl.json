@@ -36,7 +36,8 @@
         "bpa": 1.19,
         "dpa": 0.23,
         "dpa_extraordinario": null,
-        "acciones_diluidas": null
+        "acciones_diluidas": null,
+        "dpa_base": "PAGADO en el ejercicio (final del año anterior + a cuenta): NO es el dividendo del año; corregir con el informe anual"
       },
       {
         "periodo": "2021",
@@ -56,9 +57,10 @@
         "participadas_en_ebitda": null,
         "no_recurrentes_en_ebitda": null,
         "bpa": 5.78,
-        "dpa": 0.25,
+        "dpa": 0.7,
         "dpa_extraordinario": null,
-        "acciones_diluidas": null
+        "acciones_diluidas": null,
+        "dpa_base": "solo el final propuesto del ejercicio (sin a cuenta): comprobar"
       },
       {
         "periodo": "2022",
@@ -78,9 +80,10 @@
         "participadas_en_ebitda": null,
         "no_recurrentes_en_ebitda": null,
         "bpa": 2.33,
-        "dpa": 0.32,
+        "dpa": 0.75,
         "dpa_extraordinario": null,
-        "acciones_diluidas": null
+        "acciones_diluidas": null,
+        "dpa_base": "solo el final propuesto (el a cuenta no se deduce del XBRL): comprobar"
       },
       {
         "periodo": "2023",
@@ -100,9 +103,10 @@
         "participadas_en_ebitda": null,
         "no_recurrentes_en_ebitda": null,
         "bpa": 1.38,
-        "dpa": 0.36,
+        "dpa": 0.79,
         "dpa_extraordinario": null,
-        "acciones_diluidas": null
+        "acciones_diluidas": null,
+        "dpa_base": "solo el final propuesto (el a cuenta no se deduce del XBRL): comprobar"
       },
       {
         "periodo": "2024",
@@ -122,9 +126,10 @@
         "participadas_en_ebitda": null,
         "no_recurrentes_en_ebitda": null,
         "bpa": 1.28,
-        "dpa": 0.41,
+        "dpa": 0.89,
         "dpa_extraordinario": null,
-        "acciones_diluidas": null
+        "acciones_diluidas": null,
+        "dpa_base": "solo el final propuesto (el a cuenta no se deduce del XBRL): comprobar"
       },
       {
         "periodo": "2025",
@@ -146,7 +151,8 @@
         "bpa": 2.37,
         "dpa": 0.47,
         "dpa_extraordinario": null,
-        "acciones_diluidas": null
+        "acciones_diluidas": null,
+        "dpa_base": "PAGADO en el ejercicio (final del año anterior + a cuenta): NO es el dividendo del año; corregir con el informe anual"
       }
     ]
   },
@@ -168,7 +174,7 @@
         "activos_contrato": null,
         "pasivos_contrato": 168,
         "caja": 1785,
-        "deuda_financiera": 1346,
+        "deuda_financiera": 1951,
         "arrendamientos": null,
         "patrimonio_neto": 3711,
         "minoritarios": 414,
@@ -212,7 +218,7 @@
         "activos_contrato": null,
         "pasivos_contrato": 257,
         "caja": 3209,
-        "deuda_financiera": 6856,
+        "deuda_financiera": 8151,
         "arrendamientos": 672,
         "patrimonio_neto": 25996,
         "minoritarios": 2155,
@@ -377,7 +383,7 @@
     "cuenta.impuestos": "IncomeTaxExpenseContinuingOperations",
     "cuenta.gastos_financieros": "FinanceCosts",
     "cuenta.bpa": "DilutedEarningsLossPerShare",
-    "cuenta.dpa": "DividendsPaidOrdinarySharesPerShare",
+    "cuenta.dpa": "PAGADO en el ejercicio (final del año anterior + a cuenta) (DividendsPaidOrdinarySharesPerShare)",
     "cuenta.minoritarios": "ProfitLossAttributableToNoncontrollingInterests",
     "cuenta.beneficio_neto": "ProfitLossAttributableToOwnersOfParent",
     "balance.activo_total": "Assets",
@@ -389,7 +395,7 @@
     "balance.proveedores": "TradeAndOtherCurrentPayables",
     "balance.pasivos_contrato": "CurrentContractLiabilities",
     "balance.caja": "CashAndCashEquivalents",
-    "balance.deuda_financiera": "LongtermBorrowings",
+    "balance.deuda_financiera": "LongtermBorrowings + ShorttermBorrowings",
     "balance.patrimonio_neto": "EquityAttributableToOwnersOfParent",
     "balance.minoritarios": "NoncontrollingInterests",
     "balance.reservas": "RetainedEarnings",
@@ -422,7 +428,14 @@
       "emision_acciones"
     ]
   },
+  "parciales": {
+    "flujos.desinversiones": [
+      "2020: CashFlowsFromLosingControlOfSubsidiariesOrOtherBusinessesClassifiedAsInvestingActivities (faltan ProceedsFromSalesOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities)"
+    ]
+  },
   "avisos": [
+    "flujos.desinversiones INCOMPLETO en 1 ejercicio(s): 2020: CashFlowsFromLosingControlOfSubsidiariesOrOtherBusinessesClassifiedAsInvestingActivities (faltan ProceedsFromSalesOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities). Comprobar en el balance y completar a mano.",
+    "DPA: el XBRL solo trae el dividendo PAGADO en el ejercicio (final del año anterior + a cuenta), no el del año: corregir con el informe anual (ver `dpa_base` en cada ejercicio).",
     "BPA, DPA y acciones de cada ejercicio son los publicados ENTONCES: un split posterior (Apple 4:1 en 2020) no está reexpresado en los años viejos; ajústalos para que toda la serie esté en acciones de hoy.",
     "`participadas_en_ebitda`, `no_recurrentes_en_ebitda` y `dpa_extraordinario` no están en el XBRL: míralos en el informe anual. `ebitda` = EBIT + amortizaciones del XBRL (sin ajustes de la empresa)."
   ],
