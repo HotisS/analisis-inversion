@@ -259,6 +259,9 @@ function cargarIbkr(dir = join(DATOS, 'ibkr')) {
   for (const x of cuentas.values()) {
     if (x.histFlex) { // manda el Flex (trae dividendos e ingresos); del conector, solo lo que el Flex no cubre
       const k = (o) => `${o.trade_time.slice(0, 10)}|${ALIAS_IBKR[o.symbol] || o.symbol}|${/SELL/i.test(o.side) ? 'S' : 'B'}|${+o.size}|${(+o.price).toFixed(4)}`;
+      // Si el Flex no trae el beneficio de una venta (cuentas sin coste fiscal en IBKR), se toma el del conector.
+      const pnlConector = new Map((x.hist?.operaciones || []).filter((o) => +o.realized_pnl).map((o) => [k(o), +o.realized_pnl]));
+      x.histFlex.operaciones = x.histFlex.operaciones.map((o) => (!+o.realized_pnl && pnlConector.has(k(o)) ? { ...o, realized_pnl: pnlConector.get(k(o)) } : o));
       const enFlex = new Set(x.histFlex.operaciones.map(k)), desdeFlex = x.histFlex.periodo?.desde || '9999';
       const solo = (x.hist?.operaciones || []).filter((o) => !enFlex.has(k(o)) && o.trade_time.slice(0, 10) < desdeFlex);
       x.hist = { ...x.histFlex, operaciones: solo.concat(x.histFlex.operaciones).sort((a, b) => a.trade_time.localeCompare(b.trade_time)),
@@ -656,6 +659,20 @@ function filasFlexXml(texto) {
   }
   return filas;
 }
+// El Flex escribe algunos símbolos distinto que el conector: con la bolsa (4568.T) o con una minúscula al final en
+// Madrid (FDRe). Se dejan como el conector para que posiciones, operaciones y dividendos casen.
+const simboloFlex = (s) => { const t = String(s || '').trim(); return t.replace(/\.[A-Z]{1,2}$/, '').replace(/^([A-Z0-9]{2,})[a-z]+$/, '$1') || t; };
+// Algunas cuentas traen fifoPnlRealized a 0 en todas las ventas; entonces el beneficio sale de lo cobrado, la comisión
+// y el coste de lo vendido («cost», en negativo en las ventas): es la misma cuenta que hace IBKR.
+const realizadoFlex = (x) => {
+  const pnl = num(campo(x, 'fifoPnlRealized', 'realizedPnl'));
+  if (pnl) return pnl;
+  const q = num(campo(x, 'quantity')), coste = num(campo(x, 'cost')), cobrado = num(campo(x, 'proceeds'));
+  if (!(q < 0) || !coste || cobrado === null) return 0;
+  return Math.round((cobrado + (num(campo(x, 'ibCommission')) || 0) + coste) * 100) / 100;
+};
+// Los de PENIQUES el conector los da en peniques aunque diga GBP; el Flex, en libras: se pasan a peniques para que casen.
+const enPeniques = (x) => (PENIQUES.has(simboloFlex(campo(x, 'symbol'))) && /^GBP$/i.test(campo(x, 'currency') || '') ? 100 : 1);
 async function flexAEstructura(filas, cuenta) {
   const info = filas.find((x) => x._tag === 'AccountInformation') || {};
   const st = filas.find((x) => x._tag === 'FlexStatement') || {};
@@ -666,22 +683,22 @@ async function flexAEstructura(filas, cuenta) {
     const nivel = campo(x, 'levelOfDetail'); if (nivel && !/EXECUTION/i.test(nivel)) continue;
     if (!accion(x)) continue;
     const q = num(campo(x, 'quantity'));
-    operaciones.push({ trade_id: campo(x, 'tradeID', 'transactionID', 'ibExecID'), trade_time: `${fechaIbkr(campo(x, 'tradeDate', 'dateTime'))}T00:00:00Z`, symbol: campo(x, 'symbol'), company_name: campo(x, 'description'),
-      sec_type: 'STK', currency: campo(x, 'currency', 'currencyPrimary'), side: /SELL/i.test(campo(x, 'buySell') || '') || q < 0 ? 'SELL' : 'BUY', size: Math.abs(q), price: num(campo(x, 'tradePrice')),
-      commission: Math.abs(num(campo(x, 'ibCommission', 'commission')) || 0), realized_pnl: num(campo(x, 'fifoPnlRealized', 'realizedPnl')) || 0, exchange: campo(x, 'listingExchange', 'exchange') });
+    operaciones.push({ trade_id: campo(x, 'tradeID', 'transactionID', 'ibExecID'), trade_time: `${fechaIbkr(campo(x, 'tradeDate', 'dateTime'))}T00:00:00Z`, symbol: simboloFlex(campo(x, 'symbol')), company_name: campo(x, 'description'),
+      sec_type: 'STK', currency: campo(x, 'currency', 'currencyPrimary'), side: /SELL/i.test(campo(x, 'buySell') || '') || q < 0 ? 'SELL' : 'BUY', size: Math.abs(q), price: num(campo(x, 'tradePrice')) * enPeniques(x),
+      commission: Math.abs(num(campo(x, 'ibCommission', 'commission')) || 0), realized_pnl: realizadoFlex(x), exchange: campo(x, 'listingExchange', 'exchange') });
   }
   for (const x of filas.filter((y) => y._tag === 'CashTransaction')) {
     const nivel = campo(x, 'levelOfDetail'); if (nivel && !/DETAIL/i.test(nivel)) continue;
     const t = campo(x, 'type') || '', fecha = fechaIbkr(campo(x, 'dateTime', 'settleDate', 'reportDate'));
     const fx = num(campo(x, 'fxRateToBase')) ?? 1, imp = (num(campo(x, 'amount')) || 0) * fx * ((await eurPor(base, fecha)) ?? 1);
-    if (/Dividend|Payment In Lieu|Withholding/i.test(t)) dividendos.push({ fecha, symbol: campo(x, 'symbol'), importe_eur: r(imp, 2), tipo: t });
+    if (/Dividend|Payment In Lieu|Withholding/i.test(t)) dividendos.push({ fecha, symbol: simboloFlex(campo(x, 'symbol')), importe_eur: r(imp, 2), tipo: t });
     else if (/Deposit|Withdraw/i.test(t)) dividendos.push({ fecha, symbol: null, importe_eur: r(imp, 2), tipo: imp >= 0 ? 'ingreso' : 'retirada' });
   }
   for (const x of filas.filter((y) => y._tag === 'OpenPosition')) {
     const nivel = campo(x, 'levelOfDetail'); if (nivel && !/SUMMARY/i.test(nivel)) continue;
     if (!accion(x)) continue;
-    posiciones.push({ simbolo: campo(x, 'symbol'), nombre: campo(x, 'description'), mercado: campo(x, 'listingExchange'), divisa: campo(x, 'currency', 'currencyPrimary'),
-      titulos: num(campo(x, 'position')), precio: num(campo(x, 'markPrice')), coste_medio: num(campo(x, 'costBasisPrice')) });
+    posiciones.push({ simbolo: simboloFlex(campo(x, 'symbol')), nombre: campo(x, 'description'), mercado: campo(x, 'listingExchange'), divisa: campo(x, 'currency', 'currencyPrimary'),
+      titulos: num(campo(x, 'position')), precio: num(campo(x, 'markPrice')) * enPeniques(x), coste_medio: enPeniques(x) * (num(campo(x, 'costBasisPrice')) || (num(campo(x, 'costBasisMoney')) && num(campo(x, 'position')) ? num(campo(x, 'costBasisMoney')) / num(campo(x, 'position')) : null) || num(campo(x, 'openPrice')) || 0) });
   }
   const caja = filas.filter((y) => y._tag === 'CashReportCurrency' && /BASE/i.test(campo(y, 'currency') || ''));
   const liq = caja.length ? num(campo(caja.at(-1), 'endingCash', 'endingSettledCash')) : null;
@@ -703,13 +720,18 @@ async function procesarFlex(texto, forzada = null) {
   for (const k of Object.keys(alias)) if (!/^[0-9a-f]{16}$/.test(k)) delete alias[k]; // nunca números en claro
   const huella = (n) => createHash('sha256').update(`cartera-real|${n}`).digest('hex').slice(0, 16);
   const conector = [...cargarIbkr().values()].filter((x) => x.foto && !/Flex/i.test(x.foto.fuente || ''));
-  const firma = (pos) => (pos || []).map((p) => `${ALIAS_IBKR[p.simbolo] || p.simbolo}:${+p.titulos}`).sort().join(',');
+  // El Flex pone la bolsa en el símbolo (4568.T) y el conector no (4568): se compara sin ella. Si no coinciden del todo
+  // (una compra o venta entre las dos fechas), vale la cuenta del conector que comparte al menos el 80 % de posiciones.
+  const pieza = (p) => { const s = String(p.simbolo).trim().replace(/\.[A-Z]{1,3}$/, ''); return `${ALIAS_IBKR[s] || s}:${+p.titulos}`; };
+  const firma = (pos) => (pos || []).map(pieza).sort().join(',');
+  const parecido = (a, b) => { const A = new Set((a || []).map(pieza)), B = (b || []).map(pieza); return A.size && B.length ? B.filter((x) => A.has(x)).length / Math.max(A.size, B.length) : 0; };
   let n = 0;
   for (const [num0, g] of grupos) {
     let cuenta = forzada && grupos.size === 1 ? forzada : alias[huella(num0)];
     const est = await flexAEstructura(g, 'x');
     if (!cuenta) {
-      const igual = conector.find((c) => firma(c.foto.posiciones) === firma(est.foto.posiciones) && firma(est.foto.posiciones));
+      const igual = conector.find((c) => firma(c.foto.posiciones) === firma(est.foto.posiciones) && firma(est.foto.posiciones))
+        || conector.find((c) => parecido(c.foto.posiciones, est.foto.posiciones) >= 0.8);
       const usadas = new Set(Object.values(alias).concat(conector.map((c) => c.cuenta)));
       cuenta = igual?.cuenta; for (let i = 2; !cuenta; i++) if (!usadas.has(`cuenta-${i}`)) cuenta = `cuenta-${i}`;
     }
