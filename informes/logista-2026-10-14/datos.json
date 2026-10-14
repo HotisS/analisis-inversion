@@ -1,0 +1,3818 @@
+{
+  "meta": {
+    "fecha_corte": "2026-10-14",
+    "divisa": "EUR",
+    "divisa_cotizacion": "EUR",
+    "tipo_cambio": 1,
+    "unidades": "millones",
+    "cierre_ejercicio_mes": 9,
+    "etiqueta_ejercicio": "fin",
+    "normas_contables": "NIIF-UE",
+    "formato_cuenta": "naturaleza",
+    "limitaciones": "Análisis hecho desde la nube con la red limitada a la búsqueda web: la web de Logista, la CNMV y los proveedores de datos no se pudieron abrir, así que las cifras salen de extractos de búsqueda de las notas de resultados, de la prensa económica (Europa Press, Alimarket, Merca2) y de agregadores (Stock Analysis, MarketScreener, roic.ai, TipRanks, Fintel), cruzadas cuando fue posible; lo que no cuadró está en null y en los huecos. Confianza de los datos de núcleo: baja. Precio: 35,86 EUR del 13-oct-2026 (XTB, por la mañana), no un cierre oficial de la Bolsa de Madrid. Ejercicio de octubre a septiembre, con la etiqueta del año en que termina (FY2025 = oct-24 a sep-25). Ingresos brutos con impuestos especiales y producto repercutidos: los márgenes sobre ingresos son bajos por construcción; la medida de gestión son las ventas económicas. EBITDA = EBIT publicado + amortización (estimación propia). El balance de los agregadores no separa el crédito a Imperial (la caja flotante, ≈2.000-2.700 M) ni el circulante. La caja del puente es la tesorería en bancos más el valor de la renta de intereses de la caja flotante (estimación propia, 730 M), no su importe nominal. Comparables tomados de los informes de DSV y Rentokil del repositorio (7-oct).",
+    "controles_explicados": [
+      {
+        "control": "Deuda neta del puente = la del último balance anual",
+        "explicacion": "El puente suma a la tesorería en bancos (175 M) el valor de la caja flotante prestada a Imperial, valorada como renta perpetua de sus intereses después de impuestos (≈730 M, estimación propia), porque es flotante de impuestos que no se puede repartir. El balance de los agregadores solo recoge la tesorería en bancos."
+      },
+      {
+        "control": "ROIC",
+        "explicacion": "El ROIC del motor (49,6 %) se calcula sobre patrimonio + deuda − tesorería en bancos (≈490 M). El capital invertido operativo real es negativo: el circulante (impuestos cobrados y no pagados) financia ≈2.500 M de caja prestada a Imperial. El ROIC no tiene sentido como cifra; lo que dice es que el negocio no consume capital."
+      }
+    ],
+    "huecos": [
+      {
+        "seccion": "balance",
+        "campo": "historico (crédito a Imperial al cierre, circulante, deuda y arrendamientos)",
+        "tipo": "Núcleo",
+        "intentos": "1) Anuncio de resultados FY25 y cuentas intermedias FY26 en búsqueda; 2) Fintel, Simply Wall St y Stock Analysis; 3) prensa (Merca2, Bankinter): solo caja media estimada por analistas",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "financieros",
+        "campo": "cuenta (EBITDA y EBIT FY2021-FY2023, resultado financiero, impuestos, minoritarios)",
+        "tipo": "Núcleo",
+        "intentos": "1) Notas de resultados FY23-FY25; 2) Stock Analysis y TipRanks; 3) MarketScreener: solo ingresos, beneficio y BPA",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "negocio",
+        "campo": "segmentos (ventas económicas y EBIT ajustado por región, 5 años)",
+        "tipo": "Complemento",
+        "intentos": "1) Presentaciones FY24-FY25; 2) prensa de resultados: solo ventas económicas FY2024 (Iberia 1.144, Italia 402, Francia 216 M); 3) sin serie completa",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "flujos",
+        "campo": "historico FY2021-FY2024",
+        "tipo": "Núcleo",
+        "intentos": "1) Estados de flujos de los informes anuales; 2) TipRanks y Stock Analysis (series sin asignación clara a ejercicios); 3) Investing: solo FCF FY2024-FY2025",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sector",
+        "campo": "tamaño y serie del mercado de distribución de tabaco en el sur de Europa",
+        "tipo": "Núcleo",
+        "intentos": "1) Estadísticas del Comisionado para el Mercado de Tabacos y de las aduanas italiana y francesa en búsqueda; 2) informes sectoriales; 3) presentaciones de Logista: sin cifra en los extractos",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "competencia",
+        "campo": "ingresos, cuota y margen de los competidores",
+        "tipo": "Complemento",
+        "intentos": "1) No hay competidores cotizados equivalentes; 2) distribuidores farmacéuticos (no cotizan); 3) operadores de transporte: márgenes no comparables",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "consejo completo, remuneración, votos y operaciones de directivos",
+        "tipo": "Núcleo",
+        "intentos": "1) IAGC e IARC 2025 en búsqueda; 2) CNMV (sin acceso desde este entorno); 3) prensa de la junta de febrero de 2026: sin datos",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "bolsa",
+        "campo": "beta, volatilidad, caída máxima y rentabilidades frente al IBEX",
+        "tipo": "Complemento",
+        "intentos": "1) bolsa.mjs (sin red); 2) Yahoo e Investing en búsqueda; 3) prensa: solo cierres anuales y rango de 52 semanas",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "transacciones",
+        "campo": "operaciones del sector con múltiplo",
+        "tipo": "Complemento",
+        "intentos": "1) Compras de Logista (El Mosca, farma): sin importes en los extractos; 2) operaciones de distribuidores de tabaco en Europa; 3) prensa: sin múltiplos",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "identificacion",
+        "campo": "precio de cierre oficial del 13 o 14-oct",
+        "tipo": "Núcleo",
+        "intentos": "1) Bolsa de Madrid (sin acceso); 2) Bolsamanía (35,36 EUR el 9-oct); 3) XTB, 13-oct por la mañana: 35,86 EUR",
+        "decision": "Calculado y marcado como estimación"
+      },
+      {
+        "seccion": "sentimiento",
+        "campo": "Reddit, Stocktwits y Seeking Alpha",
+        "tipo": "Complemento",
+        "intentos": "1) Búsqueda en Reddit; 2) Seeking Alpha; 3) Stocktwits: sin hilos recientes en los extractos (solo WebSearch)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "valoracion",
+        "campo": "puente (caja flotante prestada a Imperial al 30-sep-25)",
+        "tipo": "Núcleo",
+        "intentos": "1) Anuncio de resultados FY25 en búsqueda; 2) balance de Fintel y Simply Wall St (solo tesorería en bancos); 3) Merca2 y Bankinter: caja media de 2.200-2.700 M estimada por analistas",
+        "decision": "Calculado y marcado como estimación"
+      }
+    ]
+  },
+  "identificacion": {
+    "nombre": "Compañía de Distribución Integral Logista Holdings, S.A.",
+    "nombre_corto": "Logista",
+    "ticker": "LOG",
+    "isin": "ES0105027009",
+    "mercado": "Bolsa de Madrid (Mercado Continuo)",
+    "indice_referencia": "IBEX 35",
+    "pais": "España",
+    "pais_iso": "ES",
+    "sector": "Industria",
+    "industria": "Distribución y logística (tabaco, conveniencia, farma, transporte)",
+    "sede": "Leganés (Madrid)",
+    "fundacion": "1999",
+    "empleados": null,
+    "web": "www.logista.com",
+    "precio": 35.86,
+    "fecha_precio": "2026-10-13",
+    "acciones": 132.5,
+    "capitalizacion_publicada": null,
+    "free_float_pct": 49.99,
+    "max_52s": 36.9,
+    "min_52s": 28.74,
+    "volumen_medio_diario": null,
+    "proximos_resultados": "2026-11-05"
+  },
+  "resumen": {
+    "recomendacion": "Mantener",
+    "conviccion": "Baja",
+    "justificacion_recomendacion": null,
+    "horizonte": "12 meses",
+    "sintesis": "**La recomendación y por qué.** Mantener, con convicción baja. Con nuestro BPA y la regla común de PER, el objetivo a 12 meses es de 30,79 EUR frente a 35,86 EUR del 13 de octubre: −8,3 % con el dividendo y −6,1 % en el caso base, lejos del 15 % que pedimos para comprar. El valor intrínseco, 43,22 EUR, queda un 20,5 % por encima del precio, y el objetivo medio de los analistas (32,54 EUR) también por debajo de la cotización. Las dos lecturas chocan porque la acción cotiza a 16,5 veces nuestro BPA del FY2027e, el PER adelantado más alto de su historia (8,9-13,6x en 2020-2025): el negocio vale más que el precio, pero el múltiplo ya ha corrido. La asimetría a 12 meses es mala (0,33x: +22,3 % frente a −43,2 %). La convicción es baja y no media (la que sugiere el motor) porque las cifras de núcleo salen de extractos de búsqueda, sin balance completo ni la caja prestada a Imperial al cierre.\n\n**El negocio.** Logista es el distribuidor de tabaco a los estancos de España, Italia y Francia por cuenta de todos los fabricantes, con transporte y farma al lado: 13.535 M de ingresos brutos en el FY2025 que se quedan en 1.809 M de ventas económicas y 378 M de EBIT ajustado [1]. Cobra los impuestos del tabaco antes de pagarlos y presta esa caja flotante (≈2.500 M de media) a Imperial, su accionista de control con el 50,01 % [15, 24]. No consume capital (capex de 54 M) y reparte el 99 % del beneficio [14, 23]. Sostenibilidad: «Sí»; el 2,1 % de crecimiento proyectado sale del precio por impuestos, con volúmenes de cigarrillos a la baja.\n\n**Finanzas.** El beneficio pasó de 175 M (FY2021) a 308 M (FY2024) con los tipos altos, y bajó a 281 M en el FY2025 porque los ingresos financieros cayeron de 103 a 73 M [1, 15]. A nueve meses del FY2026: EBIT ajustado +3 % y beneficio −1,8 % (210 M) [5].\n\n**Equipo y gobierno.** Imperial es a la vez accionista de control, cliente y prestatario de la caja de Logista: la operación vinculada más relevante, que se renueva en 2027 [17].\n\n**Valoración.** El DCF da 43,45 EUR. El DCF inverso dice que el precio se sostiene con ingresos cayendo un 1,3 % al año hasta 2035 y deja una rentabilidad implícita del 9,0 %: los flujos no son caros. Lo caro es el múltiplo frente a su historia. La caja flotante, contada por el valor de sus intereses (730 M), mueve el valor: entre ≈38 y ≈57 EUR según cómo se trate.\n\n**Riesgos y catalizadores.** El riesgo principal es que el PER vuelva a 12x (bajista a 12 meses −43,2 % con el mínimo de 8,9x); después, tipos más bajos y peores condiciones con Imperial. Catalizador: resultados del FY2026 a principios de noviembre. En los foros el tono es positivo y mejora: el particular la compra como un bono con cupón del 6 %, mientras los analistas son neutrales.\n\n**Qué cambiaría la decisión.** Compraríamos por debajo de 28,61 EUR (ahí pasan los umbrales de rentabilidad; el valor intrínseco y la calidad ya se cumplen). Venderíamos por encima de 36,56 EUR, a solo un 2 % del precio. Para pasar a Comprar habría además que confirmar con fuente primaria la caja prestada a Imperial y el balance.",
+    "tesis": "Logista es un peaje sobre el tabaco del sur de Europa: distribuye a decenas de miles de estancos por cuenta de todos los fabricantes, sin riesgo de precio del producto y sin necesidad de capital, y se financia con los impuestos que cobra antes de pagarlos [1, 15]. Esa estructura le permite repartir el 99 % del beneficio (2,09 EUR por acción) [19].\n\nA 35,86 EUR, el precio descuenta flujos que caen un 1,3 % al año: con el DCF, la acción vale 43,22 EUR. Pero cotiza a 16,5x el beneficio del próximo ejercicio, cuando en 2020-2025 cotizó entre 8,9x y 13,6x.\n\nEl mercado ha recalificado a Logista como un bono con dividendo asegurado justo cuando los tipos bajan. Puede tener razón a largo plazo, pero a 12 meses la regla de múltiplos no deja margen: el beneficio crece un 3 % y el múltiplo tiene más recorrido a la baja que al alza.",
+    "vision_diferencial": {
+      "mercado_descuenta": "Que el PER de 16,5x es el nuevo normal para un dividendo del 5,8 % asegurado, con tipos a la baja y el tabaco estable.",
+      "nuestra_vision": "El negocio vale ≈43 EUR por flujos, pero a 12 meses el beneficio solo crece un 3 % al año y el múltiplo está en el máximo de su historia: lo más probable es que devuelva parte de la subida del 25 % desde septiembre de 2025.",
+      "por_que": "Nada en el negocio ha cambiado desde el cierre del FY2025 (EBIT ajustado +3 %, ingresos financieros a la baja); la subida es de múltiplo y los analistas no la han seguido (objetivo medio de 32,54 EUR)."
+    },
+    "a_favor": [
+      "**Valor intrínseco por encima del precio**: 43,22 EUR, +20,5 %.",
+      "**Dividendo asegurado**: al menos 2,09 EUR (5,9 % de rentabilidad) y payout del 99 %.",
+      "**Sin necesidad de capital**: capex de 54 M frente a 488 M de EBITDA.",
+      "**Posición dominante** en la distribución a estancos de España, Italia y Francia.",
+      "**Guía en camino**: EBIT ajustado +3 % a nueve meses."
+    ],
+    "en_contra": [
+      "**PER adelantado en máximos**: 16,5x frente a 8,9-13,6x en 2020-2025.",
+      "**Objetivo a 12 meses por debajo del precio**: −8,3 % ponderado y −6,1 % en el base.",
+      "**Beneficio ligado a los tipos**: ingresos financieros de 103 a 73 M.",
+      "**Dependencia de Imperial**: accionista, cliente y prestatario a la vez.",
+      "**Volumen de tabaco a la baja**: Francia −2 % en ventas económicas."
+    ],
+    "que_vigilar": "La tesis depende de que el múltiplo no vuelva a su historia y de que la caja flotante siga rindiendo ≈70 M al año. La señal de que no se cumple: una renovación de la línea con Imperial por debajo de Euribor + 75 pb o un PER que vuelva a 13x con el beneficio estable.",
+    "cambiaria_recomendacion": [
+      "Precio por debajo de 28,61 EUR: Comprar (pasarían los umbrales de rentabilidad; el valor real y la calidad ya se cumplen), tras confirmar balance y caja con fuente primaria.",
+      "Precio por encima de 36,56 EUR: Vender.",
+      "Línea con Imperial renovada en peores condiciones: revisar a la baja el BPA y el puente.",
+      "Guía del FY2027 con EBIT ajustado +6 % o más y compras en farma: revisar al alza el base."
+    ],
+    "kpis_seguimiento": [
+      {
+        "kpi": "EBIT ajustado",
+        "nivel_actual": "296 M a 9 meses (+3 %)",
+        "umbral_alerta": "Crecimiento < 0 %",
+        "por_que": "Es la medida de la guía."
+      },
+      {
+        "kpi": "Ingresos financieros",
+        "nivel_actual": "73 M (FY2025)",
+        "umbral_alerta": "< 55 M",
+        "por_que": "≈20 % del beneficio antes de impuestos."
+      },
+      {
+        "kpi": "Ventas económicas de Francia",
+        "nivel_actual": "−2 % a 9 meses",
+        "umbral_alerta": "< −5 %",
+        "por_que": "Velocidad del declive del cigarrillo."
+      },
+      {
+        "kpi": "PER adelantado",
+        "nivel_actual": "16,5x",
+        "umbral_alerta": "> 17,5x (vender)",
+        "por_que": "Máximo histórico."
+      }
+    ],
+    "confianza": "Baja"
+  },
+  "historia": {
+    "resumen": "Logista nace de Tabacalera, el antiguo monopolio estatal español del tabaco: al fusionarse con Seita en 1999 (Altadis), su red de distribución se separó y salió a bolsa. Imperial Tobacco compró Altadis en 2008 y con ella el control de Logista. En 2014 volvió a bolsa como Compañía de Distribución Integral Logista Holdings, y en 2022 Imperial vendió parte para quedarse con el 50,01 % [24]. Desde entonces diversifica con compras de transporte (El Mosca) y logística farmacéutica [15, 17].",
+    "hitos": [
+      {
+        "anio": "1999",
+        "hito": "Tabacalera y Seita forman Altadis; Logista agrupa la distribución."
+      },
+      {
+        "anio": "2008",
+        "hito": "Imperial Tobacco compra Altadis y el control de Logista."
+      },
+      {
+        "anio": "2014",
+        "hito": "Vuelve a cotizar (OPV de Imperial)."
+      },
+      {
+        "anio": "2016",
+        "hito": "Integra Logista France tras comprar la parte de Imperial."
+      },
+      {
+        "anio": "2022",
+        "hito": "Compra del 73,33 % de El Mosca; Imperial baja al 50,01 %."
+      },
+      {
+        "anio": "2024",
+        "hito": "Línea de tesorería con Imperial ampliada a 3.000 M hasta 2027."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "negocio": {
+    "segmentos": [],
+    "kpis": [
+      {
+        "kpi": "Ventas económicas del grupo",
+        "valor_anterior": "1.757 M EUR (FY2024)",
+        "valor_actual": "1.809 M EUR (FY2025)",
+        "variacion": "+3,0 %",
+        "comentario": "[1, 7]"
+      },
+      {
+        "kpi": "EBIT ajustado",
+        "valor_anterior": "385 M EUR (FY2024)",
+        "valor_actual": "378 M EUR (FY2025)",
+        "variacion": "−1,9 %",
+        "comentario": "[1, 7]"
+      },
+      {
+        "kpi": "Ingresos financieros",
+        "valor_anterior": "103 M EUR (FY2024)",
+        "valor_actual": "73 M EUR (FY2025)",
+        "variacion": "−29 %",
+        "comentario": "[15]"
+      },
+      {
+        "kpi": "Ventas económicas a 9 meses",
+        "valor_anterior": "≈1.361 M EUR (9M FY25)",
+        "valor_actual": "1.376 M EUR (9M FY26)",
+        "variacion": "+1,1 %",
+        "comentario": "[5]"
+      }
+    ],
+    "confianza": "Media",
+    "descripcion": "Logista distribuye productos de tabaco, conveniencia, recarga electrónica, farmacia y otros a unos 200.000-300.000 puntos de venta en España, Portugal, Italia, Francia y Polonia. Es el principal distribuidor a los estancos en España, Italia y Francia, por cuenta de todos los fabricantes (Imperial, Philip Morris, JTI, BAT). Fuera del tabaco tiene transporte (paquetería, larga distancia, temperatura controlada) y distribución farmacéutica [1, 15]. Ingresos brutos de 13.535 M en el FY2025, de los que las ventas económicas (lo que queda tras pagar el producto y los impuestos) son 1.809 M [1].",
+    "como_gana_dinero": "Cobra una tarifa por unidad distribuida (cajetilla o producto) a los fabricantes, sin riesgo de precio del producto: el margen depende del volumen y de la tarifa, que se revisa con los fabricantes. Además cobra a los estancos los impuestos especiales antes de pagarlos a Hacienda, lo que le da una caja flotante de ≈2.000-2.700 M que presta a Imperial y que rindió 73 M en el FY2025 [15]. Cuando sube el precio o el impuesto del tabaco, el inventario se revaloriza (≈35-45 M al año) [1, 7]. El negocio no necesita capital: capex de ≈54 M al año.",
+    "geografias": [],
+    "geografias_criterio": "origen",
+    "clientes": "Los clientes que pagan son los fabricantes de tabaco: Imperial (accionista de control) y los grandes competidores, con contratos plurianuales. Los puntos de venta son decenas de miles de estancos sin concentración. El poder de precios está acotado por los contratos y por la caída del volumen de cigarrillos (Francia: ventas económicas −2 % en nueve meses del FY2026) [4, 5]."
+  },
+  "sector": {
+    "definicion": "Distribución mayorista de tabaco y productos de conveniencia a estancos en el sur de Europa (España, Italia, Francia, Portugal), más logística farmacéutica y transporte. GICS: Industria / Transporte y logística. El tabaco es un mercado regulado (estancos con licencia, impuestos especiales) con volúmenes de cigarrillos en descenso del 2-4 % anual y precios al alza por impuestos.",
+    "tamano": null,
+    "unidad_serie": null,
+    "serie": [],
+    "tcac_historico_pct": null,
+    "tcac_previsto_pct": null,
+    "cr5_pct": null,
+    "estructura": "Concentrada",
+    "drivers": [
+      {
+        "driver": "Volumen de cigarrillos",
+        "efecto": "−",
+        "horizonte": "Estructural",
+        "evidencia": "Francia, ventas económicas −2 % en 9M FY26 y ingresos −3,4 % en el semestre [4, 5]."
+      },
+      {
+        "driver": "Subidas de precio e impuestos del tabaco",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Revalorización de inventarios de ≈35-45 M al año [1, 7]."
+      },
+      {
+        "driver": "Productos de nueva generación (calentado, vapeo, nicotina oral)",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Italia crece (ingresos +6,3 % en el 1S26) [4]."
+      },
+      {
+        "driver": "Tipos de interés",
+        "efecto": "+/−",
+        "horizonte": "Cíclico",
+        "evidencia": "Ingresos financieros de 103 M (FY2024) a 73 M (FY2025) [15]."
+      },
+      {
+        "driver": "Diversificación (farma, transporte)",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Bankinter espera EBIT ajustado +4/+6 % en 2026 [25]."
+      }
+    ],
+    "porter": [
+      {
+        "fuerza": "Rivalidad",
+        "intensidad": 1,
+        "justificacion": "Logista es el distribuidor dominante en España, Italia y Francia; la red de estancos y la regulación hacen inviable duplicarla."
+      },
+      {
+        "fuerza": "Poder de los clientes",
+        "intensidad": 3,
+        "justificacion": "Cuatro fabricantes concentran el tabaco; Imperial es además el accionista de control."
+      },
+      {
+        "fuerza": "Poder de los proveedores",
+        "intensidad": 2,
+        "justificacion": "Transporte y almacenes subcontratables; el coste laboral es el principal."
+      },
+      {
+        "fuerza": "Amenaza de entrada",
+        "intensidad": 1,
+        "justificacion": "Escala, licencias y relación con miles de estancos."
+      },
+      {
+        "fuerza": "Amenaza de sustitutos",
+        "intensidad": 3,
+        "justificacion": "Caída estructural del cigarrillo; compensada en parte por productos de nueva generación que también distribuye."
+      }
+    ],
+    "ciclo": {
+      "posicion": "Madurez del ciclo",
+      "comentario": "El tabaco es poco cíclico: en 2008-09 y en 2020 los volúmenes siguieron su tendencia de caída lenta; el precio sube cada año por impuestos. Lo cíclico en Logista es el transporte y los tipos de interés, que movieron el beneficio un ±10 % en 2023-2025 [1, 15]."
+    },
+    "regulacion": "La directiva europea de impuestos al tabaco (en revisión) y las subidas de impuestos nacionales elevan precios y revalorizan inventarios a corto plazo, pero reducen el volumen. La regulación de productos de nueva generación (sabores, nicotina oral) está en debate en la UE y en Francia.",
+    "tendencias": "Paso del cigarrillo a calentado y nicotina oral, que Logista también distribuye; concentración del comercio de conveniencia; crecimiento de la logística farmacéutica, donde Logista compra para crecer.",
+    "confianza": "Baja"
+  },
+  "competencia": {
+    "cuota_pct": null,
+    "posicion": "Primer distribuidor de tabaco a estancos del sur de Europa (España, Italia y Francia); pequeño en transporte y farma.",
+    "competidores": [
+      {
+        "nombre": "Distribución propia de los fabricantes",
+        "pais": "Europa",
+        "ticker": null,
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Alternativa teórica: los fabricantes podrían distribuir por su cuenta, pero perderían la escala compartida."
+      },
+      {
+        "nombre": "Distribuidores farmacéuticos (Cofares, Alliance Healthcare)",
+        "pais": "España/Italia",
+        "ticker": null,
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Competencia en la logística farmacéutica donde Logista quiere crecer."
+      },
+      {
+        "nombre": "Operadores de transporte (DHL, GXO, ID Logistics)",
+        "pais": "Europa",
+        "ticker": "DHL",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Competencia en transporte y logística por contrato."
+      }
+    ],
+    "foso": {
+      "veredicto": "Estrecho",
+      "tendencia": "Se estrecha",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 2,
+          "evidencia": "La red de puntos de venta atrae a todos los fabricantes y viceversa."
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 3,
+          "evidencia": "Cambiar de distribuidor exige rehacer la logística a miles de estancos."
+        },
+        {
+          "fuente": "Intangibles (marca, patentes, licencias)",
+          "puntuacion": 2,
+          "evidencia": "Autorizaciones de distribución de tabaco; sin marca propia."
+        },
+        {
+          "fuente": "Ventaja en costes",
+          "puntuacion": 3,
+          "evidencia": "Densidad de rutas que nadie más tiene."
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 4,
+          "evidencia": "Mercado que solo admite un distribuidor eficiente por país."
+        }
+      ]
+    },
+    "amenazas": "El foso es la escala en un mercado que encoge: el cigarrillo cae un 2-4 % al año y Francia ya resta [5]. Si un gran fabricante decidiera distribuir por su cuenta o renegociar tarifas a la baja, el margen sufriría. El riesgo de tipos (caja prestada a Imperial) no es competitivo pero pesa en el beneficio [15].",
+    "confianza": "Baja"
+  },
+  "financieros": {
+    "cuenta": [
+      {
+        "periodo": "FY2021",
+        "ingresos": 10816,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": null,
+        "amortizaciones": null,
+        "ebit": null,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 175,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 1.32,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 132.5
+      },
+      {
+        "periodo": "FY2022",
+        "ingresos": 11464,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": null,
+        "amortizaciones": null,
+        "ebit": null,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 200,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 1.51,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 132.5
+      },
+      {
+        "periodo": "FY2023",
+        "ingresos": 12427,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": null,
+        "amortizaciones": null,
+        "ebit": null,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 274,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 2.07,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 132.5
+      },
+      {
+        "periodo": "FY2024",
+        "ingresos": 12985,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 490,
+        "amortizaciones": 165,
+        "ebit": 325,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 308,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 2.34,
+        "dpa": 2.09,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 132.5
+      },
+      {
+        "periodo": "FY2025",
+        "ingresos": 13535,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 488,
+        "amortizaciones": 170,
+        "ebit": 318,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 281,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 2.13,
+        "dpa": 2.09,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 132.5
+      }
+    ],
+    "ltm": {
+      "periodo": "LTM jun-26",
+      "fecha_fin": "2026-06-30",
+      "ingresos": 13764,
+      "ebitda": null,
+      "ebit": 318,
+      "beneficio_neto": 277,
+      "bpa": 2.09,
+      "dpa": 2.11,
+      "dpa_extraordinario": 0,
+      "fcf": null,
+      "participadas_en_ebitda": null,
+      "no_recurrentes_en_ebitda": null
+    },
+    "cambios_perimetro": [
+      {
+        "periodo": "FY2022",
+        "descripcion": "Compra del 73,33 % del grupo de transporte El Mosca (con opción al 100 % en tres años) y de otras sociedades de transporte y farma."
+      }
+    ],
+    "comentario": "Los ingresos brutos pasaron de 10.816 M en el FY2021 a 13.535 M en el FY2025 [1, 9], pero son en su mayor parte impuestos especiales y precio del tabaco que Logista repercute: la medida útil son las **ventas económicas** (margen bruto), que crecieron de ≈1.685 M (FY2023, estimación desde la variación publicada) a 1.757 M (FY2024) y 1.809 M (FY2025, +3,0 %) [1, 7]. El EBIT ajustado fue de 366 M (FY2023, estimación), 385 M (FY2024) y 378 M (FY2025, −1,9 %), con un beneficio por revalorización de inventarios de ≈35 M y ≈45 M [1, 2, 7]. El beneficio neto subió de 175 M (FY2021) a 308 M (FY2024) y bajó a 281 M en el FY2025 (−8,8 %) porque los ingresos financieros de la caja prestada a Imperial cayeron de 103 M a 73 M con la bajada de tipos del BCE [1, 15]. En los nueve meses del FY2026 (oct-25 a jun-26): ingresos 10.165 M (+2,3 %), ventas económicas 1.376 M (+1,1 %), EBIT ajustado 296 M (+3 %), EBIT 244 M (plano) y beneficio neto 210 M (−1,8 %) [5, 6].",
+    "ajustes": "Usamos el beneficio neto y el BPA publicados (incluyen los ingresos financieros de la caja y el resultado de inventarios). El EBIT ajustado de la empresa excluye la amortización de los activos intangibles de la compra de Logista France y los costes de reestructuración (≈60 M de diferencia en el FY2025: 378 M ajustado frente a 318 M publicado) [1]. EBITDA de FY2024-FY2025 = EBIT publicado + amortización de Stock Analysis (estimación propia: 318 + 170 = 488 M) [9]. Las acciones (132,5 M) salen de 132,75 M emitidas [21] menos una autocartera pequeña (dividendo de 277 M ÷ 2,09 EUR) [19]. Los ingresos FY2018-FY2020 (9.476, 10.148 y 10.408 M) y el BPA (1,18, 1,24 y 1,19) son de roic.ai [10].",
+    "confianza": "Baja"
+  },
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "1T26",
+        "ingresos": null,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 0.54,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1S26",
+        "ingresos": 6594,
+        "crecimiento_pct": 2.6,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 1.03,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "9M26",
+        "ingresos": 10165,
+        "crecimiento_pct": 2.3,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 1.58,
+        "vs_consenso": null
+      }
+    ],
+    "ultima_presentacion": "En el 1T FY26 el beneficio cayó un 8,4 % (71 M) con el EBIT ajustado +2 % (100 M) [22]; en el semestre, beneficio de 136 M (−9,9 %), EBIT ajustado de 195 M (−3,5 %) y ventas económicas de 904 M (−1,3 %), por menos revalorización de inventarios; Italia creció (ingresos +6,3 %, 2.380 M) y Francia cayó (−3,4 %, 1.694 M) [4]. El 3T recuperó: a nueve meses el EBIT ajustado sube un 3 % (296 M) y el beneficio cae solo un 1,8 % (210 M) [5, 6]. La compañía reiteró la guía del año: EBIT ajustado sin inventarios ni adquisiciones creciendo a un dígito medio sobre el FY2025 y dividendo de al menos 2,09 EUR [4, 20].",
+    "confianza": "Media"
+  },
+  "balance": {
+    "historico": [
+      {
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 7064,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "reservas": null,
+        "minoritarios": null,
+        "periodo": "FY2021",
+        "activo_total": 7588,
+        "patrimonio_neto": 524,
+        "caja": 172
+      },
+      {
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 7127,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "reservas": null,
+        "minoritarios": null,
+        "periodo": "FY2022",
+        "activo_total": 7694,
+        "patrimonio_neto": 567,
+        "caja": 219
+      },
+      {
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 7467,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "reservas": null,
+        "minoritarios": null,
+        "periodo": "FY2023",
+        "activo_total": 8062,
+        "patrimonio_neto": 595,
+        "caja": 193
+      },
+      {
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 7439,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "reservas": null,
+        "minoritarios": null,
+        "periodo": "FY2024",
+        "activo_total": 8081,
+        "patrimonio_neto": 642,
+        "caja": 169
+      },
+      {
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 7665,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "deuda_financiera": 21,
+        "arrendamientos": null,
+        "reservas": null,
+        "minoritarios": null,
+        "periodo": "FY2025",
+        "activo_total": 8308,
+        "patrimonio_neto": 643,
+        "caja": 175
+      }
+    ],
+    "vencimientos": [],
+    "liquidez": "Logista presta a diario su tesorería excedente a Imperial Brands (línea recíproca de hasta 3.000 M a Euribor a 6 meses + 75 pb, renovada en junio de 2024 por tres años) [15, 17]. La caja media prestada ronda 2.200-2.700 M según los analistas [15]; en balance aparece como crédito a empresas del grupo, no como «caja» (175 M a sep-25) [12, 13].",
+    "rating": null,
+    "coste_deuda_pct": null,
+    "vida_media_anios": null,
+    "otros_pasivos": "El grueso del pasivo (≈7.700 M sobre 8.308 M de activo) son impuestos especiales del tabaco cobrados a los estancos y pendientes de pago a Hacienda y deudas con los fabricantes: un circulante muy negativo que financia la caja prestada a Imperial [12, 15]. Deuda financiera de 21 M a sep-25 [13]. Sin datos de pasivos por arrendamiento (los pagos de arrendamiento fueron 76 M en el FY2025) [14].",
+    "comentario": "«Caja» es solo la tesorería en bancos (175 M); la posición financiera real incluye el crédito a Imperial (≈2.000-2.700 M de media), que no se ha podido leer al cierre de cada ejercicio en las fuentes accesibles. El patrimonio es pequeño (643 M) porque Logista reparte ≈100 % del beneficio [19, 23].",
+    "confianza": "Baja"
+  },
+  "flujos": {
+    "historico": [
+      {
+        "pagos_arrendamientos": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0,
+        "periodo": "FY2024",
+        "flujo_operativo": null,
+        "capex": null
+      },
+      {
+        "pagos_arrendamientos": 76,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 277,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0,
+        "periodo": "FY2025",
+        "flujo_operativo": 613,
+        "capex": 54
+      }
+    ],
+    "comentario": "En el FY2025 el flujo de caja libre fue de 483 M (225 M en el FY2024), con capex de 54 M y pagos de arrendamientos de 76 M; el flujo «normalizado» (sin el efecto del circulante, que varía mucho con el calendario de pago de impuestos) fue de 315 M [14]. Flujo operativo FY2025 = 483 + 54 + 76 = 613 M (estimación propia). Las series de TipRanks y Stock Analysis no se pueden asignar a ejercicios con seguridad [11]. El uso de la caja es el dividendo: 277 M en el FY2025 (payout del 99 %) [19, 23].",
+    "confianza": "Baja"
+  },
+  "calidad": {
+    "auditor": null,
+    "anios_auditor": null,
+    "opinion": null,
+    "comentario": "La calidad del beneficio es buena en caja (flujo normalizado de 315 M frente a 281 M de beneficio) [1, 14], pero tiene dos componentes que no controla la empresa: el resultado por revalorización de inventarios (≈35-45 M al año, depende de las subidas de precio e impuestos del tabaco) y los ingresos financieros de la caja prestada a Imperial (103 M en el FY2024, 73 M en el FY2025), que siguen al Euribor [2, 15, 16]. Los indicadores del motor (Altman, Piotroski, Beneish) no se interpretan: el balance está incompleto y el circulante negativo los distorsiona.",
+    "senales": [
+      {
+        "senal": "Beneficio ligado a los tipos de interés (caja prestada a Imperial)",
+        "nivel": "Media",
+        "comentario": "Cobertura de ≈50 % del riesgo de tipos con Imperial según el CFO."
+      },
+      {
+        "senal": "Resultado por inventarios dentro del EBIT ajustado",
+        "nivel": "Baja",
+        "comentario": "La guía de la empresa lo excluye."
+      }
+    ],
+    "confianza": "Baja"
+  },
+  "rentabilidad": {
+    "comentario": "El ROIC del motor (49,6 %) no mide nada útil: el capital invertido operativo es negativo porque Logista cobra los impuestos del tabaco antes de pagarlos y ese circulante financia ≈2.500 M de caja. La lectura correcta es que el negocio no consume capital: el beneficio neto (281 M) es el 44 % del patrimonio (643 M) y el capex (54 M) un tercio de la amortización. Frente al WACC (7,33 %), cualquier medida de retorno sobre capital queda muy por encima; el límite de Logista no es la rentabilidad del capital sino que no tiene dónde reinvertirlo, y por eso reparte el 99 % del beneficio.",
+    "confianza": "Baja"
+  },
+  "capital": {
+    "politica": "Dividendo de al menos el 90 % del beneficio, con suelo de 2,09 EUR por acción para 2024, 2025 y 2026 [19, 20]: en el FY2025 se repartieron 277 M (payout del 99 %) y el dividendo a cuenta del FY2026 sube un 3,6 % hasta 0,58 EUR (77 M) [5, 20]. Sin recompras. Las adquisiciones se pagan con la caja (diversificación en farma, transporte y productos de nueva generación) [15].",
+    "adquisiciones": [
+      {
+        "anio": "2022",
+        "objetivo": "Grupo El Mosca (transporte, 73,33 %)",
+        "importe": null,
+        "ev_ebitda": null,
+        "financiacion": "Caja",
+        "resultado": "Transporte es el negocio que peor se ha comportado en el FY2025"
+      }
+    ],
+    "comentario": "La asignación de capital es simple: casi todo el beneficio vuelve al accionista y Imperial, con el 50,01 %, recibe la mitad. El riesgo es que el suelo de 2,09 EUR deje sin margen la inversión en diversificación si el beneficio no crece [19, 23].",
+    "confianza": "Media"
+  },
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "Íñigo Meirás",
+        "cargo": "Consejero delegado",
+        "desde": "2019",
+        "participacion_pct": null,
+        "trayectoria": "Antes consejero delegado de Ferrovial; figura como consejero delegado en el IAGC de 2021 y 2022 [27, 28]. No se ha confirmado en fuentes de 2026."
+      },
+      {
+        "nombre": "Pedro Losada",
+        "cargo": "Director financiero",
+        "desde": null,
+        "participacion_pct": null,
+        "trayectoria": "Portavoz financiero en 2025 sobre generación de caja y cobertura de tipos con Imperial [18, 23]."
+      }
+    ],
+    "historial_guidance": [],
+    "comentario": "La dirección prioriza el dividendo (payout del 99 % en el FY2025) y la diversificación por compras [19, 23]. La guía del FY2025 (crecimiento del EBIT ajustado) no se cumplió (−1,9 %); la del FY2026 va en camino a nueve meses (+3 %).",
+    "confianza": "Baja"
+  },
+  "gobierno": {
+    "consejo": [
+      {
+        "nombre": "Gregorio Marañón",
+        "cargo": "Presidente",
+        "tipo": "Independiente",
+        "desde": null,
+        "comisiones": null
+      },
+      {
+        "nombre": "Íñigo Meirás",
+        "cargo": "Consejero delegado",
+        "tipo": "Ejecutivo",
+        "desde": "2019",
+        "comisiones": null
+      }
+    ],
+    "presidente_ceo_separados": true,
+    "presidente_ejecutivo": false,
+    "consejero_coordinador": null,
+    "una_accion_un_voto": true,
+    "operaciones_vinculadas_relevantes": true,
+    "variable_ligado_rentabilidad": null,
+    "auditoria_independiente": null,
+    "insiders_sin_operaciones": null,
+    "accionista_control": true,
+    "presidente_vinculado_control": false,
+    "cambios_cupula_24m": null,
+    "voto_remuneracion_pct": null,
+    "voto_remuneracion_contra_pct": null,
+    "voto_remuneracion_contra_libre_pct": null,
+    "voto_cupula_pct": null,
+    "remuneracion_ceo": {
+      "anio": null,
+      "total": null,
+      "fijo": null,
+      "variable_corto": null,
+      "variable_largo": null,
+      "ratio_salario_medio": null
+    },
+    "remuneracion": "No se localizaron las cifras de remuneración ni los votos de la junta en las fuentes accesibles.",
+    "accionistas": [
+      {
+        "nombre": "Imperial Brands (Imperial Tobacco Ltd.)",
+        "pct": 50.01,
+        "tipo": "Accionista de control (industrial)",
+        "variacion": "Vendió parte en 2022 para reducir deuda [24]"
+      }
+    ],
+    "insiders": [],
+    "control_y_defensas": "Imperial Brands controla el 50,01 % de los votos [24, 27] y es a la vez cliente, prestatario de la caja de Logista (línea de hasta 3.000 M a Euribor a 6 meses + 75 pb) y proveedor de la cobertura de tipos [17, 18]. Es la operación vinculada más relevante del grupo y la principal cuestión de gobierno: el minoritario depende de que esas condiciones sean de mercado.",
+    "alertas": [
+      "Operación vinculada de tesorería con el accionista de control (Imperial) por ≈2.000-3.000 M [17]."
+    ],
+    "confianza": "Baja"
+  },
+  "consenso": {
+    "guidance": "Guía del FY2026: EBIT ajustado sin inventarios ni adquisiciones creciendo a un dígito medio sobre el FY2025 y dividendo de al menos 2,09 EUR; a nueve meses, EBIT ajustado +3 % [5, 20]. Resultados del FY2026 previstos a principios de noviembre (estimación por el calendario de 2025).",
+    "estimaciones": [
+      {
+        "periodo": "FY2026e",
+        "ingresos": null,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 2.12,
+        "dpa": null,
+        "fuente": "MarketScreener [32]"
+      },
+      {
+        "periodo": "FY2027e",
+        "ingresos": null,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 2.17,
+        "dpa": null,
+        "fuente": "MarketScreener [32]"
+      },
+      {
+        "periodo": "FY2028e",
+        "ingresos": null,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 2.42,
+        "dpa": null,
+        "fuente": "MarketScreener [32]"
+      }
+    ],
+    "recomendaciones": {
+      "n_analistas": 11,
+      "comprar": 2,
+      "mantener": 6,
+      "vender": 3,
+      "po_medio": 32.54,
+      "po_min": 26.7,
+      "po_max": 35
+    },
+    "revisiones": "Consenso de Investing (julio de 2026): 11 analistas, 2 comprar, 6 mantener y 3 vender, objetivo medio de 32,54 EUR (26,70 de Kepler Cheuvreux, en venta, a 35 EUR) [35]. Bankinter mantiene comprar y esperaba EBIT ajustado +4/+6 % en 2026 frente a un consenso más bajo [25]. El 13 de octubre JB Capital subió su objetivo a 35,50 EUR, por debajo de la cotización [29]. MarketScreener da un BPA de 2,12 (FY2026), 2,17 (FY2027) y 2,42 EUR (FY2028) [32].",
+    "base_ebitda": "NIIF",
+    "ajuste_ebitda_pct_ventas": null,
+    "confianza": "Media"
+  },
+  "bolsa": {
+    "tipo_rentabilidad": "de precio (sin dividendos)",
+    "rentabilidades": [
+      {
+        "periodo": "Desde el cierre del FY2025 (30-sep-25)",
+        "accion_pct": 24.7,
+        "indice_pct": null,
+        "sector_pct": null
+      }
+    ],
+    "anual": [
+      {
+        "anio": "2020",
+        "accion_pct": -21.1,
+        "indice_pct": null
+      },
+      {
+        "anio": "2021",
+        "accion_pct": 10.5,
+        "indice_pct": null
+      },
+      {
+        "anio": "2022",
+        "accion_pct": 34.6,
+        "indice_pct": null
+      },
+      {
+        "anio": "2023",
+        "accion_pct": 3.7,
+        "indice_pct": null
+      },
+      {
+        "anio": "2024",
+        "accion_pct": 19.3,
+        "indice_pct": null
+      },
+      {
+        "anio": "2025",
+        "accion_pct": 3,
+        "indice_pct": null
+      }
+    ],
+    "beta": null,
+    "volatilidad_pct": null,
+    "max_drawdown_pct": null,
+    "posicion_corta_pct": null,
+    "comentario": "Cierres de diciembre de TradersUnion (20,10 EUR en 2019; 15,86, 17,53, 23,60, 24,48, 29,20 y 30,08 de 2020 a 2025) [40]. La acción marca máximos históricos: 35,86 EUR el 13 de octubre de 2026, con un rango de 52 semanas de 28,74-36,90 EUR [29, 31]. Desde el cierre del FY2025 (≈28,75 EUR, capitalización de 3.816 M en MarketScreener) sube ≈25 % sin un cambio de guía: el mercado paga más por un dividendo de 2,09 EUR asegurado con tipos a la baja [32].",
+    "confianza": "Baja"
+  },
+  "multiplos_historicos": {
+    "serie": [
+      {
+        "anio": "FY2020",
+        "precio_cierre": 14.6,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 11.1,
+        "excluir": false
+      },
+      {
+        "anio": "FY2021",
+        "precio_cierre": 18.2,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 12.1,
+        "excluir": false
+      },
+      {
+        "anio": "FY2022",
+        "precio_cierre": 18.52,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 8.9,
+        "excluir": false
+      },
+      {
+        "anio": "FY2023",
+        "precio_cierre": 24.03,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 10.3,
+        "excluir": false
+      },
+      {
+        "anio": "FY2024",
+        "precio_cierre": 27.1,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 12.7,
+        "excluir": false
+      },
+      {
+        "anio": "FY2025",
+        "precio_cierre": 28.75,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 13.6,
+        "excluir": false
+      }
+    ],
+    "comentario": "Precio al cierre de cada ejercicio (30 de septiembre): FY2020 del informe anual (14,6 EUR) [34]; FY2021 y FY2024 = PER publicado × BPA de MarketScreener (13,8 × 1,32 y 11,6 × 2,34); FY2022, FY2023 y FY2025 = capitalización ÷ 132,75 M de acciones (2.459, 3.190 y 3.816 M) [21, 32, 33]. PER adelantado = precio ÷ BPA del ejercicio siguiente (FY2025 sobre nuestro FY2026e de 2,11 EUR). Hoy: 35,86 ÷ 2,17 (nuestro FY2027e) = 16,5x, el más alto de la serie.",
+    "confianza": "Baja"
+  },
+  "comparables": {
+    "criterio": "No hay cotizadas equivalentes (distribuidor de tabaco con caja flotante). Se usan operadores logísticos y de distribución europeos y globales con su PER de los próximos 12 meses tomado de los informes de DSV y Rentokil del repositorio (7-oct-2026, MarketScreener) [36], más Imperial Brands (su cliente y accionista, PER adelantado de 9,5x) [37]. Son referencias de múltiplo, no de negocio: los logísticos crecen más y Logista tiene un volumen de tabaco que encoge.",
+    "empresas": [
+      {
+        "nombre": "Kuehne+Nagel",
+        "ticker": "KNIN",
+        "pais": "CH",
+        "capitalizacion": null,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": 12.2,
+        "per_ntm": 23.8,
+        "crecimiento_pct": 2.9,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "DHL Group",
+        "ticker": "DHL",
+        "pais": "DE",
+        "capitalizacion": null,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": 6.8,
+        "per_ntm": 14.9,
+        "crecimiento_pct": 4.2,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "GXO Logistics",
+        "ticker": "GXO",
+        "pais": "US",
+        "capitalizacion": null,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": 7.3,
+        "per_ntm": 19.5,
+        "crecimiento_pct": 5.6,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "NX Holdings",
+        "ticker": "9147",
+        "pais": "JP",
+        "capitalizacion": null,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": 5.3,
+        "per_ntm": 12.4,
+        "crecimiento_pct": 5.5,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "ID Logistics",
+        "ticker": "IDL",
+        "pais": "FR",
+        "capitalizacion": null,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": 4.7,
+        "per_ntm": 23.9,
+        "crecimiento_pct": 12.5,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "Bunzl",
+        "ticker": "BNZL",
+        "pais": "GB",
+        "capitalizacion": null,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": 8.9,
+        "per_ntm": 17.4,
+        "crecimiento_pct": 2.4,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "Imperial Brands",
+        "ticker": "IMB",
+        "pais": "GB",
+        "capitalizacion": null,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 9.5,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      }
+    ],
+    "comentario": "Logista cotiza a 16,5x nuestro BPA del FY2027e, cerca de la mediana de los comparables (17,4x) y muy por encima de Imperial Brands (9,5x), pero los comparables no lo son de verdad: los operadores logísticos crecen al 3-12 % y Logista distribuye un producto cuyo volumen cae. Por eso pesan 0 en la síntesis. El dato relevante es su propia historia: entre 8,9x y 13,6x de PER adelantado en los seis últimos cierres, y hoy 16,5x, el máximo de la serie.",
+    "confianza": "Baja"
+  },
+  "transacciones": null,
+  "dcf": {
+    "anios": [
+      {
+        "periodo": "FY2026e",
+        "crecimiento_pct": 2.5,
+        "margen_ebitda_pct": 3.6,
+        "amortizacion_pct_ventas": 1.25,
+        "capex_pct_ventas": 1,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 25,
+        "fijo": true
+      },
+      {
+        "periodo": "FY2027e",
+        "crecimiento_pct": 2.5,
+        "margen_ebitda_pct": 3.6,
+        "amortizacion_pct_ventas": 1.25,
+        "capex_pct_ventas": 1,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2028e",
+        "crecimiento_pct": 2.5,
+        "margen_ebitda_pct": 3.6,
+        "amortizacion_pct_ventas": 1.25,
+        "capex_pct_ventas": 1,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2029e",
+        "crecimiento_pct": 2.5,
+        "margen_ebitda_pct": 3.6,
+        "amortizacion_pct_ventas": 1.25,
+        "capex_pct_ventas": 1,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2030e",
+        "crecimiento_pct": 2,
+        "margen_ebitda_pct": 3.6,
+        "amortizacion_pct_ventas": 1.25,
+        "capex_pct_ventas": 1,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2031e",
+        "crecimiento_pct": 2,
+        "margen_ebitda_pct": 3.6,
+        "amortizacion_pct_ventas": 1.25,
+        "capex_pct_ventas": 1,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2032e",
+        "crecimiento_pct": 2,
+        "margen_ebitda_pct": 3.6,
+        "amortizacion_pct_ventas": 1.25,
+        "capex_pct_ventas": 1,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2033e",
+        "crecimiento_pct": 1.5,
+        "margen_ebitda_pct": 3.6,
+        "amortizacion_pct_ventas": 1.25,
+        "capex_pct_ventas": 1,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2034e",
+        "crecimiento_pct": 1.5,
+        "margen_ebitda_pct": 3.6,
+        "amortizacion_pct_ventas": 1.25,
+        "capex_pct_ventas": 1,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2035e",
+        "crecimiento_pct": 1.5,
+        "margen_ebitda_pct": 3.6,
+        "amortizacion_pct_ventas": 1.25,
+        "capex_pct_ventas": 1,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      }
+    ],
+    "wacc": {
+      "tasa_libre_pct": 3.53,
+      "beta": 0.6,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 0.5,
+      "coste_deuda_pct": 4,
+      "tasa_impositiva_pct": 25,
+      "peso_deuda_pct": 0
+    },
+    "terminal": {
+      "metodo": "gordon",
+      "crecimiento_pct": 1,
+      "multiplo_salida": 10
+    },
+    "etapa2": {
+      "usar": false,
+      "anios": 5,
+      "margen_final_pct": null,
+      "justificacion": null
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "Ingresos +2,5 % en FY2026e (nueve meses: +2,3 % [5]) y +2,5 % hasta FY2029e, bajando al 1,5 % en FY2033-35e. El volumen de cigarrillos cae (Francia: ventas económicas −2 % a nueve meses [5]) y el precio sube por impuestos; Italia y los productos de nueva generación compensan [4]. Entre FY2021 y FY2025 los ingresos crecieron un 5,8 % anual [9], con subidas de impuestos excepcionales que no proyectamos.",
+      "margenes": "Margen EBITDA constante del 3,6 % (FY2025: 488 M sobre 13.535 M, estimación propia [1, 9]). La guía es de EBIT ajustado creciendo a un dígito medio; lo dejamos en el ritmo de los ingresos porque el transporte y Francia restan y el resultado por inventarios (35-45 M) no es recurrente [1, 7].",
+      "inversion": "Capex del 1,0 % de los ingresos, que incluye los pagos de arrendamientos (54 + 76 M en el FY2025 [14]); amortización del 1,25 % (170 M en el FY2025 [9]). Circulante constante: el circulante negativo ya genera la caja flotante, que se valora aparte en el puente.",
+      "wacc": "Tasa libre: Bund a 10 años del 3,53 % [38]. Beta 0,6 (sin beta calculable en este entorno; negocio de distribución regulada poco cíclico), prima de mercado del 5,5 % y 0,5 puntos adicionales por la dependencia de Imperial y el declive del tabaco. Sin deuda: WACC = coste del capital = 7,33 %.",
+      "terminal": "Gordon al 1,0 %: precio del tabaco al alza por impuestos y volumen a la baja; por debajo de la inflación porque la base de cigarrillos encoge."
+    },
+    "sostenibilidad": {
+      "puente_ingresos": [
+        {
+          "periodo": "FY2026e",
+          "volumen_pct": -1.5,
+          "precio_pct": 4,
+          "otros_pct": 0,
+          "comentario": "Volumen de cigarrillos −1,5 %; precio +4 % por subidas de impuestos en España, Italia y Francia [4, 5]."
+        },
+        {
+          "periodo": "FY2027e",
+          "volumen_pct": -1.5,
+          "precio_pct": 3.5,
+          "otros_pct": 0.5,
+          "comentario": "Igual tendencia; otros: farma y productos de nueva generación."
+        },
+        {
+          "periodo": "FY2028e",
+          "volumen_pct": -1.5,
+          "precio_pct": 3.5,
+          "otros_pct": 0.5,
+          "comentario": "Igual que FY2027e."
+        },
+        {
+          "periodo": "FY2029e",
+          "volumen_pct": -1.5,
+          "precio_pct": 3.5,
+          "otros_pct": 0.5,
+          "comentario": "Igual que FY2027e."
+        },
+        {
+          "periodo": "FY2030e",
+          "volumen_pct": -1.5,
+          "precio_pct": 3,
+          "otros_pct": 0.5,
+          "comentario": "Menos subidas de precio; el volumen sigue cayendo."
+        }
+      ],
+      "mercado_final": null,
+      "veredicto": "Sí",
+      "justificacion": "El crecimiento proyectado (2,1 % de media) es inferior al de los últimos cinco años (5,8 %) y no necesita capital: la reinversión es negativa o casi nula (capex de 54 M frente a 170 M de amortización) y el circulante negativo financia la caja. El motor no aplica la prueba de reinversión y la hacemos a mano: el crecimiento sale del precio (impuestos repercutidos), que Logista no paga, y de volúmenes que caen un 1,5 % al año. Con ventas económicas de nueve meses +1,1 % y EBIT ajustado +3 % [5], el 2,5 % de ingresos es alcanzable. El riesgo no es de financiación sino de margen (renegociación de tarifas con los fabricantes) y de tipos (ingresos financieros), que quedan fuera del DCF operativo. No hace falta rebajar el base."
+    },
+    "lectura": "El DCF da 43,45 EUR por acción, un 21,2 % por encima del precio, con el valor terminal en el 58 % del valor. El DCF inverso dice que, con nuestro WACC del 7,33 %, el precio de 35,86 EUR se sostiene con ingresos cayendo un 1,3 % al año en FY2027-FY2035e (frente al +2,0 % del base) o con un margen EBITDA del 3,0 % (frente al 3,6 %); la rentabilidad implícita para el comprador es del 9,0 %. El precio no es exigente sobre flujos: lo caro es el múltiplo frente a su propia historia. La conclusión depende de la caja flotante: si se contara al nominal (≈2.500 M) el DCF subiría a ≈57 EUR; si no se contara nada, bajaría a ≈38 EUR.",
+    "confianza": "Baja"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": -1.5,
+        "ajuste_margen_pp": -0.4,
+        "ajuste_wacc_pp": 0.5,
+        "crecimiento_terminal_pct": 0,
+        "multiplo_salida": null,
+        "narrativa": "Francia y España aceleran la caída del volumen, un fabricante renegocia tarifas y el BCE baja tipos: el EBIT se estanca y los ingresos financieros caen a ≈55 M. El mercado vuelve a pagar el PER de 2022 (8,9x)."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Ingresos +2,5 % con precio por impuestos, EBIT ajustado +3-4 % y ingresos financieros estables en ≈70 M: BPA de 2,24 EUR en FY2028e y dividendo de 2,09-2,15 EUR."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": 1,
+        "ajuste_margen_pp": 0.3,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": 1.5,
+        "multiplo_salida": null,
+        "narrativa": "Compras en farma que suman EBIT, productos de nueva generación que compensan el cigarrillo y tipos estables: BPA de 2,40 EUR, cerca del consenso."
+      }
+    ],
+    "comentario": "El DCF de los tres escenarios queda en 30,92, 43,45 y 52,91 EUR: dos de los tres por encima del precio. La asimetría a 12 meses, en cambio, es mala (0,33x: +22,3 % en el alcista frente a −43,2 % en el bajista) porque la acción cotiza al PER más alto de su historia y el bajista aplica el mínimo de cinco años (8,9x). Las dos lecturas no se contradicen: el negocio vale más que el precio a largo plazo, pero el múltiplo ya ha corrido.",
+    "confianza": "Baja"
+  },
+  "suma_partes": {
+    "aplica": false,
+    "descuento_holding_pct": 0,
+    "partes": [],
+    "comentario": "No se aplica: los segmentos por región no publican EBIT en las fuentes accesibles, y la parte separable relevante (la caja flotante) ya va en el puente.",
+    "confianza": "Baja"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2025-09-30",
+      "deuda_financiera": 21,
+      "arrendamientos": 0,
+      "caja": 905,
+      "minoritarios": 0,
+      "pensiones": 0,
+      "asociadas": 0,
+      "otros_ajustes": 0
+    },
+    "rab": null,
+    "referencia_mercado": {
+      "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+      "prima_implicita_pct": 4.2,
+      "fecha": "2026-10",
+      "fuente": "Damodaran, ERPbymonth [39]"
+    },
+    "pesos": {
+      "dcf": 70,
+      "comparables": 0,
+      "transacciones": 0,
+      "suma_partes": 0,
+      "escenarios": 30
+    },
+    "objetivo_12m": {
+      "ejercicio": "FY2028e",
+      "casos": [
+        {
+          "escenario": "Bajista",
+          "metrica": "PER FY2028e",
+          "beneficio_por_accion": 2.05,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Beneficio de ≈272 M en FY2028e: EBIT ajustado plano en ≈380 M (Francia y transporte restan), ingresos financieros de ≈55 M (BCE 50 pb más bajo), sin resultado por inventarios extraordinario, tipo del 25 %. 132,5 M de acciones, sin recompras."
+        },
+        {
+          "escenario": "Base",
+          "metrica": "PER FY2028e",
+          "beneficio_por_accion": 2.24,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "FY2026e ≈280 M (210 M a nueve meses + ≈70 M en el 4T, como el 4T del FY2025) = 2,11 EUR; FY2027e ≈288 M = 2,17 EUR; FY2028e ≈297 M: EBIT ajustado +3-4 % al año (≈420 M), amortización de intangibles de compra ≈55 M, ingresos financieros ≈70 M (caja de ≈2.500 M a Euribor + 75 pb) y tipo del 25 %. 132,5 M de acciones."
+        },
+        {
+          "escenario": "Alcista",
+          "metrica": "PER FY2028e",
+          "beneficio_por_accion": 2.4,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Beneficio de ≈318 M: EBIT ajustado +6 % al año con compras en farma, tipos estables e inventarios positivos. En línea con el consenso (2,42 EUR)."
+        }
+      ],
+      "per_historico": {
+        "base": "adelantado",
+        "actual": 16.5,
+        "mediana_5a": 12.1,
+        "minimo_5a": 8.9,
+        "media_larga": 11.5,
+        "excluidos": "PER adelantado = precio al cierre del ejercicio (30-sep) ÷ BPA publicado del ejercicio siguiente (misma base que los casos: beneficio neto publicado, con ingresos financieros e inventarios): FY2020 14,60 ÷ 1,32 = 11,1x; FY2021 18,20 ÷ 1,51 = 12,1x; FY2022 18,52 ÷ 2,07 = 8,9x; FY2023 24,03 ÷ 2,34 = 10,3x; FY2024 27,10 ÷ 2,13 = 12,7x; FY2025 28,75 ÷ 2,11 (nuestro FY2026e) = 13,6x [21, 32, 33, 34]. Sin exclusiones (ningún año con pérdidas ni BPA atípico; 2020 es precio de pandemia pero BPA normal). Mediana de 5 años (FY2021-FY2025) 12,1x; mínimo 8,9x; media larga (FY2020-FY2025) 11,5x. Actual = 35,86 ÷ 2,17 (nuestro FY2027e) = 16,5x, el más alto de la serie."
+      },
+      "comparables_per": {
+        "mediana": 17.4
+      },
+      "consenso": {
+        "bpa_ano1": 2.12,
+        "bpa_ano2": 2.17,
+        "objetivo_medio": 32.54,
+        "objetivo_min": 26.7,
+        "objetivo_max": 35,
+        "analistas": 11,
+        "tendencia_3m": "subidas",
+        "fuente": "MarketScreener (BPA), Investing (objetivo, jul-26) y XTB (JB Capital 35,50) [29, 32, 35]"
+      },
+      "diferencia_consenso": "Nuestro BPA del FY2028e (2,24 EUR) queda un 7 % por debajo del de MarketScreener (2,42) [32]: no damos compras ni subida de los ingresos financieros. El de FY2026e-FY2027e coincide (2,11-2,17 frente a 2,12-2,17). Nuestro precio base (31,58 EUR) está un 3 % por debajo del objetivo medio (32,54 EUR, julio) [35], y los dos quedan por debajo de la cotización: el mercado ha subido más rápido que los objetivos (JB Capital acaba de subir a 35,50 EUR, aún por debajo del precio [29]).",
+      "media": null,
+      "comentario": "El objetivo a 12 meses (30,79 EUR ponderado; 31,58 EUR en el base) queda un 29 % por debajo del valor intrínseco (43,22 EUR). La distancia la explica el múltiplo: el DCF capitaliza un flujo estable de ≈300 M al 7,33 % menos un 1 % de crecimiento (≈16x el beneficio), mientras que la regla lleva el PER de hoy (16,5x) a mitad de camino hacia la mediana de cinco años (12,1x), años en los que Logista cotizó barata con tipos altos. Si el mercado ha recalificado de forma permanente a Logista como un «bono» con dividendo asegurado y tipos a la baja, el DCF tiene razón y la regla se queda corta; si vuelve a su historia, la acción pierde un 10-15 % aunque el negocio cumpla."
+    },
+    "comentario": "Pesamos el DCF al 70 % y los escenarios al 30 %; comparables y transacciones a 0 porque no hay cotizadas equivalentes y las compras de Logista no publican múltiplo. La partida que más mueve el valor es la caja flotante: entre 0 y 2.500 M según cómo se trate (±19 EUR por acción). La contamos por el valor de sus intereses (730 M), que es lo que el accionista cobra de ella. El valor intrínseco, 43,22 EUR, queda un 20,5 % por encima del precio.",
+    "confianza": "Baja"
+  },
+  "catalizadores": {
+    "items": [
+      {
+        "fecha": "2026-11-05",
+        "evento": "Resultados del FY2026 y guía del FY2027 (fecha estimada por el calendario de 2025)",
+        "efecto": "Cumplimiento de la guía de EBIT ajustado y nuevo suelo de dividendo",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2027-02",
+        "evento": "Junta y dividendo complementario del FY2026",
+        "efecto": "Dividendo de al menos 2,09 EUR (≈1,51 EUR complementario)",
+        "probabilidad": "Alta",
+        "sentido": "+"
+      },
+      {
+        "fecha": "2027-06",
+        "evento": "Renovación de la línea de tesorería con Imperial (vence en 2027)",
+        "efecto": "Condiciones de la remuneración de la caja flotante",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2026-2027",
+        "evento": "Compras en farma o productos de nueva generación",
+        "efecto": "Crecimiento inorgánico anunciado por el consejero delegado",
+        "probabilidad": "Media",
+        "sentido": "+"
+      },
+      {
+        "fecha": "2026-2027",
+        "evento": "Revisión de la directiva europea de impuestos al tabaco",
+        "efecto": "Subidas de precio (inventarios +) y volumen −",
+        "probabilidad": "Media",
+        "sentido": "+/−"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "riesgos": {
+    "items": [
+      {
+        "riesgo": "Vuelta del PER a su historia (12x)",
+        "tipo": "Mercado",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−20 % a −25 % (bajista a 12 meses: −43,2 %)",
+        "mitigante": "Dividendo del 5,8 %",
+        "senal": "Subida de los tipos a largo o de la rentabilidad de los bonos"
+      },
+      {
+        "riesgo": "Bajada de tipos del BCE (ingresos financieros de la caja flotante)",
+        "tipo": "Financiero",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−5 % del BPA por cada 50 pb",
+        "mitigante": "Cobertura de ≈50 % con Imperial",
+        "senal": "Euribor a 6 meses por debajo del 1,75 %"
+      },
+      {
+        "riesgo": "Renovación de la línea con Imperial en peores condiciones",
+        "tipo": "Gobierno",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−5 % a −10 %",
+        "mitigante": "Imperial necesita a Logista como distribuidor",
+        "senal": "Diferencial por debajo de Euribor + 75 pb"
+      },
+      {
+        "riesgo": "Caída del volumen de cigarrillos (Francia, España)",
+        "tipo": "Operativo",
+        "probabilidad": "Alta",
+        "impacto": "Medio",
+        "efecto_valor": "−5 %",
+        "mitigante": "Precio por impuestos y productos de nueva generación",
+        "senal": "Ventas económicas de Francia por debajo de −5 %"
+      },
+      {
+        "riesgo": "Renegociación de tarifas con un gran fabricante",
+        "tipo": "Comercial",
+        "probabilidad": "Baja",
+        "impacto": "Alto",
+        "efecto_valor": "−10 % a −15 %",
+        "mitigante": "Costes de cambio y escala",
+        "senal": "Pérdida o cambio de contrato de distribución"
+      },
+      {
+        "riesgo": "Compras caras en farma o transporte",
+        "tipo": "Asignación de capital",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−5 %",
+        "mitigante": "Importes pequeños frente a la caja",
+        "senal": "Compra a más de 12x EBITDA"
+      }
+    ],
+    "premortem": "Octubre de 2027: la acción ha perdido un 25 % y está en 27 EUR. Nada fue mal en el negocio: el EBIT ajustado creció un 3 % y el dividendo se mantuvo en 2,09 EUR. Pero los tipos a largo subieron, el dividendo del 5,8 % dejó de ser escaso y el mercado volvió a pagar el PER de 12-13x de 2021-2025; a la vez, Imperial renovó la línea de tesorería con un diferencial menor y los ingresos financieros bajaron. La señal que lo anticipaba: el PER adelantado de 16,5x, el máximo de su historia, sin un cambio en el crecimiento que lo justificara.",
+    "confianza": "Media"
+  },
+  "esg": {
+    "calificaciones": [],
+    "materialidad": "La exposición al tabaco excluye a Logista de muchos fondos ESG; la flota de transporte y los almacenes concentran las emisiones.",
+    "controversias": "Sin controversias relevantes localizadas en las fuentes accesibles.",
+    "confianza": "Baja"
+  },
+  "preguntas": {
+    "items": [
+      {
+        "tema": "Caja flotante",
+        "pregunta": "¿Cuál fue la caja media prestada a Imperial en el FY2026 y qué tipo efectivo cobró, incluida la cobertura?",
+        "por_que": "Mueve ±19 EUR por acción el valor según cómo se trate y ≈25 % del beneficio."
+      },
+      {
+        "tema": "Línea con Imperial",
+        "pregunta": "¿Qué condiciones se negocian para la renovación de 2027 y quién aprueba la operación vinculada?",
+        "por_que": "Es la operación con el accionista de control más relevante."
+      },
+      {
+        "tema": "Dividendo",
+        "pregunta": "¿Habrá un suelo de dividendo para el FY2027 por encima de 2,09 EUR, con payout del 99 %?",
+        "por_que": "Es lo que el mercado está pagando."
+      },
+      {
+        "tema": "Francia",
+        "pregunta": "¿Qué caída de volumen espera en Francia y qué parte compensan los productos de nueva generación?",
+        "por_que": "Es el mercado que resta."
+      },
+      {
+        "tema": "Adquisiciones",
+        "pregunta": "¿Qué múltiplo está dispuesta a pagar por compras en farma y cuánto EBIT aportarían?",
+        "por_que": "El alcista depende de ellas."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sentimiento": {
+    "tono": "Positivo",
+    "tendencia": "Mejora",
+    "revisadas": [
+      {
+        "plataforma": "Rankia (hilo «Seguimiento Logista (LOG)»)",
+        "fecha": "2026",
+        "n_comentarios": 15,
+        "tono": "Positivo",
+        "resumen": "Inversores de dividendo que la tienen como valor «de cartera» por el 2,09 EUR asegurado; dudas sobre Francia y sobre la dependencia de Imperial [41]."
+      },
+      {
+        "plataforma": "TIKR (blog con comentarios, «¿comprar con un 6,7 % de rentabilidad?»)",
+        "fecha": "2026",
+        "n_comentarios": 5,
+        "tono": "Positivo",
+        "resumen": "Caso de rentas: dividendo alto y estable, crecimiento bajo [43]."
+      },
+      {
+        "plataforma": "Análisis técnico en prensa (Alicante Plaza, Capital Bolsa)",
+        "fecha": "2026",
+        "n_comentarios": 5,
+        "tono": "Positivo",
+        "resumen": "Tendencia alcista sobre la media de 100 sesiones; confirmación por encima de 32,50 EUR [44, 45]."
+      },
+      {
+        "plataforma": "Benzinga España",
+        "fecha": "2025",
+        "n_comentarios": 5,
+        "tono": "Negativo",
+        "resumen": "Dudas sobre la guía y poca tracción en bolsa (antes de la subida de 2026) [42]."
+      }
+    ],
+    "temas": [
+      {
+        "tema": "Dividendo de 2,09 EUR como «bono»",
+        "postura": "Alcista",
+        "peso": "Alto",
+        "contraste": "Fundado: la empresa lo garantiza para 2026 y el payout ya es del 99 %; a 35,86 EUR rinde un 5,8 %, menos que el 7 % de hace un año."
+      },
+      {
+        "tema": "Bajada de tipos y caja prestada a Imperial",
+        "postura": "Dividida",
+        "peso": "Medio",
+        "contraste": "Los ingresos financieros cayeron de 103 a 73 M; con el BCE estable el golpe ya está en el beneficio."
+      },
+      {
+        "tema": "Caída del tabaco en Francia",
+        "postura": "Bajista",
+        "peso": "Medio",
+        "contraste": "Real: ventas económicas de Francia −2 % en nueve meses."
+      },
+      {
+        "tema": "Cotización por encima del objetivo de los analistas",
+        "postura": "Bajista",
+        "peso": "Medio",
+        "contraste": "JB Capital sube a 35,50 EUR y aun así queda por debajo del precio; consenso de 32,54 EUR [29, 35]."
+      }
+    ],
+    "lectura": "El particular ve a Logista como un bono con cupón del 6 %: el tono es positivo y mejora con la subida a máximos, sin euforia. La divergencia está con los analistas: el consenso es neutral (2 comprar, 3 vender) y el objetivo medio queda un 9 % por debajo del precio [25, 35]. No aporta cifras ni cambia la valoración.",
+    "confianza": "Baja"
+  },
+  "fuentes": [
+    {
+      "id": 1,
+      "titulo": "Anuncio de resultados FY25 (ejercicio cerrado el 30-sep-2025)",
+      "editor": "Logista (CNMV)",
+      "tipo": "Primaria",
+      "fecha": "2025-11-06",
+      "url": "https://pro-logista.adobe.logista.com/content/dam/documents/logista-corporate/other-relevant-information/es/2025/Anuncio%20de%20Resultados%20FY25%20VF.pdf"
+    },
+    {
+      "id": 2,
+      "titulo": "FY 2025 Results Presentation",
+      "editor": "Logista",
+      "tipo": "Primaria",
+      "fecha": "2025-11-06",
+      "url": "https://www.logista.com/content/dam/documents/logista-corporate/economic-financial-information/results-presentations/en/2025/FY-2025%20Results%20Presentation%20VF.pdf"
+    },
+    {
+      "id": 3,
+      "titulo": "Estados financieros intermedios condensados 1S FY26",
+      "editor": "Logista",
+      "tipo": "Primaria",
+      "fecha": "2026-05",
+      "url": "https://www.logista.com/content/dam/documents/logista-corporate/economic-financial-information/financial-reports/es/Logista%20EEFF%20intermedios%20condensados%20FY26.pdf"
+    },
+    {
+      "id": 4,
+      "titulo": "El beneficio de Logista cae un 9,9 % en su primer semestre fiscal y los ingresos suben un 2,6 %",
+      "editor": "Bolsamanía (Europa Press)",
+      "tipo": "Prensa",
+      "fecha": "2026-05",
+      "url": "https://www.bolsamania.com/noticias/empresas/beneficio-logista-cae-99-primer-semestre-fiscal-ingresos-suben-26--22386980.html"
+    },
+    {
+      "id": 5,
+      "titulo": "Logista guanya 210 milions durant els nou mesos del seu any fiscal (−1,8 %) i aprova dividend",
+      "editor": "Bolsamanía (Europa Press)",
+      "tipo": "Prensa",
+      "fecha": "2026-07-23",
+      "url": "https://www.bolsamania.com/noticias_print/resultados-anuncios/logista-guanya-210-milions-durant-els-nou-mesos-del-seu-any-fiscal--18-i-aprova-dividend--23117511.html"
+    },
+    {
+      "id": 6,
+      "titulo": "Logista recupera parte de lo perdido en el tercer trimestre de su ejercicio fiscal",
+      "editor": "Alimarket",
+      "tipo": "Prensa",
+      "fecha": "2026-07",
+      "url": "https://www.alimarket.es/logistica/noticia/429625/logista-recupera-parte-de-lo-perdido-en-el-tercer-trimestre-de-su-ejercicio-fiscal"
+    },
+    {
+      "id": 7,
+      "titulo": "Logista gana 308 millones en su ejercicio fiscal 2024, un 13,2 % más (ventas económicas 1.757 M, EBIT ajustado 385 M)",
+      "editor": "Merca2 (Europa Press)",
+      "tipo": "Prensa",
+      "fecha": "2024-11-06",
+      "url": "https://www.merca2.es/2024/11/06/logista-dividendo-complementario-2057835/"
+    },
+    {
+      "id": 8,
+      "titulo": "Logista incrementa su beneficio un 37 % en el año fiscal, hasta 272 millones",
+      "editor": "Bolsamanía",
+      "tipo": "Prensa",
+      "fecha": "2023-11",
+      "url": "https://www.bolsamania.com/noticias/resultados-anuncios/logista-incrementa-beneficio-37-ano-fiscal-272-millones--15249792.html"
+    },
+    {
+      "id": 9,
+      "titulo": "Logista Integral (BME:LOG): income statement (FY2021-FY2025)",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://stockanalysis.com/quote/bme/LOG/financials/income-statement/"
+    },
+    {
+      "id": 10,
+      "titulo": "Logista (LOG.MC): ingresos y BPA FY2018-FY2020",
+      "editor": "roic.ai",
+      "tipo": "Datos de mercado",
+      "fecha": "2026",
+      "url": "https://www.roic.ai/quote/LOG.MC"
+    },
+    {
+      "id": 11,
+      "titulo": "Logista: income statement y cash flow (BPA 2020-2024)",
+      "editor": "TipRanks",
+      "tipo": "Datos de mercado",
+      "fecha": "2026",
+      "url": "https://www.tipranks.com/stocks/es:log/financials/income-statement"
+    },
+    {
+      "id": 12,
+      "titulo": "Logista Integral: balance sheet (annual, Capital IQ)",
+      "editor": "Fintel",
+      "tipo": "Datos de mercado",
+      "fecha": "2026",
+      "url": "https://fintel.io/bs/mx/log%20n?t=annual"
+    },
+    {
+      "id": 13,
+      "titulo": "Logista Integral: balance sheet health (sep-2025)",
+      "editor": "Simply Wall St",
+      "tipo": "Datos de mercado",
+      "fecha": "2025-11",
+      "url": "https://simplywall.st/stocks/gb/transportation/bats-chixe-loge/logista-integral-shares/health"
+    },
+    {
+      "id": 14,
+      "titulo": "Logista FY2025: free cash flow 483 M EUR, capex 54 M, arrendamientos 76 M",
+      "editor": "Investing.com",
+      "tipo": "Datos de mercado",
+      "fecha": "2025-11",
+      "url": "https://www.investing.com/equities/logista"
+    },
+    {
+      "id": 15,
+      "titulo": "Logista ofrece una oportunidad en crecimiento inorgánico y un dividendo atractivo (ingresos financieros 73 M frente a 103 M; caja media 2.700 M)",
+      "editor": "Merca2",
+      "tipo": "Prensa",
+      "fecha": "2025-11-28",
+      "url": "https://www.merca2.es/2025/11/28/logista-crecimiento-inorganico-2328436/"
+    },
+    {
+      "id": 16,
+      "titulo": "Logista gana 214 millones hasta su tercer trimestre fiscal, un 9,7 % menos (ingresos financieros 51 M frente a 77 M)",
+      "editor": "Estrategias de Inversión",
+      "tipo": "Prensa",
+      "fecha": "2025-07-17",
+      "url": "https://www.estrategiasdeinversion.com/actualidad/noticias/bolsa-espana/logista-gana-214-millones-hasta-su-tercer-trimestre-n-832049"
+    },
+    {
+      "id": 17,
+      "titulo": "Logista alcanza el 73,33 % del grupo El Mosca y amplía su financiación con Imperial Brands (línea de 3.000 M a Euribor 6 m + 75 pb)",
+      "editor": "Alimarket",
+      "tipo": "Prensa",
+      "fecha": "2022-08",
+      "url": "https://www.alimarket.es/logistica/noticia/375620/logista-alcanza-el-73-33--del-grupo-el-mosca-y-amplia-su-financiacion-con-imperial-brands"
+    },
+    {
+      "id": 18,
+      "titulo": "Pedro Losada (CFO): «somos capaces de mantener…» (cobertura de tipos ≈50 % con Imperial)",
+      "editor": "Estrategias de Inversión",
+      "tipo": "Prensa",
+      "fecha": "2025",
+      "url": "https://www.estrategiasdeinversion.com/analisis/bolsa-y-mercados/el-experto-opina/pedro-losada-cfo-logista-somos-capaces-de-mantener-n-767121"
+    },
+    {
+      "id": 19,
+      "titulo": "Logista approves a total dividend of €277 million, the same as last year",
+      "editor": "Logista",
+      "tipo": "Primaria",
+      "fecha": "2026-02-04",
+      "url": "https://pro-logista.adobe.logista.com/en/home/media/press-releases/20260204.html"
+    },
+    {
+      "id": 20,
+      "titulo": "Logista increases its interim dividend by 3,6 % to a gross €0.58 per share",
+      "editor": "Logista",
+      "tipo": "Primaria",
+      "fecha": "2026-07-24",
+      "url": "https://www.logista.com/en/home/media/press-releases/20260724.html"
+    },
+    {
+      "id": 21,
+      "titulo": "Share and share capital information (132.750.000 acciones a 30-sep-2025)",
+      "editor": "Logista",
+      "tipo": "Primaria",
+      "fecha": "2025-09-30",
+      "url": "https://www.logista.com/en/home/investors-shareholders/share-prices/social-capital.html"
+    },
+    {
+      "id": 22,
+      "titulo": "Logista gana un 8,4 % menos pero mantiene previsiones (1T FY26)",
+      "editor": "Estrategias de Inversión",
+      "tipo": "Prensa",
+      "fecha": "2026-02",
+      "url": "https://www.estrategiasdeinversion.com/actualidad/noticias/bolsa-espana/logista-gana-un-84-menos-pero-mantiene-previsiones-n-886945"
+    },
+    {
+      "id": 23,
+      "titulo": "Pedro Losada: tenemos elevada capacidad de generación de caja, balance sólido y retribución al accionista atractiva",
+      "editor": "Vozpópuli",
+      "tipo": "Prensa",
+      "fecha": "2025",
+      "url": "https://www.vozpopuli.com/economia/pedro-losada-tenemos-elevada-capacidad-de-generacion-de-caja-balance-solido-y-retribucion-al-accionista-atractiva.html"
+    },
+    {
+      "id": 24,
+      "titulo": "Imperial sells part of Logista stake to cut debt (queda con el 50,01 %)",
+      "editor": "GlobalCapital",
+      "tipo": "Prensa",
+      "fecha": "2022",
+      "url": "https://www.globalcapital.com/article/28msrwf3i64sdcccb2b7i/equity/abbs-block-trades/imperial-sells-part-of-logista-stake-to-cut-debt"
+    },
+    {
+      "id": 25,
+      "titulo": "Resultados de Logista: análisis de Bankinter (EBIT ajustado +4/+6 % en 2026, comprar)",
+      "editor": "Bankinter",
+      "tipo": "Analistas",
+      "fecha": "2026-02",
+      "url": "https://www.bankinter.com/blog/empresas/resultados-logista"
+    },
+    {
+      "id": 26,
+      "titulo": "Logista gana un 9,9 % menos en su primer semestre, pero ratifica la política de dividendos",
+      "editor": "Estrategias de Inversión",
+      "tipo": "Prensa",
+      "fecha": "2026-05",
+      "url": "https://www.estrategiasdeinversion.com/actualidad/noticias/bolsa-espana/logista-gana-un-99-menos-en-su-primer-semestre-n-913031"
+    },
+    {
+      "id": 27,
+      "titulo": "Informe Anual de Gobierno Corporativo 2021",
+      "editor": "Logista (CNMV)",
+      "tipo": "Primaria",
+      "fecha": "2021-12",
+      "url": "https://www.logista.com/content/dam/documents/logista-corporate/informe-anual-qrs/es/InformeAnualGobiernoCorporativo2021.pdf"
+    },
+    {
+      "id": 28,
+      "titulo": "Informe Anual de Gobierno Corporativo 2022",
+      "editor": "Logista (CNMV)",
+      "tipo": "Primaria",
+      "fecha": "2022-12",
+      "url": "https://www.logista.com/content/dam/documents/logista-corporate/informe-anual-qrs/es/InformeAnualGobiernoCorporativo2022.pdf"
+    },
+    {
+      "id": 29,
+      "titulo": "Las acciones de Logista suben y rozan máximos de septiembre (JB Capital eleva objetivo a 35,50 EUR; 35,86 EUR)",
+      "editor": "XTB",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-13",
+      "url": "https://www.xtb.com/es/analisis-de-mercado/las-acciones-de-logista-lideran-el-indice-espanol-que-ha-ocurrido"
+    },
+    {
+      "id": 30,
+      "titulo": "Cotización de Logista Integral (9-oct-2026: 35,36 EUR)",
+      "editor": "Bolsamanía",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-09",
+      "url": "https://www.bolsamania.com/accion/LOGISTA-INTEGRAL"
+    },
+    {
+      "id": 31,
+      "titulo": "Logista Integral (CDNIF / LOG.MC): rango de 52 semanas 28,74-36,90",
+      "editor": "Yahoo Finanzas",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://es.finance.yahoo.com/quote/CDNIF"
+    },
+    {
+      "id": 32,
+      "titulo": "Logista Holdings: valuation (PER, capitalización y BPA FY2021-FY2028e, ejercicio a septiembre)",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://marketscreener.com/quote/stock/LOGISTA-HOLDINGS-184385162/valuation-dividend"
+    },
+    {
+      "id": 33,
+      "titulo": "Logista Holdings: valorisation (capitalización 2022 2.459 M y 2023 3.190 M)",
+      "editor": "Zonebourse",
+      "tipo": "Datos de mercado",
+      "fecha": "2026",
+      "url": "https://www.zonebourse.com/cours/action/LOGISTA-HOLDINGS-120797837/valorisation/"
+    },
+    {
+      "id": 34,
+      "titulo": "Informe anual integrado 2020: creación de valor para el accionista (cotización al cierre del ejercicio 2020: 14,6 EUR)",
+      "editor": "Logista",
+      "tipo": "Primaria",
+      "fecha": "2020-11",
+      "url": "https://www.logista.com/es/ia/en/creating-value-for-shareholders-and-investors.html"
+    },
+    {
+      "id": 35,
+      "titulo": "Logista (LOG): consenso de analistas (11 analistas, objetivo medio 32,54 EUR)",
+      "editor": "Investing.com Italia",
+      "tipo": "Analistas",
+      "fecha": "2026-07",
+      "url": "https://it.investing.com/equities/logista-consensus-estimates"
+    },
+    {
+      "id": 36,
+      "titulo": "Comparables de logística (Kuehne+Nagel, DHL, GXO, NX, ID Logistics) del informe de DSV del repositorio (7-oct-2026, MarketScreener)",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-07",
+      "url": "https://www.marketscreener.com/"
+    },
+    {
+      "id": 37,
+      "titulo": "Imperial Brands (IMBBF): forward P/E 9,50",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-06",
+      "url": "https://uk.finance.yahoo.com/quote/IMBBF"
+    },
+    {
+      "id": 38,
+      "titulo": "Rendimiento del Bund a 10 años (12-oct-2026), serie BBSIS (vía informes del repositorio del 14-oct)",
+      "editor": "Deutsche Bundesbank",
+      "tipo": "Primaria",
+      "fecha": "2026-10-12",
+      "url": "https://api.statistiken.bundesbank.de/rest/download/BBSIS/D.I.ZST.ZI.EUR.S1311.B.A604.R10XX.R.A.A._Z._Z.A?format=csv&lang=en"
+    },
+    {
+      "id": 39,
+      "titulo": "Implied ERP by month (ERPbymonth.xlsx), fila de octubre de 2026",
+      "editor": "Aswath Damodaran, NYU Stern",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx"
+    },
+    {
+      "id": 40,
+      "titulo": "LOG/EUR: cierres anuales (diciembre) 2019-2025",
+      "editor": "TradersUnion",
+      "tipo": "Datos de mercado",
+      "fecha": "2026",
+      "url": "https://tradersunion.com/currencies/price-history/log-eur/"
+    },
+    {
+      "id": 41,
+      "titulo": "Foro: Seguimiento de Logista (LOG)",
+      "editor": "Rankia",
+      "tipo": "Foros y redes",
+      "fecha": "2026",
+      "url": "https://www.rankia.com/foros/bolsa/temas/2355570-seguimiento-logista-log"
+    },
+    {
+      "id": 42,
+      "titulo": "Logista: dudas de algunos analistas sobre la guía y poca tracción en bolsa",
+      "editor": "Benzinga España",
+      "tipo": "Foros y redes",
+      "fecha": "2025",
+      "url": "https://es.benzinga.com/?p=313340"
+    },
+    {
+      "id": 43,
+      "titulo": "Com rendimento de 6,7 %, as ações da Logista são uma opção de compra para 2026?",
+      "editor": "TIKR (blog)",
+      "tipo": "Foros y redes",
+      "fecha": "2026",
+      "url": "https://www.tikr.com/pt/blog/yielding-6-7-is-logista-stock-a-buy-for-2026?"
+    },
+    {
+      "id": 44,
+      "titulo": "Logista, un valor al alza cotizando muy por encima de la media móvil de 100 periodos",
+      "editor": "Alicante Plaza",
+      "tipo": "Foros y redes",
+      "fecha": "2026",
+      "url": "https://alicanteplaza.es/alicanteplaza/logistaunvaloralalzacotizandomuyporencimadelamediamovilde100periodos"
+    },
+    {
+      "id": 45,
+      "titulo": "LOGISTA: confirmación alcista cierre >32,50 EUR; alerta cierre <28,50 EUR",
+      "editor": "Capital Bolsa (Bolsamanía)",
+      "tipo": "Foros y redes",
+      "fecha": "2026",
+      "url": "https://www.bolsamania.com/capitalbolsa/noticias/analisis-tecnico/logista-confirmacion-alcista-cierre-3250-euro-alerta-cierre-2850-euro--21454203.html"
+    }
+  ],
+  "calc": {
+    "version": 4,
+    "etiquetas": {
+      "margen_bruto": "M. tras aprov.",
+      "margen_bruto_largo": "Margen tras aprovisionamientos",
+      "dias_base": "sobre costes operativos de caja (ingresos − EBITDA), por ser una cuenta por naturaleza"
+    },
+    "recomendacion": {
+      "recomendacion": "Mantener",
+      "regla": "Mantener",
+      "regla_absoluta": "Comprar",
+      "regla_relativa": "Comprar",
+      "coincide": true,
+      "conviccion": "Baja",
+      "conviccion_sugerida": "Media",
+      "conviccion_razones": [
+        "Mantener con las dos reglas de acuerdo y lejos de los umbrales"
+      ],
+      "reglas_discrepan": false,
+      "relativo": {
+        "prima_implicita_pct": 4.2,
+        "wacc": 6.55,
+        "ke": 6.55,
+        "dcf": 48.57,
+        "dcf_min": 45.14,
+        "dcf_max": 52.69,
+        "valor_objetivo": 48.3,
+        "alcista": 60.03,
+        "bajista": 33.54,
+        "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+        "fecha": "2026-10",
+        "potencial_pct": 34.7,
+        "rentabilidad_total_pct": 40.6,
+        "asimetria": 10.42
+      },
+      "objetivo_mercado_txt": " · con la prima implícita del mercado: 48,30 (+34,7 %)",
+      "objetivo_mercado_corto": " · mercado 48,30",
+      "rentabilidad_mercado_corto": " · mercado +40,6 %",
+      "potencial_pct": 20.5,
+      "dividendo_pct": 5.9,
+      "rentabilidad_total_pct": 26.4,
+      "alcista_pct": 47.5,
+      "bajista_pct": -13.8,
+      "asimetria": 3.44,
+      "comprar_por_debajo": 28.61,
+      "vender_por_encima": 36.56,
+      "tabla": [
+        {
+          "concepto": "Objetivo a 12 meses (nuestro PER × nuestro BPA FY2028e, ponderado 25/50/25)",
+          "valor": "30,79 EUR"
+        },
+        {
+          "concepto": "Bajista / base / alcista a 12 meses",
+          "valor": "8,9x × 2,05 = 18,24 · 14,1x × 2,24 = 31,58 · 17,4x × 2,40 = 41,76"
+        },
+        {
+          "concepto": "Rentabilidad a 12 meses: ponderada / del base (con dividendo)",
+          "valor": "-8,3 % / -6,1 %"
+        },
+        {
+          "concepto": "Regla de múltiplos aplicada",
+          "valor": "v3: base a mitad de camino hacia la mediana (historia adelantada); bajista mín. 5 a o base × 0,80; alcista techo base × 1,35"
+        },
+        {
+          "concepto": "Objetivo medio de los analistas (solo contraste)",
+          "valor": "32,54 (nuestro base -3,0 %)"
+        },
+        {
+          "concepto": "Valor intrínseco (síntesis ponderada, largo plazo)",
+          "valor": "43,22 EUR"
+        },
+        {
+          "concepto": "Potencial sobre el precio actual",
+          "valor": "20,5 %"
+        },
+        {
+          "concepto": "Rentabilidad por dividendo ordinario",
+          "valor": "5,9 %"
+        },
+        {
+          "concepto": "Rentabilidad total esperada a 12 meses",
+          "valor": "26,4 %"
+        },
+        {
+          "concepto": "Escenario alcista / bajista",
+          "valor": "47,5 % / -13,8 %"
+        },
+        {
+          "concepto": "Asimetría (ganancia alcista / pérdida bajista)",
+          "valor": "3,44x"
+        },
+        {
+          "concepto": "Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado",
+          "valor": "9,0 % frente a 7,3 % y 6,5 %"
+        },
+        {
+          "concepto": "Valor objetivo con la prima implícita del mercado (4,2 %, WACC 6,5 %)",
+          "valor": "48,30 EUR"
+        },
+        {
+          "concepto": "Rentabilidad total esperada con la prima del mercado",
+          "valor": "40,6 %"
+        },
+        {
+          "concepto": "Asimetría con la prima del mercado",
+          "valor": "10,42x"
+        },
+        {
+          "concepto": "Regla absoluta (frente a su coste de capital)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "Regla relativa (frente a lo que pide el mercado)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "¿La calidad de la empresa sostiene el crecimiento previsto?",
+          "valor": "Sí (2,1 % anual proyectado; sin inversión neta)"
+        },
+        {
+          "concepto": "Señal del valor intrínseco (regla del DCF, referencia)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "Recomendación según la regla a 12 meses (Comprar: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender: ponderada ≤ -10 %)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Convicción según los criterios (Mantener con las dos reglas de acuerdo y lejos de los umbrales)",
+          "valor": "Media"
+        }
+      ],
+      "niveles": [
+        {
+          "accion": "Comprar",
+          "condicion": "Por debajo de 28,61 (ponderada a 12 meses ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco)"
+        },
+        {
+          "accion": "Mantener",
+          "condicion": "Entre 28,61 y 36,56"
+        },
+        {
+          "accion": "Vender o reducir",
+          "condicion": "Por encima de 36,56 (ponderada a 12 meses ≤ -10 %)"
+        }
+      ],
+      "precio_txt": "",
+      "valor_objetivo_txt": "",
+      "regla_valor_intrinseco": "Comprar",
+      "objetivo_12m": {
+        "completo": true,
+        "filas": [
+          {
+            "escenario": "Bajista",
+            "metrica": "PER FY2028e",
+            "beneficio_por_accion": 2.05,
+            "multiplo": 8.9,
+            "multiplo_informe": null,
+            "origen": "mínimo de 5 años",
+            "precio": 18.24,
+            "rentabilidad_pct": -43.2,
+            "justificacion": "Beneficio de ≈272 M en FY2028e: EBIT ajustado plano en ≈380 M (Francia y transporte restan), ingresos financieros de ≈55 M (BCE 50 pb más bajo), sin resultado por inventarios extraordinario, tipo del 25 %. 132,5 M de acciones, sin recompras."
+          },
+          {
+            "escenario": "Base",
+            "metrica": "PER FY2028e",
+            "beneficio_por_accion": 2.24,
+            "multiplo": 14.1,
+            "multiplo_informe": null,
+            "origen": "PER actual (16.5x) a mitad de camino hacia abajo, hacia la mediana de 5 años (12.1x)",
+            "precio": 31.58,
+            "rentabilidad_pct": -6,
+            "justificacion": "FY2026e ≈280 M (210 M a nueve meses + ≈70 M en el 4T, como el 4T del FY2025) = 2,11 EUR; FY2027e ≈288 M = 2,17 EUR; FY2028e ≈297 M: EBIT ajustado +3-4 % al año (≈420 M), amortización de intangibles de compra ≈55 M, ingresos financieros ≈70 M (caja de ≈2.500 M a Euribor + 75 pb) y tipo del 25 %. 132,5 M de acciones."
+          },
+          {
+            "escenario": "Alcista",
+            "metrica": "PER FY2028e",
+            "beneficio_por_accion": 2.4,
+            "multiplo": 17.4,
+            "multiplo_informe": null,
+            "origen": "mediana de los comparables",
+            "precio": 41.76,
+            "rentabilidad_pct": 22.3,
+            "justificacion": "Beneficio de ≈318 M: EBIT ajustado +6 % al año con compras en farma, tipos estables e inventarios positivos. En línea con el consenso (2,42 EUR)."
+          }
+        ],
+        "regla": {
+          "version": "v3",
+          "bajista": 8.9,
+          "base": 14.1,
+          "alcista": 17.4,
+          "bajista_origen": "mínimo de 5 años",
+          "base_origen": "PER actual (16.5x) a mitad de camino hacia abajo, hacia la mediana de 5 años (12.1x)",
+          "alcista_origen": "mediana de los comparables"
+        },
+        "version": "v3",
+        "probabilidades": [
+          25,
+          50,
+          25
+        ],
+        "objetivo_ponderado": 30.79,
+        "objetivo_simple": 30.53,
+        "objetivo_base": 31.58,
+        "rentabilidad_ponderada_pct": -8.3,
+        "rentabilidad_simple_pct": -9,
+        "rentabilidad_base_pct": -6.1,
+        "asimetria": 0.33,
+        "senal": "Mantener",
+        "senal_sin_confirmar": null,
+        "confianza_baja": true,
+        "comprar_por_debajo": 28.61,
+        "vender_por_encima": 36.56,
+        "consenso_objetivo": 32.54,
+        "diferencia_consenso_pct": -3
+      },
+      "rentabilidad_12m_pct": -8.3,
+      "rentabilidad_12m_txt": "-8,3 % (base -6,1 %)",
+      "objetivo_12m_txt": "30,79 EUR"
+    },
+    "mercado": {
+      "precio": 35.86,
+      "acciones": 132.5,
+      "capitalizacion": 4751,
+      "deuda_neta": -884,
+      "deuda_neta_ajustada": null,
+      "asimilables_deuda": null,
+      "ajustes_puente": 0,
+      "valor_empresa": 3867,
+      "fecha_puente": "2025-09-30"
+    },
+    "clave": {
+      "capitalizacion": 4751,
+      "valor_empresa": 3867,
+      "deuda_neta": -884,
+      "ev_ventas_ltm": 0.28,
+      "ev_ebitda_ltm": 7.9,
+      "ev_ebitda_ntm": null,
+      "ev_ebit_ltm": 12.2,
+      "per_ltm": 17.2,
+      "per_ntm": 16.5,
+      "fcf_yield_pct": 10.2,
+      "dividendo_pct": 5.9,
+      "dn_ebitda": -1.8,
+      "roic_pct": 49.6,
+      "margen_ebitda_pct": 3.5,
+      "deuda_neta_ajustada": -884,
+      "dn_ebitda_ajustada": -1.8,
+      "crecimiento_tcac_pct": 5.8,
+      "ingresos_ntm": null,
+      "ebitda_ntm": null,
+      "bpa_ntm": 2.18,
+      "ebitda_ltm": 488,
+      "ingresos_ltm": 13764,
+      "ev_rab": null
+    },
+    "cuenta": [
+      {
+        "periodo": "FY2021",
+        "ingresos": 10816,
+        "crecimiento_pct": null,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "ebit": null,
+        "margen_ebit_pct": null,
+        "beneficio_neto": 175,
+        "margen_neto_pct": 1.6,
+        "bpa": 1.32,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": null
+      },
+      {
+        "periodo": "FY2022",
+        "ingresos": 11464,
+        "crecimiento_pct": 6,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "ebit": null,
+        "margen_ebit_pct": null,
+        "beneficio_neto": 200,
+        "margen_neto_pct": 1.7,
+        "bpa": 1.51,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": null
+      },
+      {
+        "periodo": "FY2023",
+        "ingresos": 12427,
+        "crecimiento_pct": 8.4,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "ebit": null,
+        "margen_ebit_pct": null,
+        "beneficio_neto": 274,
+        "margen_neto_pct": 2.2,
+        "bpa": 2.07,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": null
+      },
+      {
+        "periodo": "FY2024",
+        "ingresos": 12985,
+        "crecimiento_pct": 4.5,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 490,
+        "margen_ebitda_pct": 3.8,
+        "ebit": 325,
+        "margen_ebit_pct": 2.5,
+        "beneficio_neto": 308,
+        "margen_neto_pct": 2.4,
+        "bpa": 2.34,
+        "dpa": 2.09,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 89
+      },
+      {
+        "periodo": "FY2025",
+        "ingresos": 13535,
+        "crecimiento_pct": 4.2,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 488,
+        "margen_ebitda_pct": 3.6,
+        "ebit": 318,
+        "margen_ebit_pct": 2.3,
+        "beneficio_neto": 281,
+        "margen_neto_pct": 2.1,
+        "bpa": 2.13,
+        "dpa": 2.09,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 98
+      }
+    ],
+    "tcac": {
+      "periodo": "FY2021-FY2025",
+      "ingresos_pct": 5.8,
+      "ebitda_pct": null,
+      "bpa_pct": 12.7
+    },
+    "cuenta_y_prevision": [
+      {
+        "periodo": "FY2021",
+        "ingresos": 10816,
+        "ebitda": null
+      },
+      {
+        "periodo": "FY2022",
+        "ingresos": 11464,
+        "ebitda": null
+      },
+      {
+        "periodo": "FY2023",
+        "ingresos": 12427,
+        "ebitda": null
+      },
+      {
+        "periodo": "FY2024",
+        "ingresos": 12985,
+        "ebitda": 490
+      },
+      {
+        "periodo": "FY2025",
+        "ingresos": 13535,
+        "ebitda": 488
+      },
+      {
+        "periodo": "FY2026e",
+        "ingresos": 13873,
+        "ebitda": 499
+      },
+      {
+        "periodo": "FY2027e",
+        "ingresos": 14220,
+        "ebitda": 512
+      },
+      {
+        "periodo": "FY2028e",
+        "ingresos": 14576,
+        "ebitda": 525
+      },
+      {
+        "periodo": "FY2029e",
+        "ingresos": 14940,
+        "ebitda": 538
+      },
+      {
+        "periodo": "FY2030e",
+        "ingresos": 15239,
+        "ebitda": 549
+      },
+      {
+        "periodo": "FY2031e",
+        "ingresos": 15544,
+        "ebitda": 560
+      },
+      {
+        "periodo": "FY2032e",
+        "ingresos": 15855,
+        "ebitda": 571
+      },
+      {
+        "periodo": "FY2033e",
+        "ingresos": 16092,
+        "ebitda": 579
+      },
+      {
+        "periodo": "FY2034e",
+        "ingresos": 16334,
+        "ebitda": 588
+      },
+      {
+        "periodo": "FY2035e",
+        "ingresos": 16579,
+        "ebitda": 597
+      }
+    ],
+    "segmentos_ultimo": [],
+    "segmentos_tabla": {
+      "periodos": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "filas": []
+    },
+    "segmentos_periodo": null,
+    "balance": [
+      {
+        "periodo": "FY2021",
+        "activo_total": 7588,
+        "intangibles": 0,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 172,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "deuda_neta": -172,
+        "patrimonio": 524,
+        "minoritarios": null,
+        "dn_ebitda": null,
+        "dn_patrimonio_pct": -33,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 352,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "FY2022",
+        "activo_total": 7694,
+        "intangibles": 0,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 219,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "deuda_neta": -219,
+        "patrimonio": 567,
+        "minoritarios": null,
+        "dn_ebitda": null,
+        "dn_patrimonio_pct": -39,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 348,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "FY2023",
+        "activo_total": 8062,
+        "intangibles": 0,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 193,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "deuda_neta": -193,
+        "patrimonio": 595,
+        "minoritarios": null,
+        "dn_ebitda": null,
+        "dn_patrimonio_pct": -32,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 402,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "FY2024",
+        "activo_total": 8081,
+        "intangibles": 0,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 169,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "deuda_neta": -169,
+        "patrimonio": 642,
+        "minoritarios": null,
+        "dn_ebitda": -0.34,
+        "dn_patrimonio_pct": -26,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 473,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "FY2025",
+        "activo_total": 8308,
+        "intangibles": 0,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 175,
+        "deuda_financiera": 21,
+        "arrendamientos": null,
+        "deuda_neta": -154,
+        "patrimonio": 643,
+        "minoritarios": null,
+        "dn_ebitda": -0.32,
+        "dn_patrimonio_pct": -24,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 489,
+        "liquidez_corriente": null
+      }
+    ],
+    "perimetro_nota": "Cambio de perímetro (FY2022: Compra del 73,33 % del grupo de transporte El Mosca (con opción al 100 % en tres años) y de otras sociedades de transporte y farma.). Los ratios de balance de ese año (días, circulante, deuda neta / EBITDA, ROIC) y los indicadores de calidad contable no son comparables con los anteriores.",
+    "flujos": [
+      {
+        "periodo": "FY2024",
+        "flujo_operativo": null,
+        "capex": null,
+        "pagos_arrendamientos": null,
+        "fcf": null,
+        "beneficio_neto": 308,
+        "conversion_pct": null,
+        "capex_ventas_pct": null,
+        "capex_amortizacion": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 132.5,
+        "fcf_por_accion": null
+      },
+      {
+        "periodo": "FY2025",
+        "flujo_operativo": 613,
+        "capex": 54,
+        "pagos_arrendamientos": 76,
+        "fcf": 483,
+        "beneficio_neto": 281,
+        "conversion_pct": 172,
+        "capex_ventas_pct": 0.4,
+        "capex_amortizacion": 0.32,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 277,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 277,
+        "payout_caja_pct": 99,
+        "acciones": 132.5,
+        "fcf_por_accion": 3.65
+      }
+    ],
+    "flujos_acumulado": {
+      "periodo": "FY2024-FY2025",
+      "fcf": 483,
+      "adquisiciones": 0,
+      "dividendos": 277,
+      "recompras": 0,
+      "conversion_pct": 82
+    },
+    "rentabilidad": [
+      {
+        "periodo": "FY2021",
+        "nopat": null,
+        "capital_invertido": 352,
+        "roic_pct": null,
+        "roe_pct": 33.4,
+        "roa_pct": 2.3,
+        "margen_neto_pct": 1.6,
+        "rotacion": 1.43,
+        "apalancamiento": 14.48
+      },
+      {
+        "periodo": "FY2022",
+        "nopat": null,
+        "capital_invertido": 350,
+        "roic_pct": null,
+        "roe_pct": 36.7,
+        "roa_pct": 2.6,
+        "margen_neto_pct": 1.7,
+        "rotacion": 1.5,
+        "apalancamiento": 14.01
+      },
+      {
+        "periodo": "FY2023",
+        "nopat": null,
+        "capital_invertido": 375,
+        "roic_pct": null,
+        "roe_pct": 47.2,
+        "roa_pct": 3.5,
+        "margen_neto_pct": 2.2,
+        "rotacion": 1.58,
+        "apalancamiento": 13.56
+      },
+      {
+        "periodo": "FY2024",
+        "nopat": 244,
+        "capital_invertido": 438,
+        "roic_pct": 55.7,
+        "roe_pct": 49.8,
+        "roa_pct": 3.8,
+        "margen_neto_pct": 2.4,
+        "rotacion": 1.61,
+        "apalancamiento": 13.05
+      },
+      {
+        "periodo": "FY2025",
+        "nopat": 239,
+        "capital_invertido": 481,
+        "roic_pct": 49.6,
+        "roe_pct": 43.7,
+        "roa_pct": 3.4,
+        "margen_neto_pct": 2.1,
+        "rotacion": 1.65,
+        "apalancamiento": 12.75
+      }
+    ],
+    "roic_incremental_pct": null,
+    "roic_frente_wacc": [
+      {
+        "periodo": "FY2021",
+        "roic_pct": null,
+        "roe_pct": 33.4,
+        "wacc_pct": 7.3
+      },
+      {
+        "periodo": "FY2022",
+        "roic_pct": null,
+        "roe_pct": 36.7,
+        "wacc_pct": 7.3
+      },
+      {
+        "periodo": "FY2023",
+        "roic_pct": null,
+        "roe_pct": 47.2,
+        "wacc_pct": 7.3
+      },
+      {
+        "periodo": "FY2024",
+        "roic_pct": 55.7,
+        "roe_pct": 49.8,
+        "wacc_pct": 7.3
+      },
+      {
+        "periodo": "FY2025",
+        "roic_pct": 49.6,
+        "roe_pct": 43.7,
+        "wacc_pct": 7.3
+      }
+    ],
+    "calidad": {
+      "periodo": "FY2025",
+      "altman_z": 2.13,
+      "altman_zona": "Zona gris",
+      "piotroski_f": 5,
+      "piotroski_detalle": [
+        {
+          "criterio": "Beneficio neto positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "ROA mejora",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Flujo operativo > beneficio neto",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Baja el endeudamiento (deuda / activo)",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "Mejora la liquidez corriente",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "No emite acciones",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora el margen bruto",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "Mejora la rotación del activo",
+          "resultado": "Sí"
+        }
+      ],
+      "tabla": [
+        {
+          "indicador": "Altman Z",
+          "valor": "2,13",
+          "lectura": "Zona gris (> 2,99 seguro; < 1,81 riesgo). No aplica a bancos ni aseguradoras, y subestima la solvencia de empresas con grandes anticipos de clientes o prefinanciación pública (contratistas, construcción), que inflan el pasivo."
+        },
+        {
+          "indicador": "Piotroski F",
+          "valor": "5 / 6",
+          "lectura": "Intermedio (4-6)."
+        },
+        {
+          "indicador": "Flujo operativo / beneficio neto (acumulado)",
+          "valor": "0,50x",
+          "lectura": "El beneficio se cobra solo en parte: mirar circulante y ajustes."
+        }
+      ]
+    },
+    "dcf": {
+      "proyeccion": [
+        {
+          "periodo": "FY2026e",
+          "ingresos": 13873,
+          "crecimiento_pct": 2.5,
+          "ebitda": 499,
+          "margen_ebitda_pct": 3.6,
+          "amortizacion": 173,
+          "ebit": 326,
+          "impuestos": 82,
+          "capex": 139,
+          "variacion_circulante": 0,
+          "fcff": 279,
+          "fraccion": 0,
+          "factor": 1,
+          "vp": 0
+        },
+        {
+          "periodo": "FY2027e",
+          "ingresos": 14220,
+          "crecimiento_pct": 2.5,
+          "ebitda": 512,
+          "margen_ebitda_pct": 3.6,
+          "amortizacion": 178,
+          "ebit": 334,
+          "impuestos": 84,
+          "capex": 142,
+          "variacion_circulante": 0,
+          "fcff": 286,
+          "fraccion": 0.96,
+          "factor": 0.967,
+          "vp": 266
+        },
+        {
+          "periodo": "FY2028e",
+          "ingresos": 14576,
+          "crecimiento_pct": 2.5,
+          "ebitda": 525,
+          "margen_ebitda_pct": 3.6,
+          "amortizacion": 182,
+          "ebit": 343,
+          "impuestos": 86,
+          "capex": 146,
+          "variacion_circulante": 0,
+          "fcff": 293,
+          "fraccion": 1,
+          "factor": 0.902,
+          "vp": 264
+        },
+        {
+          "periodo": "FY2029e",
+          "ingresos": 14940,
+          "crecimiento_pct": 2.5,
+          "ebitda": 538,
+          "margen_ebitda_pct": 3.6,
+          "amortizacion": 187,
+          "ebit": 351,
+          "impuestos": 88,
+          "capex": 149,
+          "variacion_circulante": 0,
+          "fcff": 301,
+          "fraccion": 1,
+          "factor": 0.84,
+          "vp": 252
+        },
+        {
+          "periodo": "FY2030e",
+          "ingresos": 15239,
+          "crecimiento_pct": 2,
+          "ebitda": 549,
+          "margen_ebitda_pct": 3.6,
+          "amortizacion": 190,
+          "ebit": 358,
+          "impuestos": 90,
+          "capex": 152,
+          "variacion_circulante": 0,
+          "fcff": 307,
+          "fraccion": 1,
+          "factor": 0.783,
+          "vp": 240
+        },
+        {
+          "periodo": "FY2031e",
+          "ingresos": 15544,
+          "crecimiento_pct": 2,
+          "ebitda": 560,
+          "margen_ebitda_pct": 3.6,
+          "amortizacion": 194,
+          "ebit": 365,
+          "impuestos": 91,
+          "capex": 155,
+          "variacion_circulante": 0,
+          "fcff": 313,
+          "fraccion": 1,
+          "factor": 0.729,
+          "vp": 228
+        },
+        {
+          "periodo": "FY2032e",
+          "ingresos": 15855,
+          "crecimiento_pct": 2,
+          "ebitda": 571,
+          "margen_ebitda_pct": 3.6,
+          "amortizacion": 198,
+          "ebit": 373,
+          "impuestos": 93,
+          "capex": 159,
+          "variacion_circulante": 0,
+          "fcff": 319,
+          "fraccion": 1,
+          "factor": 0.679,
+          "vp": 217
+        },
+        {
+          "periodo": "FY2033e",
+          "ingresos": 16092,
+          "crecimiento_pct": 1.5,
+          "ebitda": 579,
+          "margen_ebitda_pct": 3.6,
+          "amortizacion": 201,
+          "ebit": 378,
+          "impuestos": 95,
+          "capex": 161,
+          "variacion_circulante": 0,
+          "fcff": 324,
+          "fraccion": 1,
+          "factor": 0.633,
+          "vp": 205
+        },
+        {
+          "periodo": "FY2034e",
+          "ingresos": 16334,
+          "crecimiento_pct": 1.5,
+          "ebitda": 588,
+          "margen_ebitda_pct": 3.6,
+          "amortizacion": 204,
+          "ebit": 384,
+          "impuestos": 96,
+          "capex": 163,
+          "variacion_circulante": 0,
+          "fcff": 329,
+          "fraccion": 1,
+          "factor": 0.59,
+          "vp": 194
+        },
+        {
+          "periodo": "FY2035e",
+          "ingresos": 16579,
+          "crecimiento_pct": 1.5,
+          "ebitda": 597,
+          "margen_ebitda_pct": 3.6,
+          "amortizacion": 207,
+          "ebit": 390,
+          "impuestos": 97,
+          "capex": 166,
+          "variacion_circulante": 0,
+          "fcff": 334,
+          "fraccion": 1,
+          "factor": 0.55,
+          "vp": 183
+        }
+      ],
+      "etapa2": null,
+      "suma_vp": 2049,
+      "valor_terminal": 5324,
+      "vp_terminal": 2824,
+      "valor_empresa": 4874,
+      "peso_terminal_pct": 58,
+      "valor_acciones": 5758,
+      "valor_accion": 43.45,
+      "vt_gordon": 5324,
+      "vt_multiplo": 5968,
+      "multiplo_implicito": 8.9,
+      "g_implicito_pct": 1.65,
+      "metodo_terminal": "gordon",
+      "terminal_tabla": [
+        {
+          "concepto": "Método principal",
+          "valor": "Crecimiento a perpetuidad"
+        },
+        {
+          "concepto": "Crecimiento a perpetuidad",
+          "valor": "1,0 %"
+        },
+        {
+          "concepto": "Múltiplo EV/EBITDA de salida",
+          "valor": "10,0x"
+        },
+        {
+          "concepto": "Valor terminal (Gordon)",
+          "valor": "5.324"
+        },
+        {
+          "concepto": "Valor terminal (múltiplo)",
+          "valor": "5.968"
+        },
+        {
+          "concepto": "Múltiplo de salida implícito en Gordon",
+          "valor": "8,9x"
+        },
+        {
+          "concepto": "Crecimiento implícito en el múltiplo",
+          "valor": "1,65 %"
+        },
+        {
+          "concepto": "Peso del valor terminal en el valor empresa",
+          "valor": "58 %"
+        }
+      ],
+      "puente": [
+        {
+          "concepto": "Valor actual de los flujos proyectados",
+          "valor": "2.049"
+        },
+        {
+          "concepto": "Valor actual del valor terminal",
+          "valor": "2.824"
+        },
+        {
+          "concepto": "Valor empresa",
+          "valor": "4.874"
+        },
+        {
+          "concepto": "− Deuda financiera neta (con arrendamientos)",
+          "valor": "884"
+        },
+        {
+          "concepto": "− Minoritarios, pensiones y otros; + asociadas",
+          "valor": "0"
+        },
+        {
+          "concepto": "Valor de los fondos propios",
+          "valor": "5.758"
+        },
+        {
+          "concepto": "Acciones diluidas (millones)",
+          "valor": "132,5"
+        },
+        {
+          "concepto": "Valor por acción",
+          "valor": "43,45"
+        }
+      ],
+      "composicion": [
+        {
+          "parte": "Flujos proyectados",
+          "valor": 2049
+        },
+        {
+          "parte": "Valor terminal",
+          "valor": 2824
+        }
+      ],
+      "wacc": 7.33,
+      "ke": 7.33,
+      "kd_despues": 3,
+      "wacc_tabla": [
+        {
+          "concepto": "Tasa libre de riesgo",
+          "valor": "3,53 %"
+        },
+        {
+          "concepto": "Beta",
+          "valor": "0,60"
+        },
+        {
+          "concepto": "Prima de riesgo de mercado",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Prima adicional (país, tamaño, específica)",
+          "valor": "0,50 %"
+        },
+        {
+          "concepto": "Coste de los fondos propios",
+          "valor": "7,33 %"
+        },
+        {
+          "concepto": "Coste de la deuda antes de impuestos",
+          "valor": "4,00 %"
+        },
+        {
+          "concepto": "Tipo impositivo",
+          "valor": "25,00 %"
+        },
+        {
+          "concepto": "Coste de la deuda después de impuestos",
+          "valor": "3,00 %"
+        },
+        {
+          "concepto": "Peso de la deuda (D / (D + E))",
+          "valor": "0,00 %"
+        },
+        {
+          "concepto": "WACC",
+          "valor": "7,33 %"
+        },
+        {
+          "concepto": "Prima de riesgo implícita del mercado (regla relativa)",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "WACC con la prima implícita del mercado",
+          "valor": "6,55 %"
+        }
+      ],
+      "potencial_pct": 21.2,
+      "sensibilidad": {
+        "eje_columnas": "Crecimiento a perpetuidad",
+        "columnas": [
+          "0,0 %",
+          "0,5 %",
+          "1,0 %",
+          "1,5 %",
+          "2,0 %"
+        ],
+        "filas": [
+          {
+            "wacc": "6,3 %",
+            "v0": 45.71,
+            "v1": 47.8,
+            "v2": 50.28,
+            "v3": 53.28,
+            "v4": 56.98
+          },
+          {
+            "wacc": "6,8 %",
+            "v0": 42.84,
+            "v1": 44.56,
+            "v2": 46.57,
+            "v3": 48.97,
+            "v4": 51.86
+          },
+          {
+            "wacc": "7,3 %",
+            "v0": 40.36,
+            "v1": 41.8,
+            "v2": 43.45,
+            "v3": 45.4,
+            "v4": 47.7
+          },
+          {
+            "wacc": "7,8 %",
+            "v0": 38.21,
+            "v1": 39.41,
+            "v2": 40.79,
+            "v3": 42.39,
+            "v4": 44.26
+          },
+          {
+            "wacc": "8,3 %",
+            "v0": 36.32,
+            "v1": 37.34,
+            "v2": 38.5,
+            "v3": 39.83,
+            "v4": 41.37
+          }
+        ]
+      },
+      "sensibilidad2": {
+        "columnas": [
+          "-2 pp",
+          "-1 pp",
+          "0 pp",
+          "+1 pp",
+          "+2 pp"
+        ],
+        "filas": [
+          {
+            "margen": "-2 pp",
+            "v0": 14.81,
+            "v1": 15.4,
+            "v2": 16.04,
+            "v3": 16.72,
+            "v4": 17.45
+          },
+          {
+            "margen": "-1 pp",
+            "v0": 26.72,
+            "v1": 28.18,
+            "v2": 29.75,
+            "v3": 31.43,
+            "v4": 33.23
+          },
+          {
+            "margen": "0 pp",
+            "v0": 38.63,
+            "v1": 40.96,
+            "v2": 43.45,
+            "v3": 46.14,
+            "v4": 49.01
+          },
+          {
+            "margen": "+1 pp",
+            "v0": 50.54,
+            "v1": 53.73,
+            "v2": 57.16,
+            "v3": 60.84,
+            "v4": 64.79
+          },
+          {
+            "margen": "+2 pp",
+            "v0": 62.44,
+            "v1": 66.51,
+            "v2": 70.87,
+            "v3": 75.55,
+            "v4": 80.57
+          }
+        ]
+      },
+      "rango_min": 39.41,
+      "rango_max": 48.97,
+      "inverso": {
+        "crecimiento_implicito_pct": -1.3,
+        "crecimiento_base_pct": 2,
+        "periodo": "FY2027e-FY2035e",
+        "margen_implicito_pct": 3,
+        "margen_implicito_texto": null,
+        "margen_base_pct": 3.6,
+        "rentabilidad_implicita_pct": 9
+      },
+      "sostenibilidad": {
+        "veredicto": "Sí",
+        "crecimiento_proyectado_pct": 2.1,
+        "tasa_reinversion_pct": -14,
+        "crecimiento_financiable_pct": null,
+        "roic_pct": 49.6,
+        "roic_incremental_historico_pct": null,
+        "roic_implicito_pct": null,
+        "cuota_actual_pct": null,
+        "cuota_final_pct": null,
+        "puente": [
+          {
+            "periodo": "FY2026e",
+            "volumen_pct": -1.5,
+            "precio_pct": 4,
+            "otros_pct": 0,
+            "comentario": "Volumen de cigarrillos −1,5 %; precio +4 % por subidas de impuestos en España, Italia y Francia [4, 5].",
+            "suma_pct": 2.5,
+            "crecimiento_pct": 2.5
+          },
+          {
+            "periodo": "FY2027e",
+            "volumen_pct": -1.5,
+            "precio_pct": 3.5,
+            "otros_pct": 0.5,
+            "comentario": "Igual tendencia; otros: farma y productos de nueva generación.",
+            "suma_pct": 2.5,
+            "crecimiento_pct": 2.5
+          },
+          {
+            "periodo": "FY2028e",
+            "volumen_pct": -1.5,
+            "precio_pct": 3.5,
+            "otros_pct": 0.5,
+            "comentario": "Igual que FY2027e.",
+            "suma_pct": 2.5,
+            "crecimiento_pct": 2.5
+          },
+          {
+            "periodo": "FY2029e",
+            "volumen_pct": -1.5,
+            "precio_pct": 3.5,
+            "otros_pct": 0.5,
+            "comentario": "Igual que FY2027e.",
+            "suma_pct": 2.5,
+            "crecimiento_pct": 2.5
+          },
+          {
+            "periodo": "FY2030e",
+            "volumen_pct": -1.5,
+            "precio_pct": 3,
+            "otros_pct": 0.5,
+            "comentario": "Menos subidas de precio; el volumen sigue cayendo.",
+            "suma_pct": 2,
+            "crecimiento_pct": 2
+          }
+        ],
+        "texto": "La proyección apenas necesita inversión neta de la amortización (reinversión acumulada de -382 M, con un capex bruto medio del 1,0 % de las ventas). En un negocio de activos ligeros, el crecimiento medio del 2,0 % tiene que salir de subir precios y de ganar volumen sin capital nuevo, y la prueba es el poder de precios y la cuota; en un comprador en serie, la amortización es de intangibles comprados y la prueba es el capex bruto (las compras) frente al crecimiento comprado.",
+        "tabla": [
+          {
+            "concepto": "Crecimiento medio de ingresos proyectado",
+            "valor": "2,0 %"
+          },
+          {
+            "concepto": "Capex bruto medio (incluidas compras si van como inversión)",
+            "valor": "1,0 % de las ventas"
+          },
+          {
+            "concepto": "Reinversión neta acumulada (capex − amortización + circulante)",
+            "valor": "-382 M (-14 % del NOPAT)"
+          }
+        ]
+      }
+    },
+    "escenarios": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "narrativa": "Francia y España aceleran la caída del volumen, un fabricante renegocia tarifas y el BCE baja tipos: el EBIT se estanca y los ingresos financieros caen a ≈55 M. El mercado vuelve a pagar el PER de 2022 (8,9x).",
+        "crecimiento_medio_pct": 0.5,
+        "margen_final_pct": 3.2,
+        "wacc_pct": 7.8,
+        "valor": 30.92,
+        "potencial_pct": -13.8
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "narrativa": "Ingresos +2,5 % con precio por impuestos, EBIT ajustado +3-4 % y ingresos financieros estables en ≈70 M: BPA de 2,24 EUR en FY2028e y dividendo de 2,09-2,15 EUR.",
+        "crecimiento_medio_pct": 2,
+        "margen_final_pct": 3.6,
+        "wacc_pct": 7.3,
+        "valor": 43.45,
+        "potencial_pct": 21.2
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "narrativa": "Compras en farma que suman EBIT, productos de nueva generación que compensan el cigarrillo y tipos estables: BPA de 2,40 EUR, cerca del consenso.",
+        "crecimiento_medio_pct": 3,
+        "margen_final_pct": 3.9,
+        "wacc_pct": 7.3,
+        "valor": 52.91,
+        "potencial_pct": 47.5
+      }
+    ],
+    "valor_ponderado": 42.68,
+    "potencial_ponderado_pct": 19,
+    "comparables": {
+      "tabla": [
+        {
+          "nombre": "Logista",
+          "ticker": "LOG",
+          "pais": "ES",
+          "capitalizacion": 4751,
+          "ev_ventas": 0.28,
+          "ev_ebitda_ltm": 7.9,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 16.5,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": 3.5,
+          "roic_pct": 49.6,
+          "dn_ebitda": -1.8,
+          "fcf_yield_pct": 10.2,
+          "es_objetivo": true
+        },
+        {
+          "nombre": "Kuehne+Nagel",
+          "ticker": "KNIN",
+          "pais": "CH",
+          "capitalizacion": null,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": 12.2,
+          "per_ntm": 23.8,
+          "crecimiento_pct": 2.9,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "DHL Group",
+          "ticker": "DHL",
+          "pais": "DE",
+          "capitalizacion": null,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": 6.8,
+          "per_ntm": 14.9,
+          "crecimiento_pct": 4.2,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "GXO Logistics",
+          "ticker": "GXO",
+          "pais": "US",
+          "capitalizacion": null,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": 7.3,
+          "per_ntm": 19.5,
+          "crecimiento_pct": 5.6,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "NX Holdings",
+          "ticker": "9147",
+          "pais": "JP",
+          "capitalizacion": null,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": 5.3,
+          "per_ntm": 12.4,
+          "crecimiento_pct": 5.5,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "ID Logistics",
+          "ticker": "IDL",
+          "pais": "FR",
+          "capitalizacion": null,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": 4.7,
+          "per_ntm": 23.9,
+          "crecimiento_pct": 12.5,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Bunzl",
+          "ticker": "BNZL",
+          "pais": "GB",
+          "capitalizacion": null,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": 8.9,
+          "per_ntm": 17.4,
+          "crecimiento_pct": 2.4,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Imperial Brands",
+          "ticker": "IMB",
+          "pais": "GB",
+          "capitalizacion": null,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 9.5,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        }
+      ],
+      "estadisticos": [
+        {
+          "estadistico": "Mediana",
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": 7.1,
+          "per_ntm": 17.4,
+          "crecimiento_pct": 4.9,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null
+        },
+        {
+          "estadistico": "Media",
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": 7.5,
+          "per_ntm": 17.3,
+          "crecimiento_pct": 5.5,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null
+        },
+        {
+          "estadistico": "Percentil 25",
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": 5.7,
+          "per_ntm": 13.7,
+          "crecimiento_pct": 3.2,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null
+        },
+        {
+          "estadistico": "Percentil 75",
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": 8.5,
+          "per_ntm": 21.7,
+          "crecimiento_pct": 5.6,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null
+        }
+      ],
+      "implicito": [
+        {
+          "metodo": "PER próximos 12 meses",
+          "metrica_empresa": 2.18,
+          "multiplo_p25": 13.7,
+          "multiplo_mediana": 17.4,
+          "multiplo_p75": 21.7,
+          "multiplos": "13,7x / 17,4x / 21,6x",
+          "valor_p25": 29.75,
+          "valor_mediana": 37.93,
+          "valor_p75": 47.19,
+          "potencial_pct": 5.8
+        }
+      ],
+      "regresion": {
+        "pendiente": -0.525931264133595,
+        "ordenada": 10.434720807137,
+        "r2": 0.4979782245044472,
+        "n": 6
+      },
+      "n": 7
+    },
+    "transacciones": null,
+    "suma_partes": null,
+    "multiplos_historicos": [
+      {
+        "metrica": "PER últimos 12 meses (cierre de cada año)",
+        "campo": "per_ltm",
+        "actual": 17.2,
+        "media": 12.3,
+        "minimo": 11.6,
+        "maximo": 13.8,
+        "percentil": 100,
+        "prima_pct": 40,
+        "anios": 5
+      },
+      {
+        "metrica": "PER próximos 12 meses",
+        "campo": "per_ntm",
+        "actual": 16.5,
+        "media": 11.6,
+        "minimo": 8.9,
+        "maximo": 13.6,
+        "percentil": 100,
+        "prima_pct": 42,
+        "anios": 6
+      }
+    ],
+    "multiplos_serie": [],
+    "multiplos_titulo": null,
+    "consenso_vs_propio": [
+      {
+        "periodo": "FY2026e",
+        "ingresos_propio": 13873,
+        "ingresos_consenso": null,
+        "ingresos_dif_pct": null,
+        "ebitda_propio": 499,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      },
+      {
+        "periodo": "FY2027e",
+        "ingresos_propio": 14220,
+        "ingresos_consenso": null,
+        "ingresos_dif_pct": null,
+        "ebitda_propio": 512,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      },
+      {
+        "periodo": "FY2028e",
+        "ingresos_propio": 14576,
+        "ingresos_consenso": null,
+        "ingresos_dif_pct": null,
+        "ebitda_propio": 525,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      }
+    ],
+    "gobierno": {
+      "n_consejeros": 2,
+      "independientes_pct": 50,
+      "antiguedad_media": 7,
+      "composicion": [
+        {
+          "tipo": "Independiente",
+          "num": 1
+        },
+        {
+          "tipo": "Ejecutivo",
+          "num": 1
+        }
+      ],
+      "checklist": [
+        {
+          "criterio": "Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)",
+          "resultado": "Cumple",
+          "valor": "50 % (con control)"
+        },
+        {
+          "criterio": "Presidencia sin vínculo familiar ni profesional con el accionista de control",
+          "resultado": "Cumple",
+          "valor": "Independiente del control"
+        },
+        {
+          "criterio": "Presidente no ejecutivo, o consejero coordinador independiente",
+          "resultado": "Cumple",
+          "valor": "No ejecutivo"
+        },
+        {
+          "criterio": "Comisión de auditoría con mayoría de independientes y presidida por uno",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Ningún consejero «otro externo» con más de 12 años",
+          "resultado": "Cumple",
+          "valor": "Ninguno"
+        },
+        {
+          "criterio": "Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Peor voto a favor sobre remuneración (3 juntas) ≥ 80 %",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Una acción, un voto, sin blindajes ni límites de voto estatutarios",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Sin operaciones vinculadas relevantes",
+          "resultado": "No cumple",
+          "valor": "Hay"
+        },
+        {
+          "criterio": "Auditor con 10 años o menos en el cargo",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Opinión de auditoría sin salvedades",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Directivos compradores netos en 12 meses (o sin ventas relevantes)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        }
+      ],
+      "puntuacion": "5 de 13 (7 sin dato)",
+      "puntuacion_pct": 38,
+      "compras_insiders": 0,
+      "ventas_insiders": 0
+    },
+    "competidores_margen": [
+      {
+        "nombre": "Logista",
+        "margen_ebit_pct": 2.3
+      },
+      {
+        "nombre": "Distribución propia de los fabricantes",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Distribuidores farmacéuticos (Cofares, Alliance Healthcare)",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Operadores de transporte (DHL, GXO, ID Logistics)",
+        "margen_ebit_pct": null
+      }
+    ],
+    "sintesis": {
+      "formato_eje": "#,##0.0",
+      "rangos": [
+        {
+          "metodo": "Cotización 52 semanas",
+          "etiqueta": "Cotización 52 semanas (28,74 – 36,90)",
+          "min": 28.74,
+          "central": 35.86,
+          "max": 36.9,
+          "gris": true
+        },
+        {
+          "metodo": "Precio objetivo de los analistas",
+          "etiqueta": "Precio objetivo de los analistas (26,70 – 35,00)",
+          "min": 26.7,
+          "central": 32.54,
+          "max": 35,
+          "gris": true
+        },
+        {
+          "metodo": "Comparables: PER NTM",
+          "etiqueta": "Comparables: PER NTM (29,75 – 47,19)",
+          "min": 29.75,
+          "central": 37.93,
+          "max": 47.19,
+          "gris": false
+        },
+        {
+          "metodo": "DCF (WACC y g ± 0,5)",
+          "etiqueta": "DCF (WACC y g ± 0,5) (39,41 – 48,97)",
+          "min": 39.41,
+          "central": 43.45,
+          "max": 48.97,
+          "gris": false
+        },
+        {
+          "metodo": "Escenarios (bajista – alcista)",
+          "etiqueta": "Escenarios (bajista – alcista) (30,92 – 52,91)",
+          "min": 30.92,
+          "central": 42.68,
+          "max": 52.91,
+          "gris": false
+        },
+        {
+          "metodo": "DCF con la prima del mercado",
+          "etiqueta": "DCF con la prima implícita del mercado (4,2 %)",
+          "min": 45.14,
+          "central": 48.57,
+          "max": 52.69
+        },
+        {
+          "metodo": "Precio actual",
+          "etiqueta": "Precio actual (35,86)",
+          "min": 35.68,
+          "central": 35.86,
+          "max": 36.04,
+          "gris": true
+        }
+      ],
+      "tabla": [
+        {
+          "metodo": "DCF",
+          "valor": 43.45,
+          "peso_pct": 70,
+          "potencial_pct": 21.2
+        },
+        {
+          "metodo": "Comparables (mediana EV/EBITDA y PER) (no se usa)",
+          "valor": 37.93,
+          "peso_pct": 0,
+          "potencial_pct": 5.8
+        },
+        {
+          "metodo": "Escenarios ponderados",
+          "valor": 42.68,
+          "peso_pct": 30,
+          "potencial_pct": 19
+        }
+      ],
+      "valor_objetivo": 43.22,
+      "potencial_pct": 20.5
+    },
+    "fuentes": {
+      "n_fuentes": 45,
+      "n_primarias": 10,
+      "por_tipo": [
+        {
+          "tipo": "Primaria",
+          "num": 10
+        },
+        {
+          "tipo": "Prensa",
+          "num": 13
+        },
+        {
+          "tipo": "Datos de mercado",
+          "num": 15
+        },
+        {
+          "tipo": "Analistas",
+          "num": 2
+        },
+        {
+          "tipo": "Foros y redes",
+          "num": 5
+        }
+      ],
+      "n_citadas": 41,
+      "citas_sin_fuente": [],
+      "fuentes_sin_citar": [
+        "3",
+        "8",
+        "26",
+        "30"
+      ]
+    },
+    "controles": [
+      {
+        "control": "DCF inverso calculable",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Puente de ingresos (volumen + precio + otros) = crecimiento del DCF",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "resultado": "OK",
+        "detalle": "Supuesto 0,0 % frente a 0,0 % real: genera una variación de circulante de 0 M en el primer año. Converge de forma gradual."
+      },
+      {
+        "control": "Peso del valor terminal ≤ 80 % del valor empresa",
+        "resultado": "OK",
+        "detalle": "58 %."
+      },
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "resultado": "OK",
+        "detalle": "1,00 %."
+      },
+      {
+        "control": "Probabilidades de los escenarios suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 5 comparables",
+        "resultado": "OK",
+        "detalle": "7 comparables."
+      },
+      {
+        "control": "Pesos de la síntesis suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Múltiplos del objetivo a 12 m según la regla común",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Objetivo 12 m frente al consenso",
+        "resultado": "OK",
+        "detalle": "El base se separa un -3,0 % del objetivo medio de los analistas: explícalo en diferencia_consenso (nunca se acerca la cifra)."
+      },
+      {
+        "control": "Precio del cierre de la fecha de corte (o de las dos sesiones anteriores)",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Recomendación coherente con la regla de decisión",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Convicción frente a la sugerida por los criterios",
+        "resultado": "OK",
+        "detalle": "Los criterios dan «Media» (Mantener con las dos reglas de acuerdo y lejos de los umbrales) y el análisis pone «Baja»: explica en la síntesis por qué te apartas."
+      },
+      {
+        "control": "La síntesis explica la convicción",
+        "resultado": "OK",
+        "detalle": "La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría."
+      },
+      {
+        "control": "Deuda neta del puente = la del último balance anual",
+        "resultado": "Explicado",
+        "detalle": "Puente -884 frente a -154 en el balance del mismo cierre: revisa qué partidas entran en cada uno. Explicación: El puente suma a la tesorería en bancos (175 M) el valor de la caja flotante prestada a Imperial, valorada como renta perpetua de sus intereses después de impuestos (≈730 M, estimación propia), porque es flotante de impuestos que no se puede repartir. El balance de los agregadores solo recoge la tesorería en bancos."
+      },
+      {
+        "control": "Al menos 25 fuentes",
+        "resultado": "OK",
+        "detalle": "45 fuentes (10 primarias)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "resultado": "OK",
+        "detalle": "10."
+      },
+      {
+        "control": "Toda cita [n] existe en fuentes",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Fuentes sin citar ≤ 15 %",
+        "resultado": "OK",
+        "detalle": "Sin citar: 3, 8, 26, 30."
+      }
+    ],
+    "controles_resumen": "18 de 19 controles correctos y 1 explicados"
+  }
+}
