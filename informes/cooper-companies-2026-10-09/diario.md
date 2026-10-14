@@ -47,3 +47,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 2. El texto de los niveles dice «Por debajo de 54,36 (rentabilidad total esperada ≥ 15 % …)», pero la condición que manda en 54,36 es el 5 % mínimo con nuestro WACC. Arreglo: que la condición nombre la regla que fija el nivel.
 3. El texto de activos ligeros habla de un comprador en serie en genérico; aquí el capex bruto es del 7,3 % y el crecimiento proyectado es orgánico (sin compras): la frase no aplica y no se puede quitar.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 66,1 USD, rentabilidad +21,7 %, señal Comprar (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +18,7 % → +14,1 %, base +9,6 %, señal Mantener (`revision-12m-2026-10-13.md`).

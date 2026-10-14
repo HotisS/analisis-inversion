@@ -131,3 +131,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 2. El control «La síntesis explica la convicción» solo cuenta dos veces la palabra «convicción»: lo pasa cualquier frase.
 3. `herramientas/objetivo12m.mjs` espera el nombre de la carpeta, no la ruta: con `informes/copart-…` busca en `informes/informes/…`.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 33,07 USD (media ponderada; base 28,41), rentabilidad +23,3 % (base +5,9 %), señal Mantener (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +23,3 % → +8,5 %, base +6,0 %, señal Mantener (`revision-12m-2026-10-13.md`).

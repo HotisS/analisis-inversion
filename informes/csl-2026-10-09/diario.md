@@ -38,3 +38,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 2. El ROIC del último ejercicio (−7,5 %) sale de la pérdida por 7.079 M de deterioros: si la reinversión pasara del 15 %, la prueba usaría ese ROIC (financiable negativo, capital nuevo al 105 %). Falta un ROIC subyacente (`rentabilidad.roic_subyacente`) para la prueba.
 3. La cuota (≈30 %) es de Behring en proteínas plasmáticas y el DCF es del grupo: `mercado_final` en null, como en Cooper o CAF.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 132,50 USD (189,86 AUD; ponderado; base 135,62), rentabilidad +5,6 % (base +8,0 %), señal Mantener (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +5,6 % → +7,7 %, base +8,0 %, señal Mantener (`revision-12m-2026-10-13.md`).
