@@ -1,0 +1,4232 @@
+{
+  "meta": {
+    "fecha_corte": "2026-10-14",
+    "divisa": "USD",
+    "divisa_cotizacion": "USD",
+    "tipo_cambio": 1,
+    "unidades": "millones",
+    "cierre_ejercicio_mes": 12,
+    "etiqueta_ejercicio": "fin",
+    "normas_contables": "US GAAP",
+    "formato_cuenta": "funcion",
+    "limitaciones": "Análisis hecho desde la nube con la red limitada a la búsqueda web: sec.gov, la web de inversores, Yahoo y MarketScreener no se pudieron abrir, y las herramientas descargar.mjs y bolsa.mjs no funcionan aquí. Las cifras salen de los extractos de búsqueda de los comunicados 8-K, del 10-K y 10-Q, de Stock Analysis, Macrotrends y de la prensa financiera, con la URL como fuente y cruzadas cuando fue posible; lo que no cuadró quedó en null y en «Información no disponible». Ingresos GAAP (incluyen ≈1.400 M de reembolsos de franqueo sin margen); el BPA de la empresa y de la regla a 12 meses es el ajustado (sin amortización de intangibles comprados ni costes de reestructuración). Los ingresos por segmento de 2025 son estimación propia (resultado ÷ margen). Los comparables son de julio-agosto de 2026, no de la fecha de corte. La acción cotiza en Nasdaq como FISV desde el 11-nov-2025 (antes NYSE: FI) [36]. El presupuesto de búsquedas se agotó antes de cerrar sector, competidores, gobierno completo y bolsa.",
+    "controles_explicados": [
+      {
+        "control": "Sección de núcleo con datos: sector",
+        "explicacion": "Sin tamaño de mercado: el presupuesto de búsquedas compartido se agotó (hueco registrado). Se da la definición, los motores y Porter con datos de la propia empresa."
+      },
+      {
+        "control": "Fuentes sin citar",
+        "explicacion": "Algunas fuentes de mercado se usaron solo para cruzar cifras (Macrotrends, MarketBeat, Investing)."
+      }
+    ],
+    "huecos": [
+      {
+        "seccion": "financieros",
+        "campo": "coste de ventas y gastos generales 2021-2025; BAI e impuestos 2021-2023",
+        "tipo": "Núcleo",
+        "intentos": "1) 10-K 2025 en sec.gov: la búsqueda devuelve el documento pero no las líneas; 2) Stock Analysis y MarketBeat: solo ingresos, EBIT y beneficio; 3) Macrotrends/TickerLeague: EBITDA y BPA, sin impuestos ni intereses",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "balance",
+        "campo": "activo y pasivo corriente, clientes, proveedores, intangibles, minoritarios 2021-2025; activo, fondo de comercio y patrimonio 2021-2022",
+        "tipo": "Núcleo",
+        "intentos": "1) 10-K y 10-Q en sec.gov (WebFetch bloqueado); 2) Stock Analysis y Weiss Ratings: solo totales; 3) Macrotrends: solo deuda a largo y caja",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "balance",
+        "campo": "rating, calendario de vencimientos, coste medio y vida media de la deuda",
+        "tipo": "Complemento",
+        "intentos": "1) nota de deuda del 10-Q 2T26 (solo totales); 2) búsqueda de rating de S&P/Moody's sin resultado; 3) folletos de bonos no accesibles",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "negocio",
+        "campo": "ingresos y resultado por segmento 2021-2024",
+        "tipo": "Núcleo",
+        "intentos": "1) nota de segmentos del 10-K 2025 (no abre); 2) comunicado del 4T25: solo crecimientos y márgenes (Merchant 34,5 %, Financial 45,3 % en 2025); 3) Barchart/Vectorshift: resultado de segmento de 2025, que se usa para estimar los ingresos de 2025",
+        "decision": "Calculado y marcado como estimación"
+      },
+      {
+        "seccion": "flujos",
+        "campo": "recompras 2021-2024, adquisiciones y desinversiones",
+        "tipo": "Complemento",
+        "intentos": "1) 10-K; 2) Finboard (en blanco); 3) 10-Q 2024: solo semestres",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sector",
+        "campo": "tamaño del mercado (serie, dos fuentes), CR5 y cuotas",
+        "tipo": "Núcleo",
+        "intentos": "1) informes de Nilson Report (de pago); 2) búsqueda de tamaño del mercado de adquirencia y de core bancario en EE. UU.; 3) informes anuales de competidores: sin cifras de mercado en los extractos",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "competencia",
+        "campo": "ingresos y margen EBIT de competidores",
+        "tipo": "Núcleo",
+        "intentos": "1) 10-K de FIS, Global Payments y Jack Henry (no abren); 2) Stock Analysis de cada uno (solo capitalización); 3) prensa: sin margen comparable",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "esg",
+        "campo": "calificaciones ESG",
+        "tipo": "Complemento",
+        "intentos": "1) MSCI; 2) Sustainalytics; 3) informe de sostenibilidad de Fiserv: no aparecen en las búsquedas",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "composición completa del consejo, comisiones y antigüedad",
+        "tipo": "Núcleo",
+        "intentos": "1) DEF 14A 2026 (no abre); 2) Boardroom Alpha: solo presidente y CEO; 3) 8-K de la junta: solo un consejero con votos",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "voto sobre la remuneración y remuneración del CEO",
+        "tipo": "Núcleo",
+        "intentos": "1) 8-K de la junta de mayo-2026 (tabla de say-on-pay no extraída); 2) DEF 14A, tabla de remuneraciones; 3) prensa: sin cifras",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "operaciones de directivos 12 meses (Form 4) y accionistas institucionales",
+        "tipo": "Complemento",
+        "intentos": "1) form4.mjs no funciona en la nube; 2) búsqueda de compras de directivos de Fiserv 2026; 3) 13F/13G: solo Jana",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "bolsa",
+        "campo": "rentabilidades, beta, volatilidad y caída máxima",
+        "tipo": "Complemento",
+        "intentos": "1) bolsa.mjs (Yahoo) no funciona en la nube; 2) búsqueda de beta y estadísticas de FISV: sin datos; 3) MarketBeat: solo posiciones cortas de 2025",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "comparables",
+        "campo": "cifras a la fecha de corte, márgenes, ROIC y crecimiento de los comparables; Adyen, Block y Toast",
+        "tipo": "Núcleo",
+        "intentos": "1) MarketScreener (no abre); 2) Yahoo/StockHub/Dividend.watch: múltiplos de julio-agosto de 2026; 3) búsqueda conjunta de pagos: solo Shift4",
+        "decision": "Calculado y marcado como estimación"
+      },
+      {
+        "seccion": "transacciones",
+        "campo": "3.ª a 5.ª operación con múltiplo (First Data 2019, Worldpay-FIS 2019, Nuvei-Advent 2024)",
+        "tipo": "Complemento",
+        "intentos": "1) búsqueda de múltiplos de Nuvei/Advent; 2) First Data/Fiserv 2019; 3) FIS/Worldpay 2019: sin múltiplo en los extractos",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sentimiento",
+        "campo": "Reddit y Stocktwits (hilos de los últimos tres meses)",
+        "tipo": "Complemento",
+        "intentos": "1) búsqueda «Fiserv reddit value trap 2026»; 2) búsqueda «Fiserv stocktwits after Q2 2026»; 3) WebFetch de los foros no disponible en la nube",
+        "decision": "Omitido"
+      }
+    ],
+    "regenerado": "2026-10-14"
+  },
+  "identificacion": {
+    "nombre": "Fiserv, Inc.",
+    "nombre_corto": "Fiserv",
+    "ticker": "FISV",
+    "isin": "US3377381088",
+    "mercado": "Nasdaq Global Select Market (desde el 11-nov-2025; antes NYSE: FI)",
+    "indice_referencia": "S&P 500",
+    "pais": "Estados Unidos",
+    "pais_iso": "US",
+    "sector": "Financiero",
+    "industria": "Servicios de pago y tecnología financiera",
+    "sede": "Milwaukee, Wisconsin (EE. UU.)",
+    "fundacion": "1984",
+    "empleados": null,
+    "web": "www.fiserv.com",
+    "precio": 46.66,
+    "fecha_precio": "2026-10-13",
+    "acciones": 527.6,
+    "capitalizacion_publicada": 24490,
+    "free_float_pct": null,
+    "max_52s": 128.78,
+    "min_52s": 43.87,
+    "volumen_medio_diario": null,
+    "proximos_resultados": "2026-11-03"
+  },
+  "resumen": {
+    "recomendacion": "Mantener",
+    "conviccion": "Media",
+    "justificacion_recomendacion": null,
+    "horizonte": "12 meses (la tesis de valor intrínseco es a 2-3 años)",
+    "sintesis": "**La recomendación y por qué.** Mantener con convicción media. El objetivo a 12 meses es de 49,22 USD (+5,5 % ponderado; +5,2 % en el caso base, sin dividendo), lejos de los umbrales de compra (15 % y 12 %). El valor intrínseco es de 100,68 USD, más del doble del precio (46,66 USD), y el objetivo medio de los analistas, de 59,12 USD [34], queda entre los dos. La razón en una frase: Fiserv es barata por cualquier medida, pero la dirección ha recortado la guía dos veces en nueve meses y el múltiplo no subirá sin pruebas. La convicción es media porque las dos reglas de valor dan Comprar y la de 12 meses Mantener; subiría si el 3T26 (3-nov) cumple la guía rebajada y bajaría con un tercer recorte.\n\n**El negocio.** Procesador de pagos (Clover, adquirencia) y de tecnología bancaria (core, tarjetas, redes de débito) con 21.193 M USD de ingresos y 4.440 M de caja libre en 2025 [2, 6]. El ROIC (8,9 %) apenas supera el WACC (8,42 %) por el fondo de comercio de First Data, y el foso se estrecha: Financial Solutions cae un 6-8 % orgánico en 2026 y Clover se frena [3, 4]. Sostenibilidad: «En parte»; el crecimiento proyectado (1,9 % anual) no exige capital, pero la empresa no ha demostrado poder de precios y crecer no crea valor con ese ROIC.\n\n**Finanzas.** Los ingresos ajustados caen un 2-4 % en 2026 y el margen operativo ajustado baja del 38,7 % al 30,8 % en el semestre [4]. La deuda neta es de 27.259 M (3,0x EBITDA) tras recomprar 5.600 M en 2025, más que la caja libre del año [2]. La conversión en caja sigue alta: la caja libre equivale al 18,0 % de la capitalización.\n\n**Equipo y gobierno.** Resta. Dos consejeros delegados en 13 meses (Lyons se fue a Truist en junio) [28], guía de 2025 incumplida (10,10-10,30 USD prometidos, 8,64 reales) y la de 2026 rebajada de 8,00-8,30 a 7,20-7,40 USD [2, 4]. Jana Partners (<1 %) presiona para vender negocios [30].\n\n**Valoración.** El DCF da 118,18 USD; el DCF inverso dice que el precio descuenta una caída de ingresos del 5,5 % anual en 2027e-2035e o un margen EBITDA del 26,5 %, algo que Fiserv nunca ha vivido. Los comparables (mediana de 8,0x PER) y las transacciones del sector (8,5-12,3x EBITDA frente a 5,7x) [23] también quedan por encima. Pero la regla a 12 meses usa el PER actual (6,3x) sobre nuestro BPA de 2028e (7,79 USD), un 18 % por debajo del consenso de 2027, que es anterior al recorte de agosto [42]. Diferimos del mercado en el largo plazo, no en el próximo año.\n\n**Riesgos y catalizadores.** El riesgo mayor es que la caída de Financial Solutions sea estructural (bajista a 12 meses de 35,37 USD, −24 %); después, un tercer recorte de guía y que Clover pierda frente a Toast y Square. Los foros hablan de «trampa de valor» [57, 59]: coincide con los analistas y con los datos, y retrasa la convergencia. Catalizadores: resultados del 3T26 (3-nov), guía de 2027 (febrero) y una venta de las redes de débito, hoy en revisión [16].\n\n**Qué cambiaría la decisión.** Compraríamos por debajo de 42,80 USD y venderíamos por encima de 54,69 USD. Pasaríamos a Comprar si el orgánico de Financial Solutions vuelve a terreno positivo antes del 2T27 o si se anuncia una venta de negocio a más de 8x EBITDA con recompras; a Vender, si el 3T26 trae un tercer recorte del BPA de 2026 por debajo de 7,00 USD.",
+    "tesis": "Fiserv procesa los pagos de millones de comercios (Clover, 3.300 M de ingresos en 2025) y la tecnología de miles de bancos de EE. UU., con márgenes operativos del 34,5 % y 45,3 % en sus dos segmentos y 4.440 M de caja libre en 2025 [2, 20]. Cotiza a 5,7x EBITDA y 5,4x el BPA de consenso de los próximos 12 meses, con una caja libre del 18,0 % de la capitalización.\n\nEl precio descuenta una caída de ingresos del 5,5 % anual durante nueve años, según el DCF inverso: el mercado trata a Fiserv como un negocio en liquidación tras dos recortes de guía (oct-2025 y ago-2026) y el cambio de CEO [4, 17, 28].\n\nPara invertir hay que creer que la caída de 2026 (orgánico −4/−5 %) es transitoria y que el nuevo equipo estabiliza Financial Solutions en 2027. Nuestro base es prudente (+1,5-3 % anual, la mitad del plan de la empresa) y aun así vale 118,18 USD por DCF. Lo que no sabemos es cuándo: el mercado no volverá a pagar más de 6-8x hasta ver dos trimestres limpios, así que a 12 meses la rentabilidad esperada es de un dígito.",
+    "vision_diferencial": {
+      "mercado_descuenta": "Una caída estructural: ingresos −5,5 % anual en 2027e-2035e o un margen EBITDA del 26,5 %, con una dirección que no controla el negocio y un foso que se rompe frente a Toast, Square, Jack Henry y la nueva Global Payments-Worldpay.",
+      "nuestra_vision": "Un negocio maduro que crece poco (1,5-3 % anual) con márgenes algo más bajos que en 2024-25 (39-40 % de EBITDA) y que sigue generando ≈4.000 M de caja libre al año: vale más del doble del precio a largo plazo, pero el múltiplo tardará en reflejarlo.",
+      "por_que": "La caja libre es lo más fiable de las cuentas (4.440 M en 2025, 1.100 M en el 2T26) [2, 14] y los costes de cambio del core bancario hacen improbable una caída del 5 % anual durante nueve años. Podemos equivocarnos en el plazo, no tanto en el valor."
+    },
+    "a_favor": [
+      "**Caja libre del 18,0 % de la capitalización**: 4.440 M en 2025 frente a 24.618 M de valor de mercado [2].",
+      "**El precio descuenta −5,5 % anual de ingresos** durante nueve años, algo que nunca ha ocurrido.",
+      "**Transacciones del sector a 8,5-12,3x EBITDA** frente a 5,7x de Fiserv [23]: la venta de negocios en revisión cristalizaría valor.",
+      "**Clover sigue creciendo**: volumen +9 % e ingresos +13 % ajustados en el 2T26 [16].",
+      "**Activista con agenda de valor**: Jana pide revisión estratégica y desinversiones [30]."
+    ],
+    "en_contra": [
+      "**Dos recortes de guía en nueve meses**: BPA de 2026 de 8,00-8,30 a 7,20-7,40 USD [4].",
+      "**Financial Solutions cae un 8 % orgánico** en el 2T26 [4].",
+      "**ROIC del 8,9 % frente a un WACC del 8,42 %**: crecer apenas crea valor.",
+      "**Dos CEO en 13 meses** y un CFO con un año en el cargo [28, 31].",
+      "**Deuda neta de 3,0x EBITDA** tras recomprar 5.600 M en 2025 a precios de 130-230 USD [2]."
+    ],
+    "que_vigilar": "La tesis depende de que la caída de Financial Solutions sea de calendario (implantaciones retrasadas) y no de clientes perdidos. La señal está en los resultados del 3T26 (3-nov-2026): si el orgánico del segmento sigue peor que −5 % y la dirección no confirma la guía de 7,20-7,40 USD, el bajista pasa a ser el central. Vigilar también el volumen de Clover (por encima del 8 %) y si vuelven las recompras.",
+    "cambiaria_recomendacion": [
+      "Si el 3T26 trae un BPA de 2026 por debajo de 7,00 USD (tercer recorte), pasaríamos a Vender.",
+      "Si el orgánico de Financial Solutions vuelve a terreno positivo antes del 2T27, subiríamos el base y probablemente a Comprar.",
+      "Si se anuncia la venta de las redes de débito u otro negocio a más de 8x EBITDA con recompras, pasaríamos a Comprar.",
+      "Si el precio baja de 42,80 USD sin noticias nuevas, la regla daría Comprar; por encima de 54,69 USD, Vender."
+    ],
+    "kpis_seguimiento": [
+      {
+        "kpi": "Crecimiento orgánico de Financial Solutions",
+        "nivel_actual": "−8 % (2T26)",
+        "umbral_alerta": "Peor que −5 % en el 3T26",
+        "por_que": "Separa retraso de pérdida estructural."
+      },
+      {
+        "kpi": "Volumen de Clover (GPV)",
+        "nivel_actual": "+9 % (2T26)",
+        "umbral_alerta": "Por debajo del 7 %",
+        "por_que": "Es la tesis alcista."
+      },
+      {
+        "kpi": "BPA ajustado 2026 (guía)",
+        "nivel_actual": "7,20-7,40 USD",
+        "umbral_alerta": "Por debajo de 7,00",
+        "por_que": "Credibilidad de la dirección."
+      },
+      {
+        "kpi": "Margen operativo ajustado",
+        "nivel_actual": "30,8 % (1S26)",
+        "umbral_alerta": "Por debajo del 30 % en 2S26",
+        "por_que": "Base del BPA de 2027-28."
+      },
+      {
+        "kpi": "Deuda neta / EBITDA",
+        "nivel_actual": "3,0x",
+        "umbral_alerta": "Por encima de 3,5x",
+        "por_que": "Limita recompras."
+      }
+    ],
+    "confianza": "Baja"
+  },
+  "historia": {
+    "resumen": "Fiserv nació en 1984 en Milwaukee como proveedor de proceso de datos para bancos y creció durante tres décadas comprando procesadores de core bancario y de pagos. En 2019 compró First Data, que le dio Clover (terminales y software para pequeños comercios), la adquirencia de grandes cuentas y las redes de débito; esa compra explica el fondo de comercio de 37.703 M que hoy pesa en el balance [1, 7]. Tras años de crecimiento del 10 % orgánico, la etapa de Frank Bisignano terminó en 2025; su sucesor, Mike Lyons, recortó la guía el 29-oct-2025 y la acción cayó un 44 % en un día [17, 25]. Lyons se fue a Truist en junio de 2026 y el copresidente Takis Georgakopoulos tomó el relevo [28].",
+    "hitos": [
+      {
+        "anio": "1984",
+        "hito": "Fundación en Milwaukee como proveedor de proceso de datos para bancos [1]."
+      },
+      {
+        "anio": "2019",
+        "hito": "Compra de First Data (Clover, adquirencia y redes de débito): duplica el tamaño y crea el segmento de comercios [1]."
+      },
+      {
+        "anio": "2023",
+        "hito": "Traslado de la cotización de Nasdaq (FISV) a la NYSE con el ticker FI [1]."
+      },
+      {
+        "anio": "2025",
+        "hito": "Mike Lyons sustituye a Frank Bisignano (que pasa a dirigir la Seguridad Social de EE. UU.); el 29-oct recorta la guía y la acción cae un 44 % en un día [25]."
+      },
+      {
+        "anio": "2025",
+        "hito": "Vuelta a Nasdaq con el ticker FISV el 11-nov-2025 [1]."
+      },
+      {
+        "anio": "2026",
+        "hito": "Día del inversor (14-may), salida de Lyons a Truist (15-jun) y nuevo recorte de guía (6-ago) [1]."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "negocio": {
+    "segmentos": [
+      {
+        "nombre": "Merchant Solutions (comercios)",
+        "descripcion": "Adquirencia y pagos para comercios: Clover (3.300 M de ingresos en 2025, +23 %), pequeña empresa, grandes cuentas y comercio electrónico [20].",
+        "tipo_resultado": "EBIT",
+        "historico": [
+          {
+            "periodo": "2025",
+            "ingresos": 10145,
+            "resultado": 3500
+          }
+        ]
+      },
+      {
+        "nombre": "Financial Solutions (bancos)",
+        "descripcion": "Proceso bancario (core), emisión y proceso de tarjetas, redes de débito (STAR, Accel) y pagos digitales (Zelle, facturas) para bancos y cooperativas de crédito [1, 20].",
+        "tipo_resultado": "EBIT",
+        "historico": [
+          {
+            "periodo": "2025",
+            "ingresos": 9713,
+            "resultado": 4400
+          }
+        ]
+      },
+      {
+        "nombre": "Corporativo y otros",
+        "descripcion": "Reembolsos de franqueo y partidas de distribución (diferencia entre ingresos GAAP y ajustados) y negocios no estratégicos; estimación por diferencia.",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2025",
+            "ingresos": 1335,
+            "resultado": null
+          }
+        ]
+      }
+    ],
+    "segmentos_nota": "Ingresos de segmento de 2025 estimados: resultado del segmento ÷ margen publicado (Merchant 3.500 M al 34,5 %; Financial 4.400 M al 45,3 %) [2, 20]; Corporativo y otros, por diferencia con los 21.193 M GAAP [6]. Estimación propia, no cifras leídas.",
+    "kpis": [
+      {
+        "kpi": "Ingresos ajustados (M USD)",
+        "valor_anterior": "19.040 (2024, implícito +4 %)",
+        "valor_actual": "19.800 (2025)",
+        "variacion": "+4 %",
+        "comentario": "Sin reembolsos de franqueo ni partidas de distribución [2]."
+      },
+      {
+        "kpi": "Crecimiento orgánico",
+        "valor_anterior": "+4 % (2025)",
+        "valor_actual": "−4 % (1T26) y −5 % (2T26)",
+        "variacion": "−8/−9 puntos",
+        "comentario": "Merchant −1 % y Financial −6/−8 % en 2026 [3, 4]."
+      },
+      {
+        "kpi": "Margen operativo ajustado",
+        "valor_anterior": "37,4 % (2025)",
+        "valor_actual": "30,8 % (1S26)",
+        "variacion": "−6,6 puntos",
+        "comentario": "Inversiones del plan One Fiserv y menos ingresos [2, 4]."
+      },
+      {
+        "kpi": "Volumen de pagos de Clover (GPV)",
+        "valor_anterior": "+15 % (3T24)",
+        "valor_actual": "+9 % (2T26)",
+        "variacion": "Desaceleración",
+        "comentario": "Ingresos de Clover +13 % sin anticipos ni no recurrentes en el 2T26 [16, 17]."
+      },
+      {
+        "kpi": "BPA ajustado (USD)",
+        "valor_anterior": "8,80 (2024)",
+        "valor_actual": "8,64 (2025); guía 2026: 7,20-7,40",
+        "variacion": "−2 % y ≈ −15 %",
+        "comentario": "[2, 4, 14]"
+      }
+    ],
+    "descripcion": "Fiserv es uno de los grandes procesadores de pagos y de tecnología bancaria de EE. UU., con 21.193 M USD de ingresos en 2025 [6]. Tiene dos segmentos de tamaño parecido. Merchant Solutions (≈10.100 M, estimación) cobra a comercios por aceptar tarjetas: Clover para pequeños comercios (3.300 M en 2025, +23 %), adquirencia para grandes cuentas, comercio electrónico y Argentina [20]. Financial Solutions (≈9.700 M) vende a bancos y cooperativas de crédito el sistema central (core), el proceso de emisión de tarjetas, las redes de débito STAR y Accel y pagos digitales como Zelle y el pago de facturas [1, 20]. Clientes: miles de entidades financieras de EE. UU. y millones de comercios.",
+    "como_gana_dinero": "Casi todo es recurrente: comisiones por transacción (porcentaje del volumen en comercios, tarifa por cuenta o por operación en bancos) y contratos plurianuales de proceso. El margen depende de la escala: el 45,3 % de margen operativo de Financial Solutions y el 34,5 % de Merchant en 2025 salen de repartir una infraestructura fija entre más transacciones [2]. Por eso el apalancamiento operativo funciona también al revés: con los ingresos ajustados cayendo un 2-4 % en el 1S26, el margen operativo ajustado bajó del 38,7 % al 30,8 % [3, 4]. Hay ingresos no recurrentes que distorsionan: las ventas de terminales, las cuotas por resolución anticipada de contratos y los ingresos por anticipo de cobros en Argentina, que la dirección citó en el recorte de agosto [15, 16].",
+    "clientes": "Fiserv no publica concentración por cliente en los extractos disponibles. Los contratos bancarios son de 5-7 años y su renovación es la clave del segmento financiero: en 2026 la dirección atribuye la caída de Financial Solutions (−6 % en el 1T26 y −8 % en el 2T26 orgánico) a implantaciones de grandes clientes retrasadas, una de ellas por una compra del propio cliente, y a menos ventas de producto [3, 4, 15]. El poder de precios está en cuestión: la dirección de Lyons habló de «reiniciar» los objetivos de crecimiento y margen y de inversiones aplazadas que hubo que hacer [17]; no hay datos de subidas de tarifa frente a costes.",
+    "confianza": "Media"
+  },
+  "sector": {
+    "definicion": "El mercado relevante son dos: la adquirencia de pagos con tarjeta en EE. UU. (Fiserv compite con Chase, Global Payments-Worldpay, Stripe, Square, Toast y Shift4) y la tecnología para bancos y cooperativas de crédito de EE. UU. (core, emisión de tarjetas y redes de débito), donde los rivales son FIS y Jack Henry. No se ha podido fijar un tamaño de mercado con dos fuentes independientes (hueco).",
+    "tamano": null,
+    "unidad_serie": null,
+    "serie": [],
+    "tcac_historico_pct": null,
+    "tcac_previsto_pct": null,
+    "cr5_pct": null,
+    "estructura": "Moderadamente concentrada",
+    "drivers": [
+      {
+        "driver": "Paso del efectivo a la tarjeta y al pago digital",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "El volumen de Clover crece un 9 % en el 2T26 aunque los ingresos del grupo caen [16]."
+      },
+      {
+        "driver": "Consolidación de bancos pequeños",
+        "efecto": "−",
+        "horizonte": "Estructural",
+        "evidencia": "Una gran implantación se retrasó por la compra del propio cliente en 2026 [15]."
+      },
+      {
+        "driver": "Competencia de software integrado (Toast, Square, Stripe)",
+        "efecto": "−",
+        "horizonte": "Estructural",
+        "evidencia": "Clover pasó de crecer un 15 % en volumen en 2024 a un 8 % en el 3T25 [17]."
+      },
+      {
+        "driver": "Consumo y ciclo en Argentina",
+        "efecto": "+/−",
+        "horizonte": "Cíclico",
+        "evidencia": "El frenazo argentino explica parte de los dos recortes de guía (oct-2025 y ago-2026) [15, 17]."
+      },
+      {
+        "driver": "Precio de la consolidación del sector",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Worldpay se vendió a 8,5x EBITDA y Issuer Solutions a 12,3x en 2025 [23]."
+      }
+    ],
+    "porter": [
+      {
+        "fuerza": "Rivalidad",
+        "intensidad": 4,
+        "justificacion": "Global Payments compró Worldpay en 2025 y FIS compró Issuer Solutions: dos rivales con más escala en el mismo año [23]; Clover se frena frente al software integrado [17]."
+      },
+      {
+        "fuerza": "Poder de los clientes",
+        "intensidad": 3,
+        "justificacion": "Los grandes comercios y bancos negocian precio en cada renovación; la caída del 8 % orgánico de Financial Solutions en el 2T26 muestra el riesgo [4]."
+      },
+      {
+        "fuerza": "Poder de los proveedores",
+        "intensidad": 2,
+        "justificacion": "Visa y Mastercard fijan las tasas de intercambio, pero se repercuten al comercio."
+      },
+      {
+        "fuerza": "Amenaza de entrada",
+        "intensidad": 3,
+        "justificacion": "Stripe, Adyen y los proveedores de software verticales entran por el comercio electrónico y el software; en el core bancario la entrada es lenta por los costes de cambio."
+      },
+      {
+        "fuerza": "Amenaza de sustitutos",
+        "intensidad": 3,
+        "justificacion": "Pagos inmediatos (FedNow, Zelle, que procesa la propia Fiserv) y billeteras digitales desplazan parte de la tarjeta."
+      }
+    ],
+    "ciclo": {
+      "posicion": "Madurez del ciclo",
+      "comentario": "El volumen de pagos sigue al consumo nominal de EE. UU., que crece, pero los precios por transacción bajan por la competencia. En 2020 el volumen de comercios cayó con los cierres y se recuperó en 2021; el core bancario apenas notó el ciclo. El sector entero se ha abaratado en 2025-26: Global Payments y FIS cotizan a 6,4-6,5x beneficio adelantado [48, 49]."
+    },
+    "regulacion": "La regulación de las tasas de intercambio del débito (Durbin, Reserva Federal) y la ley de competencia de tarjetas de crédito en el Congreso afectan a las redes de débito y a la adquirencia. Los bancos clientes están regulados por la OCC y la Fed, lo que exige a Fiserv seguridad y continuidad del servicio. No hay cifras de impacto en las fuentes disponibles.",
+    "tendencias": "Tres tendencias: el software integrado para comercios (donde Clover compite con Toast y Square), los pagos en tiempo real y la modernización del core bancario hacia la nube. Fiserv tiene posición en las tres, pero la desaceleración de Clover y la caída de Financial Solutions en 2026 dicen que hoy pierde terreno [4, 16]. El día del inversor de mayo-2026 puso la inteligencia artificial y la plataforma única de comercios en el centro del plan [40].",
+    "confianza": "Baja"
+  },
+  "competencia": {
+    "competidores": [
+      {
+        "nombre": "Global Payments (con Worldpay)",
+        "pais": "EE. UU.",
+        "ticker": "GPN",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Rival directo en adquirencia; tras comprar Worldpay (22.700 M netos) y vender Issuer Solutions se ha vuelto un adquirente puro [23]."
+      },
+      {
+        "nombre": "FIS",
+        "pais": "EE. UU.",
+        "ticker": "FIS",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Rival en core bancario y, con Issuer Solutions (13.500 M), en emisión de tarjetas [23]."
+      },
+      {
+        "nombre": "Jack Henry",
+        "pais": "EE. UU.",
+        "ticker": "JKHY",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Core para bancos medianos y cooperativas; el único del grupo que conserva un PER de ≈21x [51]."
+      },
+      {
+        "nombre": "Shift4",
+        "pais": "EE. UU.",
+        "ticker": "FOUR",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Adquirencia con software integrado en hostelería y ocio; compite con Clover [52]."
+      },
+      {
+        "nombre": "Stripe",
+        "pais": "EE. UU.",
+        "ticker": null,
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "No cotiza; líder del comercio electrónico."
+      }
+    ],
+    "confianza": "Baja",
+    "posicion": "Uno de los dos o tres mayores adquirentes de EE. UU. y el mayor proveedor de tecnología para bancos y cooperativas de crédito junto a FIS y Jack Henry (sin cuota publicada en las fuentes disponibles).",
+    "foso": {
+      "veredicto": "Estrecho",
+      "tendencia": "Se estrecha",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 2,
+          "evidencia": "Redes de débito STAR y Accel y Zelle, pero sin efecto de red propio frente a Visa y Mastercard [A1]."
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 4,
+          "evidencia": "Cambiar de core bancario lleva años; los contratos son plurianuales. Aun así, Financial Solutions cae un 8 % orgánico en el 2T26 [A4]."
+        },
+        {
+          "fuente": "Intangibles (marca, patentes, licencias)",
+          "puntuacion": 2,
+          "evidencia": "Clover es una marca reconocida en pequeños comercios (3.300 M de ingresos) [A21]."
+        },
+        {
+          "fuente": "Ventaja en costes",
+          "puntuacion": 3,
+          "evidencia": "Margen operativo del 45,3 % en Financial Solutions en 2025 [A2], pero cayendo dos puntos al año."
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 3,
+          "evidencia": "La escala sostiene el margen, pero la de Global Payments-Worldpay ya es comparable [B2]."
+        }
+      ]
+    },
+    "amenazas": "Lo que más erosiona el foso hoy es interno: dos años de inversión aplazada que ahora hay que recuperar, según la propia dirección [17], y la rotación de la cúpula (dos consejeros delegados en 13 meses) [28]. Fuera, Clover pierde velocidad frente a Toast, Square y Shift4, y la consolidación de rivales (Worldpay en Global Payments, Issuer Solutions en FIS) iguala la escala [23]. Probabilidad de erosión adicional en dos años: media-alta."
+  },
+  "financieros": {
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 16226,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 5536,
+        "amortizaciones": 3248,
+        "ebit": 2288,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 1334,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 1.99,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 670.4
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 17737,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 6952,
+        "amortizaciones": 3212,
+        "ebit": 3740,
+        "resultado_financiero": -733,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 2530,
+        "gastos_financieros": 733,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 3.9,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 648.7
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 19093,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 8176,
+        "amortizaciones": 3162,
+        "ebit": 5014,
+        "resultado_financiero": -976,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 3068,
+        "gastos_financieros": 976,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 4.98,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 616.1
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 20456,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 9017,
+        "amortizaciones": 3138,
+        "ebit": 5879,
+        "resultado_financiero": -1195,
+        "bai": null,
+        "impuestos": 641,
+        "minoritarios": null,
+        "beneficio_neto": 3131,
+        "gastos_financieros": 1195,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 5.38,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 582
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 21193,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 9025,
+        "amortizaciones": 3207,
+        "ebit": 5818,
+        "resultado_financiero": -1493,
+        "bai": 4264,
+        "impuestos": 811,
+        "minoritarios": 10,
+        "beneficio_neto": 3480,
+        "gastos_financieros": 1493,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 6.34,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 548.9
+      }
+    ],
+    "ltm": {
+      "periodo": "LTM jun-26",
+      "fecha_fin": "2026-06-30",
+      "ingresos": 20870,
+      "ebitda": null,
+      "ebit": null,
+      "beneficio_neto": null,
+      "bpa": 5.24,
+      "dpa": 0,
+      "dpa_extraordinario": 0,
+      "fcf": null,
+      "participadas_en_ebitda": null,
+      "no_recurrentes_en_ebitda": null
+    },
+    "cambios_perimetro": [],
+    "confianza": "Media",
+    "comentario": "Los ingresos GAAP subieron de 16.226 M en 2021 a 21.193 M en 2025 (+6,8 % anual) y el EBIT de 2.288 M a 5.818 M, sobre todo por la integración de First Data y el crecimiento de Clover [6]. En 2025 el crecimiento se frenó al 4 % (orgánico) y el margen operativo ajustado bajó del 39,4 % al 37,4 % [2]. En 2026 la caída se acelera: ingresos ajustados −2 % en el 1T26 y −4 % en el 2T26, orgánico −4 % y −5 %, y margen operativo ajustado del 30,8 % en el semestre (38,7 % un año antes) [3, 4]. El BPA contable (1,99 USD en 2021 y 6,34 en 2025) sube más que el beneficio por las recompras: las acciones diluidas bajan de 670 M a 549 M [12].",
+    "ajustes": "El BPA ajustado de la empresa excluye la amortización de intangibles comprados (≈1.400 M al año, sobre todo de First Data), los costes de integración y reestructuración (en 2026, los del plan One Fiserv) y las plusvalías o deterioros de participadas (595 M de deterioro de una participada en 2024) [2, 4]. En 2025: BPA contable 6,34 USD y ajustado 8,64 [2, 39]. Los costes del plan One Fiserv se repetirán en 2026-27, así que no son del todo no recurrentes. Los ingresos ajustados excluyen los reembolsos de franqueo (≈1.400 M sin margen)."
+  },
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "3T25",
+        "ingresos": 4920,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": 1,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 2.04,
+        "vs_consenso": "Inferior"
+      },
+      {
+        "periodo": "4T25",
+        "ingresos": 4900,
+        "crecimiento_pct": 0,
+        "crecimiento_organico_pct": 0,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 1.99,
+        "vs_consenso": "Superior"
+      },
+      {
+        "periodo": "1T26",
+        "ingresos": 4680,
+        "crecimiento_pct": -2,
+        "crecimiento_organico_pct": -4,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 1.79,
+        "vs_consenso": "Superior"
+      },
+      {
+        "periodo": "2T26",
+        "ingresos": 4960,
+        "crecimiento_pct": -4,
+        "crecimiento_organico_pct": -5,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 1.84,
+        "vs_consenso": "Inferior"
+      }
+    ],
+    "confianza": "Media",
+    "ultima_presentacion": "En el 2T26 (6-ago) el nuevo consejero delegado, Takis Georgakopoulos, recortó la guía de 2026 por segunda vez en nueve meses: BPA ajustado de 7,20-7,40 USD (antes 8,00-8,30) y orgánico de −1 % a 0 % (antes +1-3 %) [4, 14]. El BPA del trimestre (1,84 USD) quedó por debajo de los 1,91 esperados [15]. La explicación: implantaciones de grandes clientes retrasadas (una por la compra del propio cliente), menos ventas de producto y terminales, Argentina y desinversiones; el crecimiento del segundo semestre pasa del 6-8 % prometido en el día del inversor a ≈2 % [15, 16]. La dirección insistió en que no es estructural y amplió la revisión de cartera, con las redes de débito en el perímetro [16]. En la conferencia del 1T26 (5-may), con Lyons, el mensaje era el contrario: guía mantenida y segundo semestre fuerte [13]. Los analistas preguntaron por la visibilidad de los contratos firmados y por el plan a 2029; la dirección no dio cifras nuevas del plan a medio plazo, que sigue formalmente vigente."
+  },
+  "balance": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "activo_total": null,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": null,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": 0,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 835,
+        "deuda_financiera": 20729,
+        "arrendamientos": 0,
+        "patrimonio_neto": null,
+        "minoritarios": null,
+        "reservas": null
+      },
+      {
+        "periodo": "2022",
+        "activo_total": null,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": null,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": 0,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 902,
+        "deuda_financiera": 20950,
+        "arrendamientos": 0,
+        "patrimonio_neto": null,
+        "minoritarios": null,
+        "reservas": null
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 90890,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 60221,
+        "fondo_comercio": 37205,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": 0,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 1204,
+        "deuda_financiera": 23118,
+        "arrendamientos": 0,
+        "patrimonio_neto": 30669,
+        "minoritarios": null,
+        "reservas": null
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 77176,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 49490,
+        "fondo_comercio": 36584,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": 0,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 1236,
+        "deuda_financiera": 24840,
+        "arrendamientos": 0,
+        "patrimonio_neto": 27686,
+        "minoritarios": null,
+        "reservas": null
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 80133,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 54324,
+        "fondo_comercio": 37703,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": 0,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 798,
+        "deuda_financiera": 28997,
+        "arrendamientos": 0,
+        "patrimonio_neto": 25809,
+        "minoritarios": null,
+        "reservas": null
+      }
+    ],
+    "vencimientos": [],
+    "liquidez": "Caja ≈ 627 M a 30-jun-2026 (Stock Analysis) [7]; deuda a largo plazo 26.679 M y vencimientos a corto 1.207 M [5]. Las líneas de crédito no dispuestas no aparecen en los extractos.",
+    "rating": null,
+    "coste_deuda_pct": null,
+    "vida_media_anios": null,
+    "confianza": "Baja",
+    "otros_pasivos": "Fiserv mantiene en el balance activos y pasivos de liquidación (fondos de comercios y de titulares en tránsito) que se compensan y no se tratan como deuda ni como caja. No hay pensiones relevantes en las fuentes disponibles. Los minoritarios (participaciones de bancos socios en la adquirencia) son pequeños en la cuenta (10 M de beneficio en 2025) [21] y se dejan fuera del puente. Rating, covenants y vencimientos no se pudieron leer (hueco).",
+    "comentario": "La deuda financiera pasó de 20.729 M en 2021 a 28.997 M en 2025 (largo plazo 27.758 M y corto 1.239 M) y bajó a 27.886 M en junio de 2026 [5, 9]. La subida de 2025 financió recompras de 5.600 M, más que la caja libre del año (4.440 M) [2]. Con la caída del beneficio, la deuda neta sobre EBITDA es de 3,0x; la empresa se compromete a llevar el apalancamiento bruto a ≈2,5x en 2029 [41]. El fondo de comercio (37.703 M) supera al patrimonio (25.809 M) [7]."
+  },
+  "flujos": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 4034,
+        "capex": 1160,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 0,
+        "recompras": null,
+        "emision_acciones": null,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 4618,
+        "capex": 1479,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 0,
+        "recompras": null,
+        "emision_acciones": null,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 5162,
+        "capex": 1388,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 0,
+        "recompras": null,
+        "emision_acciones": null,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 6631,
+        "capex": 1569,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 0,
+        "recompras": null,
+        "emision_acciones": null,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 6060,
+        "capex": 1620,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 0,
+        "recompras": 5600,
+        "emision_acciones": null,
+        "intereses_en_financiacion": 0
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "La conversión en caja es alta: el flujo operativo pasó de 4.034 M en 2021 a 6.631 M en 2024 y 6.060 M en 2025, y la caja libre de 2025 fue de 4.440 M según la empresa [2, 11]. El capex (1.160-1.620 M, el 7-8 % de las ventas) es casi todo software capitalizado y terminales; la empresa no separa mantenimiento y crecimiento. Estimación propia: casi todo es de mantenimiento, porque el crecimiento de 2025-26 no lo ha devuelto. En el 1S26 el flujo operativo bajó a 2.080 M (2.310 M en el 1S25) y el capex subió a 956 M, el 9 % de las ventas [4, 14]. La empresa promete más de 13.500 M de caja libre en 2027-29 [41]."
+  },
+  "calidad": {
+    "auditor": "Deloitte & Touche LLP",
+    "anios_auditor": null,
+    "opinion": "Favorable (sin salvedades conocidas)",
+    "confianza": "Baja",
+    "comentario": "El auditor es Deloitte [26]. Tres puntos. Primero, la diferencia entre BPA contable y ajustado es grande y estable (6,34 frente a 8,64 USD en 2025) porque la amortización de First Data se excluye; es legítima, pero los costes de reestructuración del plan One Fiserv se repetirán varios años [2]. Segundo, el capex es casi todo software capitalizado: un cambio de criterio o un deterioro de ese software reduciría el beneficio. Tercero, el anterior equipo comunicó objetivos (10 % orgánico en 2025) que el nuevo tuvo que retirar en octubre de 2025 citando inversiones aplazadas [17]; no hay reexpresión. El Altman Z del motor (0,78) es bajo por el fondo de comercio y la deuda, no por un riesgo de quiebra inmediato; el Piotroski (5) es neutro y el Beneish no se puede calcular por falta de partidas.",
+    "senales": [
+      {
+        "senal": "Objetivos retirados dos veces en nueve meses",
+        "nivel": "Alta",
+        "comentario": "Oct-2025 y ago-2026 [4, 17]."
+      },
+      {
+        "senal": "Reestructuración recurrente fuera del BPA ajustado",
+        "nivel": "Media",
+        "comentario": "Plan One Fiserv en 2025-27 [4]."
+      },
+      {
+        "senal": "Software capitalizado (≈8 % de las ventas)",
+        "nivel": "Media",
+        "comentario": "Capex de 956 M en el 1S26 [14]."
+      }
+    ]
+  },
+  "rentabilidad": {
+    "comentario": "El ROIC del motor fue del 8,6 % en 2021, del 14,0 % en 2022 (año con el capital invertido infravalorado por falta de datos de balance), del 10,4 % en 2023, del 8,5 % en 2024 y del 8,9 % en 2025. Con un WACC del 8,42 %, Fiserv apenas cubre su coste de capital: la compra de First Data (fondo de comercio de 37.703 M) diluyó el rendimiento, aunque el negocio operativo sin el fondo de comercio rinde mucho más. El ROIC lo mueve el margen y no la rotación, que es baja (0,27 veces) por el capital invertido inflado por las compras. Con el margen cayendo en 2026, el ROIC de este año bajará por debajo del WACC. Frente a sus pares, el problema es común: Global Payments y FIS cargan también fondos de comercio enormes [23].",
+    "confianza": "Media"
+  },
+  "capital": {
+    "politica": "Fiserv no paga dividendo. Toda la caja va a recompras, compras y reducción de deuda. En 2025 recompró 32,2 M de acciones por 5.600 M, más que su caja libre (4.440 M), pero solo 200 M en el 4T25, ya con la acción hundida [2]. El plan del día del inversor dedica «la mayoría» de los más de 13.500 M de caja libre de 2027-29 a los accionistas y baja el apalancamiento bruto a ≈2,5x en 2029 [41].",
+    "adquisiciones": [
+      {
+        "anio": "2019",
+        "objetivo": "First Data",
+        "importe": null,
+        "ev_ebitda": null,
+        "financiacion": "Acciones y deuda",
+        "resultado": "Creó el segmento de comercios y Clover, pero dejó 37.703 M de fondo de comercio y un ROIC que apenas cubre el WACC [7]."
+      }
+    ],
+    "comentario": "Veredicto negativo. La dirección recompró 5.600 M de acciones en 2025 a precios de 130-230 USD, endeudándose, justo antes de que la acción cayera a menos de 50 USD; al precio actual, esa misma caja habría recomprado más del doble de acciones [2]. La caja libre por acción del motor pasó de 4,29 USD en 2021 a más de 8 USD en 2025 gracias a las recompras, pero el ROIC no mejoró (8,6 % y 8,9 %). Tras el recorte de agosto, recomprar a 6x beneficio sería lo más rentable, pero la deuda (3,0x EBITDA) y el objetivo de 2,5x limitan el ritmo.",
+    "confianza": "Media"
+  },
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "Takis Georgakopoulos",
+        "cargo": "Consejero delegado (CEO)",
+        "desde": "2026",
+        "participacion_pct": null,
+        "trayectoria": "Copresidente de Fiserv desde finales de 2024; antes, responsable mundial de pagos del banco de inversión de J.P. Morgan. Nombrado el 15-jun-2026 por sucesión interna tras la salida de Mike Lyons a Truist [28, 29]."
+      },
+      {
+        "nombre": "Paul Todd",
+        "cargo": "Director financiero (CFO)",
+        "desde": "2025",
+        "participacion_pct": null,
+        "trayectoria": "Nombrado el 29-oct-2025 con efecto el 31-oct, dentro de la reorganización que siguió al recorte de guía del 3T25 [31]."
+      },
+      {
+        "nombre": "Gordon Nixon",
+        "cargo": "Presidente no ejecutivo",
+        "desde": null,
+        "participacion_pct": null,
+        "trayectoria": "Expresidente y consejero delegado de Royal Bank of Canada; preside el consejo de Fiserv [28]."
+      },
+      {
+        "nombre": "Mike Lyons",
+        "cargo": "Ex consejero delegado (may-2025 a jun-2026)",
+        "desde": "2025",
+        "participacion_pct": null,
+        "trayectoria": "Lanzó el plan One Fiserv y los dos recortes de guía de 2025; dejó la empresa a los 13 meses para dirigir Truist [28, 31]."
+      }
+    ],
+    "historial_guidance": [
+      {
+        "anio": "2025",
+        "guia": "BPA ajustado 10,10-10,30 USD y crecimiento orgánico ≈10 % (feb-2025)",
+        "real": "BPA ajustado 8,64 USD y orgánico +4 %",
+        "cumplida": "No"
+      },
+      {
+        "anio": "2026",
+        "guia": "BPA ajustado 8,00-8,30 USD y orgánico +1-3 % (feb-2026, reiterada en mayo y junio)",
+        "real": "Rebajada el 6-ago a 7,20-7,40 USD y orgánico −1 % a 0 %",
+        "cumplida": "No"
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "La credibilidad está en mínimos: el equipo de Lyons prometió en febrero de 2026 un BPA de 8,00-8,30 USD y lo mantuvo en mayo (día del inversor) y en junio (relevo), y el 6-ago lo bajó a 7,20-7,40 [4, 28]. En 2025 la guía inicial (10,10-10,30 USD) acabó en 8,64 [2, 33]. Takis Georgakopoulos viene de dirigir pagos en J.P. Morgan, lleva en Fiserv desde finales de 2024 y su nombramiento fue una sucesión interna; mantiene el equipo [28, 29]. El director financiero, Paul Todd, lleva un año. No hay plan de sucesión visible más allá de esto."
+  },
+  "gobierno": {
+    "consejo": [
+      {
+        "nombre": "Gordon Nixon",
+        "cargo": "Presidente",
+        "tipo": "Independiente",
+        "desde": null,
+        "comisiones": null
+      },
+      {
+        "nombre": "Takis Georgakopoulos",
+        "cargo": "Consejero delegado",
+        "tipo": "Ejecutivo",
+        "desde": "2026",
+        "comisiones": null
+      },
+      {
+        "nombre": "Henrique de Castro",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": null,
+        "comisiones": null
+      }
+    ],
+    "presidente_ceo_separados": true,
+    "presidente_ejecutivo": false,
+    "consejero_coordinador": null,
+    "una_accion_un_voto": true,
+    "operaciones_vinculadas_relevantes": false,
+    "variable_ligado_rentabilidad": true,
+    "auditoria_independiente": true,
+    "insiders_sin_operaciones": false,
+    "accionista_control": false,
+    "presidente_vinculado_control": false,
+    "cambios_cupula_24m": 2,
+    "voto_remuneracion_pct": null,
+    "voto_remuneracion_contra_pct": null,
+    "voto_remuneracion_contra_libre_pct": null,
+    "voto_cupula_pct": null,
+    "remuneracion_ceo": null,
+    "accionistas": [
+      {
+        "nombre": "Jana Partners",
+        "pct": 0.4,
+        "tipo": "Fondo activista",
+        "variacion": "Entró en el 4T25 (2,2 M de acciones, <1 %); pide revisión estratégica y ventas de negocios no centrales [30]."
+      }
+    ],
+    "insiders": [],
+    "alertas": [
+      "Dos consejeros delegados en 13 meses (Lyons, may-2025; Georgakopoulos, jun-2026) y cambio de CFO en oct-2025 [28, 31].",
+      "Propuesta de accionistas en la junta de 2026 para exigir un presidente independiente [26].",
+      "Dos recortes de guía en nueve meses (oct-2025 y ago-2026)."
+    ],
+    "confianza": "Baja",
+    "remuneracion": "Según el proxy de 2026, el variable a largo plazo exige un TSR relativo en el percentil 55 del S&P 500 para pagar el objetivo y se limita al objetivo si el TSR absoluto a tres años es negativo [26]. La junta de 2026 votó además premios de fichaje y de retención para el nuevo equipo y métricas nuevas ligadas al plan One Fiserv, lo que debilita la relación entre pago y resultado en un año de pérdidas para el accionista [32]. La remuneración total del primer ejecutivo y el resultado del voto consultivo no se pudieron leer (hueco).",
+    "control_y_defensas": "Capital disperso, sin accionista de control ni clases de acciones; consejo de once miembros elegidos cada año [26]. Presidente independiente (Gordon Nixon) separado del primer ejecutivo; aun así hubo una propuesta de accionistas para hacerlo obligatorio por estatutos [26]. Jana Partners, con menos del 1 %, presiona para revisar la cartera y vender negocios no centrales, apoyando al equipo [30]."
+  },
+  "consenso": {
+    "estimaciones": [
+      {
+        "periodo": "2026e",
+        "ingresos": 20040,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 7.3,
+        "dpa": 0,
+        "fuente": "Ingresos: Simply Wall St [43]; BPA: punto medio de la guía rebajada del 6-ago (7,20-7,40) [39], a falta de un consenso posterior"
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 20861,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 9.01,
+        "dpa": 0,
+        "fuente": "TickFlow (22 analistas, anterior al recorte de agosto) [42]; ingresos Simply Wall St [43]"
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 21642,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": null,
+        "dpa": 0,
+        "fuente": "Simply Wall St (15 analistas) [43]"
+      }
+    ],
+    "recomendaciones": {
+      "n_analistas": 35,
+      "comprar": null,
+      "mantener": null,
+      "vender": null,
+      "po_medio": 59.12,
+      "po_min": 40,
+      "po_max": 106
+    },
+    "base_ebitda": "NIIF",
+    "ajuste_ebitda_pct_ventas": null,
+    "confianza": "Baja",
+    "guidance": "Guía de 2026 (6-ago-2026): crecimiento orgánico de −1 % a 0 % y BPA ajustado de 7,20-7,40 USD, frente a +1-3 % y 8,00-8,30 USD de febrero, mayo y junio [4, 14]. Plan a medio plazo (14-may-2026, no retirado): ingresos ajustados +4-6 % anual en 2026-29, margen operativo ajustado de más del 37 % y BPA de más de 12 USD en 2029, con crecimiento de dos dígitos desde 2027 y una conversión de caja del 90 % [40, 41]. Próximos resultados: 3-nov-2026 [34].",
+    "revisiones": "Las estimaciones solo bajan. El BPA de 2026 pasó de ≈10,2 USD (guía de febrero de 2025) a 8,10-8,13 tras la guía de 2026 [42, 45] y ahora a ≈7,30 con el recorte de agosto [4]. El BPA de 2027 del consenso (9,01 USD, 22 analistas) es de junio y no recoge ese recorte [42]. Los objetivos de precio también bajan: 76,77 USD de media en julio (MarketBeat) [45], 62,37 en agosto (Investing) [46] y 59,12 hoy (Stock Analysis, 35 analistas, «mantener») [34]; Truist en 53 y Stephens en 57 [44]."
+  },
+  "bolsa": null,
+  "multiplos_historicos": {
+    "serie": [
+      {
+        "anio": "2021",
+        "precio_cierre": 103.79,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2022",
+        "precio_cierre": 101.07,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2023",
+        "precio_cierre": 132.84,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2024",
+        "precio_cierre": 205.42,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2025",
+        "precio_cierre": 67.17,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "Fiserv cotiza a 5,7x EBITDA de los últimos 12 meses, con un descuento del 55 % frente a su media de cinco años (12,7x), y a un PER contable de 8,9x frente a 26,7x de media. Ha cambiado algo estructural: hasta 2024 el mercado pagaba un crecimiento del 10 % orgánico y márgenes al alza (PER ajustado de 23,3x al cierre de 2024) y hoy descuenta una caída del negocio. El descuento es del sector: Global Payments y FIS también cotizan a 6,4-6,5x beneficio [48, 49]."
+  },
+  "comparables": {
+    "empresas": [
+      {
+        "nombre": "Global Payments",
+        "ticker": "GPN",
+        "pais": "US",
+        "capitalizacion": 21560,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": 10.1,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 6.4,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "FIS",
+        "ticker": "FIS",
+        "pais": "US",
+        "capitalizacion": 21090,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 6.5,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "Jack Henry",
+        "ticker": "JKHY",
+        "pais": "US",
+        "capitalizacion": 10780,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 20.9,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "Shift4",
+        "ticker": "FOUR",
+        "pais": "US",
+        "capitalizacion": null,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": 9.45,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 9.5,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "PayPal",
+        "ticker": "PYPL",
+        "pais": "US",
+        "capitalizacion": 56240,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      }
+    ],
+    "confianza": "Baja",
+    "criterio": "Procesadores de pagos y tecnología bancaria de EE. UU. con datos publicados: Global Payments (adquirencia), FIS (core y emisión), Jack Henry (core), Shift4 (adquirencia con software) y PayPal (pagos digitales, sin PER adelantado en las fuentes). Faltan Adyen, Block y Toast por falta de datos (hueco). Las cifras son de julio-agosto de 2026, no de la fecha de corte.",
+    "comentario": "La mediana del PER adelantado es de 8,0x, con Global Payments (6,4x) y FIS (6,5x) en el mismo cajón que Fiserv y Jack Henry (20,9x) como excepción: es el único que crece sin compras ni reestructuración [48, 49, 51]. Fiserv, a 5,4x el BPA de los próximos 12 meses del consenso, cotiza en el extremo bajo. El valor implícito por PER (69,16 USD con la mediana) es engañoso: el BPA de consenso de 2027 no recoge el recorte de agosto. Con nuestro BPA de 2027e (7,39 USD), la mediana de 8,0x daría ≈59 USD."
+  },
+  "transacciones": {
+    "operaciones": [
+      {
+        "fecha": "2025-04",
+        "objetivo": "Worldpay",
+        "comprador": "Global Payments",
+        "ev": 24250,
+        "ev_ventas": 4.8,
+        "ev_ebitda": 8.5,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Precio neto 22.700 M (24.250 M con 1.550 M de activos fiscales); 8,5x EBITDA ajustado con sinergias [B2]."
+      },
+      {
+        "fecha": "2025-04",
+        "objetivo": "Issuer Solutions (Global Payments)",
+        "comprador": "FIS",
+        "ev": 13500,
+        "ev_ventas": null,
+        "ev_ebitda": 12.3,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "12,3x EBITDA ajustado con sinergias: proceso de emisores, el negocio más parecido a Financial Solutions [B2]."
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "Las dos operaciones del sector de 2025 marcan el valor de control: Worldpay a 8,5x EBITDA con sinergias (adquirencia) e Issuer Solutions a 12,3x (proceso para emisores, el negocio más parecido a Financial Solutions) [23]. Fiserv cotiza a 5,7x EBITDA: muy por debajo de ambas. Una venta de partes (las redes de débito están en revisión [16]) podría cristalizar valor, y el tamaño (≈52.000 M de valor empresa) hace improbable una compra del grupo entero, aunque no imposible para un fondo con socios. No pondero las transacciones (solo dos con múltiplo)."
+  },
+  "dcf": {
+    "anios": [
+      {
+        "periodo": "2026e",
+        "crecimiento_pct": -3,
+        "margen_ebitda_pct": 39,
+        "amortizacion_pct_ventas": 8.7,
+        "capex_pct_ventas": 8.5,
+        "nwc_pct_ventas": 3,
+        "tasa_impositiva_pct": 21.5,
+        "fijo": true
+      },
+      {
+        "periodo": "2027e",
+        "crecimiento_pct": 1.5,
+        "margen_ebitda_pct": 39,
+        "amortizacion_pct_ventas": 8,
+        "capex_pct_ventas": 8,
+        "nwc_pct_ventas": 3,
+        "tasa_impositiva_pct": 21.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2028e",
+        "crecimiento_pct": 2.5,
+        "margen_ebitda_pct": 39.5,
+        "amortizacion_pct_ventas": 8,
+        "capex_pct_ventas": 8,
+        "nwc_pct_ventas": 3,
+        "tasa_impositiva_pct": 21.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2029e",
+        "crecimiento_pct": 3,
+        "margen_ebitda_pct": 40,
+        "amortizacion_pct_ventas": 8,
+        "capex_pct_ventas": 8,
+        "nwc_pct_ventas": 3,
+        "tasa_impositiva_pct": 21.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2030e",
+        "crecimiento_pct": 3,
+        "margen_ebitda_pct": 40,
+        "amortizacion_pct_ventas": 8,
+        "capex_pct_ventas": 8,
+        "nwc_pct_ventas": 3,
+        "tasa_impositiva_pct": 21.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2031e",
+        "crecimiento_pct": 2.5,
+        "margen_ebitda_pct": 40,
+        "amortizacion_pct_ventas": 8,
+        "capex_pct_ventas": 8,
+        "nwc_pct_ventas": 3,
+        "tasa_impositiva_pct": 21.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2032e",
+        "crecimiento_pct": 2.5,
+        "margen_ebitda_pct": 40,
+        "amortizacion_pct_ventas": 8,
+        "capex_pct_ventas": 8,
+        "nwc_pct_ventas": 3,
+        "tasa_impositiva_pct": 21.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2033e",
+        "crecimiento_pct": 2.5,
+        "margen_ebitda_pct": 40,
+        "amortizacion_pct_ventas": 8,
+        "capex_pct_ventas": 8,
+        "nwc_pct_ventas": 3,
+        "tasa_impositiva_pct": 21.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2034e",
+        "crecimiento_pct": 2.5,
+        "margen_ebitda_pct": 40,
+        "amortizacion_pct_ventas": 8,
+        "capex_pct_ventas": 8,
+        "nwc_pct_ventas": 3,
+        "tasa_impositiva_pct": 21.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2035e",
+        "crecimiento_pct": 2.5,
+        "margen_ebitda_pct": 40,
+        "amortizacion_pct_ventas": 8,
+        "capex_pct_ventas": 8,
+        "nwc_pct_ventas": 3,
+        "tasa_impositiva_pct": 21.5,
+        "fijo": false
+      }
+    ],
+    "wacc": {
+      "tasa_libre_pct": 5.22,
+      "beta": 1.15,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 1.5,
+      "coste_deuda_pct": 5.5,
+      "tasa_impositiva_pct": 21.5,
+      "peso_deuda_pct": 53
+    },
+    "terminal": {
+      "metodo": "gordon",
+      "crecimiento_pct": 2.5,
+      "multiplo_salida": 8
+    },
+    "etapa2": {
+      "usar": false,
+      "anios": 5,
+      "margen_final_pct": null,
+      "justificacion": null
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "2026e −3,0 % (fijo): ingresos GAAP del 1S26 −3 % y guía orgánica de −1 % a 0 % con desinversiones [4]. 2027e +1,5 %, 2028e +2,5 % y 3,0 % en 2029-30e: la mitad del 4-6 % anual que promete la empresa [40], porque Financial Solutions cae un 6-8 % orgánico en 2026 y la dirección ha fallado dos guías. Después, 2,5 % (inflación más poco volumen). El consenso de ingresos de 2027-28e (20.861-21.642 M) [43] queda cerca de nuestra senda.",
+      "margenes": "Margen EBITDA del 39,0 % en 2026e-27e y del 40 % desde 2029e, frente al 42,6 % de 2025 y al 44,1 % de 2024. Recoge una caída permanente de 2-3 puntos por el precio y la reinversión, con algo de recuperación desde el 30,8 % de margen operativo ajustado del 1S26 [4]. La empresa promete un margen operativo ajustado de más del 37 % en 2029 (37,4 % en 2025) [40]: nosotros no lo damos por recuperado.",
+      "inversion": "Capex del 8,5 % de las ventas en 2026e (956 M en el 1S26, el 9 %) [14] y del 8,0 % después (7,6 % en 2025). La amortización del DCF excluye los ≈1.400 M anuales de intangibles comprados (no deducibles en su mayoría), así que converge al capex: 8,7 % en 2026e y 8,0 % después. Circulante del 3 % de las ventas (sin dato de balance; hueco).",
+      "wacc": "Tasa libre del 5,22 % (bono a 10 años del 13-oct) [54], beta de 1,15 (estimación propia: la acción se ha comportado como un valor de riesgo específico tras dos caídas del 44 % y el 10 % en un día; sin beta publicada en las fuentes), prima de mercado del 5,5 % y 1,5 puntos adicionales por riesgo de ejecución y de gobierno. Coste de la deuda del 5,5 % (1.493 M de intereses netos sobre ≈27.000 M) [21], tipo del 21,5 % (guía de la empresa) [41]. Peso de la deuda del 53 % a valor de mercado. WACC del 8,42 %.",
+      "terminal": "Crecimiento a perpetuidad del 2,5 % (inflación de EE. UU. más algo de volumen, por debajo de la tasa libre menos medio punto). El valor terminal pesa un 59 %. El múltiplo de salida de contraste (8x EBITDA) es el de las transacciones del sector [23] y daría menos valor."
+    },
+    "sostenibilidad": {
+      "puente_ingresos": [
+        {
+          "periodo": "2026e",
+          "volumen_pct": -1.5,
+          "precio_pct": 0,
+          "otros_pct": -1.5,
+          "comentario": "Volumen −1,5 % (bajas e implantaciones retrasadas en Financial Solutions, −6/−8 % orgánico) y otros −1,5 % (desinversiones, menos terminales y Argentina) [4, 15]."
+        },
+        {
+          "periodo": "2027e",
+          "volumen_pct": 2,
+          "precio_pct": 0,
+          "otros_pct": -0.5,
+          "comentario": "Volumen +2 % (implantaciones retrasadas en marcha y Clover al +8-10 %) y otros −0,5 % (efecto completo de las desinversiones)."
+        },
+        {
+          "periodo": "2028e",
+          "volumen_pct": 2,
+          "precio_pct": 0.5,
+          "otros_pct": 0,
+          "comentario": "Volumen +2 % y precio +0,5 % (repercusión parcial de la inflación)."
+        },
+        {
+          "periodo": "2029e",
+          "volumen_pct": 2.5,
+          "precio_pct": 0.5,
+          "otros_pct": 0,
+          "comentario": "Volumen +2,5 % (pagos con tarjeta que crecen con el consumo) y precio +0,5 %."
+        },
+        {
+          "periodo": "2030e",
+          "volumen_pct": 2.5,
+          "precio_pct": 0.5,
+          "otros_pct": 0,
+          "comentario": "Igual que 2029e."
+        }
+      ],
+      "mercado_final": null,
+      "veredicto": "En parte",
+      "justificacion": "En parte. El crecimiento medio proyectado (1,9 % anual) no necesita capital nuevo (reinversión neta de solo el 1 % del NOPAT) y queda por debajo del 4 % orgánico de 2025 y del 4-6 % que promete la empresa [2, 40], así que no es exigente en volumen. La duda es la calidad: el foso se estrecha, Financial Solutions cae un 6-8 % orgánico en 2026 y no hay poder de precios demostrado [4]. El ROIC (8,9 %) apenas cubre el WACC (8,42 %), por lo que crecer no crea valor. No se rebaja más el base porque ya está a la mitad de la guía; la prueba de cuota no se puede hacer (sin tamaño de mercado)."
+    },
+    "lectura": "El DCF da 118,18 USD por acción frente a 46,66 USD de precio (+153,3 %), con un WACC del 8,42 % y un valor terminal del 59 %. La sensibilidad (WACC y crecimiento ± 0,5 puntos) va de 98,40 a 145,81 USD: el precio queda muy por debajo incluso del extremo bajo. El DCF inverso explica por qué: a 46,66 USD el mercado descuenta que los ingresos caigan un 5,5 % al año entre 2027e y 2035e (frente a +2,5 % en nuestro base) o que el margen EBITDA baje al 26,5 % (40 % en el base). Es una hipótesis muy exigente a la baja: Fiserv nunca ha encadenado dos años de caída y genera 4.000-4.400 M de caja libre al año. Rentabilidad implícita del 12,9 % frente a un WACC del 8,42 %. Es la clave del informe: a largo plazo hay margen de seguridad, pero el DCF no dice cuándo se cierra el descuento.",
+    "confianza": "Baja"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 30,
+        "ajuste_crecimiento_pp": -2.5,
+        "ajuste_margen_pp": -2.5,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": 1.5,
+        "multiplo_salida": null,
+        "narrativa": "Financial Solutions sigue perdiendo clientes y precio, Clover se frena y la revisión de cartera no vende nada: crecimiento 2,5 puntos menor cada año (plano de media), margen 2,5 puntos más bajo (37,5 %) y terminal del 1,5 %. Es lo que le pasó a FIS en 2023-24 antes de vender Worldpay."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Recuperación lenta desde 2027: +1,5-3 % de ingresos, la mitad de lo que promete la empresa, margen EBITDA del 39-40 % y deuda a la baja con la caja libre."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 20,
+        "ajuste_crecimiento_pp": 1.5,
+        "ajuste_margen_pp": 1.5,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Las implantaciones retrasadas entran, Clover vuelve al +12-15 % y la venta de las redes de débito reduce deuda: ingresos +3-4,5 % y margen del 41,5 %."
+      }
+    ],
+    "comentario": "El DCF da 68,95 USD en el bajista (+47,8 % sobre el precio), 118,18 en el base y 145,48 en el alcista (+211,8 %). Incluso el bajista queda por encima del precio: el mercado descuenta algo peor que nuestro peor caso, una caída continuada de ingresos. Por eso la asimetría del valor intrínseco no es medible (no hay pérdida en el bajista). La asimetría a 12 meses sí lo es (ver objetivo a 12 meses): ahí el bajista pierde un 24 %, porque el múltiplo no tiene por qué subir en un año.",
+    "confianza": "Baja"
+  },
+  "suma_partes": {
+    "aplica": false,
+    "descuento_holding_pct": 0,
+    "partes": [],
+    "comentario": "No se hace: los ingresos por segmento de 2025 son una estimación propia y no hay EBITDA por segmento. Las transacciones de 2025 (8,5x para adquirencia y 12,3x para proceso de emisores) [23] sugieren que una suma de partes daría más que el valor de mercado, pero sin cifras fiables no se pondera.",
+    "confianza": "Baja"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2026-06-30",
+      "deuda_financiera": 27886,
+      "arrendamientos": 0,
+      "caja": 627,
+      "minoritarios": 0,
+      "pensiones": 0,
+      "asociadas": 0,
+      "otros_ajustes": 0
+    },
+    "referencia_mercado": {
+      "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+      "prima_implicita_pct": 4.2,
+      "fecha": "2026-10",
+      "fuente": "Damodaran, ERPbymonth [55]"
+    },
+    "pesos": {
+      "dcf": 40,
+      "comparables": 30,
+      "transacciones": 0,
+      "suma_partes": 0,
+      "escenarios": 30
+    },
+    "objetivo_12m": {
+      "ejercicio": "2028e",
+      "casos": [
+        {
+          "escenario": "Bajista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 6.55,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Financial Solutions sigue perdiendo bancos y precio, Clover se frena a un dígito y la revisión de cartera no vende nada: ingresos de 20.351 M en 2028e (plano desde 2026e) y margen EBITDA del 37,0 %. EBIT ajustado de 5.902 M, intereses de 1.500 M y tipo del 21,5 %."
+        },
+        {
+          "escenario": "Base",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 7.79,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Recuperación lenta: +1,5 % en 2027e y +2,5 % en 2028e (por debajo del 4-6 % que promete la empresa) y margen del 39,5 %. EBIT ajustado de 6.737 M − 1.500 M de intereses, tipo del 21,5 % y 527,6 M de acciones sin recompras nuevas."
+        },
+        {
+          "escenario": "Alcista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 8.58,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Se cumple a medias el plan del día del inversor: +3 % y +4 % en 2027-28e con las implantaciones retrasadas en marcha y Clover al +12-15 %, margen del 41 %. Aun así queda por debajo de la senda de la empresa (más de 12 USD en 2029)."
+        }
+      ],
+      "per_historico": {
+        "actual": 6.31,
+        "mediana_5a": 25.7,
+        "minimo_5a": 20.3,
+        "media_larga": 26,
+        "base": "adelantado",
+        "anios": 4,
+        "excluidos": "Historia ADELANTADA (precio de cierre de cada año ÷ BPA real del año siguiente, como el PER actual), construida el 2026-10-14 con los cierres y el BPA del informe: 2021 26.6x; 2022 20.3x; 2023 24.7x; 2024 32.4x. Sin años de pérdidas, PER ≥ 150x ni atípicos (a más de 3 veces o menos de un tercio de la mediana del resto, con cinco años o más); mediana y mínimo de los últimos 4 años, media larga de 4. Contraste de base: BPA propio del año siguiente 7.395 frente a 6.34 publicado en 2025 (+8 % anual). Historia corta (menos de cinco años). Historia al cierre anterior (v2): Solo dos años en la misma base (BPA ajustado de la empresa): 2024 (205,42 ÷ 8,80 = 23,3x) y 2025 (67,17 ÷ 8,64 = 7,8x) [37, 39]. El BPA ajustado de 2021-2023 no se pudo leer en las fuentes; el PER contable (52x-26x) no compara porque carga la amortización de First Data. No se excluye ninguno.",
+        "v2": {
+          "actual": 6.31,
+          "mediana_5a": 15.6,
+          "minimo_5a": 7.8,
+          "media_larga": 15.6,
+          "base": "cierre"
+        }
+      },
+      "comparables_per": {
+        "mediana": 7.95
+      },
+      "consenso": {
+        "bpa_ano1": 7.3,
+        "bpa_ano2": 9.01,
+        "objetivo_medio": 59.12,
+        "objetivo_min": 40,
+        "objetivo_max": 106,
+        "analistas": 35,
+        "tendencia_3m": "recortes",
+        "fuente": "Stock Analysis (objetivo medio y analistas) [34], Investing (mínimo y máximo) [46], TickFlow (BPA 2027e, anterior al recorte de agosto) [42] y guía de 2026 [4]"
+      },
+      "diferencia_consenso": "Nuestro BPA de 2027e (7,39 USD) queda un 18 % por debajo de los 9,01 del consenso, pero ese consenso es de junio, anterior al recorte de la guía de agosto (de 8,00-8,30 a 7,20-7,40 USD para 2026) [4, 42]: con la base nueva, el consenso tendría que bajar un 10 % solo por el punto de partida. El resto es crecimiento: suponemos un 1,5-2,5 % frente al 4-6 % anual del plan de la empresa [40], porque Financial Solutions cae un 6-8 % orgánico en 2026 y la dirección ha fallado dos guías seguidas. Nuestro precio base queda muy por debajo del objetivo medio de 59,12 USD porque el múltiplo de la regla es el PER actual (6,3x).",
+      "media": null,
+      "comentario": "El valor intrínseco (100,68 USD) duplica el objetivo a 12 meses (49,22 USD): la distancia es de más del 100 %, así que la tesis de valor es a varios años. Para cerrarla hacen falta tres cosas con fecha: que el 3T26 (3-nov) y el 4T26 (febrero) cumplan la guía rebajada, que la revisión de cartera venda algún negocio a 8-12x EBITDA y que la caja libre vuelva a recompras a 6x beneficio. Sin esos hechos, la regla común deja el múltiplo en el actual (6,3x) y la rentabilidad a 12 meses en un dígito."
+    },
+    "comentario": "El DCF pesa un 40 % porque la caja libre es estable y conocida (4.440 M en 2025) [2]; los comparables, un 30 %, porque el sector entero se ha abaratado y el PER es la referencia del mercado, aunque su BPA de consenso (anterior al recorte) los infla; los escenarios, un 30 %, para recoger el riesgo de un bajista verosímil. Las transacciones no pesan (dos operaciones). La dispersión es enorme: de 55,98 USD (PER del cuartil bajo de comparables) a 145,81 (DCF alto), y todos los métodos quedan por encima del precio. El valor intrínseco ponderado es de 100,68 USD, pero no es un precio a 12 meses: la acción necesita recuperar credibilidad antes de recuperar múltiplo.",
+    "confianza": "Baja"
+  },
+  "catalizadores": {
+    "items": [
+      {
+        "fecha": "3-nov-2026",
+        "evento": "Resultados del 3T26",
+        "efecto": "Primera prueba de la guía rebajada; un nuevo recorte sería el tercero en un año",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "Feb-2027",
+        "evento": "Resultados de 2026 y guía de 2027",
+        "efecto": "Dirá si el plan de +4-6 % y BPA de 12 USD en 2029 sigue vivo",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2026-2027 (sin fecha)",
+        "evento": "Revisión de cartera: venta de redes de débito u otros negocios",
+        "efecto": "Cristalizaría valor a múltiplos de transacción (8,5-12,3x EBITDA) y reduciría deuda",
+        "probabilidad": "Media",
+        "sentido": "+"
+      },
+      {
+        "fecha": "Mayo-2027",
+        "evento": "Junta de accionistas (voto de remuneración y propuesta de presidente independiente)",
+        "efecto": "Termómetro del apoyo al nuevo equipo y a Jana",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2027",
+        "evento": "Nuevo programa de recompras con la caja libre",
+        "efecto": "A 6x beneficio, cada 1.000 M recompran ≈4 % del capital",
+        "probabilidad": "Media",
+        "sentido": "+"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "riesgos": {
+    "items": [
+      {
+        "riesgo": "Pérdida estructural de clientes y precio en Financial Solutions",
+        "tipo": "Negocio",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−40 % (escenario bajista del DCF)",
+        "mitigante": "Contratos plurianuales y costes de cambio altos",
+        "senal": "Orgánico de Financial Solutions peor que −5 % en el 3T26 o el 4T26"
+      },
+      {
+        "riesgo": "Tercer recorte de guía y pérdida total de credibilidad",
+        "tipo": "Gestión",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "PER a 5x: −15-20 %",
+        "mitigante": "Guía ya rebajada a una base baja",
+        "senal": "BPA del 3T26 por debajo de 1,80 USD"
+      },
+      {
+        "riesgo": "Clover pierde la carrera frente a Toast, Square y Shift4",
+        "tipo": "Competencia",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−10-15 %",
+        "mitigante": "Base instalada y canal bancario",
+        "senal": "Crecimiento del volumen de Clover por debajo del 7 %"
+      },
+      {
+        "riesgo": "Deuda (3,0x EBITDA) con beneficio en caída",
+        "tipo": "Financiero",
+        "probabilidad": "Baja",
+        "impacto": "Medio",
+        "efecto_valor": "Menos recompras; −5-10 %",
+        "mitigante": "Caja libre de ≈4.000 M al año",
+        "senal": "Rebaja de rating o deuda neta/EBITDA > 3,5x"
+      },
+      {
+        "riesgo": "Argentina (devaluación, consumo)",
+        "tipo": "País",
+        "probabilidad": "Media",
+        "impacto": "Bajo",
+        "efecto_valor": "−3-5 %",
+        "mitigante": "Peso pequeño en el grupo",
+        "senal": "Nuevos ajustes por Argentina en la guía"
+      },
+      {
+        "riesgo": "Rotación de la cúpula y ejecución del plan One Fiserv",
+        "tipo": "Gobierno",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−10 %",
+        "mitigante": "Sucesión interna, equipo mantenido",
+        "senal": "Salida del CFO o de los presidentes de segmento"
+      }
+    ],
+    "premortem": "Octubre de 2029: la acción ha perdido un 40 % desde 46,66 USD. Lo que pasó: el 3T26 confirmó que la caída de Financial Solutions no era un retraso de implantaciones sino la pérdida de bancos medianos hacia Jack Henry y FIS, que ofrecían cores en la nube a menor precio. En 2027 el orgánico siguió en negativo (−2 %) y el margen operativo ajustado no pasó del 31 %. Clover se estancó al 5 % de crecimiento de volumen porque Toast y Square se llevaron la restauración y el comercio minorista con software propio. Con el BPA en 6,5 USD y la deuda en 3,5x EBITDA, la empresa paró las recompras y vendió las redes de débito a un múltiplo menor de lo esperado para pagar deuda. El mercado siguió pagando 5x beneficio. Los indicadores que lo habrían anticipado: el orgánico de Financial Solutions de cada trimestre de 2026, la desaceleración del volumen de Clover por debajo del 8 % y la ausencia de recompras en el 2S26 pese a una acción a 6x beneficio."
+  },
+  "esg": null,
+  "preguntas": {
+    "items": [
+      {
+        "tema": "Financial Solutions",
+        "pregunta": "¿Cuánto de la caída del 8 % orgánico del 2T26 son implantaciones retrasadas con fecha y cuánto son bajas o rebajas de precio?",
+        "por_que": "Decide si el bajista (crecimiento plano) es el escenario central."
+      },
+      {
+        "tema": "Plan a 2029",
+        "pregunta": "¿Mantiene el nuevo CEO el BPA de más de 12 USD en 2029 tras el recorte de agosto?",
+        "por_que": "Nuestro base es un 18 % inferior al consenso de 2027."
+      },
+      {
+        "tema": "Revisión de cartera",
+        "pregunta": "¿Qué negocios están en venta y a qué múltiplo esperan venderlos?",
+        "por_que": "Una venta a 8-12x EBITDA frente a 5,7x del grupo es el catalizador más claro."
+      },
+      {
+        "tema": "Recompras",
+        "pregunta": "¿Por qué solo 200 M de recompras en el 4T25 y qué se hará en 2027 con la acción a 6x beneficio?",
+        "por_que": "Es la palanca de valor más barata si la deuda lo permite."
+      },
+      {
+        "tema": "Clover",
+        "pregunta": "¿Cuál es el crecimiento de Clover sin anticipos argentinos y sin ventas de terminales?",
+        "por_que": "La tesis alcista descansa en Clover."
+      },
+      {
+        "tema": "Software capitalizado",
+        "pregunta": "¿Cuánto del capex (956 M en el 1S26) es software capitalizado y con qué vida útil?",
+        "por_que": "Afecta a la calidad del beneficio y de la caja libre."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sentimiento": {
+    "tono": "Negativo",
+    "tendencia": "Empeora",
+    "revisadas": [
+      {
+        "plataforma": "Nasdaq / Motley Fool (artículo con comentarios)",
+        "fecha": "2026-08",
+        "n_comentarios": 1,
+        "tono": "Negativo",
+        "resumen": "Recomienda vender hasta que los resultados mejoren: la acción está barata «por una razón» y 2026 puede dejarla atrapada en crecimiento lento y más competencia [57]."
+      },
+      {
+        "plataforma": "Simply Wall St (narrativas de particulares)",
+        "fecha": "2026-08",
+        "n_comentarios": 3,
+        "tono": "Dividido",
+        "resumen": "Las narrativas de la comunidad bajan su valor razonable (de 50 a 40 USD en una de ellas) pero varias siguen viendo la acción por debajo de su valor si Clover mantiene el crecimiento [58]."
+      },
+      {
+        "plataforma": "Seeking Alpha (autores independientes)",
+        "fecha": "2026-08",
+        "n_comentarios": 2,
+        "tono": "Dividido",
+        "resumen": "Un autor ve la acción a ≈5x el beneficio de 2026 con mucho recorrido si se cumplen los objetivos; otros hablan de «crisis de confianza» desde el 3T25 y de posible trampa de valor [60, 62]."
+      },
+      {
+        "plataforma": "Financial Modeling Prep / notas de mercado",
+        "fecha": "2026-08",
+        "n_comentarios": 2,
+        "tono": "Negativo",
+        "resumen": "La rebaja de Oppenheimer tras el 2T26 alimenta el debate de la trampa de valor: ingresos −4 % y margen operativo −8 puntos [59]."
+      },
+      {
+        "plataforma": "TIKR y Substack (blogs de inversores)",
+        "fecha": "2026-06",
+        "n_comentarios": 2,
+        "tono": "Negativo",
+        "resumen": "La salida por sorpresa del CEO a los 13 meses (−8 % ese día) se lee como señal de que el plan One Fiserv no tiene dueño; los blogs dudan de la recuperación tras la caída del 75 % desde máximos [61, 63]."
+      }
+    ],
+    "temas": [
+      {
+        "tema": "Trampa de valor: barata por una razón",
+        "postura": "Bajista",
+        "peso": "Alto",
+        "contraste": "Los datos lo respaldan a corto plazo: orgánico −4/−5 % en 1S26 y dos recortes de guía; pero la caja libre (4.440 M en 2025) es ≈18 % de la capitalización actual."
+      },
+      {
+        "tema": "Clover como motor de la tesis",
+        "postura": "Alcista",
+        "peso": "Alto",
+        "contraste": "Clover crece (GPV +9 %, ingresos +13 % ajustados en 2T26), pero se ha desacelerado desde el +15 % de 2024 y pesa menos de un tercio de los ingresos."
+      },
+      {
+        "tema": "Credibilidad de la dirección (dos CEO en 13 meses)",
+        "postura": "Bajista",
+        "peso": "Alto",
+        "contraste": "Correcto: la guía de 2025 y la de 2026 se han incumplido; el nuevo CEO viene de dentro y mantiene el equipo."
+      },
+      {
+        "tema": "Activismo (Jana) y venta de negocios",
+        "postura": "Alcista",
+        "peso": "Medio",
+        "contraste": "Jana tiene <1 %; la revisión de cartera se amplió a las redes de débito en el 2T26: posible catalizador, sin fecha."
+      }
+    ],
+    "confianza": "Baja",
+    "lectura": "El sentimiento es negativo y empeora desde la salida del CEO en junio y el recorte de agosto: la palabra que más se repite es «trampa de valor» [57, 59]. Los particulares que defienden el valor se apoyan en Clover y en el múltiplo (≈5x beneficio) [60], pero incluso las narrativas optimistas bajan su valor razonable [58]. No es una capitulación eufórica a la inversa: el tono coincide con el de los analistas (consenso «mantener» y objetivos a la baja) y con los datos (orgánico −5 %). Aporta una idea útil: el mercado no pagará el descuento hasta ver dos trimestres sin sorpresas, lo que retrasa la convergencia al valor intrínseco más allá de 12 meses."
+  },
+  "fuentes": [
+    {
+      "id": 1,
+      "titulo": "Form 10-K 2025 (fi-20251231)",
+      "editor": "Fiserv / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-02-24",
+      "url": "https://www.sec.gov/Archives/edgar/data/798354/000079835426000009/fi-20251231.htm"
+    },
+    {
+      "id": 2,
+      "titulo": "Fiserv Reports Fourth Quarter and Full Year 2025 Results (8-K, 10-feb-2026)",
+      "editor": "Fiserv / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-02-10",
+      "url": "https://www.sec.gov/Archives/edgar/data/798354/000079835426000006/fisv4q25earningsrelease.htm"
+    },
+    {
+      "id": 3,
+      "titulo": "Fiserv Reports First Quarter 2026 Results (8-K, 5-may-2026)",
+      "editor": "Fiserv / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-05-05",
+      "url": "https://www.sec.gov/Archives/edgar/data/0000798354/000079835426000014/fisvq126earningsrelease.htm"
+    },
+    {
+      "id": 4,
+      "titulo": "Fiserv Reports Second Quarter 2026 Results (8-K, 6-ago-2026)",
+      "editor": "Fiserv / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-08-06",
+      "url": "https://www.sec.gov/Archives/edgar/data/0000798354/000079835426000028/fisvq226earningsrelease.htm"
+    },
+    {
+      "id": 5,
+      "titulo": "Form 10-Q 2T26 (fisv-20260630): nota de deuda",
+      "editor": "Fiserv / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-08-06",
+      "url": "https://www.sec.gov/Archives/edgar/data/0000798354/000079835426000031/fisv-20260630.htm"
+    },
+    {
+      "id": 6,
+      "titulo": "Fiserv income statement (anual 2021-2025)",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://stockanalysis.com/stocks/fisv/financials/income-statement/"
+    },
+    {
+      "id": 7,
+      "titulo": "Fiserv balance sheet (anual y TTM jun-26)",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://stockanalysis.com/stocks/fisv/financials/balance-sheet/"
+    },
+    {
+      "id": 8,
+      "titulo": "Fiserv cash flow statement (amortizaciones 2021-2025)",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://stockanalysis.com/stocks/fi/financials/cash-flow-statement/?p=trailing"
+    },
+    {
+      "id": 9,
+      "titulo": "Fiserv Long Term Debt 2012-2025",
+      "editor": "Macrotrends",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www.macrotrends.net/stocks/charts/FISV/fiserv/long-term-debt"
+    },
+    {
+      "id": 10,
+      "titulo": "Fiserv Cash on Hand 2012-2026",
+      "editor": "Macrotrends",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www.macrotrends.net/stocks/charts/FISV/fiserv/cash-on-hand"
+    },
+    {
+      "id": 11,
+      "titulo": "Fiserv cash flow (flujo operativo y capex 2021-2024)",
+      "editor": "Finboard",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://finboard.net/companies/FISV/cash-flow"
+    },
+    {
+      "id": 12,
+      "titulo": "Fiserv EPS diluido 2021-2025",
+      "editor": "TickerLeague",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://tickerleague.com/companies/FISV/financials/eps"
+    },
+    {
+      "id": 13,
+      "titulo": "Fiserv (FISV) Q1 2026 earnings call transcript",
+      "editor": "Motley Fool",
+      "tipo": "Prensa",
+      "fecha": "2026-05-05",
+      "url": "https://www.fool.com/earnings/call-transcripts/2026/05/05/fiserv-fisv-q1-2026-earnings-call-transcript/"
+    },
+    {
+      "id": 14,
+      "titulo": "Fiserv Q2 2026 earnings summary",
+      "editor": "Quartr",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-08-06",
+      "url": "https://quartr.com/events/fiserv-inc-fisv-q2-2026_3YF72qhm"
+    },
+    {
+      "id": 15,
+      "titulo": "Fiserv's Q2 earnings missed estimates: the guidance cut says more about Argentina than the business",
+      "editor": "TIKR",
+      "tipo": "Prensa",
+      "fecha": "2026-08",
+      "url": "https://www.tikr.com/blog/fiservs-q2-earnings-missed-estimates-the-guidance-cut-says-more-about-argentina-than-the-business"
+    },
+    {
+      "id": 16,
+      "titulo": "Fiserv Q2 2026 earnings (resumen de la conferencia)",
+      "editor": "Vectorshift",
+      "tipo": "Prensa",
+      "fecha": "2026-08",
+      "url": "https://vectorshift.ai/research/companies/fiserv/earnings/2026-q2"
+    },
+    {
+      "id": 17,
+      "titulo": "Fiserv Q3 2025: Plummets 43.58% as Q3 Earnings Miss and Guidance Cut Shock Investors",
+      "editor": "Tiger Brokers",
+      "tipo": "Prensa",
+      "fecha": "2025-10-29",
+      "url": "https://www.itiger.com/news/1120492554"
+    },
+    {
+      "id": 18,
+      "titulo": "Fiserv shakes up leadership, board after big Q3 earnings miss; stock plunges 30%",
+      "editor": "Seeking Alpha News",
+      "tipo": "Prensa",
+      "fecha": "2025-10-29",
+      "url": "https://seekingalpha.com/news/4510095-fiserv-shakes-up-leadership-board-after-big-q3-earnings-miss-stock-plunges-30"
+    },
+    {
+      "id": 19,
+      "titulo": "Fiserv Q4 2025 Earnings: EPS Beat, Revenue Flat, First-Half Headwinds Ahead",
+      "editor": "TIKR",
+      "tipo": "Prensa",
+      "fecha": "2026-02-10",
+      "url": "https://www.tikr.com/blog/fiserv-q4-2025-earnings-eps-beat-revenue-flat-first-half-headwinds-ahead"
+    },
+    {
+      "id": 20,
+      "titulo": "FISV Q4 deep dive: stable results, strategic investment and margin pressures shape outlook (Clover 3.300 M en 2025; resultado de segmentos)",
+      "editor": "Barchart / StockStory",
+      "tipo": "Prensa",
+      "fecha": "2026-02",
+      "url": "https://www.barchart.com/story/news/155253/fisv-q4-deep-dive-stable-results-strategic-investment-and-margin-pressures-shape-outlook"
+    },
+    {
+      "id": 21,
+      "titulo": "Fiserv financials: intereses netos, BAI e impuestos 2021-2025 (copia del 10-K)",
+      "editor": "Vectorshift / edgar.tools",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-02",
+      "url": "https://vectorshift.ai/research/companies/fiserv/financials.html"
+    },
+    {
+      "id": 22,
+      "titulo": "Fiserv shares slide as growth outlook weakens but Clover stands out",
+      "editor": "S&P Global Market Intelligence",
+      "tipo": "Analistas",
+      "fecha": "2025-11",
+      "url": "https://www.spglobal.com/market-intelligence/en/news-insights/research/2025/11/fiserv-shares-slide-as-growth-outlook-weakens-but-clover-stands-out"
+    },
+    {
+      "id": 23,
+      "titulo": "Global Payments Announces Agreements to Acquire Worldpay and Divest Issuer Solutions",
+      "editor": "Global Payments / SEC",
+      "tipo": "Primaria",
+      "fecha": "2025-04-17",
+      "url": "https://www.sec.gov/Archives/edgar/data/1123360/000110465925035771/tm2512552d1_ex99-1.htm"
+    },
+    {
+      "id": 24,
+      "titulo": "Fiserv Has Crashed 75% From Its Peak: Can it Recover in 2026?",
+      "editor": "TIKR",
+      "tipo": "Prensa",
+      "fecha": "2026",
+      "url": "https://www.tikr.com/blog/fiserv-has-crashed-75-from-its-peak-can-it-recover-in-2026"
+    },
+    {
+      "id": 25,
+      "titulo": "Fiserv stock crashes 44% after company slashes guidance",
+      "editor": "Kapronasia",
+      "tipo": "Prensa",
+      "fecha": "2025-10",
+      "url": "https://kapronasia.com/insight/blogs/fintech-research/fiserv-stock-crashes-44-after-company-slashes-guidance"
+    },
+    {
+      "id": 26,
+      "titulo": "Proxy statement 2026 (DEF 14A)",
+      "editor": "Fiserv / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-04-02",
+      "url": "https://www.sec.gov/Archives/edgar/data/798354/000114036126013003/ny20062579x1_def14a.htm"
+    },
+    {
+      "id": 27,
+      "titulo": "8-K resultados de la junta de 2026",
+      "editor": "Fiserv / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-05",
+      "url": "https://www.sec.gov/Archives/edgar/data/0000798354/000119312526237041/d140530d8k.htm"
+    },
+    {
+      "id": 28,
+      "titulo": "Fiserv Announces Leadership Transition (15-jun-2026)",
+      "editor": "Fiserv / GlobeNewswire (StreetInsider)",
+      "tipo": "Primaria",
+      "fecha": "2026-06-15",
+      "url": "https://www.streetinsider.com/Globe+Newswire/Fiserv+Announces+Leadership+Transition/26644559.html"
+    },
+    {
+      "id": 29,
+      "titulo": "Fiserv names former JPMorgan payments chief Takis Georgakopoulos as CEO",
+      "editor": "People Matters",
+      "tipo": "Prensa",
+      "fecha": "2026-06",
+      "url": "https://www.peoplematters.in/news/appointments/fiserv-names-former-jpmorgan-payments-chief-takis-georgakopoulos-as-ceo-50308"
+    },
+    {
+      "id": 30,
+      "titulo": "Activist investor Jana Partners builds stake in Fiserv",
+      "editor": "Reuters vía Yahoo Finance",
+      "tipo": "Prensa",
+      "fecha": "2026-02",
+      "url": "https://finance.yahoo.com/news/activist-investor-jana-partners-builds-121543177.html"
+    },
+    {
+      "id": 31,
+      "titulo": "Fintech company Fiserv slashes guidance, shuffles leadership after big earnings miss",
+      "editor": "WMTV/AP",
+      "tipo": "Prensa",
+      "fecha": "2025-10-29",
+      "url": "https://www.wmtv15news.com/2025/10/29/fintech-company-fiserv-slashes-guidance-shuffles-leadership-after-big-earnings-miss/"
+    },
+    {
+      "id": 32,
+      "titulo": "FISV 2026 annual meeting",
+      "editor": "Boardroom Alpha",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-04",
+      "url": "https://www.boardroomalpha.com/meetings/fisv-2026-annual-meeting"
+    },
+    {
+      "id": 33,
+      "titulo": "Fiserv Reports Fourth Quarter and Full Year 2024 Results (guía 2025)",
+      "editor": "Fiserv / SEC",
+      "tipo": "Primaria",
+      "fecha": "2025-02-05",
+      "url": "https://www.sec.gov/Archives/edgar/data/798354/000079835425000018/fi4q24earningsrelease.htm"
+    },
+    {
+      "id": 34,
+      "titulo": "Fiserv (FISV) Stock Price & Overview (cierre 13-oct-2026)",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-13",
+      "url": "https://stockanalysis.com/stocks/fisv/"
+    },
+    {
+      "id": 35,
+      "titulo": "Fiserv: FISV Stock Price Quote (capitalización)",
+      "editor": "Robinhood",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-13",
+      "url": "https://robinhood.com/us/en/stocks/FISV/"
+    },
+    {
+      "id": 36,
+      "titulo": "Fiserv Announces Transfer of Stock Exchange Listing to Nasdaq (ticker FI → FISV)",
+      "editor": "Fiserv / Business Wire",
+      "tipo": "Primaria",
+      "fecha": "2025-10-29",
+      "url": "https://www.businesswire.com/news/home/20251029726852/en/Fiserv-Announces-Transfer-of-Stock-Exchange-Listing-to-Nasdaq"
+    },
+    {
+      "id": 37,
+      "titulo": "Fiserv - 15 Year Stock Price History (cierres anuales)",
+      "editor": "Macrotrends",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www.macrotrends.net/stocks/charts/FISV/fiserv/stock-price-history"
+    },
+    {
+      "id": 38,
+      "titulo": "Fiserv - 39 Year Stock Price History | FI",
+      "editor": "Macrotrends",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www.macrotrends.net/stocks/charts/FI/fiserv/stock-price-history"
+    },
+    {
+      "id": 39,
+      "titulo": "Fiserv Reports Fourth Quarter and Full Year 2025 Results: BPA ajustado 8,64",
+      "editor": "Fiserv / Seeking Alpha PR",
+      "tipo": "Primaria",
+      "fecha": "2026-02-10",
+      "url": "https://seekingalpha.com/pr/20393416"
+    },
+    {
+      "id": 40,
+      "titulo": "Fiserv Issues Medium-Term Financial Outlook Through 2029 (día del inversor)",
+      "editor": "Fiserv / investors.fiserv.com",
+      "tipo": "Primaria",
+      "fecha": "2026-05-14",
+      "url": "https://investors.fiserv.com/news-releases/news-release-details/fiserv-leadership-focus-strategy-execution-priorities-and"
+    },
+    {
+      "id": 41,
+      "titulo": "Fiserv DEFA14A: transcripción del día del inversor (FCF > 13.500 M en 2027-29)",
+      "editor": "Fiserv / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-05",
+      "url": "https://www.sec.gov/Archives/edgar/data/0000798354/000119312526226797/d150338ddefa14a.htm"
+    },
+    {
+      "id": 42,
+      "titulo": "Fiserv, Inc. (FISV) Stock Forecast (consenso 2026-2027)",
+      "editor": "TickFlow",
+      "tipo": "Analistas",
+      "fecha": "2026-06",
+      "url": "https://www.tickflow.io/stock/FISV/forecast"
+    },
+    {
+      "id": 43,
+      "titulo": "Fiserv Future Growth (consenso de ingresos 2026-2028)",
+      "editor": "Simply Wall St",
+      "tipo": "Analistas",
+      "fecha": "2026",
+      "url": "https://simplywall.st/stocks/mx/diversified-financials/bmv-fisv/fiserv-shares/future"
+    },
+    {
+      "id": 44,
+      "titulo": "Fiserv price targets and analyst ratings",
+      "editor": "Benzinga",
+      "tipo": "Analistas",
+      "fecha": "2026-08",
+      "url": "https://benzinga.com/quote/FISV/analyst-ratings"
+    },
+    {
+      "id": 45,
+      "titulo": "Fiserv receives average recommendation of Hold from analysts",
+      "editor": "MarketBeat",
+      "tipo": "Analistas",
+      "fecha": "2026-07-23",
+      "url": "https://www.marketbeat.com/instant-alerts/fiserv-inc-nasdaqfisv-receives-average-recommendation-of-hold-from-analysts-2026-07-23/"
+    },
+    {
+      "id": 46,
+      "titulo": "Fiserv Inc (FISV): objetivo medio, máximo y mínimo",
+      "editor": "Investing.com",
+      "tipo": "Analistas",
+      "fecha": "2026-08",
+      "url": "https://www.investing.com/equities/fiserv-inc"
+    },
+    {
+      "id": 47,
+      "titulo": "Global Payments (GPN): estadísticas a mediados de julio de 2026",
+      "editor": "StockHub",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07-15",
+      "url": "https://www.stockhub.kr/en/stock/GPN"
+    },
+    {
+      "id": 48,
+      "titulo": "GPN: PER adelantado y capitalización (6-ago-2026)",
+      "editor": "Dividend.watch",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-08-06",
+      "url": "https://dividend.watch/symbol/GPN-NYSE"
+    },
+    {
+      "id": 49,
+      "titulo": "FIS stock is down 36% this year; the Street still sees 22% upside",
+      "editor": "TIKR",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07",
+      "url": "https://www.tikr.com/blog/fis-stock-is-down-36-this-year-the-street-still-sees-22-upside"
+    },
+    {
+      "id": 50,
+      "titulo": "FIS: capitalización 19-ago-2026",
+      "editor": "Equibles",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-08-19",
+      "url": "https://equibles.com/stocks/fis/summary"
+    },
+    {
+      "id": 51,
+      "titulo": "Jack Henry (JKHY): estadísticas a mediados de julio de 2026",
+      "editor": "StockHub",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07-15",
+      "url": "https://www.stockhub.kr/en/stock/JKHY"
+    },
+    {
+      "id": 52,
+      "titulo": "Shift4 Payments (FOUR) key statistics (31-jul-2026)",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07-31",
+      "url": "https://finance.yahoo.com/quote/FOUR?p=FOUR"
+    },
+    {
+      "id": 53,
+      "titulo": "PayPal y Jack Henry: PER y capitalización",
+      "editor": "5i Research",
+      "tipo": "Datos de mercado",
+      "fecha": "2026",
+      "url": "https://www.5iresearch.ca/company/nasdaq/JKHY"
+    },
+    {
+      "id": 54,
+      "titulo": "10-year Treasury yield (13-oct-2026); FRED DGS10 5,24 % el 9-oct",
+      "editor": "CNBC",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-13",
+      "url": "https://www.cnbc.com/2026/10/13/us-treasurys-bonds-yields.html"
+    },
+    {
+      "id": 55,
+      "titulo": "Implied ERP by month (ERPbymonth.xlsx), octubre de 2026",
+      "editor": "Aswath Damodaran, NYU Stern",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx"
+    },
+    {
+      "id": 56,
+      "titulo": "Fiserv short interest",
+      "editor": "MarketBeat",
+      "tipo": "Datos de mercado",
+      "fecha": "2025",
+      "url": "https://www.marketbeat.com/stocks/NASDAQ/FISV/social-media/"
+    },
+    {
+      "id": 57,
+      "titulo": "Fiserv Stock: Buy, Sell, or Hold in 2026?",
+      "editor": "Nasdaq / Motley Fool",
+      "tipo": "Foros y redes",
+      "fecha": "2026",
+      "url": "https://www.nasdaq.com/articles/fiserv-stock-buy-sell-or-hold-2026"
+    },
+    {
+      "id": 58,
+      "titulo": "Fiserv: narrativas de la comunidad y valor razonable",
+      "editor": "Simply Wall St",
+      "tipo": "Foros y redes",
+      "fecha": "2026-08",
+      "url": "https://simplywall.st/NasdaqGS:FISV/fiserv"
+    },
+    {
+      "id": 59,
+      "titulo": "Oppenheimer Downgrades Fiserv (FISV) Amidst Financial Headwinds",
+      "editor": "Financial Modeling Prep",
+      "tipo": "Foros y redes",
+      "fecha": "2026-08",
+      "url": "https://site.financialmodelingprep.com/market-news/oppenheimer-downgrades-fiserv-fisv"
+    },
+    {
+      "id": 60,
+      "titulo": "Fiserv: Results And Guidance Spark A Confidence Crisis",
+      "editor": "Seeking Alpha",
+      "tipo": "Foros y redes",
+      "fecha": "2025-10",
+      "url": "https://seekingalpha.com/article/4834720-fiserv-results-and-amp-guidance-spark-a-confidence-crisis"
+    },
+    {
+      "id": 61,
+      "titulo": "Stock of the Week: Fiserv - Can the Stock Recover After Its 2025 Breakdown?",
+      "editor": "Quality Stocks (Substack)",
+      "tipo": "Foros y redes",
+      "fecha": "2026",
+      "url": "https://qualitystocks.substack.com/p/stock-of-the-week-fiserv-can-the"
+    },
+    {
+      "id": 62,
+      "titulo": "Is FISV a Buy or a Sell? The Bull and Bear Case (2026)",
+      "editor": "Walnut Invest",
+      "tipo": "Foros y redes",
+      "fecha": "2026",
+      "url": "https://walnutinvest.com/stocks/fisv/is-it-a-buy-or-sell"
+    },
+    {
+      "id": 63,
+      "titulo": "Fiserv stock falls 8% after surprise CEO exit",
+      "editor": "TIKR",
+      "tipo": "Foros y redes",
+      "fecha": "2026-06",
+      "url": "https://www.tikr.com/blog/fiserv-stock-falls-8-after-surprise-ceo-exit-what-a-70-street-target-means-for-investors"
+    }
+  ],
+  "calc": {
+    "version": 4,
+    "etiquetas": {
+      "margen_bruto": "M. bruto",
+      "margen_bruto_largo": "Margen bruto",
+      "dias_base": "sobre el coste de ventas"
+    },
+    "recomendacion": {
+      "recomendacion": "Mantener",
+      "regla": "Mantener",
+      "regla_absoluta": "Comprar",
+      "regla_relativa": "Comprar",
+      "coincide": true,
+      "conviccion": "Media",
+      "conviccion_sugerida": "Media",
+      "conviccion_razones": [
+        "Mantener con las dos reglas de acuerdo y lejos de los umbrales"
+      ],
+      "reglas_discrepan": false,
+      "relativo": {
+        "prima_implicita_pct": 4.2,
+        "wacc": 7.72,
+        "ke": 11.55,
+        "dcf": 140.67,
+        "dcf_min": 124.1,
+        "dcf_max": 160.77,
+        "valor_objetivo": 115.82,
+        "alcista": 172.18,
+        "bajista": 81.94,
+        "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+        "fecha": "2026-10",
+        "potencial_pct": 148.2,
+        "rentabilidad_total_pct": 148.2,
+        "asimetria": null
+      },
+      "objetivo_mercado_txt": " · con la prima implícita del mercado: 115,82 (+148,2 %)",
+      "objetivo_mercado_corto": " · mercado 115,82",
+      "rentabilidad_mercado_corto": " · mercado +148,2 %",
+      "potencial_pct": 115.8,
+      "dividendo_pct": 0,
+      "rentabilidad_total_pct": 115.8,
+      "alcista_pct": 211.8,
+      "bajista_pct": 47.8,
+      "asimetria": null,
+      "comprar_por_debajo": 42.8,
+      "vender_por_encima": 54.69,
+      "tabla": [
+        {
+          "concepto": "Objetivo a 12 meses (nuestro PER × nuestro BPA 2028e, ponderado 30/50/20)",
+          "valor": "49,22 USD"
+        },
+        {
+          "concepto": "Bajista / base / alcista a 12 meses",
+          "valor": "5,4x × 6,55 = 35,37 · 6,3x × 7,79 = 49,08 · 8,2x × 8,58 = 70,36"
+        },
+        {
+          "concepto": "Rentabilidad a 12 meses: ponderada / del base (con dividendo)",
+          "valor": "5,5 % / 5,2 %"
+        },
+        {
+          "concepto": "Regla de múltiplos aplicada",
+          "valor": "v2: base = mín(actual, mediana 5 a) con la historia al cierre; bajista mín. 5 a o base × 0,85; alcista techo base × 1,30 (selector de método: desrateada: la mediana adelantada (25,7x) es 4,1 veces el PER de hoy (6,3x); la historia es de otro régimen y decide la v2)"
+        },
+        {
+          "concepto": "Objetivo medio de los analistas (solo contraste)",
+          "valor": "59,12 (nuestro base -17,0 %)"
+        },
+        {
+          "concepto": "Valor intrínseco (síntesis ponderada, largo plazo)",
+          "valor": "100,68 USD"
+        },
+        {
+          "concepto": "Potencial sobre el precio actual",
+          "valor": "115,8 %"
+        },
+        {
+          "concepto": "Rentabilidad por dividendo ordinario",
+          "valor": "0,0 %"
+        },
+        {
+          "concepto": "Rentabilidad total esperada a 12 meses",
+          "valor": "115,8 %"
+        },
+        {
+          "concepto": "Escenario alcista / bajista",
+          "valor": "211,8 % / 47,8 %"
+        },
+        {
+          "concepto": "Asimetría (ganancia alcista / pérdida bajista)",
+          "valor": "n.d."
+        },
+        {
+          "concepto": "Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado",
+          "valor": "12,9 % frente a 8,4 % y 7,7 %"
+        },
+        {
+          "concepto": "Valor objetivo con la prima implícita del mercado (4,2 %, WACC 7,7 %)",
+          "valor": "115,82 USD"
+        },
+        {
+          "concepto": "Rentabilidad total esperada con la prima del mercado",
+          "valor": "148,2 %"
+        },
+        {
+          "concepto": "Asimetría con la prima del mercado",
+          "valor": "n.d."
+        },
+        {
+          "concepto": "Regla absoluta (frente a su coste de capital)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "Regla relativa (frente a lo que pide el mercado)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "¿La calidad de la empresa sostiene el crecimiento previsto?",
+          "valor": "En parte (2,0 % anual proyectado; sin inversión neta)"
+        },
+        {
+          "concepto": "Señal del valor intrínseco (regla del DCF, referencia)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "Recomendación según la regla a 12 meses (Comprar: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender: ponderada ≤ -10 %)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Convicción según los criterios (Mantener con las dos reglas de acuerdo y lejos de los umbrales)",
+          "valor": "Media"
+        }
+      ],
+      "niveles": [
+        {
+          "accion": "Comprar",
+          "condicion": "Por debajo de 42,80 (ponderada a 12 meses ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco)"
+        },
+        {
+          "accion": "Mantener",
+          "condicion": "Entre 42,80 y 54,69"
+        },
+        {
+          "accion": "Vender o reducir",
+          "condicion": "Por encima de 54,69 (ponderada a 12 meses ≤ -10 %)"
+        }
+      ],
+      "precio_txt": "",
+      "valor_objetivo_txt": "",
+      "regla_valor_intrinseco": "Comprar",
+      "objetivo_12m": {
+        "completo": true,
+        "filas": [
+          {
+            "escenario": "Bajista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 6.55,
+            "multiplo": 5.4,
+            "multiplo_informe": null,
+            "origen": "base × 0.85 (el mínimo de 5 años no queda por debajo del base)",
+            "precio": 35.37,
+            "rentabilidad_pct": -24.2,
+            "justificacion": "Financial Solutions sigue perdiendo bancos y precio, Clover se frena a un dígito y la revisión de cartera no vende nada: ingresos de 20.351 M en 2028e (plano desde 2026e) y margen EBITDA del 37,0 %. EBIT ajustado de 5.902 M, intereses de 1.500 M y tipo del 21,5 %."
+          },
+          {
+            "escenario": "Base",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 7.79,
+            "multiplo": 6.3,
+            "multiplo_informe": null,
+            "origen": "PER actual",
+            "precio": 49.08,
+            "rentabilidad_pct": 5.2,
+            "justificacion": "Recuperación lenta: +1,5 % en 2027e y +2,5 % en 2028e (por debajo del 4-6 % que promete la empresa) y margen del 39,5 %. EBIT ajustado de 6.737 M − 1.500 M de intereses, tipo del 21,5 % y 527,6 M de acciones sin recompras nuevas."
+          },
+          {
+            "escenario": "Alcista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 8.58,
+            "multiplo": 8.2,
+            "multiplo_informe": null,
+            "origen": "techo de base × 1.3",
+            "precio": 70.36,
+            "rentabilidad_pct": 50.8,
+            "justificacion": "Se cumple a medias el plan del día del inversor: +3 % y +4 % en 2027-28e con las implantaciones retrasadas en marcha y Clover al +12-15 %, margen del 41 %. Aun así queda por debajo de la senda de la empresa (más de 12 USD en 2029)."
+          }
+        ],
+        "regla": {
+          "version": "v2",
+          "bajista": 5.4,
+          "base": 6.3,
+          "alcista": 8.2,
+          "bajista_origen": "base × 0.85 (el mínimo de 5 años no queda por debajo del base)",
+          "base_origen": "PER actual",
+          "alcista_origen": "techo de base × 1.3"
+        },
+        "version": "v2",
+        "probabilidades": [
+          30,
+          50,
+          20
+        ],
+        "objetivo_ponderado": 49.22,
+        "objetivo_simple": 51.6,
+        "objetivo_base": 49.08,
+        "rentabilidad_ponderada_pct": 5.5,
+        "rentabilidad_simple_pct": 10.6,
+        "rentabilidad_base_pct": 5.2,
+        "asimetria": 2.1,
+        "senal": "Mantener",
+        "senal_sin_confirmar": null,
+        "confianza_baja": true,
+        "comprar_por_debajo": 42.8,
+        "vender_por_encima": 54.69,
+        "consenso_objetivo": 59.12,
+        "diferencia_consenso_pct": -17,
+        "selector": {
+          "regla": "v2",
+          "motivo": "desrateada: la mediana adelantada (25.7x) es 4.1 veces el PER de hoy (6.3x); la historia es de otro régimen y decide la v2",
+          "v3_sin_selector": {
+            "version": "v3",
+            "rentabilidad_ponderada_pct": 15.8,
+            "rentabilidad_base_pct": 15.2,
+            "senal": "Mantener",
+            "objetivo_ponderado": 54.01
+          },
+          "v2": {
+            "version": "v2",
+            "rentabilidad_ponderada_pct": 5.5,
+            "rentabilidad_base_pct": 5.2,
+            "senal": "Mantener",
+            "objetivo_ponderado": 49.22
+          }
+        },
+        "v2": {
+          "rentabilidad_ponderada_pct": 5.5,
+          "rentabilidad_base_pct": 5.2,
+          "senal": "Mantener",
+          "multiplos": [
+            5.4,
+            6.3,
+            8.2
+          ]
+        },
+        "v3_tope_anterior": {
+          "tope": 1.3,
+          "rentabilidad_ponderada_pct": 37.1,
+          "senal": "Mantener"
+        },
+        "v3_sin_selector": {
+          "version": "v3",
+          "rentabilidad_ponderada_pct": 15.8,
+          "rentabilidad_base_pct": 15.2,
+          "senal": "Mantener",
+          "objetivo_ponderado": 54.01
+        },
+        "comparacion_txt": "Para comparar, con la regla v2 (historia al cierre, mismo precio): 5,4x / 6,3x / 8,2x, 5,5 % Mantener; con el tope anterior del base (×1,3, 14-oct mediodía): 37,1 % Mantener; con la v3 sin el selector (tope ×1,1): 15,8 % Mantener. Decide la v2, elegida por el selector de método (desrateada: la mediana adelantada (25,7x) es 4,1 veces el PER de hoy (6,3x); la historia es de otro régimen y decide la v2; METODO-VIGENTE.md)."
+      },
+      "rentabilidad_12m_pct": 5.5,
+      "rentabilidad_12m_txt": "+5,5 % (base +5,2 %)",
+      "objetivo_12m_txt": "49,22 USD"
+    },
+    "mercado": {
+      "precio": 46.66,
+      "acciones": 527.6,
+      "capitalizacion": 24618,
+      "deuda_neta": 27259,
+      "deuda_neta_ajustada": null,
+      "asimilables_deuda": null,
+      "ajustes_puente": 0,
+      "valor_empresa": 51877,
+      "fecha_puente": "2026-06-30"
+    },
+    "clave": {
+      "capitalizacion": 24618,
+      "valor_empresa": 51877,
+      "deuda_neta": 27259,
+      "ev_ventas_ltm": 2.49,
+      "ev_ebitda_ltm": 5.7,
+      "ev_ebitda_ntm": null,
+      "ev_ebit_ltm": 8.9,
+      "per_ltm": 8.9,
+      "per_ntm": 5.4,
+      "fcf_yield_pct": 18,
+      "dividendo_pct": 0,
+      "dn_ebitda": 3,
+      "roic_pct": 8.9,
+      "margen_ebitda_pct": 43.2,
+      "deuda_neta_ajustada": 27259,
+      "dn_ebitda_ajustada": 3,
+      "crecimiento_tcac_pct": 6.9,
+      "ingresos_ntm": 20686,
+      "ebitda_ntm": null,
+      "bpa_ntm": 8.64,
+      "ebitda_ltm": 9025,
+      "ingresos_ltm": 20870,
+      "ev_rab": null
+    },
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 16226,
+        "crecimiento_pct": null,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 5536,
+        "margen_ebitda_pct": 34.1,
+        "ebit": 2288,
+        "margen_ebit_pct": 14.1,
+        "beneficio_neto": 1334,
+        "margen_neto_pct": 8.2,
+        "bpa": 1.99,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 0
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 17737,
+        "crecimiento_pct": 9.3,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 6952,
+        "margen_ebitda_pct": 39.2,
+        "ebit": 3740,
+        "margen_ebit_pct": 21.1,
+        "beneficio_neto": 2530,
+        "margen_neto_pct": 14.3,
+        "bpa": 3.9,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 0
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 19093,
+        "crecimiento_pct": 7.6,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 8176,
+        "margen_ebitda_pct": 42.8,
+        "ebit": 5014,
+        "margen_ebit_pct": 26.3,
+        "beneficio_neto": 3068,
+        "margen_neto_pct": 16.1,
+        "bpa": 4.98,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 0
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 20456,
+        "crecimiento_pct": 7.1,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 9017,
+        "margen_ebitda_pct": 44.1,
+        "ebit": 5879,
+        "margen_ebit_pct": 28.7,
+        "beneficio_neto": 3131,
+        "margen_neto_pct": 15.3,
+        "bpa": 5.38,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 0
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 21193,
+        "crecimiento_pct": 3.6,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 9025,
+        "margen_ebitda_pct": 42.6,
+        "ebit": 5818,
+        "margen_ebit_pct": 27.5,
+        "beneficio_neto": 3480,
+        "margen_neto_pct": 16.4,
+        "bpa": 6.34,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 19,
+        "payout_pct": 0
+      }
+    ],
+    "tcac": {
+      "periodo": "2021-2025",
+      "ingresos_pct": 6.9,
+      "ebitda_pct": 13,
+      "bpa_pct": 33.6
+    },
+    "cuenta_y_prevision": [
+      {
+        "periodo": "2021",
+        "ingresos": 16226,
+        "ebitda": 5536
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 17737,
+        "ebitda": 6952
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 19093,
+        "ebitda": 8176
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 20456,
+        "ebitda": 9017
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 21193,
+        "ebitda": 9025
+      },
+      {
+        "periodo": "2026e",
+        "ingresos": 20557,
+        "ebitda": 8017
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 20866,
+        "ebitda": 8138
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 21387,
+        "ebitda": 8448
+      },
+      {
+        "periodo": "2029e",
+        "ingresos": 22029,
+        "ebitda": 8812
+      },
+      {
+        "periodo": "2030e",
+        "ingresos": 22690,
+        "ebitda": 9076
+      },
+      {
+        "periodo": "2031e",
+        "ingresos": 23257,
+        "ebitda": 9303
+      },
+      {
+        "periodo": "2032e",
+        "ingresos": 23838,
+        "ebitda": 9535
+      },
+      {
+        "periodo": "2033e",
+        "ingresos": 24434,
+        "ebitda": 9774
+      },
+      {
+        "periodo": "2034e",
+        "ingresos": 25045,
+        "ebitda": 10018
+      },
+      {
+        "periodo": "2035e",
+        "ingresos": 25671,
+        "ebitda": 10269
+      }
+    ],
+    "segmentos_ultimo": [
+      {
+        "nombre": "Merchant Solutions (comercios)",
+        "ingresos": 10145,
+        "peso_pct": 47.9,
+        "crecimiento_pct": null,
+        "margen_pct": 34.5,
+        "tipo_margen": "EBIT"
+      },
+      {
+        "nombre": "Financial Solutions (bancos)",
+        "ingresos": 9713,
+        "peso_pct": 45.8,
+        "crecimiento_pct": null,
+        "margen_pct": 45.3,
+        "tipo_margen": "EBIT"
+      },
+      {
+        "nombre": "Corporativo y otros",
+        "ingresos": 1335,
+        "peso_pct": 6.3,
+        "crecimiento_pct": null,
+        "margen_pct": null,
+        "tipo_margen": null
+      }
+    ],
+    "segmentos_tabla": {
+      "periodos": [
+        "",
+        "",
+        "",
+        "",
+        "2025"
+      ],
+      "filas": [
+        {
+          "nombre": "Merchant Solutions (comercios)",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": null,
+          "v4": 10145
+        },
+        {
+          "nombre": "Financial Solutions (bancos)",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": null,
+          "v4": 9713
+        },
+        {
+          "nombre": "Corporativo y otros",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": null,
+          "v4": 1335
+        }
+      ]
+    },
+    "segmentos_periodo": "2025",
+    "balance": [
+      {
+        "periodo": "2021",
+        "activo_total": null,
+        "intangibles": 0,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 835,
+        "deuda_financiera": 20729,
+        "arrendamientos": 0,
+        "deuda_neta": 19894,
+        "patrimonio": null,
+        "minoritarios": null,
+        "dn_ebitda": 3.59,
+        "dn_patrimonio_pct": null,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 19894,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2022",
+        "activo_total": null,
+        "intangibles": 0,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 902,
+        "deuda_financiera": 20950,
+        "arrendamientos": 0,
+        "deuda_neta": 20048,
+        "patrimonio": null,
+        "minoritarios": null,
+        "dn_ebitda": 2.88,
+        "dn_patrimonio_pct": null,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 5.1,
+        "capital_invertido": 20048,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 90890,
+        "intangibles": 37205,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 1204,
+        "deuda_financiera": 23118,
+        "arrendamientos": 0,
+        "deuda_neta": 21914,
+        "patrimonio": 30669,
+        "minoritarios": null,
+        "dn_ebitda": 2.68,
+        "dn_patrimonio_pct": 71,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 5.1,
+        "capital_invertido": 52583,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 77176,
+        "intangibles": 36584,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 1236,
+        "deuda_financiera": 24840,
+        "arrendamientos": 0,
+        "deuda_neta": 23604,
+        "patrimonio": 27686,
+        "minoritarios": null,
+        "dn_ebitda": 2.62,
+        "dn_patrimonio_pct": 85,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 4.9,
+        "capital_invertido": 51290,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 80133,
+        "intangibles": 37703,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 798,
+        "deuda_financiera": 28997,
+        "arrendamientos": 0,
+        "deuda_neta": 28199,
+        "patrimonio": 25809,
+        "minoritarios": null,
+        "dn_ebitda": 3.12,
+        "dn_patrimonio_pct": 109,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 3.9,
+        "capital_invertido": 54008,
+        "liquidez_corriente": null
+      }
+    ],
+    "perimetro_nota": null,
+    "flujos": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 4034,
+        "capex": 1160,
+        "pagos_arrendamientos": 0,
+        "fcf": 2874,
+        "beneficio_neto": 1334,
+        "conversion_pct": 215,
+        "capex_ventas_pct": 7.1,
+        "capex_amortizacion": 0.36,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 0,
+        "recompras": null,
+        "emision_acciones": null,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 670.4,
+        "fcf_por_accion": 4.29
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 4618,
+        "capex": 1479,
+        "pagos_arrendamientos": 0,
+        "fcf": 3139,
+        "beneficio_neto": 2530,
+        "conversion_pct": 124,
+        "capex_ventas_pct": 8.3,
+        "capex_amortizacion": 0.46,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 0,
+        "recompras": null,
+        "emision_acciones": null,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 648.7,
+        "fcf_por_accion": 4.84
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 5162,
+        "capex": 1388,
+        "pagos_arrendamientos": 0,
+        "fcf": 3774,
+        "beneficio_neto": 3068,
+        "conversion_pct": 123,
+        "capex_ventas_pct": 7.3,
+        "capex_amortizacion": 0.44,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 0,
+        "recompras": null,
+        "emision_acciones": null,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 616.1,
+        "fcf_por_accion": 6.13
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 6631,
+        "capex": 1569,
+        "pagos_arrendamientos": 0,
+        "fcf": 5062,
+        "beneficio_neto": 3131,
+        "conversion_pct": 162,
+        "capex_ventas_pct": 7.7,
+        "capex_amortizacion": 0.5,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 0,
+        "recompras": null,
+        "emision_acciones": null,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 582,
+        "fcf_por_accion": 8.7
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 6060,
+        "capex": 1620,
+        "pagos_arrendamientos": 0,
+        "fcf": 4440,
+        "beneficio_neto": 3480,
+        "conversion_pct": 128,
+        "capex_ventas_pct": 7.6,
+        "capex_amortizacion": 0.51,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 0,
+        "recompras": 5600,
+        "emision_acciones": null,
+        "retorno_accionista": 5600,
+        "payout_caja_pct": 161,
+        "acciones": 548.9,
+        "fcf_por_accion": 8.09
+      }
+    ],
+    "flujos_acumulado": {
+      "periodo": "2021-2025",
+      "fcf": 19289,
+      "adquisiciones": 0,
+      "dividendos": 0,
+      "recompras": 5600,
+      "conversion_pct": 142
+    },
+    "rentabilidad": [
+      {
+        "periodo": "2021",
+        "nopat": 1716,
+        "capital_invertido": 19894,
+        "roic_pct": 8.6,
+        "roic_nota": null,
+        "roe_pct": null,
+        "roa_pct": null,
+        "margen_neto_pct": 8.2,
+        "rotacion": null,
+        "apalancamiento": null
+      },
+      {
+        "periodo": "2022",
+        "nopat": 2805,
+        "capital_invertido": 19971,
+        "roic_pct": 14,
+        "roic_nota": null,
+        "roe_pct": null,
+        "roa_pct": null,
+        "margen_neto_pct": 14.3,
+        "rotacion": null,
+        "apalancamiento": null
+      },
+      {
+        "periodo": "2023",
+        "nopat": 3761,
+        "capital_invertido": 36316,
+        "roic_pct": 10.4,
+        "roic_nota": null,
+        "roe_pct": 20,
+        "roa_pct": 6.8,
+        "margen_neto_pct": 16.1,
+        "rotacion": 0.42,
+        "apalancamiento": 2.96
+      },
+      {
+        "periodo": "2024",
+        "nopat": 4409,
+        "capital_invertido": 51937,
+        "roic_pct": 8.5,
+        "roic_nota": null,
+        "roe_pct": 10.7,
+        "roa_pct": 3.7,
+        "margen_neto_pct": 15.3,
+        "rotacion": 0.24,
+        "apalancamiento": 2.88
+      },
+      {
+        "periodo": "2025",
+        "nopat": 4711,
+        "capital_invertido": 52649,
+        "roic_pct": 8.9,
+        "roic_nota": null,
+        "roe_pct": 13,
+        "roa_pct": 4.4,
+        "margen_neto_pct": 16.4,
+        "rotacion": 0.27,
+        "apalancamiento": 2.94
+      }
+    ],
+    "roic_incremental_pct": 9.1,
+    "roic_frente_wacc": [
+      {
+        "periodo": "2021",
+        "roic_pct": 8.6,
+        "roe_pct": null,
+        "wacc_pct": 8.4
+      },
+      {
+        "periodo": "2022",
+        "roic_pct": 14,
+        "roe_pct": null,
+        "wacc_pct": 8.4
+      },
+      {
+        "periodo": "2023",
+        "roic_pct": 10.4,
+        "roe_pct": 20,
+        "wacc_pct": 8.4
+      },
+      {
+        "periodo": "2024",
+        "roic_pct": 8.5,
+        "roe_pct": 10.7,
+        "wacc_pct": 8.4
+      },
+      {
+        "periodo": "2025",
+        "roic_pct": 8.9,
+        "roe_pct": 13,
+        "wacc_pct": 8.4
+      }
+    ],
+    "calidad": {
+      "periodo": "2025",
+      "altman_z": 0.78,
+      "altman_zona": "Zona de riesgo",
+      "piotroski_f": 5,
+      "piotroski_detalle": [
+        {
+          "criterio": "Beneficio neto positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "ROA mejora",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo > beneficio neto",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Baja el endeudamiento (deuda / activo)",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Mejora la liquidez corriente",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "No emite acciones",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora el margen bruto",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "Mejora la rotación del activo",
+          "resultado": "No"
+        }
+      ],
+      "tabla": [
+        {
+          "indicador": "Altman Z",
+          "valor": "0,78",
+          "lectura": "Zona de riesgo (> 2,99 seguro; < 1,81 riesgo). No aplica a bancos ni aseguradoras, y subestima la solvencia de empresas con grandes anticipos de clientes o prefinanciación pública (contratistas, construcción), que inflan el pasivo."
+        },
+        {
+          "indicador": "Piotroski F",
+          "valor": "5 / 7",
+          "lectura": "Intermedio (4-6)."
+        },
+        {
+          "indicador": "Flujo operativo / beneficio neto (acumulado)",
+          "valor": "1,96x",
+          "lectura": "El beneficio se cobra."
+        }
+      ]
+    },
+    "dcf": {
+      "proyeccion": [
+        {
+          "periodo": "2026e",
+          "ingresos": 20557,
+          "crecimiento_pct": -3,
+          "ebitda": 8017,
+          "margen_ebitda_pct": 39,
+          "amortizacion": 1788,
+          "ebit": 6229,
+          "impuestos": 1339,
+          "capex": 1747,
+          "variacion_circulante": 617,
+          "fcff": 4314,
+          "fraccion": 0.21,
+          "factor": 0.991,
+          "vp": 913
+        },
+        {
+          "periodo": "2027e",
+          "ingresos": 20866,
+          "crecimiento_pct": 1.5,
+          "ebitda": 8138,
+          "margen_ebitda_pct": 39,
+          "amortizacion": 1669,
+          "ebit": 6468,
+          "impuestos": 1391,
+          "capex": 1669,
+          "variacion_circulante": 9,
+          "fcff": 5068,
+          "fraccion": 1,
+          "factor": 0.944,
+          "vp": 4781
+        },
+        {
+          "periodo": "2028e",
+          "ingresos": 21387,
+          "crecimiento_pct": 2.5,
+          "ebitda": 8448,
+          "margen_ebitda_pct": 39.5,
+          "amortizacion": 1711,
+          "ebit": 6737,
+          "impuestos": 1448,
+          "capex": 1711,
+          "variacion_circulante": 16,
+          "fcff": 5273,
+          "fraccion": 1,
+          "factor": 0.871,
+          "vp": 4590
+        },
+        {
+          "periodo": "2029e",
+          "ingresos": 22029,
+          "crecimiento_pct": 3,
+          "ebitda": 8812,
+          "margen_ebitda_pct": 40,
+          "amortizacion": 1762,
+          "ebit": 7049,
+          "impuestos": 1516,
+          "capex": 1762,
+          "variacion_circulante": 19,
+          "fcff": 5514,
+          "fraccion": 1,
+          "factor": 0.803,
+          "vp": 4425
+        },
+        {
+          "periodo": "2030e",
+          "ingresos": 22690,
+          "crecimiento_pct": 3,
+          "ebitda": 9076,
+          "margen_ebitda_pct": 40,
+          "amortizacion": 1815,
+          "ebit": 7261,
+          "impuestos": 1561,
+          "capex": 1815,
+          "variacion_circulante": 20,
+          "fcff": 5680,
+          "fraccion": 1,
+          "factor": 0.741,
+          "vp": 4204
+        },
+        {
+          "periodo": "2031e",
+          "ingresos": 23257,
+          "crecimiento_pct": 2.5,
+          "ebitda": 9303,
+          "margen_ebitda_pct": 40,
+          "amortizacion": 1861,
+          "ebit": 7442,
+          "impuestos": 1600,
+          "capex": 1861,
+          "variacion_circulante": 17,
+          "fcff": 5825,
+          "fraccion": 1,
+          "factor": 0.683,
+          "vp": 3977
+        },
+        {
+          "periodo": "2032e",
+          "ingresos": 23838,
+          "crecimiento_pct": 2.5,
+          "ebitda": 9535,
+          "margen_ebitda_pct": 40,
+          "amortizacion": 1907,
+          "ebit": 7628,
+          "impuestos": 1640,
+          "capex": 1907,
+          "variacion_circulante": 17,
+          "fcff": 5971,
+          "fraccion": 1,
+          "factor": 0.63,
+          "vp": 3762
+        },
+        {
+          "periodo": "2033e",
+          "ingresos": 24434,
+          "crecimiento_pct": 2.5,
+          "ebitda": 9774,
+          "margen_ebitda_pct": 40,
+          "amortizacion": 1955,
+          "ebit": 7819,
+          "impuestos": 1681,
+          "capex": 1955,
+          "variacion_circulante": 18,
+          "fcff": 6120,
+          "fraccion": 1,
+          "factor": 0.581,
+          "vp": 3554
+        },
+        {
+          "periodo": "2034e",
+          "ingresos": 25045,
+          "crecimiento_pct": 2.5,
+          "ebitda": 10018,
+          "margen_ebitda_pct": 40,
+          "amortizacion": 2004,
+          "ebit": 8014,
+          "impuestos": 1723,
+          "capex": 2004,
+          "variacion_circulante": 18,
+          "fcff": 6273,
+          "fraccion": 1,
+          "factor": 0.536,
+          "vp": 3360
+        },
+        {
+          "periodo": "2035e",
+          "ingresos": 25671,
+          "crecimiento_pct": 2.5,
+          "ebitda": 10269,
+          "margen_ebitda_pct": 40,
+          "amortizacion": 2054,
+          "ebit": 8215,
+          "impuestos": 1766,
+          "capex": 2054,
+          "variacion_circulante": 19,
+          "fcff": 6430,
+          "fraccion": 1,
+          "factor": 0.494,
+          "vp": 3177
+        }
+      ],
+      "etapa2": null,
+      "suma_vp": 36743,
+      "valor_terminal": 111338,
+      "vp_terminal": 52870,
+      "valor_empresa": 89613,
+      "peso_terminal_pct": 59,
+      "valor_acciones": 62354,
+      "valor_accion": 118.18,
+      "vt_gordon": 111338,
+      "vt_multiplo": 82148,
+      "multiplo_implicito": 10.8,
+      "g_implicito_pct": 0.55,
+      "metodo_terminal": "gordon",
+      "terminal_tabla": [
+        {
+          "concepto": "Método principal",
+          "valor": "Crecimiento a perpetuidad"
+        },
+        {
+          "concepto": "Crecimiento a perpetuidad",
+          "valor": "2,5 %"
+        },
+        {
+          "concepto": "Múltiplo EV/EBITDA de salida",
+          "valor": "8,0x"
+        },
+        {
+          "concepto": "Valor terminal (Gordon)",
+          "valor": "111.338"
+        },
+        {
+          "concepto": "Valor terminal (múltiplo)",
+          "valor": "82.148"
+        },
+        {
+          "concepto": "Múltiplo de salida implícito en Gordon",
+          "valor": "10,8x"
+        },
+        {
+          "concepto": "Crecimiento implícito en el múltiplo",
+          "valor": "0,55 %"
+        },
+        {
+          "concepto": "Peso del valor terminal en el valor empresa",
+          "valor": "59 %"
+        }
+      ],
+      "puente": [
+        {
+          "concepto": "Valor actual de los flujos proyectados",
+          "valor": "36.743"
+        },
+        {
+          "concepto": "Valor actual del valor terminal",
+          "valor": "52.870"
+        },
+        {
+          "concepto": "Valor empresa",
+          "valor": "89.613"
+        },
+        {
+          "concepto": "− Deuda financiera neta (con arrendamientos)",
+          "valor": "-27.259"
+        },
+        {
+          "concepto": "− Minoritarios, pensiones y otros; + asociadas",
+          "valor": "0"
+        },
+        {
+          "concepto": "Valor de los fondos propios",
+          "valor": "62.354"
+        },
+        {
+          "concepto": "Acciones diluidas (millones)",
+          "valor": "527,6"
+        },
+        {
+          "concepto": "Valor por acción",
+          "valor": "118,18"
+        }
+      ],
+      "composicion": [
+        {
+          "parte": "Flujos proyectados",
+          "valor": 36743
+        },
+        {
+          "parte": "Valor terminal",
+          "valor": 52870
+        }
+      ],
+      "wacc": 8.42,
+      "ke": 13.04,
+      "kd_despues": 4.32,
+      "wacc_tabla": [
+        {
+          "concepto": "Tasa libre de riesgo",
+          "valor": "5,22 %"
+        },
+        {
+          "concepto": "Beta",
+          "valor": "1,15"
+        },
+        {
+          "concepto": "Prima de riesgo de mercado",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Prima adicional (país, tamaño, específica)",
+          "valor": "1,50 %"
+        },
+        {
+          "concepto": "Coste de los fondos propios",
+          "valor": "13,04 %"
+        },
+        {
+          "concepto": "Coste de la deuda antes de impuestos",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Tipo impositivo",
+          "valor": "21,50 %"
+        },
+        {
+          "concepto": "Coste de la deuda después de impuestos",
+          "valor": "4,32 %"
+        },
+        {
+          "concepto": "Peso de la deuda (D / (D + E))",
+          "valor": "53,00 %"
+        },
+        {
+          "concepto": "WACC",
+          "valor": "8,42 %"
+        },
+        {
+          "concepto": "Prima de riesgo implícita del mercado (regla relativa)",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "WACC con la prima implícita del mercado",
+          "valor": "7,72 %"
+        }
+      ],
+      "potencial_pct": 153.3,
+      "sensibilidad": {
+        "eje_columnas": "Crecimiento a perpetuidad",
+        "columnas": [
+          "1,5 %",
+          "2,0 %",
+          "2,5 %",
+          "3,0 %",
+          "3,5 %"
+        ],
+        "filas": [
+          {
+            "wacc": "7,4 %",
+            "v0": 128.88,
+            "v1": 139.43,
+            "v2": 152.13,
+            "v3": 167.7,
+            "v4": 187.24
+          },
+          {
+            "wacc": "7,9 %",
+            "v0": 114.85,
+            "v1": 123.43,
+            "v2": 133.58,
+            "v3": 145.81,
+            "v4": 160.79
+          },
+          {
+            "wacc": "8,4 %",
+            "v0": 102.87,
+            "v1": 109.93,
+            "v2": 118.18,
+            "v3": 127.96,
+            "v4": 139.73
+          },
+          {
+            "wacc": "8,9 %",
+            "v0": 92.51,
+            "v1": 98.4,
+            "v2": 105.2,
+            "v3": 113.15,
+            "v4": 122.56
+          },
+          {
+            "wacc": "9,4 %",
+            "v0": 83.48,
+            "v1": 88.43,
+            "v2": 94.09,
+            "v3": 100.64,
+            "v4": 108.3
+          }
+        ]
+      },
+      "sensibilidad2": {
+        "columnas": [
+          "-2 pp",
+          "-1 pp",
+          "0 pp",
+          "+1 pp",
+          "+2 pp"
+        ],
+        "filas": [
+          {
+            "margen": "-2 pp",
+            "v0": 87.18,
+            "v1": 97.04,
+            "v2": 107.62,
+            "v3": 118.96,
+            "v4": 131.11
+          },
+          {
+            "margen": "-1 pp",
+            "v0": 91.77,
+            "v1": 101.97,
+            "v2": 112.9,
+            "v3": 124.63,
+            "v4": 137.19
+          },
+          {
+            "margen": "0 pp",
+            "v0": 96.36,
+            "v1": 106.89,
+            "v2": 118.18,
+            "v3": 130.3,
+            "v4": 143.28
+          },
+          {
+            "margen": "+1 pp",
+            "v0": 100.95,
+            "v1": 111.81,
+            "v2": 123.47,
+            "v3": 135.96,
+            "v4": 149.36
+          },
+          {
+            "margen": "+2 pp",
+            "v0": 105.53,
+            "v1": 116.74,
+            "v2": 128.75,
+            "v3": 141.63,
+            "v4": 155.44
+          }
+        ]
+      },
+      "rango_min": 98.4,
+      "rango_max": 145.81,
+      "inverso": {
+        "crecimiento_implicito_pct": -5.5,
+        "crecimiento_base_pct": 2.5,
+        "periodo": "2027e-2035e",
+        "margen_implicito_pct": 26.5,
+        "margen_implicito_texto": null,
+        "margen_base_pct": 40,
+        "rentabilidad_implicita_pct": 12.9
+      },
+      "sostenibilidad": {
+        "veredicto": "En parte",
+        "crecimiento_proyectado_pct": 2,
+        "tasa_reinversion_pct": 1,
+        "crecimiento_financiable_pct": null,
+        "roic_pct": 8.9,
+        "roic_incremental_historico_pct": 9.1,
+        "roic_implicito_pct": null,
+        "cuota_actual_pct": null,
+        "cuota_final_pct": null,
+        "puente": [
+          {
+            "periodo": "2026e",
+            "volumen_pct": -1.5,
+            "precio_pct": 0,
+            "otros_pct": -1.5,
+            "comentario": "Volumen −1,5 % (bajas e implantaciones retrasadas en Financial Solutions, −6/−8 % orgánico) y otros −1,5 % (desinversiones, menos terminales y Argentina) [4, 15].",
+            "suma_pct": -3,
+            "crecimiento_pct": -3
+          },
+          {
+            "periodo": "2027e",
+            "volumen_pct": 2,
+            "precio_pct": 0,
+            "otros_pct": -0.5,
+            "comentario": "Volumen +2 % (implantaciones retrasadas en marcha y Clover al +8-10 %) y otros −0,5 % (efecto completo de las desinversiones).",
+            "suma_pct": 1.5,
+            "crecimiento_pct": 1.5
+          },
+          {
+            "periodo": "2028e",
+            "volumen_pct": 2,
+            "precio_pct": 0.5,
+            "otros_pct": 0,
+            "comentario": "Volumen +2 % y precio +0,5 % (repercusión parcial de la inflación).",
+            "suma_pct": 2.5,
+            "crecimiento_pct": 2.5
+          },
+          {
+            "periodo": "2029e",
+            "volumen_pct": 2.5,
+            "precio_pct": 0.5,
+            "otros_pct": 0,
+            "comentario": "Volumen +2,5 % (pagos con tarjeta que crecen con el consumo) y precio +0,5 %.",
+            "suma_pct": 3,
+            "crecimiento_pct": 3
+          },
+          {
+            "periodo": "2030e",
+            "volumen_pct": 2.5,
+            "precio_pct": 0.5,
+            "otros_pct": 0,
+            "comentario": "Igual que 2029e.",
+            "suma_pct": 3,
+            "crecimiento_pct": 3
+          }
+        ],
+        "texto": "La proyección apenas necesita inversión neta de la amortización (reinversión acumulada de 729 M, el 1 % del NOPAT, con un capex bruto medio del 8,1 % de las ventas). En un negocio de activos ligeros, el crecimiento medio del 1,9 % tiene que salir de subir precios y de ganar volumen sin capital nuevo, y la prueba es el poder de precios y la cuota; en un comprador en serie, la amortización es de intangibles comprados y la prueba es el capex bruto (las compras) frente al crecimiento comprado.",
+        "tabla": [
+          {
+            "concepto": "Crecimiento medio de ingresos proyectado",
+            "valor": "1,9 %"
+          },
+          {
+            "concepto": "Capex bruto medio (incluidas compras si van como inversión)",
+            "valor": "8,1 % de las ventas"
+          },
+          {
+            "concepto": "Reinversión neta acumulada (capex − amortización + circulante)",
+            "valor": "729 M (1 % del NOPAT)"
+          }
+        ]
+      }
+    },
+    "escenarios": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 30,
+        "narrativa": "Financial Solutions sigue perdiendo clientes y precio, Clover se frena y la revisión de cartera no vende nada: crecimiento 2,5 puntos menor cada año (plano de media), margen 2,5 puntos más bajo (37,5 %) y terminal del 1,5 %. Es lo que le pasó a FIS en 2023-24 antes de vender Worldpay.",
+        "crecimiento_medio_pct": 0,
+        "margen_final_pct": 37.5,
+        "wacc_pct": 8.4,
+        "valor": 68.95,
+        "potencial_pct": 47.8
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "narrativa": "Recuperación lenta desde 2027: +1,5-3 % de ingresos, la mitad de lo que promete la empresa, margen EBITDA del 39-40 % y deuda a la baja con la caja libre.",
+        "crecimiento_medio_pct": 2.5,
+        "margen_final_pct": 40,
+        "wacc_pct": 8.4,
+        "valor": 118.18,
+        "potencial_pct": 153.3
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 20,
+        "narrativa": "Las implantaciones retrasadas entran, Clover vuelve al +12-15 % y la venta de las redes de débito reduce deuda: ingresos +3-4,5 % y margen del 41,5 %.",
+        "crecimiento_medio_pct": 4,
+        "margen_final_pct": 41.5,
+        "wacc_pct": 8.4,
+        "valor": 145.48,
+        "potencial_pct": 211.8
+      }
+    ],
+    "valor_ponderado": 108.87,
+    "potencial_ponderado_pct": 133.3,
+    "comparables": {
+      "tabla": [
+        {
+          "nombre": "Fiserv",
+          "ticker": "FISV",
+          "pais": "US",
+          "capitalizacion": 24618,
+          "ev_ventas": 2.49,
+          "ev_ebitda_ltm": 5.7,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 5.4,
+          "crecimiento_pct": -0.7,
+          "margen_ebitda_pct": 43.2,
+          "roic_pct": 8.9,
+          "dn_ebitda": 3,
+          "fcf_yield_pct": 18,
+          "es_objetivo": true
+        },
+        {
+          "nombre": "Global Payments",
+          "ticker": "GPN",
+          "pais": "US",
+          "capitalizacion": 21560,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": 10.1,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 6.4,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "FIS",
+          "ticker": "FIS",
+          "pais": "US",
+          "capitalizacion": 21090,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 6.5,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Jack Henry",
+          "ticker": "JKHY",
+          "pais": "US",
+          "capitalizacion": 10780,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 20.9,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Shift4",
+          "ticker": "FOUR",
+          "pais": "US",
+          "capitalizacion": null,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": 9.45,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 9.5,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "PayPal",
+          "ticker": "PYPL",
+          "pais": "US",
+          "capitalizacion": 56240,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": null,
+          "per_ntm": null,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        }
+      ],
+      "estadisticos": [
+        {
+          "estadistico": "Mediana",
+          "ev_ventas": null,
+          "ev_ebitda_ltm": 9.8,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 8,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null
+        },
+        {
+          "estadistico": "Media",
+          "ev_ventas": null,
+          "ev_ebitda_ltm": 9.8,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 10.8,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null
+        },
+        {
+          "estadistico": "Percentil 25",
+          "ev_ventas": null,
+          "ev_ebitda_ltm": 9.6,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 6.5,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null
+        },
+        {
+          "estadistico": "Percentil 75",
+          "ev_ventas": null,
+          "ev_ebitda_ltm": 9.9,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 12.4,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null
+        }
+      ],
+      "implicito": [
+        {
+          "metodo": "PER próximos 12 meses",
+          "metrica_empresa": 8.64,
+          "multiplo_p25": 6.5,
+          "multiplo_mediana": 8,
+          "multiplo_p75": 12.4,
+          "multiplos": "6,5x / 8,0x / 12,3x",
+          "valor_p25": 55.98,
+          "valor_mediana": 69.16,
+          "valor_p75": 106.76,
+          "potencial_pct": 48.2
+        }
+      ],
+      "regresion": null,
+      "n": 5
+    },
+    "transacciones": null,
+    "suma_partes": null,
+    "multiplos_historicos": [
+      {
+        "metrica": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+        "campo": "ev_ebitda_ltm",
+        "actual": 5.7,
+        "media": 12.7,
+        "minimo": 7.2,
+        "maximo": 16.2,
+        "percentil": 0,
+        "prima_pct": -55,
+        "anios": 5
+      },
+      {
+        "metrica": "PER últimos 12 meses (cierre de cada año)",
+        "campo": "per_ltm",
+        "actual": 8.9,
+        "media": 26.7,
+        "minimo": 10.6,
+        "maximo": 52.2,
+        "percentil": 0,
+        "prima_pct": -67,
+        "anios": 5
+      }
+    ],
+    "multiplos_serie": [
+      {
+        "anio": "2021",
+        "multiplo": 16.2,
+        "media": 12.7
+      },
+      {
+        "anio": "2022",
+        "multiplo": 12.3,
+        "media": 12.7
+      },
+      {
+        "anio": "2023",
+        "multiplo": 12.7,
+        "media": 12.7
+      },
+      {
+        "anio": "2024",
+        "multiplo": 15.9,
+        "media": 12.7
+      },
+      {
+        "anio": "2025",
+        "multiplo": 7.2,
+        "media": 12.7
+      }
+    ],
+    "multiplos_titulo": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+    "consenso_vs_propio": [
+      {
+        "periodo": "2026e",
+        "ingresos_propio": 20557,
+        "ingresos_consenso": 20040,
+        "ingresos_dif_pct": 2.6,
+        "ebitda_propio": 8017,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      },
+      {
+        "periodo": "2027e",
+        "ingresos_propio": 20866,
+        "ingresos_consenso": 20861,
+        "ingresos_dif_pct": 0,
+        "ebitda_propio": 8138,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      },
+      {
+        "periodo": "2028e",
+        "ingresos_propio": 21387,
+        "ingresos_consenso": 21642,
+        "ingresos_dif_pct": -1.2,
+        "ebitda_propio": 8448,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      }
+    ],
+    "gobierno": {
+      "n_consejeros": 3,
+      "independientes_pct": 67,
+      "antiguedad_media": 0,
+      "composicion": [
+        {
+          "tipo": "Independiente",
+          "num": 2
+        },
+        {
+          "tipo": "Ejecutivo",
+          "num": 1
+        }
+      ],
+      "checklist": [
+        {
+          "criterio": "Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)",
+          "resultado": "Cumple",
+          "valor": "67 %"
+        },
+        {
+          "criterio": "Presidencia sin vínculo familiar ni profesional con el accionista de control",
+          "resultado": "Cumple",
+          "valor": "Sin control"
+        },
+        {
+          "criterio": "Presidente no ejecutivo, o consejero coordinador independiente",
+          "resultado": "Cumple",
+          "valor": "No ejecutivo"
+        },
+        {
+          "criterio": "Comisión de auditoría con mayoría de independientes y presidida por uno",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Ningún consejero «otro externo» con más de 12 años",
+          "resultado": "Cumple",
+          "valor": "Ninguno"
+        },
+        {
+          "criterio": "Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses",
+          "resultado": "No cumple",
+          "valor": "2 cambios"
+        },
+        {
+          "criterio": "Peor voto a favor sobre remuneración (3 juntas) ≥ 80 %",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Una acción, un voto, sin blindajes ni límites de voto estatutarios",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Sin operaciones vinculadas relevantes",
+          "resultado": "Cumple",
+          "valor": "No hay"
+        },
+        {
+          "criterio": "Auditor con 10 años o menos en el cargo",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Opinión de auditoría sin salvedades",
+          "resultado": "Cumple",
+          "valor": "Favorable (sin salvedades conocidas)"
+        },
+        {
+          "criterio": "Directivos compradores netos en 12 meses (o sin ventas relevantes)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        }
+      ],
+      "puntuacion": "9 de 13 (3 sin dato)",
+      "puntuacion_pct": 69,
+      "compras_insiders": 0,
+      "ventas_insiders": 0
+    },
+    "competidores_margen": [
+      {
+        "nombre": "Fiserv",
+        "margen_ebit_pct": 27.5
+      },
+      {
+        "nombre": "Global Payments (con Worldpay)",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "FIS",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Jack Henry",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Shift4",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Stripe",
+        "margen_ebit_pct": null
+      }
+    ],
+    "sintesis": {
+      "formato_eje": "#,##0",
+      "rangos": [
+        {
+          "metodo": "Cotización 52 semanas",
+          "etiqueta": "Cotización 52 semanas (43,87 – 128,78)",
+          "min": 43.87,
+          "central": 46.66,
+          "max": 128.78,
+          "gris": true
+        },
+        {
+          "metodo": "Precio objetivo de los analistas",
+          "etiqueta": "Precio objetivo de los analistas (40,00 – 106,00)",
+          "min": 40,
+          "central": 59.12,
+          "max": 106,
+          "gris": true
+        },
+        {
+          "metodo": "Comparables: PER NTM",
+          "etiqueta": "Comparables: PER NTM (55,98 – 106,76)",
+          "min": 55.98,
+          "central": 69.16,
+          "max": 106.76,
+          "gris": false
+        },
+        {
+          "metodo": "DCF (WACC y g ± 0,5)",
+          "etiqueta": "DCF (WACC y g ± 0,5) (98,40 – 145,81)",
+          "min": 98.4,
+          "central": 118.18,
+          "max": 145.81,
+          "gris": false
+        },
+        {
+          "metodo": "Escenarios (bajista – alcista)",
+          "etiqueta": "Escenarios (bajista – alcista) (68,95 – 145,48)",
+          "min": 68.95,
+          "central": 108.87,
+          "max": 145.48,
+          "gris": false
+        },
+        {
+          "metodo": "DCF con la prima del mercado",
+          "etiqueta": "DCF con la prima implícita del mercado (4,2 %)",
+          "min": 124.1,
+          "central": 140.67,
+          "max": 160.77
+        },
+        {
+          "metodo": "Precio actual",
+          "etiqueta": "Precio actual (46,66)",
+          "min": 46.43,
+          "central": 46.66,
+          "max": 46.89,
+          "gris": true
+        }
+      ],
+      "tabla": [
+        {
+          "metodo": "DCF",
+          "valor": 118.18,
+          "peso_pct": 40,
+          "potencial_pct": 153.3
+        },
+        {
+          "metodo": "Comparables (mediana EV/EBITDA y PER)",
+          "valor": 69.16,
+          "peso_pct": 30,
+          "potencial_pct": 48.2
+        },
+        {
+          "metodo": "Escenarios ponderados",
+          "valor": 108.87,
+          "peso_pct": 30,
+          "potencial_pct": 133.3
+        }
+      ],
+      "valor_objetivo": 100.68,
+      "potencial_pct": 115.8
+    },
+    "fuentes": {
+      "n_fuentes": 63,
+      "n_primarias": 14,
+      "por_tipo": [
+        {
+          "tipo": "Primaria",
+          "num": 14
+        },
+        {
+          "tipo": "Datos de mercado",
+          "num": 24
+        },
+        {
+          "tipo": "Prensa",
+          "num": 12
+        },
+        {
+          "tipo": "Analistas",
+          "num": 6
+        },
+        {
+          "tipo": "Foros y redes",
+          "num": 7
+        }
+      ],
+      "n_citadas": 50,
+      "citas_sin_fuente": [],
+      "fuentes_sin_citar": [
+        "8",
+        "10",
+        "18",
+        "19",
+        "22",
+        "24",
+        "27",
+        "35",
+        "38",
+        "47",
+        "50",
+        "53",
+        "56"
+      ]
+    },
+    "controles": [
+      {
+        "control": "DCF inverso calculable",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Puente de ingresos (volumen + precio + otros) = crecimiento del DCF",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "resultado": "OK",
+        "detalle": "Supuesto 3,0 % frente a 0,0 % real: genera una variación de circulante de 617 M en el primer año. Converge de forma gradual."
+      },
+      {
+        "control": "Peso del valor terminal ≤ 80 % del valor empresa",
+        "resultado": "OK",
+        "detalle": "59 %."
+      },
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "resultado": "OK",
+        "detalle": "2,50 %."
+      },
+      {
+        "control": "Probabilidades de los escenarios suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 5 comparables",
+        "resultado": "OK",
+        "detalle": "5 comparables."
+      },
+      {
+        "control": "Pesos de la síntesis suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Crecimiento del BPA base ≤ 25 % anual desde el último real",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Precio del cierre de la fecha de corte (o de las dos sesiones anteriores)",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Recomendación coherente con la regla de decisión",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "La síntesis explica la convicción",
+        "resultado": "OK",
+        "detalle": "La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría."
+      },
+      {
+        "control": "Capitalización calculada ≈ publicada",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 25 fuentes",
+        "resultado": "OK",
+        "detalle": "63 fuentes (14 primarias)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "resultado": "OK",
+        "detalle": "14."
+      },
+      {
+        "control": "Toda cita [n] existe en fuentes",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Fuentes sin citar ≤ 15 %",
+        "resultado": "Explicado",
+        "detalle": "Sin citar: 8, 10, 18, 19, 22, 24, 27, 35, 38, 47, 50, 53, 56. Explicación: Algunas fuentes de mercado se usaron solo para cruzar cifras (Macrotrends, MarketBeat, Investing)."
+      }
+    ],
+    "controles_resumen": "16 de 17 controles correctos y 1 explicados"
+  }
+}

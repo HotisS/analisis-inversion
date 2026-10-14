@@ -1,0 +1,4158 @@
+{
+  "meta": {
+    "fecha_corte": "2026-10-14",
+    "divisa": "CHF",
+    "divisa_cotizacion": "CHF",
+    "tipo_cambio": 1,
+    "unidades": "millones",
+    "cierre_ejercicio_mes": 12,
+    "etiqueta_ejercicio": "fin",
+    "normas_contables": "NIIF",
+    "formato_cuenta": "funcion",
+    "limitaciones": "Análisis hecho desde la nube con la red limitada a la búsqueda web: la web de Roche, la SIX y los proveedores de datos no se pudieron abrir, así que las cifras salen de los extractos de búsqueda de los comunicados de Roche y de Stock Analysis, con la URL como fuente; lo que no cuadraba quedó en null. Línea cotizada: desde el 17-mar-2026 los bonos de disfrute (Genussscheine, ROG) se canjearon 1 por 1 por bonos de participación (Partizipationsscheine, ticker ROP, ISIN CH1499059983) [37]; son el 87 % del capital, cobran el mismo dividendo y no votan. Las 106,7 M de acciones al portador (RO) votan y cotizan aparte, normalmente con prima; el informe aplica el precio del ROP a las 795,62 M de títulos que cuenta Stock Analysis [26]. Precio: 334,30 CHF = capitalización de Stock Analysis ÷ títulos (estimación; el ADR daba ≈336 CHF el 9-oct) [26, 27]. Ingresos = ventas + royalties y otros ingresos de explotación (Stock Analysis); la empresa guía sobre ventas y BPA core, que excluye amortización de intangibles, deterioros y reestructuraciones. Minoritarios del puente a valor de mercado de Chugai con un cambio JPY/CHF estimado (≈190).",
+    "controles_explicados": [
+      {
+        "control": "Objetivo 12 m frente al consenso",
+        "explicacion": "Nuestro base (311,50 CHF) queda un 15,2 % por debajo del objetivo medio (367,20 CHF): el 6 % viene del BPA (22,25 frente a 23,78 CHF en 2028e, por el franco y un crecimiento algo menor) y el resto del múltiplo (14,0x, la mediana de 2022-2025, frente a los ≈15,5x que implica el consenso). Se mantiene."
+      }
+    ],
+    "huecos": [
+      {
+        "seccion": "financieros",
+        "campo": "gastos_generales 2021-2024 y gastos_financieros 2021-2024; BPA y acciones diluidas de 2023",
+        "tipo": "Complemento",
+        "intentos": "1) Finance Reports de Roche: la búsqueda devuelve solo cifras de cabecera; 2) Stock Analysis (SWX:ROP): el extracto da SG&A y gastos por intereses solo de 2025; 3) Stockopedia y Fintel: líneas vacías en el extracto; entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "flujos",
+        "campo": "adquisiciones, desinversiones y pagos de arrendamientos 2021-2025",
+        "tipo": "Complemento",
+        "intentos": "1) Finance Reports (estado de flujos): no accesibles; 2) Stock Analysis cash flow: el extracto no trae esas filas; 3) prensa de cada compra (Telavant, Carmot, Poseida, 89bio): importes en USD y fechas de cierre sin confirmar; entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "flujos",
+        "campo": "dividendos pagados",
+        "tipo": "Complemento",
+        "intentos": "1) estado de flujos: no accesible; 2) Stock Analysis: fila no visible; 3) derivado como DPA del ejercicio anterior × acciones diluidas (sin los dividendos a minoritarios de Chugai)",
+        "decision": "Calculado y marcado como estimación"
+      },
+      {
+        "seccion": "balance",
+        "campo": "vencimientos, rating y vida media de la deuda",
+        "tipo": "Complemento",
+        "intentos": "1) nota de deuda del Finance Report 2025: no accesible; 2) búsqueda de calificación S&P/Moody's: no se hizo por cupo; 3) folletos de bonos: no accesibles; entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "calidad",
+        "campo": "auditor y opinión",
+        "tipo": "Complemento",
+        "intentos": "1) Finance Report 2025: no accesible; 2) búsqueda no hecha por cupo compartido; 3) entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "negocio",
+        "campo": "segmentos 2021-2024 y resultado por segmento",
+        "tipo": "Complemento",
+        "intentos": "1) Finance Reports: solo ventas 2025 de Farma y Diagnóstico en el comunicado; 2) Stock Analysis no desglosa; 3) informes semestrales: sin acceso al texto",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sector",
+        "campo": "tamaño del mercado farmacéutico y de diagnóstico in vitro, serie, TCAC, CR5 y Porter",
+        "tipo": "Núcleo",
+        "intentos": "1) IQVIA Global Use of Medicines y EvaluatePharma: no accesibles; 2) búsqueda de tamaño del diagnóstico in vitro: no hecha por el cupo compartido de búsquedas; 3) informe anual de Roche (estimación propia de mercado): no accesible; entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "competencia",
+        "campo": "cuota de mercado de Roche y márgenes EBIT de los competidores",
+        "tipo": "Núcleo",
+        "intentos": "1) informes anuales de los competidores: no accesibles; 2) Stock Analysis da EBITDA, no EBIT, en el extracto; 3) prensa: sin cifras comparables",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "esg",
+        "campo": "calificaciones ESG y controversias",
+        "tipo": "Complemento",
+        "intentos": "1) MSCI y Sustainalytics: no consultados por cupo; 2) informe de sostenibilidad: no accesible; 3) entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "consejo completo, comisiones, remuneración del consejero delegado y voto en contra",
+        "tipo": "Núcleo",
+        "intentos": "1) Informe de remuneración 2025 y actas de la junta 2026: solo el resumen de votos a favor; 2) Corporate Governance Report: no accesible; 3) prensa suiza: sin desglose; entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido; voto_remuneracion_pct = 90,18 (máximo de remuneración del comité ejecutivo, el más bajo de la junta de 2026)"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "operaciones de directivos (insiders)",
+        "tipo": "Complemento",
+        "intentos": "1) SIX Management Transactions: anónimas y no accesibles; 2) prensa suiza: sin operaciones relevantes publicadas; 3) informe de remuneración: no accesible",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "directivos",
+        "campo": "director financiero y directores de división",
+        "tipo": "Complemento",
+        "intentos": "1) web de Roche (comité ejecutivo): no accesible; 2) búsqueda no hecha por cupo; 3) informes semestrales: sin texto",
+        "decision": "Omitido (no se ponen cargos sin comprobar)"
+      },
+      {
+        "seccion": "bolsa",
+        "campo": "rentabilidades, beta, volatilidad, caída máxima y posición corta",
+        "tipo": "Complemento",
+        "intentos": "1) bolsa.mjs sin red; 2) Yahoo y SIX: WebFetch bloqueado; 3) búsquedas de beta y rentabilidad: sin cifras fiables en el extracto; en Suiza no hay registro público de cortos; entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "multiplos_historicos",
+        "campo": "precio de cierre de 2021 y anteriores",
+        "tipo": "Complemento",
+        "intentos": "1) Digrin: el extracto da diciembre de 2022-2025; 2) CompaniesMarketCap: solo rentabilidades anuales en USD; 3) boerse.de: cotizaciones en EUR",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "transacciones",
+        "campo": "transacciones precedentes con múltiplo",
+        "tipo": "Complemento",
+        "intentos": "1) prensa de compras farmacéuticas 2020-2026: los objetivos son biotecnológicas sin EBITDA; 2) comunicados de Roche (Carmot, Telavant, 89bio): precio sin múltiplo; 3) operaciones de control de grandes farmacéuticas: ninguna comparable",
+        "decision": "Omitido (sección a null)"
+      },
+      {
+        "seccion": "identificacion",
+        "campo": "precio de cierre del 13-oct-2026 en la SIX",
+        "tipo": "Núcleo",
+        "intentos": "1) SIX y cash.ch: sin acceso; 2) Stock Analysis: capitalización 265.960 M CHF ÷ 795,62 M de acciones = 334,30 CHF; 3) contraste con el ADR (54,09 USD × 8 × ≈0,777 CHF/USD ≈ 336 CHF el 9-oct)",
+        "decision": "Calculado y marcado como estimación"
+      },
+      {
+        "seccion": "sentimiento",
+        "campo": "Reddit, Stocktwits y foros españoles (Rankia)",
+        "tipo": "Complemento",
+        "intentos": "1) búsqueda de hilos de Reddit sobre RHHBY: sin resultados; 2) búsqueda del foro de Rankia y de finanzen.net: sin hilos en el extracto; 3) API de Stocktwits: sin red",
+        "decision": "Omitido; el tono se lee en Seeking Alpha, cash.ch, Simply Wall St y la prensa con debate"
+      },
+      {
+        "seccion": "valoracion",
+        "campo": "pensiones (déficit neto)",
+        "tipo": "Complemento",
+        "intentos": "1) nota de pensiones del Finance Report 2025: no accesible; 2) Stock Analysis no lo separa; 3) búsqueda no hecha por cupo; entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido (0 en el puente; Roche tiene planes de prestación definida en Suiza, EE. UU. y Alemania: el valor por acción estaría algo sobrestimado)"
+      },
+      {
+        "seccion": "bolsa",
+        "campo": "sección completa",
+        "tipo": "Complemento",
+        "intentos": "1) bolsa.mjs sin red; 2) Yahoo y SIX: sin acceso; 3) rentabilidades de CompaniesMarketCap en USD, no comparables; entorno nube: solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs sin red)",
+        "decision": "Omitido (sección a null)"
+      }
+    ],
+    "regenerado": "2026-10-14"
+  },
+  "identificacion": {
+    "nombre": "Roche Holding AG",
+    "nombre_corto": "Roche",
+    "ticker": "ROP (antes ROG)",
+    "isin": "CH1499059983",
+    "mercado": "SIX Swiss Exchange",
+    "indice_referencia": "SMI",
+    "pais": "Suiza",
+    "pais_iso": "CH",
+    "sector": "Salud",
+    "industria": "Farmacéuticas",
+    "sede": "Basilea (Suiza)",
+    "fundacion": "1896",
+    "empleados": null,
+    "web": "www.roche.com",
+    "precio": 334.3,
+    "fecha_precio": "2026-10-13",
+    "acciones": 795.62,
+    "capitalizacion_publicada": 265960,
+    "free_float_pct": null,
+    "max_52s": 383,
+    "min_52s": 256.4,
+    "volumen_medio_diario": null,
+    "proximos_resultados": "2026-10-22"
+  },
+  "resumen": {
+    "recomendacion": "Mantener",
+    "conviccion": "Baja",
+    "justificacion_recomendacion": null,
+    "horizonte": "12 meses (la tesis de valor es a más de un año)",
+    "sintesis": "**La recomendación y por qué.** Mantener, con convicción baja. Nuestro objetivo a 12 meses es de 322,16 CHF (nuestro BPA core de 2028e por el PER de la regla común, ponderado 25/50/25): −0,7 % con el dividendo frente a 334,30 CHF, y −3,9 % en el caso base. El valor intrínseco es de 366,92 CHF (+9,8 %) y el objetivo medio de los analistas, de 367,20 CHF [30], fuera por arriba de nuestro base (311,50). La razón principal: Roche es un negocio excelente cuyo BPA en francos lleva cinco años plano (19,81 CHF en 2021, 19,46 en 2025) [1, 4], y hoy ya cotiza a 15,6x nuestro BPA core de 2027e, por encima de su mediana de 2022-2025 (14,0x). La convicción es baja porque las reglas discrepan (Mantener con nuestro WACC, Comprar con la prima del mercado) y la diferencia es de tasa, no de cifras; subiría por debajo de 286,88 CHF o con una aprobación amplia de giredestrant el 30-nov.\n\n**El negocio.** Primera farmacéutica europea y primer fabricante de diagnóstico in vitro, con un ROIC del 27,1 % frente a un WACC del 5,14 % (22 puntos de diferencia) y un margen operativo core del 39,0 % en el 1S26 [2]. La calidad sostiene el crecimiento que proyectamos (veredicto «Sí»): un 2,4 % anual en francos, por debajo del 4,2 % que financia su reinversión al ROIC actual y del 7 % a tipo constante de 2025.\n\n**Finanzas.** Convierte en caja el 128 % del beneficio (75.659 M CHF de flujo libre en 2021-2025) [9], con una deuda neta de 23.632 M (1,1 veces el EBITDA). Dos matices: el franco resta 5-8 puntos de crecimiento al año (1S26: +6 % a tipo constante, −2 % en francos) [2], y las compras de biotecnológicas para reponer patentes son un coste recurrente que el flujo libre no recoge; las cargamos en el capex.\n\n**Equipo y gobierno.** La familia Hoffmann-Oeri controla ≈72,6 % de los votos con ≈9 % del capital [16]; los bonos de participación que compra el inversor no votan [37]. Da estabilidad y 39 subidas seguidas del dividendo, pero excluye una OPA y protege a la dirección.\n\n**Valoración.** El DCF da 382,08 CHF; el precio descuenta un crecimiento del 0,7 % anual en 2027e-2035e frente a nuestro 2,4 %. La discrepancia depende de la tasa: con la prima implícita del mercado (4,2 %) el valor sube a 432,91 CHF. Por comparables, 15,5x beneficio frente a una mediana de 17,2x, con más ROIC (27,1 % frente a 18,8 %). A un año manda el múltiplo histórico: la regla da 13,2x, 14,0x y 17,2x.\n\n**Riesgos y catalizadores.** Biosimilares (≈1.000 M CHF de ventas perdidas en 2026 y Ocrevus a finales de la década) [19]: es el escenario bajista, 279,75 CHF (−16,3 %). Precios en EE. UU. y franco fuerte. Catalizadores: ventas del 3T26 (22-oct), FDA sobre giredestrant (30-nov y 18-dic) [45] y resultados de 2026 a finales de enero. Los foros están divididos y empeoran desde el máximo de febrero, sin euforia ni capitulación [42].\n\n**Qué cambiaría la decisión.** Compraríamos por debajo de 286,88 CHF y venderíamos por encima de 368,85 CHF. Pasaríamos a Comprar si el BPA core de 2026 supera 20,60 CHF con la guía de 2027 al alza, y a Vender si la pérdida de exclusividad supera 2.000 M CHF en un año.",
+    "tesis": "Roche es la mayor farmacéutica de Europa (61.516 M CHF de ventas en 2025) y el líder mundial en diagnóstico in vitro, con un margen bruto del 73,7 % y un ROIC del 27,1 % [1, 3]. Sus patentes de biológicos y su escala de I+D (13.352 M al año) son un foso amplio, y su dividendo ha subido 39 años seguidos [23].\n\nEl precio (334,30 CHF) descuenta un crecimiento de los ingresos en francos del 0,7 % anual: poco para una empresa que creció un 7 % a tipo constante en 2025. Pero cotiza a 15,5x el BPA core del consenso a 12 meses, por encima de su mediana de 2022-2025 (14,0x) y por debajo de la de sus comparables (17,2x).\n\nEl mercado acierta en el corto plazo: el franco y los biosimilares han dejado el BPA core en francos plano cinco años, y nada indica que 2027 sea distinto. Para invertir hay que creer que los lanzamientos (giredestrant, Vabysmo, Ocrevus subcutáneo y, más tarde, obesidad) llevan el BPA en francos a crecer un 5 % anual sostenido; entonces el valor intrínseco (366,92 CHF) se alcanzaría en dos o tres años.",
+    "vision_diferencial": {
+      "mercado_descuenta": "Un crecimiento de los ingresos en francos del 0,7 % anual y un PER de ≈15x, algo por encima de su historia reciente; el consenso espera un BPA core de 23,78 CHF en 2028e.",
+      "nuestra_vision": "Algo más de crecimiento (2,4 % anual en francos) pero un BPA de 2028e un 6 % por debajo del consenso (22,25 CHF) por la divisa y los biosimilares, y un múltiplo que no se expande.",
+      "por_que": "No tenemos una visión distinta del negocio: coincidimos en que es bueno. Discrepamos en el múltiplo a un año, que el consenso fija en ≈16-17x y la historia en 14x."
+    },
+    "a_favor": [
+      "**ROIC del 27,1 %**, 22 puntos por encima del WACC.",
+      "**Caja**: flujo libre de 75.659 M CHF en 2021-2025, el 128 % del beneficio.",
+      "**Dividendo**: 39 subidas seguidas; 9,80 CHF por 2025 (2,9 % de rentabilidad).",
+      "**Catalizador con fecha**: decisiones de la FDA sobre giredestrant el 30-nov y el 18-dic de 2026."
+    ],
+    "en_contra": [
+      "**BPA core plano en francos**: 19,81 CHF en 2021 y 19,46 en 2025.",
+      "**Biosimilares**: ≈1.000 M CHF de ventas perdidas en 2026 y Ocrevus a finales de la década.",
+      "**Múltiplo**: 15,6x nuestro BPA de 2027e frente a una mediana de 14,0x en 2022-2025.",
+      "**Gobierno**: ≈72,6 % del voto en manos de la familia con ≈9 % del capital."
+    ],
+    "que_vigilar": "La tesis depende de que el BPA core en francos vuelva a crecer: si el de 2026 no supera los 20 CHF (guía de un dígito alto a tipo constante menos la divisa), el múltiplo actual no se sostiene. Señal temprana: la diferencia entre crecimiento a tipo constante y en francos en las ventas del 3T26 (22-oct).",
+    "cambiaria_recomendacion": [
+      "Precio por debajo de 286,88 CHF: pasaríamos a Comprar.",
+      "Precio por encima de 368,85 CHF: pasaríamos a Vender o reducir.",
+      "BPA core de 2026 por encima de 20,60 CHF y guía de 2027 de dos dígitos a tipo constante: revisaríamos el BPA al alza.",
+      "Pérdida de exclusividad por encima de 2.000 M CHF en un año: pasaríamos al escenario bajista."
+    ],
+    "kpis_seguimiento": [
+      {
+        "kpi": "BPA core diluido (CHF)",
+        "nivel_actual": "19,46 (2025); 10,85 (1S26)",
+        "umbral_alerta": "< 20,00 en 2026",
+        "por_que": "Es la métrica en la que cotiza."
+      },
+      {
+        "kpi": "Crecimiento de ventas a tipo constante",
+        "nivel_actual": "+6 % (1S26)",
+        "umbral_alerta": "< +4 %",
+        "por_que": "Guía de un dígito medio."
+      },
+      {
+        "kpi": "Diferencia tipo constante − CHF",
+        "nivel_actual": "8 puntos (1S26)",
+        "umbral_alerta": "> 8 puntos",
+        "por_que": "Efecto del franco."
+      },
+      {
+        "kpi": "Margen operativo core",
+        "nivel_actual": "39,0 % (1S26)",
+        "umbral_alerta": "< 37 %",
+        "por_que": "Precios en EE. UU. y biosimilares."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "historia": {
+    "hitos": [
+      {
+        "anio": "1896",
+        "hito": "Fritz Hoffmann-La Roche funda la empresa en Basilea; la familia fundadora conserva hoy la mayoría del voto [16]."
+      },
+      {
+        "anio": "2001",
+        "hito": "Novartis compra un 33 % de las acciones al portador, que mantendrá veinte años [15]."
+      },
+      {
+        "anio": "2009",
+        "hito": "Compra del resto de Genentech, la base de la oncología y de la biotecnología del grupo."
+      },
+      {
+        "anio": "2021",
+        "hito": "Recompra por 19.024 M CHF del paquete de Novartis (53,3 M de acciones al portador), amortizado [15]."
+      },
+      {
+        "anio": "2023",
+        "hito": "Thomas Schinecker pasa a consejero delegado y Severin Schwan a presidente; compras de Telavant y Carmot (obesidad) [17]."
+      },
+      {
+        "anio": "2026",
+        "hito": "Los bonos de disfrute (Genussscheine, ROG) se canjean 1 por 1 por bonos de participación (Partizipationsscheine, ROP) desde el 17 de marzo [14]."
+      }
+    ],
+    "confianza": "Media",
+    "resumen": "Roche nació en Basilea en 1896 y sigue controlada por las familias Hoffmann y Oeri, que con ≈9 % del capital tienen la mayoría del voto gracias a una estructura de dos líneas: acciones al portador con voto y títulos sin voto que son la mayor parte del capital [16, 25]. La compra total de Genentech en 2009 la convirtió en la mayor empresa de biotecnología oncológica del mundo. En 2021 recompró por 19.024 M CHF el 33 % de las acciones al portador que tenía Novartis desde 2001 [7], y en 2023 cambió la cúpula (Schinecker consejero delegado, Schwan presidente) [23]. En marzo de 2026 sustituyó los bonos de disfrute por bonos de participación, sin cambiar derechos económicos [37]."
+  },
+  "negocio": {
+    "segmentos": [
+      {
+        "nombre": "Farma",
+        "descripcion": "Medicamentos de Genentech (EE. UU.), Roche Pharma y Chugai (Japón, 59,9 %): oncología, neurociencia (Ocrevus), inmunología, oftalmología (Vabysmo) y hemofilia (Hemlibra).",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2025",
+            "ingresos": 47669,
+            "resultado": null
+          }
+        ]
+      },
+      {
+        "nombre": "Diagnóstico",
+        "descripcion": "Analizadores e reactivos de laboratorio central (cobas), diagnóstico molecular, punto de atención y diabetes.",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2025",
+            "ingresos": 13847,
+            "resultado": null
+          }
+        ]
+      },
+      {
+        "nombre": "Royalties y otros ingresos",
+        "descripcion": "Regalías y otros ingresos de explotación (diferencia entre los ingresos totales de Stock Analysis y las ventas del grupo).",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2025",
+            "ingresos": 1840,
+            "resultado": null
+          }
+        ]
+      }
+    ],
+    "kpis": [
+      {
+        "kpi": "Ventas del grupo (M CHF)",
+        "valor_anterior": "60.495 (2024)",
+        "valor_actual": "61.516 (2025)",
+        "variacion": "+2 % en CHF; +7 % a tipo constante",
+        "comentario": "El franco fuerte resta unos 5 puntos [1, 3]."
+      },
+      {
+        "kpi": "BPA core diluido (CHF)",
+        "valor_anterior": "18,80 (2024)",
+        "valor_actual": "19,46 (2025)",
+        "variacion": "+4 % en CHF; +11 % a tipo constante",
+        "comentario": "Métrica que guía la dirección y que sigue el consenso [1, 4]."
+      },
+      {
+        "kpi": "Beneficio operativo core (M CHF)",
+        "valor_anterior": "≈20.800 (2024)",
+        "valor_actual": "≈21.800 (2025)",
+        "variacion": "+13 % a tipo constante",
+        "comentario": "Margen core sobre ventas ≈35,4 % en 2025 y 39,0 % en el 1S26 [1, 2, 5]."
+      },
+      {
+        "kpi": "Ventas 1S26 (M CHF)",
+        "valor_anterior": "≈31.000 (1S25)",
+        "valor_actual": "30.360 (1S26)",
+        "variacion": "−2 % en CHF; +6 % a tipo constante",
+        "comentario": "Farma +6 %, Diagnóstico +3 % a tipo constante [2]."
+      }
+    ],
+    "confianza": "Media",
+    "descripcion": "Roche es la mayor farmacéutica de Europa por ventas (61.516 M CHF en 2025) y el primer fabricante mundial de diagnóstico in vitro [1]. Farma (47.669 M, el 77 %) agrupa Genentech en EE. UU., Roche Pharma y el 59,9 % de Chugai en Japón; sus franquicias son oncología, neurociencia (Ocrevus), inmunología, oftalmología (Vabysmo) y hemofilia (Hemlibra) [1]. Diagnóstico (13.847 M, el 23 %) vende analizadores y, sobre todo, reactivos a laboratorios y hospitales [1]. Además cobra ≈1.840 M de royalties y otros ingresos de explotación [3].",
+    "como_gana_dinero": "El margen sale de patentes: medicamentos biológicos con precios altos y coste de fabricación bajo (margen bruto del 73,7 % en 2025, 46.711 M sobre 63.356 M) [3]. El beneficio operativo core fue de ≈21.800 M CHF, un 35,4 % de las ventas, y el 39,0 % en el 1S26 [1, 2]. En Diagnóstico, cada analizador instalado consume reactivos durante años: ingresos recurrentes con margen menor. El riesgo del modelo es el vencimiento de patentes (≈1.000 M de ventas perdidas en 2026) [19], que hay que reponer con la cartera de I+D (13.352 M, el 21 % de los ingresos) y compras de biotecnológicas [3]. El 80-85 % de los costes y ventas está fuera de Suiza: un franco fuerte resta en la conversión (−2 % de ventas en CHF en el 1S26 frente a +6 % a tipo constante) [2].",
+    "clientes": "Los clientes son sistemas públicos de salud, aseguradoras y distribuidores (en EE. UU., los tres grandes mayoristas) y, en Diagnóstico, laboratorios y hospitales. No hay un cliente individual relevante publicado en lo consultado. El poder de precios se ha estrechado: China recortó precios de diagnóstico (−131 M CHF en el 1S26) [12] y EE. UU. presiona con los acuerdos de precio de nación más favorecida [18]; Roche crece por volumen de los fármacos nuevos y no por subidas de precio.",
+    "geografias": []
+  },
+  "sector": {
+    "drivers": [
+      {
+        "driver": "Precios de medicamentos en EE. UU. (acuerdos de nación más favorecida, IRA)",
+        "efecto": "−",
+        "horizonte": "Estructural",
+        "evidencia": "El sector cotizó a 12x beneficios en el mínimo de principios de 2025 y a ≈14x a comienzos de 2026 tras los acuerdos de precios con la Administración estadounidense (Jefferies) [18]."
+      },
+      {
+        "driver": "Vencimiento de patentes y biosimilares",
+        "efecto": "−",
+        "horizonte": "Estructural",
+        "evidencia": "Roche cifra el impacto de las pérdidas de exclusividad en ≈700 M CHF en 2025 y ≈1.000 M en 2026 [19]."
+      },
+      {
+        "driver": "Reformas de precios del diagnóstico en China",
+        "efecto": "−",
+        "horizonte": "Cíclico",
+        "evidencia": "−131 M CHF en las ventas de Diagnóstico del 1S26 [20]."
+      },
+      {
+        "driver": "Nuevas clases terapéuticas (obesidad, Alzheimer, oncología oral)",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "CT-388 dio una pérdida de peso del 22,5 % corregida por placebo en fase II; fase III desde 2026 [21]."
+      }
+    ],
+    "confianza": "Baja",
+    "definicion": "Mercado mundial de medicamentos con receta (sobre todo biológicos de oncología, neurociencia e inmunología) y de diagnóstico in vitro. No se ha podido abrir una fuente de tamaño de mercado (IQVIA, EvaluatePharma) desde este entorno: la sección se apoya en motores de la demanda con datos de las empresas y de la prensa.",
+    "serie": [],
+    "estructura": "Fragmentada",
+    "porter": [],
+    "ciclo": {
+      "posicion": "Madurez del ciclo",
+      "comentario": "La farmacia no sigue el ciclo económico: Roche creció a tipo constante en 2020 (+1 %) y en 2022 [4, 10]. El ciclo relevante es el de patentes y precios: las grandes farmacéuticas europeas cotizaban a ≈12x beneficios a principios de 2025 por el miedo a los precios en EE. UU. y a ≈14x a principios de 2026, frente a una media histórica de 15x (Jefferies) [18]."
+    },
+    "regulacion": "EE. UU. (≈50 % del beneficio del sector) negocia precios: la ley IRA permite negociar los fármacos más vendidos de Medicare y la Administración firmó en 2025-2026 acuerdos de precio de nación más favorecida con las grandes farmacéuticas [18]. En China, las compras centralizadas recortan precios de diagnóstico (−131 M CHF para Roche en el 1S26) [12]. La FDA decide sobre giredestrant el 30-nov-2026 (adyuvante, revisión prioritaria) y el 18-dic-2026 (avanzado) [45].",
+    "tendencias": "Tres cambios: obesidad (Roche llega tarde, con CT-388 en fase III desde 2026 y una alianza con Zealand) [21]; terapias orales en cáncer de mama (giredestrant), donde compite con AstraZeneca y Lilly; y diagnóstico molecular y de punto de atención, donde Roche es líder. Los biosimilares de Perjeta, Xolair y, a partir de 2028-2029, Ocrevus son la principal amenaza a las ventas [19]."
+  },
+  "competencia": {
+    "competidores": [
+      {
+        "nombre": "Novartis",
+        "pais": "Suiza",
+        "ticker": "NOVN",
+        "ingresos": 44048,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Farma pura; ventas de los últimos 12 meses de 56.690 M USD (≈44.050 M CHF) y margen EBITDA del 40,7 % [22]."
+      },
+      {
+        "nombre": "AstraZeneca",
+        "pais": "Reino Unido",
+        "ticker": "AZN",
+        "ingresos": 47684,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Oncología como Roche; 61.370 M USD (≈47.680 M CHF), margen EBITDA del 33 % [22]."
+      },
+      {
+        "nombre": "Merck & Co",
+        "pais": "EE. UU.",
+        "ticker": "MRK",
+        "ingresos": 51725,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Rival directo en inmunooncología (Keytruda frente a Tecentriq); 66.570 M USD (≈51.730 M CHF) [22]."
+      },
+      {
+        "nombre": "Sanofi",
+        "pais": "Francia",
+        "ticker": "SAN",
+        "ingresos": 43427,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Inmunología y vacunas; 55.890 M USD (≈43.430 M CHF), margen EBITDA del 27,7 % [22]."
+      },
+      {
+        "nombre": "Abbott (diagnóstico)",
+        "pais": "EE. UU.",
+        "ticker": "ABT",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Principal rival en laboratorio central e inmunoensayos, junto a Siemens Healthineers y Danaher."
+      }
+    ],
+    "confianza": "Baja",
+    "posicion": "Primera farmacéutica europea por ventas y primer fabricante mundial de diagnóstico in vitro [1].",
+    "foso": {
+      "veredicto": "Amplio",
+      "tendencia": "Estable",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 1,
+          "evidencia": "Solo en Diagnóstico: la base instalada de analizadores atrae menús de pruebas."
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 3,
+          "evidencia": "Los laboratorios no cambian de plataforma de analizadores con facilidad; en farmacia, los médicos mantienen tratamientos que funcionan."
+        },
+        {
+          "fuente": "Intangibles (marca, patentes, licencias)",
+          "puntuacion": 5,
+          "evidencia": "Patentes de biológicos y margen bruto del 73,7 %; ROIC del 27,1 % en 2025 y del 19-33 % en 2021-2025, por encima de Novartis (18,8 %) y AstraZeneca (16,1 %) [D12]."
+        },
+        {
+          "fuente": "Ventaja en costes",
+          "puntuacion": 2,
+          "evidencia": "Escala de fabricación de biológicos; no se traduce en precio."
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 4,
+          "evidencia": "I+D de 13.352 M CHF al año [A3]: pocos rivales pueden financiar a la vez oncología, neurociencia y diagnóstico."
+        }
+      ]
+    },
+    "amenazas": "Biosimilares de sus grandes biológicos (≈1.000 M CHF de ventas en 2026 y más con Ocrevus a finales de la década) [19], recortes de precio en EE. UU. y China, y fracasos de la cartera (persevERA en marzo de 2026) [42]. La probabilidad de que el foso se estreche en cinco años es media: depende de que los lanzamientos repongan lo que caduca."
+  },
+  "financieros": {
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 65850,
+        "coste_ventas": 19647,
+        "gastos_generales": null,
+        "ebitda": 22598,
+        "amortizaciones": 4443,
+        "ebit": 18155,
+        "resultado_financiero": -757,
+        "bai": 17398,
+        "impuestos": 2463,
+        "minoritarios": 1005,
+        "beneficio_neto": 13930,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 16.2,
+        "dpa": 9.3,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 860
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 65814,
+        "coste_ventas": 19737,
+        "gastos_generales": null,
+        "ebitda": 21320,
+        "amortizaciones": 3844,
+        "ebit": 17476,
+        "resultado_financiero": -1149,
+        "bai": 16327,
+        "impuestos": 2796,
+        "minoritarios": 1110,
+        "beneficio_neto": 12421,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 15.37,
+        "dpa": 9.5,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 808
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 60441,
+        "coste_ventas": 16357,
+        "gastos_generales": null,
+        "ebitda": 18859,
+        "amortizaciones": 3464,
+        "ebit": 15395,
+        "resultado_financiero": -1316,
+        "bai": 14079,
+        "impuestos": 1721,
+        "minoritarios": 860,
+        "beneficio_neto": 11498,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": null,
+        "dpa": 9.6,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": null
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 62395,
+        "coste_ventas": 16283,
+        "gastos_generales": null,
+        "ebitda": 16840,
+        "amortizaciones": 3423,
+        "ebit": 13417,
+        "resultado_financiero": -1624,
+        "bai": 11793,
+        "impuestos": 2606,
+        "minoritarios": 910,
+        "beneficio_neto": 8277,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 10.32,
+        "dpa": 9.7,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 802
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 63356,
+        "coste_ventas": 16645,
+        "gastos_generales": 15161,
+        "ebitda": 21862,
+        "amortizaciones": 3386,
+        "ebit": 18476,
+        "resultado_financiero": -1503,
+        "bai": 16973,
+        "impuestos": 3174,
+        "minoritarios": 919,
+        "beneficio_neto": 12880,
+        "gastos_financieros": 1349,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 16.04,
+        "dpa": 9.8,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 803
+      }
+    ],
+    "ltm": {
+      "periodo": "LTM dic-25",
+      "fecha_fin": "2025-12-31",
+      "ingresos": 63356,
+      "ebitda": 21862,
+      "ebit": 18476,
+      "beneficio_neto": 12880,
+      "bpa": 16.04,
+      "dpa": 9.8,
+      "dpa_extraordinario": 0,
+      "fcf": null,
+      "participadas_en_ebitda": null,
+      "no_recurrentes_en_ebitda": null
+    },
+    "cambios_perimetro": [],
+    "confianza": "Media",
+    "comentario": "Los ingresos pasaron de 65.850 M CHF en 2021 a 63.356 M en 2025 (TCAC del −1 %): la caída de las pruebas de COVID-19 en 2022-2023 y el franco fuerte tapan un crecimiento a tipo constante del 7 % en 2025 [1, 3]. El margen EBITDA NIIF fue del 34,5 % en 2025, frente al 27,0 % de 2024, que llevaba deterioros de intangibles; el beneficio neto NIIF subió de 8.277 M a 12.880 M [3]. La métrica que sigue el mercado es el BPA core: 19,81 CHF en 2021, 20,30 en 2022, 18,57 en 2023, 18,80 en 2024 y 19,46 en 2025, plano en francos durante cinco años [1, 4, 11].",
+    "ajustes": "Roche publica cifras core, que excluyen amortización y deterioro de intangibles, reestructuraciones, litigios y costes de adquisiciones. La diferencia entre el beneficio operativo core (≈21.800 M) y el NIIF (18.476 M) fue de ≈3.300 M en 2025 y de ≈7.400 M en 2024 (deterioros) [1, 3, 11]. Las reestructuraciones y los deterioros de proyectos comprados se repiten casi todos los años: no son extraordinarios, por eso el DCF usa un margen EBITDA NIIF (36-36,5 %) y no el core (≈38 %), y el objetivo a 12 meses usa el BPA core porque es en el que cotiza el sector."
+  },
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "1S25",
+        "ingresos": null,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": 7,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 11.08,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1S26",
+        "ingresos": 30360,
+        "crecimiento_pct": -2,
+        "crecimiento_organico_pct": 6,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 10.85,
+        "vs_consenso": "Superior"
+      }
+    ],
+    "confianza": "Media",
+    "ultima_presentacion": "En el 1S26 (23-jul) Roche vendió 30.360 M CHF (+6 % a tipo constante, −2 % en francos) y ganó 10,85 CHF de BPA core (+9 % a tipo constante, −2 % en francos) [2, 13]. Farma creció un 6 % y Diagnóstico un 3 %, frenado por los precios en China (−131 M) y una gripe floja (−50 M) [12]. El margen operativo core subió al 39,0 % [2]. La dirección confirmó la guía de 2026 (ventas +un dígito medio, BPA core +un dígito alto, a tipo constante) y otra subida del dividendo [2]. Lo que preguntaron los analistas: el efecto del franco, el impacto de los acuerdos de precios en EE. UU. y la cartera tras persevERA. En el Pharma Day del 28-sep la dirección presentó la cartera y la acción bajó [33]."
+  },
+  "balance": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "activo_total": 92317,
+        "activo_corriente": 35627,
+        "pasivo_corriente": 38416,
+        "pasivo_total": 63972,
+        "fondo_comercio": 10809,
+        "intangibles": 12117,
+        "inmovilizado_material": 24412,
+        "existencias": 7715,
+        "clientes": 10806,
+        "proveedores": 4637,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 13031,
+        "deuda_financiera": 31198,
+        "arrendamientos": 1374,
+        "patrimonio_neto": 24489,
+        "minoritarios": 3856,
+        "reservas": null
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 88151,
+        "activo_corriente": 33816,
+        "pasivo_corriente": 27239,
+        "pasivo_total": 56136,
+        "fondo_comercio": 10820,
+        "intangibles": 9685,
+        "inmovilizado_material": 24208,
+        "existencias": 8605,
+        "clientes": 11606,
+        "proveedores": 4556,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 9800,
+        "deuda_financiera": 25351,
+        "arrendamientos": 1348,
+        "patrimonio_neto": 27992,
+        "minoritarios": 4023,
+        "reservas": null
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 90468,
+        "activo_corriente": 33446,
+        "pasivo_corriente": 24824,
+        "pasivo_total": 57205,
+        "fondo_comercio": 9390,
+        "intangibles": 14828,
+        "inmovilizado_material": 22939,
+        "existencias": 7749,
+        "clientes": 11021,
+        "proveedores": 4325,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 10500,
+        "deuda_financiera": 29209,
+        "arrendamientos": 1641,
+        "patrimonio_neto": 29315,
+        "minoritarios": 3948,
+        "reservas": null
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 101801,
+        "activo_corriente": 40036,
+        "pasivo_corriente": 27023,
+        "pasivo_total": 65640,
+        "fondo_comercio": 7876,
+        "intangibles": 17303,
+        "inmovilizado_material": 23740,
+        "existencias": 7606,
+        "clientes": 11297,
+        "proveedores": 4894,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 17317,
+        "deuda_financiera": 34654,
+        "arrendamientos": 1725,
+        "patrimonio_neto": 31767,
+        "minoritarios": 4394,
+        "reservas": null
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 100703,
+        "activo_corriente": 38729,
+        "pasivo_corriente": 28001,
+        "pasivo_total": 62823,
+        "fondo_comercio": 7492,
+        "intangibles": 19321,
+        "inmovilizado_material": 22934,
+        "existencias": 7479,
+        "clientes": 11506,
+        "proveedores": 5779,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 15476,
+        "deuda_financiera": 31636,
+        "arrendamientos": 1561,
+        "patrimonio_neto": 33802,
+        "minoritarios": 4078,
+        "reservas": null
+      }
+    ],
+    "vencimientos": [],
+    "liquidez": "Caja e inversiones a corto plazo de 15.476 M CHF a dic-25 [6]; deuda neta de la empresa de 22.071 M a jun-26 tras pagar 8.300 M de dividendos (16.160 M a dic-25) [2].",
+    "rating": null,
+    "coste_deuda_pct": 4.1,
+    "vida_media_anios": null,
+    "confianza": "Media",
+    "otros_pasivos": "El puente incluye a los minoritarios a valor de mercado: Roche consolida el 100 % de Chugai pero solo tiene el 59,9 %; el 40,1 % restante vale ≈24.000 M CHF a la cotización de Chugai de julio (estimación propia) [36], frente a 4.078 M en libros [6]. No se han podido leer las notas de pensiones, provisiones y litigios (hueco).",
+    "comentario": "La deuda neta (con arrendamientos) bajó de 19.541 M CHF en 2021 a 17.721 M en 2025, 0,81 veces el EBITDA; la recompra a Novartis de 2021 se pagó con deuda y se ha absorbido sin vender activos [6, 7]. A junio de 2026 la deuda neta de la empresa subió a 22.071 M por el pago de 8.300 M de dividendos, un movimiento estacional [2]. El circulante comercial ronda el 21-24 % de las ventas."
+  },
+  "flujos": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 20976,
+        "capex": 3693,
+        "pagos_arrendamientos": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 7844,
+        "recompras": 19024,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 17803,
+        "capex": 3449,
+        "pagos_arrendamientos": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 7514,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 16095,
+        "capex": 3742,
+        "pagos_arrendamientos": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 7648,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 20094,
+        "capex": 3529,
+        "pagos_arrendamientos": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 7709,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 18852,
+        "capex": 3748,
+        "pagos_arrendamientos": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 7789,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "Roche convierte en caja más de lo que gana: el flujo libre (flujo operativo menos capex) sumó 75.659 M CHF en 2021-2025, el 128 % del beneficio neto, porque la amortización y los deterioros no son caja [9]. El capex es del 5-6 % de los ingresos y casi todo de mantenimiento y capacidad de biológicos. Lo que el flujo libre no recoge son las compras de biotecnológicas y licencias (Telavant, Carmot, Poseida, 89bio…), que no hemos podido cuantificar por año (hueco): por eso el DCF carga un capex del 9 % de los ingresos, unos 2,5 puntos por encima del histórico, como coste de reponer la cartera (estimación propia)."
+  },
+  "calidad": {
+    "auditor": null,
+    "anios_auditor": null,
+    "opinion": null,
+    "senales": [],
+    "confianza": "Baja",
+    "comentario": "Altman Z de 3,90 y Piotroski de 7: balance sólido. El Beneish M (−2,72) no apunta a manipulación. La principal cuestión contable es la distancia entre core y NIIF (≈3.300 M en 2025 y ≈7.400 M en 2024): la dirección cobra variable sobre métricas core y los deterioros de proyectos comprados son recurrentes [1, 11]. No hemos podido leer el informe del auditor ni las notas (hueco)."
+  },
+  "rentabilidad": {
+    "comentario": "Roche crea valor: ROIC del 27,1 % en 2025 frente a un WACC del 5,14 %, 22 puntos de diferencia, y entre el 19,2 % y el 32,5 % en 2021-2025. Lo mueve el margen (beneficio neto del 20,3 % de los ingresos en 2025) más que la rotación (≈0,65 veces). El ROIC incremental de 2021-2025 sale negativo porque los ingresos en francos bajaron (COVID-19 y divisa) mientras el capital invertido subió con las compras de intangibles: no mide la calidad del crecimiento a tipo constante. Frente a los comparables, solo Lilly (42,2 %), Novo (39,2 %) y GSK (26,4 %) están cerca [22]."
+  },
+  "capital": {
+    "adquisiciones": [
+      {
+        "anio": "2021",
+        "objetivo": "Recompra de 53,3 M de acciones al portador a Novartis (amortizadas)",
+        "importe": 19024,
+        "ev_ebitda": null,
+        "financiacion": "Deuda",
+        "resultado": "El BPA diluido pasó a contar con ≈808 M de acciones frente a 860 M; la familia fundadora ganó peso en el voto [7, 8]."
+      }
+    ],
+    "confianza": "Media",
+    "politica": "Dividendo progresivo en francos: 39 subidas seguidas, 9,80 CHF por 2025 y la promesa de subirlo otra vez en 2026 [2, 23]. El payout sobre el BPA core es del ≈50 %. Las recompras no son habituales; la excepción fue la de las acciones de Novartis en 2021. La prioridad declarada para la caja es reforzar la cartera con compras y licencias.",
+    "comentario": "El historial de compras es irregular: Genentech es el gran acierto; Spark Therapeutics (2019) acabó con deterioros [11]. La recompra a Novartis a 356,93 CHF por acción redujo el número de acciones de 860 M a ≈803 M y concentró el voto en la familia [7]; hoy la acción cotiza por debajo de aquel precio. En 2021-2025 Roche pagó 38.504 M en dividendos (estimación) y 19.024 M en la recompra, más que todo el flujo libre si se suman las compras de biotecnológicas."
+  },
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "Thomas Schinecker",
+        "cargo": "Consejero delegado",
+        "desde": "2023",
+        "participacion_pct": null,
+        "trayectoria": "Venía de dirigir Roche Diagnostics. Con él, el grupo ha recortado proyectos de I+D y ha comprado activos de obesidad (Carmot, Zealand en alianza) [17, 24]."
+      },
+      {
+        "nombre": "Severin Schwan",
+        "cargo": "Presidente",
+        "desde": "2023",
+        "participacion_pct": null,
+        "trayectoria": "Consejero delegado de 2008 a 2023; reelegido presidente en 2026 con el 97,75 % de los votos [23]."
+      }
+    ],
+    "historial_guidance": [
+      {
+        "anio": "2025",
+        "guia": "Ventas: crecimiento de un dígito medio a tipo constante; BPA core: de un dígito alto a dos dígitos bajos",
+        "real": "Ventas +7 %, BPA core +11 % a tipo constante",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2026",
+        "guia": "Ventas: un dígito medio; BPA core: un dígito alto (tipo constante); dividendo al alza",
+        "real": "1S26: ventas +6 %, BPA core +9 % a tipo constante (guía confirmada)",
+        "cumplida": "Parcial"
+      }
+    ],
+    "confianza": "Baja",
+    "comentario": "La cúpula es estable: Schwan pasó de consejero delegado a presidente en 2023 y Schinecker, que dirigía Diagnóstico, asumió el cargo [23]. La guía de 2025 se cumplió con holgura (BPA core +11 % a tipo constante frente a la guía de un dígito alto) y la de 2026 va en línea tras el 1S26 [2, 24]. No hemos podido comprobar quién es hoy el director financiero (hueco)."
+  },
+  "gobierno": {
+    "consejo": [
+      {
+        "nombre": "Severin Schwan",
+        "cargo": "Presidente",
+        "tipo": "Otro externo",
+        "desde": "2013",
+        "comisiones": null
+      },
+      {
+        "nombre": "André Hoffmann",
+        "cargo": "Vicepresidente",
+        "tipo": "Dominical",
+        "desde": "1996",
+        "comisiones": null
+      },
+      {
+        "nombre": "Lubomira Rochet",
+        "cargo": "Consejera",
+        "tipo": "Independiente",
+        "desde": "2026",
+        "comisiones": null
+      }
+    ],
+    "presidente_ceo_separados": true,
+    "presidente_ejecutivo": false,
+    "consejero_coordinador": null,
+    "una_accion_un_voto": false,
+    "operaciones_vinculadas_relevantes": false,
+    "variable_ligado_rentabilidad": null,
+    "auditoria_independiente": null,
+    "insiders_sin_operaciones": null,
+    "accionista_control": true,
+    "presidente_vinculado_control": false,
+    "cambios_cupula_24m": 0,
+    "voto_remuneracion_pct": 90.18,
+    "voto_remuneracion_contra_pct": null,
+    "voto_remuneracion_contra_libre_pct": null,
+    "voto_cupula_pct": null,
+    "remuneracion_ceo": null,
+    "accionistas": [
+      {
+        "nombre": "Pool de accionistas de las familias Hoffmann y Oeri",
+        "pct": null,
+        "tipo": "Control (≈72,6 % de los votos con ≈9 % del capital)",
+        "variacion": "Sube tras la recompra de 2021 a Novartis"
+      }
+    ],
+    "insiders": [],
+    "alertas": [
+      "Control familiar: los bonos de participación (ROP), el 87 % del capital, no votan; solo votan las 106,7 M de acciones al portador."
+    ],
+    "confianza": "Baja",
+    "remuneracion": "La junta de 2026 aprobó el bonus del comité ejecutivo con el 95,18 % y el máximo de remuneración futura con el 94,77 % (consejo) y el 90,18 % (comité ejecutivo) [23]. Esos votos son de las acciones al portador, que controla la familia: el voto libre en contra es mayor, pero no se puede calcular con lo publicado.",
+    "control_y_defensas": "El pool de accionistas de las familias Hoffmann y Oeri controla ≈72,6 % de los votos con ≈9 % del capital [16, 25]. Los bonos de participación (ROP, el 87 % del capital) no votan [37]. Es una estructura de doble clase en toda regla: el minoritario no puede influir en el consejo ni en una venta de la empresa. A cambio, la familia ha dado estabilidad y una política de dividendo predecible; no hay operaciones vinculadas relevantes conocidas."
+  },
+  "consenso": {
+    "estimaciones": [
+      {
+        "periodo": "2026e",
+        "ingresos": 62908,
+        "ebitda": 25319,
+        "ebit": null,
+        "bpa": 20.33,
+        "dpa": 10,
+        "fuente": "Ventas y EBITDA: MarketScreener (8-oct) [28]; BPA core: consenso de Roche tras el 1S26 [29]; DPA: Börse Express [34]"
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 65804,
+        "ebitda": 27279,
+        "ebit": null,
+        "bpa": 21.99,
+        "dpa": null,
+        "fuente": "MarketScreener [28]; consenso de Roche [29]"
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": null,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 23.78,
+        "dpa": null,
+        "fuente": "Stocksguide (4-ago-2026, 23 analistas) [30]"
+      }
+    ],
+    "recomendaciones": {
+      "n_analistas": 21,
+      "comprar": 10,
+      "mantener": 8,
+      "vender": 3,
+      "po_medio": 367.2,
+      "po_min": 232.3,
+      "po_max": 449.4
+    },
+    "base_ebitda": "ajustado",
+    "ajuste_ebitda_pct_ventas": 3.5,
+    "confianza": "Media",
+    "guidance": "Guía de 2026 (29-ene-2026, confirmada el 23-jul): ventas +un dígito medio y BPA core +un dígito alto, ambos a tipo constante, y dividendo al alza en francos [1, 2]. Con el franco fuerte, eso se traduce en ≈+1-2 % de ventas en francos.",
+    "revisiones": "El BPA core de 2026 que recoge Roche tras el 1S26 es de 20,33 CHF y el de 2027 de 21,99 [29]; Stocksguide da 20,61, 22,05 y 23,78 para 2026-2028 con 23 analistas [30]. Morgan Stanley subió en agosto a sobreponderar con objetivo de 410 CHF [38]. Tras el Pharma Day de septiembre y la caída de la acción no hemos encontrado recortes de BPA: el ajuste ha sido de precio, no de estimaciones."
+  },
+  "bolsa": {
+    "tipo_rentabilidad": null,
+    "rentabilidades": [],
+    "anual": [],
+    "beta": null,
+    "volatilidad_pct": null,
+    "max_drawdown_pct": null,
+    "posicion_corta_pct": null,
+    "confianza": "Baja"
+  },
+  "multiplos_historicos": {
+    "serie": [
+      {
+        "anio": "2021",
+        "precio_cierre": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2022",
+        "precio_cierre": 290.5,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2023",
+        "precio_cierre": 244.5,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2024",
+        "precio_cierre": 255.5,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2025",
+        "precio_cierre": 328.2,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "Con el BPA core, el PER de cierre fue de 14,3x en 2022, 13,2x en 2023, 13,6x en 2024 y 16,9x en 2025 [1, 4, 11, 31]. Hoy, a 334,30 CHF, cotiza a 15,6x nuestro BPA core de 2027e: por encima de la mediana de esos cuatro años (14,0x). Con el BPA NIIF, el PER de los últimos 12 meses (20,8x) está en la media de los tres años con dato (20,5x). La prima de 2025-2026 llegó con los acuerdos de precios en EE. UU., que redujeron el riesgo percibido del sector [18]."
+  },
+  "comparables": {
+    "empresas": [
+      {
+        "nombre": "Eli Lilly",
+        "ticker": "LLY",
+        "pais": "US",
+        "capitalizacion": 848666,
+        "ev_ventas": 13.34,
+        "ev_ebitda_ltm": 25.5,
+        "ev_ebitda_ntm": 20.6,
+        "per_ntm": 26.7,
+        "crecimiento_pct": 24.4,
+        "margen_ebitda_pct": 52.4,
+        "roic_pct": 42.2,
+        "dn_ebitda": 1.08,
+        "fcf_yield_pct": 1.75
+      },
+      {
+        "nombre": "AstraZeneca",
+        "ticker": "AZN",
+        "pais": "GB",
+        "capitalizacion": 204343,
+        "ev_ventas": 4.44,
+        "ev_ebitda_ltm": 13.5,
+        "ev_ebitda_ntm": 11.4,
+        "per_ntm": 18.3,
+        "crecimiento_pct": 7.8,
+        "margen_ebitda_pct": 33,
+        "roic_pct": 16.1,
+        "dn_ebitda": 1.35,
+        "fcf_yield_pct": 4.28
+      },
+      {
+        "nombre": "Novartis",
+        "ticker": "NOVN",
+        "pais": "CH",
+        "capitalizacion": 224978,
+        "ev_ventas": 5.47,
+        "ev_ebitda_ltm": 13.4,
+        "ev_ebitda_ntm": 12.5,
+        "per_ntm": 17.2,
+        "crecimiento_pct": 7,
+        "margen_ebitda_pct": 40.7,
+        "roic_pct": 18.8,
+        "dn_ebitda": 1.79,
+        "fcf_yield_pct": 6.13
+      },
+      {
+        "nombre": "Sanofi",
+        "ticker": "SAN",
+        "pais": "FR",
+        "capitalizacion": 79194,
+        "ev_ventas": 2.05,
+        "ev_ebitda_ltm": 7.4,
+        "ev_ebitda_ntm": 6.6,
+        "per_ntm": 9.9,
+        "crecimiento_pct": 0.2,
+        "margen_ebitda_pct": 27.7,
+        "roic_pct": 9.1,
+        "dn_ebitda": 1.27,
+        "fcf_yield_pct": 11.66
+      },
+      {
+        "nombre": "Merck & Co",
+        "ticker": "MRK",
+        "pais": "US",
+        "capitalizacion": 287148,
+        "ev_ventas": 5.88,
+        "ev_ebitda_ltm": 13.6,
+        "ev_ebitda_ntm": 13.3,
+        "per_ntm": 20.9,
+        "crecimiento_pct": 4.3,
+        "margen_ebitda_pct": 43.4,
+        "roic_pct": 14.1,
+        "dn_ebitda": 1.62,
+        "fcf_yield_pct": 4.56
+      },
+      {
+        "nombre": "GSK",
+        "ticker": "GSK",
+        "pais": "GB",
+        "capitalizacion": 77152,
+        "ev_ventas": 2.54,
+        "ev_ebitda_ltm": 7.8,
+        "ev_ebitda_ntm": 6.9,
+        "per_ntm": 11.7,
+        "crecimiento_pct": 5.4,
+        "margen_ebitda_pct": 32.6,
+        "roic_pct": 26.4,
+        "dn_ebitda": 1.4,
+        "fcf_yield_pct": 9.63
+      },
+      {
+        "nombre": "Novo Nordisk",
+        "ticker": "NOVO B",
+        "pais": "DK",
+        "capitalizacion": 130247,
+        "ev_ventas": 3.64,
+        "ev_ebitda_ltm": 6.9,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 11.7,
+        "crecimiento_pct": -2.7,
+        "margen_ebitda_pct": 52.7,
+        "roic_pct": 39.2,
+        "dn_ebitda": 0.55,
+        "fcf_yield_pct": 6.9
+      }
+    ],
+    "confianza": "Media",
+    "criterio": "Siete grandes farmacéuticas mundiales con I+D propia y márgenes EBITDA del 28-53 %: Novartis, AstraZeneca, Merck & Co, Sanofi y GSK, de tamaño y modelo parecidos; Lilly y Novo, por la obesidad. Cifras y estimaciones de Stock Analysis y MarketScreener del 8-9 de octubre, tomadas de los informes de Novo Nordisk y CSL de este repo [22]; capitalizaciones convertidas a francos con el cambio implícito en esas tablas. No hay comparables de diagnóstico puro por falta de datos de la misma fecha.",
+    "comentario": "Roche cotiza a 12,8x el EBITDA de los próximos 12 meses y a 15,5x el beneficio (consenso, BPA core), frente a medianas de 12,0x y 17,2x. Tiene un ROIC (27,1 %) por encima de la mediana (18,8 %) y crece algo menos (5,4 % la mediana de ventas a 12 meses). Por PER, el valor implícito central es de 372,13 CHF; por EV/EBITDA, 309,30 CHF, porque los minoritarios de Chugai a valor de mercado (24.000 M) restan del valor empresa. Lilly estira la muestra al alza (26,7x) y Sanofi y GSK a la baja (9,9x y 11,7x); la mediana del PER (17,2x) es la que usa la regla a 12 meses en el alcista."
+  },
+  "transacciones": null,
+  "dcf": {
+    "anios": [
+      {
+        "periodo": "2026e",
+        "crecimiento_pct": 1.5,
+        "margen_ebitda_pct": 36,
+        "amortizacion_pct_ventas": 5.3,
+        "capex_pct_ventas": 9,
+        "nwc_pct_ventas": 21,
+        "tasa_impositiva_pct": 18.5,
+        "fijo": true
+      },
+      {
+        "periodo": "2027e",
+        "crecimiento_pct": 4,
+        "margen_ebitda_pct": 36.5,
+        "amortizacion_pct_ventas": 5.3,
+        "capex_pct_ventas": 9,
+        "nwc_pct_ventas": 21,
+        "tasa_impositiva_pct": 18.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2028e",
+        "crecimiento_pct": 4,
+        "margen_ebitda_pct": 36.5,
+        "amortizacion_pct_ventas": 5.3,
+        "capex_pct_ventas": 9,
+        "nwc_pct_ventas": 21,
+        "tasa_impositiva_pct": 18.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2029e",
+        "crecimiento_pct": 3,
+        "margen_ebitda_pct": 36.5,
+        "amortizacion_pct_ventas": 5.3,
+        "capex_pct_ventas": 9,
+        "nwc_pct_ventas": 21,
+        "tasa_impositiva_pct": 18.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2030e",
+        "crecimiento_pct": 3,
+        "margen_ebitda_pct": 36.5,
+        "amortizacion_pct_ventas": 5.3,
+        "capex_pct_ventas": 9,
+        "nwc_pct_ventas": 21,
+        "tasa_impositiva_pct": 18.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2031e",
+        "crecimiento_pct": 2.5,
+        "margen_ebitda_pct": 36,
+        "amortizacion_pct_ventas": 5.3,
+        "capex_pct_ventas": 8.5,
+        "nwc_pct_ventas": 21,
+        "tasa_impositiva_pct": 18.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2032e",
+        "crecimiento_pct": 2,
+        "margen_ebitda_pct": 36,
+        "amortizacion_pct_ventas": 5.3,
+        "capex_pct_ventas": 8.5,
+        "nwc_pct_ventas": 21,
+        "tasa_impositiva_pct": 18.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2033e",
+        "crecimiento_pct": 1.5,
+        "margen_ebitda_pct": 36,
+        "amortizacion_pct_ventas": 5.3,
+        "capex_pct_ventas": 8.5,
+        "nwc_pct_ventas": 21,
+        "tasa_impositiva_pct": 18.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2034e",
+        "crecimiento_pct": 1,
+        "margen_ebitda_pct": 36,
+        "amortizacion_pct_ventas": 5.3,
+        "capex_pct_ventas": 8.5,
+        "nwc_pct_ventas": 21,
+        "tasa_impositiva_pct": 18.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2035e",
+        "crecimiento_pct": 1,
+        "margen_ebitda_pct": 36,
+        "amortizacion_pct_ventas": 5.3,
+        "capex_pct_ventas": 8.5,
+        "nwc_pct_ventas": 21,
+        "tasa_impositiva_pct": 18.5,
+        "fijo": false
+      }
+    ],
+    "wacc": {
+      "tasa_libre_pct": 0.54,
+      "beta": 0.7,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 1,
+      "coste_deuda_pct": 3.5,
+      "tasa_impositiva_pct": 18.5,
+      "peso_deuda_pct": 10
+    },
+    "terminal": {
+      "metodo": "gordon",
+      "crecimiento_pct": 0.5,
+      "multiplo_salida": 12
+    },
+    "etapa2": {
+      "usar": false,
+      "anios": 5,
+      "margen_final_pct": null,
+      "justificacion": null
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "2026e +1,5 % en francos: guía de un dígito medio a tipo constante menos ≈4-5 puntos de divisa; el 1S26 creció −2 % en francos y el consenso da 62.374 M de ventas (+1,4 %) [2, 29]. 2027e-2028e +4 %: el consenso da +4,5 % para 2027 [28]; restamos medio punto por los biosimilares. 2029e-2030e +3 % y después hacia el 1 %: la década acaba con la patente de Ocrevus. El crecimiento medio es del 2,4 % anual, por debajo del 7 % a tipo constante de 2025.",
+      "margenes": "Margen EBITDA NIIF del 36,0 % en 2026e (36,3 % en el 1S26: beneficio operativo de 9.671 M más ≈1.700 M de amortización sobre ≈31.300 M de ingresos) [2] y del 36,5 % en 2027e-2030e, por las eficiencias del plan; baja al 36,0 % después por la erosión de precios. Es ≈2 puntos menos que el margen core, porque incluye reestructuraciones y deterioros que se repiten. En 2021-2025 el margen NIIF fue del 27,0-34,5 %.",
+      "inversion": "Capex del 9,0 % de los ingresos en 2026e-2030e y del 8,5 % después: el 5,9 % histórico más ≈2,5-3 puntos por compras de biotecnológicas y licencias, que en Roche son la forma de reponer la cartera (estimación propia). Amortización del 5,3 % (3.386 M en 2025) [9]. Circulante del 21 % de los ingresos, como en 2025.",
+      "wacc": "Tasa libre del 0,54 % (bono suizo a 10 años del 8-oct) [35]; beta 0,70 (farmacéutica defensiva; no hemos podido calcularla, hueco); prima de mercado del 5,5 % y 1 punto adicional porque los flujos están en dólares, euros y yenes y el bono suizo es anormalmente bajo; coste de la deuda del 3,5 % antes de impuestos (la mayor parte en USD y EUR) y 10 % de deuda. WACC del 5,14 %. La recomendación depende mucho de esta tasa: con la prima del mercado (4,2 %) el WACC baja al 4,32 % y el DCF sube a 477,78 CHF.",
+      "terminal": "Crecimiento a perpetuidad del 0,5 % en francos: la inflación suiza es del 1 % y la tasa libre del 0,54 % [35]; un crecimiento mayor sería incoherente con una divisa que se aprecia frente a aquellas en que vende. El valor terminal pesa un 67 %. El múltiplo de salida de contraste (12x EBITDA) es el de los comparables (12,0x a 12 meses)."
+    },
+    "sostenibilidad": {
+      "puente_ingresos": [
+        {
+          "periodo": "2026e",
+          "volumen_pct": 5.5,
+          "precio_pct": 0,
+          "otros_pct": -4,
+          "comentario": "Volumen y mezcla +5,5 % (Vabysmo, Ocrevus subcutáneo, Polivy, Columvi; guía de un dígito medio a tipo constante neta de ≈1.000 M de biosimilares) [1, 19]; precio 0; divisa −4 % (1S26: +6 % frente a −2 %) [2]."
+        },
+        {
+          "periodo": "2027e",
+          "volumen_pct": 5,
+          "precio_pct": -0.5,
+          "otros_pct": -0.5,
+          "comentario": "Volumen +5 % (consenso +4,5 % en francos [28] y giredestrant si se aprueba), precio −0,5 % (EE. UU. y China), divisa −0,5 %."
+        },
+        {
+          "periodo": "2028e",
+          "volumen_pct": 5,
+          "precio_pct": -0.5,
+          "otros_pct": -0.5,
+          "comentario": "Igual que 2027e."
+        },
+        {
+          "periodo": "2029e",
+          "volumen_pct": 4,
+          "precio_pct": -0.5,
+          "otros_pct": -0.5,
+          "comentario": "Volumen +4 %; empieza la erosión de Ocrevus; precio y divisa −0,5 % cada uno."
+        },
+        {
+          "periodo": "2030e",
+          "volumen_pct": 4,
+          "precio_pct": -0.5,
+          "otros_pct": -0.5,
+          "comentario": "Igual que 2029e."
+        }
+      ],
+      "mercado_final": null,
+      "veredicto": "Sí",
+      "justificacion": "Sí. La proyección crece un 2,4 % anual en francos, por debajo del 7 % a tipo constante de 2025 y del 4,2 % que financia la reinversión (16 % del NOPAT) al ROIC actual del 27,1 %. El capital nuevo rinde un 17,2 %, por debajo del ROIC de cualquier año de 2021-2025 (19,2-32,5 %). El ROIC incremental histórico sale negativo (−7,5 %) porque los ingresos en francos bajaron con el fin de las pruebas de COVID-19 y el franco: no mide la calidad del crecimiento y no se usa. No hay prueba de cuota porque no hemos podido abrir una fuente de tamaño de mercado (hueco). El foso (patentes, ROIC por encima de los comparables) sostiene ese crecimiento; el riesgo es la reposición de la cartera, que pagamos con 2,5-3 puntos extra de capex."
+    },
+    "lectura": "El DCF da 382,08 CHF por acción (+14,3 % sobre 334,30), con un WACC del 5,14 % y un valor terminal del 67 %; el rango de sensibilidad (WACC y crecimiento ± 0,5 puntos) va de 314,86 a 485,69 CHF. El DCF inverso dice que el precio descuenta un crecimiento del 0,7 % anual en 2027e-2035e (frente a nuestro 2,4 %), o un margen EBITDA del 33,1 % (frente a nuestro 36,0 %), o una rentabilidad del 5,7 % anual. Es una expectativa conservadora para una empresa que creció al 7 % a tipo constante en 2025, pero razonable en francos: en 2021-2025 los ingresos en francos cayeron un 1 % anual. La discrepancia con el mercado es pequeña y depende de la tasa: con la prima implícita del mercado (WACC 4,32 %) el valor sube a 477,78 CHF.",
+    "confianza": "Media"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": -1.5,
+        "ajuste_margen_pp": -2.5,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": 0,
+        "multiplo_salida": null,
+        "narrativa": "Los biosimilares de Ocrevus llegan antes y Perjeta y Xolair caen más rápido; giredestrant se aprueba con una etiqueta estrecha y el franco sigue subiendo: el crecimiento baja 1,5 puntos al año y el margen 2,5 puntos, como en 2023 (ventas −8 % en francos) [3]."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Guía cumplida en 2026, +4 % en 2027-2028 con los lanzamientos y la divisa restando medio punto; margen NIIF del 36,5 %."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": 1,
+        "ajuste_margen_pp": 1,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Giredestrant en adyuvancia se convierte en un gran fármaco, el franco se estabiliza y las eficiencias suben el margen un punto: +1 punto de crecimiento al año."
+      }
+    ],
+    "comentario": "Asimetría de 1,75 veces en el valor intrínseco: el alcista (429,48 CHF, +28,5 %) gana más de lo que pierde el bajista (279,75, −16,3 %). A 12 meses la asimetría es de 0,96 veces: con la regla de múltiplos, el bajista (263,34) pierde lo mismo que gana el alcista (402,31). El valor está en el largo plazo, no en el próximo año.",
+    "confianza": "Media"
+  },
+  "suma_partes": {
+    "aplica": false,
+    "descuento_holding_pct": 0,
+    "partes": [],
+    "comentario": "No aplica: Farma y Diagnóstico tienen márgenes distintos, pero no hemos podido obtener el resultado por segmento (hueco) ni comparables de diagnóstico a la misma fecha.",
+    "confianza": "Media"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2026-06-30",
+      "deuda_financiera": 31805,
+      "arrendamientos": 1561,
+      "caja": 9734,
+      "minoritarios": 24000,
+      "pensiones": 0,
+      "asociadas": 0,
+      "otros_ajustes": 0
+    },
+    "rab": null,
+    "referencia_mercado": {
+      "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+      "prima_implicita_pct": 4.2,
+      "fecha": "2026-10",
+      "fuente": "Damodaran, ERPbymonth.xlsx [46]"
+    },
+    "pesos": {
+      "dcf": 50,
+      "comparables": 30,
+      "transacciones": 0,
+      "suma_partes": 0,
+      "escenarios": 20
+    },
+    "objetivo_12m": {
+      "ejercicio": "2028e",
+      "casos": [
+        {
+          "escenario": "Bajista",
+          "metrica": "PER 2028e (BPA core)",
+          "beneficio_por_accion": 19.95,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 67.561 M en 2028e (+2,5 % en 2027e-2028e), margen operativo core del 32,2 % (2,5 puntos menos): BPA core de 19,95 CHF, por debajo del de 2025. El mercado paga el mínimo de 2022-2025 (13,2x)."
+        },
+        {
+          "escenario": "Base",
+          "metrica": "PER 2028e (BPA core)",
+          "beneficio_por_accion": 22.25,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 69.551 M en 2028e (+1,5 %, +4 %, +4 %), margen operativo core del 34,7 % (como en 2025), resultado financiero −1.000 M, impuestos del 18 % y minoritarios de Chugai: BPA core de 22,25 CHF."
+        },
+        {
+          "escenario": "Alcista",
+          "metrica": "PER 2028e (BPA core)",
+          "beneficio_por_accion": 23.39,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 70.898 M (+5 % en 2027e-2028e) y margen core del 35,7 %: BPA core de 23,39 CHF, cerca del consenso de 2028e (23,78)."
+        }
+      ],
+      "per_historico": {
+        "actual": 15.6,
+        "mediana_5a": 23.7,
+        "minimo_5a": 15.9,
+        "media_larga": 21.4,
+        "base": "adelantado",
+        "anios": 3,
+        "excluidos": "Historia ADELANTADA (precio de cierre de cada año ÷ BPA real del año siguiente, como el PER actual), construida el 2026-10-14 con los cierres y el BPA del informe y cierres de Yahoo Finance para los años sin cierre: 2021 24.7x [Yahoo/informe]; 2023 23.7x; 2024 15.9x. Sin años de pérdidas, PER ≥ 150x ni atípicos (a más de 3 veces o menos de un tercio de la mediana del resto, con cinco años o más); mediana y mínimo de los últimos 3 años, media larga de 3. Contraste de base: BPA propio del año siguiente 21.429000000000002 frente a 16.04 publicado en 2025 (+15.6 % anual). Historia corta (menos de cinco años). Historia al cierre anterior (v2): Ninguno excluido; solo hay precio de cierre de 2022-2025 (cuatro años), de modo que la «mediana de 5 años» es la de esos cuatro: 14,3x (2022), 13,2x (2023), 13,6x (2024) y 16,9x (2025), con el BPA core diluido de cada año [1, 4, 11] y los cierres de diciembre [31].",
+        "v2": {
+          "actual": 15.6,
+          "mediana_5a": 13.95,
+          "minimo_5a": 13.2,
+          "media_larga": 14.5,
+          "base": "cierre"
+        }
+      },
+      "comparables_per": {
+        "mediana": 17.2
+      },
+      "consenso": {
+        "bpa_ano1": 20.33,
+        "bpa_ano2": 21.99,
+        "objetivo_medio": 367.2,
+        "objetivo_min": 232.3,
+        "objetivo_max": 449.4,
+        "analistas": 24,
+        "tendencia_3m": "estables",
+        "fuente": "Consenso de Roche tras el 1S26 [29] y Stocksguide, 4-ago-2026 [30]"
+      },
+      "diferencia_consenso": "Nuestro BPA core de 2028e (22,25 CHF) queda un 6 % por debajo del consenso (23,78) [30]: proyectamos medio punto menos de crecimiento al año por biosimilares y divisa. El precio base (311,50) queda un 15,2 % por debajo del objetivo medio (367,20): el resto de la diferencia es el múltiplo, porque la regla usa la mediana del PER core de 2022-2025 (14,0x) y los analistas aplican ≈15,5x. No acercamos la cifra.",
+      "media": null,
+      "comentario": "El valor intrínseco (366,92 CHF) queda un 14 % por encima del objetivo a 12 meses (322,16): el DCF capitaliza un negocio con ROIC del 27 % a una tasa del 5 %, mientras que a un año el mercado paga por el BPA core en francos, que lleva cinco años plano. Cerrar la distancia exige que el BPA en francos vuelva a crecer: una aprobación amplia de giredestrant (30-nov) y un franco estable. La tesis de valor es a más de un año."
+    },
+    "comentario": "El DCF pesa un 50 %: es el método que recoge el ROIC alto y la caja de un negocio estable. Los comparables pesan un 30 % (EV/EBITDA y PER a 12 meses), y los escenarios un 20 %. No hay transacciones de control comparables. La dispersión es amplia: los comparables por EV/EBITDA dan 309,30 CHF porque los minoritarios de Chugai a mercado restan 24.000 M, y el PER da 372,13. El valor ponderado es de 366,92 CHF (+9,8 %). La recomendación la decide el objetivo a 12 meses (322,16, −0,7 % con dividendo), no el valor intrínseco.",
+    "confianza": "Media"
+  },
+  "catalizadores": {
+    "items": [
+      {
+        "fecha": "2026-10-22",
+        "evento": "Ventas del 3T26",
+        "efecto": "Confirmar la guía con el franco fuerte; Diagnóstico en China",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2026-11-30",
+        "evento": "Decisión de la FDA sobre giredestrant en cáncer de mama precoz (adyuvante, revisión prioritaria)",
+        "efecto": "Fármaco de varios miles de millones si se aprueba con etiqueta amplia",
+        "probabilidad": "Alta",
+        "sentido": "+"
+      },
+      {
+        "fecha": "2026-12-18",
+        "evento": "Decisión de la FDA sobre giredestrant con everolimus en cáncer avanzado",
+        "efecto": "Segunda indicación",
+        "probabilidad": "Media",
+        "sentido": "+"
+      },
+      {
+        "fecha": "2027-01 (finales)",
+        "evento": "Resultados de 2026 y guía de 2027",
+        "efecto": "BPA core en francos y efecto de los acuerdos de precio en EE. UU.",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2027-03",
+        "evento": "Junta general: 40.ª subida del dividendo",
+        "efecto": "Dividendo ≈10,00 CHF esperado [34]",
+        "probabilidad": "Alta",
+        "sentido": "+"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "riesgos": {
+    "items": [
+      {
+        "riesgo": "Franco suizo fuerte: las ventas se generan en USD, EUR y JPY y se publican en CHF",
+        "tipo": "Divisa",
+        "probabilidad": "Alta",
+        "impacto": "Medio",
+        "efecto_valor": "−8 % por cada 5 % de apreciación sostenida (estimación propia)",
+        "mitigante": "Costes también fuera de Suiza; el margen en porcentaje apenas cambia",
+        "senal": "Diferencia entre crecimiento a tipo constante y en CHF por encima de 6 puntos"
+      },
+      {
+        "riesgo": "Biosimilares de Ocrevus, Perjeta y Xolair",
+        "tipo": "Patentes",
+        "probabilidad": "Alta",
+        "impacto": "Alto",
+        "efecto_valor": "−16,3 % (escenario bajista: 279,75 CHF)",
+        "mitigante": "Ocrevus subcutáneo y lanzamientos (Vabysmo, Columvi, giredestrant)",
+        "senal": "Pérdida de exclusividad por encima de 1.500 M CHF en un año"
+      },
+      {
+        "riesgo": "Precios de medicamentos en EE. UU. (nación más favorecida, IRA)",
+        "tipo": "Regulatorio",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−10 a −15 %",
+        "mitigante": "Acuerdos ya firmados por el sector [18]",
+        "senal": "Bajada del precio neto en EE. UU. publicada en los resultados"
+      },
+      {
+        "riesgo": "Fracasos de la cartera (persevERA en 2026; obesidad tardía)",
+        "tipo": "I+D",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−5 a −10 %",
+        "mitigante": "Cartera amplia y Chugai",
+        "senal": "Deterioros de intangibles por encima de 2.000 M CHF en un año"
+      },
+      {
+        "riesgo": "Diagnóstico en China (compras centralizadas)",
+        "tipo": "Precio",
+        "probabilidad": "Alta",
+        "impacto": "Bajo",
+        "efecto_valor": "−2 %",
+        "mitigante": "China es una parte pequeña de las ventas del grupo",
+        "senal": "Ventas de Diagnóstico en Asia-Pacífico a la baja otro año"
+      },
+      {
+        "riesgo": "Gobierno: control familiar con ≈9 % del capital",
+        "tipo": "Gobierno",
+        "probabilidad": "Baja",
+        "impacto": "Medio",
+        "efecto_valor": "Sin OPA posible: descuento estructural",
+        "mitigante": "Dividendo estable",
+        "senal": "Compras grandes pagadas con deuda"
+      }
+    ],
+    "premortem": "Octubre de 2029: Roche cotiza un 40 % por debajo. Ocrevus pierde la exclusividad en EE. UU. antes de lo previsto y la versión subcutánea no retiene a los pacientes; Perjeta y Xolair caen más rápido que en el plan. La FDA aprueba giredestrant con una etiqueta estrecha y los fármacos orales de AstraZeneca y Lilly se quedan el mercado adyuvante. CT-388 llega en 2030 a un mercado de obesidad con precios ya hundidos. El franco sigue revalorizándose un 3-4 % al año, y el BPA core en francos lleva ocho años plano. El mercado deja de pagar 14x y pasa a 11x, como Sanofi. La señal que lo habría anticipado: la pérdida de exclusividad pasa de 1.000 M a más de 2.000 M CHF al año y los deterioros de proyectos comprados se repiten por encima de 2.000 M.",
+    "confianza": "Media"
+  },
+  "esg": {
+    "calificaciones": [],
+    "confianza": "Baja"
+  },
+  "preguntas": {
+    "items": [
+      {
+        "tema": "Biosimilares",
+        "pregunta": "¿Cuánto suma la pérdida de exclusividad en 2027-2029, por producto?",
+        "por_que": "Es la diferencia entre nuestro base (+4 %) y el bajista (+2,5 %)."
+      },
+      {
+        "tema": "Compras",
+        "pregunta": "¿Cuánto ha gastado Roche en compras y licencias por año desde 2021 y qué parte se ha deteriorado?",
+        "por_que": "El DCF carga 2,5 puntos de ventas de capex adicional por este concepto."
+      },
+      {
+        "tema": "Giredestrant",
+        "pregunta": "¿Qué ventas máximas espera la dirección en adyuvancia y con qué etiqueta?",
+        "por_que": "Es el catalizador con fecha más cercano."
+      },
+      {
+        "tema": "Divisa",
+        "pregunta": "¿Qué parte de los costes está en francos y cómo cubre la empresa el riesgo?",
+        "por_que": "El franco ha restado 5-8 puntos de crecimiento al año."
+      },
+      {
+        "tema": "Chugai",
+        "pregunta": "¿Contempla Roche comprar el 40 % de Chugai que no tiene?",
+        "por_que": "Vale ≈24.000 M CHF: cambiaría el puente y el BPA."
+      },
+      {
+        "tema": "Pensiones",
+        "pregunta": "¿Cuál es el déficit neto de los planes de prestación definida?",
+        "por_que": "No está en el puente (hueco)."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sentimiento": {
+    "tono": "Dividido",
+    "tendencia": "Empeora",
+    "revisadas": [
+      {
+        "plataforma": "Seeking Alpha (artículo y comentarios)",
+        "fecha": "2026-08",
+        "n_comentarios": 20,
+        "tono": "Positivo",
+        "resumen": "El autor sube a Comprar: los lanzamientos y la cartera de obesidad compensarían las patentes que vencen; los comentarios discuten el franco y Ocrevus [41]."
+      },
+      {
+        "plataforma": "cash.ch (noticia y comentarios de lectores)",
+        "fecha": "2026-09",
+        "n_comentarios": 15,
+        "tono": "Negativo",
+        "resumen": "La acción rebotó en máximos de varios años y devolvió lo ganado en el año; Chugai y la falta de datos de cartera en el 2S pesan [42]."
+      },
+      {
+        "plataforma": "Simply Wall St (narrativas de la comunidad)",
+        "fecha": "2026-07",
+        "n_comentarios": 10,
+        "tono": "Dividido",
+        "resumen": "Valores razonables de la comunidad entre ≈302 y 430 CHF: unos ven un «compounder» de dividendo, otros temen biosimilares y China [21, 43]."
+      },
+      {
+        "plataforma": "Börse Express y MS Aktuell (prensa con debate de inversores)",
+        "fecha": "2026-09",
+        "n_comentarios": 10,
+        "tono": "Negativo",
+        "resumen": "Tras el Pharma Day del 28-sep la acción «gira a negativo»; persevERA y el franco son los temas; diez analistas en Comprar, ocho en Mantener y tres en Vender [33, 44]."
+      }
+    ],
+    "temas": [
+      {
+        "tema": "Giredestrant (decisiones de la FDA en noviembre y diciembre)",
+        "postura": "Dividida",
+        "peso": "Alto",
+        "contraste": "El fracaso de persevERA (marzo) y el éxito de lidERA dejan el fármaco en adyuvancia como principal catalizador; la FDA decide el 30-nov (adyuvante, revisión prioritaria) y el 18-dic (avanzado) [45]."
+      },
+      {
+        "tema": "Franco fuerte",
+        "postura": "Bajista",
+        "peso": "Alto",
+        "contraste": "Correcto: el 1S26 crece +6 % a tipo constante y cae −2 % en francos; el BPA core cae un 2 % en francos [2]."
+      },
+      {
+        "tema": "Obesidad (CT-388 y alianza con Zealand) como opción de crecimiento",
+        "postura": "Alcista",
+        "peso": "Medio",
+        "contraste": "Fase III desde 2026: no da ventas antes de 2029-2030 y no entra en nuestro caso base."
+      },
+      {
+        "tema": "Dividendo creciente (39 subidas seguidas)",
+        "postura": "Alcista",
+        "peso": "Medio",
+        "contraste": "Correcto: 9,80 CHF por 2025 (≈2,9 % de rentabilidad) y la dirección promete otra subida en francos [2]."
+      }
+    ],
+    "confianza": "Baja",
+    "lectura": "El sentimiento es dividido y empeora desde el máximo de febrero (≈375 CHF): los particulares y la prensa suiza se quejan del franco, de persevERA y de que el segundo semestre trae pocos datos de cartera; los alcistas se apoyan en el dividendo y en la obesidad [33, 42, 44]. No es extremo: diez analistas en Comprar, ocho en Mantener y tres en Vender [33]. Coincide con nuestra lectura: el negocio es bueno pero el BPA en francos crece poco, y la decisión de la FDA sobre giredestrant (30-nov y 18-dic) es el catalizador que más mueve la conversación [45]."
+  },
+  "fuentes": [
+    {
+      "id": 1,
+      "titulo": "Roche reports strong 2025 results with 7% sales growth (ad hoc, 29-ene-2026)",
+      "editor": "Roche",
+      "tipo": "Primaria",
+      "fecha": "2026-01-29",
+      "url": "https://www.roche.com/media/releases/med-cor-2026-01-29"
+    },
+    {
+      "id": 2,
+      "titulo": "Half Year Report 2026 (hy26e.pdf)",
+      "editor": "Roche",
+      "tipo": "Primaria",
+      "fecha": "2026-07-23",
+      "url": "https://assets.roche.com/f/176343/x/8a0b362d66/hy26e.pdf"
+    },
+    {
+      "id": 3,
+      "titulo": "Roche Holding AG (SWX:ROP): income statement, consulta de octubre de 2026",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://stockanalysis.com/quote/swx/ROP/financials/income-statement/"
+    },
+    {
+      "id": 4,
+      "titulo": "Finance Report 2022 (fb22e.pdf): BPA core y diluido 2021-2022, dividendos",
+      "editor": "Roche",
+      "tipo": "Primaria",
+      "fecha": "2023-02-02",
+      "url": "https://assets.roche.com/f/176343/x/537a274a55/fb22e.pdf"
+    },
+    {
+      "id": 5,
+      "titulo": "Finance Report 2023 (fb23e.pdf): beneficio operativo core 2023",
+      "editor": "Roche",
+      "tipo": "Primaria",
+      "fecha": "2024-02-01",
+      "url": "https://assets.roche.com/f/176343/x/3b1fb647e2/fb23e.pdf"
+    },
+    {
+      "id": 6,
+      "titulo": "Roche Holding AG (SWX:ROP): balance sheet, consulta de octubre de 2026",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://stockanalysis.com/quote/swx/ROP/financials/balance-sheet/"
+    },
+    {
+      "id": 7,
+      "titulo": "Roche to repurchase equity stake held by Novartis (ad hoc, 4-nov-2021)",
+      "editor": "Roche",
+      "tipo": "Primaria",
+      "fecha": "2021-11-04",
+      "url": "https://www.roche.com/investors/updates/inv-update-2021-11-04"
+    },
+    {
+      "id": 8,
+      "titulo": "Roche Holding AG (RHHBY): financials (deuda total con arrendamientos), consulta de octubre de 2026",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://stockanalysis.com/quote/otc/RHHBY/financials/"
+    },
+    {
+      "id": 9,
+      "titulo": "Roche Holding AG (SWX:ROP): cash flow statement, consulta de octubre de 2026",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://stockanalysis.com/quote/swx/ROP/financials/cash-flow-statement/"
+    },
+    {
+      "id": 10,
+      "titulo": "Roche reports solid results in 2020 (4-feb-2021): BPA core 2019-2020, ventas y beneficio operativo core",
+      "editor": "Roche",
+      "tipo": "Primaria",
+      "fecha": "2021-02-04",
+      "url": "https://www.roche.com/media/releases/med-cor-2021-02-04"
+    },
+    {
+      "id": 11,
+      "titulo": "Roche fact sheet FY 2024 (beneficio operativo core 20.800 M; BPA core 18,80)",
+      "editor": "Roche",
+      "tipo": "Primaria",
+      "fecha": "2025-05-06",
+      "url": "https://assets.roche.com/f/176343/x/97e5aea506/20250506_roche-fact-sheet_ir_global_fy-2024_vfinal.pdf"
+    },
+    {
+      "id": 12,
+      "titulo": "Roche Diagnostics sales decline 3 percent in H1 (China y gripe)",
+      "editor": "360Dx",
+      "tipo": "Prensa",
+      "fecha": "2026-07-23",
+      "url": "https://www.360dx.com/molecular-diagnostics/roche-diagnostics-sales-decline-3-percent-h1"
+    },
+    {
+      "id": 13,
+      "titulo": "Roche Aktie: 30,36 Milliarden CHF Umsatz (1S26)",
+      "editor": "Börse Express",
+      "tipo": "Prensa",
+      "fecha": "2026-07-23",
+      "url": "https://www.boerse-express.com/news/articles/roche-aktie-3036-milliarden-chf-umsatz-932482"
+    },
+    {
+      "id": 14,
+      "titulo": "Roche schafft den Genussschein ab: was sich für die Anleger und die Firma ändert",
+      "editor": "cash.ch",
+      "tipo": "Prensa",
+      "fecha": "2026-03",
+      "url": "https://www.cash.ch/news/top-news/roche-schafft-den-genussschein-ab-was-sich-fur-die-anleger-und-die-firma-andert-916592"
+    },
+    {
+      "id": 15,
+      "titulo": "Roche to repurchase equity stake held by Novartis",
+      "editor": "Roche",
+      "tipo": "Primaria",
+      "fecha": "2021-11-04",
+      "url": "https://www.roche.com/media/releases/med-cor-2021-11-04"
+    },
+    {
+      "id": 16,
+      "titulo": "Roche: nach Aktienverkauf eines Familienmitglieds behält Hoffmann-Clan die Mehrheit",
+      "editor": "cash.ch",
+      "tipo": "Prensa",
+      "fecha": "2023",
+      "url": "https://www.cash.ch/news/top-news/roche-nach-aktienverkauf-eines-familienmitglieds-behalt-hoffmann-clan-die-mehrheit-578274"
+    },
+    {
+      "id": 17,
+      "titulo": "Roche to acquire Carmot Therapeutics",
+      "editor": "Roche",
+      "tipo": "Primaria",
+      "fecha": "2023-12-04",
+      "url": "https://www.roche.com/media/releases/med-cor-2023-12-04"
+    },
+    {
+      "id": 18,
+      "titulo": "JPMorgan identifies top EU pharma, biotech and life sciences stocks poised for 2026 growth (incluye la nota de Jefferies)",
+      "editor": "Pharma Focus Europe",
+      "tipo": "Analistas",
+      "fecha": "2026-03",
+      "url": "https://www.pharmafocuseurope.com/news/jpmorgan-identifies-top-eu-pharma-biotech-life-sciences-stocks-poised-for-2026-growth"
+    },
+    {
+      "id": 19,
+      "titulo": "Roche Holding AG Q4 2025 Earnings Call Transcript",
+      "editor": "Insider Monkey",
+      "tipo": "Prensa",
+      "fecha": "2026-01-29",
+      "url": "https://www.insidermonkey.com/blog/roche-holding-ag-otcrhhby-q4-2025-earnings-call-transcript-1685269/"
+    },
+    {
+      "id": 20,
+      "titulo": "Roche Diagnostics sales decline 3 percent in H1",
+      "editor": "GenomeWeb",
+      "tipo": "Prensa",
+      "fecha": "2026-07-23",
+      "url": "https://www.genomeweb.com/molecular-diagnostics/roche-diagnostics-sales-decline-3-percent-h1"
+    },
+    {
+      "id": 21,
+      "titulo": "Roche update: CT-388 y riesgos de biosimilares (narrativa)",
+      "editor": "Simply Wall St",
+      "tipo": "Analistas",
+      "fecha": "2026-07",
+      "url": "https://www.simplywall.st/narratives/0uadpeuv-update-for-roche-holding"
+    },
+    {
+      "id": 22,
+      "titulo": "Comparables farmacéuticos (cuentas de 12 meses, ROIC y flujo libre) recogidos en el informe de Novo Nordisk del 8-oct-2026 (Stock Analysis y MarketScreener)",
+      "editor": "Stock Analysis / MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-08",
+      "url": "https://stockanalysis.com/"
+    },
+    {
+      "id": 23,
+      "titulo": "Roche Annual General Meeting 2026 (resultados de las votaciones)",
+      "editor": "Roche",
+      "tipo": "Primaria",
+      "fecha": "2026-03-10",
+      "url": "https://www.roche.com/investors/updates/inv-update-2026-03-10"
+    },
+    {
+      "id": 24,
+      "titulo": "Roche reports strong 2025 results with 7% sales growth",
+      "editor": "Roche",
+      "tipo": "Primaria",
+      "fecha": "2026-01-29",
+      "url": "https://www.roche.com/investors/updates/inv-update-2026-01-29"
+    },
+    {
+      "id": 25,
+      "titulo": "Roche: Macht der Milliarden (familia, ≈9,3 % del capital y voto)",
+      "editor": "Bilanz",
+      "tipo": "Prensa",
+      "fecha": "2023",
+      "url": "https://www.bilanz.ch/unternehmen/portraits/roche-macht-der-milliarden/qxcggh9"
+    },
+    {
+      "id": 26,
+      "titulo": "Roche Holding AG (SWX:ROP) statistics: capitalización 265.960 M CHF, 795,62 M de acciones, PER 20,81 y PER adelantado 16,26",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-13",
+      "url": "https://stockanalysis.com/quote/swx/ROP/statistics/"
+    },
+    {
+      "id": 27,
+      "titulo": "Roche Holding AG (RHHBY) price history: cierre de 54,09 USD el 9-oct-2026 (8 ADR = 1 título)",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-09",
+      "url": "https://stockanalysis.com/quote/otc/RHHBY/history/"
+    },
+    {
+      "id": 28,
+      "titulo": "Estimaciones 2026e-2027e de ventas, EBITDA y beneficio de Roche y comparables (consulta del 8-oct-2026, en el informe de Novo Nordisk)",
+      "editor": "MarketScreener",
+      "tipo": "Analistas",
+      "fecha": "2026-10-08",
+      "url": "https://www.marketscreener.com/quote/stock/ROCHE-HOLDING-AG-9364975/"
+    },
+    {
+      "id": 29,
+      "titulo": "Roche post HY 2026 consensus (BPA core 2025-2027)",
+      "editor": "Roche",
+      "tipo": "Analistas",
+      "fecha": "2026-08",
+      "url": "https://assets.roche.com/f/176343/x/385dcb4d78/roche-post-hy-2026-consensus.pdf"
+    },
+    {
+      "id": 30,
+      "titulo": "Roche Holding: Kursziel und Gewinnschätzungen (24 objetivos; BPA 2026-2028)",
+      "editor": "Stocksguide / aktien.guide",
+      "tipo": "Analistas",
+      "fecha": "2026-08-04",
+      "url": "https://stocksguide.com/en/forecast/Roche-Holding-br-CH0012032113"
+    },
+    {
+      "id": 31,
+      "titulo": "Roche (ROG.SW) price history: cierres mensuales de diciembre 2022-2025",
+      "editor": "Digrin",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www.digrin.com/stocks/detail/ROG.SW/price"
+    },
+    {
+      "id": 32,
+      "titulo": "Roche Holding AG: cotización del 4-ago-2026 y rango de 52 semanas (256,40-383,00 CHF)",
+      "editor": "comdirect",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-08-04",
+      "url": "https://www.comdirect.de/inf/aktien/CH0012032113"
+    },
+    {
+      "id": 33,
+      "titulo": "Roche setzt auf neue Medikamente, doch die Aktie dreht ins Minus (Pharma Day, 28-sep-2026; 10 comprar, 8 mantener, 3 vender)",
+      "editor": "MS Aktuell",
+      "tipo": "Prensa",
+      "fecha": "2026-09-28",
+      "url": "https://ms-aktuell.de/welt/roche-pharma-day-28-09-2026/"
+    },
+    {
+      "id": 34,
+      "titulo": "Roche Aktie: Dividende 2026 auf 10,00 CHF erhöht (previsión de analistas)",
+      "editor": "Börse Express",
+      "tipo": "Prensa",
+      "fecha": "2026-07",
+      "url": "https://www.boerse-express.com/news/articles/roche-aktie-dividende-2026-auf-1000-chf-erhoeht-899534"
+    },
+    {
+      "id": 35,
+      "titulo": "Swiss Bond Yield at One-Week High (0,54 %, 8-oct-2026)",
+      "editor": "Trading Economics",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-08",
+      "url": "https://tradingeconomics.com/switzerland/government-bond-yield/news/590510"
+    },
+    {
+      "id": 36,
+      "titulo": "Chugai Pharmaceutical (4519): cotización y capitalización (≈11,4 billones de JPY, 31-jul-2026)",
+      "editor": "Fintel",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07-31",
+      "url": "https://fintel.io/s/jp/4519"
+    },
+    {
+      "id": 37,
+      "titulo": "Corporate action Roche Holding AG: canje de Genussscheine por Partizipationsscheine (17-mar-2026)",
+      "editor": "Erste Group",
+      "tipo": "Prensa",
+      "fecha": "2026-03-17",
+      "url": "https://www.erstegroup.com/en/investments/news-research/product-news/2026/03/17/corporate-action-roche-holding-ag"
+    },
+    {
+      "id": 38,
+      "titulo": "Morgan Stanley turns positive on Roche as pipeline momentum builds (objetivo 410 CHF)",
+      "editor": "Investing.com",
+      "tipo": "Analistas",
+      "fecha": "2026-08",
+      "url": "https://www.investing.com/news/stock-market-news/morgan-stanley-turns-positive-on-roche-as-pipeline-momentum-builds-4845794"
+    },
+    {
+      "id": 39,
+      "titulo": "Swiss franc to Euro exchange rate history (2-oct-2026)",
+      "editor": "exchange-rates.org",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-02",
+      "url": "https://www.exchange-rates.org/exchange-rate-history/chf-eur-2026-10-02"
+    },
+    {
+      "id": 40,
+      "titulo": "Roche CH0012032048: calendario (resultados del 3T26 el 22-oct-2026)",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://ae.marketscreener.com/quote/stock/ROCHE-HOLDING-AG-9364975/calendar/"
+    },
+    {
+      "id": 41,
+      "titulo": "Roche: Despite Some Study Setbacks, Pipeline Gives Me Increasing Confidence",
+      "editor": "Seeking Alpha",
+      "tipo": "Foros y redes",
+      "fecha": "2026-08",
+      "url": "https://seekingalpha.com/article/4848850-roche-stock-despite-some-study-setbacks-pipeline-gives-me-increasing-confidence"
+    },
+    {
+      "id": 42,
+      "titulo": "Roche am Mehrjahreshoch abgeprallt: geben die Aktien die Jahresgewinne wieder ab?",
+      "editor": "cash.ch",
+      "tipo": "Foros y redes",
+      "fecha": "2026-09",
+      "url": "https://www.cash.ch/news/top-news/roche-am-mehrjahreshoch-abgeprallt-geben-die-aktien-die-jahresgewinne-wieder-ab-961353"
+    },
+    {
+      "id": 43,
+      "titulo": "Roche Holding shares: community narratives",
+      "editor": "Simply Wall St",
+      "tipo": "Foros y redes",
+      "fecha": "2026-07",
+      "url": "https://simplywall.st/community/narratives/ch/pharmaceuticals-biotech/vtx-rog/roche-holding-shares"
+    },
+    {
+      "id": 44,
+      "titulo": "Roche Aktie: Ernüchternde Zeiten",
+      "editor": "Börse Express",
+      "tipo": "Foros y redes",
+      "fecha": "2026-07",
+      "url": "https://www.boerse-express.com/news/articles/roche-aktie-ernuechternde-zeiten-875530"
+    },
+    {
+      "id": 45,
+      "titulo": "FDA accepts NDA for giredestrant in early-stage breast cancer (decisión el 30-nov-2026)",
+      "editor": "PharmExec",
+      "tipo": "Prensa",
+      "fecha": "2026-06-02",
+      "url": "https://www.pharmexec.com/view/fda-accepts-nda-giredestrant-er-positive-early-stage-breast-cancer"
+    },
+    {
+      "id": 46,
+      "titulo": "Implied ERP by month (ERPbymonth.xlsx): prima implícita del S&P 500 de octubre de 2026, 4,20 % (dato del repo, verticales/empresa/prompt.md)",
+      "editor": "Aswath Damodaran (NYU Stern)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx"
+    }
+  ],
+  "calc": {
+    "version": 4,
+    "etiquetas": {
+      "margen_bruto": "M. bruto",
+      "margen_bruto_largo": "Margen bruto",
+      "dias_base": "sobre el coste de ventas"
+    },
+    "recomendacion": {
+      "recomendacion": "Mantener",
+      "regla": "Mantener",
+      "regla_absoluta": "Mantener",
+      "regla_relativa": "Comprar",
+      "coincide": true,
+      "conviccion": "Baja",
+      "conviccion_sugerida": "Baja",
+      "conviccion_razones": [
+        "las reglas discrepan (absoluta Mantener, relativa Comprar)"
+      ],
+      "reglas_discrepan": true,
+      "relativo": {
+        "prima_implicita_pct": 4.2,
+        "wacc": 4.32,
+        "ke": 4.48,
+        "dcf": 477.78,
+        "dcf_min": 415.02,
+        "dcf_max": 559.58,
+        "valor_objetivo": 432.91,
+        "alcista": 536.73,
+        "bajista": 343.88,
+        "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+        "fecha": "2026-10",
+        "potencial_pct": 29.5,
+        "rentabilidad_total_pct": 32.4,
+        "asimetria": null
+      },
+      "objetivo_mercado_txt": " · con la prima implícita del mercado: 432,91 (+29,5 %)",
+      "objetivo_mercado_corto": " · mercado 432,91",
+      "rentabilidad_mercado_corto": " · mercado +32,4 %",
+      "potencial_pct": 9.8,
+      "dividendo_pct": 2.9,
+      "rentabilidad_total_pct": 12.7,
+      "alcista_pct": 28.5,
+      "bajista_pct": -16.3,
+      "asimetria": 1.75,
+      "comprar_por_debajo": 286.88,
+      "vender_por_encima": 368.85,
+      "tabla": [
+        {
+          "concepto": "Objetivo a 12 meses (nuestro PER × nuestro BPA 2028e, ponderado 25/50/25)",
+          "valor": "322,16 CHF"
+        },
+        {
+          "concepto": "Bajista / base / alcista a 12 meses",
+          "valor": "13,2x × 19,95 = 263,34 · 14,0x × 22,25 = 311,50 · 17,2x × 23,39 = 402,31"
+        },
+        {
+          "concepto": "Rentabilidad a 12 meses: ponderada / del base (con dividendo)",
+          "valor": "-0,7 % / -3,9 %"
+        },
+        {
+          "concepto": "Regla de múltiplos aplicada",
+          "valor": "v2: base = mín(actual, mediana 5 a) con la historia al cierre; bajista mín. 5 a o base × 0,85; alcista techo base × 1,30 (selector de método: historia adelantada de 3 años: decide la más baja de v3 y v2 (v2))"
+        },
+        {
+          "concepto": "Objetivo medio de los analistas (solo contraste)",
+          "valor": "367,20 (nuestro base -15,2 %)"
+        },
+        {
+          "concepto": "Valor intrínseco (síntesis ponderada, largo plazo)",
+          "valor": "366,92 CHF"
+        },
+        {
+          "concepto": "Potencial sobre el precio actual",
+          "valor": "9,8 %"
+        },
+        {
+          "concepto": "Rentabilidad por dividendo ordinario",
+          "valor": "2,9 %"
+        },
+        {
+          "concepto": "Rentabilidad total esperada a 12 meses",
+          "valor": "12,7 %"
+        },
+        {
+          "concepto": "Escenario alcista / bajista",
+          "valor": "28,5 % / -16,3 %"
+        },
+        {
+          "concepto": "Asimetría (ganancia alcista / pérdida bajista)",
+          "valor": "1,75x"
+        },
+        {
+          "concepto": "Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado",
+          "valor": "5,7 % frente a 5,1 % y 4,3 %"
+        },
+        {
+          "concepto": "Valor objetivo con la prima implícita del mercado (4,2 %, WACC 4,3 %)",
+          "valor": "432,91 CHF"
+        },
+        {
+          "concepto": "Rentabilidad total esperada con la prima del mercado",
+          "valor": "32,4 %"
+        },
+        {
+          "concepto": "Asimetría con la prima del mercado",
+          "valor": "n.d."
+        },
+        {
+          "concepto": "Regla absoluta (frente a su coste de capital)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Regla relativa (frente a lo que pide el mercado)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "¿La calidad de la empresa sostiene el crecimiento previsto?",
+          "valor": "Sí (2,4 % anual proyectado; financiable al ROIC actual: 4,2 %)"
+        },
+        {
+          "concepto": "Señal del valor intrínseco (regla del DCF, referencia)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "Recomendación según la regla a 12 meses (Comprar: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender: ponderada ≤ -10 %)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Convicción según los criterios (las reglas discrepan (absoluta Mantener, relativa Comprar))",
+          "valor": "Baja"
+        }
+      ],
+      "niveles": [
+        {
+          "accion": "Comprar",
+          "condicion": "Por debajo de 286,88 (ponderada a 12 meses ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco)"
+        },
+        {
+          "accion": "Mantener",
+          "condicion": "Entre 286,88 y 368,85"
+        },
+        {
+          "accion": "Vender o reducir",
+          "condicion": "Por encima de 368,85 (ponderada a 12 meses ≤ -10 %)"
+        }
+      ],
+      "precio_txt": "",
+      "valor_objetivo_txt": "",
+      "regla_valor_intrinseco": "Comprar",
+      "objetivo_12m": {
+        "completo": true,
+        "filas": [
+          {
+            "escenario": "Bajista",
+            "metrica": "PER 2028e (BPA core)",
+            "beneficio_por_accion": 19.95,
+            "multiplo": 13.2,
+            "multiplo_informe": null,
+            "origen": "mínimo de 5 años",
+            "precio": 263.34,
+            "rentabilidad_pct": -18.3,
+            "justificacion": "Ventas de 67.561 M en 2028e (+2,5 % en 2027e-2028e), margen operativo core del 32,2 % (2,5 puntos menos): BPA core de 19,95 CHF, por debajo del de 2025. El mercado paga el mínimo de 2022-2025 (13,2x)."
+          },
+          {
+            "escenario": "Base",
+            "metrica": "PER 2028e (BPA core)",
+            "beneficio_por_accion": 22.25,
+            "multiplo": 14,
+            "multiplo_informe": null,
+            "origen": "mediana de 5 años",
+            "precio": 311.5,
+            "rentabilidad_pct": -3.9,
+            "justificacion": "Ventas de 69.551 M en 2028e (+1,5 %, +4 %, +4 %), margen operativo core del 34,7 % (como en 2025), resultado financiero −1.000 M, impuestos del 18 % y minoritarios de Chugai: BPA core de 22,25 CHF."
+          },
+          {
+            "escenario": "Alcista",
+            "metrica": "PER 2028e (BPA core)",
+            "beneficio_por_accion": 23.39,
+            "multiplo": 17.2,
+            "multiplo_informe": null,
+            "origen": "mediana de los comparables",
+            "precio": 402.31,
+            "rentabilidad_pct": 23.3,
+            "justificacion": "Ventas de 70.898 M (+5 % en 2027e-2028e) y margen core del 35,7 %: BPA core de 23,39 CHF, cerca del consenso de 2028e (23,78)."
+          }
+        ],
+        "regla": {
+          "version": "v2",
+          "bajista": 13.2,
+          "base": 14,
+          "alcista": 17.2,
+          "bajista_origen": "mínimo de 5 años",
+          "base_origen": "mediana de 5 años",
+          "alcista_origen": "mediana de los comparables"
+        },
+        "version": "v2",
+        "probabilidades": [
+          25,
+          50,
+          25
+        ],
+        "objetivo_ponderado": 322.16,
+        "objetivo_simple": 325.72,
+        "objetivo_base": 311.5,
+        "rentabilidad_ponderada_pct": -0.7,
+        "rentabilidad_simple_pct": 0.4,
+        "rentabilidad_base_pct": -3.9,
+        "asimetria": 0.96,
+        "senal": "Mantener",
+        "senal_sin_confirmar": null,
+        "confianza_baja": false,
+        "comprar_por_debajo": 286.88,
+        "vender_por_encima": 368.85,
+        "consenso_objetivo": 367.2,
+        "diferencia_consenso_pct": -15.2,
+        "selector": {
+          "regla": "v2",
+          "motivo": "historia adelantada de 3 años: decide la más baja de v3 y v2 (v2)",
+          "v3_sin_selector": {
+            "version": "v3",
+            "rentabilidad_ponderada_pct": 21.2,
+            "rentabilidad_base_pct": 17.4,
+            "senal": "Comprar",
+            "objetivo_ponderado": 395.34
+          },
+          "v2": {
+            "version": "v2",
+            "rentabilidad_ponderada_pct": -0.7,
+            "rentabilidad_base_pct": -3.9,
+            "senal": "Mantener",
+            "objetivo_ponderado": 322.16
+          }
+        },
+        "v2": {
+          "rentabilidad_ponderada_pct": -0.7,
+          "rentabilidad_base_pct": -3.9,
+          "senal": "Mantener",
+          "multiplos": [
+            13.2,
+            14,
+            17.2
+          ]
+        },
+        "v3_tope_anterior": {
+          "tope": 1.3,
+          "rentabilidad_ponderada_pct": 31.3,
+          "senal": "Comprar"
+        },
+        "v3_sin_selector": {
+          "version": "v3",
+          "rentabilidad_ponderada_pct": 21.2,
+          "rentabilidad_base_pct": 17.4,
+          "senal": "Comprar",
+          "objetivo_ponderado": 395.34
+        },
+        "comparacion_txt": "Para comparar, con la regla v2 (historia al cierre, mismo precio): 13,2x / 14,0x / 17,2x, -0,7 % Mantener; con el tope anterior del base (×1,3, 14-oct mediodía): 31,3 % Comprar; con la v3 sin el selector (tope ×1,1): 21,2 % Comprar. Decide la v2, elegida por el selector de método (historia adelantada de 3 años: decide la más baja de v3 y v2 (v2); METODO-VIGENTE.md)."
+      },
+      "rentabilidad_12m_pct": -0.7,
+      "rentabilidad_12m_txt": "-0,7 % (base -3,9 %)",
+      "objetivo_12m_txt": "322,16 CHF"
+    },
+    "mercado": {
+      "precio": 334.3,
+      "acciones": 795.62,
+      "capitalizacion": 265976,
+      "deuda_neta": 23632,
+      "deuda_neta_ajustada": null,
+      "asimilables_deuda": null,
+      "ajustes_puente": 24000,
+      "valor_empresa": 313608,
+      "fecha_puente": "2026-06-30"
+    },
+    "clave": {
+      "capitalizacion": 265976,
+      "valor_empresa": 313608,
+      "deuda_neta": 23632,
+      "ev_ventas_ltm": 4.95,
+      "ev_ebitda_ltm": 14.3,
+      "ev_ebitda_ntm": 12.8,
+      "ev_ebit_ltm": 17,
+      "per_ltm": 20.8,
+      "per_ntm": 15.5,
+      "fcf_yield_pct": 5.7,
+      "dividendo_pct": 2.9,
+      "dn_ebitda": 1.1,
+      "roic_pct": 27.1,
+      "margen_ebitda_pct": 34.5,
+      "deuda_neta_ajustada": 23632,
+      "dn_ebitda_ajustada": 1.1,
+      "crecimiento_tcac_pct": -1,
+      "ingresos_ntm": 65186,
+      "ebitda_ntm": 24579,
+      "bpa_ntm": 21.64,
+      "ebitda_ltm": 21862,
+      "ingresos_ltm": 63356,
+      "ev_rab": null
+    },
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 65850,
+        "crecimiento_pct": null,
+        "beneficio_bruto": 46203,
+        "margen_bruto_pct": 70.2,
+        "ebitda": 22598,
+        "margen_ebitda_pct": 34.3,
+        "ebit": 18155,
+        "margen_ebit_pct": 27.6,
+        "beneficio_neto": 13930,
+        "margen_neto_pct": 21.2,
+        "bpa": 16.2,
+        "dpa": 9.3,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 14.2,
+        "payout_pct": 57
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 65814,
+        "crecimiento_pct": -0.1,
+        "beneficio_bruto": 46077,
+        "margen_bruto_pct": 70,
+        "ebitda": 21320,
+        "margen_ebitda_pct": 32.4,
+        "ebit": 17476,
+        "margen_ebit_pct": 26.6,
+        "beneficio_neto": 12421,
+        "margen_neto_pct": 18.9,
+        "bpa": 15.37,
+        "dpa": 9.5,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 17.1,
+        "payout_pct": 62
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 60441,
+        "crecimiento_pct": -8.2,
+        "beneficio_bruto": 44084,
+        "margen_bruto_pct": 72.9,
+        "ebitda": 18859,
+        "margen_ebitda_pct": 31.2,
+        "ebit": 15395,
+        "margen_ebit_pct": 25.5,
+        "beneficio_neto": 11498,
+        "margen_neto_pct": 19,
+        "bpa": null,
+        "dpa": 9.6,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 12.2,
+        "payout_pct": null
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 62395,
+        "crecimiento_pct": 3.2,
+        "beneficio_bruto": 46112,
+        "margen_bruto_pct": 73.9,
+        "ebitda": 16840,
+        "margen_ebitda_pct": 27,
+        "ebit": 13417,
+        "margen_ebit_pct": 21.5,
+        "beneficio_neto": 8277,
+        "margen_neto_pct": 13.3,
+        "bpa": 10.32,
+        "dpa": 9.7,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 22.1,
+        "payout_pct": 94
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 63356,
+        "crecimiento_pct": 1.5,
+        "beneficio_bruto": 46711,
+        "margen_bruto_pct": 73.7,
+        "ebitda": 21862,
+        "margen_ebitda_pct": 34.5,
+        "ebit": 18476,
+        "margen_ebit_pct": 29.2,
+        "beneficio_neto": 12880,
+        "margen_neto_pct": 20.3,
+        "bpa": 16.04,
+        "dpa": 9.8,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 18.7,
+        "payout_pct": 61
+      }
+    ],
+    "tcac": {
+      "periodo": "2021-2025",
+      "ingresos_pct": -1,
+      "ebitda_pct": -0.8,
+      "bpa_pct": -0.2
+    },
+    "cuenta_y_prevision": [
+      {
+        "periodo": "2021",
+        "ingresos": 65850,
+        "ebitda": 22598
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 65814,
+        "ebitda": 21320
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 60441,
+        "ebitda": 18859
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 62395,
+        "ebitda": 16840
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 63356,
+        "ebitda": 21862
+      },
+      {
+        "periodo": "2026e",
+        "ingresos": 64306,
+        "ebitda": 23150
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 66879,
+        "ebitda": 24411
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 69554,
+        "ebitda": 25387
+      },
+      {
+        "periodo": "2029e",
+        "ingresos": 71640,
+        "ebitda": 26149
+      },
+      {
+        "periodo": "2030e",
+        "ingresos": 73790,
+        "ebitda": 26933
+      },
+      {
+        "periodo": "2031e",
+        "ingresos": 75634,
+        "ebitda": 27228
+      },
+      {
+        "periodo": "2032e",
+        "ingresos": 77147,
+        "ebitda": 27773
+      },
+      {
+        "periodo": "2033e",
+        "ingresos": 78304,
+        "ebitda": 28190
+      },
+      {
+        "periodo": "2034e",
+        "ingresos": 79087,
+        "ebitda": 28471
+      },
+      {
+        "periodo": "2035e",
+        "ingresos": 79878,
+        "ebitda": 28756
+      }
+    ],
+    "segmentos_ultimo": [
+      {
+        "nombre": "Farma",
+        "ingresos": 47669,
+        "peso_pct": 75.2,
+        "crecimiento_pct": null,
+        "margen_pct": null,
+        "tipo_margen": null
+      },
+      {
+        "nombre": "Diagnóstico",
+        "ingresos": 13847,
+        "peso_pct": 21.9,
+        "crecimiento_pct": null,
+        "margen_pct": null,
+        "tipo_margen": null
+      },
+      {
+        "nombre": "Royalties y otros ingresos",
+        "ingresos": 1840,
+        "peso_pct": 2.9,
+        "crecimiento_pct": null,
+        "margen_pct": null,
+        "tipo_margen": null
+      }
+    ],
+    "segmentos_tabla": {
+      "periodos": [
+        "",
+        "",
+        "",
+        "",
+        "2025"
+      ],
+      "filas": [
+        {
+          "nombre": "Farma",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": null,
+          "v4": 47669
+        },
+        {
+          "nombre": "Diagnóstico",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": null,
+          "v4": 13847
+        },
+        {
+          "nombre": "Royalties y otros ingresos",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": null,
+          "v4": 1840
+        }
+      ]
+    },
+    "segmentos_periodo": "2025",
+    "balance": [
+      {
+        "periodo": "2021",
+        "activo_total": 92317,
+        "intangibles": 22926,
+        "circulante": 13884,
+        "circulante_ventas_pct": 21.1,
+        "caja": 13031,
+        "deuda_financiera": 31198,
+        "arrendamientos": 1374,
+        "deuda_neta": 19541,
+        "patrimonio": 24489,
+        "minoritarios": 3856,
+        "dn_ebitda": 0.86,
+        "dn_patrimonio_pct": 69,
+        "dso": 60,
+        "dio": 143,
+        "dpo": 86,
+        "ciclo_caja": 117,
+        "cobertura_intereses": 24,
+        "capital_invertido": 47886,
+        "liquidez_corriente": 0.93
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 88151,
+        "intangibles": 20505,
+        "circulante": 15655,
+        "circulante_ventas_pct": 23.8,
+        "caja": 9800,
+        "deuda_financiera": 25351,
+        "arrendamientos": 1348,
+        "deuda_neta": 16899,
+        "patrimonio": 27992,
+        "minoritarios": 4023,
+        "dn_ebitda": 0.79,
+        "dn_patrimonio_pct": 53,
+        "dso": 64,
+        "dio": 159,
+        "dpo": 84,
+        "ciclo_caja": 139,
+        "cobertura_intereses": 15.2,
+        "capital_invertido": 48914,
+        "liquidez_corriente": 1.24
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 90468,
+        "intangibles": 24218,
+        "circulante": 14445,
+        "circulante_ventas_pct": 23.9,
+        "caja": 10500,
+        "deuda_financiera": 29209,
+        "arrendamientos": 1641,
+        "deuda_neta": 20350,
+        "patrimonio": 29315,
+        "minoritarios": 3948,
+        "dn_ebitda": 1.08,
+        "dn_patrimonio_pct": 61,
+        "dso": 67,
+        "dio": 173,
+        "dpo": 97,
+        "ciclo_caja": 143,
+        "cobertura_intereses": 11.7,
+        "capital_invertido": 53613,
+        "liquidez_corriente": 1.35
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 101801,
+        "intangibles": 25179,
+        "circulante": 14009,
+        "circulante_ventas_pct": 22.5,
+        "caja": 17317,
+        "deuda_financiera": 34654,
+        "arrendamientos": 1725,
+        "deuda_neta": 19062,
+        "patrimonio": 31767,
+        "minoritarios": 4394,
+        "dn_ebitda": 1.13,
+        "dn_patrimonio_pct": 53,
+        "dso": 66,
+        "dio": 170,
+        "dpo": 110,
+        "ciclo_caja": 126,
+        "cobertura_intereses": 8.3,
+        "capital_invertido": 55223,
+        "liquidez_corriente": 1.48
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 100703,
+        "intangibles": 26813,
+        "circulante": 13206,
+        "circulante_ventas_pct": 20.8,
+        "caja": 15476,
+        "deuda_financiera": 31636,
+        "arrendamientos": 1561,
+        "deuda_neta": 17721,
+        "patrimonio": 33802,
+        "minoritarios": 4078,
+        "dn_ebitda": 0.81,
+        "dn_patrimonio_pct": 47,
+        "dso": 66,
+        "dio": 164,
+        "dpo": 127,
+        "ciclo_caja": 103,
+        "cobertura_intereses": 13.7,
+        "capital_invertido": 55601,
+        "liquidez_corriente": 1.38
+      }
+    ],
+    "perimetro_nota": null,
+    "flujos": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 20976,
+        "capex": 3693,
+        "pagos_arrendamientos": null,
+        "fcf": 17283,
+        "beneficio_neto": 13930,
+        "conversion_pct": 124,
+        "capex_ventas_pct": 5.6,
+        "capex_amortizacion": 0.83,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 7844,
+        "recompras": 19024,
+        "emision_acciones": 0,
+        "retorno_accionista": 26868,
+        "payout_caja_pct": 193,
+        "acciones": 860,
+        "fcf_por_accion": 20.1
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 17803,
+        "capex": 3449,
+        "pagos_arrendamientos": null,
+        "fcf": 14354,
+        "beneficio_neto": 12421,
+        "conversion_pct": 116,
+        "capex_ventas_pct": 5.2,
+        "capex_amortizacion": 0.9,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 7514,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 7514,
+        "payout_caja_pct": 60,
+        "acciones": 808,
+        "fcf_por_accion": 17.76
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 16095,
+        "capex": 3742,
+        "pagos_arrendamientos": null,
+        "fcf": 12353,
+        "beneficio_neto": 11498,
+        "conversion_pct": 107,
+        "capex_ventas_pct": 6.2,
+        "capex_amortizacion": 1.08,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 7648,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 7648,
+        "payout_caja_pct": 67,
+        "acciones": null,
+        "fcf_por_accion": null
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 20094,
+        "capex": 3529,
+        "pagos_arrendamientos": null,
+        "fcf": 16565,
+        "beneficio_neto": 8277,
+        "conversion_pct": 200,
+        "capex_ventas_pct": 5.7,
+        "capex_amortizacion": 1.03,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 7709,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 7709,
+        "payout_caja_pct": 93,
+        "acciones": 802,
+        "fcf_por_accion": 20.65
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 18852,
+        "capex": 3748,
+        "pagos_arrendamientos": null,
+        "fcf": 15104,
+        "beneficio_neto": 12880,
+        "conversion_pct": 117,
+        "capex_ventas_pct": 5.9,
+        "capex_amortizacion": 1.11,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 7789,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 7789,
+        "payout_caja_pct": 60,
+        "acciones": 803,
+        "fcf_por_accion": 18.81
+      }
+    ],
+    "flujos_acumulado": {
+      "periodo": "2021-2025",
+      "fcf": 75659,
+      "adquisiciones": 0,
+      "dividendos": 38504,
+      "recompras": 19024,
+      "conversion_pct": 128
+    },
+    "rentabilidad": [
+      {
+        "periodo": "2021",
+        "nopat": 15585,
+        "capital_invertido": 47886,
+        "roic_pct": 32.5,
+        "roic_nota": null,
+        "roe_pct": 56.9,
+        "roa_pct": 15.1,
+        "margen_neto_pct": 21.2,
+        "rotacion": 0.71,
+        "apalancamiento": 3.77
+      },
+      {
+        "periodo": "2022",
+        "nopat": 14483,
+        "capital_invertido": 48400,
+        "roic_pct": 29.9,
+        "roic_nota": null,
+        "roe_pct": 47.3,
+        "roa_pct": 13.8,
+        "margen_neto_pct": 18.9,
+        "rotacion": 0.73,
+        "apalancamiento": 3.44
+      },
+      {
+        "periodo": "2023",
+        "nopat": 13513,
+        "capital_invertido": 51264,
+        "roic_pct": 26.4,
+        "roic_nota": null,
+        "roe_pct": 40.1,
+        "roa_pct": 12.9,
+        "margen_neto_pct": 19,
+        "rotacion": 0.68,
+        "apalancamiento": 3.12
+      },
+      {
+        "periodo": "2024",
+        "nopat": 10452,
+        "capital_invertido": 54418,
+        "roic_pct": 19.2,
+        "roic_nota": null,
+        "roe_pct": 27.1,
+        "roa_pct": 8.6,
+        "margen_neto_pct": 13.3,
+        "rotacion": 0.65,
+        "apalancamiento": 3.15
+      },
+      {
+        "periodo": "2025",
+        "nopat": 15021,
+        "capital_invertido": 55412,
+        "roic_pct": 27.1,
+        "roic_nota": null,
+        "roe_pct": 39.3,
+        "roa_pct": 12.7,
+        "margen_neto_pct": 20.3,
+        "rotacion": 0.63,
+        "apalancamiento": 3.09
+      }
+    ],
+    "roic_incremental_pct": -7.5,
+    "roic_frente_wacc": [
+      {
+        "periodo": "2021",
+        "roic_pct": 32.5,
+        "roe_pct": 56.9,
+        "wacc_pct": 5.1
+      },
+      {
+        "periodo": "2022",
+        "roic_pct": 29.9,
+        "roe_pct": 47.3,
+        "wacc_pct": 5.1
+      },
+      {
+        "periodo": "2023",
+        "roic_pct": 26.4,
+        "roe_pct": 40.1,
+        "wacc_pct": 5.1
+      },
+      {
+        "periodo": "2024",
+        "roic_pct": 19.2,
+        "roe_pct": 27.1,
+        "wacc_pct": 5.1
+      },
+      {
+        "periodo": "2025",
+        "roic_pct": 27.1,
+        "roe_pct": 39.3,
+        "wacc_pct": 5.1
+      }
+    ],
+    "calidad": {
+      "periodo": "2025",
+      "altman_z": 3.9,
+      "altman_zona": "Zona segura",
+      "piotroski_f": 7,
+      "piotroski_detalle": [
+        {
+          "criterio": "Beneficio neto positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "ROA mejora",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo > beneficio neto",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Baja el endeudamiento (deuda / activo)",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora la liquidez corriente",
+          "resultado": "No"
+        },
+        {
+          "criterio": "No emite acciones",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora el margen bruto",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Mejora la rotación del activo",
+          "resultado": "Sí"
+        }
+      ],
+      "beneish_m": -2.72,
+      "beneish_fiable": true,
+      "beneish_variables": [
+        {
+          "variable": "DSRI",
+          "valor": 1
+        },
+        {
+          "variable": "GMI",
+          "valor": 1
+        },
+        {
+          "variable": "AQI",
+          "valor": 1.04
+        },
+        {
+          "variable": "SGI",
+          "valor": 1.02
+        },
+        {
+          "variable": "DEPI",
+          "valor": 0.98
+        },
+        {
+          "variable": "SGAI",
+          "valor": 1
+        },
+        {
+          "variable": "LVGI",
+          "valor": 0.97
+        },
+        {
+          "variable": "TATA",
+          "valor": -0.06
+        }
+      ],
+      "tabla": [
+        {
+          "indicador": "Altman Z",
+          "valor": "3,90",
+          "lectura": "Zona segura (> 2,99 seguro; < 1,81 riesgo). No aplica a bancos ni aseguradoras, y subestima la solvencia de empresas con grandes anticipos de clientes o prefinanciación pública (contratistas, construcción), que inflan el pasivo."
+        },
+        {
+          "indicador": "Piotroski F",
+          "valor": "7 / 9",
+          "lectura": "Fortaleza financiera alta (7-9)."
+        },
+        {
+          "indicador": "Beneish M",
+          "valor": "-2,72",
+          "lectura": "Por debajo de −1,78: sin señal de manipulación."
+        },
+        {
+          "indicador": "Flujo operativo / beneficio neto (acumulado)",
+          "valor": "1,59x",
+          "lectura": "El beneficio se cobra."
+        }
+      ]
+    },
+    "dcf": {
+      "proyeccion": [
+        {
+          "periodo": "2026e",
+          "ingresos": 64306,
+          "crecimiento_pct": 1.5,
+          "ebitda": 23150,
+          "margen_ebitda_pct": 36,
+          "amortizacion": 3408,
+          "ebit": 19742,
+          "impuestos": 3652,
+          "capex": 5788,
+          "variacion_circulante": 298,
+          "fcff": 13412,
+          "fraccion": 0.21,
+          "factor": 0.995,
+          "vp": 2849
+        },
+        {
+          "periodo": "2027e",
+          "ingresos": 66879,
+          "crecimiento_pct": 4,
+          "ebitda": 24411,
+          "margen_ebitda_pct": 36.5,
+          "amortizacion": 3545,
+          "ebit": 20866,
+          "impuestos": 3860,
+          "capex": 6019,
+          "variacion_circulante": 540,
+          "fcff": 13991,
+          "fraccion": 1,
+          "factor": 0.965,
+          "vp": 13491
+        },
+        {
+          "periodo": "2028e",
+          "ingresos": 69554,
+          "crecimiento_pct": 4,
+          "ebitda": 25387,
+          "margen_ebitda_pct": 36.5,
+          "amortizacion": 3686,
+          "ebit": 21701,
+          "impuestos": 4015,
+          "capex": 6260,
+          "variacion_circulante": 562,
+          "fcff": 14551,
+          "fraccion": 1,
+          "factor": 0.918,
+          "vp": 13353
+        },
+        {
+          "periodo": "2029e",
+          "ingresos": 71640,
+          "crecimiento_pct": 3,
+          "ebitda": 26149,
+          "margen_ebitda_pct": 36.5,
+          "amortizacion": 3797,
+          "ebit": 22352,
+          "impuestos": 4135,
+          "capex": 6448,
+          "variacion_circulante": 438,
+          "fcff": 15128,
+          "fraccion": 1,
+          "factor": 0.873,
+          "vp": 13196
+        },
+        {
+          "periodo": "2030e",
+          "ingresos": 73790,
+          "crecimiento_pct": 3,
+          "ebitda": 26933,
+          "margen_ebitda_pct": 36.5,
+          "amortizacion": 3911,
+          "ebit": 23022,
+          "impuestos": 4259,
+          "capex": 6641,
+          "variacion_circulante": 451,
+          "fcff": 15582,
+          "fraccion": 1,
+          "factor": 0.83,
+          "vp": 12928
+        },
+        {
+          "periodo": "2031e",
+          "ingresos": 75634,
+          "crecimiento_pct": 2.5,
+          "ebitda": 27228,
+          "margen_ebitda_pct": 36,
+          "amortizacion": 4009,
+          "ebit": 23220,
+          "impuestos": 4296,
+          "capex": 6429,
+          "variacion_circulante": 387,
+          "fcff": 16116,
+          "fraccion": 1,
+          "factor": 0.79,
+          "vp": 12719
+        },
+        {
+          "periodo": "2032e",
+          "ingresos": 77147,
+          "crecimiento_pct": 2,
+          "ebitda": 27773,
+          "margen_ebitda_pct": 36,
+          "amortizacion": 4089,
+          "ebit": 23684,
+          "impuestos": 4382,
+          "capex": 6557,
+          "variacion_circulante": 318,
+          "fcff": 16516,
+          "fraccion": 1,
+          "factor": 0.751,
+          "vp": 12405
+        },
+        {
+          "periodo": "2033e",
+          "ingresos": 78304,
+          "crecimiento_pct": 1.5,
+          "ebitda": 28190,
+          "margen_ebitda_pct": 36,
+          "amortizacion": 4150,
+          "ebit": 24039,
+          "impuestos": 4447,
+          "capex": 6656,
+          "variacion_circulante": 243,
+          "fcff": 16843,
+          "fraccion": 1,
+          "factor": 0.714,
+          "vp": 12025
+        },
+        {
+          "periodo": "2034e",
+          "ingresos": 79087,
+          "crecimiento_pct": 1,
+          "ebitda": 28471,
+          "margen_ebitda_pct": 36,
+          "amortizacion": 4192,
+          "ebit": 24280,
+          "impuestos": 4492,
+          "capex": 6722,
+          "variacion_circulante": 164,
+          "fcff": 17093,
+          "fraccion": 1,
+          "factor": 0.68,
+          "vp": 11607
+        },
+        {
+          "periodo": "2035e",
+          "ingresos": 79878,
+          "crecimiento_pct": 1,
+          "ebitda": 28756,
+          "margen_ebitda_pct": 36,
+          "amortizacion": 4234,
+          "ebit": 24523,
+          "impuestos": 4537,
+          "capex": 6790,
+          "variacion_circulante": 166,
+          "fcff": 17264,
+          "fraccion": 1,
+          "factor": 0.646,
+          "vp": 11151
+        }
+      ],
+      "etapa2": null,
+      "suma_vp": 115723,
+      "valor_terminal": 374226,
+      "vp_terminal": 235902,
+      "valor_empresa": 351624,
+      "peso_terminal_pct": 67,
+      "valor_acciones": 303992,
+      "valor_accion": 382.08,
+      "vt_gordon": 374226,
+      "vt_multiplo": 345073,
+      "multiplo_implicito": 13,
+      "g_implicito_pct": 0.13,
+      "metodo_terminal": "gordon",
+      "terminal_tabla": [
+        {
+          "concepto": "Método principal",
+          "valor": "Crecimiento a perpetuidad"
+        },
+        {
+          "concepto": "Crecimiento a perpetuidad",
+          "valor": "0,5 %"
+        },
+        {
+          "concepto": "Múltiplo EV/EBITDA de salida",
+          "valor": "12,0x"
+        },
+        {
+          "concepto": "Valor terminal (Gordon)",
+          "valor": "374.226"
+        },
+        {
+          "concepto": "Valor terminal (múltiplo)",
+          "valor": "345.073"
+        },
+        {
+          "concepto": "Múltiplo de salida implícito en Gordon",
+          "valor": "13,0x"
+        },
+        {
+          "concepto": "Crecimiento implícito en el múltiplo",
+          "valor": "0,13 %"
+        },
+        {
+          "concepto": "Peso del valor terminal en el valor empresa",
+          "valor": "67 %"
+        }
+      ],
+      "puente": [
+        {
+          "concepto": "Valor actual de los flujos proyectados",
+          "valor": "115.723"
+        },
+        {
+          "concepto": "Valor actual del valor terminal",
+          "valor": "235.902"
+        },
+        {
+          "concepto": "Valor empresa",
+          "valor": "351.624"
+        },
+        {
+          "concepto": "− Deuda financiera neta (con arrendamientos)",
+          "valor": "-23.632"
+        },
+        {
+          "concepto": "− Minoritarios, pensiones y otros; + asociadas",
+          "valor": "-24.000"
+        },
+        {
+          "concepto": "Valor de los fondos propios",
+          "valor": "303.992"
+        },
+        {
+          "concepto": "Acciones diluidas (millones)",
+          "valor": "795,6"
+        },
+        {
+          "concepto": "Valor por acción",
+          "valor": "382,08"
+        }
+      ],
+      "composicion": [
+        {
+          "parte": "Flujos proyectados",
+          "valor": 115723
+        },
+        {
+          "parte": "Valor terminal",
+          "valor": 235902
+        }
+      ],
+      "wacc": 5.14,
+      "ke": 5.39,
+      "kd_despues": 2.85,
+      "wacc_tabla": [
+        {
+          "concepto": "Tasa libre de riesgo",
+          "valor": "0,54 %"
+        },
+        {
+          "concepto": "Beta",
+          "valor": "0,70"
+        },
+        {
+          "concepto": "Prima de riesgo de mercado",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Prima adicional (país, tamaño, específica)",
+          "valor": "1,00 %"
+        },
+        {
+          "concepto": "Coste de los fondos propios",
+          "valor": "5,39 %"
+        },
+        {
+          "concepto": "Coste de la deuda antes de impuestos",
+          "valor": "3,50 %"
+        },
+        {
+          "concepto": "Tipo impositivo",
+          "valor": "18,50 %"
+        },
+        {
+          "concepto": "Coste de la deuda después de impuestos",
+          "valor": "2,85 %"
+        },
+        {
+          "concepto": "Peso de la deuda (D / (D + E))",
+          "valor": "10,00 %"
+        },
+        {
+          "concepto": "WACC",
+          "valor": "5,14 %"
+        },
+        {
+          "concepto": "Prima de riesgo implícita del mercado (regla relativa)",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "WACC con la prima implícita del mercado",
+          "valor": "4,32 %"
+        }
+      ],
+      "potencial_pct": 14.3,
+      "sensibilidad": {
+        "eje_columnas": "Crecimiento a perpetuidad",
+        "columnas": [
+          "-0,5 %",
+          "0,0 %",
+          "0,5 %",
+          "1,0 %",
+          "1,5 %"
+        ],
+        "filas": [
+          {
+            "wacc": "4,1 %",
+            "v0": 412.52,
+            "v1": 453.07,
+            "v2": 504.78,
+            "v3": 572.98,
+            "v4": 667.05
+          },
+          {
+            "wacc": "4,6 %",
+            "v0": 365.58,
+            "v1": 396.98,
+            "v2": 435.98,
+            "v3": 485.69,
+            "v4": 551.26
+          },
+          {
+            "wacc": "5,1 %",
+            "v0": 327.05,
+            "v1": 351.89,
+            "v2": 382.08,
+            "v3": 419.58,
+            "v4": 467.38
+          },
+          {
+            "wacc": "5,6 %",
+            "v0": 294.86,
+            "v1": 314.86,
+            "v2": 338.74,
+            "v3": 367.79,
+            "v4": 403.85
+          },
+          {
+            "wacc": "6,1 %",
+            "v0": 267.58,
+            "v1": 283.92,
+            "v2": 303.15,
+            "v3": 326.13,
+            "v4": 354.07
+          }
+        ]
+      },
+      "sensibilidad2": {
+        "columnas": [
+          "-2 pp",
+          "-1 pp",
+          "0 pp",
+          "+1 pp",
+          "+2 pp"
+        ],
+        "filas": [
+          {
+            "margen": "-2 pp",
+            "v0": 299.85,
+            "v1": 323.56,
+            "v2": 348.84,
+            "v3": 375.78,
+            "v4": 404.46
+          },
+          {
+            "margen": "-1 pp",
+            "v0": 314.16,
+            "v1": 338.99,
+            "v2": 365.46,
+            "v3": 393.68,
+            "v4": 423.74
+          },
+          {
+            "margen": "0 pp",
+            "v0": 328.48,
+            "v1": 354.42,
+            "v2": 382.08,
+            "v3": 411.58,
+            "v4": 443.02
+          },
+          {
+            "margen": "+1 pp",
+            "v0": 342.8,
+            "v1": 369.84,
+            "v2": 398.7,
+            "v3": 429.48,
+            "v4": 462.3
+          },
+          {
+            "margen": "+2 pp",
+            "v0": 357.11,
+            "v1": 385.27,
+            "v2": 415.32,
+            "v3": 447.38,
+            "v4": 481.58
+          }
+        ]
+      },
+      "rango_min": 314.86,
+      "rango_max": 485.69,
+      "inverso": {
+        "crecimiento_implicito_pct": 0.7,
+        "crecimiento_base_pct": 2.4,
+        "periodo": "2027e-2035e",
+        "margen_implicito_pct": 33.1,
+        "margen_implicito_texto": null,
+        "margen_base_pct": 36,
+        "rentabilidad_implicita_pct": 5.7
+      },
+      "sostenibilidad": {
+        "veredicto": "Sí",
+        "crecimiento_proyectado_pct": 2.4,
+        "tasa_reinversion_pct": 16,
+        "crecimiento_financiable_pct": 4.2,
+        "roic_pct": 27.1,
+        "roic_incremental_historico_pct": -7.5,
+        "roic_implicito_pct": 17.2,
+        "cuota_actual_pct": null,
+        "cuota_final_pct": null,
+        "puente": [
+          {
+            "periodo": "2026e",
+            "volumen_pct": 5.5,
+            "precio_pct": 0,
+            "otros_pct": -4,
+            "comentario": "Volumen y mezcla +5,5 % (Vabysmo, Ocrevus subcutáneo, Polivy, Columvi; guía de un dígito medio a tipo constante neta de ≈1.000 M de biosimilares) [1, 19]; precio 0; divisa −4 % (1S26: +6 % frente a −2 %) [2].",
+            "suma_pct": 1.5,
+            "crecimiento_pct": 1.5
+          },
+          {
+            "periodo": "2027e",
+            "volumen_pct": 5,
+            "precio_pct": -0.5,
+            "otros_pct": -0.5,
+            "comentario": "Volumen +5 % (consenso +4,5 % en francos [28] y giredestrant si se aprueba), precio −0,5 % (EE. UU. y China), divisa −0,5 %.",
+            "suma_pct": 4,
+            "crecimiento_pct": 4
+          },
+          {
+            "periodo": "2028e",
+            "volumen_pct": 5,
+            "precio_pct": -0.5,
+            "otros_pct": -0.5,
+            "comentario": "Igual que 2027e.",
+            "suma_pct": 4,
+            "crecimiento_pct": 4
+          },
+          {
+            "periodo": "2029e",
+            "volumen_pct": 4,
+            "precio_pct": -0.5,
+            "otros_pct": -0.5,
+            "comentario": "Volumen +4 %; empieza la erosión de Ocrevus; precio y divisa −0,5 % cada uno.",
+            "suma_pct": 3,
+            "crecimiento_pct": 3
+          },
+          {
+            "periodo": "2030e",
+            "volumen_pct": 4,
+            "precio_pct": -0.5,
+            "otros_pct": -0.5,
+            "comentario": "Igual que 2029e.",
+            "suma_pct": 3,
+            "crecimiento_pct": 3
+          }
+        ],
+        "texto": "La proyección reinvierte el 16 % del NOPAT. Con el ROIC del último ejercicio (27,1 %), eso financia un crecimiento del 4,2 % anual, frente al 2,4 % de ingresos proyectado. Supone que el capital nuevo rinde un 17,2 %, frente a un ROIC incremental histórico del -7,5 %.",
+        "tabla": [
+          {
+            "concepto": "Crecimiento medio de ingresos proyectado",
+            "valor": "2,4 %"
+          },
+          {
+            "concepto": "Capex bruto medio (incluidas compras si van como inversión)",
+            "valor": "8,8 % de las ventas"
+          },
+          {
+            "concepto": "Reinversión neta acumulada (capex − amortización + circulante)",
+            "valor": "28.856 M (16 % del NOPAT)"
+          },
+          {
+            "concepto": "Crecimiento que financia esa reinversión al ROIC actual",
+            "valor": "4,2 % (ROIC 27,1 %)"
+          },
+          {
+            "concepto": "Rendimiento que la proyección supone para el capital nuevo",
+            "valor": "17,2 % (histórico: -7,5 %)"
+          }
+        ]
+      }
+    },
+    "escenarios": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "narrativa": "Los biosimilares de Ocrevus llegan antes y Perjeta y Xolair caen más rápido; giredestrant se aprueba con una etiqueta estrecha y el franco sigue subiendo: el crecimiento baja 1,5 puntos al año y el margen 2,5 puntos, como en 2023 (ventas −8 % en francos) [3].",
+        "crecimiento_medio_pct": 0.9,
+        "margen_final_pct": 33.5,
+        "wacc_pct": 5.1,
+        "valor": 279.75,
+        "potencial_pct": -16.3
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "narrativa": "Guía cumplida en 2026, +4 % en 2027-2028 con los lanzamientos y la divisa restando medio punto; margen NIIF del 36,5 %.",
+        "crecimiento_medio_pct": 2.4,
+        "margen_final_pct": 36,
+        "wacc_pct": 5.1,
+        "valor": 382.08,
+        "potencial_pct": 14.3
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "narrativa": "Giredestrant en adyuvancia se convierte en un gran fármaco, el franco se estabiliza y las eficiencias suben el margen un punto: +1 punto de crecimiento al año.",
+        "crecimiento_medio_pct": 3.4,
+        "margen_final_pct": 37,
+        "wacc_pct": 5.1,
+        "valor": 429.48,
+        "potencial_pct": 28.5
+      }
+    ],
+    "valor_ponderado": 368.35,
+    "potencial_ponderado_pct": 10.2,
+    "comparables": {
+      "tabla": [
+        {
+          "nombre": "Roche",
+          "ticker": "ROP (antes ROG)",
+          "pais": "CH",
+          "capitalizacion": 265976,
+          "ev_ventas": 4.95,
+          "ev_ebitda_ltm": 14.3,
+          "ev_ebitda_ntm": 12.8,
+          "per_ntm": 15.5,
+          "crecimiento_pct": 1.6,
+          "margen_ebitda_pct": 34.5,
+          "roic_pct": 27.1,
+          "dn_ebitda": 1.1,
+          "fcf_yield_pct": 5.7,
+          "es_objetivo": true
+        },
+        {
+          "nombre": "Eli Lilly",
+          "ticker": "LLY",
+          "pais": "US",
+          "capitalizacion": 848666,
+          "ev_ventas": 13.34,
+          "ev_ebitda_ltm": 25.5,
+          "ev_ebitda_ntm": 20.6,
+          "per_ntm": 26.7,
+          "crecimiento_pct": 24.4,
+          "margen_ebitda_pct": 52.4,
+          "roic_pct": 42.2,
+          "dn_ebitda": 1.08,
+          "fcf_yield_pct": 1.75,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "AstraZeneca",
+          "ticker": "AZN",
+          "pais": "GB",
+          "capitalizacion": 204343,
+          "ev_ventas": 4.44,
+          "ev_ebitda_ltm": 13.5,
+          "ev_ebitda_ntm": 11.4,
+          "per_ntm": 18.3,
+          "crecimiento_pct": 7.8,
+          "margen_ebitda_pct": 33,
+          "roic_pct": 16.1,
+          "dn_ebitda": 1.35,
+          "fcf_yield_pct": 4.28,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Novartis",
+          "ticker": "NOVN",
+          "pais": "CH",
+          "capitalizacion": 224978,
+          "ev_ventas": 5.47,
+          "ev_ebitda_ltm": 13.4,
+          "ev_ebitda_ntm": 12.5,
+          "per_ntm": 17.2,
+          "crecimiento_pct": 7,
+          "margen_ebitda_pct": 40.7,
+          "roic_pct": 18.8,
+          "dn_ebitda": 1.79,
+          "fcf_yield_pct": 6.13,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Sanofi",
+          "ticker": "SAN",
+          "pais": "FR",
+          "capitalizacion": 79194,
+          "ev_ventas": 2.05,
+          "ev_ebitda_ltm": 7.4,
+          "ev_ebitda_ntm": 6.6,
+          "per_ntm": 9.9,
+          "crecimiento_pct": 0.2,
+          "margen_ebitda_pct": 27.7,
+          "roic_pct": 9.1,
+          "dn_ebitda": 1.27,
+          "fcf_yield_pct": 11.66,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Merck & Co",
+          "ticker": "MRK",
+          "pais": "US",
+          "capitalizacion": 287148,
+          "ev_ventas": 5.88,
+          "ev_ebitda_ltm": 13.6,
+          "ev_ebitda_ntm": 13.3,
+          "per_ntm": 20.9,
+          "crecimiento_pct": 4.3,
+          "margen_ebitda_pct": 43.4,
+          "roic_pct": 14.1,
+          "dn_ebitda": 1.62,
+          "fcf_yield_pct": 4.56,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "GSK",
+          "ticker": "GSK",
+          "pais": "GB",
+          "capitalizacion": 77152,
+          "ev_ventas": 2.54,
+          "ev_ebitda_ltm": 7.8,
+          "ev_ebitda_ntm": 6.9,
+          "per_ntm": 11.7,
+          "crecimiento_pct": 5.4,
+          "margen_ebitda_pct": 32.6,
+          "roic_pct": 26.4,
+          "dn_ebitda": 1.4,
+          "fcf_yield_pct": 9.63,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Novo Nordisk",
+          "ticker": "NOVO B",
+          "pais": "DK",
+          "capitalizacion": 130247,
+          "ev_ventas": 3.64,
+          "ev_ebitda_ltm": 6.9,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 11.7,
+          "crecimiento_pct": -2.7,
+          "margen_ebitda_pct": 52.7,
+          "roic_pct": 39.2,
+          "dn_ebitda": 0.55,
+          "fcf_yield_pct": 6.9,
+          "es_objetivo": false
+        }
+      ],
+      "estadisticos": [
+        {
+          "estadistico": "Mediana",
+          "ev_ventas": 4.4,
+          "ev_ebitda_ltm": 13.4,
+          "ev_ebitda_ntm": 12,
+          "per_ntm": 17.2,
+          "crecimiento_pct": 5.4,
+          "margen_ebitda_pct": 40.7,
+          "roic_pct": 18.8,
+          "dn_ebitda": 1.4,
+          "fcf_yield_pct": 6.1
+        },
+        {
+          "estadistico": "Media",
+          "ev_ventas": 5.3,
+          "ev_ebitda_ltm": 12.6,
+          "ev_ebitda_ntm": 11.9,
+          "per_ntm": 16.6,
+          "crecimiento_pct": 6.6,
+          "margen_ebitda_pct": 40.4,
+          "roic_pct": 23.7,
+          "dn_ebitda": 1.3,
+          "fcf_yield_pct": 6.4
+        },
+        {
+          "estadistico": "Percentil 25",
+          "ev_ventas": 3.1,
+          "ev_ebitda_ltm": 7.6,
+          "ev_ebitda_ntm": 8,
+          "per_ntm": 11.7,
+          "crecimiento_pct": 2.3,
+          "margen_ebitda_pct": 32.8,
+          "roic_pct": 15.1,
+          "dn_ebitda": 1.2,
+          "fcf_yield_pct": 4.4
+        },
+        {
+          "estadistico": "Percentil 75",
+          "ev_ventas": 5.7,
+          "ev_ebitda_ltm": 13.6,
+          "ev_ebitda_ntm": 13.1,
+          "per_ntm": 19.6,
+          "crecimiento_pct": 7.4,
+          "margen_ebitda_pct": 47.9,
+          "roic_pct": 32.8,
+          "dn_ebitda": 1.5,
+          "fcf_yield_pct": 8.3
+        }
+      ],
+      "implicito": [
+        {
+          "metodo": "EV/EBITDA próximos 12 meses",
+          "metrica_empresa": 24578.94,
+          "multiplo_p25": 8,
+          "multiplo_mediana": 12,
+          "multiplo_p75": 13.1,
+          "multiplos": "8,0x / 11,9x / 13,1x",
+          "valor_p25": 188.05,
+          "valor_mediana": 309.3,
+          "valor_p75": 344.83,
+          "potencial_pct": -7.5
+        },
+        {
+          "metodo": "EV/EBITDA últimos 12 meses",
+          "metrica_empresa": 21862,
+          "multiplo_p25": 7.6,
+          "multiplo_mediana": 13.4,
+          "multiplo_p75": 13.6,
+          "multiplos": "7,6x / 13,4x / 13,6x",
+          "valor_p25": 148.96,
+          "valor_mediana": 308.34,
+          "valor_p75": 312.46,
+          "potencial_pct": -7.8
+        },
+        {
+          "metodo": "PER próximos 12 meses",
+          "metrica_empresa": 21.64,
+          "multiplo_p25": 11.7,
+          "multiplo_mediana": 17.2,
+          "multiplo_p75": 19.6,
+          "multiplos": "11,7x / 17,2x / 19,6x",
+          "valor_p25": 253.14,
+          "valor_mediana": 372.13,
+          "valor_p75": 424.06,
+          "potencial_pct": 11.3
+        },
+        {
+          "metodo": "EV/Ventas últimos 12 meses",
+          "metrica_empresa": 63356,
+          "multiplo_p25": 3.1,
+          "multiplo_mediana": 4.4,
+          "multiplo_p75": 5.7,
+          "multiplos": "3,1x / 4,4x / 5,7x",
+          "valor_p25": 186.19,
+          "valor_mediana": 293.69,
+          "valor_p75": 392.04,
+          "potencial_pct": -12.1
+        }
+      ],
+      "regresion": {
+        "pendiente": 0.55,
+        "ordenada": 7.4,
+        "r2": 0.79,
+        "n": 6,
+        "multiplo_ajustado": 8.3,
+        "valor_accion": 196.54,
+        "fiable": true,
+        "texto": "**Regresión EV/EBITDA NTM sobre crecimiento** (6 comparables): múltiplo = 7,4 + 0,55 × crecimiento; R² = 0,79. Para el crecimiento esperado de la empresa (1,6 %), el múltiplo ajustado es 8,3x y el valor por acción, 196,54."
+      },
+      "n": 7
+    },
+    "transacciones": null,
+    "suma_partes": null,
+    "multiplos_historicos": [
+      {
+        "metrica": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+        "campo": "ev_ebitda_ltm",
+        "actual": 14.3,
+        "media": 13.1,
+        "minimo": 12,
+        "maximo": 13.6,
+        "percentil": 100,
+        "prima_pct": 9,
+        "anios": 3
+      },
+      {
+        "metrica": "PER últimos 12 meses (cierre de cada año)",
+        "campo": "per_ltm",
+        "actual": 20.8,
+        "media": 20.5,
+        "minimo": 18.9,
+        "maximo": 24.8,
+        "percentil": 67,
+        "prima_pct": 1,
+        "anios": 3
+      }
+    ],
+    "multiplos_serie": [
+      {
+        "anio": "2021",
+        "multiplo": null,
+        "media": 13.1
+      },
+      {
+        "anio": "2022",
+        "multiplo": 12,
+        "media": 13.1
+      },
+      {
+        "anio": "2023",
+        "multiplo": null,
+        "media": 13.1
+      },
+      {
+        "anio": "2024",
+        "multiplo": 13.6,
+        "media": 13.1
+      },
+      {
+        "anio": "2025",
+        "multiplo": 13.1,
+        "media": 13.1
+      }
+    ],
+    "multiplos_titulo": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+    "consenso_vs_propio": [
+      {
+        "periodo": "2026e",
+        "ingresos_propio": 64306,
+        "ingresos_consenso": 62908,
+        "ingresos_dif_pct": 2.2,
+        "ebitda_propio": 23150,
+        "ebitda_consenso": 23117.22,
+        "ebitda_dif_pct": 0.1
+      },
+      {
+        "periodo": "2027e",
+        "ingresos_propio": 66879,
+        "ingresos_consenso": 65804,
+        "ingresos_dif_pct": 1.6,
+        "ebitda_propio": 24411,
+        "ebitda_consenso": 24975.86,
+        "ebitda_dif_pct": -2.3
+      },
+      {
+        "periodo": "2028e",
+        "ingresos_propio": 69554,
+        "ingresos_consenso": null,
+        "ingresos_dif_pct": null,
+        "ebitda_propio": 25387,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      }
+    ],
+    "gobierno": {
+      "n_consejeros": 3,
+      "independientes_pct": 33,
+      "antiguedad_media": 14.3,
+      "composicion": [
+        {
+          "tipo": "Otro externo",
+          "num": 1
+        },
+        {
+          "tipo": "Dominical",
+          "num": 1
+        },
+        {
+          "tipo": "Independiente",
+          "num": 1
+        }
+      ],
+      "checklist": [
+        {
+          "criterio": "Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)",
+          "resultado": "Cumple",
+          "valor": "33 % (con control)"
+        },
+        {
+          "criterio": "Presidencia sin vínculo familiar ni profesional con el accionista de control",
+          "resultado": "Cumple",
+          "valor": "Independiente del control"
+        },
+        {
+          "criterio": "Presidente no ejecutivo, o consejero coordinador independiente",
+          "resultado": "Cumple",
+          "valor": "No ejecutivo"
+        },
+        {
+          "criterio": "Comisión de auditoría con mayoría de independientes y presidida por uno",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Ningún consejero «otro externo» con más de 12 años",
+          "resultado": "No cumple",
+          "valor": "Severin Schwan"
+        },
+        {
+          "criterio": "Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses",
+          "resultado": "Cumple",
+          "valor": "0 cambios"
+        },
+        {
+          "criterio": "Peor voto a favor sobre remuneración (3 juntas) ≥ 80 %",
+          "resultado": "Cumple",
+          "valor": "90,2 % a favor"
+        },
+        {
+          "criterio": "Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Una acción, un voto, sin blindajes ni límites de voto estatutarios",
+          "resultado": "No cumple",
+          "valor": "No"
+        },
+        {
+          "criterio": "Sin operaciones vinculadas relevantes",
+          "resultado": "Cumple",
+          "valor": "No hay"
+        },
+        {
+          "criterio": "Auditor con 10 años o menos en el cargo",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Opinión de auditoría sin salvedades",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Directivos compradores netos en 12 meses (o sin ventas relevantes)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        }
+      ],
+      "puntuacion": "6 de 13 (5 sin dato)",
+      "puntuacion_pct": 46,
+      "compras_insiders": 0,
+      "ventas_insiders": 0
+    },
+    "competidores_margen": [
+      {
+        "nombre": "Roche",
+        "margen_ebit_pct": 29.2
+      },
+      {
+        "nombre": "Novartis",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "AstraZeneca",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Merck & Co",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Sanofi",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Abbott (diagnóstico)",
+        "margen_ebit_pct": null
+      }
+    ],
+    "sintesis": {
+      "formato_eje": "#,##0",
+      "rangos": [
+        {
+          "metodo": "Cotización 52 semanas",
+          "etiqueta": "Cotización 52 semanas (256,40 – 383,00)",
+          "min": 256.4,
+          "central": 334.3,
+          "max": 383,
+          "gris": true
+        },
+        {
+          "metodo": "Precio objetivo de los analistas",
+          "etiqueta": "Precio objetivo de los analistas (232,30 – 449,40)",
+          "min": 232.3,
+          "central": 367.2,
+          "max": 449.4,
+          "gris": true
+        },
+        {
+          "metodo": "Comparables: EV/EBITDA NTM",
+          "etiqueta": "Comparables: EV/EBITDA NTM (188,05 – 344,83)",
+          "min": 188.05,
+          "central": 309.3,
+          "max": 344.83,
+          "gris": false
+        },
+        {
+          "metodo": "Comparables: PER NTM",
+          "etiqueta": "Comparables: PER NTM (253,14 – 424,06)",
+          "min": 253.14,
+          "central": 372.13,
+          "max": 424.06,
+          "gris": false
+        },
+        {
+          "metodo": "DCF (WACC y g ± 0,5)",
+          "etiqueta": "DCF (WACC y g ± 0,5) (314,86 – 485,69)",
+          "min": 314.86,
+          "central": 382.08,
+          "max": 485.69,
+          "gris": false
+        },
+        {
+          "metodo": "Escenarios (bajista – alcista)",
+          "etiqueta": "Escenarios (bajista – alcista) (279,75 – 429,48)",
+          "min": 279.75,
+          "central": 368.35,
+          "max": 429.48,
+          "gris": false
+        },
+        {
+          "metodo": "DCF con la prima del mercado",
+          "etiqueta": "DCF con la prima implícita del mercado (4,2 %)",
+          "min": 415.02,
+          "central": 477.78,
+          "max": 559.58
+        },
+        {
+          "metodo": "Precio actual",
+          "etiqueta": "Precio actual (334,30)",
+          "min": 332.63,
+          "central": 334.3,
+          "max": 335.97,
+          "gris": true
+        }
+      ],
+      "tabla": [
+        {
+          "metodo": "DCF",
+          "valor": 382.08,
+          "peso_pct": 50,
+          "potencial_pct": 14.3
+        },
+        {
+          "metodo": "Comparables (mediana EV/EBITDA y PER)",
+          "valor": 340.72,
+          "peso_pct": 30,
+          "potencial_pct": 1.9
+        },
+        {
+          "metodo": "Escenarios ponderados",
+          "valor": 368.35,
+          "peso_pct": 20,
+          "potencial_pct": 10.2
+        }
+      ],
+      "valor_objetivo": 366.92,
+      "potencial_pct": 9.8
+    },
+    "fuentes": {
+      "n_fuentes": 46,
+      "n_primarias": 11,
+      "por_tipo": [
+        {
+          "tipo": "Primaria",
+          "num": 11
+        },
+        {
+          "tipo": "Datos de mercado",
+          "num": 14
+        },
+        {
+          "tipo": "Prensa",
+          "num": 11
+        },
+        {
+          "tipo": "Analistas",
+          "num": 6
+        },
+        {
+          "tipo": "Foros y redes",
+          "num": 4
+        }
+      ],
+      "n_citadas": 43,
+      "citas_sin_fuente": [],
+      "fuentes_sin_citar": [
+        "32",
+        "39",
+        "40"
+      ]
+    },
+    "controles": [
+      {
+        "control": "DCF inverso calculable",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Puente de ingresos (volumen + precio + otros) = crecimiento del DCF",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Rendimiento del capital nuevo de la proyección ≤ 1,25 × el histórico",
+        "resultado": "OK",
+        "detalle": "La proyección supone que la inversión nueva rinde un 17,2 % frente a un ROIC de 27,1 % y un incremental histórico de -7,5 %: crecimiento que la empresa no ha demostrado poder comprar."
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "resultado": "OK",
+        "detalle": "Supuesto 21,0 % frente a 20,8 % real: genera una variación de circulante de 298 M en el primer año. Converge de forma gradual."
+      },
+      {
+        "control": "Peso del valor terminal ≤ 80 % del valor empresa",
+        "resultado": "OK",
+        "detalle": "67 %."
+      },
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "resultado": "OK",
+        "detalle": "0,50 %."
+      },
+      {
+        "control": "Probabilidades de los escenarios suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 5 comparables",
+        "resultado": "OK",
+        "detalle": "7 comparables."
+      },
+      {
+        "control": "Pesos de la síntesis suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Crecimiento del BPA base ≤ 25 % anual desde el último real",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Precio del cierre de la fecha de corte (o de las dos sesiones anteriores)",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Recomendación coherente con la regla de decisión",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "La síntesis explica la convicción",
+        "resultado": "OK",
+        "detalle": "La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría."
+      },
+      {
+        "control": "Capitalización calculada ≈ publicada",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 25 fuentes",
+        "resultado": "OK",
+        "detalle": "46 fuentes (11 primarias)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "resultado": "OK",
+        "detalle": "11."
+      },
+      {
+        "control": "Toda cita [n] existe en fuentes",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Fuentes sin citar ≤ 15 %",
+        "resultado": "OK",
+        "detalle": "Sin citar: 32, 39, 40."
+      }
+    ],
+    "controles_resumen": "18 de 18 controles correctos"
+  }
+}
