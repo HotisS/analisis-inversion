@@ -1,0 +1,100 @@
+// Textos del analista (Rightmove, corte 2026-10-14). Citas con la letra de la nota. Cifras del motor tal cual del último cálculo.
+export default {
+  limitaciones: `Entorno de trabajo en la nube con acceso solo a la búsqueda web: no se han podido abrir el informe anual, la web de inversores ni bajar históricos de cotización. Las cifras salen de los comunicados de resultados citados por la búsqueda y de agregadores (Stock Analysis, Kalkine, TipRanks, Simply Wall St) [A1, A3, A9-A14]. Se valora la acción ordinaria de Londres (RMV), que cotiza en peniques; precio y valores por acción en libras: 488,9 p = 4,889 GBP, última sesión disponible antes del corte (Stockopedia) [D1]. Acciones: 732,5 M de derechos de voto a 14-sep-2026 [D3]; el puente es el balance de dic-2025 con un ajuste estimado por la caja consumida en recompras y dividendos hasta septiembre. Estimaciones propias: amortizaciones 2019-2022, beneficio neto 2019-2020, capex 2021-2023 y dividendos pagados 2021-2022; los cierres anuales de cotización son aproximados (ADR convertido) [D7]. El balance solo tiene totales: sin desglose de circulante. Consenso de un solo agregador (MarketBeat) y sin estimaciones de 2027-2028. Comparables y transacciones reutilizados del informe de Auto Trader del 10-oct (MarketScreener a 9-oct-2026).`,
+  controles_explicados: [
+    { control: 'Fuentes sin citar', explicacion: 'Agregadores y documentos de contexto usados para contrastar cifras que ya cita otra fuente.' },
+  ],
+  secciones: {
+    financieros: {
+      comentario: `Los ingresos pasaron de 289,3 M en 2019 a 425,1 M en 2025 (TCAC del 6,6 %), todo orgánico y todo del Reino Unido [A1, A7]. El único bache fue 2020 (−29 %), por los descuentos voluntarios a las agencias en el confinamiento [A7]. El margen operativo publicado es del 68-74 %: bajó de 70,8 % en 2023 a 65,7 % en 2024 por 9,2 M de costes de la defensa frente a REA y la compra de HomeViews, y volvió al 67,7 % en 2025 [A4, A1]. El subyacente, sin pagos en acciones, fue del 70 % en 2025 [A1]. Para 2026 la guía es de ingresos +6-8 % y beneficio operativo subyacente +3-5 %, lo que baja el margen subyacente a ≈67-69 % por el plan de IA [A3, A16]. El beneficio por acción sube más que el beneficio (+15 % en 2025) por las recompras: las acciones bajaron de 883 M a 773 M en seis años.`,
+      ajustes: `La empresa publica un beneficio operativo «subyacente» que excluye los pagos en acciones (8,5 M en 2025) y los costes de transacción (9,2 M en 2024) [A1, A4, A10]. Usamos las cifras publicadas (con pagos en acciones), que son un coste real y recurrente; solo los 9,2 M de 2024 se tratan como no recurrentes. El BPA subyacente fue de 29,1 p en 2025 frente a 28,1 p publicado [A1].`,
+      confianza: 'Media',
+    },
+    balance: { comentario: 'Rightmove no necesita balance: activo total de 128,2 M a dic-2025 para 425 M de ingresos, caja de 42,9 M y ninguna deuda [A11, A14]. Devuelve cada año más del 100 % de la caja libre (recompras y dividendos), así que la caja no crece. Eso cambia en 2026: la línea de 200 M permite recomprar por encima de la caja libre (más de 400 M de devolución en 12 meses) y llevar la deuda neta a ≈0,5 veces el EBITDA [A3, A18].', confianza: 'Media' },
+    flujos: { comentario: 'El flujo operativo pasó de 195,0 M en 2021 a 236,3 M en 2025 y la conversión del beneficio en caja libre ronda el 100 % [A10]. El capex es mínimo: 10,2 M en 2025 (2,4 % de las ventas), de los que 9,3 M son desarrollo capitalizado [A10]; el plan de IA añade ≈6 M capitalizados en 2026 [A16]. En cinco años se han devuelto ≈1.050 M (705 M en recompras y 346 M en dividendos), más que la caja libre generada. Capex 2021-2023 y dividendos pagados de 2021-2022 son estimaciones propias.', confianza: 'Media' },
+    calidad: {
+      comentario: 'Las cuentas son sencillas: ingresos por suscripción mensual, 100 % de margen bruto, sin existencias ni deuda. Lo que vigilar: (1) el beneficio «subyacente» excluye los pagos en acciones (8,5 M, el 3 % del beneficio operativo) [A10]; (2) la capitalización de desarrollo sube con el plan de IA (9,3 M en 2025 y ≈15 M en 2026) y desplaza gasto a amortización futura [A10, A16]. El Altman Z de 57,5 y el Piotroski F de 7 no dicen mucho en una empresa sin deuda ni activos; el Beneish M no se calcula por falta de desglose del balance. No se ha podido leer la opinión del auditor en esta sesión.',
+      senales: [
+        { senal: 'Capitalización creciente de desarrollo', nivel: 'Baja', comentario: 'De ≈9 M a ≈15 M en 2026 con el plan de IA [A10, A16].' },
+        { senal: 'Beneficio subyacente sin pagos en acciones', nivel: 'Baja', comentario: 'Diferencia de 8,5-9,8 M al año; usamos el publicado [A1, A10].' },
+      ],
+      confianza: 'Baja',
+    },
+    capital: {
+      politica: 'Prioridades: invertir en el negocio (60 M en tres años de plan de IA) y devolver el resto [A16]. Dividendo progresivo con un pago del ≈38-40 % del beneficio (10,64 p en 2025; intermedio de 2026 de 4,17 p, +3 %) [A1, A3]. Recompras continuas desde 2007 [D3]. En julio de 2026 anunció más de 400 M de devolución en 12 meses hasta julio de 2027, unos 330 M en recompras (programa de hasta 350 M), financiados en parte con una línea de crédito de 200 M [A3, A18].',
+      adquisiciones: [ { anio: '2024', objetivo: 'HomeViews (opiniones de residentes en obra nueva)', importe: null, ev_ebitda: null, financiacion: 'Caja', resultado: 'Pequeña; sin deterioros conocidos [A4].' } ],
+      comentario: 'Rightmove es un caso de asignación de capital disciplinada: casi nada de compras, ROIC de tres cifras y devolución de toda la caja libre. Las acciones bajaron de 883 M en 2019 a 732,5 M en septiembre de 2026 (−17 %) [D3]. La duda es el precio de las recompras: en 2021 compró 176,9 M a precios de 7-8 GBP y hoy cotiza a 4,89 [A10, D7]. Endeudarse para recomprar a 16-17 veces el beneficio, el mínimo de su historia, tiene más sentido que hacerlo a 30-37 veces como en 2019-2021.',
+      confianza: 'Media',
+    },
+    consenso: { guidance: 'Guía 2026 (31-jul-2026): ingresos +6-8 % (antes +8-10 %), beneficio operativo subyacente +3-5 % y BPA subyacente ≥ +5 %; sucursales de agencia +1-2 % y promociones de obra nueva −6 a −10 % [A3]. Plan de noviembre de 2025: beneficio operativo subyacente +3-10 % al año en 2026-2028 (fase de inversión) y ambición de al menos +12 % en 2030, que la empresa dice que no es guía [A16].' },
+    multiplos_historicos: { comentario: 'Rightmove cotiza a 16,9 veces el beneficio de los últimos 12 meses frente a una media de 24,9 veces en los cierres de 2019-2025 (−32 %) y por debajo del mínimo de esos años (18,5 veces en 2025); a 11,8 veces el EBITDA frente a una media de 17,7. El cambio es de percepción, no de cifras: el crecimiento del beneficio baja del 9-10 % al 3-5 % durante el plan de IA y el mercado añade el riesgo de desintermediación por la IA y la demanda colectiva. Los cierres anuales son aproximados.', confianza: 'Baja' },
+    comparables: { comentario: 'Rightmove cotiza a 11,8 veces el EBITDA de los últimos 12 meses frente a la mediana de 10,3 del grupo y a 16,2 veces el beneficio de los próximos 12 frente a 15,3. La prima es pequeña para el mejor margen del grupo (68,5 % frente a una mediana del 55,9 %), un ROIC de tres cifras y una cuota del 89 % del tiempo en su mercado. Los comparables más parecidos están a 10,3 veces (Auto Trader) y 13,3 (Scout24); REA, que ofreció 781 p en 2024, cotiza a 18,7. El grupo incluye tres negocios peores (Cars.com, CarGurus, Hemnet) que bajan la mediana: el valor implícito por comparables es un suelo, no una referencia central.', confianza: 'Media' },
+  },
+  dcf_justificacion: {
+    crecimiento: 'Ingresos +7,0 % en 2026 (punto medio de la guía de 6-8 %) [A3] y +7,0 % en 2027-2028, en línea con el +7-10 % de 2022-2025 sin la ayuda de la obra nueva [A1]. Todo sale del ARPA (+6 % en 2025, +7 % en el 1S26): precio y paquetes superiores, con sucursales +0-1 % [A1, A3]. Después baja hasta el 3,0 % en 2035. Simply Wall St recoge un crecimiento esperado de ingresos del 7,8 % anual [D6]: estamos algo por debajo.',
+    margenes: 'Margen EBITDA publicado del 68,4 % en 2026 (guía de beneficio subyacente +3-5 % menos ≈10 M de pagos en acciones) y 68,5-69,0 % en 2027-2028, fase de inversión [A16]. Sube al 71 % desde 2030, por debajo del 72-74 % de 2019-2023, porque la inversión en IA y la competencia de CoStar no desaparecen. Solo recogemos a medias la ambición de crecer un 12 % en beneficio en 2030 [A16].',
+    inversion: 'Capex del 3,5 % de las ventas en 2026 (desarrollo capitalizado de ≈15 M con el plan de IA) que baja al 3,0 %, igual que la amortización al final [A10, A16]. Circulante nulo: se cobra por mes y no hay existencias.',
+    wacc: 'Tasa libre del 5,39 % (gilt a 10 años, 7-oct-2026) [D10], beta de 0,90 (0,99 según Lightyear y 0,75 la de Auto Trader, su comparable directo) [D9], prima de mercado del 5,5 % y un 5 % de deuda (la línea de 200 M): WACC del 10,05 %. Con la prima implícita del mercado (4,2 %) el WACC baja al 8,9 % [D11].',
+    terminal: 'Crecimiento a perpetuidad del 3,0 %: inflación británica de ≈2-2,5 % más algo de precio real, por debajo de la tasa libre menos medio punto. El valor terminal pesa el 55 % del valor.',
+  },
+  puente_comentarios: {
+    '2026e': 'Guía de ingresos +6-8 % [A3]: ARPA +7 % en el 1S26 con sucursales de agencia +1-2 % y promociones de obra nueva −6 a −10 % (volumen neto ≈0).',
+    '2027e': 'ARPA +6 % (precio y paquetes) como en 2025 [A1]; sucursales +0,5 %; áreas de crecimiento +0,5 puntos (29,1 M en 2025, +25 %) [A2].',
+    '2028e': 'Igual que 2027e; productos de IA (valoraciones en línea) dentro del ARPA [A1].',
+    '2029e': 'ARPA +5,5 %: menos margen para subir precios tras años de subidas.',
+    '2030e': 'ARPA +5 %, como el promedio de la década.',
+  },
+  veredicto: 'Sí',
+  sostenibilidad_justificacion: 'La proyección apenas necesita capital (reinversión del 0 % del NOPAT), así que la prueba es el poder de precios y la cuota. Rightmove ha subido el ARPA un 6-8 % al año con una cuota del 89 % del tiempo en portales y retención récord [A1, A2], y el caso base (5,4 % anual, todo precio) es menor que el 6,6 % de 2019-2025. La cuota de mercado no tiene que subir. El riesgo no es de capacidad sino de permiso para subir precios (demanda colectiva, CoStar): está en el bajista. Prueba hecha a mano porque el motor no la hace con reinversión casi nula (lecciones).',
+  dcf_lectura: 'El DCF da 5,50 GBP por acción, un 12,5 % sobre el precio, con un valor terminal del 55 % y un WACC del 10,05 %. El DCF inverso dice que el precio descuenta un crecimiento del 3,4 % anual en 2027-2035 frente al 5,2 % de nuestro caso base, o un margen EBITDA del 63,3 % frente al 71 %: es decir, que Rightmove deje de subir precios por encima de la inflación o pierda seis puntos de margen para siempre. Es un supuesto prudente para una empresa que creció un 6,6 % anual en 2019-2025 con márgenes del 68-74 %, pero no absurdo con la demanda colectiva y la IA como amenazas. La rentabilidad implícita es del 10,9 %, por encima del WACC (10,1 %) y del 8,9 % que pide el mercado: con la prima del mercado, el valor sube a 5,96 GBP.',
+  narrativas: {
+    Bajista: 'La demanda colectiva se certifica en noviembre y las agencias, con CoStar ofreciendo precios bajos, frenan las subidas: el ARPA crece un 3 % y las sucursales caen. Rightmove invierte más para defenderse y el margen pierde 5 puntos. Ya le pasó en 2020, cuando regaló meses de suscripción.',
+    Base: 'Guía cumplida: ingresos +7 % hasta 2028 por ARPA, margen del 68-69 % durante el plan de IA y vuelta al 71 % en 2030.',
+    Alcista: 'Los productos de IA (valoraciones, datos, hipotecas) suben el ARPA como en 2021-2023 (+9-10 % de ingresos) y el margen vuelve al 72 %.',
+  },
+  escenarios_comentario: 'El bajista vale 3,66 GBP (−25,1 %) y el alcista 6,17 (+26,2 %): asimetría de 1,04 veces con nuestro WACC, que no compensa por sí sola. Con la prima del mercado la asimetría sube a 3,62 veces. El bajista es verosímil (2020 lo demostró y la demanda colectiva lo hace posible); el alcista exige que la IA sume ingresos, que aún no ha probado.',
+  valoracion_comentario: 'Pesos: DCF 50 %, escenarios 25 % y comparables 25 %; sin transacciones (una opa no es el caso base, aunque REA ofreciera 781 p en 2024) ni suma de partes. El DCF es el método más fiable en un negocio sin capital ni deuda y con márgenes estables; los comparables (mediana EV/EBITDA de 10,3 veces) están lastrados por negocios peores y dan un suelo. La síntesis da 5,21 GBP (+6,6 %); con la prima del mercado, 5,96 (+21,9 %). La dispersión es amplia: de 4,25 por comparables a 10,74 por transacciones.',
+  j12: {
+    Bajista: 'Ingresos 2028e de 487 M (+3,5 % en 2027-28) con margen EBITDA del 63 %: EBIT de 294 M, 6 M de intereses de la línea de crédito, impuesto del 25 % y 671 M de acciones (las de hoy menos ≈300 M pendientes del programa anunciado de 350 M a 4,9 GBP): BPA de 0,321.',
+    Base: 'Ingresos 2028e de 526 M (+7 % anual) y margen EBITDA del 69 %: EBIT de 348 M, 6 M de intereses, impuesto del 25 % y 671 M de acciones: BPA de 0,382 (+36 % sobre 2025, la mitad por recompras ya anunciadas).',
+    Alcista: 'Ingresos 2028e de 541 M (+9 % anual) y margen del 70 %: EBIT de 363 M, 6 M de intereses, impuesto del 25 % y 671 M de acciones: BPA de 0,399.',
+  },
+  diferencia_consenso: 'El consenso de MarketBeat da un BPA de 30,2 p para 2026; nuestra proyección da ≈30 p en 2026 publicado, en línea [D4]. No hay consenso gratuito de 2028. Nuestro precio base (5,42 GBP) queda un 8,9 % por debajo del objetivo medio de los analistas (5,95; rango 4,29-6,65, ocho analistas, con recortes en el último trimestre) [D4, D5]: la diferencia está en el múltiplo (14,2 veces, el PER actual sobre nuestro BPA de 2027e) y no en el beneficio.',
+  objetivo12m_comentario: 'El objetivo a 12 meses (5,53 GBP, +15,2 % con dividendo) queda por encima del valor intrínseco de la síntesis (5,21): el BPA de 2028 crece un 36 % sobre 2025, la mitad por las recompras ya anunciadas (≈400 M en 12 meses, ≈11 % del capital), y el múltiplo base es el de hoy, no el histórico. Lo que cierra la distancia al alcista es que se disipe el riesgo legal (vista del 2-3 de noviembre) y que el plan de IA muestre ingresos en 2027.',
+  rentabilidad_comentario: 'Rightmove crea valor como casi ninguna empresa cotizada: un NOPAT de 216 M en 2025 sobre un capital invertido de ≈40 M, un ROIC del 545 %, frente a un WACC del 10,05 % [A11, A14]. El ROIC sale del margen (68 % de EBITDA) y de no necesitar activos: la cifra es de tres cifras desde 2021 porque devuelve toda la caja. El ROIC incremental histórico es del 194 %. Supera a Auto Trader (≈51 %), su comparable más parecido, por no tener fondo de comercio de compras [D13]. El dato útil no es el nivel, sino que cada libra de ingresos nuevos llega casi entera al beneficio.',
+  catalizadores: {
+    items: [
+      { fecha: '2-3 nov 2026', evento: 'Vista de certificación de la demanda colectiva ante el Competition Appeal Tribunal', efecto: 'Rechazo: se disipa el mayor riesgo; certificación: años de litigio y presión sobre precios', probabilidad: 'Alta', sentido: '+/−' },
+      { fecha: 'Hasta jul 2027', evento: 'Recompras de ≈330 M y dividendos (más de 400 M en total)', efecto: '≈11 % de la capitalización devuelta en 12 meses', probabilidad: 'Alta', sentido: '+' },
+      { fecha: '26 feb 2027 (estimado)', evento: 'Resultados de 2026 y guía de 2027', efecto: 'Confirmar ingresos +6-8 % y beneficio +3-5 %; primera guía del segundo año del plan de IA', probabilidad: 'Alta', sentido: '+/−' },
+      { fecha: '2027', evento: 'Primeros ingresos de los productos de IA en el ARPA', efecto: 'Prueba de que la inversión de 60 M rinde', probabilidad: 'Media', sentido: '+' },
+      { fecha: '12-18 meses', evento: 'Interés de compradores (REA, capital privado)', efecto: 'REA ofreció 781 p en 2024; la acción cotiza un 37 % por debajo', probabilidad: 'Baja', sentido: '+' },
+    ],
+    confianza: 'Media',
+  },
+  riesgos: {
+    items: [
+      { riesgo: 'Demanda colectiva por abuso de posición dominante (≈1.500 M)', tipo: 'Legal y regulatorio', probabilidad: 'Media', impacto: 'Alto', efecto_valor: '−25 % (bajista) si limita las subidas de precio', mitigante: 'Fase de certificación; la empresa la considera sin fundamento', senal: 'Decisión del tribunal tras la vista del 2-3 de noviembre de 2026' },
+      { riesgo: 'Desintermediación por la búsqueda con IA', tipo: 'Tecnológico', probabilidad: 'Baja', impacto: 'Alto', efecto_valor: '−25 % (bajista)', mitigante: 'Tráfico desde modelos de lenguaje < 0,5 %; 85 % directo u orgánico', senal: 'Cuota de tiempo por debajo del 85 % (Comscore) o tráfico de IA por encima del 5 %' },
+      { riesgo: 'CoStar gana cuota con OnTheMarket a precios bajos', tipo: 'Competencia', probabilidad: 'Media', impacto: 'Medio', efecto_valor: '−10 a −15 %', mitigante: 'Cuota de tiempo récord en 2025 tras tres años de CoStar', senal: 'Sucursales de agencia en caída o retención a la baja' },
+      { riesgo: 'Caída de la obra nueva', tipo: 'Cíclico', probabilidad: 'Alta', impacto: 'Bajo', efecto_valor: '−3 %', mitigante: 'La obra nueva y otros pesan ≈27 % de los ingresos; agencia sigue +9 %', senal: 'Promociones por debajo del −10 % anual' },
+      { riesgo: 'El plan de IA no da ingresos y el margen no vuelve', tipo: 'Ejecución', probabilidad: 'Media', impacto: 'Medio', efecto_valor: '−10 %', mitigante: 'Inversión acotada (60 M en tres años)', senal: 'Margen subyacente por debajo del 67 % en 2027' },
+      { riesgo: 'Recompras con deuda a precios altos', tipo: 'Asignación de capital', probabilidad: 'Baja', impacto: 'Bajo', efecto_valor: '−2 %', mitigante: 'Deuda máxima ≈0,5 veces el EBITDA', senal: 'Deuda neta por encima de 1 vez el EBITDA' },
+    ],
+    premortem: 'Octubre de 2029: la acción vale 2,9 GBP, un 40 % menos. En noviembre de 2026 el tribunal certificó la demanda colectiva y las grandes cadenas de agencias, envalentonadas, negociaron como bloque: Rightmove congeló las tarifas de 2027 para no alimentar el litigio. Al mismo tiempo, los asistentes de IA empezaron a enseñar viviendas con datos de las propias agencias y de OnTheMarket, que CoStar regalaba. El ARPA, que subía un 7 %, pasó a subir un 2 %; las sucursales cayeron un 3 % al año por la concentración de agencias. El plan de IA no generó ingresos visibles y el margen se quedó en el 64 %. El mercado, que ya pagaba 16 veces el beneficio, pasó a pagar 12, como a un negocio maduro sin crecimiento. Las recompras con deuda a 5 GBP destruyeron valor. Las señales que lo habrían anticipado: la certificación del tribunal, un ARPA por debajo del +4 % en un semestre y una caída de la cuota de tiempo de Comscore por debajo del 85 %.',
+    confianza: 'Media',
+  },
+  preguntas: {
+    items: [
+      { tema: 'Precios', pregunta: '¿Qué parte de la subida del ARPA de 2027 será precio de tarifa y qué parte paquetes superiores, y cambia eso la demanda colectiva?', por_que: 'Todo el crecimiento del caso base sale del ARPA.' },
+      { tema: 'Litigio', pregunta: '¿Cuál es la exposición máxima razonable si se certifica la demanda, y hay provisión?', por_que: 'La reclamación (≈1.500 M) equivale al 40 % de la capitalización.' },
+      { tema: 'IA', pregunta: '¿Qué ingresos de productos de IA espera la dirección en 2027-2028 y con qué métrica se medirá el plan de 60 M?', por_que: 'La ambición de 2030 (+12 % de beneficio) depende de ello.' },
+      { tema: 'Competencia', pregunta: '¿Cuántas sucursales usan OnTheMarket como segundo portal y cuántas han dejado Rightmove?', por_que: 'Mide la amenaza de CoStar mejor que el tráfico.' },
+      { tema: 'Capital', pregunta: '¿Hasta qué apalancamiento está dispuesto a recomprar el consejo?', por_que: 'La línea de 200 M cambia la política de balance sin deuda.' },
+      { tema: 'Obra nueva', pregunta: '¿Cuándo tocará fondo la caída de promociones?', por_que: 'Explica la rebaja de la guía de ingresos de julio.' },
+    ],
+    confianza: 'Media',
+  },
+  fuentes: [],
+  huecos: [],
+};
