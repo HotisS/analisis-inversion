@@ -24,6 +24,8 @@ Tercera hora (desde las 13:00 del 14-oct), de 4 en 4. En curso: Alibaba, Watches
 
 ## Vigilar
 
+- **Rightmove**: fuera de la cartera por decisión del usuario (14-oct); no proponerla.
+
 - **Precios sin cierre del 13-oct** en los análisis del 14-oct (Halma, Spirax, KONE, Schneider, Experian, Texas Instruments, Danaher): recalcular con `herramientas/apuntar-12m.mjs <carpeta> --precio X` antes de comprar. Experian es la más cercana a Comprar (por debajo de ≈2.447 p).
 
 - **Group 1 Automotive (GPI)**: analizado el 14-oct desde la nube solo con búsqueda web (confianza baja; Mantener, ponderada +7,5 %, base +9,0 %, compra por debajo de 216 USD). Volver a mirar tras los resultados del 28-oct.
