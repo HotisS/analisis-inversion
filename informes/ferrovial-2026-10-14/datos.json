@@ -1,0 +1,4190 @@
+{
+  "meta": {
+    "fecha_corte": "2026-10-14",
+    "divisa": "EUR",
+    "divisa_cotizacion": "EUR",
+    "tipo_cambio": 1,
+    "unidades": "millones",
+    "cierre_ejercicio_mes": 12,
+    "etiqueta_ejercicio": "fin",
+    "normas_contables": "NIIF-UE",
+    "formato_cuenta": "funcion",
+    "limitaciones": "Análisis hecho desde la nube con la red limitada a la búsqueda web: la web de Ferrovial, la CNMV, la SEC y los proveedores de datos no se pudieron abrir, así que las cifras salen de extractos de búsqueda de las notas de resultados, del informe anual integrado y de la prensa financiera, cruzadas cuando fue posible; lo que no cuadró está en null y en los huecos. Confianza de los datos de núcleo: baja. Línea cotizada: Bolsa de Madrid/Euronext Ámsterdam en EUR (la del Nasdaq, en USD, no se usa). Precio: 45,11 EUR del 14-oct (Lang & Schwarz, citado por ad-hoc-news), no un cierre oficial de la Bolsa de Madrid. Cuentas NIIF-UE en EUR; EBITDA y EBIT ajustados de la empresa. La cuenta no separa resultado financiero, puesta en equivalencia, impuestos ni minoritarios. El balance solo tiene activo, pasivo, patrimonio y deuda neta consolidada (registrada como deuda con caja a 0). El 407 ETR (48,29 %) se valora en el puente al precio de la compra de 2025, con un EUR/CAD de ≈1,60 (estimación), y los minoritarios de las Managed Lanes a una estimación propia de valor de mercado.",
+    "controles_explicados": [
+      {
+        "control": "Objetivo 12 m frente al consenso",
+        "explicacion": "Nuestro base (50,96 EUR) queda un 16,9 % por debajo del objetivo medio (61,32 EUR) porque los analistas valoran por suma de partes con tasas de descuento de infraestructuras (≈6-7 %) y nosotros aplicamos la regla común de PER a nuestro BPA de 2028e (1,13 EUR, un 11 % por debajo del 1,27 de UBS). Ver diferencia_consenso."
+      }
+    ],
+    "huecos": [
+      {
+        "seccion": "balance",
+        "campo": "historico (caja, deuda bruta, circulante, intangibles)",
+        "tipo": "Núcleo",
+        "intentos": "1) Búsqueda de las cuentas consolidadas 2025 y del balance de la nota de resultados; 2) Stock Analysis, Yahoo y Twelve Data en búsqueda; 3) solo aparecen activo, pasivo, patrimonio y deuda neta: WebFetch no funciona en este entorno",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "financieros",
+        "campo": "cuenta (resultado financiero, puesta en equivalencia, impuestos, minoritarios)",
+        "tipo": "Núcleo",
+        "intentos": "1) Nota de resultados 2025; 2) informe anual integrado y 20-F en búsqueda; 3) agregadores: solo ingresos, EBIT y beneficio",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "flujos",
+        "campo": "historico (dividendos, recompras, adquisiciones por año)",
+        "tipo": "Núcleo",
+        "intentos": "1) Estado de flujos 2025; 2) Stock Analysis e Investing; 3) TipRanks: solo FCF",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sector",
+        "campo": "tamano y serie del mercado de concesiones de peaje",
+        "tipo": "Núcleo",
+        "intentos": "1) Búsqueda de estadística de la FHWA y de la IBTTA; 2) informes de mercado de toll roads; 3) sin cifra fiable en extractos de búsqueda",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "competencia",
+        "campo": "ingresos y margen EBIT de los competidores",
+        "tipo": "Complemento",
+        "intentos": "1) Informes anuales de Vinci, ACS, Transurban; 2) agregadores; 3) búsqueda conjunta: solo PER",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "consejo completo, comisiones, votos de la junta y variable",
+        "tipo": "Núcleo",
+        "intentos": "1) Informe de gobierno y de remuneraciones 2025; 2) 20-F (Item 6); 3) prensa de la junta 2026: solo presidente, vicepresidente, consejero delegado y fijo",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "insiders (operaciones de consejeros 12 meses)",
+        "tipo": "Complemento",
+        "intentos": "1) Registro AFM; 2) CNMV; 3) prensa: sin acceso desde este entorno",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "bolsa",
+        "campo": "beta, volatilidad, rentabilidades a 1-10 años",
+        "tipo": "Complemento",
+        "intentos": "1) bolsa.mjs (sin red); 2) Yahoo e Investing en búsqueda; 3) prensa: solo cierres anuales y máximo/mínimo",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "comparables",
+        "campo": "EV/EBITDA, crecimiento y márgenes de los comparables",
+        "tipo": "Núcleo",
+        "intentos": "1) MarketScreener en búsqueda; 2) multiples.vc y Zonebourse; 3) informe de Aena del repositorio: solo PER",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "transacciones",
+        "campo": "múltiplos EV/EBITDA pagados",
+        "tipo": "Complemento",
+        "intentos": "1) Notas de Ferrovial; 2) prensa; 3) AtkinsRéalis: solo importes",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sentimiento",
+        "campo": "Reddit, Stocktwits y Seeking Alpha",
+        "tipo": "Complemento",
+        "intentos": "1) Búsqueda en Reddit; 2) Stocktwits; 3) Seeking Alpha: sin acceso directo (solo WebSearch)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "valoracion",
+        "campo": "puente (minoritarios a valor de mercado, otras participadas)",
+        "tipo": "Núcleo",
+        "intentos": "1) Nota de resultados 2025 (deuda por proyecto); 2) informe anual: participación en cada Managed Lane; 3) análisis de UBS: sin desglose en el extracto",
+        "decision": "Calculado y marcado como estimación"
+      }
+    ]
+  },
+  "identificacion": {
+    "nombre": "Ferrovial SE",
+    "nombre_corto": "Ferrovial",
+    "ticker": "FER",
+    "isin": "NL0015001FS8",
+    "mercado": "Bolsa de Madrid y Euronext Ámsterdam (también Nasdaq, en USD)",
+    "indice_referencia": "IBEX 35",
+    "pais": "Países Bajos",
+    "pais_iso": "NL",
+    "sector": "Industria",
+    "industria": "Infraestructuras de transporte (concesiones y construcción)",
+    "sede": "Ámsterdam (operativa en Madrid)",
+    "fundacion": "1952",
+    "empleados": null,
+    "web": "www.ferrovial.com",
+    "precio": 45.11,
+    "fecha_precio": "2026-10-14",
+    "acciones": 713,
+    "capitalizacion_publicada": null,
+    "free_float_pct": 69,
+    "max_52s": 63.54,
+    "min_52s": 44.43,
+    "volumen_medio_diario": null,
+    "proximos_resultados": "2026-10-27"
+  },
+  "resumen": {
+    "recomendacion": "Mantener",
+    "conviccion": "Baja",
+    "justificacion_recomendacion": null,
+    "horizonte": "12 meses",
+    "sintesis": "**La recomendación y por qué.** Mantener, con convicción baja. Con nuestro BPA y la regla común de PER, el objetivo a 12 meses es de 49,03 EUR frente a 45,11 EUR del 14 de octubre: +9,9 % con el dividendo y +14,2 % en el caso base, por debajo del 15 % que pedimos para comprar. El valor intrínseco, 28,75 EUR, queda un 36,3 % por debajo del precio, y el objetivo medio de los analistas (61,32 EUR) por encima de todo nuestro rango salvo el alcista (59,88 EUR). La asimetría es aceptable (1,4x: +34,0 % frente a −22,7 %), pero el precio solo se sostiene con un múltiplo que nuestro DCF no justifica. La convicción es baja y no media (la que sugiere el motor) porque las cifras de núcleo salen de extractos de búsqueda, sin balance completo ni cuenta por debajo del EBIT; subiría si los resultados del 27 de octubre confirman un beneficio limpio de ≈300 M en el 3T y una rentabilidad de la I-24 por encima del 9 %.\n\n**El negocio.** Ferrovial es un dueño de autopistas de peaje con una gran constructora pegada: el 80 % de las ventas (9.630 M en 2025) es construcción con un margen EBIT del 4,6 %, pero el valor está en las Managed Lanes de Texas y Virginia (EBITDA de autopistas de 990 M) y en el 48,29 % del 407 ETR de Toronto, que vale ≈12.400 M EUR al precio que pagó Ferrovial en 2025 [1, 13]. El foso de las concesiones es amplio (monopolio local, tarifas libres hasta 2098 en el 407), pero el ROIC consolidado (5,2 %) queda 2,7 puntos por debajo del WACC (7,93 %). Sostenibilidad: «En parte»; el crecimiento proyectado (4,5 % anual) sale de tarifas con poder de precios demostrado, pero el crecimiento nuevo (I-24, NTO de JFK) no ha demostrado rentar por encima de su coste.\n\n**Finanzas.** El EBITDA ajustado pasó de 596 M en 2021 a ≈1.500 M en 2025 y el margen del 8,6 % al 15,6 % [1, 7]. El beneficio publicado no sirve para medir: 2024 (3.239 M) y 2025 (888 M) llevan la venta de Heathrow y AGS; el beneficio limpio de 2025 ronda los 589 M (estimación propia) [3, 12]. La matriz tiene caja neta (1.341 M) y la deuda neta consolidada (5.893 M) es de proyectos sin recurso [1].\n\n**Equipo y gobierno.** La familia Del Pino controla de hecho con ≈31 % y Rafael del Pino preside con funciones ejecutivas [30]. La rotación de activos ha sido acertada; la puja de la I-24 abre dudas sobre su disciplina.\n\n**Valoración.** El DCF da 29,00 EUR. El DCF inverso dice que el precio exige un 11,1 % de crecimiento anual hasta 2035 (frente al 4,4 % del base) y deja una rentabilidad implícita del 5,7 %: el mercado aplica tasas de infraestructura «core». El PER adelantado (46,0x nuestro 2027e) está en su mediana de cinco años (44,3x): la caída del 29 % desde febrero ha quitado la prima de 2025, no ha dejado la acción barata.\n\n**Riesgos y catalizadores.** La I-24 (TIR del accionista ≈7 % según UBS) y el tráfico del 407 (−2,7 % en el 2T26) son los riesgos de más impacto: el bajista (−22,7 %) es su suma [17, 22]. Catalizadores con fecha: 407 ETR el 21 de octubre y Ferrovial el 27 de octubre. En los foros el tono es dividido y empeora: la I-24 ha roto la imagen de valor sin riesgo.\n\n**Qué cambiaría la decisión.** Compraríamos por debajo de 28,75 EUR (ahí pasan los tres umbrales de rentabilidad y valor; la calidad, ROIC − WACC ≥ 5, no la pasa a ningún precio). Venderíamos por encima de 55,09 EUR. Un BPA limpio de 2026 inferior a 0,80 EUR nos llevaría a revisar a la baja.",
+    "tesis": "Ferrovial es la mejor cartera de autopistas de peaje de América del Norte: el 48,29 % del 407 ETR de Toronto, con libertad de tarifas hasta 2098 y un ingreso por viaje que subió un 11,7 % en 2025, y las Managed Lanes de Texas, Virginia y Carolina del Norte, que cobran según la congestión [1, 13]. Los dividendos de proyectos llegaron a 968 M en 2025 [1].\n\nA 45,11 EUR, el precio descuenta un 11,1 % de crecimiento anual de los ingresos consolidados hasta 2035, o un margen del 25,8 %, con nuestro WACC del 7,93 %. Dicho de otro modo, el comprador de hoy recibe una rentabilidad implícita del 5,7 %. El PER adelantado (46x) está en su mediana de cinco años.\n\nEl mercado acierta en la calidad de los activos y paga por ella una tasa muy baja. Para invertir hay que creer que Ferrovial seguirá encontrando concesiones al nivel de NTE y LBJ; la I-24, con una TIR estimada del ≈7 % [22], apunta a lo contrario. Sin esa convicción, la acción sube con el beneficio (+14,2 % en el base a 12 meses) pero no tiene margen de seguridad.",
+    "vision_diferencial": {
+      "mercado_descuenta": "Un crecimiento de los ingresos del 11,1 % anual hasta 2035 o una tasa de descuento de infraestructura «core» (rentabilidad implícita del 5,7 %), con nuevas concesiones tan rentables como las de 2010-2015.",
+      "nuestra_vision": "Crecimiento del 4,4 % anual con tarifas al alza y construcción estable; nuevas concesiones a rentabilidades del 7 %, cerca del coste de capital. El 407 vale lo que se pagó en 2025, no más.",
+      "por_que": "La competencia de los fondos de infraestructura por las managed lanes ha subido los precios (la I-24 cuesta seis veces más por milla que la cartera actual, según UBS) y el tráfico del 407 ya muestra elasticidad a las subidas de tarifa."
+    },
+    "a_favor": [
+      "**Activos únicos**: 48,29 % del 407 ETR con tarifas libres hasta 2098, valorado en ≈12.400 M EUR a precio de 2025.",
+      "**Poder de precios**: ingreso por viaje del 407 +11,7 % en 2025 y peaje +20,2 % en el 1S26.",
+      "**Caja neta en la matriz**: 1.341 M sin proyectos y liquidez de 5.100 M.",
+      "**Crecimiento del EBITDA**: de 596 M en 2021 a ≈1.500 M en 2025.",
+      "**Objetivo a 12 meses del base**: +14,2 % con el BPA creciendo ≈15 % al año."
+    ],
+    "en_contra": [
+      "**Valor intrínseco muy por debajo**: 28,75 EUR, −36,3 % frente al precio.",
+      "**ROIC por debajo del WACC**: 5,2 % frente a 7,93 %.",
+      "**Disciplina de capital en duda**: I-24 con TIR estimada del ≈7 %.",
+      "**Tráfico del 407 a la baja**: −2,7 % en el 2T26.",
+      "**PER de 46x** sobre un beneficio limpio de 0,98 EUR en 2027e."
+    ],
+    "que_vigilar": "La tesis depende de que las nuevas concesiones rindan por encima del coste de capital y de que el 407 siga subiendo tarifas sin perder tráfico. La señal de que no se cumple: una TIR de la I-24 por debajo del 8 % confirmada por la empresa o dos trimestres seguidos de tráfico negativo en el 407.",
+    "cambiaria_recomendacion": [
+      "Precio por debajo de 28,75 EUR: pasaría los umbrales de rentabilidad y valor (no el de calidad).",
+      "Precio por encima de 55,09 EUR: Vender.",
+      "Tráfico del 407 negativo en el 3T26 y el 4T26: revisar a la baja el BPA y el múltiplo.",
+      "Beneficio limpio de 2026 por debajo de 560 M (0,80 EUR por acción): revisar a la baja.",
+      "Confirmación con cuentas completas de un ROIC sobre capital a mercado superior al WACC + 5 puntos: revisar la calidad."
+    ],
+    "kpis_seguimiento": [
+      {
+        "kpi": "Tráfico del 407 ETR",
+        "nivel_actual": "−2,7 % (2T26)",
+        "umbral_alerta": "Negativo dos trimestres",
+        "por_que": "Elasticidad al precio del activo más valioso."
+      },
+      {
+        "kpi": "Dividendos de proyectos",
+        "nivel_actual": "968 M (2025)",
+        "umbral_alerta": "< 950 M en 2026",
+        "por_que": "Es la caja que llega a la matriz."
+      },
+      {
+        "kpi": "Margen EBIT de construcción",
+        "nivel_actual": "4,6 % (2025)",
+        "umbral_alerta": "< 3,5 %",
+        "por_que": "El 80 % de las ventas."
+      },
+      {
+        "kpi": "Caja neta sin proyectos",
+        "nivel_actual": "≈1.300 M (jun-26)",
+        "umbral_alerta": "< 0",
+        "por_que": "Capacidad de aportar capital a I-24 y NTO."
+      }
+    ],
+    "confianza": "Baja"
+  },
+  "historia": {
+    "resumen": "Fundada en 1952 por Rafael del Pino Moreno como constructora ferroviaria, Ferrovial salió a bolsa en 1999 y se transformó en promotora de infraestructuras: compró BAA (Heathrow) en 2006, entró en el 407 ETR de Toronto en 1999 y en las Managed Lanes de Texas y Virginia desde 2010 [21]. Entre 2021 y 2025 vendió servicios, Heathrow y AGS para concentrarse en autopistas de América del Norte. En 2023 trasladó la sede a Países Bajos y en 2024 empezó a cotizar en el Nasdaq [21, 29].",
+    "hitos": [
+      {
+        "anio": "1952",
+        "hito": "Fundación por Rafael del Pino Moreno."
+      },
+      {
+        "anio": "1999",
+        "hito": "Salida a bolsa y entrada en el consorcio del 407 ETR (Toronto)."
+      },
+      {
+        "anio": "2006",
+        "hito": "Compra de BAA (Heathrow y otros aeropuertos británicos)."
+      },
+      {
+        "anio": "2023",
+        "hito": "Fusión inversa con Ferrovial International SE: sede en Países Bajos."
+      },
+      {
+        "anio": "2024",
+        "hito": "Cotización en el Nasdaq; venta del 19,75 % de Heathrow."
+      },
+      {
+        "anio": "2025",
+        "hito": "Venta de AGS y del 5,25 % restante de Heathrow; sube al 48,29 % del 407 ETR."
+      },
+      {
+        "anio": "2026",
+        "hito": "Cierre de la concesión de 50 años de la I-24 (Nashville) y preferente en la D35 checa (2.900 M)."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "negocio": {
+    "segmentos": [
+      {
+        "nombre": "Construcción",
+        "descripcion": "Webber, Budimex, Ferrovial Construcción",
+        "tipo_resultado": "EBIT",
+        "historico": [
+          {
+            "periodo": "2025",
+            "ingresos": 7700,
+            "resultado": 352
+          }
+        ]
+      },
+      {
+        "nombre": "Autopistas",
+        "descripcion": "Managed Lanes de EE. UU. (consolidadas) y 407 ETR (puesta en equivalencia)",
+        "tipo_resultado": "EBITDA",
+        "historico": [
+          {
+            "periodo": "2025",
+            "ingresos": 1400,
+            "resultado": 990
+          }
+        ]
+      },
+      {
+        "nombre": "Energía",
+        "descripcion": "Infraestructuras energéticas",
+        "tipo_resultado": "EBITDA",
+        "historico": [
+          {
+            "periodo": "2025",
+            "ingresos": 339,
+            "resultado": 3
+          }
+        ]
+      },
+      {
+        "nombre": "Aeropuertos y otros",
+        "descripcion": "NTO de JFK, Dalaman; corporación y ajustes",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2025",
+            "ingresos": 191,
+            "resultado": null
+          }
+        ]
+      }
+    ],
+    "kpis": [
+      {
+        "kpi": "Cartera de construcción",
+        "valor_anterior": null,
+        "valor_actual": "17.400 M EUR (2025)",
+        "variacion": "Récord",
+        "comentario": "[1]"
+      },
+      {
+        "kpi": "Dividendos de proyectos",
+        "valor_anterior": "947 M EUR (2024)",
+        "valor_actual": "968 M EUR (2025)",
+        "variacion": "+2,2 %",
+        "comentario": "[1]"
+      },
+      {
+        "kpi": "Ingreso por viaje del 407 ETR",
+        "valor_anterior": null,
+        "valor_actual": "+11,7 % (2025)",
+        "variacion": "+11,7 %",
+        "comentario": "[1]"
+      },
+      {
+        "kpi": "Tráfico del 407 ETR",
+        "valor_anterior": "+1,8 % (1S26)",
+        "valor_actual": "−2,7 % (2T26)",
+        "variacion": "Empeora",
+        "comentario": "[17]"
+      }
+    ],
+    "confianza": "Media",
+    "descripcion": "Ferrovial desarrolla, financia y opera infraestructuras de transporte en concesión y construye para terceros. Autopistas: 407 ETR de Toronto (48,29 %, puesta en equivalencia) y Managed Lanes de peaje dinámico en Texas (NTE, LBJ, NTE 35W), Virginia (I-66) y Carolina del Norte (I-77), consolidadas con socios [1, 13]. Aeropuertos: Nueva Terminal Uno de JFK (en construcción y apertura escalonada) y Dalaman. Construcción: Webber (EE. UU.), Budimex (Polonia) y Ferrovial Construcción, con cartera récord de 17.400 M [1]. Energía, marginal.",
+    "como_gana_dinero": "El beneficio y el valor vienen de las concesiones de peaje: tarifas que suben por contrato o por congestión (ingreso por viaje del 407 +11,7 % en 2025) con costes casi fijos, de modo que el EBITDA de autopistas (990 M en 2025) crece más que los ingresos [1]. La caja llega a la matriz como dividendos de proyectos (968 M en 2025) [1]. Construcción aporta volumen (7.700 M) con margen EBIT ajustado del 4,6 % y es la puerta para ganar nuevas concesiones [1]. El negocio es de capital intensivo al inicio (aportaciones de capital en I-24 y JFK) y muy rentable en la madurez.",
+    "geografias": [],
+    "geografias_criterio": "destino",
+    "clientes": "Los «clientes» de las autopistas son millones de conductores (sin concentración); el riesgo está en el tráfico (−2,7 % en el 407 en el 2T26) [17] y en la regulación de tarifas. En construcción, clientes públicos (estados de EE. UU., Polonia, España). Poder de precios demostrado: el 407 sube tarifas sin tope regulatorio por encima de la inflación, y las Managed Lanes cobran en función de la congestión."
+  },
+  "sector": {
+    "definicion": "Ficha sectorial corta (formato de verticales/sector/ficha.md). Perímetro: concesiones de autopistas de peaje y vías de peaje dinámico (managed lanes) de América del Norte y Europa, más construcción de infraestructuras de transporte. GICS: Industria / Infraestructuras de transporte. Es el mercado relevante para el beneficio de Ferrovial; la construcción se trata como negocio auxiliar.",
+    "tamano": null,
+    "unidad_serie": null,
+    "serie": [],
+    "tcac_historico_pct": null,
+    "tcac_previsto_pct": null,
+    "cr5_pct": null,
+    "estructura": "Moderadamente concentrada",
+    "drivers": [
+      {
+        "driver": "Congestión urbana en Texas, Virginia, Georgia y Tennessee",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Nuevas licitaciones de managed lanes (I-24 de 9.200 M USD en Nashville; I-285 en Atlanta) [23, 25]."
+      },
+      {
+        "driver": "Tarifas por encima de la inflación",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Ingreso por viaje del 407 +11,7 % en 2025 y peaje +20,2 % en el 1S26 [1, 17]."
+      },
+      {
+        "driver": "Actividad económica y tráfico",
+        "efecto": "+/−",
+        "horizonte": "Cíclico",
+        "evidencia": "Tráfico del 407 −2,7 % en el 2T26 [17]."
+      },
+      {
+        "driver": "Competencia por las licitaciones (disciplina de precios)",
+        "efecto": "−",
+        "horizonte": "Estructural",
+        "evidencia": "UBS: la oferta de la I-24 cuesta seis veces más por milla que la cartera actual y rendiría ≈7 % al accionista [22]."
+      },
+      {
+        "driver": "Tipos de interés",
+        "efecto": "−",
+        "horizonte": "Cíclico",
+        "evidencia": "La valoración de concesiones a 40-90 años es muy sensible a la tasa de descuento."
+      }
+    ],
+    "porter": [
+      {
+        "fuerza": "Rivalidad",
+        "intensidad": 3,
+        "justificacion": "Pocos promotores con experiencia en managed lanes (Ferrovial, Cintra es la propia Ferrovial, ACS-Iridium, Macquarie, Meridiam), pero pujas agresivas como la I-24 [22]."
+      },
+      {
+        "fuerza": "Poder de los clientes",
+        "intensidad": 2,
+        "justificacion": "Conductores atomizados; el poder real lo tiene el concedente (estado) al diseñar el contrato."
+      },
+      {
+        "fuerza": "Poder de los proveedores",
+        "intensidad": 2,
+        "justificacion": "Ferrovial construye sus propias concesiones; el capital y la deuda de proyecto abundan."
+      },
+      {
+        "fuerza": "Amenaza de entrada",
+        "intensidad": 3,
+        "justificacion": "Fondos de infraestructuras con capital barato entran en las licitaciones."
+      },
+      {
+        "fuerza": "Amenaza de sustitutos",
+        "intensidad": 1,
+        "justificacion": "La vía gratuita paralela está congestionada: por eso se paga el peaje."
+      }
+    ],
+    "ciclo": {
+      "posicion": "Madurez del ciclo",
+      "comentario": "El tráfico del 407 se frena (−2,7 % en el 2T26) mientras las tarifas siguen subiendo [17]. En 2020 el tráfico del 407 se hundió con la pandemia y se recuperó en dos años; en 2022 la subida de tipos castigó las valoraciones de concesiones, no sus ingresos."
+    },
+    "regulacion": "El 407 ETR tiene libertad de tarifas sujeta a umbrales de tráfico hasta 2098; las managed lanes de EE. UU. fijan precio dinámico con topes por contrato. Riesgo político en Canadá (propuestas de rescate o de bajar peajes) y en EE. UU. (oposición local a los peajes, como en Tennessee).",
+    "tendencias": "Más concesiones de managed lanes en el sur de EE. UU.; peaje electrónico sin barreras; vehículo eléctrico y teletrabajo como incertidumbres de tráfico. Ferrovial gana con la congestión y con la escasez de fondos públicos para carreteras.",
+    "confianza": "Baja"
+  },
+  "competencia": {
+    "cuota_pct": null,
+    "posicion": "Primer promotor privado de managed lanes de EE. UU. y primer accionista del 407 ETR (48,29 %).",
+    "competidores": [
+      {
+        "nombre": "Vinci",
+        "pais": "Francia",
+        "ticker": "DG",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Concesiones y construcción, sobre todo en Europa; PER 2026e de 13,2x [26]."
+      },
+      {
+        "nombre": "ACS (Iridium, Hochtief, Turner)",
+        "pais": "España",
+        "ticker": "ACS",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Compite por concesiones y obra en EE. UU. y Canadá."
+      },
+      {
+        "nombre": "Transurban",
+        "pais": "Australia",
+        "ticker": "TCL",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Express lanes en Virginia (495/95) y autopistas en Australia."
+      },
+      {
+        "nombre": "Eiffage (Getlink, APRR)",
+        "pais": "Francia",
+        "ticker": "FGR",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Concesiones europeas; 29,40 % de Getlink [27]."
+      }
+    ],
+    "foso": {
+      "veredicto": "Amplio",
+      "tendencia": "Estable",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 0,
+          "evidencia": "No aplica."
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 2,
+          "evidencia": "El conductor puede usar la vía gratuita, pero congestionada."
+        },
+        {
+          "fuente": "Intangibles (marca, patentes, licencias)",
+          "puntuacion": 5,
+          "evidencia": "Concesiones exclusivas a muy largo plazo: 407 ETR hasta 2098; I-24 a 50 años [3, 8]."
+        },
+        {
+          "fuente": "Ventaja en costes",
+          "puntuacion": 2,
+          "evidencia": "Constructora propia y experiencia en tarifas dinámicas."
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 4,
+          "evidencia": "Un corredor solo admite una vía de peaje: monopolio local."
+        }
+      ]
+    },
+    "amenazas": "El foso de los activos existentes es amplio; lo que se puede erosionar es la rentabilidad de lo nuevo. UBS y JPMorgan rebajaron la acción por la I-24, con una TIR estimada del ≈7 % [22, 24]. Riesgo político de tarifas en Ontario y en los estados de EE. UU.; tráfico del 407 a la baja en el 2T26 [17].",
+    "confianza": "Media"
+  },
+  "financieros": {
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 6910,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 596,
+        "amortizaciones": 257,
+        "ebit": 339,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 1197,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 1.63,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 733
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 7551,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 728,
+        "amortizaciones": 369,
+        "ebit": 359,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 185,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 0.25,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 727.4
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 8514,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 991,
+        "amortizaciones": 349,
+        "ebit": 642,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 460,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 0.63,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 727
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 9147,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 1342,
+        "amortizaciones": 441,
+        "ebit": 901,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 3239,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 4.44,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 730
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 9630,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 1500,
+        "amortizaciones": 533,
+        "ebit": 967,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 888,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 1.23,
+        "dpa": 0.87,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 722
+      }
+    ],
+    "ltm": {
+      "periodo": "LTM jun-26",
+      "fecha_fin": "2026-06-30",
+      "ingresos": 9900,
+      "ebitda": 1630,
+      "ebit": null,
+      "beneficio_neto": 606,
+      "bpa": 0.85,
+      "dpa": 0.56,
+      "dpa_extraordinario": 0,
+      "fcf": 1880,
+      "participadas_en_ebitda": null,
+      "no_recurrentes_en_ebitda": null
+    },
+    "cambios_perimetro": [
+      {
+        "periodo": "2024",
+        "descripcion": "Venta del 19,75 % de Heathrow (dic-24) y paso del 5,25 % restante a valor razonable: 2.600 M de impacto en la cuenta."
+      },
+      {
+        "periodo": "2025",
+        "descripcion": "Venta de AGS (ene-25, 272 M de plusvalía) y del 5,25 % de Heathrow (jul-25); compra del 5,06 % adicional de 407 ETR (jun-25), que se integra por puesta en equivalencia."
+      }
+    ],
+    "comentario": "Los ingresos crecieron del 6.910 M de 2021 a 9.630 M en 2025 [1, 10], con construcción (7.700 M en 2025, el 80 %) como grueso de las ventas y autopistas como grueso del beneficio: EBITDA ajustado de autopistas de 990 M sobre 1.500 M del grupo [1]. El EBITDA ajustado pasó de 596 M (2021) a 728 M (2022), 991 M (2023), 1.342 M (2024) y ≈1.500 M (2025) [1, 5, 6, 7]: el margen sube de 8,6 % a 15,6 % por las tarifas dinámicas de las Managed Lanes de Texas y Virginia y por el margen de construcción (EBIT ajustado del 4,6 % en 2025) [1]. El beneficio neto publicado no sirve para comparar años: 2021 (1.197 M) lleva plusvalías de servicios y ajustes de valor razonable, 2024 (3.239 M) la venta de Heathrow (2.600 M) y 2025 (888 M) la de AGS (272 M) y la del 5,25 % de Heathrow (27 M) [3, 5, 7, 12]. En el 1S26, ingresos de 4.700 M (+11,3 % comparable), EBITDA de 746 M (+21,6 %) y beneficio de 258 M frente a 540 M del 1S25 con plusvalías [2].",
+    "ajustes": "Usamos el EBITDA y el EBIT **ajustados** de la empresa (sin desinversiones, deterioros ni ajustes de valor razonable). Beneficio limpio (estimación propia): 2025 = 888 − 272 (AGS) − 27 (Heathrow) ≈ 589 M [1, 3, 12]; 2024 = 3.239 − 2.600 (Heathrow) ≈ 639 M [5]; 2023 = 460 M publicado, sin plusvalías relevantes identificadas [6]. El BPA de 2021-2025 es publicado/estimado con las acciones aproximadas (727,4 M a cierre de 2022 [19]); el BPA limpio que usa el objetivo a 12 meses es 0,63 (2023), 0,88 (2024) y 0,82 (2025). La cuenta no separa en estas fuentes el resultado financiero, la puesta en equivalencia (407 ETR), los impuestos ni los minoritarios: quedan en null.",
+    "confianza": "Baja"
+  },
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "1S25",
+        "ingresos": null,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 0.75,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1S26",
+        "ingresos": 4700,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": 11.3,
+        "ebitda": 746,
+        "margen_ebitda_pct": 15.9,
+        "bpa": 0.36,
+        "vs_consenso": "Inferior"
+      }
+    ],
+    "ultima_presentacion": "En la conferencia del 29 de julio la dirección destacó el 407 ETR (ingresos +18,7 %, peaje +20,2 % por la subida de tarifas de enero, EBITDA +24,4 %) aunque su tráfico cayó un 2,7 % en el 2T26 por menor actividad, menos obras en vías alternativas y mal tiempo; en el semestre el tráfico subió un 1,8 % con promociones comerciales [17]. Los ingresos superaron lo previsto y el BPA quedó un 16 % por debajo [17]. Las preguntas se centraron en la disciplina en las nuevas licitaciones de Managed Lanes de EE. UU. (I-24 en Nashville, I-285 en Atlanta) y en la entrada en servicio de la Nueva Terminal Uno de JFK (NTO). En el 1T26 los ingresos fueron de 2.100 M [18]. Liquidez de 4.700 M y caja neta de 1.300 M sin proyectos a junio [2].",
+    "confianza": "Baja"
+  },
+  "balance": {
+    "historico": [
+      {
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": null,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "reservas": null,
+        "periodo": "2021",
+        "activo_total": 24882,
+        "pasivo_total": 19053,
+        "patrimonio_neto": 4039,
+        "minoritarios": 1790
+      },
+      {
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": null,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "reservas": null,
+        "periodo": "2022",
+        "activo_total": 26344,
+        "pasivo_total": 19991,
+        "patrimonio_neto": 4113,
+        "minoritarios": 2240
+      },
+      {
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": null,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "reservas": null,
+        "periodo": "2023",
+        "activo_total": 26318,
+        "pasivo_total": 20439,
+        "patrimonio_neto": 3766,
+        "minoritarios": 2113
+      },
+      {
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 0,
+        "deuda_financiera": 6061,
+        "arrendamientos": null,
+        "reservas": null,
+        "periodo": "2024",
+        "activo_total": 28999,
+        "pasivo_total": 20879,
+        "patrimonio_neto": 6075,
+        "minoritarios": 2045
+      },
+      {
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 0,
+        "deuda_financiera": 5893,
+        "arrendamientos": null,
+        "reservas": null,
+        "periodo": "2025",
+        "activo_total": 27420,
+        "pasivo_total": 19755,
+        "patrimonio_neto": 5908,
+        "minoritarios": 1757
+      }
+    ],
+    "vencimientos": [],
+    "liquidez": "5.100 M de liquidez sin proyectos a cierre de 2025 y 4.700 M a junio de 2026; caja neta sin proyectos de 1.341 M (2025) y ≈1.300 M (jun-26) [1, 2].",
+    "rating": null,
+    "coste_deuda_pct": null,
+    "vida_media_anios": null,
+    "otros_pasivos": "La deuda consolidada es sobre todo deuda sin recurso de los proyectos (autopistas de EE. UU.): deuda neta consolidada de 5.893 M en 2025 frente a 6.061 M en 2024, con caja neta de 1.341 M fuera de los proyectos, así que la deuda neta de los proyectos ronda 7.234 M [1]. Compromisos: aportaciones de capital a la NTO de JFK y a la I-24 de Nashville (pago inicial de 1.500 M USD al estado del consorcio y pagos de concesión durante la construcción) [2]. Sin datos de pensiones, provisiones ni garantías en las fuentes accesibles.",
+    "comentario": "«Deuda financiera» registra la deuda **neta** consolidada (incluida la de los proyectos), con la caja a 0, porque las fuentes accesibles no separan bruta y caja. El patrimonio atribuido pasó de 3.766 M (2023) a 6.075 M (2024) por la plusvalía de Heathrow y bajó a 5.908 M en 2025 por recompras y dividendos [4, 8]. La compañía matriz tiene caja neta: el riesgo financiero está aislado en proyectos sin recurso.",
+    "confianza": "Baja"
+  },
+  "flujos": {
+    "historico": [
+      {
+        "pagos_arrendamientos": 0,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0,
+        "periodo": "2021",
+        "flujo_operativo": 784,
+        "capex": 98
+      },
+      {
+        "pagos_arrendamientos": 0,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0,
+        "periodo": "2022",
+        "flujo_operativo": 921,
+        "capex": 14
+      },
+      {
+        "pagos_arrendamientos": 0,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0,
+        "periodo": "2023",
+        "flujo_operativo": 1263,
+        "capex": 83
+      },
+      {
+        "pagos_arrendamientos": 0,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0,
+        "periodo": "2024",
+        "flujo_operativo": 1293,
+        "capex": 223
+      },
+      {
+        "pagos_arrendamientos": 0,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0,
+        "periodo": "2025",
+        "flujo_operativo": 1910,
+        "capex": 480
+      }
+    ],
+    "comentario": "Flujo operativo de Investing.com para 2021-2024 [11] y capex = flujo operativo − FCF de TipRanks (686, 907, 1.180, 1.070 y 1.430 M) [10]: estimación propia de baja confianza; 2025 con el flujo operativo de ≈1.910 M de Tradingkey frente a 2.490 M LTM de Stock Analysis [9], que no cuadran entre sí. La caja relevante para el accionista es la de los dividendos de proyectos: récord de 968 M en 2025 (+2,2 %), con 407 ETR y Managed Lanes como principales [1]. La caja se usa en recompras (programa de hasta 800 M y 15 M de acciones hasta oct-26; 369,4 M invertidos a 18 de septiembre) [16] y en el dividendo flexible (400 M en junio, 75,55 % en acciones) [14].",
+    "confianza": "Baja"
+  },
+  "calidad": {
+    "auditor": null,
+    "anios_auditor": null,
+    "opinion": null,
+    "comentario": "La calidad del beneficio publicado es baja como medida recurrente: tres de los últimos cinco ejercicios llevan plusvalías o ajustes de valor razonable de cientos o miles de millones (2021, 2024, 2025) [3, 5, 7]. Además, la mayor parte del valor (407 ETR, 48,29 %) se integra por puesta en equivalencia y el beneficio que aporta no está en el EBITDA [13]. Los indicadores del motor (Altman, Piotroski, Beneish) no son interpretables con un balance tan incompleto. Sin opinión de auditoría localizada en las fuentes accesibles.",
+    "senales": [
+      {
+        "senal": "Beneficio publicado dominado por plusvalías de rotación de activos",
+        "nivel": "Media",
+        "comentario": "Se trabaja con BPA limpio (estimación propia)."
+      },
+      {
+        "senal": "Valor principal en una participada por puesta en equivalencia (407 ETR)",
+        "nivel": "Media",
+        "comentario": "El EBITDA consolidado no la recoge; se valora aparte en el puente."
+      }
+    ],
+    "confianza": "Baja"
+  },
+  "rentabilidad": {
+    "comentario": "Ferrovial no crea valor contable sobre su capital consolidado: ROIC del 5,2 % en 2025 y del 6,7 % en 2024, frente a un WACC del 7,93 % (−2,7 puntos). El ROIC está deprimido por la contabilidad: el 407 ETR está en balance a un valor muy inferior al de mercado y su beneficio va por debajo del EBIT, y la construcción tiene mucho volumen con poco margen. Medido sobre el precio de las concesiones, las Managed Lanes de Texas y el 407 rinden mucho más que su coste, pero eso ya está en el precio. La rotación del capital es baja (0,34) y el ROIC incremental histórico, del 5,9 %, no mejora la lectura. Frente a Vinci, que rinde por encima de su coste de capital con concesiones europeas maduras, Ferrovial es un negocio en fase de inversión.",
+    "confianza": "Baja"
+  },
+  "capital": {
+    "politica": "Remuneración por dividendo flexible (scrip) y recompras: en 2025, 0,3182 + 0,4769 EUR en scrip y 0,077 EUR en efectivo (≈0,87 EUR) [15]; en 2026, 0,5578 EUR en junio (400 M, +75 % sobre el primer tramo de 2025) [14]. Recompra de hasta 800 M y 15 M de acciones (≈2 % del capital) hasta octubre de 2026 [15, 16]. Prioridad declarada: rotar activos maduros (Heathrow, AGS) hacia autopistas de América del Norte.",
+    "adquisiciones": [
+      {
+        "anio": "2025",
+        "objetivo": "5,06 % adicional de 407 ETR (hasta el 48,29 %)",
+        "importe": 1330,
+        "ev_ebitda": null,
+        "financiacion": "Caja de la venta de Heathrow",
+        "resultado": "CAD 1.990 M; ingresos del 407 +18,7 % y EBITDA +24,4 % en el 1S26 [13, 17]"
+      },
+      {
+        "anio": "2026",
+        "objetivo": "I-24 Southeast Choice Lanes (Nashville), 50 años",
+        "importe": null,
+        "ev_ebitda": null,
+        "financiacion": "Consorcio DriveTN con deuda de proyecto",
+        "resultado": "Cerrado el 30-sep-26; UBS estima TIR del accionista ≈7 %"
+      }
+    ],
+    "comentario": "La dirección ha vendido caro (Heathrow, AGS, servicios) y ha reinvertido en el activo de mayor calidad que conocía, el 407 ETR [1, 13]. La duda nueva es la I-24: el mercado teme que la disciplina en las licitaciones de Managed Lanes se esté relajando. Las recompras compensan la dilución del scrip.",
+    "confianza": "Media"
+  },
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "Rafael del Pino",
+        "cargo": "Presidente ejecutivo",
+        "desde": "2000",
+        "participacion_pct": 20.25,
+        "trayectoria": "Hijo del fundador; preside desde 2000. Ha dirigido la rotación de Heathrow, servicios y AGS hacia autopistas norteamericanas [30]."
+      },
+      {
+        "nombre": "Ignacio Madridejos",
+        "cargo": "Consejero delegado",
+        "desde": "2019",
+        "participacion_pct": null,
+        "trayectoria": "Antes en Cemex; desde 2019 ha vendido servicios y aeropuertos y ha llevado la cotización al Nasdaq [32]."
+      },
+      {
+        "nombre": "Óscar Fanjul",
+        "cargo": "Vicepresidente",
+        "desde": null,
+        "participacion_pct": null,
+        "trayectoria": "Reelegido vicepresidente en la junta de 2025 [32]."
+      }
+    ],
+    "historial_guidance": [],
+    "comentario": "Equipo estable: el presidente lleva 26 años y el consejero delegado siete. La dirección ha cumplido su plan de rotación de activos (venta de Heathrow y AGS, compra del 5 % del 407) [1]. No hay guía anual numérica de beneficio con la que medir el cumplimiento.",
+    "confianza": "Media"
+  },
+  "gobierno": {
+    "consejo": [
+      {
+        "nombre": "Rafael del Pino",
+        "cargo": "Presidente",
+        "tipo": "Ejecutivo",
+        "desde": "2000",
+        "comisiones": null
+      },
+      {
+        "nombre": "Óscar Fanjul",
+        "cargo": "Vicepresidente",
+        "tipo": "Otro externo",
+        "desde": null,
+        "comisiones": null
+      },
+      {
+        "nombre": "Ignacio Madridejos",
+        "cargo": "Consejero delegado",
+        "tipo": "Ejecutivo",
+        "desde": "2019",
+        "comisiones": null
+      }
+    ],
+    "presidente_ceo_separados": true,
+    "presidente_ejecutivo": true,
+    "consejero_coordinador": null,
+    "una_accion_un_voto": true,
+    "operaciones_vinculadas_relevantes": false,
+    "variable_ligado_rentabilidad": null,
+    "auditoria_independiente": null,
+    "insiders_sin_operaciones": null,
+    "accionista_control": true,
+    "presidente_vinculado_control": true,
+    "cambios_cupula_24m": 0,
+    "voto_remuneracion_pct": null,
+    "voto_remuneracion_contra_pct": null,
+    "voto_remuneracion_contra_libre_pct": null,
+    "voto_cupula_pct": null,
+    "remuneracion_ceo": {
+      "anio": "2025",
+      "total": null,
+      "fijo": 1.6,
+      "variable_corto": null,
+      "variable_largo": null,
+      "ratio_salario_medio": null
+    },
+    "remuneracion": "La política de 2025 subió el fijo del presidente un 10 % (1,65 M) y el del consejero delegado un 10,3 % (1,6 M) [32]. No se localizaron las métricas del variable ni los votos de la junta.",
+    "accionistas": [
+      {
+        "nombre": "Rafael del Pino",
+        "pct": 20.25,
+        "tipo": "Familia fundadora (presidente)",
+        "variacion": "Estable"
+      },
+      {
+        "nombre": "María del Pino",
+        "pct": 8.15,
+        "tipo": "Familia fundadora",
+        "variacion": "Vendió parte en mayo de 2025 [31]"
+      },
+      {
+        "nombre": "Joaquín del Pino",
+        "pct": 2.53,
+        "tipo": "Familia fundadora",
+        "variacion": null
+      },
+      {
+        "nombre": "Autocartera (recompra en curso)",
+        "pct": null,
+        "tipo": "Autocartera",
+        "variacion": "6,43 M de acciones compradas hasta el 18-sep-26 [16]"
+      }
+    ],
+    "insiders": [],
+    "control_y_defensas": "La familia Del Pino suma en torno al 31 % y Rafael del Pino, primer accionista con el 20,25 %, preside con funciones ejecutivas: control de hecho [30]. Los hermanos votan por separado desde 2015 [29, 30]. Sede en Países Bajos desde 2023 (derecho societario neerlandés).",
+    "alertas": [
+      "Sanción de la CNMC por reparto de licitaciones públicas [28]."
+    ],
+    "confianza": "Baja"
+  },
+  "consenso": {
+    "guidance": "Ferrovial no da guía de beneficio; sus objetivos son de flujo: dividendos de proyectos (968 M en 2025), mantener caja neta sin proyectos y crecer en managed lanes de EE. UU. [1]. Próximos resultados (9 meses): 27 de octubre [33].",
+    "estimaciones": [
+      {
+        "periodo": "2026e",
+        "ingresos": null,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 0.93,
+        "dpa": null,
+        "fuente": "UBS [22]; Chartmill 1,05 [41]"
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": null,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 1.04,
+        "dpa": null,
+        "fuente": "UBS [22]; Chartmill 1,20 [41]"
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": null,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 1.27,
+        "dpa": null,
+        "fuente": "UBS [22]; Chartmill 1,41 [41]"
+      }
+    ],
+    "recomendaciones": {
+      "n_analistas": 26,
+      "comprar": 13,
+      "mantener": 11,
+      "vender": 2,
+      "po_medio": 61.32,
+      "po_min": 50,
+      "po_max": 70
+    },
+    "revisiones": "Desde agosto, recortes: UBS de 65 a 59 EUR y a neutral (26-ago) [22, 38], JPMorgan de 65 a 50 EUR y a neutral [24], BofA de 67 a 60 EUR manteniendo comprar (12-oct) [39]. UBS rebajó el BPA 2026-2030 entre 0 y −2 % por divisa y tráfico [22]. Simply Wall St da un beneficio de consenso de 738, 863 y 908 M para 2026-2028 [42]. Consenso Bloomberg de agosto: 13 comprar, 11 mantener, 2 vender y 61,32 EUR de objetivo medio [37]; el de Reuters de mayo era de 59,55 EUR [40]. El máximo (70) es el caso alcista de UBS y el mínimo (50) el de JPMorgan.",
+    "base_ebitda": "NIIF",
+    "ajuste_ebitda_pct_ventas": null,
+    "confianza": "Media"
+  },
+  "bolsa": {
+    "tipo_rentabilidad": "de precio (sin dividendos)",
+    "rentabilidades": [
+      {
+        "periodo": "En el año",
+        "accion_pct": -18.5,
+        "indice_pct": null,
+        "sector_pct": null
+      }
+    ],
+    "anual": [
+      {
+        "anio": "2022",
+        "accion_pct": -11.2,
+        "indice_pct": null
+      },
+      {
+        "anio": "2023",
+        "accion_pct": 34.9,
+        "indice_pct": 22.9
+      },
+      {
+        "anio": "2024",
+        "accion_pct": 23,
+        "indice_pct": null
+      },
+      {
+        "anio": "2025",
+        "accion_pct": 36.4,
+        "indice_pct": 48.2
+      }
+    ],
+    "beta": null,
+    "volatilidad_pct": null,
+    "max_drawdown_pct": -29,
+    "posicion_corta_pct": null,
+    "comentario": "La acción marcó máximo histórico de 63,54 EUR el 27 de febrero de 2026 y ha caído un 29 % hasta 45,11 EUR (14-oct) [33]: primero por la guerra de Irán y los tipos, y desde agosto por la adjudicación de la I-24 de Nashville, que UBS y JPMorgan consideran poco rentable [22, 24]. El 26 de agosto cayó un 4,95 % hasta 51,42 EUR [37]. En 2025 subió un 36,4 % (38,6 % con dividendos) frente al 48,2 % del IBEX [49].",
+    "confianza": "Baja"
+  },
+  "multiplos_historicos": {
+    "serie": [
+      {
+        "anio": "2021",
+        "precio_cierre": 27.56,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": true
+      },
+      {
+        "anio": "2022",
+        "precio_cierre": 24.47,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2023",
+        "precio_cierre": 33.02,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2024",
+        "precio_cierre": 40.6,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2025",
+        "precio_cierre": 55.34,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      }
+    ],
+    "comentario": "Cierres oficiales de la empresa [19, 48, 49]. El PER publicado no sirve: el beneficio de 2021, 2024 y 2025 lleva plusvalías. Con BPA limpio del año siguiente (adelantado), el PER fue de 38,8x (2022), 37,7x (2023), 49,8x (2024) y 65,1x (2025, sobre nuestro 2026e); 2021 se excluye porque el BPA de 2022 (0,25) está deprimido. El mínimo de 52 semanas, 44,43 EUR [35]. Hoy, 46,0x nuestro 2027e: por debajo de la mediana de 2024-2025 y en línea con la de cinco años (44,3x). Ferrovial cotiza a PER muy altos porque el beneficio contable infravalora concesiones con décadas de crecimiento de tarifas.",
+    "confianza": "Baja"
+  },
+  "comparables": {
+    "criterio": "No hay comparables puros de un holding de managed lanes y 407 ETR. Se usan concesionarias y constructoras europeas (Vinci, Sacyr) y gestores de aeropuertos cotizados (Aena, ADP, Fraport, ASUR) con su PER de los próximos 12 meses [26, 44, 45, 46, 47]. Transurban y Atlas Arteria (concesionarias puras) no tienen PER útil (beneficio contable mínimo) y quedan fuera. Los múltiplos son orientativos: Ferrovial cotiza a 3-4 veces su PER por la duración de sus concesiones.",
+    "empresas": [
+      {
+        "nombre": "Vinci",
+        "ticker": "DG",
+        "pais": "FR",
+        "capitalizacion": null,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": 6.9,
+        "per_ntm": 13.2,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "Sacyr",
+        "ticker": "SCYR",
+        "pais": "ES",
+        "capitalizacion": null,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 20.6,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "Aena",
+        "ticker": "AENA",
+        "pais": "ES",
+        "capitalizacion": null,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 17.2,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "Aéroports de Paris",
+        "ticker": "ADP",
+        "pais": "FR",
+        "capitalizacion": null,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 18.2,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "Fraport",
+        "ticker": "FRA",
+        "pais": "DE",
+        "capitalizacion": null,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 15,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "ASUR",
+        "ticker": "ASURB",
+        "pais": "MX",
+        "capitalizacion": null,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 14.2,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      }
+    ],
+    "comentario": "Ferrovial cotiza a 44,4x el BPA de los próximos 12 meses, casi tres veces la mediana de los comparables (16,1x). La prima no se cierra con estos múltiplos: el beneficio contable de Ferrovial no recoge el valor del 407 ETR ni el crecimiento de tarifas de las Managed Lanes durante décadas, y Vinci o Aena tienen concesiones más cortas o reguladas. Por eso los comparables pesan 0 en la síntesis y solo entran en el alcista del objetivo a 12 meses a través de la regla común (que aquí no los usa: la media larga propia es mayor). Si algún día Ferrovial cotizara a un PER de concesionaria europea, valdría un tercio: ese es el riesgo de múltiplo, no un valor objetivo.",
+    "confianza": "Baja"
+  },
+  "transacciones": {
+    "operaciones": [
+      {
+        "fecha": "2025-06",
+        "objetivo": "407 ETR (5,06 %)",
+        "comprador": "Ferrovial (a AtkinsRéalis)",
+        "ev": null,
+        "ev_ventas": null,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "CAD 1.990 M por el 5,06 %; el tramo del 3,30 % (CAD 1.353 M) valora el 100 % del capital en ≈CAD 41.000 M [13]."
+      },
+      {
+        "fecha": "2025-07",
+        "objetivo": "Heathrow (5,25 %)",
+        "comprador": "Ardian y PIF",
+        "ev": null,
+        "ev_ventas": null,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Venta por 539 M EUR [1, 12]."
+      },
+      {
+        "fecha": "2024-12",
+        "objetivo": "Heathrow (19,75 %)",
+        "comprador": "Ardian y PIF",
+        "ev": null,
+        "ev_ventas": null,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Plusvalía de 2.000 M EUR [5]."
+      },
+      {
+        "fecha": "2025-01",
+        "objetivo": "AGS Airports (50 %)",
+        "comprador": "AviAlliance",
+        "ev": null,
+        "ev_ventas": null,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "533 M EUR, 272 M de plusvalía [1]."
+      }
+    ],
+    "comentario": "Las operaciones recientes son de rotación de la propia Ferrovial y no publican múltiplo de EBITDA. La más útil es la del 407 ETR: el precio de 2025 valora la participación del 48,29 % en ≈CAD 19.800 M (≈12.400 M EUR), que usamos en el puente [13]. Con la familia Del Pino al ≈31 %, una OPA sobre Ferrovial es improbable.",
+    "confianza": "Media"
+  },
+  "dcf": {
+    "anios": [
+      {
+        "periodo": "2026e",
+        "crecimiento_pct": 5,
+        "margen_ebitda_pct": 16.5,
+        "amortizacion_pct_ventas": 5.5,
+        "capex_pct_ventas": 5,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 25,
+        "fijo": true
+      },
+      {
+        "periodo": "2027e",
+        "crecimiento_pct": 6,
+        "margen_ebitda_pct": 17,
+        "amortizacion_pct_ventas": 5.5,
+        "capex_pct_ventas": 6,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      },
+      {
+        "periodo": "2028e",
+        "crecimiento_pct": 6,
+        "margen_ebitda_pct": 17.5,
+        "amortizacion_pct_ventas": 5.5,
+        "capex_pct_ventas": 6.5,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      },
+      {
+        "periodo": "2029e",
+        "crecimiento_pct": 5.5,
+        "margen_ebitda_pct": 18,
+        "amortizacion_pct_ventas": 5.5,
+        "capex_pct_ventas": 6.5,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      },
+      {
+        "periodo": "2030e",
+        "crecimiento_pct": 5,
+        "margen_ebitda_pct": 18.5,
+        "amortizacion_pct_ventas": 5.5,
+        "capex_pct_ventas": 6,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      },
+      {
+        "periodo": "2031e",
+        "crecimiento_pct": 4.5,
+        "margen_ebitda_pct": 18.5,
+        "amortizacion_pct_ventas": 5.5,
+        "capex_pct_ventas": 6,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      },
+      {
+        "periodo": "2032e",
+        "crecimiento_pct": 4,
+        "margen_ebitda_pct": 18.5,
+        "amortizacion_pct_ventas": 5.5,
+        "capex_pct_ventas": 6,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      },
+      {
+        "periodo": "2033e",
+        "crecimiento_pct": 3.5,
+        "margen_ebitda_pct": 18.5,
+        "amortizacion_pct_ventas": 5.5,
+        "capex_pct_ventas": 6,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      },
+      {
+        "periodo": "2034e",
+        "crecimiento_pct": 3,
+        "margen_ebitda_pct": 18.5,
+        "amortizacion_pct_ventas": 5.5,
+        "capex_pct_ventas": 6,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      },
+      {
+        "periodo": "2035e",
+        "crecimiento_pct": 2.5,
+        "margen_ebitda_pct": 18.5,
+        "amortizacion_pct_ventas": 5.5,
+        "capex_pct_ventas": 6,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      }
+    ],
+    "wacc": {
+      "tasa_libre_pct": 3.53,
+      "beta": 0.9,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 0.5,
+      "coste_deuda_pct": 5,
+      "tasa_impositiva_pct": 25,
+      "peso_deuda_pct": 20
+    },
+    "terminal": {
+      "metodo": "gordon",
+      "crecimiento_pct": 2,
+      "multiplo_salida": 20
+    },
+    "etapa2": {
+      "usar": false,
+      "anios": 5,
+      "margen_final_pct": null,
+      "justificacion": null
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "Ingresos +5 % en 2026e (1S26: +11,3 % comparable, frenado por el dólar y el tráfico del 407) [2], +6 % en 2027-2028e con la cartera récord de construcción (17.400 M) [1] y las subidas de tarifa de las Managed Lanes, y convergencia al 2,5 % en 2035e. Entre 2021 y 2025 los ingresos crecieron un 8,7 % anual compuesto [1, 10]: proyectamos menos porque la construcción (80 % de las ventas) no crecerá al ritmo de 2023-2024.",
+      "margenes": "Margen EBITDA ajustado del 15,6 % en 2025 [1] y 15,9 % en el 1S26 [2]; sube hasta el 18,5 % en 2030e porque las autopistas, con margen del 70 % (990 M de EBITDA sobre 1.400 M de ingresos), crecen más que la construcción (EBIT del 4,6 %) [1]. Es la misma tendencia de 2021-2025 (del 8,6 % al 15,6 %), más lenta.",
+      "inversion": "Capex del 5-6,5 % de las ventas (2025: ≈5 % estimado con FCF de TipRanks) [10] y amortización del 5,5 % (la de 2025). No proyectamos el capex de la I-24 (9.200 M USD a nivel de proyecto) ni el de la NTO: sus flujos y su deuda de proyecto quedan fuera, y es una de las razones por las que el DCF no captura el valor de las nuevas concesiones.",
+      "wacc": "Tasa libre: Bund a 10 años del 3,53 % [50]. Beta 0,9 (sin beta propia calculable en este entorno; infraestructuras con construcción), prima de mercado del 5,5 % y 0,5 puntos adicionales por el riesgo de licitación en EE. UU. Coste de la deuda del 5 % (deuda de proyecto en USD) con un peso del 20 % (deuda neta de 5.893 M frente a 32.163 M de capitalización). WACC del 7,93 %.",
+      "terminal": "Gordon al 2 %. Es generoso para concesiones con fecha de fin (407 ETR hasta 2098, Managed Lanes hasta 2061-2070) y prudente para tarifas que suben por encima de la inflación: los dos efectos se compensan en parte."
+    },
+    "sostenibilidad": {
+      "puente_ingresos": [
+        {
+          "periodo": "2026e",
+          "volumen_pct": 3,
+          "precio_pct": 3.5,
+          "otros_pct": -1.5,
+          "comentario": "Volumen: construcción y tráfico (+1,8 % el 407 en el semestre); precio: tarifas del 407 (+20,2 % en peaje) y de las Managed Lanes; otros: dólar y dólar canadiense más débiles [2, 17]."
+        },
+        {
+          "periodo": "2027e",
+          "volumen_pct": 3,
+          "precio_pct": 3,
+          "otros_pct": 0,
+          "comentario": "Cartera de construcción de 17.400 M y subidas de tarifa en línea con la congestión [1]."
+        },
+        {
+          "periodo": "2028e",
+          "volumen_pct": 3,
+          "precio_pct": 3,
+          "otros_pct": 0,
+          "comentario": "Igual que 2027e; la apertura completa de la NTO de JFK aporta ingresos de aeropuertos."
+        },
+        {
+          "periodo": "2029e",
+          "volumen_pct": 2.5,
+          "precio_pct": 3,
+          "otros_pct": 0,
+          "comentario": "Menos construcción y más peaje."
+        },
+        {
+          "periodo": "2030e",
+          "volumen_pct": 2,
+          "precio_pct": 3,
+          "otros_pct": 0,
+          "comentario": "Convergencia hacia el crecimiento nominal de la economía."
+        }
+      ],
+      "mercado_final": null,
+      "veredicto": "En parte",
+      "justificacion": "El crecimiento proyectado (4,5 % de media) se apoya en el poder de precios demostrado de los peajes (ingreso por viaje del 407 +11,7 % en 2025) [1] y en la cartera de construcción, no en capital nuevo: la reinversión es solo el 5 % del NOPAT, así que la prueba del motor no se aplica y la hacemos a mano. El precio aguanta; el volumen se frena (tráfico del 407 −2,7 % en el 2T26) [17]. El problema es otro: el ROIC consolidado (5,2 %) está por debajo del WACC (7,93 %) y el crecimiento que el mercado espera exige nuevas concesiones como la I-24, que UBS estima en una TIR del ≈7 % [22]. Por eso «En parte»: el base no necesita recorte (las pruebas pasan), pero el crecimiento nuevo no demuestra crear valor."
+    },
+    "lectura": "El DCF del perímetro consolidado más el 407 ETR a precio de transacción da 29,00 EUR por acción, un 35,7 % por debajo del precio, con el valor terminal en el 61 % del valor. El DCF inverso dice que, con nuestro WACC del 7,93 %, el precio exige un crecimiento de los ingresos del 11,1 % anual en 2027-2035 (frente al 4,4 % del base) o un margen EBITDA del 25,8 % (frente al 18,5 %), y que la rentabilidad implícita para el comprador de hoy es del 5,7 %. Es exigente: la acción descuenta una tasa de descuento de infraestructura «core» (≈5,5-6 %) y décadas de subidas de tarifa por encima de la inflación. El mercado puede tener razón en el 407 (lo hemos valorado a la última transacción, no a un DCF propio), pero el resto del perímetro no justifica el precio con un coste de capital de mercado. La conclusión depende mucho de la tasa: con 6,5 % de WACC el valor se acercaría al precio.",
+    "confianza": "Baja"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": -2,
+        "ajuste_margen_pp": -1.5,
+        "ajuste_wacc_pp": 0.5,
+        "crecimiento_terminal_pct": 1.5,
+        "multiplo_salida": null,
+        "narrativa": "La I-24 y otras pujas agresivas se llevan capital a rentabilidades del 6-7 %, el tráfico del 407 sigue cayendo y los tipos suben: el mercado deja de pagar la prima de «compounder» (ya pasó en 2022, con caídas del 11 %)."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Las tarifas siguen subiendo, la construcción mantiene el 4-5 % de margen y la NTO abre por fases; el beneficio limpio crece ≈15 % al año hasta 2028."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": 1.5,
+        "ajuste_margen_pp": 1,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Recuperación del tráfico del 407, nuevas managed lanes adjudicadas con mejores condiciones y venta de activos maduros con plusvalía."
+      }
+    ],
+    "comentario": "Los tres escenarios del DCF quedan por debajo del precio (20,20, 29,00 y 34,43 EUR): el intrínseco no sostiene la cotización ni en el alcista, porque el DCF no captura el valor de las concesiones nuevas ni una tasa de infraestructura «core». La asimetría que importa es la del objetivo a 12 meses: +34,0 % en el alcista frente a −22,7 % en el bajista.",
+    "confianza": "Baja"
+  },
+  "suma_partes": {
+    "aplica": false,
+    "descuento_holding_pct": 0,
+    "partes": [],
+    "comentario": "No se aplica: sin los estados financieros de cada concesión (EBITDA, deuda y años restantes de las Managed Lanes) una suma de partes sería una copia de la de los analistas. El 407 ETR, la parte más valiosa, ya entra en el puente a precio de transacción.",
+    "confianza": "Baja"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2025-12-31",
+      "deuda_financiera": 5893,
+      "arrendamientos": 0,
+      "caja": 0,
+      "minoritarios": 5000,
+      "pensiones": 0,
+      "asociadas": 12400,
+      "otros_ajustes": 0
+    },
+    "rab": null,
+    "referencia_mercado": {
+      "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+      "prima_implicita_pct": 4.2,
+      "fecha": "2026-10",
+      "fuente": "Damodaran, ERPbymonth [51]"
+    },
+    "pesos": {
+      "dcf": 70,
+      "comparables": 0,
+      "transacciones": 0,
+      "suma_partes": 0,
+      "escenarios": 30
+    },
+    "objetivo_12m": {
+      "ejercicio": "2028e",
+      "casos": [
+        {
+          "escenario": "Bajista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 0.95,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Beneficio limpio de ≈680 M en 2028e (+5 % anual desde 589 M en 2025): tráfico del 407 plano, aportaciones de capital a la I-24 y la NTO que reducen los ingresos financieros de la caja y peor dólar. 713 M de acciones, sin recompras no anunciadas."
+        },
+        {
+          "escenario": "Base",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 1.13,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Beneficio limpio de ≈805 M en 2028e (608 M en 2026e = 258 M del 1S26 + ≈350 M del 2S; ≈700 M en 2027e): tarifas del 407 y de las Managed Lanes, margen de construcción del 4,5 % y NTO en marcha. 713 M de acciones."
+        },
+        {
+          "escenario": "Alcista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 1.25,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Beneficio limpio de ≈890 M en 2028e: recuperación del tráfico del 407, NTO a pleno rendimiento y Managed Lanes con subidas de tarifa del 8-10 %. Cerca del consenso de Simply Wall St (908 M)."
+        }
+      ],
+      "per_historico": {
+        "base": "adelantado",
+        "actual": 46,
+        "mediana_5a": 44.3,
+        "minimo_5a": 37.7,
+        "media_larga": 47.9,
+        "excluidos": "PER adelantado = precio de cierre ÷ BPA LIMPIO del año siguiente (sin plusvalías de rotación ni ajustes de valor razonable; misma base que los casos): 2022 24,47 ÷ 0,63 = 38,8x; 2023 33,02 ÷ 0,88 = 37,7x; 2024 40,60 ÷ 0,82 = 49,8x; 2025 55,34 ÷ 0,85 (nuestro 2026e) = 65,1x [1, 3, 5, 19, 48, 49]. Excluido 2021 (27,56 ÷ 0,25 = 110x: BPA de 2022 deprimido). Sin 2019-2020 (pérdidas). Media larga = media de los cuatro años limpios. Actual = 45,11 ÷ 0,98 (nuestro BPA de 2027e)."
+      },
+      "comparables_per": {
+        "mediana": 16.1
+      },
+      "consenso": {
+        "bpa_ano1": 0.93,
+        "bpa_ano2": 1.04,
+        "objetivo_medio": 61.32,
+        "objetivo_min": 50,
+        "objetivo_max": 70,
+        "analistas": 26,
+        "tendencia_3m": "recortes",
+        "fuente": "UBS, Chartmill, consenso Bloomberg (Demócrata), JPMorgan y BofA [22, 24, 37, 39, 41]"
+      },
+      "diferencia_consenso": "Nuestro BPA de 2028e (1,13 EUR) está un 11 % por debajo del de UBS (1,27) y un 20 % por debajo del de Chartmill (1,41) [22, 41]: no damos ingresos financieros crecientes ni plusvalías, y descontamos el coste de financiar la I-24. Nuestro precio base (50,96 EUR) queda un 16,9 % por debajo del objetivo medio (61,32 EUR) [37] sobre todo por el método: los analistas valoran por suma de partes con tasas de descuento de infraestructuras; nosotros aplicamos la regla común de PER. La tendencia de los objetivos es a la baja (UBS 59, JPMorgan 50, BofA 60) [22, 24, 39].",
+      "media": null,
+      "comentario": "El objetivo a 12 meses (49,03 EUR ponderado; 50,96 EUR en el base) supera al valor intrínseco (28,75 EUR) en un 71 %: el PER al que la regla lleva la acción (45x) es el que el mercado le ha pagado los últimos años, no uno que justifique nuestro DCF. Cerrar esa distancia no es cuestión de un catalizador: exige creer en tasas de descuento de infraestructura muy bajas. Por eso la tesis de valor real es negativa a varios años aunque el precio a 12 meses pueda subir."
+    },
+    "comentario": "Pesamos el DCF al 70 % y los escenarios al 30 %; comparables y transacciones a 0 porque ningún comparable cotizado tiene la duración de concesiones de Ferrovial (su PER de 14-21x llevaría a 15-18 EUR) y las transacciones recientes no publican múltiplos. El 407 ETR entra en el puente a precio de transacción (≈12.400 M EUR, el 39 % de la capitalización), que es la referencia más objetiva del informe. La dispersión es enorme: DCF 29 EUR, analistas 50-70 EUR, cotización 45 EUR. La diferencia es la tasa de descuento: el mercado paga por estas concesiones una rentabilidad implícita del 5,7 %.",
+    "confianza": "Baja"
+  },
+  "catalizadores": {
+    "items": [
+      {
+        "fecha": "2026-10-21",
+        "evento": "Resultados de 9 meses del 407 ETR",
+        "efecto": "Tráfico tras el −2,7 % del 2T26",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2026-10-27",
+        "evento": "Resultados de 9 meses de Ferrovial (conferencia el 28-oct)",
+        "efecto": "Dividendos de proyectos, BPA frente al consenso y explicación de la I-24",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2026-10",
+        "evento": "Adjudicación de la I-285 East (Atlanta)",
+        "efecto": "Nueva managed lane: prueba de la disciplina de precios",
+        "probabilidad": "Media",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2026-11/12",
+        "evento": "Nuevo programa de recompra y segundo tramo del dividendo flexible",
+        "efecto": "Retorno al accionista (el programa vigente acaba en octubre)",
+        "probabilidad": "Alta",
+        "sentido": "+"
+      },
+      {
+        "fecha": "2027",
+        "evento": "Cierre de la D35 checa (2.900 M, preferente desde el 6-oct)",
+        "efecto": "Diversificación en Europa",
+        "probabilidad": "Media",
+        "sentido": "+"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "riesgos": {
+    "items": [
+      {
+        "riesgo": "Rentabilidad baja de las nuevas concesiones (I-24 y siguientes)",
+        "tipo": "Asignación de capital",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−15 % a −25 % (bajista a 12 meses: −22,7 %)",
+        "mitigante": "Ferrovial controla la construcción y el diseño de tarifas",
+        "senal": "TIR de la I-24 publicada o equity comprometido por encima del previsto"
+      },
+      {
+        "riesgo": "Caída del tráfico del 407 ETR por elasticidad al precio",
+        "tipo": "Operativo",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−10 %",
+        "mitigante": "Libertad de tarifas hasta 2098",
+        "senal": "Tráfico trimestral negativo dos trimestres seguidos"
+      },
+      {
+        "riesgo": "Subida de tipos reales",
+        "tipo": "Mercado",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "Cada 0,5 puntos de WACC ≈ −11 % en el DCF",
+        "mitigante": "Caja neta en la matriz",
+        "senal": "Bund por encima del 4 %"
+      },
+      {
+        "riesgo": "Riesgo político de tarifas en Ontario o en los estados de EE. UU.",
+        "tipo": "Regulatorio",
+        "probabilidad": "Baja",
+        "impacto": "Alto",
+        "efecto_valor": "−10 % a −20 %",
+        "mitigante": "Contratos a largo plazo con compensación",
+        "senal": "Propuestas legislativas sobre peajes"
+      },
+      {
+        "riesgo": "Dólar y dólar canadiense débiles",
+        "tipo": "Divisa",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−5 %",
+        "mitigante": "Deuda de proyecto en la misma divisa",
+        "senal": "EUR/USD por encima de 1,25"
+      },
+      {
+        "riesgo": "Retrasos o sobrecostes en la NTO de JFK y en grandes obras",
+        "tipo": "Ejecución",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−5 %",
+        "mitigante": "25 acuerdos con aerolíneas",
+        "senal": "Provisiones en construcción"
+      }
+    ],
+    "premortem": "Octubre de 2029: la acción ha perdido un 40 %. La I-24 resultó ser la primera de varias pujas caras: para ganar las managed lanes de Atlanta y Nashville, Ferrovial comprometió más de 3.000 M de capital a rentabilidades del 6-7 % cuando el Bund subió al 4,5 %. El tráfico del 407 encadenó trimestres negativos por la elasticidad a unas tarifas que subían un 10 % al año y Ontario volvió a hablar de limitar los peajes. Los dividendos de proyectos se estancaron en torno a 1.000 M y el mercado dejó de pagar 45 veces el beneficio: con 30 veces un BPA de 1,10 EUR, la acción vale 33 EUR. La señal que lo anticipaba: el diferencial entre la TIR de las nuevas concesiones y el coste de capital, y el tráfico trimestral del 407.",
+    "confianza": "Media"
+  },
+  "esg": {
+    "calificaciones": [],
+    "materialidad": "Seguridad laboral en construcción y emisiones de la obra; el beneficio de las autopistas de peaje dinámico (menos congestión) frente a la crítica por el coste para el conductor; integridad en licitaciones.",
+    "controversias": "Sanción de la CNMC (2022) a varias constructoras, entre ellas Ferrovial, por repartirse licitaciones públicas durante años [28]. El traslado de la sede a Países Bajos (2023) generó un choque con el Gobierno español [29].",
+    "confianza": "Baja"
+  },
+  "preguntas": {
+    "items": [
+      {
+        "tema": "I-24",
+        "pregunta": "¿Qué TIR del accionista y qué capital propio total supone la I-24, y cómo se compara con NTE y LBJ?",
+        "por_que": "Es la causa de las rebajas de UBS y JPMorgan; decide si el crecimiento crea valor."
+      },
+      {
+        "tema": "407 ETR",
+        "pregunta": "¿Cuánta elasticidad al precio ve en el tráfico del 407 tras el −2,7 % del 2T26?",
+        "por_que": "El 39 % de la capitalización depende de que las tarifas sigan subiendo."
+      },
+      {
+        "tema": "Beneficio limpio",
+        "pregunta": "¿Cuál es el beneficio neto sin plusvalías ni valor razonable de 2024, 2025 y 1S26?",
+        "por_que": "La base del PER del informe es una estimación propia."
+      },
+      {
+        "tema": "Minoritarios",
+        "pregunta": "¿Qué participación tiene en cada Managed Lane y qué EBITDA corresponde a los socios?",
+        "por_que": "El puente usa una estimación de 5.000 M para los minoritarios."
+      },
+      {
+        "tema": "NTO de JFK",
+        "pregunta": "¿Cuándo aportará dividendos la NTO y cuánto capital queda por aportar?",
+        "por_que": "Es la tercera pata de crecimiento y aún consume caja."
+      },
+      {
+        "tema": "Remuneración",
+        "pregunta": "¿Qué métricas tiene el variable a largo plazo y premian la TIR de las nuevas concesiones?",
+        "por_que": "Un variable ligado al crecimiento empujaría a pujas caras."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sentimiento": {
+    "tono": "Dividido",
+    "tendencia": "Empeora",
+    "revisadas": [
+      {
+        "plataforma": "Rankia (foro «¿Buena oportunidad para entrar en Ferrovial?», >1.400 respuestas)",
+        "fecha": "2026-09",
+        "n_comentarios": 20,
+        "tono": "Dividido",
+        "resumen": "El hilo mezcla comunicados de recompras y del scrip con usuarios que ven la caída como oportunidad de entrada y otros que esperan a los resultados del 27 de octubre [52]."
+      },
+      {
+        "plataforma": "Webull / Simply Wall St (comentarios sobre la I-24)",
+        "fecha": "2026-09",
+        "n_comentarios": 15,
+        "tono": "Negativo",
+        "resumen": "Se discute si la I-24 cambia el caso alcista: la acción cae un 13,6 % en un mes y un 14,7 % en tres [54, 55]."
+      },
+      {
+        "plataforma": "Walnut Invest (caso alcista y bajista)",
+        "fecha": "2026-09",
+        "n_comentarios": 10,
+        "tono": "Dividido",
+        "resumen": "Alcistas: precio y volumen del 407; bajistas: concesiones finitas y dependencia del valor terminal [53]."
+      },
+      {
+        "plataforma": "Prensa con comentarios (El Español, Merca2)",
+        "fecha": "2026-08",
+        "n_comentarios": 10,
+        "tono": "Dividido",
+        "resumen": "Análisis técnico que esperaba superar resistencias en agosto, frente a la tesis de que los resultados «no justifican los precios» [56, 57]."
+      }
+    ],
+    "temas": [
+      {
+        "tema": "La I-24 de Nashville y la disciplina en las licitaciones",
+        "postura": "Bajista",
+        "peso": "Alto",
+        "contraste": "Fundado: UBS estima una TIR del ≈7 % y un coste por milla seis veces el de la cartera [22]; el informe lo recoge como riesgo principal y en el bajista."
+      },
+      {
+        "tema": "Caída de la acción como oportunidad",
+        "postura": "Alcista",
+        "peso": "Medio",
+        "contraste": "El PER adelantado (46x) está en su mediana de cinco años, no en mínimos: la caída corrige la prima de 2025, no deja la acción barata frente a su historia."
+      },
+      {
+        "tema": "Tráfico del 407 ETR",
+        "postura": "Dividida",
+        "peso": "Medio",
+        "contraste": "Dato real: −2,7 % en el 2T26 con tarifas +20 % [17]: el riesgo es la elasticidad, no el precio."
+      },
+      {
+        "tema": "Rebajas de analistas",
+        "postura": "Bajista",
+        "peso": "Medio",
+        "contraste": "Recortes de objetivo (UBS, JPMorgan, BofA), aunque BofA sigue en comprar [39]."
+      }
+    ],
+    "lectura": "El inversor particular está dividido y más pesimista que hace seis meses: la I-24 ha roto la narrativa de «compounder» sin riesgo. No hay capitulación ni euforia; el sentimiento confirma que el catalizador a corto plazo son los resultados del 27 de octubre y cualquier aclaración sobre la rentabilidad de la I-24. No aporta cifras ni cambia la valoración.",
+    "confianza": "Baja"
+  },
+  "fuentes": [
+    {
+      "id": 1,
+      "titulo": "Ferrovial reports strong full-year 2025 results (nota de resultados 2025)",
+      "editor": "Ferrovial",
+      "tipo": "Primaria",
+      "fecha": "2026-02-25",
+      "url": "https://static.newsroom.ferrovial.com/wp-content/uploads/2026/02/25215545/press-release-fy25-financial-results-ferrovial.pdf"
+    },
+    {
+      "id": 2,
+      "titulo": "Ferrovial reports strong H1 2026 results (nota de resultados 1S26)",
+      "editor": "Ferrovial",
+      "tipo": "Primaria",
+      "fecha": "2026-07-28",
+      "url": "https://static.newsroom.ferrovial.com/wp-content/uploads/2026/07/28214513/press-release-h1-2026-financial-results.pdf"
+    },
+    {
+      "id": 3,
+      "titulo": "Integrated Annual Report 2025: Business performance (EBIT ajustado, desinversiones, plusvalía AGS)",
+      "editor": "Ferrovial",
+      "tipo": "Primaria",
+      "fecha": "2026-02-25",
+      "url": "https://static-iai.ferrovial.com/wp-content/uploads/sites/14/2026/02/25214727/ferrovial-integrated-annual-report-2025-business-performance.pdf"
+    },
+    {
+      "id": 4,
+      "titulo": "Consolidated Financial Statements 2025",
+      "editor": "Ferrovial",
+      "tipo": "Primaria",
+      "fecha": "2026-02-25",
+      "url": "https://static-iai.ferrovial.com/wp-content/uploads/sites/14/2026/02/25230329/iai-2025-ferrovial-consolidated-financial-statements.pdf"
+    },
+    {
+      "id": 5,
+      "titulo": "Integrated Annual Report 2024: Business performance (ingresos 9.147 M, EBITDA ajustado 1.342 M, venta del 19,75 % de Heathrow)",
+      "editor": "Ferrovial",
+      "tipo": "Primaria",
+      "fecha": "2025-02-28",
+      "url": "https://informeanualintegrado2024.ferrovial.com/en/?p=9001"
+    },
+    {
+      "id": 6,
+      "titulo": "Ferrovial increased adjusted EBITDA by 40.6% to €991 million in 2023",
+      "editor": "Ferrovial",
+      "tipo": "Primaria",
+      "fecha": "2024-02-27",
+      "url": "https://newsroom.ferrovial.com/en/press-releases/ferrovial-increased-adjusted-ebitda-by-40-6-to-e991-million-in-2023/"
+    },
+    {
+      "id": 7,
+      "titulo": "Ferrovial net profit rises to €1,197 million (resultados 2021)",
+      "editor": "Ferrovial",
+      "tipo": "Primaria",
+      "fecha": "2022-02-24",
+      "url": "https://newsroom.ferrovial.com/wp-content/uploads/sites/4/2022/02/20220224-ferrovial-net-profit-rises-to-e1197-million.pdf"
+    },
+    {
+      "id": 8,
+      "titulo": "Ferrovial SE: Balance Sheet (activo, pasivo y patrimonio 2021-2025)",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://stockanalysis.com/stocks/fer/financials/balance-sheet/"
+    },
+    {
+      "id": 9,
+      "titulo": "Ferrovial SE (BME:FER) Statistics (LTM: beneficio 606 M, BPA 0,85, FCF 1.880 M)",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://stockanalysis.com/quote/bme/FER/statistics/"
+    },
+    {
+      "id": 10,
+      "titulo": "Ferrovial SA Financials (ingresos, resultado de explotación y FCF 2021-2025)",
+      "editor": "TipRanks",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www.tipranks.com/stocks/es:fer/financials"
+    },
+    {
+      "id": 11,
+      "titulo": "Ferrovial Cash Flow (flujo operativo 2021-2024)",
+      "editor": "Investing.com",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www.investing.com/equities/grupo-ferrovial-cash-flow"
+    },
+    {
+      "id": 12,
+      "titulo": "Ferrovial completa la venta de su 5,25 % en Heathrow con plusvalías de 31 millones",
+      "editor": "Forbes España",
+      "tipo": "Prensa",
+      "fecha": "2025-07",
+      "url": "https://forbes.es/economia/755262/ferrovial-completa-la-venta-de-su-525-en-heathrow-con-plusvalias-de-31-millones-de-euros/"
+    },
+    {
+      "id": 13,
+      "titulo": "Ferrovial closes acquisition of additional 5.06% of 407 ETR (6-K, EX-99.1)",
+      "editor": "Ferrovial / SEC",
+      "tipo": "Primaria",
+      "fecha": "2025-06-09",
+      "url": "https://www.sec.gov/Archives/edgar/data/1468522/000146852225000075/a20250609_prxclosing407e.htm"
+    },
+    {
+      "id": 14,
+      "titulo": "Ferrovial paga el dividendo flexible de 0,5578 euros (75,55 % en acciones)",
+      "editor": "Bolsamanía",
+      "tipo": "Prensa",
+      "fecha": "2026-06-15",
+      "url": "https://www.bolsamania.com/noticias_print/empresas/ferrovial-400-millones-dividendo-flexible-pagara-05578-euros-accion--22729194.html"
+    },
+    {
+      "id": 15,
+      "titulo": "Appendix I: scrip dividend, cash dividend, share buy-back and cancellation of shares (IAI 2025)",
+      "editor": "Ferrovial",
+      "tipo": "Primaria",
+      "fecha": "2026-02-25",
+      "url": "https://informeanualintegrado2025.ferrovial.com/en/global-strategy-and-2025-performance/business-performance/appendix/appendix-i-scrip-dividend-cash-dividend-share-buy-back-and-cancellation-of-shares/"
+    },
+    {
+      "id": 16,
+      "titulo": "Ferrovial: share repurchase programme, transactions notice (6-K, sep-2026)",
+      "editor": "Ferrovial / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-09-22",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001468522/000146852226000066/ferr_repurchaseprogram21.htm"
+    },
+    {
+      "id": 17,
+      "titulo": "Ferrovial Q2 earnings call highlights",
+      "editor": "MarketBeat / Nasdaq",
+      "tipo": "Prensa",
+      "fecha": "2026-07-29",
+      "url": "https://www.nasdaq.com/articles/ferrovial-q2-earnings-call-highlights"
+    },
+    {
+      "id": 18,
+      "titulo": "Ferrovial posts Q1 2026 revenue of €2.1B (6-K)",
+      "editor": "Stock Titan",
+      "tipo": "Prensa",
+      "fecha": "2026-05",
+      "url": "https://www.stocktitan.net/sec-filings/FER/6-k-ferrovial-se-current-report-foreign-issuer-eced18a16c00.html"
+    },
+    {
+      "id": 19,
+      "titulo": "Informe anual integrado 2022: Ferrovial en bolsa (cierres 2021-2022, 727,4 M de acciones)",
+      "editor": "Ferrovial",
+      "tipo": "Primaria",
+      "fecha": "2023-02-28",
+      "url": "https://informeanualintegrado2022.ferrovial.com/wp-content/uploads/sites/8/2023/02/ferrovial-informe-anual-integrado-2022-ferrovial-en-bolsa.pdf"
+    },
+    {
+      "id": 20,
+      "titulo": "Ferrovial generates €540 million net profit in H1 2025 thanks to US and Canadian motorways",
+      "editor": "The Corner",
+      "tipo": "Prensa",
+      "fecha": "2025-07-29",
+      "url": "https://thecorner.eu/?p=121375"
+    },
+    {
+      "id": 21,
+      "titulo": "Ferrovial (historia corporativa)",
+      "editor": "Wikipedia",
+      "tipo": "Prensa",
+      "fecha": "2026",
+      "url": "https://en.wikipedia.org/wiki/Ferrovial"
+    },
+    {
+      "id": 22,
+      "titulo": "UBS Global Research: Ferrovial, I24 bid leaves uncertainty on new US ML returns. Downgrade to Neutral",
+      "editor": "UBS (publicado por Tennessee Lookout)",
+      "tipo": "Analistas",
+      "fecha": "2026-08-26",
+      "url": "https://tennesseelookout.com/wp-content/uploads/2026/09/Ferrovial-Downgrade.pdf"
+    },
+    {
+      "id": 23,
+      "titulo": "Bank downgrades Ferrovial stock over I-24 toll lane bid",
+      "editor": "Tennessee Lookout",
+      "tipo": "Prensa",
+      "fecha": "2026-09-02",
+      "url": "https://tennesseelookout.com/2026/09/02/bank-downgrades-ferrovial-stock-over-i-24-toll-lane-bid/"
+    },
+    {
+      "id": 24,
+      "titulo": "Ferrovial gets EUR 2.9 billion D35 bid: JPMorgan cuts Ferrovial stock target to EUR 50",
+      "editor": "ad-hoc-news",
+      "tipo": "Prensa",
+      "fecha": "2026-10-06",
+      "url": "https://www.ad-hoc-news.de/boerse/news/corporate-news/ferrovial-gets-eur-2-9-billion-d35-bid-jpmorgan-cuts-ferrovial-stock/70276549"
+    },
+    {
+      "id": 25,
+      "titulo": "Ferrovial stock gains 1.32 percent as I-24 deal locks in 50 years",
+      "editor": "ad-hoc-news",
+      "tipo": "Prensa",
+      "fecha": "2026-10-01",
+      "url": "https://www.ad-hoc-news.de/boerse/news/corporate-news/ferrovial-stock-gains-1-32-percent-as-i-24-deal-locks-in-50-years/70224462"
+    },
+    {
+      "id": 26,
+      "titulo": "Vinci: valuation (PER 2026e 13,2x)",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://ca.marketscreener.com/quote/stock/VINCI-39428277/valuation/"
+    },
+    {
+      "id": 27,
+      "titulo": "Eiffage strengthens its position in Getlink capital (29,40 %)",
+      "editor": "Eiffage",
+      "tipo": "Primaria",
+      "fecha": "2026-03",
+      "url": "https://www.eiffage.com/en/media/news/eiffage-strengthens-its-position-in-getlink-capital-and-raises-its-holding-to-2940-of-the-capital"
+    },
+    {
+      "id": 28,
+      "titulo": "Los Del Pino ficharon a excargos de Competencia mientras Ferrovial manipulaba licitaciones (sanción CNMC)",
+      "editor": "elDiario.es",
+      "tipo": "Prensa",
+      "fecha": "2023",
+      "url": "https://www.eldiario.es/economia/pino-ficharon-excargos-competencia-ferrovial-manipulaba-miles-licitaciones_1_10008902.html"
+    },
+    {
+      "id": 29,
+      "titulo": "El traslado de Ferrovial a Países Bajos divide a la dinastía Del Pino",
+      "editor": "Gestión (EFE)",
+      "tipo": "Prensa",
+      "fecha": "2023-03",
+      "url": "https://gestion.pe/mundo/espana/traslado-de-ferrovial-a-paises-bajos-divide-a-dinastia-del-pino-noticia/"
+    },
+    {
+      "id": 30,
+      "titulo": "Rafael del Pino, primer accionista de Ferrovial con el 20,25 %",
+      "editor": "Vozpópuli",
+      "tipo": "Prensa",
+      "fecha": "2025",
+      "url": "https://www.vozpopuli.com/espana/ferrovial-rafael_del_pino-cnmv-leopoldo_del_pino-siemprelara_0_880112031.html"
+    },
+    {
+      "id": 31,
+      "titulo": "Ferrovial cae cerca de un 2 % en bolsa tras la desinversión de María del Pino",
+      "editor": "Infobae (Europa Press)",
+      "tipo": "Prensa",
+      "fecha": "2025-05-28",
+      "url": "https://www.infobae.com/espana/agencias/2025/05/28/ferrovial-cae-cerca-de-un-2-en-bolsa-tras-la-desinversion-de-maria-del-pino/"
+    },
+    {
+      "id": 32,
+      "titulo": "Ferrovial: Del Pino y Madridejos, nueva política de remuneración 2025 (fijo 1,65 y 1,6 M)",
+      "editor": "The Objective",
+      "tipo": "Prensa",
+      "fecha": "2025-04",
+      "url": "https://theobjective.com/economia/2022-12-29/rafael-del-pino-participacion-ferrovial/"
+    },
+    {
+      "id": 33,
+      "titulo": "Ferrovial schedules October 27 results: stock sits 29% below 52-week high (Lang & Schwarz, 45,11 EUR)",
+      "editor": "ad-hoc-news",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-14",
+      "url": "https://www.ad-hoc-news.de/boerse/news/corporate-news/ferrovial-schedules-october-27-results-ferrovial-stock-sits-29-00-percent-below-52-week-high/70325782"
+    },
+    {
+      "id": 34,
+      "titulo": "Cotización de Ferrovial SE (rango de 52 semanas 45,60-63,50 EUR, 28-ago-2026)",
+      "editor": "Bolsamanía",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-08-28",
+      "url": "https://www.bolsamania.com/accion/FERROVIAL-SE"
+    },
+    {
+      "id": 35,
+      "titulo": "Ferrovial stock costs EUR 44.43 at USD 36.1 billion market value",
+      "editor": "ad-hoc-news",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www.ad-hoc-news.de/boerse/news/corporate-news/ferrovial-stock-costs-eur-44-43-at-usd-36-1-billion-market-value/70280382"
+    },
+    {
+      "id": 36,
+      "titulo": "Ferrovial stock was USD 50.15 with a P/E ratio of 52.2 on October 9, 2026",
+      "editor": "ad-hoc-news",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-09",
+      "url": "https://www.ad-hoc-news.de/boerse/news/corporate-news/ferrovial-stock-was-usd-50-15-with-a-p-e-ratio-of-52-2-on-october-9-2026/70301143"
+    },
+    {
+      "id": 37,
+      "titulo": "Ferrovial sinks almost 5% and marks lows of nearly a year (consenso Bloomberg 61,32 EUR)",
+      "editor": "Demócrata",
+      "tipo": "Prensa",
+      "fecha": "2026-08-26",
+      "url": "https://www.democrata.es/en/economy/ferrovial-sinks-almost-5-and-marks-lows-of-nearly-a-year/amp/"
+    },
+    {
+      "id": 38,
+      "titulo": "Hachazo de UBS a esta acción del Ibex 35 (Ferrovial, 65 → 59 EUR)",
+      "editor": "Estrategias de Inversión",
+      "tipo": "Prensa",
+      "fecha": "2026-08-26",
+      "url": "https://www.estrategiasdeinversion.com/analisis/los-brokers-recomiendan/recomendaciones-espana/hachazo-de-ubs-a-esta-accion-del-ibex-35-le-recorta-n-944619"
+    },
+    {
+      "id": 39,
+      "titulo": "BofA cuts target for Ferrovial stock from EUR 67 to EUR 60",
+      "editor": "ad-hoc-news",
+      "tipo": "Prensa",
+      "fecha": "2026-10-12",
+      "url": "https://www.ad-hoc-news.de/boerse/news/corporate-news/bofa-cuts-target-for-ferrovial-stock-from-eur-67-00-to-eur-60-00/70313576"
+    },
+    {
+      "id": 40,
+      "titulo": "Goldman Sachs ve a esta acción del Ibex 35 con potencial (consenso Reuters 59,55 EUR)",
+      "editor": "Estrategias de Inversión",
+      "tipo": "Prensa",
+      "fecha": "2026-05",
+      "url": "https://www.estrategiasdeinversion.com/analisis/los-brokers-recomiendan/recomendaciones-espana/goldman-sachs-ve-a-esta-accion-del-ibex-35-con-n-921349"
+    },
+    {
+      "id": 41,
+      "titulo": "FER estimates (BPA 2026-2028e)",
+      "editor": "Chartmill",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www.chartmill.com/stock/quote/FER/analyst-ratings"
+    },
+    {
+      "id": 42,
+      "titulo": "Ferrovial: future growth (beneficio neto de consenso 2026-2028)",
+      "editor": "Simply Wall St",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://simplywall.st/stocks/us/capital-goods/nasdaq-fer/ferrovial/future"
+    },
+    {
+      "id": 43,
+      "titulo": "Vinci valuation multiples (EV/EBITDA 2026e 6,9x)",
+      "editor": "multiples.vc",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-05",
+      "url": "https://multiples.vc/public-comps/vinci-valuation-multiples"
+    },
+    {
+      "id": 44,
+      "titulo": "Aena: valuation (PER 2026e 17,2x)",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://ca.marketscreener.com/quote/stock/AENA-39435859/valuation/"
+    },
+    {
+      "id": 45,
+      "titulo": "Sacyr: valorisation (PER 2026e 20,6x)",
+      "editor": "Zonebourse",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-09-11",
+      "url": "https://www.zonebourse.com/cours/action/SACYR-S-A-69101/valorisation/"
+    },
+    {
+      "id": 46,
+      "titulo": "Aéroports de Paris y Fraport: PER próximos 12 meses (vía informe de Aena del repositorio, 14-oct)",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www.marketscreener.com/"
+    },
+    {
+      "id": 47,
+      "titulo": "Grupo Aeroportuario del Sureste: PER 2026e 14,2x (vía informe de Aena del repositorio, 14-oct)",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-08",
+      "url": "https://au.marketscreener.com/quote/stock/GRUPO-AEROPORTUARIO-DEL-S-6492978/"
+    },
+    {
+      "id": 48,
+      "titulo": "Nota de prensa de la Junta General 2024 (cierre 2023: 33,02 EUR)",
+      "editor": "Ferrovial",
+      "tipo": "Primaria",
+      "fecha": "2024-04-11",
+      "url": "https://newsroom.ferrovial.com/wp-content/uploads/sites/4/2024/04/240411-jg-accionistas-final.pdf"
+    },
+    {
+      "id": 49,
+      "titulo": "Nota de prensa de la Junta General 2026 (cierres 2024 y 2025)",
+      "editor": "Ferrovial",
+      "tipo": "Primaria",
+      "fecha": "2026-04-09",
+      "url": "https://static.newsroom.ferrovial.com/wp-content/uploads/2026/04/09142635/260409-np-junta-general-de-accionistas-2026.pdf"
+    },
+    {
+      "id": 50,
+      "titulo": "Rendimiento del Bund a 10 años (12-oct-2026), serie BBSIS (vía informes del repositorio del 14-oct)",
+      "editor": "Deutsche Bundesbank",
+      "tipo": "Primaria",
+      "fecha": "2026-10-12",
+      "url": "https://api.statistiken.bundesbank.de/rest/download/BBSIS/D.I.ZST.ZI.EUR.S1311.B.A604.R10XX.R.A.A._Z._Z.A?format=csv&lang=en"
+    },
+    {
+      "id": 51,
+      "titulo": "Implied ERP by month (ERPbymonth.xlsx), fila de octubre de 2026",
+      "editor": "Aswath Damodaran, NYU Stern",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx"
+    },
+    {
+      "id": 52,
+      "titulo": "Foro: ¿Buena oportunidad para entrar en Ferrovial (FER)?",
+      "editor": "Rankia",
+      "tipo": "Foros y redes",
+      "fecha": "2026-09",
+      "url": "https://www.rankia.com/foros/bolsa/temas/1905729-buena-oportunidad-para-entrar-ferrovial-fer"
+    },
+    {
+      "id": 53,
+      "titulo": "Is FER a Buy or a Sell? The Bull and Bear Case (2026)",
+      "editor": "Walnut Invest",
+      "tipo": "Foros y redes",
+      "fecha": "2026-09",
+      "url": "https://walnutinvest.com/stocks/fer/is-it-a-buy-or-sell"
+    },
+    {
+      "id": 54,
+      "titulo": "Learn Why The Bull Case For Ferrovial Stock Could Change Following Tennessee Toll Road Deal (Simply Wall St en Webull)",
+      "editor": "Webull / Simply Wall St",
+      "tipo": "Foros y redes",
+      "fecha": "2026-09",
+      "url": "https://www.webull.com/news/15680261438784512"
+    },
+    {
+      "id": 55,
+      "titulo": "Is Ferrovial (BME:FER) Cheap On Its Tennessee I 24 Project Win? (comentarios)",
+      "editor": "Webull / Simply Wall St",
+      "tipo": "Foros y redes",
+      "fecha": "2026-09",
+      "url": "https://www.webull.com/news/15516817305904128"
+    },
+    {
+      "id": 56,
+      "titulo": "Ferrovial activará nuevos objetivos con la superación de la resistencia (análisis técnico, El Español-Invertia)",
+      "editor": "El Español",
+      "tipo": "Prensa",
+      "fecha": "2026-08-04",
+      "url": "https://www.elespanol.com/invertia/mercados/20260804/ferrovial-activara-nuevos-interesantes-objetivos-superacion-resistencia-euros/1003744343199_0.html"
+    },
+    {
+      "id": 57,
+      "titulo": "Ferrovial: unos resultados en línea con las expectativas no justifican los precios",
+      "editor": "Merca2",
+      "tipo": "Prensa",
+      "fecha": "2025-10-30",
+      "url": "https://www.merca2.es/2025/10/30/ferrovial-resultados-precios-2246269/"
+    }
+  ],
+  "calc": {
+    "version": 4,
+    "etiquetas": {
+      "margen_bruto": "M. bruto",
+      "margen_bruto_largo": "Margen bruto",
+      "dias_base": "sobre el coste de ventas"
+    },
+    "recomendacion": {
+      "recomendacion": "Mantener",
+      "regla": "Mantener",
+      "regla_absoluta": "Vender",
+      "regla_relativa": "Vender",
+      "coincide": true,
+      "conviccion": "Baja",
+      "conviccion_sugerida": "Media",
+      "conviccion_razones": [
+        "Mantener con las dos reglas de acuerdo y lejos de los umbrales"
+      ],
+      "reglas_discrepan": false,
+      "relativo": {
+        "prima_implicita_pct": 4.2,
+        "wacc": 7,
+        "ke": 7.81,
+        "dcf": 34.14,
+        "dcf_min": 31.17,
+        "dcf_max": 37.77,
+        "valor_objetivo": 33.8,
+        "alcista": 40.74,
+        "bajista": 23.02,
+        "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+        "fecha": "2026-10",
+        "potencial_pct": -25.1,
+        "rentabilidad_total_pct": -23.8,
+        "asimetria": -0.2
+      },
+      "objetivo_mercado_txt": " · con la prima implícita del mercado: 33,80 (-25,1 %)",
+      "objetivo_mercado_corto": " · mercado 33,80",
+      "rentabilidad_mercado_corto": " · mercado -23,8 %",
+      "potencial_pct": -36.3,
+      "dividendo_pct": 1.2,
+      "rentabilidad_total_pct": -35,
+      "alcista_pct": -23.7,
+      "bajista_pct": -55.2,
+      "asimetria": -0.43,
+      "comprar_por_debajo": 28.75,
+      "vender_por_encima": 55.09,
+      "tabla": [
+        {
+          "concepto": "Objetivo a 12 meses (nuestro PER × nuestro BPA 2028e, ponderado 25/50/25)",
+          "valor": "49,03 EUR"
+        },
+        {
+          "concepto": "Bajista / base / alcista a 12 meses",
+          "valor": "36,1x × 0,95 = 34,30 · 45,1x × 1,13 = 50,96 · 47,9x × 1,25 = 59,88"
+        },
+        {
+          "concepto": "Rentabilidad a 12 meses: ponderada / del base (con dividendo)",
+          "valor": "9,9 % / 14,2 %"
+        },
+        {
+          "concepto": "Regla de múltiplos aplicada",
+          "valor": "v3: base a mitad de camino hacia la mediana (historia adelantada); bajista mín. 5 a o base × 0,80; alcista techo base × 1,35"
+        },
+        {
+          "concepto": "Objetivo medio de los analistas (solo contraste)",
+          "valor": "61,32 (nuestro base -16,9 %)"
+        },
+        {
+          "concepto": "Valor intrínseco (síntesis ponderada, largo plazo)",
+          "valor": "28,75 EUR"
+        },
+        {
+          "concepto": "Potencial sobre el precio actual",
+          "valor": "-36,3 %"
+        },
+        {
+          "concepto": "Rentabilidad por dividendo ordinario",
+          "valor": "1,2 %"
+        },
+        {
+          "concepto": "Rentabilidad total esperada a 12 meses",
+          "valor": "-35,0 %"
+        },
+        {
+          "concepto": "Escenario alcista / bajista",
+          "valor": "-23,7 % / -55,2 %"
+        },
+        {
+          "concepto": "Asimetría (ganancia alcista / pérdida bajista)",
+          "valor": "-0,43x"
+        },
+        {
+          "concepto": "Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado",
+          "valor": "5,7 % frente a 7,9 % y 7,0 %"
+        },
+        {
+          "concepto": "Valor objetivo con la prima implícita del mercado (4,2 %, WACC 7,0 %)",
+          "valor": "33,80 EUR"
+        },
+        {
+          "concepto": "Rentabilidad total esperada con la prima del mercado",
+          "valor": "-23,8 %"
+        },
+        {
+          "concepto": "Asimetría con la prima del mercado",
+          "valor": "-0,20x"
+        },
+        {
+          "concepto": "Regla absoluta (frente a su coste de capital)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Regla relativa (frente a lo que pide el mercado)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "¿La calidad de la empresa sostiene el crecimiento previsto?",
+          "valor": "En parte (4,5 % anual proyectado; sin inversión neta)"
+        },
+        {
+          "concepto": "Señal del valor intrínseco (regla del DCF, referencia)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Recomendación según la regla a 12 meses (Comprar: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender: ponderada ≤ -10 %)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Convicción según los criterios (Mantener con las dos reglas de acuerdo y lejos de los umbrales)",
+          "valor": "Media"
+        }
+      ],
+      "niveles": [
+        {
+          "accion": "Comprar",
+          "condicion": "Por debajo de 28,75 (ponderada a 12 meses ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco)"
+        },
+        {
+          "accion": "Mantener",
+          "condicion": "Entre 28,75 y 55,09"
+        },
+        {
+          "accion": "Vender o reducir",
+          "condicion": "Por encima de 55,09 (ponderada a 12 meses ≤ -10 %)"
+        }
+      ],
+      "precio_txt": "",
+      "valor_objetivo_txt": "",
+      "regla_valor_intrinseco": "Vender",
+      "objetivo_12m": {
+        "completo": true,
+        "filas": [
+          {
+            "escenario": "Bajista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 0.95,
+            "multiplo": 36.1,
+            "multiplo_informe": null,
+            "origen": "base × 0.8",
+            "precio": 34.3,
+            "rentabilidad_pct": -22.7,
+            "justificacion": "Beneficio limpio de ≈680 M en 2028e (+5 % anual desde 589 M en 2025): tráfico del 407 plano, aportaciones de capital a la I-24 y la NTO que reducen los ingresos financieros de la caja y peor dólar. 713 M de acciones, sin recompras no anunciadas."
+          },
+          {
+            "escenario": "Base",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 1.13,
+            "multiplo": 45.1,
+            "multiplo_informe": null,
+            "origen": "PER actual (46x) a mitad de camino hacia abajo, hacia la mediana de 5 años (44.3x)",
+            "precio": 50.96,
+            "rentabilidad_pct": 14.2,
+            "justificacion": "Beneficio limpio de ≈805 M en 2028e (608 M en 2026e = 258 M del 1S26 + ≈350 M del 2S; ≈700 M en 2027e): tarifas del 407 y de las Managed Lanes, margen de construcción del 4,5 % y NTO en marcha. 713 M de acciones."
+          },
+          {
+            "escenario": "Alcista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 1.25,
+            "multiplo": 47.9,
+            "multiplo_informe": null,
+            "origen": "media histórica larga",
+            "precio": 59.88,
+            "rentabilidad_pct": 34,
+            "justificacion": "Beneficio limpio de ≈890 M en 2028e: recuperación del tráfico del 407, NTO a pleno rendimiento y Managed Lanes con subidas de tarifa del 8-10 %. Cerca del consenso de Simply Wall St (908 M)."
+          }
+        ],
+        "regla": {
+          "version": "v3",
+          "bajista": 36.1,
+          "base": 45.1,
+          "alcista": 47.9,
+          "bajista_origen": "base × 0.8",
+          "base_origen": "PER actual (46x) a mitad de camino hacia abajo, hacia la mediana de 5 años (44.3x)",
+          "alcista_origen": "media histórica larga"
+        },
+        "version": "v3",
+        "probabilidades": [
+          25,
+          50,
+          25
+        ],
+        "objetivo_ponderado": 49.03,
+        "objetivo_simple": 48.38,
+        "objetivo_base": 50.96,
+        "rentabilidad_ponderada_pct": 9.9,
+        "rentabilidad_simple_pct": 8.5,
+        "rentabilidad_base_pct": 14.2,
+        "asimetria": 1.37,
+        "senal": "Mantener",
+        "senal_sin_confirmar": null,
+        "confianza_baja": true,
+        "comprar_por_debajo": 28.75,
+        "vender_por_encima": 55.09,
+        "consenso_objetivo": 61.32,
+        "diferencia_consenso_pct": -16.9
+      },
+      "rentabilidad_12m_pct": 9.9,
+      "rentabilidad_12m_txt": "+9,9 % (base +14,2 %)",
+      "objetivo_12m_txt": "49,03 EUR"
+    },
+    "mercado": {
+      "precio": 45.11,
+      "acciones": 713,
+      "capitalizacion": 32163,
+      "deuda_neta": 5893,
+      "deuda_neta_ajustada": null,
+      "asimilables_deuda": null,
+      "ajustes_puente": -7400,
+      "valor_empresa": 30656,
+      "fecha_puente": "2025-12-31"
+    },
+    "clave": {
+      "capitalizacion": 32163,
+      "valor_empresa": 30656,
+      "deuda_neta": 5893,
+      "ev_ventas_ltm": 3.1,
+      "ev_ebitda_ltm": 18.8,
+      "ev_ebitda_ntm": null,
+      "ev_ebit_ltm": 31.7,
+      "per_ltm": 53.1,
+      "per_ntm": 44.4,
+      "fcf_yield_pct": 5.8,
+      "dividendo_pct": 1.2,
+      "dn_ebitda": 3.6,
+      "roic_pct": 5.2,
+      "margen_ebitda_pct": 16.5,
+      "deuda_neta_ajustada": 5893,
+      "dn_ebitda_ajustada": 3.6,
+      "crecimiento_tcac_pct": 8.7,
+      "ingresos_ntm": null,
+      "ebitda_ntm": null,
+      "bpa_ntm": 1.02,
+      "ebitda_ltm": 1630,
+      "ingresos_ltm": 9900,
+      "ev_rab": null
+    },
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 6910,
+        "crecimiento_pct": null,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 596,
+        "margen_ebitda_pct": 8.6,
+        "ebit": 339,
+        "margen_ebit_pct": 4.9,
+        "beneficio_neto": 1197,
+        "margen_neto_pct": 17.3,
+        "bpa": 1.63,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": null
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 7551,
+        "crecimiento_pct": 9.3,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 728,
+        "margen_ebitda_pct": 9.6,
+        "ebit": 359,
+        "margen_ebit_pct": 4.8,
+        "beneficio_neto": 185,
+        "margen_neto_pct": 2.5,
+        "bpa": 0.25,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": null
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 8514,
+        "crecimiento_pct": 12.8,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 991,
+        "margen_ebitda_pct": 11.6,
+        "ebit": 642,
+        "margen_ebit_pct": 7.5,
+        "beneficio_neto": 460,
+        "margen_neto_pct": 5.4,
+        "bpa": 0.63,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": null
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 9147,
+        "crecimiento_pct": 7.4,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 1342,
+        "margen_ebitda_pct": 14.7,
+        "ebit": 901,
+        "margen_ebit_pct": 9.9,
+        "beneficio_neto": 3239,
+        "margen_neto_pct": 35.4,
+        "bpa": 4.44,
+        "dpa": null,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": null
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 9630,
+        "crecimiento_pct": 5.3,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 1500,
+        "margen_ebitda_pct": 15.6,
+        "ebit": 967,
+        "margen_ebit_pct": 10,
+        "beneficio_neto": 888,
+        "margen_neto_pct": 9.2,
+        "bpa": 1.23,
+        "dpa": 0.87,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 71
+      }
+    ],
+    "tcac": {
+      "periodo": "2021-2025",
+      "ingresos_pct": 8.7,
+      "ebitda_pct": 26,
+      "bpa_pct": -6.8
+    },
+    "cuenta_y_prevision": [
+      {
+        "periodo": "2021",
+        "ingresos": 6910,
+        "ebitda": 596
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 7551,
+        "ebitda": 728
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 8514,
+        "ebitda": 991
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 9147,
+        "ebitda": 1342
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 9630,
+        "ebitda": 1500
+      },
+      {
+        "periodo": "2026e",
+        "ingresos": 10112,
+        "ebitda": 1668
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 10718,
+        "ebitda": 1822
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 11361,
+        "ebitda": 1988
+      },
+      {
+        "periodo": "2029e",
+        "ingresos": 11986,
+        "ebitda": 2158
+      },
+      {
+        "periodo": "2030e",
+        "ingresos": 12585,
+        "ebitda": 2328
+      },
+      {
+        "periodo": "2031e",
+        "ingresos": 13152,
+        "ebitda": 2433
+      },
+      {
+        "periodo": "2032e",
+        "ingresos": 13678,
+        "ebitda": 2530
+      },
+      {
+        "periodo": "2033e",
+        "ingresos": 14157,
+        "ebitda": 2619
+      },
+      {
+        "periodo": "2034e",
+        "ingresos": 14581,
+        "ebitda": 2698
+      },
+      {
+        "periodo": "2035e",
+        "ingresos": 14946,
+        "ebitda": 2765
+      }
+    ],
+    "segmentos_ultimo": [
+      {
+        "nombre": "Construcción",
+        "ingresos": 7700,
+        "peso_pct": 80,
+        "crecimiento_pct": null,
+        "margen_pct": 4.6,
+        "tipo_margen": "EBIT"
+      },
+      {
+        "nombre": "Autopistas",
+        "ingresos": 1400,
+        "peso_pct": 14.5,
+        "crecimiento_pct": null,
+        "margen_pct": 70.7,
+        "tipo_margen": "EBITDA"
+      },
+      {
+        "nombre": "Energía",
+        "ingresos": 339,
+        "peso_pct": 3.5,
+        "crecimiento_pct": null,
+        "margen_pct": 0.9,
+        "tipo_margen": "EBITDA"
+      },
+      {
+        "nombre": "Aeropuertos y otros",
+        "ingresos": 191,
+        "peso_pct": 2,
+        "crecimiento_pct": null,
+        "margen_pct": null,
+        "tipo_margen": null
+      }
+    ],
+    "segmentos_tabla": {
+      "periodos": [
+        "",
+        "",
+        "",
+        "",
+        "2025"
+      ],
+      "filas": [
+        {
+          "nombre": "Construcción",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": null,
+          "v4": 7700
+        },
+        {
+          "nombre": "Autopistas",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": null,
+          "v4": 1400
+        },
+        {
+          "nombre": "Energía",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": null,
+          "v4": 339
+        },
+        {
+          "nombre": "Aeropuertos y otros",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": null,
+          "v4": 191
+        }
+      ]
+    },
+    "segmentos_periodo": "2025",
+    "balance": [
+      {
+        "periodo": "2021",
+        "activo_total": 24882,
+        "intangibles": 0,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": null,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "deuda_neta": 0,
+        "patrimonio": 4039,
+        "minoritarios": 1790,
+        "dn_ebitda": 0,
+        "dn_patrimonio_pct": 0,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 5829,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 26344,
+        "intangibles": 0,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": null,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "deuda_neta": 0,
+        "patrimonio": 4113,
+        "minoritarios": 2240,
+        "dn_ebitda": 0,
+        "dn_patrimonio_pct": 0,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 6353,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 26318,
+        "intangibles": 0,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": null,
+        "deuda_financiera": null,
+        "arrendamientos": null,
+        "deuda_neta": 0,
+        "patrimonio": 3766,
+        "minoritarios": 2113,
+        "dn_ebitda": 0,
+        "dn_patrimonio_pct": 0,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 5879,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 28999,
+        "intangibles": 0,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 0,
+        "deuda_financiera": 6061,
+        "arrendamientos": null,
+        "deuda_neta": 6061,
+        "patrimonio": 6075,
+        "minoritarios": 2045,
+        "dn_ebitda": 4.52,
+        "dn_patrimonio_pct": 75,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 14181,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 27420,
+        "intangibles": 0,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 0,
+        "deuda_financiera": 5893,
+        "arrendamientos": null,
+        "deuda_neta": 5893,
+        "patrimonio": 5908,
+        "minoritarios": 1757,
+        "dn_ebitda": 3.93,
+        "dn_patrimonio_pct": 77,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 13558,
+        "liquidez_corriente": null
+      }
+    ],
+    "perimetro_nota": "Cambio de perímetro (2024: Venta del 19,75 % de Heathrow (dic-24) y paso del 5,25 % restante a valor razonable: 2.600 M de impacto en la cuenta.; 2025: Venta de AGS (ene-25, 272 M de plusvalía) y del 5,25 % de Heathrow (jul-25); compra del 5,06 % adicional de 407 ETR (jun-25), que se integra por puesta en equivalencia.). Los ratios de balance de ese año (días, circulante, deuda neta / EBITDA, ROIC) y los indicadores de calidad contable no son comparables con los anteriores.",
+    "flujos": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 784,
+        "capex": 98,
+        "pagos_arrendamientos": 0,
+        "fcf": 686,
+        "beneficio_neto": 1197,
+        "conversion_pct": 57,
+        "capex_ventas_pct": 1.4,
+        "capex_amortizacion": 0.38,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": 0,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 733,
+        "fcf_por_accion": 0.94
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 921,
+        "capex": 14,
+        "pagos_arrendamientos": 0,
+        "fcf": 907,
+        "beneficio_neto": 185,
+        "conversion_pct": 490,
+        "capex_ventas_pct": 0.2,
+        "capex_amortizacion": 0.04,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": 0,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 727.4,
+        "fcf_por_accion": 1.25
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 1263,
+        "capex": 83,
+        "pagos_arrendamientos": 0,
+        "fcf": 1180,
+        "beneficio_neto": 460,
+        "conversion_pct": 257,
+        "capex_ventas_pct": 1,
+        "capex_amortizacion": 0.24,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": 0,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 727,
+        "fcf_por_accion": 1.62
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 1293,
+        "capex": 223,
+        "pagos_arrendamientos": 0,
+        "fcf": 1070,
+        "beneficio_neto": 3239,
+        "conversion_pct": 33,
+        "capex_ventas_pct": 2.4,
+        "capex_amortizacion": 0.51,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": 0,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 730,
+        "fcf_por_accion": 1.47
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 1910,
+        "capex": 480,
+        "pagos_arrendamientos": 0,
+        "fcf": 1430,
+        "beneficio_neto": 888,
+        "conversion_pct": 161,
+        "capex_ventas_pct": 5,
+        "capex_amortizacion": 0.9,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": null,
+        "recompras": null,
+        "emision_acciones": 0,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 722,
+        "fcf_por_accion": 1.98
+      }
+    ],
+    "flujos_acumulado": {
+      "periodo": "2021-2025",
+      "fcf": 5273,
+      "adquisiciones": 0,
+      "dividendos": 0,
+      "recompras": 0,
+      "conversion_pct": 88
+    },
+    "rentabilidad": [
+      {
+        "periodo": "2021",
+        "nopat": 254,
+        "capital_invertido": 5829,
+        "roic_pct": 4.4,
+        "roe_pct": 29.6,
+        "roa_pct": 4.8,
+        "margen_neto_pct": 17.3,
+        "rotacion": 0.28,
+        "apalancamiento": 6.16
+      },
+      {
+        "periodo": "2022",
+        "nopat": 269,
+        "capital_invertido": 6091,
+        "roic_pct": 4.4,
+        "roe_pct": 4.5,
+        "roa_pct": 0.7,
+        "margen_neto_pct": 2.5,
+        "rotacion": 0.29,
+        "apalancamiento": 6.28
+      },
+      {
+        "periodo": "2023",
+        "nopat": 482,
+        "capital_invertido": 6116,
+        "roic_pct": 7.9,
+        "roe_pct": 11.7,
+        "roa_pct": 1.7,
+        "margen_neto_pct": 5.4,
+        "rotacion": 0.32,
+        "apalancamiento": 6.68
+      },
+      {
+        "periodo": "2024",
+        "nopat": 676,
+        "capital_invertido": 10030,
+        "roic_pct": 6.7,
+        "roe_pct": 65.8,
+        "roa_pct": 11.7,
+        "margen_neto_pct": 35.4,
+        "rotacion": 0.33,
+        "apalancamiento": 5.62
+      },
+      {
+        "periodo": "2025",
+        "nopat": 725,
+        "capital_invertido": 13870,
+        "roic_pct": 5.2,
+        "roe_pct": 14.8,
+        "roa_pct": 3.1,
+        "margen_neto_pct": 9.2,
+        "rotacion": 0.34,
+        "apalancamiento": 4.71
+      }
+    ],
+    "roic_incremental_pct": 5.9,
+    "roic_frente_wacc": [
+      {
+        "periodo": "2021",
+        "roic_pct": 4.4,
+        "roe_pct": 29.6,
+        "wacc_pct": 7.9
+      },
+      {
+        "periodo": "2022",
+        "roic_pct": 4.4,
+        "roe_pct": 4.5,
+        "wacc_pct": 7.9
+      },
+      {
+        "periodo": "2023",
+        "roic_pct": 7.9,
+        "roe_pct": 11.7,
+        "wacc_pct": 7.9
+      },
+      {
+        "periodo": "2024",
+        "roic_pct": 6.7,
+        "roe_pct": 65.8,
+        "wacc_pct": 7.9
+      },
+      {
+        "periodo": "2025",
+        "roic_pct": 5.2,
+        "roe_pct": 14.8,
+        "wacc_pct": 7.9
+      }
+    ],
+    "calidad": {
+      "periodo": "2025",
+      "altman_z": 1.44,
+      "altman_zona": "Zona de riesgo",
+      "piotroski_f": 5,
+      "piotroski_detalle": [
+        {
+          "criterio": "Beneficio neto positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "ROA mejora",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Flujo operativo > beneficio neto",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Baja el endeudamiento (deuda / activo)",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Mejora la liquidez corriente",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "No emite acciones",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora el margen bruto",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "Mejora la rotación del activo",
+          "resultado": "Sí"
+        }
+      ],
+      "tabla": [
+        {
+          "indicador": "Altman Z",
+          "valor": "1,44",
+          "lectura": "Zona de riesgo (> 2,99 seguro; < 1,81 riesgo). No aplica a bancos ni aseguradoras, y subestima la solvencia de empresas con grandes anticipos de clientes o prefinanciación pública (contratistas, construcción), que inflan el pasivo. No fiable en 2025: cambio de perímetro (el balance incluye negocios sin su cuenta de resultados completa)."
+        },
+        {
+          "indicador": "Piotroski F",
+          "valor": "5 / 7",
+          "lectura": "Intermedio (4-6)."
+        },
+        {
+          "indicador": "Flujo operativo / beneficio neto (acumulado)",
+          "valor": "1,03x",
+          "lectura": "El beneficio se cobra."
+        }
+      ]
+    },
+    "dcf": {
+      "proyeccion": [
+        {
+          "periodo": "2026e",
+          "ingresos": 10112,
+          "crecimiento_pct": 5,
+          "ebitda": 1668,
+          "margen_ebitda_pct": 16.5,
+          "amortizacion": 556,
+          "ebit": 1112,
+          "impuestos": 278,
+          "capex": 506,
+          "variacion_circulante": 0,
+          "fcff": 885,
+          "fraccion": 0.21,
+          "factor": 0.992,
+          "vp": 187
+        },
+        {
+          "periodo": "2027e",
+          "ingresos": 10718,
+          "crecimiento_pct": 6,
+          "ebitda": 1822,
+          "margen_ebitda_pct": 17,
+          "amortizacion": 590,
+          "ebit": 1233,
+          "impuestos": 308,
+          "capex": 643,
+          "variacion_circulante": 0,
+          "fcff": 871,
+          "fraccion": 1,
+          "factor": 0.947,
+          "vp": 824
+        },
+        {
+          "periodo": "2028e",
+          "ingresos": 11361,
+          "crecimiento_pct": 6,
+          "ebitda": 1988,
+          "margen_ebitda_pct": 17.5,
+          "amortizacion": 625,
+          "ebit": 1363,
+          "impuestos": 341,
+          "capex": 738,
+          "variacion_circulante": 0,
+          "fcff": 909,
+          "fraccion": 1,
+          "factor": 0.877,
+          "vp": 797
+        },
+        {
+          "periodo": "2029e",
+          "ingresos": 11986,
+          "crecimiento_pct": 5.5,
+          "ebitda": 2158,
+          "margen_ebitda_pct": 18,
+          "amortizacion": 659,
+          "ebit": 1498,
+          "impuestos": 375,
+          "capex": 779,
+          "variacion_circulante": 0,
+          "fcff": 1004,
+          "fraccion": 1,
+          "factor": 0.813,
+          "vp": 815
+        },
+        {
+          "periodo": "2030e",
+          "ingresos": 12585,
+          "crecimiento_pct": 5,
+          "ebitda": 2328,
+          "margen_ebitda_pct": 18.5,
+          "amortizacion": 692,
+          "ebit": 1636,
+          "impuestos": 409,
+          "capex": 755,
+          "variacion_circulante": 0,
+          "fcff": 1164,
+          "fraccion": 1,
+          "factor": 0.753,
+          "vp": 876
+        },
+        {
+          "periodo": "2031e",
+          "ingresos": 13152,
+          "crecimiento_pct": 4.5,
+          "ebitda": 2433,
+          "margen_ebitda_pct": 18.5,
+          "amortizacion": 723,
+          "ebit": 1710,
+          "impuestos": 427,
+          "capex": 789,
+          "variacion_circulante": 0,
+          "fcff": 1217,
+          "fraccion": 1,
+          "factor": 0.698,
+          "vp": 848
+        },
+        {
+          "periodo": "2032e",
+          "ingresos": 13678,
+          "crecimiento_pct": 4,
+          "ebitda": 2530,
+          "margen_ebitda_pct": 18.5,
+          "amortizacion": 752,
+          "ebit": 1778,
+          "impuestos": 445,
+          "capex": 821,
+          "variacion_circulante": 0,
+          "fcff": 1265,
+          "fraccion": 1,
+          "factor": 0.646,
+          "vp": 818
+        },
+        {
+          "periodo": "2033e",
+          "ingresos": 14157,
+          "crecimiento_pct": 3.5,
+          "ebitda": 2619,
+          "margen_ebitda_pct": 18.5,
+          "amortizacion": 779,
+          "ebit": 1840,
+          "impuestos": 460,
+          "capex": 849,
+          "variacion_circulante": 0,
+          "fcff": 1309,
+          "fraccion": 1,
+          "factor": 0.599,
+          "vp": 784
+        },
+        {
+          "periodo": "2034e",
+          "ingresos": 14581,
+          "crecimiento_pct": 3,
+          "ebitda": 2698,
+          "margen_ebitda_pct": 18.5,
+          "amortizacion": 802,
+          "ebit": 1896,
+          "impuestos": 474,
+          "capex": 875,
+          "variacion_circulante": 0,
+          "fcff": 1349,
+          "fraccion": 1,
+          "factor": 0.555,
+          "vp": 748
+        },
+        {
+          "periodo": "2035e",
+          "ingresos": 14946,
+          "crecimiento_pct": 2.5,
+          "ebitda": 2765,
+          "margen_ebitda_pct": 18.5,
+          "amortizacion": 822,
+          "ebit": 1943,
+          "impuestos": 486,
+          "capex": 897,
+          "variacion_circulante": 0,
+          "fcff": 1382,
+          "fraccion": 1,
+          "factor": 0.514,
+          "vp": 710
+        }
+      ],
+      "etapa2": null,
+      "suma_vp": 7408,
+      "valor_terminal": 23764,
+      "vp_terminal": 11761,
+      "valor_empresa": 19169,
+      "peso_terminal_pct": 61,
+      "valor_acciones": 20676,
+      "valor_accion": 29,
+      "vt_gordon": 23764,
+      "vt_multiplo": 55300,
+      "multiplo_implicito": 8.6,
+      "g_implicito_pct": 5.3,
+      "metodo_terminal": "gordon",
+      "terminal_tabla": [
+        {
+          "concepto": "Método principal",
+          "valor": "Crecimiento a perpetuidad"
+        },
+        {
+          "concepto": "Crecimiento a perpetuidad",
+          "valor": "2,0 %"
+        },
+        {
+          "concepto": "Múltiplo EV/EBITDA de salida",
+          "valor": "20,0x"
+        },
+        {
+          "concepto": "Valor terminal (Gordon)",
+          "valor": "23.764"
+        },
+        {
+          "concepto": "Valor terminal (múltiplo)",
+          "valor": "55.300"
+        },
+        {
+          "concepto": "Múltiplo de salida implícito en Gordon",
+          "valor": "8,6x"
+        },
+        {
+          "concepto": "Crecimiento implícito en el múltiplo",
+          "valor": "5,30 %"
+        },
+        {
+          "concepto": "Peso del valor terminal en el valor empresa",
+          "valor": "61 %"
+        }
+      ],
+      "puente": [
+        {
+          "concepto": "Valor actual de los flujos proyectados",
+          "valor": "7.408"
+        },
+        {
+          "concepto": "Valor actual del valor terminal",
+          "valor": "11.761"
+        },
+        {
+          "concepto": "Valor empresa",
+          "valor": "19.169"
+        },
+        {
+          "concepto": "− Deuda financiera neta (con arrendamientos)",
+          "valor": "-5.893"
+        },
+        {
+          "concepto": "− Minoritarios, pensiones y otros; + asociadas",
+          "valor": "7.400"
+        },
+        {
+          "concepto": "Valor de los fondos propios",
+          "valor": "20.676"
+        },
+        {
+          "concepto": "Acciones diluidas (millones)",
+          "valor": "713,0"
+        },
+        {
+          "concepto": "Valor por acción",
+          "valor": "29,00"
+        }
+      ],
+      "composicion": [
+        {
+          "parte": "Flujos proyectados",
+          "valor": 7408
+        },
+        {
+          "parte": "Valor terminal",
+          "valor": 11761
+        }
+      ],
+      "wacc": 7.93,
+      "ke": 8.98,
+      "kd_despues": 3.75,
+      "wacc_tabla": [
+        {
+          "concepto": "Tasa libre de riesgo",
+          "valor": "3,53 %"
+        },
+        {
+          "concepto": "Beta",
+          "valor": "0,90"
+        },
+        {
+          "concepto": "Prima de riesgo de mercado",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Prima adicional (país, tamaño, específica)",
+          "valor": "0,50 %"
+        },
+        {
+          "concepto": "Coste de los fondos propios",
+          "valor": "8,98 %"
+        },
+        {
+          "concepto": "Coste de la deuda antes de impuestos",
+          "valor": "5,00 %"
+        },
+        {
+          "concepto": "Tipo impositivo",
+          "valor": "25,00 %"
+        },
+        {
+          "concepto": "Coste de la deuda después de impuestos",
+          "valor": "3,75 %"
+        },
+        {
+          "concepto": "Peso de la deuda (D / (D + E))",
+          "valor": "20,00 %"
+        },
+        {
+          "concepto": "WACC",
+          "valor": "7,93 %"
+        },
+        {
+          "concepto": "Prima de riesgo implícita del mercado (regla relativa)",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "WACC con la prima implícita del mercado",
+          "valor": "7,00 %"
+        }
+      ],
+      "potencial_pct": -35.7,
+      "sensibilidad": {
+        "eje_columnas": "Crecimiento a perpetuidad",
+        "columnas": [
+          "1,0 %",
+          "1,5 %",
+          "2,0 %",
+          "2,5 %",
+          "3,0 %"
+        ],
+        "filas": [
+          {
+            "wacc": "6,9 %",
+            "v0": 30.75,
+            "v1": 32.48,
+            "v2": 34.57,
+            "v3": 37.12,
+            "v4": 40.33
+          },
+          {
+            "wacc": "7,4 %",
+            "v0": 28.45,
+            "v1": 29.86,
+            "v2": 31.52,
+            "v3": 33.53,
+            "v4": 35.99
+          },
+          {
+            "wacc": "7,9 %",
+            "v0": 26.48,
+            "v1": 27.64,
+            "v2": 29,
+            "v3": 30.6,
+            "v4": 32.54
+          },
+          {
+            "wacc": "8,4 %",
+            "v0": 24.78,
+            "v1": 25.75,
+            "v2": 26.87,
+            "v3": 28.18,
+            "v4": 29.72
+          },
+          {
+            "wacc": "8,9 %",
+            "v0": 23.31,
+            "v1": 24.12,
+            "v2": 25.05,
+            "v3": 26.13,
+            "v4": 27.38
+          }
+        ]
+      },
+      "sensibilidad2": {
+        "columnas": [
+          "-2 pp",
+          "-1 pp",
+          "0 pp",
+          "+1 pp",
+          "+2 pp"
+        ],
+        "filas": [
+          {
+            "margen": "-2 pp",
+            "v0": 21.65,
+            "v1": 23.08,
+            "v2": 24.61,
+            "v3": 26.25,
+            "v4": 28.01
+          },
+          {
+            "margen": "-1 pp",
+            "v0": 23.56,
+            "v1": 25.12,
+            "v2": 26.8,
+            "v3": 28.61,
+            "v4": 30.54
+          },
+          {
+            "margen": "0 pp",
+            "v0": 25.47,
+            "v1": 27.17,
+            "v2": 29,
+            "v3": 30.96,
+            "v4": 33.06
+          },
+          {
+            "margen": "+1 pp",
+            "v0": 27.37,
+            "v1": 29.22,
+            "v2": 31.19,
+            "v3": 33.32,
+            "v4": 35.59
+          },
+          {
+            "margen": "+2 pp",
+            "v0": 29.28,
+            "v1": 31.26,
+            "v2": 33.39,
+            "v3": 35.67,
+            "v4": 38.12
+          }
+        ]
+      },
+      "rango_min": 25.75,
+      "rango_max": 33.53,
+      "inverso": {
+        "crecimiento_implicito_pct": 11.1,
+        "crecimiento_base_pct": 4.4,
+        "periodo": "2027e-2035e",
+        "margen_implicito_pct": 25.8,
+        "margen_implicito_texto": null,
+        "margen_base_pct": 18.5,
+        "rentabilidad_implicita_pct": 5.7
+      },
+      "sostenibilidad": {
+        "veredicto": "En parte",
+        "crecimiento_proyectado_pct": 4.5,
+        "tasa_reinversion_pct": 5,
+        "crecimiento_financiable_pct": null,
+        "roic_pct": 5.2,
+        "roic_incremental_historico_pct": 5.9,
+        "roic_implicito_pct": null,
+        "cuota_actual_pct": null,
+        "cuota_final_pct": null,
+        "puente": [
+          {
+            "periodo": "2026e",
+            "volumen_pct": 3,
+            "precio_pct": 3.5,
+            "otros_pct": -1.5,
+            "comentario": "Volumen: construcción y tráfico (+1,8 % el 407 en el semestre); precio: tarifas del 407 (+20,2 % en peaje) y de las Managed Lanes; otros: dólar y dólar canadiense más débiles [2, 17].",
+            "suma_pct": 5,
+            "crecimiento_pct": 5
+          },
+          {
+            "periodo": "2027e",
+            "volumen_pct": 3,
+            "precio_pct": 3,
+            "otros_pct": 0,
+            "comentario": "Cartera de construcción de 17.400 M y subidas de tarifa en línea con la congestión [1].",
+            "suma_pct": 6,
+            "crecimiento_pct": 6
+          },
+          {
+            "periodo": "2028e",
+            "volumen_pct": 3,
+            "precio_pct": 3,
+            "otros_pct": 0,
+            "comentario": "Igual que 2027e; la apertura completa de la NTO de JFK aporta ingresos de aeropuertos.",
+            "suma_pct": 6,
+            "crecimiento_pct": 6
+          },
+          {
+            "periodo": "2029e",
+            "volumen_pct": 2.5,
+            "precio_pct": 3,
+            "otros_pct": 0,
+            "comentario": "Menos construcción y más peaje.",
+            "suma_pct": 5.5,
+            "crecimiento_pct": 5.5
+          },
+          {
+            "periodo": "2030e",
+            "volumen_pct": 2,
+            "precio_pct": 3,
+            "otros_pct": 0,
+            "comentario": "Convergencia hacia el crecimiento nominal de la economía.",
+            "suma_pct": 5,
+            "crecimiento_pct": 5
+          }
+        ],
+        "texto": "La proyección apenas necesita inversión neta de la amortización (reinversión acumulada de 652 M, el 5 % del NOPAT, con un capex bruto medio del 6,0 % de las ventas). En un negocio de activos ligeros, el crecimiento medio del 4,5 % tiene que salir de subir precios y de ganar volumen sin capital nuevo, y la prueba es el poder de precios y la cuota; en un comprador en serie, la amortización es de intangibles comprados y la prueba es el capex bruto (las compras) frente al crecimiento comprado.",
+        "tabla": [
+          {
+            "concepto": "Crecimiento medio de ingresos proyectado",
+            "valor": "4,5 %"
+          },
+          {
+            "concepto": "Capex bruto medio (incluidas compras si van como inversión)",
+            "valor": "6,0 % de las ventas"
+          },
+          {
+            "concepto": "Reinversión neta acumulada (capex − amortización + circulante)",
+            "valor": "652 M (5 % del NOPAT)"
+          }
+        ]
+      }
+    },
+    "escenarios": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "narrativa": "La I-24 y otras pujas agresivas se llevan capital a rentabilidades del 6-7 %, el tráfico del 407 sigue cayendo y los tipos suben: el mercado deja de pagar la prima de «compounder» (ya pasó en 2022, con caídas del 11 %).",
+        "crecimiento_medio_pct": 2.4,
+        "margen_final_pct": 17,
+        "wacc_pct": 8.4,
+        "valor": 20.2,
+        "potencial_pct": -55.2
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "narrativa": "Las tarifas siguen subiendo, la construcción mantiene el 4-5 % de margen y la NTO abre por fases; el beneficio limpio crece ≈15 % al año hasta 2028.",
+        "crecimiento_medio_pct": 4.4,
+        "margen_final_pct": 18.5,
+        "wacc_pct": 7.9,
+        "valor": 29,
+        "potencial_pct": -35.7
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "narrativa": "Recuperación del tráfico del 407, nuevas managed lanes adjudicadas con mejores condiciones y venta de activos maduros con plusvalía.",
+        "crecimiento_medio_pct": 5.9,
+        "margen_final_pct": 19.5,
+        "wacc_pct": 7.9,
+        "valor": 34.43,
+        "potencial_pct": -23.7
+      }
+    ],
+    "valor_ponderado": 28.16,
+    "potencial_ponderado_pct": -37.6,
+    "comparables": {
+      "tabla": [
+        {
+          "nombre": "Ferrovial",
+          "ticker": "FER",
+          "pais": "NL",
+          "capitalizacion": 32163,
+          "ev_ventas": 3.1,
+          "ev_ebitda_ltm": 18.8,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 44.4,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": 16.5,
+          "roic_pct": 5.2,
+          "dn_ebitda": 3.6,
+          "fcf_yield_pct": 5.8,
+          "es_objetivo": true
+        },
+        {
+          "nombre": "Vinci",
+          "ticker": "DG",
+          "pais": "FR",
+          "capitalizacion": null,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": 6.9,
+          "per_ntm": 13.2,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Sacyr",
+          "ticker": "SCYR",
+          "pais": "ES",
+          "capitalizacion": null,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 20.6,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Aena",
+          "ticker": "AENA",
+          "pais": "ES",
+          "capitalizacion": null,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 17.2,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Aéroports de Paris",
+          "ticker": "ADP",
+          "pais": "FR",
+          "capitalizacion": null,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 18.2,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Fraport",
+          "ticker": "FRA",
+          "pais": "DE",
+          "capitalizacion": null,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 15,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "ASUR",
+          "ticker": "ASURB",
+          "pais": "MX",
+          "capitalizacion": null,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 14.2,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        }
+      ],
+      "estadisticos": [
+        {
+          "estadistico": "Mediana",
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": 6.9,
+          "per_ntm": 16.1,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null
+        },
+        {
+          "estadistico": "Media",
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": 6.9,
+          "per_ntm": 16.4,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null
+        },
+        {
+          "estadistico": "Percentil 25",
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": 6.9,
+          "per_ntm": 14.4,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null
+        },
+        {
+          "estadistico": "Percentil 75",
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": 6.9,
+          "per_ntm": 18,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null
+        }
+      ],
+      "implicito": [
+        {
+          "metodo": "PER próximos 12 meses",
+          "metrica_empresa": 1.02,
+          "multiplo_p25": 14.4,
+          "multiplo_mediana": 16.1,
+          "multiplo_p75": 18,
+          "multiplos": "14,4x / 16,1x / 17,9x",
+          "valor_p25": 14.64,
+          "valor_mediana": 16.37,
+          "valor_p75": 18.25,
+          "potencial_pct": -63.7
+        }
+      ],
+      "regresion": null,
+      "n": 6
+    },
+    "transacciones": null,
+    "suma_partes": null,
+    "multiplos_historicos": [
+      {
+        "metrica": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+        "campo": "ev_ebitda_ltm",
+        "actual": 18.8,
+        "media": 27.8,
+        "minimo": 26.4,
+        "maximo": 31.7,
+        "percentil": 0,
+        "prima_pct": -32,
+        "anios": 4
+      },
+      {
+        "metrica": "PER últimos 12 meses (cierre de cada año)",
+        "campo": "per_ltm",
+        "actual": 53.1,
+        "media": 48.7,
+        "minimo": 9.1,
+        "maximo": 97.9,
+        "percentil": 75,
+        "prima_pct": 9,
+        "anios": 4
+      }
+    ],
+    "multiplos_serie": [
+      {
+        "anio": "2021",
+        "multiplo": 36.9,
+        "media": 27.8
+      },
+      {
+        "anio": "2022",
+        "multiplo": 27.5,
+        "media": 27.8
+      },
+      {
+        "anio": "2023",
+        "multiplo": 26.4,
+        "media": 27.8
+      },
+      {
+        "anio": "2024",
+        "multiplo": 28.1,
+        "media": 27.8
+      },
+      {
+        "anio": "2025",
+        "multiplo": 31.7,
+        "media": 27.8
+      }
+    ],
+    "multiplos_titulo": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+    "consenso_vs_propio": [
+      {
+        "periodo": "2026e",
+        "ingresos_propio": 10112,
+        "ingresos_consenso": null,
+        "ingresos_dif_pct": null,
+        "ebitda_propio": 1668,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      },
+      {
+        "periodo": "2027e",
+        "ingresos_propio": 10718,
+        "ingresos_consenso": null,
+        "ingresos_dif_pct": null,
+        "ebitda_propio": 1822,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      },
+      {
+        "periodo": "2028e",
+        "ingresos_propio": 11361,
+        "ingresos_consenso": null,
+        "ingresos_dif_pct": null,
+        "ebitda_propio": 1988,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      }
+    ],
+    "gobierno": {
+      "n_consejeros": 3,
+      "independientes_pct": 0,
+      "antiguedad_media": 16.5,
+      "composicion": [
+        {
+          "tipo": "Ejecutivo",
+          "num": 2
+        },
+        {
+          "tipo": "Otro externo",
+          "num": 1
+        }
+      ],
+      "checklist": [
+        {
+          "criterio": "Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)",
+          "resultado": "No cumple",
+          "valor": "0 % (con control)"
+        },
+        {
+          "criterio": "Presidencia sin vínculo familiar ni profesional con el accionista de control",
+          "resultado": "No cumple",
+          "valor": "Vinculada"
+        },
+        {
+          "criterio": "Presidente no ejecutivo, o consejero coordinador independiente",
+          "resultado": "No cumple",
+          "valor": "Ejecutivo, sin coordinador"
+        },
+        {
+          "criterio": "Comisión de auditoría con mayoría de independientes y presidida por uno",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Ningún consejero «otro externo» con más de 12 años",
+          "resultado": "Cumple",
+          "valor": "Ninguno"
+        },
+        {
+          "criterio": "Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses",
+          "resultado": "Cumple",
+          "valor": "0 cambios"
+        },
+        {
+          "criterio": "Peor voto a favor sobre remuneración (3 juntas) ≥ 80 %",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Una acción, un voto, sin blindajes ni límites de voto estatutarios",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Sin operaciones vinculadas relevantes",
+          "resultado": "Cumple",
+          "valor": "No hay"
+        },
+        {
+          "criterio": "Auditor con 10 años o menos en el cargo",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Opinión de auditoría sin salvedades",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Directivos compradores netos en 12 meses (o sin ventas relevantes)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        }
+      ],
+      "puntuacion": "4 de 13 (6 sin dato)",
+      "puntuacion_pct": 31,
+      "compras_insiders": 0,
+      "ventas_insiders": 0
+    },
+    "competidores_margen": [
+      {
+        "nombre": "Ferrovial",
+        "margen_ebit_pct": 10
+      },
+      {
+        "nombre": "Vinci",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "ACS (Iridium, Hochtief, Turner)",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Transurban",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Eiffage (Getlink, APRR)",
+        "margen_ebit_pct": null
+      }
+    ],
+    "sintesis": {
+      "formato_eje": "#,##0.0",
+      "rangos": [
+        {
+          "metodo": "Cotización 52 semanas",
+          "etiqueta": "Cotización 52 semanas (44,43 – 63,54)",
+          "min": 44.43,
+          "central": 45.11,
+          "max": 63.54,
+          "gris": true
+        },
+        {
+          "metodo": "Precio objetivo de los analistas",
+          "etiqueta": "Precio objetivo de los analistas (50,00 – 70,00)",
+          "min": 50,
+          "central": 61.32,
+          "max": 70,
+          "gris": true
+        },
+        {
+          "metodo": "Comparables: PER NTM",
+          "etiqueta": "Comparables: PER NTM (14,64 – 18,25)",
+          "min": 14.64,
+          "central": 16.37,
+          "max": 18.25,
+          "gris": false
+        },
+        {
+          "metodo": "DCF (WACC y g ± 0,5)",
+          "etiqueta": "DCF (WACC y g ± 0,5) (25,75 – 33,53)",
+          "min": 25.75,
+          "central": 29,
+          "max": 33.53,
+          "gris": false
+        },
+        {
+          "metodo": "Escenarios (bajista – alcista)",
+          "etiqueta": "Escenarios (bajista – alcista) (20,20 – 34,43)",
+          "min": 20.2,
+          "central": 28.16,
+          "max": 34.43,
+          "gris": false
+        },
+        {
+          "metodo": "DCF con la prima del mercado",
+          "etiqueta": "DCF con la prima implícita del mercado (4,2 %)",
+          "min": 31.17,
+          "central": 34.14,
+          "max": 37.77
+        },
+        {
+          "metodo": "Precio actual",
+          "etiqueta": "Precio actual (45,11)",
+          "min": 44.88,
+          "central": 45.11,
+          "max": 45.34,
+          "gris": true
+        }
+      ],
+      "tabla": [
+        {
+          "metodo": "DCF",
+          "valor": 29,
+          "peso_pct": 70,
+          "potencial_pct": -35.7
+        },
+        {
+          "metodo": "Comparables (mediana EV/EBITDA y PER) (no se usa)",
+          "valor": 16.37,
+          "peso_pct": 0,
+          "potencial_pct": -63.7
+        },
+        {
+          "metodo": "Escenarios ponderados",
+          "valor": 28.16,
+          "peso_pct": 30,
+          "potencial_pct": -37.6
+        }
+      ],
+      "valor_objetivo": 28.75,
+      "potencial_pct": -36.3
+    },
+    "fuentes": {
+      "n_fuentes": 57,
+      "n_primarias": 15,
+      "por_tipo": [
+        {
+          "tipo": "Primaria",
+          "num": 15
+        },
+        {
+          "tipo": "Datos de mercado",
+          "num": 17
+        },
+        {
+          "tipo": "Prensa",
+          "num": 20
+        },
+        {
+          "tipo": "Analistas",
+          "num": 1
+        },
+        {
+          "tipo": "Foros y redes",
+          "num": 4
+        }
+      ],
+      "n_citadas": 53,
+      "citas_sin_fuente": [],
+      "fuentes_sin_citar": [
+        "20",
+        "34",
+        "36",
+        "43"
+      ]
+    },
+    "controles": [
+      {
+        "control": "DCF inverso calculable",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Puente de ingresos (volumen + precio + otros) = crecimiento del DCF",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "resultado": "OK",
+        "detalle": "Supuesto 0,0 % frente a 0,0 % real: genera una variación de circulante de 0 M en el primer año. Converge de forma gradual."
+      },
+      {
+        "control": "Peso del valor terminal ≤ 80 % del valor empresa",
+        "resultado": "OK",
+        "detalle": "61 %."
+      },
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "resultado": "OK",
+        "detalle": "2,00 %."
+      },
+      {
+        "control": "Probabilidades de los escenarios suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 5 comparables",
+        "resultado": "OK",
+        "detalle": "6 comparables."
+      },
+      {
+        "control": "Pesos de la síntesis suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Múltiplos del objetivo a 12 m según la regla común",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Objetivo 12 m frente al consenso",
+        "resultado": "OK",
+        "detalle": "El base se separa un -16,9 % del objetivo medio de los analistas: explícalo en diferencia_consenso (nunca se acerca la cifra)."
+      },
+      {
+        "control": "Recomendación coherente con la regla de decisión",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Convicción frente a la sugerida por los criterios",
+        "resultado": "OK",
+        "detalle": "Los criterios dan «Media» (Mantener con las dos reglas de acuerdo y lejos de los umbrales) y el análisis pone «Baja»: explica en la síntesis por qué te apartas."
+      },
+      {
+        "control": "La síntesis explica la convicción",
+        "resultado": "OK",
+        "detalle": "La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría."
+      },
+      {
+        "control": "Al menos 25 fuentes",
+        "resultado": "OK",
+        "detalle": "57 fuentes (15 primarias)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "resultado": "OK",
+        "detalle": "15."
+      },
+      {
+        "control": "Toda cita [n] existe en fuentes",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Fuentes sin citar ≤ 15 %",
+        "resultado": "OK",
+        "detalle": "Sin citar: 20, 34, 36, 43."
+      }
+    ],
+    "controles_resumen": "17 de 17 controles correctos"
+  }
+}
