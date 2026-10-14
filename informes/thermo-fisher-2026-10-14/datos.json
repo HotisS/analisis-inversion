@@ -1,0 +1,4238 @@
+{
+  "meta": {
+    "fecha_corte": "2026-10-14",
+    "divisa": "USD",
+    "divisa_cotizacion": "USD",
+    "tipo_cambio": 1,
+    "unidades": "millones",
+    "cierre_ejercicio_mes": 12,
+    "etiqueta_ejercicio": "fin",
+    "normas_contables": "US GAAP",
+    "formato_cuenta": "funcion",
+    "limitaciones": "Análisis hecho desde la nube con la red limitada a la búsqueda web: sec.gov, la web de la empresa y los proveedores de datos no se pudieron abrir, así que las cifras salen de extractos de búsqueda de los comunicados 8-K, del 10-K, del proxy y de Stock Analysis, cruzadas cuando fue posible; la confianza es menor que en un análisis normal y lo que no cuadró está en null y en los huecos. Algunas cifras antiguas (flujo operativo y capex 2021-2024, BPA trimestrales 3T24-3T25, cierres anuales 2018-2023, patrimonio atribuido 2022-2023) se tomaron de memoria de los documentos de la empresa y cuadran con totales publicados (FCF de cada año, ingresos y BPA de 2025). Cuentas en USD con US GAAP; ejercicio natural. Precio: cierre del 13-oct-2026 (la sesión del 14 no había cerrado). Acciones: 377 M, estimación desde la capitalización publicada de julio. El EBITDA del informe es el GAAP (EBIT + amortizaciones); el BPA del objetivo a 12 meses y el PER histórico están en base ajustada (sin amortización de intangibles comprados), la que usa el mercado. Los resultados del 3T26 salen el 21-oct-2026, una semana después del corte.",
+    "controles_explicados": [
+      {
+        "control": "Sección de núcleo con datos: competencia",
+        "explicacion": "Sin cifras de competidores (10-K de Danaher, Agilent y Waters no accesibles); queda el foso y la posición."
+      }
+    ],
+    "huecos": [
+      {
+        "seccion": "financieros",
+        "campo": "Coste de ventas, gastos generales, resultado financiero, impuestos y BAI por año",
+        "tipo": "Complemento",
+        "intentos": "1) 10-K en sec.gov: sin red; 2) Stock Analysis y TipRanks vía búsqueda: solo ingresos, EBIT y beneficio; 3) Macrotrends vía búsqueda: solo beneficio neto",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "balance",
+        "campo": "Activo y pasivo corriente, intangibles, inmovilizado, reservas, vencimientos, rating",
+        "tipo": "Complemento",
+        "intentos": "1) 10-K: sin red; 2) Stock Analysis vía búsqueda: no aparecen esas líneas; 3) folleto 424B5 de 2026: solo el título en la búsqueda",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "flujos",
+        "campo": "Adquisiciones netas por año",
+        "tipo": "Complemento",
+        "intentos": "1) 10-K: sin red; 2) Stock Analysis: no aparece; 3) comunicados: solo el total de 2025 (≈13.000 M)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "negocio",
+        "campo": "Geografías y resultado de tres de los cuatro segmentos",
+        "tipo": "Complemento",
+        "intentos": "1) 10-K vía búsqueda (tabla cortada); 2) informe anual 2025 en la web de la empresa: no abre; 3) prensa: solo pesos por segmento",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sector",
+        "campo": "Tamaño y crecimiento del mercado de herramientas de ciencias de la vida con dos fuentes",
+        "tipo": "Núcleo",
+        "intentos": "1) informe anual de la empresa (cifra del mercado servido): sin red; 2) informes sectoriales vía búsqueda: no se buscaron por el cupo compartido; 3) estimaciones de analistas en prensa: sin cifra fiable",
+        "decision": "Omitido (se describe el ciclo en el texto de propio)"
+      },
+      {
+        "seccion": "competencia",
+        "campo": "Ingresos y margen EBIT de 4-8 competidores",
+        "tipo": "Núcleo",
+        "intentos": "1) 10-K de Danaher, Agilent, Waters: sin red; 2) búsqueda: solo capitalización y PER; 3) informe de Medpace del repo: solo la CRO",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "esg",
+        "campo": "Calificaciones ESG y controversias",
+        "tipo": "Complemento",
+        "intentos": "1) informe de sostenibilidad: sin red; 2) MSCI/Sustainalytics: no se buscaron (cupo); 3) prensa: nada",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "Consejo completo, voto de la remuneración, accionistas significativos y operaciones de directivos (Form 4)",
+        "tipo": "Núcleo",
+        "intentos": "1) DEF 14A en sec.gov: sin red (solo la tabla de remuneración en el extracto); 2) form4.mjs: sin red; 3) búsqueda del voto de 2025 y del consejero coordinador: no aparece en los extractos",
+        "decision": "Omitido; se deja el consejo con el presidente y los booleanos comprobables"
+      },
+      {
+        "seccion": "bolsa",
+        "campo": "Rentabilidades, beta, volatilidad, caída máxima, posición corta",
+        "tipo": "Complemento",
+        "intentos": "1) bolsa.mjs: sin red; 2) Yahoo/WebFetch: bloqueado; 3) búsqueda: solo precio y rango",
+        "decision": "Omitido; beta de 0,85 por juicio (empresa defensiva de salud), sin cifra publicada"
+      },
+      {
+        "seccion": "comparables",
+        "campo": "EV/EBITDA, crecimiento, márgenes y ROIC de DHR, A, WAT y MTD",
+        "tipo": "Núcleo",
+        "intentos": "1) MarketScreener: solo con WebFetch (bloqueado); 2) Stock Analysis y FinanceCharts vía búsqueda: solo PER; 3) análisis del repo: no los tienen",
+        "decision": "Solo PER; el resto en null"
+      },
+      {
+        "seccion": "transacciones",
+        "campo": "EV/EBITDA de las operaciones",
+        "tipo": "Complemento",
+        "intentos": "1) notas de prensa: no lo publican; 2) prensa sectorial: sin cifra; 3) folletos: sin red",
+        "decision": "Solo EV/ventas"
+      },
+      {
+        "seccion": "sentimiento",
+        "campo": "Hilos de Reddit y comentarios de Seeking Alpha de los últimos tres meses",
+        "tipo": "Complemento",
+        "intentos": "1) búsqueda de Reddit: solo un espejo de 2022 [47]; 2) Seeking Alpha: solo noticias automáticas; 3) Stocktwits: solo el indicador",
+        "decision": "Se usan blogs de inversores y comunidades alternativas"
+      }
+    ]
+  },
+  "identificacion": {
+    "nombre": "Thermo Fisher Scientific Inc.",
+    "nombre_corto": "Thermo Fisher",
+    "ticker": "TMO",
+    "isin": "US8835561023",
+    "mercado": "NYSE",
+    "indice_referencia": "S&P 500",
+    "pais": "Estados Unidos",
+    "pais_iso": "US",
+    "sector": "Salud",
+    "industria": "Herramientas y servicios de ciencias de la vida",
+    "sede": "Waltham (Massachusetts)",
+    "fundacion": "1956",
+    "empleados": null,
+    "web": "www.thermofisher.com",
+    "precio": 663.04,
+    "fecha_precio": "2026-10-13",
+    "acciones": 377,
+    "capitalizacion_publicada": null,
+    "free_float_pct": null,
+    "max_52s": 694.33,
+    "min_52s": 435.27,
+    "volumen_medio_diario": null,
+    "proximos_resultados": "2026-10-21"
+  },
+  "resumen": {
+    "recomendacion": "Mantener",
+    "conviccion": "Media",
+    "justificacion_recomendacion": null,
+    "horizonte": "12 meses",
+    "sintesis": "**La recomendación y por qué.** Mantener, con convicción media. Con nuestro BPA ajustado de 2028e y el PER propio de la empresa, el objetivo a 12 meses es de 703,14 USD frente a 663,04 USD de cierre del 13 de octubre: +6,3 % con el dividendo y +7,3 % en el caso base, lejos del 15 % y el 12 % que pedimos para comprar. El objetivo medio de los analistas (635,08 USD, de agosto) queda por debajo de nuestro base. La asimetría a 12 meses es buena (2,92x: +15,7 % en el alcista frente a −5,0 % en el bajista) porque el PER de Thermo Fisher es muy estable, pero el valor intrínseco (456,88 USD, −31,1 %) dice que no hay margen de seguridad. La convicción es media: subiría si el 3T26 (21 de octubre) repite un orgánico del 5 % o más y la acción no se mueve; bajaría si el orgánico vuelve al 1-2 %.\n\n**El negocio.** Es el mayor proveedor mundial de herramientas y servicios para la ciencia (44.556 M USD de ingresos en 2025), con dos tercios de ventas recurrentes y costes de cambio altos en bioproducción y ensayos clínicos [1]. El foso es amplio, pero el capital comprado pesa: el ROIC es del 7,3 %, 1,8 puntos por debajo del WACC del 9,10 %, porque el balance lleva 49.362 M de fondo de comercio [7]. La calidad sí sostiene el crecimiento que proyectamos (veredicto «Sí»): un orgánico del 4,5-5 %, el del mercado, sin ganar cuota y sin compras nuevas.\n\n**Sector y ciclo.** El sector sale de dos años malos (pico de covid, biotecnología sin financiación, recortes de los NIH). El orgánico pasó del 1 % en el 1T26 al 5 % en el 2T26 y la guía de 2026 subió dos veces, hasta 24,93-25,33 USD de BPA ajustado [3, 4]. La acción lo ha descontado: +52 % desde el mínimo de mayo [24].\n\n**Finanzas.** El flujo libre es estable (6.337 M en 2025; guía de 6.800-7.300 M en 2026), pero la deuda bruta subió a 42.549 M tras Clario y la deuda neta es de 3,5 veces el EBITDA [1, 7, 10]. El BPA ajustado supera al GAAP en un 29 % por la amortización de intangibles comprados, que se repite cada año [2].\n\n**Equipo y gobierno.** Casper cumple la guía y sabe podar (microbiología vendida para recomprar acciones) [14], pero la remuneración de 79,9 M USD de 2025 por un premio de retención obligó a la empresa a hacer campaña por el voto [21, 22]. Resta poco.\n\n**Valoración.** El DCF da 345,74 USD con un WACC del 9,10 % y 426,87 USD con la prima del mercado; el PER de los comparables, 627,62 USD. El DCF inverso dice que a 663,04 USD el precio descuenta un crecimiento del 13,9 % anual de 2027e a 2035e frente al 4,5 % de nuestro base, o una rentabilidad del 6,6 % anual, por debajo del 9,10 % de WACC. El mercado paga a Thermo Fisher un PER de 24-25x desde hace años con independencia de los tipos; nuestro objetivo a 12 meses lo acepta (24,6x, la mediana de cinco años), pero no pagaríamos más.\n\n**Riesgos y catalizadores.** El primero es una recaída de la biotecnología (bajista: 628,05 USD, −5,0 %); el segundo, que el mercado deje de pagar 24x con el bono al 5,22 %, que llevaría la acción hacia el valor intrínseco (−31 %). El catalizador inmediato es el 3T26 del 21 de octubre. Los foros pasan del miedo de mayo a un optimismo prudente que duda del precio tras el rally.\n\n**Qué cambiaría la decisión.** Compraríamos por debajo de 456,88 USD, donde se cumplen las tres condiciones; venderíamos por encima de 783,26 USD. Pasaríamos a vender si el orgánico baja del 2 % en dos trimestres o si una compra nueva lleva la deuda neta por encima de 4 veces el EBITDA.",
+    "tesis": "Thermo Fisher es el mayor proveedor de herramientas y servicios para la ciencia: 44.556 M USD de ingresos, dos tercios recurrentes, un flujo libre de 6.300-7.300 M al año y un equipo que cumple la guía [1, 2]. Su debilidad es el capital: lleva 49.362 M de fondo de comercio y el ROIC (7,3 %) no cubre el WACC.\n\nEl precio (663,04 USD, ≈26x el BPA ajustado de 2026e) descuenta una recuperación completa: según el DCF inverso, un crecimiento del 13,9 % anual o una rentabilidad del 6,6 % para el comprador. El PER está en la mediana de cinco años (24,6x), así que la acción no está cara frente a su historia, sí frente a su flujo de caja.\n\nEl mercado acierta en la recuperación (orgánico del 5 % en el 2T26) [4], pero ya la ha pagado: tras subir un 52 % desde mayo, la rentabilidad a 12 meses es la del crecimiento del beneficio (6-7 %), sin múltiplo que recuperar. Para invertir hay que creer que el mercado seguirá pagando 24-25x con el bono al 5,22 %.",
+    "vision_diferencial": {
+      "mercado_descuenta": "Que el ciclo de las herramientas de ciencias de la vida ha girado y Thermo Fisher vuelve a crecer al 6-7 % orgánico con mejora de márgenes, y que lo hará durante años: 21 de 26 analistas recomiendan comprar y los objetivos suben [25].",
+      "nuestra_vision": "Compartimos la recuperación, pero proyectamos un orgánico del 4,5-5 % y no contamos compras nuevas. Con eso el BPA ajustado de 2028e es de 28,85 USD y, al PER de cinco años, la acción vale 709,71 USD dentro de un año: un 7,3 % más, sin margen de seguridad frente al valor intrínseco.",
+      "por_que": "Porque el crecimiento de 2026 lleva 3 puntos de compras y la academia sigue débil [4, 18], y porque el ROIC por debajo del WACC hace que crecer comprando no añada valor."
+    },
+    "a_favor": [
+      "**Recuperación visible**: orgánico del 5 % en el 2T26 frente al 1 % del 1T26 [3, 4].",
+      "**Guía subida dos veces**: BPA ajustado de 2026 de 24,93-25,33 USD [4].",
+      "**Flujo libre estable**: 6.337 M en 2025 y 6.800-7.300 M previstos en 2026 [1, 10].",
+      "**PER estable**: 23,6-25,3x en los años limpios, lo que limita el bajista a 12 meses (−5,0 %).",
+      "**Poda de la cartera**: microbiología vendida a 1,7x ventas para recomprar 1.000 M [14]."
+    ],
+    "en_contra": [
+      "**Sin margen de seguridad**: valor intrínseco de 456,88 USD, un 31,1 % por debajo del precio.",
+      "**ROIC por debajo del WACC**: 7,3 % frente a 9,10 %.",
+      "**Deuda al alza**: 42.549 M en junio, 3,5 veces el EBITDA [7].",
+      "**Rally ya hecho**: +52 % desde el mínimo de mayo [24].",
+      "**Remuneración**: 79,9 M USD al consejero delegado en 2025 [21]."
+    ],
+    "que_vigilar": "Que el orgánico se mantenga en el 4-5 %. La primera prueba es el 3T26 del 21 de octubre (comparativa: 11.122 M y 5,79 USD de BPA ajustado). Si baja del 3 % y la guía de 2027 queda por debajo de 27 USD de BPA, el PER puede bajar hacia el mínimo de cinco años (23,7x) y el bajista gana peso.",
+    "cambiaria_recomendacion": [
+      "Precio por debajo de 456,88 USD: pasaríamos a Comprar (las tres condiciones se cumplen).",
+      "Precio por encima de 783,26 USD: pasaríamos a Vender (ponderada ≤ −10 %).",
+      "Orgánico por debajo del 2 % en dos trimestres seguidos: revisaríamos el base a la baja.",
+      "Una compra nueva que lleve la deuda neta por encima de 4 veces el EBITDA."
+    ],
+    "kpis_seguimiento": [
+      {
+        "kpi": "Crecimiento orgánico trimestral",
+        "nivel_actual": "5 % (2T26)",
+        "umbral_alerta": "< 3 %",
+        "por_que": "Base de la tesis de recuperación."
+      },
+      {
+        "kpi": "BPA ajustado de 2026",
+        "nivel_actual": "Guía de 24,93-25,33 USD",
+        "umbral_alerta": "< 24,90 USD",
+        "por_que": "Credibilidad de la guía."
+      },
+      {
+        "kpi": "Deuda neta / EBITDA",
+        "nivel_actual": "3,5x",
+        "umbral_alerta": "> 4x",
+        "por_que": "Riesgo de compras con deuda."
+      },
+      {
+        "kpi": "Flujo libre anual",
+        "nivel_actual": "6.337 M (2025)",
+        "umbral_alerta": "< 6.500 M en 2026",
+        "por_que": "Conversión de beneficio en caja."
+      },
+      {
+        "kpi": "PER adelantado",
+        "nivel_actual": "24,6x",
+        "umbral_alerta": "< 22x",
+        "por_que": "Riesgo de que el mercado deje de pagar la calidad."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "historia": {
+    "resumen": "Thermo Fisher nace en 2006 de la fusión de Thermo Electron (instrumentos) y Fisher Scientific (distribución de laboratorio). Desde entonces ha crecido comprando: Life Technologies (2014), Patheon (2017), PPD (2021), The Binding Site (2023), Olink (2024), la filtración de Solventum (2025) y Clario (2026). Marc Casper es consejero delegado desde 2009. La pandemia disparó las ventas de pruebas de covid (2020-2022) y su caída posterior, junto con el recorte de la financiación biotecnológica y pública, dejó los ingresos planos en 2023-24.",
+    "hitos": [
+      {
+        "anio": "2006",
+        "hito": "Fusión de Thermo Electron y Fisher Scientific."
+      },
+      {
+        "anio": "2009",
+        "hito": "Marc Casper, consejero delegado."
+      },
+      {
+        "anio": "2014",
+        "hito": "Compra de Life Technologies (≈13.600 M USD)."
+      },
+      {
+        "anio": "2017",
+        "hito": "Compra de Patheon: entrada en la fabricación por contrato."
+      },
+      {
+        "anio": "2020",
+        "hito": "Pruebas de covid: los ingresos suben un 26 %."
+      },
+      {
+        "anio": "2021",
+        "hito": "Compra de PPD (17.400 M USD): entrada en la CRO clínica."
+      },
+      {
+        "anio": "2024",
+        "hito": "Compra de Olink (proteómica)."
+      },
+      {
+        "anio": "2026",
+        "hito": "Cierre de Clario (8.875 M USD) y venta de microbiología a Astorg (1.075 M USD)."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "negocio": {
+    "descripcion": "Thermo Fisher es el mayor proveedor mundial de herramientas, consumibles y servicios para la ciencia: 44.556 M USD de ingresos en 2025 [1]. Vende en cuatro segmentos: Laboratorio y servicios biofarmacéuticos (23.984 M: distribución de laboratorio de Fisher, fabricación por contrato de medicamentos y la CRO clínica PPD), Ciencias de la vida (10.374 M: bioproducción, genética, biología celular), Instrumentos analíticos (7.554 M: espectrometría de masas, cromatografía, microscopía electrónica) y Diagnóstico especializado (4.676 M) [1]. Sus clientes son farmacéuticas y biotecnológicas, hospitales y laboratorios clínicos, universidades y Gobiernos, e industria y química aplicada.",
+    "como_gana_dinero": "Alrededor de dos tercios de los ingresos son recurrentes: consumibles, reactivos, servicios de fabricación por contrato, ensayos clínicos (PPD, Clario) y distribución de laboratorio; el resto son instrumentos, que dependen del presupuesto de capital de farmacéuticas, universidades y Gobiernos [1]. El margen depende de la mezcla: Ciencias de la vida gana un 36,3 % de margen de segmento, mientras que la distribución y los servicios de Laboratorio y servicios biofarmacéuticos, que son el 52 % de las ventas, ganan bastante menos [1, 17]. Hay apalancamiento operativo: con un orgánico del 5 % en el 2T26 el BPA ajustado creció un 13 % [4]. El cuarto trimestre es el más fuerte por los presupuestos de fin de año (12.214 M en el 4T25 frente a 10.363 M en el 1T25) [2].",
+    "segmentos": [
+      {
+        "nombre": "Ciencias de la vida",
+        "descripcion": "Bioproducción, ciencias genéticas (Olink desde 2024), biología celular y biociencias.",
+        "tipo_resultado": "EBIT",
+        "historico": [
+          {
+            "periodo": "2024",
+            "ingresos": 9631,
+            "resultado": 3503
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 10374,
+            "resultado": 3768
+          }
+        ]
+      },
+      {
+        "nombre": "Instrumentos analíticos",
+        "descripcion": "Espectrometría de masas, cromatografía, microscopía electrónica, química analítica.",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2024",
+            "ingresos": 7463,
+            "resultado": null
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 7554,
+            "resultado": null
+          }
+        ]
+      },
+      {
+        "nombre": "Diagnóstico especializado",
+        "descripcion": "Inmunodiagnóstico, microbiología (vendida en agosto de 2026), trasplante, diagnóstico clínico.",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2024",
+            "ingresos": 4512,
+            "resultado": null
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 4676,
+            "resultado": null
+          }
+        ]
+      },
+      {
+        "nombre": "Laboratorio y servicios biofarmacéuticos",
+        "descripcion": "Distribución de laboratorio (Fisher), CDMO (Patheon), CRO clínica (PPD) y, desde marzo de 2026, Clario.",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2024",
+            "ingresos": 23157,
+            "resultado": null
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 23984,
+            "resultado": null
+          }
+        ]
+      },
+      {
+        "nombre": "Eliminaciones",
+        "descripcion": "Ventas entre segmentos.",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2024",
+            "ingresos": -1885,
+            "resultado": null
+          },
+          {
+            "periodo": "2025",
+            "ingresos": -2033,
+            "resultado": null
+          }
+        ]
+      }
+    ],
+    "segmentos_nota": "Ingresos de los cuatro segmentos y eliminaciones de 2024 y 2025 del 10-K 2025 [1]; solo se encontró el resultado de Ciencias de la vida (3.768 M en 2025, 36,3 %; 3.503 M en 2024). La serie de cinco años por segmento no apareció en los extractos.",
+    "geografias": [],
+    "geografias_criterio": null,
+    "clientes": "La empresa no publica concentración, pero vende a miles de laboratorios; las grandes farmacéuticas y biotecnológicas son el primer grupo de clientes y el que más mueve el ciclo [1]. Los costes de cambio son altos en bioproducción y en ensayos clínicos, porque los procesos se validan ante el regulador con un proveedor concreto. El poder de precios es moderado: la empresa sube precios en torno a la inflación y sostuvo el margen operativo ajustado (21,8 % en el 1T26 frente a 21,9 % un año antes) con un orgánico de solo el 1 % [3].",
+    "kpis": [
+      {
+        "kpi": "Crecimiento orgánico",
+        "valor_anterior": "2 % (2025)",
+        "valor_actual": "5 % (2T26)",
+        "variacion": "+3 pp",
+        "comentario": "1 % en el 1T26 y 5 % en el 2T26 [3, 4]."
+      },
+      {
+        "kpi": "Margen operativo ajustado",
+        "valor_anterior": "21,9 % (1T25)",
+        "valor_actual": "21,8 % (1T26)",
+        "variacion": "−10 pb",
+        "comentario": "4T25: 23,6 % frente a 23,9 % [2, 3]."
+      },
+      {
+        "kpi": "Flujo de caja libre",
+        "valor_anterior": "7.324 M (2024)",
+        "valor_actual": "6.337 M (2025)",
+        "variacion": "−13 %",
+        "comentario": "Guía 2026: 6.800-7.300 M [1, 10]."
+      },
+      {
+        "kpi": "Inversión en compras",
+        "valor_anterior": "≈3.100 M (Olink, 2024)",
+        "valor_actual": "≈13.000 M comprometidos en 2025",
+        "variacion": "×4",
+        "comentario": "Filtración de Solventum, planta de llenado estéril de Sanofi y Clario [2]."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sector": {
+    "definicion": "El mercado relevante son las herramientas, consumibles y servicios para la investigación, el desarrollo y la fabricación de medicamentos, el diagnóstico y el laboratorio industrial, mundial. No se ha podido contrastar el tamaño con dos fuentes (hueco registrado): Thermo Fisher, con 44.556 M USD, es el mayor proveedor, y Danaher, Agilent, Waters, Mettler-Toledo, Merck KGaA y Sartorius son sus rivales directos según el segmento [1, 30].",
+    "tamano": null,
+    "unidad_serie": null,
+    "serie": [],
+    "tcac_historico_pct": null,
+    "tcac_previsto_pct": null,
+    "cr5_pct": null,
+    "estructura": "Moderadamente concentrada",
+    "drivers": [
+      {
+        "driver": "Gasto en I+D y fabricación de farmacéuticas",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Bioproducción creció 548 M en 2025 por la demanda de farmacéuticas y biotecnológicas [1]."
+      },
+      {
+        "driver": "Financiación de las biotecnológicas",
+        "efecto": "+/−",
+        "horizonte": "Cíclico",
+        "evidencia": "El orgánico de Thermo Fisher pasó del 1 % en el 1T26 al 5 % en el 2T26 y la dirección habla de más gasto de las biotecnológicas [3, 4, 12]."
+      },
+      {
+        "driver": "Financiación pública y académica (NIH)",
+        "efecto": "−",
+        "horizonte": "Cíclico",
+        "evidencia": "Los recortes federales mantienen débil Instrumentos analíticos: +1,2 % en 2025 [1, 18]."
+      },
+      {
+        "driver": "Fin de las ventas de covid",
+        "efecto": "−",
+        "horizonte": "Cíclico",
+        "evidencia": "Los ingresos cayeron de 44.915 M en 2022 a 42.857 M en 2023 y no recuperaron hasta 2025 [5]."
+      }
+    ],
+    "porter": [
+      {
+        "fuerza": "Rivalidad",
+        "intensidad": 3,
+        "justificacion": "Pocos grandes y especializados por segmento; Barclays rebajó el sector por valoraciones altas, no por guerra de precios [19]."
+      },
+      {
+        "fuerza": "Poder de los clientes",
+        "intensidad": 3,
+        "justificacion": "Las grandes farmacéuticas negocian, pero el coste del consumible es pequeño frente al del medicamento."
+      },
+      {
+        "fuerza": "Poder de los proveedores",
+        "intensidad": 2,
+        "justificacion": "Insumos variados; Thermo Fisher integra fabricación propia."
+      },
+      {
+        "fuerza": "Amenaza de entrada",
+        "intensidad": 2,
+        "justificacion": "Validación regulatoria, catálogo y red comercial mundial."
+      },
+      {
+        "fuerza": "Amenaza de sustitutos",
+        "intensidad": 2,
+        "justificacion": "Los métodos nuevos (proteómica, datos digitales de ensayos) los compra la propia empresa: Olink en 2024, Clario en 2026 [12]."
+      }
+    ],
+    "ciclo": {
+      "posicion": "Recuperación",
+      "comentario": "Tras dos años planos (orgánico del 2 % en 2025), el 2T26 marcó un 5 % orgánico y la empresa subió dos veces la guía de 2026 [2, 4]. En septiembre, Casper habló de mejora de la demanda en varios mercados finales [20]. La academia y los Gobiernos siguen débiles [18]. En 2020 el sector creció por la covid y en 2023-24 sufrió la resaca de ese pico y la caída de la financiación biotecnológica."
+    },
+    "regulacion": "Afectan a las cifras los presupuestos de los NIH en EE. UU. (recortes de 2025-26 que pesan en instrumentos y academia) y los aranceles entre EE. UU. y China; no se ha podido leer el detalle en el 10-K [18].",
+    "tendencias": "La demanda se desplaza hacia la bioproducción de biológicos, la proteómica y los datos digitales de ensayos clínicos; Thermo Fisher compra para estar en ellas (Olink, Clario, filtración de Solventum) y vende lo que crece menos (microbiología a Astorg) [1, 14, 15].",
+    "confianza": "Baja"
+  },
+  "competencia": {
+    "cuota_pct": null,
+    "posicion": "N.º 1 mundial en herramientas y servicios de ciencias de la vida por ingresos (44.556 M USD en 2025), casi el doble que Danaher.",
+    "competidores": [],
+    "foso": {
+      "veredicto": "Amplio",
+      "tendencia": "Estable",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 1,
+          "evidencia": "Poco relevante; el canal de distribución de Fisher da un catálogo único a los laboratorios."
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 4,
+          "evidencia": "Los procesos de bioproducción y los ensayos clínicos se validan con proveedores concretos: cambiar exige revalidar ante el regulador."
+        },
+        {
+          "fuente": "Intangibles (marca, patentes, licencias)",
+          "puntuacion": 3,
+          "evidencia": "Marcas Thermo Scientific, Applied Biosystems, Invitrogen, Gibco; Ciencias de la vida gana un 36,3 % de margen de segmento [A1]."
+        },
+        {
+          "fuente": "Ventaja en costes",
+          "puntuacion": 3,
+          "evidencia": "Escala de compras y logística; programa PPI de productividad."
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 4,
+          "evidencia": "El mayor del sector: proveedor único de laboratorio para grandes farmacéuticas."
+        }
+      ]
+    },
+    "amenazas": "El foso es de escala y de costes de cambio, y no parece erosionarse: el margen de Ciencias de la vida se sostiene en el 36 % [1]. El riesgo es otro: que el rendimiento de las compras baje (ROIC del 7,3 % en 2025 frente al 10,5 % de 2021), porque cada compra grande se paga a múltiplos altos (Clario a ≈9,9 veces ventas) [15].",
+    "confianza": "Media"
+  },
+  "financieros": {
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 39211,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 12620,
+        "amortizaciones": 2592,
+        "ebit": 10028,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 7725,
+        "gastos_financieros": 536,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 19.46,
+        "dpa": 1.04,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 397
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 44915,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 11774,
+        "amortizaciones": 3381,
+        "ebit": 8393,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 6950,
+        "gastos_financieros": 726,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 17.63,
+        "dpa": 1.2,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 394.2
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 42857,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 10265,
+        "amortizaciones": 3406,
+        "ebit": 6859,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 5995,
+        "gastos_financieros": 1375,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 15.45,
+        "dpa": 1.4,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 388
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 42879,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 10445,
+        "amortizaciones": 3108,
+        "ebit": 7337,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 6335,
+        "gastos_financieros": 1390,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 16.53,
+        "dpa": 1.56,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 383.2
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 44556,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 10526,
+        "amortizaciones": 2780,
+        "ebit": 7746,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 6721,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 17.74,
+        "dpa": 1.72,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 378.9
+      }
+    ],
+    "ltm": {
+      "periodo": "LTM jun-26",
+      "fecha_fin": "2026-06-27",
+      "ingresos": 46336,
+      "ebitda": 11046,
+      "ebit": 8146,
+      "beneficio_neto": null,
+      "bpa": 18.59,
+      "dpa": 1.8,
+      "dpa_extraordinario": 0,
+      "fcf": null,
+      "participadas_en_ebitda": null,
+      "no_recurrentes_en_ebitda": null
+    },
+    "ltm_nota": "Ingresos y EBIT LTM de Stock Analysis [5]. EBITDA = EBIT + amortizaciones estimadas en 2.900 M (estimación propia: 2.780 M de 2025 más la amortización de los intangibles de Clario). BPA LTM = suma de los BPA GAAP diluidos 3T25 (4,27, cifra de memoria no comprobada), 4T25 (5,21), 1T26 (4,43) y 2T26 (4,68) [2, 3, 4]. DPA LTM: 0,43 × 2 + 0,47 × 2.",
+    "cambios_perimetro": [
+      {
+        "periodo": "2025",
+        "descripcion": "Compra de la filtración y purificación de Solventum (≈4.100 M) y de la planta de llenado estéril de Sanofi en 2025; Clario (8.875 M) se cerró el 24-mar-2026, después del balance de 2025 [2, 15]."
+      }
+    ],
+    "ajustes": "La empresa publica BPA ajustado sin amortización de intangibles comprados, costes de reestructuración y de compras ni otras partidas: 22,87 USD en 2025 frente a 17,74 USD GAAP [2]. La diferencia (5,13 USD, ≈1.950 M) es sobre todo amortización de intangibles de compras, que se repite cada año porque la empresa compra cada año.",
+    "comentario": "Los ingresos pasaron de 39.211 M en 2021 a 44.556 M en 2025 (+3,3 % anual), pero con una joroba: el pico de 2022 (44.915 M) llevaba pruebas de covid y 2023-24 fueron planos [5]. El orgánico fue del 2 % en 2025 y el resto lo pusieron las compras [2]. El margen EBITDA GAAP bajó del 32,2 % de 2021 al 23,6 % de 2025 por el fin de la covid y la mezcla (PPD y distribución pesan más); el operativo ajustado se mueve poco (23,6 % en el 4T25 frente a 23,9 %) [2]. En 2026 el crecimiento vuelve: +6,2 % en el 1T26 y +10,5 % en el 2T26, con un 5 % orgánico en el segundo trimestre y Clario desde el 24 de marzo [3, 4, 48, 49].",
+    "confianza": "Media"
+  },
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "3T24",
+        "ingresos": 10598,
+        "crecimiento_pct": 0.2,
+        "crecimiento_organico_pct": 0,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 5.28,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "4T24",
+        "ingresos": 11396,
+        "crecimiento_pct": 4.7,
+        "crecimiento_organico_pct": 4,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 6.1,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1T25",
+        "ingresos": 10363,
+        "crecimiento_pct": 0.2,
+        "crecimiento_organico_pct": 1,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 5.15,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "2T25",
+        "ingresos": 10855,
+        "crecimiento_pct": 3,
+        "crecimiento_organico_pct": 3,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 5.36,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "3T25",
+        "ingresos": 11122,
+        "crecimiento_pct": 4.9,
+        "crecimiento_organico_pct": 3,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 5.79,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "4T25",
+        "ingresos": 12214,
+        "crecimiento_pct": 7.2,
+        "crecimiento_organico_pct": 3,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 6.57,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1T26",
+        "ingresos": 11010,
+        "crecimiento_pct": 6.2,
+        "crecimiento_organico_pct": 1,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 5.44,
+        "vs_consenso": "Superior"
+      },
+      {
+        "periodo": "2T26",
+        "ingresos": 11990,
+        "crecimiento_pct": 10.5,
+        "crecimiento_organico_pct": 5,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 6.03,
+        "vs_consenso": "Superior"
+      }
+    ],
+    "nota": "BPA ajustado. 4T25, 1T26 y 2T26 de los comunicados [2, 3, 4]; 3T24-3T25 de memoria de los comunicados trimestrales, coherentes con el total anual de 2025 (44.556 M y 22,87 USD) [2]. 1T26: BPA 0,20 USD por encima del consenso; 2T26: ingresos de 11.990 M frente a 11.700 M de consenso [3, 13].",
+    "ultima_presentacion": "En la conferencia del 2T26 (23 de julio) la dirección subió la guía de 2026 a 47.400-48.100 M de ingresos y 24,93-25,33 USD de BPA ajustado, desde 24,64-25,12, tras un BPA de 6,03 USD, 0,30 por encima de su propia guía [4, 12]. El director financiero, Jim Meyer, atribuyó la mejora a farmacéuticas y biotecnológicas, y Casper dijo que el gasto de las biotecnológicas repuntó [12, 13]. En abril, en cambio, la guía del 2T fue floja y la acción cayó un 9 % pese a superar el consenso en 0,20 USD [3, 43]. Entre una conferencia y otra el discurso pasó de «el mercado mejora poco a poco» a «aceleración»; las preguntas giraron en torno a la academia y los Gobiernos (aún débiles), Clario y el uso de la caja de la venta de microbiología [14, 18]. No hemos podido leer las transcripciones completas.",
+    "confianza": "Media"
+  },
+  "balance": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "activo_total": 95123,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 54146,
+        "fondo_comercio": 41924,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": 5051,
+        "clientes": 7977,
+        "proveedores": 2867,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 4477,
+        "deuda_financiera": 34870,
+        "arrendamientos": 0,
+        "patrimonio_neto": 40793,
+        "minoritarios": 184,
+        "reservas": null
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 97154,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 53006,
+        "fondo_comercio": 41196,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": 5634,
+        "clientes": 8115,
+        "proveedores": 3381,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 8524,
+        "deuda_financiera": 34488,
+        "arrendamientos": 0,
+        "patrimonio_neto": 43978,
+        "minoritarios": 170,
+        "reservas": null
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 98726,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 51884,
+        "fondo_comercio": 44020,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": 5088,
+        "clientes": 8221,
+        "proveedores": 2872,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 8077,
+        "deuda_financiera": 34917,
+        "arrendamientos": 0,
+        "patrimonio_neto": 46735,
+        "minoritarios": 107,
+        "reservas": null
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 97321,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 47650,
+        "fondo_comercio": 45853,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": 4978,
+        "clientes": 8191,
+        "proveedores": 3079,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 4009,
+        "deuda_financiera": 31275,
+        "arrendamientos": 0,
+        "patrimonio_neto": 49584,
+        "minoritarios": 87,
+        "reservas": null
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 110343,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 56807,
+        "fondo_comercio": 49362,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": 5425,
+        "clientes": 8900,
+        "proveedores": 3622,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 9852,
+        "deuda_financiera": 39385,
+        "arrendamientos": 0,
+        "patrimonio_neto": 53436,
+        "minoritarios": 100,
+        "reservas": null
+      }
+    ],
+    "nota": "Stock Analysis [7]; patrimonio atribuido de Bullfincher en 2021 y 2024 [8]; 2022-2023 de memoria del 10-K (la diferencia con el total es el minoritario) y 2025 = total menos ≈100 M de minoritarios (estimación). Arrendamientos operativos fuera de la deuda (US GAAP).",
+    "vencimientos": [],
+    "liquidez": "Caja de ≈4.100 M a junio de 2026 (implícita en Stock Analysis: deuda 42.549 M y deuda neta 38.485 M) y línea de crédito no dispuesta de 5.000 M [7, 9]; más 1.025 M netos de la venta de microbiología cobrados en agosto [14].",
+    "rating": null,
+    "coste_deuda_pct": null,
+    "vida_media_anios": null,
+    "otros_pasivos": "Clario lleva 125 M de pago aplazado en enero de 2027 y hasta 400 M de pagos variables según sus resultados de 2026 y 2027 [15]; el puente suma 325 M por ellos y resta los ≈1.025 M cobrados por la microbiología en agosto [14]. Los arrendamientos operativos no van a la deuda (US GAAP). No se han podido leer las notas de pensiones, litigios ni covenants.",
+    "comentario": "La deuda bruta subió de 31.275 M a final de 2024 a 39.385 M en 2025 y a 42.549 M en junio de 2026 por las compras (filtración de Solventum, Clario), con bonos emitidos a principios de 2026 [7, 9, 50]. La deuda neta ajustada es de unos 38.000 M, 3,5 veces el EBITDA; el circulante comercial se mantiene en el 24 % de las ventas [7]. La caja de 9.852 M de final de 2025 se gastó en Clario [7, 15].",
+    "confianza": "Media"
+  },
+  "flujos": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 9312,
+        "capex": 2523,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": null,
+        "desinversiones": 0,
+        "dividendos": 413,
+        "recompras": 2000,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 9154,
+        "capex": 2243,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": null,
+        "desinversiones": 0,
+        "dividendos": 473,
+        "recompras": 3000,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 8406,
+        "capex": 1479,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": null,
+        "desinversiones": 0,
+        "dividendos": 543,
+        "recompras": 3000,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 8667,
+        "capex": 1343,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": null,
+        "desinversiones": 0,
+        "dividendos": 598,
+        "recompras": 4000,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 7837,
+        "capex": 1500,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": null,
+        "desinversiones": 0,
+        "dividendos": 652,
+        "recompras": 3000,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      }
+    ],
+    "nota": "FCF publicado: 6.789 (2021), 6.911 (2022), 6.927 (2023), 7.324 (2024) y 6.337 M (2025) [1]. Flujo operativo y capex 2021-2024 de memoria de los 10-K y coherentes con esos FCF; 2025: capex ≈1.500 M [11] y flujo operativo = FCF + capex. Dividendos = DPA × acciones (estimación). Recompras de memoria de los comunicados (2025: 3.600 M devueltos entre recompras y dividendos [2]).",
+    "comentario": "Thermo Fisher convierte bien: el flujo libre fue de 6.789 M en 2021, 6.911 M en 2022, 6.927 M en 2023, 7.324 M en 2024 y 6.337 M en 2025 [1]. La caída de 2025 vino del circulante y del calendario de impuestos, según la dirección [10]. El capex bajó de 2.523 M en 2021 (ampliaciones de capacidad de la pandemia) a ≈1.500 M en 2025 [11]; la guía de 2026 es de 1.800-2.000 M de capex y 6.800-7.300 M de flujo libre [10]. Estimamos que el capex de mantenimiento es de ≈2,5-3 % de las ventas. Las compras se comen el flujo: ≈13.000 M comprometidos en 2025 frente a 6.337 M de flujo libre [2].",
+    "confianza": "Media"
+  },
+  "calidad": {
+    "auditor": "PricewaterhouseCoopers LLP",
+    "anios_auditor": null,
+    "opinion": "Favorable",
+    "comentario": "Las cuentas son limpias pero muy ajustadas: el BPA ajustado (22,87 USD en 2025) supera al GAAP (17,74 USD) en un 29 %, sobre todo por la amortización de intangibles comprados, que se repite cada año porque la empresa compra cada año [2]. Por eso usamos el GAAP en el DCF y el ajustado solo para comparar el PER con la historia y con el mercado. El Altman Z (3,28) está en zona segura; el Piotroski F (4) es medio por la caída del margen y el aumento de la deuda; el Beneish M (−2,47) no señala manipulación. Faltan el coste de ventas, los impuestos y el activo corriente por año, así que los tres indicadores son aproximados.",
+    "senales": [
+      {
+        "senal": "Diferencia de BPA ajustado sobre GAAP del 29 %",
+        "nivel": "Media",
+        "comentario": "Amortización de intangibles y costes de compras recurrentes [2]."
+      },
+      {
+        "senal": "Fondo de comercio de 49.362 M, el 45 % del activo",
+        "nivel": "Media",
+        "comentario": "Sin deterioros conocidos, pero el ROIC de las compras baja [7]."
+      }
+    ],
+    "confianza": "Baja"
+  },
+  "rentabilidad": {
+    "comentario": "Thermo Fisher no crea valor sobre el capital total: el ROIC del motor (NOPAT entre capital invertido con fondo de comercio) fue del 10,5 % en 2021, del 8,9 % en 2022 y del 7,3 % en 2023-2025, frente a un WACC del 9,10 % (−1,8 puntos) [5, 7]. La caída la explica el margen (fin de la covid) y el capital comprado (PPD, Olink, Solventum): el ROIC incremental de 2021-25 es negativo. Sin fondo de comercio el negocio rinde mucho más (Ciencias de la vida gana un 36 % sobre ventas) [1], así que el problema es el precio pagado por las compras, no el negocio. IQVIA (9,8 %) y Charles River (8,6 %) están en niveles parecidos [34].",
+    "confianza": "Media"
+  },
+  "capital": {
+    "politica": "La empresa reparte su caja entre compras, recompras y un dividendo pequeño: en 2025 desplegó 16.500 M, de los que 13.000 M fueron compras y 3.600 M recompras y dividendos [2]. El dividendo trimestral subió de 0,43 a 0,47 USD en 2026 (0,3 % de rentabilidad) [24]. En el 2T26 recompró 1.000 M a cuenta de la venta de microbiología [13, 14].",
+    "adquisiciones": [
+      {
+        "anio": "2021",
+        "objetivo": "PPD (CRO clínica)",
+        "importe": 17400,
+        "ev_ebitda": null,
+        "financiacion": "Deuda y caja",
+        "resultado": "Integrada en Laboratorio y servicios biofarmacéuticos; el negocio clínico sufrió con la caída de la financiación biotecnológica en 2023-24."
+      },
+      {
+        "anio": "2024",
+        "objetivo": "Olink (proteómica)",
+        "importe": 3100,
+        "ev_ebitda": null,
+        "financiacion": "Caja",
+        "resultado": "Impulsó Ciencias genéticas (+82 M en 2025) [1]."
+      },
+      {
+        "anio": "2025",
+        "objetivo": "Filtración y purificación de Solventum",
+        "importe": 4100,
+        "ev_ebitda": null,
+        "financiacion": "Caja y deuda",
+        "resultado": "Suma a bioproducción, que creció 548 M en 2025 [1]."
+      },
+      {
+        "anio": "2026",
+        "objetivo": "Clario (datos digitales de ensayos clínicos)",
+        "importe": 8875,
+        "ev_ebitda": null,
+        "financiacion": "Bonos emitidos en 2026 y caja",
+        "resultado": "Cerrada el 24-mar-2026; ≈900 M de ingresos y 0,32 USD de BPA previstos en 2026 [12, 15]."
+      }
+    ],
+    "comentario": "Casper es un comprador disciplinado en la integración, pero el rendimiento de lo comprado cae: el ROIC del motor pasó del 10,5 % de 2021 al 7,3 % de 2025, por debajo del WACC del 9,10 %, y el ROIC incremental de 2021-25 es negativo porque el beneficio bajó tras la covid mientras el capital crecía [5, 7]. Las recompras (≈15.000 M en cinco años) redujeron las acciones de 397 a 379 M, un 1 % al año [5]. La venta de microbiología a 1,7 veces ventas para recomprar acciones muestra que la dirección sabe podar [14].",
+    "confianza": "Media"
+  },
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "Marc N. Casper",
+        "cargo": "Presidente del consejo y consejero delegado",
+        "desde": "2009",
+        "participacion_pct": null,
+        "trayectoria": "Consejero delegado desde 2009 y presidente desde 2020. Con él los ingresos pasaron de ≈10.000 M a 44.556 M USD en 2025, sobre todo por compras [A2]. En mayo de 2025 el consejo le concedió un premio de retención ligado a resultados para que siga al menos hasta mayo de 2030 [21, 22]."
+      },
+      {
+        "nombre": "Jim Meyer",
+        "cargo": "Director financiero",
+        "desde": null,
+        "participacion_pct": null,
+        "trayectoria": "Presentó como director financiero los resultados del 2T26 y la subida de la guía [12]."
+      }
+    ],
+    "historial_guidance": [
+      {
+        "anio": "2026",
+        "guia": "BPA ajustado 24,22-24,80 USD (enero), 24,64-25,12 (abril), 24,93-25,33 (julio)",
+        "real": "En curso: 2T26 0,30 USD por encima de su guía",
+        "cumplida": "Parcial"
+      },
+      {
+        "anio": "2025",
+        "guia": "BPA ajustado 22,22-22,86 USD (guía de octubre de 2025, de memoria)",
+        "real": "22,87 USD [23]",
+        "cumplida": "Sí"
+      }
+    ],
+    "comentario": "Equipo estable y creíble: Casper lleva 17 años al frente, cumplió la guía de BPA de 2025 (22,87 USD, en la parte alta) y en 2026 la ha subido dos veces [2, 4]. El premio de retención de mayo de 2025 le ata hasta 2030 y despeja la sucesión a corto plazo, pero a un precio alto [21, 22]. El director financiero es nuevo en el cargo [12]. No hemos podido leer el historial completo de la guía de 2021-2024.",
+    "confianza": "Baja"
+  },
+  "gobierno": {
+    "consejo": [
+      {
+        "nombre": "Marc N. Casper",
+        "cargo": "Presidente y consejero delegado",
+        "tipo": "Ejecutivo",
+        "desde": "2009",
+        "comisiones": "—"
+      }
+    ],
+    "presidente_ceo_separados": false,
+    "presidente_ejecutivo": true,
+    "consejero_coordinador": true,
+    "una_accion_un_voto": true,
+    "operaciones_vinculadas_relevantes": false,
+    "variable_ligado_rentabilidad": null,
+    "auditoria_independiente": true,
+    "insiders_sin_operaciones": false,
+    "accionista_control": false,
+    "presidente_vinculado_control": false,
+    "cambios_cupula_24m": 0,
+    "voto_remuneracion_pct": null,
+    "voto_remuneracion_contra_pct": null,
+    "voto_remuneracion_contra_libre_pct": null,
+    "voto_cupula_pct": null,
+    "remuneracion_ceo": {
+      "anio": "2025",
+      "total": 79.92,
+      "fijo": null,
+      "variable_corto": 3.7,
+      "variable_largo": 73.7,
+      "ratio_salario_medio": null
+    },
+    "remuneracion": "La remuneración total de Casper fue de 79,9 M USD en 2025 frente a 30,4 M en 2024: 65,7 M en acciones, 8,0 M en opciones, 3,7 M de variable anual y 0,7 M de otros [21]. El salto es un premio de retención ligado a resultados para que siga hasta 2030, cuyas condiciones no se cumplían a final de 2025 [22]. La empresa publicó material adicional para pedir el voto a favor en la junta de 2026, señal de que algún asesor de voto lo cuestionó [22]. No hemos encontrado el porcentaje de voto.",
+    "accionistas": [],
+    "insiders": [],
+    "control_y_defensas": "Capital disperso, sin accionista de control ni clases de acciones; una acción, un voto. El presidente es también consejero delegado, con un consejero coordinador independiente (no hemos podido comprobar su nombre). No se conocen operaciones vinculadas relevantes ni blindajes; los grandes gestores pasivos son los primeros accionistas, sin cifra comprobada [21].",
+    "alertas": [
+      "Remuneración del consejero delegado de 79,9 M USD en 2025 por un premio de retención; la empresa tuvo que hacer campaña por el voto de remuneración en 2026 [21, 22].",
+      "Presidente y consejero delegado en la misma persona desde 2020."
+    ],
+    "confianza": "Baja"
+  },
+  "consenso": {
+    "guidance": "Guía de 2026 (23-jul-2026): ingresos de 47.400-48.100 M y BPA ajustado de 24,93-25,33 USD, tras subirla en abril (24,64-25,12) desde la de enero (24,22-24,80) [4, 19, 39]. Incluye Clario (≈900 M de ingresos y 0,32 USD de BPA) y resta la microbiología vendida (≈200 M de ingresos en 2026; 0,15 USD de dilución el primer año completo) [12, 14]. En enero la empresa pedía 1.800-2.000 M de capex y 6.800-7.300 M de flujo libre [10].",
+    "estimaciones": [
+      {
+        "periodo": "2026e",
+        "ingresos": 47750,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 25.12,
+        "dpa": 1.88,
+        "fuente": "Barchart / Erste (BPA ajustado); ingresos = punto medio de la guía [25, 26]"
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": null,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 27.43,
+        "dpa": null,
+        "fuente": "Erste Group vía MarketBeat [26]"
+      }
+    ],
+    "recomendaciones": {
+      "n_analistas": 26,
+      "comprar": 21,
+      "mantener": 5,
+      "vender": 0,
+      "po_medio": 635.08,
+      "po_min": null,
+      "po_max": 750
+    },
+    "revisiones": "Al alza: Erste subió el BPA de 2026 de 24,85 a 25,12 USD tras el 2T26 y J. P. Morgan el objetivo de 600 a 690 USD [25, 26]. El objetivo medio pasó de 596 USD en junio a 617-635 USD en agosto [25, 27, 39]. Solo tenemos una fuente con BPA de 2027e (27,43 USD), sin consenso de 2028e. Las cifras son de agosto: el consenso de octubre puede estar más arriba tras la subida de la acción.",
+    "base_ebitda": "ajustado",
+    "ajuste_ebitda_pct_ventas": 1.3,
+    "confianza": "Baja"
+  },
+  "bolsa": {
+    "tipo_rentabilidad": null,
+    "rentabilidades": [],
+    "anual": [],
+    "beta": null,
+    "volatilidad_pct": null,
+    "max_drawdown_pct": null,
+    "posicion_corta_pct": null,
+    "comentario": "La acción cayó a 435,27 USD en mayo, tras el 1T26 (−9 % en un día por una guía trimestral floja) y con el sector castigado por los recortes de la financiación pública y biotecnológica [24, 43]. Desde entonces ha subido un 52 % hasta 663,04 USD: +9 % el día del 2T26, 629,27 USD el 21 de agosto y 655,83 USD el 17 de septiembre, cerca del máximo de 52 semanas (694,33 USD) [24, 38]. No tenemos rentabilidades totales ni beta publicadas (hueco).",
+    "confianza": "Baja"
+  },
+  "multiplos_historicos": {
+    "serie": [
+      {
+        "anio": "2021",
+        "precio_cierre": 667.24,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": true
+      },
+      {
+        "anio": "2022",
+        "precio_cierre": 550.69,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2023",
+        "precio_cierre": 530.79,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2024",
+        "precio_cierre": 520.23,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2025",
+        "precio_cierre": 579.45,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      }
+    ],
+    "nota": "Cierres 2021-2023 de memoria de Macrotrends [29]; 2024 (520,23) y 2025 (579,45, último de diciembre según Digrin, no el del 31-dic exacto) [28]. 2021 excluido: beneficio inflado por las pruebas de covid.",
+    "comentario": "Con el BPA ajustado, Thermo Fisher ha cotizado entre 23,6x y 25,3x en los años limpios, salvo 2019 (30,4x), con tipos de interés bajos [28, 29]. Hoy paga ≈26,4x el BPA de 2026e de consenso (25,12 USD), algo por encima de la mediana de cinco años (24,6x) aunque el bono a 10 años está en el 5,22 % frente al 2-4 % de esos años [26, 36]. El PER no ha bajado con los tipos: el mercado sigue pagando la calidad.",
+    "confianza": "Media"
+  },
+  "comparables": {
+    "criterio": "Herramientas de ciencias de la vida (Danaher, Agilent, Waters, Mettler-Toledo, Qiagen) y servicios de desarrollo de fármacos (IQVIA, Charles River), porque la mitad de las ventas de Thermo Fisher es Laboratorio y servicios biofarmacéuticos [1]. Faltan Sartorius y Merck KGaA (sin datos a la fecha). DHR, A, WAT y MTD solo tienen PER adelantado, con fechas distintas (MTD y WAT de abril-mayo); IQV, CRL y QGEN vienen de los análisis de Medpace y bioMérieux del 8-oct [30, 31, 32, 33, 34, 35].",
+    "empresas": [
+      {
+        "nombre": "Danaher",
+        "ticker": "DHR",
+        "pais": "US",
+        "capitalizacion": 151570,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 24.4,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "Agilent",
+        "ticker": "A",
+        "pais": "US",
+        "capitalizacion": null,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 20.6,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "Waters",
+        "ticker": "WAT",
+        "pais": "US",
+        "capitalizacion": null,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 23.3,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "Mettler-Toledo",
+        "ticker": "MTD",
+        "pais": "US",
+        "capitalizacion": null,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 30,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "IQVIA",
+        "ticker": "IQV",
+        "pais": "US",
+        "capitalizacion": 42777,
+        "ev_ventas": 3.35,
+        "ev_ebitda_ltm": 14.5,
+        "ev_ebitda_ntm": 13.4,
+        "per_ntm": 18.5,
+        "crecimiento_pct": 5.8,
+        "margen_ebitda_pct": 23.2,
+        "roic_pct": 9.8,
+        "dn_ebitda": 3.62,
+        "fcf_yield_pct": 5.11
+      },
+      {
+        "nombre": "Charles River Laboratories",
+        "ticker": "CRL",
+        "pais": "US",
+        "capitalizacion": 14407,
+        "ev_ventas": 4.32,
+        "ev_ebitda_ltm": 18.8,
+        "ev_ebitda_ntm": 15.9,
+        "per_ntm": 24.2,
+        "crecimiento_pct": -0.1,
+        "margen_ebitda_pct": 24.2,
+        "roic_pct": 8.56,
+        "dn_ebitda": 3.1,
+        "fcf_yield_pct": 2.58
+      },
+      {
+        "nombre": "Qiagen",
+        "ticker": "QGEN",
+        "pais": "NL",
+        "capitalizacion": 8287,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": 13.1,
+        "ev_ebitda_ntm": 12.2,
+        "per_ntm": 21,
+        "crecimiento_pct": 3.8,
+        "margen_ebitda_pct": 35.7,
+        "roic_pct": 11.38,
+        "dn_ebitda": 1.12,
+        "fcf_yield_pct": 4.83
+      }
+    ],
+    "nota": "DHR, A, WAT y MTD: solo PER adelantado de extractos de búsqueda con fechas distintas (MTD y WAT de abril-mayo) [30, 31, 32, 33]. IQV, CRL [34] y QGEN [35] reutilizados de los análisis de Medpace (8-oct) y bioMérieux (8-oct) de este repositorio, sin ajustar por la variación de precio de 4-6 días. En la misma base: BPA ajustado sin amortización de intangibles. Thermo Fisher a 8-oct-2026 según esa misma fuente: EV/EBITDA LTM 24,0x, NTM 21,3x, PER NTM 24,3x, ROIC 8,8 %, DN/EBITDA 3,3x [34].",
+    "comentario": "Thermo Fisher cotiza a 24,6x el PER de los próximos 12 meses, por encima de la mediana de los comparables (23,3x) y en línea con Danaher (24,4x) [30]. La prima frente a los de servicios (IQVIA, 18,5x) se explica por el peso de los consumibles; la de Mettler-Toledo (30,0x) muestra que el mercado paga más por márgenes más altos. El PER de los comparables da un valor de 627,62 USD por acción; el EV/EBITDA de los últimos 12 meses, mucho menos, porque nuestro EBITDA es GAAP y el de los comparables, ajustado.",
+    "confianza": "Baja"
+  },
+  "transacciones": {
+    "operaciones": [
+      {
+        "fecha": "2026-03",
+        "objetivo": "Clario",
+        "comprador": "Thermo Fisher",
+        "ev": 8875,
+        "ev_ventas": 9.86,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Ventas previstas de ≈900 M en 2026 [A12]; más hasta 525 M de pagos aplazados y variables [A15]."
+      },
+      {
+        "fecha": "2025-07",
+        "objetivo": "Filtración y purificación de Solventum",
+        "comprador": "Thermo Fisher",
+        "ev": 4100,
+        "ev_ventas": null,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Ventas ≈1.000 M (de memoria): ≈4x ventas."
+      },
+      {
+        "fecha": "2024-07",
+        "objetivo": "Olink",
+        "comprador": "Thermo Fisher",
+        "ev": 3100,
+        "ev_ventas": null,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "OPA sobre cotizada; proteómica de alto crecimiento."
+      },
+      {
+        "fecha": "2021-12",
+        "objetivo": "PPD",
+        "comprador": "Thermo Fisher",
+        "ev": 17400,
+        "ev_ventas": 3.7,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Ventas de PPD ≈4.700 M en 2021 (de memoria)."
+      },
+      {
+        "fecha": "2026-08",
+        "objetivo": "Microbiología de Thermo Fisher",
+        "comprador": "Astorg",
+        "ev": 1075,
+        "ev_ventas": 1.67,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "645 M de ingresos en 2025; negocio de menor crecimiento [17, A16]."
+      }
+    ],
+    "comentario": "Las compras del sector se pagan a 4-10 veces ventas: Clario a ≈9,9x, PPD a ≈3,7x y la filtración de Solventum a ≈4x, mientras que la microbiología se vendió a 1,7x [14, 15, 40]. No hay EV/EBITDA publicados. Thermo Fisher, con 250.000 M de capitalización, no es objetivo de una compra; las transacciones no entran en la valoración.",
+    "confianza": "Baja"
+  },
+  "dcf": {
+    "anios": [
+      {
+        "periodo": "2026e",
+        "crecimiento_pct": 7.1,
+        "margen_ebitda_pct": 24.2,
+        "amortizacion_pct_ventas": 6.3,
+        "capex_pct_ventas": 4,
+        "nwc_pct_ventas": 24,
+        "tasa_impositiva_pct": 12,
+        "fijo": true
+      },
+      {
+        "periodo": "2027e",
+        "crecimiento_pct": 6,
+        "margen_ebitda_pct": 24.6,
+        "amortizacion_pct_ventas": 6,
+        "capex_pct_ventas": 3.8,
+        "nwc_pct_ventas": 24,
+        "tasa_impositiva_pct": 12,
+        "fijo": false
+      },
+      {
+        "periodo": "2028e",
+        "crecimiento_pct": 6,
+        "margen_ebitda_pct": 25,
+        "amortizacion_pct_ventas": 5.6,
+        "capex_pct_ventas": 3.6,
+        "nwc_pct_ventas": 24,
+        "tasa_impositiva_pct": 12,
+        "fijo": false
+      },
+      {
+        "periodo": "2029e",
+        "crecimiento_pct": 5.5,
+        "margen_ebitda_pct": 25.3,
+        "amortizacion_pct_ventas": 5.2,
+        "capex_pct_ventas": 3.5,
+        "nwc_pct_ventas": 24,
+        "tasa_impositiva_pct": 12,
+        "fijo": false
+      },
+      {
+        "periodo": "2030e",
+        "crecimiento_pct": 5,
+        "margen_ebitda_pct": 25.5,
+        "amortizacion_pct_ventas": 4.8,
+        "capex_pct_ventas": 3.5,
+        "nwc_pct_ventas": 24,
+        "tasa_impositiva_pct": 12,
+        "fijo": false
+      },
+      {
+        "periodo": "2031e",
+        "crecimiento_pct": 4.5,
+        "margen_ebitda_pct": 25.5,
+        "amortizacion_pct_ventas": 4.5,
+        "capex_pct_ventas": 3.5,
+        "nwc_pct_ventas": 24,
+        "tasa_impositiva_pct": 12,
+        "fijo": false
+      },
+      {
+        "periodo": "2032e",
+        "crecimiento_pct": 4,
+        "margen_ebitda_pct": 25.5,
+        "amortizacion_pct_ventas": 4.2,
+        "capex_pct_ventas": 3.5,
+        "nwc_pct_ventas": 24,
+        "tasa_impositiva_pct": 12,
+        "fijo": false
+      },
+      {
+        "periodo": "2033e",
+        "crecimiento_pct": 3.5,
+        "margen_ebitda_pct": 25.5,
+        "amortizacion_pct_ventas": 4,
+        "capex_pct_ventas": 3.5,
+        "nwc_pct_ventas": 24,
+        "tasa_impositiva_pct": 12,
+        "fijo": false
+      },
+      {
+        "periodo": "2034e",
+        "crecimiento_pct": 3,
+        "margen_ebitda_pct": 25.5,
+        "amortizacion_pct_ventas": 3.8,
+        "capex_pct_ventas": 3.5,
+        "nwc_pct_ventas": 24,
+        "tasa_impositiva_pct": 12,
+        "fijo": false
+      },
+      {
+        "periodo": "2035e",
+        "crecimiento_pct": 3,
+        "margen_ebitda_pct": 25.5,
+        "amortizacion_pct_ventas": 3.6,
+        "capex_pct_ventas": 3.6,
+        "nwc_pct_ventas": 24,
+        "tasa_impositiva_pct": 12,
+        "fijo": false
+      }
+    ],
+    "wacc": {
+      "tasa_libre_pct": 5.22,
+      "beta": 0.85,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 0,
+      "coste_deuda_pct": 5.2,
+      "tasa_impositiva_pct": 12,
+      "peso_deuda_pct": 15
+    },
+    "terminal": {
+      "metodo": "gordon",
+      "crecimiento_pct": 3,
+      "multiplo_salida": 20
+    },
+    "etapa2": {
+      "usar": false,
+      "anios": 5,
+      "margen_final_pct": null,
+      "justificacion": null
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "2026e (+7,1 %, fijo) es el punto medio de la guía de julio menos la microbiología vendida [4, 14]. 2027e-2028e (+6 %) suman un orgánico del 4,5-5 %, el del 2T26 y el del sector en recuperación, y 1-1,5 puntos de Clario y la filtración de Solventum, que crecen más que el grupo [4, 12]. Después baja hasta el 3 %. Es menos que el objetivo histórico de la empresa (7 % orgánico) porque no proyectamos compras nuevas. El consenso de BPA de 2027e (27,43 USD) implica algo más [26].",
+      "margenes": "El margen EBITDA GAAP sube del 23,6 % de 2025 al 24,2 % en 2026e y al 25,5 % en 2030e: medio punto al año en 2026-28, lo que promete la dirección (≈50 pb de margen operativo ajustado al año) [2, 39], y nada después. Queda muy por debajo del 32,2 % de 2021, que llevaba la covid.",
+      "inversion": "Capex del 4 % de las ventas en 2026e (guía de 1.800-2.000 M) y del 3,5 % después, por encima del ≈3,4 % de 2025 [10, 11]. La amortización baja del 6,3 % al 3,6 % porque dos tercios son intangibles de compras que se agotan; en el último año igualamos capex y amortización. Circulante del 24 % de las ventas, el de 2025 [7].",
+      "wacc": "Tasa libre del 5,22 % (bono a 10 años de EE. UU. del 13-oct) [36], beta de 0,85 (negocio defensivo de salud; no hay beta publicada a la fecha, hueco), prima del 5,5 %: coste del capital del 9,9 %. Deuda al 5,2 % antes de impuestos (coste de los bonos nuevos; el medio es menor), tipo del 12 % y un 15 % de deuda a valor de mercado: WACC del 9,10 %. Con la prima implícita del mercado (4,2 %) el WACC sería del 8,2 % [37].",
+      "terminal": "Gordon con un 3 % de crecimiento: inflación de EE. UU. de ≈2,5 % y algo de crecimiento real, por debajo de la tasa libre menos medio punto. Un 3 % es exigente para una empresa ya madura, pero el sector crece con el gasto en salud. El múltiplo de salida de referencia (20x EBITDA) es inferior al actual (26,1x)."
+    },
+    "sostenibilidad": {
+      "puente_ingresos": [
+        {
+          "periodo": "2026e",
+          "volumen_pct": 2.5,
+          "precio_pct": 1.5,
+          "otros_pct": 3.1,
+          "comentario": "Volumen del 2,5 % (orgánico del 1-5 % en el primer semestre), precio del 1,5 % y 3,1 puntos de compras netas: Clario desde el 24 de marzo y la filtración de Solventum, menos la microbiología desde agosto [3, 4, 12, 14]."
+        },
+        {
+          "periodo": "2027e",
+          "volumen_pct": 3,
+          "precio_pct": 1.5,
+          "otros_pct": 1.5,
+          "comentario": "Orgánico del 4,5 % (3 de volumen y 1,5 de precio) y 1,5 puntos del trimestre de Clario que falta y de su crecimiento por encima del grupo [12]."
+        },
+        {
+          "periodo": "2028e",
+          "volumen_pct": 3.5,
+          "precio_pct": 1.5,
+          "otros_pct": 1,
+          "comentario": "Orgánico del 5 % con la biotecnología normalizada; 1 punto de mezcla hacia bioproducción y datos clínicos, que crecen más [1]."
+        },
+        {
+          "periodo": "2029e",
+          "volumen_pct": 3,
+          "precio_pct": 1.5,
+          "otros_pct": 1,
+          "comentario": "Orgánico del 4,5 % y 1 punto de mezcla."
+        },
+        {
+          "periodo": "2030e",
+          "volumen_pct": 2.5,
+          "precio_pct": 1.5,
+          "otros_pct": 1,
+          "comentario": "Orgánico del 4 % y 1 punto de mezcla."
+        }
+      ],
+      "mercado_final": null,
+      "veredicto": "Sí",
+      "justificacion": "Sí, con matices. La reinversión neta de la proyección es casi nula (capex del 3,6 % de las ventas y amortización que baja), así que el motor no puede hacer la prueba del crecimiento financiable y la hacemos a mano: el crecimiento orgánico proyectado (4-5 %) es el del mercado y el de la propia empresa en 2T26, sin ganar cuota, con un precio del 1,5 % por debajo de la inflación y un capex por encima del de 2025 [4, 11]. El crecimiento por compras ya está pagado (Clario, Solventum) y no proyectamos compras nuevas. El matiz es el rendimiento: el ROIC (7,3 % en 2025) está por debajo del WACC (9,10 %) porque el capital lleva 49.362 M de fondo de comercio; crecer comprando no crea valor a estos precios."
+    },
+    "lectura": "El DCF da 345,74 USD por acción, un 47,9 % por debajo del precio de 663,04 USD, con un WACC del 9,10 % y un valor terminal del 59 % del total. Con la prima implícita del mercado (WACC del 8,2 %) sube a 426,87 USD, aún un 36 % por debajo. El DCF inverso es la clave: el precio descuenta un crecimiento de los ingresos del 13,9 % anual de 2027e a 2035e frente al 4,5 % de nuestro caso base, o un margen EBITDA del 40,5 % frente al 25,5 %; dicho de otra forma, a 663,04 USD el comprador obtiene un 6,6 % anual, menos que el 9,10 % de WACC y que el 8,2 % que pide el mercado. Es exigente: el precio solo cuadra si la empresa vuelve a crecer comprando con éxito durante años, algo que hizo en 2010-2021 pero que hoy, con el ROIC por debajo del WACC, no está demostrado.",
+    "confianza": "Media"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": -2,
+        "ajuste_margen_pp": -1,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": 2.5,
+        "multiplo_salida": null,
+        "narrativa": "La recuperación de la biotecnología se frena y la academia sigue a la baja: el orgánico se queda en el 2 % de 2025 y la presión de precios y de mezcla quita un punto de margen. Le pasó a la propia empresa en 2023-24 [5]."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "El orgánico se estabiliza en el 4,5-5 %, Clario aporta lo previsto y el margen gana medio punto al año hasta 2028e [4, 12]."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": 1.5,
+        "ajuste_margen_pp": 0.5,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "La biotecnología vuelve a financiarse con fuerza y la bioproducción de biológicos acelera: orgánico del 6-7 %, como el objetivo histórico de la empresa, y medio punto más de margen."
+      }
+    ],
+    "comentario": "El DCF da 261,89 USD en el bajista (−60,5 %), 345,74 en el base y 397,35 en el alcista (−40,1 %): todos por debajo del precio, porque el problema no es el escenario sino la tasa de descuento con el bono al 5,22 %. La asimetría del DCF (−0,66x) no sirve para decidir. La del objetivo a 12 meses sí: 765,07 USD en el alcista (+15,7 %) frente a 628,05 en el bajista (−5,0 %), una asimetría de 2,92x, porque el PER de Thermo Fisher apenas se ha movido entre 23,6x y 25,3x en los años limpios.",
+    "confianza": "Media"
+  },
+  "suma_partes": {
+    "aplica": false,
+    "descuento_holding_pct": 0,
+    "partes": [],
+    "comentario": "No aplica: solo hemos podido obtener el resultado de Ciencias de la vida (3.768 M en 2025); sin el de los otros tres segmentos la suma de partes sería un ejercicio de supuestos [1].",
+    "confianza": "Baja"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2026-06-27",
+      "deuda_financiera": 42549,
+      "arrendamientos": 0,
+      "caja": 4064,
+      "minoritarios": 100,
+      "pensiones": 0,
+      "asociadas": 0,
+      "otros_ajustes": -700
+    },
+    "rab": null,
+    "referencia_mercado": {
+      "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+      "prima_implicita_pct": 4.2,
+      "fecha": "2026-10",
+      "fuente": "Damodaran, ERPbymonth [37]"
+    },
+    "pesos": {
+      "dcf": 40,
+      "comparables": 40,
+      "transacciones": 0,
+      "suma_partes": 0,
+      "escenarios": 20
+    },
+    "objetivo_12m": {
+      "ejercicio": "2028e",
+      "casos": [
+        {
+          "escenario": "Bajista",
+          "metrica": "PER",
+          "beneficio_por_accion": 26.5,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 51.600 M en 2028e (−2 puntos de crecimiento en 2027-28) y margen EBITDA ajustado del 25,3 %: EBIT ajustado de ≈11.970 M tras una depreciación del 2,1 %, 650 M de gasto financiero neto, impuesto del 12 % y 376 M de acciones."
+        },
+        {
+          "escenario": "Base",
+          "metrica": "PER",
+          "beneficio_por_accion": 28.85,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 53.620 M en 2028e y margen EBITDA ajustado del 26,3 % (el 25,0 % GAAP del DCF más 1,3 puntos de reestructuración y otros que excluye la empresa): EBIT ajustado de ≈12.975 M, 650 M de gasto financiero neto, impuesto del 12 % y 376 M de acciones, sin recompras no anunciadas."
+        },
+        {
+          "escenario": "Alcista",
+          "metrica": "PER",
+          "beneficio_por_accion": 30.36,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 55.150 M (+1,5 puntos de crecimiento en 2027-28) y margen ajustado del 26,8 %: orgánico del 6-7 % con la biotecnología financiada."
+        }
+      ],
+      "per_historico": {
+        "actual": 24.9,
+        "mediana_5a": 24.6,
+        "minimo_5a": 23.7,
+        "media_larga": 25.2,
+        "excluidos": "Se usa el BPA ajustado (sin amortización de intangibles de compras ni reestructuración), la misma base que los escenarios. Excluidos 2020 y 2021: BPA inflado por las pruebas de covid (19,88 y 25,13 USD; PER de 23,4x y 26,6x). Serie limpia: 2018 23,6x (223,79/9,49); 2019 30,4x (324,87/10,69); 2022 23,7x (550,69/23,24); 2023 24,6x (530,79/21,55); 2024 23,8x (520,23/21,86); 2025 25,3x (579,45/22,87) [2, 28, 29]. Cinco años limpios: 2019 y 2022-2025. Actual = 663,04 ÷ 26,65 (nuestro BPA ajustado de 2027e)."
+      },
+      "comparables_per": {
+        "mediana": 23.3
+      },
+      "consenso": {
+        "bpa_ano1": 25.12,
+        "bpa_ano2": 27.43,
+        "objetivo_medio": 635.08,
+        "objetivo_min": null,
+        "objetivo_max": 750,
+        "analistas": 26,
+        "tendencia_3m": "subidas",
+        "fuente": "Barchart y Erste Group vía MarketBeat, 1-ago-2026 [25, 26]"
+      },
+      "diferencia_consenso": "Nuestro precio base (709,71 USD) queda un 11,8 % por encima del objetivo medio de los analistas (635,08 USD, de agosto; 26 analistas, máximo 750) [25]. El BPA no explica la diferencia: nuestro 2027e (26,65 USD) queda un 3 % por debajo de Erste (27,43 USD), porque no contamos recompras no anunciadas [26]. La explica la fecha: los objetivos son de agosto, con la acción en 570-630 USD, y el nuestro aplica un PER de 24,6x al BPA de 2028e, un año más. Es probable que los objetivos suban tras el 3T26.",
+      "media": null,
+      "comentario": "El objetivo a 12 meses (703,14 USD) queda un 54 % por encima del valor intrínseco (456,88 USD). La distancia no se cierra con un catalizador: refleja que el mercado paga por Thermo Fisher un PER estable de 24-25x con independencia de los tipos de interés, y el DCF con el bono al 5,22 % no. Si el mercado algún día valorase la empresa por su flujo de caja (rentabilidad del 2,5 %), la acción tendría poco suelo. Por eso la tesis es de mantener, no de comprar: la rentabilidad a 12 meses (6,3 %) es la del beneficio, no la de un múltiplo barato."
+    },
+    "comentario": "El DCF pesa un 40 %, los comparables un 40 % y los escenarios un 20 %. El valor objetivo de largo plazo es de 456,88 USD, un 31,1 % por debajo del precio: el DCF y los escenarios (262-397 USD) quedan muy por debajo y el PER de los comparables (627,62 USD) cerca. La dispersión no es de cifras sino de tasa de descuento: con un bono al 5,22 %, un negocio que crece un 5 % y rinde un 7,3 % sobre el capital no vale 26 veces beneficios en un DCF, pero el mercado lleva años pagándolo. Por eso la decisión la toma el objetivo a 12 meses, con el PER propio de la empresa, y el valor intrínseco es una advertencia de que la acción no tiene margen de seguridad.",
+    "confianza": "Media"
+  },
+  "catalizadores": {
+    "items": [
+      {
+        "fecha": "21-oct-2026",
+        "evento": "Resultados del 3T26",
+        "efecto": "Prueba de que el orgánico del 5 % del 2T26 se sostiene; la comparativa es de 11.122 M y 5,79 USD de BPA [4].",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "Ene-2027",
+        "evento": "Guía de 2027 con los resultados del 4T26",
+        "efecto": "El consenso espera ≈27,4 USD de BPA [26]; una guía por debajo de 27 USD pesaría.",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "Ene-2027",
+        "evento": "Pago aplazado de Clario (125 M) y medición de los pagos variables",
+        "efecto": "Muestra si Clario cumple su plan [15].",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2027",
+        "evento": "Presupuesto de los NIH para el año fiscal 2027",
+        "efecto": "Academia y Gobiernos pesan en Instrumentos analíticos [18].",
+        "probabilidad": "Media",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2026-2027",
+        "evento": "Nuevas recompras con la caja de la microbiología",
+        "efecto": "Ya se hizo 1.000 M en el 2T26 [13]; cada 1.000 M sube el BPA ≈0,4 %.",
+        "probabilidad": "Media",
+        "sentido": "+"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "riesgos": {
+    "items": [
+      {
+        "riesgo": "Recaída de la financiación biotecnológica",
+        "tipo": "Mercado",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−11 % a 12 meses (bajista: 628,05 USD con un PER de 23,7x)",
+        "mitigante": "Dos tercios de ingresos recurrentes.",
+        "senal": "Orgánico por debajo del 3 % en dos trimestres."
+      },
+      {
+        "riesgo": "Compresión del PER si el bono sigue por encima del 5 %",
+        "tipo": "Valoración",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−31 % hasta el valor intrínseco (456,88 USD)",
+        "mitigante": "El PER ha resistido la subida de tipos de 2022-26.",
+        "senal": "PER adelantado por debajo de 22x en el sector."
+      },
+      {
+        "riesgo": "Rendimiento bajo de las compras (Clario a ≈9,9x ventas)",
+        "tipo": "Asignación de capital",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−5 % (un 2 % menos de BPA y medio punto menos de PER)",
+        "mitigante": "Historial de integración de Casper.",
+        "senal": "Pagos variables de Clario por debajo del máximo; deterioros."
+      },
+      {
+        "riesgo": "Recortes de los NIH y de la financiación académica",
+        "tipo": "Regulatorio",
+        "probabilidad": "Alta",
+        "impacto": "Medio",
+        "efecto_valor": "−3 % (Instrumentos analíticos es el 16 % de las ventas)",
+        "mitigante": "Peso pequeño de la academia.",
+        "senal": "Instrumentos analíticos en negativo."
+      },
+      {
+        "riesgo": "Aranceles y exposición a China",
+        "tipo": "Geopolítico",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−3 %",
+        "mitigante": "Fabricación local.",
+        "senal": "Guía de margen recortada por aranceles."
+      },
+      {
+        "riesgo": "Gobierno: remuneración y dependencia de Casper",
+        "tipo": "Gobierno",
+        "probabilidad": "Baja",
+        "impacto": "Medio",
+        "efecto_valor": "Difícil de cuantificar",
+        "mitigante": "Premio de retención hasta 2030.",
+        "senal": "Voto de remuneración por debajo del 70 %."
+      }
+    ],
+    "premortem": "Octubre de 2029: la acción ha perdido un 40 % y cotiza a ≈400 USD. El 3T26 confirmó la recuperación y la acción tocó 750 USD a principios de 2027, pero el orgánico de 2027 se quedó en el 3 %: la biotecnología volvió a cerrar el grifo cuando los tipos siguieron por encima del 5 %, la academia no se recuperó y la bioproducción digirió inventarios otra vez. Thermo Fisher hizo lo de siempre, comprar, y pagó otra empresa de datos clínicos a 8 veces ventas con deuda. El BPA de 2028 quedó en 26 USD en vez de 29 y el mercado, que ya no pagaba la calidad con el bono al 5 %, bajó el PER a 16x, el de IQVIA. El indicador que lo habría anticipado: el orgánico trimestral por debajo del 3 % y la deuda neta por encima de 3,5 veces el EBITDA tras una compra nueva.",
+    "confianza": "Media"
+  },
+  "esg": {
+    "calificaciones": [],
+    "materialidad": "Los asuntos materiales son la seguridad y calidad de productos validados ante el regulador (bioproducción, diagnóstico), la exposición a China y a los aranceles, y la remuneración del primer ejecutivo. No hemos podido leer el informe de sostenibilidad (hueco).",
+    "controversias": "La remuneración de 79,9 M USD de 2025 obligó a la empresa a hacer campaña por el voto en la junta de 2026 [21, 22]. No hemos encontrado sanciones relevantes en los últimos tres años con la búsqueda disponible.",
+    "confianza": "Baja"
+  },
+  "preguntas": {
+    "items": [
+      {
+        "tema": "Crecimiento orgánico",
+        "pregunta": "¿Cuánto del 5 % orgánico del 2T26 es recuperación de inventarios de bioproducción y cuánto demanda final?",
+        "por_que": "Decide si 2027 crece al 4,5-5 % de nuestro base o al 2 % del bajista."
+      },
+      {
+        "tema": "Clario",
+        "pregunta": "¿Qué crecimiento y margen tiene Clario en 2026 y qué parte de los 400 M variables espera pagar?",
+        "por_que": "Se pagó a ≈9,9 veces ventas; su rendimiento fija el ROIC de los próximos años."
+      },
+      {
+        "tema": "Asignación de capital",
+        "pregunta": "¿Qué ROIC exige a una compra y cuál es el de PPD frente a lo pagado?",
+        "por_que": "El ROIC del grupo (7,3 %) está por debajo del WACC."
+      },
+      {
+        "tema": "Margen",
+        "pregunta": "¿Se mantiene la mejora de 50 pb al año del margen operativo ajustado en 2027-28?",
+        "por_que": "Es medio punto de BPA al año."
+      },
+      {
+        "tema": "Academia",
+        "pregunta": "¿Qué peso tienen hoy academia y Gobiernos en las ventas y cuánto han caído en 2026?",
+        "por_que": "Riesgo de los recortes de los NIH."
+      },
+      {
+        "tema": "Remuneración",
+        "pregunta": "¿Qué voto obtuvo la remuneración en la junta de 2026 y qué condiciones tiene el premio de retención?",
+        "por_que": "Alerta de gobierno sin cifra comprobada."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sentimiento": {
+    "tono": "Positivo",
+    "tendencia": "Mejora",
+    "revisadas": [
+      {
+        "plataforma": "TIKR (blog con modelos de inversores)",
+        "fecha": "2026-09",
+        "n_comentarios": 3,
+        "tono": "Dividido",
+        "resumen": "Tras subir un 45 % desde el mínimo de mayo, se preguntan si es tarde para comprar: el negocio mejora, pero el múltiplo ya recoge la recuperación [20, 46]."
+      },
+      {
+        "plataforma": "Stocktwits",
+        "fecha": "2026-08",
+        "n_comentarios": 5,
+        "tono": "Neutro",
+        "resumen": "El indicador de la comunidad marca sentimiento neutro tras el salto del 9 % del 2T26; poco debate de fondo [42]."
+      },
+      {
+        "plataforma": "Yahoo Finance (Simply Wall St)",
+        "fecha": "2026-10",
+        "n_comentarios": 2,
+        "tono": "Neutro",
+        "resumen": "La narrativa más leída sitúa la acción cerca de su valor razonable tras el lanzamiento de su plataforma digital de CMC [44]."
+      },
+      {
+        "plataforma": "stock3 (comunidad alemana)",
+        "fecha": "2026-09",
+        "n_comentarios": 3,
+        "tono": "Positivo",
+        "resumen": "Califican la subida de «rally de manual» y la ponen entre sus mejores ideas del año, aunque «en ebullición» [45]."
+      },
+      {
+        "plataforma": "Yahoo Finance (Cramer, televisión)",
+        "fecha": "2026-04",
+        "n_comentarios": 2,
+        "tono": "Positivo",
+        "resumen": "Tras la caída del 9 % del 1T26, defendía comprar porque el mercado había leído mal una guía trimestral floja [43]."
+      }
+    ],
+    "temas": [
+      {
+        "tema": "¿Recuperación de la financiación biotecnológica y farmacéutica?",
+        "postura": "Alcista",
+        "peso": "Alto",
+        "contraste": "El orgánico pasó del 1 % en el 1T26 al 5 % en el 2T26 [A3, A4]; aún es un solo trimestre."
+      },
+      {
+        "tema": "Recortes de la financiación pública (NIH) y academia",
+        "postura": "Bajista",
+        "peso": "Medio",
+        "contraste": "Instrumentos analíticos solo creció un 1,2 % en 2025 (7.554 M frente a 7.463 M) [A1]."
+      },
+      {
+        "tema": "Valoración tras el rally",
+        "postura": "Dividida",
+        "peso": "Alto",
+        "contraste": "A 663 USD, ≈26x el BPA ajustado de 2026e (25,12 USD de consenso), por encima de la mediana de 24,6x de 2022-2025."
+      },
+      {
+        "tema": "Compras y deuda (Clario)",
+        "postura": "Dividida",
+        "peso": "Medio",
+        "contraste": "Deuda de 42.549 M a junio de 2026 [A7, A9]; ≈3,5x el EBITDA."
+      }
+    ],
+    "lectura": "El sentimiento ha pasado de la capitulación de mayo (acción en 435 USD, «el sector está roto») a un optimismo prudente: la mayoría ve la recuperación pero duda de pagar 26x tras un 52 % de subida [20, 45, 46]. No es euforia y coincide con el consenso de analistas (21 de 26 en comprar) [25]. Lo que aporta es el riesgo de tiempo: el rally descuenta que el 5 % orgánico del 2T26 se repite; un 3T26 (21 de octubre) por debajo castigaría la acción como en abril [43]. No hay hilos de Reddit recientes con debate: Thermo Fisher es un valor institucional, poco comentado por particulares [42, 47].",
+    "confianza": "Baja"
+  },
+  "fuentes": [
+    {
+      "id": 1,
+      "titulo": "Thermo Fisher Scientific, Form 10-K del ejercicio 2025 (segmentos, flujo de caja libre 6.337 M frente a 7.324 M). Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "Thermo Fisher / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-02-26",
+      "url": "https://www.sec.gov/Archives/edgar/data/97745/000009774526000018/tmo-20251231.htm"
+    },
+    {
+      "id": 2,
+      "titulo": "Thermo Fisher Scientific Reports Fourth Quarter and Full Year 2025 Results (8-K, anexo 99.1). Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "Thermo Fisher / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-01-29",
+      "url": "https://www.sec.gov/Archives/edgar/data/97745/000009774526000012/q42025earnings8kex99_1.htm"
+    },
+    {
+      "id": 3,
+      "titulo": "Thermo Fisher Scientific Reports First Quarter 2026 Results (8-K, anexo 99.1). Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "Thermo Fisher / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-04-23",
+      "url": "https://www.sec.gov/Archives/edgar/data/0000097745/000009774526000086/q12026earnings8kex99_1.htm"
+    },
+    {
+      "id": 4,
+      "titulo": "Thermo Fisher Scientific Reports Second Quarter 2026 Results (8-K, anexo 99.1). Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "Thermo Fisher / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-07-23",
+      "url": "https://www.sec.gov/Archives/edgar/data/0000097745/000009774526000138/q22026earnings8kex99_1.htm"
+    },
+    {
+      "id": 5,
+      "titulo": "Thermo Fisher (TMO): cuenta de resultados anual 2021-2025 y LTM jun-26 (ingresos, resultado de explotación, beneficio neto). Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07-24",
+      "url": "https://stockanalysis.com/stocks/tmo/financials/income-statement/"
+    },
+    {
+      "id": 6,
+      "titulo": "Thermo Fisher (TMO): estado de flujos anual (amortizaciones 2021-2025). Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07",
+      "url": "https://stockanalysis.com/stocks/tmo/financials/cash-flow-statement/"
+    },
+    {
+      "id": 7,
+      "titulo": "Thermo Fisher (TMO): balance anual 2021-2025 (caja, clientes, existencias, fondo de comercio, activo, proveedores, deuda, pasivo). Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07",
+      "url": "https://stockanalysis.com/stocks/tmo/financials/balance-sheet/"
+    },
+    {
+      "id": 8,
+      "titulo": "Thermo Fisher Scientific: estados financieros 2021-2025 (patrimonio atribuido). Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "Bullfincher",
+      "tipo": "Datos de mercado",
+      "fecha": "2026",
+      "url": "https://bullfincher.io/companies/thermo-fisher-scientific/financial-statements"
+    },
+    {
+      "id": 9,
+      "titulo": "Thermo Fisher Q2 Earnings: Operational Efficiency Meets Aggressive M&A (deuda 42.600 M a junio de 2026; gasto neto por intereses 314 M en el trimestre; línea de crédito de 5.000 M). Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "Panabee",
+      "tipo": "Prensa",
+      "fecha": "2026-07",
+      "url": "https://www.panabee.com/news/thermo-fisher-scientific-earnings-q2-2026-report"
+    },
+    {
+      "id": 10,
+      "titulo": "Thermo Fisher Q4 2025 earnings call highlights (guía 2026: capex 1.800-2.000 M, flujo libre 6.800-7.300 M). Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "MarketBeat",
+      "tipo": "Prensa",
+      "fecha": "2026-01-30",
+      "url": "https://www.marketbeat.com/instant-alerts/thermo-fisher-scientific-q4-earnings-call-highlights-2026-01-30/"
+    },
+    {
+      "id": 11,
+      "titulo": "Thermo Fisher Scientific: flujo de caja anual (flujo operativo ≈7.800 M y capex ≈1.500 M en 2025). Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "ChartRow",
+      "tipo": "Datos de mercado",
+      "fecha": "2026",
+      "url": "https://chartrow.com/quote/tmo/cash-flow"
+    },
+    {
+      "id": 12,
+      "titulo": "Thermo Fisher Scientific Q2 earnings call highlights (23-jul-2026). Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "MarketBeat",
+      "tipo": "Prensa",
+      "fecha": "2026-07-23",
+      "url": "https://www.marketbeat.com/instant-alerts/thermo-fisher-scientific-q2-earnings-call-highlights-2026-07-23/"
+    },
+    {
+      "id": 13,
+      "titulo": "Thermo Fisher stock surges as firm raises full-year guidance on strong Q2 results. Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "360Dx / GenomeWeb",
+      "tipo": "Prensa",
+      "fecha": "2026-07-23",
+      "url": "https://www.360dx.com/business-news/thermo-fisher-stock-surges-firm-raises-full-year-guidance-strong-q2-results"
+    },
+    {
+      "id": 14,
+      "titulo": "Thermo Fisher completes $1.075 billion sale of microbiology business to Astorg. Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "Indian Pharma Post",
+      "tipo": "Prensa",
+      "fecha": "2026-08-17",
+      "url": "https://www.indianpharmapost.com/news/thermo-fisher-completes-1075-billion-sale-of-microbiology-business-to-astorg-21395"
+    },
+    {
+      "id": 15,
+      "titulo": "Breaking: Clario to be acquired by Thermo Fisher Scientific for $8.875B (125 M en enero de 2027 y hasta 400 M de pagos variables por 2026-2027). Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "Octus",
+      "tipo": "Prensa",
+      "fecha": "2025-10-29",
+      "url": "https://octus.com/resources/articles/breaking-clario-to-be-acquired-by-thermo-fisher-scientific-for-8-875b/"
+    },
+    {
+      "id": 16,
+      "titulo": "Thermo Fisher Scientific, Form 10-Q del 2T26 (venta de microbiología: 645 M de ingresos en 2025, segmento de Diagnóstico especializado). Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "Thermo Fisher / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-07-24",
+      "url": "https://www.sec.gov/Archives/edgar/data/0000097745/000009774526000144/tmo-20260627.htm"
+    },
+    {
+      "id": 17,
+      "titulo": "Inside Thermo Fisher Scientific, a $44.6 billion science supplier (peso de los segmentos en 2025). Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "American Companies",
+      "tipo": "Prensa",
+      "fecha": "2026",
+      "url": "https://americancompanies.com/news/inside-thermo-fisher-scientific-a-446-billion-science-supplier/"
+    },
+    {
+      "id": 18,
+      "titulo": "Thermo Fisher Stock Down 31% From Its 52-Week High Despite Raising Full-Year EPS Guidance (presión de los recortes de financiación pública en instrumentos). Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "TIKR",
+      "tipo": "Prensa",
+      "fecha": "2026-05",
+      "url": "https://www.tikr.com/blog/thermo-fisher-stock-down-31-from-its-52-week-high-despite-raising-full-year-eps-guidance-heres-what-happened"
+    },
+    {
+      "id": 19,
+      "titulo": "Scotiabank upgrades Thermo Fisher with worst case priced in; Barclays rebaja herramientas de ciencias de la vida a neutral. Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "TheFly / TipRanks",
+      "tipo": "Analistas",
+      "fecha": "2026",
+      "url": "https://www.tipranks.com/news/the-fly/scotiabank-upgrades-thermo-fisher-with-worst-case-priced-in-thefly"
+    },
+    {
+      "id": 20,
+      "titulo": "Thermo Fisher Has Rallied 45% Off Its Lows to Near a 52-Week High (Casper en la conferencia de Morgan Stanley: mejora de la demanda en varios mercados finales). Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "TIKR",
+      "tipo": "Prensa",
+      "fecha": "2026-09",
+      "url": "https://www.tikr.com/blog/thermo-fisher-has-rallied-45-off-its-lows-to-near-a-52-week-high-is-it-too-late-to-buy"
+    },
+    {
+      "id": 21,
+      "titulo": "Thermo Fisher Scientific, DEF 14A 2026 (tabla de remuneraciones: Casper 79,9 M USD en 2025 y 30,4 M en 2024). Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "Thermo Fisher / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-04-07",
+      "url": "https://www.sec.gov/Archives/edgar/data/97745/000119312526144585/d66426ddef14a1.pdf"
+    },
+    {
+      "id": 22,
+      "titulo": "Thermo Fisher, DEFA14A (material adicional de la junta de 2026: pide el voto a favor de la remuneración; el premio de retención de 2025 no había cumplido condiciones a final de año). Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "Thermo Fisher / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-05-11",
+      "url": "https://www.sec.gov/Archives/edgar/data/0000097745/000009774526000095/additionalsolicitingmateri.htm"
+    },
+    {
+      "id": 23,
+      "titulo": "Thermo Fisher reports fourth quarter and full year 2025 results (guía de 2025 y resultado). Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "Business Wire",
+      "tipo": "Primaria",
+      "fecha": "2026-01-29",
+      "url": "https://www.businesswire.com/news/home/20260129692126/en/Thermo-Fisher-Scientific-Reports-Fourth-Quarter-and-Full-Year-2025-Results"
+    },
+    {
+      "id": 24,
+      "titulo": "TMO: cierre del 13-oct-2026 a 663,04 USD (+0,12 %); rango de 52 semanas 435,27-694,33 USD; resultados el 21-oct-2026. Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "MSN Money / CNN Markets / Morningstar",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-13",
+      "url": "https://www.msn.com/en-us/money/stockdetails/tmo-us-stock/fi-a24bsm"
+    },
+    {
+      "id": 25,
+      "titulo": "Thermo Fisher Scientific: analyst estimates and ratings (26 analistas: 20 compra fuerte, 1 compra moderada, 5 mantener; objetivo medio 635,08 USD, máximo 750). Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "Barchart",
+      "tipo": "Analistas",
+      "fecha": "2026-08-01",
+      "url": "https://www.barchart.com/story/news/3887406/thermo-fisher-scientific-stock-analyst-estimates-ratings"
+    },
+    {
+      "id": 26,
+      "titulo": "FY2026 earnings estimate for TMO issued by Erste Group (BPA 2026e 25,12 USD, en el consenso; 2027e 27,43 USD). Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "MarketBeat",
+      "tipo": "Analistas",
+      "fecha": "2026-07-30",
+      "url": "https://www.marketbeat.com/instant-alerts/fy2026-earnings-estimate-for-tmo-issued-by-erste-group-bank-2026-07-30/"
+    },
+    {
+      "id": 27,
+      "titulo": "TMO: consenso «Moderate Buy», objetivo medio 617,14 USD. Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "MarketBeat",
+      "tipo": "Analistas",
+      "fecha": "2026-08",
+      "url": "https://www.marketbeat.com/instant-alerts/thermo-fisher-scientific-nysetmo-upgraded-at-wall-street-zen-2026-08-01/"
+    },
+    {
+      "id": 28,
+      "titulo": "Thermo Fisher: precio mensual (diciembre de 2025: 579,45 USD; diciembre de 2024: 520,23 USD). Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "Digrin",
+      "tipo": "Datos de mercado",
+      "fecha": "2026",
+      "url": "https://www.digrin.com/stocks/detail/TMO/price"
+    },
+    {
+      "id": 29,
+      "titulo": "Thermo Fisher Scientific - 15 Year Stock Price History (cierres anuales 2018-2023). Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "Macrotrends",
+      "tipo": "Datos de mercado",
+      "fecha": "2026",
+      "url": "https://www.macrotrends.net/stocks/charts/TMO/thermo-fisher-scientific/stock-price-history"
+    },
+    {
+      "id": 30,
+      "titulo": "Danaher (DHR) Statistics & Valuation: PER adelantado 24,37x, capitalización 151.570 M USD (7-oct-2026). Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-07",
+      "url": "https://stockanalysis.com/stocks/dhr/statistics/"
+    },
+    {
+      "id": 31,
+      "titulo": "Agilent Technologies (A) PE Ratio: PER adelantado 20,58x (2-oct-2026). Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "FinanceCharts",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-02",
+      "url": "https://www.financecharts.com/stocks/A/value/pe-ratio"
+    },
+    {
+      "id": 32,
+      "titulo": "Waters (WAT) PE Ratio: PER adelantado 23,26x (mayo de 2026). Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "FinanceCharts",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-05",
+      "url": "https://www.financecharts.com/stocks/WAT/value/pe-ratio"
+    },
+    {
+      "id": 33,
+      "titulo": "Mettler-Toledo (MTD): PER adelantado 30,03x (instantánea de abril de 2026). Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-04",
+      "url": "https://uk.finance.yahoo.com/quote/MTD/"
+    },
+    {
+      "id": 34,
+      "titulo": "Comparables de IQVIA, Charles River, Labcorp y Thermo Fisher (MarketScreener, Yahoo y Stock Analysis a 8-oct-2026), recogidos en el análisis de Medpace del 12-oct-2026 de este repositorio.",
+      "editor": "MarketScreener / Yahoo Finance / Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-08",
+      "url": "https://www.marketscreener.com/quote/stock/IQVIA-HOLDINGS-INC-40331382/finances/"
+    },
+    {
+      "id": 35,
+      "titulo": "Comparables de Qiagen (MarketScreener y Stock Analysis), recogidos en el análisis de bioMérieux del 8-oct-2026 de este repositorio.",
+      "editor": "MarketScreener / Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-08",
+      "url": "https://stockanalysis.com/stocks/qgen/statistics/"
+    },
+    {
+      "id": 36,
+      "titulo": "10-year Treasury yield (13-oct-2026): 5,22 %; FRED DGS10 5,24 % el 9-oct-2026 (tomado del análisis de Group 1 Automotive del mismo día). Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "CNBC / FRED",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-13",
+      "url": "https://www.cnbc.com/2026/10/13/us-treasurys-bonds-yields.html"
+    },
+    {
+      "id": 37,
+      "titulo": "Damodaran, Implied ERP by month (octubre de 2026: 4,20 %, T12m with sustainable payout).",
+      "editor": "NYU Stern / A. Damodaran",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx"
+    },
+    {
+      "id": 38,
+      "titulo": "Thermo Fisher Is Up 23% in a Year. Is It Too Late to Buy at $622? / rally del 45 % desde el mínimo de mayo (629,27 USD el 21-ago; 655,83 USD el 17-sep). Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "TIKR",
+      "tipo": "Prensa",
+      "fecha": "2026-09",
+      "url": "https://www.tikr.com/blog/thermo-fisher-is-up-23-in-a-year-is-it-too-late-to-buy-at-622"
+    },
+    {
+      "id": 39,
+      "titulo": "Thermo Fisher stock trades at $513 while Wall Street sets a $596 target (27 analistas, objetivos 490-750 USD, junio de 2026). Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "TIKR",
+      "tipo": "Prensa",
+      "fecha": "2026-06",
+      "url": "https://www.tikr.com/blog/thermo-fisher-stock-trades-at-513-while-wall-street-sets-a-596-target-what-the-eps-ramp-reveals"
+    },
+    {
+      "id": 40,
+      "titulo": "Danaher completa la compra de Abcam (5.700 M USD, 2023) y otras operaciones del sector; Astorg compra la microbiología de Thermo Fisher (1.075 M USD; 645 M de ingresos). Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "Prensa sectorial",
+      "tipo": "Prensa",
+      "fecha": "2026-04-27",
+      "url": "https://finance.yahoo.com/sectors/healthcare/articles/thermo-fisher-agrees-sell-microbiology-153801098.html"
+    },
+    {
+      "id": 41,
+      "titulo": "MEXC: TMO a 566,63 USD y capitalización ≈214.000 M USD (31-jul-2026). Extracto de búsqueda (sin abrir el documento: la red solo deja WebSearch).",
+      "editor": "MEXC",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07-31",
+      "url": "https://www.mexc.com/stocks/tmo"
+    },
+    {
+      "id": 42,
+      "titulo": "Thermo Fisher (TMO): página del valor y sentimiento de la comunidad",
+      "editor": "Stocktwits",
+      "tipo": "Foros y redes",
+      "fecha": "2026-08",
+      "url": "https://stocktwits.com/symbol/TMO"
+    },
+    {
+      "id": 43,
+      "titulo": "Jim Cramer on Thermo Fisher: «I Think You Can Buy It at This Level» (tras el 1T26)",
+      "editor": "Yahoo Finance (Insider Monkey)",
+      "tipo": "Foros y redes",
+      "fecha": "2026-04",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-thermo-fisher-think-183650297.html"
+    },
+    {
+      "id": 44,
+      "titulo": "Thermo Fisher (TMO) Stock Trades Near Fair Value On Digital CMC Launch",
+      "editor": "Yahoo Finance (Simply Wall St)",
+      "tipo": "Foros y redes",
+      "fecha": "2026-10",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/thermo-fisher-tmo-stock-trades-111418293.html"
+    },
+    {
+      "id": 45,
+      "titulo": "Thermo Fisher Bilderbuch-Rallye: meines Jahres Top-Picks am Siedepunkt",
+      "editor": "stock3 (comunidad alemana)",
+      "tipo": "Foros y redes",
+      "fecha": "2026-09",
+      "url": "https://stock3.com/news/thermo-fisher-bilderbuch-rally-meines-jahres-top-picks-am-siedepunkt-17290767"
+    },
+    {
+      "id": 46,
+      "titulo": "Thermo Fisher stock falls 20% year to date despite earnings beat: here's the path to $628 by 2028",
+      "editor": "TIKR",
+      "tipo": "Foros y redes",
+      "fecha": "2026-05",
+      "url": "https://www.tikr.com/blog/thermo-fisher-stock-falls-20-year-to-date-despite-earnings-beat-heres-the-path-to-628-by-2028"
+    },
+    {
+      "id": 47,
+      "titulo": "MillennialBets (Reddit), wiki del valor TMO: últimas entradas de 2022",
+      "editor": "Reddit (espejo)",
+      "tipo": "Foros y redes",
+      "fecha": "2022-01",
+      "url": "https://reddit.birdcat.cafe/r/MillennialBets/wiki/index/stocks/TMO"
+    },
+    {
+      "id": 48,
+      "titulo": "Thermo Fisher Scientific, Form 10-Q del 1T26 (trimestre cerrado el 28-mar-2026).",
+      "editor": "Thermo Fisher / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-04-24",
+      "url": "https://www.sec.gov/Archives/edgar/data/0000097745/000009774526000092/tmo-20260328.htm"
+    },
+    {
+      "id": 49,
+      "titulo": "Thermo Fisher Scientific to Acquire Clario (nota de prensa, anexo 99.1 del 8-K).",
+      "editor": "Thermo Fisher / SEC",
+      "tipo": "Primaria",
+      "fecha": "2025-10-29",
+      "url": "https://www.sec.gov/Archives/edgar/data/97745/000009774525000156/thermofisherscientifictoac.htm"
+    },
+    {
+      "id": 50,
+      "titulo": "Thermo Fisher Scientific, folleto de emisión de bonos (424B5) de 2026.",
+      "editor": "Thermo Fisher / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-01",
+      "url": "https://www.sec.gov/Archives/edgar/data/97745/000114036126004305/ny20064939x1_424b5.htm"
+    }
+  ],
+  "calc": {
+    "version": 4,
+    "etiquetas": {
+      "margen_bruto": "M. bruto",
+      "margen_bruto_largo": "Margen bruto",
+      "dias_base": "sobre el coste de ventas"
+    },
+    "recomendacion": {
+      "recomendacion": "Mantener",
+      "regla": "Mantener",
+      "regla_absoluta": "Vender",
+      "regla_relativa": "Vender",
+      "coincide": true,
+      "conviccion": "Media",
+      "conviccion_sugerida": "Media",
+      "conviccion_razones": [
+        "Mantener con las dos reglas de acuerdo y lejos de los umbrales"
+      ],
+      "reglas_discrepan": false,
+      "relativo": {
+        "prima_implicita_pct": 4.2,
+        "wacc": 8.16,
+        "ke": 8.79,
+        "dcf": 426.87,
+        "dcf_min": 380.3,
+        "dcf_max": 483.49,
+        "valor_objetivo": 505,
+        "alcista": 489.81,
+        "bajista": 320.49,
+        "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+        "fecha": "2026-10",
+        "potencial_pct": -23.8,
+        "rentabilidad_total_pct": -23.6,
+        "asimetria": -0.51
+      },
+      "objetivo_mercado_txt": " · con la prima implícita del mercado: 505,00 (-23,8 %)",
+      "objetivo_mercado_corto": " · mercado 505,00",
+      "rentabilidad_mercado_corto": " · mercado -23,6 %",
+      "potencial_pct": -31.1,
+      "dividendo_pct": 0.3,
+      "rentabilidad_total_pct": -30.8,
+      "alcista_pct": -40.1,
+      "bajista_pct": -60.5,
+      "asimetria": -0.66,
+      "comprar_por_debajo": 456.88,
+      "vender_por_encima": 783.26,
+      "tabla": [
+        {
+          "concepto": "Objetivo a 12 meses (nuestro PER × nuestro BPA 2028e, ponderado 25/50/25)",
+          "valor": "703,14 USD"
+        },
+        {
+          "concepto": "Bajista / base / alcista a 12 meses",
+          "valor": "23,7x × 26,50 = 628,05 · 24,6x × 28,85 = 709,71 · 25,2x × 30,36 = 765,07"
+        },
+        {
+          "concepto": "Rentabilidad a 12 meses: ponderada / del base (con dividendo)",
+          "valor": "6,3 % / 7,3 %"
+        },
+        {
+          "concepto": "Objetivo medio de los analistas (solo contraste)",
+          "valor": "635,08 (nuestro base +11,8 %)"
+        },
+        {
+          "concepto": "Valor intrínseco (síntesis ponderada, largo plazo)",
+          "valor": "456,88 USD"
+        },
+        {
+          "concepto": "Potencial sobre el precio actual",
+          "valor": "-31,1 %"
+        },
+        {
+          "concepto": "Rentabilidad por dividendo ordinario",
+          "valor": "0,3 %"
+        },
+        {
+          "concepto": "Rentabilidad total esperada a 12 meses",
+          "valor": "-30,8 %"
+        },
+        {
+          "concepto": "Escenario alcista / bajista",
+          "valor": "-40,1 % / -60,5 %"
+        },
+        {
+          "concepto": "Asimetría (ganancia alcista / pérdida bajista)",
+          "valor": "-0,66x"
+        },
+        {
+          "concepto": "Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado",
+          "valor": "6,6 % frente a 9,1 % y 8,2 %"
+        },
+        {
+          "concepto": "Valor objetivo con la prima implícita del mercado (4,2 %, WACC 8,2 %)",
+          "valor": "505,00 USD"
+        },
+        {
+          "concepto": "Rentabilidad total esperada con la prima del mercado",
+          "valor": "-23,6 %"
+        },
+        {
+          "concepto": "Asimetría con la prima del mercado",
+          "valor": "-0,51x"
+        },
+        {
+          "concepto": "Regla absoluta (frente a su coste de capital)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Regla relativa (frente a lo que pide el mercado)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "¿La calidad de la empresa sostiene el crecimiento previsto?",
+          "valor": "Sí (4,8 % anual proyectado; sin inversión neta)"
+        },
+        {
+          "concepto": "Señal del valor intrínseco (regla del DCF, referencia)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Recomendación según la regla a 12 meses (Comprar: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender: ponderada ≤ -10 %)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Convicción según los criterios (Mantener con las dos reglas de acuerdo y lejos de los umbrales)",
+          "valor": "Media"
+        }
+      ],
+      "niveles": [
+        {
+          "accion": "Comprar",
+          "condicion": "Por debajo de 456,88 (ponderada a 12 meses ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco)"
+        },
+        {
+          "accion": "Mantener",
+          "condicion": "Entre 456,88 y 783,26"
+        },
+        {
+          "accion": "Vender o reducir",
+          "condicion": "Por encima de 783,26 (ponderada a 12 meses ≤ -10 %)"
+        }
+      ],
+      "precio_txt": "",
+      "valor_objetivo_txt": "",
+      "regla_valor_intrinseco": "Vender",
+      "objetivo_12m": {
+        "completo": true,
+        "filas": [
+          {
+            "escenario": "Bajista",
+            "metrica": "PER",
+            "beneficio_por_accion": 26.5,
+            "multiplo": 23.7,
+            "multiplo_informe": null,
+            "origen": "mínimo de 5 años",
+            "precio": 628.05,
+            "rentabilidad_pct": -5,
+            "justificacion": "Ventas de 51.600 M en 2028e (−2 puntos de crecimiento en 2027-28) y margen EBITDA ajustado del 25,3 %: EBIT ajustado de ≈11.970 M tras una depreciación del 2,1 %, 650 M de gasto financiero neto, impuesto del 12 % y 376 M de acciones."
+          },
+          {
+            "escenario": "Base",
+            "metrica": "PER",
+            "beneficio_por_accion": 28.85,
+            "multiplo": 24.6,
+            "multiplo_informe": null,
+            "origen": "mediana de 5 años",
+            "precio": 709.71,
+            "rentabilidad_pct": 7.3,
+            "justificacion": "Ventas de 53.620 M en 2028e y margen EBITDA ajustado del 26,3 % (el 25,0 % GAAP del DCF más 1,3 puntos de reestructuración y otros que excluye la empresa): EBIT ajustado de ≈12.975 M, 650 M de gasto financiero neto, impuesto del 12 % y 376 M de acciones, sin recompras no anunciadas."
+          },
+          {
+            "escenario": "Alcista",
+            "metrica": "PER",
+            "beneficio_por_accion": 30.36,
+            "multiplo": 25.2,
+            "multiplo_informe": null,
+            "origen": "media histórica larga",
+            "precio": 765.07,
+            "rentabilidad_pct": 15.7,
+            "justificacion": "Ventas de 55.150 M (+1,5 puntos de crecimiento en 2027-28) y margen ajustado del 26,8 %: orgánico del 6-7 % con la biotecnología financiada."
+          }
+        ],
+        "regla": {
+          "bajista": 23.7,
+          "base": 24.6,
+          "alcista": 25.2,
+          "bajista_origen": "mínimo de 5 años",
+          "base_origen": "mediana de 5 años",
+          "alcista_origen": "media histórica larga"
+        },
+        "probabilidades": [
+          25,
+          50,
+          25
+        ],
+        "objetivo_ponderado": 703.14,
+        "objetivo_simple": 700.94,
+        "objetivo_base": 709.71,
+        "rentabilidad_ponderada_pct": 6.3,
+        "rentabilidad_simple_pct": 6,
+        "rentabilidad_base_pct": 7.3,
+        "asimetria": 2.92,
+        "senal": "Mantener",
+        "comprar_por_debajo": 456.88,
+        "vender_por_encima": 783.26,
+        "consenso_objetivo": 635.08,
+        "diferencia_consenso_pct": 11.8
+      },
+      "rentabilidad_12m_pct": 6.3,
+      "rentabilidad_12m_txt": "+6,3 % (base +7,3 %)",
+      "objetivo_12m_txt": "703,14 USD"
+    },
+    "mercado": {
+      "precio": 663.04,
+      "acciones": 377,
+      "capitalizacion": 249966,
+      "deuda_neta": 38485,
+      "deuda_neta_ajustada": 37785,
+      "asimilables_deuda": -700,
+      "ajustes_puente": -600,
+      "valor_empresa": 287851,
+      "fecha_puente": "2026-06-27"
+    },
+    "clave": {
+      "capitalizacion": 249966,
+      "valor_empresa": 287851,
+      "deuda_neta": 38485,
+      "ev_ventas_ltm": 6.21,
+      "ev_ebitda_ltm": 26.1,
+      "ev_ebitda_ntm": null,
+      "ev_ebit_ltm": 35.3,
+      "per_ltm": 35.7,
+      "per_ntm": 24.6,
+      "fcf_yield_pct": 2.5,
+      "dividendo_pct": 0.3,
+      "dn_ebitda": 3.5,
+      "roic_pct": 7.3,
+      "margen_ebitda_pct": 23.8,
+      "deuda_neta_ajustada": 37785,
+      "dn_ebitda_ajustada": 3.4,
+      "crecimiento_tcac_pct": 3.2,
+      "ingresos_ntm": 47750,
+      "ebitda_ntm": null,
+      "bpa_ntm": 26.94,
+      "ebitda_ltm": 11046,
+      "ingresos_ltm": 46336,
+      "ev_rab": null
+    },
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 39211,
+        "crecimiento_pct": null,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 12620,
+        "margen_ebitda_pct": 32.2,
+        "ebit": 10028,
+        "margen_ebit_pct": 25.6,
+        "beneficio_neto": 7725,
+        "margen_neto_pct": 19.7,
+        "bpa": 19.46,
+        "dpa": 1.04,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 5
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 44915,
+        "crecimiento_pct": 14.5,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 11774,
+        "margen_ebitda_pct": 26.2,
+        "ebit": 8393,
+        "margen_ebit_pct": 18.7,
+        "beneficio_neto": 6950,
+        "margen_neto_pct": 15.5,
+        "bpa": 17.63,
+        "dpa": 1.2,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 7
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 42857,
+        "crecimiento_pct": -4.6,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 10265,
+        "margen_ebitda_pct": 24,
+        "ebit": 6859,
+        "margen_ebit_pct": 16,
+        "beneficio_neto": 5995,
+        "margen_neto_pct": 14,
+        "bpa": 15.45,
+        "dpa": 1.4,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 9
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 42879,
+        "crecimiento_pct": 0.1,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 10445,
+        "margen_ebitda_pct": 24.4,
+        "ebit": 7337,
+        "margen_ebit_pct": 17.1,
+        "beneficio_neto": 6335,
+        "margen_neto_pct": 14.8,
+        "bpa": 16.53,
+        "dpa": 1.56,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 9
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 44556,
+        "crecimiento_pct": 3.9,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 10526,
+        "margen_ebitda_pct": 23.6,
+        "ebit": 7746,
+        "margen_ebit_pct": 17.4,
+        "beneficio_neto": 6721,
+        "margen_neto_pct": 15.1,
+        "bpa": 17.74,
+        "dpa": 1.72,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 10
+      }
+    ],
+    "tcac": {
+      "periodo": "2021-2025",
+      "ingresos_pct": 3.2,
+      "ebitda_pct": -4.4,
+      "bpa_pct": -2.3
+    },
+    "cuenta_y_prevision": [
+      {
+        "periodo": "2021",
+        "ingresos": 39211,
+        "ebitda": 12620
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 44915,
+        "ebitda": 11774
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 42857,
+        "ebitda": 10265
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 42879,
+        "ebitda": 10445
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 44556,
+        "ebitda": 10526
+      },
+      {
+        "periodo": "2026e",
+        "ingresos": 47719,
+        "ebitda": 11548
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 50583,
+        "ebitda": 12443
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 53618,
+        "ebitda": 13404
+      },
+      {
+        "periodo": "2029e",
+        "ingresos": 56567,
+        "ebitda": 14311
+      },
+      {
+        "periodo": "2030e",
+        "ingresos": 59395,
+        "ebitda": 15146
+      },
+      {
+        "periodo": "2031e",
+        "ingresos": 62068,
+        "ebitda": 15827
+      },
+      {
+        "periodo": "2032e",
+        "ingresos": 64550,
+        "ebitda": 16460
+      },
+      {
+        "periodo": "2033e",
+        "ingresos": 66810,
+        "ebitda": 17036
+      },
+      {
+        "periodo": "2034e",
+        "ingresos": 68814,
+        "ebitda": 17548
+      },
+      {
+        "periodo": "2035e",
+        "ingresos": 70878,
+        "ebitda": 18074
+      }
+    ],
+    "segmentos_ultimo": [
+      {
+        "nombre": "Ciencias de la vida",
+        "ingresos": 10374,
+        "peso_pct": 23.3,
+        "crecimiento_pct": 7.7,
+        "margen_pct": 36.3,
+        "tipo_margen": "EBIT"
+      },
+      {
+        "nombre": "Instrumentos analíticos",
+        "ingresos": 7554,
+        "peso_pct": 17,
+        "crecimiento_pct": 1.2,
+        "margen_pct": null,
+        "tipo_margen": null
+      },
+      {
+        "nombre": "Diagnóstico especializado",
+        "ingresos": 4676,
+        "peso_pct": 10.5,
+        "crecimiento_pct": 3.6,
+        "margen_pct": null,
+        "tipo_margen": null
+      },
+      {
+        "nombre": "Laboratorio y servicios biofarmacéuticos",
+        "ingresos": 23984,
+        "peso_pct": 53.8,
+        "crecimiento_pct": 3.6,
+        "margen_pct": null,
+        "tipo_margen": null
+      },
+      {
+        "nombre": "Eliminaciones",
+        "ingresos": -2033,
+        "peso_pct": -4.6,
+        "crecimiento_pct": 7.9,
+        "margen_pct": null,
+        "tipo_margen": null
+      }
+    ],
+    "segmentos_tabla": {
+      "periodos": [
+        "",
+        "",
+        "",
+        "2024",
+        "2025"
+      ],
+      "filas": [
+        {
+          "nombre": "Ciencias de la vida",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": 9631,
+          "v4": 10374
+        },
+        {
+          "nombre": "Instrumentos analíticos",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": 7463,
+          "v4": 7554
+        },
+        {
+          "nombre": "Diagnóstico especializado",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": 4512,
+          "v4": 4676
+        },
+        {
+          "nombre": "Laboratorio y servicios biofarmacéuticos",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": 23157,
+          "v4": 23984
+        },
+        {
+          "nombre": "Eliminaciones",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": -1885,
+          "v4": -2033
+        }
+      ]
+    },
+    "segmentos_periodo": "2025",
+    "balance": [
+      {
+        "periodo": "2021",
+        "activo_total": 95123,
+        "intangibles": 41924,
+        "circulante": 10161,
+        "circulante_ventas_pct": 25.9,
+        "caja": 4477,
+        "deuda_financiera": 34870,
+        "arrendamientos": 0,
+        "deuda_neta": 30393,
+        "patrimonio": 40793,
+        "minoritarios": 184,
+        "dn_ebitda": 2.41,
+        "dn_patrimonio_pct": 74,
+        "dso": 74,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 18.7,
+        "capital_invertido": 71370,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 97154,
+        "intangibles": 41196,
+        "circulante": 10368,
+        "circulante_ventas_pct": 23.1,
+        "caja": 8524,
+        "deuda_financiera": 34488,
+        "arrendamientos": 0,
+        "deuda_neta": 25964,
+        "patrimonio": 43978,
+        "minoritarios": 170,
+        "dn_ebitda": 2.21,
+        "dn_patrimonio_pct": 59,
+        "dso": 66,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 11.6,
+        "capital_invertido": 70112,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 98726,
+        "intangibles": 44020,
+        "circulante": 10437,
+        "circulante_ventas_pct": 24.4,
+        "caja": 8077,
+        "deuda_financiera": 34917,
+        "arrendamientos": 0,
+        "deuda_neta": 26840,
+        "patrimonio": 46735,
+        "minoritarios": 107,
+        "dn_ebitda": 2.61,
+        "dn_patrimonio_pct": 57,
+        "dso": 70,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 5,
+        "capital_invertido": 73682,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 97321,
+        "intangibles": 45853,
+        "circulante": 10090,
+        "circulante_ventas_pct": 23.5,
+        "caja": 4009,
+        "deuda_financiera": 31275,
+        "arrendamientos": 0,
+        "deuda_neta": 27266,
+        "patrimonio": 49584,
+        "minoritarios": 87,
+        "dn_ebitda": 2.61,
+        "dn_patrimonio_pct": 55,
+        "dso": 70,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 5.3,
+        "capital_invertido": 76937,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 110343,
+        "intangibles": 49362,
+        "circulante": 10703,
+        "circulante_ventas_pct": 24,
+        "caja": 9852,
+        "deuda_financiera": 39385,
+        "arrendamientos": 0,
+        "deuda_neta": 29533,
+        "patrimonio": 53436,
+        "minoritarios": 100,
+        "dn_ebitda": 2.81,
+        "dn_patrimonio_pct": 55,
+        "dso": 73,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 83069,
+        "liquidez_corriente": null
+      }
+    ],
+    "perimetro_nota": "Cambio de perímetro (2025: Compra de la filtración y purificación de Solventum (≈4.100 M) y de la planta de llenado estéril de Sanofi en 2025; Clario (8.875 M) se cerró el 24-mar-2026, después del balance de 2025 [2, 15].). Los ratios de balance de ese año (días, circulante, deuda neta / EBITDA, ROIC) y los indicadores de calidad contable no son comparables con los anteriores.",
+    "flujos": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 9312,
+        "capex": 2523,
+        "pagos_arrendamientos": 0,
+        "fcf": 6789,
+        "beneficio_neto": 7725,
+        "conversion_pct": 88,
+        "capex_ventas_pct": 6.4,
+        "capex_amortizacion": 0.97,
+        "adquisiciones": null,
+        "desinversiones": 0,
+        "dividendos": 413,
+        "recompras": 2000,
+        "emision_acciones": 0,
+        "retorno_accionista": 2413,
+        "payout_caja_pct": 31,
+        "acciones": 397,
+        "fcf_por_accion": 17.1
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 9154,
+        "capex": 2243,
+        "pagos_arrendamientos": 0,
+        "fcf": 6911,
+        "beneficio_neto": 6950,
+        "conversion_pct": 99,
+        "capex_ventas_pct": 5,
+        "capex_amortizacion": 0.66,
+        "adquisiciones": null,
+        "desinversiones": 0,
+        "dividendos": 473,
+        "recompras": 3000,
+        "emision_acciones": 0,
+        "retorno_accionista": 3473,
+        "payout_caja_pct": 50,
+        "acciones": 394.2,
+        "fcf_por_accion": 17.53
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 8406,
+        "capex": 1479,
+        "pagos_arrendamientos": 0,
+        "fcf": 6927,
+        "beneficio_neto": 5995,
+        "conversion_pct": 116,
+        "capex_ventas_pct": 3.5,
+        "capex_amortizacion": 0.43,
+        "adquisiciones": null,
+        "desinversiones": 0,
+        "dividendos": 543,
+        "recompras": 3000,
+        "emision_acciones": 0,
+        "retorno_accionista": 3543,
+        "payout_caja_pct": 59,
+        "acciones": 388,
+        "fcf_por_accion": 17.85
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 8667,
+        "capex": 1343,
+        "pagos_arrendamientos": 0,
+        "fcf": 7324,
+        "beneficio_neto": 6335,
+        "conversion_pct": 116,
+        "capex_ventas_pct": 3.1,
+        "capex_amortizacion": 0.43,
+        "adquisiciones": null,
+        "desinversiones": 0,
+        "dividendos": 598,
+        "recompras": 4000,
+        "emision_acciones": 0,
+        "retorno_accionista": 4598,
+        "payout_caja_pct": 73,
+        "acciones": 383.2,
+        "fcf_por_accion": 19.11
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 7837,
+        "capex": 1500,
+        "pagos_arrendamientos": 0,
+        "fcf": 6337,
+        "beneficio_neto": 6721,
+        "conversion_pct": 94,
+        "capex_ventas_pct": 3.4,
+        "capex_amortizacion": 0.54,
+        "adquisiciones": null,
+        "desinversiones": 0,
+        "dividendos": 652,
+        "recompras": 3000,
+        "emision_acciones": 0,
+        "retorno_accionista": 3652,
+        "payout_caja_pct": 54,
+        "acciones": 378.9,
+        "fcf_por_accion": 16.72
+      }
+    ],
+    "flujos_acumulado": {
+      "periodo": "2021-2025",
+      "fcf": 34288,
+      "adquisiciones": 0,
+      "dividendos": 2679,
+      "recompras": 15000,
+      "conversion_pct": 102
+    },
+    "rentabilidad": [
+      {
+        "periodo": "2021",
+        "nopat": 7521,
+        "capital_invertido": 71370,
+        "roic_pct": 10.5,
+        "roe_pct": 18.9,
+        "roa_pct": 8.1,
+        "margen_neto_pct": 19.7,
+        "rotacion": 0.41,
+        "apalancamiento": 2.33
+      },
+      {
+        "periodo": "2022",
+        "nopat": 6295,
+        "capital_invertido": 70741,
+        "roic_pct": 8.9,
+        "roe_pct": 16.4,
+        "roa_pct": 7.2,
+        "margen_neto_pct": 15.5,
+        "rotacion": 0.47,
+        "apalancamiento": 2.27
+      },
+      {
+        "periodo": "2023",
+        "nopat": 5144,
+        "capital_invertido": 71897,
+        "roic_pct": 7.2,
+        "roe_pct": 13.2,
+        "roa_pct": 6.1,
+        "margen_neto_pct": 14,
+        "rotacion": 0.44,
+        "apalancamiento": 2.16
+      },
+      {
+        "periodo": "2024",
+        "nopat": 5503,
+        "capital_invertido": 75310,
+        "roic_pct": 7.3,
+        "roe_pct": 13.2,
+        "roa_pct": 6.5,
+        "margen_neto_pct": 14.8,
+        "rotacion": 0.44,
+        "apalancamiento": 2.04
+      },
+      {
+        "periodo": "2025",
+        "nopat": 5810,
+        "capital_invertido": 80003,
+        "roic_pct": 7.3,
+        "roe_pct": 13,
+        "roa_pct": 6.5,
+        "margen_neto_pct": 15.1,
+        "rotacion": 0.43,
+        "apalancamiento": 2.02
+      }
+    ],
+    "roic_incremental_pct": -19.8,
+    "roic_frente_wacc": [
+      {
+        "periodo": "2021",
+        "roic_pct": 10.5,
+        "roe_pct": 18.9,
+        "wacc_pct": 9.1
+      },
+      {
+        "periodo": "2022",
+        "roic_pct": 8.9,
+        "roe_pct": 16.4,
+        "wacc_pct": 9.1
+      },
+      {
+        "periodo": "2023",
+        "roic_pct": 7.2,
+        "roe_pct": 13.2,
+        "wacc_pct": 9.1
+      },
+      {
+        "periodo": "2024",
+        "roic_pct": 7.3,
+        "roe_pct": 13.2,
+        "wacc_pct": 9.1
+      },
+      {
+        "periodo": "2025",
+        "roic_pct": 7.3,
+        "roe_pct": 13,
+        "wacc_pct": 9.1
+      }
+    ],
+    "calidad": {
+      "periodo": "2025",
+      "altman_z": 3.28,
+      "altman_zona": "Zona segura",
+      "piotroski_f": 4,
+      "piotroski_detalle": [
+        {
+          "criterio": "Beneficio neto positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "ROA mejora",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Flujo operativo > beneficio neto",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Baja el endeudamiento (deuda / activo)",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Mejora la liquidez corriente",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "No emite acciones",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora el margen bruto",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "Mejora la rotación del activo",
+          "resultado": "No"
+        }
+      ],
+      "beneish_m": -2.47,
+      "beneish_fiable": false,
+      "beneish_variables": [
+        {
+          "variable": "DSRI",
+          "valor": 1.05
+        },
+        {
+          "variable": "GMI",
+          "valor": 1
+        },
+        {
+          "variable": "AQI",
+          "valor": 1
+        },
+        {
+          "variable": "SGI",
+          "valor": 1.04
+        },
+        {
+          "variable": "DEPI",
+          "valor": 1
+        },
+        {
+          "variable": "SGAI",
+          "valor": 1
+        },
+        {
+          "variable": "LVGI",
+          "valor": 1.05
+        },
+        {
+          "variable": "TATA",
+          "valor": -0.01
+        }
+      ],
+      "tabla": [
+        {
+          "indicador": "Altman Z",
+          "valor": "3,28",
+          "lectura": "Zona segura (> 2,99 seguro; < 1,81 riesgo). No aplica a bancos ni aseguradoras, y subestima la solvencia de empresas con grandes anticipos de clientes o prefinanciación pública (contratistas, construcción), que inflan el pasivo. No fiable en 2025: cambio de perímetro (el balance incluye negocios sin su cuenta de resultados completa)."
+        },
+        {
+          "indicador": "Piotroski F",
+          "valor": "4 / 7",
+          "lectura": "Intermedio (4-6)."
+        },
+        {
+          "indicador": "Beneish M",
+          "valor": "-2,47",
+          "lectura": "No interpretable en 2025: con un cambio de perímetro, los índices de activos, amortización y ventas (AQI, DEPI, SGI) comparan grupos distintos y el umbral de −1,78 no sirve."
+        },
+        {
+          "indicador": "Flujo operativo / beneficio neto (acumulado)",
+          "valor": "1,29x",
+          "lectura": "El beneficio se cobra."
+        }
+      ]
+    },
+    "dcf": {
+      "proyeccion": [
+        {
+          "periodo": "2026e",
+          "ingresos": 47719,
+          "crecimiento_pct": 7.1,
+          "ebitda": 11548,
+          "margen_ebitda_pct": 24.2,
+          "amortizacion": 3006,
+          "ebit": 8542,
+          "impuestos": 1025,
+          "capex": 1909,
+          "variacion_circulante": 750,
+          "fcff": 7865,
+          "fraccion": 0.21,
+          "factor": 0.991,
+          "vp": 1664
+        },
+        {
+          "periodo": "2027e",
+          "ingresos": 50583,
+          "crecimiento_pct": 6,
+          "ebitda": 12443,
+          "margen_ebitda_pct": 24.6,
+          "amortizacion": 3035,
+          "ebit": 9408,
+          "impuestos": 1129,
+          "capex": 1922,
+          "variacion_circulante": 687,
+          "fcff": 8705,
+          "fraccion": 1,
+          "factor": 0.94,
+          "vp": 8175
+        },
+        {
+          "periodo": "2028e",
+          "ingresos": 53618,
+          "crecimiento_pct": 6,
+          "ebitda": 13404,
+          "margen_ebitda_pct": 25,
+          "amortizacion": 3003,
+          "ebit": 10402,
+          "impuestos": 1248,
+          "capex": 1930,
+          "variacion_circulante": 728,
+          "fcff": 9498,
+          "fraccion": 1,
+          "factor": 0.861,
+          "vp": 8180
+        },
+        {
+          "periodo": "2029e",
+          "ingresos": 56567,
+          "crecimiento_pct": 5.5,
+          "ebitda": 14311,
+          "margen_ebitda_pct": 25.3,
+          "amortizacion": 2941,
+          "ebit": 11370,
+          "impuestos": 1364,
+          "capex": 1980,
+          "variacion_circulante": 708,
+          "fcff": 10259,
+          "fraccion": 1,
+          "factor": 0.79,
+          "vp": 8094
+        },
+        {
+          "periodo": "2030e",
+          "ingresos": 59395,
+          "crecimiento_pct": 5,
+          "ebitda": 15146,
+          "margen_ebitda_pct": 25.5,
+          "amortizacion": 2851,
+          "ebit": 12295,
+          "impuestos": 1475,
+          "capex": 2079,
+          "variacion_circulante": 679,
+          "fcff": 10913,
+          "fraccion": 1,
+          "factor": 0.724,
+          "vp": 7892
+        },
+        {
+          "periodo": "2031e",
+          "ingresos": 62068,
+          "crecimiento_pct": 4.5,
+          "ebitda": 15827,
+          "margen_ebitda_pct": 25.5,
+          "amortizacion": 2793,
+          "ebit": 13034,
+          "impuestos": 1564,
+          "capex": 2172,
+          "variacion_circulante": 641,
+          "fcff": 11449,
+          "fraccion": 1,
+          "factor": 0.663,
+          "vp": 7590
+        },
+        {
+          "periodo": "2032e",
+          "ingresos": 64550,
+          "crecimiento_pct": 4,
+          "ebitda": 16460,
+          "margen_ebitda_pct": 25.5,
+          "amortizacion": 2711,
+          "ebit": 13749,
+          "impuestos": 1650,
+          "capex": 2259,
+          "variacion_circulante": 596,
+          "fcff": 11955,
+          "fraccion": 1,
+          "factor": 0.608,
+          "vp": 7269
+        },
+        {
+          "periodo": "2033e",
+          "ingresos": 66810,
+          "crecimiento_pct": 3.5,
+          "ebitda": 17036,
+          "margen_ebitda_pct": 25.5,
+          "amortizacion": 2672,
+          "ebit": 14364,
+          "impuestos": 1724,
+          "capex": 2338,
+          "variacion_circulante": 542,
+          "fcff": 12432,
+          "fraccion": 1,
+          "factor": 0.557,
+          "vp": 6924
+        },
+        {
+          "periodo": "2034e",
+          "ingresos": 68814,
+          "crecimiento_pct": 3,
+          "ebitda": 17548,
+          "margen_ebitda_pct": 25.5,
+          "amortizacion": 2615,
+          "ebit": 14933,
+          "impuestos": 1792,
+          "capex": 2408,
+          "variacion_circulante": 481,
+          "fcff": 12866,
+          "fraccion": 1,
+          "factor": 0.511,
+          "vp": 6568
+        },
+        {
+          "periodo": "2035e",
+          "ingresos": 70878,
+          "crecimiento_pct": 3,
+          "ebitda": 18074,
+          "margen_ebitda_pct": 25.5,
+          "amortizacion": 2552,
+          "ebit": 15522,
+          "impuestos": 1863,
+          "capex": 2552,
+          "variacion_circulante": 495,
+          "fcff": 13164,
+          "fraccion": 1,
+          "factor": 0.468,
+          "vp": 6161
+        }
+      ],
+      "etapa2": null,
+      "suma_vp": 68518,
+      "valor_terminal": 222385,
+      "vp_terminal": 99709,
+      "valor_empresa": 168227,
+      "peso_terminal_pct": 59,
+      "valor_acciones": 130342,
+      "valor_accion": 345.74,
+      "vt_gordon": 222385,
+      "vt_multiplo": 361480,
+      "multiplo_implicito": 12.3,
+      "g_implicito_pct": 5.26,
+      "metodo_terminal": "gordon",
+      "terminal_tabla": [
+        {
+          "concepto": "Método principal",
+          "valor": "Crecimiento a perpetuidad"
+        },
+        {
+          "concepto": "Crecimiento a perpetuidad",
+          "valor": "3,0 %"
+        },
+        {
+          "concepto": "Múltiplo EV/EBITDA de salida",
+          "valor": "20,0x"
+        },
+        {
+          "concepto": "Valor terminal (Gordon)",
+          "valor": "222.385"
+        },
+        {
+          "concepto": "Valor terminal (múltiplo)",
+          "valor": "361.480"
+        },
+        {
+          "concepto": "Múltiplo de salida implícito en Gordon",
+          "valor": "12,3x"
+        },
+        {
+          "concepto": "Crecimiento implícito en el múltiplo",
+          "valor": "5,26 %"
+        },
+        {
+          "concepto": "Peso del valor terminal en el valor empresa",
+          "valor": "59 %"
+        }
+      ],
+      "puente": [
+        {
+          "concepto": "Valor actual de los flujos proyectados",
+          "valor": "68.518"
+        },
+        {
+          "concepto": "Valor actual del valor terminal",
+          "valor": "99.709"
+        },
+        {
+          "concepto": "Valor empresa",
+          "valor": "168.227"
+        },
+        {
+          "concepto": "− Deuda financiera neta (con arrendamientos)",
+          "valor": "-38.485"
+        },
+        {
+          "concepto": "− Minoritarios, pensiones y otros; + asociadas",
+          "valor": "600"
+        },
+        {
+          "concepto": "Valor de los fondos propios",
+          "valor": "130.342"
+        },
+        {
+          "concepto": "Acciones diluidas (millones)",
+          "valor": "377,0"
+        },
+        {
+          "concepto": "Valor por acción",
+          "valor": "345,74"
+        }
+      ],
+      "composicion": [
+        {
+          "parte": "Flujos proyectados",
+          "valor": 68518
+        },
+        {
+          "parte": "Valor terminal",
+          "valor": 99709
+        }
+      ],
+      "wacc": 9.1,
+      "ke": 9.9,
+      "kd_despues": 4.58,
+      "wacc_tabla": [
+        {
+          "concepto": "Tasa libre de riesgo",
+          "valor": "5,22 %"
+        },
+        {
+          "concepto": "Beta",
+          "valor": "0,85"
+        },
+        {
+          "concepto": "Prima de riesgo de mercado",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Prima adicional (país, tamaño, específica)",
+          "valor": "0,00 %"
+        },
+        {
+          "concepto": "Coste de los fondos propios",
+          "valor": "9,89 %"
+        },
+        {
+          "concepto": "Coste de la deuda antes de impuestos",
+          "valor": "5,20 %"
+        },
+        {
+          "concepto": "Tipo impositivo",
+          "valor": "12,00 %"
+        },
+        {
+          "concepto": "Coste de la deuda después de impuestos",
+          "valor": "4,58 %"
+        },
+        {
+          "concepto": "Peso de la deuda (D / (D + E))",
+          "valor": "15,00 %"
+        },
+        {
+          "concepto": "WACC",
+          "valor": "9,10 %"
+        },
+        {
+          "concepto": "Prima de riesgo implícita del mercado (regla relativa)",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "WACC con la prima implícita del mercado",
+          "valor": "8,16 %"
+        }
+      ],
+      "potencial_pct": -47.9,
+      "sensibilidad": {
+        "eje_columnas": "Crecimiento a perpetuidad",
+        "columnas": [
+          "2,0 %",
+          "2,5 %",
+          "3,0 %",
+          "3,5 %",
+          "4,0 %"
+        ],
+        "filas": [
+          {
+            "wacc": "8,1 %",
+            "v0": 373.88,
+            "v1": 400.87,
+            "v2": 433.15,
+            "v3": 472.46,
+            "v4": 521.37
+          },
+          {
+            "wacc": "8,6 %",
+            "v0": 337.48,
+            "v1": 359.53,
+            "v2": 385.52,
+            "v3": 416.6,
+            "v4": 454.45
+          },
+          {
+            "wacc": "9,1 %",
+            "v0": 306.26,
+            "v1": 324.5,
+            "v2": 345.74,
+            "v3": 370.76,
+            "v4": 400.69
+          },
+          {
+            "wacc": "9,6 %",
+            "v0": 279.2,
+            "v1": 294.46,
+            "v2": 312.02,
+            "v3": 332.47,
+            "v4": 356.57
+          },
+          {
+            "wacc": "10,1 %",
+            "v0": 255.52,
+            "v1": 268.4,
+            "v2": 283.09,
+            "v3": 300.02,
+            "v4": 319.72
+          }
+        ]
+      },
+      "sensibilidad2": {
+        "columnas": [
+          "-2 pp",
+          "-1 pp",
+          "0 pp",
+          "+1 pp",
+          "+2 pp"
+        ],
+        "filas": [
+          {
+            "margen": "-2 pp",
+            "v0": 260.96,
+            "v1": 281.63,
+            "v2": 303.53,
+            "v3": 326.72,
+            "v4": 351.26
+          },
+          {
+            "margen": "-1 pp",
+            "v0": 279.33,
+            "v1": 301.32,
+            "v2": 324.63,
+            "v3": 349.34,
+            "v4": 375.5
+          },
+          {
+            "margen": "0 pp",
+            "v0": 297.7,
+            "v1": 321.01,
+            "v2": 345.74,
+            "v3": 371.95,
+            "v4": 399.74
+          },
+          {
+            "margen": "+1 pp",
+            "v0": 316.07,
+            "v1": 340.7,
+            "v2": 366.84,
+            "v3": 394.57,
+            "v4": 423.98
+          },
+          {
+            "margen": "+2 pp",
+            "v0": 334.44,
+            "v1": 360.39,
+            "v2": 387.94,
+            "v3": 417.19,
+            "v4": 448.22
+          }
+        ]
+      },
+      "rango_min": 294.46,
+      "rango_max": 416.6,
+      "inverso": {
+        "crecimiento_implicito_pct": 13.9,
+        "crecimiento_base_pct": 4.5,
+        "periodo": "2027e-2035e",
+        "margen_implicito_pct": 40.5,
+        "margen_implicito_texto": null,
+        "margen_base_pct": 25.5,
+        "rentabilidad_implicita_pct": 6.6
+      },
+      "sostenibilidad": {
+        "veredicto": "Sí",
+        "crecimiento_proyectado_pct": 4.8,
+        "tasa_reinversion_pct": 0,
+        "crecimiento_financiable_pct": null,
+        "roic_pct": 7.3,
+        "roic_incremental_historico_pct": -19.8,
+        "roic_implicito_pct": null,
+        "cuota_actual_pct": null,
+        "cuota_final_pct": null,
+        "puente": [
+          {
+            "periodo": "2026e",
+            "volumen_pct": 2.5,
+            "precio_pct": 1.5,
+            "otros_pct": 3.1,
+            "comentario": "Volumen del 2,5 % (orgánico del 1-5 % en el primer semestre), precio del 1,5 % y 3,1 puntos de compras netas: Clario desde el 24 de marzo y la filtración de Solventum, menos la microbiología desde agosto [3, 4, 12, 14].",
+            "suma_pct": 7.1,
+            "crecimiento_pct": 7.1
+          },
+          {
+            "periodo": "2027e",
+            "volumen_pct": 3,
+            "precio_pct": 1.5,
+            "otros_pct": 1.5,
+            "comentario": "Orgánico del 4,5 % (3 de volumen y 1,5 de precio) y 1,5 puntos del trimestre de Clario que falta y de su crecimiento por encima del grupo [12].",
+            "suma_pct": 6,
+            "crecimiento_pct": 6
+          },
+          {
+            "periodo": "2028e",
+            "volumen_pct": 3.5,
+            "precio_pct": 1.5,
+            "otros_pct": 1,
+            "comentario": "Orgánico del 5 % con la biotecnología normalizada; 1 punto de mezcla hacia bioproducción y datos clínicos, que crecen más [1].",
+            "suma_pct": 6,
+            "crecimiento_pct": 6
+          },
+          {
+            "periodo": "2029e",
+            "volumen_pct": 3,
+            "precio_pct": 1.5,
+            "otros_pct": 1,
+            "comentario": "Orgánico del 4,5 % y 1 punto de mezcla.",
+            "suma_pct": 5.5,
+            "crecimiento_pct": 5.5
+          },
+          {
+            "periodo": "2030e",
+            "volumen_pct": 2.5,
+            "precio_pct": 1.5,
+            "otros_pct": 1,
+            "comentario": "Orgánico del 4 % y 1 punto de mezcla.",
+            "suma_pct": 5,
+            "crecimiento_pct": 5
+          }
+        ],
+        "texto": "La proyección apenas necesita inversión neta de la amortización (reinversión acumulada de -323 M, con un capex bruto medio del 3,6 % de las ventas). En un negocio de activos ligeros, el crecimiento medio del 4,8 % tiene que salir de subir precios y de ganar volumen sin capital nuevo, y la prueba es el poder de precios y la cuota; en un comprador en serie, la amortización es de intangibles comprados y la prueba es el capex bruto (las compras) frente al crecimiento comprado.",
+        "tabla": [
+          {
+            "concepto": "Crecimiento medio de ingresos proyectado",
+            "valor": "4,8 %"
+          },
+          {
+            "concepto": "Capex bruto medio (incluidas compras si van como inversión)",
+            "valor": "3,6 % de las ventas"
+          },
+          {
+            "concepto": "Reinversión neta acumulada (capex − amortización + circulante)",
+            "valor": "-323 M (-0 % del NOPAT)"
+          }
+        ]
+      }
+    },
+    "escenarios": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "narrativa": "La recuperación de la biotecnología se frena y la academia sigue a la baja: el orgánico se queda en el 2 % de 2025 y la presión de precios y de mezcla quita un punto de margen. Le pasó a la propia empresa en 2023-24 [5].",
+        "crecimiento_medio_pct": 2.5,
+        "margen_final_pct": 24.5,
+        "wacc_pct": 9.1,
+        "valor": 261.89,
+        "potencial_pct": -60.5
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "narrativa": "El orgánico se estabiliza en el 4,5-5 %, Clario aporta lo previsto y el margen gana medio punto al año hasta 2028e [4, 12].",
+        "crecimiento_medio_pct": 4.5,
+        "margen_final_pct": 25.5,
+        "wacc_pct": 9.1,
+        "valor": 345.74,
+        "potencial_pct": -47.9
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "narrativa": "La biotecnología vuelve a financiarse con fuerza y la bioproducción de biológicos acelera: orgánico del 6-7 %, como el objetivo histórico de la empresa, y medio punto más de margen.",
+        "crecimiento_medio_pct": 6,
+        "margen_final_pct": 26,
+        "wacc_pct": 9.1,
+        "valor": 397.35,
+        "potencial_pct": -40.1
+      }
+    ],
+    "valor_ponderado": 337.68,
+    "potencial_ponderado_pct": -49.1,
+    "comparables": {
+      "tabla": [
+        {
+          "nombre": "Thermo Fisher",
+          "ticker": "TMO",
+          "pais": "US",
+          "capitalizacion": 249966,
+          "ev_ventas": 6.21,
+          "ev_ebitda_ltm": 26.1,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 24.6,
+          "crecimiento_pct": 2.3,
+          "margen_ebitda_pct": 23.8,
+          "roic_pct": 7.3,
+          "dn_ebitda": 3.5,
+          "fcf_yield_pct": 2.5,
+          "es_objetivo": true
+        },
+        {
+          "nombre": "Danaher",
+          "ticker": "DHR",
+          "pais": "US",
+          "capitalizacion": 151570,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 24.4,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Agilent",
+          "ticker": "A",
+          "pais": "US",
+          "capitalizacion": null,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 20.6,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Waters",
+          "ticker": "WAT",
+          "pais": "US",
+          "capitalizacion": null,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 23.3,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Mettler-Toledo",
+          "ticker": "MTD",
+          "pais": "US",
+          "capitalizacion": null,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 30,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "IQVIA",
+          "ticker": "IQV",
+          "pais": "US",
+          "capitalizacion": 42777,
+          "ev_ventas": 3.35,
+          "ev_ebitda_ltm": 14.5,
+          "ev_ebitda_ntm": 13.4,
+          "per_ntm": 18.5,
+          "crecimiento_pct": 5.8,
+          "margen_ebitda_pct": 23.2,
+          "roic_pct": 9.8,
+          "dn_ebitda": 3.62,
+          "fcf_yield_pct": 5.11,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Charles River Laboratories",
+          "ticker": "CRL",
+          "pais": "US",
+          "capitalizacion": 14407,
+          "ev_ventas": 4.32,
+          "ev_ebitda_ltm": 18.8,
+          "ev_ebitda_ntm": 15.9,
+          "per_ntm": 24.2,
+          "crecimiento_pct": -0.1,
+          "margen_ebitda_pct": 24.2,
+          "roic_pct": 8.56,
+          "dn_ebitda": 3.1,
+          "fcf_yield_pct": 2.58,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Qiagen",
+          "ticker": "QGEN",
+          "pais": "NL",
+          "capitalizacion": 8287,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": 13.1,
+          "ev_ebitda_ntm": 12.2,
+          "per_ntm": 21,
+          "crecimiento_pct": 3.8,
+          "margen_ebitda_pct": 35.7,
+          "roic_pct": 11.38,
+          "dn_ebitda": 1.12,
+          "fcf_yield_pct": 4.83,
+          "es_objetivo": false
+        }
+      ],
+      "estadisticos": [
+        {
+          "estadistico": "Mediana",
+          "ev_ventas": 3.8,
+          "ev_ebitda_ltm": 14.5,
+          "ev_ebitda_ntm": 13.4,
+          "per_ntm": 23.3,
+          "crecimiento_pct": 3.8,
+          "margen_ebitda_pct": 24.2,
+          "roic_pct": 9.8,
+          "dn_ebitda": 3.1,
+          "fcf_yield_pct": 4.8
+        },
+        {
+          "estadistico": "Media",
+          "ev_ventas": 3.8,
+          "ev_ebitda_ltm": 15.5,
+          "ev_ebitda_ntm": 13.8,
+          "per_ntm": 23.1,
+          "crecimiento_pct": 3.2,
+          "margen_ebitda_pct": 27.7,
+          "roic_pct": 9.9,
+          "dn_ebitda": 2.6,
+          "fcf_yield_pct": 4.2
+        },
+        {
+          "estadistico": "Percentil 25",
+          "ev_ventas": 3.6,
+          "ev_ebitda_ltm": 13.8,
+          "ev_ebitda_ntm": 12.8,
+          "per_ntm": 20.8,
+          "crecimiento_pct": 1.9,
+          "margen_ebitda_pct": 23.7,
+          "roic_pct": 9.2,
+          "dn_ebitda": 2.1,
+          "fcf_yield_pct": 3.7
+        },
+        {
+          "estadistico": "Percentil 75",
+          "ev_ventas": 4.1,
+          "ev_ebitda_ltm": 16.7,
+          "ev_ebitda_ntm": 14.7,
+          "per_ntm": 24.3,
+          "crecimiento_pct": 4.8,
+          "margen_ebitda_pct": 30,
+          "roic_pct": 10.6,
+          "dn_ebitda": 3.4,
+          "fcf_yield_pct": 5
+        }
+      ],
+      "implicito": [
+        {
+          "metodo": "EV/EBITDA últimos 12 meses",
+          "metrica_empresa": 11046,
+          "multiplo_p25": 13.8,
+          "multiplo_mediana": 14.5,
+          "multiplo_p75": 16.7,
+          "multiplos": "13,8x / 14,5x / 16,6x",
+          "valor_p25": 303.85,
+          "valor_mediana": 324.36,
+          "valor_p75": 387.35,
+          "potencial_pct": -51.1
+        },
+        {
+          "metodo": "PER próximos 12 meses",
+          "metrica_empresa": 26.94,
+          "multiplo_p25": 20.8,
+          "multiplo_mediana": 23.3,
+          "multiplo_p75": 24.3,
+          "multiplos": "20,8x / 23,3x / 24,3x",
+          "valor_p25": 560.28,
+          "valor_mediana": 627.62,
+          "valor_p75": 654.56,
+          "potencial_pct": -5.3
+        }
+      ],
+      "regresion": null,
+      "n": 7
+    },
+    "transacciones": {
+      "n": 5,
+      "metrica": "EV/ventas",
+      "mediana_ev_ebitda": null,
+      "p25_ev_ebitda": null,
+      "p75_ev_ebitda": null,
+      "mediana_ev_ventas": 3.7,
+      "prima_mediana_pct": null,
+      "valor_p25": 229.52,
+      "valor_mediana": 354.27,
+      "valor_p75": 732.82
+    },
+    "suma_partes": null,
+    "multiplos_historicos": [
+      {
+        "metrica": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+        "campo": "ev_ebitda_ltm",
+        "actual": 26.1,
+        "media": 22.2,
+        "minimo": 20.7,
+        "maximo": 23.7,
+        "percentil": 100,
+        "prima_pct": 18,
+        "anios": 4
+      },
+      {
+        "metrica": "PER últimos 12 meses (cierre de cada año)",
+        "campo": "per_ltm",
+        "actual": 35.7,
+        "media": 32.1,
+        "minimo": 31.2,
+        "maximo": 34.4,
+        "percentil": 100,
+        "prima_pct": 11,
+        "anios": 4
+      }
+    ],
+    "multiplos_serie": [
+      {
+        "anio": "2021",
+        "multiplo": 23.4,
+        "media": 22.2
+      },
+      {
+        "anio": "2022",
+        "multiplo": 20.7,
+        "media": 22.2
+      },
+      {
+        "anio": "2023",
+        "multiplo": 22.7,
+        "media": 22.2
+      },
+      {
+        "anio": "2024",
+        "multiplo": 21.7,
+        "media": 22.2
+      },
+      {
+        "anio": "2025",
+        "multiplo": 23.7,
+        "media": 22.2
+      }
+    ],
+    "multiplos_titulo": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+    "consenso_vs_propio": [
+      {
+        "periodo": "2026e",
+        "ingresos_propio": 47719,
+        "ingresos_consenso": 47750,
+        "ingresos_dif_pct": -0.1,
+        "ebitda_propio": 11548,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      },
+      {
+        "periodo": "2027e",
+        "ingresos_propio": 50583,
+        "ingresos_consenso": null,
+        "ingresos_dif_pct": null,
+        "ebitda_propio": 12443,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      }
+    ],
+    "gobierno": {
+      "n_consejeros": 1,
+      "independientes_pct": 0,
+      "antiguedad_media": 17,
+      "composicion": [
+        {
+          "tipo": "Ejecutivo",
+          "num": 1
+        }
+      ],
+      "checklist": [
+        {
+          "criterio": "Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)",
+          "resultado": "No cumple",
+          "valor": "0 %"
+        },
+        {
+          "criterio": "Presidencia sin vínculo familiar ni profesional con el accionista de control",
+          "resultado": "Cumple",
+          "valor": "Sin control"
+        },
+        {
+          "criterio": "Presidente no ejecutivo, o consejero coordinador independiente",
+          "resultado": "Cumple",
+          "valor": "Ejecutivo, con coordinador"
+        },
+        {
+          "criterio": "Comisión de auditoría con mayoría de independientes y presidida por uno",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Ningún consejero «otro externo» con más de 12 años",
+          "resultado": "Cumple",
+          "valor": "Ninguno"
+        },
+        {
+          "criterio": "Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses",
+          "resultado": "Cumple",
+          "valor": "0 cambios"
+        },
+        {
+          "criterio": "Peor voto a favor sobre remuneración (3 juntas) ≥ 80 %",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Una acción, un voto, sin blindajes ni límites de voto estatutarios",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Sin operaciones vinculadas relevantes",
+          "resultado": "Cumple",
+          "valor": "No hay"
+        },
+        {
+          "criterio": "Auditor con 10 años o menos en el cargo",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Opinión de auditoría sin salvedades",
+          "resultado": "Cumple",
+          "valor": "Favorable"
+        },
+        {
+          "criterio": "Directivos compradores netos en 12 meses (o sin ventas relevantes)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        }
+      ],
+      "puntuacion": "8 de 13 (4 sin dato)",
+      "puntuacion_pct": 62,
+      "compras_insiders": 0,
+      "ventas_insiders": 0
+    },
+    "competidores_margen": [
+      {
+        "nombre": "Thermo Fisher",
+        "margen_ebit_pct": 17.4
+      }
+    ],
+    "sintesis": {
+      "formato_eje": "#,##0",
+      "rangos": [
+        {
+          "metodo": "Cotización 52 semanas",
+          "etiqueta": "Cotización 52 semanas (435,27 – 694,33)",
+          "min": 435.27,
+          "central": 663.04,
+          "max": 694.33,
+          "gris": true
+        },
+        {
+          "metodo": "Comparables: PER NTM",
+          "etiqueta": "Comparables: PER NTM (560,28 – 654,56)",
+          "min": 560.28,
+          "central": 627.62,
+          "max": 654.56,
+          "gris": false
+        },
+        {
+          "metodo": "Transacciones precedentes (EV/ventas)",
+          "etiqueta": "Transacciones precedentes (EV/ventas) (229,52 – 732,82)",
+          "min": 229.52,
+          "central": 354.27,
+          "max": 732.82,
+          "gris": false
+        },
+        {
+          "metodo": "DCF (WACC y g ± 0,5)",
+          "etiqueta": "DCF (WACC y g ± 0,5) (294,46 – 416,60)",
+          "min": 294.46,
+          "central": 345.74,
+          "max": 416.6,
+          "gris": false
+        },
+        {
+          "metodo": "Escenarios (bajista – alcista)",
+          "etiqueta": "Escenarios (bajista – alcista) (261,89 – 397,35)",
+          "min": 261.89,
+          "central": 337.68,
+          "max": 397.35,
+          "gris": false
+        },
+        {
+          "metodo": "DCF con la prima del mercado",
+          "etiqueta": "DCF con la prima implícita del mercado (4,2 %)",
+          "min": 380.3,
+          "central": 426.87,
+          "max": 483.49
+        },
+        {
+          "metodo": "Precio actual",
+          "etiqueta": "Precio actual (663,04)",
+          "min": 659.72,
+          "central": 663.04,
+          "max": 666.36,
+          "gris": true
+        }
+      ],
+      "tabla": [
+        {
+          "metodo": "DCF",
+          "valor": 345.74,
+          "peso_pct": 40,
+          "potencial_pct": -47.9
+        },
+        {
+          "metodo": "Comparables (mediana EV/EBITDA y PER)",
+          "valor": 627.62,
+          "peso_pct": 40,
+          "potencial_pct": -5.3
+        },
+        {
+          "metodo": "Transacciones precedentes (no se usa)",
+          "valor": 354.27,
+          "peso_pct": 0,
+          "potencial_pct": -46.6
+        },
+        {
+          "metodo": "Escenarios ponderados",
+          "valor": 337.68,
+          "peso_pct": 20,
+          "potencial_pct": -49.1
+        }
+      ],
+      "valor_objetivo": 456.88,
+      "potencial_pct": -31.1
+    },
+    "fuentes": {
+      "n_fuentes": 50,
+      "n_primarias": 11,
+      "por_tipo": [
+        {
+          "tipo": "Primaria",
+          "num": 11
+        },
+        {
+          "tipo": "Datos de mercado",
+          "num": 17
+        },
+        {
+          "tipo": "Prensa",
+          "num": 12
+        },
+        {
+          "tipo": "Analistas",
+          "num": 4
+        },
+        {
+          "tipo": "Foros y redes",
+          "num": 6
+        }
+      ],
+      "n_citadas": 47,
+      "citas_sin_fuente": [],
+      "fuentes_sin_citar": [
+        "6",
+        "16",
+        "41"
+      ]
+    },
+    "controles": [
+      {
+        "control": "DCF inverso calculable",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Puente de ingresos (volumen + precio + otros) = crecimiento del DCF",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "resultado": "OK",
+        "detalle": "Supuesto 24,0 % frente a 24,0 % real: genera una variación de circulante de 750 M en el primer año. Converge de forma gradual."
+      },
+      {
+        "control": "Peso del valor terminal ≤ 80 % del valor empresa",
+        "resultado": "OK",
+        "detalle": "59 %."
+      },
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "resultado": "OK",
+        "detalle": "3,00 %."
+      },
+      {
+        "control": "Probabilidades de los escenarios suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 5 comparables",
+        "resultado": "OK",
+        "detalle": "7 comparables."
+      },
+      {
+        "control": "Pesos de la síntesis suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Múltiplos del objetivo a 12 m según la regla común",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Objetivo 12 m frente al consenso",
+        "resultado": "OK",
+        "detalle": "El base se separa un 11,8 % del objetivo medio de los analistas: explícalo en diferencia_consenso (nunca se acerca la cifra)."
+      },
+      {
+        "control": "Recomendación coherente con la regla de decisión",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "La síntesis explica la convicción",
+        "resultado": "OK",
+        "detalle": "La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría."
+      },
+      {
+        "control": "Al menos 25 fuentes",
+        "resultado": "OK",
+        "detalle": "50 fuentes (11 primarias)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "resultado": "OK",
+        "detalle": "11."
+      },
+      {
+        "control": "Toda cita [n] existe en fuentes",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Fuentes sin citar ≤ 15 %",
+        "resultado": "OK",
+        "detalle": "Sin citar: 6, 16, 41."
+      }
+    ],
+    "controles_resumen": "16 de 16 controles correctos"
+  }
+}
