@@ -16,14 +16,14 @@ Uso único de la vertical de ETF (decisión 7 de las mejoras del método, aproba
 | Ventas value: Zoetis, Puig, Hermès, ICE, Equifax, IBKR | +5.696 |
 | Compras value: Nemetschek 29, LVMH 5, Bureau Veritas 76 | −5.976 |
 | **Liquidez tras la propuesta value** (`informes/cartera-2026-10-14-15h.md`) | **4.301** |
-| Growth, tramo 1 ya: 43 Nu, 1 argenx, 2 Axon | −1.997 |
-| Growth, tramo 2 tras resultados: 43 Nu (12-nov), 1 argenx (22-oct), 1 Axon (principios de noviembre) | −1.743 |
+| Growth, tramo 1 ya: 43 Nu, 1 argenx, 2 Axon | −2.053 |
+| Growth, tramo 2 tras resultados: 43 Nu (12-nov), 1 argenx (22-oct), 1 Axon (principios de noviembre) | −1.687 |
 | **Liquidez sobrante cuando estén hechas las dos** | **≈560** |
 
 Importes growth de `informes-growth/cartera-growth.md` (Nu ≈13,8 EUR/acción, argenx ≈725 EUR, Axon ≈367 EUR).
 
 - **Sobrante fijo: ≈560 EUR (1,9 % de la cartera).** Está por debajo del mínimo de 1.000 EUR por posición. Además es la caja de las diez órdenes de suplentes hasta el 7-nov (Experian, ANYCOLOR, Deutsche Börse, Amadeus, Unilever, Moncler, Booking, Coloplast, DSV, Constellation), que con un solo suplente que salte ya la superan. Es decir, la liquidez no sobra: está corta.
-- **Sobrante temporal: ≈1.740 EUR** (el tramo 2 growth) durante 1 a 4 semanas, del 14-oct al 22-oct (argenx) y hasta el 12-nov (Nu).
+- **Sobrante temporal: ≈1.690 EUR** (el tramo 2 growth) durante 1 a 4 semanas, del 14-oct al 22-oct (argenx) y hasta el 12-nov (Nu).
 - El hilo value está rehaciendo la cartera al cerrar la 5ª hora. Si cambia el saldo final, la regla de arriba sigue sirviendo.
 
 ## Por qué nada
@@ -34,7 +34,7 @@ Importes growth de `informes-growth/cartera-growth.md` (Nu ≈13,8 EUR/acción, 
 
 | Importe | Plazo | Rendimiento bruto | Coste de entrar y salir (2 órdenes, horquilla ≈0,01 %) | Neto |
 |---|---|---|---|---|
-| 1.740 EUR (tramo 2) | 4 semanas | ≈3 EUR | ≈3-10 EUR según el bróker | ≈0 o negativo |
+| 1.690 EUR (tramo 2) | 4 semanas | ≈3 EUR | ≈3-10 EUR según el bróker | ≈0 o negativo |
 | 560 EUR | 1 año | ≈13 EUR | ≈3-10 EUR | ≈3-10 EUR |
 | 3.000 EUR | 3 meses | ≈17 EUR | ≈3-10 EUR | ≈7-14 EUR |
 | 5.000 EUR | 6 meses | ≈58 EUR | ≈3-10 EUR | ≈48-55 EUR |
