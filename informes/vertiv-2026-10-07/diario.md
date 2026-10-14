@@ -86,3 +86,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v3.mjs` (parte de `datos-
 3. `datos-v2.json` se hizo sin script ni entrada en el diario: no queda rastro de cómo se generó. Arreglo: que `rellenar` o `calcular` avisen si hay un `datos-vN.json` sin `notas/actualizacion-vN.mjs`.
 
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 314,93 USD, rentabilidad +24,5 %, señal Comprar (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +24,5 % → +24,4 %, base +25,5 %, señal Mantener (`revision-12m-2026-10-13.md`).
