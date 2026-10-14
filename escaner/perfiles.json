@@ -484,6 +484,36 @@
       },
       "excluir": "\\b(casino|gaming|gambling|betting|lottery|wagering)\\b",
       "excluir_industrias": "Gambling|Resorts & Casinos|Retail|Grocery|Gold|Silver|Precious Metals|Copper|Uranium|Other Industrial Metals|Aluminum|Steel|Coking Coal|Thermal Coal|Oil & Gas|Agricultural Inputs|Banks|Insurance|Biotechnology"
+    },
+    "growth-alto": {
+      "activo": false,
+      "descripcion": "Filtro de partida para el análisis growth: ventas creciendo al menos un 15 % (último año y media de 3 años), más de 2.000 M USD de capitalización; sin juego/apuestas ni comercio minorista. No exige beneficios.",
+      "buscador": [
+        [
+          "totalrevenues1yrgrowth.lasttwelvemonths",
+          ">=",
+          15
+        ]
+      ],
+      "filtros": [
+        [
+          "cap_musd",
+          ">=",
+          2000
+        ],
+        [
+          "crec_ventas_3a",
+          ">=",
+          15
+        ]
+      ],
+      "puntuacion": {
+        "crec_ventas_3a": 2,
+        "margen_seguridad": 2,
+        "potencial_analistas": 1
+      },
+      "excluir": "\\b(casino|casinos|gambling|betting|sportsbook|igaming|i-gaming|lottery|lotteries|wagering)\\b",
+      "excluir_industrias": "Gambling|Resorts & Casinos|Retail|Department Stores|Discount Stores|Grocery Stores|Auto & Truck Dealerships|Home Improvement|Pharmaceutical Retailers|Gold|Silver|Precious Metals|Copper|Uranium|Other Industrial Metals|Aluminum|Steel|Coking Coal|Thermal Coal|Oil & Gas E&P|Oil & Gas Integrated|Oil & Gas Drilling|Agricultural Inputs|Biotechnology"
     }
   }
 }
