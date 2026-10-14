@@ -59,6 +59,13 @@ VERSIONES.v10 = { ...VERSIONES.v9, descripcion: 'v9 + en las valoradas por EV/EB
 // se aplica también a las del analista; y el «compra hasta» comprueba además el listón del bajista (−50 %).
 VERSIONES.v11 = { ...VERSIONES.v9, descripcion: 'v9 + ventas de cada escenario = la menor entre la mecánica y la del analista + «compra hasta» que respeta el bajista',
   ventas_min_analista: true, pmax_bajista: true };
+// Candidata v12 (14-oct; backtest/resultados-v12.md): v11 + crecimiento orgánico (crecimiento.crecimiento_actual_organico_pct):
+// la partida de la proyección es como mucho el orgánico y la rebaja por desaceleración se mide desde él (el del año objetivo ya es
+// orgánico); + alertas (no cambian nada): euforia en las valoradas por EBITDA (múltiplo > 1,5 × su mediana de 3 años y subida ≥ 80 %)
+// y proyección mecánica < 0,85 × la del analista o el consenso. Probadas y NO adoptadas (código desactivado, para reproducir la prueba):
+// desac_desde_partida (sube el objetivo de los fracasos de > 60 % en su pico) y guia_tipo (sin efecto: v11 ya lo cubre).
+VERSIONES.v12 = { ...VERSIONES.v11, descripcion: 'v11 + crecimiento orgánico en la proyección y en la rebaja por desaceleración + alertas de euforia en EV/EBITDA y de proyección mecánica corta',
+  organico: true, euforia_ebitda: { ratio: 1.5, subida: 80, modo: 'alerta' }, alerta_mecanica_corta: true, v12: true };
 export const VIGENTE = 'v11';
 
 const escala = (v, cortes) => {
@@ -74,14 +81,24 @@ const RENTAB = { fcf_creciente: 5, fcf_positivo: 4, breakeven_12m: 3, breakeven_
 
 // Proyección mecánica de ventas (backtest, o si el analista no da la suya): crecimiento de partida =
 // media del de 12 meses y el del último trimestre (entre −20 % y +60 %), que decae un 15 % cada año.
-export function proyeccion(d, fwd = false, desacel = false, guia = false) {
+export function proyeccion(d, fwd = false, desacel = false, guia = false, op = {}) {
   const c = d.crecimiento, v = d.valoracion;
   const g12 = c.ventas_12m_pct ?? 0, gq = c.ultimo_trimestre_pct ?? g12;
   const pasado = (g12 + gq) / 2;
-  let g1 = clamp(fwd && c.cagr_2a_propio_pct != null ? (pasado + c.cagr_2a_propio_pct) / 2 : pasado, -20, 60) / 100;
+  const sinTope = fwd && c.cagr_2a_propio_pct != null ? (pasado + c.cagr_2a_propio_pct) / 2 : pasado;
+  let g1 = clamp(sinTope, -20, 60) / 100;
   const frena = desacel && (c.aceleracion_pp ?? 0) < -10;
   if (frena) g1 = Math.min(g1, gq / 100); // si frena fuerte, se parte como mucho del último trimestre
-  const gGuia = guia && c.guia_12m_pct != null ? (c.guia_12m_pct + (c.exceso_guia_pp ?? 0)) / 100 : null;
+  // v12: como mucho el crecimiento orgánico de los 12 meses siguientes (sin compras), si se conoce (solo recorta)
+  const org = op.organico && c.crecimiento_actual_organico_pct != null ? c.crecimiento_actual_organico_pct / 100 : null;
+  if (org !== null) g1 = Math.min(g1, org);
+  // v12: exceso frente al objetivo a medio plazo si no hay guía anual; y el menor de los dos años si el año en curso cumple justo
+  let exceso = c.exceso_guia_pp ?? 0;
+  if (op.guia_tipo) {
+    if (c.tipo_guia === 'medio_plazo' && c.exceso_guia_mp_pp != null) exceso = c.exceso_guia_mp_pp;
+    if (c.exceso_guia_actual_pp != null && c.exceso_guia_actual_pp <= 2) exceso = Math.min(exceso, c.exceso_guia_actual_pp);
+  }
+  const gGuia = guia && c.guia_12m_pct != null ? (c.guia_12m_pct + exceso) / 100 : null;
   const recorte = gGuia !== null && gGuia < g1;
   if (recorte) g1 = gGuia; // v9: como mucho la guía más el exceso habitual sobre ella
   const n = v.anios_hasta_objetivo ?? 2;
@@ -91,7 +108,8 @@ export function proyeccion(d, fwd = false, desacel = false, guia = false) {
     return { ventas: s, g_final: ult };
   };
   const b = camino(1);
-  return { g1: g1 * 100, g_final: b.g_final * 100, bajista: camino(0.5).ventas, base: b.ventas, alcista: camino(1.2).ventas, ...(guia ? { recorte_guia: recorte } : {}) };
+  return { g1: g1 * 100, g_final: b.g_final * 100, bajista: camino(0.5).ventas, base: b.ventas, alcista: camino(1.2).ventas, ...(guia ? { recorte_guia: recorte } : {}),
+    topado: sinTope > 60, ...(org !== null ? { g_organico: org * 100 } : {}), exceso_usado: exceso };
 }
 
 export function calcular(d, cfg = VERSIONES[VIGENTE]) {
@@ -113,7 +131,7 @@ export function calcular(d, cfg = VERSIONES[VIGENTE]) {
   const B = (b.reduce((s, y) => s + y, 0) / 15) * P.B;
 
   // Valor de empresa y múltiplo de ventas de los próximos 12 meses (para el filtro de valoración)
-  const pr = proyeccion(d, cfg.proy_forward, cfg.proy_desacel, cfg.proy_guia);
+  const pr = proyeccion(d, cfg.proy_forward, cfg.proy_desacel, cfg.proy_guia, { organico: cfg.organico, guia_tipo: cfg.guia_tipo });
   if (cfg.proy_guia && c.guia_12m_pct == null) avisos.push('Sin guía de la empresa (crecimiento.guia_12m_pct): proyección como v7.');
   const ev = d.precio * d.acciones_diluidas_m + (d.deuda_m ?? 0) - (d.caja_m ?? 0);
   const gNtm = v.crecimiento_actual_pct ?? pr.g1;
@@ -175,7 +193,12 @@ export function calcular(d, cfg = VERSIONES[VIGENTE]) {
   const mObj = cfg.margen_obj && esEbitda && multEbitda && v.margen_ebitda_obj_pct != null ? v.margen_ebitda_obj_pct / 100 : null;
   const margenes = mObj === null ? { bajista: margenImpl, base: margenImpl, alcista: margenImpl }
     : { bajista: margenImpl, base: (margenImpl + mObj) / 2, alcista: mObj };
-  const gAct = v.crecimiento_actual_pct ?? pr.g1, gObj = v.crecimiento_obj_pct ?? pr.g_final;
+  let gAct = v.crecimiento_actual_pct ?? pr.g1;
+  const gObj = v.crecimiento_obj_pct ?? pr.g_final;
+  // v12: la rebaja por desaceleración se mide desde el crecimiento orgánico (sin compras), si se conoce,
+  // y, si el tope del 60 % ya recorta la proyección, desde la partida topada (sin doble castigo)
+  if (cfg.organico && c.crecimiento_actual_organico_pct != null) gAct = c.crecimiento_actual_organico_pct;
+  if (cfg.desac_desde_partida && pr.topado) gAct = Math.min(gAct, pr.g1);
   const factorDesac = cfg.desaceleracion && gAct > 0 && gObj < gAct ? Math.max(cfg.desac_min, Math.pow(Math.max(0, gObj) / gAct, cfg.desac_exp)) : 1;
   const ref = cfg.objetivo === 'actual' ? multActual : Math.min(multActual, v.mediana_3a ?? multActual);
   const mBase = ref * factorDesac;
@@ -215,6 +238,10 @@ export function calcular(d, cfg = VERSIONES[VIGENTE]) {
   if (cfg.ratio_max !== null && ratio > cfg.ratio_max) falta.push(`EV/ventas ÷ crecimiento > ${cfg.ratio_max}`);
   if (euforia && cfg.euforia.modo === 'veto') falta.push('euforia');
   if (cfg.evbb_max !== null && !(evbb <= cfg.evbb_max)) falta.push(`EV/beneficio bruto > ${cfg.evbb_max}`);
+  // v12: euforia en las valoradas por EBITDA: múltiplo de hoy > ratio × su mediana de 3 años y subida a 12 m ≥ umbral
+  const ee12 = cfg.euforia_ebitda;
+  const euforiaEbitda = !!(ee12 && esEbitda && v.mediana_3a > 0 && subida != null && multActual > ee12.ratio * v.mediana_3a && subida >= ee12.subida);
+  if (euforiaEbitda && ee12.modo === 'veto') falta.push('euforia (múltiplo de EBITDA)');
   let senal, motivo;
   if (puntuacion < cfg.venta.puntuacion || ponderada <= cfg.venta.ponderada || pista < 12 || d.tesis_rota) {
     senal = 'Vender';
@@ -265,6 +292,13 @@ export function calcular(d, cfg = VERSIONES[VIGENTE]) {
     const top2 = m.clientes_top2_pct ?? null, top3 = m.clientes_top3_pct ?? null;
     if (top2 > 40 || top3 > 60) alertas.push(top2 > 40 ? `Dos clientes suman el ${fx(top2)} % de las ventas (> 40 %): concentración que el método no puntúa.`
       : `Tres clientes suman más del ${fx(top3)} % de las ventas (luego dos, > 40 %): concentración que el método no puntúa.`);
+    if (euforiaEbitda) alertas.push(`Euforia en múltiplo de EBITDA: ${fx(multActual, 1)}x es > ${fx(ee12.ratio, 1)} × su mediana de 3 años (${fx(v.mediana_3a, 1)}x) tras subir un ${fx(subida)} % en 12 meses (≥ ${ee12.subida} %)${ee12.modo === 'veto' ? ': veta la compra' : ': no veta (sin muestra para probarlo)'}.`);
+    if (cfg.alerta_mecanica_corta) {
+      if (vaBase !== null && !vaOtraUnidad && pr.base < 0.85 * vaBase)
+        alertas.push(`Proyección mecánica (${fx(pr.base)} M) < 0,85 × la del analista (${fx(vaBase)} M): el motor es mucho más prudente que el informe y manda la mecánica (tope del 60 %, guía…); en el backtest, con crecimientos > 60 %, esa prudencia acertó.`);
+      if (v.consenso_ventas_obj_m > 0 && pr.base < 0.85 * v.consenso_ventas_obj_m)
+        alertas.push(`Proyección mecánica (${fx(pr.base)} M) < 0,85 × el consenso (${fx(v.consenso_ventas_obj_m)} M): el motor proyecta mucho menos que el mercado (no cambia nada; explicar por qué en el informe).`);
+    }
     if (f.sbc_sobre_ventas_pct > 15) alertas.push(`Pagos en acciones del ${fx(f.sbc_sobre_ventas_pct, 1)} % de las ventas (> 15 %): la regla del 40 y el FCF no los restan.`);
   }
 
@@ -282,6 +316,7 @@ export function calcular(d, cfg = VERSIONES[VIGENTE]) {
       margen_ebitda_pct: { hoy: r1(margenImpl * 100), base: r1(margenes.base * 100), objetivo: mObj === null ? null : r1(mObj * 100) } } : {}),
     ventas_analista_m: v.ventas_objetivo_m ?? null, conviccion, peso_orientativo_pct: peso, precio_max_compra: precioMax, avisos,
     ...(cfg.alertas ? { alertas } : {}),
+    ...(cfg.v12 ? { g_actual_desac_pct: r1(gAct), exceso_guia_usado_pp: r1(pr.exceso_usado), euforia_ebitda: euforiaEbitda } : {}),
   };
 }
 

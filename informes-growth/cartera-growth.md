@@ -1,6 +1,6 @@
 # Cartera growth (bolsillo growth)
 
-Órdenes growth vigentes (14-oct-2026; compras aprobadas por el usuario a las 15:29 y órdenes delegadas a las 15:39). Método vigente v11. Bolsillo growth ≈ 20 % de la cartera (tope): está lleno, así que un Comprar nuevo solo entra sustituyendo a otra. Ninguna orden se ha ejecutado aún: el usuario las lanza el 15-oct (`informes/ordenes-2026-10-15.md`).
+Órdenes growth vigentes (14-oct-2026; compras aprobadas por el usuario a las 15:29 y órdenes delegadas a las 15:39). Método vigente v11. Bolsillo growth ≈ 20 % de la cartera (tope): está lleno, así que un Comprar nuevo solo entra sustituyendo a otra. Son PROPUESTAS: regla dura del usuario (14-oct 18:04), no se emite ninguna orden salvo que él la diga explícitamente en el chat y la confirme tras pedirle confirmación. Ninguna orden se ha ejecutado aún (`informes/ordenes-2026-10-15.md`).
 
 | Valor | Total | Tramo 1 (ya, con límite) | Tramo 2 | Límite máximo | Peso | Motivo de negocio |
 |---|---|---|---|---|---|---|
@@ -13,7 +13,7 @@
 - Si el precio supera el límite, no se compra. Salida por tesis (señales de venta de cada informe), no por precio.
 - **argenx sale y entra Samsara (14-oct 17:16 UTC, v11):** con las ventas de su propio informe (9.300 M, como el consenso) y no la proyección mecánica (12.612 M), argenx baja de +44 % a +10 % (baja convicción); Samsara da +15 % con convicción media. La orden de argenx no se había ejecutado: cambiarla no cuesta nada. argenx queda de suplente y se revisa con sus resultados del 22-oct.
 - Liquidez: los tramos 1 suman ≈3.090 EUR; el de Snowflake se paga cancelando la orden con límite value de Deutsche Börse. Los tramos 2 salen de la liquidez que quede tras las órdenes value ejecutadas o vencidas el 7-nov.
-- Suplentes growth, por orden (14-oct 17:48 UTC tras la tanda 10, v11, rentabilidad al precio actual con el objetivo fijo): 1) MongoDB (Comprar baja, +21 %, consejero delegado interino; ≤ 411 USD prudente); 2) Toast (Comprar baja, +15 %; ≤ 32,1 USD); 3) Zscaler (Comprar baja, +15 %; ≤ 244,3 USD); 4) Dexcom (Comprar baja, +12 %; ≤ 89,5 USD); 5) Datadog (Comprar media, +10 %; ≤ 282 USD prudente); 6) argenx (Comprar baja, +10 %; ≤ 866,8 USD; resultados 22-oct); 7) Natera (Comprar baja, +7 %; alerta: múltiplo > 2 × su mediana; ≤ 407,5 USD); 8) Saab (Comprar baja, +6 % a 610,5 SEK; ≤ 616,3 SEK; única de defensa europea; resultados 23-oct). Mantener: Eli Lilly (con las ventas de su informe, −5 %), Wise (+4 %; 2T el 15-oct), Arista, DoorDash, HubSpot, Insulet, Vertex (−5 %), Kinsale (+7 %, puntuación < 60), TransMedics (−4 %), Rolls-Royce (−6 %), Howmet (−10 %). No comprar: GE Vernova, Celestica, Monolithic Power, Boston Scientific, Comfort Systems, Quanta Services (−19 %), Insmed (−30 %).
+- Suplentes growth, por orden (14-oct 18:14 UTC tras la tanda 11, v11, rentabilidad al precio actual con el objetivo fijo): 1) MongoDB (Comprar baja, +22 %, consejero delegado interino; ≤ 411 USD prudente); 2) Toast (Comprar baja, +15 %; ≤ 32,1 USD); 3) Zscaler (Comprar baja, +15 %; ≤ 244,3 USD); 4) dLocal (Comprar baja, +17 %; ≤ 16,4 USD; detrás de las dos anteriores porque su señal es frágil: si se proyecta con el beneficio bruto, que crece menos por la caída de la comisión, sale Vender; y sumaría más Latinoamérica a Nu); 5) Dexcom (Comprar baja, +12 %; ≤ 89,5 USD); 6) Datadog (Comprar media, +11 %; ≤ 282 USD prudente); 7) argenx (Comprar baja, +10 %; ≤ 866,8 USD; resultados 22-oct); 8) Natera (Comprar baja, +8 %; alerta: múltiplo > 2 × su mediana; ≤ 407,5 USD); 9) Saab (Comprar baja, +6 %; ≤ 616,3 SEK; resultados 23-oct). Mantener: Eli Lilly, Wise (2T el 15-oct), Arista, DoorDash, HubSpot, Insulet, Vertex, Kinsale, TransMedics, Rolls-Royce, Howmet. No comprar: GE Vernova, Celestica, Monolithic Power, Boston Scientific, Comfort Systems, Quanta Services, Insmed, Alnylam, AeroVironment, Celsius.
 
 ## Revisión de precios antes de cada orden
 
@@ -21,10 +21,10 @@ Regla del usuario (14-oct, 16:10): antes de proponer o mantener una orden, se mi
 
 | Valor | Precio y hora | Límite (v11) | Ponderada al precio actual | Señal (v11) | ¿Sigue en pie? |
 |---|---|---|---|---|---|
-| Nu Holdings | 15,01 USD, 14-oct 17:48 UTC | 16,6 USD | +19,3 % | Comprar (media) | Sí |
-| Axon | 400,90 USD, 14-oct 17:48 UTC | 476 USD | +36,4 % | Comprar (baja) | Sí |
-| Shopify | 170,97 USD, 14-oct 17:48 UTC | 192,1 USD | +18,0 % | Comprar (media) | Sí |
-| Snowflake | 339,83 USD, 14-oct 17:48 UTC | 368 USD | +13,8 % | Comprar (media) | Sí |
-| Samsara | 40,70 USD, 14-oct 17:48 UTC | 45,1 USD | +16,2 % | Comprar (media) | Sí |
+| Nu Holdings | 14,90 USD, 14-oct 18:14 UTC | 16,6 USD | +20,1 % | Comprar (media) | Sí |
+| Axon | 399,56 USD, 14-oct 18:14 UTC | 476 USD | +36,9 % | Comprar (baja) | Sí |
+| Shopify | 171,12 USD, 14-oct 18:14 UTC | 192,1 USD | +17,9 % | Comprar (media) | Sí |
+| Snowflake | 339,00 USD, 14-oct 18:14 UTC | 368 USD | +14,0 % | Comprar (media) | Sí |
+| Samsara | 40,58 USD, 14-oct 18:14 UTC | 45,1 USD | +16,6 % | Comprar (media) | Sí |
 
 Precios de Yahoo (chart API, sesión en curso). **Rentabilidad esperada del bolsillo growth** (media ponderada por importe, objetivo fijo al precio actual): +20 % con las posiciones completas y +21 % con los tramos 1; lo realista, cerca de la mitad.
