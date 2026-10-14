@@ -5,13 +5,14 @@
 //   node herramientas/robustez-growth.mjs [<carpeta> …]          (sin carpetas: todas las de informes-growth/)
 //   NODE_USE_ENV_PROXY=1 node herramientas/robustez-growth.mjs --precios   con el último precio de Yahoo (objetivo fijo)
 //   … --escribir   guarda informes-growth/robustez.json
+//   … --json       imprime el JSON en vez del texto (escáner diario)
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { calcular, VERSIONES, VIGENTE } from '../motor/growth.mjs';
 import { ultimoCierre } from './precios.mjs';
 
 const args = process.argv.slice(2);
 const bandera = (k) => { const i = args.indexOf(k); if (i >= 0) args.splice(i, 1); return i >= 0; };
-const conPrecios = bandera('--precios'), escribir = bandera('--escribir');
+const conPrecios = bandera('--precios'), escribir = bandera('--escribir'), comoJson = bandera('--json');
 const f = (x, d = 1) => (x === null || x === undefined || !Number.isFinite(x) ? 'n.d.' : x.toLocaleString('es-ES', { minimumFractionDigits: d, maximumFractionDigits: d }));
 const r = (x, d = 1) => (x === null || x === undefined || !Number.isFinite(x) ? null : Math.round(x * 10 ** d) / 10 ** d);
 const RAIZ = 'informes-growth';
@@ -50,10 +51,12 @@ for (const c of carpetas) {
   ].map(([n, x]) => ({ variante: n, ponderada: x.rent_ponderada_pct, base: x.rent_base_pct, senal: x.senal, objetivo: x.objetivo_12m }));
 
   // G1 precio de hoy frente al del informe; la rentabilidad se recalcula con el OBJETIVO FIJO (regla del 14-oct, caso Nu).
-  let precioHoy = null, fechaHoy = null;
+  let precioHoy = null, fechaHoy = null, simbolo = null, divisaHoy = null;
   if (conPrecios) {
     const suf = (SUF.find(([re]) => re.test(d.bolsa || '')) || [null, ''])[1];
-    const q = await ultimoCierre(`${String(d.ticker).trim()}${suf}`);
+    simbolo = `${String(d.ticker).trim()}${suf}`;
+    const q = await ultimoCierre(simbolo);
+    divisaHoy = q.divisa || null;
     if (!q.error) { precioHoy = q.en_curso?.precio ?? q.precio; fechaHoy = q.en_curso?.fecha ?? q.fecha; }
     if (q.divisa && d.moneda && q.divisa.toUpperCase() !== String(d.moneda).toUpperCase()) marca('G1', 'CORREGIR', `Yahoo cotiza en ${q.divisa} y el informe en ${d.moneda}.`);
   }
@@ -97,9 +100,15 @@ for (const c of carpetas) {
   res.push({ carpeta: c, empresa: d.empresa, ticker: d.ticker, precio_informe: d.precio, precio_hoy: precioHoy, fecha_hoy: fechaHoy,
     senal: vig.senal, ponderada: vig.rent_ponderada_pct, base: vig.rent_base_pct, conviccion: vig.conviccion, precio_max_compra: vig.precio_max_compra,
     veredicto: bloq ? 'BLOQUEADA' : senales.length === 1 ? 'SÓLIDA' : 'FRÁGIL', senal_robusta: robusta,
+    // Para el escáner diario: objetivo fijo del informe y rentabilidad al precio de hoy.
+    simbolo, divisa: divisaHoy || d.moneda, objetivo_12m: vig.objetivo_12m, objetivo_base: vig.casos.base.precio, puntuacion: vig.puntuacion,
+    ponderada_hoy: precioHoy ? r((vig.objetivo_12m / precioHoy - 1) * 100 + (v.dividendo_pct ?? 0)) : null,
+    base_hoy: precioHoy ? r((vig.casos.base.precio / precioHoy - 1) * 100 + (v.dividendo_pct ?? 0)) : null,
+    listones: { ponderada: V.compra.ponderada, base: V.compra.base, vender: V.venta.ponderada },
     frente: defendibles.filter((x) => x.senal !== vig.senal).map((x) => `${x.variante}: ${x.senal} (${f(x.ponderada)} %)`), marcas, variantes });
 }
-for (const x of res) {
+if (comoJson) console.log(JSON.stringify(res, null, 1));
+else for (const x of res) {
   console.log(`\n${x.empresa} (${x.carpeta}) · ${VIGENTE} ${f(x.ponderada)} % / base ${f(x.base)} % → ${x.senal}${x.conviccion ? ` (${x.conviccion})` : ''} · precio informe ${f(x.precio_informe, 2)}${x.precio_hoy ? `, hoy ${f(x.precio_hoy, 2)} (${x.fecha_hoy})` : ''} · máx. compra ${f(x.precio_max_compra, 2)}`);
   console.log(`  Veredicto: ${x.veredicto}. Señal robusta: ${x.senal_robusta}.${x.frente.length ? ` Cambia con: ${x.frente.join('; ')}.` : ''}`);
   for (const m of x.marcas) console.log(`  [${m.codigo} ${m.tratamiento}] ${m.texto}`);

@@ -9,6 +9,10 @@
 //                                                               y verticales/empresa/robustez.md con --escribir)
 //   … --escribir                                                guarda los resultados (si no, solo imprime)
 //   … --json                                                    imprime el JSON en vez del texto
+//   … --actual                                                  con la sesión en curso de precios.json (si la hay) en vez del
+//                                                               último cierre (escáner diario, herramientas/escaner-diario.mjs)
+//   … --bpa-factor 0,95                                         «Vup» del escáner: BPA de los tres escenarios × factor (resultados
+//                                                               publicados después del informe); solo en memoria, no toca el informe
 //
 // Tratamientos (columna «tratamiento»):
 //   CORREGIR   el dato está mal (precio, divisa, BPA): no se da señal hasta corregirlo.
@@ -24,7 +28,9 @@ import { leerPrecios, factorDivisa } from './precios.mjs';
 
 const args = process.argv.slice(2);
 const bandera = (k) => { const i = args.indexOf(k); if (i >= 0) args.splice(i, 1); return i >= 0; };
-const todas = bandera('--todas'), escribir = bandera('--escribir'), comoJson = bandera('--json');
+const iBpa = args.indexOf('--bpa-factor'), BPA_FACTOR = iBpa >= 0 ? Number(String(args.splice(iBpa, 2)[1]).replace(',', '.')) : 1;
+if (!(BPA_FACTOR > 0)) throw new Error('--bpa-factor necesita un número positivo (ej. 0.95)');
+const todas = bandera('--todas'), escribir = bandera('--escribir'), comoJson = bandera('--json'), actual = bandera('--actual');
 const HOY = new Date().toISOString().slice(0, 10);
 const num = (v) => (v === null || v === undefined || v === '' || Number.isNaN(Number(v)) ? null : Number(v));
 const r = (x, d = 1) => (x === null || x === undefined || !Number.isFinite(x) ? null : Math.round(x * 10 ** d) / 10 ** d);
@@ -86,13 +92,15 @@ function probar(carpeta) {
   const d = ultimoDatos(carpeta);
   if (!d?.valoracion?.objetivo_12m?.casos) return null;
   const cx = contexto(d);
+  if (BPA_FACTOR !== 1) for (const c of cx.o.casos || []) if (num(c.beneficio_por_accion) !== null) c.beneficio_por_accion = +c.beneficio_por_accion * BPA_FACTOR;
   const id = d.identificacion || {}, meta = d.meta || {};
   const rev = Object.entries(REV).find(([, v]) => v.carpeta === carpeta);
   const clave = rev?.[0] || String(id.ticker || '').trim().toUpperCase().replace(/\s+/g, '-');
   const pr = PRECIOS[clave] || Object.values(PRECIOS).find((x) => x.carpeta === carpeta) || null;
   const tc = num(meta.tipo_cambio) || 1, divCot = meta.divisa_cotizacion || meta.divisa;
   const fac = pr && !pr.error ? factorDivisa(pr.divisa, divCot) : null;
-  const precioYahoo = pr && fac !== null && !pr.error ? pr.precio * fac * tc : null; // en la divisa de las cuentas
+  const prP = actual && pr?.en_curso ? pr.en_curso.precio : pr?.precio; // --actual: sesión en curso si la hay
+  const precioYahoo = pr && fac !== null && !pr.error ? prP * fac * tc : null; // en la divisa de las cuentas
   const precio = precioYahoo ?? rev?.[1]?.precio_ref ?? cx.precioInforme;
   const marcas = [];
   const marca = (codigo, tratamiento, texto) => marcas.push({ codigo, tratamiento, texto });
@@ -113,7 +121,7 @@ function probar(carpeta) {
       if ((pc < min52 * 0.9 || pc > max52 * 1.1)) marca('D1', 'CORREGIR', `El precio del informe queda fuera de su rango de 52 semanas (${f(min52, 2)}-${f(max52, 2)}): precio o rango mal leídos.`);
     }
   } else marca('D3', 'AVISO', `Sin cierre de mercado en precios.json${pr?.error ? ` (${pr.error})` : ''}: no se puede comprobar el precio.`);
-  const fechaPrecio = pr?.fecha || rev?.[1]?.fecha_precio || id.fecha_precio;
+  const fechaPrecio = (actual && pr?.en_curso?.fecha) || pr?.fecha || rev?.[1]?.fecha_precio || id.fecha_precio;
   if (fechaPrecio && dias(fechaPrecio, HOY) > 4) marca('D3', 'CORREGIR', `Precio del ${fechaPrecio} (${dias(fechaPrecio, HOY)} días): actualizar con herramientas/precios.mjs antes de dar señal.`);
   // D4 BPA real coherente con beneficio ÷ acciones.
   const cuenta = (d.financieros?.cuenta || []).filter((c) => num(c.bpa) !== null);
@@ -246,7 +254,7 @@ function probar(carpeta) {
   // Colchón de BPA: cuánto puede bajar nuestro BPA (los tres escenarios) antes de perder la acción de hoy.
   const colchonBpa = (cond) => { if (!vig?.completo || !cond(vig, precio, cx.vi)) return null; for (let e = 1; e >= 0.5; e -= 0.01) { const c = evaluar(cx, { precio, escalaBpa: e }); if (!c?.completo || !cond(c, precio, cx.vi)) return r((1 - e) * 100, 0); } return 50; };
   return {
-    carpeta, clave, nombre: id.nombre_corto || id.nombre, divisa: meta.divisa, precio: r(precio, 2), fecha_precio: fechaPrecio,
+    carpeta, clave, nombre: id.nombre_corto || id.nombre, ...(BPA_FACTOR !== 1 ? { bpa_factor: BPA_FACTOR } : {}), divisa: meta.divisa, precio: r(precio, 2), fecha_precio: fechaPrecio,
     version: vig?.version, ponderada: vig?.rentabilidad_ponderada_pct ?? null, base: vig?.rentabilidad_base_pct ?? null, senal: vig?.senal ?? null,
     v2: cv2?.completo ? cv2.rentabilidad_ponderada_pct : null, cagr_bpa: r(cagr), dif_consenso: r(difCons),
     veredicto, accion_vigente: v0 && !v0.error ? accion(v0) : null, accion_robusta: bloq ? 'Sin señal (corregir dato)' : robusta, frente, colchon,

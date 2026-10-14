@@ -41,6 +41,10 @@ Para rehacer el Word de informes hechos con el motor vigente (sin investigar de 
 
 Para buscar qué analizar («busca oportunidades», «escanea Europa», «qué nichos de agua hay»), el procedimiento está en `.claude/commands/escanea-mercado.md`: `herramientas/escaner.mjs` filtra todas las cotizadas de las tres regiones con los perfiles editables de `escaner/perfiles.json` y deja un Excel en `escaneos/`. Es código, sin coste de API; las candidatas se proponen al usuario y no se lanzan análisis sin su visto bueno.
 
+## Escáner diario de señales (14-oct-2026)
+
+De lunes a viernes a las 9:30 y 15:45 de Madrid una tarea programada lanza `herramientas/escaner-diario.mjs`: precio de ahora de todas las analizadas, robustez con el objetivo fijo y reglas de cartera; las candidatas pasan un «Vup» (lo publicado después del informe + método vigente + robustez) antes de ser señal de compra o venta, y todo queda en `escaner/registro-senales.json` y `escaner/SENALES.md` con su seguimiento frente al índice. Procedimiento: `escaner/README.md`. La cartera que lee está en `escaner/cartera.json` (la mantiene el hilo value).
+
 ## ETF y sector
 
 **Sector, desde el 14-oct-2026: ficha corta primero.** Antes de analizar la primera empresa de un sector sin ficha (o cuando una tanda trae dos o más del mismo sector), se hace `verticales/sector/ficha.md` (6 campos, 15-20 minutos, queda en `sectores/`) y los informes value reutilizan su perímetro, su `mercado_final` y sus comparables. El informe Word de 18 campos de abajo solo si el usuario lo pide expresamente.
