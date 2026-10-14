@@ -8,3 +8,4 @@
 - 12:30 Supuestos: guía 2026 (+13,4 %, fija), consenso 2027-2028, margen EBITDA del 32,3 % al 39,5 %; capex = inmovilizado + exceso de pagos de contenidos sobre su amortización (5,1 % → 3,3 %); WACC 11,47 % (beta 1,20); etapa de transición de 7 años. DCF 60,38 USD; objetivo 61,10 (−13,1 %); con la prima del mercado 73,49 (+4,5 %). Regla: Mantener (absoluta Vender, relativa Mantener), convicción Baja (sugerida). Sostenibilidad «Sí».
 - 12:40 Word y PDF (50 páginas); portada, síntesis y «La decisión» revisadas. Quedan 2 controles en «Revisar», explicados (comparables).
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 103,3 USD, rentabilidad +47,0 %, señal Comprar (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +31,8 % → +18,5 %, base +16,0 %, señal Mantener (`revision-12m-2026-10-13.md`).

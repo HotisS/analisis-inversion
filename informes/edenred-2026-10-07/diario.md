@@ -76,3 +76,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 4. **La división volumen/precio en un negocio de comisiones sobre volumen** no está definida en el prompt (¿el valor facial es volumen o precio?). Aquí: volumen = volumen de negocio a comisión media constante (incluye valor facial); precio = cambio de la comisión media. Arreglo: una línea en el prompt para plataformas con tasa sobre volumen.
 
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 39,63 EUR, rentabilidad +48,3 %, señal Comprar (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +31,0 % → +11,6 %, base +16,9 %, señal Mantener (`revision-12m-2026-10-13.md`).
