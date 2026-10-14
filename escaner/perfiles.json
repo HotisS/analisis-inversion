@@ -420,6 +420,70 @@
         "potencial_analistas": 1
       },
       "excluir_industrias": "Gold|Silver|Precious Metals|Copper|Uranium|Other Industrial Metals|Aluminum|Steel|Coking Coal|Thermal Coal|Oil & Gas E&P|Oil & Gas Integrated|Oil & Gas Drilling|Agricultural Inputs"
+    },
+    "calidad-a-precio": {
+      "activo": false,
+      "descripcion": "Perfil de la 8ª hora value (14-oct-2026), hecho a partir de los 32 análisis de la 6ª y 7ª hora: casi todos cayeron por el valor intrínseco (el precio pedía más crecimiento del que han dado) o por calidad. Exige ROIC − WACC ≥ 5 (aprox. del escáner, con fondo de comercio), precio que pide menos crecimiento del que han dado, flujo libre decente, deuda moderada y margen estable. Sin juego, comercio minorista ni materias primas.",
+      "buscador": [
+        [
+          "returnontotalcapital.lasttwelvemonths",
+          ">=",
+          8
+        ],
+        [
+          "netdebtebitda.lasttwelvemonths",
+          "<=",
+          2.5
+        ]
+      ],
+      "filtros": [
+        [
+          "roic_wacc",
+          ">=",
+          5
+        ],
+        [
+          "margen_seguridad",
+          ">=",
+          1
+        ],
+        [
+          "fcf_yield",
+          ">=",
+          4
+        ],
+        [
+          "dn_ebitda",
+          "<=",
+          2
+        ],
+        [
+          "rango_margen",
+          "<=",
+          10
+        ],
+        [
+          "crec_ventas_3a",
+          ">=",
+          3
+        ],
+        [
+          "per_adelantado",
+          "<=",
+          24
+        ]
+      ],
+      "puntuacion": {
+        "margen_seguridad": 3,
+        "roic_wacc": 2,
+        "fcf_yield": 2,
+        "rango_margen": -1,
+        "conversion_fcf": 1,
+        "dn_ebitda": -1,
+        "caida_max52": -1
+      },
+      "excluir": "\\b(casino|gaming|gambling|betting|lottery|wagering)\\b",
+      "excluir_industrias": "Gambling|Resorts & Casinos|Retail|Grocery|Gold|Silver|Precious Metals|Copper|Uranium|Other Industrial Metals|Aluminum|Steel|Coking Coal|Thermal Coal|Oil & Gas|Agricultural Inputs|Banks|Insurance|Biotechnology"
     }
   }
 }
