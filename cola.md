@@ -6,24 +6,9 @@ Solo lo pendiente. Lo cerrado está en `archivo/` (índice en `archivo/HISTORICO
 
 ## Pendiente
 
-Cuarta hora, de 4 en 4 (arrancó a las 13:30 del 14-oct al terminar la tercera). En curso: Aena, Meta, Nestlé y Mastercard. Después, en este orden:
+Cuarta hora terminada (14:50 del 14-oct). Nada en curso: la quinta hora espera el visto bueno del usuario.
 
-| Tanda | Empresa | Ticker | Estilo | Por qué |
-|---|---|---|---|---|
-| 2 | Novartis | NOVN.SW | Valor | Farmacia pura tras escindir Sandoz, dividendo |
-| 2 | Tencent | 0700.HK | Crecimiento | Juegos, pagos y nube en China, recompras fuertes |
-| 2 | Bureau Veritas | BVI.PA | Valor | Inspección y certificación, ingresos recurrentes |
-| 2 | Cadence Design | CDNS | Crecimiento | Software de diseño de chips, duopolio |
-| 3 | Heineken | HEIA.AS | Valor | Cerveza premium castigada, cotiza bajo su media |
-| 3 | Straumann | STMN.SW | Crecimiento | Implantes dentales, líder mundial |
-| 3 | Unilever | ULVR.L | Valor | Consumo básico en reestructuración, dividendo |
-| 3 | EssilorLuxottica | EL.PA | Crecimiento | Óptica integrada, poder de precio |
-| 4 | Teleperformance | TEP.PA | Valor | Muy barata por el miedo a la IA; prueba de la tesis |
-| 4 | Nvidia | NVDA | Crecimiento | Para tenerla medida con el método común |
-| 4 | Ashtead | AHT.L | Valor | Alquiler de maquinaria en EE. UU., cíclica de calidad |
-| 4 | Lonza | LONN.SW | Crecimiento | Fabricación para farmacéuticas (CDMO) |
-
-## Quinta hora (propuesta el 14-oct, 13:45; arranca al entregar la cuarta), de 4 en 4
+## Quinta hora (propuesta el 14-oct, 13:45; pendiente del visto bueno del usuario), de 4 en 4
 
 | Tanda | Empresa | Ticker | Estilo | Por qué |
 |---|---|---|---|---|

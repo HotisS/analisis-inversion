@@ -12,6 +12,7 @@
 ## Cambios
 
 ### 14-oct-2026
+- **Cartera de las 14:50** (`informes/cartera-2026-10-14-15h.md`) sustituye a la de las 13:45: entra Bureau Veritas (pasa los tres requisitos). 16 análisis value de la cuarta hora; suplente nuevo Unilever. Desde las 14:22 estos análisis se llaman «value» (hay una vertical growth aparte).
 - **Cartera de las 13:45** (`informes/cartera-2026-10-14-14h.md`) sustituye a la de las 13:00: Rightmove fuera por decisión del usuario; 16 análisis de la tercera hora, ninguno pasa los requisitos (Sanofi falla calidad). Suplentes nuevos: Deutsche Börse y Amadeus.
 - **Cartera de las 13:00** (`informes/cartera-2026-10-14-13h.md`) sustituye a la de las 11:50: entra Rightmove (pasa los tres requisitos al límite). 12 análisis más en la segunda hora.
 - **Cartera de la tarde** (`informes/cartera-2026-10-14-tarde.md`) sustituye a la de la mañana: 4.000 EUR más de liquidez, Nemetschek 29 y LVMH 5, liquidez ≈6.300 EUR con suplentes (Experian nueva). 14 análisis nuevos desde la nube, ninguno pasa los tres requisitos al precio de hoy.
