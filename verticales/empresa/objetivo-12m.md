@@ -47,7 +47,7 @@
 - **Resultado**: `verticales/empresa/objetivo12m-revisados.json`, que escribe `node herramientas/apuntar-12m.mjs <carpeta…>` leyendo `valoracion.objetivo_12m` del último `datos*.json` con la misma función del motor (`--precio X` para recalcular a otro precio). **Manda sobre todo lo demás** en el Excel y la cartera.
 - `herramientas/objetivo12m.mjs`: calculadora de apoyo para empezar una revisión. No es la revisión.
 - `seguimiento.xlsx`: columnas «Objetivo 12 m», «Rentabilidad 12 m», «Señal 12 m» y «Origen del objetivo 12 m».
-- **Cartera y compras**: se ordenan por la rentabilidad a 12 meses **al precio del día**. El valor intrínseco se da al lado como «valor real».
+- **Cartera y compras**: se ordenan por la rentabilidad a 12 meses **al precio del día**. El valor intrínseco se da al lado como «valor real». **Un precio, una fecha** (14-oct-2026): `node herramientas/precios.mjs` deja el último cierre de todas en `verticales/empresa/precios.json` y `node herramientas/apuntar-12m.mjs --precios --todos` recalcula las revisiones al mismo cierre (el PER actual se mueve con el precio; el BPA, el dividendo y el valor intrínseco no). `--simular` enseña qué cambia sin escribir. En la regla v2 el bajista salta cuando el mínimo de 5 años cruza el base (Lonza: +2,7 % de precio y la ponderada sube de 15,7 a 18,0 %); v3 no tiene ese escalón.
 
 ## Qué no es
 

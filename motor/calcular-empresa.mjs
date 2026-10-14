@@ -764,6 +764,15 @@ export function calcularEmpresa(datos) {
   // Confianza de datos «Baja» (decisión del usuario, 14-oct-2026): la regla da Comprar pero la señal se queda en
   // Mantener hasta confirmar las cifras con fuente primaria; se avisa en los controles y en «La decisión».
   if (con12 && o12.senal_sin_confirmar) control('Comprar pendiente de confirmar los datos (confianza baja)', false, `La regla a 12 meses da «${o12.senal_sin_confirmar}» pero la confianza del resumen es Baja: la señal se queda en Mantener; di en la síntesis qué cifras hay que confirmar con fuente primaria.`);
+  // Un precio, una fecha (14-oct-2026): el precio del informe tiene que ser el cierre de la fecha de corte o de una
+  // de las dos sesiones anteriores; con uno más viejo (Bureau Veritas se cerró Comprar con un cierre de seis días
+  // antes) no se cierra un Comprar: herramientas/precios.mjs trae el último cierre y apuntar-12m lo recalcula.
+  if (id.fecha_precio && /^\d{4}-\d{2}-\d{2}$/.test(id.fecha_precio)) {
+    let sesiones = 0;
+    for (let t = new Date(id.fecha_precio + 'T00:00:00Z'); t < fechaCorte; t.setUTCDate(t.getUTCDate() + 1)) if (![0, 6].includes(t.getUTCDay())) sesiones++;
+    const viejo = sesiones > 2;
+    control('Precio del cierre de la fecha de corte (o de las dos sesiones anteriores)', !viejo, viejo ? `El precio es del ${id.fecha_precio}, ${sesiones} sesiones antes del corte (${meta.fecha_corte}): con un precio viejo no se cierra un Comprar. Último cierre: node herramientas/precios.mjs <ticker>; luego herramientas/apuntar-12m.mjs --precios.` : '');
+  }
   if (con12 && !/^adelantad/i.test(String(d.valoracion?.objetivo_12m?.per_historico?.base || ''))) control('Historia del PER en la misma base que el actual (regla v3)', false, 'per_historico no lleva base: "adelantado" (precio de cierre ÷ BPA del año siguiente): el motor aplica la regla v2 antigua, sesgada contra las empresas baratas. En un informe nuevo, rellena la historia adelantada.');
   const potRel = relativo?.valor_objetivo && precio ? pct(relativo.valor_objetivo - precio, precio) : null;
   const asimRel = relativo && relativo.alcista !== null && relativo.bajista !== null && relativo.bajista < precio ? (relativo.alcista / precio - 1) / Math.abs(relativo.bajista / precio - 1) : null;

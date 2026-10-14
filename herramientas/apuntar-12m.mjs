@@ -1,39 +1,83 @@
-// Apunta la rentabilidad a 12 meses v2 (verticales/empresa/objetivo-12m.md) de uno o varios informes en
+// Apunta la rentabilidad a 12 meses (verticales/empresa/objetivo-12m.md, reglas v2/v3) de uno o varios informes en
 // verticales/empresa/objetivo12m-revisados.json. Lee `valoracion.objetivo_12m` del último datos*.json de cada carpeta
 // y calcula con la MISMA función que el motor (motor/objetivo12m.mjs): múltiplos con la regla común, media ponderada
 // con las probabilidades de los escenarios, rentabilidad del base y señal. Sin dependencias.
 //
 //   node herramientas/apuntar-12m.mjs <carpeta> [<carpeta> …] [--fecha AAAA-MM-DD]
+//   node herramientas/apuntar-12m.mjs <carpeta> --precio 2447          precio de hoy EN LA DIVISA DE COTIZACIÓN (la del
+//                                                                      broker: peniques si el informe cotiza en GBp)
+//   node herramientas/apuntar-12m.mjs --precios [--todos | <carpeta> …] último cierre de verticales/empresa/precios.json
+//                                                                      (node herramientas/precios.mjs) para todas al
+//                                                                      mismo cierre: antes de una cartera o una compra
+//   … --simular                                                        enseña lo que cambia sin escribir
+//
+// Con un precio nuevo, el PER actual de la historia (`per_historico.actual` = precio ÷ BPA) se mueve en la misma
+// proporción; el dividendo por acción y el valor intrínseco no cambian. El precio se guarda en la divisa de las
+// cuentas (la del informe), pasado con `meta.tipo_cambio` del informe.
 //
 // Después: node herramientas/seguimiento.mjs.
 import { readFileSync, writeFileSync } from 'node:fs';
 import { ultimoDatos } from './objetivo12m.mjs';
 import { calcularObjetivo12m } from '../motor/objetivo12m.mjs';
+import { leerPrecios, factorDivisa } from './precios.mjs';
 
 const P = new URL('../verticales/empresa/objetivo12m-revisados.json', import.meta.url);
 const J = JSON.parse(readFileSync(P, 'utf8'));
 const args = process.argv.slice(2);
-const iF = args.indexOf('--fecha');
-const fecha = iF >= 0 ? args.splice(iF, 2)[1] : new Date().toISOString().slice(0, 10);
+const opcion = (k) => { const i = args.indexOf(k); return i >= 0 ? args.splice(i, 2)[1] : null; };
+const bandera = (k) => { const i = args.indexOf(k); if (i >= 0) args.splice(i, 1); return i >= 0; };
+const fechaPedida = opcion('--fecha'), precioPedido = opcion('--precio');
+const usarPrecios = bandera('--precios'), todos = bandera('--todos'), simular = bandera('--simular');
+const hoy = new Date().toISOString().slice(0, 10);
 const f = (x, d = 2) => (x === null || x === undefined ? 'n.d.' : x.toLocaleString('es-ES', { minimumFractionDigits: d, maximumFractionDigits: d }));
+const r = (x, d = 2) => (x === null || !Number.isFinite(x) ? null : Math.round(x * 10 ** d) / 10 ** d);
 
-for (const carpeta of args) {
+const precios = usarPrecios ? leerPrecios() : null;
+if (usarPrecios && !precios) throw new Error('No hay verticales/empresa/precios.json: node herramientas/precios.mjs');
+if (precioPedido !== null && (args.length !== 1 || usarPrecios)) throw new Error('--precio X va con una sola carpeta y sin --precios');
+const carpetas = todos ? [...new Set(Object.values(J.revisados).map((v) => v.carpeta))] : args.map((a) => a.replace(/\/$/, '').replace(/^informes\//, ''));
+if (!carpetas.length) throw new Error('Indica una carpeta de informes/ (o --todos con --precios)');
+const cambios = [];
+
+for (const carpeta of carpetas) {
   const d = ultimoDatos(carpeta);
   if (!d) throw new Error(`Carpeta sin datos: ${carpeta}`);
   const o = d.valoracion?.objetivo_12m;
   if (!o) throw new Error(`${carpeta}: falta valoracion.objetivo_12m`);
-  const precio = +d.identificacion.precio, div = +(d.calc?.recomendacion?.dividendo_pct || 0);
-  const prob = ['bajista', 'base', 'alcista'].map((k) => (d.escenarios?.casos || []).find((e) => new RegExp(k, 'i').test(e.escenario || ''))?.probabilidad_pct ?? null);
-  const c = calcularObjetivo12m(o, { precio, dpa: (div / 100) * precio, prob: prob.every((x) => x !== null) ? prob : null, valorIntrinseco: d.calc?.sintesis?.valor_objetivo ?? null, confianza: d.resumen?.confianza ?? null });
-  if (!c?.completo) throw new Error(`${carpeta}: objetivo_12m incompleto`);
+  const precioInforme = +d.identificacion.precio, div = +(d.calc?.recomendacion?.dividendo_pct || 0);
+  const tc = +(d.meta?.tipo_cambio || 1), divCot = d.meta?.divisa_cotizacion || d.meta?.divisa;
   const previo = Object.entries(J.revisados).find(([, v]) => v.carpeta === carpeta)?.[0];
   const t = previo || String(d.identificacion.ticker).trim().toUpperCase().replace(/\s+/g, '-');
+  // Precio: el del informe, el pedido (--precio, en la divisa de cotización) o el último cierre de precios.json.
+  let precio = precioInforme, fechaPrecio = d.identificacion.fecha_precio || null, origen = 'informe';
+  if (precioPedido !== null) { precio = +precioPedido * tc; fechaPrecio = fechaPedida || hoy; origen = `--precio ${precioPedido} ${divCot}`; }
+  if (usarPrecios) {
+    const p = precios.precios[t] || Object.values(precios.precios).find((x) => x.carpeta === carpeta);
+    const fac = p && !p.error ? factorDivisa(p.divisa, divCot) : null;
+    if (!p || p.error) console.error(`AVISO ${t}: sin cierre en precios.json${p?.error ? ` (${p.error})` : ''}; se deja el precio del informe.`);
+    else if (fac === null) console.error(`AVISO ${t}: Yahoo cotiza en ${p.divisa} y el informe en ${divCot}; se deja el precio del informe.`);
+    else { precio = p.precio * fac * tc; fechaPrecio = p.fecha; origen = `cierre Yahoo ${p.simbolo}`; }
+  }
+  const k = precio / precioInforme;
+  const o2 = JSON.parse(JSON.stringify(o));
+  if (k !== 1 && o2.per_historico?.actual) o2.per_historico.actual = r(+o2.per_historico.actual * k, 2);
+  const prob = ['bajista', 'base', 'alcista'].map((e) => (d.escenarios?.casos || []).find((c) => new RegExp(e, 'i').test(c.escenario || ''))?.probabilidad_pct ?? null);
+  const c = calcularObjetivo12m(o2, { precio, dpa: (div / 100) * precioInforme, prob: prob.every((x) => x !== null) ? prob : null, valorIntrinseco: d.calc?.sintesis?.valor_objetivo ?? null, confianza: d.resumen?.confianza ?? null });
+  if (!c?.completo) throw new Error(`${carpeta}: objetivo_12m incompleto`);
   const [b, m, a] = c.filas;
-  const nota = `${c.version} regla común${c.senal_sin_confirmar ? ` (${c.senal_sin_confirmar} pendiente de confirmar datos: confianza baja)` : ''}: bajista ${f(b.multiplo, 1)}x × ${f(b.beneficio_por_accion)} = ${f(b.precio)}; base ${f(m.multiplo, 1)}x × ${f(m.beneficio_por_accion)} = ${f(m.precio)}; alcista ${f(a.multiplo, 1)}x × ${f(a.beneficio_por_accion)} = ${f(a.precio)}; ejercicio ${o.ejercicio}; precio ${f(precio)}`;
-  J.revisados[t] = { fecha, carpeta, precio_ref: precio, objetivo_12m: c.objetivo_ponderado, rentabilidad_12m_pct: c.rentabilidad_simple_pct, senal: c.senal,
+  const nota = `${c.version} regla común${c.senal_sin_confirmar ? ` (${c.senal_sin_confirmar} pendiente de confirmar datos: confianza baja)` : ''}: bajista ${f(b.multiplo, 1)}x × ${f(b.beneficio_por_accion)} = ${f(b.precio)}; base ${f(m.multiplo, 1)}x × ${f(m.beneficio_por_accion)} = ${f(m.precio)}; alcista ${f(a.multiplo, 1)}x × ${f(a.beneficio_por_accion)} = ${f(a.precio)}; ejercicio ${o.ejercicio}; precio ${f(precio)}${fechaPrecio ? ` (${fechaPrecio}${origen === 'informe' ? '' : `, ${origen}`})` : ''}`;
+  const ant = J.revisados[t];
+  const nuevo = { fecha: fechaPedida || hoy, carpeta, precio_ref: r(precio), fecha_precio: fechaPrecio, precio_informe: precioInforme, precio_origen: origen,
+    objetivo_12m: c.objetivo_ponderado, rentabilidad_12m_pct: c.rentabilidad_simple_pct, senal: c.senal,
     objetivo_base: c.objetivo_base, nota, objetivo_bajista: b.precio, objetivo_alcista: a.precio, multiplos: c.filas.map((x) => x.multiplo),
     probabilidades: c.probabilidades, objetivo_ponderado: c.objetivo_ponderado, rentabilidad_ponderada_pct: c.rentabilidad_ponderada_pct,
     rentabilidad_base_pct: c.rentabilidad_base_pct, senal_ponderada: c.senal, comprar_por_debajo: c.comprar_por_debajo, vender_por_encima: c.vender_por_encima };
-  console.log(`${t}: ponderada ${c.rentabilidad_ponderada_pct} %, base ${c.rentabilidad_base_pct} % → ${c.senal}`);
+  const cambio = ant && (ant.senal !== c.senal || Math.abs((ant.rentabilidad_ponderada_pct ?? 0) - c.rentabilidad_ponderada_pct) >= 0.05);
+  if (cambio) cambios.push(`${t}: ${ant.senal} ${f(ant.rentabilidad_ponderada_pct, 1)} % (precio ${f(ant.precio_ref)}) → ${c.senal} ${f(c.rentabilidad_ponderada_pct, 1)} % (precio ${f(precio)}, ${fechaPrecio})`);
+  if (!simular) J.revisados[t] = nuevo;
+  console.log(`${t}: ponderada ${c.rentabilidad_ponderada_pct} %, base ${c.rentabilidad_base_pct} % → ${c.senal}${k !== 1 ? ` (precio ${f(precio)} frente a ${f(precioInforme)} del informe, ${k >= 1 ? '+' : ''}${f((k - 1) * 100, 1)} %)` : ''}`);
 }
-writeFileSync(P, JSON.stringify(J, null, 2) + '\n');
+if (cambios.length) console.log(`\n${simular ? 'Cambiarían' : 'Han cambiado'} ${cambios.length} de ${carpetas.length}:\n${cambios.join('\n')}`);
+else if (carpetas.length > 1) console.log(`\nSin cambios de señal ni de rentabilidad en ${carpetas.length} informes.`);
+if (!simular) writeFileSync(P, JSON.stringify(J, null, 2) + '\n');
+else console.log('(--simular: no se ha escrito nada)');
