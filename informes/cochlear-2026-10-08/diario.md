@@ -53,3 +53,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 2. El ROIC incremental histórico (1,2 %) y el ROIC actual (16,2 %) salen de un FY2026 deprimido (gasto en la nube, partidas significativas): con ellos la prueba de capital nuevo no dice nada. Arreglo: usar la media de cinco años o el año normalizado.
 3. Sin campo de ingresos del perímetro de la cuota, la prueba de cuota se hace a mano (ya anotado en `lecciones.md`).
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 165,23 AUD (ponderado; base 140,76), rentabilidad +30,8 % (base +11,8 %), señal Mantener (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +30,8 % → +19,0 %, base +12,1 %, señal Mantener (`revision-12m-2026-10-13.md`).

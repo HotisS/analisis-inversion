@@ -8,3 +8,4 @@
 - 13:44 E (sentimiento) atascado: Reddit bloqueado y Stockhouse con 403; lo hice yo (Stockchase con 15 opiniones jul-oct y Motley Fool). Integración, cálculo, textos. DCF 2.484,20 USD (+18,0 - 13:44 E (sentimiento) atascado: Reddit bloqueado y Stockhouse con 403; lo hice yo (Stockchase con 15 opiniones jul-oct y Motley Fool). DCF 2.484,20 USD (+18,0 %), WACC 9,11 %, DCF inverso 7,4 % frente a 9,1 %. Valor objetivo 2.320,86 USD (+10,3 %), rentabilidad 10,5 %; absoluta Mantener, relativa Comprar: Comprar, convicción Baja (la sugerida). Word y PDF (51 páginas), páginas 1-4 revisadas.
 
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 2.766 USD, rentabilidad +31,6 %, señal Comprar (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +22,4 % → +15,1 %, base +17,0 %, señal Comprar (`revision-12m-2026-10-13.md`).
