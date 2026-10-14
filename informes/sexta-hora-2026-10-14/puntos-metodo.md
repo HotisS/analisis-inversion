@@ -28,3 +28,5 @@ Se rellena con lo que se vea fallar o mejorable en los 16 análisis (datos que f
 - **D6 de robustez salta por cambio de base del BPA** (Novonesis NIIF 1,25 frente a ajustado sin PPA 2,52; Symrise igual por deterioros): la prueba debería comparar con el BPA del último año en la base que declara el informe, no con el publicado.
 - **El riesgo de IA no tiene campo propio en el JSON**: en Lindt quedó solo en el diario. Proponer un campo `riesgos.ia` (nivel y porqué) que la plantilla imprima en la síntesis, ya que el usuario quiere verlo siempre.
 - **Clases de acciones** (Lindt LISN = 10 LISP; Epiroc A/B): el precio, las acciones y el BPA deben ir en la misma unidad; dejar la equivalencia en `identificacion`.
+- **`integrar.mjs` deja literal una cita con letra** ([A3]) cuando la escribe la propia nota y no avisa: debería avisar de citas sin resolver.
+- **PER adelantado de Yahoo en peniques** para cotizadas de Londres: cuidado al usarlo como contraste.
