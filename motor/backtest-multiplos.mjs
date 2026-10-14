@@ -21,6 +21,7 @@
 //             base × 1,35.
 //   it2tope, it2t120, it2t115, it2t110  it2 con tope del base (×1,3, ×1,2, ×1,15, ×1,10 sobre el actual). La regla v3 vigente
 //             (14-oct tarde) es it2t110: con ×1,3, en las empresas que cotizan a menos de 2/3 de su mediana el sesgo era +21 %.
+//   it2t110suelo  it2t110 con el bajista siempre en base × 0,80 (sin el mínimo de 5 años): peor fuera de muestra, no se adopta.
 //   it2p40, it2m10a, it2sin2021  it2 (tope ×1,3) con otro ancla: percentil 40 de 5 años, mediana de 10 años, mediana sin 2020-21.
 //   it2cierre it2 con la historia al cierre (trailing), para saber qué pasa si se aplica a informes antiguos.
 //   it2b, it2c reversión solo para las baratas (base a mitad de camino hacia la mediana si el actual está por debajo;
@@ -107,6 +108,7 @@ const VARIANTES = {
   it2t120: { base: 'adelantado', regla: (actual, h) => reversion(actual, h, 0.5, 0.8, 1.35, 1.2) },
   it2t115: { base: 'adelantado', regla: (actual, h) => reversion(actual, h, 0.5, 0.8, 1.35, 1.15) },
   it2t110: { base: 'adelantado', regla: (actual, h) => reversion(actual, h, 0.5, 0.8, 1.35, 1.1) },
+  it2t110suelo: { base: 'adelantado', regla: (actual, h) => { const m = reversion(actual, h, 0.5, 0.8, 1.35, 1.1); return { ...m, bajista: m.base * 0.8 }; } },
   it2p40: { base: 'adelantado', regla: (actual, h) => reversion(actual, { ...h, mediana_5a: h.p40_5a }, 0.5, 0.8, 1.35, 1.3) },
   it2m10a: { base: 'adelantado', regla: (actual, h) => reversion(actual, { ...h, mediana_5a: h.mediana_10a }, 0.5, 0.8, 1.35, 1.3) },
   it2sin2021: { base: 'adelantado', regla: (actual, h) => reversion(actual, { ...h, mediana_5a: h.mediana_sin2021 }, 0.5, 0.8, 1.35, 1.3) },
