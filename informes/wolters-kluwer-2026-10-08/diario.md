@@ -61,3 +61,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 3. El crecimiento medio proyectado (3,9 %) incluye el año fijo 2026e (+2,5 %, con divisa y desinversión), que rebaja la media frente a lo que de verdad pide la proyección (4,0-4,5 %).
 4. La cobertura del Word baja (93,1 % → 89,6 %) por campos nuevos de la plantilla, no por datos: con `datos.json` sin tocar la plantilla actual da 86,6 %.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 101,0 EUR, rentabilidad 44,3 %, señal Comprar (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +26,5 % → +5,5 %, base +9,5 %, señal Mantener (`revision-12m-2026-10-13.md`).
