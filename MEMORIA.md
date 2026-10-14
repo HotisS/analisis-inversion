@@ -29,6 +29,7 @@ Lo que cualquier sesión de Claude, en cualquier equipo, tiene que saber antes d
   3. **Calidad del negocio**: sostenibilidad del crecimiento «Sí» y ROIC − WACC ≥ 5 puntos.
 - **Confianza de datos baja = no Comprar** hasta confirmar las cifras con fuente primaria (14-oct, 15:29): la señal se queda en Mantener y se apunta qué falta confirmar.
 - **Mantener**: calidad, ponderada ≥ 10 %, base ≥ 5 % y valor intrínseco no más de un 15 % por debajo del precio.
+- **Precio actual antes de cada orden** (14-oct, 16:10, regla obligatoria): antes de proponer o mantener una orden de compra o venta, mirar el precio actual y comprobar que la rentabilidad, el límite y la señal siguen vigentes; en la tabla, precio y hora del dato y si la orden sigue en pie o cambia.
 - **Análisis técnico** (gráficos del usuario: medias SAMA, EMA 365 y 1.000, SMA 200, RSI, ChandeMO): solo para decidir **cuándo** ejecutar (precio límite, stop, fecha tope), nunca qué se compra o se vende (13-oct).
 - **Cada compra y venta con su motivo de negocio**, no solo la rentabilidad; tabla antes → después con la rentabilidad a 12 meses de cada activo (ponderada y base), el valor intrínseco frente al precio y la calidad.
 - Sin juego ni apuestas. Sin cambios de un valor por otro que el usuario haya rechazado (13-oct: no cambiar LVMH y Viscofan por Wolters Kluwer y Auto Trader).
