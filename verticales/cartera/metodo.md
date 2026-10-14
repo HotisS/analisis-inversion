@@ -39,7 +39,7 @@ NODE_USE_ENV_PROXY=1 node herramientas/cartera-real.mjs                   # foto
 NODE_USE_ENV_PROXY=1 node herramientas/cartera-real.mjs --semanal         # + informe-semanal-… y mensaje-semanal.md
 NODE_USE_ENV_PROXY=1 node herramientas/cartera-real.mjs --importar-ibkr   # rehace la cuenta desde ibkr/
 NODE_USE_ENV_PROXY=1 node herramientas/cartera-real.mjs --importar-flex informe.csv --cuenta cuenta-2
-NODE_USE_ENV_PROXY=1 node herramientas/cartera-real.mjs --partida         # primera carga sin broker (desde escaner/cartera.json)
+NODE_USE_ENV_PROXY=1 node herramientas/cartera-real.mjs --partida         # primera carga sin broker (desde la carpeta privada: escaner-cartera.json)
 ```
 
 **Cuenta 2 por el Flex Web Service de IBKR** (elegido por el usuario el 14-oct: el conector solo ve las cuentas de un usuario). El usuario creó en el Portal del Cliente una Activity Flex Query con estas secciones: Account Information, Open Positions, Trades, Cash Report, Cash Transactions y Corporate Actions. Es en XML y cubre los últimos 365 días. Activó además el token del Flex Web Service. Los dos van en las **variables de entorno** del entorno de la nube:

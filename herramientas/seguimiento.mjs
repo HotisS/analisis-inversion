@@ -16,7 +16,7 @@
 //
 // Versión privada: si existe la carpeta de la cartera real (CARTERA_REAL o /mnt/project-files/cartera/real, que NUNCA va
 // al repo, que es público), escribe además <esa carpeta>/seguimiento-mi-cartera.xlsx con las posiciones (ultimo.json),
-// las órdenes propuestas (escaner/cartera.json) y el resumen de la tabla de órdenes vigente. El seguimiento.xlsx del repo
+// las órdenes propuestas (escaner-cartera.json, en esa carpeta) y el resumen de la tabla de órdenes vigente. El seguimiento.xlsx del repo
 // no lleva nada de la cartera.
 //
 // Se vuelve a ejecutar después de cada informe nuevo o versión nueva.
@@ -254,7 +254,8 @@ resumen.sort((a, b) => ordenQue(a) - ordenQue(b) || (b.rte ?? -999) - (a.rte ?? 
 let real_ = null;
 if (conCartera) {
   const ultimo = JSON.parse(readFileSync(join(DATOS_REAL, 'ultimo.json'), 'utf8'));
-  const cart = existsSync('escaner/cartera.json') ? JSON.parse(readFileSync('escaner/cartera.json', 'utf8')) : {};
+  const rutaCart = join(DATOS_REAL, 'escaner-cartera.json');
+  const cart = existsSync(rutaCart) ? JSON.parse(readFileSync(rutaCart, 'utf8')) : {};
   const op = cart.ordenes_pendientes || {};
   const ordenes = new Map();
   for (const k of op.vender || []) ordenes.set(k, 'Vender (propuesta)');

@@ -8,7 +8,7 @@
 //   NODE_USE_ENV_PROXY=1 node herramientas/escaner-diario.mjs
 //       1) precios de todas las analizadas (herramientas/precios.mjs, sesión en curso) y de las growth (Yahoo)
 //       2) pruebas de robustez al precio de ahora (robustez.mjs --actual y robustez-growth.mjs --precios), objetivo fijo
-//       3) reglas de MEMORIA.md (escaner/reglas.json) contra la cartera (escaner/cartera.json)
+//       3) reglas de MEMORIA.md (escaner/reglas.json) contra la cartera (carpeta privada: escaner-cartera.json)
 //       → escaner/escaneo-ultimo.json: «candidatas» (necesitan Vup antes de ser señal), «observaciones» (tocan banda pero
 //         no hay liquidez, ya están en órdenes…) y «activas» (señales ya emitidas que siguen en pie)
 //   … --sin-precios         no vuelve a pedir precios (usa los de verticales/empresa/precios.json)
@@ -56,7 +56,12 @@ const vup = opcion('--vup'), bpa = opcion('--bpa'), registrar = opcion('--regist
 const sinPrecios = bandera('--sin-precios'), soloSeguimiento = bandera('--seguimiento');
 
 const REGLAS = leer(`${E}reglas.json`);
-const CARTERA = leer(`${E}cartera.json`);
+// La cartera real NO va en el repo (público): vive en la carpeta privada del proyecto (CARTERA_REAL o
+// /mnt/project-files/cartera/real/escaner-cartera.json; plantilla sin datos en escaner/cartera.ejemplo.json).
+// Sin ese archivo el escáner sigue funcionando con una cartera vacía (sin reglas de cartera ni liquidez libre).
+const RUTA_CARTERA = `${process.env.CARTERA_REAL || '/mnt/project-files/cartera/real'}/escaner-cartera.json`;
+const CARTERA = leer(RUTA_CARTERA) ?? (console.error(`Aviso: no está ${RUTA_CARTERA}; el escáner sigue con la cartera vacía.`),
+  { posiciones: [], liquidez_eur: 0, liquidez_libre_eur: 0, ordenes_pendientes: {} });
 const REV = leer('verticales/empresa/objetivo12m-revisados.json').revisados;
 const RUTA_REG = `${E}registro-senales.json`, RUTA_ESC = `${E}escaneo-ultimo.json`;
 

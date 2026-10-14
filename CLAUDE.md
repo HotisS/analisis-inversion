@@ -43,7 +43,7 @@ Para buscar qué analizar («busca oportunidades», «escanea Europa», «qué n
 
 ## Escáner diario de señales (14-oct-2026)
 
-De lunes a viernes a las 9:25 y 15:45 de Madrid una tarea programada (más un informe semanal el domingo y un backtest mensual: rutinas en `escaner/README.md`) lanza `herramientas/escaner-diario.mjs`: precio de ahora de todas las analizadas, robustez con el objetivo fijo y reglas de cartera; las candidatas pasan un «Vup» (lo publicado después del informe + método vigente + robustez) antes de ser señal de compra o venta, y todo queda en `escaner/registro-senales.json` y `escaner/SENALES.md` con su seguimiento frente al índice. Procedimiento: `escaner/README.md`. La cartera que lee está en `escaner/cartera.json` (la mantiene el hilo value).
+De lunes a viernes a las 9:25 y 15:45 de Madrid una tarea programada (más un informe semanal el domingo y un backtest mensual: rutinas en `escaner/README.md`) lanza `herramientas/escaner-diario.mjs`: precio de ahora de todas las analizadas, robustez con el objetivo fijo y reglas de cartera; las candidatas pasan un «Vup» (lo publicado después del informe + método vigente + robustez) antes de ser señal de compra o venta, y todo queda en `escaner/registro-senales.json` y `escaner/SENALES.md` con su seguimiento frente al índice. Procedimiento: `escaner/README.md`. La cartera que lee está en la carpeta privada, `/mnt/project-files/cartera/real/escaner-cartera.json` (la mantiene el hilo value; plantilla sin datos en `escaner/cartera.ejemplo.json`). **Ningún dato real de la cartera (títulos, precio medio, liquidez, cuentas, ganancias) va al repo**: tablas de órdenes y carteras, en `/mnt/project-files/cartera/`.
 
 ## Cartera real (14-oct-2026)
 

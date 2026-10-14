@@ -26,7 +26,7 @@ Si no hay nada nuevo, el mensaje del escáner es una sola línea. Las tareas des
 
 | Archivo | Qué es | Quién lo cambia |
 |---|---|---|
-| `cartera.json` | Posiciones reales, liquidez, liquidez libre y órdenes ya decididas | El hilo value (dueño de la cartera), cuando el usuario confirma una orden ejecutada |
+| `/mnt/project-files/cartera/real/escaner-cartera.json` (privado; plantilla en `cartera.ejemplo.json`) | Posiciones reales, liquidez, liquidez libre y órdenes ya decididas | El hilo value (dueño de la cartera), cuando el usuario confirma una orden ejecutada |
 | `reglas.json` | Reglas de MEMORIA.md y METODO-VIGENTE.md §4 que aplica el escáner: tamaño, calidad, exclusiones, no vender, umbrales de venta | Quien cambie esas reglas en MEMORIA.md |
 | `escaneo-ultimo.json` | Resultado del último escaneo: candidatas, observaciones, señales activas | La herramienta |
 | `decisiones.json` | Lo que sale del Vup de cada candidata | Claude, en cada ejecución |

@@ -11,7 +11,7 @@
 //       (y añade la foto del día a historial.json)
 //   … --semanal          lo mismo y además informe-semanal-AAAA-MM-DD.md y mensaje-semanal.md (el informe del domingo:
 //                        lo llama la rutina del escáner)
-//   … --partida          primera carga sin historial del broker: crea operaciones.csv desde escaner/cartera.json con el
+//   … --partida          primera carga sin historial del broker: crea operaciones.csv desde escaner-cartera.json (carpeta privada) con el
 //                        último cierre como «precio de partida» (no es el precio de compra; se sustituye al importar IBKR)
 //   … --importar-ibkr    descarga los informes Flex del entorno (IBKR_FLEX_TOKEN + IBKR_FLEX_QUERY_CUENTA2…; sin ellos
 //                        no hace nada) y rehace las cuentas desde ibkr/ (conector y Flex)
@@ -431,7 +431,7 @@ async function foto({ semanal = false } = {}) {
   // Cartera del 13-oct congelada (sin ninguna orden del método), para comparar con la real y el índice (hilo Mejoras).
   const rutaCong = join(DATOS, 'cartera-congelada-2026-10-13.json');
   if (!existsSync(rutaCong)) {
-    const C = leer(join(RAIZ, 'escaner/cartera.json'));
+    const C = leer(join(DATOS, 'escaner-cartera.json'));
     guardar(rutaCong, { nota: 'Cartera apuntada el 13-oct-2026, congelada: no se le aplica ninguna orden. Sirve de referencia frente a la cartera real y el índice.', fecha: '2026-10-13', liquidez_eur: C.liquidez_eur, posiciones: C.posiciones.map((x) => ({ clave: x.clave, simbolo: yahooDe(x.clave), titulos: x.titulos })) });
   }
   const cong = leer(rutaCong);
@@ -480,7 +480,7 @@ async function seriesDesde(desde, hist, { total, valorCong, flujos, hoy }) {
 async function calcularAvisos(filas, cartera, hist, hoy) {
   const A = [];
   const noTocar = REGLAS.no_vender || {};
-  const pend = leer(join(RAIZ, 'escaner/cartera.json'), {})?.ordenes_pendientes || {};
+  const pend = leer(join(DATOS, 'escaner-cartera.json'), {})?.ordenes_pendientes || {};
   const vendiendo = new Set(pend.vender || []);
   for (const x of filas.filter((y) => y.titulos > 0)) {
     if (x.peso_pct > REGLAS.tope_posicion_pct && !noTocar[x.clave]) A.push({ nivel: 'peso', clave: x.clave, texto: `${x.nombre} pesa un ${f(x.peso_pct)} % (tope ${REGLAS.tope_posicion_pct} %). Hay que recortar o no ampliar.` });
@@ -629,9 +629,9 @@ async function partida() {
   escribirOps(ops);
   console.log(`Partida del ${fecha}: ${ops.length - 1} posiciones y ${fe(ops[0].importe_eur)} de liquidez en ${RUTA.ops}.`);
 }
-// La cartera apuntada (escaner/cartera.json) como foto a precio de cierre.
+// La cartera apuntada (escaner-cartera.json, carpeta privada) como foto a precio de cierre.
 async function opsPartida(fecha) {
-  const C = leer(join(RAIZ, 'escaner/cartera.json'));
+  const C = leer(join(DATOS, 'escaner-cartera.json'));
   const ops = [{ fecha, cuenta: 'todas', tipo: 'partida', clave: 'EUR', importe_eur: C.liquidez_eur, nota: 'liquidez de partida' }];
   for (const p of C.posiciones) {
     const simbolo = yahooDe(p.clave);
@@ -900,7 +900,7 @@ async function importarIbkr() {
   let nuevas = [], posB = [], liq = 0, fechaFoto = '';
   for (const x of cuentas) { const r1 = await importarCuenta(x.cuenta, x.foto, x.hist); nuevas = nuevas.concat(r1.nuevas); posB = posB.concat(r1.posB); liq += r1.liqEur; if (r1.fechaFoto > fechaFoto) fechaFoto = r1.fechaFoto; }
   // Lo que había: fuera las cuentas conectadas y la partida; lo apuntado que no está en ninguna cuenta conectada
-  // (escaner/cartera.json frente a lo que devuelve IBKR) queda como «sin-conectar», a precio de partida.
+  // (escaner-cartera.json frente a lo que devuelve IBKR) queda como «sin-conectar», a precio de partida.
   let ops = leerOps().filter((o) => !conectadas.has(o.cuenta) && o.tipo !== 'partida');
   const enIbkr = new Set(posB.map((p) => p.clave));
   const part = leerOps().filter((o) => o.tipo === 'partida');
