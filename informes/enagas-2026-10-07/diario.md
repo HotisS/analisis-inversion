@@ -100,3 +100,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v3.mjs` (parte de `datos-
 2. **«Activos ligeros» con desinversión.** Con reinversión negativa (−819 M), el texto del motor dice «activos ligeros» y «comprador en serie»: en una regulada es una base de activos que se amortiza sin reponerse. Se dice en la justificación.
 3. **El mercado final de una regulada no llega al último año explícito** (la CNMC publica hasta 2032 y el DCF va hasta 2035): se usa `periodo: "2032e"`, que el motor acepta.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 14,24 EUR, rentabilidad −6,1 %, señal Mantener (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada -6,0 % → -6,7 %, base -2,4 %, señal Mantener (`revision-12m-2026-10-13.md`).
