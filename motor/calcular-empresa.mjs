@@ -303,7 +303,10 @@ export function calcularEmpresa(datos) {
     const pnMed = b && bAnt ? (n(b.patrimonio_neto) + n(bAnt.patrimonio_neto)) / 2 : n(b?.patrimonio_neto);
     const atMed = b && bAnt ? (n(b.activo_total) + n(bAnt.activo_total)) / 2 : n(b?.activo_total);
     return {
-      periodo: c.periodo, nopat: red(nopat, 0), capital_invertido: red(ci, 0), roic_pct: red(pct(nopat, ci)),
+      // ROIC «no aplica» con capital invertido ≤ 0 (mucha caja neta o patrimonio negativo por recompras: Booking, ANYCOLOR,
+      // CTS Eventim, 14-oct-2026): la cifra saldría negativa y no significa nada; se usa el ROIC calculado a mano del informe.
+      periodo: c.periodo, nopat: red(nopat, 0), capital_invertido: red(ci, 0), roic_pct: ci !== null && ci <= 0 ? null : red(pct(nopat, ci)),
+      roic_nota: ci !== null && ci <= 0 ? 'no aplica: capital invertido negativo (caja neta o patrimonio negativo por recompras); usar el ROIC calculado a mano del informe' : null,
       roe_pct: red(pct(n(c.beneficio_neto), pnMed)), roa_pct: red(pct(n(c.beneficio_neto), atMed)),
       margen_neto_pct: red(pct(n(c.beneficio_neto), n(c.ingresos))), rotacion: red(div(n(c.ingresos), atMed), 2),
       apalancamiento: red(div(atMed, pnMed), 2),
@@ -466,7 +469,7 @@ export function calcularEmpresa(datos) {
     if (dcfBase.etapa2) {
       // La etapa de transición alarga el crecimiento: solo vale para negocios que crean valor al crecer.
       const roicU = rentUlt.roic_pct ?? null;
-      control('Etapa de transición justificada (ROIC ≥ WACC + 5 puntos)', roicU !== null && roicU >= wacc + 5, roicU === null ? 'Sin ROIC calculable: no se puede justificar alargar el crecimiento.' : `ROIC ${fmt(roicU, 1)} % frente a WACC ${fmt(wacc, 1)} %: ${roicU >= wacc + 5 ? '' : 'crecer apenas crea valor; la etapa de transición infla el DCF sin base.'}`);
+      control('Etapa de transición justificada (ROIC ≥ WACC + 5 puntos)', roicU === null && rentUlt.roic_nota ? null : roicU !== null && roicU >= wacc + 5, roicU === null ? (rentUlt.roic_nota ? `ROIC ${rentUlt.roic_nota}; la calidad se juzga con el del informe.` : 'Sin ROIC calculable: no se puede justificar alargar el crecimiento.') : `ROIC ${fmt(roicU, 1)} % frente a WACC ${fmt(wacc, 1)} %: ${roicU >= wacc + 5 ? '' : 'crecer apenas crea valor; la etapa de transición infla el DCF sin base.'}`);
       if (!dcfIn.etapa2?.justificacion) control('Etapa de transición con justificación', false, 'Falta dcf.etapa2.justificacion: recorrido del mercado, penetración y ventaja que sostienen el crecimiento.');
     }
     if (base.g !== null) control('Crecimiento a perpetuidad ≤ 3 %', base.g <= 3, `${fmt(base.g, 2)} %.`);
@@ -822,6 +825,13 @@ export function calcularEmpresa(datos) {
   if (res.sintesis) control('La síntesis explica la convicción', convSintesis >= 2, 'La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría.');
   if (primaImpl === null) control('Prima implícita del mercado (regla relativa)', false, 'Falta valoracion.referencia_mercado.prima_implicita_pct: la recomendación sale solo de la regla absoluta.');
   if (meta.divisa_cotizacion && meta.divisa_cotizacion !== meta.divisa && !tc) control('Tipo de cambio de la divisa de cotización', false, 'Falta meta.tipo_cambio: los precios de la decisión solo salen en la divisa de las cuentas.');
+  // Precio y objetivo en la misma divisa (Constellation, 14-oct-2026: precio en CAD frente a objetivo en USD). Si el mercado o
+  // el ticker nombran una divisa distinta de la de las cuentas y no hay divisa de cotización declarada, hay que revisarlo.
+  {
+    const texto = `${id.mercado || ''} ${id.ticker || ''}`;
+    const codigos = [...new Set((texto.match(/\b(USD|EUR|GBP|GBp|CHF|JPY|CAD|AUD|SEK|DKK|NOK|HKD|TWD|CNY|SGD|PLN|CZK|ZAR|BRL|MXN|INR|KRW)\b/g) || []))].filter((c) => c.toUpperCase() !== String(meta.divisa || '').toUpperCase());
+    if (codigos.length && !meta.divisa_cotizacion) control('Precio y objetivo en la misma divisa', false, `El mercado nombra ${codigos.join(', ')} y las cuentas van en ${meta.divisa}: pon meta.divisa_cotizacion y meta.tipo_cambio (el precio del informe va en la divisa de las cuentas) o el precio y el objetivo no son comparables.`);
+  }
   const recomendacion = {
     recomendacion: recomendacionFinal, regla, regla_absoluta: reglaAbs, regla_relativa: reglaRel, coincide, conviccion: res.conviccion ?? null,
     conviccion_sugerida: sug.conviccion, conviccion_razones: sug.razones,
