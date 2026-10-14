@@ -1,0 +1,4556 @@
+{
+  "meta": {
+    "fecha_corte": "2026-10-14",
+    "divisa": "USD",
+    "divisa_cotizacion": "USD",
+    "tipo_cambio": 1,
+    "unidades": "millones",
+    "cierre_ejercicio_mes": 1,
+    "etiqueta_ejercicio": "fin",
+    "normas_contables": "US GAAP",
+    "formato_cuenta": "funcion",
+    "limitaciones": "Análisis hecho desde un entorno en la nube en el que solo funciona la búsqueda web: no se han podido descargar el 10-K, los 10-Q ni el proxy, ni usar las herramientas de bolsa y de Form 4 del repositorio. Las cifras salen de extractos de búsqueda de los documentos de la SEC y de las notas de resultados (citados con su URL) y, para FY2022-FY2025, de las cuentas publicadas en los 10-K; donde no cuadraban, van a null. Ejercicio fiscal cerrado a finales de enero: FY2026 = febrero de 2025 a enero de 2026 (etiqueta «fin»). Precio: cierre del 13-oct-26 (la sesión del 14 no había cerrado). La deuda del puente a julio de 2026 es estimación propia (deuda de enero + emisión de 25.000 M de junio). Al balance de FY2026 le faltan partidas (activo y pasivo corriente, proveedores, inmovilizado): el ROIC del motor de FY2026 se calcula con ese balance incompleto. Comparables de TSMC, ASML, Texas Instruments, Applied Materials, Lam y KLA tomados de los análisis del 14-oct de este repositorio.",
+    "controles_explicados": [
+      {
+        "control": "Circulante del primer año de proyección",
+        "explicacion": "El circulante sobre ventas de FY2026 (27,7 %) está inflado por el pico de clientes y existencias de fin de año; proyectamos el 26 % en FY2027e bajando al 22 %, cerca del 20,6 % de FY2025."
+      },
+      {
+        "control": "Caja proyectada coherente con la histórica",
+        "explicacion": "El salto es real: los ingresos de FY2027e (414.601 M) casi duplican los de FY2026 con un margen EBITDA del 68 %; la guía del 3T (108.000 M) y los 302.933 M de los últimos doce meses lo respaldan. La media histórica de tres años incluye FY2024, con ventas de 60.922 M."
+      },
+      {
+        "control": "Múltiplos LTM y NTM de cada comparable",
+        "explicacion": "Applied Materials viene de la nota de ASML del 14-oct, con EBITDA LTM y NTM de proveedores distintos; su PER NTM (29,3x) es el que usamos y está en línea con el de KLA y Lam."
+      },
+      {
+        "control": "Objetivo 12 m frente al consenso",
+        "explicacion": "Explicado en diferencia_consenso: nuestro BPA de FY2029e es un 28 % inferior al que implican las estimaciones de ingresos del consenso, y usamos el PER actual sobre nuestro BPA, no un múltiplo de crecimiento."
+      }
+    ],
+    "huecos": [
+      {
+        "seccion": "financieros",
+        "campo": "resultado financiero, BAI, impuestos, gastos generales y gastos financieros de FY2026",
+        "tipo": "Complemento",
+        "intentos": "1) 10-K FY2026 en la SEC: la búsqueda devuelve solo el resumen y el balance; 2) nota de resultados del 4T FY26 y Stock Analysis: ingresos, EBIT, beneficio y BPA; 3) agregadores (Opencapital, AlphaQuery): no dan el desglose; WebFetch no disponible en este entorno",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "balance",
+        "campo": "activo y pasivo corriente, fondo de comercio, intangibles, inmovilizado, proveedores y reservas de FY2026; balance del 2T FY27",
+        "tipo": "Núcleo",
+        "intentos": "1) 10-K FY2026 y 10-Q del 2T: la búsqueda solo devuelve caja, clientes, existencias, activo, pasivo y patrimonio; 2) Stock Analysis y Barchart: columnas sin fecha clara; 3) prensa de resultados: solo caja; la deuda del 2T se estima con la emisión de 25.000 M",
+        "decision": "Calculado y marcado como estimación"
+      },
+      {
+        "seccion": "balance",
+        "campo": "vencimientos de la deuda y coste medio",
+        "tipo": "Complemento",
+        "intentos": "1) nota de deuda del 10-Q del 2T: no accesible; 2) prensa de la emisión de junio de 2026: tramos de 2 a 30 años y cupones del 4,25-5,625 %, sin importes por tramo; 3) folleto (424B2) no accesible sin WebFetch",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "calidad",
+        "campo": "años con el auditor",
+        "tipo": "Complemento",
+        "intentos": "1) proxy 2026; 2) 10-K FY2026; 3) búsqueda de prensa: sin dato en los extractos",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "competencia",
+        "campo": "cuota de mercado de Nvidia",
+        "tipo": "Núcleo",
+        "intentos": "1) informes de mercado de aceleradores (MarketsandMarkets): su tamaño es menor que los ingresos de Nvidia; 2) búsqueda de cuotas de GPU de IA (prensa: 80-90 % sin fuente primaria); 3) derivarla con el capex de los hiperescaladores: perímetros distintos (Nvidia vende también a neonubes, gobiernos y empresas)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sector",
+        "campo": "TCAC histórico y previsto, CR5",
+        "tipo": "Complemento",
+        "intentos": "1) MarketsandMarkets y ResearchAndMarkets: series incoherentes con el gasto real; 2) capex de los hiperescaladores: solo 2025-2027; 3) previsión de 3-4 billones de Nvidia para 2030: no está claro si es anual o acumulada",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "esg",
+        "campo": "calificaciones ESG",
+        "tipo": "Complemento",
+        "intentos": "1) informe de sostenibilidad de Nvidia; 2) MSCI y Sustainalytics; 3) prensa: sin acceso en este entorno (solo búsqueda web) y sin datos fechados en los extractos",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "competencia",
+        "campo": "cifras de 2025 de los competidores",
+        "tipo": "Complemento",
+        "intentos": "1) 10-K 2025 de AMD, Broadcom e Intel no accesibles; 2) búsqueda de comparables: sin cifras fechadas; 3) se usan las de 2024 y se dice",
+        "decision": "Calculado y marcado como estimación"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "operaciones de directivos de los últimos 12 meses (Form 4)",
+        "tipo": "Complemento",
+        "intentos": "1) EDGAR Form 4 con form4.mjs: no funciona en este entorno; 2) búsqueda web de ventas de Huang en 2026: sin resultados fechados; 3) prensa: solo las ventas con plan 10b5-1 de 2025",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "remuneración de FY2026, comisiones de cada consejero y fechas de entrada verificadas",
+        "tipo": "Complemento",
+        "intentos": "1) proxy 2026 en la SEC: la búsqueda devuelve el índice, no las tablas; 2) Boardroom Alpha: sin tablas; 3) Reuters vía Boursorama: solo FY2025 y el bonus objetivo de FY2027",
+        "decision": "Calculado y marcado como estimación"
+      },
+      {
+        "seccion": "bolsa",
+        "campo": "rentabilidades, beta, volatilidad, caída máxima y posición corta",
+        "tipo": "Complemento",
+        "intentos": "1) bolsa.mjs con Yahoo Finance: sin red en este entorno; 2) búsqueda web de la beta y de las rentabilidades: cifras sin fecha y discrepantes; 3) Stock Analysis y GuruFocus: sin series completas en los extractos",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "transacciones",
+        "campo": "transacciones precedentes con múltiplo",
+        "tipo": "Complemento",
+        "intentos": "1) notas de las compras (Mellanox, Xilinx, ZT Systems) en los 10-K: no accesibles; 2) prensa: valores sin múltiplos verificables; 3) con una capitalización de 5,5 billones de USD nadie puede comprar Nvidia: la prima de control no aplica",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "consenso",
+        "campo": "EBITDA y EBIT de consenso; desglose de recomendaciones",
+        "tipo": "Complemento",
+        "intentos": "1) MarketScreener: solo abre con WebFetch, no disponible; 2) Chartmill y Yahoo: ingresos y BPA; 3) Alpha Spread: objetivo y número de analistas",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "identificacion",
+        "campo": "fecha de los resultados del 3T FY27",
+        "tipo": "Complemento",
+        "intentos": "1) calendario de inversores de Nvidia: no accesible; 2) búsqueda web: sin anuncio fechado; 3) se estima el 19-nov-26 por el calendario habitual (tercer miércoles de noviembre)",
+        "decision": "Calculado y marcado como estimación"
+      },
+      {
+        "seccion": "sentimiento",
+        "campo": "Reddit y Stocktwits con hilos fechados de los últimos tres meses",
+        "tipo": "Complemento",
+        "intentos": "1) búsqueda de hilos de r/stocks y r/wallstreetbets de octubre: sin resultados fechados; 2) API de Stocktwits y RSS de Seeking Alpha: sin red en este entorno; 3) recuentos de menciones de Benzinga (sin fecha clara)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "dcf",
+        "campo": "beta de la acción",
+        "tipo": "Núcleo",
+        "intentos": "1) bolsa.mjs con Yahoo Finance: sin red en este entorno; 2) búsqueda web: betas sin fecha ni periodo; 3) Damodaran (beta sectorial de semiconductores): no accesible sin WebFetch",
+        "decision": "Calculado y marcado como estimación"
+      },
+      {
+        "seccion": "dcf",
+        "campo": "mercado final para la prueba de cuota",
+        "tipo": "Complemento",
+        "intentos": "1) informes de aceleradores para centro de datos: perímetro menor que las ventas de Nvidia; 2) capex de los hiperescaladores: no incluye neonubes, gobiernos ni empresas; 3) previsión de 3-4 billones de Nvidia: ambigua (anual o acumulada)",
+        "decision": "Omitido"
+      }
+    ]
+  },
+  "identificacion": {
+    "nombre": "NVIDIA Corporation",
+    "nombre_corto": "Nvidia",
+    "ticker": "NVDA",
+    "isin": "US67066G1040",
+    "mercado": "Nasdaq Global Select Market",
+    "indice_referencia": "S&P 500",
+    "pais": "Estados Unidos",
+    "pais_iso": "US",
+    "sector": "Tecnologías de la información",
+    "industria": "Semiconductores",
+    "sede": "Santa Clara, California (EE. UU.)",
+    "fundacion": "1993",
+    "empleados": null,
+    "web": "www.nvidia.com",
+    "precio": 228.52,
+    "fecha_precio": "2026-10-13",
+    "acciones": 24270,
+    "capitalizacion_publicada": null,
+    "free_float_pct": 96,
+    "max_52s": 243.37,
+    "min_52s": 164.27,
+    "volumen_medio_diario": "≈ 110 M acciones/día (30 sesiones), ≈ 25.000 M USD/día",
+    "proximos_resultados": "2026-11-19"
+  },
+  "resumen": {
+    "recomendacion": "Mantener",
+    "conviccion": "Baja",
+    "justificacion_recomendacion": null,
+    "horizonte": "12 meses",
+    "sintesis": "**La recomendación y por qué.** Mantener, con convicción baja. Con nuestro BPA de FY2029e y la regla común de múltiplos, el objetivo a 12 meses es de 260,89 USD frente a 228,52 USD de cierre del 13 de octubre: +14,3 % ponderado y +9,9 % en el caso base, ambos con el dividendo. Se queda justo por debajo de los umbrales de compra (15 % y 12 %), y el valor intrínseco (224,02 USD, −2,0 %) no supera el precio. El objetivo medio de los analistas (321,3 USD) queda dentro de nuestro rango (117,18-424,56) pero muy por encima de nuestro base. La convicción es baja porque la rentabilidad que decide está a menos de un punto del umbral, la regla absoluta y la relativa discrepan (Vender frente a Mantener) y las cifras salen de extractos de búsqueda; subiría con una guía del 4T por encima de 125.000 M el 19 de noviembre, y bajaría si los hiperescaladores guían un capex de 2027 por debajo de 900.000 M.\n\n**El negocio.** Nvidia es el estándar del cálculo para IA: 96.200 M USD de ingresos en el 2T FY27 (+106 %), un 93 % de centro de datos, con un margen bruto del 75 % [3]. Su ROIC (121,7 % en el motor; ≈106 % con nuestra cuenta, por el balance incompleto de FY2026) supera al WACC (12,87 %) en unos 90-110 puntos. El foso (CUDA, redes, sistemas completos) es amplio. Sostenibilidad del crecimiento: **en parte**. A corto plazo la respaldan la guía y 87.000-88.000 M de compras comprometidas para FY2028-29 [7]; a medio plazo, nuestros ingresos de FY2029e supondrían más de la mitad del capex de 2027 de los cuatro grandes, que fabrican sus propios chips [24, 25].\n\n**Sector y ciclo.** Expansión: el capex de los cuatro grandes pasa de 410.000 M en 2025 a ≈725.000 M en 2026 y ≈1 billón en 2027 [24, 25]. Es el pico de un ciclo de inversión, y los semiconductores siempre han tenido caídas tras los picos (Nvidia, −55 % de beneficio en FY2023).\n\n**Finanzas.** Caja libre de ≈96.700 M en FY2026 [19], pero el flujo operativo del 2T FY27 cayó a 24.077 M por pagos anticipados a proveedores [13]. Emitió 25.000 M de bonos en junio con caja neta [17], y tiene 279.000 M de obligaciones de suministro [7] y 42.800 M en participaciones cotizadas, algunas en clientes [15].\n\n**Valoración.** El DCF da 136,91 USD a un WACC del 12,87 %; el DCF inverso dice que el precio exige un crecimiento medio del 20,7 % anual en FY2028-FY2036e, frente al 10,9 % de nuestro base, o una rentabilidad del 8,8 % con nuestros flujos. Por PER de consenso (16,3x) es la más barata de sus comparables (mediana 30,7x), y cotiza a 28,9x el beneficio de los últimos doce meses, un 38 % por debajo de su media histórica. Las dos lecturas encajan: el precio es razonable para el beneficio de dos años y caro si es un pico. Nos separamos del consenso en las ventas de FY2028-29e (+55 % y +15 % frente a +69 % y +31 %).\n\n**Riesgos y catalizadores.** El mayor riesgo es una caída del capex de IA tras 2027 (bajista a 12 meses: 117,18 USD, −48,6 %), agravada por los compromisos de suministro y por la solvencia de clientes financiados por la propia Nvidia. Catalizadores: resultados del 3T (19 de noviembre, estimado) y guías de capex de enero-febrero. Los foros están divididos: el debate es si el PER bajo es una trampa de valor sobre beneficios de pico [14, 50], la misma duda de este informe.\n\n**Qué cambiaría la decisión.** Compraríamos por debajo de 224,02 USD, donde la rentabilidad a 12 meses pasa del 15 % y el precio no supera el valor intrínseco; venderíamos por encima de 290,18 USD. También revisaríamos al alza si la guía confirma un FY2028 cercano al +70 %.",
+    "tesis": "Nvidia es la mejor empresa del ciclo de inversión en IA: ingresos de 302.933 M USD en los últimos doce meses, margen bruto del 75 % y un ROIC de tres cifras, con un foso de software y sistemas que ningún rival iguala [3, 8].\n\nEl precio (228,52 USD) parece barato frente al beneficio de los próximos dos años (16,3x el BPA de consenso de los próximos 12 meses), pero el DCF inverso muestra que exige un crecimiento medio del 20,7 % anual durante nueve años, el doble de nuestro base. Lo que descuenta es que el ciclo de capex no tendrá una caída seria.\n\nEl mercado acierta en dudar: la mitad del crecimiento depende de unos pocos clientes que fabrican sus propios chips y de laboratorios que necesitan seguir captando capital. Para comprar hay que creer que el capex de IA crecerá al 30 % o más hasta 2029; nosotros suponemos que se modera, y con eso la acción da un +14,3 % a 12 meses, cerca del umbral pero sin margen de seguridad.",
+    "vision_diferencial": {
+      "mercado_descuenta": "Que el beneficio de FY2028 (≈15,9 USD por acción de consenso) se paga a un múltiplo bajo porque podría ser un pico: 14x ese BPA y 16,3x el de los próximos 12 meses.",
+      "nuestra_vision": "Coincidimos en la duda y somos más prudentes que los analistas en ventas: +55 % en FY2028e y +15 % en FY2029e, con una pausa en FY2030e. Con eso, el precio de hoy está cerca de lo que vale.",
+      "por_que": "Los clientes no pueden duplicar su capex muchos años seguidos, los chips propios ganan la inferencia y Nvidia ya ha firmado 279.000 M de compras que agravarían una caída."
+    },
+    "a_favor": [
+      "**Liderazgo indiscutido**: 89.000 M de ingresos de centro de datos en el 2T FY27 (+117 %) [3].",
+      "**Rentabilidad extraordinaria**: margen bruto del 75 % y ROIC muy por encima del 100 % [3].",
+      "**Múltiplo bajo para su historia**: 28,9x el beneficio de los últimos 12 meses frente a 46,3x de media.",
+      "**Visibilidad a corto plazo**: guía del 3T de 108.000 M, por encima del consenso [3].",
+      "**Caja neta y recompras**: 56.600 M de caja y valores, ≈99.000 M de recompra autorizada [3, 15]."
+    ],
+    "en_contra": [
+      "**Pico de ciclo**: el precio exige un 20,7 % de crecimiento anual durante nueve años.",
+      "**Compromisos de suministro**: 279.000 M de obligaciones casi fijas [7].",
+      "**Clientes que se hacen sus chips**: TPU, Trainium y ASIC de Broadcom [14, 26].",
+      "**Financiación circular**: participaciones en clientes y ganancias que inflan el BPA GAAP (7.800 M en el 2T) [11].",
+      "**Caja del 2T**: flujo operativo de 24.077 M frente a ≈50.000 M del 1T [13]."
+    ],
+    "que_vigilar": "La tesis depende de que el capex de IA de 2027 llegue al billón de dólares y no caiga en 2028. La señal de que no se cumple sería una guía trimestral plana, un capex de los hiperescaladores para 2027 por debajo de 900.000 M o que las obligaciones de suministro sigan subiendo sin que lo haga la guía.",
+    "cambiaria_recomendacion": [
+      "Precio por debajo de 224,02 USD: Comprar (rentabilidad ponderada a 12 meses ≥ 15 % y precio ≤ valor intrínseco).",
+      "Precio por encima de 290,18 USD: Vender o reducir.",
+      "Guía del 4T FY27 por encima de 125.000 M y capex de 2027 de los cuatro grandes por encima de 1 billón: subiríamos ventas de FY2028e y podríamos pasar a Comprar.",
+      "Guía del 4T plana frente al 3T o existencias por encima de 150 días: pasaríamos a Vender."
+    ],
+    "kpis_seguimiento": [
+      {
+        "kpi": "Guía trimestral de ingresos",
+        "nivel_actual": "108.000 M (3T FY27)",
+        "umbral_alerta": "Guía del 4T ≤ 108.000 M",
+        "por_que": "Primera señal de pausa del ciclo"
+      },
+      {
+        "kpi": "Margen bruto GAAP",
+        "nivel_actual": "75,0 % (2T FY27)",
+        "umbral_alerta": "< 70 %",
+        "por_que": "Poder de precios y coste de memoria"
+      },
+      {
+        "kpi": "Obligaciones de suministro",
+        "nivel_actual": "279.000 M",
+        "umbral_alerta": "> 2,5 veces los ingresos trimestrales",
+        "por_que": "Riesgo de cargos si la demanda cae"
+      },
+      {
+        "kpi": "Capex 2027 de los cuatro grandes",
+        "nivel_actual": "≈1 billón (previsión)",
+        "umbral_alerta": "< 900.000 M",
+        "por_que": "Motor de la demanda"
+      },
+      {
+        "kpi": "Flujo operativo trimestral",
+        "nivel_actual": "24.077 M (2T FY27)",
+        "umbral_alerta": "< 40 % del beneficio dos trimestres",
+        "por_que": "Calidad del beneficio"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "historia": {
+    "resumen": "Fundada en 1993 por Jensen Huang, Chris Malachowsky y Curtis Priem para hacer chips gráficos para videojuegos; salió a bolsa en 1999, el año en que lanzó la GeForce 256, la primera «GPU». En 2006 presentó CUDA, que convirtió la GPU en un procesador de uso general: es la decisión que explica la empresa de hoy. Entre 2012 (AlexNet, entrenada con GPU de Nvidia) y 2022 el centro de datos pasó de nicho a segundo negocio; la compra de Mellanox (2020) le dio las redes. El lanzamiento de ChatGPT (noviembre de 2022) disparó la demanda de Hopper y luego Blackwell: los ingresos se multiplicaron por ocho en cuatro ejercicios [8]. Huang sigue de primer ejecutivo 33 años después.",
+    "hitos": [
+      {
+        "anio": "1993",
+        "hito": "Fundación en California por Jensen Huang, Chris Malachowsky y Curtis Priem [8]"
+      },
+      {
+        "anio": "1999",
+        "hito": "Salida a bolsa en el Nasdaq y lanzamiento de la GeForce 256 [8]"
+      },
+      {
+        "anio": "2006",
+        "hito": "CUDA: la GPU se programa como procesador general; origen del foso de software [8]"
+      },
+      {
+        "anio": "2020",
+        "hito": "Compra de Mellanox por 6.900 M USD: entrada en redes de centro de datos [8]"
+      },
+      {
+        "anio": "2022",
+        "hito": "Se cancela la compra de Arm (40.000 M) por la oposición de los reguladores; cargo de 1.353 M [8]"
+      },
+      {
+        "anio": "2023",
+        "hito": "Hopper (H100) y la ola de IA generativa: centro de datos ×3 en FY2024 [8]"
+      },
+      {
+        "anio": "2025",
+        "hito": "Restricciones de EE. UU. a las ventas a China (H20); cargo de inventario en el 1T FY26 [9]"
+      },
+      {
+        "anio": "2026",
+        "hito": "Ingresos de 215.938 M en FY2026; emisión de 25.000 M en bonos y dividendo ×25 [4, 20, 21]"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "negocio": {
+    "segmentos": [
+      {
+        "nombre": "Centro de datos",
+        "descripcion": "GPU de cálculo (Hopper, Blackwell, Rubin), sistemas completos (NVL72), redes (InfiniBand, Spectrum-X, NVLink) y software (CUDA, AI Enterprise).",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "FY2022",
+            "ingresos": 10613,
+            "resultado": null
+          },
+          {
+            "periodo": "FY2023",
+            "ingresos": 15005,
+            "resultado": null
+          },
+          {
+            "periodo": "FY2024",
+            "ingresos": 47525,
+            "resultado": null
+          },
+          {
+            "periodo": "FY2025",
+            "ingresos": 115186,
+            "resultado": null
+          },
+          {
+            "periodo": "FY2026",
+            "ingresos": 193700,
+            "resultado": null
+          }
+        ]
+      },
+      {
+        "nombre": "Resto (gaming, visualización, automoción, OEM)",
+        "descripcion": "GPU GeForce para juegos, estaciones de trabajo RTX, plataforma DRIVE para automoción y robótica, y ventas a fabricantes.",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "FY2022",
+            "ingresos": 16301,
+            "resultado": null
+          },
+          {
+            "periodo": "FY2023",
+            "ingresos": 11969,
+            "resultado": null
+          },
+          {
+            "periodo": "FY2024",
+            "ingresos": 13397,
+            "resultado": null
+          },
+          {
+            "periodo": "FY2025",
+            "ingresos": 15311,
+            "resultado": null
+          },
+          {
+            "periodo": "FY2026",
+            "ingresos": 22238,
+            "resultado": null
+          }
+        ]
+      }
+    ],
+    "geografias": [
+      {
+        "nombre": "Estados Unidos",
+        "peso_pct": 47
+      },
+      {
+        "nombre": "Singapur",
+        "peso_pct": 18
+      },
+      {
+        "nombre": "Taiwán",
+        "peso_pct": 16
+      },
+      {
+        "nombre": "China (incl. Hong Kong)",
+        "peso_pct": 13
+      },
+      {
+        "nombre": "Otros",
+        "peso_pct": 6
+      }
+    ],
+    "geografias_criterio": "origen",
+    "kpis": [
+      {
+        "kpi": "Ingresos de centro de datos (trimestre)",
+        "valor_anterior": "41.100 M USD (2T FY26)",
+        "valor_actual": "89.000 M USD (2T FY27)",
+        "variacion": "+117 %",
+        "comentario": "Blackwell Ultra y redes; sin ventas de cálculo a China [3, 5]"
+      },
+      {
+        "kpi": "Redes de centro de datos (trimestre)",
+        "valor_anterior": "≈4.950 M USD (1T FY26)",
+        "valor_actual": "14.800 M USD (1T FY27)",
+        "variacion": "+199 %",
+        "comentario": "NVLink, Spectrum-X e InfiniBand crecen más que el cálculo [4]"
+      },
+      {
+        "kpi": "Margen bruto GAAP",
+        "valor_anterior": "71,1 % (FY2026)",
+        "valor_actual": "75,0 % (2T FY27)",
+        "variacion": "+3,9 p.",
+        "comentario": "Guía del 3T: en torno al 74 % [3, 6]"
+      },
+      {
+        "kpi": "Obligaciones de suministro y capacidad",
+        "valor_anterior": "119.000 M USD (abr-26)",
+        "valor_actual": "279.000 M USD (jul-26)",
+        "variacion": "×2,3",
+        "comentario": "Memoria y capacidad de fabricación: 92.000 M en el resto de FY27, 87.000 M en FY28 y 88.000 M en FY29 [7]"
+      },
+      {
+        "kpi": "Guía de ingresos del trimestre siguiente",
+        "valor_anterior": "91.000 M USD (2T FY27)",
+        "valor_actual": "108.000 M USD (3T FY27)",
+        "variacion": "+18,7 %",
+        "comentario": "±2 %, sin ventas de cálculo a China [3]"
+      }
+    ],
+    "descripcion": "Nvidia diseña (no fabrica: TSMC le produce los chips) procesadores de cálculo acelerado y los vende cada vez más como sistemas completos: GPU (Hopper, Blackwell, Blackwell Ultra y, desde 2026-27, Rubin), CPU Grace, redes (NVLink, InfiniBand, Spectrum-X) y bastidores enteros (NVL72) para centros de datos de IA [4, 8]. Centro de datos supuso ≈90 % de los ingresos en FY2026 y el 93 % en el 2T FY27 (89.000 de 96.200 M) [4, 22]. Los clientes son los grandes proveedores de nube (Microsoft, Amazon, Alphabet, Meta, Oracle), laboratorios de IA (OpenAI, Anthropic, xAI), «neonubes» como CoreWeave, empresas y gobiernos. El resto es gaming (GeForce), estaciones de trabajo, automoción y robótica. La pila de software (CUDA, bibliotecas, AI Enterprise) es gratis o casi, pero ata al cliente al hardware.",
+    "como_gana_dinero": "Vende hardware con margen bruto del 71-75 % [4, 22]: precio por sistema muy por encima del coste de fabricación en TSMC y de la memoria HBM. Casi nada es recurrente por contrato; la demanda depende del capex de unos pocos clientes, que en 2026 gastarán 650.000-775.000 M USD según la propia Nvidia [12]. El apalancamiento operativo es enorme: los gastos operativos (≈10 % de las ventas) crecen mucho menos que los ingresos, por eso el margen EBIT pasó del 37 % en FY2022 al 60 % en FY2026 [4, 8]. El margen depende de la mezcla (sistemas completos y redes frente a chips sueltos), del coste de la memoria y de las transiciones de producto: en cada cambio de generación el margen baja unos trimestres.",
+    "clientes": "Concentración alta: los clientes directos suelen ser fabricantes de sistemas (ODM) y los finales, un puñado de hiperescaladores; en FY2025 dos clientes directos superaron cada uno el 10 % de los ingresos [8]. No hay contratos plurianuales con precio fijado: se trabaja con pedidos y asignaciones. El poder de precios está demostrado: el margen bruto subió del 56,9 % en FY2023 al 75 % en 2026 con costes de memoria al alza [8, 22]. La contrapartida es que algunos grandes clientes (Alphabet con TPU, Amazon con Trainium, Meta y Microsoft con chips propios) diseñan alternativas para rebajar esa dependencia, y que Nvidia invierte en algunos clientes (OpenAI, Anthropic) que a su vez le compran [14].",
+    "confianza": "Media"
+  },
+  "sector": {
+    "definicion": "El mercado relevante es el gasto en infraestructura de centros de datos para IA: aceleradores (GPU y ASIC), redes y sistemas. Lo medimos por el capex de los grandes proveedores de nube, la mejor serie pública. Los informes de mercado de «aceleradores para centro de datos» se quedan cortos: MarketsandMarkets da 170.800 M USD en 2025 y 372.700 M en 2030 [23], menos que los ingresos de centro de datos de la propia Nvidia en FY2026 (≈193.700 M), así que no sirven como perímetro. Usamos el capex de los cuatro grandes (Microsoft, Alphabet, Amazon, Meta) y las previsiones de Moody's, BofA y Evercore [24, 25].",
+    "tamano": "≈725.000 M USD de capex de los cuatro grandes en 2026 (410.000 M en 2025) [24]",
+    "unidad_serie": "millones de USD (capex de Microsoft, Alphabet, Amazon y Meta)",
+    "serie": [
+      {
+        "anio": "2025",
+        "tamano": 410000
+      },
+      {
+        "anio": "2026e",
+        "tamano": 725000
+      },
+      {
+        "anio": "2027e",
+        "tamano": 1000000
+      }
+    ],
+    "tcac_historico_pct": null,
+    "tcac_previsto_pct": null,
+    "cr5_pct": null,
+    "estructura": "Concentrada",
+    "drivers": [
+      {
+        "driver": "Capex de los hiperescaladores en IA",
+        "efecto": "+",
+        "horizonte": "Cíclico",
+        "evidencia": "De 410.000 M en 2025 a ≈725.000 M en 2026 y ≈1 billón en 2027 según Moody's, BofA y Evercore [24, 25]"
+      },
+      {
+        "driver": "Inferencia y modelos de razonamiento",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Las redes de centro de datos crecen un 199 % en el 1T FY27: los clústeres son mayores [4]"
+      },
+      {
+        "driver": "Chips propios de los clientes (TPU, Trainium, MTIA)",
+        "efecto": "−",
+        "horizonte": "Estructural",
+        "evidencia": "Alphabet, Amazon y Meta despliegan alternativas; Broadcom crece con los ASIC [14, 26]"
+      },
+      {
+        "driver": "Restricciones de exportación a China",
+        "efecto": "−",
+        "horizonte": "Estructural",
+        "evidencia": "Guía del 3T FY27 sin ventas de cálculo a China; China era el 13 % de los ingresos en FY2025 [8, 22]"
+      },
+      {
+        "driver": "Capacidad de TSMC y memoria HBM",
+        "efecto": "+/−",
+        "horizonte": "Cíclico",
+        "evidencia": "Obligaciones de suministro de 279.000 M a julio de 2026 [7]"
+      },
+      {
+        "driver": "Financiación de los laboratorios de IA",
+        "efecto": "+/−",
+        "horizonte": "Cíclico",
+        "evidencia": "Parte de la demanda depende de que OpenAI y Anthropic sigan captando capital [14]"
+      }
+    ],
+    "porter": [
+      {
+        "fuerza": "Rivalidad",
+        "intensidad": 2,
+        "justificacion": "AMD es el único rival de GPU con escala y factura una fracción; Nvidia mantiene un 75 % de margen bruto [4, 27]"
+      },
+      {
+        "fuerza": "Poder de los clientes",
+        "intensidad": 4,
+        "justificacion": "Cuatro o cinco clientes pesan la mayoría del centro de datos y todos desarrollan chips propios [8, 14]"
+      },
+      {
+        "fuerza": "Poder de los proveedores",
+        "intensidad": 4,
+        "justificacion": "TSMC fabrica en exclusiva los chips avanzados y la HBM la dan tres proveedores; compromisos de 279.000 M [7]"
+      },
+      {
+        "fuerza": "Amenaza de entrada",
+        "intensidad": 2,
+        "justificacion": "CUDA, redes y diseño de sistemas exigen décadas e inversiones de I+D de más de 15.000 M al año [8]"
+      },
+      {
+        "fuerza": "Amenaza de sustitutos",
+        "intensidad": 3,
+        "justificacion": "Los ASIC a medida (TPU, Trainium) sustituyen GPU en inferencia de clientes grandes [26]"
+      }
+    ],
+    "ciclo": {
+      "posicion": "Expansión",
+      "comentario": "El capex de IA crece un 77 % en 2026 y las previsiones de 2027 se han revisado al alza tras el 1T [24, 25]. Los semiconductores son cíclicos: Nvidia perdió la mitad de sus ingresos de gaming tras el fin de la minería de criptomonedas en FY2023 y la acción cayó más de un 60 % en 2022 [8]. En 2008-09 los ingresos cayeron un 16 % y en 2020 el negocio aguantó. El indicador adelantado es el capex guiado por los hiperescaladores y las obligaciones de compra de Nvidia."
+    },
+    "regulacion": "Controles de exportación de EE. UU. a China desde octubre de 2022, endurecidos en 2023 y 2025 (H20); la guía actual supone cero ventas de cálculo a China [9, 22]. China investiga a Nvidia por competencia (Mellanox) y empuja a sus empresas hacia chips locales como Huawei [28]. En Europa y EE. UU. hay escrutinio de competencia sobre su posición dominante y sus inversiones en clientes.",
+    "tendencias": "Tres tendencias: (1) el paso de chips a sistemas completos y redes, que favorece a Nvidia; (2) la inferencia gana peso frente al entrenamiento, donde los ASIC de los clientes compiten mejor en coste [26]; (3) Huawei cierra distancia en China y el mercado chino se pierde para los estadounidenses [28]. Nvidia gana con la primera y pierde cuota con las otras dos, pero en un mercado que crece mucho más deprisa.",
+    "confianza": "Media"
+  },
+  "competencia": {
+    "cuota_pct": null,
+    "posicion": "1.º mundial en aceleradores de IA para centro de datos; la cuota no tiene una fuente pública fiable (las estimaciones de prensa van del 80 % al 90 % de las GPU de IA). En gaming, 1.º en GPU dedicadas.",
+    "competidores": [
+      {
+        "nombre": "AMD",
+        "pais": "EE. UU.",
+        "ticker": "AMD",
+        "ingresos": 25785,
+        "cuota_pct": null,
+        "margen_ebit_pct": 7.4,
+        "comentario": "GPU Instinct (MI350/MI400) y CPU; cifras de 2024 [27]"
+      },
+      {
+        "nombre": "Broadcom",
+        "pais": "EE. UU.",
+        "ticker": "AVGO",
+        "ingresos": 51574,
+        "cuota_pct": null,
+        "margen_ebit_pct": 26.1,
+        "comentario": "ASIC a medida para Google, Meta y OpenAI, y redes Ethernet; cifras de FY2024 [26]"
+      },
+      {
+        "nombre": "Intel",
+        "pais": "EE. UU.",
+        "ticker": "INTC",
+        "ingresos": 53101,
+        "cuota_pct": null,
+        "margen_ebit_pct": -22,
+        "comentario": "Gaudi sin tracción; Nvidia invirtió 5.000 M en Intel en 2025; cifras de 2024 [27]"
+      },
+      {
+        "nombre": "Huawei (Ascend)",
+        "pais": "China",
+        "ticker": null,
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Sustituto en China tras los controles de exportación [28]"
+      },
+      {
+        "nombre": "Alphabet (TPU)",
+        "pais": "EE. UU.",
+        "ticker": "GOOGL",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Chip propio, ofrecido también a terceros en Google Cloud [14]"
+      }
+    ],
+    "foso": {
+      "veredicto": "Amplio",
+      "tendencia": "Estable",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 4,
+          "evidencia": "CUDA y sus bibliotecas: millones de desarrolladores y casi todo el software de IA optimizado primero para Nvidia [1]"
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 4,
+          "evidencia": "Migrar a otra arquitectura exige reescribir y revalidar código; los clientes lo hacen solo en sus modelos propios a gran escala [13]"
+        },
+        {
+          "fuente": "Intangibles (marca, patentes, licencias)",
+          "puntuacion": 3,
+          "evidencia": "Patentes y diseño de sistemas; margen bruto del 75 % frente a ≈50 % de AMD [4, 15]"
+        },
+        {
+          "fuente": "Ventaja en costes",
+          "puntuacion": 3,
+          "evidencia": "Prioridad en capacidad de TSMC y en HBM por volumen; compromisos de 279.000 M [14]"
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 4,
+          "evidencia": "I+D de más de 15.000 M al año repartida en más de 300.000 M de ventas; ningún rival puede gastar lo mismo en GPU [1, 4]"
+        }
+      ]
+    },
+    "amenazas": "Tres amenazas por orden de probabilidad: (1) los ASIC de los grandes clientes (TPU, Trainium, MTIA, el chip de OpenAI con Broadcom) se quedan con la inferencia de sus propios modelos: probable, y ya visible en el crecimiento de Broadcom [26]; (2) AMD gana un segundo proveedor en clientes que no quieren depender de uno: probable pero acotado [27]; (3) un parón del capex de IA si los laboratorios no rentabilizan sus modelos: menos probable a 12 meses, pero es el riesgo que más valor destruiría [14]. China ya está perdida en la guía [22].",
+    "confianza": "Media"
+  },
+  "financieros": {
+    "cuenta": [
+      {
+        "periodo": "FY2022",
+        "ingresos": 26914,
+        "coste_ventas": 9439,
+        "gastos_generales": 2166,
+        "ebitda": 11215,
+        "amortizaciones": 1174,
+        "ebit": 10041,
+        "resultado_financiero": -100,
+        "bai": 9941,
+        "impuestos": 189,
+        "minoritarios": 0,
+        "beneficio_neto": 9752,
+        "gastos_financieros": 236,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 0.39,
+        "dpa": 0.016,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 25350
+      },
+      {
+        "periodo": "FY2023",
+        "ingresos": 26974,
+        "coste_ventas": 11618,
+        "gastos_generales": 2440,
+        "ebitda": 5768,
+        "amortizaciones": 1544,
+        "ebit": 4224,
+        "resultado_financiero": -43,
+        "bai": 4181,
+        "impuestos": -187,
+        "minoritarios": 0,
+        "beneficio_neto": 4368,
+        "gastos_financieros": 262,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": 1353,
+        "bpa": 0.17,
+        "dpa": 0.016,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 25070
+      },
+      {
+        "periodo": "FY2024",
+        "ingresos": 60922,
+        "coste_ventas": 16621,
+        "gastos_generales": 2654,
+        "ebitda": 34480,
+        "amortizaciones": 1508,
+        "ebit": 32972,
+        "resultado_financiero": 846,
+        "bai": 33818,
+        "impuestos": 4058,
+        "minoritarios": 0,
+        "beneficio_neto": 29760,
+        "gastos_financieros": 257,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 1.19,
+        "dpa": 0.016,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 24940
+      },
+      {
+        "periodo": "FY2025",
+        "ingresos": 130497,
+        "coste_ventas": 32639,
+        "gastos_generales": 3491,
+        "ebitda": 83317,
+        "amortizaciones": 1864,
+        "ebit": 81453,
+        "resultado_financiero": 2573,
+        "bai": 84026,
+        "impuestos": 11146,
+        "minoritarios": 0,
+        "beneficio_neto": 72880,
+        "gastos_financieros": 247,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 2.94,
+        "dpa": 0.034,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 24804
+      },
+      {
+        "periodo": "FY2026",
+        "ingresos": 215938,
+        "coste_ventas": 62406,
+        "gastos_generales": null,
+        "ebitda": 133230,
+        "amortizaciones": 2843,
+        "ebit": 130387,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": 0,
+        "beneficio_neto": 120067,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 4.9,
+        "dpa": 0.04,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 24503
+      }
+    ],
+    "ltm": {
+      "periodo": "LTM jul-26",
+      "fecha_fin": "2026-07-26",
+      "ingresos": 302933,
+      "ebitda": 200000,
+      "ebit": 196500,
+      "beneficio_neto": 192700,
+      "bpa": 7.91,
+      "dpa": 0.28,
+      "dpa_extraordinario": 0,
+      "fcf": 127000,
+      "participadas_en_ebitda": null,
+      "no_recurrentes_en_ebitda": null
+    },
+    "cambios_perimetro": [],
+    "comentario": "Crecimiento casi todo orgánico: los ingresos pasan de 26.914 M USD en FY2022 a 215.938 M en FY2026 (×8) y a 302.933 M en los doce meses a julio de 2026, empujados por centro de datos (de 10.613 M a ≈193.700 M) [1, 2, 8]. FY2023 no es comparable: la caída del gaming y el cargo de 1.353 M por la ruptura de la compra de Arm hundieron el EBIT al 15,7 % [8]. Desde entonces el margen EBIT sube al 54 % (FY2024), 62 % (FY2025) y 60 % (FY2026), por precio y mezcla de sistemas completos y apalancamiento operativo: los gastos operativos crecen mucho menos que las ventas [1, 2]. FY2026 llevó el cargo de inventario del H20 por las restricciones a China (1T FY26: margen bruto del 60,5 %) [9]. En FY2027 el margen bruto vuelve al 75 % [3, 4].",
+    "ajustes": "Usamos cifras GAAP. El BPA ajustado (non-GAAP) excluye la remuneración en acciones (6.386 M USD en FY2026), amortización de intangibles y, desde FY2026, las ganancias y pérdidas de las participaciones en cotizadas y no cotizadas [2, 10]. Esas ganancias son grandes y volátiles: 7.800 M USD en el 2T FY27, que explican que el BPA GAAP (2,46) supere al ajustado (2,22) [3, 11]; en el 1T FY27, 2,39 frente a 1,87 [4]. Para la historia del PER y el objetivo a 12 meses usamos el BPA sin esas ganancias. El EBIT y EBITDA de los doce meses a julio de 2026 son estimación propia (ingresos LTM × margen operativo GAAP de los trimestres publicados, ≈65 %): no tenemos la cuenta trimestral completa.",
+    "confianza": "Media"
+  },
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "3T FY25",
+        "ingresos": 35082,
+        "crecimiento_pct": 94,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 0.78,
+        "vs_consenso": "Superior"
+      },
+      {
+        "periodo": "4T FY25",
+        "ingresos": 39331,
+        "crecimiento_pct": 78,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 0.89,
+        "vs_consenso": "Superior"
+      },
+      {
+        "periodo": "1T FY26",
+        "ingresos": 44062,
+        "crecimiento_pct": 69,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 0.76,
+        "vs_consenso": "Superior"
+      },
+      {
+        "periodo": "2T FY26",
+        "ingresos": 46743,
+        "crecimiento_pct": 56,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 1.08,
+        "vs_consenso": "Superior"
+      },
+      {
+        "periodo": "3T FY26",
+        "ingresos": 57006,
+        "crecimiento_pct": 62,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 1.3,
+        "vs_consenso": "Superior"
+      },
+      {
+        "periodo": "4T FY26",
+        "ingresos": 68127,
+        "crecimiento_pct": 73,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 1.76,
+        "vs_consenso": "Superior"
+      },
+      {
+        "periodo": "1T FY27",
+        "ingresos": 81600,
+        "crecimiento_pct": 85,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 2.39,
+        "vs_consenso": "Superior"
+      },
+      {
+        "periodo": "2T FY27",
+        "ingresos": 96200,
+        "crecimiento_pct": 106,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 2.46,
+        "vs_consenso": "Superior"
+      }
+    ],
+    "ultima_presentacion": "En mayo (1T FY27) la dirección elevó el dividendo trimestral de 0,01 a 0,25 USD, añadió 80.000 M USD a la recompra y empezó a desglosar centro de datos en hiperescala y ACIE, con una plataforma aparte de Edge Computing [4]. La directora financiera situó el capex de los hiperescaladores de 2026 entre 650.000 y 775.000 M USD [12]. En agosto (2T FY27) los ingresos de 96.200 M superaron en ≈4.000 M al consenso y la guía del 3T (108.000 M ±2 %) quedó por encima de los ≈104.000 M esperados; supone cero ventas de cálculo a China [3, 5]. Cambio de discurso entre una y otra: de la capacidad de suministro a la financiación de la demanda. Las preguntas que más se repitieron fueron el margen bruto (guía del 74 %, por debajo del 75 % del 2T), el salto de las obligaciones de suministro a 279.000 M y la caída del flujo operativo del 2T (24.077 M frente a ≈50.000 M del 1T) por circulante y pagos anticipados [6, 7, 13]. Un medio atribuye a la directora financiera un crecimiento del 70 % en FY2028, sin segunda fuente [5]. La dirección no dio cifras sobre la exposición a OpenAI y Anthropic, clientes en los que también invierte [14].",
+    "confianza": "Media"
+  },
+  "balance": {
+    "historico": [
+      {
+        "periodo": "FY2022",
+        "activo_total": 44187,
+        "activo_corriente": 28829,
+        "pasivo_corriente": 4335,
+        "pasivo_total": 17575,
+        "fondo_comercio": 4349,
+        "intangibles": 2339,
+        "inmovilizado_material": 2778,
+        "existencias": 2605,
+        "clientes": 4650,
+        "proveedores": 1783,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 21208,
+        "deuda_financiera": 10946,
+        "arrendamientos": 0,
+        "patrimonio_neto": 26612,
+        "minoritarios": 0,
+        "reservas": 16235
+      },
+      {
+        "periodo": "FY2023",
+        "activo_total": 41182,
+        "activo_corriente": 23073,
+        "pasivo_corriente": 6563,
+        "pasivo_total": 19081,
+        "fondo_comercio": 4372,
+        "intangibles": 1676,
+        "inmovilizado_material": 3807,
+        "existencias": 5159,
+        "clientes": 3827,
+        "proveedores": 1193,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 13296,
+        "deuda_financiera": 10953,
+        "arrendamientos": 0,
+        "patrimonio_neto": 22101,
+        "minoritarios": 0,
+        "reservas": 10171
+      },
+      {
+        "periodo": "FY2024",
+        "activo_total": 65728,
+        "activo_corriente": 44345,
+        "pasivo_corriente": 10631,
+        "pasivo_total": 22750,
+        "fondo_comercio": 4430,
+        "intangibles": 1112,
+        "inmovilizado_material": 3914,
+        "existencias": 5282,
+        "clientes": 9999,
+        "proveedores": 2699,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 25984,
+        "deuda_financiera": 9709,
+        "arrendamientos": 0,
+        "patrimonio_neto": 42978,
+        "minoritarios": 0,
+        "reservas": 29817
+      },
+      {
+        "periodo": "FY2025",
+        "activo_total": 111601,
+        "activo_corriente": 80126,
+        "pasivo_corriente": 18047,
+        "pasivo_total": 32274,
+        "fondo_comercio": 5188,
+        "intangibles": 807,
+        "inmovilizado_material": 6283,
+        "existencias": 10080,
+        "clientes": 23065,
+        "proveedores": 6310,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 43210,
+        "deuda_financiera": 8463,
+        "arrendamientos": 0,
+        "patrimonio_neto": 79327,
+        "minoritarios": 0,
+        "reservas": 68038
+      },
+      {
+        "periodo": "FY2026",
+        "activo_total": 206803,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 49510,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": 21403,
+        "clientes": 38466,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 49670,
+        "deuda_financiera": 8468,
+        "arrendamientos": 0,
+        "patrimonio_neto": 157293,
+        "minoritarios": 0,
+        "reservas": null
+      }
+    ],
+    "vencimientos": [],
+    "liquidez": "Caja, equivalentes y valores negociables de deuda de 56.600 M USD a 26-jul-26, más 42.800 M en valores de renta variable cotizados [15]; la empresa dice tener liquidez suficiente para al menos doce meses [15].",
+    "rating": "Sin dato verificado en las búsquedas (Aa3/AA− según la prensa de la emisión de junio de 2026, sin documento primario)",
+    "coste_deuda_pct": null,
+    "vida_media_anios": null,
+    "otros_pasivos": "Las obligaciones de compra de suministro y capacidad son el gran pasivo fuera de balance: 279.000 M USD a 26-jul-26 (119.000 M tres meses antes), con pagos de 92.000 M en el resto de FY2027, 87.000 M en FY2028 y 88.000 M en FY2029 [7]. Un artículo de análisis cita 366.000 M de compromisos totales sumando capacidad en la nube contratada a terceros [16]. Si la demanda se frena, son pagos casi fijos frente a ventas variables. Además, Nvidia invierte en clientes (OpenAI, Anthropic, xAI y otros): 42.800 M en cotizadas al 2T FY27 más participaciones no cotizadas no cuantificadas aquí [14, 15]. Los arrendamientos operativos (US GAAP) no se cuentan como deuda.",
+    "comentario": "La caja neta fue siempre positiva. En junio de 2026 Nvidia emitió 25.000 M USD en siete tramos (de 2 a 30 años, cupones del 4,25 % al 5,625 %), su primera emisión desde 2021, con ≈85.000 M de demanda [17]. Con ello la deuda bruta estimada sube a ≈33.500 M (8.468 M previos + 25.000 M; estimación propia: no tenemos el balance del 2T). El circulante crece con las ventas: clientes de 23.065 a 38.466 M y existencias de 10.080 a 21.403 M en FY2026 [18]; en el 2T FY27 el flujo operativo cayó a 24.077 M por circulante y pagos anticipados de suministro [13].",
+    "confianza": "Media"
+  },
+  "flujos": {
+    "historico": [
+      {
+        "periodo": "FY2022",
+        "flujo_operativo": 9108,
+        "capex": 976,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 263,
+        "desinversiones": 0,
+        "dividendos": 399,
+        "recompras": 0,
+        "emision_acciones": 281,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "FY2023",
+        "flujo_operativo": 5641,
+        "capex": 1833,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 49,
+        "desinversiones": 0,
+        "dividendos": 398,
+        "recompras": 10039,
+        "emision_acciones": 355,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "FY2024",
+        "flujo_operativo": 28090,
+        "capex": 1069,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 83,
+        "desinversiones": 0,
+        "dividendos": 395,
+        "recompras": 9533,
+        "emision_acciones": 403,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "FY2025",
+        "flujo_operativo": 64089,
+        "capex": 3236,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 1007,
+        "desinversiones": 0,
+        "dividendos": 834,
+        "recompras": 33706,
+        "emision_acciones": 490,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "FY2026",
+        "flujo_operativo": 102718,
+        "capex": 6018,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": null,
+        "desinversiones": 0,
+        "dividendos": 974,
+        "recompras": 40400,
+        "emision_acciones": null,
+        "intereses_en_financiacion": 0
+      }
+    ],
+    "comentario": "La conversión es alta y sin trampas de capitalización: flujo operativo de 102.718 M USD en FY2026 frente a 120.067 M de beneficio (86 %), con capex de ≈6.000 M (2,8 % de las ventas) y caja libre de ≈96.700 M [2, 19, 20]. Lo que no es caja en el beneficio son las ganancias de participaciones y el aumento de clientes y existencias. El 2T FY27 es la anomalía: flujo operativo de 24.077 M y caja libre de 21.341 M frente a ≈48.550 M del 1T, por pagos anticipados a proveedores y circulante [13]. Capex de mantenimiento: estimación propia ≈ la amortización (2.843 M); el resto (≈3.200 M) es crecimiento en centros de datos propios y laboratorios. Las recompras absorben casi toda la caja: 40.400 M en FY2026 y ≈26.000 M (con dividendos) solo en el 2T FY27 [2, 3].",
+    "confianza": "Media"
+  },
+  "calidad": {
+    "auditor": "PricewaterhouseCoopers LLP",
+    "anios_auditor": null,
+    "opinion": "Favorable",
+    "comentario": "Sin salvedades ni reexpresiones. Tres asuntos que pesan en la lectura: (1) la remuneración en acciones es de 6.386 M USD en FY2026, un 5 % del beneficio neto, y la empresa la excluye de su BPA ajustado [10]; (2) desde FY2026 el beneficio GAAP lleva ganancias de valor razonable de participaciones en empresas de IA, algunas clientes (7.800 M en el 2T FY27), que inflan el BPA y no son recurrentes [3, 11]; (3) la financiación circular: Nvidia invierte en clientes que le compran GPU, y la caja de esas inversiones vuelve como ingresos [14, 16]. La I+D no se capitaliza. El salto del circulante (clientes +67 % en FY2026, existencias ×2,1) acompaña a las ventas (+65 %) [18]. Los indicadores de calidad del motor (Altman, Piotroski, Beneish) se calculan con FY2025 como último año completo porque al balance de FY2026 le faltan partidas.",
+    "senales": [
+      {
+        "senal": "Ganancias de participaciones en el BPA GAAP",
+        "nivel": "Media",
+        "comentario": "7.800 M en el 2T FY27; usamos el BPA sin ellas [3, 11]"
+      },
+      {
+        "senal": "Inversiones en clientes (financiación circular)",
+        "nivel": "Media",
+        "comentario": "OpenAI, Anthropic y otros; si un cliente falla, se pierde la venta y la inversión [14, 16]"
+      },
+      {
+        "senal": "Caída del flujo operativo del 2T FY27",
+        "nivel": "Media",
+        "comentario": "24.077 M frente a ≈50.000 M del 1T por pagos anticipados de suministro [13]"
+      },
+      {
+        "senal": "Remuneración en acciones excluida del ajustado",
+        "nivel": "Baja",
+        "comentario": "≈3 % de las ventas en FY2026 [10]"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "rentabilidad": {
+    "comentario": "Crea valor con mucha holgura: el ROIC del motor es del 121,7 % en FY2026 frente a un WACC del 12,87 %. Con el balance completo que tenemos de FY2025 el ROIC fue del 198,2 % y el de FY2026 está calculado con un balance al que le faltan partidas; con nuestra propia cuenta (NOPAT de ≈109.500 M sobre ≈103.000 M de capital invertido operativo, sin caja ni participaciones) sale ≈106 %, así que ROIC − WACC está en torno a 90-110 puntos [2]. Lo mueve el margen (EBIT del 60 % en FY2026), no la rotación: el capital invertido es pequeño porque TSMC fabrica y Nvidia solo diseña. El ROIC incremental histórico (137,4 %) dice que el crecimiento reciente ha sido de altísima calidad. Ningún comparable se acerca: TSMC 50,5 %, ASML 89 % [43]. El riesgo no es de rentabilidad sino de duración.",
+    "confianza": "Media"
+  },
+  "capital": {
+    "politica": "Prioridades declaradas: invertir en I+D y en el ecosistema (participaciones en clientes y socios), y devolver el resto con recompras y dividendo. En mayo de 2026 el consejo añadió 80.000 M USD a la recompra y subió el dividendo trimestral de 0,01 a 0,25 USD (≈1 USD al año, ≈0,4 % de rentabilidad) [4]; tras el 2T FY27 quedaban ≈99.000 M autorizados [3]. En FY2026 recompró 282 M de acciones por 40.400 M y pagó 974 M de dividendos [2].",
+    "adquisiciones": [
+      {
+        "anio": "2020",
+        "objetivo": "Mellanox (redes InfiniBand y Ethernet)",
+        "importe": 6900,
+        "ev_ebitda": null,
+        "financiacion": "Caja",
+        "resultado": "Base del negocio de redes, que facturó 14.800 M en el 1T FY27 [4]; sin deterioros"
+      },
+      {
+        "anio": "2022",
+        "objetivo": "Arm (cancelada)",
+        "importe": 40000,
+        "ev_ebitda": null,
+        "financiacion": "Acciones y caja",
+        "resultado": "Bloqueada por los reguladores; cargo de 1.353 M en FY2023 [8]"
+      }
+    ],
+    "comentario": "Asignadora de capital disciplinada en lo orgánico: la I+D ha creado un negocio con ROIC por encima del 100 % y la única gran compra cerrada (Mellanox) es hoy el negocio de redes, que crece al 199 % [4]. Las recompras son masivas (40.400 M en FY2026, ≈26.000 M en el 2T FY27 con dividendos), pero se hacen a precios altos y apenas reducen las acciones: de 25.350 M en FY2022 a ≈24.270 M hoy (−4 % en cuatro años), porque compensan la remuneración en acciones [2, 3]. Dos decisiones nuevas piden vigilancia: emitir 25.000 M de deuda teniendo caja neta, y las participaciones en clientes (42.800 M en cotizadas), que mezclan inversión financiera y venta comercial [15, 17].",
+    "confianza": "Media"
+  },
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "Jensen Huang",
+        "cargo": "Fundador, presidente y primer ejecutivo (President & CEO)",
+        "desde": "1993",
+        "participacion_pct": 3.5,
+        "trayectoria": "Ingeniero (LSI Logic, AMD) antes de fundar Nvidia. En sus 33 años al frente llevó la empresa de las tarjetas gráficas a la IA: ingresos de 26.914 M USD en FY2022 a 215.938 M en FY2026 [8, 20]. La participación (≈3,5 %) es aproximada, del proxy [29]."
+      },
+      {
+        "nombre": "Colette Kress",
+        "cargo": "Vicepresidenta ejecutiva y directora financiera",
+        "desde": "2013",
+        "participacion_pct": null,
+        "trayectoria": "Antes en Cisco y Microsoft. Gestiona una caja libre de ≈96.700 M en FY2026, la recompra y la primera emisión de bonos desde 2021 (25.000 M en junio de 2026) [20, 30]."
+      },
+      {
+        "nombre": "Jay Puri",
+        "cargo": "Vicepresidente ejecutivo de operaciones comerciales mundiales",
+        "desde": "2005",
+        "participacion_pct": null,
+        "trayectoria": "Responsable de ventas a hiperescaladores y empresas; más de veinte años en la empresa [29]."
+      },
+      {
+        "nombre": "Debora Shoquist",
+        "cargo": "Vicepresidenta ejecutiva de operaciones",
+        "desde": "2007",
+        "participacion_pct": null,
+        "trayectoria": "Cadena de suministro con TSMC y la memoria HBM; obligaciones de compra de 279.000 M a julio de 2026 [7]."
+      },
+      {
+        "nombre": "Timothy Teter",
+        "cargo": "Vicepresidente ejecutivo, director jurídico y secretario",
+        "desde": "2017",
+        "participacion_pct": null,
+        "trayectoria": "Controles de exportación y competencia [29]."
+      }
+    ],
+    "historial_guidance": [
+      {
+        "anio": "3T FY26",
+        "guia": "Ingresos de 54.000 M ±2 %",
+        "real": "57.006 M",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "4T FY26",
+        "guia": "Ingresos de 65.000 M ±2 %",
+        "real": "68.127 M",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "1T FY27",
+        "guia": "Ingresos de 78.000 M ±2 %",
+        "real": "81.600 M",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2T FY27",
+        "guia": "Ingresos de 91.000 M ±2 %; margen bruto en torno al 75 %",
+        "real": "96.200 M; margen del 75,0 %",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "1T FY26",
+        "guia": "Ingresos de 43.000 M ±2 %",
+        "real": "44.062 M (con un cargo de inventario del H20 por las restricciones a China)",
+        "cumplida": "Parcial"
+      }
+    ],
+    "comentario": "Equipo estable y fiable en la guía: en los cinco últimos trimestres revisados los ingresos superaron la guía entre un 2,5 % y un 6 % [4, 20, 31]. La credibilidad es alta en el corto plazo; el problema es la visibilidad a más de un año, que la dirección no da. El riesgo de persona clave es grande: Huang tiene 63 años, ha sido el único primer ejecutivo y no hay sucesor público. El equipo de primera línea lleva entre 10 y 20 años en la empresa.",
+    "confianza": "Media"
+  },
+  "gobierno": {
+    "consejo": [
+      {
+        "nombre": "Jensen Huang",
+        "cargo": "Consejero, presidente y primer ejecutivo",
+        "tipo": "Ejecutivo",
+        "desde": "1993",
+        "comisiones": null
+      },
+      {
+        "nombre": "Stephen C. Neal",
+        "cargo": "Consejero coordinador independiente (Lead Director)",
+        "tipo": "Independiente",
+        "desde": "2019",
+        "comisiones": "Nombramientos y gobierno"
+      },
+      {
+        "nombre": "Tench Coxe",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "1993",
+        "comisiones": null
+      },
+      {
+        "nombre": "Mark A. Stevens",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2008",
+        "comisiones": null
+      },
+      {
+        "nombre": "Harvey C. Jones",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "1993",
+        "comisiones": null
+      },
+      {
+        "nombre": "Dawn Hudson",
+        "cargo": "Consejera",
+        "tipo": "Independiente",
+        "desde": "2013",
+        "comisiones": null
+      },
+      {
+        "nombre": "Persis S. Drell",
+        "cargo": "Consejera",
+        "tipo": "Independiente",
+        "desde": "2015",
+        "comisiones": null
+      },
+      {
+        "nombre": "Robert Burgess",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2011",
+        "comisiones": null
+      },
+      {
+        "nombre": "Melissa B. Lora",
+        "cargo": "Consejera",
+        "tipo": "Independiente",
+        "desde": "2023",
+        "comisiones": "Auditoría"
+      },
+      {
+        "nombre": "John O. Dabiri",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2024",
+        "comisiones": null
+      }
+    ],
+    "presidente_ceo_separados": false,
+    "presidente_ejecutivo": false,
+    "consejero_coordinador": true,
+    "una_accion_un_voto": true,
+    "operaciones_vinculadas_relevantes": false,
+    "variable_ligado_rentabilidad": false,
+    "auditoria_independiente": true,
+    "insiders_sin_operaciones": false,
+    "accionista_control": false,
+    "presidente_vinculado_control": false,
+    "cambios_cupula_24m": 0,
+    "voto_remuneracion_pct": 93.2,
+    "voto_remuneracion_contra_pct": 6.4,
+    "voto_remuneracion_contra_libre_pct": null,
+    "voto_cupula_pct": null,
+    "remuneracion_ceo": {
+      "anio": "FY2025",
+      "total": 49.9,
+      "fijo": null,
+      "variable_corto": null,
+      "variable_largo": 38.8,
+      "ratio_salario_medio": null
+    },
+    "remuneracion": "La remuneración de Huang en FY2025 fue de 49,9 M USD, de los que 38,8 M en acciones [32]. El variable a largo plazo depende sobre todo del resultado operativo ajustado del ejercicio y de la rentabilidad total para el accionista a tres años frente al S&P 500; el variable anual en efectivo, del resultado operativo: para FY2027 el objetivo de bonus es de 4 M USD [32]. Premia crecimiento del beneficio, no rentabilidad sobre el capital, pero con un ROIC muy por encima del coste de capital eso importa poco. La junta del 24 de junio de 2026 aprobó la remuneración con un 93,2 % a favor y un 6,4 % en contra [33].",
+    "accionistas": [
+      {
+        "nombre": "Jensen Huang (directa e indirecta)",
+        "pct": 3.5,
+        "tipo": "Fundador y primer ejecutivo",
+        "variacion": "Ventas periódicas con plan 10b5-1 en 2025"
+      },
+      {
+        "nombre": "Inversores institucionales (Vanguard, BlackRock, State Street, FMR)",
+        "pct": null,
+        "tipo": "Gestoras indexadas y activas",
+        "variacion": "Sin cambios relevantes conocidos"
+      }
+    ],
+    "insiders": [],
+    "control_y_defensas": "No hay accionista de control ni clases de acciones: una acción, un voto. El fundador tiene ≈3,5 % [29]. No hay presidente no ejecutivo: Huang es President & CEO y el consejo nombra un consejero coordinador independiente (Stephen Neal) [29]. La mayoría del consejo es independiente, pero con antigüedades muy largas (tres consejeros desde 1993), lo que resta independencia práctica. Sin píldora venenosa conocida; la recompra masiva reduce el capital flotante sin cambiar el control.",
+    "alertas": [
+      "Antigüedad del consejo: tres consejeros desde la fundación (1993) y varios con más de diez años.",
+      "Riesgo de persona clave sin plan de sucesión público.",
+      "Inversiones de la empresa en clientes (OpenAI, Anthropic, xAI, Intel) con posibles conflictos comerciales [14]."
+    ],
+    "confianza": "Media"
+  },
+  "consenso": {
+    "guidance": "Guía del 3T FY27 (agosto-octubre de 2026), publicada el 26-ago-26: ingresos de 108.000 M USD ±2 % y margen bruto en torno al 74 %, sin ventas de cálculo a China [3, 34]. La empresa no da guía anual; un medio atribuye a la directora financiera un crecimiento del 70 % en FY2028, sin confirmar en otra fuente [5]. En mayo situó el capex de los hiperescaladores de 2026 en 650.000-775.000 M USD [12]. Huang habla de 3-4 billones de USD de gasto en infraestructura de IA hacia 2030 [12].",
+    "estimaciones": [
+      {
+        "periodo": "FY2027e",
+        "ingresos": 418756,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 9.47,
+        "dpa": 0.76,
+        "fuente": "Chartmill (68 analistas, 3-oct-26); Yahoo Finance: BPA 9,31 (51 analistas) [35, 36]"
+      },
+      {
+        "periodo": "FY2028e",
+        "ingresos": 709551,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 15.91,
+        "dpa": null,
+        "fuente": "Chartmill (ingresos); Yahoo Finance (BPA, 52 analistas, rango 12,85-18,75) [35, 36]"
+      },
+      {
+        "periodo": "FY2029e",
+        "ingresos": 928721,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": null,
+        "dpa": null,
+        "fuente": "Chartmill [35]"
+      }
+    ],
+    "recomendaciones": {
+      "n_analistas": 62,
+      "comprar": null,
+      "mantener": null,
+      "vender": null,
+      "po_medio": 321.3,
+      "po_min": 181.8,
+      "po_max": 540.75
+    },
+    "revisiones": "Revisiones al alza fuertes tras el 2T FY27: el BPA de consenso de FY2028 subió de ≈12,82 USD a ≈15,68 en 30 días [36]. Antes de los resultados, Rosenblatt, Cantor y KeyBanc reiteraron comprar con objetivos de 325-350 USD [37]. El objetivo medio va de 321 (Alpha Spread, 62 analistas) a 329 USD (Chartmill, 69) [35, 38]. El BPA de consenso es ajustado (sin remuneración en acciones ni ganancias de participaciones). Solo hay una fuente gratuita con estimaciones completas a tres años (Chartmill); Yahoo Finance sirve de contraste del BPA.",
+    "base_ebitda": "ajustado",
+    "ajuste_ebitda_pct_ventas": 3,
+    "confianza": "Media"
+  },
+  "bolsa": {
+    "tipo_rentabilidad": "de precio (sin dividendos)",
+    "rentabilidades": [],
+    "anual": [],
+    "beta": null,
+    "volatilidad_pct": null,
+    "max_drawdown_pct": null,
+    "posicion_corta_pct": null,
+    "comentario": "La acción cerró a 228,52 USD el 13-oct-26, un 6 % por debajo del máximo de 52 semanas (243,37) y un 39 % por encima del mínimo (164,27) [39]. Desde el cierre de FY2026 (≈190,90 USD a finales de enero) sube un 20 %, mucho menos que el beneficio: el BPA de los últimos doce meses pasó de 4,90 a 7,91 USD, de modo que el PER ha bajado [40, 41]. El mercado no ha premiado las sorpresas al alza: tras el 2T FY27 la acción subió ≈5 % después del cierre y luego se movió de lado, con el debate sobre el pico del ciclo y la financiación circular [11, 42].",
+    "confianza": "Baja"
+  },
+  "multiplos_historicos": {
+    "serie": [
+      {
+        "anio": "FY2022",
+        "precio_cierre": 24.49,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "FY2023",
+        "precio_cierre": 19.54,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": true
+      },
+      {
+        "anio": "FY2024",
+        "precio_cierre": 61.53,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "FY2025",
+        "precio_cierre": 120.07,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "FY2026",
+        "precio_cierre": 190.9,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      }
+    ],
+    "comentario": "Nvidia cotiza a 27,4x el EBITDA y 28,9x el beneficio de los últimos doce meses, un 31 % y un 38 % por debajo de sus medias de cierre de ejercicio (39,7x y 46,3x) y por debajo del mínimo de los cuatro años válidos. El descuento no viene de que la acción haya caído (+20 % desde enero), sino de que el beneficio ha crecido más deprisa que el precio [40]. Lo estructural es el cambio de perfil: hace cinco años el mercado pagaba un crecimiento largo y estable; hoy duda de que el beneficio de 2026-27 se repita (el debate de «beneficios de pico» de los foros), y con el bono a 10 años por encima del 5 % los múltiplos de crecimiento valen menos [42, 48].",
+    "confianza": "Media"
+  },
+  "comparables": {
+    "criterio": "Semiconductores de gran capitalización ligados al gasto en IA, a la misma fecha (13-14 oct-26): diseñadores de chips (AMD, Broadcom, Marvell), el fabricante (TSMC), equipos de fabricación (ASML, Applied Materials, Lam Research, KLA) y un analógico de calidad (Texas Instruments). Varios múltiplos vienen de los análisis del 14-oct de este mismo repositorio (TSMC, ASML, Texas Instruments), con sus fuentes. Arm (≈107x) queda fuera por su PER atípico; Intel, por pérdidas. Broadcom y Marvell tienen PER de fuentes con menos garantías: los usamos con cautela.",
+    "empresas": [
+      {
+        "nombre": "TSMC",
+        "ticker": "TSM",
+        "pais": "TW",
+        "capitalizacion": null,
+        "ev_ventas": 14.33,
+        "ev_ebitda_ltm": 19.7,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 19.5,
+        "crecimiento_pct": 24.5,
+        "margen_ebitda_pct": 72.7,
+        "roic_pct": 50.5,
+        "dn_ebitda": -0.8,
+        "fcf_yield_pct": 1.5
+      },
+      {
+        "nombre": "ASML",
+        "ticker": "ASML",
+        "pais": "NL",
+        "capitalizacion": null,
+        "ev_ventas": 14.43,
+        "ev_ebitda_ltm": 35.4,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 30.7,
+        "crecimiento_pct": 15.1,
+        "margen_ebitda_pct": 40.8,
+        "roic_pct": 89,
+        "dn_ebitda": -0.6,
+        "fcf_yield_pct": 1.9
+      },
+      {
+        "nombre": "Applied Materials",
+        "ticker": "AMAT",
+        "pais": "US",
+        "capitalizacion": null,
+        "ev_ventas": 14.76,
+        "ev_ebitda_ltm": 46.5,
+        "ev_ebitda_ntm": 25.1,
+        "per_ntm": 29.3,
+        "crecimiento_pct": 27.5,
+        "margen_ebitda_pct": 31.7,
+        "roic_pct": 35.64,
+        "dn_ebitda": -0.22,
+        "fcf_yield_pct": 1.4
+      },
+      {
+        "nombre": "Lam Research",
+        "ticker": "LRCX",
+        "pais": "US",
+        "capitalizacion": null,
+        "ev_ventas": 17.91,
+        "ev_ebitda_ltm": 47.5,
+        "ev_ebitda_ntm": 27.9,
+        "per_ntm": 33.1,
+        "crecimiento_pct": 43,
+        "margen_ebitda_pct": 37.7,
+        "roic_pct": 70.07,
+        "dn_ebitda": -0.21,
+        "fcf_yield_pct": 1.2
+      },
+      {
+        "nombre": "KLA",
+        "ticker": "KLAC",
+        "pais": "US",
+        "capitalizacion": null,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": 32.65,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 31.85,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "Texas Instruments",
+        "ticker": "TXN",
+        "pais": "US",
+        "capitalizacion": 260029,
+        "ev_ventas": 13.49,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 30,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": 22.3,
+        "dn_ebitda": null,
+        "fcf_yield_pct": 2.5
+      },
+      {
+        "nombre": "AMD",
+        "ticker": "AMD",
+        "pais": "US",
+        "capitalizacion": null,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 39.5,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "Broadcom",
+        "ticker": "AVGO",
+        "pais": "US",
+        "capitalizacion": null,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 20.83,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "Marvell",
+        "ticker": "MRVL",
+        "pais": "US",
+        "capitalizacion": null,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 48,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      }
+    ],
+    "comentario": "Con el PER de los próximos 12 meses del consenso (16,3x), Nvidia es la más barata del grupo salvo ninguno: la mediana es 30,7x y el rango va de 19,5x (TSMC) a 48x (Marvell). Por EV/EBITDA de los últimos 12 meses (27,4x frente a 35,4x de mediana) también. Sin embargo crece más que todos (los ingresos de los próximos 12 meses del consenso casi doblan los de los últimos) y su ROIC es el más alto. La paradoja se explica por el riesgo de ciclo: el mercado capitaliza el beneficio de FY2028 como si no fuera a durar. El valor implícito por PER (429,44 USD) supone que el beneficio de consenso es sostenible; por eso le damos un peso del 30 % y no más, y en el objetivo a 12 meses la regla común usa nuestro PER actual, no el de los comparables.",
+    "confianza": "Baja"
+  },
+  "transacciones": null,
+  "dcf": {
+    "anios": [
+      {
+        "periodo": "FY2027e",
+        "crecimiento_pct": 92,
+        "margen_ebitda_pct": 68,
+        "amortizacion_pct_ventas": 1.2,
+        "capex_pct_ventas": 2.6,
+        "nwc_pct_ventas": 26,
+        "tasa_impositiva_pct": 16,
+        "fijo": true
+      },
+      {
+        "periodo": "FY2028e",
+        "crecimiento_pct": 55,
+        "margen_ebitda_pct": 66,
+        "amortizacion_pct_ventas": 1.3,
+        "capex_pct_ventas": 2.6,
+        "nwc_pct_ventas": 25,
+        "tasa_impositiva_pct": 16,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2029e",
+        "crecimiento_pct": 15,
+        "margen_ebitda_pct": 63,
+        "amortizacion_pct_ventas": 1.4,
+        "capex_pct_ventas": 2.6,
+        "nwc_pct_ventas": 24,
+        "tasa_impositiva_pct": 16,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2030e",
+        "crecimiento_pct": -3,
+        "margen_ebitda_pct": 59,
+        "amortizacion_pct_ventas": 1.6,
+        "capex_pct_ventas": 2.5,
+        "nwc_pct_ventas": 23,
+        "tasa_impositiva_pct": 16,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2031e",
+        "crecimiento_pct": 5,
+        "margen_ebitda_pct": 57,
+        "amortizacion_pct_ventas": 1.8,
+        "capex_pct_ventas": 2.5,
+        "nwc_pct_ventas": 22,
+        "tasa_impositiva_pct": 16,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2032e",
+        "crecimiento_pct": 6,
+        "margen_ebitda_pct": 56,
+        "amortizacion_pct_ventas": 1.9,
+        "capex_pct_ventas": 2.5,
+        "nwc_pct_ventas": 22,
+        "tasa_impositiva_pct": 16,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2033e",
+        "crecimiento_pct": 6,
+        "margen_ebitda_pct": 55,
+        "amortizacion_pct_ventas": 2,
+        "capex_pct_ventas": 2.5,
+        "nwc_pct_ventas": 22,
+        "tasa_impositiva_pct": 16,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2034e",
+        "crecimiento_pct": 5,
+        "margen_ebitda_pct": 54,
+        "amortizacion_pct_ventas": 2,
+        "capex_pct_ventas": 2.5,
+        "nwc_pct_ventas": 22,
+        "tasa_impositiva_pct": 16,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2035e",
+        "crecimiento_pct": 5,
+        "margen_ebitda_pct": 53,
+        "amortizacion_pct_ventas": 2,
+        "capex_pct_ventas": 2.5,
+        "nwc_pct_ventas": 22,
+        "tasa_impositiva_pct": 16,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2036e",
+        "crecimiento_pct": 4,
+        "margen_ebitda_pct": 53,
+        "amortizacion_pct_ventas": 2,
+        "capex_pct_ventas": 2.5,
+        "nwc_pct_ventas": 22,
+        "tasa_impositiva_pct": 16,
+        "fijo": false
+      }
+    ],
+    "wacc": {
+      "tasa_libre_pct": 5.22,
+      "beta": 1.4,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 0,
+      "coste_deuda_pct": 5,
+      "tasa_impositiva_pct": 16,
+      "peso_deuda_pct": 0.6
+    },
+    "terminal": {
+      "metodo": "gordon",
+      "crecimiento_pct": 3,
+      "multiplo_salida": 15
+    },
+    "etapa2": {
+      "usar": false,
+      "anios": 10,
+      "margen_final_pct": null,
+      "justificacion": null
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "FY2027e fijo en +92 % (414.601 M): 81.600 M en el 1T, 96.200 M en el 2T, guía de 108.000 M en el 3T y ≈129.000 M en el 4T, en línea con el consenso (418.756 M) [3, 4, 35]. FY2028e +55 % frente al +69 % del consenso (709.551 M): el capex de los hiperescaladores pasa de ≈725.000 M en 2026 a ≈1 billón en 2027 (+38 %) y Nvidia gana algo de cuota en sistemas y redes [24, 25]. FY2029e +15 % (consenso +31 %) y FY2030e −3 %: suponemos una pausa de digestión como las de 2019 y 2023 en semiconductores. Desde FY2031e, 4-6 % anual, por encima del PIB nominal por la penetración de la IA.",
+      "margenes": "Margen EBITDA del 68 % en FY2027e (margen bruto del 75 % y gastos operativos de ≈7-8 % de las ventas en el 1S) [3, 4], que baja al 66 % y al 63 % en FY2028-29e por el coste de la memoria y la entrada de Rubin, y al 53 % a largo plazo: el nivel de FY2024 (57 %) menos la presión de los ASIC y de AMD. Sigue muy por encima de TSMC (72,7 % de EBITDA, pero con amortizaciones del 25 %) y de ASML (40,8 %) [43]. Remuneración en acciones tratada como gasto.",
+      "inversion": "Capex del 2,5-2,6 % de las ventas (2,8 % en FY2026 [19]) y amortización del 1,2 % subiendo al 2 %: Nvidia no fabrica. El circulante comercial pasa del 26 % al 22 % de las ventas (27,7 % en FY2026, 20,6 % en FY2025). No incluimos las participaciones en clientes como inversión operativa: van al puente.",
+      "wacc": "Tasa libre del 5,22 % (bono a 10 años del 13-oct) [48]. Beta de 1,40, estimación propia a falta de la herramienta de bolsa: por encima de la del mercado por la ciclicidad de los semiconductores y la concentración de clientes, y por debajo de las betas históricas de Nvidia, infladas por la burbuja de 2021-24. Prima de mercado del 5,5 %, sin prima adicional. Coste de la deuda del 5 % (cupones de 4,25-5,625 % de junio) [30] con un peso del 0,6 %. WACC del 12,87 %; con la prima implícita del mercado (4,2 %), 11,06 %. Cada 0,1 de beta mueve el valor en torno a un 5 %.",
+      "terminal": "Crecimiento terminal del 3 % (inflación de ≈2,5 % y algo de crecimiento real), por debajo de la tasa libre menos medio punto. El terminal pesa un 42 % del valor; el múltiplo implícito es de 8,2x el EBITDA, bajo para la calidad del negocio pero coherente con un WACC del 12,9 %: el DCF es exigente con la tasa, no con el crecimiento."
+    },
+    "sostenibilidad": {
+      "puente_ingresos": [
+        {
+          "periodo": "FY2027e",
+          "volumen_pct": 78,
+          "precio_pct": 14,
+          "otros_pct": 0,
+          "comentario": "Volumen (Blackwell Ultra, redes ×3) y precio por mezcla de sistemas completos NVL72; tres trimestres ya publicados o guiados [3, 4]."
+        },
+        {
+          "periodo": "FY2028e",
+          "volumen_pct": 43,
+          "precio_pct": 12,
+          "otros_pct": 0,
+          "comentario": "Volumen con el capex de 2027 (≈1 billón, +38 %) y Rubin; precio por mezcla de sistemas. Respaldado por 87.000 M de compras comprometidas para FY2028 [7, 25]."
+        },
+        {
+          "periodo": "FY2029e",
+          "volumen_pct": 12,
+          "precio_pct": 3,
+          "otros_pct": 0,
+          "comentario": "Volumen moderado: el capex de IA crece menos y los ASIC ganan parte de la inferencia; compromisos de 88.000 M para FY2029 [7]."
+        },
+        {
+          "periodo": "FY2030e",
+          "volumen_pct": -5,
+          "precio_pct": 2,
+          "otros_pct": 0,
+          "comentario": "Pausa de digestión del capex (volumen −5 %), como en los ciclos de 2019 y 2023; precio estable."
+        },
+        {
+          "periodo": "FY2031e",
+          "volumen_pct": 4,
+          "precio_pct": 1,
+          "otros_pct": 0,
+          "comentario": "Vuelta a un crecimiento moderado con la renovación de la base instalada."
+        }
+      ],
+      "mercado_final": null,
+      "veredicto": "En parte",
+      "justificacion": "La reinversión de la proyección es solo un 6 % del NOPAT, así que el motor no puede hacer la prueba de crecimiento financiable: el crecimiento de Nvidia no depende de capital sino de demanda y cuota. La hacemos a mano. A corto plazo sí se sostiene: tres trimestres de FY2027 publicados o guiados, compromisos de compra de 87.000-88.000 M para FY2028-29 y un margen bruto estable del 75 % que prueba el poder de precios [3, 7]. A medio plazo, solo en parte: nuestros ingresos de FY2029e (739.026 M) supondrían más de la mitad del capex de los cuatro grandes de 2027, y los clientes trabajan para reducir esa dependencia [24, 25]. No sabemos la cuota real (hueco), y la historia del sector dice que los picos de capex van seguidos de caídas: por eso el base ya incluye un −3 % en FY2030e, 16 puntos por debajo del consenso en FY2029e."
+    },
+    "lectura": "El DCF da 136,91 USD por acción (rango de 128,06 a 147,62 con WACC y crecimiento ±0,5), un 40,1 % por debajo del precio, con el terminal pesando un 42 %. El DCF inverso es la clave: el precio de 228,52 USD exige un crecimiento medio del 20,7 % anual en FY2028-FY2036e con nuestros márgenes, frente al 10,9 % de nuestro base, y ningún margen hasta el 83 % lo justifica con nuestro crecimiento. Dicho de otro modo, con nuestros flujos el comprador de hoy obtiene un 8,8 % anual, por debajo de nuestro WACC (12,9 %) y del que pide hoy el mercado (11,1 %), aunque por encima del bono (5,22 %). Frente a la historia no es exigente: el crecimiento medio de los últimos cuatro años fue de más del 60 % anual. Pero esa historia es la del pico de un ciclo de inversión, y lo que el precio pide es que el ciclo no tenga una caída seria en nueve años. La diferencia con el mercado es sobre todo de duración del crecimiento, no de márgenes.",
+    "confianza": "Baja"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": -1,
+        "ajuste_margen_pp": -8,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": 2.5,
+        "multiplo_salida": null,
+        "perfil": [
+          {
+            "periodo": "FY2028e",
+            "crecimiento_pp": -30,
+            "margen_pp": -5
+          },
+          {
+            "periodo": "FY2029e",
+            "crecimiento_pp": -25,
+            "margen_pp": -8
+          },
+          {
+            "periodo": "FY2030e",
+            "crecimiento_pp": -10,
+            "margen_pp": -10
+          }
+        ],
+        "narrativa": "El capex de IA se frena en 2027 porque los laboratorios no consiguen financiación y los hiperescaladores priorizan sus chips propios: ingresos de FY2028e +25 % y FY2029e −10 %, margen EBITDA del 55 % en FY2029e por la caída de precios y los compromisos de compra ya firmados. Le pasó a Nvidia en FY2023 (beneficio −55 %) y a Cisco en 2001."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "El ciclo de inversión sigue en 2027 y se modera en 2028: ingresos de 642.631 M en FY2028e y 739.026 M en FY2029e, pausa en FY2030e y crecimiento del 4-6 % después, con un margen EBITDA que baja del 68 % al 53 %."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": 1,
+        "ajuste_margen_pp": 3,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "perfil": [
+          {
+            "periodo": "FY2028e",
+            "crecimiento_pp": 15,
+            "margen_pp": 0
+          },
+          {
+            "periodo": "FY2029e",
+            "crecimiento_pp": 15,
+            "margen_pp": 3
+          },
+          {
+            "periodo": "FY2030e",
+            "crecimiento_pp": 10,
+            "margen_pp": 4
+          }
+        ],
+        "narrativa": "La demanda de inferencia mantiene el ritmo del consenso: +70 % en FY2028e y +30 % en FY2029e (≈916.000 M, cerca de los 928.721 M del consenso), sin pausa y con margen del 66 % en FY2029e."
+      }
+    ],
+    "comentario": "La asimetría del valor intrínseco es mala a nuestro WACC: el alcista (195,07 USD) también queda por debajo del precio (−14,6 %) y el bajista pierde un 69,4 %. Con la prima del mercado mejora (alcista 239,24, bajista 82,43), pero sigue sin compensar. A 12 meses, en cambio, el mercado no pagará por el valor terminal sino por el beneficio de FY2029e: ahí la asimetría es de 1,8 veces (alcista +85 %, bajista −49 %), porque el PER de partida ya es bajo. Las dos lecturas no se contradicen: el precio es razonable para el beneficio de los próximos dos años y caro si ese beneficio es un pico.",
+    "confianza": "Baja"
+  },
+  "suma_partes": {
+    "aplica": false,
+    "descuento_holding_pct": 0,
+    "partes": [],
+    "comentario": "No aplica: el centro de datos es el 93 % de los ingresos del 2T FY27 y el resto no cambia el valor [3].",
+    "confianza": "Media"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2026-07-26",
+      "deuda_financiera": 33468,
+      "arrendamientos": 0,
+      "caja": 56600,
+      "minoritarios": 0,
+      "pensiones": 0,
+      "asociadas": 42800,
+      "otros_ajustes": 0
+    },
+    "rab": null,
+    "referencia_mercado": {
+      "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+      "prima_implicita_pct": 4.2,
+      "fecha": "2026-10",
+      "fuente": "Damodaran, ERPbymonth [47]"
+    },
+    "pesos": {
+      "dcf": 40,
+      "comparables": 30,
+      "transacciones": 0,
+      "suma_partes": 0,
+      "escenarios": 30
+    },
+    "objetivo_12m": {
+      "ejercicio": "FY2029e",
+      "casos": [
+        {
+          "escenario": "Bajista",
+          "metrica": "PER",
+          "beneficio_por_accion": 8.68,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ingresos de 466.426 M en FY2029e (+25 % en FY2028e y −10 % en FY2029e) y margen EBITDA del 55 %: EBIT de ≈250.000 M, 700 M de resultado financiero neto, 16 % de impuestos y 24.270 M de acciones. PER de 13,5x (base × 0,85): el mercado paga un múltiplo de fondo de ciclo."
+        },
+        {
+          "escenario": "Base",
+          "metrica": "PER",
+          "beneficio_por_accion": 15.78,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ingresos de 739.026 M en FY2029e y margen EBITDA del 63 % (amortización del 1,4 %): EBIT de 455.240 M, más 700 M de financiero neto, 16 % de impuestos y 24.270 M de acciones sin recompras no anunciadas. PER actual (15,9x sobre nuestro FY2028e), por debajo de la mediana de cinco años."
+        },
+        {
+          "escenario": "Alcista",
+          "metrica": "PER",
+          "beneficio_por_accion": 20.51,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ingresos de ≈916.000 M en FY2029e (el ritmo del consenso) con margen EBITDA del 66 %: EBIT de ≈592.000 M. PER de 20,6x, el techo de la regla (base × 1,30), muy por debajo de su historia (47x) y de los comparables (30,7x)."
+        }
+      ],
+      "per_historico": {
+        "actual": 15.9,
+        "mediana_5a": 47.2,
+        "minimo_5a": 40.8,
+        "media_larga": 49.6,
+        "excluidos": "FY2023 (BPA de 0,17 USD hundido por el cargo de Arm y la caída del gaming: PER de 115x, atípico). Serie en la misma base que los escenarios (BPA GAAP sin ganancias de participaciones; FY2026 = 4,47 USD, estimación propia con el EBIT publicado y un 16 % de impuestos, porque el GAAP de 4,90 incluye ganancias de valor razonable): FY2022 62,8x; FY2024 51,7x; FY2025 40,8x; FY2026 42,7x [1, 20, 40, 41]. Media larga con FY2019-FY2021 (21,6x, 52,3x y 75,3x, de los 10-K y cierres de enero ajustados a los desdoblamientos; estimación propia). Actual = 228,52 ÷ 14,41 (nuestro BPA de FY2028e)."
+      },
+      "comparables_per": {
+        "mediana": 30.7
+      },
+      "consenso": {
+        "bpa_ano1": 9.47,
+        "bpa_ano2": 15.91,
+        "objetivo_medio": 321.3,
+        "objetivo_min": 181.8,
+        "objetivo_max": 540.75,
+        "analistas": 62,
+        "tendencia_3m": "subidas",
+        "fuente": "Chartmill, Yahoo Finance y Alpha Spread [35, 36, 38]"
+      },
+      "diferencia_consenso": "Nuestro BPA de FY2028e (14,41 USD) es un 9 % inferior al del consenso (15,91, ajustado: sin remuneración en acciones, que resta ≈0,25 USD), y el de FY2029e (15,78) queda muy por debajo del que implican los 928.721 M de ingresos del consenso. La diferencia está en las ventas: suponemos +55 % y +15 % en FY2028-29e frente a +69 % y +31 %, porque el capex de los clientes no puede crecer al 30-40 % muchos años más. Nuestro base a 12 meses (≈250 USD) queda un 22 % por debajo del objetivo medio (321,3); además usamos el PER actual (15,9x) y los analistas aplican 20-25x. No lo acercamos: si el 3T y la guía del 4T confirman un FY2028 cercano al +70 %, revisaremos las ventas, no la cifra final.",
+      "media": null,
+      "comentario": "El objetivo a 12 meses (ponderado) queda por encima del valor intrínseco (224,02 USD): el mercado, dentro de un año, mirará el beneficio de FY2029e, que es alto; el DCF castiga lo que viene después. Para cerrar la distancia hacia arriba haría falta que el capex de 2027-28 confirme el consenso (resultados del 19-nov y de febrero, y el capex guiado por los hiperescaladores en enero-febrero de 2027). Para cerrarla hacia abajo bastaría un trimestre de guía plana. La tesis de valor a largo plazo no es de compra."
+    },
+    "comentario": "Pesos: DCF 40 %, comparables 30 % y escenarios 30 %; sin transacciones (nadie puede comprar una empresa de 5,5 billones de USD). El DCF es el método más fiable para una empresa cíclica en pico, porque obliga a decir qué pasa después de FY2028; los comparables por PER (429,44 USD) toman el beneficio de consenso como permanente y por eso pesan menos. La dispersión es enorme: de 70,04 USD (bajista) a 429,44 (comparables). El valor objetivo ponderado (224,02 USD, −2,0 %) queda cerca del precio, y con la prima del mercado sube a 244,28 USD. Puente a 26-jul-26: caja y valores de deuda de 56.600 M, deuda estimada de 33.468 M y participaciones cotizadas de 42.800 M a valor de mercado [15, 30]; las no cotizadas (OpenAI, Anthropic y otras) no se suman por falta de cifra, lo que infravalora el puente en una cantidad desconocida.",
+    "confianza": "Baja"
+  },
+  "catalizadores": {
+    "items": [
+      {
+        "fecha": "19-nov-2026 (estimado)",
+        "evento": "Resultados del 3T FY27 y guía del 4T",
+        "efecto": "Guía de 108.000 M ±2 %; una guía del 4T por encima de 125.000 M confirmaría el FY2028 del consenso",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "Ene-feb 2027",
+        "evento": "Guía de capex 2027 de Microsoft, Alphabet, Amazon y Meta",
+        "efecto": "El consenso espera ≈1 billón (+38 %); por debajo de 900.000 M bajaría nuestro FY2028e",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "Feb-2027",
+        "evento": "Resultados de FY2027 y primeras cifras de Rubin",
+        "efecto": "Confirmación del margen bruto del 74-75 % en la transición de producto",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "Mar-2027",
+        "evento": "Conferencia GTC 2027",
+        "efecto": "Hoja de ruta (Rubin Ultra, Feynman) y cartera de pedidos",
+        "probabilidad": "Alta",
+        "sentido": "+"
+      },
+      {
+        "fecha": "12-18 meses",
+        "evento": "Rondas de financiación de OpenAI y Anthropic",
+        "efecto": "Su capacidad de pago sostiene una parte de la demanda y de las participaciones de Nvidia",
+        "probabilidad": "Media",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "12-18 meses",
+        "evento": "Cambios en los controles de exportación a China",
+        "efecto": "Cualquier licencia sería ingreso no previsto en la guía",
+        "probabilidad": "Baja",
+        "sentido": "+"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "riesgos": {
+    "items": [
+      {
+        "riesgo": "Caída cíclica del capex de IA tras 2027",
+        "tipo": "Mercado",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−49 % a 12 meses (bajista); −69 % en el DCF",
+        "mitigante": "Caja neta y margen bruto del 75 % que da colchón",
+        "senal": "Guía de capex de los hiperescaladores para 2027 por debajo de 900.000 M o guía trimestral plana"
+      },
+      {
+        "riesgo": "Compromisos de suministro de 279.000 M con demanda variable",
+        "tipo": "Operativo y financiero",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "Cargos de inventario como el del H20; margen −5 a −10 puntos en el bajista",
+        "mitigante": "Pagos escalonados en tres ejercicios",
+        "senal": "Existencias por encima de 150 días o nuevas subidas de obligaciones sin subida de guía"
+      },
+      {
+        "riesgo": "Clientes que se fabrican sus chips (TPU, Trainium, ASIC con Broadcom)",
+        "tipo": "Competencia",
+        "probabilidad": "Alta",
+        "impacto": "Medio",
+        "efecto_valor": "−10 a −15 % por cada 5 puntos de margen a largo plazo",
+        "mitigante": "CUDA, redes y sistemas completos",
+        "senal": "Crecimiento de los ASIC de Broadcom por encima del centro de datos de Nvidia dos trimestres seguidos"
+      },
+      {
+        "riesgo": "Solvencia de clientes financiados por Nvidia (OpenAI, Anthropic, neonubes)",
+        "tipo": "Crédito y contable",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "Pérdida de parte de las participaciones (42.800 M en cotizadas) y de ventas",
+        "mitigante": "Diversificación de clientes",
+        "senal": "Rondas fallidas o a menor valoración; impagos de neonubes"
+      },
+      {
+        "riesgo": "Geopolítica: Taiwán y controles de exportación",
+        "tipo": "Regulatorio",
+        "probabilidad": "Baja",
+        "impacto": "Alto",
+        "efecto_valor": "No modelable: un corte de TSMC paralizaría la producción",
+        "mitigante": "Fábricas de TSMC en Arizona",
+        "senal": "Escalada militar en el estrecho; nuevas restricciones"
+      },
+      {
+        "riesgo": "Tipos altos que comprimen el múltiplo",
+        "tipo": "Mercado",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "±5 % por cada 0,1 de beta o medio punto de tasa",
+        "mitigante": "PER ya bajo",
+        "senal": "Bono a 10 años por encima del 5,5 %"
+      },
+      {
+        "riesgo": "Persona clave (Jensen Huang)",
+        "tipo": "Gobierno",
+        "probabilidad": "Baja",
+        "impacto": "Medio",
+        "efecto_valor": "−5 a −10 % por el múltiplo",
+        "mitigante": "Equipo con 10-20 años en la empresa",
+        "senal": "Anuncio de sucesión sin candidato interno claro"
+      }
+    ],
+    "premortem": "Octubre de 2029: la acción ha perdido un 40 %. Lo que pasó: en 2027 el capex de los hiperescaladores llegó al billón de dólares, pero los ingresos de los modelos de IA crecieron más despacio que su coste. OpenAI no cerró su ronda de 2027 al precio esperado y recortó pedidos; dos neonubes financiadas con deuda reestructuraron. Microsoft y Meta trasladaron la inferencia a sus chips propios. Nvidia, que había firmado 279.000 M de compromisos de memoria y capacidad, siguió recibiendo producto con la demanda a la baja: existencias disparadas, cargos de inventario y un margen bruto del 60 %. Los ingresos de FY2029 cayeron un 15 % y el BPA un 35 %; el mercado, que ya pagaba solo 16 veces, aplicó 13 a un beneficio menguante. Lo que lo habría anticipado: la caída del flujo operativo del 2T FY27 por pagos anticipados, la subida de las obligaciones de suministro más deprisa que la guía y la dependencia de las ventas a clientes en los que Nvidia invierte.",
+    "confianza": "Media"
+  },
+  "esg": {
+    "calificaciones": [],
+    "materialidad": "Dos asuntos materiales: (1) energía: los centros de datos de IA consumen gigavatios y la limitación de la red eléctrica puede frenar despliegues; la eficiencia por vatio es un argumento comercial de cada generación; (2) cadena de suministro y geopolítica: dependencia de TSMC en Taiwán y controles de exportación a China, que ya costaron un cargo de inventario por el H20 en FY2026 [9, 22].",
+    "controversias": "Investigación antimonopolio en China (Mellanox) y escrutinio de competencia en EE. UU. y la UE [28]; debate sobre la financiación circular de clientes en 2025-26 [14]. No hemos encontrado sanciones firmes en los últimos tres años en las búsquedas hechas.",
+    "confianza": "Baja"
+  },
+  "preguntas": {
+    "items": [
+      {
+        "tema": "Demanda de FY2028",
+        "pregunta": "¿Qué parte de los ingresos de FY2028 está cubierta por pedidos en firme, y con qué clientes?",
+        "por_que": "Nuestro base (+55 %) está 14 puntos por debajo del consenso; es la cifra que más mueve el objetivo."
+      },
+      {
+        "tema": "Compromisos de suministro",
+        "pregunta": "¿Qué flexibilidad hay en los 279.000 M de obligaciones si la demanda cae un 20 %?",
+        "por_que": "Determina cuánto margen se pierde en el bajista."
+      },
+      {
+        "tema": "Inversiones en clientes",
+        "pregunta": "¿Cuánto vale la cartera no cotizada y qué ventas de FY2026-27 proceden de clientes participados?",
+        "por_que": "Afecta al puente y a la calidad de los ingresos."
+      },
+      {
+        "tema": "Flujo operativo del 2T FY27",
+        "pregunta": "¿Los pagos anticipados a proveedores se recuperan en el 2S o son un nuevo nivel de circulante?",
+        "por_que": "La caja libre cayó a 21.341 M en el trimestre."
+      },
+      {
+        "tema": "Margen bruto",
+        "pregunta": "¿Cómo afecta el coste de la HBM4 y la entrada de Rubin al margen de FY2028?",
+        "por_que": "Cada punto de margen bruto es ≈6.000 M de EBIT."
+      },
+      {
+        "tema": "ASIC",
+        "pregunta": "¿Qué cuota de la inferencia de los cuatro grandes esperan perder frente a sus chips propios?",
+        "por_que": "Marca el margen terminal del DCF."
+      },
+      {
+        "tema": "Deuda",
+        "pregunta": "¿Por qué emitir 25.000 M con caja neta: recompras, adquisiciones o financiación de clientes?",
+        "por_que": "Cambia la lectura de la asignación de capital."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sentimiento": {
+    "tono": "Dividido",
+    "tendencia": "Estable",
+    "revisadas": [
+      {
+        "plataforma": "Seeking Alpha (artículo «Caught Between Cyclical Downside Risk And AI Bubble» y comentarios)",
+        "fecha": "2026-10",
+        "n_comentarios": 40,
+        "tono": "Negativo",
+        "resumen": "Reitera vender: múltiplos en mínimos de una década, pero pico cíclico, estimaciones que frenan, competencia y compromisos de suministro de 366.000 M con exposición a la solvencia de OpenAI y Anthropic [14]."
+      },
+      {
+        "plataforma": "Seeking Alpha (artículos de comprar tras el 1T y el 2T FY27)",
+        "fecha": "2026-08",
+        "n_comentarios": 60,
+        "tono": "Positivo",
+        "resumen": "Los alcistas ven a Nvidia barata frente a su crecimiento (≈27x el BPA GAAP adelantado antes del 1T) y siguen la cartera de pedidos de Rubin [49]."
+      },
+      {
+        "plataforma": "GuruFocus (páginas de valoración y comentarios, 13-oct)",
+        "fecha": "2026-10",
+        "n_comentarios": 15,
+        "tono": "Dividido",
+        "resumen": "Puntuación de calidad máxima, pero el propio sitio advierte de «posible trampa de valor»: PER bajo sobre beneficios de pico en un negocio cíclico [50]."
+      },
+      {
+        "plataforma": "Prensa con comentarios de lectores (CoinCentral, Gotrade, Motley Fool)",
+        "fecha": "2026-10",
+        "n_comentarios": 30,
+        "tono": "Dividido",
+        "resumen": "Preocupa Huawei, que cierra distancia en China, y la rotación hacia memoria y equipos; la acción apenas se mueve pese a las sorpresas [28, 51, 52]."
+      },
+      {
+        "plataforma": "Reddit (r/wallstreetbets, recuentos de menciones citados por Benzinga)",
+        "fecha": "2026",
+        "n_comentarios": 20,
+        "tono": "Positivo",
+        "resumen": "Nvidia sigue siendo el valor más mencionado del foro, sobre todo con opciones alrededor de los resultados; no encontramos hilos fechados de octubre [53]."
+      }
+    ],
+    "temas": [
+      {
+        "tema": "¿Pico del ciclo o PER barato?",
+        "postura": "Dividida",
+        "peso": "Alto",
+        "contraste": "Es el tema del informe: a 228,52 USD cotiza a ≈14x el BPA de consenso de FY2028; barato solo si el beneficio no cae después. Nuestro caso base ya supone una caída de ingresos en FY2030 [14, 50]."
+      },
+      {
+        "tema": "Financiación circular e inversiones en clientes",
+        "postura": "Bajista",
+        "peso": "Alto",
+        "contraste": "Real: 42.800 M en participaciones cotizadas y más en no cotizadas; las ganancias de valor razonable inflan el BPA GAAP. Lo excluimos del BPA y lo tratamos como riesgo [14]."
+      },
+      {
+        "tema": "Compromisos de suministro",
+        "postura": "Bajista",
+        "peso": "Medio",
+        "contraste": "Los 279.000 M de obligaciones son ciertos y casi fijos; con la guía actual se cubren con dos-tres trimestres de ventas, pero en una caída serían un lastre de caja [14]."
+      },
+      {
+        "tema": "China y Huawei",
+        "postura": "Bajista",
+        "peso": "Medio",
+        "contraste": "La guía ya supone cero ventas de cálculo a China: el riesgo de ingresos está descontado; el de largo plazo (Huawei como estándar fuera de EE. UU.) no [28]."
+      },
+      {
+        "tema": "Rubin y la cartera de pedidos",
+        "postura": "Alcista",
+        "peso": "Medio",
+        "contraste": "Coherente con la guía del 3T (108.000 M) y con las revisiones al alza del BPA, pero sin cifra pública de cartera [49]."
+      }
+    ],
+    "lectura": "El sentimiento no es eufórico: la acción sube mucho menos que el beneficio y el debate dominante es si estos son beneficios de pico. Eso cuadra con nuestro DCF inverso, que muestra que el precio ya descuenta una caída fuerte del crecimiento tras FY2028. La parte bajista (financiación circular, compromisos de suministro, OpenAI y Anthropic) señala el riesgo que más importa y lo recogemos en el bajista. No hay capitulación ni euforia; el foro no contradice al consenso de analistas, que es comprador, sino que explica por qué el mercado no paga lo que dicen sus estimaciones.",
+    "confianza": "Baja"
+  },
+  "fuentes": [
+    {
+      "id": 1,
+      "titulo": "Form 10-K FY2025 (ejercicio cerrado el 26-ene-25): cuentas consolidadas FY2023-FY2025; datos anuales de Stock Analysis como contraste",
+      "editor": "NVIDIA / SEC; Stock Analysis",
+      "tipo": "Primaria",
+      "fecha": "2025-02-26",
+      "url": "https://www.stockanalysis.com/stocks/nvda/financials"
+    },
+    {
+      "id": 2,
+      "titulo": "Form 10-K FY2026 (nvda-20260125): recompras, dividendos, flujo operativo, balance",
+      "editor": "NVIDIA / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-02-25",
+      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
+    },
+    {
+      "id": 3,
+      "titulo": "NVIDIA Announces Financial Results for Second Quarter Fiscal 2027 (8-K, q2fy27pr) y cobertura",
+      "editor": "NVIDIA / SEC; Webull; iPhone in Canada",
+      "tipo": "Primaria",
+      "fecha": "2026-08-26",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000073/q2fy27pr.htm"
+    },
+    {
+      "id": 4,
+      "titulo": "NVIDIA Announces Financial Results for First Quarter Fiscal 2027",
+      "editor": "NVIDIA (Seeking Alpha PR / MFN)",
+      "tipo": "Primaria",
+      "fecha": "2026-05-20",
+      "url": "https://seekingalpha.com/pr/20523526"
+    },
+    {
+      "id": 5,
+      "titulo": "Nvidia Q2 FY2027: guía del 3T y comentario de la directora financiera sobre FY2028",
+      "editor": "36Kr",
+      "tipo": "Prensa",
+      "fecha": "2026-08-27",
+      "url": "https://eu.36kr.com/en/p/3957380273159302"
+    },
+    {
+      "id": 6,
+      "titulo": "Nvidia stock surges after hours despite margin concerns following earnings beat",
+      "editor": "Parameter",
+      "tipo": "Prensa",
+      "fecha": "2026-08-26",
+      "url": "https://parameter.io/nvidia-nvda-stock-surges-4-after-hours-despite-margin-concerns-following-earnings-beat/"
+    },
+    {
+      "id": 7,
+      "titulo": "Nvidia Q2 FY2027: obligaciones de suministro y capacidad (279.000 M) y calendario de pagos",
+      "editor": "Quartr / Storage Newsletter",
+      "tipo": "Prensa",
+      "fecha": "2026-08-27",
+      "url": "https://www.storagenewsletter.com/2026/08/27/nvidia-fiscal-2q27-financial-results/"
+    },
+    {
+      "id": 8,
+      "titulo": "Form 10-K FY2023 y FY2024: cuenta, segmentos por mercado y cargo por la cancelación de Arm",
+      "editor": "NVIDIA / SEC",
+      "tipo": "Primaria",
+      "fecha": "2024-02-21",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001045810&type=10-K"
+    },
+    {
+      "id": 9,
+      "titulo": "NVIDIA Corporation (NVDA) stock analysis and forecast 2026 (margen bruto del 1T FY26)",
+      "editor": "RoboForex",
+      "tipo": "Prensa",
+      "fecha": "2026-09",
+      "url": "https://roboforex.com/beginners/analytics/forex-forecast/stocks/stocks-forecast-nvidia-nvda/"
+    },
+    {
+      "id": 10,
+      "titulo": "NVIDIA Corporation — Consolidated Financial Statements (extracto del estado de flujos FY2024-FY2026: amortización y remuneración en acciones)",
+      "editor": "sec-api.io (de los 10-K)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-03",
+      "url": "https://sec-api.io/media/prompts/nvidia-financial-statements/report.html"
+    },
+    {
+      "id": 11,
+      "titulo": "Nvidia Q2 FY27: beneficio GAAP con ganancia de 7.800 M en participaciones (CNBC, vía resumen)",
+      "editor": "Kaohoon International",
+      "tipo": "Prensa",
+      "fecha": "2026-08-27",
+      "url": "https://www.kaohooninternational.com/markets/589531"
+    },
+    {
+      "id": 12,
+      "titulo": "Nvidia CFO: cloud industry backlog exceeds $2T, capex 2026",
+      "editor": "Crypto Briefing",
+      "tipo": "Prensa",
+      "fecha": "2026-05",
+      "url": "https://cryptobriefing.com/nvidia-cfo-cloud-backlog-2-trillion-capex-2027/"
+    },
+    {
+      "id": 13,
+      "titulo": "Nvidia FY2027 Q2 earnings analysis (flujo operativo y caja libre trimestrales)",
+      "editor": "Beancount",
+      "tipo": "Prensa",
+      "fecha": "2026-08-26",
+      "url": "https://beancount.io/blog/2026/08/26/nvidia-fy2027-q2-earnings-analysis"
+    },
+    {
+      "id": 14,
+      "titulo": "NVIDIA Stock: Caught Between Cyclical Downside Risk And AI Bubble (exposición a OpenAI y Anthropic)",
+      "editor": "Seeking Alpha",
+      "tipo": "Analistas",
+      "fecha": "2026-10-09",
+      "url": "https://seekingalpha.com/article/4952948-nvidia-caught-between-cyclical-downside-risk-and-ai-bubble-reiterate-sell"
+    },
+    {
+      "id": 15,
+      "titulo": "Form 10-Q del 2T FY27 (nvda-20260726): liquidez y valores negociables",
+      "editor": "NVIDIA / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-08-27",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000075/nvda-20260726.htm"
+    },
+    {
+      "id": 16,
+      "titulo": "Nvidia surge stokes AI bubble fears (financiación circular)",
+      "editor": "Investor Daily",
+      "tipo": "Prensa",
+      "fecha": "2026",
+      "url": "https://www.investordaily.com.au/nvidia-surge-stokes-ai-bubble-fears"
+    },
+    {
+      "id": 17,
+      "titulo": "NVIDIA Prices $25B Multi-Tranche Senior Notes Offering",
+      "editor": "The Energy Mag / TIKR / DatacenterDynamics",
+      "tipo": "Prensa",
+      "fecha": "2026-06-17",
+      "url": "https://www.theenergymag.com/news/market-news/nvidia-prices-25-billion-multi-tranche-senior-notes-offering"
+    },
+    {
+      "id": 18,
+      "titulo": "Form 10-K FY2026 y 10-Q 1T FY27: balance a 25-ene-26",
+      "editor": "NVIDIA / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-05-28",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000052/nvda-20260426.htm"
+    },
+    {
+      "id": 19,
+      "titulo": "NVDA cash flow statement (capex y caja libre FY2026)",
+      "editor": "Stock Analysis / ChartRow",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-03",
+      "url": "https://stockanalysis.com/stocks/NVDA/financials/cash-flow-statement/"
+    },
+    {
+      "id": 20,
+      "titulo": "NVIDIA Announces Financial Results for Fourth Quarter and Fiscal 2026 (8-K, q4fy26pr)",
+      "editor": "NVIDIA / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-02-25",
+      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000019/q4fy26pr.htm"
+    },
+    {
+      "id": 21,
+      "titulo": "NVIDIA Just Raised $25 Billion in Its Biggest Bond Deal Ever",
+      "editor": "TIKR",
+      "tipo": "Prensa",
+      "fecha": "2026-06",
+      "url": "https://www.tikr.com/blog/nvidia-just-raised-25-billion-in-its-biggest-bond-deal-ever-heres-what-it-signals-for-2026"
+    },
+    {
+      "id": 22,
+      "titulo": "Nvidia Blows Past Expectations with $96.2 Billion Revenue in Q2 2027",
+      "editor": "iPhone in Canada",
+      "tipo": "Prensa",
+      "fecha": "2026-08-27",
+      "url": "https://www.iphoneincanada.ca/2026/08/27/nvidia-blows-past-expectations-with-96-2-billion-revenue-in-q2-2027/"
+    },
+    {
+      "id": 23,
+      "titulo": "Data Center Accelerator Market worth $372.68 billion by 2030",
+      "editor": "MarketsandMarkets",
+      "tipo": "Sectorial",
+      "fecha": "2025",
+      "url": "https://www.marketsandmarkets.com/Market-Reports/data-center-accelerator-market-48984803.html"
+    },
+    {
+      "id": 24,
+      "titulo": "Tech giants are spending $725 billion on AI this year",
+      "editor": "Trader Insights / Yahoo Finance",
+      "tipo": "Prensa",
+      "fecha": "2026",
+      "url": "https://traderinsightsmedia.beehiiv.com/p/tech-giants-are-spending-725-billion-on-ai-this-year-here-s-who-gets-paid"
+    },
+    {
+      "id": 25,
+      "titulo": "Moody's hyperscaler capex forecasts marked up by $85bn to close in on $1trn by 2027",
+      "editor": "DatacenterDynamics",
+      "tipo": "Sectorial",
+      "fecha": "2026",
+      "url": "https://datacenterdynamics.com/en/news/moodys-hyperscaler-capex-forecasts-marked-up-by-85bn-to-close-in-on-1trn-by-2027/"
+    },
+    {
+      "id": 26,
+      "titulo": "Broadcom Form 10-K FY2024 y cobertura de los ASIC a medida",
+      "editor": "Broadcom / SEC",
+      "tipo": "Primaria",
+      "fecha": "2024-12-20",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001730168&type=10-K"
+    },
+    {
+      "id": 27,
+      "titulo": "AMD Form 10-K 2024 e Intel Form 10-K 2024 (ingresos y resultado operativo)",
+      "editor": "AMD / Intel / SEC",
+      "tipo": "Primaria",
+      "fecha": "2025-02",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000002488&type=10-K"
+    },
+    {
+      "id": 28,
+      "titulo": "Nvidia (NVDA) Stock Slips as Huawei Closes the Gap in China AI Chips",
+      "editor": "CoinCentral",
+      "tipo": "Prensa",
+      "fecha": "2026-10-13",
+      "url": "https://coincentral.com/nvidia-nvda-stock-slips-as-huawei-closes-the-gap-in-china-ai-chips"
+    },
+    {
+      "id": 29,
+      "titulo": "Proxy statement 2026 (DEF 14A, nvda-20260512)",
+      "editor": "NVIDIA / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-05-12",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000036/nvda-20260512.htm"
+    },
+    {
+      "id": 30,
+      "titulo": "Nvidia Returns to Debt Market with $25 Billion Bond Offering",
+      "editor": "DatacenterDynamics",
+      "tipo": "Prensa",
+      "fecha": "2026-06-16",
+      "url": "https://www.datacenterdynamics.com/en/news/nvidia-to-raise-25bn-in-corporate-bond-sale/"
+    },
+    {
+      "id": 31,
+      "titulo": "Preview: Nvidia reports Q2 results today, guidance implies revenue near $91 billion",
+      "editor": "investingLive",
+      "tipo": "Prensa",
+      "fecha": "2026-08-26",
+      "url": "https://investinglive.com/stocks/preview-nvidia-reports-q2-results-today-guidance-implies-revenue-near-91-billion/"
+    },
+    {
+      "id": 32,
+      "titulo": "Nvidia fija un objetivo de prima en efectivo de 4 M USD para Jensen Huang en FY2027 (Reuters)",
+      "editor": "Boursorama / Reuters",
+      "tipo": "Prensa",
+      "fecha": "2026-03",
+      "url": "https://www.boursorama.com/bourse/actualites/nvidia-fixe-un-objectif-de-prime-en-especes-de-4-millions-de-dollars-pour-son-directeur-general-jensen-huang-dans-le-cadre-du-plan-pour-l-exercice-2027-e02e4dd17d7ba33fea63c24e25078305"
+    },
+    {
+      "id": 33,
+      "titulo": "Form 8-K, resultados de la junta anual del 24-jun-26 (nvda-20260624)",
+      "editor": "NVIDIA / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-06-26",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000056/nvda-20260624.htm"
+    },
+    {
+      "id": 34,
+      "titulo": "Nvidia Q2 FY2027 Earnings Beats Revenue, EPS Estimates, Guides Q3 to $108B",
+      "editor": "Webull",
+      "tipo": "Prensa",
+      "fecha": "2026-08-26",
+      "url": "https://www.webull.com/blog/304-Nvidia-Q2-FY2027-Earnings-Beats-Revenue-EPS-Estimates-Guides-Q3-to-108B"
+    },
+    {
+      "id": 35,
+      "titulo": "NVDA Earnings & Revenue Estimates, Forecasts & Revisions; NVDA Forecast, Price Target & Analyst Ratings",
+      "editor": "Chartmill",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-03",
+      "url": "https://www.chartmill.com/stock/quote/NVDA/estimates"
+    },
+    {
+      "id": 36,
+      "titulo": "NVIDIA Corporation (NVDA) Analyst Ratings, Estimates & Forecasts",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://finance.yahoo.com/quote/NVDA/analysis/"
+    },
+    {
+      "id": 37,
+      "titulo": "Rosenblatt, Cantor and KeyBanc reiterate Nvidia buys at $325-$350 two days before earnings",
+      "editor": "SentiSense",
+      "tipo": "Analistas",
+      "fecha": "2026-08-24",
+      "url": "https://app.sentisense.ai/stories/analysts-maintain-bullish-stance-on-nvidia-with-buy-ratings-and-325-350-price-ta-08242026"
+    },
+    {
+      "id": 38,
+      "titulo": "NVDA Stock Forecast (objetivo medio a un año, 62 analistas)",
+      "editor": "Alpha Spread",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www.alphaspread.com/security/nasdaq/nvda/analyst-estimates"
+    },
+    {
+      "id": 39,
+      "titulo": "Nvidia Stock News (Oct 14, 2026): NVDA Rises 1.0% to $228.52 (cierre del 13-oct, rango de 52 semanas, volumen)",
+      "editor": "Gotrade / Investing.com",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-14",
+      "url": "https://www.heygotrade.com/en/news/nvidia-nvda-stock-news-october-14-2026/"
+    },
+    {
+      "id": 40,
+      "titulo": "NVIDIA Corporation (NVDA) - Price History (cierres mensuales)",
+      "editor": "Digrin",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www.digrin.com/stocks/detail/NVDA/price"
+    },
+    {
+      "id": 41,
+      "titulo": "NVIDIA - Stock Price History (cierres de enero de 2022 y 2023, ajustados a los desdoblamientos)",
+      "editor": "Macrotrends",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www.macrotrends.net/stocks/charts/NVDA/nvidia/stock-price-history"
+    },
+    {
+      "id": 42,
+      "titulo": "NVIDIA PE Ratio (TTM) y Forward PE (GuruFocus, 13-oct-26)",
+      "editor": "GuruFocus",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-13",
+      "url": "https://www.gurufocus.com/term/forward-pe-ratio/NVDA"
+    },
+    {
+      "id": 43,
+      "titulo": "Análisis de TSMC, ASML y Texas Instruments del 14-oct-26 en este repositorio (múltiplos calculados con sus fuentes; AMAT, LRCX y KLA de la nota D de ASML)",
+      "editor": "Repositorio analisis-inversion",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-14",
+      "url": null
+    },
+    {
+      "id": 44,
+      "titulo": "Applied Materials vs. AMD: Which AI Semiconductor Stock Is a Better Buy in 2026? (PER adelantado de AMD)",
+      "editor": "The Motley Fool",
+      "tipo": "Prensa",
+      "fecha": "2026-10-01",
+      "url": "https://www.fool.com/coverage/better-buy/2026/10/01/applied-materials-vs-advanced-micro-devices-ai-semiconductor-stock-better-buy-2026/"
+    },
+    {
+      "id": 45,
+      "titulo": "Broadcom forward P/E (6-ago-26)",
+      "editor": "valueinvesting.io",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-08-06",
+      "url": "https://valueinvesting.io/AVGO/metric/forward-pe"
+    },
+    {
+      "id": 46,
+      "titulo": "One Semiconductor Stock Could Surprise Investors Over the Next 3 Years (Marvell, ≈48x)",
+      "editor": "24/7 Wall St.",
+      "tipo": "Prensa",
+      "fecha": "2026-10-12",
+      "url": "https://247wallst.com/investing/2026/10/12/one-semiconductor-stock-could-surprise-investors-over-the-next-3-years/"
+    },
+    {
+      "id": 47,
+      "titulo": "Implied ERP by month (ERPbymonth.xlsx), octubre de 2026: 4,20 % (dato del método del repositorio)",
+      "editor": "Aswath Damodaran, NYU Stern",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx"
+    },
+    {
+      "id": 48,
+      "titulo": "10-year Treasury yield (13-oct-26): 5,21-5,24 %; FRED DGS10",
+      "editor": "CNBC / FRED",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-13",
+      "url": "https://www.cnbc.com/2026/10/13/us-treasurys-bonds-yields.html"
+    },
+    {
+      "id": 49,
+      "titulo": "Nvidia Earnings Preview: I'm Buying Ahead Of Q1 Results; Nvidia: I Didn't Think I Could Get More Bullish - Then Q2 Happened",
+      "editor": "Seeking Alpha",
+      "tipo": "Foros y redes",
+      "fecha": "2026-08",
+      "url": "https://seekingalpha.com/article/4903753-nvidia-earnings-preview-buying-ahead-of-q1-results"
+    },
+    {
+      "id": 50,
+      "titulo": "NVIDIA Forward PE Ratio y PE Ratio (TTM): «Possible Value Trap»",
+      "editor": "GuruFocus",
+      "tipo": "Foros y redes",
+      "fecha": "2026-10-13",
+      "url": "https://www.gurufocus.com/term/pettm/NVDA"
+    },
+    {
+      "id": 51,
+      "titulo": "A Look at NVIDIA Corp (NVDA) After 1.0% Gain",
+      "editor": "GuruFocus News",
+      "tipo": "Foros y redes",
+      "fecha": "2026-10-14",
+      "url": "https://www.gurufocus.com/news/9122087/a-look-at-nvidia-corp-nvda-after-10-gain-gf-value-40828-vs-price-22852"
+    },
+    {
+      "id": 52,
+      "titulo": "Arm vs. Sandisk: Which Tech Stock Is a Better Buy in October? (rotación hacia memoria)",
+      "editor": "The Motley Fool",
+      "tipo": "Foros y redes",
+      "fecha": "2026-10-14",
+      "url": "https://www.fool.com/coverage/better-buy/2026/10/14/arm-vs-sandisk-which-tech-stock-is-a-better-buy-in-october/"
+    },
+    {
+      "id": 53,
+      "titulo": "Menciones en r/WallStreetBets: Nvidia, el valor más citado",
+      "editor": "Benzinga",
+      "tipo": "Foros y redes",
+      "fecha": "2026",
+      "url": "https://benzinga.com/z/24163445"
+    }
+  ],
+  "calc": {
+    "version": 4,
+    "etiquetas": {
+      "margen_bruto": "M. bruto",
+      "margen_bruto_largo": "Margen bruto",
+      "dias_base": "sobre el coste de ventas"
+    },
+    "recomendacion": {
+      "recomendacion": "Mantener",
+      "regla": "Mantener",
+      "regla_absoluta": "Vender",
+      "regla_relativa": "Mantener",
+      "coincide": true,
+      "conviccion": "Baja",
+      "conviccion_sugerida": "Baja",
+      "conviccion_razones": [
+        "las reglas discrepan (absoluta Vender, relativa Mantener)"
+      ],
+      "reglas_discrepan": true,
+      "relativo": {
+        "prima_implicita_pct": 4.2,
+        "wacc": 11.06,
+        "ke": 11.1,
+        "dcf": 166.05,
+        "dcf_min": 156.76,
+        "dcf_max": 176.59,
+        "valor_objetivo": 244.28,
+        "alcista": 239.24,
+        "bajista": 82.43,
+        "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+        "fecha": "2026-10",
+        "potencial_pct": 6.9,
+        "rentabilidad_total_pct": 7,
+        "asimetria": 0.07
+      },
+      "objetivo_mercado_txt": " · con la prima implícita del mercado: 244,28 (+6,9 %)",
+      "objetivo_mercado_corto": " · mercado 244,28",
+      "rentabilidad_mercado_corto": " · mercado +7,0 %",
+      "potencial_pct": -2,
+      "dividendo_pct": 0.1,
+      "rentabilidad_total_pct": -1.8,
+      "alcista_pct": -14.6,
+      "bajista_pct": -69.4,
+      "asimetria": -0.21,
+      "comprar_por_debajo": 224.02,
+      "vender_por_encima": 290.18,
+      "tabla": [
+        {
+          "concepto": "Objetivo a 12 meses (nuestro PER × nuestro BPA FY2029e, ponderado 25/50/25)",
+          "valor": "260,89 USD"
+        },
+        {
+          "concepto": "Bajista / base / alcista a 12 meses",
+          "valor": "13,5x × 8,68 = 117,18 · 15,9x × 15,78 = 250,90 · 20,7x × 20,51 = 424,56"
+        },
+        {
+          "concepto": "Rentabilidad a 12 meses: ponderada / del base (con dividendo)",
+          "valor": "14,3 % / 9,9 %"
+        },
+        {
+          "concepto": "Objetivo medio de los analistas (solo contraste)",
+          "valor": "321,30 (nuestro base -21,9 %)"
+        },
+        {
+          "concepto": "Valor intrínseco (síntesis ponderada, largo plazo)",
+          "valor": "224,02 USD"
+        },
+        {
+          "concepto": "Potencial sobre el precio actual",
+          "valor": "-2,0 %"
+        },
+        {
+          "concepto": "Rentabilidad por dividendo ordinario",
+          "valor": "0,1 %"
+        },
+        {
+          "concepto": "Rentabilidad total esperada a 12 meses",
+          "valor": "-1,8 %"
+        },
+        {
+          "concepto": "Escenario alcista / bajista",
+          "valor": "-14,6 % / -69,4 %"
+        },
+        {
+          "concepto": "Asimetría (ganancia alcista / pérdida bajista)",
+          "valor": "-0,21x"
+        },
+        {
+          "concepto": "Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado",
+          "valor": "8,8 % frente a 12,9 % y 11,1 %"
+        },
+        {
+          "concepto": "Valor objetivo con la prima implícita del mercado (4,2 %, WACC 11,1 %)",
+          "valor": "244,28 USD"
+        },
+        {
+          "concepto": "Rentabilidad total esperada con la prima del mercado",
+          "valor": "7,0 %"
+        },
+        {
+          "concepto": "Asimetría con la prima del mercado",
+          "valor": "0,07x"
+        },
+        {
+          "concepto": "Regla absoluta (frente a su coste de capital)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Regla relativa (frente a lo que pide el mercado)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "¿La calidad de la empresa sostiene el crecimiento previsto?",
+          "valor": "En parte (19,0 % anual proyectado; sin inversión neta)"
+        },
+        {
+          "concepto": "Señal del valor intrínseco (regla del DCF, referencia)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Recomendación según la regla a 12 meses (Comprar: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender: ponderada ≤ -10 %)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Convicción según los criterios (las reglas discrepan (absoluta Vender, relativa Mantener))",
+          "valor": "Baja"
+        }
+      ],
+      "niveles": [
+        {
+          "accion": "Comprar",
+          "condicion": "Por debajo de 224,02 (ponderada a 12 meses ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco)"
+        },
+        {
+          "accion": "Mantener",
+          "condicion": "Entre 224,02 y 290,18"
+        },
+        {
+          "accion": "Vender o reducir",
+          "condicion": "Por encima de 290,18 (ponderada a 12 meses ≤ -10 %)"
+        }
+      ],
+      "precio_txt": "",
+      "valor_objetivo_txt": "",
+      "regla_valor_intrinseco": "Mantener",
+      "objetivo_12m": {
+        "completo": true,
+        "filas": [
+          {
+            "escenario": "Bajista",
+            "metrica": "PER",
+            "beneficio_por_accion": 8.68,
+            "multiplo": 13.5,
+            "multiplo_informe": null,
+            "origen": "base × 0.85 (el mínimo de 5 años no queda por debajo del base)",
+            "precio": 117.18,
+            "rentabilidad_pct": -48.6,
+            "justificacion": "Ingresos de 466.426 M en FY2029e (+25 % en FY2028e y −10 % en FY2029e) y margen EBITDA del 55 %: EBIT de ≈250.000 M, 700 M de resultado financiero neto, 16 % de impuestos y 24.270 M de acciones. PER de 13,5x (base × 0,85): el mercado paga un múltiplo de fondo de ciclo."
+          },
+          {
+            "escenario": "Base",
+            "metrica": "PER",
+            "beneficio_por_accion": 15.78,
+            "multiplo": 15.9,
+            "multiplo_informe": null,
+            "origen": "PER actual",
+            "precio": 250.9,
+            "rentabilidad_pct": 9.9,
+            "justificacion": "Ingresos de 739.026 M en FY2029e y margen EBITDA del 63 % (amortización del 1,4 %): EBIT de 455.240 M, más 700 M de financiero neto, 16 % de impuestos y 24.270 M de acciones sin recompras no anunciadas. PER actual (15,9x sobre nuestro FY2028e), por debajo de la mediana de cinco años."
+          },
+          {
+            "escenario": "Alcista",
+            "metrica": "PER",
+            "beneficio_por_accion": 20.51,
+            "multiplo": 20.7,
+            "multiplo_informe": null,
+            "origen": "techo de base × 1.3",
+            "precio": 424.56,
+            "rentabilidad_pct": 85.9,
+            "justificacion": "Ingresos de ≈916.000 M en FY2029e (el ritmo del consenso) con margen EBITDA del 66 %: EBIT de ≈592.000 M. PER de 20,6x, el techo de la regla (base × 1,30), muy por debajo de su historia (47x) y de los comparables (30,7x)."
+          }
+        ],
+        "regla": {
+          "bajista": 13.5,
+          "base": 15.9,
+          "alcista": 20.7,
+          "bajista_origen": "base × 0.85 (el mínimo de 5 años no queda por debajo del base)",
+          "base_origen": "PER actual",
+          "alcista_origen": "techo de base × 1.3"
+        },
+        "probabilidades": [
+          25,
+          50,
+          25
+        ],
+        "objetivo_ponderado": 260.89,
+        "objetivo_simple": 264.21,
+        "objetivo_base": 250.9,
+        "rentabilidad_ponderada_pct": 14.3,
+        "rentabilidad_simple_pct": 15.7,
+        "rentabilidad_base_pct": 9.9,
+        "asimetria": 1.76,
+        "senal": "Mantener",
+        "comprar_por_debajo": 224.02,
+        "vender_por_encima": 290.18,
+        "consenso_objetivo": 321.3,
+        "diferencia_consenso_pct": -21.9
+      },
+      "rentabilidad_12m_pct": 14.3,
+      "rentabilidad_12m_txt": "+14,3 % (base +9,9 %)",
+      "objetivo_12m_txt": "260,89 USD"
+    },
+    "mercado": {
+      "precio": 228.52,
+      "acciones": 24270,
+      "capitalizacion": 5546180,
+      "deuda_neta": -23132,
+      "deuda_neta_ajustada": null,
+      "asimilables_deuda": null,
+      "ajustes_puente": -42800,
+      "valor_empresa": 5480248,
+      "fecha_puente": "2026-07-26"
+    },
+    "clave": {
+      "capitalizacion": 5546180,
+      "valor_empresa": 5480248,
+      "deuda_neta": -23132,
+      "ev_ventas_ltm": 18.09,
+      "ev_ebitda_ltm": 27.4,
+      "ev_ebitda_ntm": null,
+      "ev_ebit_ltm": 27.9,
+      "per_ltm": 28.9,
+      "per_ntm": 16.3,
+      "fcf_yield_pct": 2.3,
+      "dividendo_pct": 0.1,
+      "dn_ebitda": -0.1,
+      "roic_pct": 121.7,
+      "margen_ebitda_pct": 66,
+      "deuda_neta_ajustada": -23132,
+      "dn_ebitda_ajustada": -0.1,
+      "crecimiento_tcac_pct": 68.3,
+      "ingresos_ntm": 622770,
+      "ebitda_ntm": null,
+      "bpa_ntm": 13.99,
+      "ebitda_ltm": 200000,
+      "ingresos_ltm": 302933,
+      "ev_rab": null
+    },
+    "cuenta": [
+      {
+        "periodo": "FY2022",
+        "ingresos": 26914,
+        "crecimiento_pct": null,
+        "beneficio_bruto": 17475,
+        "margen_bruto_pct": 64.9,
+        "ebitda": 11215,
+        "margen_ebitda_pct": 41.7,
+        "ebit": 10041,
+        "margen_ebit_pct": 37.3,
+        "beneficio_neto": 9752,
+        "margen_neto_pct": 36.2,
+        "bpa": 0.39,
+        "dpa": 0.016,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 1.9,
+        "payout_pct": 4
+      },
+      {
+        "periodo": "FY2023",
+        "ingresos": 26974,
+        "crecimiento_pct": 0.2,
+        "beneficio_bruto": 15356,
+        "margen_bruto_pct": 56.9,
+        "ebitda": 7121,
+        "margen_ebitda_pct": 26.4,
+        "ebit": 5577,
+        "margen_ebit_pct": 20.7,
+        "beneficio_neto": 4368,
+        "margen_neto_pct": 16.2,
+        "bpa": 0.17,
+        "dpa": 0.016,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": -4.5,
+        "payout_pct": 9
+      },
+      {
+        "periodo": "FY2024",
+        "ingresos": 60922,
+        "crecimiento_pct": 125.9,
+        "beneficio_bruto": 44301,
+        "margen_bruto_pct": 72.7,
+        "ebitda": 34480,
+        "margen_ebitda_pct": 56.6,
+        "ebit": 32972,
+        "margen_ebit_pct": 54.1,
+        "beneficio_neto": 29760,
+        "margen_neto_pct": 48.8,
+        "bpa": 1.19,
+        "dpa": 0.016,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 12,
+        "payout_pct": 1
+      },
+      {
+        "periodo": "FY2025",
+        "ingresos": 130497,
+        "crecimiento_pct": 114.2,
+        "beneficio_bruto": 97858,
+        "margen_bruto_pct": 75,
+        "ebitda": 83317,
+        "margen_ebitda_pct": 63.8,
+        "ebit": 81453,
+        "margen_ebit_pct": 62.4,
+        "beneficio_neto": 72880,
+        "margen_neto_pct": 55.8,
+        "bpa": 2.94,
+        "dpa": 0.034,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 13.3,
+        "payout_pct": 1
+      },
+      {
+        "periodo": "FY2026",
+        "ingresos": 215938,
+        "crecimiento_pct": 65.5,
+        "beneficio_bruto": 153532,
+        "margen_bruto_pct": 71.1,
+        "ebitda": 133230,
+        "margen_ebitda_pct": 61.7,
+        "ebit": 130387,
+        "margen_ebit_pct": 60.4,
+        "beneficio_neto": 120067,
+        "margen_neto_pct": 55.6,
+        "bpa": 4.9,
+        "dpa": 0.04,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 1
+      }
+    ],
+    "tcac": {
+      "periodo": "FY2022-FY2026",
+      "ingresos_pct": 68.3,
+      "ebitda_pct": 85.7,
+      "bpa_pct": 88.3
+    },
+    "cuenta_y_prevision": [
+      {
+        "periodo": "FY2022",
+        "ingresos": 26914,
+        "ebitda": 11215
+      },
+      {
+        "periodo": "FY2023",
+        "ingresos": 26974,
+        "ebitda": 7121
+      },
+      {
+        "periodo": "FY2024",
+        "ingresos": 60922,
+        "ebitda": 34480
+      },
+      {
+        "periodo": "FY2025",
+        "ingresos": 130497,
+        "ebitda": 83317
+      },
+      {
+        "periodo": "FY2026",
+        "ingresos": 215938,
+        "ebitda": 133230
+      },
+      {
+        "periodo": "FY2027e",
+        "ingresos": 414601,
+        "ebitda": 281929
+      },
+      {
+        "periodo": "FY2028e",
+        "ingresos": 642631,
+        "ebitda": 424137
+      },
+      {
+        "periodo": "FY2029e",
+        "ingresos": 739026,
+        "ebitda": 465587
+      },
+      {
+        "periodo": "FY2030e",
+        "ingresos": 716855,
+        "ebitda": 422945
+      },
+      {
+        "periodo": "FY2031e",
+        "ingresos": 752698,
+        "ebitda": 429038
+      },
+      {
+        "periodo": "FY2032e",
+        "ingresos": 797860,
+        "ebitda": 446802
+      },
+      {
+        "periodo": "FY2033e",
+        "ingresos": 845732,
+        "ebitda": 465152
+      },
+      {
+        "periodo": "FY2034e",
+        "ingresos": 888018,
+        "ebitda": 479530
+      },
+      {
+        "periodo": "FY2035e",
+        "ingresos": 932419,
+        "ebitda": 494182
+      },
+      {
+        "periodo": "FY2036e",
+        "ingresos": 969716,
+        "ebitda": 513949
+      }
+    ],
+    "segmentos_ultimo": [
+      {
+        "nombre": "Centro de datos",
+        "ingresos": 193700,
+        "peso_pct": 89.7,
+        "crecimiento_pct": 68.2,
+        "margen_pct": null,
+        "tipo_margen": null
+      },
+      {
+        "nombre": "Resto (gaming, visualización, automoción, OEM)",
+        "ingresos": 22238,
+        "peso_pct": 10.3,
+        "crecimiento_pct": 45.2,
+        "margen_pct": null,
+        "tipo_margen": null
+      }
+    ],
+    "segmentos_tabla": {
+      "periodos": [
+        "FY2022",
+        "FY2023",
+        "FY2024",
+        "FY2025",
+        "FY2026"
+      ],
+      "filas": [
+        {
+          "nombre": "Centro de datos",
+          "v0": 10613,
+          "v1": 15005,
+          "v2": 47525,
+          "v3": 115186,
+          "v4": 193700
+        },
+        {
+          "nombre": "Resto (gaming, visualización, automoción, OEM)",
+          "v0": 16301,
+          "v1": 11969,
+          "v2": 13397,
+          "v3": 15311,
+          "v4": 22238
+        }
+      ]
+    },
+    "segmentos_periodo": "FY2026",
+    "balance": [
+      {
+        "periodo": "FY2022",
+        "activo_total": 44187,
+        "intangibles": 6688,
+        "circulante": 5472,
+        "circulante_ventas_pct": 20.3,
+        "caja": 21208,
+        "deuda_financiera": 10946,
+        "arrendamientos": 0,
+        "deuda_neta": -10262,
+        "patrimonio": 26612,
+        "minoritarios": 0,
+        "dn_ebitda": -0.92,
+        "dn_patrimonio_pct": -39,
+        "dso": 63,
+        "dio": 101,
+        "dpo": 69,
+        "ciclo_caja": 95,
+        "cobertura_intereses": 42.5,
+        "capital_invertido": 16350,
+        "liquidez_corriente": 6.65
+      },
+      {
+        "periodo": "FY2023",
+        "activo_total": 41182,
+        "intangibles": 6048,
+        "circulante": 7793,
+        "circulante_ventas_pct": 28.9,
+        "caja": 13296,
+        "deuda_financiera": 10953,
+        "arrendamientos": 0,
+        "deuda_neta": -2343,
+        "patrimonio": 22101,
+        "minoritarios": 0,
+        "dn_ebitda": -0.33,
+        "dn_patrimonio_pct": -11,
+        "dso": 52,
+        "dio": 162,
+        "dpo": 37,
+        "ciclo_caja": 177,
+        "cobertura_intereses": 21.3,
+        "capital_invertido": 19758,
+        "liquidez_corriente": 3.52
+      },
+      {
+        "periodo": "FY2024",
+        "activo_total": 65728,
+        "intangibles": 5542,
+        "circulante": 12582,
+        "circulante_ventas_pct": 20.7,
+        "caja": 25984,
+        "deuda_financiera": 9709,
+        "arrendamientos": 0,
+        "deuda_neta": -16275,
+        "patrimonio": 42978,
+        "minoritarios": 0,
+        "dn_ebitda": -0.47,
+        "dn_patrimonio_pct": -38,
+        "dso": 60,
+        "dio": 116,
+        "dpo": 59,
+        "ciclo_caja": 117,
+        "cobertura_intereses": 128.3,
+        "capital_invertido": 26703,
+        "liquidez_corriente": 4.17
+      },
+      {
+        "periodo": "FY2025",
+        "activo_total": 111601,
+        "intangibles": 5995,
+        "circulante": 26835,
+        "circulante_ventas_pct": 20.6,
+        "caja": 43210,
+        "deuda_financiera": 8463,
+        "arrendamientos": 0,
+        "deuda_neta": -34747,
+        "patrimonio": 79327,
+        "minoritarios": 0,
+        "dn_ebitda": -0.42,
+        "dn_patrimonio_pct": -44,
+        "dso": 65,
+        "dio": 113,
+        "dpo": 71,
+        "ciclo_caja": 107,
+        "cobertura_intereses": 329.8,
+        "capital_invertido": 44580,
+        "liquidez_corriente": 4.44
+      },
+      {
+        "periodo": "FY2026",
+        "activo_total": 206803,
+        "intangibles": 0,
+        "circulante": 59869,
+        "circulante_ventas_pct": 27.7,
+        "caja": 49670,
+        "deuda_financiera": 8468,
+        "arrendamientos": 0,
+        "deuda_neta": -41202,
+        "patrimonio": 157293,
+        "minoritarios": 0,
+        "dn_ebitda": -0.31,
+        "dn_patrimonio_pct": -26,
+        "dso": 65,
+        "dio": 125,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 116091,
+        "liquidez_corriente": null
+      }
+    ],
+    "perimetro_nota": null,
+    "flujos": [
+      {
+        "periodo": "FY2022",
+        "flujo_operativo": 9108,
+        "capex": 976,
+        "pagos_arrendamientos": 0,
+        "fcf": 8132,
+        "beneficio_neto": 9752,
+        "conversion_pct": 83,
+        "capex_ventas_pct": 3.6,
+        "capex_amortizacion": 0.83,
+        "adquisiciones": 263,
+        "desinversiones": 0,
+        "dividendos": 399,
+        "recompras": 0,
+        "emision_acciones": 281,
+        "retorno_accionista": 399,
+        "payout_caja_pct": 4,
+        "acciones": 25350,
+        "fcf_por_accion": 0.32
+      },
+      {
+        "periodo": "FY2023",
+        "flujo_operativo": 5641,
+        "capex": 1833,
+        "pagos_arrendamientos": 0,
+        "fcf": 3808,
+        "beneficio_neto": 4368,
+        "conversion_pct": 87,
+        "capex_ventas_pct": 6.8,
+        "capex_amortizacion": 1.19,
+        "adquisiciones": 49,
+        "desinversiones": 0,
+        "dividendos": 398,
+        "recompras": 10039,
+        "emision_acciones": 355,
+        "retorno_accionista": 10437,
+        "payout_caja_pct": 239,
+        "acciones": 25070,
+        "fcf_por_accion": 0.15
+      },
+      {
+        "periodo": "FY2024",
+        "flujo_operativo": 28090,
+        "capex": 1069,
+        "pagos_arrendamientos": 0,
+        "fcf": 27021,
+        "beneficio_neto": 29760,
+        "conversion_pct": 91,
+        "capex_ventas_pct": 1.8,
+        "capex_amortizacion": 0.71,
+        "adquisiciones": 83,
+        "desinversiones": 0,
+        "dividendos": 395,
+        "recompras": 9533,
+        "emision_acciones": 403,
+        "retorno_accionista": 9928,
+        "payout_caja_pct": 33,
+        "acciones": 24940,
+        "fcf_por_accion": 1.08
+      },
+      {
+        "periodo": "FY2025",
+        "flujo_operativo": 64089,
+        "capex": 3236,
+        "pagos_arrendamientos": 0,
+        "fcf": 60853,
+        "beneficio_neto": 72880,
+        "conversion_pct": 83,
+        "capex_ventas_pct": 2.5,
+        "capex_amortizacion": 1.74,
+        "adquisiciones": 1007,
+        "desinversiones": 0,
+        "dividendos": 834,
+        "recompras": 33706,
+        "emision_acciones": 490,
+        "retorno_accionista": 34540,
+        "payout_caja_pct": 47,
+        "acciones": 24804,
+        "fcf_por_accion": 2.45
+      },
+      {
+        "periodo": "FY2026",
+        "flujo_operativo": 102718,
+        "capex": 6018,
+        "pagos_arrendamientos": 0,
+        "fcf": 96700,
+        "beneficio_neto": 120067,
+        "conversion_pct": 81,
+        "capex_ventas_pct": 2.8,
+        "capex_amortizacion": 2.12,
+        "adquisiciones": null,
+        "desinversiones": 0,
+        "dividendos": 974,
+        "recompras": 40400,
+        "emision_acciones": null,
+        "retorno_accionista": 41374,
+        "payout_caja_pct": 34,
+        "acciones": 24503,
+        "fcf_por_accion": 3.95
+      }
+    ],
+    "flujos_acumulado": {
+      "periodo": "FY2022-FY2026",
+      "fcf": 196514,
+      "adquisiciones": 1402,
+      "dividendos": 3000,
+      "recompras": 93678,
+      "conversion_pct": 83
+    },
+    "rentabilidad": [
+      {
+        "periodo": "FY2022",
+        "nopat": 9850,
+        "capital_invertido": 16350,
+        "roic_pct": 60.2,
+        "roe_pct": 36.6,
+        "roa_pct": 22.1,
+        "margen_neto_pct": 36.2,
+        "rotacion": 0.61,
+        "apalancamiento": 1.66
+      },
+      {
+        "periodo": "FY2023",
+        "nopat": 5577,
+        "capital_invertido": 18054,
+        "roic_pct": 30.9,
+        "roe_pct": 17.9,
+        "roa_pct": 10.2,
+        "margen_neto_pct": 16.2,
+        "rotacion": 0.63,
+        "apalancamiento": 1.75
+      },
+      {
+        "periodo": "FY2024",
+        "nopat": 29016,
+        "capital_invertido": 23231,
+        "roic_pct": 124.9,
+        "roe_pct": 91.5,
+        "roa_pct": 55.7,
+        "margen_neto_pct": 48.8,
+        "rotacion": 1.14,
+        "apalancamiento": 1.64
+      },
+      {
+        "periodo": "FY2025",
+        "nopat": 70648,
+        "capital_invertido": 35642,
+        "roic_pct": 198.2,
+        "roe_pct": 119.2,
+        "roa_pct": 82.2,
+        "margen_neto_pct": 55.8,
+        "rotacion": 1.47,
+        "apalancamiento": 1.45
+      },
+      {
+        "periodo": "FY2026",
+        "nopat": 97790,
+        "capital_invertido": 80336,
+        "roic_pct": 121.7,
+        "roe_pct": 101.5,
+        "roa_pct": 75.4,
+        "margen_neto_pct": 55.6,
+        "rotacion": 1.36,
+        "apalancamiento": 1.35
+      }
+    ],
+    "roic_incremental_pct": 137.4,
+    "roic_frente_wacc": [
+      {
+        "periodo": "FY2022",
+        "roic_pct": 60.2,
+        "roe_pct": 36.6,
+        "wacc_pct": 12.9
+      },
+      {
+        "periodo": "FY2023",
+        "roic_pct": 30.9,
+        "roe_pct": 17.9,
+        "wacc_pct": 12.9
+      },
+      {
+        "periodo": "FY2024",
+        "roic_pct": 124.9,
+        "roe_pct": 91.5,
+        "wacc_pct": 12.9
+      },
+      {
+        "periodo": "FY2025",
+        "roic_pct": 198.2,
+        "roe_pct": 119.2,
+        "wacc_pct": 12.9
+      },
+      {
+        "periodo": "FY2026",
+        "roic_pct": 121.7,
+        "roe_pct": 101.5,
+        "wacc_pct": 12.9
+      }
+    ],
+    "calidad": {
+      "periodo": "FY2026",
+      "altman_z": 70.34,
+      "altman_zona": "Zona segura",
+      "piotroski_f": 4,
+      "piotroski_detalle": [
+        {
+          "criterio": "Beneficio neto positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "ROA mejora",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Flujo operativo > beneficio neto",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Baja el endeudamiento (deuda / activo)",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora la liquidez corriente",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "No emite acciones",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora el margen bruto",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Mejora la rotación del activo",
+          "resultado": "No"
+        }
+      ],
+      "beneish_m": -0.11,
+      "beneish_fiable": true,
+      "beneish_variables": [
+        {
+          "variable": "DSRI",
+          "valor": 1.01
+        },
+        {
+          "variable": "GMI",
+          "valor": 1.05
+        },
+        {
+          "variable": "AQI",
+          "valor": 4.43
+        },
+        {
+          "variable": "SGI",
+          "valor": 1.65
+        },
+        {
+          "variable": "DEPI",
+          "valor": 0.23
+        },
+        {
+          "variable": "SGAI",
+          "valor": 1
+        },
+        {
+          "variable": "LVGI",
+          "valor": 0.83
+        },
+        {
+          "variable": "TATA",
+          "valor": 0.08
+        }
+      ],
+      "tabla": [
+        {
+          "indicador": "Altman Z",
+          "valor": "70,34",
+          "lectura": "Zona segura (> 2,99 seguro; < 1,81 riesgo). No aplica a bancos ni aseguradoras, y subestima la solvencia de empresas con grandes anticipos de clientes o prefinanciación pública (contratistas, construcción), que inflan el pasivo."
+        },
+        {
+          "indicador": "Piotroski F",
+          "valor": "4 / 8",
+          "lectura": "Intermedio (4-6)."
+        },
+        {
+          "indicador": "Beneish M",
+          "valor": "-0,11",
+          "lectura": "Por encima de −1,78: perfil compatible con manipulación de beneficios; revisar a fondo."
+        },
+        {
+          "indicador": "Flujo operativo / beneficio neto (acumulado)",
+          "valor": "0,89x",
+          "lectura": "El beneficio se cobra solo en parte: mirar circulante y ajustes."
+        }
+      ]
+    },
+    "dcf": {
+      "proyeccion": [
+        {
+          "periodo": "FY2027e",
+          "ingresos": 414601,
+          "crecimiento_pct": 92,
+          "ebitda": 281929,
+          "margen_ebitda_pct": 68,
+          "amortizacion": 4975,
+          "ebit": 276953,
+          "impuestos": 44313,
+          "capex": 10780,
+          "variacion_circulante": 47927,
+          "fcff": 178909,
+          "fraccion": 0.3,
+          "factor": 0.982,
+          "vp": 52435
+        },
+        {
+          "periodo": "FY2028e",
+          "ingresos": 642631,
+          "crecimiento_pct": 55,
+          "ebitda": 424137,
+          "margen_ebitda_pct": 66,
+          "amortizacion": 8354,
+          "ebit": 415783,
+          "impuestos": 66525,
+          "capex": 16708,
+          "variacion_circulante": 52862,
+          "fcff": 288042,
+          "fraccion": 1,
+          "factor": 0.908,
+          "vp": 261338
+        },
+        {
+          "periodo": "FY2029e",
+          "ingresos": 739026,
+          "crecimiento_pct": 15,
+          "ebitda": 465587,
+          "margen_ebitda_pct": 63,
+          "amortizacion": 10346,
+          "ebit": 455240,
+          "impuestos": 72838,
+          "capex": 19215,
+          "variacion_circulante": 16708,
+          "fcff": 356825,
+          "fraccion": 1,
+          "factor": 0.804,
+          "vp": 286973
+        },
+        {
+          "periodo": "FY2030e",
+          "ingresos": 716855,
+          "crecimiento_pct": -3,
+          "ebitda": 422945,
+          "margen_ebitda_pct": 59,
+          "amortizacion": 11470,
+          "ebit": 411475,
+          "impuestos": 65836,
+          "capex": 17921,
+          "variacion_circulante": -12490,
+          "fcff": 351677,
+          "fraccion": 1,
+          "factor": 0.713,
+          "vp": 250427
+        },
+        {
+          "periodo": "FY2031e",
+          "ingresos": 752698,
+          "crecimiento_pct": 5,
+          "ebitda": 429038,
+          "margen_ebitda_pct": 57,
+          "amortizacion": 13549,
+          "ebit": 415489,
+          "impuestos": 66478,
+          "capex": 18817,
+          "variacion_circulante": 717,
+          "fcff": 343025,
+          "fraccion": 1,
+          "factor": 0.631,
+          "vp": 216436
+        },
+        {
+          "periodo": "FY2032e",
+          "ingresos": 797860,
+          "crecimiento_pct": 6,
+          "ebitda": 446802,
+          "margen_ebitda_pct": 56,
+          "amortizacion": 15159,
+          "ebit": 431642,
+          "impuestos": 69063,
+          "capex": 19947,
+          "variacion_circulante": 9936,
+          "fcff": 347857,
+          "fraccion": 1,
+          "factor": 0.559,
+          "vp": 194478
+        },
+        {
+          "periodo": "FY2033e",
+          "ingresos": 845732,
+          "crecimiento_pct": 6,
+          "ebitda": 465152,
+          "margen_ebitda_pct": 55,
+          "amortizacion": 16915,
+          "ebit": 448238,
+          "impuestos": 71718,
+          "capex": 21143,
+          "variacion_circulante": 10532,
+          "fcff": 361759,
+          "fraccion": 1,
+          "factor": 0.496,
+          "vp": 179278
+        },
+        {
+          "periodo": "FY2034e",
+          "ingresos": 888018,
+          "crecimiento_pct": 5,
+          "ebitda": 479530,
+          "margen_ebitda_pct": 54,
+          "amortizacion": 17760,
+          "ebit": 461770,
+          "impuestos": 73883,
+          "capex": 22200,
+          "variacion_circulante": 9303,
+          "fcff": 374143,
+          "fraccion": 1,
+          "factor": 0.439,
+          "vp": 164171
+        },
+        {
+          "periodo": "FY2035e",
+          "ingresos": 932419,
+          "crecimiento_pct": 5,
+          "ebitda": 494182,
+          "margen_ebitda_pct": 53,
+          "amortizacion": 18648,
+          "ebit": 475534,
+          "impuestos": 76085,
+          "capex": 23310,
+          "variacion_circulante": 9768,
+          "fcff": 385018,
+          "fraccion": 1,
+          "factor": 0.389,
+          "vp": 149694
+        },
+        {
+          "periodo": "FY2036e",
+          "ingresos": 969716,
+          "crecimiento_pct": 4,
+          "ebitda": 513949,
+          "margen_ebitda_pct": 53,
+          "amortizacion": 19394,
+          "ebit": 494555,
+          "impuestos": 79129,
+          "capex": 24243,
+          "variacion_circulante": 8205,
+          "fcff": 402372,
+          "fraccion": 1,
+          "factor": 0.345,
+          "vp": 138618
+        }
+      ],
+      "etapa2": null,
+      "suma_vp": 1893848,
+      "valor_terminal": 4200011,
+      "vp_terminal": 1362925,
+      "valor_empresa": 3256772,
+      "peso_terminal_pct": 42,
+      "valor_acciones": 3322704,
+      "valor_accion": 136.91,
+      "vt_gordon": 4200011,
+      "vt_multiplo": 7709242,
+      "multiplo_implicito": 8.2,
+      "g_implicito_pct": 7.27,
+      "metodo_terminal": "gordon",
+      "terminal_tabla": [
+        {
+          "concepto": "Método principal",
+          "valor": "Crecimiento a perpetuidad"
+        },
+        {
+          "concepto": "Crecimiento a perpetuidad",
+          "valor": "3,0 %"
+        },
+        {
+          "concepto": "Múltiplo EV/EBITDA de salida",
+          "valor": "15,0x"
+        },
+        {
+          "concepto": "Valor terminal (Gordon)",
+          "valor": "4.200.011"
+        },
+        {
+          "concepto": "Valor terminal (múltiplo)",
+          "valor": "7.709.242"
+        },
+        {
+          "concepto": "Múltiplo de salida implícito en Gordon",
+          "valor": "8,2x"
+        },
+        {
+          "concepto": "Crecimiento implícito en el múltiplo",
+          "valor": "7,27 %"
+        },
+        {
+          "concepto": "Peso del valor terminal en el valor empresa",
+          "valor": "42 %"
+        }
+      ],
+      "puente": [
+        {
+          "concepto": "Valor actual de los flujos proyectados",
+          "valor": "1.893.848"
+        },
+        {
+          "concepto": "Valor actual del valor terminal",
+          "valor": "1.362.925"
+        },
+        {
+          "concepto": "Valor empresa",
+          "valor": "3.256.772"
+        },
+        {
+          "concepto": "− Deuda financiera neta (con arrendamientos)",
+          "valor": "23.132"
+        },
+        {
+          "concepto": "− Minoritarios, pensiones y otros; + asociadas",
+          "valor": "42.800"
+        },
+        {
+          "concepto": "Valor de los fondos propios",
+          "valor": "3.322.704"
+        },
+        {
+          "concepto": "Acciones diluidas (millones)",
+          "valor": "24.270,0"
+        },
+        {
+          "concepto": "Valor por acción",
+          "valor": "136,91"
+        }
+      ],
+      "composicion": [
+        {
+          "parte": "Flujos proyectados",
+          "valor": 1893848
+        },
+        {
+          "parte": "Valor terminal",
+          "valor": 1362925
+        }
+      ],
+      "wacc": 12.87,
+      "ke": 12.92,
+      "kd_despues": 4.2,
+      "wacc_tabla": [
+        {
+          "concepto": "Tasa libre de riesgo",
+          "valor": "5,22 %"
+        },
+        {
+          "concepto": "Beta",
+          "valor": "1,40"
+        },
+        {
+          "concepto": "Prima de riesgo de mercado",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Prima adicional (país, tamaño, específica)",
+          "valor": "0,00 %"
+        },
+        {
+          "concepto": "Coste de los fondos propios",
+          "valor": "12,92 %"
+        },
+        {
+          "concepto": "Coste de la deuda antes de impuestos",
+          "valor": "5,00 %"
+        },
+        {
+          "concepto": "Tipo impositivo",
+          "valor": "16,00 %"
+        },
+        {
+          "concepto": "Coste de la deuda después de impuestos",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "Peso de la deuda (D / (D + E))",
+          "valor": "0,60 %"
+        },
+        {
+          "concepto": "WACC",
+          "valor": "12,87 %"
+        },
+        {
+          "concepto": "Prima de riesgo implícita del mercado (regla relativa)",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "WACC con la prima implícita del mercado",
+          "valor": "11,06 %"
+        }
+      ],
+      "potencial_pct": -40.1,
+      "sensibilidad": {
+        "eje_columnas": "Crecimiento a perpetuidad",
+        "columnas": [
+          "2,0 %",
+          "2,5 %",
+          "3,0 %",
+          "3,5 %",
+          "4,0 %"
+        ],
+        "filas": [
+          {
+            "wacc": "11,9 %",
+            "v0": 144.07,
+            "v1": 147.6,
+            "v2": 151.54,
+            "v3": 155.94,
+            "v4": 160.91
+          },
+          {
+            "wacc": "12,4 %",
+            "v0": 137.34,
+            "v1": 140.42,
+            "v2": 143.83,
+            "v3": 147.62,
+            "v4": 151.87
+          },
+          {
+            "wacc": "12,9 %",
+            "v0": 131.24,
+            "v1": 133.94,
+            "v2": 136.91,
+            "v3": 140.19,
+            "v4": 143.85
+          },
+          {
+            "wacc": "13,4 %",
+            "v0": 125.69,
+            "v1": 128.06,
+            "v2": 130.65,
+            "v3": 133.52,
+            "v4": 136.68
+          },
+          {
+            "wacc": "13,9 %",
+            "v0": 120.61,
+            "v1": 122.7,
+            "v2": 124.98,
+            "v3": 127.49,
+            "v4": 130.25
+          }
+        ]
+      },
+      "sensibilidad2": {
+        "columnas": [
+          "-2 pp",
+          "-1 pp",
+          "0 pp",
+          "+1 pp",
+          "+2 pp"
+        ],
+        "filas": [
+          {
+            "margen": "-2 pp",
+            "v0": 119.22,
+            "v1": 125.32,
+            "v2": 131.78,
+            "v3": 138.64,
+            "v4": 145.91
+          },
+          {
+            "margen": "-1 pp",
+            "v0": 121.5,
+            "v1": 127.73,
+            "v2": 134.35,
+            "v3": 141.36,
+            "v4": 148.79
+          },
+          {
+            "margen": "0 pp",
+            "v0": 123.78,
+            "v1": 130.15,
+            "v2": 136.91,
+            "v3": 144.07,
+            "v4": 151.67
+          },
+          {
+            "margen": "+1 pp",
+            "v0": 126.06,
+            "v1": 132.56,
+            "v2": 139.47,
+            "v3": 146.79,
+            "v4": 154.55
+          },
+          {
+            "margen": "+2 pp",
+            "v0": 128.33,
+            "v1": 134.98,
+            "v2": 142.03,
+            "v3": 149.5,
+            "v4": 157.43
+          }
+        ]
+      },
+      "rango_min": 128.06,
+      "rango_max": 147.62,
+      "inverso": {
+        "crecimiento_implicito_pct": 20.7,
+        "crecimiento_base_pct": 10.9,
+        "periodo": "FY2028e-FY2036e",
+        "margen_implicito_pct": null,
+        "margen_implicito_texto": "ningún margen hasta el 83 % justifica el precio",
+        "margen_base_pct": 53,
+        "rentabilidad_implicita_pct": 8.8
+      },
+      "sostenibilidad": {
+        "veredicto": "En parte",
+        "crecimiento_proyectado_pct": 19,
+        "tasa_reinversion_pct": 6,
+        "crecimiento_financiable_pct": null,
+        "roic_pct": 121.7,
+        "roic_incremental_historico_pct": 137.4,
+        "roic_implicito_pct": null,
+        "cuota_actual_pct": null,
+        "cuota_final_pct": null,
+        "puente": [
+          {
+            "periodo": "FY2027e",
+            "volumen_pct": 78,
+            "precio_pct": 14,
+            "otros_pct": 0,
+            "comentario": "Volumen (Blackwell Ultra, redes ×3) y precio por mezcla de sistemas completos NVL72; tres trimestres ya publicados o guiados [3, 4].",
+            "suma_pct": 92,
+            "crecimiento_pct": 92
+          },
+          {
+            "periodo": "FY2028e",
+            "volumen_pct": 43,
+            "precio_pct": 12,
+            "otros_pct": 0,
+            "comentario": "Volumen con el capex de 2027 (≈1 billón, +38 %) y Rubin; precio por mezcla de sistemas. Respaldado por 87.000 M de compras comprometidas para FY2028 [7, 25].",
+            "suma_pct": 55,
+            "crecimiento_pct": 55
+          },
+          {
+            "periodo": "FY2029e",
+            "volumen_pct": 12,
+            "precio_pct": 3,
+            "otros_pct": 0,
+            "comentario": "Volumen moderado: el capex de IA crece menos y los ASIC ganan parte de la inferencia; compromisos de 88.000 M para FY2029 [7].",
+            "suma_pct": 15,
+            "crecimiento_pct": 15
+          },
+          {
+            "periodo": "FY2030e",
+            "volumen_pct": -5,
+            "precio_pct": 2,
+            "otros_pct": 0,
+            "comentario": "Pausa de digestión del capex (volumen −5 %), como en los ciclos de 2019 y 2023; precio estable.",
+            "suma_pct": -3,
+            "crecimiento_pct": -3
+          },
+          {
+            "periodo": "FY2031e",
+            "volumen_pct": 4,
+            "precio_pct": 1,
+            "otros_pct": 0,
+            "comentario": "Vuelta a un crecimiento moderado con la renovación de la base instalada.",
+            "suma_pct": 5,
+            "crecimiento_pct": 5
+          }
+        ],
+        "texto": "La proyección apenas necesita inversión neta de la amortización (reinversión acumulada de 211.182 M, el 6 % del NOPAT, con un capex bruto medio del 2,5 % de las ventas). En un negocio de activos ligeros, el crecimiento medio del 19,0 % tiene que salir de subir precios y de ganar volumen sin capital nuevo, y la prueba es el poder de precios y la cuota; en un comprador en serie, la amortización es de intangibles comprados y la prueba es el capex bruto (las compras) frente al crecimiento comprado.",
+        "tabla": [
+          {
+            "concepto": "Crecimiento medio de ingresos proyectado",
+            "valor": "19,0 %"
+          },
+          {
+            "concepto": "Capex bruto medio (incluidas compras si van como inversión)",
+            "valor": "2,5 % de las ventas"
+          },
+          {
+            "concepto": "Reinversión neta acumulada (capex − amortización + circulante)",
+            "valor": "211.182 M (6 % del NOPAT)"
+          }
+        ]
+      }
+    },
+    "escenarios": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "narrativa": "El capex de IA se frena en 2027 porque los laboratorios no consiguen financiación y los hiperescaladores priorizan sus chips propios: ingresos de FY2028e +25 % y FY2029e −10 %, margen EBITDA del 55 % en FY2029e por la caída de precios y los compromisos de compra ya firmados. Le pasó a Nvidia en FY2023 (beneficio −55 %) y a Cisco en 2001.",
+        "crecimiento_medio_pct": 3,
+        "margen_final_pct": 45,
+        "wacc_pct": 12.9,
+        "valor": 70.04,
+        "potencial_pct": -69.4
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "narrativa": "El ciclo de inversión sigue en 2027 y se modera en 2028: ingresos de 642.631 M en FY2028e y 739.026 M en FY2029e, pausa en FY2030e y crecimiento del 4-6 % después, con un margen EBITDA que baja del 68 % al 53 %.",
+        "crecimiento_medio_pct": 10.9,
+        "margen_final_pct": 53,
+        "wacc_pct": 12.9,
+        "valor": 136.91,
+        "potencial_pct": -40.1
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "narrativa": "La demanda de inferencia mantiene el ritmo del consenso: +70 % en FY2028e y +30 % en FY2029e (≈916.000 M, cerca de los 928.721 M del consenso), sin pausa y con margen del 66 % en FY2029e.",
+        "crecimiento_medio_pct": 16,
+        "margen_final_pct": 56,
+        "wacc_pct": 12.9,
+        "valor": 195.07,
+        "potencial_pct": -14.6
+      }
+    ],
+    "valor_ponderado": 134.73,
+    "potencial_ponderado_pct": -41,
+    "comparables": {
+      "tabla": [
+        {
+          "nombre": "Nvidia",
+          "ticker": "NVDA",
+          "pais": "US",
+          "capitalizacion": 5546180,
+          "ev_ventas": 18.09,
+          "ev_ebitda_ltm": 27.4,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 16.3,
+          "crecimiento_pct": 80.6,
+          "margen_ebitda_pct": 66,
+          "roic_pct": 121.7,
+          "dn_ebitda": -0.1,
+          "fcf_yield_pct": 2.3,
+          "es_objetivo": true
+        },
+        {
+          "nombre": "TSMC",
+          "ticker": "TSM",
+          "pais": "TW",
+          "capitalizacion": null,
+          "ev_ventas": 14.33,
+          "ev_ebitda_ltm": 19.7,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 19.5,
+          "crecimiento_pct": 24.5,
+          "margen_ebitda_pct": 72.7,
+          "roic_pct": 50.5,
+          "dn_ebitda": -0.8,
+          "fcf_yield_pct": 1.5,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "ASML",
+          "ticker": "ASML",
+          "pais": "NL",
+          "capitalizacion": null,
+          "ev_ventas": 14.43,
+          "ev_ebitda_ltm": 35.4,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 30.7,
+          "crecimiento_pct": 15.1,
+          "margen_ebitda_pct": 40.8,
+          "roic_pct": 89,
+          "dn_ebitda": -0.6,
+          "fcf_yield_pct": 1.9,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Applied Materials",
+          "ticker": "AMAT",
+          "pais": "US",
+          "capitalizacion": null,
+          "ev_ventas": 14.76,
+          "ev_ebitda_ltm": 46.5,
+          "ev_ebitda_ntm": 25.1,
+          "per_ntm": 29.3,
+          "crecimiento_pct": 27.5,
+          "margen_ebitda_pct": 31.7,
+          "roic_pct": 35.64,
+          "dn_ebitda": -0.22,
+          "fcf_yield_pct": 1.4,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Lam Research",
+          "ticker": "LRCX",
+          "pais": "US",
+          "capitalizacion": null,
+          "ev_ventas": 17.91,
+          "ev_ebitda_ltm": 47.5,
+          "ev_ebitda_ntm": 27.9,
+          "per_ntm": 33.1,
+          "crecimiento_pct": 43,
+          "margen_ebitda_pct": 37.7,
+          "roic_pct": 70.07,
+          "dn_ebitda": -0.21,
+          "fcf_yield_pct": 1.2,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "KLA",
+          "ticker": "KLAC",
+          "pais": "US",
+          "capitalizacion": null,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": 32.65,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 31.85,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Texas Instruments",
+          "ticker": "TXN",
+          "pais": "US",
+          "capitalizacion": 260029,
+          "ev_ventas": 13.49,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 30,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": 22.3,
+          "dn_ebitda": null,
+          "fcf_yield_pct": 2.5,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "AMD",
+          "ticker": "AMD",
+          "pais": "US",
+          "capitalizacion": null,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 39.5,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Broadcom",
+          "ticker": "AVGO",
+          "pais": "US",
+          "capitalizacion": null,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 20.83,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Marvell",
+          "ticker": "MRVL",
+          "pais": "US",
+          "capitalizacion": null,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 48,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        }
+      ],
+      "estadisticos": [
+        {
+          "estadistico": "Mediana",
+          "ev_ventas": 14.4,
+          "ev_ebitda_ltm": 35.4,
+          "ev_ebitda_ntm": 26.5,
+          "per_ntm": 30.7,
+          "crecimiento_pct": 26,
+          "margen_ebitda_pct": 39.3,
+          "roic_pct": 50.5,
+          "dn_ebitda": -0.4,
+          "fcf_yield_pct": 1.5
+        },
+        {
+          "estadistico": "Media",
+          "ev_ventas": 15,
+          "ev_ebitda_ltm": 36.4,
+          "ev_ebitda_ntm": 26.5,
+          "per_ntm": 31.4,
+          "crecimiento_pct": 27.5,
+          "margen_ebitda_pct": 45.7,
+          "roic_pct": 53.5,
+          "dn_ebitda": -0.5,
+          "fcf_yield_pct": 1.7
+        },
+        {
+          "estadistico": "Percentil 25",
+          "ev_ventas": 14.3,
+          "ev_ebitda_ltm": 32.7,
+          "ev_ebitda_ntm": 25.8,
+          "per_ntm": 29.3,
+          "crecimiento_pct": 22.2,
+          "margen_ebitda_pct": 36.2,
+          "roic_pct": 35.6,
+          "dn_ebitda": -0.6,
+          "fcf_yield_pct": 1.4
+        },
+        {
+          "estadistico": "Percentil 75",
+          "ev_ventas": 14.8,
+          "ev_ebitda_ltm": 46.5,
+          "ev_ebitda_ntm": 27.2,
+          "per_ntm": 33.1,
+          "crecimiento_pct": 31.4,
+          "margen_ebitda_pct": 48.8,
+          "roic_pct": 70.1,
+          "dn_ebitda": -0.2,
+          "fcf_yield_pct": 1.9
+        }
+      ],
+      "implicito": [
+        {
+          "metodo": "EV/EBITDA últimos 12 meses",
+          "metrica_empresa": 200000,
+          "multiplo_p25": 32.7,
+          "multiplo_mediana": 35.4,
+          "multiplo_p75": 46.5,
+          "multiplos": "32,6x / 35,4x / 46,5x",
+          "valor_p25": 271.77,
+          "valor_mediana": 294.43,
+          "valor_p75": 385.91,
+          "potencial_pct": 28.8
+        },
+        {
+          "metodo": "PER próximos 12 meses",
+          "metrica_empresa": 13.99,
+          "multiplo_p25": 29.3,
+          "multiplo_mediana": 30.7,
+          "multiplo_p75": 33.1,
+          "multiplos": "29,3x / 30,7x / 33,1x",
+          "valor_p25": 409.85,
+          "valor_mediana": 429.44,
+          "valor_p75": 463.01,
+          "potencial_pct": 87.9
+        },
+        {
+          "metodo": "EV/Ventas últimos 12 meses",
+          "metrica_empresa": 302933,
+          "multiplo_p25": 14.3,
+          "multiplo_mediana": 14.4,
+          "multiplo_p75": 14.8,
+          "multiplos": "14,3x / 14,4x / 14,8x",
+          "valor_p25": 181.58,
+          "valor_mediana": 182.83,
+          "valor_p75": 186.95,
+          "potencial_pct": -20
+        }
+      ],
+      "regresion": null,
+      "n": 9
+    },
+    "transacciones": null,
+    "suma_partes": null,
+    "multiplos_historicos": [
+      {
+        "metrica": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+        "campo": "ev_ebitda_ltm",
+        "actual": 27.4,
+        "media": 39.7,
+        "minimo": 34.8,
+        "maximo": 54.4,
+        "percentil": 0,
+        "prima_pct": -31,
+        "anios": 4
+      },
+      {
+        "metrica": "PER últimos 12 meses (cierre de cada año)",
+        "campo": "per_ltm",
+        "actual": 28.9,
+        "media": 46.3,
+        "minimo": 39,
+        "maximo": 62.8,
+        "percentil": 0,
+        "prima_pct": -38,
+        "anios": 4
+      }
+    ],
+    "multiplos_serie": [
+      {
+        "anio": "FY2022",
+        "multiplo": 54.4,
+        "media": 39.7
+      },
+      {
+        "anio": "FY2023",
+        "multiplo": 68.5,
+        "media": 39.7
+      },
+      {
+        "anio": "FY2024",
+        "multiplo": 44,
+        "media": 39.7
+      },
+      {
+        "anio": "FY2025",
+        "multiplo": 35.3,
+        "media": 39.7
+      },
+      {
+        "anio": "FY2026",
+        "multiplo": 34.8,
+        "media": 39.7
+      }
+    ],
+    "multiplos_titulo": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+    "consenso_vs_propio": [
+      {
+        "periodo": "FY2027e",
+        "ingresos_propio": 414601,
+        "ingresos_consenso": 418756,
+        "ingresos_dif_pct": -1,
+        "ebitda_propio": 281929,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      },
+      {
+        "periodo": "FY2028e",
+        "ingresos_propio": 642631,
+        "ingresos_consenso": 709551,
+        "ingresos_dif_pct": -9.4,
+        "ebitda_propio": 424137,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      },
+      {
+        "periodo": "FY2029e",
+        "ingresos_propio": 739026,
+        "ingresos_consenso": 928721,
+        "ingresos_dif_pct": -20.4,
+        "ebitda_propio": 465587,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      }
+    ],
+    "gobierno": {
+      "n_consejeros": 10,
+      "independientes_pct": 90,
+      "antiguedad_media": 16.8,
+      "composicion": [
+        {
+          "tipo": "Ejecutivo",
+          "num": 1
+        },
+        {
+          "tipo": "Independiente",
+          "num": 9
+        }
+      ],
+      "checklist": [
+        {
+          "criterio": "Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)",
+          "resultado": "Cumple",
+          "valor": "90 %"
+        },
+        {
+          "criterio": "Presidencia sin vínculo familiar ni profesional con el accionista de control",
+          "resultado": "Cumple",
+          "valor": "Sin control"
+        },
+        {
+          "criterio": "Presidente no ejecutivo, o consejero coordinador independiente",
+          "resultado": "Cumple",
+          "valor": "No ejecutivo"
+        },
+        {
+          "criterio": "Comisión de auditoría con mayoría de independientes y presidida por uno",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Ningún consejero «otro externo» con más de 12 años",
+          "resultado": "Cumple",
+          "valor": "Ninguno"
+        },
+        {
+          "criterio": "Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses",
+          "resultado": "Cumple",
+          "valor": "0 cambios"
+        },
+        {
+          "criterio": "Peor voto en contra sobre remuneración (3 juntas) ≤ 20 %",
+          "resultado": "Cumple",
+          "valor": "6,4 % en contra"
+        },
+        {
+          "criterio": "Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)",
+          "resultado": "No cumple",
+          "valor": "No"
+        },
+        {
+          "criterio": "Una acción, un voto, sin blindajes ni límites de voto estatutarios",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Sin operaciones vinculadas relevantes",
+          "resultado": "Cumple",
+          "valor": "No hay"
+        },
+        {
+          "criterio": "Auditor con 10 años o menos en el cargo",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Opinión de auditoría sin salvedades",
+          "resultado": "Cumple",
+          "valor": "Favorable"
+        },
+        {
+          "criterio": "Directivos compradores netos en 12 meses (o sin ventas relevantes)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        }
+      ],
+      "puntuacion": "10 de 13 (2 sin dato)",
+      "puntuacion_pct": 77,
+      "compras_insiders": 0,
+      "ventas_insiders": 0
+    },
+    "competidores_margen": [
+      {
+        "nombre": "Nvidia",
+        "margen_ebit_pct": 60.4
+      },
+      {
+        "nombre": "AMD",
+        "margen_ebit_pct": 7.4
+      },
+      {
+        "nombre": "Broadcom",
+        "margen_ebit_pct": 26.1
+      },
+      {
+        "nombre": "Intel",
+        "margen_ebit_pct": -22
+      },
+      {
+        "nombre": "Huawei (Ascend)",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Alphabet (TPU)",
+        "margen_ebit_pct": null
+      }
+    ],
+    "sintesis": {
+      "formato_eje": "#,##0",
+      "rangos": [
+        {
+          "metodo": "Cotización 52 semanas",
+          "etiqueta": "Cotización 52 semanas (164,27 – 243,37)",
+          "min": 164.27,
+          "central": 228.52,
+          "max": 243.37,
+          "gris": true
+        },
+        {
+          "metodo": "Precio objetivo de los analistas",
+          "etiqueta": "Precio objetivo de los analistas (181,80 – 540,75)",
+          "min": 181.8,
+          "central": 321.3,
+          "max": 540.75,
+          "gris": true
+        },
+        {
+          "metodo": "Comparables: PER NTM",
+          "etiqueta": "Comparables: PER NTM (409,85 – 463,01)",
+          "min": 409.85,
+          "central": 429.44,
+          "max": 463.01,
+          "gris": false
+        },
+        {
+          "metodo": "DCF (WACC y g ± 0,5)",
+          "etiqueta": "DCF (WACC y g ± 0,5) (128,06 – 147,62)",
+          "min": 128.06,
+          "central": 136.91,
+          "max": 147.62,
+          "gris": false
+        },
+        {
+          "metodo": "Escenarios (bajista – alcista)",
+          "etiqueta": "Escenarios (bajista – alcista) (70,04 – 195,07)",
+          "min": 70.04,
+          "central": 134.73,
+          "max": 195.07,
+          "gris": false
+        },
+        {
+          "metodo": "DCF con la prima del mercado",
+          "etiqueta": "DCF con la prima implícita del mercado (4,2 %)",
+          "min": 156.76,
+          "central": 166.05,
+          "max": 176.59
+        },
+        {
+          "metodo": "Precio actual",
+          "etiqueta": "Precio actual (228,52)",
+          "min": 227.38,
+          "central": 228.52,
+          "max": 229.66,
+          "gris": true
+        }
+      ],
+      "tabla": [
+        {
+          "metodo": "DCF",
+          "valor": 136.91,
+          "peso_pct": 40,
+          "potencial_pct": -40.1
+        },
+        {
+          "metodo": "Comparables (mediana EV/EBITDA y PER)",
+          "valor": 429.44,
+          "peso_pct": 30,
+          "potencial_pct": 87.9
+        },
+        {
+          "metodo": "Escenarios ponderados",
+          "valor": 134.73,
+          "peso_pct": 30,
+          "potencial_pct": -41
+        }
+      ],
+      "valor_objetivo": 224.02,
+      "potencial_pct": -2
+    },
+    "fuentes": {
+      "n_fuentes": 53,
+      "n_primarias": 12,
+      "por_tipo": [
+        {
+          "tipo": "Primaria",
+          "num": 12
+        },
+        {
+          "tipo": "Prensa",
+          "num": 19
+        },
+        {
+          "tipo": "Datos de mercado",
+          "num": 13
+        },
+        {
+          "tipo": "Analistas",
+          "num": 2
+        },
+        {
+          "tipo": "Sectorial",
+          "num": 2
+        },
+        {
+          "tipo": "Foros y redes",
+          "num": 5
+        }
+      ],
+      "n_citadas": 50,
+      "citas_sin_fuente": [],
+      "fuentes_sin_citar": [
+        "44",
+        "45",
+        "46"
+      ]
+    },
+    "controles": [
+      {
+        "control": "Geografías suman 100 %",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "DCF inverso calculable",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Puente de ingresos (volumen + precio + otros) = crecimiento del DCF",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "resultado": "OK",
+        "detalle": "Supuesto 26,0 % frente a 27,7 % real: genera una variación de circulante de 47.927 M en el primer año. Converge de forma gradual."
+      },
+      {
+        "control": "Peso del valor terminal ≤ 80 % del valor empresa",
+        "resultado": "OK",
+        "detalle": "42 %."
+      },
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "resultado": "OK",
+        "detalle": "3,00 %."
+      },
+      {
+        "control": "Caja proyectada coherente con la histórica",
+        "resultado": "Explicado",
+        "detalle": "El DCF proyecta 274.592 M de flujo libre medio en sus tres primeros años, frente a 61.525 M de media real en los tres últimos: justifica el salto (circulante, inversión, márgenes) o ajusta los supuestos. Explicación: El salto es real: los ingresos de FY2027e (414.601 M) casi duplican los de FY2026 con un margen EBITDA del 68 %; la guía del 3T (108.000 M) y los 302.933 M de los últimos doce meses lo respaldan. La media histórica de tres años incluye FY2024, con ventas de 60.922 M."
+      },
+      {
+        "control": "Probabilidades de los escenarios suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 5 comparables",
+        "resultado": "OK",
+        "detalle": "9 comparables."
+      },
+      {
+        "control": "Múltiplos LTM y NTM de cada comparable coherentes",
+        "resultado": "Explicado",
+        "detalle": "Applied Materials (46,5x → 25,1x): el salto implica un crecimiento del EBITDA que no cuadra con el de las ventas. ¿EBITDA de proveedores distintos, o un cambio de perímetro? Explicación: Applied Materials viene de la nota de ASML del 14-oct, con EBITDA LTM y NTM de proveedores distintos; su PER NTM (29,3x) es el que usamos y está en línea con el de KLA y Lam."
+      },
+      {
+        "control": "Pesos de la síntesis suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Múltiplos del objetivo a 12 m según la regla común",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Objetivo 12 m frente al consenso",
+        "resultado": "OK",
+        "detalle": "El base se separa un -21,9 % del objetivo medio de los analistas: explícalo en diferencia_consenso (nunca se acerca la cifra)."
+      },
+      {
+        "control": "Recomendación coherente con la regla de decisión",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "La síntesis explica la convicción",
+        "resultado": "OK",
+        "detalle": "La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría."
+      },
+      {
+        "control": "Al menos 25 fuentes",
+        "resultado": "OK",
+        "detalle": "53 fuentes (12 primarias)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "resultado": "OK",
+        "detalle": "12."
+      },
+      {
+        "control": "Toda cita [n] existe en fuentes",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Fuentes sin citar ≤ 15 %",
+        "resultado": "OK",
+        "detalle": "Sin citar: 44, 45, 46."
+      }
+    ],
+    "controles_resumen": "17 de 19 controles correctos y 2 explicados"
+  }
+}
