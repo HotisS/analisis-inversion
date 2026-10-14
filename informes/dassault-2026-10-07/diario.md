@@ -65,3 +65,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 2. La prueba de cuota necesita el mercado en el último año explícito, pero las fuentes de mercado rara vez llegan a diez años; el prompt no dice cómo extrapolar (aquí, congelar en el último año previsto como cota conservadora).
 3. «Crecimiento medio proyectado» (4,1 %, toda la proyección) y el crecimiento base del DCF inverso (4,3 %, años no fijos) conviven en el informe; fácil mezclarlos en la justificación.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 30,60 EUR, rentabilidad 43,6 %, señal Comprar (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +28,1 % → +9,3 %, base +10,3 %, señal Mantener (`revision-12m-2026-10-13.md`).
