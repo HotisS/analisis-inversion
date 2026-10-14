@@ -1,0 +1,4545 @@
+{
+  "meta": {
+    "fecha_corte": "2026-10-14",
+    "divisa": "USD",
+    "divisa_cotizacion": "USD",
+    "tipo_cambio": 1,
+    "unidades": "millones",
+    "cierre_ejercicio_mes": 12,
+    "etiqueta_ejercicio": "fin",
+    "normas_contables": "US GAAP",
+    "formato_cuenta": "funcion",
+    "limitaciones": "Análisis hecho desde la nube, donde la red solo deja buscar en la web: no se han podido abrir el 10-K, los 10-Q ni el proxy, ni ejecutar descargar.mjs y bolsa.mjs. Las cifras salen de los extractos de búsqueda de los comunicados de resultados (8-K), de los 10-K citados por la búsqueda y de proveedores de datos (Macrotrends, Barchart, edgar.tools, Stockopedia), con la URL de cada uno; varias cifras trimestrales son redondeadas o derivadas por diferencia y están marcadas. Precio de la sesión del 13-oct-2026 (Robinhood), contrastado con los cierres del 9 y 12 de octubre (277,24-280,56 USD). Comparables, transacciones y betas reutilizados de los informes de ICE (8-oct) y Deutsche Börse (14-oct) del repo, sin actualizar a la fecha de corte. Se usa la línea de clase A de Nasdaq (CME); las acciones de clase B y las preferentes de Google no cotizan y se suman al denominador (364,5 M). Balance sin desglose corriente por las garantías de los miembros (unos 160.000 M), que inflan el activo y el pasivo. Confianza general: media en cuentas y valoración, baja en gobierno y bolsa.",
+    "controles_explicados": [
+      {
+        "control": "Cambio de perímetro declarado (2025)",
+        "explicacion": "No hubo compras: el activo total sube de 137.447 a 198.424 M porque crecen las garantías en efectivo que depositan los miembros de la cámara (con su pasivo igual), no el negocio."
+      }
+    ],
+    "huecos": [
+      {
+        "seccion": "balance",
+        "campo": "Activo y pasivo corriente, clientes, proveedores y reservas",
+        "tipo": "Complemento",
+        "intentos": "1) 10-K 2025 en EDGAR (no abre desde la nube); 2) búsqueda de balance anual en Barchart, Kalkine y Stockopedia (solo totales); 3) derivar sin las garantías de los miembros: no hay desglose fiable",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "negocio",
+        "campo": "geografias",
+        "tipo": "Complemento",
+        "intentos": "1) nota de ingresos por geografía del 10-K (no abre); 2) búsqueda de ingresos por región; 3) solo hay volumen fuera de EE. UU. (≈ 30 % del ADV), no ingresos",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "trimestres",
+        "campo": "EBITDA y margen trimestral",
+        "tipo": "Complemento",
+        "intentos": "1) comunicados trimestrales (solo cifras redondeadas en los extractos); 2) Benzinga y Zacks; 3) margen operativo ajustado solo del 2T26 (69,5 %)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sector",
+        "campo": "Serie del tamaño del mercado en dólares, TCAC y CR5",
+        "tipo": "Complemento",
+        "intentos": "1) FIA (solo contratos, sin ingresos del sector); 2) búsqueda de ingresos agregados de bolsas de derivados; 3) suma de ingresos de los competidores (faltan Cboe, Nasdaq y Eurex por separado)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "competencia",
+        "campo": "cuota_pct",
+        "tipo": "Núcleo",
+        "intentos": "1) FIA por bolsa (ranking no accesible); 2) cuota en futuros por contratos (≈ 23 %, estimación propia, en el texto); 3) cuota en ingresos no publicada",
+        "decision": "Omitido; la cuota estimada en contratos va en el texto"
+      },
+      {
+        "seccion": "esg",
+        "campo": "calificaciones",
+        "tipo": "Complemento",
+        "intentos": "1) MSCI ESG (no abre); 2) Sustainalytics; 3) informe de sostenibilidad de CME",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "Consejo completo (nombres, tipo, antigüedad y comisiones)",
+        "tipo": "Núcleo",
+        "intentos": "1) proxy DEF 14A de 2026 en EDGAR (no abre desde la nube); 2) búsqueda del consejo en la web de inversores; 3) agregadores (Simply Wall St, PitchBook): sin lista fiable",
+        "decision": "Omitido; solo los consejeros verificados"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "Participaciones significativas (13G) y autocartera",
+        "tipo": "Complemento",
+        "intentos": "1) 13G en EDGAR (no abre); 2) búsqueda de Vanguard y BlackRock en CME; 3) MarketBeat (solo el agregado institucional)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "Métricas del variable y consejero coordinador",
+        "tipo": "Complemento",
+        "intentos": "1) proxy 2026 (no abre); 2) proxy 2025 (no abre); 3) extractos de búsqueda sin el dato",
+        "decision": "Omitido (valores en null)"
+      },
+      {
+        "seccion": "bolsa",
+        "campo": "Rentabilidades totales de la acción, del índice y del sector; volatilidad, caída máxima y posición corta",
+        "tipo": "Complemento",
+        "intentos": "1) bolsa.mjs sin red (solo WebSearch); 2) búsqueda de rentabilidades en Chartrow y Macrotrends (solo precios de cierre anuales); 3) informe de ICE del repo (solo beta de CME)",
+        "decision": "Omitido; se dan rentabilidades de precio calculadas con los cierres anuales"
+      },
+      {
+        "seccion": "consenso",
+        "campo": "EBITDA y EBIT del consenso",
+        "tipo": "Complemento",
+        "intentos": "1) MarketScreener (WebFetch no funciona); 2) TickFlow y Zacks (solo BPA e ingresos); 3) FN2 (solo BPA e ingresos)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sentimiento",
+        "campo": "Reddit y Stocktwits",
+        "tipo": "Complemento",
+        "intentos": "1) búsqueda de hilos de r/stocks, r/dividends y r/ValueInvesting sobre CME en 2026; 2) búsqueda de Stocktwits y Seeking Alpha con «perpetual futures»; 3) WebFetch a la API de Stocktwits y al RSS de Seeking Alpha (no disponibles desde la nube)",
+        "decision": "Omitido; se usan artículos con debate y prensa especializada"
+      },
+      {
+        "seccion": "calidad",
+        "campo": "Años del auditor y cambios de criterio contable",
+        "tipo": "Complemento",
+        "intentos": "1) 10-K 2025, nota del auditor (no abre desde la nube); 2) proxy 2026 (ratificación del auditor); 3) búsqueda de la antigüedad de EY en CME",
+        "decision": "Omitido"
+      }
+    ]
+  },
+  "identificacion": {
+    "nombre": "CME Group Inc.",
+    "nombre_corto": "CME Group",
+    "ticker": "CME",
+    "isin": "US12572Q1058",
+    "mercado": "Nasdaq Global Select Market",
+    "indice_referencia": "S&P 500",
+    "pais": "Estados Unidos",
+    "pais_iso": "US",
+    "sector": "Finanzas",
+    "industria": "Bolsas y datos financieros (Financial Exchanges & Data)",
+    "sede": "Chicago, Illinois (EE. UU.)",
+    "fundacion": "1898",
+    "empleados": null,
+    "web": "www.cmegroup.com",
+    "precio": 278.08,
+    "fecha_precio": "2026-10-13",
+    "acciones": 364.5,
+    "capitalizacion_publicada": 101300,
+    "free_float_pct": null,
+    "max_52s": 329.16,
+    "min_52s": 218.31,
+    "volumen_medio_diario": "≈ 2,3 M de acciones/día (30 días, agosto de 2026) ≈ 620 M USD/día",
+    "proximos_resultados": "2026-10-21"
+  },
+  "resumen": {
+    "recomendacion": "Mantener",
+    "conviccion": "Baja",
+    "justificacion_recomendacion": null,
+    "horizonte": "12 meses",
+    "sintesis": "**La recomendación y por qué.** Mantener, con convicción baja. Nuestro objetivo a 12 meses es de 293,06 USD (nuestro BPA de 2028e por el PER de la regla común), con una rentabilidad del 9,5 % ponderada y del 8,2 % en el base, dividendo incluido; el objetivo medio de los analistas, 291,81 USD, cae dentro de nuestro rango. El valor intrínseco es de 245,93 USD, un 11,6 % por debajo del precio de 278,08 USD. A un año, la asimetría es favorable (2,54: el bajista pierde un 4,5 % y el alcista gana un 25,9 %), pero no llega al 15 % que pide una compra y el DCF no cubre el precio. La convicción es baja porque las reglas discrepan: con nuestro WACC sería Vender y con la prima del mercado, Mantener; subiría con un precio por debajo de 245,93 USD o con un volumen que sostenga crecimientos del 6-7 %.\n\n**El negocio.** CME tiene el mejor foso de la infraestructura de mercados: más del 99 % de los futuros de tipos de EE. UU., contratos de referencia en índices, petróleo, gas y oro, y un margen EBITDA del 69,9 %, frente al 48-67 % de sus comparables [1, 36, 39]. El ROIC del 11,8 % supera al WACC (8,92 %) en unos 3 puntos porque el capital es casi todo fondo de comercio de CBOT y NYMEX; el negocio no necesita capital para crecer. **La calidad sostiene el crecimiento proyectado (veredicto: Sí)**: el 4,8 % anual sale de volumen y tarifas, por debajo de lo logrado en 2019-2025, sin inversión neta.\n\n**Sector y ciclo.** El volumen está en máximos (28,1 M de contratos diarios en 2025 y 29,4 M en el 3T26, +16 %) por la volatilidad de tipos, la deuda pública y la geopolítica [1, 15]. La amenaza es regulatoria: la CFTC aprobó en mayo los perpetuos de Kalshi y estudia uno sobre el S&P 500; CME la ha demandado [29, 38].\n\n**Finanzas.** Ingresos de 6.521 M en 2025 (+6,4 %), un 8,6 % anual desde 2021 sin compras; FCF de 4.193,6 M y deuda neta de 0,2 veces el EBITDA. Una quinta parte del beneficio antes de impuestos (1.101 M) no es operativa: garantías reinvertidas y S&P DJI, sensibles a los tipos [2]. Lo valoramos en el puente en 9.400 M (estimación propia), la cifra más incierta del informe.\n\n**Equipo y gobierno.** Neutro. Relevo interno ordenado (Fitzpatrick, consejera delegada en marzo de 2027) [41], pero el presidente seguirá siendo ejecutivo, las acciones de clase B eligen consejeros aparte y Duffy vendió 50.000 acciones en 2026 [47, 48].\n\n**Valoración.** El DCF da 216,51 USD y el DCF inverso explica el precio: hace falta crecer un 9,3 % anual en 2027e-2033e (base 4,4 %) o aceptar una rentabilidad del 7,5 %, por debajo del WACC y del 8,0 % que pide el mercado. Los comparables por PER dan 304,70 USD: el mercado paga a CME como un activo sin riesgo (beta de 0,20). No discrepamos del consenso en beneficio (12,87 USD en 2027e frente a 12,89); discrepamos en la tasa de descuento. Con la prima del mercado, el valor sube a 267,24 USD.\n\n**Riesgos y catalizadores.** Perpetuos sobre índices (bajista: −4,5 % a 12 meses y −37,7 % de valor intrínseco), tipos más bajos con mercados tranquilos y el beneficio de las garantías. Catalizadores: resultados del 21-oct, sentencia contra la CFTC, dividendo variable de febrero y relevo de marzo [41, 80]. Los foros están divididos y ya hablan de comprar la caída [72].\n\n**Qué cambiaría la decisión.** Compraríamos por debajo de 245,93 USD (el valor intrínseco) y venderíamos por encima de 338,23 USD. Pasaríamos a Vender si la CFTC aprueba perpetuos sobre el S&P 500 y el ADV de índices cae dos trimestres; revisaríamos el caso base al alza si el ADV de 2027 crece más de un 8 %.",
+    "tesis": "CME es el mayor mercado de derivados del mundo y la cámara de compensación de referencia en tipos de interés, índices, energía y metales de EE. UU.: más del 99 % de los futuros de tipos, un margen EBITDA del 69,9 % y un FCF de 4.193,6 M en 2025 sin necesitar capital [1, 2, 36]. Gana con la volatilidad y con los tipos altos, y reparte casi todo en dividendos (11,15 USD por acción por 2025) [16].\n\nEl precio (278,08 USD) descuenta mucho: el DCF inverso pide un crecimiento del 9,3 % anual en 2027e-2033e o una rentabilidad del 7,5 %, por debajo de nuestro WACC del 8,92 %. Por múltiplos cotiza a 21,8 veces el beneficio de los próximos 12 meses, por debajo de la mediana de los comparables (23,9) y en línea con su historia.\n\nEl mercado acierta en la calidad y cobra poco por el riesgo: el foso en institucionales es real, pero los perpetuos y una bajada de tipos pueden quitarle crecimiento y la parte no operativa del beneficio. Para invertir hay que creer que CME crecerá al 6-7 % anual, como en 2021-2025, y no al 4-5 % de largo plazo; a 12 meses, el múltiplo da un 9,5 % con dividendo.",
+    "vision_diferencial": {
+      "mercado_descuenta": "Que CME es un activo de riesgo muy bajo, casi un bono con crecimiento: lo descuenta al 7,5 % y le paga 21-24 veces el beneficio. Tras la caída de junio, que los perpetuos no tocan el negocio institucional.",
+      "nuestra_vision": "Coincidimos en el beneficio (12,87 USD en 2027e frente a 12,89 del consenso) y en el foso institucional, pero no en el riesgo: una quinta parte del beneficio antes de impuestos depende de los tipos y la amenaza de los perpetuos sobre índices sigue abierta. Con un WACC del 8,9 %, el valor es de 216,51-245,93 USD.",
+      "por_que": "El volumen de 2021-2025 se apoyó en la subida de tipos más rápida en cuarenta años; el beneficio de las garantías pasó de 609,9 M a 1.101 M en un año [2]. Ninguno de los dos es estructural."
+    },
+    "a_favor": [
+      "**Foso en tipos de interés**: más del 99 % de los futuros de tipos de EE. UU. pese a FMX [36].",
+      "**Volumen récord**: 29,4 M de contratos diarios en el 3T26 (+16 %) y 31,8 M en septiembre (+22 %) [15].",
+      "**Caja y reparto**: FCF de 4.193,6 M en 2025 y dividendo de 11,15 USD por acción (≈ 4 %) [16].",
+      "**Sin deuda relevante**: deuda neta de 0,2 veces el EBITDA.",
+      "**Margen sin rival**: 69,9 % de EBITDA, frente al 67,2 % de ICE y el 58 % de Nasdaq y Deutsche Börse [39]."
+    ],
+    "en_contra": [
+      "**Precio exigente**: el DCF inverso pide un 9,3 % de crecimiento anual frente al 4,4 % de nuestra base.",
+      "**Perpetuos**: la CFTC aprobó los de Kalshi y estudia uno sobre el S&P 500 [29, 38].",
+      "**Beneficio sensible a tipos**: 1.101 M no operativos en 2025, el 21 % del beneficio antes de impuestos [2].",
+      "**2T26 plano**: ingresos +1 % con el volumen un 1 % por debajo del récord [3].",
+      "**Ventas del consejero delegado**: 50.000 acciones en 2026 y relevo en marzo de 2027 [41, 47]."
+    ],
+    "que_vigilar": "La tesis depende de que el volumen institucional siga creciendo y de que los perpetuos se queden en cripto. La señal en contra sería que la CFTC aprobara perpetuos sobre el S&P 500 y el ADV de índices bursátiles de CME cayera dos trimestres seguidos, o que el resultado no operativo trimestral bajara de 200 M con la primera bajada fuerte de tipos.",
+    "cambiaria_recomendacion": [
+      "Precio por debajo de 245,93 USD (valor intrínseco), con la rentabilidad a 12 meses por encima del 15 %: pasaríamos a Comprar.",
+      "Precio por encima de 338,23 USD: pasaríamos a Vender.",
+      "Aprobación de perpetuos sobre el S&P 500 y ADV de índices de CME por debajo del de 2025 dos trimestres: Vender.",
+      "ADV de 2027 por encima de 32 M de contratos diarios con margen EBITDA superior al 72 %: revisaríamos el base al alza."
+    ],
+    "kpis_seguimiento": [
+      {
+        "kpi": "ADV total",
+        "nivel_actual": "29,4 M (3T26, +16 %)",
+        "umbral_alerta": "Por debajo de 26 M dos trimestres",
+        "por_que": "Motor del 80 % de los ingresos."
+      },
+      {
+        "kpi": "ADV de índices bursátiles y microcontratos",
+        "nivel_actual": "Récord en el 3T26",
+        "umbral_alerta": "Caída interanual tras perpetuos sobre el S&P 500",
+        "por_que": "Lo que más expone a los perpetuos."
+      },
+      {
+        "kpi": "Resultado no operativo trimestral",
+        "nivel_actual": "≈ 250 M (2T26, estimación propia)",
+        "umbral_alerta": "Por debajo de 200 M",
+        "por_que": "Una quinta parte del beneficio y 26 USD por acción del valor."
+      },
+      {
+        "kpi": "Margen operativo ajustado",
+        "nivel_actual": "69,5 % (2T26)",
+        "umbral_alerta": "Por debajo del 67 %",
+        "por_que": "Mide el apalancamiento operativo y la inversión en productos nuevos."
+      },
+      {
+        "kpi": "Demanda contra la CFTC",
+        "nivel_actual": "Pendiente",
+        "umbral_alerta": "Sentencia desfavorable",
+        "por_que": "Abre la puerta a perpetuos sobre índices y metales."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "historia": {
+    "resumen": "CME nace en 1898 como Chicago Butter and Egg Board, se convierte en Chicago Mercantile Exchange en 1919 y en 1972 lanza los primeros futuros financieros (divisas). En 2002 sale a bolsa tras desmutualizarse. Entre 2007 y 2008 compra CBOT (bonos del Tesoro, agrícolas) y NYMEX (petróleo WTI, gas Henry Hub, metales de COMEX), y desde entonces es el mayor mercado de derivados del mundo por valor. En 2012 aporta sus índices a la empresa conjunta S&P Dow Jones Indices (27 %). En 2018 compra NEX (BrokerTec y EBS). En 2021 firma una alianza de diez años con Google Cloud, que suscribe 1.000 M en preferentes. Terry Duffy, presidente desde 2002 y consejero delegado desde 2016, dejará el cargo a Lynne Fitzpatrick en 2027 [10, 27, 28].",
+    "hitos": [
+      {
+        "anio": "1898",
+        "hito": "Fundación como Chicago Butter and Egg Board [27]."
+      },
+      {
+        "anio": "1972",
+        "hito": "Primeros futuros financieros del mundo (divisas) [27]."
+      },
+      {
+        "anio": "2002",
+        "hito": "Desmutualización y salida a bolsa [27]."
+      },
+      {
+        "anio": "2007-2008",
+        "hito": "Compra de CBOT y NYMEX: tipos de interés, agrícolas, energía y metales bajo una sola cámara [27]."
+      },
+      {
+        "anio": "2012",
+        "hito": "Empresa conjunta S&P Dow Jones Indices con S&P Global (27 % para CME), que asegura la licencia del índice S&P 500 [27]."
+      },
+      {
+        "anio": "2018",
+        "hito": "Compra de NEX Group: BrokerTec (bonos del Tesoro al contado) y EBS (divisas) [27]."
+      },
+      {
+        "anio": "2021",
+        "hito": "Alianza de diez años con Google Cloud y preferentes de 1.000 M; aportación de la optimización de NEX a OSTTRA [10]."
+      },
+      {
+        "anio": "2025",
+        "hito": "Venta de OSTTRA a KKR (plusvalía de 306 M) y cuarto año seguido de ingresos récord [1]."
+      },
+      {
+        "anio": "2026",
+        "hito": "La CFTC aprueba futuros perpetuos de Kalshi (29-may); CME demanda a la CFTC (18-jun) y anuncia el relevo de Duffy por Fitzpatrick (17-jun) [29, 30]."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "negocio": {
+    "segmentos": [
+      {
+        "nombre": "Compensación, negociación y otros",
+        "descripcion": "Comisiones de compensación y negociación de futuros y opciones (tipos de interés, índices bursátiles, energía, agrícolas, metales, divisas, cripto) y de BrokerTec y EBS, más otros ingresos (acceso, comunicaciones, custodia). Cifra por diferencia entre el total y los datos de mercado.",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2024",
+            "ingresos": 5419,
+            "resultado": null
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 5718,
+            "resultado": null
+          }
+        ]
+      },
+      {
+        "nombre": "Datos de mercado",
+        "descripcion": "Venta de precios en tiempo real, históricos y licencias de datos de los mercados de CME.",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2024",
+            "ingresos": 711,
+            "resultado": null
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 803,
+            "resultado": null
+          }
+        ]
+      }
+    ],
+    "segmentos_nota": "CME reporta un solo segmento. Datos de mercado 2025: 803 M (+13 %) [1]; 2024 = 803 / 1,13 ≈ 711 M (estimación propia). Compensación, negociación y otros = total del grupo menos datos de mercado.",
+    "geografias": null,
+    "kpis": [
+      {
+        "kpi": "Volumen medio diario (ADV), contratos",
+        "valor_anterior": "26,5 M (2024)",
+        "valor_actual": "28,1 M (2025, récord)",
+        "variacion": "+6 %",
+        "comentario": "Récord anual por cuarto año; el 3T26 llegó a 29,4 M (+16 %) y septiembre de 2026 a 31,8 M (+22 %) [1, 15]."
+      },
+      {
+        "kpi": "ADV del trimestre",
+        "valor_anterior": "25,3 M (3T25)",
+        "valor_actual": "29,4 M (3T26)",
+        "variacion": "+16 %",
+        "comentario": "Récord de un tercer trimestre; tipos de interés 16,2 M en septiembre (+22 %) [15]."
+      },
+      {
+        "kpi": "ADV fuera de EE. UU.",
+        "valor_anterior": "7,4 M (3T25)",
+        "valor_actual": "9,0 M (3T26)",
+        "variacion": "+22 %",
+        "comentario": "Energía, agrícolas e índices; 1T26 récord de 11,4 M (+30 %) [4, 15]."
+      },
+      {
+        "kpi": "Ingreso medio por contrato (RPC)",
+        "valor_anterior": "n.d.",
+        "valor_actual": "67,8 centavos (2T26)",
+        "variacion": "n.d.",
+        "comentario": "Depende de la mezcla: los futuros de tipos y los de miembros pagan menos que energía o metales [3, 21]."
+      },
+      {
+        "kpi": "Ingresos de datos de mercado",
+        "valor_anterior": "711 M (2024, estimación)",
+        "valor_actual": "803 M (2025)",
+        "variacion": "+13 %",
+        "comentario": "2T26: 238 M (+20 %), 33 trimestres seguidos de crecimiento interanual [1, 3, 21]."
+      },
+      {
+        "kpi": "Posiciones abiertas (open interest)",
+        "valor_anterior": "2T25",
+        "valor_actual": "2T26",
+        "variacion": "+8 %",
+        "comentario": "Indicador adelantado del volumen; la dirección lo destacó en la conferencia del 2T26 [21]."
+      }
+    ],
+    "descripcion": "CME Group opera cuatro bolsas de derivados en EE. UU. (CME, CBOT, NYMEX y COMEX) y una cámara de compensación central, CME Clearing, por la que pasan todos los contratos. Lista futuros y opciones de tipos de interés (SOFR, bonos del Tesoro), índices bursátiles (E-mini S&P 500 y Nasdaq-100), energía (WTI, gas Henry Hub), agrícolas (maíz, soja, trigo), metales (oro, cobre), divisas y criptomonedas. Además opera BrokerTec (bonos del Tesoro al contado y repos) y EBS (divisas), vende datos de mercado y tiene el 27 % de S&P Dow Jones Indices. Sus clientes son bancos, gestoras, fondos de cobertura, negociadores de alta frecuencia, productores y consumidores de materias primas y, cada vez más, particulares a través de los microcontratos; un 30 % del volumen viene de fuera de EE. UU. [1, 27, 31].",
+    "como_gana_dinero": "Cobra una comisión por contrato negociado y compensado (unos 68 centavos de media en el 2T26), que da el 80 % de los ingresos y depende del volumen y de la mezcla: los tipos de interés pagan menos por contrato que la energía o los metales [1, 31]. Los costes son casi fijos (el 70 % de margen EBITDA en 2025), así que un 10 % más de volumen se traduce casi entero en beneficio. Los datos de mercado (12 % de los ingresos) son recurrentes y suben con las tarifas. Fuera de la cuenta operativa gana además el diferencial de las garantías en efectivo que depositan los miembros (unos 160.000 M en 2025) y los dividendos de S&P Dow Jones Indices: 1.101 M de resultado no operativo en 2025, un 21 % del beneficio antes de impuestos [1]. El negocio va mejor con volatilidad (tipos, energía, geopolítica) y con tipos de interés altos.",
+    "clientes": "No hay concentración relevante por cliente: los ingresos se reparten entre miles de participantes a través de unos 50 miembros compensadores, aunque los grandes bancos intermedian la mayor parte. Los contratos no tienen duración: el cliente paga por operación, pero las posiciones abiertas (open interest, +8 % en el 2T26) y la compensación cruzada de garantías entre productos lo atan a la cámara [31, 32]. El poder de precios está demostrado: CME sube tarifas cada año (la de 2026 entró en febrero) sin perder cuota en sus productos de referencia, y el ingreso por contrato se ha mantenido pese al aumento de los contratos más baratos de miembros y de tipos [1, 31]. El riesgo es el de los particulares, más sensibles al precio, que son el público de los perpetuos de Kalshi y Coinbase [29].",
+    "confianza": "Media"
+  },
+  "sector": {
+    "definicion": "Mercado mundial de derivados cotizados (futuros y opciones) y su compensación central, el negocio que da a CME el 80 % de sus ingresos. Se mide en contratos (FIA) porque no hay una cifra pública de ingresos del sector; para CME pesan sobre todo los futuros, donde el tamaño del contrato es mucho mayor que en las opciones sobre índices indios que inflan el total. Se usa el volumen de futuros de FIA como referencia y se contrasta con el de CME [15, 33].",
+    "tamano": "30.640 M de contratos de futuros en el mundo en 2025 (+8,6 %), de un total de 119.290 M de derivados cotizados (FIA) [33]; CME negoció unos 7.100 M (28,1 M diarios) [1].",
+    "unidad_serie": null,
+    "serie": null,
+    "tcac_historico_pct": null,
+    "tcac_previsto_pct": null,
+    "cr5_pct": null,
+    "estructura": "Concentrada",
+    "drivers": [
+      {
+        "driver": "Volatilidad de tipos y deuda pública de EE. UU.",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Los futuros sobre bonos del Tesoro crecieron un 42 % en septiembre de 2026 y los tipos un 22 % [15]; el déficit federal aumenta la deuda que hay que cubrir."
+      },
+      {
+        "driver": "Geopolítica y energía",
+        "efecto": "+",
+        "horizonte": "Cíclico",
+        "evidencia": "El volumen fuera de EE. UU. subió un 22 % en el 3T26, liderado por energía y agrícolas, por la incertidumbre geopolítica y la inflación [34]."
+      },
+      {
+        "driver": "Particulares y microcontratos",
+        "efecto": "+/−",
+        "horizonte": "Estructural",
+        "evidencia": "Récord de cripto en 2025-2026; pero es el segmento donde entran los perpetuos de Kalshi y Coinbase, con más de 5.500 M de volumen en dos semanas [29, 35]."
+      },
+      {
+        "driver": "Nivel de tipos de interés",
+        "efecto": "+",
+        "horizonte": "Cíclico",
+        "evidencia": "Con el bono a 10 años en el 5,2 %, el ingreso por las garantías reinvertidas pasó de 4.079 M a 5.737 M brutos en 2025 [1]."
+      },
+      {
+        "driver": "Regulación de productos nuevos (perpetuos, eventos)",
+        "efecto": "−",
+        "horizonte": "Estructural",
+        "evidencia": "La CFTC aprobó el 29-may-2026 los perpetuos de Kalshi y permite a otros mercados autocertificarlos [29]."
+      }
+    ],
+    "porter": [
+      {
+        "fuerza": "Rivalidad",
+        "intensidad": 2,
+        "justificacion": "En cada contrato de referencia hay un mercado dominante: CME tiene más del 99 % de los futuros de tipos de EE. UU. [36]; ICE domina el Brent y Eurex el Bund."
+      },
+      {
+        "fuerza": "Poder de los clientes",
+        "intensidad": 3,
+        "justificacion": "Los grandes bancos compensadores concentran el flujo y negocian descuentos por volumen; han apoyado intentos de competencia (FMX en tipos)."
+      },
+      {
+        "fuerza": "Poder de los proveedores",
+        "intensidad": 1,
+        "justificacion": "Tecnología (Google Cloud) y licencias de índices (S&P DJI, participada por CME); costes casi fijos."
+      },
+      {
+        "fuerza": "Amenaza de entrada",
+        "intensidad": 3,
+        "justificacion": "Las barreras son la liquidez y la compensación cruzada; los perpetuos de Kalshi y Coinbase y FMX en bonos del Tesoro muestran que la regulación de 2026 las rebaja en el segmento de particulares [29, 36]."
+      },
+      {
+        "fuerza": "Amenaza de sustitutos",
+        "intensidad": 2,
+        "justificacion": "Derivados extrabursátiles (swaps), ETF apalancados y perpetuos; los institucionales siguen necesitando futuros con vencimiento y compensación central [32]."
+      }
+    ],
+    "ciclo": {
+      "posicion": "Expansión",
+      "comentario": "El volumen de CME lleva cuatro años de récords (28,1 M diarios en 2025, 29,4 M en el 3T26) con tipos altos y volátiles [1, 15]. En 2008-09 el volumen cayó tras el pico de la crisis; en 2020 subió con la volatilidad y bajó al quedarse los tipos en cero (BPA ajustado de 6,72 USD frente a 6,80 en 2019); en 2022 la subida de tipos lo disparó (+19 %). Es un negocio contracíclico frente a la bolsa: sufre en la calma, no en las caídas."
+    },
+    "regulacion": "La CFTC supervisa a CME como mercado designado y cámara sistémica. En 2026 aprobó los futuros perpetuos de Kalshi (29-may) y una declaración que permite a otros autocertificarlos; CME la ha demandado (18-jun) alegando que son swaps según la ley Dodd-Frank, y la CFTC la llama «frívola» [29, 30]. La SEC exige compensación central de los bonos del Tesoro al contado y de los repos (calendario 2026-2027), lo que abre a CME un negocio de compensación de valores [37]. El reparto de competencias entre SEC y CFTC sobre cripto y contratos de eventos sigue abierto.",
+    "tendencias": "Negociación 24 horas los siete días en cripto, contratos de eventos y futuros sobre acciones individuales, que CME lanzó o lanzará en 2026 [31, 37]. La competencia llega por el lado de los particulares: Kalshi (más de 2.000 M de ingresos anualizados y una valoración de 22.000-40.000 M) ha pedido perpetuos sobre el S&P 500, oro, plata y cobre [35, 38]. CME gana con la migración a la nube (Google) y con la compensación de bonos al contado; puede perder cuota en los microcontratos de particulares si los perpetuos se extienden a índices y metales.",
+    "confianza": "Media"
+  },
+  "competencia": {
+    "cuota_pct": null,
+    "posicion": "1.º del mundo en futuros por valor nocional y por ingresos; más del 99 % de los futuros de tipos de interés de EE. UU. [36], líder en índices bursátiles (E-mini S&P 500), WTI, gas Henry Hub, oro y agrícolas de EE. UU.; 28,1 M de contratos diarios en 2025, en torno al 23 % de los futuros negociados en el mundo (7.100 M sobre 30.640 M, estimación propia) [1, 33].",
+    "competidores": [
+      {
+        "nombre": "Intercontinental Exchange",
+        "pais": "EE. UU.",
+        "ticker": "ICE",
+        "ingresos": 9931,
+        "cuota_pct": null,
+        "margen_ebit_pct": 49.6,
+        "comentario": "Rival directo en energía (Brent, gas europeo TTF) y tipos europeos; además hipotecas y datos [39]."
+      },
+      {
+        "nombre": "Cboe Global Markets",
+        "pais": "EE. UU.",
+        "ticker": "CBOE",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": 60,
+        "comentario": "Opciones sobre el S&P 500 y el VIX; compite con las opciones sobre E-mini [39]."
+      },
+      {
+        "nombre": "Nasdaq",
+        "pais": "EE. UU.",
+        "ticker": "NDAQ",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": 44,
+        "comentario": "Opciones sobre acciones y software financiero; poca presencia en futuros [39]."
+      },
+      {
+        "nombre": "Deutsche Börse (Eurex)",
+        "pais": "Alemania",
+        "ticker": "DB1",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Derivados europeos (Bund, Euro Stoxx) y compensación de swaps en euros [40]."
+      },
+      {
+        "nombre": "Kalshi",
+        "pais": "EE. UU.",
+        "ticker": null,
+        "ingresos": 2000,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Contratos de eventos y, desde mayo de 2026, perpetuos sobre bitcoin, oro y plata; ha pedido perpetuos sobre el S&P 500. Ingresos anualizados de más de 2.000 M (prensa, no auditados) [35, 38]."
+      },
+      {
+        "nombre": "FMX Futures (BGC Group)",
+        "pais": "EE. UU.",
+        "ticker": "BGC",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Futuros de SOFR y de bonos del Tesoro desde 2024-2025, respaldado por grandes bancos; sin cuota relevante frente a CME [36]."
+      }
+    ],
+    "foso": {
+      "veredicto": "Amplio",
+      "tendencia": "Estable",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 5,
+          "evidencia": "La liquidez atrae liquidez: más del 99 % de los futuros de tipos de EE. UU. pese a FMX [13]; ADV récord cuatro años seguidos [4]."
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 4,
+          "evidencia": "La compensación cruzada de garantías entre tipos, índices y bonos al contado ahorra capital a los miembros; mover posiciones abiertas (+8 % interanual) a otra cámara cuesta [7, 8]."
+        },
+        {
+          "fuente": "Intangibles (marca, patentes, licencias)",
+          "puntuacion": 4,
+          "evidencia": "Licencia de los índices S&P a través de S&P Dow Jones Indices (27 % de CME) y contratos de referencia (WTI, Henry Hub, Treasury) [1]."
+        },
+        {
+          "fuente": "Ventaja en costes",
+          "puntuacion": 3,
+          "evidencia": "Margen EBITDA del 70 % en 2025, frente al 67 % de ICE y el 58 % de Nasdaq y Deutsche Börse [4, 16]."
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 4,
+          "evidencia": "Un solo mercado por contrato de referencia es lo eficiente; los entrantes se quedan con nichos (FMX) o con otros públicos (Kalshi)."
+        }
+      ]
+    },
+    "amenazas": "La amenaza real es regulatoria: la CFTC de 2026 deja que plataformas pensadas para particulares (Kalshi, Coinbase) listen perpetuos con apalancamiento alto, primero en cripto y metales y, si aprueba la solicitud, en el S&P 500 [29, 35]. Afectaría a los microcontratos y a cripto, una parte pequeña de los ingresos; los institucionales necesitan vencimientos, entrega y compensación cruzada que los perpetuos no dan. Probabilidad media de pérdida de cuota en particulares; baja en el negocio institucional. FMX en tipos lleva dos años sin cuota apreciable.",
+    "confianza": "Media"
+  },
+  "financieros": {
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 4690,
+        "coste_ventas": null,
+        "gastos_generales": 1659.4,
+        "ebitda": 3030.6,
+        "amortizaciones": 385.4,
+        "ebit": 2645.2,
+        "resultado_financiero": 728.4,
+        "bai": 3373.6,
+        "impuestos": 736.7,
+        "minoritarios": 0,
+        "beneficio_neto": 2636.9,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 7.29,
+        "dpa": 6.85,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 361.7
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 5019,
+        "coste_ventas": null,
+        "gastos_generales": 1640.4,
+        "ebitda": 3378.6,
+        "amortizaciones": 362.6,
+        "ebit": 3016,
+        "resultado_financiero": 474.4,
+        "bai": 3490.4,
+        "impuestos": 799.3,
+        "minoritarios": 0,
+        "beneficio_neto": 2691.1,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 7.4,
+        "dpa": 8.5,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 363.7
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 5579,
+        "coste_ventas": null,
+        "gastos_generales": 1790.4,
+        "ebitda": 3788.6,
+        "amortizaciones": 352.6,
+        "ebit": 3436,
+        "resultado_financiero": 717.6,
+        "bai": 4153.6,
+        "impuestos": 927.4,
+        "minoritarios": 0,
+        "beneficio_neto": 3226.2,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 8.86,
+        "dpa": 9.65,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 364.1
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 6130,
+        "coste_ventas": null,
+        "gastos_generales": 1861.7,
+        "ebitda": 4268.3,
+        "amortizaciones": 336.8,
+        "ebit": 3931.5,
+        "resultado_financiero": 609.9,
+        "bai": 4541.4,
+        "impuestos": 1015.6,
+        "minoritarios": 0,
+        "beneficio_neto": 3525.8,
+        "gastos_financieros": 160.9,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 9.67,
+        "dpa": 10.4,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 364.6
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 6521,
+        "coste_ventas": null,
+        "gastos_generales": 1960.6,
+        "ebitda": 4560.4,
+        "amortizaciones": 330.9,
+        "ebit": 4229.5,
+        "resultado_financiero": 1101,
+        "bai": 5330.5,
+        "impuestos": 1258.3,
+        "minoritarios": 0,
+        "beneficio_neto": 4072.2,
+        "gastos_financieros": 173.4,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 11.16,
+        "dpa": 11.15,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 364.9
+      }
+    ],
+    "ltm": {
+      "periodo": "LTM jun-26",
+      "fecha_fin": "2026-06-30",
+      "ingresos": 6768,
+      "ebitda": 4840,
+      "ebit": 4510,
+      "beneficio_neto": null,
+      "bpa": 11.8,
+      "dpa": 11.35,
+      "dpa_extraordinario": 0,
+      "fcf": null,
+      "participadas_en_ebitda": null,
+      "no_recurrentes_en_ebitda": null
+    },
+    "cambios_perimetro": [],
+    "cuenta_nota": "Ingresos y beneficio operativo 2021-2024 de Macrotrends [11], que cuadran con los comunicados (2023: 5.600 M y 3.400 M [6]); 2025: 6.521 M de ingresos y 4.229,5 M de beneficio operativo (5.330,5 M antes de impuestos menos 1.101,0 M de resultado no operativo) [1, 2]. Resultado no operativo, beneficio antes de impuestos e impuestos de los 10-K: 2021 728,4 / 3.373,6 / 736,7; 2022 474,4 / 3.490,4 (calculado) / 799,3; 2023 717,6 / 4.153,6 / 927,4; 2024 609,9 / 4.541,4 / 1.015,6; 2025 1.101,0 / 5.330,5 / 1.258,3 [1, 2, 7, 9]. Amortizaciones = depreciación + amortización de intangibles comprados: 2021 147,8 + 237,6; 2022 134,9 + 227,7 [10]; 2023-2025 del estado de flujos (352,6; 336,8; 330,9) [12]. gastos_generales = ingresos − EBITDA (todos los gastos de explotación en efectivo; CME no tiene coste de ventas). Beneficio neto = antes de impuestos − impuestos; acciones_diluidas = beneficio neto / BPA diluido publicado (denominador implícito, ≈ 4-5 M por encima de las acciones ordinarias, porque las preferentes de la serie G de Google y las acciones de clase B participan en el beneficio). DPA = dividendo trimestral ordinario × 4 + dividendo variable anual del ejercicio (2021: 0,90 × 4 + 3,25; 2022: 1,00 × 4 + 4,50; 2023: 1,10 × 4 + 5,25; 2024: 1,15 × 4 + 5,80; 2025: 1,25 × 4 + 6,15) [16, 17, 20, 24]. LTM jun-26: ingresos = 3T25 + 4T25 + 1T26 + 2T26 (ver trimestres); EBITDA y EBIT, estimación propia con el margen operativo ajustado del 1S26 (69,5 % en el 2T26 [21]); BPA ajustado (2,68 + 2,77 + 3,36 + 2,99).",
+    "ajustes": "CME publica un BPA «ajustado» que quita la amortización de los intangibles comprados (unos 210-240 M al año, de las compras de CBOT, NYMEX y NEX [10]), las plusvalías y minusvalías de participadas y otras partidas. En 2025 el BPA publicado (11,16 USD) incluye la plusvalía de 306,1 M por la venta de OSTTRA a KKR [2], y el ajustado fue 11,20 USD [1]. En 2024: 9,67 frente a 10,26 [1]; 2023: 8,86 frente a 9,34 [6]; 2022: 7,40 frente a 7,97 [7]; 2021: 7,29 frente a 6,67 (en 2021 el publicado lleva plusvalías de la aportación de negocios a OSTTRA) [8]. Las amortizaciones de intangibles comprados se repiten todos los años: no son no recurrentes. La rentabilidad a 12 meses usa el BPA ajustado, el que siguen el mercado y el consenso.",
+    "confianza": "Media",
+    "comentario": "Los ingresos crecieron de 4.690 M en 2021 a 6.521 M en 2025, un 8,6 % anual, sin compras: todo orgánico, por volumen (ADV de 28,1 M en 2025, récord por cuarto año) y por subidas anuales de tarifas [1, 11]. El margen EBITDA pasó del 64,6 % al 69,9 % y el EBIT del 56,4 % al 64,9 %: con costes casi fijos, cada punto de ingresos añade casi un punto de beneficio. El beneficio neto subió de 2.636,9 a 4.072,2 M, y el BPA diluido de 7,29 a 11,16 USD. Una quinta parte del beneficio antes de impuestos no es operativa: el diferencial de las garantías reinvertidas y S&P Dow Jones Indices dieron 1.101 M en 2025 (609,9 M en 2024), incluida una plusvalía de 306,1 M por OSTTRA [2]. 2026 va mejor: 1T26 récord (+14 % de ingresos, BPA ajustado +20 %), 2T26 plano (+1 %) y volumen del 3T26 +16 % [3, 4, 15]."
+  },
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "3T24",
+        "ingresos": 1585,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 2.68,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1T25",
+        "ingresos": 1643,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 2.8,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "2T25",
+        "ingresos": 1689,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 2.96,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "3T25",
+        "ingresos": 1537,
+        "crecimiento_pct": -2.9,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 2.68,
+        "vs_consenso": "Superior"
+      },
+      {
+        "periodo": "4T25",
+        "ingresos": 1652,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 2.77,
+        "vs_consenso": "Superior"
+      },
+      {
+        "periodo": "1T26",
+        "ingresos": 1873,
+        "crecimiento_pct": 14,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 3.36,
+        "vs_consenso": "En línea"
+      },
+      {
+        "periodo": "2T26",
+        "ingresos": 1706,
+        "crecimiento_pct": 1,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 2.99,
+        "vs_consenso": "En línea"
+      }
+    ],
+    "items_nota": "BPA ajustado. 3T25: ingresos ≈ 1.537 M (1.540 M redondeados), BPA ajustado 2,68, plano frente al 3T24 y 1,9 % por encima del consenso de Zacks [5, 25]; 3T24 ≈ 1.585 M [25]. 1T26: 1.900 M redondeados, +14 % [4]: 1.643 × 1,14 = 1.873 M (estimación propia; 1T25 de 1.643 M); BPA 3,36 frente a 2,80 (+20 %) y 3,37 esperado por Zacks [4, 22]. 2T26: 1.710 M frente a 1.730 M esperados, +1 %; BPA 2,99 = consenso [3, 26]; 2T25 = 1.706 / 1,01 ≈ 1.689 M y BPA 2,96 (estimación propia). 4T25: 1.600 M redondeados [1]; 1.652 M por diferencia con el total anual; BPA ajustado 2,77, por encima del consenso [1].",
+    "ultima_presentacion": "En la conferencia del 2T26 (22-jul) la dirección dedicó buena parte del tiempo a defender que los futuros perpetuos «no sustituyen» a las herramientas de cobertura de los institucionales, que son la gran mayoría del negocio, y que CME tiene la capacidad técnica para lanzarlos si hiciera falta [21, 32]. Destacó el 2T de más ingresos de su historia pese a un volumen plano (29,8 M diarios, a menos del 1 % del récord del 2T25), las posiciones abiertas un 8 % por encima, los datos de mercado en récord (238 M, +20 %) y 1.200 M devueltos al accionista, con 695 M de recompras, las primeras en años [3, 21]. Adelantó que julio iba un 18 % por encima del año anterior y que en el 4T26 llegarán TreasuryLink y los futuros sobre acciones individuales [21, 37]. Frente a la conferencia del 4T25, en la que el foco era la guía de gastos (1.695 M sin licencias, con inversión en cripto 24/7, compensación de valores y contratos de eventos) [18], el discurso pasó de crecer a defender el foso. Las preguntas se repitieron sobre los perpetuos y la demanda contra la CFTC; la dirección no cuantificó qué parte de los ingresos viene de particulares ni de cripto.",
+    "confianza": "Media"
+  },
+  "balance": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "activo_total": 196780,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 169381,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": 0,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 2950,
+        "deuda_financiera": 3446,
+        "arrendamientos": 0,
+        "patrimonio_neto": 27399,
+        "minoritarios": 0,
+        "reservas": null
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 174176,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 147297,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": 0,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 2816,
+        "deuda_financiera": 3422,
+        "arrendamientos": 0,
+        "patrimonio_neto": 26879,
+        "minoritarios": 0,
+        "reservas": null
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 129706,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 102968,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": 0,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 3024,
+        "deuda_financiera": 3425,
+        "arrendamientos": 0,
+        "patrimonio_neto": 26738,
+        "minoritarios": 0,
+        "reservas": null
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 137447,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 110960,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": 0,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 2892.4,
+        "deuda_financiera": 3425,
+        "arrendamientos": 0,
+        "patrimonio_neto": 26487,
+        "minoritarios": 0,
+        "reservas": null
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 198424.2,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 169696,
+        "fondo_comercio": 10514.7,
+        "intangibles": 19786,
+        "inmovilizado_material": null,
+        "existencias": 0,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 4416.9,
+        "deuda_financiera": 3425,
+        "arrendamientos": 0,
+        "patrimonio_neto": 28728.2,
+        "minoritarios": 0,
+        "reservas": null
+      }
+    ],
+    "historico_nota": "Activo total y patrimonio de los comunicados y de Barchart y edgar.tools [1, 13]; pasivo total = activo − patrimonio. El balance está inflado por las garantías (márgenes) en efectivo de los miembros de la cámara, que CME custodia y reinvierte: unos 160.000 M en 2025, con un pasivo igual; por eso el activo total oscila entre 130.000 y 200.000 M según el volumen de garantías. Caja 2021-2023: caja e inversiones a corto de Stockopedia [13]; 2024-2025: efectivo del comunicado [1]. Deuda: bonos sénior (2021: 2.696 M a largo + 750 M a corto; 2022-2023: 3.422-3.425 M; 2024: 2.678 M a largo + 747 M a corto; 2025: ≈ 3.400 M tras refinanciar los bonos de 2025 con los de 2030) [1, 13, 23]. Fondo de comercio e intangibles 2025 de Kalkine [14] (incluyen 17.000 M largos de «productos de negociación» de CBOT y NYMEX, que no se amortizan). No hay arrendamientos en el puente: en US GAAP el gasto de los operativos ya está en el EBITDA.",
+    "vencimientos": [
+      {
+        "anio": "2028",
+        "importe": 500
+      },
+      {
+        "anio": "2030",
+        "importe": 750
+      },
+      {
+        "anio": "2032",
+        "importe": 750
+      },
+      {
+        "anio": "2043+",
+        "importe": 1450
+      }
+    ],
+    "liquidez": "Caja de 2.300 M a 30-jun-2026 (incluidos 200 M depositados en la FICC) [3]; papel comercial respaldado por una línea de crédito multidivisa (importe no leído en esta sesión).",
+    "rating": "AA- (S&P) y Aa3 (Moody's) en el último folleto leído; no se ha podido confirmar la nota vigente desde la nube",
+    "coste_deuda_pct": 5,
+    "vida_media_anios": null,
+    "confianza": "Media",
+    "otros_pasivos": "Los pasivos que importan no son deuda financiera: CME custodia unos 160.000 M de garantías en efectivo de los miembros, con un pasivo igual, y aporta capital propio al fondo de garantía de la cámara (el «skin in the game»); si un miembro quebrara y sus garantías no bastaran, la cámara respondería con ese capital antes que con el fondo mutualizado [1]. Las preferentes de Google (1.000 M de 2021) participan en el beneficio y en los dividendos [10]. Hay 17.000 M largos de intangibles de «productos de negociación» que no se amortizan y podrían deteriorarse si un contrato de CBOT o NYMEX perdiera su liquidez. No se han encontrado litigios materiales salvo la demanda que CME ha puesto a la CFTC [29]. Sin pensiones relevantes en las fuentes leídas.",
+    "comentario": "La deuda es estable y pequeña: unos 3.400 M en bonos con vencimientos entre 2028 y 2048 [3, 23], frente a una caja de 2.300 M a 30-jun-2026 y un EBITDA de 4.560 M; la deuda neta es de 0,2 veces el EBITDA. La caja sube durante el año y baja en marzo, cuando se paga el dividendo variable (2.200 M en 2026) [16]. El circulante comercial es casi nulo: se cobra a través de la cámara en el día. El activo total, entre 130.000 y 200.000 M, depende de las garantías de los miembros y no dice nada del negocio."
+  },
+  "flujos": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 2402,
+        "capex": 127,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 2189,
+        "recompras": 0,
+        "emision_acciones": 965,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 3056,
+        "capex": 90,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 2634,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 3453.8,
+        "capex": 76.4,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 3200,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 3690.5,
+        "capex": 94,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 3550,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 4277.1,
+        "capex": 83.5,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 0,
+        "desinversiones": null,
+        "dividendos": 3890,
+        "recompras": null,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      }
+    ],
+    "historico_nota": "Flujo operativo 2024-2025 del 10-K [2]; 2021-2023 y capex de Barchart y edgar.tools [12]. Dividendos 2021-2022 de finboard (2.189 y 2.634 M) [12]; 2023-2025, estimación propia: dividendo variable pagado en enero (4,50; 5,25; 5,80 USD) más cuatro trimestrales, por unos 360 M de acciones. 2021: 965 M de las preferentes suscritas por Google [10]. Recompras: ninguna en 2021-2024; en 2025 no se ha podido leer la cifra; en el 2T26, 695 M [3].",
+    "confianza": "Media",
+    "comentario": "La conversión de beneficio en caja es completa: en 2021-2025 el FCF acumulado fue de 16.409 M, un 102 % del beneficio neto, con un capex de solo 76-127 M al año (1,3 % de las ventas en 2025) [2, 12]. Casi todo se reparte: 15.463 M en dividendos en esos cinco años (estimación para 2023-2025), y en 2026 han empezado las recompras (695 M en el 2T26) [3]. El flujo de 2021 incluye 965 M de las preferentes de Google, que no son caja del negocio [10]. No hay capex de crecimiento relevante: la migración a Google Cloud se paga como gasto. El FCF de 2025 (4.193,6 M) lleva intereses de las garantías que dependen del nivel de tipos."
+  },
+  "calidad": {
+    "auditor": "Ernst & Young LLP",
+    "anios_auditor": null,
+    "opinion": "Favorable",
+    "confianza": "Baja",
+    "comentario": "Las cuentas son sencillas y de alta calidad: ingresos por comisión cobrados en el día, sin capitalización relevante de gastos, sin compras en cinco años y con una conversión de caja del 102 %. El BPA ajustado difiere del publicado por la amortización de intangibles de compras antiguas (unos 230 M al año) y por plusvalías de participadas (OSTTRA en 2021 y 2025) [1, 2, 8]. Los indicadores del motor no sirven aquí: el Altman Z (0,46) sale en zona de riesgo porque el activo incluye unos 160.000 M de garantías de terceros, y el Piotroski (5) tiene criterios sin dato; el Beneish no se puede calcular. Lo que merece vigilancia es la parte no operativa del beneficio (1.101 M en 2025), que depende de los tipos de interés y del volumen de garantías, y la remuneración en acciones, que no se ha podido leer.",
+    "senales": [
+      {
+        "senal": "Beneficio no operativo sensible a tipos",
+        "nivel": "Media",
+        "comentario": "El diferencial de las garantías reinvertidas aporta en torno a 800 M antes de impuestos al año (estimación propia sobre el 2T26) y bajaría con los tipos."
+      },
+      {
+        "senal": "Plusvalías en el BPA publicado",
+        "nivel": "Baja",
+        "comentario": "OSTTRA en 2025 (306,1 M) y en 2021; el BPA ajustado las quita [1, 2]."
+      },
+      {
+        "senal": "Altman Z sin sentido",
+        "nivel": "Baja",
+        "comentario": "Distorsionado por las garantías de los miembros, no por el riesgo de la empresa."
+      }
+    ]
+  },
+  "rentabilidad": {
+    "comentario": "CME crea valor, pero menos de lo que parece por su margen: el ROIC del motor subió del 7,4 % en 2021 al 11,8 % en 2025, por encima del WACC (8,92 %) desde 2023, y la distancia es de unos 3 puntos. El ROIC sube por el margen (el EBIT pasó del 56,4 % al 64,9 % de las ventas), no por la rotación: el capital invertido (27.378 M) es casi todo fondo de comercio e intangibles de las compras de CBOT y NYMEX de 2007-2008 y no ha crecido en cinco años. Sin ese fondo de comercio el rendimiento del capital tangible sería de varias veces el WACC: el negocio no necesita capital para crecer, y el ROIC incremental es muy alto porque el NOPAT sube sin más capital. Frente a ICE (8,1 %) y Nasdaq (10,4 %), que han hecho compras grandes, CME rinde más [39]. El ROIC no recoge el beneficio no operativo (1.101 M en 2025).",
+    "confianza": "Media"
+  },
+  "capital": {
+    "politica": "Dividendo trimestral ordinario (1,30 USD desde el 1T26, +5 centavos) más un dividendo variable anual que reparte el exceso de caja: 6,15 USD por los resultados de 2025 (≈ 2.200 M), pagado el 26-mar-2026 [16]. Con los trimestrales, 4.000 M y una rentabilidad del 4,2 % sobre el precio medio de 2025 [16]. Programa de recompra de hasta 3.000 M aprobado en diciembre de 2024 [17], que la empresa empezó a usar en 2026: 695 M en el 2T26 [3].",
+    "adquisiciones": [
+      {
+        "anio": "2018",
+        "objetivo": "NEX Group (BrokerTec, EBS, optimización)",
+        "importe": 5500,
+        "ev_ebitda": null,
+        "financiacion": "Efectivo y acciones",
+        "resultado": "Añadió la negociación electrónica de bonos (BrokerTec) y divisas (EBS). Los negocios de optimización se aportaron en 2021 a la empresa conjunta OSTTRA con S&P Global, vendida a KKR en 2025 con una plusvalía de 306 M para CME [2]."
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "La dirección asigna el capital con disciplina: en cinco años no ha comprado nada relevante y ha repartido 15.463 M en dividendos, el 94 % del FCF, con un dividendo variable que devuelve el exceso de caja cada año [12, 16]. La única gran compra de la década, NEX (2018), salió razonable: BrokerTec es hoy la base de la compensación de bonos y de TreasuryLink, y la parte de optimización se vendió con plusvalía en OSTTRA [2]. El ROIC subió del 7,4 % de 2021 al 11,8 % de 2025 porque el capital invertido no ha crecido (27.895 frente a 27.378 M) y el NOPAT sí; ese capital es sobre todo fondo de comercio e intangibles de CBOT y NYMEX. Las recompras de 2026, con la acción por debajo de máximos, son la primera señal de que la dirección cree que cotiza barata."
+  },
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "Terrence A. Duffy",
+        "cargo": "Presidente y consejero delegado (presidente ejecutivo desde el relevo de 2027)",
+        "desde": "2002",
+        "participacion_pct": 0.02,
+        "trayectoria": "Operador del parqué de CME, presidente desde 2002 y consejero delegado desde 2016. Dirigió la fusión con CBOT y NYMEX y el paso a la negociación electrónica; con él el ADV ha marcado récord cuatro años seguidos. Dejará el cargo de consejero delegado el 1-mar-2027 (o al presentar el 10-K de 2026) y seguirá como presidente ejecutivo hasta el 31-dic-2027 [28, 41]."
+      },
+      {
+        "nombre": "Lynne Fitzpatrick",
+        "cargo": "Presidenta y directora financiera; consejera delegada desde 2027",
+        "desde": "2006",
+        "participacion_pct": null,
+        "trayectoria": "Entró en CME en 2006 tras banca de inversión en Credit Suisse y UBS; directora financiera y después presidenta. Ha dado la guía de gastos de los últimos años y lleva la estrategia de compensación de valores y de la nube [28, 41]."
+      },
+      {
+        "nombre": "Hilda Harris Piell",
+        "cargo": "Directora de recursos humanos",
+        "desde": null,
+        "participacion_pct": null,
+        "trayectoria": "Vendió unas 5.753 acciones a 304,63 USD (≈ 1,75 M) en 2026, según los Form 4 recogidos por Quantisnow [42]."
+      }
+    ],
+    "historial_guidance": [
+      {
+        "anio": "2026",
+        "guia": "Gastos operativos ajustados sin licencias ≈ 1.695 M; capex ≈ 85 M; tipo impositivo ajustado del 23,5-24,5 % [18]",
+        "real": "Gastos +7 % en el 1S26 por licencias, la transición a Google Cloud y salarios [19]; pendiente de cierre",
+        "cumplida": "Parcial"
+      },
+      {
+        "anio": "2025",
+        "guia": "Gastos operativos ajustados sin licencias (guía de febrero de 2025, cifra no leída)",
+        "real": "≈ 1.625 M de gastos ajustados sin licencias [18]",
+        "cumplida": "Sí"
+      }
+    ],
+    "confianza": "Baja",
+    "comentario": "El equipo es estable y conoce el negocio: Duffy preside desde 2002 y Fitzpatrick lleva veinte años en la casa [28, 41]. La sucesión es interna y anunciada con nueve meses de antelación, lo que reduce el riesgo, aunque Duffy seguirá como presidente ejecutivo todo 2027 y la nueva consejera delegada llega en plena batalla regulatoria por los perpetuos. La guía de gastos se ha cumplido en los últimos años según la empresa [18]. Restan las ventas de Duffy (35.000 acciones en mayo a 298,51 USD y 15.000 en septiembre) [47, 48], que no son una señal fuerte en un consejero delegado que se retira, pero tampoco ayudan."
+  },
+  "gobierno": {
+    "consejo": [
+      {
+        "nombre": "Terrence A. Duffy",
+        "cargo": "Presidente y consejero delegado",
+        "tipo": "Ejecutivo",
+        "desde": "2002",
+        "comisiones": "Ejecutiva"
+      },
+      {
+        "nombre": "William R. Shepard",
+        "cargo": "Consejero",
+        "tipo": "Otro externo",
+        "desde": null,
+        "comisiones": null
+      }
+    ],
+    "presidente_ceo_separados": false,
+    "presidente_ejecutivo": true,
+    "consejero_coordinador": null,
+    "una_accion_un_voto": false,
+    "operaciones_vinculadas_relevantes": false,
+    "variable_ligado_rentabilidad": null,
+    "auditoria_independiente": true,
+    "insiders_sin_operaciones": false,
+    "accionista_control": false,
+    "presidente_vinculado_control": false,
+    "cambios_cupula_24m": 0,
+    "voto_remuneracion_pct": 88,
+    "voto_remuneracion_contra_pct": 11.7,
+    "voto_remuneracion_contra_libre_pct": null,
+    "voto_cupula_pct": null,
+    "remuneracion_ceo": {
+      "anio": "2025",
+      "total": 23.39,
+      "fijo": 1.99,
+      "variable_corto": null,
+      "variable_largo": null,
+      "ratio_salario_medio": null
+    },
+    "remuneracion": "Duffy cobró 23,39 M USD en 2025 según la tabla resumen de retribuciones (23,95 M en 2024); la «retribución efectivamente pagada», que recoge la revalorización de sus acciones, fue de 38,20 M [43]. El fijo es solo el 8,5 % (≈ 2,0 M); el resto, bonus anual y acciones [44]. La media del resto de directivos fue de 3,72 M [43]. El voto consultivo de la junta del 14-may-2026 salió con un 88,0 % a favor y un 11,7 % en contra sobre los votos presentes (259,6 M a favor, 34,5 M en contra) [45]: apoyo suficiente, pero por debajo del 90 % habitual en el S&P 500. No se han podido leer en el proxy las métricas del variable ni las cláusulas de recuperación.",
+    "accionistas": [
+      {
+        "nombre": "Inversores institucionales (agregado)",
+        "pct": 87.75,
+        "tipo": "Institucionales",
+        "variacion": "Sin cambios relevantes conocidos"
+      }
+    ],
+    "insiders": [
+      {
+        "fecha": "2026-05-15",
+        "persona": "Terrence A. Duffy (presidente y consejero delegado)",
+        "operacion": "Venta",
+        "acciones": 35000,
+        "importe": 10.45
+      },
+      {
+        "fecha": "2026-09-10",
+        "persona": "Terrence A. Duffy (presidente y consejero delegado)",
+        "operacion": "Venta",
+        "acciones": 15000,
+        "importe": 4.12
+      }
+    ],
+    "control_y_defensas": "No hay accionista de control: el capital está en manos de institucionales (87,75 %) [46]. La estructura no es de una acción, un voto: las acciones de clase B, que llevan los derechos de negociación de los antiguos miembros de CME, CBOT y NYMEX, eligen a una parte del consejo por su cuenta y tienen voto en algunos cambios de las reglas de negociación (estructura conocida de CME; el número de consejeros que eligen no se ha leído en el proxy de 2026). Google tiene preferentes de la serie G desde 2021, sin control. El presidente es ejecutivo y lo seguirá siendo hasta finales de 2027, tras el relevo como consejero delegado.",
+    "alertas": [
+      "Relevo del consejero delegado anunciado el 17-jun-2026 (efectivo en 2027), en plena caída del 34 % desde máximos; Duffy sigue como presidente ejecutivo durante 2027 [41].",
+      "Ventas del consejero delegado: 35.000 acciones a 298,51 USD en mayo (−39 % de su posición directa) y 15.000 a ≈ 274,7 USD en septiembre de 2026; le quedan unas 40.630 acciones directas [47, 48].",
+      "Demanda de CME contra su regulador (CFTC) por los perpetuos, que la CFTC califica de «frívola»: riesgo de relación con el supervisor [49]."
+    ],
+    "confianza": "Baja"
+  },
+  "consenso": {
+    "guidance": "CME no da guía de ingresos ni de beneficio. Para 2026 guía gastos operativos ajustados sin licencias de unos 1.695 M (1.625 M en 2025), capex neto de unos 85 M y un tipo impositivo ajustado del 23,5-24,5 % (conferencia del 4T25, 4-feb-2026) [18]. En el 10-Q del 2T26 los gastos del semestre suben un 7 % por licencias, la transición a Google Cloud y salarios, sin cambio de guía publicado [19]. Resultados del 3T26 el 21-oct-2026 [80].",
+    "estimaciones": [
+      {
+        "periodo": "2026e",
+        "ingresos": 7035,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 12.23,
+        "dpa": null,
+        "fuente": "TickFlow (BPA ajustado) e ingresos de Zacks (7.030 M) [56, 57]; Barchart daba 11,90 en abril"
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 7370,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 12.89,
+        "dpa": null,
+        "fuente": "TickFlow, 9 analistas, rango 11,99-13,43 USD; FN2 12,92 [56, 58]"
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": null,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 13.25,
+        "dpa": null,
+        "fuente": "Derivado de la media de dos años de Wallstreetzen (13,07 USD para 2027-2028) menos 2027e; estimación propia, poco fiable [59]"
+      }
+    ],
+    "recomendaciones": {
+      "n_analistas": 18,
+      "comprar": 11,
+      "mantener": 4,
+      "vender": 3,
+      "po_medio": 291.81,
+      "po_min": 198,
+      "po_max": 330
+    },
+    "revisiones": "Estimaciones de BPA estables o ligeramente al alza en el año: la de 2026 pasó de 11,59 a 11,89 USD en 90 días hasta abril (Yahoo) [57] y hoy ronda 12,2 USD [56]; Erste rebajó la de 2027 de 12,94 a 12,91 USD en julio [60]. Los precios objetivo bajaron tras la caída de junio por los futuros perpetuos: UBS de 310 a 260 USD (neutral, 6-jul) [61], Deutsche Bank de 286 a 270 USD con rebaja a mantener (19-ago) [62], JPMorgan en infraponderar con 250 USD (23-jul) [62]; Morgan Stanley subió a 324-330 USD [63]. Objetivo medio: 291,81 USD con 11 comprar, 4 mantener y 3 vender (MarketBeat, 1-ago) [60]; Benzinga da 278 USD de media con 20 analistas, entre 198 y 330 USD (28-ago) [62].",
+    "base_ebitda": null,
+    "ajuste_ebitda_pct_ventas": null,
+    "confianza": "Media"
+  },
+  "bolsa": {
+    "tipo_rentabilidad": "de precio (sin dividendos)",
+    "rentabilidades": [
+      {
+        "periodo": "En el año",
+        "accion_pct": 1.8,
+        "indice_pct": null,
+        "sector_pct": null
+      },
+      {
+        "periodo": "1 año",
+        "accion_pct": 3.4,
+        "indice_pct": null,
+        "sector_pct": null
+      }
+    ],
+    "anual": [
+      {
+        "anio": "2019",
+        "accion_pct": 6.7,
+        "indice_pct": null
+      },
+      {
+        "anio": "2020",
+        "accion_pct": -9.3,
+        "indice_pct": null
+      },
+      {
+        "anio": "2021",
+        "accion_pct": 25.5,
+        "indice_pct": null
+      },
+      {
+        "anio": "2022",
+        "accion_pct": -26.4,
+        "indice_pct": null
+      },
+      {
+        "anio": "2023",
+        "accion_pct": 25.2,
+        "indice_pct": null
+      },
+      {
+        "anio": "2024",
+        "accion_pct": 10.3,
+        "indice_pct": null
+      },
+      {
+        "anio": "2025",
+        "accion_pct": 17.6,
+        "indice_pct": null
+      }
+    ],
+    "beta": 0.2,
+    "volatilidad_pct": null,
+    "max_drawdown_pct": null,
+    "posicion_corta_pct": null,
+    "confianza": "Baja",
+    "comentario": "La acción tocó máximo histórico el 3-mar-2026 (329,16 USD) con el volumen récord del 1T y cayó un 34 % hasta unos 218 USD a finales de junio: la CFTC aprobó el 29 de mayo los perpetuos de Kalshi, el 17 de junio se anunció el relevo de Duffy y el 18 CME demandó a la CFTC [29, 41, 53, 54]. Desde entonces ha recuperado hasta 278,08 USD (+1,8 % en el año, solo precio), apoyada en el volumen récord del 3T y en las recompras [3, 15]. Es un valor casi sin beta: 0,20 frente al S&P 500 en cinco años con datos mensuales, con un R² del 1 %, porque gana con la volatilidad [39]. Entre 2019 y 2025 subió en cinco de siete años; las caídas (2020 y 2022) llegaron con los tipos a cero o en la transición."
+  },
+  "multiplos_historicos": {
+    "serie": [
+      {
+        "anio": "2021",
+        "precio_cierre": 228.46,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": true
+      },
+      {
+        "anio": "2022",
+        "precio_cierre": 168.16,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2023",
+        "precio_cierre": 210.6,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2024",
+        "precio_cierre": 232.23,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2025",
+        "precio_cierre": 273.08,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "Con el BPA publicado, CME cotiza a 23,6 veces el beneficio de los últimos 12 meses, en línea con su media de cuatro años (23,9 veces) y por encima del mínimo (22,7 veces); el EV/EBITDA, 19,2 veces frente a una media de 20,2. Con el BPA ajustado, la base del objetivo a 12 meses, el PER de cierre fue de 21,1 a 24,4 veces en 2022-2025 y de 27-34 veces en 2019-2021, cuando los tipos a cero hundían la parte no operativa del beneficio (excluidos) [7, 64, 66, 67, 68, 69]. Nada estructural ha cambiado en el negocio; lo nuevo es el riesgo de competencia por los perpetuos, que el mercado cobra con un PER algo por debajo de la mediana."
+  },
+  "comparables": {
+    "criterio": "Siete cotizadas de infraestructura de mercados y datos: bolsas con cámara de compensación (ICE, Nasdaq, Deutsche Börse, LSEG), una plataforma electrónica de renta fija (Tradeweb) y dos proveedores de índices y datos (S&P Global, MSCI), que encajan peor. Cboe, el comparable más puro en opciones, queda fuera porque no se tienen sus cifras del mismo proveedor. Cifras de MarketScreener y Stock Analysis al cierre del 7-oct-2026, tomadas del informe de ICE del repo (8-oct) y, para ICE, del de Deutsche Börse (14-oct); no se han actualizado al 13-oct (una semana) [39, 40].",
+    "empresas": [
+      {
+        "nombre": "Intercontinental Exchange",
+        "ticker": "ICE",
+        "pais": "US",
+        "capitalizacion": 85969,
+        "ev_ventas": 9.66,
+        "ev_ebitda_ltm": 14.4,
+        "ev_ebitda_ntm": 13.3,
+        "per_ntm": 21,
+        "crecimiento_pct": 9.1,
+        "margen_ebitda_pct": 67.2,
+        "roic_pct": 8.1,
+        "dn_ebitda": 2.6,
+        "fcf_yield_pct": 5.4
+      },
+      {
+        "nombre": "Nasdaq",
+        "ticker": "NDAQ",
+        "pais": "US",
+        "capitalizacion": 51387,
+        "ev_ventas": 11.34,
+        "ev_ebitda_ltm": 19.4,
+        "ev_ebitda_ntm": 15.7,
+        "per_ntm": 23.9,
+        "crecimiento_pct": 10.9,
+        "margen_ebitda_pct": 58.4,
+        "roic_pct": 10.4,
+        "dn_ebitda": 2.66,
+        "fcf_yield_pct": 3.9
+      },
+      {
+        "nombre": "London Stock Exchange Group",
+        "ticker": "LSEG",
+        "pais": "GB",
+        "capitalizacion": 52797,
+        "ev_ventas": 5.09,
+        "ev_ebitda_ltm": 10.5,
+        "ev_ebitda_ntm": 9,
+        "per_ntm": 24.1,
+        "crecimiento_pct": 6.2,
+        "margen_ebitda_pct": 48.4,
+        "roic_pct": 6.5,
+        "dn_ebitda": 1.68,
+        "fcf_yield_pct": 6.6
+      },
+      {
+        "nombre": "Deutsche Börse",
+        "ticker": "DB1",
+        "pais": "DE",
+        "capitalizacion": 58881,
+        "ev_ventas": 9.36,
+        "ev_ebitda_ltm": 16.1,
+        "ev_ebitda_ntm": 13.7,
+        "per_ntm": 22,
+        "crecimiento_pct": 7,
+        "margen_ebitda_pct": 58.3,
+        "roic_pct": 14,
+        "dn_ebitda": 1.07,
+        "fcf_yield_pct": 4.6
+      },
+      {
+        "nombre": "S&P Global",
+        "ticker": "SPGI",
+        "pais": "US",
+        "capitalizacion": 116487,
+        "ev_ventas": 8.34,
+        "ev_ebitda_ltm": 16.3,
+        "ev_ebitda_ntm": 15.6,
+        "per_ntm": 22.8,
+        "crecimiento_pct": 0.1,
+        "margen_ebitda_pct": 51.1,
+        "roic_pct": 11.1,
+        "dn_ebitda": 1.45,
+        "fcf_yield_pct": 4.7
+      },
+      {
+        "nombre": "MSCI",
+        "ticker": "MSCI",
+        "pais": "US",
+        "capitalizacion": 40376,
+        "ev_ventas": 14.7,
+        "ev_ebitda_ltm": 24.2,
+        "ev_ebitda_ntm": 19.8,
+        "per_ntm": 26.1,
+        "crecimiento_pct": 10.8,
+        "margen_ebitda_pct": 60.8,
+        "roic_pct": 39.9,
+        "dn_ebitda": 2.98,
+        "fcf_yield_pct": 3.6
+      },
+      {
+        "nombre": "Tradeweb Markets",
+        "ticker": "TW",
+        "pais": "US",
+        "capitalizacion": 25135,
+        "ev_ventas": 11.23,
+        "ev_ebitda_ltm": 20.8,
+        "ev_ebitda_ntm": 16.4,
+        "per_ntm": 28.1,
+        "crecimiento_pct": 13.3,
+        "margen_ebitda_pct": 54,
+        "roic_pct": 10.1,
+        "dn_ebitda": -1.88,
+        "fcf_yield_pct": 4.2
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "CME tiene el mayor margen EBITDA del grupo (71,5 % frente a 48-67 %) y un crecimiento esperado del 6,0 %, algo por debajo de la mediana (7-9 %), con la menor deuda (0,2 veces). A 21,8 veces el beneficio de los próximos 12 meses cotiza por debajo de la mediana del PER de los comparables (23,9 veces), y a 19,2 veces el EBITDA de los últimos 12 meses, por encima de la de EV/EBITDA, porque su EBITDA no recoge el beneficio de las garantías ni de S&P DJI. El PER es el múltiplo que mejor compara (mide todo el beneficio): con la mediana, la acción valdría 304,70 USD. Los comparables de datos (MSCI, S&P Global) suben la mediana sin compartir el riesgo de volumen, y faltan Cboe y Euronext; por eso pesan el 35 %."
+  },
+  "transacciones": {
+    "operaciones": [
+      {
+        "fecha": "2026-07",
+        "objetivo": "MarketAxess Holdings",
+        "comprador": "Intercontinental Exchange",
+        "ev": 5580,
+        "ev_ventas": 6.41,
+        "ev_ebitda": 13,
+        "prima_pct": 33,
+        "excluir": false,
+        "comentario": "Pendiente de cierre (1S27). 167 USD por acción en efectivo; múltiplos sobre los últimos 12 meses a junio de 2026, calculados en el informe de ICE del repo a partir de las cuentas de MarketAxess [39]."
+      },
+      {
+        "fecha": "2023-06",
+        "objetivo": "Adenza",
+        "comprador": "Nasdaq",
+        "ev": 10500,
+        "ev_ventas": 17.8,
+        "ev_ebitda": 30.7,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Software de riesgo y regulación comprado a Thoma Bravo; múltiplos sobre la previsión de 2023 de Nasdaq (estimación del informe de ICE) [39]."
+      },
+      {
+        "fecha": "2020-11",
+        "objetivo": "IHS Markit",
+        "comprador": "S&P Global",
+        "ev": 44000,
+        "ev_ventas": 10.26,
+        "ev_ebitda": 24,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Fusión en acciones; valor empresa publicado de 44.000 M y EBITDA ajustado del ejercicio a noviembre de 2020 [39]."
+      },
+      {
+        "fecha": "2025",
+        "objetivo": "OSTTRA (50 % de CME y 50 % de S&P Global)",
+        "comprador": "KKR",
+        "ev": 3100,
+        "ev_ventas": null,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": true,
+        "comentario": "Venta de la empresa conjunta de post-contratación; plusvalía de 306,1 M para CME (10-K 2025 de CME). Sin múltiplo publicado en las fuentes leídas."
+      },
+      {
+        "fecha": "2018-03",
+        "objetivo": "NEX Group",
+        "comprador": "CME Group",
+        "ev": 5500,
+        "ev_ventas": null,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": true,
+        "comentario": "Compra de BrokerTec y EBS por unos 3.900 M GBP; sin múltiplo verificado en esta sesión."
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "Las operaciones con múltiplo van de 13 veces el EBITDA (MarketAxess, un activo de crecimiento lento) a 24-31 veces (IHS Markit, Adenza, datos y software con tipos bajos) [39]. No sirven para valorar CME: con unos 101.000 M de capitalización no hay comprador posible y la competencia lo impediría. Peso cero; se muestran como referencia del valor de los activos de infraestructura de mercado."
+  },
+  "dcf": {
+    "anios": [
+      {
+        "periodo": "2026e",
+        "crecimiento_pct": 7.9,
+        "margen_ebitda_pct": 72,
+        "amortizacion_pct_ventas": 4.6,
+        "capex_pct_ventas": 1.3,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 24,
+        "fijo": true
+      },
+      {
+        "periodo": "2027e",
+        "crecimiento_pct": 5.5,
+        "margen_ebitda_pct": 71.5,
+        "amortizacion_pct_ventas": 4.2,
+        "capex_pct_ventas": 1.4,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 24,
+        "fijo": false
+      },
+      {
+        "periodo": "2028e",
+        "crecimiento_pct": 5,
+        "margen_ebitda_pct": 71.5,
+        "amortizacion_pct_ventas": 3.8,
+        "capex_pct_ventas": 1.5,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 24,
+        "fijo": false
+      },
+      {
+        "periodo": "2029e",
+        "crecimiento_pct": 5,
+        "margen_ebitda_pct": 71.5,
+        "amortizacion_pct_ventas": 3.4,
+        "capex_pct_ventas": 1.6,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 24,
+        "fijo": false
+      },
+      {
+        "periodo": "2030e",
+        "crecimiento_pct": 4.5,
+        "margen_ebitda_pct": 71.5,
+        "amortizacion_pct_ventas": 3,
+        "capex_pct_ventas": 1.7,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 24,
+        "fijo": false
+      },
+      {
+        "periodo": "2031e",
+        "crecimiento_pct": 4,
+        "margen_ebitda_pct": 71,
+        "amortizacion_pct_ventas": 2.6,
+        "capex_pct_ventas": 1.8,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 24,
+        "fijo": false
+      },
+      {
+        "periodo": "2032e",
+        "crecimiento_pct": 3.5,
+        "margen_ebitda_pct": 71,
+        "amortizacion_pct_ventas": 2.2,
+        "capex_pct_ventas": 1.9,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 24,
+        "fijo": false
+      },
+      {
+        "periodo": "2033e",
+        "crecimiento_pct": 3,
+        "margen_ebitda_pct": 71,
+        "amortizacion_pct_ventas": 2,
+        "capex_pct_ventas": 2,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 24,
+        "fijo": false
+      }
+    ],
+    "wacc": {
+      "tasa_libre_pct": 5.22,
+      "beta": 0.7,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 0,
+      "coste_deuda_pct": 5.3,
+      "tasa_impositiva_pct": 24,
+      "peso_deuda_pct": 3
+    },
+    "terminal": {
+      "metodo": "gordon",
+      "crecimiento_pct": 3,
+      "multiplo_salida": 16
+    },
+    "etapa2": {
+      "usar": false,
+      "anios": 5,
+      "margen_final_pct": null,
+      "justificacion": null
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "Base de 2026e casi cerrada (+7,9 %, fija): 1S26 publicado (≈ 3.579 M, +7 %) y volumen del 3T26 +16 % [3, 4, 15]. Desde 2027e, 5,5 % que baja al 3,0 % en 2033e, en línea con el 5,0 % anual de 2019-2025 y por debajo del 8,6 % de 2021-2025, que llevó el viento a favor de la subida de tipos [11]. El consenso de ingresos (7.035 M en 2026e y 7.370 M en 2027e) [56, 57] coincide con la proyección (7.036 y 7.423 M).",
+      "margenes": "Margen EBITDA del 72,0 % en 2026e (el 1S26 lleva un margen operativo ajustado de alrededor del 70 % más la depreciación) y del 71,5 % después, que baja al 71,0 % desde 2031e; en 2021-2025 pasó del 64,6 % al 69,9 % [1, 21]. No se supone más apalancamiento operativo porque la guía de gastos crece un 4 % y hay inversión en productos nuevos (cripto 24/7, compensación de valores, eventos) [18].",
+      "inversion": "Capex del 1,3 % de las ventas en 2026e (guía de 85 M) [18] que sube hasta el 2,0 % en 2033e para igualar la amortización. La amortización baja del 4,6 % al 2,0 % porque los intangibles comprados (unos 230 M al año) se acaban de amortizar. Circulante comercial nulo: se cobra en el día a través de la cámara. Tipo impositivo del 24 %, en la guía ajustada (23,5-24,5 %) [18].",
+      "wacc": "Tasa libre del 5,22 % (bono de EE. UU. a 10 años del 13-oct-2026) [78] y prima de mercado del 5,5 %, las de los demás informes del 14-oct. Beta de 0,70: la mensual de CME frente al S&P 500 es 0,20 con un R² del 1 % y la de una cesta de bolsas (CME, Nasdaq, Cboe) 0,53, que ajustada a la Blume queda en 0,69 [39]. Coste de los fondos propios del 9,1 %, deuda al 5,3 % antes de impuestos con un peso del 3 %: WACC del 8,92 %. Con la prima implícita del mercado (4,2 %) el WACC baja al 8,04 %.",
+      "terminal": "Crecimiento perpetuo del 3,0 %: inflación esperada de alrededor del 2,5 % más un crecimiento real bajo, por debajo de la tasa libre menos medio punto (4,7 %). Es conservador para un negocio con poder de precios; cada medio punto más de crecimiento terminal añade un 6-7 % al valor. Múltiplo de salida implícito coherente con los 19 veces el EBITDA de hoy."
+    },
+    "sostenibilidad": {
+      "puente_ingresos": [
+        {
+          "periodo": "2026e",
+          "volumen_pct": 7,
+          "precio_pct": 1,
+          "otros_pct": -0.1,
+          "comentario": "Volumen: ADV +22 % en el 1T, −1 % en el 2T y +16 % en el 3T26 [3, 4, 15]; el ingreso por contrato baja por la mezcla (más tipos), así que el volumen aporta 7 puntos. Precio: subida de tarifas de febrero. Otros: datos de mercado +20 % compensados por la plusvalía no repetida y otros ingresos."
+        },
+        {
+          "periodo": "2027e",
+          "volumen_pct": 3,
+          "precio_pct": 1.5,
+          "otros_pct": 1,
+          "comentario": "Volumen +3 %, por debajo del 5 % anual de 2019-2025: un año sin el récord de 2026. Precio +1,5 % por la subida anual de tarifas. Otros +1 %: datos de mercado (+13 % en 2025) y productos nuevos (TreasuryLink, futuros sobre acciones) [1, 37]."
+        },
+        {
+          "periodo": "2028e",
+          "volumen_pct": 2.5,
+          "precio_pct": 1.5,
+          "otros_pct": 1,
+          "comentario": "Volumen +2,5 %, crecimiento estructural de la deuda pública y de los particulares, menos la cuota que se lleven los perpetuos. Precio +1,5 %. Otros +1 % de datos de mercado."
+        },
+        {
+          "periodo": "2029e",
+          "volumen_pct": 2.5,
+          "precio_pct": 1.5,
+          "otros_pct": 1,
+          "comentario": "Igual que 2028e: sin cambio de ciclo supuesto."
+        },
+        {
+          "periodo": "2030e",
+          "volumen_pct": 2,
+          "precio_pct": 1.5,
+          "otros_pct": 1,
+          "comentario": "Volumen +2 %, que se acerca al crecimiento nominal de la economía; precio y datos sin cambio."
+        }
+      ],
+      "mercado_final": null,
+      "veredicto": "Sí",
+      "justificacion": "Sí. El crecimiento proyectado (4,8 % de media) apenas necesita capital: el capex es el 1,3-2,0 % de las ventas y la reinversión neta es negativa, así que la prueba es el poder de precios y la cuota, no el ROIC incremental. Las dos se cumplen: CME sube tarifas cada año sin perder cuota en sus contratos de referencia (más del 99 % de los futuros de tipos de EE. UU.) [36], el volumen crece un 5 % anual a lo largo del ciclo (récords en 2022-2025) y el 3T26 ha sido récord pese a los perpetuos [15]. La proyección (3 % de volumen y 1,5 % de precio) queda por debajo de lo logrado en 2019-2025. La prueba de cuota se hace a mano: no hay tamaño de mercado en dólares (mercado_final en null) y la cuota en contratos de futuros, ≈ 23 %, no necesita subir para cumplir el plan."
+    },
+    "lectura": "El DCF da 216,51 USD por acción, un 22,1 % por debajo del precio, con un WACC del 8,92 % y un valor terminal que pesa en torno a dos tercios. El DCF inverso es la clave: para justificar 278,08 USD hay que crecer un 9,3 % anual en 2027e-2033e, frente al 4,4 % de nuestra base y al 5,0 % de 2019-2025, o aceptar una rentabilidad del 7,5 %, por debajo del WACC (8,9 %) y del que pide hoy el mercado (8,0 %). Es exigente frente a la historia: el mercado paga a CME como un activo de muy bajo riesgo (beta de 0,20) y descuenta su caja a menos del 8 %. Con la prima implícita del mercado el DCF sube a 249,93 USD, aún un 10 % por debajo. El DCF no recoge todo el valor: el diferencial de las garantías y S&P DJI entran en el puente por 9.400 M (unos 26 USD por acción, estimación propia). Si los tipos bajan, esa parte cae; si CME logra crecer al 6-7 %, como en 2021-2025, el DCF se acercaría al precio.",
+    "confianza": "Media"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": -3,
+        "ajuste_margen_pp": -2,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": 2.5,
+        "multiplo_salida": null,
+        "narrativa": "La CFTC aprueba perpetuos sobre el S&P 500 y el oro, los particulares migran a Kalshi y Coinbase y la Reserva Federal baja tipos con un mercado tranquilo: el volumen se estanca y los ingresos crecen un 1-2 % al año con dos puntos menos de margen, como en 2019-2021, cuando el ADV no creció y el BPA ajustado bajó de 6,80 a 6,67 USD [8, 66]."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Volumen al 2,5-3 % y tarifas al 1,5 % anual; los perpetuos se quedan en cripto y particulares; margen estable en torno al 71 %; tipos altos que sostienen el beneficio de las garantías."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": 1.5,
+        "ajuste_margen_pp": 1,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "La deuda pública y la volatilidad de tipos y energía mantienen el volumen en máximos, TreasuryLink y la compensación de bonos al contado añaden ingresos y el margen sube un punto: crecimiento del 6,5-7 % anual, como en 2021-2025."
+      }
+    ],
+    "comentario": "El DCF da un rango de 173,30 a 236,53 USD, todo por debajo del precio: con un WACC del 8,9 %, ni el alcista justifica 278 USD. La asimetría del valor intrínseco es negativa (−0,40). La lectura a 12 meses es distinta: con nuestro BPA y la regla de múltiplos, el bajista pierde un 4,5 %, el base gana un 8,2 % y el alcista un 25,9 %, con una asimetría de 2,54; el precio está sostenido por el múltiplo que el mercado paga por un negocio sin beta, no por los flujos descontados a nuestro WACC.",
+    "confianza": "Media"
+  },
+  "suma_partes": {
+    "aplica": false,
+    "descuento_holding_pct": 0,
+    "partes": [],
+    "comentario": "No aplica: un solo negocio de derivados con cámara. La participación en S&P DJI y el diferencial de las garantías se valoran en el puente (asociadas, 9.400 M, estimación propia).",
+    "confianza": "Media"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2026-06-30",
+      "deuda_financiera": 3400,
+      "arrendamientos": 0,
+      "caja": 2300,
+      "minoritarios": 0,
+      "pensiones": 0,
+      "asociadas": 9400,
+      "otros_ajustes": 0
+    },
+    "rab": null,
+    "referencia_mercado": {
+      "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+      "prima_implicita_pct": 4.2,
+      "fecha": "2026-10",
+      "fuente": "Damodaran, ERPbymonth.xlsx, octubre de 2026 [79]"
+    },
+    "pesos": {
+      "dcf": 40,
+      "comparables": 35,
+      "transacciones": 0,
+      "suma_partes": 0,
+      "escenarios": 25
+    },
+    "objetivo_12m": {
+      "ejercicio": "2028e",
+      "casos": [
+        {
+          "escenario": "Bajista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 12.05,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 7.356 M (3 puntos menos de crecimiento en 2027-2028) con un margen EBITDA del 69,5 %: EBITDA de 5.113 M, depreciación sin intangibles comprados de 135 M, resultado no operativo de 800 M (tipos más bajos y menos garantías), impuesto del 24 % y 364,5 M de acciones."
+        },
+        {
+          "escenario": "Base",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 13.41,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 7.794 M y margen del 71,5 %: EBITDA de 5.573 M, depreciación de 140 M, 1.000 M de resultado no operativo recurrente (S&P DJI, diferencial de las garantías menos 175 M de intereses), impuesto del 24 % y 364,5 M de acciones sin recompras no anunciadas."
+        },
+        {
+          "escenario": "Alcista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 14.11,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 8.018 M (+1,5 puntos de crecimiento) y margen del 72,5 %: EBITDA de 5.813 M, 1.100 M de resultado no operativo con más garantías y tipos altos, impuesto del 24 %."
+        }
+      ],
+      "per_historico": {
+        "actual": 21.6,
+        "mediana_5a": 22.6,
+        "minimo_5a": 21.1,
+        "media_larga": 24,
+        "excluidos": "PER de cierre con BPA ajustado: 2019 29,5x; 2020 27,1x; 2021 34,3x; 2022 21,1x; 2023 22,5x; 2024 22,6x; 2025 24,4x [7, 64, 66, 67, 68, 69]. Se excluyen 2020 y 2021: tipos a cero, beneficio de las garantías casi nulo y BPA por debajo del de 2019. Mediana de 2021-2025 sin excluidos (cuatro años): 22,6x; media larga 2019 y 2022-2025: 24,0x. Actual = 278,08 ÷ 12,87 (nuestro BPA de 2027e)."
+      },
+      "comparables_per": {
+        "mediana": 23.9
+      },
+      "consenso": {
+        "bpa_ano1": 12.23,
+        "bpa_ano2": 12.89,
+        "objetivo_medio": 291.81,
+        "objetivo_min": 198,
+        "objetivo_max": 330,
+        "analistas": 18,
+        "tendencia_3m": "recortes",
+        "fuente": "TickFlow, MarketBeat y Benzinga [56, 60, 62]"
+      },
+      "diferencia_consenso": "Nuestro BPA de 2027e (12,87 USD) coincide con el del consenso (12,89) y el de 2028e (13,41) queda un 1 % por encima de la estimación disponible (13,25, poco fiable). Nuestro precio base (289,66 USD) está un 0,7 % por debajo del objetivo medio de los analistas (291,81): no hay diferencia que explicar en beneficio ni en múltiplo. Calibración: la fórmula da 10,97 USD para 2025 frente a 11,20 publicados (−2 %), por ajustes menores que no se han podido leer.",
+      "media": null,
+      "comentario": "El objetivo a 12 meses (293,06 USD) queda un 19 % por encima del valor intrínseco (245,93 USD): el mercado paga a CME un PER de 21-24 veces que nuestro DCF, con un WACC del 8,9 %, no justifica. Para cerrar la distancia haría falta que el precio bajara o que CME creciera al 6-7 % anual durante años. A 12 meses manda el múltiplo, y los catalizadores son los resultados del 21-oct y la demanda contra la CFTC."
+    },
+    "comentario": "Pesos: DCF 40 %, comparables 35 % y escenarios 25 %; transacciones fuera (no hay comprador posible). La dispersión es grande: el DCF y los escenarios dan 173-237 USD y los comparables por PER 285,58-320,00 USD. La diferencia es la tasa de descuento: el mercado y los comparables pagan a CME como un activo de riesgo bajo, con una rentabilidad implícita del 7,5 %, y nuestro WACC es del 8,9 %. El valor intrínseco ponderado es de 245,93 USD (−11,6 %), y 267,24 USD con la prima del mercado. El puente suma 9.400 M de asociadas (S&P DJI y el diferencial de las garantías, estimación propia), unos 26 USD por acción: es la partida más incierta y depende de los tipos.",
+    "confianza": "Media"
+  },
+  "catalizadores": {
+    "items": [
+      {
+        "fecha": "21-oct-2026",
+        "evento": "Resultados del 3T26",
+        "efecto": "Volumen récord (29,4 M diarios, +16 %); consenso de BPA de 2,94 USD [26, 80]",
+        "probabilidad": "Alta",
+        "sentido": "+"
+      },
+      {
+        "fecha": "4T26",
+        "evento": "Lanzamiento de TreasuryLink y de futuros sobre acciones individuales",
+        "efecto": "Nuevas fuentes de ingresos en bonos al contado y en acciones [21]",
+        "probabilidad": "Media",
+        "sentido": "+"
+      },
+      {
+        "fecha": "2026-2027 (sin fecha)",
+        "evento": "Sentencia en la demanda de CME contra la CFTC por los perpetuos",
+        "efecto": "Si gana, frena a Kalshi y Coinbase; si pierde, se abre la puerta a perpetuos sobre índices [29, 30]",
+        "probabilidad": "Media",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2026-2027",
+        "evento": "Decisión de la CFTC sobre los perpetuos de Kalshi sobre el S&P 500",
+        "efecto": "Competencia directa con los E-mini en particulares [38]",
+        "probabilidad": "Media",
+        "sentido": "−"
+      },
+      {
+        "fecha": "feb-2027",
+        "evento": "Dividendo variable por los resultados de 2026 y guía de gastos de 2027",
+        "efecto": "Con un 2026 récord, el variable debería subir desde 6,15 USD [16]",
+        "probabilidad": "Alta",
+        "sentido": "+"
+      },
+      {
+        "fecha": "1-mar-2027",
+        "evento": "Lynne Fitzpatrick, consejera delegada",
+        "efecto": "Primer relevo en la dirección desde 2016; Duffy sigue de presidente ejecutivo hasta finales de 2027 [41]",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "dic-2026 / jun-2027",
+        "evento": "Compensación central obligatoria de bonos del Tesoro al contado y repos (SEC)",
+        "efecto": "Oportunidad para la cámara de valores de CME frente a la FICC [37]",
+        "probabilidad": "Media",
+        "sentido": "+"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "riesgos": {
+    "items": [
+      {
+        "riesgo": "Perpetuos y nuevos mercados para particulares",
+        "tipo": "Competencia y regulación",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−20 % (escenario bajista)",
+        "mitigante": "Los institucionales, la mayor parte del volumen, necesitan vencimientos y compensación cruzada; CME puede lanzar sus propios perpetuos",
+        "senal": "Aprobación de perpetuos sobre el S&P 500 u oro; volumen de microcontratos y cripto de CME a la baja"
+      },
+      {
+        "riesgo": "Bajada de tipos y calma en los mercados",
+        "tipo": "Ciclo",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−10 % a −20 %",
+        "mitigante": "La volatilidad suele subir en los ciclos de bajadas; la deuda pública crece",
+        "senal": "ADV de tipos por debajo de 12 M diarios; tipos a corto por debajo del 3 %"
+      },
+      {
+        "riesgo": "Caída del beneficio de las garantías reinvertidas",
+        "tipo": "Financiero",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−5 % a −8 % (unos 26 USD por acción en el puente)",
+        "mitigante": "Más garantías con más volumen; CME fija qué parte del rendimiento devuelve a los miembros",
+        "senal": "Resultado no operativo trimestral por debajo de 200 M"
+      },
+      {
+        "riesgo": "Pérdida de la demanda contra la CFTC y peor relación con el regulador",
+        "tipo": "Regulatorio",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−5 %",
+        "mitigante": "CME es la infraestructura sistémica de referencia de la CFTC",
+        "senal": "Sentencia desfavorable o nuevas autorizaciones a competidores"
+      },
+      {
+        "riesgo": "Competencia en tipos de interés (FMX, ICE)",
+        "tipo": "Competencia",
+        "probabilidad": "Baja",
+        "impacto": "Alto",
+        "efecto_valor": "−15 %",
+        "mitigante": "Más del 99 % de cuota y compensación cruzada con BrokerTec",
+        "senal": "Cuota de FMX en SOFR o en bonos del Tesoro por encima del 5 %"
+      },
+      {
+        "riesgo": "Fallo tecnológico o de la cámara (migración a Google Cloud)",
+        "tipo": "Operativo",
+        "probabilidad": "Baja",
+        "impacto": "Alto",
+        "efecto_valor": "−10 %",
+        "mitigante": "Migración gradual; capital propio y fondo de garantía",
+        "senal": "Caídas del sistema o incidencias de compensación"
+      },
+      {
+        "riesgo": "Transición en la dirección",
+        "tipo": "Gobierno",
+        "probabilidad": "Baja",
+        "impacto": "Bajo",
+        "efecto_valor": "−3 %",
+        "mitigante": "Sucesora interna, veinte años en la empresa",
+        "senal": "Salidas de directivos clave en 2027"
+      }
+    ],
+    "premortem": "Octubre de 2029: CME ha perdido un 40 %. La CFTC aprobó en 2027 los perpetuos sobre el S&P 500, el oro y el petróleo, y Kalshi, Coinbase y Robinhood ofrecieron a los particulares apalancamiento de 20 a 50 veces sin vencimientos: los microcontratos, que habían sido el motor del volumen de particulares, cayeron a la mitad. A la vez, la Reserva Federal bajó los tipos al 2,5 % con una economía en calma; el volumen de tipos volvió a los niveles de 2019-2021 y el beneficio de las garantías se redujo a la mitad. El BPA se estancó en 12 USD y el mercado dejó de pagar 22 veces por un negocio que ya no crecía y cuya cuota se discutía: a 15-16 veces, como cotizaron las bolsas en 2022, la acción cayó a 180-190 USD. La demanda contra la CFTC se perdió y el relevo de Duffy coincidió con la peor racha de la empresa. Los indicadores que lo habrían anticipado: el volumen de los perpetuos sobre índices, el ADV de microcontratos de CME y el resultado no operativo trimestral.",
+    "confianza": "Media"
+  },
+  "esg": {
+    "calificaciones": [],
+    "materialidad": "Los asuntos que mueven las cifras son la gobernanza de la cámara y la ciberseguridad: CME es una infraestructura sistémica y un fallo de compensación o un ataque tendría coste regulatorio y de reputación. La migración a Google Cloud (alianza de 2021) concentra el riesgo tecnológico en un proveedor [10]. El impacto ambiental directo es pequeño (oficinas y centros de datos).",
+    "controversias": "La disputa con la CFTC por los perpetuos (demanda del 18-jun-2026), que la CFTC califica de «frívola» y en la que han intervenido Kalshi y el Hyperliquid Policy Center (9-sep-2026) [29, 30]. No se han encontrado sanciones relevantes en los últimos tres años en las fuentes leídas.",
+    "confianza": "Baja"
+  },
+  "preguntas": {
+    "items": [
+      {
+        "tema": "Particulares y cripto",
+        "pregunta": "¿Qué parte de los ingresos de compensación viene de microcontratos, cripto y clientes minoristas?",
+        "por_que": "Es la parte expuesta a los perpetuos; la dirección no la ha cuantificado."
+      },
+      {
+        "tema": "Garantías",
+        "pregunta": "¿Cuánto aporta el diferencial de las garantías reinvertidas al año y cómo cambia con 100 puntos básicos menos de tipos?",
+        "por_que": "Unos 26 USD por acción del valor dependen de ello (estimación propia)."
+      },
+      {
+        "tema": "Perpetuos propios",
+        "pregunta": "¿Lanzará CME sus propios perpetuos si pierde la demanda, y con qué apalancamiento?",
+        "por_que": "Decide si la amenaza se convierte en producto o en pérdida de cuota."
+      },
+      {
+        "tema": "TreasuryLink y compensación de bonos",
+        "pregunta": "¿Qué ingresos espera de la compensación de bonos al contado y repos cuando sea obligatoria?",
+        "por_que": "Es el principal motor de crecimiento nuevo frente a la FICC."
+      },
+      {
+        "tema": "Dividendo y recompras",
+        "pregunta": "¿Por qué recompra ahora, después de años sin hacerlo, y cómo reparte la caja entre el dividendo variable y las recompras?",
+        "por_que": "Cambia el BPA (sin recompras no anunciadas en nuestro cálculo) y la señal de valor de la dirección."
+      },
+      {
+        "tema": "S&P DJI",
+        "pregunta": "¿Hasta cuándo tiene asegurada la licencia de los índices S&P y en qué condiciones?",
+        "por_que": "El E-mini S&P 500 es uno de sus contratos clave y S&P Global es el socio mayoritario."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sentimiento": {
+    "tono": "Dividido",
+    "tendencia": "Mejora",
+    "revisadas": [
+      {
+        "plataforma": "Zacks (artículo con comentarios, vía Chartmill)",
+        "fecha": "2026-07",
+        "n_comentarios": 1,
+        "tono": "Dividido",
+        "resumen": "Tras la caída del 19,8 % en tres meses, ve la bajada como oportunidad por la franquicia y la caja, pero recoge el peso de la valoración exigente, la competencia y la recogida de beneficios tras el rally del 1T [70]."
+      },
+      {
+        "plataforma": "Trefis (serie de notas sobre la racha bajista)",
+        "fecha": "2026-06",
+        "n_comentarios": 4,
+        "tono": "Negativo",
+        "resumen": "Diez sesiones seguidas de caídas y un −19 % a finales de junio; el mensaje es que el mercado descuenta una pérdida de cuota por los perpetuos que todavía no aparece en el volumen [71]."
+      },
+      {
+        "plataforma": "Capwolf (resumen de la mejora de KBW)",
+        "fecha": "2026-06",
+        "n_comentarios": 1,
+        "tono": "Positivo",
+        "resumen": "«Comprar la caída»: el miedo a los perpetuos es exagerado porque CME tiene poca exposición a particulares [72]."
+      },
+      {
+        "plataforma": "Seeking Alpha (artículo de autor independiente)",
+        "fecha": "2026-07",
+        "n_comentarios": 1,
+        "tono": "Neutro",
+        "resumen": "Plantea si perseguir el impulso o esperar una caída; reconoce la calidad, pero ve el precio poco exigente solo tras la corrección [73]."
+      },
+      {
+        "plataforma": "Simply Wall St y MarketBeat (narrativas y resumen de la conferencia del 2T26)",
+        "fecha": "2026-08",
+        "n_comentarios": 3,
+        "tono": "Dividido",
+        "resumen": "Un analista recorta el objetivo en unos 14 USD por la competencia de los perpetuos; otros ven recorrido tras la caída. La conferencia giró casi entera en defender que los perpetuos no sustituyen a los futuros institucionales [21, 74]."
+      },
+      {
+        "plataforma": "Prensa cripto y de mercados (The Block, Finance Magnates, FOW)",
+        "fecha": "2026-09",
+        "n_comentarios": 4,
+        "tono": "Negativo",
+        "resumen": "En el mundo cripto se ve la demanda de CME contra la CFTC como un intento de frenar a la competencia; el análisis de Pirrong en FOW concluye que los perpetuos sirven a particulares y no a coberturistas [75, 76, 77]."
+      }
+    ],
+    "temas": [
+      {
+        "tema": "Futuros perpetuos (Kalshi, Coinbase) como amenaza al foso",
+        "postura": "Bajista",
+        "peso": "Alto",
+        "contraste": "El volumen de CME no lo refleja: el 3T26 fue récord (29,4 M diarios, +16 %) y septiembre +22 %. Cripto y los microcontratos son una parte pequeña de los ingresos; el riesgo es real si la CFTC aprueba perpetuos sobre el S&P 500, todavía pendiente."
+      },
+      {
+        "tema": "Valoración tras la caída",
+        "postura": "Dividida",
+        "peso": "Medio",
+        "contraste": "A 278 USD cotiza a unas 21,6 veces nuestro BPA de 2027e, por debajo de su mediana de cinco años (22,6x) y de la de los comparables (23,9x)."
+      },
+      {
+        "tema": "Relevo de Duffy por Fitzpatrick",
+        "postura": "Dividida",
+        "peso": "Medio",
+        "contraste": "Sucesión interna y ordenada (efectiva en 2027, Duffy sigue de presidente ejecutivo); las ventas de acciones de Duffy en mayo y septiembre alimentan las dudas."
+      },
+      {
+        "tema": "Dividendo variable y recompras",
+        "postura": "Alcista",
+        "peso": "Medio",
+        "contraste": "Dividendo total de 11,15 USD por los resultados de 2025 (4,0 % al precio de hoy) y 695 M de recompras en el 2T26."
+      }
+    ],
+    "lectura": "El sentimiento está dividido y ha mejorado desde junio: la caída del 34 % por los perpetuos se vivió como una amenaza al foso, y los artículos de julio y agosto ya hablan de comprar la caída [70, 71, 72]. El dato no da la razón a los pesimistas: el volumen del 3T26 fue récord (+16 %) y el de septiembre +22 % [15]. El riesgo que señalan los foros sí está en el informe (escenario bajista, riesgos y catalizadores): la aprobación de perpetuos sobre el S&P 500 sería el golpe que todavía no se ha producido. No hay euforia ni capitulación; el consenso de los particulares coincide con el de los analistas (mantener). No cambia la decisión.",
+    "confianza": "Baja"
+  },
+  "fuentes": [
+    {
+      "id": 1,
+      "titulo": "CME Group Inc. Reports Fourth Consecutive Year of Record Annual Revenue (resultados del 4T25 y de 2025, Form 8-K, Ex. 99.1)",
+      "editor": "CME Group (SEC EDGAR)",
+      "tipo": "Primaria",
+      "fecha": "2026-02-04",
+      "url": "https://www.sec.gov/Archives/edgar/data/1156375/000115637526000006/exhibit991123125.htm"
+    },
+    {
+      "id": 2,
+      "titulo": "CME Group Inc. Form 10-K del ejercicio 2025 (extractos de búsqueda: resultado no operativo, flujo operativo)",
+      "editor": "CME Group (SEC EDGAR)",
+      "tipo": "Primaria",
+      "fecha": "2026-02-26",
+      "url": "https://www.sec.gov/Archives/edgar/data/1156375/000115637526000009/cme-20251231.htm"
+    },
+    {
+      "id": 3,
+      "titulo": "CME Group Inc. Reports Strong Financial Results for Q2 2026 (Form 8-K, Ex. 99.1)",
+      "editor": "CME Group (SEC EDGAR)",
+      "tipo": "Primaria",
+      "fecha": "2026-07-22",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001156375/000115637526000042/exhibit9916302026.htm"
+    },
+    {
+      "id": 4,
+      "titulo": "CME Group Inc. Reports Record Revenue, Adjusted Operating Income, Adjusted Net Income and Adjusted EPS for Q1 2026",
+      "editor": "CME Group",
+      "tipo": "Primaria",
+      "fecha": "2026-04-22",
+      "url": "https://www.cmegroup.com/media-room/press-releases/2026/4/22/cme_group_inc_reportsrecordrevenueadjustedoperatingincomeadjuste.html"
+    },
+    {
+      "id": 5,
+      "titulo": "CME Group Inc. Announces Third-Quarter 2025 Financial Results",
+      "editor": "CME Group",
+      "tipo": "Primaria",
+      "fecha": "2025-10-22",
+      "url": "https://www.cmegroup.com/media-room/press-releases/2025/10/22/cme_group_inc_announcesthird-quarter2025financialresults.html"
+    },
+    {
+      "id": 6,
+      "titulo": "CME Group Inc. Reports Fourth-Quarter and Full-Year 2023 Financial Results (Form 8-K, Ex. 99.1)",
+      "editor": "CME Group (SEC EDGAR)",
+      "tipo": "Primaria",
+      "fecha": "2024-02-14",
+      "url": "https://www.sec.gov/Archives/edgar/data/1156375/000115637524000007/exhibit991123123.htm"
+    },
+    {
+      "id": 7,
+      "titulo": "CME Group Inc. Reports Fourth-Quarter and Full-Year 2022 Financial Results (Form 8-K, Ex. 99.1)",
+      "editor": "CME Group (SEC EDGAR)",
+      "tipo": "Primaria",
+      "fecha": "2023-02-08",
+      "url": "https://www.sec.gov/Archives/edgar/data/1156375/000115637523000015/exhibit991123122.htm"
+    },
+    {
+      "id": 8,
+      "titulo": "CME Group Inc. Reports Fourth-Quarter and Full-Year 2021 Financial Results (Form 8-K, Ex. 99.1)",
+      "editor": "CME Group (SEC EDGAR)",
+      "tipo": "Primaria",
+      "fecha": "2022-02-09",
+      "url": "https://www.sec.gov/Archives/edgar/data/1156375/000115637522000048/exhibit991123121.htm"
+    },
+    {
+      "id": 9,
+      "titulo": "CME Group Inc. Form 10-K del ejercicio 2023 (beneficio antes de impuestos e impuestos 2021-2023)",
+      "editor": "CME Group (SEC EDGAR)",
+      "tipo": "Primaria",
+      "fecha": "2024-02-27",
+      "url": "https://www.sec.gov/Archives/edgar/data/1156375/000115637524000010/cme-20231231.htm"
+    },
+    {
+      "id": 10,
+      "titulo": "CME Group Inc. Form 10-K del ejercicio 2022 (depreciación, amortización de intangibles, preferentes de Google)",
+      "editor": "CME Group (SEC EDGAR)",
+      "tipo": "Primaria",
+      "fecha": "2023-02-28",
+      "url": "https://www.sec.gov/Archives/edgar/data/1156375/000115637523000020/cme-20221231.htm"
+    },
+    {
+      "id": 11,
+      "titulo": "CME Group Revenue, Operating Income and Net Income 2010-2025",
+      "editor": "Macrotrends",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www.macrotrends.net/stocks/charts/CME/cme-group/revenue"
+    },
+    {
+      "id": 12,
+      "titulo": "CME Group cash flow (annual): flujo operativo, capex, amortizaciones y dividendos",
+      "editor": "Barchart / finboard",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www.barchart.com/stocks/quotes/CME/cash-flow/annual"
+    },
+    {
+      "id": 13,
+      "titulo": "CME Group balance sheet (annual): patrimonio, deuda a largo plazo, caja",
+      "editor": "edgar.tools / Stockopedia",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://app.edgar.tools/companies/CME"
+    },
+    {
+      "id": 14,
+      "titulo": "CME Group Inc (NASDAQ:CME): fondo de comercio e intangibles",
+      "editor": "Kalkine Media",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://kalkinemedia.com/us/companies/nasdaq-cme"
+    },
+    {
+      "id": 15,
+      "titulo": "CME Group Reports Record Average Daily Volume for September and Q3, Driven by Growth Across Asset Classes",
+      "editor": "CME Group",
+      "tipo": "Primaria",
+      "fecha": "2026-10-02",
+      "url": "https://www.cmegroup.com/media-room/press-releases/2026/10/02/cme_group_reportsrecordaveragedailyvolumeforseptemberandq3driven.html"
+    },
+    {
+      "id": 16,
+      "titulo": "CME Group Declares Annual Variable Dividend and Q1 2026 Quarterly Dividend",
+      "editor": "CME Group",
+      "tipo": "Primaria",
+      "fecha": "2026-02-12",
+      "url": "https://www.cmegroup.com/media-room/press-releases/2026/2/12/cme_group_declaresannualvariabledividendandq12026quarterlydivide.html"
+    },
+    {
+      "id": 17,
+      "titulo": "CME Group announces annual variable dividend and $3 bln share buyback",
+      "editor": "Nasdaq (RTTNews)",
+      "tipo": "Prensa",
+      "fecha": "2024-12",
+      "url": "https://www.nasdaq.com/articles/cme-group-announces-annual-variable-dividend-and-3-bln-share-buyback"
+    },
+    {
+      "id": 18,
+      "titulo": "CME Group Inc. (NASDAQ:CME) Q4 2025 Earnings Call Transcript (guía de gastos, capex e impuestos de 2026)",
+      "editor": "Insider Monkey",
+      "tipo": "Primaria",
+      "fecha": "2026-02-04",
+      "url": "https://www.insidermonkey.com/blog/cme-group-inc-nasdaqcme-q4-2025-earnings-call-transcript-1689461/"
+    },
+    {
+      "id": 19,
+      "titulo": "CME Group Inc. Form 10-Q del 2T26 (acciones en circulación, gastos)",
+      "editor": "CME Group (SEC EDGAR)",
+      "tipo": "Primaria",
+      "fecha": "2026-07-23",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001156375/000115637526000047/cme-20260630.htm"
+    },
+    {
+      "id": 20,
+      "titulo": "CME dividend history",
+      "editor": "Quantisnow",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www.quantisnow.com/dividends/CME"
+    },
+    {
+      "id": 21,
+      "titulo": "CME Group Q2 Earnings Call Highlights",
+      "editor": "MarketBeat",
+      "tipo": "Prensa",
+      "fecha": "2026-07-22",
+      "url": "https://www.marketbeat.com/instant-alerts/cme-group-q2-earnings-call-highlights-2026-07-22/"
+    },
+    {
+      "id": 22,
+      "titulo": "CME Group's Q1 Earnings and Revenues Miss Estimates, ADV Rises Y/Y",
+      "editor": "Zacks",
+      "tipo": "Prensa",
+      "fecha": "2026-04-22",
+      "url": "https://www.zacks.com/stock/news/2905861/cme-groups-q1-earnings-and-revenues-miss-estimates-adv-rises-yy"
+    },
+    {
+      "id": 23,
+      "titulo": "CME Group bonds: 3,75 % 2028, 4,40 % 2030, 4,15 % 2048",
+      "editor": "The Right Trader",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://therighttrader.com/bonds/cme-group/3-75-2028"
+    },
+    {
+      "id": 24,
+      "titulo": "CME Group Declares Annual Variable Dividend (2022 y 2023)",
+      "editor": "CME Group (PR Newswire)",
+      "tipo": "Primaria",
+      "fecha": "2023-12-07",
+      "url": "https://www.streetinsider.com/PRNewswire/CME+Group+Declares+Annual+Variable+Dividend/22501292.html"
+    },
+    {
+      "id": 25,
+      "titulo": "CME Group Q3 Earnings Surpass Estimates, Revenues Decline Y/Y",
+      "editor": "Zacks (vía Finviz)",
+      "tipo": "Prensa",
+      "fecha": "2025-10-22",
+      "url": "https://finviz.com/news/200660/cme-group-q3-earnings-surpass-estimates-revenues-decline-yy"
+    },
+    {
+      "id": 26,
+      "titulo": "CME Group earnings forecasts and history",
+      "editor": "Benzinga",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www.benzinga.com/quote/CME/earnings-forecasts"
+    },
+    {
+      "id": 27,
+      "titulo": "CME Group: historia corporativa (resumen de la empresa)",
+      "editor": "Gurufocus / PitchBook",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www.gurufocus.com/stock/CME/summary"
+    },
+    {
+      "id": 28,
+      "titulo": "CME CEO Terry Duffy to Step Down, Board Names Lynne Fitzpatrick Successor",
+      "editor": "Finance Magnates",
+      "tipo": "Prensa",
+      "fecha": "2026-06-17",
+      "url": "https://www.financemagnates.com/executives/cme-ceo-terry-duffy-to-step-down-board-names-lynne-fitzpatrick-successor"
+    },
+    {
+      "id": 29,
+      "titulo": "Real Danger of Perpetual Futures Is Being Ignored / CME sues CFTC over perpetuals approval",
+      "editor": "Bloomberg Law",
+      "tipo": "Prensa",
+      "fecha": "2026-06-29",
+      "url": "https://news.bloomberglaw.com/securities-law/real-danger-of-perpetual-futures-is-being-ignored-aaron-brown"
+    },
+    {
+      "id": 30,
+      "titulo": "Hyperliquid Policy Center backs CFTC in fight over perpetual futures, asks court to drop CME's case",
+      "editor": "The Block",
+      "tipo": "Prensa",
+      "fecha": "2026-09-09",
+      "url": "https://theblock.co/news/regulation/2026-09-09-hyperliquid-policy-center-backs-cftc-fight-perpetual-futures-asks-court-drop-cme-case-414046"
+    },
+    {
+      "id": 31,
+      "titulo": "CME Group Inc. Reports Strong Financial Results for Q2 2026 y resumen de la conferencia",
+      "editor": "CME Group / MarketBeat",
+      "tipo": "Primaria",
+      "fecha": "2026-07-22",
+      "url": "https://www.cmegroup.com/media-room/press-releases/2026/7/22/cme_group_inc_reportsstrongfinancialresultsforq22026.html"
+    },
+    {
+      "id": 32,
+      "titulo": "CME says institutional clients have little appetite for perpetual futures",
+      "editor": "Hedgeweek",
+      "tipo": "Prensa",
+      "fecha": "2026-07",
+      "url": "https://www.hedgeweek.com/cme-says-institutional-clients-have-little-appetite-for-perpetual-futures/"
+    },
+    {
+      "id": 33,
+      "titulo": "ETD volume December 2025",
+      "editor": "FIA",
+      "tipo": "Sectorial",
+      "fecha": "2026-01",
+      "url": "https://www.fia.org/fia/articles/etd-volume-december-2025"
+    },
+    {
+      "id": 34,
+      "titulo": "CME Group's International Average Daily Volume Rises 22% to 9 Million Contracts in Q3 2026",
+      "editor": "CME Group (PR Newswire, vía Webull)",
+      "tipo": "Primaria",
+      "fecha": "2026-10",
+      "url": "https://www.webull.com/news/15711376575235072"
+    },
+    {
+      "id": 35,
+      "titulo": "Kalshi Hits $5.5B in Crypto Perps, Expanding Beyond Prediction Markets",
+      "editor": "Finance Magnates",
+      "tipo": "Prensa",
+      "fecha": "2026-06",
+      "url": "https://financemagnates.com/fintech/kalshi-hits-55b-in-crypto-perps-expanding-beyond-prediction-markets"
+    },
+    {
+      "id": 36,
+      "titulo": "New Futures Exchange to Compete with Chicago Mercantile Exchange (FMX) y CME Group: Threat of New Competition Is Fully Priced In",
+      "editor": "Gurufocus",
+      "tipo": "Analistas",
+      "fecha": "2025",
+      "url": "https://sgp.gurufocus.com/news/2455646"
+    },
+    {
+      "id": 37,
+      "titulo": "CME Group Q2 2026 Earnings Call (TreasuryLink, futuros sobre acciones, compensación de valores)",
+      "editor": "Webull (transcripción)",
+      "tipo": "Primaria",
+      "fecha": "2026-07-22",
+      "url": "https://www.webull.com/news/15271301022360576"
+    },
+    {
+      "id": 38,
+      "titulo": "Kalshi S&P 500 Perpetual Futures Filing Challenges CME Group",
+      "editor": "The Deep Dive",
+      "tipo": "Prensa",
+      "fecha": "2026-08",
+      "url": "https://thedeepdive.ca/kalshi-sp500-perpetual-futures-cme/"
+    },
+    {
+      "id": 39,
+      "titulo": "Informe de Intercontinental Exchange del repo (8-oct-2026): márgenes de competidores a partir de sus 10-K",
+      "editor": "Análisis propio (repo)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-08",
+      "url": "informes/ice-2026-10-08/datos-v2.json"
+    },
+    {
+      "id": 40,
+      "titulo": "Informe de Deutsche Börse del repo (14-oct-2026)",
+      "editor": "Análisis propio (repo)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-14",
+      "url": "informes/deutsche-borse-2026-10-14/datos.json"
+    },
+    {
+      "id": 41,
+      "titulo": "CME Group Inc. Form 8-K: relevo del consejero delegado (Ex. 99.1)",
+      "editor": "CME Group (SEC EDGAR)",
+      "tipo": "Primaria",
+      "fecha": "2026-06-17",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001156375/000119312526273442/d129556dex991.htm"
+    },
+    {
+      "id": 42,
+      "titulo": "CME insider transactions",
+      "editor": "Quantisnow",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://quantisnow.com/insiders/CME"
+    },
+    {
+      "id": 43,
+      "titulo": "CME Group Inc. PRE 14A 2026: tabla de retribución frente a resultados (XBRL)",
+      "editor": "CME Group (SEC EDGAR)",
+      "tipo": "Primaria",
+      "fecha": "2026-03-12",
+      "url": "https://www.sec.gov/Archives/edgar/data/1156375/000162828026017236/R2.htm"
+    },
+    {
+      "id": 44,
+      "titulo": "CME Group management (composición de la retribución del CEO)",
+      "editor": "Simply Wall St",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://simplywall.st/stocks/mx/diversified-financials/bmv-cme/cme-group-shares/management"
+    },
+    {
+      "id": 45,
+      "titulo": "CME Group Inc. Form 8-K: resultados de la junta anual de 2026",
+      "editor": "CME Group",
+      "tipo": "Primaria",
+      "fecha": "2026-05-14",
+      "url": "https://investor.cmegroup.com/node/55356/html"
+    },
+    {
+      "id": 46,
+      "titulo": "CME Group institutional ownership",
+      "editor": "MarketBeat",
+      "tipo": "Datos de mercado",
+      "fecha": "2025-10",
+      "url": "https://www.marketbeat.com/instant-alerts/filing-asset-management-one-co-ltd-has-6024-million-stock-position-in-cme-group-inc-cme-2025-10-24"
+    },
+    {
+      "id": 47,
+      "titulo": "Insider Selling: CME Group CEO Sells 35,000 Shares of Stock",
+      "editor": "InsiderTrades",
+      "tipo": "Prensa",
+      "fecha": "2026-05-19",
+      "url": "https://www.insidertrades.com/alerts/nasdaq-cme-insider-buying-and-selling-2026-05-19/"
+    },
+    {
+      "id": 48,
+      "titulo": "CME Group CEO Terrence A. Duffy sells USD 4.12 million in Class A common shares",
+      "editor": "Capital.com",
+      "tipo": "Prensa",
+      "fecha": "2026-09-11",
+      "url": "https://capital.com/en-au/news/cme-group-ceo-terrence-a-duffy-sells-usd-4-12-million"
+    },
+    {
+      "id": 49,
+      "titulo": "CME Sues CFTC Over Approval of Cryptocurrency Perpetual Futures",
+      "editor": "Sentisense (resumen de prensa)",
+      "tipo": "Prensa",
+      "fecha": "2026-06-18",
+      "url": "https://app.sentisense.ai/stories/cme-sues-cftc-over-approval-of-cryptocurrency-perpetual-futures-06182026"
+    },
+    {
+      "id": 50,
+      "titulo": "CME Group: CME Stock Price Quote & News (precio del 13-oct-2026)",
+      "editor": "Robinhood",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-13",
+      "url": "https://robinhood.com/us/en/stocks/CME/"
+    },
+    {
+      "id": 51,
+      "titulo": "CME Stock Price Quote (cierre del 12-oct-2026: 277,24 USD)",
+      "editor": "Morningstar",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-12",
+      "url": "https://www.morningstar.com/stocks/xnas/cme/quote"
+    },
+    {
+      "id": 52,
+      "titulo": "CME Group stock at EUR 252.58 with USD 101.3 billion market value",
+      "editor": "ad-hoc-news",
+      "tipo": "Prensa",
+      "fecha": "2026-10-12",
+      "url": "https://www.ad-hoc-news.de/boerse/news/corporate-news/cme-group-stock-at-eur-252-58-with-usd-101-3-billion-market-value/70303707"
+    },
+    {
+      "id": 53,
+      "titulo": "CME Group price history (máximo histórico de 329,16 USD el 3-mar-2026)",
+      "editor": "Stockscan",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07-31",
+      "url": "https://stockscan.io/stocks/CME/price-history"
+    },
+    {
+      "id": 54,
+      "titulo": "CME share price (rango de 52 semanas 218,31-328,87 USD, 11-ago-2026)",
+      "editor": "Upstox",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-08-11",
+      "url": "https://upstox.com/us-stocks/cme-share-price/"
+    },
+    {
+      "id": 55,
+      "titulo": "CME Group summary (volumen medio de 30 días)",
+      "editor": "Equibles",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-08-19",
+      "url": "https://equibles.com/stocks/CME"
+    },
+    {
+      "id": 56,
+      "titulo": "CME Group Inc. (CME) Stock Forecast",
+      "editor": "TickFlow",
+      "tipo": "Analistas",
+      "fecha": "2026-10",
+      "url": "https://www.tickflow.io/stock/CME/forecast"
+    },
+    {
+      "id": 57,
+      "titulo": "What to Expect From CME Group's Q1 2026 Earnings Report",
+      "editor": "Barchart (vía Yahoo Finance)",
+      "tipo": "Analistas",
+      "fecha": "2026-04",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/expect-cme-groups-q1-2026-111249246.html"
+    },
+    {
+      "id": 58,
+      "titulo": "CME Group financials and estimates",
+      "editor": "FN2",
+      "tipo": "Analistas",
+      "fecha": "2026-10",
+      "url": "https://cdn.fn2.ai/earnings/cme/financials"
+    },
+    {
+      "id": 59,
+      "titulo": "CME Group stock forecast",
+      "editor": "Wallstreetzen",
+      "tipo": "Analistas",
+      "fecha": "2026-10",
+      "url": "https://www.wallstreetzen.com/stocks/us/nasdaq/cme/stock-forecast"
+    },
+    {
+      "id": 60,
+      "titulo": "CME Group lowered to Strong Sell rating by Wall Street Zen (consenso de MarketBeat) y FY2027 EPS estimate reduced by Erste",
+      "editor": "MarketBeat",
+      "tipo": "Analistas",
+      "fecha": "2026-08-01",
+      "url": "https://www.marketbeat.com/instant-alerts/cme-group-nasdaqcme-lowered-to-strong-sell-rating-by-wall-street-zen-2026-08-01/"
+    },
+    {
+      "id": 61,
+      "titulo": "CME Group given new $260.00 price target at UBS Group",
+      "editor": "MarketBeat",
+      "tipo": "Analistas",
+      "fecha": "2026-07-06",
+      "url": "https://www.marketbeat.com/instant-alerts/cme-group-nasdaqcme-given-new-26000-price-target-at-ubs-group-2026-07-06/"
+    },
+    {
+      "id": 62,
+      "titulo": "CME Group analyst ratings (Deutsche Bank, JPMorgan, consenso)",
+      "editor": "Benzinga",
+      "tipo": "Analistas",
+      "fecha": "2026-08-28",
+      "url": "https://benzinga.com/quote/CME/analyst-ratings"
+    },
+    {
+      "id": 63,
+      "titulo": "CME Group given new $324.00 price target at Morgan Stanley",
+      "editor": "MarketBeat",
+      "tipo": "Analistas",
+      "fecha": "2026-07-10",
+      "url": "https://www.marketbeat.com/instant-alerts/cme-group-nasdaqcme-given-new-32400-price-target-at-morgan-stanley-2026-07-10/"
+    },
+    {
+      "id": 64,
+      "titulo": "CME returns by year (cierres anuales)",
+      "editor": "Chartrow",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07",
+      "url": "https://chartrow.com/quote/cme/returns"
+    },
+    {
+      "id": 65,
+      "titulo": "CME Group price target raised to $287.00 (precio de apertura de octubre de 2025)",
+      "editor": "MarketBeat",
+      "tipo": "Analistas",
+      "fecha": "2025-10-13",
+      "url": "https://www.marketbeat.com/instant-alerts/cme-group-nasdaqcme-price-target-raised-to-28700-2025-10-13"
+    },
+    {
+      "id": 66,
+      "titulo": "CME Group Inc. Reports Fourth-Quarter and Full-Year 2019 Financial Results (BPA ajustado 6,80)",
+      "editor": "CME Group (SEC EDGAR)",
+      "tipo": "Primaria",
+      "fecha": "2020-02-12",
+      "url": "https://www.sec.gov/Archives/edgar/data/1156375/000115637520000005/exhibit99112312019.htm"
+    },
+    {
+      "id": 67,
+      "titulo": "CME Group Inc. Reports Fourth-Quarter and Full-Year 2020 Financial Results (BPA ajustado 6,72)",
+      "editor": "CME Group (SEC EDGAR)",
+      "tipo": "Primaria",
+      "fecha": "2021-02-10",
+      "url": "https://www.sec.gov/Archives/edgar/data/1156375/000115637521000008/exhibit991123120.htm"
+    },
+    {
+      "id": 68,
+      "titulo": "CME Group Inc. Reports Fourth-Quarter and Full-Year 2023 Financial Results (BPA ajustado 9,34)",
+      "editor": "CME Group",
+      "tipo": "Primaria",
+      "fecha": "2024-02-14",
+      "url": "https://cmegroup.com/media-room/press-releases/2024/2/14/cme_group_inc_reportsfourth-quarterandfull-year2023financialresu.html"
+    },
+    {
+      "id": 69,
+      "titulo": "CME Group Inc. Reports Fourth Consecutive Year of Record Annual Revenue (BPA ajustado 2025 11,20 y 2024 10,26)",
+      "editor": "CME Group",
+      "tipo": "Primaria",
+      "fecha": "2026-02-04",
+      "url": "https://www.cmegroup.com/media-room/press-releases/2026/2/04/cme_group_inc_reportsfourthconsecutiveyearofrecordannualrevenuea.html"
+    },
+    {
+      "id": 70,
+      "titulo": "CME Stock Nears 52-Week Low After a 19.8% Drop: Time to Hold or Exit?",
+      "editor": "Zacks (vía Chartmill)",
+      "tipo": "Foros y redes",
+      "fecha": "2026-07",
+      "url": "https://www.chartmill.com/news/external/50527/cme-stock-nears-52-week-low-after-a-19-8-drop-time-to-hold-or-exit"
+    },
+    {
+      "id": 71,
+      "titulo": "CME Stock Plummets -19% With 10-Day Losing Streak",
+      "editor": "Trefis",
+      "tipo": "Foros y redes",
+      "fecha": "2026-06-30",
+      "url": "https://www.trefis.com/stock/cme/articles2/605110/cme-stock-plummets-19-with-10-day-losing-streak/2026-06-30"
+    },
+    {
+      "id": 72,
+      "titulo": "Why KBW Says Buy the Dip on CME Group Stock Now",
+      "editor": "Capwolf",
+      "tipo": "Foros y redes",
+      "fecha": "2026-06",
+      "url": "https://capwolf.com/why-kbw-says-buy-the-dip-on-cme-group-stock-now/"
+    },
+    {
+      "id": 73,
+      "titulo": "CME Group: Should Investors Chase Momentum Or Wait For A Dip?",
+      "editor": "Seeking Alpha",
+      "tipo": "Foros y redes",
+      "fecha": "2026-07",
+      "url": "https://seekingalpha.com/article/4791935-cme-group-should-investors-chase-momentum-or-wait-for-a-dip"
+    },
+    {
+      "id": 74,
+      "titulo": "CME Group future growth (narrativas de analistas y de la comunidad)",
+      "editor": "Simply Wall St",
+      "tipo": "Foros y redes",
+      "fecha": "2026-08",
+      "url": "https://www.simplywall.st/stocks/us/diversified-financials/nasdaq-cme/cme-group/future"
+    },
+    {
+      "id": 75,
+      "titulo": "CME CEO Duffy says new perpetual futures could be 'disaster waiting to happen'",
+      "editor": "The Block",
+      "tipo": "Foros y redes",
+      "fecha": "2026-06-05",
+      "url": "https://www.theblock.co/news/markets/2026-06-05-cme-ceo-duffy-says-new-perpetual-futures-could-disaster-waiting-happen-403795"
+    },
+    {
+      "id": 76,
+      "titulo": "CME Group Lawsuit Throws Spanner in Works for US-Based Crypto Perps Business",
+      "editor": "Finance Magnates",
+      "tipo": "Foros y redes",
+      "fecha": "2026-07",
+      "url": "https://san-1510.aid.brainsum.com/news/features/cme-group-lawsuit-throws-spanner-works-us-based-crypto-perps-business"
+    },
+    {
+      "id": 77,
+      "titulo": "Perpetual futures unlikely to disrupt traditional commodity markets, analysis finds",
+      "editor": "FOW",
+      "tipo": "Foros y redes",
+      "fecha": "2026-07-31",
+      "url": "https://www.fow.com/insights/perpetual-futures-unlikely-to-disrupt-traditional-commodity-markets-analysis-finds"
+    },
+    {
+      "id": 78,
+      "titulo": "US Treasury yields, 13-oct-2026 (bono a 10 años 5,22 %; FRED DGS10 5,24 % el 9-oct), tomado de los informes del repo del 14-oct",
+      "editor": "CNBC / FRED",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-13",
+      "url": "https://www.cnbc.com/2026/10/13/us-treasurys-bonds-yields.html"
+    },
+    {
+      "id": 79,
+      "titulo": "Implied Equity Risk Premium by month (ERPbymonth.xlsx), octubre de 2026: 4,20 %",
+      "editor": "Damodaran (NYU Stern)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx"
+    },
+    {
+      "id": 80,
+      "titulo": "CME Group Inc. Announces Third-Quarter 2026 Earnings Release, Conference Call (21-oct-2026)",
+      "editor": "CME Group",
+      "tipo": "Primaria",
+      "fecha": "2026-09-04",
+      "url": "https://www.cmegroup.com/media-room/press-releases/2026/9/04/cme_group_inc_announcesthird-quarter2026earningsreleaseconferenc.html"
+    }
+  ],
+  "calc": {
+    "version": 4,
+    "etiquetas": {
+      "margen_bruto": "M. bruto",
+      "margen_bruto_largo": "Margen bruto",
+      "dias_base": "sobre el coste de ventas"
+    },
+    "recomendacion": {
+      "recomendacion": "Mantener",
+      "regla": "Mantener",
+      "regla_absoluta": "Vender",
+      "regla_relativa": "Mantener",
+      "coincide": true,
+      "conviccion": "Baja",
+      "conviccion_sugerida": "Baja",
+      "conviccion_razones": [
+        "las reglas discrepan (absoluta Vender, relativa Mantener)"
+      ],
+      "reglas_discrepan": true,
+      "relativo": {
+        "prima_implicita_pct": 4.2,
+        "wacc": 8.04,
+        "ke": 8.16,
+        "dcf": 249.93,
+        "dcf_min": 229.68,
+        "dcf_max": 274.66,
+        "valor_objetivo": 267.24,
+        "alcista": 273.94,
+        "bajista": 196.23,
+        "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+        "fecha": "2026-10",
+        "potencial_pct": -3.9,
+        "rentabilidad_total_pct": 0.2,
+        "asimetria": -0.05
+      },
+      "objetivo_mercado_txt": " · con la prima implícita del mercado: 267,24 (-3,9 %)",
+      "objetivo_mercado_corto": " · mercado 267,24",
+      "rentabilidad_mercado_corto": " · mercado +0,2 %",
+      "potencial_pct": -11.6,
+      "dividendo_pct": 4.1,
+      "rentabilidad_total_pct": -7.5,
+      "alcista_pct": -14.9,
+      "bajista_pct": -37.7,
+      "asimetria": -0.4,
+      "comprar_por_debajo": 245.93,
+      "vender_por_encima": 338.23,
+      "tabla": [
+        {
+          "concepto": "Objetivo a 12 meses (nuestro PER × nuestro BPA 2028e, ponderado 25/50/25)",
+          "valor": "293,06 USD"
+        },
+        {
+          "concepto": "Bajista / base / alcista a 12 meses",
+          "valor": "21,1x × 12,05 = 254,26 · 21,6x × 13,41 = 289,66 · 24,0x × 14,11 = 338,64"
+        },
+        {
+          "concepto": "Rentabilidad a 12 meses: ponderada / del base (con dividendo)",
+          "valor": "9,5 % / 8,2 %"
+        },
+        {
+          "concepto": "Objetivo medio de los analistas (solo contraste)",
+          "valor": "291,81 (nuestro base -0,7 %)"
+        },
+        {
+          "concepto": "Valor intrínseco (síntesis ponderada, largo plazo)",
+          "valor": "245,93 USD"
+        },
+        {
+          "concepto": "Potencial sobre el precio actual",
+          "valor": "-11,6 %"
+        },
+        {
+          "concepto": "Rentabilidad por dividendo ordinario",
+          "valor": "4,1 %"
+        },
+        {
+          "concepto": "Rentabilidad total esperada a 12 meses",
+          "valor": "-7,5 %"
+        },
+        {
+          "concepto": "Escenario alcista / bajista",
+          "valor": "-14,9 % / -37,7 %"
+        },
+        {
+          "concepto": "Asimetría (ganancia alcista / pérdida bajista)",
+          "valor": "-0,40x"
+        },
+        {
+          "concepto": "Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado",
+          "valor": "7,5 % frente a 8,9 % y 8,0 %"
+        },
+        {
+          "concepto": "Valor objetivo con la prima implícita del mercado (4,2 %, WACC 8,0 %)",
+          "valor": "267,24 USD"
+        },
+        {
+          "concepto": "Rentabilidad total esperada con la prima del mercado",
+          "valor": "0,2 %"
+        },
+        {
+          "concepto": "Asimetría con la prima del mercado",
+          "valor": "-0,05x"
+        },
+        {
+          "concepto": "Regla absoluta (frente a su coste de capital)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Regla relativa (frente a lo que pide el mercado)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "¿La calidad de la empresa sostiene el crecimiento previsto?",
+          "valor": "Sí (4,8 % anual proyectado; sin inversión neta)"
+        },
+        {
+          "concepto": "Señal del valor intrínseco (regla del DCF, referencia)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Recomendación según la regla a 12 meses (Comprar: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender: ponderada ≤ -10 %)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Convicción según los criterios (las reglas discrepan (absoluta Vender, relativa Mantener))",
+          "valor": "Baja"
+        }
+      ],
+      "niveles": [
+        {
+          "accion": "Comprar",
+          "condicion": "Por debajo de 245,93 (ponderada a 12 meses ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco)"
+        },
+        {
+          "accion": "Mantener",
+          "condicion": "Entre 245,93 y 338,23"
+        },
+        {
+          "accion": "Vender o reducir",
+          "condicion": "Por encima de 338,23 (ponderada a 12 meses ≤ -10 %)"
+        }
+      ],
+      "precio_txt": "",
+      "valor_objetivo_txt": "",
+      "regla_valor_intrinseco": "Mantener",
+      "objetivo_12m": {
+        "completo": true,
+        "filas": [
+          {
+            "escenario": "Bajista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 12.05,
+            "multiplo": 21.1,
+            "multiplo_informe": null,
+            "origen": "mínimo de 5 años",
+            "precio": 254.26,
+            "rentabilidad_pct": -4.5,
+            "justificacion": "Ventas de 7.356 M (3 puntos menos de crecimiento en 2027-2028) con un margen EBITDA del 69,5 %: EBITDA de 5.113 M, depreciación sin intangibles comprados de 135 M, resultado no operativo de 800 M (tipos más bajos y menos garantías), impuesto del 24 % y 364,5 M de acciones."
+          },
+          {
+            "escenario": "Base",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 13.41,
+            "multiplo": 21.6,
+            "multiplo_informe": null,
+            "origen": "PER actual",
+            "precio": 289.66,
+            "rentabilidad_pct": 8.2,
+            "justificacion": "Ventas de 7.794 M y margen del 71,5 %: EBITDA de 5.573 M, depreciación de 140 M, 1.000 M de resultado no operativo recurrente (S&P DJI, diferencial de las garantías menos 175 M de intereses), impuesto del 24 % y 364,5 M de acciones sin recompras no anunciadas."
+          },
+          {
+            "escenario": "Alcista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 14.11,
+            "multiplo": 24,
+            "multiplo_informe": null,
+            "origen": "media histórica larga",
+            "precio": 338.64,
+            "rentabilidad_pct": 25.9,
+            "justificacion": "Ventas de 8.018 M (+1,5 puntos de crecimiento) y margen del 72,5 %: EBITDA de 5.813 M, 1.100 M de resultado no operativo con más garantías y tipos altos, impuesto del 24 %."
+          }
+        ],
+        "regla": {
+          "bajista": 21.1,
+          "base": 21.6,
+          "alcista": 24,
+          "bajista_origen": "mínimo de 5 años",
+          "base_origen": "PER actual",
+          "alcista_origen": "media histórica larga"
+        },
+        "probabilidades": [
+          25,
+          50,
+          25
+        ],
+        "objetivo_ponderado": 293.06,
+        "objetivo_simple": 294.19,
+        "objetivo_base": 289.66,
+        "rentabilidad_ponderada_pct": 9.5,
+        "rentabilidad_simple_pct": 9.9,
+        "rentabilidad_base_pct": 8.2,
+        "asimetria": 2.54,
+        "senal": "Mantener",
+        "comprar_por_debajo": 245.93,
+        "vender_por_encima": 338.23,
+        "consenso_objetivo": 291.81,
+        "diferencia_consenso_pct": -0.7
+      },
+      "rentabilidad_12m_pct": 9.5,
+      "rentabilidad_12m_txt": "+9,5 % (base +8,2 %)",
+      "objetivo_12m_txt": "293,06 USD"
+    },
+    "mercado": {
+      "precio": 278.08,
+      "acciones": 364.5,
+      "capitalizacion": 101360,
+      "deuda_neta": 1100,
+      "deuda_neta_ajustada": null,
+      "asimilables_deuda": null,
+      "ajustes_puente": -9400,
+      "valor_empresa": 93060,
+      "fecha_puente": "2026-06-30"
+    },
+    "clave": {
+      "capitalizacion": 101360,
+      "valor_empresa": 93060,
+      "deuda_neta": 1100,
+      "ev_ventas_ltm": 13.75,
+      "ev_ebitda_ltm": 19.2,
+      "ev_ebitda_ntm": null,
+      "ev_ebit_ltm": 20.6,
+      "per_ltm": 23.6,
+      "per_ntm": 21.8,
+      "fcf_yield_pct": 4.1,
+      "dividendo_pct": 4.1,
+      "dn_ebitda": 0.2,
+      "roic_pct": 11.8,
+      "margen_ebitda_pct": 71.5,
+      "deuda_neta_ajustada": 1100,
+      "dn_ebitda_ajustada": 0.2,
+      "crecimiento_tcac_pct": 8.6,
+      "ingresos_ntm": 7298,
+      "ebitda_ntm": null,
+      "bpa_ntm": 12.75,
+      "ebitda_ltm": 4840,
+      "ingresos_ltm": 6768,
+      "ev_rab": null
+    },
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 4690,
+        "crecimiento_pct": null,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 3030.6,
+        "margen_ebitda_pct": 64.6,
+        "ebit": 2645.2,
+        "margen_ebit_pct": 56.4,
+        "beneficio_neto": 2636.9,
+        "margen_neto_pct": 56.2,
+        "bpa": 7.29,
+        "dpa": 6.85,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 21.8,
+        "payout_pct": 94
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 5019,
+        "crecimiento_pct": 7,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 3378.6,
+        "margen_ebitda_pct": 67.3,
+        "ebit": 3016,
+        "margen_ebit_pct": 60.1,
+        "beneficio_neto": 2691.1,
+        "margen_neto_pct": 53.6,
+        "bpa": 7.4,
+        "dpa": 8.5,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 22.9,
+        "payout_pct": 115
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 5579,
+        "crecimiento_pct": 11.2,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 3788.6,
+        "margen_ebitda_pct": 67.9,
+        "ebit": 3436,
+        "margen_ebit_pct": 61.6,
+        "beneficio_neto": 3226.2,
+        "margen_neto_pct": 57.8,
+        "bpa": 8.86,
+        "dpa": 9.65,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 22.3,
+        "payout_pct": 109
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 6130,
+        "crecimiento_pct": 9.9,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 4268.3,
+        "margen_ebitda_pct": 69.6,
+        "ebit": 3931.5,
+        "margen_ebit_pct": 64.1,
+        "beneficio_neto": 3525.8,
+        "margen_neto_pct": 57.5,
+        "bpa": 9.67,
+        "dpa": 10.4,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 22.4,
+        "payout_pct": 108
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 6521,
+        "crecimiento_pct": 6.4,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 4560.4,
+        "margen_ebitda_pct": 69.9,
+        "ebit": 4229.5,
+        "margen_ebit_pct": 64.9,
+        "beneficio_neto": 4072.2,
+        "margen_neto_pct": 62.4,
+        "bpa": 11.16,
+        "dpa": 11.15,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 23.6,
+        "payout_pct": 100
+      }
+    ],
+    "tcac": {
+      "periodo": "2021-2025",
+      "ingresos_pct": 8.6,
+      "ebitda_pct": 10.8,
+      "bpa_pct": 11.2
+    },
+    "cuenta_y_prevision": [
+      {
+        "periodo": "2021",
+        "ingresos": 4690,
+        "ebitda": 3030.6
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 5019,
+        "ebitda": 3378.6
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 5579,
+        "ebitda": 3788.6
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 6130,
+        "ebitda": 4268.3
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 6521,
+        "ebitda": 4560.4
+      },
+      {
+        "periodo": "2026e",
+        "ingresos": 7036,
+        "ebitda": 5066
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 7423,
+        "ebitda": 5308
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 7794,
+        "ebitda": 5573
+      },
+      {
+        "periodo": "2029e",
+        "ingresos": 8184,
+        "ebitda": 5852
+      },
+      {
+        "periodo": "2030e",
+        "ingresos": 8552,
+        "ebitda": 6115
+      },
+      {
+        "periodo": "2031e",
+        "ingresos": 8894,
+        "ebitda": 6315
+      },
+      {
+        "periodo": "2032e",
+        "ingresos": 9206,
+        "ebitda": 6536
+      },
+      {
+        "periodo": "2033e",
+        "ingresos": 9482,
+        "ebitda": 6732
+      }
+    ],
+    "segmentos_ultimo": [
+      {
+        "nombre": "Compensación, negociación y otros",
+        "ingresos": 5718,
+        "peso_pct": 87.7,
+        "crecimiento_pct": 5.5,
+        "margen_pct": null,
+        "tipo_margen": null
+      },
+      {
+        "nombre": "Datos de mercado",
+        "ingresos": 803,
+        "peso_pct": 12.3,
+        "crecimiento_pct": 12.9,
+        "margen_pct": null,
+        "tipo_margen": null
+      }
+    ],
+    "segmentos_tabla": {
+      "periodos": [
+        "",
+        "",
+        "",
+        "2024",
+        "2025"
+      ],
+      "filas": [
+        {
+          "nombre": "Compensación, negociación y otros",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": 5419,
+          "v4": 5718
+        },
+        {
+          "nombre": "Datos de mercado",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": 711,
+          "v4": 803
+        }
+      ]
+    },
+    "segmentos_periodo": "2025",
+    "balance": [
+      {
+        "periodo": "2021",
+        "activo_total": 196780,
+        "intangibles": 0,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 2950,
+        "deuda_financiera": 3446,
+        "arrendamientos": 0,
+        "deuda_neta": 496,
+        "patrimonio": 27399,
+        "minoritarios": 0,
+        "dn_ebitda": 0.16,
+        "dn_patrimonio_pct": 2,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 27895,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 174176,
+        "intangibles": 0,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 2816,
+        "deuda_financiera": 3422,
+        "arrendamientos": 0,
+        "deuda_neta": 606,
+        "patrimonio": 26879,
+        "minoritarios": 0,
+        "dn_ebitda": 0.18,
+        "dn_patrimonio_pct": 2,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 27485,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 129706,
+        "intangibles": 0,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 3024,
+        "deuda_financiera": 3425,
+        "arrendamientos": 0,
+        "deuda_neta": 401,
+        "patrimonio": 26738,
+        "minoritarios": 0,
+        "dn_ebitda": 0.11,
+        "dn_patrimonio_pct": 1,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 27139,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 137447,
+        "intangibles": 0,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 2892.4,
+        "deuda_financiera": 3425,
+        "arrendamientos": 0,
+        "deuda_neta": 532.5999999999999,
+        "patrimonio": 26487,
+        "minoritarios": 0,
+        "dn_ebitda": 0.12,
+        "dn_patrimonio_pct": 2,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 24.4,
+        "capital_invertido": 27019.6,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 198424.2,
+        "intangibles": 30300.7,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 4416.9,
+        "deuda_financiera": 3425,
+        "arrendamientos": 0,
+        "deuda_neta": -991.8999999999996,
+        "patrimonio": 28728.2,
+        "minoritarios": 0,
+        "dn_ebitda": -0.22,
+        "dn_patrimonio_pct": -3,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 24.4,
+        "capital_invertido": 27736.300000000003,
+        "liquidez_corriente": null
+      }
+    ],
+    "perimetro_nota": "Cambio de perímetro (2025: el activo total crece un 44 % y los ingresos un 6 %). Los ratios de balance de ese año (días, circulante, deuda neta / EBITDA, ROIC) y los indicadores de calidad contable no son comparables con los anteriores.",
+    "flujos": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 2402,
+        "capex": 127,
+        "pagos_arrendamientos": 0,
+        "fcf": 2275,
+        "beneficio_neto": 2636.9,
+        "conversion_pct": 86,
+        "capex_ventas_pct": 2.7,
+        "capex_amortizacion": 0.33,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 2189,
+        "recompras": 0,
+        "emision_acciones": 965,
+        "retorno_accionista": 2189,
+        "payout_caja_pct": 83,
+        "acciones": 361.7,
+        "fcf_por_accion": 6.29
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 3056,
+        "capex": 90,
+        "pagos_arrendamientos": 0,
+        "fcf": 2966,
+        "beneficio_neto": 2691.1,
+        "conversion_pct": 110,
+        "capex_ventas_pct": 1.8,
+        "capex_amortizacion": 0.25,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 2634,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 2634,
+        "payout_caja_pct": 98,
+        "acciones": 363.7,
+        "fcf_por_accion": 8.16
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 3453.8,
+        "capex": 76.4,
+        "pagos_arrendamientos": 0,
+        "fcf": 3377.4,
+        "beneficio_neto": 3226.2,
+        "conversion_pct": 105,
+        "capex_ventas_pct": 1.4,
+        "capex_amortizacion": 0.22,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 3200,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 3200,
+        "payout_caja_pct": 99,
+        "acciones": 364.1,
+        "fcf_por_accion": 9.28
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 3690.5,
+        "capex": 94,
+        "pagos_arrendamientos": 0,
+        "fcf": 3596.5,
+        "beneficio_neto": 3525.8,
+        "conversion_pct": 102,
+        "capex_ventas_pct": 1.5,
+        "capex_amortizacion": 0.28,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 3550,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 3550,
+        "payout_caja_pct": 101,
+        "acciones": 364.6,
+        "fcf_por_accion": 9.86
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 4277.1,
+        "capex": 83.5,
+        "pagos_arrendamientos": 0,
+        "fcf": 4193.6,
+        "beneficio_neto": 4072.2,
+        "conversion_pct": 103,
+        "capex_ventas_pct": 1.3,
+        "capex_amortizacion": 0.25,
+        "adquisiciones": 0,
+        "desinversiones": null,
+        "dividendos": 3890,
+        "recompras": null,
+        "emision_acciones": 0,
+        "retorno_accionista": 3890,
+        "payout_caja_pct": 96,
+        "acciones": 364.9,
+        "fcf_por_accion": 11.49
+      }
+    ],
+    "flujos_acumulado": {
+      "periodo": "2021-2025",
+      "fcf": 16409,
+      "adquisiciones": 0,
+      "dividendos": 15463,
+      "recompras": 0,
+      "conversion_pct": 102
+    },
+    "rentabilidad": [
+      {
+        "periodo": "2021",
+        "nopat": 2068,
+        "capital_invertido": 27895,
+        "roic_pct": 7.4,
+        "roe_pct": 9.6,
+        "roa_pct": 1.3,
+        "margen_neto_pct": 56.2,
+        "rotacion": 0.02,
+        "apalancamiento": 7.18
+      },
+      {
+        "periodo": "2022",
+        "nopat": 2325,
+        "capital_invertido": 27690,
+        "roic_pct": 8.4,
+        "roe_pct": 9.9,
+        "roa_pct": 1.5,
+        "margen_neto_pct": 53.6,
+        "rotacion": 0.03,
+        "apalancamiento": 6.83
+      },
+      {
+        "periodo": "2023",
+        "nopat": 2669,
+        "capital_invertido": 27312,
+        "roic_pct": 9.8,
+        "roe_pct": 12,
+        "roa_pct": 2.1,
+        "margen_neto_pct": 57.8,
+        "rotacion": 0.04,
+        "apalancamiento": 5.67
+      },
+      {
+        "periodo": "2024",
+        "nopat": 3052,
+        "capital_invertido": 27079,
+        "roic_pct": 11.3,
+        "roe_pct": 13.2,
+        "roa_pct": 2.6,
+        "margen_neto_pct": 57.5,
+        "rotacion": 0.05,
+        "apalancamiento": 5.02
+      },
+      {
+        "periodo": "2025",
+        "nopat": 3231,
+        "capital_invertido": 27378,
+        "roic_pct": 11.8,
+        "roe_pct": 14.8,
+        "roa_pct": 2.4,
+        "margen_neto_pct": 62.4,
+        "rotacion": 0.04,
+        "apalancamiento": 6.08
+      }
+    ],
+    "roic_incremental_pct": null,
+    "roic_frente_wacc": [
+      {
+        "periodo": "2021",
+        "roic_pct": 7.4,
+        "roe_pct": 9.6,
+        "wacc_pct": 8.9
+      },
+      {
+        "periodo": "2022",
+        "roic_pct": 8.4,
+        "roe_pct": 9.9,
+        "wacc_pct": 8.9
+      },
+      {
+        "periodo": "2023",
+        "roic_pct": 9.8,
+        "roe_pct": 12,
+        "wacc_pct": 8.9
+      },
+      {
+        "periodo": "2024",
+        "roic_pct": 11.3,
+        "roe_pct": 13.2,
+        "wacc_pct": 8.9
+      },
+      {
+        "periodo": "2025",
+        "roic_pct": 11.8,
+        "roe_pct": 14.8,
+        "wacc_pct": 8.9
+      }
+    ],
+    "calidad": {
+      "periodo": "2025",
+      "altman_z": 0.46,
+      "altman_zona": "Zona de riesgo",
+      "piotroski_f": 5,
+      "piotroski_detalle": [
+        {
+          "criterio": "Beneficio neto positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "ROA mejora",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Flujo operativo > beneficio neto",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Baja el endeudamiento (deuda / activo)",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora la liquidez corriente",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "No emite acciones",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora el margen bruto",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "Mejora la rotación del activo",
+          "resultado": "No"
+        }
+      ],
+      "tabla": [
+        {
+          "indicador": "Altman Z",
+          "valor": "0,46",
+          "lectura": "Zona de riesgo (> 2,99 seguro; < 1,81 riesgo). No aplica a bancos ni aseguradoras, y subestima la solvencia de empresas con grandes anticipos de clientes o prefinanciación pública (contratistas, construcción), que inflan el pasivo. No fiable en 2025: cambio de perímetro (el balance incluye negocios sin su cuenta de resultados completa)."
+        },
+        {
+          "indicador": "Piotroski F",
+          "valor": "5 / 7",
+          "lectura": "Intermedio (4-6)."
+        },
+        {
+          "indicador": "Flujo operativo / beneficio neto (acumulado)",
+          "valor": "1,05x",
+          "lectura": "El beneficio se cobra."
+        }
+      ]
+    },
+    "dcf": {
+      "proyeccion": [
+        {
+          "periodo": "2026e",
+          "ingresos": 7036,
+          "crecimiento_pct": 7.9,
+          "ebitda": 5066,
+          "margen_ebitda_pct": 72,
+          "amortizacion": 324,
+          "ebit": 4742,
+          "impuestos": 1138,
+          "capex": 91,
+          "variacion_circulante": 0,
+          "fcff": 3836,
+          "fraccion": 0.21,
+          "factor": 0.991,
+          "vp": 812
+        },
+        {
+          "periodo": "2027e",
+          "ingresos": 7423,
+          "crecimiento_pct": 5.5,
+          "ebitda": 5308,
+          "margen_ebitda_pct": 71.5,
+          "amortizacion": 312,
+          "ebit": 4996,
+          "impuestos": 1199,
+          "capex": 104,
+          "variacion_circulante": 0,
+          "fcff": 4005,
+          "fraccion": 1,
+          "factor": 0.941,
+          "vp": 3765
+        },
+        {
+          "periodo": "2028e",
+          "ingresos": 7794,
+          "crecimiento_pct": 5,
+          "ebitda": 5573,
+          "margen_ebitda_pct": 71.5,
+          "amortizacion": 296,
+          "ebit": 5277,
+          "impuestos": 1266,
+          "capex": 117,
+          "variacion_circulante": 0,
+          "fcff": 4190,
+          "fraccion": 1,
+          "factor": 0.864,
+          "vp": 3619
+        },
+        {
+          "periodo": "2029e",
+          "ingresos": 8184,
+          "crecimiento_pct": 5,
+          "ebitda": 5852,
+          "margen_ebitda_pct": 71.5,
+          "amortizacion": 278,
+          "ebit": 5573,
+          "impuestos": 1338,
+          "capex": 131,
+          "variacion_circulante": 0,
+          "fcff": 4383,
+          "fraccion": 1,
+          "factor": 0.793,
+          "vp": 3473
+        },
+        {
+          "periodo": "2030e",
+          "ingresos": 8552,
+          "crecimiento_pct": 4.5,
+          "ebitda": 6115,
+          "margen_ebitda_pct": 71.5,
+          "amortizacion": 257,
+          "ebit": 5858,
+          "impuestos": 1406,
+          "capex": 145,
+          "variacion_circulante": 0,
+          "fcff": 4564,
+          "fraccion": 1,
+          "factor": 0.728,
+          "vp": 3321
+        },
+        {
+          "periodo": "2031e",
+          "ingresos": 8894,
+          "crecimiento_pct": 4,
+          "ebitda": 6315,
+          "margen_ebitda_pct": 71,
+          "amortizacion": 231,
+          "ebit": 6084,
+          "impuestos": 1460,
+          "capex": 160,
+          "variacion_circulante": 0,
+          "fcff": 4695,
+          "fraccion": 1,
+          "factor": 0.669,
+          "vp": 3137
+        },
+        {
+          "periodo": "2032e",
+          "ingresos": 9206,
+          "crecimiento_pct": 3.5,
+          "ebitda": 6536,
+          "margen_ebitda_pct": 71,
+          "amortizacion": 203,
+          "ebit": 6334,
+          "impuestos": 1520,
+          "capex": 175,
+          "variacion_circulante": 0,
+          "fcff": 4841,
+          "fraccion": 1,
+          "factor": 0.614,
+          "vp": 2971
+        },
+        {
+          "periodo": "2033e",
+          "ingresos": 9482,
+          "crecimiento_pct": 3,
+          "ebitda": 6732,
+          "margen_ebitda_pct": 71,
+          "amortizacion": 190,
+          "ebit": 6542,
+          "impuestos": 1570,
+          "capex": 190,
+          "variacion_circulante": 0,
+          "fcff": 4972,
+          "fraccion": 1,
+          "factor": 0.563,
+          "vp": 2800
+        }
+      ],
+      "etapa2": null,
+      "suma_vp": 23897,
+      "valor_terminal": 86530,
+      "vp_terminal": 46719,
+      "valor_empresa": 70617,
+      "peso_terminal_pct": 66,
+      "valor_acciones": 78917,
+      "valor_accion": 216.51,
+      "vt_gordon": 86530,
+      "vt_multiplo": 107714,
+      "multiplo_implicito": 12.9,
+      "g_implicito_pct": 4.11,
+      "metodo_terminal": "gordon",
+      "terminal_tabla": [
+        {
+          "concepto": "Método principal",
+          "valor": "Crecimiento a perpetuidad"
+        },
+        {
+          "concepto": "Crecimiento a perpetuidad",
+          "valor": "3,0 %"
+        },
+        {
+          "concepto": "Múltiplo EV/EBITDA de salida",
+          "valor": "16,0x"
+        },
+        {
+          "concepto": "Valor terminal (Gordon)",
+          "valor": "86.530"
+        },
+        {
+          "concepto": "Valor terminal (múltiplo)",
+          "valor": "107.714"
+        },
+        {
+          "concepto": "Múltiplo de salida implícito en Gordon",
+          "valor": "12,9x"
+        },
+        {
+          "concepto": "Crecimiento implícito en el múltiplo",
+          "valor": "4,11 %"
+        },
+        {
+          "concepto": "Peso del valor terminal en el valor empresa",
+          "valor": "66 %"
+        }
+      ],
+      "puente": [
+        {
+          "concepto": "Valor actual de los flujos proyectados",
+          "valor": "23.897"
+        },
+        {
+          "concepto": "Valor actual del valor terminal",
+          "valor": "46.719"
+        },
+        {
+          "concepto": "Valor empresa",
+          "valor": "70.617"
+        },
+        {
+          "concepto": "− Deuda financiera neta (con arrendamientos)",
+          "valor": "-1.100"
+        },
+        {
+          "concepto": "− Minoritarios, pensiones y otros; + asociadas",
+          "valor": "9.400"
+        },
+        {
+          "concepto": "Valor de los fondos propios",
+          "valor": "78.917"
+        },
+        {
+          "concepto": "Acciones diluidas (millones)",
+          "valor": "364,5"
+        },
+        {
+          "concepto": "Valor por acción",
+          "valor": "216,51"
+        }
+      ],
+      "composicion": [
+        {
+          "parte": "Flujos proyectados",
+          "valor": 23897
+        },
+        {
+          "parte": "Valor terminal",
+          "valor": 46719
+        }
+      ],
+      "wacc": 8.92,
+      "ke": 9.07,
+      "kd_despues": 4.03,
+      "wacc_tabla": [
+        {
+          "concepto": "Tasa libre de riesgo",
+          "valor": "5,22 %"
+        },
+        {
+          "concepto": "Beta",
+          "valor": "0,70"
+        },
+        {
+          "concepto": "Prima de riesgo de mercado",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Prima adicional (país, tamaño, específica)",
+          "valor": "0,00 %"
+        },
+        {
+          "concepto": "Coste de los fondos propios",
+          "valor": "9,07 %"
+        },
+        {
+          "concepto": "Coste de la deuda antes de impuestos",
+          "valor": "5,30 %"
+        },
+        {
+          "concepto": "Tipo impositivo",
+          "valor": "24,00 %"
+        },
+        {
+          "concepto": "Coste de la deuda después de impuestos",
+          "valor": "4,03 %"
+        },
+        {
+          "concepto": "Peso de la deuda (D / (D + E))",
+          "valor": "3,00 %"
+        },
+        {
+          "concepto": "WACC",
+          "valor": "8,92 %"
+        },
+        {
+          "concepto": "Prima de riesgo implícita del mercado (regla relativa)",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "WACC con la prima implícita del mercado",
+          "valor": "8,04 %"
+        }
+      ],
+      "potencial_pct": -22.1,
+      "sensibilidad": {
+        "eje_columnas": "Crecimiento a perpetuidad",
+        "columnas": [
+          "2,0 %",
+          "2,5 %",
+          "3,0 %",
+          "3,5 %",
+          "4,0 %"
+        ],
+        "filas": [
+          {
+            "wacc": "7,9 %",
+            "v0": 226.1,
+            "v1": 239.34,
+            "v2": 255.28,
+            "v3": 274.82,
+            "v4": 299.35
+          },
+          {
+            "wacc": "8,4 %",
+            "v0": 210.36,
+            "v1": 221.23,
+            "v2": 234.1,
+            "v3": 249.58,
+            "v4": 268.57
+          },
+          {
+            "wacc": "8,9 %",
+            "v0": 196.92,
+            "v1": 205.95,
+            "v2": 216.51,
+            "v3": 229.01,
+            "v4": 244.06
+          },
+          {
+            "wacc": "9,4 %",
+            "v0": 185.3,
+            "v1": 192.89,
+            "v2": 201.67,
+            "v3": 211.93,
+            "v4": 224.09
+          },
+          {
+            "wacc": "9,9 %",
+            "v0": 175.15,
+            "v1": 181.61,
+            "v2": 188.99,
+            "v3": 197.52,
+            "v4": 207.5
+          }
+        ]
+      },
+      "sensibilidad2": {
+        "columnas": [
+          "-2 pp",
+          "-1 pp",
+          "0 pp",
+          "+1 pp",
+          "+2 pp"
+        ],
+        "filas": [
+          {
+            "margen": "-2 pp",
+            "v0": 190.91,
+            "v1": 200.68,
+            "v2": 210.98,
+            "v3": 221.85,
+            "v4": 233.31
+          },
+          {
+            "margen": "-1 pp",
+            "v0": 193.37,
+            "v1": 203.29,
+            "v2": 213.74,
+            "v3": 224.77,
+            "v4": 236.4
+          },
+          {
+            "margen": "0 pp",
+            "v0": 195.84,
+            "v1": 205.89,
+            "v2": 216.51,
+            "v3": 227.7,
+            "v4": 239.49
+          },
+          {
+            "margen": "+1 pp",
+            "v0": 198.3,
+            "v1": 208.5,
+            "v2": 219.27,
+            "v3": 230.62,
+            "v4": 242.59
+          },
+          {
+            "margen": "+2 pp",
+            "v0": 200.76,
+            "v1": 211.11,
+            "v2": 222.03,
+            "v3": 233.54,
+            "v4": 245.68
+          }
+        ]
+      },
+      "rango_min": 192.89,
+      "rango_max": 249.58,
+      "inverso": {
+        "crecimiento_implicito_pct": 9.3,
+        "crecimiento_base_pct": 4.4,
+        "periodo": "2027e-2033e",
+        "margen_implicito_pct": 93.3,
+        "margen_implicito_texto": null,
+        "margen_base_pct": 71,
+        "rentabilidad_implicita_pct": 7.5
+      },
+      "sostenibilidad": {
+        "veredicto": "Sí",
+        "crecimiento_proyectado_pct": 4.8,
+        "tasa_reinversion_pct": -3,
+        "crecimiento_financiable_pct": null,
+        "roic_pct": 11.8,
+        "roic_incremental_historico_pct": null,
+        "roic_implicito_pct": null,
+        "cuota_actual_pct": null,
+        "cuota_final_pct": null,
+        "puente": [
+          {
+            "periodo": "2026e",
+            "volumen_pct": 7,
+            "precio_pct": 1,
+            "otros_pct": -0.1,
+            "comentario": "Volumen: ADV +22 % en el 1T, −1 % en el 2T y +16 % en el 3T26 [3, 4, 15]; el ingreso por contrato baja por la mezcla (más tipos), así que el volumen aporta 7 puntos. Precio: subida de tarifas de febrero. Otros: datos de mercado +20 % compensados por la plusvalía no repetida y otros ingresos.",
+            "suma_pct": 7.9,
+            "crecimiento_pct": 7.9
+          },
+          {
+            "periodo": "2027e",
+            "volumen_pct": 3,
+            "precio_pct": 1.5,
+            "otros_pct": 1,
+            "comentario": "Volumen +3 %, por debajo del 5 % anual de 2019-2025: un año sin el récord de 2026. Precio +1,5 % por la subida anual de tarifas. Otros +1 %: datos de mercado (+13 % en 2025) y productos nuevos (TreasuryLink, futuros sobre acciones) [1, 37].",
+            "suma_pct": 5.5,
+            "crecimiento_pct": 5.5
+          },
+          {
+            "periodo": "2028e",
+            "volumen_pct": 2.5,
+            "precio_pct": 1.5,
+            "otros_pct": 1,
+            "comentario": "Volumen +2,5 %, crecimiento estructural de la deuda pública y de los particulares, menos la cuota que se lleven los perpetuos. Precio +1,5 %. Otros +1 % de datos de mercado.",
+            "suma_pct": 5,
+            "crecimiento_pct": 5
+          },
+          {
+            "periodo": "2029e",
+            "volumen_pct": 2.5,
+            "precio_pct": 1.5,
+            "otros_pct": 1,
+            "comentario": "Igual que 2028e: sin cambio de ciclo supuesto.",
+            "suma_pct": 5,
+            "crecimiento_pct": 5
+          },
+          {
+            "periodo": "2030e",
+            "volumen_pct": 2,
+            "precio_pct": 1.5,
+            "otros_pct": 1,
+            "comentario": "Volumen +2 %, que se acerca al crecimiento nominal de la economía; precio y datos sin cambio.",
+            "suma_pct": 4.5,
+            "crecimiento_pct": 4.5
+          }
+        ],
+        "texto": "La proyección apenas necesita inversión neta de la amortización (reinversión acumulada de -978 M, con un capex bruto medio del 1,6 % de las ventas). En un negocio de activos ligeros, el crecimiento medio del 4,8 % tiene que salir de subir precios y de ganar volumen sin capital nuevo, y la prueba es el poder de precios y la cuota; en un comprador en serie, la amortización es de intangibles comprados y la prueba es el capex bruto (las compras) frente al crecimiento comprado.",
+        "tabla": [
+          {
+            "concepto": "Crecimiento medio de ingresos proyectado",
+            "valor": "4,8 %"
+          },
+          {
+            "concepto": "Capex bruto medio (incluidas compras si van como inversión)",
+            "valor": "1,6 % de las ventas"
+          },
+          {
+            "concepto": "Reinversión neta acumulada (capex − amortización + circulante)",
+            "valor": "-978 M (-3 % del NOPAT)"
+          }
+        ]
+      }
+    },
+    "escenarios": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "narrativa": "La CFTC aprueba perpetuos sobre el S&P 500 y el oro, los particulares migran a Kalshi y Coinbase y la Reserva Federal baja tipos con un mercado tranquilo: el volumen se estanca y los ingresos crecen un 1-2 % al año con dos puntos menos de margen, como en 2019-2021, cuando el ADV no creció y el BPA ajustado bajó de 6,80 a 6,67 USD [8, 66].",
+        "crecimiento_medio_pct": 1.4,
+        "margen_final_pct": 69,
+        "wacc_pct": 8.9,
+        "valor": 173.3,
+        "potencial_pct": -37.7
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "narrativa": "Volumen al 2,5-3 % y tarifas al 1,5 % anual; los perpetuos se quedan en cripto y particulares; margen estable en torno al 71 %; tipos altos que sostienen el beneficio de las garantías.",
+        "crecimiento_medio_pct": 4.4,
+        "margen_final_pct": 71,
+        "wacc_pct": 8.9,
+        "valor": 216.51,
+        "potencial_pct": -22.1
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "narrativa": "La deuda pública y la volatilidad de tipos y energía mantienen el volumen en máximos, TreasuryLink y la compensación de bonos al contado añaden ingresos y el margen sube un punto: crecimiento del 6,5-7 % anual, como en 2021-2025.",
+        "crecimiento_medio_pct": 5.9,
+        "margen_final_pct": 72,
+        "wacc_pct": 8.9,
+        "valor": 236.53,
+        "potencial_pct": -14.9
+      }
+    ],
+    "valor_ponderado": 210.71,
+    "potencial_ponderado_pct": -24.2,
+    "comparables": {
+      "tabla": [
+        {
+          "nombre": "CME Group",
+          "ticker": "CME",
+          "pais": "US",
+          "capitalizacion": 101360,
+          "ev_ventas": 13.75,
+          "ev_ebitda_ltm": 19.2,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 21.8,
+          "crecimiento_pct": 6,
+          "margen_ebitda_pct": 71.5,
+          "roic_pct": 11.8,
+          "dn_ebitda": 0.2,
+          "fcf_yield_pct": 4.1,
+          "es_objetivo": true
+        },
+        {
+          "nombre": "Intercontinental Exchange",
+          "ticker": "ICE",
+          "pais": "US",
+          "capitalizacion": 85969,
+          "ev_ventas": 9.66,
+          "ev_ebitda_ltm": 14.4,
+          "ev_ebitda_ntm": 13.3,
+          "per_ntm": 21,
+          "crecimiento_pct": 9.1,
+          "margen_ebitda_pct": 67.2,
+          "roic_pct": 8.1,
+          "dn_ebitda": 2.6,
+          "fcf_yield_pct": 5.4,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Nasdaq",
+          "ticker": "NDAQ",
+          "pais": "US",
+          "capitalizacion": 51387,
+          "ev_ventas": 11.34,
+          "ev_ebitda_ltm": 19.4,
+          "ev_ebitda_ntm": 15.7,
+          "per_ntm": 23.9,
+          "crecimiento_pct": 10.9,
+          "margen_ebitda_pct": 58.4,
+          "roic_pct": 10.4,
+          "dn_ebitda": 2.66,
+          "fcf_yield_pct": 3.9,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "London Stock Exchange Group",
+          "ticker": "LSEG",
+          "pais": "GB",
+          "capitalizacion": 52797,
+          "ev_ventas": 5.09,
+          "ev_ebitda_ltm": 10.5,
+          "ev_ebitda_ntm": 9,
+          "per_ntm": 24.1,
+          "crecimiento_pct": 6.2,
+          "margen_ebitda_pct": 48.4,
+          "roic_pct": 6.5,
+          "dn_ebitda": 1.68,
+          "fcf_yield_pct": 6.6,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Deutsche Börse",
+          "ticker": "DB1",
+          "pais": "DE",
+          "capitalizacion": 58881,
+          "ev_ventas": 9.36,
+          "ev_ebitda_ltm": 16.1,
+          "ev_ebitda_ntm": 13.7,
+          "per_ntm": 22,
+          "crecimiento_pct": 7,
+          "margen_ebitda_pct": 58.3,
+          "roic_pct": 14,
+          "dn_ebitda": 1.07,
+          "fcf_yield_pct": 4.6,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "S&P Global",
+          "ticker": "SPGI",
+          "pais": "US",
+          "capitalizacion": 116487,
+          "ev_ventas": 8.34,
+          "ev_ebitda_ltm": 16.3,
+          "ev_ebitda_ntm": 15.6,
+          "per_ntm": 22.8,
+          "crecimiento_pct": 0.1,
+          "margen_ebitda_pct": 51.1,
+          "roic_pct": 11.1,
+          "dn_ebitda": 1.45,
+          "fcf_yield_pct": 4.7,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "MSCI",
+          "ticker": "MSCI",
+          "pais": "US",
+          "capitalizacion": 40376,
+          "ev_ventas": 14.7,
+          "ev_ebitda_ltm": 24.2,
+          "ev_ebitda_ntm": 19.8,
+          "per_ntm": 26.1,
+          "crecimiento_pct": 10.8,
+          "margen_ebitda_pct": 60.8,
+          "roic_pct": 39.9,
+          "dn_ebitda": 2.98,
+          "fcf_yield_pct": 3.6,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Tradeweb Markets",
+          "ticker": "TW",
+          "pais": "US",
+          "capitalizacion": 25135,
+          "ev_ventas": 11.23,
+          "ev_ebitda_ltm": 20.8,
+          "ev_ebitda_ntm": 16.4,
+          "per_ntm": 28.1,
+          "crecimiento_pct": 13.3,
+          "margen_ebitda_pct": 54,
+          "roic_pct": 10.1,
+          "dn_ebitda": -1.88,
+          "fcf_yield_pct": 4.2,
+          "es_objetivo": false
+        }
+      ],
+      "estadisticos": [
+        {
+          "estadistico": "Mediana",
+          "ev_ventas": 9.7,
+          "ev_ebitda_ltm": 16.3,
+          "ev_ebitda_ntm": 15.6,
+          "per_ntm": 23.9,
+          "crecimiento_pct": 9.1,
+          "margen_ebitda_pct": 58.3,
+          "roic_pct": 10.4,
+          "dn_ebitda": 1.7,
+          "fcf_yield_pct": 4.6
+        },
+        {
+          "estadistico": "Media",
+          "ev_ventas": 10,
+          "ev_ebitda_ltm": 17.4,
+          "ev_ebitda_ntm": 14.8,
+          "per_ntm": 24,
+          "crecimiento_pct": 8.2,
+          "margen_ebitda_pct": 56.9,
+          "roic_pct": 14.3,
+          "dn_ebitda": 1.5,
+          "fcf_yield_pct": 4.7
+        },
+        {
+          "estadistico": "Percentil 25",
+          "ev_ventas": 8.9,
+          "ev_ebitda_ltm": 15.3,
+          "ev_ebitda_ntm": 13.5,
+          "per_ntm": 22.4,
+          "crecimiento_pct": 6.6,
+          "margen_ebitda_pct": 52.6,
+          "roic_pct": 9.1,
+          "dn_ebitda": 1.3,
+          "fcf_yield_pct": 4.1
+        },
+        {
+          "estadistico": "Percentil 75",
+          "ev_ventas": 11.3,
+          "ev_ebitda_ltm": 20.1,
+          "ev_ebitda_ntm": 16,
+          "per_ntm": 25.1,
+          "crecimiento_pct": 10.9,
+          "margen_ebitda_pct": 59.6,
+          "roic_pct": 12.6,
+          "dn_ebitda": 2.6,
+          "fcf_yield_pct": 5.1
+        }
+      ],
+      "implicito": [
+        {
+          "metodo": "EV/EBITDA últimos 12 meses",
+          "metrica_empresa": 4840,
+          "multiplo_p25": 15.3,
+          "multiplo_mediana": 16.3,
+          "multiplo_p75": 20.1,
+          "multiplos": "15,3x / 16,3x / 20,1x",
+          "valor_p25": 225.27,
+          "valor_mediana": 239.21,
+          "valor_p75": 289.67,
+          "potencial_pct": -14
+        },
+        {
+          "metodo": "PER próximos 12 meses",
+          "metrica_empresa": 12.75,
+          "multiplo_p25": 22.4,
+          "multiplo_mediana": 23.9,
+          "multiplo_p75": 25.1,
+          "multiplos": "22,4x / 23,9x / 25,1x",
+          "valor_p25": 285.58,
+          "valor_mediana": 304.7,
+          "valor_p75": 320,
+          "potencial_pct": 9.6
+        },
+        {
+          "metodo": "EV/Ventas últimos 12 meses",
+          "metrica_empresa": 6768,
+          "multiplo_p25": 8.9,
+          "multiplo_mediana": 9.7,
+          "multiplo_p75": 11.3,
+          "multiplos": "8,8x / 9,7x / 11,3x",
+          "valor_p25": 187.1,
+          "valor_mediana": 202.14,
+          "valor_p75": 232.31,
+          "potencial_pct": -27.3
+        }
+      ],
+      "regresion": {
+        "pendiente": 0.2562544674767691,
+        "ordenada": 12.684427652404779,
+        "r2": 0.11117133479694896,
+        "n": 7
+      },
+      "n": 7
+    },
+    "transacciones": {
+      "metrica": "EV/EBITDA",
+      "n": 3,
+      "mediana_ev_ebitda": 24,
+      "p25_ev_ebitda": 18.5,
+      "p75_ev_ebitda": 27.4,
+      "mediana_ev_ventas": 10.26,
+      "prima_mediana_pct": 33,
+      "valor_p25": 268.42,
+      "valor_mediana": 341.45,
+      "valor_p75": 385.94
+    },
+    "suma_partes": null,
+    "multiplos_historicos": [
+      {
+        "metrica": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+        "campo": "ev_ebitda_ltm",
+        "actual": 19.2,
+        "media": 20.2,
+        "minimo": 18.3,
+        "maximo": 21.6,
+        "percentil": 25,
+        "prima_pct": -5,
+        "anios": 4
+      },
+      {
+        "metrica": "PER últimos 12 meses (cierre de cada año)",
+        "campo": "per_ltm",
+        "actual": 23.6,
+        "media": 23.9,
+        "minimo": 22.7,
+        "maximo": 24.5,
+        "percentil": 25,
+        "prima_pct": -1,
+        "anios": 4
+      }
+    ],
+    "multiplos_serie": [
+      {
+        "anio": "2021",
+        "multiplo": 27.4,
+        "media": 20.2
+      },
+      {
+        "anio": "2022",
+        "multiplo": 18.3,
+        "media": 20.2
+      },
+      {
+        "anio": "2023",
+        "multiplo": 20.3,
+        "media": 20.2
+      },
+      {
+        "anio": "2024",
+        "multiplo": 20,
+        "media": 20.2
+      },
+      {
+        "anio": "2025",
+        "multiplo": 21.6,
+        "media": 20.2
+      }
+    ],
+    "multiplos_titulo": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+    "consenso_vs_propio": [
+      {
+        "periodo": "2026e",
+        "ingresos_propio": 7036,
+        "ingresos_consenso": 7035,
+        "ingresos_dif_pct": 0,
+        "ebitda_propio": 5066,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      },
+      {
+        "periodo": "2027e",
+        "ingresos_propio": 7423,
+        "ingresos_consenso": 7370,
+        "ingresos_dif_pct": 0.7,
+        "ebitda_propio": 5308,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      },
+      {
+        "periodo": "2028e",
+        "ingresos_propio": 7794,
+        "ingresos_consenso": null,
+        "ingresos_dif_pct": null,
+        "ebitda_propio": 5573,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      }
+    ],
+    "gobierno": {
+      "n_consejeros": 2,
+      "independientes_pct": 0,
+      "antiguedad_media": 24,
+      "composicion": [
+        {
+          "tipo": "Ejecutivo",
+          "num": 1
+        },
+        {
+          "tipo": "Otro externo",
+          "num": 1
+        }
+      ],
+      "checklist": [
+        {
+          "criterio": "Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)",
+          "resultado": "No cumple",
+          "valor": "0 %"
+        },
+        {
+          "criterio": "Presidencia sin vínculo familiar ni profesional con el accionista de control",
+          "resultado": "Cumple",
+          "valor": "Sin control"
+        },
+        {
+          "criterio": "Presidente no ejecutivo, o consejero coordinador independiente",
+          "resultado": "No cumple",
+          "valor": "Ejecutivo, sin coordinador"
+        },
+        {
+          "criterio": "Comisión de auditoría con mayoría de independientes y presidida por uno",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Ningún consejero «otro externo» con más de 12 años",
+          "resultado": "Cumple",
+          "valor": "Ninguno"
+        },
+        {
+          "criterio": "Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses",
+          "resultado": "Cumple",
+          "valor": "0 cambios"
+        },
+        {
+          "criterio": "Peor voto en contra sobre remuneración (3 juntas) ≤ 20 %",
+          "resultado": "Cumple",
+          "valor": "11,7 % en contra"
+        },
+        {
+          "criterio": "Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Una acción, un voto, sin blindajes ni límites de voto estatutarios",
+          "resultado": "No cumple",
+          "valor": "No"
+        },
+        {
+          "criterio": "Sin operaciones vinculadas relevantes",
+          "resultado": "Cumple",
+          "valor": "No hay"
+        },
+        {
+          "criterio": "Auditor con 10 años o menos en el cargo",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Opinión de auditoría sin salvedades",
+          "resultado": "Cumple",
+          "valor": "Favorable"
+        },
+        {
+          "criterio": "Directivos compradores netos en 12 meses (o sin ventas relevantes)",
+          "resultado": "No cumple",
+          "valor": "Compras 0,00 / ventas 14,57 M"
+        }
+      ],
+      "puntuacion": "7 de 13 (2 sin dato)",
+      "puntuacion_pct": 54,
+      "compras_insiders": 0,
+      "ventas_insiders": 14.57
+    },
+    "competidores_margen": [
+      {
+        "nombre": "CME Group",
+        "margen_ebit_pct": 64.9
+      },
+      {
+        "nombre": "Intercontinental Exchange",
+        "margen_ebit_pct": 49.6
+      },
+      {
+        "nombre": "Cboe Global Markets",
+        "margen_ebit_pct": 60
+      },
+      {
+        "nombre": "Nasdaq",
+        "margen_ebit_pct": 44
+      },
+      {
+        "nombre": "Deutsche Börse (Eurex)",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Kalshi",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "FMX Futures (BGC Group)",
+        "margen_ebit_pct": null
+      }
+    ],
+    "sintesis": {
+      "formato_eje": "#,##0",
+      "rangos": [
+        {
+          "metodo": "Cotización 52 semanas",
+          "etiqueta": "Cotización 52 semanas (218,31 – 329,16)",
+          "min": 218.31,
+          "central": 278.08,
+          "max": 329.16,
+          "gris": true
+        },
+        {
+          "metodo": "Precio objetivo de los analistas",
+          "etiqueta": "Precio objetivo de los analistas (198,00 – 330,00)",
+          "min": 198,
+          "central": 291.81,
+          "max": 330,
+          "gris": true
+        },
+        {
+          "metodo": "Comparables: PER NTM",
+          "etiqueta": "Comparables: PER NTM (285,58 – 320,00)",
+          "min": 285.58,
+          "central": 304.7,
+          "max": 320,
+          "gris": false
+        },
+        {
+          "metodo": "Transacciones precedentes (EV/EBITDA)",
+          "etiqueta": "Transacciones precedentes (EV/EBITDA) (268,42 – 385,94)",
+          "min": 268.42,
+          "central": 341.45,
+          "max": 385.94,
+          "gris": false
+        },
+        {
+          "metodo": "DCF (WACC y g ± 0,5)",
+          "etiqueta": "DCF (WACC y g ± 0,5) (192,89 – 249,58)",
+          "min": 192.89,
+          "central": 216.51,
+          "max": 249.58,
+          "gris": false
+        },
+        {
+          "metodo": "Escenarios (bajista – alcista)",
+          "etiqueta": "Escenarios (bajista – alcista) (173,30 – 236,53)",
+          "min": 173.3,
+          "central": 210.71,
+          "max": 236.53,
+          "gris": false
+        },
+        {
+          "metodo": "DCF con la prima del mercado",
+          "etiqueta": "DCF con la prima implícita del mercado (4,2 %)",
+          "min": 229.68,
+          "central": 249.93,
+          "max": 274.66
+        },
+        {
+          "metodo": "Precio actual",
+          "etiqueta": "Precio actual (278,08)",
+          "min": 276.69,
+          "central": 278.08,
+          "max": 279.47,
+          "gris": true
+        }
+      ],
+      "tabla": [
+        {
+          "metodo": "DCF",
+          "valor": 216.51,
+          "peso_pct": 40,
+          "potencial_pct": -22.1
+        },
+        {
+          "metodo": "Comparables (mediana EV/EBITDA y PER)",
+          "valor": 304.7,
+          "peso_pct": 35,
+          "potencial_pct": 9.6
+        },
+        {
+          "metodo": "Transacciones precedentes (no se usa)",
+          "valor": 341.45,
+          "peso_pct": 0,
+          "potencial_pct": 22.8
+        },
+        {
+          "metodo": "Escenarios ponderados",
+          "valor": 210.71,
+          "peso_pct": 25,
+          "potencial_pct": -24.2
+        }
+      ],
+      "valor_objetivo": 245.93,
+      "potencial_pct": -11.6
+    },
+    "fuentes": {
+      "n_fuentes": 80,
+      "n_primarias": 26,
+      "por_tipo": [
+        {
+          "tipo": "Primaria",
+          "num": 26
+        },
+        {
+          "tipo": "Datos de mercado",
+          "num": 21
+        },
+        {
+          "tipo": "Prensa",
+          "num": 14
+        },
+        {
+          "tipo": "Sectorial",
+          "num": 1
+        },
+        {
+          "tipo": "Analistas",
+          "num": 10
+        },
+        {
+          "tipo": "Foros y redes",
+          "num": 8
+        }
+      ],
+      "n_citadas": 75,
+      "citas_sin_fuente": [],
+      "fuentes_sin_citar": [
+        "50",
+        "51",
+        "52",
+        "55",
+        "65"
+      ]
+    },
+    "controles": [
+      {
+        "control": "Cambio de perímetro declarado (2025)",
+        "resultado": "Explicado",
+        "detalle": "El activo total crece un 44 % y los ingresos un 6 %: si hubo una compra cerca del cierre, decláralo en financieros.cambios_perimetro y explícalo. Explicación: No hubo compras: el activo total sube de 137.447 a 198.424 M porque crecen las garantías en efectivo que depositan los miembros de la cámara (con su pasivo igual), no el negocio."
+      },
+      {
+        "control": "DCF inverso calculable",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Puente de ingresos (volumen + precio + otros) = crecimiento del DCF",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "resultado": "OK",
+        "detalle": "Supuesto 0,0 % frente a 0,0 % real: genera una variación de circulante de 0 M en el primer año. Converge de forma gradual."
+      },
+      {
+        "control": "Peso del valor terminal ≤ 80 % del valor empresa",
+        "resultado": "OK",
+        "detalle": "66 %."
+      },
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "resultado": "OK",
+        "detalle": "3,00 %."
+      },
+      {
+        "control": "Probabilidades de los escenarios suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 5 comparables",
+        "resultado": "OK",
+        "detalle": "7 comparables."
+      },
+      {
+        "control": "Pesos de la síntesis suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Múltiplos del objetivo a 12 m según la regla común",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Objetivo 12 m frente al consenso",
+        "resultado": "OK",
+        "detalle": "El base se separa un -0,7 % del objetivo medio de los analistas: explícalo en diferencia_consenso (nunca se acerca la cifra)."
+      },
+      {
+        "control": "Recomendación coherente con la regla de decisión",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "La síntesis explica la convicción",
+        "resultado": "OK",
+        "detalle": "La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría."
+      },
+      {
+        "control": "Capitalización calculada ≈ publicada",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 25 fuentes",
+        "resultado": "OK",
+        "detalle": "80 fuentes (26 primarias)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "resultado": "OK",
+        "detalle": "26."
+      },
+      {
+        "control": "Toda cita [n] existe en fuentes",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Fuentes sin citar ≤ 15 %",
+        "resultado": "OK",
+        "detalle": "Sin citar: 50, 51, 52, 55, 65."
+      }
+    ],
+    "controles_resumen": "17 de 18 controles correctos y 1 explicados"
+  }
+}
