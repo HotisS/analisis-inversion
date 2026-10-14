@@ -13,23 +13,26 @@
    - − impuestos (tipo del DCF) − minoritarios − dividendos de preferentes;
    - ÷ acciones: las de hoy más la dilución conocida (ampliaciones, convertibles, ATM) y **sin recompras que no estén anunciadas**.
    - Escenarios: los desplazamientos de crecimiento y margen de `escenarios.casos` del informe en los años no fijos. Si la amortización es de capex ya comprometido, no se baja en el bajista.
-3. **PER propio**, con la historia del PER de los últimos 12 meses al cierre de cada año (precio de cierre ÷ BPA real, del informe):
-   - **Base**: el más prudente entre el PER actual sobre el BPA propio del ejercicio siguiente y la mediana de cinco años. Se contrasta con la media de los comparables (`comparables`).
-   - **Bajista**: el mínimo de cinco años, si queda por debajo del precio de hoy; si no, el siguiente más bajo que lo haga. Se contrasta con el percentil 25 de los comparables.
-   - **Alcista**: la media histórica larga (ocho años), **sin años de pérdidas, de burbuja o con un BPA atípico**: se excluyen y se dice cuáles.
-4. **Objetivo a 12 meses** = media de bajista, base y alcista (PER × BPA de cada uno) **ponderada con las probabilidades de los escenarios del informe** (`escenarios.casos[].probabilidad_pct`). **Rentabilidad 12 m** = objetivo / precio − 1 + dividendo. Se da también la **rentabilidad del base** (solo el escenario base) y la **asimetría** (alcista frente a bajista).
-   *Decisión del usuario, 13-oct.* El hilo usaba la media simple de los tres. Aplicada a las 38 empresas, inflaba la cifra: muchas cotizan muy por debajo de su PER histórico, y el alcista, que supone volver a él, pesaba un tercio (Wolters Kluwer: +44 % con la media simple, +26,5 % ponderada y +9,5 % en el base). La media simple se guarda en el JSON solo para comparar.
-5. **Señal**: con la rentabilidad ponderada, Comprar ≥ 15 %, Vender ≤ −10 %, Mantener en medio. **Filtro de valor real para comprar: el base ≥ 12 %** (que el precio esté justificado sin revalorizar el múltiplo). Para mantener lo que ya está en cartera: ponderada ≥ 10 % y base ≥ 5 %. La convicción se razona como en el informe.
+3. **PER propio, con la regla común** (cerrada el 14-oct-2026; la aplica el código, `motor/objetivo12m.mjs`, igual para todas). Historia del PER de los últimos 12 meses al cierre de cada año (precio de cierre ÷ BPA real, del informe y en la **misma base de BPA** que los escenarios), **sin años de pérdidas, de burbuja o con BPA atípico** (se dice cuáles):
+   - **Base**: el menor entre el PER actual (precio de hoy ÷ nuestro BPA del ejercicio siguiente) y la mediana de cinco años.
+   - **Bajista**: el mínimo de cinco años si queda por debajo del base. Si no (la empresa ya cotiza en mínimos), **base × 0,85**. Nunca por encima del base.
+   - **Alcista**: la mayor entre la media histórica larga (ocho años, sin los excluidos) y la mediana del PER de los comparables, **sin bajar del base y con un techo de base × 1,30**.
+   - Si el PER no sirve (pérdidas, deuda muy alta, cíclica en recesión), el caso lleva otra métrica (EV/EBITDA) con su precio y se explica; es la única excepción.
+   *Por qué se cerró la regla (14-oct).* Las 73 revisiones del 13-oct elegían los múltiplos caso a caso y casi siempre hacia arriba: el alcista tomaba la media de épocas de múltiplos altos (Edenred 25x de antes de los topes, Lululemon 35x, Hermès 48x, Netflix 38x) y, cuando la empresa ya cotizaba en mínimos, el bajista repetía el PER del base (25 empresas) o incluso uno mayor (DSV, Fluidra, Krones). Las del 12-oct, hechas a mano, habían descartado esas medias y salían con alcistas de base × 1,0-1,35 y bajistas de base × 0,80-0,85: la regla recoge eso.
+4. **Objetivo a 12 meses** = media de bajista, base y alcista (PER × BPA de cada uno) **ponderada con las probabilidades de los escenarios del informe** (`escenarios.casos[].probabilidad_pct`; 25/50/25 si faltan). **Rentabilidad 12 m** = objetivo / precio − 1 + dividendo. Se da también la **rentabilidad del base** y la **asimetría**.
+   *Decisión del usuario, 13-oct.* El hilo usaba la media simple de los tres; inflaba la cifra porque el alcista, que supone volver al PER histórico, pesaba un tercio. La media simple se guarda solo para comparar.
+5. **Señal**: **Comprar** si la ponderada ≥ 15 %, la del base ≥ 12 % y el valor intrínseco del informe ≥ precio (valor real); **Vender** si la ponderada ≤ −10 %; **Mantener** en medio. Para seguir en cartera: ponderada ≥ 10 % y base ≥ 5 % (MEMORIA). La convicción se razona como en el informe.
 6. **Contraste con el consenso** (no entra en el cálculo): el BPA de los analistas del mismo ejercicio y el objetivo medio. Si nos separamos más de un 10 %, se explica de dónde sale la diferencia (ventas, margen, dilución, múltiplo).
 7. **Comparar**: la cifra se pone junto a las demás (cartera y compras) y se dice si cambia alguna decisión.
 
 ## Dónde queda
 
-- Revisión de cada empresa: `informes/<carpeta>/revision-12m-AAAA-MM-DD.md`, con la tabla de BPA (ventas → EBIT → beneficio → BPA por escenario), la tabla de PER histórico, la tabla de escenarios (supuesto, cálculo, objetivo y rentabilidad), el contraste con el consenso y una línea en `diario.md`.
-- Resultado: `verticales/empresa/objetivo12m-revisados.json`, apuntado con `node herramientas/apuntar-12m.mjs '<línea JSON>'` (calcula la ponderada, el base y la señal igual para todas) (`revisados.<TICKER>`: fecha, objetivo, rentabilidad, señal y nota con los tres cálculos). **Manda sobre todo lo demás.**
-- `herramientas/objetivo12m.mjs`: calculadora de apoyo. Hace los pasos 1-4 con los datos del informe, sin ajustes de dilución ni de partidas financieras y con la media de todos los años de PER. **No es la revisión**: aplicada a ciegas da disparates (PER de burbuja en el alcista, BPA en otra base). Sirve de punto de partida. Con `--sin-revisiones` ignora el JSON.
-- `seguimiento.xlsx`: columnas «Objetivo 12 m», «Rentabilidad 12 m», «Señal 12 m» y «Origen del objetivo 12 m». Solo se rellenan con revisiones hechas: lo que no tiene revisión sale vacío.
-- **Cartera y compras**: se ordenan por esta rentabilidad a 12 meses. El valor intrínseco del informe se da al lado como «valor real».
+- **En el informe**: `valoracion.objetivo_12m` del `datos*.json` (BPA de los tres casos, `per_historico`, `comparables_per`, consenso solo de contraste, `diferencia_consenso`, `comentario`; ver el prompt, sección 23). El motor calcula los múltiplos con la regla, la ponderada, el base, la señal y los precios de compra y venta (`calc.recomendacion.objetivo_12m`), y **la recomendación del informe sigue a esta regla**; la del DCF queda como `regla_valor_intrinseco`. Portada, resumen, «La decisión» y la sección 23 lo enseñan.
+- **Detalle de cada empresa**: `informes/<carpeta>/revision-12m-AAAA-MM-DD.md`, con la tabla de BPA (ventas → EBIT → beneficio → BPA por escenario), el PER histórico con los excluidos, los escenarios, el contraste con el consenso y una línea en `diario.md`.
+- **Resultado**: `verticales/empresa/objetivo12m-revisados.json`, que escribe `node herramientas/apuntar-12m.mjs <carpeta…>` leyendo `valoracion.objetivo_12m` del último `datos*.json` con la misma función del motor (`--precio X` para recalcular a otro precio). **Manda sobre todo lo demás** en el Excel y la cartera.
+- `herramientas/objetivo12m.mjs`: calculadora de apoyo para empezar una revisión. No es la revisión.
+- `seguimiento.xlsx`: columnas «Objetivo 12 m», «Rentabilidad 12 m», «Señal 12 m» y «Origen del objetivo 12 m».
+- **Cartera y compras**: se ordenan por la rentabilidad a 12 meses **al precio del día**. El valor intrínseco se da al lado como «valor real».
 
 ## Qué no es
 

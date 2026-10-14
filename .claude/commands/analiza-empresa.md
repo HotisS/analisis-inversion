@@ -43,13 +43,13 @@ Si no puedes lanzar subagentes, haz las fases 2-4 bis tú mismo, en ese orden y 
 2. Integra: `node motor/integrar.mjs --dir informes/<carpeta>`. Junta notas y propio (lo tuyo completa o sustituye campo a campo lo de las notas; un `null` no borra), renumera las fuentes sin duplicados, traduce todas las citas y avisa de citas sin fuente y secciones vacías. **No escribas tu propio script de fusión.** Vuelve a ejecutarlo cada vez que cambies una nota o `propio`.
 3. Primer cálculo: `node motor/calcular-empresa.mjs --datos informes/<carpeta>/datos.json`. Corrige los controles en «Revisar» (en las notas o en `propio`, y reintegra).
 4. Fase 6 (supuestos del DCF, escenarios, pesos), segundo cálculo y lectura del DCF inverso.
-5. Fase 7 (redacción, resumen el último) y fase 8 (revisión de comité con las diez preguntas del prompt). Las cifras de los textos salen de `calc` tal cual.
+5. Fase 7 (redacción, resumen el último) y fase 8 (revisión de comité con las doce preguntas del prompt). Antes de la síntesis, rellena `valoracion.objetivo_12m` (tu BPA de los tres casos, el PER histórico con los excluidos y la mediana de los comparables; el motor pone los múltiplos con la regla común) y compáralo con el consenso (solo contraste) y con el valor intrínseco: explica las dos distancias. Las cifras de los textos salen de `calc` tal cual.
 6. Genera el informe:
    `node motor/rellenar.mjs --plantilla verticales/empresa/plantilla.docx --datos informes/<carpeta>/datos.json --salida "informes/<carpeta>/<Nombre> - <AAAA-MM-DD>.docx"`
 7. Genera el PDF junto al Word, con el mismo nombre (el usuario lo quiere siempre, de cada versión que se entrega): `powershell -ExecutionPolicy Bypass -File construccion/a-pdf.ps1 "informes/<carpeta>/<Nombre> - <AAAA-MM-DD>.docx" -Salida "informes/<carpeta>/<Nombre> - <AAAA-MM-DD>.pdf"` (Word debe abrirlo sin reparar). Si rehaces el Word, rehaz también el PDF. Mira como imagen solo la portada, la síntesis, «La decisión» y la síntesis de valoración (`construccion/pdf-a-png.ps1 <pdf> -Paginas "1-4"`); no hace falta borrarlos.
 
 ## Rentabilidad a 12 meses (v2), después del PDF
-Con el informe cerrado, haz la revisión a 12 meses de `verticales/empresa/objetivo-12m.md` (PER propio × BPA propio del ejercicio que mirará el mercado en un año, en bajista, base y alcista): media ponderada con las probabilidades de los escenarios (la cifra) y rentabilidad del base (el filtro de valor real: ≥ 12 % para comprar). Escríbela en `informes/<carpeta>/revision-12m-<AAAA-MM-DD>.md` (ejemplo: `informes/alphabet-2026-10-08/revision-12m-2026-10-12.md`), apunta el resultado en `verticales/empresa/objetivo12m-revisados.json` y ejecuta `node herramientas/seguimiento.mjs`. Un informe no está terminado sin las dos facetas: **sostenibilidad del crecimiento** en el DCF (`dcf.sostenibilidad`, con el caso base rebajado si falla) y **rentabilidad a 12 meses v2**.
+Con el informe cerrado, deja el detalle de `valoracion.objetivo_12m` (método de `verticales/empresa/objetivo-12m.md`: tu BPA × el PER de la regla común, media ponderada con las probabilidades de los escenarios y rentabilidad del base, el filtro de valor real) en `informes/<carpeta>/revision-12m-<AAAA-MM-DD>.md` (ejemplo: `informes/alphabet-2026-10-08/revision-12m-2026-10-12.md`), apunta el resultado con `node herramientas/apuntar-12m.mjs <carpeta>` (escribe `verticales/empresa/objetivo12m-revisados.json` con la misma función que el motor) y ejecuta `node herramientas/seguimiento.mjs`. Un informe no está terminado sin las dos facetas: **sostenibilidad del crecimiento** en el DCF (`dcf.sostenibilidad`, con el caso base rebajado si falla) y **rentabilidad a 12 meses v2**.
 
 ## Análisis terminado: lista de comprobación (igual para todas las empresas)
 En `informes/<carpeta>/`:
@@ -59,11 +59,11 @@ En `informes/<carpeta>/`:
 - `diario.md` con el commit de partida, los tiempos, las decisiones y la línea de la revisión a 12 meses;
 - `notas/` con las notas A-E y `propio`, y `notas/actualizacion-vN.mjs` para cada versión rápida.
 Fuera de la carpeta:
-- la revisión apuntada con `node herramientas/apuntar-12m.mjs '<línea JSON>'` (calcula la ponderada, la rentabilidad del base y la señal);
+- la revisión apuntada con `node herramientas/apuntar-12m.mjs <carpeta>` (lee `valoracion.objetivo_12m` y calcula la regla, la ponderada, el base y la señal);
 - `node herramientas/seguimiento.mjs` (columnas «Metodología» = Nueva y «… 12 m» llenas);
 - `cola.md` marcada, las lecciones nuevas en `verticales/empresa/lecciones.md`, y commit y push.
 
 Encargos de subagentes para trabajos repetidos sobre informes ya hechos, en `verticales/empresa/encargos/`: `actualizacion-sostenibilidad.md` (pasar un informe viejo a la metodología nueva), `recorte-caso-base.md` (cuando falla la prueba), `revision-12m.md` (rentabilidad a 12 meses) y `actualizacion-completa.md` (las dos cosas seguidas).
 
 ## Entrega
-Responde con la ruta del informe (Word y PDF) y, en diez líneas como máximo: recomendación (Comprar/Mantener/Vender) y convicción, valor objetivo y rentabilidad total esperada, rentabilidad a 12 meses v2 (ponderada y base) y veredicto de sostenibilidad, qué descuenta el precio (DCF inverso), cobertura, controles en «Revisar» que quedan y por qué, y las secciones o datos omitidos (los de núcleo, primero).
+Responde con la ruta del informe (Word y PDF) y, en diez líneas como máximo: recomendación (Comprar/Mantener/Vender) y convicción, objetivo a 12 meses y rentabilidad a 12 meses v2 (ponderada y base; manda en la recomendación), valor intrínseco con su rentabilidad y el objetivo medio de los analistas y veredicto de sostenibilidad, qué descuenta el precio (DCF inverso), cobertura, controles en «Revisar» que quedan y por qué, y las secciones o datos omitidos (los de núcleo, primero).

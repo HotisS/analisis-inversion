@@ -19,8 +19,9 @@ export default {
     tarjetas: [
       ['Recomendación', '{{calc.recomendacion.recomendacion}}'],
       ['Precio', '{{identificacion.precio|2}} {{meta.divisa}}{{calc.recomendacion.precio_txt|opc}}'],
-      ['Valor objetivo', '{{calc.sintesis.valor_objetivo|2}} {{meta.divisa}}{{calc.recomendacion.valor_objetivo_txt|opc}}{{calc.recomendacion.objetivo_mercado_corto|opc}}'],
-      ['Rentabilidad total 12 m', '{{calc.recomendacion.rentabilidad_total_pct|+pct}}{{calc.recomendacion.rentabilidad_mercado_corto|opc}}'],
+      ['Objetivo 12 m', '{{calc.recomendacion.objetivo_12m_txt}}'],
+      ['Rentabilidad 12 m', '{{calc.recomendacion.rentabilidad_12m_txt}}'],
+      ['Valor intrínseco', '{{calc.sintesis.valor_objetivo|2}} {{meta.divisa}}{{calc.recomendacion.valor_objetivo_txt|opc}}{{calc.recomendacion.objetivo_mercado_corto|opc}}'],
       ['Convicción', '{{resumen.conviccion}}'],
       ['Capitalización', '{{calc.mercado.capitalizacion|0}} M'],
       ['EV/EBITDA próx. 12 m', '{{calc.clave.ev_ebitda_ntm|x}}'],
@@ -54,7 +55,7 @@ export default {
     ['si', 'resumen.sintesis', [
       ['salto'],
       ['h1', 'Síntesis y recomendación'],
-      ['p', '**{{calc.recomendacion.recomendacion}}** · Convicción {{resumen.conviccion}} · Valor objetivo **{{calc.sintesis.valor_objetivo|2}} {{meta.divisa}}{{calc.recomendacion.valor_objetivo_txt|opc}}** frente a {{identificacion.precio|2}}{{calc.recomendacion.precio_txt|opc}}{{calc.recomendacion.objetivo_mercado_txt|opc}} · Rentabilidad total esperada a 12 meses **{{calc.recomendacion.rentabilidad_total_pct|+pct}}** · Alcista / bajista {{calc.recomendacion.alcista_pct|+pct}} / {{calc.recomendacion.bajista_pct|+pct}}'],
+      ['p', '**{{calc.recomendacion.recomendacion}}** · Convicción {{resumen.conviccion}} · Objetivo a 12 meses **{{calc.recomendacion.objetivo_12m_txt}}** frente a {{identificacion.precio|2}}{{calc.recomendacion.precio_txt|opc}} · Rentabilidad a 12 meses **{{calc.recomendacion.rentabilidad_12m_txt}}** · Valor intrínseco {{calc.sintesis.valor_objetivo|2}} {{meta.divisa}}{{calc.recomendacion.valor_objetivo_txt|opc}}{{calc.recomendacion.objetivo_mercado_txt|opc}} · Alcista / bajista {{calc.recomendacion.alcista_pct|+pct}} / {{calc.recomendacion.bajista_pct|+pct}}'],
       ['texto', 'resumen.sintesis'],
     ]],
 
@@ -63,11 +64,11 @@ export default {
     ['h1', 'Resumen ejecutivo'],
     ['confianza', 'resumen'],
     ['aviso', '{{_meta.aviso_nucleo}}'],
-    ['p', '**Recomendación: {{calc.recomendacion.recomendacion}}** · Convicción: {{resumen.conviccion}} · Horizonte: {{resumen.horizonte}} · Valor objetivo: **{{calc.sintesis.valor_objetivo|2}} {{meta.divisa}}{{calc.recomendacion.valor_objetivo_txt|opc}}** ({{calc.sintesis.potencial_pct|+pct}} sobre {{identificacion.precio|2}}; rentabilidad total esperada {{calc.recomendacion.rentabilidad_total_pct|+pct}}){{calc.recomendacion.objetivo_mercado_txt|opc}}'],
+    ['p', '**Recomendación: {{calc.recomendacion.recomendacion}}** · Convicción: {{resumen.conviccion}} · Horizonte: {{resumen.horizonte}} · Objetivo a 12 meses: **{{calc.recomendacion.objetivo_12m_txt}}** (rentabilidad {{calc.recomendacion.rentabilidad_12m_txt}}) · Valor intrínseco: {{calc.sintesis.valor_objetivo|2}} {{meta.divisa}}{{calc.recomendacion.valor_objetivo_txt|opc}} ({{calc.sintesis.potencial_pct|+pct}} sobre {{identificacion.precio|2}}){{calc.recomendacion.objetivo_mercado_txt|opc}}'],
     ['texto', 'resumen.tesis'],
     ['sub', 'La decisión', 'calc.recomendacion.tabla', [
       ['tabla', 'calc.recomendacion.tabla', [['Elemento de la decisión', 'concepto', '', 4], ['Valor', 'valor', '', 2, 'd']]],
-      ['nota', 'Regla: Comprar si la rentabilidad total esperada a 12 meses es ≥ 15 % y el alcista gana al menos lo que pierde el bajista; Vender si es ≤ −10 %, o negativa con asimetría < 0,5; Mantener en el resto. Se aplica dos veces: con el WACC del análisis (regla absoluta: ¿rinde más que su coste de capital?) y con el WACC que resulta de la prima de riesgo implícita del mercado (regla relativa: ¿rinde más que lo que hoy pide el mercado, ajustado por su beta?). Manda la relativa, salvo que las dos se contradigan (una Comprar y otra Vender): entonces, Mantener.'],
+      ['nota', 'Regla (método v2): la recomendación sigue al objetivo a 12 meses, que es nuestro PER × nuestro BPA del ejercicio que mirará el mercado dentro de un año, con la misma regla de múltiplos para todas las empresas (base: el menor entre el PER actual y la mediana de 5 años; bajista: el mínimo de 5 años, o el base −15 % si ya cotiza por debajo; alcista: la media histórica o la de los comparables, sin pasar de base +30 %), ponderado con las probabilidades de los escenarios. Comprar si la rentabilidad ponderada es ≥ 15 %, la del base ≥ 12 % y el valor intrínseco no queda por debajo del precio; Vender si la ponderada es ≤ −10 %; Mantener en el resto. El consenso de analistas solo se compara. El valor intrínseco (DCF) es la referencia a largo plazo; su regla, la de siempre: Comprar si la rentabilidad total esperada a 12 meses es ≥ 15 % y el alcista gana al menos lo que pierde el bajista; Vender si es ≤ −10 %, o negativa con asimetría < 0,5; Mantener en el resto. Se aplica dos veces: con el WACC del análisis (regla absoluta: ¿rinde más que su coste de capital?) y con el WACC que resulta de la prima de riesgo implícita del mercado (regla relativa: ¿rinde más que lo que hoy pide el mercado, ajustado por su beta?). Manda la relativa, salvo que las dos se contradigan (una Comprar y otra Vender): entonces, Mantener.'],
       ['tabla', 'calc.recomendacion.niveles', [['Acción', 'accion', '', 1.2], ['A qué precio', 'condicion', '', 6]]],
       ['si', 'resumen.justificacion_recomendacion', [['p', '**Por qué la recomendación se aparta de la regla.**'], ['texto', 'resumen.justificacion_recomendacion']]],
     ]],
@@ -363,8 +364,14 @@ export default {
       ['grafico', 'sintesis'],
       ['tabla', 'calc.sintesis.rangos', [['Método', 'metodo', '', 3], ['Mínimo', 'min', '2', 1, 'd'], ['Central', 'central', '2', 1, 'd'], ['Máximo', 'max', '2', 1, 'd']]],
       ['tabla', 'calc.sintesis.tabla', [['Método', 'metodo', '', 3], ['Valor por acción', 'valor', '2', 1.2, 'd'], ['Potencial', 'potencial_pct', '+pct', 1, 'd'], ['Peso', 'peso_pct', 'pct0', 0.8, 'd']]],
-      ['p', '**Valor objetivo ponderado:** {{calc.sintesis.valor_objetivo|2}} {{meta.divisa}} ({{calc.sintesis.potencial_pct|+pct}} sobre {{identificacion.precio|2}}).'],
+      ['p', '**Valor intrínseco ponderado (largo plazo):** {{calc.sintesis.valor_objetivo|2}} {{meta.divisa}} ({{calc.sintesis.potencial_pct|+pct}} sobre {{identificacion.precio|2}}).'],
       ['texto', 'valoracion.comentario'],
+      ['sub', 'Objetivo a 12 meses: nuestro PER × nuestro BPA', 'calc.recomendacion.objetivo_12m.filas', [
+        ['tabla', 'calc.recomendacion.objetivo_12m.filas', [['Escenario', 'escenario', '', 1], ['BPA', 'beneficio_por_accion', '2', 0.8, 'd'], ['PER', 'multiplo', 'x', 0.7, 'd'], ['De dónde sale el PER', 'origen', '', 2.6], ['Precio', 'precio', '2', 0.9, 'd'], ['Rentabilidad', 'rentabilidad_pct', '+pct', 1, 'd']]],
+        ['p', '**Objetivo a 12 meses (ponderado):** {{calc.recomendacion.objetivo_12m_txt}} · rentabilidad {{calc.recomendacion.rentabilidad_12m_txt}} · señal {{calc.recomendacion.objetivo_12m.senal}}.'],
+        etiquetado('Frente al consenso (solo contraste).', 'valoracion.objetivo_12m.diferencia_consenso'),
+        etiquetado('Del valor intrínseco al objetivo a 12 meses.', 'valoracion.objetivo_12m.comentario'),
+      ]],
     ]],
 
     // ───────── Parte V ─────────

@@ -13,6 +13,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 import { conviccionSugerida } from './conviccion.mjs';
+import { calcularObjetivo12m, REGLA_12M } from './objetivo12m.mjs';
 
 // ───────────────────────────── utilidades ─────────────────────────────
 
@@ -744,7 +745,22 @@ export function calcularEmpresa(datos) {
     : rte >= 15 && (asimetria === null || asimetria >= 1) ? 'Comprar'
       : rte <= -10 || (rte < 0 && asimetria !== null && asimetria < 0.5) ? 'Vender' : 'Mantener';
   const reglaRel = relativo ? reglaCon(relativo.valor_objetivo, relativo.alcista, relativo.bajista, precio) : null;
-  const regla = combinar(reglaAbs, reglaRel, rte);
+  const reglaValor = combinar(reglaAbs, reglaRel, rte);
+  // Objetivo a 12 meses (método v2): NUESTRO BPA × NUESTRO PER con la regla común (motor/objetivo12m.mjs). Si está,
+  // la recomendación sigue a su rentabilidad; el valor intrínseco queda como referencia a largo plazo y como filtro
+  // de valor real para comprar. El consenso solo se compara.
+  const prob12 = ['bajista', 'base', 'alcista'].map((k) => n(lista(d.escenarios?.casos).find((e) => new RegExp(k, 'i').test(e.escenario || ''))?.probabilidad_pct));
+  const o12 = calcularObjetivo12m(d.valoracion?.objetivo_12m, { precio, dpa: dpaOrdinario, prob: prob12.every((x) => x !== null) ? prob12 : null, valorIntrinseco: valorObjetivo });
+  const con12 = !!o12?.completo;
+  if (!con12) control('Objetivo a 12 meses (PER propio × BPA propio)', false, 'Falta valoracion.objetivo_12m: la rentabilidad a 12 meses sale del valor intrínseco.');
+  else {
+    const fuera = o12.filas.filter((f) => f.multiplo_informe !== null && f.multiplo !== null && Math.abs(f.multiplo_informe / f.multiplo - 1) > 0.02);
+    control('Múltiplos del objetivo a 12 m según la regla común', !fuera.length, fuera.length ? `El informe pone ${fuera.map((f) => `${f.escenario} ${fmt(f.multiplo_informe, 1)}x`).join(', ')} y la regla da ${fuera.map((f) => `${fmt(f.multiplo, 1)}x`).join(', ')}: el motor usa la regla.` : '');
+    const dc = o12.diferencia_consenso_pct;
+    if (dc !== null) control('Objetivo 12 m frente al consenso', Math.abs(dc) <= 15 || !!String(d.valoracion.objetivo_12m.diferencia_consenso || '').trim(),
+      `El base se separa un ${fmt(dc, 1)} % del objetivo medio de los analistas: explícalo en diferencia_consenso (nunca se acerca la cifra).`);
+  }
+  const regla = con12 ? o12.senal : reglaValor;
   const potRel = relativo?.valor_objetivo && precio ? pct(relativo.valor_objetivo - precio, precio) : null;
   const asimRel = relativo && relativo.alcista !== null && relativo.bajista !== null && relativo.bajista < precio ? (relativo.alcista / precio - 1) / Math.abs(relativo.bajista / precio - 1) : null;
   const recomendacionFinal = res.recomendacion || regla;
@@ -791,10 +807,16 @@ export function calcularEmpresa(datos) {
     rentabilidad_mercado_corto: relativo?.valor_objetivo && potRel !== null ? ` · mercado ${potRel + rentDiv >= 0 ? '+' : ''}${fmt(potRel + rentDiv, 1)} %` : '',
     potencial_pct: red(potObj), dividendo_pct: red(rentDiv), rentabilidad_total_pct: red(rte),
     alcista_pct: potAlc, bajista_pct: potBaj, asimetria: red(asimetria, 2),
-    comprar_por_debajo: red(nivelCompra, 2),
-    vender_por_encima: red(nivelVenta, 2),
+    comprar_por_debajo: con12 ? o12.comprar_por_debajo : red(nivelCompra, 2),
+    vender_por_encima: con12 ? o12.vender_por_encima : red(nivelVenta, 2),
     tabla: [
-      { concepto: 'Valor objetivo (síntesis ponderada)', valor: valorObjetivo === null ? 'n.d.' : `${fmt(valorObjetivo, 2)} ${meta.divisa || ''}${enCot(valorObjetivo)}` },
+      ...(con12 ? [
+        { concepto: `Objetivo a 12 meses (nuestro PER × nuestro BPA ${d.valoracion.objetivo_12m.ejercicio || ''}, ponderado ${o12.probabilidades.join('/')})`, valor: `${fmt(o12.objetivo_ponderado, 2)} ${meta.divisa || ''}${enCot(o12.objetivo_ponderado)}` },
+        { concepto: 'Bajista / base / alcista a 12 meses', valor: o12.filas.map((f) => `${fmt(f.multiplo, 1)}x × ${fmt(f.beneficio_por_accion, 2)} = ${fmt(f.precio, 2)}`).join(' · ') },
+        { concepto: 'Rentabilidad a 12 meses: ponderada / del base (con dividendo)', valor: `${fmt(o12.rentabilidad_ponderada_pct, 1)} % / ${fmt(o12.rentabilidad_base_pct, 1)} %` },
+        ...(o12.consenso_objetivo ? [{ concepto: 'Objetivo medio de los analistas (solo contraste)', valor: `${fmt(o12.consenso_objetivo, 2)} (nuestro base ${o12.diferencia_consenso_pct >= 0 ? '+' : ''}${fmt(o12.diferencia_consenso_pct, 1)} %)` }] : []),
+      ] : []),
+      { concepto: con12 ? 'Valor intrínseco (síntesis ponderada, largo plazo)' : 'Valor objetivo (síntesis ponderada)', valor: valorObjetivo === null ? 'n.d.' : `${fmt(valorObjetivo, 2)} ${meta.divisa || ''}${enCot(valorObjetivo)}` },
       ...(divCot ? [{ concepto: `Precio actual (${divCot} al tipo de ${fmt(tc, 4)} ${meta.divisa} por ${divCot})`, valor: `${fmt(precio, 2)} ${meta.divisa}${enCot(precio)}` }] : []),
       { concepto: 'Potencial sobre el precio actual', valor: potObj === null ? 'n.d.' : `${fmt(potObj, 1)} %` },
       { concepto: 'Rentabilidad por dividendo ordinario', valor: `${fmt(rentDiv, 1)} %` },
@@ -811,15 +833,25 @@ export function calcularEmpresa(datos) {
       ] : []),
       ...(dcf?.inverso?.crecimiento_implicito_pct !== null && dcf?.inverso?.crecimiento_implicito_pct !== undefined && n(d.sector?.tcac_previsto_pct) !== null ? [{ concepto: `Crecimiento anual implícito en el precio (${dcf.inverso.periodo}) frente al previsto para su mercado`, valor: `${fmt(dcf.inverso.crecimiento_implicito_pct, 1)} % frente a ${fmt(n(d.sector.tcac_previsto_pct), 1)} %` }] : []),
       ...(dcf?.sostenibilidad ? [{ concepto: '¿La calidad de la empresa sostiene el crecimiento previsto?', valor: `${dcf.sostenibilidad.veredicto ?? 'n.d.'} (${fmt(dcf.sostenibilidad.crecimiento_proyectado_pct, 1)} % anual proyectado${dcf.sostenibilidad.crecimiento_financiable_pct !== null ? `; financiable al ROIC actual: ${fmt(dcf.sostenibilidad.crecimiento_financiable_pct, 1)} %` : '; sin inversión neta'})` }] : []),
-      { concepto: relativo ? 'Recomendación según las reglas (manda la relativa salvo contradicción; un Comprar solo relativo exige ≥ 5 % con nuestro coste de capital)' : 'Recomendación según la regla', valor: regla ?? 'n.d.' },
+      ...(con12 ? [{ concepto: 'Señal del valor intrínseco (regla del DCF, referencia)', valor: reglaValor ?? 'n.d.' }] : []),
+      { concepto: con12 ? `Recomendación según la regla a 12 meses (Comprar: ponderada ≥ ${REGLA_12M.comprar} %, base ≥ ${REGLA_12M.comprarBase} % y valor intrínseco ≥ precio; Vender: ponderada ≤ ${REGLA_12M.vender} %)` : relativo ? 'Recomendación según las reglas (manda la relativa salvo contradicción; un Comprar solo relativo exige ≥ 5 % con nuestro coste de capital)' : 'Recomendación según la regla', valor: regla ?? 'n.d.' },
       ...(sug.conviccion ? [{ concepto: `Convicción según los criterios (${sug.razones.join('; ')})`, valor: sug.conviccion }] : []),
     ],
-    niveles: valorObjetivo ? [
+    niveles: con12 ? [
+      { accion: 'Comprar', condicion: `Por debajo de ${fmt(o12.comprar_por_debajo, 2)}${enCot(o12.comprar_por_debajo)} (ponderada a 12 meses ≥ ${REGLA_12M.comprar} %, base ≥ ${REGLA_12M.comprarBase} % y precio ≤ valor intrínseco)` },
+      { accion: 'Mantener', condicion: `Entre ${fmt(o12.comprar_por_debajo, 2)} y ${fmt(o12.vender_por_encima, 2)}${divCot ? ` (${fmt(o12.comprar_por_debajo / tc, 2)} y ${fmt(o12.vender_por_encima / tc, 2)} ${divCot})` : ''}` },
+      { accion: 'Vender o reducir', condicion: `Por encima de ${fmt(o12.vender_por_encima, 2)}${enCot(o12.vender_por_encima)} (ponderada a 12 meses ≤ ${REGLA_12M.vender} %)` },
+    ] : valorObjetivo ? [
       { accion: 'Comprar', condicion: nivelCompra ? `Por debajo de ${fmt(nivelCompra, 2)}${enCot(nivelCompra)} (rentabilidad total esperada ≥ 15 % y el alcista compensa al bajista${relativo ? ', con la regla combinada' : ''})` : 'Ningún precio cercano cumple a la vez rentabilidad ≥ 15 % y asimetría ≥ 1' },
       { accion: 'Mantener', condicion: nivelCompra && nivelVenta ? `Entre ${fmt(nivelCompra, 2)} y ${fmt(nivelVenta, 2)}${divCot ? ` (${fmt(nivelCompra / tc, 2)} y ${fmt(nivelVenta / tc, 2)} ${divCot})` : ''}` : nivelVenta ? `Por debajo de ${fmt(nivelVenta, 2)}${enCot(nivelVenta)}` : 'En el resto de precios' },
       { accion: 'Vender o reducir', condicion: nivelVenta ? `Por encima de ${fmt(nivelVenta, 2)}${enCot(nivelVenta)} (rentabilidad total esperada ≤ −10 %, o negativa con un bajista que pesa el doble que el alcista${relativo ? ', con la regla combinada' : ''})` : 'Ningún precio cercano' },
     ] : [],
     precio_txt: enCot(precio), valor_objetivo_txt: enCot(valorObjetivo),
+    regla_valor_intrinseco: reglaValor,
+    objetivo_12m: con12 ? o12 : null,
+    rentabilidad_12m_pct: con12 ? o12.rentabilidad_ponderada_pct : red(rte),
+    rentabilidad_12m_txt: con12 ? `${o12.rentabilidad_ponderada_pct >= 0 ? '+' : ''}${fmt(o12.rentabilidad_ponderada_pct, 1)} % (base ${o12.rentabilidad_base_pct >= 0 ? '+' : ''}${fmt(o12.rentabilidad_base_pct, 1)} %)` : `${rte >= 0 ? '+' : ''}${fmt(rte, 1)} % (del valor intrínseco: falta el objetivo a 12 meses)`,
+    objetivo_12m_txt: con12 ? `${fmt(o12.objetivo_ponderado, 2)} ${meta.divisa || ''}${enCot(o12.objetivo_ponderado)}` : 'n.d.',
   };
 
   // ── Múltiplos clave para la ficha ──

@@ -8,8 +8,7 @@
 //     − amortización (% de ventas del DCF) = EBIT; − intereses de la deuda neta (deuda neta × coste de la deuda;
 //     con caja neta, 0); × (1 − tipo impositivo del DCF); ÷ acciones del informe.
 //   PER (últimos 12 meses al cierre de cada año = precio de cierre ÷ BPA real de ese año, del propio informe):
-//     base = el menor entre el PER actual sobre el BPA propio del ejercicio siguiente y la mediana de 5 años;
-//     bajista = el mínimo de 5 años (sin pasar del base); alcista = la media de todos los años (sin bajar del base).
+//     la regla común de motor/objetivo12m.mjs (base, bajista y alcista), con la serie sin limpiar.
 //   Objetivo = media simple de los tres; rentabilidad = objetivo / precio − 1 + dividendo.
 //   Señal: Comprar ≥ 15 %, Vender ≤ −10 %, Mantener en medio. El consenso no entra en el cálculo: solo se da al lado.
 //
@@ -19,6 +18,7 @@
 
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { multiplosRegla } from '../motor/objetivo12m.mjs';
 
 const n = (v) => (v === null || v === undefined || v === '' || Number.isNaN(+v) ? null : +v);
 const r1 = (v) => (v === null || !Number.isFinite(v) ? null : Math.round(v * 10) / 10);
@@ -77,7 +77,10 @@ export function objetivo12m(d, { sinRevisiones = false } = {}) {
   const cinco = pers.slice(-5).map((x) => x.per), todos = pers.map((x) => x.per);
   const bpaSig = bpa(iObj - 1, esc.Base), perActual = bpaSig > 0 ? precio / bpaSig : null;
   const perBase = Math.min(...[perActual, mediana(cinco)].filter((x) => x !== null && x > 0));
-  const per = { Bajista: Math.min(Math.min(...cinco), perBase), Base: perBase, Alcista: Math.max(todos.reduce((s, x) => s + x, 0) / todos.length, perBase) };
+  // Regla común de múltiplos (motor/objetivo12m.mjs), con la serie tal cual: sin quitar años atípicos (eso es la revisión).
+  const mc = (d.comparables?.empresas || []).map((x) => n(x.per_ntm)).filter((x) => x > 0 && x < 200);
+  const mr = multiplosRegla({ actual: perActual, mediana_5a: mediana(cinco), minimo_5a: Math.min(...cinco), media_larga: todos.reduce((s, x) => s + x, 0) / todos.length }, { mediana: mc.length ? mediana(mc) : null });
+  const per = { Bajista: mr.bajista, Base: mr.base, Alcista: mr.alcista };
   const fila = {};
   for (const k of ['Bajista', 'Base', 'Alcista']) { const b = bpa(iObj, esc[k]); fila[k] = { bpa: r2(b), per: r1(per[k]), objetivo: r2(b * per[k]) }; }
   if (Object.values(fila).some((f) => !(f.objetivo > 0))) return { ...base, objetivo: null, rte: null, senal: null, origen: 'BPA proyectado negativo: el método no aplica' };
@@ -87,11 +90,16 @@ export function objetivo12m(d, { sinRevisiones = false } = {}) {
     origen: `PER × BPA ${anios[iObj].periodo}: bajista ${fila.Bajista.per}x × ${fila.Bajista.bpa} = ${fila.Bajista.objetivo}; base ${fila.Base.per}x × ${fila.Base.bpa} = ${fila.Base.objetivo}; alcista ${fila.Alcista.per}x × ${fila.Alcista.bpa} = ${fila.Alcista.objetivo}` };
 }
 
-export function ultimoDatos(dir) {
+export function ultimoArchivo(dir) {
   const arch = readdirSync(`informes/${dir}`);
   const vs = arch.map((f) => f.match(/^datos-v(\d+)\.json$/)).filter(Boolean).sort((a, b) => b[1] - a[1]);
   const f = vs.length ? vs[0][0] : arch.includes('datos.json') ? 'datos.json' : null;
-  return f ? JSON.parse(readFileSync(`informes/${dir}/${f}`, 'utf8')) : null;
+  return f ? `informes/${dir}/${f}` : null;
+}
+
+export function ultimoDatos(dir) {
+  const f = ultimoArchivo(dir);
+  return f ? JSON.parse(readFileSync(f, 'utf8')) : null;
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
