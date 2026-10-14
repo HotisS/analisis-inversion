@@ -6,9 +6,9 @@ Solo lo pendiente. Lo cerrado está en `archivo/` (índice en `archivo/HISTORICO
 
 ## Pendiente
 
-Cuarta hora terminada (14:50 del 14-oct). Nada en curso: la quinta hora espera el visto bueno del usuario.
+Quinta hora en marcha desde las 15:30 del 14-oct (visto bueno del usuario). En curso la tanda 1.
 
-## Quinta hora (propuesta el 14-oct, 13:45; pendiente del visto bueno del usuario), de 4 en 4
+## Quinta hora (aprobada el 14-oct, 15:29), de 4 en 4
 
 | Tanda | Empresa | Ticker | Estilo | Por qué |
 |---|---|---|---|---|
@@ -17,7 +17,7 @@ Cuarta hora terminada (14:50 del 14-oct). Nada en curso: la quinta hora espera e
 | 1 | Siemens Healthineers | SHL.DE | Valor | Imagen médica, cotiza bajo su media |
 | 1 | Linde | LIN | Crecimiento | Gases industriales, oligopolio con contratos largos |
 | 2 | Kering | KER.PA | Valor | Lujo castigado, posible giro |
-| 2 | Apple | AAPL | Crecimiento | Para tenerla medida con el método común |
+| 2 | Schindler | SCHP.SW | Valor | Ascensores, ingresos de mantenimiento; compararla con KONE |
 | 2 | Ferrovial | FER | Crecimiento | Autopistas de peaje (407 ETR), española |
 | 2 | Sika | SIKA.SW | Valor | Químicos de construcción, cotiza bajo su media |
 | 3 | Pernod Ricard | RI.PA | Valor | Bebidas premium en mínimos de años |

@@ -5,7 +5,8 @@ Lo que cualquier sesión de Claude, en cualquier equipo, tiene que saber antes d
 ## Cómo trabajar
 - **El repo de GitHub (HotisS/analisis-inversion) es la única fuente.** El proyecto debe poder seguirse desde cualquier ordenador: al empezar, `git pull` (o clonar con la cuenta de gh); nada importante vive solo en un equipo.
 - **Cada cambio va a la vez a GitHub y a la copia local**: commit y push al terminar cada pieza (informe, cambio de plantilla, cola).
-- **La cola (`cola.md`) va de tres en tres** en paralelo (desde el 12-oct-2026), mezclando valor y crecimiento.
+- **La cola (`cola.md`) va de cuatro en cuatro** en paralelo (desde el 14-oct-2026), mezclando valor y crecimiento. Sin empresas «para tenerla medida»; las que no ganan dinero van a la cola growth (`cola-growth.md`) (14-oct).
+- **Informe Word completo para todas** (14-oct, el usuario rechazó el triaje con ficha corta: «se comerá buenas»).
 - **Sin empresas de juego ni apuestas** (12-oct): fuera de la cola, del escáner y de cualquier cartera.
 - **Cada análisis lleva la capa de sentimiento** (sección 28, subagente E): opiniones actuales en foros y comentarios, contrastadas con los datos; nunca fuente de cifras.
 - **Nunca datos personales** (el correo del usuario, su nombre…) en ninguna consulta externa, URL ni cabecera, tampoco en el User-Agent de la SEC.
@@ -26,6 +27,7 @@ Lo que cualquier sesión de Claude, en cualquier equipo, tiene que saber antes d
   1. **Rentabilidad**: a 12 meses ponderada ≥ 15 % (método v2, `verticales/empresa/objetivo-12m.md`).
   2. **Valor real**: base a 12 meses ≥ 12 % y valor intrínseco del informe ≥ precio.
   3. **Calidad del negocio**: sostenibilidad del crecimiento «Sí» y ROIC − WACC ≥ 5 puntos.
+- **Confianza de datos baja = no Comprar** hasta confirmar las cifras con fuente primaria (14-oct, 15:29): la señal se queda en Mantener y se apunta qué falta confirmar.
 - **Mantener**: calidad, ponderada ≥ 10 %, base ≥ 5 % y valor intrínseco no más de un 15 % por debajo del precio.
 - **Análisis técnico** (gráficos del usuario: medias SAMA, EMA 365 y 1.000, SMA 200, RSI, ChandeMO): solo para decidir **cuándo** ejecutar (precio límite, stop, fecha tope), nunca qué se compra o se vende (13-oct).
 - **Cada compra y venta con su motivo de negocio**, no solo la rentabilidad; tabla antes → después con la rentabilidad a 12 meses de cada activo (ponderada y base), el valor intrínseco frente al precio y la calidad.
