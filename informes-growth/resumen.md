@@ -17,9 +17,11 @@ Lo genera `node motor/growth.mjs --todos` (no editar a mano). Método v11: [vert
 | CrowdStrike Holdings | CRWD | 81.2 | 7/8 | +10,6 % | +13,6 % | Mantener | — | 170.3 USD | 2026-10-14 |
 | Dexcom | DXCM | 68.2 | 7/8 | +10,5 % | +13,4 % | Comprar (baja) | 3.5 % | 89.5 USD | 2026-10-14 |
 | Toast | TOST | 62.8 | 3/8 | +9,3 % | +11,1 % | Comprar (baja) | 3.5 % | 32.1 USD | 2026-10-14 |
+| Saab AB | SAAB-B | 63.3 | 2/8 | +8,2 % | +10,9 % | Comprar (baja) | 3.5 % | 616.3 SEK | 2026-10-14 |
 | Natera | NTRA | 74.7 | 6/8 | +8,1 % | +9,2 % | Comprar (baja) | 3.5 % | 407.5 USD | 2026-10-14 |
 | Snowflake | SNOW | 78 | 6/8 | +8 % | +12,4 % | Comprar (media) | 4 % | 368 USD | 2026-10-14 |
 | Datadog | DDOG | 79.8 | 5/8 | +7,1 % | +9,2 % | Comprar (media) | 4 % | 289 USD | 2026-10-14 |
+| Kinsale Capital | KNSL | 50.3 | 0/8 | +6,9 % | +7,1 % | Mantener | — | 346 USD | 2026-10-14 |
 | Siemens Energy AG | ENR | 57.5 | 3/8 | +5,8 % | +6,4 % | Mantener | — | 144.1 EUR | 2026-10-14 |
 | Wise Group | WSE | 62.8 | 1/8 | +3,9 % | +4,5 % | Mantener | — | 12.1 USD | 2026-10-14 |
 | Rheinmetall AG | RHM | 64.3 | 2/8 | +3,5 % | -2,1 % | Mantener | — | 847 EUR | 2026-10-14 |
@@ -29,6 +31,8 @@ Lo genera `node motor/growth.mjs --todos` (no editar a mano). Método v11: [vert
 | HubSpot | HUBS | 66.8 | 3/8 | -0,4 % | +4,8 % | Mantener | — | 209.8 USD | 2026-10-14 |
 | Spotify Technology | SPOT | 54.5 | 3/8 | -0,6 % | -5 % | Mantener | — | 499.5 USD | 2026-10-14 |
 | Eli Lilly | LLY | 85.5 | 7/8 | -1,1 % | +0,9 % | Mantener | — | 1098.4 USD | 2026-10-14 |
+| Vertex Pharmaceuticals | VRTX | 59.3 | 2/8 | -2,6 % | -0,1 % | Mantener | — | 450.1 USD | 2026-10-14 |
+| TransMedics | TMDX | 51.2 | 1/8 | -9 % | -1,6 % | Mantener | — | 68.6 USD | 2026-10-14 |
 | Boston Scientific | BSX | 46 | 2/8 | -10,2 % | -4 % | Vender | — | 37 USD | 2026-10-14 |
 | GE Vernova Inc. | GEV | 61.8 | 3/8 | -14,8 % | -12,6 % | Vender | — | 814 USD | 2026-10-14 |
 | Palantir Technologies | PLTR | 93.8 | 7/8 | -15,5 % | -13,3 % | Vender | — | 141.2 USD | 2026-10-14 |
