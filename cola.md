@@ -6,9 +6,26 @@ Solo lo pendiente. Lo cerrado está en `archivo/` (índice en `archivo/HISTORICO
 
 ## Pendiente
 
-| Empresa | Qué | Nota |
-|---|---|---|
-| (vacía) | La cola del 12-oct quedó terminada el 14-oct con 14 análisis desde la nube (Spirax, Halma, TSMC, ASML, Kone, ASSA ABLOY, Fiserv, Elevance, Schneider, Thermo Fisher, Danaher, Visa, Texas Instruments y Experian; resumen en `informes/cartera-2026-10-14-tarde.md`). | Siguientes: los suplentes de abajo, si el usuario quiere. |
+Cola del 14-oct (12:00), de 4 en 4 durante una hora, mezclando valor y crecimiento (propuesta al usuario en el hilo; si cambia algo, se aplica desde la siguiente tanda):
+
+| Tanda | Empresa | Ticker | Estilo | Por qué |
+|---|---|---|---|---|
+| 1 | RELX | REL.L | Valor | Datos y análisis como Wolters Kluwer, castigada por el miedo a la IA |
+| 1 | Booking Holdings | BKNG | Crecimiento | ROIC muy alto, recompras, PER moderado para su crecimiento |
+| 1 | Moncler | MONC.MI | Valor | Lujo de calidad en la parte baja del ciclo, sin deuda |
+| 1 | Fair Isaac (FICO) | FICO | Crecimiento | Monopolio de la puntuación de crédito, muy castigada en 2025-26 |
+| 2 | L'Oréal | OR.PA | Valor | Líder mundial de belleza, cotiza bajo su media |
+| 2 | Hoya | 7741.T | Crecimiento | Óptica y máscaras de semiconductores, ROIC alto |
+| 2 | Rightmove | RMV.L | Valor | Portal dominante como Auto Trader, márgenes del 70 % |
+| 2 | Moody's | MCO | Crecimiento | Duopolio de calificaciones, ROIC muy alto |
+| 3 | Roche | ROG.SW | Valor | Farmacia y diagnóstico barata con dividendo alto |
+| 3 | Sectra | SECT-B.ST | Crecimiento | Software de imagen médica (suplente del escáner) |
+| 3 | ANYCOLOR | 5032.T | Valor | Barata con caja neta y crecimiento (suplente del escáner) |
+| 3 | Atlas Copco | ATCO-A.ST | Crecimiento | Compresores y vacío, ROIC alto y disciplina |
+| 4 | Shimano | 7309.T | Valor | Líder de componentes de bicicleta en mínimos, caja neta |
+| 4 | Mettler-Toledo | MTD | Crecimiento | Instrumentos de precisión con ROIC altísimo |
+| 4 | Deutsche Börse | DB1.DE | Valor | Bolsa y datos con crecimiento estable |
+| 4 | Ferrari | RACE.MI | Crecimiento | Poder de precio único; probablemente cara, para tenerla medida |
 
 ## Vigilar
 
