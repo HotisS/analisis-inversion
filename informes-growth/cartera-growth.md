@@ -4,7 +4,7 @@
 
 | Valor | Total | Tramo 1 (ya, con límite) | Tramo 2 | Límite máximo | Peso | Motivo de negocio |
 |---|---|---|---|---|---|---|
-| Nu Holdings (NU) | 86 acciones (≈1.190 EUR) | 43 acciones | 43 tras resultados del 3T (12-nov), si la morosidad no se dispara | 18,9 USD | 4 % | Banco digital que crece +35 % a 15x beneficios |
+| Nu Holdings (NU) | 86 acciones (≈1.190 EUR) | 43 acciones | 43 tras resultados del 3T (12-nov), si la morosidad no se dispara | 18,3 USD (antes 18,9; recalculado el 14-oct 16:10 UTC) | 4 % | Banco digital que crece +35 % a 15x beneficios |
 | argenx (ARGX) | 2 acciones (≈1.450 EUR) | 1 acción | 1 tras resultados del 3T (22-oct) | 1.134 USD | 4,9 % | Vyvgart crece > 60 %; nuevas indicaciones |
 | Shopify (SHOP), añadida el 14-oct a las 15:46 con la delegación del usuario («las órdenes tú mandas», 15:39) | 8 acciones (≈1.250 EUR) | 4 acciones | 4 tras resultados del 3T (3-nov) | 193,2 USD | 4 % | Plataforma de comercio (no minorista) que crece más del 30 % a 28x el beneficio bruto |
 | Axon (AXON) | 3 acciones (≈1.100 EUR) | 2 acciones | 1 tras resultados del 3T (principios de noviembre) | 528 USD | 3,7 % | Cámaras y software para policía, barata frente a su historia |
@@ -15,3 +15,17 @@
 - Liquidez: los tramos 1 (≈2.450 EUR) caben junto a las órdenes con límite value; los tramos 2 (≈2.400 EUR) solo con la liquidez que quede tras las órdenes value ejecutadas o vencidas el 7-nov.
 - Datadog (tanda 4): tras Shopify no quedaba liquidez. El tramo 1 (≈730 EUR) sale de cancelar la orden con límite de Deutsche Börse, la suplente value de menor rentabilidad (+8,6 %); cancelar una orden no ejecutada no cuesta comisión ni impuesto. El tramo 2, de la liquidez del 7-nov. Duolingo queda descartada por el usuario (miedo al ciclo y a la IA).
 - Suplente growth (tanda 4): Wise (Comprar baja, +7,6 %, frágil; se revisa con su 2T del 15-oct y, si sube a convicción media, se propone como sustituta; ≤ 12,5 USD). Celestica: no comprar.
+
+## Revisión de precios antes de cada orden
+
+Regla del usuario (14-oct, 16:10): antes de proponer o mantener una orden, se mira el precio actual y se recalcula con `node motor/growth.mjs` (mismo `datos.json`, solo cambia el precio).
+
+| Valor | Precio y hora | Límite | Ponderada / base al precio actual | Señal | ¿Sigue en pie? |
+|---|---|---|---|---|---|
+| Nu Holdings | 15,09 USD, 14-oct 16:10 UTC | 18,3 USD (antes 18,9) | +27,2 % / +21,8 % | Comprar (media) | Sí; el límite baja a 18,3 USD |
+| argenx | 828,94 USD, 14-oct 16:10 UTC | 1.134 USD | +43,7 % / +38,8 % | Comprar (baja) | Sí |
+| Axon | 404,80 USD, 14-oct 16:10 UTC | 528 USD | +37,1 % / +31,0 % | Comprar (baja) | Sí |
+| Shopify | 172,48 USD, 14-oct 16:10 UTC | 193,2 USD | +17,6 % / +20,8 % | Comprar (media) | Sí |
+| Datadog | 273,96 USD, 14-oct 16:10 UTC | 282 USD | +14,7 % / +17,8 % | Comprar (media) | Sí |
+
+Precios de Yahoo (chart API, sesión en curso). Las cinco siguen por debajo de su límite y en Comprar.
