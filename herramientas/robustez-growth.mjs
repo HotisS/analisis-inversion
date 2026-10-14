@@ -8,7 +8,7 @@
 //   … --json       imprime el JSON en vez del texto (escáner diario)
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { calcular, VERSIONES, VIGENTE } from '../motor/growth.mjs';
-import { ultimoCierre } from './precios.mjs';
+import { ultimoCierre, simboloDe } from './precios.mjs';
 
 const args = process.argv.slice(2);
 const bandera = (k) => { const i = args.indexOf(k); if (i >= 0) args.splice(i, 1); return i >= 0; };
@@ -19,7 +19,9 @@ const RAIZ = 'informes-growth';
 const carpetas = args.length ? args.map((a) => a.replace(/\/$/, '').replace(/^informes-growth\//, ''))
   : readdirSync(RAIZ, { withFileTypes: true }).filter((e) => e.isDirectory() && existsSync(`${RAIZ}/${e.name}/datos.json`)).map((e) => e.name).sort();
 const V = VERSIONES[VIGENTE];
-const SUF = [[/stockholm|estocolmo/i, '.ST'], [/nyse|nasdaq/i, ''], [/xetra|frankfurt/i, '.DE'], [/amsterdam|ámsterdam/i, '.AS'], [/london|londres|lse/i, '.L'], [/toronto|tsx/i, '.TO']];
+// Símbolo de Yahoo: `simbolo_yahoo` del datos.json si lo trae; si no, ticker + sufijo de la bolsa con la tabla común de
+// precios.mjs (SIX → .SW, Copenhague → .CO, París → .PA…). Hasta el 14-oct por la noche faltaban SIX, Copenhague y París
+// y Medacta/Ypsomed/ALK-Abelló/Exosens se buscaban en EE. UU. (fallo visto en la tanda growth 17).
 
 // Variante «ventas del analista»: cada caso con las ventas que estima el propio informe en vez de la proyección mecánica
 // (precio del caso × ventas del analista ÷ ventas mecánicas; vale para múltiplos de ventas y de beneficio), con los mismos listones.
@@ -53,8 +55,7 @@ for (const c of carpetas) {
   // G1 precio de hoy frente al del informe; la rentabilidad se recalcula con el OBJETIVO FIJO (regla del 14-oct, caso Nu).
   let precioHoy = null, fechaHoy = null, simbolo = null, divisaHoy = null;
   if (conPrecios) {
-    const suf = (SUF.find(([re]) => re.test(d.bolsa || '')) || [null, ''])[1];
-    simbolo = `${String(d.ticker).trim()}${suf}`;
+    simbolo = d.simbolo_yahoo || simboloDe({ ticker: d.ticker, mercado: d.bolsa });
     const q = await ultimoCierre(simbolo);
     divisaHoy = q.divisa || null;
     if (!q.error) { precioHoy = q.en_curso?.precio ?? q.precio; fechaHoy = q.en_curso?.fecha ?? q.fecha; }

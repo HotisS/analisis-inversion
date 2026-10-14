@@ -63,7 +63,7 @@ const SUFIJOS = [
   [/madrid|bme|bolsas españolas|bolsas de madrid|mercado continuo|sibe/i, '.MC'], [/par[ií]s/i, '.PA'], [/xetra|fr[áa]ncfort|frankfurt/i, '.DE'],
   [/[áa]msterdam/i, '.AS'], [/london|londres|lse/i, '.L'], [/stockholm|estocolmo/i, '.ST'], [/copenhag/i, '.CO'], [/six|swiss|suiza/i, '.SW'],
   [/tokio|tokyo|tse/i, '.T'], [/oslo/i, '.OL'], [/helsinki/i, '.HE'], [/mil[aá]n|borsa italiana/i, '.MI'], [/asx|australian/i, '.AX'],
-  [/toronto|tsx/i, '.TO'], [/hong kong|hkex/i, '.HK'], [/taiw[áa]n|twse/i, '.TW'], [/nyse|nasdaq|new york|nueva york/i, ''],
+  [/toronto|tsx/i, '.TO'], [/bruselas|brussels/i, '.BR'], [/lisboa|lisbon/i, '.LS'], [/viena|vienna/i, '.VI'], [/z[úu]rich/i, '.SW'], [/hong kong|hkex/i, '.HK'], [/taiw[áa]n|twse/i, '.TW'], [/nyse|nasdaq(?!\s+(?:stockholm|estocolmo|copenhag|helsinki|iceland|islandia|first north|nordic|b[aá]ltic))|new york|nueva york/i, ''], // «Nasdaq Stockholm/Copenhagen» no son EE. UU.
 ];
 const limpiarTicker = (t) => {
   let s = String(t || '').trim();
