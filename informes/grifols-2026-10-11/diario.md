@@ -7,3 +7,4 @@
 - Propio: puente con 403 M de factoring sin recurso y 59 M de dividendo pagado; posición corta 1,81 % (Kintbury, CNMV, registro abierto). WACC 8,23 % (Bund 3,53, beta 1,42, +1 punto de prima por gobierno, 55 % de deuda). DCF 14,21 EUR (+43,8 %); DCF inverso 0,2 % de crecimiento o 23,3 % de margen. Valor objetivo 13,99 (+41,6 %), rentabilidad total 43,9 %, asimetría 1,08; Comprar, convicción Media (sugerida). Sostenibilidad «En parte».
 - Word (61 páginas) y PDF; portada, resumen y «La decisión» revisados. Controles: 17 correctos y 3 explicados.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 12,52 EUR, rentabilidad +29,0 %, señal Comprar (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +18,7 % → +11,2 %, base +18,4 %, señal Mantener (`revision-12m-2026-10-13.md`).

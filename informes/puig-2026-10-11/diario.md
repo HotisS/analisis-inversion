@@ -6,3 +6,4 @@
 - 11:28 Supuestos: crecimiento 3,5 % (2026e, fijo) → 5,5 % → 3 %; margen 20,7 % → 21,5 %; capex 5,6 % con arrendamientos; WACC 8,07 % con 1 punto de prima por control. e.l.f. fuera de comparables. Pesos DCF 55 / escenarios 25 / comparables 15 / transacciones 5.
 - 11:31 DCF 20,14 EUR (+11,4 %), valor objetivo 21,46 (+18,7 %), rentabilidad total 21,0 %, asimetría 1,06; Comprar, convicción Media (la sugerida). DCF inverso: 1,9 % anual frente al 4,4 % base. Sostenibilidad «Sí». 16 de 16 controles correctos. Word y PDF (53 páginas); portada, síntesis y «La decisión» revisadas.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 19,18 EUR, rentabilidad 8,4 %, señal Mantener (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +6,9 % → +9,7 %, base +9,4 %, señal Mantener (`revision-12m-2026-10-13.md`).
