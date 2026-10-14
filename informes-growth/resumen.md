@@ -31,11 +31,14 @@ Lo genera `node motor/growth.mjs --todos` (no editar a mano). Método v11: [vert
 | Construction Partners | ROAD | 57.2 | 1/8 | +2,6 % | -3,7 % | Mantener | — | 63.6 USD | 2026-10-14 |
 | Glaukos | GKOS | 82.5 | 7/8 | +2,5 % | +5,7 % | Mantener | — | 161.6 USD | 2026-10-14 |
 | Arista Networks, Inc. | ANET | 78.8 | 5/8 | +2,1 % | +4,8 % | Mantener | — | 198.9 USD | 2026-10-14 |
+| TG Therapeutics | TGTX | 73.2 | 5/8 | +1,8 % | +14 % | Mantener | — | 52.7 USD | 2026-10-14 |
 | Remitly Global | RELY | 70.5 | 7/8 | +1,5 % | +3,6 % | Mantener | — | 23 USD | 2026-10-14 |
 | Rocket Lab Corporation | RKLB | 63.8 | 3/8 | +1,3 % | +15,7 % | Mantener | — | 28.7 USD | 2026-10-14 |
 | DoorDash | DASH | 63.8 | 3/8 | +0,8 % | +4 % | Mantener | — | 185.3 USD | 2026-10-14 |
 | HubSpot | HUBS | 66.8 | 3/8 | -0,4 % | +4,8 % | Mantener | — | 209.8 USD | 2026-10-14 |
 | Spotify Technology | SPOT | 54.5 | 3/8 | -0,6 % | -5 % | Mantener | — | 499.5 USD | 2026-10-14 |
+| Krystal Biotech | KRYS | 75.3 | 6/8 | -0,8 % | +9,5 % | Mantener | — | 303.5 USD | 2026-10-14 |
+| Fabrinet | FN | 58.8 | 1/8 | -1 % | -0,9 % | Mantener | — | 403.4 USD | 2026-10-14 |
 | Eli Lilly | LLY | 85.5 | 7/8 | -1,1 % | +0,9 % | Mantener | — | 1098.4 USD | 2026-10-14 |
 | Vertex Pharmaceuticals | VRTX | 59.3 | 2/8 | -2,6 % | -0,1 % | Mantener | — | 450.1 USD | 2026-10-14 |
 | AeroVironment | AVAV | 37.8 | 1/8 | -2,7 % | +4,5 % | Vender | — | 117.8 USD | 2026-10-14 |
@@ -59,4 +62,5 @@ Lo genera `node motor/growth.mjs --todos` (no editar a mano). Método v11: [vert
 | Celestica Inc. | CLS | 66.2 | 3/8 | -26,2 % | -24,4 % | Vender | — | 251.1 USD | 2026-10-14 |
 | Insmed | INSM | 71.5 | 3/8 | -30,2 % | -23,8 % | Vender | — | 58 USD | 2026-10-14 |
 | Oscar Health | OSCR | 72.5 | 7/8 | -34,8 % | -27,7 % | Vender | — | 21 USD | 2026-10-14 |
+| Nextpower (antes Nextracker) | NXT | 46.5 | 1/8 | -36,2 % | -28,9 % | Vender | — | 53.9 USD | 2026-10-14 |
 | Corcept Therapeutics | CORT | 70 | 6/8 | -49,6 % | -43,6 % | Vender | — | 56.5 USD | 2026-10-14 |
