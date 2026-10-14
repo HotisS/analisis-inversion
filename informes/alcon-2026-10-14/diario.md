@@ -12,3 +12,4 @@
 - En la nube sin bolsa.mjs, la capitalización de los comparables de otros informes del repo da un precio implícito más reciente que el último cierre fechado que devuelve la búsqueda; úsala como contraste del precio.
 - Empresas con fondo de comercio de una escisión (Alcon, igual que EssilorLuxottica o Cooper): el ROIC contable queda por debajo del WACC aunque el negocio sea bueno; dar también el ROIC core y el incremental, y avisar de que el filtro de calidad no pasará.
 - 2026-10-14: datos-v2.json y «Alcon - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 26,5 % (antes v3 Mantener 39,3 %). Para comparar, con el tope anterior del base (×1,3, 14-oct mediodía): 39,3 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).
+

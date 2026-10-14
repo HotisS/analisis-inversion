@@ -13,3 +13,4 @@
 
 - **Software rentable con PER histórico alto (Veeva)**: con la historia adelantada GAAP la v3 da un base por encima del PER actual (40x → 43x) y la ponderada pasa del 15 % aunque el DCF quede un 44 % por debajo; el filtro de valor real es lo único que evita el Comprar. Vigilar en empresas de calidad con múltiplos estructuralmente altos.
 - 2026-10-14: datos-v2.json y «Veeva - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 15,9 % (antes v3 Mantener 15,9 %).
+

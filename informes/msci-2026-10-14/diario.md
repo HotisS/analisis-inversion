@@ -13,3 +13,6 @@
 
 - MSCI (y otros con intangibles comprados y software activado en US GAAP): `cuentas.mjs` toma `DepreciationDepletionAndAmortization`, que en MSCI es solo la depreciación del inmovilizado; hay que sumar `AmortizationOfIntangibleAssets` y llevar `PaymentsForSoftware` al capex.
 - Con una ficha sectorial del mismo día en `sectores/`, su JSON de comparables ahorra la fase D casi entera.
+
+- 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 36.3x, mínimo 25.6x, media larga 31.3x; antes v2 34.6x/29.3x/31.9x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «MSCI - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 24,3 % (antes v3 Mantener 24,3 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 22,0x / 25,9x / 33,7x, 15,1 % Mantener; con el tope anterior del base (×1,3, 14-oct mediodía): 30,5 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

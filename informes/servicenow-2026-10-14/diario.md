@@ -14,3 +14,4 @@
 
 - **PER adelantado GAAP en empresas con el margen en rampa** (software con remuneración en acciones del 15-18 % de las ventas): la historia adelantada (103-127x) no es comparable con el PER actual (59x) y, con la v3, el base subiría a ≈83x. Se excluyeron todos los años y el motor cayó a v2. Convendría decidir si estas empresas van en base no GAAP o con otra métrica (EV/FCF).
 - 2026-10-14: datos-v2.json y «ServiceNow - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v2 Mantener 17,6 % (antes v2 Mantener 17,6 %).
+

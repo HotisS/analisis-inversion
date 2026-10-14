@@ -13,3 +13,4 @@
 - Precio en la nube sin Yahoo: los RNS semanales de «Transaction in own shares» dan el precio medio diario con fecha (sirven también como cierre de ejercicio aproximado), y el ADR en USD convertido con el BCE sirve de contraste.
 - Aerolíneas: el ROIC del motor sale inflado por los billetes cobrados por adelantado (pasivo corriente); dar aparte el rendimiento sobre el inmovilizado.
 - 2026-10-14: datos-v2.json y «Ryanair - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener -5,0 % (antes v3 Mantener -6,3 %). Para comparar, con el tope anterior del base (×1,3, 14-oct mediodía): -6,3 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).
+
