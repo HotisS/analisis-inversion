@@ -1,10 +1,10 @@
 # Cloudflare (NET): análisis growth, 14-oct-2026
 
-**Señal (método v4): Mantener** (sin vigilancia; convicción: no aplica) · Puntuación 81,3/100 · Señales de cambio de tendencia 6/8 · EV/beneficio bruto 56,0x
-Precio 360,93 USD · Objetivo 12 m 409,3 USD (ponderada +13,4 %, base +16,5 %, bajista −45,1 %, alcista +65,6 %) · Compra hasta 226,2 USD
+**Señal (método v7): Mantener** · Puntuación 81,3/100 · Señales de cambio de tendencia 6/8 · EV/beneficio bruto 56x
+Precio 360,93 USD · Objetivo 12 m 409,3 USD (ponderada +13,4 %, base +16,5 %, bajista -45,1 %, alcista +65,6 %) · Compra hasta 226,2 USD
 Peso orientativo: no entra · Por qué: no compra: EV/beneficio bruto > 35
 
-> Precio: último cierre encontrado, el del 9-oct-2026 (360,93 USD, Yahoo Finance); los del 12 y 13-oct no aparecían en las fuentes [5]. Con TIKR y Trade-Ideas (~349 USD a 2-4 de octubre) cuadra el orden de magnitud [6]. Una diferencia de ±5 % en el precio no cambia la señal: el filtro que falla (EV/beneficio bruto 56x frente a 35x) está muy lejos.
+> **Calculado con el método v7** (vigente desde el 14-oct tras el backtest de 71 casos, `verticales/growth/metodo.md` §6). Si la sección 9 enseña otras cifras de valoración, son del borrador con la proyección del analista; mandan las de arriba: ventas con la regla mecánica (4252 M en el base) y múltiplo de hoy con rebaja por desaceleración (22,6x / 37,6x / 48,9x).
 
 ## 1. La tesis en cinco líneas
 

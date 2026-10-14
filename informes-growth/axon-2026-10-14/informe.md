@@ -1,10 +1,10 @@
 # Axon Enterprise (AXON): análisis growth, 14-oct-2026
 
-**Señal (método v4): Mantener** (no en vigilancia: le faltan señales de tendencia, no rentabilidad) · Puntuación 68,2/100 · Señales de cambio de tendencia 3/8 · EV/beneficio bruto 14,2x
-Precio 413,35 USD · Objetivo 12 m 554,8 USD (ponderada +34,2 %, base +28,3 %, bajista −42,4 %, alcista +122,8 %) · Compra hasta 504,4 USD
-Peso orientativo: no entra · Por qué: no compra: menos de 4 señales (3/8)
+**Señal (método v7): Comprar (convicción baja)** · Puntuación 68,2/100 · Señales de cambio de tendencia 3/8 · EV/beneficio bruto 14,2x
+Precio 413,35 USD · Objetivo 12 m 554,8 USD (ponderada +34,2 %, base +28,3 %, bajista -42,4 %, alcista +122,8 %) · Compra hasta 528,4 USD
+Peso orientativo: 3,5 % de la cartera · Por qué: cumple todos los requisitos de compra
 
-> La regla no la frena el precio sino la tendencia: valoración (14,2x beneficio bruto, máximo 35), rentabilidad (ponderada +34,2 %, base +28,3 %), bajista (−42,4 %, límite −50 %), caja (FCF positivo) y puntuación (68,2 ≥ 60) cumplen. Falta una cuarta señal. La más cercana es la mejora del múltiplo: con el EV/ventas NTM un 20 % sobre su mínimo de abril (~9,0x) se activaría hacia **445-455 USD**, y a ese precio la regla daría **Comprar (convicción baja, 3,5 %)**: ponderada ~+22-25 % y por debajo de los 504,4 USD de compra máxima.
+> **Calculado con el método v7** (vigente desde el 14-oct tras el backtest de 71 casos, `verticales/growth/metodo.md` §6). Si la sección 9 enseña otras cifras de valoración, son del borrador con la proyección del analista; mandan las de arriba: ventas con la regla mecánica (5572 M en el base) y múltiplo de hoy con rebaja por desaceleración (5x / 8,3x / 13x).
 
 ## 1. La tesis en cinco líneas
 

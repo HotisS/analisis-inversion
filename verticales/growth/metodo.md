@@ -1,10 +1,10 @@
-# Análisis growth: método (versión vigente v4, 14-oct-2026)
+# Análisis growth: método (versión vigente v7, 14-oct-2026)
 
 **Qué es.** El segundo tipo de análisis del repo, en paralelo al **análisis value** (el de siempre: informe Word de 28 secciones, DCF y objetivo a 12 meses por PER, `verticales/empresa/`). Lo pidió el usuario el 14-oct: buscar **cambios de tendencia en la valoración o en la percepción de los inversores, crecimiento muy alto, tecnología nueva y potencial comercial y de mercado, aunque la empresa aún no gane dinero**. Aquí no se exige ROIC − WACC ≥ 5 ni se valora por PER.
 
 **Las cuentas las hace el código** (`motor/growth.mjs`, versión `VIGENTE`), igual para todas: el analista investiga y rellena `datos.json`; la puntuación, la proyección de ventas, el objetivo, la señal y el precio máximo de compra salen de la regla.
 
-**Cómo se llegó a v4.** Se probaron cuatro versiones sobre 20 casos históricos (13 ganadoras al principio o a mitad de su subida y 7 fracasos en su pico), con los datos de cada fecha: ver [backtest/resultados.md](backtest/resultados.md) y el apartado 6.
+**Cómo se llegó a v7.** Ocho versiones probadas en dos fases: 20 casos famosos (fase 1) y 51 casos de un universo neutral, el top 17 del ETF ARKK en tres fechas fijas, con reglas fijadas antes de ver datos y una cohorte reservada para validar (fase 2, [backtest/protocolo.md](backtest/protocolo.md)). Resultados: apartado 6.
 
 ## 1. Puntuación (0-100)
 
@@ -36,15 +36,15 @@
 
 - **Comprar**, si se cumplen todos:
   1. puntuación ≥ 60;
-  2. al menos 4 de las 8 señales;
+  2. (sin mínimo de señales: cuentan dentro de la puntuación; en el universo neutral, exigir 4 dejaba fuera a las ganadoras de 2019, que se compraban en plena caída);
   3. **valoración**: EV / beneficio bruto de los 12 meses siguientes ≤ 35 (pagar como mucho 35 veces lo que deja la venta después del coste directo);
   4. **sin euforia**: no ha subido ≥ 150 % en 12 meses con un EV / beneficio bruto > 20 (las ganadoras que ya habían subido mucho, como Nvidia en 2016 o AppLovin en 2024, seguían baratas; los fracasos, no);
-  5. el precio no exige más múltiplo: base ≥ 0 % y ponderada ≥ 10 %;
+  5. el precio no exige más múltiplo: base ≥ 0 % y ponderada ≥ 5 %;
   6. bajista no peor que −50 % y pista de caja ≥ 24 meses o FCF positivo.
 - **Vender** (o no comprar, si no se tiene): puntuación < 50, ponderada ≤ −10 %, pista < 12 meses o **tesis rota** (dos trimestres seguidos de desaceleración fuerte, pérdida del cliente o producto clave, fraude contable).
-- **Mantener** en medio, diciendo qué falta y a qué precio pasaría a Comprar. **En vigilancia** si solo le falta rentabilidad (ponderada entre 0 y 10 %): la tendencia y la valoración acompañan; se revisa en los siguientes resultados (en el backtest, Nvidia 2016 y Tesla 2019 quedaron aquí).
+- **Mantener** en medio, diciendo qué falta y a qué precio pasaría a Comprar. **En vigilancia** si solo le falta rentabilidad (ponderada entre 0 y 5 %): se revisa en los siguientes resultados.
 - **Convicción** (solo en Comprar): alta con puntuación ≥ 80 y asimetría ≥ 2; media con ≥ 75; baja el resto.
-- **Precio máximo de compra**: el menor entre el que da ponderada 10 % y base 0 %, y el que lleva el EV / beneficio bruto a 35.
+- **Precio máximo de compra**: el menor entre el que da ponderada 5 % y base 0 %, y el que lleva el EV / beneficio bruto a 35.
 
 ## 4. Riesgos que siempre se miran
 
@@ -58,21 +58,31 @@ Dilución (pagos en acciones > 15 % de las ventas se dice en rojo), caja y venci
 
 ## 6. Backtest y versiones
 
-| Versión | Qué cambia | Ganadoras con Comprar | Fracasos con Comprar | Rent. media 12 m de las compras | 36 m |
-|---|---|---|---|---|---|
-| v1 | Base = mín(múltiplo de hoy, mediana 3 años) × desaceleración; Comprar con 70 puntos y 20 % | 0/13 | 0/7 | — | — |
-| v2 | Base = múltiplo de hoy, rebaja suave | 3/13 | 1/7 (Palantir 2021) | +68 % | +256 % |
-| v3 | v2 + EV/beneficio bruto ≤ 35 + euforia que veta; 60 puntos y 15 % | 3/13 | 0/7 | +110 % | +358 % |
-| **v4** | v3 + alcista hasta su mediana o comparables; compra si el precio no exige más múltiplo; ≥ 4 señales | **5/13** | **0/7** | **+114 %** | **+476 %** |
+**Fase 1, 20 casos famosos** (13 ganadoras, 7 fracasos; elegidos sabiendo cómo acabaron: sirve para ver el mecanismo, no la tasa de acierto). v1 no compraba nada (suponía vuelta del múltiplo a su media); v4 compraba 5 ganadoras y ningún fracaso; v7, 7 ganadoras (Shopify 2017, CrowdStrike 2020, Axon 2023, Duolingo 2023, Palantir 2023, Nvidia 2016, Tesla 2019) y ningún fracaso (Zoom, Peloton, Teladoc, Beyond Meat, Palantir 2021, Snowflake, Rivian). Aviso: en estos casos las señales de tendencia salieron casi todas «sí» (6-7 de 8) y en el universo neutral casi todas «no» (0-3): parte de la fase 1 lleva sesgo retrospectivo.
 
-v4 compra Shopify 2017, CrowdStrike 2020, Axon 2023, Duolingo 2023 y Palantir 2023; deja en vigilancia Nvidia 2016 y Tesla 2019; no compra ninguno de los 7 fracasos (Zoom, Peloton, Teladoc, Beyond Meat, Palantir 2021, Snowflake, Rivian). Se le escapan los giros de empresas grandes que crecían poco cuando giraron (Meta 2023, Nvidia 2023, Rheinmetall 2022, Celestica 2024, Netflix 2013): sus puntuaciones de crecimiento eran bajas en ese momento; son casos que el **análisis value** puede ver mejor, y por eso conviven los dos.
+**Fase 2, universo neutral** (protocolo fijado antes: top 17 de ARKK el 29-mar-2019, 31-mar-2021 y 31-mar-2023; 24 meses frente al Nasdaq-100; ajuste en 2019-2021, validación en 2023 sin mirarla hasta elegir versión). Solo el 22 % de esas 51 empresas batió al Nasdaq-100 a 24 meses: comprar la lista entera era mala idea.
 
-**Límites del backtest**: 20 casos; precios y múltiplos históricos en parte aproximados (las fuentes de cotizaciones estaban bloqueadas y varios salen de memoria, marcados en cada caso); las señales y puntuaciones de juicio, aunque se pidió hacerlas con lo que se sabía entonces, pueden llevar algo de sesgo retrospectivo. Se han evitado reglas hechas a medida de un caso concreto. Los casos están en `backtest/casos/` y se recalculan con `node herramientas/growth-backtest.mjs`.
+| Versión | Ajuste 2019-21: compras, precisión | Validación 2023: compras, precisión | Las 51: compras, precisión (margen 95 %) |
+|---|---|---|---|
+| v4 (4 señales, ponderada ≥ 10 %) | 0 | 2, 50 % | 2, 50 % (9-91) |
+| v5 (2 señales) | 2, 100 % | 2, 50 % | 4, 75 % (30-95) |
+| v6 (sin mínimo de señales) | 3, 100 % | 2, 50 % | 5, 80 % (38-96) |
+| **v7 (v6 + ponderada ≥ 5 %)** | **4, 100 %** | **2, 50 %** | **6, 83 % (44-97)** |
+| v8 (v7 + proyección con desaceleración + señal de múltiplo con tope) | 4, 100 % | 2, 50 % | 6, 83 % (44-97) |
+
+Regla fijada de antemano para elegir: la mejor precisión en el ajuste (fase 2 + fase 1) con al menos 5 compras, y a igualdad, el mayor exceso. v7 y v8 empatan en precisión (100 %); v7 tiene más exceso en la fase 1 (Tesla 2019, que v8 deja fuera), así que **gana v7**. Las mejoras de v8 quedan pendientes de más evidencia.
+
+**Tasa de acierto realista con v7 (las 51 empresas, 24 meses frente al Nasdaq-100):**
+- Comprar: 6 casos, 5 baten al índice (83 %, margen 44-97 %); exceso mediano +125 pp; peor compra −36 % (Exact Sciences 2023). En la validación pura, 1 de 2 (Shopify +99 %, Exact Sciences −36 %).
+- Mantener: 20 casos, solo 2 baten al índice (exceso mediano −37 pp). Vender / no comprar: 25 casos, 4 baten (mediana −63 pp).
+- Se le escaparon 6 de las 11 que batieron al índice: Nvidia y Zillow 2019, CRISPR e Intellia 2019 (biotecnológicas sin ventas, que el método no sabe valorar), Coinbase 2023 y Twilio 2023 (por un punto). Las compras de 2019 fueron Tesla, Roku, Square y Twitter.
+- **Lectura honesta:** el método es sobre todo un buen filtro (evita casi todo lo que acaba mal) y compra poco. Con 6 compras el margen es enorme: lo prudente es esperar que acierte algo más de la mitad de las veces, no el 83 %. Los precios y datos de entonces son en parte de memoria (marcados en cada caso) y el universo ARKK está sesgado a tecnología y biotecnología de EE. UU.
 
 ## 7. Cambios del método
 
 Cada mejora que salga de los informes se apunta aquí, con fecha y motivo, y se repasa el backtest para que no empeore.
-- 14-oct-2026: v1 → v4 tras el backtest (apartado 6).
+- 14-oct-2026: v1 → v4 tras la fase 1 del backtest; v4 → v7 tras la fase 2 (universo neutral): fuera el mínimo de 4 señales y ponderada mínima del 5 %.
+- Propuestas de los informes pendientes de probar con el backtest: modo para bancos (Nu: PER o P/VC frente a ROE, morosidad y CET1); campo explícito del tipo de múltiplo; proyección que respete la desaceleración (argenx; es la v8); señal de múltiplo con tope (Cloudflare; v8); margen bruto del negocio recurrente en empresas mixtas (Axon); revisiones basadas en estimaciones, no en precios objetivo.
 
 ## 8. Cada análisis
 

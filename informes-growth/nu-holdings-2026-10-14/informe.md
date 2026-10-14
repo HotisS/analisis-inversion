@@ -1,15 +1,10 @@
 # Nu Holdings (NU): análisis growth, 14-oct-2026
 
-**Señal (método v4): Comprar (convicción media)** · Puntuación 78,3/100 · Señales de cambio de tendencia 4/8 · EV/beneficio bruto 7,3x
-Precio 15,58 USD · Objetivo 12 m 19,9 USD (ponderada +27,4 %, base +21,8 %, bajista −45,3 %, alcista +110,9 %) · Compra hasta 18,0 USD
-Peso orientativo: 4 % (~1.190 EUR), en dos tramos · Por qué: cumple todos los requisitos de compra
+**Señal (método v7): Comprar (convicción media)** · Puntuación 78,3/100 · Señales de cambio de tendencia 4/8 · EV/beneficio bruto 7,3x
+Precio 15,58 USD · Objetivo 12 m 19,9 USD (ponderada +27,4 %, base +21,8 %, bajista -45,3 %, alcista +110,9 %) · Compra hasta 18,9 USD
+Peso orientativo: 4 % de la cartera · Por qué: cumple todos los requisitos de compra
 
-> **Nu es un banco y el método está pensado para empresas que venden productos.** Aquí, por tanto:
-> - **«Ventas»** = el **beneficio bruto** de Nu: ingresos menos intereses pagados, pérdidas por crédito y costes transaccionales. Es decir, los ingresos netos que quedan tras el coste de financiación y la morosidad. Su «margen bruto» es del 100 % por definición.
-> - **Múltiplo** = **precio / beneficio neto de los 12 meses siguientes** (PER NTM, 15x hoy). La regla proyecta el beneficio bruto y lo pasa a beneficio neto con el margen actual (~49 %).
-> - **Caja y deuda = 0**. Los depósitos son la materia prima del negocio, no deuda financiera, y la caja está atada al capital regulatorio. El «EV» del código es la capitalización.
->
-> El porqué se explica en la sección 9 y lo que la regla mide mal, en la sección 11.
+> **Calculado con el método v7** (vigente desde el 14-oct tras el backtest de 71 casos, `verticales/growth/metodo.md` §6). Si la sección 9 enseña otras cifras de valoración, son del borrador con la proyección del analista; mandan las de arriba: ventas con la regla mecánica (15093 M en el base) y múltiplo de hoy con rebaja por desaceleración (7,7x / 12,8x / 20x).
 
 ## 1. La tesis en cinco líneas
 

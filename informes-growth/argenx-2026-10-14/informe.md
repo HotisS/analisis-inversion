@@ -1,12 +1,10 @@
 # argenx SE (ARGX): análisis growth, 14-oct-2026
 
-**Señal (método v4): Mantener** (sin convicción; no está en vigilancia) · Puntuación 70,5/100 · Señales de cambio de tendencia 3/8 · EV/beneficio bruto 7,6x
-Precio 817,16 USD (Nasdaq; 733,20 EUR en Bruselas) · Objetivo 12 m 1.190,8 USD (ponderada +45,7 %, base +40,8 %, bajista -37,2 %, alcista +138,5 %) · Compra hasta 1.082,5 USD
-Peso orientativo: no entra · Por qué: no compra: menos de 4 señales
+**Señal (método v7): Comprar (convicción baja)** · Puntuación 70,5/100 · Señales de cambio de tendencia 3/8 · EV/beneficio bruto 7,6x
+Precio 817,16 USD · Objetivo 12 m 1190,8 USD (ponderada +45,7 %, base +40,8 %, bajista -37,2 %, alcista +138,5 %) · Compra hasta 1134,1 USD
+Peso orientativo: 3,5 % de la cartera · Por qué: cumple todos los requisitos de compra
 
-> **Cotización usada: Nasdaq en USD.** argenx publica sus cuentas en USD, y las acciones diluidas, el BPA y el consenso están en USD. Así no hay que convertir divisas. El cierre de Bruselas (733,20 EUR el 12-oct; 722-745 EUR el 13-oct) da la misma valoración al tipo de cambio de hoy [3].
->
-> **Ojo con el objetivo.** La regla mecánica del método proyecta unas ventas base de 12.612 M USD dentro de 2 años. Parte de un crecimiento del 60 % (el tope de la regla) porque mezcla el CAGR de 2 años (+82 %) con el pasado. Pero argenx se está frenando con fuerza: +98 % en el 2T 2025, +60 % en el 2T 2026 y ~+41 % esperado en el 3T. El consenso para 2028 es de ~9.330 M USD [9]. **Con nuestras ventas de analista (7.600 / 9.300 / 10.500 M) y los mismos múltiplos, la ponderada sería ~+11 % y la base ~+6,5 %.** Es la cifra más realista, y apenas pasa el listón. Ver el apartado 9 y la propuesta de mejora del final.
+> **Calculado con el método v7** (vigente desde el 14-oct tras el backtest de 71 casos, `verticales/growth/metodo.md` §6). Si la sección 9 enseña otras cifras de valoración, son del borrador con la proyección del analista; mandan las de arriba: ventas con la regla mecánica (12612 M en el base) y múltiplo de hoy con rebaja por desaceleración (3,4x / 5,6x / 8,5x).
 
 ## 1. La tesis en cinco líneas
 

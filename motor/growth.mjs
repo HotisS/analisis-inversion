@@ -38,7 +38,14 @@ export const VERSIONES = {
     compra: { puntuacion: 60, ponderada: 10, base: 0, senales: 4, bajista: -50, pista: 24 },
     forzar_mecanica: true, vigilar: { ponderada: 0 } },
 };
-export const VIGENTE = 'v4';
+// Fase 2 del backtest (universo neutral ARKK, protocolo.md): v5-v8 ajustadas con las cohortes 2019 y 2021
+const V4 = VERSIONES.v4;
+VERSIONES.v5 = { ...V4, descripcion: 'v4 pidiendo 2 señales en vez de 4', compra: { ...V4.compra, senales: 2 } };
+VERSIONES.v6 = { ...V4, descripcion: 'v4 sin mínimo de señales (cuentan solo dentro de la puntuación)', compra: { ...V4.compra, senales: 0 } };
+VERSIONES.v7 = { ...VERSIONES.v6, descripcion: 'v6 con ponderada ≥ 5 %', compra: { ...VERSIONES.v6.compra, ponderada: 5 } };
+VERSIONES.v8 = { ...VERSIONES.v7, descripcion: 'v7 + proyección que respeta la desaceleración + la señal de múltiplo no cuenta si ya está > 1,3 × su mediana',
+  proy_desacel: true, senal_multiplo_tope: 1.3 };
+export const VIGENTE = 'v7';
 
 const escala = (v, cortes) => {
   if (v === null || v === undefined || Number.isNaN(v)) return 0;
@@ -53,15 +60,17 @@ const RENTAB = { fcf_creciente: 5, fcf_positivo: 4, breakeven_12m: 3, breakeven_
 
 // Proyección mecánica de ventas (backtest, o si el analista no da la suya): crecimiento de partida =
 // media del de 12 meses y el del último trimestre (entre −20 % y +60 %), que decae un 15 % cada año.
-export function proyeccion(d, fwd = false) {
+export function proyeccion(d, fwd = false, desacel = false) {
   const c = d.crecimiento, v = d.valoracion;
   const g12 = c.ventas_12m_pct ?? 0, gq = c.ultimo_trimestre_pct ?? g12;
   const pasado = (g12 + gq) / 2;
-  const g1 = clamp(fwd && c.cagr_2a_propio_pct != null ? (pasado + c.cagr_2a_propio_pct) / 2 : pasado, -20, 60) / 100;
+  let g1 = clamp(fwd && c.cagr_2a_propio_pct != null ? (pasado + c.cagr_2a_propio_pct) / 2 : pasado, -20, 60) / 100;
+  const frena = desacel && (c.aceleracion_pp ?? 0) < -10;
+  if (frena) g1 = Math.min(g1, gq / 100); // si frena fuerte, se parte como mucho del último trimestre
   const n = v.anios_hasta_objetivo ?? 2;
   const camino = f => {
     let s = d.mercado.ventas_12m_m, g = g1 * f, ult = g;
-    for (let i = 0; i < n; i++) { const tramo = Math.min(1, n - i); s *= Math.pow(1 + g, tramo); ult = g; g *= 0.85; }
+    for (let i = 0; i < n; i++) { const tramo = Math.min(1, n - i); s *= Math.pow(1 + g, tramo); ult = g; g *= frena ? 0.75 : 0.85; }
     return { ventas: s, g_final: ult };
   };
   const b = camino(1);
@@ -87,7 +96,7 @@ export function calcular(d, cfg = VERSIONES[VIGENTE]) {
   const B = (b.reduce((s, y) => s + y, 0) / 15) * P.B;
 
   // Valor de empresa y múltiplo de ventas de los próximos 12 meses (para el filtro de valoración)
-  const pr = proyeccion(d, cfg.proy_forward);
+  const pr = proyeccion(d, cfg.proy_forward, cfg.proy_desacel);
   const ev = d.precio * d.acciones_diluidas_m + (d.deuda_m ?? 0) - (d.caja_m ?? 0);
   const gNtm = v.crecimiento_actual_pct ?? pr.g1;
   const evVentasNtm = ev / (m.ventas_12m_m * (1 + gNtm / 100));
@@ -95,7 +104,8 @@ export function calcular(d, cfg = VERSIONES[VIGENTE]) {
   const evbb = e.margen_bruto_pct > 0 ? evVentasNtm / (e.margen_bruto_pct / 100) : Infinity;
 
   // C. Cambio de tendencia: 8 señales; la euforia resta o veta la compra
-  const activas = SENALES.filter(k => t.senales?.[k]?.valor === true);
+  const caro = cfg.senal_multiplo_tope && (!v.metrica || /ventas/i.test(v.metrica)) && v.mediana_3a && evVentasNtm > cfg.senal_multiplo_tope * v.mediana_3a;
+  const activas = SENALES.filter(k => t.senales?.[k]?.valor === true && !(k === 'mejora_de_multiplo' && caro));
   for (const k of SENALES) if (!t.senales?.[k]) avisos.push(`Falta la señal ${k}.`);
   const subida = t.subida_12m_pct;
   const euforia = subida !== undefined && subida !== null

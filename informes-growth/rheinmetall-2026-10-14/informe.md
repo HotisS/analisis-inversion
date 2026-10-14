@@ -1,10 +1,10 @@
 # Rheinmetall AG (RHM): análisis growth, 14-oct-2026
 
-**Señal (método v4): Mantener** · Puntuación 64,3/100 · Señales de cambio de tendencia 2/8 · EV/beneficio bruto 6,4x
-Precio 953,3 EUR · Objetivo 12 m 975 EUR (ponderada +3,5 %, base -2,1 %, bajista -55,4 %, alcista +73,6 %) · Compra hasta 896,2 EUR
-Peso orientativo: no entra · Por qué: no compra: ponderada < 10 %, base < 0 %, menos de 4 señales, bajista peor que -50 %
+**Señal (método v7): Mantener** · Puntuación 64,3/100 · Señales de cambio de tendencia 2/8 · EV/beneficio bruto 6,4x
+Precio 953,3 EUR · Objetivo 12 m 975 EUR (ponderada +3,5 %, base -2,1 %, bajista -55,4 %, alcista +73,6 %) · Compra hasta 932,9 EUR
+Peso orientativo: no entra · Por qué: no compra: ponderada < 5 %, base < 0 %, bajista peor que -50 %
 
-> **Recalculado el 14-oct con el método v4** (tras el backtest, `verticales/growth/metodo.md` §6). La sección 9 conserva la valoración del primer borrador (v1) con la proyección del analista; las cifras que mandan son las de arriba: ventas con la regla mecánica (18.190 M en el base), múltiplo de hoy con rebaja por desaceleración (5,2x / 8,7x / 13,9x).
+> **Calculado con el método v7** (vigente desde el 14-oct tras el backtest de 71 casos, `verticales/growth/metodo.md` §6). Si la sección 9 enseña otras cifras de valoración, son del borrador con la proyección del analista; mandan las de arriba: ventas con la regla mecánica (18190 M en el base) y múltiplo de hoy con rebaja por desaceleración (5,2x / 8,7x / 13,9x).
 
 ## 1. La tesis en cinco líneas
 

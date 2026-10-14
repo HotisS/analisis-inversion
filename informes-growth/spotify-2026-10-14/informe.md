@@ -1,10 +1,10 @@
 # Spotify Technology (SPOT): análisis growth, 14-oct-2026
 
-**Señal (método v4): Mantener** · Puntuación 54,5/100 · Señales de cambio de tendencia 3/8 · EV/beneficio bruto 13x
-Precio 527,45 USD · Objetivo 12 m 524,4 USD (ponderada -0,6 %, base -5 %, bajista -43,6 %, alcista +51,2 %) · Compra hasta 476,7 USD
-Peso orientativo: no entra · Por qué: no compra: puntuación < 60, ponderada < 10 %, base < 0 %, menos de 4 señales
+**Señal (método v7): Mantener** · Puntuación 54,5/100 · Señales de cambio de tendencia 3/8 · EV/beneficio bruto 13x
+Precio 527,45 USD · Objetivo 12 m 524,4 USD (ponderada -0,6 %, base -5 %, bajista -43,6 %, alcista +51,2 %) · Compra hasta 499,5 USD
+Peso orientativo: no entra · Por qué: no compra: puntuación < 60, ponderada < 5 %, base < 0 %
 
-> **Recalculado el 14-oct con el método v4** (tras el backtest, `verticales/growth/metodo.md` §6). La sección 9 conserva la valoración del primer borrador (v1) con la proyección del analista; las cifras que mandan son las de arriba: ventas con la regla mecánica (24.543 M en el base), múltiplo de hoy con rebaja por desaceleración (14,6x / 24,4x / 39x).
+> **Calculado con el método v7** (vigente desde el 14-oct tras el backtest de 71 casos, `verticales/growth/metodo.md` §6). Si la sección 9 enseña otras cifras de valoración, son del borrador con la proyección del analista; mandan las de arriba: ventas con la regla mecánica (24543 M en el base) y múltiplo de hoy con rebaja por desaceleración (14,6x / 24,4x / 39x).
 
 ## 1. La tesis en cinco líneas
 
