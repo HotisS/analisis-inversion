@@ -14,6 +14,10 @@ Se lanza solo, de lunes a viernes, a las **9:25 y a las 15:45 de Madrid** (Wall 
 | Primer domingo del mes 17:20 | Backtest con los cierres nuevos (selector y regla de desrateadas, que se apoya en 7 casos); se implanta solo si mejora y lo hace el hilo Mejoras | `node herramientas/backtest-selector.mjs --salida verticales/empresa/backtest/selector-mensual-AAAA-MM.md`, comparar con `selector-resultados-2026-10-14.md` |
 | Cuando haga falta | Tandas de análisis nuevos, dinero nuevo o rebalanceo grande, cambios de método, preguntas del usuario | No es rutina |
 
+Además, **cada hora en punto y cinco (7:05 a 22:05, todos los días)** una comprobación mira si alguna rutina se quedó sin hacer y, si es así, la hace; si no, no hace nada.
+
+**Ninguna rutina se pierde** (regla del usuario, 14-oct): `herramientas/rutinas.mjs` guarda en `escaner/ejecuciones.json` la última ejecución completada de cada una. Toda rutina, al arrancar: (1) `node herramientas/rutinas.mjs --pendientes`; (2) hace primero lo pendiente, de la más antigua a la más reciente (de cada rutina, solo la última pasada perdida; si están pendientes a la vez la de la mañana y la de la tarde, la vigilancia y un solo escaneo cubren las dos), marcando `--empieza <id>` al empezar y `--hecha <id>` después del push; (3) luego lo suyo. Una pasada que empezó y no terminó sale como «retomarla». Nada de esto se cuenta al usuario: solo el resultado.
+
 Si no hay nada nuevo, el mensaje del escáner es una sola línea. Las tareas despiertan al hilo «Escáner diario» del proyecto; el resultado se publica en ese hilo y el coordinador lo copia en el chat del proyecto.
 
 ## Archivos
