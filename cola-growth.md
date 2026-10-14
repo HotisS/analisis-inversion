@@ -6,7 +6,7 @@ Solo growth (la value es `cola.md`). Método vigente **v11** (`verticales/growth
 
 | Qué | Estado |
 |---|---|
-| Tanda 14: Argan (AGX), Lemonade (LMND), Corcept Therapeutics (CORT), Oscar Health (OSCR) | Propuesta el 14-oct tras la tanda 13 |
+| Tanda 14: Argan (AGX), Lemonade (LMND), Corcept Therapeutics (CORT), Oscar Health (OSCR) | En marcha desde el 14-oct 20:05 |
 | Hacer vigentes v12 (crecimiento orgánico) y v13 (exceso sobre la guía = 0 si la empresa recortó la guía) | Probadas y en el motor (`resultados-v12.md`, `resultados-v13.md`); no cambian señales de cartera ni suplentes; pendiente del visto bueno del usuario (tarjeta del 14-oct) |
 | Revisar Wise con su actualización del 2T | 15-oct; si sube a convicción media, se propone como sustituta |
 | Revisar argenx con sus resultados del 3T | 22-oct; suplente desde el 14-oct |
