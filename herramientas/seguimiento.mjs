@@ -1,16 +1,29 @@
-// Resumen de todos los informes de empresa en una hoja: seguimiento.xlsx, en la raíz del repo.
-// Una fila por análisis (la última versión de cada carpeta de informes/), con la señal, los precios y una
-// batería de criterios marcados con ✓ (bien), = (neutro) o ✗ (mal). La hoja «Criterios» explica cada umbral.
-// Una empresa que se vuelve a analizar en otra fecha tiene carpeta propia y fila propia: la columna «Iteración»
-// las numera 1, 2, 3… por fecha (agrupadas por ticker) para seguir cómo evoluciona la valoración.
+// Lista de seguimiento de todos los análisis (value y growth): seguimiento.xlsx, en la raíz del repo.
+// Simplificado el 14-oct-2026 a petición del usuario («hay un montón de métricas de rentabilidad, confunde y no se entiende
+// el criterio»). Hojas:
+//   Resumen        una fila por empresa (su último análisis) con UNA cifra de rentabilidad, la del método vigente
+//                  (value: v3 tope ×1,1 con el selector; growth: v11), la misma siendo prudentes (la mitad), la señal,
+//                  «Qué hacer según el método» (los filtros de cartera de METODO-VIGENTE.md §4), precios límite y
+//                  próximos resultados.
+//   Cómo leerlo    el criterio en castellano llano.
+//   Mi cartera     SOLO en la versión privada (ver abajo): posiciones reales, órdenes propuestas y cifras de la cartera.
+//   Detalle        todas las cifras de antes, una fila por análisis (iteraciones 1, 2, 3… por fecha), con los criterios
+//                  ✓ = ✗, el DCF, la prima del mercado y los métodos de control (v2, v3 sin selector).
+//   Detalle: columnas  qué es cada columna del detalle.
 // Sin dependencias.
 //
-//   node herramientas/seguimiento.mjs [--salida seguimiento.xlsx]
+//   node herramientas/seguimiento.mjs [--salida seguimiento.xlsx] [--sin-cartera]
+//
+// Versión privada: si existe la carpeta de la cartera real (CARTERA_REAL o /mnt/project-files/cartera/real, que NUNCA va
+// al repo, que es público), escribe además <esa carpeta>/seguimiento-mi-cartera.xlsx con las posiciones (ultimo.json),
+// las órdenes propuestas (escaner/cartera.json) y el resumen de la tabla de órdenes vigente. El seguimiento.xlsx del repo
+// no lleva nada de la cartera.
 //
 // Se vuelve a ejecutar después de cada informe nuevo o versión nueva.
 
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
+import { execFileSync } from 'node:child_process';
 import { escribirZip } from '../motor/rellenar.mjs';
 import { conviccionSugerida } from '../motor/conviccion.mjs';
 import { objetivo12m } from './objetivo12m.mjs';
@@ -21,6 +34,8 @@ const CAL = leerCalendario();
 
 const argv = process.argv.slice(2);
 const salida = argv.includes('--salida') ? argv[argv.indexOf('--salida') + 1] : 'seguimiento.xlsx';
+const DATOS_REAL = process.env.CARTERA_REAL || '/mnt/project-files/cartera/real';
+const conCartera = !argv.includes('--sin-cartera') && existsSync(join(DATOS_REAL, 'ultimo.json'));
 const n = (v) => (v === null || v === undefined || v === '' || Number.isNaN(+v) ? null : +v);
 
 // ── Criterios: [cabecera, explicación, función(datos) → '✓' | '=' | '✗' | null] ──
@@ -53,18 +68,23 @@ const CRITERIOS = [
 const filas = [];
 for (const dir of readdirSync('informes', { withFileTypes: true }).filter((e) => e.isDirectory()).map((e) => e.name)) {
   const archivos = readdirSync(join('informes', dir));
-  const vs = archivos.map((f) => f.match(/^datos-v(\d+)\.json$/)).filter(Boolean).sort((a, b) => b[1] - a[1]);
-  const datos = vs.length ? vs[0][0] : archivos.includes('datos.json') ? 'datos.json' : null;
-  if (!datos) continue;
-  const d = JSON.parse(readFileSync(join('informes', dir, datos), 'utf8'));
-  if (!d.calc?.recomendacion?.recomendacion) continue; // análisis en curso
-  const base = vs.length ? archivos.find((f) => f.endsWith(` v${vs[0][1]}.docx`)) : archivos.find((f) => /\d{4}-\d{2}-\d{2}\.docx$/.test(f));
-  if (!base) continue;
-  const pdf = base.replace(/\.docx$/, '.pdf');
-  // El PDF es lo último que se genera: sin él, el análisis sigue en curso (puede haber un Word de prueba).
-  if (!existsSync(join('informes', dir, pdf))) continue;
+  // La última versión terminada: con su PDF (lo último que se genera; sin él, esa versión sigue en curso y vale la anterior).
+  const vs = archivos.map((f) => f.match(/^datos-v(\d+)\.json$/)).filter(Boolean).sort((a, b) => b[1] - a[1]).map((m) => ({ datos: m[0], v: +m[1] }));
+  if (archivos.includes('datos.json')) vs.push({ datos: 'datos.json', v: 1 });
+  let d = null, base = null, pdf = null;
+  for (const x of vs) {
+    const b = x.v > 1 ? archivos.find((f) => f.endsWith(` v${x.v}.docx`)) : archivos.find((f) => /\d{4}-\d{2}-\d{2}\.docx$/.test(f));
+    if (!b || !existsSync(join('informes', dir, b.replace(/\.docx$/, '.pdf')))) continue;
+    const dd = JSON.parse(readFileSync(join('informes', dir, x.datos), 'utf8'));
+    if (!dd.calc?.recomendacion?.recomendacion) continue; // análisis en curso
+    d = dd; base = b; pdf = b.replace(/\.docx$/, '.pdf'); break;
+  }
+  if (!d) continue;
   const R = d.calc.recomendacion, rel = R.relativo || {};
+  const rw = real(d.calc.roic_frente_wacc).filter((x) => n(x.roic_pct) !== null && n(x.wacc_pct) !== null).at(-1);
   filas.push({
+    carpeta: dir, sostenible: d.calc.dcf?.sostenibilidad?.veredicto ?? null, roic_wacc: rw ? Math.round((rw.roic_pct - rw.wacc_pct) * 10) / 10 : null,
+    o12_informe: R.objetivo_12m || null,
     empresa: d.identificacion.nombre_corto || d.identificacion.nombre, ticker: d.identificacion.ticker, fecha: d.meta.fecha_corte,
     geografia: d.identificacion.pais, sector: d.identificacion.sector, senal: R.recomendacion, conviccion: d.resumen?.conviccion,
     divisa: d.meta.divisa, precio: n(d.identificacion.precio), objetivo: n(d.calc.sintesis?.valor_objetivo), objetivo_mercado: n(rel.valor_objetivo),
@@ -93,98 +113,293 @@ for (const g of grupos.values()) { g.sort((a, b) => String(a.fecha).localeCompar
 const SECTORES = { "information technology": "Tecnologías de la información", "consumer discretionary": "Consumo discrecional", "consumer staples": "Consumo básico", "health care": "Salud", industrials: "Industria", utilities: "Utilities", financials: "Finanzas", materials: "Materiales", energy: "Energía", "communication services": "Comunicaciones", "real estate": "Inmobiliario" };
 for (const f of filas) { const s = String(f.sector || "").replace(/\s*[(/].*$/, "").trim(); f.sector = SECTORES[s.toLowerCase()] || s; }
 const ORDEN = { Comprar: 0, Mantener: 1, Vender: 2 };
-// Las empresas se ordenan por la señal y la rentabilidad de su último análisis; debajo, sus iteraciones de la primera a la última.
-const porSenal = (a, b) => (ORDEN[a.senal] ?? 3) - (ORDEN[b.senal] ?? 3) || (b.rte_mercado ?? b.rte ?? -999) - (a.rte_mercado ?? a.rte ?? -999);
+// Las empresas se ordenan por la señal y la rentabilidad a 12 meses (método vigente) de su último análisis; debajo, sus iteraciones de la primera a la última.
+const porSenal = (a, b) => (ORDEN[a.o12.senal] ?? 3) - (ORDEN[b.o12.senal] ?? 3) || (b.o12.rte ?? -999) - (a.o12.rte ?? -999);
 filas.length = 0;
 for (const g of [...grupos.values()].sort((a, b) => porSenal(a.at(-1), b.at(-1)))) filas.push(...g);
 
-// ── Hoja ──
-const COLS = [
-  ['Iteración', 9], ['Empresa', 18], ['Ticker', 9], ['Fecha', 11], ['Geografía', 13], ['Sector', 20], ['Señal', 11], ['Convicción', 11], ['Convicción según criterios', 11], ['Divisa', 7],
-  ['Precio actual', 11], ['Precio objetivo 12 m', 12], ['Objetivo con la prima del mercado', 13], ['Rentabilidad total esperada', 12],
-  ['Rentabilidad con la prima del mercado', 13], ['Objetivo analistas', 11], ['Comprar por debajo de', 11], ['Vender por encima de', 11],
-  ['Regla absoluta', 10], ['Regla relativa', 10], ...CRITERIOS.map(([c]) => [c, 11]), ['Metodología', 11], ['Objetivo 12 m', 12], ['Rentabilidad 12 m', 12], ['Rentabilidad 12 m (base)', 12], ['Señal 12 m', 11], ['Origen del objetivo 12 m', 40], ['Próximos resultados', 12], ['Informe', 46],
-];
+// ── Utilidades de la hoja de cálculo ──
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const letra = (i) => (i >= 26 ? String.fromCharCode(64 + Math.floor(i / 26)) : '') + String.fromCharCode(65 + (i % 26));
-const texto = (ref, v, s = 0) => v === null || v === undefined || v === '' ? `<c r="${ref}" s="${s}"/>` : `<c r="${ref}" s="${s}" t="inlineStr"><is><t>${esc(v)}</t></is></c>`;
-const num = (ref, v, s) => v === null ? `<c r="${ref}" s="${s}"/>` : `<c r="${ref}" s="${s}"><v>${v}</v></c>`;
-const serie = (iso) => { const t = Date.parse(iso + 'T00:00:00Z'); return Number.isNaN(t) ? null : t / 86400000 + 25569; };
-const S = { cab: 1, num: 2, pct: 3, '✓': 4, '✗': 5, '=': 6, Comprar: 7, Mantener: 8, Vender: 9, fecha: 10, enlace: 11, ajuste: 12, centro: 13 };
-
-const enlaces = [];
-const filasXml = [`<row r="1" ht="45" customHeight="1">${COLS.map(([c], i) => texto(`${letra(i)}1`, c, S.cab)).join('')}</row>`];
-filas.forEach((f, k) => {
-  const r = k + 2, c = (i) => `${letra(i + 1)}${r}`; // la columna A es la iteración
-  const celdas = [
-    num(`A${r}`, f.iteracion, S.centro),
-    texto(c(0), f.empresa), texto(c(1), f.ticker, S.centro), num(c(2), serie(f.fecha), S.fecha), texto(c(3), f.geografia), texto(c(4), f.sector),
-    texto(c(5), f.senal, S[f.senal] ?? S.centro), texto(c(6), f.conviccion, S.centro), texto(c(7), f.conviccion_criterios, S.centro), texto(c(8), f.divisa, S.centro),
-    num(c(9), f.precio, S.num), num(c(10), f.objetivo, S.num), num(c(11), f.objetivo_mercado, S.num),
-    num(c(12), f.rte === null ? null : f.rte / 100, S.pct), num(c(13), f.rte_mercado === null ? null : f.rte_mercado / 100, S.pct),
-    num(c(14), f.analistas, S.num), num(c(15), f.compra, S.num), num(c(16), f.venta, S.num),
-    texto(c(17), f.regla_abs, S.centro), texto(c(18), f.regla_rel, S.centro),
-    ...f.criterios.map((v, i) => texto(c(19 + i), v ?? 'n.d.', v ? S[v] : S.centro)),
-  ];
-  const ci = 25 + CRITERIOS.length;
-  celdas.push(texto(c(ci - 6), f.metodologia, S.centro));
-  celdas.push(num(c(ci - 5), f.o12.objetivo, S.num), num(c(ci - 4), f.o12.rte === null ? null : f.o12.rte / 100, S.pct), num(c(ci - 3), f.o12.rte_base == null ? null : f.o12.rte_base / 100, S.pct));
-  celdas.push(texto(c(ci - 2), f.o12.senal, S[f.o12.senal] ?? S.centro), texto(c(ci - 1), f.o12.origen));
-  celdas.push(num(c(ci), f.proximos ? serie(f.proximos) : null, S.fecha));
-  celdas.push(texto(c(ci + 1), f.informe, S.enlace));
-  enlaces.push({ ref: c(ci + 1), destino: f.informe });
-  filasXml.push(`<row r="${r}">${celdas.join('')}</row>`);
-});
-const ultima = letra(COLS.length - 1);
-const hoja = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+const serie = (iso) => { const t = Date.parse(String(iso).slice(0, 10) + 'T00:00:00Z'); return Number.isNaN(t) ? null : t / 86400000 + 25569; };
+const S = { cab: 1, num: 2, pct: 3, '✓': 4, '✗': 5, '=': 6, Comprar: 7, Mantener: 8, Vender: 9, fecha: 10, enlace: 11, ajuste: 12, centro: 13, titulo: 14, pctFuerte: 15 };
+// Celdas: T(texto), N(número), P(porcentaje: viene en %, se guarda en tanto por uno), F(fecha ISO), L(enlace).
+const T = (v, s = 0) => ({ t: 'txt', v, s }), N = (v, s = S.num) => ({ t: 'num', v: n(v), s }), P = (v, s = S.pct) => ({ t: 'num', v: n(v) === null ? null : n(v) / 100, s });
+const F = (v) => ({ t: 'num', v: v ? serie(v) : null, s: S.fecha }), L = (v) => ({ t: 'txt', v, s: S.enlace, enlace: v });
+const celda = (ref, c) => c.v === null || c.v === undefined || c.v === '' ? `<c r="${ref}" s="${c.s}"/>`
+  : c.t === 'num' ? `<c r="${ref}" s="${c.s}"><v>${c.v}</v></c>` : `<c r="${ref}" s="${c.s}" t="inlineStr"><is><t xml:space="preserve">${esc(c.v)}</t></is></c>`;
+// Una hoja: columnas [cabecera, ancho], filas de celdas; congelar = columnas fijas a la izquierda (con la cabecera fija).
+function hoja({ nombre, cols, filas: fs, congelar = null, filtro = true, cabecera = true, altoCab = 45 }) {
+  const enlaces = [];
+  const xmlFilas = [];
+  if (cabecera) xmlFilas.push(`<row r="1" ht="${altoCab}" customHeight="1">${cols.map(([c], i) => celda(`${letra(i)}1`, T(c, S.cab))).join('')}</row>`);
+  fs.forEach((f, k) => {
+    const r = k + (cabecera ? 2 : 1);
+    xmlFilas.push(`<row r="${r}"${f.alto ? ` ht="${f.alto}" customHeight="1"` : ''}>${f.map((c, i) => { if (c.enlace) enlaces.push({ ref: `${letra(i)}${r}`, destino: c.enlace }); return celda(`${letra(i)}${r}`, c); }).join('')}</row>`);
+  });
+  const ultima = letra(cols.length - 1), nf = fs.length + (cabecera ? 1 : 0);
+  const panel = congelar === null ? '' : `<pane xSplit="${congelar}" ySplit="1" topLeftCell="${letra(congelar)}2" activePane="bottomRight" state="frozen"/>`;
+  const xml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
 <sheetPr><pageSetUpPr fitToPage="1"/></sheetPr>
-<sheetViews><sheetView workbookViewId="0" tabSelected="1"><pane xSplit="3" ySplit="1" topLeftCell="D2" activePane="bottomRight" state="frozen"/></sheetView></sheetViews>
+<sheetViews><sheetView workbookViewId="0"${nombre === 'Resumen' ? ' tabSelected="1"' : ''}>${panel}</sheetView></sheetViews>
 <sheetFormatPr defaultRowHeight="15"/>
-<cols>${COLS.map(([, w], i) => `<col min="${i + 1}" max="${i + 1}" width="${w}" customWidth="1"/>`).join('')}</cols>
-<sheetData>${filasXml.join('')}</sheetData>
-<autoFilter ref="A1:${ultima}${filas.length + 1}"/>
-<hyperlinks>${enlaces.map((e, i) => `<hyperlink ref="${e.ref}" r:id="rId${i + 1}"/>`).join('')}</hyperlinks>
+<cols>${cols.map(([, w], i) => `<col min="${i + 1}" max="${i + 1}" width="${w}" customWidth="1"/>`).join('')}</cols>
+<sheetData>${xmlFilas.join('')}</sheetData>
+${filtro && cabecera ? `<autoFilter ref="A1:${ultima}${nf}"/>` : ''}
+${enlaces.length ? `<hyperlinks>${enlaces.map((e, i) => `<hyperlink ref="${e.ref}" r:id="rId${i + 1}"/>`).join('')}</hyperlinks>` : ''}
 <pageMargins left="0.4" right="0.4" top="0.5" bottom="0.5" header="0.3" footer="0.3"/>
 <pageSetup paperSize="9" orientation="landscape" fitToWidth="1" fitToHeight="0"/>
 </worksheet>`;
-const relsHoja = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">${enlaces.map((e, i) => `<Relationship Id="rId${i + 1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink" Target="${esc(e.destino.split('/').map(encodeURIComponent).join('/'))}" TargetMode="External"/>`).join('')}</Relationships>`;
+  const rels = enlaces.length ? `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">${enlaces.map((e, i) => `<Relationship Id="rId${i + 1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink" Target="${esc(/^https?:/.test(e.destino) ? e.destino : e.destino.split('/').map(encodeURIComponent).join('/'))}" TargetMode="External"/>`).join('')}</Relationships>` : null;
+  return { nombre, xml, rels, filtro: filtro && cabecera ? `'${nombre}'!$A$1:$${ultima}$${nf}` : null };
+}
+
+// ── Resumen: una fila por empresa, con la cifra del método vigente ──
+const hoy = new Date().toISOString().slice(0, 10);
+const dias = (desde, hasta) => Math.round((Date.parse(hasta) - Date.parse(desde)) / 86400000);
+const fechaCorta = (iso) => { const [a, m, d] = String(iso).split('-'); return `${+d}-${['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'][+m - 1]}`; };
+const normal = (t) => String(t || '').trim().toUpperCase().replace(/\s+/g, '-');
+// Reglas de cartera del escáner (escaner/reglas.json, copia de MEMORIA.md y METODO-VIGENTE.md §4): exclusiones,
+// excepciones de calidad, lo que no se vende o no se amplía.
+const REGLAS = existsSync('escaner/reglas.json') ? JSON.parse(readFileSync('escaner/reglas.json', 'utf8')) : {};
+const EXCLUIDAS = REGLAS.exclusiones || {}, EXCEPCION_CALIDAD = REGLAS.calidad_excepciones || {}, MIN_CALIDAD = REGLAS.calidad_min_roic_wacc ?? 5;
+// Pruebas de robustez al precio apuntado (el mismo del Resumen): acción robusta y límite de compra con los dos métodos.
+const nodo = (script, a) => { try { return JSON.parse(execFileSync(process.execPath, [script, ...a], { maxBuffer: 256 * 1024 * 1024, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] })); } catch { return []; } };
+const ROB = new Map(nodo('herramientas/robustez.mjs', ['--todas', '--json']).filter((x) => !x.error).map((x) => [x.carpeta, x]));
+const ROBG = new Map(nodo('herramientas/robustez-growth.mjs', ['--json']).filter((x) => !x.error).map((x) => [x.carpeta, x]));
+const coma = (v) => v === null || v === undefined ? 'n.d.' : String(v).replace('.', ',');
+const rw = (v) => v < -50 ? 'no significativo, revisar a mano' : coma(v); // ROIC − WACC (con fondos propios negativos sale absurdo)
+const revPorCarpeta = new Map(Object.entries(REV12).map(([k, v]) => [v.carpeta, { clave: k, ...v }]));
+const resumen = [];
+for (const g of grupos.values()) {
+  const f = g.at(-1), rev = revPorCarpeta.get(f.carpeta) ?? (REV12[normal(f.ticker)] ? { clave: normal(f.ticker), ...REV12[normal(f.ticker)] } : null), o = f.o12_informe;
+  const clave = rev?.clave ?? normal(f.ticker);
+  const senal = rev ? (rev.senal_ponderada ?? rev.senal) : o?.senal ?? null;
+  const rte = rev ? n(rev.rentabilidad_ponderada_pct) : n(o?.rentabilidad_ponderada_pct);
+  // Compra robusta: el límite al que la dan a la vez el método vigente y el de control (robustez.mjs).
+  const rb = ROB.get(f.carpeta);
+  const limRobusto = rb ? Math.min(...[rb.limite_comprar_cot, rb.limite_comprar_control_cot].map(n).filter((v) => v !== null)) : null;
+  resumen.push({
+    tipo: 'Value', clave, empresa: f.empresa, ticker: f.ticker, sector: f.sector, senal, rte,
+    divisa: rev?.divisa_cotizacion ?? f.divisa, precio: rev ? n(rev.precio_cot ?? rev.precio_ref) : f.precio, fecha_precio: rev?.fecha_precio ?? f.fecha,
+    compra: Number.isFinite(limRobusto) ? limRobusto : rev ? n(rev.comprar_por_debajo_cot ?? rev.comprar_por_debajo) : n(o?.comprar_por_debajo),
+    // Vender por encima de: el precio al que deja de pasar el filtro para mantener (robustez.mjs); sin él, el de la señal Vender.
+    venta: n(rb?.limite_mantener_cot) ?? (rev ? n(rev.vender_por_encima_cot ?? rev.vender_por_encima) : n(o?.vender_por_encima)),
+    mantener: rb?.accion_vigente ?? null, base: rb ? n(rb.base) : n(rev?.rentabilidad_base_pct), vi_precio: f.objetivo && f.precio ? f.objetivo / f.precio : null,
+    proximos: f.proximos, informe: f.informe,
+    robusta: rb?.accion_robusta ?? null, confianza_baja: !!o?.confianza_baja, sostenible: f.sostenible, roic_wacc: f.roic_wacc,
+    revisar: rev?.revisar ?? null,
+  });
+}
+for (const dir of readdirSync('informes-growth', { withFileTypes: true }).filter((e) => e.isDirectory()).map((e) => e.name)) {
+  const ruta = join('informes-growth', dir, 'datos.json');
+  if (!existsSync(ruta)) continue;
+  const d = JSON.parse(readFileSync(ruta, 'utf8')), c = d.calc;
+  if (!c?.senal) continue;
+  const word = readdirSync(join('informes-growth', dir)).find((x) => x.endsWith('.docx'));
+  resumen.push({
+    tipo: 'Growth', clave: normal(d.ticker), empresa: d.empresa, ticker: d.ticker, sector: 'Growth', senal: c.senal, rte: n(c.rent_ponderada_pct),
+    divisa: d.moneda, precio: n(d.precio), fecha_precio: d.fecha, compra: n(c.precio_max_compra), venta: null,
+    proximos: fechaResultados(normal(d.ticker), d, CAL), informe: word ? `informes-growth/${dir}/${word}` : null, conviccion: c.conviccion,
+    robusta: ROBG.get(dir)?.senal_robusta ?? null,
+  });
+}
+// «Qué hacer según el método»: los filtros de cartera de METODO-VIGENTE.md §4, en una frase.
+function queHacer(x) {
+  const ex = EXCLUIDAS[x.clave] ?? EXCLUIDAS[normal(x.ticker)];
+  const excCal = EXCEPCION_CALIDAD[x.clave];
+  if (x.senal === 'Vender') return 'Vender si la tienes';
+  if (x.senal === 'Mantener' || !x.senal) {
+    if (x.tipo === 'Value' && x.roic_wacc !== null && x.roic_wacc < 4.5 && !excCal) return `Vender si la tienes: calidad baja (ROIC − WACC ${rw(x.roic_wacc)})`;
+    // Filtro para mantener (METODO-VIGENTE.md §4): rentabilidad ≥ 10 %, escenario central ≥ 5 % y valor real no más de un 15 % bajo el precio.
+    if (x.tipo === 'Value' && x.mantener === 'No mantener') {
+      const m = x.rte !== null && x.rte < 10 ? 'rentabilidad esperada por debajo del 10 %' : x.base !== null && x.base < 5 ? 'escenario central por debajo del 5 %'
+        : x.vi_precio !== null && x.vi_precio < 0.85 ? 'valor real más de un 15 % por debajo del precio' : 'no pasa el filtro para mantener';
+      return `Vender si la tienes: ${m}`;
+    }
+    if (x.tipo === 'Value' && x.roic_wacc !== null && x.roic_wacc < MIN_CALIDAD && !excCal) return 'Mantener sin ampliar (calidad justa)';
+    return x.senal ? 'Mantener' : 'Sin cifra todavía';
+  }
+  // Señal Comprar: hacen falta todos los filtros a la vez.
+  if (ex) return `No comprar: excluida (${ex})`;
+  if (x.confianza_baja) return 'No comprar todavía: datos sin confirmar';
+  if (x.tipo === 'Value') {
+    if (x.sostenible && !/^s[ií]/i.test(x.sostenible)) return `No comprar: crecimiento sostenible solo «${x.sostenible}»`;
+    if (x.roic_wacc !== null && x.roic_wacc < MIN_CALIDAD && !excCal) return `No comprar: calidad por debajo de ${MIN_CALIDAD} (ROIC − WACC ${rw(x.roic_wacc)})`;
+    if (x.robusta && x.robusta !== 'Comprar') return x.compra !== null && x.precio > x.compra
+      ? `Esperar: comprar a ${coma(x.compra)} o menos (ahí la dan los dos métodos)` : 'No comprar: no pasa las pruebas de robustez';
+  }
+  if (x.tipo === 'Growth' && x.robusta && !/^Comprar/.test(x.robusta)) return 'No comprar: no pasa las pruebas de robustez';
+  const dd = x.proximos ? dias(hoy, x.proximos) : null;
+  const tramos = (dd !== null && dd >= 0 && dd < 10) || /tramos/.test(x.robusta || '');
+  const base = x.tipo === 'Growth' && x.conviccion === 'baja' ? 'Comprar (convicción baja)' : 'Comprar';
+  return tramos ? `${base} en dos tramos${dd !== null && dd >= 0 && dd < 10 ? ` (resultados el ${fechaCorta(x.proximos)})` : ''}` : `${base} por debajo del límite`;
+}
+for (const x of resumen) x.que = queHacer(x);
+// Lo mismo visto desde una posición que ya tienes (versión privada): ampliar en vez de comprar; vender por calidad.
+function queHacerTenencia(x) {
+  const q = x.que;
+  if (/^Comprar/.test(q)) return q.replace(/^Comprar/, 'Ampliar');
+  if (/^Esperar/.test(q)) return q.replace(/^Esperar: comprar a/, 'Mantener; ampliar solo a');
+  if (/^No comprar/.test(q)) return x.tipo === 'Value' && x.roic_wacc !== null && x.roic_wacc < 4.5 && !EXCEPCION_CALIDAD[x.clave]
+    ? `Vender: calidad baja (ROIC − WACC ${rw(x.roic_wacc)})` : q.replace(/^No comprar( todavía)?:/, 'Mantener sin ampliar:');
+  return q.replace(/^Vender si la tienes/, 'Vender');
+}
+const ordenQue = (x) => /^Comprar/.test(x.que) ? 0 : /^Esperar/.test(x.que) ? 1 : /^No comprar/.test(x.que) ? 2 : /^Mantener/.test(x.que) ? 3 : /^Vender/.test(x.que) ? 4 : 5;
+resumen.sort((a, b) => ordenQue(a) - ordenQue(b) || (b.rte ?? -999) - (a.rte ?? -999));
+
+// ── Cartera real (solo para la versión privada) ──
+let real_ = null;
+if (conCartera) {
+  const ultimo = JSON.parse(readFileSync(join(DATOS_REAL, 'ultimo.json'), 'utf8'));
+  const cart = existsSync('escaner/cartera.json') ? JSON.parse(readFileSync('escaner/cartera.json', 'utf8')) : {};
+  const op = cart.ordenes_pendientes || {};
+  const ordenes = new Map();
+  for (const k of op.vender || []) ordenes.set(k, 'Vender (propuesta)');
+  for (const c of op.comprar || []) ordenes.set(c.clave, `Comprar ${c.titulos} a ${String(c.limite).replace('.', ',')} ${c.divisa} o menos${c.desde ? ` (desde el ${fechaCorta(c.desde)}${c.condicion ? `, ${c.condicion}` : ''})` : ''}${c.tramo2 ? `; +${c.tramo2.titulos} desde el ${fechaCorta(c.tramo2.desde)} (${c.tramo2.condicion})` : ''}`);
+  for (const c of op.lista_espera || []) if (!ordenes.has(c.clave)) ordenes.set(c.clave, `En espera: comprar a ${String(c.limite).replace('.', ',')} ${c.divisa} o menos (hasta el ${fechaCorta(c.hasta)})`);
+  // Decisiones del usuario sobre posiciones concretas (MEMORIA.md).
+  const DECISION = { IGLN: 'Mantener en el 16 %: decisión tuya', EDEN: 'Mantener: decisión tuya (ni se vende ni se amplía)' };
+  for (const [k, txt] of Object.entries(REGLAS.no_vender || {})) DECISION[k] ??= `Mantener: ${txt.charAt(0).toLowerCase()}${txt.slice(1)}`;
+  for (const k of REGLAS.no_ampliar || []) DECISION[k] ??= 'Mantener: no se amplía (decidido en la tabla de órdenes)';
+  const pos = new Map((ultimo.filas || []).filter((p) => p.titulos > 0).map((p) => [p.clave, p]));
+  // Resumen de la tabla de órdenes vigente (la última cartera/ordenes-AAAA-MM-DD.md), si existe.
+  let cifras = null, fuente = null;
+  const dirCartera = join(DATOS_REAL, '..');
+  const tablas = existsSync(dirCartera) ? readdirSync(dirCartera).filter((x) => /^ordenes-\d{4}-\d{2}-\d{2}\.md$/.test(x)).sort() : [];
+  if (tablas.length) {
+    fuente = tablas.at(-1);
+    const md = readFileSync(join(dirCartera, fuente), 'utf8'), i = md.indexOf('## Resumen');
+    if (i >= 0) cifras = md.slice(i).split(/\n## /)[0].split('\n').slice(1).filter((l) => l.startsWith('|')).map((l) => l.split('|').slice(1, -1).map((x) => x.trim())).filter((c) => c.length >= 3 && !/^-+$/.test(c[1]) && c[0]);
+  }
+  real_ = { ultimo, ordenes, DECISION, pos, cifras, fuente, liquidez: n(ultimo.cartera?.liquidez), total: n(ultimo.cartera?.total) };
+}
+
+// Alto de una fila con texto ajustado: líneas que ocupa el texto más largo en su columna (ancho en caracteres).
+const alto = (fila, anchos) => { let l = 1; fila.forEach((c, i) => { if (c.s === S.ajuste || c.s === S.titulo) l = Math.max(l, String(c.v ?? '').split('\n').reduce((a, t) => a + Math.max(1, Math.ceil(t.length / (anchos[i] * 1.05))), 0)); }); fila.alto = Math.max(15, l * 13.5 + 3); return fila; };
+
+// ── Cómo leerlo ──
+const COMO = [
+  ['Qué mirar', 'La hoja «Resumen». Una fila por empresa analizada (value y growth) con una sola cifra de rentabilidad: la del método que decide hoy. Todo lo demás (métodos antiguos y de control, criterios, DCF) está en «Detalle», por si quieres comprobar algo.'],
+  ['Rentabilidad esperada 12 m', 'Lo que esperamos que gane la acción en 12 meses: la subida hasta el precio objetivo más el dividendo, sobre el precio de la columna «Precio».\nValue: beneficio por acción que esperamos para el ejercicio que mirará el mercado dentro de un año × el PER que razonablemente pagará (el de hoy, acercándose un poco a su media de 5 años, como mucho un 10 % arriba o abajo). Se calcula en tres escenarios (pesimista 25 %, central 50 %, optimista 25 %) y se hace la media ponderada.\nGrowth: lo mismo con las ventas de dentro de 12 meses y un múltiplo de ventas o de beneficio bruto con tope.'],
+  ['Siendo prudentes (la mitad)', 'La misma cifra dividida entre dos. Los objetivos suelen salir optimistas, así que para comparar con el índice mundial y para el tamaño de las posiciones usamos la mitad.'],
+  ['Señal', 'Lo que dice el método solo con la rentabilidad.\nValue: Comprar si la rentabilidad es del 15 % o más, el escenario central da al menos un 12 % y el valor real del negocio (DCF) no está por debajo del precio. Vender si es del −10 % o menos. Mantener en medio.\nGrowth: Comprar si la puntuación de la empresa es de 60 sobre 100 o más, la rentabilidad del 5 % o más y el escenario pesimista no cae más de un 50 %. Vender si la puntuación baja de 50 o la rentabilidad es del −10 % o menos.'],
+  ['Qué hacer según el método', 'ESTE ES EL CRITERIO PARA TU CARTERA. Una empresa se compra o se amplía solo si se cumple todo a la vez:\n1. Señal Comprar.\n2. Calidad (value): el negocio gana sobre su capital al menos 5 puntos más de lo que le cuesta ese capital (ROIC − WACC ≥ 5) y su crecimiento es sostenible.\n3. Robusta: el precio está por debajo del límite al que dan Comprar a la vez el método vigente y el de control (la versión anterior del cálculo), y aguanta las pruebas de robustez. Ese límite es el de «Comprar por debajo de»; si el precio está por encima, la fila dice «Esperar».\n4. No está excluida (juego y apuestas, comercio minorista, Accenture, Adobe, Rightmove, Duolingo).\n5. El precio del momento está por debajo de «Comprar por debajo de».\nCon resultados a menos de 10 días, se compra en dos tramos (la mitad antes y la otra mitad tras los resultados, si no cambian la tesis).\nMantener (si ya la tienes): se queda solo si la rentabilidad esperada es al menos del 10 %, el escenario central da al menos un 5 % y el valor real del negocio no está más de un 15 % por debajo del precio. Si no, «Vender si la tienes». Con calidad entre 4,5 y 5 se mantiene pero no se amplía; por debajo de 4,5 se vende por calidad.\nVender: señal Vender, no pasa el filtro para mantener o el precio supera «Vender por encima de».'],
+  ['Tamaño y liquidez', 'Mínimo 1.000 € por posición y, como guía, no más del 7 % de la cartera (salvo Edenred y el oro, que decides tú). Growth, como mucho el 20 % de la cartera. La liquidez nunca negativa; si sobran 3.000 € o más durante 3 meses, a un monetario (XEON).'],
+  ['Precio y fecha del precio', 'El precio objetivo queda fijo; con un precio nuevo solo cambia la rentabilidad. «Precio» y «Fecha del precio» dicen con qué cierre está calculada la cifra. Antes de cada orden se mira el precio del momento y si ha habido resultados después del informe.'],
+  ['Comprar por debajo de / Vender por encima de', 'Los precios límite: por debajo del primero se puede comprar (en value es el límite robusto, el que pasa con los dos métodos); por encima del segundo deja de pasar el filtro para mantener y se vende. En la divisa en la que cotiza. En growth, «Comprar por debajo de» es el precio máximo de compra y no hay límite de venta (se vende si cambia la puntuación o la rentabilidad).'],
+  ['Próximos resultados', 'Fecha de los próximos resultados (calendario único del escáner; si no está, la del informe).'],
+  ['Lo que ya no decide', 'Hoja «Detalle»: «Rentabilidad total esperada» y «con la prima del mercado» salen del DCF del informe (valor a largo plazo): ahora solo sirven como «valor real» y como filtro. «Rentabilidad 12 m (base)» es solo el escenario central (filtro del 12 %). «v2 (control)» y «v3 sin selector» son los métodos de comparación. «Objetivo analistas» es el consenso, solo para comparar. «Convicción», «Regla absoluta» y «Regla relativa» son del método anterior.'],
+  ['Tu cartera', 'Las cifras de tu cartera (rentabilidad esperada, siendo prudentes, cuánto puede subir o bajar en un año normal y rentabilidad por unidad de riesgo) y lo que toca hacer con cada posición están en la versión privada de este Excel (seguimiento-mi-cartera.xlsx, en la carpeta de la cartera real del proyecto), nunca en el repo, que es público.'],
+];
+const ANCHOS_COMO = [30, 120];
+const hojaComo = hoja({ nombre: 'Cómo leerlo', cols: [['Columna o tema', 30], ['Qué significa', 120]], filtro: false, altoCab: 20,
+  filas: COMO.map(([a, b]) => alto([T(a, S.titulo), T(b, S.ajuste)], ANCHOS_COMO)) });
+
+// ── Detalle: todas las cifras de antes, una fila por análisis ──
+const COLS_DET = [
+  ['Iteración', 9], ['Empresa', 18], ['Ticker', 9], ['Fecha', 11], ['Geografía', 13], ['Sector', 20], ['Señal 12 m (método vigente)', 11], ['Rentabilidad 12 m (método vigente)', 12], ['Objetivo 12 m (método vigente)', 12],
+  ['Rentabilidad 12 m (base)', 12], ['Regla que decide', 9], ['Rentabilidad 12 m v2 (control)', 12], ['Rentabilidad 12 m v3 sin selector', 12],
+  ['Comprar por debajo de (solo método vigente)', 11], ['Vender por encima de (señal Vender)', 11], ['Divisa', 7], ['Precio del informe', 11],
+  ['Señal del informe (DCF, ya no decide)', 11], ['Convicción', 11], ['Convicción según criterios', 11], ['Valor objetivo DCF', 12], ['Objetivo DCF con la prima del mercado', 13], ['Rentabilidad total esperada (DCF)', 12],
+  ['Rentabilidad DCF con la prima del mercado', 13], ['Objetivo analistas', 11], ['Regla absoluta', 10], ['Regla relativa', 10], ...CRITERIOS.map(([c]) => [c, 11]), ['Metodología', 11], ['Origen del objetivo 12 m', 40], ['Próximos resultados', 12], ['Informe', 46],
+];
+const filasDet = filas.map((f) => {
+  const rev = revPorCarpeta.get(f.carpeta), o = f.o12_informe;
+  const v2 = rev ? (rev.version === 'v2' ? rev.rentabilidad_ponderada_pct : rev.v2?.rentabilidad_ponderada_pct) : null;
+  const v3 = rev ? (rev.version === 'v3' ? rev.rentabilidad_ponderada_pct : rev.v3_sin_selector?.rentabilidad_ponderada_pct) : null;
+  return [
+    N(f.iteracion, S.centro), T(f.empresa), T(f.ticker, S.centro), F(f.fecha), T(f.geografia), T(f.sector),
+    T(f.o12.senal, S[f.o12.senal] ?? S.centro), P(f.o12.rte), N(f.o12.objetivo), P(f.o12.rte_base), T(rev?.version ?? o?.version ?? null, S.centro), P(v2), P(v3),
+    N(f.compra), N(f.venta), T(f.divisa, S.centro), N(f.precio),
+    T(f.senal, S[f.senal] ?? S.centro), T(f.conviccion, S.centro), T(f.conviccion_criterios, S.centro), N(f.objetivo), N(f.objetivo_mercado), P(f.rte), P(f.rte_mercado), N(f.analistas),
+    T(f.regla_abs, S.centro), T(f.regla_rel, S.centro), ...f.criterios.map((v) => T(v ?? 'n.d.', v ? S[v] : S.centro)),
+    T(f.metodologia, S.centro), T(f.o12.origen), F(f.proximos), L(f.informe),
+  ];
+});
+const hojaDet = hoja({ nombre: 'Detalle', cols: COLS_DET, filas: filasDet, congelar: 3 });
 
 const criterios = [
-  ['Columna', 'Qué mide'],
   ['Iteración', 'Número de análisis de la empresa (mismo ticker), por orden de fecha: 1 es el primero. Cada nuevo análisis en otra fecha va en su propia carpeta y su propia fila, sin pisar los anteriores, para seguir la evolución de la valoración.'],
-  ['Convicción según criterios', 'Convicción con los criterios fijos aprobados el 9 oct 2026 (motor/conviccion.mjs). Alta para Comprar: las dos reglas dan Comprar, rentabilidad total ≥ 25 %, asimetría ≥ 2, bajista no peor del −25 % y el precio descuenta al menos 3 puntos menos de crecimiento que el caso base. Alta para Vender: las dos reglas dan Vender, rentabilidad ≤ −20 % (≤ −15 % con la prima del mercado) y el precio pide al menos 5 puntos más de crecimiento que el caso base. Baja: las reglas discrepan o la rentabilidad que decide está a menos de 3 puntos del umbral. Media: el resto. En los informes anteriores al 9 oct la columna «Convicción» se decidió a ojo.'],
-  ['Señal', 'Recomendación del informe. Rentabilidad total esperada (RTE) = subida al objetivo + dividendo. Comprar: RTE ≥ 15 % y asimetría ≥ 1 (si solo lo da la regla relativa, además RTE ≥ 5 % con nuestro coste de capital, desde el 9 oct 2026). Vender: RTE ≤ −10 %, o RTE < 0 con asimetría < 0,5. Mantener: el resto. Se aplica con nuestro coste de capital (regla absoluta) y con la prima de riesgo que pide hoy el mercado (regla relativa); manda la relativa salvo que una diga Comprar y la otra Vender, que da Mantener.'],
-  ['Precio objetivo 12 m', 'Valor objetivo del informe con nuestro coste de capital (síntesis ponderada de DCF, comparables y demás métodos), en la divisa de las cuentas.'],
-  ['Objetivo con la prima del mercado', 'El mismo valor objetivo con el coste de capital que sale de la prima de riesgo implícita del mercado (Damodaran).'],
-  ['Comprar por debajo de / Vender por encima de', 'Precios a los que cambiaría la señal, con la regla combinada.'],
-  ['Objetivo analistas', 'Precio objetivo medio del consenso de analistas en la fecha del informe.'],
+  ['Señal / Rentabilidad / Objetivo 12 m (método vigente)', 'Las cifras que deciden (las mismas del «Resumen» cuando hay una sola iteración). Value: regla v3 con tope ×1,1 y el selector de método (METODO-VIGENTE.md §2; verticales/empresa/objetivo-12m.md): BPA propio de los tres escenarios × PER de la regla común, ponderado con las probabilidades de los escenarios, más el dividendo. Comprar desde el 15 % (con base ≥ 12 % y valor intrínseco ≥ precio), Vender desde el −10 %. Cuando la empresa tiene revisión apuntada (verticales/empresa/objetivo12m-revisados.json) la rentabilidad va al último precio apuntado; si no, al precio del informe.'],
+  ['Rentabilidad 12 m (base)', 'Solo el escenario central, más el dividendo. Filtro de valor real: para comprar, al menos un 12 %.'],
+  ['Regla que decide', 'v3 o v2, según el selector de método (v2 si la empresa está desrateada o solo tiene historia v2; la más baja con 3 años o menos de historia).'],
+  ['Rentabilidad 12 m v2 (control) / v3 sin selector', 'Las mismas cuentas con la otra regla. Sirven de control: una compra es «robusta» si sale Comprar con las dos.'],
+  ['Señal del informe (DCF, ya no decide)', 'Recomendación con la regla antigua del informe: rentabilidad total esperada del DCF (subida al valor objetivo + dividendo) con nuestro coste de capital (regla absoluta) y con la prima de riesgo del mercado (regla relativa). Desde el 13-oct manda la rentabilidad a 12 meses; esta queda como referencia.'],
+  ['Convicción según criterios', 'Convicción con los criterios fijos aprobados el 9 oct 2026 (motor/conviccion.mjs), sobre la regla antigua. En los informes anteriores al 9 oct la columna «Convicción» se decidió a ojo.'],
+  ['Valor objetivo DCF', 'Valor objetivo del informe con nuestro coste de capital (síntesis ponderada de DCF, comparables y demás métodos), en la divisa de las cuentas. Hoy es el «valor real» (filtro: para comprar, no por debajo del precio).'],
+  ['Objetivo DCF con la prima del mercado', 'El mismo valor objetivo con el coste de capital que sale de la prima de riesgo implícita del mercado (Damodaran).'],
+  ['Comprar por debajo de / Vender por encima de', 'Precios a los que cambiaría la señal a 12 meses.'],
+  ['Objetivo analistas', 'Precio objetivo medio del consenso de analistas en la fecha del informe. Solo se compara.'],
   ...CRITERIOS.map(([c, e]) => [c, e]),
   ['Metodología', 'Nueva: el DCF lleva la prueba de sostenibilidad del crecimiento (puente volumen × precio, cuota implícita y reinversión, con veredicto), en uso desde el 10-oct-2026. Vieja: informe anterior, pendiente de actualizar en rápido (script `notas/actualizacion-vN.mjs`, sin investigación nueva).'],
-  ['Objetivo 12 m', 'Método v2 (verticales/empresa/objetivo-12m.md): PER propio × BPA propio del ejercicio que mirará el mercado en 12 meses, en bajista, base y alcista, ponderados con las probabilidades de los escenarios del informe. Solo empresas con revisión hecha (verticales/empresa/objetivo12m-revisados.json).'],
-  ['Rentabilidad 12 m', 'Objetivo 12 m (ponderado) sobre el precio del informe, más el dividendo. Es la cifra de rentabilidad esperada que ordena compras y cartera.'],
-  ['Rentabilidad 12 m (base)', 'Solo el escenario base (BPA propio al PER de hoy o a la mediana de 5 años, sin que el múltiplo vuelva a su historia), más el dividendo. Es el filtro de valor real: para comprar, al menos un 12 %.'],
-  ['Señal 12 m', 'Con la rentabilidad 12 m ponderada: Comprar desde el 15 %, Vender desde el −10 %, Mantener en medio. Para comprar hace falta además el base ≥ 12 %.'],
+  ['Origen del objetivo 12 m', 'Nota de la revisión apuntada: regla, múltiplos y BPA de cada escenario, precio usado y comparación con las otras reglas.'],
   ['n.d.', 'El informe no tiene el dato (por ejemplo, sin consenso o sin lista de gobierno).'],
-  ['Próximos resultados', 'Fecha de los próximos resultados: la del calendario único (escaner/calendario.json, que pone al día la pasada de las 9:25) y, si la empresa no está en él, la del informe. Con resultados a menos de 10 días, las compras van en dos tramos; publicados después del informe, se revisan antes de cualquier orden.'],
-  ['Informe', 'Ruta del PDF (o del Word si no hay PDF) de la última versión de ese análisis, relativa a la raíz del repo.'],
+  ['Próximos resultados', 'Fecha de los próximos resultados: la del calendario único (escaner/calendario.json, que pone al día la pasada de las 9:25) y, si la empresa no está en él, la del informe.'],
+  ['Informe', 'Ruta del PDF de la última versión de ese análisis, relativa a la raíz del repo.'],
 ];
-const hoja2 = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><sheetFormatPr defaultRowHeight="15"/>
-<cols><col min="1" max="1" width="34" customWidth="1"/><col min="2" max="2" width="110" customWidth="1"/></cols>
-<sheetData>${criterios.map(([a, b], i) => `<row r="${i + 1}">${texto(`A${i + 1}`, a, i ? S.ajuste : S.cab)}${texto(`B${i + 1}`, b, i ? S.ajuste : S.cab)}</row>`).join('')}</sheetData></worksheet>`;
+const hojaCrit = hoja({ nombre: 'Detalle - columnas', cols: [['Columna', 34], ['Qué mide', 110]], filtro: false, altoCab: 20,
+  filas: criterios.map(([a, b]) => alto([T(a, S.ajuste), T(b, S.ajuste)], [34, 110])) });
 
+// ── Resumen (y Mi cartera en la versión privada) ──
+function hojaResumen(privado) {
+  const cols = [['Tipo', 8], ['Empresa', 22], ['Ticker', 9], ...(privado ? [['En mi cartera (títulos)', 10]] : []), ['Sector', 18], ['Señal', 10],
+    ['Rentabilidad esperada 12 m', 12], ['Siendo prudentes (la mitad)', 12], ['Qué hacer según el método', 46], ...(privado ? [['Orden propuesta', 50]] : []),
+    ['Divisa', 7], ['Precio', 10], ['Fecha del precio', 11], ['Comprar por debajo de', 11], ['Vender por encima de', 11], ['Próximos resultados', 12], ['Informe', 46]];
+  const fs = resumen.map((x) => {
+    const p = privado ? real_.pos.get(x.clave) : null;
+    const que = !p ? x.que : real_.DECISION[x.clave] ?? queHacerTenencia(x);
+    return [
+      T(x.tipo, S.centro), T(x.empresa), T(x.ticker, S.centro), ...(privado ? [N(p?.titulos ?? null, S.centro)] : []), T(x.sector), T(x.senal, S[x.senal] ?? S.centro),
+      P(x.rte, S.pctFuerte), P(x.rte === null ? null : x.rte / 2), T(que), ...(privado ? [T(real_.ordenes.get(x.clave) ?? null)] : []),
+      T(x.divisa, S.centro), N(x.precio), F(x.fecha_precio), N(x.compra), N(x.venta), F(x.proximos), x.informe ? L(x.informe) : T(null),
+    ];
+  });
+  return hoja({ nombre: 'Resumen', cols, filas: fs, congelar: 3 });
+}
+function hojaCartera() {
+  const { pos, ordenes, DECISION, cifras, fuente, liquidez, total } = real_;
+  const porClave = new Map(resumen.map((x) => [x.clave, x]));
+  const cols = [['Valor', 26], ['Tipo', 8], ['Títulos', 9], ['Valor hoy (EUR)', 12], ['Peso', 8], ['Señal', 10], ['Rentabilidad esperada 12 m', 12], ['Siendo prudentes (la mitad)', 12],
+    ['Qué hacer según el método', 46], ['Orden propuesta', 50], ['Próximos resultados', 12]];
+  const fs = [...pos.values()].sort((a, b) => (b.valor_eur ?? 0) - (a.valor_eur ?? 0)).map((p) => {
+    const x = porClave.get(p.clave);
+    return [T(x?.empresa ?? p.nombre), T(x?.tipo ?? (p.vertical === 'otro' ? 'Otro' : p.vertical === 'value' ? 'Value' : p.vertical), S.centro), N(p.titulos, S.centro), N(Math.round(p.valor_eur ?? 0)), P(total ? (p.valor_eur ?? 0) / total * 100 : null),
+      T(x?.senal ?? null, S[x?.senal] ?? S.centro), P(x?.rte ?? null, S.pctFuerte), P(x?.rte == null ? null : x.rte / 2), T(DECISION[p.clave] ?? (x ? queHacerTenencia(x) : '—')), T(ordenes.get(p.clave) ?? null), F(x?.proximos ?? null)];
+  });
+  fs.push([T('Liquidez', S.titulo), T(null), T(null), N(Math.round(liquidez ?? 0)), P(total ? liquidez / total * 100 : null)]);
+  fs.push([T('Total', S.titulo), T(null), T(null), N(Math.round(total ?? 0)), P(total ? 100 : null)]);
+  fs.push([T(null)]);
+  // Compras propuestas de valores que aún no tienes.
+  const nuevas = [...ordenes.entries()].filter(([k]) => !pos.has(k));
+  if (nuevas.length) {
+    fs.push([T('Compras propuestas de valores nuevos', S.titulo)]);
+    for (const [k, txt] of nuevas) { const x = porClave.get(k) ?? resumen.find((r) => normal(r.ticker) === k); fs.push([T(x?.empresa ?? k), T(x?.tipo ?? null, S.centro), T(null), T(null), T(null), T(x?.senal ?? null, S[x?.senal] ?? S.centro), P(x?.rte ?? null, S.pctFuerte), P(x?.rte == null ? null : x.rte / 2), T(x?.que ?? null), T(txt), F(x?.proximos ?? null)]); }
+    fs.push([T(null)]);
+  }
+  if (cifras?.length) {
+    fs.push([T(`La cartera en cuatro cifras (tabla ${fuente})`, S.titulo), T(null), T(null), T(null), T(null), T(null), T(null), T(null), T(cifras[0]?.length >= 3 ? 'Cartera de hoy' : null, S.cab), T('Tras las órdenes', S.cab)]);
+    for (const c of cifras.filter((c) => !/^cartera de hoy$/i.test(c[1]))) fs.push([T(c[0]), T(null), T(null), T(null), T(null), T(null), T(null), T(null), T(c[1], S.centro), T(c[2], S.centro)]);
+  }
+  fs.push([T(`Posiciones y valor: IBKR, ${real_.ultimo.fecha} ${real_.ultimo.hora ?? ''}. Datos privados: este archivo no va al repo.`)]);
+  return hoja({ nombre: 'Mi cartera', cols, filas: fs, congelar: 1, filtro: false });
+}
+
+// ── Libro ──
 const estilos = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
 <numFmts count="1"><numFmt numFmtId="164" formatCode="+0.0%;-0.0%;0.0%"/></numFmts>
-<fonts count="6">
+<fonts count="8">
 <font><sz val="10"/><name val="Calibri"/></font>
 <font><b/><sz val="10"/><color rgb="FFFFFFFF"/><name val="Calibri"/></font>
 <font><b/><sz val="12"/><color rgb="FF1E7B34"/><name val="Calibri"/></font>
 <font><b/><sz val="12"/><color rgb="FFC00000"/><name val="Calibri"/></font>
 <font><b/><sz val="12"/><color rgb="FF7F7F7F"/><name val="Calibri"/></font>
 <font><u/><sz val="10"/><color rgb="FF0563C1"/><name val="Calibri"/></font>
+<font><b/><sz val="10"/><name val="Calibri"/></font>
+<font><b/><sz val="11"/><name val="Calibri"/></font>
 </fonts>
 <fills count="6">
 <fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill>
@@ -195,7 +410,7 @@ const estilos = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 </fills>
 <borders count="1"><border><left/><right/><top/><bottom/><diagonal/></border></borders>
 <cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs>
-<cellXfs count="14">
+<cellXfs count="16">
 <xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/>
 <xf numFmtId="0" fontId="1" fillId="2" borderId="0" xfId="0" applyFont="1" applyFill="1" applyAlignment="1"><alignment horizontal="center" vertical="center" wrapText="1"/></xf>
 <xf numFmtId="4" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/>
@@ -210,23 +425,34 @@ const estilos = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xf numFmtId="0" fontId="5" fillId="0" borderId="0" xfId="0" applyFont="1"/>
 <xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0" applyAlignment="1"><alignment vertical="top" wrapText="1"/></xf>
 <xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0" applyAlignment="1"><alignment horizontal="center"/></xf>
+<xf numFmtId="0" fontId="7" fillId="0" borderId="0" xfId="0" applyFont="1" applyAlignment="1"><alignment vertical="top" wrapText="1"/></xf>
+<xf numFmtId="164" fontId="6" fillId="0" borderId="0" xfId="0" applyNumberFormat="1" applyFont="1"/>
 </cellXfs>
 </styleSheet>`;
 
-const entradas = new Map([
-  ['[Content_Types].xml', `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/><Override PartName="/xl/worksheets/sheet2.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/></Types>`],
-  ['_rels/.rels', `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+function libro(hojas) {
+  const ct = hojas.map((_, i) => `<Override PartName="/xl/worksheets/sheet${i + 1}.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>`).join('');
+  const entradas = new Map([
+    ['[Content_Types].xml', `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>${ct}<Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/></Types>`],
+    ['_rels/.rels', `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>`],
-  ['xl/workbook.xml', `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets><sheet name="Seguimiento" sheetId="1" r:id="rId1"/><sheet name="Criterios" sheetId="2" r:id="rId2"/></sheets><definedNames><definedName name="_xlnm._FilterDatabase" localSheetId="0" hidden="1">Seguimiento!$A$1:$${ultima}$${filas.length + 1}</definedName></definedNames></workbook>`],
-  ['xl/_rels/workbook.xml.rels', `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet2.xml"/><Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>`],
-  ['xl/worksheets/sheet1.xml', hoja],
-  ['xl/worksheets/_rels/sheet1.xml.rels', relsHoja],
-  ['xl/worksheets/sheet2.xml', hoja2],
-  ['xl/styles.xml', estilos],
-]);
-writeFileSync(salida, escribirZip(entradas));
-console.log(`${salida}: ${filas.length} análisis de ${grupos.size} empresas (${filas.filter((f) => f.senal === 'Comprar').length} Comprar, ${filas.filter((f) => f.senal === 'Mantener').length} Mantener, ${filas.filter((f) => f.senal === 'Vender').length} Vender)`);
-for (const f of filas) console.log(`  ${f.empresa.padEnd(20)} ${String(f.senal).padEnd(9)} ${f.criterios.map((v) => v ?? '·').join(' ')}`);
+    ['xl/workbook.xml', `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets>${hojas.map((h, i) => `<sheet name="${esc(h.nombre)}" sheetId="${i + 1}" r:id="rId${i + 1}"/>`).join('')}</sheets><definedNames>${hojas.map((h, i) => h.filtro ? `<definedName name="_xlnm._FilterDatabase" localSheetId="${i}" hidden="1">${esc(h.filtro)}</definedName>` : '').join('')}</definedNames></workbook>`],
+    ['xl/_rels/workbook.xml.rels', `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">${hojas.map((_, i) => `<Relationship Id="rId${i + 1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet${i + 1}.xml"/>`).join('')}<Relationship Id="rId${hojas.length + 1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>`],
+    ['xl/styles.xml', estilos],
+  ]);
+  hojas.forEach((h, i) => { entradas.set(`xl/worksheets/sheet${i + 1}.xml`, h.xml); if (h.rels) entradas.set(`xl/worksheets/_rels/sheet${i + 1}.xml.rels`, h.rels); });
+  return escribirZip(entradas);
+}
+
+writeFileSync(salida, libro([hojaResumen(false), hojaComo, hojaDet, hojaCrit]));
+const cuenta = (re) => resumen.filter((x) => re.test(x.que)).length;
+console.log(`${salida}: ${resumen.length} empresas en el resumen (${resumen.filter((x) => x.tipo === 'Value').length} value, ${resumen.filter((x) => x.tipo === 'Growth').length} growth): ${cuenta(/^Comprar/)} para comprar, ${cuenta(/^Esperar/)} a la espera de su límite, ${cuenta(/^No comprar/)} con señal Comprar que no pasan los filtros, ${cuenta(/^Mantener/)} mantener, ${cuenta(/^Vender/)} vender; detalle: ${filas.length} análisis de ${grupos.size} empresas`);
+for (const x of resumen.filter((x) => /^(Comprar|Esperar|No comprar)/.test(x.que))) console.log(`  ${x.tipo.padEnd(6)} ${String(x.empresa).padEnd(24)} ${String(x.rte).padStart(6)} %  ${x.que}`);
+if (conCartera) {
+  const priv = join(DATOS_REAL, 'seguimiento-mi-cartera.xlsx');
+  writeFileSync(priv, libro([hojaResumen(true), hojaCartera(), hojaComo, hojaDet, hojaCrit]));
+  console.log(`${priv}: versión privada con ${real_.pos.size} posiciones (no va al repo)`);
+}

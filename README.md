@@ -67,7 +67,7 @@ herramientas/                 Para los análisis de empresa
   historia-adelantada.mjs     Pasa un informe v2 a la regla v3 (historia del PER adelantada) sin rehacerlo: datos-vN.json
   cuentas.mjs                 Cuentas anuales desde el XBRL del regulador (SEC companyfacts, repositorio ESEF): notas/cuentas-xbrl.json para comprobar en vez de buscar
   form4.mjs                   Compras y ventas de directivos en EE. UU. (Form 4 de la SEC), por persona
-  seguimiento.mjs             seguimiento.xlsx en la raíz: una fila por análisis (iteraciones 1, 2, 3… por empresa) con señal, precios y criterios ✓ = ✗
+  seguimiento.mjs             seguimiento.xlsx en la raíz: «Resumen» (una fila por empresa, value y growth, con una sola rentabilidad: la del método vigente, la prudente y «Qué hacer según el método»), «Cómo leerlo» y «Detalle» (todas las cifras y criterios ✓ = ✗ por análisis); versión privada con la cartera real en /mnt/project-files/cartera/real/
   escaner.mjs                 Escáner de mercado (Europa, Américas, Asia-Pacífico) → escaneos/escaneo-AAAA-MM-DD.xlsx; perfiles en escaner/perfiles.json
   yahoo.mjs, xlsx.mjs         Buscador, fichas y tipos de cambio de Yahoo (con caché); escritor de .xlsx
   prompt-de.mjs               Parte del prompt de cada subagente (A-E)

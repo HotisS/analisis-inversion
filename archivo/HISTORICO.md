@@ -15,6 +15,8 @@
 
 ## Cambios
 
+- **14-oct-2026, noche — Excel de seguimiento simplificado** (pedido del usuario: «hay un montón de métricas de rentabilidad, confunde»). `seguimiento.xlsx` pasa a «Resumen» (una fila por empresa, value y growth, una sola rentabilidad: la del método vigente; la prudente; «Qué hacer según el método» con los filtros de §4 y los límites robustos de `robustez.mjs`), «Cómo leerlo» y «Detalle» (todas las cifras antiguas: DCF, prima del mercado, v2, v3 sin selector, criterios ✓ = ✗). Versión privada con la cartera real en `/mnt/project-files/cartera/real/seguimiento-mi-cartera.xlsx`.
+
 - **14-oct-2026, 18:40 UTC: sexta hora value cerrada** (16 análisis: MSCI, LSEG, Euronext, Marsh, Cintas, Waste Connections, Roper, Diploma, Novonesis, Symrise, Lindt, Demant, Belimo, Epiroc, Sartorius Stedim, Lotus Bakeries; 9 fichas sectoriales nuevas). Ninguna compra robusta; Marsh propuesta para la lista de espera (≤ 174,29 USD tras resultados). 32 puntos de método en `informes/sexta-hora-2026-10-14/puntos-metodo.md`. Séptima hora propuesta en `cola.md`.
 
 - **14-oct-2026 · Escáner diario de señales** (pedido del usuario): `herramientas/escaner-diario.mjs` + `escaner/` (cartera, reglas, registro y seguimiento de señales frente al índice). Tarea programada L-V 9:30 y 15:45 de Madrid. `robustez.mjs` gana `--actual` y `--bpa-factor`; `robustez-growth.mjs`, `--json`.
