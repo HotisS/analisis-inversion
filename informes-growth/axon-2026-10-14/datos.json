@@ -139,7 +139,7 @@
     "[memoria/estimación propia] Mediana y mínimo de 3 años del EV/ventas NTM, NTM de 2T27, caja pro forma (685 M a 30-jun + ~1.019 M netos del convertible tras el capped call, sin el FCF del 3T) y deuda (1.850 + 1.150 M); margen bruto de 12 m"
   ],
   "calc": {
-    "version": "v9",
+    "version": "v11",
     "puntuacion": 68.2,
     "bloques": {
       "crecimiento": 18.3,
@@ -162,7 +162,12 @@
     "ev_bb_ntm": 14.2,
     "ratio_crecimiento": 0.28,
     "pista_meses": "FCF positivo",
-    "proyeccion": "mecánica",
+    "proyeccion": "mín(mecánica, analista)",
+    "ventas_mecanica_m": {
+      "bajista": 4316,
+      "base": 5572,
+      "alcista": 6119
+    },
     "g1_pct": 34.2,
     "recorte_guia": false,
     "factor_desaceleracion": 0.98,
@@ -175,15 +180,15 @@
       },
       "base": {
         "multiplo": 8.3,
-        "ventas_m": 5572,
-        "precio": 530.1,
-        "rent_pct": 28.3
+        "ventas_m": 5500,
+        "precio": 523.1,
+        "rent_pct": 26.6
       },
       "alcista": {
         "multiplo": 13,
-        "ventas_m": 6119,
-        "precio": 920.9,
-        "rent_pct": 122.8
+        "ventas_m": 6000,
+        "precio": 902.7,
+        "rent_pct": 118.4
       }
     },
     "probabilidades": {
@@ -191,10 +196,10 @@
       "base": 50,
       "alcista": 25
     },
-    "objetivo_12m": 554.8,
-    "rent_ponderada_pct": 34.2,
-    "rent_base_pct": 28.3,
-    "asimetria": 2.9,
+    "objetivo_12m": 546.8,
+    "rent_ponderada_pct": 32.3,
+    "rent_base_pct": 26.6,
+    "asimetria": 2.8,
     "senal": "Comprar",
     "vigilar": false,
     "motivo": "cumple todos los requisitos de compra",
@@ -205,9 +210,13 @@
     },
     "conviccion": "baja",
     "peso_orientativo_pct": 3.5,
-    "precio_max_compra": 528.4,
+    "precio_max_compra": 476.4,
     "avisos": [
       "Sin guía de la empresa (crecimiento.guia_12m_pct): proyección como v7."
+    ],
+    "alertas": [
+      "Sin guía anual de 12 meses: el recorte por la guía (v9) no actúa.",
+      "Pagos en acciones del 16,4 % de las ventas (> 15 %): la regla del 40 y el FCF no los restan."
     ]
   }
 }

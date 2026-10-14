@@ -48,13 +48,18 @@ VERSIONES.v8 = { ...VERSIONES.v7, descripcion: 'v7 + proyección que respeta la 
 // Candidata v9 (14-oct, tandas 4-5; backtest/resultados-v9.md): el crecimiento de partida no pasa de la guía de la empresa
 // para los 12 meses siguientes más lo que suele batirla (crecimiento.guia_12m_pct + exceso_guia_pp). Solo recorta; sin guía = v7.
 VERSIONES.v9 = { ...VERSIONES.v7, descripcion: 'v7 + el crecimiento de partida no pasa de la guía de la empresa más su exceso medio sobre la guía (solo recorta)',
-  proy_guia: true };
+  proy_guia: true, alertas: true }; // alertas: chequeos de robustez (no cambian cifras ni señal); desde v9 todas las versiones las llevan
 // Candidata v10 (14-oct; backtest/resultados-v10.md): en las valoradas por EV/EBITDA, el margen EBITDA no se congela:
 // bajista con el de hoy, base con la media entre hoy y valoracion.margen_ebitda_obj_pct, alcista con el objetivo (sin él, = v9).
 // Además lee valoracion.ebitda_ntm_m (múltiplo de hoy = EV / EBITDA NTM) y aplica el margen también a las ventas del analista.
 VERSIONES.v10 = { ...VERSIONES.v9, descripcion: 'v9 + en las valoradas por EV/EBITDA, margen EBITDA hacia el objetivo de la empresa (bajista hoy, base media, alcista objetivo) en vez de congelado',
   margen_obj: true };
-export const VIGENTE = 'v9';
+// Candidata v11 (14-oct; backtest/resultados-v11.md): ventas de cada escenario = la menor entre la mecánica (v9) y la del analista
+// (valoracion.ventas_objetivo_m), si existe y está en la misma unidad (base del analista ≥ mitad de la mecánica); el margen implícito
+// se aplica también a las del analista; y el «compra hasta» comprueba además el listón del bajista (−50 %).
+VERSIONES.v11 = { ...VERSIONES.v9, descripcion: 'v9 + ventas de cada escenario = la menor entre la mecánica y la del analista + «compra hasta» que respeta el bajista',
+  ventas_min_analista: true, pmax_bajista: true };
+export const VIGENTE = 'v11';
 
 const escala = (v, cortes) => {
   if (v === null || v === undefined || Number.isNaN(v)) return 0;
@@ -146,7 +151,13 @@ export function calcular(d, cfg = VERSIONES[VIGENTE]) {
 
   // Objetivo a 12 meses
   const mecanica = cfg.forzar_mecanica || !v.ventas_objetivo_m || v.ventas_objetivo_m.base == null;
-  const ventas = mecanica ? { bajista: pr.bajista, base: pr.base, alcista: pr.alcista } : v.ventas_objetivo_m;
+  let ventas = mecanica ? { bajista: pr.bajista, base: pr.base, alcista: pr.alcista } : v.ventas_objetivo_m;
+  // v11: escenario a escenario, la menor entre la mecánica y la del analista (si está en la misma unidad)
+  const va = v.ventas_objetivo_m, vaBase = va && va.base > 0 ? va.base : null;
+  const vaOtraUnidad = vaBase !== null && vaBase < 0.5 * pr.base;
+  const usaMin = !!cfg.ventas_min_analista && mecanica && vaBase !== null && !vaOtraUnidad;
+  if (usaMin) ventas = Object.fromEntries(['bajista', 'base', 'alcista'].map(y => [y, va[y] > 0 ? Math.min(pr[y], va[y]) : pr[y]]));
+  if (cfg.ventas_min_analista && vaOtraUnidad) avisos.push(`ventas_objetivo_m (base ${Math.round(vaBase)}) < mitad de la mecánica (${Math.round(pr.base)}): no parece la misma unidad; v11 no la usa.`);
   const esVentas = !v.metrica || /ventas/i.test(v.metrica);
   // Si el múltiplo es de EBITDA y la proyección es mecánica, el margen EBITDA implícito sale de los dos múltiplos.
   // v1-v9: con ventas del analista el margen no se aplicaba (fallo latente; v10 lo aplica siempre).
@@ -180,8 +191,10 @@ export function calcular(d, cfg = VERSIONES[VIGENTE]) {
     alcista: { multiplo: r1(mAlc), ventas_m: Math.round(ventas.alcista) },
   };
   const div = v.dividendo_pct ?? 0;
+  const crudo = {};
   for (const k in casos) {
     const p = precioDe(k === 'bajista' ? mBaj : k === 'base' ? mBase : mAlc, ventas[k], margenes[k]);
+    crudo[k] = p;
     casos[k].precio = r1(p);
     casos[k].rent_pct = r1((p / d.precio - 1) * 100 + div);
   }
@@ -223,7 +236,37 @@ export function calcular(d, cfg = VERSIONES[VIGENTE]) {
     const bb = m.ventas_12m_m * (1 + gNtm / 100) * e.margen_bruto_pct / 100;
     pmax = Math.min(pmax, (cfg.evbb_max * bb - (d.deuda_m ?? 0) + (d.caja_m ?? 0)) / d.acciones_diluidas_m);
   }
+  if (cfg.pmax_bajista) pmax = Math.min(pmax, crudo.bajista / (1 + (k.bajista - div) / 100)); // v11: el bajista no peor que el listón
   const precioMax = r1(pmax);
+
+  // Alertas de robustez (desde v9): no cambian cifras ni señal; dicen dónde el método puede chirriar con esta empresa.
+  const alertas = [];
+  if (cfg.alertas) {
+    const fx = (n, dd = 0) => (Math.round(n * 10 ** dd) / 10 ** dd).toLocaleString('es-ES');
+    if (vaBase !== null && !vaOtraUnidad && pr.base > 1.2 * vaBase)
+      alertas.push(`Proyección mecánica (${fx(pr.base)} M) > 1,2 × la del analista (${fx(vaBase)} M): ${usaMin ? 'v11 usa la del analista' : 'el motor proyecta más que el propio informe'}.`);
+    if (vaOtraUnidad) alertas.push(`ventas_objetivo_m (base ${fx(vaBase)} M) es menos de la mitad de la mecánica (${fx(pr.base)} M): parece EBITDA o beneficio, no ventas.`);
+    if (v.consenso_ventas_obj_m > 0 && ventas.base > 1.2 * v.consenso_ventas_obj_m)
+      alertas.push(`Ventas del escenario base (${fx(ventas.base)} M${usaMin && ventas.base < pr.base ? ', las del analista' : ''}) > 1,2 × el consenso (${fx(v.consenso_ventas_obj_m)} M).`);
+    if (v.mediana_3a > 0 && multActual > 2 * v.mediana_3a)
+      alertas.push(`Múltiplo de hoy (${fx(multActual, 1)}) > 2 × su mediana de 3 años (${fx(v.mediana_3a, 1)}): el objetivo supone que no vuelve a la media.`);
+    if (c.guia_12m_pct == null)
+      alertas.push(`Sin guía anual de 12 meses${/trimestr/i.test(c.nota_guia ?? '') ? ' (solo trimestral)' : ''}: el recorte por la guía (v9) no actúa.`);
+    if (c.exceso_guia_pp > 10) alertas.push(`Exceso sobre la guía de ${fx(c.exceso_guia_pp, 1)} pp (> 10): el recorte por la guía casi no actúa.`);
+    if (esEbitda && !(v.ebitda_ntm_m > 0)) alertas.push('Valorada por EV/EBITDA sin ebitda_ntm_m: el múltiplo de hoy va escrito a mano y no se puede comprobar.');
+    if (esEbitda && v.ebitda_ntm_m > 0 && Math.abs(margenImpl - v.ebitda_ntm_m / (m.ventas_12m_m * (1 + gNtm / 100))) > 0.03)
+      alertas.push(`Margen EBITDA implícito (${fx(margenImpl * 100, 1)} %) distinto en más de 3 pp del de ebitda_ntm_m (${fx(v.ebitda_ntm_m / (m.ventas_12m_m * (1 + gNtm / 100)) * 100, 1)} %).`);
+    if (conMargen && multEbitda && (margenImpl < 0.03 || margenImpl > 0.65))
+      alertas.push(`Margen implícito (${fx(margenImpl * 100, 1)} %) fuera de lo razonable (3-65 %): revisar múltiplo y métrica.`);
+    if (!esVentas && !esEbitda) alertas.push(`Métrica «${String(v.metrica).split(' (')[0].slice(0, 30)}» (ni ventas ni EBITDA): el motor aplica el múltiplo a ventas × margen implícito${(d.caja_m || d.deuda_m) ? ' y suma caja y resta deuda (en P/beneficio deberían ir a 0)' : ''}; la puntuación (margen bruto, regla del 40) no está pensada para este negocio.`);
+    const bajEnMax = pmax > 0 ? (crudo.bajista / pmax - 1) * 100 + div : null;
+    if (bajEnMax !== null && bajEnMax < k.bajista)
+      alertas.push(`En el «compra hasta» (${fx(pmax, 1)}) el bajista sería ${fx(bajEnMax, 1)} % (< ${k.bajista} %): a ese precio el motor ya no daría Comprar.`);
+    const top2 = m.clientes_top2_pct ?? null, top3 = m.clientes_top3_pct ?? null;
+    if (top2 > 40 || top3 > 60) alertas.push(top2 > 40 ? `Dos clientes suman el ${fx(top2)} % de las ventas (> 40 %): concentración que el método no puntúa.`
+      : `Tres clientes suman más del ${fx(top3)} % de las ventas (luego dos, > 40 %): concentración que el método no puntúa.`);
+    if (f.sbc_sobre_ventas_pct > 15) alertas.push(`Pagos en acciones del ${fx(f.sbc_sobre_ventas_pct, 1)} % de las ventas (> 15 %): la regla del 40 y el FCF no los restan.`);
+  }
 
   return {
     version: Object.entries(VERSIONES).find(([, c2]) => c2 === cfg)?.[0] ?? 'otra',
@@ -232,12 +275,13 @@ export function calcular(d, cfg = VERSIONES[VIGENTE]) {
     senales_activas: activas, n_senales: activas.length, euforia,
     penetracion_pct: r1(penetr), regla_40: r1(regla40), ev_ventas_ntm: r1(evVentasNtm), ev_bb_ntm: r1(evbb), ratio_crecimiento: Number.isFinite(ratio) ? Math.round(ratio * 100) / 100 : null,
     pista_meses: pista === Infinity ? 'FCF positivo' : r1(pista),
-    proyeccion: mecanica ? 'mecánica' : 'analista', ...(cfg.proy_guia ? { g1_pct: r1(pr.g1), recorte_guia: pr.recorte_guia } : {}), factor_desaceleracion: Math.round(factorDesac * 100) / 100,
+    proyeccion: usaMin ? 'mín(mecánica, analista)' : mecanica ? 'mecánica' : 'analista', ...(cfg.ventas_min_analista ? { ventas_mecanica_m: { bajista: Math.round(pr.bajista), base: Math.round(pr.base), alcista: Math.round(pr.alcista) } } : {}), ...(cfg.proy_guia ? { g1_pct: r1(pr.g1), recorte_guia: pr.recorte_guia } : {}), factor_desaceleracion: Math.round(factorDesac * 100) / 100,
     casos, probabilidades: p, objetivo_12m: r1(objetivo), rent_ponderada_pct: ponderada, rent_base_pct: casos.base.rent_pct,
     asimetria, senal, vigilar, motivo,
     ...(cfg.margen_obj && conMargen ? { multiplo_ebitda: r1(multEbitda), multiplo_ebitda_de: ebitdaNtm ? 'EV/ebitda_ntm_m' : 'multiplo_actual',
       margen_ebitda_pct: { hoy: r1(margenImpl * 100), base: r1(margenes.base * 100), objetivo: mObj === null ? null : r1(mObj * 100) } } : {}),
     ventas_analista_m: v.ventas_objetivo_m ?? null, conviccion, peso_orientativo_pct: peso, precio_max_compra: precioMax, avisos,
+    ...(cfg.alertas ? { alertas } : {}),
   };
 }
 
@@ -269,6 +313,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     filas.push([d, k]);
     console.log(`${d.empresa} [${ver}]: ${k.puntuacion}/100, ${k.n_senales}/8 señales, EV/ventas NTM ${k.ev_ventas_ntm} (÷ crec. ${k.ratio_crecimiento}), ponderada ${k.rent_ponderada_pct} %, base ${k.rent_base_pct} %, bajista ${k.casos.bajista.rent_pct} % → ${k.senal}${k.conviccion ? ' (' + k.conviccion + ')' : ''}; ${k.motivo}; compra ≤ ${k.precio_max_compra} ${d.moneda}`);
     for (const w of k.avisos) console.log('  aviso: ' + w);
+    for (const w of k.alertas ?? []) console.log('  ALERTA: ' + w);
   }
   if (args.includes('--todos') && escribir) {
     filas.sort((p, q) => q[1].rent_ponderada_pct - p[1].rent_ponderada_pct);

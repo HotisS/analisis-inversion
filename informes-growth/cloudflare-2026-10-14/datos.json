@@ -133,7 +133,7 @@
     "[24] Pagos en acciones: ~274 M USD con cargas sociales en el 1S 2026 (análisis de terceros, Panabee), ~20 % de las ventas; dilución anual estimada (~354 M acciones medias en el 2T 2026, ~346 M un año antes, de memoria) más ~1,6 M netas por la liquidación de los bonos 2026"
   ],
   "calc": {
-    "version": "v9",
+    "version": "v11",
     "puntuacion": 81.3,
     "bloques": {
       "crecimiento": 20,
@@ -159,7 +159,12 @@
     "ev_bb_ntm": 56,
     "ratio_crecimiento": 1.26,
     "pista_meses": "FCF positivo",
-    "proyeccion": "mecánica",
+    "proyeccion": "mín(mecánica, analista)",
+    "ventas_mecanica_m": {
+      "bajista": 3325,
+      "base": 4252,
+      "alcista": 4654
+    },
     "g1_pct": 32.6,
     "recorte_guia": false,
     "factor_desaceleracion": 0.93,
@@ -172,15 +177,15 @@
       },
       "base": {
         "multiplo": 37.6,
-        "ventas_m": 4252,
-        "precio": 420.6,
+        "ventas_m": 4250,
+        "precio": 420.5,
         "rent_pct": 16.5
       },
       "alcista": {
         "multiplo": 48.9,
-        "ventas_m": 4654,
-        "precio": 597.9,
-        "rent_pct": 65.6
+        "ventas_m": 4500,
+        "precio": 578.2,
+        "rent_pct": 60.2
       }
     },
     "probabilidades": {
@@ -188,10 +193,10 @@
       "base": 50,
       "alcista": 25
     },
-    "objetivo_12m": 409.3,
-    "rent_ponderada_pct": 13.4,
+    "objetivo_12m": 404.4,
+    "rent_ponderada_pct": 12,
     "rent_base_pct": 16.5,
-    "asimetria": 1.5,
+    "asimetria": 1.3,
     "senal": "Mantener",
     "vigilar": false,
     "motivo": "no compra: EV/beneficio bruto > 35",
@@ -205,6 +210,11 @@
     "precio_max_compra": 226.2,
     "avisos": [
       "Sin guía de la empresa (crecimiento.guia_12m_pct): proyección como v7."
+    ],
+    "alertas": [
+      "Múltiplo de hoy (40,4) > 2 × su mediana de 3 años (19): el objetivo supone que no vuelve a la media.",
+      "Sin guía anual de 12 meses: el recorte por la guía (v9) no actúa.",
+      "Pagos en acciones del 20 % de las ventas (> 15 %): la regla del 40 y el FCF no los restan."
     ]
   }
 }

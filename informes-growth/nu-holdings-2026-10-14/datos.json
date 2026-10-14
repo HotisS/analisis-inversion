@@ -132,7 +132,7 @@
     "[22] De memoria (no verificado en esta tanda): pagos en acciones ~3 % del beneficio bruto; precio de mediados de oct-2025 ~16 USD (subida a 12 meses ≈ −3 %); CET1 > 14 % (2024: 14,7 % según el 20-F)"
   ],
   "calc": {
-    "version": "v9",
+    "version": "v11",
     "puntuacion": 78.3,
     "bloques": {
       "crecimiento": 21.7,
@@ -156,28 +156,33 @@
     "ev_bb_ntm": 7.3,
     "ratio_crecimiento": 0.24,
     "pista_meses": "FCF positivo",
-    "proyeccion": "mecánica",
+    "proyeccion": "mín(mecánica, analista)",
+    "ventas_mecanica_m": {
+      "bajista": 11288,
+      "base": 15093,
+      "alcista": 16787
+    },
     "g1_pct": 35.5,
     "recorte_guia": false,
     "factor_desaceleracion": 0.86,
     "casos": {
       "bajista": {
         "multiplo": 7.7,
-        "ventas_m": 11288,
-        "precio": 8.5,
-        "rent_pct": -45.3
+        "ventas_m": 11000,
+        "precio": 8.3,
+        "rent_pct": -46.7
       },
       "base": {
         "multiplo": 12.8,
-        "ventas_m": 15093,
-        "precio": 19,
-        "rent_pct": 21.8
+        "ventas_m": 13500,
+        "precio": 17,
+        "rent_pct": 8.9
       },
       "alcista": {
         "multiplo": 20,
-        "ventas_m": 16787,
-        "precio": 32.9,
-        "rent_pct": 110.9
+        "ventas_m": 15000,
+        "precio": 29.4,
+        "rent_pct": 88.5
       }
     },
     "probabilidades": {
@@ -185,10 +190,10 @@
       "base": 50,
       "alcista": 25
     },
-    "objetivo_12m": 19.9,
-    "rent_ponderada_pct": 27.4,
-    "rent_base_pct": 21.8,
-    "asimetria": 2.4,
+    "objetivo_12m": 17.9,
+    "rent_ponderada_pct": 15.1,
+    "rent_base_pct": 8.9,
+    "asimetria": 1.9,
     "senal": "Comprar",
     "vigilar": false,
     "motivo": "cumple todos los requisitos de compra",
@@ -199,9 +204,13 @@
     },
     "conviccion": "media",
     "peso_orientativo_pct": 4,
-    "precio_max_compra": 18.9,
+    "precio_max_compra": 16.6,
     "avisos": [
       "Sin guía de la empresa (crecimiento.guia_12m_pct): proyección como v7."
+    ],
+    "alertas": [
+      "Sin guía anual de 12 meses: el recorte por la guía (v9) no actúa.",
+      "Métrica «P/beneficio NTM» (ni ventas ni EBITDA): el motor aplica el múltiplo a ventas × margen implícito; la puntuación (margen bruto, regla del 40) no está pensada para este negocio."
     ]
   }
 }

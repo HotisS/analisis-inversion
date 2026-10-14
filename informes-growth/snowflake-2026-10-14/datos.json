@@ -126,7 +126,7 @@
     "[14] DE MEMORIA (no verificado en esta sesión): múltiplos EV/ventas NTM de MongoDB (~10x; un mensaje de StockTwits del 14-oct también da 10,0x) y Elastic (~5x); Datadog 20,3x, Cloudflare 40,3x y Palantir 44,3x según los informes growth del repo del 14-oct; mediana 20,3x. No cambia el cálculo: el alcista sale de base × 1,3 (22,6x), por encima"
   ],
   "calc": {
-    "version": "v9",
+    "version": "v11",
     "puntuacion": 78,
     "bloques": {
       "crecimiento": 20,
@@ -152,7 +152,12 @@
     "ev_bb_ntm": 27.8,
     "ratio_crecimiento": 0.6,
     "pista_meses": "FCF positivo",
-    "proyeccion": "mecánica",
+    "proyeccion": "mín(mecánica, analista)",
+    "ventas_mecanica_m": {
+      "bajista": 7155,
+      "base": 9109,
+      "alcista": 9957
+    },
     "g1_pct": 31.9,
     "recorte_guia": false,
     "factor_desaceleracion": 0.93,
@@ -165,15 +170,15 @@
       },
       "base": {
         "multiplo": 17.4,
-        "ventas_m": 9109,
-        "precio": 408.2,
-        "rent_pct": 14.1
+        "ventas_m": 8970,
+        "precio": 402.1,
+        "rent_pct": 12.4
       },
       "alcista": {
         "multiplo": 22.6,
-        "ventas_m": 9957,
-        "precio": 576.5,
-        "rent_pct": 61.1
+        "ventas_m": 9400,
+        "precio": 544.7,
+        "rent_pct": 52.3
       }
     },
     "probabilidades": {
@@ -181,10 +186,10 @@
       "base": 50,
       "alcista": 25
     },
-    "objetivo_12m": 397.4,
-    "rent_ponderada_pct": 11.1,
-    "rent_base_pct": 14.1,
-    "asimetria": 1.4,
+    "objetivo_12m": 386.4,
+    "rent_ponderada_pct": 8,
+    "rent_base_pct": 12.4,
+    "asimetria": 1.2,
     "senal": "Comprar",
     "vigilar": false,
     "motivo": "cumple todos los requisitos de compra",
@@ -195,7 +200,10 @@
     },
     "conviccion": "media",
     "peso_orientativo_pct": 4,
-    "precio_max_compra": 378.5,
-    "avisos": []
+    "precio_max_compra": 368,
+    "avisos": [],
+    "alertas": [
+      "Pagos en acciones del 30,2 % de las ventas (> 15 %): la regla del 40 y el FCF no los restan."
+    ]
   }
 }

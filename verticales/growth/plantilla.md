@@ -18,7 +18,7 @@ Se sigue entera en cada empresa. Método y reglas: [metodo.md](metodo.md). Todo 
   "empresa": "Nombre", "ticker": "TICK", "bolsa": "NASDAQ", "moneda": "USD", "fecha": "AAAA-MM-DD",
   "precio": 0, "acciones_diluidas_m": 0, "caja_m": 0, "deuda_m": 0,
   "crecimiento": { "ventas_12m_pct": 0, "ultimo_trimestre_pct": 0, "cagr_2a_propio_pct": 0, "aceleracion_pp": 0, "nrr_pct": null, "guia_12m_pct": null, "exceso_guia_pp": null, "nota_guia": "" },
-  "mercado": { "tam_m": 0, "ventas_12m_m": 0, "tecnologia_0a5": 0, "posicion_0a5": 0 },
+  "mercado": { "tam_m": 0, "ventas_12m_m": 0, "tecnologia_0a5": 0, "posicion_0a5": 0, "clientes_top2_pct": null, "clientes_top3_pct": null, "nota_clientes": "" },
   "tendencia": {
     "senales": {
       "revisiones_al_alza": { "valor": false, "evidencia": "" },
@@ -58,6 +58,9 @@ Notas de los campos:
 - `aceleracion_pp`: crecimiento interanual del último trimestre − media de los cuatro anteriores.
 - `guia_12m_pct`, `exceso_guia_pp`, `nota_guia` (opcionales; los usa la candidata v9, `backtest/resultados-v9.md`): crecimiento de ingresos que guía la empresa para los 12 meses siguientes (punto medio; si el ejercicio en curso ya pasó su primera mitad, el crecimiento implícito en lo que queda del año guiado, o la guía del año siguiente si ya existe; solo guía trimestral → `null`) y lo que de media la bate, en puntos de crecimiento (media de los 4 últimos trimestres; si solo hay guía anual, crecimiento real del último ejercicio − el de su primera guía; desconocido → `null` = 0). v9 parte como mucho de guía + exceso; solo recorta. Sin guía, `null`.
 - `ebitda_ntm_m`, `margen_ebitda_obj_pct`, `nota_margen_obj` (opcionales; solo con métrica EV/EBITDA; los usa la candidata v10, `backtest/resultados-v10.md`; v1-v9 no los leen): `ebitda_ntm_m` = EBITDA (ajustado) de los 12 meses siguientes, con fuente; con él v10 calcula `multiplo_actual` = EV / `ebitda_ntm_m` (el múltiplo deja de escribirse a mano; si el escrito difiere más de un 5 %, avisa y manda el calculado). `margen_ebitda_obj_pct` = margen EBITDA del ejercicio objetivo según la guía o los objetivos públicos a medio plazo de la empresa (punto medio; si el objetivo es de margen operativo, + amortizaciones sobre ventas; si su año pasa en más de uno del ejercicio objetivo, interpolación lineal desde el margen de hoy; nunca el consenso); sin objetivo, `null` (= v9). v10 usa el margen de hoy en el bajista, la media en el base y el objetivo en el alcista. `nota_margen_obj`: de dónde sale y cómo se convierte.
+- `clientes_top2_pct` / `clientes_top3_pct` / `nota_clientes` (opcionales): % de las ventas de los dos (tres) mayores clientes según el 10-K o equivalente; solo para la alerta de concentración (dos > 40 % o tres > 60 %). Desconocido → `null`.
+- `ventas_objetivo_m` en la candidata v11: cada escenario se toma como tope de la mecánica, así que debe ser **ventas** (nunca EBITDA ni beneficio; si la base es menos de la mitad de la mecánica, v11 no la usa y avisa) y de la **misma ventana** que la mecánica (dos años sobre los 12 meses de la fecha).
+- **Alertas** (salida `calc.alertas`, desde v9): chequeos de robustez que no cambian la señal (lista en `metodo.md` §7). Cada alerta se comenta en el apartado 11 del informe: por qué no rompe la tesis o qué se vigila.
 - `tam_m`: mercado **alcanzable** en el ejercicio objetivo (no el «mercado total» de la presentación si es inflado); se dice de dónde sale.
 - `tecnologia_0a5`: 5 = tecnología propia que nadie replica en 3 años (patentes, datos, efecto red); 3 = buena pero con alternativas; 1 = producto commodity.
 - `posicion_0a5`: 5 = líder claro con cuota creciente; 3 = entre los 3 primeros; 1 = seguidor.
