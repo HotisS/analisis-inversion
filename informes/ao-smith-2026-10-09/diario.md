@@ -57,3 +57,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 1. El texto del motor para reinversión < 15 % del NOPAT («apenas necesita inversión neta… activos ligeros») se lee como si AOS no invirtiera; aquí el capex es el 2,2 % de las ventas. Ya anotado en lecciones; sigue pendiente en el motor.
 2. El control «La síntesis explica la convicción» solo cuenta que la palabra «convicción» aparezca dos veces: una síntesis que lo explica con otras palabras no pasa, y una que la repite sin explicar sí.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 66,12 USD (media ponderada; base 59,92), rentabilidad 19,4 %, señal Mantener (el base, +8,4 %, no pasa el filtro del 12 %) (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +19,4 % → +12,4 %, base +8,4 %, señal Mantener (`revision-12m-2026-10-13.md`).

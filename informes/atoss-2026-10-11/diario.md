@@ -18,3 +18,4 @@
 - **Caja del puente en un semestre con facturación anual en enero**: compara los pasivos de contrato del puente con los del cierre; la diferencia es caja estacional que se consume en el resto del año.
 - **«Caja» del balance histórico frente a la liquidez que publica la empresa**: ATOSS tiene ~32 M en depósitos y oro fuera de «efectivo»; la deuda neta histórica del motor sale menor que la publicada (no afecta al puente, que sí los incluye).
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 113,25 EUR, rentabilidad 32,3 %, señal Comprar (base +15,9 %, pasa el filtro del 12 %) (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +32,3 % → +19,9 %, base +15,9 %, señal Mantener (`revision-12m-2026-10-13.md`).
