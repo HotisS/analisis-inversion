@@ -32,3 +32,4 @@
 - `descargar.mjs` no deja `.tabla.txt` en los HTML de EDGAR y no decodifica entidades HTML (`&#x2022;`) en el `.txt`.
 - `prompt-de.mjs` no imprimió las lecciones a B y D (salida de 33-38 KB).
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 121,26 USD (ponderado; base 113,18), rentabilidad +21,0 % con dividendo, señal Comprar, convicción media (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +21,0 % → +15,3 %, base +13,2 %, señal Mantener (`revision-12m-2026-10-13.md`).

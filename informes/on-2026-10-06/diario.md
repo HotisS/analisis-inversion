@@ -137,3 +137,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v5.mjs` (parte de `datos-
 3. La regla «crecimiento medio ≤ financiable + precio» no está en el motor: la parte de precio y el financiable con reinversión baja se calculan a mano.
 
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio, sobre la v5): objetivo 28,46 CHF (34,27 USD), rentabilidad +7,5 % (ponderada; base +17,6 %), señal Mantener (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +7,5 % → +12,3 %, base +17,6 %, señal Mantener (`revision-12m-2026-10-13.md`).

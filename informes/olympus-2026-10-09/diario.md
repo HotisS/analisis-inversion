@@ -70,3 +70,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 3. El aviso «Tabla sin filas: calc.suma_partes.partes» sigue saliendo en un informe sin suma de partes.
 
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 2.247 JPY, rentabilidad +13,9 %, señal Mantener (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +13,9 % → +12,8 %, base +12,0 %, señal Mantener (`revision-12m-2026-10-13.md`).
