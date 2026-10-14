@@ -32,11 +32,15 @@ Lo genera `node motor/growth.mjs --todos` (no editar a mano). Método v11: [vert
 | Spotify Technology | SPOT | 54.5 | 3/8 | -0,6 % | -5 % | Mantener | — | 499.5 USD | 2026-10-14 |
 | Eli Lilly | LLY | 85.5 | 7/8 | -1,1 % | +0,9 % | Mantener | — | 1098.4 USD | 2026-10-14 |
 | Vertex Pharmaceuticals | VRTX | 59.3 | 2/8 | -2,6 % | -0,1 % | Mantener | — | 450.1 USD | 2026-10-14 |
+| Rolls-Royce Holdings | RR | 65.3 | 4/8 | -5,3 % | -3,6 % | Mantener | — | 1212.2 GBp | 2026-10-14 |
 | TransMedics | TMDX | 51.2 | 1/8 | -9 % | -1,6 % | Mantener | — | 68.6 USD | 2026-10-14 |
+| Howmet Aerospace | HWM | 59.7 | 2/8 | -9,8 % | -7 % | Mantener | — | 186.2 USD | 2026-10-14 |
 | Boston Scientific | BSX | 46 | 2/8 | -10,2 % | -4 % | Vender | — | 37 USD | 2026-10-14 |
 | GE Vernova Inc. | GEV | 61.8 | 3/8 | -14,8 % | -12,6 % | Vender | — | 814 USD | 2026-10-14 |
 | Palantir Technologies | PLTR | 93.8 | 7/8 | -15,5 % | -13,3 % | Vender | — | 141.2 USD | 2026-10-14 |
 | Comfort Systems USA | FIX | 76.7 | 4/8 | -17,6 % | -15,6 % | Vender | — | 1276.2 USD | 2026-10-14 |
+| Quanta Services | PWR | 71.5 | 5/8 | -18,8 % | -17,4 % | Vender | — | 532.4 USD | 2026-10-14 |
 | Monolithic Power Systems, Inc. | MPWR | 70.7 | 4/8 | -19 % | -16,9 % | Vender | — | 1015.8 USD | 2026-10-14 |
 | BE Semiconductor Industries (Besi) | BESI | 63.3 | 2/8 | -23 % | -26,9 % | Vender | — | 124 EUR | 2026-10-14 |
 | Celestica Inc. | CLS | 66.2 | 3/8 | -26,2 % | -24,4 % | Vender | — | 251.1 USD | 2026-10-14 |
+| Insmed | INSM | 71.5 | 3/8 | -30,2 % | -23,8 % | Vender | — | 58 USD | 2026-10-14 |
