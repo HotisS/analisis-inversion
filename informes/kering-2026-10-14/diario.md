@@ -1,0 +1,16 @@
+# Diario · Kering (KER.PA) · 14-oct-2026
+
+- Commit de partida: e3491e6 (con la regla de múltiplos v3, 0ab5dfd, ya en el clon; sin `git pull` adicional para no tocar el clon compartido).
+- Entorno: nube de Claude Code, solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs no funcionan). Cifras de resultados de búsqueda con su URL. 26 búsquedas. Sin subagentes.
+- Fecha de corte 2026-10-14. EUR. Ejercicio natural. Próximas ventas (3T26): 22-oct-2026.
+- 15:46 inicio; 15:53 primeras cifras de núcleo; 15:57 notas A-E; 15:58 primer cálculo; 16:00 textos, Word y PDF (soffice); 16:04 revisión 12 m y diario.
+- **Confianza baja en los datos de núcleo**: precio de media sesión del 7-oct (209,10 €, Idéal Investisseur), sin cierre posterior; cuenta recurrente de comunicados de Kering (MFN, GlobeNewswire, Euronext) con EBITDA de MarketScreener e impuestos y minoritarios por diferencia; balance y flujos de Stock Analysis (sin clientes, proveedores ni deuda bruta de 2021-2023, sin el principal de los arrendamientos). ROIC del motor de 2021-2023 sin sentido (capital invertido negativo por falta de deuda); el de 2025 (3,5 %) sí es razonable.
+- Reutilizado del análisis de Hermès del 11-oct (mismo sector, 3 días): comparables de MarketScreener a 8-oct (sin llevar al cierre del día; Kering fuera, Hermès dentro), transacciones y la parte de mercado del sector (Bain-Altagamma).
+- Decisiones: cuenta en base recurrente (la de la empresa y la del consenso); 2025 sin Kering Beauté. DCF con NIIF 16: arrendamientos en el puente (6.212 M) y capex con las altas de derechos de uso (12,5-14 % de ventas) frente a una amortización del 13,9 %; circulante = existencias (sin clientes ni proveedores). Beta 1,2 estimada. Puente a jun-2026 (caja 8.500, deuda bruta 11.800 por diferencia); Valentino (30 %) y minoritarios a cero, prudente. Pesos DCF 50 / comparables 25 / escenarios 25; transacciones a cero (control de Artémis).
+- Sostenibilidad: «En parte». Ninguna prueba cuantitativa falla (reinversión del 2 % del NOPAT; cuota del 4,1 % al 4,2 %), pero el ROIC (3,5 %) está bajo el WACC y el crecimiento depende de Gucci. Sin rebaja del base.
+- Ficha sectorial corta: `ficha-sector-lujo.md` en esta carpeta (no se escribe en `sectores/`).
+- **Línea 12 m (v3)**: objetivo 239,96 €, ponderada +16,2 %, base +24,7 % → la regla da Comprar, se queda en **Mantener** por confianza baja; convicción baja. Compra < 211,27 €, venta > 269,95 €. VI 221,29 € (+5,8 %); DCF 245,33 €; consenso 282,46 € (julio, con recortes). No pasa el requisito de calidad (ROIC − WACC ≈ −4,1 puntos). Para pasar a Comprar (regla): cierre oficial < 211,27 €, informe semestral con deuda bruta y arrendamientos, y ventas del 3T (22-oct) con Gucci en positivo comparable.
+
+## Lecciones
+- Empresas en recuperación de beneficio: con la regla v3, los años de BPA hundido dan PER adelantados de 38-55x y hay que excluirlos; la historia limpia queda corta (Kering: tres cierres, todos del pico). Decirlo en `excluidos` y en la revisión.
+- Comparables del mismo sector hechos hace 1-3 días en otra carpeta (Hermès): copiarlos ahorra 6-8 búsquedas; quitar la empresa analizada y añadir la de la otra carpeta con su fila de `calc.comparables.tabla`.
