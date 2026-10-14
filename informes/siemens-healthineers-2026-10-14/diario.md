@@ -1,0 +1,15 @@
+# Diario · Siemens Healthineers (SHL) · 14-oct-2026
+
+- Commit de partida: 074d579.
+- Entorno: nube de Claude Code, solo WebSearch (WebFetch, curl, descargar.mjs y bolsa.mjs no funcionan). Cifras de resultados de búsqueda con su URL. ≈20 búsquedas. Sin subagentes.
+- Fecha de corte 2026-10-14. EUR. Ejercicio a septiembre, etiqueta «fin» (FY2025 = oct-24 a sep-25). Próximos resultados: 5-nov-2026.
+- 15:31 inicio; 15:40 notas A-E; 15:43 primer informe (v2) con 16 de 16 controles; 15:46 informe final (v3) con 16 de 17 controles y 1 explicado (Comprar pendiente de confirmar), Word y PDF (soffice).
+- **Confianza baja en los datos de núcleo**: precio de Lang & Schwarz del 27-sep (37,67 €), no se encontró cierre de octubre; cuenta, balance y flujos parciales y de agregadores (TipRanks, Weiss); balance solo con activo y caja de FY2025 (el ROIC del motor no sirve; estimación propia 8-9 %). Deuda neta del puente: la publicada (≈12.000 M, 30-jun-2026) sin desglose.
+- Decisiones: DCF sobre EBITDA de agregador (20,2 %) con margen al 22,5 %; circulante metido en el capex (6,3 %) porque sin balance el motor veía circulante 0 y metía un salto de 4.769 M; objetivo a 12 meses en base de BPA ajustado (la de la guía), calibrado a 2,39 € de FY2025 con 0,07 € de amortización de compras neta; PER histórico con cierres de diciembre (no hay de septiembre) y 2025 estimado; FY2021 excluido.
+- Sostenibilidad: «En parte» (crecimiento por debajo de la historia; el margen depende de Diagnostics). Sin rebaja: ninguna prueba cuantitativa falla.
+- 15:45 aviso del coordinador: regla de múltiplos v3 (commit 0ab5dfd, ya en el clon). Historia del PER pasada a adelantada (cierre de diciembre ÷ BPA ajustado del ejercicio siguiente; dic-2025 con el BPA subyacente de la guía FY2026) y `per_historico.base: "adelantado"`. Ficha sectorial corta no hecha: no hay `sectores/` de medtech y el encargo no permite escribir fuera de la carpeta.
+- **Línea 12 m (v3)**: objetivo 51,62 €, ponderada +39,7 %, base +42,6 % → la regla da Comprar, se queda en **Mantener** por confianza baja (y no pasa calidad: ROIC − WACC ≈ +1). Compra < 41,95 €, venta > 58,47 €; VI 42,93 € (+14,0 %); consenso 45,14 €. Con v2 salía +14,7 % / +14,2 %. Regla relativa Comprar / absoluta Mantener; convicción baja. Para pasar a Comprar: cierre verificado < 41,95 €, cuentas y balance primarios del 5-nov con ROIC confirmado y guía FY2027 de BPA ajustado ≥ 2,50 €; aun así, la calidad (ROIC − WACC ≥ 5) no se cumpliría.
+
+## Lecciones
+- Empresas con ejercicio a septiembre en Alemania: los portales dan cierres de diciembre, no de septiembre; con solo WebSearch, el PER histórico sale del cierre de diciembre (3 meses después) y hay que decirlo.
+- Sin balance (solo activo total), el motor toma circulante 0 y la proyección mete el salto entero del circulante en el primer año: poner `nwc_pct_ventas` 0 y sumar la inversión en circulante al capex.
