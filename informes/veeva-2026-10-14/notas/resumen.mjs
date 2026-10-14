@@ -1,0 +1,50 @@
+// Resumen ejecutivo (Veeva, corte 2026-10-14). Se escribe el último; cifras de calc tal cual.
+export default {
+  recomendacion: 'Mantener',
+  conviccion: 'Baja',
+  justificacion_recomendacion: null,
+  horizonte: '12 meses',
+  sintesis: [
+    '**La recomendación y por qué.** Mantener con convicción baja. A 296,13 USD (cierre del 9-oct, el último fechado que hemos podido ver), el objetivo a 12 meses es de 343,09 USD: rentabilidad ponderada del +15,9 % y del +20,4 % en el caso base, con asimetría de 2,44 veces. Pasa los dos umbrales de rentabilidad, pero no el filtro de valor real: el valor intrínseco es de 166,15 USD, un 43,9 % por debajo del precio. El objetivo medio de ocho bancos (290,5 USD) queda por debajo de nuestro rango central [D7, D8]. La convicción es baja porque las dos lecturas se contradicen (el PER histórico dice que puede subir; el DCF dice que está cara) y porque el precio y parte del balance no están confirmados con fuente primaria; la subiría una caída del precio hacia 166 USD o una guía en el día del inversor del 5-nov que eleve el crecimiento sostenible por encima del 15 %.',
+    '**El negocio.** Veeva es el líder del software para ciencias de la vida, con ≈16 % de un mercado direccionable de más de 20.000 M USD [B1]. El 84 % de las ventas es suscripción, los clientes pagan por adelantado y el ROIC operativo es del 104,4 %, unos 93 puntos por encima del 11,0 % de coste del capital. La migración del CRM fuera de Salesforce, el gran riesgo de 2022-24, va bien: más de 190 clientes en producción y 14 de las 20 mayores farmacéuticas comprometidas [B3, B4]. La calidad sostiene el crecimiento proyectado (veredicto «Sí»): el negocio no necesita capital y la cuota implícita en FY2036e (22,3 %) es 1,4 veces la actual.',
+    '**Finanzas.** Ventas de 3.195,3 M en FY2026 (+16 %) y aceleración al +18 % en el 2T27, con la guía de FY2027 elevada a 3.682-3.687 M [A12, A6]. El beneficio GAAP fue de 908,9 M (5,44 USD por acción); la remuneración en acciones, 472,7 M (14,8 % de las ventas), explica la distancia con el BPA no GAAP que sigue el mercado [A2]. Caja neta de 7.243 M y primera recompra, de 2.000 M [A8].',
+    '**Equipo y gobierno.** El fundador sigue al frente y cobra solo sueldo más una opción de 2024 a 236,90 USD; los asesores de voto la consideraron desproporcionada [C1]. Gobierno con datos incompletos.',
+    '**Valoración.** El DCF da 159,66 USD con la remuneración en acciones como gasto y 184,74 con la prima de mercado. El DCF inverso pide un 20,9 % anual de crecimiento entre FY2028e y FY2036e, frente al 9,0 % de nuestro base y al 14,6 % histórico: el precio es exigente. La rentabilidad a 12 meses sale positiva porque Veeva ha cotizado siempre a 36-62 veces el beneficio GAAP del año siguiente (hoy 40,3) y la regla supone que eso sigue; es una apuesta de múltiplo, no de valor.',
+    '**Riesgos y catalizadores.** El riesgo mayor es la compresión del múltiplo hacia el del software (≈25 veces): −20 % en el bajista a 12 meses y hasta −44 % hacia el valor intrínseco. El segundo, que la IA reduzca usuarios de CRM. Catalizadores: día del inversor (5-nov), resultados del 3T27 (≈19-nov) y la recompra. Los foros han pasado de la capitulación al entusiasmo tras el 2T, sin euforia.',
+    '**Qué cambiaría la decisión.** Compraríamos por debajo de 166,15 USD y venderíamos por encima de 381,22. Pasaríamos a Vender si la suscripción crece menos del 12 % o si el PER adelantado cae por debajo de 36 veces sin caída del beneficio.',
+  ].join('\n\n'),
+  tesis: 'Veeva es el sistema operativo de la industria farmacéutica: CRM, contenidos regulados, ensayos clínicos, calidad y datos, con un 84 % de ingresos recurrentes, un margen operativo no GAAP del 44 % y 7.243 M de caja sin deuda [A6, A8]. Ha sobrevivido a su mayor riesgo, salir de la plataforma de Salesforce, con 14 de las 20 mayores farmacéuticas en Vault CRM [B3].\n\nEl precio, 296,13 USD, descuenta mucho: el DCF inverso pide un 20,9 % anual de crecimiento durante nueve años, y la acción cotiza a 40,3 veces nuestro BPA GAAP de FY2028e, en la parte baja de su historia (36-62 veces) pero muy por encima del software maduro (24,6 veces).\n\nPara invertir hay que creer que el mercado seguirá pagando esa prima porque la IA amplía el negocio en vez de comérselo. Nuestras cifras coinciden con el consenso en ventas; la diferencia está en el precio que se paga por ellas.',
+  vision_diferencial: {
+    mercado_descuenta: 'Que Veeva crecerá al 15-20 % durante una década gracias a la IA y a la migración del CRM, y que merece un PER de 40-45 veces el beneficio GAAP.',
+    nuestra_vision: 'El crecimiento se moderará del 15 % al 5 % en diez años; el negocio es excelente, pero el precio ya paga más que ese crecimiento. A 12 meses la acción puede seguir subiendo con el beneficio si el múltiplo aguanta.',
+    por_que: 'Nadie en el sector ha crecido al 20 % durante nueve años con más del 20 % de cuota; el mercado direccionable crece al 6 %. No tenemos una visión opuesta a la del mercado sobre el negocio, sí sobre lo que vale.',
+  },
+  a_favor: [
+    '**Aceleración**: ventas +18 % en el 2T27 y guía elevada a 3.682-3.687 M [A6].',
+    '**Migración del CRM ganada**: 14 de las 20 mayores farmacéuticas con Vault CRM [B3].',
+    '**Balance**: 7.243 M de caja neta y recompra de 2.000 M [A8].',
+    '**Rentabilidad**: ROIC operativo del 104,4 % y conversión en caja del 156 % del beneficio.',
+    '**Múltiplo en mínimos propios**: 40,3 veces frente a una mediana de 45,5 en cinco años.',
+  ],
+  en_contra: [
+    '**Valor intrínseco**: 166,15 USD, un 43,9 % por debajo del precio.',
+    '**DCF inverso**: el precio pide un 20,9 % anual de crecimiento durante nueve años.',
+    '**Remuneración en acciones**: 14,8 % de las ventas, fuera del BPA que sigue el mercado [A2].',
+    '**IA**: riesgo para el modelo por usuario del CRM; sin ingresos de IA publicados.',
+    '**Rebote**: la acción casi se ha duplicado desde el mínimo de 148,05 USD [D13].',
+  ],
+  que_vigilar: 'La tesis depende de que el mercado siga pagando 40 veces o más el beneficio GAAP del año siguiente, y eso depende del crecimiento de la suscripción. La señal de que no se cumple: suscripción creciendo menos del 12 % interanual o una guía de FY2028 por debajo del +12 % en marzo de 2027.',
+  cambiaria_recomendacion: [
+    'Precio por debajo de 166,15 USD: pasaría a Comprar (valor real ≥ precio).',
+    'Precio por encima de 381,22 USD: pasaría a Vender.',
+    'Crecimiento de la suscripción por debajo del 12 % en dos trimestres: Vender.',
+    'Guía de FY2028 por encima del +16 % con ingresos de IA cuantificados: revisaríamos al alza el DCF.',
+  ],
+  kpis_seguimiento: [
+    { kpi: 'Crecimiento de la suscripción', nivel_actual: '+16 % (2T27)', umbral_alerta: '< 12 %', por_que: 'Sostiene el múltiplo.' },
+    { kpi: 'Clientes en producción con Vault CRM', nivel_actual: '> 190 (sep-26)', umbral_alerta: 'Pérdida de una de las 20 mayores', por_que: 'Migración del CRM.' },
+    { kpi: 'PER adelantado GAAP', nivel_actual: '40,3x', umbral_alerta: '< 36x', por_que: 'Mínimo de cinco años.' },
+    { kpi: 'Remuneración en acciones / ventas', nivel_actual: '14,8 % (FY2026)', umbral_alerta: '> 16 %', por_que: 'Distancia GAAP / no GAAP.' },
+  ],
+  confianza: 'Baja',
+};
