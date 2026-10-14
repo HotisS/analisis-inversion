@@ -49,6 +49,11 @@ VERSIONES.v8 = { ...VERSIONES.v7, descripcion: 'v7 + proyección que respeta la 
 // para los 12 meses siguientes más lo que suele batirla (crecimiento.guia_12m_pct + exceso_guia_pp). Solo recorta; sin guía = v7.
 VERSIONES.v9 = { ...VERSIONES.v7, descripcion: 'v7 + el crecimiento de partida no pasa de la guía de la empresa más su exceso medio sobre la guía (solo recorta)',
   proy_guia: true };
+// Candidata v10 (14-oct; backtest/resultados-v10.md): en las valoradas por EV/EBITDA, el margen EBITDA no se congela:
+// bajista con el de hoy, base con la media entre hoy y valoracion.margen_ebitda_obj_pct, alcista con el objetivo (sin él, = v9).
+// Además lee valoracion.ebitda_ntm_m (múltiplo de hoy = EV / EBITDA NTM) y aplica el margen también a las ventas del analista.
+VERSIONES.v10 = { ...VERSIONES.v9, descripcion: 'v9 + en las valoradas por EV/EBITDA, margen EBITDA hacia el objetivo de la empresa (bajista hoy, base media, alcista objetivo) en vez de congelado',
+  margen_obj: true };
 export const VIGENTE = 'v9';
 
 const escala = (v, cortes) => {
@@ -143,10 +148,22 @@ export function calcular(d, cfg = VERSIONES[VIGENTE]) {
   const mecanica = cfg.forzar_mecanica || !v.ventas_objetivo_m || v.ventas_objetivo_m.base == null;
   const ventas = mecanica ? { bajista: pr.bajista, base: pr.base, alcista: pr.alcista } : v.ventas_objetivo_m;
   const esVentas = !v.metrica || /ventas/i.test(v.metrica);
-  // Si el múltiplo es de EBITDA y la proyección es mecánica, el margen EBITDA implícito sale de los dos múltiplos
-  const margenImpl = !esVentas && mecanica && v.multiplo_actual ? evVentasNtm / v.multiplo_actual : 1;
-  const multActual = v.multiplo_actual ?? evVentasNtm;
-  if (!esVentas && mecanica && !v.multiplo_actual) avisos.push('Múltiplo de EBITDA sin multiplo_actual: se usa EV/ventas.');
+  // Si el múltiplo es de EBITDA y la proyección es mecánica, el margen EBITDA implícito sale de los dos múltiplos.
+  // v1-v9: con ventas del analista el margen no se aplicaba (fallo latente; v10 lo aplica siempre).
+  // v10: con valoracion.ebitda_ntm_m, el múltiplo de hoy es EV / EBITDA NTM (no se escribe a mano).
+  const conMargen = !esVentas && (mecanica || !!cfg.margen_obj);
+  const esEbitda = !esVentas && /ebitda/i.test(v.metrica);
+  const ebitdaNtm = cfg.margen_obj && esEbitda && v.ebitda_ntm_m > 0 ? v.ebitda_ntm_m : null;
+  const multEbitda = ebitdaNtm ? ev / ebitdaNtm : v.multiplo_actual;
+  if (ebitdaNtm && v.multiplo_actual && Math.abs(multEbitda / v.multiplo_actual - 1) > 0.05)
+    avisos.push(`multiplo_actual escrito (${v.multiplo_actual}) distinto de EV/ebitda_ntm_m (${r1(multEbitda)}): manda el calculado.`);
+  const margenImpl = conMargen && multEbitda ? evVentasNtm / multEbitda : 1;
+  const multActual = multEbitda ?? evVentasNtm;
+  if (conMargen && !multEbitda) avisos.push('Múltiplo de EBITDA sin multiplo_actual: se usa EV/ventas.');
+  // v10: margen EBITDA hacia el objetivo de la empresa (bajista hoy, base media, alcista objetivo)
+  const mObj = cfg.margen_obj && esEbitda && multEbitda && v.margen_ebitda_obj_pct != null ? v.margen_ebitda_obj_pct / 100 : null;
+  const margenes = mObj === null ? { bajista: margenImpl, base: margenImpl, alcista: margenImpl }
+    : { bajista: margenImpl, base: (margenImpl + mObj) / 2, alcista: mObj };
   const gAct = v.crecimiento_actual_pct ?? pr.g1, gObj = v.crecimiento_obj_pct ?? pr.g_final;
   const factorDesac = cfg.desaceleracion && gAct > 0 && gObj < gAct ? Math.max(cfg.desac_min, Math.pow(Math.max(0, gObj) / gAct, cfg.desac_exp)) : 1;
   const ref = cfg.objetivo === 'actual' ? multActual : Math.min(multActual, v.mediana_3a ?? multActual);
@@ -156,7 +173,7 @@ export function calcular(d, cfg = VERSIONES[VIGENTE]) {
     ? (cfg.alcista_min ? Math.min(Math.max(mBase * cfg.alcista_min, v.mediana_3a ?? 0, v.mediana_comparables ?? 0), mBase * cfg.alcista_techo) : mBase * cfg.alcista_techo) : Math.min(Math.max(mBase, v.mediana_3a ?? 0, v.mediana_comparables ?? 0), mBase * cfg.alcista_techo);
   const acciones = d.acciones_diluidas_m * (1 + (f.dilucion_anual_pct ?? 0) / 100);
   const cajaFutura = (d.caja_m ?? 0) - quema;
-  const precioDe = (mult, vtas) => (mult * vtas * margenImpl + cajaFutura - (d.deuda_m ?? 0)) / acciones;
+  const precioDe = (mult, vtas, marg = margenImpl) => (mult * vtas * marg + cajaFutura - (d.deuda_m ?? 0)) / acciones;
   const casos = {
     bajista: { multiplo: r1(mBaj), ventas_m: Math.round(ventas.bajista) },
     base: { multiplo: r1(mBase), ventas_m: Math.round(ventas.base) },
@@ -164,7 +181,7 @@ export function calcular(d, cfg = VERSIONES[VIGENTE]) {
   };
   const div = v.dividendo_pct ?? 0;
   for (const k in casos) {
-    const p = precioDe(k === 'bajista' ? mBaj : k === 'base' ? mBase : mAlc, ventas[k]);
+    const p = precioDe(k === 'bajista' ? mBaj : k === 'base' ? mBase : mAlc, ventas[k], margenes[k]);
     casos[k].precio = r1(p);
     casos[k].rent_pct = r1((p / d.precio - 1) * 100 + div);
   }
@@ -218,6 +235,8 @@ export function calcular(d, cfg = VERSIONES[VIGENTE]) {
     proyeccion: mecanica ? 'mecánica' : 'analista', ...(cfg.proy_guia ? { g1_pct: r1(pr.g1), recorte_guia: pr.recorte_guia } : {}), factor_desaceleracion: Math.round(factorDesac * 100) / 100,
     casos, probabilidades: p, objetivo_12m: r1(objetivo), rent_ponderada_pct: ponderada, rent_base_pct: casos.base.rent_pct,
     asimetria, senal, vigilar, motivo,
+    ...(cfg.margen_obj && conMargen ? { multiplo_ebitda: r1(multEbitda), multiplo_ebitda_de: ebitdaNtm ? 'EV/ebitda_ntm_m' : 'multiplo_actual',
+      margen_ebitda_pct: { hoy: r1(margenImpl * 100), base: r1(margenes.base * 100), objetivo: mObj === null ? null : r1(mObj * 100) } } : {}),
     ventas_analista_m: v.ventas_objetivo_m ?? null, conviccion, peso_orientativo_pct: peso, precio_max_compra: precioMax, avisos,
   };
 }
