@@ -44,3 +44,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 2. El texto del motor mezcla dos casos («en un negocio de activos ligeros… en un comprador en serie…») en vez de elegir el que aplica.
 3. Con `mercado_final` null no hay prueba de cuota en la tabla; para un grupo multicategoría sin tamaño de mercado mundial, la prueba queda en manos del texto.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 140,41 USD, rentabilidad 13,9 %, señal Mantener (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +9,7 % → +8,3 %, base +9,6 %, señal Mantener (`revision-12m-2026-10-13.md`).

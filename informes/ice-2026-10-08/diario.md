@@ -75,3 +75,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 3. Sin perímetro comparable de cuota (empresas multimercado), la prueba de cuota queda vacía sin aviso en el Word; convendría una fila «No aplica: sin cuota publicada».
 
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 177,1 USD, rentabilidad +17,4 %, señal Comprar (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +15,1 % → +11,4 %, base +8,4 %, señal Mantener (`revision-12m-2026-10-13.md`).
