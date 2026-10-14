@@ -19,3 +19,4 @@
 
 - En la nube, un cierre de año que no aparece se puede reconstruir con dos noticias que den «precio y caída en el año» de fechas distintas (si coinciden, el dato es fiable); y el PER adelantado de un año sin precio sale del PER del proveedor × BPA del año ÷ BPA del siguiente, sin necesitar el precio.
 - Empresas suizas con dos líneas (nominativa y bono de participación): los proveedores mezclan PER y precios de las dos; la nominativa cotiza ≈5-10 % más barata, así que no se pueden mezclar precios, pero sí ratios.
+- 2026-10-14: datos-v2.json y «Schindler - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 6,8 % (antes v3 Mantener 6,8 %).

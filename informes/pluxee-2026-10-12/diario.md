@@ -45,3 +45,4 @@
 
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 16,49 EUR, rentabilidad +16,4 %, señal Comprar (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +11,4 % → +8,2 %, base +11,0 %, señal Mantener (`revision-12m-2026-10-13.md`).
+- 2026-10-14: datos-v2.json y «Pluxee - 2026-10-12 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v2 Mantener 8,2 %.

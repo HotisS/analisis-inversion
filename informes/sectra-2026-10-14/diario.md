@@ -13,3 +13,4 @@
 - Sin bolsa.mjs, el PER histórico de la regla a 12 meses queda estimado con PER publicados por la prensa; en empresas de PER muy alto el resultado depende mucho de esa estimación: rehacer con cierres reales cuando haya red.
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 80.8x, mínimo 64x, media larga 81.7x; antes v2 90x/60x/95x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Sectra - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 10,3 % (antes v3 Mantener 10,3 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 60,0x / 82,5x / 95,0x, 15,2 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

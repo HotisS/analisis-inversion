@@ -13,3 +13,4 @@
 - Sin acceso a bolsa.mjs, el precio del día puede no aparecer en la búsqueda para valores grandes: dejarlo como hueco de núcleo y fechar el precio usado.
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 23.4x, mínimo 19.9x, media larga 24.3x; antes v2 22.4x/17.1x/21.7x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Texas Instruments - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener -4,5 % (antes v3 Mantener -7,0 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 17,1x / 22,4x / 25,0x, -18,3 % Vender; con el tope anterior del base (×1,3, 14-oct mediodía): -7,0 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

@@ -770,6 +770,21 @@ export function calcularEmpresa(datos) {
     if (partes.length) o12.comparacion_txt = `Para comparar, ${partes.join('; ')}. Decide la regla vigente (v3 con tope ×${String(REGLA_12M.v3.topeBase).replace('.', ',')}; METODO-VIGENTE.md).`;
   }
   if (!con12) control('Objetivo a 12 meses (PER propio × BPA propio)', false, 'Falta valoracion.objetivo_12m: la rentabilidad a 12 meses sale del valor intrínseco.');
+  if (con12) {
+    // Compra robusta (pruebas de robustez, 14-oct-2026): un Comprar de v3 que v2 no confirma se marca; para comprar o ampliar
+    // hace falta que pasen las dos reglas (backtest: las compras que v2 no confirma aciertan menos, 58 % frente a 68 %, y
+    // pierden más, 17 % frente a 8 %). Para mantener basta la vigente.
+    if (o12.senal === 'Comprar' || o12.senal_sin_confirmar === 'Comprar') control('Compra robusta (v3 y v2 dan Comprar)', o12.v2 ? o12.v2.senal === 'Comprar' : null, o12.v2 ? (o12.v2.senal === 'Comprar' ? '' : `La regla v2 (historia al cierre) da ${o12.v2.senal} con ${fmt(o12.v2.rentabilidad_ponderada_pct, 1)} %: para comprar o ampliar hace falta motivo de negocio propio; para mantener basta la vigente.`) : 'Sin historia v2 al lado: no se puede contrastar.');
+    // Crecimiento del BPA exigido (D6 de las pruebas de robustez): si el BPA base del ejercicio objetivo supone más de un 25 %
+    // anual desde el último BPA real, la cifra depende de un rebote que el informe tiene que explicar; si no, confianza baja.
+    const ultReal = lista(d.financieros?.cuenta).filter((c) => n(c.bpa) !== null && n(c.bpa) > 0).at(-1);
+    const bpaBase = o12.filas.find((f) => f.escenario === 'Base')?.beneficio_por_accion ?? null;
+    const anioObj = n(String(d.valoracion.objetivo_12m.ejercicio || '').replace(/\D/g, '').slice(0, 4)), anioUlt = ultReal ? n(String(ultReal.periodo).replace(/\D/g, '').slice(0, 4)) : null;
+    if (ultReal && bpaBase !== null && anioObj && anioUlt && anioObj > anioUlt) {
+      const cagr = ((bpaBase / n(ultReal.bpa)) ** (1 / (anioObj - anioUlt)) - 1) * 100;
+      control('Crecimiento del BPA base ≤ 25 % anual desde el último real', cagr <= 25, cagr <= 25 ? '' : `El BPA base de ${d.valoracion.objetivo_12m.ejercicio} (${fmt(bpaBase, 2)}) supone un ${fmt(cagr, 1)} % anual desde ${fmt(n(ultReal.bpa), 2)} (${ultReal.periodo}): explícalo en valoracion.objetivo_12m.comentario o la confianza es baja.`);
+    }
+  }
   else {
     const fuera = o12.filas.filter((f) => f.multiplo_informe !== null && f.multiplo !== null && Math.abs(f.multiplo_informe / f.multiplo - 1) > 0.02);
     control('Múltiplos del objetivo a 12 m según la regla común', !fuera.length, fuera.length ? `El informe pone ${fuera.map((f) => `${f.escenario} ${fmt(f.multiplo_informe, 1)}x`).join(', ')} y la regla da ${fuera.map((f) => `${fmt(f.multiplo, 1)}x`).join(', ')}: el motor usa la regla.` : '');

@@ -35,3 +35,4 @@
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +24,1 % → +12,4 %, base +10,6 %, señal Mantener (`revision-12m-2026-10-13.md`).
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 35.9x, mínimo 33.8x, media larga 40.6x; antes v2 41.4x/34.5x/34.5x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Verisk - 2026-10-12 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Comprar 24,1 % (antes v3 Comprar 44,6 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 18,5x / 21,8x / 28,3x, 12,4 % Mantener; con el tope anterior del base (×1,3, 14-oct mediodía): 44,6 % Comprar. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

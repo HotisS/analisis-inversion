@@ -81,8 +81,10 @@ export function simboloDe(id = {}) {
   const hallados = SUFIJOS.map(([re, suf]) => ({ i: m.search(re), suf })).filter((h) => h.i >= 0).sort((a, b) => a.i - b.i);
   return hallados.length ? `${t}${hallados[0].suf}` : t;
 }
+// El último datos por NÚMERO de versión (datos-v3 antes que datos.json; con orden alfabético el «-» iba antes que el «.» y
+// se leía el informe más viejo: fallo visto por el hilo de robustez el 14-oct-2026).
 const ultimoDatos = (dir) => {
-  const fs = readdirSync(dir).filter((f) => /^datos.*\.json$/.test(f)).sort();
+  const fs = readdirSync(dir).filter((f) => /^datos(-v\d+)?\.json$/.test(f)).sort((a, b) => (+(a.match(/v(\d+)/)?.[1] ?? 1)) - (+(b.match(/v(\d+)/)?.[1] ?? 1)));
   return fs.length ? JSON.parse(readFileSync(`${dir}/${fs.at(-1)}`, 'utf8')) : null;
 };
 const carpetas = () => readdirSync(`${raiz}informes`, { withFileTypes: true }).filter((e) => e.isDirectory()).map((e) => e.name).sort();

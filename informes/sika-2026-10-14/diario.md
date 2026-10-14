@@ -21,3 +21,4 @@
 
 - Cuando el agregador no da circulante (balance incompleto), poner `nwc_pct_ventas` a 0 y meter la inversión en circulante estimada en el capex de la proyección evita el salto artificial del primer año y mantiene la caja libre honesta; decirlo en la justificación de inversión.
 - Sin cierres anuales directos, la capitalización a 31-dic de la página de la acción de la empresa ÷ acciones y la rentabilidad anual del discurso del presidente en la junta dan cierres razonables para el PER adelantado.
+- 2026-10-14: datos-v2.json y «Sika - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 23,9 % (antes v3 Mantener 27,4 %). Para comparar, con el tope anterior del base (×1,3, 14-oct mediodía): 27,4 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

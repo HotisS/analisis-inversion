@@ -15,3 +15,4 @@
 ## Lecciones
 
 - En la nube sin red, el análisis de un competidor hecho días antes (Diageo, Heineken) da sector, competidores, transacciones y comparables a 12-oct: reutilizarlo ahorra la mitad de las búsquedas. Sin consenso NTM accesible, los comparables no entran en el valor (el motor necesita el EBITDA y el BPA de los próximos 12 meses de la empresa).
+- 2026-10-14: datos-v2.json y «Pernod Ricard - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 20,3 % (antes v3 Mantener 22,9 %). Para comparar, con el tope anterior del base (×1,3, 14-oct mediodía): 22,9 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

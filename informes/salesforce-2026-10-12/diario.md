@@ -19,3 +19,4 @@
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +21,6 % → +17,3 %, base +20,8 %, señal Mantener (`revision-12m-2026-10-13.md`).
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 42.7x, mínimo 40x, media larga 42.4x; antes v2 66.9x/27.2x/27.2x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Salesforce - 2026-10-12 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 37,0 % (antes v3 Mantener 60,8 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 21,0x / 24,7x / 27,2x, 17,4 % Mantener; con el tope anterior del base (×1,3, 14-oct mediodía): 60,8 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

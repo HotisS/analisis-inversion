@@ -15,3 +15,4 @@
 - Un badwill dentro del EBITDA se pone en `ltm.no_recurrentes_en_ebitda` con signo negativo; el PER LTM del motor sigue incluyéndolo en el beneficio neto, así que hay que decirlo en `multiplos_historicos.comentario`.
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 21.2x, mínimo 11x, media larga 19.1x; antes v2 23.2x/18.3x/21.7x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Rovi - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 6,8 % (antes v3 Mantener 6,8 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 18,3x / 19,2x / 21,7x, 13,3 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

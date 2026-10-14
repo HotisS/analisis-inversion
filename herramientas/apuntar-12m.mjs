@@ -13,6 +13,7 @@
 //                                                                      del último cierre: la regla de «precio actual antes de
 //                                                                      cada orden» (MEMORIA.md), normalmente con --simular
 //   … --simular                                                        enseña lo que cambia sin escribir
+//   … --mover-per                                                      (solo para comparar) recalcula el objetivo moviendo el PER actual con el precio
 //
 // Con un precio nuevo, EL OBJETIVO QUEDA FIJO (los múltiplos y el BPA del informe no cambian) y solo se mueve la
 // rentabilidad: objetivo ÷ precio actual. Hasta el 14-oct por la tarde el PER actual se escalaba con el precio y, como
@@ -32,7 +33,7 @@ const args = process.argv.slice(2);
 const opcion = (k) => { const i = args.indexOf(k); return i >= 0 ? args.splice(i, 2)[1] : null; };
 const bandera = (k) => { const i = args.indexOf(k); if (i >= 0) args.splice(i, 1); return i >= 0; };
 const fechaPedida = opcion('--fecha'), precioPedido = opcion('--precio');
-const usarPrecios = bandera('--precios'), todos = bandera('--todos'), simular = bandera('--simular'), actual = bandera('--actual');
+const usarPrecios = bandera('--precios'), todos = bandera('--todos'), simular = bandera('--simular'), actual = bandera('--actual'), moverPer = bandera('--mover-per');
 const hoy = new Date().toISOString().slice(0, 10);
 const f = (x, d = 2) => (x === null || x === undefined ? 'n.d.' : x.toLocaleString('es-ES', { minimumFractionDigits: d, maximumFractionDigits: d }));
 const r = (x, d = 2) => (x === null || !Number.isFinite(x) ? null : Math.round(x * 10 ** d) / 10 ** d);
@@ -65,7 +66,8 @@ for (const carpeta of carpetas) {
     else { precio = p.precio * fac * tc; fechaPrecio = p.fecha; origen = `cierre Yahoo ${p.simbolo}`; }
   }
   const k = precio / precioInforme;
-  const o2 = JSON.parse(JSON.stringify(o)); // objetivo fijo: no se toca per_historico.actual
+  const o2 = JSON.parse(JSON.stringify(o)); // objetivo fijo: no se toca per_historico.actual (salvo --mover-per, solo para comparar)
+  if (moverPer && k !== 1 && o2.per_historico?.actual) o2.per_historico.actual = r(+o2.per_historico.actual * k, 2);
   const prob = ['bajista', 'base', 'alcista'].map((e) => (d.escenarios?.casos || []).find((c) => new RegExp(e, 'i').test(c.escenario || ''))?.probabilidad_pct ?? null);
   const c = calcularObjetivo12m(o2, { precio, dpa: (div / 100) * precioInforme, prob: prob.every((x) => x !== null) ? prob : null, valorIntrinseco: d.calc?.sintesis?.valor_objetivo ?? null, confianza: d.resumen?.confianza ?? null });
   if (!c?.completo) throw new Error(`${carpeta}: objetivo_12m incompleto`);
@@ -94,6 +96,7 @@ for (const carpeta of carpetas) {
     objetivo_base: c.objetivo_base, nota, objetivo_bajista: b.precio, objetivo_alcista: a.precio, multiplos: c.filas.map((x) => x.multiplo),
     probabilidades: c.probabilidades, objetivo_ponderado: c.objetivo_ponderado, rentabilidad_ponderada_pct: c.rentabilidad_ponderada_pct,
     rentabilidad_base_pct: c.rentabilidad_base_pct, senal_ponderada: c.senal, comprar_por_debajo: c.comprar_por_debajo, vender_por_encima: c.vender_por_encima,
+    divisa_cotizacion: divCot, comprar_por_debajo_cot: r(c.comprar_por_debajo / tc), vender_por_encima_cot: r(c.vender_por_encima / tc), precio_cot: r(precio / tc),
     version: c.version, tope_base: c.version === 'v3' ? REGLA_12M.v3.topeBase : null, anios_historia: o2.per_historico?.anios ?? null, v2, v3_tope_anterior: v3Anterior, revisar };
   const cambio = ant && (ant.senal !== c.senal || Math.abs((ant.rentabilidad_ponderada_pct ?? 0) - c.rentabilidad_ponderada_pct) >= 0.05);
   if (cambio) cambios.push(`${t}: ${ant.senal} ${f(ant.rentabilidad_ponderada_pct, 1)} % (precio ${f(ant.precio_ref)}) → ${c.senal} ${f(c.rentabilidad_ponderada_pct, 1)} % (precio ${f(precio)}, ${fechaPrecio})`);

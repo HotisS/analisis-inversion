@@ -21,3 +21,4 @@
 - La regla común da +17,6 % en el base a una empresa que siempre cotiza a 30-38x mientras el DCF da −23 %: el filtro de valor intrínseco ≥ precio es lo que la frena. Es la situación «calidad cara en fondo de ciclo».
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 28.2x, mínimo 21.8x, media larga 33.3x; antes v2 36x/31.3x/35.4x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Shimano - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 0,8 % (antes v3 Mantener 0,3 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 31,3x / 34,8x / 35,4x, 14,1 % Mantener; con el tope anterior del base (×1,3, 14-oct mediodía): 0,3 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

@@ -16,3 +16,4 @@
 - Con el balance de solo dos años, el ROIC incremental del motor sale sin sentido y hace fallar la prueba de capital nuevo: explicarlo y usar el ROCE publicado.
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 13.7x, mínimo 7.5x, media larga 13.8x; antes v2 11.5x/8.2x/11.5x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Watches of Switzerland - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 2,9 % (antes v3 Mantener 2,9 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 8,2x / 11,5x / 14,2x, -4,0 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

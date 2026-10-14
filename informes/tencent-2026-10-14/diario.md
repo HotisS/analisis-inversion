@@ -21,3 +21,4 @@
 - Cotizada en HKD con cuentas en RMB: `tipo_cambio` = RMB por HKD (≈0,86 en oct-26) derivado del RMB/USD y la banda del HKD; precios de cierre históricos y dividendos en HKD pasados a RMB con el tipo de cada cierre.
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 17.1x, mínimo 13x, media larga 17.8x; antes v2 16.8x/16.3x/17.5x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Tencent - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 23,8 % (antes v3 Mantener 32,3 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 9,9x / 11,7x / 15,2x, 12,1 % Mantener; con el tope anterior del base (×1,3, 14-oct mediodía): 32,3 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

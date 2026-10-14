@@ -20,3 +20,4 @@
 - Con la cuenta y el balance de agregadores, el motor calcula un capital invertido incompleto: dar el ROIC propio en `rentabilidad.comentario` y usar ese en la decisión.
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 18.7x, mínimo 9.9x, media larga 20.9x; antes v2 11.35x/7.36x/12.7x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Teleperformance - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 21,6 % (antes v3 Mantener 42,3 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 7,4x / 8,2x / 10,6x, 12,2 % Mantener; con el tope anterior del base (×1,3, 14-oct mediodía): 42,3 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

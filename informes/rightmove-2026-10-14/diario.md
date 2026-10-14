@@ -13,3 +13,4 @@
 - Las notas A-E solo traducen citas locales `[n]`: una cita `[A1]` dentro de B-E queda sin traducir. Si una nota cita otra, copia la fuente a la nota (hecho con un paso al final de BCDE_build.mjs).
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 23.6x, mínimo 20.8x, media larga 30.3x; antes v2 23.5x/18.5x/26.6x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Rightmove - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Comprar 26,7 % (antes v3 Comprar 48,1 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 12,1x / 14,2x / 18,5x, 15,2 % Comprar; con el tope anterior del base (×1,3, 14-oct mediodía): 48,1 % Comprar. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

@@ -13,3 +13,4 @@
 ## Lecciones
 - Empresas con ejercicio a septiembre en Alemania: los portales dan cierres de diciembre, no de septiembre; con solo WebSearch, el PER histórico sale del cierre de diciembre (3 meses después) y hay que decirlo.
 - Sin balance (solo activo total), el motor toma circulante 0 y la proyección mete el salto entero del circulante en el primer año: poner `nwc_pct_ventas` 0 y sumar la inversión en circulante al capex.
+- 2026-10-14: datos-v2.json y «Siemens Healthineers - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 25,4 % (antes v3 Mantener 39,7 %). Para comparar, con el tope anterior del base (×1,3, 14-oct mediodía): 39,7 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

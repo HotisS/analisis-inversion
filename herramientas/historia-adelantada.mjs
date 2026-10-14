@@ -72,8 +72,21 @@ async function procesar(carpeta) {
   const meta = d.meta || {}, mesCierre = n(meta.cierre_ejercicio_mes) || 12;
   const inicio = meta.etiqueta_ejercicio ? /inicio/i.test(meta.etiqueta_ejercicio) : mesCierre <= 3;
   // BPA real por ejercicio: el informe primero; el XBRL (cuentas.mjs) para los años que el informe no tiene.
-  const bpa = {}, origenBpa = {};
-  for (const c of d.financieros?.cuenta || []) { const y = anioDe(c.periodo); if (y && n(c.bpa) !== null) { bpa[y] = n(c.bpa); origenBpa[y] = 'informe'; } }
+  const bpa = {}, origenBpa = {}, normalizados = [];
+  const cuenta = d.financieros?.cuenta || [];
+  // Tipo efectivo «normal» de la empresa: mediana de los años con tipo entre el 10 % y el 40 %; si no hay, 25 %.
+  const tipos = cuenta.map((c) => (n(c.bai) > 0 && n(c.impuestos) !== null ? n(c.impuestos) / n(c.bai) : null)).filter((t) => t !== null && t >= 0.1 && t <= 0.4).sort((a, b) => a - b);
+  const tipoNormal = tipos.length ? tipos[Math.floor(tipos.length / 2)] : 0.25;
+  for (const c of cuenta) {
+    const y = anioDe(c.periodo); if (!y || n(c.bpa) === null) continue;
+    let v = n(c.bpa);
+    // Partidas que no se repiten (D5 de las pruebas de robustez, 14-oct-2026): tipo efectivo < 8 % o beneficio neto mayor que el
+    // EBIT (liberaciones fiscales, plusvalías). Ese año el BPA se normaliza: BAI × (1 − tipo normal) en vez del neto publicado.
+    const bai = n(c.bai), neto = n(c.beneficio_neto), imp = n(c.impuestos), ebit = n(c.ebit);
+    const raro = bai > 0 && neto > 0 && v > 0 && ((imp !== null && imp / bai < 0.08) || (ebit !== null && neto > ebit));
+    if (raro) { const vn = v * (bai * (1 - tipoNormal)) / neto; normalizados.push(`${y} (${imp !== null && imp / bai < 0.08 ? `tipo efectivo ${r1((imp / bai) * 100)} %` : 'beneficio neto > EBIT'}): ${v} → ${Math.round(vn * 100) / 100}`); v = Math.round(vn * 1000) / 1000; }
+    bpa[y] = v; origenBpa[y] = raro ? 'informe normalizado' : 'informe';
+  }
   const xbrl = `${dir}/notas/cuentas-xbrl.json`;
   if (existsSync(xbrl)) {
     try {
@@ -149,8 +162,9 @@ async function procesar(carpeta) {
   const nuevo = {
     actual: ph.actual ?? null, mediana_5a: r1(mediana(u5.map((f) => f.per))), minimo_5a: r1(Math.min(...u5.map((f) => f.per))), media_larga: r1(u8.reduce((s, f) => s + f.per, 0) / u8.length),
     base: 'adelantado', anios: u5.length,
-    excluidos: `Historia ADELANTADA (precio de cierre de cada año ÷ BPA real del año siguiente, como el PER actual), construida el ${hoy} con los cierres y el BPA del informe${filas.some((f) => /Yahoo/.test(f.origen)) ? ' y cierres de Yahoo Finance para los años sin cierre' : ''}${filas.some((f) => /XBRL/.test(f.origen)) ? ' y el BPA del XBRL del regulador (notas/cuentas-xbrl.json)' : ''}: ${detalle}. Sin años de pérdidas, PER ≥ 150x ni atípicos (a más de 3 veces o menos de un tercio de la mediana del resto, con cinco años o más); mediana y mínimo de los últimos ${u5.length} años, media larga de ${u8.length}. Contraste de base: ${contraste}.${u5.length < 5 ? ' Historia corta (menos de cinco años).' : ''} Historia al cierre anterior (v2): ${String(ph.excluidos || 'sin detalle').slice(0, 600)}`,
-    v2: { actual: ph.actual ?? null, mediana_5a: ph.mediana_5a ?? null, minimo_5a: ph.minimo_5a ?? null, media_larga: ph.media_larga ?? null, base: 'cierre' },
+    excluidos: `Historia ADELANTADA (precio de cierre de cada año ÷ BPA real del año siguiente, como el PER actual), construida el ${hoy} con los cierres y el BPA del informe${filas.some((f) => /Yahoo/.test(f.origen)) ? ' y cierres de Yahoo Finance para los años sin cierre' : ''}${filas.some((f) => /XBRL/.test(f.origen)) ? ' y el BPA del XBRL del regulador (notas/cuentas-xbrl.json)' : ''}: ${detalle}. Sin años de pérdidas, PER ≥ 150x ni atípicos (a más de 3 veces o menos de un tercio de la mediana del resto, con cinco años o más); mediana y mínimo de los últimos ${u5.length} años, media larga de ${u8.length}. Contraste de base: ${contraste}.${normalizados.length ? ` BPA normalizado con el tipo normal (${r1(tipoNormal * 100)} %) en años con partidas que no se repiten: ${normalizados.join('; ')}.` : ''}${u5.length < 5 ? ' Historia corta (menos de cinco años).' : ''} Historia al cierre anterior (v2): ${String(ph.excluidos || 'sin detalle').slice(0, 600)}`,
+    v2: ph.v2 || { actual: ph.actual ?? null, mediana_5a: ph.mediana_5a ?? null, minimo_5a: ph.minimo_5a ?? null, media_larga: ph.media_larga ?? null, base: 'cierre' },
+    bpa_normalizado: normalizados.length ? normalizados : null,
   };
   const res = { carpeta, estado: 'v3', version: 'v3', anios: u5.length, contraste, antes: { mediana: ph.mediana_5a, minimo: ph.minimo_5a, larga: ph.media_larga }, despues: { mediana: nuevo.mediana_5a, minimo: nuevo.minimo_5a, larga: nuevo.media_larga }, avisos };
   if (SIMULAR) return res;

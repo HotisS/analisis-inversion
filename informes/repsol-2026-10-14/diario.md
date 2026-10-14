@@ -13,3 +13,4 @@
 - Repsol cambió su modelo de información en 2025: el EBITDA ajustado nuevo (5.312 M en 2025) no es comparable con el CCS anterior (7.678 M en MarketScreener) ni la deuda neta (4.487 frente a 5.877 M). Fijar una base y decirlo.
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 6.5x, mínimo 3.5x, media larga 6.5x; antes v2 5.7x/4.3x/5.7x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Repsol - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Vender -17,5 % (antes v3 Vender -17,5 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 3,1x / 4,0x / 4,5x, -17,5 % Vender. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

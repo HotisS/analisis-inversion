@@ -21,3 +21,4 @@
 - **Sin circulante en el balance**: poner `nwc_pct_ventas` a 0 y llevar la inversión en circulante al capex evita que el motor genere una salida de caja artificial el primer año (salía 317 M).
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 40.4x, mínimo 30.4x, media larga 41x; antes v2 26.1x/23.5x/27.2x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Spirax Group - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 20,8 % (antes v3 Mantener 42,3 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 17,5x / 20,6x / 26,8x, 10,2 % Mantener; con el tope anterior del base (×1,3, 14-oct mediodía): 42,3 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

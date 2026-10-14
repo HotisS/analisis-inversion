@@ -14,3 +14,4 @@
 - El valor intrínseco por DCF castiga a los compuestos de crecimiento con WACC del 9 %: la regla 12 m da Mantener aunque el base supere el 12 %, porque el filtro de valor real (VI ≥ precio) falla.
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 23.1x, mínimo 18x, media larga 23x; antes v2 27.5x/18.4x/25.5x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Schneider Electric - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 11,1 % (antes v3 Mantener 11,1 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 18,4x / 23,1x / 26,0x, 11,5 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

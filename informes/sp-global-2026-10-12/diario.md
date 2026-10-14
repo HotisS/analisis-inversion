@@ -36,3 +36,4 @@
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +23,7 % → +14,8 %, base +11,7 %, señal Mantener (`revision-12m-2026-10-13.md`).
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 38.5x, mínimo 26.3x, media larga 36.8x; antes v2 37.7x/36x/36.1x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «S&P Global - 2026-10-12 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 26,6 % (antes v3 Mantener 44,4 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 20,0x / 23,5x / 30,6x, 14,8 % Mantener; con el tope anterior del base (×1,3, 14-oct mediodía): 44,4 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).
