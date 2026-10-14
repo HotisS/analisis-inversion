@@ -223,7 +223,8 @@ async function escanear() {
       }
       // Para seguir en cartera la calidad es ROIC − WACC ≥ 5 (ICE y Equifax salen por eso); la sostenibilidad «En parte»
       // no obliga a vender (Intuit se queda sin ampliar, decisión del hilo value del 14-oct).
-      if (q.dif !== null && q.dif < REGLAS.calidad_min_roic_wacc && !REGLAS.calidad_excepciones?.[p.clave]) motivos.push(`No pasa calidad (${q.txt}).`);
+      // METODO-VIGENTE.md §4 (6594d99): a menos de 0,5 puntos del umbral cuenta como «al límite» y vale para mantener.
+      if (q.dif !== null && q.dif < REGLAS.calidad_min_roic_wacc - 0.5 && !REGLAS.calidad_excepciones?.[p.clave]) motivos.push(`No pasa calidad (${q.txt}).`);
       for (const u of REGLAS.umbrales_venta.filter((u) => u.clave === p.clave)) if (x.divisa_cotizacion === u.divisa && x.precio_cot > u.precio) motivos.push(`Cruza el umbral apuntado: ${u.motivo}.`);
       fila = { tipo: 'VENTA', vertical: 'value', clave: p.clave, nombre: p.nombre, carpeta: `informes/${x.carpeta}`, simbolo: PRECIOS.precios[p.clave]?.simbolo || null,
         precio: x.precio_cot, divisa: x.divisa_cotizacion, hora_precio: x.fecha_precio === ahora.fecha ? horaPrecio : `cierre del ${fechaCorta(x.fecha_precio)}`,
@@ -466,10 +467,12 @@ async function semanal() {
   const vs = vigilados();
   const supG = vs.filter((v) => v.papel === 'suplente growth' && v.carpeta).map((v) => v.carpeta.split('/')[1]);
   const gro = supG.length ? JSON.parse(nodo('herramientas/robustez-growth.mjs', ['--precios', '--json', ...supG])) : [];
-  // 1. La cartera en la semana (en euros, con el tipo de cambio de cada día) frente al índice mundial.
+  // 1. La cartera en la semana frente al índice mundial. Si existe la vertical de seguimiento de cartera (IBKR,
+  // herramientas/cartera-real.mjs --semanal), esa parte la da ella y aquí no se duplica.
+  const conVertical = existsSync('herramientas/cartera-real.mjs');
   let antes = 0, despues = 0;
   const filas = [];
-  for (const p of CARTERA.posiciones) {
+  for (const p of conVertical ? [] : CARTERA.posiciones) {
     const q = PRECIOS.precios[p.clave];
     const sim = p.simbolo || q?.simbolo || (p.vertical === 'growth' ? gro.find((g) => g.ticker === p.clave)?.simbolo || p.clave : null);
     if (!sim) { antes += p.valor_eur || 0; despues += p.valor_eur || 0; continue; }
@@ -503,13 +506,13 @@ async function semanal() {
     if (corte && dias(corte, hoy) > 90) viejos.push(`${x.nombre} (informe de hace ${dias(corte, hoy)} días)`);
     else if (prox && corte && prox > corte && prox <= hoy) viejos.push(`${x.nombre} (resultados del ${fechaCorta(prox)} posteriores al informe)`);
   }
-  const L = [`**Informe semanal ${fechaCorta(hoy)}**`, '',
-    `| | Esta semana |`, `|---|---|`, `| Tu cartera | ${fp(carteraPct)} |`, `| Índice mundial | ${fp(indicePct)} |`, `| Diferencia | ${fp(indicePct === null ? null : r(carteraPct - indicePct))} |`, '',
-    filas.length ? `Lo que más sube: ${filas.slice(0, 2).map((x) => `${x.nombre} ${fp(x.pct)}`).join(', ')}. Lo que más baja: ${filas.slice(-2).reverse().map((x) => `${x.nombre} ${fp(x.pct)}`).join(', ')}.` : '', '',
+  const L = [conVertical ? '**Señales, candidatas y método de la semana**' : `**Informe semanal ${fechaCorta(hoy)}**`, '',
+    ...(conVertical ? [] : [`| | Esta semana |`, `|---|---|`, `| Tu cartera | ${fp(carteraPct)} |`, `| Índice mundial | ${fp(indicePct)} |`, `| Diferencia | ${fp(indicePct === null ? null : r(carteraPct - indicePct))} |`, '']),
+    !conVertical && filas.length ? `Lo que más sube: ${filas.slice(0, 2).map((x) => `${x.nombre} ${fp(x.pct)}`).join(', ')}. Lo que más baja: ${filas.slice(-2).reverse().map((x) => `${x.nombre} ${fp(x.pct)}`).join(', ')}.` : '', '',
     `Señales de la semana: ${semana.length ? semana.map((x) => `${x.tipo === 'COMPRA' ? 'comprar' : 'vender'} ${x.nombre} (${fechaCorta(x.fecha)})`).join(', ') : 'ninguna'}. ${e ? `Desde el principio: ${e.n} emitidas, ${e.bien} mejor que el índice.` : 'Todavía no hay señales emitidas que medir.'}`,
     `Lista de espera: ${espera.map((x) => `${x.nombre} ${x.precio ? `${fPrecio(x.precio)} ${x.divisa} frente a límite ${fPrecio(x.limite)} (${x.falta <= 0 ? 'dentro' : `le falta bajar ${f(x.falta)} %`})` : 'sin precio'}`).join('; ') || 'vacía'}.`,
     `Suplentes growth bajo su precio de compra: ${sup.filter((x) => x.dentro).map((x) => `${x.nombre} (${fp(x.pond)})`).join(', ') || 'ninguno'}.`,
-    `Liquidez libre: ${f(CARTERA.liquidez_libre_eur, 0)} EUR${ociosa ? '. Lleva 3 meses o más sin destino: toca pasarla a XEON (regla de liquidez).' : '. No toca XEON (hace falta ≥ 3.000 EUR ociosos durante 3 meses).'}`, '',
+    conVertical ? '' : `Liquidez libre: ${f(CARTERA.liquidez_libre_eur, 0)} EUR${ociosa ? '. Lleva 3 meses o más sin destino: toca pasarla a XEON (regla de liquidez).' : '. No toca XEON (hace falta ≥ 3.000 EUR ociosos durante 3 meses).'}`, '',
     `Repaso del método: ${rob.length} informes value probados al precio de hoy (${Object.entries(ver).map(([k, v]) => `${v} ${k.toLowerCase()}`).join(', ')}). ${viejos.length ? `Se han quedado viejos ${viejos.length} y conviene ponerlos en la cola: ${viejos.join('; ')}.` : 'Ningún informe se ha quedado viejo.'}`];
   const m = L.filter((x, i, a) => !(x === '' && a[i - 1] === '')).join('\n').trim();
   writeFileSync(`${E}semanal-ultimo.md`, m + '\n');
