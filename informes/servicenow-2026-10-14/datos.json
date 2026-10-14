@@ -1,0 +1,4347 @@
+{
+  "meta": {
+    "fecha_corte": "2026-10-14",
+    "divisa": "USD",
+    "divisa_cotizacion": "USD",
+    "tipo_cambio": 1,
+    "unidades": "millones",
+    "cierre_ejercicio_mes": 12,
+    "etiqueta_ejercicio": "fin",
+    "normas_contables": "US GAAP",
+    "formato_cuenta": "funcion",
+    "limitaciones": "Entorno de nube con acceso solo a la búsqueda web: no se han podido abrir el 10-K, los 10-Q ni la web de inversores, ni usar herramientas/bolsa.mjs. Las cifras salen de extractos de búsqueda de documentos de la SEC y de agregadores (Stock Analysis, Macrotrends, TipRanks, Simply Wall St), con la URL como fuente; los ingresos trimestrales de 2024-2025 cuadran con la suma anual. Acciones y precios ajustados por el desdoblamiento de 5 por 1 de diciembre de 2025 (los precios de cierre anteriores, divididos entre 5). Balance incompleto: faltan 2021 y la caja y el patrimonio de 2024; la caja e inversiones de 2025 (9.700 M USD) es una estimación propia derivada del 10-Q del 2T26, por lo que el ROIC del motor de 2025 es orientativo. Sin beta propia: se usa 1,25, la de los editores de software del repositorio (Salesforce 1,24, Adobe 1,26). Comparables a 9-oct-2026 reutilizados de los informes de Adobe y Salesforce. El consenso de BPA disponible es no GAAP y no se usa en los múltiplos.",
+    "controles_explicados": [
+      {
+        "control": "Tipo impositivo efectivo razonable (2023)",
+        "explicacion": "En 2023 la empresa liberó la provisión de valoración de sus activos por impuestos diferidos: un ingreso fiscal de 721 M USD que deja el tipo en negativo. No se proyecta; el DCF usa el 22 %, el tipo de 2025."
+      },
+      {
+        "control": "Múltiplos LTM y NTM de cada comparable coherentes",
+        "explicacion": "Workday excluye de su EBITDA ajustado más partidas que la remuneración en acciones (reestructuración); es la tabla común del repositorio a 9-oct-2026 y los comparables pesan solo un 10 %."
+      },
+      {
+        "control": "Objetivo 12 m frente al consenso",
+        "explicacion": "Nuestro base (176,69 USD) supera en un 18,3 % el objetivo medio de los analistas: sale de mantener el PER adelantado actual sobre un BPA GAAP que crece un 28 % en 2028 por apalancamiento operativo; está explicado en la diferencia con el consenso y no se corrige."
+      }
+    ],
+    "huecos": [
+      {
+        "seccion": "balance",
+        "campo": "historico 2021 y partidas de 2024 (caja, patrimonio)",
+        "tipo": "Núcleo",
+        "intentos": "1) 10-K 2024 en EDGAR (la red solo deja buscar; el extracto solo daba el total del balance); 2) agregadores (Stock Analysis, Finboard, opencapital) por búsqueda: cifras contradictorias; 3) derivar del 10-Q siguiente: no aparecía en los extractos",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "balance",
+        "campo": "caja e inversiones a 31-dic-2025",
+        "tipo": "Núcleo",
+        "intentos": "1) 10-K 2025 (solo el principio del documento en el extracto); 2) Simply Wall St y Stock Analysis por búsqueda: sin desglose; 3) derivarla del 10-Q del 2T26 (efectivo 2.503 + 1.215 de disminución del semestre = 3.718 M de efectivo, sin las inversiones); derivación: inversiones de ≈4.200 M a jun-26 más ≈1.800 M de ventas netas de inversiones del semestre (salidas de inversión de 7.105 M frente a ≈8.900 M de Armis, Veza y capex) = ≈6.000 M; caja + inversiones ≈9.700 M",
+        "decision": "Calculado y marcado como estimación"
+      },
+      {
+        "seccion": "flujos",
+        "campo": "flujos de 2021 y adquisiciones netas de caja 2022-2025",
+        "tipo": "Complemento",
+        "intentos": "1) 10-K 2021-2025 por búsqueda; 2) ARS 2024 y 2025 (solo flujo operativo, capex y recompras en los extractos); 3) agregadores de flujos (Finboard, Stock Analysis): sin la línea de adquisiciones",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "negocio",
+        "campo": "geografias",
+        "tipo": "Complemento",
+        "intentos": "1) 10-K 2025, nota de ingresos por geografía; 2) presentaciones trimestrales; 3) prensa: sin cifras en los extractos",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "balance",
+        "campo": "rating y vencimientos",
+        "tipo": "Complemento",
+        "intentos": "1) folleto 424B2 de mayo de 2026 (solo el encabezado); 2) prensa de la emisión; 3) nota de deuda del 10-Q del 2T26: sin calendario en los extractos",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sector",
+        "campo": "serie y TCAC del mercado con dos fuentes",
+        "tipo": "Núcleo",
+        "intentos": "1) presentación del día del inversor 2026 (no accesible: solo búsqueda web); 2) Gartner/IDC de ITSM por búsqueda: sin cifras en los extractos; 3) prensa del día del inversor: solo el mercado accesible de la empresa (600.000 M USD)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "competencia",
+        "campo": "cuota_pct",
+        "tipo": "Núcleo",
+        "intentos": "1) Gartner Market Share ITSM; 2) IDC; 3) derivar sobre el mercado accesible de la empresa (≈2,7 % de 600.000 M), que no es un mercado homogéneo",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "esg",
+        "campo": "calificaciones",
+        "tipo": "Complemento",
+        "intentos": "1) MSCI ESG por búsqueda; 2) Sustainalytics; 3) informe de impacto de la empresa: no buscado por presupuesto de búsquedas",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "consejo completo, comisiones y consejero coordinador",
+        "tipo": "Núcleo",
+        "intentos": "1) DEF 14A 2026 en EDGAR (solo la carta en el extracto; la red no abre la SEC); 2) Boardroom Alpha: orden del día sin nombres; 3) web de inversores: no accesible",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "remuneracion_ceo y resultado del voto de 2026",
+        "tipo": "Complemento",
+        "intentos": "1) tabla resumen de remuneración del DEF 14A 2026; 2) 8-K de resultados de la junta de mayo de 2026; 3) prensa: sin cifras en los extractos",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "bolsa",
+        "campo": "beta, volatilidad, caída máxima y rentabilidades frente al índice",
+        "tipo": "Complemento",
+        "intentos": "1) herramientas/bolsa.mjs (Yahoo; la red no lo permite en la nube); 2) Yahoo key statistics por búsqueda: sin la beta en el extracto; 3) Fintel da 0,30 sin ventana ni fecha (no fiable)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "consenso",
+        "campo": "BPA GAAP y EBITDA del consenso",
+        "tipo": "Complemento",
+        "intentos": "1) MarketScreener (solo abre con WebFetch, no disponible); 2) Stock Analysis: BPA no GAAP; 3) Chartmill y WallStreetZen: BPA no GAAP",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "transacciones",
+        "campo": "3-5 operaciones del sector con múltiplo",
+        "tipo": "Complemento",
+        "intentos": "1) búsqueda de las compras de ServiceNow (Armis con múltiplo); 2) prensa de operaciones del sector: no se buscaron más por el presupuesto de búsquedas compartido; 3) informes del repositorio: sin tabla de transacciones de software con múltiplos comprobados",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sentimiento",
+        "campo": "Reddit y Stocktwits",
+        "tipo": "Complemento",
+        "intentos": "1) búsqueda de hilos de Reddit sobre NOW; 2) Stocktwits; 3) búsqueda combinada de octubre de 2026: sin resultados de foros de particulares (la red solo deja buscar, no abrir las API)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "rentabilidad",
+        "campo": "ROIC tras Armis con balance publicado",
+        "tipo": "Núcleo",
+        "intentos": "1) 10-Q del 2T26 (patrimonio no disponible en los extractos); 2) agregadores de balance trimestral: sin dato de junio; 3) estimación propia con el patrimonio de 2025 más el beneficio y la remuneración en acciones del semestre",
+        "decision": "Calculado y marcado como estimación"
+      }
+    ]
+  },
+  "identificacion": {
+    "nombre": "ServiceNow, Inc.",
+    "nombre_corto": "ServiceNow",
+    "ticker": "NOW",
+    "isin": "US81762P1021",
+    "mercado": "NYSE",
+    "indice_referencia": "S&P 500",
+    "pais": "Estados Unidos",
+    "pais_iso": "US",
+    "sector": "Tecnologías de la información",
+    "industria": "Software",
+    "sede": "Santa Clara (California)",
+    "fundacion": "2004",
+    "empleados": null,
+    "web": "www.servicenow.com",
+    "precio": 138.61,
+    "fecha_precio": "2026-10-13",
+    "acciones": 1045,
+    "capitalizacion_publicada": 143300,
+    "free_float_pct": null,
+    "max_52s": 192.97,
+    "min_52s": 81.24,
+    "volumen_medio_diario": null,
+    "proximos_resultados": "2026-10-28"
+  },
+  "resumen": {
+    "recomendacion": "Mantener",
+    "conviccion": "Baja",
+    "justificacion_recomendacion": null,
+    "horizonte": "12 meses",
+    "sintesis": "**La recomendación y por qué.** Mantener, con convicción baja. El objetivo a 12 meses es de 163,06 USD (+17,6 % ponderado; +27,5 % en el base), pero el valor intrínseco es de 76,82 USD, un 44,6 % por debajo del precio de 138,61 USD, y el objetivo medio de los analistas (149,38 USD) queda entre los dos. La regla de compra exige las tres cosas y falla la del valor real: el objetivo a 12 meses solo se cumple si el mercado sigue pagando 58,7 veces el BPA GAAP. La convicción es baja, aunque el motor sugiere Media, porque los datos de núcleo salen de extractos de búsqueda (balance incompleto, caja de 2025 estimada) y porque las dos lecturas, la de 12 meses y la intrínseca, apuntan en sentidos opuestos; subiría con un 3T26 (28-oct) con cRPO por encima del 21 % y con las cuentas primarias comprobadas.\n\n**El negocio.** Plataforma de flujos de trabajo con costes de cambio altos, 97 % de ingresos por suscripción cobrados por adelantado y 29.000 M USD de contratos pendientes [25]. El ROIC orgánico es muy alto (45,2 % en 2025, orientativo), pero tras pagar 7.750 M por Armis cae a cerca del 9 %, por debajo del WACC del 11,70 %. Sostenibilidad: **En parte**: el crecimiento no necesita capital y la base solo llega al plan de la propia empresa (≈30.000 M en 2030), pero la IA amenaza el cobro por puesto y lo comprado aún no rinde.\n\n**Finanzas.** Ventas de 13.278 M USD en 2025 (+20,9 %) y 14.732 M en los últimos 12 meses; margen EBIT GAAP del 13,7 % en 2025, hundido al 4 % en el 2T26 por Armis [8]. La caja libre de la empresa (4.636 M, 35 % de las ventas) no resta 1.955 M de remuneración en acciones [3]. Deuda neta de 832 M tras emitir 4.000 M en bonos y 2.100 M en pagarés.\n\n**Equipo y gobierno.** McDermott ha triplicado los ingresos y su contrato se ha ampliado hasta 2030, pero preside el consejo y dirige la empresa a la vez. Sin ventas de directivos en 2026 [28, 48].\n\n**Valoración.** El DCF da 78,70 USD y, con la prima de riesgo que pide hoy el mercado, 97,64 USD; los comparables, 42,60 USD por EV/EBITDA. El DCF inverso es la tesis: el precio exige crecer un 19,7 % anual de 2027 a 2035, frente al 12,4 % de nuestro base y a la senda de mediados de la decena que dibuja la propia empresa para 2030, y solo rinde un 8,2 % anual. Coincidimos con el consenso en ventas; la diferencia está en el múltiplo que se paga por ellas.\n\n**Riesgos y catalizadores.** El mayor riesgo es de múltiplo: si el crecimiento baja del 20 %, el mercado puede valorarla como a SAP o Salesforce, como en la primavera de 2026 (81 USD); el bajista a 12 meses es de 106,79 USD (−23 %) y el intrínseco bajista de 43,13 USD. El segundo, que los agentes de IA reduzcan los puestos cobrados. Catalizadores: resultados del 3T26 el 28-oct y guía de 2027 en enero. Los foros pasan del pánico a un tono dividido con sesgo alcista, en línea con los analistas.\n\n**Qué cambiaría la decisión.** Comprar por debajo de 76,82 USD, donde coinciden el valor intrínseco y la regla a 12 meses; vender o reducir por encima de 181,18 USD. Bajaríamos a Vender si el cRPO crece menos del 18 % dos trimestres seguidos; subiríamos el valor si el margen GAAP pasa del 20 % en 2027 con crecimiento del 18 %.",
+    "tesis": "ServiceNow es el sistema de flujos de trabajo de la gran empresa: empezó en la gestión de servicios de TI, donde es líder, y se ha extendido a recursos humanos, atención al cliente y, con Armis, a la seguridad. Factura 14.732 M USD en los últimos 12 meses, crece un 24 % (23 % a divisa constante en suscripciones) y cobra por adelantado, lo que le da una caja libre del 35 % de las ventas y un ROIC orgánico muy alto [3, 8].\n\nEl precio de 138,61 USD (145.679 M de valor empresa, 56,9 veces el EBITDA GAAP) descuenta, según el DCF inverso, un crecimiento del 19,7 % anual durante nueve años más con márgenes del 33 %, o un margen del 54,8 % con nuestro crecimiento. Nuestro DCF, que llega al plan de la empresa para 2030, da 78,70 USD.\n\nEl mercado acierta en que ServiceNow es la mejor franquicia del software empresarial y que su crecimiento aguanta pese al miedo a la IA. Se equivoca, a nuestro juicio, en la duración: para invertir hay que creer que crecerá cerca del 20 % hasta 2035 y que Armis justificará 23 veces ingresos. A 12 meses el múltiplo puede sostenerse (+17,6 %), pero sin margen de seguridad.",
+    "vision_diferencial": {
+      "mercado_descuenta": "Que ServiceNow seguirá creciendo cerca del 20 % durante casi una década y que la IA es una oportunidad neta, no una amenaza: por eso paga 58,7 veces el BPA GAAP del próximo año y 56,9 veces el EBITDA, el doble que los demás editores de software.",
+      "nuestra_vision": "El crecimiento seguirá alto en 2027-2028 (18,5 % y 17 %), en línea con el consenso, pero bajará a mediados de la decena en 2030, como dice la propia empresa; con tipos del 5,2 % eso vale unos 79-98 USD por acción.",
+      "por_que": "La propia guía de 2030 implica desaceleración; el ROIC tras Armis ha caído por debajo del coste de capital; y la acción ya demostró en 2026 (81 USD) cuánto pierde cuando el mercado duda del crecimiento."
+    },
+    "a_favor": [
+      "**Crecimiento que acelera**: suscripciones +24,5 % en el 2T26 (+23 % a divisa constante), 150 pb sobre la guía [8].",
+      "**Ingresos visibles**: cRPO de 13.200 M (+21 %) y 29.000 M de contratos pendientes [19, 25].",
+      "**Caja anticipada**: flujo operativo de 5.444 M en 2025 frente a 1.748 M de beneficio [3].",
+      "**Plan creíble a 2030**: ≈30.000 M de suscripciones, el doble que en 2026 [50].",
+      "**Balance todavía holgado**: deuda neta de 832 M tras pagar Armis."
+    ],
+    "en_contra": [
+      "**Valoración exigente**: el precio pide un 19,7 % de crecimiento anual hasta 2035; el DCF da 78,70 USD.",
+      "**Armis cara**: 7.750 M a unas 23 veces ingresos; el ROIC cae a cerca del 9 % [34].",
+      "**Beneficio GAAP bajo**: BPA de 0,29 USD en el 2T26 y remuneración en acciones del 14,7 % de las ventas [2, 20].",
+      "**Riesgo de la IA sobre el cobro por puesto**, origen de la caída del 60 % desde máximos en 2026 [37].",
+      "**Gobierno concentrado**: presidente y primer ejecutivo en la misma persona hasta 2030 [28]."
+    ],
+    "que_vigilar": "La tesis depende de que el crecimiento de las suscripciones se mantenga por encima del 18 % a divisa constante en 2027 mientras el margen GAAP sube. La señal de que no se cumple: el cRPO por debajo del 18 % dos trimestres seguidos, o renovaciones con menos puestos que la empresa no compense con el cobro por consumo.",
+    "cambiaria_recomendacion": [
+      "Si el precio baja de 76,82 USD (valor intrínseco), pasaríamos a Comprar con los datos primarios comprobados.",
+      "Si el precio supera 181,18 USD (ponderada a 12 meses ≤ −10 %), pasaríamos a Vender.",
+      "Si el cRPO crece menos del 18 % a divisa constante dos trimestres seguidos, rebajaríamos el base y probablemente a Vender.",
+      "Si el margen operativo GAAP supera el 20 % en 2027 con un crecimiento ≥ 18 %, subiríamos el caso base."
+    ],
+    "kpis_seguimiento": [
+      {
+        "kpi": "Crecimiento del cRPO a divisa constante",
+        "nivel_actual": "21,5 % (2T26)",
+        "umbral_alerta": "< 18 %",
+        "por_que": "Indicador adelantado de las suscripciones."
+      },
+      {
+        "kpi": "Margen operativo GAAP",
+        "nivel_actual": "4 % (2T26), 13,7 % (2025)",
+        "umbral_alerta": "< 12 % en 2027",
+        "por_que": "Mide si Armis y la remuneración en acciones dejan subir el beneficio real."
+      },
+      {
+        "kpi": "Remuneración en acciones sobre ventas",
+        "nivel_actual": "14,7 % (2025)",
+        "umbral_alerta": "> 15 %",
+        "por_que": "Coste real que el no GAAP oculta."
+      },
+      {
+        "kpi": "PER adelantado GAAP",
+        "nivel_actual": "58,7x",
+        "umbral_alerta": "< 45x sin cambio de crecimiento",
+        "por_que": "Señal de que el mercado deja de pagar la excepción."
+      }
+    ],
+    "confianza": "Baja"
+  },
+  "historia": {
+    "resumen": "Fred Luddy, antiguo director de tecnología de Peregrine Systems, fundó la empresa en 2004 como Glidesoft para llevar a la nube la gestión de servicios de TI (ITSM). Salió a bolsa en la NYSE en 2012. Bajo Frank Slootman (2011-2017) y John Donahoe (2017-2019) pasó de herramienta del departamento de TI a plataforma de flujos de trabajo para recursos humanos, atención al cliente y seguridad. Bill McDermott, que venía de dirigir SAP, es primer ejecutivo desde noviembre de 2019 y presidente desde 2022. En 2023-2026 la empresa ha girado hacia la IA generativa (Now Assist) y ha hecho sus mayores compras: Moveworks (2025) y Armis (2026). En diciembre de 2025 desdobló la acción de 5 por 1 [2, 28].",
+    "hitos": [
+      {
+        "anio": "2004",
+        "hito": "Fundación (Glidesoft) por Fred Luddy en San Diego [2]."
+      },
+      {
+        "anio": "2012",
+        "hito": "Salida a bolsa en la NYSE (NOW) [2]."
+      },
+      {
+        "anio": "2019",
+        "hito": "Bill McDermott, ex primer ejecutivo de SAP, nuevo primer ejecutivo [28]."
+      },
+      {
+        "anio": "2023",
+        "hito": "Lanzamiento de Now Assist (IA generativa) y primer programa de recompra de acciones [28]."
+      },
+      {
+        "anio": "2025",
+        "hito": "Compra de Moveworks (≈2.850 M USD) y desdoblamiento de 5 por 1 en diciembre [28, 29]."
+      },
+      {
+        "anio": "2026",
+        "hito": "Compra de Armis (7.750 M USD, cerrada el 20-abr) y de Veza; primeras emisiones de bonos importantes (4.000 M) y programa de pagarés [29, 30]."
+      },
+      {
+        "anio": "2026",
+        "hito": "Día del inversor (4-may): objetivo de unos 30.000 M USD de suscripciones en 2030 [31]."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "negocio": {
+    "segmentos": [
+      {
+        "nombre": "Suscripciones",
+        "descripcion": "Plataforma Now (ITSM, ITOM, HR, CSM, Creator, seguridad y riesgo) en la nube, con la IA de Now Assist y, desde abril de 2026, Armis (ciberseguridad de activos conectados). Ingresos de 2025: estimación propia, suma de los trimestres reconstruidos con los crecimientos publicados (4T25 3.466 M [10]; 2T26 +24,5 % y 1T26 +22 % sobre el año anterior [8, 9]).",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2025",
+            "ingresos": 12883,
+            "resultado": null
+          }
+        ]
+      },
+      {
+        "nombre": "Servicios profesionales y otros",
+        "descripcion": "Implantación, formación y consultoría; margen bruto negativo o casi nulo, se presta como apoyo a la venta.",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2025",
+            "ingresos": 395,
+            "resultado": null
+          }
+        ]
+      }
+    ],
+    "geografias": [],
+    "geografias_criterio": "destino",
+    "kpis": [
+      {
+        "kpi": "Ingresos por suscripción del trimestre (M USD)",
+        "valor_anterior": "3.113 (2T25)",
+        "valor_actual": "3.877 (2T26)",
+        "variacion": "+24,5 % (+23 % a divisa constante)",
+        "comentario": "1,5 puntos por encima de lo alto de la guía; Armis aporta desde el 20-abr-2026 [8, 20]."
+      },
+      {
+        "kpi": "Obligaciones de ejecución pendientes a 12 meses, cRPO (M USD)",
+        "valor_anterior": "≈10.900 (2T25)",
+        "valor_actual": "13.200 (2T26)",
+        "variacion": "+21 % (+21,5 % a divisa constante)",
+        "comentario": "El mejor indicador adelantado de las suscripciones del próximo año [19]."
+      },
+      {
+        "kpi": "Obligaciones de ejecución pendientes totales, RPO (M USD)",
+        "valor_anterior": "≈24.000 (2T25)",
+        "valor_actual": "≈29.000 (2T26)",
+        "variacion": "+21 %",
+        "comentario": "Contratos firmados aún no facturados [25]."
+      },
+      {
+        "kpi": "Margen operativo no GAAP del trimestre",
+        "valor_anterior": "29,5 % (guía 2T26 ≈ 26,5 %)",
+        "valor_actual": "29,5 % (2T26)",
+        "variacion": "+300 pb sobre la guía",
+        "comentario": "El GAAP fue del 4 % por la amortización de Armis y Veza y los costes de integración [18, 26]."
+      },
+      {
+        "kpi": "Flujo de caja libre (definición de la empresa, M USD)",
+        "valor_anterior": "3.455 (2024)",
+        "valor_actual": "4.636 (2025)",
+        "variacion": "+34 %",
+        "comentario": "Margen del 35 %; la empresa suma los costes de adquisiciones y no resta la remuneración en acciones (1.955 M en 2025) [3]."
+      }
+    ],
+    "confianza": "Media",
+    "descripcion": "ServiceNow vende por suscripción la plataforma Now, una base de datos y un motor de flujos de trabajo únicos sobre los que corren aplicaciones para TI (gestión de servicios y de operaciones, su origen), empleados (recursos humanos), clientes (atención y servicio de campo), creadores (desarrollo de baja programación) y, desde 2026, seguridad de activos conectados (Armis) e identidades (Veza). El cliente tipo es una gran empresa o administración: el grueso de los ingresos viene de clientes con más de 1 M USD de valor anual de contrato. Vende directamente y con integradores (Accenture, Deloitte, IBM). La IA generativa (Now Assist) y los agentes se venden como paquetes Pro Plus y, cada vez más, por consumo [2, 31].",
+    "como_gana_dinero": "Casi todo es recurrente: las suscripciones son el 97 % de los ingresos y se facturan por adelantado, en general por años, lo que deja 8.310 M USD de ingresos diferidos al cierre de 2025 y hace que la caja vaya por delante del beneficio [16]. El margen bruto de las suscripciones ronda el 81 % [8]. El beneficio GAAP es bajo frente al no GAAP porque la remuneración en acciones (1.955 M USD en 2025, el 14,7 % de las ventas) y la amortización de las compras se restan en las cuentas [2]. Hay apalancamiento operativo: el margen operativo no GAAP pasó del ≈27 % de 2023 al ≈31 % de 2025 [10]. Riesgo del modelo: una parte se cobra por puesto de trabajo, y los agentes de IA pueden reducir puestos; la empresa dice que la mitad del negocio nuevo ya no se cobra así [32].",
+    "clientes": "Base de grandes empresas con contratos de varios años y una tasa de renovación que la empresa sitúa históricamente en torno al 98 % (dato de sus presentaciones; no se ha podido comprobar la cifra de 2025 en esta revisión). No hay concentración relevante en un cliente. El poder de precios se ve en el crecimiento del 21-24 % del cRPO y las suscripciones con un crecimiento de clientes mucho menor, y en los paquetes Pro Plus de IA con sobreprecio [19, 31]. Los riesgos: la administración federal de EE. UU. (recortes de gasto en 2025-2026) y los aplazamientos de contratos en Oriente Medio por el conflicto regional (≈75 pb en el 1T26) [21]."
+  },
+  "sector": {
+    "definicion": "El mercado relevante es el software de flujos de trabajo empresariales en la nube: gestión de servicios de TI y operaciones (donde ServiceNow es líder), servicio al cliente y al empleado, desarrollo de baja programación, gestión de riesgos y, tras Armis, seguridad de activos. La empresa cifra su mercado accesible en unos 600.000 M USD (Knowledge 2026), frente a unos 275.000 M de estimaciones anteriores; es una cifra de la propia empresa, amplia y no contrastada con una segunda fuente independiente en esta revisión [31, 33].",
+    "tamano": "≈600.000 M USD de mercado accesible según la empresa (2026) [33]",
+    "unidad_serie": "millones de USD",
+    "serie": [],
+    "tcac_historico_pct": null,
+    "tcac_previsto_pct": null,
+    "cr5_pct": null,
+    "estructura": "Moderadamente concentrada",
+    "drivers": [
+      {
+        "driver": "IA generativa y agentes en procesos internos",
+        "efecto": "+/−",
+        "horizonte": "Estructural",
+        "evidencia": "Now Assist duplica su valor de contrato cada año y la empresa subió el objetivo de valor de contrato nuevo de IA de 2026 de 1.000 a 1.500 M USD; a la vez, menos puestos de trabajo pueden reducir licencias [31, 32]."
+      },
+      {
+        "driver": "Consolidación de proveedores de software",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Las grandes empresas reducen proveedores y suben de paquete en la plataforma que ya usan: los clientes de más de 1 M USD de valor anual crecen más que la base [2]."
+      },
+      {
+        "driver": "Ciberseguridad y activos conectados",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Armis añade un mercado nuevo; la compra se pagó a unas 23 veces sus ingresos [34]."
+      },
+      {
+        "driver": "Presupuestos de TI y ciclo económico",
+        "efecto": "+/−",
+        "horizonte": "Cíclico",
+        "evidencia": "Contratos aplazados en Oriente Medio (75 pb en el 1T26) y recortes federales en EE. UU. [21]."
+      },
+      {
+        "driver": "Tipos de interés altos",
+        "efecto": "−",
+        "horizonte": "Cíclico",
+        "evidencia": "El bono a 10 años de EE. UU. en el 5,2 % penaliza los múltiplos de las empresas de crecimiento; el índice de software cayó un 25,7 % en el 1T26 [35]."
+      }
+    ],
+    "porter": [
+      {
+        "fuerza": "Rivalidad",
+        "intensidad": 3,
+        "justificacion": "Compite con Microsoft, Salesforce, SAP, Workday y Atlassian en los bordes, pero en gestión de servicios de TI para grandes empresas apenas tiene rival de su tamaño [29, 36]."
+      },
+      {
+        "fuerza": "Poder de los clientes",
+        "intensidad": 2,
+        "justificacion": "Clientes grandes que negocian, pero con costes de cambio altos (procesos críticos sobre su base de datos) y contratos plurianuales [2]."
+      },
+      {
+        "fuerza": "Poder de los proveedores",
+        "intensidad": 2,
+        "justificacion": "Sus centros de datos y la nube pública (Azure, AWS) son sustituibles; los modelos de lenguaje los compra a varios proveedores [2]."
+      },
+      {
+        "fuerza": "Amenaza de entrada",
+        "intensidad": 3,
+        "justificacion": "Empresas nativas de IA ofrecen agentes que automatizan tareas sin la plataforma; la escala de integraciones y datos de ServiceNow es la barrera [32, 37]."
+      },
+      {
+        "fuerza": "Amenaza de sustitutos",
+        "intensidad": 4,
+        "justificacion": "El temor central del mercado: que los agentes de IA sustituyan flujos de trabajo y licencias por puesto; UBS bajó la recomendación en 2026 por la competencia de las nativas de IA [37]."
+      }
+    ],
+    "ciclo": {
+      "posicion": "Expansión",
+      "comentario": "La demanda de software empresarial sigue creciendo, pero en 2026 el mercado ha recalificado todo el software por el miedo a la IA: el índice de SaaS cayó un 25,7 % en el 1T26 y ServiceNow llegó a caer un 60 % desde máximos [35, 37]. En 2022, con la subida de tipos, la acción cayó un 40 % sin que el crecimiento bajara del 20 %; en 2020 siguió creciendo un 30 %. Hoy el crecimiento de las suscripciones (23 % a divisa constante) no muestra contracción [8]."
+    },
+    "regulacion": "La regulación de IA (Ley de IA de la UE, aplicable por fases desde 2025-2026) y de datos (Data Act europea desde septiembre de 2025) exige gobierno de los modelos y portabilidad de datos; ServiceNow lo vende como oportunidad (gobierno de IA en la plataforma). En EE. UU. depende de las autorizaciones FedRAMP para la administración federal [2].",
+    "tendencias": "La tendencia que decide es el paso del cobro por puesto al cobro por consumo y por resultado con agentes de IA. ServiceNow se ha posicionado como «torre de control» de agentes propios y ajenos y ha comprado Moveworks (asistentes) y Armis (seguridad) para ampliar el perímetro [31, 34]. Gana si los clientes usan su base de datos y flujos como capa de gobierno; pierde si los agentes de los grandes modelos actúan directamente sobre los sistemas de registro sin pasar por ella [32, 37].",
+    "confianza": "Baja"
+  },
+  "competencia": {
+    "cuota_pct": null,
+    "posicion": "N.º 1 mundial en gestión de servicios de TI para grandes empresas; en servicio al cliente (CSM) es décimo proveedor de CRM en 2024, con +34 % [36, 38].",
+    "competidores": [
+      {
+        "nombre": "Microsoft",
+        "pais": "EE. UU.",
+        "ticker": "MSFT",
+        "ingresos": 331839,
+        "cuota_pct": null,
+        "margen_ebit_pct": 46.8,
+        "comentario": "Ejercicio a junio de 2026: 331.839 M USD y 155.237 M USD de resultado de explotación del grupo [39]. Compite con Dynamics, Power Platform y Copilot Studio (agentes)."
+      },
+      {
+        "nombre": "Salesforce",
+        "pais": "EE. UU.",
+        "ticker": "CRM",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Rival en servicio al cliente y agentes (Agentforce); también ha comprado capacidades de datos (Informatica) [38]."
+      },
+      {
+        "nombre": "SAP",
+        "pais": "Alemania",
+        "ticker": "SAP",
+        "ingresos": 41558,
+        "cuota_pct": null,
+        "margen_ebit_pct": 26.1,
+        "comentario": "2025: 36.800 M EUR de ingresos (41.558 M USD) y 9.617 M EUR de resultado de explotación [40]. Compite en flujos de recursos humanos y en agentes sobre su ERP."
+      },
+      {
+        "nombre": "Workday",
+        "pais": "EE. UU.",
+        "ticker": "WDAY",
+        "ingresos": 9552,
+        "cuota_pct": null,
+        "margen_ebit_pct": 7.5,
+        "comentario": "Ejercicio a enero de 2026: 9.552 M USD y 721 M USD de resultado de explotación [41]. Compite en el servicio al empleado y en recursos humanos."
+      },
+      {
+        "nombre": "Oracle",
+        "pais": "EE. UU.",
+        "ticker": "ORCL",
+        "ingresos": 67357,
+        "cuota_pct": null,
+        "margen_ebit_pct": 30.6,
+        "comentario": "Ejercicio a mayo de 2026: 67.357 M USD y 20.606 M USD de resultado de explotación [42]. Compite por el presupuesto de aplicaciones y de infraestructura de nube."
+      },
+      {
+        "nombre": "Atlassian",
+        "pais": "EE. UU.",
+        "ticker": "TEAM",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Jira Service Management es la alternativa más barata en gestión de servicios de TI para empresas medianas; no se han comprobado sus cifras en esta revisión."
+      }
+    ],
+    "foso": {
+      "veredicto": "Amplio",
+      "tendencia": "Estable",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 2,
+          "evidencia": "Ecosistema de integradores y desarrolladores sobre la plataforma; no es un mercado de dos lados."
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 5,
+          "evidencia": "Procesos críticos de TI, recursos humanos y servicio sobre una base de datos única; contratos plurianuales y 29.000 M USD de obligaciones pendientes [24]."
+        },
+        {
+          "fuente": "Intangibles (marca, patentes, licencias)",
+          "puntuacion": 3,
+          "evidencia": "Marca de referencia en ITSM; autorizaciones públicas (FedRAMP) que tardan años."
+        },
+        {
+          "fuente": "Ventaja en costes",
+          "puntuacion": 2,
+          "evidencia": "Margen bruto de suscripciones del 81 %, inferior al de Microsoft pero sin ventaja de coste propia [19]."
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 3,
+          "evidencia": "Líder con mucha distancia en ITSM de grandes empresas; pocos rivales con su base instalada."
+        }
+      ]
+    },
+    "amenazas": "La amenaza principal es la IA: agentes de proveedores de modelos o de Microsoft que resuelvan incidencias y peticiones sin pasar por la plataforma, o que reduzcan los puestos por los que se cobra. Probabilidad media a cinco años; hasta ahora el crecimiento no lo refleja (suscripciones +23 % a divisa constante en el 2T26) [8, 37]. Segunda: integrar compras grandes (Armis a 23 veces ventas) en una empresa que había crecido casi solo de forma orgánica [34].",
+    "confianza": "Media"
+  },
+  "financieros": {
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 5896,
+        "coste_ventas": 1353,
+        "gastos_generales": null,
+        "ebitda": 729,
+        "amortizaciones": 472,
+        "ebit": 257,
+        "resultado_financiero": -8,
+        "bai": 249,
+        "impuestos": 19,
+        "minoritarios": 0,
+        "beneficio_neto": 230,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 0.23,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 1015
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 7245,
+        "coste_ventas": 1573,
+        "gastos_generales": null,
+        "ebitda": 788,
+        "amortizaciones": 433,
+        "ebit": 355,
+        "resultado_financiero": 44,
+        "bai": 399,
+        "impuestos": 74,
+        "minoritarios": 0,
+        "beneficio_neto": 325,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 0.32,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 1020
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 8971,
+        "coste_ventas": 1921,
+        "gastos_generales": null,
+        "ebitda": 1324,
+        "amortizaciones": 562,
+        "ebit": 762,
+        "resultado_financiero": 248,
+        "bai": 1010,
+        "impuestos": -721,
+        "minoritarios": 0,
+        "beneficio_neto": 1731,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 1.68,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 1030
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 10984,
+        "coste_ventas": 2287,
+        "gastos_generales": null,
+        "ebitda": 1928,
+        "amortizaciones": 564,
+        "ebit": 1364,
+        "resultado_financiero": 374,
+        "bai": 1738,
+        "impuestos": 313,
+        "minoritarios": 0,
+        "beneficio_neto": 1425,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 1.37,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 1040
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 13278,
+        "coste_ventas": 2983,
+        "gastos_generales": null,
+        "ebitda": 2562,
+        "amortizaciones": 738,
+        "ebit": 1824,
+        "resultado_financiero": 437,
+        "bai": 2261,
+        "impuestos": 513,
+        "minoritarios": 0,
+        "beneficio_neto": 1748,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 1.67,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 1047
+      }
+    ],
+    "ltm": {
+      "periodo": "LTM jun-26",
+      "fecha_fin": "2026-06-30",
+      "ingresos": 14732,
+      "ebitda": null,
+      "ebit": 1680,
+      "beneficio_neto": 1670,
+      "bpa": 1.6,
+      "dpa": 0,
+      "dpa_extraordinario": 0,
+      "fcf": null,
+      "participadas_en_ebitda": null,
+      "no_recurrentes_en_ebitda": null
+    },
+    "cambios_perimetro": [
+      {
+        "periodo": "2025",
+        "descripcion": "Moveworks (asistentes de IA), unos 2.850 M USD, consolidada en diciembre de 2025: el fondo de comercio sube a ≈3.580 M al cierre."
+      },
+      {
+        "periodo": "2026",
+        "descripcion": "Armis (ciberseguridad), 7.750 M USD en efectivo, consolidada desde el 20-abr-2026, y Veza (identidades) en el 2T26: fuera del balance de 2025 y dentro del LTM solo desde abril."
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "Los ingresos pasaron de 5.896 M USD en 2021 a 13.278 M en 2025 (TCAC del 22,5 %), casi todo orgánico hasta Moveworks (diciembre de 2025) y Armis (abril de 2026) [1, 10]. El margen bruto se mantiene en el 77-78 % (10.295 M de beneficio bruto en 2025) [5]. El resultado de explotación GAAP subió de 257 M (4,4 % de margen) a 1.824 M (13,7 %): unos 930 pb en cuatro años por apalancamiento operativo en ventas y administración, con una remuneración en acciones que baja de peso pero sigue en el 14,7 % de las ventas (1.955 M) [2, 6]. El resultado financiero (437 M en 2025) son intereses de una caja de unos 10.000 M, que en 2026 se ha gastado en Armis [7]. 2023 no es comparable en beneficio neto: la liberación de la provisión fiscal sumó 721 M. En el LTM a junio de 2026 el EBIT baja a ≈1.680 M (estimación propia: el 1T25 GAAP se toma con un margen del 14,6 %) por la amortización y los costes de integración de Armis y Veza (el margen GAAP del 2T26 fue del 4 %) [8, 26].",
+    "ajustes": "La empresa publica cifras no GAAP que excluyen la remuneración en acciones, la amortización de intangibles comprados y los costes de adquisiciones: margen operativo no GAAP del ≈31 % en 2025 frente al 13,7 % GAAP, y BPA no GAAP de unos 0,90 USD en el 2T26 frente a 0,29 GAAP [8, 20]. El informe usa siempre cifras GAAP, con la remuneración en acciones como gasto, porque es un coste recurrente que diluye al accionista (se recompran acciones para compensarla). Los costes de adquisición de Armis no se tratan como no recurrentes porque la empresa compra cada año."
+  },
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "3T24",
+        "ingresos": 2797,
+        "crecimiento_pct": 22.2,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": null,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "4T24",
+        "ingresos": 2957,
+        "crecimiento_pct": 21.3,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": null,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1T25",
+        "ingresos": 3088,
+        "crecimiento_pct": 18.6,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": null,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "2T25",
+        "ingresos": 3215,
+        "crecimiento_pct": 22.4,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": null,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "3T25",
+        "ingresos": 3407,
+        "crecimiento_pct": 21.8,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": null,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "4T25",
+        "ingresos": 3568,
+        "crecimiento_pct": 20.7,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": null,
+        "vs_consenso": "Superior"
+      },
+      {
+        "periodo": "1T26",
+        "ingresos": 3770,
+        "crecimiento_pct": 22.1,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": null,
+        "vs_consenso": "En línea"
+      },
+      {
+        "periodo": "2T26",
+        "ingresos": 3987,
+        "crecimiento_pct": 24,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 0.29,
+        "vs_consenso": "Superior"
+      }
+    ],
+    "ultima_presentacion": "En el 1T26 (22-abr) la dirección subió la guía de suscripciones de 2026 a 15.735-15.775 M USD pero bajó el margen de caja libre al 36 % → 35 % por Armis, y atribuyó 75 pb de freno a contratos *on-premise* aplazados en Oriente Medio por el conflicto regional [21, 27]. Los analistas preguntaron sobre todo por el precio pagado por Armis y por el riesgo de que los agentes de IA reduzcan los puestos de trabajo por los que cobra [20]. En el 2T26 (22-jul) las suscripciones crecieron un 24,5 % (23 % a divisa constante), 150 pb por encima de lo alto de la guía; el margen operativo no GAAP fue del 29,5 %, 300 pb sobre la guía, y el GAAP cayó al 4 % (162 M USD) por la amortización y la integración de Armis y Veza [18, 26]. La guía anual subió 15 M (≈15.770 M) con un margen no GAAP del 31,5 % y caja libre del 35 %; para el 3T26 guía 3.975-3.980 M de suscripciones (+20 % a divisa constante) y 1.050 M de acciones diluidas [8]. La dirección repite que la mitad del negocio nuevo ya no se cobra por puesto; no dio el BPA GAAP esperado del año [20].",
+    "confianza": "Media"
+  },
+  "balance": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "activo_total": null,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": null,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": 0,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": null,
+        "deuda_financiera": null,
+        "arrendamientos": 0,
+        "patrimonio_neto": null,
+        "minoritarios": 0,
+        "reservas": null
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 13299,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 8267,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": 0,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": 4730,
+        "caja": 6397,
+        "deuda_financiera": 1486,
+        "arrendamientos": 0,
+        "patrimonio_neto": 5032,
+        "minoritarios": 0,
+        "reservas": null
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 17387,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": 9759,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": 0,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": 5866,
+        "caja": 8080,
+        "deuda_financiera": 1488,
+        "arrendamientos": 0,
+        "patrimonio_neto": 7628,
+        "minoritarios": 0,
+        "reservas": null
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 20383,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": null,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": 0,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": 6914,
+        "caja": null,
+        "deuda_financiera": 1489,
+        "arrendamientos": 0,
+        "patrimonio_neto": null,
+        "minoritarios": 0,
+        "reservas": null
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 26040,
+        "activo_corriente": null,
+        "pasivo_corriente": 10440,
+        "pasivo_total": 13070,
+        "fondo_comercio": 3580,
+        "intangibles": 1120,
+        "inmovilizado_material": null,
+        "existencias": 0,
+        "clientes": 2630,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": 8310,
+        "caja": 9700,
+        "deuda_financiera": 1490,
+        "arrendamientos": 0,
+        "patrimonio_neto": 12960,
+        "minoritarios": 0,
+        "reservas": null
+      }
+    ],
+    "vencimientos": [],
+    "liquidez": "A 30-jun-2026: 2.503 M USD de efectivo y ≈4.200 M de valores negociables (≈6.700 M), más una línea de crédito de 3.000 M sin disponer [11, 17, 18].",
+    "rating": null,
+    "coste_deuda_pct": null,
+    "vida_media_anios": null,
+    "otros_pasivos": "Deuda a 30-jun-2026: 5.435 M USD de bonos a largo plazo (los 1.500 M al 1,4 % con vencimiento en 2030 y cinco series nuevas por 4.000 M emitidas en mayo de 2026, con vencimientos entre 2028 y 2056 y cupones del 4,25 % al 6,30 % según un resumen de terceros) y 2.100 M de pagarés de un programa de hasta 3.000 M abierto en abril [11, 23]. El préstamo puente de 4.000 M de abril se devolvió con los bonos [23]. Los ingresos diferidos (8.310 M al cierre de 2025) son el principal pasivo de explotación: se cobran por adelantado y se reconocen durante el contrato [16].",
+    "confianza": "Media",
+    "comentario": "El balance es de caja neta hasta 2025: unos 6.400 M USD de caja e inversiones en 2022 y 8.080 M en 2023, frente a solo 1.490 M de bonos [12, 13]. Los ingresos diferidos, cobrados por adelantado, crecen con el negocio (4.730 M en 2022, 6.914 M en 2024 y 8.310 M en 2025) y financian el circulante: el circulante comercial es negativo, del orden del −40 % de las ventas [14, 16]. En 2026 Armis cambia el cuadro: 7.750 M en efectivo, pagados con caja, un préstamo puente de 4.000 M refinanciado con bonos en mayo y 2.100 M de pagarés; a junio quedan 7.535 M de deuda bruta y ≈6.700 M de caja e inversiones, una deuda neta de unos 832 M, menos de un tercio del EBITDA anual [11, 17, 23]. El total del balance pasó de 20.383 M en 2024 a 26.040 M en 2025 con Moveworks [14, 15]."
+  },
+  "flujos": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": null,
+        "capex": null,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": null,
+        "desinversiones": 0,
+        "dividendos": 0,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 2723,
+        "capex": 550,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": null,
+        "desinversiones": 0,
+        "dividendos": 0,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 3398,
+        "capex": 694,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": null,
+        "desinversiones": 0,
+        "dividendos": 0,
+        "recompras": 538,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 4267,
+        "capex": 852,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": null,
+        "desinversiones": 0,
+        "dividendos": 0,
+        "recompras": 696,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 5444,
+        "capex": 868,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": null,
+        "desinversiones": 0,
+        "dividendos": 0,
+        "recompras": 1800,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "La conversión en caja es muy alta porque los clientes pagan por adelantado y la remuneración en acciones no sale de caja: flujo operativo de 5.444 M USD en 2025 frente a 1.748 M de beneficio neto, y caja libre de la empresa de 4.636 M (35 % de las ventas) [3]. El capex sube con los centros de datos: 550 M en 2022, 852 M en 2024 y 868 M en 2025, en torno al 6,5 % de las ventas, por encima de la amortización (738 M); casi todo es de crecimiento [3, 4, 24]. Lo que hay que restar para comparar con el beneficio: la remuneración en acciones (1.955 M en 2025) y las recompras que la compensan (1.800 M en 2025) [3]. En 2026 el margen de caja libre baja al 35 % (36 % antes de Armis) y los intereses de la deuda nueva restarán unos 300-375 M al año."
+  },
+  "calidad": {
+    "auditor": "PricewaterhouseCoopers LLP",
+    "anios_auditor": null,
+    "opinion": "Favorable",
+    "confianza": "Media",
+    "comentario": "La calidad contable es razonable para un editor de software, con tres puntos a vigilar. Primero, la remuneración en acciones (14,7 % de las ventas) es la diferencia entre el beneficio GAAP y el no GAAP que se comunica; este informe la trata como gasto. Segundo, las comisiones de venta se activan y se amortizan durante el contrato (unos 550 M al año de amortización en ventas), lo que alisa el gasto comercial; su aumento no pasa por el EBITDA. Tercero, 2026 trae amortización de intangibles y costes de integración de Armis que hunden el margen GAAP del 2T26 al 4 % [8, 24]. El Altman Z del motor (6,91) es alto por la capitalización bursátil; el Piotroski (4) es bajo porque 2025 tuvo menos rentabilidad sobre activos y más acciones; el Beneish no se calcula por falta de líneas del balance. La liberación de la provisión fiscal de 2023 (721 M) infla aquel beneficio. Auditor: PwC, opinión favorable [2].",
+    "senales": [
+      {
+        "senal": "Remuneración en acciones del 14,7 % de las ventas",
+        "nivel": "Media",
+        "comentario": "Diluye un 1-2 % al año antes de recompras; se compensa con recompras (1.800 M en 2025) [3]."
+      },
+      {
+        "senal": "Comisiones activadas",
+        "nivel": "Baja",
+        "comentario": "Práctica estándar (ASC 340-40); alisa el gasto comercial."
+      },
+      {
+        "senal": "Costes de adquisición recurrentes",
+        "nivel": "Media",
+        "comentario": "Moveworks, Armis y Veza en seis meses: la empresa los excluye del no GAAP aunque se repiten [26]."
+      }
+    ]
+  },
+  "rentabilidad": {
+    "comentario": "ServiceNow crea valor de forma clara en lo orgánico: el ROIC del motor es del 45,2 % en 2025 y el incremental histórico del 37,6 %, muy por encima del WACC del 11,7 %, porque los clientes financian el circulante con sus pagos anticipados y el negocio apenas necesita activos. Ojo: el balance de 2025 está incompleto (caja estimada) y el ROIC sale inflado; con el capital de junio de 2026, tras Armis, el ROIC GAAP cae a cerca del 9 % (estimación propia: NOPAT de ≈1.310 M sobre ≈15.300 M de capital invertido), por debajo del WACC, porque se han pagado 7.750 M por una empresa que aún pierde dinero. Lo mueve el margen, no la rotación: cada punto de margen GAAP son unos 130 M de NOPAT. Frente a los comparables, su ROIC orgánico supera a SAP (15,5 %) y Salesforce (10,8 %) y queda por debajo de Microsoft (30,8 %) tras las compras [57].",
+    "confianza": "Media"
+  },
+  "capital": {
+    "politica": "No paga dividendo. Recompra acciones para compensar la dilución de la remuneración en acciones: 538 M USD en 2023, 696 M en 2024 y 1.800 M en 2025 (10,3 M de acciones tras el desdoblamiento de 5 por 1 de diciembre de 2025); en enero de 2026 el consejo autorizó 5.000 M más [3, 4]. En 2026 la prioridad ha sido comprar: Armis (7.750 M en efectivo) y Veza, financiadas con caja, 4.000 M de bonos y 2.100 M de pagarés [11, 23].",
+    "adquisiciones": [
+      {
+        "anio": "2026",
+        "objetivo": "Armis (ciberseguridad de activos conectados)",
+        "importe": 7750,
+        "ev_ebitda": null,
+        "financiacion": "Caja, préstamo puente de 4.000 M refinanciado con bonos y pagarés",
+        "resultado": "Cerrada el 20-abr-2026; resta ≈125 pb al margen del 2T26 y ≈200 pb al margen de caja libre de 2026 [9, 23]."
+      },
+      {
+        "anio": "2025",
+        "objetivo": "Moveworks (asistentes de IA para empleados)",
+        "importe": 2850,
+        "ev_ebitda": null,
+        "financiacion": "Caja y acciones",
+        "resultado": "Consolidada en diciembre de 2025; sin datos de ventas publicados."
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "Hasta 2025 la asignación de capital fue ejemplar: crecimiento orgánico con capex moderado, ROIC muy alto (45,2 % en 2025 según el motor, orientativo por la caja estimada) y recompras para neutralizar la dilución. 2026 rompe el patrón: en seis meses ha gastado unos 10.000 M en compras (Moveworks, Armis a unas 23 veces ingresos y Veza), se ha endeudado por primera vez a escala y el BPA GAAP se ha hundido en el 2T26 [8, 11]. Con el capital invertido de junio de 2026 (patrimonio ≈14.500 M más deuda neta de 832 M, estimación propia) y el NOPAT de los últimos 12 meses (≈1.310 M), el ROIC cae a cerca del 9 %, por debajo del WACC del 11,7 %: Armis tiene que crecer mucho para justificar el precio. El veredicto es favorable en lo orgánico y pendiente en lo comprado."
+  },
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "William R. (Bill) McDermott",
+        "cargo": "Presidente del consejo y primer ejecutivo",
+        "desde": "2019",
+        "participacion_pct": null,
+        "trayectoria": "Fue primer ejecutivo de SAP (2010-2019). En ServiceNow ha llevado los ingresos de 4.519 M USD (2020) a 13.278 M (2025) con márgenes crecientes. Una modificación de su contrato de finales de 2025 le compromete con la empresa hasta 2030, como primer ejecutivo, co-primer ejecutivo o presidente, a decisión del consejo [28, 44]."
+      },
+      {
+        "nombre": "Gina Mastantuono",
+        "cargo": "Directora financiera",
+        "desde": "2020",
+        "participacion_pct": null,
+        "trayectoria": "Directora financiera desde 2020; antes, directora financiera de Ingersoll Rand. Ha financiado las compras de 2026 con bonos y pagarés sin tocar el objetivo de margen de caja libre más allá del efecto de Armis [23, 45]."
+      }
+    ],
+    "historial_guidance": [
+      {
+        "anio": "2025",
+        "guia": "Margen de caja libre elevado durante el año hasta el 34 %",
+        "real": "35 % (4.636 M USD)",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2026",
+        "guia": "Enero: suscripciones de 15.530-15.570 M USD y caja libre del 36 %",
+        "real": "En curso: suscripciones elevadas a ≈15.770 M tras el 2T26 y caja libre rebajada al 35 % por Armis",
+        "cumplida": "Parcial"
+      }
+    ],
+    "confianza": "Baja",
+    "comentario": "McDermott es la figura central: en seis años ha triplicado los ingresos y su contrato se ha ampliado hasta 2030, lo que da continuidad pero concentra el poder (es presidente y primer ejecutivo) [28, 44]. La directora financiera, Mastantuono, lleva desde 2020 y ha cumplido o superado la guía de caja libre de 2025 (35 % frente al 34 % elevado) [3]. La guía de 2026 se ha mantenido pese a Armis en suscripciones, con el margen de caja libre rebajado un punto [9]. No hay plan de sucesión público más allá de la fórmula de co-primer ejecutivo o presidente que prevé el contrato."
+  },
+  "gobierno": {
+    "consejo": [
+      {
+        "nombre": "William R. McDermott",
+        "cargo": "Presidente y primer ejecutivo",
+        "tipo": "Ejecutivo",
+        "desde": "2019",
+        "comisiones": null
+      }
+    ],
+    "presidente_ceo_separados": false,
+    "presidente_ejecutivo": true,
+    "consejero_coordinador": null,
+    "una_accion_un_voto": true,
+    "operaciones_vinculadas_relevantes": false,
+    "variable_ligado_rentabilidad": null,
+    "auditoria_independiente": null,
+    "insiders_sin_operaciones": false,
+    "accionista_control": false,
+    "presidente_vinculado_control": false,
+    "cambios_cupula_24m": 0,
+    "voto_remuneracion_pct": 89,
+    "voto_remuneracion_contra_pct": null,
+    "voto_remuneracion_contra_libre_pct": null,
+    "voto_cupula_pct": null,
+    "remuneracion_ceo": null,
+    "remuneracion": "La junta de 2025 aprobó la remuneración con un 89 % a favor [28]. La de 2026 (21-may) votó la remuneración, la frecuencia anual del voto, una ampliación del plan de acciones de 2021 y una propuesta de accionistas sobre el consentimiento por escrito; no se ha encontrado el resultado en los extractos [28, 46]. El contrato de McDermott se amplió a finales de 2025 hasta 2030 [28]. La remuneración en acciones del conjunto de la plantilla es muy alta: 1.955 M USD en 2025, el 14,7 % de las ventas [2].",
+    "accionistas": [
+      {
+        "nombre": "Vanguard",
+        "pct": 6.59,
+        "tipo": "Institucional",
+        "variacion": "A 31-mar-2026 (Vanguard Capital Management); otras fuentes, que suman todas sus entidades, dan ≈9 %"
+      },
+      {
+        "nombre": "BlackRock",
+        "pct": 5.89,
+        "tipo": "Institucional",
+        "variacion": "A 31-mar-2026 (BlackRock Institutional Trust); ≈8,8 % según el proxy"
+      }
+    ],
+    "insiders": [],
+    "control_y_defensas": "Sin accionista de control: el capital está repartido entre institucionales (Vanguard y BlackRock, cada uno entre el 6 % y el 9 % según la entidad que se cuente) [47]. Una sola clase de acciones. El presidente es también primer ejecutivo, lo que resta independencia al consejo; la junta de 2026 votó una propuesta de accionistas para permitir actuar por consentimiento por escrito, que el consejo no apoyaba [28, 46]. No se han encontrado operaciones vinculadas relevantes.",
+    "alertas": [
+      "Presidente y primer ejecutivo en la misma persona, con contrato ampliado hasta 2030 [28].",
+      "Operaciones de directivos de 2026: en los Form 4 de agosto solo hay entregas de acciones y retenciones fiscales (código F a 117,70 USD), sin ventas en mercado; según prensa alemana, McDermott anunció la compra de 3 M USD en acciones y varios directivos cerraron antes de tiempo sus planes 10b5-1 de venta (fecha no confirmada) [48, 49]."
+    ],
+    "confianza": "Baja"
+  },
+  "consenso": {
+    "guidance": "Guía de 2026 tras el 2T26 (22-jul): suscripciones de ≈15.770 M USD (+15 M sobre la anterior; en enero era 15.530-15.570 M), margen bruto de suscripciones del 81 %, margen operativo no GAAP del 31,5 %, margen de caja libre del 35 % (36 % antes de Armis) y 1.040 M de acciones diluidas. Para el 3T26, suscripciones de 3.975-3.980 M (+20 % a divisa constante) y margen operativo del 31 % [8, 21, 22]. Plan a medio plazo (día del inversor, 4-may-2026): unos 30.000 M de suscripciones en 2030, con un caso alto de 32.000 M [50].",
+    "estimaciones": [
+      {
+        "periodo": "2026e",
+        "ingresos": 16220,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": null,
+        "dpa": 0,
+        "fuente": "Stock Analysis (S&P Global) [51]; BPA del consenso no GAAP de 4,07 USD, fuera de la base GAAP del informe"
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 19270,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": null,
+        "dpa": 0,
+        "fuente": "Stock Analysis (S&P Global) [51]; BPA no GAAP de 5,01 USD"
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 23000,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": null,
+        "dpa": 0,
+        "fuente": "Chartmill [52]"
+      }
+    ],
+    "recomendaciones": {
+      "n_analistas": 49,
+      "comprar": null,
+      "mantener": null,
+      "vender": null,
+      "po_medio": 149.38,
+      "po_min": null,
+      "po_max": null
+    },
+    "revisiones": "Los objetivos suben desde el 2T26: Bank of America a 150 USD desde 130 (19-ago), Evercore a 160 (23-jul) y después a 175, Argus a 170 y Oppenheimer a 165 (13-oct) [53, 54, 55]. El objetivo medio va de 141 a 149 USD según el proveedor (Stock Analysis 149,38 con 49 analistas; Chartmill 148,81 con 55, mediana 142,80; WallStreetZen 141,22 con 32), con un rango de unos 72 a 248-260 USD que no cuadra entre fuentes [51, 52, 56]. Las estimaciones son no GAAP (excluyen la remuneración en acciones y la amortización de compras): no se han encontrado gratis las GAAP ni el EBITDA, por eso el informe no las usa en los múltiplos.",
+    "base_ebitda": "NIIF",
+    "ajuste_ebitda_pct_ventas": null,
+    "confianza": "Baja"
+  },
+  "bolsa": {
+    "tipo_rentabilidad": "de precio (sin dividendos)",
+    "rentabilidades": [
+      {
+        "periodo": "En el año",
+        "accion_pct": -10.1,
+        "indice_pct": null,
+        "sector_pct": null
+      }
+    ],
+    "anual": [
+      {
+        "anio": "2021",
+        "accion_pct": 17.9,
+        "indice_pct": null
+      },
+      {
+        "anio": "2022",
+        "accion_pct": -40.2,
+        "indice_pct": null
+      },
+      {
+        "anio": "2023",
+        "accion_pct": 82,
+        "indice_pct": null
+      },
+      {
+        "anio": "2024",
+        "accion_pct": 50.1,
+        "indice_pct": null
+      },
+      {
+        "anio": "2025",
+        "accion_pct": -27.3,
+        "indice_pct": null
+      }
+    ],
+    "beta": null,
+    "volatilidad_pct": null,
+    "max_drawdown_pct": null,
+    "posicion_corta_pct": 2.8,
+    "confianza": "Baja",
+    "comentario": "La acción es muy volátil: +82 % en 2023 y +50 % en 2024, y −27 % en 2025 y −10 % en lo que va de 2026, con un mínimo de 81,24 USD y un máximo de 192,97 en 52 semanas [59, 62, 63]. La caída de 2026 la explica la recalificación de todo el software por el miedo a la IA (la «SaaSpocalypse» del 1T26) y el precio de Armis; desde el 2T26 ha recuperado unos 40 puntos con las subidas de objetivo [18, 60]. La posición corta es pequeña (≈2,8 % del capital flotante) [64]. Próximos resultados: 28-oct-2026 [61]."
+  },
+  "multiplos_historicos": {
+    "serie": [
+      {
+        "anio": "2021",
+        "precio_cierre": 129.82,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": true
+      },
+      {
+        "anio": "2022",
+        "precio_cierre": 77.65,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": true
+      },
+      {
+        "anio": "2023",
+        "precio_cierre": 141.3,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": true
+      },
+      {
+        "anio": "2024",
+        "precio_cierre": 212.02,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2025",
+        "precio_cierre": 154.23,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      }
+    ],
+    "confianza": "Baja",
+    "comentario": "Los múltiplos GAAP de ServiceNow no sirven como referencia histórica: con márgenes GAAP del 4-14 % y en plena rampa, el PER al cierre fue de 564 veces en 2021, 243 en 2022, 84 en 2023 (con el beneficio inflado por el ingreso fiscal), 155 en 2024 y 92 en 2025. Hoy cotiza a unas 83 veces el BPA de los últimos 12 meses y a 56,9 veces el EBITDA, el nivel más bajo de su historia como cotizada, pero todavía el doble que los comparables. El cambio estructural es doble: tipos del 5,2 % y la duda sobre la IA, que han llevado a todo el software a múltiplos de 10-25 veces el EBITDA [62, 65]."
+  },
+  "comparables": {
+    "criterio": "Ocho editores de software empresarial por suscripción que compiten con ServiceNow por el presupuesto de aplicaciones y de agentes de IA de la gran empresa: Microsoft (Power Platform, Copilot Studio), Salesforce (servicio al cliente y Agentforce), SAP y Workday (flujos de recursos humanos y finanzas), Oracle (aplicaciones y nube), Adobe, Intuit y Autodesk (software de gran margen por suscripción). Atlassian y HubSpot no entran porque no estaban en las tablas a 9-oct-2026 que se reutilizan y no se han podido poner en la misma base. Todas las cifras, al cierre del 9-oct-2026 (Salesforce, al de su informe del 12-oct), con EBITDA y BPA GAAP [57, 58].",
+    "empresas": [
+      {
+        "nombre": "Microsoft",
+        "ticker": "MSFT",
+        "pais": "US",
+        "capitalizacion": 3973187,
+        "ev_ventas": 11.86,
+        "ev_ebitda_ltm": 20.3,
+        "ev_ebitda_ntm": 15.4,
+        "per_ntm": 25.7,
+        "crecimiento_pct": 18.6,
+        "margen_ebitda_pct": 58.5,
+        "roic_pct": 30.8,
+        "dn_ebitda": -0.19,
+        "fcf_yield_pct": 1.7
+      },
+      {
+        "nombre": "Oracle",
+        "ticker": "ORCL",
+        "pais": "US",
+        "capitalizacion": 428654,
+        "ev_ventas": 7.01,
+        "ev_ebitda_ltm": 14.5,
+        "ev_ebitda_ntm": 10.1,
+        "per_ntm": 18.9,
+        "crecimiento_pct": 38.8,
+        "margen_ebitda_pct": 47.1,
+        "roic_pct": null,
+        "dn_ebitda": 2.69,
+        "fcf_yield_pct": -5.5
+      },
+      {
+        "nombre": "SAP",
+        "ticker": "SAP",
+        "pais": "DE",
+        "capitalizacion": 248706,
+        "ev_ventas": 5.65,
+        "ev_ebitda_ltm": 18.2,
+        "ev_ebitda_ntm": 15.1,
+        "per_ntm": 24.2,
+        "crecimiento_pct": 11.6,
+        "margen_ebitda_pct": 31.1,
+        "roic_pct": 15.5,
+        "dn_ebitda": -0.1,
+        "fcf_yield_pct": 3.6
+      },
+      {
+        "nombre": "Salesforce",
+        "ticker": "CRM",
+        "pais": "US",
+        "capitalizacion": 181013,
+        "ev_ventas": 4.67,
+        "ev_ebitda_ltm": 17.2,
+        "ev_ebitda_ntm": 14.6,
+        "per_ntm": 25.2,
+        "crecimiento_pct": 10.3,
+        "margen_ebitda_pct": 27.1,
+        "roic_pct": 10.8,
+        "dn_ebitda": 2.4,
+        "fcf_yield_pct": 8.4
+      },
+      {
+        "nombre": "Adobe",
+        "ticker": "ADBE",
+        "pais": "US",
+        "capitalizacion": 94291,
+        "ev_ventas": 3.68,
+        "ev_ebitda_ltm": 9.4,
+        "ev_ebitda_ntm": 8.5,
+        "per_ntm": 11.5,
+        "crecimiento_pct": 9.4,
+        "margen_ebitda_pct": 39.3,
+        "roic_pct": 61.6,
+        "dn_ebitda": 0.1,
+        "fcf_yield_pct": 11.2
+      },
+      {
+        "nombre": "Intuit",
+        "ticker": "INTU",
+        "pais": "US",
+        "capitalizacion": 80906,
+        "ev_ventas": 3.91,
+        "ev_ebitda_ltm": 12.8,
+        "ev_ebitda_ntm": 9.9,
+        "per_ntm": 14.5,
+        "crecimiento_pct": 9.2,
+        "margen_ebitda_pct": 30.6,
+        "roic_pct": 20.3,
+        "dn_ebitda": 0.45,
+        "fcf_yield_pct": 10.7
+      },
+      {
+        "nombre": "Autodesk",
+        "ticker": "ADSK",
+        "pais": "US",
+        "capitalizacion": 49188,
+        "ev_ventas": 6.23,
+        "ev_ebitda_ltm": 21.6,
+        "ev_ebitda_ntm": 16.6,
+        "per_ntm": 25.1,
+        "crecimiento_pct": 12.4,
+        "margen_ebitda_pct": 28.8,
+        "roic_pct": 58.5,
+        "dn_ebitda": -0.29,
+        "fcf_yield_pct": 5.8
+      },
+      {
+        "nombre": "Workday",
+        "ticker": "WDAY",
+        "pais": "US",
+        "capitalizacion": 45958,
+        "ev_ventas": 4.48,
+        "ev_ebitda_ltm": 34.7,
+        "ev_ebitda_ntm": 21.5,
+        "per_ntm": 30.9,
+        "crecimiento_pct": 10.5,
+        "margen_ebitda_pct": 12.9,
+        "roic_pct": 14.2,
+        "dn_ebitda": -0.32,
+        "fcf_yield_pct": 6.2
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "ServiceNow es la más cara del grupo con diferencia: 56,9 veces el EBITDA GAAP de los últimos 12 meses frente a una mediana de 17,7, y su valor por la mediana de EV/EBITDA sería de 42,60 USD y por EV/ventas de 71,95 USD [57, 58]. La prima se explica en parte por el crecimiento (22 % frente al 9-19 % de los demás, salvo Oracle, que crece por la nube de IA con caja libre negativa) y por un margen GAAP aún en rampa, que hace que el múltiplo sobre EBITDA exagere la distancia. Ningún comparable reúne su crecimiento y su recurrencia; Microsoft es lo más cercano en calidad. Por eso pesan solo un 10 %: dicen que el mercado sigue pagando a ServiceNow como excepción, no lo que valdría si dejara de serlo."
+  },
+  "transacciones": {
+    "operaciones": [
+      {
+        "fecha": "2025-12",
+        "objetivo": "Armis (ciberseguridad de activos conectados)",
+        "comprador": "ServiceNow",
+        "ev": 7750,
+        "ev_ventas": 23,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Anunciada el 23-dic-2025 y cerrada el 20-abr-2026, en efectivo; unas 23 veces los ingresos, por encima de la última ronda privada (6.100 M) [11, 34]."
+      },
+      {
+        "fecha": "2025-03",
+        "objetivo": "Moveworks (asistentes de IA para empleados)",
+        "comprador": "ServiceNow",
+        "ev": 2850,
+        "ev_ventas": null,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Pagada en efectivo y acciones; consolidada en diciembre de 2025; no se publicó el múltiplo [29]."
+      }
+    ],
+    "confianza": "Baja",
+    "comentario": "Las compras recientes del propio ServiceNow (Armis a unas 23 veces ingresos, por encima de la última ronda privada de 6.100 M) marcan el precio que la empresa paga por crecimiento en seguridad, no un valor de control para ella [34]. Con 145.679 M de valor empresa, una opa es improbable; no se usan en la síntesis (peso 0)."
+  },
+  "dcf": {
+    "anios": [
+      {
+        "periodo": "2026e",
+        "crecimiento_pct": 22.2,
+        "margen_ebitda_pct": 17.5,
+        "amortizacion_pct_ventas": 6.2,
+        "capex_pct_ventas": 6,
+        "nwc_pct_ventas": -40,
+        "tasa_impositiva_pct": 22,
+        "fijo": true
+      },
+      {
+        "periodo": "2027e",
+        "crecimiento_pct": 18.5,
+        "margen_ebitda_pct": 22.5,
+        "amortizacion_pct_ventas": 6,
+        "capex_pct_ventas": 6,
+        "nwc_pct_ventas": -40,
+        "tasa_impositiva_pct": 22,
+        "fijo": false
+      },
+      {
+        "periodo": "2028e",
+        "crecimiento_pct": 17,
+        "margen_ebitda_pct": 24,
+        "amortizacion_pct_ventas": 6,
+        "capex_pct_ventas": 6,
+        "nwc_pct_ventas": -40,
+        "tasa_impositiva_pct": 22,
+        "fijo": false
+      },
+      {
+        "periodo": "2029e",
+        "crecimiento_pct": 16,
+        "margen_ebitda_pct": 26,
+        "amortizacion_pct_ventas": 5.8,
+        "capex_pct_ventas": 6,
+        "nwc_pct_ventas": -40,
+        "tasa_impositiva_pct": 22,
+        "fijo": false
+      },
+      {
+        "periodo": "2030e",
+        "crecimiento_pct": 15,
+        "margen_ebitda_pct": 28,
+        "amortizacion_pct_ventas": 5.6,
+        "capex_pct_ventas": 6,
+        "nwc_pct_ventas": -40,
+        "tasa_impositiva_pct": 22,
+        "fijo": false
+      },
+      {
+        "periodo": "2031e",
+        "crecimiento_pct": 13,
+        "margen_ebitda_pct": 29.5,
+        "amortizacion_pct_ventas": 5.4,
+        "capex_pct_ventas": 6,
+        "nwc_pct_ventas": -40,
+        "tasa_impositiva_pct": 22,
+        "fijo": false
+      },
+      {
+        "periodo": "2032e",
+        "crecimiento_pct": 11,
+        "margen_ebitda_pct": 31,
+        "amortizacion_pct_ventas": 5.2,
+        "capex_pct_ventas": 6,
+        "nwc_pct_ventas": -40,
+        "tasa_impositiva_pct": 22,
+        "fijo": false
+      },
+      {
+        "periodo": "2033e",
+        "crecimiento_pct": 9,
+        "margen_ebitda_pct": 32,
+        "amortizacion_pct_ventas": 5,
+        "capex_pct_ventas": 6,
+        "nwc_pct_ventas": -40,
+        "tasa_impositiva_pct": 22,
+        "fijo": false
+      },
+      {
+        "periodo": "2034e",
+        "crecimiento_pct": 7,
+        "margen_ebitda_pct": 33,
+        "amortizacion_pct_ventas": 5,
+        "capex_pct_ventas": 6,
+        "nwc_pct_ventas": -40,
+        "tasa_impositiva_pct": 22,
+        "fijo": false
+      },
+      {
+        "periodo": "2035e",
+        "crecimiento_pct": 5,
+        "margen_ebitda_pct": 33,
+        "amortizacion_pct_ventas": 5,
+        "capex_pct_ventas": 6,
+        "nwc_pct_ventas": -40,
+        "tasa_impositiva_pct": 22,
+        "fijo": false
+      }
+    ],
+    "wacc": {
+      "tasa_libre_pct": 5.22,
+      "beta": 1.25,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 0,
+      "coste_deuda_pct": 5.3,
+      "tasa_impositiva_pct": 22,
+      "peso_deuda_pct": 5
+    },
+    "terminal": {
+      "metodo": "gordon",
+      "crecimiento_pct": 3,
+      "multiplo_salida": 18
+    },
+    "etapa2": {
+      "usar": false,
+      "anios": 5,
+      "margen_final_pct": null,
+      "justificacion": null
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "2026e (22,2 %, fijo) es el consenso de ventas de 16.220 M, coherente con la guía de suscripciones de ≈15.770 M, que incluye unos 3 puntos de Armis y Veza [8, 51]. De 2027 a 2030 (18,5 % a 15 %) seguimos la senda del objetivo de la empresa de unos 30.000 M de suscripciones en 2030, que Bernstein lee como crecimiento a mediados de la decena al final del periodo; nuestro 2027e (19.221 M) coincide con el consenso (19.270 M) y el 2028e (22.488 M) queda un 2 % por debajo [50, 51, 52]. Después bajamos dos puntos al año hasta el 5 % en 2035. Precedente: 22,5 % de TCAC en 2021-2025 [1].",
+      "margenes": "El margen EBITDA GAAP fue del 19,3 % en 2025 (EBIT del 13,7 % más un 5,6 % de amortización) [2]. En 2026 baja al 17,5 % por los costes de integración de Armis. Después sube 1,5-2 puntos al año hasta el 33 % en 2034-35, porque la remuneración en acciones pierde peso y el margen no GAAP sigue subiendo (31,5 % en 2026, más de 300 pb en dos años) [8]. El 33 % final queda entre SAP (31 %) y Adobe (39 %), y por debajo de Microsoft (58 %) [57].",
+      "inversion": "Capex del 6 % de las ventas (6,5 % en 2025), por encima de la amortización (5-6 %), por los centros de datos para la IA [3]. El circulante comercial se proyecta en el −40 % de las ventas (≈−43 % en 2025: 2.630 M de clientes frente a 8.310 M de ingresos diferidos) [16]; así el crecimiento libera caja, como ha hecho siempre. Las comisiones activadas no se modelan aparte.",
+      "wacc": "Tasa libre: bono de EE. UU. a 10 años al 5,22 % (13-oct-2026) [65]. Beta de 1,25, la de los editores de software del repositorio (no hay histórico propio en este entorno). Prima de mercado del 5,5 %: coste del capital del 12,1 %. Deuda al 5,3 % antes de impuestos (cupones de los bonos de 2026 del 4,25 % al 6,30 %) con un peso del 5 % a valor de mercado [23]. WACC del 11,70 %. Con la prima implícita del mercado (4,2 %) el WACC baja al 10,15 % [66].",
+      "terminal": "Crecimiento a perpetuidad del 3 %: 1 punto real más un 2 % de inflación, por debajo de la tasa libre menos medio punto (4,7 %). Es generoso para una empresa que en 2035 ya facturaría unos 46.000 M, pero el software empresarial sigue ganando peso en el gasto de las empresas. El valor terminal es el 54 % del valor."
+    },
+    "sostenibilidad": {
+      "puente_ingresos": [
+        {
+          "periodo": "2026e",
+          "volumen_pct": 14,
+          "precio_pct": 4,
+          "otros_pct": 4.2,
+          "comentario": "Volumen: nuevos clientes y más productos por cliente (cRPO +21 %); precio: paquetes Pro Plus de IA; otros: Armis y Veza (≈3 puntos) y divisa (≈1 punto) [8, 19]."
+        },
+        {
+          "periodo": "2027e",
+          "volumen_pct": 12,
+          "precio_pct": 4.5,
+          "otros_pct": 2,
+          "comentario": "Armis aporta su año completo (≈2 puntos); el resto, volumen y precio con la IA, en línea con el consenso de 19.270 M [51]."
+        },
+        {
+          "periodo": "2028e",
+          "volumen_pct": 12.5,
+          "precio_pct": 4.5,
+          "otros_pct": 0,
+          "comentario": "Crecimiento orgánico del 17 %, la senda del objetivo de 30.000 M de suscripciones en 2030 [50]."
+        },
+        {
+          "periodo": "2029e",
+          "volumen_pct": 12,
+          "precio_pct": 4,
+          "otros_pct": 0,
+          "comentario": "Volumen 12 % y precio 4 %: el valor de contrato de IA ya sería un tercio del nuevo, según el plan de la empresa [50]."
+        },
+        {
+          "periodo": "2030e",
+          "volumen_pct": 11,
+          "precio_pct": 4,
+          "otros_pct": 0,
+          "comentario": "Llega al objetivo de la empresa (≈30.000 M de ingresos totales) [50]."
+        }
+      ],
+      "mercado_final": null,
+      "veredicto": "En parte",
+      "justificacion": "El crecimiento no necesita capital: la reinversión neta es negativa porque los clientes pagan por adelantado, y el ROIC de 2025 (45,2 %, orientativo) y el incremental histórico (37,6 %) son muy altos. La prueba relevante es el poder de precios y la cuota: la base llega en 2030 al objetivo de la propia empresa (≈30.000 M) y en 2035 a unos 46.000 M, el 7,7 % del mercado accesible de 600.000 M que cifra la empresa; la cuota final no se puede comparar con un mercado homogéneo y se deja sin prueba automática. Es «En parte» y no «Sí» por dos razones: después de Armis el ROIC cae a cerca del 9 %, por debajo del WACC, y la IA puede romper el cobro por puesto. Ninguna prueba numérica falla, así que el base no se rebaja."
+    },
+    "lectura": "El DCF da 78,70 USD por acción, un 43,2 % por debajo del precio, con el valor terminal en el 54 % del total y un WACC del 11,70 %; con la prima del mercado (WACC del 10,15 %) sube a 97,64 USD, aún un 30 % por debajo. El DCF inverso es la clave: con nuestros márgenes (33 % de EBITDA GAAP al final), el precio de 138,61 USD exige un crecimiento medio del 19,7 % anual de 2027 a 2035, frente al 12,4 % de nuestro base, y solo da una rentabilidad implícita del 8,2 % anual, por debajo del 11,7 % de WACC y del 10,2 % que pide el mercado. Dicho de otro modo: el mercado descuenta que ServiceNow seguirá creciendo a casi el 20 % nueve años más, cuando su propio plan baja a mediados de la decena en 2030, o un margen GAAP del 54,8 % con nuestro crecimiento. Es exigente frente a su historia (22,5 % en 2021-2025, con una empresa la mitad de grande) y frente a cualquier editor de software de su tamaño.",
+    "confianza": "Baja"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 30,
+        "ajuste_crecimiento_pp": -5,
+        "ajuste_margen_pp": -4,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": 2.5,
+        "multiplo_salida": null,
+        "narrativa": "Los agentes de IA reducen los puestos por los que se cobra y el crecimiento baja al 13 % en 2027 y al 12 % en 2028 (5 puntos menos), como les pasó a Salesforce y Adobe en 2024-2026; Armis no cumple y el margen se queda 4 puntos por debajo."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 45,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "La empresa cumple su plan de 2030 (≈30.000 M) con un margen GAAP que sube hasta el 33 % y Armis integrada sin sobresaltos."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": 3,
+        "ajuste_margen_pp": 2,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "La IA acelera el valor de contrato (Now Assist como tercio del nuevo antes de 2030) y Armis abre el mercado de seguridad: 3 puntos más de crecimiento y 2 de margen."
+      }
+    ],
+    "comentario": "Incluso el alcista (106,35 USD) queda un 23,3 % por debajo del precio, y el bajista (43,13 USD) pierde un 68,9 %: la asimetría del valor intrínseco es negativa (−0,34). La lectura no es que ServiceNow vaya a caer a 43 USD, sino que a tipos del 5,2 % el precio exige un crecimiento por encima de nuestro alcista. El riesgo real a un año es de múltiplo: si el crecimiento baja del 20 %, el mercado puede pagarle como a los demás editores (25 veces el beneficio), como ya ocurrió en la primavera de 2026 (81 USD).",
+    "confianza": "Baja"
+  },
+  "suma_partes": {
+    "aplica": false,
+    "descuento_holding_pct": 0,
+    "partes": [],
+    "comentario": "No aplica: un solo segmento operativo (plataforma Now); Armis se integra en la plataforma y no publica cifras propias.",
+    "confianza": "Media"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2026-06-30",
+      "deuda_financiera": 7535,
+      "arrendamientos": 0,
+      "caja": 6703,
+      "minoritarios": 0,
+      "pensiones": 0,
+      "asociadas": 0,
+      "otros_ajustes": 0
+    },
+    "rab": null,
+    "referencia_mercado": {
+      "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+      "prima_implicita_pct": 4.2,
+      "fecha": "2026-10",
+      "fuente": "Damodaran, ERPbymonth [66]"
+    },
+    "pesos": {
+      "dcf": 45,
+      "comparables": 10,
+      "transacciones": 0,
+      "suma_partes": 0,
+      "escenarios": 45
+    },
+    "objetivo_12m": {
+      "ejercicio": "2028e",
+      "casos": [
+        {
+          "escenario": "Bajista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 2.14,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 20.619 M (5 puntos menos de crecimiento en 2027-28) y margen EBITDA del 20 %: EBIT de 2.887 M, resultado financiero nulo, impuesto del 22 % y 1.050 M de acciones."
+        },
+        {
+          "escenario": "Base",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 3.01,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 22.488 M y margen EBITDA del 24 % menos un 6 % de amortización: EBIT de 4.048 M, resultado financiero nulo, impuesto del 22 % y 1.050 M de acciones."
+        },
+        {
+          "escenario": "Alcista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 3.51,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 23.649 M y margen EBITDA del 26 %: EBIT de 4.730 M y 1.050 M de acciones."
+        }
+      ],
+      "per_historico": {
+        "base": "adelantado",
+        "actual": 58.7,
+        "mediana_5a": null,
+        "minimo_5a": null,
+        "media_larga": null,
+        "excluidos": "PER adelantado (precio de cierre ÷ BPA GAAP real del año siguiente), en la misma base que nuestros casos: 2021 405x (129,82 ÷ 0,32), 2022 46x (77,65 ÷ 1,68, BPA de 2023 inflado por un ingreso fiscal de 721 M), 2023 103x (141,30 ÷ 1,37) y 2024 127x (212,02 ÷ 1,67) [1, 62]; 2025 aún no tiene BPA real de 2026. Se excluyen todos como atípicos: margen GAAP en rampa (4-14 %) con una remuneración en acciones del 15-18 % de las ventas, que hace que el PER GAAP no mida lo mismo que hoy, y 2024 en máximos de burbuja (la acción perdió un 60 % después). Sin historia válida, el motor aplica la regla v2 con el PER actual: 138,61 ÷ 2,36 (nuestro BPA de 2027e) = 58,7x. Mediana de comparables: 24,7x (PER de los próximos 12 meses, GAAP) [57]."
+      },
+      "comparables_per": {
+        "mediana": 24.7
+      },
+      "consenso": {
+        "bpa_ano1": 4.07,
+        "bpa_ano2": 5.01,
+        "objetivo_medio": 149.38,
+        "objetivo_min": null,
+        "objetivo_max": null,
+        "analistas": 49,
+        "tendencia_3m": "subidas",
+        "fuente": "Stock Analysis (S&P Global), BPA no GAAP; subidas de BofA, Evercore y Oppenheimer [51, 53, 54, 55]"
+      },
+      "diferencia_consenso": "El consenso de BPA (4,07 USD en 2026 y 5,01 en 2027) es no GAAP: excluye la remuneración en acciones y la amortización de compras; nuestro BPA GAAP de 2027e (2,36) es el 47 % del no GAAP, la misma proporción que en 2025 (1,67 frente a ≈3,5) [51]. En ventas coincidimos (19.221 M en 2027e frente a 19.270 M). Nuestro precio base (176,69 USD) supera en un 18,3 % el objetivo medio (149,38 USD) porque mantiene el PER adelantado actual (58,7x) sobre un BPA de 2028e un 28 % mayor; los analistas, en general, aplican una compresión del múltiplo que nuestra regla solo recoge en el bajista. No se acerca la cifra: se explica.",
+      "media": null,
+      "comentario": "El objetivo a 12 meses (163,06 USD, +17,6 %; base 176,69 USD, +27,5 %) duplica el valor intrínseco (76,82 USD): la distancia es de más del 100 %. El objetivo supone que el mercado sigue pagando 58,7 veces el BPA GAAP; el valor intrínseco, que el crecimiento se normaliza al ritmo del plan de la empresa. Para cerrar la distancia hacia arriba haría falta que ServiceNow creciera cerca del 20 % durante una década; hacia abajo, basta con que el mercado deje de pagarle como excepción. Por eso la señal a 12 meses es Mantener, no Comprar: falla el requisito de valor real (valor intrínseco por debajo del precio) y los datos tienen confianza baja."
+    },
+    "comentario": "Pesos: DCF 45 %, escenarios 45 %, comparables 10 %. El DCF es el método que mejor recoge un negocio de crecimiento con caja anticipada; los escenarios añaden la asimetría. Los comparables pesan poco porque ninguno crece como ServiceNow y su mediana (42,60 USD por EV/EBITDA) mide lo que valdría si dejara de ser excepción. Las transacciones no pesan (no hay operaciones de control comparables). La dispersión es enorme: de 42,60 USD (comparables) a 106,35 (alcista del DCF), todo por debajo del precio de 138,61; el único método que justifica el precio es el múltiplo actual mantenido (objetivo a 12 meses). El valor objetivo de la síntesis es 76,82 USD (−44,6 %).",
+    "confianza": "Baja"
+  },
+  "catalizadores": {
+    "items": [
+      {
+        "fecha": "28-oct-2026",
+        "evento": "Resultados del 3T26",
+        "efecto": "Guía de suscripciones de 3.975-3.980 M (+20 % a divisa constante) y margen del 31 %; un cRPO por debajo del 20 % reactivaría el relato bajista",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "Ene-2027",
+        "evento": "Resultados del 4T26 y guía de 2027",
+        "efecto": "Primera guía con Armis el año completo; el mercado mira si mantiene el 18-20 % de crecimiento",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2027",
+        "evento": "Vencimiento y renovación de los pagarés (2.100 M)",
+        "efecto": "Coste de financiación con tipos del 5 %",
+        "probabilidad": "Media",
+        "sentido": "−"
+      },
+      {
+        "fecha": "May-2027",
+        "evento": "Knowledge 2027 y día del inversor",
+        "efecto": "Avance del plan de 30.000 M en 2030 y del cobro por consumo de la IA",
+        "probabilidad": "Alta",
+        "sentido": "+"
+      },
+      {
+        "fecha": "2026-2027",
+        "evento": "Recompras con la autorización de 5.000 M de enero de 2026",
+        "efecto": "Compensa la dilución; con la deuda de Armis, menos margen para recomprar",
+        "probabilidad": "Media",
+        "sentido": "+"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "riesgos": {
+    "items": [
+      {
+        "riesgo": "Los agentes de IA reducen los puestos que se cobran",
+        "tipo": "Tecnológico y competitivo",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−45 % (escenario bajista: 43,13 USD)",
+        "mitigante": "La mitad del negocio nuevo ya no se cobra por puesto; Now Assist crece más del 100 % [50]",
+        "senal": "Crecimiento del cRPO por debajo del 18 %"
+      },
+      {
+        "riesgo": "Compresión del múltiplo al nivel de los editores de software",
+        "tipo": "Mercado",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−23 % (bajista a 12 meses, 106,79 USD)",
+        "mitigante": "Crecimiento del doble que los comparables",
+        "senal": "PER adelantado por debajo de 45 veces con el crecimiento estable"
+      },
+      {
+        "riesgo": "Armis no rinde lo pagado (23 veces ingresos)",
+        "tipo": "Asignación de capital",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−5 % (≈7.750 M sobre 145.679 M de valor empresa)",
+        "mitigante": "Mercado de seguridad en crecimiento",
+        "senal": "Deterioro del fondo de comercio o margen GAAP por debajo del 12 % en 2027"
+      },
+      {
+        "riesgo": "Tipos de interés altos (bono al 5,2 %)",
+        "tipo": "Macroeconómico",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "+24 % con la prima del mercado (97,64 frente a 78,70); al revés si suben",
+        "mitigante": "Caja neta casi nula",
+        "senal": "Bono a 10 años por encima del 5,5 %"
+      },
+      {
+        "riesgo": "Ciberseguridad propia",
+        "tipo": "Operativo",
+        "probabilidad": "Baja",
+        "impacto": "Medio",
+        "efecto_valor": "−10 %",
+        "mitigante": "Armis y Veza refuerzan la seguridad",
+        "senal": "Nuevo incidente como el de junio de 2026 [43]"
+      },
+      {
+        "riesgo": "Gasto público y conflictos regionales",
+        "tipo": "Comercial",
+        "probabilidad": "Media",
+        "impacto": "Bajo",
+        "efecto_valor": "−3 %",
+        "mitigante": "Base de clientes diversificada",
+        "senal": "Nuevos aplazamientos como los de Oriente Medio (75 pb en el 1T26) [21]"
+      }
+    ],
+    "premortem": "Octubre de 2029: la acción ha perdido un 40 %. La historia más probable empieza en 2027: los grandes clientes renuevan con menos puestos porque sus agentes de IA resuelven las peticiones de TI y de recursos humanos, y el cobro por consumo no compensa. El crecimiento de las suscripciones baja del 20 % al 14 % en dos años, por debajo del plan. Armis, comprada a 23 veces ingresos, crece menos de lo esperado y obliga a un deterioro del fondo de comercio. El mercado deja de pagar a ServiceNow como excepción y lo valora como a Salesforce o SAP (25 veces el beneficio): con un BPA GAAP de 2,5-3 USD, el precio cae a 70-80 USD, cerca de nuestro valor intrínseco. El indicador que lo habría anticipado: el crecimiento del cRPO a divisa constante (21,5 % en el 2T26) cayendo por debajo del 18 % durante dos trimestres seguidos, y el número de clientes de más de 5 M de valor anual estancado.",
+    "confianza": "Media"
+  },
+  "esg": {
+    "calificaciones": [],
+    "materialidad": "Para un editor de software, los asuntos ESG con efecto en cifras son la seguridad de los datos de los clientes (en junio de 2026 la acción cayó por un incidente de seguridad publicado que afectaba a algunos entornos de clientes) y la retención de ingenieros con remuneración en acciones (14,7 % de las ventas en 2025) [2, 43]. El consumo eléctrico de sus centros de datos crece con la IA, pero no tiene peso en el margen.",
+    "controversias": "Junio de 2026: incidente de seguridad que afectó a entornos de algunos clientes, con caída de la acción [43]. No se han revisado en esta pasada otras sanciones ni litigios de los últimos tres años (presupuesto de búsquedas).",
+    "confianza": "Baja"
+  },
+  "preguntas": {
+    "items": [
+      {
+        "tema": "Precio por puesto",
+        "pregunta": "¿Qué parte de los ingresos recurrentes se cobra hoy por puesto y cómo ha evolucionado el número de puestos en las renovaciones de 2026?",
+        "por_que": "Es el riesgo central del bajista: el informe no tiene el dato."
+      },
+      {
+        "tema": "Armis",
+        "pregunta": "¿Cuáles son los ingresos recurrentes anuales de Armis, su crecimiento y su margen, y cuándo aporta beneficio GAAP?",
+        "por_que": "Se pagaron 7.750 M (unas 23 veces ingresos) y el ROIC tras la compra cae por debajo del WACC."
+      },
+      {
+        "tema": "Remuneración en acciones",
+        "pregunta": "¿Qué senda de remuneración en acciones sobre ventas hay detrás del plan de 2030?",
+        "por_que": "Nuestro margen GAAP del 33 % supone que baja; cada punto son unos 460 M en 2035."
+      },
+      {
+        "tema": "Deuda",
+        "pregunta": "¿Cuál es el objetivo de apalancamiento y el plan para los 2.100 M de pagarés?",
+        "por_que": "Primera deuda relevante de la historia de la empresa."
+      },
+      {
+        "tema": "Recompras",
+        "pregunta": "¿Se mantendrán las recompras para neutralizar la dilución con la deuda nueva?",
+        "por_que": "Nuestro BPA supone 1.050 M de acciones constantes."
+      },
+      {
+        "tema": "Oriente Medio y administración federal",
+        "pregunta": "¿Cuántos de los contratos aplazados en el 1T26 se cerraron en el 2T y el 3T?",
+        "por_que": "Mide si el freno fue de calendario o de demanda."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sentimiento": {
+    "tono": "Dividido",
+    "tendencia": "Mejora",
+    "revisadas": [
+      {
+        "plataforma": "Seeking Alpha (artículos de opinión)",
+        "fecha": "2026-05",
+        "n_comentarios": 10,
+        "tono": "Dividido",
+        "resumen": "Una tesis bajista sostiene que la acción «sigue siendo cara», que Armis se pagó caro frente a otras compras de software y que los 4.000 M de deuda nueva restan caja libre; otra alcista defiende que el mercado ha clasificado mal a ServiceNow como víctima de la IA y le da un valor base de 150 USD [67, 68]."
+      },
+      {
+        "plataforma": "TIKR (blog de análisis para particulares)",
+        "fecha": "2026-07",
+        "n_comentarios": 8,
+        "tono": "Neutro",
+        "resumen": "Tras el 2T26 subraya que batió todas las líneas salvo el BPA GAAP (0,29 USD), hundido por Armis, y recuerda que la acción llegó a perder un 60 % desde máximos en 2026 [20, 37]."
+      },
+      {
+        "plataforma": "Motley Fool (artículos de opinión)",
+        "fecha": "2026-07",
+        "n_comentarios": 6,
+        "tono": "Positivo",
+        "resumen": "Tras un primer semestre «brutal», destaca la aceleración de los ingresos y considera la acción comprable, aunque avisa de que la valoración no es una ganga [69, 70]."
+      },
+      {
+        "plataforma": "MarketBeat y Barchart (análisis y alertas)",
+        "fecha": "2026-10",
+        "n_comentarios": 10,
+        "tono": "Positivo",
+        "resumen": "Piezas que preguntan si el mercado infravalora el futuro de ServiceNow en la IA y la ven sobrevendida; las alertas de octubre recogen subidas de objetivo (Oppenheimer a 165 USD) y un consenso de «compra moderada» [32, 55, 71]."
+      }
+    ],
+    "temas": [
+      {
+        "tema": "La IA como amenaza para el cobro por puesto",
+        "postura": "Dividida",
+        "peso": "Alto",
+        "contraste": "El miedo es el mismo que hundió a todo el software en el 1T26. Los datos del informe no lo muestran aún: suscripciones +23 % a divisa constante y cRPO +21 % en el 2T26, y la mitad del negocio nuevo ya no se cobra por puesto según la empresa [20, 32]."
+      },
+      {
+        "tema": "Precio y deuda de Armis",
+        "postura": "Bajista",
+        "peso": "Medio",
+        "contraste": "Es cierto: unas 23 veces ingresos, 4.000 M de bonos y 2.100 M de pagarés, y un BPA GAAP del 2T26 de 0,29 USD; la deuda neta sigue siendo pequeña frente al flujo de caja (≈800 M) [20, 67]."
+      },
+      {
+        "tema": "Valoración tras la caída",
+        "postura": "Alcista",
+        "peso": "Alto",
+        "contraste": "El PER GAAP sigue alto (≈83 veces el BPA de los últimos 12 meses) aunque la acción esté un 10 % por debajo de su cierre de 2025; el informe lo trata en el DCF inverso [69]."
+      },
+      {
+        "tema": "Recuperación desde mínimos y subidas de objetivo",
+        "postura": "Alcista",
+        "peso": "Medio",
+        "contraste": "La acción ha subido desde 81 USD en 2026 a 138,61; los objetivos de los bancos suben (150-175 USD) y el consenso medio ronda 149 USD [55, 71]."
+      }
+    ],
+    "lectura": "Los foros y la prensa de particulares han pasado del pánico de primavera (caída del 60 % desde máximos, la «SaaSpocalypse») a un tono dividido con sesgo positivo tras el 2T26 y las subidas de objetivo de octubre. No hay euforia: el debate central sigue siendo si los agentes de IA erosionan el cobro por puesto, que es el riesgo que recoge nuestro escenario bajista. La crítica a Armis (precio y deuda) es fundada y está en el informe. El sentimiento va en la misma dirección que el consenso de analistas («compra»), por lo que no aporta una señal contraria; sí avisa de que un trimestre con suscripciones por debajo del 20 % reactivaría el relato bajista.",
+    "confianza": "Media"
+  },
+  "fuentes": [
+    {
+      "id": 1,
+      "titulo": "ServiceNow (NOW) Financials & Income Statement (anual 2021-2025 y LTM jun-26)",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://stockanalysis.com/stocks/now/financials/"
+    },
+    {
+      "id": 2,
+      "titulo": "ServiceNow, Inc. Form 10-K del ejercicio 2025",
+      "editor": "ServiceNow / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-01-29",
+      "url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000007/now-20251231.htm"
+    },
+    {
+      "id": 3,
+      "titulo": "ServiceNow, Annual Report to Shareholders 2025 (Form ARS): flujos, amortizaciones, recompras y caja libre",
+      "editor": "ServiceNow / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-04",
+      "url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000041/now2025ars.pdf"
+    },
+    {
+      "id": 4,
+      "titulo": "ServiceNow, Annual Report to Shareholders 2024 (Form ARS): capex 2022-2024 y recompras",
+      "editor": "ServiceNow / SEC",
+      "tipo": "Primaria",
+      "fecha": "2025-04",
+      "url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371525000114/now2024ars.pdf"
+    },
+    {
+      "id": 5,
+      "titulo": "ServiceNow Gross Profit 2012-2026",
+      "editor": "Macrotrends",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www.macrotrends.net/stocks/charts/NOW/servicenow/gross-profit"
+    },
+    {
+      "id": 6,
+      "titulo": "ServiceNow Operating Income 2012-2026",
+      "editor": "Macrotrends",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www.macrotrends.net/stocks/charts/NOW/servicenow/operating-income"
+    },
+    {
+      "id": 7,
+      "titulo": "ServiceNow income statement (resultado antes de impuestos 2021-2024)",
+      "editor": "TipRanks",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www.tipranks.com/stocks/ch:4s0/financials/income-statement"
+    },
+    {
+      "id": 8,
+      "titulo": "ServiceNow Reports Second Quarter 2026 Financial Results (8-K, exhibit 99.1)",
+      "editor": "ServiceNow / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-07-22",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001373715/000137371526000072/erq2fy26.htm"
+    },
+    {
+      "id": 9,
+      "titulo": "ServiceNow Reports First Quarter 2026 Financial Results (8-K, exhibit 99.1)",
+      "editor": "ServiceNow / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-04-22",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001373715/000137371526000054/erq1fy26.htm"
+    },
+    {
+      "id": 10,
+      "titulo": "ServiceNow Reports Fourth Quarter and Full Year 2025 Financial Results (8-K, exhibit 99.1)",
+      "editor": "ServiceNow / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-01-28",
+      "url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000005/erq4fy25.htm"
+    },
+    {
+      "id": 11,
+      "titulo": "ServiceNow, Inc. Form 10-Q del trimestre a 30-jun-2026",
+      "editor": "ServiceNow / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-07-23",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001373715/000137371526000076/now-20260630.htm"
+    },
+    {
+      "id": 12,
+      "titulo": "ServiceNow, Inc. Form 10-Q del 1T23 (balance a 31-dic-2022)",
+      "editor": "ServiceNow / SEC",
+      "tipo": "Primaria",
+      "fecha": "2023-04",
+      "url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371523000166/now-20230331.htm"
+    },
+    {
+      "id": 13,
+      "titulo": "ServiceNow, Inc. Form 10-Q del 3T24, Financial_Report.xlsx (balance a 31-dic-2023)",
+      "editor": "ServiceNow / SEC",
+      "tipo": "Primaria",
+      "fecha": "2024-10",
+      "url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371524000344/Financial_Report.xlsx"
+    },
+    {
+      "id": 14,
+      "titulo": "ServiceNow, Inc. Form 10-K del ejercicio 2024",
+      "editor": "ServiceNow / SEC",
+      "tipo": "Primaria",
+      "fecha": "2025-01-29",
+      "url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371525000010/now-20241231.htm"
+    },
+    {
+      "id": 15,
+      "titulo": "ServiceNow balance sheet health (activo y pasivo a 31-dic-2025)",
+      "editor": "Simply Wall St",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://simplywall.st/stocks/us/software/nyse-now/servicenow/health"
+    },
+    {
+      "id": 16,
+      "titulo": "ServiceNow (NOW) Balance Sheet",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://stockanalysis.com/stocks/now/financials/balance-sheet/"
+    },
+    {
+      "id": 17,
+      "titulo": "ServiceNow: Quarterly Report for Quarter Ending June 30, 2026 (Form 10-Q), resumen",
+      "editor": "MarketScreener",
+      "tipo": "Prensa",
+      "fecha": "2026-07",
+      "url": "https://www.marketscreener.com/news/servicenow-quarterly-report-for-quarter-ending-june-30-2026-form-10-q-ce7f51dedb8df12c"
+    },
+    {
+      "id": 18,
+      "titulo": "ServiceNow (NOW) Up 41.1% Since Last Earnings Report: Can It Continue? (Zacks)",
+      "editor": "Eastern Progress / Zacks",
+      "tipo": "Prensa",
+      "fecha": "2026-08",
+      "url": "https://www.easternprogress.com/servicenow-now-up-41-1-since-last-earnings-report-can-it-continue/article_01e61b70-c7c9-5489-84d3-edbf29de64eb.html"
+    },
+    {
+      "id": 19,
+      "titulo": "ServiceNow Reports Second Quarter 2026 Financial Results (comunicado)",
+      "editor": "Placera / ServiceNow",
+      "tipo": "Primaria",
+      "fecha": "2026-07-22",
+      "url": "https://www.placera.se/pressmeddelanden/servicenow-servicenow-reports-second-quarter-2026-financial-results-20260722"
+    },
+    {
+      "id": 20,
+      "titulo": "ServiceNow Q2 earnings beat every line except one: here's what fell",
+      "editor": "TIKR",
+      "tipo": "Prensa",
+      "fecha": "2026-07",
+      "url": "https://www.tikr.com/blog/servicenow-q2-earnings-beat-every-line-except-one-heres-what-fell"
+    },
+    {
+      "id": 21,
+      "titulo": "ServiceNow Earnings Beat Estimates in Q1 on Subscription Strength",
+      "editor": "Nasdaq / Zacks",
+      "tipo": "Prensa",
+      "fecha": "2026-04",
+      "url": "https://www.nasdaq.com/articles/servicenow-earnings-beat-estimates-q1-subscription-strength"
+    },
+    {
+      "id": 22,
+      "titulo": "ServiceNow Q4 2025 earnings y guía 2026",
+      "editor": "Fintool",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-01",
+      "url": "https://fintool.com/app/research/companies/NOW/earnings/Q4%202025"
+    },
+    {
+      "id": 23,
+      "titulo": "ServiceNow, Inc. Form 424B2 (bonos de 2026)",
+      "editor": "ServiceNow / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-05",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001373715/000119312526221929/d33584d424b2.htm"
+    },
+    {
+      "id": 24,
+      "titulo": "ServiceNow: estados financieros XBRL (amortizaciones 2021-2022)",
+      "editor": "EDGAR Tools",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://app.edgar.tools/companies/NOW"
+    },
+    {
+      "id": 25,
+      "titulo": "ServiceNow (NOW) Q2 2026 earnings summary",
+      "editor": "Quartr",
+      "tipo": "Prensa",
+      "fecha": "2026-07",
+      "url": "https://quartr.com/events/servicenow-inc-now-q2-2026_3gnKgd4C"
+    },
+    {
+      "id": 26,
+      "titulo": "ServiceNow (NOW) Beats Earnings Estimates And Raises Outlook As Cybersecurity Business Surges",
+      "editor": "Congress.net",
+      "tipo": "Prensa",
+      "fecha": "2026-07",
+      "url": "https://congress.net/servicenow-now-beats-earnings-estimates-and-raises-outlook-as-cybersecurity-business-surges/"
+    },
+    {
+      "id": 27,
+      "titulo": "ServiceNow Reports First Quarter 2026 Financial Results",
+      "editor": "ServiceNow (relación con inversores)",
+      "tipo": "Primaria",
+      "fecha": "2026-04-22",
+      "url": "https://investor.servicenow.com/news/news-details/2026/ServiceNow-Reports-First-Quarter-2026-Financial-Results/default.aspx"
+    },
+    {
+      "id": 28,
+      "titulo": "ServiceNow, Inc. Form DEF 14A 2026 (carta del presidente y biografías)",
+      "editor": "ServiceNow / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-04-06",
+      "url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000039/now-20260406.htm"
+    },
+    {
+      "id": 29,
+      "titulo": "ServiceNow finit l'année en beauté avec l'acquisition d'Armis pour 7,75 milliards de dollars",
+      "editor": "L'Usine Digitale",
+      "tipo": "Prensa",
+      "fecha": "2025-12",
+      "url": "https://www.usine-digitale.fr/start-up/financement/acquisition/servicenow-finit-lannee-en-beaute-avec-lacquisition-darmis-pour-775-milliards-de-dollars.C72OIQ5WGBEMZMAZMW3FPEWHNE.html"
+    },
+    {
+      "id": 30,
+      "titulo": "ServiceNow: $4 Milliarden Darlehen für Armis",
+      "editor": "Börse Express",
+      "tipo": "Prensa",
+      "fecha": "2026-04",
+      "url": "https://www.boerse-express.com/news/articles/servicenow-4-milliarden-darlehen-fuer-armis-898308"
+    },
+    {
+      "id": 31,
+      "titulo": "ServiceNow Sees $30 Billion Revenue by 2030 on AI Uplift",
+      "editor": "Bloomberg",
+      "tipo": "Prensa",
+      "fecha": "2026-05-04",
+      "url": "https://bloomberg.com/news/articles/2026-05-04/servicenow-projects-sales-to-hit-30-billion-on-ai-now-assist-uplift"
+    },
+    {
+      "id": 32,
+      "titulo": "Is the market mispricing ServiceNow's AI future?",
+      "editor": "MarketBeat",
+      "tipo": "Prensa",
+      "fecha": "2026-06",
+      "url": "https://www.marketbeat.com/articles/is-the-market-mispricing-servicenows-ai-future/"
+    },
+    {
+      "id": 33,
+      "titulo": "ServiceNow projects $30bn by 2030, with a third of ACV from AI (mercado accesible de 600.000 M USD)",
+      "editor": "The Next Web",
+      "tipo": "Prensa",
+      "fecha": "2026-05",
+      "url": "https://thenextweb.com/news/servicenow-30-billion-2030-now-assist-ai-revenue"
+    },
+    {
+      "id": 34,
+      "titulo": "ServiceNow's $7 billion Armis acquisition (23 veces ingresos)",
+      "editor": "Fintool",
+      "tipo": "Prensa",
+      "fecha": "2025-12",
+      "url": "https://fintool.com/news/servicenow-armis-7-billion-acquisition"
+    },
+    {
+      "id": 35,
+      "titulo": "Software vs. AI Q1 2026: SaaSpocalypse Examined",
+      "editor": "Long Angle",
+      "tipo": "Prensa",
+      "fecha": "2026-04-02",
+      "url": "https://www.longangle.com/alts-education/software-ai"
+    },
+    {
+      "id": 36,
+      "titulo": "Top 10 CRM Software Vendors, Market Size and Market Forecast 2024-2029",
+      "editor": "Apps Run The World",
+      "tipo": "Sectorial",
+      "fecha": "2025-07-23",
+      "url": "https://www.appsruntheworld.com/top-10-crm-software-vendors-and-market-forecast/"
+    },
+    {
+      "id": 37,
+      "titulo": "ServiceNow Stock Is Down 33% in 2026. Could Q1 Earnings Be the Turning Point?",
+      "editor": "TIKR",
+      "tipo": "Prensa",
+      "fecha": "2026-04",
+      "url": "https://www.tikr.com/blog/servicenow-stock-is-down-33-in-2026-could-q1-earnings-be-the-turning-point"
+    },
+    {
+      "id": 38,
+      "titulo": "Informe de Salesforce del repositorio (competencia, 12-oct-2026), con datos de IDC y ARTW",
+      "editor": "Repositorio de análisis",
+      "tipo": "Sectorial",
+      "fecha": "2026-10-12",
+      "url": "https://www.appsruntheworld.com/top-10-crm-software-vendors-and-market-forecast/"
+    },
+    {
+      "id": 39,
+      "titulo": "Microsoft Corporation Form 10-K del ejercicio a 30 de junio de 2026",
+      "editor": "Microsoft / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-07-29",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm"
+    },
+    {
+      "id": 40,
+      "titulo": "SAP SE Form 20-F 2025",
+      "editor": "SAP / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-02-26",
+      "url": "https://www.sec.gov/Archives/edgar/data/1000184/000110465926020058/sap-20251231x20f.htm"
+    },
+    {
+      "id": 41,
+      "titulo": "Workday, Inc. Form 10-K del ejercicio a 31 de enero de 2026 (datos XBRL)",
+      "editor": "Workday / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-03-06",
+      "url": "https://www.sec.gov/Archives/edgar/data/1327811/000132781126000014/"
+    },
+    {
+      "id": 42,
+      "titulo": "Oracle Corporation Form 10-K del ejercicio a 31 de mayo de 2026",
+      "editor": "Oracle / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-06-22",
+      "url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526277521/orcl-20260531.htm"
+    },
+    {
+      "id": 43,
+      "titulo": "ServiceNow, Inc. (NOW) Up 6.3%: Time to Capture This Opportunity? (incidente de seguridad de junio)",
+      "editor": "Weiss Ratings",
+      "tipo": "Prensa",
+      "fecha": "2026-06",
+      "url": "https://weissratings.com/en/instant-news-alerts/servicenow-inc-now-up-6-3-time-to-capture-this-opportunity"
+    },
+    {
+      "id": 44,
+      "titulo": "ServiceNow, Inc. Form DEF 14A 2026 (carta del comité de remuneración, copia de cortesía)",
+      "editor": "ServiceNow / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-04-06",
+      "url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000039/now2026proxycourtesycopy.pdf"
+    },
+    {
+      "id": 45,
+      "titulo": "ServiceNow, Inc. Form 4 (Gina Mastantuono, agosto de 2026)",
+      "editor": "ServiceNow / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-08-17",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001373715/000146539126000030/wk-form4_1787172763.xml"
+    },
+    {
+      "id": 46,
+      "titulo": "NOW 2026 annual meeting",
+      "editor": "Boardroom Alpha",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-05",
+      "url": "https://www.boardroomalpha.com/meetings/now-2026-annual-meeting"
+    },
+    {
+      "id": 47,
+      "titulo": "SERVICENOW INC (NOW) Institutional Shareholders",
+      "editor": "InsiderSet",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-03-31",
+      "url": "https://www.insiderset.com/stocks/NOW/institutional-ownership"
+    },
+    {
+      "id": 48,
+      "titulo": "ServiceNow, Inc. Form 4 (William McDermott, agosto de 2026)",
+      "editor": "ServiceNow / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-08-17",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001373715/000133494426000034/wk-form4_1787172788.xml"
+    },
+    {
+      "id": 49,
+      "titulo": "ServiceNow Aktie: Starkes Insider-Signal",
+      "editor": "Kapitalmarktexperten",
+      "tipo": "Prensa",
+      "fecha": "2026",
+      "url": "https://www.kapitalmarktexperten.de/servicenow-aktie-starkes-insider-signal/"
+    },
+    {
+      "id": 50,
+      "titulo": "ServiceNow Eyes Up to $32 Billion in Subscription Revenue by 2030",
+      "editor": "Placera / Bloomberg",
+      "tipo": "Prensa",
+      "fecha": "2026-05-05",
+      "url": "https://www.placera.se/telegram/servicenow-eyes-up-to-32-billion-in-subscription-revenue-by-2030-20260505"
+    },
+    {
+      "id": 51,
+      "titulo": "ServiceNow (NOW) Stock Forecast & Analyst Price Targets",
+      "editor": "Stock Analysis",
+      "tipo": "Analistas",
+      "fecha": "2026-10",
+      "url": "https://stockanalysis.com/stocks/now/forecast/"
+    },
+    {
+      "id": 52,
+      "titulo": "NOW Forecast, Price Target & Analyst Ratings",
+      "editor": "Chartmill",
+      "tipo": "Analistas",
+      "fecha": "2026-10",
+      "url": "https://www.chartmill.com/stock/quote/NOW/analyst-ratings"
+    },
+    {
+      "id": 53,
+      "titulo": "ServiceNow (NYSE:NOW) price target raised to $150.00",
+      "editor": "MarketBeat",
+      "tipo": "Analistas",
+      "fecha": "2026-08-19",
+      "url": "https://www.marketbeat.com/instant-alerts/servicenow-nysenow-price-target-raised-to-15000-2026-08-19/"
+    },
+    {
+      "id": 54,
+      "titulo": "Evercore ISI lifts target for ServiceNow stock to USD 175.00",
+      "editor": "ad-hoc-news",
+      "tipo": "Analistas",
+      "fecha": "2026-10",
+      "url": "https://www.ad-hoc-news.de/boerse/news/corporate-news/evercore-isi-lifts-target-for-servicenow-stock-to-usd-175-00/70324543"
+    },
+    {
+      "id": 55,
+      "titulo": "ServiceNow Stock Moves Higher: What's Going On? (Oppenheimer, 165 USD)",
+      "editor": "Benzinga",
+      "tipo": "Prensa",
+      "fecha": "2026-10-13",
+      "url": "https://www.benzinga.com/trading-ideas/movers/26/10/62328777/servicenow-stock-moves-higher-whats-going-on"
+    },
+    {
+      "id": 56,
+      "titulo": "Servicenow Stock Forecast & Predictions",
+      "editor": "WallStreetZen",
+      "tipo": "Analistas",
+      "fecha": "2026-10",
+      "url": "https://www.wallstreetzen.com/stocks/us/nyse/now/stock-forecast"
+    },
+    {
+      "id": 57,
+      "titulo": "Tabla de comparables de software a 9-oct-2026 (EBITDA GAAP de XBRL de la SEC, estimaciones de MarketScreener menos remuneración en acciones), del informe de Adobe del repositorio",
+      "editor": "MarketScreener / SEC (recogido en el repositorio)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-10",
+      "url": "https://www.marketscreener.com/quote/stock/SERVICENOW-INC-10912979/finances/"
+    },
+    {
+      "id": 58,
+      "titulo": "Salesforce: múltiplos propios a 12-oct-2026 (informe de Salesforce del repositorio)",
+      "editor": "MarketScreener / SEC (recogido en el repositorio)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-12",
+      "url": "https://www.marketscreener.com/quote/stock/SALESFORCE-INC-12180/finances/"
+    },
+    {
+      "id": 59,
+      "titulo": "ServiceNow Inc (NOW) Stock Price & News: cierre del 13-oct-2026 (138,61 USD; capitalización ≈143.300 M)",
+      "editor": "Google Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-13",
+      "url": "https://www.google.com/finance/quote/NOW:NYSE"
+    },
+    {
+      "id": 60,
+      "titulo": "ServiceNow (NYSE:NOW) Shares Down 1.4%: Time to Sell?",
+      "editor": "MarketBeat",
+      "tipo": "Prensa",
+      "fecha": "2026-10-13",
+      "url": "https://www.marketbeat.com/instant-alerts/price-servicenow-nyse-now-shares-down-14-time-to-sell-2026-10-13/"
+    },
+    {
+      "id": 61,
+      "titulo": "ServiceNow Inc Stock Price Today (fecha de resultados del 3T26)",
+      "editor": "Investing.com",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www.investing.com/equities/servicenow-inc"
+    },
+    {
+      "id": 62,
+      "titulo": "ServiceNow - 13 Year Stock Price History (cierres anuales antes del desdoblamiento, divididos entre 5)",
+      "editor": "Macrotrends",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://macrotrends.net/stocks/charts/NOW/servicenow/stock-price-history"
+    },
+    {
+      "id": 63,
+      "titulo": "ServiceNow, Inc. (NOW) Price History (cierre de 2025 tras el desdoblamiento)",
+      "editor": "Digrin",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www.digrin.com/stocks/detail/NOW/price"
+    },
+    {
+      "id": 64,
+      "titulo": "ServiceNow Inc sentiment (posición corta del 2,8 % del capital flotante, septiembre de 2026)",
+      "editor": "Benzinga",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-09",
+      "url": "https://www.benzinga.com/quote/NOW/sentiment"
+    },
+    {
+      "id": 65,
+      "titulo": "10-year Treasury yield (13-oct-2026): 5,21-5,24 %",
+      "editor": "CNBC / FRED",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-13",
+      "url": "https://www.cnbc.com/2026/10/13/us-treasurys-bonds-yields.html"
+    },
+    {
+      "id": 66,
+      "titulo": "Implied ERP by month (ERPbymonth.xlsx), octubre de 2026: 4,20 %. Dato del método del repositorio; no se abrió la hoja",
+      "editor": "Aswath Damodaran, NYU Stern",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx"
+    },
+    {
+      "id": 67,
+      "titulo": "ServiceNow: It Still Looks Too Expensive",
+      "editor": "Seeking Alpha",
+      "tipo": "Foros y redes",
+      "fecha": "2026-05",
+      "url": "https://seekingalpha.com/article/4910180-servicenow-it-still-looks-too-expensive"
+    },
+    {
+      "id": 68,
+      "titulo": "ServiceNow Faces AI Misclassification, Valuation Reassessed (resumen de un análisis de Seeking Alpha)",
+      "editor": "Let's Data Science",
+      "tipo": "Foros y redes",
+      "fecha": "2026-06",
+      "url": "https://letsdatascience.com/news/servicenow-faces-ai-misclassification-valuation-reassessed-acb16ef6"
+    },
+    {
+      "id": 69,
+      "titulo": "Is ServiceNow stock a buy after its brutal first half?",
+      "editor": "Motley Fool",
+      "tipo": "Foros y redes",
+      "fecha": "2026-07-01",
+      "url": "https://www.fool.com/investing/2026/07/01/is-servicenow-stock-a-buy-after-its-brutal-first-h/"
+    },
+    {
+      "id": 70,
+      "titulo": "ServiceNow's revenue is accelerating: is the stock a buy now?",
+      "editor": "Motley Fool",
+      "tipo": "Foros y redes",
+      "fecha": "2026-07-27",
+      "url": "https://www.fool.com/investing/2026/07/27/servicenows-revenue-accelerating-stock-buy-now/"
+    },
+    {
+      "id": 71,
+      "titulo": "The time to buy ServiceNow is now: oversold and ready for a rebound",
+      "editor": "Barchart / MarketBeat",
+      "tipo": "Foros y redes",
+      "fecha": "2026",
+      "url": "https://www.barchart.com/story/news/37347369/the-time-to-buy-servicenow-is-now-oversold-and-ready-for-a-rebound"
+    }
+  ],
+  "calc": {
+    "version": 4,
+    "etiquetas": {
+      "margen_bruto": "M. bruto",
+      "margen_bruto_largo": "Margen bruto",
+      "dias_base": "sobre el coste de ventas"
+    },
+    "recomendacion": {
+      "recomendacion": "Mantener",
+      "regla": "Mantener",
+      "regla_absoluta": "Vender",
+      "regla_relativa": "Vender",
+      "coincide": true,
+      "conviccion": "Baja",
+      "conviccion_sugerida": "Media",
+      "conviccion_razones": [
+        "Mantener con las dos reglas de acuerdo y lejos de los umbrales"
+      ],
+      "reglas_discrepan": false,
+      "relativo": {
+        "prima_implicita_pct": 4.2,
+        "wacc": 10.15,
+        "ke": 10.47,
+        "dcf": 97.64,
+        "dcf_min": 90.65,
+        "dcf_max": 105.71,
+        "valor_objetivo": 95.24,
+        "alcista": 132.89,
+        "bajista": 52.28,
+        "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+        "fecha": "2026-10",
+        "potencial_pct": -31.3,
+        "rentabilidad_total_pct": -31.3,
+        "asimetria": -0.07
+      },
+      "objetivo_mercado_txt": " · con la prima implícita del mercado: 95,24 (-31,3 %)",
+      "objetivo_mercado_corto": " · mercado 95,24",
+      "rentabilidad_mercado_corto": " · mercado -31,3 %",
+      "potencial_pct": -44.6,
+      "dividendo_pct": 0,
+      "rentabilidad_total_pct": -44.6,
+      "alcista_pct": -23.3,
+      "bajista_pct": -68.9,
+      "asimetria": -0.34,
+      "comprar_por_debajo": 76.82,
+      "vender_por_encima": 181.18,
+      "tabla": [
+        {
+          "concepto": "Objetivo a 12 meses (nuestro PER × nuestro BPA 2028e, ponderado 30/45/25)",
+          "valor": "163,06 USD"
+        },
+        {
+          "concepto": "Bajista / base / alcista a 12 meses",
+          "valor": "49,9x × 2,14 = 106,79 · 58,7x × 3,01 = 176,69 · 58,7x × 3,51 = 206,04"
+        },
+        {
+          "concepto": "Rentabilidad a 12 meses: ponderada / del base (con dividendo)",
+          "valor": "17,6 % / 27,5 %"
+        },
+        {
+          "concepto": "Regla de múltiplos aplicada",
+          "valor": "v2: base = mín(actual, mediana 5 a) con la historia al cierre; bajista mín. 5 a o base × 0,85; alcista techo base × 1,30"
+        },
+        {
+          "concepto": "Objetivo medio de los analistas (solo contraste)",
+          "valor": "149,38 (nuestro base +18,3 %)"
+        },
+        {
+          "concepto": "Valor intrínseco (síntesis ponderada, largo plazo)",
+          "valor": "76,82 USD"
+        },
+        {
+          "concepto": "Potencial sobre el precio actual",
+          "valor": "-44,6 %"
+        },
+        {
+          "concepto": "Rentabilidad por dividendo ordinario",
+          "valor": "0,0 %"
+        },
+        {
+          "concepto": "Rentabilidad total esperada a 12 meses",
+          "valor": "-44,6 %"
+        },
+        {
+          "concepto": "Escenario alcista / bajista",
+          "valor": "-23,3 % / -68,9 %"
+        },
+        {
+          "concepto": "Asimetría (ganancia alcista / pérdida bajista)",
+          "valor": "-0,34x"
+        },
+        {
+          "concepto": "Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado",
+          "valor": "8,2 % frente a 11,7 % y 10,2 %"
+        },
+        {
+          "concepto": "Valor objetivo con la prima implícita del mercado (4,2 %, WACC 10,2 %)",
+          "valor": "95,24 USD"
+        },
+        {
+          "concepto": "Rentabilidad total esperada con la prima del mercado",
+          "valor": "-31,3 %"
+        },
+        {
+          "concepto": "Asimetría con la prima del mercado",
+          "valor": "-0,07x"
+        },
+        {
+          "concepto": "Regla absoluta (frente a su coste de capital)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Regla relativa (frente a lo que pide el mercado)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "¿La calidad de la empresa sostiene el crecimiento previsto?",
+          "valor": "En parte (13,4 % anual proyectado; sin inversión neta)"
+        },
+        {
+          "concepto": "Señal del valor intrínseco (regla del DCF, referencia)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Recomendación según la regla a 12 meses (Comprar: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender: ponderada ≤ -10 %)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Convicción según los criterios (Mantener con las dos reglas de acuerdo y lejos de los umbrales)",
+          "valor": "Media"
+        }
+      ],
+      "niveles": [
+        {
+          "accion": "Comprar",
+          "condicion": "Por debajo de 76,82 (ponderada a 12 meses ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco)"
+        },
+        {
+          "accion": "Mantener",
+          "condicion": "Entre 76,82 y 181,18"
+        },
+        {
+          "accion": "Vender o reducir",
+          "condicion": "Por encima de 181,18 (ponderada a 12 meses ≤ -10 %)"
+        }
+      ],
+      "precio_txt": "",
+      "valor_objetivo_txt": "",
+      "regla_valor_intrinseco": "Vender",
+      "objetivo_12m": {
+        "completo": true,
+        "filas": [
+          {
+            "escenario": "Bajista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 2.14,
+            "multiplo": 49.9,
+            "multiplo_informe": null,
+            "origen": "base × 0.85 (el mínimo de 5 años no queda por debajo del base)",
+            "precio": 106.79,
+            "rentabilidad_pct": -23,
+            "justificacion": "Ventas de 20.619 M (5 puntos menos de crecimiento en 2027-28) y margen EBITDA del 20 %: EBIT de 2.887 M, resultado financiero nulo, impuesto del 22 % y 1.050 M de acciones."
+          },
+          {
+            "escenario": "Base",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 3.01,
+            "multiplo": 58.7,
+            "multiplo_informe": null,
+            "origen": "PER actual",
+            "precio": 176.69,
+            "rentabilidad_pct": 27.5,
+            "justificacion": "Ventas de 22.488 M y margen EBITDA del 24 % menos un 6 % de amortización: EBIT de 4.048 M, resultado financiero nulo, impuesto del 22 % y 1.050 M de acciones."
+          },
+          {
+            "escenario": "Alcista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 3.51,
+            "multiplo": 58.7,
+            "multiplo_informe": null,
+            "origen": "el base (ni la historia ni los comparables pagan más)",
+            "precio": 206.04,
+            "rentabilidad_pct": 48.6,
+            "justificacion": "Ventas de 23.649 M y margen EBITDA del 26 %: EBIT de 4.730 M y 1.050 M de acciones."
+          }
+        ],
+        "regla": {
+          "version": "v2",
+          "bajista": 49.9,
+          "base": 58.7,
+          "alcista": 58.7,
+          "bajista_origen": "base × 0.85 (el mínimo de 5 años no queda por debajo del base)",
+          "base_origen": "PER actual",
+          "alcista_origen": "el base (ni la historia ni los comparables pagan más)"
+        },
+        "version": "v2",
+        "probabilidades": [
+          30,
+          45,
+          25
+        ],
+        "objetivo_ponderado": 163.06,
+        "objetivo_simple": 163.17,
+        "objetivo_base": 176.69,
+        "rentabilidad_ponderada_pct": 17.6,
+        "rentabilidad_simple_pct": 17.7,
+        "rentabilidad_base_pct": 27.5,
+        "asimetria": 2.12,
+        "senal": "Mantener",
+        "senal_sin_confirmar": null,
+        "confianza_baja": true,
+        "comprar_por_debajo": 76.82,
+        "vender_por_encima": 181.18,
+        "consenso_objetivo": 149.38,
+        "diferencia_consenso_pct": 18.3
+      },
+      "rentabilidad_12m_pct": 17.6,
+      "rentabilidad_12m_txt": "+17,6 % (base +27,5 %)",
+      "objetivo_12m_txt": "163,06 USD"
+    },
+    "mercado": {
+      "precio": 138.61,
+      "acciones": 1045,
+      "capitalizacion": 144847,
+      "deuda_neta": 832,
+      "deuda_neta_ajustada": null,
+      "asimilables_deuda": null,
+      "ajustes_puente": 0,
+      "valor_empresa": 145679,
+      "fecha_puente": "2026-06-30"
+    },
+    "clave": {
+      "capitalizacion": 144847,
+      "valor_empresa": 145679,
+      "deuda_neta": 832,
+      "ev_ventas_ltm": 9.89,
+      "ev_ebitda_ltm": 56.9,
+      "ev_ebitda_ntm": null,
+      "ev_ebit_ltm": 86.7,
+      "per_ltm": 86.6,
+      "per_ntm": null,
+      "fcf_yield_pct": 3.2,
+      "dividendo_pct": 0,
+      "dn_ebitda": 0.3,
+      "roic_pct": 45.2,
+      "margen_ebitda_pct": 17.4,
+      "deuda_neta_ajustada": 832,
+      "dn_ebitda_ajustada": 0.3,
+      "crecimiento_tcac_pct": 22.5,
+      "ingresos_ntm": 18619,
+      "ebitda_ntm": null,
+      "bpa_ntm": null,
+      "ebitda_ltm": 2562,
+      "ingresos_ltm": 14732,
+      "ev_rab": null
+    },
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 5896,
+        "crecimiento_pct": null,
+        "beneficio_bruto": 4543,
+        "margen_bruto_pct": 77.1,
+        "ebitda": 729,
+        "margen_ebitda_pct": 12.4,
+        "ebit": 257,
+        "margen_ebit_pct": 4.4,
+        "beneficio_neto": 230,
+        "margen_neto_pct": 3.9,
+        "bpa": 0.23,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 7.6,
+        "payout_pct": 0
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 7245,
+        "crecimiento_pct": 22.9,
+        "beneficio_bruto": 5672,
+        "margen_bruto_pct": 78.3,
+        "ebitda": 788,
+        "margen_ebitda_pct": 10.9,
+        "ebit": 355,
+        "margen_ebit_pct": 4.9,
+        "beneficio_neto": 325,
+        "margen_neto_pct": 4.5,
+        "bpa": 0.32,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 18.5,
+        "payout_pct": 0
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 8971,
+        "crecimiento_pct": 23.8,
+        "beneficio_bruto": 7050,
+        "margen_bruto_pct": 78.6,
+        "ebitda": 1324,
+        "margen_ebitda_pct": 14.8,
+        "ebit": 762,
+        "margen_ebit_pct": 8.5,
+        "beneficio_neto": 1731,
+        "margen_neto_pct": 19.3,
+        "bpa": 1.68,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": -71.4,
+        "payout_pct": 0
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 10984,
+        "crecimiento_pct": 22.4,
+        "beneficio_bruto": 8697,
+        "margen_bruto_pct": 79.2,
+        "ebitda": 1928,
+        "margen_ebitda_pct": 17.6,
+        "ebit": 1364,
+        "margen_ebit_pct": 12.4,
+        "beneficio_neto": 1425,
+        "margen_neto_pct": 13,
+        "bpa": 1.37,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 18,
+        "payout_pct": 0
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 13278,
+        "crecimiento_pct": 20.9,
+        "beneficio_bruto": 10295,
+        "margen_bruto_pct": 77.5,
+        "ebitda": 2562,
+        "margen_ebitda_pct": 19.3,
+        "ebit": 1824,
+        "margen_ebit_pct": 13.7,
+        "beneficio_neto": 1748,
+        "margen_neto_pct": 13.2,
+        "bpa": 1.67,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 22.7,
+        "payout_pct": 0
+      }
+    ],
+    "tcac": {
+      "periodo": "2021-2025",
+      "ingresos_pct": 22.5,
+      "ebitda_pct": 36.9,
+      "bpa_pct": 64.2
+    },
+    "cuenta_y_prevision": [
+      {
+        "periodo": "2021",
+        "ingresos": 5896,
+        "ebitda": 729
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 7245,
+        "ebitda": 788
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 8971,
+        "ebitda": 1324
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 10984,
+        "ebitda": 1928
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 13278,
+        "ebitda": 2562
+      },
+      {
+        "periodo": "2026e",
+        "ingresos": 16226,
+        "ebitda": 2840
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 19227,
+        "ebitda": 4326
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 22496,
+        "ebitda": 5399
+      },
+      {
+        "periodo": "2029e",
+        "ingresos": 26096,
+        "ebitda": 6785
+      },
+      {
+        "periodo": "2030e",
+        "ingresos": 30010,
+        "ebitda": 8403
+      },
+      {
+        "periodo": "2031e",
+        "ingresos": 33911,
+        "ebitda": 10004
+      },
+      {
+        "periodo": "2032e",
+        "ingresos": 37641,
+        "ebitda": 11669
+      },
+      {
+        "periodo": "2033e",
+        "ingresos": 41029,
+        "ebitda": 13129
+      },
+      {
+        "periodo": "2034e",
+        "ingresos": 43901,
+        "ebitda": 14487
+      },
+      {
+        "periodo": "2035e",
+        "ingresos": 46096,
+        "ebitda": 15212
+      }
+    ],
+    "segmentos_ultimo": [
+      {
+        "nombre": "Suscripciones",
+        "ingresos": 12883,
+        "peso_pct": 97,
+        "crecimiento_pct": null,
+        "margen_pct": null,
+        "tipo_margen": null
+      },
+      {
+        "nombre": "Servicios profesionales y otros",
+        "ingresos": 395,
+        "peso_pct": 3,
+        "crecimiento_pct": null,
+        "margen_pct": null,
+        "tipo_margen": null
+      }
+    ],
+    "segmentos_tabla": {
+      "periodos": [
+        "",
+        "",
+        "",
+        "",
+        "2025"
+      ],
+      "filas": [
+        {
+          "nombre": "Suscripciones",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": null,
+          "v4": 12883
+        },
+        {
+          "nombre": "Servicios profesionales y otros",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": null,
+          "v4": 395
+        }
+      ]
+    },
+    "segmentos_periodo": "2025",
+    "balance": [
+      {
+        "periodo": "2021",
+        "activo_total": null,
+        "intangibles": 0,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": null,
+        "deuda_financiera": null,
+        "arrendamientos": 0,
+        "deuda_neta": 0,
+        "patrimonio": null,
+        "minoritarios": 0,
+        "dn_ebitda": 0,
+        "dn_patrimonio_pct": null,
+        "dso": null,
+        "dio": 0,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 32.1,
+        "capital_invertido": 0,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 13299,
+        "intangibles": 0,
+        "circulante": -4730,
+        "circulante_ventas_pct": -65.3,
+        "caja": 6397,
+        "deuda_financiera": 1486,
+        "arrendamientos": 0,
+        "deuda_neta": -4911,
+        "patrimonio": 5032,
+        "minoritarios": 0,
+        "dn_ebitda": -6.23,
+        "dn_patrimonio_pct": -98,
+        "dso": null,
+        "dio": 0,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 121,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 17387,
+        "intangibles": 0,
+        "circulante": -5866,
+        "circulante_ventas_pct": -65.4,
+        "caja": 8080,
+        "deuda_financiera": 1488,
+        "arrendamientos": 0,
+        "deuda_neta": -6592,
+        "patrimonio": 7628,
+        "minoritarios": 0,
+        "dn_ebitda": -4.98,
+        "dn_patrimonio_pct": -86,
+        "dso": null,
+        "dio": 0,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 1036,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 20383,
+        "intangibles": 0,
+        "circulante": -6914,
+        "circulante_ventas_pct": -62.9,
+        "caja": null,
+        "deuda_financiera": 1489,
+        "arrendamientos": 0,
+        "deuda_neta": 1489,
+        "patrimonio": null,
+        "minoritarios": 0,
+        "dn_ebitda": 0.77,
+        "dn_patrimonio_pct": null,
+        "dso": null,
+        "dio": 0,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 1489,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 26040,
+        "intangibles": 4700,
+        "circulante": -5680,
+        "circulante_ventas_pct": -42.8,
+        "caja": 9700,
+        "deuda_financiera": 1490,
+        "arrendamientos": 0,
+        "deuda_neta": -8210,
+        "patrimonio": 12960,
+        "minoritarios": 0,
+        "dn_ebitda": -3.2,
+        "dn_patrimonio_pct": -63,
+        "dso": 72,
+        "dio": 0,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 4750,
+        "liquidez_corriente": null
+      }
+    ],
+    "perimetro_nota": "Cambio de perímetro (2025: Moveworks (asistentes de IA), unos 2.850 M USD, consolidada en diciembre de 2025: el fondo de comercio sube a ≈3.580 M al cierre.; 2026: Armis (ciberseguridad), 7.750 M USD en efectivo, consolidada desde el 20-abr-2026, y Veza (identidades) en el 2T26: fuera del balance de 2025 y dentro del LTM solo desde abril.). Los ratios de balance de ese año (días, circulante, deuda neta / EBITDA, ROIC) y los indicadores de calidad contable no son comparables con los anteriores.",
+    "flujos": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": null,
+        "capex": null,
+        "pagos_arrendamientos": 0,
+        "fcf": null,
+        "beneficio_neto": 230,
+        "conversion_pct": null,
+        "capex_ventas_pct": null,
+        "capex_amortizacion": null,
+        "adquisiciones": null,
+        "desinversiones": 0,
+        "dividendos": 0,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 1015,
+        "fcf_por_accion": null
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 2723,
+        "capex": 550,
+        "pagos_arrendamientos": 0,
+        "fcf": 2173,
+        "beneficio_neto": 325,
+        "conversion_pct": 669,
+        "capex_ventas_pct": 7.6,
+        "capex_amortizacion": 1.27,
+        "adquisiciones": null,
+        "desinversiones": 0,
+        "dividendos": 0,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 1020,
+        "fcf_por_accion": 2.13
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 3398,
+        "capex": 694,
+        "pagos_arrendamientos": 0,
+        "fcf": 2704,
+        "beneficio_neto": 1731,
+        "conversion_pct": 156,
+        "capex_ventas_pct": 7.7,
+        "capex_amortizacion": 1.23,
+        "adquisiciones": null,
+        "desinversiones": 0,
+        "dividendos": 0,
+        "recompras": 538,
+        "emision_acciones": 0,
+        "retorno_accionista": 538,
+        "payout_caja_pct": 31,
+        "acciones": 1030,
+        "fcf_por_accion": 2.63
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 4267,
+        "capex": 852,
+        "pagos_arrendamientos": 0,
+        "fcf": 3415,
+        "beneficio_neto": 1425,
+        "conversion_pct": 240,
+        "capex_ventas_pct": 7.8,
+        "capex_amortizacion": 1.51,
+        "adquisiciones": null,
+        "desinversiones": 0,
+        "dividendos": 0,
+        "recompras": 696,
+        "emision_acciones": 0,
+        "retorno_accionista": 696,
+        "payout_caja_pct": 49,
+        "acciones": 1040,
+        "fcf_por_accion": 3.28
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 5444,
+        "capex": 868,
+        "pagos_arrendamientos": 0,
+        "fcf": 4576,
+        "beneficio_neto": 1748,
+        "conversion_pct": 262,
+        "capex_ventas_pct": 6.5,
+        "capex_amortizacion": 1.18,
+        "adquisiciones": null,
+        "desinversiones": 0,
+        "dividendos": 0,
+        "recompras": 1800,
+        "emision_acciones": 0,
+        "retorno_accionista": 1800,
+        "payout_caja_pct": 103,
+        "acciones": 1047,
+        "fcf_por_accion": 4.37
+      }
+    ],
+    "flujos_acumulado": {
+      "periodo": "2021-2025",
+      "fcf": 12868,
+      "adquisiciones": 0,
+      "dividendos": 0,
+      "recompras": 3034,
+      "conversion_pct": 236
+    },
+    "rentabilidad": [
+      {
+        "periodo": "2021",
+        "nopat": 237,
+        "capital_invertido": 0,
+        "roic_pct": null,
+        "roe_pct": null,
+        "roa_pct": null,
+        "margen_neto_pct": 3.9,
+        "rotacion": null,
+        "apalancamiento": null
+      },
+      {
+        "periodo": "2022",
+        "nopat": 289,
+        "capital_invertido": 61,
+        "roic_pct": 478,
+        "roe_pct": 12.9,
+        "roa_pct": 4.9,
+        "margen_neto_pct": 4.5,
+        "rotacion": 1.09,
+        "apalancamiento": 2.64
+      },
+      {
+        "periodo": "2023",
+        "nopat": 762,
+        "capital_invertido": 579,
+        "roic_pct": 131.7,
+        "roe_pct": 27.3,
+        "roa_pct": 11.3,
+        "margen_neto_pct": 19.3,
+        "rotacion": 0.58,
+        "apalancamiento": 2.42
+      },
+      {
+        "periodo": "2024",
+        "nopat": 1118,
+        "capital_invertido": 1263,
+        "roic_pct": 88.6,
+        "roe_pct": 37.4,
+        "roa_pct": 7.5,
+        "margen_neto_pct": 13,
+        "rotacion": 0.58,
+        "apalancamiento": 4.95
+      },
+      {
+        "periodo": "2025",
+        "nopat": 1410,
+        "capital_invertido": 3120,
+        "roic_pct": 45.2,
+        "roe_pct": 27,
+        "roa_pct": 7.5,
+        "margen_neto_pct": 13.2,
+        "rotacion": 0.57,
+        "apalancamiento": 3.58
+      }
+    ],
+    "roic_incremental_pct": 37.6,
+    "roic_frente_wacc": [
+      {
+        "periodo": "2021",
+        "roic_pct": null,
+        "roe_pct": null,
+        "wacc_pct": 11.7
+      },
+      {
+        "periodo": "2022",
+        "roic_pct": 478,
+        "roe_pct": 12.9,
+        "wacc_pct": 11.7
+      },
+      {
+        "periodo": "2023",
+        "roic_pct": 131.7,
+        "roe_pct": 27.3,
+        "wacc_pct": 11.7
+      },
+      {
+        "periodo": "2024",
+        "roic_pct": 88.6,
+        "roe_pct": 37.4,
+        "wacc_pct": 11.7
+      },
+      {
+        "periodo": "2025",
+        "roic_pct": 45.2,
+        "roe_pct": 27,
+        "wacc_pct": 11.7
+      }
+    ],
+    "calidad": {
+      "periodo": "2025",
+      "altman_z": 6.91,
+      "altman_zona": "Zona segura",
+      "piotroski_f": 4,
+      "piotroski_detalle": [
+        {
+          "criterio": "Beneficio neto positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "ROA mejora",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Flujo operativo > beneficio neto",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Baja el endeudamiento (deuda / activo)",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora la liquidez corriente",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "No emite acciones",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Mejora el margen bruto",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Mejora la rotación del activo",
+          "resultado": "No"
+        }
+      ],
+      "tabla": [
+        {
+          "indicador": "Altman Z",
+          "valor": "6,91",
+          "lectura": "Zona segura (> 2,99 seguro; < 1,81 riesgo). No aplica a bancos ni aseguradoras, y subestima la solvencia de empresas con grandes anticipos de clientes o prefinanciación pública (contratistas, construcción), que inflan el pasivo. No fiable en 2025: cambio de perímetro (el balance incluye negocios sin su cuenta de resultados completa)."
+        },
+        {
+          "indicador": "Piotroski F",
+          "valor": "4 / 8",
+          "lectura": "Intermedio (4-6)."
+        },
+        {
+          "indicador": "Flujo operativo / beneficio neto (acumulado)",
+          "valor": "2,90x",
+          "lectura": "El beneficio se cobra."
+        }
+      ]
+    },
+    "dcf": {
+      "proyeccion": [
+        {
+          "periodo": "2026e",
+          "ingresos": 16226,
+          "crecimiento_pct": 22.2,
+          "ebitda": 2840,
+          "margen_ebitda_pct": 17.5,
+          "amortizacion": 1006,
+          "ebit": 1834,
+          "impuestos": 403,
+          "capex": 974,
+          "variacion_circulante": -810,
+          "fcff": 2273,
+          "fraccion": 0.21,
+          "factor": 0.988,
+          "vp": 480
+        },
+        {
+          "periodo": "2027e",
+          "ingresos": 19227,
+          "crecimiento_pct": 18.5,
+          "ebitda": 4326,
+          "margen_ebitda_pct": 22.5,
+          "amortizacion": 1154,
+          "ebit": 3173,
+          "impuestos": 698,
+          "capex": 1154,
+          "variacion_circulante": -1201,
+          "fcff": 3675,
+          "fraccion": 1,
+          "factor": 0.924,
+          "vp": 3394
+        },
+        {
+          "periodo": "2028e",
+          "ingresos": 22496,
+          "crecimiento_pct": 17,
+          "ebitda": 5399,
+          "margen_ebitda_pct": 24,
+          "amortizacion": 1350,
+          "ebit": 4049,
+          "impuestos": 891,
+          "capex": 1350,
+          "variacion_circulante": -1307,
+          "fcff": 4466,
+          "fraccion": 1,
+          "factor": 0.827,
+          "vp": 3694
+        },
+        {
+          "periodo": "2029e",
+          "ingresos": 26096,
+          "crecimiento_pct": 16,
+          "ebitda": 6785,
+          "margen_ebitda_pct": 26,
+          "amortizacion": 1514,
+          "ebit": 5271,
+          "impuestos": 1160,
+          "capex": 1566,
+          "variacion_circulante": -1440,
+          "fcff": 5499,
+          "fraccion": 1,
+          "factor": 0.741,
+          "vp": 4070
+        },
+        {
+          "periodo": "2030e",
+          "ingresos": 30010,
+          "crecimiento_pct": 15,
+          "ebitda": 8403,
+          "margen_ebitda_pct": 28,
+          "amortizacion": 1681,
+          "ebit": 6722,
+          "impuestos": 1479,
+          "capex": 1801,
+          "variacion_circulante": -1566,
+          "fcff": 6689,
+          "fraccion": 1,
+          "factor": 0.663,
+          "vp": 4432
+        },
+        {
+          "periodo": "2031e",
+          "ingresos": 33911,
+          "crecimiento_pct": 13,
+          "ebitda": 10004,
+          "margen_ebitda_pct": 29.5,
+          "amortizacion": 1831,
+          "ebit": 8173,
+          "impuestos": 1798,
+          "capex": 2035,
+          "variacion_circulante": -1561,
+          "fcff": 7732,
+          "fraccion": 1,
+          "factor": 0.594,
+          "vp": 4587
+        },
+        {
+          "periodo": "2032e",
+          "ingresos": 37641,
+          "crecimiento_pct": 11,
+          "ebitda": 11669,
+          "margen_ebitda_pct": 31,
+          "amortizacion": 1957,
+          "ebit": 9711,
+          "impuestos": 2137,
+          "capex": 2258,
+          "variacion_circulante": -1492,
+          "fcff": 8766,
+          "fraccion": 1,
+          "factor": 0.531,
+          "vp": 4658
+        },
+        {
+          "periodo": "2033e",
+          "ingresos": 41029,
+          "crecimiento_pct": 9,
+          "ebitda": 13129,
+          "margen_ebitda_pct": 32,
+          "amortizacion": 2051,
+          "ebit": 11078,
+          "impuestos": 2437,
+          "capex": 2462,
+          "variacion_circulante": -1355,
+          "fcff": 9586,
+          "fraccion": 1,
+          "factor": 0.476,
+          "vp": 4558
+        },
+        {
+          "periodo": "2034e",
+          "ingresos": 43901,
+          "crecimiento_pct": 7,
+          "ebitda": 14487,
+          "margen_ebitda_pct": 33,
+          "amortizacion": 2195,
+          "ebit": 12292,
+          "impuestos": 2704,
+          "capex": 2634,
+          "variacion_circulante": -1149,
+          "fcff": 10298,
+          "fraccion": 1,
+          "factor": 0.426,
+          "vp": 4384
+        },
+        {
+          "periodo": "2035e",
+          "ingresos": 46096,
+          "crecimiento_pct": 5,
+          "ebitda": 15212,
+          "margen_ebitda_pct": 33,
+          "amortizacion": 2305,
+          "ebit": 12907,
+          "impuestos": 2840,
+          "capex": 2766,
+          "variacion_circulante": -878,
+          "fcff": 10484,
+          "fraccion": 1,
+          "factor": 0.381,
+          "vp": 3996
+        }
+      ],
+      "etapa2": null,
+      "suma_vp": 38254,
+      "valor_terminal": 124170,
+      "vp_terminal": 44814,
+      "valor_empresa": 83068,
+      "peso_terminal_pct": 54,
+      "valor_acciones": 82236,
+      "valor_accion": 78.7,
+      "vt_gordon": 124170,
+      "vt_multiplo": 273811,
+      "multiplo_implicito": 8.2,
+      "g_implicito_pct": 7.58,
+      "metodo_terminal": "gordon",
+      "terminal_tabla": [
+        {
+          "concepto": "Método principal",
+          "valor": "Crecimiento a perpetuidad"
+        },
+        {
+          "concepto": "Crecimiento a perpetuidad",
+          "valor": "3,0 %"
+        },
+        {
+          "concepto": "Múltiplo EV/EBITDA de salida",
+          "valor": "18,0x"
+        },
+        {
+          "concepto": "Valor terminal (Gordon)",
+          "valor": "124.170"
+        },
+        {
+          "concepto": "Valor terminal (múltiplo)",
+          "valor": "273.811"
+        },
+        {
+          "concepto": "Múltiplo de salida implícito en Gordon",
+          "valor": "8,2x"
+        },
+        {
+          "concepto": "Crecimiento implícito en el múltiplo",
+          "valor": "7,58 %"
+        },
+        {
+          "concepto": "Peso del valor terminal en el valor empresa",
+          "valor": "54 %"
+        }
+      ],
+      "puente": [
+        {
+          "concepto": "Valor actual de los flujos proyectados",
+          "valor": "38.254"
+        },
+        {
+          "concepto": "Valor actual del valor terminal",
+          "valor": "44.814"
+        },
+        {
+          "concepto": "Valor empresa",
+          "valor": "83.068"
+        },
+        {
+          "concepto": "− Deuda financiera neta (con arrendamientos)",
+          "valor": "-832"
+        },
+        {
+          "concepto": "− Minoritarios, pensiones y otros; + asociadas",
+          "valor": "0"
+        },
+        {
+          "concepto": "Valor de los fondos propios",
+          "valor": "82.236"
+        },
+        {
+          "concepto": "Acciones diluidas (millones)",
+          "valor": "1.045,0"
+        },
+        {
+          "concepto": "Valor por acción",
+          "valor": "78,70"
+        }
+      ],
+      "composicion": [
+        {
+          "parte": "Flujos proyectados",
+          "valor": 38254
+        },
+        {
+          "parte": "Valor terminal",
+          "valor": 44814
+        }
+      ],
+      "wacc": 11.7,
+      "ke": 12.1,
+      "kd_despues": 4.13,
+      "wacc_tabla": [
+        {
+          "concepto": "Tasa libre de riesgo",
+          "valor": "5,22 %"
+        },
+        {
+          "concepto": "Beta",
+          "valor": "1,25"
+        },
+        {
+          "concepto": "Prima de riesgo de mercado",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Prima adicional (país, tamaño, específica)",
+          "valor": "0,00 %"
+        },
+        {
+          "concepto": "Coste de los fondos propios",
+          "valor": "12,09 %"
+        },
+        {
+          "concepto": "Coste de la deuda antes de impuestos",
+          "valor": "5,30 %"
+        },
+        {
+          "concepto": "Tipo impositivo",
+          "valor": "22,00 %"
+        },
+        {
+          "concepto": "Coste de la deuda después de impuestos",
+          "valor": "4,13 %"
+        },
+        {
+          "concepto": "Peso de la deuda (D / (D + E))",
+          "valor": "5,00 %"
+        },
+        {
+          "concepto": "WACC",
+          "valor": "11,70 %"
+        },
+        {
+          "concepto": "Prima de riesgo implícita del mercado (regla relativa)",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "WACC con la prima implícita del mercado",
+          "valor": "10,15 %"
+        }
+      ],
+      "potencial_pct": -43.2,
+      "sensibilidad": {
+        "eje_columnas": "Crecimiento a perpetuidad",
+        "columnas": [
+          "2,0 %",
+          "2,5 %",
+          "3,0 %",
+          "3,5 %",
+          "4,0 %"
+        ],
+        "filas": [
+          {
+            "wacc": "10,7 %",
+            "v0": 83.57,
+            "v1": 86.63,
+            "v2": 90.08,
+            "v3": 94.01,
+            "v4": 98.53
+          },
+          {
+            "wacc": "11,2 %",
+            "v0": 78.46,
+            "v1": 81.09,
+            "v2": 84.03,
+            "v3": 87.36,
+            "v4": 91.14
+          },
+          {
+            "wacc": "11,7 %",
+            "v0": 73.9,
+            "v1": 76.17,
+            "v2": 78.7,
+            "v3": 81.53,
+            "v4": 84.74
+          },
+          {
+            "wacc": "12,2 %",
+            "v0": 69.8,
+            "v1": 71.77,
+            "v2": 73.95,
+            "v3": 76.39,
+            "v4": 79.13
+          },
+          {
+            "wacc": "12,7 %",
+            "v0": 66.09,
+            "v1": 67.81,
+            "v2": 69.71,
+            "v3": 71.82,
+            "v4": 74.17
+          }
+        ]
+      },
+      "sensibilidad2": {
+        "columnas": [
+          "-2 pp",
+          "-1 pp",
+          "0 pp",
+          "+1 pp",
+          "+2 pp"
+        ],
+        "filas": [
+          {
+            "margen": "-2 pp",
+            "v0": 62.18,
+            "v1": 67.48,
+            "v2": 73.19,
+            "v3": 79.34,
+            "v4": 85.95
+          },
+          {
+            "margen": "-1 pp",
+            "v0": 64.6,
+            "v1": 70.07,
+            "v2": 75.94,
+            "v3": 82.27,
+            "v4": 89.07
+          },
+          {
+            "margen": "0 pp",
+            "v0": 67.03,
+            "v1": 72.65,
+            "v2": 78.7,
+            "v3": 85.2,
+            "v4": 92.19
+          },
+          {
+            "margen": "+1 pp",
+            "v0": 69.45,
+            "v1": 75.23,
+            "v2": 81.45,
+            "v3": 88.13,
+            "v4": 95.31
+          },
+          {
+            "margen": "+2 pp",
+            "v0": 71.88,
+            "v1": 77.81,
+            "v2": 84.2,
+            "v3": 91.06,
+            "v4": 98.43
+          }
+        ]
+      },
+      "rango_min": 71.77,
+      "rango_max": 87.36,
+      "inverso": {
+        "crecimiento_implicito_pct": 19.7,
+        "crecimiento_base_pct": 12.4,
+        "periodo": "2027e-2035e",
+        "margen_implicito_pct": 54.8,
+        "margen_implicito_texto": null,
+        "margen_base_pct": 33,
+        "rentabilidad_implicita_pct": 8.2
+      },
+      "sostenibilidad": {
+        "veredicto": "En parte",
+        "crecimiento_proyectado_pct": 13.4,
+        "tasa_reinversion_pct": -18,
+        "crecimiento_financiable_pct": null,
+        "roic_pct": 45.2,
+        "roic_incremental_historico_pct": 37.6,
+        "roic_implicito_pct": null,
+        "cuota_actual_pct": null,
+        "cuota_final_pct": null,
+        "puente": [
+          {
+            "periodo": "2026e",
+            "volumen_pct": 14,
+            "precio_pct": 4,
+            "otros_pct": 4.2,
+            "comentario": "Volumen: nuevos clientes y más productos por cliente (cRPO +21 %); precio: paquetes Pro Plus de IA; otros: Armis y Veza (≈3 puntos) y divisa (≈1 punto) [8, 19].",
+            "suma_pct": 22.2,
+            "crecimiento_pct": 22.2
+          },
+          {
+            "periodo": "2027e",
+            "volumen_pct": 12,
+            "precio_pct": 4.5,
+            "otros_pct": 2,
+            "comentario": "Armis aporta su año completo (≈2 puntos); el resto, volumen y precio con la IA, en línea con el consenso de 19.270 M [51].",
+            "suma_pct": 18.5,
+            "crecimiento_pct": 18.5
+          },
+          {
+            "periodo": "2028e",
+            "volumen_pct": 12.5,
+            "precio_pct": 4.5,
+            "otros_pct": 0,
+            "comentario": "Crecimiento orgánico del 17 %, la senda del objetivo de 30.000 M de suscripciones en 2030 [50].",
+            "suma_pct": 17,
+            "crecimiento_pct": 17
+          },
+          {
+            "periodo": "2029e",
+            "volumen_pct": 12,
+            "precio_pct": 4,
+            "otros_pct": 0,
+            "comentario": "Volumen 12 % y precio 4 %: el valor de contrato de IA ya sería un tercio del nuevo, según el plan de la empresa [50].",
+            "suma_pct": 16,
+            "crecimiento_pct": 16
+          },
+          {
+            "periodo": "2030e",
+            "volumen_pct": 11,
+            "precio_pct": 4,
+            "otros_pct": 0,
+            "comentario": "Llega al objetivo de la empresa (≈30.000 M de ingresos totales) [50].",
+            "suma_pct": 15,
+            "crecimiento_pct": 15
+          }
+        ],
+        "texto": "La proyección apenas necesita inversión neta de la amortización (reinversión acumulada de -10.803 M, con un capex bruto medio del 6,0 % de las ventas). En un negocio de activos ligeros, el crecimiento medio del 13,4 % tiene que salir de subir precios y de ganar volumen sin capital nuevo, y la prueba es el poder de precios y la cuota; en un comprador en serie, la amortización es de intangibles comprados y la prueba es el capex bruto (las compras) frente al crecimiento comprado.",
+        "tabla": [
+          {
+            "concepto": "Crecimiento medio de ingresos proyectado",
+            "valor": "13,4 %"
+          },
+          {
+            "concepto": "Capex bruto medio (incluidas compras si van como inversión)",
+            "valor": "6,0 % de las ventas"
+          },
+          {
+            "concepto": "Reinversión neta acumulada (capex − amortización + circulante)",
+            "valor": "-10.803 M (-18 % del NOPAT)"
+          }
+        ]
+      }
+    },
+    "escenarios": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 30,
+        "narrativa": "Los agentes de IA reducen los puestos por los que se cobra y el crecimiento baja al 13 % en 2027 y al 12 % en 2028 (5 puntos menos), como les pasó a Salesforce y Adobe en 2024-2026; Armis no cumple y el margen se queda 4 puntos por debajo.",
+        "crecimiento_medio_pct": 7.4,
+        "margen_final_pct": 29,
+        "wacc_pct": 11.7,
+        "valor": 43.13,
+        "potencial_pct": -68.9
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 45,
+        "narrativa": "La empresa cumple su plan de 2030 (≈30.000 M) con un margen GAAP que sube hasta el 33 % y Armis integrada sin sobresaltos.",
+        "crecimiento_medio_pct": 12.4,
+        "margen_final_pct": 33,
+        "wacc_pct": 11.7,
+        "valor": 78.7,
+        "potencial_pct": -43.2
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "narrativa": "La IA acelera el valor de contrato (Now Assist como tercio del nuevo antes de 2030) y Armis abre el mercado de seguridad: 3 puntos más de crecimiento y 2 de margen.",
+        "crecimiento_medio_pct": 15.4,
+        "margen_final_pct": 35,
+        "wacc_pct": 11.7,
+        "valor": 106.35,
+        "potencial_pct": -23.3
+      }
+    ],
+    "valor_ponderado": 74.94,
+    "potencial_ponderado_pct": -45.9,
+    "comparables": {
+      "tabla": [
+        {
+          "nombre": "ServiceNow",
+          "ticker": "NOW",
+          "pais": "US",
+          "capitalizacion": 144847,
+          "ev_ventas": 9.89,
+          "ev_ebitda_ltm": 56.9,
+          "ev_ebitda_ntm": null,
+          "per_ntm": null,
+          "crecimiento_pct": 19.9,
+          "margen_ebitda_pct": 17.4,
+          "roic_pct": 45.2,
+          "dn_ebitda": 0.3,
+          "fcf_yield_pct": 3.2,
+          "es_objetivo": true
+        },
+        {
+          "nombre": "Microsoft",
+          "ticker": "MSFT",
+          "pais": "US",
+          "capitalizacion": 3973187,
+          "ev_ventas": 11.86,
+          "ev_ebitda_ltm": 20.3,
+          "ev_ebitda_ntm": 15.4,
+          "per_ntm": 25.7,
+          "crecimiento_pct": 18.6,
+          "margen_ebitda_pct": 58.5,
+          "roic_pct": 30.8,
+          "dn_ebitda": -0.19,
+          "fcf_yield_pct": 1.7,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Oracle",
+          "ticker": "ORCL",
+          "pais": "US",
+          "capitalizacion": 428654,
+          "ev_ventas": 7.01,
+          "ev_ebitda_ltm": 14.5,
+          "ev_ebitda_ntm": 10.1,
+          "per_ntm": 18.9,
+          "crecimiento_pct": 38.8,
+          "margen_ebitda_pct": 47.1,
+          "roic_pct": null,
+          "dn_ebitda": 2.69,
+          "fcf_yield_pct": -5.5,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "SAP",
+          "ticker": "SAP",
+          "pais": "DE",
+          "capitalizacion": 248706,
+          "ev_ventas": 5.65,
+          "ev_ebitda_ltm": 18.2,
+          "ev_ebitda_ntm": 15.1,
+          "per_ntm": 24.2,
+          "crecimiento_pct": 11.6,
+          "margen_ebitda_pct": 31.1,
+          "roic_pct": 15.5,
+          "dn_ebitda": -0.1,
+          "fcf_yield_pct": 3.6,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Salesforce",
+          "ticker": "CRM",
+          "pais": "US",
+          "capitalizacion": 181013,
+          "ev_ventas": 4.67,
+          "ev_ebitda_ltm": 17.2,
+          "ev_ebitda_ntm": 14.6,
+          "per_ntm": 25.2,
+          "crecimiento_pct": 10.3,
+          "margen_ebitda_pct": 27.1,
+          "roic_pct": 10.8,
+          "dn_ebitda": 2.4,
+          "fcf_yield_pct": 8.4,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Adobe",
+          "ticker": "ADBE",
+          "pais": "US",
+          "capitalizacion": 94291,
+          "ev_ventas": 3.68,
+          "ev_ebitda_ltm": 9.4,
+          "ev_ebitda_ntm": 8.5,
+          "per_ntm": 11.5,
+          "crecimiento_pct": 9.4,
+          "margen_ebitda_pct": 39.3,
+          "roic_pct": 61.6,
+          "dn_ebitda": 0.1,
+          "fcf_yield_pct": 11.2,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Intuit",
+          "ticker": "INTU",
+          "pais": "US",
+          "capitalizacion": 80906,
+          "ev_ventas": 3.91,
+          "ev_ebitda_ltm": 12.8,
+          "ev_ebitda_ntm": 9.9,
+          "per_ntm": 14.5,
+          "crecimiento_pct": 9.2,
+          "margen_ebitda_pct": 30.6,
+          "roic_pct": 20.3,
+          "dn_ebitda": 0.45,
+          "fcf_yield_pct": 10.7,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Autodesk",
+          "ticker": "ADSK",
+          "pais": "US",
+          "capitalizacion": 49188,
+          "ev_ventas": 6.23,
+          "ev_ebitda_ltm": 21.6,
+          "ev_ebitda_ntm": 16.6,
+          "per_ntm": 25.1,
+          "crecimiento_pct": 12.4,
+          "margen_ebitda_pct": 28.8,
+          "roic_pct": 58.5,
+          "dn_ebitda": -0.29,
+          "fcf_yield_pct": 5.8,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Workday",
+          "ticker": "WDAY",
+          "pais": "US",
+          "capitalizacion": 45958,
+          "ev_ventas": 4.48,
+          "ev_ebitda_ltm": 34.7,
+          "ev_ebitda_ntm": 21.5,
+          "per_ntm": 30.9,
+          "crecimiento_pct": 10.5,
+          "margen_ebitda_pct": 12.9,
+          "roic_pct": 14.2,
+          "dn_ebitda": -0.32,
+          "fcf_yield_pct": 6.2,
+          "es_objetivo": false
+        }
+      ],
+      "estadisticos": [
+        {
+          "estadistico": "Mediana",
+          "ev_ventas": 5.2,
+          "ev_ebitda_ltm": 17.7,
+          "ev_ebitda_ntm": 14.9,
+          "per_ntm": 24.7,
+          "crecimiento_pct": 11.1,
+          "margen_ebitda_pct": 30.9,
+          "roic_pct": 20.3,
+          "dn_ebitda": 0,
+          "fcf_yield_pct": 6
+        },
+        {
+          "estadistico": "Media",
+          "ev_ventas": 5.9,
+          "ev_ebitda_ltm": 18.6,
+          "ev_ebitda_ntm": 14,
+          "per_ntm": 22,
+          "crecimiento_pct": 15.1,
+          "margen_ebitda_pct": 34.4,
+          "roic_pct": 30.2,
+          "dn_ebitda": 0.6,
+          "fcf_yield_pct": 5.3
+        },
+        {
+          "estadistico": "Percentil 25",
+          "ev_ventas": 4.3,
+          "ev_ebitda_ltm": 14.1,
+          "ev_ebitda_ntm": 10.1,
+          "per_ntm": 17.8,
+          "crecimiento_pct": 10.1,
+          "margen_ebitda_pct": 28.4,
+          "roic_pct": 14.9,
+          "dn_ebitda": -0.2,
+          "fcf_yield_pct": 3.1
+        },
+        {
+          "estadistico": "Percentil 75",
+          "ev_ventas": 6.4,
+          "ev_ebitda_ltm": 20.6,
+          "ev_ebitda_ntm": 15.7,
+          "per_ntm": 25.3,
+          "crecimiento_pct": 14,
+          "margen_ebitda_pct": 41.3,
+          "roic_pct": 44.7,
+          "dn_ebitda": 0.9,
+          "fcf_yield_pct": 9
+        }
+      ],
+      "implicito": [
+        {
+          "metodo": "EV/EBITDA últimos 12 meses",
+          "metrica_empresa": 2562,
+          "multiplo_p25": 14.1,
+          "multiplo_mediana": 17.7,
+          "multiplo_p75": 20.6,
+          "multiplos": "14,1x / 17,7x / 20,6x",
+          "valor_p25": 33.71,
+          "valor_mediana": 42.6,
+          "valor_p75": 49.77,
+          "potencial_pct": -69.3
+        },
+        {
+          "metodo": "EV/Ventas últimos 12 meses",
+          "metrica_empresa": 14732,
+          "multiplo_p25": 4.3,
+          "multiplo_mediana": 5.2,
+          "multiplo_p75": 6.4,
+          "multiplos": "4,3x / 5,2x / 6,4x",
+          "valor_p25": 60.35,
+          "valor_mediana": 71.95,
+          "valor_p75": 89.78,
+          "potencial_pct": -48.1
+        }
+      ],
+      "regresion": {
+        "pendiente": -0.11381883173990755,
+        "ordenada": 15.681164359272607,
+        "r2": 0.07090769948318743,
+        "n": 8
+      },
+      "n": 8
+    },
+    "transacciones": null,
+    "suma_partes": null,
+    "multiplos_historicos": [],
+    "multiplos_serie": [],
+    "multiplos_titulo": null,
+    "consenso_vs_propio": [
+      {
+        "periodo": "2026e",
+        "ingresos_propio": 16226,
+        "ingresos_consenso": 16220,
+        "ingresos_dif_pct": 0,
+        "ebitda_propio": 2840,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      },
+      {
+        "periodo": "2027e",
+        "ingresos_propio": 19227,
+        "ingresos_consenso": 19270,
+        "ingresos_dif_pct": -0.2,
+        "ebitda_propio": 4326,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      },
+      {
+        "periodo": "2028e",
+        "ingresos_propio": 22496,
+        "ingresos_consenso": 23000,
+        "ingresos_dif_pct": -2.2,
+        "ebitda_propio": 5399,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      }
+    ],
+    "gobierno": {
+      "n_consejeros": 1,
+      "independientes_pct": 0,
+      "antiguedad_media": 7,
+      "composicion": [
+        {
+          "tipo": "Ejecutivo",
+          "num": 1
+        }
+      ],
+      "checklist": [
+        {
+          "criterio": "Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)",
+          "resultado": "No cumple",
+          "valor": "0 %"
+        },
+        {
+          "criterio": "Presidencia sin vínculo familiar ni profesional con el accionista de control",
+          "resultado": "Cumple",
+          "valor": "Sin control"
+        },
+        {
+          "criterio": "Presidente no ejecutivo, o consejero coordinador independiente",
+          "resultado": "No cumple",
+          "valor": "Ejecutivo, sin coordinador"
+        },
+        {
+          "criterio": "Comisión de auditoría con mayoría de independientes y presidida por uno",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Ningún consejero «otro externo» con más de 12 años",
+          "resultado": "Cumple",
+          "valor": "Ninguno"
+        },
+        {
+          "criterio": "Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses",
+          "resultado": "Cumple",
+          "valor": "0 cambios"
+        },
+        {
+          "criterio": "Peor voto a favor sobre remuneración (3 juntas) ≥ 80 %",
+          "resultado": "Cumple",
+          "valor": "89,0 % a favor"
+        },
+        {
+          "criterio": "Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Una acción, un voto, sin blindajes ni límites de voto estatutarios",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Sin operaciones vinculadas relevantes",
+          "resultado": "Cumple",
+          "valor": "No hay"
+        },
+        {
+          "criterio": "Auditor con 10 años o menos en el cargo",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Opinión de auditoría sin salvedades",
+          "resultado": "Cumple",
+          "valor": "Favorable"
+        },
+        {
+          "criterio": "Directivos compradores netos en 12 meses (o sin ventas relevantes)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        }
+      ],
+      "puntuacion": "7 de 13 (4 sin dato)",
+      "puntuacion_pct": 54,
+      "compras_insiders": 0,
+      "ventas_insiders": 0
+    },
+    "competidores_margen": [
+      {
+        "nombre": "ServiceNow",
+        "margen_ebit_pct": 13.7
+      },
+      {
+        "nombre": "Microsoft",
+        "margen_ebit_pct": 46.8
+      },
+      {
+        "nombre": "Salesforce",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "SAP",
+        "margen_ebit_pct": 26.1
+      },
+      {
+        "nombre": "Workday",
+        "margen_ebit_pct": 7.5
+      },
+      {
+        "nombre": "Oracle",
+        "margen_ebit_pct": 30.6
+      },
+      {
+        "nombre": "Atlassian",
+        "margen_ebit_pct": null
+      }
+    ],
+    "sintesis": {
+      "formato_eje": "#,##0",
+      "rangos": [
+        {
+          "metodo": "Cotización 52 semanas",
+          "etiqueta": "Cotización 52 semanas (81,24 – 192,97)",
+          "min": 81.24,
+          "central": 138.61,
+          "max": 192.97,
+          "gris": true
+        },
+        {
+          "metodo": "DCF (WACC y g ± 0,5)",
+          "etiqueta": "DCF (WACC y g ± 0,5) (71,77 – 87,36)",
+          "min": 71.77,
+          "central": 78.7,
+          "max": 87.36,
+          "gris": false
+        },
+        {
+          "metodo": "Escenarios (bajista – alcista)",
+          "etiqueta": "Escenarios (bajista – alcista) (43,13 – 106,35)",
+          "min": 43.13,
+          "central": 74.94,
+          "max": 106.35,
+          "gris": false
+        },
+        {
+          "metodo": "DCF con la prima del mercado",
+          "etiqueta": "DCF con la prima implícita del mercado (4,2 %)",
+          "min": 90.65,
+          "central": 97.64,
+          "max": 105.71
+        },
+        {
+          "metodo": "Precio actual",
+          "etiqueta": "Precio actual (138,61)",
+          "min": 137.92,
+          "central": 138.61,
+          "max": 139.3,
+          "gris": true
+        }
+      ],
+      "tabla": [
+        {
+          "metodo": "DCF",
+          "valor": 78.7,
+          "peso_pct": 45,
+          "potencial_pct": -43.2
+        },
+        {
+          "metodo": "Escenarios ponderados",
+          "valor": 74.94,
+          "peso_pct": 45,
+          "potencial_pct": -45.9
+        }
+      ],
+      "valor_objetivo": 76.82,
+      "potencial_pct": -44.6
+    },
+    "fuentes": {
+      "n_fuentes": 71,
+      "n_primarias": 21,
+      "por_tipo": [
+        {
+          "tipo": "Datos de mercado",
+          "num": 19
+        },
+        {
+          "tipo": "Primaria",
+          "num": 21
+        },
+        {
+          "tipo": "Prensa",
+          "num": 19
+        },
+        {
+          "tipo": "Sectorial",
+          "num": 2
+        },
+        {
+          "tipo": "Analistas",
+          "num": 5
+        },
+        {
+          "tipo": "Foros y redes",
+          "num": 5
+        }
+      ],
+      "n_citadas": 71,
+      "citas_sin_fuente": [],
+      "fuentes_sin_citar": []
+    },
+    "controles": [
+      {
+        "control": "Tipo impositivo efectivo razonable (2023)",
+        "resultado": "Explicado",
+        "detalle": "-71,4 %: explica la causa (créditos fiscales, regularizaciones, mezcla de países) y no lo proyectes en el DCF. Explicación: En 2023 la empresa liberó la provisión de valoración de sus activos por impuestos diferidos: un ingreso fiscal de 721 M USD que deja el tipo en negativo. No se proyecta; el DCF usa el 22 %, el tipo de 2025."
+      },
+      {
+        "control": "DCF inverso calculable",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Puente de ingresos (volumen + precio + otros) = crecimiento del DCF",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "resultado": "OK",
+        "detalle": "Supuesto -40,0 % frente a -42,8 % real: genera una variación de circulante de -810 M en el primer año. Converge de forma gradual."
+      },
+      {
+        "control": "Peso del valor terminal ≤ 80 % del valor empresa",
+        "resultado": "OK",
+        "detalle": "54 %."
+      },
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "resultado": "OK",
+        "detalle": "3,00 %."
+      },
+      {
+        "control": "Probabilidades de los escenarios suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 5 comparables",
+        "resultado": "OK",
+        "detalle": "8 comparables."
+      },
+      {
+        "control": "Múltiplos LTM y NTM de cada comparable coherentes",
+        "resultado": "Explicado",
+        "detalle": "Workday (34,7x → 21,5x): el salto implica un crecimiento del EBITDA que no cuadra con el de las ventas. ¿EBITDA de proveedores distintos, o un cambio de perímetro? Explicación: Workday excluye de su EBITDA ajustado más partidas que la remuneración en acciones (reestructuración); es la tabla común del repositorio a 9-oct-2026 y los comparables pesan solo un 10 %."
+      },
+      {
+        "control": "Pesos de la síntesis suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Múltiplos del objetivo a 12 m según la regla común",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Objetivo 12 m frente al consenso",
+        "resultado": "OK",
+        "detalle": "El base se separa un 18,3 % del objetivo medio de los analistas: explícalo en diferencia_consenso (nunca se acerca la cifra)."
+      },
+      {
+        "control": "Recomendación coherente con la regla de decisión",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Convicción frente a la sugerida por los criterios",
+        "resultado": "OK",
+        "detalle": "Los criterios dan «Media» (Mantener con las dos reglas de acuerdo y lejos de los umbrales) y el análisis pone «Baja»: explica en la síntesis por qué te apartas."
+      },
+      {
+        "control": "La síntesis explica la convicción",
+        "resultado": "OK",
+        "detalle": "La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría."
+      },
+      {
+        "control": "Capitalización calculada ≈ publicada",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 25 fuentes",
+        "resultado": "OK",
+        "detalle": "71 fuentes (21 primarias)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "resultado": "OK",
+        "detalle": "21."
+      },
+      {
+        "control": "Toda cita [n] existe en fuentes",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Fuentes sin citar ≤ 15 %",
+        "resultado": "OK",
+        "detalle": ""
+      }
+    ],
+    "controles_resumen": "18 de 20 controles correctos y 2 explicados"
+  }
+}
