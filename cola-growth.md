@@ -4,10 +4,6 @@ Análisis growth: método en `verticales/growth/metodo.md`, procedimiento en `.c
 
 | Tanda | Empresa | Ticker | Por qué growth |
 |---|---|---|---|
-| 1 | Palantir | PLTR | Software de IA para empresas y defensa; las ventas en EE. UU. aceleran trimestre a trimestre; la duda es la valoración |
-| 1 | CrowdStrike | CRWD | Líder en ciberseguridad en la nube; plataforma que gana módulos por cliente y FCF alto pese a pérdidas contables |
-| 1 | Spotify | SPOT | Inflexión de rentabilidad: de perder dinero a márgenes crecientes con subidas de precio; cambio de percepción ya visible |
-| 1 | Rheinmetall | RHM.DE | Cambio de ciclo en el gasto en defensa europeo; cartera de pedidos récord, ventas creciendo más del 25 % |
 | 2 | Cloudflare | NET | Red global para seguridad, rendimiento e IA en el borde; crecimiento ~30 % con pocas bajas de clientes |
 | 2 | Nu Holdings | NU | Banco digital en Brasil, México y Colombia; más de 100 millones de clientes, crece y ya gana dinero |
 | 2 | Axon Enterprise | AXON | Táseres, cámaras y software para policía; ventas recurrentes crecientes y nuevos productos con IA |

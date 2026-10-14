@@ -1,10 +1,10 @@
 # CrowdStrike Holdings (CRWD): análisis growth, 14-oct-2026
 
-**Señal: Vender (no se abre posición; sin convicción, que solo aplica a Comprar)** · Puntuación 81,2/100 · Señales de cambio de tendencia 7/8
-Precio 261,21 USD · Objetivo 12 m 138,4 USD (ponderada −47,0 %, base −45,8 %, bajista −69,3 %, alcista −27,1 %) · Compra hasta 115,3 USD
-Peso orientativo: no entra
+**Señal (método v4): Mantener** · Puntuación 81,2/100 · Señales de cambio de tendencia 7/8 · EV/beneficio bruto 54,2x
+Precio 261,21 USD · Objetivo 12 m 288,9 USD (ponderada +10,6 %, base +13,6 %, bajista -43 %, alcista +58,1 %) · Compra hasta 170,3 USD
+Peso orientativo: no entra · Por qué: no compra: EV/beneficio bruto > 35
 
-*Cifras en millones de USD salvo que se diga otra cosa. Ejercicio fiscal cerrado el 31 de enero (FY2027 = feb-2026 a ene-2027). Último trimestre publicado: 2T FY2027, cerrado el 31-jul-2026 [1]. Precio: cierre del 13-oct-2026, 261,21 USD en Morningstar, Yahoo Finance y Macrotrends [6][7]. Todas las cifras por acción ya incluyen el split 4x1 del 2-jul-2026 [2].*
+> **Recalculado el 14-oct con el método v4** (tras el backtest, `verticales/growth/metodo.md` §6). La sección 9 conserva la valoración del primer borrador (v1) con la proyección del analista; las cifras que mandan son las de arriba: ventas con la regla mecánica (8100 M en el base), múltiplo de hoy con rebaja por desaceleración (23,1x / 38,5x / 50,1x).
 
 ## 1. La tesis en cinco líneas
 

@@ -1,10 +1,10 @@
 # Spotify Technology (SPOT): análisis growth, 14-oct-2026
 
-**Señal: Mantener (sin convicción: solo se da en Comprar)** · Puntuación 54,5/100 · Señales de cambio de tendencia 3/8
-Precio 527,45 USD (≈468,1 EUR) · Objetivo 12 m 603,9 USD (≈535,9 EUR) (ponderada +14,5 %, base +12,4 %, bajista −42,3 %, alcista +75,4 %) · Compra hasta 503,3 USD (≈446,6 EUR)
-Peso orientativo: no entra
+**Señal (método v4): Mantener** · Puntuación 54,5/100 · Señales de cambio de tendencia 3/8 · EV/beneficio bruto 13x
+Precio 527,45 USD · Objetivo 12 m 524,4 USD (ponderada -0,6 %, base -5 %, bajista -43,6 %, alcista +51,2 %) · Compra hasta 476,7 USD
+Peso orientativo: no entra · Por qué: no compra: puntuación < 60, ponderada < 10 %, base < 0 %, menos de 4 señales
 
-*Spotify cotiza en USD en la NYSE y presenta sus cuentas en EUR. Como pide la plantilla, las cifras de valoración van en millones de USD, convertidas al tipo de referencia del BCE de 1,1269 USD/EUR (6-oct-2026, el mismo que usan los informes del repo esta semana) [4]. Las cifras de negocio se dan en EUR, como las publica la empresa. Las equivalencias en EUR del precio y del objetivo usan ese mismo tipo. Fecha de corte: 14-oct-2026. Último trimestre publicado: 2T26. El 3T26 sale el 22-oct.*
+> **Recalculado el 14-oct con el método v4** (tras el backtest, `verticales/growth/metodo.md` §6). La sección 9 conserva la valoración del primer borrador (v1) con la proyección del analista; las cifras que mandan son las de arriba: ventas con la regla mecánica (24.543 M en el base), múltiplo de hoy con rebaja por desaceleración (14,6x / 24,4x / 39x).
 
 ## 1. La tesis en cinco líneas
 

@@ -17,7 +17,7 @@ Se sigue entera en cada empresa. Método y reglas: [metodo.md](metodo.md). Todo 
 {
   "empresa": "Nombre", "ticker": "TICK", "bolsa": "NASDAQ", "moneda": "USD", "fecha": "AAAA-MM-DD",
   "precio": 0, "acciones_diluidas_m": 0, "caja_m": 0, "deuda_m": 0,
-  "crecimiento": { "ventas_12m_pct": 0, "cagr_2a_propio_pct": 0, "aceleracion_pp": 0, "nrr_pct": null },
+  "crecimiento": { "ventas_12m_pct": 0, "ultimo_trimestre_pct": 0, "cagr_2a_propio_pct": 0, "aceleracion_pp": 0, "nrr_pct": null },
   "mercado": { "tam_m": 0, "ventas_12m_m": 0, "tecnologia_0a5": 0, "posicion_0a5": 0 },
   "tendencia": {
     "senales": {
@@ -30,13 +30,14 @@ Se sigue entera en cada empresa. Método y reglas: [metodo.md](metodo.md). Todo 
       "compras_directivos_o_institucionales": { "valor": false, "evidencia": "" },
       "catalizador_nuevo": { "valor": false, "evidencia": "" }
     },
+    "subida_12m_pct": 0,
     "euforia": false
   },
   "economia": { "margen_bruto_pct": 0, "margen_fcf_pct": 0, "rentabilidad": "fcf_creciente|fcf_positivo|breakeven_12m|breakeven_24m|lejos|sin_camino" },
   "finanzas": { "quema_anual_m": 0, "dilucion_anual_pct": 0, "sbc_sobre_ventas_pct": 0 },
   "ejecucion": { "historial_0a5": 0, "direccion_0a5": 0 },
   "valoracion": {
-    "ejercicio_objetivo": "2028", "metrica": "EV/ventas",
+    "ejercicio_objetivo": "2028", "metrica": "EV/ventas", "anios_hasta_objetivo": 2,
     "ventas_objetivo_m": { "bajista": 0, "base": 0, "alcista": 0 },
     "multiplo_actual": 0, "mediana_3a": 0, "minimo_3a": 0, "mediana_comparables": 0,
     "comparables": ["…"],
@@ -52,6 +53,7 @@ Se sigue entera en cada empresa. Método y reglas: [metodo.md](metodo.md). Todo 
 ```
 
 Notas de los campos:
+- `ultimo_trimestre_pct`: crecimiento interanual del último trimestre. `subida_12m_pct`: revalorización de la acción en 12 meses (la usa la regla de euforia). `ventas_objetivo_m`: la proyección del analista; desde v4 es solo contraste, la que cuenta la calcula el código.
 - `aceleracion_pp`: crecimiento interanual del último trimestre − media de los cuatro anteriores.
 - `tam_m`: mercado **alcanzable** en el ejercicio objetivo (no el «mercado total» de la presentación si es inflado); se dice de dónde sale.
 - `tecnologia_0a5`: 5 = tecnología propia que nadie replica en 3 años (patentes, datos, efecto red); 3 = buena pero con alternativas; 1 = producto commodity.

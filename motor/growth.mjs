@@ -1,83 +1,154 @@
 #!/usr/bin/env node
-// Análisis growth: puntuación (0-100), objetivo a 12 meses por múltiplo de ventas y señal.
-// Método: verticales/growth/metodo.md. Sin dependencias.
+// Análisis growth: puntuación (0-100), objetivo a 12 meses por múltiplo y señal.
+// Método: verticales/growth/metodo.md. Sin dependencias. Las versiones del método
+// (para el backtest, verticales/growth/backtest/) están en VERSIONES; manda VIGENTE.
 //
 //   node motor/growth.mjs informes-growth/<carpeta>/datos.json   → escribe "calc" en el JSON e imprime el resumen
 //   node motor/growth.mjs --todos                                → recalcula todas y rehace informes-growth/resumen.md
+//   --version vN                                                 → calcula con otra versión (no la escribe)
 
 import fs from 'node:fs';
 import path from 'node:path';
 
-const escala = (v, cortes) => { // cortes de mayor a menor: [[umbral, puntos], ...]
+const BASE = {
+  pesos: { A: 25, B: 20, C: 20, D: 15, E: 10, F: 10 },
+  desaceleracion: true,           // rebaja el múltiplo base en proporción a la desaceleración
+  bajista_factor: 0.6, alcista_techo: 1.4,
+  euforia: { modo: 'resta', puntos: 3, subida: 150, ratio: null },
+  ratio_max: null,                // filtro de compra: EV/ventas NTM ÷ crecimiento NTM (%)
+  compra: { puntuacion: 70, ponderada: 20, base: 10, senales: 3, bajista: -45, pista: 24 },
+  venta: { puntuacion: 50, ponderada: -10 },
+  objetivo: 'reversion',          // 'reversion': base = mín(actual, mediana 3 años); 'actual': base = múltiplo de hoy
+  desac_exp: 1, desac_min: 0.6,   // rebaja por desaceleración = (g objetivo / g actual)^exp, con suelo
+  evbb_max: null,                 // filtro de compra: EV / beneficio bruto de los próximos 12 meses
+  proy_forward: false,            // la proyección mecánica mezcla el crecimiento pasado con el CAGR propio
+};
+export const VERSIONES = {
+  v1: { ...BASE, descripcion: 'Primera versión (14-oct, 14:30)' },
+  v2: { ...BASE, descripcion: 'Objetivo con el múltiplo de hoy (sin vuelta a la media), rebaja suave por desaceleración',
+    objetivo: 'actual', desac_exp: 0.5, desac_min: 0.7, alcista_techo: 1.3,
+    compra: { ...BASE.compra, bajista: -50 } },
+  v3: { ...BASE, descripcion: 'v2 + filtro de valoración (EV/beneficio bruto ≤ 35) + euforia que veta + listones 60 puntos y 15 %',
+    objetivo: 'actual', desac_exp: 0.5, desac_min: 0.7, alcista_techo: 1.3, proy_forward: true,
+    evbb_max: 35, euforia: { modo: 'veto', subida: 150, evbb: 20 },
+    compra: { puntuacion: 60, ponderada: 15, base: 10, senales: 3, bajista: -50, pista: 24 } },
+  v4: { ...BASE, descripcion: 'v3 + el alcista puede volver a su mediana o a comparables (techo ×1,6) + compra si el precio no exige más múltiplo (base ≥ 0, ponderada ≥ 10 %) con ≥ 4 señales',
+    objetivo: 'actual', desac_exp: 0.5, desac_min: 0.7, alcista_techo: 1.6, alcista_min: 1.3, proy_forward: true,
+    evbb_max: 35, euforia: { modo: 'veto', subida: 150, evbb: 20 },
+    compra: { puntuacion: 60, ponderada: 10, base: 0, senales: 4, bajista: -50, pista: 24 },
+    forzar_mecanica: true, vigilar: { ponderada: 0 } },
+};
+export const VIGENTE = 'v4';
+
+const escala = (v, cortes) => {
   if (v === null || v === undefined || Number.isNaN(v)) return 0;
   for (const [u, p] of cortes) if (v >= u) return p;
   return 0;
 };
-const r1 = x => Math.round(x * 10) / 10;
+const r1 = x => (x === null || x === undefined || !Number.isFinite(x) ? x : Math.round(x * 10) / 10);
+const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
 const SENALES = ['revisiones_al_alza', 'precio_sobre_media_200', 'fuerza_relativa_6m', 'mejora_de_multiplo',
   'inflexion_operativa', 'sentimiento_mejorando', 'compras_directivos_o_institucionales', 'catalizador_nuevo'];
 const RENTAB = { fcf_creciente: 5, fcf_positivo: 4, breakeven_12m: 3, breakeven_24m: 2, lejos: 1, sin_camino: 0 };
 
-export function calcular(d) {
+// Proyección mecánica de ventas (backtest, o si el analista no da la suya): crecimiento de partida =
+// media del de 12 meses y el del último trimestre (entre −20 % y +60 %), que decae un 15 % cada año.
+export function proyeccion(d, fwd = false) {
+  const c = d.crecimiento, v = d.valoracion;
+  const g12 = c.ventas_12m_pct ?? 0, gq = c.ultimo_trimestre_pct ?? g12;
+  const pasado = (g12 + gq) / 2;
+  const g1 = clamp(fwd && c.cagr_2a_propio_pct != null ? (pasado + c.cagr_2a_propio_pct) / 2 : pasado, -20, 60) / 100;
+  const n = v.anios_hasta_objetivo ?? 2;
+  const camino = f => {
+    let s = d.mercado.ventas_12m_m, g = g1 * f, ult = g;
+    for (let i = 0; i < n; i++) { const tramo = Math.min(1, n - i); s *= Math.pow(1 + g, tramo); ult = g; g *= 0.85; }
+    return { ventas: s, g_final: ult };
+  };
+  const b = camino(1);
+  return { g1: g1 * 100, g_final: b.g_final * 100, bajista: camino(0.5).ventas, base: b.ventas, alcista: camino(1.2).ventas };
+}
+
+export function calcular(d, cfg = VERSIONES[VIGENTE]) {
   const avisos = [];
   const c = d.crecimiento, m = d.mercado, t = d.tendencia, e = d.economia, f = d.finanzas, x = d.ejecucion, v = d.valoracion;
+  const P = cfg.pesos;
   const crec = [[40, 5], [30, 4], [20, 3], [15, 2], [10, 1]];
 
-  // A. Crecimiento (25)
+  // A. Crecimiento
   const a = [escala(c.ventas_12m_pct, crec), escala(c.cagr_2a_propio_pct, crec),
     escala(c.aceleracion_pp, [[5, 5], [2, 4], [-2, 3], [-5, 2], [-10, 1]])];
-  const A = (a.reduce((s, y) => s + y, 0) / 15) * 25;
+  const A = (a.reduce((s, y) => s + y, 0) / 15) * P.A;
 
-  // B. Mercado y tecnología (20)
+  // B. Mercado y tecnología
   const penetr = m.tam_m ? (m.ventas_12m_m / m.tam_m) * 100 : null;
   const b = [penetr === null ? 2 : penetr < 2 ? 5 : penetr < 5 ? 4 : penetr < 10 ? 3 : penetr < 20 ? 2 : 1,
     m.tecnologia_0a5 ?? 0, m.posicion_0a5 ?? 0];
   if (penetr === null) avisos.push('Sin TAM: penetración puntuada con 2 de 5.');
-  const B = (b.reduce((s, y) => s + y, 0) / 15) * 20;
+  const B = (b.reduce((s, y) => s + y, 0) / 15) * P.B;
 
-  // C. Cambio de tendencia (20): 8 señales × 2,5; −3 si hay euforia
+  // Valor de empresa y múltiplo de ventas de los próximos 12 meses (para el filtro de valoración)
+  const pr = proyeccion(d, cfg.proy_forward);
+  const ev = d.precio * d.acciones_diluidas_m + (d.deuda_m ?? 0) - (d.caja_m ?? 0);
+  const gNtm = v.crecimiento_actual_pct ?? pr.g1;
+  const evVentasNtm = ev / (m.ventas_12m_m * (1 + gNtm / 100));
+  const ratio = gNtm > 0 ? evVentasNtm / gNtm : Infinity;
+  const evbb = e.margen_bruto_pct > 0 ? evVentasNtm / (e.margen_bruto_pct / 100) : Infinity;
+
+  // C. Cambio de tendencia: 8 señales; la euforia resta o veta la compra
   const activas = SENALES.filter(k => t.senales?.[k]?.valor === true);
   for (const k of SENALES) if (!t.senales?.[k]) avisos.push(`Falta la señal ${k}.`);
-  const C = Math.max(0, activas.length * 2.5 - (t.euforia ? 3 : 0));
+  const subida = t.subida_12m_pct;
+  const euforia = subida !== undefined && subida !== null
+    ? subida >= cfg.euforia.subida && (cfg.euforia.ratio == null || ratio > cfg.euforia.ratio) && (cfg.euforia.evbb == null || evbb > cfg.euforia.evbb)
+    : !!t.euforia;
+  const C = Math.max(0, (activas.length / 8) * P.C - (euforia && cfg.euforia.modo === 'resta' ? cfg.euforia.puntos : 0));
 
-  // D. Economía unitaria y camino a la rentabilidad (15)
+  // D. Economía unitaria y camino a la rentabilidad
   const regla40 = (c.ventas_12m_pct ?? 0) + (e.margen_fcf_pct ?? 0);
   const dd = [escala(e.margen_bruto_pct, [[75, 5], [60, 4], [45, 3], [30, 2], [20, 1]]),
     escala(regla40, [[60, 5], [50, 4], [40, 3], [30, 2], [20, 1]]), RENTAB[e.rentabilidad] ?? 0];
   if (!(e.rentabilidad in RENTAB)) avisos.push(`rentabilidad «${e.rentabilidad}» no válida.`);
-  const D = (dd.reduce((s, y) => s + y, 0) / 15) * 15;
+  const D = (dd.reduce((s, y) => s + y, 0) / 15) * P.D;
 
-  // E. Caja y dilución (10)
+  // E. Caja y dilución
   const quema = Math.max(0, f.quema_anual_m ?? 0);
-  const pista = quema === 0 ? Infinity : ((d.caja_m ?? 0) / quema) * 12; // meses
+  const pista = quema === 0 ? Infinity : ((d.caja_m ?? 0) / quema) * 12;
   const ee = [pista >= 36 ? 5 : pista >= 24 ? 3 : pista >= 12 ? 1 : 0,
     escala(-(f.dilucion_anual_pct ?? 0), [[-2, 5], [-4, 3], [-7, 1]])];
-  const E = (ee.reduce((s, y) => s + y, 0) / 10) * 10;
+  const E = (ee.reduce((s, y) => s + y, 0) / 10) * P.E;
 
-  // F. Ejecución y dirección (10)
-  const F = (((x.historial_0a5 ?? 0) + (x.direccion_0a5 ?? 0)) / 10) * 10;
-
+  // F. Ejecución y dirección
+  const F = (((x.historial_0a5 ?? 0) + (x.direccion_0a5 ?? 0)) / 10) * P.F;
   const puntuacion = r1(A + B + C + D + E + F);
 
-  // Objetivo a 12 meses: múltiplo de ventas (o la métrica que diga v.metrica) × ventas del ejercicio objetivo
-  const factorDesac = v.crecimiento_actual_pct > 0 && v.crecimiento_obj_pct < v.crecimiento_actual_pct
-    ? Math.max(0.6, v.crecimiento_obj_pct / v.crecimiento_actual_pct) : 1;
-  const ref = Math.min(v.multiplo_actual, v.mediana_3a ?? v.multiplo_actual);
+  // Objetivo a 12 meses
+  const mecanica = cfg.forzar_mecanica || !v.ventas_objetivo_m || v.ventas_objetivo_m.base == null;
+  const ventas = mecanica ? { bajista: pr.bajista, base: pr.base, alcista: pr.alcista } : v.ventas_objetivo_m;
+  const esVentas = !v.metrica || /ventas/i.test(v.metrica);
+  // Si el múltiplo es de EBITDA y la proyección es mecánica, el margen EBITDA implícito sale de los dos múltiplos
+  const margenImpl = !esVentas && mecanica && v.multiplo_actual ? evVentasNtm / v.multiplo_actual : 1;
+  const multActual = v.multiplo_actual ?? evVentasNtm;
+  if (!esVentas && mecanica && !v.multiplo_actual) avisos.push('Múltiplo de EBITDA sin multiplo_actual: se usa EV/ventas.');
+  const gAct = v.crecimiento_actual_pct ?? pr.g1, gObj = v.crecimiento_obj_pct ?? pr.g_final;
+  const factorDesac = cfg.desaceleracion && gAct > 0 && gObj < gAct ? Math.max(cfg.desac_min, Math.pow(Math.max(0, gObj) / gAct, cfg.desac_exp)) : 1;
+  const ref = cfg.objetivo === 'actual' ? multActual : Math.min(multActual, v.mediana_3a ?? multActual);
   const mBase = ref * factorDesac;
-  const mBaj = Math.min(mBase * 0.6, v.minimo_3a ?? Infinity);
-  const mAlc = Math.min(Math.max(mBase, v.mediana_3a ?? 0, v.mediana_comparables ?? 0), mBase * 1.4);
+  const mBaj = cfg.objetivo === 'actual' ? mBase * cfg.bajista_factor : Math.min(mBase * cfg.bajista_factor, v.minimo_3a ?? Infinity);
+  const mAlc = cfg.objetivo === 'actual'
+    ? (cfg.alcista_min ? Math.min(Math.max(mBase * cfg.alcista_min, v.mediana_3a ?? 0, v.mediana_comparables ?? 0), mBase * cfg.alcista_techo) : mBase * cfg.alcista_techo) : Math.min(Math.max(mBase, v.mediana_3a ?? 0, v.mediana_comparables ?? 0), mBase * cfg.alcista_techo);
   const acciones = d.acciones_diluidas_m * (1 + (f.dilucion_anual_pct ?? 0) / 100);
   const cajaFutura = (d.caja_m ?? 0) - quema;
-  const precioDe = (mult, ventas) => (mult * ventas + cajaFutura - (d.deuda_m ?? 0)) / acciones;
+  const precioDe = (mult, vtas) => (mult * vtas * margenImpl + cajaFutura - (d.deuda_m ?? 0)) / acciones;
   const casos = {
-    bajista: { multiplo: r1(mBaj), ventas_m: v.ventas_objetivo_m.bajista },
-    base: { multiplo: r1(mBase), ventas_m: v.ventas_objetivo_m.base },
-    alcista: { multiplo: r1(mAlc), ventas_m: v.ventas_objetivo_m.alcista },
+    bajista: { multiplo: r1(mBaj), ventas_m: Math.round(ventas.bajista) },
+    base: { multiplo: r1(mBase), ventas_m: Math.round(ventas.base) },
+    alcista: { multiplo: r1(mAlc), ventas_m: Math.round(ventas.alcista) },
   };
   const div = v.dividendo_pct ?? 0;
   for (const k in casos) {
-    casos[k].precio = r1(precioDe(casos[k].multiplo, casos[k].ventas_m));
-    casos[k].rent_pct = r1((casos[k].precio / d.precio - 1) * 100 + div);
+    const p = precioDe(k === 'bajista' ? mBaj : k === 'base' ? mBase : mAlc, ventas[k]);
+    casos[k].precio = r1(p);
+    casos[k].rent_pct = r1((p / d.precio - 1) * 100 + div);
   }
   const p = v.probabilidades ?? { bajista: 25, base: 50, alcista: 25 };
   const objetivo = (casos.bajista.precio * p.bajista + casos.base.precio * p.base + casos.alcista.precio * p.alcista) / 100;
@@ -85,70 +156,86 @@ export function calcular(d) {
   const asimetria = casos.bajista.rent_pct < 0 ? r1(casos.alcista.rent_pct / -casos.bajista.rent_pct) : null;
 
   // Señal
-  const pistaOk = pista >= 24;
+  const k = cfg.compra;
+  const falta = [];
+  if (puntuacion < k.puntuacion) falta.push(`puntuación < ${k.puntuacion}`);
+  if (ponderada < k.ponderada) falta.push(`ponderada < ${k.ponderada} %`);
+  if (casos.base.rent_pct < k.base) falta.push(`base < ${k.base} %`);
+  if (activas.length < k.senales) falta.push(`menos de ${k.senales} señales`);
+  if (pista < k.pista) falta.push(`pista < ${k.pista} meses`);
+  if (casos.bajista.rent_pct < k.bajista) falta.push(`bajista peor que ${k.bajista} %`);
+  if (cfg.ratio_max !== null && ratio > cfg.ratio_max) falta.push(`EV/ventas ÷ crecimiento > ${cfg.ratio_max}`);
+  if (euforia && cfg.euforia.modo === 'veto') falta.push('euforia');
+  if (cfg.evbb_max !== null && !(evbb <= cfg.evbb_max)) falta.push(`EV/beneficio bruto > ${cfg.evbb_max}`);
   let senal, motivo;
-  if (puntuacion < 50 || ponderada <= -10 || pista < 12 || d.tesis_rota) {
+  if (puntuacion < cfg.venta.puntuacion || ponderada <= cfg.venta.ponderada || pista < 12 || d.tesis_rota) {
     senal = 'Vender';
-    motivo = puntuacion < 50 ? 'puntuación < 50' : ponderada <= -10 ? 'ponderada ≤ −10 %' : pista < 12 ? 'pista de caja < 12 meses' : 'tesis rota';
-  } else if (puntuacion >= 70 && ponderada >= 20 && casos.base.rent_pct >= 10 && activas.length >= 3 && pistaOk && casos.bajista.rent_pct >= -45) {
-    senal = 'Comprar'; motivo = 'cumple los seis requisitos de compra';
+    motivo = puntuacion < cfg.venta.puntuacion ? `puntuación < ${cfg.venta.puntuacion}` : ponderada <= cfg.venta.ponderada ? `ponderada ≤ ${cfg.venta.ponderada} %` : pista < 12 ? 'pista de caja < 12 meses' : 'tesis rota';
+  } else if (!falta.length) {
+    senal = 'Comprar'; motivo = 'cumple todos los requisitos de compra';
   } else {
-    senal = 'Mantener';
-    const falta = [];
-    if (puntuacion < 70) falta.push('puntuación < 70');
-    if (ponderada < 20) falta.push('ponderada < 20 %');
-    if (casos.base.rent_pct < 10) falta.push('base < 10 %');
-    if (activas.length < 3) falta.push('menos de 3 señales de cambio de tendencia');
-    if (!pistaOk) falta.push('pista < 24 meses');
-    if (casos.bajista.rent_pct < -45) falta.push('bajista peor que −45 %');
-    motivo = 'no compra: ' + falta.join(', ');
+    senal = 'Mantener'; motivo = 'no compra: ' + falta.join(', ');
   }
+  // Vigilar: pasa todo salvo la rentabilidad (entre 0 y el listón): la tendencia y la valoración acompañan
+  const soloRent = falta.length && falta.every(y => /^(ponderada|bajista)/.test(y));
+  const vigilar = !!(cfg.vigilar && senal === 'Mantener' && soloRent && ponderada >= cfg.vigilar.ponderada);
+  if (vigilar) motivo += ' → en vigilancia';
   const conviccion = senal === 'Comprar'
     ? (puntuacion >= 80 && (asimetria ?? 9) >= 2 ? 'alta' : puntuacion >= 75 ? 'media' : 'baja') : null;
   const peso = senal === 'Comprar' ? { alta: 5, media: 4, baja: 3.5 }[conviccion] : 0;
-  // Precio máximo de compra: el que da una ponderada del 20 % y una base del 10 %
-  const precioMax = r1(Math.min(objetivo / (1.2 - div / 100), casos.base.precio / (1.1 - div / 100)));
+  let pmax = Math.min(objetivo / (1 + (k.ponderada - div) / 100), casos.base.precio / (1 + (k.base - div) / 100));
+  if (cfg.evbb_max !== null && Number.isFinite(evbb)) { // precio al que el EV/beneficio bruto llega al tope
+    const bb = m.ventas_12m_m * (1 + gNtm / 100) * e.margen_bruto_pct / 100;
+    pmax = Math.min(pmax, (cfg.evbb_max * bb - (d.deuda_m ?? 0) + (d.caja_m ?? 0)) / d.acciones_diluidas_m);
+  }
+  const precioMax = r1(pmax);
 
   return {
+    version: Object.entries(VERSIONES).find(([, c2]) => c2 === cfg)?.[0] ?? 'otra',
     puntuacion,
     bloques: { crecimiento: r1(A), mercado_tecnologia: r1(B), cambio_tendencia: r1(C), economia_unitaria: r1(D), caja_dilucion: r1(E), ejecucion: r1(F) },
-    senales_activas: activas, n_senales: activas.length,
-    penetracion_pct: penetr === null ? null : r1(penetr), regla_40: r1(regla40),
+    senales_activas: activas, n_senales: activas.length, euforia,
+    penetracion_pct: r1(penetr), regla_40: r1(regla40), ev_ventas_ntm: r1(evVentasNtm), ev_bb_ntm: r1(evbb), ratio_crecimiento: Number.isFinite(ratio) ? Math.round(ratio * 100) / 100 : null,
     pista_meses: pista === Infinity ? 'FCF positivo' : r1(pista),
-    factor_desaceleracion: r1(factorDesac * 100) / 100,
+    proyeccion: mecanica ? 'mecánica' : 'analista', factor_desaceleracion: Math.round(factorDesac * 100) / 100,
     casos, probabilidades: p, objetivo_12m: r1(objetivo), rent_ponderada_pct: ponderada, rent_base_pct: casos.base.rent_pct,
-    asimetria, senal, motivo, conviccion, peso_orientativo_pct: peso, precio_max_compra: precioMax, avisos,
+    asimetria, senal, vigilar, motivo,
+    ventas_analista_m: v.ventas_objetivo_m ?? null, conviccion, peso_orientativo_pct: peso, precio_max_compra: precioMax, avisos,
   };
 }
 
 function linea(d, k) {
   const fmt = n => (n > 0 ? '+' : '') + String(n).replace('.', ',');
-  return `| ${d.empresa} | ${d.ticker} | ${k.puntuacion} | ${k.n_senales}/8 | ${fmt(k.rent_ponderada_pct)} % | ${fmt(k.rent_base_pct)} % | ${k.senal}${k.conviccion ? ` (${k.conviccion})` : ''} | ${k.peso_orientativo_pct ? k.peso_orientativo_pct + ' %' : '—'} | ${d.fecha} |`;
+  return `| ${d.empresa} | ${d.ticker} | ${k.puntuacion} | ${k.n_senales}/8 | ${fmt(k.rent_ponderada_pct)} % | ${fmt(k.rent_base_pct)} % | ${k.senal}${k.conviccion ? ` (${k.conviccion})` : ''} | ${k.peso_orientativo_pct ? k.peso_orientativo_pct + ' %' : '—'} | ${k.precio_max_compra} ${d.moneda} | ${d.fecha} |`;
 }
 
-const args = process.argv.slice(2);
 if (import.meta.url === `file://${process.argv[1]}`) {
+  const args = process.argv.slice(2);
   const raiz = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
-  let archivos = args.filter(x => !x.startsWith('--'));
+  const iv = args.indexOf('--version');
+  const ver = iv >= 0 ? args[iv + 1] : VIGENTE;
+  const cfg = VERSIONES[ver];
+  if (!cfg) { console.error(`Versión ${ver} desconocida.`); process.exit(1); }
+  const escribir = ver === VIGENTE;
+  let archivos = args.filter((y, i) => !y.startsWith('--') && args[i - 1] !== '--version');
   if (args.includes('--todos')) {
     const dir = path.join(raiz, 'informes-growth');
-    archivos = fs.readdirSync(dir, { withFileTypes: true }).filter(x => x.isDirectory())
-      .map(x => path.join(dir, x.name, 'datos.json')).filter(fs.existsSync);
+    archivos = fs.readdirSync(dir, { withFileTypes: true }).filter(y => y.isDirectory())
+      .map(y => path.join(dir, y.name, 'datos.json')).filter(fs.existsSync);
   }
-  if (!archivos.length) { console.error('Uso: node motor/growth.mjs <datos.json…> | --todos'); process.exit(1); }
+  if (!archivos.length) { console.error('Uso: node motor/growth.mjs <datos.json…> | --todos [--version vN]'); process.exit(1); }
   const filas = [];
   for (const a of archivos) {
     const d = JSON.parse(fs.readFileSync(a, 'utf8'));
-    const k = calcular(d);
-    d.calc = k;
-    fs.writeFileSync(a, JSON.stringify(d, null, 2) + '\n');
+    const k = calcular(d, cfg);
+    if (escribir) { d.calc = k; fs.writeFileSync(a, JSON.stringify(d, null, 2) + '\n'); }
     filas.push([d, k]);
-    console.log(`${d.empresa}: ${k.puntuacion}/100, ${k.n_senales}/8 señales, ponderada ${k.rent_ponderada_pct} %, base ${k.rent_base_pct} %, bajista ${k.casos.bajista.rent_pct} % → ${k.senal}${k.conviccion ? ' (' + k.conviccion + ')' : ''}; ${k.motivo}; compra ≤ ${k.precio_max_compra} ${d.moneda}`);
+    console.log(`${d.empresa} [${ver}]: ${k.puntuacion}/100, ${k.n_senales}/8 señales, EV/ventas NTM ${k.ev_ventas_ntm} (÷ crec. ${k.ratio_crecimiento}), ponderada ${k.rent_ponderada_pct} %, base ${k.rent_base_pct} %, bajista ${k.casos.bajista.rent_pct} % → ${k.senal}${k.conviccion ? ' (' + k.conviccion + ')' : ''}; ${k.motivo}; compra ≤ ${k.precio_max_compra} ${d.moneda}`);
     for (const w of k.avisos) console.log('  aviso: ' + w);
   }
-  if (args.includes('--todos')) {
+  if (args.includes('--todos') && escribir) {
     filas.sort((p, q) => q[1].rent_ponderada_pct - p[1].rent_ponderada_pct);
-    const md = `# Análisis growth: resumen\n\nLo genera \`node motor/growth.mjs --todos\` (no editar a mano). Método: [verticales/growth/metodo.md](../verticales/growth/metodo.md). Ordenado por rentabilidad ponderada a 12 meses.\n\n| Empresa | Ticker | Puntuación | Señales | Ponderada 12 m | Base 12 m | Señal | Peso orientativo | Fecha |\n|---|---|---|---|---|---|---|---|---|\n${filas.map(([d, k]) => linea(d, k)).join('\n')}\n`;
+    const md = `# Análisis growth: resumen\n\nLo genera \`node motor/growth.mjs --todos\` (no editar a mano). Método ${VIGENTE}: [verticales/growth/metodo.md](../verticales/growth/metodo.md). Ordenado por rentabilidad ponderada a 12 meses.\n\n| Empresa | Ticker | Puntuación | Señales | Ponderada 12 m | Base 12 m | Señal | Peso orientativo | Compra hasta | Fecha |\n|---|---|---|---|---|---|---|---|---|---|\n${filas.map(([d, k]) => linea(d, k)).join('\n')}\n`;
     fs.writeFileSync(path.join(raiz, 'informes-growth', 'resumen.md'), md);
     console.log('informes-growth/resumen.md rehecho.');
   }
