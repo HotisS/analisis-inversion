@@ -1,0 +1,4070 @@
+{
+  "meta": {
+    "fecha_corte": "2026-10-14",
+    "divisa": "EUR",
+    "divisa_cotizacion": "EUR",
+    "tipo_cambio": 1,
+    "unidades": "millones",
+    "cierre_ejercicio_mes": 6,
+    "etiqueta_ejercicio": "fin",
+    "normas_contables": "NIIF-UE",
+    "formato_cuenta": "funcion",
+    "limitaciones": "Entorno sin acceso directo a documentos: la red solo permite búsquedas web, así que no se han podido abrir los PDF de la empresa (presentación del FY26, documento de registro universal, informe de gobierno) ni usar bolsa.mjs. Todas las cifras salen de resultados de búsqueda que citan esos documentos o de prensa financiera, con la URL como fuente. Cuenta en base recurrente (resultado operativo recurrente y beneficio neto recurrente atribuido, diluido), la que usa la empresa y el mercado. El balance no está completo: la deuda neta publicada (que incluye los arrendamientos) va entera en «deuda_financiera» con caja 0, y el patrimonio neto se estima con el ratio deuda neta/patrimonio de un agregador; por eso el ROIC del motor solo vale para el FY2025 y el FY2026 (en los años anteriores falta el patrimonio y sale inflado). El precio (64,00 EUR) se deriva de la capitalización de MarketScreener del 12-oct-2026 que usa el análisis de Heineken del repositorio (16.144 M EUR) entre 252,3 M de acciones: no es un cierre leído. Los comparables y las transacciones son los del análisis de Diageo (12-oct) y de Heineken (14-oct), convertidos a EUR a 1,1181 USD/EUR. Ejercicio a 30 de junio, etiqueta «fin» (FY2026 = julio 2025-junio 2026).",
+    "controles_explicados": [
+      {
+        "control": "Comprar pendiente de confirmar",
+        "explicacion": "Decisión del usuario (14-oct): con confianza de datos baja la señal Comprar de la regla se queda en Mantener. Hay que confirmar con la presentación y el documento de registro del FY26 el precio de cierre, la deuda neta, la caja libre y el balance; la síntesis lo dice."
+      },
+      {
+        "control": "ROIC",
+        "explicacion": "Solo el FY2025 y el FY2026 tienen patrimonio (estimado); en los años anteriores el capital invertido es solo la deuda neta y el ROIC sale inflado. El ROIC útil es el del FY2026 (7,0 %)."
+      }
+    ],
+    "huecos": [
+      {
+        "seccion": "financieros",
+        "campo": "resultado financiero, impuestos y minoritarios por año",
+        "tipo": "Núcleo",
+        "intentos": "1) Búsqueda de la presentación FY26 y de los informes de gestión FY22-FY25 (los PDF no se pueden abrir: solo búsqueda web); 2) Stock Analysis y otros agregadores (solo ventas, margen bruto y resultado operativo); 3) derivación desde el beneficio recurrente: solo sirve para el FY26 en conjunto",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "balance",
+        "campo": "balance completo (activo, pasivo, caja, existencias) FY22-FY26",
+        "tipo": "Núcleo",
+        "intentos": "1) Estados consolidados FY25 y FY26 de la empresa (no accesibles); 2) agregadores (Weiss, TipRanks, Eulerpool: cifras sueltas y sin fecha clara); 3) derivación desde deuda neta y ratios",
+        "decision": "Calculado y marcado como estimación"
+      },
+      {
+        "seccion": "flujos",
+        "campo": "flujos FY22, FY23 y FY26 completos",
+        "tipo": "Núcleo",
+        "intentos": "1) Estado de flujos FY26 (no accesible); 2) búsqueda de capex y flujo operativo del FY26 en prensa; 3) caja libre publicada (1.197 M) en financieros.ltm",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "calidad",
+        "campo": "auditor y opinión",
+        "tipo": "Complemento",
+        "intentos": "1) Documento de registro universal FY26 (no accesible); 2) búsqueda de prensa; 3) informe de gobierno",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "negocio",
+        "campo": "segmentos por región con resultado",
+        "tipo": "Núcleo",
+        "intentos": "1) Presentación FY26 (no accesible); 2) búsqueda de ventas por región FY26; 3) notas de prensa del 1T y 3T",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "competencia",
+        "campo": "cuota_pct",
+        "tipo": "Complemento",
+        "intentos": "1) Informe anual de Pernod (no accesible); 2) IWSR y DISCUS (solo volúmenes y EE. UU.); 3) cociente de ventas frente a un mercado mundial no publicado",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "esg",
+        "campo": "calificaciones",
+        "tipo": "Complemento",
+        "intentos": "1) Web de la empresa (no accesible); 2) búsqueda de MSCI y Sustainalytics; 3) informe integrado FY25",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "participación de la familia, votos de remuneración y remuneración del consejero delegado",
+        "tipo": "Núcleo",
+        "intentos": "1) Informe del consejo sobre gobierno (no accesible); 2) búsqueda de declaraciones de derechos de voto y actas de junta; 3) prensa",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "operaciones de directivos (BDIF AMF)",
+        "tipo": "Complemento",
+        "intentos": "1) API de la BDIF (red cerrada); 2) búsqueda web de declaraciones de directivos; 3) prensa",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "identificacion",
+        "campo": "precio de cierre del 13-oct-2026",
+        "tipo": "Núcleo",
+        "intentos": "1) bolsa.mjs (Yahoo bloqueado en este entorno); 2) búsqueda web de la cotización de octubre (sin resultados fechados); 3) capitalización de MarketScreener del 12-oct del repositorio ÷ acciones",
+        "decision": "Calculado y marcado como estimación"
+      },
+      {
+        "seccion": "consenso",
+        "campo": "estimaciones de ventas, EBITDA y BPA FY27-FY29",
+        "tipo": "Núcleo",
+        "intentos": "1) MarketScreener (no abre); 2) búsqueda web de consenso (Simply Wall St, TipRanks, sin fecha); 3) notas de bancos (solo objetivos)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "bolsa",
+        "campo": "beta, volatilidad, rentabilidades anuales e índice",
+        "tipo": "Complemento",
+        "intentos": "1) bolsa.mjs (sin red); 2) búsqueda de beta en agregadores; 3) historial mensual de Digrin (solo precios)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "rentabilidad",
+        "campo": "ROIC y ROE de FY2022-FY2024",
+        "tipo": "Núcleo",
+        "intentos": "1) Balance consolidado de los informes FY22-FY24 (PDF no accesibles); 2) agregadores (ROIC de Stock Analysis no aparece en la búsqueda); 3) derivación desde deuda neta y patrimonio: solo hay patrimonio estimado de FY25 y FY26",
+        "decision": "Calculado y marcado como estimación"
+      },
+      {
+        "seccion": "valoracion",
+        "campo": "minoritarios, pensiones y asociadas del puente",
+        "tipo": "Complemento",
+        "intentos": "1) Balance del FY26 (no accesible); 2) búsqueda de las notas de pensiones y minoritarios; 3) estimación desde el beneficio de minoritarios (unos 25 M al año): no se publica el valor contable",
+        "decision": "Omitido"
+      }
+    ]
+  },
+  "identificacion": {
+    "nombre": "Pernod Ricard SA",
+    "nombre_corto": "Pernod Ricard",
+    "ticker": "RI",
+    "isin": "FR0000120693",
+    "mercado": "Euronext París",
+    "indice_referencia": "CAC 40",
+    "pais": "Francia",
+    "pais_iso": "FR",
+    "sector": "Consumo básico",
+    "industria": "Bebidas: destiladores y bodegas",
+    "sede": "París",
+    "fundacion": "1975",
+    "empleados": null,
+    "web": "https://www.pernod-ricard.com",
+    "precio": 64,
+    "fecha_precio": "2026-10-12",
+    "acciones": 252.3,
+    "capitalizacion_publicada": 16144,
+    "free_float_pct": null,
+    "max_52s": null,
+    "min_52s": null,
+    "volumen_medio_diario": null,
+    "proximos_resultados": "2026-10-16"
+  },
+  "resumen": {
+    "recomendacion": "Mantener",
+    "conviccion": "Baja",
+    "justificacion_recomendacion": null,
+    "horizonte": "12 meses",
+    "sintesis": "**La recomendación y por qué.** Mantener con convicción baja. El objetivo a 12 meses es de 73,95 EUR (75,57 EUR en el base), con una rentabilidad ponderada del 22,9 % y del 25,4 % en el base, dividendo del 7,3 % incluido; el valor intrínseco es de 91,09 EUR, un 42,3 % sobre el precio de 64,00 EUR, y el objetivo medio de los analistas (80,25 EUR) queda entre los dos. La regla de los 12 meses da Comprar, pero los datos de núcleo tienen confianza baja (precio derivado de una capitalización y no de un cierre, balance incompleto, sin consenso de BPA) y, por decisión del usuario, un Comprar con datos poco fiables se queda en Mantener hasta confirmarlos con fuente primaria. La convicción es baja por eso y porque la calidad no llega al listón: subiría con el balance y la caja del FY26 leídos en el documento de registro y con unas ventas orgánicas del 1T27 (16-oct) en positivo.\n\n**El negocio.** Pernod es el n.º 2 mundial de espirituosos, con marcas que sostienen un margen operativo recurrente del 25,8 % frente al 17,7 % de Rémy Cointreau y el 20,9 % de Campari [2, 35, 36]. Pero el ROIC es del 7,0 %, medio punto sobre el WACC (6,53 %), porque el capital incluye 17.921 M de marcas y fondo de comercio comprados [6]. La sostenibilidad del crecimiento es «En parte»: tras rebajar medio punto el crecimiento, la proyección reinvierte el 19 % del NOPAT y financia un 1,3 % al ROIC actual frente al 1,6 % proyectado.\n\n**Sector y ciclo.** El sector está en contracción: el volumen mundial de espirituosos cayó un 3 % en 2025 e IWSR prevé caídas hasta 2031 por la moderación y los GLP-1 [42]. Pernod cayó un 3,9 % orgánico en el FY26, con EE. UU. −14 % y China a la baja; sin ellos, +0,5 % [2, 20].\n\n**Finanzas.** Ventas de 9.404 M (−14,2 % publicado), resultado operativo recurrente de 2.423 M y BPA recurrente de 5,85 EUR, un 36 % menos que en el FY23 [2]. La caja libre (1.197 M) cubre justo el dividendo (unos 1.200 M) y la deuda neta (10.660 M) es 3,7 veces el EBITDA [3, 4]. El beneficio publicado es 273 M menor que el recurrente por reestructuraciones que se repiten [4].\n\n**Equipo y gobierno.** Control familiar con presidente y consejero delegado en la misma persona; la fusión con Brown-Forman se rompió por la gobernanza [46, 47]. Resta, no suma.\n\n**Valoración.** El precio descuenta que las ventas caigan un 2,5 % al año durante siete años; el DCF da 95,45 EUR. El PER adelantado (11,2 veces) es el mínimo de la serie y está lejos de la mediana de los comparables (15,6 veces) [50]. Discrepamos del mercado en la duración de la caída, no en su existencia.\n\n**Riesgos y catalizadores.** El riesgo mayor es que la caída del consumo sea estructural (bajista de 50,73 EUR, −20,7 %); después, un recorte del dividendo y una rebaja de rating. Catalizadores: ventas del 1T27 (16-oct-2026), junta del 20-nov y resultados del 1S27 (febrero de 2027). Los foros son negativos y se centran en el dividendo: confirma el riesgo, no añade uno nuevo.\n\n**Qué cambiaría la decisión.** Por debajo de 68,39 EUR la regla da Comprar, pero no pasaría a Comprar sin confirmar las cifras y, para la cartera, sin una calidad que hoy no tiene (ROIC − WACC de 0,5 puntos frente a los 5 exigidos). Por encima de 87,39 EUR, vender. Unas ventas orgánicas del 1S27 por debajo de −3 % o un recorte del dividendo nos llevarían a revisar el caso base a la baja.",
+    "tesis": "Pernod Ricard es el segundo grupo mundial de espirituosos (Absolut, Jameson, Chivas, Martell), con 9.404 M EUR de ventas y un margen operativo recurrente del 25,8 % en el FY2026 [2]. Sus marcas y sus existencias envejecidas son una barrera real, pero el negocio lleva tres años encogiendo: el BPA recurrente pasó de 9,11 EUR a 5,85 EUR entre el FY2023 y el FY2026 [2, 11].\n\nA 64,00 EUR el precio descuenta que las ventas caigan un 2,5 % al año durante siete años; el PER adelantado es de 11,2 veces y la rentabilidad por dividendo, del 7,3 %. Es el múltiplo más bajo de su historia reciente y está muy por debajo de la mediana de los comparables (15,6 veces) [50].\n\nEl mercado acierta en que la demanda de EE. UU. y China es débil y en que el ROIC (7,0 %) apenas supera el WACC. Puede equivocarse en la duración: la guía del FY2027 son ventas orgánicas estables, el plan de eficiencia de 1.000 M va por la mitad y fuera de EE. UU. y China el grupo ya crece [14, 20]. Para invertir hay que creer que el FY2026 fue el suelo; para invertir con convicción, hay que verlo en las ventas del 1T y el 1S del FY2027 y confirmar las cifras de balance.",
+    "vision_diferencial": {
+      "mercado_descuenta": "Una contracción permanente: ventas cayendo un 2,5 % al año durante siete años, o un margen EBITDA que baja al 25,9 %, y un PER de 11 veces como el de una empresa sin crecimiento ni valor de marca.",
+      "nuestra_vision": "Una estabilización: ventas planas en el FY2027 y un 2-2,5 % después, margen del 31,5 % con el plan de eficiencia y dividendo mantenido. A 12 meses basta con que el PER recupere la mitad del camino hacia 14,5 veces.",
+      "por_que": "Fuera de EE. UU. y China las ventas ya crecen (+0,5 %), el 3T26 fue estable y la base del 1T27 es fácil (−7,6 % en el 1T26) [18, 19]. Pero no tenemos ventaja informativa: la discrepancia es de duración, y los datos de núcleo son de confianza baja."
+    },
+    "a_favor": [
+      "**PER adelantado de 11,2 veces**, el mínimo de la serie, frente a una mediana de comparables de 15,6 veces [50].",
+      "**Rentabilidad por dividendo del 7,3 %** con 4,70 EUR mantenidos [3].",
+      "**Caja libre de 1.197 M (+6 %)** con una conversión del 91 % [4].",
+      "**Plan de eficiencia de 1.000 M** adelantado a FY26-FY28, la mitad ya entregada [1].",
+      "**Marcas líderes** con margen operativo del 25,8 %, por encima de Rémy (17,7 %) y Campari (20,9 %) [2, 35, 36]."
+    ],
+    "en_contra": [
+      "**ROIC del 7,0 %**, medio punto sobre el WACC [3, 15].",
+      "**Deuda neta de 3,7 veces el EBITDA** (10.660 M) [3].",
+      "**Ventas orgánicas −3,9 %** en el FY26 y EE. UU. −14 % [2, 20].",
+      "**El dividendo consume toda la caja libre** y el complementario se ofrece en acciones [3].",
+      "**Volumen mundial de espirituosos a la baja hasta 2031**, según IWSR [42]."
+    ],
+    "que_vigilar": "La tesis depende de que el FY2026 sea el suelo de las ventas en EE. UU. y China. La señal de que no se cumple: ventas orgánicas del 1T27 (16-oct-2026) por debajo de −3 % o del 1S27 (febrero de 2027) por debajo de −2 %, o una caja libre que deje de cubrir el dividendo y empuje la deuda neta por encima de 4 veces el EBITDA.",
+    "cambiaria_recomendacion": [
+      "Confirmar con la presentación y el documento de registro del FY26 la deuda neta, la caja libre y el balance (pasaría a Comprar por la regla si el precio sigue por debajo de 68,39 EUR).",
+      "Ventas orgánicas del 1S27 por debajo de −2 %: bajaríamos el caso base y probablemente a Vender por encima de 70 EUR.",
+      "Recorte del dividendo por debajo de 4,00 EUR: revisión del caso base y del escenario bajista.",
+      "Precio por encima de 87,39 EUR: Vender."
+    ],
+    "kpis_seguimiento": [
+      {
+        "kpi": "Ventas orgánicas trimestrales",
+        "nivel_actual": "−3,9 % (FY26)",
+        "umbral_alerta": "Por debajo de −3 % en el 1T27",
+        "por_que": "Decide si el FY26 fue el suelo."
+      },
+      {
+        "kpi": "Ventas orgánicas de EE. UU.",
+        "nivel_actual": "−14 % (FY26)",
+        "umbral_alerta": "Por debajo de −8 % en el 1S27",
+        "por_que": "Primer mercado y el que más cae."
+      },
+      {
+        "kpi": "Margen operativo recurrente",
+        "nivel_actual": "25,8 %",
+        "umbral_alerta": "Por debajo del 25 %",
+        "por_que": "El plan de eficiencia tiene que verse en el margen."
+      },
+      {
+        "kpi": "Deuda neta / EBITDA",
+        "nivel_actual": "3,7x",
+        "umbral_alerta": "Por encima de 4,0x",
+        "por_que": "Rating y dividendo."
+      },
+      {
+        "kpi": "Caja libre",
+        "nivel_actual": "1.197 M",
+        "umbral_alerta": "Por debajo de 1.100 M",
+        "por_que": "Cobertura del dividendo."
+      }
+    ],
+    "confianza": "Baja"
+  },
+  "historia": {
+    "resumen": "Pernod Ricard nace en 1975 de la fusión de Pernod y Ricard, dos casas de anís de Marsella y París. Se hizo global con compras: Irish Distillers (Jameson) en 1988, parte de Seagram (Chivas, Martell) en 2001, Allied Domecq (Ballantine’s, Beefeater, Kahlúa) en 2005 y Vin & Sprit (Absolut) en 2008, esta última con mucha deuda. La familia Ricard conserva la presidencia y un bloque de referencia; Alexandre Ricard es presidente y consejero delegado desde 2015. Desde 2023 las ventas caen por la normalización tras la pandemia, el desestocaje en EE. UU. y la debilidad de China; en 2025-26 vendió la cartera de vinos y estudió sin éxito una fusión con Brown-Forman [32].",
+    "hitos": [
+      {
+        "anio": "1975",
+        "hito": "Fusión de Pernod y Ricard."
+      },
+      {
+        "anio": "1988",
+        "hito": "Compra de Irish Distillers (Jameson)."
+      },
+      {
+        "anio": "2001",
+        "hito": "Compra de parte de los activos de Seagram (Chivas Regal, Martell)."
+      },
+      {
+        "anio": "2005",
+        "hito": "Compra de Allied Domecq con Fortune Brands."
+      },
+      {
+        "anio": "2008",
+        "hito": "Compra de Vin & Sprit (Absolut) por unos 5.600 M EUR."
+      },
+      {
+        "anio": "2015",
+        "hito": "Alexandre Ricard, presidente y consejero delegado."
+      },
+      {
+        "anio": "2023",
+        "hito": "Máximo de ventas: 12.137 M EUR."
+      },
+      {
+        "anio": "2026",
+        "hito": "Conversaciones de fusión con Brown-Forman (marzo-abril), terminadas sin acuerdo."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "negocio": {
+    "descripcion": "Segundo grupo mundial de bebidas espirituosas: Absolut, Jameson, Chivas Regal, Ballantine’s, Martell, Royal Salute, The Glenlivet, Beefeater, Malibu, Havana Club, Ricard y Perrier-Jouët, además de whiskies indios (Royal Stag, Blenders Pride) [32]. Vende en más de 160 países con distribución propia en casi todos; sus «mercados que hay que ganar» son EE. UU., China e India [32]. Tras vender los vinos, el negocio es casi solo de espirituosos y champán.",
+    "como_gana_dinero": "Margen bruto de en torno al 60 % y margen operativo recurrente del 26-28 % por el precio de marca; casi la mitad del valor está en marcas premium envejecidas (whisky, coñac) que exigen años de existencias en balance [32]. La publicidad y promoción es la palanca: un 15 % de las ventas en el FY26 [32]. El margen depende de la mezcla (prestige frente a estándar), del precio en mercados emergentes y del coste del líquido envejecido; la estacionalidad concentra ventas en el primer semestre (Navidad, Año Nuevo chino, Diwali).",
+    "segmentos": [],
+    "geografias": [],
+    "geografias_criterio": null,
+    "clientes": "Vende a mayoristas y distribuidores (en EE. UU., por el sistema de tres niveles), a la gran distribución, a la hostelería y al travel retail. No hay concentración relevante de clientes. El poder de precios se ha debilitado: en EE. UU. el consumo final cayó en torno a un 7 % en el FY26 y los mayoristas redujeron existencias, y en China el coñac sufrió aranceles antidumping y la caída del consumo de lujo [32, 35, 42].",
+    "kpis": [
+      {
+        "kpi": "Ventas orgánicas",
+        "valor_anterior": "−3,0 % (FY25)",
+        "valor_actual": "−3,9 % (FY26)",
+        "variacion": "−0,9 pp",
+        "comentario": "Sin EE. UU. y China, +0,5 % [32]."
+      },
+      {
+        "kpi": "Margen operativo recurrente",
+        "valor_anterior": "26,9 % (FY25)",
+        "valor_actual": "25,8 % (FY26)",
+        "variacion": "−35 pb orgánico",
+        "comentario": "Aranceles y coste de líquidos envejecidos frente a ahorros [32]."
+      },
+      {
+        "kpi": "Publicidad y promoción / ventas",
+        "valor_anterior": "n. d.",
+        "valor_actual": "15,0 %",
+        "variacion": null,
+        "comentario": "Por debajo de lo guiado [32]."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sector": {
+    "definicion": "Mercado relevante: bebidas espirituosas de marca internacional (whisky escocés e irlandés, coñac, vodka, ginebra, ron, anisados) y champán, donde Pernod Ricard es el n.º 2 mundial detrás de Diageo [23, 32]. No hay una serie gratuita del valor mundial de los espirituosos: la serie usa EE. UU. (ingresos de los productores, DISCUS), el primer mercado de Pernod y el que más cae [32, 39]. Como contraste se dan las exportaciones de whisky escocés (Scotch Whisky Association) [41] y los volúmenes mundiales de IWSR [42]. El valor mundial de toda la bebida alcohólica fue de 1,17 billones de USD en 2022 (IWSR, citado por Diageo) [29].",
+    "tamano": "EE. UU.: 36.400 M USD de ingresos de los productores de espirituosos en 2025 (−2,2 %), 318,1 millones de cajas de 9 litros (+1,9 %) [39]. Exportaciones de whisky escocés: 5.300 M GBP en 2025 (−1,8 %) [41]. Total mundial de bebidas alcohólicas: 1,17 billones de USD de venta al público en 2022 [29].",
+    "unidad_serie": "millones de USD (ingresos de los productores de espirituosos en EE. UU., DISCUS)",
+    "serie": [
+      {
+        "anio": "2018",
+        "tamano": 27600
+      },
+      {
+        "anio": "2019",
+        "tamano": 29000
+      },
+      {
+        "anio": "2020",
+        "tamano": 31900
+      },
+      {
+        "anio": "2021",
+        "tamano": 35800
+      },
+      {
+        "anio": "2022",
+        "tamano": 37600
+      },
+      {
+        "anio": "2023",
+        "tamano": 37700
+      },
+      {
+        "anio": "2024",
+        "tamano": 37200
+      },
+      {
+        "anio": "2025",
+        "tamano": 36400
+      }
+    ],
+    "tcac_historico_pct": 2.7,
+    "tcac_previsto_pct": 2,
+    "cr5_pct": null,
+    "estructura": "Moderadamente concentrada",
+    "drivers": [
+      {
+        "driver": "Premiumización",
+        "efecto": "+/−",
+        "horizonte": "Estructural",
+        "evidencia": "En EE. UU., las gamas alta y superpremium suman el 58 % de los ingresos pero bajan en volumen (−1,5 y −1,1 millones de cajas en 2025) [39]. Diageo dice que la premiumización sigue, pero «con más matices», y amplía su escalera de precios y formatos [23]."
+      },
+      {
+        "driver": "Moderación del consumo y GLP-1",
+        "efecto": "−",
+        "horizonte": "Estructural",
+        "evidencia": "IWSR prevé que el litro de alcohol puro por persona baje medio litro hasta 2035; el volumen mundial caerá hasta 2031 y en 2035 estará un 1 % por debajo de 2025 [42]. Diageo dice que los datos de Numerator muestran menos efecto de los GLP-1 en los espirituosos que en la cerveza y el vino [23]."
+      },
+      {
+        "driver": "Bebidas listas para tomar (RTD)",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "En EE. UU., las RTD crecieron un 16 % hasta 3.800 M USD en 2025; sin ellas, los espirituosos cayeron un 4 % [39, 40]. IWSR prevé +17 % de volumen de RTD en diez años [42]."
+      },
+      {
+        "driver": "Demografía y mercados emergentes (India)",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "La población en edad legal de beber crecerá un 9 % hasta 2035; India sumará un 38 % de consumiciones y superará a EE. UU. en 2032 [42]. India es el primer mercado del whisky escocés en volumen (220 millones de botellas, +15 %) [41]."
+      },
+      {
+        "driver": "Aranceles de EE. UU.",
+        "efecto": "−",
+        "horizonte": "Cíclico",
+        "evidencia": "10 % al Reino Unido y 15 % a la UE desde 2025; México y Canadá exentos por el T-MEC; coste para Diageo de unos 200 M USD anuales sin mitigar [27]. Exportaciones de whisky escocés a EE. UU.: −15 % en volumen entre mayo y diciembre de 2025 [41]."
+      },
+      {
+        "driver": "China (baijiu y austeridad)",
+        "efecto": "−",
+        "horizonte": "Cíclico",
+        "evidencia": "Las ventas de Diageo en la Gran China cayeron un 34,9 % en el FY26 por un descenso del 41,9 % del volumen de baijiu tras cambios de política que redujeron las ocasiones de consumo [23]. Las consumiciones en China cayeron un 7 % en 2025 [42]."
+      }
+    ],
+    "porter": [
+      {
+        "fuerza": "Rivalidad",
+        "intensidad": 4,
+        "justificacion": "En el FY26, Pernod bajó un 3,9 % orgánico y Diageo un 2,0 %; en EE. UU. el tequila de Diageo perdió cuota frente a una «mayor intensidad competitiva» y los precios bajan (precio/mezcla −1,6 % en Diageo) [23, 24, 32]."
+      },
+      {
+        "fuerza": "Poder de los clientes",
+        "intensidad": 3,
+        "justificacion": "En EE. UU., el sistema de tres niveles obliga a vender a través de mayoristas, que redujeron inventario en el FY26 (envíos unos 2,5 puntos por debajo del consumo) [23]. La gran distribución y los monopolios estatales negocian precio [23]."
+      },
+      {
+        "fuerza": "Poder de los proveedores",
+        "intensidad": 2,
+        "justificacion": "Las materias primas (cereal, agave, melaza, vidrio) son genéricas; el agave más barato mejoró el margen del FY26 en Norteamérica [23]. Un tercio de las ventas está expuesto a zonas con estrés hídrico alto o muy alto [23]."
+      },
+      {
+        "fuerza": "Amenaza de entrada",
+        "intensidad": 2,
+        "justificacion": "El whisky escocés exige años de envejecimiento y la distribución en EE. UU. depende de mayoristas; las marcas nuevas de éxito suelen acabar compradas por los grandes (Casamigos, Aviation Gin) [23, 30]."
+      },
+      {
+        "fuerza": "Amenaza de sustitutos",
+        "intensidad": 3,
+        "justificacion": "Las RTD y las bebidas sin alcohol crecen (cerveza sin alcohol +8 % de volumen en 2025), y la moderación y los GLP-1 restan consumo [23, 42]. Los espirituosos ganaron 13 puntos de cuota en el alcohol de EE. UU. desde 2000 (42,4 % en 2025) [39]."
+      }
+    ],
+    "ciclo": {
+      "posicion": "Contracción",
+      "comentario": "Los indicadores son los ingresos de los productores en EE. UU. (DISCUS), los volúmenes de IWSR y las ventas orgánicas de los grandes grupos. En 2008-09 el mercado de EE. UU. no cayó: 18.700 M USD en ambos años [39]. En 2020-21 subió un 10 % y un 12 % con el consumo en casa [39]. Desde 2022 se estanca: 37.600 M en 2022, 37.700 M en 2023, 37.200 M en 2024 y 36.400 M en 2025 [39], con desestocaje de los mayoristas y menor renta disponible. En el mundo, el volumen de espirituosos cayó un 3 % en 2025 [42], y Diageo y Pernod cayeron un 2,0 % y un 3,9 % orgánico en el FY26 [24, 32]."
+    },
+    "regulacion": "Aranceles de EE. UU. desde 2025: 10 % a los productos del Reino Unido y 15 % a los de la UE; tequila mexicano y whisky canadiense exentos si cumplen el T-MEC [27, 35]. Se discute la posible subida al 35 % de la tarifa sobre el whisky de malta escocés (vence una suspensión de cinco años) y la revisión de los aranceles tras el fallo del Tribunal Supremo de EE. UU. [27, 41]. En mayo de 2026 Diageo celebró una noticia sobre el whisky escocés y los aranceles en EE. UU., con efecto mínimo en el FY26 y más relevante para el FY27 [28]. Impuestos especiales: en el Reino Unido, el impuesto a los espirituosos subió más del 17 % en tres años y se cobra por graduación [23, 41]; en India, Maharashtra subió impuestos en el FY26 [23]. En EE. UU. regulan la TTB federal y los estados (precios, etiquetado, publicidad, distribución) [23]. Rémy Cointreau cita un precio mínimo de importación del coñac en China acordado con el MOFCOM [35].",
+    "tendencias": "Las RTD son el segmento que más crece: 1.000 millones de cajas de 9 litros en el mundo en 2025 [42] y +16 % en EE. UU. [39]; Diageo, que creó el segmento con Smirnoff Ice, reconoce que «perdió el foco» y lo vuelve a integrar con sus marcas [23]. La cerveza sin alcohol (+8 % de volumen) favorece a Guinness 0.0, la cerveza sin alcohol n.º 1 en el Reino Unido [23, 42]. El consumo se desplaza a India, México, Colombia y Vietnam, y cae en China, EE. UU., Japón, Alemania y Reino Unido [42]. El tequila, motor de la década en EE. UU., bajó un 4,1 % en 2025 [39] y Diageo perdió cuota en él [23].",
+    "confianza": "Media",
+    "extra": [
+      "IWSR 2025: volumen mundial de alcohol −2 %; espirituosos −3 %, vino −5 %, cerveza −2 %, RTD +3 %; por primera vez desde 1990, los espirituosos superan al vino en volumen [42].",
+      "IWSR, previsión 2025-2035: espirituosos −2 % de volumen, vino −14 %, cerveza −1 %, RTD +17 % [42].",
+      "Diageo espera que el valor de los espirituosos (con RTD) y de la cerveza premium crezca un 1-3 % al año en tres años (proyecciones internas) [23]; el TCAC previsto del sector (2,0 %) es el punto medio de ese rango.",
+      "Exportaciones de whisky escocés: 5.400 M GBP en 2024 y 5.300 M GBP en 2025; a EE. UU., 933 M GBP (−4 %); 1.340 millones de botellas (−4,3 %) [41].",
+      "EE. UU. 2025 por categoría: vodka 7.000 M USD (−3 %), tequila/mezcal 6.400 M (−4,1 %), whiskey americano 5.100 M (−0,9 %), licores 2.700 M (−3,2 %) [39].",
+      "Diageo, con datos de IWSR (2022): el alcohol total creció a un TCAC del 4 % en cinco años y los espirituosos, al 6 % [29]."
+    ]
+  },
+  "competencia": {
+    "cuota_pct": null,
+    "posicion": "N.º 2 mundial en espirituosos de marca internacional, detrás de Diageo (ventas de 9.404 M EUR frente a 16.844 M EUR); n.º 1 en whisky irlandés (Jameson) y n.º 2 en whisky escocés y coñac [23, 32].",
+    "competidores": [
+      {
+        "nombre": "Diageo",
+        "pais": "Reino Unido",
+        "ticker": "DGE.L",
+        "ingresos": 16844,
+        "cuota_pct": null,
+        "margen_ebit_pct": 28.9,
+        "comentario": "N.º 1 mundial (Johnnie Walker, Smirnoff, Guinness, Don Julio). FY26 (a junio de 2026): ventas de 19.643 M USD y resultado operativo antes de partidas excepcionales de 5.683 M USD; convertido a 1,1662 USD/EUR (media BCE del ejercicio) [23, 24, 43]."
+      },
+      {
+        "nombre": "Constellation Brands",
+        "pais": "EE. UU.",
+        "ticker": "STZ",
+        "ingresos": 7837,
+        "cuota_pct": null,
+        "margen_ebit_pct": 29.8,
+        "comentario": "Sobre todo cerveza mexicana importada en EE. UU. (Modelo, Corona); compite con Guinness y las RTD. FY26 (a febrero de 2026): beneficio operativo de 2.721 M USD [34]."
+      },
+      {
+        "nombre": "LVMH (Vinos y Licores, Moët Hennessy)",
+        "pais": "Francia",
+        "ticker": "MC.PA",
+        "ingresos": 5192,
+        "cuota_pct": null,
+        "margen_ebit_pct": 19,
+        "comentario": "Champán y coñac (Hennessy); Diageo tiene el 34 %. 2025: 5.358 M EUR y resultado operativo de 1.016 M EUR; a 1,1300 USD/EUR (media BCE de 2025) [38, 43]."
+      },
+      {
+        "nombre": "Brown-Forman",
+        "pais": "EE. UU.",
+        "ticker": "BF-B",
+        "ingresos": 3368,
+        "cuota_pct": null,
+        "margen_ebit_pct": 25.5,
+        "comentario": "Jack Daniel's, Woodford Reserve, Herradura. FY26 (a abril de 2026): ventas netas de 3.928 M USD y beneficio operativo de 1.001 M USD [33]."
+      },
+      {
+        "nombre": "Campari",
+        "pais": "Italia",
+        "ticker": "CPR.MI",
+        "ingresos": 2957,
+        "cuota_pct": null,
+        "margen_ebit_pct": 20.9,
+        "comentario": "Aperitivos (Aperol, Campari), Espolòn, Wild Turkey, Courvoisier. 2025: 3.051 M EUR (+2,4 % orgánico); margen EBIT ajustado; a 1,1300 USD/EUR [36, 43]."
+      },
+      {
+        "nombre": "Becle (Jose Cuervo)",
+        "pais": "México",
+        "ticker": "CUERVO.MX",
+        "ingresos": 1927,
+        "cuota_pct": null,
+        "margen_ebit_pct": 22.4,
+        "comentario": "N.º 1 en tequila. 2025: 43.087 M MXN (−2,0 %), beneficio operativo de 9.664 M MXN; a 19,178 MXN/USD (media BCE de 2025) [37, 43]."
+      },
+      {
+        "nombre": "Rémy Cointreau",
+        "pais": "Francia",
+        "ticker": "RCO.PA",
+        "ingresos": 930,
+        "cuota_pct": null,
+        "margen_ebit_pct": 17.7,
+        "comentario": "Coñac (Rémy Martin) y licores. Ejercicio 2025-26 (a marzo de 2026): 935,3 M EUR (+0,2 % orgánico) y resultado operativo corriente de 165,4 M EUR; a 1,1591 USD/EUR [35, 43]."
+      }
+    ],
+    "foso": {
+      "veredicto": "Estrecho",
+      "tendencia": "Se estrecha",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 0,
+          "evidencia": "No aplica a un fabricante de bebidas."
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 1,
+          "evidencia": "El consumidor cambia de marca sin coste; la fidelidad es a la marca, no un coste."
+        },
+        {
+          "fuente": "Intangibles (marca, patentes, licencias)",
+          "puntuacion": 4,
+          "evidencia": "Marcas centenarias con margen operativo del 25,8 % frente al 17,7 % de Rémy Cointreau y el 20,9 % de Campari [10, 13, 14]; pero precio/mezcla negativo en EE. UU. y China en el FY26 [10]."
+        },
+        {
+          "fuente": "Ventaja en costes",
+          "puntuacion": 2,
+          "evidencia": "Escala en compras y publicidad; el coste del líquido envejecido sube con la inflación [10]."
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 3,
+          "evidencia": "Distribución propia en más de 160 países y existencias envejecidas que un entrante tarda 10-20 años en reunir [10]."
+        }
+      ]
+    },
+    "amenazas": "Primera, la moderación del consumo entre los jóvenes y los GLP-1: IWSR prevé que el volumen mundial siga cayendo hasta 2031 [42]. Segunda, la pérdida de poder de precios en EE. UU. y China, donde Pernod cayó un 14 % y el coñac sufre aranceles [32, 35]. Tercera, los aranceles de EE. UU. del 15 % a los productos de la UE [27]. Cuarta, el desplazamiento hacia las bebidas listas para tomar y el tequila, donde Pernod tiene poca presencia [39]. Probabilidad media-alta de que el margen no recupere el 28 % del FY23.",
+    "confianza": "Media"
+  },
+  "financieros": {
+    "cuenta": [
+      {
+        "periodo": "FY2022",
+        "ingresos": 10701,
+        "coste_ventas": 4228,
+        "gastos_generales": 3449,
+        "ebitda": null,
+        "amortizaciones": null,
+        "ebit": 3024,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 2124,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 8.18,
+        "dpa": 4.12,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 259.7
+      },
+      {
+        "periodo": "FY2023",
+        "ingresos": 12137,
+        "coste_ventas": 4891,
+        "gastos_generales": 3898,
+        "ebitda": null,
+        "amortizaciones": null,
+        "ebit": 3348,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": null,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 9.11,
+        "dpa": 4.7,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": null
+      },
+      {
+        "periodo": "FY2024",
+        "ingresos": 11598,
+        "coste_ventas": 4623,
+        "gastos_generales": 3859,
+        "ebitda": null,
+        "amortizaciones": null,
+        "ebit": 3116,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": null,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 7.9,
+        "dpa": 4.7,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": null
+      },
+      {
+        "periodo": "FY2025",
+        "ingresos": 10959,
+        "coste_ventas": 4443,
+        "gastos_generales": 3565,
+        "ebitda": null,
+        "amortizaciones": null,
+        "ebit": 2951,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 1829,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 7.26,
+        "dpa": 4.7,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 251.9
+      },
+      {
+        "periodo": "FY2026",
+        "ingresos": 9404,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 2881,
+        "amortizaciones": 458,
+        "ebit": 2423,
+        "resultado_financiero": null,
+        "bai": null,
+        "impuestos": null,
+        "minoritarios": null,
+        "beneficio_neto": 1476,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 5.85,
+        "dpa": 4.7,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 252.3
+      }
+    ],
+    "ltm": {
+      "periodo": "LTM jun-26",
+      "fecha_fin": "2026-06-30",
+      "ingresos": 9404,
+      "ebitda": 2881,
+      "ebit": 2423,
+      "beneficio_neto": 1476,
+      "bpa": 5.85,
+      "dpa": 4.7,
+      "dpa_extraordinario": 0,
+      "fcf": 1197,
+      "participadas_en_ebitda": null,
+      "no_recurrentes_en_ebitda": null
+    },
+    "cambios_perimetro": [
+      {
+        "periodo": "FY2025",
+        "descripcion": "Venta de la cartera de vinos (Jacob’s Creek, Brancott y otras) y de marcas menores de licores entre FY24 y FY26: efecto perímetro negativo, sin cifras pro forma accesibles [6]."
+      }
+    ],
+    "comentario": "Las ventas pasaron de 10.701 M EUR en el FY2022 a un máximo de 12.137 M en el FY2023 y caen desde entonces: 11.598 M (FY24, −1 % orgánico), 10.959 M (FY25, −3 % orgánico) y 9.404 M (FY26, −3,9 % orgánico y −14,2 % publicado por divisa y ventas de marcas) [1, 5, 8, 10, 12, 17]. El resultado operativo recurrente bajó de 3.348 M a 2.423 M; el margen del FY26 fue del 25,8 %, 35 puntos básicos menos en orgánico, con recortes de costes de estructura que compensaron aranceles e inflación del coste de los líquidos envejecidos [2, 3, 14]. La caída se concentra en EE. UU. (−14 % orgánico en el FY26, con consumo final en torno a −7 % y desestocaje) y China; sin esos dos mercados las ventas orgánicas subieron un 0,5 % [20]. El BPA recurrente diluido pasó de 9,11 EUR (FY23) a 5,85 EUR (FY26) [2, 5, 9, 11].",
+    "ajustes": "La cuenta usa la base recurrente de la empresa: EBIT = «profit from recurring operations» (PRO) y beneficio y BPA = «group share of net profit from recurring operations», diluido. El beneficio publicado es menor por partidas no recurrentes (sobre todo reestructuración del plan de eficiencia y deterioros de marcas): 1.996 M frente a 2.124 M en el FY22, BPA publicado de 8,81 frente a 9,11 en el FY23 y de 5,83 frente a 7,90 en el FY24, 1.626 M frente a 1.829 M en el FY25 y 1.203 M frente a 1.476 M en el FY26 [4, 5, 9, 11, 12]. Esas partidas se repiten casi todos los años, así que el BPA recurrente sobrestima algo el beneficio económico. El coste de ventas y los gastos generales (que incluyen publicidad y promoción) salen del margen bruto publicado por Stock Analysis [13]. El EBITDA del FY26 se deriva de la deuda neta (10.660 M) y del ratio deuda neta/EBITDA de 3,7 veces publicado (estimación propia, ±40 M) [3].",
+    "confianza": "Baja"
+  },
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "1T26",
+        "ingresos": 2384,
+        "crecimiento_pct": -14.3,
+        "crecimiento_organico_pct": -7.6,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": null,
+        "vs_consenso": "Inferior"
+      },
+      {
+        "periodo": "1S26",
+        "ingresos": null,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": null,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "3T26",
+        "ingresos": null,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": 0,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": null,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "FY26",
+        "ingresos": 9404,
+        "crecimiento_pct": -14.2,
+        "crecimiento_organico_pct": -3.9,
+        "ebitda": 2881,
+        "margen_ebitda_pct": 30.6,
+        "bpa": 5.85,
+        "vs_consenso": "Inferior"
+      }
+    ],
+    "ultima_presentacion": "En la presentación del FY26 (27-ago-2026) la dirección dio para el FY27 ventas orgánicas «en general estables» en un entorno «contrastado e incierto», con EE. UU. y China todavía en descenso y el resto del mundo creciendo, y mantuvo el objetivo de crecimiento orgánico medio del 3-6 % anual para FY27-FY29, ahora cerca del extremo bajo [1, 2, 20]. El plan de eficiencia de 1.000 M se adelanta a FY26-FY28 (antes FY29), con cerca de la mitad ya entregada, y los costes de estructura bajaron un 8 % en el FY26 [1, 14]. El dividendo se mantiene en 4,70 EUR, con el complementario de 2,35 EUR a elegir en efectivo o en acciones, lo que el mercado leyó como una forma de proteger la caja [3]. En el 3T26 (15-abr-2026) el discurso era de «impulso que mejora» con ventas orgánicas estables; el 4T se vio afectado por el conflicto de Oriente Medio [19, 20]. Las ventas del 1T26 habían caído un 7,6 % orgánico, peor que el −7,1 % del consenso que recopila la empresa [18]. Lo que evita concretar: la fecha de la vuelta al crecimiento en EE. UU. y China y el margen del FY27 (una nota de análisis califica la guía de «imprecisa»).",
+    "confianza": "Media"
+  },
+  "balance": {
+    "historico": [
+      {
+        "periodo": "FY2022",
+        "activo_total": null,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": null,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 0,
+        "deuda_financiera": 8657,
+        "arrendamientos": 0,
+        "patrimonio_neto": null,
+        "minoritarios": null,
+        "reservas": null
+      },
+      {
+        "periodo": "FY2023",
+        "activo_total": null,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": null,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 0,
+        "deuda_financiera": 10274,
+        "arrendamientos": 0,
+        "patrimonio_neto": null,
+        "minoritarios": null,
+        "reservas": null
+      },
+      {
+        "periodo": "FY2024",
+        "activo_total": null,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": null,
+        "fondo_comercio": 6806,
+        "intangibles": 12234,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 0,
+        "deuda_financiera": 10951,
+        "arrendamientos": 0,
+        "patrimonio_neto": null,
+        "minoritarios": null,
+        "reservas": null
+      },
+      {
+        "periodo": "FY2025",
+        "activo_total": null,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": null,
+        "fondo_comercio": 6406,
+        "intangibles": 11515,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 0,
+        "deuda_financiera": 10725,
+        "arrendamientos": 0,
+        "patrimonio_neto": 15543,
+        "minoritarios": null,
+        "reservas": null
+      },
+      {
+        "periodo": "FY2026",
+        "activo_total": null,
+        "activo_corriente": null,
+        "pasivo_corriente": null,
+        "pasivo_total": null,
+        "fondo_comercio": null,
+        "intangibles": null,
+        "inmovilizado_material": null,
+        "existencias": null,
+        "clientes": null,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 0,
+        "deuda_financiera": 10660,
+        "arrendamientos": 0,
+        "patrimonio_neto": 15014,
+        "minoritarios": null,
+        "reservas": null
+      }
+    ],
+    "vencimientos": [],
+    "liquidez": "Caja de 1.847 M EUR a 30-jun-2025 [7]; la del 30-jun-2026 no está en las fuentes accesibles. En octubre de 2025 colocó 1.000 M EUR en bonos a 7 y 11 años (cupones del 3,25 % y 3,75 %) y 200 M en colocación privada a 2 años: cupón medio del 3,30 % y vida media de 8 años [21].",
+    "rating": "Moody’s Baa1 (estable) y S&P BBB+ (estable), según la emisión de octubre de 2025 [21].",
+    "coste_deuda_pct": 3.3,
+    "vida_media_anios": null,
+    "otros_pasivos": "Las existencias son el gran activo del balance: unos 9.900 M EUR a 30-jun-2025 según un agregador (la mayoría, líquidos en envejecimiento: whisky, coñac), casi un año de ventas [16]. La empresa invirtió 645 M y 557 M en aumentar existencias estratégicas en el FY24 y el FY25, y otros 135 M y 470 M en circulante operativo [7]. No hemos podido leer las notas de provisiones, pensiones y litigios del FY26.",
+    "comentario": "La deuda neta publicada (que incluye los arrendamientos) subió de 8.657 M en el FY22 a 10.951 M en el FY24 por recompras, compras de marcas y la acumulación de existencias envejecidas, y desde entonces baja poco: 10.725 M en el FY25 y 10.660 M en el FY26 (−65 M) [3, 8, 12]. Con el EBITDA a la baja, el apalancamiento sube de 2,4 veces (FY22) a 3,7 veces (FY26) [3, 12]. El patrimonio neto (estimación a partir del ratio deuda neta/patrimonio de 0,69 y 0,71 de un agregador) ronda 15.000-15.500 M [15]. Fondo de comercio e intangibles (marcas) suman 17.921 M a 30-jun-2025, la mayor parte del activo no corriente de 24.722 M [6, 7].",
+    "confianza": "Baja"
+  },
+  "flujos": {
+    "historico": [
+      {
+        "periodo": "FY2024",
+        "flujo_operativo": 1727,
+        "capex": 773,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 1208,
+        "recompras": null,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "FY2025",
+        "flujo_operativo": 1788,
+        "capex": 667,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 1201,
+        "recompras": null,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      }
+    ],
+    "comentario": "La caja libre (flujo operativo − inversiones) fue de 954 M en el FY24, 1.121 M en el FY25 y 1.197 M en el FY26 (+6 %, conversión del 91 %), con dividendos de unos 1.200 M al año: el dividendo consume toda la caja libre y la deuda apenas baja [3, 4, 7]. La conversión mejora porque la acumulación de existencias envejecidas (645 M en el FY24, 557 M en el FY25) y el capex (773 M y 667 M) bajan tras el pico de inversión del FY24, y la empresa apunta a una conversión ≥ 80 % y unas inversiones estratégicas de unos 750 M [7, 14, 22]. La caja libre recurrente del FY22 fue de 1.926 M, récord [12]. Parte del capex es de crecimiento (destilerías nuevas para whisky irlandés y escocés); no se publica el reparto.",
+    "confianza": "Media"
+  },
+  "calidad": {
+    "auditor": null,
+    "anios_auditor": null,
+    "opinion": null,
+    "comentario": "No hemos podido leer el informe de auditoría ni las notas del FY26. La señal contable principal es la distancia creciente entre el beneficio recurrente y el publicado: 273 M en el FY26 (1.476 M frente a 1.203 M), 203 M en el FY25 y unos 520 M en el FY24 por reestructuración y deterioros de marcas [4, 5, 9]. Los costes del plan de eficiencia son recurrentes en la práctica. La caja libre (1.197 M) es inferior al beneficio recurrente (1.476 M) y cubre justo el dividendo [3, 4].",
+    "senales": [
+      {
+        "senal": "Partidas «no recurrentes» que se repiten cada año",
+        "nivel": "Media",
+        "comentario": "Diferencia entre beneficio recurrente y publicado de 203-520 M al año en FY24-FY26 [4, 5, 9]."
+      },
+      {
+        "senal": "Deterioros de marcas",
+        "nivel": "Media",
+        "comentario": "Intangibles de 11.515 M (FY25) frente a 12.234 M (FY24): ventas de marcas y deterioros [6, 7]."
+      }
+    ],
+    "confianza": "Baja"
+  },
+  "rentabilidad": {
+    "comentario": "Con el patrimonio estimado (15.014 M) y la deuda neta (10.660 M), el capital invertido del FY2026 es de 25.971 M y el ROIC del 7,0 %, apenas medio punto por encima del WACC (6,53 %): hoy la empresa casi no crea valor sobre el capital que ha pagado [3, 15]. El capital está dominado por las marcas y el fondo de comercio de las compras de Seagram, Allied Domecq y Absolut (17.921 M a junio de 2025) [6, 7], de modo que el ROIC orgánico de una marca que ya se tiene es mayor; pero las compras se pagaron y cuentan. El NOPAT bajó de 2.511 M en el FY2023 a 1.817 M en el FY2026 con un capital que no se reduce (existencias envejecidas en máximos), así que el ROIC incremental de estos años es negativo. Diageo, con un margen operativo del 28,9 % y más apalancamiento, está en una situación parecida [23, 24]. La recuperación del ROIC depende del margen (plan de eficiencia) más que de la rotación.",
+    "confianza": "Baja"
+  },
+  "capital": {
+    "politica": "Dividendo del 50 % del beneficio neto recurrente como política declarada, mantenido en 4,70 EUR por acción desde el FY23 aunque el BPA cayó a 5,85 EUR (pago del 80 %); el complementario de 2,35 EUR del FY26 puede cobrarse en acciones [3, 12]. Recompras: unos 750 M en el FY22; no hay programa vigente en las fuentes. Prioridades: reducir deuda, mantener inversiones estratégicas de unos 750 M y dividendo [12, 14].",
+    "adquisiciones": [
+      {
+        "anio": "2026",
+        "objetivo": "Brown-Forman (fusión estudiada, sin acuerdo)",
+        "importe": null,
+        "ev_ebitda": null,
+        "financiacion": "Acciones",
+        "resultado": "Conversaciones confirmadas el 26-mar-2026 y terminadas el 28-abr-2026 sin acuerdo; la acción cayó un 4 % ese día [20]."
+      }
+    ],
+    "comentario": "Desde 2022 la empresa pagó dividendos y recompras con deuda en lugar de con caja libre: la deuda neta subió 2.000 M entre el FY22 y el FY24 mientras el beneficio recurrente caía de su máximo [8, 12]. El mantenimiento del dividendo con un pago del 80 % y la opción en acciones indican que la caja libre ya no cubre con holgura la remuneración [3]. El intento de fusión con Brown-Forman, abandonado por desacuerdo en el gobierno según la prensa francesa, es la señal de que la dirección busca escala fuera del crecimiento orgánico.",
+    "confianza": "Media"
+  },
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "Alexandre Ricard",
+        "cargo": "Presidente y consejero delegado",
+        "desde": "2015",
+        "participacion_pct": null,
+        "trayectoria": "Nieto del fundador Paul Ricard; en el grupo desde 2003 (Irish Distillers, director general delegado). Bajo su mandato las ventas llegaron a un máximo de 12.137 M (FY23) y han vuelto a 9.404 M en el FY26 [32, 44]."
+      }
+    ],
+    "historial_guidance": [
+      {
+        "anio": "FY2024",
+        "guia": "Crecimiento orgánico de ventas bajo de un dígito y margen estable o mejor",
+        "real": "Ventas −1 % orgánico; resultado operativo +1,5 % orgánico",
+        "cumplida": "Parcial"
+      },
+      {
+        "anio": "FY2025",
+        "guia": "Ventas orgánicas a la baja de un dígito bajo y margen defendido",
+        "real": "Ventas −3 % orgánico; margen −0,8 % orgánico en resultado",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "FY2026",
+        "guia": "Mejora a lo largo del año; caída de ventas en el 1T",
+        "real": "Ventas −3,9 % orgánico (1T −7,6 %, 3T estable)",
+        "cumplida": "Parcial"
+      }
+    ],
+    "comentario": "Dirección familiar estable y sin rotación en la cúpula; la credibilidad sufrió por el objetivo de crecimiento a medio plazo del 4-7 % (luego 3-6 %), que no se ha cumplido ningún año desde el FY24 y que ahora se sitúa «cerca del extremo bajo» [32, 49]. El consejero delegado descartó retomar la fusión con Brown-Forman [49]. No hemos podido verificar el plan de sucesión.",
+    "confianza": "Baja"
+  },
+  "gobierno": {
+    "consejo": [
+      {
+        "nombre": "Alexandre Ricard",
+        "cargo": "Presidente y consejero delegado",
+        "tipo": "Ejecutivo",
+        "desde": null,
+        "comisiones": null
+      },
+      {
+        "nombre": "Société Paul Ricard (representante permanente)",
+        "cargo": "Consejero",
+        "tipo": "Dominical",
+        "desde": null,
+        "comisiones": null
+      },
+      {
+        "nombre": "Patricia Ricard Giron",
+        "cargo": "Consejera",
+        "tipo": "Dominical",
+        "desde": null,
+        "comisiones": null
+      },
+      {
+        "nombre": "César Giron",
+        "cargo": "Consejero",
+        "tipo": "Dominical",
+        "desde": null,
+        "comisiones": null
+      },
+      {
+        "nombre": "Patricia Barbizet",
+        "cargo": "Consejera coordinadora",
+        "tipo": "Independiente",
+        "desde": null,
+        "comisiones": "Nombramientos y gobierno"
+      },
+      {
+        "nombre": "Albert Baladi",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2025",
+        "comisiones": null
+      },
+      {
+        "nombre": "Jean Lemierre",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2025",
+        "comisiones": null
+      }
+    ],
+    "presidente_ceo_separados": false,
+    "presidente_ejecutivo": true,
+    "consejero_coordinador": true,
+    "una_accion_un_voto": false,
+    "operaciones_vinculadas_relevantes": false,
+    "variable_ligado_rentabilidad": null,
+    "auditoria_independiente": null,
+    "insiders_sin_operaciones": false,
+    "accionista_control": true,
+    "presidente_vinculado_control": true,
+    "cambios_cupula_24m": 0,
+    "voto_remuneracion_pct": null,
+    "voto_remuneracion_contra_pct": null,
+    "voto_remuneracion_contra_libre_pct": null,
+    "voto_cupula_pct": null,
+    "remuneracion_ceo": null,
+    "remuneracion": "Las juntas de noviembre de 2024 y octubre de 2025 aprobaron la remuneración de Alexandre Ricard del ejercicio anterior y la política futura [45, 48]; no hemos podido leer los porcentajes de voto ni el detalle de métricas del variable. La próxima junta es el 20-nov-2026 [32].",
+    "accionistas": [
+      {
+        "nombre": "Familia Ricard (Société Paul Ricard y miembros)",
+        "pct": null,
+        "tipo": "Familiar",
+        "variacion": "Sin cambios conocidos"
+      }
+    ],
+    "insiders": [],
+    "control_y_defensas": "La familia Ricard controla de hecho la presidencia y la dirección: presidente-consejero delegado de la familia, representante de Société Paul Ricard y otros consejeros de la familia en el consejo, con un consejero coordinador independiente [44]. Los estatutos franceses dan derecho de voto doble a las acciones nominativas con más de dos años, lo que refuerza a la familia. Según la prensa francesa, la fusión con Brown-Forman (otra empresa familiar) fracasó por la gobernanza: quién mandaría en el grupo resultante [46, 47].",
+    "alertas": [
+      "Presidente y consejero delegado en la misma persona, vinculada a la familia de referencia [44].",
+      "La fusión con Brown-Forman se rompió por el reparto de poder, no por el precio, según la prensa [47]."
+    ],
+    "confianza": "Baja"
+  },
+  "consenso": {
+    "guidance": "FY27 (julio 2026-junio 2027): ventas orgánicas «en general estables», con EE. UU. y China aún en descenso y crecimiento en el resto del mundo; el margen se defiende con el plan de eficiencia de 1.000 M adelantado a FY26-FY28. A medio plazo (FY27-FY29), crecimiento orgánico medio del 3-6 % anual, ahora «cerca del extremo bajo», y conversión de caja ≥ 80 % [57]. Última confirmación: 27-ago-2026.",
+    "estimaciones": [],
+    "recomendaciones": {
+      "n_analistas": null,
+      "comprar": null,
+      "mantener": null,
+      "vender": null,
+      "po_medio": 80.25,
+      "po_min": 75,
+      "po_max": 95
+    },
+    "revisiones": "Tras los resultados del FY26 los objetivos bajaron: UBS a 75 EUR desde 87 (neutral; sus BPA de 2026-27 están un 5-6 % por debajo del consenso) [55], Jefferies a 90 y luego a 95 desde 100 (comprar) [54, 56]. La mediana de objetivos era de 80,25 EUR en julio de 2026 [54]. AlphaValue cifra el PER del FY27 en 11,6 veces [57]. No hemos podido leer las estimaciones completas del consenso (MarketScreener no abre en este entorno).",
+    "base_ebitda": "NIIF",
+    "ajuste_ebitda_pct_ventas": null,
+    "confianza": "Baja"
+  },
+  "bolsa": {
+    "tipo_rentabilidad": "de precio (sin dividendos)",
+    "rentabilidades": [
+      {
+        "periodo": "1 año",
+        "accion_pct": -33.7,
+        "indice_pct": null,
+        "sector_pct": null
+      }
+    ],
+    "anual": [],
+    "beta": null,
+    "volatilidad_pct": null,
+    "max_drawdown_pct": null,
+    "posicion_corta_pct": null,
+    "comentario": "La acción cotizaba a 202,40 EUR al cierre de junio de 2023 y a 63,86 EUR al de junio de 2026 [51]: un 68 % menos en tres años. En septiembre de 2026 marcó mínimos de varios años por debajo de 60 EUR (58,92 EUR) tras los resultados del FY26 [53], con una caída del 33,7 % en un año a mediados de septiembre [63]. Explican la caída la normalización del consumo tras la pandemia, la debilidad de EE. UU. y China y la compresión de múltiplos de todo el sector de bebidas alcohólicas.",
+    "confianza": "Baja"
+  },
+  "multiplos_historicos": {
+    "serie": [
+      {
+        "anio": "FY2022",
+        "precio_cierre": 176.8,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": true
+      },
+      {
+        "anio": "FY2023",
+        "precio_cierre": 202.4,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": true
+      },
+      {
+        "anio": "FY2024",
+        "precio_cierre": 126.7,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "FY2025",
+        "precio_cierre": 84.6,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "FY2026",
+        "precio_cierre": 63.86,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      }
+    ],
+    "comentario": "Precios de cierre de junio de cada ejercicio (Digrin, precio real) [51]; el de junio de 2022 se estima con el ADR (36,72 USD × 5 acciones por ADR ÷ 1,0387 USD/EUR = 176,8 EUR) [52]. FY2022 y FY2023 se excluyen: son los años de la burbuja de los destilados tras la pandemia (PER sobre el BPA del año siguiente de 19-26 veces).",
+    "confianza": "Baja"
+  },
+  "comparables": {
+    "criterio": "Grupos de bebidas alcohólicas con marcas globales: los destiladores cotizados (Diageo, Brown-Forman, Campari, Rémy Cointreau), Constellation Brands y las dos grandes cerveceras (AB InBev y Heineken), todos a 12-oct-2026 con cifras de MarketScreener convertidas a EUR [50]. Fuera LVMH (el lujo pesa el 90 % de su beneficio) y Kweichow Moutai (mercado chino regulado).",
+    "empresas": [
+      {
+        "nombre": "AB InBev",
+        "ticker": "ABI.BR",
+        "pais": "BE",
+        "capitalizacion": 139747,
+        "ev_ventas": 3.66,
+        "ev_ebitda_ltm": 10.2,
+        "ev_ebitda_ntm": 8.9,
+        "per_ntm": 15.7,
+        "crecimiento_pct": 6.8,
+        "margen_ebitda_pct": 35.8,
+        "roic_pct": null,
+        "dn_ebitda": 2.87,
+        "fcf_yield_pct": 7.8
+      },
+      {
+        "nombre": "Constellation Brands",
+        "ticker": "STZ",
+        "pais": "US",
+        "capitalizacion": 18461,
+        "ev_ventas": 3.4,
+        "ev_ebitda_ltm": 9.2,
+        "ev_ebitda_ntm": 9.2,
+        "per_ntm": 10.4,
+        "crecimiento_pct": 0.4,
+        "margen_ebitda_pct": 36.8,
+        "roic_pct": null,
+        "dn_ebitda": 3.11,
+        "fcf_yield_pct": 8.7
+      },
+      {
+        "nombre": "Diageo",
+        "ticker": "DGE.L",
+        "pais": "GB",
+        "capitalizacion": 44209,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": 10.4,
+        "ev_ebitda_ntm": 10.6,
+        "per_ntm": 13.8,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": null,
+        "roic_pct": null,
+        "dn_ebitda": null,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "Brown-Forman",
+        "ticker": "BF.B",
+        "pais": "US",
+        "capitalizacion": 10734,
+        "ev_ventas": 3.61,
+        "ev_ebitda_ltm": 13,
+        "ev_ebitda_ntm": 12.2,
+        "per_ntm": 15.6,
+        "crecimiento_pct": 0.7,
+        "margen_ebitda_pct": 27.8,
+        "roic_pct": null,
+        "dn_ebitda": 2.01,
+        "fcf_yield_pct": 7.4
+      },
+      {
+        "nombre": "Campari",
+        "ticker": "CPR.MI",
+        "pais": "IT",
+        "capitalizacion": 7553,
+        "ev_ventas": 3.12,
+        "ev_ebitda_ltm": 12.1,
+        "ev_ebitda_ntm": 11.7,
+        "per_ntm": 18.8,
+        "crecimiento_pct": 1.9,
+        "margen_ebitda_pct": 25.7,
+        "roic_pct": null,
+        "dn_ebitda": 2.49,
+        "fcf_yield_pct": 4.5
+      },
+      {
+        "nombre": "Rémy Cointreau",
+        "ticker": "RCO.PA",
+        "pais": "FR",
+        "capitalizacion": 2178,
+        "ev_ventas": 3.07,
+        "ev_ebitda_ltm": 13.6,
+        "ev_ebitda_ntm": 12.6,
+        "per_ntm": 22.9,
+        "crecimiento_pct": 3.6,
+        "margen_ebitda_pct": 22.6,
+        "roic_pct": null,
+        "dn_ebitda": 3.26,
+        "fcf_yield_pct": 2.5
+      },
+      {
+        "nombre": "Heineken",
+        "ticker": "HEIA.AS",
+        "pais": "NL",
+        "capitalizacion": 40202,
+        "ev_ventas": 1.78,
+        "ev_ebitda_ltm": 8.2,
+        "ev_ebitda_ntm": 7.6,
+        "per_ntm": 14.5,
+        "crecimiento_pct": 3.9,
+        "margen_ebitda_pct": 22.5,
+        "roic_pct": null,
+        "dn_ebitda": 2.17,
+        "fcf_yield_pct": 6.5
+      }
+    ],
+    "comentario": "Pernod cotiza a 9,3 veces el EBITDA de los últimos 12 meses frente a una mediana de 10,4 veces de los siete comparables, y a unas 11 veces el BPA de los próximos 12 meses frente a una mediana de 15,6 veces [50]. El descuento se explica por el apalancamiento (3,7 veces frente a una mediana de 2,7 veces) y por el crecimiento: la mediana espera un 2,8 % y Pernod viene de −3,9 % orgánico [2, 50]. La mediana de EV/EBITDA da 76,51 EUR por acción. No hay consenso de EBITDA ni de BPA para los próximos 12 meses en las fuentes accesibles, así que el motor no puede calcular el valor por EV/EBITDA y PER de los próximos 12 meses y los comparables pesan 0 en el valor intrínseco; se dan como contraste. Rémy Cointreau (22,9 veces) y Campari (18,8 veces) tiran de la media hacia arriba; Constellation (10,4 veces) es el más parecido en PER.",
+    "confianza": "Media"
+  },
+  "transacciones": {
+    "operaciones": [
+      {
+        "fecha": "2025-12",
+        "objetivo": "East African Breweries (65 %) y UDV Kenya (53,68 %)",
+        "comprador": "Asahi Group Holdings",
+        "ev": 4293,
+        "ev_ventas": 4.82,
+        "ev_ebitda": 17,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Venta de Diageo: producto neto estimado de 2.300 M USD tras impuestos y costes, 17 veces el EBITDA ajustado y valor empresa implícito de 4.800 M USD por el 100 % de EABL. EABL facturó 996 M USD en el FY25, con EBITDA de 258 M (18,6x publicado) y deuda neta de 229 M. Cierre previsto en el 2S del año natural 2026. [62]"
+      },
+      {
+        "fecha": "2023-12",
+        "objetivo": "Courvoisier (coñac, con Salignac)",
+        "comprador": "Campari",
+        "ev": 1181,
+        "ev_ventas": 5.3,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Valor empresa de 1.320 M USD (1.200 M fijos más hasta 120 M de pago aplazado en 2029), unas 17 veces la contribución tras publicidad (CAAP) de 2022 (78 M USD) sobre ventas de 249 M. No publica EBITDA. Cerrada el 30-abr-2024. [62]"
+      },
+      {
+        "fecha": "2025-06",
+        "objetivo": "Cinzano y Frattina (vermú y espumosos)",
+        "comprador": "Caffo Group 1915",
+        "ev": 100,
+        "ev_ventas": 1.33,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Venta de Campari por 100 M EUR sin caja ni deuda (112 M USD al tipo del corte), sobre ventas de 75 M EUR y CAAP de 21 M EUR en 2024 (4,8 veces la CAAP). Marcas de vino y vermú de bajo margen. [62]"
+      },
+      {
+        "fecha": "2023-01",
+        "objetivo": "Don Papa Rum",
+        "comprador": "Diageo",
+        "ev": 260,
+        "ev_ventas": null,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "260 M EUR al contado más hasta 177,5 M EUR condicionados a resultados hasta 2028 (291 M USD el pago inicial y 489 M USD con todo el variable, al tipo del corte). No se publicaron ventas ni múltiplo. En el FY26 Diageo registró un deterioro de Don Papa dentro de los 1.500 M de deterioros. [62]"
+      },
+      {
+        "fecha": "2020-08",
+        "objetivo": "Aviation American Gin y Davos Brands",
+        "comprador": "Diageo",
+        "ev": 546,
+        "ev_ventas": null,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Hasta 610 M USD: 335 M iniciales y hasta 275 M según resultados en diez años. No se publicaron ventas ni múltiplo. [62]"
+      }
+    ],
+    "comentario": "Pocas operaciones de destilados publican el múltiplo de EBITDA. Asahi paga 17 veces el EBITDA ajustado por EABL y Campari pagó unas 17 veces la contribución tras publicidad por Courvoisier (5,3 veces ventas), mientras las marcas de vino y vermú salen a 1,3 veces ventas [62]. Pernod tiene accionista familiar de referencia: una opa hostil es improbable, y la fusión con Brown-Forman se rompió por la gobernanza.",
+    "confianza": "Baja"
+  },
+  "dcf": {
+    "anios": [
+      {
+        "periodo": "FY2027e",
+        "crecimiento_pct": -2,
+        "margen_ebitda_pct": 30.6,
+        "amortizacion_pct_ventas": 4.9,
+        "capex_pct_ventas": 7.5,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2028e",
+        "crecimiento_pct": 2,
+        "margen_ebitda_pct": 30.9,
+        "amortizacion_pct_ventas": 4.9,
+        "capex_pct_ventas": 9,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2029e",
+        "crecimiento_pct": 2.5,
+        "margen_ebitda_pct": 31.2,
+        "amortizacion_pct_ventas": 4.9,
+        "capex_pct_ventas": 9,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2030e",
+        "crecimiento_pct": 2.5,
+        "margen_ebitda_pct": 31.4,
+        "amortizacion_pct_ventas": 4.9,
+        "capex_pct_ventas": 9,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2031e",
+        "crecimiento_pct": 2.5,
+        "margen_ebitda_pct": 31.5,
+        "amortizacion_pct_ventas": 4.9,
+        "capex_pct_ventas": 9,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2032e",
+        "crecimiento_pct": 2,
+        "margen_ebitda_pct": 31.5,
+        "amortizacion_pct_ventas": 4.9,
+        "capex_pct_ventas": 9,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2033e",
+        "crecimiento_pct": 2,
+        "margen_ebitda_pct": 31.5,
+        "amortizacion_pct_ventas": 4.9,
+        "capex_pct_ventas": 8,
+        "nwc_pct_ventas": 0,
+        "tasa_impositiva_pct": 25,
+        "fijo": false
+      }
+    ],
+    "wacc": {
+      "tasa_libre_pct": 3.53,
+      "beta": 0.9,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 0.5,
+      "coste_deuda_pct": 3.8,
+      "tasa_impositiva_pct": 25,
+      "peso_deuda_pct": 40
+    },
+    "terminal": {
+      "metodo": "gordon",
+      "crecimiento_pct": 2,
+      "multiplo_salida": 10.5
+    },
+    "etapa2": {
+      "usar": false,
+      "anios": 10,
+      "margen_final_pct": null,
+      "justificacion": null
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "FY2027e: −2 % (ventas orgánicas estables según la guía y unos 2 puntos de efecto divisa y perímetro, como en el FY26, cuando la diferencia entre publicado y orgánico fue de 10 puntos) [2, 20]. FY2028e-FY2031e: 2-2,5 %, por debajo del extremo bajo del objetivo de la empresa (3-6 % orgánico) [2], porque la empresa no lo ha cumplido ningún año desde el FY24 y porque la prueba de sostenibilidad pidió rebajarlo medio punto. Converge al 2 %. El crecimiento medio del base es del 1,6 % frente al −1,9 % anual de las ventas publicadas entre el FY2022 y el FY2026.",
+      "margenes": "Margen EBITDA del 30,6 % en el FY2027e (el del FY2026, estimado a partir de la deuda neta y del ratio de 3,7 veces) [3], que sube al 31,5 % en el FY2031e con el plan de eficiencia de 1.000 M, ya entregado en la mitad [1, 14]. Queda por debajo del 31,9 % aproximado del FY2023 (3.348 M de resultado operativo recurrente sobre 12.137 M de ventas más amortizaciones) [10], porque parte del ahorro se reinvertirá en publicidad y el poder de precios se ha debilitado.",
+      "inversion": "Amortización del 4,9 % de las ventas (458 M estimados en el FY2026). El capex del modelo (7,5 % en el FY2027e, 9 % en FY2028e-FY2032e y 8 % al final) incluye la inversión en existencias envejecidas, que la empresa presenta en el flujo operativo (645 M en el FY24 y 557 M en el FY25) y que el modelo no recoge en el circulante porque el balance no está completo [7]. Con el 7,5 % el flujo libre del FY2027e (1.537 M antes de intereses) cuadra con la caja libre publicada del FY2026 (1.197 M después de unos 315 M de intereses netos de impuestos) [4].",
+      "wacc": "Tasa libre del 3,53 % (Bund a 10 años, 12-oct-2026) [60], beta de 0,9 (estimación propia: consumo básico con deuda; no hemos podido calcular la beta de la acción en este entorno), prima de mercado del 5,5 % y 0,5 puntos de prima adicional por la exposición a India, China y otros emergentes. Coste de la deuda antes de impuestos del 3,8 % (cupón medio de la última emisión, 3,30 %, más margen) [21] y 40 % de deuda a valor de mercado (10.660 M de deuda neta frente a 16.147 M de capitalización). WACC del 6,53 %. Con la prima implícita del mercado (4,2 %) [61] el WACC baja al 5,83 % y el DCF sube a 120,77 EUR.",
+      "terminal": "Crecimiento a perpetuidad del 2,0 %, igual a la inflación esperada del euro y 1,5 puntos por debajo del Bund. El valor terminal pesa el 75 % del valor; con un WACC del 6,53 % equivale a unas 11 veces el EBITDA final, por encima de las 9,3 veces de hoy pero cerca de la mediana de los comparables (10,4 veces) [50]."
+    },
+    "sostenibilidad": {
+      "puente_ingresos": [
+        {
+          "periodo": "FY2027e",
+          "volumen_pct": -1,
+          "precio_pct": 1,
+          "otros_pct": -2,
+          "comentario": "Guía de ventas orgánicas estables: volumen −1 % (EE. UU. y China) y precio/mezcla +1 %; −2 % de divisa y perímetro [2, 20]."
+        },
+        {
+          "periodo": "FY2028e",
+          "volumen_pct": 0.5,
+          "precio_pct": 1.5,
+          "otros_pct": 0,
+          "comentario": "Volumen +0,5 % y precio +1,5 %, inflación de los mercados emergentes; por debajo del 3-6 % orgánico del objetivo [2]."
+        },
+        {
+          "periodo": "FY2029e",
+          "volumen_pct": 1,
+          "precio_pct": 1.5,
+          "otros_pct": 0,
+          "comentario": "Volumen +1 % por India y el resto del mundo, que crecen [20]; precio +1,5 %."
+        },
+        {
+          "periodo": "FY2030e",
+          "volumen_pct": 1,
+          "precio_pct": 1.5,
+          "otros_pct": 0,
+          "comentario": "Igual que el FY2029e."
+        },
+        {
+          "periodo": "FY2031e",
+          "volumen_pct": 1,
+          "precio_pct": 1.5,
+          "otros_pct": 0,
+          "comentario": "Igual que el FY2029e; converge al 2 % después."
+        }
+      ],
+      "mercado_final": null,
+      "veredicto": "En parte",
+      "justificacion": "La primera proyección (crecimiento medio del 2 % y margen hasta el 32 %) suponía que el capital nuevo rendía un 15,9 % frente a un ROIC del 7,0 %, y no pasaba la prueba; la rebajamos medio punto de crecimiento en FY2028e-FY2032e, el margen final al 31,5 % y subimos el capex al 9 % para recoger las existencias envejecidas. Así reinvierte el 19 % del NOPAT, financia un 1,3 % de crecimiento al ROIC actual frente al 1,6 % proyectado, y el capital nuevo rinde un 11,0 %, dentro del WACC más 5 puntos. «En parte»: las marcas sostienen precio a largo plazo, pero el ROIC solo supera al WACC en medio punto, la empresa no ha crecido desde el FY2023 y el poder de precios en EE. UU. y China está en duda [2, 20]."
+    },
+    "lectura": "El DCF da 95,45 EUR por acción, un 49,1 % sobre el precio, con el valor terminal en el 75 % del total. El DCF inverso es la clave: a 64,00 EUR el mercado descuenta que las ventas caigan un 2,5 % al año durante siete años con nuestros márgenes, o un margen EBITDA final del 25,9 % con nuestras ventas; la rentabilidad implícita en el precio es del 7,9 %, frente a un WACC del 6,53 %. Es un supuesto exigente a la baja: las ventas publicadas cayeron un 1,9 % anual entre el FY2022 y el FY2026, pero en un periodo con desestocaje, la salida del pico de la pandemia y unos 10 puntos de divisa y ventas de marcas solo en el FY2026. La sensibilidad es alta: medio punto de WACC o de crecimiento terminal mueve el valor entre 73,16 y 130,29 EUR. Con un ROIC del 7,0 % casi igual al WACC, el valor depende de que no se pierda margen, no del crecimiento.",
+    "confianza": "Baja"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 30,
+        "ajuste_crecimiento_pp": -2,
+        "ajuste_margen_pp": -2,
+        "ajuste_wacc_pp": 0.5,
+        "crecimiento_terminal_pct": 1.5,
+        "multiplo_salida": null,
+        "narrativa": "EE. UU. y China siguen cayendo en el FY2027 (ventas −4 %), el plan de eficiencia se reinvierte entero en publicidad y el margen EBITDA baja dos puntos, al 28,6-29,5 %, como el de Brown-Forman; el WACC sube medio punto por la rebaja de rating. Ya pasó en el FY2026 con Diageo y Rémy."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Ventas orgánicas planas en el FY2027 y vuelta a un 2-2,5 % desde el FY2028 por India y el resto del mundo; el plan de eficiencia sube el margen EBITDA al 31,5 % y el dividendo se mantiene."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 20,
+        "ajuste_crecimiento_pp": 1.5,
+        "ajuste_margen_pp": 1.5,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "EE. UU. vuelve a crecer en el FY2028 al terminar el desestocaje, China se estabiliza con el precio mínimo del coñac y el crecimiento llega al 3,5-4 % (el extremo bajo del objetivo de la empresa); el margen sube 1,5 puntos más que en el base."
+      }
+    ],
+    "comentario": "El bajista (50,73 EUR, −20,7 %) pierde una quinta parte; el alcista (118,93 EUR, +85,8 %) casi duplica. La asimetría es de 4,14 veces en el DCF y de 3,23 veces a 12 meses. Damos un 30 % al bajista porque la caída del consumo puede ser estructural: es el escenario que ya viven Diageo y Rémy Cointreau. La asimetría compensa en valor, pero depende de una WACC baja: con un WACC un punto más alto el base se acerca a 75 EUR.",
+    "confianza": "Baja"
+  },
+  "suma_partes": {
+    "aplica": false,
+    "descuento_holding_pct": 0,
+    "partes": [],
+    "comentario": "No aplica: tras vender los vinos, el grupo es un solo negocio de espirituosos y champán con márgenes y comparables parecidos en todas las marcas.",
+    "confianza": "Media"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2026-06-30",
+      "deuda_financiera": 10660,
+      "arrendamientos": 0,
+      "caja": 0,
+      "minoritarios": 0,
+      "pensiones": 0,
+      "asociadas": 0,
+      "otros_ajustes": 0
+    },
+    "rab": null,
+    "referencia_mercado": {
+      "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout; vale para mercados desarrollados)",
+      "prima_implicita_pct": 4.2,
+      "fecha": "2026-10",
+      "fuente": "Damodaran, ERPbymonth.xlsx [61]"
+    },
+    "pesos": {
+      "dcf": 50,
+      "comparables": 0,
+      "transacciones": 0,
+      "suma_partes": 0,
+      "escenarios": 50
+    },
+    "objetivo_12m": {
+      "ejercicio": "FY2028e",
+      "casos": [
+        {
+          "escenario": "Bajista",
+          "metrica": "PER FY2028e",
+          "beneficio_por_accion": 5.09,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 9.028 M (−4 % en el FY27 y 0 % en el FY28: EE. UU. y China no tocan fondo) con margen EBITDA del 28,9 %: EBIT de 2.167 M, 420 M de gasto financiero, impuesto del 25 % y 25 M de minoritarios sobre 252,3 M de acciones."
+        },
+        {
+          "escenario": "Base",
+          "metrica": "PER FY2028e",
+          "beneficio_por_accion": 5.95,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 9.400 M (−2 % en el FY27 por divisa con orgánico plano, según la guía, y +2 % en el FY28) con margen EBITDA del 30,9 % por el plan de eficiencia: EBIT de 2.444 M, 410 M de gasto financiero, impuesto del 25 % y 25 M de minoritarios; 252,3 M de acciones sin recompras."
+        },
+        {
+          "escenario": "Alcista",
+          "metrica": "PER FY2028e",
+          "beneficio_por_accion": 6.6,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 9.685 M (EE. UU. se estabiliza en el FY27 y el FY28 crece un 3,5 %, en la banda baja del objetivo del 3-6 %) con margen del 32,4 %: EBIT de 2.663 M y 410 M de gasto financiero."
+        }
+      ],
+      "per_historico": {
+        "base": "adelantado",
+        "actual": 11.2,
+        "mediana_5a": 14.5,
+        "minimo_5a": 11.2,
+        "media_larga": 14.4,
+        "excluidos": "Historia adelantada (precio de cierre de junio ÷ BPA recurrente diluido del ejercicio siguiente): FY2024 126,70 / 7,26 = 17,5x; FY2025 84,60 / 5,85 = 14,5x; FY2026 63,86 / 5,69 (nuestro FY27e) = 11,2x [2, 5, 51]. Se excluyen FY2022 (176,8 / 9,11 = 19,4x) y FY2023 (202,40 / 7,90 = 25,6x): burbuja de los destilados tras la pandemia. Actual = 64,0 / 5,69."
+      },
+      "comparables_per": {
+        "mediana": 15.6
+      },
+      "consenso": {
+        "bpa_ano1": null,
+        "bpa_ano2": null,
+        "objetivo_medio": 80.25,
+        "objetivo_min": 75,
+        "objetivo_max": 95,
+        "analistas": null,
+        "tendencia_3m": "recortes",
+        "fuente": "Mediana de objetivos de julio de 2026 (Idéal Investisseur), UBS 75 EUR y Jefferies 95 EUR [54, 55, 56]"
+      },
+      "diferencia_consenso": "No hay estimaciones de BPA del consenso accesibles en este entorno. AlphaValue da un PER del FY27 de 11,6 veces a unos 62 EUR, lo que implica un BPA de unos 5,3-5,4 EUR, por debajo de nuestros 5,69 EUR; UBS dice estar un 5-6 % por debajo del consenso [55, 57]. Nuestro BPA del FY2028e (5,95 EUR) está probablemente en línea o algo por encima del consenso. Nuestro precio base a 12 meses (75,57 EUR) está un 5,8 % por debajo del objetivo medio de 80,25 EUR: la diferencia es de múltiplo (12,7 veces), no de beneficio.",
+      "media": 76.82,
+      "comentario": "El objetivo a 12 meses (73,95 EUR ponderado; 75,57 EUR el base) queda un 19 % por debajo del valor intrínseco (91,09 EUR). Para cerrar esa distancia hace falta que el mercado vuelva a pagar un PER de 15 veces, como la mediana de los comparables, y eso solo ocurrirá con dos o tres trimestres de ventas orgánicas positivas en EE. UU. La rentabilidad a 12 meses (22,9 % ponderada con un 7,3 % de dividendo) descansa en que el PER recupere la mitad del camino a su mediana de tres años limpios (14,5 veces): es la regla común, no una previsión de un catalizador concreto."
+    },
+    "comentario": "Pesamos al 50 % el DCF base (95,45 EUR) y los escenarios ponderados (86,73 EUR): valor intrínseco de 91,09 EUR, un 42,3 % sobre el precio. Los comparables pesan 0 porque no hay consenso de los próximos 12 meses para calcular su valor; la mediana del EV/EBITDA de los últimos 12 meses da 76,51 EUR y sirve de contraste. Las transacciones (mediana de 137,40 EUR) llevan prima de control y marcas de crecimiento (Courvoisier, EABL): no se usan. La dispersión es amplia (de 50,73 a 120,77 EUR) porque el valor depende de que el margen se recupere y de una tasa de descuento baja; el objetivo de los analistas (80,25 EUR de mediana) queda entre la mediana de comparables y nuestro DCF.",
+    "confianza": "Baja"
+  },
+  "catalizadores": {
+    "items": [
+      {
+        "fecha": "16-oct-2026",
+        "evento": "Ventas del 1T del FY27 (julio-septiembre)",
+        "efecto": "Primer dato de la guía de ventas orgánicas estables; el 1T26 comparable cayó un 7,6 %, base fácil",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "20-nov-2026",
+        "evento": "Junta general",
+        "efecto": "Aprobación del dividendo de 4,70 EUR con el complementario en acciones; voto de la remuneración",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "Feb-2027",
+        "evento": "Resultados del 1S del FY27",
+        "efecto": "Navidad y Año Nuevo chino: prueba de si EE. UU. y China tocan fondo y del ahorro de costes",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2027",
+        "evento": "Negociación de aranceles UE-EE. UU. y precio mínimo del coñac en China",
+        "efecto": "Un arancel menor libera margen; uno mayor lo resta",
+        "probabilidad": "Media",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "Ago-2027",
+        "evento": "Resultados del FY27 y dividendo",
+        "efecto": "Un recorte del dividendo sería la señal de que la caja libre no se recupera",
+        "probabilidad": "Media",
+        "sentido": "−"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "riesgos": {
+    "items": [
+      {
+        "riesgo": "Caída estructural del consumo de alcohol (jóvenes, GLP-1, salud)",
+        "tipo": "Mercado",
+        "probabilidad": "Alta",
+        "impacto": "Alto",
+        "efecto_valor": "−47 % (escenario bajista: 50,73 EUR)",
+        "mitigante": "Premiumización y emergentes (India) que crecen",
+        "senal": "Volumen mundial de IWSR y consumo final de EE. UU. por debajo de −3 % otro año"
+      },
+      {
+        "riesgo": "EE. UU. y China no tocan fondo en el FY27",
+        "tipo": "Negocio",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−20 % sobre el base",
+        "mitigante": "Desestocaje de mayoristas ya avanzado en EE. UU.",
+        "senal": "Ventas orgánicas del 1T27 y del 1S27 por debajo de −3 %"
+      },
+      {
+        "riesgo": "Recorte del dividendo",
+        "tipo": "Financiero",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−10 % a corto plazo",
+        "mitigante": "Opción de cobro en acciones",
+        "senal": "Caja libre por debajo de 1.100 M o deuda neta/EBITDA por encima de 4x"
+      },
+      {
+        "riesgo": "Apalancamiento de 3,7 veces y rebaja de rating",
+        "tipo": "Financiero",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−5 a −10 %",
+        "mitigante": "Rating Baa1/BBB+ y vencimientos largos (vida media de 8 años en la última emisión)",
+        "senal": "Perspectiva negativa de Moody’s o S&P"
+      },
+      {
+        "riesgo": "Aranceles de EE. UU. y China sobre el coñac y el whisky europeo",
+        "tipo": "Regulatorio",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−1 punto de margen ≈ −8 %",
+        "mitigante": "Producción local y subidas de precio",
+        "senal": "Cambios del arancel del 15 % de la UE o del precio mínimo chino"
+      },
+      {
+        "riesgo": "Compra grande que diluya o endeude (tras el intento con Brown-Forman)",
+        "tipo": "Gobierno",
+        "probabilidad": "Baja",
+        "impacto": "Alto",
+        "efecto_valor": "n. d.",
+        "mitigante": "El consejero delegado descartó retomar Brown-Forman",
+        "senal": "Rumores de fusión o ampliación"
+      }
+    ],
+    "premortem": "Octubre de 2029: la acción ha perdido un 40 %. La caída del consumo en EE. UU. no era desestocaje sino estructural: los jóvenes beben menos, los GLP-1 se generalizan y las bebidas listas para tomar y el cannabis legal ganan ocasiones. Pernod encadena tres años de ventas orgánicas planas o negativas, el plan de eficiencia de 1.000 M se reinvierte en publicidad para defender cuota y el margen no pasa del 25 %. China mantiene el precio mínimo del coñac y la clase media no vuelve al lujo. La caja libre baja de 1.000 M, la deuda neta sube por encima de 4 veces el EBITDA y la empresa recorta el dividendo un 30 % en 2027; los fondos de dividendo venden y las agencias rebajan a BBB. El PER se queda en 9-10 veces, como el de una tabaquera. Lo habría anticipado: las ventas orgánicas del 1S del FY27 por debajo del −3 % y el consumo final de EE. UU. sin mejorar del −7 % del FY26.",
+    "confianza": "Media"
+  },
+  "esg": {
+    "calificaciones": [],
+    "materialidad": "Los asuntos materiales son el consumo responsable (regulación de publicidad, impuestos especiales e información sanitaria: en EE. UU. se debatió en 2025 el aviso de cáncer en las etiquetas), el agua y la agricultura (cereal, uva, agave) y el envasado de vidrio, que concentra buena parte de las emisiones del alcance 3 [39, 42].",
+    "controversias": "No hemos encontrado sanciones relevantes en tres años en las fuentes accesibles. El principal litigio comercial es la investigación antidumping china sobre el brandy europeo, que impuso depósitos y luego un precio mínimo de importación del coñac [35].",
+    "confianza": "Baja"
+  },
+  "preguntas": {
+    "items": [
+      {
+        "tema": "EE. UU.",
+        "pregunta": "¿Cuánto del −14 % del FY26 fue desestocaje y cuánto consumo, y en qué trimestre se igualan envíos y consumo final?",
+        "por_que": "Separa un problema cíclico de uno estructural; mueve el escenario bajista."
+      },
+      {
+        "tema": "Dividendo",
+        "pregunta": "¿Con qué caja libre y qué apalancamiento se mantiene el dividendo de 4,70 EUR, y cuánto del complementario se espera en acciones?",
+        "por_que": "El dividendo consume toda la caja libre; un recorte cambia el atractivo para el accionista."
+      },
+      {
+        "tema": "Plan de eficiencia",
+        "pregunta": "¿Qué parte de los 1.000 M llega al margen y qué parte se reinvierte en publicidad?",
+        "por_que": "El caso base supone que el margen EBITDA sube del 30,6 % al 31,5 %."
+      },
+      {
+        "tema": "Existencias",
+        "pregunta": "¿Cuál es el nivel objetivo de existencias envejecidas sobre ventas y cuándo deja de crecer?",
+        "por_que": "Es la mayor partida de reinversión y la que decide la conversión en caja."
+      },
+      {
+        "tema": "Brown-Forman",
+        "pregunta": "¿Qué condiciones de gobierno se exigían y quedan descartadas las fusiones grandes?",
+        "por_que": "Una fusión con acciones cambiaría el perfil de riesgo y el control familiar."
+      },
+      {
+        "tema": "China",
+        "pregunta": "¿Qué volumen y margen tiene hoy Martell en China con el precio mínimo de importación?",
+        "por_que": "China era el mercado de más margen del coñac."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sentimiento": {
+    "tono": "Negativo",
+    "tendencia": "Estable",
+    "revisadas": [
+      {
+        "plataforma": "Seeking Alpha (artículo y comentarios)",
+        "fecha": "2025-10",
+        "n_comentarios": 20,
+        "tono": "Negativo",
+        "resumen": "El autor vende y rebaja a mantener: la caja libre no cubre el dividendo y la deuda es alta para el beneficio actual; volvería con una valoración menor o tras un recorte del dividendo [64]."
+      },
+      {
+        "plataforma": "stock3 (comentario y lectores, Alemania)",
+        "fecha": "2026-08",
+        "n_comentarios": 10,
+        "tono": "Negativo",
+        "resumen": "Tras el FY26, «las cifras solo se arreglan con el dividendo»; prevé un dividendo menor en 2026 [65]."
+      },
+      {
+        "plataforma": "Simply Wall St Community (narrativas)",
+        "fecha": "2026-09",
+        "n_comentarios": 15,
+        "tono": "Dividido",
+        "resumen": "Narrativas alcistas por marcas premium y emergentes conviven con una cadena de rebajas de objetivos de los analistas [66]."
+      },
+      {
+        "plataforma": "Idéal Investisseur y BFM Bourse (comentario de mercado, Francia)",
+        "fecha": "2026-09",
+        "n_comentarios": 5,
+        "tono": "Negativo",
+        "resumen": "El valor «no encuentra suelo» desde los resultados de agosto; algunos lectores señalan el RSI cerca de sobreventa como posible rebote técnico [53, 68]."
+      }
+    ],
+    "temas": [
+      {
+        "tema": "Sostenibilidad del dividendo",
+        "postura": "Bajista",
+        "peso": "Alto",
+        "contraste": "Tienen razón en el fondo: la caja libre del FY26 (1.197 M) apenas cubre unos dividendos de unos 1.200 M y el complementario se ofrece en acciones [64, 65]. Nuestro caso base mantiene 4,70 EUR, pero el riesgo de recorte está en la lista."
+      },
+      {
+        "tema": "EE. UU. y China: cuándo toca fondo la demanda",
+        "postura": "Bajista",
+        "peso": "Alto",
+        "contraste": "Las cifras lo confirman (EE. UU. −14 %, consumo final −7 %; sin EE. UU. y China, +0,5 %) [53]. La guía del FY27 solo promete ventas orgánicas estables."
+      },
+      {
+        "tema": "Valoración en mínimos de una década",
+        "postura": "Dividida",
+        "peso": "Medio",
+        "contraste": "El PER adelantado de 11,2 veces es el más bajo de la serie y la rentabilidad por dividendo del 7,3 % la más alta [66, 67]; el DCF inverso dice que el precio descuenta ventas cayendo un 2,5 % al año durante siete años."
+      },
+      {
+        "tema": "Moderación del consumo y GLP-1",
+        "postura": "Bajista",
+        "peso": "Medio",
+        "contraste": "Riesgo real y ya en el escenario bajista; IWSR prevé volumen mundial a la baja hasta 2031 [67]."
+      }
+    ],
+    "lectura": "El sentimiento de particulares es negativo y coincide con el de los analistas, que llevan tres meses recortando objetivos [66]. No hay euforia ni capitulación visible: el debate es si el dividendo aguanta, no si la empresa sobrevive. El sentimiento no aporta un riesgo que el informe no recoja, pero refuerza que el catalizador de la recuperación del múltiplo tiene que ser una cifra (ventas del 1T27 y del 1S27), no la valoración. Un pesimismo tan unánime con el precio en mínimos de una década es compatible con la tesis de revalorización parcial del múltiplo.",
+    "confianza": "Baja"
+  },
+  "fuentes": [
+    {
+      "id": 1,
+      "titulo": "FY26 Sales and Results: Financial Communication (presentación de resultados del ejercicio a 30-jun-2026)",
+      "editor": "Pernod Ricard",
+      "tipo": "Primaria",
+      "fecha": "2026-08-27",
+      "url": "https://www.pernod-ricard.com/system/files/2026-08/Pernod%20Ricard%20FY26%20Financial%20Communication.pdf"
+    },
+    {
+      "id": 2,
+      "titulo": "Pernod Ricard FY26 profit, sales drop; sees flat organic sales in FY27, growth in mid term",
+      "editor": "RTTNews",
+      "tipo": "Prensa",
+      "fecha": "2026-08-27",
+      "url": "https://www.rttnews.com/3685164/pernod-ricard-fy26-profit-sales-drop-sees-flat-organic-sales-in-fy27-growth-in-mid-term.aspx?type=bn"
+    },
+    {
+      "id": 3,
+      "titulo": "Pernod Ricard FY26 profits slide on US and China weakness",
+      "editor": "Hargreaves Lansdown",
+      "tipo": "Prensa",
+      "fecha": "2026-08-27",
+      "url": "https://www.hl.co.uk/shares/stock-market-news/company--news/pernod-ricard-fy26-profits-slide-on-us-and-china-weakness"
+    },
+    {
+      "id": 4,
+      "titulo": "Pernod Ricard FY26 Results: Net profit down 19%, FCF up 6%",
+      "editor": "ScanX",
+      "tipo": "Prensa",
+      "fecha": "2026-08-27",
+      "url": "https://scanx.trade/stock-market-news/companies/pernod-ricard-fy26-results-net-profit-down-19-fcf-up-6/49354656"
+    },
+    {
+      "id": 5,
+      "titulo": "FY25 Sales and Results (nota de prensa, 28-ago-2025)",
+      "editor": "Pernod Ricard",
+      "tipo": "Primaria",
+      "fecha": "2025-08-28",
+      "url": "https://www.pernod-ricard.com/sites/default/files/news/downloads/2025-08/2025%2008%2028%20FY%2025%20Sales%20and%20Results.pdf"
+    },
+    {
+      "id": 6,
+      "titulo": "Management Report FY25",
+      "editor": "Pernod Ricard",
+      "tipo": "Primaria",
+      "fecha": "2025-09",
+      "url": "https://www.pernod-ricard.com/sites/default/files/inline-files/Management%20Report%20FY25.PDF"
+    },
+    {
+      "id": 7,
+      "titulo": "Consolidated financial statements FY25 (balance y estado de flujos)",
+      "editor": "Pernod Ricard",
+      "tipo": "Primaria",
+      "fecha": "2025-09",
+      "url": "https://www.pernod-ricard.com/sites/default/files/inline-files/Consolidated%20financial%20statements%20FY25.PDF"
+    },
+    {
+      "id": 8,
+      "titulo": "Press Release FY24 Full Year",
+      "editor": "Pernod Ricard",
+      "tipo": "Primaria",
+      "fecha": "2024-08-29",
+      "url": "https://pernod-ricard.com/sites/default/files/news/downloads/2024-08/Press%20Release%20FY24%20Full%20Year%20-%20ENG.pdf"
+    },
+    {
+      "id": 9,
+      "titulo": "Management Report FY24",
+      "editor": "Pernod Ricard",
+      "tipo": "Primaria",
+      "fecha": "2024-09",
+      "url": "https://pernod-ricard.com/sites/default/files/inline-files/Management%20Report%20FY24.pdf"
+    },
+    {
+      "id": 10,
+      "titulo": "Pernod Ricard FY23 Full-year Sales and Results",
+      "editor": "Pernod Ricard (Business Wire)",
+      "tipo": "Primaria",
+      "fecha": "2023-08-30",
+      "url": "https://www.businesswire.com/news/home/20230830970537/en/Pernod-Ricard-FY23-Full-year-Sales-and-Results"
+    },
+    {
+      "id": 11,
+      "titulo": "Management Report FY23",
+      "editor": "Pernod Ricard",
+      "tipo": "Primaria",
+      "fecha": "2023-09",
+      "url": "https://www.pernod-ricard.com/sites/default/files/inline-files/15.1_Management_Report_FY23%5B1%5D.pdf"
+    },
+    {
+      "id": 12,
+      "titulo": "FY22 Full-year Sales and Results",
+      "editor": "Pernod Ricard",
+      "tipo": "Primaria",
+      "fecha": "2022-08-31",
+      "url": "https://www.pernod-ricard.com/en/media/fy22-full-year-sales-and-results"
+    },
+    {
+      "id": 13,
+      "titulo": "Pernod Ricard SA (EPA:RI), income statement (anual)",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-07-27",
+      "url": "https://stockanalysis.com/quote/epa/RI/financials/income-statement/"
+    },
+    {
+      "id": 14,
+      "titulo": "H1 FY26 Sales and Results (nota de prensa)",
+      "editor": "Pernod Ricard",
+      "tipo": "Primaria",
+      "fecha": "2026-02-19",
+      "url": "https://www.pernod-ricard.com/sites/default/files/news/downloads/2026-02/Pernod%20Ricard%20Press%20Release%20H1%20FY26.pdf"
+    },
+    {
+      "id": 15,
+      "titulo": "Pernod Ricard: net debt / equity",
+      "editor": "Eulerpool",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-09",
+      "url": "https://eulerpool.com/stock/Pernod-Ricard-Stock-FR0000120693/netdebtequity"
+    },
+    {
+      "id": 16,
+      "titulo": "Pernod Ricard SA, balance sheet",
+      "editor": "Weiss Ratings",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-09",
+      "url": "https://weissratings.com/en/stock/prndy-otc-pk/balance-sheet"
+    },
+    {
+      "id": 17,
+      "titulo": "Pernod Ricard’s revenue falls below EUR 10 billion",
+      "editor": "Meininger’s",
+      "tipo": "Prensa",
+      "fecha": "2026-08-28",
+      "url": "https://www.meininger.de/en/news/pernod-ricards-revenue-falls-below-eur10-billion"
+    },
+    {
+      "id": 18,
+      "titulo": "Pernod Ricard: Slow start to the year as expected, Q1 organic net sales −7.6 %",
+      "editor": "Pernod Ricard (Business Wire)",
+      "tipo": "Primaria",
+      "fecha": "2025-10-15",
+      "url": "https://www.businesswire.com/news/home/20251015117697/en/"
+    },
+    {
+      "id": 19,
+      "titulo": "Pernod Ricard: Improving momentum with stable organic net sales in Q3",
+      "editor": "Pernod Ricard (Business Wire)",
+      "tipo": "Primaria",
+      "fecha": "2026-04-15",
+      "url": "https://www.businesswire.com/news/home/20260415146957/en/"
+    },
+    {
+      "id": 20,
+      "titulo": "Pernod Ricard: Steering through a transition with agility, discipline and strategic conviction (FY26)",
+      "editor": "Pernod Ricard (Ariva)",
+      "tipo": "Primaria",
+      "fecha": "2026-08-27",
+      "url": "https://www.ariva.de/news/pernod-ricard-steering-through-a-transition-with-agility-12116652"
+    },
+    {
+      "id": 21,
+      "titulo": "Pernod Ricard successfully completes EUR 1.2 bn bond issuance (calificaciones Baa1 / BBB+)",
+      "editor": "Pernod Ricard (Business Wire)",
+      "tipo": "Primaria",
+      "fecha": "2025-10-29",
+      "url": "https://www.businesswire.com/news/home/20251029970359/en"
+    },
+    {
+      "id": 22,
+      "titulo": "Integrated Annual Report FY25",
+      "editor": "Pernod Ricard",
+      "tipo": "Primaria",
+      "fecha": "2025-09",
+      "url": "https://pernod-ricard.publispeak.com/integrated-annual-report-2024-2025/article/94/"
+    },
+    {
+      "id": 23,
+      "titulo": "Annual Report 2026 (informe anual del ejercicio a 30 de junio de 2026)",
+      "editor": "Diageo plc",
+      "tipo": "Primaria",
+      "fecha": "2026-08",
+      "url": "https://www.diageo.com/~/media/Files/D/Diageo-V2/Diageo-Corp/investors/results-reports-and-events/annual-reports/2026/annual-report-2026.pdf"
+    },
+    {
+      "id": 24,
+      "titulo": "Preliminary results, year ended 30 June 2026 (nota de prensa de resultados FY26)",
+      "editor": "Diageo plc",
+      "tipo": "Primaria",
+      "fecha": "2026-08-06",
+      "url": "https://www.diageo.com/~/media/Files/D/Diageo-V2/Diageo-Corp/press-release/2026/f26-preliminary-results-press-release.pdf"
+    },
+    {
+      "id": 25,
+      "titulo": "FY26 preliminary results presentation with script",
+      "editor": "Diageo plc",
+      "tipo": "Primaria",
+      "fecha": "2026-08-06",
+      "url": "https://www.diageo.com/~/media/Files/D/Diageo-V2/Diageo-Corp/investors/results-reports-and-events/our-results/2026/fy26-prelims-results-presentation-with-script.pdf"
+    },
+    {
+      "id": 26,
+      "titulo": "Aide Memoire FY Fiscal 2026",
+      "editor": "Diageo plc",
+      "tipo": "Primaria",
+      "fecha": "2026-07-10",
+      "url": "https://www.diageo.com/~/media/Files/D/Diageo-V2/Diageo-Corp/press-release/2026/diageo-aide-memoire-fy-fiscal-2026.pdf"
+    },
+    {
+      "id": 27,
+      "titulo": "Interim results, half year ended 31 December 2025 (incluye «Tariff update»)",
+      "editor": "Diageo plc",
+      "tipo": "Primaria",
+      "fecha": "2026-02-25",
+      "url": "https://www.diageo.com/~/media/Files/D/Diageo-V2/Diageo-Corp/press-release/2026/f26-interims-results-press-release.pdf"
+    },
+    {
+      "id": 28,
+      "titulo": "Fiscal 2026 Q3 Trading Statement transcript",
+      "editor": "Diageo plc",
+      "tipo": "Primaria",
+      "fecha": "2026-05-06",
+      "url": "https://www.diageo.com/~/media/Files/D/Diageo-V2/Diageo-Corp/investors/results-reports-and-events/our-results/2026/fiscal-26-q3-trading-statement-transcript.pdf"
+    },
+    {
+      "id": 29,
+      "titulo": "Form 20-F del ejercicio 2023 (informe anual FY23)",
+      "editor": "Diageo plc / SEC EDGAR",
+      "tipo": "Primaria",
+      "fecha": "2023-08",
+      "url": "https://www.sec.gov/Archives/edgar/data/835403/000083540323000016/deo-20230630.htm"
+    },
+    {
+      "id": 30,
+      "titulo": "Our history",
+      "editor": "Diageo plc",
+      "tipo": "Primaria",
+      "fecha": "2026",
+      "url": "https://www.diageo.com/en/our-business/our-history"
+    },
+    {
+      "id": 31,
+      "titulo": "Awards and rankings (calificaciones ESG)",
+      "editor": "Diageo plc",
+      "tipo": "Primaria",
+      "fecha": "2026",
+      "url": "https://www.diageo.com/en/esg/esg-governance-and-reporting-centre/awards-and-rankings"
+    },
+    {
+      "id": 32,
+      "titulo": "FY26 Full-year Sales and Results (nota de prensa)",
+      "editor": "Pernod Ricard",
+      "tipo": "Primaria",
+      "fecha": "2026-08-27",
+      "url": "https://www.webdisclosure.com/press-release/pernod-ricard-epa-ri-inside-information-news-release-on-accounts-results-gblpv5P9kYB"
+    },
+    {
+      "id": 33,
+      "titulo": "Brown-Forman, Form 10-K FY2026 (datos XBRL de EDGAR)",
+      "editor": "Brown-Forman / SEC EDGAR",
+      "tipo": "Primaria",
+      "fecha": "2026-06",
+      "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000014693.json"
+    },
+    {
+      "id": 34,
+      "titulo": "Constellation Brands, Form 10-K FY2026 (datos XBRL de EDGAR)",
+      "editor": "Constellation Brands / SEC EDGAR",
+      "tipo": "Primaria",
+      "fecha": "2026-04",
+      "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000016918.json"
+    },
+    {
+      "id": 35,
+      "titulo": "Rapport annuel 2025-26: Annual results",
+      "editor": "Rémy Cointreau",
+      "tipo": "Primaria",
+      "fecha": "2026-06",
+      "url": "https://rapport-annuel.remy-cointreau.com/2026/en/performance/annual-results/"
+    },
+    {
+      "id": 36,
+      "titulo": "2025 Results Press Release",
+      "editor": "Davide Campari-Milano N.V.",
+      "tipo": "Primaria",
+      "fecha": "2026-03-04",
+      "url": "https://www.camparigroup.com/sites/default/files/downloads/20260304%202025%20Results%20Press%20Release_vF.pdf"
+    },
+    {
+      "id": 37,
+      "titulo": "4Q25 Earnings Release",
+      "editor": "Becle, S.A.B. de C.V.",
+      "tipo": "Primaria",
+      "fecha": "2026-02",
+      "url": "https://cuervo.com.mx/documents/reportes-trimestrales/2025/4Q25%20Earnings%20Release%20-%20Final.pdf"
+    },
+    {
+      "id": 38,
+      "titulo": "Financial Documents - December 31, 2025",
+      "editor": "LVMH",
+      "tipo": "Primaria",
+      "fecha": "2026-01-27",
+      "url": "https://lvmh-com.cdn.prismic.io/lvmh-com/aXjqHgIvOtkhB_8I_Financialdocuments-December31%2C2025.pdf"
+    },
+    {
+      "id": 39,
+      "titulo": "Annual Economic Briefing 2026 (datos de 2025), presentación",
+      "editor": "Distilled Spirits Council of the United States (DISCUS)",
+      "tipo": "Sectorial",
+      "fecha": "2026-02-05",
+      "url": "https://distilledspirits.org/wp-content/uploads/2026/02/FINAL-DISCUS-Annual-Economic-Briefing-Presentation-2026-2.5.2026-11-AM.pdf"
+    },
+    {
+      "id": 40,
+      "titulo": "Economic Briefing Support Tables, 2025 data",
+      "editor": "Distilled Spirits Council of the United States (DISCUS)",
+      "tipo": "Sectorial",
+      "fecha": "2026-02-05",
+      "url": "https://distilledspirits.org/wp-content/uploads/2026/02/Support-tables-2025-2.5.2026-1.pdf"
+    },
+    {
+      "id": 41,
+      "titulo": "2025 export figures",
+      "editor": "Scotch Whisky Association",
+      "tipo": "Sectorial",
+      "fecha": "2026-02-12",
+      "url": "https://scotch-whisky.org.uk/newsroom/2025-export-figures/"
+    },
+    {
+      "id": 42,
+      "titulo": "Global beverage alcohol to drop further before recovering (datos de 2025 y previsión a 2035)",
+      "editor": "IWSR",
+      "tipo": "Sectorial",
+      "fecha": "2026-06-11",
+      "url": "https://www.theiwsr.com/insight/press-release/global-beverage-alcohol-to-drop-further-before-recovering/"
+    },
+    {
+      "id": 43,
+      "titulo": "Tipos de cambio de referencia del euro (histórico diario)",
+      "editor": "Banco Central Europeo",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-12",
+      "url": "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist.zip"
+    },
+    {
+      "id": 44,
+      "titulo": "Report of the Board on Corporate Governance",
+      "editor": "Pernod Ricard",
+      "tipo": "Primaria",
+      "fecha": "2025-09",
+      "url": "https://www.pernod-ricard.com/sites/default/files/inline-files/13.%20Report%20of%20the%20Board%20on%20Corporate%20Governance.pdf"
+    },
+    {
+      "id": 45,
+      "titulo": "Annual Shareholders’ Meeting of 27 October 2025 (nota de prensa)",
+      "editor": "Pernod Ricard",
+      "tipo": "Primaria",
+      "fecha": "2025-10-27",
+      "url": "https://www.pernod-ricard.com/sites/default/files/2025-10/AGM%20Press%20Release%2027%20October%202025.pdf"
+    },
+    {
+      "id": 46,
+      "titulo": "Pernod Ricard and Brown-Forman terminate discussions regarding potential combination",
+      "editor": "Pernod Ricard",
+      "tipo": "Primaria",
+      "fecha": "2026-04-28",
+      "url": "https://www.pernod-ricard.com/en/media/pernod-ricard-and-brown-forman-terminate-discussions-regarding-potential-combination"
+    },
+    {
+      "id": 47,
+      "titulo": "Le rapprochement entre Pernod Ricard et Brown-Forman a achoppé sur la gouvernance",
+      "editor": "ABC Bourse",
+      "tipo": "Prensa",
+      "fecha": "2026-04-29",
+      "url": "https://www.abcbourse.com/marches/le-rapprochement-entre-pernod-ricard-et-brown-forman-a-achoppe-sur-la-gouvernanc_696015"
+    },
+    {
+      "id": 48,
+      "titulo": "Pernod Ricard Annual Shareholders Meeting of 8 November 2024",
+      "editor": "Pernod Ricard (Business Wire)",
+      "tipo": "Primaria",
+      "fecha": "2024-11-08",
+      "url": "https://www.businesswire.com/news/home/20241108512064/en/Pernod-Ricard-Annual-Shareholders-Meeting-of-8-November-2024"
+    },
+    {
+      "id": 49,
+      "titulo": "Pernod Ricard meldet Umsatzrückgang: CEO schließt neue Brown-Forman-Gespräche aus",
+      "editor": "Goldesel",
+      "tipo": "Prensa",
+      "fecha": "2026-08-27",
+      "url": "https://goldesel.de/aktien/news/pernod-ricard-meldet-umsatzruckgang-ceo-schliesst-neue-brown-forman-gesprache-aus"
+    },
+    {
+      "id": 50,
+      "titulo": "Comparables de bebidas a 12-oct-2026 (MarketScreener, convertido a EUR a 1,1181 USD/EUR), tomados del análisis de Heineken y de Diageo del repositorio",
+      "editor": "MarketScreener / análisis de Heineken del 14-oct-2026",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-12",
+      "url": "https://www.marketscreener.com/quote/stock/PERNOD-RICARD-4681/finances/"
+    },
+    {
+      "id": 51,
+      "titulo": "Pernod Ricard S.A. (RI.PA), price history (mensual, precio real y ajustado)",
+      "editor": "Digrin",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www.digrin.com/stocks/detail/RI.PA/price"
+    },
+    {
+      "id": 52,
+      "titulo": "Pernod Ricard SA (PRNDY), price history (ADR, para junio de 2022)",
+      "editor": "Digrin",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www.digrin.com/stocks/detail/PRNDY/price"
+    },
+    {
+      "id": 53,
+      "titulo": "Pernod Ricard stock breaks through 60 EUR and signs a multi-year low",
+      "editor": "Idéal Investisseur",
+      "tipo": "Prensa",
+      "fecha": "2026-09",
+      "url": "https://www.ideal-investisseur.fr/en/actions-b/pernod-ricard-stock-breaks-through-60-eur-and-signs-a-multi-year-low/24806.html"
+    },
+    {
+      "id": 54,
+      "titulo": "Pernod Ricard: ficha de cotización (precio, objetivo de Jefferies, calendario)",
+      "editor": "Idéal Investisseur",
+      "tipo": "Prensa",
+      "fecha": "2026-09-15",
+      "url": "https://www.ideal-investisseur.fr/en/stocks/pernod-ricard-FR0000120693.html"
+    },
+    {
+      "id": 55,
+      "titulo": "UBS lowers price target on Pernod Ricard (75 EUR, neutral)",
+      "editor": "MarketScreener",
+      "tipo": "Analistas",
+      "fecha": "2026-09",
+      "url": "https://uk.marketscreener.com/news/ubs-lowers-price-target-on-pernod-ricard-ce7d51dfdd8bf625"
+    },
+    {
+      "id": 56,
+      "titulo": "Pernod Ricard fällt nach FY26-Zahlen: Jefferies senkt Kursziel auf 90 Euro",
+      "editor": "Goldesel",
+      "tipo": "Prensa",
+      "fecha": "2026-08-28",
+      "url": "https://goldesel.de/aktien/news/pernod-ricard-fallt-nach-fy26-zahlen-jefferies-senkt-kursziel-auf-90-euro"
+    },
+    {
+      "id": 57,
+      "titulo": "Pernod Ricard (nota de resultados FY26: PER FY27 de 11,6 y rentabilidad por dividendo del 6,5 %)",
+      "editor": "AlphaValue",
+      "tipo": "Analistas",
+      "fecha": "2026-08-27",
+      "url": "https://www.alphavalue.com/Blog/-pernod-ricard"
+    },
+    {
+      "id": 58,
+      "titulo": "Pernod Ricard SA (EPA:RI): valoración y objetivo de consenso",
+      "editor": "Simply Wall St",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www.simplywall.st/stock/ENXTPA/RI"
+    },
+    {
+      "id": 59,
+      "titulo": "Pernod Ricard (EPA:RI), estadísticas (acciones en circulación 251,87 M)",
+      "editor": "Fintel",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-08-28",
+      "url": "https://fintel.io/s/gb/0hat"
+    },
+    {
+      "id": 60,
+      "titulo": "Rendimiento del Bund a 10 años (3,53 %, 12-oct-2026)",
+      "editor": "Deutsche Bundesbank",
+      "tipo": "Primaria",
+      "fecha": "2026-10-12",
+      "url": "https://www.bundesbank.de/en/statistics/money-and-capital-markets/interest-rates-and-yields"
+    },
+    {
+      "id": 61,
+      "titulo": "Implied ERP by month (ERPbymonth.xlsx), octubre de 2026: 4,20 %",
+      "editor": "Aswath Damodaran (NYU Stern)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx"
+    },
+    {
+      "id": 62,
+      "titulo": "Transacciones del sector de bebidas (Asahi-EABL, Campari-Courvoisier, Caffo-Cinzano, Diageo-Don Papa, Diageo-Aviation), recogidas en el análisis de Diageo del 12-oct-2026",
+      "editor": "Análisis de Diageo del repositorio (notas de prensa de las partes)",
+      "tipo": "Prensa",
+      "fecha": "2026-10-12",
+      "url": "https://www.diageo.com/en/news-and-media/press-releases"
+    },
+    {
+      "id": 63,
+      "titulo": "Pernod Ricard shares drop 2.18 % to EUR 64.62, down 33.7 % over one year",
+      "editor": "Idéal Investisseur",
+      "tipo": "Prensa",
+      "fecha": "2026-09-15",
+      "url": "https://www.ideal-investisseur.fr/en/actions-b/pernod-ricard-shares-drop-2-18-to-eur64-62-down-33-7-over-one-year/18882.html"
+    },
+    {
+      "id": 64,
+      "titulo": "Why I sold Pernod Ricard and downgrade it to a Hold",
+      "editor": "Seeking Alpha",
+      "tipo": "Foros y redes",
+      "fecha": "2025-10",
+      "url": "https://seekingalpha.com/article/4830823-why-i-sold-pernod-ricard-and-downgrade-it-to-a-hold"
+    },
+    {
+      "id": 65,
+      "titulo": "Pernod Ricard: diese Zahlen lassen sich nur mit der Dividende schöntrinken",
+      "editor": "stock3",
+      "tipo": "Foros y redes",
+      "fecha": "2026-08",
+      "url": "https://stock3.com/news/pernod-ricard-diese-zahlen-lassen-sich-nur-mit-der-dividende-schoentrinken-17259006"
+    },
+    {
+      "id": 66,
+      "titulo": "Pernod Ricard: comunidad y narrativas de inversores (actualizaciones de objetivos)",
+      "editor": "Simply Wall St Community",
+      "tipo": "Foros y redes",
+      "fecha": "2026-09",
+      "url": "https://simplywall.st/community/narratives/fr/food-beverage-tobacco/epa-ri/pernod-ricard-shares/50lbg8us-ri-premium-positioning-and-global-brands-will-drive-resilient-long-term-expansion/updates/15-the-analyst-price-target-for-pernod-ricard-has-been-reduced"
+    },
+    {
+      "id": 67,
+      "titulo": "Down 32 % last year: is Pernod Ricard ready for 2026?",
+      "editor": "TIKR",
+      "tipo": "Foros y redes",
+      "fecha": "2026-01",
+      "url": "https://www.tikr.com/blog/down-32-last-year-is-pernod-ricard-ready-for-2026"
+    },
+    {
+      "id": 68,
+      "titulo": "Pernod Ricard sanctionné en Bourse après l’abandon de son projet de fusion avec Brown-Forman",
+      "editor": "TradingSat (BFM Bourse)",
+      "tipo": "Foros y redes",
+      "fecha": "2026-04-29",
+      "url": "https://www.tradingsat.com/pernod-ricard-FR0000120693/actualites/pernod-ricard-pernod-ricard-sanctionne-en-bourse-apres-l-abandon-de-son-projet-de-fusion-avec-brown-forman-1161715.html"
+    }
+  ],
+  "calc": {
+    "version": 4,
+    "etiquetas": {
+      "margen_bruto": "M. bruto",
+      "margen_bruto_largo": "Margen bruto",
+      "dias_base": "sobre el coste de ventas"
+    },
+    "recomendacion": {
+      "recomendacion": "Mantener",
+      "regla": "Mantener",
+      "regla_absoluta": "Comprar",
+      "regla_relativa": "Comprar",
+      "coincide": true,
+      "conviccion": "Baja",
+      "conviccion_sugerida": "Media",
+      "conviccion_razones": [
+        "Mantener con las dos reglas de acuerdo y lejos de los umbrales"
+      ],
+      "reglas_discrepan": false,
+      "relativo": {
+        "prima_implicita_pct": 4.2,
+        "wacc": 5.83,
+        "ke": 7.81,
+        "dcf": 120.77,
+        "dcf_min": 101.89,
+        "dcf_max": 145.35,
+        "valor_objetivo": 115.08,
+        "alcista": 148.84,
+        "bajista": 64.11,
+        "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout; vale para mercados desarrollados)",
+        "fecha": "2026-10",
+        "potencial_pct": 79.8,
+        "rentabilidad_total_pct": 87.2,
+        "asimetria": null
+      },
+      "objetivo_mercado_txt": " · con la prima implícita del mercado: 115,08 (+79,8 %)",
+      "objetivo_mercado_corto": " · mercado 115,08",
+      "rentabilidad_mercado_corto": " · mercado +87,2 %",
+      "potencial_pct": 42.3,
+      "dividendo_pct": 7.3,
+      "rentabilidad_total_pct": 49.7,
+      "alcista_pct": 85.8,
+      "bajista_pct": -20.7,
+      "asimetria": 4.14,
+      "comprar_por_debajo": 68.39,
+      "vender_por_encima": 87.39,
+      "tabla": [
+        {
+          "concepto": "Objetivo a 12 meses (nuestro PER × nuestro BPA FY2028e, ponderado 30/50/20)",
+          "valor": "73,95 EUR"
+        },
+        {
+          "concepto": "Bajista / base / alcista a 12 meses",
+          "valor": "10,2x × 5,09 = 51,92 · 12,7x × 5,95 = 75,57 · 15,6x × 6,60 = 102,96"
+        },
+        {
+          "concepto": "Rentabilidad a 12 meses: ponderada / del base (con dividendo)",
+          "valor": "22,9 % / 25,4 %"
+        },
+        {
+          "concepto": "Regla de múltiplos aplicada",
+          "valor": "v3: base a mitad de camino hacia la mediana (historia adelantada); bajista mín. 5 a o base × 0,80; alcista techo base × 1,35"
+        },
+        {
+          "concepto": "Señal pendiente de confirmar (confianza de datos baja)",
+          "valor": "La regla da Comprar; se queda en Mantener hasta confirmar las cifras con fuente primaria"
+        },
+        {
+          "concepto": "Objetivo medio de los analistas (solo contraste)",
+          "valor": "80,25 (nuestro base -5,8 %)"
+        },
+        {
+          "concepto": "Valor intrínseco (síntesis ponderada, largo plazo)",
+          "valor": "91,09 EUR"
+        },
+        {
+          "concepto": "Potencial sobre el precio actual",
+          "valor": "42,3 %"
+        },
+        {
+          "concepto": "Rentabilidad por dividendo ordinario",
+          "valor": "7,3 %"
+        },
+        {
+          "concepto": "Rentabilidad total esperada a 12 meses",
+          "valor": "49,7 %"
+        },
+        {
+          "concepto": "Escenario alcista / bajista",
+          "valor": "85,8 % / -20,7 %"
+        },
+        {
+          "concepto": "Asimetría (ganancia alcista / pérdida bajista)",
+          "valor": "4,14x"
+        },
+        {
+          "concepto": "Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado",
+          "valor": "7,9 % frente a 6,5 % y 5,8 %"
+        },
+        {
+          "concepto": "Valor objetivo con la prima implícita del mercado (4,2 %, WACC 5,8 %)",
+          "valor": "115,08 EUR"
+        },
+        {
+          "concepto": "Rentabilidad total esperada con la prima del mercado",
+          "valor": "87,2 %"
+        },
+        {
+          "concepto": "Asimetría con la prima del mercado",
+          "valor": "n.d."
+        },
+        {
+          "concepto": "Regla absoluta (frente a su coste de capital)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "Regla relativa (frente a lo que pide el mercado)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "Crecimiento anual implícito en el precio (FY2027e-FY2033e) frente al previsto para su mercado",
+          "valor": "-2,5 % frente a 2,0 %"
+        },
+        {
+          "concepto": "¿La calidad de la empresa sostiene el crecimiento previsto?",
+          "valor": "En parte (1,6 % anual proyectado; financiable al ROIC actual: 1,3 %)"
+        },
+        {
+          "concepto": "Señal del valor intrínseco (regla del DCF, referencia)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "Recomendación según la regla a 12 meses (Comprar: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender: ponderada ≤ -10 %)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Convicción según los criterios (Mantener con las dos reglas de acuerdo y lejos de los umbrales)",
+          "valor": "Media"
+        }
+      ],
+      "niveles": [
+        {
+          "accion": "Comprar",
+          "condicion": "Por debajo de 68,39 (ponderada a 12 meses ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco)"
+        },
+        {
+          "accion": "Mantener",
+          "condicion": "Entre 68,39 y 87,39"
+        },
+        {
+          "accion": "Vender o reducir",
+          "condicion": "Por encima de 87,39 (ponderada a 12 meses ≤ -10 %)"
+        }
+      ],
+      "precio_txt": "",
+      "valor_objetivo_txt": "",
+      "regla_valor_intrinseco": "Comprar",
+      "objetivo_12m": {
+        "completo": true,
+        "filas": [
+          {
+            "escenario": "Bajista",
+            "metrica": "PER FY2028e",
+            "beneficio_por_accion": 5.09,
+            "multiplo": 10.2,
+            "multiplo_informe": null,
+            "origen": "base × 0.8",
+            "precio": 51.92,
+            "rentabilidad_pct": -11.5,
+            "justificacion": "Ventas de 9.028 M (−4 % en el FY27 y 0 % en el FY28: EE. UU. y China no tocan fondo) con margen EBITDA del 28,9 %: EBIT de 2.167 M, 420 M de gasto financiero, impuesto del 25 % y 25 M de minoritarios sobre 252,3 M de acciones."
+          },
+          {
+            "escenario": "Base",
+            "metrica": "PER FY2028e",
+            "beneficio_por_accion": 5.95,
+            "multiplo": 12.7,
+            "multiplo_informe": null,
+            "origen": "PER actual (11.2x) a mitad de camino hacia la mediana de 5 años (14.5x)",
+            "precio": 75.57,
+            "rentabilidad_pct": 25.4,
+            "justificacion": "Ventas de 9.400 M (−2 % en el FY27 por divisa con orgánico plano, según la guía, y +2 % en el FY28) con margen EBITDA del 30,9 % por el plan de eficiencia: EBIT de 2.444 M, 410 M de gasto financiero, impuesto del 25 % y 25 M de minoritarios; 252,3 M de acciones sin recompras."
+          },
+          {
+            "escenario": "Alcista",
+            "metrica": "PER FY2028e",
+            "beneficio_por_accion": 6.6,
+            "multiplo": 15.6,
+            "multiplo_informe": null,
+            "origen": "mediana de los comparables",
+            "precio": 102.96,
+            "rentabilidad_pct": 68.2,
+            "justificacion": "Ventas de 9.685 M (EE. UU. se estabiliza en el FY27 y el FY28 crece un 3,5 %, en la banda baja del objetivo del 3-6 %) con margen del 32,4 %: EBIT de 2.663 M y 410 M de gasto financiero."
+          }
+        ],
+        "regla": {
+          "version": "v3",
+          "bajista": 10.2,
+          "base": 12.7,
+          "alcista": 15.6,
+          "bajista_origen": "base × 0.8",
+          "base_origen": "PER actual (11.2x) a mitad de camino hacia la mediana de 5 años (14.5x)",
+          "alcista_origen": "mediana de los comparables"
+        },
+        "version": "v3",
+        "probabilidades": [
+          30,
+          50,
+          20
+        ],
+        "objetivo_ponderado": 73.95,
+        "objetivo_simple": 76.82,
+        "objetivo_base": 75.57,
+        "rentabilidad_ponderada_pct": 22.9,
+        "rentabilidad_simple_pct": 27.4,
+        "rentabilidad_base_pct": 25.4,
+        "asimetria": 3.23,
+        "senal": "Mantener",
+        "senal_sin_confirmar": "Comprar",
+        "confianza_baja": true,
+        "comprar_por_debajo": 68.39,
+        "vender_por_encima": 87.39,
+        "consenso_objetivo": 80.25,
+        "diferencia_consenso_pct": -5.8
+      },
+      "rentabilidad_12m_pct": 22.9,
+      "rentabilidad_12m_txt": "+22,9 % (base +25,4 %)",
+      "objetivo_12m_txt": "73,95 EUR"
+    },
+    "mercado": {
+      "precio": 64,
+      "acciones": 252.3,
+      "capitalizacion": 16147,
+      "deuda_neta": 10660,
+      "deuda_neta_ajustada": null,
+      "asimilables_deuda": null,
+      "ajustes_puente": 0,
+      "valor_empresa": 26807,
+      "fecha_puente": "2026-06-30"
+    },
+    "clave": {
+      "capitalizacion": 16147,
+      "valor_empresa": 26807,
+      "deuda_neta": 10660,
+      "ev_ventas_ltm": 2.85,
+      "ev_ebitda_ltm": 9.3,
+      "ev_ebitda_ntm": null,
+      "ev_ebit_ltm": 11.1,
+      "per_ltm": 10.9,
+      "per_ntm": null,
+      "fcf_yield_pct": 7.4,
+      "dividendo_pct": 7.3,
+      "dn_ebitda": 3.7,
+      "roic_pct": 7,
+      "margen_ebitda_pct": 30.6,
+      "deuda_neta_ajustada": 10660,
+      "dn_ebitda_ajustada": 3.7,
+      "crecimiento_tcac_pct": -3.2,
+      "ingresos_ntm": null,
+      "ebitda_ntm": null,
+      "bpa_ntm": null,
+      "ebitda_ltm": 2881,
+      "ingresos_ltm": 9404,
+      "ev_rab": null
+    },
+    "cuenta": [
+      {
+        "periodo": "FY2022",
+        "ingresos": 10701,
+        "crecimiento_pct": null,
+        "beneficio_bruto": 6473,
+        "margen_bruto_pct": 60.5,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "ebit": 3024,
+        "margen_ebit_pct": 28.3,
+        "beneficio_neto": 2124,
+        "margen_neto_pct": 19.8,
+        "bpa": 8.18,
+        "dpa": 4.12,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 50
+      },
+      {
+        "periodo": "FY2023",
+        "ingresos": 12137,
+        "crecimiento_pct": 13.4,
+        "beneficio_bruto": 7246,
+        "margen_bruto_pct": 59.7,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "ebit": 3348,
+        "margen_ebit_pct": 27.6,
+        "beneficio_neto": null,
+        "margen_neto_pct": null,
+        "bpa": 9.11,
+        "dpa": 4.7,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 52
+      },
+      {
+        "periodo": "FY2024",
+        "ingresos": 11598,
+        "crecimiento_pct": -4.4,
+        "beneficio_bruto": 6975,
+        "margen_bruto_pct": 60.1,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "ebit": 3116,
+        "margen_ebit_pct": 26.9,
+        "beneficio_neto": null,
+        "margen_neto_pct": null,
+        "bpa": 7.9,
+        "dpa": 4.7,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 59
+      },
+      {
+        "periodo": "FY2025",
+        "ingresos": 10959,
+        "crecimiento_pct": -5.5,
+        "beneficio_bruto": 6516,
+        "margen_bruto_pct": 59.5,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "ebit": 2951,
+        "margen_ebit_pct": 26.9,
+        "beneficio_neto": 1829,
+        "margen_neto_pct": 16.7,
+        "bpa": 7.26,
+        "dpa": 4.7,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 65
+      },
+      {
+        "periodo": "FY2026",
+        "ingresos": 9404,
+        "crecimiento_pct": -14.2,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 2881,
+        "margen_ebitda_pct": 30.6,
+        "ebit": 2423,
+        "margen_ebit_pct": 25.8,
+        "beneficio_neto": 1476,
+        "margen_neto_pct": 15.7,
+        "bpa": 5.85,
+        "dpa": 4.7,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 80
+      }
+    ],
+    "tcac": {
+      "periodo": "FY2022-FY2026",
+      "ingresos_pct": -3.2,
+      "ebitda_pct": null,
+      "bpa_pct": -8
+    },
+    "cuenta_y_prevision": [
+      {
+        "periodo": "FY2022",
+        "ingresos": 10701,
+        "ebitda": null
+      },
+      {
+        "periodo": "FY2023",
+        "ingresos": 12137,
+        "ebitda": null
+      },
+      {
+        "periodo": "FY2024",
+        "ingresos": 11598,
+        "ebitda": null
+      },
+      {
+        "periodo": "FY2025",
+        "ingresos": 10959,
+        "ebitda": null
+      },
+      {
+        "periodo": "FY2026",
+        "ingresos": 9404,
+        "ebitda": 2881
+      },
+      {
+        "periodo": "FY2027e",
+        "ingresos": 9216,
+        "ebitda": 2820
+      },
+      {
+        "periodo": "FY2028e",
+        "ingresos": 9400,
+        "ebitda": 2905
+      },
+      {
+        "periodo": "FY2029e",
+        "ingresos": 9635,
+        "ebitda": 3006
+      },
+      {
+        "periodo": "FY2030e",
+        "ingresos": 9876,
+        "ebitda": 3101
+      },
+      {
+        "periodo": "FY2031e",
+        "ingresos": 10123,
+        "ebitda": 3189
+      },
+      {
+        "periodo": "FY2032e",
+        "ingresos": 10325,
+        "ebitda": 3253
+      },
+      {
+        "periodo": "FY2033e",
+        "ingresos": 10532,
+        "ebitda": 3318
+      }
+    ],
+    "segmentos_ultimo": [],
+    "segmentos_tabla": {
+      "periodos": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "filas": []
+    },
+    "segmentos_periodo": null,
+    "balance": [
+      {
+        "periodo": "FY2022",
+        "activo_total": null,
+        "intangibles": 0,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 0,
+        "deuda_financiera": 8657,
+        "arrendamientos": 0,
+        "deuda_neta": 8657,
+        "patrimonio": null,
+        "minoritarios": null,
+        "dn_ebitda": null,
+        "dn_patrimonio_pct": null,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 8657,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "FY2023",
+        "activo_total": null,
+        "intangibles": 0,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 0,
+        "deuda_financiera": 10274,
+        "arrendamientos": 0,
+        "deuda_neta": 10274,
+        "patrimonio": null,
+        "minoritarios": null,
+        "dn_ebitda": null,
+        "dn_patrimonio_pct": null,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 10274,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "FY2024",
+        "activo_total": null,
+        "intangibles": 19040,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 0,
+        "deuda_financiera": 10951,
+        "arrendamientos": 0,
+        "deuda_neta": 10951,
+        "patrimonio": null,
+        "minoritarios": null,
+        "dn_ebitda": null,
+        "dn_patrimonio_pct": null,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 10951,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "FY2025",
+        "activo_total": null,
+        "intangibles": 17921,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 0,
+        "deuda_financiera": 10725,
+        "arrendamientos": 0,
+        "deuda_neta": 10725,
+        "patrimonio": 15543,
+        "minoritarios": null,
+        "dn_ebitda": null,
+        "dn_patrimonio_pct": 69,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 26268,
+        "liquidez_corriente": null
+      },
+      {
+        "periodo": "FY2026",
+        "activo_total": null,
+        "intangibles": 0,
+        "circulante": 0,
+        "circulante_ventas_pct": 0,
+        "caja": 0,
+        "deuda_financiera": 10660,
+        "arrendamientos": 0,
+        "deuda_neta": 10660,
+        "patrimonio": 15014,
+        "minoritarios": null,
+        "dn_ebitda": 3.7,
+        "dn_patrimonio_pct": 71,
+        "dso": null,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": null,
+        "capital_invertido": 25674,
+        "liquidez_corriente": null
+      }
+    ],
+    "perimetro_nota": "Cambio de perímetro (FY2025: Venta de la cartera de vinos (Jacob’s Creek, Brancott y otras) y de marcas menores de licores entre FY24 y FY26: efecto perímetro negativo, sin cifras pro forma accesibles [6].). Los ratios de balance de ese año (días, circulante, deuda neta / EBITDA, ROIC) y los indicadores de calidad contable no son comparables con los anteriores.",
+    "flujos": [
+      {
+        "periodo": "FY2024",
+        "flujo_operativo": 1727,
+        "capex": 773,
+        "pagos_arrendamientos": 0,
+        "fcf": 954,
+        "beneficio_neto": null,
+        "conversion_pct": null,
+        "capex_ventas_pct": 6.7,
+        "capex_amortizacion": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 1208,
+        "recompras": null,
+        "emision_acciones": 0,
+        "retorno_accionista": 1208,
+        "payout_caja_pct": null,
+        "acciones": null,
+        "fcf_por_accion": null
+      },
+      {
+        "periodo": "FY2025",
+        "flujo_operativo": 1788,
+        "capex": 667,
+        "pagos_arrendamientos": 0,
+        "fcf": 1121,
+        "beneficio_neto": 1829,
+        "conversion_pct": 61,
+        "capex_ventas_pct": 6.1,
+        "capex_amortizacion": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 1201,
+        "recompras": null,
+        "emision_acciones": 0,
+        "retorno_accionista": 1201,
+        "payout_caja_pct": 66,
+        "acciones": 251.9,
+        "fcf_por_accion": 4.45
+      }
+    ],
+    "flujos_acumulado": {
+      "periodo": "FY2024-FY2025",
+      "fcf": 2075,
+      "adquisiciones": 0,
+      "dividendos": 2409,
+      "recompras": 0,
+      "conversion_pct": 113
+    },
+    "rentabilidad": [
+      {
+        "periodo": "FY2022",
+        "nopat": 2268,
+        "capital_invertido": 8657,
+        "roic_pct": 26.2,
+        "roe_pct": null,
+        "roa_pct": null,
+        "margen_neto_pct": 19.8,
+        "rotacion": null,
+        "apalancamiento": null
+      },
+      {
+        "periodo": "FY2023",
+        "nopat": 2511,
+        "capital_invertido": 9466,
+        "roic_pct": 26.5,
+        "roe_pct": null,
+        "roa_pct": null,
+        "margen_neto_pct": null,
+        "rotacion": null,
+        "apalancamiento": null
+      },
+      {
+        "periodo": "FY2024",
+        "nopat": 2337,
+        "capital_invertido": 10613,
+        "roic_pct": 22,
+        "roe_pct": null,
+        "roa_pct": null,
+        "margen_neto_pct": null,
+        "rotacion": null,
+        "apalancamiento": null
+      },
+      {
+        "periodo": "FY2025",
+        "nopat": 2213,
+        "capital_invertido": 18610,
+        "roic_pct": 11.9,
+        "roe_pct": 23.5,
+        "roa_pct": null,
+        "margen_neto_pct": 16.7,
+        "rotacion": null,
+        "apalancamiento": 0
+      },
+      {
+        "periodo": "FY2026",
+        "nopat": 1817,
+        "capital_invertido": 25971,
+        "roic_pct": 7,
+        "roe_pct": 9.7,
+        "roa_pct": null,
+        "margen_neto_pct": 15.7,
+        "rotacion": null,
+        "apalancamiento": 0
+      }
+    ],
+    "roic_incremental_pct": -2.6,
+    "roic_frente_wacc": [
+      {
+        "periodo": "FY2022",
+        "roic_pct": 26.2,
+        "roe_pct": null,
+        "wacc_pct": 6.5
+      },
+      {
+        "periodo": "FY2023",
+        "roic_pct": 26.5,
+        "roe_pct": null,
+        "wacc_pct": 6.5
+      },
+      {
+        "periodo": "FY2024",
+        "roic_pct": 22,
+        "roe_pct": null,
+        "wacc_pct": 6.5
+      },
+      {
+        "periodo": "FY2025",
+        "roic_pct": 11.9,
+        "roe_pct": 23.5,
+        "wacc_pct": 6.5
+      },
+      {
+        "periodo": "FY2026",
+        "roic_pct": 7,
+        "roe_pct": 9.7,
+        "wacc_pct": 6.5
+      }
+    ],
+    "calidad": {
+      "periodo": "FY2026",
+      "piotroski_f": 2,
+      "piotroski_detalle": [
+        {
+          "criterio": "Beneficio neto positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo positivo",
+          "resultado": "No"
+        },
+        {
+          "criterio": "ROA mejora",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "Flujo operativo > beneficio neto",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "Baja el endeudamiento (deuda / activo)",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "Mejora la liquidez corriente",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "No emite acciones",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora el margen bruto",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "Mejora la rotación del activo",
+          "resultado": "n.d."
+        }
+      ],
+      "tabla": [
+        {
+          "indicador": "Piotroski F",
+          "valor": "2 / 3",
+          "lectura": "Debilidad (0-3)."
+        },
+        {
+          "indicador": "Flujo operativo / beneficio neto (acumulado)",
+          "valor": "0,65x",
+          "lectura": "El beneficio se cobra solo en parte: mirar circulante y ajustes."
+        }
+      ]
+    },
+    "dcf": {
+      "proyeccion": [
+        {
+          "periodo": "FY2027e",
+          "ingresos": 9216,
+          "crecimiento_pct": -2,
+          "ebitda": 2820,
+          "margen_ebitda_pct": 30.6,
+          "amortizacion": 452,
+          "ebit": 2368,
+          "impuestos": 592,
+          "capex": 691,
+          "variacion_circulante": 0,
+          "fcff": 1537,
+          "fraccion": 0.71,
+          "factor": 0.978,
+          "vp": 1066
+        },
+        {
+          "periodo": "FY2028e",
+          "ingresos": 9400,
+          "crecimiento_pct": 2,
+          "ebitda": 2905,
+          "margen_ebitda_pct": 30.9,
+          "amortizacion": 461,
+          "ebit": 2444,
+          "impuestos": 611,
+          "capex": 846,
+          "variacion_circulante": 0,
+          "fcff": 1448,
+          "fraccion": 1,
+          "factor": 0.926,
+          "vp": 1341
+        },
+        {
+          "periodo": "FY2029e",
+          "ingresos": 9635,
+          "crecimiento_pct": 2.5,
+          "ebitda": 3006,
+          "margen_ebitda_pct": 31.2,
+          "amortizacion": 472,
+          "ebit": 2534,
+          "impuestos": 634,
+          "capex": 867,
+          "variacion_circulante": 0,
+          "fcff": 1506,
+          "fraccion": 1,
+          "factor": 0.87,
+          "vp": 1308
+        },
+        {
+          "periodo": "FY2030e",
+          "ingresos": 9876,
+          "crecimiento_pct": 2.5,
+          "ebitda": 3101,
+          "margen_ebitda_pct": 31.4,
+          "amortizacion": 484,
+          "ebit": 2617,
+          "impuestos": 654,
+          "capex": 889,
+          "variacion_circulante": 0,
+          "fcff": 1558,
+          "fraccion": 1,
+          "factor": 0.816,
+          "vp": 1271
+        },
+        {
+          "periodo": "FY2031e",
+          "ingresos": 10123,
+          "crecimiento_pct": 2.5,
+          "ebitda": 3189,
+          "margen_ebitda_pct": 31.5,
+          "amortizacion": 496,
+          "ebit": 2693,
+          "impuestos": 673,
+          "capex": 911,
+          "variacion_circulante": 0,
+          "fcff": 1605,
+          "fraccion": 1,
+          "factor": 0.766,
+          "vp": 1229
+        },
+        {
+          "periodo": "FY2032e",
+          "ingresos": 10325,
+          "crecimiento_pct": 2,
+          "ebitda": 3253,
+          "margen_ebitda_pct": 31.5,
+          "amortizacion": 506,
+          "ebit": 2747,
+          "impuestos": 687,
+          "capex": 929,
+          "variacion_circulante": 0,
+          "fcff": 1637,
+          "fraccion": 1,
+          "factor": 0.719,
+          "vp": 1177
+        },
+        {
+          "periodo": "FY2033e",
+          "ingresos": 10532,
+          "crecimiento_pct": 2,
+          "ebitda": 3318,
+          "margen_ebitda_pct": 31.5,
+          "amortizacion": 516,
+          "ebit": 2802,
+          "impuestos": 700,
+          "capex": 843,
+          "variacion_circulante": 0,
+          "fcff": 1775,
+          "fraccion": 1,
+          "factor": 0.675,
+          "vp": 1197
+        }
+      ],
+      "etapa2": null,
+      "suma_vp": 8589,
+      "valor_terminal": 39976,
+      "vp_terminal": 26152,
+      "valor_empresa": 34741,
+      "peso_terminal_pct": 75,
+      "valor_acciones": 24081,
+      "valor_accion": 95.45,
+      "vt_gordon": 39976,
+      "vt_multiplo": 34835,
+      "multiplo_implicito": 12,
+      "g_implicito_pct": 1.36,
+      "metodo_terminal": "gordon",
+      "terminal_tabla": [
+        {
+          "concepto": "Método principal",
+          "valor": "Crecimiento a perpetuidad"
+        },
+        {
+          "concepto": "Crecimiento a perpetuidad",
+          "valor": "2,0 %"
+        },
+        {
+          "concepto": "Múltiplo EV/EBITDA de salida",
+          "valor": "10,5x"
+        },
+        {
+          "concepto": "Valor terminal (Gordon)",
+          "valor": "39.976"
+        },
+        {
+          "concepto": "Valor terminal (múltiplo)",
+          "valor": "34.835"
+        },
+        {
+          "concepto": "Múltiplo de salida implícito en Gordon",
+          "valor": "12,0x"
+        },
+        {
+          "concepto": "Crecimiento implícito en el múltiplo",
+          "valor": "1,36 %"
+        },
+        {
+          "concepto": "Peso del valor terminal en el valor empresa",
+          "valor": "75 %"
+        }
+      ],
+      "puente": [
+        {
+          "concepto": "Valor actual de los flujos proyectados",
+          "valor": "8.589"
+        },
+        {
+          "concepto": "Valor actual del valor terminal",
+          "valor": "26.152"
+        },
+        {
+          "concepto": "Valor empresa",
+          "valor": "34.741"
+        },
+        {
+          "concepto": "− Deuda financiera neta (con arrendamientos)",
+          "valor": "-10.660"
+        },
+        {
+          "concepto": "− Minoritarios, pensiones y otros; + asociadas",
+          "valor": "0"
+        },
+        {
+          "concepto": "Valor de los fondos propios",
+          "valor": "24.081"
+        },
+        {
+          "concepto": "Acciones diluidas (millones)",
+          "valor": "252,3"
+        },
+        {
+          "concepto": "Valor por acción",
+          "valor": "95,45"
+        }
+      ],
+      "composicion": [
+        {
+          "parte": "Flujos proyectados",
+          "valor": 8589
+        },
+        {
+          "parte": "Valor terminal",
+          "valor": 26152
+        }
+      ],
+      "wacc": 6.53,
+      "ke": 8.98,
+      "kd_despues": 2.85,
+      "wacc_tabla": [
+        {
+          "concepto": "Tasa libre de riesgo",
+          "valor": "3,53 %"
+        },
+        {
+          "concepto": "Beta",
+          "valor": "0,90"
+        },
+        {
+          "concepto": "Prima de riesgo de mercado",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Prima adicional (país, tamaño, específica)",
+          "valor": "0,50 %"
+        },
+        {
+          "concepto": "Coste de los fondos propios",
+          "valor": "8,98 %"
+        },
+        {
+          "concepto": "Coste de la deuda antes de impuestos",
+          "valor": "3,80 %"
+        },
+        {
+          "concepto": "Tipo impositivo",
+          "valor": "25,00 %"
+        },
+        {
+          "concepto": "Coste de la deuda después de impuestos",
+          "valor": "2,85 %"
+        },
+        {
+          "concepto": "Peso de la deuda (D / (D + E))",
+          "valor": "40,00 %"
+        },
+        {
+          "concepto": "WACC",
+          "valor": "6,53 %"
+        },
+        {
+          "concepto": "Prima de riesgo implícita del mercado (regla relativa)",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "WACC con la prima implícita del mercado",
+          "valor": "5,83 %"
+        }
+      ],
+      "potencial_pct": 49.1,
+      "sensibilidad": {
+        "eje_columnas": "Crecimiento a perpetuidad",
+        "columnas": [
+          "1,0 %",
+          "1,5 %",
+          "2,0 %",
+          "2,5 %",
+          "3,0 %"
+        ],
+        "filas": [
+          {
+            "wacc": "5,5 %",
+            "v0": 102.19,
+            "v1": 116.38,
+            "v2": 134.58,
+            "v3": 158.79,
+            "v4": 192.58
+          },
+          {
+            "wacc": "6,0 %",
+            "v0": 87.71,
+            "v1": 98.77,
+            "v2": 112.57,
+            "v3": 130.29,
+            "v4": 153.86
+          },
+          {
+            "wacc": "6,5 %",
+            "v0": 75.86,
+            "v1": 84.68,
+            "v2": 95.45,
+            "v3": 108.88,
+            "v4": 126.13
+          },
+          {
+            "wacc": "7,0 %",
+            "v0": 65.99,
+            "v1": 73.16,
+            "v2": 81.74,
+            "v3": 92.22,
+            "v4": 105.31
+          },
+          {
+            "wacc": "7,5 %",
+            "v0": 57.65,
+            "v1": 63.56,
+            "v2": 70.53,
+            "v3": 78.89,
+            "v4": 89.1
+          }
+        ]
+      },
+      "sensibilidad2": {
+        "columnas": [
+          "-2 pp",
+          "-1 pp",
+          "0 pp",
+          "+1 pp",
+          "+2 pp"
+        ],
+        "filas": [
+          {
+            "margen": "-2 pp",
+            "v0": 68.41,
+            "v1": 75.51,
+            "v2": 83.02,
+            "v3": 90.96,
+            "v4": 99.36
+          },
+          {
+            "margen": "-1 pp",
+            "v0": 73.9,
+            "v1": 81.35,
+            "v2": 89.23,
+            "v3": 97.57,
+            "v4": 106.38
+          },
+          {
+            "margen": "0 pp",
+            "v0": 79.39,
+            "v1": 87.19,
+            "v2": 95.45,
+            "v3": 104.17,
+            "v4": 113.4
+          },
+          {
+            "margen": "+1 pp",
+            "v0": 84.89,
+            "v1": 93.04,
+            "v2": 101.66,
+            "v3": 110.78,
+            "v4": 120.41
+          },
+          {
+            "margen": "+2 pp",
+            "v0": 90.38,
+            "v1": 98.88,
+            "v2": 107.87,
+            "v3": 117.38,
+            "v4": 127.43
+          }
+        ]
+      },
+      "rango_min": 73.16,
+      "rango_max": 130.29,
+      "inverso": {
+        "crecimiento_implicito_pct": -2.5,
+        "crecimiento_base_pct": 1.6,
+        "periodo": "FY2027e-FY2033e",
+        "margen_implicito_pct": 26.4,
+        "margen_implicito_texto": null,
+        "margen_base_pct": 31.5,
+        "rentabilidad_implicita_pct": 7.9
+      },
+      "sostenibilidad": {
+        "veredicto": "En parte",
+        "crecimiento_proyectado_pct": 1.6,
+        "tasa_reinversion_pct": 19,
+        "crecimiento_financiable_pct": 1.3,
+        "roic_pct": 7,
+        "roic_incremental_historico_pct": -2.6,
+        "roic_implicito_pct": 11,
+        "cuota_actual_pct": null,
+        "cuota_final_pct": null,
+        "puente": [
+          {
+            "periodo": "FY2027e",
+            "volumen_pct": -1,
+            "precio_pct": 1,
+            "otros_pct": -2,
+            "comentario": "Guía de ventas orgánicas estables: volumen −1 % (EE. UU. y China) y precio/mezcla +1 %; −2 % de divisa y perímetro [2, 20].",
+            "suma_pct": -2,
+            "crecimiento_pct": -2
+          },
+          {
+            "periodo": "FY2028e",
+            "volumen_pct": 0.5,
+            "precio_pct": 1.5,
+            "otros_pct": 0,
+            "comentario": "Volumen +0,5 % y precio +1,5 %, inflación de los mercados emergentes; por debajo del 3-6 % orgánico del objetivo [2].",
+            "suma_pct": 2,
+            "crecimiento_pct": 2
+          },
+          {
+            "periodo": "FY2029e",
+            "volumen_pct": 1,
+            "precio_pct": 1.5,
+            "otros_pct": 0,
+            "comentario": "Volumen +1 % por India y el resto del mundo, que crecen [20]; precio +1,5 %.",
+            "suma_pct": 2.5,
+            "crecimiento_pct": 2.5
+          },
+          {
+            "periodo": "FY2030e",
+            "volumen_pct": 1,
+            "precio_pct": 1.5,
+            "otros_pct": 0,
+            "comentario": "Igual que el FY2029e.",
+            "suma_pct": 2.5,
+            "crecimiento_pct": 2.5
+          },
+          {
+            "periodo": "FY2031e",
+            "volumen_pct": 1,
+            "precio_pct": 1.5,
+            "otros_pct": 0,
+            "comentario": "Igual que el FY2029e; converge al 2 % después.",
+            "suma_pct": 2.5,
+            "crecimiento_pct": 2.5
+          }
+        ],
+        "texto": "La proyección reinvierte el 19 % del NOPAT. Con el ROIC del último ejercicio (7,0 %), eso financia un crecimiento del 1,3 % anual, frente al 1,6 % de ingresos proyectado. Supone que el capital nuevo rinde un 11,0 %, frente a un ROIC incremental histórico del -2,6 %.",
+        "tabla": [
+          {
+            "concepto": "Crecimiento medio de ingresos proyectado",
+            "valor": "1,6 %"
+          },
+          {
+            "concepto": "Capex bruto medio (incluidas compras si van como inversión)",
+            "valor": "8,6 % de las ventas"
+          },
+          {
+            "concepto": "Reinversión neta acumulada (capex − amortización + circulante)",
+            "valor": "2.589 M (19 % del NOPAT)"
+          },
+          {
+            "concepto": "Crecimiento que financia esa reinversión al ROIC actual",
+            "valor": "1,3 % (ROIC 7,0 %)"
+          },
+          {
+            "concepto": "Rendimiento que la proyección supone para el capital nuevo",
+            "valor": "11,0 % (histórico: -2,6 %)"
+          }
+        ]
+      }
+    },
+    "escenarios": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 30,
+        "narrativa": "EE. UU. y China siguen cayendo en el FY2027 (ventas −4 %), el plan de eficiencia se reinvierte entero en publicidad y el margen EBITDA baja dos puntos, al 28,6-29,5 %, como el de Brown-Forman; el WACC sube medio punto por la rebaja de rating. Ya pasó en el FY2026 con Diageo y Rémy.",
+        "crecimiento_medio_pct": -0.4,
+        "margen_final_pct": 29.5,
+        "wacc_pct": 7,
+        "valor": 50.73,
+        "potencial_pct": -20.7
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "narrativa": "Ventas orgánicas planas en el FY2027 y vuelta a un 2-2,5 % desde el FY2028 por India y el resto del mundo; el plan de eficiencia sube el margen EBITDA al 31,5 % y el dividendo se mantiene.",
+        "crecimiento_medio_pct": 1.6,
+        "margen_final_pct": 31.5,
+        "wacc_pct": 6.5,
+        "valor": 95.45,
+        "potencial_pct": 49.1
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 20,
+        "narrativa": "EE. UU. vuelve a crecer en el FY2028 al terminar el desestocaje, China se estabiliza con el precio mínimo del coñac y el crecimiento llega al 3,5-4 % (el extremo bajo del objetivo de la empresa); el margen sube 1,5 puntos más que en el base.",
+        "crecimiento_medio_pct": 3.1,
+        "margen_final_pct": 33,
+        "wacc_pct": 6.5,
+        "valor": 118.93,
+        "potencial_pct": 85.8
+      }
+    ],
+    "valor_ponderado": 86.73,
+    "potencial_ponderado_pct": 35.5,
+    "comparables": {
+      "tabla": [
+        {
+          "nombre": "Pernod Ricard",
+          "ticker": "RI",
+          "pais": "FR",
+          "capitalizacion": 16147,
+          "ev_ventas": 2.85,
+          "ev_ebitda_ltm": 9.3,
+          "ev_ebitda_ntm": null,
+          "per_ntm": null,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": 30.6,
+          "roic_pct": 7,
+          "dn_ebitda": 3.7,
+          "fcf_yield_pct": 7.4,
+          "es_objetivo": true
+        },
+        {
+          "nombre": "AB InBev",
+          "ticker": "ABI.BR",
+          "pais": "BE",
+          "capitalizacion": 139747,
+          "ev_ventas": 3.66,
+          "ev_ebitda_ltm": 10.2,
+          "ev_ebitda_ntm": 8.9,
+          "per_ntm": 15.7,
+          "crecimiento_pct": 6.8,
+          "margen_ebitda_pct": 35.8,
+          "roic_pct": null,
+          "dn_ebitda": 2.87,
+          "fcf_yield_pct": 7.8,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Constellation Brands",
+          "ticker": "STZ",
+          "pais": "US",
+          "capitalizacion": 18461,
+          "ev_ventas": 3.4,
+          "ev_ebitda_ltm": 9.2,
+          "ev_ebitda_ntm": 9.2,
+          "per_ntm": 10.4,
+          "crecimiento_pct": 0.4,
+          "margen_ebitda_pct": 36.8,
+          "roic_pct": null,
+          "dn_ebitda": 3.11,
+          "fcf_yield_pct": 8.7,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Diageo",
+          "ticker": "DGE.L",
+          "pais": "GB",
+          "capitalizacion": 44209,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": 10.4,
+          "ev_ebitda_ntm": 10.6,
+          "per_ntm": 13.8,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": null,
+          "roic_pct": null,
+          "dn_ebitda": null,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Brown-Forman",
+          "ticker": "BF.B",
+          "pais": "US",
+          "capitalizacion": 10734,
+          "ev_ventas": 3.61,
+          "ev_ebitda_ltm": 13,
+          "ev_ebitda_ntm": 12.2,
+          "per_ntm": 15.6,
+          "crecimiento_pct": 0.7,
+          "margen_ebitda_pct": 27.8,
+          "roic_pct": null,
+          "dn_ebitda": 2.01,
+          "fcf_yield_pct": 7.4,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Campari",
+          "ticker": "CPR.MI",
+          "pais": "IT",
+          "capitalizacion": 7553,
+          "ev_ventas": 3.12,
+          "ev_ebitda_ltm": 12.1,
+          "ev_ebitda_ntm": 11.7,
+          "per_ntm": 18.8,
+          "crecimiento_pct": 1.9,
+          "margen_ebitda_pct": 25.7,
+          "roic_pct": null,
+          "dn_ebitda": 2.49,
+          "fcf_yield_pct": 4.5,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Rémy Cointreau",
+          "ticker": "RCO.PA",
+          "pais": "FR",
+          "capitalizacion": 2178,
+          "ev_ventas": 3.07,
+          "ev_ebitda_ltm": 13.6,
+          "ev_ebitda_ntm": 12.6,
+          "per_ntm": 22.9,
+          "crecimiento_pct": 3.6,
+          "margen_ebitda_pct": 22.6,
+          "roic_pct": null,
+          "dn_ebitda": 3.26,
+          "fcf_yield_pct": 2.5,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Heineken",
+          "ticker": "HEIA.AS",
+          "pais": "NL",
+          "capitalizacion": 40202,
+          "ev_ventas": 1.78,
+          "ev_ebitda_ltm": 8.2,
+          "ev_ebitda_ntm": 7.6,
+          "per_ntm": 14.5,
+          "crecimiento_pct": 3.9,
+          "margen_ebitda_pct": 22.5,
+          "roic_pct": null,
+          "dn_ebitda": 2.17,
+          "fcf_yield_pct": 6.5,
+          "es_objetivo": false
+        }
+      ],
+      "estadisticos": [
+        {
+          "estadistico": "Mediana",
+          "ev_ventas": 3.3,
+          "ev_ebitda_ltm": 10.4,
+          "ev_ebitda_ntm": 10.6,
+          "per_ntm": 15.6,
+          "crecimiento_pct": 2.8,
+          "margen_ebitda_pct": 26.8,
+          "roic_pct": null,
+          "dn_ebitda": 2.7,
+          "fcf_yield_pct": 7
+        },
+        {
+          "estadistico": "Media",
+          "ev_ventas": 3.1,
+          "ev_ebitda_ltm": 11,
+          "ev_ebitda_ntm": 10.4,
+          "per_ntm": 16,
+          "crecimiento_pct": 2.9,
+          "margen_ebitda_pct": 28.5,
+          "roic_pct": null,
+          "dn_ebitda": 2.7,
+          "fcf_yield_pct": 6.2
+        },
+        {
+          "estadistico": "Percentil 25",
+          "ev_ventas": 3.1,
+          "ev_ebitda_ltm": 9.7,
+          "ev_ebitda_ntm": 9.1,
+          "per_ntm": 14.2,
+          "crecimiento_pct": 1,
+          "margen_ebitda_pct": 23.4,
+          "roic_pct": null,
+          "dn_ebitda": 2.3,
+          "fcf_yield_pct": 5
+        },
+        {
+          "estadistico": "Percentil 75",
+          "ev_ventas": 3.6,
+          "ev_ebitda_ltm": 12.6,
+          "ev_ebitda_ntm": 12,
+          "per_ntm": 17.3,
+          "crecimiento_pct": 3.8,
+          "margen_ebitda_pct": 33.8,
+          "roic_pct": null,
+          "dn_ebitda": 3.1,
+          "fcf_yield_pct": 7.7
+        }
+      ],
+      "implicito": [
+        {
+          "metodo": "EV/EBITDA últimos 12 meses",
+          "metrica_empresa": 2881,
+          "multiplo_p25": 9.7,
+          "multiplo_mediana": 10.4,
+          "multiplo_p75": 12.6,
+          "multiplos": "9,7x / 10,4x / 12,6x",
+          "valor_p25": 68.51,
+          "valor_mediana": 76.51,
+          "valor_p75": 101.06,
+          "potencial_pct": 19.5
+        },
+        {
+          "metodo": "EV/Ventas últimos 12 meses",
+          "metrica_empresa": 9404,
+          "multiplo_p25": 3.1,
+          "multiplo_mediana": 3.3,
+          "multiplo_p75": 3.6,
+          "multiplos": "3,1x / 3,3x / 3,6x",
+          "valor_p25": 72.64,
+          "valor_mediana": 79.26,
+          "valor_p75": 90.35,
+          "potencial_pct": 23.8
+        }
+      ],
+      "regresion": {
+        "pendiente": -0.3255948590285415,
+        "ordenada": 11.305465176865628,
+        "r2": 0.14332697927179994,
+        "n": 6
+      },
+      "n": 7
+    },
+    "transacciones": {
+      "n": 5,
+      "metrica": "EV/ventas",
+      "mediana_ev_ebitda": null,
+      "p25_ev_ebitda": null,
+      "p75_ev_ebitda": null,
+      "mediana_ev_ventas": 4.82,
+      "prima_mediana_pct": null,
+      "valor_p25": 72.36,
+      "valor_mediana": 137.4,
+      "valor_p75": 146.35
+    },
+    "suma_partes": null,
+    "multiplos_historicos": [
+      {
+        "metrica": "PER últimos 12 meses (cierre de cada año)",
+        "campo": "per_ltm",
+        "actual": 10.9,
+        "media": 11.7,
+        "minimo": 10.9,
+        "maximo": 16,
+        "percentil": 33,
+        "prima_pct": -7,
+        "anios": 3
+      }
+    ],
+    "multiplos_serie": [],
+    "multiplos_titulo": null,
+    "consenso_vs_propio": [],
+    "gobierno": {
+      "n_consejeros": 7,
+      "independientes_pct": 43,
+      "antiguedad_media": 1,
+      "composicion": [
+        {
+          "tipo": "Ejecutivo",
+          "num": 1
+        },
+        {
+          "tipo": "Dominical",
+          "num": 3
+        },
+        {
+          "tipo": "Independiente",
+          "num": 3
+        }
+      ],
+      "checklist": [
+        {
+          "criterio": "Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)",
+          "resultado": "Cumple",
+          "valor": "43 % (con control)"
+        },
+        {
+          "criterio": "Presidencia sin vínculo familiar ni profesional con el accionista de control",
+          "resultado": "No cumple",
+          "valor": "Vinculada"
+        },
+        {
+          "criterio": "Presidente no ejecutivo, o consejero coordinador independiente",
+          "resultado": "Cumple",
+          "valor": "Ejecutivo, con coordinador"
+        },
+        {
+          "criterio": "Comisión de auditoría con mayoría de independientes y presidida por uno",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Ningún consejero «otro externo» con más de 12 años",
+          "resultado": "Cumple",
+          "valor": "Ninguno"
+        },
+        {
+          "criterio": "Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses",
+          "resultado": "Cumple",
+          "valor": "0 cambios"
+        },
+        {
+          "criterio": "Peor voto a favor sobre remuneración (3 juntas) ≥ 80 %",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Una acción, un voto, sin blindajes ni límites de voto estatutarios",
+          "resultado": "No cumple",
+          "valor": "No"
+        },
+        {
+          "criterio": "Sin operaciones vinculadas relevantes",
+          "resultado": "Cumple",
+          "valor": "No hay"
+        },
+        {
+          "criterio": "Auditor con 10 años o menos en el cargo",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Opinión de auditoría sin salvedades",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Directivos compradores netos en 12 meses (o sin ventas relevantes)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        }
+      ],
+      "puntuacion": "5 de 13 (6 sin dato)",
+      "puntuacion_pct": 38,
+      "compras_insiders": 0,
+      "ventas_insiders": 0
+    },
+    "competidores_margen": [
+      {
+        "nombre": "Pernod Ricard",
+        "margen_ebit_pct": 25.8
+      },
+      {
+        "nombre": "Diageo",
+        "margen_ebit_pct": 28.9
+      },
+      {
+        "nombre": "Constellation Brands",
+        "margen_ebit_pct": 29.8
+      },
+      {
+        "nombre": "LVMH (Vinos y Licores, Moët Hennessy)",
+        "margen_ebit_pct": 19
+      },
+      {
+        "nombre": "Brown-Forman",
+        "margen_ebit_pct": 25.5
+      },
+      {
+        "nombre": "Campari",
+        "margen_ebit_pct": 20.9
+      },
+      {
+        "nombre": "Becle (Jose Cuervo)",
+        "margen_ebit_pct": 22.4
+      },
+      {
+        "nombre": "Rémy Cointreau",
+        "margen_ebit_pct": 17.7
+      }
+    ],
+    "sintesis": {
+      "formato_eje": "#,##0",
+      "rangos": [
+        {
+          "metodo": "Precio objetivo de los analistas",
+          "etiqueta": "Precio objetivo de los analistas (75,00 – 95,00)",
+          "min": 75,
+          "central": 80.25,
+          "max": 95,
+          "gris": true
+        },
+        {
+          "metodo": "DCF (WACC y g ± 0,5)",
+          "etiqueta": "DCF (WACC y g ± 0,5) (73,16 – 130,29)",
+          "min": 73.16,
+          "central": 95.45,
+          "max": 130.29,
+          "gris": false
+        },
+        {
+          "metodo": "Escenarios (bajista – alcista)",
+          "etiqueta": "Escenarios (bajista – alcista) (50,73 – 118,93)",
+          "min": 50.73,
+          "central": 86.73,
+          "max": 118.93,
+          "gris": false
+        },
+        {
+          "metodo": "DCF con la prima del mercado",
+          "etiqueta": "DCF con la prima implícita del mercado (4,2 %)",
+          "min": 101.89,
+          "central": 120.77,
+          "max": 145.35
+        },
+        {
+          "metodo": "Precio actual",
+          "etiqueta": "Precio actual (64,00)",
+          "min": 63.68,
+          "central": 64,
+          "max": 64.32,
+          "gris": true
+        }
+      ],
+      "tabla": [
+        {
+          "metodo": "DCF",
+          "valor": 95.45,
+          "peso_pct": 50,
+          "potencial_pct": 49.1
+        },
+        {
+          "metodo": "Transacciones precedentes (no se usa)",
+          "valor": 137.4,
+          "peso_pct": 0,
+          "potencial_pct": 114.7
+        },
+        {
+          "metodo": "Escenarios ponderados",
+          "valor": 86.73,
+          "peso_pct": 50,
+          "potencial_pct": 35.5
+        }
+      ],
+      "valor_objetivo": 91.09,
+      "potencial_pct": 42.3
+    },
+    "fuentes": {
+      "n_fuentes": 68,
+      "n_primarias": 36,
+      "por_tipo": [
+        {
+          "tipo": "Primaria",
+          "num": 36
+        },
+        {
+          "tipo": "Prensa",
+          "num": 11
+        },
+        {
+          "tipo": "Datos de mercado",
+          "num": 10
+        },
+        {
+          "tipo": "Sectorial",
+          "num": 4
+        },
+        {
+          "tipo": "Analistas",
+          "num": 2
+        },
+        {
+          "tipo": "Foros y redes",
+          "num": 5
+        }
+      ],
+      "n_citadas": 63,
+      "citas_sin_fuente": [],
+      "fuentes_sin_citar": [
+        "25",
+        "26",
+        "31",
+        "58",
+        "59"
+      ]
+    },
+    "controles": [
+      {
+        "control": "DCF inverso calculable",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Puente de ingresos (volumen + precio + otros) = crecimiento del DCF",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Rendimiento del capital nuevo de la proyección ≤ 1,25 × el histórico",
+        "resultado": "OK",
+        "detalle": "La proyección supone que la inversión nueva rinde un 11,0 % frente a un ROIC de 7,0 % y un incremental histórico de -2,6 %: crecimiento que la empresa no ha demostrado poder comprar."
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "resultado": "OK",
+        "detalle": "Supuesto 0,0 % frente a 0,0 % real: genera una variación de circulante de 0 M en el primer año. Converge de forma gradual."
+      },
+      {
+        "control": "Peso del valor terminal ≤ 80 % del valor empresa",
+        "resultado": "OK",
+        "detalle": "75 %."
+      },
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "resultado": "OK",
+        "detalle": "2,00 %."
+      },
+      {
+        "control": "Probabilidades de los escenarios suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 5 comparables",
+        "resultado": "OK",
+        "detalle": "7 comparables."
+      },
+      {
+        "control": "Pesos de la síntesis suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Múltiplos del objetivo a 12 m según la regla común",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Objetivo 12 m frente al consenso",
+        "resultado": "OK",
+        "detalle": "El base se separa un -5,8 % del objetivo medio de los analistas: explícalo en diferencia_consenso (nunca se acerca la cifra)."
+      },
+      {
+        "control": "Comprar pendiente de confirmar los datos (confianza baja)",
+        "resultado": "Explicado",
+        "detalle": "La regla a 12 meses da «Comprar» pero la confianza del resumen es Baja: la señal se queda en Mantener; di en la síntesis qué cifras hay que confirmar con fuente primaria. Explicación: Decisión del usuario (14-oct): con confianza de datos baja la señal Comprar de la regla se queda en Mantener. Hay que confirmar con la presentación y el documento de registro del FY26 el precio de cierre, la deuda neta, la caja libre y el balance; la síntesis lo dice."
+      },
+      {
+        "control": "Recomendación coherente con la regla de decisión",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Convicción frente a la sugerida por los criterios",
+        "resultado": "OK",
+        "detalle": "Los criterios dan «Media» (Mantener con las dos reglas de acuerdo y lejos de los umbrales) y el análisis pone «Baja»: explica en la síntesis por qué te apartas."
+      },
+      {
+        "control": "La síntesis explica la convicción",
+        "resultado": "OK",
+        "detalle": "La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría."
+      },
+      {
+        "control": "Capitalización calculada ≈ publicada",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 25 fuentes",
+        "resultado": "OK",
+        "detalle": "68 fuentes (36 primarias)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "resultado": "OK",
+        "detalle": "36."
+      },
+      {
+        "control": "Toda cita [n] existe en fuentes",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Fuentes sin citar ≤ 15 %",
+        "resultado": "OK",
+        "detalle": "Sin citar: 25, 26, 31, 58, 59."
+      }
+    ],
+    "controles_resumen": "19 de 20 controles correctos y 1 explicados"
+  }
+}
