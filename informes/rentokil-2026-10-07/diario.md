@@ -64,3 +64,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 3. `mercado_final` exige el perímetro de `cuota_pct`, pero el motor compara con los ingresos de todo el grupo: con una cuota de un solo segmento (plagas, 83 % de las ventas) no hay forma de hacer la prueba. Arreglo: `mercado_final.ingresos_perimetro_pct` (peso del segmento) para escalar los ingresos.
 4. La cobertura de campos baja de 91,8 % a 88,4 % sin cambios de contenido (sentimiento por debajo del 60 %).
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 5,42 USD (408 GBp), rentabilidad 39,7 % (base 17,6 %), señal Comprar (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +39,7 % → +23,1 %, base +17,8 %, señal Mantener (`revision-12m-2026-10-13.md`).

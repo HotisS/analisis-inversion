@@ -33,3 +33,4 @@
 - **Tasa libre alta (bono al 5,24 %)**: con prima del 5,5 % el WACC de una empresa de beta ~1 pasa del 10 %; la regla relativa (prima de Damodaran) es la que da la lectura útil, y la convicción baja porque la diferencia es de tasa y no de cifras.
 - **Minoritarios rescatables (CME en S&P DJI)**: figuran a valor razonable fuera del pasivo; a mercado (por múltiplo del negocio) valen bastante más que el contable. Decidirlo explícitamente: mueve ~3 % del valor.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 501 USD (ponderado; base 452), rentabilidad +23,7 % (base +11,9 %), señal Mantener (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +23,7 % → +14,8 %, base +11,7 %, señal Mantener (`revision-12m-2026-10-13.md`).
