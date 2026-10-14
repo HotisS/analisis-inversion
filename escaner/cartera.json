@@ -4,8 +4,8 @@
   "liquidez_eur": 4580,
   "liquidez_confirmada_eur": 4580,
   "liquidez_confirmada_nota": "IBKR, cuenta 1 (569 EUR) y cuenta 2 (4.011 EUR), confirmadas por el Flex el 14-oct 18:30 UTC; cuenta 3 vacía.",
-  "liquidez_libre_eur": 35,
-  "liquidez_libre_nota": "Liquidez que queda sin destino si se ejecutan las órdenes del 15-oct a su límite (≈3.775 en caja, casi todo comprometido en tramos 2 y lista de espera). Si Bureau Veritas o ANYCOLOR no llegan a su límite, sube a ≈2.775.",
+  "liquidez_libre_eur": 494,
+  "liquidez_libre_nota": "Liquidez sin destino si se ejecutan las órdenes del 15-oct a su límite y se reservan los segundos tramos (BV, growth, Aon). Sube a ≈1.515 si Bureau Veritas no llega a su límite.",
   "posiciones": [
     {
       "clave": "IGLN",
@@ -133,17 +133,22 @@
         "divisa": "EUR"
       },
       {
-        "clave": "5032",
-        "titulos": 100,
-        "limite": 3047,
-        "divisa": "JPY"
-      },
-      {
         "clave": "NU",
         "titulos": 43,
         "limite": 16.6,
         "divisa": "USD",
         "vertical": "growth"
+      },
+      {
+        "clave": "AON",
+        "titulos": 2,
+        "limite": 282.65,
+        "divisa": "USD",
+        "tramo2": {
+          "titulos": 3,
+          "desde": "2026-10-28",
+          "condicion": "tras el 3T: orgánico >= 4 % y sin cambios en el cierre de USI"
+        }
       },
       {
         "clave": "AXON",
@@ -176,14 +181,6 @@
     ],
     "lista_espera": [
       {
-        "clave": "MRSH",
-        "titulos": 7,
-        "limite": 174.27,
-        "divisa": "USD",
-        "hasta": "2026-11-07",
-        "condicion": "tras los resultados del 15-oct: orgánico >= 3 % y sin provisión nueva por Greensill"
-      },
-      {
         "clave": "MC",
         "limite": 365.89,
         "divisa": "EUR",
@@ -205,6 +202,13 @@
         "clave": "ADYEN",
         "limite": 908.88,
         "divisa": "EUR",
+        "hasta": "2026-11-07"
+      },
+      {
+        "clave": "5032",
+        "titulos": 100,
+        "limite": 3047,
+        "divisa": "JPY",
         "hasta": "2026-11-07"
       }
     ]
