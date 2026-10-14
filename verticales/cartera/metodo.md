@@ -42,12 +42,22 @@ NODE_USE_ENV_PROXY=1 node herramientas/cartera-real.mjs --importar-flex informe.
 NODE_USE_ENV_PROXY=1 node herramientas/cartera-real.mjs --partida         # primera carga sin broker (desde escaner/cartera.json)
 ```
 
-**Rutina del domingo** (la lanza la tarea programada del escáner):
-1. Con el conector de IBKR, en solo lectura, guardar en `ibkr/` la foto del día y el historial de operaciones (formato abajo). No se lanzan ni se preparan órdenes.
-2. `--importar-ibkr`.
-3. `--semanal` y publicar `mensaje-semanal.md` en el chat del proyecto, tal cual.
+**Cuenta 2 por el Flex Web Service de IBKR** (elegido por el usuario el 14-oct: el conector solo ve las cuentas de un usuario). El usuario creó en el Portal del Cliente una Activity Flex Query con estas secciones: Account Information, Open Positions, Trades, Cash Report, Cash Transactions y Corporate Actions. Es en XML y cubre los últimos 365 días. Activó además el token del Flex Web Service. Los dos van en las **variables de entorno** del entorno de la nube:
+- `IBKR_FLEX_TOKEN`;
+- `IBKR_FLEX_QUERY_CUENTA2` (otra cuenta: `IBKR_FLEX_QUERY_CUENTA3`, y así).
+
+`--importar-ibkr` descarga el informe (SendRequest, y GetStatement con reintentos mientras se genera), lo convierte al formato del conector en `ibkr/foto-…-cuenta-2.json` y `ibkr/operaciones-cuenta-2.json` (junta las operaciones con las que ya había, sin repetir) y lo combina con la cuenta 1. **El token no se escribe nunca** en el repo, en el disco, en el registro ni en un mensaje. Sin las variables, el paso se salta sin avisar. El número de cuenta del XML no se guarda. El historial anterior a 365 días se sube a mano en XML o CSV: `--importar-flex archivo --cuenta cuenta-2`.
+
+**Pasada diaria (9:25) y rutina del domingo** (las lanza la tarea programada del escáner):
+1. Con el conector de IBKR, en solo lectura, guardar en `ibkr/` la foto del día y el historial de operaciones de la cuenta 1 (formato abajo). Nunca se lanza ni se prepara una orden.
+2. `--importar-ibkr`, que baja también el Flex de la cuenta 2.
+3. A diario, sin opción, deja `ultimo.md`, los avisos y la foto del día en el historial. Los domingos, `--semanal`, y se publica `mensaje-semanal.md` en el chat del proyecto, tal cual.
 
 Si el conector no está en la sesión, se salta el paso 1 y se usa la última foto: el informe sale igual, con los precios de hoy.
+
+**Para el hilo Mejoras:**
+- `compras-y-ventas.json`: fecha y precio de cada compra y venta, y rentabilidad del año de cada posición, la del precio y la de la posición.
+- Las tres series desde el 15-oct, en el informe y en `historial.json` (`total_eur` y `congelada_eur`): cartera real, cartera del 13-oct congelada sin ninguna orden (`cartera-congelada-2026-10-13.json`) e índice mundial.
 
 ## Qué mide y cómo
 

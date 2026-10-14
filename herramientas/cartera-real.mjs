@@ -13,13 +13,11 @@
 //                        lo llama la rutina del escáner)
 //   … --partida          primera carga sin historial del broker: crea operaciones.csv desde escaner/cartera.json con el
 //                        último cierre como «precio de partida» (no es el precio de compra; se sustituye al importar IBKR)
-//   … --importar-flex <archivo.csv> [--cuenta cuenta-2]
-//                        importa el informe de operaciones de IBKR (Flex Query en CSV: Trades, Cash Transactions y
-//                        Open Positions) a operaciones.csv; sustituye la partida de esa cuenta
-//   … --importar-json <archivo.json> [--cuenta cuenta-1]
-//                        lo mismo con lo que devuelve el conector de IBKR guardado en JSON (formato en metodo.md)
-//   … --foto-broker <archivo.json>
-//                        cuadra títulos y liquidez con la foto del broker (posiciones de IBKR) y avisa si no coinciden
+//   … --importar-ibkr    descarga los informes Flex del entorno (IBKR_FLEX_TOKEN + IBKR_FLEX_QUERY_CUENTA2…; sin ellos
+//                        no hace nada) y rehace las cuentas desde ibkr/ (conector y Flex)
+//   … --importar-flex <archivo.xml|csv> [--cuenta cuenta-2]
+//                        importa un informe Flex bajado a mano (historial anterior, por ejemplo) y rehace las cuentas
+//   … --flex-web         solo la descarga de los informes Flex del entorno (y rehace si hubo alguno)
 //   … --sin-red          no pide precios (usa la caché del día); para probar
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -140,7 +138,7 @@ const titulo = (t) => String(t).toLowerCase().replace(/(^|[\s-])(\p{L})/gu, (m, 
 const nombreDe = (clave) => {
   const n = MAPA.empresas?.[clave]?.nombre || MAPA.extra?.[clave]?.nombre || GROWTH[clave]?.nombre;
   if (n) return n;
-  if (!NOMBRES_IBKR) { NOMBRES_IBKR = {}; for (const x of cargarIbkr().values()) for (const t of x.hist?.operaciones || []) if (t.company_name) NOMBRES_IBKR[ALIAS_IBKR[t.symbol] || t.symbol] = titulo(t.company_name).replace(/\s+-\s+.*$/, ''); }
+  if (!NOMBRES_IBKR) { NOMBRES_IBKR = {}; for (const x of cargarIbkr().values()) for (const t of x.hist?.operaciones || []) if (t.company_name && t.symbol) NOMBRES_IBKR[ALIAS_IBKR[t.symbol] || t.symbol] = titulo(t.company_name).replace(/\s+-\s+.*$/, ''); }
   return NOMBRES_IBKR[clave] || clave;
 };
 // Objetivo a 12 meses del método vigente, en la divisa de cotización (value: objetivo12m-revisados.json; growth: informe).
@@ -180,13 +178,14 @@ async function reconstruir(ops, hasta = null) {
       else if (o.tipo === 'comision') mover(o.cuenta, -Math.abs(imp));
       continue;
     }
-    const p = pos.get(o.clave) || { clave: o.clave, simbolo: yahooDe(o.clave, o.simbolo), vertical: o.vertical || (GROWTH[o.clave] && !REV[o.clave] ? 'growth' : 'value'), divisa: o.divisa,
-      titulos: 0, coste_eur: 0, coste_div: 0, invertido_eur: 0, ventas_eur: 0, realizado_eur: 0, ventas: [], dividendos_eur: 0, comisiones_eur: 0, primera: o.fecha, flujos: [], cuentas: new Set(), partida: false, arrastre: false };
+    const p = pos.get(o.clave) || { clave: o.clave, simbolo: yahooDe(o.clave, o.simbolo), vertical: o.vertical || (MAPA.extra?.[o.clave] ? 'otro' : GROWTH[o.clave] && !REV[o.clave] ? 'growth' : 'value'), divisa: o.divisa,
+      titulos: 0, coste_eur: 0, coste_div: 0, invertido_eur: 0, ventas_eur: 0, realizado_eur: 0, ventas: [], compras: [], dividendos_eur: 0, comisiones_eur: 0, primera: o.fecha, flujos: [], cuentas: new Set(), partida: false, arrastre: false };
     if (o.cuenta) p.cuentas.add(o.cuenta);
     if (o.tipo === 'partida' || o.tipo === 'compra' || o.tipo === 'arrastre') {
       const imp = o.importe_eur ?? (bruto + com);
       p.titulos += o.titulos; p.coste_eur += imp; p.coste_div += o.titulos * o.precio; p.invertido_eur += imp; p.comisiones_eur += com;
       p.flujos.push({ fecha: o.fecha, eur: imp }); p.ultima = o.fecha;
+      p.compras.push({ fecha: o.tipo === 'arrastre' ? null : o.fecha, tipo: o.tipo, cuenta: o.cuenta, titulos: o.titulos, precio: o.precio, divisa: o.divisa, importe_eur: r(imp, 2), nota: o.tipo === 'compra' ? undefined : o.nota });
       if (o.tipo === 'partida') { p.partida = true; flujos.push({ fecha: o.fecha, eur: imp }); }
       else if (o.tipo === 'arrastre') p.arrastre = true;
       else mover(o.cuenta, -imp);
@@ -335,7 +334,8 @@ async function foto({ semanal = false } = {}) {
     }
     filas.push({ clave: p.clave, nombre: nombreDe(p.clave), vertical: p.vertical, simbolo: p.simbolo, divisa: div, titulos: tit, cuentas: [...p.cuentas],
       precio_medio: p.titulos > 0 ? p.coste_div / p.titulos : null, precio, valor_eur: valor, coste_eur: p.coste_eur, partida: p.partida, arrastre: p.arrastre, primera: p.primera,
-      dividendos_eur: p.dividendos_eur, realizado_eur: p.realizado_eur, ventas: p.ventas, desde_compra: desdeCompra, anio, previsto, hora_precio: s?.hora_ahora || null });
+      dividendos_eur: p.dividendos_eur, realizado_eur: p.realizado_eur, ventas: p.ventas, compras: p.compras,
+      anio_precio_pct: (() => { const p0 = precioEn(s, ini_anio); return p0 && precio ? r(100 * (precio / p0 - 1)) : null; })(), desde_compra: desdeCompra, anio, previsto, hora_precio: s?.hora_ahora || null });
   }
   const invertido = filas.reduce((t, x) => t + x.valor_eur, 0);
   const total = invertido + liquidez;
@@ -368,17 +368,34 @@ async function foto({ semanal = false } = {}) {
   cartera.esperado_hoy_pct = invertido ? filas.reduce((t, x) => t + (x.previsto?.esperado_hoy_pct ?? 0) * x.valor_eur, 0) / invertido : null;
   cartera.real_desde_prevision_pct = invertido ? filas.reduce((t, x) => t + (x.previsto?.real_pct ?? 0) * x.valor_eur, 0) / invertido : null;
 
+  // Cartera del 13-oct congelada (sin ninguna orden del método), para comparar con la real y el índice (hilo Mejoras).
+  const rutaCong = join(DATOS, 'cartera-congelada-2026-10-13.json');
+  if (!existsSync(rutaCong)) {
+    const C = leer(join(RAIZ, 'escaner/cartera.json'));
+    guardar(rutaCong, { nota: 'Cartera apuntada el 13-oct-2026, congelada: no se le aplica ninguna orden. Sirve de referencia frente a la cartera real y el índice.', fecha: '2026-10-13', liquidez_eur: C.liquidez_eur, posiciones: C.posiciones.map((x) => ({ clave: x.clave, simbolo: yahooDe(x.clave), titulos: x.titulos })) });
+  }
+  const cong = leer(rutaCong);
+  let valorCong = cong.liquidez_eur;
+  for (const x of cong.posiciones) { const sx = await serie(x.simbolo); const px = precioEn(sx, null), fxx = await eurPor(sx?.divisa, null); if (px && fxx) valorCong += x.titulos * px * fxx; }
+  cartera.congelada_eur = valorCong;
+  cartera.series = await seriesDesde('2026-10-15', hist, { total, valorCong, flujos, hoy });
+
   const avisos = await calcularAvisos(filas, cartera, hist, hoy);
   const senales = resumenSenales();
 
   // Historial (una foto por día; la última del día manda).
   hist.fotos = hist.fotos.filter((h) => h.fecha !== hoy);
-  hist.fotos.push({ fecha: hoy, hora: ahora.hora, total_eur: r(total, 0), liquidez_eur: r(liquidez, 0), indice: precioEn(await serie(INDICE.simbolo), null),
+  hist.fotos.push({ fecha: hoy, hora: ahora.hora, total_eur: r(total, 0), congelada_eur: r(valorCong, 0), liquidez_eur: r(liquidez, 0), indice: precioEn(await serie(INDICE.simbolo), null),
     posiciones: Object.fromEntries(filas.filter((x) => x.titulos > 0).map((x) => [x.clave, { titulos: x.titulos, precio: x.precio, valor_eur: r(x.valor_eur, 0) }])) });
   mkdirSync(DATOS, { recursive: true });
   guardar(RUTA.hist, hist);
   guardar(RUTA.prev, prev);
 
+  // Compras y ventas de cada posición, con la rentabilidad del año (para el hilo Mejoras y el contraste del método).
+  guardar(join(DATOS, 'compras-y-ventas.json'), { fecha: hoy, nota: 'Precio de compra y fecha de cada posición (las compras «arrastre» son anteriores al historial del broker: fecha desconocida, coste medio de IBKR) y de las vendidas. anio_precio_pct: lo que ha hecho el precio en el año, en su moneda; anio_tuya_pct: lo que ha ganado la posición en el año con sus compras y ventas.',
+    posiciones: filas.map((x) => ({ clave: x.clave, nombre: x.nombre, vertical: x.vertical, abierta: x.titulos > 0, titulos: x.titulos, precio_medio: r(x.precio_medio, 4), divisa: x.divisa, precio_hoy: x.precio,
+      desde_compra_pct: r(x.desde_compra?.rent), anio_precio_pct: x.anio_precio_pct, anio_tuya_pct: r(x.anio?.rent), compras: x.compras,
+      ventas: x.ventas.map((v) => ({ fecha: v.fecha, titulos: v.titulos, precio_venta: v.precio_venta, precio_medio_compra: r(v.precio_medio, 4), divisa: v.divisa, ganancia_eur: r(v.ganancia_eur, 2), rent_pct: r(v.rent_pct) })) })) });
   const md = informe({ filas, cartera, avisos, senales, ahora, inicio, ops });
   writeFileSync(join(DATOS, 'ultimo.md'), md);
   guardar(join(DATOS, 'ultimo.json'), { fecha: hoy, hora: ahora.hora, cartera, filas, avisos, senales });
@@ -388,6 +405,15 @@ async function foto({ semanal = false } = {}) {
   }
   console.log(md);
   if (semanal) console.log(`\n--- mensaje-semanal.md ---\n${readFileSync(join(DATOS, 'mensaje-semanal.md'), 'utf8')}`);
+}
+
+// Tres series desde una fecha: la cartera real (descontando aportaciones), la del 13-oct congelada y el índice.
+async function seriesDesde(desde, hist, { total, valorCong, flujos, hoy }) {
+  const f0 = hist.fotos.find((h) => h.fecha >= desde && h.congelada_eur);
+  if (!f0 || f0.fecha === hoy) return { desde, base: f0?.fecha || null, real: null, congelada: null, indice: null };
+  const si = await serie(INDICE.simbolo);
+  const real = await frenteAlIndice({ v0: f0.total_eur, desde: f0.fecha, flujos: flujos.filter((fl) => fl.fecha > f0.fecha), v1: total, hoy });
+  return { desde, base: f0.fecha, real: r(real.rent), congelada: r(100 * (valorCong / f0.congelada_eur - 1)), indice: r(100 * (precioEn(si, null) / precioEn(si, f0.fecha) - 1)) };
 }
 
 // ───────────────────────── Avisos ─────────────────────────
@@ -461,6 +487,7 @@ function informe({ filas, cartera, avisos, senales, ahora, inicio }) {
   L.push(`| Rentabilidad esperada a 12 meses (método, precio de hoy) | ${fp(c.prevista_12m_pct)} | |`);
   L.push(`| Lo previsto hasta hoy frente a lo real | previsto ${fp(c.esperado_hoy_pct)} · real ${fp(c.real_desde_prevision_pct)} | |`, '');
   if (g.sin_coste.length) L.push(`Sin precio de compra todavía: ${g.sin_coste.join(', ')}. No entran en la ganancia latente.`, '');
+  if (c.series?.base) L.push(`**Desde el ${fechaCorta(c.series.base)}:** cartera real ${fp(c.series.real)} · cartera del 13-oct sin tocar ${fp(c.series.congelada)} · índice mundial ${fp(c.series.indice)}.`, '');
   const br = (c.broker || [])[0];
   if (br && Object.keys(br.periodos).length) {
     L.push(`## Rentabilidad histórica${br.cuenta === 'todas' ? ' (cuentas conectadas)' : ` (${br.cuenta})`}`, '', '| Periodo | Cartera | Índice mundial | Diferencia |', '|---|---|---|---|');
@@ -516,6 +543,7 @@ function mensaje({ filas, cartera, avisos, senales, ahora }) {
   const c = cartera, L = [];
   L.push(`**Cartera, semana al ${fechaCorta(ahora.fecha)}.** Vale ${fe(c.total)}.`);
   if (c.semana) L.push(`- Semana: ${fp(c.semana.rent)} (índice mundial ${fp(c.semana.indice_rent)}).`);
+  if (c.series?.base) L.push(`- Desde el ${fechaCorta(c.series.base)}: real ${fp(c.series.real)}; si no hubiéramos tocado nada, ${fp(c.series.congelada)}; índice ${fp(c.series.indice)}.`);
   if (c.alta !== ahora.fecha) L.push(`- Desde el ${fechaCorta(c.alta)}: ${fp(c.desde_inicio.rent)} (índice ${fp(c.desde_inicio.indice_rent)}).`);
   if (c.anio) L.push(`- En el año: ${fp(c.anio.rent)} (índice ${fp(c.anio.indice_rent)}).`);
   const b0 = (c.broker || [])[0];
@@ -556,13 +584,6 @@ async function opsPartida(fecha) {
 
 // Bolsa de IBKR → sufijo de Yahoo.
 const BOLSAS = { SBF: '.PA', BM: '.MC', BME: '.MC', TSEJ: '.T', IBIS: '.DE', IBIS2: '.DE', FWB: '.DE', XETRA: '.DE', GETTEX: '.DE', LSE: '.L', LSEETF: '.L', AEB: '.AS', ENEXT: '.AS', EBS: '.SW', SWX: '.SW', VIRTX: '.SW', SFB: '.ST', KFB: '.CO', CPH: '.CO', OSE: '.OL', BVME: '.MI', ASX: '.AX', TSE: '.TO', SEHK: '.HK', BVL: '.LS' };
-function claveDesdeIbkr(simbolo, bolsa) {
-  const s = String(simbolo || '').trim().replace(/\s+/g, '-');
-  const yahoo = s.includes('.') ? s : `${s}${BOLSAS[String(bolsa || '').toUpperCase()] ?? ''}`;
-  for (const [k, v] of Object.entries(MAPA.empresas || {})) if (v.yahoo === yahoo) return { clave: k, yahoo };
-  for (const [k, v] of Object.entries(MAPA.extra || {})) if (v.yahoo === yahoo) return { clave: k, yahoo };
-  return { clave: s.toUpperCase(), yahoo };
-}
 function csv(linea) {
   const out = []; let cur = '', q = false;
   for (let i = 0; i < linea.length; i++) {
@@ -576,75 +597,119 @@ function csv(linea) {
 const fechaIbkr = (s) => { const m = String(s || '').match(/(\d{4})-?(\d{2})-?(\d{2})/); return m ? `${m[1]}-${m[2]}-${m[3]}` : null; };
 
 // Flex Query en CSV: varias secciones, cada una con su fila de cabecera (con o sin filas BOS/HEADER/DATA).
-function leerFlex(texto) {
+// ───────────────────────── Informes Flex de IBKR (CSV, XML o Flex Web Service) ─────────────────────────
+// Se convierten al mismo formato que deja el conector (foto + operaciones) en ibkr/ y entran con --importar-ibkr.
+// El número de cuenta no se guarda: la cuenta se nombra con --cuenta (por defecto cuenta-2).
+const nk = (k) => String(k).toLowerCase().replace(/[^a-z0-9]/g, '');
+const campo = (x, ...nombres) => { for (const n of nombres) { const v = x[nk(n)]; if (v !== undefined && v !== '') return v; } return undefined; };
+// Filas del CSV con su sección (Trade, CashTransaction, OpenPosition, CashReportCurrency) deducida por los campos.
+function filasFlexCsv(texto) {
   const filas = [];
   let cab = null;
   for (const l of texto.split(/\r?\n/)) {
     if (!l.trim()) continue;
     let c = csv(l);
-    if (c[0] === 'BOF' || c[0] === 'EOF' || c[0] === 'BOA' || c[0] === 'EOA' || c[0] === 'BOS' || c[0] === 'EOS') { cab = null; continue; }
-    if (c[0] === 'HEADER') { cab = c.slice(2); continue; }
+    if (['BOF', 'EOF', 'BOA', 'EOA', 'BOS', 'EOS'].includes(c[0])) { cab = null; continue; }
+    if (c[0] === 'HEADER') { cab = c.slice(2).map(nk); continue; }
     if (c[0] === 'DATA') c = c.slice(2);
-    else if (c.includes('ClientAccountID') || c.includes('Symbol') && (c.includes('Quantity') || c.includes('Amount') || c.includes('Position'))) { cab = c; continue; }
-    if (cab) filas.push(Object.fromEntries(cab.map((k, i) => [k, c[i]])));
+    else if (c.some((k) => /^(ClientAccountID|Symbol|CurrencyPrimary)$/i.test(k))) { cab = c.map(nk); continue; }
+    if (!cab) continue;
+    const x = Object.fromEntries(cab.map((k, i) => [k, c[i]]));
+    x._tag = x.buysell !== undefined ? 'Trade' : x.type !== undefined && x.amount !== undefined ? 'CashTransaction' : x.position !== undefined ? 'OpenPosition' : x.endingcash !== undefined ? 'CashReportCurrency' : null;
+    if (x._tag) filas.push(x);
   }
   return filas;
 }
-function opsDesdeFilas(filas, cuenta) {
-  const ops = [], posiciones = [];
-  const cuentaDe = (x) => cuenta || x.ClientAccountID || x.AccountId || 'cuenta-1';
-  for (const x of filas) {
-    const fx = num(x.FXRateToBase) ?? null;
-    const fecha = fechaIbkr(x.TradeDate || x['Date/Time'] || x.DateTime || x.SettleDate || x.ReportDate);
-    const clase = x.AssetClass || x.AssetCategory || '';
-    if ((x['Buy/Sell'] || x.BuySell) && x.Quantity !== undefined && x.TradePrice !== undefined) {
-      if (clase && !/STK|ETF|FUND/i.test(clase)) continue; // divisas (CASH) y opciones fuera
-      const { clave, yahoo } = claveDesdeIbkr(x.Symbol, x.ListingExchange || x.Exchange);
-      const q = num(x.Quantity), p = num(x.TradePrice), com = Math.abs(num(x.IBCommission) ?? 0);
-      const venta = q < 0 || /SELL/i.test(x['Buy/Sell'] || x.BuySell);
-      const bruto = Math.abs(q) * p;
-      ops.push({ fecha, cuenta: cuentaDe(x), tipo: venta ? 'venta' : 'compra', clave, simbolo: yahoo, vertical: '', titulos: Math.abs(q), precio: p, divisa: x.CurrencyPrimary || x.Currency,
-        comision: com, importe_eur: fx ? r(venta ? (bruto - com) * fx : (bruto + com) * fx, 2) : null, nota: 'IBKR' });
-    } else if (x.Type && x.Amount !== undefined) {
-      const imp = num(x.Amount) * (fx ?? 1);
-      const t = String(x.Type);
-      if (/Dividend|Payment In Lieu|Withholding/i.test(t)) {
-        const { clave, yahoo } = claveDesdeIbkr(x.Symbol, x.ListingExchange);
-        ops.push({ fecha, cuenta: cuentaDe(x), tipo: 'dividendo', clave, simbolo: yahoo, divisa: 'EUR', importe_eur: r(imp, 2), nota: t });
-      } else if (/Deposit|Withdraw/i.test(t)) ops.push({ fecha, cuenta: cuentaDe(x), tipo: imp >= 0 ? 'ingreso' : 'retirada', clave: 'EUR', importe_eur: r(Math.abs(imp), 2), nota: t });
-      else if (/Interest/i.test(t)) ops.push({ fecha, cuenta: cuentaDe(x), tipo: 'interes', clave: 'EUR', importe_eur: r(imp, 2), nota: t });
-      else if (/Fee|Commission/i.test(t)) ops.push({ fecha, cuenta: cuentaDe(x), tipo: 'comision', clave: 'EUR', importe_eur: r(Math.abs(imp), 2), nota: t });
-    } else if (x.Position !== undefined && x.Symbol) {
-      if (clase && !/STK|ETF|FUND/i.test(clase)) continue;
-      const { clave } = claveDesdeIbkr(x.Symbol, x.ListingExchange);
-      posiciones.push({ clave, cuenta: cuentaDe(x), titulos: num(x.Position), coste_medio: num(x.CostBasisPrice), divisa: x.CurrencyPrimary });
-    }
+function filasFlexXml(texto) {
+  const filas = [];
+  const des = (v) => v.replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+  for (const m of texto.matchAll(/<(\w+)\s([^<>]*?)\/?>/g)) {
+    const x = { _tag: m[1] };
+    for (const a of m[2].matchAll(/(\w+)="([^"]*)"/g)) x[nk(a[1])] = des(a[2]);
+    filas.push(x);
   }
-  return { ops: ops.filter((o) => o.fecha), posiciones };
+  return filas;
 }
-function incorporar({ ops: nuevas, posiciones }, cuentaDefecto) {
-  const cuentas = new Set(nuevas.map((o) => o.cuenta).concat(posiciones.map((p) => p.cuenta)).filter(Boolean));
-  // Seudónimos: el número de cuenta no se guarda; cuenta-1, cuenta-2… por orden de aparición.
-  const alias = leer(join(DATOS, 'cuentas.json'), {});
-  const seud = (c) => { if (/^cuenta-\d+$/.test(c)) return c; if (!alias[c]) alias[c] = `cuenta-${Object.keys(alias).length + 1}`; return alias[c]; };
-  for (const o of nuevas) o.cuenta = seud(o.cuenta || cuentaDefecto);
-  for (const p of posiciones) p.cuenta = seud(p.cuenta || cuentaDefecto);
-  // cuentas.json guarda solo la correspondencia número → seudónimo, en la carpeta privada.
-  guardar(join(DATOS, 'cuentas.json'), alias);
-  const tocadas = new Set(nuevas.map((o) => o.cuenta));
-  let ops = leerOps();
-  // Lo importado sustituye a la partida (de esa cuenta o la común) y a lo importado antes de esa cuenta.
-  const quitarPartida = ops.some((o) => o.tipo === 'partida') && nuevas.some((o) => o.tipo === 'compra');
-  ops = ops.filter((o) => !(tocadas.has(o.cuenta)) && !(quitarPartida && o.tipo === 'partida'));
-  escribirOps(ops.concat(nuevas));
-  if (posiciones.length) {
-    const fb = leer(RUTA.foto, { posiciones: [] });
-    const resto = (fb.posiciones || []).filter((p) => !tocadas.has(p.cuenta));
-    const junt = new Map();
-    for (const p of resto.concat(posiciones)) { const j = junt.get(p.clave) || { clave: p.clave, titulos: 0, cuentas: [] }; j.titulos += p.titulos; j.cuentas.push(p.cuenta); junt.set(p.clave, j); }
-    guardar(RUTA.foto, { fecha: madrid().fecha, posiciones: [...junt.values()], por_cuenta: resto.concat(posiciones) });
+async function flexAEstructura(filas, cuenta) {
+  const info = filas.find((x) => x._tag === 'AccountInformation') || {};
+  const st = filas.find((x) => x._tag === 'FlexStatement') || {};
+  const base = campo(info, 'currency') || campo(filas.find((x) => x._tag === 'CashReportCurrency' && /BASE/i.test(campo(x, 'currency') || '')) || {}, 'currency') || 'EUR';
+  const operaciones = [], dividendos = [], posiciones = [];
+  const accion = (x) => { const c = campo(x, 'assetCategory', 'assetClass'); return !c || /STK|ETF|FUND/i.test(c); };
+  for (const x of filas.filter((y) => y._tag === 'Trade')) {
+    const nivel = campo(x, 'levelOfDetail'); if (nivel && !/EXECUTION/i.test(nivel)) continue;
+    if (!accion(x)) continue;
+    const q = num(campo(x, 'quantity'));
+    operaciones.push({ trade_id: campo(x, 'tradeID', 'transactionID', 'ibExecID'), trade_time: `${fechaIbkr(campo(x, 'tradeDate', 'dateTime'))}T00:00:00Z`, symbol: campo(x, 'symbol'), company_name: campo(x, 'description'),
+      sec_type: 'STK', currency: campo(x, 'currency', 'currencyPrimary'), side: /SELL/i.test(campo(x, 'buySell') || '') || q < 0 ? 'SELL' : 'BUY', size: Math.abs(q), price: num(campo(x, 'tradePrice')),
+      commission: Math.abs(num(campo(x, 'ibCommission', 'commission')) || 0), realized_pnl: num(campo(x, 'fifoPnlRealized', 'realizedPnl')) || 0, exchange: campo(x, 'listingExchange', 'exchange') });
   }
-  console.log(`Importadas ${nuevas.length} operaciones (${[...tocadas].join(', ')}) y ${posiciones.length} posiciones${quitarPartida ? '; la partida se ha quitado' : ''}.`);
+  for (const x of filas.filter((y) => y._tag === 'CashTransaction')) {
+    const nivel = campo(x, 'levelOfDetail'); if (nivel && !/DETAIL/i.test(nivel)) continue;
+    const t = campo(x, 'type') || '', fecha = fechaIbkr(campo(x, 'dateTime', 'settleDate', 'reportDate'));
+    const fx = num(campo(x, 'fxRateToBase')) ?? 1, imp = (num(campo(x, 'amount')) || 0) * fx * ((await eurPor(base, fecha)) ?? 1);
+    if (/Dividend|Payment In Lieu|Withholding/i.test(t)) dividendos.push({ fecha, symbol: campo(x, 'symbol'), importe_eur: r(imp, 2), tipo: t });
+    else if (/Deposit|Withdraw/i.test(t)) dividendos.push({ fecha, symbol: null, importe_eur: r(imp, 2), tipo: imp >= 0 ? 'ingreso' : 'retirada' });
+  }
+  for (const x of filas.filter((y) => y._tag === 'OpenPosition')) {
+    const nivel = campo(x, 'levelOfDetail'); if (nivel && !/SUMMARY/i.test(nivel)) continue;
+    if (!accion(x)) continue;
+    posiciones.push({ simbolo: campo(x, 'symbol'), nombre: campo(x, 'description'), mercado: campo(x, 'listingExchange'), divisa: campo(x, 'currency', 'currencyPrimary'),
+      titulos: num(campo(x, 'position')), precio: num(campo(x, 'markPrice')), coste_medio: num(campo(x, 'costBasisPrice')) });
+  }
+  const caja = filas.filter((y) => y._tag === 'CashReportCurrency' && /BASE/i.test(campo(y, 'currency') || ''));
+  const liq = caja.length ? num(campo(caja.at(-1), 'endingCash', 'endingSettledCash')) : null;
+  const hasta = fechaIbkr(campo(st, 'toDate')) || madrid().fecha, desde = fechaIbkr(campo(st, 'fromDate')) || operaciones.map((o) => o.trade_time.slice(0, 10)).sort()[0];
+  return {
+    foto: { cuenta, divisa_base: base, leido: `${hasta} (informe Flex de IBKR)`, fuente: 'IBKR Flex Query', resumen: { liquidez_por_divisa: liq !== null ? { [base]: liq } : {} }, posiciones },
+    hist: { cuenta, fuente: 'IBKR Flex Query', periodo: { desde, hasta }, operaciones, movimientos: dividendos },
+  };
+}
+// Junta un informe Flex nuevo con lo que ya había de esa cuenta (sin repetir operaciones) y lo deja en ibkr/.
+function guardarFlex({ foto, hist }, cuenta) {
+  const dir = join(DATOS, 'ibkr'); mkdirSync(dir, { recursive: true });
+  const rutaOps = join(dir, `operaciones-${cuenta}.json`), previo = leer(rutaOps);
+  if (previo?.operaciones) {
+    const clave = (o) => o.trade_id || `${o.trade_time}|${o.symbol}|${o.side}|${o.size}|${o.price}`;
+    const vistas = new Set(hist.operaciones.map(clave)), vistosM = new Set((hist.movimientos || []).map((m) => `${m.fecha}|${m.symbol}|${m.importe_eur}`));
+    hist.operaciones = previo.operaciones.filter((o) => !vistas.has(clave(o))).concat(hist.operaciones).sort((a, b) => a.trade_time.localeCompare(b.trade_time));
+    hist.movimientos = (previo.movimientos || []).filter((m) => !vistosM.has(`${m.fecha}|${m.symbol}|${m.importe_eur}`)).concat(hist.movimientos || []);
+    hist.periodo = { desde: [previo.periodo?.desde, hist.periodo.desde].filter(Boolean).sort()[0], hasta: [previo.periodo?.hasta, hist.periodo.hasta].filter(Boolean).sort().at(-1) };
+  }
+  guardar(rutaOps, hist);
+  // La foto solo se sustituye si el informe es igual o más reciente que la que había.
+  const fotoRuta = join(dir, `foto-${String(foto.leido).slice(0, 10)}-${cuenta}.json`);
+  if (foto.posiciones.length || Object.keys(foto.resumen.liquidez_por_divisa).length) guardar(fotoRuta, foto);
+  console.log(`Flex ${cuenta}: ${hist.operaciones.length} operaciones (${hist.periodo.desde} a ${hist.periodo.hasta}), ${foto.posiciones.length} posiciones.`);
+}
+// Flex Web Service: pide el informe con el código (token) y la consulta guardados en el entorno, y espera a que esté.
+// El token no se escribe nunca en disco, en el registro ni en mensajes. Sin variables, no hace nada.
+async function descargarFlex() {
+  const token = process.env.IBKR_FLEX_TOKEN;
+  const consultas = Object.entries(process.env).filter(([k, v]) => /^IBKR_FLEX_QUERY_/.test(k) && v).map(([k, v]) => [`cuenta-${k.replace('IBKR_FLEX_QUERY_', '').toLowerCase().replace(/^cuenta/, '')}`, v]);
+  if (!token || !consultas.length) return 0;
+  const BASE = 'https://ndcdyn.interactivebrokers.com/AccountManagement/FlexWebService';
+  const pedirTexto = async (url) => { for (let i = 0; ; i++) { try { const r1 = await fetch(url, { headers: { 'User-Agent': 'analisis-inversion/1.0' }, signal: AbortSignal.timeout(60000) }); return await r1.text(); } catch (e) { if (i >= 4) throw new Error('sin conexión con IBKR'); await espera(3000 * (i + 1)); } } };
+  let hechas = 0;
+  for (const [cuenta, q] of consultas) {
+    try {
+      const r1 = await pedirTexto(`${BASE}/SendRequest?t=${encodeURIComponent(token)}&q=${encodeURIComponent(q)}&v=3`);
+      const ref = r1.match(/<ReferenceCode>([^<]+)</)?.[1], url = r1.match(/<Url>([^<]+)</)?.[1] || `${BASE}/GetStatement`;
+      if (!ref) { console.error(`Flex ${cuenta}: IBKR no da el informe (${r1.match(/<ErrorMessage>([^<]+)</)?.[1] || 'respuesta sin código'})`); continue; }
+      let xml = null;
+      for (let i = 0; i < 20; i++) { // el informe tarda en generarse (aviso 1019): reintentos con espera
+        await espera(i === 0 ? 5000 : 10000);
+        const r2 = await pedirTexto(`${url}?t=${encodeURIComponent(token)}&q=${encodeURIComponent(ref)}&v=3`);
+        if (/<FlexQueryResponse/.test(r2)) { xml = r2; break; }
+        const cod = r2.match(/<ErrorCode>(\d+)</)?.[1];
+        if (cod && !['1019', '1018', '1009', '1021'].includes(cod)) { console.error(`Flex ${cuenta}: error ${cod} (${r2.match(/<ErrorMessage>([^<]+)</)?.[1] || ''})`); break; }
+      }
+      if (!xml) continue;
+      guardarFlex(await flexAEstructura(filasFlexXml(xml), cuenta), cuenta);
+      hechas++;
+    } catch (e) { console.error(`Flex ${cuenta}: ${e.message}`); }
+  }
+  return hechas;
 }
 
 // Lo que deja el conector de IBKR en ibkr/: operaciones.json (get_account_trades, hasta 4 trimestres atrás) y
@@ -670,7 +735,7 @@ async function importarCuenta(cuenta, fb, hist) {
   const neto = new Map(), costeVentas = new Map(), bolsaDe = new Map();
   for (const p of fb.posiciones || []) bolsaDe.set(p.simbolo, p.mercado);
   for (const t of hist.operaciones.filter((x) => x.sec_type === 'STK' || x.sec_type === 'ETF')) {
-    const div = PENIQUES.has(t.symbol) ? 'GBp' : t.currency;
+    const div = PENIQUES.has(t.symbol) || /^GBX$/i.test(t.currency) ? 'GBp' : t.currency;
     const { clave, yahoo } = simboloIbkr(t.symbol, div, bolsaDe.get(t.symbol));
     const venta = /SELL/i.test(t.side), q = Math.abs(+t.size);
     nuevas.push({ fecha: t.trade_time.slice(0, 10), cuenta, tipo: venta ? 'venta' : 'compra', clave, simbolo: yahoo, vertical: '', titulos: q, precio: +t.price, divisa: div,
@@ -696,6 +761,10 @@ async function importarCuenta(cuenta, fb, hist) {
       const c = costeVentas.get(clave), falta = -n;
       nuevas.push({ fecha: antes, cuenta, tipo: 'arrastre', clave, simbolo: c.yahoo, vertical: '', titulos: falta, precio: r(c.coste / c.titulos, 4), divisa: c.div, comision: 0, importe_eur: '', nota: `comprado antes del ${fechaCorta(inicio)}: coste según el beneficio que da IBKR` });
     }
+  }
+  for (const m of hist.movimientos || []) {
+    if (m.tipo === 'ingreso' || m.tipo === 'retirada') nuevas.push({ fecha: m.fecha, cuenta, tipo: m.tipo, clave: 'EUR', importe_eur: Math.abs(m.importe_eur), nota: 'IBKR' });
+    else if (m.symbol) { const { clave, yahoo } = simboloIbkr(m.symbol, null, bolsaDe.get(m.symbol)); nuevas.push({ fecha: m.fecha, cuenta, tipo: 'dividendo', clave, simbolo: yahoo, divisa: 'EUR', importe_eur: m.importe_eur, nota: m.tipo }); }
   }
   const fechaFoto = (String(fb.leido || '').match(/\d{4}-\d{2}-\d{2}/) || [madrid().fecha])[0];
   const liq = fb.resumen?.liquidez_por_divisa || {};
@@ -733,8 +802,11 @@ async function importarIbkr() {
 }
 
 if (argv.includes('--partida')) await partida();
-else if (argv.includes('--importar-ibkr')) await importarIbkr();
-else if (opt('--importar-flex')) incorporar(opsDesdeFilas(leerFlex(readFileSync(opt('--importar-flex'), 'utf8')), opt('--cuenta')), opt('--cuenta') || 'cuenta-1');
-else if (opt('--importar-json')) { const j = leer(opt('--importar-json')); incorporar(opsDesdeFilas([...(j.operaciones || []), ...(j.movimientos || []), ...(j.posiciones || [])], opt('--cuenta') || j.cuenta), opt('--cuenta') || j.cuenta || 'cuenta-1'); }
-else if (opt('--foto-broker')) { const j = leer(opt('--foto-broker')); guardar(RUTA.foto, j); await foto(); }
+else if (argv.includes('--importar-ibkr')) { await descargarFlex(); await importarIbkr(); }
+else if (opt('--importar-flex')) {
+  const archivo = opt('--importar-flex'), texto = readFileSync(archivo, 'utf8'), cuenta = opt('--cuenta') || 'cuenta-2';
+  guardarFlex(await flexAEstructura(/^\s*</.test(texto) ? filasFlexXml(texto) : filasFlexCsv(texto), cuenta), cuenta);
+  await importarIbkr();
+}
+else if (argv.includes('--flex-web')) { if (await descargarFlex()) await importarIbkr(); }
 else await foto({ semanal: argv.includes('--semanal') });
