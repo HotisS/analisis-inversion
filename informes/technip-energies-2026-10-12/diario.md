@@ -26,3 +26,4 @@
 - **Emisores neerlandeses en París**: participaciones y operaciones de directivos en el registro AFM (exportación CSV), no en la BDIF de la AMF. La web de Technip Energies es ten.com.
 - El circulante normalizado con `nwc_pct_ventas` y el primer año con `fraccion` (~0,22 en octubre): la caja del puente de junio no ve los flujos jul-oct; con anticipos estacionales importa.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 26,4 EUR, rentabilidad −5,9 %, señal Mantener (`revision-12m-2026-10-13.md`).
+- 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada -5,1 % → -5,1 %, base +4,6 %, señal Mantener (`revision-12m-2026-10-13.md`).
