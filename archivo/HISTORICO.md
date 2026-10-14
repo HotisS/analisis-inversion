@@ -11,6 +11,8 @@
 
 ## Cambios
 
+- **14-oct-2026, 18:40 UTC: sexta hora value cerrada** (16 análisis: MSCI, LSEG, Euronext, Marsh, Cintas, Waste Connections, Roper, Diploma, Novonesis, Symrise, Lindt, Demant, Belimo, Epiroc, Sartorius Stedim, Lotus Bakeries; 9 fichas sectoriales nuevas). Ninguna compra robusta; Marsh propuesta para la lista de espera (≤ 174,29 USD tras resultados). 32 puntos de método en `informes/sexta-hora-2026-10-14/puntos-metodo.md`. Séptima hora propuesta en `cola.md`.
+
 - **14-oct-2026 · Escáner diario de señales** (pedido del usuario): `herramientas/escaner-diario.mjs` + `escaner/` (cartera, reglas, registro y seguimiento de señales frente al índice). Tarea programada L-V 9:30 y 15:45 de Madrid. `robustez.mjs` gana `--actual` y `--bpa-factor`; `robustez-growth.mjs`, `--json`.
 
 - **14-oct-2026 (noche): selector de método value.** Pedido del usuario («aplicar una valoración u otra, diséñalo y backtestea»). Reglas fijadas antes (a8cc7a0): desrateada (mediana adelantada ≥ 1,8 × actual) → v2; historia adelantada ≤ 3 años → la más baja de v3 y v2; resto v3 ×1,1. Backtest en validación: mismo error (20,0 %), Comprar algo mejores (+44,3 % frente a +42,9 %; pérdidas 9 % frente a 11 %); se adopta con límites (7 cierres desrateados; historia corta mixta). `motor/objetivo12m.mjs` lo aplica por defecto (`selector: false` = anterior); `robustez.mjs` pasa al objetivo fijo. Cambian 12 señales (Edenred, Adobe, Equifax, Grifols, Novo, Fielmann, Coloplast, Cooper, Uber, ANYCOLOR y Bureau Veritas a Mantener; Roche a Vender).
