@@ -45,6 +45,10 @@ Para buscar qué analizar («busca oportunidades», «escanea Europa», «qué n
 
 De lunes a viernes a las 9:25 y 15:45 de Madrid una tarea programada (más un informe semanal el domingo y un backtest mensual: rutinas en `escaner/README.md`) lanza `herramientas/escaner-diario.mjs`: precio de ahora de todas las analizadas, robustez con el objetivo fijo y reglas de cartera; las candidatas pasan un «Vup» (lo publicado después del informe + método vigente + robustez) antes de ser señal de compra o venta, y todo queda en `escaner/registro-senales.json` y `escaner/SENALES.md` con su seguimiento frente al índice. Procedimiento: `escaner/README.md`. La cartera que lee está en `escaner/cartera.json` (la mantiene el hilo value).
 
+## Cartera real (14-oct-2026)
+
+Seguimiento de la cartera de verdad (posiciones, precio medio, rentabilidad frente al índice mundial, lo previsto frente a lo real, avisos): `herramientas/cartera-real.mjs`, método en `verticales/cartera/metodo.md`. Lee del conector de IBKR (solo lectura, nunca órdenes). **Los datos de la cartera no van al repo, que es público**: viven en `/mnt/project-files/cartera/real/`. El informe del domingo es `--semanal`.
+
 ## ETF y sector
 
 **Sector, desde el 14-oct-2026: ficha corta primero.** Antes de analizar la primera empresa de un sector sin ficha (o cuando una tanda trae dos o más del mismo sector), se hace `verticales/sector/ficha.md` (6 campos, 15-20 minutos, queda en `sectores/`) y los informes value reutilizan su perímetro, su `mercado_final` y sus comparables. El informe Word de 18 campos de abajo solo si el usuario lo pide expresamente.
