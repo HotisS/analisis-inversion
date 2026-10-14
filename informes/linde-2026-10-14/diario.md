@@ -11,3 +11,4 @@
 
 - En empresas nacidas de una fusión por canje de acciones (Linde/Praxair), el ROIC del motor incluye un fondo de comercio enorme y la prueba de «rendimiento del capital nuevo» falla aunque se suba el capex o se baje el crecimiento: hacer la prueba a mano sin ese fondo de comercio y decirlo en `controles_explicados`.
 - Con un BPA ajustado que excluye amortización de compras, el DCF debe usar la amortización publicada (misma base que el último ejercicio real): si se usa la ajustada, el salto de margen EBIT del año base al primero proyectado infla el rendimiento del capital nuevo.
+- 2026-10-14: datos-v2.json y «Linde - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener -2,1 % (antes v3 Mantener -2,1 %).

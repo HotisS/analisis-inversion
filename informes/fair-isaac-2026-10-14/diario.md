@@ -14,3 +14,4 @@
 - Con ejercicio a septiembre, Macrotrends solo da cierres de diciembre: para el PER histórico se usan con el BPA del ejercicio cerrado tres meses antes, y se dice.
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 46.1x, mínimo 28.1x, media larga 48.4x; antes v2 63.7x/42.2x/59.7x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Fair Isaac - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 17,4 % (antes v3 Mantener 38,7 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 19,2x / 22,6x / 29,4x, 6,5 % Mantener; con el tope anterior del base (×1,3, 14-oct mediodía): 38,7 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

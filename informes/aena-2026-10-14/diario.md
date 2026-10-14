@@ -12,3 +12,4 @@
 - Sin balance completo, el ROIC del motor sale inflado (capital invertido casi vacío): dar el ROIC con patrimonio + deuda neta en el texto y en la entrega.
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (3 años; mediana 12.7x, mínimo 10.8x, media larga 12.5x; antes v2 15.3x/15.1x/15.7x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Aena - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Vender -10,1 % (antes v3 Vender -14,0 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 15,1x / 15,3x / 15,7x, -5,7 % Mantener; con el tope anterior del base (×1,3, 14-oct mediodía): -14,0 % Vender. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

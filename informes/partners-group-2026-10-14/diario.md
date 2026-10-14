@@ -11,3 +11,4 @@
 
 - Gestoras de activos privados: el BPA oscila con las comisiones de rendimiento; en la historia del PER adelantado hay que excluir el año de pico (2021) y separar en el puente de ingresos las comisiones de gestión (volumen) de las de rendimiento (otros).
 - En la nube, el último precio fechado de una cotizada suiza sale mejor de FuW y cash.ch que de los agregadores (Digrin y Börse Express dan precios mensuales o en EUR sin fecha clara).
+- 2026-10-14: datos-v2.json y «Partners Group - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 31,5 % (antes v3 Mantener 54,3 %). Para comparar, con el tope anterior del base (×1,3, 14-oct mediodía): 54,3 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

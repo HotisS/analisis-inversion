@@ -39,3 +39,4 @@
 5. **Ningún subagente tenía en su encargo los avisos de OPA y umbrales**: A, C y D encontraron por separado la OPA de Candle Lake y D avisó por mensaje. Arreglo: añadir al encargo de C «comunicados de umbrales y ofertas públicas de 12 meses».
 6. **Los comparables operadores (Flutter, Betsson) entraron en la lista de D** pese a no ser comparables y Betsson con un salto de definición de EBITDA; se quitaron en propio. Arreglo: en el encargo de D, que los operadores B2C vayan en el texto y no en la tabla cuando la empresa es B2B.
 - Fin: 09:35. Tiempo total efectivo ≈ 45 min (22:48-23:25 y 09:27-09:35).
+- 2026-10-14: datos-v2.json y «Evolution - 2026-10-08 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: sin objetivo a 12 m.

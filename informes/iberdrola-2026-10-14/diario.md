@@ -15,3 +15,4 @@
 - En los extractos de búsqueda, las notas sin la letra de la nota (`[A3]`) no se traducen: en `notas/<letra>.json` solo valen citas locales `[n]`; las de otra nota se quitan o se citan desde `propio`.
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 14.8x, mínimo 14.1x, media larga 14.9x; antes v2 16.8x/15.8x/17.4x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Iberdrola - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener -8,2 % (antes v3 Vender -14,9 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 15,8x / 16,8x / 17,4x, -16,7 % Vender; con el tope anterior del base (×1,3, 14-oct mediodía): -14,9 % Vender. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

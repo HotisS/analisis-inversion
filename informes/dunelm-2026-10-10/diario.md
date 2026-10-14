@@ -13,3 +13,4 @@
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +21,3 % → +20,7 %, base +14,9 %, señal Comprar (`revision-12m-2026-10-13.md`).
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 15.1x, mínimo 10.9x, media larga 15.3x; antes v2 14.3x/9.8x/14.2x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Dunelm - 2026-10-10 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Comprar 29,5 % (antes v3 Comprar 35,4 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 9,8x / 10,8x / 14,0x, 20,7 % Comprar; con el tope anterior del base (×1,3, 14-oct mediodía): 35,4 % Comprar. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

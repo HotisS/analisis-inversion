@@ -24,3 +24,4 @@ Nvidia · 14-oct-26 · 228,52 USD · objetivo ponderado 260,89 USD (+14,3 % con 
 ## Lecciones
 
 - Empresas con ejercicio cerrado en enero (Nvidia): el ejercicio objetivo a 12 meses con corte en octubre es FY2029 (cierra en enero de 2029), no FY2028; y el BPA GAAP reciente incluye grandes ganancias de participaciones en cartera que hay que quitar de la historia del PER y del BPA propio.
+- 2026-10-14: datos-v2.json y «Nvidia - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v2 Mantener 14,3 % (antes v2 Mantener 14,3 %).

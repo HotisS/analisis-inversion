@@ -20,3 +20,4 @@
 - Sin `bolsa.mjs`, los precios de cierre anuales salen bien de multiplicar el PER de cierre de MarketScreener por el BPA del año (comprobable con el BPA × acciones = beneficio).
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 21.9x, mínimo 18.2x, media larga 21.7x; antes v2 23.45x/18.7x/22.65x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «ASSA ABLOY - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 6,3 % (antes v3 Mantener 6,3 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 18,7x / 21,8x / 24,2x, 7,6 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

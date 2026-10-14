@@ -14,3 +14,4 @@
 - Una fila de balance con solo la caja hace que el motor calcule un capital invertido negativo (ROIC −159 %): mejor no poner el año.
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 33.4x, mínimo 26.9x, media larga 33.6x; antes v2 31.7x/28.1x/31.3x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «L'Oréal - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 19,6 % (antes v3 Mantener 21,6 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 22,4x / 26,4x / 31,3x, 11,0 % Mantener; con el tope anterior del base (×1,3, 14-oct mediodía): 21,6 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

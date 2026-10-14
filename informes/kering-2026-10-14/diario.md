@@ -14,3 +14,4 @@
 ## Lecciones
 - Empresas en recuperación de beneficio: con la regla v3, los años de BPA hundido dan PER adelantados de 38-55x y hay que excluirlos; la historia limpia queda corta (Kering: tres cierres, todos del pico). Decirlo en `excluidos` y en la revisión.
 - Comparables del mismo sector hechos hace 1-3 días en otra carpeta (Hermès): copiarlos ahorra 6-8 búsquedas; quitar la empresa analizada y añadir la de la otra carpeta con su fila de `calc.comparables.tabla`.
+- 2026-10-14: datos-v2.json y «Kering - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 16,2 % (antes v3 Mantener 16,2 %).

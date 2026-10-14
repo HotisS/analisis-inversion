@@ -11,3 +11,4 @@
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +19,7 % → +6,4 %, base +10,0 %, señal Mantener (`revision-12m-2026-10-13.md`).
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 47.6x, mínimo 27.8x, media larga 41x; antes v2 41.6x/19.2x/37.8x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Adobe - 2026-10-10 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Comprar 16,8 % (antes v3 Comprar 38,4 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 9,6x / 11,3x / 14,7x, 6,4 % Mantener; con el tope anterior del base (×1,3, 14-oct mediodía): 38,4 % Comprar. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

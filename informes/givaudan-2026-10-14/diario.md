@@ -22,3 +22,4 @@
 - Con el balance a medias (solo deuda neta de un año), el motor calcula el capital invertido sin patrimonio y saca un ROIC disparatado: mejor no meter esa fila.
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 32x, mínimo 29.3x, media larga 36.3x; antes v2 32.2x/27.1x/31.9x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Givaudan - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 10,9 % (antes v3 Mantener 10,9 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 27,1x / 29,5x / 31,9x, 6,4 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

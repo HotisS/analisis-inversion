@@ -54,3 +54,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 3. Sin campo de ingresos del perímetro de la cuota, la prueba de cuota se hace a mano (ya anotado en `lecciones.md`).
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 165,23 AUD (ponderado; base 140,76), rentabilidad +30,8 % (base +11,8 %), señal Mantener (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +30,8 % → +19,0 %, base +12,1 %, señal Mantener (`revision-12m-2026-10-13.md`).
+- 2026-10-14: datos-v3.json y «Cochlear - 2026-10-08 v3.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v2 Mantener 19,0 %.

@@ -15,3 +15,4 @@
 - HOYA presenta la cuenta por naturaleza y sin línea de beneficio operativo: el EBIT de los agregadores (Stockopedia) deja un «resultado financiero» de 52.000 M que es sobre todo divisa; en el BPA del objetivo a 12 meses usar solo el rendimiento recurrente de la caja.
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 29.1x, mínimo 22.6x, media larga 28.3x; antes v2 36.6x/26.7x/34.3x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Hoya - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener -1,1 % (antes v3 Mantener -1,1 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 26,7x / 31,5x / 34,3x, 7,8 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

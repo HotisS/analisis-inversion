@@ -11,3 +11,4 @@
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +18,8 % → +12,1 %, base +8,7 %, señal Mantener (`revision-12m-2026-10-13.md`).
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 28.3x, mínimo 18.9x, media larga 29.7x; antes v2 25.9x/21.9x/25.7x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «CTS Eventim - 2026-10-11 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Comprar 23,6 % (antes v3 Comprar 45,4 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 14,1x / 16,6x / 21,6x, 12,0 % Mantener; con el tope anterior del base (×1,3, 14-oct mediodía): 45,4 % Comprar. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

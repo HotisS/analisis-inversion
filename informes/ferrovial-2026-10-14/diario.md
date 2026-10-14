@@ -16,3 +16,4 @@
 
 ## Lecciones
 - Holdings de concesiones con la joya en puesta en equivalencia (Ferrovial-407 ETR): el EBITDA consolidado no la recoge; valorarla en el puente con la última transacción (precio por % comprado) y los minoritarios de las filiales consolidadas a valor de mercado, no contable; el BPA publicado lleva plusvalías de rotación casi todos los años: construir el BPA limpio antes de la historia del PER.
+- 2026-10-14: datos-v2.json y «Ferrovial - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 9,9 % (antes v3 Mantener 9,9 %).

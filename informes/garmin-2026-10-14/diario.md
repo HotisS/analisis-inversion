@@ -13,3 +13,4 @@
 - El motor no hace la prueba de sostenibilidad con reinversión < 15 % del NOPAT (ya en lecciones): ROIC × reinversión + precio frente al crecimiento proyectado, a mano, sirvió.
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 20.8x, mínimo 13.8x, media larga 20.6x; antes v2 23.35x/18.3x/23.3x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Garmin - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Vender -11,5 % (antes v3 Vender -13,4 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 18,3x / 23,4x / 23,4x, -9,8 % Mantener; con el tope anterior del base (×1,3, 14-oct mediodía): -13,4 % Vender. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

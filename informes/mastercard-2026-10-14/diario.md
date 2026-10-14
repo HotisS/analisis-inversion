@@ -17,3 +17,4 @@
 - Cuando el último cierre fechado es de varios días antes del corte, usarlo y decirlo en `limitaciones` y en la síntesis («cierre del 9 de octubre») mejor que estimar el precio de hoy.
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 30.9x, mínimo 28.8x, media larga 31.4x; antes v2 33.9x/32x/33.9x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Mastercard - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 18,3 % (antes v3 Mantener 18,3 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 22,6x / 26,6x / 33,9x, 16,3 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

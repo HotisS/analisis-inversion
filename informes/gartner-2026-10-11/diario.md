@@ -10,3 +10,4 @@
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +17,7 % → +4,4 %, base +6,7 %, señal Mantener (`revision-12m-2026-10-13.md`).
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 30.3x, mínimo 17.4x, media larga 44.3x; antes v2 43.1x/22.6x/36.6x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Gartner - 2026-10-11 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 14,9 % (antes v3 Comprar 35,8 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 11,3x / 13,3x / 17,3x, 4,4 % Mantener; con el tope anterior del base (×1,3, 14-oct mediodía): 35,8 % Comprar. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

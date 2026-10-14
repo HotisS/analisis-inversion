@@ -12,3 +12,4 @@
 
 - Empresas con una desinversión reciente presentada como discontinuada (Edwards/Critical Care): el PER adelantado de los cierres anteriores a la venta mezcla perímetros; restar del precio el valor por acción de lo vendido antes de dividir por el BPA continuado del año siguiente.
 - Reutilizar comparables de otro informe del repo de pocos días antes ahorra búsquedas en la nube; el informe de Intuitive traía además la propia empresa (capitalización, EV, BPA de consenso), útil para cuadrar acciones y caja.
+- 2026-10-14: datos-v2.json y «Edwards Lifesciences - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 13,8 % (antes v3 Mantener 13,8 %).

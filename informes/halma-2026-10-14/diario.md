@@ -22,3 +22,4 @@
 - **Sin circulante en el balance**, el motor toma 0 % como último real y cualquier `nwc_pct_ventas` genera una inversión falsa el primer año: mejor meter la inversión en circulante en el capex y explicarlo.
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 30.8x, mínimo 26.3x, media larga 32.1x; antes v2 33.3x/33x/34.9x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Halma - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 4,4 % (antes v3 Mantener 4,4 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 24,7x / 29,1x / 34,9x, 5,9 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

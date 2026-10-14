@@ -18,3 +18,4 @@
 - Si solo hay balance de un año, no pongas un segundo año con patrimonio y deuda vacíos: el motor promedia el capital invertido con 0 y el ROIC sale el doble.
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 16.4x, mínimo 14.1x, media larga 16.9x; antes v2 18.55x/15.26x/18.19x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Sunbelt Rentals (Ashtead) - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener -5,8 % (antes v3 Mantener -5,8 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 15,3x / 18,6x / 19,4x, -2,1 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

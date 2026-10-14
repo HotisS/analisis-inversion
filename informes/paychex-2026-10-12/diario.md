@@ -35,3 +35,4 @@
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +21,0 % → +15,3 %, base +13,2 %, señal Mantener (`revision-12m-2026-10-13.md`).
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 26.3x, mínimo 22.5x, media larga 26.4x; antes v2 25.7x/19.8x/26x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Paychex - 2026-10-12 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 24,5 % (antes v3 Mantener 31,0 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 16,0x / 18,8x / 24,4x, 15,3 % Mantener; con el tope anterior del base (×1,3, 14-oct mediodía): 31,0 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

@@ -21,3 +21,4 @@
 - Precio sin `bolsa.mjs`: las notas de ad-hoc-news dan la cotización en euros del día; el EUR/SEK sale de otra nota del mismo día con precio en coronas (ASSA ABLOY).
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 29.7x, mínimo 21.3x, media larga 28.3x; antes v2 28.85x/25.5x/28.16x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Atlas Copco - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener -4,0 % (antes v3 Mantener -4,0 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 25,5x / 28,9x / 28,9x, -7,4 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

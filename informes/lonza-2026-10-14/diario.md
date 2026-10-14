@@ -20,3 +20,4 @@
 
 - Empresa con una división en venta clasificada como interrumpida (Lonza-CHI): el capital invertido del motor incluye sus activos y el ROIC sale bajo (9,3 % frente a 11,9 % publicado), lo que hace fallar la prueba de sostenibilidad; meter el cobro esperado en `otros_ajustes` y explicar el ROIC sin la división.
 - CDMO con capex del 15-20 % de las ventas: el crecimiento del plan (11-13 %) no pasa la prueba de reinversión ni con capex alto; el exceso viene de llenar capacidad ya pagada y del margen, y conviene decirlo en vez de forzar el capex.
+- 2026-10-14: datos-v2.json y «Lonza - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v2 Mantener 15,6 % (antes v2 Mantener 15,6 %).

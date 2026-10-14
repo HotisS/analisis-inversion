@@ -21,3 +21,4 @@
 - Con tasa libre china (1,67 %) el terminal queda en ≈1,1 % por la regla de coherencia; el riesgo VIE/geopolítico va en `prima_adicional_pct`.
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 22.1x, mínimo 9.7x, media larga 19.8x; antes v2 12.98x/8.4x/12.26x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Alibaba - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 23,2 % (antes v3 Mantener 23,2 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 8,4x / 13,0x / 13,0x, -22,8 % Vender. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

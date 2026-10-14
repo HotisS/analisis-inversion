@@ -32,3 +32,4 @@
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +2,4 % → +3,7 %, base +9,8 %, señal Mantener (`revision-12m-2026-10-13.md`).
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 24.3x, mínimo 21.7x, media larga 23.6x; antes v2 34.5x/26.3x/31.6x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Medpace - 2026-10-12 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener -7,2 % (antes v3 Vender -11,4 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 26,3x / 32,9x / 32,9x, 3,7 % Mantener; con el tope anterior del base (×1,3, 14-oct mediodía): -11,4 % Vender. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

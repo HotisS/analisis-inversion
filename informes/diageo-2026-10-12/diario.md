@@ -18,3 +18,4 @@
 - Lección: con la cuota de mercado sobre valor de venta al público (IWSR) y el DCF en ventas netas, el `mercado_final` tiene que ser el mercado equivalente (ventas / cuota actual) llevado al último año; si no, la cuota implícita no se puede calcular o sale en otro perímetro.
 - 13-oct-2026: revisión v2 a 12 meses (PER propio × BPA propio): objetivo 24,07 USD (18,19 GBP), rentabilidad 11,0 %, señal Mantener (`revision-12m-2026-10-13.md`).
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +7,2 % → +7,0 %, base +4,5 %, señal Mantener (`revision-12m-2026-10-13.md`).
+- 2026-10-14: datos-v2.json y «Diageo - 2026-10-12 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v2 Mantener 7,0 %.

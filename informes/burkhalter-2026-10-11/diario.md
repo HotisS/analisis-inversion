@@ -9,3 +9,4 @@
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada -9,4 % → -9,4 %, base -6,7 %, señal Mantener (`revision-12m-2026-10-13.md`).
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 15.7x, mínimo 13.3x, media larga 18.3x; antes v2 16.9x/15.8x/18.4x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Burkhalter - 2026-10-11 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener -9,2 % (antes v3 Mantener -10,0 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 15,8x / 16,9x / 18,4x, -9,4 % Mantener; con el tope anterior del base (×1,3, 14-oct mediodía): -10,0 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

@@ -16,3 +16,4 @@
 
 - En la nube, los cierres de año en divisa local se pueden estimar con la capitalización de fin de año en USD de CompaniesMarketCap (una búsqueda) pasada a la divisa y dividida por las acciones emitidas; cuadran con los máximos y mínimos del informe anual. Marcar como estimación.
 - Si el balance no trae proveedores, poner el circulante del DCF a 0: con un % positivo el motor genera una salida de caja ficticia en el primer año (745 M aquí).
+- 2026-10-14: datos-v2.json y «Kuehne+Nagel - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 2,1 % (antes v3 Mantener 2,1 %).

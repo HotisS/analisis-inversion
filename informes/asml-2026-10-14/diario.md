@@ -16,3 +16,4 @@
 - **Comparables desde un informe vecino en otra divisa** (tabla de VAT en CHF): pasa la capitalización a la divisa del informe con el tipo que usó aquel informe; los múltiplos no cambian.
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 30.9x, mínimo 25.1x, media larga 34.2x; antes v2 34.9x/33.9x/35.2x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «ASML - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 17,6 % (antes v3 Mantener 17,6 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 24,2x / 28,5x / 35,2x, 16,5 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

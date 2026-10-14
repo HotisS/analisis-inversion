@@ -70,3 +70,4 @@ Sin investigación nueva. Script: `notas/actualizacion-v2.mjs` (parte de `datos.
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +12,6 % → +12,6 %, base +16,1 %, señal Mantener (`revision-12m-2026-10-13.md`).
 
 - 2026-10-14: datos-v3.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (5 años; mediana 28.1x, mínimo 26.5x, media larga 26.5x; antes v2 35.2x/21.6x/31.4x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v3.json y «Microsoft - 2026-10-08 v3.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 10,9 % (antes v3 Mantener 10,9 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 21,6x / 27,2x / 31,4x, 12,5 % Mantener. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).

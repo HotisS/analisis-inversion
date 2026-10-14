@@ -20,3 +20,4 @@
 - Con el BPA ajustado de las aseguradoras (sin amortización de intangibles), la fórmula del BPA de los escenarios debe sumar esa amortización al EBIT para quedar en la misma base que el PER histórico.
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (4 años; mediana 18.5x, mínimo 14.6x, media larga 18x; antes v2 14.2x/11.2x/14.8x). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+- 2026-10-14: datos-v2.json y «Elevance Health - 2026-10-14 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Comprar 22,0 % (antes v3 Comprar 25,7 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 11,2x / 14,0x / 14,8x, 6,7 % Mantener; con el tope anterior del base (×1,3, 14-oct mediodía): 25,7 % Comprar. Decide la regla vigente (v3 con tope ×1,1; METODO-VIGENTE.md).
