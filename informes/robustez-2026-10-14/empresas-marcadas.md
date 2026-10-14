@@ -1,5 +1,7 @@
 # Empresas marcadas por las pruebas de robustez (14-oct-2026)
 
+> **Actualización 14-oct, noche (selector de método y objetivo fijo):** las Comprar robustas pasan a ser Daiichi, Nemetschek, Viscofan (en el borde con v2: límite 53,78 EUR), Intuit (en el borde: límite 301,66 USD) y Dunelm (minorista, excluida). Bureau Veritas y ANYCOLOR dejan de serlo (v2 13,4 % y 12,7 %). Cifras al día en `verticales/empresa/robustez.json`.
+
 Generado con `node herramientas/robustez.mjs --todas --escribir` y `robustez-growth.mjs --precios --escribir` al cierre del 14-oct (EE. UU. y Tokio, 13-oct). Las cifras son las de `objetivo12m-revisados.json` (v3 ×1,1 decide, v2 controla). Significado de cada código: `verticales/empresa/robustez.md`.
 
 ## Resumen value (148 informes)

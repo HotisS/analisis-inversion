@@ -19,7 +19,7 @@
 // cuál) o BLOQUEADA (hay un CORREGIR).
 import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import { ultimoDatos } from './objetivo12m.mjs';
-import { calcularObjetivo12m, multiplosRegla, REGLA_12M } from '../motor/objetivo12m.mjs';
+import { calcularObjetivo12m, multiplosRegla, senal12m, REGLA_12M } from '../motor/objetivo12m.mjs';
 import { leerPrecios, factorDivisa } from './precios.mjs';
 
 const args = process.argv.slice(2);
@@ -53,12 +53,14 @@ function contexto(d) {
   return { o, precioInforme, dpa: (div / 100) * precioInforme, div, prob: prob.every((x) => x !== null) ? prob : null,
     vi: num(d.calc?.sintesis?.valor_objetivo), confianza: d.resumen?.confianza ?? null };
 }
-function evaluar(cx, { precio, historia = 'vigente', topeBase = null, prob = null, escalaBpa = 1, sinDobleCastigo = false, sinConfianza = false } = {}) {
+function evaluar(cx, { precio, historia = 'vigente', topeBase = null, prob = null, escalaBpa = 1, sinDobleCastigo = false, sinConfianza = false, sinSelector = false, moverPer = false } = {}) {
+  // Objetivo FIJO (regla vigente desde cd21cd3): el objetivo se calcula al precio del informe y la rentabilidad, al precio pedido.
   const o2 = JSON.parse(JSON.stringify(cx.o));
-  const k = precio / cx.precioInforme;
   const ph = o2.per_historico || {};
   if (historia === 'v2' && ph.v2) o2.per_historico = { ...ph.v2, actual: ph.actual, base: 'cierre' };
-  if (o2.per_historico?.actual) o2.per_historico.actual = Math.round(+o2.per_historico.actual * k * 100) / 100;
+  // Solo para medir M6 (cuánto se movería el objetivo si se recalculase con el PER de otro precio).
+  const pCalc = moverPer ? precio : cx.precioInforme;
+  if (moverPer && o2.per_historico?.actual) o2.per_historico.actual = Math.round(+o2.per_historico.actual * (precio / cx.precioInforme) * 100) / 100;
   for (const c of o2.casos) if (num(c.beneficio_por_accion) !== null) c.beneficio_por_accion = +c.beneficio_por_accion * escalaBpa;
   if (sinDobleCastigo) {
     // Si el BPA bajista ya recoge el riesgo (≥ 15 % bajo el base), el PER bajista no baja de base × 0,80 (propuesta Edenred).
@@ -68,7 +70,13 @@ function evaluar(cx, { precio, historia = 'vigente', topeBase = null, prob = nul
       baj.metrica = 'Múltiplo corregido (PER base × 0,80)'; baj.precio = 0.8 * reg.base * +baj.beneficio_por_accion;
     }
   }
-  return calcularObjetivo12m(o2, { precio, dpa: cx.dpa, prob: prob || cx.prob, valorIntrinseco: cx.vi, confianza: sinConfianza ? null : cx.confianza, topeBase });
+  const c = calcularObjetivo12m(o2, { precio: pCalc, dpa: cx.dpa, prob: prob || cx.prob, valorIntrinseco: cx.vi, confianza: sinConfianza ? null : cx.confianza, topeBase, selector: !sinSelector });
+  if (!c?.completo || precio === pCalc) return c;
+  const rent = (v) => Math.round((1000 * (v + cx.dpa)) / precio - 1000) / 10;
+  const rp = rent(c.objetivo_ponderado), rb = rent(c.objetivo_base);
+  const senalRegla = senal12m(rp, rb, cx.vi, precio);
+  const senal = c.confianza_baja && senalRegla === 'Comprar' ? 'Mantener' : senalRegla;
+  return { ...c, rentabilidad_ponderada_pct: rp, rentabilidad_base_pct: rb, senal, senal_sin_confirmar: senal !== senalRegla ? senalRegla : null };
 }
 const pasaComprar = (c, precio, vi) => c && c.rentabilidad_ponderada_pct >= U.comprar && c.rentabilidad_base_pct >= U.comprarBase && (vi === null || vi >= precio);
 const pasaMantener = (c, precio, vi) => c && c.rentabilidad_ponderada_pct >= U.mantener && c.rentabilidad_base_pct >= U.mantenerBase && (vi === null || vi >= U.viMantener * precio);
@@ -156,7 +164,7 @@ function probar(carpeta) {
   // M3 dos reglas muy separadas.
   const vig = evaluar(cx, { precio });
   const cv2 = ph.v2 ? evaluar(cx, { precio, historia: 'v2' }) : null;
-  if (vig?.completo && cv2?.completo && Math.abs(vig.rentabilidad_ponderada_pct - cv2.rentabilidad_ponderada_pct) > 15) marca('M3', 'VARIANTE', `v3 (${f(vig.rentabilidad_ponderada_pct)} %) y v2 (${f(cv2.rentabilidad_ponderada_pct)} %) se separan ${f(Math.abs(vig.rentabilidad_ponderada_pct - cv2.rentabilidad_ponderada_pct), 0)} puntos: la cifra depende de qué historia del PER se crea. Decide la más baja hasta revisar la historia a mano.`);
+  if (vig?.completo && cv2?.completo && Math.abs(vig.rentabilidad_ponderada_pct - cv2.rentabilidad_ponderada_pct) > 15) marca('M3', 'VARIANTE', `Vigente (${f(vig.rentabilidad_ponderada_pct)} %) y v2 (${f(cv2.rentabilidad_ponderada_pct)} %) se separan ${f(Math.abs(vig.rentabilidad_ponderada_pct - cv2.rentabilidad_ponderada_pct), 0)} puntos: la cifra depende de qué historia del PER se crea. Decide la más baja hasta revisar la historia a mano.`);
   // M4 doble castigo del bajista.
   if (vig?.completo) {
     const [b, m] = vig.filas;
@@ -188,8 +196,9 @@ function probar(carpeta) {
   // --- S: estabilidad de la señal frente a variantes razonables ---
   const variantes = [
     ['vigente', {}],
+    ['v3 sin selector', { sinSelector: true }],
     ['v2 (control)', { historia: 'v2' }],
-    ['v3 tope ×1,3', { topeBase: REGLA_12M.v3.topeBaseAnterior }],
+    ['v3 tope ×1,3', { topeBase: REGLA_12M.v3.topeBaseAnterior, sinSelector: true }],
     ['sin doble castigo', { sinDobleCastigo: true }],
     ['v2 sin doble castigo', { historia: 'v2', sinDobleCastigo: true }],
     ['pesos 25/50/25', { prob: [25, 50, 25] }],
@@ -198,7 +207,7 @@ function probar(carpeta) {
     ...(bpaCons && bpaBase && bpaCons < bpaBase ? [['BPA consenso', { escalaBpa: bpaCons / bpaBase }]] : []),
     ['precio +5 %', { precioK: 1.05 }],
     ['precio −5 %', { precioK: 0.95 }],
-  ].filter(([n]) => !/^v2/.test(n) || (ph.v2 && v3)).filter(([n]) => n !== 'v3 tope ×1,3' || v3);
+  ].filter(([n]) => !/^v2/.test(n) || (ph.v2 && v3)).filter(([n]) => !/^v3/.test(n) || v3);
   const tabla = variantes.map(([nombre, op]) => {
     const p = precio * (op.precioK || 1);
     const c = evaluar(cx, { ...op, precio: p });
@@ -231,8 +240,8 @@ function probar(carpeta) {
   const lim = limFijo(vig), limCtrl = cv2?.completo ? limFijo(cv2) : null;
   // M6: ¿el objetivo se mueve con el precio? (base = PER actual o PER actual × tope). Si sí, la rentabilidad no baja al
   // subir el precio y un «límite» calculado recalculando a otro precio no limita nada (caso Nu en growth).
-  const sube = evaluar(cx, { precio: precio * 1.1 });
-  const elast = vig?.completo && sube?.completo ? (sube.objetivo_ponderado / vig.objetivo_ponderado - 1) / 0.1 : null;
+  const sube = evaluar(cx, { precio: precio * 1.1, moverPer: true }), quieto = evaluar(cx, { precio, moverPer: true });
+  const elast = quieto?.completo && sube?.completo ? (sube.objetivo_ponderado / quieto.objetivo_ponderado - 1) / 0.1 : null;
   if (elast !== null && elast > 0.5) marca('M6', 'AVISO', `El objetivo se mueve con el precio (elasticidad ${f(elast, 2)}: un 10 % más de precio sube el objetivo un ${f(elast * 10, 1)} %), porque el base es el PER de hoy${v3 ? ' con el tope' : ''}. La rentabilidad solo mide crecimiento del BPA + dividendo${v3 ? ' + el tope' : ''}; los límites de compra se calculan con el objetivo fijo (no recalculando a otro precio).`);
   // Colchón de BPA: cuánto puede bajar nuestro BPA (los tres escenarios) antes de perder la acción de hoy.
   const colchonBpa = (cond) => { if (!vig?.completo || !cond(vig, precio, cx.vi)) return null; for (let e = 1; e >= 0.5; e -= 0.01) { const c = evaluar(cx, { precio, escalaBpa: e }); if (!c?.completo || !cond(c, precio, cx.vi)) return r((1 - e) * 100, 0); } return 50; };

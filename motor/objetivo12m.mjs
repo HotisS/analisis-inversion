@@ -31,6 +31,11 @@ export const REGLA_12M = {
   // topeBase: ×1,3 del 14-oct (mediodía) pasó a ×1,1 el mismo día por la tarde (backtest: en las desrateadas el sesgo baja de
   // +21 % a +3 % fuera de muestra). `topeBaseAnterior` se usa para dar la cifra con el tope viejo al lado.
   v3: { reversion: 0.5, descuentoBajista: 0.8, techoAlcista: 1.35, topeBase: 1.1, topeBaseAnterior: 1.3 },
+  // Selector de método (14-oct-2026, 18:00; preregistro y backtest en verticales/empresa/backtest/selector-*.md): con historia
+  // v3 y la v2 guardada al lado, decide v2 si la empresa está desrateada (mediana adelantada ≥ 1,8 × PER de hoy: la historia es
+  // de otro régimen) y la más baja de las dos con 3 años o menos de historia adelantada. Los años con BPA atípico ya los limpia
+  // `herramientas/historia-adelantada.mjs` (regla 1 del selector). `selector: false` da la v3 sin selector (versión anterior).
+  selector: { activo: true, desrateada: 1.8, historiaCorta: 3 },
 };
 
 const num = (v) => (v === null || v === undefined || v === '' || Number.isNaN(Number(v)) ? null : Number(v));
@@ -85,7 +90,27 @@ export function senal12m(pond, base, vi = null, precio = null) {
 // o = valoracion.objetivo_12m del informe; prob = [bajista, base, alcista] en %; dpa = dividendo por acción ordinario;
 // confianza = la del resumen del informe («Baja» deja un Comprar en Mantener hasta confirmar los datos).
 // Los casos con métrica distinta del PER (EV/EBITDA) llevan su precio y no se recalculan.
-export function calcularObjetivo12m(o, { precio, dpa = 0, prob = null, valorIntrinseco = null, confianza = null, topeBase = null } = {}) {
+export function calcularObjetivo12m(o, opciones = {}) {
+  const { precio, selector = REGLA_12M.selector.activo } = opciones;
+  if (!o || !Array.isArray(o.casos) || !precio) return null;
+  const ph = o.per_historico || {};
+  const sinSel = calcularRegla(o, opciones);
+  if (!selector || !sinSel?.completo || sinSel.version !== 'v3' || !ph.v2 || !num(ph.actual) || !num(ph.mediana_5a)) return sinSel ? { ...sinSel, selector: null } : sinSel;
+  const oV2 = { ...o, per_historico: { ...ph.v2, actual: ph.actual, base: 'cierre' } };
+  const conV2 = calcularRegla(oV2, opciones);
+  const S = REGLA_12M.selector, q = ph.mediana_5a / ph.actual;
+  const resumen = (c) => ({ version: c.version, rentabilidad_ponderada_pct: c.rentabilidad_ponderada_pct, rentabilidad_base_pct: c.rentabilidad_base_pct, senal: c.senal, objetivo_ponderado: c.objetivo_ponderado });
+  let elegido = sinSel, regla = 'v3', motivo = 'sin marcas: decide la v3';
+  if (conV2?.completo && q >= S.desrateada) { elegido = conV2; regla = 'v2'; motivo = `desrateada: la mediana adelantada (${r(ph.mediana_5a, 1)}x) es ${r(q, 1)} veces el PER de hoy (${r(ph.actual, 1)}x); la historia es de otro régimen y decide la v2`; }
+  else if (conV2?.completo && num(ph.anios) !== null && ph.anios <= S.historiaCorta) {
+    elegido = conV2.rentabilidad_ponderada_pct < sinSel.rentabilidad_ponderada_pct ? conV2 : sinSel; regla = elegido === conV2 ? 'v2' : 'v3';
+    motivo = `historia adelantada de ${ph.anios} años: decide la más baja de v3 y v2 (${regla})`;
+  }
+  return { ...elegido, version: elegido.version, selector: { regla, motivo, v3_sin_selector: resumen(sinSel), v2: conV2?.completo ? resumen(conV2) : null } };
+}
+
+// La regla de múltiplos (v2 o v3 según la historia) sin el selector.
+function calcularRegla(o, { precio, dpa = 0, prob = null, valorIntrinseco = null, confianza = null, topeBase = null } = {}) {
   if (!o || !Array.isArray(o.casos) || !precio) return null;
   const caso = (e) => o.casos.find((c) => new RegExp(e, 'i').test(c?.escenario || '')) || null;
   const regla = multiplosRegla(o.per_historico, o.comparables_per, { topeBase });

@@ -74,7 +74,7 @@ for (const carpeta of carpetas) {
   // Informes pasados a v3 por herramientas/historia-adelantada.mjs: guardan la historia v2 en per_historico.v2; se
   // calcula también con ella (misma regla v2, mismo precio) para tener las dos cifras al lado y avisar si se alejan.
   let v2 = null;
-  if (o2.per_historico?.v2 && c.version === 'v3') {
+  if (o2.per_historico?.v2 && /^adelantad/i.test(String(o2.per_historico.base || ''))) {
     const o3 = JSON.parse(JSON.stringify(o2));
     o3.per_historico = { ...o2.per_historico.v2, actual: o2.per_historico.actual, base: 'cierre' };
     const c2 = calcularObjetivo12m(o3, { precio, dpa: (div / 100) * precioInforme, prob: prob.every((x) => x !== null) ? prob : null, valorIntrinseco: d.calc?.sintesis?.valor_objetivo ?? null, confianza: d.resumen?.confianza ?? null });
@@ -82,14 +82,14 @@ for (const carpeta of carpetas) {
   }
   // Y con el tope anterior del base (×1,3, 14-oct mediodía), para ver qué cambia el tope nuevo.
   let v3Anterior = null;
-  if (c.version === 'v3' && REGLA_12M.v3.topeBaseAnterior) {
-    const c3 = calcularObjetivo12m(o2, { precio, dpa: (div / 100) * precioInforme, prob: prob.every((x) => x !== null) ? prob : null, valorIntrinseco: d.calc?.sintesis?.valor_objetivo ?? null, confianza: d.resumen?.confianza ?? null, topeBase: REGLA_12M.v3.topeBaseAnterior });
+  if (/^adelantad/i.test(String(o2.per_historico?.base || '')) && REGLA_12M.v3.topeBaseAnterior) {
+    const c3 = calcularObjetivo12m(o2, { precio, dpa: (div / 100) * precioInforme, prob: prob.every((x) => x !== null) ? prob : null, valorIntrinseco: d.calc?.sintesis?.valor_objetivo ?? null, confianza: d.resumen?.confianza ?? null, topeBase: REGLA_12M.v3.topeBaseAnterior, selector: false });
     if (c3?.completo) v3Anterior = { tope: REGLA_12M.v3.topeBaseAnterior, rentabilidad_ponderada_pct: c3.rentabilidad_ponderada_pct, rentabilidad_base_pct: c3.rentabilidad_base_pct, senal: c3.senal, objetivo_ponderado: c3.objetivo_ponderado };
   }
   const salto = v2 ? Math.abs(c.rentabilidad_ponderada_pct - v2.rentabilidad_ponderada_pct) : 0;
   const revisar = salto > 15 ? `v3 se aleja ${f(salto, 0)} puntos de v2 (${f(v2.rentabilidad_ponderada_pct, 1)} %): revisar la historia del PER a mano antes de usarla` : null;
   const [b, m, a] = c.filas;
-  const nota = `${c.version} regla común${c.senal_sin_confirmar ? ` (${c.senal_sin_confirmar} pendiente de confirmar datos: confianza baja)` : ''}: bajista ${f(b.multiplo, 1)}x × ${f(b.beneficio_por_accion)} = ${f(b.precio)}; base ${f(m.multiplo, 1)}x × ${f(m.beneficio_por_accion)} = ${f(m.precio)}; alcista ${f(a.multiplo, 1)}x × ${f(a.beneficio_por_accion)} = ${f(a.precio)}; ejercicio ${o.ejercicio}; precio ${f(precio)}${fechaPrecio ? ` (${fechaPrecio}${origen === 'informe' ? '' : `, ${origen}`})` : ''}${v2 ? `; con la historia v2: ${f(v2.rentabilidad_ponderada_pct, 1)} % ${v2.senal}` : ''}${v3Anterior ? `; con tope ×${v3Anterior.tope}: ${f(v3Anterior.rentabilidad_ponderada_pct, 1)} % ${v3Anterior.senal}` : ''}${revisar ? `. REVISAR: ${revisar}` : ''}`;
+  const nota = `${c.version} regla común${c.senal_sin_confirmar ? ` (${c.senal_sin_confirmar} pendiente de confirmar datos: confianza baja)` : ''}: bajista ${f(b.multiplo, 1)}x × ${f(b.beneficio_por_accion)} = ${f(b.precio)}; base ${f(m.multiplo, 1)}x × ${f(m.beneficio_por_accion)} = ${f(m.precio)}; alcista ${f(a.multiplo, 1)}x × ${f(a.beneficio_por_accion)} = ${f(a.precio)}; ejercicio ${o.ejercicio}; precio ${f(precio)}${fechaPrecio ? ` (${fechaPrecio}${origen === 'informe' ? '' : `, ${origen}`})` : ''}${v2 ? `; con la historia v2: ${f(v2.rentabilidad_ponderada_pct, 1)} % ${v2.senal}` : ''}${v3Anterior ? `; con tope ×${v3Anterior.tope}: ${f(v3Anterior.rentabilidad_ponderada_pct, 1)} % ${v3Anterior.senal}` : ''}${c.selector ? `. Selector: ${c.selector.motivo}${c.selector.regla !== 'v3' ? ` (v3 sin selector: ${f(c.selector.v3_sin_selector.rentabilidad_ponderada_pct, 1)} % ${c.selector.v3_sin_selector.senal})` : ''}` : ''}${revisar ? `. REVISAR: ${revisar}` : ''}`;
   const ant = J.revisados[t];
   const nuevo = { fecha: fechaPedida || hoy, carpeta, precio_ref: r(precio), fecha_precio: fechaPrecio, precio_informe: precioInforme, precio_origen: origen,
     objetivo_12m: c.objetivo_ponderado, rentabilidad_12m_pct: c.rentabilidad_simple_pct, senal: c.senal,
@@ -97,11 +97,12 @@ for (const carpeta of carpetas) {
     probabilidades: c.probabilidades, objetivo_ponderado: c.objetivo_ponderado, rentabilidad_ponderada_pct: c.rentabilidad_ponderada_pct,
     rentabilidad_base_pct: c.rentabilidad_base_pct, senal_ponderada: c.senal, comprar_por_debajo: c.comprar_por_debajo, vender_por_encima: c.vender_por_encima,
     divisa_cotizacion: divCot, comprar_por_debajo_cot: r(c.comprar_por_debajo / tc), vender_por_encima_cot: r(c.vender_por_encima / tc), precio_cot: r(precio / tc),
-    version: c.version, tope_base: c.version === 'v3' ? REGLA_12M.v3.topeBase : null, anios_historia: o2.per_historico?.anios ?? null, v2, v3_tope_anterior: v3Anterior, revisar };
+    version: c.version, tope_base: c.version === 'v3' ? REGLA_12M.v3.topeBase : null, anios_historia: o2.per_historico?.anios ?? null, v2, v3_tope_anterior: v3Anterior, revisar,
+    selector: c.selector ? { regla: c.selector.regla, motivo: c.selector.motivo } : null, v3_sin_selector: c.selector?.v3_sin_selector ?? null };
   const cambio = ant && (ant.senal !== c.senal || Math.abs((ant.rentabilidad_ponderada_pct ?? 0) - c.rentabilidad_ponderada_pct) >= 0.05);
   if (cambio) cambios.push(`${t}: ${ant.senal} ${f(ant.rentabilidad_ponderada_pct, 1)} % (precio ${f(ant.precio_ref)}) → ${c.senal} ${f(c.rentabilidad_ponderada_pct, 1)} % (precio ${f(precio)}, ${fechaPrecio})`);
   if (!simular) J.revisados[t] = nuevo;
-  console.log(`${t}: ${c.version} ponderada ${c.rentabilidad_ponderada_pct} %, base ${c.rentabilidad_base_pct} % → ${c.senal}${v2 ? ` (v2: ${v2.rentabilidad_ponderada_pct} % ${v2.senal})` : ''}${revisar ? ' ¡REVISAR!' : ''}${k !== 1 ? ` (precio ${f(precio)} frente a ${f(precioInforme)} del informe, ${k >= 1 ? '+' : ''}${f((k - 1) * 100, 1)} %)` : ''}`);
+  console.log(`${t}: ${c.version} ponderada ${c.rentabilidad_ponderada_pct} %, base ${c.rentabilidad_base_pct} % → ${c.senal}${c.selector && c.selector.regla !== 'v3' ? ` [selector: ${c.selector.regla}; v3 sin selector ${c.selector.v3_sin_selector.rentabilidad_ponderada_pct} %]` : ''}${v2 ? ` (v2: ${v2.rentabilidad_ponderada_pct} % ${v2.senal})` : ''}${revisar ? ' ¡REVISAR!' : ''}${k !== 1 ? ` (precio ${f(precio)} frente a ${f(precioInforme)} del informe, ${k >= 1 ? '+' : ''}${f((k - 1) * 100, 1)} %)` : ''}`);
 }
 if (cambios.length) console.log(`\n${simular ? 'Cambiarían' : 'Han cambiado'} ${cambios.length} de ${carpetas.length}:\n${cambios.join('\n')}`);
 else if (carpetas.length > 1) console.log(`\nSin cambios de señal ni de rentabilidad en ${carpetas.length} informes.`);
