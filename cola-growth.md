@@ -4,12 +4,12 @@ Análisis growth: método en `verticales/growth/metodo.md`, procedimiento en `.c
 
 | Tanda | Empresa | Ticker | Por qué growth |
 |---|---|---|---|
-| 5 | Snowflake | SNOW | Plataforma de datos para IA; el crecimiento de producto se reacelera y el múltiplo está lejos de su pico |
-| 5 | Samsara | IOT | Sensores y software para flotas y plantas; crece ~30 % con margen bruto ~75 % y FCF ya positivo |
-| 5 | Zscaler | ZS | Ciberseguridad en la nube (cero confianza); complementa a CrowdStrike y Cloudflare, en Mantener |
-| 5 | Dexcom | DXCM | Monitores continuos de glucosa; cayó por problemas de calidad y competencia: posible giro de percepción |
+| 6 | MongoDB | MDB | Base de datos para aplicaciones de IA; Atlas reacelera y el múltiplo está bajo frente a su historia |
+| 6 | Insulet | PODD | Bombas de insulina sin tubos; crece ~20 % con márgenes al alza y complementa a Dexcom |
+| 6 | Toast | TOST | Software y pagos para restaurantes; crece ~25 % y ya genera caja |
+| 6 | HubSpot | HUBS | CRM para pymes castigado por el miedo a la IA: posible giro de percepción si el crecimiento aguanta |
 
-Tanda 5 en marcha desde el 14-oct (16:05).
+Tanda 6 propuesta al usuario el 14-oct; se arranca al recibir el visto bueno o la orden de seguir.
 
 Al acabar una empresa: se quita de aquí y queda en `informes-growth/resumen.md`.
 
@@ -21,6 +21,8 @@ Al acabar una empresa: se quita de aquí y queda en `informes-growth/resumen.md`
 4. Entrega única de la tanda: tabla (puntos, ponderada/base, señal, compra hasta), cuáles merecen hueco con peso y en EUR (mínimo 1.000 EUR por posición, bolsillo growth ≤ 20 %), riesgos, y las mejoras del método propuestas.
 
 **Mejoras propuestas por la tanda 4 (14-oct)**: partir de la guía de la empresa cuando sea menor que el crecimiento mecánico y ya haya anunciado que frena (Datadog, Duolingo, Wise: es la que más cambia resultados; Duolingo pasa de +40,6 % a +12,5 % y Datadog y Wise pasarían a Mantener), y la guía firme como suelo si el historial de cumplimiento es ≥ 4 (Celestica); regla del 40 con FCF menos pagos en acciones si superan el 10-15 % de las ventas (Datadog, Duolingo); euforia también a 6 meses (Datadog, +156 %); «desaceleración fuerte» de tesis rota en cifras, separando la anunciada de la sorpresa (Duolingo); tope propio por EV/EBITDA o PER para fabricantes con margen bruto < 20 % y empresas ya rentables (Celestica, Wise); en fintech con intereses, separar comisiones e intereses netos (Wise); probabilidades 35/50/15 con una investigación penal o de supervisor abierta (Wise).
+
+**Mejoras propuestas por la tanda 5 (14-oct)**: la proyección desde la guía vuelve a recortar en Samsara, Zscaler y Dexcom (seis de ocho casos en dos tandas: conviene probarla ya en el backtest), pero sumando lo que la empresa suele batir su guía (Samsara: +24 % guiado, +30 % real) y solo para recortar (Snowflake guía por encima); crecimiento orgánico si las compras aportan > 3 pp (Zscaler, Red Canary); regla del 40 con FCF menos pagos en acciones (Snowflake: 54 → 24); con EV/EBITDA y ventas del analista, aplicar también el margen EBITDA implícito (Dexcom: hoy el precio saldría ~3 veces mayor).
 
 **Mejoras del método propuestas por los informes, pendientes de probar con el backtest** (`node herramientas/growth-backtest.mjs` y `growth-backtest2.mjs --validacion`; apuntar en `metodo.md` §7): proyección que respete la desaceleración (argenx; es la v8); señal de múltiplo solo si sigue ≤ 1,3 × su mediana (Cloudflare; v8); modo para bancos (Nu: PER o P/VC frente a ROE, morosidad, CET1) y campo explícito `tipo_multiplo` en vez de leer la palabra «ventas» de `metrica`; estado «vigilancia por tendencia» con su condición de activación (Axon); margen bruto del negocio recurrente en empresas mixtas (Axon); revisiones basadas en estimaciones y no en precios objetivo (Nu); fijar cómo se calcula `anios_hasta_objetivo` (Cloudflare); en plataformas que cobran pagos en bruto, proyectar y valorar el beneficio bruto y sumar participaciones cotizadas con descuento (Shopify); en modo mecánico, medir la desaceleración con la propia proyección para no castigar dos veces, y pedidos/ventas como suelo del crecimiento en bienes de equipo (BE Semiconductor); `dilucion_esperada_pct` aparte para no repetir una emisión ya en caja, y suma de partes si hay una compra pendiente > 20 % del EV (Rocket Lab); con EV/EBITDA, margen objetivo (`margen_ebitda_obj_pct`), tope de valoración propio (1,5 × comparables o 25x) y regla común de crecimiento nominal o comparable (Siemens Energy).
 

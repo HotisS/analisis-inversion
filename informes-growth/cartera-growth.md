@@ -1,6 +1,6 @@
 # Cartera growth (bolsillo growth)
 
-**Compras aprobadas por el usuario el 14-oct-2026, 15:29** («ok a las compras growth»), con el método v7 (`verticales/growth/metodo.md`). Se pagan con liquidez; la cartera value no cambia. Bolsillo growth ≈ 16 % de la cartera con Shopify y ≈ 20 % con Datadog (tope 20 %): queda lleno, y cualquier Comprar nuevo tiene que decir qué growth sustituye y por qué.
+**Compras aprobadas por el usuario el 14-oct-2026, 15:29** («ok a las compras growth»), con el método v7 (`verticales/growth/metodo.md`). Se pagan con liquidez; la cartera value no cambia. Bolsillo growth ≈ 16 % de la cartera con Shopify y ≈ 20 % con Snowflake (tope 20 %): queda lleno, y cualquier Comprar nuevo tiene que decir qué growth sustituye y por qué.
 
 | Valor | Total | Tramo 1 (ya, con límite) | Tramo 2 | Límite máximo | Peso | Motivo de negocio |
 |---|---|---|---|---|---|---|
@@ -8,13 +8,13 @@
 | argenx (ARGX) | 2 acciones (≈1.450 EUR) | 1 acción | 1 tras resultados del 3T (22-oct) | 1.134 USD | 4,9 % | Vyvgart crece > 60 %; nuevas indicaciones |
 | Shopify (SHOP), añadida el 14-oct a las 15:46 con la delegación del usuario («las órdenes tú mandas», 15:39) | 8 acciones (≈1.250 EUR) | 4 acciones | 4 tras resultados del 3T (3-nov) | 193,2 USD | 4 % | Plataforma de comercio (no minorista) que crece más del 30 % a 28x el beneficio bruto |
 | Axon (AXON) | 3 acciones (≈1.100 EUR) | 2 acciones | 1 tras resultados del 3T (principios de noviembre) | 528 USD | 3,7 % | Cámaras y software para policía, barata frente a su historia |
-| Datadog (DDOG), añadida el 14-oct (tanda 4) en lugar de Duolingo, que el usuario descartó (16:07: «duolingo me da miedo ciclo e IA, quizás mejor datadog o wise»), con su delegación de órdenes (15:39) | 5 acciones (≈1.215 EUR; 4 no llegan al mínimo de 1.000 EUR) | 3 acciones, pagadas cancelando la orden con límite value de Deutsche Börse | 2 tras resultados del 3T (principios de noviembre, fecha sin anunciar), si el crecimiento supera el ~28 % de la guía | 282 USD (la regla da 299,3; 282 es el máximo con la guía como punto de partida) | 4 % | Observabilidad en la nube: cuatro trimestres acelerando (+36 %), margen bruto 80 %, FCF 27 % |
+| Snowflake (SNOW), añadida el 14-oct (tanda 5) en lugar de Datadog, con la delegación del usuario (15:39) | 4 acciones (≈1.170 EUR) | 2 acciones, pagadas cancelando la orden con límite value de Deutsche Börse | 2 tras resultados del 3T fiscal (≈2-dic), si el producto crece ≥ 30 % y cumple la guía | 374 USD (la regla da 378,5) | 4 % | Datos para IA: el producto acelera cuatro trimestres seguidos (+29 % → +37 %), retención neta 126 % y guía subida de +27 % a +36 %; FCF 22 % |
 
 - Si el precio supera el límite, no se compra: se recalcula con `node motor/growth.mjs` al precio del día.
 - Salida por tesis (señales de venta de cada informe), no por precio.
 - Liquidez: los tramos 1 (≈2.450 EUR) caben junto a las órdenes con límite value; los tramos 2 (≈2.400 EUR) solo con la liquidez que quede tras las órdenes value ejecutadas o vencidas el 7-nov.
-- Datadog (tanda 4): tras Shopify no quedaba liquidez. El tramo 1 (≈730 EUR) sale de cancelar la orden con límite de Deutsche Börse, la suplente value de menor rentabilidad (+8,6 %); cancelar una orden no ejecutada no cuesta comisión ni impuesto. El tramo 2, de la liquidez del 7-nov. Duolingo queda descartada por el usuario (miedo al ciclo y a la IA).
-- Suplente growth (tanda 4): Wise (Comprar baja, +7,6 %, frágil; se revisa con su 2T del 15-oct y, si sube a convicción media, se propone como sustituta; ≤ 12,5 USD). Celestica: no comprar.
+- Datadog → Snowflake (tanda 5, 14-oct 16:15 UTC): Datadog entró en lugar de Duolingo (que el usuario descartó a las 16:07 por miedo al ciclo y a la IA), pero partiendo de su propia guía (frena al ~28 %) su ponderada cae a ≈ +9 %. Snowflake es el mismo tipo de negocio (software de datos en la nube) y su guía va **por encima** de la regla: su +16,8 % al precio actual no depende de la proyección. La orden de Datadog no se había ejecutado, así que cambiarla no cuesta nada. El tramo 1 de Snowflake (≈585 EUR) sale de cancelar la orden con límite de Deutsche Börse; el tramo 2, de la liquidez del 7-nov.
+- Suplentes growth, por orden: 1) Dexcom (Comprar baja, +16,7 % y +12 % con la guía; ≤ 90,7 USD; diversifica fuera del software y es la de menor bajista, −35 %); 2) Datadog (≤ 282 USD); 3) Samsara (+21,6 % por la regla, +9 % con la guía; ≤ 42,9 USD); 4) Zscaler (+25,6 % por la regla, +9 % con la guía y ejecución comercial dudosa; ≤ 212 USD); 5) Wise (se revisa con su 2T del 15-oct). Celestica: no comprar.
 
 ## Revisión de precios antes de cada orden
 
@@ -26,6 +26,10 @@ Regla del usuario (14-oct, 16:10): antes de proponer o mantener una orden, se mi
 | argenx | 828,94 USD, 14-oct 16:10 UTC | 1.134 USD | +43,7 % / +38,8 % | Comprar (baja) | Sí |
 | Axon | 404,80 USD, 14-oct 16:10 UTC | 528 USD | +37,1 % / +31,0 % | Comprar (baja) | Sí |
 | Shopify | 172,48 USD, 14-oct 16:10 UTC | 193,2 USD | +17,6 % / +20,8 % | Comprar (media) | Sí |
-| Datadog | 273,96 USD, 14-oct 16:10 UTC | 282 USD | +14,7 % / +17,8 % | Comprar (media) | Sí |
+| Datadog | 273,96 USD, 14-oct 16:10 UTC | 282 USD | +14,7 % / +17,8 % | Comprar (media) | Sustituida por Snowflake a las 16:15 |
+| Snowflake | 340,27 USD, 14-oct 16:15 UTC | 374 USD | +16,8 % / +20,0 % | Comprar (media) | Sí (entra) |
+| Dexcom (suplente) | 84,09 USD, 14-oct 16:15 UTC | 90,7 USD | +16,7 % / +19,8 % | Comprar (baja) | Suplente |
+| Samsara (suplente) | 40,94 USD, 14-oct 16:15 UTC | 42,9 USD | +21,6 % / +24,8 % | Comprar (media) | Suplente |
+| Zscaler (suplente) | 223,60 USD, 14-oct 16:15 UTC | 212 USD | +25,6 % / +19,5 % | Comprar (baja) | Suplente; por encima del límite prudente |
 
-Precios de Yahoo (chart API, sesión en curso). Las cinco siguen por debajo de su límite y en Comprar.
+Precios de Yahoo (chart API, sesión en curso). Las órdenes vivas siguen por debajo de su límite y en Comprar.

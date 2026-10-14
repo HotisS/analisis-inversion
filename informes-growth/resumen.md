@@ -8,8 +8,12 @@ Lo genera `node motor/growth.mjs --todos` (no editar a mano). Método v7: [verti
 | Duolingo | DUOL | 70.8 | 5/8 | +40,6 % | +34,3 % | Comprar (baja) | 3.5 % | 187.5 USD | 2026-10-14 |
 | Axon Enterprise | AXON | 68.2 | 3/8 | +34,2 % | +28,3 % | Comprar (baja) | 3.5 % | 528.4 USD | 2026-10-14 |
 | Nu Holdings | NU | 78.3 | 4/8 | +27,4 % | +21,8 % | Comprar (media) | 4 % | 18.9 USD | 2026-10-14 |
+| Zscaler | ZS | 69 | 4/8 | +22,9 % | +16,8 % | Comprar (baja) | 3.5 % | 267.1 USD | 2026-10-14 |
+| Samsara | IOT | 78.5 | 7/8 | +20,6 % | +23,8 % | Comprar (media) | 4 % | 47.4 USD | 2026-10-14 |
+| Dexcom | DXCM | 68.2 | 7/8 | +16,7 % | +19,8 % | Comprar (baja) | 3.5 % | 94.5 USD | 2026-10-14 |
 | Shopify | SHOP | 77.8 | 5/8 | +14,9 % | +18,1 % | Comprar (media) | 4 % | 193.2 USD | 2026-10-14 |
 | Cloudflare | NET | 81.3 | 6/8 | +13,4 % | +16,5 % | Mantener | — | 226.2 USD | 2026-10-14 |
+| Snowflake | SNOW | 78 | 6/8 | +11,1 % | +14,1 % | Comprar (media) | 4 % | 378.5 USD | 2026-10-14 |
 | Datadog | DDOG | 79.8 | 5/8 | +10,9 % | +13,9 % | Comprar (media) | 4 % | 299.3 USD | 2026-10-14 |
 | CrowdStrike Holdings | CRWD | 81.2 | 7/8 | +10,6 % | +13,6 % | Mantener | — | 170.3 USD | 2026-10-14 |
 | Siemens Energy AG | ENR | 57.5 | 3/8 | +8,5 % | +9,7 % | Mantener | — | 147.9 EUR | 2026-10-14 |
