@@ -19,6 +19,9 @@
 //   it2       historia adelantada y base a MITAD de camino entre el actual y la mediana (media geométrica), en los
 //             dos sentidos; bajista = mín(mínimo 5 a, base × 0,80); alcista = máx(media 8 a, mediana) con techo
 //             base × 1,35.
+//   it2tope, it2t120, it2t115, it2t110  it2 con tope del base (×1,3, ×1,2, ×1,15, ×1,10 sobre el actual). La regla v3 vigente
+//             (14-oct tarde) es it2t110: con ×1,3, en las empresas que cotizan a menos de 2/3 de su mediana el sesgo era +21 %.
+//   it2p40, it2m10a, it2sin2021  it2 (tope ×1,3) con otro ancla: percentil 40 de 5 años, mediana de 10 años, mediana sin 2020-21.
 //   it2cierre it2 con la historia al cierre (trailing), para saber qué pasa si se aplica a informes antiguos.
 //   it2b, it2c reversión solo para las baratas (base a mitad de camino hacia la mediana si el actual está por debajo;
 //             base = mediana si está por encima, como v2) con las colas de v2 (0,85 / 1,30) o algo más anchas (0,80 / 1,35).
@@ -84,7 +87,9 @@ function historia(emp, t, base) {
   const limpio = per.filter((x) => x.per > 0 && x.per < 150); // sin pérdidas ni burbujas evidentes
   const u5 = limpio.slice(-5).map((x) => x.per), u8 = limpio.slice(-8).map((x) => x.per);
   if (u5.length < 3) return null;
-  return { mediana_5a: mediana(u5), minimo_5a: Math.min(...u5), media_larga: media(u8), n: u5.length };
+  const u10 = limpio.slice(-10).map((x) => x.per), sin2021 = limpio.filter((x) => x.y < 2020 || x.y > 2021).slice(-5).map((x) => x.per);
+  return { mediana_5a: mediana(u5), minimo_5a: Math.min(...u5), media_larga: media(u8), n: u5.length,
+    p40_5a: pct(u5, 0.4), mediana_10a: mediana(u10), mediana_sin2021: sin2021.length >= 3 ? mediana(sin2021) : mediana(u5) };
 }
 
 // ── 3. Variantes de la regla: devuelven { bajista, base, alcista } (múltiplos) ──
@@ -99,7 +104,12 @@ const VARIANTES = {
   it2: { base: 'adelantado', regla: (actual, h) => reversion(actual, h, 0.5, 0.8, 1.35) },
   it2cierre: { base: 'cierre', regla: (actual, h) => reversion(actual, h, 0.5, 0.8, 1.35) },
   it2tope: { base: 'adelantado', regla: (actual, h) => reversion(actual, h, 0.5, 0.8, 1.35, 1.3) },
-  it2tope2: { base: 'adelantado', regla: (actual, h) => reversion(actual, h, 0.5, 0.8, 1.35, 1.2) },
+  it2t120: { base: 'adelantado', regla: (actual, h) => reversion(actual, h, 0.5, 0.8, 1.35, 1.2) },
+  it2t115: { base: 'adelantado', regla: (actual, h) => reversion(actual, h, 0.5, 0.8, 1.35, 1.15) },
+  it2t110: { base: 'adelantado', regla: (actual, h) => reversion(actual, h, 0.5, 0.8, 1.35, 1.1) },
+  it2p40: { base: 'adelantado', regla: (actual, h) => reversion(actual, { ...h, mediana_5a: h.p40_5a }, 0.5, 0.8, 1.35, 1.3) },
+  it2m10a: { base: 'adelantado', regla: (actual, h) => reversion(actual, { ...h, mediana_5a: h.mediana_10a }, 0.5, 0.8, 1.35, 1.3) },
+  it2sin2021: { base: 'adelantado', regla: (actual, h) => reversion(actual, { ...h, mediana_5a: h.mediana_sin2021 }, 0.5, 0.8, 1.35, 1.3) },
   it2b: { base: 'adelantado', regla: (actual, h) => asimetrica(actual, h, 0.5, 0.85, 1.3) },
   it2c: { base: 'adelantado', regla: (actual, h) => asimetrica(actual, h, 0.5, 0.8, 1.35) },
   it3: { base: 'adelantado', regla: null, calibrar: true },
@@ -220,6 +230,10 @@ const t3 = tabla(prueba, 'Solo prueba, con pesos 15/70/15', [15, 70, 15]); parte
 const baratas = obs.filter((o) => o.actual < o.hA.mediana_5a), caras = obs.filter((o) => o.actual >= o.hA.mediana_5a);
 const t4 = tabla(baratas, `Solo empresas por debajo de su mediana adelantada (${baratas.length})`, [25, 50, 25]); partes.push(t4.md);
 const t5 = tabla(caras, `Solo empresas por encima de su mediana adelantada (${caras.length})`, [25, 50, 25]); partes.push(t5.md);
+// desrateadas: mediana adelantada ≥ 1,5 × actual (lo que pasa en 2026 con software, salud y consumo); es donde el tope manda
+const desr = obs.filter((o) => o.hA.mediana_5a / o.actual >= 1.5), desrP = prueba.filter((o) => o.hA.mediana_5a / o.actual >= 1.5);
+const t6 = tabla(desr, `Solo desrateadas: mediana adelantada ≥ 1,5 × PER actual (${desr.length})`, [25, 50, 25]); partes.push(t6.md);
+const t7 = tabla(desrP, `Solo desrateadas, solo prueba (${desrP.length})`, [25, 50, 25]); partes.push(t7.md);
 // lo que pasó de verdad con el múltiplo
 const ratioA = obs.map((o) => o.perRealAdelantado / o.actual);
 partes.push(`### Lo que hizo el múltiplo adelantado de verdad (PER adelantado en t+1 ÷ PER actual en t)\n\n| | p10 | p25 | Mediana | p75 | p90 |\n|---|--:|--:|--:|--:|--:|\n| Todas (${obs.length}) | ${f1(pct(ratioA, 0.1), 2)} | ${f1(pct(ratioA, 0.25), 2)} | ${f1(pct(ratioA, 0.5), 2)} | ${f1(pct(ratioA, 0.75), 2)} | ${f1(pct(ratioA, 0.9), 2)} |\n| Por debajo de su mediana (${baratas.length}) | ${['0.1', '0.25', '0.5', '0.75', '0.9'].map((p) => f1(pct(baratas.map((o) => o.perRealAdelantado / o.actual), +p), 2)).join(' | ')} |\n| Por encima de su mediana (${caras.length}) | ${['0.1', '0.25', '0.5', '0.75', '0.9'].map((p) => f1(pct(caras.map((o) => o.perRealAdelantado / o.actual), +p), 2)).join(' | ')} |\n`);
@@ -233,5 +247,5 @@ if (DETALLE) {
 const ruta = (p) => (isAbsolute(p) ? p : join(raiz, p));
 mkdirSync(dirname(ruta(SALIDA)), { recursive: true });
 writeFileSync(ruta(SALIDA), partes.join('\n'), 'utf8');
-if (JSON_SALIDA) writeFileSync(ruta(JSON_SALIDA), JSON.stringify({ fecha: hoy, empresas: empresas.length, observaciones: obs.length, calibracion: { lambda: cal.lambda, bajista: cal.fBaj, alcista: cal.fAlc }, todas: t1.filas.map(({ filas, ...r }) => r), prueba: t2.filas.map(({ filas, ...r }) => r), prueba_15_70_15: t3.filas.map(({ filas, ...r }) => r) }, null, 1), 'utf8');
+if (JSON_SALIDA) writeFileSync(ruta(JSON_SALIDA), JSON.stringify({ fecha: hoy, empresas: empresas.length, observaciones: obs.length, calibracion: { lambda: cal.lambda, bajista: cal.fBaj, alcista: cal.fAlc }, todas: t1.filas.map(({ filas, ...r }) => r), prueba: t2.filas.map(({ filas, ...r }) => r), prueba_15_70_15: t3.filas.map(({ filas, ...r }) => r), desrateadas: t6.filas.map(({ filas, ...r }) => r), desrateadas_prueba: t7.filas.map(({ filas, ...r }) => r) }, null, 1), 'utf8');
 console.log(partes.join('\n'));

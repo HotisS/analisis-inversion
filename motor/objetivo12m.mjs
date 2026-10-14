@@ -28,7 +28,9 @@
 
 export const REGLA_12M = {
   descuentoBajista: 0.85, techoAlcista: 1.3, comprar: 15, comprarBase: 12, vender: -10,
-  v3: { reversion: 0.5, descuentoBajista: 0.8, techoAlcista: 1.35, topeBase: 1.3 },
+  // topeBase: ×1,3 del 14-oct (mediodía) pasó a ×1,1 el mismo día por la tarde (backtest: en las desrateadas el sesgo baja de
+  // +21 % a +3 % fuera de muestra). `topeBaseAnterior` se usa para dar la cifra con el tope viejo al lado.
+  v3: { reversion: 0.5, descuentoBajista: 0.8, techoAlcista: 1.35, topeBase: 1.1, topeBaseAnterior: 1.3 },
 };
 
 const num = (v) => (v === null || v === undefined || v === '' || Number.isNaN(Number(v)) ? null : Number(v));
@@ -36,15 +38,15 @@ const r = (x, d = 2) => (x === null || !Number.isFinite(x) ? null : Math.round(x
 
 // PER de cada escenario con la regla. h = { actual, mediana_5a, minimo_5a, media_larga, base? }, comps = { mediana }.
 // h.base: "adelantado" (historia en la misma base que el actual → regla v3) o "cierre" / ausente (regla v2).
-export function multiplosRegla(h = {}, comps = {}) {
+export function multiplosRegla(h = {}, comps = {}, { topeBase = null } = {}) {
   const actual = num(h.actual), med = num(h.mediana_5a), min = num(h.minimo_5a), larga = num(h.media_larga), cm = num(comps.mediana);
   const v3 = /^adelantad/i.test(String(h.base || ''));
   if (v3 && actual > 0 && med > 0) {
-    const P = REGLA_12M.v3;
+    const P = topeBase ? { ...REGLA_12M.v3, topeBase } : REGLA_12M.v3;
     const sinTope = actual * (med / actual) ** P.reversion;
-    // Tope: el base no se aleja del actual más de ×1,3 ni menos de ÷1,3. Una acción que ha caído a un cuarto de su
-    // múltiplo (Adobe en 2026) no recupera la mitad del camino en un año; en el backtest el tope no cambia el sesgo
-    // (+3,5 %) y baja el error del base (17,5 % frente a 18,7 %).
+    // Tope: el base no se aleja del actual más de ×1,1 ni menos de ÷1,1. Una acción que ha caído a un cuarto de su
+    // múltiplo (Adobe en 2026) no recupera la mitad del camino en un año: en el backtest, en las que cotizan a menos
+    // de 2/3 de su mediana, con ×1,3 el sesgo era +21 % y el error 21 %; con ×1,1, +2,6 % y 15 % (fuera de muestra).
     const base = Math.min(Math.max(sinTope, actual / P.topeBase), actual * P.topeBase);
     const conTope = Math.abs(base - sinTope) > 1e-9;
     const bajista = min !== null && min > 0 && min < base * P.descuentoBajista ? min : base * P.descuentoBajista;
@@ -83,10 +85,10 @@ export function senal12m(pond, base, vi = null, precio = null) {
 // o = valoracion.objetivo_12m del informe; prob = [bajista, base, alcista] en %; dpa = dividendo por acción ordinario;
 // confianza = la del resumen del informe («Baja» deja un Comprar en Mantener hasta confirmar los datos).
 // Los casos con métrica distinta del PER (EV/EBITDA) llevan su precio y no se recalculan.
-export function calcularObjetivo12m(o, { precio, dpa = 0, prob = null, valorIntrinseco = null, confianza = null } = {}) {
+export function calcularObjetivo12m(o, { precio, dpa = 0, prob = null, valorIntrinseco = null, confianza = null, topeBase = null } = {}) {
   if (!o || !Array.isArray(o.casos) || !precio) return null;
   const caso = (e) => o.casos.find((c) => new RegExp(e, 'i').test(c?.escenario || '')) || null;
-  const regla = multiplosRegla(o.per_historico, o.comparables_per);
+  const regla = multiplosRegla(o.per_historico, o.comparables_per, { topeBase });
   const filas = ['Bajista', 'Base', 'Alcista'].map((e) => {
     const c = caso(e) || {}, k = e.toLowerCase();
     const bpa = num(c.beneficio_por_accion), esPer = !c.metrica || /^PER/i.test(c.metrica);

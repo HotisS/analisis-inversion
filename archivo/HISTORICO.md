@@ -11,6 +11,8 @@
 
 ## Cambios
 
+- **14-oct-2026 (tarde, 2).** El tope del base de la regla v3 pasa de ×1,3 a ×1,1 (`REGLA_12M.v3.topeBase`): con ×1,3, 48 informes estaban en el tope y la cartera daba +30 %; el backtest en las desrateadas (mediana ≥ 1,5 × actual) daba sesgo +21 % con ×1,3 y +2,6 % con ×1,1 (fuera de muestra), sin perder en el conjunto. Doce variantes probadas (ventana 10 años, sin 2020-21, percentiles, reversión 0,25, topes): ninguna otra arregla las desrateadas. Las 144 revisiones se recalcularon; `v3_tope_anterior` guarda la cifra con ×1,3. Uber vuelve a v2 (BPA publicado con liberaciones fiscales). Detalle en `verticales/empresa/objetivo-12m.md`.
+
 - **14-oct-2026, 16:45: cartera revisada con la migración v3; v2 decide y v3 ordena.** Tabla `informes/ordenes-2026-10-15.md`. Sustituye a la propuesta de las 14:50 (`informes/cartera-2026-10-14-15h.md`: Bureau Veritas a ≤ 26,90, LVMH a ≤ 385, Amadeus entre las compras). Ahora Bureau Veritas va a ≤ 27,80 y LVMH a ≤ 392, porque pasan con v2 al cierre; Amadeus va a la lista de espera para que la liquidez no quede negativa. Entra Adyen en la lista. Motivo de usar v2 para decidir: en 48 de 135 informes, el base v3 sale del tope de ×1,3 sobre el PER actual.
 - **14-oct-2026: quinta hora value terminada** (16 empresas, todas Mantener; ServiceNow con v2 y el resto con v3). Sexta hora propuesta en `cola.md` para una sesión nueva.
 
