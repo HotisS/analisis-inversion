@@ -16,3 +16,4 @@ Lo que se vea fallar o mejorable en los 16 análisis. Los puntos de la sexta hor
 - **Patrimonio casi nulo por recompras** (Colgate 54 M): el ROIC sobre capital invertido (deuda + patrimonio − caja) es la medida correcta; el motor debería avisar cuando el patrimonio es < 5 % de los activos.
 - **ESEF alemán ausente en filings.xbrl.org** (Beiersdorf, como Symrise en la sexta): `cuentas.mjs --esef` falla con Alemania. Buscar otra fuente (Unternehmensregister) o avisar de entrada para no gastar tiempo.
 - **M6 «el objetivo se mueve con el precio»** sale también en Beiersdorf: confirma que es un aviso general de `robustez.mjs` que conviene revisar.
+- **BPA con derivados a valor razonable** (Hershey: coberturas de cacao): el ajustado de la empresa (sin derivados ni reorganización) es la base buena y la robustez lo marca (D4); pedir siempre la conciliación publicado → ajustado en la nota A.
