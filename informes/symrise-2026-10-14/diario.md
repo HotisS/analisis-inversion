@@ -1,0 +1,23 @@
+# Diario · Symrise (SY1) · 14-oct-2026
+
+- Commit de partida: 7e8f700 (Seguimiento: regenerado). Prompt y motor sin cambios durante el trabajo; el encargo se actualizó a mitad (selector de método): lo aplica el motor.
+- Entorno: nube de Claude Code con red abierta; sin subagentes (notas A-E y propio hechas por mí: `notas/construir-notas.mjs` escribe A-E; `propio.mjs` + `supuestos.mjs` + `textos.mjs`).
+- Fecha de corte 2026-10-14; EUR; ejercicio natural; NIIF-UE; cuenta por función. Precio 96,98 EUR, cierre del 14-oct (`bolsa.mjs`, Yahoo).
+- Tiempos: ≈17:00 inicio · 17:30 cuentas y mercado · 17:45 primer cálculo · 17:52 Word y PDF · 17:58 revisión 12 m y robustez (≈55 min).
+- **ESEF**: Symrise no está en filings.xbrl.org (`--esef "Symrise"` sin entidad; con el LEI de GLEIF 529900D82I6R9601CF26, 404). Cuentas de los PDF auditados: estados consolidados 2022, 2023, 2024 (symrise.com/corporatereport/…) y Corporate Report 2025; 1S26 del informe intermedio. **Ingresos y deuda comprobados a mano**: ventas consolidadas (los dos segmentos suman el total); deuda financiera = «Borrowings» corriente + no corriente (2025: 400 + 2.062; jun-26: 37 + 2.059), arrendamientos aparte (corto + largo). La deuda neta resultante cuadra con la publicada (1.620 M en 2025, 1.826 M en junio).
+- **Swedencare**: 40,84 % en puesta en equivalencia; deteriorada 126 M (2022) y 150 M (2025, valor en uso 295,2 M con WACC 8,60 %); test de junio de 2026 sin deterioro (WACC 8,45 %). Valor de mercado 231,5 M a 31-dic-25 (38,40 SEK) → ≈133 M hoy (22,85 SEK, EUR/SEK 11,19; tras el 2T flojo del 22-jul). En el puente: asociadas a 273 M (Swedencare a mercado + resto a libros 140 M), no a los 435 M contables. Diferencia ≈160 M ≈ 1,2 EUR/acción: riesgo de tercer deterioro (3T de Swedencare el 21-oct).
+- Otros deterioros: terpenos (grupo enajenable) 149 M en 2025, registrado en amortizaciones (el EBITDA publicado no lo recoge); acuicultura de Ecuador vendida en jun-26 sin efecto.
+- Decisiones: EBITDA del motor sin participadas (`participadas_en_ebitda` con los deterioros de Swedencare dentro) y `no_recurrentes_en_ebitda` = diferencia hasta el ajustado (2023: 51,8; 2025: 18,2). BPA de la historia del PER = ajustado (2023 estimado con 52 M al 25 %). Excluidos 2020-2021 (tipos cero), como en Givaudan. Acciones a 11-sep (135,82 M; verificado en el 31.º informe de recompra); caja del puente −119 M por la recompra desde junio (estimación); BPA a 12 meses con 134,9 M (recompra completa). Pensiones netas de impuestos al 30 %. Transacciones omitidas (sin múltiplos de fuente original). Comparables de Yahoo (mismo proveedor), PER del año próximo.
+- WACC 6,98 % (Bund 3,51 % de Bundesbank, beta 0,75, prima 5,5 %); terminal 2,25 %. Sostenibilidad «En parte» (prueba hecha a mano: reinversión del motor 8 % por amortización de intangibles comprados); sin rebaja del base.
+- Resultado: DCF 87,31; valor intrínseco 91,07 (−6,1 %); con la prima del mercado 107,47. DCF inverso 8,1 % de crecimiento (base 4,3 %) o margen del 24 %. ROIC motor 9,1 % (2024) / 7,1 % (2025 con deterioros); ≈10,8 % ajustado → ROIC − WACC 2-4 puntos: **calidad No**.
+- **Línea 12 m**: selector sin marcas → v3: objetivo 110,92 EUR, ponderada +15,7 %, base +20,3 % (apuntar-12m --simular: 20,4 %); v2 12,6 % / 9,6 %. **Mantener, convicción baja** (absoluta Vender, relativa Mantener). Comprar < 91,07; vender > 124,63. Detalle en `revision-12m-2026-10-14.md`.
+- Robustez (`robustez.mjs`): **SÓLIDA**, acción robusta Mantener en cartera; D6 CONFIANZA (BPA desde el 1,78 publicado con deterioros: rebote explicado, 7,1 % anual desde el ajustado), E2 aviso (resultados el 28-oct), D3 aviso (sin cierre en precios.json, lo actualiza el coordinador).
+- Controles: 18 de 20 y 2 explicados (tipo impositivo de 2025; crecimiento del BPA). 29 fuentes. Cobertura 84,3 %. 37 páginas.
+- Ficha sectorial `sectores/ingredientes-especiales-2026-10-14.md`: no existía al llegar a comparables; sector y comparables propios.
+- Pendiente (coordinador): `apuntar-12m.mjs` sin `--simular`, `seguimiento.mjs`, commit.
+
+## Lecciones
+
+- Emisores alemanes pueden no estar en filings.xbrl.org (Symrise: 404 con su LEI de GLEIF). Los estados consolidados de años anteriores de Symrise están en rutas fijas `symrise.com/corporatereport/<año>/…`; los enlaces `securedl` de la web de inversores caducan y no bajan fuera de la sesión.
+- `integrar.mjs` une fuentes por URL sin el fragmento `#`: para varios PDF de la misma página de inversores usar `?doc=<nombre>` o se funden en una sola fuente.
+- Una asociada cotizada con deterioros recurrentes (Swedencare) se lleva al puente a precio de mercado, no a valor en uso: aquí resta ≈1,2 EUR/acción frente al contable.
