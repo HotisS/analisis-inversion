@@ -11,6 +11,8 @@
 
 ## Cambios
 
+- **14-oct-2026 (17:30): pruebas de robustez obligatorias.** El usuario pidió que las decisiones sean defendibles sin que él tenga que encontrar el fallo (Uber, Experian, v3, Edenred, Nu, Constellation). `herramientas/robustez.mjs` (value) y `robustez-growth.mjs` recalculan cada informe con variantes razonables, marcan los fallos de datos y de regla y dan la «acción robusta». Paso obligatorio de `/analiza-empresa`, `/analiza-growth` y de cada orden. Resultados y defensas en `informes/robustez-2026-10-14/`; método en `verticales/empresa/robustez.md`.
+
 - **14-oct-2026, 17:10: limpieza de MEMORIA y cola** (pedido del usuario). Se retiran de MEMORIA:
   - la regla de múltiplos v2 (base = menor entre el PER actual y la mediana; techo ×1,30), sustituida por v3 ×1,1;
   - las órdenes del 13-oct (`informes/cartera-concentrada-2026-10-13.md`: Nemetschek ≤ 68, Intuit ≤ 300, Auto Trader ≤ 4,95, Wolters Kluwer ≤ 72, ventas con stop) y la «versión 9» de la cartera;
