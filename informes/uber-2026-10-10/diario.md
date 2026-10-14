@@ -8,3 +8,5 @@
 - 14-oct-2026: objetivo a 12 meses con la regla de múltiplos común (`valoracion.objetivo_12m`): ponderada +18,1 % → +11,2 %, base +19,1 %, señal Mantener (`revision-12m-2026-10-13.md`).
 
 - 2026-10-14: datos-v2.json = regla de múltiplos v3 con la historia del PER adelantada construida por herramientas/historia-adelantada.mjs (3 años; mediana 13.5x, mínimo 12.8x, media larga 18.2x; antes v2 nullx/nullx/nullx). Solo cambian el objetivo a 12 meses y la señal; el Word no se regenera.
+
+- 14-oct-2026: datos-v3.json vuelve a la regla v2 (historia del PER adelantado descartada a mano: BPA publicado 2024-2025 inflado por liberaciones fiscales).

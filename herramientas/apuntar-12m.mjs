@@ -9,6 +9,9 @@
 //   node herramientas/apuntar-12m.mjs --precios [--todos | <carpeta> …] último cierre de verticales/empresa/precios.json
 //                                                                      (node herramientas/precios.mjs) para todas al
 //                                                                      mismo cierre: antes de una cartera o una compra
+//   … --actual                                                         con la sesión en curso de precios.json (si la hay) en vez
+//                                                                      del último cierre: la regla de «precio actual antes de
+//                                                                      cada orden» (MEMORIA.md), normalmente con --simular
 //   … --simular                                                        enseña lo que cambia sin escribir
 //
 // Con un precio nuevo, el PER actual de la historia (`per_historico.actual` = precio ÷ BPA) se mueve en la misma
@@ -27,7 +30,7 @@ const args = process.argv.slice(2);
 const opcion = (k) => { const i = args.indexOf(k); return i >= 0 ? args.splice(i, 2)[1] : null; };
 const bandera = (k) => { const i = args.indexOf(k); if (i >= 0) args.splice(i, 1); return i >= 0; };
 const fechaPedida = opcion('--fecha'), precioPedido = opcion('--precio');
-const usarPrecios = bandera('--precios'), todos = bandera('--todos'), simular = bandera('--simular');
+const usarPrecios = bandera('--precios'), todos = bandera('--todos'), simular = bandera('--simular'), actual = bandera('--actual');
 const hoy = new Date().toISOString().slice(0, 10);
 const f = (x, d = 2) => (x === null || x === undefined ? 'n.d.' : x.toLocaleString('es-ES', { minimumFractionDigits: d, maximumFractionDigits: d }));
 const r = (x, d = 2) => (x === null || !Number.isFinite(x) ? null : Math.round(x * 10 ** d) / 10 ** d);
@@ -56,6 +59,7 @@ for (const carpeta of carpetas) {
     const fac = p && !p.error ? factorDivisa(p.divisa, divCot) : null;
     if (!p || p.error) console.error(`AVISO ${t}: sin cierre en precios.json${p?.error ? ` (${p.error})` : ''}; se deja el precio del informe.`);
     else if (fac === null) console.error(`AVISO ${t}: Yahoo cotiza en ${p.divisa} y el informe en ${divCot}; se deja el precio del informe.`);
+    else if (actual && p.en_curso) { precio = p.en_curso.precio * fac * tc; fechaPrecio = p.en_curso.fecha; origen = `sesión en curso Yahoo ${p.simbolo}, ${precios.actualizado}`; }
     else { precio = p.precio * fac * tc; fechaPrecio = p.fecha; origen = `cierre Yahoo ${p.simbolo}`; }
   }
   const k = precio / precioInforme;
