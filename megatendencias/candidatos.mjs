@@ -74,7 +74,7 @@ for (const k of nodos) {
       const ebit = f.ultimos12.EBIT ?? a1.EBIT;
       const t = Math.min(Math.max(a1.TaxRateForCalcs ?? 0.21, 0), 0.35);
       const clave = f.nombre.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-');
-      const yaAnalizada = Object.keys(analizadas).find((a) => clave.startsWith(a) || a === clave.split('-')[0] || (a.length > 4 && clave.includes(a)));
+      const yaAnalizada = Object.keys(analizadas).find((a) => clave === a || clave.startsWith(a + '-'));
       filas.push({
         simbolo: s, nombre: f.nombre, pais: f.pais, industria: f.industria, divisa: f.divisa, precio: f.precio,
         capitalizacion_musd: f.capitalizacion ? Math.round(f.capitalizacion / 1e6) : null,
