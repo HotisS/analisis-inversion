@@ -4,6 +4,10 @@
 
 **Qué se apunta aquí** (una entrada por cambio, la más reciente arriba, dos o tres líneas): cambios de método o de reglas, decisiones de cartera que sustituyen a otras, cambios de estructura del repo o del flujo de trabajo, y lo que se retira de `MEMORIA.md`, `cola.md` o `lecciones.md` cuando ya no está vigente. No se apuntan análisis sueltos (están en `seguimiento.xlsx` y en cada `diario.md`).
 
+## 15-oct-2026 · Precio y noticias antes de decidir (regla 13) y tres sesgos conservadores
+
+El usuario pide que el repaso del movimiento del precio y de las noticias sea parte del método y de la selección de compras (caso Rai Way, −33 % en 6 meses con el overhang del 15 % de RAI avisado en el informe pero sin veredicto). Regla 13 de `METODO-VIGENTE.md`: bloque `bolsa.contexto` (value) y `contexto_mercado` (growth) con movimiento (`herramientas/movimiento.mjs`), movimientos fuertes con causa, noticias y veredicto no cambia / retrasa / descarta; `robustez.mjs` C1-C3 y P1-P5, `robustez-growth.mjs` G10-G11, comprobación previa a cada orden. Backtests preregistrados: ninguna regla numérica de movimiento mejora las compras (no se adoptan); S1 (tope ×1,1 en v2 desrateadas) pasa pero con 8 cierres y cambiaría 22 de 33 señales: se reprueba con ≥ 30; B2 (media recompra en recompradores en serie) candidata para el domingo. Sin tramos en growth (G5, G6, G9).
+
 ## 15-oct-2026 · Novena hora value
 
 16 análisis (Universal Music, Check Point, Booz Allen, Unicharm, Compass, Borregaard, SFS, Interparfums SA, ADP, Chemed, Brady, Lockheed Martin, OMA, Sweco, Neurocrine, Tetra Tech), con el escáner sin cambios y cartas de gestores. Compra robusta: Universal Music (≤15,51 EUR, en dos partes por resultados del 29-oct): 1 de 16. Caen 10 por valor intrínseco y 4 por calidad o sostenibilidad. Corregida la sanción de la SEC atribuida por error a Qualys. Detalle en `informes/novena-hora-2026-10-15/`.

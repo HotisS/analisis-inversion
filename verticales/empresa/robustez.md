@@ -42,8 +42,16 @@ NODE_USE_ENV_PROXY=1 node herramientas/robustez-growth.mjs --precios [<carpeta> 
 | V2 | DCF > 1,6 × el objetivo a 12 meses | AVISO (tesis a años o DCF optimista) | — |
 | V3 | Confianza de datos «Baja» | CONFIANZA | Experian, Amadeus |
 | E1 | Resultados publicados después del corte del informe | CONFIANZA hasta comprobarlos | LVMH (3T del 12-oct) |
-| E2 | Resultados en los próximos 14 días | AVISO: comprar en dos tramos o después | — |
+| E2 | Resultados en los próximos 14 días | AVISO: la compra entera, después de los resultados (regla 11) | — |
 | E3 | El precio se ha movido más de un 15 % desde el informe | CONFIANZA (revisar la tesis) | — |
+| C1 | `bolsa.contexto.veredicto` = «retrasa» (regla 13: hecho pendiente que puede mover el precio > 5 %, o bajista con resultados en ≤ 15 días) | AVISO: la acción robusta pasa a **Esperar** con la condición (`espera`) | Rai Way (overhang del 15 % de RAI) |
+| C2 | `bolsa.contexto.veredicto` = «descarta» | AVISO: Comprar pasa a Mantener hasta rehacer el informe | — |
+| C3 | Sin bloque `bolsa.contexto` y la acción es Comprar | AVISO: no se propone la orden hasta rellenarlo (`movimiento.mjs` + noticias con veredicto) | informes anteriores al 15-oct |
+| P1 | Subida fuerte: +25 % en un mes o +40 % en tres (`movimiento.json`) | AVISO: explicar la causa en `bolsa.contexto`; no cambia la señal (backtest 15-oct) | Paycom |
+| P2 | A ≤ 5 % del máximo de 52 semanas tras subir ≥ 20 % en tres meses | AVISO (idem) | Interparfums |
+| P3 | Caída fuerte: −20 % en un mes o −30 % en tres | AVISO (idem) | — |
+| P4 | A ≤ 3 % del mínimo de 52 semanas | AVISO (idem) | Rai Way, OMA |
+| P5 | ≥ 15 % por debajo de la media de 200 sesiones (tendencia bajista) | AVISO (idem) | Rai Way, Rollins |
 
 Además, para cada empresa: **límite de compra y de mantener con el objetivo fijo, en la divisa del broker** (el informe puede llevar las cuentas en otra: Constellation USD/CAD, Experian USD/GBp), el mismo límite con v2 y el **colchón de BPA**: cuánto puede bajar nuestro BPA antes de perder la acción de hoy.
 
@@ -55,11 +63,13 @@ Además, para cada empresa: **límite de compra y de mantener con el objetivo fi
 | G2 | Objetivo atado al precio | AVISO: el límite es el «precio máximo de compra» del informe con el objetivo fijo (caso Nu) |
 | G3 | Proyección mecánica > 10 % sobre las ventas del propio informe o del consenso | VARIANTE: se comunica la rentabilidad menor. Si las ventas del analista no están en la misma unidad (< 0,6 o > 1,6 veces), AVISO para corregir el campo |
 | G4 | Sin guía de la empresa (v9 = v7) | AVISO |
-| G5 | Subida ≥ 100 % en 12 meses | CONFIANZA (tramos) |
-| G6 | Bajista peor que −40 % | AVISO (peso y tramos) |
+| G5 | Subida ≥ 100 % en 12 meses | CONFIANZA (peso pequeño; sin tramos, regla 11) |
+| G6 | Bajista peor que −40 % | AVISO (peso pequeño, entero de una vez) |
 | G7 | Margen bruto del 100 % (financiera) | AVISO (el filtro EV/beneficio bruto no aplica) |
 | G8 | El DCF inverso descuenta más crecimiento que el nuestro | CONFIANZA |
 | G9 | Comprar con convicción baja | AVISO |
+| G10 | `contexto_mercado.veredicto` «retrasa» → **Esperar** con la condición; «descarta» → Mantener; sin bloque con señal Comprar → no se propone la orden (regla 13) | AVISO |
+| G11 | Con `--precios`: avisos P1-P5 de `movimiento.mjs` (explicar la causa en `contexto_mercado`; no cambian la señal) | AVISO |
 
 Variantes growth: v9, v7, ventas del analista, pesos 25/50/25 y 35/50/15 (este último y el precio de hoy, solo para medir el colchón).
 
