@@ -238,14 +238,24 @@ function valorDe(hechos, fin, alternativas, unidadPedida) {
 }
 
 function construirSeries(hechos, mapa, mapaExtra = {}) {
-  // Ejercicios: fechas de cierre con ingresos o activo total; nos quedamos con los últimos ANIOS.
-  const cierres = [...new Set(hechos.filter((h) => h.inicio && /^(iso4217:)?[A-Z]{3}$/.test(h.unidad)).map((h) => h.fin))].sort();
+  // Ejercicios: cierres de periodos de ~12 meses. Con ejercicio no natural (ADP: junio; 9ª hora, 15-oct-2026) el XBRL trae
+  // también cierres de diciembre de otros conceptos y salían años duplicados: nos quedamos con el día de cierre más
+  // frecuente (±21 días, por los ejercicios de 52/53 semanas: Tetra Tech cierra entre el 28-sep y el 2-oct).
+  const dias = (a, b) => Math.round((new Date(b) - new Date(a)) / 864e5);
+  const diaAnio = (f) => { const d = new Date(f); return Math.round((d - new Date(d.getUTCFullYear(), 0, 1)) / 864e5); };
+  const distancia = (a, b) => { const x = Math.abs(diaAnio(a) - diaAnio(b)); return Math.min(x, 365 - x); };
+  const recuento = new Map();
+  for (const h of hechos) if (h.inicio && /^(iso4217:)?[A-Z]{3}$/.test(h.unidad) && dias(h.inicio, h.fin) >= 330 && dias(h.inicio, h.fin) <= 380) recuento.set(h.fin, (recuento.get(h.fin) || 0) + 1);
+  const modal = [...recuento.entries()].sort((a, b) => b[1] - a[1])[0]?.[0];
+  const cierres = [...recuento.keys()].filter((f) => !modal || distancia(f, modal) <= 21).sort();
   const fines = cierres.slice(-ANIOS);
+  const noNatural = modal && !/-12-\d\d$/.test(modal) && distancia(modal, `${modal.slice(0, 4)}-12-31`) > 21;
   const salida = { cuenta: [], balance: [], flujos: [] }, usado = {}, faltan = {}, parciales = {};
   const divisas = new Map();
   for (const bloque of ['cuenta', 'balance', 'flujos']) {
     for (const fin of fines) {
-      const fila = { periodo: fin.slice(0, 4), fin };
+      // Ejercicio no natural: se nombra por el año de cierre con FY (ADP FY2026 = julio 2025 - junio 2026), como en los informes.
+      const fila = { periodo: (noNatural ? 'FY' : '') + fin.slice(0, 4), fin };
       for (const campo of CAMPOS[bloque]) {
         const alts = [...(mapaExtra[campo] || []), ...(mapa[bloque][campo] || [])];
         const tipo = POR_ACCION.has(campo) ? 'por_accion' : EN_ACCIONES.has(campo) ? 'acciones' : 'dinero';

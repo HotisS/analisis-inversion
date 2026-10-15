@@ -51,6 +51,8 @@ Las lecciones nuevas van al archivo que toque, en una o dos líneas, y solo si n
 - **Fecha de corte en plena sesión**: cierre del día anterior, y dilo. **Ejercicio no natural**: fija si «FY2025» es el año de inicio o de cierre (`meta.etiqueta_ejercicio`) al principio y pásalo a los subagentes.
 - **Cita el documento concreto**, no «la web de inversores».
 
+- **Sanciones, litigios y multas que se citan**: comprobar en la fuente primaria (comunicado del regulador, expediente judicial) que la sancionada es ESTA empresa y no otra del mismo caso (Qualys, 8ª hora: se le atribuyó la sanción de la SEC por SolarWinds que fue a Unisys, Avaya, Check Point y Mimecast). Sin fuente primaria, no se cita.
+
 ## Valoración: trampas generales
 
 - **Beta**: contrasta la mensual de 5 años con la semanal de 2 años y la sectorial de Damodaran corregida por caja, sobre todo tras una burbuja (Adyen 2,33) o en utilities frente a un índice local (0,35 frente al IBEX: usa uno europeo amplio). Si cotiza en una divisa y publica en otra, la acción convertida a la divisa de las cuentas frente a índices en esa divisa. Di cuánto depende la recomendación de la beta.

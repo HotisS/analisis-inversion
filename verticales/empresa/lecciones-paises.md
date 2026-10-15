@@ -27,11 +27,13 @@ Lee solo la sección del país que toque.
 
 ## Suiza
 - Participaciones significativas en la API pública de la SIX; las operaciones de directivos son anónimas (solo cargo e importe); no hay registro público de posiciones cortas.
+- **Swiss GAAP FER** (SFS, 9ª hora): el fondo de comercio se resta del patrimonio al comprar y no se amortiza; sin sumarlo de vuelta, el capital invertido queda corto y el ROIC sale inflado (SFS: 14,8 % en vez de 8,1 %, y la calidad pasaba por error). Sumar el fondo de comercio acumulado (nota de patrimonio) al patrimonio y al capital invertido; el BPA FER no lleva su amortización (comparable con el ajustado de NIIF, no con el estatutario).
 
 ## Italia y Polonia
 - Sin XBRL utilizable en filings.xbrl.org (Rai Way, Diagnostyka, 8ª hora): `cuentas.mjs --esef` no encuentra el informe o lo trae sin las etiquetas que usa el mapa. Las cuentas se sacan del PDF del informe anual (nota A con la tabla de la cuenta, balance y flujos) y la confianza del informe no pasa de media hasta que haya dos ejercicios cuadrados contra el PDF.
 
 ## Nórdicos (Dinamarca, Suecia, Noruega)
+- filings.xbrl.org (`cuentas.mjs --esef`) va con retraso en Noruega y Suecia: en octubre de 2026 el último ejercicio cargado de Borregaard y Sweco es 2024 (los índices se cargan por tandas, la última de mayo de 2025). El 2025 sale del informe anual (MFN) y se cuadra con 2024 del XBRL.
 - MFN (`https://www.mfn.se/all/a/<empresa>`) abre con `descargar.mjs` y enlaza los PDF de GlobeNewswire; las notas de Nasdaq Copenhague (`view.news.eu.nasdaq.com`) también bajan bien.
 - Dinamarca: posiciones cortas ≥ 0,5 % en un xlsx mensual de la Finanstilsynet; las juntas aprueban la remuneración sin recuento (voto libre en contra: hueco, con la asistencia). Tasa libre: el Bund (corona anclada al euro).
 
@@ -40,6 +42,7 @@ Lee solo la sección del país que toque.
 - Las notas de prensa de resultados anuales traen cuentas y notas completas en ~40 páginas: la vía más barata para series de diez años.
 - Investegate: el `.txt` empieza por un «Summary by AI» con cifras; no lo uses, lee el cuerpo del RNS.
 - Cotizaciones en GBp: `bolsa.mjs` no las pasa a GBP.
+- Cambio de divisa de cotización en Londres (Compass, `CPG.L`, a USD desde el 1-abr-2026): Yahoo rompe la serie; usar el ADR (`CMPGY`) para la historia del PER y apuntarlo en `simbolos.json`.
 - Sentimiento: interactive investor, Motley Fool UK y prensa sectorial; LSE Chat da 403.
 
 ## Japón
