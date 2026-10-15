@@ -1,0 +1,4355 @@
+{
+  "meta": {
+    "fecha_corte": "2026-10-15",
+    "divisa": "NOK",
+    "divisa_cotizacion": "NOK",
+    "tipo_cambio": 1,
+    "unidades": "millones",
+    "cierre_ejercicio_mes": 12,
+    "etiqueta_ejercicio": "fin",
+    "normas_contables": "NIIF-UE",
+    "formato_cuenta": "naturaleza",
+    "limitaciones": "Línea cotizada: Oslo Børs (BRG), en NOK, que es también la divisa de las cuentas. El precio es el cierre del 14-oct-2026 (147,40 NOK): la sesión del 15-oct no había cerrado al hacer el análisis. Las cuentas de 2021-2024 salen del XBRL ESEF y las de 2025 y del 1S26 del informe anual y del informe trimestral; los informes anuales de 2019-2021 ya no están en la web (enlaces caídos), así que la historia del PER empieza en 2020 y la serie tiene cinco ejercicios. En 2021-2022 la deuda financiera incluye los arrendamientos (no se desglosan); los proveedores solo constan en 2024-2025. El consenso es de MarketScreener (5 analistas) y su BPA de 2026 incluye el deterioro de Alginor. Comparables de MarketScreener, tres de ellos de la ficha de ingredientes del 14-oct; todo pasado a NOK con el BCE del 14-oct (10,6035 NOK/EUR). Una acción vale 13,90 EUR al cambio del BCE del 14-oct: un 0,05 % de una cartera de 30.000 EUR, muy por debajo del 7 %.",
+    "controles_explicados": [
+      {
+        "control": "DCF inverso calculable",
+        "explicacion": "Con capex y circulante proporcionales a las ventas (circulante del 32 %) y un ROIC cercano al WACC, crecer más apenas sube el valor: no hay crecimiento que justifique el precio. El inverso por margen sí sale (28,7 % frente al 24,5 % del caso base) y es el que usamos en el texto."
+      },
+      {
+        "control": "Regresión múltiplo-crecimiento",
+        "explicacion": "Cinco comparables de negocios distintos; no se usa la regresión."
+      },
+      {
+        "control": "Comparables estables al quitar una empresa",
+        "explicacion": "La muestra mezcla químicas de la madera baratas (Kemira, Ingevity) con ingredientes caros (Symrise, Kerry, Croda); por eso los comparables pesan solo un 20 % y la regla a 12 meses usa la mediana del PER solo en el alcista."
+      },
+      {
+        "control": "Transacciones",
+        "explicacion": "Solo dos operaciones aplicables con múltiplo publicado; peso cero en la síntesis."
+      }
+    ],
+    "huecos": [
+      {
+        "seccion": "financieros",
+        "campo": "gastos_financieros 2021-2023 (intereses sin diferencias de cambio)",
+        "tipo": "Complemento",
+        "intentos": "1) XBRL ESEF: solo FinanceCosts con diferencias de cambio; 2) informe anual 2025: solo 2024 y 2025; 3) informes anuales anteriores: enlaces de borregaard.no caídos (404)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "balance",
+        "campo": "arrendamientos y proveedores 2021-2022",
+        "tipo": "Complemento",
+        "intentos": "1) XBRL ESEF 2021-2022 (sin concepto de pasivo por arrendamiento ni de proveedores); 2) informe anual 2025 (solo 2024-2025, y el saldo inicial de 2024); 3) informes anuales 2020-2021 (404)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sector",
+        "campo": "serie de tamaño del mercado de lignina y vainillina",
+        "tipo": "Complemento",
+        "intentos": "1) presentaciones de la empresa (solo crecimientos por aplicación); 2) búsqueda de estudios de mercado de lignosulfonatos (resúmenes de pago sin cifra verificable); 3) informes de competidores (no publican tamaño)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "competencia",
+        "campo": "ingresos y margen de RYAM, Sappi, Bracell y Domsjö",
+        "tipo": "Complemento",
+        "intentos": "1) MarketScreener y Stock Analysis (bloqueado por Cloudflare); 2) informes de competidores (no leídos por tiempo); 3) prensa sectorial",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "votos de la junta sobre remuneración",
+        "tipo": "Complemento",
+        "intentos": "1) informe anual 2025 (no da el recuento); 2) acta de la junta de 2026 en la web (no localizada en la página de comunicados); 3) búsqueda web sin resultado",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "operaciones de directivos en 12 meses (registro de Oslo Børs)",
+        "tipo": "Complemento",
+        "intentos": "1) página de comunicados de la empresa (lista dinámica, no legible sin navegador); 2) Newsweb de Oslo Børs (JavaScript); 3) prensa (sin resultado)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "transacciones",
+        "campo": "operaciones de lignina y celulosa especial con múltiplo",
+        "tipo": "Complemento",
+        "intentos": "1) búsqueda de compras de productores de lignosulfonatos y celulosa especial (sin múltiplos publicados); 2) informes de RYAM e Ingevity (no publican el múltiplo de sus ventas de activos); 3) transacciones de otros informes del repositorio (solo dos aplicables)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "bolsa",
+        "campo": "posición corta",
+        "tipo": "Complemento",
+        "intentos": "1) Finanstilsynet (registro de cortos, tabla dinámica); 2) Nordnet; 3) prensa",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sentimiento",
+        "campo": "foros con debate amplio (Reddit, Stocktwits, Hegnar/Finansavisen)",
+        "tipo": "Complemento",
+        "intentos": "1) API de Stocktwits (BRGAY y BRRDF: 0 mensajes); 2) RSS de Seeking Alpha (sin comentarios); 3) búsqueda de foros noruegos (sin hilos abiertos legibles)",
+        "decision": "Omitido"
+      }
+    ]
+  },
+  "identificacion": {
+    "nombre": "Borregaard ASA",
+    "nombre_corto": "Borregaard",
+    "ticker": "BRG",
+    "isin": "NO0010657505",
+    "mercado": "Oslo Børs",
+    "indice_referencia": "OSEBX",
+    "pais": "Noruega",
+    "pais_iso": "NO",
+    "sector": "Materiales",
+    "industria": "Química especializada",
+    "sede": "Sarpsborg (Noruega)",
+    "fundacion": "1889",
+    "empleados": 1177,
+    "web": "www.borregaard.com",
+    "precio": 147.4,
+    "fecha_precio": "2026-10-14",
+    "acciones": 99.645,
+    "capitalizacion_publicada": null,
+    "free_float_pct": null,
+    "max_52s": 200.5,
+    "min_52s": 137.6,
+    "volumen_medio_diario": "≈ 10,3 M NOK/día (3 meses)",
+    "proximos_resultados": "2026-10-28"
+  },
+  "resumen": {
+    "recomendacion": "Mantener",
+    "conviccion": "Media",
+    "justificacion_recomendacion": null,
+    "horizonte": "12 meses",
+    "sintesis": "**La recomendación y por qué.** Mantener, con convicción media. La regla a 12 meses da una rentabilidad ponderada del 19,0 % y del 22,0 % en el caso base (objetivo de 170,62 NOK frente a 147,40, con un dividendo del 3,2 %), pero el valor intrínseco (122,50 NOK) está un 16,9 % por debajo del precio, así que no se cumple el requisito de valor real y no es un Comprar. El objetivo medio de los analistas (173,75) queda dentro de nuestro rango. La convicción es media porque las dos reglas del valor intrínseco coinciden (absoluta y relativa) y la rentabilidad a 12 meses está lejos de sus umbrales; bajaría si el margen del 3T26 (28-oct) sale por debajo del 22 %, y subiría si el precio bajara de 122,50.\n\n**El negocio.** Borregaard es una biorrefinería única que saca de la madera biopolímeros de lignina, celulosa especial y vainillina, con márgenes EBITDA del 24 % y pocos competidores en cada nicho [5, 8]. Pero el ROIC (11,7 % en 2025; 14-15 % en 2022-2024) supera al WACC en NOK (9,08 %) solo en 2,6 puntos y el capital añadido desde 2021 rinde un 9,0 %. Veredicto de calidad: en parte. La sostenibilidad del crecimiento es «En parte»: el capex guiado financia el 3,6 % anual que proyectamos, pero solo tras rebajar el margen al 24,5 %, y el poder de precios flojea en 2026.\n\n**Sector y ciclo.** La corona manda: cada 1 % de apreciación quita ≈40-45 M de EBITDA y desde julio el euro ha bajado de 11,10 a 10,60 NOK [2, 18]. La empresa avisa de tres años de presión en el margen [5].\n\n**Finanzas.** Balance sano (deuda neta de 2.141 M, 1,2 veces el EBITDA), cuentas limpias (Piotroski 8, Beneish −2,81) y FCF de 2.738 M en 2021-2025. El BPA de 2025 (6,22) y del 1S26 (0,55) incluye 562 M de deterioros de Alginor, que ya vale cero [1, 2].\n\n**Equipo y gobierno.** Consejo independiente y sin accionista de control; nuevo consejero delegado desde agosto de 2025. Resta la pérdida de 551 M en Alginor y un variable que premia la cotización y no el ROIC.\n\n**Valoración.** El precio descuenta una rentabilidad del 7,5 % anual o un margen del 28,7 %, por encima de cualquier año de su historia. Por múltiplos parece barata (17,8 veces nuestro BPA de 2027 frente a una mediana adelantada de 21x), pero esa mediana se formó con tipos noruegos del 1-3 %. Nuestro BPA de 2028 (9,07) está un 20 % por debajo del consenso por la divisa.\n\n**Riesgos y catalizadores.** La corona (−10 a −15 % de valor), la energía y la construcción débil; el antidumping definitivo de EE. UU. (octubre-diciembre) y el plan de ahorro de 150 M. El riesgo de que la IA se coma el negocio es bajo: vende moléculas físicas homologadas que solo salen de su planta. Los foros, poco activos, son alcistas y no discuten la divisa.\n\n**Qué cambiaría la decisión.** Compraríamos por debajo de 122,50 NOK y venderíamos por encima de 194,85. También cambiaría con un margen EBITDA de vuelta al 25 % con el euro por debajo de 11 NOK, o con un ROIC normalizado que supere en cinco puntos al WACC.",
+    "tesis": "Borregaard convierte el abeto noruego en productos químicos de nicho que nadie más fabrica igual: es el mayor productor mundial de biopolímeros de lignina, el único de vainillina de madera y uno de los pocos de celulosa de alta pureza, con 800 productos para 3.100 clientes y un margen EBITDA del 24 % [5, 8]. Desde la salida a bolsa ha subido el BPA de 2,76 a 8,67 NOK con especialización [5].\n\nEl precio (147,40 NOK) descuenta una rentabilidad anual del 7,5 % o un margen del 28,7 %, cuando el WACC en NOK es del 9,08 %. Por múltiplos parece barata (17,8 veces el BPA de 2027, frente a 21x de mediana adelantada), pero por flujos no: el DCF da 105,46 NOK.\n\nEl mercado acierta en descontar un múltiplo menor que el histórico, porque los tipos noruegos están en el 4,6 % y el ROIC solo supera al WACC en 2,6 puntos; se equivoca, a nuestro juicio, en el beneficio de 2027, que el consenso estima con una corona más débil que la de hoy. Para invertir hay que creer que el margen vuelve al 25 % pese a la divisa, o que los tipos noruegos bajan.",
+    "vision_diferencial": {
+      "mercado_descuenta": "Que Borregaard vuelve en 2027 a crecer el beneficio un 60 % (BPA de 10,61 NOK frente a 6,57 en 2026 con deterioros) y a un margen del 25 %, y que la acción está barata frente a su historia de múltiplos.",
+      "nuestra_vision": "El beneficio de 2027 será menor (8,30 NOK) porque las coberturas vencen con una corona más fuerte; el margen vuelve al 24-24,5 % solo en 2028 con el plan de ahorro. Y el múltiplo histórico no es la referencia con el bono noruego al 4,6 %.",
+      "por_que": "La sensibilidad a la divisa la publica la propia empresa (≈40-45 M de EBITDA por 1 %) y avisa de tres años de presión en el margen; el euro ha bajado de 11,10 a 10,60 NOK desde la última guía [2, 5, 18]."
+    },
+    "a_favor": [
+      "**Activo único**: la biorrefinería de Sarpsborg no se puede replicar y abastece nichos de 1,4 Mt de demanda mundial en celulosa especial [8].",
+      "**Rentabilidad a 12 meses del 19,0 %** con la regla de múltiplos (base +22,0 %), con el objetivo cerca del de los analistas (173,75).",
+      "**Balance sano**: deuda neta de 1,2 veces el EBITDA, Piotroski 8 y rating A- [5].",
+      "**Plan de ahorro de 150 M NOK** al año con efecto completo en 2028 [2].",
+      "**Alginor ya está a cero**: el BPA normalizado de 2026 (7,93 NOK) no arrastra más pérdidas de participadas."
+    ],
+    "en_contra": [
+      "**Valor intrínseco de 122,50 NOK**, un 16,9 % por debajo del precio.",
+      "**ROIC del 11,7 % frente a un WACC del 9,08 %**: 2,6 puntos de margen y un incremental del 9,0 %.",
+      "**Corona fuerte**: cada 1 % quita ≈40-45 M de EBITDA y el euro ha caído a 10,60 NOK [18].",
+      "**Nuestro BPA de 2027 está un 22 % por debajo del consenso** (8,30 frente a 10,61).",
+      "**Capex de 900-1.000 M al año** con un ROIC incremental histórico del 9,0 % [5]."
+    ],
+    "que_vigilar": "La tesis depende del margen EBITDA con la corona de hoy. Si en el 3T26 y el 4T26 el margen se mantiene por encima del 24 % con el euro a 10,6 NOK, el consenso tendría razón y nuestro BPA de 2027 se quedaría corto. Si baja del 22 % cuando vencen las coberturas, el objetivo a 12 meses cae hacia el bajista (114,86 NOK).",
+    "cambiaria_recomendacion": [
+      "Precio por debajo de 122,50 NOK (valor intrínseco): pasaríamos a Comprar si se mantiene la rentabilidad a 12 meses.",
+      "Precio por encima de 194,85 NOK: Vender.",
+      "Margen EBITDA del 3T26 o del 4T26 por debajo del 22 %: rebajaríamos el BPA de 2027-2028 y el objetivo.",
+      "Euro por debajo de 10,2 NOK de forma sostenida: revisaríamos el caso base a la baja.",
+      "Antidumping definitivo de EE. UU. por encima del 15 %: rebaja del BPA de BioMaterials."
+    ],
+    "kpis_seguimiento": [
+      {
+        "kpi": "Margen EBITDA trimestral",
+        "nivel_actual": "24,4 % (2T26)",
+        "umbral_alerta": "< 22 %",
+        "por_que": "Mide la presión de divisa y energía."
+      },
+      {
+        "kpi": "NOK por EUR",
+        "nivel_actual": "10,60",
+        "umbral_alerta": "< 10,2",
+        "por_que": "≈40-45 M de EBITDA por cada 1 %."
+      },
+      {
+        "kpi": "Precio medio de BioMaterials (NOK/t)",
+        "nivel_actual": "15.682 (2T26)",
+        "umbral_alerta": "< 15.000",
+        "por_que": "Poder de precios de la celulosa especial."
+      },
+      {
+        "kpi": "Volumen de BioSolutions",
+        "nivel_actual": "172.000 t en el 1S26",
+        "umbral_alerta": "< 330.000 t en 2026",
+        "por_que": "Demanda de construcción y agricultura."
+      },
+      {
+        "kpi": "ROCE antes de impuestos (12 meses)",
+        "nivel_actual": "14,4 %",
+        "umbral_alerta": "< 13 %",
+        "por_que": "Objetivo de la empresa > 15 %."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "historia": {
+    "resumen": "Borregaard nace en 1889 en Sarpsborg (Noruega) como fábrica de celulosa al sulfito de capital británico, y desde 1918 fue noruega; durante un siglo fue la división química de Orkla [1]. En los años noventa y dos mil abandonó el papel y la celulosa genérica y convirtió Sarpsborg en una biorrefinería que aprovecha la celulosa, la lignina y los azúcares de la madera [1, 5]. Salió a bolsa en Oslo en octubre de 2012, separada de Orkla, y desde entonces sigue una estrategia de especialización: más grados de alto valor y menos volumen genérico, lo que ha llevado el margen EBITDA del 19 % de 2012 al 24 % de 2025 y el BPA de 2,76 a 8,67 NOK sin deterioros [5]. En agosto de 2025 Tom Erik Foss-Jacobsen sustituyó como consejero delegado a Per A. Sørlie, que llevaba 35 años en la empresa [1].",
+    "hitos": [
+      {
+        "anio": "1889",
+        "hito": "Fundación de la fábrica de celulosa al sulfito de Sarpsborg [1]"
+      },
+      {
+        "anio": "1986",
+        "hito": "Fusión con Orkla; Borregaard pasa a ser su área química [1]"
+      },
+      {
+        "anio": "2012",
+        "hito": "Salida a bolsa en Oslo, escindida de Orkla [5]"
+      },
+      {
+        "anio": "2017",
+        "hito": "LignoTech Florida (55 %): planta de lignina con materia prima de un tercero en EE. UU.; préstamo de 60 M USD [1]"
+      },
+      {
+        "anio": "2020",
+        "hito": "Cierre de LignoTech South Africa tras la conversión de la línea de Sappi; pérdida de materia prima de lignina [1]"
+      },
+      {
+        "anio": "2021",
+        "hito": "Primera inversión en Alginor (145 M NOK; biorrefinería de algas) [1]"
+      },
+      {
+        "anio": "2025",
+        "hito": "Nuevo consejero delegado; deterioro de 225 M en Alginor; petición antidumping de RYAM en EE. UU. contra su celulosa [1, 2]"
+      },
+      {
+        "anio": "2026",
+        "hito": "Deterioro total de Alginor (337 M); derecho antidumping provisional del 6,54 %; día del inversor con ambición de crecer un 5 % anual y margen EBITDA del 25 % a lo largo del ciclo [2, 5, 11]"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "negocio": {
+    "segmentos": [
+      {
+        "nombre": "BioSolutions",
+        "descripcion": "Biopolímeros de lignina (lignosulfonatos) para agricultura, construcción e industria, y biovainillina",
+        "tipo_resultado": "EBITDA",
+        "historico": [
+          {
+            "periodo": "2022",
+            "ingresos": 4050,
+            "resultado": 986
+          },
+          {
+            "periodo": "2023",
+            "ingresos": 3944,
+            "resultado": 915
+          },
+          {
+            "periodo": "2024",
+            "ingresos": 4241,
+            "resultado": 1104
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 4396,
+            "resultado": 1209
+          }
+        ]
+      },
+      {
+        "nombre": "BioMaterials",
+        "descripcion": "Celulosa especial (éteres, acetato, nitrocelulosa…) y fibrilas de celulosa",
+        "tipo_resultado": "EBITDA",
+        "historico": [
+          {
+            "periodo": "2022",
+            "ingresos": 2250,
+            "resultado": 427
+          },
+          {
+            "periodo": "2023",
+            "ingresos": 2439,
+            "resultado": 534
+          },
+          {
+            "periodo": "2024",
+            "ingresos": 2622,
+            "resultado": 434
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 2691,
+            "resultado": 495
+          }
+        ]
+      },
+      {
+        "nombre": "Fine Chemicals",
+        "descripcion": "Intermedios de química fina para contrastes de rayos X y bioetanol avanzado",
+        "tipo_resultado": "EBITDA",
+        "historico": [
+          {
+            "periodo": "2022",
+            "ingresos": 632,
+            "resultado": 230
+          },
+          {
+            "periodo": "2023",
+            "ingresos": 786,
+            "resultado": 332
+          },
+          {
+            "periodo": "2024",
+            "ingresos": 799,
+            "resultado": 336
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 670,
+            "resultado": 174
+          }
+        ]
+      },
+      {
+        "nombre": "Eliminaciones",
+        "descripcion": "Ventas entre segmentos",
+        "tipo_resultado": "EBITDA",
+        "historico": [
+          {
+            "periodo": "2022",
+            "ingresos": -51,
+            "resultado": 0
+          },
+          {
+            "periodo": "2023",
+            "ingresos": -37,
+            "resultado": 0
+          },
+          {
+            "periodo": "2024",
+            "ingresos": -45,
+            "resultado": 0
+          },
+          {
+            "periodo": "2025",
+            "ingresos": -44,
+            "resultado": 0
+          }
+        ]
+      }
+    ],
+    "geografias": [
+      {
+        "nombre": "Europa",
+        "peso_pct": 45
+      },
+      {
+        "nombre": "América",
+        "peso_pct": 29
+      },
+      {
+        "nombre": "Asia",
+        "peso_pct": 25
+      },
+      {
+        "nombre": "Resto",
+        "peso_pct": 1
+      }
+    ],
+    "geografias_criterio": "destino",
+    "kpis": [
+      {
+        "kpi": "Volumen BioSolutions (miles de t secas)",
+        "valor_anterior": "327",
+        "valor_actual": "330",
+        "variacion": "+0,9 %",
+        "comentario": "Guía 2026: 335.000 t; 3T26 ≈ 85.000 t [2, 3]"
+      },
+      {
+        "kpi": "Precio medio bruto BioSolutions (NOK/t seca)",
+        "valor_anterior": "12.045",
+        "valor_actual": "12.027",
+        "variacion": "−0,1 %",
+        "comentario": "10.770 en el 2T26 por mezcla y divisa [3]"
+      },
+      {
+        "kpi": "Volumen BioMaterials (miles de t)",
+        "valor_anterior": "159,9",
+        "valor_actual": "146,4",
+        "variacion": "−8,4 %",
+        "comentario": "Guía 2026: más de 160.000 t [2, 3]"
+      },
+      {
+        "kpi": "Precio medio bruto BioMaterials (NOK/t)",
+        "valor_anterior": "16.343",
+        "valor_actual": "17.678",
+        "variacion": "+8,2 %",
+        "comentario": "Baja a 15.889 en el 1S26 (−4 % en divisa de venta) [2, 3]"
+      },
+      {
+        "kpi": "Grados muy especializados (% del volumen de celulosa)",
+        "valor_anterior": "83 %",
+        "valor_actual": "87 %",
+        "variacion": "+4 pp",
+        "comentario": "[3]"
+      },
+      {
+        "kpi": "Efecto de las coberturas en el EBITDA (M NOK)",
+        "valor_anterior": "−365",
+        "valor_actual": "−174",
+        "variacion": "+191",
+        "comentario": "+90 M en el 1S26 [3]"
+      },
+      {
+        "kpi": "ROCE antes de impuestos (%)",
+        "valor_anterior": "17,1",
+        "valor_actual": "15,7",
+        "variacion": "−1,4 pp",
+        "comentario": "Objetivo > 15 %; 14,4 % LTM jun-26 [1, 2]"
+      }
+    ],
+    "confianza": "Alta",
+    "descripcion": "Borregaard es una biorrefinería de madera con una gran planta en Sarpsborg (Noruega) y plantas de lignina en EE. UU., Alemania, España y otros países, que trabajan con lejía de sulfito comprada a papeleras [1, 8]. Del abeto noruego saca tres productos: fibras (45 % del valor: celulosa especial para éteres de celulosa, acetato, nitrocelulosa y tripas de embutido), lignina (30 %: biopolímeros dispersantes y aglutinantes para hormigón, agricultura, piensos, baterías de plomo y cerámica) y azúcares (25 %: bioetanol y la base de la vainillina) [5, 8]. Vende unos 800 productos a 3.100 clientes de 100 países con 120 técnicos comerciales, con fuerte presencia en Europa (45 % de las ventas), América (29 %) y Asia (25 %) [5, 8]. Fine Chemicals añade intermedios para contrastes de rayos X, que fabrica para un único gran cliente farmacéutico (la empresa no lo nombra) [8].",
+    "como_gana_dinero": "El negocio es de proceso continuo con costes en NOK y ventas en USD y EUR: la exposición del EBITDA es de unos 268 M USD y 146 M EUR al año [5]. El margen depende de cuatro cosas: el precio y la mezcla de grados especializados (los muy especializados son el 87 % del volumen de celulosa), el coste de la madera (≈866 M NOK en 2025), el de la energía (472 M) y los productos químicos, y la divisa [1]. Un 1 % de precio en BioSolutions mueve el EBITDA unos 40 M y un 1 % de NOK sin coberturas, en torno a 40-45 M [5]. Casi todo es venta recurrente de consumo industrial, sin estacionalidad marcada salvo el cuarto trimestre, más flojo. El apalancamiento operativo es alto: la planta tiene costes fijos y la estrategia es exprimir más valor al mismo volumen de madera.",
+    "clientes": "Clientes industriales muy diversos: los diez primeros de BioSolutions suman menos del 30 % de sus ventas y el primero, en torno al 5-10 % (gráfico de la presentación general) [8]. Fine Chemicals depende de un gran cliente farmacéutico de contrastes. El poder de precios se ha demostrado en BioMaterials: el precio medio de la celulosa subió de 14.283 NOK/t en 2022 a 17.678 en 2025 (+24 %) con la inflación de costes [1]; en BioSolutions la especialización compensó la pérdida de lignina sudafricana. En 2026 el poder de precio flojea: −4 % en divisa de venta en BioMaterials en el 1S26 y mezcla peor en BioSolutions [2]. Los contratos son mayoritariamente anuales o de uno a tres años con revisiones de precio."
+  },
+  "sector": {
+    "definicion": "El mercado relevante son tres nichos de química de base biológica: biopolímeros de lignina (lignosulfonatos), celulosa especial de alta pureza y vainillina. La celulosa especial es el único con tamaño publicado: demanda de ≈1,4 Mt en 2025 y un valor de unos 2.400 M USD (≈22.700 M NOK) según Borregaard con datos de Hawkins Wright [5, 8]. De la lignina y la vainillina no hay fuente independiente gratuita con cifra fiable; Borregaard dice ser el mayor productor mundial de biopolímeros de lignina y el único de vainillina de madera [8]. Ámbito mundial. Detalle y perímetro en la ficha sectorial propia [12].",
+    "tamano": "≈2.400 M USD (≈22.700 M NOK) de celulosa especial en 2025, ≈1,4 Mt de demanda [5, 8]; lignina y vainillina sin cifra independiente",
+    "unidad_serie": null,
+    "serie": [],
+    "tcac_historico_pct": null,
+    "tcac_previsto_pct": null,
+    "cr5_pct": null,
+    "estructura": "Concentrada",
+    "drivers": [
+      {
+        "driver": "Construcción (aditivos de hormigón con lignosulfonatos)",
+        "efecto": "+/−",
+        "horizonte": "Cíclico",
+        "evidencia": "La construcción es el 29 % del volumen de BioSolutions; volumen de construcción estable en 97.000 t en 2024 y 2025 tras caer de 117.000 t en 2022 [1, 5]."
+      },
+      {
+        "driver": "Agricultura (micronutrientes, bioestimulantes, fitosanitarios)",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Mercados que crecen un 7-12 % anual según los estudios que cita la empresa; motor de las ventas de 2025 [1, 8]."
+      },
+      {
+        "driver": "Sustitución de químicos fósiles por biológicos (vainillina, lignina, éteres)",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "La biovainillina crece ≈5 % anual frente al 2-3 % de la sintética; antidumping de la UE y EE. UU. a la vainillina china [8]."
+      },
+      {
+        "driver": "Energía, madera y productos químicos",
+        "efecto": "−",
+        "horizonte": "Cíclico",
+        "evidencia": "Impacto neto de −40 M en el 2T26 frente al 2T25 por energía, logística y químicos; madera −15 % [2]."
+      },
+      {
+        "driver": "Corona noruega frente a USD y EUR",
+        "efecto": "−",
+        "horizonte": "Cíclico",
+        "evidencia": "La empresa espera «presión en el margen los próximos tres años» por la NOK fuerte, suavizada por coberturas y un plan de ahorro de 150 M [2, 5]."
+      },
+      {
+        "driver": "Aranceles y antidumping en EE. UU.",
+        "efecto": "+/−",
+        "horizonte": "Cíclico",
+        "evidencia": "Derecho provisional del 6,54 % a su celulosa (RYAM es el demandante); decisión final prevista en octubre de 2026 [2, 11]."
+      }
+    ],
+    "porter": [
+      {
+        "fuerza": "Rivalidad",
+        "intensidad": 2,
+        "justificacion": "Pocos productores en cada nicho: en celulosa especial, Borregaard, RYAM, Sappi, Bracell, AustroCel, Domsjö y Nippon Paper [5, 8]."
+      },
+      {
+        "fuerza": "Poder de los clientes",
+        "intensidad": 2,
+        "justificacion": "Clientes atomizados (3.100); el producto pesa poco en el coste del cliente y requiere homologación [8]."
+      },
+      {
+        "fuerza": "Poder de los proveedores",
+        "intensidad": 3,
+        "justificacion": "Madera noruega y energía con precios de mercado; la lignina de fuera de Sarpsborg depende de papeleras (riesgo visto en Sudáfrica) [1]."
+      },
+      {
+        "fuerza": "Amenaza de entrada",
+        "intensidad": 1,
+        "justificacion": "Una biorrefinería de sulfito no se replica: la última grande se construyó hace décadas y la tecnología kraft no da la misma lignina [8]."
+      },
+      {
+        "fuerza": "Amenaza de sustitutos",
+        "intensidad": 3,
+        "justificacion": "Policarboxilatos sintéticos en hormigón, vainillina fósil china a menos de 10 USD/kg y celulosa de línteres de algodón [8]."
+      }
+    ],
+    "ciclo": {
+      "posicion": "Madurez del ciclo",
+      "comentario": "La demanda es industrial y algo cíclica: el volumen de construcción de BioSolutions bajó un 17 % de 2022 a 2024 [1]. En 2020 el EBITDA siguió subiendo (1.132 M) y en 2022-2023 la inflación se trasladó a precio con retraso; el margen tocó máximo en 2023 (25,0 %) [5]. Hoy el ciclo de costes (energía por el conflicto de Oriente Medio) y la corona aprietan el margen mientras los volúmenes aguantan [2]."
+    },
+    "regulacion": "Antidumping de EE. UU. a la celulosa de alta pureza de Noruega y Brasil: margen provisional del 6,54 % desde el 27-may-2026; decisión final del Departamento de Comercio prevista para octubre de 2026 y luego la de la ITC sobre el daño [2, 11]. Antidumping de la UE (definitivo desde el 11-jun) y de EE. UU. a la vainillina china, que favorece a la biovainillina [8]. Taxonomía y normas de la UE a favor de productos de base biológica y de la reducción de microplásticos [8]. Cuotas de CO₂ y precios de la electricidad del sur de Noruega afectan a los costes; la empresa tiene objetivos aprobados por SBTi (−42 % de emisiones en 2030) [8].",
+    "tendencias": "La tendencia de fondo es la sustitución de químicos fósiles por biológicos en mercados regulados (piensos, cosmética, alimentación, agricultura), que favorece a Borregaard [5, 8]. En contra: la vainillina fósil china barata, los dispersantes sintéticos en hormigón y la caída de la construcción en Europa y China. La empresa aplica IA y sensores al mantenimiento predictivo (≈70 M de efecto acumulado desde 2023) [5].",
+    "confianza": "Media"
+  },
+  "competencia": {
+    "cuota_pct": 10.5,
+    "posicion": "Mayor productor mundial de biopolímeros de lignina y único de vainillina de madera; en celulosa especial, ≈10 % del volumen mundial (146.000 t de ≈1,4 Mt) en el segmento más especializado [1, 5, 8].",
+    "competidores": [
+      {
+        "nombre": "RYAM (Rayonier Advanced Materials)",
+        "pais": "EE. UU.",
+        "ticker": "RYAM",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Mayor productor de celulosa de alta pureza; demandante del antidumping contra Borregaard [5, 11]."
+      },
+      {
+        "nombre": "Sappi (Saiccor)",
+        "pais": "Sudáfrica",
+        "ticker": "SAP",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Celulosa disolvente sobre todo para viscosa textil; usa el textil como relleno de capacidad [8]."
+      },
+      {
+        "nombre": "Bracell",
+        "pais": "Brasil",
+        "ticker": null,
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Celulosa especial de eucalipto; antidumping provisional del 7,20 % en EE. UU. [5, 11]."
+      },
+      {
+        "nombre": "Domsjö (Aditya Birla)",
+        "pais": "Suecia",
+        "ticker": null,
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Biorrefinería de sulfito; competidor también en lignosulfonatos [8]."
+      },
+      {
+        "nombre": "Ingevity",
+        "pais": "EE. UU.",
+        "ticker": "NGVT",
+        "ingresos": 12209,
+        "cuota_pct": null,
+        "margen_ebit_pct": 22.6,
+        "comentario": "Química del pino (lignina kraft y aceite de resina); comparable de la química de la madera [10]."
+      },
+      {
+        "nombre": "Kemira",
+        "pais": "Finlandia",
+        "ticker": "KEMIRA",
+        "ingresos": 29202,
+        "cuota_pct": null,
+        "margen_ebit_pct": 11.8,
+        "comentario": "Química para agua y papel; nórdica con exposición parecida a energía y divisa [9]."
+      }
+    ],
+    "foso": {
+      "veredicto": "Estrecho",
+      "tendencia": "Estable",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 0,
+          "evidencia": "No aplica: venta industrial B2B."
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 3,
+          "evidencia": "Productos homologados en la fórmula del cliente (piensos, fármacos, alimentación); 800 productos con asistencia técnica [2]."
+        },
+        {
+          "fuente": "Intangibles (marca, patentes, licencias)",
+          "puntuacion": 2,
+          "evidencia": "Saber hacer de aplicación más que patentes; tasa de innovación del 11 % de las ventas (objetivo 15 %) [2]."
+        },
+        {
+          "fuente": "Ventaja en costes",
+          "puntuacion": 3,
+          "evidencia": "Biorrefinería integrada que aprovecha toda la madera; pero coste de energía y madera noruegas y salarios altos [1]."
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 4,
+          "evidencia": "Nichos pequeños donde una planta nueva no cabe: la demanda de celulosa especial es de 1,4 Mt y la capacidad mundial de 1,6 Mt [2]."
+        }
+      ]
+    },
+    "amenazas": "El foso se estrecharía por tres vías: (1) dispersantes sintéticos y lignina kraft más barata en hormigón y agricultura; (2) productores chinos de vainillina fósil y celulosa de línteres a bajo precio; (3) que los grandes de la celulosa disolvente (Sappi, Bracell) bajen hacia los grados especializados cuando el textil va mal. La probabilidad de que cualquiera de ellas rompa el margen en cinco años es baja-media; la de que lo apriete uno o dos puntos en un año malo, alta [5, 8].",
+    "confianza": "Media"
+  },
+  "financieros": {
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "gastos_generales": null,
+        "participadas_en_ebitda": null,
+        "dpa_extraordinario": 2.25,
+        "ingresos": 5805,
+        "coste_ventas": 2152,
+        "ebitda": 1372,
+        "amortizaciones": 420,
+        "ebit": 952,
+        "resultado_financiero": -79,
+        "bai": 873,
+        "impuestos": 213,
+        "minoritarios": -32,
+        "beneficio_neto": 692,
+        "gastos_financieros": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 6.94,
+        "dpa": 2.75,
+        "acciones_diluidas": 99.743
+      },
+      {
+        "periodo": "2022",
+        "gastos_generales": null,
+        "participadas_en_ebitda": null,
+        "dpa_extraordinario": 0,
+        "ingresos": 6881,
+        "coste_ventas": 2628,
+        "ebitda": 1635,
+        "amortizaciones": 449,
+        "ebit": 1186,
+        "resultado_financiero": -68,
+        "bai": 1118,
+        "impuestos": 267,
+        "minoritarios": -41,
+        "beneficio_neto": 892,
+        "gastos_financieros": null,
+        "no_recurrentes_en_ebitda": 8,
+        "bpa": 8.92,
+        "dpa": 3.25,
+        "acciones_diluidas": 99.753
+      },
+      {
+        "periodo": "2023",
+        "gastos_generales": null,
+        "participadas_en_ebitda": null,
+        "dpa_extraordinario": 0,
+        "ingresos": 7132,
+        "coste_ventas": 2545,
+        "ebitda": 1781,
+        "amortizaciones": 490,
+        "ebit": 1291,
+        "resultado_financiero": -167,
+        "bai": 1124,
+        "impuestos": 268,
+        "minoritarios": -14,
+        "beneficio_neto": 870,
+        "gastos_financieros": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 8.71,
+        "dpa": 3.75,
+        "acciones_diluidas": 99.753
+      },
+      {
+        "periodo": "2024",
+        "gastos_generales": null,
+        "participadas_en_ebitda": null,
+        "dpa_extraordinario": 0,
+        "ingresos": 7617,
+        "coste_ventas": 2732,
+        "ebitda": 1844,
+        "amortizaciones": 561,
+        "ebit": 1283,
+        "resultado_financiero": -204,
+        "bai": 1079,
+        "impuestos": 250,
+        "minoritarios": 6,
+        "beneficio_neto": 823,
+        "gastos_financieros": 193,
+        "no_recurrentes_en_ebitda": 30,
+        "bpa": 8.25,
+        "dpa": 4.25,
+        "acciones_diluidas": 99.598
+      },
+      {
+        "periodo": "2025",
+        "gastos_generales": null,
+        "participadas_en_ebitda": null,
+        "dpa_extraordinario": 0,
+        "ingresos": 7713,
+        "coste_ventas": 2659,
+        "ebitda": 1878,
+        "amortizaciones": 591,
+        "ebit": 1287,
+        "resultado_financiero": -423,
+        "bai": 864,
+        "impuestos": 264,
+        "minoritarios": -20,
+        "beneficio_neto": 620,
+        "gastos_financieros": 162,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 6.22,
+        "dpa": 4.75,
+        "acciones_diluidas": 99.731
+      }
+    ],
+    "ltm": {
+      "periodo": "LTM jun-26",
+      "fecha_fin": "2026-06-30",
+      "ingresos": 7751,
+      "ebitda": 1758,
+      "ebit": 1155,
+      "beneficio_neto": 169,
+      "bpa": 1.69,
+      "dpa": 4.75,
+      "dpa_extraordinario": 0,
+      "fcf": 791,
+      "participadas_en_ebitda": null,
+      "no_recurrentes_en_ebitda": 30
+    },
+    "cambios_perimetro": [],
+    "comentario": "Los ingresos crecieron de 5.805 M NOK en 2021 a 7.713 M en 2025, todo orgánico: no hubo compras consolidadas en el periodo [1]. La empresa da un crecimiento anual compuesto del 7,7 % en 2020-2025 en NOK y de en torno al 5,0 % sin divisa ni coberturas [5]: casi un tercio del crecimiento fue la depreciación de la corona. El EBITDA pasó de 1.372 M a 1.878 M y el margen, del 23,6 % al 24,3 % (máximo del 25,0 % en 2023) [1]; la mejora vino de precio y mezcla en BioMaterials (precio medio de 14.283 NOK/t en 2022 a 17.678 en 2025) y de la especialización en BioSolutions, mientras Fine Chemicals cayó de 336 M a 174 M de EBITDA en 2025 por el desplome del precio del bioetanol [1, 3]. Las coberturas de divisa restaron 365 M al EBITDA en 2024 y 174 M en 2025, y suman 90 M en el 1S26 [3]. En el 1S26 el EBITDA bajó de 1.033 M a 943 M por energía, mezcla en BioSolutions y la corona fuerte [2].",
+    "ajustes": "Cifras publicadas (NIIF). El EBITDA de la empresa excluye «otros ingresos y gastos», que sí restan en el EBIT: −8 M en 2022, −30 M en 2024 (descontaminación de suelos) y −30 M en el 2T26 (estabilización del terreno de Sarpsborg por un puente del condado) [1, 2]; aquí van como no recurrentes dentro del EBITDA para que el motor los devuelva. El resultado financiero de 2025 incluye 245 M de deterioro de participadas (225 M de Alginor) y el del 2T26 otro deterioro de Alginor de 337 M, sin efecto fiscal [1, 2]. Sin ellos, el BPA fue de 8,67 NOK en 2025 y de 4,17 NOK en el 1S26 (tipo efectivo del 24 %) [1, 2]. Alginor queda a cero en el balance tras el 2T26 y Borregaard bajará al 10 % [2]: el BPA normalizado del informe excluye esas pérdidas, que no se repetirán con ese importe.",
+    "confianza": "Alta"
+  },
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "3T24",
+        "ingresos": 1949,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": 524,
+        "margen_ebitda_pct": 26.9,
+        "bpa": null,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "4T24",
+        "ingresos": 1744,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": 398,
+        "margen_ebitda_pct": 22.8,
+        "bpa": null,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1T25",
+        "ingresos": 2036,
+        "crecimiento_pct": 3.1,
+        "crecimiento_organico_pct": null,
+        "ebitda": 511,
+        "margen_ebitda_pct": 25.1,
+        "bpa": 2.52,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "2T25",
+        "ingresos": 2045,
+        "crecimiento_pct": 4.9,
+        "crecimiento_organico_pct": null,
+        "ebitda": 522,
+        "margen_ebitda_pct": 25.5,
+        "bpa": 2.56,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "3T25",
+        "ingresos": 1799,
+        "crecimiento_pct": -7.7,
+        "crecimiento_organico_pct": null,
+        "ebitda": 440,
+        "margen_ebitda_pct": 24.5,
+        "bpa": 1.95,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "4T25",
+        "ingresos": 1833,
+        "crecimiento_pct": 5.1,
+        "crecimiento_organico_pct": null,
+        "ebitda": 405,
+        "margen_ebitda_pct": 22.1,
+        "bpa": 0.24,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1T26",
+        "ingresos": 2005,
+        "crecimiento_pct": -1.5,
+        "crecimiento_organico_pct": null,
+        "ebitda": 428,
+        "margen_ebitda_pct": 21.3,
+        "bpa": 1.82,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "2T26",
+        "ingresos": 2114,
+        "crecimiento_pct": 3.4,
+        "crecimiento_organico_pct": null,
+        "ebitda": 515,
+        "margen_ebitda_pct": 24.4,
+        "bpa": -1.27,
+        "vs_consenso": null
+      }
+    ],
+    "ultima_presentacion": "En el 2T26 (15-jul) la dirección defendió que el EBITDA de 515 M NOK, casi igual que el del 2T25 (522 M), se logró pese a −40 M de energía, logística y químicos por el conflicto de Oriente Medio, con la madera un 15 % más barata y una producción récord de celulosa [2, 6]. En el 1T26 (29-abr) el mensaje era de volúmenes sólidos con márgenes bajo presión por la mezcla en BioSolutions y la corona [7]. Entre una y otra cambió el tono sobre los costes: en julio presentó un plan de ahorro de 150 M al año con efecto completo en 2028 y deterioró por completo Alginor (337 M) [2]. En el día del inversor (17-sep) añadió que la corona fuerte y la energía presionarán el margen tres años, suavizado por coberturas y el plan de ahorro, y fijó la ambición de crecer un 5 % anual sin divisa y un margen del 25 % a lo largo del ciclo [5]. Las preguntas giraron en torno al antidumping de EE. UU. (la empresa cree que con un margen final cercano al 6,54 % sus clientes volverán a comprar), la mezcla de BioSolutions y la divisa de 2027; la dirección no dio cifra de margen para 2027 ni explicó por qué Alginor valía 250 M a final de 2025 y cero seis meses después [2, 5].",
+    "confianza": "Alta"
+  },
+  "balance": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "activo_total": 7166,
+        "activo_corriente": 2023,
+        "pasivo_corriente": 1283,
+        "pasivo_total": 2860,
+        "fondo_comercio": null,
+        "intangibles": 89,
+        "inmovilizado_material": 4191,
+        "existencias": 792,
+        "clientes": 1107,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 124,
+        "deuda_financiera": 1544,
+        "arrendamientos": null,
+        "patrimonio_neto": 4222,
+        "minoritarios": 84,
+        "reservas": null
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 8114,
+        "activo_corriente": 2920,
+        "pasivo_corriente": 2004,
+        "pasivo_total": 3669,
+        "fondo_comercio": null,
+        "intangibles": 82,
+        "inmovilizado_material": 4371,
+        "existencias": 1299,
+        "clientes": 1387,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 234,
+        "deuda_financiera": 2072,
+        "arrendamientos": null,
+        "patrimonio_neto": 4394,
+        "minoritarios": 51,
+        "reservas": null
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 9115,
+        "activo_corriente": 3117,
+        "pasivo_corriente": 1804,
+        "pasivo_total": 4221,
+        "fondo_comercio": null,
+        "intangibles": 84,
+        "inmovilizado_material": 4661,
+        "existencias": 1447,
+        "clientes": 1201,
+        "proveedores": null,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 469,
+        "deuda_financiera": 1699,
+        "arrendamientos": 563,
+        "patrimonio_neto": 4855,
+        "minoritarios": 39,
+        "reservas": 2583
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 9584,
+        "activo_corriente": 3021,
+        "pasivo_corriente": 1869,
+        "pasivo_total": 4494,
+        "fondo_comercio": null,
+        "intangibles": 88,
+        "inmovilizado_material": 5026,
+        "existencias": 1498,
+        "clientes": 1441,
+        "proveedores": 551,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 82,
+        "deuda_financiera": 1769,
+        "arrendamientos": 554,
+        "patrimonio_neto": 5041,
+        "minoritarios": 49,
+        "reservas": 2934
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 9670,
+        "activo_corriente": 3128,
+        "pasivo_corriente": 1681,
+        "pasivo_total": 3792,
+        "fondo_comercio": null,
+        "intangibles": 79,
+        "inmovilizado_material": 5255,
+        "existencias": 1521,
+        "clientes": 1516,
+        "proveedores": 503,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 91,
+        "deuda_financiera": 1683,
+        "arrendamientos": 497,
+        "patrimonio_neto": 5853,
+        "minoritarios": 25,
+        "reservas": 3100
+      }
+    ],
+    "vencimientos": [
+      {
+        "anio": "2026",
+        "importe": 463
+      },
+      {
+        "anio": "2027-2028",
+        "importe": 1105
+      },
+      {
+        "anio": "2029-2030",
+        "importe": 211
+      },
+      {
+        "anio": "2031-2032",
+        "importe": 162
+      },
+      {
+        "anio": "2033+",
+        "importe": 240
+      }
+    ],
+    "liquidez": "Caja 91 M NOK y líneas comprometidas no dispuestas de 1.795 M (revolving de 1.500 M con Handelsbanken, DNB y SEB hasta 2027, más descubiertos de 250 M) a 31-dic-2025 [1]; caja de 125 M al 30-jun-2026 [3].",
+    "rating": "A-/Estable (rating de grado de inversión que cita la empresa en su día del inversor; agencia no especificada en el documento) [5]",
+    "coste_deuda_pct": 7.4,
+    "vida_media_anios": null,
+    "otros_pasivos": "Pensiones: plan neto con superávit de 210 M NOK en otros activos a cierre de 2025 [1]. Pasivos por arrendamiento de 497 M (99 M a corto) [1]. Covenants de la financiación bancaria y del préstamo del NIB cumplidos a 31-dic-2025; los créditos están ligados a objetivos de sostenibilidad (CO₂, accidentes y vertidos al Glomma) que ajustan el margen [1]. Préstamo de LignoTech Florida de 40,8 M USD garantizado al 70 % por la agencia noruega de crédito a la exportación, con garantía proporcional de los socios [1]. Provisión de 30 M en el 2T26 por la estabilización del terreno de Sarpsborg [2]. Compromiso de suscribir hasta 10 M NOK en la reestructuración de Alginor [2]. Derechos antidumping provisionales del 6,54 % sobre la celulosa de alta pureza exportada a EE. UU. desde mayo de 2026 (depósito en efectivo) [2].",
+    "comentario": "El balance es conservador: deuda neta con arrendamientos de 2.090 M NOK a cierre de 2025 y 2.141 M en junio de 2026, 1,1-1,2 veces el EBITDA, con un objetivo de 1,0-2,25 veces y un ratio de capital del 59-61 % [1, 2, 5]. El circulante pesa mucho: existencias de 1.521 M (casi todo producto terminado, 1.198 M) y clientes de 1.516 M frente a proveedores de 503 M, un circulante comercial del 33 % de las ventas frente al objetivo del 20 % de la empresa (que lo mide con otra definición) [1, 5]. La deuda bancaria y el bono verde de 500 M son a tipo variable (100 %) [1], así que la subida de tipos en NOK pasa directa a la cuenta. Hasta 2022 la deuda financiera de la serie incluye los arrendamientos (no se desglosan en el XBRL de esos años).",
+    "confianza": "Alta"
+  },
+  "flujos": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 1431,
+        "capex": 556,
+        "pagos_arrendamientos": null,
+        "adquisiciones": 145,
+        "desinversiones": 0,
+        "dividendos": 249,
+        "recompras": 118,
+        "emision_acciones": 59,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 735,
+        "capex": 464,
+        "pagos_arrendamientos": null,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 499,
+        "recompras": 68,
+        "emision_acciones": 41,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 1563,
+        "capex": 667,
+        "pagos_arrendamientos": null,
+        "adquisiciones": 171,
+        "desinversiones": 0,
+        "dividendos": 324,
+        "recompras": 92,
+        "emision_acciones": 49,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 1068,
+        "capex": 711,
+        "pagos_arrendamientos": 110,
+        "adquisiciones": 150,
+        "desinversiones": 19,
+        "dividendos": 374,
+        "recompras": 98,
+        "emision_acciones": 52,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 1356,
+        "capex": 793,
+        "pagos_arrendamientos": 114,
+        "adquisiciones": 132,
+        "desinversiones": 18,
+        "dividendos": 424,
+        "recompras": 30,
+        "emision_acciones": 48,
+        "intereses_en_financiacion": 0
+      }
+    ],
+    "comentario": "El flujo operativo oscila con el circulante: 735 M NOK en 2022 (existencias de 792 M a 1.299 M) y 1.563 M en 2023 [1, 4]. En el 1S26 fue de 772 M frente a 514 M, por la bajada del circulante [2]. La inversión crece: 793 M en inmovilizado en 2025 (576 M de reposición y 217 M de expansión) más 132 M en participadas, y la empresa prevé 900-1.000 M al año en 2026-2029 (550-600 M de reposición, al nivel de la amortización sin NIIF 16, y 300-450 M de expansión) [1, 5]. Las adquisiciones de la serie son aportaciones a Alginor y a otras empresas emergentes de base biológica (551 M invertidos en Alginor en total), hoy deterioradas casi por completo [1, 2]. Los pagos de arrendamiento (principal) se derivan de la nota 12: pagos totales de 147 M en 2025 y 146 M en 2024 menos sus intereses de 33 M y 36 M [1]; 2021-2023 sin dato.",
+    "confianza": "Alta"
+  },
+  "calidad": {
+    "auditor": "EY (Ernst & Young AS)",
+    "anios_auditor": null,
+    "opinion": "Favorable (informe del auditor de las cuentas de 2025)",
+    "comentario": "Las cuentas son limpias: auditor EY con opinión favorable, sin cambios de criterio relevantes, I+D capitalizada pequeña (intangibles de 79 M NOK) y pagos en acciones modestos (16 M en 2025) [1]. Los indicadores del motor lo confirman: Altman Z de 4,19 (zona segura), Piotroski F de 8 sobre 9 y Beneish M de −2,81, lejos de la zona de manipulación. Los puntos que hay que mirar están fuera del negocio principal: Alginor se valoró en 250 M a final de 2025 con escenarios de éxito y quedó a cero en junio de 2026 (562 M de deterioros en total), y las coberturas de divisa mueven el EBITDA cientos de millones entre años (−365 M en 2024, +90 M en el 1S26) [1, 3]. El tipo efectivo de 2025 (31 %) está inflado porque el deterioro no deduce; sin él fue del 24 % [1]. La conversión en caja es buena en el acumulado (FCF de 2.738 M en 2021-2025, el 70 % del beneficio), con años malos por el circulante.",
+    "senales": [
+      {
+        "senal": "Deterioros sucesivos de Alginor (225 M en 2025 y 337 M en el 2T26)",
+        "nivel": "Media",
+        "comentario": "La valoración de 2025 suponía escenarios de éxito comercial; medio año después la participación vale cero. Muestra optimismo en la valoración de las participadas, no en el negocio principal [1, 2]."
+      },
+      {
+        "senal": "Coberturas de divisa con efecto grande en el EBITDA (−365 M en 2024, +90 M en el 1S26)",
+        "nivel": "Baja",
+        "comentario": "Se informan aparte cada trimestre; mueven el margen de un año a otro sin cambiar el negocio [3]."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "rentabilidad": {
+    "comentario": "Borregaard crea valor, pero con poco margen sobre su coste de capital en NOK. El ROIC del motor fue del 15,1-15,2 % en 2022-2023, del 14,4 % en 2024 y del 11,7 % en 2025; el de 2025 está deprimido por un tipo impositivo del 31 % que incluye el deterioro de Alginor (con el 24 % normal sería en torno al 12,8 %). Frente a un WACC del 9,08 % (bono noruego al 4,585 % [17]), la diferencia es de 2,6 puntos con la cifra publicada y de unos 4 con la normalizada, por debajo de los 5 que pide el filtro de compra. El ROIC lo mueve el margen (EBIT del 17-18 %) más que la rotación (0,8 veces), porque la biorrefinería pide mucho inmovilizado (5.255 M) y circulante (33 % de las ventas). El ROIC incremental histórico es del 9,0 %: el capital añadido desde 2021 (de 5.726 M a 7.649 M) rinde poco más que su coste. No hay fondo de comercio, así que no hay ROIC «sin fondo de comercio» que dar. El ROCE antes de impuestos de la empresa, 15,7 % en 2025 y 14,4 % en los doce meses a junio de 2026, ya está por debajo de su objetivo del 15 % [1, 2].",
+    "confianza": "Alta"
+  },
+  "capital": {
+    "politica": "Dividendo regular y creciente del 40-60 % del beneficio (4,75 NOK por 2025, el 55 % del beneficio sin deterioros), recompras oportunistas pequeñas (300.000 acciones en el 2T26 a 145,98 NOK) y prioridad a la inversión de expansión con TIR superior al 15 % antes de impuestos [1, 2, 5]. Apalancamiento objetivo de 1,0-2,25 veces el EBITDA [5]. La inversión prevista es de 900-1.000 M al año en 2026-2029 [5].",
+    "adquisiciones": [
+      {
+        "anio": "2021-2026",
+        "objetivo": "Alginor (biorrefinería de algas, 41 % totalmente diluido)",
+        "importe": 551,
+        "ev_ebitda": null,
+        "financiacion": "Caja y préstamo convertible",
+        "resultado": "Fracaso: retrasos, sobrecostes y falta de materia prima; deterioros de 225 M en 2025 y 337 M en el 2T26; valor contable cero y bajada al 10 % tras la reestructuración [1, 2]."
+      },
+      {
+        "anio": "2017",
+        "objetivo": "LignoTech Florida (55 %, planta nueva de lignina)",
+        "importe": null,
+        "ev_ebitda": null,
+        "financiacion": "Préstamo de 60 M USD garantizado por el Estado noruego",
+        "resultado": "Operativa; quedan 40,8 M USD de préstamo; los costes de las plantas de EE. UU. subieron en 2025 [1]."
+      }
+    ],
+    "comentario": "La dirección asigna bien el capital del negocio principal y mal el de las apuestas. En 2021-2025 el FCF sumó 2.738 M NOK y se repartieron 1.870 M en dividendos y 406 M en recompras, mientras se invertían 598 M en participadas y empresas emergentes que hoy valen casi nada [1]. Las inversiones en Sarpsborg (calderas eléctricas, desembotellamiento, más capacidad de celulosa especial) tienen retornos razonables según la empresa (TIR > 15 %, ahorro de energía de ≈45 M al año) [5], pero el ROIC incremental del 9,0 % dice que el capital añadido en conjunto aún no rinde lo prometido. No hay dilución: 99,7 M de acciones diluidas en 2025 como en 2021.",
+    "confianza": "Media"
+  },
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "Tom Erik Foss-Jacobsen",
+        "cargo": "Consejero delegado",
+        "desde": "2025",
+        "participacion_pct": 0.01,
+        "trayectoria": "Consejero delegado desde el 1-ago-2025; antes dirigía la división de celulosa especial y química fina de Borregaard (carrera interna). Su remuneración de 2025 fue de 5,7 M NOK [1]."
+      },
+      {
+        "nombre": "Per Bjarne Lyngstad",
+        "cargo": "Director financiero",
+        "desde": null,
+        "participacion_pct": null,
+        "trayectoria": "Director financiero; presentó las ambiciones financieras del día del inversor de 2026 [1, 5]."
+      },
+      {
+        "nombre": "Helge Aasen",
+        "cargo": "Presidente del consejo",
+        "desde": null,
+        "participacion_pct": null,
+        "trayectoria": "Presidente del consejo y de la comisión de remuneración; ex consejero delegado de Elkem [1]."
+      },
+      {
+        "nombre": "Knut-Harald Bakke",
+        "cargo": "Vicepresidente ejecutivo, BioSolutions",
+        "desde": null,
+        "participacion_pct": null,
+        "trayectoria": "Responsable de BioSolutions, el 56 % de las ventas [1, 5]."
+      },
+      {
+        "nombre": "Gisle Løhre Johansen",
+        "cargo": "Vicepresidente ejecutivo, celulosa especial y química fina",
+        "desde": null,
+        "participacion_pct": null,
+        "trayectoria": "Responsable de BioMaterials y Fine Chemicals [1]."
+      }
+    ],
+    "historial_guidance": [
+      {
+        "anio": "2026",
+        "guia": "Volumen BioSolutions 335.000 t; BioMaterials > 160.000 t; madera del 2S26 un 3-4 % más barata [2]",
+        "real": "Pendiente (1S26: 172.000 t y 85.600 t)",
+        "cumplida": "Parcial"
+      },
+      {
+        "anio": "2025",
+        "guia": "ROCE antes de impuestos > 15 %; dividendo del 40-60 % del beneficio [1]",
+        "real": "ROCE 15,7 %; dividendo de 4,75 NOK, 55 % del beneficio sin deterioros [1]",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2024",
+        "guia": "ROCE > 15 %; apalancamiento 1,0-2,25 veces [1]",
+        "real": "ROCE 17,1 %; 1,20 veces [1]",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2021-2025",
+        "guia": "Alginor: planta de demostración y comercialización (inversión de 551 M) [1]",
+        "real": "Retrasos, sobrecostes y valor cero en junio de 2026 [2]",
+        "cumplida": "No"
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "El equipo es estable y de casa: el nuevo consejero delegado (desde agosto de 2025) venía de dirigir celulosa especial y química fina, y sustituyó a Per A. Sørlie tras una sucesión anunciada [1]. La credibilidad es alta en el negocio principal: el ROCE superó el objetivo del 15 % cada año hasta 2025 y el dividendo sigue la política [1]. Es baja en las apuestas fuera de él: Alginor (551 M invertidos) se valoró con escenarios optimistas y quedó a cero en seis meses [2]. El día del inversor de 2026 fue prudente (presión en el margen tres años) [5], lo que suma credibilidad. Participación de la dirección en el capital pequeña."
+  },
+  "gobierno": {
+    "consejo": [
+      {
+        "nombre": "Helge Aasen",
+        "cargo": "Presidente",
+        "tipo": "Independiente",
+        "desde": null,
+        "comisiones": "Remuneración (presidente)"
+      },
+      {
+        "nombre": "Terje Andersen",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": null,
+        "comisiones": "Auditoría y sostenibilidad (presidente)"
+      },
+      {
+        "nombre": "Tove Andersen",
+        "cargo": "Consejera",
+        "tipo": "Independiente",
+        "desde": null,
+        "comisiones": "Auditoría y sostenibilidad"
+      },
+      {
+        "nombre": "Margrethe Hauge",
+        "cargo": "Consejera",
+        "tipo": "Independiente",
+        "desde": null,
+        "comisiones": "Remuneración"
+      },
+      {
+        "nombre": "Magnus Krogh Ankarstrand",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2026",
+        "comisiones": null
+      },
+      {
+        "nombre": "Arundel Kristiansen",
+        "cargo": "Consejero elegido por los empleados",
+        "tipo": "Otro externo",
+        "desde": null,
+        "comisiones": "Auditoría y sostenibilidad"
+      },
+      {
+        "nombre": "Ragnhild Anker Eide",
+        "cargo": "Consejera elegida por los empleados",
+        "tipo": "Otro externo",
+        "desde": null,
+        "comisiones": "Remuneración"
+      }
+    ],
+    "presidente_ceo_separados": true,
+    "presidente_ejecutivo": false,
+    "consejero_coordinador": false,
+    "una_accion_un_voto": true,
+    "operaciones_vinculadas_relevantes": false,
+    "variable_ligado_rentabilidad": false,
+    "auditoria_independiente": true,
+    "insiders_sin_operaciones": false,
+    "accionista_control": false,
+    "presidente_vinculado_control": false,
+    "cambios_cupula_24m": 1,
+    "voto_remuneracion_pct": null,
+    "voto_remuneracion_contra_pct": null,
+    "voto_remuneracion_contra_libre_pct": null,
+    "voto_cupula_pct": null,
+    "remuneracion_ceo": {
+      "anio": "2025",
+      "total": 5.68,
+      "fijo": 3.74,
+      "variable_corto": 1.05,
+      "variable_largo": null,
+      "ratio_salario_medio": null
+    },
+    "remuneracion": "Salario base, bonus anual (con tope) ligado a objetivos financieros y personales, pensión de aportación y opciones sobre acciones con precio de ejercicio un 10 % por encima de la cotización (1,39 M de opciones vivas a cierre de 2025 a un precio medio de 198 NOK) [1]. El nuevo consejero delegado cobró 5,7 M NOK en 2025 por cinco meses en el cargo más su puesto anterior; el anterior, 7,3 M [1]. No hay plan a largo plazo ligado a ROIC ni a rentabilidad total para el accionista: las opciones premian la cotización. El consejero delegado no tiene pacto de indemnización [1]. Presidente del consejo: 732.000 NOK al año [1].",
+    "accionistas": [
+      {
+        "nombre": "Folketrygdfondet (fondo de pensiones del Estado noruego)",
+        "pct": 12.55,
+        "tipo": "Institucional",
+        "variacion": "n.d."
+      },
+      {
+        "nombre": "Must Invest",
+        "pct": 7.32,
+        "tipo": "Inversor privado",
+        "variacion": "Coinversor en Alginor [2]"
+      },
+      {
+        "nombre": "Goldman Sachs Asset Management",
+        "pct": 5.72,
+        "tipo": "Institucional",
+        "variacion": "n.d."
+      },
+      {
+        "nombre": "Pareto Asset Management",
+        "pct": 4.67,
+        "tipo": "Institucional",
+        "variacion": "n.d."
+      },
+      {
+        "nombre": "Nordea Investment Management",
+        "pct": 4.41,
+        "tipo": "Institucional",
+        "variacion": "n.d."
+      },
+      {
+        "nombre": "Vanguard",
+        "pct": 3.71,
+        "tipo": "Institucional",
+        "variacion": "n.d."
+      },
+      {
+        "nombre": "Autocartera",
+        "pct": 0.36,
+        "tipo": "Autocartera",
+        "variacion": "355.404 acciones a 30-jun-2026 tras recomprar 300.000 en el 2T26 a 145,98 NOK [2]"
+      }
+    ],
+    "insiders": [],
+    "control_y_defensas": "Sin accionista de control: el primero es el fondo de pensiones del Estado (12,55 %) y los veinte primeros suman el 71 % [1]. Una acción, un voto; 100 millones de acciones [1]. No hay blindajes estatutarios. El consejo tiene cinco consejeros independientes elegidos por la junta y dos elegidos por los empleados, como manda la ley noruega [1]. La comisión de nombramientos la elige la junta. Operaciones vinculadas: Must Invest, segundo accionista, es coinversor de Borregaard en Alginor, y la reestructuración de 2026 pasa acciones de Borregaard a Hatteland sin contraprestación [2]; no es una transferencia de valor a un consejero, pero conviene vigilarla.",
+    "alertas": [
+      "Pérdida total de la inversión en Alginor (551 M NOK) en dos años: decisión de asignación de capital fallida, junto a otro accionista significativo [1, 2].",
+      "Cambio de consejero delegado en agosto de 2025 (sucesión interna anunciada) [1]."
+    ],
+    "confianza": "Media"
+  },
+  "consenso": {
+    "guidance": "Guía 2026 (15-jul-2026): volumen de BioSolutions de 335.000 t (≈85.000 t en el 3T), de BioMaterials de más de 160.000 t (≈40.000 t en el 3T) con más grados muy especializados que en 2025; bioetanol a precios de 2025 con menos entregas; mezcla peor en química fina en el 2S26; madera un 3-4 % más barata en el 2S26 que en el 1S26; divisa con coberturas +45 M en el año [2]. Plan de ahorro de 150 M anuales con efecto completo en 2028 [2]. Ambición del día del inversor (17-sep-2026): crecer un 5 % anual sin divisa a lo largo del ciclo desde 2025, margen EBITDA del 25 % a lo largo del ciclo, ROCE > 15 %, dividendo del 40-60 % del beneficio, y avisa de presión en el margen los próximos tres años por la corona fuerte y los costes de energía [5].",
+    "estimaciones": [
+      {
+        "periodo": "2026e",
+        "ingresos": 7945,
+        "ebitda": 1873,
+        "ebit": 1265,
+        "bpa": 6.57,
+        "dpa": 4.16,
+        "fuente": "MarketScreener, 5 analistas (BPA con el deterioro de Alginor) [15]"
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 8387,
+        "ebitda": 2117,
+        "ebit": 1499,
+        "bpa": 10.61,
+        "dpa": 5.81,
+        "fuente": "MarketScreener [15]"
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 8761,
+        "ebitda": 2219,
+        "ebit": 1579,
+        "bpa": 11.38,
+        "dpa": 6.41,
+        "fuente": "MarketScreener [15]"
+      }
+    ],
+    "recomendaciones": {
+      "n_analistas": 6,
+      "comprar": 4,
+      "mantener": 2,
+      "vender": 0,
+      "po_medio": 173.75,
+      "po_min": 165,
+      "po_max": 180
+    },
+    "revisiones": "DNB Carnegie (7-sep-2026) atribuye la caída de un 30 % desde agosto de 2025 a los recortes del BPA de 2026, y dice que tras el 2T las estimaciones de 2027 se han estabilizado [23]. SEB subió su objetivo de 165 a 180 NOK en julio y Berenberg a 165 NOK manteniendo «mantener» [16]. MarketScreener da un objetivo medio de 173,75 NOK con 5 analistas [15]; los seis titulares de Nordnet van de 165 a 180 NOK (cuatro comprar, dos mantener) [16]. El consenso de 2027 (EBITDA de 2.117 M, +13 %) parece hecho con tipos de cambio anteriores: la corona se ha apreciado otro 3-5 % desde julio [18].",
+    "base_ebitda": "NIIF",
+    "ajuste_ebitda_pct_ventas": null,
+    "confianza": "Media"
+  },
+  "bolsa": {
+    "tipo_rentabilidad": "total (con dividendos)",
+    "rentabilidades": [
+      {
+        "periodo": "En el año",
+        "accion_pct": -24,
+        "indice_pct": 24.1,
+        "sector_pct": 20.9
+      },
+      {
+        "periodo": "1 año",
+        "accion_pct": -21.1,
+        "indice_pct": 27.4,
+        "sector_pct": 17.4
+      },
+      {
+        "periodo": "3 años (anual.)",
+        "accion_pct": -0.3,
+        "indice_pct": 16.9,
+        "sector_pct": 6.7
+      },
+      {
+        "periodo": "5 años (anual.)",
+        "accion_pct": -5.6,
+        "indice_pct": 11.8,
+        "sector_pct": 2.6
+      },
+      {
+        "periodo": "10 años (anual.)",
+        "accion_pct": 10.3,
+        "indice_pct": 12.6,
+        "sector_pct": 7.1
+      }
+    ],
+    "anual": [
+      {
+        "anio": "2016",
+        "accion_pct": 75.7,
+        "indice_pct": 12.1
+      },
+      {
+        "anio": "2017",
+        "accion_pct": 0.2,
+        "indice_pct": 19.1
+      },
+      {
+        "anio": "2018",
+        "accion_pct": -5.6,
+        "indice_pct": -1.8
+      },
+      {
+        "anio": "2019",
+        "accion_pct": 30.5,
+        "indice_pct": 16.5
+      },
+      {
+        "anio": "2020",
+        "accion_pct": 52.7,
+        "indice_pct": 4.6
+      },
+      {
+        "anio": "2021",
+        "accion_pct": 58.7,
+        "indice_pct": 23.4
+      },
+      {
+        "anio": "2022",
+        "accion_pct": -29.6,
+        "indice_pct": -1
+      },
+      {
+        "anio": "2023",
+        "accion_pct": 14.9,
+        "indice_pct": 9.9
+      },
+      {
+        "anio": "2024",
+        "accion_pct": 8.6,
+        "indice_pct": 9.1
+      },
+      {
+        "anio": "2025",
+        "accion_pct": 12.1,
+        "indice_pct": 18.4
+      }
+    ],
+    "beta": 0.7,
+    "volatilidad_pct": 23.8,
+    "max_drawdown_pct": -43.7,
+    "tramo_drawdown": "2021-11-23 → 2022-10-13",
+    "posicion_corta_pct": null,
+    "comentario": "La acción ha ido muy por detrás de su mercado: −24,0 % en el año frente al +24,1 % del OSEBX y −21,1 % en doce meses frente al +27,4 % [14]. La caída empezó tras el máximo de 200,50 NOK del 30-dic-2025, con los recortes del BPA de 2026 por energía, mezcla y corona fuerte [14, 23]; los peores días fueron el 29-abr-2026 (−9,4 %, 1T26) y el 4-5 de febrero (4T25) [14]. Desde junio (mínimo de 137,60) se mueve de lado. A cinco años rinde −5,6 % anual y a diez años +10,3 % frente al +12,6 % del índice. Beta mensual a cinco años de 0,70 (0,45 semanal a dos años): una defensiva frente a un índice cargado de petróleo [14].",
+    "confianza": "Alta"
+  },
+  "multiplos_historicos": {
+    "serie": [
+      {
+        "anio": "2021",
+        "precio_cierre": 222,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2022",
+        "precio_cierre": 152,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2023",
+        "precio_cierre": 171.4,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2024",
+        "precio_cierre": 182.4,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2025",
+        "precio_cierre": 199.4,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      }
+    ],
+    "comentario": "Con el beneficio deprimido de 2025 y 2026 el PER de los últimos doce meses (87,2x) no dice nada. El EV/EBITDA de los últimos doce meses (9,4x) cotiza un 14 % por debajo de su media de cinco años (10,9x) y por debajo del mínimo de esos cierres (10,4x). Medido sobre el beneficio del año siguiente, el PER de hoy es de 17,8x sobre nuestro BPA de 2027, frente a una mediana de 21,0x en 2021-2025 y un mínimo de 17,4x. El descuento tiene causas: tipos noruegos al 4,6 % (frente al 1,5-2 % de 2020-2021) y un crecimiento del beneficio que se ha parado desde 2022 (BPA sin deterioros de 8,95 en 2022 y 8,67 en 2025) [1, 17].",
+    "confianza": "Alta"
+  },
+  "comparables": {
+    "criterio": "No hay otra biorrefinería de madera cotizada con el mismo perfil. Se usan dos químicas de la madera o nórdicas con ciclo parecido (Ingevity, química del pino y lignina kraft; Kemira, química nórdica expuesta a energía y divisa) y tres de ingredientes y especialidades con las que comparte clientes de aromas, cosmética, alimentación y agricultura (Croda, Symrise y Kerry), estas tomadas de la ficha sectorial de ingredientes del 14-oct [20]. Quedan fuera RYAM y Lenzing (pérdidas; PER sin sentido), Sappi (papel y celulosa genérica) y Novonesis y Givaudan (crecimiento y márgenes de otra liga). Cifras de MarketScreener pasadas a NOK con el BCE del 14-oct [9, 10, 18, 20].",
+    "empresas": [
+      {
+        "nombre": "Kemira",
+        "ticker": "KEMIRA",
+        "pais": "FI",
+        "capitalizacion": 26858,
+        "ev_ventas": 1.09,
+        "ev_ebitda_ltm": 5.8,
+        "ev_ebitda_ntm": 6.1,
+        "per_ntm": 12.9,
+        "crecimiento_pct": 4.6,
+        "margen_ebitda_pct": 19,
+        "roic_pct": null,
+        "dn_ebitda": 0.96,
+        "fcf_yield_pct": 5.2
+      },
+      {
+        "nombre": "Ingevity",
+        "ticker": "NGVT",
+        "pais": "US",
+        "capitalizacion": 25737,
+        "ev_ventas": 3.2,
+        "ev_ebitda_ltm": 9.3,
+        "ev_ebitda_ntm": 9,
+        "per_ntm": 12.6,
+        "crecimiento_pct": -2.5,
+        "margen_ebitda_pct": 30.8,
+        "roic_pct": null,
+        "dn_ebitda": 2.46,
+        "fcf_yield_pct": 8.8
+      },
+      {
+        "nombre": "Symrise",
+        "ticker": "SY1",
+        "pais": "DE",
+        "capitalizacion": 144504,
+        "ev_ventas": 2.95,
+        "ev_ebitda_ltm": 14.1,
+        "ev_ebitda_ntm": 13.3,
+        "per_ntm": 22.8,
+        "crecimiento_pct": 4.6,
+        "margen_ebitda_pct": 21.8,
+        "roic_pct": 7,
+        "dn_ebitda": 1.59,
+        "fcf_yield_pct": 4.7
+      },
+      {
+        "nombre": "Kerry Group",
+        "ticker": "KRZ",
+        "pais": "IE",
+        "capitalizacion": 155628,
+        "ev_ventas": 2.34,
+        "ev_ebitda_ltm": 13.5,
+        "ev_ebitda_ntm": 12.5,
+        "per_ntm": 18.3,
+        "crecimiento_pct": 5,
+        "margen_ebitda_pct": 18.4,
+        "roic_pct": 9.4,
+        "dn_ebitda": 1.57,
+        "fcf_yield_pct": 4.8
+      },
+      {
+        "nombre": "Croda",
+        "ticker": "CRDA",
+        "pais": "GB",
+        "capitalizacion": 61097,
+        "ev_ventas": 2.9,
+        "ev_ebitda_ltm": 13,
+        "ev_ebitda_ntm": 11.6,
+        "per_ntm": 23.1,
+        "crecimiento_pct": 4.8,
+        "margen_ebitda_pct": 24.1,
+        "roic_pct": null,
+        "dn_ebitda": 1.11,
+        "fcf_yield_pct": 3.5
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "Borregaard (EV/EBITDA NTM de 8,1x, PER NTM de 15,1x con el BPA del consenso) cotiza en medio de la muestra: por encima de Kemira (6,1x y 12,9x) e Ingevity (9,0x y 12,6x), las químicas de la madera y nórdicas, y muy por debajo de los ingredientes (Symrise 13,3x y 22,8x, Kerry 12,5x y 18,3x, Croda 11,6x y 23,1x) [9, 10, 20]. Su margen EBITDA (23,1 %) es de los ingredientes, pero su crecimiento y su ROIC sin compras (11,7 %) están más cerca de las químicas. El valor implícito por EV/EBITDA NTM (mediana 218,94 NOK) exagera porque el EBITDA NTM sale del consenso (2.066 M), que creemos alto con la corona de hoy; por PER NTM la mediana da 178,58. Usaríamos el PER de las químicas de especialidad nórdicas, 13-18x."
+  },
+  "transacciones": {
+    "operaciones": [
+      {
+        "fecha": "2021-11",
+        "objetivo": "MBCC Group (química de construcción, aditivos de hormigón)",
+        "comprador": "Sika",
+        "ev": 62507,
+        "ev_ventas": null,
+        "ev_ebitda": 11.5,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "5.500 M CHF; 11,5x el EBITDA 2022e pro forma (8,5x con sinergias) [22]. Cliente-tipo de los lignosulfonatos de construcción."
+      },
+      {
+        "fecha": "2026-02",
+        "objetivo": "Animal Nutrition & Health de dsm-firmenich",
+        "comprador": "CVC Capital Partners",
+        "ev": 23328,
+        "ev_ventas": null,
+        "ev_ebitda": 7,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "2.200 M EUR, ~7x el EBITDA ajustado; aditivos de piensos cíclicos de menor margen [21]."
+      }
+    ],
+    "comentario": "No hay operaciones recientes de lignina o celulosa especial con múltiplo publicado. Las dos de referencia, MBCC por Sika (11,5x EBITDA, química de construcción) y la nutrición animal de dsm-firmenich por CVC (7x, cíclica), acotan el valor de control entre 7 y 12 veces el EBITDA [21, 22]: a 9,4x de EBITDA LTM, Borregaard está en medio. Una opa es poco probable: no hay accionista de control y el primero es el fondo de pensiones del Estado (12,6 %), pero la biorrefinería es un activo único que podría interesar a un químico grande.",
+    "confianza": "Baja"
+  },
+  "dcf": {
+    "anios": [
+      {
+        "periodo": "2026e",
+        "crecimiento_pct": 2.4,
+        "margen_ebitda_pct": 22.9,
+        "amortizacion_pct_ventas": 7.6,
+        "capex_pct_ventas": 10.8,
+        "nwc_pct_ventas": 32,
+        "tasa_impositiva_pct": 24,
+        "fijo": true
+      },
+      {
+        "periodo": "2027e",
+        "crecimiento_pct": 1,
+        "margen_ebitda_pct": 23.5,
+        "amortizacion_pct_ventas": 7.8,
+        "capex_pct_ventas": 12,
+        "nwc_pct_ventas": 32,
+        "tasa_impositiva_pct": 24,
+        "fijo": false
+      },
+      {
+        "periodo": "2028e",
+        "crecimiento_pct": 5,
+        "margen_ebitda_pct": 24,
+        "amortizacion_pct_ventas": 7.9,
+        "capex_pct_ventas": 11.5,
+        "nwc_pct_ventas": 32,
+        "tasa_impositiva_pct": 24,
+        "fijo": false
+      },
+      {
+        "periodo": "2029e",
+        "crecimiento_pct": 5,
+        "margen_ebitda_pct": 24.5,
+        "amortizacion_pct_ventas": 8.1,
+        "capex_pct_ventas": 11,
+        "nwc_pct_ventas": 32,
+        "tasa_impositiva_pct": 24,
+        "fijo": false
+      },
+      {
+        "periodo": "2030e",
+        "crecimiento_pct": 4.5,
+        "margen_ebitda_pct": 24.5,
+        "amortizacion_pct_ventas": 8.3,
+        "capex_pct_ventas": 10.5,
+        "nwc_pct_ventas": 32,
+        "tasa_impositiva_pct": 24,
+        "fijo": false
+      },
+      {
+        "periodo": "2031e",
+        "crecimiento_pct": 4,
+        "margen_ebitda_pct": 24.5,
+        "amortizacion_pct_ventas": 8.5,
+        "capex_pct_ventas": 10,
+        "nwc_pct_ventas": 32,
+        "tasa_impositiva_pct": 24,
+        "fijo": false
+      },
+      {
+        "periodo": "2032e",
+        "crecimiento_pct": 3.5,
+        "margen_ebitda_pct": 24.5,
+        "amortizacion_pct_ventas": 8.7,
+        "capex_pct_ventas": 9.5,
+        "nwc_pct_ventas": 32,
+        "tasa_impositiva_pct": 24,
+        "fijo": false
+      }
+    ],
+    "wacc": {
+      "tasa_libre_pct": 4.585,
+      "beta": 0.85,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 0.5,
+      "coste_deuda_pct": 5.8,
+      "tasa_impositiva_pct": 22,
+      "peso_deuda_pct": 13
+    },
+    "terminal": {
+      "metodo": "gordon",
+      "crecimiento_pct": 2.5,
+      "multiplo_salida": 10
+    },
+    "etapa2": {
+      "usar": false,
+      "anios": 10,
+      "margen_final_pct": null,
+      "justificacion": null
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "Ingresos de 7.900 M NOK en 2026 (+2,4 %, año fijo con dos trimestres publicados: 4.119 M en el 1S26 y la guía de volúmenes del 3T [2]), +1,0 % en 2027 por la corona (−4 puntos de divisa sobre +5 de volumen y precio) y +5,0 % en 2028-2029, la ambición de la empresa sin divisa [5], bajando al 3,5 % en 2032. La historia: +7,4 % anual en 2021-2025 en NOK, pero ≈5,0 % sin divisa [5]. El consenso espera +5,6 % en 2027 [15]: no descuenta la apreciación de la corona desde julio.",
+      "margenes": "Margen EBITDA del 22,9 % en 2026 (943 M en el 1S26), 23,5 % en 2027 y 24,0-24,5 % desde 2028 con el plan de ahorro de 150 M [2]; por debajo del 25 % que la empresa ambiciona a lo largo del ciclo y de la media de 2021-2025 (24,3 %), porque la propia empresa avisa de tres años de presión por divisa y energía [5]. El consenso da un 25,2 % en 2027 [15].",
+      "inversion": "Capex del 10,8 % de las ventas en 2026 y del 12,0 % en 2027, bajando al 9,5 % en 2032: la guía de 900-1.000 M al año en 2026-2029 (reposición de 550-600 M más expansión) más ≈50 M de altas de derechos de uso [5]. Amortización del 7,6 % al 8,7 % de las ventas (7,7 % en 2025). Circulante del 32 % de las ventas, el de 2025 (32,9 %); el objetivo de la empresa del 20 % usa otra definición [5].",
+      "wacc": "Tasa libre: bono noruego a 10 años del 4,585 % [17], porque los flujos están en NOK. Beta de 0,85, entre la ajustada mensual a cinco años (0,80) y una beta sectorial de química de especialidad; la semanal a dos años es de 0,45 [14]. Prima de mercado del 5,5 % y prima adicional de 0,5 puntos por tamaño (capitalización de 14.688 M NOK) y una sola planta. Coste de la deuda del 5,8 % (deuda a tipo variable en NOK) con un peso del 13 % a valor de mercado. WACC del 9,08 %; con la prima implícita del mercado (4,2 %), 8,12 %.",
+      "terminal": "Gordon con un 2,5 %: inflación objetivo de Noruega (2 %) más medio punto real, coherente con un bono al 4,585 %. Equivale a ≈8,5 veces el EBITDA de 2032, por debajo del EV/EBITDA medio de la acción en 2021-2025 (10,9x), que se hizo con tipos mucho más bajos."
+    },
+    "sostenibilidad": {
+      "puente_ingresos": [
+        {
+          "periodo": "2026e",
+          "volumen_pct": 4,
+          "precio_pct": 0.5,
+          "otros_pct": -2.1,
+          "comentario": "Volumen +4 % (BioSolutions 335.000 t y BioMaterials > 160.000 t según la guía [2]); precio +0,5 %; −2,1 puntos de divisa y mezcla."
+        },
+        {
+          "periodo": "2027e",
+          "volumen_pct": 3,
+          "precio_pct": 2,
+          "otros_pct": -4,
+          "comentario": "Volumen +3 % y precio +2 % (ambición de la empresa [5]); −4 puntos por la corona al vencer las coberturas."
+        },
+        {
+          "periodo": "2028e",
+          "volumen_pct": 3,
+          "precio_pct": 2,
+          "otros_pct": 0,
+          "comentario": "Volumen +3 % (desembotellamiento de Sarpsborg) y precio +2 %, sin divisa [5]."
+        },
+        {
+          "periodo": "2029e",
+          "volumen_pct": 3,
+          "precio_pct": 2,
+          "otros_pct": 0,
+          "comentario": "Igual que 2028."
+        },
+        {
+          "periodo": "2030e",
+          "volumen_pct": 2.5,
+          "precio_pct": 2,
+          "otros_pct": 0,
+          "comentario": "Volumen +2,5 % y precio +2 %."
+        }
+      ],
+      "mercado_final": null,
+      "veredicto": "En parte",
+      "justificacion": "En parte. Con el capex guiado, el motor ve el crecimiento financiable (3,4 % al ROIC actual frente al 3,6 % proyectado) y el capital nuevo rendiría un 13,4 %, dentro de 1,25 veces el ROIC de hoy; en un primer cálculo, con un margen del 25 % y menos capex, la proyección pedía al capital nuevo un 18,8 % y se rebajó el caso base (margen del 24,5 % y capex de la guía). No llega a «Sí» porque el ROIC (11,7 %) apenas supera el WACC (9,08 %), el incremental histórico es del 9,0 % y el poder de precios se ha debilitado en 2026 (precio de la celulosa −4 % en divisa) [2]. El foso es real, pero estrecho, y el crecimiento depende de una corona que no controla."
+    },
+    "lectura": "El DCF da 105,46 NOK por acción, un 28,5 % por debajo del precio, con un 72 % del valor en el terminal. Con la prima implícita del mercado (WACC del 8,12 %) sube a 128,14, aún un 13 % por debajo. El precio descuenta una rentabilidad anual del 7,5 %, por debajo del 9,08 % de nuestro WACC y del 8,12 % que pide el mercado; o bien un margen EBITDA del 28,7 % desde 2027, cuatro puntos por encima de nuestro caso base y del máximo histórico (25,0 % en 2023). El crecimiento no sirve para cerrar la distancia: con un circulante del 32 % y un capex del 10-12 % de las ventas, crecer más casi no añade valor, y el DCF inverso no encuentra solución por crecimiento. Es exigente frente a la historia: la acción se pagó a 10-17 veces el EBITDA cuando el bono noruego rendía el 1-3 %; con el bono al 4,6 % y el ROIC a 2,6 puntos del WACC, el múltiplo de entonces no vuelve solo. La sensibilidad es grande: con medio punto menos de WACC y medio más de crecimiento terminal, el valor sube a 126,00 NOK, aún por debajo del precio.",
+    "confianza": "Media"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": -2,
+        "ajuste_margen_pp": -2,
+        "ajuste_wacc_pp": 0.5,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "La corona sigue subiendo (EUR a 10 NOK), la construcción europea y china no se recupera y la vainillina china presiona: crecimiento 2 puntos menor y margen 2 puntos menor, cerca del 22 % de 2026 y del 21,3 % del 1T26."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Volúmenes según la guía, golpe de divisa en 2027 compensado en parte por el plan de ahorro; margen del 24-24,5 % desde 2028 y crecimiento del 5 % sin divisa."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": 1.5,
+        "ajuste_margen_pp": 1,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "La corona se debilita, el antidumping queda en el 6,54 % y vuelven los clientes de EE. UU., y la agricultura y las especialidades mejoran la mezcla: margen del 25,5 % y crecimiento 1,5 puntos mayor."
+      }
+    ],
+    "comentario": "Los tres escenarios del DCF quedan por debajo del precio: 74,74 NOK el bajista (−49,3 %), 105,46 el base (−28,5 %) y 119,98 el alcista (−18,6 %); la asimetría es negativa. Es la lectura a largo plazo con un WACC del 9,08 % en NOK. A 12 meses la asimetría es la contraria (alcista +50,8 % frente a bajista −18,9 %), porque la regla de múltiplos supone que el PER vuelve hacia su mediana de 21x: las dos lecturas difieren en el tipo de descuento, no en el negocio.",
+    "confianza": "Media"
+  },
+  "suma_partes": {
+    "aplica": false,
+    "descuento_holding_pct": 0,
+    "partes": [],
+    "comentario": "No aplica: los tres segmentos salen de la misma madera y la misma planta de Sarpsborg, con costes conjuntos repartidos por convención; valorarlos por separado con comparables distintos daría una suma que no se puede vender por partes.",
+    "confianza": "Media"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2026-06-30",
+      "deuda_financiera": 1809,
+      "arrendamientos": 457,
+      "caja": 125,
+      "minoritarios": 21,
+      "pensiones": 0,
+      "asociadas": 18,
+      "otros_ajustes": 0
+    },
+    "rab": null,
+    "referencia_mercado": {
+      "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout; vale para mercados desarrollados)",
+      "prima_implicita_pct": 4.2,
+      "fecha": "2026-10",
+      "fuente": "Damodaran, ERPbymonth.xlsx [19]"
+    },
+    "pesos": {
+      "dcf": 40,
+      "comparables": 20,
+      "transacciones": 0,
+      "suma_partes": 0,
+      "escenarios": 40
+    },
+    "objetivo_12m": {
+      "ejercicio": "2028e",
+      "casos": [
+        {
+          "escenario": "Bajista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 7.41,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Corona más fuerte y construcción débil: ventas de 8.056 M en 2028 (−1 % en 2027 y +3 % en 2028) y margen EBITDA del 22,0 % (1.772 M); EBIT de ≈1.136 M, resultado financiero de −165 M y tipo del 24 %. BPA de 7,41 NOK, por debajo del 8,67 sin deterioros de 2025."
+        },
+        {
+          "escenario": "Base",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 9.07,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 8.378 M en 2028 (+1 % en 2027 y +5 % en 2028), margen del 24,0 % (2.011 M de EBITDA) y amortización del 7,9 %: EBIT de ≈1.349 M, financiero de −160 M, impuesto del 24 % y 99,6 M de acciones. BPA de 9,07 NOK sin Alginor. Cuadre con 2025: (1.287 − 178) × 0,76 ÷ 99,7 = 8,45 NOK frente a 8,67 publicado sin deterioros."
+        },
+        {
+          "escenario": "Alcista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 10.07,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Corona más débil y mejor mezcla: ventas de 8.624 M (+2,5 % y +6,5 %) y margen del 25,0 % (2.156 M); EBIT de ≈1.475 M y financiero de −155 M. BPA de 10,07 NOK, por debajo del 11,38 del consenso."
+        }
+      ],
+      "per_historico": {
+        "base": "adelantado",
+        "actual": 17.8,
+        "mediana_5a": 21,
+        "minimo_5a": 17.4,
+        "media_larga": 21.6,
+        "excluidos": "Ninguno. Historia adelantada 2020-2025: cierre de cada año ÷ BPA real del año siguiente (2021: 6,94; 2022: 8,92; 2023: 8,73 sin deterioros; 2024: 8,25; 2025: 8,67 sin deterioros; para el cierre de 2025, nuestro BPA de 2026 normalizado de 7,93): 20,4x, 24,9x, 17,4x, 20,8x, 21,0x y 25,1x. Mediana de cinco años 21,0x, mínimo 17,4x, media de seis años 21,6x. El PER actual (17,8x) es el precio ÷ nuestro BPA de 2027 (8,30).",
+        "v2": {
+          "mediana_5a": 22.1,
+          "minimo_5a": 17,
+          "media_larga": 24.4,
+          "excluidos": "Ninguno. Historia al cierre: precio de cierre ÷ BPA del mismo año (2025 con el BPA sin deterioros de 8,67 NOK); 2020 a 32,4x entra en la media larga."
+        }
+      },
+      "comparables_per": {
+        "mediana": 18.3
+      },
+      "consenso": {
+        "bpa_ano1": 6.57,
+        "bpa_ano2": 10.61,
+        "objetivo_medio": 173.75,
+        "objetivo_min": 165,
+        "objetivo_max": 180,
+        "analistas": 6,
+        "tendencia_3m": "estables",
+        "fuente": "MarketScreener (5 analistas, 6-oct-2026) y titulares de seis casas en Nordnet [15, 16]"
+      },
+      "diferencia_consenso": "Nuestro BPA de 2028 (9,07 NOK) está un 20 % por debajo del consenso (11,38) y el de 2027 (8,30) un 22 % por debajo (10,61) [15]. La diferencia es de margen y divisa: el consenso supone un margen EBITDA del 25,2 % en 2027 y ventas de 8.387 M, con tipos de cambio anteriores a la última apreciación de la corona (EUR a 10,60 NOK frente a 11,10 en julio [2, 18]); nosotros ponemos un 23,5 % y 7.979 M. Aun así, nuestro objetivo ponderado (170,62) queda casi en el objetivo medio de los analistas (173,75; un 1,8 % por debajo), porque aplicamos un PER más alto a un BPA más bajo.",
+      "media": 169.14,
+      "comentario": "El objetivo a 12 meses (170,62 NOK, +19,0 % con dividendo) y el valor intrínseco (122,50, −16,9 %) están separados por un 39 %. La diferencia es el tipo de descuento: la regla de múltiplos supone que el mercado vuelve a pagar 19,3 veces el beneficio de 2028, a mitad de camino de su mediana de 21x, mientras el DCF con el bono noruego al 4,6 % dice que ese múltiplo no se justifica con un ROIC de 12 % y un crecimiento del 3-5 %. Para cerrar la distancia hacia arriba haría falta que el margen volviera al 25 % con la corona de hoy o que bajaran los tipos noruegos; hacia abajo, que el mercado se quede en 16-18 veces. La tesis a 12 meses depende del múltiplo, no del valor."
+    },
+    "comentario": "Pesos: DCF 40 %, escenarios 40 % y comparables 20 %. El DCF es el método más fiable para un negocio estable de una sola planta con flujos predecibles, aunque muy sensible al WACC en NOK; los comparables son frágiles (químicas baratas frente a ingredientes caros) y las transacciones no pesan. La dispersión es enorme: de 74,74 NOK (bajista del DCF) a 218,94 (EV/EBITDA NTM con el EBITDA del consenso). Todos los métodos de flujo de caja quedan por debajo del precio, y todos los de múltiplos por encima: el mercado valora a Borregaard por múltiplos de calidad de otra época de tipos. El valor intrínseco ponderado es de 122,50 NOK.",
+    "confianza": "Media"
+  },
+  "catalizadores": {
+    "items": [
+      {
+        "fecha": "2026-10-28",
+        "evento": "Resultados del 3T26 [13]",
+        "efecto": "Volúmenes guiados (85.000 t y 40.000 t); se medirá el precio de BioSolutions y la divisa",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "Oct-dic 2026",
+        "evento": "Decisión final del Departamento de Comercio de EE. UU. y de la ITC sobre el antidumping a la celulosa de alta pureza [11]",
+        "efecto": "Un margen cercano al 6,54 % devolvería clientes en EE. UU.; uno alto los cerraría",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2026-2028",
+        "evento": "Plan de ahorro de 150 M NOK al año [2]",
+        "efecto": "+8 % de EBITDA con efecto completo en 2028",
+        "probabilidad": "Media",
+        "sentido": "+"
+      },
+      {
+        "fecha": "Feb-2027",
+        "evento": "Resultados de 2026 y guía de coberturas y divisa para 2027",
+        "efecto": "Primera lectura del golpe de la corona sin coberturas",
+        "probabilidad": "Alta",
+        "sentido": "−"
+      },
+      {
+        "fecha": "2026-2027",
+        "evento": "Cierre de la reestructuración de Alginor [2]",
+        "efecto": "Fin de las pérdidas de participadas en el resultado financiero",
+        "probabilidad": "Alta",
+        "sentido": "+"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "riesgos": {
+    "items": [
+      {
+        "riesgo": "Corona noruega fuerte frente a USD y EUR cuando vencen las coberturas",
+        "tipo": "Divisa",
+        "probabilidad": "Alta",
+        "impacto": "Alto",
+        "efecto_valor": "−10 a −15 % (≈40-45 M de EBITDA por cada 1 %)",
+        "mitigante": "Coberturas a nueve meses; precios en divisa",
+        "senal": "NOK/EUR por debajo de 10,5 y NOK/USD por debajo de 9,3 a finales de 2026"
+      },
+      {
+        "riesgo": "Energía y químicos caros (conflictos, electricidad del sur de Noruega)",
+        "tipo": "Costes",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−5 a −8 %",
+        "mitigante": "Calderas eléctricas y biocombustible; flexibilidad",
+        "senal": "Impacto neto de costes peor que −40 M por trimestre"
+      },
+      {
+        "riesgo": "Construcción débil y sustitución por dispersantes sintéticos",
+        "tipo": "Mercado",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−5 %",
+        "mitigante": "Giro hacia agricultura y especialidades",
+        "senal": "Volumen de construcción por debajo de 90.000 t"
+      },
+      {
+        "riesgo": "Antidumping definitivo alto en EE. UU.",
+        "tipo": "Regulación",
+        "probabilidad": "Baja",
+        "impacto": "Medio",
+        "efecto_valor": "−3 a −5 %",
+        "mitigante": "Venta a Europa y Asia; margen provisional del 6,54 %",
+        "senal": "Margen final por encima del 15 %"
+      },
+      {
+        "riesgo": "Precios de la celulosa especial a la baja si los grandes de la celulosa disolvente bajan hacia los grados especiales",
+        "tipo": "Competencia",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−5 %",
+        "mitigante": "87 % de grados muy especializados",
+        "senal": "Precio medio de BioMaterials por debajo de 15.500 NOK/t"
+      },
+      {
+        "riesgo": "Nuevas apuestas de capital fuera del negocio (otro Alginor)",
+        "tipo": "Asignación de capital",
+        "probabilidad": "Baja",
+        "impacto": "Bajo",
+        "efecto_valor": "−2 %",
+        "mitigante": "Nueva dirección con «disciplina de capital» [5]",
+        "senal": "Inversiones en participadas por encima de 150 M al año"
+      },
+      {
+        "riesgo": "Concentración en una sola planta (Sarpsborg) y riesgo de terreno",
+        "tipo": "Operativo",
+        "probabilidad": "Baja",
+        "impacto": "Alto",
+        "efecto_valor": "−10 % en un año de parada",
+        "mitigante": "Medidas de estabilización; seguros",
+        "senal": "Paradas no programadas; nuevas provisiones geotécnicas"
+      }
+    ],
+    "premortem": "Octubre de 2029: la acción cotiza a 90 NOK. La corona siguió apreciándose con el petróleo caro y los tipos noruegos altos: el EUR bajó a 10 NOK y el USD a 8,8. Cuando vencieron las coberturas en 2027, el EBITDA cayó a 1.600 M aunque los volúmenes crecían, porque los precios en divisa no se pudieron subir con la construcción europea y china débil y la vainillina china barata. El plan de ahorro de 150 M solo compensó la mitad. El margen se quedó en el 21-22 % y el BPA en 6-7 NOK durante tres años; con un ROIC del 9-10 %, igual al WACC, el mercado le quitó la prima de calidad y la pagó a 13-14 veces. La empresa siguió invirtiendo 900 M al año en Sarpsborg, lo que redujo el FCF a 300-400 M y frenó el dividendo. La señal que lo anticipaba: el margen EBITDA del 2S26 y del 1S27 por debajo del 23 % con volúmenes récord, y el NOK/EUR por debajo de 10,5.",
+    "ia": {
+      "exposicion": "Baja",
+      "sentido": "Neutral",
+      "efecto_valor": "±2 %",
+      "comentario": "La IA no sustituye lo que vende Borregaard: biopolímeros de lignina, celulosa especial y vainillina son productos físicos que el cliente homologa en su fórmula y que solo salen de una biorrefinería de madera; ningún modelo los hace más baratos ni los copia. Toca dos cosas menores: el diseño de aplicaciones y moléculas (puede acortar la I+D propia y la de rivales, que hoy cuesta 222 M NOK, el 3 % de las ventas) y la operación de la planta, donde ya usa sensores y mantenimiento predictivo con ≈70 M de efecto acumulado desde 2023 [5]. El riesgo indirecto es la demanda de electricidad de centros de datos en Noruega, que puede encarecer la energía (472 M de coste en 2025). Señal: precio de la electricidad del sur de Noruega y anuncios de centros de datos en la zona NO1."
+    },
+    "confianza": "Media"
+  },
+  "esg": {
+    "calificaciones": [
+      {
+        "agencia": "CDP (clima)",
+        "calificacion": "Lista A (5 % mejor de más de 130.000 empresas)",
+        "fecha": "2026-07"
+      }
+    ],
+    "materialidad": "Lo material es la energía y el CO₂ (177.000 t de alcance 1 y 2 en los últimos doce meses a junio de 2026, +6 % por más producción y menos renovable; objetivo de −42 % en 2030) y los vertidos al río Glomma (47 t/día de DQO frente a menos de 40 en 2030) [2]. La madera viene en un 80 % de Noruega con certificación PEFC/FSC [1]. Los créditos bancarios están ligados a estos objetivos [1].",
+    "controversias": "Sin multas relevantes en tres años. Deterioro de Alginor (562 M entre 2025 y 2026) y medidas de estabilización del terreno de Sarpsborg (30 M) [1, 2]. Investigación antidumping en EE. UU. iniciada por RYAM y el sindicato del acero (USW) en agosto de 2025 [2].",
+    "confianza": "Media"
+  },
+  "preguntas": {
+    "items": [
+      {
+        "tema": "Divisa",
+        "pregunta": "¿Qué parte de la exposición de 2027 está cubierta y a qué tipos?",
+        "por_que": "Cada 1 % de NOK mueve ≈40-45 M de EBITDA; es la mayor diferencia entre nuestro BPA y el del consenso."
+      },
+      {
+        "tema": "Precio",
+        "pregunta": "¿Por qué bajó el precio en divisa de BioMaterials un 4 % en el 1S26 y qué grados lo explican?",
+        "por_que": "El poder de precios es la base del foso."
+      },
+      {
+        "tema": "Plan de ahorro",
+        "pregunta": "¿Qué partidas cubren los 150 M y cuánto llega en 2027?",
+        "por_que": "Es la palanca que compensa la corona."
+      },
+      {
+        "tema": "Antidumping",
+        "pregunta": "¿Qué ventas a EE. UU. hay en riesgo con cada margen final posible?",
+        "por_que": "La decisión es de octubre-diciembre de 2026."
+      },
+      {
+        "tema": "Capex",
+        "pregunta": "¿Cuánto del capex de 900-1.000 M es mantenimiento real y qué ROIC esperan del resto?",
+        "por_que": "El ROIC incremental histórico es del 9,0 %."
+      },
+      {
+        "tema": "Alginor",
+        "pregunta": "¿Qué cambió entre el valor de 250 M de diciembre y cero en junio, y qué regla de inversión en empresas emergentes aplicarán?",
+        "por_que": "Credibilidad de la asignación de capital."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sentimiento": {
+    "tono": "Dividido",
+    "tendencia": "Estable",
+    "revisadas": [
+      {
+        "plataforma": "Nordnet Social (foro de la acción)",
+        "fecha": "2026-10",
+        "n_comentarios": 9,
+        "tono": "Positivo",
+        "resumen": "Mayoría alcista: ven la caída de un 40 % desde agosto como punto de entrada y creen que el mercado no descuenta el valor; un mensaje frustrado por la lentitud de la acción; se comenta que Varner Equities ha subido al 0,7 % y se esperan los resultados del 28-oct [16]."
+      },
+      {
+        "plataforma": "Seeking Alpha (BRRDF/BRGAY)",
+        "fecha": "2026-09",
+        "n_comentarios": 0,
+        "tono": "Neutro",
+        "resumen": "Solo transcripciones del 2T26 y del día del inversor, sin debate de lectores [24]."
+      },
+      {
+        "plataforma": "DNB Nyheter (recomendación con comentarios de prensa)",
+        "fecha": "2026-09",
+        "n_comentarios": 0,
+        "tono": "Positivo",
+        "resumen": "Recomendación de compra de DNB Carnegie tras «volver a la senda» con el 2T26 [25]."
+      }
+    ],
+    "temas": [
+      {
+        "tema": "Caída de la acción como oportunidad de compra",
+        "postura": "Alcista",
+        "peso": "Alto",
+        "contraste": "El precio (147,4 NOK) está un 26 % por debajo del máximo de 52 semanas, pero el BPA normalizado de 2026 también baja: el abaratamiento es en parte real (corona, energía), no solo de múltiplo."
+      },
+      {
+        "tema": "Resultados del 3T26 (28-oct)",
+        "postura": "Dividida",
+        "peso": "Medio",
+        "contraste": "La guía de volúmenes es buena; el riesgo está en el precio y la mezcla de BioSolutions y en la divisa, que el foro apenas menciona."
+      },
+      {
+        "tema": "Entrada de inversores conocidos (Varner)",
+        "postura": "Alcista",
+        "peso": "Bajo",
+        "contraste": "Una participación del 0,7 % no cambia la tesis; no se usa como dato."
+      }
+    ],
+    "lectura": "El poco debate que hay es de particulares noruegos y es alcista: ven la caída como una oportunidad y esperan los resultados del 28-oct [16]. No es euforia ni capitulación, y coincide con los analistas (cuatro de seis con «comprar»). Lo que el foro no recoge es la divisa: nadie discute que la corona fuerte puede bajar el beneficio de 2027, que es nuestro principal desacuerdo con el consenso. No aporta un riesgo nuevo ni cambia la decisión.",
+    "confianza": "Baja"
+  },
+  "fuentes": [
+    {
+      "id": 1,
+      "titulo": "Borregaard Annual Report 2025 (cuentas consolidadas y notas; cifras clave históricas 2021-2025)",
+      "editor": "Borregaard ASA",
+      "tipo": "Primaria",
+      "fecha": "2026-03-18",
+      "url": "https://www.borregaard.com/hubfs/Media/Investors/2025%20Annual%20Report.pdf"
+    },
+    {
+      "id": 2,
+      "titulo": "Borregaard 2nd quarter 2026 interim report",
+      "editor": "Borregaard ASA",
+      "tipo": "Primaria",
+      "fecha": "2026-07-15",
+      "url": "https://www.borregaard.com/hubfs/Media/InvestorFiles/Q22026/2nd%20quarter%202026%20report.pdf"
+    },
+    {
+      "id": 3,
+      "titulo": "Quarterly and accounting figures 2nd quarter 2026 (cuenta, balance, flujos y segmentos trimestrales 2022-2T26)",
+      "editor": "Borregaard ASA",
+      "tipo": "Primaria",
+      "fecha": "2026-07-15",
+      "url": "https://www.borregaard.com/hubfs/Media/InvestorFiles/Q22026/Quarterly%20and%20accounting%20figures%202nd%20quarter%202026.pdf"
+    },
+    {
+      "id": 4,
+      "titulo": "Borregaard ASA: informes anuales ESEF 2021-2024 (xBRL-JSON)",
+      "editor": "XBRL International, filings.xbrl.org",
+      "tipo": "Primaria",
+      "fecha": "2025-03",
+      "url": "https://filings.xbrl.org/5967007LIEEXZXGYXC05/2024-12-31/ESEF/NO/0/"
+    },
+    {
+      "id": 5,
+      "titulo": "Borregaard Capital Markets Day 2026 (presentación)",
+      "editor": "Borregaard ASA",
+      "tipo": "Primaria",
+      "fecha": "2026-09-17",
+      "url": "https://www.borregaard.com/hubfs/Borregaard%20Capital%20Markets%20Day%202026.pdf"
+    },
+    {
+      "id": 6,
+      "titulo": "Presentation of 2nd quarter 2026 results",
+      "editor": "Borregaard ASA",
+      "tipo": "Primaria",
+      "fecha": "2026-07-15",
+      "url": "https://www.borregaard.com/hubfs/Media/InvestorFiles/Q22026/2nd%20quarter%202026%20presentation.pdf"
+    },
+    {
+      "id": 7,
+      "titulo": "Presentation of 1st quarter 2026 results",
+      "editor": "Borregaard ASA",
+      "tipo": "Primaria",
+      "fecha": "2026-04-29",
+      "url": "https://www.borregaard.com/hubfs/Q12026/1st%20quarter%202026%20presentation.pdf"
+    },
+    {
+      "id": 8,
+      "titulo": "Borregaard general presentation - July 2026 (demanda de celulosa especial ≈1,4 Mt; mercados finales; vainillina)",
+      "editor": "Borregaard ASA",
+      "tipo": "Primaria",
+      "fecha": "2026-07",
+      "url": "https://www.borregaard.com/hubfs/Media/InvestorFiles/Q22026/Borregaard%20general%20presentation%20-%20July%202026.pdf"
+    },
+    {
+      "id": 9,
+      "titulo": "Kemira Oyj: finances (ventas, EBITDA y EBIT 2025-2027)",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-15",
+      "url": "https://www.marketscreener.com/quote/stock/KEMIRA-OYJ-1412476/finances/"
+    },
+    {
+      "id": 10,
+      "titulo": "Ingevity Corporation: finances (ventas, EBITDA y EBIT 2025-2027)",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-14",
+      "url": "https://www.marketscreener.com/quote/stock/INGEVITY-CORPORATION-27724049/finances/"
+    },
+    {
+      "id": 11,
+      "titulo": "High Purity Dissolving Pulp From Brazil and Norway: Preliminary Affirmative Determinations of Sales at Less Than Fair Value (FR 2026-10527)",
+      "editor": "U.S. Department of Commerce, Federal Register",
+      "tipo": "Primaria",
+      "fecha": "2026-05-27",
+      "url": "https://public-inspection.federalregister.gov/2026-10527.pdf"
+    },
+    {
+      "id": 12,
+      "titulo": "Ficha sectorial: química de especialidades de la madera (biorrefinería, lignina, celulosa especial, vainillina)",
+      "editor": "Análisis propio (repositorio, sectores/quimica-especialidades-madera-2026-10-15.md)",
+      "tipo": "Sectorial",
+      "fecha": "2026-10-15",
+      "url": "sectores/quimica-especialidades-madera-2026-10-15.md"
+    },
+    {
+      "id": 13,
+      "titulo": "3rd Quarter 2026 - Borregaard (convocatoria de resultados del 28-oct-2026)",
+      "editor": "Borregaard ASA",
+      "tipo": "Primaria",
+      "fecha": "2026-10-01",
+      "url": "https://www.borregaard.com/investors/ir-news/3rd-quarter-2026-borregaard"
+    },
+    {
+      "id": 14,
+      "titulo": "Históricos diarios de BRG.OL, OSEBX.OL y EXV7.DE (cierre del 14-oct-2026, rango, rentabilidades, beta y cierres de año)",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-14",
+      "url": "https://finance.yahoo.com/quote/BRG.OL/history"
+    },
+    {
+      "id": 15,
+      "titulo": "Borregaard ASA: finances y consenso (ventas, EBITDA, EBIT, BPA y DPA 2021-2028e; 5 analistas; objetivo medio 173,75 NOK)",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-06",
+      "url": "https://www.marketscreener.com/quote/stock/BORREGAARD-ASA-120796940/finances/"
+    },
+    {
+      "id": 16,
+      "titulo": "Borregaard (BRG): titulares de precios objetivo de Berenberg, Danske Bank, Handelsbanken, SB1 Markets, SEB y DNB Carnegie",
+      "editor": "Nordnet",
+      "tipo": "Analistas",
+      "fecha": "2026-10-15",
+      "url": "https://www.nordnet.no/aksjer/kurser/borregaard-brg-xosl"
+    },
+    {
+      "id": 17,
+      "titulo": "Government bonds, generic rates: 10 years (14-oct-2026: 4,585 %)",
+      "editor": "Norges Bank",
+      "tipo": "Primaria",
+      "fecha": "2026-10-14",
+      "url": "https://data.norges-bank.no/api/data/GOVT_GENERIC_RATES/B.10Y.GBON?format=csv&lastNObservations=5&locale=en"
+    },
+    {
+      "id": 18,
+      "titulo": "Euro foreign exchange reference rates (14-oct-2026: 10,6035 NOK/EUR; 1,1195 USD/EUR; 0,9330 CHF/EUR)",
+      "editor": "Banco Central Europeo",
+      "tipo": "Primaria",
+      "fecha": "2026-10-14",
+      "url": "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"
+    },
+    {
+      "id": 19,
+      "titulo": "Implied ERP by month (ERPbymonth.xlsx), octubre de 2026: 4,20 %",
+      "editor": "Aswath Damodaran, NYU Stern",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx"
+    },
+    {
+      "id": 20,
+      "titulo": "Comparables de ingredientes especiales (Croda, Symrise, Kerry) a 14-oct-2026, de MarketScreener",
+      "editor": "Análisis propio (repositorio, sectores/ingredientes-especiales-2026-10-14-comparables.json)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-14",
+      "url": "sectores/ingredientes-especiales-2026-10-14-comparables.json"
+    },
+    {
+      "id": 21,
+      "titulo": "dsm-firmenich announces agreement to divest Animal Nutrition & Health to CVC Capital Partners (2.200 M EUR, ~7x EBITDA ajustado)",
+      "editor": "dsm-firmenich",
+      "tipo": "Primaria",
+      "fecha": "2026-02-09",
+      "url": "https://www.dsm-firmenich.com/anh/news/press-releases/2026/2026-02-09-dsm-firmenich-announces-agreement-to-divest-animal-nutrition-and-health-to-cvc-capital-partners.html"
+    },
+    {
+      "id": 22,
+      "titulo": "Sika to acquire MBCC Group (5.500 M CHF; 11,5x EBITDA 2022e)",
+      "editor": "Sika AG",
+      "tipo": "Primaria",
+      "fecha": "2021-11-11",
+      "url": "https://gbr.sika.com/en/media/news/2021/sika-to-acquire-mbcc-group.html"
+    },
+    {
+      "id": 23,
+      "titulo": "Anbefalte aksjer uke 37 (Borregaard: PER adelantado 17,1x, a dos años 14,5x; beta 0,6; consenso 4,3 sobre 5)",
+      "editor": "DNB Carnegie",
+      "tipo": "Analistas",
+      "fecha": "2026-09-07",
+      "url": "https://content.dnb.no/docs/10912970/anbefalte-aksjer-uke-37.pdf"
+    },
+    {
+      "id": 24,
+      "titulo": "Borregaard ASA: canal de noticias y análisis (sin comentarios de lectores en el periodo)",
+      "editor": "Seeking Alpha",
+      "tipo": "Foros y redes",
+      "fecha": "2026-09-17",
+      "url": "https://seekingalpha.com/api/sa/combined/BRRDF.xml"
+    },
+    {
+      "id": 25,
+      "titulo": "Dagens aksjetips: DNB Carnegies anbefaling på Borregaard",
+      "editor": "DNB Nyheter",
+      "tipo": "Prensa",
+      "fecha": "2026-09",
+      "url": "https://www.dnb.no/dnbnyheter/no/bors-og-marked/dnb-carnegies-anbefaling-pa-borregaard"
+    }
+  ],
+  "calc": {
+    "version": 4,
+    "etiquetas": {
+      "margen_bruto": "M. tras aprov.",
+      "margen_bruto_largo": "Margen tras aprovisionamientos",
+      "dias_base": "sobre costes operativos de caja (ingresos − EBITDA), por ser una cuenta por naturaleza"
+    },
+    "recomendacion": {
+      "recomendacion": "Mantener",
+      "regla": "Mantener",
+      "regla_absoluta": "Vender",
+      "regla_relativa": "Vender",
+      "coincide": true,
+      "conviccion": "Media",
+      "conviccion_sugerida": "Media",
+      "conviccion_razones": [
+        "Mantener con las dos reglas de acuerdo y lejos de los umbrales"
+      ],
+      "reglas_discrepan": false,
+      "relativo": {
+        "prima_implicita_pct": 4.2,
+        "wacc": 8.12,
+        "ke": 8.65,
+        "dcf": 128.14,
+        "dcf_min": 115.44,
+        "dcf_max": 143.34,
+        "valor_objetivo": 140.22,
+        "alcista": 145.46,
+        "bajista": 90.4,
+        "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout; vale para mercados desarrollados)",
+        "fecha": "2026-10",
+        "potencial_pct": -4.9,
+        "rentabilidad_total_pct": -1.6,
+        "asimetria": -0.03
+      },
+      "objetivo_mercado_txt": " · con la prima implícita del mercado: 140,22 (-4,9 %)",
+      "objetivo_mercado_corto": " · mercado 140,22",
+      "rentabilidad_mercado_corto": " · mercado -1,6 %",
+      "potencial_pct": -16.9,
+      "dividendo_pct": 3.2,
+      "rentabilidad_total_pct": -13.7,
+      "alcista_pct": -18.6,
+      "bajista_pct": -49.3,
+      "asimetria": -0.38,
+      "comprar_por_debajo": 122.5,
+      "vender_por_encima": 194.85,
+      "tabla": [
+        {
+          "concepto": "Objetivo a 12 meses (nuestro PER × nuestro BPA 2028e, ponderado 25/50/25)",
+          "valor": "170,62 NOK"
+        },
+        {
+          "concepto": "Bajista / base / alcista a 12 meses",
+          "valor": "15,5x × 7,41 = 114,86 · 19,3x × 9,07 = 175,05 · 21,6x × 10,07 = 217,51"
+        },
+        {
+          "concepto": "Rentabilidad a 12 meses: ponderada / del base (con dividendo)",
+          "valor": "19,0 % / 22,0 %"
+        },
+        {
+          "concepto": "Regla de múltiplos aplicada",
+          "valor": "v3: base a mitad de camino hacia la mediana adelantada, sin alejarse del actual más de ×1,1; bajista mín. 5 a (adelantado) o base × 0,80; alcista techo base × 1,35 (selector de método: sin marcas: decide la v3)"
+        },
+        {
+          "concepto": "Objetivo medio de los analistas (solo contraste)",
+          "valor": "173,75 (nuestro base +0,7 %)"
+        },
+        {
+          "concepto": "Valor intrínseco (síntesis ponderada, largo plazo)",
+          "valor": "122,50 NOK"
+        },
+        {
+          "concepto": "Potencial sobre el precio actual",
+          "valor": "-16,9 %"
+        },
+        {
+          "concepto": "Rentabilidad por dividendo ordinario",
+          "valor": "3,2 %"
+        },
+        {
+          "concepto": "Rentabilidad total esperada a 12 meses",
+          "valor": "-13,7 %"
+        },
+        {
+          "concepto": "Escenario alcista / bajista",
+          "valor": "-18,6 % / -49,3 %"
+        },
+        {
+          "concepto": "Asimetría (ganancia alcista / pérdida bajista)",
+          "valor": "-0,38x"
+        },
+        {
+          "concepto": "Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado",
+          "valor": "7,5 % frente a 9,1 % y 8,1 %"
+        },
+        {
+          "concepto": "Valor objetivo con la prima implícita del mercado (4,2 %, WACC 8,1 %)",
+          "valor": "140,22 NOK"
+        },
+        {
+          "concepto": "Rentabilidad total esperada con la prima del mercado",
+          "valor": "-1,6 %"
+        },
+        {
+          "concepto": "Asimetría con la prima del mercado",
+          "valor": "-0,03x"
+        },
+        {
+          "concepto": "Regla absoluta (frente a su coste de capital)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Regla relativa (frente a lo que pide el mercado)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "¿La calidad de la empresa sostiene el crecimiento previsto?",
+          "valor": "En parte (3,6 % anual proyectado; financiable al ROIC actual: 3,4 %)"
+        },
+        {
+          "concepto": "Señal del valor intrínseco (regla del DCF, referencia)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Recomendación según la regla a 12 meses (Comprar: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender: ponderada ≤ -10 %)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Convicción según los criterios (Mantener con las dos reglas de acuerdo y lejos de los umbrales)",
+          "valor": "Media"
+        }
+      ],
+      "niveles": [
+        {
+          "accion": "Comprar",
+          "condicion": "Por debajo de 122,50 (ponderada a 12 meses ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco)"
+        },
+        {
+          "accion": "Mantener",
+          "condicion": "Entre 122,50 y 194,85"
+        },
+        {
+          "accion": "Vender o reducir",
+          "condicion": "Por encima de 194,85 (ponderada a 12 meses ≤ -10 %)"
+        }
+      ],
+      "precio_txt": "",
+      "valor_objetivo_txt": "",
+      "regla_valor_intrinseco": "Vender",
+      "objetivo_12m": {
+        "completo": true,
+        "filas": [
+          {
+            "escenario": "Bajista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 7.41,
+            "multiplo": 15.5,
+            "multiplo_informe": null,
+            "origen": "base × 0.8",
+            "precio": 114.86,
+            "rentabilidad_pct": -18.9,
+            "justificacion": "Corona más fuerte y construcción débil: ventas de 8.056 M en 2028 (−1 % en 2027 y +3 % en 2028) y margen EBITDA del 22,0 % (1.772 M); EBIT de ≈1.136 M, resultado financiero de −165 M y tipo del 24 %. BPA de 7,41 NOK, por debajo del 8,67 sin deterioros de 2025."
+          },
+          {
+            "escenario": "Base",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 9.07,
+            "multiplo": 19.3,
+            "multiplo_informe": null,
+            "origen": "PER actual (17.8x) a mitad de camino hacia la mediana de 5 años (21x)",
+            "precio": 175.05,
+            "rentabilidad_pct": 22,
+            "justificacion": "Ventas de 8.378 M en 2028 (+1 % en 2027 y +5 % en 2028), margen del 24,0 % (2.011 M de EBITDA) y amortización del 7,9 %: EBIT de ≈1.349 M, financiero de −160 M, impuesto del 24 % y 99,6 M de acciones. BPA de 9,07 NOK sin Alginor. Cuadre con 2025: (1.287 − 178) × 0,76 ÷ 99,7 = 8,45 NOK frente a 8,67 publicado sin deterioros."
+          },
+          {
+            "escenario": "Alcista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 10.07,
+            "multiplo": 21.6,
+            "multiplo_informe": null,
+            "origen": "media histórica larga",
+            "precio": 217.51,
+            "rentabilidad_pct": 50.8,
+            "justificacion": "Corona más débil y mejor mezcla: ventas de 8.624 M (+2,5 % y +6,5 %) y margen del 25,0 % (2.156 M); EBIT de ≈1.475 M y financiero de −155 M. BPA de 10,07 NOK, por debajo del 11,38 del consenso."
+          }
+        ],
+        "regla": {
+          "version": "v3",
+          "bajista": 15.5,
+          "base": 19.3,
+          "alcista": 21.6,
+          "bajista_origen": "base × 0.8",
+          "base_origen": "PER actual (17.8x) a mitad de camino hacia la mediana de 5 años (21x)",
+          "alcista_origen": "media histórica larga"
+        },
+        "version": "v3",
+        "probabilidades": [
+          25,
+          50,
+          25
+        ],
+        "objetivo_ponderado": 170.62,
+        "objetivo_simple": 169.14,
+        "objetivo_base": 175.05,
+        "rentabilidad_ponderada_pct": 19,
+        "rentabilidad_simple_pct": 18,
+        "rentabilidad_base_pct": 22,
+        "asimetria": 2.15,
+        "senal": "Mantener",
+        "senal_sin_confirmar": null,
+        "confianza_baja": false,
+        "comprar_por_debajo": 122.5,
+        "vender_por_encima": 194.85,
+        "consenso_objetivo": 173.75,
+        "diferencia_consenso_pct": 0.7,
+        "selector": {
+          "regla": "v3",
+          "motivo": "sin marcas: decide la v3",
+          "v3_sin_selector": {
+            "version": "v3",
+            "rentabilidad_ponderada_pct": 19,
+            "rentabilidad_base_pct": 22,
+            "senal": "Mantener",
+            "objetivo_ponderado": 170.62
+          },
+          "v2": {
+            "version": "v2",
+            "rentabilidad_ponderada_pct": 18.8,
+            "rentabilidad_base_pct": 12.8,
+            "senal": "Mantener",
+            "objetivo_ponderado": 170.37
+          }
+        },
+        "v2": {
+          "rentabilidad_ponderada_pct": 18.8,
+          "rentabilidad_base_pct": 12.8,
+          "senal": "Mantener",
+          "multiplos": [
+            17,
+            17.8,
+            23.1
+          ]
+        },
+        "comparacion_txt": "Para comparar, con la regla v2 (historia al cierre, mismo precio): 17,0x / 17,8x / 23,1x, 18,8 % Mantener. Decide la v3 con tope ×1,1, elegida por el selector de método (sin marcas: decide la v3; METODO-VIGENTE.md)."
+      },
+      "rentabilidad_12m_pct": 19,
+      "rentabilidad_12m_txt": "+19,0 % (base +22,0 %)",
+      "objetivo_12m_txt": "170,62 NOK"
+    },
+    "mercado": {
+      "precio": 147.4,
+      "acciones": 99.645,
+      "capitalizacion": 14688,
+      "deuda_neta": 2141,
+      "deuda_neta_ajustada": null,
+      "asimilables_deuda": null,
+      "ajustes_puente": 3,
+      "valor_empresa": 16832,
+      "fecha_puente": "2026-06-30"
+    },
+    "clave": {
+      "capitalizacion": 14688,
+      "valor_empresa": 16832,
+      "deuda_neta": 2141,
+      "ev_ventas_ltm": 2.17,
+      "ev_ebitda_ltm": 9.4,
+      "ev_ebitda_ntm": 8.1,
+      "ev_ebit_ltm": 14.2,
+      "per_ltm": 87.2,
+      "per_ntm": 15.1,
+      "fcf_yield_pct": 5.4,
+      "dividendo_pct": 3.2,
+      "dn_ebitda": 1.2,
+      "roic_pct": 11.7,
+      "margen_ebitda_pct": 23.1,
+      "deuda_neta_ajustada": 2141,
+      "dn_ebitda_ajustada": 1.2,
+      "crecimiento_tcac_pct": 7.4,
+      "ingresos_ntm": 8294,
+      "ebitda_ntm": 2066,
+      "bpa_ntm": 9.76,
+      "ebitda_ltm": 1788,
+      "ingresos_ltm": 7751,
+      "ev_rab": null
+    },
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 5805,
+        "crecimiento_pct": null,
+        "beneficio_bruto": 3653,
+        "margen_bruto_pct": 62.9,
+        "ebitda": 1372,
+        "margen_ebitda_pct": 23.6,
+        "ebit": 952,
+        "margen_ebit_pct": 16.4,
+        "beneficio_neto": 692,
+        "margen_neto_pct": 11.9,
+        "bpa": 6.94,
+        "dpa": 2.75,
+        "dpa_extraordinario": 2.25,
+        "tasa_impositiva_pct": 24.4,
+        "payout_pct": 7
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 6881,
+        "crecimiento_pct": 18.5,
+        "beneficio_bruto": 4253,
+        "margen_bruto_pct": 61.8,
+        "ebitda": 1643,
+        "margen_ebitda_pct": 23.9,
+        "ebit": 1194,
+        "margen_ebit_pct": 17.4,
+        "beneficio_neto": 892,
+        "margen_neto_pct": 13,
+        "bpa": 8.92,
+        "dpa": 3.25,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 23.9,
+        "payout_pct": 36
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 7132,
+        "crecimiento_pct": 3.6,
+        "beneficio_bruto": 4587,
+        "margen_bruto_pct": 64.3,
+        "ebitda": 1781,
+        "margen_ebitda_pct": 25,
+        "ebit": 1291,
+        "margen_ebit_pct": 18.1,
+        "beneficio_neto": 870,
+        "margen_neto_pct": 12.2,
+        "bpa": 8.71,
+        "dpa": 3.75,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 23.8,
+        "payout_pct": 43
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 7617,
+        "crecimiento_pct": 6.8,
+        "beneficio_bruto": 4885,
+        "margen_bruto_pct": 64.1,
+        "ebitda": 1874,
+        "margen_ebitda_pct": 24.6,
+        "ebit": 1313,
+        "margen_ebit_pct": 17.2,
+        "beneficio_neto": 823,
+        "margen_neto_pct": 10.8,
+        "bpa": 8.25,
+        "dpa": 4.25,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 23.2,
+        "payout_pct": 52
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 7713,
+        "crecimiento_pct": 1.3,
+        "beneficio_bruto": 5054,
+        "margen_bruto_pct": 65.5,
+        "ebitda": 1878,
+        "margen_ebitda_pct": 24.3,
+        "ebit": 1287,
+        "margen_ebit_pct": 16.7,
+        "beneficio_neto": 620,
+        "margen_neto_pct": 8,
+        "bpa": 6.22,
+        "dpa": 4.75,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 30.6,
+        "payout_pct": 76
+      }
+    ],
+    "tcac": {
+      "periodo": "2021-2025",
+      "ingresos_pct": 7.4,
+      "ebitda_pct": 8.2,
+      "bpa_pct": -2.7
+    },
+    "cuenta_y_prevision": [
+      {
+        "periodo": "2021",
+        "ingresos": 5805,
+        "ebitda": 1372
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 6881,
+        "ebitda": 1643
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 7132,
+        "ebitda": 1781
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 7617,
+        "ebitda": 1874
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 7713,
+        "ebitda": 1878
+      },
+      {
+        "periodo": "2026e",
+        "ingresos": 7898,
+        "ebitda": 1809
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 7977,
+        "ebitda": 1875
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 8376,
+        "ebitda": 2010
+      },
+      {
+        "periodo": "2029e",
+        "ingresos": 8795,
+        "ebitda": 2155
+      },
+      {
+        "periodo": "2030e",
+        "ingresos": 9191,
+        "ebitda": 2252
+      },
+      {
+        "periodo": "2031e",
+        "ingresos": 9558,
+        "ebitda": 2342
+      },
+      {
+        "periodo": "2032e",
+        "ingresos": 9893,
+        "ebitda": 2424
+      }
+    ],
+    "segmentos_ultimo": [
+      {
+        "nombre": "BioSolutions",
+        "ingresos": 4396,
+        "peso_pct": 57,
+        "crecimiento_pct": 3.7,
+        "margen_pct": 27.5,
+        "tipo_margen": "EBITDA"
+      },
+      {
+        "nombre": "BioMaterials",
+        "ingresos": 2691,
+        "peso_pct": 34.9,
+        "crecimiento_pct": 2.6,
+        "margen_pct": 18.4,
+        "tipo_margen": "EBITDA"
+      },
+      {
+        "nombre": "Fine Chemicals",
+        "ingresos": 670,
+        "peso_pct": 8.7,
+        "crecimiento_pct": -16.1,
+        "margen_pct": 26,
+        "tipo_margen": "EBITDA"
+      },
+      {
+        "nombre": "Eliminaciones",
+        "ingresos": -44,
+        "peso_pct": -0.6,
+        "crecimiento_pct": -2.2,
+        "margen_pct": 0,
+        "tipo_margen": "EBITDA"
+      }
+    ],
+    "segmentos_tabla": {
+      "periodos": [
+        "",
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "filas": [
+        {
+          "nombre": "BioSolutions",
+          "v0": null,
+          "v1": 4050,
+          "v2": 3944,
+          "v3": 4241,
+          "v4": 4396
+        },
+        {
+          "nombre": "BioMaterials",
+          "v0": null,
+          "v1": 2250,
+          "v2": 2439,
+          "v3": 2622,
+          "v4": 2691
+        },
+        {
+          "nombre": "Fine Chemicals",
+          "v0": null,
+          "v1": 632,
+          "v2": 786,
+          "v3": 799,
+          "v4": 670
+        },
+        {
+          "nombre": "Eliminaciones",
+          "v0": null,
+          "v1": -51,
+          "v2": -37,
+          "v3": -45,
+          "v4": -44
+        }
+      ]
+    },
+    "segmentos_periodo": "2025",
+    "balance": [
+      {
+        "periodo": "2021",
+        "activo_total": 7166,
+        "intangibles": 89,
+        "circulante": 1899,
+        "circulante_ventas_pct": 32.7,
+        "caja": 124,
+        "deuda_financiera": 1544,
+        "arrendamientos": null,
+        "deuda_neta": 1420,
+        "patrimonio": 4222,
+        "minoritarios": 84,
+        "dn_ebitda": 1.03,
+        "dn_patrimonio_pct": 33,
+        "dso": 70,
+        "dio": 65,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 12.1,
+        "capital_invertido": 5726,
+        "fondo_comercio": null,
+        "liquidez_corriente": 1.58
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 8114,
+        "intangibles": 82,
+        "circulante": 2686,
+        "circulante_ventas_pct": 39,
+        "caja": 234,
+        "deuda_financiera": 2072,
+        "arrendamientos": null,
+        "deuda_neta": 1838,
+        "patrimonio": 4394,
+        "minoritarios": 51,
+        "dn_ebitda": 1.12,
+        "dn_patrimonio_pct": 41,
+        "dso": 74,
+        "dio": 91,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 17.6,
+        "capital_invertido": 6283,
+        "fondo_comercio": null,
+        "liquidez_corriente": 1.46
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 9115,
+        "intangibles": 84,
+        "circulante": 2648,
+        "circulante_ventas_pct": 37.1,
+        "caja": 469,
+        "deuda_financiera": 1699,
+        "arrendamientos": 563,
+        "deuda_neta": 1793,
+        "patrimonio": 4855,
+        "minoritarios": 39,
+        "dn_ebitda": 1.01,
+        "dn_patrimonio_pct": 37,
+        "dso": 61,
+        "dio": 99,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 7.7,
+        "capital_invertido": 6687,
+        "fondo_comercio": null,
+        "liquidez_corriente": 1.73
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 9584,
+        "intangibles": 88,
+        "circulante": 2388,
+        "circulante_ventas_pct": 31.4,
+        "caja": 82,
+        "deuda_financiera": 1769,
+        "arrendamientos": 554,
+        "deuda_neta": 2241,
+        "patrimonio": 5041,
+        "minoritarios": 49,
+        "dn_ebitda": 1.2,
+        "dn_patrimonio_pct": 44,
+        "dso": 69,
+        "dio": 95,
+        "dpo": 35,
+        "ciclo_caja": 129,
+        "cobertura_intereses": 6.8,
+        "capital_invertido": 7331,
+        "fondo_comercio": null,
+        "liquidez_corriente": 1.62
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 9670,
+        "intangibles": 79,
+        "circulante": 2534,
+        "circulante_ventas_pct": 32.9,
+        "caja": 91,
+        "deuda_financiera": 1683,
+        "arrendamientos": 497,
+        "deuda_neta": 2089,
+        "patrimonio": 5853,
+        "minoritarios": 25,
+        "dn_ebitda": 1.11,
+        "dn_patrimonio_pct": 36,
+        "dso": 72,
+        "dio": 95,
+        "dpo": 31,
+        "ciclo_caja": 136,
+        "cobertura_intereses": 7.9,
+        "capital_invertido": 7967,
+        "fondo_comercio": null,
+        "liquidez_corriente": 1.86
+      }
+    ],
+    "perimetro_nota": null,
+    "flujos": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 1431,
+        "capex": 556,
+        "pagos_arrendamientos": null,
+        "fcf": 875,
+        "beneficio_neto": 692,
+        "conversion_pct": 126,
+        "capex_ventas_pct": 9.6,
+        "capex_amortizacion": 1.32,
+        "adquisiciones": 145,
+        "desinversiones": 0,
+        "dividendos": 249,
+        "recompras": 118,
+        "emision_acciones": 59,
+        "retorno_accionista": 367,
+        "payout_caja_pct": 53,
+        "acciones": 99.743,
+        "fcf_por_accion": 8.77
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 735,
+        "capex": 464,
+        "pagos_arrendamientos": null,
+        "fcf": 271,
+        "beneficio_neto": 892,
+        "conversion_pct": 30,
+        "capex_ventas_pct": 6.7,
+        "capex_amortizacion": 1.03,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 499,
+        "recompras": 68,
+        "emision_acciones": 41,
+        "retorno_accionista": 567,
+        "payout_caja_pct": 64,
+        "acciones": 99.753,
+        "fcf_por_accion": 2.72
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 1563,
+        "capex": 667,
+        "pagos_arrendamientos": null,
+        "fcf": 896,
+        "beneficio_neto": 870,
+        "conversion_pct": 103,
+        "capex_ventas_pct": 9.4,
+        "capex_amortizacion": 1.36,
+        "adquisiciones": 171,
+        "desinversiones": 0,
+        "dividendos": 324,
+        "recompras": 92,
+        "emision_acciones": 49,
+        "retorno_accionista": 416,
+        "payout_caja_pct": 48,
+        "acciones": 99.753,
+        "fcf_por_accion": 8.98
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 1068,
+        "capex": 711,
+        "pagos_arrendamientos": 110,
+        "fcf": 247,
+        "beneficio_neto": 823,
+        "conversion_pct": 30,
+        "capex_ventas_pct": 9.3,
+        "capex_amortizacion": 1.27,
+        "adquisiciones": 150,
+        "desinversiones": 19,
+        "dividendos": 374,
+        "recompras": 98,
+        "emision_acciones": 52,
+        "retorno_accionista": 472,
+        "payout_caja_pct": 57,
+        "acciones": 99.598,
+        "fcf_por_accion": 2.48
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 1356,
+        "capex": 793,
+        "pagos_arrendamientos": 114,
+        "fcf": 449,
+        "beneficio_neto": 620,
+        "conversion_pct": 72,
+        "capex_ventas_pct": 10.3,
+        "capex_amortizacion": 1.34,
+        "adquisiciones": 132,
+        "desinversiones": 18,
+        "dividendos": 424,
+        "recompras": 30,
+        "emision_acciones": 48,
+        "retorno_accionista": 454,
+        "payout_caja_pct": 73,
+        "acciones": 99.731,
+        "fcf_por_accion": 4.5
+      }
+    ],
+    "flujos_acumulado": {
+      "periodo": "2021-2025",
+      "fcf": 2738,
+      "adquisiciones": 598,
+      "dividendos": 1870,
+      "recompras": 406,
+      "conversion_pct": 70
+    },
+    "rentabilidad": [
+      {
+        "periodo": "2021",
+        "nopat": 720,
+        "capital_invertido": 5726,
+        "roic_pct": 12.6,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": null,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 16.4,
+        "roa_pct": 9.7,
+        "margen_neto_pct": 11.9,
+        "rotacion": 0.81,
+        "apalancamiento": 1.7
+      },
+      {
+        "periodo": "2022",
+        "nopat": 909,
+        "capital_invertido": 6005,
+        "roic_pct": 15.1,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": null,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 20.7,
+        "roa_pct": 11.7,
+        "margen_neto_pct": 13,
+        "rotacion": 0.9,
+        "apalancamiento": 1.77
+      },
+      {
+        "periodo": "2023",
+        "nopat": 983,
+        "capital_invertido": 6485,
+        "roic_pct": 15.2,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": null,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 18.8,
+        "roa_pct": 10.1,
+        "margen_neto_pct": 12.2,
+        "rotacion": 0.83,
+        "apalancamiento": 1.86
+      },
+      {
+        "periodo": "2024",
+        "nopat": 1009,
+        "capital_invertido": 7009,
+        "roic_pct": 14.4,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": null,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 16.6,
+        "roa_pct": 8.8,
+        "margen_neto_pct": 10.8,
+        "rotacion": 0.81,
+        "apalancamiento": 1.89
+      },
+      {
+        "periodo": "2025",
+        "nopat": 894,
+        "capital_invertido": 7649,
+        "roic_pct": 11.7,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": null,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 11.4,
+        "roa_pct": 6.4,
+        "margen_neto_pct": 8,
+        "rotacion": 0.8,
+        "apalancamiento": 1.77
+      }
+    ],
+    "roic_incremental_pct": 9,
+    "roic_frente_wacc": [
+      {
+        "periodo": "2021",
+        "roic_pct": 12.6,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 16.4,
+        "wacc_pct": 9.1
+      },
+      {
+        "periodo": "2022",
+        "roic_pct": 15.1,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 20.7,
+        "wacc_pct": 9.1
+      },
+      {
+        "periodo": "2023",
+        "roic_pct": 15.2,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 18.8,
+        "wacc_pct": 9.1
+      },
+      {
+        "periodo": "2024",
+        "roic_pct": 14.4,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 16.6,
+        "wacc_pct": 9.1
+      },
+      {
+        "periodo": "2025",
+        "roic_pct": 11.7,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 11.4,
+        "wacc_pct": 9.1
+      }
+    ],
+    "compras": null,
+    "calidad": {
+      "periodo": "2025",
+      "altman_z": 4.19,
+      "altman_zona": "Zona segura",
+      "piotroski_f": 8,
+      "piotroski_detalle": [
+        {
+          "criterio": "Beneficio neto positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "ROA mejora",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Flujo operativo > beneficio neto",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Baja el endeudamiento (deuda / activo)",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora la liquidez corriente",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "No emite acciones",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora el margen bruto",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora la rotación del activo",
+          "resultado": "Sí"
+        }
+      ],
+      "beneish_m": -2.81,
+      "beneish_fiable": true,
+      "beneish_variables": [
+        {
+          "variable": "DSRI",
+          "valor": 1.04
+        },
+        {
+          "variable": "GMI",
+          "valor": 1
+        },
+        {
+          "variable": "AQI",
+          "valor": 0.83
+        },
+        {
+          "variable": "SGI",
+          "valor": 1.01
+        },
+        {
+          "variable": "DEPI",
+          "valor": 0.99
+        },
+        {
+          "variable": "SGAI",
+          "valor": 1
+        },
+        {
+          "variable": "LVGI",
+          "valor": 0.84
+        },
+        {
+          "variable": "TATA",
+          "valor": -0.08
+        }
+      ],
+      "tabla": [
+        {
+          "indicador": "Altman Z",
+          "valor": "4,19",
+          "lectura": "Zona segura (> 2,99 seguro; < 1,81 riesgo). No aplica a bancos ni aseguradoras, y subestima la solvencia de empresas con grandes anticipos de clientes o prefinanciación pública (contratistas, construcción), que inflan el pasivo."
+        },
+        {
+          "indicador": "Piotroski F",
+          "valor": "8 / 9",
+          "lectura": "Fortaleza financiera alta (7-9)."
+        },
+        {
+          "indicador": "Beneish M",
+          "valor": "-2,81",
+          "lectura": "Por debajo de −1,78: sin señal de manipulación. Aproximado: con cuenta por naturaleza, los índices de margen bruto y de gastos generales se fijan en 1."
+        },
+        {
+          "indicador": "Flujo operativo / beneficio neto (acumulado)",
+          "valor": "1,58x",
+          "lectura": "El beneficio se cobra."
+        }
+      ]
+    },
+    "dcf": {
+      "proyeccion": [
+        {
+          "periodo": "2026e",
+          "ingresos": 7898,
+          "crecimiento_pct": 2.4,
+          "ebitda": 1809,
+          "margen_ebitda_pct": 22.9,
+          "amortizacion": 600,
+          "ebit": 1208,
+          "impuestos": 290,
+          "capex": 853,
+          "variacion_circulante": -7,
+          "fcff": 672,
+          "fraccion": 0.21,
+          "factor": 0.991,
+          "vp": 140
+        },
+        {
+          "periodo": "2027e",
+          "ingresos": 7977,
+          "crecimiento_pct": 1,
+          "ebitda": 1875,
+          "margen_ebitda_pct": 23.5,
+          "amortizacion": 622,
+          "ebit": 1252,
+          "impuestos": 301,
+          "capex": 957,
+          "variacion_circulante": 25,
+          "fcff": 592,
+          "fraccion": 1,
+          "factor": 0.94,
+          "vp": 556
+        },
+        {
+          "periodo": "2028e",
+          "ingresos": 8376,
+          "crecimiento_pct": 5,
+          "ebitda": 2010,
+          "margen_ebitda_pct": 24,
+          "amortizacion": 662,
+          "ebit": 1349,
+          "impuestos": 324,
+          "capex": 963,
+          "variacion_circulante": 128,
+          "fcff": 596,
+          "fraccion": 1,
+          "factor": 0.862,
+          "vp": 513
+        },
+        {
+          "periodo": "2029e",
+          "ingresos": 8795,
+          "crecimiento_pct": 5,
+          "ebitda": 2155,
+          "margen_ebitda_pct": 24.5,
+          "amortizacion": 712,
+          "ebit": 1442,
+          "impuestos": 346,
+          "capex": 967,
+          "variacion_circulante": 134,
+          "fcff": 707,
+          "fraccion": 1,
+          "factor": 0.79,
+          "vp": 558
+        },
+        {
+          "periodo": "2030e",
+          "ingresos": 9191,
+          "crecimiento_pct": 4.5,
+          "ebitda": 2252,
+          "margen_ebitda_pct": 24.5,
+          "amortizacion": 763,
+          "ebit": 1489,
+          "impuestos": 357,
+          "capex": 965,
+          "variacion_circulante": 127,
+          "fcff": 803,
+          "fraccion": 1,
+          "factor": 0.724,
+          "vp": 581
+        },
+        {
+          "periodo": "2031e",
+          "ingresos": 9558,
+          "crecimiento_pct": 4,
+          "ebitda": 2342,
+          "margen_ebitda_pct": 24.5,
+          "amortizacion": 812,
+          "ebit": 1529,
+          "impuestos": 367,
+          "capex": 956,
+          "variacion_circulante": 118,
+          "fcff": 901,
+          "fraccion": 1,
+          "factor": 0.664,
+          "vp": 598
+        },
+        {
+          "periodo": "2032e",
+          "ingresos": 9893,
+          "crecimiento_pct": 3.5,
+          "ebitda": 2424,
+          "margen_ebitda_pct": 24.5,
+          "amortizacion": 861,
+          "ebit": 1563,
+          "impuestos": 375,
+          "capex": 940,
+          "variacion_circulante": 107,
+          "fcff": 1002,
+          "fraccion": 1,
+          "factor": 0.609,
+          "vp": 610
+        }
+      ],
+      "etapa2": null,
+      "suma_vp": 3557,
+      "valor_terminal": 15606,
+      "vp_terminal": 9095,
+      "valor_empresa": 12652,
+      "peso_terminal_pct": 72,
+      "valor_acciones": 10508,
+      "valor_accion": 105.46,
+      "vt_gordon": 15606,
+      "vt_multiplo": 24237,
+      "multiplo_implicito": 6.4,
+      "g_implicito_pct": 4.75,
+      "metodo_terminal": "gordon",
+      "terminal_tabla": [
+        {
+          "concepto": "Método principal",
+          "valor": "Crecimiento a perpetuidad"
+        },
+        {
+          "concepto": "Crecimiento a perpetuidad",
+          "valor": "2,5 %"
+        },
+        {
+          "concepto": "Múltiplo EV/EBITDA de salida",
+          "valor": "10,0x"
+        },
+        {
+          "concepto": "Valor terminal (Gordon)",
+          "valor": "15.606"
+        },
+        {
+          "concepto": "Valor terminal (múltiplo)",
+          "valor": "24.237"
+        },
+        {
+          "concepto": "Múltiplo de salida implícito en Gordon",
+          "valor": "6,4x"
+        },
+        {
+          "concepto": "Crecimiento implícito en el múltiplo",
+          "valor": "4,75 %"
+        },
+        {
+          "concepto": "Peso del valor terminal en el valor empresa",
+          "valor": "72 %"
+        }
+      ],
+      "puente": [
+        {
+          "concepto": "Valor actual de los flujos proyectados",
+          "valor": "3.557"
+        },
+        {
+          "concepto": "Valor actual del valor terminal",
+          "valor": "9.095"
+        },
+        {
+          "concepto": "Valor empresa",
+          "valor": "12.652"
+        },
+        {
+          "concepto": "− Deuda financiera neta (con arrendamientos)",
+          "valor": "-2.141"
+        },
+        {
+          "concepto": "− Minoritarios, pensiones y otros; + asociadas",
+          "valor": "-3"
+        },
+        {
+          "concepto": "Valor de los fondos propios",
+          "valor": "10.508"
+        },
+        {
+          "concepto": "Acciones diluidas (millones)",
+          "valor": "99,6"
+        },
+        {
+          "concepto": "Valor por acción",
+          "valor": "105,46"
+        }
+      ],
+      "composicion": [
+        {
+          "parte": "Flujos proyectados",
+          "valor": 3557
+        },
+        {
+          "parte": "Valor terminal",
+          "valor": 9095
+        }
+      ],
+      "wacc": 9.08,
+      "ke": 9.76,
+      "kd_despues": 4.52,
+      "wacc_tabla": [
+        {
+          "concepto": "Tasa libre de riesgo",
+          "valor": "4,58 %"
+        },
+        {
+          "concepto": "Beta",
+          "valor": "0,85"
+        },
+        {
+          "concepto": "Prima de riesgo de mercado",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Prima adicional (país, tamaño, específica)",
+          "valor": "0,50 %"
+        },
+        {
+          "concepto": "Coste de los fondos propios",
+          "valor": "9,76 %"
+        },
+        {
+          "concepto": "Coste de la deuda antes de impuestos",
+          "valor": "5,80 %"
+        },
+        {
+          "concepto": "Tipo impositivo",
+          "valor": "22,00 %"
+        },
+        {
+          "concepto": "Coste de la deuda después de impuestos",
+          "valor": "4,52 %"
+        },
+        {
+          "concepto": "Peso de la deuda (D / (D + E))",
+          "valor": "13,00 %"
+        },
+        {
+          "concepto": "WACC",
+          "valor": "9,08 %"
+        },
+        {
+          "concepto": "Prima de riesgo implícita del mercado (regla relativa)",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "WACC con la prima implícita del mercado",
+          "valor": "8,12 %"
+        }
+      ],
+      "potencial_pct": -28.5,
+      "sensibilidad": {
+        "eje_columnas": "Crecimiento a perpetuidad",
+        "columnas": [
+          "1,5 %",
+          "2,0 %",
+          "2,5 %",
+          "3,0 %",
+          "3,5 %"
+        ],
+        "filas": [
+          {
+            "wacc": "8,1 %",
+            "v0": 110.95,
+            "v1": 119.33,
+            "v2": 129.21,
+            "v3": 141.05,
+            "v4": 155.46
+          },
+          {
+            "wacc": "8,6 %",
+            "v0": 101.14,
+            "v1": 108.16,
+            "v2": 116.35,
+            "v3": 126,
+            "v4": 137.55
+          },
+          {
+            "wacc": "9,1 %",
+            "v0": 92.64,
+            "v1": 98.59,
+            "v2": 105.46,
+            "v3": 113.44,
+            "v4": 122.87
+          },
+          {
+            "wacc": "9,6 %",
+            "v0": 85.21,
+            "v1": 90.31,
+            "v2": 96.12,
+            "v3": 102.82,
+            "v4": 110.62
+          },
+          {
+            "wacc": "10,1 %",
+            "v0": 78.66,
+            "v1": 83.06,
+            "v2": 88.03,
+            "v3": 93.71,
+            "v4": 100.25
+          }
+        ]
+      },
+      "sensibilidad2": {
+        "columnas": [
+          "-2 pp",
+          "-1 pp",
+          "0 pp",
+          "+1 pp",
+          "+2 pp"
+        ],
+        "filas": [
+          {
+            "margen": "-2 pp",
+            "v0": 82.31,
+            "v1": 83.96,
+            "v2": 85.55,
+            "v3": 87.08,
+            "v4": 88.53
+          },
+          {
+            "margen": "-1 pp",
+            "v0": 91.31,
+            "v1": 93.42,
+            "v2": 95.5,
+            "v3": 97.54,
+            "v4": 99.52
+          },
+          {
+            "margen": "0 pp",
+            "v0": 100.31,
+            "v1": 102.89,
+            "v2": 105.46,
+            "v3": 108,
+            "v4": 110.51
+          },
+          {
+            "margen": "+1 pp",
+            "v0": 109.31,
+            "v1": 112.36,
+            "v2": 115.41,
+            "v3": 118.46,
+            "v4": 121.51
+          },
+          {
+            "margen": "+2 pp",
+            "v0": 118.32,
+            "v1": 121.83,
+            "v2": 125.36,
+            "v3": 128.92,
+            "v4": 132.5
+          }
+        ]
+      },
+      "rango_min": 90.31,
+      "rango_max": 126,
+      "inverso": {
+        "crecimiento_implicito_pct": null,
+        "crecimiento_base_pct": 3.8,
+        "periodo": "2027e-2032e",
+        "margen_implicito_pct": 28.7,
+        "margen_implicito_texto": null,
+        "margen_base_pct": 24.5,
+        "rentabilidad_implicita_pct": 7.5
+      },
+      "sostenibilidad": {
+        "veredicto": "En parte",
+        "veredicto_motor": "Sí",
+        "motivos_motor": [],
+        "crecimiento_financiable_bruto_pct": null,
+        "roic_implicito_bruto_pct": null,
+        "tcac_ingresos_historica_pct": 7.4,
+        "crecimiento_proyectado_pct": 3.6,
+        "tasa_reinversion_pct": 29,
+        "crecimiento_financiable_pct": 3.4,
+        "roic_pct": 11.7,
+        "roic_incremental_historico_pct": 9,
+        "roic_implicito_pct": 13.4,
+        "cuota_actual_pct": 10.5,
+        "cuota_final_pct": null,
+        "puente": [
+          {
+            "periodo": "2026e",
+            "volumen_pct": 4,
+            "precio_pct": 0.5,
+            "otros_pct": -2.1,
+            "comentario": "Volumen +4 % (BioSolutions 335.000 t y BioMaterials > 160.000 t según la guía [2]); precio +0,5 %; −2,1 puntos de divisa y mezcla.",
+            "suma_pct": 2.4,
+            "crecimiento_pct": 2.4
+          },
+          {
+            "periodo": "2027e",
+            "volumen_pct": 3,
+            "precio_pct": 2,
+            "otros_pct": -4,
+            "comentario": "Volumen +3 % y precio +2 % (ambición de la empresa [5]); −4 puntos por la corona al vencer las coberturas.",
+            "suma_pct": 1,
+            "crecimiento_pct": 1
+          },
+          {
+            "periodo": "2028e",
+            "volumen_pct": 3,
+            "precio_pct": 2,
+            "otros_pct": 0,
+            "comentario": "Volumen +3 % (desembotellamiento de Sarpsborg) y precio +2 %, sin divisa [5].",
+            "suma_pct": 5,
+            "crecimiento_pct": 5
+          },
+          {
+            "periodo": "2029e",
+            "volumen_pct": 3,
+            "precio_pct": 2,
+            "otros_pct": 0,
+            "comentario": "Igual que 2028.",
+            "suma_pct": 5,
+            "crecimiento_pct": 5
+          },
+          {
+            "periodo": "2030e",
+            "volumen_pct": 2.5,
+            "precio_pct": 2,
+            "otros_pct": 0,
+            "comentario": "Volumen +2,5 % y precio +2 %.",
+            "suma_pct": 4.5,
+            "crecimiento_pct": 4.5
+          }
+        ],
+        "texto": "La proyección reinvierte el 29 % del NOPAT. Con el ROIC del último ejercicio (11,7 %), eso financia un crecimiento del 3,4 % anual, frente al 3,6 % de ingresos proyectado. Supone que el capital nuevo rinde un 13,4 %, frente a un ROIC incremental histórico del 9,0 %.",
+        "tabla": [
+          {
+            "concepto": "Crecimiento medio de ingresos proyectado",
+            "valor": "3,6 %"
+          },
+          {
+            "concepto": "Capex bruto medio (incluidas compras si van como inversión)",
+            "valor": "10,8 % de las ventas"
+          },
+          {
+            "concepto": "Reinversión neta acumulada (capex − amortización + circulante)",
+            "valor": "2.201 M (29 % del NOPAT)"
+          },
+          {
+            "concepto": "Crecimiento que financia esa reinversión al ROIC actual",
+            "valor": "3,4 % (ROIC 11,7 %)"
+          },
+          {
+            "concepto": "Crecimiento histórico de ingresos (TCAC)",
+            "valor": "7,4 % frente al 3,6 % proyectado"
+          },
+          {
+            "concepto": "Veredicto de las pruebas del motor",
+            "valor": "Sí"
+          },
+          {
+            "concepto": "Rendimiento que la proyección supone para el capital nuevo",
+            "valor": "13,4 % (histórico: 9,0 %)"
+          }
+        ]
+      }
+    },
+    "escenarios": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "narrativa": "La corona sigue subiendo (EUR a 10 NOK), la construcción europea y china no se recupera y la vainillina china presiona: crecimiento 2 puntos menor y margen 2 puntos menor, cerca del 22 % de 2026 y del 21,3 % del 1T26.",
+        "crecimiento_medio_pct": 1.8,
+        "margen_final_pct": 22.5,
+        "wacc_pct": 9.6,
+        "valor": 74.74,
+        "potencial_pct": -49.3
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "narrativa": "Volúmenes según la guía, golpe de divisa en 2027 compensado en parte por el plan de ahorro; margen del 24-24,5 % desde 2028 y crecimiento del 5 % sin divisa.",
+        "crecimiento_medio_pct": 3.8,
+        "margen_final_pct": 24.5,
+        "wacc_pct": 9.1,
+        "valor": 105.46,
+        "potencial_pct": -28.5
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "narrativa": "La corona se debilita, el antidumping queda en el 6,54 % y vuelven los clientes de EE. UU., y la agricultura y las especialidades mejoran la mezcla: margen del 25,5 % y crecimiento 1,5 puntos mayor.",
+        "crecimiento_medio_pct": 5.3,
+        "margen_final_pct": 25.5,
+        "wacc_pct": 9.1,
+        "valor": 119.98,
+        "potencial_pct": -18.6
+      }
+    ],
+    "valor_ponderado": 101.41,
+    "potencial_ponderado_pct": -31.2,
+    "comparables": {
+      "tabla": [
+        {
+          "nombre": "Borregaard",
+          "ticker": "BRG",
+          "pais": "NO",
+          "capitalizacion": 14688,
+          "ev_ventas": 2.17,
+          "ev_ebitda_ltm": 9.4,
+          "ev_ebitda_ntm": 8.1,
+          "per_ntm": 15.1,
+          "crecimiento_pct": 5.4,
+          "margen_ebitda_pct": 23.1,
+          "roic_pct": 11.7,
+          "dn_ebitda": 1.2,
+          "fcf_yield_pct": 5.4,
+          "es_objetivo": true
+        },
+        {
+          "nombre": "Kemira",
+          "ticker": "KEMIRA",
+          "pais": "FI",
+          "capitalizacion": 26858,
+          "ev_ventas": 1.09,
+          "ev_ebitda_ltm": 5.8,
+          "ev_ebitda_ntm": 6.1,
+          "per_ntm": 12.9,
+          "crecimiento_pct": 4.6,
+          "margen_ebitda_pct": 19,
+          "roic_pct": null,
+          "dn_ebitda": 0.96,
+          "fcf_yield_pct": 5.2,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Ingevity",
+          "ticker": "NGVT",
+          "pais": "US",
+          "capitalizacion": 25737,
+          "ev_ventas": 3.2,
+          "ev_ebitda_ltm": 9.3,
+          "ev_ebitda_ntm": 9,
+          "per_ntm": 12.6,
+          "crecimiento_pct": -2.5,
+          "margen_ebitda_pct": 30.8,
+          "roic_pct": null,
+          "dn_ebitda": 2.46,
+          "fcf_yield_pct": 8.8,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Symrise",
+          "ticker": "SY1",
+          "pais": "DE",
+          "capitalizacion": 144504,
+          "ev_ventas": 2.95,
+          "ev_ebitda_ltm": 14.1,
+          "ev_ebitda_ntm": 13.3,
+          "per_ntm": 22.8,
+          "crecimiento_pct": 4.6,
+          "margen_ebitda_pct": 21.8,
+          "roic_pct": 7,
+          "dn_ebitda": 1.59,
+          "fcf_yield_pct": 4.7,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Kerry Group",
+          "ticker": "KRZ",
+          "pais": "IE",
+          "capitalizacion": 155628,
+          "ev_ventas": 2.34,
+          "ev_ebitda_ltm": 13.5,
+          "ev_ebitda_ntm": 12.5,
+          "per_ntm": 18.3,
+          "crecimiento_pct": 5,
+          "margen_ebitda_pct": 18.4,
+          "roic_pct": 9.4,
+          "dn_ebitda": 1.57,
+          "fcf_yield_pct": 4.8,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Croda",
+          "ticker": "CRDA",
+          "pais": "GB",
+          "capitalizacion": 61097,
+          "ev_ventas": 2.9,
+          "ev_ebitda_ltm": 13,
+          "ev_ebitda_ntm": 11.6,
+          "per_ntm": 23.1,
+          "crecimiento_pct": 4.8,
+          "margen_ebitda_pct": 24.1,
+          "roic_pct": null,
+          "dn_ebitda": 1.11,
+          "fcf_yield_pct": 3.5,
+          "es_objetivo": false
+        }
+      ],
+      "estadisticos": [
+        {
+          "estadistico": "Mediana",
+          "ev_ventas": 2.9,
+          "ev_ebitda_ltm": 13,
+          "ev_ebitda_ntm": 11.6,
+          "per_ntm": 18.3,
+          "crecimiento_pct": 4.6,
+          "margen_ebitda_pct": 21.8,
+          "roic_pct": 8.2,
+          "dn_ebitda": 1.6,
+          "fcf_yield_pct": 4.8
+        },
+        {
+          "estadistico": "Media",
+          "ev_ventas": 2.5,
+          "ev_ebitda_ltm": 11.1,
+          "ev_ebitda_ntm": 10.5,
+          "per_ntm": 17.9,
+          "crecimiento_pct": 3.3,
+          "margen_ebitda_pct": 22.8,
+          "roic_pct": 8.2,
+          "dn_ebitda": 1.5,
+          "fcf_yield_pct": 5.4
+        },
+        {
+          "estadistico": "Percentil 25",
+          "ev_ventas": 2.3,
+          "ev_ebitda_ltm": 9.3,
+          "ev_ebitda_ntm": 9,
+          "per_ntm": 12.9,
+          "crecimiento_pct": 4.6,
+          "margen_ebitda_pct": 19,
+          "roic_pct": 7.6,
+          "dn_ebitda": 1.1,
+          "fcf_yield_pct": 4.7
+        },
+        {
+          "estadistico": "Percentil 75",
+          "ev_ventas": 3,
+          "ev_ebitda_ltm": 13.5,
+          "ev_ebitda_ntm": 12.5,
+          "per_ntm": 22.8,
+          "crecimiento_pct": 4.8,
+          "margen_ebitda_pct": 24.1,
+          "roic_pct": 8.8,
+          "dn_ebitda": 1.6,
+          "fcf_yield_pct": 5.2
+        }
+      ],
+      "implicito": [
+        {
+          "metodo": "EV/EBITDA próximos 12 meses",
+          "metrica_empresa": 2065.56,
+          "multiplo_p25": 9,
+          "multiplo_mediana": 11.6,
+          "multiplo_p75": 12.5,
+          "multiplos": "9,0x / 11,6x / 12,5x",
+          "valor_p25": 165.05,
+          "valor_mediana": 218.94,
+          "valor_p75": 237.6,
+          "potencial_pct": 48.5
+        },
+        {
+          "metodo": "EV/EBITDA últimos 12 meses",
+          "metrica_empresa": 1788,
+          "multiplo_p25": 9.3,
+          "multiplo_mediana": 13,
+          "multiplo_p75": 13.5,
+          "multiplos": "9,3x / 13,0x / 13,5x",
+          "valor_p25": 145.36,
+          "valor_mediana": 211.75,
+          "valor_p75": 220.72,
+          "potencial_pct": 43.7
+        },
+        {
+          "metodo": "PER próximos 12 meses",
+          "metrica_empresa": 9.76,
+          "multiplo_p25": 12.9,
+          "multiplo_mediana": 18.3,
+          "multiplo_p75": 22.8,
+          "multiplos": "12,9x / 18,3x / 22,8x",
+          "valor_p25": 125.88,
+          "valor_mediana": 178.58,
+          "valor_p75": 222.49,
+          "potencial_pct": 21.2
+        },
+        {
+          "metodo": "EV/Ventas últimos 12 meses",
+          "metrica_empresa": 7751,
+          "multiplo_p25": 2.3,
+          "multiplo_mediana": 2.9,
+          "multiplo_p75": 3,
+          "multiplos": "2,3x / 2,9x / 3,0x",
+          "valor_p25": 160.5,
+          "valor_mediana": 204.06,
+          "valor_p75": 207.95,
+          "potencial_pct": 38.4
+        }
+      ],
+      "regresion": {
+        "pendiente": 0.28,
+        "ordenada": 9.6,
+        "r2": 0.09,
+        "n": 5,
+        "multiplo_ajustado": 11.1,
+        "valor_accion": 208.58,
+        "fiable": false,
+        "texto": "**Regresión EV/EBITDA NTM sobre crecimiento** (5 comparables): múltiplo = 9,6 + 0,28 × crecimiento; R² = 0,09. El crecimiento explica poco los múltiplos de estos comparables (R² < 0,3): la regresión no se usa en la valoración."
+      },
+      "n": 5
+    },
+    "transacciones": null,
+    "suma_partes": null,
+    "multiplos_historicos": [
+      {
+        "metrica": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+        "campo": "ev_ebitda_ltm",
+        "actual": 9.4,
+        "media": 10.9,
+        "minimo": 10.4,
+        "maximo": 17.2,
+        "percentil": 0,
+        "prima_pct": -14,
+        "anios": 5
+      },
+      {
+        "metrica": "PER últimos 12 meses (cierre de cada año)",
+        "campo": "per_ltm",
+        "actual": 87.2,
+        "media": 22.1,
+        "minimo": 17,
+        "maximo": 32.1,
+        "percentil": 100,
+        "prima_pct": 295,
+        "anios": 5
+      }
+    ],
+    "multiplos_serie": [
+      {
+        "anio": "2021",
+        "multiplo": 17.2,
+        "media": 10.9
+      },
+      {
+        "anio": "2022",
+        "multiplo": 10.4,
+        "media": 10.9
+      },
+      {
+        "anio": "2023",
+        "multiplo": 10.6,
+        "media": 10.9
+      },
+      {
+        "anio": "2024",
+        "multiplo": 10.9,
+        "media": 10.9
+      },
+      {
+        "anio": "2025",
+        "multiplo": 11.7,
+        "media": 10.9
+      }
+    ],
+    "multiplos_titulo": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+    "consenso_vs_propio": [
+      {
+        "periodo": "2026e",
+        "ingresos_propio": 7898,
+        "ingresos_consenso": 7945,
+        "ingresos_dif_pct": -0.6,
+        "ebitda_propio": 1809,
+        "ebitda_consenso": 1873,
+        "ebitda_dif_pct": -3.4
+      },
+      {
+        "periodo": "2027e",
+        "ingresos_propio": 7977,
+        "ingresos_consenso": 8387,
+        "ingresos_dif_pct": -4.9,
+        "ebitda_propio": 1875,
+        "ebitda_consenso": 2117,
+        "ebitda_dif_pct": -11.4
+      },
+      {
+        "periodo": "2028e",
+        "ingresos_propio": 8376,
+        "ingresos_consenso": 8761,
+        "ingresos_dif_pct": -4.4,
+        "ebitda_propio": 2010,
+        "ebitda_consenso": 2219,
+        "ebitda_dif_pct": -9.4
+      }
+    ],
+    "gobierno": {
+      "n_consejeros": 7,
+      "independientes_pct": 71,
+      "antiguedad_media": 0,
+      "composicion": [
+        {
+          "tipo": "Independiente",
+          "num": 5
+        },
+        {
+          "tipo": "Otro externo",
+          "num": 2
+        }
+      ],
+      "checklist": [
+        {
+          "criterio": "Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)",
+          "resultado": "Cumple",
+          "valor": "71 %"
+        },
+        {
+          "criterio": "Presidencia sin vínculo familiar ni profesional con el accionista de control",
+          "resultado": "Cumple",
+          "valor": "Sin control"
+        },
+        {
+          "criterio": "Presidente no ejecutivo, o consejero coordinador independiente",
+          "resultado": "Cumple",
+          "valor": "No ejecutivo"
+        },
+        {
+          "criterio": "Comisión de auditoría con mayoría de independientes y presidida por uno",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Ningún consejero «otro externo» con más de 12 años",
+          "resultado": "Cumple",
+          "valor": "Ninguno"
+        },
+        {
+          "criterio": "Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses",
+          "resultado": "Cumple",
+          "valor": "1 cambio"
+        },
+        {
+          "criterio": "Peor voto a favor sobre remuneración (3 juntas) ≥ 80 %",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)",
+          "resultado": "No cumple",
+          "valor": "No"
+        },
+        {
+          "criterio": "Una acción, un voto, sin blindajes ni límites de voto estatutarios",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Sin operaciones vinculadas relevantes",
+          "resultado": "Cumple",
+          "valor": "No hay"
+        },
+        {
+          "criterio": "Auditor con 10 años o menos en el cargo",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Opinión de auditoría sin salvedades",
+          "resultado": "Cumple",
+          "valor": "Favorable (informe del auditor de las cuentas de 2025)"
+        },
+        {
+          "criterio": "Directivos compradores netos en 12 meses (o sin ventas relevantes)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        }
+      ],
+      "puntuacion": "9 de 13 (3 sin dato)",
+      "puntuacion_pct": 69,
+      "compras_insiders": 0,
+      "ventas_insiders": 0
+    },
+    "competidores_margen": [
+      {
+        "nombre": "Borregaard",
+        "margen_ebit_pct": 16.7
+      },
+      {
+        "nombre": "RYAM (Rayonier Advanced Materials)",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Sappi (Saiccor)",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Bracell",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Domsjö (Aditya Birla)",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Ingevity",
+        "margen_ebit_pct": 22.6
+      },
+      {
+        "nombre": "Kemira",
+        "margen_ebit_pct": 11.8
+      }
+    ],
+    "sintesis": {
+      "formato_eje": "#,##0",
+      "rangos": [
+        {
+          "metodo": "Cotización 52 semanas",
+          "etiqueta": "Cotización 52 semanas (137,60 – 200,50)",
+          "min": 137.6,
+          "central": 147.4,
+          "max": 200.5,
+          "gris": true
+        },
+        {
+          "metodo": "Precio objetivo de los analistas",
+          "etiqueta": "Precio objetivo de los analistas (165,00 – 180,00)",
+          "min": 165,
+          "central": 173.75,
+          "max": 180,
+          "gris": true
+        },
+        {
+          "metodo": "Comparables: EV/EBITDA NTM",
+          "etiqueta": "Comparables: EV/EBITDA NTM (165,05 – 237,60)",
+          "min": 165.05,
+          "central": 218.94,
+          "max": 237.6,
+          "gris": false
+        },
+        {
+          "metodo": "Comparables: PER NTM",
+          "etiqueta": "Comparables: PER NTM (125,88 – 222,49)",
+          "min": 125.88,
+          "central": 178.58,
+          "max": 222.49,
+          "gris": false
+        },
+        {
+          "metodo": "DCF (WACC y g ± 0,5)",
+          "etiqueta": "DCF (WACC y g ± 0,5) (90,31 – 126,00)",
+          "min": 90.31,
+          "central": 105.46,
+          "max": 126,
+          "gris": false
+        },
+        {
+          "metodo": "Escenarios (bajista – alcista)",
+          "etiqueta": "Escenarios (bajista – alcista) (74,74 – 119,98)",
+          "min": 74.74,
+          "central": 101.41,
+          "max": 119.98,
+          "gris": false
+        },
+        {
+          "metodo": "DCF con la prima del mercado",
+          "etiqueta": "DCF con la prima implícita del mercado (4,2 %)",
+          "min": 115.44,
+          "central": 128.14,
+          "max": 143.34
+        },
+        {
+          "metodo": "Precio actual",
+          "etiqueta": "Precio actual (147,40)",
+          "min": 146.66,
+          "central": 147.4,
+          "max": 148.14,
+          "gris": true
+        }
+      ],
+      "tabla": [
+        {
+          "metodo": "DCF",
+          "valor": 105.46,
+          "peso_pct": 40,
+          "potencial_pct": -28.5
+        },
+        {
+          "metodo": "Comparables (mediana EV/EBITDA y PER)",
+          "valor": 198.76,
+          "peso_pct": 20,
+          "potencial_pct": 34.8
+        },
+        {
+          "metodo": "Escenarios ponderados",
+          "valor": 101.41,
+          "peso_pct": 40,
+          "potencial_pct": -31.2
+        }
+      ],
+      "valor_objetivo": 122.5,
+      "potencial_pct": -16.9
+    },
+    "fuentes": {
+      "n_fuentes": 25,
+      "n_primarias": 14,
+      "por_tipo": [
+        {
+          "tipo": "Primaria",
+          "num": 14
+        },
+        {
+          "tipo": "Datos de mercado",
+          "num": 6
+        },
+        {
+          "tipo": "Sectorial",
+          "num": 1
+        },
+        {
+          "tipo": "Analistas",
+          "num": 2
+        },
+        {
+          "tipo": "Foros y redes",
+          "num": 1
+        },
+        {
+          "tipo": "Prensa",
+          "num": 1
+        }
+      ],
+      "n_citadas": 25,
+      "citas_sin_fuente": [],
+      "fuentes_sin_citar": []
+    },
+    "controles": [
+      {
+        "control": "Geografías suman 100 %",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "DCF inverso calculable",
+        "resultado": "Explicado",
+        "detalle": "No hay solución en un rango razonable: revisa circulante, capex o márgenes del DCF (un supuesto extremo hace que el valor no responda al crecimiento). Explicación: Con capex y circulante proporcionales a las ventas (circulante del 32 %) y un ROIC cercano al WACC, crecer más apenas sube el valor: no hay crecimiento que justifique el precio. El inverso por margen sí sale (28,7 % frente al 24,5 % del caso base) y es el que usamos en el texto."
+      },
+      {
+        "control": "Puente de ingresos (volumen + precio + otros) = crecimiento del DCF",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Veredicto de sostenibilidad del analista coherente con las pruebas del motor",
+        "resultado": "OK",
+        "detalle": "El analista dice «En parte» y las pruebas del motor dan «Sí»: razónalo en la justificación."
+      },
+      {
+        "control": "Rendimiento del capital nuevo de la proyección ≤ 1,25 × el histórico",
+        "resultado": "OK",
+        "detalle": "La proyección supone que la inversión nueva rinde un 13,4 % frente a un ROIC de 11,7 % y un incremental histórico de 9,0 %: crecimiento que la empresa no ha demostrado poder comprar."
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "resultado": "OK",
+        "detalle": "Supuesto 32,0 % frente a 32,9 % real: genera una variación de circulante de -7 M en el primer año. Converge de forma gradual."
+      },
+      {
+        "control": "Peso del valor terminal ≤ 80 % del valor empresa",
+        "resultado": "OK",
+        "detalle": "72 %."
+      },
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "resultado": "OK",
+        "detalle": "2,50 %."
+      },
+      {
+        "control": "Probabilidades de los escenarios suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Regresión múltiplo-crecimiento explicativa (R² ≥ 0,3)",
+        "resultado": "Explicado",
+        "detalle": "R² = 0,09: el crecimiento no explica los múltiplos de estos comparables; no uses el valor de la regresión. Explicación: Cinco comparables de negocios distintos; no se usa la regresión."
+      },
+      {
+        "control": "Al menos 5 comparables",
+        "resultado": "OK",
+        "detalle": "5 comparables."
+      },
+      {
+        "control": "Comparables estables al quitar una empresa",
+        "resultado": "Explicado",
+        "detalle": "La mediana del EV/EBITDA NTM va de 10,3x a 12,1x según qué comparable se quite (191,99 a 228,27 por acción): la muestra es frágil; explícalo y no le des mucho peso. Explicación: La muestra mezcla químicas de la madera baratas (Kemira, Ingevity) con ingredientes caros (Symrise, Kerry, Croda); por eso los comparables pesan solo un 20 % y la regla a 12 meses usa la mediana del PER solo en el alcista."
+      },
+      {
+        "control": "Pesos de la síntesis suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Crecimiento del BPA base ≤ 25 % anual desde el último real",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Precio del cierre de la fecha de corte (o de las dos sesiones anteriores)",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Recomendación coherente con la regla de decisión",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "La síntesis explica la convicción",
+        "resultado": "OK",
+        "detalle": "La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría."
+      },
+      {
+        "control": "Al menos 25 fuentes",
+        "resultado": "OK",
+        "detalle": "25 fuentes (14 primarias)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "resultado": "OK",
+        "detalle": "14."
+      },
+      {
+        "control": "Toda cita [n] existe en fuentes",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Fuentes sin citar ≤ 15 %",
+        "resultado": "OK",
+        "detalle": ""
+      }
+    ],
+    "controles_resumen": "18 de 21 controles correctos y 3 explicados"
+  }
+}

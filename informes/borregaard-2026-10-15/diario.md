@@ -1,0 +1,20 @@
+# Diario · Borregaard (BRG.OL) · 15-oct-2026
+
+- Commit de partida: 9340b9e (Seguimiento: regenerado). Encargo de la 9ª hora; sin subagentes, sin commits (los hace el coordinador).
+- Origen: escáner «calidad a precio» (PER adelantado ≈14x; ROIC − WACC ≈ +6; −26 % desde máximos).
+- Fecha de corte 2026-10-15; NOK (cotización y cuentas); ejercicio natural; NIIF; cuenta por naturaleza. Precio: cierre del 14-oct (147,40 NOK, Yahoo), porque la sesión del 15-oct no había cerrado. 1 acción = 13,90 EUR (BCE 14-oct), 0,05 % de una cartera de 30.000 EUR.
+- Fuentes: informe anual 2025, informe y cifras trimestrales del 2T26, presentaciones del 1T26, 2T26, julio-26 y del día del inversor (17-sep-26), todo en `notas/docs`; XBRL ESEF 2021-2024 (`cuentas.mjs --esef`, sin 2025: Noruega aún no estaba en filings.xbrl.org); Yahoo (`bolsa.mjs`, índice OSEBX.OL: OBX.OL y ^OSEAX no tienen datos); MarketScreener (consenso y comparables); Norges Bank (bono a 10 años, 4,585 %); BCE; Federal Register (antidumping); Nordnet (foro y objetivos de las casas); DNB Carnegie.
+- Notas A-E con `notas/construir-notas.mjs`; propio con `propio.mjs` + `textos.mjs`. Ficha sectorial nueva: `sectores/quimica-especialidades-madera-2026-10-15.md` (la de ingredientes no encaja: Borregaard es química de la madera; se reutilizan solo sus comparables Croda, Symrise y Kerry).
+- Decisiones: «otros ingresos y gastos» (−8 M en 2022, −30 M en 2024 y en el 2T26) como no recurrentes dentro del EBITDA. BPA normalizado sin los deterioros de Alginor (225 M en 2025, 337 M en el 2T26; la empresa da 8,67 NOK sin deterioros en 2025 y 4,17 en el 1S26). Deuda de 2021-2022 con arrendamientos dentro (sin desglose en XBRL). WACC en NOK: bono noruego 4,585 %, beta 0,85, prima 5,5 + 0,5 → 9,08 %. Primer cálculo con margen del 25 % y capex de ≈ 9,5 %: el capital nuevo debía rendir el 18,8 % (falla la prueba) → caso base rebajado (margen del 24,5 % máx. y capex de la guía, 12 % → 9,5 %): pasa (13,4 %). DCF inverso por crecimiento sin solución (explicado: crecer no crea valor con circulante del 32 %); por margen, 28,7 %. Pesos DCF 40 / escenarios 40 / comparables 20.
+- Resultado: DCF 105,46 NOK (−28,5 %); valor intrínseco 122,50 (−16,9 %); con la prima del mercado 140,22. ROIC 11,7 % (≈12,8 % con tipo normal) frente a WACC 9,08 % → +2,6 puntos (no +6 como decía el escáner: el escáner usaba un WACC menor; con tipos noruegos al 4,6 % la diferencia se estrecha). Sostenibilidad «En parte» (el motor dice «Sí» tras la rebaja; mantenemos «En parte» por ROIC cercano al WACC y poder de precios débil en 2026; no salta el control porque no decimos «Sí»). Calidad: En parte.
+- **Línea 12 m (v3, selector v3)**: objetivo 170,62 NOK, ponderada +19,0 %, base +22,0 %; v2 18,8 % / 12,7 %. **Mantener**, convicción media (sugerida). Comprar < 122,50 NOK; vender > 194,85. Robustez: SÓLIDA, acción robusta no comprar / no mantener. Detalle en revision-12m-2026-10-15.md.
+- Confianza de datos: media-alta (cuentas primarias; consenso de una sola fuente con 5 analistas; comparables frágiles; sector sin tamaño de lignina).
+- Word y PDF (soffice): 18 de 21 controles y 3 explicados; cobertura 85,4 %. Próximos resultados: 28-oct-2026.
+- Tiempo: ≈ 60 minutos (09:40-10:40 UTC).
+
+## Lecciones
+
+- Noruega: `cuentas.mjs --esef` aún no trae el ejercicio 2025 (filings.xbrl.org va con retraso para Oslo); el último año sale del PDF. En Yahoo el índice de Oslo es `OSEBX.OL` (OBX.OL y ^OSEAX vacíos).
+- Borregaard: el antiguo dominio borregaard.no ya no sirve los informes anuales antiguos (404); la serie histórica larga solo está en «Historical key figures» del informe anual vigente (5 años).
+- Con tipos locales altos (NOK 4,6 %), el ROIC − WACC del escáner (que usa un WACC genérico) sobrestima la calidad: comprobar con el WACC en la divisa local antes de lanzar el análisis.
+- Si el DCF proyecta capex y circulante en % de ventas y el ROIC está cerca del WACC, el DCF inverso por crecimiento no tiene solución: usar el inverso por margen y explicarlo en `controles_explicados`.
