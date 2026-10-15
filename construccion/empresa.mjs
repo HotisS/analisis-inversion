@@ -191,8 +191,9 @@ export default {
     ]],
 
     ['seccion', '10. Rentabilidad sobre el capital', 'rentabilidad,calc.rentabilidad', 'Núcleo', [
-      ['tabla', 'calc.rentabilidad', [['Periodo', 'periodo', '', 0.9], ['ROIC', 'roic_pct', 'pct', 0.9, 'd'], ['ROE', 'roe_pct', 'pct', 0.9, 'd'], ['ROA', 'roa_pct', 'pct', 0.9, 'd'], ['Margen neto', 'margen_neto_pct', 'pct', 1, 'd'], ['Rotación del activo', 'rotacion', 'x2', 1, 'd'], ['Apalancamiento', 'apalancamiento', 'x2', 1, 'd'], ['Capital invertido', 'capital_invertido', '0', 1.1, 'd']]],
+      ['tabla', 'calc.rentabilidad', [['Periodo', 'periodo', '', 0.9], ['ROIC', 'roic_pct', 'pct', 0.9, 'd'], ['ROE', 'roe_pct', 'pct', 0.9, 'd'], ['ROA', 'roa_pct', 'pct', 0.9, 'd'], ['Margen neto', 'margen_neto_pct', 'pct', 1, 'd'], ['Rotación del activo', 'rotacion', 'x2', 1, 'd'], ['Apalancamiento', 'apalancamiento', 'x2', 1, 'd'], ['Capital invertido', 'capital_invertido', '0', 1.1, 'd'], ['ROIC sin f. de comercio', 'roic_sin_fc_pct', 'pct', 1.1, 'd']]],
       ['grafico', 'roic'],
+      sub('Fondo de comercio y compras', 'calc.compras', [['texto', 'calc.compras.texto']]),
       ['p', '**ROIC incremental** (variación del NOPAT sobre variación del capital invertido en el periodo): {{calc.roic_incremental_pct|pct}} · **WACC**: {{calc.dcf.wacc|pct}}.'],
       ['texto', 'rentabilidad.comentario'],
     ]],

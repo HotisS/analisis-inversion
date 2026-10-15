@@ -238,6 +238,7 @@ export function calcularEmpresa(datos) {
       // EBIT sobre gastos por intereses; si no se aportan, sobre el resultado financiero neto (incluye divisa).
       cobertura_intereses: red(n(c.gastos_financieros) > 0 ? div(n(c.ebit), n(c.gastos_financieros)) : rf !== null && rf < 0 ? div(n(c.ebit), -rf) : null, 1),
       capital_invertido: suma(pn ?? 0, mi, dn ?? 0),
+      fondo_comercio: n(b.fondo_comercio),
       liquidez_corriente: red(div(n(b.activo_corriente), n(b.pasivo_corriente)), 2),
     };
   });
@@ -300,12 +301,18 @@ export function calcularEmpresa(datos) {
     const tasa = n(c.bai) > 0 && n(c.impuestos) !== null ? Math.min(0.4, Math.max(0, n(c.impuestos) / n(c.bai))) : 0.25;
     const nopat = n(c.ebit) !== null ? n(c.ebit) * (1 - tasa) : null;
     const ci = bc && bcAnt ? (bc.capital_invertido + bcAnt.capital_invertido) / 2 : bc?.capital_invertido ?? null;
+    // ROIC sin fondo de comercio (15-oct-2026): el mismo NOPAT sobre el capital medio menos el fondo de comercio medio. Es un dato
+    // al lado del publicado, no decide (§4.1): el backtest del 15-oct no encontró ventaja en relajar el filtro con él.
+    const gwMed = bc && bcAnt && bc.fondo_comercio !== null && bcAnt.fondo_comercio !== null ? (bc.fondo_comercio + bcAnt.fondo_comercio) / 2 : bc?.fondo_comercio ?? null;
+    const ciSinFc = ci !== null && gwMed !== null ? ci - gwMed : null;
     const pnMed = b && bAnt ? (n(b.patrimonio_neto) + n(bAnt.patrimonio_neto)) / 2 : n(b?.patrimonio_neto);
     const atMed = b && bAnt ? (n(b.activo_total) + n(bAnt.activo_total)) / 2 : n(b?.activo_total);
     return {
       // ROIC «no aplica» con capital invertido ≤ 0 (mucha caja neta o patrimonio negativo por recompras: Booking, ANYCOLOR,
       // CTS Eventim, 14-oct-2026): la cifra saldría negativa y no significa nada; se usa el ROIC calculado a mano del informe.
       periodo: c.periodo, nopat: red(nopat, 0), capital_invertido: red(ci, 0), roic_pct: ci !== null && ci <= 0 ? null : red(pct(nopat, ci)),
+      roic_sin_fc_pct: ciSinFc !== null && ciSinFc > 0 && gwMed > 0 ? red(pct(nopat, ciSinFc)) : null,
+      fondo_comercio_pct_capital: ci > 0 && gwMed !== null ? red(pct(gwMed, ci), 0) : null,
       roic_nota: ci !== null && ci <= 0 ? 'no aplica: capital invertido negativo (caja neta o patrimonio negativo por recompras); usar el ROIC calculado a mano del informe' : null,
       roe_pct: red(pct(n(c.beneficio_neto), pnMed)), roa_pct: red(pct(n(c.beneficio_neto), atMed)),
       margen_neto_pct: red(pct(n(c.beneficio_neto), n(c.ingresos))), rotacion: red(div(n(c.ingresos), atMed), 2),
@@ -317,6 +324,20 @@ export function calcularEmpresa(datos) {
   const dCap = rentIni && rentUlt !== rentIni ? rentUlt.capital_invertido - rentIni.capital_invertido : null;
   // Solo tiene sentido si el capital invertido ha crecido de verdad (≥ 10 %); si no, el cociente explota.
   const roicIncremental = dCap !== null && dCap > 0.1 * Math.abs(rentIni.capital_invertido) ? red(pct(rentUlt.nopat - rentIni.nopat, dCap)) : null;
+
+  // ── Fondo de comercio y compras (15-oct-2026): comprador en serie, compra única o sin compras, por la serie del fondo de comercio ──
+  const compras = (() => {
+    const serie = balance.filter((b) => b.fondo_comercio !== null);
+    if (serie.length < 2) return null;
+    const subidas = serie.filter((b, i) => i > 0 && serie[i - 1].fondo_comercio > 0 && b.fondo_comercio / serie[i - 1].fondo_comercio > 1.05);
+    const grande = serie.some((b, i) => i > 0 && serie[i - 1].fondo_comercio > 0 && b.fondo_comercio / serie[i - 1].fondo_comercio > 1.25);
+    const tipo = serie.length >= 4 && subidas.length >= 3 ? 'comprador en serie' : subidas.length >= 1 ? (grande ? 'compra única grande' : 'compras pequeñas') : 'sin compras';
+    const u = rentUlt, pesoFc = u.fondo_comercio_pct_capital;
+    const texto = `Fondo de comercio: ${fmt(serie.at(-1).fondo_comercio, 0)} M en ${serie.at(-1).periodo}${pesoFc !== null ? ` (el ${fmt(pesoFc, 0)} % del capital invertido medio)` : ''}; ha subido más de un 5 % en ${subidas.length} de ${serie.length - 1} años: ${tipo}. ` +
+      (u.roic_sin_fc_pct !== null ? `ROIC publicado ${fmt(u.roic_pct, 1)} %; sin fondo de comercio, ${fmt(u.roic_sin_fc_pct, 1)} %. ` : '') +
+      (tipo === 'comprador en serie' ? 'En un comprador en serie el fondo de comercio es el precio de su crecimiento: juzga el publicado.' : tipo === 'sin compras' ? 'Sin compras relevantes: el publicado ya es el ROIC del negocio.' : 'El ROIC sin fondo de comercio mide el rendimiento del negocio operativo; decide el publicado (§4.1) y la cifra sin fondo de comercio es dato para una excepción razonada.');
+    return { tipo, subidas: subidas.length, anios: serie.length - 1, fondo_comercio: serie.at(-1).fondo_comercio, fondo_comercio_pct_capital: pesoFc, roic_pct: u.roic_pct ?? null, roic_sin_fc_pct: u.roic_sin_fc_pct ?? null, texto };
+  })();
 
   // ── Calidad contable: Altman Z, Piotroski F, Beneish M ──
   const scores = calidadContable(cuentaIn, balIn, fluIn, capitalizacion, porNaturaleza, new Set(perimetro.keys()));
@@ -429,6 +450,13 @@ export function calcularEmpresa(datos) {
       const roicU = rentUlt.roic_pct ?? null, nopat0 = rentUlt.nopat ?? null;
       const financiable = !ligero && roicU !== null ? (roicU * tasaR) / 100 : null;
       const roicImpl = !ligero && nopat0 !== null && nopatP.length ? ((nopatP.at(-1) - nopat0) / sumR) * 100 : null;
+      // Con reinversión pequeña (15-oct-2026): la misma prueba con la reinversión BRUTA (capex + circulante, sin restar la
+      // amortización), que en activos ligeros y compradores en serie es lo que de verdad se gasta en crecer (Cintas, Marsh).
+      const reinvB = filasP.map((f) => (n(f.capex) ?? 0) + (n(f.variacion_circulante) ?? 0)), sumRB = reinvB.reduce((a, b) => a + b, 0);
+      const tasaRB = filasP.length && sumN > 0 && sumRB > 0 ? (sumRB / sumN) * 100 : null;
+      const financiableB = ligero && roicU !== null && tasaRB !== null ? (roicU * tasaRB) / 100 : null;
+      const roicImplB = ligero && nopat0 !== null && nopatP.length && sumRB > 0 ? ((nopatP.at(-1) - nopat0) / sumRB) * 100 : null;
+      const tcacHist = n(tcacTabla?.ingresos_pct);
       const filaMerc = filasP.find((f) => f.periodo === sIn.mercado_final?.periodo) ?? filasP.at(-1);
       const ingFin = n(filaMerc?.ingresos), merc = n(sIn.mercado_final?.tamano), cuotaHoy = n(d.competencia?.cuota_pct);
       const cuotaFin = ingFin !== null && merc ? (ingFin / merc) * 100 : null;
@@ -440,6 +468,16 @@ export function calcularEmpresa(datos) {
       const descuadres = puente.filter((p) => p.crecimiento_pct !== null && Math.abs(p.suma_pct - p.crecimiento_pct) > 1);
       if (puente.length) control('Puente de ingresos (volumen + precio + otros) = crecimiento del DCF', !descuadres.length, descuadres.map((p) => `${p.periodo}: ${fmt(p.suma_pct, 1)} % frente a ${fmt(p.crecimiento_pct, 1)} %`).join('; '));
       const tope = Math.max(roicU ?? 0, roicIncremental ?? 0);
+      // Veredicto del motor (15-oct-2026): no sustituye al del analista; si discrepan, control explicado.
+      const cuotaOk = cuotaFin === null || cuotaHoy === null || cuotaFin <= Math.max(cuotaHoy * 1.5, cuotaHoy + 10);
+      // En activos ligeros el rendimiento del capital nuevo sale enorme por construcción (reinversión casi nula): es dato, no prueba.
+      const capitalOk = ligero ? true : (roicImpl === null || roicU === null || roicImpl <= tope * 1.25 || roicImpl <= wacc + 5);
+      const historiaOk = tcacHist === null || crecP === null || crecP <= Math.max(tcacHist * 1.25, tcacHist + 2, 4);
+      const veredictoMotor = filasP.length ? (cuotaOk && capitalOk && historiaOk ? 'Sí' : 'En parte') : null;
+      const motivosMotor = [!capitalOk ? `el capital nuevo tendría que rendir más de 1,25 veces el histórico` : null, !cuotaOk ? `la cuota implícita supera 1,5 veces la actual` : null, !historiaOk ? `el crecimiento proyectado (${fmt(crecP, 1)} %) supera con holgura el histórico de ingresos (${fmt(tcacHist, 1)} %)` : null].filter(Boolean);
+      // Solo avisa cuando el analista dice «Sí» y los números dicen «En parte» (el analista más prudente que el motor no es un fallo).
+      if (veredictoMotor && sIn.veredicto) control('Veredicto de sostenibilidad del analista coherente con las pruebas del motor', !(sIn.veredicto === 'Sí' && veredictoMotor !== 'Sí'),
+        `El analista dice «${sIn.veredicto}» y las pruebas del motor dan «${veredictoMotor}»${motivosMotor.length ? ` (${motivosMotor.join('; ')})` : ''}: razónalo en la justificación.`);
       if (roicImpl !== null && roicU !== null) control('Rendimiento del capital nuevo de la proyección ≤ 1,25 × el histórico', roicImpl <= tope * 1.25 || roicImpl <= wacc + 5,
         `La proyección supone que la inversión nueva rinde un ${fmt(roicImpl, 1)} % frente a un ROIC de ${fmt(roicU, 1)} %${roicIncremental !== null ? ` y un incremental histórico de ${fmt(roicIncremental, 1)} %` : ''}: crecimiento que la empresa no ha demostrado poder comprar.`);
       if (cuotaFin !== null && cuotaHoy !== null) control('Cuota implícita al final de la proyección ≤ 1,5 × la actual (o +10 puntos)', cuotaFin <= Math.max(cuotaHoy * 1.5, cuotaHoy + 10),
@@ -448,7 +486,8 @@ export function calcularEmpresa(datos) {
         ? `La proyección apenas necesita inversión neta de la amortización (reinversión acumulada de ${fmt(sumR, 0)} M${tasaR !== null && sumR > 0 ? `, el ${fmt(tasaR, 0)} % del NOPAT` : ""}, con un capex bruto medio del ${fmt(capexBruto, 1)} % de las ventas). En un negocio de activos ligeros, el crecimiento medio del ${fmt(crecP, 1)} % tiene que salir de subir precios y de ganar volumen sin capital nuevo, y la prueba es el poder de precios y la cuota${cuotaFin !== null ? ` (${fmt(cuotaFin, 1)} % del mercado en ${filaMerc?.periodo ?? 'el último año'}${cuotaHoy !== null ? `, frente al ${fmt(cuotaHoy, 1)} % de hoy` : ''})` : ''}; en un comprador en serie, la amortización es de intangibles comprados y la prueba es el capex bruto (las compras) frente al crecimiento comprado.`
         : `La proyección reinvierte el ${fmt(tasaR, 0)} % del NOPAT. Con el ROIC del último ejercicio (${fmt(roicU, 1)} %), eso financia un crecimiento del ${fmt(financiable, 1)} % anual, frente al ${fmt(crecP, 1)} % de ingresos proyectado. Supone que el capital nuevo rinde un ${fmt(roicImpl, 1)} %${roicIncremental !== null ? `, frente a un ROIC incremental histórico del ${fmt(roicIncremental, 1)} %` : ''}${cuotaFin !== null ? `; la cuota de mercado pasaría al ${fmt(cuotaFin, 1)} %${cuotaHoy !== null ? ` desde el ${fmt(cuotaHoy, 1)} %` : ''}` : ''}.`;
       dcf.sostenibilidad = filasP.length ? {
-        veredicto: sIn.veredicto ?? null,
+        veredicto: sIn.veredicto ?? null, veredicto_motor: veredictoMotor, motivos_motor: motivosMotor,
+        crecimiento_financiable_bruto_pct: red(financiableB), roic_implicito_bruto_pct: red(roicImplB), tcac_ingresos_historica_pct: tcacHist,
         crecimiento_proyectado_pct: red(crecP), tasa_reinversion_pct: red(tasaR, 0), crecimiento_financiable_pct: red(financiable),
         roic_pct: roicU, roic_incremental_historico_pct: roicIncremental, roic_implicito_pct: red(roicImpl),
         cuota_actual_pct: cuotaHoy, cuota_final_pct: red(cuotaFin), puente, texto,
@@ -457,6 +496,10 @@ export function calcularEmpresa(datos) {
           { concepto: 'Capex bruto medio (incluidas compras si van como inversión)', valor: `${fmt(capexBruto, 1)} % de las ventas` },
           { concepto: 'Reinversión neta acumulada (capex − amortización + circulante)', valor: `${fmt(sumR, 0)} M${tasaR !== null ? ` (${fmt(tasaR, 0)} % del NOPAT)` : ''}` },
           ...(financiable !== null ? [{ concepto: 'Crecimiento que financia esa reinversión al ROIC actual', valor: `${fmt(financiable, 1)} % (ROIC ${fmt(roicU, 1)} %)` }] : []),
+          ...(financiableB !== null ? [{ concepto: 'Con la reinversión bruta (capex + circulante): crecimiento que financia al ROIC actual', valor: `${fmt(financiableB, 1)} % (reinvierte el ${fmt(tasaRB, 0)} % del NOPAT)` }] : []),
+          ...(roicImplB !== null ? [{ concepto: 'Rendimiento que la proyección supone para la reinversión bruta', valor: `${fmt(roicImplB, 1) } %${roicIncremental !== null ? ` (histórico: ${fmt(roicIncremental, 1)} %)` : ''}` }] : []),
+          ...(tcacHist !== null ? [{ concepto: 'Crecimiento histórico de ingresos (TCAC)', valor: `${fmt(tcacHist, 1)} % frente al ${fmt(crecP, 1)} % proyectado` }] : []),
+          ...(veredictoMotor ? [{ concepto: 'Veredicto de las pruebas del motor', valor: `${veredictoMotor}${motivosMotor.length ? `: ${motivosMotor.join('; ')}` : ''}` }] : []),
           ...(roicImpl !== null ? [{ concepto: 'Rendimiento que la proyección supone para el capital nuevo', valor: `${fmt(roicImpl, 1)} %${roicIncremental !== null ? ` (histórico: ${fmt(roicIncremental, 1)} %)` : ''}` }] : []),
           ...(cuotaFin !== null ? [{ concepto: `Cuota de mercado implícita en ${filaMerc?.periodo ?? 'el último año'}`, valor: `${fmt(cuotaFin, 1)} %${cuotaHoy !== null ? ` (hoy: ${fmt(cuotaHoy, 1)} %)` : ''}` }] : []),
         ],
@@ -957,7 +1000,8 @@ export function calcularEmpresa(datos) {
     cuenta_y_prevision: [...cuenta.map((c) => ({ periodo: c.periodo, ingresos: c.ingresos, ebitda: c.ebitda })), ...proy.map((p) => ({ periodo: p.periodo, ingresos: p.ingresos, ebitda: p.ebitda }))],
     segmentos_ultimo: segmentosUltimo, segmentos_tabla: segmentosTabla, segmentos_periodo: ultPerSeg ?? null,
     balance, perimetro_nota: notaPerimetro, flujos, flujos_acumulado: acumulado, rentabilidad, roic_incremental_pct: roicIncremental,
-    roic_frente_wacc: rentabilidad.map((r) => ({ periodo: r.periodo, roic_pct: r.roic_pct, roe_pct: r.roe_pct, wacc_pct: red(wacc, 1) })),
+    roic_frente_wacc: rentabilidad.map((r) => ({ periodo: r.periodo, roic_pct: r.roic_pct, roic_sin_fc_pct: r.roic_sin_fc_pct ?? null, roe_pct: r.roe_pct, wacc_pct: red(wacc, 1) })),
+    compras,
     calidad: scores, dcf, escenarios, valor_ponderado: valorPonderado, potencial_ponderado_pct: red(pct(valorPonderado - precio, precio)),
     comparables: { tabla: [empresaFila, ...pares], estadisticos: estad, implicito, regresion, n: pares.length },
     transacciones, suma_partes: sumaPartes, multiplos_historicos: multHist, multiplos_serie: serieMultGraf, multiplos_titulo: tituloMultHist,
