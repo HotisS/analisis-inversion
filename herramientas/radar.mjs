@@ -15,12 +15,22 @@ const leer = (p, d) => (existsSync(p) ? JSON.parse(readFileSync(p, 'utf8')) : d)
 const hoy = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Madrid' }).format(new Date());
 const fmt = (n) => n.toLocaleString('es-ES', { maximumFractionDigits: 2 });
 
-const { valores } = leer(LISTA, { valores: [] });
+const { valores, excluir = [] } = leer(LISTA, { valores: [] });
+// Los informes con radar: true en verticales/empresa/tres-anios.json (hilo Mejoras; se recalcula con
+// `node herramientas/tres-anios.mjs --escribir`) mandan en el umbral: comprar_por_debajo, en la divisa del broker.
+const TRES = leer(`${RAIZ}verticales/empresa/tres-anios.json`, { empresas: [] }).empresas.filter((e) => e.radar && !excluir.includes(e.clave));
+for (const t of TRES) {
+  const v = valores.find((x) => x.clave === t.clave);
+  if (!v) { valores.push({ clave: t.clave, nombre: t.empresa, simbolo: null, tipo: 'precio', umbral: t.comprar_por_debajo, divisa: t.divisa, resultados: t.proximos_resultados }); continue; }
+  if (t.comprar_por_debajo) v.umbral = t.comprar_por_debajo;
+  if (t.proximos_resultados && !v.resultados) v.resultados = t.proximos_resultados;
+}
 const estado = leer(ESTADO, { nota: 'Avisos del radar ya dados (herramientas/radar.mjs). Lo escribe la herramienta.', avisados: {} });
 const avisos = [];
 for (const v of valores) {
   const e = (estado.avisados[v.clave] ??= {});
-  if (v.tipo === 'precio' && v.umbral) {
+  if (v.tipo === 'precio' && v.umbral && !v.simbolo) console.error(`radar: falta el símbolo de ${v.nombre} en escaner/radar.json`);
+  else if (v.tipo === 'precio' && v.umbral) {
     const p = await ultimoCierre(v.simbolo);
     const precio = p.en_curso?.precio ?? p.precio;
     if (p.error) console.error(`radar: sin precio de ${v.nombre} (${p.error})`);
