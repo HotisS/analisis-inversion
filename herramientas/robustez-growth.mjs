@@ -9,6 +9,7 @@
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { calcular, VERSIONES, VIGENTE } from '../motor/growth.mjs';
 import { ultimoCierre, simboloDe } from './precios.mjs';
+import { movimiento } from './movimiento.mjs';
 
 const args = process.argv.slice(2);
 const bandera = (k) => { const i = args.indexOf(k); if (i >= 0) args.splice(i, 1); return i >= 0; };
@@ -82,25 +83,43 @@ for (const c of carpetas) {
   // G4 sin guía: la mejora v9 no se aplica.
   if (cr.guia_12m_pct == null) marca('G4', 'AVISO', 'Sin guía de la empresa: v9 = v7 (no se recorta el crecimiento de partida).');
   // G5 euforia y subida.
-  if ((d.tendencia?.subida_12m_pct ?? 0) >= 100) marca('G5', 'CONFIANZA', `Sube un ${f(d.tendencia.subida_12m_pct, 0)} % en 12 meses: parte del crecimiento ya está en el precio. Comprar en dos tramos.`);
+  if ((d.tendencia?.subida_12m_pct ?? 0) >= 100) marca('G5', 'CONFIANZA', `Sube un ${f(d.tendencia.subida_12m_pct, 0)} % en 12 meses: parte del crecimiento ya está en el precio. peso pequeño (regla 11: sin tramos).`);
   // G6 bajista profundo.
-  if (vig.casos.bajista.rent_pct < -40) marca('G6', 'AVISO', `Bajista del ${f(vig.casos.bajista.rent_pct, 0)} %: posición pequeña (peso de la regla) y en tramos.`);
+  if (vig.casos.bajista.rent_pct < -40) marca('G6', 'AVISO', `Bajista del ${f(vig.casos.bajista.rent_pct, 0)} %: posición pequeña (peso de la regla), entera de una vez.`);
   // G7 margen bruto del 100 % (banco, aseguradora): el filtro EV/beneficio bruto no mide nada.
   if ((d.economia?.margen_bruto_pct ?? 0) >= 99) marca('G7', 'AVISO', 'Margen bruto del 100 % (financiera): el filtro de EV/beneficio bruto no aplica; el control de valoración es el P/beneficio.');
   // G8 lo que descuenta el precio frente a lo que proyectamos.
   if (v.dcf_inverso_crecimiento_10a_pct != null && v.crecimiento_obj_pct != null && v.dcf_inverso_crecimiento_10a_pct > v.crecimiento_obj_pct) marca('G8', 'CONFIANZA', `El precio ya descuenta crecer un ${f(v.dcf_inverso_crecimiento_10a_pct, 0)} % anual 10 años, más que nuestro crecimiento al final del periodo (${f(v.crecimiento_obj_pct, 0)} %).`);
   // G9 convicción baja.
-  if (vig.senal === 'Comprar' && vig.conviccion === 'baja') marca('G9', 'AVISO', 'Comprar con convicción baja: peso 3,5 % y en tramos.');
+  if (vig.senal === 'Comprar' && vig.conviccion === 'baja') marca('G9', 'AVISO', 'Comprar con convicción baja: peso 3,5 %, entero de una vez (regla 11).');
+
+  // G10 precio y noticias antes de decidir (regla 13): el bloque contexto_mercado del informe trae un veredicto.
+  const ctx = d.contexto_mercado || null; let espera = null, ctxVer = null;
+  if (ctx?.veredicto) {
+    ctxVer = String(ctx.veredicto).toLowerCase();
+    if (/retrasa/.test(ctxVer)) marca('G10', 'AVISO', `Precio y noticias: el informe retrasa la compra${ctx.condicion ? ` hasta: ${ctx.condicion}` : ''}.`);
+    else if (/descarta/.test(ctxVer)) marca('G10', 'AVISO', `Precio y noticias: el informe descarta la compra${ctx.comentario ? ` (${ctx.comentario})` : ''}.`);
+  } else if (vig.senal === 'Comprar') marca('G10', 'AVISO', 'Sin bloque de precio y noticias (`contexto_mercado`, regla 13): rellenarlo antes de proponer la orden.');
+  // G11 movimiento del precio (herramientas/movimiento.mjs): avisos P1-P5, no cambian la señal, obligan a explicar la causa.
+  let movP = null;
+  if (conPrecios && simbolo) {
+    try { movP = await movimiento(simbolo); } catch { movP = null; }
+    if (movP && !movP.error) for (const a of movP.avisos || []) marca(a.codigo, 'AVISO', `${a.texto} (${movP.fecha}; explicar la causa en contexto_mercado)`);
+  }
 
   const defendibles = variantes.filter((x) => !/^precio de hoy/.test(x.variante) && !/35\/50\/15/.test(x.variante));
   const senales = [...new Set(defendibles.map((x) => x.senal))];
   const bloq = marcas.some((m) => m.tratamiento === 'CORREGIR');
   const peor = ['Vender', 'Mantener', 'Comprar'].find((s) => senales.includes(s));
   let robusta = bloq ? 'Sin señal (corregir dato)' : peor;
-  if (!bloq && robusta === 'Comprar' && marcas.some((m) => m.tratamiento === 'CONFIANZA' && m.codigo !== 'G5')) robusta = 'Comprar con cautela (tramos)';
+  if (!bloq && robusta === 'Comprar' && marcas.some((m) => m.tratamiento === 'CONFIANZA' && m.codigo !== 'G5')) robusta = 'Comprar con cautela (peso pequeño)';
+  if (!bloq && /^Comprar/.test(robusta) && ctxVer && /retrasa/.test(ctxVer)) { robusta = 'Esperar'; espera = ctx.condicion || 'ver contexto_mercado'; }
+  else if (!bloq && /^Comprar/.test(robusta) && ctxVer && /descarta/.test(ctxVer)) robusta = 'Mantener';
   res.push({ carpeta: c, empresa: d.empresa, ticker: d.ticker, precio_informe: d.precio, precio_hoy: precioHoy, fecha_hoy: fechaHoy,
     senal: vig.senal, ponderada: vig.rent_ponderada_pct, base: vig.rent_base_pct, conviccion: vig.conviccion, precio_max_compra: vig.precio_max_compra,
-    veredicto: bloq ? 'BLOQUEADA' : senales.length === 1 ? 'SÓLIDA' : 'FRÁGIL', senal_robusta: robusta,
+    veredicto: bloq ? 'BLOQUEADA' : senales.length === 1 ? 'SÓLIDA' : 'FRÁGIL', senal_robusta: robusta, espera,
+    contexto_mercado: ctx ? { veredicto: ctx.veredicto ?? null, condicion: ctx.condicion ?? null, proximos_resultados: ctx.proximos_resultados ?? null } : null,
+    movimiento: movP && !movP.error ? { fecha: movP.fecha, var_1m_pct: movP.var_1m_pct, var_3m_pct: movP.var_3m_pct, var_12m_pct: movP.var_12m_pct, dist_max_52s_pct: movP.dist_max_52s_pct, dist_min_52s_pct: movP.dist_min_52s_pct, tendencia: movP.tendencia } : null,
     // Para el escáner diario: objetivo fijo del informe y rentabilidad al precio de hoy.
     simbolo, divisa: divisaHoy || d.moneda, objetivo_12m: vig.objetivo_12m, objetivo_base: vig.casos.base.precio, puntuacion: vig.puntuacion,
     ponderada_hoy: precioHoy ? r((vig.objetivo_12m / precioHoy - 1) * 100 + (v.dividendo_pct ?? 0)) : null,
@@ -111,7 +130,7 @@ for (const c of carpetas) {
 if (comoJson) console.log(JSON.stringify(res, null, 1));
 else for (const x of res) {
   console.log(`\n${x.empresa} (${x.carpeta}) · ${VIGENTE} ${f(x.ponderada)} % / base ${f(x.base)} % → ${x.senal}${x.conviccion ? ` (${x.conviccion})` : ''} · precio informe ${f(x.precio_informe, 2)}${x.precio_hoy ? `, hoy ${f(x.precio_hoy, 2)} (${x.fecha_hoy})` : ''} · máx. compra ${f(x.precio_max_compra, 2)}`);
-  console.log(`  Veredicto: ${x.veredicto}. Señal robusta: ${x.senal_robusta}.${x.frente.length ? ` Cambia con: ${x.frente.join('; ')}.` : ''}`);
+  console.log(`  Veredicto: ${x.veredicto}. Señal robusta: ${x.senal_robusta}.${x.espera ? ` Esperar hasta: ${x.espera}.` : ''}${x.frente.length ? ` Cambia con: ${x.frente.join('; ')}.` : ''}`);
   for (const m of x.marcas) console.log(`  [${m.codigo} ${m.tratamiento}] ${m.texto}`);
   console.log(`  Variantes: ${x.variantes.map((t) => `${t.variante} ${f(t.ponderada)}/${f(t.base)} ${t.senal}`).join(' · ')}`);
 }

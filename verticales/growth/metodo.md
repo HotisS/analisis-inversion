@@ -91,4 +91,6 @@ Cada mejora que salga de los informes se apunta aquí, con fecha y motivo, y se 
 
 ## 8. Cada análisis
 
+Antes de la señal, **precio y noticias con veredicto** (`contexto_mercado`, regla 13 de `METODO-VIGENTE.md` §4, 15-oct-2026): `herramientas/movimiento.mjs --growth <carpeta>` y las noticias de 6 meses, cada una con «no cambia», «retrasa (hasta qué)» o «descarta»; `robustez-growth.mjs` baja el Comprar a «Esperar» con `retrasa` y lo quita con `descarta`.
+
 Plantilla y campos: [plantilla.md](plantilla.md). Queda en `informes-growth/<empresa>-<AAAA-MM-DD>/` (`informe.md`, `datos.json`, Word y PDF) y en `informes-growth/resumen.md`. Cola: `cola-growth.md`, de 4 en 4. Antes de proponer una empresa se comprueba la lista de informes value y growth.

@@ -439,6 +439,7 @@ El motor calcula ROIC, ROE, ROA, la descomposición DuPont y el ROIC incremental
 - `anual`: rentabilidad total por año natural, 5-10 años, de la acción y del índice.
 - `beta` (5 años, mensual), `volatilidad_pct` (1 año, diaria anualizada), `max_drawdown_pct` (5 años, negativo), `posicion_corta_pct` (registro oficial).
 - `comentario` (80-140 palabras): qué explica el comportamiento relativo, con los hechos concretos.
+- **`contexto` (obligatorio desde el 15-oct-2026, regla 13 de `METODO-VIGENTE.md` §4): precio y noticias con veredicto.** Las cifras de `movimiento` las da `NODE_USE_ENV_PROXY=1 node herramientas/movimiento.mjs <símbolo>` (variación a 1, 3, 6 y 12 meses, distancia al máximo y mínimo de 52 semanas y al máximo de 5 años, tendencia por medias de 50 y 200 sesiones, volatilidad de 60 sesiones, mayor subida y mayor caída de un mes en 6 meses); copia sus avisos P1-P5. En `movimientos_fuertes` explica **cada** subida o caída fuerte (≥ 15 % en un mes, o los días de −5 %) con su causa y fuente. En `noticias`, los últimos 6 meses: cambios de recomendación, compras y ventas de directivos, colocaciones o ventas de accionistas de referencia (y las anunciadas o posibles: *overhang*), ampliaciones y convertibles, demandas y reguladores, fusiones y ofertas, fecha de los próximos resultados y rumores con fundamento (fuente). **Cada punto lleva su veredicto**: `no cambia`, `retrasa` (y en `condicion`, hasta qué hecho o precio) o `descarta`. El `veredicto` global es el más restrictivo de los puntos; `retrasa` también cuando hay un hecho pendiente que puede mover el precio más de un 5 % (una colocación anunciada o probable) o cuando la tendencia es bajista y los resultados están a 15 días o menos (entonces, hasta los resultados). Sin noticias relevantes, `noticias: []` y se dice en `comentario` dónde se buscó.
 
 ```json
 "bolsa": {
@@ -447,6 +448,15 @@ El motor calcula ROIC, ROE, ROA, la descomposición DuPont y el ROIC incremental
   "anual": [{ "anio": "2021", "accion_pct": 0.0, "indice_pct": 0.0 }],
   "beta": 0.00, "volatilidad_pct": 0.0, "max_drawdown_pct": 0.0, "posicion_corta_pct": 0.0,
   "comentario": "texto",
+  "contexto": {
+    "movimiento": { "fecha": "AAAA-MM-DD", "var_1m_pct": 0.0, "var_3m_pct": 0.0, "var_6m_pct": 0.0, "var_12m_pct": 0.0, "dist_max_52s_pct": 0.0, "dist_min_52s_pct": 0.0, "dist_max_historico_pct": 0.0, "tendencia": "alcista|lateral|bajista", "volatilidad_60d_pct": 0.0, "avisos": ["P4 En mínimos de 52 semanas"] },
+    "movimientos_fuertes": [{ "periodo": "jul-2026", "var_pct": 0.0, "causa": "texto [n]", "veredicto": "no cambia|retrasa|descarta", "condicion": null }],
+    "noticias": [{ "fecha": "AAAA-MM-DD", "tipo": "recomendación|directivos|accionista de referencia|ampliación o convertible|demanda o regulador|fusión u oferta|resultados|rumor", "hecho": "texto [n]", "veredicto": "no cambia|retrasa|descarta", "condicion": "texto o null" }],
+    "proximos_resultados": "AAAA-MM-DD",
+    "veredicto": "no cambia|retrasa|descarta",
+    "condicion": "hasta qué hecho o precio, o null",
+    "comentario": "texto (60-120 palabras): qué explica el movimiento, qué hecho pendiente hay y por qué el veredicto"
+  },
   "confianza": "Alta|Media|Baja"
 }
 ```

@@ -49,6 +49,13 @@ Se sigue entera en cada empresa. Método y reglas: [metodo.md](metodo.md). Todo 
     "dcf_inverso_crecimiento_10a_pct": null
   },
   "tesis_rota": false,
+  "contexto_mercado": {
+    "movimiento": { "fecha": "AAAA-MM-DD", "var_1m_pct": 0, "var_3m_pct": 0, "var_6m_pct": 0, "var_12m_pct": 0, "dist_max_52s_pct": 0, "dist_min_52s_pct": 0, "dist_max_historico_pct": 0, "tendencia": "alcista|lateral|bajista", "volatilidad_60d_pct": 0, "avisos": [] },
+    "movimientos_fuertes": [{ "periodo": "mes-año", "var_pct": 0, "causa": "texto [n]", "veredicto": "no cambia|retrasa|descarta", "condicion": null }],
+    "noticias": [{ "fecha": "AAAA-MM-DD", "tipo": "recomendación|directivos|accionista de referencia|ampliación o convertible|demanda o regulador|fusión u oferta|resultados|rumor", "hecho": "texto [n]", "veredicto": "no cambia|retrasa|descarta", "condicion": null }],
+    "proximos_resultados": "AAAA-MM-DD",
+    "veredicto": "no cambia|retrasa|descarta", "condicion": null, "comentario": ""
+  },
   "fuentes": ["[1] …"]
 }
 ```
@@ -71,6 +78,7 @@ Notas de los campos:
 - `crecimiento_actual_pct` / `crecimiento_obj_pct`: crecimiento de ventas de los próximos 12 meses y del ejercicio objetivo (escenario base), para la rebaja por desaceleración.
 - `probabilidades`: 25/50/25 salvo los casos de `metodo.md` §2.5.
 - `tesis_rota`: true solo con los supuestos de venta de `metodo.md` §3.
+- **`contexto_mercado` (obligatorio desde el 15-oct-2026; regla 13 de `METODO-VIGENTE.md` §4, igual que `bolsa.contexto` en value)**: las cifras de `movimiento` salen de `NODE_USE_ENV_PROXY=1 node herramientas/movimiento.mjs --growth <carpeta>` (copia sus avisos P1-P5); cada subida o caída fuerte (≥ 15 % en un mes) con su causa; las noticias de los últimos 6 meses (recomendaciones, directivos, colocaciones o ventas de accionistas de referencia, ampliaciones y convertibles, demandas y reguladores, fusiones u ofertas, fecha de resultados, rumores con fundamento) **cada una con veredicto** `no cambia`, `retrasa` (con `condicion`: hasta qué hecho o precio) o `descarta`. Veredicto global = el más restrictivo; `retrasa` también con un hecho pendiente que pueda mover el precio más de un 5 % (colocación) o con tendencia bajista y resultados a ≤ 15 días. `robustez-growth.mjs` lo lee: con `retrasa` o `descarta` no hay Comprar robusto.
 
 Después: `node motor/growth.mjs informes-growth/<carpeta>/datos.json` escribe `calc` (puntuación, casos, señal, precio máximo) y el informe copia esas cifras.
 
@@ -93,6 +101,7 @@ Peso orientativo: <x %> o «no entra»
 ## 8. Dirección y ejecución
 ## 9. Valoración                    (tabla de escenarios: ventas, múltiplo, precio, rentabilidad; contraste con el consenso; DCF inverso)
 ## 10. Foros y sentimiento          (qué se dice y dónde, si cambia, contraste con los datos)
+## 10 bis. Precio y noticias antes de decidir (tabla de `contexto_mercado`: movimiento, hechos y noticias con su veredicto; veredicto global y condición)
 ## 11. Riesgos y qué rompería la tesis (señales de venta concretas)
 ## 12. Catalizadores con fecha
 ## 13. Encaje en cartera            (frente a la cartera value vigente y a otras growth; peso y tramos)

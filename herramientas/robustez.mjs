@@ -21,7 +21,8 @@
 //   AVISO      no cambia la señal; se dice en la defensa.
 // Veredicto de la señal: SÓLIDA (todas las variantes razonables dan la misma acción), FRÁGIL (alguna la cambia; se dice
 // cuál) o BLOQUEADA (hay un CORREGIR).
-import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
+import { RUTA_MOVIMIENTO } from './movimiento.mjs';
+import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { ultimoDatos } from './objetivo12m.mjs';
 import { calcularObjetivo12m, multiplosRegla, senal12m, REGLA_12M } from '../motor/objetivo12m.mjs';
 import { leerPrecios, factorDivisa } from './precios.mjs';
@@ -39,6 +40,7 @@ const dias = (a, b) => Math.round((new Date(b) - new Date(a)) / 864e5);
 
 const REV = JSON.parse(readFileSync(new URL('../verticales/empresa/objetivo12m-revisados.json', import.meta.url), 'utf8')).revisados;
 const PRECIOS = leerPrecios()?.precios || {};
+const MOVIMIENTO = existsSync(RUTA_MOVIMIENTO) ? JSON.parse(readFileSync(RUTA_MOVIMIENTO, 'utf8')) : null; // herramientas/movimiento.mjs --todas --escribir
 // Umbrales de MEMORIA.md: comprar (motor) y seguir en cartera (ponderada ≥ 10 %, base ≥ 5 %, VI no más de un 15 % bajo el precio).
 const U = { comprar: REGLA_12M.comprar, comprarBase: REGLA_12M.comprarBase, mantener: 10, mantenerBase: 5, viMantener: 0.85 };
 // Tipos de cambio aproximados para reconocer un precio en otra divisa (prueba D2).
@@ -60,7 +62,8 @@ function contexto(d) {
   const rw = (d.calc?.roic_frente_wacc || []).filter((x) => num(x.roic_pct) !== null && num(x.wacc_pct) !== null && !/e$/i.test(String(x.periodo))).at(-1);
   return { o, precioInforme, dpa: (div / 100) * precioInforme, div, prob: prob.every((x) => x !== null) ? prob : null,
     vi: num(d.calc?.sintesis?.valor_objetivo), confianza: d.resumen?.confianza ?? null,
-    sost: d.calc?.dcf?.sostenibilidad?.veredicto ?? d.dcf?.sostenibilidad?.veredicto ?? null, roicWacc: rw ? rw.roic_pct - rw.wacc_pct : null };
+    sost: d.calc?.dcf?.sostenibilidad?.veredicto ?? d.dcf?.sostenibilidad?.veredicto ?? null, roicWacc: rw ? rw.roic_pct - rw.wacc_pct : null,
+    contextoMercado: d.bolsa?.contexto ?? d.contexto_mercado ?? null };
 }
 function evaluar(cx, { precio, historia = 'vigente', topeBase = null, prob = null, escalaBpa = 1, sinDobleCastigo = false, sinConfianza = false, sinSelector = false, moverPer = false } = {}) {
   // Objetivo FIJO (regla vigente desde cd21cd3): el objetivo se calcula al precio del informe y la rentabilidad, al precio pedido.
@@ -250,6 +253,19 @@ function probar(carpeta) {
     robusta = 'Mantener en cartera';
     marca('Q1', 'AVISO', `No cumple el requisito de calidad para comprar (§4.1): sostenibilidad ${cx.sost ?? 'n.d.'}${roicOk ? '' : `, ROIC − WACC ${f(cx.roicWacc, 1)} puntos (< 5)`}. La acción robusta baja a Mantener: no se compra ni se amplía.`);
   }
+  // Regla 13 de §4 (15-oct-2026): precio y noticias con veredicto. C1 = el informe dice «retrasa» (la compra espera a la condición);
+  // C2 = «descarta»; C3 = el informe no trae el bloque `bolsa.contexto` (análisis anteriores al 15-oct: comprobarlo a mano antes de
+  // una orden). P1-P5 = avisos de movimiento del precio de `movimiento.json` (no cambian la señal: el backtest del 15-oct no encontró
+  // regla numérica que mejore; piden explicación).
+  const ctx = cx.contextoMercado;
+  let espera = null;
+  if (ctx?.veredicto) {
+    const ver = String(ctx.veredicto).toLowerCase();
+    if (/retrasa/.test(ver)) { marca('C1', 'AVISO', `Precio y noticias: el informe retrasa la compra${ctx.condicion ? ` hasta: ${ctx.condicion}` : ''}.`); if (robusta === 'Comprar') { robusta = 'Esperar'; espera = ctx.condicion || 'ver bolsa.contexto'; } }
+    else if (/descarta/.test(ver)) { marca('C2', 'AVISO', `Precio y noticias: el informe descarta la compra (${ctx.comentario ? String(ctx.comentario).slice(0, 160) : 'ver bolsa.contexto'}).`); if (robusta === 'Comprar') robusta = 'Mantener en cartera'; }
+  } else if (robusta === 'Comprar') marca('C3', 'AVISO', 'Sin bloque de precio y noticias (`bolsa.contexto`, regla 13): antes de una orden, `movimiento.mjs` y repaso de noticias con veredicto.');
+  const movP = MOVIMIENTO?.movimientos?.[clave] || Object.values(MOVIMIENTO?.movimientos || {}).find((m) => m.carpeta === carpeta) || null;
+  if (movP && !movP.error) for (const a of movP.avisos || []) marca(a.codigo, 'AVISO', `${a.texto} (${movP.fecha}; explicar la causa en bolsa.contexto)`);
   const colchon = v0 && !v0.error ? { comprar: r(v0.ponderada - U.comprar), mantener: r(v0.ponderada - U.mantener) } : null;
   // Límites con el OBJETIVO FIJO (regla del 14-oct tras el caso Nu): si el precio sube, el objetivo no sube con él.
   const limFijo = (c) => (c?.completo ? {
@@ -268,7 +284,9 @@ function probar(carpeta) {
     carpeta, clave, nombre: id.nombre_corto || id.nombre, ...(BPA_FACTOR !== 1 ? { bpa_factor: BPA_FACTOR } : {}), divisa: meta.divisa, precio: r(precio, 2), fecha_precio: fechaPrecio,
     version: vig?.version, ponderada: vig?.rentabilidad_ponderada_pct ?? null, base: vig?.rentabilidad_base_pct ?? null, senal: vig?.senal ?? null,
     v2: cv2?.completo ? cv2.rentabilidad_ponderada_pct : null, cagr_bpa: r(cagr), dif_consenso: r(difCons),
-    veredicto, accion_vigente: v0 && !v0.error ? accion(v0) : null, accion_robusta: bloq ? 'Sin señal (corregir dato)' : robusta, frente, colchon,
+    veredicto, accion_vigente: v0 && !v0.error ? accion(v0) : null, accion_robusta: bloq ? 'Sin señal (corregir dato)' : robusta, espera, frente, colchon,
+    contexto_mercado: ctx ? { veredicto: ctx.veredicto ?? null, condicion: ctx.condicion ?? null, proximos_resultados: ctx.proximos_resultados ?? null } : null,
+    movimiento: movP && !movP.error ? { fecha: movP.fecha, var_1m_pct: movP.var_1m_pct, var_3m_pct: movP.var_3m_pct, var_12m_pct: movP.var_12m_pct, dist_max_52s_pct: movP.dist_max_52s_pct, dist_min_52s_pct: movP.dist_min_52s_pct, tendencia: movP.tendencia } : null,
     // Límites en la divisa de COTIZACIÓN (la del broker): el informe puede llevar las cuentas en otra (Constellation USD/CAD,
     // Experian USD/GBp). Un límite en la divisa de las cuentas puesto en el broker es el fallo de Constellation.
     divisa_cotizacion: divCot, limite_comprar_cot: lim ? r(lim.comprar / tc, 2) : null, limite_mantener_cot: lim ? r(lim.mantener / tc, 2) : null,

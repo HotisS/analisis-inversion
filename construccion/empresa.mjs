@@ -272,6 +272,19 @@ export default {
         ['Máxima caída (5 años)', '{{bolsa.max_drawdown_pct|pct}}'], ['Posiciones cortas', '{{bolsa.posicion_corta_pct|pct}}'],
       ]],
       ['texto', 'bolsa.comentario'],
+      sub('Precio y noticias antes de decidir (regla 13)', 'bolsa.contexto', [
+        ['kv', [
+          ['Variación 1 / 3 / 6 / 12 meses', '{{bolsa.contexto.movimiento.var_1m_pct|+pct}} / {{bolsa.contexto.movimiento.var_3m_pct|+pct}} / {{bolsa.contexto.movimiento.var_6m_pct|+pct}} / {{bolsa.contexto.movimiento.var_12m_pct|+pct}}'],
+          ['Frente al máximo y al mínimo de 52 semanas', '{{bolsa.contexto.movimiento.dist_max_52s_pct|+pct}} / {{bolsa.contexto.movimiento.dist_min_52s_pct|+pct}}'],
+          ['Frente al máximo de 5 años', '{{bolsa.contexto.movimiento.dist_max_historico_pct|+pct}}'],
+          ['Tendencia (medias de 50 y 200 sesiones)', '{{bolsa.contexto.movimiento.tendencia}}'], ['Volatilidad (60 sesiones)', '{{bolsa.contexto.movimiento.volatilidad_60d_pct|pct}}'],
+          ['Próximos resultados', '{{bolsa.contexto.proximos_resultados}}'],
+          ['Veredicto', '{{bolsa.contexto.veredicto}}'], ['Condición', '{{bolsa.contexto.condicion}}'],
+        ]],
+        ['tabla', 'bolsa.contexto.movimientos_fuertes', [['Periodo', 'periodo', '', 1], ['Variación', 'var_pct', '+pct', 0.9, 'd'], ['Causa', 'causa', '', 3.4], ['Veredicto', 'veredicto', '', 1], ['Condición', 'condicion', '', 1.6]]],
+        ['tabla', 'bolsa.contexto.noticias', [['Fecha', 'fecha', '', 0.9], ['Tipo', 'tipo', '', 1.3], ['Hecho', 'hecho', '', 3.2], ['Veredicto', 'veredicto', '', 1], ['Condición', 'condicion', '', 1.5]]],
+        ['texto', 'bolsa.contexto.comentario'],
+      ]),
     ]],
 
     ['seccion', '17. Múltiplos frente a su historia', 'multiplos_historicos', 'Complemento', [
