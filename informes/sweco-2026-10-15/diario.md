@@ -1,0 +1,60 @@
+# Diario · Sweco AB (SWEC B) · 15-oct-2026
+
+- Commit de partida: d101b73. Sin pull ni commits propios (los hace el coordinador). Origen de la idea: escáner «calidad a precio» y cartas de gestores nórdicos.
+- Entorno: nube de Claude Code con red. Sin subagentes. Las notas A-E las escribe `notas/construir-notas.mjs`; la parte propia está en `propio.mjs`, `supuestos.mjs` y `textos.mjs`.
+- **Documentos** (`notas/docs`):
+  - informes del 2T26, 1T26, 4T25, 3T25 y 3T24, y la presentación del 2T26;
+  - informes anuales de 2025 (inglés) y 2021;
+  - dimisión de la primera ejecutiva (2-oct-2026), junta de 2026 y número de acciones;
+  - barómetros EFCA de 2022 y 2024, y la nota de prensa del Sector Review 2022;
+  - bono sueco a 10 años y cambios del BCE.
+- **Cuentas, cotización y consenso**:
+  - Cuentas ESEF con `cuentas.mjs --esef "Sweco"` de 2020 a 2024; 2025 no estaba en ESEF y se tomó del informe anual.
+  - `bolsa.mjs` con SWEC-B.ST, ^OMXSPI y EXH4.DE: EXOH.DE daba 404.
+  - Comparables con `notas/tmp/comps.mjs` (Yahoo vía `herramientas/yahoo.mjs`), porque Stock Analysis está bloqueado por Cloudflare.
+  - Consenso de MarketScreener.
+- Ficha sectorial nueva: `sectores/ingenieria-consultoria-2026-10-15.md` y su JSON de comparables, con 11 empresas de EE. UU., Canadá y Europa en SEK. La reutiliza Tetra Tech.
+- **Corte y precio**: fecha de corte 2026-10-15; SEK; ejercicio natural; cuenta por naturaleza. Precio: cierre del 14-oct, 132,20 SEK = 11,85 EUR al cambio del BCE de 11,158. Una acción es el 0,04 % de una cartera de 30.000 EUR, así que no hay aviso del 7 %.
+- **Decisiones de datos**:
+  - EBITDA con NIIF 16 (EBIT + toda la amortización), con los arrendamientos en la deuda. El EBITA que publica Sweco es sin NIIF 16.
+  - Coste de ventas = ventas − personal − EBITDA.
+  - No recurrentes: 290 M en 2020 y 56 M en 2021.
+  - Segmento UK unido a funciones comunes y eliminaciones.
+  - Puente a 30-jun-2026; las compras posteriores (Sitowise Sverige y STEIN, ≈80 M) van en `otros_ajustes`.
+  - Desde 2027e solo crecimiento orgánico, sin compras futuras ni su coste.
+  - Mercado final: Europa ≈110.000 M EUR (EFCA: empleados × facturación por empleado; estimación propia).
+- **Resultado del modelo**:
+  - DCF de 116,57 SEK (WACC 8,21 %, beta 1,05, bono 3,2 %, terminal Gordon al 2,5 %, valor terminal el 71 %).
+  - Valor intrínseco de 110,81 SEK (−16,2 %).
+  - DCF inverso: pide un 7,0 % de crecimiento anual (base 3,2 %) o un margen del 16,6 %; rentabilidad implícita del 7,6 %.
+  - Con la prima de mercado (4,2 %), 139,79 SEK.
+  - ROIC del 13,8 %; 38,0 % sin fondo de comercio; incremental del 13,2 %. El motor la clasifica como «comprador en serie» (el fondo de comercio es el 64 % del capital).
+  - ROIC − WACC ≈ +5,6 puntos.
+- **Sostenibilidad**: el motor dice «Sí» y nosotros «En parte». No salta el control, porque solo salta al revés. Las pruebas financieras pasan, pero el orgánico sale de tarifas y tasa de facturación con la plantilla plana, la mitad del crecimiento histórico fueron compras y la IA amenaza las horas. **Calidad: En parte.**
+- **Línea 12 m**:
+  - Selector: v3 ×1,1 (mediana adelantada 23,1x ÷ actual 18,4x = 1,26; historia 2017-18 y 2022-25, sin 2019-21 de tipos cero).
+  - v3: ponderada +16,6 % (16,7 % en `apuntar-12m --simular`) y base +19,1 %. v2: +11,4 % y +8,7 %.
+  - Objetivo de 150,51 SEK.
+  - **Regla e informe: Mantener, convicción baja** (valor intrínseco bajo el precio; reglas absoluta Vender y relativa Mantener).
+  - Comprar por debajo de 110,81; vender por encima de 171,34.
+- **Robustez**: SÓLIDA. Acción vigente y robusta «No mantener» (no comprar). Avisos:
+  - V1: valor intrínseco un 16 % bajo el precio; filtro de mantener a 130,36.
+  - E2: resultados el 29-oct-2026.
+  - D3: SWEC-B no está en `precios.json`; falta añadirlo a `verticales/empresa/simbolos.json`, archivo compartido que no toco.
+- Riesgo de la IA: exposición Alta y sentido Mixto. En el caso adverso, −15 % a 3-5 años; +5 % si Sweco captura la productividad.
+- Word y PDF (soffice): 41 páginas, cobertura del 87,9 %, 20 de 20 controles correctos. Avisos de plantilla: sin suma de partes, sin calificaciones ESG, sin serie de mercado y sin mapa de comparables (falta el crecimiento orgánico de los comparables).
+- **Para subir la confianza**:
+  - resultados del 3T26 (29-oct): orgánico, tasa de facturación y margen de Suecia;
+  - nombre del nuevo primer ejecutivo;
+  - subida media de tarifa, que la empresa no publica;
+  - segunda fuente del tamaño del mercado europeo;
+  - calificaciones ESG;
+  - crecimiento orgánico de los comparables.
+- Tiempo: de 10:10 a 10:35 UTC.
+
+## Lecciones
+
+- `bolsa.mjs`: EXOH.DE (iShares STOXX Europe 600 Construction & Materials) da 404 en Yahoo; EXH4.DE sirve como índice sectorial europeo.
+- Stock Analysis bloqueado por Cloudflare desde la nube: los comparables salen de Yahoo con `herramientas/yahoo.mjs` (`ficha`, `aUsd`), pasando cada empresa a la divisa del informe con su divisa de cotización y la de sus cuentas, que pueden ser distintas.
+- ESEF: el informe anual del último ejercicio puede no estar aún en la base de `cuentas.mjs --esef` (Sweco 2025): completarlo del informe anual y anotarlo.
+- Consultoras de horas con cuenta por naturaleza: el personal (≈66 % de las ventas) es la línea clave del riesgo de la IA; cruzar la tasa de facturación con la plantilla orgánica para separar volumen de precio.
