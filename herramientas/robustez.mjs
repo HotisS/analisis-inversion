@@ -298,6 +298,17 @@ function probar(carpeta) {
   const elast = quieto?.completo && sube?.completo ? (sube.objetivo_ponderado / quieto.objetivo_ponderado - 1) / 0.1 : null;
   if (elast !== null && elast > 0.5) marca('M6', 'AVISO', `El objetivo se mueve con el precio (elasticidad ${f(elast, 2)}: un 10 % más de precio sube el objetivo un ${f(elast * 10, 1)} %), porque el base es el PER de hoy${v3 ? ' con el tope' : ''}. La rentabilidad solo mide crecimiento del BPA + dividendo${v3 ? ' + el tope' : ''}; los límites de compra se calculan con el objetivo fijo (no recalculando a otro precio).`);
   // Colchón de BPA: cuánto puede bajar nuestro BPA (los tres escenarios) antes de perder la acción de hoy.
+  // Límite robusto (regla 12): el precio más alto al que se cumplen a la vez el límite común (v3 y v2) y la compra con un BPA
+  // un 10 % peor. Es el límite que va al broker; el «límite de compra» solo mide el método.
+  const limRobusto = (() => {
+    if (limComun === null || !vig?.completo) return null;
+    const pasa = (p) => pasaComprar(evaluar(cx, { precio: p, escalaBpa: 0.9 }), p, cx.vi);
+    if (pasa(limComun)) return limComun;
+    let lo = limComun * 0.3, hi = limComun;
+    if (!pasa(lo)) return null;
+    for (let i = 0; i < 40; i++) { const m = (lo + hi) / 2; if (pasa(m)) lo = m; else hi = m; }
+    return lo;
+  })();
   const colchonBpa = (cond) => { if (!vig?.completo || !cond(vig, precio, cx.vi)) return null; for (let e = 1; e >= 0.5; e -= 0.01) { const c = evaluar(cx, { precio, escalaBpa: e }); if (!c?.completo || !cond(c, precio, cx.vi)) return r((1 - e) * 100, 0); } return 50; };
   return {
     carpeta, clave, nombre: id.nombre_corto || id.nombre, ...(BPA_FACTOR !== 1 ? { bpa_factor: BPA_FACTOR } : {}), divisa: meta.divisa, precio: r(precio, 2), fecha_precio: fechaPrecio,
@@ -309,7 +320,7 @@ function probar(carpeta) {
     // Límites en la divisa de COTIZACIÓN (la del broker): el informe puede llevar las cuentas en otra (Constellation USD/CAD,
     // Experian USD/GBp). Un límite en la divisa de las cuentas puesto en el broker es el fallo de Constellation.
     divisa_cotizacion: divCot, limite_comprar_cot: lim ? r(lim.comprar / tc, 2) : null, limite_mantener_cot: lim ? r(lim.mantener / tc, 2) : null,
-    limite_comprar_control_cot: limCtrl ? r(limCtrl.comprar / tc, 2) : null, precio_cot: r(precio / tc, 2),
+    limite_comprar_control_cot: limCtrl ? r(limCtrl.comprar / tc, 2) : null, precio_cot: r(precio / tc, 2), limite_robusto_cot: limRobusto !== null ? Math.floor((100 * limRobusto) / tc) / 100 : null,
     limite_comprar: r(lim?.comprar, 2), limite_comprar_control: r(limCtrl?.comprar, 2), limite_mantener: r(lim?.mantener, 2), limite_mantener_control: r(limCtrl?.mantener, 2),
     elasticidad_objetivo: r(elast, 2), colchon_bpa_comprar: colchonBpa(pasaComprar), colchon_bpa_mantener: colchonBpa(pasaMantener),
     marcas, variantes: tabla,
@@ -322,7 +333,7 @@ else for (const x of res) {
   if (x.error) { console.log(`${x.carpeta}: ERROR ${x.error}`); continue; }
   console.log(`\n${x.nombre} (${x.carpeta}) · ${x.version} ${f(x.ponderada)} % / base ${f(x.base)} % → ${x.senal}${x.v2 !== null ? ` · v2 ${f(x.v2)} %` : ''} · precio ${f(x.precio, 2)} ${x.divisa} (${x.fecha_precio})`);
   console.log(`  Veredicto: ${x.veredicto}. Acción vigente: ${x.accion_vigente}. Acción robusta: ${x.accion_robusta}.${x.frente.length ? ` Cambia con: ${x.frente.join('; ')}.` : ''}`);
-  console.log(`  En ${x.divisa_cotizacion} (broker): precio ${f(x.precio_cot, 2)}; límite de compra (objetivo fijo) ${f(x.limite_comprar_cot, 2)}${x.limite_comprar_control_cot !== null ? ` (v2: ${f(x.limite_comprar_control_cot, 2)})` : ''}; filtro de mantener hasta ${f(x.limite_mantener_cot, 2)}. Colchón de BPA: ${x.colchon_bpa_comprar ?? '—'} % para Comprar, ${x.colchon_bpa_mantener ?? '—'} % para mantener.`);
+  console.log(`  En ${x.divisa_cotizacion} (broker): precio ${f(x.precio_cot, 2)}; límite de compra (objetivo fijo) ${f(x.limite_comprar_cot, 2)}${x.limite_comprar_control_cot !== null ? ` (v2: ${f(x.limite_comprar_control_cot, 2)})` : ''}; filtro de mantener hasta ${f(x.limite_mantener_cot, 2)}; límite robusto (v3 y v2 con BPA −10 %) ${x.limite_robusto_cot !== null ? f(x.limite_robusto_cot, 2) : '—'}. Colchón de BPA: ${x.colchon_bpa_comprar ?? '—'} % para Comprar, ${x.colchon_bpa_mantener ?? '—'} % para mantener.`);
   for (const m of x.marcas) console.log(`  [${m.codigo} ${m.tratamiento}] ${m.texto}`);
   console.log(`  Variantes: ${x.variantes.filter((t) => !t.error).map((t) => `${t.variante} ${f(t.ponderada)}/${f(t.base)}`).join(' · ')}`);
 }
