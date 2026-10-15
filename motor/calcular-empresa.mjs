@@ -307,13 +307,25 @@ export function calcularEmpresa(datos) {
     const ciSinFc = ci !== null && gwMed !== null ? ci - gwMed : null;
     const pnMed = b && bAnt ? (n(b.patrimonio_neto) + n(bAnt.patrimonio_neto)) / 2 : n(b?.patrimonio_neto);
     const atMed = b && bAnt ? (n(b.activo_total) + n(bAnt.activo_total)) / 2 : n(b?.activo_total);
+    // ROIC sobre capital operativo (15-oct-2026, Qualys y Sage en la 8ª hora): cuando el capital invertido por pasivo (patrimonio
+    // + deuda − caja) es ≤ 0 por la caja neta o las recompras, se da el NOPAT sobre el capital operativo del activo (inmovilizado +
+    // intangibles + fondo de comercio + circulante operativo). Es un dato: el filtro de calidad sigue usando el ROIC del informe.
+    const capOp = (x) => (x && (n(x.inmovilizado_material) !== null || n(x.intangibles) !== null) ? suma(n(x.inmovilizado_material) ?? 0, n(x.intangibles) ?? 0, n(x.fondo_comercio) ?? 0, n(x.existencias) ?? 0, n(x.clientes) ?? 0, n(x.activos_contrato) ?? 0, -(n(x.proveedores) ?? 0), -(n(x.pasivos_contrato) ?? 0)) : null);
+    // Si hasta el capital operativo es ≤ 0 (los cobros anticipados financian el circulante: Qualys), queda el capital fijo
+    // (inmovilizado + intangibles + fondo de comercio) como última orientación, y se dice.
+    const capFijo = (x) => (x && (n(x.inmovilizado_material) !== null || n(x.intangibles) !== null) ? suma(n(x.inmovilizado_material) ?? 0, n(x.intangibles) ?? 0, n(x.fondo_comercio) ?? 0) : null);
+    const media2 = (fn) => (fn(b) !== null && fn(bAnt) !== null ? (fn(b) + fn(bAnt)) / 2 : fn(b));
+    const ciOp = media2(capOp), ciFijo = media2(capFijo);
+    const baseOp = ci !== null && ci <= 0 && nopat !== null ? (ciOp !== null && ciOp > 0 ? ['operativo', ciOp] : ciFijo !== null && ciFijo > 0 ? ['fijo', ciFijo] : null) : null;
+    const roicOp = baseOp ? red(pct(nopat, baseOp[1])) : null;
     return {
       // ROIC «no aplica» con capital invertido ≤ 0 (mucha caja neta o patrimonio negativo por recompras: Booking, ANYCOLOR,
       // CTS Eventim, 14-oct-2026): la cifra saldría negativa y no significa nada; se usa el ROIC calculado a mano del informe.
       periodo: c.periodo, nopat: red(nopat, 0), capital_invertido: red(ci, 0), roic_pct: ci !== null && ci <= 0 ? null : red(pct(nopat, ci)),
       roic_sin_fc_pct: ciSinFc !== null && ciSinFc > 0 && gwMed > 0 ? red(pct(nopat, ciSinFc)) : null,
       fondo_comercio_pct_capital: ci > 0 && gwMed !== null ? red(pct(gwMed, ci), 0) : null,
-      roic_nota: ci !== null && ci <= 0 ? 'no aplica: capital invertido negativo (caja neta o patrimonio negativo por recompras); usar el ROIC calculado a mano del informe' : null,
+      roic_operativo_pct: roicOp, capital_operativo: ci !== null && ci <= 0 ? red(ciOp, 0) : null, base_roic_operativo: baseOp ? baseOp[0] : null,
+      roic_nota: ci !== null && ci <= 0 ? `no aplica: capital invertido negativo (caja neta o patrimonio negativo por recompras); usar el ROIC calculado a mano del informe${roicOp !== null ? ` (orientación: ${fmt(roicOp, 1)} % sobre el capital ${baseOp[0] === 'fijo' ? 'fijo (inmovilizado, intangibles y fondo de comercio: el circulante lo financian los cobros anticipados)' : 'operativo del activo (inmovilizado, intangibles y circulante)'}, ${fmt(baseOp[1], 0)} M)` : ''}` : null,
       roe_pct: red(pct(n(c.beneficio_neto), pnMed)), roa_pct: red(pct(n(c.beneficio_neto), atMed)),
       margen_neto_pct: red(pct(n(c.beneficio_neto), n(c.ingresos))), rotacion: red(div(n(c.ingresos), atMed), 2),
       apalancamiento: red(div(atMed, pnMed), 2),
@@ -1000,7 +1012,7 @@ export function calcularEmpresa(datos) {
     cuenta_y_prevision: [...cuenta.map((c) => ({ periodo: c.periodo, ingresos: c.ingresos, ebitda: c.ebitda })), ...proy.map((p) => ({ periodo: p.periodo, ingresos: p.ingresos, ebitda: p.ebitda }))],
     segmentos_ultimo: segmentosUltimo, segmentos_tabla: segmentosTabla, segmentos_periodo: ultPerSeg ?? null,
     balance, perimetro_nota: notaPerimetro, flujos, flujos_acumulado: acumulado, rentabilidad, roic_incremental_pct: roicIncremental,
-    roic_frente_wacc: rentabilidad.map((r) => ({ periodo: r.periodo, roic_pct: r.roic_pct, roic_sin_fc_pct: r.roic_sin_fc_pct ?? null, roe_pct: r.roe_pct, wacc_pct: red(wacc, 1) })),
+    roic_frente_wacc: rentabilidad.map((r) => ({ periodo: r.periodo, roic_pct: r.roic_pct, roic_sin_fc_pct: r.roic_sin_fc_pct ?? null, roic_operativo_pct: r.roic_operativo_pct ?? null, roe_pct: r.roe_pct, wacc_pct: red(wacc, 1) })),
     compras,
     calidad: scores, dcf, escenarios, valor_ponderado: valorPonderado, potencial_ponderado_pct: red(pct(valorPonderado - precio, precio)),
     comparables: { tabla: [empresaFila, ...pares], estadisticos: estad, implicito, regresion, n: pares.length },

@@ -56,8 +56,11 @@ function contexto(d) {
   const precioInforme = num(d.identificacion?.precio);
   const div = num(d.calc?.recomendacion?.dividendo_pct) || 0;
   const prob = ['bajista', 'base', 'alcista'].map((e) => (d.escenarios?.casos || []).find((c) => new RegExp(e, 'i').test(c.escenario || ''))?.probabilidad_pct ?? null);
+  // Calidad (§4.1): sostenibilidad del crecimiento y ROIC − WACC del último ejercicio real (como en escaner-diario.mjs).
+  const rw = (d.calc?.roic_frente_wacc || []).filter((x) => num(x.roic_pct) !== null && num(x.wacc_pct) !== null && !/e$/i.test(String(x.periodo))).at(-1);
   return { o, precioInforme, dpa: (div / 100) * precioInforme, div, prob: prob.every((x) => x !== null) ? prob : null,
-    vi: num(d.calc?.sintesis?.valor_objetivo), confianza: d.resumen?.confianza ?? null };
+    vi: num(d.calc?.sintesis?.valor_objetivo), confianza: d.resumen?.confianza ?? null,
+    sost: d.calc?.dcf?.sostenibilidad?.veredicto ?? d.dcf?.sostenibilidad?.veredicto ?? null, roicWacc: rw ? rw.roic_pct - rw.wacc_pct : null };
 }
 function evaluar(cx, { precio, historia = 'vigente', topeBase = null, prob = null, escalaBpa = 1, sinDobleCastigo = false, sinConfianza = false, sinSelector = false, moverPer = false } = {}) {
   // Objetivo FIJO (regla vigente desde cd21cd3): el objetivo se calcula al precio del informe y la rentabilidad, al precio pedido.
@@ -239,6 +242,14 @@ function probar(carpeta) {
   const ctrlComprar = tabla.find((t) => t.variante === 'v2 (control)')?.comprar;
   const confianza = marcas.filter((m) => m.tratamiento === 'CONFIANZA' && !(m.codigo === 'M2' && ctrlComprar));
   if (confianza.length && robusta === 'Comprar') robusta = 'Mantener en cartera';
+  // Requisito 3 de §4.1 (15-oct-2026, DO & CO en la 8ª hora: «Comprar» robusto con sostenibilidad «En parte»): sin sostenibilidad
+  // «Sí» o con ROIC − WACC < 5 no se compra ni se amplía; la acción robusta baja a Mantener. ROIC n.d. (capital invertido
+  // negativo) no bloquea: se juzga con el del informe.
+  const sostOk = cx.sost !== null && /^s[ií]/i.test(cx.sost), roicOk = cx.roicWacc === null || cx.roicWacc >= 5;
+  if (robusta === 'Comprar' && (!sostOk || !roicOk)) {
+    robusta = 'Mantener en cartera';
+    marca('Q1', 'AVISO', `No cumple el requisito de calidad para comprar (§4.1): sostenibilidad ${cx.sost ?? 'n.d.'}${roicOk ? '' : `, ROIC − WACC ${f(cx.roicWacc, 1)} puntos (< 5)`}. La acción robusta baja a Mantener: no se compra ni se amplía.`);
+  }
   const colchon = v0 && !v0.error ? { comprar: r(v0.ponderada - U.comprar), mantener: r(v0.ponderada - U.mantener) } : null;
   // Límites con el OBJETIVO FIJO (regla del 14-oct tras el caso Nu): si el precio sube, el objetivo no sube con él.
   const limFijo = (c) => (c?.completo ? {

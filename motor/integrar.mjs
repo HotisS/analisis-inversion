@@ -99,7 +99,8 @@ export async function integrar(dir) {
   const huecos = [];
   for (const L of LETRAS) {
     if (!N[L]) continue;
-    const nota = recorrer(N[L], locales(L));
+    // Una nota puede citar fuentes de otra nota con prefijo ([A3]); antes solo se traducían en propio (8ª hora, 15-oct-2026).
+    const nota = recorrer(N[L], (s) => prefijo(locales(L)(s)));
     huecos.push(...(nota.huecos || []), ...(nota.meta?.huecos || []));
     const choques = [];
     for (const k of ORDEN) if (k !== 'fuentes' && nota[k] !== undefined) datos[k] = combinar(datos[k], nota[k], k, choques);

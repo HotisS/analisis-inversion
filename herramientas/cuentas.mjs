@@ -63,6 +63,9 @@ const MAPA_USGAAP = {
     coste_ventas: ['CostOfRevenue', 'CostOfGoodsAndServicesSold', 'CostOfGoodsSold', 'CostOfServices'],
     gastos_generales: ['SellingGeneralAndAdministrativeExpense', { suma: ['SellingAndMarketingExpense', 'GeneralAndAdministrativeExpense'] }],
     ebit: ['OperatingIncomeLoss'],
+    // 15-oct-2026 (Broadridge y Cencora, 8ª hora): «DepreciationDepletionAndAmortization» unas veces es el total (Cencora:
+    // depreciación + intangibles) y otras solo el inmovilizado (Broadridge: 138 frente a 292 de intangibles y 146 de otros
+    // diferidos aparte). No se suma a ciegas: el aviso de abajo compara las cifras y pide comprobarlo en el estado de flujos.
     amortizaciones: ['DepreciationDepletionAndAmortization', 'DepreciationAndAmortization', 'DepreciationAmortizationAndAccretionNet', { suma: ['Depreciation', 'AmortizationOfIntangibleAssets'] }],
     bai: ['IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest', 'IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments', 'IncomeLossFromContinuingOperationsBeforeIncomeTaxesDomestic'],
     impuestos: ['IncomeTaxExpenseBenefit'],
@@ -81,7 +84,11 @@ const MAPA_USGAAP = {
     existencias: ['InventoryNet'], clientes: ['AccountsReceivableNetCurrent', 'ReceivablesNetCurrent'], proveedores: ['AccountsPayableCurrent', 'AccountsPayableAndAccruedLiabilitiesCurrent'],
     activos_contrato: ['ContractWithCustomerAssetNetCurrent'], pasivos_contrato: ['ContractWithCustomerLiabilityCurrent'],
     caja: ['CashAndCashEquivalentsAtCarryingValue', 'CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents', 'Cash'],
-    deuda_financiera: [{ suma: ['LongTermDebtNoncurrent', 'LongTermDebtCurrent', 'ShortTermBorrowings', 'CommercialPaper'] }, 'LongTermDebt', 'DebtLongtermAndShorttermCombinedAmount', { suma: ['LongTermDebtAndCapitalLeaseObligations', 'LongTermDebtAndCapitalLeaseObligationsCurrent'] }],
+    // 15-oct-2026 (Cencora, Broadridge): la deuda a corto puede venir como «DebtCurrent» (vencimientos + papel comercial juntos);
+    // se busca por partes (largo + corto) con alternativas en cada una, y se avisa si falta una parte.
+    deuda_financiera: ['DebtLongtermAndShorttermCombinedAmount',
+      { partes: [['LongTermDebtNoncurrent', 'LongTermDebtAndCapitalLeaseObligations'], ['DebtCurrent', { suma: ['LongTermDebtCurrent', 'ShortTermBorrowings', 'CommercialPaper'] }, 'LongTermDebtAndCapitalLeaseObligationsCurrent']], nombres: ['deuda a largo', 'deuda a corto'] },
+      'LongTermDebt'],
     arrendamientos: [{ suma: ['OperatingLeaseLiability', 'FinanceLeaseLiability'] }, { suma: ['OperatingLeaseLiabilityNoncurrent', 'OperatingLeaseLiabilityCurrent', 'FinanceLeaseLiabilityNoncurrent', 'FinanceLeaseLiabilityCurrent'] }],
     patrimonio_neto: ['StockholdersEquity'], minoritarios: ['MinorityInterest'], reservas: ['RetainedEarningsAccumulatedDeficit'],
   },
@@ -215,6 +222,8 @@ function valorDe(hechos, fin, alternativas, unidadPedida) {
     if (typeof alt === 'string') { const h = uno(alt); if (h) return { valor: h.valor, origen: alt, unidad: h.unidad }; continue; }
     if (alt.suma) { const hs = alt.suma.map(uno); if (hs[0] || hs.some(Boolean)) { const v = hs.reduce((s, h) => s + (h ? h.valor : 0), 0); return { valor: v, origen: `${alt.suma.filter((c, i) => hs[i]).join(' + ')}`, unidad: hs.find(Boolean).unidad, parcial: hs.some((h) => !h) ? `faltan ${alt.suma.filter((c, i) => !hs[i]).join(', ')}` : null }; } }
     if (alt.resta) { const [x, y] = alt.resta.map(uno); if (x && y) return { valor: x.valor - y.valor, origen: `${alt.resta[0]} − ${alt.resta[1]}`, unidad: x.unidad }; }
+    // {ambos}: como {suma} pero solo vale si están TODOS los conceptos (si falta uno, se pasa a la siguiente alternativa).
+    if (alt.ambos) { const hs = alt.ambos.map(uno); if (hs.every(Boolean)) return { valor: hs.reduce((s, h) => s + h.valor, 0), origen: alt.ambos.join(' + '), unidad: hs[0].unidad }; }
     if (alt.partes) {
       // Cada parte es una lista de alternativas; el total es la suma de las partes encontradas. Si falta alguna, `parcial` lo dice.
       const encontradas = alt.partes.map((lista) => valorDe(hechos, fin, lista, unidadPedida));
@@ -337,6 +346,15 @@ const { series, usado, faltan, parciales, divisa, fines } = construirSeries(orig
 const avisos = [];
 for (const [campo, lista] of Object.entries(parciales)) avisos.push(`${campo} INCOMPLETO en ${lista.length} ejercicio(s): ${lista.join('; ')}. Comprobar en el balance y completar a mano.`);
 if (series.cuenta.some((f) => /PAGADO/.test(f.dpa_base || ''))) avisos.push('DPA: el XBRL solo trae el dividendo PAGADO en el ejercicio (final del año anterior + a cuenta), no el del año: corregir con el informe anual (ver `dpa_base` en cada ejercicio).');
+if (origen.normas === 'US GAAP' && fines.length && !/AmortizationOfIntangibleAssets/.test(usado['cuenta.amortizaciones'] || '')) {
+  // ¿La amortización de intangibles está dentro de `amortizaciones`? Si D&A ≈ depreciación + intangibles, sí; si no, se avisa con cifras.
+  const fin = fines.at(-1), M1 = (v) => Math.round(v / 1e5) / 10;
+  const da = valorDe(origen.hechos, fin, MAPA_USGAAP.cuenta.amortizaciones.slice(0, 3), 'dinero'), ai = valorDe(origen.hechos, fin, ['AmortizationOfIntangibleAssets', 'AmortizationOfAcquiredIntangibleAssets'], 'dinero'), dep = valorDe(origen.hechos, fin, ['Depreciation'], 'dinero'), otros = valorDe(origen.hechos, fin, ['OtherAmortizationOfDeferredCharges', 'AmortizationOfDeferredCharges'], 'dinero');
+  if (da && ai && ai.valor > 0.1 * da.valor) {
+    const incluida = dep && Math.abs(da.valor - dep.valor - ai.valor) < 0.1 * da.valor;
+    if (!incluida) avisos.push(`\`amortizaciones\` (${da.origen} = ${M1(da.valor)} M en ${fin.slice(0, 4)}) puede NO incluir la amortización de intangibles (${ai.origen} = ${M1(ai.valor)} M${otros ? `; ${otros.origen} = ${M1(otros.valor)} M` : ''}): compruébalo en el estado de flujos y, si va aparte, súmala (Broadridge: EBITDA 1.438 frente a 1.809).`);
+  }
+}
 if (origen.normas === 'US GAAP') avisos.push('US GAAP: los intereses pagados van en explotación (intereses_en_financiacion = 0); `deuda_financiera` sale de los conceptos de deuda a largo y corto y puede incluir arrendamientos financieros: compruébalo en la nota de deuda.');
 avisos.push('BPA, DPA y acciones de cada ejercicio son los publicados ENTONCES: un split posterior (Apple 4:1 en 2020) no está reexpresado en los años viejos; ajústalos para que toda la serie esté en acciones de hoy.');
 avisos.push('`participadas_en_ebitda`, `no_recurrentes_en_ebitda` y `dpa_extraordinario` no están en el XBRL: míralos en el informe anual. `ebitda` = EBIT + amortizaciones del XBRL (sin ajustes de la empresa).');
