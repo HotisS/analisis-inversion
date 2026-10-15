@@ -1,10 +1,10 @@
 # Datadog (DDOG): análisis growth, 14-oct-2026
 
-**Señal (método v7): Comprar (convicción media)** · Puntuación 79,8/100 · Señales de cambio de tendencia 5/8 · EV/beneficio bruto 25,6x
-Precio 283,34 USD (cierre del 13-oct) · Objetivo 12 m 314,3 USD (ponderada +10,9 %, base +13,9 %, bajista −44,1 %, alcista +60,1 %) · Compra hasta 299,3 USD
-Peso orientativo: 4 % por la regla, pero **hoy no entra** (bolsillo growth en el 16,6 % y liquidez agotada; ver sección 13) · Por qué: cumple todos los requisitos de compra
+**Señal (método vigente v11): Comprar (convicción media)** · Puntuación 79,8/100 · Señales de cambio de tendencia 5/8 · EV/ventas NTM 20,3 veces
+Precio 283,34 USD (fecha del informe) · Objetivo 12 m 303,4 USD · Ponderada +7,1 % · Base +9,2 % · Bajista −44,1 % · Alcista +54,0 % · Compra hasta 289,0 USD
+Peso orientativo: 4 % de la cartera · Por qué: cumple todos los requisitos de compra
+Cabecera rehecha con la v11 el 15-oct (auditoría de homogeneidad). Antes decía (método v7): Comprar (convicción media). El texto de abajo puede citar cifras de esa versión anterior; mandan las de esta cabecera.
 
-> **Calculado con el método v7** (`verticales/growth/metodo.md`). Las ventas del año objetivo salen de la regla mecánica (6.578 M USD en el base) y el múltiplo, del de hoy rebajado por desaceleración (10,9x / 18,2x / 23,7x EV/ventas NTM). La proyección propia (5.500 / 6.300 / 6.900 M USD) es solo contraste. **Aviso**: la señal es frágil. Si la proyección partiera del crecimiento que implica la guía (~27 %) en vez del pasado (~33 %), la ponderada bajaría a +4,7 % y la señal pasaría a Mantener (en vigilancia), con compra hasta ~282 USD (sección 9 y propuesta de mejora del método).
 
 ## 1. La tesis en cinco líneas
 

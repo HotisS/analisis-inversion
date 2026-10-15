@@ -1,10 +1,10 @@
 # DoorDash (DASH): análisis growth, 14-oct-2026
 
-**Señal (método v7): Mantener, en vigilancia** · Puntuación 63,8/100 · Señales de cambio de tendencia 3/8 · EV/beneficio bruto 8,8x
-Precio 193,09 USD (cierre del 13-oct) · Objetivo 12 m 201,5 USD (ponderada +4,4 %, base +7,2 %, bajista −44,9 %, alcista +48,1 %) · Compra hasta 191,9 USD
-Peso orientativo: no entra. Le falta rentabilidad (ponderada < 5 %); el bolsillo growth está lleno y no supera a ninguna de las cinco.
+**Señal (método vigente v11): Mantener, en vigilancia** · Puntuación 63,8/100 · Señales de cambio de tendencia 3/8 · EV/ventas NTM 4,3 veces
+Precio 193,09 USD (fecha del informe) · Objetivo 12 m 194,6 USD · Ponderada +0,8 % · Base +4,0 % · Bajista −44,9 % · Alcista +39,9 % · Compra hasta 185,3 USD
+Peso orientativo: 0 % de la cartera · Por qué: no compra: ponderada < 5 % → en vigilancia
+Cabecera rehecha con la v11 el 15-oct (auditoría de homogeneidad). Antes decía (método v7): Mantener, en vigilancia. El texto de abajo puede citar cifras de esa versión anterior; mandan las de esta cabecera.
 
-> **Calculado con el método v7** (`verticales/growth/metodo.md`). **Qué se toma como ventas**: los ingresos GAAP, es decir, lo que DoorDash se queda de cada pedido (comisión del comercio y tarifas del cliente, ya restado lo que paga a repartidores y comercios), que son el 13,5 % del GOV (valor bruto de los pedidos). **El crecimiento es orgánico, sin Deliveroo** (comprada el 2-oct-2025): la empresa publica sus ingresos sin Deliveroo. Con las cifras publicadas (+33,6 % en 12 meses), la regla proyectaría dos años al +32 % un salto que no se repite desde el 4T26. Las ventas de partida son las publicadas de 12 meses (15.891 M USD, con 3 trimestres de Deliveroo). Ventas del año objetivo por la regla mecánica: 23.778 M en el base, partiendo de +24,2 %. Múltiplos: 2,3x / 3,8x / 4,9x EV/ventas NTM.
 >
 > **Candidata v9: el mismo resultado** (Mantener en vigilancia, +4,4 %). DoorDash solo guía el trimestre siguiente, y en GOV y EBITDA, no en ingresos; por la regla de la plantilla, `guia_12m_pct` = null y v9 = v7. **Extrapolando a 12 meses la guía del 3T26 pasada a ventas** (+20,5 % orgánico, más su batida media de +1,7 pp = 22,2 %), sale **ponderada +1,4 %**, base +4,1 %, bajista −45,7 % y compra hasta **186,5 USD**: también Mantener (en vigilancia).
 >

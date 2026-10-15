@@ -1,10 +1,10 @@
 # Palantir Technologies (PLTR): análisis growth, 14-oct-2026
 
-**Señal (método v7): Vender (no comprar; no está en cartera)** · Puntuación 93,8/100 · Señales de cambio de tendencia 7/8 · EV/beneficio bruto 52,2x
-Precio 208,67 USD · Objetivo 12 m 176,3 USD (ponderada -15,5 %, base -13,3 %, bajista -63,9 %, alcista +28,5 %) · Compra hasta 141,2 USD
-Peso orientativo: no entra · Por qué: ponderada ≤ -10 %
+**Señal (método vigente v11): Vender** · Puntuación 93,8/100 · Señales de cambio de tendencia 7/8 · EV/ventas 44,2 veces
+Precio 208,67 USD (fecha del informe) · Objetivo 12 m 176,3 USD · Ponderada −15,5 % · Base −13,3 % · Bajista −63,9 % · Alcista +28,5 % · Compra hasta 141,2 USD
+Peso orientativo: 0 % de la cartera · Por qué: ponderada ≤ -10 %
+Cabecera rehecha con la v11 el 15-oct (auditoría de homogeneidad). Antes decía (método v7): Vender (no comprar; no está en cartera). El texto de abajo puede citar cifras de esa versión anterior; mandan las de esta cabecera.
 
-> **Calculado con el método v7** (vigente desde el 14-oct tras el backtest de 71 casos, `verticales/growth/metodo.md` §6). Si la sección 9 enseña otras cifras de valoración, son del borrador con la proyección del analista; mandan las de arriba: ventas con la regla mecánica (14873 M en el base) y múltiplo de hoy con rebaja por desaceleración (18,6x / 30,9x / 40,2x).
 
 ## 1. La tesis en cinco líneas
 

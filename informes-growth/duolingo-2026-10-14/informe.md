@@ -1,10 +1,10 @@
 # Duolingo (DUOL): análisis growth, 14-oct-2026
 
-**Señal (método v7): Comprar (convicción baja)** · Puntuación 70,8/100 · Señales de cambio de tendencia 5/8 · EV/beneficio bruto 6,2x
-Precio 140,10 USD · Objetivo 12 m 196,9 USD (ponderada +40,6 %, base +34,3 %, bajista −25,4 %, alcista +119,0 %) · Compra hasta 187,5 USD
-Peso orientativo: 3,5 %, 8 acciones en dos tramos), pero **no hay liquidez para pagarlo**: ver sección 13 · Por qué: cumple todos los requisitos de compra
+**Señal (método vigente v11): Comprar (convicción baja)** · Puntuación 70,8/100 · Señales de cambio de tendencia 5/8 · EV/ventas NTM 4,5 veces
+Precio 140,10 USD (fecha del informe) · Objetivo 12 m 157,0 USD · Ponderada +12,1 % · Base +7,0 % · Bajista −32,8 % · Alcista +67,1 % · Compra hasta 149,5 USD
+Peso orientativo: 3.5 % de la cartera · Por qué: cumple todos los requisitos de compra
+Cabecera rehecha con la v11 el 15-oct (auditoría de homogeneidad). Antes decía (método v7): Comprar (convicción baja). El texto de abajo puede citar cifras de esa versión anterior; mandan las de esta cabecera.
 
-> **Calculado con el método v7** (`verticales/growth/metodo.md`). Las ventas del año objetivo salen de la regla mecánica (1.843 M USD en el base) y el múltiplo, del de hoy (2,7x / 4,5x / 7,2x EV/ventas NTM). **Aviso importante**: aquí la regla mecánica exagera. Parte del crecimiento pasado (+29 % en 12 meses y +34 % de media a 2 años), pero la empresa ha frenado a propósito y su guía es de +11 % en el 3T. Con mi proyección, que sigue la guía (1.274 / 1.404 / 1.501 M USD), la señal **sigue siendo Comprar (baja)**, pero con ponderada +12,5 %, base +7,0 %, bajista −32,8 % y **compra hasta ~150 USD**. Este es el límite que recomiendo para la orden (sección 9).
 
 ## 1. La tesis en cinco líneas
 

@@ -1,10 +1,10 @@
 # Snowflake (SNOW): análisis growth, 14-oct-2026
 
-**Señal (método v7): Comprar (convicción media)** · Puntuación 78,0/100 · Señales de cambio de tendencia 6/8 · EV/beneficio bruto 27,8x
-Precio 357,76 USD (cierre del 13-oct) · Objetivo 12 m 397,4 USD (ponderada +11,1 %, base +14,1 %, bajista −45,0 %, alcista +61,1 %) · Compra hasta 378,5 USD
-Peso orientativo: 4 % por la regla, pero **hoy no entra**: el bolsillo growth está lleno (~19,5 %) y no hay liquidez. Queda como **primera suplente growth**, por delante de Datadog, y sustituiría a Duolingo solo si el 3T de Duolingo (3-nov) rompe su tesis (sección 13) · Por qué: cumple todos los requisitos de compra
+**Señal (método vigente v11): Comprar (convicción media)** · Puntuación 78,0/100 · Señales de cambio de tendencia 6/8 · EV/ventas NTM 18,6 veces
+Precio 357,76 USD (fecha del informe) · Objetivo 12 m 386,4 USD · Ponderada +8,0 % · Base +12,4 % · Bajista −45,0 % · Alcista +52,3 % · Compra hasta 368,0 USD
+Peso orientativo: 4 % de la cartera · Por qué: cumple todos los requisitos de compra
+Cabecera rehecha con la v11 el 15-oct (auditoría de homogeneidad). Antes decía (método v7): Comprar (convicción media). El texto de abajo puede citar cifras de esa versión anterior; mandan las de esta cabecera.
 
-> **Calculado con el método v7** (`verticales/growth/metodo.md`). Las ventas del año objetivo salen de la regla mecánica (9.109 M USD en el base) y el múltiplo, del de hoy rebajado por desaceleración (10,4x / 17,4x / 22,6x EV/ventas NTM). La proyección propia (7.970 / 8.970 / 9.400 M USD) es solo contraste. **Con la guía de la empresa** (mejora pendiente de la tanda 4): la guía **no es menor** que la mecánica. La mecánica parte de un +31,9 %, y la empresa guía un +36 % de ingresos de producto en el año y un +37-38 % en el 3T. Por tanto, la mejora (que solo recorta) no cambia nada. Solo si se toma el crecimiento de los próximos 12 meses que calculo yo (+31 %, extrapolando más allá de la guía), la ponderada bajaría a +9,7 %, con compra hasta 373,9 USD. **Seguiría siendo Comprar** (sección 9).
 
 ## 1. La tesis en cinco líneas
 

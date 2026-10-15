@@ -1,10 +1,10 @@
 # Zscaler (ZS): análisis growth, 14-oct-2026
 
-**Señal (método v7): Comprar (convicción baja)** · Puntuación 69/100 · Señales de cambio de tendencia 4/8 · EV/beneficio bruto 11,9x
-Precio 228,66 USD · Objetivo 12 m 280,9 USD (ponderada +22,9 %, base +16,8 %, bajista −40,1 %, alcista +97,9 %) · Compra hasta 267,1 USD
-Peso orientativo: 3,5 % por la regla, pero **hoy no entra**: el bolsillo growth está lleno y no desplaza a ninguna (sección 13) · Por qué: cumple todos los requisitos de compra
+**Señal (método vigente v11): Comprar (convicción baja)** · Puntuación 69,0/100 · Señales de cambio de tendencia 4/8 · EV/ventas NTM 9,2 veces
+Precio 228,66 USD (fecha del informe) · Objetivo 12 m 256,5 USD · Ponderada +12,2 % · Base +7,2 % · Bajista −42,3 % · Alcista +76,6 % · Compra hasta 244,3 USD
+Peso orientativo: 3.5 % de la cartera · Por qué: cumple todos los requisitos de compra
+Cabecera rehecha con la v11 el 15-oct (auditoría de homogeneidad). Antes decía (método v7): Comprar (convicción baja). El texto de abajo puede citar cifras de esa versión anterior; mandan las de esta cabecera.
 
-> **Calculado con el método v7** (`verticales/growth/metodo.md`). Las ventas del año objetivo salen de la regla mecánica (5.064 M USD en el base) y el múltiplo, del de hoy rebajado por desaceleración (5,2x / 8,7x / 13,9x EV/ventas NTM). La proyección propia (4.390 / 4.630 / 4.850 M USD) es solo contraste. **Aviso importante**: la regla mecánica exagera aquí. Parte de un crecimiento del ~25 %, pero unos 5 puntos vienen de una compra (Red Canary, agosto de 2025) que no se repite. La guía de la empresa para FY2027 es del +17 %. **Con la guía como partida (cálculo a mano, sección 9) la señal sigue en Comprar (baja), pero muy justa**: ponderada +9,3 %, base +4,1 %, bajista −43,6 % y compra hasta ~238 USD. Si además se usan probabilidades 35/50/15 por las dudas sobre la ejecución comercial, pasa a Mantener (ponderada −2,3 %).
 
 ## 1. La tesis en cinco líneas
 

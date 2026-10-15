@@ -1,10 +1,10 @@
 # Shopify (SHOP): análisis growth, 14-oct-2026
 
-**Señal (método v7): Comprar (convicción media)** · Puntuación 77,8/100 · Señales de cambio de tendencia 5/8 · EV/beneficio bruto 27,7x
-Precio 176,52 USD · Objetivo 12 m 202,9 USD (ponderada +14,9 %, base +18,1 %, bajista −43,2 %, alcista +66,9 %) · Compra hasta 193,2 USD
-Peso orientativo: 4 % (en dos tramos) · Por qué: cumple todos los requisitos de compra
+**Señal (método vigente v11): Comprar (convicción media)** · Puntuación 77,8/100 · Señales de cambio de tendencia 5/8 · EV/ventas NTM 13,2 veces
+Precio 176,52 USD (fecha del informe) · Objetivo 12 m 201,7 USD · Ponderada +14,3 % · Base +18,1 % · Bajista −43,2 % · Alcista +64,1 % · Compra hasta 192,1 USD
+Peso orientativo: 4 % de la cartera · Por qué: cumple todos los requisitos de compra
+Cabecera rehecha con la v11 el 15-oct (auditoría de homogeneidad). Antes decía (método v7): Comprar (convicción media). El texto de abajo puede citar cifras de esa versión anterior; mandan las de esta cabecera.
 
-> **Calculado con el método v7** (`verticales/growth/metodo.md`). Las ventas del año objetivo salen de la regla mecánica (22.234 M USD en el base) y el múltiplo, del de hoy rebajado por desaceleración (7,2x / 12,0x / 15,6x EV/ventas NTM). La proyección propia (20.100 / 22.600 / 23.900 M USD) es solo contraste.
 
 ## 1. La tesis en cinco líneas
 

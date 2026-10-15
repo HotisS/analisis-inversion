@@ -1,10 +1,10 @@
 # Dexcom (DXCM): análisis growth, 14-oct-2026
 
-**Señal (método v7): Comprar (convicción baja)** · Puntuación 68,2/100 · Señales de cambio de tendencia 7/8 · EV/beneficio bruto 9,3x
-Precio 85,06 USD · Objetivo 12 m 99,3 USD (ponderada +16,7 %, base +19,8 %, bajista −34,8 %, alcista +61,9 %) · Compra hasta 94,5 USD
-Peso orientativo: 3,5 %, 13 acciones en dos tramos), pero **el bolsillo growth está lleno y no hay liquidez**: hoy no sustituye a ninguna (sección 13) · Por qué: cumple todos los requisitos de compra
+**Señal (método vigente v11): Comprar (convicción baja)** · Puntuación 68,2/100 · Señales de cambio de tendencia 7/8 · EV/EBITDA ajustado NTM 17,8 veces
+Precio 85,06 USD (fecha del informe) · Objetivo 12 m 94,0 USD · Ponderada +10,5 % · Base +13,4 % · Bajista −36,6 % · Alcista +51,7 % · Compra hasta 89,5 USD
+Peso orientativo: 3.5 % de la cartera · Por qué: cumple todos los requisitos de compra
+Cabecera rehecha con la v11 el 15-oct (auditoría de homogeneidad). Antes decía (método v7): Comprar (convicción baja). El texto de abajo puede citar cifras de esa versión anterior; mandan las de esta cabecera.
 
-> **Calculado con el método v7** (`verticales/growth/metodo.md`) y **valorado por EV/EBITDA ajustado de los 12 meses siguientes**, porque Dexcom gana dinero de forma estable (margen operativo GAAP de más del 20 % y FCF positivo desde hace años). Múltiplos: 10,7x / 17,8x / 23,1x. Las ventas del año objetivo salen de la regla mecánica (6.272 M USD en el base, con un crecimiento del +13,4 % y el +11,3 %). **Con la guía de la empresa la proyección es menor** (+10 % anual: 6.013 M en el base). Recalculado a mano con ella, la señal **sigue siendo Comprar (baja)**, con ponderada +12,0 %, base +15,0 %, bajista −36,1 % y **compra hasta ~90,7 USD**. Este es el límite que recomiendo (sección 9).
 
 ## 1. La tesis en cinco líneas
 

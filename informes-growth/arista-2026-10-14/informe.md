@@ -1,12 +1,12 @@
 # Arista Networks (ANET): análisis growth, 14-oct-2026
 
-**Señal (método v7, vigente): Mantener, en vigilancia** · Puntuación 78,8/100 · Señales de cambio de tendencia 5/8 · EV/beneficio bruto 27,2x
-Precio 204,52 USD (cierre del 13-oct) · Objetivo 12 m 208,9 USD (ponderada +2,1 %, base +4,8 %, bajista −48,0 %, alcista +46,9 %) · Compra hasta 198,9 USD
+**Señal (método vigente v11): Mantener, en vigilancia** · Puntuación 78,8/100 · Señales de cambio de tendencia 5/8 · EV/EBITDA NTM 34,8 veces
+Precio 204,52 USD (fecha del informe) · Objetivo 12 m 208,9 USD · Ponderada +2,1 % · Base +4,8 % · Bajista −48,0 % · Alcista +46,9 % · Compra hasta 198,9 USD
+Peso orientativo: 0 % de la cartera · Por qué: no compra: ponderada < 5 % → en vigilancia
+Cabecera rehecha con la v11 el 15-oct (auditoría de homogeneidad). Antes decía (método v7): Mantener, en vigilancia. El texto de abajo puede citar cifras de esa versión anterior; mandan las de esta cabecera.
 **Candidata v9 (parte de la guía de la empresa): igual**, Mantener en vigilancia (+2,1 % / +4,8 %, compra hasta 198,9 USD). La guía (+42,9 % en el 2S26) más lo que Arista suele batirla (+6,6 pp) queda muy por encima de la partida mecánica (32,2 %), así que v9 no recorta nada.
 **Al precio actual** (195,92 USD, 14-oct a las 16:38 UTC, −4,2 % en la sesión): ya está por debajo del máximo de 198,9. Con el múltiplo del cierre, la regla da **Comprar (convicción media)**, con ponderada +6,6 % y base +9,4 %, igual en v7 y en v9. Es una compra por la mínima.
-Peso orientativo: 4 % por la regla, pero **no entra hoy**. El bolsillo growth está lleno y su +6,6 % no justifica sustituir a Shopify (+17,7 %) ni a Snowflake (+16,1 %). Queda como **séptima suplente**, por detrás de Toast y por delante de Wise (sección 13).
 
-> **Calculado con el método v7** (`verticales/growth/metodo.md`) y con EV/EBITDA NTM, porque Arista gana dinero de forma estable desde hace una década (margen operativo de casi el 50 %). La regla mecánica proyecta las ventas: 17.743 M USD en el base, 13.910 M en el bajista y 19.406 M en el alcista, para los 12 meses a jun-2028. El múltiplo de hoy, 34,8x, se rebaja por desaceleración (×0,86): 29,9x en el base, 17,9x en el bajista y 38,9x en el alcista. Nuestra proyección (15.000 / 18.500 / 21.000 M) es solo contraste. En este motor, EV/EBITDA y EV/ventas dan el mismo resultado: el margen EBITDA implícito sale del propio múltiplo (49 %).
 
 ## 1. La tesis en cinco líneas
 

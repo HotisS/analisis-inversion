@@ -1,10 +1,10 @@
 # Nu Holdings (NU): análisis growth, 14-oct-2026
 
-**Señal (método v7): Comprar (convicción media)** · Puntuación 78,3/100 · Señales de cambio de tendencia 4/8 · EV/beneficio bruto 7,3x
-Precio 15,58 USD · Objetivo 12 m 19,9 USD (ponderada +27,4 %, base +21,8 %, bajista -45,3 %, alcista +110,9 %) · Compra hasta 18,9 USD
+**Señal (método vigente v11): Comprar (convicción media)** · Puntuación 78,3/100 · Señales de cambio de tendencia 4/8 · P/beneficio NTM 15,0 veces
+Precio 15,58 USD (fecha del informe) · Objetivo 12 m 17,9 USD · Ponderada +15,1 % · Base +8,9 % · Bajista −46,7 % · Alcista +88,5 % · Compra hasta 16,6 USD
 Peso orientativo: 4 % de la cartera · Por qué: cumple todos los requisitos de compra
+Cabecera rehecha con la v11 el 15-oct (auditoría de homogeneidad). Antes decía (método v7): Comprar (convicción media). El texto de abajo puede citar cifras de esa versión anterior; mandan las de esta cabecera.
 
-> **Calculado con el método v7** (vigente desde el 14-oct tras el backtest de 71 casos, `verticales/growth/metodo.md` §6). Si la sección 9 enseña otras cifras de valoración, son del borrador con la proyección del analista; mandan las de arriba: ventas con la regla mecánica (15093 M en el base) y múltiplo de hoy con rebaja por desaceleración (7,7x / 12,8x / 20x).
 
 ## 1. La tesis en cinco líneas
 

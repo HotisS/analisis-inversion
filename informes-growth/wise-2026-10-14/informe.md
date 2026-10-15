@@ -1,10 +1,10 @@
 # Wise (WSE): análisis growth, 14-oct-2026
 
-**Señal (método v7): Comprar (convicción baja)** · Puntuación 62,8/100 · Señales de cambio de tendencia 1/8 · EV/beneficio bruto 4,3x
-Precio 12,22 USD (Nasdaq, cierre del 13-oct) · Objetivo 12 m 13,2 USD (ponderada +7,6 %, base +8,8 %, bajista −37,9 %, alcista +50,7 %) · Compra hasta 12,5 USD (≈ 950 p en Londres)
-Peso orientativo: 3,5 %, en dos tramos), pero **hoy no entra**: no queda liquidez en el bolsillo growth y mañana (15-oct) publica la actualización del 2T. Por qué: cumple los requisitos de compra, aunque por poco.
+**Señal (método vigente v11): Mantener, en vigilancia** · Puntuación 62,8/100 · Señales de cambio de tendencia 1/8 · EV/ventas 3,4 veces
+Precio 12,22 USD (fecha del informe) · Objetivo 12 m 12,7 USD · Ponderada +3,9 % · Base +4,5 % · Bajista −38,9 % · Alcista +44,8 % · Compra hasta 12,1 USD
+Peso orientativo: 0 % de la cartera · Por qué: no compra: ponderada < 5 % → en vigilancia
+Cabecera rehecha con la v11 el 15-oct (auditoría de homogeneidad). Antes decía (método v7): Comprar (convicción baja). El texto de abajo puede citar cifras de esa versión anterior; mandan las de esta cabecera.
 
-> **Calculado con el método v7** (`verticales/growth/metodo.md`). Las ventas del año objetivo salen de la regla mecánica (3.790 M USD en el base) y el múltiplo, del de hoy rebajado por desaceleración (1,9x / 3,1x / 4,2x EV/ventas NTM). La proyección propia (3.140 / 3.620 / 3.870 M USD) es solo contraste. **La compra es frágil**: con la proyección de la guía de la empresa o con probabilidades 35/50/15 pasaría a Mantener (apartado 9).
 
 **Dónde cotiza.** Desde el **11-may-2026** la cotización principal está en el **Nasdaq (WSE)**. Londres (WISE.L) queda como secundaria y sigue concentrando la mayor parte de la negociación. La sociedad matriz es ahora Wise Group plc. Desde el FY26 presenta las cuentas en **dólares y con normas contables de EE. UU.**, con resultados trimestrales (20-F y 6-K en la SEC). El ejercicio fiscal cierra el 31 de marzo.
 

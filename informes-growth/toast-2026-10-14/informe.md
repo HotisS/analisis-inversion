@@ -1,10 +1,10 @@
 # Toast (TOST): análisis growth, 14-oct-2026
 
-**Señal (método v7): Comprar (convicción baja)** · Puntuación 62,8/100 · Señales de cambio de tendencia 3/8 · EV/beneficio bruto 7,8x
-Precio 30,89 USD (cierre del 13-oct) · Objetivo 12 m 35,2 USD (ponderada +14,0 %, base +16,3 %, bajista −37,6 %, alcista +60,7 %) · Compra hasta 33,5 USD
-Peso orientativo: 3,5 % según la regla. **Hoy no entra**: el bolsillo growth está lleno y no supera a ninguna de las cinco. Queda **suplente nº 4**.
+**Señal (método vigente v11): Comprar (convicción baja)** · Puntuación 62,8/100 · Señales de cambio de tendencia 3/8 · EV/ventas NTM 2,1 veces
+Precio 30,89 USD (fecha del informe) · Objetivo 12 m 33,8 USD · Ponderada +9,3 % · Base +11,1 % · Bajista −37,6 % · Alcista +52,6 % · Compra hasta 32,1 USD
+Peso orientativo: 3.5 % de la cartera · Por qué: cumple todos los requisitos de compra
+Cabecera rehecha con la v11 el 15-oct (auditoría de homogeneidad). Antes decía (método v7): Comprar (convicción baja). El texto de abajo puede citar cifras de esa versión anterior; mandan las de esta cabecera.
 
-> **Calculado con el método v7** (`verticales/growth/metodo.md`). **Qué se toma como ventas**: los ingresos GAAP en bruto, como en Shopify. Incluyen el importe entero de las comisiones de pago; la parte que va a bancos y redes de tarjetas (interchange) entra en el coste. Por eso el margen bruto es solo del 26,7 % y el filtro que manda es **EV/beneficio bruto (7,8x frente al tope de 35x)**, no el EV/ventas. Las ventas del año objetivo salen de la regla mecánica (10.131 M USD en el base, partiendo de +23,8 %). El múltiplo es el de hoy rebajado por la desaceleración: 1,2x / 2,0x / 2,6x EV/ventas NTM. La proyección propia (8.383 / 9.634 / 10.292 M) es solo contraste.
 >
 > **Partiendo de min(mecánico, guía + batida)**, calculado a mano: la guía en ventas equivalentes más la batida media dan ~20,5 %, menos que el 23,8 % mecánico. Con eso, ponderada **+8,6 %**, base +10,8 %, bajista −39,2 % y compra hasta **31,9 USD**. **Sigue en Comprar (baja)** (sección 9).
 >

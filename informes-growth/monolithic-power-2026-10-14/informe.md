@@ -1,12 +1,12 @@
 # Monolithic Power Systems (MPWR): análisis growth, 14-oct-2026
 
-**Señal (método v9, vigente): Vender / no comprar** · Puntuación 70,7/100 · Señales de cambio de tendencia 4/8 · EV/beneficio bruto NTM 23,7x · Sin euforia (+34,4 % en 12 meses)
-Precio 1.319,55 USD (cierre del 13-oct) · Objetivo 12 m 1.060,5 USD (ponderada −19,0 %, base −16,9 %, bajista −60,1 %, alcista +17,7 %) · Compra hasta 1.015,8 USD
+**Señal (método vigente v11): Vender** · Puntuación 70,7/100 · Señales de cambio de tendencia 4/8 · EV/EBITDA NTM 32,8 veces
+Precio 1.319,55 USD (fecha del informe) · Objetivo 12 m 1.060,5 USD · Ponderada −19,0 % · Base −16,9 % · Bajista −60,1 % · Alcista +17,7 % · Compra hasta 1.015,8 USD
+Peso orientativo: 0 % de la cartera · Por qué: ponderada ≤ -10 %
+Cabecera rehecha con la v11 el 15-oct (auditoría de homogeneidad). Antes decía (método v9): Vender / no comprar. El texto de abajo puede citar cifras de esa versión anterior; mandan las de esta cabecera.
 **v7 (referencia): igual.** Vender / no comprar, −19,0 % / −16,9 %, compra hasta 1.015,8 USD. MPS solo da guía trimestral, así que v9 no tiene guía de 12 meses que aplicar y proyecta como v7 (es el único aviso del motor).
 **Al precio actual** (1.258,50 USD, 14-oct a las 17:00 UTC, −4,6 % en la sesión; Yahoo y Nasdaq.com), con el objetivo del informe fijo: ponderada **−15,1 %**, base −12,9 %, bajista −58,2 %, alcista +23,4 %. Sigue en no comprar: está un 24 % por encima del «compra hasta».
-Peso orientativo: **no entra**. Ni sustituye a ninguna growth ni entra en la lista de suplentes. Queda en observación por debajo de ~1.016 USD (sección 13).
 
-> **Calculado con el método v9** (`verticales/growth/metodo.md`) y con EV/EBITDA NTM, porque MPS gana dinero de forma estable desde hace más de una década. Su margen operativo GAAP es del 30 % y el no GAAP, del 37,5 %. La regla mecánica proyecta las ventas para los 12 meses a jun-2028: 5.719 M USD en el base, 4.412 M en el bajista y 6.289 M en el alcista. El múltiplo de hoy, 32,8x, se rebaja por desaceleración (×0,72): queda en 23,5x en el base, 14,1x en el bajista y 30,6x en el alcista. Nuestra proyección (4.800 / 5.950 / 6.800 M) es solo contraste. El margen EBITDA implícito que usa el motor es del 39,9 %, igual que el que estimamos para los próximos 12 meses.
 
 ## 1. La tesis en cinco líneas
 

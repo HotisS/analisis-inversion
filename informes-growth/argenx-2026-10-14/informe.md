@@ -1,10 +1,10 @@
 # argenx SE (ARGX): análisis growth, 14-oct-2026
 
-**Señal (método v7): Comprar (convicción baja)** · Puntuación 70,5/100 · Señales de cambio de tendencia 3/8 · EV/beneficio bruto 7,6x
-Precio 817,16 USD · Objetivo 12 m 1190,8 USD (ponderada +45,7 %, base +40,8 %, bajista -37,2 %, alcista +138,5 %) · Compra hasta 1134,1 USD
-Peso orientativo: 3,5 % de la cartera · Por qué: cumple todos los requisitos de compra
+**Señal (método vigente v11): Comprar (convicción baja)** · Puntuación 70,5/100 · Señales de cambio de tendencia 3/8 · EV/ventas NTM 6,9 veces
+Precio 817,16 USD (fecha del informe) · Objetivo 12 m 910,1 USD · Ponderada +11,4 % · Base +6,4 % · Bajista −42,9 % · Alcista +75,7 % · Compra hasta 866,8 USD
+Peso orientativo: 3.5 % de la cartera · Por qué: cumple todos los requisitos de compra
+Cabecera rehecha con la v11 el 15-oct (auditoría de homogeneidad). Antes decía (método v7): Comprar (convicción baja). El texto de abajo puede citar cifras de esa versión anterior; mandan las de esta cabecera.
 
-> **Calculado con el método v7** (vigente desde el 14-oct tras el backtest de 71 casos, `verticales/growth/metodo.md` §6). Si la sección 9 enseña otras cifras de valoración, son del borrador con la proyección del analista; mandan las de arriba: ventas con la regla mecánica (12612 M en el base) y múltiplo de hoy con rebaja por desaceleración (3,4x / 5,6x / 8,5x).
 
 ## 1. La tesis en cinco líneas
 

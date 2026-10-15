@@ -1,10 +1,11 @@
 # Eli Lilly (LLY): análisis growth, 14-oct-2026
 
-**Señal (método v9, vigente): Comprar (convicción media)** · Puntuación 85,5/100 · Señales de cambio de tendencia 7/8 · EV/beneficio bruto NTM 13,7x
-Precio 1.166,51 USD (cierre del 13-oct) · Objetivo 12 m 1.349,4 USD (ponderada +16,3 %, base +19,6 %, bajista −44,9 %, alcista +70,8 %) · Compra hasta 1.292,5 USD (prudente, ≤ 1.163 USD)
+**Señal (método vigente v11): Mantener** · Puntuación 85,5/100 · Señales de cambio de tendencia 7/8 · EV/EBITDA ajustado NTM 22,8 veces
+Precio 1.166,51 USD (fecha del informe) · Objetivo 12 m 1.146,8 USD · Ponderada −1,1 % · Base +0,9 % · Bajista −50,3 % · Alcista +44,1 % · Compra hasta 1.098,4 USD
+Peso orientativo: 0 % de la cartera · Por qué: no compra: ponderada < 5 %, bajista peor que -50 %
+Cabecera rehecha con la v11 el 15-oct (auditoría de homogeneidad). Antes decía (método v9): Comprar (convicción media). El texto de abajo puede citar cifras de esa versión anterior; mandan las de esta cabecera.
 **Al precio actual** (1.211,45 USD, 14-oct, 16:54 UTC; objetivo fijo): ponderada +11,4 % (+12,0 % con el dividendo) y base +14,6 %. Sigue bajo el «compra hasta».
 Referencia v7: 85,5 puntos, Comprar (alta), ponderada +45,9 %, base +50,0 %, bajista −37,0 %, objetivo 1.695,4 USD, compra hasta 1.623,9 USD.
-Peso orientativo: 4 %, pero **el bolsillo growth está lleno**. Al precio actual no supera a Shopify (+18 %) ni a Snowflake (+16 %), así que **no sustituye a ninguna**. Queda **cuarta en la lista de suplentes** (sección 13).
 
 > **Valorada por EV/EBITDA ajustado NTM** porque Lilly gana dinero de forma estable: margen de explotación > 40 % y FCF positivo. Múltiplos: 11,8x / 19,7x / 25,7x. Las ventas del año objetivo salen de la regla v9: parte del +29,8 % (la guía implícita del 2S26, +17,2 %, más los 12,6 puntos con los que batió su primera guía de 2025) y lleva a 129.600 M USD en el base. **Este es el punto débil.** Mi proyección, cercana al consenso, da 109.900 M en el base (+20 % y +15 %). Con ella, la ponderada cae a **−1 %** y el bajista a −50 %: Mantener. Con probabilidades prudentes de 35/50/15 (el 65 % de las ventas es tirzepatida), la ponderada queda en +4,7 %: Mantener en vigilancia. Por eso el límite prudente es ~1.163 USD (sección 9).
 

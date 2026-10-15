@@ -1,10 +1,10 @@
 # BE Semiconductor Industries (BESI): análisis growth, 14-oct-2026
 
-**Señal (método v7): Vender (no comprar)** · Puntuación 63,3/100 · Señales de cambio de tendencia 2/8 · EV/beneficio bruto 18,7x
-Precio 172,5 EUR · Objetivo 12 m 131,3 EUR (ponderada −23,0 %, base −26,9 %, bajista −63,8 %, alcista +25,5 %) · Compra hasta 125,7 EUR
-Peso orientativo: no entra · Por qué: ponderada ≤ −10 %
+**Señal (método vigente v11): Vender** · Puntuación 63,3/100 · Señales de cambio de tendencia 2/8 · EV/ventas NTM 12,0 veces
+Precio 172,50 EUR (fecha del informe) · Objetivo 12 m 131,3 EUR · Ponderada −23,0 % · Base −26,9 % · Bajista −63,8 % · Alcista +25,5 % · Compra hasta 124,0 EUR
+Peso orientativo: 0 % de la cartera · Por qué: ponderada ≤ -10 %
+Cabecera rehecha con la v11 el 15-oct (auditoría de homogeneidad). Antes decía (método v7): Vender (no comprar). El texto de abajo puede citar cifras de esa versión anterior; mandan las de esta cabecera.
 
-> **Calculado con el método v7** (`verticales/growth/metodo.md`). Ventas con la regla mecánica (1.178 M EUR en el base, 943 M en el bajista y 1.279 M en el alcista para los 12 meses a jun-2028) y múltiplo de hoy con la rebaja máxima por desaceleración (5,0x / 8,4x / 13,4x EV/ventas NTM). La proyección del analista (1.150 / 1.450 / 1.700 M) y el consenso (~1.670 M en 2028) quedan solo como contraste. La conclusión aguanta las variantes razonables de los datos (sección 9).
 
 ## 1. La tesis en cinco líneas
 

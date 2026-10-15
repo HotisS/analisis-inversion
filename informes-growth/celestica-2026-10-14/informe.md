@@ -1,10 +1,10 @@
 # Celestica (CLS): análisis growth, 14-oct-2026
 
-**Señal (método v7): Vender (no comprar)** · Puntuación 66,2/100 · Señales de cambio de tendencia 3/8 · EV/beneficio bruto 13,8x
-Precio 357,44 USD (cierre del 13-oct) · Objetivo 12 m 263,6 USD (ponderada −26,2 %, base −24,4 %, bajista −63,3 %, alcista +7,1 %) · Compra hasta 251,1 USD
-Peso orientativo: no entra · Por qué: ponderada ≤ −10 %
+**Señal (método vigente v11): Vender** · Puntuación 66,2/100 · Señales de cambio de tendencia 3/8 · EV/EBITDA NTM 16,5 veces
+Precio 357,44 USD (fecha del informe) · Objetivo 12 m 263,6 USD · Ponderada −26,2 % · Base −24,4 % · Bajista −63,3 % · Alcista +7,1 % · Compra hasta 251,1 USD
+Peso orientativo: 0 % de la cartera · Por qué: ponderada ≤ -10 %
+Cabecera rehecha con la v11 el 15-oct (auditoría de homogeneidad). Antes decía (método v7): Vender (no comprar). El texto de abajo puede citar cifras de esa versión anterior; mandan las de esta cabecera.
 
-> **Calculado con el método v7** (`verticales/growth/metodo.md`) y EV/EBITDA NTM, porque Celestica gana dinero de forma estable. Las ventas salen de la regla mecánica: 30.865 M USD en el base, 22.587 M en el bajista y 34.535 M en el alcista, para los 12 meses a jun-2028. El múltiplo de hoy (16,5x) baja con la rebaja máxima por desaceleración (11,8x / 7,1x / 15,4x). **Ojo: la regla mide mal este caso.** La proyección mecánica queda por debajo de la guía de la propia empresa para 2027, y la ampliación de capital de agosto se cuenta dos veces. La sección 9 da las variantes y la sección final, la mejora propuesta. Aun así, ninguna variante prudente da una compra clara.
 
 ## 1. La tesis en cinco líneas
 

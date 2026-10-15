@@ -1,12 +1,12 @@
 # Comfort Systems USA (FIX): análisis growth, 14-oct-2026
 
-**Señal (método v9, vigente): Mantener** · Puntuación 76,7/100 · Señales de cambio de tendencia 4/8 · EV/beneficio bruto NTM 14,4x
-Precio 1.626,64 USD (cierre del 13-oct) · Objetivo 12 m 1.604,1 USD (ponderada −1,2 %, base +1,4 %, bajista −53,1 %, alcista +45,5 %) · Compra hasta 1.530,6 USD (en la práctica ≈ 1.525, ver sección 9)
+**Señal (método vigente v11): Vender** · Puntuación 76,7/100 · Señales de cambio de tendencia 4/8 · EV/EBITDA NTM 19,8 veces
+Precio 1.626,64 USD (fecha del informe) · Objetivo 12 m 1.337,5 USD · Ponderada −17,6 % · Base −15,6 % · Bajista −57,2 % · Alcista +18,2 % · Compra hasta 1.276,2 USD
+Peso orientativo: 0 % de la cartera · Por qué: ponderada ≤ -10 %
+Cabecera rehecha con la v11 el 15-oct (auditoría de homogeneidad). Antes decía (método v9): Mantener. El texto de abajo puede citar cifras de esa versión anterior; mandan las de esta cabecera.
 Referencia v7: idéntica (76,7; ponderada −1,2 %, base +1,4 %, bajista −53,1 %; Mantener; compra hasta 1.530,6 USD). La guía no recorta porque la empresa la bate por mucho.
-Peso orientativo: no entra · Por qué: no compra porque la ponderada < 5 % y el bajista es peor que −50 %
 **Al precio actual** (1.542,37 USD, 14-oct, 16:55 UTC, −5,2 % en el día) y con el objetivo del informe fijo: ponderada +4,2 %, base +7,0 %, bajista −50,6 %. Sigue en Mantener, ahora rozando el límite (le falta 0,8 puntos de ponderada y 0,6 de bajista).
 
-> **Calculado con el método v9** (`verticales/growth/metodo.md`), con v7 al lado. Comfort Systems gana dinero de forma estable desde hace décadas (27 años seguidos de FCF positivo), así que se valora por **EV/EBITDA de los 12 meses siguientes** (19,8x hoy), no por EV/ventas: el código aplica el múltiplo a las ventas mecánicas con el margen EBITDA implícito de hoy (18,7 %). **Ojo: aquí ese margen congelado favorece a la empresa** (es un máximo histórico de contratista); con el 16 % que proponemos como razonable (`margen_ebitda_obj_pct`), la ponderada caería a ≈ −14 % (sección 9).
 
 ## 1. La tesis en cinco líneas
 

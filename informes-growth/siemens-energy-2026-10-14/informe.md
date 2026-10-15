@@ -1,10 +1,10 @@
 # Siemens Energy (ENR): análisis growth, 14-oct-2026
 
-**Señal (método v7): Mantener** · Puntuación 57,5/100 · Señales de cambio de tendencia 3/8 · EV/beneficio bruto 11,5x
-Precio 143,06 EUR · Objetivo 12 m 154,6 EUR (ponderada +8,5 %, base +9,7 %, bajista −39,5 %, alcista +54,2 %) · Compra hasta 147,9 EUR
-Peso orientativo: no entra · Por qué: no compra: puntuación < 60 (le faltan 2,5 puntos; todo lo demás lo cumple)
+**Señal (método vigente v11): Mantener** · Puntuación 57,5/100 · Señales de cambio de tendencia 3/8 · EV/EBITDA NTM 15,2 veces
+Precio 143,06 EUR (fecha del informe) · Objetivo 12 m 150,6 EUR · Ponderada +5,8 % · Base +6,4 % · Bajista −39,5 % · Alcista +49,6 % · Compra hasta 144,1 EUR
+Peso orientativo: 0 % de la cartera · Por qué: no compra: puntuación < 60
+Cabecera rehecha con la v11 el 15-oct (auditoría de homogeneidad). Antes decía (método v7): Mantener. El texto de abajo puede citar cifras de esa versión anterior; mandan las de esta cabecera.
 
-> **Calculado con el método v7** (`verticales/growth/metodo.md`). Al ser una industrial rentable con márgenes bajos, se valora por **EV/EBITDA de los 12 meses siguientes** (15,2x hoy), no por EV/ventas: el código aplica el múltiplo a las ventas mecánicas con el margen EBITDA implícito de hoy (~16 %). Las tasas de crecimiento son **comparables** (sin efecto divisa), como las publica la empresa; en euros nominales son menores (sección 3).
 
 ## 1. La tesis en cinco líneas
 

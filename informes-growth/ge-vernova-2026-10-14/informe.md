@@ -1,12 +1,12 @@
 # GE Vernova (GEV): análisis growth, 14-oct-2026
 
-**Señal (método v7, vigente): Vender (no comprar)** · Puntuación 61,8/100 · Señales de cambio de tendencia 3/8 · EV/beneficio bruto 26,2x
-Precio 1.004,04 USD (cierre del 13-oct) · Objetivo 12 m 853,1 USD (ponderada −14,8 %, base −12,6 %, bajista −52,6 %, alcista +18,4 %) · Compra hasta 814 USD
+**Señal (método vigente v11): Vender** · Puntuación 61,8/100 · Señales de cambio de tendencia 3/8 · EV/EBITDA NTM 30,1 veces
+Precio 1.004,04 USD (fecha del informe) · Objetivo 12 m 853,1 USD · Ponderada −14,8 % · Base −12,6 % · Bajista −52,6 % · Alcista +18,4 % · Compra hasta 814,0 USD
+Peso orientativo: 0 % de la cartera · Por qué: ponderada ≤ -10 %
+Cabecera rehecha con la v11 el 15-oct (auditoría de homogeneidad). Antes decía (método v7): Vender (no comprar). El texto de abajo puede citar cifras de esa versión anterior; mandan las de esta cabecera.
 **Candidata v9 (proyección desde la guía): igual**, Vender (−14,8 % / −12,6 % / −52,6 %; compra hasta 814 USD): la guía no recorta la proyección.
 **Al precio actual** (934,82 USD, 14-oct, 16:38 UTC, −6,9 % en la sesión): v7 y v9 dan Vender igual (ponderada −13,8 %, base −12,6 %, bajista −52,4 %; compra hasta 767 USD).
-Peso orientativo: no entra · Por qué: ponderada ≤ −10 % (puntuación, valoración por beneficio bruto y euforia sí pasan)
 
-> **Calculado con el método v7** (`verticales/growth/metodo.md`) y **EV/EBITDA de los 12 meses siguientes** (30,1x al cierre), porque GE Vernova ya gana dinero de forma estable y su EV/ventas (5,3x) no dice nada de un negocio con un margen EBITDA del 11-13 %. El código aplica el múltiplo a las ventas mecánicas con el margen EBITDA implícito de hoy (~17,6 % de las ventas NTM). Las tasas de crecimiento son las **publicadas en GAAP**, que incluyen la compra de Prolec GE (feb-2026); las orgánicas van al lado (sección 3).
 
 ## 1. La tesis en cinco líneas
 

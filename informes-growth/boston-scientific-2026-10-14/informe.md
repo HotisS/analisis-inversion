@@ -1,9 +1,10 @@
 # Boston Scientific (BSX): análisis growth, 14-oct-2026
 
-**Señal (método v9, vigente): Vender / no comprar** · Puntuación 46,0/100 · Señales de cambio de tendencia 2/8 · EV/beneficio bruto 4,9x
-Precio 43,31 USD (cierre del 13-oct) · Objetivo 12 m 38,9 USD (ponderada −10,2 %, base −4,0 %, bajista −52,6 %, alcista +68,0 %) · Compra hasta 37,0 USD (solo si la puntuación llegara a 60)
+**Señal (método vigente v11): Vender** · Puntuación 46,0/100 · Señales de cambio de tendencia 2/8 · EV/EBITDA ajustado NTM 11,7 veces
+Precio 43,31 USD (fecha del informe) · Objetivo 12 m 38,9 USD · Ponderada −10,2 % · Base −4,0 % · Bajista −52,6 % · Alcista +68,0 % · Compra hasta 37,0 USD
+Peso orientativo: 0 % de la cartera · Por qué: puntuación < 50
+Cabecera rehecha con la v11 el 15-oct (auditoría de homogeneidad). Antes decía (método v9): Vender / no comprar. El texto de abajo puede citar cifras de esa versión anterior; mandan las de esta cabecera.
 **Referencia v7**: Vender (puntuación < 50) · objetivo 45,5 USD (ponderada +5,1 %, base +13,2 %, bajista −47,6 %, alcista +101,5 %) · compra hasta 43,4 USD
-Peso orientativo: **no entra** · Por qué: puntuación < 50 (con las dos versiones); con v9, además, ponderada ≤ −10 %
 **Al precio actual** (42,50 USD, 14-oct a las 16:56 UTC, sesión abierta), con el objetivo del informe fijo: ponderada 38,9 ÷ 42,50 − 1 = **−8,5 %**; base 41,6 ÷ 42,50 − 1 = −2,1 %. No cambia nada.
 
 > **Valorado por EV/EBITDA ajustado de los 12 meses siguientes**, porque Boston Scientific gana dinero de forma estable (margen operativo ajustado del ~28 %, FCF positivo desde hace décadas), igual que Dexcom e Insulet. Múltiplos: 6,4x / 10,7x / 17,1x. **Crecimiento en orgánico** (sin divisas ni compras), porque las compras aportaron más de 3 pp en 2025 (publicado +19,9 %, orgánico +15,8 %). Con v9 la proyección parte del **+3,7 %** (la guía implícita del 2S26, +2,7 %, más el +1,0 pp que suele batirla), no del +11,7 % mecánico de v7: es la diferencia entre las dos versiones. La guía es tan baja por dos cosas: el frenazo de Farapulse y Watchman en EE. UU. y el ciberataque de agosto, que paró fábricas y envíos. Por eso la v9 aquí es **dura**: con la guía anual (+5,5 %) en vez de la del semestre y probabilidades 25/50/25, la ponderada sería +8,1 % (sección 9). **Ninguna variante cambia la señal**: la puntuación (46) está por debajo de 50 en todas.

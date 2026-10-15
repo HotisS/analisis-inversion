@@ -1,10 +1,10 @@
 # Insulet (PODD): análisis growth, 14-oct-2026
 
-**Señal (método v7): Mantener (sin convicción: no es Comprar)** · Puntuación 54,5/100 · Señales de cambio de tendencia 1/8 · EV/beneficio bruto 4,0x
-Precio 138,13 USD · Objetivo 12 m 188,9 USD (ponderada +36,8 %, base +29,5 %, bajista −39,4 %, alcista +127,5 %) · Compra hasta 178,9 USD (solo si la puntuación llega a 60)
-Peso orientativo: no entra · Por qué: no compra porque la puntuación es menor de 60
+**Señal (método vigente v11): Mantener** · Puntuación 54,5/100 · Señales de cambio de tendencia 1/8 · EV/EBITDA ajustado NTM 11,3 veces
+Precio 138,13 USD (fecha del informe) · Objetivo 12 m 169,1 USD · Ponderada +22,4 % · Base +16,1 % · Bajista −43,1 % · Alcista +100,7 % · Compra hasta 157,3 USD
+Peso orientativo: 0 % de la cartera · Por qué: no compra: puntuación < 60
+Cabecera rehecha con la v11 el 15-oct (auditoría de homogeneidad). Antes decía (método v7): Mantener (sin convicción: no es Comprar). El texto de abajo puede citar cifras de esa versión anterior; mandan las de esta cabecera.
 
-> **Calculado con el método v7** (`verticales/growth/metodo.md`) y **valorado por EV/EBITDA ajustado de los 12 meses siguientes**, igual que Dexcom, porque Insulet gana dinero de forma estable: margen operativo GAAP del 16-19 % y FCF positivo desde 2021. Los múltiplos de los tres casos son 6,3x, 10,6x y 16,9x. Las ventas del año objetivo salen de la regla mecánica: 4.773 M USD en el base, con un crecimiento del +27,1 % y después del +23,0 %. **Con la guía de la empresa más lo que suele batirla, la proyección es menor**: parte del +20,1 % (+16,8 % de la guía más 3,3 puntos de exceso medio) y da 4.294 M en el base. Recalculado a mano así, la ponderada baja a **+22,5 %**, el base a +16,4 % y el bajista a −43,5 %. La señal **sigue siendo Mantener**, porque no la frena la valoración sino la puntuación (54,5 < 60). El precio máximo de compra, si un día llegara a 60 puntos, sería **~160,8 USD** (sección 9).
 
 ## 1. La tesis en cinco líneas
 

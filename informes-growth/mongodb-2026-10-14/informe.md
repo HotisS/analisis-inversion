@@ -1,10 +1,10 @@
 # MongoDB (MDB): análisis growth, 14-oct-2026
 
-**Señal (método v7): Comprar (convicción baja)** · Puntuación 74,5/100 · Señales de cambio de tendencia 5/8 · EV/beneficio bruto 12,1x
-Precio 373,07 USD (cierre del 13-oct; 365,53 USD intradía el 14-oct a las ~16:20 UTC) · Objetivo 12 m 465,1 USD (ponderada +24,7 %, base +18,7 %, bajista −38,0 %, alcista +99,4 %) · Compra hasta 442,8 USD
-Peso orientativo: 3,5 % por la regla, pero **hoy no entra** (bolsillo growth lleno, ~20 %, y sin liquidez): **suplente n.º 2**, detrás de Dexcom (sección 13) · Por qué: cumple todos los requisitos de compra
+**Señal (método vigente v11): Comprar (convicción baja)** · Puntuación 74,5/100 · Señales de cambio de tendencia 5/8 · EV/ventas NTM 8,8 veces
+Precio 373,07 USD (fecha del informe) · Objetivo 12 m 439,5 USD · Ponderada +17,8 % · Base +11,6 % · Bajista −38,6 % · Alcista +86,6 % · Compra hasta 416,4 USD
+Peso orientativo: 3.5 % de la cartera · Por qué: cumple todos los requisitos de compra
+Cabecera rehecha con la v11 el 15-oct (auditoría de homogeneidad). Antes decía (método v7): Comprar (convicción baja). El texto de abajo puede citar cifras de esa versión anterior; mandan las de esta cabecera.
 
-> **Calculado con el método v7** (`verticales/growth/metodo.md`). Las ventas del año objetivo salen de la regla mecánica (4.272 M USD en el base, partiendo de un crecimiento del 25,8 %) y el múltiplo, del de hoy rebajado por la desaceleración (5,0x / 8,4x / 13,4x EV/ventas NTM). La proyección propia (3.600 / 4.000 / 4.300 M USD) es solo contraste. **Con la guía**: partiendo de min(mecánico 25,8 %, guía 18,7 % + exceso medio 6,0 pp = 24,7 %) = **24,7 %**, la ponderada queda en **+22,6 %** (base +16,8 %, bajista −38,6 %) y la compra hasta ~436 USD: **la señal no cambia**. Lo que sí la mueve es el alcista, que se apoya en comparables en parte de memoria (sección 9).
 
 ## 1. La tesis en cinco líneas
 

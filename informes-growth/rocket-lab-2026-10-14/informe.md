@@ -1,10 +1,10 @@
 # Rocket Lab Corporation (RKLB): análisis growth, 14-oct-2026
 
-**Señal (método v7): Mantener** · Puntuación 63,8/100 · Señales de cambio de tendencia 3/8 · EV/beneficio bruto 90,8x
-Precio 64,22 USD · Objetivo 12 m 65,1 USD (ponderada +1,3 %, base +15,7 %, bajista −47,7 %, alcista +67,9 %) · Compra hasta 28,7 USD
-Peso orientativo: no entra · Por qué: no compra: ponderada < 5 %, EV/beneficio bruto > 35
+**Señal (método vigente v11): Mantener** · Puntuación 63,8/100 · Señales de cambio de tendencia 3/8 · EV/ventas NTM 33,6 veces
+Precio 64,22 USD (fecha del informe) · Objetivo 12 m 65,1 USD · Ponderada +1,3 % · Base +15,7 % · Bajista −47,7 % · Alcista +67,9 % · Compra hasta 28,7 USD
+Peso orientativo: 0 % de la cartera · Por qué: no compra: ponderada < 5 %, EV/beneficio bruto > 35
+Cabecera rehecha con la v11 el 15-oct (auditoría de homogeneidad). Antes decía (método v7): Mantener. El texto de abajo puede citar cifras de esa versión anterior; mandan las de esta cabecera.
 
-> **Calculado con el método v7** (`verticales/growth/metodo.md`). Ventas con la regla mecánica (1.756 M USD en el base), múltiplo de hoy (33,6x EV/ventas NTM) con rebaja por desaceleración (18,4x / 30,7x / 39,9x). Probabilidades 35/50/15 porque la ejecución es dudosa (Neutron lleva tres años de retraso) y hay una compra transformadora pendiente (Iridium). **Valoración de Rocket Lab sola, sin Iridium** (sección 9).
 
 ## 1. La tesis en cinco líneas
 

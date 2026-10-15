@@ -1,10 +1,10 @@
 # HubSpot (HUBS): análisis growth, 14-oct-2026
 
-**Señal (método v7): Comprar (convicción baja)** · Puntuación 66,8/100 · Señales de cambio de tendencia 3/8 · EV/beneficio bruto 3,0x
-Precio 221,28 USD (cierre del 13-oct) · Objetivo 12 m 238,1 USD (ponderada +7,6 %, base +14,4 %, bajista −35,6 %, alcista +85,9 %) · Compra hasta 226,8 USD
-Peso orientativo: 3,5 % según la regla, pero **mi recomendación es que no entre**: Mantener en vigilancia (ver el recuadro y la sección 13) · Por qué (regla): cumple todos los requisitos de compra
+**Señal (método vigente v11): Mantener** · Puntuación 66,8/100 · Señales de cambio de tendencia 3/8 · EV/ventas NTM 2,5 veces
+Precio 221,28 USD (fecha del informe) · Objetivo 12 m 220,3 USD · Ponderada −0,4 % · Base +4,8 % · Bajista −37,1 % · Alcista +67,5 % · Compra hasta 209,8 USD
+Peso orientativo: 0 % de la cartera · Por qué: no compra: ponderada < 5 %
+Cabecera rehecha con la v11 el 15-oct (auditoría de homogeneidad). Antes decía (método v7): Comprar (convicción baja). El texto de abajo puede citar cifras de esa versión anterior; mandan las de esta cabecera.
 
-> **Calculado con el método v7** (`verticales/growth/metodo.md`), con probabilidades **35/50/15** (no 25/50/25) por el riesgo de que la IA erosione el modelo por asiento (sección 4 bis). Las ventas del año objetivo salen de la regla mecánica, que parte de un crecimiento del **20,2 %**. La empresa guía **+14 %** para el segundo semestre y la bate de media por 2,6 puntos. **Si se parte de min(mecánico, guía + exceso) = 16,7 %** (cálculo de la candidata v9, sin tocar el motor), las ventas quedan en 4.002 / 4.596 / 4.845 M USD y el resultado es **ponderada +2,7 %, base +8,9 %, bajista −37,1 %: Mantener en vigilancia**, con compra hasta **216,4 USD**. Con solo la guía, sin exceso, la ponderada es de −0,2 %. Precio revisado a las 16:28 UTC del 14-oct (223,67 USD): v7 da +6,7 % (sigue en Comprar) y la guía con el exceso da +1,8 % (Mantener). **La compra depende entera de suponer que HubSpot crecerá más de lo que ella misma dice. No la recomiendo.**
 
 ## 1. La tesis en cinco líneas
 

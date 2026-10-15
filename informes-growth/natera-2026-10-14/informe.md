@@ -1,11 +1,11 @@
 # Natera (NTRA): análisis growth, 14-oct-2026
 
-**Señal (método v7, vigente): Comprar (convicción baja)** · Puntuación 74,7/100 · Señales de cambio de tendencia 6/8 · EV/beneficio bruto 27,3x
-Precio 395,66 USD (cierre del 13-oct; 400,32 USD intradía el 14-oct a las 16:40 UTC) · Objetivo 12 m 498,1 USD (ponderada +25,9 %, base +29,3 %, bajista −41,2 %, alcista +86,1 %) · Compra hasta 474,4 USD
+**Señal (método vigente v11): Comprar (convicción baja)** · Puntuación 74,7/100 · Señales de cambio de tendencia 6/8 · EV/ventas NTM 17,8 veces
+Precio 395,66 USD (fecha del informe) · Objetivo 12 m 427,9 USD · Ponderada +8,1 % · Base +9,2 % · Bajista −42,4 % · Alcista +56,6 % · Compra hasta 407,5 USD
+Peso orientativo: 3.5 % de la cartera · Por qué: cumple todos los requisitos de compra
+Cabecera rehecha con la v11 el 15-oct (auditoría de homogeneidad). Antes decía (método v7): Comprar (convicción baja). El texto de abajo puede citar cifras de esa versión anterior; mandan las de esta cabecera.
 **Con la candidata v9 (la recomendación mientras se decide si se adopta): Comprar (convicción baja)** · Objetivo 482,0 USD (ponderada +21,8 %, base +25,1 %, bajista −42,3 %, alcista +79,2 %) · Compra hasta 459,1 USD
-Peso orientativo: 3,5 % por la regla, pero **hoy no entra**: el bolsillo growth está lleno (~20 %) y la liquidez libre es casi nula. No sustituye a ninguna y queda como **suplente growth n.º 3**, detrás de Samsara y Datadog (sección 13) · Por qué: cumple todos los requisitos de compra
 
-> **Calculado con el método v7** (`verticales/growth/metodo.md`) **por EV/ventas de los 12 meses siguientes**, porque Natera todavía pierde dinero en GAAP y su FCF es solo del 3 %. Las ventas del año objetivo salen de la regla mecánica: 5.039 M USD en el base, partiendo de un crecimiento del 39,4 %. Los múltiplos son 9,8x / 16,3x / 21,2x, el de hoy (17,8x) rebajado un 8 % por la desaceleración.
 >
 > **v9** parte de mín(39,4 %; guía 13,7 % + exceso habitual 23,3 pp = 37,0 %) = **37,0 %**. El recorte es pequeño porque Natera guía muy por debajo de lo que luego hace: su guía no incluye los cobros extra de pruebas antiguas (*true-ups*). Ponderada +21,8 %.
 >

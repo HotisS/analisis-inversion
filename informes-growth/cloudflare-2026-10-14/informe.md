@@ -1,10 +1,10 @@
 # Cloudflare (NET): análisis growth, 14-oct-2026
 
-**Señal (método v7): Mantener** · Puntuación 81,3/100 · Señales de cambio de tendencia 6/8 · EV/beneficio bruto 56x
-Precio 360,93 USD · Objetivo 12 m 409,3 USD (ponderada +13,4 %, base +16,5 %, bajista -45,1 %, alcista +65,6 %) · Compra hasta 226,2 USD
-Peso orientativo: no entra · Por qué: no compra: EV/beneficio bruto > 35
+**Señal (método vigente v11): Mantener** · Puntuación 81,3/100 · Señales de cambio de tendencia 6/8 · EV/ventas NTM 40,4 veces
+Precio 360,93 USD (fecha del informe) · Objetivo 12 m 404,4 USD · Ponderada +12,0 % · Base +16,5 % · Bajista −45,1 % · Alcista +60,2 % · Compra hasta 226,2 USD
+Peso orientativo: 0 % de la cartera · Por qué: no compra: EV/beneficio bruto > 35
+Cabecera rehecha con la v11 el 15-oct (auditoría de homogeneidad). Antes decía (método v7): Mantener. El texto de abajo puede citar cifras de esa versión anterior; mandan las de esta cabecera.
 
-> **Calculado con el método v7** (vigente desde el 14-oct tras el backtest de 71 casos, `verticales/growth/metodo.md` §6). Si la sección 9 enseña otras cifras de valoración, son del borrador con la proyección del analista; mandan las de arriba: ventas con la regla mecánica (4252 M en el base) y múltiplo de hoy con rebaja por desaceleración (22,6x / 37,6x / 48,9x).
 
 ## 1. La tesis en cinco líneas
 

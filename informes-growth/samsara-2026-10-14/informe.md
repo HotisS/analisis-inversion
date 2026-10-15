@@ -1,10 +1,10 @@
 # Samsara (IOT): análisis growth, 14-oct-2026
 
-**Señal (método v7): Comprar (convicción media)** · Puntuación 78,5/100 · Señales de cambio de tendencia 7/8 · EV/beneficio bruto 13,8x
-Precio 41,27 USD · Objetivo 12 m 49,8 USD (ponderada +20,6 %, base +23,8 %, bajista −38,2 %, alcista +73,0 %) · Compra hasta 47,4 USD
-Peso orientativo: 4 %, 30 acciones en dos tramos), pero **el bolsillo growth está lleno y no hay liquidez**: entra **sustituyendo a Shopify**, sin vender nada a pérdida (sección 13) · Por qué: cumple todos los requisitos de compra
+**Señal (método vigente v11): Comprar (convicción media)** · Puntuación 78,5/100 · Señales de cambio de tendencia 7/8 · EV/ventas NTM 10,6 veces
+Precio 41,27 USD (fecha del informe) · Objetivo 12 m 47,3 USD · Ponderada +14,7 % · Base +18,2 % · Bajista −38,5 % · Alcista +60,5 % · Compra hasta 45,1 USD
+Peso orientativo: 4 % de la cartera · Por qué: cumple todos los requisitos de compra
+Cabecera rehecha con la v11 el 15-oct (auditoría de homogeneidad). Antes decía (método v7): Comprar (convicción media). El texto de abajo puede citar cifras de esa versión anterior; mandan las de esta cabecera.
 
-> **Calculado con el método v7** (`verticales/growth/metodo.md`). Las ventas del año objetivo salen de la regla mecánica (3.005 M USD en el base, con un crecimiento de partida del 29,8 %) y el múltiplo, del de hoy rebajado por desaceleración (6,1x / 10,2x / 13,3x EV/ventas NTM). **Contraste con la guía (mejora pendiente de la tanda 4, calculada a mano sin tocar el código):** si la proyección parte del crecimiento que implica la guía de la empresa (+22,7 % en los 12 meses siguientes, menos que el 29,8 % mecánico), las ventas base bajan a 2.704 M y la señal **sigue siendo Comprar (media)**, pero con ponderada **+9,1 %**, base +11,9 %, bajista −41,4 % y **compra hasta 42,9 USD**. Samsara bate su guía trimestral en un 4-5 % cada trimestre (sección 3): con la guía más esa batida (~28 %) la ponderada sería +17,6 %. **El límite que recomiendo para la orden es 42,9 USD**, el de la guía sin batida.
 
 ## 1. La tesis en cinco líneas
 

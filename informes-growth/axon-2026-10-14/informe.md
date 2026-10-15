@@ -1,10 +1,10 @@
 # Axon Enterprise (AXON): análisis growth, 14-oct-2026
 
-**Señal (método v7): Comprar (convicción baja)** · Puntuación 68,2/100 · Señales de cambio de tendencia 3/8 · EV/beneficio bruto 14,2x
-Precio 413,35 USD · Objetivo 12 m 554,8 USD (ponderada +34,2 %, base +28,3 %, bajista -42,4 %, alcista +122,8 %) · Compra hasta 528,4 USD
-Peso orientativo: 3,5 % de la cartera · Por qué: cumple todos los requisitos de compra
+**Señal (método vigente v11): Comprar (convicción baja)** · Puntuación 68,2/100 · Señales de cambio de tendencia 3/8 · EV/ventas NTM 8,5 veces
+Precio 413,35 USD (fecha del informe) · Objetivo 12 m 546,8 USD · Ponderada +32,3 % · Base +26,6 % · Bajista −42,4 % · Alcista +118,4 % · Compra hasta 476,4 USD
+Peso orientativo: 3.5 % de la cartera · Por qué: cumple todos los requisitos de compra
+Cabecera rehecha con la v11 el 15-oct (auditoría de homogeneidad). Antes decía (método v7): Comprar (convicción baja). El texto de abajo puede citar cifras de esa versión anterior; mandan las de esta cabecera.
 
-> **Calculado con el método v7** (vigente desde el 14-oct tras el backtest de 71 casos, `verticales/growth/metodo.md` §6). Si la sección 9 enseña otras cifras de valoración, son del borrador con la proyección del analista; mandan las de arriba: ventas con la regla mecánica (5572 M en el base) y múltiplo de hoy con rebaja por desaceleración (5x / 8,3x / 13x).
 
 ## 1. La tesis en cinco líneas
 
