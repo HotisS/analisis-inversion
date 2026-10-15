@@ -8,7 +8,16 @@ Solo lo pendiente. Lo cerrado está en `archivo/` (índice en `archivo/HISTORICO
 
 - **UnitedHealth** (`informes/unitedhealth-2026-10-12/`): ha publicado resultados después de la fecha del informe. Revisarlos (regla E1 de robustez) y actualizar el objetivo a 12 meses como LVMH (`informes/lvmh-2026-10-08/notas/actualizacion-v4.mjs`).
 
-**Octava hora: cerrada el 15-oct** (resumen en `informes/octava-hora-2026-10-15/resumen.md`: compras robustas Rai Way y Burckhardt; propuestas en `cambios-propuestos.md`). Novena hora sin proponer: antes de elegirla, aplicar al perfil `calidad-a-precio` el punto 1 de `informes/octava-hora-2026-10-15/puntos-metodo.md` (crecimiento del consenso en vez del pasado; fuera lo que ha subido > 60 % desde mínimos).
+**Octava hora: cerrada el 15-oct** (`informes/octava-hora-2026-10-15/`: Rai Way y Burckhardt robustas).
+
+**Novena hora: EN MARCHA desde el 15-oct 09:45 UTC (hilo «sexta hora»).** Escáner `calidad-a-precio` sin cambios (`escaneos/escaneo-2026-10-15-novena-hora.xlsx`) y cartas/índices de gestores (Morningstar vía VanEck MOAT/MOTI). Comprobada contra `informes/` e `informes-growth/`.
+
+| Tanda | Empresas |
+|---|---|
+| 1 | Universal Music Group (UMG.AS), Check Point (CHKP), Booz Allen (BAH), Unicharm (8113.T) |
+| 2 | Compass Group (CPG.L), Borregaard (BRG.OL), SFS Group (SFSN.SW), Interparfums SA (ITP.PA) |
+| 3 | ADP (ADP), Chemed (CHE), Brady (BRC), Lockheed Martin (LMT) |
+| 4 | OMA, Grupo Aeroportuario Centro Norte (OMAB), Sweco (SWEC-B.ST), Neurocrine (NBIX), Tetra Tech (TTEK) |
 
 ## Vigilar (cifras v3 ×1,1 al cierre del 14-oct)
 
