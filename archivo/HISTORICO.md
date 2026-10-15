@@ -4,6 +4,10 @@
 
 **Qué se apunta aquí** (una entrada por cambio, la más reciente arriba, dos o tres líneas): cambios de método o de reglas, decisiones de cartera que sustituyen a otras, cambios de estructura del repo o del flujo de trabajo, y lo que se retira de `MEMORIA.md`, `cola.md` o `lecciones.md` cuando ya no está vigente. No se apuntan análisis sueltos (están en `seguimiento.xlsx` y en cada `diario.md`).
 
+## 15-oct-2026 · Novena hora value
+
+16 análisis (Universal Music, Check Point, Booz Allen, Unicharm, Compass, Borregaard, SFS, Interparfums SA, ADP, Chemed, Brady, Lockheed Martin, OMA, Sweco, Neurocrine, Tetra Tech), con el escáner sin cambios y cartas de gestores. Compra robusta: Universal Music (≤15,51 EUR, en dos partes por resultados del 29-oct): 1 de 16. Caen 10 por valor intrínseco y 4 por calidad o sostenibilidad. Corregida la sanción de la SEC atribuida por error a Qualys. Detalle en `informes/novena-hora-2026-10-15/`.
+
 ## 15-oct-2026 · Octava hora value: primera elegida con el escáner
 
 16 análisis (Broadridge, Jack Henry, FactSet, Sage, Burckhardt, Thales, DO & CO, Rai Way, Gentex, Autodesk, Cencora, Paycom, MSA Safety, Rollins, Diagnostyka, Qualys). Compras robustas: Rai Way (≤4,22 EUR) y Burckhardt (≤482,60 CHF, tras el 3-nov): 2 de 16 frente a 2 de 32 en la 6.ª y 7.ª. Ninguna cae por calidad (antes 14); 7 caen por valor intrínseco (antes 19). Escáner: tasa libre y prima alineadas con el DCF (6565ad3). Detalle en `informes/octava-hora-2026-10-15/`.
