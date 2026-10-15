@@ -4,6 +4,10 @@
 
 **Qué se apunta aquí** (una entrada por cambio, la más reciente arriba, dos o tres líneas): cambios de método o de reglas, decisiones de cartera que sustituyen a otras, cambios de estructura del repo o del flujo de trabajo, y lo que se retira de `MEMORIA.md`, `cola.md` o `lecciones.md` cuando ya no está vigente. No se apuntan análisis sueltos (están en `seguimiento.xlsx` y en cada `diario.md`).
 
+## 15-oct-2026 · Auditoría de homogeneidad (método, decisiones y salida)
+
+Pregunta de Hotis: ¿son homogéneos análisis, Excel y cartera? Arreglos que solo aplican reglas vigentes: el escáner diario ya no da señal de venta antes de la fecha de la regla 12 (`mantener_hasta` en `escaner/reglas.json` y `no_tocar_hasta` de la cartera privada; Intuit, Uber y Viscofan hasta el 13-ene, Netflix hasta el 20-nov, compras del 15-oct hasta el 15-ene); AppLovin y Robinhood en exclusiones; el Excel ya no propone «dos tramos», lee las cuatro cifras de la última foto `cartera-1-…md` y no imprime «NaN» en las órdenes límite; método growth y plantilla sin tramos; `MEMORIA.md` sustituye la cartera del 14-oct 17:40 (tramos, Bureau Veritas, Viscofan +5, Axon, Shopify y Snowflake) por la del 15-oct.
+
 ## 15-oct-2026 · Megatendencias: foco energía, electricidad y frío (31 análisis nuevos)
 
 Hotis pidió analizar las 10 candidatas del screening y poner el foco en energía, electricidad y frío industrial. Universo ampliado a 62 sectores (generadoras, climatización y frío, refrigeración de centros de datos, refino, petroleras europeas, oleoductos); 28 informes value y 3 growth. Ninguna compra robusta hoy; con límite: Lennox ≤336,68 USD y Prysmian ≤96,52 EUR. Revisión trimestral programada (2-ene, 2-abr, 2-jul, 2-oct, 10:10 Madrid). Entrega: /mnt/project-files/estrategia/megatendencias/analisis-megatendencias-y-focos-2026-10-15.md.

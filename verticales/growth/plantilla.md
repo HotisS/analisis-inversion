@@ -104,7 +104,7 @@ Peso orientativo: <x %> o «no entra»
 ## 10 bis. Precio y noticias antes de decidir (tabla de `contexto_mercado`: movimiento, hechos y noticias con su veredicto; veredicto global y condición)
 ## 11. Riesgos y qué rompería la tesis (señales de venta concretas)
 ## 12. Catalizadores con fecha
-## 13. Encaje en cartera            (frente a la cartera value vigente y a otras growth; peso y tramos)
+## 13. Encaje en cartera            (frente a la cartera value vigente y a otras growth; peso; compra entera, sin tramos)
 ## 14. Puntuación                   (tabla de los seis bloques con sus puntos)
 ## Fuentes
 ```

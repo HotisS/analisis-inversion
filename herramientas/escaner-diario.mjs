@@ -220,6 +220,10 @@ async function escanear() {
   // --- Ventas (lo que está en cartera) ---
   for (const p of CARTERA.posiciones) {
     if (REGLAS.no_vender[p.clave] || p.vertical === 'otro') continue;
+    // Regla 12 (METODO-VIGENTE.md §4): lo comprado no se vende en 3 meses por recálculos de valoración ni umbrales de
+    // precio; solo por un hecho nuevo y duro, que se mira a mano (resultados, supervisor, guía), no lo dispara el escáner.
+    const hastaR12 = [p.no_tocar_hasta, REGLAS.mantener_hasta?.[p.clave]].filter((f) => /^\d{4}-\d{2}-\d{2}$/.test(f || '')).sort().at(-1);
+    if (hastaR12 && hastaR12 >= ahora.fecha) continue;
     const motivos = [];
     let fila = null;
     if (p.vertical === 'value') {
