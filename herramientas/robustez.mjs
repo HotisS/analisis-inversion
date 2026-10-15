@@ -152,7 +152,13 @@ function probar(carpeta) {
   let cagr = null;
   if (bpaBase > 0 && u?.bpa > 0 && anioObj && anioU && anioObj > anioU) {
     cagr = 100 * ((bpaBase / u.bpa) ** (1 / (anioObj - anioU)) - 1);
-    if (cagr > 25) marca('D6', 'CONFIANZA', `Nuestro BPA base ${o.ejercicio} (${f(bpaBase, 2)}) supone crecer un ${f(cagr, 0)} % al año desde ${u.periodo} (${f(u.bpa, 2)}). Si es un rebote de un año malo, decirlo; si no, la cifra depende de un crecimiento difícil de sostener.`);
+    // Rebote ya visible (robustez.md: «salvo rebote explicado»): si desde el BPA de los últimos doce meses el crecimiento
+    // hasta el objetivo es ≤ 25 % anual, el año malo ya se ha recuperado en las cuentas y la marca queda en AVISO.
+    const ltm = d.financieros?.ltm, finLtm = ltm?.fecha_fin ? new Date(ltm.fecha_fin) : null;
+    const aniosLtm = finLtm && !isNaN(finLtm) ? (new Date(`${anioObj}-12-31`) - finLtm) / (365.25 * 864e5) : null;
+    const cagrLtm = num(ltm?.bpa) > 0 && aniosLtm > 0.5 ? 100 * ((bpaBase / ltm.bpa) ** (1 / aniosLtm) - 1) : null;
+    if (cagr > 25 && cagrLtm !== null && cagrLtm <= 25) marca('D6', 'AVISO', `Nuestro BPA base ${o.ejercicio} (${f(bpaBase, 2)}) supone crecer un ${f(cagr, 0)} % al año desde ${u.periodo} (${f(u.bpa, 2)}), pero solo un ${f(cagrLtm, 0)} % desde el BPA de los últimos doce meses (${ltm.periodo || 'LTM'}: ${f(ltm.bpa, 2)}): rebote ya visible en las cuentas.`);
+    else if (cagr > 25) marca('D6', 'CONFIANZA', `Nuestro BPA base ${o.ejercicio} (${f(bpaBase, 2)}) supone crecer un ${f(cagr, 0)} % al año desde ${u.periodo} (${f(u.bpa, 2)}). Si es un rebote de un año malo, decirlo; si no, la cifra depende de un crecimiento difícil de sostener.`);
     if (cagr < -5) marca('D6', 'AVISO', `Nuestro BPA base cae un ${f(-cagr, 0)} % al año hasta ${o.ejercicio}: comprobar que no se castiga dos veces con el múltiplo.`);
   }
   // D7 contraste con el consenso del mismo ejercicio.

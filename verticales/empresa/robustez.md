@@ -30,7 +30,7 @@ NODE_USE_ENV_PROXY=1 node herramientas/robustez-growth.mjs --precios [<carpeta> 
 | D3 | Precio con más de 4 días, o sin cierre en `precios.json` | CORREGIR / AVISO | Regla de precio actual |
 | D4 | BPA real ≠ beneficio ÷ acciones (±15 %) | AVISO | — |
 | D5 | Tipo efectivo < 8 %, beneficio neto > EBIT, o salto del BPA > 50 % sin salto del EBIT: BPA con partidas que no se repiten | VARIANTE (BPA normalizado; no usar la historia v3 construida con ese BPA) | Uber |
-| D6 | Nuestro BPA base crece > 25 % al año desde el último real | CONFIANZA (salvo rebote explicado) | Constellation, DSV |
+| D6 | Nuestro BPA base crece > 25 % al año desde el último real | CONFIANZA; AVISO si desde el BPA de los últimos doce meses crece ≤ 25 % (rebote ya visible en las cuentas) | Constellation, DSV; Neurocrine (rebote) |
 | D7 | Nuestro BPA base a más de un 15 % del consenso | VARIANTE si vamos por encima (la señal debe aguantar con el del consenso); AVISO si vamos por debajo | — |
 | M1 | Desrateada: mediana adelantada ≥ 1,8 × el PER de hoy (v3 en su tope) | VARIANTE: si la caída es de régimen (regulación, IA, competencia), decide v2 | Edenred, Intuit, Zoetis |
 | M2 | Historia del PER de 3 años o menos (o sin historia útil) | CONFIANZA, salvo que v2 también dé Comprar | ANYCOLOR, Bureau Veritas, Uber |
