@@ -1,0 +1,19 @@
+# Diario — Auto Trader Group (AUTO.L), corte 2026-10-15
+
+- Commit de partida: 740bc0a (9ª hora: cuentas.mjs con ejercicios no naturales…). Encargo: análisis completo nuevo (petición del usuario: «me gusta donde está a nivel técnico, que no estemos siendo muy conservadores») más prueba de conservadurismo. Sin subagentes; sin commits (los hace el coordinador).
+- 11:17 UTC. Iteración sobre `informes/auto-trader-2026-10-10/`: copiadas las notas A-E y propio. Precio: cierre del 14-oct, 512,4 p (sesión del 15-oct abierta, 529,8 p a media mañana; todo el sector de clasificados rebota sin noticia propia).
+- `cuentas.mjs --esef "Auto Trader"` no encuentra la entidad: la sociedad se llama ahora **Autotrader Group plc**; con `--esef "Autotrader"` sí. XBRL FY2021-FY2026 cotejado con la nota A: ingresos, EBIT, beneficio y BPA idénticos; deuda en libros 163,4 frente a 165 nominal (A usa el nominal). A, B y C siguen valiendo (nada publicado desde el 10-oct salvo recompras).
+- Hechos nuevos desde el 10-oct (RNS en Investegate, MarketScreener, FCA, BoE): recompra de 4,43 M de acciones del 5 al 9-oct (≈21,2 M GBP; 761,53 M derechos de voto); dividendo final de 7,8 p pagado el 9-oct; consenso casi igual (BPA FY29e 0,4868 → 0,4919; 19 analistas, objetivo 5,59); cortos 6,77 → 6,55 %; gilt 5,39 %; beta ajustada 0,77. Resultados del 1S FY2027 el **5-nov-2026** (RNS del 1-oct). Nada nuevo sobre Deal Builder, Amazon Autos (sin lanzamiento confirmado en el Reino Unido) ni la CMA.
+- D actualizada con `notas/tmp/actualizar-D.mjs` (precio, acciones 763,7 M, bolsa, consenso, comparables llevados al 14-oct por variación de precio, puente con recompras y dividendo: otros ajustes 361,0 M).
+- BPA propio (`notas/tmp/bpa.mjs`): base FY2029e 0,4685 (724,7 M acciones), FY2028e 0,4273; intereses rehechos (17/19/7 M). Historia adelantada con el punto de mar-26 (12,3x) que la del 14-oct no tenía: mediana 22,0x, mínimo 12,3x, media 20,7x (mar-20 excluido por el confinamiento).
+- Motor: DCF 6,81, valor objetivo 6,80 (+32,7 %), WACC 9,11 %, ROIC 50,9 % (41,8 puntos sobre el WACC; sin fondo de comercio 197 %; compra única grande), sostenibilidad «Sí» del analista y del motor (sin control saltado). 12 meses: **v2 11,5 % / 11,9 % → Mantener** (selector: desrateada, 22,0 / 12,0 = 1,83); v3 sin selector 22,5 / 22,9 %. Comprar < 4,97, vender > 6,35 GBP. Recomendación cambiada de Comprar (texto del 10-oct) a Mantener.
+- Word (53 páginas, cobertura 92,1 %) y PDF con LibreOffice. Robustez: FRÁGIL, acción robusta Mantener (M1, M6). `apuntar-12m.mjs --simular`: v2 11,5 % / base 12 %, Mantener; v3 sin selector 22,6 %.
+- Ficha sectorial nueva: `sectores/portales-clasificados-2026-10-15.md` y su JSON de comparables.
+- Prueba de conservadurismo en `conservadurismo.md`: umbrales PER base v2 12,4x, BPA FY29e 0,487 o recompra anunciada de ≈400 M para FY2028; veredicto **esperar** (límite 4,97 GBP, 340 acciones, hasta el 25-oct; si no, reevaluar tras el 5-nov).
+- Revisión a 12 meses: `revision-12m-2026-10-15.md` (v2 decide: 11,5 % ponderada, 11,9 % base, Mantener; objetivo 5,60 GBP).
+
+## Lecciones
+
+- ESEF británico: tras un cambio de nombre (Auto Trader → Autotrader), `cuentas.mjs --esef` solo encuentra la entidad por el nombre nuevo; probar el nombre registrado en el último RNS antes de darlo por inexistente.
+- El selector de método mide el 1,8 con el precio del día: en Auto Trader un +2,7 % de precio (5,26 GBP) cambiaría la regla de v2 a v3 y la rentabilidad de 11,5 % a 22,1 %. Al iterar un informe de una desrateada cerca del umbral, decir en la síntesis a qué precio cambia la regla (detalle y propuesta en `conservadurismo.md`, «Para Mejoras»).
+- En la v2 de una desrateada el límite de compra se mueve con el precio del informe (el base es el PER del día): al rehacer el informe tras una subida, el límite sube; hay que decirlo para que no parezca una mejora de la empresa.
