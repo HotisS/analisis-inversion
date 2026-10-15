@@ -4,6 +4,10 @@
 
 **Qué se apunta aquí** (una entrada por cambio, la más reciente arriba, dos o tres líneas): cambios de método o de reglas, decisiones de cartera que sustituyen a otras, cambios de estructura del repo o del flujo de trabajo, y lo que se retira de `MEMORIA.md`, `cola.md` o `lecciones.md` cuando ya no está vigente. No se apuntan análisis sueltos (están en `seguimiento.xlsx` y en cada `diario.md`).
 
+## 15-oct-2026 · Octava hora value: primera elegida con el escáner
+
+16 análisis (Broadridge, Jack Henry, FactSet, Sage, Burckhardt, Thales, DO & CO, Rai Way, Gentex, Autodesk, Cencora, Paycom, MSA Safety, Rollins, Diagnostyka, Qualys). Compras robustas: Rai Way (≤4,22 EUR) y Burckhardt (≤482,60 CHF, tras el 3-nov): 2 de 16 frente a 2 de 32 en la 6.ª y 7.ª. Ninguna cae por calidad (antes 14); 7 caen por valor intrínseco (antes 19). Escáner: tasa libre y prima alineadas con el DCF (6565ad3). Detalle en `informes/octava-hora-2026-10-15/`.
+
 ## 14-oct-2026 · Séptima hora value cerrada y octava propuesta con escáner
 
 16 análisis (Sonova, IDEXX, ResMed, Tyler, Aon, CPKC, Alfa Laval, AMETEK, Beiersdorf, Colgate, Hershey, Interpump, Stryker, Sandvik, Daikin, Graco). Compras robustas: Aon (ya en la tabla del 15-oct) y Hershey (justa, ≤164,49 USD). Diagnóstico de las 32 de la 6.ª y 7.ª hora: se escogían por calidad sin mirar el precio; 19 caen por valor intrínseco, 14 por calidad (fondo de comercio) y 8 son frágiles. Desde ahora la lista value sale del escáner (perfil nuevo `calidad-a-precio`: margen de seguridad ≥ 1, ROIC − WACC ≥ 5) y de cartas de gestores. Detalle en `informes/septima-hora-2026-10-14/`.
