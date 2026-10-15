@@ -902,7 +902,11 @@ async function importarIbkr() {
   // Lo que había: fuera las cuentas conectadas y la partida; lo apuntado que no está en ninguna cuenta conectada
   // (escaner-cartera.json frente a lo que devuelve IBKR) queda como «sin-conectar», a precio de partida.
   let ops = leerOps().filter((o) => !conectadas.has(o.cuenta) && o.tipo !== 'partida');
-  const enIbkr = new Set(posB.map((p) => p.clave));
+  // Lo apuntado a mano en una cuenta conectada con fecha posterior a la foto de IBKR (las ejecuciones de hoy, que el Flex
+  // aún no trae) se conserva; el Flex del día siguiente lo sustituye.
+  const posteriores = leerOps().filter((o) => conectadas.has(o.cuenta) && o.tipo !== 'partida' && o.fecha > fechaFoto);
+  ops = ops.concat(posteriores);
+  const enIbkr = new Set([...posB.map((p) => p.clave), ...posteriores.filter((o) => o.tipo === 'compra').map((o) => o.clave)]);
   const part = leerOps().filter((o) => o.tipo === 'partida');
   const fechaP = part[0]?.fecha || masDias(fechaFoto, -1);
   const resto = [];
