@@ -36,7 +36,7 @@ async function abrirSesion() {
   sesion = { cookie, crumb };
   return sesion;
 }
-async function json(url, opciones = {}) {
+export async function json(url, opciones = {}) {
   const { cookie, crumb } = await abrirSesion();
   const sep = url.includes('?') ? '&' : '?';
   const r = await pedir(`${url}${sep}crumb=${encodeURIComponent(crumb)}`, { ...opciones, headers: { ...UA, cookie, ...(opciones.headers || {}) } });
