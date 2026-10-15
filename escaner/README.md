@@ -35,6 +35,7 @@ Si no hay nada nuevo, el mensaje del escáner es una sola línea. Las tareas des
 | privada/`escaner/registro-senales.json` | Registro histórico de todas las señales y su seguimiento | La herramienta (no editar a mano) |
 | privada/`escaner/SENALES.md` | El registro en tabla, con el resumen de aciertos | La herramienta |
 | privada/`escaner/mensaje-ultimo.md` | El mensaje para el chat del proyecto | La herramienta |
+| `radar.json`, `radar-estado.json` | **Radar de estudio** (hilo Mejoras, 15-oct): valores que no son candidatas pero conviene estudiar si bajan de un precio o tras sus resultados. `node herramientas/radar.mjs` en las pasadas de 9:25 y 15:45; un aviso va al coordinador (que pide el análisis), nunca es señal de compra | El coordinador o Mejoras (lista); la herramienta (estado) |
 | `calendario.json` | **Calendario de resultados único** (cartera, órdenes, lista de espera y suplentes; fecha, si está confirmada y fuente). Manda sobre la fecha del informe. Lo leen el escáner, el Excel (`seguimiento.mjs`, columna «Próximos resultados») y los análisis (`node herramientas/calendario.mjs --aplicar` escribe la fecha en cada datos*.json, sin rehacer cálculos) | La vigilancia de la mañana: comprueba las fechas que caen en los próximos 14 días y añade las que se anuncian; después `calendario.mjs --aplicar` y `seguimiento.mjs` |
 | privada/`escaner/vigilancia-ultima.json`, `escaner/semanal-ultimo.md` | Última vigilancia y último informe semanal | La herramienta |
 
