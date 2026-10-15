@@ -50,7 +50,7 @@ const madrid = (d = new Date()) => {
   const p = Object.fromEntries(new Intl.DateTimeFormat('es-ES', { timeZone: 'Europe/Madrid', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(d).map((x) => [x.type, x.value]));
   return { fecha: `${p.year}-${p.month}-${p.day}`, hora: `${p.hour}:${p.minute}` };
 };
-const fechaCorta = (iso) => { const [, m, d] = iso.split('-'); return `${+d}-${['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'][+m - 1]}`; };
+const fechaCorta = (iso) => { if (!iso) return '¿?'; const [, m, d] = iso.split('-'); return `${+d}-${['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'][+m - 1]}`; };
 const nodo = (script, a) => execFileSync(process.execPath, [script, ...a], { cwd: RAIZ, env: process.env, maxBuffer: 512 * 1024 * 1024, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] });
 
 const args = process.argv.slice(2);
@@ -113,7 +113,7 @@ async function escanear() {
   const pos = new Map(CARTERA.posiciones.map((p) => [p.clave, p]));
   const pend = CARTERA.ordenes_pendientes || {};
   const enOrdenes = new Map([...(pend.comprar || []).map((o) => [o.clave, `orden de compra del 15-oct (límite ${fPrecio(o.limite)} ${o.divisa})`]),
-    ...(pend.lista_espera || []).map((o) => [o.clave, `lista de espera hasta el ${fechaCorta(o.hasta)} (límite ${fPrecio(o.limite)} ${o.divisa})`])]);
+    ...(pend.lista_espera || []).map((o) => [o.clave, `${o.hasta ? `lista de espera hasta el ${fechaCorta(o.hasta)}` : (o.condicion || 'lista de espera')} (límite ${fPrecio(o.limite)} ${o.divisa})`])]);
   const ventaPend = new Set(pend.vender || []);
 
   // Valor de la cartera a precio de ahora (para el tamaño y el bolsillo growth).
