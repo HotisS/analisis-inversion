@@ -21,9 +21,11 @@ const CAB = '| Variante | Cierres | Sesgo pond. | Error pond. | Compras | Rent. 
 
 // ── Sesgo 1: desrateadas ──
 function sesgo1(titulo, conj) {
-  const des = conj.filter((o) => ratioDesrateada(o) >= 1.8);
+  // --ratio N (añadido el 15-oct por la tarde, sensibilidad): umbral de «desrateada» más bajo para tener más cierres (el vigente es 1,8).
+  const UMBRAL = argv.includes('--ratio') ? +argv[argv.indexOf('--ratio') + 1] : 1.8;
+  const des = conj.filter((o) => ratioDesrateada(o) >= UMBRAL);
   const V = { 'S0 vigente (v2)': (o) => calc(o, v2(o.actual, o.hCl)), 'S1 v2 con tope ×1,1': (o) => calc(o, v2(o.actual, o.hCl, 1.1)), 'S2 v2 con tope ×1,2': (o) => calc(o, v2(o.actual, o.hCl, 1.2)), 'S3 v3 ×1,1 sin selector': (o) => calc(o, v3(o.actual, o.hAl)) };
-  let md = `#### ${titulo}: ${des.length} cierres desrateados\n\n` + CAB;
+  let md = `#### ${titulo}: ${des.length} cierres desrateados (ratio ≥ ${UMBRAL})\n\n` + CAB;
   const m = {}; for (const [k, fn] of Object.entries(V)) { m[k] = medir(des, fn); md += fila(k, m[k]) + '\n'; }
   const ok = (k) => m[k].error <= m['S0 vigente (v2)'].error + 0.5 && (m[k].med ?? -Infinity) >= (m['S0 vigente (v2)'].med ?? -Infinity) && (m[k].perd ?? 0) <= (m['S0 vigente (v2)'].perd ?? 0) + 3;
   md += `\nCriterio (error ≤ vigente + 0,5; mediana de compras no menor; < −10 % no más de +3): S1 ${ok('S1 v2 con tope ×1,1') ? '✓' : '✗'}, S2 ${ok('S2 v2 con tope ×1,2') ? '✓' : '✗'}.\n`;

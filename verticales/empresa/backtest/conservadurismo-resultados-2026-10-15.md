@@ -100,3 +100,16 @@ Criterio (error del BPA ≥ 1 punto menor que B0; mediana de compras no menor; <
 | B3 vigente del backtest (BPA) | 11,9 % | 2,6 % | 7 | 35,9 % | 57 % | 14 % |
 
 Criterio (error del BPA ≥ 1 punto menor que B0; mediana de compras no menor; < −10 % no mayor): B2 ✗, B1 ✗.
+
+### Añadido por la tarde (15-oct): sesgo 1 con la red más ancha (`--ratio`)
+
+Para tener más cierres que los 8 desrateados (ratio ≥ 1,8), se repite el sesgo 1 bajando el umbral (sensibilidad, no es el método). Las columnas son las de arriba.
+
+| Umbral | Cierres | S0 vigente: sesgo / error / rent. mediana de compras | S1 tope ×1,1: sesgo / error / rent. mediana | ¿Cumple S1? |
+|---|--:|--:|--:|---|
+| ratio ≥ 1,5 (todos) | 19 | +1,9 % / 21,2 % / 28,7 % | +12,1 % / 20,2 % / 23,2 % | ✗ (mediana de compras menor) |
+| ratio ≥ 1,5 (validación) | 12 | −12,6 % / 21,3 % / 65,1 % | −4,4 % / 15,6 % / 55,9 % | ✗ |
+| ratio ≥ 1,3 (todos) | 39 | +1,9 % / 24,8 % / 23,2 % | +12,1 % / 23,9 % / 22,4 % | ✗ |
+| ratio ≥ 1,3 (validación) | 20 | −3,6 % / 25,3 % / 35,0 % | +6,1 % / 19,3 % / 34,2 % | ✗ |
+
+Lectura: con 39 cierres el tope ×1,1 pasa de un sesgo de +1,9 % a +12,1 % (promete 12 puntos más de lo que luego se gana) y las compras que añade rinden menos. **S1 no se adopta**, y ya no hace falta esperar a más datos: la prueba con la red ancha es suficiente para rechazarla.
