@@ -17,3 +17,4 @@
 - Stock Analysis bloquea curl desde la nube; WebFetch sí entra.
 - FRED: `descargar.mjs` falla («fetch failed»); curl directo al CSV de DGS10 funciona.
 - Con ingresos diferidos grandes y mucha caja, el capital invertido del motor sale negativo y el ROIC n.d.: calcular el ROIC propio sin ingresos diferidos y marcarlo como estimación en huecos.
+- 2026-10-15: datos-v2.json y «Qualys - 2026-10-15 v2.docx» regenerados con el motor vigente (herramientas/regenerar.mjs; METODO-VIGENTE.md), sin investigación nueva: v3 Mantener 11,3 % (antes v3 Mantener 11,3 %). Para comparar, con la regla v2 (historia al cierre, mismo precio): 24,4x / 29,1x / 37,8x, 13,6 % Mantener. Decide la v3 con tope ×1,1, elegida por el selector de método (sin marcas: decide la v3; METODO-VIGENTE.md).
