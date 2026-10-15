@@ -4,6 +4,10 @@
 
 **Qué se apunta aquí** (una entrada por cambio, la más reciente arriba, dos o tres líneas): cambios de método o de reglas, decisiones de cartera que sustituyen a otras, cambios de estructura del repo o del flujo de trabajo, y lo que se retira de `MEMORIA.md`, `cola.md` o `lecciones.md` cuando ya no está vigente. No se apuntan análisis sueltos (están en `seguimiento.xlsx` y en cada `diario.md`).
 
+## 15-oct-2026 · Órdenes de la cartera 1: la tabla de las 14:50 queda superada
+
+La tabla cerrada de las 14:50 se ejecutó en parte (detalle y cifras en la carpeta privada de la cartera, `cartera/archivo/ordenes-1450-2026-10-15.md`, nunca en el repo). Lo vigente es el estado de las 17:45 (`cartera/cartera-1-2026-10-15-1745.md`): el usuario pospone las ventas pendientes y la cuenta 2 queda sin órdenes. `cartera-real.mjs --importar-ibkr` conserva desde hoy lo apuntado con fecha posterior al Flex (2129d5a).
+
 ## 15-oct-2026 · Auditoría de homogeneidad (método, decisiones y salida)
 
 Pregunta de Hotis: ¿son homogéneos análisis, Excel y cartera? Arreglos que solo aplican reglas vigentes: el escáner diario ya no da señal de venta antes de la fecha de la regla 12 (`mantener_hasta` en `escaner/reglas.json` y `no_tocar_hasta` de la cartera privada; Intuit, Uber y Viscofan hasta el 13-ene, Netflix hasta el 20-nov, compras del 15-oct hasta el 15-ene); AppLovin y Robinhood en exclusiones; el Excel ya no propone «dos tramos», lee las cuatro cifras de la última foto `cartera-1-…md` y no imprime «NaN» en las órdenes límite; método growth y plantilla sin tramos; `MEMORIA.md` sustituye la cartera del 14-oct 17:40 (tramos, Bureau Veritas, Viscofan +5, Axon, Shopify y Snowflake) por la del 15-oct.
