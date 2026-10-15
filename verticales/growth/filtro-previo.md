@@ -40,3 +40,19 @@ Hotis (14-oct 21:16): «baja el ritmo de growth, afina la puntería porque está
   - Una alerta de euforia a 6 meses para las de margen bruto alto: subida > 100 % con el múltiplo > 1,4 veces su mediana (Rubrik).
   - Una alerta cuando los usuarios del mercado principal crecen < 3 % y las ventas > 30 % (Reddit).
   - Separar de la dilución pasada las acciones entregadas en compras (Zeta).
+
+## Resultado de la ronda de 16 (15-oct)
+- **11 de 16 dan Comprar** (Hinge Health y Sezzle con convicción media; el resto, baja), 4 Mantener (Guardant por el veto de euforia, Flywire, Nordic y Rambus) y 1 Vender (SiTime). Sin filtro, en las tandas 11-17, fueron 2 de 28.
+- **Pero ninguna mejora las cinco compras:** casi todas rinden entre +7 y +16 % con convicción baja. El filtro elige empresas baratas frente a su crecimiento, y eso da muchos Comprar flojos. El listón real para entrar es batir a Snowflake (+16 %, convicción media).
+- **Tres fallos de dato del filtro:** Sanil (C: el informe oficial coreano da un 52 % para los dos mayores clientes), Sezzle (B: 1,3-2,0 bien medida) y Benefit Systems (B: 1,25). Corrección: la B se mide igual en el filtro y en el análisis, con el EBITDA conocido en cada fecha a los dos lados; la C de Corea se toma de DART.
+- **Dónde falla la prueba D:** en empresas con el crecimiento en pico y un múltiplo muy por encima de su historia (SiTime, 1,4 veces; Guardant, 3 veces) el precio parece «barato frente al crecimiento» y no lo es. Propuesta pendiente de backtest: en la D, cuando el crecimiento pasa del 60 %, dividir por el del 2.º año (Credo); para las no rentables, mirar el EV/ventas frente a su mediana como aviso (no como filtro, porque perdería Natera y Datadog).
+- Alertas propuestas por los analistas (pendientes de backtest; ninguna aplicada):
+  - euforia a 6 meses con margen alto (Rubrik, Hinge);
+  - 35/50/15 automático en prestamistas (Affirm) y con clientes muy concentrados (Sanil);
+  - canal o socio > 50 % de los ingresos (Klaviyo, Life360);
+  - ARR que crece > 5 puntos más que las ventas (SailPoint);
+  - accionista de control > 50 % (SailPoint);
+  - en cíclicas, crecimiento medido frente al pico anterior (Nordic);
+  - suelo del primer año en el punto medio de la guía si la empresa la bate de forma sistemática (Flywire);
+  - veto de euforia con varias referencias, no un solo día (Guardant);
+  - dilución bruta y no neta de recompras (Elastic).
