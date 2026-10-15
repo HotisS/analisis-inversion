@@ -1,0 +1,17 @@
+# Diario · Modine (MOD) · 15-oct-2026
+
+- Commit de partida: 30aee4a. Encargo del coordinador (megatendencia frío industrial / centros de datos). Sin commits ni escritura fuera de la carpeta.
+- Entorno: nube. Cuentas XBRL de la SEC (`cuentas.mjs --sec MOD`, CIK 67347) FY2017-FY2026; 10-K FY2026 y FY2024; 8-K/A pro forma del 7-oct-2026 (escisión de Performance Technologies con Gentherm, cerrada el 1-oct); notas de prensa del 4T FY2026 y 1T FY2027; reexpresión de segmentos (24-jul); proxy 2026; votos de la junta (21-ago); Form 4 (form4.mjs). Precio y betas con bolsa.mjs; movimiento.mjs; comparables de Yahoo quoteSummary (15-oct, intradía). Tasa libre FRED 5,21 % (13-oct). Notas A-E y propio hechos por mí (`notas/construir-notas.mjs`, `propio.mjs`, `textos.mjs`).
+- Fecha de corte 2026-10-15; precio 157,75 USD (cierre del 14-oct; sesión del 15 sin cerrar, 150,14 intradía). Ejercicio abril-marzo, etiqueta «fin».
+- Decisiones: valorar el perímetro sin Performance Technologies. Cuenta FY2024-FY2026 = pro forma del artículo 11; FY2022-FY2023 estimada con el segmento Climate Solutions + Corporate del 10-K FY2024. Balances FY2022-FY2025 consolidados; FY2026 = balance pro forma a 30-jun-2026; flujos consolidados. Arrendamientos operativos fuera (US GAAP). Puente: deuda 319,4, caja 54,1, otros ajustes 31,0 (costes de la operación). Comparables: 9 de Yahoo; transacciones con peso 0. Pesos DCF 60 / comparables 20 / escenarios 20. WACC 12,84 % (beta 1,45). Capex subido (5,0 % en FY2028e, 4,8 % en FY2029e) para que pase la prueba del capital nuevo (36,2 % ≤ 1,25 × 29,6 %). Sostenibilidad del motor «Sí»; la mía «En parte» (poder de precios no demostrado, ROIC ≈ WACC, concentración).
+- Resultado: DCF 67,51; valor intrínseco 93,14 (−41,0 %); con la prima del mercado 108,25. DCF inverso: margen EBITDA implícito del 30 % (base 17 %); rentabilidad implícita 7,8 %. ROIC 12,9 % frente a WACC 12,84 %.
+- **Línea 12 m**: selector → v2 (historia adelantada de 3 años). Objetivo 204,54 USD, ponderada +29,7 %, base +21,2 %; v3 sin selector +38,6 % / +33,6 %. Regla: Mantener (VI < precio); convicción media. Robustez: SÓLIDA, acción robusta «No mantener»; BPA −10 %: 16,7 % / 9,0 %. Límite de compra 93,14 USD; vender > 227,27. Regla 13: no cambia.
+- Confianza de los datos: media (pro forma no auditado, dos años estimados, consenso de tres analistas con perímetros mezclados).
+- Word y PDF (soffice): 39 páginas, cobertura 88,3 %, 16 de 19 controles y 3 explicados.
+
+## Lecciones
+- Escisión con fusión inversa (RMT) en EE. UU.: el 8-K/A del cierre trae el pro forma del artículo 11 con tres ejercicios y el trimestre; los años anteriores salen del segmento del 10-K de hace dos años (ojo: la reexpresión del segmento cambia amortizaciones y ventas del mismo año).
+- Yahoo NO ajustó los cierres de MOD por la escisión (a diferencia de SPGI): los precios de marzo son reales; las caídas del 28-sep (fecha de registro) y del 2-oct (cotización sin la escindida) son de la operación.
+- Selector de método: el motor necesita `per_historico.anios` para aplicar la regla de historia corta (si no, decide v3 sin avisar); integrar lo marca como «clave fuera del esquema» pero el motor lo lee.
+- `bolsa.mjs` etiqueta los cierres de ejercicios abril-marzo por el año de inicio (FY2025 = mar-2026) aunque la empresa use el de cierre: pasar `--etiqueta fin`.
+- `form4.mjs` no guarda archivo si no se pide salida: copiar el resumen al diario.

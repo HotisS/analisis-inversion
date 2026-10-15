@@ -1,0 +1,18 @@
+# Diario · GEA Group (G1A) · 15-oct-2026
+
+- Commit de partida: 30aee4a. Encargo del coordinador (megatendencia: frío industrial y bombas de calor, más maquinaria para alimentación y farmacia). Sin commits ni pull; solo se escribe en esta carpeta. Sin subagentes: notas A-E y propio hechas por el analista (`notas/construir-notas.mjs`, `supuestos.mjs`, `textos.mjs`, `propio.mjs`).
+- Entorno: nube de Claude Code. Inicio 16:52 UTC; fin ≈17:50 UTC.
+- **Cuentas**: `cuentas.mjs --esef "GEA Group"` falla (filings.xbrl.org no tiene emisores alemanes; tampoco «GEA»). Cuentas 2021-2025 de los informes anuales 2022, 2024 y 2025 (PDF con `pdftotext -raw` y el Excel de estados consolidados de 2025) y del Excel del 1S26. Segmentos: estructura de cuatro divisiones desde el 1-ene-2026, solo 2024-2025 reexpresados (Excel «historical KPI since Q1 2024»).
+- **Hallazgo clave para la tesis de frío**: la división Heating & Refrigeration Technologies (HRT) se disolvió el 31-dic-2025: compresores a Pure Flow Processing; plantas de frío industrial y bombas de calor a Nutrition Plant Engineering. Último dato propio: 2025, ventas 624,6 M (11,4 % del grupo), margen EBITDA antes de reestructuración 14,3 %, ROCE 57,4 %.
+- Decisiones: cifras publicadas (después de reestructuración, que se repite cada año: 48-61 M); el consenso es «antes de reestructuración» (BPA un 10 % más alto). Acciones 161,7 M (162,8 M menos ≈1,1 M recompradas desde el 10-ago; estimación) y 75 M de caja pagada en `otros_ajustes` junto con 58 M de factoring; pensiones netas de impuestos 355 M. Bund 3,45 % (Bundesbank, 15-oct). Beta 0,95 (mensual 0,85). WACC 8,49 %. Pesos DCF 40 / comparables 20 / escenarios 40. Comparables de la ficha `sectores/transferencia-calor-2026-10-14` (EUR al BCE del 15-oct) y transacciones del informe de Krones.
+- Resultado: DCF 69,62; valor intrínseco 69,66 (+0,9 %); DCF inverso: crecimiento 4,4 % (base 4,5 %), margen 17,4 % (base 17,5 %). ROIC 20,9 % − WACC 8,49 % = +12,4. Sostenibilidad «Sí» (motor y analista). Altman 3,29, Piotroski 8, Beneish −2,77.
+- **Línea 12 m (v3, selector sin marcas)**: objetivo 68,94 EUR, ponderada +1,7 %, base +8,1 % → **Mantener**, convicción baja (absoluta Mantener, relativa Comprar). v2 5,5 % / 12,4 %. Comprar < 61,08 (límite robusto con BPA −10 %: 55,12); vender > 78,05. Robustez SÓLIDA, acción robusta «No mantener». Detalle en revision-12m-2026-10-15.md (`apuntar-12m.mjs --simular`: no se escribió nada fuera).
+- Regla 13: movimiento 1 m +6,9 %, 6 m +12,0 %, 12 m +10,4 %, en máximos (−0,1 %); sin avisos P. Colocación del 3 % del fondo de Kuwait el 2-sep (ya superada). Veredicto: no cambia.
+- Sentimiento: sin debate accesible (SA RSS vacío, Stocktwits sin símbolo, foros alemanes no indexados): sección omitida y registrada.
+- **Confianza de los datos: media** (cuentas primarias altas; consenso de una sola fuente con estimaciones; comparables reutilizados del 14-oct). Próximos resultados: 9-nov-2026.
+- Word y PDF (soffice): 39 páginas, cobertura 84,4 %, 19 de 22 controles correctos y 3 explicados (operaciones interrumpidas).
+
+## Lecciones
+
+- Emisores alemanes: además de no estar en filings.xbrl.org, GEA publica el Excel de estados consolidados del año y del semestre (`consolidated-financial-statements-<año>-excel-en.xlsx`) y un Excel histórico de KPI por división y trimestre: es la vía más rápida y limpia; en sus PDF las tablas salen sin cifras con `pdftotext` normal y bien con `-raw`.
+- Antes de analizar una «división» por una tesis temática, comprobar en el informe anual si sigue existiendo: GEA disolvió HRT (frío y bombas de calor) el 31-dic-2025 y ya no publica sus cifras.

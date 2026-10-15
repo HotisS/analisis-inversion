@@ -1,0 +1,4898 @@
+{
+  "meta": {
+    "fecha_corte": "2026-10-15",
+    "divisa": "USD",
+    "divisa_cotizacion": "USD",
+    "tipo_cambio": 1,
+    "unidades": "millones",
+    "cierre_ejercicio_mes": 12,
+    "etiqueta_ejercicio": "fin",
+    "normas_contables": "US GAAP",
+    "formato_cuenta": "funcion",
+    "limitaciones": "Línea cotizada: acciones ordinarias en el Nasdaq (CEG), una sola clase. Precio: cierre del 14-oct-2026 (279,54 USD), porque la sesión del 15-oct no había cerrado a la hora del análisis [25]. Cuentas 2021-2025 del XBRL de la SEC, comprobadas con los 10-K 2025 y 2023 [1, 2, 9]: Constellation se escindió de Exelon el 1-feb-2022, así que 2021 es el negocio de generación de Exelon (BPA de 2021 estimado con 327 M de acciones de la escisión). El EBITDA es EBIT más la amortización del estado de flujos, que incluye la del combustible nuclear y la actualización de las obligaciones de desmantelamiento; el capex incluye las compras de combustible nuclear. El MtM no realizado de las coberturas que entra en los ingresos se trata como no recurrente. El flujo operativo de 2021-2024 suma el cobro del precio aplazado de la titulización de clientes, que la empresa presentaba en inversión. 2026 cambia de perímetro: Calpine se consolida desde el 7-ene-2026 y la cuenta de 2025 no la incluye; el DCF parte de 2025 y proyecta 2026 con Calpine. Los fondos de desmantelamiento (20.492 M) y sus obligaciones (12.612 M más 5.914 M a pagar a los clientes de las centrales reguladas) quedan fuera del puente: el excedente de unos 1.966 M no se suma. El objetivo a 12 meses usa el BPA ajustado de la empresa (sin MtM, desmantelamiento ni costes de Calpine), el que siguen el mercado y el consenso.",
+    "controles_explicados": [
+      {
+        "control": "Tipo impositivo efectivo razonable (2023)",
+        "explicacion": "El 35,1 % de 2023 sale de los impuestos de los fondos de desmantelamiento de las centrales reguladas, que la contabilidad compensa al 100 % (nota de la conciliación del beneficio ajustado [4]); no se proyecta: el DCF usa el 25,5 % marginal."
+      },
+      {
+        "control": "BAI − impuestos − minoritarios = beneficio neto (2021)",
+        "explicacion": "La diferencia de 10 M es el resultado de participadas por el método de la participación, que va debajo de impuestos [9]."
+      },
+      {
+        "control": "BAI − impuestos − minoritarios = beneficio neto (2022)",
+        "explicacion": "La diferencia de 13 M es el resultado de participadas por el método de la participación [9]."
+      },
+      {
+        "control": "Crecimiento del BPA base ≤ 25 % anual",
+        "explicacion": "Se mide desde el BPA contable de 2025 (7,40 USD, con −805 M de MtM no realizado y costes de Calpine). En la base del objetivo, el BPA ajustado, el salto es de 9,39 a 14,85 USD: un 16,5 % anual, con Calpine incluida desde 2026 [6]."
+      }
+    ],
+    "huecos": [
+      {
+        "seccion": "trimestres",
+        "campo": "crecimiento interanual y EBITDA de 3T24, 1T25",
+        "tipo": "Complemento",
+        "intentos": "1) Notas de resultados de 2025 y 2026 (solo dan el trimestre comparable del año anterior); 2) XBRL trimestral de companyfacts; 3) 10-Q de 2024 sin descargar por tiempo",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "trimestres",
+        "campo": "consenso previo de cada trimestre (salvo 2T26)",
+        "tipo": "Complemento",
+        "intentos": "1) Notas de resultados (no lo dan); 2) Seeking Alpha (solo titulares del 2T26: +0,27 USD sobre el consenso); 3) prensa de cada trimestre",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "esg",
+        "campo": "calificaciones ESG",
+        "tipo": "Complemento",
+        "intentos": "1) Informe de sostenibilidad (no publica sus notas); 2) MSCI y Sustainalytics (de pago o con JavaScript); 3) prensa",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sector",
+        "campo": "cr5_pct",
+        "tipo": "Complemento",
+        "intentos": "1) EIA (no da cuotas por empresa en ingresos); 2) 10-K (sin cuota); 3) suma de ingresos de los cinco mayores (mezcla negocios regulados y liberalizados)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "competencia",
+        "campo": "margen EBIT de los competidores",
+        "tipo": "Complemento",
+        "intentos": "1) Yahoo (solo margen EBITDA); 2) Stock Analysis (bloqueo a curl); 3) cuentas de cada uno, no leídas por tiempo",
+        "decision": "Omitido; se da el margen EBITDA en el comentario"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "posición actual de ECP tras la colocación de junio",
+        "tipo": "Complemento",
+        "intentos": "1) Proxy 2026 (22,0 M a marzo); 2) 8-K de la colocación (no da el reparto por vendedor); 3) búsqueda de 13G/A posteriores (no localizado)",
+        "decision": "Omitido; se da la cifra del proxy"
+      },
+      {
+        "seccion": "consenso",
+        "campo": "estimaciones de 2028 y EBITDA del consenso",
+        "tipo": "Complemento",
+        "intentos": "1) Stock Analysis (2028 de pago); 2) MarketScreener (WebFetch devuelve la portada); 3) Yahoo (solo dos ejercicios)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "multiplos_historicos",
+        "campo": "historia anterior a 2022",
+        "tipo": "Complemento",
+        "intentos": "1) La empresa cotiza desde la escisión de febrero de 2022; 2) Exelon (otro perímetro); 3) BPA ajustado de 2022 no publicado (la empresa daba EBITDA ajustado)",
+        "decision": "Omitido; historia de cuatro cierres"
+      },
+      {
+        "seccion": "transacciones",
+        "campo": "múltiplo de EBITDA de las ventas a LS Power",
+        "tipo": "Complemento",
+        "intentos": "1) 10-Q del 2T26 (solo precio); 2) notas de resultados; 3) prensa",
+        "decision": "Se dan en USD/kW"
+      },
+      {
+        "seccion": "rentabilidad",
+        "campo": "ROIC tras la compra de Calpine",
+        "tipo": "Complemento",
+        "intentos": "1) Motor: solo hasta 2025, sin Calpine; 2) 10-Q del 2T26: balance con Calpine pero sin cuenta anual; 3) cálculo propio con el EBIT de 2026e (6.970 M) y el capital invertido a 30-jun-2026 (56.300 M)",
+        "decision": "Calculado y marcado como estimación"
+      }
+    ]
+  },
+  "identificacion": {
+    "nombre": "Constellation Energy Corporation",
+    "nombre_corto": "Constellation Energy",
+    "ticker": "CEG",
+    "isin": "US21037T1097",
+    "mercado": "Nasdaq Global Select",
+    "indice_referencia": "S&P 500",
+    "pais": "Estados Unidos",
+    "pais_iso": "US",
+    "sector": "Suministros públicos",
+    "industria": "Productores independientes de electricidad",
+    "sede": "Baltimore (Maryland)",
+    "fundacion": "2022",
+    "empleados": null,
+    "web": "https://www.constellationenergy.com",
+    "precio": 279.54,
+    "fecha_precio": "2026-10-14",
+    "acciones": 354.3,
+    "capitalizacion_publicada": 97279,
+    "free_float_pct": 99.7,
+    "max_52s": 411.69,
+    "min_52s": 228.63,
+    "volumen_medio_diario": "≈ 858 M USD/día (3 meses)",
+    "proximos_resultados": "2026-11-09"
+  },
+  "resumen": {
+    "recomendacion": "Mantener",
+    "conviccion": "Media",
+    "justificacion_recomendacion": null,
+    "horizonte": "12 meses",
+    "sintesis": "**La recomendación y por qué.** Mantener, con convicción media. El objetivo a 12 meses es de 274,37 USD: rentabilidad ponderada del −1,3 % y del base del +6,8 %, con el dividendo, frente a un precio de 279,54 USD. El valor intrínseco es de 163,57 USD, un 41,5 % por debajo, y el objetivo medio de los analistas (336,6 USD) queda por encima de nuestro alcista a 12 meses (334,20). La asimetría es mala: el bajista pierde un 39 % y el alcista gana un 20 %. La razón principal: el precio paga 21x el BPA de 2027 por una escasez de energía firme que tiene que durar más allá de 2032. La convicción subiría a alta para comprar con un precio por debajo del límite robusto o con un BPA de 2028 visible por encima de 17 USD; bajaría con una orden de FERC que limite la colocación de centros de datos.\n\n**El negocio.** Es la mayor flota nuclear de EE. UU. (22 GW, factor de carga del 94-95 %) con un suelo de precio por el crédito fiscal hasta 2032 y contratos de 15-20 años con Microsoft, Meta, Amazon y Google [10, 14, 15]. Pero no pasa la calidad que exige el método: ROIC del 13,2 % en 2025 frente a un WACC del 9,80 % (3,4 puntos) y, con Calpine, en torno al 9-10 % (estimación propia), porque la compra se pagó con acciones caras. La calidad sí sostiene el crecimiento que proyectamos (veredicto de sostenibilidad: Sí), modesto y en buena parte contratado.\n\n**Finanzas.** Calpine (7-ene-2026) sube el BPA ajustado de 9,39 USD en 2025 a una guía de 11,50-12,50 en 2026 y la deuda a 24.700 M; la deuda neta ajustada queda en 21.472 M tras cobrar las ventas a LS Power [3, 4].\n\n**Equipo y gobierno.** Equipo que cumple la guía desde 2023; resta la concentración de cargos desde agosto (el consejero delegado preside el consejo) [21].\n\n**Valoración.** El DCF da 152,04 USD y el DCF inverso dice que el precio descuenta un crecimiento anual del 12,5 % en 2027-2033, frente al 3,0 % de nuestro base, o una rentabilidad del 7,1 %, por debajo del 8,7 % que pide el mercado. Cotiza a 21,4x el PER de los próximos 12 meses frente a 16,7x de sus comparables [27].\n\n**Riesgos y catalizadores.** La caída del 32 % desde el máximo de octubre de 2025 no viene del beneficio, que sube, sino del múltiplo: intervención política en PJM (enero), guía por debajo del consenso y enfriamiento de la IA (marzo), colocación de los vendedores de Calpine (junio y septiembre) y dudas de FERC sobre la conexión de centros de datos (septiembre y octubre), con el bono al 5,2 % [16, 35, 36]. Riesgos mayores: topes regulatorios en PJM (−20 %) y una IA que decepcione y devuelva el múltiplo a 13,5x (−40 %). Catalizadores: resultados del 3T el 9-nov (estimado), venta a LS Power antes de fin de año y orden de FERC en 2027. Queda un hecho pendiente: la segunda mitad de las acciones de Calpine sale del bloqueo el 30-jun-2027.\n\n**Qué cambiaría la decisión.** Se compraría por debajo de 163,57 USD (valor intrínseco), siempre que la calidad pasara; se vendería por encima de 306,71 USD. Pasaríamos a Vender si el BPA de 2027 de la guía de febrero queda por debajo de 12,50 USD o si FERC impone que los centros de datos colocados paguen la red; mejoraría si la empresa contrata más de 3 GW nucleares nuevos con prima en 2027.",
+    "tesis": "Constellation es el mayor productor nuclear de EE. UU.: 22 GW de reactores con licencias hasta 2040-2050, un suelo de ingresos por el crédito fiscal hasta 2032 y la flota de gas de Calpine desde enero de 2026. Su BPA ajustado pasa de 9,39 USD en 2025 a 11,50-12,50 en 2026, y tiene contratos de 20 años con Microsoft, Meta, Amazon y Google [4, 10, 14, 15].\n\nEl precio (279,54 USD) descuenta mucho: 21,2x nuestro BPA de 2027, un 28 % más que las eléctricas, y un crecimiento anual de las ventas del 12,5 % en 2027-2033 según el DCF inverso. Tras caer un 32 % desde el máximo, la acción no está barata: ha pasado de una euforia de 29x a una prima todavía alta [25, 27].\n\nPara invertir hay que creer que la escasez de energía firme por la IA dura más allá de 2032 y que la regulación de PJM no la limita. Es posible, pero con un bono al 5,2 % y un ROIC post-Calpine cercano al WACC, el método no paga por esa opción: Mantener.",
+    "vision_diferencial": {
+      "mercado_descuenta": "El mercado descuenta que Constellation convierte su nuclear libre en contratos con prima durante décadas y que la demanda de los centros de datos sostiene precios de capacidad altos más allá de 2032: un crecimiento del 12,5 % anual de las ventas en 2027-2033, con una rentabilidad implícita del 7,1 %.",
+      "nuestra_vision": "Compartimos el beneficio a corto plazo (nuestro BPA de 2026 y 2027 coincide con el consenso), pero no el múltiplo: con el bono al 5,21 %, una compra pagada con acciones caras y un ROIC del 9-10 % tras Calpine, el valor intrínseco es de 163,57 USD.",
+      "por_que": "Podríamos tener razón porque la prima depende de decisiones políticas (FERC, gobernadores de PJM) que ya han restado un 10 % en un día, y porque el mercado acabará construyendo capacidad. No tenemos ventaja de información: la diferencia es de tasa de descuento y de duración de la escasez."
+    },
+    "a_favor": [
+      "**Flota nuclear irrepetible**: 22 GW con factor de carga del 94-95 % y licencias hasta 2040-2050 [10].",
+      "**Suelo de precio hasta 2032**: el crédito fiscal asegura unos 44,75 USD/MWh de ingresos brutos [1].",
+      "**Contratos largos con tecnológicas**: Microsoft, Meta, Amazon (690 MW) y Google (890 MW y 2.700 MW) [14, 15].",
+      "**Beneficio al alza**: guía de 2026 subida a 11,50-12,50 USD, +29 % sobre 2025 [4].",
+      "**Equipo que cumple**: supera la guía desde 2023 [4]."
+    ],
+    "en_contra": [
+      "**Cara en valor intrínseco**: 163,57 USD frente a 279,54, un 41,5 % menos.",
+      "**Calidad por debajo del umbral**: ROIC − WACC de 3,4 puntos en 2025 y peor con Calpine.",
+      "**Riesgo político en PJM**: un día de −9,8 % por la propuesta de topes de enero [16].",
+      "**Oferta de acciones de Calpine**: 25 M más quedan libres el 30-jun-2027 [3].",
+      "**Múltiplo prestado de la IA**: 21x frente a 13,5x en 2022-2023."
+    ],
+    "que_vigilar": "La tesis depende de que la demanda de los centros de datos se traduzca en contratos firmados con prima y de que FERC permita la colocación. Señal de que no se cumple: dos trimestres seguidos sin contratos nuevos, una orden de FERC que obligue a los centros de datos colocados a pagar la red o un tope al precio de capacidad en la subasta 2029-2030.",
+    "cambiaria_recomendacion": [
+      "Precio por debajo de 163,57 USD con la calidad corregida (ROIC − WACC ≥ 5): pasaríamos a Comprar.",
+      "Precio por encima de 306,71 USD: Vender.",
+      "Guía de BPA de 2027 por debajo de 12,50 USD en febrero: Vender.",
+      "Orden de FERC que limite la colocación o tope al precio de capacidad de PJM: revisar a la baja el BPA de 2028.",
+      "Más de 3 GW nucleares nuevos contratados con prima en 2027: subir el BPA de 2028 hacia 16,7 USD (alcista)."
+    ],
+    "kpis_seguimiento": [
+      {
+        "kpi": "BPA ajustado del año",
+        "nivel_actual": "5,30 USD en el 1S26; guía 11,50-12,50",
+        "umbral_alerta": "< 11,50 en 2026",
+        "por_que": "Base del objetivo a 12 meses"
+      },
+      {
+        "kpi": "MW nucleares contratados a largo plazo",
+        "nivel_actual": "≈ 25 % de la producción de 2029 (marzo) más Amazon y Google",
+        "umbral_alerta": "Sin contratos nuevos en dos trimestres",
+        "por_que": "Convierte el «mejorado» en base"
+      },
+      {
+        "kpi": "Precio de capacidad de PJM",
+        "nivel_actual": "325 USD/MW-día (2028-2029)",
+        "umbral_alerta": "Tope por debajo de 200",
+        "por_que": "Va casi entero al beneficio"
+      },
+      {
+        "kpi": "Posición de los vendedores de Calpine",
+        "nivel_actual": "7,0 % (marzo); 11 M vendidas en junio",
+        "umbral_alerta": "Colocación anunciada",
+        "por_que": "Presión de oferta"
+      },
+      {
+        "kpi": "Deuda neta / EBITDA",
+        "nivel_actual": "≈ 2x tras las ventas",
+        "umbral_alerta": "> 3x",
+        "por_que": "Rating BBB+ y colateral"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "historia": {
+    "resumen": "Constellation nació el 1-feb-2022 como escisión del negocio de generación y comercialización de Exelon, que a su vez venía de la fusión de Exelon y Constellation Energy Group (2012). Heredó la mayor flota nuclear de EE. UU., que en 2019-2021 estuvo a punto de cerrar centrales en Illinois (Byron y Dresden) por precios bajos y que salvó una ley estatal (CMC) en 2021. El crédito fiscal nuclear de la Ley de Reducción de la Inflación (2022) puso un suelo de precio hasta 2032; en 2024 el contrato con Microsoft para reabrir Three Mile Island 1 (hoy Crane) convirtió a la empresa en la referencia de la energía para centros de datos. En enero de 2026 compró Calpine, el mayor operador de centrales de gas, y pasó a 55 GW [1, 10, 17].",
+    "hitos": [
+      {
+        "anio": "2012",
+        "hito": "Fusión de Exelon y Constellation Energy Group: nace la flota nuclear y el comercializador que hoy forman Constellation [1]."
+      },
+      {
+        "anio": "2021",
+        "hito": "Illinois aprueba la ley que paga créditos (CMC) a Byron, Braidwood y Dresden y evita su cierre [1]."
+      },
+      {
+        "anio": "2022",
+        "hito": "Escisión de Exelon (1-feb) y salida a bolsa en el Nasdaq; en agosto, la Ley de Reducción de la Inflación crea el crédito fiscal nuclear hasta 2032 [1]."
+      },
+      {
+        "anio": "2023",
+        "hito": "Compra del 44 % de South Texas Project a NRG por 1.750 M USD [1]."
+      },
+      {
+        "anio": "2024",
+        "hito": "Contrato de 20 años con Microsoft para reabrir Three Mile Island 1 (Crane Clean Energy Center) [1]."
+      },
+      {
+        "anio": "2025",
+        "hito": "Contrato con Meta por la producción de Clinton desde 2027 y anuncio de la compra de Calpine (10-ene) [1, 17]."
+      },
+      {
+        "anio": "2026",
+        "hito": "Cierra Calpine (7-ene); venta de 4,4 GW de gas a LS Power por 5.000 M USD y de Brazos Valley por 860 M por exigencia del DOJ; contratos con Amazon (Calvert Cliffs) y Google (890 MW de aumentos de potencia) [12, 14, 15]."
+      }
+    ],
+    "confianza": "Alta"
+  },
+  "negocio": {
+    "segmentos": [
+      {
+        "nombre": "Mid-Atlantic",
+        "descripcion": "Este de PJM (Pensilvania, Maryland, Nueva Jersey): Limerick, Peach Bottom, Calvert Cliffs, Salem y Crane; venta minorista en la región",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2023",
+            "ingresos": 5138,
+            "resultado": null
+          },
+          {
+            "periodo": "2024",
+            "ingresos": 5522,
+            "resultado": null
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 6487,
+            "resultado": null
+          }
+        ]
+      },
+      {
+        "nombre": "Midwest",
+        "descripcion": "Oeste de PJM y MISO (Illinois): Braidwood, Byron, LaSalle, Dresden, Quad Cities y Clinton, con créditos del estado (CMC y ZEC)",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2023",
+            "ingresos": 4658,
+            "resultado": null
+          },
+          {
+            "periodo": "2024",
+            "ingresos": 4805,
+            "resultado": null
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 5804,
+            "resultado": null
+          }
+        ]
+      },
+      {
+        "nombre": "New York",
+        "descripcion": "Nine Mile Point, FitzPatrick y Ginna, con créditos de emisión cero (ZEC) hasta 2049",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2023",
+            "ingresos": 2021,
+            "resultado": null
+          },
+          {
+            "periodo": "2024",
+            "ingresos": 2050,
+            "resultado": null
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 2190,
+            "resultado": null
+          }
+        ]
+      },
+      {
+        "nombre": "ERCOT",
+        "descripcion": "Texas: participación en South Texas Project, gas y renovables, y venta minorista",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2023",
+            "ingresos": 1346,
+            "resultado": null
+          },
+          {
+            "periodo": "2024",
+            "ingresos": 1550,
+            "resultado": null
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 1904,
+            "resultado": null
+          }
+        ]
+      },
+      {
+        "nombre": "Other Power Regions",
+        "descripcion": "Nueva Inglaterra, sur, oeste y Canadá: sobre todo venta minorista y mayorista con energía comprada",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2023",
+            "ingresos": 5851,
+            "resultado": null
+          },
+          {
+            "periodo": "2024",
+            "ingresos": 5506,
+            "resultado": null
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 5583,
+            "resultado": null
+          }
+        ]
+      },
+      {
+        "nombre": "Otros (gas, MtM no realizado)",
+        "descripcion": "Venta de gas natural, actividades no asignadas y ganancias o pérdidas no realizadas de coberturas",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2023",
+            "ingresos": 5904,
+            "resultado": null
+          },
+          {
+            "periodo": "2024",
+            "ingresos": 4135,
+            "resultado": null
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 3565,
+            "resultado": null
+          }
+        ]
+      }
+    ],
+    "geografias": [
+      {
+        "nombre": "Mid-Atlantic",
+        "peso_pct": 25.4
+      },
+      {
+        "nombre": "Midwest",
+        "peso_pct": 22.7
+      },
+      {
+        "nombre": "New York",
+        "peso_pct": 8.6
+      },
+      {
+        "nombre": "ERCOT",
+        "peso_pct": 7.5
+      },
+      {
+        "nombre": "Otras regiones",
+        "peso_pct": 21.9
+      },
+      {
+        "nombre": "Otros (gas y MtM)",
+        "peso_pct": 13.9
+      }
+    ],
+    "geografias_criterio": "origen",
+    "kpis": [
+      {
+        "kpi": "Producción nuclear (GWh, a su participación)",
+        "valor_anterior": "181.711 (2024)",
+        "valor_actual": "182.690 (2025)",
+        "variacion": "+0,5 %",
+        "comentario": "La flota nuclear funciona casi a plena carga; el crecimiento de volumen viene de aumentos de potencia y de Crane [1]."
+      },
+      {
+        "kpi": "Factor de carga nuclear (2T)",
+        "valor_anterior": "94,8 % (2T25)",
+        "valor_actual": "93,0 % (2T26)",
+        "variacion": "−1,8 pp",
+        "comentario": "Más días de recarga en el 2T26 (86 frente a 41) [4]."
+      },
+      {
+        "kpi": "Ventas totales de energía (GWh)",
+        "valor_anterior": "269.417 (2024)",
+        "valor_actual": "268.943 (2025)",
+        "variacion": "−0,2 %",
+        "comentario": "Antes de Calpine, que suma unos 62 TWh de carga minorista al año [1, 3]."
+      },
+      {
+        "kpi": "Margen de energía sobre combustible (RNF, M USD)",
+        "valor_anterior": "12.149 (2024)",
+        "valor_actual": "10.852 (2025)",
+        "variacion": "−10,7 %",
+        "comentario": "Incluye el MtM no realizado (+316 en 2024, −805 en 2025); sin él, el RNF sube del 11.833 al 11.657 [1]."
+      },
+      {
+        "kpi": "BPA ajustado (USD)",
+        "valor_anterior": "8,67 (2024)",
+        "valor_actual": "9,39 (2025)",
+        "variacion": "+8,3 %",
+        "comentario": "Guía 2026: 11,50-12,50 USD, con Calpine; 5,30 en el 1S26 [4, 6, 8]."
+      }
+    ],
+    "descripcion": "Constellation es el mayor productor privado de electricidad del mundo y el primer operador nuclear de EE. UU.: 55 GW tras Calpine, de ellos unos 22 GW nucleares en 21 reactores (Illinois, Pensilvania, Nueva York, Maryland, Nueva Jersey y Texas), unos 23 GW de gas, la mayor flota geotérmica del país (The Geysers) e hidráulica, eólica y solar. La flota nuclear produce unos 183 TWh al año, cerca del 10 % de la energía limpia del país. Además es un gran comercializador: sirve unos 2,5 millones de cuentas, incluido el 80 % de las empresas del Fortune 100, y vende gas natural. Vende en mercados mayoristas liberalizados (PJM, ERCOT, Nueva York, MISO, California) y con contratos a largo plazo con grandes consumidores [1, 10].",
+    "clientes": "Los clientes son distribuidoras, municipios, cooperativas, empresas industriales y comerciales y hogares. La novedad son los contratos de 15-20 años con tecnológicas: Microsoft (Crane, 835 MW desde 2027), Meta (Clinton, 1.121 MW desde junio de 2027), Amazon (690 MW de Calvert Cliffs, 20 años, con 190 MW de aumento de potencia en 2030-2032), Google (890 MW de aumentos de potencia en 11 reactores, 20 años, más un suministro de 2.700 MW a 15 años) y otros 920 MW con clientes con grado de inversión firmados en el 2T26. En marzo de 2026 la empresa tenía contratado a largo plazo un 25 % de su producción limpia de 2029 y 147 TWh nucleares al año todavía libres para contratar con prima [10, 14, 15]. El poder de precio se ve en esas primas: la empresa estima 20-50 USD/MWh sobre el suelo del crédito fiscal por cada GW nuclear contratado [10].",
+    "como_gana_dinero": "Gana dinero con el diferencial entre el precio de la electricidad y su coste de producción. La nuclear tiene un coste marginal bajo (combustible de unos 6,5 USD/MWh) y vende a precio de mercado, con contratos o con créditos públicos: el crédito fiscal federal asegura hasta 2032 un ingreso mínimo de unos 44,75 USD/MWh, Illinois paga créditos hasta mayo de 2027 y Nueva York hasta 2049. Por encima de ese suelo, cada dólar que sube el precio mayorista o la capacidad de PJM va casi entero al beneficio, y los contratos largos con tecnológicas cobran 20-50 USD/MWh de prima. Las centrales de gas de Calpine ganan el diferencial entre electricidad y gas, con un 80 % de su producción de 2026 cubierta. La comercialización (245 TWh al año) aporta 4,25-4,35 USD/MWh de margen. En 2026 la empresa divide su beneficio en «base» (6,65-6,75 USD por acción, contratado o con suelo) y «mejorado» (el resto, que depende de precios de mercado) [10]."
+  },
+  "sector": {
+    "definicion": "El mercado relevante es la venta de electricidad al cliente final en EE. UU., que fija el tamaño del dinero que pasa por generadores y comercializadores: 514.396 M USD en 2024 según la EIA [11]. Constellation compite sobre todo en los mercados liberalizados (PJM, ERCOT, Nueva York, Nueva Inglaterra, California), donde el precio mayorista y la capacidad los fija una subasta. Se usa el dato de la EIA (estadística oficial) y no los informes de mercado privados; la cuota se calcula con los ingresos de la empresa sobre ese total.",
+    "tamano": "514.396 M USD en 2024 (ingresos de la venta al cliente final) [11]",
+    "unidad_serie": "millones de USD",
+    "serie": [
+      {
+        "anio": "2019",
+        "tamano": 401738
+      },
+      {
+        "anio": "2020",
+        "tamano": 393639
+      },
+      {
+        "anio": "2021",
+        "tamano": 422323
+      },
+      {
+        "anio": "2022",
+        "tamano": 485249
+      },
+      {
+        "anio": "2023",
+        "tamano": 491370
+      },
+      {
+        "anio": "2024",
+        "tamano": 514396
+      }
+    ],
+    "tcac_historico_pct": 5.1,
+    "tcac_previsto_pct": 3,
+    "cr5_pct": null,
+    "estructura": "Fragmentada",
+    "drivers": [
+      {
+        "driver": "Centros de datos e IA",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Del 4,4 % del consumo de EE. UU. en 2023 a entre el 6,7 % y el 12 % en 2028 (325-580 TWh) [12]."
+      },
+      {
+        "driver": "Precio de capacidad en PJM",
+        "efecto": "+",
+        "horizonte": "Cíclico",
+        "evidencia": "La subasta 2028-2029 cerró a 325 USD/MW-día en todas las zonas; Constellation colocó 18.875 MW [13]."
+      },
+      {
+        "driver": "Crédito fiscal nuclear (suelo de precio)",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Hasta 15 USD/MWh con ingresos brutos de 26-44,75 USD/MWh en 2025, ajustado por inflación hasta 2032 [1]."
+      },
+      {
+        "driver": "Intervención política en los precios",
+        "efecto": "−",
+        "horizonte": "Cíclico",
+        "evidencia": "La Casa Blanca y los gobernadores de PJM pidieron en enero de 2026 una subasta de emergencia y topes al precio de capacidad [16]."
+      },
+      {
+        "driver": "Precio del gas",
+        "efecto": "+/−",
+        "horizonte": "Cíclico",
+        "evidencia": "Marca el precio marginal de la electricidad: sube el margen nuclear y aprieta el diferencial de las centrales de gas [1]."
+      }
+    ],
+    "porter": [
+      {
+        "fuerza": "Rivalidad",
+        "intensidad": 3,
+        "justificacion": "Vistra, NRG, Talen y las eléctricas integradas compiten por los contratos con tecnológicas; la nuclear existente es escasa y no se puede replicar antes de 2032 [1, 10]."
+      },
+      {
+        "fuerza": "Poder de los clientes",
+        "intensidad": 3,
+        "justificacion": "Las tecnológicas negocian contratos de 15-20 años con gran volumen, pero aceptan primas sobre el mercado por energía firme y limpia [10, 14]."
+      },
+      {
+        "fuerza": "Poder de los proveedores",
+        "intensidad": 3,
+        "justificacion": "Combustible nuclear con pocos proveedores y riesgo ruso; la empresa sube inventario. El gas es un mercado líquido [1]."
+      },
+      {
+        "fuerza": "Amenaza de entrada",
+        "intensidad": 2,
+        "justificacion": "Una nuclear nueva tarda más de diez años; un ciclo combinado nuevo, 4-6 años y turbinas agotadas; la flota costaría más de tres veces su valor empresa [10]."
+      },
+      {
+        "fuerza": "Amenaza de sustitutos",
+        "intensidad": 3,
+        "justificacion": "Solar más baterías, gas detrás del contador y pequeños reactores modulares a partir de 2030; la eficiencia de los chips puede rebajar la demanda [1, 12]."
+      }
+    ],
+    "ciclo": {
+      "posicion": "Expansión",
+      "comentario": "El consumo eléctrico de EE. UU. vuelve a crecer tras quince años plano, por centros de datos, industria y electrificación [12]; los precios de capacidad de PJM pasaron de 29 USD/MW-día (2024-2025) a 325 en 2028-2029 [13]. En 2008-09 y 2020 la generación liberalizada sufrió por la caída del gas y de la demanda; Constellation no existía como cotizada, pero Exelon Generation vio caer sus márgenes y llegó a anunciar cierres nucleares en 2020 [1]."
+    },
+    "regulacion": "La NRC autoriza las licencias de los reactores (renovaciones a 60 y 80 años); FERC regula los mercados mayoristas y decide las reglas de PJM para la conexión de grandes cargas y la colocación de centros de datos junto a las centrales, todavía pendiente en octubre de 2026 (FERC rechazó el 12-oct la mayor parte del plan temporal de PJM). El crédito fiscal nuclear dura hasta 2032. Illinois (CMC hasta mayo de 2027) y Nueva York (ZEC hasta 2049) pagan créditos estatales [1, 10, 13].",
+    "tendencias": "La IA ha convertido la energía firme y sin emisiones en escasa: las tecnológicas firman contratos largos con primas y financian aumentos de potencia (Google, Amazon) y reaperturas (Microsoft). La empresa gana con ello porque tiene la mayor flota nuclear existente. El riesgo es político: los gobernadores y la Casa Blanca quieren que los centros de datos paguen la nueva capacidad y no suban la factura de los hogares [14, 15, 16].",
+    "confianza": "Media"
+  },
+  "competencia": {
+    "cuota_pct": 7,
+    "posicion": "1.º productor de electricidad privado de EE. UU. y 1.º operador nuclear (≈ 22 GW de unos 97 GW del país); cuota estimada sobre los ingresos de la venta al cliente final con los ingresos de 2026 con Calpine (≈ 36.000 M USD sobre 514.396 M) [10, 11]",
+    "competidores": [
+      {
+        "nombre": "Vistra",
+        "pais": "EE. UU.",
+        "ticker": "VST",
+        "ingresos": 19212,
+        "cuota_pct": 3.7,
+        "margen_ebit_pct": null,
+        "comentario": "Segundo nuclear liberalizado (Comanche Peak, Energy Harbor) y gran flota de gas en ERCOT y PJM; margen EBITDA del 34,6 % en los últimos 12 meses [18]."
+      },
+      {
+        "nombre": "NRG Energy",
+        "pais": "EE. UU.",
+        "ticker": "NRG",
+        "ingresos": 33125,
+        "cuota_pct": 6.4,
+        "margen_ebit_pct": null,
+        "comentario": "Comercializador con flota de gas ampliada con 13 GW de LS Power; margen EBITDA del 9,8 % [18]."
+      },
+      {
+        "nombre": "Talen Energy",
+        "pais": "EE. UU.",
+        "ticker": "TLN",
+        "ingresos": 3741,
+        "cuota_pct": 0.7,
+        "margen_ebit_pct": null,
+        "comentario": "Susquehanna (contrato con Amazon) y ciclos combinados en PJM [18]."
+      },
+      {
+        "nombre": "NextEra Energy",
+        "pais": "EE. UU.",
+        "ticker": "NEE",
+        "ingresos": 28700,
+        "cuota_pct": 5.6,
+        "margen_ebit_pct": null,
+        "comentario": "Mayor renovable del mundo y eléctrica regulada en Florida; reabre Duane Arnold con Google [18]."
+      },
+      {
+        "nombre": "PSEG",
+        "pais": "EE. UU.",
+        "ticker": "PEG",
+        "ingresos": 12543,
+        "cuota_pct": 2.4,
+        "margen_ebit_pct": null,
+        "comentario": "Socio de Constellation en Salem y Peach Bottom; red regulada en Nueva Jersey [1, 18]."
+      },
+      {
+        "nombre": "Duke Energy",
+        "pais": "EE. UU.",
+        "ticker": "DUK",
+        "ingresos": 32803,
+        "cuota_pct": 6.4,
+        "margen_ebit_pct": null,
+        "comentario": "Segunda flota nuclear del país, pero regulada (Carolinas): no vende a precio de mercado [18]."
+      }
+    ],
+    "foso": {
+      "veredicto": "Estrecho",
+      "tendencia": "Se amplía",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 0,
+          "evidencia": "No aplica: la electricidad no gana valor con más usuarios."
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 2,
+          "evidencia": "Contratos de 15-20 años con tecnológicas y 2,5 millones de cuentas minoristas; el cliente mayorista cambia de proveedor en cada subasta [1, 4]."
+        },
+        {
+          "fuente": "Intangibles (marca, patentes, licencias)",
+          "puntuacion": 4,
+          "evidencia": "Licencias de la NRC a 60-80 años para 21 reactores que no se pueden replicar antes de 2035; renovaciones de Ginna y Nine Mile Point 1 hasta 2049 pedidas en 2026 [1, 4]."
+        },
+        {
+          "fuente": "Ventaja en costes",
+          "puntuacion": 4,
+          "evidencia": "Factor de carga del 94-95 % durante años, por encima de la media del sector; coste marginal bajo y suelo de precio del crédito fiscal hasta 2032 [1]."
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 3,
+          "evidencia": "Flota de 22 GW nucleares: reparte costes de recarga, combustible y seguridad; la flota completa costaría más de tres veces su valor empresa [4]."
+        }
+      ]
+    },
+    "amenazas": "Tres amenazas con probabilidad media: (1) que FERC y PJM fijen reglas de colocación y de conexión de grandes cargas que encarezcan o retrasen los contratos con centros de datos (la empresa tiene 5.000 MW en la cola de PJM); (2) topes políticos al precio de capacidad, como pidieron la Casa Blanca y los gobernadores en enero de 2026; (3) que la eficiencia de la IA rebaje la demanda prevista. A más largo plazo, los pequeños reactores modulares y la solar con baterías pueden competir por los contratos de 2030 en adelante [1, 12, 16].",
+    "confianza": "Media"
+  },
+  "financieros": {
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 19649,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 4194,
+        "amortizaciones": 4540,
+        "ebit": -346,
+        "resultado_financiero": 498,
+        "bai": 152,
+        "impuestos": 225,
+        "minoritarios": 122,
+        "beneficio_neto": -205,
+        "gastos_financieros": 282,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": 633,
+        "bpa": -0.63,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 327
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 24440,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 2922,
+        "amortizaciones": 2427,
+        "ebit": 495,
+        "resultado_financiero": -1037,
+        "bai": -542,
+        "impuestos": -388,
+        "minoritarios": -7,
+        "beneficio_neto": -160,
+        "gastos_financieros": 250,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": 1188,
+        "bpa": -0.49,
+        "dpa": 0.564,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 329
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 24918,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 4124,
+        "amortizaciones": 2514,
+        "ebit": 1610,
+        "resultado_financiero": 837,
+        "bai": 2447,
+        "impuestos": 859,
+        "minoritarios": -46,
+        "beneficio_neto": 1623,
+        "gastos_financieros": 431,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": -1399,
+        "bpa": 5.01,
+        "dpa": 1.128,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 324
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 23568,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 7052,
+        "amortizaciones": 2700,
+        "ebit": 4352,
+        "resultado_financiero": 164,
+        "bai": 4516,
+        "impuestos": 774,
+        "minoritarios": -11,
+        "beneficio_neto": 3749,
+        "gastos_financieros": 506,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": -316,
+        "bpa": 11.89,
+        "dpa": 1.41,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 315
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 25533,
+        "coste_ventas": null,
+        "gastos_generales": null,
+        "ebitda": 5687,
+        "amortizaciones": 2601,
+        "ebit": 3086,
+        "resultado_financiero": 425,
+        "bai": 3511,
+        "impuestos": 1187,
+        "minoritarios": 4,
+        "beneficio_neto": 2319,
+        "gastos_financieros": 511,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": 805,
+        "bpa": 7.4,
+        "dpa": 1.551,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 314
+      }
+    ],
+    "ltm": {
+      "periodo": "LTM jun-26",
+      "fecha_fin": "2026-06-30",
+      "ingresos": 31270,
+      "ebitda": null,
+      "ebit": 4596,
+      "beneficio_neto": 3465,
+      "bpa": 9.71,
+      "dpa": 1.663,
+      "dpa_extraordinario": 0,
+      "fcf": null,
+      "participadas_en_ebitda": null,
+      "no_recurrentes_en_ebitda": null
+    },
+    "cambios_perimetro": [
+      {
+        "periodo": "2026",
+        "descripcion": "Calpine, comprada el 7-ene-2026 por 21.835 M USD (50 M de acciones y 4.342 M en efectivo) más 12.551 M de deuda asumida: entra en la cuenta y el balance de 2026; 5.603 M de centrales mantenidas para la venta por el compromiso con el DOJ [3]."
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "Los ingresos pasaron de 19.649 M USD en 2021 a 25.533 M en 2025, pero mezclan venta de gas, energía comprada para revender y coberturas: lo que cuenta es el margen. El BPA ajustado subió de 6,28 USD en 2023 a 8,67 en 2024 y 9,39 en 2025 por tres causas: el crédito fiscal nuclear desde 2024, la subida de los precios de capacidad de PJM y las recompras (de 329 a 314 M de acciones). El BPA contable salta más (5,01, 11,89 y 7,40) por el MtM de las coberturas y la revalorización de los fondos de desmantelamiento. En 2026 Calpine cambia el perímetro: ingresos de 18.626 M en el 1S26 (+44,5 %) y BPA ajustado de 5,30 USD (+31 %), con 360 M de acciones tras emitir 50 M para la compra [3, 4, 6, 8].",
+    "ajustes": "El BPA ajustado de la empresa excluye cada año el MtM no realizado de las coberturas (pérdida de 805 M en ingresos en 2025, ganancia de 316 M en 2024 y de 1.399 M en 2023), los resultados de los fondos de desmantelamiento y la actualización de sus obligaciones, los costes de la compra e integración de Calpine (204 M netos en el 1S26) y, desde 2026, la amortización de los contratos de Calpine valorados en la compra (303 M netos en el 1S26). Los dos primeros se repiten todos los años con signo cambiante; los costes de Calpine deberían terminar en 2027. Este informe usa el BPA ajustado para el objetivo a 12 meses porque es el que guía la empresa y sigue el consenso [4, 6]."
+  },
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "3T24",
+        "ingresos": 6550,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 2.74,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "4T24",
+        "ingresos": 5382,
+        "crecimiento_pct": -7.1,
+        "crecimiento_organico_pct": null,
+        "ebitda": 1227,
+        "margen_ebitda_pct": 22.8,
+        "bpa": 2.44,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1T25",
+        "ingresos": 6788,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 2.14,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "2T25",
+        "ingresos": 6101,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": 1205,
+        "margen_ebitda_pct": 19.8,
+        "bpa": 1.91,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "3T25",
+        "ingresos": 6570,
+        "crecimiento_pct": 0.3,
+        "crecimiento_organico_pct": null,
+        "ebitda": 1327,
+        "margen_ebitda_pct": 20.2,
+        "bpa": 3.04,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "4T25",
+        "ingresos": 6074,
+        "crecimiento_pct": 12.9,
+        "crecimiento_organico_pct": null,
+        "ebitda": 840,
+        "margen_ebitda_pct": 13.8,
+        "bpa": 2.3,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1T26",
+        "ingresos": 11122,
+        "crecimiento_pct": 63.8,
+        "crecimiento_organico_pct": null,
+        "ebitda": 2775,
+        "margen_ebitda_pct": 25,
+        "bpa": 2.74,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "2T26",
+        "ingresos": 7504,
+        "crecimiento_pct": 23,
+        "crecimiento_organico_pct": null,
+        "ebitda": 1023,
+        "margen_ebitda_pct": 13.6,
+        "bpa": 2.55,
+        "vs_consenso": "Superior"
+      }
+    ],
+    "confianza": "Media",
+    "ultima_presentacion": "En el 2T26 (6-ago) la empresa subió la guía de BPA ajustado de 2026 a 11,50-12,50 USD desde 11,00-12,00, con 2,55 USD en el trimestre frente a unos 2,28 de consenso, y anunció la venta de Brazos Valley a LS Power por 860 M, la última exigida por el DOJ. El mensaje cambió respecto al 31 de marzo: entonces el consejero delegado reconoció que los contratos con centros de datos se retrasaban porque los clientes esperaban las reglas de PJM, y la guía decepcionó (punto medio de 11,50 frente a 11,72 de consenso) [10, 32, 42]. En agosto ya hablaba de 920 MW nuevos con clientes con grado de inversión, de la licencia de combustible de Crane y del traspaso de derechos de conexión para su reapertura en 2027 [4]. Los analistas preguntaron sobre todo por el calendario de FERC para la colocación de centros de datos, que la dirección no fijó, y por el uso de la caja de las ventas de activos: recompras (2.000 M en el 1S26) y reducción de deuda [4, 38]."
+  },
+  "balance": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "activo_total": 48086,
+        "activo_corriente": 7981,
+        "pasivo_corriente": 7996,
+        "pasivo_total": 36472,
+        "fondo_comercio": 0,
+        "intangibles": 381,
+        "inmovilizado_material": 19612,
+        "existencias": 1121,
+        "clientes": 1669,
+        "proveedores": 1757,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 504,
+        "deuda_financiera": 7877,
+        "arrendamientos": 0,
+        "patrimonio_neto": 11219,
+        "minoritarios": 395,
+        "reservas": 0
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 46909,
+        "activo_corriente": 9360,
+        "pasivo_corriente": 7839,
+        "pasivo_total": 35537,
+        "fondo_comercio": 47,
+        "intangibles": 343,
+        "inmovilizado_material": 19822,
+        "existencias": 1398,
+        "clientes": 2585,
+        "proveedores": 2828,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 422,
+        "deuda_financiera": 5768,
+        "arrendamientos": 0,
+        "patrimonio_neto": 11018,
+        "minoritarios": 354,
+        "reservas": -496
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 50758,
+        "activo_corriente": 8299,
+        "pasivo_corriente": 6319,
+        "pasivo_total": 39472,
+        "fondo_comercio": 425,
+        "intangibles": 336,
+        "inmovilizado_material": 22116,
+        "existencias": 1279,
+        "clientes": 1934,
+        "proveedores": 1302,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 368,
+        "deuda_financiera": 9261,
+        "arrendamientos": 0,
+        "patrimonio_neto": 10925,
+        "minoritarios": 361,
+        "reservas": 761
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 52926,
+        "activo_corriente": 10776,
+        "pasivo_corriente": 6846,
+        "pasivo_total": 39387,
+        "fondo_comercio": 420,
+        "intangibles": 236,
+        "inmovilizado_material": 21235,
+        "existencias": 1600,
+        "clientes": 3718,
+        "proveedores": 2369,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 3022,
+        "deuda_financiera": 8412,
+        "arrendamientos": 0,
+        "patrimonio_neto": 13166,
+        "minoritarios": 373,
+        "reservas": 4066
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 57249,
+        "activo_corriente": 12119,
+        "pasivo_corriente": 7944,
+        "pasivo_total": 42396,
+        "fondo_comercio": 420,
+        "intangibles": 201,
+        "inmovilizado_material": 22474,
+        "existencias": 1736,
+        "clientes": 4266,
+        "proveedores": 2813,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 3641,
+        "deuda_financiera": 8992,
+        "arrendamientos": 0,
+        "patrimonio_neto": 14517,
+        "minoritarios": 336,
+        "reservas": 5899
+      }
+    ],
+    "vencimientos": [
+      {
+        "anio": "2026",
+        "importe": 92
+      },
+      {
+        "anio": "2027",
+        "importe": 666
+      },
+      {
+        "anio": "2028",
+        "importe": 828
+      },
+      {
+        "anio": "2029",
+        "importe": 157
+      },
+      {
+        "anio": "2030",
+        "importe": 99
+      },
+      {
+        "anio": "2031+",
+        "importe": 5561
+      }
+    ],
+    "liquidez": "Caja 697 M USD a 30-jun-2026 (380 M más restringidos); programa de pagarés de hasta 7.000 M USD respaldado por la línea de crédito; préstamo garantizado por el DOE de hasta 1.000 M USD para Crane sin disponer [1, 3].",
+    "rating": "S&P BBB+ y Moody's Baa1 (confirmados tras cerrar Calpine) [1, 10]",
+    "coste_deuda_pct": 4.6,
+    "vida_media_anios": null,
+    "confianza": "Media",
+    "otros_pasivos": "Pasivos que no parecen deuda: 12.612 M de obligaciones de desmantelamiento nuclear y 5.914 M a devolver a los clientes de las centrales con acuerdo regulatorio, cubiertos por 20.492 M de fondos dedicados (se dejan fuera del puente); 1.844 M de déficit de pensiones (en el puente, neto de impuestos); garantías de colateral por la comercialización, que subirían con una rebaja de rating (tres escalones hasta perder el grado de inversión); y la deuda de proyecto de Calpine (unos 5.000 M), con garantías sobre centrales concretas. Los litigios de la tormenta Uri en Texas, que afectaban a Constellation y a Calpine, se archivan tras el rechazo del Supremo de Texas en marzo y julio de 2026 [1, 3].",
+    "comentario": "Calpine cambió el balance: la deuda pasó de 9.000 M a final de 2025 a 24.700 M en junio de 2026 (12.551 M asumidos y pagarés para el efectivo de la compra) y la caja de 3.641 M a 697 M. La deuda neta ajustada del puente es de 21.472 M, unas 2 veces el EBITDA de 2026e, si se cobran los 4.500 M netos de las ventas a LS Power, que la empresa destina a reducir deuda. El rating se mantiene en BBB+/Baa1. El circulante subió por Calpine (existencias de 3.368 M) y por el colateral entregado en coberturas [1, 3]."
+  },
+  "flujos": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 2564,
+        "capex": 1329,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 30,
+        "desinversiones": 878,
+        "dividendos": 0,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 2611,
+        "capex": 1689,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 29,
+        "desinversiones": 52,
+        "dividendos": 185,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 2039,
+        "capex": 2422,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 1690,
+        "desinversiones": 24,
+        "dividendos": 366,
+        "recompras": 992,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 7753,
+        "capex": 2565,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 32,
+        "desinversiones": 0,
+        "dividendos": 444,
+        "recompras": 999,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 4237,
+        "capex": 2949,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 14,
+        "desinversiones": 0,
+        "dividendos": 486,
+        "recompras": 400,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "El flujo operativo contable de 2021-2024 sale negativo porque el cobro de la titulización de clientes iba en inversión; sumado, el flujo fue de 2.564 M en 2021, 2.611 M en 2022, 2.039 M en 2023 y 7.753 M en 2024, este último inflado por 1.803 M de colateral recibido; en 2025, 4.237 M sin titulización. El capex (2.949 M en 2025) incluye unos 1.000-1.200 M de combustible nuclear, que es mantenimiento; la empresa prevé 5.700 M en 2026 y 4.700 M en 2027 con Calpine, de los que 3.900 M en dos años son crecimiento (Crane, aumentos de potencia, conexiones para centros de datos). Estimación propia: el capex de mantenimiento sin combustible ronda el 4-5 % de las ventas. La caja de 2023-2025 fue a dividendos (1.296 M), recompras (2.391 M) y la compra de South Texas Project (1.690 M) [1, 9, 10]."
+  },
+  "calidad": {
+    "auditor": "PricewaterhouseCoopers LLP",
+    "anios_auditor": 4,
+    "opinion": "Favorable (10-K 2025)",
+    "confianza": "Alta",
+    "comentario": "Auditor PwC desde 2022, opinión favorable. Las cifras contables son volátiles por tres motivos legítimos que hay que limpiar: el MtM de las coberturas, la revalorización de los fondos de desmantelamiento (que en las centrales reguladas se compensa con impuestos al 100 %) y, desde 2026, la contabilidad de la compra de Calpine (11.107 M de fondo de comercio provisional y contratos a valor razonable que se amortizan fuera del beneficio ajustado). La diferencia entre beneficio contable y ajustado no es sistemáticamente favorable: en 2024 el contable (11,89 USD) superó al ajustado (8,67) y en 2025 quedó por debajo (7,40 frente a 9,39). Lectura de los indicadores del motor: el Altman Z de 2,30 refleja un balance con muchos activos fijos y pasivos de desmantelamiento, no estrés; el Piotroski de 6 es normal; el Beneish de −2,50 no apunta a manipulación [1, 3, 4].",
+    "senales": [
+      {
+        "senal": "Beneficio ajustado muy por encima del contable en 2026",
+        "nivel": "Media",
+        "comentario": "En el 1S26 el ajustado (1.893 M) superó al contable (2.103 M) en el 2T pero no en el 1T: la amortización de los contratos de Calpine (303 M netos) y los costes de integración (204 M) se excluyen; vigilar que los costes de integración no se vuelvan recurrentes [3]."
+      },
+      {
+        "senal": "Fondo de comercio provisional de 11.107 M",
+        "nivel": "Media",
+        "comentario": "La asignación del precio de Calpine puede cambiar hasta enero de 2027; un deterioro no movería caja pero rebajaría el ROIC contable [3]."
+      },
+      {
+        "senal": "Flujo operativo dependiente del colateral",
+        "nivel": "Baja",
+        "comentario": "Las variaciones de colateral movieron el flujo en ±1.800 M en 2023-2025 [1]."
+      }
+    ]
+  },
+  "rentabilidad": {
+    "comentario": "Antes de Calpine el negocio creaba valor desde 2024: ROIC del 17,1 % en 2024 y del 13,2 % en 2025 frente a un WACC del 9,80 %, gracias al crédito fiscal nuclear y a los precios de capacidad; en 2021-2023 rondaba el 1-7 %, por debajo del coste de capital. Lo que mueve el ROIC es el margen, no la rotación (0,45 veces): la flota ya está pagada y cada dólar de precio cae al beneficio. Calpine lo rebaja: con el EBIT de 2026e (6.970 M) y el capital invertido a 30-jun-2026 (unos 56.300 M, con 11.527 M de fondo de comercio), el ROIC queda en torno al 9-10 % (estimación propia), cerca del WACC, porque la compra se pagó con acciones a 354,58 USD. Frente a Vistra (margen EBITDA del 34,6 %) Constellation tiene márgenes parecidos con más nuclear y menos riesgo de combustible [3, 18].",
+    "confianza": "Media"
+  },
+  "capital": {
+    "politica": "Dividendo con crecimiento del 10 % anual (0,4265 USD por trimestre en 2026, 1,71 USD al año) y recompras: el consejo amplió la autorización a 5.000 M en 2026 y quedan unos 2.800 M tras recomprar 2.000 M en el 1S26 y 250 M en julio. Prioridades declaradas para 2026-2027, con 13.600 M de caja disponible: 3.900 M de inversión de crecimiento con rentabilidades de dos dígitos, 1.300 M de dividendos, 3.400 M de reducción de deuda para mantener BBB+/Baa1 y 5.000 M de recompras [3, 10].",
+    "adquisiciones": [
+      {
+        "anio": "2023",
+        "objetivo": "44 % de South Texas Project (NRG)",
+        "importe": 1750,
+        "ev_ebitda": null,
+        "financiacion": "Caja y deuda",
+        "resultado": "Integrada en ERCOT; la producción nuclear de ERCOT subió un 14,5 % en 2025 [1]."
+      },
+      {
+        "anio": "2026",
+        "objetivo": "Calpine",
+        "importe": 21835,
+        "ev_ebitda": 7.9,
+        "financiacion": "50 M de acciones (17.603 M) y 4.342 M en efectivo, más 12.551 M de deuda asumida",
+        "resultado": "Cerrada el 7-ene-2026; aporta el grueso de la subida del BPA de 2026; 11.107 M de fondo de comercio provisional y ventas de 5 GW exigidas por el DOJ [3, 17]."
+      }
+    ],
+    "comentario": "La dirección ha asignado bien el capital nuclear (South Texas Project, reapertura de Crane con contrato a 20 años, aumentos de potencia pagados por clientes) y ha recomprado acciones con disciplina hasta 2025 (17,4 M de acciones). Calpine es la gran apuesta: compró a 7,9x EBITDA de 2026, barato frente a construir de nuevo, pero pagó la mitad con acciones a 354,58 USD, un 27 % por encima del precio actual; los vendedores han colocado parte y la empresa recompró 2 M a 279 USD. El efecto en el ROIC es negativo (del 13,2 % a un 9-10 % estimado) y su justificación depende de vender la flota de gas con contratos largos [3, 10, 24].",
+    "confianza": "Media"
+  },
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "Joseph Dominguez",
+        "cargo": "Presidente del consejo (desde ago-2026) y consejero delegado",
+        "desde": "2022",
+        "participacion_pct": 0.05,
+        "trayectoria": "Abogado; antes consejero delegado de ComEd y responsable de asuntos regulatorios de Exelon. Desde la escisión, el BPA ajustado pasó de 6,28 USD (2023) a 9,39 (2025) y la acción multiplicó por cuatro hasta 2025 [4, 19]."
+      },
+      {
+        "nombre": "Shane Smith",
+        "cargo": "Director financiero",
+        "desde": "2026",
+        "participacion_pct": null,
+        "trayectoria": "Antes vicepresidente de Tesorería y Crédito; asumió el cargo al cerrar Calpine (enero de 2026), con la integración y la venta de activos exigida por el DOJ [22]."
+      },
+      {
+        "nombre": "Daniel Eggers",
+        "cargo": "Vicepresidente ejecutivo sénior de Finanzas y Economía de los Datos",
+        "desde": "2022",
+        "participacion_pct": null,
+        "trayectoria": "Director financiero de 2022 a 2025; ahora lleva los contratos con centros de datos [22]."
+      },
+      {
+        "nombre": "Bryan Hanson",
+        "cargo": "Director general de Generación",
+        "desde": "2022",
+        "participacion_pct": null,
+        "trayectoria": "Responsable de la flota nuclear, con factores de carga del 94-95 % [19]."
+      },
+      {
+        "nombre": "James McHugh",
+        "cargo": "Director comercial",
+        "desde": "2022",
+        "participacion_pct": null,
+        "trayectoria": "Lleva la comercialización mayorista y minorista [19]."
+      }
+    ],
+    "historial_guidance": [
+      {
+        "anio": "2023",
+        "guia": "EBITDA ajustado 2.900-3.300 M USD",
+        "real": "4.025 M USD",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2024",
+        "guia": "BPA ajustado 8,00-8,40 USD (tras dos subidas)",
+        "real": "8,67 USD",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2025",
+        "guia": "BPA ajustado 8,90-9,60 USD",
+        "real": "9,39 USD",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2026",
+        "guia": "BPA ajustado 11,00-12,00 USD (31-mar), subida a 11,50-12,50 (6-ago)",
+        "real": "5,30 USD en el 1S26",
+        "cumplida": "Parcial"
+      }
+    ],
+    "confianza": "Alta",
+    "comentario": "Equipo con credibilidad: cumplió o superó la guía de 2023, 2024 y 2025, y en 2026 la subió en agosto tras decepcionar en marzo. Estable: el consejero delegado lleva desde la escisión y el anterior director financiero sigue en la empresa al frente de los contratos con centros de datos; el nuevo, Shane Smith, viene de Tesorería. La concentración de cargos desde agosto de 2026 (consejero delegado y presidente) resta en gobierno, aunque hay consejero coordinador independiente. El variable a largo plazo premia caja libre y rentabilidad relativa, no tamaño [4, 19, 21, 22]."
+  },
+  "gobierno": {
+    "consejo": [
+      {
+        "nombre": "Joseph Dominguez",
+        "cargo": "Presidente y consejero delegado",
+        "tipo": "Ejecutivo",
+        "desde": "2022",
+        "comisiones": null
+      },
+      {
+        "nombre": "Charles L. Harrington",
+        "cargo": "Consejero independiente coordinador",
+        "tipo": "Independiente",
+        "desde": "2022",
+        "comisiones": "Auditoría y Riesgos"
+      },
+      {
+        "nombre": "Robert J. Lawless",
+        "cargo": "Consejero (presidente hasta ago-2026)",
+        "tipo": "Independiente",
+        "desde": "2022",
+        "comisiones": "Gobierno Corporativo"
+      },
+      {
+        "nombre": "Yves C. de Balmann",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2022",
+        "comisiones": "Remuneración (presidente)"
+      },
+      {
+        "nombre": "Bradley M. Halverson",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2022",
+        "comisiones": "Auditoría y Riesgos (presidente)"
+      },
+      {
+        "nombre": "Julie Holzrichter",
+        "cargo": "Consejera",
+        "tipo": "Independiente",
+        "desde": "2022",
+        "comisiones": "Auditoría y Riesgos"
+      },
+      {
+        "nombre": "Dhiaa M. Jamil",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2023",
+        "comisiones": "Remuneración"
+      },
+      {
+        "nombre": "Ashish Khandpur",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2022",
+        "comisiones": "Remuneración"
+      },
+      {
+        "nombre": "Eileen P. Paterson",
+        "cargo": "Consejera",
+        "tipo": "Independiente",
+        "desde": "2024",
+        "comisiones": "Gobierno Corporativo"
+      },
+      {
+        "nombre": "John M. Richardson",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2022",
+        "comisiones": "Auditoría y Riesgos"
+      },
+      {
+        "nombre": "Nneka L. Rimmer",
+        "cargo": "Consejera",
+        "tipo": "Independiente",
+        "desde": "2022",
+        "comisiones": "Auditoría y Riesgos"
+      },
+      {
+        "nombre": "Roger Crandall",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2026",
+        "comisiones": null
+      }
+    ],
+    "presidente_ceo_separados": false,
+    "presidente_ejecutivo": true,
+    "consejero_coordinador": true,
+    "una_accion_un_voto": true,
+    "operaciones_vinculadas_relevantes": false,
+    "variable_ligado_rentabilidad": true,
+    "auditoria_independiente": true,
+    "insiders_sin_operaciones": false,
+    "accionista_control": false,
+    "presidente_vinculado_control": false,
+    "cambios_cupula_24m": 1,
+    "voto_remuneracion_pct": 94.2,
+    "voto_remuneracion_contra_pct": 5.3,
+    "voto_remuneracion_contra_libre_pct": null,
+    "voto_cupula_pct": null,
+    "remuneracion_ceo": {
+      "anio": "2025",
+      "total": 17.12,
+      "fijo": 1.48,
+      "variable_corto": 2.65,
+      "variable_largo": 12.1,
+      "ratio_salario_medio": 140
+    },
+    "remuneracion": "El primer ejecutivo cobró 17,1 M USD en 2025: 1,48 M de fijo, 2,65 M de variable anual y 12,1 M en acciones; 140 veces el empleado mediano (122.610 USD). El variable a largo plazo son acciones de desempeño ligadas en un 67 % al flujo de caja libre antes de crecimiento y en un 33 % a la rentabilidad total relativa al accionista; el resto, acciones restringidas. Exige tener seis veces el sueldo en acciones. La junta de abril de 2026 aprobó la remuneración con un 94,2 % a favor y un 5,3 % en contra [19, 20].",
+    "accionistas": [
+      {
+        "nombre": "The Vanguard Group",
+        "pct": 11.7,
+        "tipo": "Institucional",
+        "variacion": "Según 13G (marzo de 2026)"
+      },
+      {
+        "nombre": "BlackRock",
+        "pct": 7.2,
+        "tipo": "Institucional",
+        "variacion": "Según 13G"
+      },
+      {
+        "nombre": "ECP ControlCo (antiguos accionistas de Calpine)",
+        "pct": 7,
+        "tipo": "Capital privado",
+        "variacion": "Recibió acciones por Calpine en enero de 2026; los vendedores colocaron 11 M de acciones en junio de 2026 (la empresa recompró 2 M) y el resto del bloqueo vence el 30-jun-2027 [3, 24]"
+      },
+      {
+        "nombre": "State Street",
+        "pct": 5.7,
+        "tipo": "Institucional",
+        "variacion": "Según 13G"
+      },
+      {
+        "nombre": "Capital International Investors",
+        "pct": 5.5,
+        "tipo": "Institucional",
+        "variacion": "Según 13G"
+      }
+    ],
+    "insiders": [
+      {
+        "fecha": "2026-08-11",
+        "persona": "Roger W. Crandall (consejero)",
+        "operacion": "Compra",
+        "acciones": 1500,
+        "importe": 0.42
+      }
+    ],
+    "control_y_defensas": "Sin accionista de control: el mayor es Vanguard (11,7 %). Una sola clase de acciones, consejeros elegidos cada año. Desde agosto de 2026 el consejero delegado es también presidente, con un consejero independiente coordinador (Charles Harrington, que tuvo un 10 % de votos en contra en la junta de abril, el más alto del consejo). El riesgo para el minoritario no es de control sino de oferta: los antiguos dueños de Calpine (ECP y coinversores) recibieron 50 M de acciones; la mitad quedó libre el 30-jun-2026 y la otra mitad lo estará el 30-jun-2027 [3, 19, 20, 21].",
+    "alertas": [
+      "Concentración de poder desde agosto de 2026: el consejero delegado pasa a presidir el consejo [21].",
+      "Oferta pendiente de acciones de los antiguos accionistas de Calpine (bloqueo hasta el 30-jun-2027 para la segunda mitad) [3]."
+    ],
+    "confianza": "Alta"
+  },
+  "consenso": {
+    "estimaciones": [
+      {
+        "periodo": "2026e",
+        "ingresos": 36046,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 12.14,
+        "dpa": 1.71,
+        "fuente": "Yahoo Finance (19 analistas en BPA, 13 en ingresos; BPA ajustado) [27]"
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 37290,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 13.31,
+        "dpa": 1.88,
+        "fuente": "Yahoo Finance (19 analistas; hace 90 días 13,58) [27]"
+      }
+    ],
+    "recomendaciones": {
+      "n_analistas": 23,
+      "comprar": 19,
+      "mantener": 3,
+      "vender": 1,
+      "po_medio": 336.6,
+      "po_min": 238,
+      "po_max": 395
+    },
+    "base_ebitda": "NIIF",
+    "ajuste_ebitda_pct_ventas": null,
+    "confianza": "Media",
+    "guidance": "Guía de 2026 (31-mar, subida el 6-ago): BPA ajustado de 11,50-12,50 USD, con 361 M de acciones. A medio plazo, la empresa promete un crecimiento del BPA «base» de más del 20 % anual en 2026-2029 (de 6,65-6,75 USD a 11,40-11,90 USD), sin contar los contratos nuevos, y del 10 % anual a tres años después; el «mejorado» (precios de mercado por encima de lo contratado) se suma y en 2029 sería un 30-35 % del total. El capex será de 5.700 M en 2026 y 4.700 M en 2027 [4, 10].",
+    "revisiones": "El BPA de consenso de 2026 subió de 11,76 USD hace 90 días a 12,14 tras la subida de la guía; el de 2027 bajó de 13,58 a 13,31. El objetivo medio de los analistas cayó de unos 405 USD a final de 2025 a 357 en julio y 336,6 en octubre (Citigroup de 348 a 297, Argus de 350 a 325), con las recomendaciones intactas (19 de 23 comprar): recortes por múltiplo, no por beneficio. Solo hay una fuente gratuita con estimaciones completas (Yahoo) y se contrasta con Stock Analysis [26, 27, 33, 38]."
+  },
+  "bolsa": {
+    "tipo_rentabilidad": "total (con dividendos)",
+    "rentabilidades": [
+      {
+        "periodo": "En el año",
+        "accion_pct": -20.5,
+        "indice_pct": 13.7,
+        "sector_pct": -0.2
+      },
+      {
+        "periodo": "1 año",
+        "accion_pct": -30.4,
+        "indice_pct": 16.9,
+        "sector_pct": -7.6
+      },
+      {
+        "periodo": "3 años (anual.)",
+        "accion_pct": 35.8,
+        "indice_pct": 22.7,
+        "sector_pct": 15.4
+      }
+    ],
+    "anual": [
+      {
+        "anio": "2023",
+        "accion_pct": 37.2,
+        "indice_pct": 26.2
+      },
+      {
+        "anio": "2024",
+        "accion_pct": 92.7,
+        "indice_pct": 24.9
+      },
+      {
+        "anio": "2025",
+        "accion_pct": 58.8,
+        "indice_pct": 17.7
+      }
+    ],
+    "beta": 1.12,
+    "volatilidad_pct": 48.9,
+    "max_drawdown_pct": -50.7,
+    "posicion_corta_pct": 3.3,
+    "confianza": "Alta",
+    "comentario": "Constellation fue una de las mejores acciones del S&P 500 en 2023-2025 (+37 %, +93 % y +59 %), cuando el mercado la convirtió en la acción de la energía para la IA. En 2026 ha perdido un 20,5 % mientras el S&P 500 ganaba un 13,7 %, y está un 32 % por debajo del máximo del 16-oct-2025 (411,69 USD). La caída no viene del beneficio, que sube (guía elevada en agosto), sino de una compresión del múltiplo de 29x a 21x el BPA del año siguiente, por cuatro causas encadenadas: la intervención política en PJM (enero), la decepción de la guía y el enfriamiento de la IA (marzo), la llegada al mercado de las acciones de los vendedores de Calpine (junio y septiembre) y las dudas regulatorias de FERC sobre la conexión de centros de datos (septiembre y octubre), con el bono a 10 años en el 5,2 % [16, 25, 32, 35, 36, 38]. Beta de 1,12 frente al S&P 500 y volatilidad del 48,9 %.",
+    "contexto": {
+      "movimiento": {
+        "fecha": "2026-10-15",
+        "var_1m_pct": 5.4,
+        "var_3m_pct": 8.4,
+        "var_6m_pct": -8.5,
+        "var_12m_pct": -29.8,
+        "dist_max_52s_pct": -32.3,
+        "dist_min_52s_pct": 15.7,
+        "dist_max_historico_pct": -32.3,
+        "tendencia": "bajista",
+        "volatilidad_60d_pct": 45.5,
+        "avisos": []
+      },
+      "movimientos_fuertes": [
+        {
+          "periodo": "ene-2026",
+          "var_pct": -9.8,
+          "causa": "Caída del 16-ene en un día: la Casa Blanca y los gobernadores de PJM pidieron una subasta de emergencia para centros de datos y topes al precio de capacidad de las centrales existentes [16].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "mar-2026",
+          "var_pct": -15.3,
+          "causa": "Mes de −15,3 %: −10,9 % el 20-mar con la venta de todo el sector por la subida de los tipos y el enfriamiento de la IA (Vistra −6 %) [43]; IPC de electricidad a la baja [34]; y guía de 2026 por debajo del consenso el 31-mar (−7 %), con contratos con centros de datos retrasados [32, 42].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "may-jun-2026",
+          "var_pct": -21.1,
+          "causa": "Caída de un mes hasta el 5-jun: tras la subida de mayo con los resultados del 1T, los vendedores de Calpine colocaron 11 M de acciones el 1-jun (la empresa recompró 2 M a unos 279 USD) [24]; Bernstein y Citigroup rebajaron objetivos (Citi de 348 a 297 el 1-jul) [33].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "sep-2026",
+          "var_pct": -13.3,
+          "causa": "Del 9 al 18 de septiembre, de 293,90 a 254,71 USD: acciones de Calpine que llegan al mercado, subida de los tipos y dudas sobre la demanda de la IA [35]; el 30-sep, −4,9 % porque FERC aplazó cinco meses la compra de respaldo de PJM [36].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "oct-2026",
+          "var_pct": 12,
+          "causa": "Subida del 12 % el 6-oct con el acuerdo con Google (890 MW de aumentos de potencia a 20 años y 2.700 MW de suministro a 15 años), tras el de Amazon (690 MW de Calvert Cliffs) del 30-sep; devuelta en los días siguientes con la corrección de los valores de IA y el rechazo de FERC al plan temporal de PJM (12-oct) [14, 15, 37, 44].",
+          "veredicto": "no cambia",
+          "condicion": null
+        }
+      ],
+      "noticias": [
+        {
+          "fecha": "2026-06-02",
+          "tipo": "accionista de referencia",
+          "hecho": "Los antiguos accionistas de Calpine (ECP, 7,0 % en marzo) vendieron 11 M de acciones con el bloqueo levantado; la otra mitad de los 50 M recibidos queda libre el 30-jun-2027 y la parte ya libre puede venderse en cualquier momento [3, 24, 45].",
+          "veredicto": "retrasa",
+          "condicion": "Hasta conocer la posición restante de los vendedores (13G/A) o un precio que ya descuente otra colocación (por debajo del límite robusto de compra)"
+        },
+        {
+          "fecha": "2026-09-30",
+          "tipo": "demanda o regulador",
+          "hecho": "FERC aplaza cinco meses la compra de respaldo de fiabilidad de PJM y el 12-oct rechaza la mayor parte de su plan temporal de recortes a centros de datos; la decisión sobre colocación y grandes cargas se espera en 2027 [36, 37].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-10-06",
+          "tipo": "fusión u oferta",
+          "hecho": "Acuerdos con Google (890 MW de aumentos de potencia, 20 años, más de 4.300 M de inversión; 2.700 MW a 15 años) y Amazon (690 MW de Calvert Cliffs, 20 años) [14, 15].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-10-14",
+          "tipo": "fusión u oferta",
+          "hecho": "Cierra la venta de Brazos Valley a LS Power; la de 4,4 GW (5.000 M) se espera antes de fin de año [3, 44].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-07-01",
+          "tipo": "recomendación",
+          "hecho": "Recortes de objetivo con la recomendación intacta: Citigroup de 348 a 297 USD, Argus de 350 a 325, Bernstein 296; objetivo medio de 336,6 USD (19 de 23 comprar) [26, 33, 38].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-08-11",
+          "tipo": "directivos",
+          "hecho": "Un consejero (Roger Crandall) compró 1.500 acciones a 278,62 USD; ninguna venta de directivos en 12 meses según los Form 4 [23].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-11-09",
+          "tipo": "resultados",
+          "hecho": "Resultados del 3T26, fecha estimada (sin confirmar por la empresa) [46].",
+          "veredicto": "no cambia",
+          "condicion": null
+        }
+      ],
+      "proximos_resultados": "2026-11-09",
+      "veredicto": "retrasa",
+      "condicion": "Hasta conocer la posición restante de los vendedores de Calpine o un precio por debajo del límite robusto de compra; hoy la señal ya es Mantener",
+      "comentario": "La caída del 32 % desde máximos no tiene una causa que la tesis no recoja: el beneficio sube y la guía se elevó en agosto. Es una compresión del múltiplo por riesgo regulatorio (PJM y FERC), por la oferta de acciones de Calpine y por la corrección de los valores ligados a la IA, con tipos al 5,2 %. El único hecho pendiente que puede mover el precio más de un 5 % en contra es otra colocación de los antiguos accionistas de Calpine, por eso el veredicto es «retrasa»; los resultados del 9-nov no aplazan nada."
+    }
+  },
+  "multiplos_historicos": {
+    "serie": [
+      {
+        "anio": "2022",
+        "precio_cierre": 86.21,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 13.7,
+        "excluir": false
+      },
+      {
+        "anio": "2023",
+        "precio_cierre": 116.89,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 13.5,
+        "excluir": false
+      },
+      {
+        "anio": "2024",
+        "precio_cierre": 223.71,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 23.8,
+        "excluir": false
+      },
+      {
+        "anio": "2025",
+        "precio_cierre": 353.27,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 29.1,
+        "excluir": false
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "La historia es corta: cotiza desde febrero de 2022. En PER adelantado pasó de 13,5-13,7x (cierres de 2022 y 2023, antes de que el mercado viera la demanda de la IA) a 23,8x (2024) y 29,1x (2025); hoy cotiza a 21,2x nuestro BPA de 2027e, por encima de la mediana de sus cuatro cierres (18,8x). El cambio estructural es real (crédito fiscal nuclear hasta 2032, contratos largos con tecnológicas), pero también lo es el riesgo de que el múltiplo vuelva hacia el de un productor eléctrico liberalizado si la demanda de la IA decepciona [4, 25]."
+  },
+  "comparables": {
+    "empresas": [
+      {
+        "nombre": "Vistra",
+        "ticker": "VST",
+        "pais": "US",
+        "capitalizacion": 50919,
+        "ev_ventas": 3.83,
+        "ev_ebitda_ltm": 11.1,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 14.9,
+        "crecimiento_pct": 23.8,
+        "margen_ebitda_pct": 34.6,
+        "roic_pct": null,
+        "dn_ebitda": 3,
+        "fcf_yield_pct": 0.1
+      },
+      {
+        "nombre": "NRG Energy",
+        "ticker": "NRG",
+        "pais": "US",
+        "capitalizacion": 21288,
+        "ev_ventas": 1.36,
+        "ev_ebitda_ltm": 13.9,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 9.4,
+        "crecimiento_pct": 10.5,
+        "margen_ebitda_pct": 9.8,
+        "roic_pct": null,
+        "dn_ebitda": 7.2,
+        "fcf_yield_pct": 3.6
+      },
+      {
+        "nombre": "Talen Energy",
+        "ticker": "TLN",
+        "pais": "US",
+        "capitalizacion": 16254,
+        "ev_ventas": 7.09,
+        "ev_ebitda_ltm": 45.6,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 12.3,
+        "crecimiento_pct": 36,
+        "margen_ebitda_pct": 15.6,
+        "roic_pct": null,
+        "dn_ebitda": 16.1,
+        "fcf_yield_pct": 7.8
+      },
+      {
+        "nombre": "NextEra Energy",
+        "ticker": "NEE",
+        "pais": "US",
+        "capitalizacion": 164876,
+        "ev_ventas": 9.82,
+        "ev_ebitda_ltm": 19.3,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 18.2,
+        "crecimiento_pct": 18,
+        "margen_ebitda_pct": 50.8,
+        "roic_pct": null,
+        "dn_ebitda": 7.4,
+        "fcf_yield_pct": -10.8
+      },
+      {
+        "nombre": "PSEG",
+        "ticker": "PEG",
+        "pais": "US",
+        "capitalizacion": 35104,
+        "ev_ventas": 4.76,
+        "ev_ebitda_ltm": 13.4,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 15.3,
+        "crecimiento_pct": 4.4,
+        "margen_ebitda_pct": 35.6,
+        "roic_pct": null,
+        "dn_ebitda": 5.5,
+        "fcf_yield_pct": 0.3
+      },
+      {
+        "nombre": "Dominion Energy",
+        "ticker": "D",
+        "pais": "US",
+        "capitalizacion": 55322,
+        "ev_ventas": 6.32,
+        "ev_ebitda_ltm": 13.7,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 16.7,
+        "crecimiento_pct": 5.7,
+        "margen_ebitda_pct": 46,
+        "roic_pct": null,
+        "dn_ebitda": 6.4,
+        "fcf_yield_pct": -16.6
+      },
+      {
+        "nombre": "Southern Company",
+        "ticker": "SO",
+        "pais": "US",
+        "capitalizacion": 102969,
+        "ev_ventas": 5.95,
+        "ev_ebitda_ltm": 12.6,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 18.4,
+        "crecimiento_pct": 7.3,
+        "margen_ebitda_pct": 47.2,
+        "roic_pct": null,
+        "dn_ebitda": 5.2,
+        "fcf_yield_pct": -3.8
+      },
+      {
+        "nombre": "American Electric Power",
+        "ticker": "AEP",
+        "pais": "US",
+        "capitalizacion": 67897,
+        "ev_ventas": 5.39,
+        "ev_ebitda_ltm": 13.6,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 18.6,
+        "crecimiento_pct": 9.1,
+        "margen_ebitda_pct": 39.6,
+        "roic_pct": null,
+        "dn_ebitda": 5.9,
+        "fcf_yield_pct": -8.8
+      },
+      {
+        "nombre": "Duke Energy",
+        "ticker": "DUK",
+        "pais": "US",
+        "capitalizacion": 93365,
+        "ev_ventas": 5.73,
+        "ev_ebitda_ltm": 11.3,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 16.9,
+        "crecimiento_pct": 6.6,
+        "margen_ebitda_pct": 50.7,
+        "roic_pct": null,
+        "dn_ebitda": 5.5,
+        "fcf_yield_pct": -4.8
+      }
+    ],
+    "confianza": "Media",
+    "criterio": "Nueve cotizadas de EE. UU.: los productores independientes con nuclear o gas en mercados liberalizados (Vistra, NRG, Talen), que son los comparables directos, y cinco eléctricas grandes con nuclear o renovables (NextEra, PSEG, Dominion, Southern, AEP, Duke), que dan el múltiplo del negocio contratado. No se incluyen Oklo ni NuScale (sin beneficio). PER de los próximos 12 meses con el BPA ajustado de consenso de Yahoo, la misma base que el nuestro [27].",
+    "comentario": "Constellation cotiza a 21,4x el PER de los próximos 12 meses, frente a una mediana de 16,7x: un 28 % de prima sobre las eléctricas reguladas y del 44 % sobre Vistra (14,9x), su comparable más parecido. La prima se justifica en parte por la nuclear sin emisiones con contratos de 20 años, pero las reguladas crecen un 5-7 % con retorno garantizado y Vistra tiene márgenes parecidos. Con el PER de los comparables el valor sale en 218 USD. Pesan un 20 % en la síntesis [27]."
+  },
+  "transacciones": {
+    "operaciones": [
+      {
+        "fecha": "2025-01",
+        "objetivo": "Calpine (≈ 27 GW de gas y geotermia, comercializador)",
+        "comprador": "Constellation Energy",
+        "ev": 26600,
+        "ev_ventas": null,
+        "ev_ebitda": 7.9,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Valor neto tras la caja generada hasta el cierre y los créditos fiscales; 21.835 M de precio contable más 12.551 M de deuda asumida [17]."
+      },
+      {
+        "fecha": "2025-05",
+        "objetivo": "Cartera de LS Power (13 GW de gas y CPower)",
+        "comprador": "NRG Energy",
+        "ev": 12000,
+        "ev_ventas": null,
+        "ev_ebitda": 7.5,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Unos 50 % del coste de construir de nuevo, según NRG [30]."
+      },
+      {
+        "fecha": "2025-07",
+        "objetivo": "Freedom y Guernsey (ciclos combinados en PJM)",
+        "comprador": "Talen Energy",
+        "ev": 3500,
+        "ev_ventas": null,
+        "ev_ebitda": 6.7,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Precio neto de créditos fiscales; 3.800 M brutos [31]."
+      },
+      {
+        "fecha": "2026-03",
+        "objetivo": "4,4 GW de gas en Delaware y Pensilvania (venta exigida por el DOJ)",
+        "comprador": "LS Power",
+        "ev": 5000,
+        "ev_ventas": null,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Unos 1.140 USD/kW; cierre previsto antes de fin de 2026 [3]."
+      },
+      {
+        "fecha": "2026-08",
+        "objetivo": "Brazos Valley (606 MW de gas en ERCOT)",
+        "comprador": "LS Power",
+        "ev": 860,
+        "ev_ventas": null,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Unos 1.420 USD/kW; cerrada el 14-oct-2026 [3, 37]."
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "Las operaciones del sector se cierran a 6,7-7,9x el EBITDA de 2026 (Calpine, la cartera de LS Power de NRG, Freedom y Guernsey de Talen) y a 1.100-1.400 USD/kW en las ventas de gas de 2026: muy por debajo de los 18,6x de EBITDA de los últimos 12 meses a los que cotiza Constellation. Son centrales de gas, sin la escasez de la nuclear, por eso pesan 0 en la síntesis. No hay accionista que pueda vender el control: con 99.000 M de capitalización una oferta es improbable [3, 17, 30, 31]."
+  },
+  "dcf": {
+    "anios": [
+      {
+        "periodo": "2026e",
+        "crecimiento_pct": 40,
+        "margen_ebitda_pct": 29.5,
+        "amortizacion_pct_ventas": 10,
+        "capex_pct_ventas": 16,
+        "nwc_pct_ventas": 10,
+        "tasa_impositiva_pct": 25.5,
+        "fijo": true
+      },
+      {
+        "periodo": "2027e",
+        "crecimiento_pct": -1,
+        "margen_ebitda_pct": 30.5,
+        "amortizacion_pct_ventas": 10,
+        "capex_pct_ventas": 13.3,
+        "nwc_pct_ventas": 10,
+        "tasa_impositiva_pct": 25.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2028e",
+        "crecimiento_pct": 4.5,
+        "margen_ebitda_pct": 31.5,
+        "amortizacion_pct_ventas": 10,
+        "capex_pct_ventas": 12,
+        "nwc_pct_ventas": 10,
+        "tasa_impositiva_pct": 25.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2029e",
+        "crecimiento_pct": 4.5,
+        "margen_ebitda_pct": 31.5,
+        "amortizacion_pct_ventas": 10,
+        "capex_pct_ventas": 11.5,
+        "nwc_pct_ventas": 10,
+        "tasa_impositiva_pct": 25.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2030e",
+        "crecimiento_pct": 4,
+        "margen_ebitda_pct": 31.5,
+        "amortizacion_pct_ventas": 10,
+        "capex_pct_ventas": 11,
+        "nwc_pct_ventas": 10,
+        "tasa_impositiva_pct": 25.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2031e",
+        "crecimiento_pct": 3.5,
+        "margen_ebitda_pct": 31.5,
+        "amortizacion_pct_ventas": 10,
+        "capex_pct_ventas": 10.5,
+        "nwc_pct_ventas": 10,
+        "tasa_impositiva_pct": 25.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2032e",
+        "crecimiento_pct": 3,
+        "margen_ebitda_pct": 31,
+        "amortizacion_pct_ventas": 10,
+        "capex_pct_ventas": 10.5,
+        "nwc_pct_ventas": 10,
+        "tasa_impositiva_pct": 25.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2033e",
+        "crecimiento_pct": 2.5,
+        "margen_ebitda_pct": 31,
+        "amortizacion_pct_ventas": 10,
+        "capex_pct_ventas": 10.5,
+        "nwc_pct_ventas": 10,
+        "tasa_impositiva_pct": 25.5,
+        "fijo": false
+      }
+    ],
+    "wacc": {
+      "tasa_libre_pct": 5.21,
+      "beta": 1.1,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 0,
+      "coste_deuda_pct": 5.3,
+      "tasa_impositiva_pct": 25.5,
+      "peso_deuda_pct": 20
+    },
+    "terminal": {
+      "metodo": "gordon",
+      "crecimiento_pct": 2.5,
+      "multiplo_salida": 11
+    },
+    "etapa2": {
+      "usar": false,
+      "anios": 10,
+      "margen_final_pct": null,
+      "justificacion": null
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "Los ingresos de 2026 suben un 40 % por la compra de Calpine (consenso de 36.046 M [27]; 18.626 M en el 1S26 [3]); el año se fija porque ya hay dos trimestres y la guía subida. En 2027 caen un 1 % porque salen las centrales vendidas a LS Power (unos 5 GW), compensadas por la reapertura de Crane y el contrato de Clinton con Meta. De 2028 a 2033 el crecimiento baja del 4,5 % al 2,5 %: 1,5 puntos de volumen (aumentos de potencia de Google y Amazon, Crane a plena carga) y 2,5-3 puntos de precio (contratos con prima e inflación del crédito fiscal). La historia de 2021-2025 fue de un 6,8 % anual, con años de precios extraordinarios [10, 14, 15].",
+      "margenes": "Margen EBITDA del 29,5 % en 2026 (estimación propia a partir de la guía: BPA de 12,14 USD con 359 M de acciones, impuestos del 26 %, intereses de unos 1.080 M y amortización de unos 3.575 M), que sube al 31,5 % en 2028 por los contratos con prima y baja al 31 % en 2032-2033 cuando termina el crédito fiscal. El margen normalizado de 2024-2025 (sin MtM) fue del 25-29 % sin Calpine [6, 10].",
+      "inversion": "Capex del 16 % de las ventas en 2026 (5.700 M de la guía, con 3.900 M de crecimiento en dos años) y del 13,3 % en 2027 (4.700 M), bajando al 10,5 %, por encima de la amortización del 10 % (que incluye combustible nuclear y desmantelamiento). Circulante del 10 % de las ventas, frente al 12,5 % de 2025, por la mezcla de Calpine [1, 10].",
+      "wacc": "Tasa libre del 5,21 % (bono a 10 años del 13-oct [29]); beta de 1,1, entre la mensual de 5 años (1,12) y la ajustada (1,08), con la semanal de 2 años en 1,31 [25]; prima de mercado del 5,5 %; coste de la deuda del 5,3 % antes de impuestos (rating BBB+); peso de la deuda del 20 % a valor de mercado (24.700 M frente a 99.041 M de capitalización). WACC del 9,80 %. Con la prima implícita del mercado (4,2 % [28]) baja al 8,65 %.",
+      "terminal": "Crecimiento terminal del 2,5 %, en línea con la inflación esperada del dólar y medio punto de crecimiento real, por debajo de la tasa libre menos medio punto. El valor terminal pesa un 62 % del valor. Implica unas 11-12 veces el EBITDA de salida, por encima de las transacciones del sector (6,7-7,9x) [17, 30, 31]."
+    },
+    "sostenibilidad": {
+      "puente_ingresos": [
+        {
+          "periodo": "2026e",
+          "volumen_pct": 38,
+          "precio_pct": 2,
+          "otros_pct": 0,
+          "comentario": "Volumen: entra Calpine (unos 23 GW y 62 TWh de carga minorista) desde el 7-ene; precio: capacidad de PJM más alta [3, 13]."
+        },
+        {
+          "periodo": "2027e",
+          "volumen_pct": -4,
+          "precio_pct": 3,
+          "otros_pct": 0,
+          "comentario": "Volumen: salen 5 GW vendidos a LS Power, entran Crane (835 MW) y el contrato de Clinton; precio: contratos con prima de los 920 MW firmados en el 2T26 [4, 10]."
+        },
+        {
+          "periodo": "2028e",
+          "volumen_pct": 1.5,
+          "precio_pct": 3,
+          "otros_pct": 0,
+          "comentario": "Volumen: primeros aumentos de potencia del acuerdo con Google; precio: capacidad a 325 USD/MW-día desde junio de 2028 y contratos a 15 años con Google (2.700 MW) [13, 14]."
+        },
+        {
+          "periodo": "2029e",
+          "volumen_pct": 1.5,
+          "precio_pct": 3,
+          "otros_pct": 0,
+          "comentario": "Volumen: aumentos de potencia; precio: contratos con prima sobre el suelo del crédito fiscal (77-85 USD/MWh en lo contratado según la empresa) [10]."
+        },
+        {
+          "periodo": "2030e",
+          "volumen_pct": 1.5,
+          "precio_pct": 2.5,
+          "otros_pct": 0,
+          "comentario": "Volumen: 190 MW de Calvert Cliffs para Amazon; precio: inflación del crédito fiscal y renovaciones [15]."
+        }
+      ],
+      "mercado_final": {
+        "periodo": "2033e",
+        "tamano": 670000
+      },
+      "veredicto": "Sí",
+      "justificacion": "Sí: el crecimiento que proyectamos después de 2026 (de −1 % a 4,5 % al año) es modesto y está en buena parte contratado (Microsoft, Meta, Amazon, Google, 920 MW en el 2T26) o asegurado por el suelo del crédito fiscal hasta 2032. La prueba de reinversión no aplica bien porque la reinversión neta es del 14 % del NOPAT: el crecimiento sale de precio y de aumentos de potencia que pagan los clientes. La cuota de mercado baja del 7,0 % al 6,6 % en 2033, sin exigir ganar cuota. El riesgo no es de calidad sino regulatorio: el foso (licencias nucleares irrepetibles) sostiene el crecimiento siempre que PJM no imponga topes."
+    },
+    "lectura": "El DCF da 152,04 USD por acción, un 45,6 % por debajo del precio, con un WACC del 9,80 % y un valor terminal del 62 % del total; con la prima implícita del mercado (4,2 %), 191,98 USD. El DCF inverso dice que el precio de 279,54 USD descuenta un crecimiento anual de las ventas del 12,5 % en 2027-2033, frente al 3,0 % de nuestro caso base, o una rentabilidad anual del 7,1 %, por debajo del 9,80 % de nuestro WACC y del 8,7 % que pide hoy el mercado. Es una expectativa exigente: supone que los 147 TWh nucleares libres se contratan con prima, que el gas de Calpine se vende con contratos largos y que el beneficio sigue creciendo después de 2032 sin el crédito fiscal. Lo que pagaría ese precio es un mundo en el que la escasez de energía firme dura décadas; nuestro caso base, con contratos y precios crecientes pero un mercado que acaba construyendo capacidad, no llega.",
+    "confianza": "Media"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": -2,
+        "ajuste_margen_pp": -2,
+        "ajuste_wacc_pp": 0.5,
+        "crecimiento_terminal_pct": 2,
+        "multiplo_salida": null,
+        "narrativa": "FERC y los gobernadores de PJM imponen topes y la IA decepciona: los contratos nuevos se paran, el precio de la energía cae con el gas barato y el margen se queda 2 puntos por debajo (algo que ya pasó en 2021-2023)."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Calpine se integra, Crane y Clinton arrancan en 2027, los aumentos de potencia de Google y Amazon llegan desde 2028 y el beneficio crece un 10-12 % al año hasta 2028."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": 1.5,
+        "ajuste_margen_pp": 1.5,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "FERC aprueba la colocación, la empresa contrata buena parte de los 147 TWh libres con prima y vende el gas de Calpine a 15 años: margen 1,5 puntos mayor y crecimiento 1,5 puntos superior."
+      }
+    ],
+    "comentario": "La asimetría es negativa en valor intrínseco: el alcista vale 186,12 USD (−33,4 %) y el bajista 95,38 USD (−65,9 %), porque con un WACC del 9,80 % ningún escenario razonable llega al precio. A 12 meses, con los múltiplos de la regla, el alcista da 334,20 USD (+19,6 %) y el bajista 169,29 USD (−39,4 %): se pierde el doble de lo que se gana. No compensa.",
+    "confianza": "Media"
+  },
+  "suma_partes": {
+    "aplica": false,
+    "descuento_holding_pct": 0,
+    "partes": [],
+    "comentario": "No aplica: la empresa publica sus segmentos por región y no por tecnología (nuclear, gas, comercialización), sin resultado por segmento más allá del margen sobre combustible; separar la nuclear de Calpine exigiría inventar el EBITDA de cada parte.",
+    "confianza": "Media"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2026-06-30",
+      "deuda_financiera": 24700,
+      "arrendamientos": 0,
+      "caja": 697,
+      "minoritarios": 345,
+      "pensiones": 1374,
+      "asociadas": 0,
+      "otros_ajustes": -4250
+    },
+    "rab": null,
+    "referencia_mercado": {
+      "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+      "prima_implicita_pct": 4.2,
+      "fecha": "2026-10",
+      "fuente": "Damodaran, ERPbymonth.xlsx [28]"
+    },
+    "pesos": {
+      "dcf": 50,
+      "comparables": 20,
+      "transacciones": 0,
+      "suma_partes": 0,
+      "escenarios": 30
+    },
+    "objetivo_12m": {
+      "ejercicio": "2028e",
+      "casos": [
+        {
+          "escenario": "Bajista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 12.54,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Topes en PJM y menos contratos: margen 2 puntos menor y crecimiento 2 puntos menor en 2027-2028; el BPA de 2028 se queda en 12,54 USD, por debajo del de 2027 de consenso."
+        },
+        {
+          "escenario": "Base",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 14.85,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Nuestra proyección: Calpine sin las centrales vendidas, Crane y Clinton en 2027, primeros aumentos de potencia de Google en 2028 y recompras hasta unos 346 M de acciones: 14,85 USD."
+        },
+        {
+          "escenario": "Alcista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 16.71,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Contratos con prima para buena parte de la nuclear libre y para el gas de Calpine: margen y crecimiento 1,5 puntos mayores, 16,71 USD, cerca del camino que dibuja la empresa para 2029."
+        }
+      ],
+      "per_historico": {
+        "base": "adelantado",
+        "actual": 21.2,
+        "mediana_5a": 18.8,
+        "minimo_5a": 13.5,
+        "media_larga": 20,
+        "excluidos": "Historia adelantada (cierre de cada año ÷ BPA ajustado real del año siguiente): 2022 13,7x (86,21 ÷ 6,28); 2023 13,5x (116,89 ÷ 8,67); 2024 23,8x (223,71 ÷ 9,39); 2025 29,1x (353,27 ÷ nuestro BPA de 2026e, 12,14). Sin exclusiones; no hay años anteriores porque la empresa cotiza desde febrero de 2022. Actual: 279,54 ÷ 13,21 (nuestro BPA de 2027e) = 21,2x.",
+        "v2": {
+          "mediana_5a": 25.8,
+          "minimo_5a": 18.6,
+          "media_larga": 27.3,
+          "excluidos": "Historia al cierre (precio ÷ BPA ajustado del mismo año): 2023 18,6x; 2024 25,8x; 2025 37,6x. 2022 fuera: la empresa no publicó BPA ajustado (daba EBITDA ajustado)."
+        }
+      },
+      "comparables_per": {
+        "mediana": 16.7
+      },
+      "consenso": {
+        "bpa_ano1": 12.14,
+        "bpa_ano2": 13.31,
+        "objetivo_medio": 336.6,
+        "objetivo_min": 238,
+        "objetivo_max": 395,
+        "analistas": 23,
+        "tendencia_3m": "recortes",
+        "fuente": "Yahoo Finance (19 analistas en BPA; 2027e 13,58 hace 90 días) [27]; Stock Analysis (23 analistas, objetivo medio 336,6 USD) [26]"
+      },
+      "diferencia_consenso": "Nuestro BPA de 2026e (12,14 USD) coincide con el consenso (12,14) y el de 2027e (13,21) queda un 0,8 % por debajo (13,31). No hay consenso gratuito de 2028; nuestro 14,85 supone un 12 % más que 2027, en línea con lo que implica la empresa (BPA base de 2029 de 11,40-11,90 con el «mejorado» en un 30-35 % del total). La diferencia con los analistas está en el múltiplo: su objetivo medio de 336,6 USD implica unas 23x nuestro BPA de 2028e; la regla nos da 20,0x en el base porque la mediana de los cuatro cierres de la empresa (18,8x) está por debajo del múltiplo actual (21,2x).",
+      "media": 266.83,
+      "comentario": "El objetivo a 12 meses ponderado es de 274,37 USD (−1,3 % con el dividendo) y el del base de 297,00 USD (+6,8 %); el valor intrínseco, 163,57 USD, queda un 40 % por debajo del objetivo. La distancia la explica la tasa de descuento: el mercado paga hoy 21x el BPA de 2027 por un beneficio que crece con contratos y escasez, y nuestro WACC del 9,80 % con el bono al 5,21 % no lo justifica. Para cerrarla haría falta que el mercado volviera a pagar 29x (como a final de 2025) o que el BPA de 2028 llegara a 17 USD. El crecimiento del BPA de 2025 a 2028e es del 16,5 % anual en la base ajustada (de 9,39 a 14,85 USD), no del 26 % que mide el motor desde el BPA contable de 7,40."
+    },
+    "comentario": "Pesos: DCF 50 %, escenarios 30 % y comparables 20 %. El DCF es el método más fiable para un negocio de activos de vida larga con contratos y un suelo de precio, aunque es muy sensible a la tasa libre (5,21 %). Los comparables (218 USD con el PER) dan el contraste del mercado, que paga a las eléctricas 16-18x. Las transacciones (77 USD) quedan a 0: son centrales de gas a 7-8x EBITDA sin la escasez nuclear. La dispersión es grande (de 77 a 445 USD por EV/ventas) y todas las métricas del valor intrínseco salvo EV/ventas quedan por debajo del precio: el mercado paga una opción sobre la demanda de la IA que nuestro DCF no incluye.",
+    "confianza": "Media"
+  },
+  "catalizadores": {
+    "items": [
+      {
+        "fecha": "9-nov-2026 (estimada)",
+        "evento": "Resultados del 3T26 y posible ajuste de la guía de 2026",
+        "efecto": "Consenso de 3,75 USD en el trimestre; la guía de 2027 llegaría en febrero",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "Fin de 2026",
+        "evento": "Cierre de la venta de 4,4 GW a LS Power (5.000 M)",
+        "efecto": "Caja para recompras y deuda",
+        "probabilidad": "Alta",
+        "sentido": "+"
+      },
+      {
+        "fecha": "1S-2027",
+        "evento": "Decisión de FERC sobre colocación y conexión de grandes cargas en PJM",
+        "efecto": "Desbloquea o encarece los contratos con centros de datos (5.000 MW en la cola de PJM)",
+        "probabilidad": "Media",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2027",
+        "evento": "Reapertura de Crane (835 MW, Microsoft) y arranque del contrato de Clinton con Meta (jun-2027)",
+        "efecto": "BPA contratado a 20 años",
+        "probabilidad": "Media",
+        "sentido": "+"
+      },
+      {
+        "fecha": "31-may-2027",
+        "evento": "Fin de los créditos de Illinois (CMC); las centrales pasan al suelo del crédito fiscal federal",
+        "efecto": "Más exposición al precio de mercado en Illinois",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "30-jun-2027",
+        "evento": "Fin del bloqueo de la segunda mitad de las acciones de Calpine",
+        "efecto": "Posible colocación de hasta 25 M de acciones",
+        "probabilidad": "Media",
+        "sentido": "−"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "riesgos": {
+    "items": [
+      {
+        "riesgo": "Topes políticos o regulatorios al precio de capacidad y a los contratos con centros de datos en PJM",
+        "tipo": "Regulatorio",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−20 % (bajista)",
+        "mitigante": "La subasta 2028-2029 ya cerró a 325 USD/MW-día; contratos firmados con Microsoft, Meta, Amazon y Google",
+        "senal": "Orden de FERC sobre colocación; propuestas de los gobernadores de PJM"
+      },
+      {
+        "riesgo": "La demanda de la IA decepciona y el múltiplo vuelve al de un productor eléctrico (13-15x)",
+        "tipo": "Mercado",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−40 % (PER 13,5x del bajista)",
+        "mitigante": "El suelo del crédito fiscal hasta 2032 protege el beneficio, no el múltiplo",
+        "senal": "Capex de las tecnológicas; contratos nuevos firmados por trimestre"
+      },
+      {
+        "riesgo": "Oferta de acciones de los antiguos accionistas de Calpine",
+        "tipo": "Mercado",
+        "probabilidad": "Alta",
+        "impacto": "Medio",
+        "efecto_valor": "−5 % a −10 % temporal",
+        "mitigante": "La empresa recompra en las colocaciones",
+        "senal": "13G/A de ECP; colocaciones anunciadas"
+      },
+      {
+        "riesgo": "Caída del precio mayorista (gas barato) que reduce el beneficio «mejorado»",
+        "tipo": "Mercado",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−10 %",
+        "mitigante": "Suelo del crédito fiscal nuclear y coberturas del 80 % del gas en 2026",
+        "senal": "Precio a plazo de NIHub y PJM West"
+      },
+      {
+        "riesgo": "Retraso o sobrecoste en Crane y en los aumentos de potencia",
+        "tipo": "Operativo",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−3 %",
+        "mitigante": "Préstamo garantizado por el DOE; derechos de conexión traspasados",
+        "senal": "Fecha de reconexión de Crane"
+      },
+      {
+        "riesgo": "Incidente nuclear o parada larga de un reactor",
+        "tipo": "Operativo",
+        "probabilidad": "Baja",
+        "impacto": "Alto",
+        "efecto_valor": "−10 %",
+        "mitigante": "Factor de carga del 94-95 % y flota diversificada en 21 reactores",
+        "senal": "Días de parada no programada; inspecciones de la NRC"
+      },
+      {
+        "riesgo": "Fin del crédito fiscal nuclear en 2032 sin sustituto",
+        "tipo": "Regulatorio",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−8 %",
+        "mitigante": "Contratos largos con tecnológicas que cubren más allá de 2032",
+        "senal": "Debate fiscal en el Congreso"
+      }
+    ],
+    "premortem": "Octubre de 2029: la acción ha perdido un 40 %. Lo que pasó: en 2027 FERC aprobó reglas de colocación que obligaban a los centros de datos a pagar la red y la capacidad nueva, y los gobernadores de PJM consiguieron un tope al precio de capacidad a partir de la subasta 2029-2030. A la vez, los modelos de IA se hicieron mucho más eficientes y las tecnológicas recortaron su capex en 2028: los 147 TWh nucleares sin contratar no encontraron comprador con prima. El beneficio «mejorado», que era un tercio del total, bajó a la mitad con el gas a 2,5 USD; el BPA de 2028 se quedó en 12,5 USD en vez de 15 y el mercado volvió a pagar el múltiplo de un productor eléctrico, 13,5x, como en 2022-2023: unos 170 USD. Los antiguos accionistas de Calpine vendieron sus últimos 25 M de acciones en plena caída. Indicadores que lo habrían anticipado: el ritmo de contratos firmados por trimestre, la orden de FERC sobre colocación, el capex de Microsoft, Alphabet, Amazon y Meta y el precio a plazo de la capacidad.",
+    "ia": {
+      "exposicion": "Alta",
+      "sentido": "Mixto",
+      "efecto_valor": "+10 % / −20 %",
+      "comentario": "La IA no sustituye el producto (la electricidad) ni automatiza su trabajo de forma relevante: como amenaza directa al negocio el riesgo es bajo. Pero es el motor de la tesis: la demanda de los centros de datos explica los contratos con Microsoft, Meta, Amazon y Google, los precios de capacidad de PJM (325 USD/MW-día) y buena parte del múltiplo. Si la demanda se cumple, los 147 TWh nucleares libres se contratan con prima (+0,40-1,00 USD de BPA por GW según la empresa); si la IA se vuelve más eficiente o las tecnológicas recortan su capex, el múltiplo cae hacia el de un productor eléctrico. Riesgo de IA para el negocio: medio, por dependencia y no por sustitución. Señal: contratos firmados por trimestre y capex de las grandes tecnológicas [10, 12, 14, 15]."
+    },
+    "confianza": "Media"
+  },
+  "esg": {
+    "calificaciones": [],
+    "materialidad": "Los asuntos que mueven las cifras son tres: (1) la seguridad nuclear y la gestión del combustible gastado, que condicionan las licencias; (2) las emisiones de la flota de gas de Calpine, que rebajan el perfil sin emisiones (la nuclear y la geotermia siguen siendo la mayor parte de la producción) y exponen a un precio del carbono; (3) el desmantelamiento: 12.612 M USD de obligaciones cubiertos por 20.492 M en fondos de desmantelamiento a 30-jun-2026 [1, 12].",
+    "controversias": "Demandas por la tormenta Uri (Texas, febrero de 2021): el Supremo de Texas rechazó los recursos de los demandantes en marzo y julio de 2026 y las reclamaciones contra los generadores se archivan [1]. Sin sanciones relevantes de la NRC en tres años en las fuentes revisadas.",
+    "confianza": "Media"
+  },
+  "preguntas": {
+    "items": [
+      {
+        "tema": "Contratos",
+        "pregunta": "¿A qué precio por MWh se firmaron los contratos de Amazon, Google y los 920 MW del 2T26, y cuánto suman al BPA de 2028-2029?",
+        "por_que": "Explican la diferencia entre el BPA base y el total; sin precio, el «mejorado» es una promesa."
+      },
+      {
+        "tema": "Calpine",
+        "pregunta": "¿Cuántas acciones conservan los antiguos accionistas de Calpine y tienen intención de vender antes de junio de 2027?",
+        "por_que": "Es el principal hecho pendiente que puede mover el precio más de un 5 %."
+      },
+      {
+        "tema": "Regulación",
+        "pregunta": "¿Qué pasa con los 5.000 MW en la cola de PJM si FERC exige que los centros de datos colocados paguen la red?",
+        "por_que": "Decide si la colocación es viable o si los contratos serán solo financieros."
+      },
+      {
+        "tema": "Rentabilidad",
+        "pregunta": "¿Qué ROIC espera la empresa de Calpine en 2027 con los 5 GW vendidos?",
+        "por_que": "Con nuestro cálculo el ROIC baja al 9-10 %, cerca del WACC."
+      },
+      {
+        "tema": "Precios",
+        "pregunta": "¿Qué parte del beneficio de 2027 depende de precios de mercado por encima del suelo del crédito fiscal?",
+        "por_que": "El «mejorado» es la parte que puede desaparecer con gas barato."
+      },
+      {
+        "tema": "Crédito fiscal",
+        "pregunta": "¿Qué estrategia hay para después de 2032, cuando termina el crédito fiscal nuclear?",
+        "por_que": "El valor terminal del DCF depende de mantener márgenes sin el suelo."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sentimiento": {
+    "tono": "Dividido",
+    "tendencia": "Mejora",
+    "revisadas": [
+      {
+        "plataforma": "Seeking Alpha (artículos de autores)",
+        "fecha": "2026-09",
+        "n_comentarios": 9,
+        "tono": "Positivo",
+        "resumen": "Mayoría alcista: «escasez que el mercado infravalora», «la máquina de caja nuclear despierta», «entrada más atractiva»; una minoría ve «empresa premium a precio premium» [37, 41]."
+      },
+      {
+        "plataforma": "Seeking Alpha (noticias)",
+        "fecha": "2026-10",
+        "n_comentarios": 12,
+        "tono": "Dividido",
+        "resumen": "Subidas con Google (+12 %) y Amazon; caídas con las decisiones de FERC sobre PJM y con la corrección de los valores de IA [37]."
+      },
+      {
+        "plataforma": "Stocktwits",
+        "fecha": "2026-10",
+        "n_comentarios": 30,
+        "tono": "Dividido",
+        "resumen": "17 de 30 mensajes marcados alcistas, pero el tono es de decepción: «se cerró el hueco de Google», «todo lo de IA sufre», objetivos técnicos de 245-250 y de 300 [39]."
+      },
+      {
+        "plataforma": "Comentarios de mercado (TIKR)",
+        "fecha": "2026-07",
+        "n_comentarios": 3,
+        "tono": "Positivo",
+        "resumen": "La caída se explica por la incertidumbre de las reglas de PJM, que congeló contratos con tecnológicas; si FERC decide, se cerraría el descuento [40]."
+      }
+    ],
+    "temas": [
+      {
+        "tema": "Reglas de PJM y FERC para centros de datos",
+        "postura": "Dividida",
+        "peso": "Alto",
+        "contraste": "Es el riesgo central: FERC rechazó el 12-oct gran parte del plan temporal de PJM y aplazó el 30-sep la compra de respaldo; los contratos de Amazon y Google se firmaron igualmente."
+      },
+      {
+        "tema": "Acciones de los vendedores de Calpine",
+        "postura": "Bajista",
+        "peso": "Medio",
+        "contraste": "Real: 11 M colocadas en junio y venta en el mercado en septiembre; el resto del bloqueo vence el 30-jun-2027."
+      },
+      {
+        "tema": "Burbuja de la IA",
+        "postura": "Dividida",
+        "peso": "Alto",
+        "contraste": "La acción se mueve con los valores de IA (caída del 9-oct), aunque el beneficio de 2026 depende sobre todo de precios mayoristas, capacidad y Calpine."
+      },
+      {
+        "tema": "Valoración tras la caída",
+        "postura": "Alcista",
+        "peso": "Medio",
+        "contraste": "A 21x el BPA de 2027 sigue por encima de las eléctricas (16-18x) y de Vistra (15x)."
+      }
+    ],
+    "lectura": "El sentimiento es dividido y no extremo: los autores de Seeking Alpha siguen mayoritariamente alcistas y los foros de corto plazo están cansados tras ver cómo se devolvía la subida de Google. No hay capitulación (19 de 23 analistas recomiendan comprar) ni euforia. El riesgo que señalan los foros y que el informe recoge es la regulación de PJM y la oferta de acciones de Calpine; el que no señalan es la valoración: a 21x el BPA de 2027 la acción sigue más cara que sus comparables [37, 39, 40, 41].",
+    "confianza": "Media"
+  },
+  "fuentes": [
+    {
+      "id": 1,
+      "titulo": "Form 10-K 2025 (cuentas auditadas, nota 5 de segmentos, deuda, NDT y obligaciones de desmantelamiento, crédito fiscal nuclear)",
+      "editor": "Constellation Energy Corp. / SEC EDGAR",
+      "tipo": "Primaria",
+      "fecha": "2026-02-24",
+      "url": "https://www.sec.gov/Archives/edgar/data/1868275/000186827526000032/ceg-20251231.htm"
+    },
+    {
+      "id": 2,
+      "titulo": "Hechos XBRL (companyfacts): cuenta, balance y flujos 2020-2025",
+      "editor": "SEC EDGAR",
+      "tipo": "Primaria",
+      "fecha": "2026-10-15",
+      "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001868275.json"
+    },
+    {
+      "id": 3,
+      "titulo": "Form 10-Q del 2T26 (balance a 30-jun-2026, compra de Calpine y asignación del precio, recompras, deuda)",
+      "editor": "Constellation Energy Corp. / SEC EDGAR",
+      "tipo": "Primaria",
+      "fecha": "2026-08-06",
+      "url": "https://www.sec.gov/Archives/edgar/data/1868275/000186827526000104/ceg-20260630.htm"
+    },
+    {
+      "id": 4,
+      "titulo": "Constellation Reports Second Quarter 2026 Results (8-K, anexo 99.1)",
+      "editor": "Constellation Energy Corp. / SEC EDGAR",
+      "tipo": "Primaria",
+      "fecha": "2026-08-06",
+      "url": "https://www.sec.gov/Archives/edgar/data/1868275/000186827526000097/ceg-20260806991.htm"
+    },
+    {
+      "id": 5,
+      "titulo": "Constellation Reports First Quarter 2026 Results (8-K, anexo 99.1)",
+      "editor": "Constellation Energy Corp. / SEC EDGAR",
+      "tipo": "Primaria",
+      "fecha": "2026-05-11",
+      "url": "https://www.sec.gov/Archives/edgar/data/1868275/000186827526000063/ceg-20260511991.htm"
+    },
+    {
+      "id": 6,
+      "titulo": "Constellation Reports Fourth Quarter and Full Year 2025 Results (8-K, anexo 99.1)",
+      "editor": "Constellation Energy Corp. / SEC EDGAR",
+      "tipo": "Primaria",
+      "fecha": "2026-02-24",
+      "url": "https://www.sec.gov/Archives/edgar/data/1868275/000186827526000029/ceg-20260224991.htm"
+    },
+    {
+      "id": 7,
+      "titulo": "Constellation Reports Third Quarter 2025 Results (8-K, anexo 99.1)",
+      "editor": "Constellation Energy Corp. / SEC EDGAR",
+      "tipo": "Primaria",
+      "fecha": "2025-11-07",
+      "url": "https://www.sec.gov/Archives/edgar/data/1868275/000186827525000089/ceg-20251107991.htm"
+    },
+    {
+      "id": 8,
+      "titulo": "Constellation Reports Fourth Quarter and Full Year 2024 Results (8-K, anexo 99.1; BPA ajustado 2023 de 6,28 USD)",
+      "editor": "Constellation Energy Corp. / SEC EDGAR",
+      "tipo": "Primaria",
+      "fecha": "2025-02-18",
+      "url": "https://www.sec.gov/Archives/edgar/data/1868275/000186827525000020/"
+    },
+    {
+      "id": 9,
+      "titulo": "Form 10-K 2023 (flujos 2021-2023, cobro del precio aplazado de la titulización de clientes, MtM no realizado por año)",
+      "editor": "Constellation Energy Corp. / SEC EDGAR",
+      "tipo": "Primaria",
+      "fecha": "2024-02-27",
+      "url": "https://www.sec.gov/Archives/edgar/data/1868275/000186827524000014/ceg-20231231.htm"
+    },
+    {
+      "id": 10,
+      "titulo": "2026 Business and Earnings Outlook (presentación del 31-mar-2026, 8-K anexo 99.1: guía 2026, BPA base 2026-2029, herramientas de modelo)",
+      "editor": "Constellation Energy Corp. / SEC EDGAR",
+      "tipo": "Primaria",
+      "fecha": "2026-03-31",
+      "url": "https://www.sec.gov/Archives/edgar/data/1868275/000186827526000045/ceg-202603318kexh991.htm"
+    },
+    {
+      "id": 11,
+      "titulo": "Electric Power Annual, tabla 1.2: ingresos de la venta de electricidad al cliente final 2015-2024",
+      "editor": "U.S. Energy Information Administration",
+      "tipo": "Sectorial",
+      "fecha": "2025-10",
+      "url": "https://www.eia.gov/electricity/annual/html/epa_01_02.html"
+    },
+    {
+      "id": 12,
+      "titulo": "2024 United States Data Center Energy Usage Report (4,4 % del consumo en 2023; 6,7-12 % en 2028)",
+      "editor": "Lawrence Berkeley National Laboratory",
+      "tipo": "Sectorial",
+      "fecha": "2024-12",
+      "url": "https://eta-publications.lbl.gov/sites/default/files/2024-12/lbnl-2024-united-states-data-center-energy-usage-report.pdf"
+    },
+    {
+      "id": 13,
+      "titulo": "Form 8-K: resultados de la subasta de capacidad de PJM 2028-2029 (325 USD/MW-día)",
+      "editor": "Constellation Energy Corp. / SEC EDGAR",
+      "tipo": "Primaria",
+      "fecha": "2026-07-14",
+      "url": "https://www.sec.gov/Archives/edgar/data/1868275/000186827526000080/ceg-20260714.htm"
+    },
+    {
+      "id": 14,
+      "titulo": "Google and Constellation Announce Landmark Agreement to Bring 890 MW of New Nuclear Capacity to PJM Grid",
+      "editor": "Google Cloud Press Corner",
+      "tipo": "Primaria",
+      "fecha": "2026-10-06",
+      "url": "https://www.googlecloudpresscorner.com/2026-10-06-Google-and-Constellation-Announce-Landmark-Agreement-to-Bring-890-MW-of-New-Nuclear-Capacity-to-PJM-Grid-as-Part-of-Long-Term-Power-Deal"
+    },
+    {
+      "id": 15,
+      "titulo": "Amazon, Constellation sign 20-year PPA to expand Maryland nuclear plant (Calvert Cliffs, 690 MW)",
+      "editor": "Utility Dive",
+      "tipo": "Prensa",
+      "fecha": "2026-09-30",
+      "url": "https://utilitydive.com/news/amazon-constellation-sign-20-year-ppa-to-expand-maryland-nuclear-plant/832145"
+    },
+    {
+      "id": 16,
+      "titulo": "Trump, governors push PJM to hold emergency auction for data center power",
+      "editor": "Utility Dive",
+      "tipo": "Prensa",
+      "fecha": "2026-01-16",
+      "url": "https://www.utilitydive.com/news/trump-governors-pjm-emergency-auction-data-centers/809853/"
+    },
+    {
+      "id": 17,
+      "titulo": "Constellation to Acquire Calpine (nota conjunta: 26.600 M USD netos, 7,9x EV/EBITDA 2026)",
+      "editor": "Constellation Energy Corp.",
+      "tipo": "Primaria",
+      "fecha": "2025-01-10",
+      "url": "https://www.constellationenergy.com/newsroom/2025/constellation-to-acquire-calpine-creates-americas-leading-producer-of-clean-and-reliable-energy-to-meet-growing-demand-for-customers-and-communities.html"
+    },
+    {
+      "id": 18,
+      "titulo": "Datos de mercado de Vistra, NRG, Talen, NextEra, PSEG, Dominion, Southern, AEP y Duke (ingresos, EBITDA y márgenes de los últimos 12 meses)",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-15",
+      "url": "https://finance.yahoo.com/quote/VST/"
+    },
+    {
+      "id": 19,
+      "titulo": "Proxy statement 2026 (DEF 14A): consejo, comités, remuneración, accionistas del 5 %",
+      "editor": "Constellation Energy Corp. / SEC EDGAR",
+      "tipo": "Primaria",
+      "fecha": "2026-03-19",
+      "url": "https://www.sec.gov/Archives/edgar/data/1868275/000155278126000140/e26004_ceg-def14a.htm"
+    },
+    {
+      "id": 20,
+      "titulo": "Form 8-K 5.07: resultados de la junta del 28-abr-2026",
+      "editor": "Constellation Energy Corp. / SEC EDGAR",
+      "tipo": "Primaria",
+      "fecha": "2026-05-01",
+      "url": "https://www.sec.gov/Archives/edgar/data/1868275/000186827526000050/ceg-20260428.htm"
+    },
+    {
+      "id": 21,
+      "titulo": "Constellation Announces Board Chairman Transition and New Board Appointment (8-K, anexo 99.1)",
+      "editor": "Constellation Energy Corp. / SEC EDGAR",
+      "tipo": "Primaria",
+      "fecha": "2026-08-05",
+      "url": "https://www.sec.gov/Archives/edgar/data/1868275/000186827526000089/ceg-202608058kexh991.htm"
+    },
+    {
+      "id": 22,
+      "titulo": "Form 8-K 5.02: cambios en la dirección al cierre de Calpine (Shane Smith, director financiero)",
+      "editor": "Constellation Energy Corp. / SEC EDGAR",
+      "tipo": "Primaria",
+      "fecha": "2025-11-21",
+      "url": "https://www.sec.gov/Archives/edgar/data/1868275/000186827525000107/ceg-20251121.htm"
+    },
+    {
+      "id": 23,
+      "titulo": "Form 4 presentados entre el 15-oct-2025 y el 15-oct-2026 (herramienta form4.mjs)",
+      "editor": "SEC EDGAR",
+      "tipo": "Primaria",
+      "fecha": "2026-10-15",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001868275&type=4"
+    },
+    {
+      "id": 24,
+      "titulo": "Form 8-K: oferta secundaria de 11 M de acciones de los antiguos accionistas de Calpine y recompra de 2 M por la empresa",
+      "editor": "Constellation Energy Corp. / SEC EDGAR",
+      "tipo": "Primaria",
+      "fecha": "2026-06-02",
+      "url": "https://www.sec.gov/Archives/edgar/data/1868275/000110465926069482/tm2616531d1_8k.htm"
+    },
+    {
+      "id": 25,
+      "titulo": "Históricos diarios de CEG, SPY y XLU (precio, rango, rentabilidades, beta, volatilidad, cierres de ejercicio) con bolsa.mjs",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-14",
+      "url": "https://finance.yahoo.com/quote/CEG/history/"
+    },
+    {
+      "id": 26,
+      "titulo": "Constellation Energy (CEG) Stock Forecast: estimaciones de BPA e ingresos, precio objetivo y recomendaciones (S&P Global)",
+      "editor": "Stock Analysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-07",
+      "url": "https://stockanalysis.com/stocks/ceg/forecast/"
+    },
+    {
+      "id": 27,
+      "titulo": "Yahoo Finance quoteSummary de CEG y comparables (consenso de BPA e ingresos 2026-2027, tendencia de 90 días, objetivos, valor empresa, posición corta)",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-15",
+      "url": "https://finance.yahoo.com/quote/CEG/analysis/"
+    },
+    {
+      "id": 28,
+      "titulo": "Implied ERP by month (ERPbymonth.xlsx), octubre de 2026: 4,20 %",
+      "editor": "Aswath Damodaran (NYU Stern)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx"
+    },
+    {
+      "id": 29,
+      "titulo": "Rentabilidad del bono del Tesoro a 10 años (DGS10): 5,21 % el 13-oct-2026",
+      "editor": "FRED, Federal Reserve Bank of St. Louis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-13",
+      "url": "https://fred.stlouisfed.org/series/DGS10"
+    },
+    {
+      "id": 30,
+      "titulo": "NRG to acquire LS Power portfolio (8-K, anexo 99.1: 12.000 M USD, 7,5x EV/EBITDA 2026)",
+      "editor": "NRG Energy / SEC EDGAR",
+      "tipo": "Primaria",
+      "fecha": "2025-05-12",
+      "url": "https://www.sec.gov/Archives/edgar/data/1013871/000110465925047007/tm2514561d1_ex99-1.htm"
+    },
+    {
+      "id": 31,
+      "titulo": "Talen to acquire Freedom and Guernsey (3.500 M USD netos, 6,7x EV/EBITDA 2026)",
+      "editor": "American Public Power Association",
+      "tipo": "Prensa",
+      "fecha": "2025-07-17",
+      "url": "https://www.publicpower.org/node/27947"
+    },
+    {
+      "id": 32,
+      "titulo": "Constellation Energy stock falls after 2026 guidance misses (consenso 2026 de 11,72 USD)",
+      "editor": "Investing.com",
+      "tipo": "Prensa",
+      "fecha": "2026-03-31",
+      "url": "https://www.investing.com/news/stock-market-news/constellation-energy-stock-falls-after-2026-guidance-misses-93CH-4590883"
+    },
+    {
+      "id": 33,
+      "titulo": "Why Constellation Energy Stock Is Tumbling Today (Citigroup rebaja el objetivo de 348 a 297 USD)",
+      "editor": "The Motley Fool",
+      "tipo": "Prensa",
+      "fecha": "2026-07-01",
+      "url": "https://www.fool.com/investing/2026/07/01/why-constellation-energy-stock-is-tumbling-today/"
+    },
+    {
+      "id": 34,
+      "titulo": "Why Constellation Energy Stock Slumped in March (−15,3 % en marzo; IPC de electricidad; retraso posible de Crane)",
+      "editor": "The Motley Fool",
+      "tipo": "Prensa",
+      "fecha": "2026-04-08",
+      "url": "https://www.fool.com/investing/2026/04/08/why-constellation-energy-stock-slumped-in-march/"
+    },
+    {
+      "id": 35,
+      "titulo": "Constellation Energy Stock Fell 13% Last Week (acciones de Calpine que llegan al mercado, 9-18 sep)",
+      "editor": "Yahoo Finance",
+      "tipo": "Prensa",
+      "fecha": "2026-09-21",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/constellation-energy-stock-fell-13-073132457.html"
+    },
+    {
+      "id": 36,
+      "titulo": "Why is Constellation Energy stock sliding today? (FERC aplaza cinco meses la compra de respaldo de PJM)",
+      "editor": "Investing.com",
+      "tipo": "Prensa",
+      "fecha": "2026-09-30",
+      "url": "https://www.investing.com/news/stock-market-news/why-is-constellation-energy-stock-sliding-today-93CH-4925601"
+    },
+    {
+      "id": 37,
+      "titulo": "Titulares de CEG (Google +12 % el 6-oct; FERC rechaza el plan temporal de PJM el 12-oct; acuerdo con Shell de 715 M el 10-sep)",
+      "editor": "Seeking Alpha (RSS)",
+      "tipo": "Prensa",
+      "fecha": "2026-10-15",
+      "url": "https://seekingalpha.com/api/sa/combined/CEG.xml"
+    },
+    {
+      "id": 38,
+      "titulo": "Constellation Energy Stock: Why It Fell 32% While the Story Got Better (Argus 350→325)",
+      "editor": "Top1Markets",
+      "tipo": "Prensa",
+      "fecha": "2026-08-17",
+      "url": "https://www.top1markets.com/news/constellation-energy-stock"
+    },
+    {
+      "id": 39,
+      "titulo": "Mensajes de CEG (12-15 oct 2026)",
+      "editor": "Stocktwits",
+      "tipo": "Foros y redes",
+      "fecha": "2026-10-15",
+      "url": "https://api.stocktwits.com/api/2/streams/symbol/CEG.json"
+    },
+    {
+      "id": 40,
+      "titulo": "Constellation Energy Stock is Down 25% in 2026. A June FERC Filing Could Signal a Recovery.",
+      "editor": "TIKR",
+      "tipo": "Foros y redes",
+      "fecha": "2026-07-27",
+      "url": "https://www.tikr.com/blog/constellation-energy-stock-fell-41-a-june-ferc-filing-could-signal-a-recovery"
+    },
+    {
+      "id": 41,
+      "titulo": "Constellation Energy: Premium Company At A Premium Price / A More Attractive Entry Point Into The Nuclear Power Boom",
+      "editor": "Seeking Alpha",
+      "tipo": "Foros y redes",
+      "fecha": "2026-09-30",
+      "url": "https://seekingalpha.com/article/4950743-constellation-energy-premium-company-at-a-premium-price"
+    },
+    {
+      "id": 42,
+      "titulo": "Constellation stock falls as weak outlook, deal delays dent sentiment (31-mar-2026)",
+      "editor": "Invezz",
+      "tipo": "Prensa",
+      "fecha": "2026-03-31",
+      "url": "https://invezz.com/en-ae/news/2026/03/31/constellation-stock-falls-as-weak-outlook-deal-delays-dent-sentiment/"
+    },
+    {
+      "id": 43,
+      "titulo": "Vistra Corp Plunges 6% as Utility Sector Stumbles Amid Rising Yields and Fading AI-Nuclear Hype (20-mar-2026)",
+      "editor": "MarketMinute / FinancialContent",
+      "tipo": "Prensa",
+      "fecha": "2026-03-20",
+      "url": "https://markets.financialcontent.com/stocks/article/marketminute-2026-3-20-high-wire-act-vistra-corp-plunges-6-as-utility-sector-stumbles-amid-rising-yields-and-fading-ai-nuclear-hype"
+    },
+    {
+      "id": 44,
+      "titulo": "Constellation Energy (CEG) Stock: Plunges 5.49% Despite Completing Major Power Plant Sale to LS Power (14-oct-2026)",
+      "editor": "Blockonomi",
+      "tipo": "Prensa",
+      "fecha": "2026-10-14",
+      "url": "https://blockonomi.com/constellation-energy-ceg-stock-plunges-5-49-despite-completing-major-power-plant-sale-to-ls-power"
+    },
+    {
+      "id": 45,
+      "titulo": "Constellation Energy falls as higher Treasury yields and stock overhang concerns weigh on shares (30-sep-2026)",
+      "editor": "Quiver Quantitative",
+      "tipo": "Prensa",
+      "fecha": "2026-09-30",
+      "url": "https://www.quiverquant.com/news/Constellation+Energy+falls+as+higher+Treasury+yields+and+stock+overhang+concerns+weigh+on+shares"
+    },
+    {
+      "id": 46,
+      "titulo": "Fecha estimada de resultados del 3T26 (9-nov-2026, antes de la apertura; sin confirmar por la empresa)",
+      "editor": "Earnings Whispers",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-15",
+      "url": "https://www.earningswhispers.com/stocks/ceg"
+    }
+  ],
+  "calc": {
+    "version": 4,
+    "etiquetas": {
+      "margen_bruto": "M. bruto",
+      "margen_bruto_largo": "Margen bruto",
+      "dias_base": "sobre el coste de ventas"
+    },
+    "recomendacion": {
+      "recomendacion": "Mantener",
+      "regla": "Mantener",
+      "regla_absoluta": "Vender",
+      "regla_relativa": "Vender",
+      "coincide": true,
+      "conviccion": "Media",
+      "conviccion_sugerida": "Media",
+      "conviccion_razones": [
+        "Mantener con las dos reglas de acuerdo y lejos de los umbrales"
+      ],
+      "reglas_discrepan": false,
+      "relativo": {
+        "prima_implicita_pct": 4.2,
+        "wacc": 8.65,
+        "ke": 9.83,
+        "dcf": 191.98,
+        "dcf_min": 172.82,
+        "dcf_max": 214.55,
+        "valor_objetivo": 194.92,
+        "alcista": 233.11,
+        "bajista": 120.17,
+        "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+        "fecha": "2026-10",
+        "potencial_pct": -30.3,
+        "rentabilidad_total_pct": -29.7,
+        "asimetria": -0.29
+      },
+      "objetivo_mercado_txt": " · con la prima implícita del mercado: 194,92 (-30,3 %)",
+      "objetivo_mercado_corto": " · mercado 194,92",
+      "rentabilidad_mercado_corto": " · mercado -29,7 %",
+      "potencial_pct": -41.5,
+      "dividendo_pct": 0.6,
+      "rentabilidad_total_pct": -40.9,
+      "alcista_pct": -33.4,
+      "bajista_pct": -65.9,
+      "asimetria": -0.51,
+      "comprar_por_debajo": 163.57,
+      "vender_por_encima": 306.71,
+      "tabla": [
+        {
+          "concepto": "Objetivo a 12 meses (nuestro PER × nuestro BPA 2028e, ponderado 25/50/25)",
+          "valor": "274,37 USD"
+        },
+        {
+          "concepto": "Bajista / base / alcista a 12 meses",
+          "valor": "13,5x × 12,54 = 169,29 · 20,0x × 14,85 = 297,00 · 20,0x × 16,71 = 334,20"
+        },
+        {
+          "concepto": "Rentabilidad a 12 meses: ponderada / del base (con dividendo)",
+          "valor": "-1,3 % / 6,8 %"
+        },
+        {
+          "concepto": "Regla de múltiplos aplicada",
+          "valor": "v3: base a mitad de camino hacia la mediana adelantada, sin alejarse del actual más de ×1,1; bajista mín. 5 a (adelantado) o base × 0,80; alcista techo base × 1,35 (selector de método: sin marcas: decide la v3)"
+        },
+        {
+          "concepto": "Objetivo medio de los analistas (solo contraste)",
+          "valor": "336,60 (nuestro base -11,8 %)"
+        },
+        {
+          "concepto": "Valor intrínseco (síntesis ponderada, largo plazo)",
+          "valor": "163,57 USD"
+        },
+        {
+          "concepto": "Potencial sobre el precio actual",
+          "valor": "-41,5 %"
+        },
+        {
+          "concepto": "Rentabilidad por dividendo ordinario",
+          "valor": "0,6 %"
+        },
+        {
+          "concepto": "Rentabilidad total esperada a 12 meses",
+          "valor": "-40,9 %"
+        },
+        {
+          "concepto": "Escenario alcista / bajista",
+          "valor": "-33,4 % / -65,9 %"
+        },
+        {
+          "concepto": "Asimetría (ganancia alcista / pérdida bajista)",
+          "valor": "-0,51x"
+        },
+        {
+          "concepto": "Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado",
+          "valor": "7,1 % frente a 9,8 % y 8,7 %"
+        },
+        {
+          "concepto": "Valor objetivo con la prima implícita del mercado (4,2 %, WACC 8,7 %)",
+          "valor": "194,92 USD"
+        },
+        {
+          "concepto": "Rentabilidad total esperada con la prima del mercado",
+          "valor": "-29,7 %"
+        },
+        {
+          "concepto": "Asimetría con la prima del mercado",
+          "valor": "-0,29x"
+        },
+        {
+          "concepto": "Regla absoluta (frente a su coste de capital)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Regla relativa (frente a lo que pide el mercado)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Crecimiento anual implícito en el precio (2027e-2033e) frente al previsto para su mercado",
+          "valor": "12,5 % frente a 3,0 %"
+        },
+        {
+          "concepto": "¿La calidad de la empresa sostiene el crecimiento previsto?",
+          "valor": "Sí (7,6 % anual proyectado; sin inversión neta)"
+        },
+        {
+          "concepto": "Señal del valor intrínseco (regla del DCF, referencia)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Recomendación según la regla a 12 meses (Comprar: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender: ponderada ≤ -10 %)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Convicción según los criterios (Mantener con las dos reglas de acuerdo y lejos de los umbrales)",
+          "valor": "Media"
+        }
+      ],
+      "niveles": [
+        {
+          "accion": "Comprar",
+          "condicion": "Por debajo de 163,57 (ponderada a 12 meses ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco)"
+        },
+        {
+          "accion": "Mantener",
+          "condicion": "Entre 163,57 y 306,71"
+        },
+        {
+          "accion": "Vender o reducir",
+          "condicion": "Por encima de 306,71 (ponderada a 12 meses ≤ -10 %)"
+        }
+      ],
+      "precio_txt": "",
+      "valor_objetivo_txt": "",
+      "regla_valor_intrinseco": "Vender",
+      "objetivo_12m": {
+        "completo": true,
+        "filas": [
+          {
+            "escenario": "Bajista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 12.54,
+            "multiplo": 13.5,
+            "multiplo_informe": null,
+            "origen": "mínimo de 5 años",
+            "precio": 169.29,
+            "rentabilidad_pct": -38.8,
+            "justificacion": "Topes en PJM y menos contratos: margen 2 puntos menor y crecimiento 2 puntos menor en 2027-2028; el BPA de 2028 se queda en 12,54 USD, por debajo del de 2027 de consenso."
+          },
+          {
+            "escenario": "Base",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 14.85,
+            "multiplo": 20,
+            "multiplo_informe": null,
+            "origen": "PER actual (21.2x) a mitad de camino hacia abajo, hacia la mediana de 5 años (18.8x)",
+            "precio": 297,
+            "rentabilidad_pct": 6.8,
+            "justificacion": "Nuestra proyección: Calpine sin las centrales vendidas, Crane y Clinton en 2027, primeros aumentos de potencia de Google en 2028 y recompras hasta unos 346 M de acciones: 14,85 USD."
+          },
+          {
+            "escenario": "Alcista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 16.71,
+            "multiplo": 20,
+            "multiplo_informe": null,
+            "origen": "media histórica larga",
+            "precio": 334.2,
+            "rentabilidad_pct": 20.1,
+            "justificacion": "Contratos con prima para buena parte de la nuclear libre y para el gas de Calpine: margen y crecimiento 1,5 puntos mayores, 16,71 USD, cerca del camino que dibuja la empresa para 2029."
+          }
+        ],
+        "regla": {
+          "version": "v3",
+          "bajista": 13.5,
+          "base": 20,
+          "alcista": 20,
+          "bajista_origen": "mínimo de 5 años",
+          "base_origen": "PER actual (21.2x) a mitad de camino hacia abajo, hacia la mediana de 5 años (18.8x)",
+          "alcista_origen": "media histórica larga"
+        },
+        "version": "v3",
+        "probabilidades": [
+          25,
+          50,
+          25
+        ],
+        "objetivo_ponderado": 274.37,
+        "objetivo_simple": 266.83,
+        "objetivo_base": 297,
+        "rentabilidad_ponderada_pct": -1.3,
+        "rentabilidad_simple_pct": -4,
+        "rentabilidad_base_pct": 6.8,
+        "asimetria": 0.5,
+        "senal": "Mantener",
+        "senal_sin_confirmar": null,
+        "confianza_baja": false,
+        "comprar_por_debajo": 163.57,
+        "vender_por_encima": 306.71,
+        "consenso_objetivo": 336.6,
+        "diferencia_consenso_pct": -11.8,
+        "selector": {
+          "regla": "v3",
+          "motivo": "sin marcas: decide la v3",
+          "v3_sin_selector": {
+            "version": "v3",
+            "rentabilidad_ponderada_pct": -1.3,
+            "rentabilidad_base_pct": 6.8,
+            "senal": "Mantener",
+            "objetivo_ponderado": 274.37
+          },
+          "v2": {
+            "version": "v2",
+            "rentabilidad_ponderada_pct": 18.6,
+            "rentabilidad_base_pct": 13.2,
+            "senal": "Mantener",
+            "objetivo_ponderado": 329.77
+          }
+        },
+        "v2": {
+          "rentabilidad_ponderada_pct": 18.6,
+          "rentabilidad_base_pct": 13.2,
+          "senal": "Mantener",
+          "multiplos": [
+            18.6,
+            21.2,
+            27.3
+          ]
+        },
+        "comparacion_txt": "Para comparar, con la regla v2 (historia al cierre, mismo precio): 18,6x / 21,2x / 27,3x, 18,6 % Mantener. Decide la v3 con tope ×1,1, elegida por el selector de método (sin marcas: decide la v3; METODO-VIGENTE.md)."
+      },
+      "rentabilidad_12m_pct": -1.3,
+      "rentabilidad_12m_txt": "-1,3 % (base +6,8 %)",
+      "objetivo_12m_txt": "274,37 USD"
+    },
+    "mercado": {
+      "precio": 279.54,
+      "acciones": 354.3,
+      "capitalizacion": 99041,
+      "deuda_neta": 24003,
+      "deuda_neta_ajustada": 21127,
+      "asimilables_deuda": -2876,
+      "ajustes_puente": -2531,
+      "valor_empresa": 120513,
+      "fecha_puente": "2026-06-30"
+    },
+    "clave": {
+      "capitalizacion": 99041,
+      "valor_empresa": 120513,
+      "deuda_neta": 24003,
+      "ev_ventas_ltm": 3.85,
+      "ev_ebitda_ltm": 18.6,
+      "ev_ebitda_ntm": null,
+      "ev_ebit_ltm": 26.2,
+      "per_ltm": 28.8,
+      "per_ntm": 21.4,
+      "fcf_yield_pct": 1.3,
+      "dividendo_pct": 0.6,
+      "dn_ebitda": 3.7,
+      "roic_pct": 13.2,
+      "margen_ebitda_pct": 20.8,
+      "deuda_neta_ajustada": 21127,
+      "dn_ebitda_ajustada": 3.3,
+      "crecimiento_tcac_pct": 6.8,
+      "ingresos_ntm": 37028,
+      "ebitda_ntm": null,
+      "bpa_ntm": 13.06,
+      "ebitda_ltm": 6492,
+      "ingresos_ltm": 31270,
+      "ev_rab": null
+    },
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 19649,
+        "crecimiento_pct": null,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 4827,
+        "margen_ebitda_pct": 24.6,
+        "ebit": 287,
+        "margen_ebit_pct": 1.5,
+        "beneficio_neto": -205,
+        "margen_neto_pct": -1,
+        "bpa": -0.63,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 148,
+        "payout_pct": 0
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 24440,
+        "crecimiento_pct": 24.4,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 4110,
+        "margen_ebitda_pct": 16.8,
+        "ebit": 1683,
+        "margen_ebit_pct": 6.9,
+        "beneficio_neto": -160,
+        "margen_neto_pct": -0.7,
+        "bpa": -0.49,
+        "dpa": 0.564,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": -115
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 24918,
+        "crecimiento_pct": 2,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 2725,
+        "margen_ebitda_pct": 10.9,
+        "ebit": 211,
+        "margen_ebit_pct": 0.8,
+        "beneficio_neto": 1623,
+        "margen_neto_pct": 6.5,
+        "bpa": 5.01,
+        "dpa": 1.128,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 35.1,
+        "payout_pct": 23
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 23568,
+        "crecimiento_pct": -5.4,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 6736,
+        "margen_ebitda_pct": 28.6,
+        "ebit": 4036,
+        "margen_ebit_pct": 17.1,
+        "beneficio_neto": 3749,
+        "margen_neto_pct": 15.9,
+        "bpa": 11.89,
+        "dpa": 1.41,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 17.1,
+        "payout_pct": 12
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 25533,
+        "crecimiento_pct": 8.3,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 6492,
+        "margen_ebitda_pct": 25.4,
+        "ebit": 3891,
+        "margen_ebit_pct": 15.2,
+        "beneficio_neto": 2319,
+        "margen_neto_pct": 9.1,
+        "bpa": 7.4,
+        "dpa": 1.551,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 33.8,
+        "payout_pct": 21
+      }
+    ],
+    "tcac": {
+      "periodo": "2021-2025",
+      "ingresos_pct": 6.8,
+      "ebitda_pct": 7.7,
+      "bpa_pct": null
+    },
+    "cuenta_y_prevision": [
+      {
+        "periodo": "2021",
+        "ingresos": 19649,
+        "ebitda": 4827
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 24440,
+        "ebitda": 4110
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 24918,
+        "ebitda": 2725
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 23568,
+        "ebitda": 6736
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 25533,
+        "ebitda": 6492
+      },
+      {
+        "periodo": "2026e",
+        "ingresos": 35746,
+        "ebitda": 10545
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 35389,
+        "ebitda": 10794
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 36981,
+        "ebitda": 11649
+      },
+      {
+        "periodo": "2029e",
+        "ingresos": 38645,
+        "ebitda": 12173
+      },
+      {
+        "periodo": "2030e",
+        "ingresos": 40191,
+        "ebitda": 12660
+      },
+      {
+        "periodo": "2031e",
+        "ingresos": 41598,
+        "ebitda": 13103
+      },
+      {
+        "periodo": "2032e",
+        "ingresos": 42846,
+        "ebitda": 13282
+      },
+      {
+        "periodo": "2033e",
+        "ingresos": 43917,
+        "ebitda": 13614
+      }
+    ],
+    "segmentos_ultimo": [
+      {
+        "nombre": "Mid-Atlantic",
+        "ingresos": 6487,
+        "peso_pct": 25.4,
+        "crecimiento_pct": 17.5,
+        "margen_pct": null,
+        "tipo_margen": null
+      },
+      {
+        "nombre": "Midwest",
+        "ingresos": 5804,
+        "peso_pct": 22.7,
+        "crecimiento_pct": 20.8,
+        "margen_pct": null,
+        "tipo_margen": null
+      },
+      {
+        "nombre": "New York",
+        "ingresos": 2190,
+        "peso_pct": 8.6,
+        "crecimiento_pct": 6.8,
+        "margen_pct": null,
+        "tipo_margen": null
+      },
+      {
+        "nombre": "ERCOT",
+        "ingresos": 1904,
+        "peso_pct": 7.5,
+        "crecimiento_pct": 22.8,
+        "margen_pct": null,
+        "tipo_margen": null
+      },
+      {
+        "nombre": "Other Power Regions",
+        "ingresos": 5583,
+        "peso_pct": 21.9,
+        "crecimiento_pct": 1.4,
+        "margen_pct": null,
+        "tipo_margen": null
+      },
+      {
+        "nombre": "Otros (gas, MtM no realizado)",
+        "ingresos": 3565,
+        "peso_pct": 14,
+        "crecimiento_pct": -13.8,
+        "margen_pct": null,
+        "tipo_margen": null
+      }
+    ],
+    "segmentos_tabla": {
+      "periodos": [
+        "",
+        "",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "filas": [
+        {
+          "nombre": "Mid-Atlantic",
+          "v0": null,
+          "v1": null,
+          "v2": 5138,
+          "v3": 5522,
+          "v4": 6487
+        },
+        {
+          "nombre": "Midwest",
+          "v0": null,
+          "v1": null,
+          "v2": 4658,
+          "v3": 4805,
+          "v4": 5804
+        },
+        {
+          "nombre": "New York",
+          "v0": null,
+          "v1": null,
+          "v2": 2021,
+          "v3": 2050,
+          "v4": 2190
+        },
+        {
+          "nombre": "ERCOT",
+          "v0": null,
+          "v1": null,
+          "v2": 1346,
+          "v3": 1550,
+          "v4": 1904
+        },
+        {
+          "nombre": "Other Power Regions",
+          "v0": null,
+          "v1": null,
+          "v2": 5851,
+          "v3": 5506,
+          "v4": 5583
+        },
+        {
+          "nombre": "Otros (gas, MtM no realizado)",
+          "v0": null,
+          "v1": null,
+          "v2": 5904,
+          "v3": 4135,
+          "v4": 3565
+        }
+      ]
+    },
+    "segmentos_periodo": "2025",
+    "balance": [
+      {
+        "periodo": "2021",
+        "activo_total": 48086,
+        "intangibles": 381,
+        "circulante": 1033,
+        "circulante_ventas_pct": 5.3,
+        "caja": 504,
+        "deuda_financiera": 7877,
+        "arrendamientos": 0,
+        "deuda_neta": 7373,
+        "patrimonio": 11219,
+        "minoritarios": 395,
+        "dn_ebitda": 1.53,
+        "dn_patrimonio_pct": 63,
+        "dso": 31,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 1,
+        "capital_invertido": 18987,
+        "fondo_comercio": 0,
+        "liquidez_corriente": 1
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 46909,
+        "intangibles": 390,
+        "circulante": 1155,
+        "circulante_ventas_pct": 4.7,
+        "caja": 422,
+        "deuda_financiera": 5768,
+        "arrendamientos": 0,
+        "deuda_neta": 5346,
+        "patrimonio": 11018,
+        "minoritarios": 354,
+        "dn_ebitda": 1.3,
+        "dn_patrimonio_pct": 47,
+        "dso": 39,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 6.7,
+        "capital_invertido": 16718,
+        "fondo_comercio": 47,
+        "liquidez_corriente": 1.19
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 50758,
+        "intangibles": 761,
+        "circulante": 1911,
+        "circulante_ventas_pct": 7.7,
+        "caja": 368,
+        "deuda_financiera": 9261,
+        "arrendamientos": 0,
+        "deuda_neta": 8893,
+        "patrimonio": 10925,
+        "minoritarios": 361,
+        "dn_ebitda": 3.26,
+        "dn_patrimonio_pct": 79,
+        "dso": 28,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 0.5,
+        "capital_invertido": 20179,
+        "fondo_comercio": 425,
+        "liquidez_corriente": 1.31
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 52926,
+        "intangibles": 656,
+        "circulante": 2949,
+        "circulante_ventas_pct": 12.5,
+        "caja": 3022,
+        "deuda_financiera": 8412,
+        "arrendamientos": 0,
+        "deuda_neta": 5390,
+        "patrimonio": 13166,
+        "minoritarios": 373,
+        "dn_ebitda": 0.8,
+        "dn_patrimonio_pct": 40,
+        "dso": 58,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 8,
+        "capital_invertido": 18929,
+        "fondo_comercio": 420,
+        "liquidez_corriente": 1.57
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 57249,
+        "intangibles": 621,
+        "circulante": 3189,
+        "circulante_ventas_pct": 12.5,
+        "caja": 3641,
+        "deuda_financiera": 8992,
+        "arrendamientos": 0,
+        "deuda_neta": 5351,
+        "patrimonio": 14517,
+        "minoritarios": 336,
+        "dn_ebitda": 0.82,
+        "dn_patrimonio_pct": 36,
+        "dso": 61,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 7.6,
+        "capital_invertido": 20204,
+        "fondo_comercio": 420,
+        "liquidez_corriente": 1.53
+      }
+    ],
+    "perimetro_nota": "Cambio de perímetro (2026: Calpine, comprada el 7-ene-2026 por 21.835 M USD (50 M de acciones y 4.342 M en efectivo) más 12.551 M de deuda asumida: entra en la cuenta y el balance de 2026; 5.603 M de centrales mantenidas para la venta por el compromiso con el DOJ [3].). Los ratios de balance de ese año (días, circulante, deuda neta / EBITDA, ROIC) y los indicadores de calidad contable no son comparables con los anteriores.",
+    "flujos": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 2564,
+        "capex": 1329,
+        "pagos_arrendamientos": 0,
+        "fcf": 1235,
+        "beneficio_neto": -205,
+        "conversion_pct": -602,
+        "capex_ventas_pct": 6.8,
+        "capex_amortizacion": 0.29,
+        "adquisiciones": 30,
+        "desinversiones": 878,
+        "dividendos": 0,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 327,
+        "fcf_por_accion": 3.78
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 2611,
+        "capex": 1689,
+        "pagos_arrendamientos": 0,
+        "fcf": 922,
+        "beneficio_neto": -160,
+        "conversion_pct": -576,
+        "capex_ventas_pct": 6.9,
+        "capex_amortizacion": 0.7,
+        "adquisiciones": 29,
+        "desinversiones": 52,
+        "dividendos": 185,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 185,
+        "payout_caja_pct": -116,
+        "acciones": 329,
+        "fcf_por_accion": 2.8
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 2039,
+        "capex": 2422,
+        "pagos_arrendamientos": 0,
+        "fcf": -383,
+        "beneficio_neto": 1623,
+        "conversion_pct": -24,
+        "capex_ventas_pct": 9.7,
+        "capex_amortizacion": 0.96,
+        "adquisiciones": 1690,
+        "desinversiones": 24,
+        "dividendos": 366,
+        "recompras": 992,
+        "emision_acciones": 0,
+        "retorno_accionista": 1358,
+        "payout_caja_pct": 84,
+        "acciones": 324,
+        "fcf_por_accion": -1.18
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 7753,
+        "capex": 2565,
+        "pagos_arrendamientos": 0,
+        "fcf": 5188,
+        "beneficio_neto": 3749,
+        "conversion_pct": 138,
+        "capex_ventas_pct": 10.9,
+        "capex_amortizacion": 0.95,
+        "adquisiciones": 32,
+        "desinversiones": 0,
+        "dividendos": 444,
+        "recompras": 999,
+        "emision_acciones": 0,
+        "retorno_accionista": 1443,
+        "payout_caja_pct": 38,
+        "acciones": 315,
+        "fcf_por_accion": 16.47
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 4237,
+        "capex": 2949,
+        "pagos_arrendamientos": 0,
+        "fcf": 1288,
+        "beneficio_neto": 2319,
+        "conversion_pct": 56,
+        "capex_ventas_pct": 11.5,
+        "capex_amortizacion": 1.13,
+        "adquisiciones": 14,
+        "desinversiones": 0,
+        "dividendos": 486,
+        "recompras": 400,
+        "emision_acciones": 0,
+        "retorno_accionista": 886,
+        "payout_caja_pct": 38,
+        "acciones": 314,
+        "fcf_por_accion": 4.1
+      }
+    ],
+    "flujos_acumulado": {
+      "periodo": "2021-2025",
+      "fcf": 8250,
+      "adquisiciones": 1795,
+      "dividendos": 1481,
+      "recompras": 2391,
+      "conversion_pct": 113
+    },
+    "rentabilidad": [
+      {
+        "periodo": "2021",
+        "nopat": 172,
+        "capital_invertido": 18987,
+        "roic_pct": 0.9,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": 0,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": -1.8,
+        "roa_pct": -0.4,
+        "margen_neto_pct": -1,
+        "rotacion": 0.41,
+        "apalancamiento": 4.29
+      },
+      {
+        "periodo": "2022",
+        "nopat": 1262,
+        "capital_invertido": 17853,
+        "roic_pct": 7.1,
+        "roic_sin_fc_pct": 7.1,
+        "fondo_comercio_pct_capital": 0,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": -1.4,
+        "roa_pct": -0.3,
+        "margen_neto_pct": -0.7,
+        "rotacion": 0.51,
+        "apalancamiento": 4.27
+      },
+      {
+        "periodo": "2023",
+        "nopat": 137,
+        "capital_invertido": 18449,
+        "roic_pct": 0.7,
+        "roic_sin_fc_pct": 0.8,
+        "fondo_comercio_pct_capital": 1,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 14.8,
+        "roa_pct": 3.3,
+        "margen_neto_pct": 6.5,
+        "rotacion": 0.51,
+        "apalancamiento": 4.45
+      },
+      {
+        "periodo": "2024",
+        "nopat": 3344,
+        "capital_invertido": 19554,
+        "roic_pct": 17.1,
+        "roic_sin_fc_pct": 17.5,
+        "fondo_comercio_pct_capital": 2,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 31.1,
+        "roa_pct": 7.2,
+        "margen_neto_pct": 15.9,
+        "rotacion": 0.45,
+        "apalancamiento": 4.3
+      },
+      {
+        "periodo": "2025",
+        "nopat": 2576,
+        "capital_invertido": 19567,
+        "roic_pct": 13.2,
+        "roic_sin_fc_pct": 13.5,
+        "fondo_comercio_pct_capital": 2,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 16.8,
+        "roa_pct": 4.2,
+        "margen_neto_pct": 9.1,
+        "rotacion": 0.46,
+        "apalancamiento": 3.98
+      }
+    ],
+    "roic_incremental_pct": null,
+    "roic_frente_wacc": [
+      {
+        "periodo": "2021",
+        "roic_pct": 0.9,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": -1.8,
+        "wacc_pct": 9.8
+      },
+      {
+        "periodo": "2022",
+        "roic_pct": 7.1,
+        "roic_sin_fc_pct": 7.1,
+        "roic_operativo_pct": null,
+        "roe_pct": -1.4,
+        "wacc_pct": 9.8
+      },
+      {
+        "periodo": "2023",
+        "roic_pct": 0.7,
+        "roic_sin_fc_pct": 0.8,
+        "roic_operativo_pct": null,
+        "roe_pct": 14.8,
+        "wacc_pct": 9.8
+      },
+      {
+        "periodo": "2024",
+        "roic_pct": 17.1,
+        "roic_sin_fc_pct": 17.5,
+        "roic_operativo_pct": null,
+        "roe_pct": 31.1,
+        "wacc_pct": 9.8
+      },
+      {
+        "periodo": "2025",
+        "roic_pct": 13.2,
+        "roic_sin_fc_pct": 13.5,
+        "roic_operativo_pct": null,
+        "roe_pct": 16.8,
+        "wacc_pct": 9.8
+      }
+    ],
+    "compras": {
+      "tipo": "compra única grande",
+      "subidas": 1,
+      "anios": 4,
+      "fondo_comercio": 420,
+      "fondo_comercio_pct_capital": 2,
+      "roic_pct": 13.2,
+      "roic_sin_fc_pct": 13.5,
+      "texto": "Fondo de comercio: 420 M en 2025 (el 2 % del capital invertido medio); ha subido más de un 5 % en 1 de 4 años: compra única grande. ROIC publicado 13,2 %; sin fondo de comercio, 13,5 %. El ROIC sin fondo de comercio mide el rendimiento del negocio operativo; decide el publicado (§4.1) y la cifra sin fondo de comercio es dato para una excepción razonada."
+    },
+    "calidad": {
+      "periodo": "2025",
+      "altman_z": 2.3,
+      "altman_zona": "Zona gris",
+      "piotroski_f": 6,
+      "piotroski_detalle": [
+        {
+          "criterio": "Beneficio neto positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "ROA mejora",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Flujo operativo > beneficio neto",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Baja el endeudamiento (deuda / activo)",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora la liquidez corriente",
+          "resultado": "No"
+        },
+        {
+          "criterio": "No emite acciones",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora el margen bruto",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "Mejora la rotación del activo",
+          "resultado": "Sí"
+        }
+      ],
+      "beneish_m": -2.5,
+      "beneish_fiable": true,
+      "beneish_variables": [
+        {
+          "variable": "DSRI",
+          "valor": 1.06
+        },
+        {
+          "variable": "GMI",
+          "valor": 1
+        },
+        {
+          "variable": "AQI",
+          "valor": 1
+        },
+        {
+          "variable": "SGI",
+          "valor": 1.08
+        },
+        {
+          "variable": "DEPI",
+          "valor": 1.09
+        },
+        {
+          "variable": "SGAI",
+          "valor": 1
+        },
+        {
+          "variable": "LVGI",
+          "valor": 1
+        },
+        {
+          "variable": "TATA",
+          "valor": -0.03
+        }
+      ],
+      "tabla": [
+        {
+          "indicador": "Altman Z",
+          "valor": "2,30",
+          "lectura": "Zona gris (> 2,99 seguro; < 1,81 riesgo). No aplica a bancos ni aseguradoras, y subestima la solvencia de empresas con grandes anticipos de clientes o prefinanciación pública (contratistas, construcción), que inflan el pasivo."
+        },
+        {
+          "indicador": "Piotroski F",
+          "valor": "6 / 8",
+          "lectura": "Intermedio (4-6)."
+        },
+        {
+          "indicador": "Beneish M",
+          "valor": "-2,50",
+          "lectura": "Por debajo de −1,78: sin señal de manipulación."
+        },
+        {
+          "indicador": "Flujo operativo / beneficio neto (acumulado)",
+          "valor": "2,62x",
+          "lectura": "El beneficio se cobra."
+        }
+      ]
+    },
+    "dcf": {
+      "proyeccion": [
+        {
+          "periodo": "2026e",
+          "ingresos": 35746,
+          "crecimiento_pct": 40,
+          "ebitda": 10545,
+          "margen_ebitda_pct": 29.5,
+          "amortizacion": 3575,
+          "ebit": 6971,
+          "impuestos": 1777,
+          "capex": 5719,
+          "variacion_circulante": 386,
+          "fcff": 2663,
+          "fraccion": 0.21,
+          "factor": 0.99,
+          "vp": 556
+        },
+        {
+          "periodo": "2027e",
+          "ingresos": 35389,
+          "crecimiento_pct": -1,
+          "ebitda": 10794,
+          "margen_ebitda_pct": 30.5,
+          "amortizacion": 3539,
+          "ebit": 7255,
+          "impuestos": 1850,
+          "capex": 4707,
+          "variacion_circulante": -36,
+          "fcff": 4273,
+          "fraccion": 1,
+          "factor": 0.936,
+          "vp": 3995
+        },
+        {
+          "periodo": "2028e",
+          "ingresos": 36981,
+          "crecimiento_pct": 4.5,
+          "ebitda": 11649,
+          "margen_ebitda_pct": 31.5,
+          "amortizacion": 3698,
+          "ebit": 7951,
+          "impuestos": 2027,
+          "capex": 4438,
+          "variacion_circulante": 159,
+          "fcff": 5025,
+          "fraccion": 1,
+          "factor": 0.852,
+          "vp": 4282
+        },
+        {
+          "periodo": "2029e",
+          "ingresos": 38645,
+          "crecimiento_pct": 4.5,
+          "ebitda": 12173,
+          "margen_ebitda_pct": 31.5,
+          "amortizacion": 3865,
+          "ebit": 8309,
+          "impuestos": 2119,
+          "capex": 4444,
+          "variacion_circulante": 166,
+          "fcff": 5444,
+          "fraccion": 1,
+          "factor": 0.776,
+          "vp": 4222
+        },
+        {
+          "periodo": "2030e",
+          "ingresos": 40191,
+          "crecimiento_pct": 4,
+          "ebitda": 12660,
+          "margen_ebitda_pct": 31.5,
+          "amortizacion": 4019,
+          "ebit": 8641,
+          "impuestos": 2203,
+          "capex": 4421,
+          "variacion_circulante": 155,
+          "fcff": 5881,
+          "fraccion": 1,
+          "factor": 0.707,
+          "vp": 4154
+        },
+        {
+          "periodo": "2031e",
+          "ingresos": 41598,
+          "crecimiento_pct": 3.5,
+          "ebitda": 13103,
+          "margen_ebitda_pct": 31.5,
+          "amortizacion": 4160,
+          "ebit": 8944,
+          "impuestos": 2281,
+          "capex": 4368,
+          "variacion_circulante": 141,
+          "fcff": 6314,
+          "fraccion": 1,
+          "factor": 0.644,
+          "vp": 4063
+        },
+        {
+          "periodo": "2032e",
+          "ingresos": 42846,
+          "crecimiento_pct": 3,
+          "ebitda": 13282,
+          "margen_ebitda_pct": 31,
+          "amortizacion": 4285,
+          "ebit": 8998,
+          "impuestos": 2294,
+          "capex": 4499,
+          "variacion_circulante": 125,
+          "fcff": 6364,
+          "fraccion": 1,
+          "factor": 0.586,
+          "vp": 3731
+        },
+        {
+          "periodo": "2033e",
+          "ingresos": 43917,
+          "crecimiento_pct": 2.5,
+          "ebitda": 13614,
+          "margen_ebitda_pct": 31,
+          "amortizacion": 4392,
+          "ebit": 9223,
+          "impuestos": 2352,
+          "capex": 4611,
+          "variacion_circulante": 107,
+          "fcff": 6544,
+          "fraccion": 1,
+          "factor": 0.534,
+          "vp": 3492
+        }
+      ],
+      "etapa2": null,
+      "suma_vp": 28496,
+      "valor_terminal": 91915,
+      "vp_terminal": 46844,
+      "valor_empresa": 75339,
+      "peso_terminal_pct": 62,
+      "valor_acciones": 53867,
+      "valor_accion": 152.04,
+      "vt_gordon": 91915,
+      "vt_multiplo": 149757,
+      "multiplo_implicito": 6.8,
+      "g_implicito_pct": 5.2,
+      "metodo_terminal": "gordon",
+      "terminal_tabla": [
+        {
+          "concepto": "Método principal",
+          "valor": "Crecimiento a perpetuidad"
+        },
+        {
+          "concepto": "Crecimiento a perpetuidad",
+          "valor": "2,5 %"
+        },
+        {
+          "concepto": "Múltiplo EV/EBITDA de salida",
+          "valor": "11,0x"
+        },
+        {
+          "concepto": "Valor terminal (Gordon)",
+          "valor": "91.915"
+        },
+        {
+          "concepto": "Valor terminal (múltiplo)",
+          "valor": "149.757"
+        },
+        {
+          "concepto": "Múltiplo de salida implícito en Gordon",
+          "valor": "6,8x"
+        },
+        {
+          "concepto": "Crecimiento implícito en el múltiplo",
+          "valor": "5,20 %"
+        },
+        {
+          "concepto": "Peso del valor terminal en el valor empresa",
+          "valor": "62 %"
+        }
+      ],
+      "puente": [
+        {
+          "concepto": "Valor actual de los flujos proyectados",
+          "valor": "28.496"
+        },
+        {
+          "concepto": "Valor actual del valor terminal",
+          "valor": "46.844"
+        },
+        {
+          "concepto": "Valor empresa",
+          "valor": "75.339"
+        },
+        {
+          "concepto": "− Deuda financiera neta (con arrendamientos)",
+          "valor": "-24.003"
+        },
+        {
+          "concepto": "− Minoritarios, pensiones y otros; + asociadas",
+          "valor": "2.531"
+        },
+        {
+          "concepto": "Valor de los fondos propios",
+          "valor": "53.867"
+        },
+        {
+          "concepto": "Acciones diluidas (millones)",
+          "valor": "354,3"
+        },
+        {
+          "concepto": "Valor por acción",
+          "valor": "152,04"
+        }
+      ],
+      "composicion": [
+        {
+          "parte": "Flujos proyectados",
+          "valor": 28496
+        },
+        {
+          "parte": "Valor terminal",
+          "valor": 46844
+        }
+      ],
+      "wacc": 9.8,
+      "ke": 11.26,
+      "kd_despues": 3.95,
+      "wacc_tabla": [
+        {
+          "concepto": "Tasa libre de riesgo",
+          "valor": "5,21 %"
+        },
+        {
+          "concepto": "Beta",
+          "valor": "1,10"
+        },
+        {
+          "concepto": "Prima de riesgo de mercado",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Prima adicional (país, tamaño, específica)",
+          "valor": "0,00 %"
+        },
+        {
+          "concepto": "Coste de los fondos propios",
+          "valor": "11,26 %"
+        },
+        {
+          "concepto": "Coste de la deuda antes de impuestos",
+          "valor": "5,30 %"
+        },
+        {
+          "concepto": "Tipo impositivo",
+          "valor": "25,50 %"
+        },
+        {
+          "concepto": "Coste de la deuda después de impuestos",
+          "valor": "3,95 %"
+        },
+        {
+          "concepto": "Peso de la deuda (D / (D + E))",
+          "valor": "20,00 %"
+        },
+        {
+          "concepto": "WACC",
+          "valor": "9,80 %"
+        },
+        {
+          "concepto": "Prima de riesgo implícita del mercado (regla relativa)",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "WACC con la prima implícita del mercado",
+          "valor": "8,65 %"
+        }
+      ],
+      "potencial_pct": -45.6,
+      "sensibilidad": {
+        "eje_columnas": "Crecimiento a perpetuidad",
+        "columnas": [
+          "1,5 %",
+          "2,0 %",
+          "2,5 %",
+          "3,0 %",
+          "3,5 %"
+        ],
+        "filas": [
+          {
+            "wacc": "8,8 %",
+            "v0": 162.34,
+            "v1": 173.37,
+            "v2": 186.15,
+            "v3": 201.13,
+            "v4": 218.94
+          },
+          {
+            "wacc": "9,3 %",
+            "v0": 147.77,
+            "v1": 157.11,
+            "v2": 167.83,
+            "v3": 180.25,
+            "v4": 194.81
+          },
+          {
+            "wacc": "9,8 %",
+            "v0": 134.97,
+            "v1": 142.96,
+            "v2": 152.04,
+            "v3": 162.46,
+            "v4": 174.53
+          },
+          {
+            "wacc": "10,3 %",
+            "v0": 123.64,
+            "v1": 130.53,
+            "v2": 138.29,
+            "v3": 147.12,
+            "v4": 157.25
+          },
+          {
+            "wacc": "10,8 %",
+            "v0": 113.55,
+            "v1": 119.52,
+            "v2": 126.21,
+            "v3": 133.76,
+            "v4": 142.35
+          }
+        ]
+      },
+      "sensibilidad2": {
+        "columnas": [
+          "-2 pp",
+          "-1 pp",
+          "0 pp",
+          "+1 pp",
+          "+2 pp"
+        ],
+        "filas": [
+          {
+            "margen": "-2 pp",
+            "v0": 112.54,
+            "v1": 121.29,
+            "v2": 130.48,
+            "v3": 140.11,
+            "v4": 150.21
+          },
+          {
+            "margen": "-1 pp",
+            "v0": 122.17,
+            "v1": 131.49,
+            "v2": 141.26,
+            "v3": 151.51,
+            "v4": 162.26
+          },
+          {
+            "margen": "0 pp",
+            "v0": 131.81,
+            "v1": 141.68,
+            "v2": 152.04,
+            "v3": 162.91,
+            "v4": 174.31
+          },
+          {
+            "margen": "+1 pp",
+            "v0": 141.45,
+            "v1": 151.87,
+            "v2": 162.82,
+            "v3": 174.31,
+            "v4": 186.36
+          },
+          {
+            "margen": "+2 pp",
+            "v0": 151.08,
+            "v1": 162.07,
+            "v2": 173.6,
+            "v3": 185.7,
+            "v4": 198.41
+          }
+        ]
+      },
+      "rango_min": 130.53,
+      "rango_max": 180.25,
+      "inverso": {
+        "crecimiento_implicito_pct": 12.5,
+        "crecimiento_base_pct": 3,
+        "periodo": "2027e-2033e",
+        "margen_implicito_pct": 42.8,
+        "margen_implicito_texto": null,
+        "margen_base_pct": 31,
+        "rentabilidad_implicita_pct": 7.1
+      },
+      "sostenibilidad": {
+        "veredicto": "Sí",
+        "veredicto_motor": "Sí",
+        "motivos_motor": [],
+        "crecimiento_financiable_bruto_pct": 10.3,
+        "roic_implicito_bruto_pct": 11.2,
+        "tcac_ingresos_historica_pct": 6.8,
+        "crecimiento_proyectado_pct": 7.6,
+        "tasa_reinversion_pct": 14,
+        "crecimiento_financiable_pct": null,
+        "roic_pct": 13.2,
+        "roic_incremental_historico_pct": null,
+        "roic_implicito_pct": null,
+        "cuota_actual_pct": 7,
+        "cuota_final_pct": 6.6,
+        "puente": [
+          {
+            "periodo": "2026e",
+            "volumen_pct": 38,
+            "precio_pct": 2,
+            "otros_pct": 0,
+            "comentario": "Volumen: entra Calpine (unos 23 GW y 62 TWh de carga minorista) desde el 7-ene; precio: capacidad de PJM más alta [3, 13].",
+            "suma_pct": 40,
+            "crecimiento_pct": 40
+          },
+          {
+            "periodo": "2027e",
+            "volumen_pct": -4,
+            "precio_pct": 3,
+            "otros_pct": 0,
+            "comentario": "Volumen: salen 5 GW vendidos a LS Power, entran Crane (835 MW) y el contrato de Clinton; precio: contratos con prima de los 920 MW firmados en el 2T26 [4, 10].",
+            "suma_pct": -1,
+            "crecimiento_pct": -1
+          },
+          {
+            "periodo": "2028e",
+            "volumen_pct": 1.5,
+            "precio_pct": 3,
+            "otros_pct": 0,
+            "comentario": "Volumen: primeros aumentos de potencia del acuerdo con Google; precio: capacidad a 325 USD/MW-día desde junio de 2028 y contratos a 15 años con Google (2.700 MW) [13, 14].",
+            "suma_pct": 4.5,
+            "crecimiento_pct": 4.5
+          },
+          {
+            "periodo": "2029e",
+            "volumen_pct": 1.5,
+            "precio_pct": 3,
+            "otros_pct": 0,
+            "comentario": "Volumen: aumentos de potencia; precio: contratos con prima sobre el suelo del crédito fiscal (77-85 USD/MWh en lo contratado según la empresa) [10].",
+            "suma_pct": 4.5,
+            "crecimiento_pct": 4.5
+          },
+          {
+            "periodo": "2030e",
+            "volumen_pct": 1.5,
+            "precio_pct": 2.5,
+            "otros_pct": 0,
+            "comentario": "Volumen: 190 MW de Calvert Cliffs para Amazon; precio: inflación del crédito fiscal y renovaciones [15].",
+            "suma_pct": 4,
+            "crecimiento_pct": 4
+          }
+        ],
+        "texto": "La proyección apenas necesita inversión neta de la amortización (reinversión acumulada de 6.877 M, el 14 % del NOPAT, con un capex bruto medio del 11,9 % de las ventas). En un negocio de activos ligeros, el crecimiento medio del 7,6 % tiene que salir de subir precios y de ganar volumen sin capital nuevo, y la prueba es el poder de precios y la cuota (6,6 % del mercado en 2033e, frente al 7,0 % de hoy); en un comprador en serie, la amortización es de intangibles comprados y la prueba es el capex bruto (las compras) frente al crecimiento comprado.",
+        "tabla": [
+          {
+            "concepto": "Crecimiento medio de ingresos proyectado",
+            "valor": "7,6 %"
+          },
+          {
+            "concepto": "Capex bruto medio (incluidas compras si van como inversión)",
+            "valor": "11,9 % de las ventas"
+          },
+          {
+            "concepto": "Reinversión neta acumulada (capex − amortización + circulante)",
+            "valor": "6.877 M (14 % del NOPAT)"
+          },
+          {
+            "concepto": "Con la reinversión bruta (capex + circulante): crecimiento que financia al ROIC actual",
+            "valor": "10,3 % (reinvierte el 78 % del NOPAT)"
+          },
+          {
+            "concepto": "Rendimiento que la proyección supone para la reinversión bruta",
+            "valor": "11,2 %"
+          },
+          {
+            "concepto": "Crecimiento histórico de ingresos (TCAC)",
+            "valor": "6,8 % frente al 7,6 % proyectado"
+          },
+          {
+            "concepto": "Veredicto de las pruebas del motor",
+            "valor": "Sí"
+          },
+          {
+            "concepto": "Cuota de mercado implícita en 2033e",
+            "valor": "6,6 % (hoy: 7,0 %)"
+          }
+        ]
+      }
+    },
+    "escenarios": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "narrativa": "FERC y los gobernadores de PJM imponen topes y la IA decepciona: los contratos nuevos se paran, el precio de la energía cae con el gas barato y el margen se queda 2 puntos por debajo (algo que ya pasó en 2021-2023).",
+        "crecimiento_medio_pct": 1,
+        "margen_final_pct": 29,
+        "wacc_pct": 10.3,
+        "valor": 95.38,
+        "potencial_pct": -65.9
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "narrativa": "Calpine se integra, Crane y Clinton arrancan en 2027, los aumentos de potencia de Google y Amazon llegan desde 2028 y el beneficio crece un 10-12 % al año hasta 2028.",
+        "crecimiento_medio_pct": 3,
+        "margen_final_pct": 31,
+        "wacc_pct": 9.8,
+        "valor": 152.04,
+        "potencial_pct": -45.6
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "narrativa": "FERC aprueba la colocación, la empresa contrata buena parte de los 147 TWh libres con prima y vende el gas de Calpine a 15 años: margen 1,5 puntos mayor y crecimiento 1,5 puntos superior.",
+        "crecimiento_medio_pct": 4.5,
+        "margen_final_pct": 32.5,
+        "wacc_pct": 9.8,
+        "valor": 186.12,
+        "potencial_pct": -33.4
+      }
+    ],
+    "valor_ponderado": 146.4,
+    "potencial_ponderado_pct": -47.6,
+    "comparables": {
+      "tabla": [
+        {
+          "nombre": "Constellation Energy",
+          "ticker": "CEG",
+          "pais": "US",
+          "capitalizacion": 99041,
+          "ev_ventas": 3.85,
+          "ev_ebitda_ltm": 18.6,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 21.4,
+          "crecimiento_pct": 14,
+          "margen_ebitda_pct": 20.8,
+          "roic_pct": 13.2,
+          "dn_ebitda": 3.7,
+          "fcf_yield_pct": 1.3,
+          "es_objetivo": true
+        },
+        {
+          "nombre": "Vistra",
+          "ticker": "VST",
+          "pais": "US",
+          "capitalizacion": 50919,
+          "ev_ventas": 3.83,
+          "ev_ebitda_ltm": 11.1,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 14.9,
+          "crecimiento_pct": 23.8,
+          "margen_ebitda_pct": 34.6,
+          "roic_pct": null,
+          "dn_ebitda": 3,
+          "fcf_yield_pct": 0.1,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "NRG Energy",
+          "ticker": "NRG",
+          "pais": "US",
+          "capitalizacion": 21288,
+          "ev_ventas": 1.36,
+          "ev_ebitda_ltm": 13.9,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 9.4,
+          "crecimiento_pct": 10.5,
+          "margen_ebitda_pct": 9.8,
+          "roic_pct": null,
+          "dn_ebitda": 7.2,
+          "fcf_yield_pct": 3.6,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Talen Energy",
+          "ticker": "TLN",
+          "pais": "US",
+          "capitalizacion": 16254,
+          "ev_ventas": 7.09,
+          "ev_ebitda_ltm": 45.6,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 12.3,
+          "crecimiento_pct": 36,
+          "margen_ebitda_pct": 15.6,
+          "roic_pct": null,
+          "dn_ebitda": 16.1,
+          "fcf_yield_pct": 7.8,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "NextEra Energy",
+          "ticker": "NEE",
+          "pais": "US",
+          "capitalizacion": 164876,
+          "ev_ventas": 9.82,
+          "ev_ebitda_ltm": 19.3,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 18.2,
+          "crecimiento_pct": 18,
+          "margen_ebitda_pct": 50.8,
+          "roic_pct": null,
+          "dn_ebitda": 7.4,
+          "fcf_yield_pct": -10.8,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "PSEG",
+          "ticker": "PEG",
+          "pais": "US",
+          "capitalizacion": 35104,
+          "ev_ventas": 4.76,
+          "ev_ebitda_ltm": 13.4,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 15.3,
+          "crecimiento_pct": 4.4,
+          "margen_ebitda_pct": 35.6,
+          "roic_pct": null,
+          "dn_ebitda": 5.5,
+          "fcf_yield_pct": 0.3,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Dominion Energy",
+          "ticker": "D",
+          "pais": "US",
+          "capitalizacion": 55322,
+          "ev_ventas": 6.32,
+          "ev_ebitda_ltm": 13.7,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 16.7,
+          "crecimiento_pct": 5.7,
+          "margen_ebitda_pct": 46,
+          "roic_pct": null,
+          "dn_ebitda": 6.4,
+          "fcf_yield_pct": -16.6,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Southern Company",
+          "ticker": "SO",
+          "pais": "US",
+          "capitalizacion": 102969,
+          "ev_ventas": 5.95,
+          "ev_ebitda_ltm": 12.6,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 18.4,
+          "crecimiento_pct": 7.3,
+          "margen_ebitda_pct": 47.2,
+          "roic_pct": null,
+          "dn_ebitda": 5.2,
+          "fcf_yield_pct": -3.8,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "American Electric Power",
+          "ticker": "AEP",
+          "pais": "US",
+          "capitalizacion": 67897,
+          "ev_ventas": 5.39,
+          "ev_ebitda_ltm": 13.6,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 18.6,
+          "crecimiento_pct": 9.1,
+          "margen_ebitda_pct": 39.6,
+          "roic_pct": null,
+          "dn_ebitda": 5.9,
+          "fcf_yield_pct": -8.8,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Duke Energy",
+          "ticker": "DUK",
+          "pais": "US",
+          "capitalizacion": 93365,
+          "ev_ventas": 5.73,
+          "ev_ebitda_ltm": 11.3,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 16.9,
+          "crecimiento_pct": 6.6,
+          "margen_ebitda_pct": 50.7,
+          "roic_pct": null,
+          "dn_ebitda": 5.5,
+          "fcf_yield_pct": -4.8,
+          "es_objetivo": false
+        }
+      ],
+      "estadisticos": [
+        {
+          "estadistico": "Mediana",
+          "ev_ventas": 5.7,
+          "ev_ebitda_ltm": 13.6,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 16.7,
+          "crecimiento_pct": 9.1,
+          "margen_ebitda_pct": 39.6,
+          "roic_pct": null,
+          "dn_ebitda": 5.9,
+          "fcf_yield_pct": -3.8
+        },
+        {
+          "estadistico": "Media",
+          "ev_ventas": 5.6,
+          "ev_ebitda_ltm": 17.2,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 15.6,
+          "crecimiento_pct": 13.5,
+          "margen_ebitda_pct": 36.7,
+          "roic_pct": null,
+          "dn_ebitda": 6.9,
+          "fcf_yield_pct": -3.7
+        },
+        {
+          "estadistico": "Percentil 25",
+          "ev_ventas": 4.8,
+          "ev_ebitda_ltm": 12.6,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 14.9,
+          "crecimiento_pct": 6.6,
+          "margen_ebitda_pct": 34.6,
+          "roic_pct": null,
+          "dn_ebitda": 5.5,
+          "fcf_yield_pct": -8.8
+        },
+        {
+          "estadistico": "Percentil 75",
+          "ev_ventas": 6.3,
+          "ev_ebitda_ltm": 13.9,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 18.2,
+          "crecimiento_pct": 18,
+          "margen_ebitda_pct": 47.2,
+          "roic_pct": null,
+          "dn_ebitda": 7.2,
+          "fcf_yield_pct": 0.3
+        }
+      ],
+      "implicito": [
+        {
+          "metodo": "EV/EBITDA últimos 12 meses",
+          "metrica_empresa": 6492,
+          "multiplo_p25": 12.6,
+          "multiplo_mediana": 13.6,
+          "multiplo_p75": 13.9,
+          "multiplos": "12,6x / 13,6x / 13,9x",
+          "valor_p25": 170.27,
+          "valor_mediana": 188.59,
+          "valor_p75": 194.09,
+          "potencial_pct": -32.5
+        },
+        {
+          "metodo": "PER próximos 12 meses",
+          "metrica_empresa": 13.06,
+          "multiplo_p25": 14.9,
+          "multiplo_mediana": 16.7,
+          "multiplo_p75": 18.2,
+          "multiplos": "14,9x / 16,7x / 18,2x",
+          "valor_p25": 194.64,
+          "valor_mediana": 218.16,
+          "valor_p75": 237.75,
+          "potencial_pct": -22
+        },
+        {
+          "metodo": "EV/Ventas últimos 12 meses",
+          "metrica_empresa": 31270,
+          "multiplo_p25": 4.8,
+          "multiplo_mediana": 5.7,
+          "multiplo_p75": 6.3,
+          "multiplos": "4,8x / 5,7x / 6,3x",
+          "valor_p25": 359.51,
+          "valor_mediana": 445.12,
+          "valor_p75": 497.19,
+          "potencial_pct": 59.2
+        }
+      ],
+      "regresion": null,
+      "n": 9
+    },
+    "transacciones": {
+      "metrica": "EV/EBITDA",
+      "n": 5,
+      "mediana_ev_ebitda": 7.5,
+      "p25_ev_ebitda": 7.1,
+      "p75_ev_ebitda": 7.7,
+      "mediana_ev_ventas": null,
+      "prima_mediana_pct": null,
+      "valor_p25": 69.49,
+      "valor_mediana": 76.82,
+      "valor_p75": 80.49
+    },
+    "suma_partes": null,
+    "multiplos_historicos": [
+      {
+        "metrica": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+        "campo": "ev_ebitda_ltm",
+        "actual": 18.6,
+        "media": 14.3,
+        "minimo": 8.3,
+        "maximo": 18,
+        "percentil": 100,
+        "prima_pct": 30,
+        "anios": 4
+      },
+      {
+        "metrica": "PER últimos 12 meses (cierre de cada año)",
+        "campo": "per_ltm",
+        "actual": 28.8,
+        "media": 23.3,
+        "minimo": 18.8,
+        "maximo": 47.7,
+        "percentil": 67,
+        "prima_pct": 24,
+        "anios": 3
+      },
+      {
+        "metrica": "PER próximos 12 meses",
+        "campo": "per_ntm",
+        "actual": 21.4,
+        "media": 18.8,
+        "minimo": 13.5,
+        "maximo": 29.1,
+        "percentil": 50,
+        "prima_pct": 14,
+        "anios": 4
+      }
+    ],
+    "multiplos_serie": [
+      {
+        "anio": "2022",
+        "multiplo": 8.3,
+        "media": 14.3
+      },
+      {
+        "anio": "2023",
+        "multiplo": 17.3,
+        "media": 14.3
+      },
+      {
+        "anio": "2024",
+        "multiplo": 11.3,
+        "media": 14.3
+      },
+      {
+        "anio": "2025",
+        "multiplo": 18,
+        "media": 14.3
+      }
+    ],
+    "multiplos_titulo": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+    "consenso_vs_propio": [
+      {
+        "periodo": "2026e",
+        "ingresos_propio": 35746,
+        "ingresos_consenso": 36046,
+        "ingresos_dif_pct": -0.8,
+        "ebitda_propio": 10545,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      },
+      {
+        "periodo": "2027e",
+        "ingresos_propio": 35389,
+        "ingresos_consenso": 37290,
+        "ingresos_dif_pct": -5.1,
+        "ebitda_propio": 10794,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      }
+    ],
+    "gobierno": {
+      "n_consejeros": 12,
+      "independientes_pct": 92,
+      "antiguedad_media": 3.4,
+      "composicion": [
+        {
+          "tipo": "Ejecutivo",
+          "num": 1
+        },
+        {
+          "tipo": "Independiente",
+          "num": 11
+        }
+      ],
+      "checklist": [
+        {
+          "criterio": "Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)",
+          "resultado": "Cumple",
+          "valor": "92 %"
+        },
+        {
+          "criterio": "Presidencia sin vínculo familiar ni profesional con el accionista de control",
+          "resultado": "Cumple",
+          "valor": "Sin control"
+        },
+        {
+          "criterio": "Presidente no ejecutivo, o consejero coordinador independiente",
+          "resultado": "Cumple",
+          "valor": "Ejecutivo, con coordinador"
+        },
+        {
+          "criterio": "Comisión de auditoría con mayoría de independientes y presidida por uno",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Ningún consejero «otro externo» con más de 12 años",
+          "resultado": "Cumple",
+          "valor": "Ninguno"
+        },
+        {
+          "criterio": "Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses",
+          "resultado": "Cumple",
+          "valor": "1 cambio"
+        },
+        {
+          "criterio": "Peor voto en contra sobre remuneración (3 juntas) ≤ 20 %",
+          "resultado": "Cumple",
+          "valor": "5,3 % en contra"
+        },
+        {
+          "criterio": "Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Una acción, un voto, sin blindajes ni límites de voto estatutarios",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Sin operaciones vinculadas relevantes",
+          "resultado": "Cumple",
+          "valor": "No hay"
+        },
+        {
+          "criterio": "Auditor con 10 años o menos en el cargo",
+          "resultado": "Cumple",
+          "valor": "4 años"
+        },
+        {
+          "criterio": "Opinión de auditoría sin salvedades",
+          "resultado": "Cumple",
+          "valor": "Favorable (10-K 2025)"
+        },
+        {
+          "criterio": "Directivos compradores netos en 12 meses (o sin ventas relevantes)",
+          "resultado": "Cumple",
+          "valor": "Compras 0,42 / ventas 0,00 M"
+        }
+      ],
+      "puntuacion": "13 de 13",
+      "puntuacion_pct": 100,
+      "compras_insiders": 0.42,
+      "ventas_insiders": 0
+    },
+    "competidores_margen": [
+      {
+        "nombre": "Constellation Energy",
+        "margen_ebit_pct": 15.2
+      },
+      {
+        "nombre": "Vistra",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "NRG Energy",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Talen Energy",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "NextEra Energy",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "PSEG",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Duke Energy",
+        "margen_ebit_pct": null
+      }
+    ],
+    "sintesis": {
+      "formato_eje": "#,##0",
+      "rangos": [
+        {
+          "metodo": "Cotización 52 semanas",
+          "etiqueta": "Cotización 52 semanas (228,63 – 411,69)",
+          "min": 228.63,
+          "central": 279.54,
+          "max": 411.69,
+          "gris": true
+        },
+        {
+          "metodo": "Precio objetivo de los analistas",
+          "etiqueta": "Precio objetivo de los analistas (238,00 – 395,00)",
+          "min": 238,
+          "central": 336.6,
+          "max": 395,
+          "gris": true
+        },
+        {
+          "metodo": "Comparables: PER NTM",
+          "etiqueta": "Comparables: PER NTM (194,64 – 237,75)",
+          "min": 194.64,
+          "central": 218.16,
+          "max": 237.75,
+          "gris": false
+        },
+        {
+          "metodo": "DCF (WACC y g ± 0,5)",
+          "etiqueta": "DCF (WACC y g ± 0,5) (130,53 – 180,25)",
+          "min": 130.53,
+          "central": 152.04,
+          "max": 180.25,
+          "gris": false
+        },
+        {
+          "metodo": "Escenarios (bajista – alcista)",
+          "etiqueta": "Escenarios (bajista – alcista) (95,38 – 186,12)",
+          "min": 95.38,
+          "central": 146.4,
+          "max": 186.12,
+          "gris": false
+        },
+        {
+          "metodo": "DCF con la prima del mercado",
+          "etiqueta": "DCF con la prima implícita del mercado (4,2 %)",
+          "min": 172.82,
+          "central": 191.98,
+          "max": 214.55
+        },
+        {
+          "metodo": "Precio actual",
+          "etiqueta": "Precio actual (279,54)",
+          "min": 278.14,
+          "central": 279.54,
+          "max": 280.94,
+          "gris": true
+        }
+      ],
+      "tabla": [
+        {
+          "metodo": "DCF",
+          "valor": 152.04,
+          "peso_pct": 50,
+          "potencial_pct": -45.6
+        },
+        {
+          "metodo": "Comparables (mediana EV/EBITDA y PER)",
+          "valor": 218.16,
+          "peso_pct": 20,
+          "potencial_pct": -22
+        },
+        {
+          "metodo": "Transacciones precedentes (no se usa)",
+          "valor": 76.82,
+          "peso_pct": 0,
+          "potencial_pct": -72.5
+        },
+        {
+          "metodo": "Escenarios ponderados",
+          "valor": 146.4,
+          "peso_pct": 30,
+          "potencial_pct": -47.6
+        }
+      ],
+      "valor_objetivo": 163.57,
+      "potencial_pct": -41.5
+    },
+    "fuentes": {
+      "n_fuentes": 46,
+      "n_primarias": 20,
+      "por_tipo": [
+        {
+          "tipo": "Primaria",
+          "num": 20
+        },
+        {
+          "tipo": "Sectorial",
+          "num": 2
+        },
+        {
+          "tipo": "Prensa",
+          "num": 14
+        },
+        {
+          "tipo": "Datos de mercado",
+          "num": 7
+        },
+        {
+          "tipo": "Foros y redes",
+          "num": 3
+        }
+      ],
+      "n_citadas": 44,
+      "citas_sin_fuente": [],
+      "fuentes_sin_citar": [
+        "5",
+        "7"
+      ]
+    },
+    "controles": [
+      {
+        "control": "Tipo impositivo efectivo razonable (2023)",
+        "resultado": "Explicado",
+        "detalle": "35,1 %: explica la causa (créditos fiscales, regularizaciones, mezcla de países) y no lo proyectes en el DCF. Explicación: El 35,1 % de 2023 sale de los impuestos de los fondos de desmantelamiento de las centrales reguladas, que la contabilidad compensa al 100 % (nota de la conciliación del beneficio ajustado [4]); no se proyecta: el DCF usa el 25,5 % marginal."
+      },
+      {
+        "control": "BAI − impuestos − minoritarios = beneficio neto (2021)",
+        "resultado": "Explicado",
+        "detalle": "Diferencia de 10 (¿operaciones interrumpidas?). Explicación: La diferencia de 10 M es el resultado de participadas por el método de la participación, que va debajo de impuestos [9]."
+      },
+      {
+        "control": "BAI − impuestos − minoritarios = beneficio neto (2022)",
+        "resultado": "Explicado",
+        "detalle": "Diferencia de 13 (¿operaciones interrumpidas?). Explicación: La diferencia de 13 M es el resultado de participadas por el método de la participación [9]."
+      },
+      {
+        "control": "Geografías suman 100 %",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "DCF inverso calculable",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Puente de ingresos (volumen + precio + otros) = crecimiento del DCF",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Veredicto de sostenibilidad del analista coherente con las pruebas del motor",
+        "resultado": "OK",
+        "detalle": "El analista dice «Sí» y las pruebas del motor dan «Sí»: razónalo en la justificación."
+      },
+      {
+        "control": "Cuota implícita al final de la proyección ≤ 1,5 × la actual (o +10 puntos)",
+        "resultado": "OK",
+        "detalle": "Cuota de 6,6 % en 2033e frente al 7,0 % de hoy."
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "resultado": "OK",
+        "detalle": "Supuesto 10,0 % frente a 12,5 % real: genera una variación de circulante de 386 M en el primer año. Converge de forma gradual."
+      },
+      {
+        "control": "Peso del valor terminal ≤ 80 % del valor empresa",
+        "resultado": "OK",
+        "detalle": "62 %."
+      },
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "resultado": "OK",
+        "detalle": "2,50 %."
+      },
+      {
+        "control": "Probabilidades de los escenarios suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 5 comparables",
+        "resultado": "OK",
+        "detalle": "9 comparables."
+      },
+      {
+        "control": "Pesos de la síntesis suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Crecimiento del BPA base ≤ 25 % anual desde el último real",
+        "resultado": "Explicado",
+        "detalle": "El BPA base de 2028e (14,85) supone un 26,1 % anual desde 7,40 (2025): explícalo en valoracion.objetivo_12m.comentario o la confianza es baja. Explicación: Se mide desde el BPA contable de 2025 (7,40 USD, con −805 M de MtM no realizado y costes de Calpine). En la base del objetivo, el BPA ajustado, el salto es de 9,39 a 14,85 USD: un 16,5 % anual, con Calpine incluida desde 2026 [6]."
+      },
+      {
+        "control": "Precio del cierre de la fecha de corte (o de las dos sesiones anteriores)",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Recomendación coherente con la regla de decisión",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "La síntesis explica la convicción",
+        "resultado": "OK",
+        "detalle": "La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría."
+      },
+      {
+        "control": "Capitalización calculada ≈ publicada",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 25 fuentes",
+        "resultado": "OK",
+        "detalle": "46 fuentes (20 primarias)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "resultado": "OK",
+        "detalle": "20."
+      },
+      {
+        "control": "Toda cita [n] existe en fuentes",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Fuentes sin citar ≤ 15 %",
+        "resultado": "OK",
+        "detalle": "Sin citar: 5, 7."
+      }
+    ],
+    "controles_resumen": "19 de 23 controles correctos y 4 explicados"
+  }
+}

@@ -1,0 +1,17 @@
+# Diario · Trane Technologies (TT) · 15-oct-2026
+
+- Commit de partida: 70ba47e. Encargo del coordinador (foco: frío industrial y climatización de naves y sistemas: enfriadoras comerciales, refrigeración de centros de datos, Thermo King). Sin subagentes, sin commits ni pull; nada escrito fuera de la carpeta.
+- Entorno: nube de Claude Code. Cuentas 2016-2025 del XBRL de la SEC (`cuentas.mjs --sec TT`, CIK 1466258), usadas solo 2020-2025 (perímetro tras la separación de Industrial en feb-2020; el balance de 2016-2019 la incluye). Beneficio y BPA de las actividades continuadas a mano desde los 10-K 2025, 2022 y 2020 (el XBRL da el total con discontinuadas: 2020 3,52 frente a 4,02 continuado). Coste de ventas 2021-2025 a mano (falta en el XBRL). Notas de prensa 4T24-2T26, 10-Q 2T26, proxy 2026, 8-K de junio y julio de 2026, Form 4 (`form4.mjs`). Precio y cierres con `bolsa.mjs`; consenso y cambios de recomendación con Yahoo quoteSummary (script del scratchpad sobre `herramientas/yahoo.mjs`); tasa libre FRED DGS10 5,21 % (curl). Comparables: ficha sectorial `sectores/climatizacion-hvac-2026-10-14-comparables.json` pasada de CHF a USD (0,8362), mismo día que el precio.
+- Fecha de corte 2026-10-15; precio = cierre del 14-oct (471,29 USD): la sesión del 15-oct no había cerrado (16:40-17:00 UTC; a media sesión 448,3, −4,9 %, con VRT −6,6 % y JCI −5,3 %, y CARR y LII al alza: caída del cesto de frío para centros de datos, sin noticia propia encontrada).
+- Decisiones: arrendamientos operativos fuera de la deuda (US GAAP); puente con pensiones y salud de jubilados netos de impuestos (330 M) y contraprestaciones contingentes (60,6 M) en otros ajustes; 222,0 M de acciones diluidas (220,0 M en circulación a 24-jul + dilución). 2026e fijo con la guía de julio. WACC 10,97 % (beta 1,1). Pesos DCF 50 / escenarios 30 / comparables 20. Sostenibilidad «Sí» (analista y motor coinciden).
+- Resultado: DCF 241,43; valor intrínseco 263,94 (−44,0 %); con la prima del mercado 306,46; DCF inverso 21,1 % anual de crecimiento (base 6,6 %). ROIC 29,0 % − WACC 10,97 % = 18,0.
+- **Línea 12 m (v3 ×1,1, selector: v3)**: objetivo 478,08 USD, ponderada +2,3 %, base +10,2 %; **Mantener**, convicción media. v2: 8,1 % / 13,5 %. Comprar < 263,94; vender > 535,62. Robustez (`--actual`): SÓLIDA, acción robusta «No mantener»; BPA −10 %: −7,9 % / −0,8 %. Regla 13: no cambia.
+- Word (26 gráficos, cobertura 89,2 %, 20 de 20 controles) y PDF con soffice (40 páginas). Próximos resultados: 29-oct-2026.
+- Tiempo: ≈16:39-17:05 UTC.
+
+## Lecciones
+
+- Trane y otras escindidas por Reverse Morris Trust (feb-2020): `cuentas.mjs` mezcla en el XBRL los años previos (balance con el negocio separado) y da el beneficio total con discontinuadas; usar el BPA continuado de los 10-K y el perímetro posterior a la escisión.
+- `cuentas.mjs --sec` deja `coste_ventas` en null cuando la empresa separa coste de productos y de servicios (Trane 2021-2025): sumar las dos líneas a mano.
+- `robustez.mjs --actual` no tiene precio de la sesión para una empresa que no está en `simbolos.json` (aviso D3): usar `movimiento.mjs` o el chart de Yahoo para el precio intradía y decirlo.
+- Para el consenso a 2 años sin MarketScreener (no abre la ficha), `quoteSummary` de Yahoo con `earningsTrend` y `upgradeDowngradeHistory` (vía `json()` de `herramientas/yahoo.mjs` con `NODE_USE_ENV_PROXY=1`) da BPA, ventas, revisiones a 90 días y cambios de recomendación con fecha.

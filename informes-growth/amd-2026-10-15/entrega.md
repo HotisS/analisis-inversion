@@ -1,0 +1,16 @@
+# Entrega: AMD (análisis growth, 15-oct-2026)
+
+1. **Advanced Micro Devices (AMD, Nasdaq)**: 570,82 USD, cierre del 14-oct-2026. La sesión del 15-oct estaba en curso a ≈ 546-548 USD (−4 %) a las 16:40-17:00 UTC.
+2. **Qué hace**: diseña chips (los fabrica TSMC). Procesadores para servidores y PC, aceleradores GPU para entrenar y ejecutar modelos de IA, racks completos (Helios) y chips para consolas e industria. Es el segundo proveedor de chips de IA para centros de datos, después de Nvidia, y la alternativa que financian OpenAI, Meta, Anthropic y Microsoft para no depender de un solo proveedor. Centros de Datos ya es el 58 % de las ventas y crece un 107 %: encaja de lleno en la megatendencia de la IA.
+3. **Rentabilidad a 12 meses (v11)**: ponderada −26,2 %, base −24,2 % (bajista −65,2 %, alcista +8,9 %). Objetivo 421,6 USD frente a 570,82. Con el objetivo fijo y el precio de hoy, −23,0 %. El growth no tiene valor intrínseco DCF: el DCF inverso dice que el precio exige crecer un 25,8 % al año durante 10 años. Analistas: objetivo medio 636 USD (+11 %; 55 analistas, 0 ventas).
+4. **Calidad (contraste; no decide en growth)**: ROIC − WACC ≈ −1 punto con el fondo de comercio de Xilinx (≈ 10 % frente a ≈ 11 %); ≈ 55 % sin él. Sostenibilidad del crecimiento: en parte, porque depende de contratos de GW con clientes que aún no ganan dinero.
+5. **Acción vigente: Vender = No comprar.** Puntuación 82,3, 6/8 señales, euforia (+162 % en 12 meses con EV/beneficio bruto de 24,6). **Acción robusta: No comprar.** Veredicto **FRÁGIL**: solo cambia con las ventas del consenso, y entonces sube a Mantener (+3,8 %), nunca a Comprar. Aguante: el growth no usa BPA; con ventas un 10 % peores sigue en No comprar. **Límite de compra robusto: 397,40 USD.**
+6. **Precio y noticias (regla 13)**: 1 m +6,9 %, 6 m +96,9 %, 12 m +151 %; a −15,6 % del máximo histórico (649,42, 6-oct).
+   - Subidas: oct-25 +58 % (OpenAI), abr-26 +74 % (contratos de GW y CPU para agentes), may-26 +46 % (1T por encima de la guía), sep-26 +30 % (un billón de capitalización).
+   - Caídas: nov-25 −15 % (miedo a burbuja), feb-26 −15 % (4T25 con China no recurrente), jul-26 −18 % (rotación del sector), oct-26 −10 % (FT sobre los ingresos de OpenAI, IPC del 3,7 %, CoreWeave).
+   - Noticias: ventas de Lisa Su con plan 10b5-1; bonos de 4.750 M; World Labs (8.200 M en acciones); warrants de OpenAI y Meta (hasta un 20 % de las acciones a 0,01 USD).
+   - Veredicto: **no cambia**.
+7. **Riesgo de IA: medio.** Como sustituto, bajo: vende la infraestructura de la IA. Como dependencia, alto: el ciclo de inversión en IA y la capacidad de pago de OpenAI y Anthropic, más los chips a medida de los clientes. **Objeción más fuerte**: «la regla ignora los contratos de GW firmados; el consenso ve 89.050 M de ventas en 2027». **Respuesta**: aun con las ventas del consenso el método da +3,8 % (sin compra), la euforia veta la compra, y los GW son intenciones con hitos, no pedidos firmes, de clientes que se financian con deuda o capital. Se revisa con los resultados del 3-nov o por debajo de 397,40 USD.
+8. **Próximos resultados**: 3-nov-2026, tras el cierre. Archivos:
+   - Word: informes-growth/amd-2026-10-15/AMD - growth - 2026-10-15.docx
+   - PDF: informes-growth/amd-2026-10-15/AMD - growth - 2026-10-15.pdf

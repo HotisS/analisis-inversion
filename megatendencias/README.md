@@ -8,7 +8,7 @@ Informe legible con los resultados: `/mnt/project-files/estrategia/megatendencia
 
 | Archivo | Qué hace |
 |---|---|
-| `universo.json` | 56 sectores (ETF o cesta de líderes) y 16 megatendencias con sus artículos de Wikipedia y sus sectores directos (D) e indirectos (I) |
+| `universo.json` | 62 sectores (ETF o cesta de líderes) y 16 megatendencias con sus artículos de Wikipedia y sus sectores directos (D) e indirectos (I) |
 | `descargar.py` | Precios semanales de Yahoo desde 2009 y visitas mensuales de Wikipedia desde jul-2015 → `datos/` |
 | `motor.py` | Datos en euros, señales en cada fecha (sin mirar el futuro) y las 10 versiones |
 | `backtest.py` | Backtest de las versiones: diseño dic-2016 a dic-2021, validación desde ene-2022 (`--validar` para verla) |

@@ -1,0 +1,17 @@
+# Diario · Advantest (6857.T) · 15-oct-2026
+
+- Commit de partida: 70ba47e. Encargo del coordinador (megatendencia IA, exposición indirecta: testers de chips). Sin commits ni pull; nada escrito fuera de la carpeta. Sin subagentes: notas A-E y propio hechas por mí (`notas/construir-notas.mjs` escribe A-E; `propio.mjs` + `supuestos.mjs` + `textos.mjs`).
+- Entorno: nube de Claude Code, 16:38-17:45 UTC. Japón sin XBRL: cuentas FY2020-FY2025 de los resultados anuales NIIF (descargados con `descargar.mjs`; `pdftotext -layout` para las tablas) y del resumen de 11 años del informe integrado 2025; trimestres restando acumulados. JGB a 10 años 3,015 % (CSV del MoF, 14-oct). Precio: cierre del 15-oct, 34.340 JPY (−15 %), de la API de Yahoo (bolsa.mjs y movimiento.mjs aún daban el 14-oct, 40.380).
+- Decisiones: etiqueta «inicio» (FY2025 = abr-25 a mar-26). Acciones 721,8 M (30-jun menos la recompra hasta el 19-ago). Puente a 30-jun: convertible 2031 a nominal (100.000 M) como deuda, caja + títulos de deuda 500.941 M, inversiones estratégicas a valor razonable 269.920 M como asociadas, recompras posteriores 63.600 M en otros ajustes. BPA normalizado sin los ingresos financieros por valoración (17.312 M en FY2025, 44.680 M en el 1T FY2026). WACC 11,22 % (beta 1,5 entre la semanal ajustada 1,38 y la bruta 1,57; la mensual 2,71 inflada). Terminal 2,0 %. Ciclo explícito: FY2029e −10 %. Pesos DCF 50 / escenarios 30 / comparables 20; sin transacciones.
+- Resultado: DCF 10.061 JPY; valor intrínseco 14.586 (−57,5 %); DCF inverso 32,5 % anual (base 10,3 %). ROIC 88,7 %, sostenibilidad Sí. Altman 43,2, Piotroski 8, Beneish −1,49.
+- **Línea 12 m (v3)**: objetivo 28.641 JPY, ponderada −16,4 %, base −2,6 % → **Vender**, convicción media (sugerida alta; bajada porque el PER bajista de 12,6x sale de un año de BPA duplicado). v2: −21,4 % / −17,9 %. Comprar < 14.586,19; vender > 31.889. Robustez: SÓLIDA, acción robusta «No mantener»; con BPA −10 %: −24,7 % / −12,3 %.
+- Regla 13: caída del 15 % el 15-oct por la deuda de CoreWeave y el IPC de EE. UU. (sector entero, Nikkei −4,9 %), sin noticia propia: no cambia. Resultados 2T: 28-oct-2026.
+- **Confianza de los datos: media-alta** en cuentas (primarias), media en consenso (una fuente completa) y comparables (Stock Analysis a media sesión de EE. UU.). Faltan: auditor, remuneración del CEO y votos de la junta, transacciones con múltiplo, calificaciones ESG, posiciones cortas.
+- Word y PDF (soffice, 41 páginas): 18 de 20 controles correctos y 2 explicados. Cobertura 82,8 %.
+
+## Lecciones
+
+- Japón: `bolsa.mjs`/`movimiento.mjs` no traen el cierre del día hasta horas después; la API chart de Yahoo (`range=5d`) sí lo da (`regularMarketPrice` con `regularMarketTime`). Con una caída del 15 % en la sesión del corte, usar ese cierre.
+- Advantest: los PDF de resultados traen la cuenta, el balance y los flujos completos de dos años; `pdftotext -layout` los saca limpios. El documento de términos del convertible (`/document/en/investors/aad/`) da 403: precio de conversión de prensa (36.000 JPY).
+- MarketScreener: con el código de Advantest equivocado devuelve otra empresa; buscar la URL con WebSearch limitado al dominio. Su EBIT de FY2027-FY2028 supera al EBITDA: usar solo ventas y BPA.
+- Empresas con un año de BPA que se duplica: el mínimo de 5 años del PER adelantado (cierre anterior ÷ BPA disparado) sale muy bajo y la regla castiga dos veces el bajista (aviso M4 de robustez).

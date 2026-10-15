@@ -4,6 +4,10 @@
 
 **Qué se apunta aquí** (una entrada por cambio, la más reciente arriba, dos o tres líneas): cambios de método o de reglas, decisiones de cartera que sustituyen a otras, cambios de estructura del repo o del flujo de trabajo, y lo que se retira de `MEMORIA.md`, `cola.md` o `lecciones.md` cuando ya no está vigente. No se apuntan análisis sueltos (están en `seguimiento.xlsx` y en cada `diario.md`).
 
+## 15-oct-2026 · Megatendencias: foco energía, electricidad y frío (31 análisis nuevos)
+
+Hotis pidió analizar las 10 candidatas del screening y poner el foco en energía, electricidad y frío industrial. Universo ampliado a 62 sectores (generadoras, climatización y frío, refrigeración de centros de datos, refino, petroleras europeas, oleoductos); 28 informes value y 3 growth. Ninguna compra robusta hoy; con límite: Lennox ≤336,68 USD y Prysmian ≤96,52 EUR. Revisión trimestral programada (2-ene, 2-abr, 2-jul, 2-oct, 10:10 Madrid). Entrega: /mnt/project-files/estrategia/megatendencias/analisis-megatendencias-y-focos-2026-10-15.md.
+
 ## 15-oct-2026 · Screening de megatendencias (nuevo, carpeta `megatendencias/`)
 
 Petición de Hotis: detectar megatendencias y los sectores con exposición indirecta. 56 sectores y 16 megatendencias (atención en Wikipedia + momento frente a IWDA en euros); 10 versiones, vigente la v10 (momento + fuerza de la megatendencia, máximo 2 sectores por megatendencia). Diseño 2016-2021 +8,5 puntos a 12 m; validación 2022-2026 +7,9. Hoy: ciberseguridad, nube, maquinaria de chips, semiconductores, biotecnología. Los candidatos son propuestas para analizar, no señales. Método en `megatendencias/README.md`.

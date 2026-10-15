@@ -34,6 +34,7 @@ Lo genera `node motor/growth.mjs --todos` (no editar a mano). Método v11: [vert
 | Saab AB | SAAB-B | 63.3 | 2/8 | +8,2 % | +10,9 % | Comprar (baja) | 3.5 % | 616.3 SEK | 2026-10-14 |
 | Natera | NTRA | 74.7 | 6/8 | +8,1 % | +9,2 % | Comprar (baja) | 3.5 % | 407.5 USD | 2026-10-14 |
 | Snowflake | SNOW | 78 | 6/8 | +8 % | +12,4 % | Comprar (media) | 4 % | 368 USD | 2026-10-14 |
+| Okta | OKTA | 67.7 | 6/8 | +7,9 % | +10,2 % | Comprar (baja) | 3.5 % | 217.8 USD | 2026-10-15 |
 | Datadog | DDOG | 79.8 | 5/8 | +7,1 % | +9,2 % | Comprar (media) | 4 % | 289 USD | 2026-10-14 |
 | Kinsale Capital | KNSL | 50.3 | 0/8 | +6,9 % | +7,1 % | Mantener | — | 346 USD | 2026-10-14 |
 | Life360 | LIF | 68.2 | 1/8 | +6,9 % | +3,2 % | Comprar (baja) | 3.5 % | 42.3 USD | 2026-10-15 |
@@ -65,6 +66,7 @@ Lo genera `node motor/growth.mjs --todos` (no editar a mano). Método v11: [vert
 | Rolls-Royce Holdings | RR | 65.3 | 4/8 | -5,3 % | -3,6 % | Mantener | — | 1212.2 GBp | 2026-10-14 |
 | Axsome Therapeutics | AXSM | 57.7 | 2/8 | -5,4 % | +1,1 % | Mantener | — | 139.5 USD | 2026-10-14 |
 | Celsius | CELH | 49.3 | 2/8 | -7,1 % | -1,2 % | Vender | — | 24.7 USD | 2026-10-14 |
+| nVent Electric | NVT | 76.2 | 5/8 | -7,3 % | -6,4 % | Mantener | — | 134.7 USD | 2026-10-15 |
 | Exosens | EXENS | 56.2 | 3/8 | -9 % | -6,8 % | Mantener | — | 49.4 EUR | 2026-10-14 |
 | TransMedics | TMDX | 51.2 | 1/8 | -9 % | -1,6 % | Mantener | — | 68.6 USD | 2026-10-14 |
 | Cameco | CCJ | 40.5 | 1/8 | -9,7 % | -7,3 % | Vender | — | 74.1 USD | 2026-10-14 |
@@ -86,6 +88,7 @@ Lo genera `node motor/growth.mjs --todos` (no editar a mano). Método v11: [vert
 | iRhythm | IRTC | 59 | 4/8 | -21 % | -15,6 % | Vender | — | 81.1 USD | 2026-10-14 |
 | Argan | AGX | 62.7 | 2/8 | -21,1 % | -20,2 % | Vender | — | 291 USD | 2026-10-14 |
 | BE Semiconductor Industries (Besi) | BESI | 63.3 | 2/8 | -23 % | -26,9 % | Vender | — | 124 EUR | 2026-10-14 |
+| Advanced Micro Devices (AMD) | AMD | 82.3 | 6/8 | -26,2 % | -24,2 % | Vender | — | 397.4 USD | 2026-10-15 |
 | Celestica Inc. | CLS | 66.2 | 3/8 | -26,2 % | -24,4 % | Vender | — | 251.1 USD | 2026-10-14 |
 | Insmed | INSM | 71.5 | 3/8 | -30,2 % | -23,8 % | Vender | — | 58 USD | 2026-10-14 |
 | Oscar Health | OSCR | 72.5 | 7/8 | -34,8 % | -27,7 % | Vender | — | 21 USD | 2026-10-14 |
