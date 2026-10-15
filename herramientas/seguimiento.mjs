@@ -302,6 +302,8 @@ const COMO = [
   ['Precio y fecha del precio', 'El precio objetivo queda fijo; con un precio nuevo solo cambia la rentabilidad. «Precio» y «Fecha del precio» dicen con qué cierre está calculada la cifra. Antes de cada orden se mira el precio del momento y si ha habido resultados después del informe.'],
   ['Comprar por debajo de / Vender por encima de', 'Los precios límite: por debajo del primero se puede comprar (en value es el límite robusto, el que pasa con los dos métodos); por encima del segundo deja de pasar el filtro para mantener y se vende. En la divisa en la que cotiza. En growth, «Comprar por debajo de» es el precio máximo de compra y no hay límite de venta (se vende si cambia la puntuación o la rentabilidad).'],
   ['Próximos resultados', 'Fecha de los próximos resultados (calendario único del escáner; si no está, la del informe).'],
+  ['Último análisis', 'Fecha de corte del último análisis de la empresa (value o growth).'],
+  ['Seguimiento', 'Lo que toca para no perder de vista ninguna empresa con calidad (inventario de cobertura): «Al día»; «Revisar con los resultados del…» (publicó después del análisis y aún no se ha revisado); «Reanalizar» (análisis de más de 6 meses); «Falta: …» (una pieza del sistema que no la sigue). Las que no tienen calidad solo se siguen por precio.'],
   ['Lo que ya no decide', 'Hoja «Detalle»: «Rentabilidad total esperada» y «con la prima del mercado» salen del DCF del informe (valor a largo plazo): ahora solo sirven como «valor real» y como filtro. «Rentabilidad 12 m (base)» es solo el escenario central (filtro del 12 %). «v2 (control)» y «v3 sin selector» son los métodos de comparación. «Objetivo analistas» es el consenso, solo para comparar. «Convicción», «Regla absoluta» y «Regla relativa» son del método anterior.'],
   ['Tu cartera', 'Las cifras de tu cartera (rentabilidad esperada, siendo prudentes, cuánto puede subir o bajar en un año normal y rentabilidad por unidad de riesgo) y lo que toca hacer con cada posición están en la versión privada de este Excel (seguimiento-mi-cartera.xlsx, en la carpeta de la cartera real del proyecto), nunca en el repo, que es público.'],
 ];
@@ -354,18 +356,24 @@ const criterios = [
 const hojaCrit = hoja({ nombre: 'Detalle - columnas', cols: [['Columna', 34], ['Qué mide', 110]], filtro: false, altoCab: 20,
   filas: criterios.map(([a, b]) => alto([T(a, S.ajuste), T(b, S.ajuste)], [34, 110])) });
 
+// ── Cobertura (escaner/cobertura.json, herramientas/cobertura.mjs): fecha del último análisis y qué toca para no perder
+// ninguna empresa con calidad (revisar con resultados publicados, reanalizar a los 6 meses). ──
+const COB = new Map((existsSync('escaner/cobertura.json') ? JSON.parse(readFileSync('escaner/cobertura.json', 'utf8')).empresas : []).map((c) => [c.clave, c]));
+const cobDe = (x) => COB.get(x.clave) ?? COB.get(normal(x.ticker)) ?? null;
+const seguimientoTxt = (c) => !c ? null : c.excluida ? `Excluida (${c.excluida}): solo precio` : !c.seguir ? 'Sin calidad: solo precio en el escáner'
+  : c.toca ? c.toca[0].toUpperCase() + c.toca.slice(1) : c.huecos?.length ? `Falta: ${c.huecos.join('; ')}` : 'Al día (calidad: resultados, noticias y escáner)';
 // ── Resumen (y Mi cartera en la versión privada) ──
 function hojaResumen(privado) {
   const cols = [['Tipo', 8], ['Empresa', 22], ['Ticker', 9], ...(privado ? [['En mi cartera (títulos)', 10]] : []), ['Sector', 18], ['Señal', 10],
     ['Rentabilidad esperada 12 m', 12], ['Siendo prudentes (la mitad)', 12], ['Qué hacer según el método', 46], ...(privado ? [['Orden propuesta', 50]] : []),
-    ['Divisa', 7], ['Precio', 10], ['Fecha del precio', 11], ['Comprar por debajo de', 11], ['Vender por encima de', 11], ['Próximos resultados', 12], ['Informe', 46]];
+    ['Divisa', 7], ['Precio', 10], ['Fecha del precio', 11], ['Comprar por debajo de', 11], ['Vender por encima de', 11], ['Próximos resultados', 12], ['Último análisis', 11], ['Seguimiento', 40], ['Informe', 46]];
   const fs = resumen.map((x) => {
     const p = privado ? real_.pos.get(x.clave) : null;
     const que = !p ? x.que : real_.DECISION[x.clave] ?? queHacerTenencia(x);
     return [
       T(x.tipo, S.centro), T(x.empresa), T(x.ticker, S.centro), ...(privado ? [N(p?.titulos ?? null, S.centro)] : []), T(x.sector), T(x.senal, S[x.senal] ?? S.centro),
       P(x.rte, S.pctFuerte), P(x.rte === null ? null : x.rte / 2), T(que), ...(privado ? [T(real_.ordenes.get(x.clave) ?? null)] : []),
-      T(x.divisa, S.centro), N(x.precio), F(x.fecha_precio), N(x.compra), N(x.venta), F(x.proximos), x.informe ? L(x.informe) : T(null),
+      T(x.divisa, S.centro), N(x.precio), F(x.fecha_precio), N(x.compra), N(x.venta), F(x.proximos), F(cobDe(x)?.fecha ?? null), T(seguimientoTxt(cobDe(x))), x.informe ? L(x.informe) : T(null),
     ];
   });
   return hoja({ nombre: 'Resumen', cols, filas: fs, congelar: 3 });

@@ -238,6 +238,22 @@ function yaAnalizada(c) {
 // ── Ejecución ──
 //   --simbolos A,B  ficha rápida de esas empresas con todas las métricas (para comprobar o mirar una suelta).
 // --simbolos A,B: ficha rápida de empresas concretas (sin buscador ni perfiles), para comprobar métricas.
+//   --simbolos-archivo lista.txt --json   lo mismo para una lista larga (un símbolo por línea), en JSON: lo usa
+//                                          herramientas/indices.mjs para el filtro previo de calidad de las altas en índices.
+if (arg('--simbolos-archivo') && argv.includes('--json')) {
+  const lista = readFileSync(arg('--simbolos-archivo'), 'utf8').split(/\s+/).filter(Boolean);
+  const out = await enParalelo(lista, concurrencia, async (s) => {
+    try {
+      const f = await ficha(s, { diasCache: argv.includes('--refrescar') ? 0 : 7 });
+      if (!f?.nombre) return { simbolo: s, error: 'sin ficha' };
+      const m = await metricas(f);
+      return { simbolo: s, nombre: f.nombre, pais: f.pais, sector: f.sector, industria: f.industria, descripcion: (f.descripcion || '').slice(0, 300),
+        ...Object.fromEntries(Object.entries(m).map(([k, v]) => [k, v === null ? null : red(v, 2)])), ya_analizada: yaAnalizada({ listados: [{ simbolo: s }], f, nombre: f.nombre }) || null };
+    } catch (e) { return { simbolo: s, error: String(e.message || e).slice(0, 120) }; }
+  });
+  console.log(JSON.stringify(out));
+  process.exit(0);
+}
 if (arg('--simbolos')) {
   for (const s of arg('--simbolos').split(',')) {
     const f = await ficha(s, { diasCache: argv.includes('--refrescar') ? 0 : 7 });

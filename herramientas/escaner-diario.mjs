@@ -448,8 +448,14 @@ function vigilados() {
   ];
   const vistos = new Map();
   for (const v of lista) if (!vistos.has(v.clave)) vistos.set(v.clave, v);
+  // Toda empresa con calidad del inventario de cobertura (escaner/cobertura.json, herramientas/cobertura.mjs) también se
+  // vigila: «que no escape nada; si algo tiene calidad hay que seguirlo cuando saca resultados» (usuario, 15-oct).
+  const COB = leer('escaner/cobertura.json')?.empresas || [];
+  for (const c of COB.filter((x) => x.seguir)) if (!vistos.has(c.clave)) vistos.set(c.clave, { clave: c.clave, nombre: c.nombre, vertical: c.tipo, papel: 'seguimiento (calidad)', cob: c });
   const CAL = leerCalendario();
   return [...vistos.values()].map((v) => {
+    if (v.cob) return { clave: v.clave, nombre: v.nombre, vertical: v.vertical, papel: v.papel, carpeta: v.cob.carpeta, fecha_corte: v.cob.fecha,
+      proximos_resultados: CAL[v.clave]?.fecha || v.cob.proximos || null, rte: v.cob.rte, revisado: (v.cob.ultima_revision?.resultados || null) };
     let carpeta = null, corte = null, prox = CAL[v.clave]?.fecha || null, nombre = v.nombre || v.clave;
     if (v.vertical === 'value' && REV[v.clave]) {
       carpeta = `informes/${REV[v.clave].carpeta}`;
@@ -467,8 +473,14 @@ function vigilancia() {
   const hoy = madrid().fecha;
   const ult = leer(`${P}vigilancia-ultima.json`)?.fecha || new Date(Date.now() - 3 * 864e5).toISOString().slice(0, 10);
   const vs = vigilados();
-  const publicaron = vs.filter((v) => v.proximos_resultados && v.proximos_resultados > ult && v.proximos_resultados <= hoy);
-  const sinActualizar = vs.filter((v) => v.proximos_resultados && v.fecha_corte && v.proximos_resultados > v.fecha_corte && v.proximos_resultados <= ult);
+  const yaRevisado = (v) => v.revisado && v.revisado >= v.proximos_resultados;
+  const todosPub = vs.filter((v) => v.proximos_resultados && v.proximos_resultados > ult && v.proximos_resultados <= hoy && !yaRevisado(v));
+  // Las de cartera, órdenes y suplentes, todas el mismo día; las de seguimiento por calidad, hasta 8 por pasada empezando
+  // por la de más rentabilidad esperada (la más cerca de ser compra). Las que no entran siguen saliendo como pendientes.
+  const segPub = todosPub.filter((v) => v.papel === 'seguimiento (calidad)').sort((a, b) => (b.rte ?? -99) - (a.rte ?? -99));
+  const publicaron = [...todosPub.filter((v) => v.papel !== 'seguimiento (calidad)'), ...segPub.slice(0, 8)];
+  const sinActualizar = vs.filter((v) => v.proximos_resultados && v.fecha_corte && v.proximos_resultados > v.fecha_corte && v.proximos_resultados <= ult && !yaRevisado(v))
+    .concat(segPub.slice(8));
   const pronto = vs.filter((v) => v.proximos_resultados && v.proximos_resultados > hoy && dias(hoy, v.proximos_resultados) <= 7);
   const res = { fecha: hoy, desde: ult, publicaron, sin_actualizar: sinActualizar, proximos_7_dias: pronto, riesgo: vs.filter((v) => v.papel === 'cartera').map((v) => v.nombre) };
   guardar(`${P}vigilancia-ultima.json`, res);
@@ -478,6 +490,8 @@ function vigilancia() {
   if (sinActualizar.length) console.log(`\nRESULTADOS YA PUBLICADOS QUE EL INFORME NO RECOGE (pendientes de versión nueva): ${sinActualizar.map((v) => `${v.nombre} (${fechaCorta(v.proximos_resultados)})`).join(', ')}`);
   console.log(`\nPRÓXIMOS 7 DÍAS: ${pronto.map((v) => `${v.nombre} ${fechaCorta(v.proximos_resultados)}`).join(', ') || 'ninguno'}`);
   console.log(`\nALERTAS DE RIESGO (buscar noticias desde el ${fechaCorta(ult)}: salida del consejero delegado, recorte de previsión, investigación abierta; y la ley francesa de Edenred): ${res.riesgo.join(', ')}`);
+  const seg = [...publicaron, ...sinActualizar].filter((v) => v.papel === 'seguimiento (calidad)').slice(0, 8);
+  if (seg.length) console.log(`\nSEGUIMIENTO POR CALIDAD, revisar hoy (${seg.map((v) => `${v.nombre} [${v.clave}] ${fechaCorta(v.proximos_resultados)}`).join(', ')}; no están en cartera ni en órdenes): para cada una, leer los resultados (nota de prensa; expediente de noticias), factor del BPA frente al informe y \`node herramientas/escaner-diario.mjs --vup <clave> --bpa <factor>\` (value) o la guía y \`robustez-growth.mjs <carpeta>\` (growth). Si sale compra robusta con calidad, es candidata (Vup normal); si el BPA se mueve ±10 % o se toca la tesis, a cola.md para versión nueva. Siempre se apunta: \`node herramientas/cobertura.mjs --revisado <clave> --resultados <fecha> [--bpa f] --resultado "…"\`. Al usuario solo le llega si acaba en compra robusta con calidad.`);
   console.log(`\nLo que salga va a "avisos" de ${P}decisiones.json (una frase llana por aviso). Fechas nuevas de resultados: escaner/calendario.json.`);
 }
 

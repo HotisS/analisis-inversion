@@ -22,6 +22,7 @@
 // 2.05/2.06 deterioros, 4.02 reexpresión…) y el recuento de formularios 4 (operaciones de directivos).
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
+import { simboloDe } from './precios.mjs';
 import { fileURLToPath } from 'node:url';
 
 const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -43,7 +44,13 @@ function universo(todos = false) {
   const excluidas = leer(join(RAIZ, 'escaner/reglas.json'), {}).exclusiones || {};
   const pedidos = todos ? null : arg('--valores')?.split(',').map((s) => s.trim().toUpperCase());
   const amplio = tiene('--amplio') || tiene('--historico');
-  const growth = amplio ? leer(join(RAIZ, 'informes-growth/robustez.json'), { resultados: [] }).resultados : [];
+  // El símbolo de las growth: robustez.json solo lo guarda si se corrió con precios; si no, el de datos.json o ticker +
+  // sufijo de la bolsa (la misma regla que robustez-growth.mjs). Sin esto las growth se quedaban fuera (cobertura.mjs, 15-oct).
+  const growth = amplio ? leer(join(RAIZ, 'informes-growth/robustez.json'), { resultados: [] }).resultados.map((g) => {
+    if (g.simbolo) return g;
+    const d = leer(join(RAIZ, 'informes-growth', g.carpeta, 'datos.json'), null);
+    return { ...g, simbolo: d ? d.simbolo_yahoo || simboloDe({ ticker: d.ticker, mercado: d.bolsa }) : null };
+  }) : [];
   const claves = pedidos || [...Object.keys(cal), ...radar.map((r) => r.clave), ...(amplio ? [...Object.keys(simbolos), ...growth.map((g) => g.ticker)] : [])];
   for (const k of todos ? [...claves, ...Object.keys(aj).filter((x) => !x.startsWith('_'))] : claves) {
     if (!pedidos && !todos && excluidas[k]) continue;
