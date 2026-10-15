@@ -273,6 +273,19 @@ function probar(carpeta) {
     mantener: Math.min((c.objetivo_ponderado + cx.dpa) / (1 + U.mantener / 100), (c.objetivo_base + cx.dpa) / (1 + U.mantenerBase / 100), cx.vi ? cx.vi / U.viMantener : Infinity),
   } : null);
   const lim = limFijo(vig), limCtrl = cv2?.completo ? limFijo(cv2) : null;
+  // Regla 12 de §4 (15-oct-2026, caso Viscofan: «Comprar» con un colchón de BPA del 7 %): la compra robusta exige las TRES cosas a la
+  // vez: pasar v3 y v2 (ya arriba), aguantar un BPA un 10 % peor (la variante «BPA −10 %» sigue pasando la compra) y el precio por
+  // debajo del límite común (el menor de los límites de compra con v3 y con v2). Si falla una, la acción robusta es Mantener.
+  const bpa10 = tabla.find((t) => t.variante === 'BPA −10 %');
+  if (robusta === 'Comprar' && bpa10 && !bpa10.error && !bpa10.comprar) {
+    robusta = 'Mantener en cartera';
+    marca('B1', 'AVISO', `No aguanta un BPA un 10 % peor (ponderada ${f(bpa10.ponderada)} %, base ${f(bpa10.base)} %; la compra pide ${U.comprar} % y ${U.comprarBase} %): no es compra robusta (regla 12). La acción robusta baja a Mantener.`);
+  }
+  const limComun = lim ? (limCtrl ? Math.min(lim.comprar, limCtrl.comprar) : lim.comprar) : null;
+  if (robusta === 'Comprar' && limComun !== null && precio > limComun) {
+    robusta = 'Mantener en cartera';
+    marca('L1', 'AVISO', `Precio ${f(precio, 2)} por encima del límite común de compra ${f(limComun, 2)} (el menor de v3 y v2, objetivo fijo): no es compra robusta (regla 12). La acción robusta baja a Mantener.`);
+  }
   // M6: ¿el objetivo se mueve con el precio? (base = PER actual o PER actual × tope). Si sí, la rentabilidad no baja al
   // subir el precio y un «límite» calculado recalculando a otro precio no limita nada (caso Nu en growth).
   const sube = evaluar(cx, { precio: precio * 1.1, moverPer: true }), quieto = evaluar(cx, { precio, moverPer: true });
