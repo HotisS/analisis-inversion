@@ -45,7 +45,7 @@ Lo genera `node motor/growth.mjs --todos` (no editar a mano). Método v11: [vert
 | Siemens Energy AG | ENR | 57.5 | 3/8 | +5,8 % | +6,4 % | Mantener | — | 144.1 EUR | 2026-10-14 |
 | Medacta Group SA | MOVE | 50 | 2/8 | +5,1 % | +4,6 % | Mantener | — | 114.1 CHF | 2026-10-14 |
 | Madrigal Pharmaceuticals | MDGL | 61.8 | 1/8 | +4,4 % | +15,2 % | Mantener | — | 449.6 USD | 2026-10-14 |
-| Wise Group | WSE | 62.8 | 1/8 | +3,9 % | +4,5 % | Mantener | — | 12.1 USD | 2026-10-14 |
+| Wise Group | WSE | 62.8 | 1/8 | +4 % | +4,6 % | Mantener | — | 12.1 USD | 2026-10-14 |
 | Rheinmetall AG | RHM | 64.3 | 2/8 | +3,5 % | -2,1 % | Mantener | — | 847 EUR | 2026-10-14 |
 | Construction Partners | ROAD | 57.2 | 1/8 | +2,6 % | -3,7 % | Mantener | — | 63.6 USD | 2026-10-14 |
 | Glaukos | GKOS | 82.5 | 7/8 | +2,5 % | +5,7 % | Mantener | — | 161.6 USD | 2026-10-14 |

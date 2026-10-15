@@ -1,9 +1,10 @@
 # Wise (WSE): análisis growth, 14-oct-2026
 
 **Señal (método vigente v11): Mantener, en vigilancia** · Puntuación 62,8/100 · Señales de cambio de tendencia 1/8 · EV/ventas 3,4 veces
-Precio 12,22 USD (fecha del informe) · Objetivo 12 m 12,7 USD · Ponderada +3,9 % · Base +4,5 % · Bajista −38,9 % · Alcista +44,8 % · Compra hasta 12,1 USD
+Precio 12,21 USD (15-oct, fuera de hora tras los resultados) · Objetivo 12 m 12,7 USD · Ponderada +4,0 % · Base +4,6 % · Bajista −38,6 % · Compra hasta 12,1 USD
 Peso orientativo: 0 % de la cartera · Por qué: no compra: ponderada < 5 % → en vigilancia
 Cabecera rehecha con la v11 el 15-oct (auditoría de homogeneidad). Antes decía (método v7): Comprar (convicción baja). El texto de abajo puede citar cifras de esa versión anterior; mandan las de esta cabecera.
+**Revisión con el 2T FY27 (15-oct, tras el cierre de EE. UU.):** ingresos netos 739,1 M USD (+21 %, también a tipo constante; el trimestre anterior +24,5 %), volumen +22 %, clientes activos 12,5 M (+20 %), comisión media 49 pb (−3 pb). Sube la guía del año a la mitad alta del 15-20 % y mantiene el margen antes de impuestos en lo alto del 20-25 %. Con la v11 sigue en **Mantener** (ponderada +4,0 %, compra hasta 12,1 USD): el crecimiento se frena algo y el precio apenas se mueve. No entra como suplente. Fuente: [Wise, resultados del 2T FY27](https://www.globenewswire.com/news-release/2026/10/15/3382102/0/en/wise-group-plc-reports-q2-fy27-results.html).
 
 
 **Dónde cotiza.** Desde el **11-may-2026** la cotización principal está en el **Nasdaq (WSE)**. Londres (WISE.L) queda como secundaria y sigue concentrando la mayor parte de la negociación. La sociedad matriz es ahora Wise Group plc. Desde el FY26 presenta las cuentas en **dólares y con normas contables de EE. UU.**, con resultados trimestrales (20-F y 6-K en la SEC). El ejercicio fiscal cierra el 31 de marzo.
