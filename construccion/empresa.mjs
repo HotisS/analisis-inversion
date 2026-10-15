@@ -384,6 +384,10 @@ export default {
     ['seccion', '25. Riesgos y pre-mortem', 'riesgos', 'Núcleo', [
       ['tabla', 'riesgos.items', [['Riesgo', 'riesgo', '', 2], ['Tipo', 'tipo', '', 0.9], ['Prob.', 'probabilidad', '', 0.6, 'c'], ['Impacto', 'impacto', '', 0.7, 'c'], ['Efecto en valor', 'efecto_valor', '', 1, 'c'], ['Mitigante', 'mitigante', '', 1.8], ['Señal de alerta', 'senal', '', 1.8]], { numerar: true }],
       sub('Pre-mortem', 'riesgos.premortem'),
+      sub('Riesgo de inteligencia artificial', 'riesgos.ia', [
+        ['p', '**Exposición:** {{riesgos.ia.exposicion}} · **Sentido:** {{riesgos.ia.sentido}} · **Efecto en valor (3-5 años):** {{riesgos.ia.efecto_valor}}'],
+        ['texto', 'riesgos.ia.comentario'],
+      ]),
     ]],
 
     ['seccion', '26. ESG y controversias', 'esg', 'Complemento', [

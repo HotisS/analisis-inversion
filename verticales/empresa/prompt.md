@@ -609,11 +609,13 @@ El motor calcula ROIC, ROE, ROA, la descomposición DuPont y el ROIC incremental
 
 - `items`: 6-10 riesgos **específicos de la empresa**, de mayor a menor importancia. Revisa los que declara la propia empresa en su informe anual y añade los que no declara. `efecto_valor`: impacto estimado sobre el valor por acción («−15 %»), con el escenario o la sensibilidad del motor como referencia. `senal`: indicador observable que avisaría a tiempo.
 - `premortem` (150-250 palabras): «Es dentro de tres años y esta inversión ha perdido un 40 %. ¿Qué ha pasado?». Escribe la historia más probable del fracaso, con la cadena de causas, y qué indicador lo habría anticipado.
+- `ia` (riesgo de inteligencia artificial): **obligatorio en todo informe**, aparte de que la IA figure o no en `items`. `exposicion`: cuánto del negocio puede cambiar la IA (productos sustituibles, trabajo que automatiza, datos propios que la hacen más valiosa). `sentido`: si para esta empresa es amenaza, oportunidad, las dos («Mixto») o ninguna («Neutral»). `efecto_valor`: impacto estimado sobre el valor por acción a 3-5 años («−10 %», «+5 %»), con el escenario del motor como referencia. `comentario` (80-150 palabras): qué parte de las ventas o de los costes toca, qué hace ya la empresa y qué señal observable avisaría. Si de verdad no afecta, se dice y se razona («Neutral»); no se deja vacío.
 
 ```json
 "riesgos": {
   "items": [{ "riesgo": "texto", "tipo": "texto", "probabilidad": "Alta|Media|Baja", "impacto": "Alto|Medio|Bajo", "efecto_valor": "texto", "mitigante": "texto", "senal": "texto" }],
   "premortem": "texto",
+  "ia": { "exposicion": "Alta|Media|Baja", "sentido": "Amenaza|Oportunidad|Mixto|Neutral", "efecto_valor": "texto", "comentario": "texto" },
   "confianza": "Alta|Media|Baja"
 }
 ```
