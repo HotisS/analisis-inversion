@@ -2,30 +2,37 @@
 
 Órdenes growth vigentes (14-oct-2026; compras aprobadas por el usuario a las 15:29 y órdenes delegadas a las 15:39). Método vigente v11. Bolsillo growth ≈ 20 % de la cartera (tope): está lleno, así que un Comprar nuevo solo entra sustituyendo a otra. Son PROPUESTAS: regla dura del usuario (14-oct 18:04), no se emite ninguna orden salvo que él la diga explícitamente en el chat y la confirme tras pedirle confirmación. Ninguna orden se ha ejecutado aún (`informes/ordenes-2026-10-15.md`).
 
-| Valor | Total | Tramo 1 (ya, con límite) | Tramo 2 | Límite máximo | Peso | Motivo de negocio |
-|---|---|---|---|---|---|---|
-| Nu Holdings (NU) | 86 acciones (≈1.160 EUR) | 43 acciones | 43 tras resultados del 3T (12-nov), si la morosidad no se dispara | 16,6 USD | 4 % | Banco digital que crece +35 % a 15x beneficios |
-| Axon (AXON) | 3 acciones (≈1.085 EUR) | 2 acciones | 1 tras resultados del 3T (principios de noviembre) | 476 USD | 3,7 % | Cámaras y software para policía, barata frente a su historia |
-| Shopify (SHOP) | 8 acciones (≈1.230 EUR) | 4 acciones | 4 tras resultados del 3T (3-nov) | 192,1 USD | 4 % | Plataforma de comercio (no minorista) que crece más del 30 % a 28x el beneficio bruto |
-| Snowflake (SNOW) | 4 acciones (≈1.225 EUR) | 2 acciones, pagadas cancelando la orden con límite value de Deutsche Börse | 2 tras resultados del 3T fiscal (≈2-dic), si el producto crece ≥ 30 % y cumple la guía | 368 USD | 4 % | Datos para IA: el producto acelera cuatro trimestres seguidos (+29 % → +37 %), retención neta 126 %; FCF 22 % |
-| Samsara (IOT) | 30 acciones (≈1.105 EUR) | 15 acciones | 15 tras resultados del 3T fiscal (principios de diciembre), si el ARR crece ≥ 27 % y bate la guía | 45,1 USD | 4 % | Sensores y software para flotas: crece ~30 % siete trimestres seguidos, FCF al alza, caja neta; 7 de 8 señales |
+**Cambio del 15-oct (10:37 UTC), regla del usuario:** sin compras a plazos. Cada compra va **entera** y se mantiene **al menos 3 meses**. Durante esos 3 meses no se vende por precio ni por valoración, solo si se rompe la tesis (condiciones de la tabla). Si una empresa presenta resultados en menos de 10 días, la compra entera se aplaza hasta después; hoy ninguna lo hace. El número de acciones de cada orden está en la tabla privada de órdenes, no en el repo.
 
-- Si el precio supera el límite, no se compra. Salida por tesis (señales de venta de cada informe), no por precio.
-- **argenx sale y entra Samsara (14-oct 17:16 UTC, v11):** con las ventas de su propio informe (9.300 M, como el consenso) y no la proyección mecánica (12.612 M), argenx baja de +44 % a +10 % (baja convicción); Samsara da +15 % con convicción media. La orden de argenx no se había ejecutado: cambiarla no cuesta nada. argenx queda de suplente y se revisa con sus resultados del 22-oct.
-- Liquidez: los tramos 1 suman lo previsto; el de Snowflake se paga cancelando la orden con límite value de Deutsche Börse. Los tramos 2 salen de la liquidez que quede tras las órdenes value ejecutadas o vencidas el 7-nov.
+**Propuesta vigente (15-oct, 12:50 de Madrid):** con la liquidez que queda tras las compras value, el growth entra entero solo en **Nu, Shopify y Samsara** (≈11-12 % de la cartera). Axon y Snowflake quedan de suplentes. Si queda liquidez libre para una compra entera, entra antes Snowflake (convicción media) que Axon (convicción baja).
+
+| Valor | Compra | Límite máximo | Peso | Próximos resultados | Tesis rota (única razón para vender en 3 meses) | Motivo de negocio |
+|---|---|---|---|---|---|---|
+| Nu Holdings (NU) | Entera, hoy | 16,6 USD | ≈3,8 % | 12-nov | La morosidad de más de 90 días sube más de 1 punto en dos trimestres seguidos, o los clientes dejan de crecer | Banco digital que crece +35 % a 15x beneficios |
+| Axon (AXON) | Suplente (convicción baja) | 476 USD | — | Principios de noviembre | El ARR (lo que los clientes pagan al año) crece menos del 20 %, o pierde contratos grandes de policía | Cámaras y software para policía, barata frente a su historia |
+| Shopify (SHOP) | Entera, hoy | 192,1 USD | ≈4,0 % | 3-nov | El volumen vendido en la plataforma crece menos del 20 % dos trimestres seguidos | Plataforma de comercio (no minorista) que crece más del 30 % |
+| Snowflake (SNOW) | Suplente; la primera si queda liquidez libre | 368 USD | — | ≈2-dic | Las ventas de producto crecen menos del 25 % y la cartera de contratos (RPO) vuelve a bajar | Datos para IA: el producto acelera cuatro trimestres seguidos |
+| Samsara (IOT) | Entera, hoy | 45,1 USD | ≈3,7 % | Principios de diciembre | El ARR crece menos del 25 % | Sensores y software para flotas: crece ~30 % siete trimestres seguidos, caja neta |
+
+- **Por qué aguantan 3 meses sin dar venta:**
+  - **Prueba prudente:** con el escenario malo pesando más (35/50/15) y el objetivo fijo, las tres compras siguen en positivo al precio de hoy: Shopify +9 %, Nu +9 % y Samsara +7 % (suplentes: Axon +18 % con convicción baja, Snowflake +8 %). Las tres son SÓLIDAS en la prueba de robustez, con convicción media, y ninguna presenta resultados en los próximos 10 días.
+  - **Por precio:** una venta solo saldría si el precio subiera mucho por encima del objetivo, entre un 29 y un 50 % según la empresa (y eso sería una ganancia).
+  - **Snowflake, suplente:** subió mucho en 6 meses y su cartera de contratos se frena; la prueba prudente da +8 %. Entra entera solo si queda liquidez libre.
+- Si el precio supera el límite, no se compra. Salida solo por tesis rota, no por precio, durante al menos 3 meses.
+- **argenx sale y entra Samsara (14-oct 17:16 UTC, v11):** con las ventas de su propio informe, argenx baja a +10 % (baja convicción); Samsara da +15 % con convicción media.
 - Suplentes growth, por orden (15-oct, tras la ronda de 16 con filtro previo; precios del 14-oct, cierre o fuera de horario, v11, rentabilidad al precio actual con el objetivo fijo): 1) MongoDB (Comprar baja, +23 %, consejero delegado interino; ≤ 411 USD prudente); 2) Toast (Comprar baja, +13 %; ≤ 32,1 USD); 3) Zscaler (Comprar baja, +16 %; ≤ 244,3 USD); 4) Rubrik (Comprar media, +16 %; ≤ 123,6 USD; subió un 137 % en 6 meses, en dos tramos); 5) Hinge Health (Comprar media, +14 %; ≤ 114,6 USD; subió un 171 % en 6 meses, en dos tramos); 6) Elastic (Comprar baja, +16 %; ≤ 101,1 USD; crece justo un 16 %); 7) dLocal (Comprar baja, +16 %; ≤ 16,4 USD; frágil y sumaría Latinoamérica a Nu); 8) Klaviyo (Comprar baja, +16 %; ≤ 18,1 USD; el 78 % de sus ingresos viene de clientes de Shopify); 9) ServiceTitan (Comprar baja, +14 %; ≤ 78,5 USD; ciclo de reformas en EE. UU.); 10) Dexcom (Comprar baja, +13 %; ≤ 89,5 USD); 11) argenx (Comprar baja, +11 %; ≤ 866,8 USD; resultados 22-oct); 12) Datadog (Comprar media, +13 %; ≤ 282 USD prudente; alerta de euforia a 6 meses); 13) Reddit (Comprar baja, +12 %; ≤ 156,8 USD); 14) Life360 (Comprar baja, +12 %; ≤ 42,3 USD; solo 1 de 8 señales); 15) SailPoint (Comprar baja, +11 %; ≤ 20,1 USD; Thoma Bravo tiene el 85 %); 16) Affirm (Comprar baja, +10 %; ≤ 73,5 USD; el único prestamista de EE. UU. entre las suplentes); 17) Braze (Comprar baja, +8 %; ≤ 28,7 USD); 18) Saab (Comprar baja, +6 %; ≤ 616,3 SEK); 19) Natera (Comprar baja, +8 %; alerta de múltiplo caro; ≤ 407,5 USD); 20) Ypsomed (Comprar baja, frágil; ≤ 361,9 CHF). Dan Comprar pero NO son suplentes: Sanil Electric (cuatro clientes son el 89,5 % de sus ventas; falla el filtro con el dato oficial), Sezzle (otro prestamista y múltiplo el doble de su media; falla la prueba B) y Benefit Systems (al precio de hoy ya pasa de su límite de 5.544,1 PLN). Mantener: Eli Lilly, Wise (2T el 15-oct), Arista, DoorDash, HubSpot, Insulet, Vertex, Kinsale, TransMedics, Rolls-Royce, Howmet, Construction Partners, Madrigal, Remitly, Glaukos (+3 %; 7 de 8 señales, compra por debajo de 161,6 USD), Lemonade (+13 % pero 59 puntos, a uno de Comprar), Krystal Biotech, TG Therapeutics, Fabrinet (+8 % al cierre, puntuación 59), ALK-Abelló, Axsome, Exosens, Medacta, Guardant Health (veto de euforia: +160 % en 12 meses), Flywire, Nordic Semiconductor, Rambus. No comprar: GE Vernova, Celestica, Monolithic Power, Boston Scientific, Comfort Systems, Quanta Services, Insmed, Alnylam, AeroVironment, Celsius, Ascendis, iRhythm, Kratos, Cameco, Argan, Oscar Health, Corcept, Nextpower (antes Nextracker), Camurus, Hensoldt, Addtech, Credo, Zeta Global, SiTime.
-- **Alerta en Snowflake (14-oct, backtest v13):** sube +166 % en 6 meses con el múltiplo alto. No cambia la señal (la euforia a 6 meses queda como alerta, no como regla), pero el tramo 2 solo se propone si los resultados del ≈2-dic confirman el crecimiento.
+- **Alerta en Snowflake (14-oct, backtest v13):** sube +166 % en 6 meses con el múltiplo alto. No cambia la señal (la euforia a 6 meses queda como alerta, no como regla).
 
 ## Revisión de precios antes de cada orden
 
 Regla del usuario (14-oct, 16:10): antes de proponer o mantener una orden, se mira el precio actual y se comprueba si los cálculos siguen vigentes. **Cómo se hace (desde el 14-oct 16:50):** el objetivo a 12 meses del informe queda fijo y la rentabilidad es objetivo ÷ precio actual − 1; la orden sigue en pie si el precio está por debajo del «compra hasta» del informe (por construcción, ahí la ponderada es ≥ 5 % y la base ≥ 0). No se recalcula el motor cambiando solo el precio: en empresas valoradas por beneficio o EBITDA (Nu, Dexcom, Arista) el objetivo se movía con el precio y el límite salía artificialmente más bajo (Nu bajó a 18,3 por eso; vuelve a 18,9). El objetivo se rehace solo con resultados o datos nuevos.
 
-| Valor | Precio y hora | Límite (v11) | Ponderada al precio actual | Señal (v11) | ¿Sigue en pie? |
-|---|---|---|---|---|---|
-| Nu Holdings | 14,92 USD, 14-oct 20:00 UTC | 16,6 USD | +20,0 % | Comprar (media) | Sí |
-| Axon | 408,42 USD, 14-oct 20:00 UTC | 476 USD | +33,9 % | Comprar (baja) | Sí |
-| Shopify | 172,50 USD, 14-oct 20:00 UTC | 192,1 USD | +16,9 % | Comprar (media) | Sí |
-| Snowflake | 335,16 USD, 14-oct 20:00 UTC | 368 USD | +15,3 % | Comprar (media) | Sí |
-| Samsara | 40,82 USD, 14-oct 20:00 UTC | 45,1 USD | +15,9 % | Comprar (media) | Sí |
+| Valor | Precio y hora | Límite (v11) | Ponderada al precio actual | Prudente (35/50/15) | Señal (v11) | ¿Sigue en pie? |
+|---|---|---|---|---|---|---|
+| Nu Holdings | 14,55 USD, 15-oct 10:45 UTC (preapertura) | 16,6 USD | +23 % | +9 % | Comprar (media) | Sí |
+| Axon | 407,47 USD, 15-oct 10:45 UTC | 476 USD | +34 % | +18 % | Comprar (baja) | Sí |
+| Shopify | 167,60 USD, 15-oct 10:45 UTC | 192,1 USD | +20 % | +9 % | Comprar (media) | Sí |
+| Snowflake | 325,15 USD, 15-oct 10:45 UTC | 368 USD | +19 % | +8 % | Comprar (media) | Sí |
+| Samsara | 40,51 USD, 15-oct 10:45 UTC | 45,1 USD | +17 % | +7 % | Comprar (media) | Sí |
 
-Precios de Yahoo (chart API, sesión en curso). **Rentabilidad esperada del bolsillo growth** (media ponderada por importe, objetivo fijo al precio actual): +20 % con las posiciones completas y +21 % con los tramos 1; lo realista, cerca de la mitad.
+Precios de Yahoo (chart API, sesión en curso). **Rentabilidad esperada del bolsillo growth** (media ponderada por importe, objetivo fijo al precio actual): +20 % con Nu, Shopify y Samsara enteras; lo realista, cerca de la mitad.
