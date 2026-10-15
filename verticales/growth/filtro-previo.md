@@ -30,3 +30,13 @@ Hotis (14-oct 21:16): «baja el ritmo de growth, afina la puntería porque está
 1. El escáner del repo con el perfil `growth-alto` de `escaner/perfiles.json`, que está inactivo por defecto: `node herramientas/escaner.mjs --perfiles growth-alto`.
 2. Foros y cartas de fondos growth (Reddit, Seeking Alpha, X, cartas trimestrales). Solo cuentan los nombres que se repiten en varias fuentes.
 3. Para cada candidata se apunta de dónde sale.
+
+## Resultado de la primera tanda con el filtro (tanda 18, 15-oct)
+- **2 de 4 dan Comprar:** Rubrik (media) y Reddit (baja). En las tandas 11-17, sin filtro, fueron 2 de 28. Son solo 4 casos: es una señal buena, no una prueba.
+- **Credo (Vender):** la prueba C se pasó con un dato mal tomado. El filtro usó el 34 % de un trimestre; el 10-Q, contando por cliente final, da un 61 % para los dos mayores. Con el dato bueno la habría descartado. **Corrección:** la C se toma siempre del último 10-K/10-Q (o informe anual), por cliente final, y suma los dos mayores.
+- **Zeta Global (Vender):** cotiza a 1,8 veces su EV/ventas mediano de 3 años y crece en parte comprando empresas. Se probó añadir «EV/ventas ≤ 1,5 veces su mediana» también a las no rentables. **No se adopta:** habría descartado dos Comprar anteriores, Natera (2,25 veces) y Datadog (1,69). Queda como aviso dentro del análisis, no como filtro.
+- Propuestas de los analistas, pendientes de backtest (no aplicadas):
+  - En la D, cuando el crecimiento pasa del 60 %, dividir por el crecimiento del 2.º año (Credo).
+  - Una alerta de euforia a 6 meses para las de margen bruto alto: subida > 100 % con el múltiplo > 1,4 veces su mediana (Rubrik).
+  - Una alerta cuando los usuarios del mercado principal crecen < 3 % y las ventas > 30 % (Reddit).
+  - Separar de la dilución pasada las acciones entregadas en compras (Zeta).

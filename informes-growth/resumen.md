@@ -11,10 +11,12 @@ Lo genera `node motor/growth.mjs --todos` (no editar a mano). Método v11: [vert
 | dLocal | DLO | 73.7 | 4/8 | +14,8 % | +15,7 % | Comprar (baja) | 3.5 % | 16.4 USD | 2026-10-14 |
 | Samsara | IOT | 78.5 | 7/8 | +14,7 % | +18,2 % | Comprar (media) | 4 % | 45.1 USD | 2026-10-14 |
 | Shopify | SHOP | 77.8 | 5/8 | +14,3 % | +18,1 % | Comprar (media) | 4 % | 192.1 USD | 2026-10-14 |
+| Rubrik | RBRK | 79.3 | 6/8 | +13,9 % | +14,2 % | Comprar (media) | 4 % | 123.6 USD | 2026-10-15 |
 | Zscaler | ZS | 69 | 4/8 | +12,2 % | +7,2 % | Comprar (baja) | 3.5 % | 244.3 USD | 2026-10-14 |
 | Duolingo | DUOL | 70.8 | 5/8 | +12,1 % | +7 % | Comprar (baja) | 3.5 % | 149.5 USD | 2026-10-14 |
 | Cloudflare | NET | 81.3 | 6/8 | +12 % | +16,5 % | Mantener | — | 226.2 USD | 2026-10-14 |
 | argenx SE | ARGX | 70.5 | 3/8 | +11,4 % | +6,4 % | Comprar (baja) | 3.5 % | 866.8 USD | 2026-10-14 |
+| Reddit | RDDT | 72 | 2/8 | +10,8 % | +11,6 % | Comprar (baja) | 3.5 % | 156.8 USD | 2026-10-15 |
 | Lemonade | LMND | 59.3 | 2/8 | +10,7 % | +14,3 % | Mantener | — | 47.1 USD | 2026-10-14 |
 | CrowdStrike Holdings | CRWD | 81.2 | 7/8 | +10,6 % | +13,6 % | Mantener | — | 170.3 USD | 2026-10-14 |
 | Dexcom | DXCM | 68.2 | 7/8 | +10,5 % | +13,4 % | Comprar (baja) | 3.5 % | 89.5 USD | 2026-10-14 |
@@ -55,6 +57,7 @@ Lo genera `node motor/growth.mjs --todos` (no editar a mano). Método v11: [vert
 | Alnylam Pharmaceuticals | ALNY | 62.7 | 2/8 | -10,1 % | -5 % | Vender | — | 191.7 USD | 2026-10-14 |
 | Boston Scientific | BSX | 46 | 2/8 | -10,2 % | -4 % | Vender | — | 37 USD | 2026-10-14 |
 | Hensoldt AG | HAG | 57 | 2/8 | -13,3 % | -10,8 % | Vender | — | 65.3 EUR | 2026-10-14 |
+| Credo Technology Group | CRDO | 66.8 | 3/8 | -14 % | -11,7 % | Vender | — | 132.4 USD | 2026-10-15 |
 | Addtech AB | ADDT-B | 46.8 | 1/8 | -14,4 % | -12 % | Vender | — | 262 SEK | 2026-10-14 |
 | GE Vernova Inc. | GEV | 61.8 | 3/8 | -14,8 % | -12,6 % | Vender | — | 814 USD | 2026-10-14 |
 | Camurus | CAMX | 67 | 6/8 | -15,5 % | -10,6 % | Vender | — | 505.3 SEK | 2026-10-14 |
@@ -64,6 +67,7 @@ Lo genera `node motor/growth.mjs --todos` (no editar a mano). Método v11: [vert
 | Comfort Systems USA | FIX | 76.7 | 4/8 | -17,6 % | -15,6 % | Vender | — | 1276.2 USD | 2026-10-14 |
 | Quanta Services | PWR | 71.5 | 5/8 | -18,8 % | -17,4 % | Vender | — | 532.4 USD | 2026-10-14 |
 | Monolithic Power Systems, Inc. | MPWR | 70.7 | 4/8 | -19 % | -16,9 % | Vender | — | 1015.8 USD | 2026-10-14 |
+| Zeta Global | ZETA | 76.5 | 7/8 | -19 % | -18,3 % | Vender | — | 24.9 USD | 2026-10-15 |
 | iRhythm | IRTC | 59 | 4/8 | -21 % | -15,6 % | Vender | — | 81.1 USD | 2026-10-14 |
 | Argan | AGX | 62.7 | 2/8 | -21,1 % | -20,2 % | Vender | — | 291 USD | 2026-10-14 |
 | BE Semiconductor Industries (Besi) | BESI | 63.3 | 2/8 | -23 % | -26,9 % | Vender | — | 124 EUR | 2026-10-14 |
