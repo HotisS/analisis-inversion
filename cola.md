@@ -25,3 +25,5 @@ Solo lo pendiente. Lo cerrado está en `archivo/` (índice en `archivo/HISTORICO
 ## Suplentes del escáner del 10-oct sin analizar
 
 Yelp (YELP).
+
+- Escáner (pausado 15-oct noche por Hotis): exclusiones con caducidad hechas (herramientas/exclusiones.mjs, menciones en escaner/reglas.json y privadas). Falta: paso «--recordar --marcar» en la rutina del domingo, fila en escaner/README.md y respuesta corta al coordinador con la lista.

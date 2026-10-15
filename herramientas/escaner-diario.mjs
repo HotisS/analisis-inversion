@@ -30,6 +30,7 @@ import { fileURLToPath } from 'node:url';
 import { ultimoDatos } from './objetivo12m.mjs';
 import { ultimoCierre, leerPrecios } from './precios.mjs';
 import { leerCalendario, fechaResultados } from './calendario.mjs';
+import { leerMenciones, vigentes, mapas } from './exclusiones.mjs';
 
 const RAIZ = fileURLToPath(new URL('..', import.meta.url));
 process.chdir(RAIZ);
@@ -60,6 +61,10 @@ const vup = opcion('--vup'), bpa = opcion('--bpa'), registrar = (() => { const i
 const sinPrecios = bandera('--sin-precios'), soloSeguimiento = bandera('--seguimiento');
 
 const REGLAS = leer(`${E}reglas.json`);
+// Exclusiones y bloqueos con caducidad (herramientas/exclusiones.mjs): las vigentes, públicas y privadas (cuentas de Hotis).
+const MENC = mapas(vigentes(leerMenciones()));
+REGLAS.exclusiones = { ...REGLAS.exclusiones, ...MENC.exclusiones };
+REGLAS.no_vender = { ...REGLAS.no_vender, ...MENC.no_vender };
 // La cartera real NO va en el repo (público): vive en la carpeta privada del proyecto (CARTERA_REAL o
 // /mnt/project-files/cartera/real/escaner-cartera.json; plantilla sin datos en escaner/cartera.ejemplo.json).
 // Sin ese archivo el escáner sigue funcionando con una cartera vacía (sin reglas de cartera ni liquidez libre).
@@ -219,7 +224,7 @@ async function escanear() {
 
   // --- Ventas (lo que está en cartera) ---
   for (const p of CARTERA.posiciones) {
-    if (REGLAS.no_vender[p.clave] || p.vertical === 'otro') continue;
+    if (REGLAS.no_vender[p.clave] || (p.cuenta && MENC.no_vender_cuentas[p.cuenta]) || p.vertical === 'otro') continue;
     // Regla 12 (METODO-VIGENTE.md §4): lo comprado no se vende en 3 meses por recálculos de valoración ni umbrales de
     // precio; solo por un hecho nuevo y duro, que se mira a mano (resultados, supervisor, guía), no lo dispara el escáner.
     const hastaR12 = [p.no_tocar_hasta, REGLAS.mantener_hasta?.[p.clave]].filter((f) => /^\d{4}-\d{2}-\d{2}$/.test(f || '')).sort().at(-1);
