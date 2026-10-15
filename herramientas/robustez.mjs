@@ -40,6 +40,7 @@ const dias = (a, b) => Math.round((new Date(b) - new Date(a)) / 864e5);
 
 const REV = JSON.parse(readFileSync(new URL('../verticales/empresa/objetivo12m-revisados.json', import.meta.url), 'utf8')).revisados;
 const PRECIOS = leerPrecios()?.precios || {};
+const REGLAS = existsSync('escaner/reglas.json') ? JSON.parse(readFileSync('escaner/reglas.json', 'utf8')) : {}; // exclusiones del usuario (MEMORIA.md)
 const MOVIMIENTO = existsSync(RUTA_MOVIMIENTO) ? JSON.parse(readFileSync(RUTA_MOVIMIENTO, 'utf8')) : null; // herramientas/movimiento.mjs --todas --escribir
 // Umbrales de MEMORIA.md: comprar (motor) y seguir en cartera (ponderada ≥ 10 %, base ≥ 5 %, VI no más de un 15 % bajo el precio).
 const U = { comprar: REGLA_12M.comprar, comprarBase: REGLA_12M.comprarBase, mantener: 10, mantenerBase: 5, viMantener: 0.85 };
@@ -259,6 +260,10 @@ function probar(carpeta) {
     robusta = 'Mantener en cartera';
     marca('Q1', 'AVISO', `No cumple el requisito de calidad para comprar (§4.1): sostenibilidad ${cx.sost ?? 'n.d.'}${roicOk ? '' : `, ROIC − WACC ${f(cx.roicWacc, 1)} puntos (< 5)`}. La acción robusta baja a Mantener: no se compra ni se amplía.`);
   }
+  // Exclusiones del usuario (MEMORIA.md, copiadas en escaner/reglas.json; auditoría de homogeneidad del 15-oct: Dunelm salía «Comprar»):
+  // la acción robusta nunca es Comprar en una excluida.
+  const exclu = REGLAS.exclusiones?.[clave] ?? REGLAS.exclusiones?.[String(id.ticker || '').toUpperCase()] ?? null;
+  if (exclu) { marca('X1', 'AVISO', `Excluida por el usuario (${exclu}): no se compra ni se amplía, diga lo que diga la regla.`); if (robusta === 'Comprar') robusta = 'No comprar (excluida)'; }
   // Regla 13 de §4 (15-oct-2026): precio y noticias con veredicto. C1 = el informe dice «retrasa» (la compra espera a la condición);
   // C2 = «descarta»; C3 = el informe no trae el bloque `bolsa.contexto` (análisis anteriores al 15-oct: comprobarlo a mano antes de
   // una orden). P1-P5 = avisos de movimiento del precio de `movimiento.json` (no cambian la señal: el backtest del 15-oct no encontró

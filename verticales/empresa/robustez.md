@@ -38,6 +38,7 @@ NODE_USE_ENV_PROXY=1 node herramientas/robustez-growth.mjs --precios [<carpeta> 
 | M4 | Doble castigo: BPA bajista ≥ 15 % bajo el base y además PER bajista < 0,79 × el base | VARIANTE «sin doble castigo» (PER bajista = base × 0,80) | Edenred |
 | M5 | La ponderada sale del alcista (base < 5 %) | CONFIANZA | — |
 | M6 | El objetivo se mueve con el precio (elasticidad > 0,5): el base es el PER de hoy | AVISO: los límites se calculan con el **objetivo fijo**, nunca recalculando a otro precio | Nu |
+| X1 | Excluida por el usuario (`escaner/reglas.json`, copia de `MEMORIA.md`) | AVISO: la acción robusta nunca es Comprar («No comprar (excluida)») | Dunelm, Inditex, Amazon |
 | B1 | La variante «BPA −10 %» no pasa la compra (ponderada < 15 % o base < 12 %) | AVISO: no es compra robusta (regla 12: pasar v3 y v2, aguantar BPA −10 % y precio bajo el límite común); Comprar baja a Mantener | Viscofan (11,0 %), Hershey (8,1 %), Daiichi (base 8,8 %), UMG (6,2 %), Rai Way (base 11,1 %) |
 | L1 | Precio por encima del límite común de compra (el menor de v3 y v2, objetivo fijo) | AVISO: Comprar baja a Mantener (regla 12) | — |
 | V1 | Valor intrínseco > 15 % bajo el precio | AVISO (no pasa el filtro de mantener) | Hermès, Alphabet |
