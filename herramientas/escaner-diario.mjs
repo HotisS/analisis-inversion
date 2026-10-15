@@ -260,13 +260,13 @@ async function escanear() {
     candidatas.push(fila);
   }
 
-  // Calendario de resultados (regla de orden: con resultados a menos de 10 días, comprar en dos tramos; con resultados ya
+  // Calendario de resultados (regla 11 de METODO-VIGENTE.md, 15-oct: los resultados cercanos no aplazan ni parten la compra, solo se avisa; con resultados ya
   // publicados después del informe, revisión obligatoria en el Vup antes de dar la señal).
   for (const c of [...candidatas, ...observaciones, ...activas]) {
     const pr = c.proximos_resultados;
     if (!pr) continue;
     const dd = dias(ahora.fecha, pr);
-    if (dd >= 0 && dd <= 10) c.resultados_cerca = `resultados el ${fechaCorta(pr)} (en ${dd} días)${c.tipo === 'COMPRA' ? ': comprar en dos tramos, el segundo después de los resultados si no tocan la señal de alarma' : ': decidir la venta antes o después según la señal de alarma'}`;
+    if (dd >= 0 && dd <= 10) c.resultados_cerca = `resultados el ${fechaCorta(pr)} (en ${dd} días)${c.tipo === 'COMPRA' ? ': se compra entera sin esperar (regla 11); revisar lo publicado al día siguiente' : ': se vende cuando lo dice la señal, sin esperar a los resultados (regla 11)'}`;
     if (dd < 0 && c.fecha_corte && pr > c.fecha_corte) c.vup_obligatorio = `${c.vup_obligatorio ? `${c.vup_obligatorio} ` : ''}Publicó resultados el ${fechaCorta(pr)}, después del informe (corte ${fechaCorta(c.fecha_corte)}): revisarlos antes de dar la señal.`;
   }
   const esc = { fecha: ahora.fecha, hora: ahora.hora, precios_actualizados: PRECIOS.actualizado, valor_cartera_eur: r(total, 0), liquidez_libre_eur: CARTERA.liquidez_libre_eur,

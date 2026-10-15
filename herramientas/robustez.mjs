@@ -203,7 +203,7 @@ function probar(carpeta) {
   const prox = String(id.proximos_resultados || '').match(/\d{4}-\d{2}-\d{2}/)?.[0];
   const corte = meta.fecha_corte;
   if (prox && corte && prox > corte && prox <= HOY) marca('E1', 'CONFIANZA', `Publicó resultados el ${prox}, después del corte del informe (${corte}): las cifras no los recogen. Actualizar antes de comprar.`);
-  else if (prox && prox > HOY && dias(HOY, prox) <= 14) marca('E2', 'AVISO', `Resultados el ${prox} (en ${dias(HOY, prox)} días): comprar en dos tramos o después.`);
+  else if (prox && prox > HOY && dias(HOY, prox) <= 14) marca('E2', 'AVISO', `Resultados el ${prox} (en ${dias(HOY, prox)} días): no aplazan la compra (regla 11); revisar lo publicado al día siguiente.`);
   const mov = precio / cx.precioInforme - 1;
   if (Math.abs(mov) > 0.15) marca('E3', 'CONFIANZA', `El precio se ha movido un ${f(mov * 100, 0)} % desde el informe (${f(cx.precioInforme, 2)} → ${f(precio, 2)}): algo ha cambiado; revisar la tesis antes de usar la cifra.`);
 

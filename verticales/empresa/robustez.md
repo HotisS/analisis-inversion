@@ -42,9 +42,9 @@ NODE_USE_ENV_PROXY=1 node herramientas/robustez-growth.mjs --precios [<carpeta> 
 | V2 | DCF > 1,6 × el objetivo a 12 meses | AVISO (tesis a años o DCF optimista) | — |
 | V3 | Confianza de datos «Baja» | CONFIANZA | Experian, Amadeus |
 | E1 | Resultados publicados después del corte del informe | CONFIANZA hasta comprobarlos | LVMH (3T del 12-oct) |
-| E2 | Resultados en los próximos 14 días | AVISO: la compra entera, después de los resultados (regla 11) | — |
+| E2 | Resultados en los próximos 14 días | AVISO: comprobar la fecha y mirar lo publicado; **no aplaza la compra** (backtest 15-oct: esperar cuesta y pierde compras) | — |
 | E3 | El precio se ha movido más de un 15 % desde el informe | CONFIANZA (revisar la tesis) | — |
-| C1 | `bolsa.contexto.veredicto` = «retrasa» (regla 13: hecho pendiente que puede mover el precio > 5 %, o bajista con resultados en ≤ 15 días) | AVISO: la acción robusta pasa a **Esperar** con la condición (`espera`) | Rai Way (overhang del 15 % de RAI) |
+| C1 | `bolsa.contexto.veredicto` = «retrasa» (regla 13: hecho pendiente ajeno al análisis que puede mover el precio > 5 %; los resultados cercanos no son motivo) | AVISO: la acción robusta pasa a **Esperar** con la condición (`espera`) | Rai Way (overhang del 15 % de RAI) |
 | C2 | `bolsa.contexto.veredicto` = «descarta» | AVISO: Comprar pasa a Mantener hasta rehacer el informe | — |
 | C3 | Sin bloque `bolsa.contexto` y la acción es Comprar | AVISO: no se propone la orden hasta rellenarlo (`movimiento.mjs` + noticias con veredicto) | informes anteriores al 15-oct |
 | P1 | Subida fuerte: +25 % en un mes o +40 % en tres (`movimiento.json`) | AVISO: explicar la causa en `bolsa.contexto`; no cambia la señal (backtest 15-oct) | Paycom |
