@@ -4,18 +4,18 @@
 
 **Cambio del 15-oct (10:37 UTC), regla del usuario:** sin compras a plazos. Cada compra va **entera** y se mantiene **al menos 3 meses**. Durante esos 3 meses no se vende por precio ni por valoración, solo si se rompe la tesis (condiciones de la tabla). Si una empresa presenta resultados en menos de 10 días, la compra entera se aplaza hasta después; hoy ninguna lo hace. El número de acciones de cada orden está en la tabla privada de órdenes, no en el repo.
 
-**Propuesta vigente (15-oct, 12:50 de Madrid):** con la liquidez que queda tras las compras value, el growth entra entero solo en **Nu, Shopify y Samsara** (≈11-12 % de la cartera). Axon y Snowflake quedan de suplentes. Si queda liquidez libre para una compra entera, entra antes Snowflake (convicción media) que Axon (convicción baja).
+**Propuesta vigente (15-oct, 13:40 de Madrid, tras la opinión del usuario):** hoy solo se compra **Nu** entera. **Shopify espera a sus resultados del 3-nov**: está a un 4 % de su máximo histórico tras subir un 33 % en un mes, y comprar ahí antes de resultados no es una compra para dejar quieta 3 meses; después del 3-nov entra entera si el volumen de la plataforma crece ≥ 20 % y el precio está ≤ 158 USD. **Samsara no se compra hoy**: sus caídas fuertes son de dic-2024 a feb-2026 y desde entonces sube, pero es la de menor margen prudente (+6 %) y sus fundadores venden todo el año; queda primera suplente (≤ 36 USD o tras sus resultados de diciembre). Axon (en caída, convicción baja) y Snowflake (+132 % en 6 meses, convertibles) no la mejoran: el dinero queda en liquidez.
 
 | Valor | Compra | Límite máximo | Peso | Próximos resultados | Tesis rota (única razón para vender en 3 meses) | Motivo de negocio |
 |---|---|---|---|---|---|---|
 | Nu Holdings (NU) | Entera, hoy | 16,6 USD | ≈3,8 % | 12-nov | La morosidad de más de 90 días sube más de 1 punto en dos trimestres seguidos, o los clientes dejan de crecer | Banco digital que crece +35 % a 15x beneficios |
 | Axon (AXON) | Suplente (convicción baja) | 476 USD | — | Principios de noviembre | El ARR (lo que los clientes pagan al año) crece menos del 20 %, o pierde contratos grandes de policía | Cámaras y software para policía, barata frente a su historia |
-| Shopify (SHOP) | Entera, hoy | 192,1 USD | ≈4,0 % | 3-nov | El volumen vendido en la plataforma crece menos del 20 % dos trimestres seguidos | Plataforma de comercio (no minorista) que crece más del 30 % |
+| Shopify (SHOP) | Espera: entera tras los resultados del 3-nov si se cumplen las condiciones | 158 USD (tras el 3-nov) | — | 3-nov | El volumen vendido en la plataforma crece menos del 20 % dos trimestres seguidos | Plataforma de comercio (no minorista) que crece más del 30 % |
 | Snowflake (SNOW) | Suplente; la primera si queda liquidez libre | 368 USD | — | ≈2-dic | Las ventas de producto crecen menos del 25 % y la cartera de contratos (RPO) vuelve a bajar | Datos para IA: el producto acelera cuatro trimestres seguidos |
-| Samsara (IOT) | Entera, hoy | 45,1 USD | ≈3,7 % | Principios de diciembre | El ARR crece menos del 25 % | Sensores y software para flotas: crece ~30 % siete trimestres seguidos, caja neta |
+| Samsara (IOT) | Primera suplente (no se compra hoy) | 36 USD | — | Principios de diciembre | El ARR crece menos del 25 % | Sensores y software para flotas: crece ~30 % siete trimestres seguidos, caja neta |
 
 - **Por qué aguantan 3 meses sin dar venta:**
-  - **Prueba prudente:** con el escenario malo pesando más (35/50/15) y el objetivo fijo, las tres compras siguen en positivo al precio de hoy: Shopify +9 %, Nu +9 % y Samsara +7 % (suplentes: Axon +18 % con convicción baja, Snowflake +8 %). Las tres son SÓLIDAS en la prueba de robustez, con convicción media, y ninguna presenta resultados en los próximos 10 días.
+  - **Prueba prudente:** con el escenario malo pesando más (35/50/15) y el objetivo fijo, Nu sigue en positivo al precio de hoy (+6 % al cierre del 14-oct; Shopify y Samsara, +6 %, esperan) (suplentes: Axon +18 % con convicción baja, Snowflake +8 %). Las tres son SÓLIDAS en la prueba de robustez, con convicción media, y ninguna presenta resultados en los próximos 10 días.
   - **Por precio:** una venta solo saldría si el precio subiera mucho por encima del objetivo, entre un 29 y un 50 % según la empresa (y eso sería una ganancia).
   - **Snowflake, suplente:** subió mucho en 6 meses y su cartera de contratos se frena; la prueba prudente da +8 %. Entra entera solo si queda liquidez libre.
 - Si el precio supera el límite, no se compra. Salida solo por tesis rota, no por precio, durante al menos 3 meses.
@@ -35,4 +35,4 @@ Regla del usuario (14-oct, 16:10): antes de proponer o mantener una orden, se mi
 | Snowflake | 325,15 USD, 15-oct 10:45 UTC | 368 USD | +19 % | +8 % | Comprar (media) | Sí |
 | Samsara | 40,51 USD, 15-oct 10:45 UTC | 45,1 USD | +17 % | +7 % | Comprar (media) | Sí |
 
-Precios de Yahoo (chart API, sesión en curso). **Rentabilidad esperada del bolsillo growth** (media ponderada por importe, objetivo fijo al precio actual): +20 % con Nu, Shopify y Samsara enteras; lo realista, cerca de la mitad.
+Precios de Yahoo (chart API, sesión en curso). **Rentabilidad esperada del bolsillo growth** (media ponderada por importe, objetivo fijo al precio actual): +20 % con Nu (la única compra de hoy); lo realista, cerca de la mitad.
