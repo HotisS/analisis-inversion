@@ -29,7 +29,7 @@ Si no hay nada nuevo, el mensaje del escáner es una sola línea. Las tareas des
 | Archivo | Qué es | Quién lo cambia |
 |---|---|---|
 | `/mnt/project-files/cartera/real/escaner-cartera.json` (privado; plantilla en `cartera.ejemplo.json`) | Posiciones reales, liquidez, liquidez libre y órdenes ya decididas | El hilo value (dueño de la cartera), cuando el usuario confirma una orden ejecutada |
-| `reglas.json` | Reglas de MEMORIA.md y METODO-VIGENTE.md §4 que aplica el escáner: tamaño, calidad, exclusiones, no vender, umbrales de venta | Quien cambie esas reglas en MEMORIA.md |
+| `reglas.json` (y privada/`escaner-menciones.json`) | Reglas de MEMORIA.md y METODO-VIGENTE.md §4 que aplica el escáner: tamaño, calidad, no vender, umbrales de venta. **Exclusiones y bloqueos con caducidad** (16-oct, pedido del usuario): la fuente es `menciones` (fecha, motivo con sus palabras, mensaje, caduca: empresa 6 meses, sector 12; lo del método no caduca); `node herramientas/exclusiones.mjs --aplicar` rehace `exclusiones` y `no_vender`, `--lista` las enseña y el domingo `--recordar --marcar` saca «Recordar: X … ¿Se mantiene?» dos semanas antes; al caducar solo deja de valer cuando el usuario lo ha visto. Lo que toca a sus cuentas, en la privada | Quien cambie esas reglas (editar `menciones` y `--aplicar`) |
 | privada/`escaner/escaneo-ultimo.json` | Resultado del último escaneo: candidatas, observaciones, señales activas | La herramienta |
 | privada/`escaner/decisiones.json` | Lo que sale del Vup de cada candidata | Claude, en cada ejecución |
 | privada/`escaner/registro-senales.json` | Registro histórico de todas las señales y su seguimiento | La herramienta (no editar a mano) |
