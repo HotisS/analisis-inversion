@@ -48,6 +48,7 @@ const AJ = leer('escaner/noticias.json', {});
 const REGLAS = leer('escaner/reglas.json', {});
 const RADAR = leer('escaner/radar.json', { valores: [] }).valores;
 const INDICES = leer('escaner/indices.json', null);
+const SALIDAS = leer('escaner/salidas-bolsa.json', null);
 const ROB_G = leer('informes-growth/robustez.json', { resultados: [] }).resultados;
 const EXCL = REGLAS.exclusiones || {};
 // Revisiones tras resultados ya hechas (las apunta la vigilancia de la mañana con --revisado): así un resultado recogido
@@ -177,7 +178,7 @@ export function huecosFuera(inv) {
   const nombres = inv.map((f) => f.nombre.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, ' ').trim());
   const conocida = (t, nombre) => claves.has(norm(t)) || yahoos.has(t) ||
     (nombre && nombres.some((n) => { const m = nombre.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, ' ').trim(); return m.length > 3 && (n === m || n.startsWith(m + ' ') || m.startsWith(n + ' ')); }));
-  const out = { cartera: [], radar: [], comparables: [], indices: [] };
+  const out = { cartera: [], radar: [], comparables: [], indices: [], salidas: [] };
   const cart = leerAbs(join(PRIV, 'escaner-cartera.json'));
   if (cart) {
     for (const p of cart.posiciones || []) if (p.vertical !== 'otro' && !claves.has(p.clave)) out.cartera.push(`${p.nombre || p.clave} (en cartera)`);
@@ -200,6 +201,8 @@ export function huecosFuera(inv) {
   out.comparables = [...citas.values()].filter((x) => x.por.size >= 2 && (!x.roic.length || Math.max(...x.roic) >= 15))
     .sort((a, b) => b.por.size - a.por.size).map((x) => ({ nombre: x.nombre, ticker: x.ticker, pais: x.pais, citas: x.por.size, roic: x.roic.length ? Math.max(...x.roic) : null, por: [...x.por].slice(0, 4) }));
   if (INDICES?.altas) out.indices = INDICES.altas.filter((a) => !conocida(a.simbolo || a.ticker, a.nombre));
+  // Salidas a bolsa y escisiones grandes (herramientas/salidas-bolsa.mjs) que pasan el filtro previo o piden análisis growth.
+  if (SALIDAS?.grandes) out.salidas = SALIDAS.grandes.filter((x) => !x.ya_analizada && !conocida(x.yahoo || x.ticker, x.nombre) && /pasa el filtro previo value|candidata growth/.test(x.camino || ''));
   return out;
 }
 
@@ -270,6 +273,7 @@ function informe(inv, fuera, conCartera) {
     `**Comparables con calidad que citan dos o más de nuestros informes y no tenemos analizados (${fuera.comparables.length}):**`, '',
     ...(fuera.comparables.length ? ['| Empresa | Ticker | País | Citada por | ROIC (del comparable) |', '|---|---|---|---|---|',
       ...fuera.comparables.slice(0, 40).map((c) => `| ${c.nombre} | ${c.ticker} | ${c.pais || ''} | ${c.citas}: ${c.por.join(', ')}${c.citas > 4 ? '…' : ''} | ${c.roic === null ? 'n.d.' : c.roic + ' %'} |`)] : ['Ninguno.']), '',
+    `**Salidas a bolsa y escisiones grandes sin análisis que lo merecen:** ${SALIDAS ? (fuera.salidas.length ? fuera.salidas.map((x) => `${x.nombre} (${x.yahoo || x.ticker}, ${x.via || 'salida a bolsa'} ${x.cotiza_desde || x.fecha || ''}, ${x.camino})`).join(', ') : 'ninguna') : 'el calendario de salidas a bolsa todavía no ha corrido'}.`, '',
     `**Altas recientes en los grandes índices sin análisis:** ${INDICES ? (fuera.indices.length ? fuera.indices.map((a) => `${a.nombre} (${a.indice}, ${a.fecha || 'reciente'})`).join(', ') : 'ninguna') : 'el escáner de índices todavía no ha corrido'}.`];
   return L.join('\n');
 }
@@ -294,7 +298,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const fuera = huecosFuera(inv);
   // Versión pública (repo): sin nada de la cartera.
   const pub = inv.map(({ huecos, toca, ...f }) => ({ ...f, huecos, toca }));
-  writeFileSync(join(RAIZ, 'escaner/cobertura.json'), JSON.stringify({ fecha: HOY, nota: 'Inventario único de cobertura (herramientas/cobertura.mjs). Lo regenera la rutina; no editar a mano.', empresas: pub, fuera: { radar: fuera.radar, comparables: fuera.comparables, indices: fuera.indices } }, null, 1) + '\n');
+  writeFileSync(join(RAIZ, 'escaner/cobertura.json'), JSON.stringify({ fecha: HOY, nota: 'Inventario único de cobertura (herramientas/cobertura.mjs). Lo regenera la rutina; no editar a mano.', empresas: pub, fuera: { radar: fuera.radar, comparables: fuera.comparables, indices: fuera.indices, salidas: fuera.salidas } }, null, 1) + '\n');
   const md = informe(inv, fuera, conCartera);
   if (arg('--md')) writeFileSync(arg('--md'), md + '\n');
   if (tiene('--json')) console.log(JSON.stringify({ empresas: inv, fuera }, null, 1)); else console.log(md);

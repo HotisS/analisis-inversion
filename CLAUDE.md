@@ -47,7 +47,7 @@ De lunes a viernes a las 9:25 y 15:45 de Madrid una tarea programada (más un in
 
 ## Cobertura y grandes índices (15-oct-2026)
 
-Ninguna empresa con calidad se pierde: `herramientas/cobertura.mjs` (inventario `escaner/cobertura.json`) comprueba que cada una tiene fecha de resultados, noticias, expediente, escáner y fila en el Excel, y marca lo caducado (6 meses) y los resultados sin revisar; `herramientas/indices.mjs` sigue altas y bajas de 11 grandes índices y los huecos con calidad que no tenemos analizados. Procedimiento en `escaner/README.md`. Tras un análisis nuevo: `node herramientas/cobertura.mjs` (y `--arreglar` para su fecha de resultados).
+Ninguna empresa con calidad se pierde: `herramientas/cobertura.mjs` (inventario `escaner/cobertura.json`) comprueba que cada una tiene fecha de resultados, noticias, expediente, escáner y fila en el Excel, y marca lo caducado (6 meses) y los resultados sin revisar; `herramientas/indices.mjs` sigue altas y bajas de 21 grandes índices occidentales y asiáticos y los huecos con calidad que no tenemos analizados, y `herramientas/salidas-bolsa.mjs` las salidas a bolsa y escisiones grandes. Procedimiento en `escaner/README.md`. Tras un análisis nuevo: `node herramientas/cobertura.mjs` (y `--arreglar` para su fecha de resultados).
 
 ## Cartera real (14-oct-2026)
 

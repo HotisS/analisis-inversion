@@ -3,7 +3,8 @@
 // nos pueda colar una empresa»).
 //
 // Descarga los componentes de hoy de S&P 500, Nasdaq-100, MSCI World, STOXX Europe 600, EURO STOXX 50, FTSE 100,
-// Nikkei 225, DAX, SMI, CAC 40 e IBEX 35 (listas públicas de las gestoras de ETF que los replican; sin registro ni datos
+// Nikkei 225, DAX, SMI, CAC 40, IBEX 35 y, desde el 16-oct, S&P/TSX 60, MSCI Emerging Markets, Hang Seng, CSI 300, MSCI Korea,
+// KOSPI 200, MSCI Taiwan, Nifty 50, S&P/ASX 200 y Straits Times (listas públicas de las gestoras de ETF que los replican; sin registro ni datos
 // personales), los compara con la foto anterior y apunta altas y bajas. Cada miembro lleva su ISIN y su símbolo de Yahoo
 // (búsqueda por ISIN, en caché) para cruzarlo con nuestro inventario (herramientas/cobertura.mjs).
 //
@@ -75,6 +76,34 @@ async function amundi(isinEtf) {
     .filter((x) => { const k = x.bbg.split(' ')[0]; if (vistos.has(k)) return false; vistos.add(k); return true; })
     .map((x) => ({ nombre: x.name, isin: x.isin, ticker: x.bbg.split(' ')[0], pais: x.countryOfRisk, peso: Math.round(+x.weight * 1e6) / 1e4 }));
 }
+// State Street (SPDR) Asia-Pacífico: xlsx con ISIN y ticker «5-HK», «D05-SG», «BHP-AU».
+const SUFIJO_SSGA = { HK: '.HK', SG: '.SI', AU: '.AX' };
+async function ssgaApac(codigo) {
+  const filas = leerXlsx(await bajar(`https://www.ssga.com/library-content/products/fund-data/etfs/apac/holdings-daily-${codigo}.xlsx`));
+  const i = filas.findIndex((f) => f[0] === 'ISIN');
+  const cab = filas[i], c = (re) => cab.findIndex((x) => re.test(String(x || '')));
+  return filas.slice(i + 1).filter((f) => /^[A-Z]{2}[0-9A-Z]{9}\d$/.test(f[0] || '') && f[c(/^Ticker$/)]).map((f) => {
+    const [t, pais] = String(f[c(/^Ticker$/)]).split('-');
+    const tick = pais === 'HK' ? t.padStart(4, '0') : t;
+    return { nombre: f[c(/^(Security )?Name$/)], isin: f[0], ticker: tick, yahoo: SUFIJO_SSGA[pais] ? tick + SUFIJO_SSGA[pais] : null, pais: f[c(/Trade Country/)], peso: +f[c(/^Weight/)] || null };
+  });
+}
+// Wikipedia (listas mantenidas a mano; para índices sin lista pública de una gestora): símbolos → Yahoo.
+async function wikipedia(titulo, patron, sufijo) {
+  const t = (await bajar(`https://en.wikipedia.org/w/index.php?title=${titulo}&action=raw`)).toString('utf8');
+  // La tabla con id="constituents" o, si no la marcan, la primera tabla donde casa el patrón.
+  const tablas = [...t.matchAll(/\{\|[^\n]*/g)].map((m) => t.slice(m.index, t.indexOf('\n|}', m.index)));
+  const tabla = tablas.find((x) => x.startsWith('{|') && /id="constituents"/.test(x.split('\n')[0]) && patron.test(x)) || tablas.find((x) => patron.test(x)) || '';
+  const vistos = new Set(), out = [];
+  for (const fila of tabla.split('\n|-').slice(1)) {
+    const m = fila.match(patron);
+    if (!m || vistos.has(m[1])) continue;
+    vistos.add(m[1]);
+    const nombre = fila.match(/\[\[(?:[^\]|]*\|)?([^\]]+)\]\]/)?.[1] || null;
+    out.push({ nombre, ticker: m[1], yahoo: m[1].replace(/\./g, '-') + sufijo, isin: null });
+  }
+  return out;
+}
 const FUENTES = {
   sp500: { nombre: 'S&P 500', revision: 'trimestral (tercer viernes de mar, jun, sep, dic) y cambios sueltos', async leer() {
     const filas = leerXlsx(await bajar('https://www.ssga.com/library-content/products/fund-data/etfs/us/holdings-daily-us-en-spy.xlsx'));
@@ -96,6 +125,22 @@ const FUENTES = {
   smi: { nombre: 'SMI', revision: 'anual en septiembre', leer: () => dws('LU0274221281') },
   cac40: { nombre: 'CAC 40', revision: 'trimestral (tras el tercer viernes)', leer: () => amundi('FR0007052782') },
   ibex35: { nombre: 'IBEX 35', revision: 'junio y diciembre, con seguimiento en marzo y septiembre', leer: () => amundi('FR0010251744') },
+  // Ampliación del 16-oct-2026 (pedido del usuario: «grandes índices occidentales y asiáticos»).
+  tsx60: { nombre: 'S&P/TSX 60', revision: 'trimestral (tercer viernes de mar, jun, sep, dic)', leer: () => wikipedia('S%26P%2FTSX_60', /\{\{TSX link\|([A-Z0-9.]+)\}\}/i, '.TO') },
+  msci_em: { nombre: 'MSCI Emerging Markets', revision: 'trimestral (último día hábil de feb, may, ago, nov)', leer: () => dws('IE00BTJRMP35') },
+  hangseng: { nombre: 'Hang Seng', revision: 'trimestral (viernes de mar, jun, sep, dic; anuncio ~3 semanas antes)', async leer() {
+    // El Tracker Fund no lista todos los miembros (16-oct: 73 de 85): se completa con la lista de Wikipedia.
+    const a = await ssgaApac('hk-en-2800'), vistos = new Set(a.map((m) => m.yahoo));
+    const b = await wikipedia('Hang_Seng_Index', /\{\{SEHK\|(\d+)\}\}/, '.HK').catch(() => []);
+    return [...a, ...b.map((m) => ({ ...m, ticker: m.ticker.padStart(4, '0'), yahoo: m.ticker.padStart(4, '0') + '.HK' })).filter((m) => !vistos.has(m.yahoo))];
+  } },
+  csi300: { nombre: 'CSI 300', revision: 'semestral (junio y diciembre)', leer: () => dws('LU0875160326') },
+  msci_korea: { nombre: 'MSCI Korea', revision: 'trimestral (con el MSCI EM)', leer: () => dws('LU0292100046') },
+  kospi200: { nombre: 'KOSPI 200', revision: 'semestral (junio y diciembre)', leer: () => wikipedia('KOSPI_200', /\|\|\s*(\d{6})\s*\|\|/, '.KS') },
+  msci_taiwan: { nombre: 'MSCI Taiwan', revision: 'trimestral (con el MSCI EM)', leer: () => dws('LU0292109187') },
+  nifty50: { nombre: 'Nifty 50', revision: 'semestral (marzo y septiembre)', leer: () => wikipedia('NIFTY_50', /\n\|\s*([A-Z0-9&-]{2,15})\s*\n/, '.NS') },
+  asx200: { nombre: 'S&P/ASX 200', revision: 'trimestral (tercer viernes de mar, jun, sep, dic)', leer: () => ssgaApac('au-en-stw') },
+  sti: { nombre: 'Straits Times', revision: 'trimestral (mar, jun, sep, dic)', leer: () => ssgaApac('sg-en-es3') },
 };
 
 // Fechas de alta en el S&P 500 (columna «Date added» de Wikipedia): da altas recientes desde la primera foto.
@@ -143,7 +188,8 @@ async function actualizar() {
     const F = FUENTES[id];
     let miembros;
     try { miembros = await F.leer(); } catch (e) { process.stderr.write(`${F.nombre}: no se pudo leer (${e.message}); se usa la foto anterior\n`); fotos[id] = leer(join(DIR, `${id}.json`), null); continue; }
-    const minimo = { sp500: 490, nasdaq100: 98, msci_world: 1100, stoxx600: 580, eurostoxx50: 48, ftse100: 98, nikkei225: 220, dax: 38, smi: 19, cac40: 38, ibex35: 33 }[id];
+    const minimo = { sp500: 490, nasdaq100: 98, msci_world: 1100, stoxx600: 580, eurostoxx50: 48, ftse100: 98, nikkei225: 220, dax: 38, smi: 19, cac40: 38, ibex35: 33,
+      tsx60: 55, msci_em: 1000, hangseng: 70, csi300: 270, msci_korea: 60, kospi200: 180, msci_taiwan: 60, nifty50: 48, asx200: 190, sti: 28 }[id] ?? 1;
     if (miembros.length < minimo) { process.stderr.write(`${F.nombre}: solo ${miembros.length} miembros (esperados ≥ ${minimo}); se usa la foto anterior\n`); fotos[id] = leer(join(DIR, `${id}.json`), null); continue; }
     await resolverYahoo(miembros);
     const antes = leer(join(DIR, `${id}.json`), null);
