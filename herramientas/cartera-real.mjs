@@ -249,7 +249,15 @@ function cargarIbkr(dir = join(DATOS, 'ibkr')) {
       if (j.rentabilidad?.por_periodo_pct && (!x.rentabilidad || f >= x.rentabilidad.f)) x.rentabilidad = { f, v: j.rentabilidad };
       // Misma fecha: manda el conector (precios del momento); más reciente: manda la más reciente.
       if (!x.foto || f > x.fotoF || (f === x.fotoF && !/Flex/i.test(j.fuente || ''))) { x.foto = j; x.fotoF = f; }
+      if (!/Flex/i.test(j.fuente || '') && (!x.fotoCon || f >= x.fotoConF)) { x.fotoCon = j; x.fotoConF = f; }
     }
+  }
+  // Algunas cuentas dan en el Flex el precio medio a 0: se toma el de la última foto del conector para esa posición.
+  const sinBolsa = (s) => { const t = String(s).trim().replace(/\.[A-Z]{1,2}$/, ''); return ALIAS_IBKR[t] || t; };
+  for (const x of cuentas.values()) {
+    if (!x.foto || !/Flex/i.test(x.foto.fuente || '') || !x.fotoCon) continue;
+    const coste = new Map((x.fotoCon.posiciones || []).filter((p) => +p.coste_medio).map((p) => [sinBolsa(p.simbolo), +p.coste_medio]));
+    x.foto = { ...x.foto, posiciones: (x.foto.posiciones || []).map((p) => (+p.coste_medio || !coste.has(sinBolsa(p.simbolo)) ? p : { ...p, coste_medio: coste.get(sinBolsa(p.simbolo)) })) };
   }
   for (const a of readdirSync(dir).filter((x) => /^operaciones.*\.json$/.test(x)).sort()) {
     for (const j of objetos(leer(join(dir, a)))) {
