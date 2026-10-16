@@ -182,7 +182,7 @@ for (const g of grupos.values()) {
   const rb = ROB.get(f.carpeta);
   const limRobusto = rb ? Math.min(...[rb.limite_comprar_cot, rb.limite_comprar_control_cot].map(n).filter((v) => v !== null)) : null;
   resumen.push({
-    tipo: 'Value', clave, empresa: f.empresa, ticker: f.ticker, sector: f.sector, senal, rte,
+    tipo: 'Value', carpeta: f.carpeta, clave, empresa: f.empresa, ticker: f.ticker, sector: f.sector, senal, rte,
     divisa: rev?.divisa_cotizacion ?? f.divisa, precio: rev ? n(rev.precio_cot ?? rev.precio_ref) : f.precio, fecha_precio: rev?.fecha_precio ?? f.fecha,
     compra: Number.isFinite(limRobusto) ? limRobusto : rev ? n(rev.comprar_por_debajo_cot ?? rev.comprar_por_debajo) : n(o?.comprar_por_debajo),
     // Vender por encima de: el precio al que deja de pasar el filtro para mantener (robustez.mjs); sin él, el de la señal Vender.
@@ -200,7 +200,7 @@ for (const dir of readdirSync('informes-growth', { withFileTypes: true }).filter
   if (!c?.senal) continue;
   const word = readdirSync(join('informes-growth', dir)).find((x) => x.endsWith('.docx'));
   resumen.push({
-    tipo: 'Growth', clave: normal(d.ticker), empresa: d.empresa, ticker: d.ticker, sector: 'Growth', senal: c.senal, rte: n(c.rent_ponderada_pct),
+    tipo: 'Growth', carpeta: dir, clave: normal(d.ticker), empresa: d.empresa, ticker: d.ticker, sector: 'Growth', senal: c.senal, rte: n(c.rent_ponderada_pct),
     divisa: d.moneda, precio: n(d.precio), fecha_precio: d.fecha, compra: n(c.precio_max_compra), venta: null,
     proximos: fechaResultados(normal(d.ticker), d, CAL), informe: word ? `informes-growth/${dir}/${word}` : null, conviccion: c.conviccion,
     robusta: ROBG.get(dir)?.senal_robusta ?? null,
@@ -378,9 +378,18 @@ function hojaResumen(privado) {
   });
   return hoja({ nombre: 'Resumen', cols, filas: fs, congelar: 3 });
 }
+// En «Mi cartera», la rentabilidad a 12 meses es la del precio de ahora (robustez --actual, objetivo fijo), la misma que
+// usan el escáner y las tablas de cartera que se entregan; en el Resumen sigue la del precio de la revisión.
+function rteHoy(x) {
+  if (!x) return null;
+  if (x.tipo === 'Value') { ROBA ??= new Map(nodo('herramientas/robustez.mjs', ['--todas', '--json', '--actual']).filter((r) => !r.error).map((r) => [r.carpeta, r])); return n(ROBA.get(x.carpeta)?.ponderada) ?? x.rte; }
+  ROBGA ??= new Map(nodo('herramientas/robustez-growth.mjs', ['--json', '--precios']).filter((r) => !r.error).map((r) => [r.carpeta, r]));
+  return n(ROBGA.get(x.carpeta)?.ponderada_hoy) ?? x.rte;
+}
+let ROBA, ROBGA;
 function hojaCartera() {
   const { pos, ordenes, DECISION, cifras, fuente, liquidez, total } = real_;
-  const porClave = new Map(resumen.map((x) => [x.clave, x]));
+  const porClave = new Map(resumen.map((x) => [x.clave, { ...x, rte: rteHoy(x) }]));
   const cols = [['Valor', 26], ['Tipo', 8], ['Títulos', 9], ['Valor hoy (EUR)', 12], ['Peso', 8], ['Señal', 10], ['Rentabilidad esperada 12 m', 12], ['Siendo prudentes (la mitad)', 12],
     ['Qué hacer según el método', 46], ['Orden propuesta', 50], ['Próximos resultados', 12]];
   const fs = [...pos.values()].sort((a, b) => (b.valor_eur ?? 0) - (a.valor_eur ?? 0)).map((p) => {
