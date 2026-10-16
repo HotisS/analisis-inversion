@@ -251,8 +251,9 @@ if (arg('--simbolos-archivo') && argv.includes('--json')) {
         ...Object.fromEntries(Object.entries(m).map(([k, v]) => [k, v === null ? null : red(v, 2)])), ya_analizada: yaAnalizada({ listados: [{ simbolo: s }], f, nombre: f.nombre }) || null };
     } catch (e) { return { simbolo: s, error: String(e.message || e).slice(0, 120) }; }
   });
-  console.log(JSON.stringify(out));
-  process.exit(0);
+  // Por escrito y saliendo al terminar: con console.log + process.exit una salida grande por tubería se corta.
+  process.stdout.write(JSON.stringify(out) + '\n', () => process.exit(0));
+  await new Promise(() => {});
 }
 if (arg('--simbolos')) {
   for (const s of arg('--simbolos').split(',')) {

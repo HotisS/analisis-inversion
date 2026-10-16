@@ -195,8 +195,9 @@ async function filtroCalidad(simbolos, ruta) {
   const out = m.filter((x) => !x.error).map((x) => {
     const financiera = /Banks|Insurance|Credit Services|Mortgage|Capital Markets|Asset Management/i.test(x.industria || '');
     const excluida = EXCLUIR.test(`${x.descripcion} ${x.industria}`) || EXCLUIR_IND.test(x.industria || '') || /Accenture|Rightmove/i.test(x.nombre || '') ? 'exclusión del usuario' : null;
-    const pasa = !excluida && !financiera && x.roic_wacc !== null && x.roic_wacc >= 5 && (x.crec_ventas_3a ?? 0) >= 0;
-    return { ...x, financiera, excluida, pasa_previo: pasa };
+    const exclRegla = Object.keys(reglas.exclusiones || {}).find((k) => k === String(x.simbolo).split('.')[0].toUpperCase()) || null;
+    const pasa = !excluida && !exclRegla && !x.ya_analizada && !financiera && x.roic_wacc !== null && x.roic_wacc >= 5 && (x.crec_ventas_3a ?? 0) >= 0;
+    return { ...x, financiera, excluida: excluida || (exclRegla ? `exclusión del usuario (${exclRegla})` : null), pasa_previo: pasa };
   });
   writeFileSync(ruta, JSON.stringify({ fecha: HOY, nota: 'Filtro previo de calidad (aprox. del escáner de mercado: ROIC − WACC ≥ 5 con fondo de comercio, ventas sin caer). Ordena qué merece análisis completo; no decide.', empresas: out }, null, 0) + '\n');
   return out;
