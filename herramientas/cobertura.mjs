@@ -15,7 +15,8 @@
 //   node herramientas/cobertura.mjs                      informe en pantalla y escaner/cobertura.json (sin datos de cartera)
 //   NODE_USE_ENV_PROXY=1 node herramientas/cobertura.mjs --arreglar
 //                                                        además rellena lo mecánico: fecha de resultados de Yahoo en
-//                                                        calendario.json para las de calidad sin fecha futura
+//                                                        calendario.json para las de calidad sin fecha futura (la pasada
+//                                                        queda en «anteriores») y últimos resultados en escaner/publicados.json
 //   … --md <ruta>                                        el informe en Markdown (con la cartera si existe la carpeta privada)
 //   … --json                                             el inventario completo por la salida estándar
 // Sin dependencias. Nunca datos personales en las consultas.
@@ -52,6 +53,10 @@ const EXCL = REGLAS.exclusiones || {};
 // Revisiones tras resultados ya hechas (las apunta la vigilancia de la mañana con --revisado): así un resultado recogido
 // deja de salir como pendiente aunque el informe no se haya rehecho.
 const RUTA_REVIS = 'escaner/revisiones.json';
+// Últimos resultados publicados de cada empresa con calidad (Yahoo, con --arreglar). No depende del calendario, que se
+// sobrescribe con la fecha siguiente: así un resultado no se pierde aunque alguien cambie la fecha antes de revisarlo.
+const RUTA_PUB = 'escaner/publicados.json';
+const PUBL = leer(RUTA_PUB, { nota: 'Fecha de los últimos resultados publicados (herramientas/cobertura.mjs --arreglar, de Yahoo). La usa cobertura para saber qué resultados quedan sin revisar.', fechas: {} });
 const REVIS = leer(RUTA_REVIS, { nota: 'Revisiones tras resultados de las empresas con calidad (herramientas/cobertura.mjs --revisado). Una entrada por resultados revisados.', revisiones: {} });
 const MIN_ROIC = REGLAS.calidad_min_roic_wacc ?? 5;
 
@@ -146,7 +151,7 @@ export function inventario() {
     f.edad = dias(f.fecha, HOY);
     f.caducado = f.edad > DIAS_CADUCA;
     // Resultados publicados después del análisis (fecha del calendario o del informe ya pasada y posterior al corte).
-    const pub = [cal, f.prox_informe].filter((x) => x && x > f.fecha && x <= HOY).sort().at(-1) || null;
+    const pub = [cal, f.prox_informe, PUBL.fechas[f.clave], ...(CAL[f.clave]?.anteriores || [])].filter((x) => x && x > f.fecha && x <= HOY).sort().at(-1) || null;
     const hecha = (REVIS.revisiones[f.clave] || []).filter((r) => r.resultados >= (pub || '9999')).at(-1) || null;
     f.ultima_revision = (REVIS.revisiones[f.clave] || []).at(-1) || null;
     f.resultados_sin_recoger = hecha ? null : pub;
@@ -204,7 +209,7 @@ async function rellenarCalendario(inv) {
   const ruta = join(RAIZ, 'escaner/calendario.json');
   const cal = JSON.parse(readFileSync(ruta, 'utf8'));
   let n = 0;
-  for (const f of inv.filter((x) => x.seguir && x.calendario !== 'sí' && x.yahoo)) {
+  for (const f of inv.filter((x) => x.seguir && x.yahoo)) {
     let e = null;
     try {
       const j = await json(`https://query2.finance.yahoo.com/v10/finance/quoteSummary/${encodeURIComponent(f.yahoo)}?modules=calendarEvents,earnings`);
@@ -212,27 +217,32 @@ async function rellenarCalendario(inv) {
       e = r0?.calendarEvents?.earnings || null;
       // Sin fecha en el calendario de Yahoo: la última publicada que da el gráfico de beneficios.
       const ult = r0?.earnings?.earningsChart?.quarterly?.at(-1)?.reportedDate?.raw;
+      const pasadas = [ult, ...(e?.earningsDate || []).map((x) => x.raw ?? x)].filter(Boolean).map((t) => new Date(t * 1000).toISOString().slice(0, 10)).filter((x) => x <= HOY).sort();
+      if (pasadas.length && (!PUBL.fechas[f.clave] || pasadas.at(-1) > PUBL.fechas[f.clave])) PUBL.fechas[f.clave] = pasadas.at(-1);
       if (!e?.earningsDate?.length && ult) e = { earningsDate: [{ raw: ult }], isEarningsDateEstimate: true };
     } catch { /* sin datos de Yahoo: se prueba con la fecha del informe */ }
+    if (f.calendario === 'sí') continue;
     {
+      const previa = cal.fechas[f.clave]?.fecha && cal.fechas[f.clave].fecha < HOY ? { anteriores: [...(cal.fechas[f.clave].anteriores || []), cal.fechas[f.clave].fecha].slice(-4) } : {};
       const todas = (e?.earningsDate || []).map((x) => new Date((x.raw ?? x) * 1000).toISOString().slice(0, 10)).sort();
       const fechas = todas.filter((x) => x >= HOY);
       const nota = `Puesta por cobertura.mjs (${HOY}) para que ninguna empresa con calidad quede sin seguimiento`;
       if (fechas.length) {
-        cal.fechas[f.clave] = { fecha: fechas[0], confirmada: e?.isEarningsDateEstimate === false, nombre: f.nombre,
+        cal.fechas[f.clave] = { ...previa, fecha: fechas[0], confirmada: e?.isEarningsDateEstimate === false, nombre: f.nombre,
           nota: `${nota}${e?.isEarningsDateEstimate === false ? '' : '; estimada: la vigilancia la confirma cuando se anuncie'}`, fuente: 'Yahoo Finance (calendarEvents)' };
       } else if (f.prox_informe && f.prox_informe >= HOY) {
-        cal.fechas[f.clave] = { fecha: f.prox_informe, confirmada: false, nombre: f.nombre, nota: `${nota}; estimada, la del informe (Yahoo aún no la da)`, fuente: `informe (${f.carpeta})` };
+        cal.fechas[f.clave] = { ...previa, fecha: f.prox_informe, confirmada: false, nombre: f.nombre, nota: `${nota}; estimada, la del informe (Yahoo aún no la da)`, fuente: `informe (${f.carpeta})` };
       } else if (todas.length) {
         // Sin fecha anunciada: la última publicada más un trimestre (EE. UU.) o un semestre (resto), aproximada.
         const d = new Date(Date.parse(todas.at(-1)) + (/\./.test(f.yahoo) ? 182 : 91) * 864e5).toISOString().slice(0, 10);
         if (d < HOY) continue;
-        cal.fechas[f.clave] = { fecha: d, confirmada: false, nombre: f.nombre, nota: `${nota}; APROXIMADA (últimos resultados el ${todas.at(-1)} + ${/\./.test(f.yahoo) ? 'un semestre' : 'un trimestre'}): la vigilancia la confirma`, fuente: 'Yahoo Finance (últimos resultados) + estimación' };
+        cal.fechas[f.clave] = { ...previa, fecha: d, confirmada: false, nombre: f.nombre, nota: `${nota}; APROXIMADA (últimos resultados el ${todas.at(-1)} + ${/\./.test(f.yahoo) ? 'un semestre' : 'un trimestre'}): la vigilancia la confirma`, fuente: 'Yahoo Finance (últimos resultados) + estimación' };
       } else continue;
       n++;
     }
   }
   if (n) writeFileSync(ruta, JSON.stringify(cal, null, 2) + '\n');
+  writeFileSync(join(RAIZ, RUTA_PUB), JSON.stringify(PUBL, null, 1) + '\n');
   return n;
 }
 
