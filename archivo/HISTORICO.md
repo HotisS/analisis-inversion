@@ -4,6 +4,10 @@
 
 **Qué se apunta aquí** (una entrada por cambio, la más reciente arriba, dos o tres líneas): cambios de método o de reglas, decisiones de cartera que sustituyen a otras, cambios de estructura del repo o del flujo de trabajo, y lo que se retira de `MEMORIA.md`, `cola.md` o `lecciones.md` cuando ya no está vigente. No se apuntan análisis sueltos (están en `seguimiento.xlsx` y en cada `diario.md`).
 
+## 16-oct-2026 · Cobertura única y escáner de grandes índices
+
+Pedido del usuario: que no se escape ninguna empresa con calidad y vigilar las entradas y salidas de los grandes índices. `herramientas/cobertura.mjs` hace el inventario único (`escaner/cobertura.json`): toda empresa con calidad queda enlazada con calendario de resultados, noticias, expediente, escáner y Excel; caduca a los 6 meses y avisa de resultados publicados que el análisis no recoge (`escaner/revisiones.json`). `herramientas/indices.mjs` guarda los componentes de 11 índices (altas, bajas y huecos con filtro previo de calidad). La vigilancia de las 9:25 revisa hasta 8 empresas de seguimiento por pasada y el semanal del domingo pone fechas e índices al día. Primeros cinco análisis salidos de los huecos (GTT, TMX, HKEX, Recordati, Accelleron): ninguno en compra robusta.
+
 ## 15-oct-2026 · Noticias → leads → candidatas (rastreador de noticias)
 
 Pedido del usuario: un rastreador de noticias inspirado en su radar-prensa que no tenga que leer y que dé leads de oportunidades. `noticias.mjs` guarda expedientes por empresa y por sector (carpeta privada), `leads.mjs` saca leads con reglas explícitas, cada lead pasa el Vup y la robustez y solo llega al usuario lo que acaba en compra robusta con calidad. `noticias-modelo.mjs` prepara el aprendizaje automático con validación preregistrada en vivo (no decide nada antes de mediados de enero de 2027). Procedimiento en `escaner/README.md`.

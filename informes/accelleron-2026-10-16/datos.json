@@ -1,0 +1,4568 @@
+{
+  "meta": {
+    "fecha_corte": "2026-10-16",
+    "divisa": "USD",
+    "divisa_cotizacion": "CHF",
+    "tipo_cambio": 1.2045,
+    "unidades": "millones",
+    "cierre_ejercicio_mes": 12,
+    "etiqueta_ejercicio": "fin",
+    "normas_contables": "US GAAP",
+    "formato_cuenta": "funcion",
+    "limitaciones": "Cuentas en millones de USD (US GAAP), la divisa en que publica la empresa; la acción cotiza en francos en la SIX. Precio: cierre del 15-oct-2026 en la SIX, 68,80 CHF [23], pasado a 82,87 USD con el cambio del BCE del 15-oct (1,2045 USD por CHF) [27]; Yahoo no tenía ese cierre y la sesión del 16-oct estaba abierta. Los precios de cierre de cada año se pasan a USD con el cambio del BCE de fin de año. Suiza no tiene XBRL público: las cuentas salen de los PDF de los informes anuales 2022-2025 y del semestral 2026 [1, 2, 3, 4, 5]. 2021 es un perímetro combinado de la etapa ABB (sin deuda propia ni costes de cotizada) [4]. La historia de cotización empieza el 3-oct-2022: solo hay tres cierres de año útiles para los múltiplos. La beta propia no sirve (−0,21 mensual a 4 años frente al SMI, 0,31-0,48 semanal) [20]: usamos 1,0. No hemos podido leer la transcripción de la conferencia del 1S26 (de pago). Las operaciones de directivos en Suiza son anónimas.",
+    "controles_explicados": [
+      {
+        "control": "Cambio de perímetro declarado (2022)",
+        "explicacion": "No hubo compra: es la escisión de ABB. El balance de 2021 es combinado y el de 2022 consolidado tras salir a bolsa: entran la deuda propia (323 M USD), la caja (189 M) y el activo de pensiones (77 M). Las ventas son del mismo negocio [3, 4]."
+      }
+    ],
+    "huecos": [
+      {
+        "seccion": "negocio",
+        "campo": "cartera de pedidos y peso del servicio en las ventas",
+        "tipo": "Complemento",
+        "intentos": "1) Informe anual 2025 y semestral 2026 (no publican pedidos ni el reparto producto/servicio); 2) presentaciones de resultados (solo crecimientos: producto ~30 %, servicio ~15 % en el 1S26); 3) Capital Markets Day 2022 (~75 % de ingresos ligados al servicio, dato viejo)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "trimestres",
+        "campo": "EBITDA y BPA del 1S24 y 2S24",
+        "tipo": "Complemento",
+        "intentos": "1) Informe semestral 2024 (no localizado en la web: enlace HTML sin PDF); 2) presentación del 1S24 y del 1S25 (PDF escaneado sin texto); 3) comparativas del semestral 2025 (no localizado)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sector",
+        "campo": "serie de tamaño del mercado de turbos >0,5 MW (producto y servicio) después de 2020",
+        "tipo": "Complemento",
+        "intentos": "1) Informe anual 2025 y presentaciones 2026 (sin tamaño de mercado); 2) estudios de mercado (solo turbos marinos nuevos: 850-875 M USD); 3) Capital Markets Day 2022 (solo 2020 y previsión a 2026 en gráfico)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "competencia",
+        "campo": "cuota de mercado de Accelleron y CR5",
+        "tipo": "Núcleo",
+        "intentos": "1) Informe anual y presentaciones (solo «n.º 1» y cuotas por aplicación); 2) Capital Markets Day 2022 (gráficos de reparto sin cifras legibles); 3) estudios de mercado (no dan cuotas)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "esg",
+        "campo": "calificaciones ESG (MSCI, Sustainalytics)",
+        "tipo": "Complemento",
+        "intentos": "1) Informe de sostenibilidad 2025 (solo SBTi y EcoVadis sin nota); 2) webs de MSCI y Sustainalytics (requieren registro); 3) prensa (sin dato)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "operaciones de consejeros y directivos de los últimos 12 meses",
+        "tipo": "Complemento",
+        "intentos": "1) Web de la empresa (página de operaciones de directivos sin tabla en el HTML); 2) registro de la SIX (operaciones anónimas: solo cargo e importe); 3) prensa suiza (sin noticias de compras o ventas relevantes)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "ratio de la remuneración del CEO sobre el coste medio por empleado",
+        "tipo": "Complemento",
+        "intentos": "1) Informe de remuneración (no lo publica); 2) gastos de personal del informe anual (no desglosados); 3) cálculo con empleados y gastos (dato de personal no disponible)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "comparables",
+        "campo": "EV/EBITDA de los próximos 12 meses de los comparables",
+        "tipo": "Complemento",
+        "intentos": "1) Yahoo (no da EBITDA estimado); 2) MarketScreener (de pago por comparable); 3) fichas sectoriales del repo (sin turbocompresores)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "transacciones",
+        "campo": "compras de fabricantes de turbocompresores con múltiplo",
+        "tipo": "Complemento",
+        "intentos": "1) Informes de Accelleron (OMT y OMC2 sin múltiplo); 2) prensa (no hay ventas de turbos grandes desde la escisión); 3) operaciones de equipos con servicio (Howden, Chart), usadas como aproximación",
+        "decision": "Calculado y marcado como estimación"
+      },
+      {
+        "seccion": "bolsa",
+        "campo": "posición corta",
+        "tipo": "Complemento",
+        "intentos": "1) SIX (Suiza no publica registro de cortos); 2) Stock Analysis (sin dato para la SIX); 3) prensa (sin dato)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "riesgos",
+        "campo": "efecto de una caída de la construcción naval en las ventas de 2009 o 2020",
+        "tipo": "Complemento",
+        "intentos": "1) Informes de Accelleron (empiezan en 2021); 2) informes anuales de ABB (no separan Turbocharging); 3) Capital Markets Day 2022 (sin serie anterior a 2020)",
+        "decision": "Omitido"
+      }
+    ]
+  },
+  "identificacion": {
+    "nombre": "Accelleron Industries AG",
+    "nombre_corto": "Accelleron",
+    "ticker": "ACLN",
+    "isin": "CH1169360919",
+    "mercado": "SIX Swiss Exchange",
+    "indice_referencia": "SMI (SMIM)",
+    "pais": "Suiza",
+    "pais_iso": "CH",
+    "sector": "Industria",
+    "industria": "Maquinaria industrial (turbocompresores)",
+    "sede": "Baden (Suiza)",
+    "fundacion": "1924",
+    "empleados": 3219,
+    "web": "https://accelleron.com",
+    "precio": 82.87,
+    "fecha_precio": "2026-10-15",
+    "acciones": 93.71,
+    "capitalizacion_publicada": null,
+    "free_float_pct": 99.2,
+    "max_52s": 109.01,
+    "min_52s": 73.11,
+    "volumen_medio_diario": "≈ 15,6 M CHF/día (3 meses; 209.524 acciones)",
+    "proximos_resultados": "2027-03-17 (estimada): Puesta por cobertura.mjs (2026-10-16) para que ninguna empresa con calidad quede sin seguimiento; estimada, la del informe (Yahoo aún no la da)"
+  },
+  "resumen": {
+    "recomendacion": "Mantener",
+    "conviccion": "Baja",
+    "justificacion_recomendacion": null,
+    "horizonte": "12 meses",
+    "sintesis": "**La recomendación y por qué.** Mantener, con convicción baja. El objetivo a 12 meses es de 73,60 USD (61,10 CHF), con una rentabilidad ponderada del −8,9 % y del +1,7 % en el caso base (con dividendo), frente a un precio de 82,87 USD (68,80 CHF); el valor intrínseco es de 46,08 USD (38,26 CHF), un 44,4 % por debajo, y el objetivo medio de los analistas, 98,37 USD (81,67 CHF), queda por encima incluso de nuestro alcista. La razón en una frase: es una empresa excelente a un precio que ya descuenta años de crecimiento por encima del 15 %. La convicción es baja porque la ponderada está a 1,1 puntos del umbral de venta (−10 %): un BPA de 2028e por debajo de 3,50 USD o un precio por encima de 69,64 CHF la llevarían a Vender.\n\n**El negocio.** Accelleron es el primer fabricante mundial de turbocompresores para motores de más de 0,5 MW, con más de 190.000 unidades en servicio que le dan recambios y revisiones durante 20-30 años [1, 10]. Gana un ROIC del 39,3 % frente a un WACC del 10,22 % (29,08 puntos de diferencia) y un margen EBITDA del 27,7 %, frente al ~17 % de sus comparables [13]. La prueba de sostenibilidad dice que **sí**: el crecimiento proyectado (7,9 % anual) está casi cubierto por la reinversión al ROIC actual (6,9 %) y el resto es precio, que no necesita capital; el foso y el poder de precios de 2025 lo respaldan.\n\n**Sector y ciclo.** El ciclo está a favor y ese es el riesgo: los astilleros tienen más de 4 años de cartera, las entregas de 2027-2028 serán récord y la generación para centros de datos en EE. UU. ya es casi el 9 % de las ventas [5, 6]. En 2026 el producto nuevo crece el doble que el servicio [6]: el negocio es hoy más cíclico que hace tres años.\n\n**Finanzas.** Ventas de 1.263,1 M USD en 2025 (+23,5 %) y del 1S26 +21,3 %, con margen de Operational EBITA estable en el 25-26 % [1, 5]. La conversión de caja baja (99 % en 2024, 88 % en 2025 y 58 % en el 1S26) y el capex sube al 5-6 % de las ventas en el pico del ciclo [6]. Deuda neta ajustada de 301 M USD (0,8 veces el EBITDA).\n\n**Equipo y gobierno.** Dirección estable que ha superado cada guía y consejo independiente [15]; resta que la dirección tiene muy pocas acciones y que la remuneración de 2025 solo sacó el 57,25 % de apoyo [16, 17, 18].\n\n**Valoración.** El DCF en dólares da 42,09 USD; con la prima del mercado, 53,70; los comparables por PER, 67,00 [13]. El DCF inverso dice que el precio exige un 27,0 % de crecimiento anual en 2027e-2032e frente al 6,3 % de nuestro base, o un margen del 46,5 %: el precio solo rinde un 6,9 % anual. Discrepamos del consenso en el múltiplo, no en el beneficio: nuestro BPA de 2028e está un 6,2 % por debajo, y el objetivo de los analistas equivale a ~25 veces frente a una mediana histórica corta de 20,8 [21].\n\n**Riesgos y catalizadores.** El mayor es el fin del ciclo naval tras 2028 (bajista: −37 % sobre el DCF base); el segundo, un frenazo de los centros de datos (−8 %). Próximo hito: resultados de 2026 el 17-mar-2027 [33].\n\n**Qué cambiaría la decisión.** Compraríamos por debajo de 46,08 USD (38,26 CHF) y venderíamos por encima de 83,88 USD (69,64 CHF), a un 1,2 % del precio. Pasaríamos a Vender si la guía de 2027 apunta a un crecimiento orgánico por debajo del 5 % o si el margen de Operational EBITA baja del 24 %.",
+    "tesis": "Accelleron es el antiguo negocio de turbos de ABB: el primer fabricante mundial de turbocompresores para motores grandes, con más de 190.000 unidades en servicio que dan recambios y revisiones durante décadas [1]. Desde la escisión de 2022 ha pasado de 781 M USD a 1.263 M de ventas con margen de Operational EBITA del 25 % y un ROIC del 39,3 %, gracias a un auge naval y a la generación para centros de datos en EE. UU. [1, 5].\n\nEl precio de 68,80 CHF (82,87 USD) cotiza a 21,4 veces el EBITDA y 23,9 veces el beneficio de los próximos 12 meses, con una prima del 20-50 % sobre sus comparables [13]. El DCF inverso dice que descuenta un crecimiento anual de las ventas del 27,0 % en 2027e-2032e o un margen del 46,5 %: el precio solo rinde un 6,9 % anual en dólares.\n\nEl mercado acierta en la calidad y, creemos, exagera la duración del crecimiento. Para invertir hay que creer que los centros de datos y la renovación de la flota mantendrán el crecimiento por encima del 15 % más allá de 2028, cuando la propia dirección dice que el ritmo de los centros de datos es incierto y que las actualizaciones marinas se estabilizan [5]. Nosotros proyectamos un 7,9 % de media, en línea con el consenso hasta 2028 [21].",
+    "vision_diferencial": {
+      "mercado_descuenta": "Un valor de crecimiento de calidad: crecimiento de dos dígitos durante años gracias a la IA (centros de datos) y a la descarbonización naval, y un múltiplo de ~24 veces el beneficio que se mantiene. Los analistas ponen el objetivo medio en 81,67 CHF, un 19 % por encima del precio [24].",
+      "nuestra_vision": "Un negocio excelente en la parte alta de su ciclo: el producto nuevo crece el doble que el servicio, la conversión de caja baja y el capex sube. Nuestro BPA de 2028e (3,66 USD) es solo un 6 % menor que el del consenso, pero no vemos razón para pagar más de ~22 veces un beneficio que puede caer si el ciclo naval gira en 2028.",
+      "por_que": "El precio ya ha caído un 24 % desde mayo sin un dato nuevo, lo que sugiere que el mercado empieza a dudar de la duración del ciclo. Si la guía de 2027 (17-mar) habla de normalización, el múltiplo tiende a la mediana de comparables (19,4 veces)."
+    },
+    "a_favor": [
+      "**Foso amplio**: n.º 1 mundial con >190.000 turbos en servicio durante 20-30 años [1].",
+      "**Rentabilidad muy alta**: ROIC del 39,3 % frente a un WACC del 10,22 %.",
+      "**Crecimiento con guía al alza**: ventas del 1S26 +21,3 % y guía orgánica elevada al 14-17 % [5].",
+      "**Balance sólido**: deuda neta ajustada de 0,8 veces el EBITDA y bono al 1,375 % hasta 2030 [1].",
+      "**Dirección que cumple**: ha superado su guía cada año desde la escisión [7]."
+    ],
+    "en_contra": [
+      "**Precio exigente**: el DCF inverso pide un 27,0 % de crecimiento anual; valor intrínseco de 46,08 USD (−44,4 %).",
+      "**Pico de ciclo**: entregas navales récord en 2027-2028 y producto nuevo creciendo el doble que el servicio [6].",
+      "**Caja a la baja**: conversión del 58 % en el 1S26 frente al 99 % de 2024 [5].",
+      "**Clientes concentrados**: dos clientes suman el 25 % de las ventas [1].",
+      "**Poca alineación de la dirección**: 66.839 acciones entre todo el comité ejecutivo [16]."
+    ],
+    "que_vigilar": "La tesis de Mantener depende de que el crecimiento se normalice hacia el 5-8 % a partir de 2028 sin hundir el margen. La señal de que estamos equivocados por arriba sería una guía de 2027 con crecimiento orgánico de dos dígitos y servicio acelerando (más del 15 %); por abajo, pedidos navales mundiales por debajo de las entregas o un margen de Operational EBITA por debajo del 24 %.",
+    "cambiaria_recomendacion": [
+      "Si el precio baja de 38,26 CHF (46,08 USD), pasaríamos a Comprar.",
+      "Si el precio sube por encima de 69,64 CHF (83,88 USD), la regla a 12 meses daría Vender.",
+      "Si la guía de 2027 (17-mar-2027) da un crecimiento orgánico inferior al 5 %, pasaríamos a Vender.",
+      "Si el margen de Operational EBITA de 2026 baja del 24 %, revisaríamos el BPA y probablemente pasaríamos a Vender.",
+      "Si el servicio crece por encima del 15 % dos semestres seguidos, subiríamos el caso base."
+    ],
+    "kpis_seguimiento": [
+      {
+        "kpi": "Crecimiento orgánico de las ventas",
+        "nivel_actual": "17,2 % (1S26)",
+        "umbral_alerta": "< 5 % en la guía de 2027",
+        "por_que": "Mide el ciclo naval y los centros de datos."
+      },
+      {
+        "kpi": "Margen de Operational EBITA",
+        "nivel_actual": "25,7 % (1S26)",
+        "umbral_alerta": "< 24 %",
+        "por_que": "Mezcla producto/servicio y precio."
+      },
+      {
+        "kpi": "Conversión de caja libre",
+        "nivel_actual": "58 % (1S26)",
+        "umbral_alerta": "< 70 % en el año",
+        "por_que": "Circulante del producto nuevo."
+      },
+      {
+        "kpi": "Ventas ligadas a centros de datos",
+        "nivel_actual": "~9 % (1S26)",
+        "umbral_alerta": "Caída en un semestre",
+        "por_que": "Motor de High Speed y de la prima del precio."
+      },
+      {
+        "kpi": "Pedidos navales frente a entregas (Clarksons)",
+        "nivel_actual": "Pedidos por encima de entregas",
+        "umbral_alerta": "Pedidos < entregas dos trimestres",
+        "por_que": "Anticipa el producto nuevo de 2028."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "historia": {
+    "resumen": "Accelleron nace del negocio de turbocompresores de Brown Boveri (BBC), que fabricó su primer turbo en Baden en 1924 y pasó a ABB con la fusión de 1988 [1]. Durante décadas fue ABB Turbocharging, una división muy rentable con base instalada mundial. ABB decidió en 2022 escindirla y repartir sus acciones a los accionistas: cotiza en la SIX desde el 3-oct-2022 [1]. Desde entonces montó funciones propias (130 M USD de costes en 2022-2024), compró la inyección de combustible de OMT (2023) y OMC2 (2024) y entró en la generación para centros de datos; en 2026 cambió de presidente (Monika Krüsi sustituyó a Oliver Riemenschneider) [1, 5].",
+    "hitos": [
+      {
+        "anio": "1924",
+        "hito": "Primer turbocompresor de Brown Boveri (BBC) en Baden, Suiza [1]."
+      },
+      {
+        "anio": "1988",
+        "hito": "Fusión de ASEA y BBC: el negocio pasa a ABB Turbocharging [1]."
+      },
+      {
+        "anio": "2022",
+        "hito": "Escisión de ABB y salida a la SIX el 3 de octubre; nombre Accelleron [1]."
+      },
+      {
+        "anio": "2023",
+        "hito": "Compra de OMT (inyección de combustible, Turín) por 106,6 M USD [1]."
+      },
+      {
+        "anio": "2024",
+        "hito": "Compras de OMC2 y TNM; bono de 180 M CHF al 1,375 % hasta 2030 [1]."
+      },
+      {
+        "anio": "2025",
+        "hito": "Ventas de 1.263 M USD (+23,5 %); entrada fuerte en generación para centros de datos [1]."
+      },
+      {
+        "anio": "2026",
+        "hito": "Recompra de 100 M CHF; guía elevada al 14-17 % orgánico; primeros pedidos del ACCX300-L; nueva presidenta [5, 6]."
+      }
+    ],
+    "confianza": "Alta"
+  },
+  "negocio": {
+    "segmentos": [
+      {
+        "nombre": "Medium & Low Speed",
+        "descripcion": "Turbocompresores de 0,6 a 30 MW (y 80+ MW en baja velocidad) para motores de barco y centrales, más servicio, ferrocarril, inyección de combustible (OMT, OMC2) y la división digital.",
+        "tipo_resultado": "EBITA",
+        "historico": [
+          {
+            "periodo": "2021",
+            "ingresos": 550.6,
+            "resultado": 138
+          },
+          {
+            "periodo": "2022",
+            "ingresos": 566.7,
+            "resultado": 150.9
+          },
+          {
+            "periodo": "2023",
+            "ingresos": 664.9,
+            "resultado": 163.8
+          },
+          {
+            "periodo": "2024",
+            "ingresos": 773.5,
+            "resultado": 199.1
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 929.6,
+            "resultado": 239.4
+          }
+        ]
+      },
+      {
+        "nombre": "High Speed",
+        "descripcion": "Turbocompresores de 0,5 a 5 MW para motores de generación (respaldo y generación principal de centros de datos), compresión de gas, barcos y maquinaria fuera de carretera, y su servicio.",
+        "tipo_resultado": "EBITA",
+        "historico": [
+          {
+            "periodo": "2021",
+            "ingresos": 205.9,
+            "resultado": 49.6
+          },
+          {
+            "periodo": "2022",
+            "ingresos": 213.8,
+            "resultado": 41
+          },
+          {
+            "periodo": "2023",
+            "ingresos": 249.9,
+            "resultado": 59.3
+          },
+          {
+            "periodo": "2024",
+            "ingresos": 249,
+            "resultado": 62.8
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 333.5,
+            "resultado": 81.6
+          }
+        ]
+      }
+    ],
+    "geografias": [
+      {
+        "nombre": "Asia, Oriente Medio y África (China 13,0 %, Japón 7,2 %)",
+        "peso_pct": 43.1
+      },
+      {
+        "nombre": "Europa (Suiza 2,8 %)",
+        "peso_pct": 34.9
+      },
+      {
+        "nombre": "América (EE. UU. 16,9 %)",
+        "peso_pct": 22
+      }
+    ],
+    "geografias_criterio": "destino",
+    "kpis": [
+      {
+        "kpi": "Ventas ligadas a centros de datos (% del total)",
+        "valor_anterior": "~5 % (1S25)",
+        "valor_actual": "algo menos del 9 % (1S26)",
+        "variacion": "+4 pp",
+        "comentario": "Generación principal a gas y respaldo diésel en EE. UU. [5, 6]."
+      },
+      {
+        "kpi": "Potencia instalada de generación principal para centros de datos",
+        "valor_anterior": "<2 GW (1S25)",
+        "valor_actual": "~5 GW (1S26)",
+        "variacion": "×2,5",
+        "comentario": "El respaldo, estable en ~3 GW [6]."
+      },
+      {
+        "kpi": "Margen de Operational EBITA",
+        "valor_anterior": "25,6 % (2024)",
+        "valor_actual": "25,4 % (2025); 25,7 % (1S26)",
+        "variacion": "−0,2 pp / +0,2 pp",
+        "comentario": "Guía 2026: 25-26 % [1, 5]."
+      },
+      {
+        "kpi": "Conversión de caja libre sobre beneficio",
+        "valor_anterior": "99 % (2024)",
+        "valor_actual": "88 % (2025); 58 % (1S26)",
+        "variacion": "−11 pp",
+        "comentario": "Más circulante con el producto nuevo [1, 5]."
+      },
+      {
+        "kpi": "Base instalada de turbocompresores",
+        "valor_anterior": ">180.000 (2022)",
+        "valor_actual": ">190.000 (2025)",
+        "variacion": "+6 %",
+        "comentario": "Fuente del negocio de servicio [1, 10]."
+      },
+      {
+        "kpi": "Pedidos de la serie A100-L/A200-L",
+        "valor_anterior": "n.d.",
+        "valor_actual": ">10.000 pedidos; 110 GW instalados (1S26)",
+        "variacion": null,
+        "comentario": "Su sucesora ACCX300-L tiene ya pedidos para más de 50 barcos [6]."
+      }
+    ],
+    "descripcion": "Accelleron diseña, fabrica y mantiene turbocompresores para motores de 0,5 a más de 80 MW: el turbo usa los gases de escape para comprimir el aire de entrada y sube la potencia y la eficiencia del motor [1]. Sus clientes directos son los fabricantes de motores (que montan el turbo en barcos, centrales, compresores de gas y locomotoras) y, durante la vida del motor, los armadores y operadores, a los que vende recambios, revisiones, actualizaciones y contratos de servicio integral desde más de 100 estaciones [1]. Fabrica en Suiza (Baden, la mayor planta y sede), Italia (inyección de combustible) y China, con un fabricante bajo contrato en Corea [1]. Más de la mitad de las ventas son marinas y más del 40 % de energía [6].",
+    "como_gana_dinero": "Vende el turbo nuevo con poco margen y gana durante 20-30 años con el servicio: recambios propios, revisiones obligatorias y actualizaciones, que dan más margen que el producto (la empresa dice que su margen bruto bajó en 2025 porque el producto creció más que el servicio) [1]. Los ingresos dependen del número de motores nuevos (construcción naval, centros de datos) y de las horas de funcionamiento de la base instalada, que marca las revisiones. El margen depende de la mezcla producto/servicio, del precio (subidas en 2025-2026 «directas e indirectas») y de la absorción de costes fijos en Suiza [6]. Hay apalancamiento operativo: los gastos comerciales y generales crecieron un 4 % en 2025 con ventas +23,5 % [1].",
+    "clientes": "Muy concentrados en el producto: un cliente de High Speed (un fabricante de motores para generación) fue el 15 % de las ventas de 2025 y otro de Medium & Low Speed el 10 % [1]. En el servicio la base es muy dispersa (miles de armadores y centrales). Los contratos de servicio integral, a varios años, crecen en número [6]. Poder de precios demostrado: en 2025 absorbió aranceles e inflación de garantías y mantuvo el margen de EBITA en el 25,4 % con ventas +23,5 %, y en el 1S26 parte del crecimiento orgánico vino de precios [1, 6]."
+  },
+  "sector": {
+    "definicion": "El mercado relevante es el de turbocompresores para motores de más de 0,5 MW (barcos, generación eléctrica, compresión de gas, ferrocarril y maquinaria pesada) y su servicio a lo largo de 20-30 años de vida, no el de turbos de automóvil. Accelleron lo divide en Medium & Low Speed (~1.300 M USD en 2020, de producto y servicio) y High Speed (~720 M USD) [10]. Como contraste, los estudios de mercado que solo miden turbos marinos nuevos dan 850-875 M USD en 2024 [11, 12]: no incluyen el servicio ni la energía. Usamos el perímetro de la empresa (~2.000 M USD en 2020), que es el que cuadra con su cuota; no hay serie pública después de 2020.",
+    "tamano": "≈ 2.000 M USD en 2020 entre Medium & Low Speed (~1.300 M) y High Speed (~720 M), producto y servicio [10]; solo turbos marinos nuevos: 875 M USD en 2024 [11].",
+    "unidad_serie": "millones de USD (turbos marinos nuevos, Global Market Insights y SkyQuest)",
+    "serie": [
+      {
+        "anio": "2024",
+        "tamano": 875
+      },
+      {
+        "anio": "2025",
+        "tamano": 890
+      },
+      {
+        "anio": "2033e",
+        "tamano": 1390
+      }
+    ],
+    "tcac_historico_pct": null,
+    "tcac_previsto_pct": 5.3,
+    "cr5_pct": null,
+    "estructura": "Concentrada",
+    "drivers": [
+      {
+        "driver": "Construcción naval",
+        "efecto": "+",
+        "horizonte": "Cíclico",
+        "evidencia": "La cartera de pedidos de los astilleros cubre más de 4 años de producción y las entregas de 2027-2028 serán récord en toneladas (Clarksons) [6]."
+      },
+      {
+        "driver": "Centros de datos en EE. UU. (generación principal a gas y respaldo)",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Ventas ligadas a centros de datos del ~5 % al ~9 % del total en un año; potencia instalada de generación principal ×2,5 hasta ~5 GW [5, 6]."
+      },
+      {
+        "driver": "Utilización de la flota y servicio",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Más de 190.000 turbocompresores en servicio; contratos de servicio integral al alza y alta utilización en mercante y cruceros [1, 5]."
+      },
+      {
+        "driver": "Descarbonización naval (OMI, ETS de la UE, FuelEU)",
+        "efecto": "+/−",
+        "horizonte": "Estructural",
+        "evidencia": "Impulsa actualizaciones y turbos para combustibles alternativos, pero el aplazamiento del Marco Net Zero de la OMI frenó la demanda a corto plazo [5, 7]."
+      },
+      {
+        "driver": "Compresión de gas en Norteamérica",
+        "efecto": "+",
+        "horizonte": "Cíclico",
+        "evidencia": "Más gasoductos y exportación de GNL: remanufactura de turbos en alza en 2026 [6]."
+      },
+      {
+        "driver": "Electrificación y motores sin combustión",
+        "efecto": "−",
+        "horizonte": "Estructural",
+        "evidencia": "Amenaza a 15-30 años en buques cortos y en respaldo; hoy los motores grandes no tienen sustituto en barcos de alta mar [1, 10]."
+      }
+    ],
+    "porter": [
+      {
+        "fuerza": "Rivalidad",
+        "intensidad": 2,
+        "justificacion": "Tres grandes en turbos de baja y media velocidad (Accelleron, MAN/Everllence y Mitsubishi) más Napier y KBB; márgenes de EBITA del 25 % en Accelleron muestran poca guerra de precios [1, 10]."
+      },
+      {
+        "fuerza": "Poder de los clientes",
+        "intensidad": 3,
+        "justificacion": "Los fabricantes de motores son pocos y grandes: un cliente de High Speed pesa el 15 % de las ventas y otro de Medium & Low Speed el 10 %; algunos (MAN) fabrican sus propios turbos [1]."
+      },
+      {
+        "fuerza": "Poder de los proveedores",
+        "intensidad": 2,
+        "justificacion": "Fundición, mecanizado y aleaciones especiales con varios proveedores; los aranceles y la inflación de costes en 2025 se repercutieron en parte [1]."
+      },
+      {
+        "fuerza": "Amenaza de entrada",
+        "intensidad": 1,
+        "justificacion": "Hay que homologar cada turbo con el motor y con las sociedades de clasificación, y tener una red de servicio en más de 100 puertos: ningún entrante relevante en décadas [10]."
+      },
+      {
+        "fuerza": "Amenaza de sustitutos",
+        "intensidad": 2,
+        "justificacion": "Baterías y pilas de combustible solo sustituyen en buques cortos; los combustibles alternativos siguen necesitando motor y turbo [1, 10]."
+      }
+    ],
+    "ciclo": {
+      "posicion": "Expansión",
+      "comentario": "La construcción naval está en máximos de cartera (más de 4 años de cobertura) y las entregas de 2027-2028 serán récord [6]; la generación para centros de datos crece por la falta de potencia en la red de EE. UU. [6]. El negocio de servicio amortigua: en la crisis de 2020, con los cruceros parados, Accelleron (entonces ABB Turbocharging) siguió con márgenes altos según su Capital Markets Day, aunque no hay cifras públicas separadas de 2008-09 y 2020 [10]. Lo que más se mueve con el ciclo es el producto nuevo, que ahora crece el doble que el servicio [6]."
+    },
+    "regulacion": "La OMI aprobó en 2023 reducir las emisiones de la navegación un 20-30 % en 2030 y llegar a cero hacia 2050; el Marco Net Zero que debía ponerle precio al carbono se aplazó en 2025, lo que frenó retrofit y actualizaciones [1, 5]. En la UE, el comercio de emisiones se aplica a la navegación desde 2024 (100 % de las emisiones desde 2026) y FuelEU Maritime obliga a reducir la intensidad de carbono del combustible desde 2025 [1]. Las normas de emisiones (IMO Tier III, EPA) exigen turbos de más presión, lo que favorece a quien tiene la tecnología de dos etapas [10].",
+    "tendencias": "Tres cambios favorecen a Accelleron: motores de combustibles alternativos (GNL, metanol, amoniaco), que necesitan turbos nuevos y actualizaciones [1]; la generación distribuida con motores a gas para centros de datos y redes con renovables [6]; y el servicio digital y los contratos de servicio integral, que fijan al cliente durante la vida del motor [1]. La amenaza a largo plazo es la electrificación de barcos cortos y la sustitución del respaldo diésel por baterías; la IA aparece sobre todo como demanda (centros de datos) [6].",
+    "confianza": "Media"
+  },
+  "competencia": {
+    "cuota_pct": null,
+    "posicion": "1.º mundial en turbocompresores para motores de más de 0,5 MW según la empresa, en baja, media y alta velocidad de gas [1, 10]. En generación principal y balance con motores medianos tiene «bastante más del 50 %»; en respaldo diésel de alta velocidad, menos del 5 % [14]. Ganó cuota en barcos nuevos y en motores diésel de alta velocidad en 2025 [1].",
+    "competidores": [
+      {
+        "nombre": "Everllence (antes MAN Energy Solutions; turbos TCA/TCR)",
+        "pais": "Alemania",
+        "ticker": null,
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Fabricante de motores de dos tiempos que también hace turbos; compite y es cliente a la vez [10]."
+      },
+      {
+        "nombre": "Mitsubishi Heavy Industries (turbos MET)",
+        "pais": "Japón",
+        "ticker": "7011.T",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Fuerte en baja velocidad para astilleros japoneses y coreanos; no publica cifras del negocio de turbos [10]."
+      },
+      {
+        "nombre": "Napier Turbochargers",
+        "pais": "Reino Unido",
+        "ticker": null,
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Turbos de media velocidad para barcos, ferrocarril y generación [10]."
+      },
+      {
+        "nombre": "KBB (Kompressorenbau Bannewitz)",
+        "pais": "Alemania",
+        "ticker": null,
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Turbos de media velocidad para motores de gas y ferrocarril [10]."
+      },
+      {
+        "nombre": "IHI",
+        "pais": "Japón",
+        "ticker": "7013.T",
+        "ingresos": 10408,
+        "cuota_pct": null,
+        "margen_ebit_pct": 11.8,
+        "comentario": "Grupo diversificado; turbos sobre todo de automóvil y algunos marinos; margen del grupo [13]."
+      },
+      {
+        "nombre": "Garrett Motion",
+        "pais": "EE. UU.",
+        "ticker": "GTX",
+        "ingresos": 3754,
+        "cuota_pct": null,
+        "margen_ebit_pct": 14.8,
+        "comentario": "Turbos de automóvil y camión (menos de 0,5 MW): referencia de lo que vale un turbo de serie frente a uno a medida [13]."
+      }
+    ],
+    "foso": {
+      "veredicto": "Amplio",
+      "tendencia": "Estable",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 1,
+          "evidencia": "La red de más de 100 estaciones de servicio vale más cuanta más base instalada hay, pero no es un efecto de red entre usuarios [1]."
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 5,
+          "evidencia": "El turbo se homologa con el motor y dura 20-30 años; los recambios y el servicio quedan con el fabricante original: ~75 % de los ingresos ligados al servicio en 2021 [1]."
+        },
+        {
+          "fuente": "Intangibles (marca, patentes, licencias)",
+          "puntuacion": 4,
+          "evidencia": "Cien años de tecnología (desde BBC en 1924), turbos de dos etapas y para combustibles alternativos; I+D del 5,4 % de las ventas [1, 2]."
+        },
+        {
+          "fuente": "Ventaja en costes",
+          "puntuacion": 3,
+          "evidencia": "Unos 10.000 turbos al año y escala en compras; margen de EBITA del 25 % frente al ~15 % de los fabricantes de motores [1, 7]."
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 4,
+          "evidencia": "Mercado de ~2.000 M USD repartido entre tres grandes: poco atractivo para un entrante que tendría que montar red de servicio global [1]."
+        }
+      ]
+    },
+    "amenazas": "Tres amenazas, todas lentas. Primera, que los fabricantes de motores integren el turbo (MAN ya lo hace) o presionen precios aprovechando que dos clientes son el 25 % de las ventas [1]. Segunda, la transición energética: si los barcos nuevos pasan a propulsión eléctrica o a pilas de combustible, la base instalada envejecerá sin reponerse; hoy no ocurre en alta mar (probabilidad baja a 10 años) [10]. Tercera, competidores chinos ligados a los astilleros, que ya fabrican motores bajo licencia: probabilidad media en barcos de gama baja.",
+    "confianza": "Media"
+  },
+  "financieros": {
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 756.5,
+        "coste_ventas": 400.8,
+        "gastos_generales": 121,
+        "ebitda": 209.1,
+        "amortizaciones": 23.5,
+        "ebit": 185.6,
+        "resultado_financiero": -1.4,
+        "bai": 184.2,
+        "impuestos": 39.9,
+        "minoritarios": 5.8,
+        "beneficio_neto": 138.5,
+        "gastos_financieros": null,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 1.48,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 93.6
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 780.5,
+        "coste_ventas": 427.7,
+        "gastos_generales": 149.6,
+        "ebitda": 179.8,
+        "amortizaciones": 22.7,
+        "ebit": 157,
+        "resultado_financiero": -0.6,
+        "bai": 156.5,
+        "impuestos": 26.7,
+        "minoritarios": 7,
+        "beneficio_neto": 122.8,
+        "gastos_financieros": 3.8,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": 37,
+        "bpa": 1.31,
+        "dpa": 0.79,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 93.8
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 914.9,
+        "coste_ventas": 528.9,
+        "gastos_generales": 192.5,
+        "ebitda": 171.4,
+        "amortizaciones": 30.1,
+        "ebit": 141.3,
+        "resultado_financiero": -4.1,
+        "bai": 137.2,
+        "impuestos": 27.2,
+        "minoritarios": 8.8,
+        "beneficio_neto": 101.2,
+        "gastos_financieros": 8.4,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": 77.4,
+        "bpa": 1.08,
+        "dpa": 1.01,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 93.8
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 1022.5,
+        "coste_ventas": 551.3,
+        "gastos_generales": 177.8,
+        "ebitda": 274.2,
+        "amortizaciones": 36.3,
+        "ebit": 237.9,
+        "resultado_financiero": -12.1,
+        "bai": 225.8,
+        "impuestos": 46.4,
+        "minoritarios": 9.3,
+        "beneficio_neto": 170.1,
+        "gastos_financieros": 9.1,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": 15.8,
+        "bpa": 1.81,
+        "dpa": 1.38,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 93.8
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 1263.1,
+        "coste_ventas": 710,
+        "gastos_generales": 185.4,
+        "ebitda": 342.3,
+        "amortizaciones": 39.4,
+        "ebit": 302.9,
+        "resultado_financiero": -0.3,
+        "bai": 302.6,
+        "impuestos": 58.8,
+        "minoritarios": 10.8,
+        "beneficio_neto": 232.9,
+        "gastos_financieros": 5.8,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 2.48,
+        "dpa": 1.89,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 93.9
+      }
+    ],
+    "ltm": {
+      "periodo": "LTM jun-26",
+      "fecha_fin": "2026-06-30",
+      "ingresos": 1392.4,
+      "ebitda": 386.2,
+      "ebit": 347.6,
+      "beneficio_neto": 267.1,
+      "bpa": 2.84,
+      "dpa": 1.89,
+      "dpa_extraordinario": 0,
+      "fcf": 217.9,
+      "participadas_en_ebitda": null,
+      "no_recurrentes_en_ebitda": null
+    },
+    "cambios_perimetro": [
+      {
+        "periodo": "2023",
+        "descripcion": "Compra de OMT (inyección de combustible, Turín) el 20-jul-2023 por 106,6 M USD: entra medio año en la cuenta y entero en el balance [3]."
+      },
+      {
+        "periodo": "2024",
+        "descripcion": "Compras de OMC2 (Brescia) y TNM el 29-ago-2024: un tercio del año en la cuenta [2]."
+      }
+    ],
+    "comentario": "Las ventas pasaron de 756,5 M USD en 2021 a 1.263,1 M en 2025 (+13,7 % anual), con 2025 a +23,5 % (+20,9 % orgánico) por cuota en turbocompresores para barcos nuevos, servicio marino (actualizaciones y retrofit) y la generación para centros de datos en EE. UU. [1]. Las compras (OMT en 2023; OMC2 y TNM en 2024) aportaron 5,6 puntos en 2024 y 0,8 en 2025 [1]. El margen bruto bajó de 46,1 % a 43,8 % en 2025 por más producto nuevo (menos margen que el servicio), aranceles y garantías, y se compensó con apalancamiento de gastos: los gastos comerciales y generales cayeron del 17,4 % al 14,7 % de las ventas [1]. El 1S26 siguió igual: ventas +21,3 % (+17,2 % orgánico), margen bruto del 44,3 % y beneficio +31,5 % [5]. 2022-2023 no son comparables con el resto: llevan 37,0 M y 77,4 M de costes de montar las funciones propias tras salir de ABB [3, 4]; 2021 es un perímetro combinado de ABB sin deuda ni costes de cotizada [4].",
+    "ajustes": "Usamos las cifras publicadas en US GAAP. La empresa da un «Operational EBITA» que suma los costes no operativos y la amortización de intangibles comprados: 321,0 M en 2025 (25,4 %), frente a un EBIT publicado de 302,9 M [1]. Como no recurrentes solo se devuelven los costes de puesta en marcha tras la escisión, que no se repiten: 37,0 M en 2022, 77,4 M en 2023 y 15,8 M en 2024 [1, 2, 3]; los 12,3 M de 2025 (7,7 M de otros costes no operativos y 4,5 M de compras) se dejan dentro porque costes de compras y otros ajustes aparecen casi todos los años. El resultado financiero incluye un ingreso por pensiones no operativo de 13,7 M en 2025 (11,9 M en 2024) que compensa los intereses (5,8 M) y las diferencias de cambio [1]. El BPA es el publicado (diluido = básico).",
+    "confianza": "Alta"
+  },
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "1S24",
+        "ingresos": 506,
+        "crecimiento_pct": 12.8,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": null,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "2S24",
+        "ingresos": 516.5,
+        "crecimiento_pct": 10.8,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": null,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1S25",
+        "ingresos": 608,
+        "crecimiento_pct": 20.2,
+        "crecimiento_organico_pct": null,
+        "ebitda": 162.4,
+        "margen_ebitda_pct": 26.7,
+        "bpa": 1.17,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "2S25",
+        "ingresos": 655.1,
+        "crecimiento_pct": 26.8,
+        "crecimiento_organico_pct": null,
+        "ebitda": 179.9,
+        "margen_ebitda_pct": 27.5,
+        "bpa": 1.31,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1S26",
+        "ingresos": 737.3,
+        "crecimiento_pct": 21.3,
+        "crecimiento_organico_pct": 17.2,
+        "ebitda": 206.3,
+        "margen_ebitda_pct": 28,
+        "bpa": 1.53,
+        "vs_consenso": "Superior"
+      }
+    ],
+    "ultima_presentacion": "En marzo de 2026 la dirección presentó 2025 como un año de récord por encima de su guía y dio para 2026 un crecimiento orgánico del 9-14 % con margen de Operational EBITA del 25-26 %, avisando de que el aplazamiento del Marco Net Zero de la OMI frenaba los retrofit y actualizaciones [7]. En agosto el tono subió: elevó el crecimiento orgánico al 14-17 % y mantuvo el margen, con el producto creciendo ~30 % y el servicio ~15 % [5, 6]. Los centros de datos pasaron del ~5 % al «algo menos del 9 %» de las ventas; la potencia instalada en generación principal se duplicó a ~5 GW, mientras el respaldo diésel siguió plano porque los fabricantes de motores priorizan la generación principal [5, 6]. Dos novedades del discurso: el capex sube al 5-6 % de las ventas en 2026 porque las fábricas suizas están cerca del límite, con un enfoque «mantener-invertir-comprar» para no sobredimensionar [6]; y la dirección admite que «el ritmo y la duración» del crecimiento ligado a centros de datos son inciertos y que las actualizaciones marinas se estabilizarán [5]. El flujo de caja libre convirtió solo el 58 % del beneficio (70 % un año antes) por clientes, existencias e impuestos [5]. No publica cartera de pedidos ni el peso exacto del servicio; no hemos podido leer la transcripción de la conferencia (Seeking Alpha la tiene de pago), así que no sabemos qué preguntaron los analistas.",
+    "confianza": "Media"
+  },
+  "balance": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "activo_total": 686.1,
+        "activo_corriente": 436.9,
+        "pasivo_corriente": 326.1,
+        "pasivo_total": 379,
+        "fondo_comercio": null,
+        "intangibles": 10.7,
+        "inmovilizado_material": 145.6,
+        "existencias": 154.8,
+        "clientes": 182.6,
+        "proveedores": 76.8,
+        "activos_contrato": 14.3,
+        "pasivos_contrato": 22.6,
+        "caja": 73.2,
+        "deuda_financiera": 92.1,
+        "arrendamientos": 0,
+        "patrimonio_neto": 288.8,
+        "minoritarios": 18.2,
+        "reservas": null
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 981.6,
+        "activo_corriente": 614.9,
+        "pasivo_corriente": 286.4,
+        "pasivo_total": 685,
+        "fondo_comercio": null,
+        "intangibles": 10.5,
+        "inmovilizado_material": 150.1,
+        "existencias": 186.3,
+        "clientes": 199.6,
+        "proveedores": 130.7,
+        "activos_contrato": 16.4,
+        "pasivos_contrato": 23.6,
+        "caja": 189.4,
+        "deuda_financiera": 322.8,
+        "arrendamientos": 0,
+        "patrimonio_neto": 283.8,
+        "minoritarios": 12.7,
+        "reservas": 122.8
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 1206.8,
+        "activo_corriente": 763.3,
+        "pasivo_corriente": 327,
+        "pasivo_total": 903.9,
+        "fondo_comercio": null,
+        "intangibles": 82.7,
+        "inmovilizado_material": 183.6,
+        "existencias": 251.2,
+        "clientes": 222.4,
+        "proveedores": 153.5,
+        "activos_contrato": 18.8,
+        "pasivos_contrato": 24.8,
+        "caja": 234.1,
+        "deuda_financiera": 477.6,
+        "arrendamientos": 0,
+        "patrimonio_neto": 287.3,
+        "minoritarios": 15.6,
+        "reservas": 224
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 1233.8,
+        "activo_corriente": 765.8,
+        "pasivo_corriente": 300.8,
+        "pasivo_total": 884.6,
+        "fondo_comercio": null,
+        "intangibles": 109.5,
+        "inmovilizado_material": 196.8,
+        "existencias": 242.7,
+        "clientes": 205.7,
+        "proveedores": 110.7,
+        "activos_contrato": 20.8,
+        "pasivos_contrato": 34,
+        "caja": 272.5,
+        "deuda_financiera": 478.6,
+        "arrendamientos": 0,
+        "patrimonio_neto": 331.9,
+        "minoritarios": 17.3,
+        "reservas": 317.5
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 1540.7,
+        "activo_corriente": 982,
+        "pasivo_corriente": 373.7,
+        "pasivo_total": 1042.4,
+        "fondo_comercio": null,
+        "intangibles": 117.2,
+        "inmovilizado_material": 246.5,
+        "existencias": 306.8,
+        "clientes": 278.6,
+        "proveedores": 148.7,
+        "activos_contrato": 15.9,
+        "pasivos_contrato": 55.3,
+        "caja": 356,
+        "deuda_financiera": 543.5,
+        "arrendamientos": 0,
+        "patrimonio_neto": 477.2,
+        "minoritarios": 21.1,
+        "reservas": 422
+      }
+    ],
+    "vencimientos": [
+      {
+        "anio": "2026",
+        "importe": 0.7
+      },
+      {
+        "anio": "2028",
+        "importe": 302
+      },
+      {
+        "anio": "2030",
+        "importe": 229
+      }
+    ],
+    "liquidez": "Caja de 252,9 M USD a 30-jun-2026 más 100 M CHF de crédito revolvente sin disponer (de un préstamo sindicado de 450 M CHF con UBS) [1, 5].",
+    "rating": "Sin rating público (el bono de 180 M CHF se colocó sin calificación) [1].",
+    "coste_deuda_pct": 1.2,
+    "vida_media_anios": 2.9,
+    "otros_pasivos": "Arrendamientos operativos de 46,2 M USD (US GAAP: su gasto ya está dentro del EBITDA, así que no van al puente) [1]. Plan de pensiones suizo con superávit: activos de 633,9 M frente a obligaciones de 564,6 M a fin de 2025 (activo neto de 69,3 M) [1]. Provisiones de 60,7 M, de ellas 46,9 M de garantías, que subieron con fuerza en 2025 (+18,9 M de dotación por nuevas garantías y revisiones) por el volumen de producto nuevo [1]. Los pasivos de contrato (55,3 M) son anticipos de clientes que se compensan con entregas: van al circulante. La deuda está en francos (préstamo SARON y bono al 1,375 % hasta 2030) y tiene cláusulas de impago cruzado; no hay covenants de apalancamiento publicados [1].",
+    "comentario": "La deuda neta bajó de 244 M USD a fin de 2023 a 187,6 M a fin de 2025 (0,5 veces el EBITDA) y subió a 278,9 M en junio de 2026 por el dividendo de 178,9 M pagado en mayo [1, 5]. La deuda bruta (543,5 M) es toda en francos: su valor en dólares sube cuando el franco se aprecia (de 478,6 M a 543,5 M en 2025 sin pedir más) [1]. El circulante comercial (existencias + clientes − proveedores) pasó del 30 % de las ventas en 2024 al 34,6 % en 2025, por clientes (+35 %) y existencias (+26 %) que crecen con el producto nuevo [1]. El patrimonio es bajo para el tamaño del negocio porque la escisión dejó a ABB 332 M de transferencias en 2021-2022 [3, 4]: el ROE y el ROIC salen altos también por eso.",
+    "confianza": "Alta"
+  },
+  "flujos": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 163.3,
+        "capex": 28.9,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 0,
+        "desinversiones": 1.1,
+        "dividendos": 153.8,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 133.4,
+        "capex": 34.4,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 0,
+        "desinversiones": 0.3,
+        "dividendos": 178.4,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 145.2,
+        "capex": 36.2,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 92.8,
+        "desinversiones": 0.1,
+        "dividendos": 86.7,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 216.1,
+        "capex": 38.5,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 58.8,
+        "desinversiones": 0.1,
+        "dividendos": 88.2,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 272.7,
+        "capex": 58.8,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 4.6,
+        "desinversiones": 0.4,
+        "dividendos": 143.5,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      }
+    ],
+    "comentario": "De 2021 a 2025 el flujo operativo sumó 930,7 M USD frente a 765,5 M de beneficio atribuido, y el capex 196,8 M (4,4 % de las ventas en 2025, 2,6-4,2 % antes) [1, 2, 3, 4]. La conversión de 2025 fue del 88 % del beneficio (99 % en 2024) por el aumento de clientes y existencias [1, 7]; en el 1S26, del 58 % [5]. 2021 y 2022 llevan 153,8 M y 178,4 M de transferencias a ABB antes y durante la escisión, que anotamos como dividendos porque son caja entregada al antiguo dueño [4]. Las compras de OMT (92,8 M netos) y de OMC2/TNM (58,8 M) se pagaron con caja y deuda [2, 3]. La empresa no separa capex de mantenimiento y de crecimiento; para 2026-2028 dice que ~50 % es renovación de equipos, ~20 % mejora de fábricas e I+D en Suiza y ~30 % capacidad nueva [6]: con la amortización en el 3 % de las ventas, el capex de mantenimiento ronda el 3 % (estimación propia).",
+    "confianza": "Alta"
+  },
+  "calidad": {
+    "auditor": "KPMG AG",
+    "anios_auditor": 5,
+    "opinion": "Favorable",
+    "comentario": "Cuentas en US GAAP auditadas por KPMG desde la constitución en 2021 (y antes como auditor de ABB) [1]. Lo que más afecta a la lectura es la escisión: 2021 es un perímetro combinado sin costes de cotizada ni deuda, y 2022-2024 llevan 130 M de costes de puesta en marcha que la empresa saca de su Operational EBITA [1, 2, 3, 4]. No capitaliza I+D (67,9 M de gasto en 2025, el 5,4 % de las ventas) [1]. La provisión de garantías subió de 32,3 M a 46,9 M en 2025: una señal de que el volumen de producto nuevo trae más reclamaciones, que conviene vigilar [1]. El ingreso por pensiones (13,7 M) es contable y no operativo; la empresa no lo mete en el EBITA [1]. La remuneración en acciones es pequeña (3,3 M en 2025) [1]. Lectura de los indicadores del motor: el Altman Z sale muy alto por el poco patrimonio y la mucha caja; el Piotroski es alto con márgenes y caja al alza; el Beneish de 2023 se distorsiona por la compra de OMT y los costes de la escisión.",
+    "senales": [
+      {
+        "senal": "Provisión de garantías +45 % en 2025",
+        "nivel": "Media",
+        "comentario": "Dotación de 18,9 M frente a 5,7 M en 2024; ligada al mayor volumen de producto nuevo [1]."
+      },
+      {
+        "senal": "Conversión de caja a la baja (99 % → 88 % → 58 % en el 1S26)",
+        "nivel": "Media",
+        "comentario": "Clientes y existencias crecen más que las ventas en el producto nuevo [1, 5]."
+      },
+      {
+        "senal": "Dos clientes concentran el 25 % de las ventas",
+        "nivel": "Media",
+        "comentario": "Un cliente de High Speed el 15 % (12 % en 2024) y otro de Medium & Low Speed el 10 % [1]."
+      },
+      {
+        "senal": "Años 2021-2024 afectados por la escisión",
+        "nivel": "Baja",
+        "comentario": "Perímetro combinado en 2021 y costes de puesta en marcha en 2022-2024, explicados y conciliados [1, 2, 3, 4]."
+      }
+    ],
+    "confianza": "Alta"
+  },
+  "rentabilidad": {
+    "comentario": "Accelleron crea mucho valor: el ROIC fue del 39,3 % en 2025 frente a un WACC del 10,22 %, y no ha bajado del 35,9 % desde 2021. Dos matices. Primero, el capital invertido es pequeño (685,8 M USD) en parte porque la escisión dejó a ABB 332 M de transferencias en 2021-2022 y porque el fondo de comercio de la época ABB no está en el balance [3, 4]: el ROIC «de verdad» de un comprador sería menor. Segundo, lo mueve sobre todo el margen (EBIT del 24 % de las ventas), no la rotación (0,84 veces en 2024). El ROIC incremental de 2021-2025, del 33,6 %, dice que el crecimiento reciente (y las compras de OMT y OMC2) ha rendido casi como el negocio de siempre. Frente a los comparables queda arriba: Wärtsilä 21 %, Atlas Copco 19,7 %, Cummins 16,1 % y Sulzer 13,3 % [13].",
+    "confianza": "Alta"
+  },
+  "capital": {
+    "politica": "Marco de asignación de capital de marzo de 2026: invertir en crecimiento (capex de ~5-7 % de las ventas), dividendo «atractivo y creciente» (1,50 CHF por 2025, +20 %, un 76 % del beneficio), compras selectivas y apalancamiento conservador (0,5 veces) [7]. En mayo de 2026 empezó una recompra de hasta 100 M CHF en dos años para amortizar acciones: a 13-oct-2026 llevaba 333.396 acciones (0,35 % del capital) por 25,5 M CHF a 76,48 CHF de media [5, 7]. La política de la salida a bolsa era repartir el 50-70 % del beneficio [10].",
+    "adquisiciones": [
+      {
+        "anio": "2023",
+        "objetivo": "OMT (Officine Meccaniche Torino): inyección de combustible para motores marinos de dos tiempos, Italia",
+        "importe": 106.6,
+        "ev_ebitda": null,
+        "financiacion": "Caja y préstamo de 50 M CHF",
+        "resultado": "Integrada en Medium & Low Speed; la inyección de combustible facturó 97,6 M en 2025 tras sumar OMC2; amplía la oferta a motores de combustibles alternativos [1, 3]."
+      },
+      {
+        "anio": "2024",
+        "objetivo": "OMC2 Diesel (Brescia; inyección para motores de cuatro tiempos) y TNM (servicio)",
+        "importe": 58.8,
+        "ev_ebitda": null,
+        "financiacion": "Caja",
+        "resultado": "Deterioro de 1,0 M en relaciones con clientes de OMC2 en 2024 y amortización acelerada en 2025 por la salida de clientes [1, 2]."
+      }
+    ],
+    "comentario": "La dirección ha asignado bien el capital desde la escisión: con el EBIT pasando de 157 M a 303 M y un capex del 4-5 % de las ventas, ha financiado dos compras pequeñas, ha subido el dividendo de 0,73 a 1,50 CHF y ha bajado la deuda neta a 0,5 veces el EBITDA [1, 7]. El punto débil es la inyección de combustible: OMC2 ya tuvo un deterioro y salida de clientes [1, 2], y las compras de 165 M han aportado unos 98 M de ventas sin que la empresa publique su margen. La recompra de 100 M CHF es pequeña (1,3 % del valor en bolsa) y llega a precios de 70-86 CHF, por encima de los de hace un año [5]. El reparto del 76 % del beneficio deja poco margen si el capex sube al 6 % y la conversión sigue en el 60-90 %.",
+    "confianza": "Alta"
+  },
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "Daniel Bischofberger",
+        "cargo": "Consejero delegado (CEO)",
+        "desde": "2022",
+        "participacion_pct": 0.03,
+        "trayectoria": "Dirigía ABB Turbocharging desde 2016 y llevó la escisión; con él las ventas han pasado de 780 M USD (2022) a 1.263 M (2025) y el EBIT de 157 M a 303 M [15, 16]. 32.017 acciones y 43.155 PSU sin consolidar a fin de 2025 [16]."
+      },
+      {
+        "nombre": "Adrian Grossenbacher",
+        "cargo": "Director financiero (CFO)",
+        "desde": "2022",
+        "participacion_pct": 0.01,
+        "trayectoria": "Antes, controller global de grupo de producto en ABB [15]. Ha bajado la deuda neta a 0,5 veces el EBITDA y refinanció con un bono de 180 M CHF al 1,375 % [15, 16]. 8.677 acciones [16]."
+      },
+      {
+        "nombre": "Monika Krüsi",
+        "cargo": "Presidenta del consejo (desde abr-2026)",
+        "desde": "2022",
+        "participacion_pct": 0.01,
+        "trayectoria": "Consejera independiente desde 2022 y presidenta de la comisión de auditoría hasta 2026; consultora y antigua auditora y asesora fiscal [15, 17]. 8.138 acciones [16]."
+      },
+      {
+        "nombre": "Roland Schwarz",
+        "cargo": "Presidente de la división Service",
+        "desde": "2022",
+        "participacion_pct": 0.01,
+        "trayectoria": "Dirige el servicio, el negocio de más margen; 8.496 acciones [15, 16]."
+      },
+      {
+        "nombre": "Christoph Rofka",
+        "cargo": "Presidente de la división Medium Speed, Low Speed y Rail",
+        "desde": "2022",
+        "participacion_pct": 0.01,
+        "trayectoria": "Responsable del segmento que más vende (929,6 M USD en 2025, margen de EBITA del 25,8 %) [15, 16]."
+      },
+      {
+        "nombre": "Herbert Müller",
+        "cargo": "Presidente de la división High Speed",
+        "desde": "2022",
+        "participacion_pct": 0.01,
+        "trayectoria": "Ha llevado High Speed de 213,8 M USD (2022) a 333,5 M (2025) con la entrada en centros de datos [15, 16]."
+      }
+    ],
+    "historial_guidance": [
+      {
+        "anio": "2022 (plan a medio plazo)",
+        "guia": "Crecimiento orgánico del 2-4 % anual y margen de Operational EBITA del 23-26 % [19]",
+        "real": "Crecimiento de las ventas del 17,1 % (2023), 11,8 % (2024) y 23,5 % (2025); margen del 25,6 % y 25,4 % en 2024-2025 [2, 7]",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2025",
+        "guia": "Crecimiento de las ventas del 16-19 % a tipo constante (guía elevada durante el año) [7]",
+        "real": "+21,6 % a tipo constante (+20,9 % orgánico); margen del 25,4 % [7]",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2026",
+        "guia": "Crecimiento orgánico del 9-14 % (marzo), elevado al 14-17 % en agosto; margen del 25-26 % [5, 7]",
+        "real": "1S26: +17,2 % orgánico y margen del 25,7 % [5]",
+        "cumplida": "Parcial"
+      }
+    ],
+    "comentario": "Equipo estable desde la escisión: el CEO, el CFO y los presidentes de división siguen desde 2022; en 2025 el comité bajó de siete a seis miembros al suprimir el puesto de director técnico [15]. La credibilidad es alta: ha superado cada año su guía y su plan a medio plazo de 2022 se quedó corto [2, 7, 19]. El punto débil es la alineación: la dirección tiene en conjunto 66.839 acciones (unos 5,6 M USD), muy poco para el tamaño de la empresa, aunque la exigencia de tener acciones obliga a acumular [16]. No hay plan de sucesión público; el relevo de la presidencia en 2026 se anunció con la convocatoria de la junta [9].",
+    "confianza": "Alta"
+  },
+  "gobierno": {
+    "consejo": [
+      {
+        "nombre": "Monika Krüsi",
+        "cargo": "Presidenta (desde abr-2026)",
+        "tipo": "Independiente",
+        "desde": "2022",
+        "comisiones": "Nombramientos y Remuneración (hasta 2026); presidió Auditoría hasta 2026"
+      },
+      {
+        "nombre": "Bo Cerup-Simonsen",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2022",
+        "comisiones": "Nombramientos y Remuneración"
+      },
+      {
+        "nombre": "Stefano Pampalone",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2022",
+        "comisiones": "Nombramientos y Remuneración (desde 2026); Auditoría"
+      },
+      {
+        "nombre": "Detlef Trefzger",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2022",
+        "comisiones": "Auditoría"
+      },
+      {
+        "nombre": "Reto Suter",
+        "cargo": "Consejero (nuevo en 2026)",
+        "tipo": "Independiente",
+        "desde": "2026",
+        "comisiones": "n.d."
+      },
+      {
+        "nombre": "Mieke Van de Capelle",
+        "cargo": "Consejera (nueva en 2026)",
+        "tipo": "Independiente",
+        "desde": "2026",
+        "comisiones": "Nombramientos y Remuneración"
+      }
+    ],
+    "presidente_ceo_separados": true,
+    "presidente_ejecutivo": false,
+    "consejero_coordinador": false,
+    "una_accion_un_voto": true,
+    "operaciones_vinculadas_relevantes": false,
+    "variable_ligado_rentabilidad": true,
+    "auditoria_independiente": true,
+    "insiders_sin_operaciones": false,
+    "accionista_control": false,
+    "presidente_vinculado_control": false,
+    "cambios_cupula_24m": 1,
+    "voto_remuneracion_pct": 57.25,
+    "voto_remuneracion_contra_pct": 42.75,
+    "voto_remuneracion_contra_libre_pct": null,
+    "voto_cupula_pct": null,
+    "remuneracion_ceo": {
+      "anio": "2025",
+      "total": 2.19,
+      "fijo": 1.12,
+      "variable_corto": 0.61,
+      "variable_largo": 0.46,
+      "ratio_salario_medio": null
+    },
+    "remuneracion": "El CEO cobró 1,74 M CHF en 2025 (2,19 M USD al cambio de fin de año): 0,60 M de fijo, 0,29 M de prestaciones, 0,48 M de variable anual y 0,37 M de largo plazo [16]. El variable anual depende de ventas (30 %), margen de Operational EBITA (20 %), flujo de caja operativo (20 %) y objetivos individuales y de sostenibilidad; el largo plazo, de PSU a tres años con BPA (40 %), rentabilidad relativa para el accionista (40 %) y emisiones de CO₂ por ventas (20 %); desde 2026, BPA y rentabilidad relativa al 50 % cada uno [16]. Hay cláusulas de malus y recuperación [16]. **En la junta de 2025 el informe de remuneración solo obtuvo el 57,25 % (42,75 % en contra)** porque los inversores no veían clara la relación entre pago y resultados; el consejo habló con ellos, publicó más detalle de los objetivos y en 2026 el informe sacó el 94,99 % [16, 17, 18].",
+    "accionistas": [
+      {
+        "nombre": "UBS Fund Management (Switzerland)",
+        "pct": 5.06,
+        "tipo": "Fondo",
+        "variacion": "Comunicada a la SIX; sin cambio relevante en 2025 [15]."
+      },
+      {
+        "nombre": "BlackRock Inc.",
+        "pct": 5.06,
+        "tipo": "Gestora",
+        "variacion": "Comunicada a la SIX [15]."
+      },
+      {
+        "nombre": "Swisscanto Fondsleitung",
+        "pct": 4.99,
+        "tipo": "Fondo",
+        "variacion": "Comunicada a la SIX [15]."
+      },
+      {
+        "nombre": "Norges Bank",
+        "pct": 3.46,
+        "tipo": "Fondo soberano",
+        "variacion": "Comunicada a la SIX [15]."
+      },
+      {
+        "nombre": "Autocartera y recompra",
+        "pct": 0.84,
+        "tipo": "Autocartera",
+        "variacion": "453.751 acciones para planes de empleados a 30-jun-2026 y 333.396 recompradas para amortizar a 13-oct-2026 [5]."
+      }
+    ],
+    "insiders": [],
+    "control_y_defensas": "No hay accionista de control: el capital está repartido entre institucionales (cuatro por encima del 3 %, ninguno del 6 %) [15]. Una acción, un voto; los estatutos limitan la inscripción de nominees al 3 % del capital salvo acuerdo, lo habitual en Suiza, y no hay límite de voto para el accionista directo [15]. No hay cláusulas de exclusión ni de elevación del umbral de OPA (opting-out u opting-up) [15]. Los planes de incentivos de la dirección tienen aceleración en caso de cambio de control [15]. No constan operaciones vinculadas relevantes. Todo el consejo es independiente; la presidencia cambió en abril de 2026 [15, 17].",
+    "alertas": [
+      "Voto en contra del 42,75 % del informe de remuneración en la junta de 2025 (corregido en 2026 con un 94,99 % a favor) [16, 17, 18].",
+      "Cambio de presidente del consejo en abril de 2026 (Oliver Riemenschneider deja el puesto tras la etapa de escisión) [9, 17].",
+      "Las operaciones de directivos en la SIX son anónimas: no hemos podido comprobar compras o ventas de los últimos 12 meses."
+    ],
+    "confianza": "Media"
+  },
+  "consenso": {
+    "guidance": "Guía 2026 dada el 12-mar-2026 y elevada el 27-ago-2026: crecimiento orgánico de las ventas del 14-17 % (antes 9-14 %) y margen de Operational EBITA del 25-26 % (confirmado) [5]. Capex de ~5-6 % de las ventas en 2026 [5]. No hay plan a medio plazo vigente: el de 2022 (crecimiento orgánico del 2-4 % y margen del 23-26 %) quedó superado y la empresa no ha publicado otro [5, 21].",
+    "estimaciones": [
+      {
+        "periodo": "2026e",
+        "ingresos": 1500,
+        "ebitda": 427.5,
+        "ebit": 382.7,
+        "bpa": 3.13,
+        "dpa": 2.14,
+        "fuente": "MarketScreener, 11 analistas [21]"
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 1671,
+        "ebitda": 480.9,
+        "ebit": 426.9,
+        "bpa": 3.55,
+        "dpa": 2.38,
+        "fuente": "MarketScreener [21]"
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 1804,
+        "ebitda": 524.7,
+        "ebit": 458.6,
+        "bpa": 3.9,
+        "dpa": 2.69,
+        "fuente": "MarketScreener [21]"
+      }
+    ],
+    "recomendaciones": {
+      "n_analistas": 12,
+      "comprar": 4,
+      "mantener": 7,
+      "vender": 1,
+      "po_medio": 98.37,
+      "po_min": 74.68,
+      "po_max": 113.22
+    },
+    "revisiones": "MarketScreener (11 analistas) da el consenso completo en USD; cash.ch (AWP, 12 analistas) da el reparto y los objetivos en francos: 4 comprar, 7 neutral y 1 vender, objetivo medio de 81,67 CHF (98,37 USD), entre 62 y 94 CHF [21, 22, 24]. Tras los resultados de agosto las estimaciones de ventas subieron con la guía (UBS anticipaba revisiones al alza) [32], pero desde el 1-sep-2026 cash.ch marca una tendencia negativa de los analistas, con un paso a «vender» el 29-sep y otro a «neutral» el 17-sep, y BPA esperados algo menores que siete semanas antes [24]. El objetivo medio en dólares de MarketScreener (101,04 USD) es más alto que el de AWP en francos convertidos: son muestras distintas [22, 24].",
+    "base_ebitda": "NIIF",
+    "ajuste_ebitda_pct_ventas": null,
+    "confianza": "Media"
+  },
+  "bolsa": {
+    "tipo_rentabilidad": "de precio (sin dividendos)",
+    "rentabilidades": [
+      {
+        "periodo": "En el año",
+        "accion_pct": 13.8,
+        "indice_pct": 8.2,
+        "sector_pct": 7.7
+      },
+      {
+        "periodo": "1 año",
+        "accion_pct": 10,
+        "indice_pct": 13,
+        "sector_pct": 6.5
+      },
+      {
+        "periodo": "3 años (anual.)",
+        "accion_pct": 43.8,
+        "indice_pct": 9.6,
+        "sector_pct": 19.2
+      }
+    ],
+    "anual": [
+      {
+        "anio": "2023",
+        "accion_pct": 37.2,
+        "indice_pct": 3.8
+      },
+      {
+        "anio": "2024",
+        "accion_pct": 77.8,
+        "indice_pct": 4.2
+      },
+      {
+        "anio": "2025",
+        "accion_pct": 31.8,
+        "indice_pct": 14.4
+      }
+    ],
+    "beta": 1,
+    "volatilidad_pct": 35.7,
+    "max_drawdown_pct": -39.4,
+    "tramo_drawdown": "2022-09-30 → 2022-10-12",
+    "posicion_corta_pct": null,
+    "comentario": "Desde la salida a bolsa a 19,15 CHF (cierre de 2022) la acción ganó un 37,2 % en 2023, un 77,8 % en 2024 y un 31,8 % en 2025, frente al 3,8-14,4 % del SMI [20]: el mercado premió que las ventas pasaran de 781 M USD a 1.263 M y la entrada en centros de datos [1]. En 2026 marcó máximo de 90,50 CHF el 7-may y desde entonces ha caído un 24 %, con un −14,6 % en el mes a 29-jul y un −15 % desde los resultados del 27-ago, pese a que subieron la guía [20, 32, 38]. Lo que ha cambiado desde agosto es el sentimiento de los analistas (una venta y una rebaja a neutral en septiembre) y, probablemente, la rotación fuera de los valores ligados a la inversión en IA; no hay dato nuevo de la empresa [24]. La volatilidad de un año es del 35,7 %, alta para una industrial. Sin registro público de posiciones cortas en Suiza.",
+    "contexto": {
+      "movimiento": {
+        "fecha": "2026-10-16",
+        "var_1m_pct": -3.9,
+        "var_3m_pct": -7.7,
+        "var_6m_pct": -17.6,
+        "var_12m_pct": 9,
+        "dist_max_52s_pct": -21.9,
+        "dist_min_52s_pct": 13.2,
+        "dist_max_historico_pct": -21.9,
+        "tendencia": "bajista",
+        "volatilidad_60d_pct": 38.6,
+        "avisos": []
+      },
+      "movimientos_fuertes": [
+        {
+          "periodo": "abr-may 2026",
+          "var_pct": 19.8,
+          "causa": "Recuperación tras las caídas de marzo (−5,0 % el 19-mar y −5,7 % el 27-mar) hasta el máximo de 90,50 CHF del 7-may; en esas semanas hubo junta, dividendo de 1,50 CHF y anuncio de la recompra, sin un dato que lo explique solo [20, 28, 38].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "jul-2026",
+          "var_pct": -14.6,
+          "causa": "Caída en el mes a 29-jul (−6,4 % el 7-jul) antes de los resultados; no hemos encontrado noticia de la empresa en las fuentes revisadas [20, 38].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "sep-2026",
+          "var_pct": -5.9,
+          "causa": "Día de −5,9 % el 14-sep y de −5,3 % el 31-ago; en septiembre llegaron una rebaja a neutral (17-sep) y una recomendación de venta (29-sep) [20, 24].",
+          "veredicto": "no cambia",
+          "condicion": null
+        }
+      ],
+      "noticias": [
+        {
+          "fecha": "2026-08-27",
+          "tipo": "resultados",
+          "hecho": "Resultados del 1S26 por encima de lo esperado (ventas +21,3 %, margen de Operational EBITA del 25,7 %) y guía de crecimiento orgánico elevada al 14-17 % [5, 32].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-09-17",
+          "tipo": "recomendación",
+          "hecho": "Un analista rebaja a neutral (AWP Analyser) [24].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-09-29",
+          "tipo": "recomendación",
+          "hecho": "Primera recomendación de venta, presentada por la prensa suiza como «ruptura de un tabú» con un valor estrella; tendencia negativa de los analistas desde el 1-sep [24].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-10-13",
+          "tipo": "accionista de referencia",
+          "hecho": "Recompra en curso: 333.396 acciones (0,35 %) por 25,5 M CHF de un programa de 100 M CHF hasta 2028 [28].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2027-03-17",
+          "tipo": "resultados",
+          "hecho": "Próximos resultados: informe anual de 2026 el 17-mar-2027 [33].",
+          "veredicto": "no cambia",
+          "condicion": null
+        }
+      ],
+      "proximos_resultados": "2027-03-17",
+      "veredicto": "no cambia",
+      "condicion": null,
+      "comentario": "La acción está en tendencia bajista (8,3 % por debajo de su media de 200 sesiones y −21,9 % desde el máximo), con una caída del 15 % desde los resultados de agosto que no explica ningún dato de la empresa: la guía subió [5, 38]. Las noticias son de analistas (rebaja y venta en septiembre) y no cambian la tesis. No hay colocaciones, ampliaciones ni litigios; los próximos resultados son el 17-mar-2027, a más de 15 días [33]. Para una recomendación de Mantener el contexto no cambia nada."
+    },
+    "confianza": "Media"
+  },
+  "multiplos_historicos": {
+    "serie": [
+      {
+        "anio": "2022",
+        "precio_cierre": 20.74,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2023",
+        "precio_cierre": 31.34,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": true
+      },
+      {
+        "anio": "2024",
+        "precio_cierre": 51.55,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2025",
+        "precio_cierre": 77.65,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "La historia es corta: cotiza desde octubre de 2022 y solo hay tres cierres útiles; 2023 se excluye porque su BPA (1,08 USD) lleva 77,4 M de costes de puesta en marcha tras la escisión [3]. Con esa salvedad, el EV/EBITDA de los últimos 12 meses (21,4 veces) está en la parte alta de su rango y un 23 % por encima de su media, y el PER de los últimos 12 meses (29,2 veces) en línea con su media de 28,5. Lo estructural es que el mercado ha pasado a pagar a Accelleron como a una empresa de crecimiento: la acción se ha multiplicado por 3,6 desde la salida (19,15 a 68,80 CHF) mientras el BPA se multiplicaba por 1,9 [1, 20]."
+  },
+  "comparables": {
+    "criterio": "Diez cotizadas de equipos para motores, barcos y energía con negocio de servicio: Wärtsilä (motores marinos y de generación, cliente y rival en servicio), Burckhardt (compresores para barcos y gas, mismo modelo de base instalada), Garrett Motion (único fabricante puro de turbos cotizado, pero de automóvil), Cummins y Caterpillar (motores de generación para centros de datos), Rolls-Royce (motores de avión y mtu), IHI (turbos y maquinaria), Alfa Laval (equipos marinos), Atlas Copco y Sulzer (máquinas rotativas con servicio). MAN/Everllence, Mitsubishi Heavy (diversificada) y Napier no cotizan aparte. Cifras de Yahoo del 16-oct-2026 en USD [13]; el PER de Rolls-Royce se corrige de peniques a libras y su ROIC se omite (patrimonio negativo).",
+    "empresas": [
+      {
+        "nombre": "Wärtsilä",
+        "ticker": "WRT1V.HE",
+        "pais": "FI",
+        "capitalizacion": 19152,
+        "ev_ventas": 2.18,
+        "ev_ebitda_ltm": 13.9,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 22.2,
+        "crecimiento_pct": 6.2,
+        "margen_ebitda_pct": 15.7,
+        "roic_pct": 21,
+        "dn_ebitda": -1.86,
+        "fcf_yield_pct": 7.8
+      },
+      {
+        "nombre": "Burckhardt Compression",
+        "ticker": "BCHN.SW",
+        "pais": "CH",
+        "capitalizacion": 1956,
+        "ev_ventas": 1.28,
+        "ev_ebitda_ltm": 8.3,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 16.5,
+        "crecimiento_pct": 0.5,
+        "margen_ebitda_pct": 15.4,
+        "roic_pct": 31.1,
+        "dn_ebitda": -1.62,
+        "fcf_yield_pct": 7.8
+      },
+      {
+        "nombre": "Garrett Motion",
+        "ticker": "GTX",
+        "pais": "US",
+        "capitalizacion": 4559,
+        "ev_ventas": 1.54,
+        "ev_ebitda_ltm": 8.8,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 10.9,
+        "crecimiento_pct": 3.7,
+        "margen_ebitda_pct": 17.6,
+        "roic_pct": 64.6,
+        "dn_ebitda": 1.88,
+        "fcf_yield_pct": 8
+      },
+      {
+        "nombre": "Cummins",
+        "ticker": "CMI",
+        "pais": "US",
+        "capitalizacion": 73338,
+        "ev_ventas": 2.25,
+        "ev_ebitda_ltm": 14.8,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 15.5,
+        "crecimiento_pct": 9.7,
+        "margen_ebitda_pct": 15.2,
+        "roic_pct": 16.1,
+        "dn_ebitda": 0.89,
+        "fcf_yield_pct": 4.6
+      },
+      {
+        "nombre": "Caterpillar",
+        "ticker": "CAT",
+        "pais": "US",
+        "capitalizacion": 338155,
+        "ev_ventas": 4.97,
+        "ev_ebitda_ltm": 22.1,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 22.6,
+        "crecimiento_pct": 11.4,
+        "margen_ebitda_pct": 22.5,
+        "roic_pct": 14.2,
+        "dn_ebitda": 1.98,
+        "fcf_yield_pct": 2.7
+      },
+      {
+        "nombre": "Rolls-Royce",
+        "ticker": "RR.L",
+        "pais": "GB",
+        "capitalizacion": 150595,
+        "ev_ventas": 4.8,
+        "ev_ebitda_ltm": 20.7,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 27.1,
+        "crecimiento_pct": 11.1,
+        "margen_ebitda_pct": 23.2,
+        "roic_pct": null,
+        "dn_ebitda": -0.33,
+        "fcf_yield_pct": 3.6
+      },
+      {
+        "nombre": "IHI",
+        "ticker": "7013.T",
+        "pais": "JP",
+        "capitalizacion": 16963,
+        "ev_ventas": 1.75,
+        "ev_ebitda_ltm": 10.2,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 16.3,
+        "crecimiento_pct": 6,
+        "margen_ebitda_pct": 17.1,
+        "roic_pct": 17.1,
+        "dn_ebitda": 0.73,
+        "fcf_yield_pct": 1.1
+      },
+      {
+        "nombre": "Alfa Laval",
+        "ticker": "ALFA.ST",
+        "pais": "SE",
+        "capitalizacion": 23887,
+        "ev_ventas": 3.5,
+        "ev_ebitda_ltm": 16.9,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 22.6,
+        "crecimiento_pct": 12.1,
+        "margen_ebitda_pct": 20.7,
+        "roic_pct": 14.4,
+        "dn_ebitda": 0.69,
+        "fcf_yield_pct": 2.7
+      },
+      {
+        "nombre": "Atlas Copco",
+        "ticker": "ATCO-A.ST",
+        "pais": "SE",
+        "capitalizacion": 98738,
+        "ev_ventas": 5.83,
+        "ev_ebitda_ltm": 22,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 26.5,
+        "crecimiento_pct": 16.1,
+        "margen_ebitda_pct": 26.5,
+        "roic_pct": 19.7,
+        "dn_ebitda": 0.27,
+        "fcf_yield_pct": 2.6
+      },
+      {
+        "nombre": "Sulzer",
+        "ticker": "SUN.SW",
+        "pais": "CH",
+        "capitalizacion": 7046,
+        "ev_ventas": 1.71,
+        "ev_ebitda_ltm": 10.8,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 15.9,
+        "crecimiento_pct": 4.5,
+        "margen_ebitda_pct": 15.8,
+        "roic_pct": 13.3,
+        "dn_ebitda": 0.28,
+        "fcf_yield_pct": 3.1
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "Accelleron cotiza muy por encima de la mediana de sus comparables: 21,4 veces el EBITDA de los últimos 12 meses frente a 14,4 y 23,9 veces el beneficio de los próximos 12 meses frente a 19,4. La prima tiene base: margen EBITDA del 27,7 % frente a la mediana de ~17 %, ROIC del 39,3 % y crecimiento esperado de ~11 % frente a ~6 % [13]. Solo Atlas Copco (26,5 veces) y Rolls-Royce (27,1) cotizan a un PER parecido, con crecimiento comparable. Con la mediana de PER de los próximos 12 meses la acción valdría 67,00 USD (−19,2 %); con la de EV/EBITDA, 53,90. Usaríamos el PER, porque el EV/EBITDA castiga a una empresa con poca inversión; aun así, cotiza con una prima del 20-25 % sobre el grupo."
+  },
+  "transacciones": {
+    "operaciones": [
+      {
+        "fecha": "2022-11",
+        "objetivo": "Howden (compresores y ventiladores de proceso con servicio)",
+        "comprador": "Chart Industries",
+        "ev": 4400,
+        "ev_ventas": null,
+        "ev_ebitda": 12.9,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "EBITDA ajustado de 12 meses a ago-2022; 8,5 veces con 175 M USD de sinergias [29]."
+      },
+      {
+        "fecha": "2019-05",
+        "objetivo": "Howden (Air & Gas Handling de Colfax)",
+        "comprador": "KPS Capital Partners",
+        "ev": 1800,
+        "ev_ventas": null,
+        "ev_ebitda": 9,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Estimación propia: 1.800 M USD entre ~200 M de EBITDA ajustado de 12 meses publicado por Colfax [30]."
+      },
+      {
+        "fecha": "2025-07",
+        "objetivo": "Chart Industries (equipos criogénicos y compresores)",
+        "comprador": "Baker Hughes",
+        "ev": 13600,
+        "ev_ventas": null,
+        "ev_ebitda": 9,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "~9 veces el EBITDA 2025e con 325 M USD de sinergias de costes [31]."
+      },
+      {
+        "fecha": "2023-07",
+        "objetivo": "OMT (inyección de combustible para motores marinos)",
+        "comprador": "Accelleron",
+        "ev": 106.6,
+        "ev_ventas": null,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Precio con 6,2 M de pago aplazado; múltiplo no publicado [3]."
+      }
+    ],
+    "confianza": "Baja",
+    "comentario": "No hay ventas recientes de fabricantes de turbos grandes: el negocio salió de ABB por escisión, sin precio de control. Las referencias son equipos industriales con servicio (Howden, Chart), pagados a 9-13 veces el EBITDA [29, 30, 31]: muy por debajo de las 21,4 veces a las que cotiza Accelleron, así que no sostienen una prima de control sobre el precio de hoy. Sin accionista de control ni defensas, Accelleron podría ser objetivo de un fabricante de motores o de capital privado, pero con un valor empresa de 8.257 M USD y ese múltiplo es improbable; por eso las transacciones no pesan en la síntesis."
+  },
+  "dcf": {
+    "anios": [
+      {
+        "periodo": "2026e",
+        "crecimiento_pct": 18,
+        "margen_ebitda_pct": 27.8,
+        "amortizacion_pct_ventas": 2.8,
+        "capex_pct_ventas": 5.5,
+        "nwc_pct_ventas": 31.5,
+        "tasa_impositiva_pct": 20,
+        "fijo": true
+      },
+      {
+        "periodo": "2027e",
+        "crecimiento_pct": 11,
+        "margen_ebitda_pct": 28,
+        "amortizacion_pct_ventas": 2.9,
+        "capex_pct_ventas": 5.5,
+        "nwc_pct_ventas": 31.5,
+        "tasa_impositiva_pct": 20,
+        "fijo": false
+      },
+      {
+        "periodo": "2028e",
+        "crecimiento_pct": 8,
+        "margen_ebitda_pct": 28,
+        "amortizacion_pct_ventas": 3,
+        "capex_pct_ventas": 5,
+        "nwc_pct_ventas": 31.5,
+        "tasa_impositiva_pct": 20,
+        "fijo": false
+      },
+      {
+        "periodo": "2029e",
+        "crecimiento_pct": 6,
+        "margen_ebitda_pct": 27.8,
+        "amortizacion_pct_ventas": 3.1,
+        "capex_pct_ventas": 4.5,
+        "nwc_pct_ventas": 31.5,
+        "tasa_impositiva_pct": 20,
+        "fijo": false
+      },
+      {
+        "periodo": "2030e",
+        "crecimiento_pct": 5,
+        "margen_ebitda_pct": 27.5,
+        "amortizacion_pct_ventas": 3.2,
+        "capex_pct_ventas": 4,
+        "nwc_pct_ventas": 31.5,
+        "tasa_impositiva_pct": 20,
+        "fijo": false
+      },
+      {
+        "periodo": "2031e",
+        "crecimiento_pct": 4,
+        "margen_ebitda_pct": 27.5,
+        "amortizacion_pct_ventas": 3.3,
+        "capex_pct_ventas": 3.8,
+        "nwc_pct_ventas": 31.5,
+        "tasa_impositiva_pct": 20,
+        "fijo": false
+      },
+      {
+        "periodo": "2032e",
+        "crecimiento_pct": 3.5,
+        "margen_ebitda_pct": 27.5,
+        "amortizacion_pct_ventas": 3.4,
+        "capex_pct_ventas": 3.6,
+        "nwc_pct_ventas": 31.5,
+        "tasa_impositiva_pct": 20,
+        "fijo": false
+      }
+    ],
+    "wacc": {
+      "tasa_libre_pct": 5.1,
+      "beta": 1,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 0,
+      "coste_deuda_pct": 5.3,
+      "tasa_impositiva_pct": 20,
+      "peso_deuda_pct": 6
+    },
+    "terminal": {
+      "metodo": "gordon",
+      "crecimiento_pct": 3,
+      "multiplo_salida": 15
+    },
+    "etapa2": {
+      "usar": false,
+      "anios": 10,
+      "margen_final_pct": null,
+      "justificacion": null
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "Ventas +18 % en 2026e (fijo): el 1S26 creció un 21,3 % (17,2 % orgánico) y la guía orgánica es del 14-17 %, más ~2-3 puntos de divisa por el franco fuerte frente al dólar [5]. Después, +11 % en 2027e y +8 % en 2028e (consenso: +11,4 % y +8,0 %) [21], con entregas navales récord en 2027-2028 y la generación para centros de datos [6]; y bajada a +6 %, +5 %, +4 % y +3,5 % en 2029e-2032e. La media de la proyección (7,9 %) queda por debajo del crecimiento de 2021-2025 (13,7 %), que incluyó compras y el auge naval.",
+      "margenes": "Margen EBITDA del 27,8 % en 2026e (28,0 % en el 1S26) y del 28 % en 2027e-2028e, frente al 27,1 % publicado de 2025 (28,1 % sin los costes no operativos) [1, 5]. Coincide con la guía de Operational EBITA del 25-26 % más ~2,7 puntos de amortización sin intangibles comprados; el consenso va algo por encima (28,5-29,1 %) [21]. Bajamos al 27,5 % al final porque el producto nuevo, que crece el doble que el servicio, tiene menos margen [6].",
+      "inversion": "Capex del 5,5 % de las ventas en 2026e-2027e (guía de 5-6 % por la ampliación en Suiza, China e Italia) [6], 5 % en 2028e y bajada al 3,6 % en 2032e, por encima de la amortización (del 2,8 % al 3,4 %). Circulante (existencias + clientes + activos de contrato − proveedores − anticipos) del 31,5 % de las ventas, el de 2025 [1]. La reinversión neta de la proyección es el 18 % del NOPAT.",
+      "wacc": "Todo en USD, la divisa de los flujos. Tasa libre: bono del Tesoro de EE. UU. a 10 años al 5,10 % (15-oct-2026) [25]. Beta de 1,0: la propia no sirve (−0,21 mensual a 4 años y 0,31-0,48 semanal frente al SMI, con solo cuatro años de historia) [20]; usamos la de maquinaria industrial con poca deuda. Prima de mercado del 5,5 % y sin prima adicional. Coste de la deuda del 5,3 % en dólares (la deuda está en francos al 1,4-1,7 %, pero a efectos del WACC en USD hay que sumar el diferencial de tipos) y peso del 6 %. WACC: 10,22 %. Con la prima implícita del mercado (4,2 %) sale un 9,0 % [26].",
+      "terminal": "Gordon con crecimiento del 3,0 % en USD (≈1 % real más 2 % de inflación), medio punto o más por debajo de la tasa libre del 5,10 %. El valor terminal pesa el 68 % del valor. El múltiplo de salida implícito es bajo frente a las 21,4 veces el EBITDA de hoy: es la diferencia entre el DCF y el precio. Un múltiplo de salida de 15 veces (cerca de la mediana de comparables, 14,4) daría más valor, pero no lo usamos para no meter en el terminal la prima de hoy."
+    },
+    "sostenibilidad": {
+      "puente_ingresos": [
+        {
+          "periodo": "2026e",
+          "volumen_pct": 12,
+          "precio_pct": 3,
+          "otros_pct": 3,
+          "comentario": "Volumen +12 % (barcos nuevos, generación principal para centros de datos y remanufactura para compresión de gas), precio +3 % (subidas «directas e indirectas») y divisa +3 % [5, 6]."
+        },
+        {
+          "periodo": "2027e",
+          "volumen_pct": 8,
+          "precio_pct": 3,
+          "otros_pct": 0,
+          "comentario": "Volumen +8 % con entregas navales récord y más motores de gas para centros de datos; precio +3 % [6]."
+        },
+        {
+          "periodo": "2028e",
+          "volumen_pct": 5.5,
+          "precio_pct": 2.5,
+          "otros_pct": 0,
+          "comentario": "Volumen +5,5 % (servicio de la base instalada que creció en 2023-2027); precio +2,5 % [6]."
+        },
+        {
+          "periodo": "2029e",
+          "volumen_pct": 3.5,
+          "precio_pct": 2.5,
+          "otros_pct": 0,
+          "comentario": "Volumen +3,5 % al normalizarse la construcción naval, compensado por el servicio; precio +2,5 %."
+        },
+        {
+          "periodo": "2030e",
+          "volumen_pct": 2.5,
+          "precio_pct": 2.5,
+          "otros_pct": 0,
+          "comentario": "Volumen +2,5 % y precio +2,5 %: crecimiento de un negocio maduro de servicio."
+        }
+      ],
+      "mercado_final": null,
+      "veredicto": "Sí",
+      "justificacion": "Sí, con matices. La proyección reinvierte el 18 % del NOPAT: al ROIC de 2025 (39,3 %) eso financia un 6,9 % de crecimiento anual, frente al 7,9 % de ventas proyectado; la diferencia la cubre el precio (2,5-3 puntos al año), que no necesita capital, así que el volumen (6,3 % de media) queda dentro de lo financiable. El capital nuevo rinde un 37,3 %, por debajo de 1,25 veces el ROIC incremental histórico (33,6 %). El foso (homologación con el motor, servicio de 20-30 años, tres grandes en el mercado) y el poder de precios de 2025 sostienen el margen [1, 10]. El matiz es el ciclo: 2026-2028 se apoyan en un pico de construcción naval y en centros de datos; por eso el bajista lleva una caída fuerte en 2028e. No se contrasta con el tamaño del mercado final porque no hay serie del mercado de turbos grandes después de 2020 y la cuota no es pública."
+    },
+    "lectura": "El DCF da 42,09 USD por acción (34,94 CHF), un 49,2 % por debajo del precio, con el valor terminal en el 68 %. El DCF inverso dice que el precio de 82,87 USD exige un crecimiento de las ventas del 27,0 % anual en 2027e-2032e (nuestro base: 6,3 %) o un margen EBITDA del 46,5 % (base: 27,5 %); dicho de otra forma, el precio solo rinde un 6,9 % anual en dólares, frente a un WACC del 10,22 % y al 9,0 % que pide hoy el mercado. Es exigente: ni con las entregas navales récord ni con los centros de datos hemos encontrado un camino a ese crecimiento, que duplicaría el de los últimos cinco años (13,7 % con compras). Parte de la distancia es la tasa: con el bono de EE. UU. al 5,10 % cualquier industrial de calidad sale caro, y con la prima del mercado el valor sube a 53,70 USD. Aun así, el precio descuenta años de crecimiento por encima del 15 %, cuando la empresa dice que el ritmo de los centros de datos es incierto y que las actualizaciones marinas se estabilizan [5].",
+    "confianza": "Media"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": -3,
+        "ajuste_margen_pp": -2.5,
+        "ajuste_wacc_pp": 0.5,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "perfil": [
+          {
+            "periodo": "2028e",
+            "crecimiento_pp": -16,
+            "margen_pp": -5.5
+          }
+        ],
+        "narrativa": "La construcción naval cae tras las entregas récord de 2027 y los fabricantes de motores para centros de datos frenan pedidos: en 2028 las ventas bajan un 8 % y el margen EBITDA cae al 22,5 %, como en un ciclo naval normal en el que el producto nuevo se desploma y queda el servicio. Después el margen se queda 2,5 puntos por debajo por más competencia china en barcos de gama baja."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Se cumple la guía de 2026 y el consenso de 2027-2028: ventas de 1.786 M USD en 2028 con margen EBITDA del 28 %, y luego crecimiento del 3,5-6 % con el servicio de una base instalada mayor."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": 2,
+        "ajuste_margen_pp": 1,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Los centros de datos en EE. UU. y la renovación de la flota mantienen el producto nuevo dos años más y el servicio de los motores de gas empieza a pesar desde 2028: ventas +2 puntos al año sobre el base y margen del 29 %."
+      }
+    ],
+    "comentario": "La asimetría es negativa: el alcista vale 47,57 USD (−42,6 % frente al precio) y el bajista 26,70 (−67,8 %); incluso el caso bueno queda por debajo de la cotización, porque el precio pide más crecimiento que nuestro alcista. El bajista es verosímil: la construcción naval es cíclica y en 2026 el producto nuevo crece el doble que el servicio [6]. Lo que no podemos medir es cuánto aguantaría el margen en una caída: no hay datos públicos de ABB Turbocharging en 2009 o 2020. No compensa a estos precios.",
+    "confianza": "Media"
+  },
+  "suma_partes": {
+    "aplica": false,
+    "descuento_holding_pct": 0,
+    "partes": [],
+    "comentario": "No aplica: los dos segmentos (Medium & Low Speed y High Speed) tienen márgenes de EBITA casi iguales (25,8 % y 24,5 % en 2025), comparten fábricas, I+D y red de servicio, y el servicio vive de las máquinas que se venden en ambos [1]. Valorarlos por separado no añade información.",
+    "confianza": "Media"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2026-06-30",
+      "deuda_financiera": 531.8,
+      "arrendamientos": 0,
+      "caja": 252.9,
+      "minoritarios": 190,
+      "pensiones": 0,
+      "asociadas": 0,
+      "otros_ajustes": 22
+    },
+    "rab": null,
+    "referencia_mercado": {
+      "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout; vale para mercados desarrollados)",
+      "prima_implicita_pct": 4.2,
+      "fecha": "2026-10",
+      "fuente": "Damodaran, ERPbymonth.xlsx [26]"
+    },
+    "pesos": {
+      "dcf": 40,
+      "comparables": 20,
+      "transacciones": 0,
+      "suma_partes": 0,
+      "escenarios": 40
+    },
+    "objetivo_12m": {
+      "ejercicio": "2028e",
+      "casos": [
+        {
+          "escenario": "Bajista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 2.36,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 2028e de 1.481 M USD (+8 % en 2027e y −8 % en 2028e) con margen EBITDA del 22,5 %: EBIT de 289 M, impuesto del 20 %, 10 M de minoritarios y 92,9 M de acciones tras la recompra anunciada. Ciclo naval que gira y menos pedidos de motores de gas."
+        },
+        {
+          "escenario": "Base",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 3.66,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 1.786 M USD con margen EBITDA del 28 % y amortización del 3 %: EBIT de 447 M, −2 M financieros, impuesto del 20 % y 15,6 M de minoritarios (4,4 % del beneficio); 340 M entre 92,9 M de acciones. Cuadre con 2025: (302,9 − 0,3) × (1 − 19,4 %) − 10,8 = 232,9 M ÷ 93,9 = 2,48 USD, el publicado."
+        },
+        {
+          "escenario": "Alcista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 3.95,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 1.852 M USD (+13 % y +10 %) con margen EBITDA del 29 %: EBIT de 482 M y 367 M de beneficio atribuido. Centros de datos y flota que mantienen el producto nuevo."
+        }
+      ],
+      "per_historico": {
+        "base": "adelantado",
+        "anios": 3,
+        "actual": 24.4,
+        "mediana_5a": 20.8,
+        "minimo_5a": 17.3,
+        "media_larga": 21.2,
+        "excluidos": "Historia adelantada en USD (cierre de cada año en CHF pasado a USD con el cambio del BCE de fin de año ÷ BPA real del año siguiente): dic-2023 17,3x (31,34 ÷ 1,81); dic-2024 20,8x (51,55 ÷ 2,48); dic-2025 25,5x (77,65 ÷ 3,05, nuestro BPA de 2026e). Fuera dic-2022 (20,74 ÷ 1,08 = 19,2x) porque el BPA de 2023 lleva 77,4 M de costes de puesta en marcha tras la escisión. Solo tres años: cotiza desde el 3-oct-2022. Actual: 82,87 ÷ 3,39 (nuestro BPA de 2027e) = 24,4x.",
+        "v2": {
+          "mediana_5a": 28.5,
+          "minimo_5a": 15.8,
+          "media_larga": 25.2,
+          "excluidos": "Historia al cierre (precio ÷ BPA del mismo año, USD): 2022 15,8x (20,74 ÷ 1,31); 2024 28,5x (51,55 ÷ 1,81); 2025 31,3x (77,65 ÷ 2,48). Fuera 2023 (29,0x) por el BPA atípico."
+        }
+      },
+      "comparables_per": {
+        "mediana": 19.4
+      },
+      "consenso": {
+        "bpa_ano1": 3.55,
+        "bpa_ano2": 3.9,
+        "objetivo_medio": 98.37,
+        "objetivo_min": 74.68,
+        "objetivo_max": 113.22,
+        "analistas": 12,
+        "tendencia_3m": "recortes",
+        "fuente": "MarketScreener (BPA 2027e y 2028e, 11 analistas) y cash.ch/AWP (objetivos en CHF pasados a USD, 12 analistas), 16-oct-2026 [21, 24]"
+      },
+      "diferencia_consenso": "Nuestro BPA de 2028e (3,66 USD) queda un 6,2 % por debajo del consenso (3,90): ventas un 1 % más bajas (1.786 frente a 1.804 M) y margen EBITDA del 28 % frente al 29,1 % del consenso, más minoritarios y amortización algo mayores por el capex [21]. La diferencia grande está en el múltiplo: nuestro base (82,35 USD, 68,37 CHF) queda un 16,3 % por debajo del objetivo medio de los analistas (98,37 USD, 81,67 CHF), que equivale a pagar ~25 veces el BPA de 2028e, por encima de la historia corta de la acción (mediana de 20,8 veces) y de los comparables (19,4). El objetivo medio está dentro de nuestro rango solo por encima del alcista (88,88).",
+      "media": null,
+      "comentario": "El objetivo a 12 meses (73,60 USD, 61,10 CHF) queda muy por encima del valor intrínseco (46,08 USD): la distancia, del 60 %, es la prima que el mercado paga hoy por el crecimiento y que nuestro DCF en dólares no reconoce. Para cerrarla tendría que pasar una de dos cosas: que la empresa crezca durante años por encima del 15 % (centros de datos más duraderos de lo que dice la propia dirección) o que el múltiplo vuelva a su mediana de ~21 veces, lo que con nuestro BPA llevaría la acción a ~77 USD, poco por debajo de hoy. Ninguna de las dos tiene fecha: la tesis de valor es a varios años y en contra del precio."
+    },
+    "comentario": "Pesos: DCF 40 %, escenarios 40 % y comparables 20 %; sin transacciones (no hay compras de turbos grandes con precio) ni suma de partes. El DCF es el método más fiable para un negocio de servicio con caja estable, pero aquí es muy sensible a la tasa: con el bono de EE. UU. al 5,10 % da 42,09 USD; con la prima del mercado, 53,70. Los comparables por PER dan 67,00 USD y por EV/EBITDA 53,90. La dispersión es grande, pero todos los métodos quedan por debajo de los 82,87 USD de hoy: el valor objetivo ponderado es 46,08 USD (38,26 CHF), un −44,4 %. La regla a 12 meses, que manda en la recomendación, da 73,60 USD.",
+    "confianza": "Media"
+  },
+  "catalizadores": {
+    "items": [
+      {
+        "fecha": "nov-2026 a feb-2027",
+        "evento": "Pedidos navales y datos de Clarksons del cuarto trimestre",
+        "efecto": "Confirmarían o no que las entregas de 2027-2028 serán récord",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "17-mar-2027",
+        "evento": "Resultados de 2026 y guía de 2027",
+        "efecto": "Primera guía tras el pico de producto; mercado atento al crecimiento orgánico y al margen",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "27-abr-2027",
+        "evento": "Junta: dividendo de 2026 (consenso ~2,14 USD) y voto de remuneración",
+        "efecto": "Rentabilidad por dividendo del ~2,3-2,6 %",
+        "probabilidad": "Alta",
+        "sentido": "+"
+      },
+      {
+        "fecha": "2026-2028",
+        "evento": "Recompra de 100 M CHF (quedan ~74,5 M)",
+        "efecto": "Apoyo pequeño: ~1 % del capital",
+        "probabilidad": "Alta",
+        "sentido": "+"
+      },
+      {
+        "fecha": "2027",
+        "evento": "Reunión de la OMI sobre el Marco Net Zero aplazado",
+        "efecto": "Su aprobación reactivaría retrofit y actualizaciones",
+        "probabilidad": "Baja",
+        "sentido": "+"
+      },
+      {
+        "fecha": "ago-2027",
+        "evento": "Resultados del 1S27",
+        "efecto": "Peso de los centros de datos y conversión de caja",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "riesgos": {
+    "items": [
+      {
+        "riesgo": "Fin del ciclo de construcción naval tras las entregas récord de 2027-2028",
+        "tipo": "Mercado",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−37 % (escenario bajista: 26,70 frente a 42,09 USD)",
+        "mitigante": "El servicio de una base instalada de >190.000 turbos amortigua; la cobertura de pedidos de los astilleros supera los 4 años [1, 6].",
+        "senal": "Pedidos navales mundiales (Clarksons) por debajo de las entregas dos trimestres seguidos."
+      },
+      {
+        "riesgo": "Valoración: el precio descuenta un crecimiento del 27 % anual",
+        "tipo": "Valoración",
+        "probabilidad": "Alta",
+        "impacto": "Alto",
+        "efecto_valor": "−44 % hasta el valor intrínseco; −11 % hasta el objetivo a 12 meses",
+        "mitigante": "Ninguno operativo; la recompra es pequeña.",
+        "senal": "PER adelantado por encima de 25 veces sin subidas de BPA."
+      },
+      {
+        "riesgo": "Centros de datos: frenazo de la inversión en IA o cambio a turbinas y baterías",
+        "tipo": "Demanda",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−8 % (pérdida de la mitad del 9 % de ventas ligado y de su crecimiento)",
+        "mitigante": "Solo ~9 % de las ventas; la generación principal a gas deja base instalada para servicio en 3-5 años [5, 6].",
+        "senal": "Recortes de capex de los grandes operadores o de pedidos de motores de gas en EE. UU."
+      },
+      {
+        "riesgo": "Concentración de clientes (dos clientes el 25 % de las ventas)",
+        "tipo": "Comercial",
+        "probabilidad": "Baja",
+        "impacto": "Alto",
+        "efecto_valor": "−15 % si el cliente de High Speed integra el turbo o cambia de proveedor",
+        "mitigante": "Homologación motor-turbo de años y servicio posventa [1].",
+        "senal": "Caída del peso del primer cliente o anuncio de turbos propios de un fabricante de motores."
+      },
+      {
+        "riesgo": "Margen: más producto nuevo, garantías y aranceles",
+        "tipo": "Operativo",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−6 % por cada punto de margen EBITDA permanente (sensibilidad del DCF)",
+        "mitigante": "Precio y apalancamiento de gastos: margen de Operational EBITA estable en el 25-26 % [1, 5].",
+        "senal": "Margen bruto por debajo del 43 % o provisión de garantías por encima de 60 M USD."
+      },
+      {
+        "riesgo": "Divisa: costes en francos e ingresos en dólares y euros",
+        "tipo": "Financiero",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−5 % con un franco un 10 % más fuerte (estimación propia: dos tercios de los activos en Suiza)",
+        "mitigante": "Fabricación en China e Italia y deuda en francos [1].",
+        "senal": "USD/CHF por debajo de 0,78."
+      },
+      {
+        "riesgo": "Transición energética a largo plazo (electrificación de barcos y respaldo)",
+        "tipo": "Tecnológico",
+        "probabilidad": "Baja",
+        "impacto": "Alto",
+        "efecto_valor": "−10 % a 10 años sobre el terminal",
+        "mitigante": "Turbos para metanol, amoniaco e hidrógeno; los motores grandes no tienen sustituto en alta mar [1].",
+        "senal": "Pedidos de barcos de alta mar sin motor de combustión."
+      },
+      {
+        "riesgo": "Competencia china en barcos de gama baja",
+        "tipo": "Competencia",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−5 %",
+        "mitigante": "Ganó cuota en barcos nuevos en 2025 [1].",
+        "senal": "Pérdida de cuota en astilleros chinos."
+      }
+    ],
+    "premortem": "Octubre de 2029: la acción vale un 40 % menos. Lo que pasó: en 2027 las entregas navales fueron récord, como se esperaba, pero los pedidos nuevos ya caían desde mediados de 2026, y en 2028 el producto nuevo de Medium & Low Speed bajó un 25 %. A la vez, los grandes operadores de centros de datos frenaron su inversión tras dos años de capex desmedido y los fabricantes de motores de gas, que habían ampliado capacidad, cancelaron pedidos de turbos. Las ventas cayeron un 8 % en 2028 y el margen bajó del 28 % al 23 % porque las fábricas suizas recién ampliadas quedaron infrautilizadas. El mercado, que pagaba 24 veces el beneficio por un «valor de crecimiento», pasó a pagar las 17 veces de una industrial cíclica sobre un BPA un 30 % menor. Las señales estaban ahí: el producto creciendo el doble que el servicio en 2026, la conversión de caja cayendo al 58 %, la dirección admitiendo que el ritmo de los centros de datos era incierto y el capex subiendo al 5-6 % justo en el pico [5, 6].",
+    "ia": {
+      "exposicion": "Media",
+      "sentido": "Mixto",
+      "efecto_valor": "±8 % a 3-5 años",
+      "comentario": "La IA toca a Accelleron sobre todo por la demanda: algo menos del 9 % de las ventas del 1S26 está ligado a centros de datos (generación principal a gas y respaldo diésel en EE. UU.) y es la parte que más crece [5, 6]. Si la inversión en IA sigue, deja base instalada que genera servicio dentro de 3-5 años; si frena, desaparece el segmento más dinámico de High Speed y el mercado quitaría la prima de «valor de IA» que creemos que lleva la acción (estimación propia: −8 %). En el producto, la IA no sustituye un turbo; en el servicio, su software de optimización y diagnóstico remoto puede ganar con la IA, y los competidores también. No vemos riesgo de que la IA automatice su trabajo de ingeniería a medida a corto plazo. Señal: pedidos de motores de gas para centros de datos y capex de los grandes operadores."
+    },
+    "confianza": "Media"
+  },
+  "esg": {
+    "calificaciones": [],
+    "materialidad": "Dos asuntos mueven las cifras. El primero es la descarbonización naval: los turbos y actualizaciones que ahorran combustible (un 3,5 % de media con su software, según la empresa) y la preparación para metanol, amoniaco e hidrógeno son su argumento de venta frente al comercio de emisiones de la UE y FuelEU [1]. El segundo es la seguridad laboral en fábricas y talleres: el índice de accidentes con baja de 2025 fue de 2,78, por encima del objetivo de 2,51 [1]. Sus objetivos de clima (−50 % en alcance 1 y 2 y −25 % en alcance 3 a 2030 frente a 2023) están validados por SBTi [1].",
+    "controversias": "No hemos encontrado sanciones, litigios relevantes ni incidentes graves en los tres últimos años en el informe anual ni en la prensa revisada [1].",
+    "confianza": "Media"
+  },
+  "preguntas": {
+    "items": [
+      {
+        "tema": "Ciclo naval",
+        "pregunta": "¿Qué parte de las ventas de producto de Medium & Low Speed de 2026 corresponde a barcos que se entregan en 2027-2028 y qué cartera de pedidos tienen para 2029?",
+        "por_que": "Decide si el bajista (caída del 8 % en 2028) es demasiado duro o demasiado blando."
+      },
+      {
+        "tema": "Servicio",
+        "pregunta": "¿Cuánto pesa hoy el servicio en las ventas y en el EBITA, y cómo se comportó en 2009 y en 2020?",
+        "por_que": "Sin ese dato no podemos calibrar el margen en una caída."
+      },
+      {
+        "tema": "Centros de datos",
+        "pregunta": "¿Qué parte de la potencia de generación principal instalada (5 GW) tiene contrato de servicio y a qué plazo?",
+        "por_que": "Es lo que convertiría el auge en ingresos recurrentes."
+      },
+      {
+        "tema": "Clientes",
+        "pregunta": "¿Quién es el cliente de High Speed que pesa el 15 % de las ventas y qué duración tiene el contrato?",
+        "por_que": "Un cambio de proveedor costaría hasta un 15 % del valor."
+      },
+      {
+        "tema": "Capex",
+        "pregunta": "¿Qué capacidad añade el plan de 2026-2028 y qué volumen hace falta para llenarla?",
+        "por_que": "Ampliar en el pico del ciclo es el riesgo de margen del premortem."
+      },
+      {
+        "tema": "Garantías",
+        "pregunta": "¿Por qué subió un 45 % la provisión de garantías en 2025 y qué productos la explican?",
+        "por_que": "Podría señalar problemas de calidad en series nuevas."
+      },
+      {
+        "tema": "Inyección de combustible",
+        "pregunta": "¿Qué margen tiene el negocio de inyección (OMT, OMC2) y por qué se fueron clientes de OMC2?",
+        "por_que": "Las compras de 165 M USD no han mostrado su rentabilidad."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sentimiento": {
+    "tono": "Dividido",
+    "tendencia": "Empeora",
+    "revisadas": [
+      {
+        "plataforma": "Vermögenszentrum / AWP (prensa con analistas)",
+        "fecha": "2026-08",
+        "n_comentarios": 0,
+        "tono": "Positivo",
+        "resumen": "Tras el 1S26, UBS ve revisiones al alza, ZKB mantiene intacta la perspectiva a medio plazo y Vontobel avisa de que el consenso ya estaba en la parte alta [32]."
+      },
+      {
+        "plataforma": "cash.ch (ficha y titulares)",
+        "fecha": "2026-10",
+        "n_comentarios": 0,
+        "tono": "Negativo",
+        "resumen": "Tendencia negativa de los analistas desde el 1-sep, con una recomendación de venta el 29-sep en un artículo titulado como «ruptura de un tabú» con un valor estrella de la bolsa suiza [24]."
+      },
+      {
+        "plataforma": "Seeking Alpha (artículo de análisis)",
+        "fecha": "2025-11",
+        "n_comentarios": 0,
+        "tono": "Neutro",
+        "resumen": "Reconoce la ejecución pero ve la acción «al precio que toca» (artículo de fuera de la ventana de tres meses: solo contexto) [34]."
+      },
+      {
+        "plataforma": "Simply Wall St y getquin (comunidad)",
+        "fecha": "2026-10",
+        "n_comentarios": 10,
+        "tono": "Dividido",
+        "resumen": "La comunidad discute la descarbonización naval y los centros de datos como motores frente a una valoración exigente; poco debate y sin datos nuevos [35, 36]."
+      }
+    ],
+    "temas": [
+      {
+        "tema": "Centros de datos como nuevo motor",
+        "postura": "Alcista",
+        "peso": "Alto",
+        "contraste": "Cierto pero acotado: algo menos del 9 % de las ventas en el 1S26 y la propia empresa dice que el ritmo y la duración son inciertos [24, 32]."
+      },
+      {
+        "tema": "Valoración exigente tras triplicar desde la salida a bolsa",
+        "postura": "Bajista",
+        "peso": "Alto",
+        "contraste": "Coincide con nuestro DCF y con un PER adelantado de unas 24 veces frente a una mediana histórica corta de ~21 [24, 34]."
+      },
+      {
+        "tema": "Supercycle naval y su final",
+        "postura": "Dividida",
+        "peso": "Medio",
+        "contraste": "Las entregas de 2027-2028 serán récord; el riesgo es lo que venga después, cuando el producto nuevo pesa más que nunca [32, 35]."
+      }
+    ],
+    "lectura": "Hay muy poco debate de particulares: no encontramos hilos activos en Reddit, Stocktwits o foros suizos; lo que circula son artículos de prensa con analistas y comunidades con pocos mensajes [24, 35, 36]. El tono ha pasado de positivo en agosto a negativo desde septiembre, con la primera recomendación de venta y una caída del 15 % desde el 27-ago, sin un dato nuevo de la empresa [24, 32]. No es capitulación: el precio sigue un 13 % por encima de su mínimo de 52 semanas. Para la decisión, el sentimiento confirma la duda sobre la valoración pero no añade un riesgo que el informe no recoja.",
+    "confianza": "Baja"
+  },
+  "fuentes": [
+    {
+      "id": 1,
+      "titulo": "Annual Report 2025: cuentas consolidadas (US GAAP), notas (segmentos, ingresos por geografía, deuda, pensiones, garantías, conciliación del Operational EBITA) y revisión financiera",
+      "editor": "Accelleron Industries AG",
+      "tipo": "Primaria",
+      "fecha": "2026-03-12",
+      "url": "https://accelleron.com/content/dam/accelleronind/documents/investors/accelleron-annual-report-2025.pdf"
+    },
+    {
+      "id": 2,
+      "titulo": "Annual Report 2024, Financial reporting (cuentas 2024 y 2023, compras de OMC2 y TNM, conciliación del Operational EBITA)",
+      "editor": "Accelleron Industries AG",
+      "tipo": "Primaria",
+      "fecha": "2025-03-13",
+      "url": "https://accelleron.com/content/dam/accelleronind/documents/investors/accelleron-industries-annual-report-2024-financal-reporting.pdf"
+    },
+    {
+      "id": 3,
+      "titulo": "Annual Report 2023, Financial reporting (cuentas 2023 y 2022, compra de OMT, costes de puesta en marcha tras la escisión)",
+      "editor": "Accelleron Industries AG",
+      "tipo": "Primaria",
+      "fecha": "2024-03",
+      "url": "https://accelleron.com/content/dam/accelleronind/documents/investors/accelleron-industries-annual-report-2023-financal-reporting.pdf"
+    },
+    {
+      "id": 4,
+      "titulo": "Annual Report 2022, Financial reporting (cuentas consolidadas y combinadas 2022 y 2021, escisión de ABB)",
+      "editor": "Accelleron Industries AG",
+      "tipo": "Primaria",
+      "fecha": "2023-03-28",
+      "url": "https://accelleron.com/content/dam/accelleronind/documents/investors/Accelleron_Annual_Report%202022_Financal_reporting.pdf"
+    },
+    {
+      "id": 5,
+      "titulo": "Half-Year Report 2026 (enero-junio 2026, sin auditar): cuenta, balance, flujos, segmentos, deuda neta y guía 2026 elevada",
+      "editor": "Accelleron Industries AG",
+      "tipo": "Primaria",
+      "fecha": "2026-08-27",
+      "url": "https://accelleron.com/content/dam/accelleronind/documents/investors/Accelleron-Half-Year-Report-2026.pdf"
+    },
+    {
+      "id": 6,
+      "titulo": "Half-year results 2026, presentación a inversores (centros de datos ~9 % de las ventas, capex 5-6 %, producto +30 % y servicio +15 %)",
+      "editor": "Accelleron Industries AG",
+      "tipo": "Primaria",
+      "fecha": "2026-08-27",
+      "url": "https://accelleron.com/content/dam/accelleronind/documents/investors/Accelleron-Half-Year-Results-Conference-2026.pdf"
+    },
+    {
+      "id": 7,
+      "titulo": "Full-year 2025 results, presentación (12-mar-2026): guía 2026, marco de asignación de capital, recompra de 100 M CHF",
+      "editor": "Accelleron Industries AG",
+      "tipo": "Primaria",
+      "fecha": "2026-03-12",
+      "url": "https://accelleron.com/content/dam/accelleronind/documents/investors/Accelleron_Analyst_and_Investor_Conference_FY_2025.pdf"
+    },
+    {
+      "id": 8,
+      "titulo": "Half-Year Report 2023 (ventas y beneficio del 1S23)",
+      "editor": "Accelleron Industries AG",
+      "tipo": "Primaria",
+      "fecha": "2023-07",
+      "url": "https://accelleron.com/content/dam/accelleronind/documents/investors/Accelleron_Industries_Half_Year_Report_2023.pdf"
+    },
+    {
+      "id": 9,
+      "titulo": "Invitación a la junta 2026 (dividendo de 1,50 CHF) e invitación a la junta 2025 (reparto de 1,25 CHF: 0,86 de dividendo y 0,39 de reservas de capital)",
+      "editor": "Accelleron Industries AG",
+      "tipo": "Primaria",
+      "fecha": "2026-03-24",
+      "url": "https://accelleron.com/content/dam/accelleronind/documents/investors/24032026%20AGM%202026%20Invite%20-%20EN.pdf"
+    },
+    {
+      "id": 10,
+      "titulo": "Capital Markets Day 2022, presentación (objetivos a medio plazo, base instalada, ~75 % de ingresos recurrentes de servicio)",
+      "editor": "Accelleron Industries AG",
+      "tipo": "Primaria",
+      "fecha": "2022-08-31",
+      "url": "https://accelleron.com/content/dam/accelleronind/documents/Accelleron-CMD-2022-presentation.pdf"
+    },
+    {
+      "id": 11,
+      "titulo": "Marine Turbocharger Market Size & Share 2025-2034 (875 M USD en 2024, +5,3 % anual)",
+      "editor": "Global Market Insights",
+      "tipo": "Sectorial",
+      "fecha": "2025",
+      "url": "https://www.gminsights.com/industry-analysis/marine-turbocharger-market"
+    },
+    {
+      "id": 12,
+      "titulo": "Marine Turbocharger Market Size, Share & Growth Analysis 2026-2033 (0,85 mil M USD en 2024; 1,39 mil M en 2033)",
+      "editor": "SkyQuest (vía GII)",
+      "tipo": "Sectorial",
+      "fecha": "2026",
+      "url": "https://www.gii.tw/report/sky1899931-marine-turbocharger-market-size-share-growth.html"
+    },
+    {
+      "id": 13,
+      "titulo": "Yahoo Finance: cuentas de los últimos 12 meses de Garrett Motion, IHI, Wärtsilä, Cummins y Burckhardt (16-oct-2026)",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-16",
+      "url": "https://finance.yahoo.com/"
+    },
+    {
+      "id": 14,
+      "titulo": "Presentación del 1S24: cuotas por aplicación de energía (respaldo <5 %; generación principal y balance >>50 %)",
+      "editor": "Accelleron Industries AG",
+      "tipo": "Primaria",
+      "fecha": "2024-08",
+      "url": "https://accelleron.com/content/dam/accelleronind/documents/investors/Accelleron-Half-Year-Results-Conference-2024.pdf"
+    },
+    {
+      "id": 15,
+      "titulo": "Annual Report 2025, Corporate governance report (consejo, comisiones, comité ejecutivo, accionistas significativos, auditor)",
+      "editor": "Accelleron Industries AG",
+      "tipo": "Primaria",
+      "fecha": "2026-03-12",
+      "url": "https://accelleron.com/content/dam/accelleronind/documents/investors/accelleron-annual-report-2025-04-corporate-governance-report.pdf"
+    },
+    {
+      "id": 16,
+      "titulo": "Annual Report 2025, Compensation report (remuneración del CEO y del comité, STI, PSU, participaciones de consejeros y directivos, respuesta al voto de 2025)",
+      "editor": "Accelleron Industries AG",
+      "tipo": "Primaria",
+      "fecha": "2026-03-12",
+      "url": "https://accelleron.com/content/dam/accelleronind/documents/investors/accelleron-annual-report-2025-05-compensation-report.pdf"
+    },
+    {
+      "id": 17,
+      "titulo": "Results of the 4th Ordinary General Meeting (28-abr-2026)",
+      "editor": "Accelleron Industries AG",
+      "tipo": "Primaria",
+      "fecha": "2026-04-28",
+      "url": "https://accelleron.com/content/dam/accelleronind/documents/investors/Annual_General_Meeting_2026_Results_EN.pdf"
+    },
+    {
+      "id": 18,
+      "titulo": "Results of the 3rd Ordinary General Meeting (6-may-2025): informe de remuneración aprobado con el 57,25 %",
+      "editor": "Accelleron Industries AG",
+      "tipo": "Primaria",
+      "fecha": "2025-05-06",
+      "url": "https://accelleron.com/content/dam/accelleronind/documents/investors/Accelleron_General_Meeting_2025_Results_EN.pdf"
+    },
+    {
+      "id": 19,
+      "titulo": "Accelleron Capital Markets Day (31-ago-2022): objetivos a medio plazo (crecimiento orgánico 2-4 %, margen de Operational EBITA 23-26 %, reparto del 50-70 %)",
+      "editor": "ABB Ltd",
+      "tipo": "Primaria",
+      "fecha": "2022-08-31",
+      "url": "https://new.abb.com/news/detail/94372/accelleron-capital-markets-day-turbochargers-helping-the-world-to-move-further-more-efficiently-and-more-sustainably"
+    },
+    {
+      "id": 20,
+      "titulo": "Yahoo Finance: históricos diarios de ACLN.SW, ^SSMI y EXH4.DE hasta el 14-oct-2026 (rango, volumen, rentabilidades, betas, cierres de ejercicio)",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-16",
+      "url": "https://finance.yahoo.com/quote/ACLN.SW/history/"
+    },
+    {
+      "id": 21,
+      "titulo": "Accelleron Industries AG: estimaciones anuales 2026-2028 (11 analistas; ventas, EBITDA, EBIT, beneficio, BPA, DPA, deuda neta, capex)",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-16",
+      "url": "https://www.marketscreener.com/quote/stock/ACCELLERON-INDUSTRIES-AG-141526850/finances/"
+    },
+    {
+      "id": 22,
+      "titulo": "Accelleron Industries AG: consenso («Outperform», 11 analistas, objetivo medio 101,04 USD, máximo 116,27, mínimo 74,55) y cambios de recomendación",
+      "editor": "MarketScreener",
+      "tipo": "Analistas",
+      "fecha": "2026-10-16",
+      "url": "https://www.marketscreener.com/quote/stock/ACCELLERON-INDUSTRIES-AG-141526850/consensus/"
+    },
+    {
+      "id": 23,
+      "titulo": "Accelleron: cotizaciones de cinco sesiones en la SIX (cierre del 15-oct-2026 a 68,80 CHF; 366.879 acciones)",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-16",
+      "url": "https://www.marketscreener.com/quote/stock/ACCELLERON-INDUSTRIES-AG-141526850/quotes/"
+    },
+    {
+      "id": 24,
+      "titulo": "Accelleron Ind N: ficha y AWP Analyser (12 analistas: 4 comprar, 7 neutral, 1 vender; objetivo medio 81,67 CHF, máximo 94, mínimo 62; venta el 29-sep-2026 y neutral el 17-sep-2026)",
+      "editor": "cash.ch",
+      "tipo": "Analistas",
+      "fecha": "2026-10-16",
+      "url": "https://www.cash.ch/aktien/accelleron-industries-n-116936091/swx/chf"
+    },
+    {
+      "id": 25,
+      "titulo": "Daily Treasury Par Yield Curve Rates: bono a 10 años al 5,10 % (15-oct-2026)",
+      "editor": "U.S. Department of the Treasury",
+      "tipo": "Primaria",
+      "fecha": "2026-10-15",
+      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve"
+    },
+    {
+      "id": 26,
+      "titulo": "Implied ERP by month (ERPbymonth.xlsx), octubre de 2026: 4,20 % (T12m with sustainable payout)",
+      "editor": "Aswath Damodaran (NYU Stern)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx"
+    },
+    {
+      "id": 27,
+      "titulo": "Tipos de cambio de referencia del BCE: 15-oct-2026 (1,1208 USD y 0,9305 CHF por EUR) e histórico de fin de año 2022-2025",
+      "editor": "Banco Central Europeo",
+      "tipo": "Primaria",
+      "fecha": "2026-10-15",
+      "url": "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"
+    },
+    {
+      "id": 28,
+      "titulo": "Transaction report del programa de recompra 2026-2028 (333.396 acciones a 13-oct-2026)",
+      "editor": "Accelleron Industries AG",
+      "tipo": "Primaria",
+      "fecha": "2026-10-13",
+      "url": "https://accelleron.com/content/dam/accelleronind/documents/investors/share-buyback/ACLNE_May_2026_to_date.pdf"
+    },
+    {
+      "id": 29,
+      "titulo": "Chart Industries, Inc. to Acquire Howden (8-K, Ex. 99.1): 4.400 M USD, 12,9 veces el EBITDA ajustado de 12 meses",
+      "editor": "Chart Industries (SEC)",
+      "tipo": "Primaria",
+      "fecha": "2022-11-09",
+      "url": "https://www.sec.gov/Archives/edgar/data/892553/000119312522280686/d411515dex991.htm"
+    },
+    {
+      "id": 30,
+      "titulo": "Colfax to sell Air & Gas Handling (Howden) to KPS for 1.800 M USD (8-K, Ex. 99.1)",
+      "editor": "Colfax Corporation (SEC)",
+      "tipo": "Primaria",
+      "fecha": "2019-05-16",
+      "url": "https://www.sec.gov/Archives/edgar/data/1420800/000119312519150551/d746282dex991.htm"
+    },
+    {
+      "id": 31,
+      "titulo": "Baker Hughes to Acquire Chart Industries: valor empresa 13.600 M USD, ~9 veces el EBITDA 2025e con sinergias (8-K, Ex. 99.2)",
+      "editor": "Baker Hughes (SEC)",
+      "tipo": "Primaria",
+      "fecha": "2025-07-29",
+      "url": "https://www.sec.gov/Archives/edgar/data/1701605/000119312525167118/d912206dex992.htm"
+    },
+    {
+      "id": 32,
+      "titulo": "Accelleron-Aktien nach Zahlen und Prognosenerhöhung im Aufwind (27-ago-2026; UBS, Vontobel y ZKB sobre el 1S26)",
+      "editor": "Vermögenszentrum (AWP)",
+      "tipo": "Prensa",
+      "fecha": "2026-08-27",
+      "url": "https://www.vermoegenszentrum.ch/boersen-und-maerkte/news/accelleron-aktien-nach-zahlen-und-prognosenerhoehung-im-aufwind"
+    },
+    {
+      "id": 33,
+      "titulo": "Corporate calendar: Annual Report 2026 el 17-mar-2027; junta el 27-abr-2027",
+      "editor": "Accelleron Industries AG",
+      "tipo": "Primaria",
+      "fecha": "2026-10-16",
+      "url": "https://accelleron.com/investors/corporate-calendar"
+    },
+    {
+      "id": 34,
+      "titulo": "Accelleron Executing At A High Level, And Priced Accordingly",
+      "editor": "Seeking Alpha",
+      "tipo": "Foros y redes",
+      "fecha": "2025-11-20",
+      "url": "https://seekingalpha.com/article/4845978-accelleron-executing-at-a-high-level-and-priced-accordingly"
+    },
+    {
+      "id": 35,
+      "titulo": "Narrativa de inversores «Digitalization and decarbonization will open global marine markets»",
+      "editor": "Simply Wall St",
+      "tipo": "Foros y redes",
+      "fecha": "2026",
+      "url": "https://www.simplywall.st/narratives/rwzvfk88-digitalization-and-decarbonization-will-open-global-marine-markets-na5j"
+    },
+    {
+      "id": 36,
+      "titulo": "Accelleron Industries: debate y valoraciones de la comunidad",
+      "editor": "getquin",
+      "tipo": "Foros y redes",
+      "fecha": "2026-10",
+      "url": "https://app.getquin.com/de/aktie/CH1169360919/accelleron-industries"
+    },
+    {
+      "id": 37,
+      "titulo": "Informe value de Burckhardt Compression (15-oct-2026): valoración, márgenes y regla a 12 meses de un comparable suizo con base instalada",
+      "editor": "Análisis propio (repo analisis-inversion)",
+      "tipo": "Analistas",
+      "fecha": "2026-10-15",
+      "url": "https://github.com/"
+    },
+    {
+      "id": 38,
+      "titulo": "Yahoo Finance: movimiento de ACLN.SW (1, 3, 6 y 12 meses; medias de 50 y 200 sesiones; volatilidad de 60 sesiones; mayor subida y caída de un mes), 16-oct-2026",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-16",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/ACLN.SW"
+    }
+  ],
+  "calc": {
+    "version": 4,
+    "etiquetas": {
+      "margen_bruto": "M. bruto",
+      "margen_bruto_largo": "Margen bruto",
+      "dias_base": "sobre el coste de ventas"
+    },
+    "recomendacion": {
+      "recomendacion": "Mantener",
+      "regla": "Mantener",
+      "regla_absoluta": "Vender",
+      "regla_relativa": "Vender",
+      "coincide": true,
+      "conviccion": "Baja",
+      "conviccion_sugerida": "Media",
+      "conviccion_razones": [
+        "Mantener con las dos reglas de acuerdo y lejos de los umbrales"
+      ],
+      "reglas_discrepan": false,
+      "relativo": {
+        "prima_implicita_pct": 4.2,
+        "wacc": 9,
+        "ke": 9.3,
+        "dcf": 51.94,
+        "dcf_min": 47.45,
+        "dcf_max": 57.24,
+        "valor_objetivo": 53.7,
+        "alcista": 58.7,
+        "bajista": 32.61,
+        "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout; vale para mercados desarrollados)",
+        "fecha": "2026-10",
+        "potencial_pct": -35.2,
+        "rentabilidad_total_pct": -32.9,
+        "asimetria": -0.48
+      },
+      "objetivo_mercado_txt": " · con la prima implícita del mercado: 53,70 (44,58 CHF) (-35,2 %)",
+      "objetivo_mercado_corto": " · mercado 53,70",
+      "rentabilidad_mercado_corto": " · mercado -32,9 %",
+      "potencial_pct": -44.4,
+      "dividendo_pct": 2.3,
+      "rentabilidad_total_pct": -42.1,
+      "alcista_pct": -42.6,
+      "bajista_pct": -67.8,
+      "asimetria": -0.63,
+      "comprar_por_debajo": 46.08,
+      "vender_por_encima": 83.88,
+      "tabla": [
+        {
+          "concepto": "Objetivo a 12 meses (nuestro PER × nuestro BPA 2028e, ponderado 25/50/25)",
+          "valor": "73,60 USD (61,10 CHF)"
+        },
+        {
+          "concepto": "Bajista / base / alcista a 12 meses",
+          "valor": "17,3x × 2,36 = 40,83 · 22,5x × 3,66 = 82,35 · 22,5x × 3,95 = 88,88"
+        },
+        {
+          "concepto": "Rentabilidad a 12 meses: ponderada / del base (con dividendo)",
+          "valor": "-8,9 % / 1,7 %"
+        },
+        {
+          "concepto": "Regla de múltiplos aplicada",
+          "valor": "v3: base a mitad de camino hacia la mediana adelantada, sin alejarse del actual más de ×1,1; bajista mín. 5 a (adelantado) o base × 0,80; alcista techo base × 1,35 (selector de método: historia adelantada de 3 años: decide la más baja de v3 y v2 (v3))"
+        },
+        {
+          "concepto": "Objetivo medio de los analistas (solo contraste)",
+          "valor": "98,37 (nuestro base -16,3 %)"
+        },
+        {
+          "concepto": "Valor intrínseco (síntesis ponderada, largo plazo)",
+          "valor": "46,08 USD (38,26 CHF)"
+        },
+        {
+          "concepto": "Precio actual (CHF al tipo de 1,2045 USD por CHF)",
+          "valor": "82,87 USD (68,80 CHF)"
+        },
+        {
+          "concepto": "Potencial sobre el precio actual",
+          "valor": "-44,4 %"
+        },
+        {
+          "concepto": "Rentabilidad por dividendo ordinario",
+          "valor": "2,3 %"
+        },
+        {
+          "concepto": "Rentabilidad total esperada a 12 meses",
+          "valor": "-42,1 %"
+        },
+        {
+          "concepto": "Escenario alcista / bajista",
+          "valor": "-42,6 % / -67,8 %"
+        },
+        {
+          "concepto": "Asimetría (ganancia alcista / pérdida bajista)",
+          "valor": "-0,63x"
+        },
+        {
+          "concepto": "Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado",
+          "valor": "6,9 % frente a 10,2 % y 9,0 %"
+        },
+        {
+          "concepto": "Valor objetivo con la prima implícita del mercado (4,2 %, WACC 9,0 %)",
+          "valor": "53,70 USD (44,58 CHF)"
+        },
+        {
+          "concepto": "Rentabilidad total esperada con la prima del mercado",
+          "valor": "-32,9 %"
+        },
+        {
+          "concepto": "Asimetría con la prima del mercado",
+          "valor": "-0,48x"
+        },
+        {
+          "concepto": "Regla absoluta (frente a su coste de capital)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Regla relativa (frente a lo que pide el mercado)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Crecimiento anual implícito en el precio (2027e-2032e) frente al previsto para su mercado",
+          "valor": "27,0 % frente a 5,3 %"
+        },
+        {
+          "concepto": "¿La calidad de la empresa sostiene el crecimiento previsto?",
+          "valor": "Sí (7,9 % anual proyectado; financiable al ROIC actual: 6,9 %)"
+        },
+        {
+          "concepto": "Señal del valor intrínseco (regla del DCF, referencia)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Recomendación según la regla a 12 meses (Comprar: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender: ponderada ≤ -10 %)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Convicción según los criterios (Mantener con las dos reglas de acuerdo y lejos de los umbrales)",
+          "valor": "Media"
+        }
+      ],
+      "niveles": [
+        {
+          "accion": "Comprar",
+          "condicion": "Por debajo de 46,08 (38,26 CHF) (ponderada a 12 meses ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco)"
+        },
+        {
+          "accion": "Mantener",
+          "condicion": "Entre 46,08 y 83,88 (38,26 y 69,64 CHF)"
+        },
+        {
+          "accion": "Vender o reducir",
+          "condicion": "Por encima de 83,88 (69,64 CHF) (ponderada a 12 meses ≤ -10 %)"
+        }
+      ],
+      "precio_txt": " (68,80 CHF)",
+      "valor_objetivo_txt": " (38,26 CHF)",
+      "regla_valor_intrinseco": "Vender",
+      "objetivo_12m": {
+        "completo": true,
+        "filas": [
+          {
+            "escenario": "Bajista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 2.36,
+            "multiplo": 17.3,
+            "multiplo_informe": null,
+            "origen": "mínimo de 5 años",
+            "precio": 40.83,
+            "rentabilidad_pct": -48.5,
+            "justificacion": "Ventas de 2028e de 1.481 M USD (+8 % en 2027e y −8 % en 2028e) con margen EBITDA del 22,5 %: EBIT de 289 M, impuesto del 20 %, 10 M de minoritarios y 92,9 M de acciones tras la recompra anunciada. Ciclo naval que gira y menos pedidos de motores de gas."
+          },
+          {
+            "escenario": "Base",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 3.66,
+            "multiplo": 22.5,
+            "multiplo_informe": null,
+            "origen": "PER actual (24.4x) a mitad de camino hacia abajo, hacia la mediana de 5 años (20.8x)",
+            "precio": 82.35,
+            "rentabilidad_pct": 1.7,
+            "justificacion": "Ventas de 1.786 M USD con margen EBITDA del 28 % y amortización del 3 %: EBIT de 447 M, −2 M financieros, impuesto del 20 % y 15,6 M de minoritarios (4,4 % del beneficio); 340 M entre 92,9 M de acciones. Cuadre con 2025: (302,9 − 0,3) × (1 − 19,4 %) − 10,8 = 232,9 M ÷ 93,9 = 2,48 USD, el publicado."
+          },
+          {
+            "escenario": "Alcista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 3.95,
+            "multiplo": 22.5,
+            "multiplo_informe": null,
+            "origen": "el base (ni la historia ni los comparables pagan más)",
+            "precio": 88.88,
+            "rentabilidad_pct": 9.5,
+            "justificacion": "Ventas de 1.852 M USD (+13 % y +10 %) con margen EBITDA del 29 %: EBIT de 482 M y 367 M de beneficio atribuido. Centros de datos y flota que mantienen el producto nuevo."
+          }
+        ],
+        "regla": {
+          "version": "v3",
+          "bajista": 17.3,
+          "base": 22.5,
+          "alcista": 22.5,
+          "bajista_origen": "mínimo de 5 años",
+          "base_origen": "PER actual (24.4x) a mitad de camino hacia abajo, hacia la mediana de 5 años (20.8x)",
+          "alcista_origen": "el base (ni la historia ni los comparables pagan más)"
+        },
+        "version": "v3",
+        "probabilidades": [
+          25,
+          50,
+          25
+        ],
+        "objetivo_ponderado": 73.6,
+        "objetivo_simple": 70.69,
+        "objetivo_base": 82.35,
+        "rentabilidad_ponderada_pct": -8.9,
+        "rentabilidad_simple_pct": -12.4,
+        "rentabilidad_base_pct": 1.7,
+        "asimetria": 0.14,
+        "senal": "Mantener",
+        "senal_sin_confirmar": null,
+        "confianza_baja": false,
+        "comprar_por_debajo": 46.08,
+        "vender_por_encima": 83.88,
+        "consenso_objetivo": 98.37,
+        "diferencia_consenso_pct": -16.3,
+        "selector": {
+          "regla": "v3",
+          "motivo": "historia adelantada de 3 años: decide la más baja de v3 y v2 (v3)",
+          "v3_sin_selector": {
+            "version": "v3",
+            "rentabilidad_ponderada_pct": -8.9,
+            "rentabilidad_base_pct": 1.7,
+            "senal": "Mantener",
+            "objetivo_ponderado": 73.6
+          },
+          "v2": {
+            "version": "v2",
+            "rentabilidad_ponderada_pct": -2.6,
+            "rentabilidad_base_pct": 10,
+            "senal": "Mantener",
+            "objetivo_ponderado": 78.86
+          }
+        },
+        "v2": {
+          "rentabilidad_ponderada_pct": -2.6,
+          "rentabilidad_base_pct": 10,
+          "senal": "Mantener",
+          "multiplos": [
+            15.8,
+            24.4,
+            25.2
+          ]
+        },
+        "comparacion_txt": "Para comparar, con la regla v2 (historia al cierre, mismo precio): 15,8x / 24,4x / 25,2x, -2,6 % Mantener. Decide la v3 con tope ×1,1, elegida por el selector de método (historia adelantada de 3 años: decide la más baja de v3 y v2 (v3); METODO-VIGENTE.md)."
+      },
+      "rentabilidad_12m_pct": -8.9,
+      "rentabilidad_12m_txt": "-8,9 % (base +1,7 %)",
+      "objetivo_12m_txt": "73,60 USD (61,10 CHF)"
+    },
+    "mercado": {
+      "precio": 82.87,
+      "acciones": 93.71,
+      "capitalizacion": 7766,
+      "deuda_neta": 279,
+      "deuda_neta_ajustada": 301,
+      "asimilables_deuda": 22,
+      "ajustes_puente": 212,
+      "valor_empresa": 8257,
+      "fecha_puente": "2026-06-30"
+    },
+    "clave": {
+      "capitalizacion": 7766,
+      "valor_empresa": 8257,
+      "deuda_neta": 279,
+      "ev_ventas_ltm": 5.93,
+      "ev_ebitda_ltm": 21.4,
+      "ev_ebitda_ntm": 17.6,
+      "ev_ebit_ltm": 23.8,
+      "per_ltm": 29.2,
+      "per_ntm": 23.9,
+      "fcf_yield_pct": 2.8,
+      "dividendo_pct": 2.3,
+      "dn_ebitda": 0.7,
+      "roic_pct": 39.3,
+      "margen_ebitda_pct": 27.7,
+      "deuda_neta_ajustada": 301,
+      "dn_ebitda_ajustada": 0.8,
+      "crecimiento_tcac_pct": 13.7,
+      "ingresos_ntm": 1635,
+      "ebitda_ntm": 470,
+      "bpa_ntm": 3.46,
+      "ebitda_ltm": 386,
+      "ingresos_ltm": 1392,
+      "ev_rab": null
+    },
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 756.5,
+        "crecimiento_pct": null,
+        "beneficio_bruto": 355.7,
+        "margen_bruto_pct": 47,
+        "ebitda": 209.1,
+        "margen_ebitda_pct": 27.6,
+        "ebit": 185.6,
+        "margen_ebit_pct": 24.5,
+        "beneficio_neto": 138.5,
+        "margen_neto_pct": 18.3,
+        "bpa": 1.48,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 21.7,
+        "payout_pct": 0
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 780.5,
+        "crecimiento_pct": 3.2,
+        "beneficio_bruto": 352.8,
+        "margen_bruto_pct": 45.2,
+        "ebitda": 216.8,
+        "margen_ebitda_pct": 27.8,
+        "ebit": 194,
+        "margen_ebit_pct": 24.9,
+        "beneficio_neto": 122.8,
+        "margen_neto_pct": 15.7,
+        "bpa": 1.31,
+        "dpa": 0.79,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 17.1,
+        "payout_pct": 60
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 914.9,
+        "crecimiento_pct": 17.2,
+        "beneficio_bruto": 386,
+        "margen_bruto_pct": 42.2,
+        "ebitda": 248.8,
+        "margen_ebitda_pct": 27.2,
+        "ebit": 218.70000000000002,
+        "margen_ebit_pct": 23.9,
+        "beneficio_neto": 101.2,
+        "margen_neto_pct": 11.1,
+        "bpa": 1.08,
+        "dpa": 1.01,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 19.8,
+        "payout_pct": 94
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 1022.5,
+        "crecimiento_pct": 11.8,
+        "beneficio_bruto": 471.20000000000005,
+        "margen_bruto_pct": 46.1,
+        "ebitda": 290,
+        "margen_ebitda_pct": 28.4,
+        "ebit": 253.70000000000002,
+        "margen_ebit_pct": 24.8,
+        "beneficio_neto": 170.1,
+        "margen_neto_pct": 16.6,
+        "bpa": 1.81,
+        "dpa": 1.38,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 20.5,
+        "payout_pct": 76
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 1263.1,
+        "crecimiento_pct": 23.5,
+        "beneficio_bruto": 553.0999999999999,
+        "margen_bruto_pct": 43.8,
+        "ebitda": 342.3,
+        "margen_ebitda_pct": 27.1,
+        "ebit": 302.9,
+        "margen_ebit_pct": 24,
+        "beneficio_neto": 232.9,
+        "margen_neto_pct": 18.4,
+        "bpa": 2.48,
+        "dpa": 1.89,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 19.4,
+        "payout_pct": 76
+      }
+    ],
+    "tcac": {
+      "periodo": "2021-2025",
+      "ingresos_pct": 13.7,
+      "ebitda_pct": 13.1,
+      "bpa_pct": 13.8
+    },
+    "cuenta_y_prevision": [
+      {
+        "periodo": "2021",
+        "ingresos": 756.5,
+        "ebitda": 209.1
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 780.5,
+        "ebitda": 216.8
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 914.9,
+        "ebitda": 248.8
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 1022.5,
+        "ebitda": 290
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 1263.1,
+        "ebitda": 342.3
+      },
+      {
+        "periodo": "2026e",
+        "ingresos": 1490,
+        "ebitda": 414
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 1654,
+        "ebitda": 463
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 1787,
+        "ebitda": 500
+      },
+      {
+        "periodo": "2029e",
+        "ingresos": 1894,
+        "ebitda": 527
+      },
+      {
+        "periodo": "2030e",
+        "ingresos": 1989,
+        "ebitda": 547
+      },
+      {
+        "periodo": "2031e",
+        "ingresos": 2068,
+        "ebitda": 569
+      },
+      {
+        "periodo": "2032e",
+        "ingresos": 2141,
+        "ebitda": 589
+      }
+    ],
+    "segmentos_ultimo": [
+      {
+        "nombre": "Medium & Low Speed",
+        "ingresos": 929.6,
+        "peso_pct": 73.6,
+        "crecimiento_pct": 20.2,
+        "margen_pct": 25.8,
+        "tipo_margen": "EBITA"
+      },
+      {
+        "nombre": "High Speed",
+        "ingresos": 333.5,
+        "peso_pct": 26.4,
+        "crecimiento_pct": 33.9,
+        "margen_pct": 24.5,
+        "tipo_margen": "EBITA"
+      }
+    ],
+    "segmentos_tabla": {
+      "periodos": [
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "filas": [
+        {
+          "nombre": "Medium & Low Speed",
+          "v0": 550.6,
+          "v1": 566.7,
+          "v2": 664.9,
+          "v3": 773.5,
+          "v4": 929.6
+        },
+        {
+          "nombre": "High Speed",
+          "v0": 205.9,
+          "v1": 213.8,
+          "v2": 249.9,
+          "v3": 249,
+          "v4": 333.5
+        }
+      ]
+    },
+    "segmentos_periodo": "2025",
+    "balance": [
+      {
+        "periodo": "2021",
+        "activo_total": 686.1,
+        "intangibles": 10.7,
+        "circulante": 252.29999999999998,
+        "circulante_ventas_pct": 33.4,
+        "caja": 73.2,
+        "deuda_financiera": 92.1,
+        "arrendamientos": 0,
+        "deuda_neta": 18.89999999999999,
+        "patrimonio": 288.8,
+        "minoritarios": 18.2,
+        "dn_ebitda": 0.09,
+        "dn_patrimonio_pct": 6,
+        "dso": 88,
+        "dio": 141,
+        "dpo": 70,
+        "ciclo_caja": 159,
+        "cobertura_intereses": 132.6,
+        "capital_invertido": 325.9,
+        "fondo_comercio": null,
+        "liquidez_corriente": 1.34
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 981.6,
+        "intangibles": 10.5,
+        "circulante": 247.99999999999997,
+        "circulante_ventas_pct": 31.8,
+        "caja": 189.4,
+        "deuda_financiera": 322.8,
+        "arrendamientos": 0,
+        "deuda_neta": 133.4,
+        "patrimonio": 283.8,
+        "minoritarios": 12.7,
+        "dn_ebitda": 0.62,
+        "dn_patrimonio_pct": 45,
+        "dso": 93,
+        "dio": 159,
+        "dpo": 112,
+        "ciclo_caja": 140,
+        "cobertura_intereses": 51.1,
+        "capital_invertido": 429.9,
+        "fondo_comercio": null,
+        "liquidez_corriente": 2.15
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 1206.8,
+        "intangibles": 82.7,
+        "circulante": 314.1,
+        "circulante_ventas_pct": 34.3,
+        "caja": 234.1,
+        "deuda_financiera": 477.6,
+        "arrendamientos": 0,
+        "deuda_neta": 243.50000000000003,
+        "patrimonio": 287.3,
+        "minoritarios": 15.6,
+        "dn_ebitda": 0.98,
+        "dn_patrimonio_pct": 80,
+        "dso": 89,
+        "dio": 173,
+        "dpo": 106,
+        "ciclo_caja": 156,
+        "cobertura_intereses": 26,
+        "capital_invertido": 546.4000000000001,
+        "fondo_comercio": null,
+        "liquidez_corriente": 2.33
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 1233.8,
+        "intangibles": 109.5,
+        "circulante": 324.5,
+        "circulante_ventas_pct": 31.7,
+        "caja": 272.5,
+        "deuda_financiera": 478.6,
+        "arrendamientos": 0,
+        "deuda_neta": 206.10000000000002,
+        "patrimonio": 331.9,
+        "minoritarios": 17.3,
+        "dn_ebitda": 0.71,
+        "dn_patrimonio_pct": 59,
+        "dso": 73,
+        "dio": 161,
+        "dpo": 73,
+        "ciclo_caja": 161,
+        "cobertura_intereses": 27.9,
+        "capital_invertido": 555.3,
+        "fondo_comercio": null,
+        "liquidez_corriente": 2.55
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 1540.7,
+        "intangibles": 117.2,
+        "circulante": 397.30000000000007,
+        "circulante_ventas_pct": 31.5,
+        "caja": 356,
+        "deuda_financiera": 543.5,
+        "arrendamientos": 0,
+        "deuda_neta": 187.5,
+        "patrimonio": 477.2,
+        "minoritarios": 21.1,
+        "dn_ebitda": 0.55,
+        "dn_patrimonio_pct": 38,
+        "dso": 81,
+        "dio": 158,
+        "dpo": 76,
+        "ciclo_caja": 163,
+        "cobertura_intereses": 52.2,
+        "capital_invertido": 685.8,
+        "fondo_comercio": null,
+        "liquidez_corriente": 2.63
+      }
+    ],
+    "perimetro_nota": "Cambio de perímetro (2023: Compra de OMT (inyección de combustible, Turín) el 20-jul-2023 por 106,6 M USD: entra medio año en la cuenta y entero en el balance [3].; 2024: Compras de OMC2 (Brescia) y TNM el 29-ago-2024: un tercio del año en la cuenta [2].; 2022: el activo total crece un 43 % y los ingresos un 3 %). Los ratios de balance de ese año (días, circulante, deuda neta / EBITDA, ROIC) y los indicadores de calidad contable no son comparables con los anteriores.",
+    "flujos": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 163.3,
+        "capex": 28.9,
+        "pagos_arrendamientos": 0,
+        "fcf": 134.4,
+        "beneficio_neto": 138.5,
+        "conversion_pct": 97,
+        "capex_ventas_pct": 3.8,
+        "capex_amortizacion": 1.23,
+        "adquisiciones": 0,
+        "desinversiones": 1.1,
+        "dividendos": 153.8,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 153.8,
+        "payout_caja_pct": 111,
+        "acciones": 93.6,
+        "fcf_por_accion": 1.44
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 133.4,
+        "capex": 34.4,
+        "pagos_arrendamientos": 0,
+        "fcf": 99,
+        "beneficio_neto": 122.8,
+        "conversion_pct": 81,
+        "capex_ventas_pct": 4.4,
+        "capex_amortizacion": 1.52,
+        "adquisiciones": 0,
+        "desinversiones": 0.3,
+        "dividendos": 178.4,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 178.4,
+        "payout_caja_pct": 145,
+        "acciones": 93.8,
+        "fcf_por_accion": 1.06
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 145.2,
+        "capex": 36.2,
+        "pagos_arrendamientos": 0,
+        "fcf": 108.99999999999999,
+        "beneficio_neto": 101.2,
+        "conversion_pct": 108,
+        "capex_ventas_pct": 4,
+        "capex_amortizacion": 1.2,
+        "adquisiciones": 92.8,
+        "desinversiones": 0.1,
+        "dividendos": 86.7,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 86.7,
+        "payout_caja_pct": 86,
+        "acciones": 93.8,
+        "fcf_por_accion": 1.16
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 216.1,
+        "capex": 38.5,
+        "pagos_arrendamientos": 0,
+        "fcf": 177.6,
+        "beneficio_neto": 170.1,
+        "conversion_pct": 104,
+        "capex_ventas_pct": 3.8,
+        "capex_amortizacion": 1.06,
+        "adquisiciones": 58.8,
+        "desinversiones": 0.1,
+        "dividendos": 88.2,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 88.2,
+        "payout_caja_pct": 52,
+        "acciones": 93.8,
+        "fcf_por_accion": 1.89
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 272.7,
+        "capex": 58.8,
+        "pagos_arrendamientos": 0,
+        "fcf": 213.89999999999998,
+        "beneficio_neto": 232.9,
+        "conversion_pct": 92,
+        "capex_ventas_pct": 4.7,
+        "capex_amortizacion": 1.49,
+        "adquisiciones": 4.6,
+        "desinversiones": 0.4,
+        "dividendos": 143.5,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 143.5,
+        "payout_caja_pct": 62,
+        "acciones": 93.9,
+        "fcf_por_accion": 2.28
+      }
+    ],
+    "flujos_acumulado": {
+      "periodo": "2021-2025",
+      "fcf": 734,
+      "adquisiciones": 156,
+      "dividendos": 651,
+      "recompras": 0,
+      "conversion_pct": 96
+    },
+    "rentabilidad": [
+      {
+        "periodo": "2021",
+        "nopat": 145,
+        "capital_invertido": 326,
+        "roic_pct": 44.6,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": null,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 48,
+        "roa_pct": 20.2,
+        "margen_neto_pct": 18.3,
+        "rotacion": 1.1,
+        "apalancamiento": 2.38
+      },
+      {
+        "periodo": "2022",
+        "nopat": 161,
+        "capital_invertido": 378,
+        "roic_pct": 42.6,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": null,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 42.9,
+        "roa_pct": 14.7,
+        "margen_neto_pct": 15.7,
+        "rotacion": 0.94,
+        "apalancamiento": 2.91
+      },
+      {
+        "periodo": "2023",
+        "nopat": 175,
+        "capital_invertido": 488,
+        "roic_pct": 35.9,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": null,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 35.4,
+        "roa_pct": 9.2,
+        "margen_neto_pct": 11.1,
+        "rotacion": 0.84,
+        "apalancamiento": 3.83
+      },
+      {
+        "periodo": "2024",
+        "nopat": 202,
+        "capital_invertido": 551,
+        "roic_pct": 36.6,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": null,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 54.9,
+        "roa_pct": 13.9,
+        "margen_neto_pct": 16.6,
+        "rotacion": 0.84,
+        "apalancamiento": 3.94
+      },
+      {
+        "periodo": "2025",
+        "nopat": 244,
+        "capital_invertido": 621,
+        "roic_pct": 39.3,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": null,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 57.6,
+        "roa_pct": 16.8,
+        "margen_neto_pct": 18.4,
+        "rotacion": 0.91,
+        "apalancamiento": 3.43
+      }
+    ],
+    "roic_incremental_pct": 33.6,
+    "roic_frente_wacc": [
+      {
+        "periodo": "2021",
+        "roic_pct": 44.6,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 48,
+        "wacc_pct": 10.2
+      },
+      {
+        "periodo": "2022",
+        "roic_pct": 42.6,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 42.9,
+        "wacc_pct": 10.2
+      },
+      {
+        "periodo": "2023",
+        "roic_pct": 35.9,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 35.4,
+        "wacc_pct": 10.2
+      },
+      {
+        "periodo": "2024",
+        "roic_pct": 36.6,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 54.9,
+        "wacc_pct": 10.2
+      },
+      {
+        "periodo": "2025",
+        "roic_pct": 39.3,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 57.6,
+        "wacc_pct": 10.2
+      }
+    ],
+    "compras": null,
+    "calidad": {
+      "periodo": "2025",
+      "altman_z": 6.8,
+      "altman_zona": "Zona segura",
+      "piotroski_f": 7,
+      "piotroski_detalle": [
+        {
+          "criterio": "Beneficio neto positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "ROA mejora",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo > beneficio neto",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Baja el endeudamiento (deuda / activo)",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora la liquidez corriente",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "No emite acciones",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora el margen bruto",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Mejora la rotación del activo",
+          "resultado": "No"
+        }
+      ],
+      "beneish_m": -2.25,
+      "beneish_fiable": true,
+      "beneish_variables": [
+        {
+          "variable": "DSRI",
+          "valor": 1.1
+        },
+        {
+          "variable": "GMI",
+          "valor": 1.05
+        },
+        {
+          "variable": "AQI",
+          "valor": 0.92
+        },
+        {
+          "variable": "SGI",
+          "valor": 1.24
+        },
+        {
+          "variable": "DEPI",
+          "valor": 1.13
+        },
+        {
+          "variable": "SGAI",
+          "valor": 0.84
+        },
+        {
+          "variable": "LVGI",
+          "valor": 0.94
+        },
+        {
+          "variable": "TATA",
+          "valor": -0.03
+        }
+      ],
+      "tabla": [
+        {
+          "indicador": "Altman Z",
+          "valor": "6,80",
+          "lectura": "Zona segura (> 2,99 seguro; < 1,81 riesgo). No aplica a bancos ni aseguradoras, y subestima la solvencia de empresas con grandes anticipos de clientes o prefinanciación pública (contratistas, construcción), que inflan el pasivo."
+        },
+        {
+          "indicador": "Piotroski F",
+          "valor": "7 / 9",
+          "lectura": "Fortaleza financiera alta (7-9)."
+        },
+        {
+          "indicador": "Beneish M",
+          "valor": "-2,25",
+          "lectura": "Por debajo de −1,78: sin señal de manipulación."
+        },
+        {
+          "indicador": "Flujo operativo / beneficio neto (acumulado)",
+          "valor": "1,22x",
+          "lectura": "El beneficio se cobra."
+        }
+      ]
+    },
+    "dcf": {
+      "proyeccion": [
+        {
+          "periodo": "2026e",
+          "ingresos": 1490,
+          "crecimiento_pct": 18,
+          "ebitda": 414,
+          "margen_ebitda_pct": 27.8,
+          "amortizacion": 42,
+          "ebit": 373,
+          "impuestos": 75,
+          "capex": 82,
+          "variacion_circulante": 72,
+          "fcff": 186,
+          "fraccion": 0.21,
+          "factor": 0.99,
+          "vp": 38
+        },
+        {
+          "periodo": "2027e",
+          "ingresos": 1654,
+          "crecimiento_pct": 11,
+          "ebitda": 463,
+          "margen_ebitda_pct": 28,
+          "amortizacion": 48,
+          "ebit": 415,
+          "impuestos": 83,
+          "capex": 91,
+          "variacion_circulante": 52,
+          "fcff": 238,
+          "fraccion": 1,
+          "factor": 0.933,
+          "vp": 222
+        },
+        {
+          "periodo": "2028e",
+          "ingresos": 1787,
+          "crecimiento_pct": 8,
+          "ebitda": 500,
+          "margen_ebitda_pct": 28,
+          "amortizacion": 54,
+          "ebit": 447,
+          "impuestos": 89,
+          "capex": 89,
+          "variacion_circulante": 42,
+          "fcff": 280,
+          "fraccion": 1,
+          "factor": 0.847,
+          "vp": 237
+        },
+        {
+          "periodo": "2029e",
+          "ingresos": 1894,
+          "crecimiento_pct": 6,
+          "ebitda": 527,
+          "margen_ebitda_pct": 27.8,
+          "amortizacion": 59,
+          "ebit": 468,
+          "impuestos": 94,
+          "capex": 85,
+          "variacion_circulante": 34,
+          "fcff": 314,
+          "fraccion": 1,
+          "factor": 0.768,
+          "vp": 241
+        },
+        {
+          "periodo": "2030e",
+          "ingresos": 1989,
+          "crecimiento_pct": 5,
+          "ebitda": 547,
+          "margen_ebitda_pct": 27.5,
+          "amortizacion": 64,
+          "ebit": 483,
+          "impuestos": 97,
+          "capex": 80,
+          "variacion_circulante": 30,
+          "fcff": 341,
+          "fraccion": 1,
+          "factor": 0.697,
+          "vp": 237
+        },
+        {
+          "periodo": "2031e",
+          "ingresos": 2068,
+          "crecimiento_pct": 4,
+          "ebitda": 569,
+          "margen_ebitda_pct": 27.5,
+          "amortizacion": 68,
+          "ebit": 501,
+          "impuestos": 100,
+          "capex": 79,
+          "variacion_circulante": 25,
+          "fcff": 365,
+          "fraccion": 1,
+          "factor": 0.633,
+          "vp": 231
+        },
+        {
+          "periodo": "2032e",
+          "ingresos": 2141,
+          "crecimiento_pct": 3.5,
+          "ebitda": 589,
+          "margen_ebitda_pct": 27.5,
+          "amortizacion": 73,
+          "ebit": 516,
+          "impuestos": 103,
+          "capex": 77,
+          "variacion_circulante": 23,
+          "fcff": 386,
+          "fraccion": 1,
+          "factor": 0.574,
+          "vp": 221
+        }
+      ],
+      "etapa2": null,
+      "suma_vp": 1427,
+      "valor_terminal": 5503,
+      "vp_terminal": 3007,
+      "valor_empresa": 4435,
+      "peso_terminal_pct": 68,
+      "valor_acciones": 3944,
+      "valor_accion": 42.09,
+      "vt_gordon": 5503,
+      "vt_multiplo": 8830,
+      "multiplo_implicito": 9.3,
+      "g_implicito_pct": 5.61,
+      "metodo_terminal": "gordon",
+      "terminal_tabla": [
+        {
+          "concepto": "Método principal",
+          "valor": "Crecimiento a perpetuidad"
+        },
+        {
+          "concepto": "Crecimiento a perpetuidad",
+          "valor": "3,0 %"
+        },
+        {
+          "concepto": "Múltiplo EV/EBITDA de salida",
+          "valor": "15,0x"
+        },
+        {
+          "concepto": "Valor terminal (Gordon)",
+          "valor": "5.503"
+        },
+        {
+          "concepto": "Valor terminal (múltiplo)",
+          "valor": "8.830"
+        },
+        {
+          "concepto": "Múltiplo de salida implícito en Gordon",
+          "valor": "9,3x"
+        },
+        {
+          "concepto": "Crecimiento implícito en el múltiplo",
+          "valor": "5,61 %"
+        },
+        {
+          "concepto": "Peso del valor terminal en el valor empresa",
+          "valor": "68 %"
+        }
+      ],
+      "puente": [
+        {
+          "concepto": "Valor actual de los flujos proyectados",
+          "valor": "1.427"
+        },
+        {
+          "concepto": "Valor actual del valor terminal",
+          "valor": "3.007"
+        },
+        {
+          "concepto": "Valor empresa",
+          "valor": "4.435"
+        },
+        {
+          "concepto": "− Deuda financiera neta (con arrendamientos)",
+          "valor": "-279"
+        },
+        {
+          "concepto": "− Minoritarios, pensiones y otros; + asociadas",
+          "valor": "-212"
+        },
+        {
+          "concepto": "Valor de los fondos propios",
+          "valor": "3.944"
+        },
+        {
+          "concepto": "Acciones diluidas (millones)",
+          "valor": "93,7"
+        },
+        {
+          "concepto": "Valor por acción",
+          "valor": "42,09"
+        }
+      ],
+      "composicion": [
+        {
+          "parte": "Flujos proyectados",
+          "valor": 1427
+        },
+        {
+          "parte": "Valor terminal",
+          "valor": 3007
+        }
+      ],
+      "wacc": 10.22,
+      "ke": 10.6,
+      "kd_despues": 4.24,
+      "wacc_tabla": [
+        {
+          "concepto": "Tasa libre de riesgo",
+          "valor": "5,10 %"
+        },
+        {
+          "concepto": "Beta",
+          "valor": "1,00"
+        },
+        {
+          "concepto": "Prima de riesgo de mercado",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Prima adicional (país, tamaño, específica)",
+          "valor": "0,00 %"
+        },
+        {
+          "concepto": "Coste de los fondos propios",
+          "valor": "10,60 %"
+        },
+        {
+          "concepto": "Coste de la deuda antes de impuestos",
+          "valor": "5,30 %"
+        },
+        {
+          "concepto": "Tipo impositivo",
+          "valor": "20,00 %"
+        },
+        {
+          "concepto": "Coste de la deuda después de impuestos",
+          "valor": "4,24 %"
+        },
+        {
+          "concepto": "Peso de la deuda (D / (D + E))",
+          "valor": "6,00 %"
+        },
+        {
+          "concepto": "WACC",
+          "valor": "10,22 %"
+        },
+        {
+          "concepto": "Prima de riesgo implícita del mercado (regla relativa)",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "WACC con la prima implícita del mercado",
+          "valor": "9,00 %"
+        }
+      ],
+      "potencial_pct": -49.2,
+      "sensibilidad": {
+        "eje_columnas": "Crecimiento a perpetuidad",
+        "columnas": [
+          "2,0 %",
+          "2,5 %",
+          "3,0 %",
+          "3,5 %",
+          "4,0 %"
+        ],
+        "filas": [
+          {
+            "wacc": "9,2 %",
+            "v0": 44.07,
+            "v1": 46.75,
+            "v2": 49.86,
+            "v3": 53.51,
+            "v4": 57.87
+          },
+          {
+            "wacc": "9,7 %",
+            "v0": 40.78,
+            "v1": 43.06,
+            "v2": 45.68,
+            "v3": 48.72,
+            "v4": 52.29
+          },
+          {
+            "wacc": "10,2 %",
+            "v0": 37.91,
+            "v1": 39.86,
+            "v2": 42.09,
+            "v3": 44.64,
+            "v4": 47.61
+          },
+          {
+            "wacc": "10,7 %",
+            "v0": 35.36,
+            "v1": 37.05,
+            "v2": 38.96,
+            "v3": 41.13,
+            "v4": 43.63
+          },
+          {
+            "wacc": "11,2 %",
+            "v0": 33.1,
+            "v1": 34.57,
+            "v2": 36.22,
+            "v3": 38.09,
+            "v4": 40.21
+          }
+        ]
+      },
+      "sensibilidad2": {
+        "columnas": [
+          "-2 pp",
+          "-1 pp",
+          "0 pp",
+          "+1 pp",
+          "+2 pp"
+        ],
+        "filas": [
+          {
+            "margen": "-2 pp",
+            "v0": 35.23,
+            "v1": 36.5,
+            "v2": 37.8,
+            "v3": 39.13,
+            "v4": 40.49
+          },
+          {
+            "margen": "-1 pp",
+            "v0": 37.18,
+            "v1": 38.54,
+            "v2": 39.94,
+            "v3": 41.38,
+            "v4": 42.85
+          },
+          {
+            "margen": "0 pp",
+            "v0": 39.12,
+            "v1": 40.58,
+            "v2": 42.09,
+            "v3": 43.63,
+            "v4": 45.21
+          },
+          {
+            "margen": "+1 pp",
+            "v0": 41.07,
+            "v1": 42.63,
+            "v2": 44.23,
+            "v3": 45.88,
+            "v4": 47.57
+          },
+          {
+            "margen": "+2 pp",
+            "v0": 43.02,
+            "v1": 44.67,
+            "v2": 46.38,
+            "v3": 48.13,
+            "v4": 49.93
+          }
+        ]
+      },
+      "rango_min": 37.05,
+      "rango_max": 48.72,
+      "inverso": {
+        "crecimiento_implicito_pct": 27,
+        "crecimiento_base_pct": 6.3,
+        "periodo": "2027e-2032e",
+        "margen_implicito_pct": 46.5,
+        "margen_implicito_texto": null,
+        "margen_base_pct": 27.5,
+        "rentabilidad_implicita_pct": 6.9
+      },
+      "sostenibilidad": {
+        "veredicto": "Sí",
+        "veredicto_motor": "Sí",
+        "motivos_motor": [],
+        "crecimiento_financiable_bruto_pct": null,
+        "roic_implicito_bruto_pct": null,
+        "tcac_ingresos_historica_pct": 13.7,
+        "crecimiento_proyectado_pct": 7.9,
+        "tasa_reinversion_pct": 18,
+        "crecimiento_financiable_pct": 6.9,
+        "roic_pct": 39.3,
+        "roic_incremental_historico_pct": 33.6,
+        "roic_implicito_pct": 37.3,
+        "cuota_actual_pct": null,
+        "cuota_final_pct": null,
+        "puente": [
+          {
+            "periodo": "2026e",
+            "volumen_pct": 12,
+            "precio_pct": 3,
+            "otros_pct": 3,
+            "comentario": "Volumen +12 % (barcos nuevos, generación principal para centros de datos y remanufactura para compresión de gas), precio +3 % (subidas «directas e indirectas») y divisa +3 % [5, 6].",
+            "suma_pct": 18,
+            "crecimiento_pct": 18
+          },
+          {
+            "periodo": "2027e",
+            "volumen_pct": 8,
+            "precio_pct": 3,
+            "otros_pct": 0,
+            "comentario": "Volumen +8 % con entregas navales récord y más motores de gas para centros de datos; precio +3 % [6].",
+            "suma_pct": 11,
+            "crecimiento_pct": 11
+          },
+          {
+            "periodo": "2028e",
+            "volumen_pct": 5.5,
+            "precio_pct": 2.5,
+            "otros_pct": 0,
+            "comentario": "Volumen +5,5 % (servicio de la base instalada que creció en 2023-2027); precio +2,5 % [6].",
+            "suma_pct": 8,
+            "crecimiento_pct": 8
+          },
+          {
+            "periodo": "2029e",
+            "volumen_pct": 3.5,
+            "precio_pct": 2.5,
+            "otros_pct": 0,
+            "comentario": "Volumen +3,5 % al normalizarse la construcción naval, compensado por el servicio; precio +2,5 %.",
+            "suma_pct": 6,
+            "crecimiento_pct": 6
+          },
+          {
+            "periodo": "2030e",
+            "volumen_pct": 2.5,
+            "precio_pct": 2.5,
+            "otros_pct": 0,
+            "comentario": "Volumen +2,5 % y precio +2,5 %: crecimiento de un negocio maduro de servicio.",
+            "suma_pct": 5,
+            "crecimiento_pct": 5
+          }
+        ],
+        "texto": "La proyección reinvierte el 18 % del NOPAT. Con el ROIC del último ejercicio (39,3 %), eso financia un crecimiento del 6,9 % anual, frente al 7,9 % de ingresos proyectado. Supone que el capital nuevo rinde un 37,3 %, frente a un ROIC incremental histórico del 33,6 %.",
+        "tabla": [
+          {
+            "concepto": "Crecimiento medio de ingresos proyectado",
+            "valor": "7,9 %"
+          },
+          {
+            "concepto": "Capex bruto medio (incluidas compras si van como inversión)",
+            "valor": "4,6 % de las ventas"
+          },
+          {
+            "concepto": "Reinversión neta acumulada (capex − amortización + circulante)",
+            "valor": "453 M (18 % del NOPAT)"
+          },
+          {
+            "concepto": "Crecimiento que financia esa reinversión al ROIC actual",
+            "valor": "6,9 % (ROIC 39,3 %)"
+          },
+          {
+            "concepto": "Crecimiento histórico de ingresos (TCAC)",
+            "valor": "13,7 % frente al 7,9 % proyectado"
+          },
+          {
+            "concepto": "Veredicto de las pruebas del motor",
+            "valor": "Sí"
+          },
+          {
+            "concepto": "Rendimiento que la proyección supone para el capital nuevo",
+            "valor": "37,3 % (histórico: 33,6 %)"
+          }
+        ]
+      }
+    },
+    "escenarios": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "narrativa": "La construcción naval cae tras las entregas récord de 2027 y los fabricantes de motores para centros de datos frenan pedidos: en 2028 las ventas bajan un 8 % y el margen EBITDA cae al 22,5 %, como en un ciclo naval normal en el que el producto nuevo se desploma y queda el servicio. Después el margen se queda 2,5 puntos por debajo por más competencia china en barcos de gama baja.",
+        "crecimiento_medio_pct": 1.1,
+        "margen_final_pct": 25,
+        "wacc_pct": 10.7,
+        "valor": 26.7,
+        "potencial_pct": -67.8
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "narrativa": "Se cumple la guía de 2026 y el consenso de 2027-2028: ventas de 1.786 M USD en 2028 con margen EBITDA del 28 %, y luego crecimiento del 3,5-6 % con el servicio de una base instalada mayor.",
+        "crecimiento_medio_pct": 6.3,
+        "margen_final_pct": 27.5,
+        "wacc_pct": 10.2,
+        "valor": 42.09,
+        "potencial_pct": -49.2
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "narrativa": "Los centros de datos en EE. UU. y la renovación de la flota mantienen el producto nuevo dos años más y el servicio de los motores de gas empieza a pesar desde 2028: ventas +2 puntos al año sobre el base y margen del 29 %.",
+        "crecimiento_medio_pct": 8.3,
+        "margen_final_pct": 28.5,
+        "wacc_pct": 10.2,
+        "valor": 47.57,
+        "potencial_pct": -42.6
+      }
+    ],
+    "valor_ponderado": 39.61,
+    "potencial_ponderado_pct": -52.2,
+    "comparables": {
+      "tabla": [
+        {
+          "nombre": "Accelleron",
+          "ticker": "ACLN",
+          "pais": "CH",
+          "capitalizacion": 7766,
+          "ev_ventas": 5.93,
+          "ev_ebitda_ltm": 21.4,
+          "ev_ebitda_ntm": 17.6,
+          "per_ntm": 23.9,
+          "crecimiento_pct": 13.2,
+          "margen_ebitda_pct": 27.7,
+          "roic_pct": 39.3,
+          "dn_ebitda": 0.7,
+          "fcf_yield_pct": 2.8,
+          "es_objetivo": true
+        },
+        {
+          "nombre": "Wärtsilä",
+          "ticker": "WRT1V.HE",
+          "pais": "FI",
+          "capitalizacion": 19152,
+          "ev_ventas": 2.18,
+          "ev_ebitda_ltm": 13.9,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 22.2,
+          "crecimiento_pct": 6.2,
+          "margen_ebitda_pct": 15.7,
+          "roic_pct": 21,
+          "dn_ebitda": -1.86,
+          "fcf_yield_pct": 7.8,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Burckhardt Compression",
+          "ticker": "BCHN.SW",
+          "pais": "CH",
+          "capitalizacion": 1956,
+          "ev_ventas": 1.28,
+          "ev_ebitda_ltm": 8.3,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 16.5,
+          "crecimiento_pct": 0.5,
+          "margen_ebitda_pct": 15.4,
+          "roic_pct": 31.1,
+          "dn_ebitda": -1.62,
+          "fcf_yield_pct": 7.8,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Garrett Motion",
+          "ticker": "GTX",
+          "pais": "US",
+          "capitalizacion": 4559,
+          "ev_ventas": 1.54,
+          "ev_ebitda_ltm": 8.8,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 10.9,
+          "crecimiento_pct": 3.7,
+          "margen_ebitda_pct": 17.6,
+          "roic_pct": 64.6,
+          "dn_ebitda": 1.88,
+          "fcf_yield_pct": 8,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Cummins",
+          "ticker": "CMI",
+          "pais": "US",
+          "capitalizacion": 73338,
+          "ev_ventas": 2.25,
+          "ev_ebitda_ltm": 14.8,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 15.5,
+          "crecimiento_pct": 9.7,
+          "margen_ebitda_pct": 15.2,
+          "roic_pct": 16.1,
+          "dn_ebitda": 0.89,
+          "fcf_yield_pct": 4.6,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Caterpillar",
+          "ticker": "CAT",
+          "pais": "US",
+          "capitalizacion": 338155,
+          "ev_ventas": 4.97,
+          "ev_ebitda_ltm": 22.1,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 22.6,
+          "crecimiento_pct": 11.4,
+          "margen_ebitda_pct": 22.5,
+          "roic_pct": 14.2,
+          "dn_ebitda": 1.98,
+          "fcf_yield_pct": 2.7,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Rolls-Royce",
+          "ticker": "RR.L",
+          "pais": "GB",
+          "capitalizacion": 150595,
+          "ev_ventas": 4.8,
+          "ev_ebitda_ltm": 20.7,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 27.1,
+          "crecimiento_pct": 11.1,
+          "margen_ebitda_pct": 23.2,
+          "roic_pct": null,
+          "dn_ebitda": -0.33,
+          "fcf_yield_pct": 3.6,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "IHI",
+          "ticker": "7013.T",
+          "pais": "JP",
+          "capitalizacion": 16963,
+          "ev_ventas": 1.75,
+          "ev_ebitda_ltm": 10.2,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 16.3,
+          "crecimiento_pct": 6,
+          "margen_ebitda_pct": 17.1,
+          "roic_pct": 17.1,
+          "dn_ebitda": 0.73,
+          "fcf_yield_pct": 1.1,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Alfa Laval",
+          "ticker": "ALFA.ST",
+          "pais": "SE",
+          "capitalizacion": 23887,
+          "ev_ventas": 3.5,
+          "ev_ebitda_ltm": 16.9,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 22.6,
+          "crecimiento_pct": 12.1,
+          "margen_ebitda_pct": 20.7,
+          "roic_pct": 14.4,
+          "dn_ebitda": 0.69,
+          "fcf_yield_pct": 2.7,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Atlas Copco",
+          "ticker": "ATCO-A.ST",
+          "pais": "SE",
+          "capitalizacion": 98738,
+          "ev_ventas": 5.83,
+          "ev_ebitda_ltm": 22,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 26.5,
+          "crecimiento_pct": 16.1,
+          "margen_ebitda_pct": 26.5,
+          "roic_pct": 19.7,
+          "dn_ebitda": 0.27,
+          "fcf_yield_pct": 2.6,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Sulzer",
+          "ticker": "SUN.SW",
+          "pais": "CH",
+          "capitalizacion": 7046,
+          "ev_ventas": 1.71,
+          "ev_ebitda_ltm": 10.8,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 15.9,
+          "crecimiento_pct": 4.5,
+          "margen_ebitda_pct": 15.8,
+          "roic_pct": 13.3,
+          "dn_ebitda": 0.28,
+          "fcf_yield_pct": 3.1,
+          "es_objetivo": false
+        }
+      ],
+      "estadisticos": [
+        {
+          "estadistico": "Mediana",
+          "ev_ventas": 2.2,
+          "ev_ebitda_ltm": 14.4,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 19.4,
+          "crecimiento_pct": 8,
+          "margen_ebitda_pct": 17.4,
+          "roic_pct": 17.1,
+          "dn_ebitda": 0.5,
+          "fcf_yield_pct": 3.4
+        },
+        {
+          "estadistico": "Media",
+          "ev_ventas": 3,
+          "ev_ebitda_ltm": 14.9,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 19.6,
+          "crecimiento_pct": 8.1,
+          "margen_ebitda_pct": 19,
+          "roic_pct": 23.5,
+          "dn_ebitda": 0.3,
+          "fcf_yield_pct": 4.4
+        },
+        {
+          "estadistico": "Percentil 25",
+          "ev_ventas": 1.7,
+          "ev_ebitda_ltm": 10.4,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 16,
+          "crecimiento_pct": 4.9,
+          "margen_ebitda_pct": 15.7,
+          "roic_pct": 14.4,
+          "dn_ebitda": -0.2,
+          "fcf_yield_pct": 2.7
+        },
+        {
+          "estadistico": "Percentil 75",
+          "ev_ventas": 4.5,
+          "ev_ebitda_ltm": 19.8,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 22.6,
+          "crecimiento_pct": 11.3,
+          "margen_ebitda_pct": 22.1,
+          "roic_pct": 21,
+          "dn_ebitda": 0.9,
+          "fcf_yield_pct": 7
+        }
+      ],
+      "implicito": [
+        {
+          "metodo": "EV/EBITDA últimos 12 meses",
+          "metrica_empresa": 386.2,
+          "multiplo_p25": 10.4,
+          "multiplo_mediana": 14.4,
+          "multiplo_p75": 19.8,
+          "multiplos": "10,3x / 14,4x / 19,8x",
+          "valor_p25": 37.42,
+          "valor_mediana": 53.9,
+          "valor_p75": 76.16,
+          "potencial_pct": -35
+        },
+        {
+          "metodo": "PER próximos 12 meses",
+          "metrica_empresa": 3.46,
+          "multiplo_p25": 16,
+          "multiplo_mediana": 19.4,
+          "multiplo_p75": 22.6,
+          "multiplos": "16,0x / 19,4x / 22,6x",
+          "valor_p25": 55.4,
+          "valor_mediana": 67,
+          "valor_p75": 78.25,
+          "potencial_pct": -19.2
+        },
+        {
+          "metodo": "EV/Ventas últimos 12 meses",
+          "metrica_empresa": 1392.4,
+          "multiplo_p25": 1.7,
+          "multiplo_mediana": 2.2,
+          "multiplo_p75": 4.5,
+          "multiplos": "1,7x / 2,2x / 4,5x",
+          "valor_p25": 20.32,
+          "valor_mediana": 27.67,
+          "valor_p75": 61.25,
+          "potencial_pct": -66.6
+        }
+      ],
+      "regresion": null,
+      "n": 10
+    },
+    "transacciones": {
+      "metrica": "EV/EBITDA",
+      "n": 4,
+      "mediana_ev_ebitda": 9,
+      "p25_ev_ebitda": 9,
+      "p75_ev_ebitda": 11,
+      "mediana_ev_ventas": null,
+      "prima_mediana_pct": null,
+      "valor_p25": 31.85,
+      "valor_mediana": 31.85,
+      "valor_p75": 39.89
+    },
+    "suma_partes": null,
+    "multiplos_historicos": [
+      {
+        "metrica": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+        "campo": "ev_ebitda_ltm",
+        "actual": 21.4,
+        "media": 17.4,
+        "minimo": 9.6,
+        "maximo": 21.9,
+        "percentil": 67,
+        "prima_pct": 23,
+        "anios": 3
+      },
+      {
+        "metrica": "PER últimos 12 meses (cierre de cada año)",
+        "campo": "per_ltm",
+        "actual": 29.2,
+        "media": 28.5,
+        "minimo": 15.8,
+        "maximo": 31.3,
+        "percentil": 67,
+        "prima_pct": 2,
+        "anios": 3
+      }
+    ],
+    "multiplos_serie": [
+      {
+        "anio": "2022",
+        "multiplo": 9.6,
+        "media": 17.4
+      },
+      {
+        "anio": "2023",
+        "multiplo": 12.9,
+        "media": 17.4
+      },
+      {
+        "anio": "2024",
+        "multiplo": 17.4,
+        "media": 17.4
+      },
+      {
+        "anio": "2025",
+        "multiplo": 21.9,
+        "media": 17.4
+      }
+    ],
+    "multiplos_titulo": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+    "consenso_vs_propio": [
+      {
+        "periodo": "2026e",
+        "ingresos_propio": 1490,
+        "ingresos_consenso": 1500,
+        "ingresos_dif_pct": -0.7,
+        "ebitda_propio": 414,
+        "ebitda_consenso": 427.5,
+        "ebitda_dif_pct": -3.2
+      },
+      {
+        "periodo": "2027e",
+        "ingresos_propio": 1654,
+        "ingresos_consenso": 1671,
+        "ingresos_dif_pct": -1,
+        "ebitda_propio": 463,
+        "ebitda_consenso": 480.9,
+        "ebitda_dif_pct": -3.7
+      },
+      {
+        "periodo": "2028e",
+        "ingresos_propio": 1787,
+        "ingresos_consenso": 1804,
+        "ingresos_dif_pct": -0.9,
+        "ebitda_propio": 500,
+        "ebitda_consenso": 524.7,
+        "ebitda_dif_pct": -4.7
+      }
+    ],
+    "gobierno": {
+      "n_consejeros": 6,
+      "independientes_pct": 100,
+      "antiguedad_media": 2.7,
+      "composicion": [
+        {
+          "tipo": "Independiente",
+          "num": 6
+        }
+      ],
+      "checklist": [
+        {
+          "criterio": "Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)",
+          "resultado": "Cumple",
+          "valor": "100 %"
+        },
+        {
+          "criterio": "Presidencia sin vínculo familiar ni profesional con el accionista de control",
+          "resultado": "Cumple",
+          "valor": "Sin control"
+        },
+        {
+          "criterio": "Presidente no ejecutivo, o consejero coordinador independiente",
+          "resultado": "Cumple",
+          "valor": "No ejecutivo"
+        },
+        {
+          "criterio": "Comisión de auditoría con mayoría de independientes y presidida por uno",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Ningún consejero «otro externo» con más de 12 años",
+          "resultado": "Cumple",
+          "valor": "Ninguno"
+        },
+        {
+          "criterio": "Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses",
+          "resultado": "Cumple",
+          "valor": "1 cambio"
+        },
+        {
+          "criterio": "Peor voto en contra sobre remuneración (3 juntas) ≤ 20 %",
+          "resultado": "No cumple",
+          "valor": "42,8 % en contra"
+        },
+        {
+          "criterio": "Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Una acción, un voto, sin blindajes ni límites de voto estatutarios",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Sin operaciones vinculadas relevantes",
+          "resultado": "Cumple",
+          "valor": "No hay"
+        },
+        {
+          "criterio": "Auditor con 10 años o menos en el cargo",
+          "resultado": "Cumple",
+          "valor": "5 años"
+        },
+        {
+          "criterio": "Opinión de auditoría sin salvedades",
+          "resultado": "Cumple",
+          "valor": "Favorable"
+        },
+        {
+          "criterio": "Directivos compradores netos en 12 meses (o sin ventas relevantes)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        }
+      ],
+      "puntuacion": "11 de 13 (1 sin dato)",
+      "puntuacion_pct": 85,
+      "compras_insiders": 0,
+      "ventas_insiders": 0
+    },
+    "competidores_margen": [
+      {
+        "nombre": "Accelleron",
+        "margen_ebit_pct": 24
+      },
+      {
+        "nombre": "Everllence (antes MAN Energy Solutions; turbos TCA/TCR)",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Mitsubishi Heavy Industries (turbos MET)",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Napier Turbochargers",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "KBB (Kompressorenbau Bannewitz)",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "IHI",
+        "margen_ebit_pct": 11.8
+      },
+      {
+        "nombre": "Garrett Motion",
+        "margen_ebit_pct": 14.8
+      }
+    ],
+    "sintesis": {
+      "formato_eje": "#,##0",
+      "rangos": [
+        {
+          "metodo": "Cotización 52 semanas",
+          "etiqueta": "Cotización 52 semanas (73,11 – 109,01)",
+          "min": 73.11,
+          "central": 82.87,
+          "max": 109.01,
+          "gris": true
+        },
+        {
+          "metodo": "Precio objetivo de los analistas",
+          "etiqueta": "Precio objetivo de los analistas (74,68 – 113,22)",
+          "min": 74.68,
+          "central": 98.37,
+          "max": 113.22,
+          "gris": true
+        },
+        {
+          "metodo": "Comparables: PER NTM",
+          "etiqueta": "Comparables: PER NTM (55,40 – 78,25)",
+          "min": 55.4,
+          "central": 67,
+          "max": 78.25,
+          "gris": false
+        },
+        {
+          "metodo": "DCF (WACC y g ± 0,5)",
+          "etiqueta": "DCF (WACC y g ± 0,5) (37,05 – 48,72)",
+          "min": 37.05,
+          "central": 42.09,
+          "max": 48.72,
+          "gris": false
+        },
+        {
+          "metodo": "Escenarios (bajista – alcista)",
+          "etiqueta": "Escenarios (bajista – alcista) (26,70 – 47,57)",
+          "min": 26.7,
+          "central": 39.61,
+          "max": 47.57,
+          "gris": false
+        },
+        {
+          "metodo": "DCF con la prima del mercado",
+          "etiqueta": "DCF con la prima implícita del mercado (4,2 %)",
+          "min": 47.45,
+          "central": 51.94,
+          "max": 57.24
+        },
+        {
+          "metodo": "Precio actual",
+          "etiqueta": "Precio actual (82,87)",
+          "min": 82.46,
+          "central": 82.87,
+          "max": 83.28,
+          "gris": true
+        }
+      ],
+      "tabla": [
+        {
+          "metodo": "DCF",
+          "valor": 42.09,
+          "peso_pct": 40,
+          "potencial_pct": -49.2
+        },
+        {
+          "metodo": "Comparables (mediana EV/EBITDA y PER)",
+          "valor": 67,
+          "peso_pct": 20,
+          "potencial_pct": -19.2
+        },
+        {
+          "metodo": "Transacciones precedentes (no se usa)",
+          "valor": 31.85,
+          "peso_pct": 0,
+          "potencial_pct": -61.6
+        },
+        {
+          "metodo": "Escenarios ponderados",
+          "valor": 39.61,
+          "peso_pct": 40,
+          "potencial_pct": -52.2
+        }
+      ],
+      "valor_objetivo": 46.08,
+      "potencial_pct": -44.4
+    },
+    "fuentes": {
+      "n_fuentes": 38,
+      "n_primarias": 23,
+      "por_tipo": [
+        {
+          "tipo": "Primaria",
+          "num": 23
+        },
+        {
+          "tipo": "Sectorial",
+          "num": 2
+        },
+        {
+          "tipo": "Datos de mercado",
+          "num": 6
+        },
+        {
+          "tipo": "Analistas",
+          "num": 3
+        },
+        {
+          "tipo": "Prensa",
+          "num": 1
+        },
+        {
+          "tipo": "Foros y redes",
+          "num": 3
+        }
+      ],
+      "n_citadas": 36,
+      "citas_sin_fuente": [],
+      "fuentes_sin_citar": [
+        "8",
+        "37"
+      ]
+    },
+    "controles": [
+      {
+        "control": "Geografías suman 100 %",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Cambio de perímetro declarado (2022)",
+        "resultado": "Explicado",
+        "detalle": "El activo total crece un 43 % y los ingresos un 3 %: si hubo una compra cerca del cierre, decláralo en financieros.cambios_perimetro y explícalo. Explicación: No hubo compra: es la escisión de ABB. El balance de 2021 es combinado y el de 2022 consolidado tras salir a bolsa: entran la deuda propia (323 M USD), la caja (189 M) y el activo de pensiones (77 M). Las ventas son del mismo negocio [3, 4]."
+      },
+      {
+        "control": "DCF inverso calculable",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Puente de ingresos (volumen + precio + otros) = crecimiento del DCF",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Veredicto de sostenibilidad del analista coherente con las pruebas del motor",
+        "resultado": "OK",
+        "detalle": "El analista dice «Sí» y las pruebas del motor dan «Sí»: razónalo en la justificación."
+      },
+      {
+        "control": "Rendimiento del capital nuevo de la proyección ≤ 1,25 × el histórico",
+        "resultado": "OK",
+        "detalle": "La proyección supone que la inversión nueva rinde un 37,3 % frente a un ROIC de 39,3 % y un incremental histórico de 33,6 %: crecimiento que la empresa no ha demostrado poder comprar."
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "resultado": "OK",
+        "detalle": "Supuesto 31,5 % frente a 31,5 % real: genera una variación de circulante de 72 M en el primer año. Converge de forma gradual."
+      },
+      {
+        "control": "Peso del valor terminal ≤ 80 % del valor empresa",
+        "resultado": "OK",
+        "detalle": "68 %."
+      },
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "resultado": "OK",
+        "detalle": "3,00 %."
+      },
+      {
+        "control": "Probabilidades de los escenarios suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 5 comparables",
+        "resultado": "OK",
+        "detalle": "10 comparables."
+      },
+      {
+        "control": "Pesos de la síntesis suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Crecimiento del BPA base ≤ 25 % anual desde el último real",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Precio del cierre de la fecha de corte (o de las dos sesiones anteriores)",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Recomendación coherente con la regla de decisión",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Convicción frente a la sugerida por los criterios",
+        "resultado": "OK",
+        "detalle": "Los criterios dan «Media» (Mantener con las dos reglas de acuerdo y lejos de los umbrales) y el análisis pone «Baja»: explica en la síntesis por qué te apartas."
+      },
+      {
+        "control": "La síntesis explica la convicción",
+        "resultado": "OK",
+        "detalle": "La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría."
+      },
+      {
+        "control": "Al menos 25 fuentes",
+        "resultado": "OK",
+        "detalle": "38 fuentes (23 primarias)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "resultado": "OK",
+        "detalle": "23."
+      },
+      {
+        "control": "Toda cita [n] existe en fuentes",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Fuentes sin citar ≤ 15 %",
+        "resultado": "OK",
+        "detalle": "Sin citar: 8, 37."
+      }
+    ],
+    "controles_resumen": "20 de 21 controles correctos y 1 explicados"
+  }
+}
