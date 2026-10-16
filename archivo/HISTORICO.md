@@ -4,6 +4,10 @@
 
 **Qué se apunta aquí** (una entrada por cambio, la más reciente arriba, dos o tres líneas): cambios de método o de reglas, decisiones de cartera que sustituyen a otras, cambios de estructura del repo o del flujo de trabajo, y lo que se retira de `MEMORIA.md`, `cola.md` o `lecciones.md` cuando ya no está vigente. No se apuntan análisis sueltos (están en `seguimiento.xlsx` y en cada `diario.md`).
 
+## 16-oct-2026 · 21 índices y salidas a bolsa
+
+Pedido del usuario: revisar los grandes índices occidentales y asiáticos y el calendario de salidas a bolsa, todo enlazado. `indices.mjs` pasa de 11 a 21 índices (TSX 60, MSCI EM, Hang Seng, CSI 300, MSCI Korea, KOSPI 200, MSCI Taiwan, Nifty 50, ASX 200, Straits Times) y `salidas-bolsa.mjs` sigue salidas a bolsa y escisiones (EE. UU., HK, Japón, Euronext); ambos alimentan los huecos de `cobertura.mjs`. Siete análisis completos (Accton, Sungrow, Midea, FedEx Freight, Honeywell Aerospace, Fortune Electric, Asia Vital): ninguno en compra robusta.
+
 ## 16-oct-2026 · Cobertura única y escáner de grandes índices
 
 Pedido del usuario: que no se escape ninguna empresa con calidad y vigilar las entradas y salidas de los grandes índices. `herramientas/cobertura.mjs` hace el inventario único (`escaner/cobertura.json`): toda empresa con calidad queda enlazada con calendario de resultados, noticias, expediente, escáner y Excel; caduca a los 6 meses y avisa de resultados publicados que el análisis no recoge (`escaner/revisiones.json`). `herramientas/indices.mjs` guarda los componentes de 11 índices (altas, bajas y huecos con filtro previo de calidad). La vigilancia de las 9:25 revisa hasta 8 empresas de seguimiento por pasada y el semanal del domingo pone fechas e índices al día. Primeros cinco análisis salidos de los huecos (GTT, TMX, HKEX, Recordati, Accelleron): ninguno en compra robusta.

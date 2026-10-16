@@ -1,0 +1,4420 @@
+{
+  "meta": {
+    "fecha_corte": "2026-10-16",
+    "divisa": "TWD",
+    "divisa_cotizacion": "TWD",
+    "tipo_cambio": 1,
+    "unidades": "millones",
+    "cierre_ejercicio_mes": 12,
+    "etiqueta_ejercicio": "fin",
+    "normas_contables": "NIIF adoptadas en Taiwán (TIFRS)",
+    "formato_cuenta": "funcion",
+    "limitaciones": "Línea cotizada: acción ordinaria de la Bolsa de Taiwán (2345.TW, TWD); hay un GDR Reg S poco líquido que no se usa. Cuentas en millones de TWD y en NIIF de Taiwán. **Sin acceso a las fuentes primarias de la empresa**: el servidor de documentos de MOPS respondió «查詢過量» (exceso de consultas) y un aviso de seguridad por IP compartida, y accton.com devuelve 403; por eso las cuentas 2021-2025 y el LTM salen de S&P Global Market Intelligence vía StockAnalysis (cifras publicadas), cotejadas con la ficha oficial de la Bolsa de Taiwán (BPA trimestral, beneficio antes de impuestos acumulado, ventas mensuales y dividendos, que cuadran) y con la prensa de resultados. No se han leído el informe anual, las notas (deuda, clientes principales, partes vinculadas) ni las actas de la junta. El reparto de ventas por línea de producto de 2025 es una estimación de analistas. Los comparables de EE. UU. se convierten a 32,37 TWD/USD (16-oct-2026). Precio: cierre del 16-oct-2026 (1.980 TWD).",
+    "controles_explicados": [
+      {
+        "control": "Circulante del primer año de proyección",
+        "explicacion": "El 1 % de 2025 es atípico: proveedores y prepagos de clientes financiaban casi todo el circulante. En junio de 2026 ya es del 13,6 % de las ventas de los últimos 12 meses (clientes 54.832 + existencias 76.973 − proveedores 84.622 − anticipos 5.030 M TWD) [1], así que el salto del primer año ya ha ocurrido en el balance; el 11 % proyectado está entre el 13,6 % de junio y el 5,6-6,7 % de 2023-2024."
+      },
+      {
+        "control": "Proyección propia frente a consenso",
+        "explicacion": "Nuestro EBITDA de 2028e queda un 19 % por debajo del consenso de MarketScreener: suponemos ventas +22 % en 2028 (consenso +40 %) y margen EBITDA del 15,0 % (consenso 16,6 %). Lo explicamos en el DCF: el consenso supone un tercer año de crecimiento muy alto con un solo cliente decisivo; preferimos no proyectarlo."
+      },
+      {
+        "control": "Crecimiento del BPA base",
+        "explicacion": "El salto del BPA de 46,79 (2025) a 131,77 (2028e) se apoya en 2026, que ya está casi cerrado: 34,70 TWD de BPA en el 1S26 y ventas de 286.402 M TWD en 9M26 (+62,5 %) [2]. Desde nuestro BPA de 2026e (82,72) el crecimiento es del 26 % anual, por debajo del consenso (39 %)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "explicacion": "MOPS (informe anual, estados financieros, actas) y la web de la empresa estaban bloqueados durante el análisis (exceso de consultas y 403). Las primarias usadas son la ficha oficial de la Bolsa de Taiwán y las de Celestica en la SEC; las cuentas vienen de S&P Global vía StockAnalysis y cuadran con la ficha oficial. Por eso la confianza de cuentas y gobierno es media o baja."
+      }
+    ],
+    "huecos": [
+      {
+        "seccion": "negocio",
+        "campo": "geografias",
+        "tipo": "Complemento",
+        "intentos": "1) MOPS (informe anual y estados financieros con notas): bloqueado («查詢過量» y aviso de seguridad por IP compartida); 2) web de la empresa accton.com: 403 con curl, WebFetch y descargar.mjs; 3) StockAnalysis, prensa taiwanesa y agregadores: sin desglose geográfico",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "balance",
+        "campo": "vencimientos",
+        "tipo": "Complemento",
+        "intentos": "1) Nota de deuda del informe anual en MOPS: bloqueado; 2) web de la empresa: 403; 3) proveedores de datos: solo deuda total (6.190 M TWD a jun-26, irrelevante frente a 43.407 M de caja)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "negocio",
+        "campo": "segmentos (historia de 5 años por línea de producto)",
+        "tipo": "Complemento",
+        "intentos": "1) Informe anual (ventas por línea de producto): MOPS bloqueado; 2) web de la empresa: 403; 3) prensa y analistas: solo el reparto de 2025 (≈35 % conmutadores, ≈62 % aplicaciones de red) y de 9M25 (63 %)",
+        "decision": "Calculado y marcado como estimación"
+      },
+      {
+        "seccion": "sector",
+        "campo": "tcac_previsto_pct y serie larga del mercado",
+        "tipo": "Complemento",
+        "intentos": "1) IDC (notas de prensa trimestrales): solo 2024-2025 y crecimientos trimestrales; 2) Dell'Oro: previsión de redes de IA (>100.000 M USD en 2030), perímetro distinto; 3) 650 Group y prensa: sin serie pública comparable",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "competencia",
+        "campo": "margen EBIT del último ejercicio de los competidores",
+        "tipo": "Complemento",
+        "intentos": "1) Informes anuales de Celestica, Arista, Quanta y Wiwynn: no leídos por tiempo; 2) StockAnalysis: margen EBITDA de los últimos 12 meses (dado en el comentario); 3) prensa: sin cifras homogéneas",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "consejo (composición, independientes, comisiones)",
+        "tipo": "Núcleo",
+        "intentos": "1) MOPS (informe anual, capítulo de gobierno): bloqueado por exceso de consultas y aviso de seguridad; 2) web de la empresa (gobierno corporativo): 403; 3) agregadores (Simply Wall St 403; MarketScreener y Yahoo solo dan presidente y consejero delegado)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "remuneracion_ceo y votos de la junta",
+        "tipo": "Complemento",
+        "intentos": "1) Informe anual (remuneración de consejeros y directivos): MOPS bloqueado; 2) actas de la junta de 2026 en la web: 403; 3) prensa de la junta: solo dividendo y perspectivas",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "insiders (operaciones de consejeros y directivos en 12 meses)",
+        "tipo": "Complemento",
+        "intentos": "1) MOPS, declaraciones de transmisión de acciones de consejeros (董監持股異動): bloqueado; 2) MarketScreener (perfil de Jackal Lee): sin operaciones legibles; 3) prensa: sin noticias de ventas de consejeros",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "directivos",
+        "campo": "director financiero",
+        "tipo": "Complemento",
+        "intentos": "1) Ficha oficial de la Bolsa de Taiwán: solo portavoz; 2) Yahoo Bolsa Taiwán: sin director financiero; 3) prensa: sin nombre",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "transacciones",
+        "campo": "operaciones con múltiplo (mínimo 3)",
+        "tipo": "Complemento",
+        "intentos": "1) Notas oficiales de HPE/Juniper y AMD/ZT: valor sin ventas ni EBITDA del objetivo en lo leído; 2) cuentas.mjs --sec JNPR e INFN para calcular el múltiplo: sin salida; 3) prensa: múltiplos aproximados no comprobables",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "consenso",
+        "campo": "reparto de recomendaciones (comprar/mantener/vender)",
+        "tipo": "Complemento",
+        "intentos": "1) MarketScreener: solo gráfico; 2) StockAnalysis: «Strong Buy» sin reparto; 3) prensa: casas sueltas, todas con «comprar» o «sobreponderar»",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "esg",
+        "campo": "calificaciones",
+        "tipo": "Complemento",
+        "intentos": "1) Informe de sostenibilidad 2025 (sustainabilityreports.com): requiere registro; 2) web de la empresa: 403; 3) MSCI y Sustainalytics: sin calificación pública legible",
+        "decision": "Omitido"
+      }
+    ]
+  },
+  "identificacion": {
+    "nombre": "Accton Technology Corporation",
+    "nombre_corto": "Accton",
+    "ticker": "2345.TW",
+    "isin": "TW0002345006",
+    "mercado": "Bolsa de Taiwán (TWSE); GDR Reg S poco líquido",
+    "indice_referencia": "TAIEX (rentabilidad comparada con el ETF 0050, Taiwan 50)",
+    "pais": "Taiwán",
+    "pais_iso": "TW",
+    "sector": "Tecnologías de la información",
+    "industria": "Equipos de comunicaciones (conmutadores de red y módulos aceleradores de IA)",
+    "sede": "Hsinchu (parque científico), Taiwán",
+    "fundacion": "1988",
+    "empleados": null,
+    "web": "www.accton.com",
+    "precio": 1980,
+    "fecha_precio": "2026-10-16",
+    "acciones": 562,
+    "capitalizacion_publicada": 1110000,
+    "free_float_pct": 83.7,
+    "max_52s": 2825,
+    "min_52s": 884,
+    "volumen_medio_diario": "≈ 6874 M TWD/día (3 meses)",
+    "proximos_resultados": "2026-11-05 (estimada): Puesta por cobertura.mjs (2026-10-16) para que ninguna empresa con calidad quede sin seguimiento; estimada: la vigilancia la confirma cuando se anuncie"
+  },
+  "resumen": {
+    "recomendacion": "Mantener",
+    "conviccion": "Baja",
+    "justificacion_recomendacion": null,
+    "horizonte": "12 meses",
+    "sintesis": "**La recomendación y por qué.** Mantener, con convicción baja. El objetivo a 12 meses ponderado es de 2.197,16 TWD, una rentabilidad del 11,7 % con dividendo (15,9 % en el caso base), por debajo del 15 % que pide una compra; el valor intrínseco es de 1.558,27 TWD, un 21,3 % por debajo del precio de 1.980 TWD, y el objetivo medio de los analistas (3.273,86 TWD) queda fuera de nuestro rango central. A 12 meses la asimetría es de 1,27: el alcista gana un 64,6 % y el bajista pierde un 49,5 %. La razón principal: el precio ya paga que el crecimiento muy alto dure más de dos años en un negocio de pocos clientes. La convicción es baja porque el valor intrínseco da Vender con nuestro WACC y Mantener con la prima del mercado; subiría si los resultados del 3T26 muestran un margen bruto de al menos el 19 % con existencias a la baja, y bajaría si la guía de inversión 2027 de las nubes sale plana.\n\n**El negocio.** Accton fabrica a medida conmutadores de red para centros de datos y los módulos aceleradores del ASIC de IA de su mayor cliente de nube (≈62 % de las ventas de 2025) [3]. Gana más que sus rivales en un sector cíclico (en 2023 solo creció un 9 %): margen operativo del 12-15 % frente al 4-10 % EBITDA de Celestica, Quanta y Wiwynn, y un ROIC muy por encima del WACC del 9,55 % (el del motor, 221,6 %, exagera por un capital invertido casi nulo; normalizado, ≈60 %) [15]. La sostenibilidad del crecimiento es «Sí»: la proyección reinvierte el 21 % del NOPAT y el crecimiento sale del mercado y de Trainium 3, sin necesitar más cuota; el límite es la concentración en pocos clientes, no la financiación.\n\n**Finanzas.** Ventas de 248.320 M TWD en 2025 (TCAC del 42,9 % desde 2021), sin compras, caja neta de ≈25.600 M TWD tras el dividendo de julio [1]. Lo que importa ahora es el circulante: las existencias pasaron de 30.211 a 76.973 M TWD en seis meses y el flujo operativo de los últimos 12 meses es un tercio del beneficio.\n\n**Equipo y gobierno.** Sin accionista de control y sin deuda. Cambio brusco de consejero delegado en octubre de 2025 sin explicación más allá de la reorganización [20]; no hemos podido revisar consejo, remuneración ni operaciones de consejeros (MOPS bloqueado).\n\n**Valoración.** El DCF da 1.511,34 TWD; los comparables, 1.798 por PER y 1.580 por EV/EBITDA. El DCF inverso dice que el precio descuenta un crecimiento del 15,2 % anual en 2027-2035 frente al 10,0 % de nuestro base. A 12 meses el mercado mirará el BPA de 2028e (131,77 TWD en nuestro base, un 21 % por debajo del consenso de 167,2) a 17,3 veces. Discrepamos del consenso en 2028: no proyectamos un tercer año de +40 % con un cliente que ya tiene segundo proveedor.\n\n**Riesgos y catalizadores.** El cliente de Trainium y el ciclo de inversión de la nube son los dos riesgos que deciden (−50 % a 12 meses en el bajista); después, la cuota en 1,6T frente a Celestica y Nvidia. Catalizadores: resultados del 3T26 (≈6-nov-2026), ventas mensuales y la guía de inversión 2027 de las nubes (enero-febrero). El foro taiwanés está frustrado por la caída del 28 % desde julio con ventas récord: coincide con nuestra lectura de que el precio ya no premia el crecimiento de ventas.\n\n**Qué cambiaría la decisión.** Comprar por debajo de 1.558,27 TWD (allí el valor intrínseco cubre el precio y la ponderada supera el 15 %); vender por encima de 2.457,95. Pasaríamos a Vender si el primer cliente reparte Trainium 4 a partes iguales con otro proveedor o si el margen bruto baja del 17,5 % dos trimestres seguidos.",
+    "tesis": "Accton es el mayor fabricante a medida de conmutadores de red para centros de datos de Taiwán y el primer proveedor de los módulos aceleradores del ASIC de IA de su principal cliente de nube. Ha multiplicado por cuatro las ventas en cuatro años (248.320 M TWD en 2025) con un margen operativo del 12-15 % y un ROIC muy superior a su coste de capital, financiando el crecimiento con el circulante de clientes y proveedores [1, 3].\n\nEl precio de 1.980 TWD descuenta un crecimiento del 15,2 % anual entre 2027 y 2035, o un margen EBITDA del 16,5 % frente al 13 % que suponemos a largo plazo. Cotiza a 18,2 veces nuestro BPA de 2027e, por encima de su mediana histórica adelantada (16,5 veces) y de la mediana de los comparables (16,8 veces) [15].\n\nEl mercado acierta en lo cercano (2026 y 2027 serán años récord) y es optimista en lo lejano: para invertir hay que creer que Trainium y el 1,6T mantienen el crecimiento por encima del 20 % hasta 2028 sin que el segundo proveedor ni la red de Nvidia erosionen la cuota, y que la nube no frena en 2027. Con un cliente decisivo y un sector cíclico, no lo pagaríamos al precio de hoy.",
+    "vision_diferencial": {
+      "mercado_descuenta": "Que el crecimiento muy alto dura: ventas +28 % en 2027 y +40 % en 2028 según el consenso, con un margen EBIT que sube al 15,8 % y un BPA de 167,2 TWD en 2028 [25]. El precio, más prudente que los analistas, descuenta un 15,2 % anual hasta 2035.",
+      "nuestra_vision": "Dos años más de crecimiento fuerte (+33 % y +22 %) con margen EBITDA del 15 %, y después convergencia al mercado con margen del 13 %. BPA de 2028e de 131,77 TWD y valor intrínseco de 1.558,27 TWD.",
+      "por_que": "La historia de Accton y de los fabricantes a medida enseña que la cuota se vuelve a ganar en cada generación y que los clientes de hiperescala diversifican proveedores; el de Trainium ya lo ha hecho en 2026 [13]. El crecimiento de 2026 es real y está casi cerrado, pero proyectar 2028 al +40 % exige que no haya ni digestión de la inversión ni pérdida de cuota."
+    },
+    "a_favor": [
+      "**Crecimiento real y visible**: ventas de 9M26 de 286.402 M TWD, +62,5 %, con el 3T26 en 120.744 M (+65,5 %) [2].",
+      "**Margen muy superior al de los rivales**: margen operativo del 15,0 % en el 2T26 frente al 4-7 % EBITDA de Quanta y Wiwynn [5, 15].",
+      "**Balance sin deuda**: caja neta de ≈25.600 M TWD tras el dividendo de julio [1].",
+      "**ROIC muy por encima del WACC**: ≈60 % normalizado frente al 9,55 % [1].",
+      "**Nuevas palancas**: 1,6T en producción en serie y pruebas de conmutación óptica con un cliente de EE. UU. y NTT [8]."
+    ],
+    "en_contra": [
+      "**Un cliente decisivo**: los módulos de Trainium son ≈62 % de las ventas y el cliente ya tiene segundo proveedor [3, 13].",
+      "**Valor intrínseco por debajo del precio**: 1.558,27 TWD frente a 1.980 (−21,3 %).",
+      "**Circulante disparado**: existencias de 76.973 M TWD y flujo operativo de 13.091 M en los últimos 12 meses [1].",
+      "**Sector cíclico**: en 2023 Accton solo creció un 9 % tras el exceso de inversión de 2022 [1].",
+      "**Margen bruto bajo presión**: 18-19 % esperado en el 2S26 frente al 19,7 % del 2T26 [7].",
+      "**Gobierno sin verificar**: consejo, remuneración y operaciones de consejeros no revisados."
+    ],
+    "que_vigilar": "La tesis depende de que el primer cliente mantenga la cuota de Accton en Trainium 3 y 4 y de que la nube no frene la inversión en 2027. La señal de que no se cumple: ventas mensuales que caigan dos meses seguidos fuera de la consigna, existencias que no bajen en el 3T26 y una guía de inversión 2027 plana de las grandes nubes.",
+    "cambiaria_recomendacion": [
+      "Precio por debajo de 1.558,27 TWD: pasaríamos a Comprar (valor intrínseco ≥ precio y ponderada ≥ 15 %).",
+      "Precio por encima de 2.457,95 TWD: pasaríamos a Vender.",
+      "Reparto de Trainium 4 a partes iguales con otro proveedor: Vender.",
+      "Margen bruto por debajo del 17,5 % dos trimestres seguidos: rebajaríamos el base.",
+      "Guía de inversión 2027 de las grandes nubes por encima del +30 %: subiríamos el crecimiento de 2028."
+    ],
+    "kpis_seguimiento": [
+      {
+        "kpi": "Ventas mensuales",
+        "nivel_actual": "40.399 M TWD (septiembre, +66,1 %)",
+        "umbral_alerta": "Dos meses por debajo de 35.000 M",
+        "por_que": "Primera señal de pérdida de cuota o de pausa del cliente."
+      },
+      {
+        "kpi": "Margen bruto trimestral",
+        "nivel_actual": "19,7 % (2T26)",
+        "umbral_alerta": "< 17,5 %",
+        "por_que": "Mide precio, mezcla y coste de componentes."
+      },
+      {
+        "kpi": "Existencias",
+        "nivel_actual": "76.973 M TWD (jun-26)",
+        "umbral_alerta": "> 80.000 M en el 3T26",
+        "por_que": "Riesgo de obsolescencia y de caja."
+      },
+      {
+        "kpi": "Cuota en Trainium (comentarios de la empresa y analistas)",
+        "nivel_actual": "Proveedor principal",
+        "umbral_alerta": "Reparto a partes iguales",
+        "por_que": "Decide el bajista."
+      },
+      {
+        "kpi": "Guía de inversión de las grandes nubes",
+        "nivel_actual": "Récord en 2026",
+        "umbral_alerta": "Plana o a la baja para 2027",
+        "por_que": "Señal de ciclo."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "historia": {
+    "resumen": "Accton se fundó en 1988 en el parque científico de Hsinchu como fabricante de equipos de red y salió a bolsa en noviembre de 1995 [2, 19]. Durante dos décadas vendió conmutadores y tarjetas de red para empresas y operadores; el cambio decisivo fue convertirse en el fabricante a medida (white-box) de conmutadores para los grandes centros de datos y, desde 2024, en el primer proveedor de módulos aceleradores para el ASIC de IA de su mayor cliente de nube. Con esos módulos las ventas se multiplicaron por 2,25 en 2025 y siguen creciendo al 62,5 % en 2026 [1, 2]. En octubre de 2025 cambió el consejero delegado (Shi Jun por Lee Hsun-te, de la casa) [20], y en 2026 amplía fábricas en Taiwán, Vietnam, Dallas y Malasia [8].",
+    "hitos": [
+      {
+        "anio": "1988",
+        "hito": "Fundación en Hsinchu (Taiwán) [19]."
+      },
+      {
+        "anio": "1995",
+        "hito": "Salida a la Bolsa de Taiwán (15 de noviembre) [2]."
+      },
+      {
+        "anio": "2023",
+        "hito": "Los clientes de nube adelantan pagos: los anticipos pasan de 885 a 6.254 M TWD y financian el arranque de los módulos aceleradores [1]."
+      },
+      {
+        "anio": "2025",
+        "hito": "Año de los módulos aceleradores de IA: ventas de 248.320 M TWD (+124,9 %) y BPA de 47,13 TWD (+119 %) [1, 9]."
+      },
+      {
+        "anio": "2025",
+        "hito": "Shi Jun deja la dirección general «por reorganización»; le sustituye Lee Hsun-te, en la casa desde 2000 [20]."
+      },
+      {
+        "anio": "2026",
+        "hito": "El 1,6T entra en producción en serie y empiezan los envíos de módulos para Trainium 3; plan de fábricas en Taoyuan, Nanliao, Dallas y Malasia [8, 9]."
+      },
+      {
+        "anio": "2026",
+        "hito": "Dividendo récord de 15 TWD por acción con cargo a 2025, pagado en julio [2]."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "negocio": {
+    "segmentos": [
+      {
+        "nombre": "Aplicaciones de red (módulos aceleradores de IA y otros)",
+        "descripcion": "Placas y módulos aceleradores de IA para el ASIC propio de un gran cliente de nube (Trainium) y otros equipos de red a medida. Estimación de analistas: ≈62 % de las ventas de 2025 [3].",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2025",
+            "ingresos": 153958,
+            "resultado": null
+          }
+        ]
+      },
+      {
+        "nombre": "Conmutadores de red (switches)",
+        "descripcion": "Conmutadores Ethernet para centros de datos (400G, 800G y 1,6T) en modelo white-box/ODM para hiperescala, y marca Edgecore para empresas y operadores. ≈35 % de las ventas de 2025 [3].",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2025",
+            "ingresos": 86912,
+            "resultado": null
+          }
+        ]
+      },
+      {
+        "nombre": "Acceso y otros",
+        "descripcion": "Equipos de acceso (wifi, banda ancha, telecomunicaciones) y servicios. ≈3 % [3].",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2025",
+            "ingresos": 7450,
+            "resultado": null
+          }
+        ]
+      }
+    ],
+    "kpis": [
+      {
+        "kpi": "Ventas mensuales (M TWD)",
+        "valor_anterior": "40.873 (agosto 2026)",
+        "valor_actual": "40.399 (septiembre 2026)",
+        "variacion": "−1,2 % mensual; +66,1 % interanual",
+        "comentario": "Enero-septiembre 2026: 286.402 M TWD, +62,5 %. El tercer trimestre suma 120.744 M TWD, +65,5 % interanual y +26,4 % sobre el 2T26 [2, 4]."
+      },
+      {
+        "kpi": "Margen bruto trimestral",
+        "valor_anterior": "19,55 % (1T26)",
+        "valor_actual": "19,7 % (2T26)",
+        "variacion": "+0,15 pp",
+        "comentario": "17,9 % en el 4T25. Los analistas esperan 18-19 % en el 2S26 por la mezcla (más módulos aceleradores) y el encarecimiento de memorias y PCB [5, 6, 7]."
+      },
+      {
+        "kpi": "Margen operativo trimestral",
+        "valor_anterior": "14,3 % (1T26)",
+        "valor_actual": "15,0 % (2T26)",
+        "variacion": "+0,7 pp",
+        "comentario": "Beneficio operativo de 14.331 M TWD en el 2T26, récord [1, 5]."
+      },
+      {
+        "kpi": "Peso de 800G en ventas",
+        "valor_anterior": ">10 % (estimado 1S26)",
+        "valor_actual": "≈20 % (estimado 2T26)",
+        "variacion": "+≈10 pp",
+        "comentario": "Estimaciones de analistas citadas por la prensa; el 1,6T entró en producción en serie en el 1S26 [6, 8]."
+      },
+      {
+        "kpi": "Existencias (M TWD)",
+        "valor_anterior": "30.211 (dic-25)",
+        "valor_actual": "76.973 (jun-26)",
+        "variacion": "×2,5",
+        "comentario": "Acopio de componentes por la escasez de memorias y el arranque de Trainium 3; parte pasa a depósito del cliente (consigna) desde el 3T26 [1, 7]."
+      }
+    ],
+    "geografias": null,
+    "descripcion": "Accton diseña y fabrica por encargo equipos de red para centros de datos. Dos líneas pesan: los **módulos aceleradores de IA** (placas que montan el ASIC Trainium de su mayor cliente de nube, ≈62 % de las ventas de 2025) y los **conmutadores Ethernet** de 400G, 800G y 1,6T que diseña con cada cliente de hiperescala y que el cliente instala con su propio software (≈35 %) [3]. El resto (≈3 %) son equipos de acceso y la marca Edgecore para empresas y operadores. Fabrica en Taiwán (Zhubei, Zhunan, Taoyuan) y Vietnam, y prepara plantas en Nanliao, Dallas y Malasia para 2027 [8]. Vende a tres o cuatro grandes nubes de EE. UU.; en 800G suministra a tres clientes, uno de ellos incorporado en el 4T25 [6].",
+    "como_gana_dinero": "Cobra por unidad fabricada: el cliente fija el diseño y el volumen, y Accton pone ingeniería, compras y montaje. El margen bruto ronda el 18-20 % (19,7 % en el 2T26) y el operativo el 12-15 %, porque los gastos de estructura son pequeños (6 % de las ventas en 2025) [1, 5]. El margen depende de la mezcla: los conmutadores dejan más que los módulos aceleradores, que llevan muchos componentes caros (memorias, PCB) que se repercuten. Cuando esos componentes pasan a ser del cliente (consigna, desde el 3T26), las ventas bajan algo y el margen sube sin cambiar el beneficio [7]. No hay ingresos recurrentes: cada generación de producto se vuelve a ganar, y el apalancamiento operativo es alto mientras el volumen sube.",
+    "clientes": "Concentración muy alta y no publicada con nombres en lo que hemos podido leer. Los módulos aceleradores van a un solo cliente de nube (el del ASIC Trainium), que en 2026 ha incorporado un segundo proveedor; los analistas creen que Accton mantiene la cuota principal [7, 13]. En conmutadores, un nuevo cliente de hiperescala aportaría el 10-15 % de las ventas de 2026 según una casa estadounidense, y otra estima que otro cliente ya supone cerca del 20 % [3, 13]. El poder de precios es limitado: los clientes compran a varios proveedores y repercuten el coste de los componentes; el margen bruto ha oscilado entre el 17,9 % y el 20,1 % en los últimos seis trimestres [6, 9].",
+    "confianza": "Media"
+  },
+  "sector": {
+    "tamano": "≈ 32.500 M USD en 2025 el segmento de centros de datos del mercado de conmutadores Ethernet (+53,5 %), dentro de un mercado total de 55.100 M USD [10]",
+    "unidad_serie": "millones de USD (segmento de centros de datos, IDC)",
+    "serie": [
+      {
+        "anio": "2024",
+        "tamano": 21173
+      },
+      {
+        "anio": "2025",
+        "tamano": 32500
+      }
+    ],
+    "tcac_historico_pct": null,
+    "tcac_previsto_pct": null,
+    "cr5_pct": null,
+    "estructura": "Moderadamente concentrada",
+    "drivers": [
+      {
+        "driver": "Inversión de la nube de hiperescala en IA (redes de entrenamiento e inferencia)",
+        "efecto": "+",
+        "horizonte": "Cíclico",
+        "evidencia": "El segmento de centros de datos creció un 53,5 % en 2025 y un 63 % en el 4T25 [10]."
+      },
+      {
+        "driver": "Ethernet frente a InfiniBand y paso a 800G y 1,6T",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "El 800G pasó del 16,4 % de las ventas de 2025 al 25,8 % en el 4T25; Dell'Oro espera que las redes de IA superen los 100.000 M USD en 2030 y que Ethernet domine [10, 11]."
+      },
+      {
+        "driver": "Conmutadores white-box/ODM directos a la nube",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Las ventas ODM directas crecieron un 152,4 % en el 3T25 y fueron el 30,2 % del segmento de centros de datos [12]."
+      },
+      {
+        "driver": "ASIC propios de la nube (Trainium y otros) frente a GPU",
+        "efecto": "+/−",
+        "horizonte": "Estructural",
+        "evidencia": "Los módulos aceleradores para Trainium son la mayor línea de Accton (≈62 % de 2025); dependen del calendario de un solo cliente y de que mantenga su cuota con un segundo proveedor [3, 13]."
+      },
+      {
+        "driver": "Coste de componentes (memorias, PCB, energía)",
+        "efecto": "−",
+        "horizonte": "Cíclico",
+        "evidencia": "Los analistas bajan el margen bruto esperado al 18-19 % en el 2S26 por el encarecimiento de memorias y PCB [5]."
+      }
+    ],
+    "porter": [
+      {
+        "fuerza": "Rivalidad",
+        "intensidad": 4,
+        "justificacion": "Celestica, Quanta, Wistron/Wiwynn y Arista compiten por los mismos programas de hiperescala; Celestica dice tener diez programas activos de 1,6T [14]."
+      },
+      {
+        "fuerza": "Poder de los clientes",
+        "intensidad": 5,
+        "justificacion": "Tres o cuatro clientes de hiperescala concentran la mayor parte de las ventas, eligen el diseño y meten un segundo proveedor (lo hizo el cliente de Trainium en 2026) [12, 13]."
+      },
+      {
+        "fuerza": "Poder de los proveedores",
+        "intensidad": 4,
+        "justificacion": "Broadcom domina los chips de conmutación de 800G y 1,6T; memorias y PCB escasean y suben de precio en 2026 [5]."
+      },
+      {
+        "fuerza": "Amenaza de entrada",
+        "intensidad": 3,
+        "justificacion": "Hace falta escala, ingeniería de 1,6T y confianza de la nube; los fabricantes de servidores (Quanta, Wiwynn) ya tienen esa relación."
+      },
+      {
+        "fuerza": "Amenaza de sustitutos",
+        "intensidad": 3,
+        "justificacion": "Nvidia vende su red (Spectrum-X, NVLink) junto a sus GPU; la óptica integrada (CPO) y la conmutación óptica (OCS) cambian la arquitectura [11]."
+      }
+    ],
+    "ciclo": {
+      "posicion": "Expansión",
+      "comentario": "El segmento de centros de datos creció un 53,5 % en 2025 y un 63 % en el 4T25, con el 800G ya en el 25,8 % de las ventas [10]. Las ventas de Accton suben un 65,5 % en el 3T26 [2]. El sector es cíclico: en 2023, tras el exceso de inversión de 2022, las ventas de Accton solo crecieron un 9 % y las de muchos fabricantes de servidores cayeron; en 2020 la nube siguió invirtiendo. La señal de cambio de ciclo es la guía de inversión de las cuatro grandes nubes de EE. UU. para 2027."
+    },
+    "confianza": "Media",
+    "definicion": "El mercado relevante es el de **conmutadores Ethernet para centros de datos** (IDC: 32.500 M USD en 2025) más la fabricación de placas aceleradoras para los ASIC de la nube, que no tiene estadística pública separada. Usamos IDC para el tamaño y Dell'Oro para la previsión de las redes de IA (más de 100.000 M USD en 2030, perímetro más estrecho y con conmutación interna de los racks) [10, 11].",
+    "regulacion": "Los controles de exportación de EE. UU. sobre chips y equipos de IA afectan a dónde se puede vender, no a los clientes de Accton, que son nubes estadounidenses. Los aranceles de EE. UU. a las importaciones de Taiwán y Vietnam son el riesgo regulatorio que más pesa en el coste; la planta de Dallas (producción en serie en 2027) lo mitiga [8]. No hay regulación sectorial de precios.",
+    "tendencias": "Tres cambios: el paso de 800G a 1,6T (2026-2027) y a 3,2T en 2030, que favorece a quien diseña primero con el cliente; la óptica integrada (CPO) y la conmutación óptica (OCS), que Accton ya prueba con un cliente de EE. UU. y con NTT [8]; y la red vendida por Nvidia junto a sus GPU, que compite con la white-box [10, 11]. Accton gana con los dos primeros si mantiene la cuota de diseño; pierde si la nube compra la red como sistema cerrado a Nvidia."
+  },
+  "competencia": {
+    "cuota_pct": 8,
+    "posicion": "Mayor fabricante white-box/ODM de conmutadores para centros de datos de Taiwán y primer proveedor de módulos aceleradores para el ASIC Trainium; ≈8 % del segmento de centros de datos de IDC en 2025 (estimación propia: ≈2.700 M USD de conmutadores frente a 32.500 M USD)",
+    "competidores": [
+      {
+        "nombre": "Celestica",
+        "pais": "Canadá",
+        "ticker": "CLS",
+        "ingresos": 504648,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Principal rival en conmutadores white-box para la nube; margen EBITDA del 10,0 % y ROIC del 42 % en los últimos 12 meses [14, 15]."
+      },
+      {
+        "nombre": "Arista Networks",
+        "pais": "EE. UU.",
+        "ticker": "ANET",
+        "ingresos": 341180,
+        "cuota_pct": 19,
+        "margen_ebit_pct": null,
+        "comentario": "Marca con software propio (EOS); 19 % del segmento de centros de datos en el 4T25 y margen EBITDA del 44 % [10, 16]."
+      },
+      {
+        "nombre": "Nvidia (redes)",
+        "pais": "EE. UU.",
+        "ticker": "NVDA",
+        "ingresos": null,
+        "cuota_pct": 15.2,
+        "margen_ebit_pct": null,
+        "comentario": "15,2 % del segmento de centros de datos en el 4T25 con Spectrum-X, vendido junto a sus GPU [10]."
+      },
+      {
+        "nombre": "Cisco",
+        "pais": "EE. UU.",
+        "ticker": "CSCO",
+        "ingresos": null,
+        "cuota_pct": 27.6,
+        "margen_ebit_pct": null,
+        "comentario": "27,6 % del mercado total de conmutadores Ethernet en el 4T25 (empresas y centros de datos) [10]."
+      },
+      {
+        "nombre": "Wiwynn",
+        "pais": "Taiwán",
+        "ticker": "6669",
+        "ingresos": 1110000,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Servidores y racks a medida para la nube; margen EBITDA del 6,8 % [17]."
+      },
+      {
+        "nombre": "Quanta Computer (QCT)",
+        "pais": "Taiwán",
+        "ticker": "2382",
+        "ingresos": 2980000,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Servidores de IA y conmutadores a medida; margen EBITDA del 3,7 % [18]."
+      }
+    ],
+    "foso": {
+      "veredicto": "Estrecho",
+      "tendencia": "Estable",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 0,
+          "evidencia": "Fabricación a medida: no hay efecto de red."
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 3,
+          "evidencia": "Cada generación (800G, 1,6T, Trainium 3) se codiseña con el cliente durante 12-18 meses; cambiar a mitad de generación es caro, pero en la siguiente se compite de nuevo y el cliente de Trainium ya ha metido un segundo proveedor [5]."
+        },
+        {
+          "fuente": "Intangibles (marca, patentes, licencias)",
+          "puntuacion": 1,
+          "evidencia": "La marca Edgecore pesa poco; el valor está en la ingeniería, no en la marca."
+        },
+        {
+          "fuente": "Ventaja en costes",
+          "puntuacion": 3,
+          "evidencia": "Margen operativo del 12-15 % frente al 7-10 % EBITDA de Celestica y el 4-7 % de Quanta y Wiwynn [7, 10, 11]."
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 3,
+          "evidencia": "Fábricas en Taiwán y Vietnam con ampliaciones en Taoyuan, Nanliao, Dallas y Malasia; capacidad +50 % a finales de 2026 y +30 % en 2027 [4, 12]."
+        }
+      ]
+    },
+    "confianza": "Media",
+    "amenazas": "La más probable (media) es la pérdida de cuota en una generación: el cliente de Trainium ya ha metido un segundo proveedor y Celestica dice tener diez programas activos de 1,6T [13, 14]. Menos probable pero de más impacto: que una nube cambie a la red integrada de Nvidia (Spectrum-X tenía el 15,2 % del segmento en el 4T25) o retrase su ASIC propio [10]. A largo plazo, la óptica integrada desplaza parte del valor hacia los fabricantes de chips y módulos ópticos."
+  },
+  "financieros": {
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 59599,
+        "coste_ventas": 48254,
+        "gastos_generales": 3234,
+        "ebitda": 6207.5,
+        "amortizaciones": 766.5,
+        "ebit": 5441,
+        "resultado_financiero": 290,
+        "bai": 5731,
+        "impuestos": 1026,
+        "minoritarios": 0,
+        "beneficio_neto": 4705,
+        "gastos_financieros": 42.4,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 8.36,
+        "dpa": 6,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 562
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 77205,
+        "coste_ventas": 60687,
+        "gastos_generales": 3914,
+        "ebitda": 10499.7,
+        "amortizaciones": 866.7,
+        "ebit": 9633,
+        "resultado_financiero": 643,
+        "bai": 10276,
+        "impuestos": 2110,
+        "minoritarios": 0,
+        "beneficio_neto": 8166,
+        "gastos_financieros": 68.1,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 14.45,
+        "dpa": 7.5,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 565
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 84188,
+        "coste_ventas": 64926,
+        "gastos_generales": 3981,
+        "ebitda": 12454.5,
+        "amortizaciones": 953.5,
+        "ebit": 11501,
+        "resultado_financiero": 231,
+        "bai": 11732,
+        "impuestos": 2812,
+        "minoritarios": 0,
+        "beneficio_neto": 8920,
+        "gastos_financieros": 73,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 15.86,
+        "dpa": 10,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 563
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 110425,
+        "coste_ventas": 87634,
+        "gastos_generales": 4475,
+        "ebitda": 14763.2,
+        "amortizaciones": 1162.2,
+        "ebit": 13601,
+        "resultado_financiero": 1533,
+        "bai": 15134,
+        "impuestos": 3135,
+        "minoritarios": -0.9,
+        "beneficio_neto": 12000,
+        "gastos_financieros": 87.5,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 21.35,
+        "dpa": 11,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 562
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 248320,
+        "coste_ventas": 203401,
+        "gastos_generales": 5782,
+        "ebitda": 33861.5,
+        "amortizaciones": 1726.5,
+        "ebit": 32135,
+        "resultado_financiero": 782,
+        "bai": 32917,
+        "impuestos": 6611,
+        "minoritarios": -35.8,
+        "beneficio_neto": 26342,
+        "gastos_financieros": 100,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 46.79,
+        "dpa": 15,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 563
+      }
+    ],
+    "ltm": {
+      "periodo": "LTM jun-26",
+      "fecha_fin": "2026-06-30",
+      "ingresos": 310623,
+      "ebitda": 44838,
+      "ebit": 42493,
+      "beneficio_neto": 35577,
+      "bpa": 63.25,
+      "dpa": 15,
+      "dpa_extraordinario": 0,
+      "fcf": 6108,
+      "participadas_en_ebitda": null,
+      "no_recurrentes_en_ebitda": null
+    },
+    "cambios_perimetro": [],
+    "confianza": "Media",
+    "comentario": "Las ventas han pasado de 59.599 M TWD en 2021 a 248.320 M en 2025 (TCAC del 42,9 %), todo orgánico: la única compra (534 M TWD en 2024) es irrelevante [1]. El salto de 2025 (+124,9 %) viene de los módulos aceleradores de IA, que ya eran ≈62 % de las ventas [3]. El margen EBITDA ha ido del 10,4 % (2021) al 13,6 % (2025) y al 15,6 % en el 2T26, por escala y por la mezcla con más 800G; la caída al 12,8 % del 3T25 y al 13,2 % del 4T25 muestra lo que pesan los módulos de poco margen [1]. Los gastos de estructura bajaron del 9,9 % al 5,1 % de las ventas entre 2021 y 2025. En 2026 la empresa ganó 34,70 TWD por acción en el primer semestre, el 74 % de todo 2025 [2].",
+    "ajustes": "Usamos cifras publicadas. El resultado financiero incluye diferencias de cambio que van y vienen (−303 M TWD en 2025, +1.485 M en el LTM) y los intereses de una caja de 43.000-51.000 M TWD (≈1.100 M al año) [1]. En 2025 hubo un deterioro de 215 M TWD (baja del fondo de comercio de la compra de 2024), no recurrente y pequeño. El EBITDA es EBIT más toda la amortización del estado de flujos (incluidos derechos de uso), igual que el de MarketScreener (33.861 M TWD en 2025) [1, 25]."
+  },
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "3T24",
+        "ingresos": 28193,
+        "crecimiento_pct": 25.7,
+        "crecimiento_organico_pct": null,
+        "ebitda": 3643,
+        "margen_ebitda_pct": 12.9,
+        "bpa": 4.7,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "4T24",
+        "ingresos": 38972,
+        "crecimiento_pct": 77.5,
+        "crecimiento_organico_pct": null,
+        "ebitda": 5374,
+        "margen_ebitda_pct": 13.8,
+        "bpa": 8.05,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1T25",
+        "ingresos": 42751,
+        "crecimiento_pct": 126.8,
+        "crecimiento_organico_pct": null,
+        "ebitda": 6177,
+        "margen_ebitda_pct": 14.4,
+        "bpa": 9.11,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "2T25",
+        "ingresos": 60605,
+        "crecimiento_pct": 148.3,
+        "crecimiento_organico_pct": null,
+        "ebitda": 8393,
+        "margen_ebitda_pct": 13.8,
+        "bpa": 8.96,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "3T25",
+        "ingresos": 72947,
+        "crecimiento_pct": 158.7,
+        "crecimiento_organico_pct": null,
+        "ebitda": 9318,
+        "margen_ebitda_pct": 12.8,
+        "bpa": 13.94,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "4T25",
+        "ingresos": 72018,
+        "crecimiento_pct": 84.8,
+        "crecimiento_organico_pct": null,
+        "ebitda": 9483,
+        "margen_ebitda_pct": 13.2,
+        "bpa": 14.8,
+        "vs_consenso": "En línea"
+      },
+      {
+        "periodo": "1T26",
+        "ingresos": 70121,
+        "crecimiento_pct": 64,
+        "crecimiento_organico_pct": null,
+        "ebitda": 10536,
+        "margen_ebitda_pct": 15,
+        "bpa": 14.84,
+        "vs_consenso": "Superior"
+      },
+      {
+        "periodo": "2T26",
+        "ingresos": 95538,
+        "crecimiento_pct": 57.6,
+        "crecimiento_organico_pct": null,
+        "ebitda": 14881,
+        "margen_ebitda_pct": 15.6,
+        "bpa": 19.72,
+        "vs_consenso": "Superior"
+      }
+    ],
+    "confianza": "Media",
+    "ultima_presentacion": "En la conferencia del 1T26 (mayo) la dirección esperaba un 2T26 con ventas al alza de un dígito; salió un +36 % trimestral y un margen operativo del 15 %, récord [5, 6]. En la junta de junio describió la demanda del 2S26 como «mejor de lo previsto a principios de año» y confirmó el 1,6T en producción en serie, Taoyuan en el 3T26 y Nanliao, Dallas y Malasia en 2027 [8]. Tras las ventas de septiembre (−1,2 % mensual), la dirección explicó la pausa con cuatro factores: ajuste de mezcla, paso de componentes a consigna, inundaciones en Tailandia y escasez de componentes; las casas de análisis lo ven pasajero [7]. Lo que se repite en las preguntas es el margen bruto (18-19 % esperado en el 2S26 frente al 19,7 % del 2T26) y la cuota en Trainium con el segundo proveedor. La empresa no da guía numérica ni cuota por cliente [5, 7]."
+  },
+  "balance": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "activo_total": 35021,
+        "activo_corriente": 31782,
+        "pasivo_corriente": 17643,
+        "pasivo_total": 19468,
+        "fondo_comercio": 1.9,
+        "intangibles": 107.4,
+        "inmovilizado_material": 2557,
+        "existencias": 13269,
+        "clientes": 10316,
+        "proveedores": 11567,
+        "activos_contrato": null,
+        "pasivos_contrato": 852.7,
+        "caja": 7592,
+        "deuda_financiera": 1178.3,
+        "arrendamientos": 967.3,
+        "patrimonio_neto": 15553,
+        "minoritarios": 0,
+        "reservas": 9656
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 46061,
+        "activo_corriente": 41883,
+        "pasivo_corriente": 21568,
+        "pasivo_total": 25633,
+        "fondo_comercio": 1.9,
+        "intangibles": 166,
+        "inmovilizado_material": 3446,
+        "existencias": 12825,
+        "clientes": 13139,
+        "proveedores": 12478,
+        "activos_contrato": null,
+        "pasivos_contrato": 885.3,
+        "caja": 15015,
+        "deuda_financiera": 3530.6,
+        "arrendamientos": 1394.9,
+        "patrimonio_neto": 20428,
+        "minoritarios": 0,
+        "reservas": 14482
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 56576,
+        "activo_corriente": 49991,
+        "pasivo_corriente": 29080,
+        "pasivo_total": 31388,
+        "fondo_comercio": 1.9,
+        "intangibles": 154.4,
+        "inmovilizado_material": 5080,
+        "existencias": 13565,
+        "clientes": 11119,
+        "proveedores": 13681,
+        "activos_contrato": null,
+        "pasivos_contrato": 6254,
+        "caja": 24333,
+        "deuda_financiera": 971.7,
+        "arrendamientos": 1591.4,
+        "patrimonio_neto": 25188,
+        "minoritarios": 0,
+        "reservas": 19199
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 86467,
+        "activo_corriente": 70639,
+        "pasivo_corriente": 46920,
+        "pasivo_total": 50032,
+        "fondo_comercio": 217.4,
+        "intangibles": 778.5,
+        "inmovilizado_material": 7715,
+        "existencias": 19394,
+        "clientes": 20763,
+        "proveedores": 25955,
+        "activos_contrato": null,
+        "pasivos_contrato": 6775,
+        "caja": 25465,
+        "deuda_financiera": 756.9,
+        "arrendamientos": 2035.9,
+        "patrimonio_neto": 36327,
+        "minoritarios": 108.4,
+        "reservas": 26971
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 143231,
+        "activo_corriente": 121067,
+        "pasivo_corriente": 82184,
+        "pasivo_total": 85596,
+        "fondo_comercio": 1.9,
+        "intangibles": 740.5,
+        "inmovilizado_material": 12064,
+        "existencias": 30211,
+        "clientes": 37275,
+        "proveedores": 58486,
+        "activos_contrato": null,
+        "pasivos_contrato": 6575,
+        "caja": 51463,
+        "deuda_financiera": 576.3,
+        "arrendamientos": 2667.8,
+        "patrimonio_neto": 57540,
+        "minoritarios": 95.7,
+        "reservas": 47196
+      }
+    ],
+    "vencimientos": null,
+    "liquidez": "Caja, depósitos e inversiones financieras a corto plazo de 43.407 M TWD a jun-26 (51.463 M a dic-25) frente a una deuda financiera de 6.190 M TWD y arrendamientos de 3.232 M TWD [1].",
+    "rating": "Sin rating",
+    "coste_deuda_pct": 2.5,
+    "vida_media_anios": null,
+    "confianza": "Media",
+    "otros_pasivos": "Sin pensiones relevantes (24 M TWD) ni deuda significativa. Los anticipos de clientes (5.030 M TWD en jun-26, 6.575 M en dic-25) son circulante que se compensa con entregas, no deuda [1]. A 30 de junio estaba pendiente de pago el dividendo de 15 TWD por acción aprobado el 11 de junio (≈8.384 M TWD, pagado en julio), que restamos en el puente porque la caja de junio lo incluye [2]. No conocemos garantías, compromisos de compra de componentes ni litigios: las notas del informe anual no se han podido leer.",
+    "comentario": "El circulante comercial cayó al 1 % de las ventas en 2025 porque proveedores y anticipos financiaban las existencias, y volvió al 13,6 % en junio de 2026: las existencias pasaron de 30.211 a 76.973 M TWD por el acopio de memorias y PCB y el arranque de Trainium 3 [1, 7]. Eso explica que el flujo operativo de los últimos 12 meses (13.091 M TWD) sea un tercio del beneficio. La caja neta baja de 48.219 M TWD (dic-25) a 33.985 M (jun-26) y se queda en ≈25.600 M tras el dividendo [1]. Con la consigna parte de esas existencias debería salir del balance en el 2S26: es la cifra que vigilar en el 3T26."
+  },
+  "flujos": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 1368,
+        "capex": 557.4,
+        "pagos_arrendamientos": 326.8,
+        "adquisiciones": 0,
+        "desinversiones": 4.3,
+        "dividendos": 3622,
+        "recompras": 0,
+        "emision_acciones": 6.4,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 9723,
+        "capex": 1071.6,
+        "pagos_arrendamientos": 263.7,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 3346,
+        "recompras": 0,
+        "emision_acciones": 2.9,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 18371,
+        "capex": 2311.8,
+        "pagos_arrendamientos": 310.2,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 4185,
+        "recompras": 0,
+        "emision_acciones": 2.8,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 9942,
+        "capex": 2904.5,
+        "pagos_arrendamientos": 304.6,
+        "adquisiciones": 534.2,
+        "desinversiones": 0,
+        "dividendos": 5582,
+        "recompras": 0,
+        "emision_acciones": 9.7,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 34852,
+        "capex": 5030.3,
+        "pagos_arrendamientos": 341.2,
+        "adquisiciones": 0,
+        "desinversiones": 550.3,
+        "dividendos": 6148,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "La conversión de beneficio en caja es irregular por el circulante: 112 % en 2025, 56 % en 2024, 177 % en 2023 y solo un 10 % en 2021, cuando se acumularon existencias por la escasez de chips. En 2021-2025 el flujo libre acumulado (60.834 M TWD) igualó al beneficio, y se repartieron 22.883 M en dividendos [1]. El capex fue del 2,0 % de las ventas en 2025 (5.030 M TWD) y del 2,3 % en el LTM (7.043 M); con las plantas nuevas lo proyectamos en el 3,0-3,2 % en 2026-2027 (estimación propia, sin cifra de la empresa) y bajando al 1,5 % a largo plazo, por encima de la amortización. Mantenimiento estimado: ≈1 % de las ventas, la amortización [1]."
+  },
+  "calidad": {
+    "auditor": "Deloitte & Touche Taiwán (勤業眾信)",
+    "anios_auditor": null,
+    "opinion": "Favorable (sin salvedades conocidas; informe de auditoría no leído)",
+    "senales": [
+      {
+        "senal": "Existencias ×2,5 en seis meses (30.211 → 76.973 M TWD) y flujo operativo LTM de 13.091 M TWD frente a un beneficio de 35.577 M",
+        "nivel": "Media",
+        "comentario": "Acopio de memorias y PCB por la escasez y el arranque de Trainium 3; la empresa pasa parte de los componentes a consigna del cliente desde el 3T26. Se vigila en el 3T26 [1, 7]."
+      },
+      {
+        "senal": "Ingresos anticipados de clientes (pasivos de contrato) de 5.030-6.775 M TWD desde 2023",
+        "nivel": "Baja",
+        "comentario": "Prepagos de clientes de hiperescala; financian parte del circulante y pueden revertir si cambian las condiciones [1]."
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "Altman Z de 11,06 (zona segura), Piotroski F de 7 sobre 9 y Beneish M de −1,79, justo por debajo del umbral de −1,78 a partir del cual se sospecha manipulación; el valor se explica por el crecimiento de clientes y ventas de 2025, no por manipulación. Sin cambios de criterio conocidos, sin capitalización de I+D relevante (intangibles de 741 M TWD) y sin remuneración en acciones significativa (las acciones están en ≈559 M desde 2021) [1]. Las dos señales reales son de circulante: existencias ×2,5 en seis meses y anticipos de clientes que pueden revertir. Auditora: Deloitte Taiwán [19]. La limitación es que no hemos leído el informe de auditoría ni las notas."
+  },
+  "rentabilidad": {
+    "comentario": "El ROIC del motor (221,6 % en 2025) exagera porque el capital invertido casi desaparece: proveedores y anticipos de clientes financiaban las existencias y la caja neta superaba al patrimonio menos el inmovilizado. Con un circulante normal del 12 % de las ventas, el ROIC de 2025 sería del ≈60 % (estimación propia: NOPAT de 25.681 M TWD sobre 42.604 M de inmovilizado, intangibles y circulante), y con el balance de junio de 2026, ya con el circulante alto, del ≈82 % (NOPAT de los últimos 12 meses ≈33.600 M sobre ≈40.800 M) [1]. En cualquier medida crea valor muy por encima del WACC del 9,55 % desde 2021 (44,2 % ese año). Lo mueve la rotación (2,2 veces el activo), no el margen (10,6 % neto). Compara con Celestica (42 %), Wiwynn (29 %) y Quanta (20 %) [15]. El ROIC incremental de 2021-2025 no significa nada (el capital apenas creció).",
+    "confianza": "Media"
+  },
+  "capital": {
+    "politica": "Dividendo anual en efectivo con cargo al ejercicio anterior, aprobado por la junta de junio: 6,0 TWD (2021), 7,5 (2022), 10,0 (2023), 11,0 (2024) y 15,0 TWD por acción con cargo a 2025, pagado en julio de 2026 (reparto del 32 % del BPA, frente al ≈50 % de 2021-2024, para financiar existencias y fábricas) [2, 9]. Sin recompras ni ampliaciones relevantes: las acciones se mantienen en ≈559 M desde 2021 [1, 2].",
+    "adquisiciones": [
+      {
+        "anio": "2024",
+        "objetivo": "Adquisición menor (efectivo pagado 534 M TWD; genera un fondo de comercio de 215 M TWD que se da de baja en 2025)",
+        "importe": 534,
+        "ev_ebitda": null,
+        "financiacion": "Caja",
+        "resultado": "Deterioro y baja de 215 M TWD en 2025; irrelevante frente al tamaño del grupo [1]."
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "La dirección asigna el capital con prudencia: casi todo el crecimiento se ha financiado con circulante de clientes y proveedores, el capex acumulado de 2021-2025 (11.876 M TWD) es el 20 % del flujo libre, no hay compras relevantes ni dilución, y el dividendo subió de 6 a 15 TWD [1, 2]. El ROIC incremental de esos años es enorme porque el capital invertido apenas creció. El punto débil es que la caja neta (≈25.600 M tras el dividendo) rinde poco y que el reparto bajó al 32 % del BPA de 2025 para financiar fábricas y existencias; las ampliaciones aprobadas el 8-oct-2026 (Zhubei, Nanliao, Singapur, arrendamiento en EE. UU.) suben el capex sin cifra pública [2]."
+  },
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "Huang Kuo-Hsiu (黃國修)",
+        "cargo": "Presidente del consejo",
+        "desde": null,
+        "participacion_pct": null,
+        "trayectoria": "Presidente del consejo de Accton según la ficha de la empresa en Yahoo Bolsa Taiwán (enero de 2026) [19]; los consejeros y supervisores suman el 9,87 % del capital [19]."
+      },
+      {
+        "nombre": "Lee Hsun-te (李訓德, Jackal Lee)",
+        "cargo": "Consejero delegado y director general",
+        "desde": "2025",
+        "participacion_pct": null,
+        "trayectoria": "En Accton desde 2000, vicepresidente sénior desde 2020; dirigió producción, ventas y entregas y presidió la fábrica de Vietnam. Sustituyó a Shi Jun el 15-oct-2025 por «reorganización»; con él las ventas han crecido un 62,5 % en 9M26 sin roturas de entrega [20, 21]."
+      },
+      {
+        "nombre": "Lin Hsing-Hsuan (林信玄)",
+        "cargo": "Portavoz",
+        "desde": null,
+        "participacion_pct": null,
+        "trayectoria": "Portavoz oficial registrado en la Bolsa de Taiwán [2]."
+      }
+    ],
+    "historial_guidance": [
+      {
+        "anio": "2026",
+        "guia": "Junta de junio: demanda del 2S26 «mejor que lo previsto a principios de año», prudentemente optimista; 1,6T en volumen en el 2S26 [8]",
+        "real": "Ventas del 3T26 de 120.744 M TWD (+65,5 %), récord; 1,6T en producción en serie [2, 4]",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2025",
+        "guia": "Sin guía numérica pública; la empresa anticipó un 2025 de fuerte crecimiento por módulos aceleradores y 800G",
+        "real": "Ventas +124,9 % y BPA de 47,13 TWD (+119 %) [2, 9]",
+        "cumplida": "Sí"
+      }
+    ],
+    "confianza": "Baja",
+    "comentario": "Equipo de la casa: el consejero delegado lleva 25 años en Accton y viene de producción y entregas, lo que encaja con un negocio en el que ejecutar a tiempo es la ventaja [20]. El cambio de octubre de 2025 fue brusco («reorganización», efecto inmediato, junto con el director comercial) y no se explicó más; desde entonces la ejecución ha sido buena (ventas +62,5 % en 9M26) [4, 20]. La empresa no publica guía numérica, así que no hay historial de cumplimiento que medir; lo que dijo en la junta de junio se ha cumplido. No conocemos plan de sucesión ni la participación individual de los directivos (consejo y supervisores: 9,87 % en conjunto) [19]."
+  },
+  "gobierno": {
+    "consejo": [],
+    "presidente_ceo_separados": true,
+    "presidente_ejecutivo": false,
+    "consejero_coordinador": false,
+    "una_accion_un_voto": true,
+    "operaciones_vinculadas_relevantes": false,
+    "variable_ligado_rentabilidad": false,
+    "auditoria_independiente": true,
+    "insiders_sin_operaciones": false,
+    "accionista_control": false,
+    "presidente_vinculado_control": false,
+    "cambios_cupula_24m": 1,
+    "voto_remuneracion_pct": null,
+    "voto_remuneracion_contra_pct": null,
+    "voto_remuneracion_contra_libre_pct": null,
+    "voto_cupula_pct": null,
+    "remuneracion_ceo": null,
+    "accionistas": [
+      {
+        "nombre": "Consejeros y supervisores (en conjunto)",
+        "pct": 9.87,
+        "tipo": "Consejo",
+        "variacion": "n.d."
+      },
+      {
+        "nombre": "Inversores institucionales (en conjunto)",
+        "pct": 46.98,
+        "tipo": "Institucional",
+        "variacion": "Los fondos extranjeros vendieron en el verano; los fondos locales (投信) vendieron nueve sesiones seguidas hasta el 30-sep-2026 (6.779 lotes, ≈12.346 M TWD) y compraron en octubre [2, 22, 23]"
+      },
+      {
+        "nombre": "Autocartera",
+        "pct": 0.1,
+        "tipo": "Autocartera",
+        "variacion": "Sin cambios (51 M TWD a coste) [24]"
+      }
+    ],
+    "insiders": [],
+    "alertas": [
+      "Cambio de consejero delegado en octubre de 2025 por «reorganización» (Shi Jun sustituido por Lee Hsun-te) junto con el puesto de director comercial: sin explicación pública más allá de la reorganización [20].",
+      "No se ha podido revisar el registro oficial de operaciones de consejeros ni las actas de junta (MOPS bloqueado): gobierno no verificado."
+    ],
+    "confianza": "Baja",
+    "remuneracion": "No hemos podido leer el informe de remuneración (MOPS bloqueado). En Taiwán la remuneración de empleados y consejeros se fija como porcentaje del beneficio antes de impuestos según los estatutos y la aprueba la junta; no sabemos si hay variable a largo plazo ligado a rentabilidad, cláusulas de recuperación o indemnizaciones. Lo dejamos como hueco y no puntúa a favor.",
+    "control_y_defensas": "Sin accionista de control: consejo y supervisores tienen el 9,87 % y los institucionales el 47 % [19, 23]. Una sola clase de acciones. La ley taiwanesa obliga a una comisión de auditoría formada solo por consejeros independientes en las cotizadas de este tamaño. No conocemos operaciones vinculadas relevantes ni blindajes. Presidente (Huang Kuo-Hsiu) y consejero delegado (Lee Hsun-te) son personas distintas [19]."
+  },
+  "consenso": {
+    "estimaciones": [
+      {
+        "periodo": "2026e",
+        "ingresos": 409344,
+        "ebitda": 63014,
+        "ebit": 60208,
+        "bpa": 86.24,
+        "dpa": 28.1,
+        "fuente": "MarketScreener, 14 analistas [25]"
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 525600,
+        "ebitda": 85788,
+        "ebit": 81866,
+        "bpa": 112.4,
+        "dpa": 42.11,
+        "fuente": "MarketScreener, 14 analistas [25]"
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 735100,
+        "ebitda": 121748,
+        "ebit": 116270,
+        "bpa": 167.2,
+        "dpa": 59.96,
+        "fuente": "MarketScreener [25]"
+      }
+    ],
+    "recomendaciones": {
+      "n_analistas": 14,
+      "comprar": null,
+      "mantener": null,
+      "vender": null,
+      "po_medio": 3273.86,
+      "po_min": 2380,
+      "po_max": 3700
+    },
+    "base_ebitda": "NIIF",
+    "ajuste_ebitda_pct_ventas": null,
+    "confianza": "Media",
+    "guidance": "Accton no publica guía numérica de ventas ni de márgenes. Su último mensaje (junta del 11-jun-2026, confirmado tras las ventas de septiembre) es que la demanda del 2S26 es mejor de lo previsto a principios de año, que el 1,6T y Trainium 3 ganan volumen en el 2S26 y que la capacidad crece ≈50 % a finales de 2026 y otro 30 % en 2027 [3, 7, 8].",
+    "revisiones": "En 12 meses el BPA esperado de 2026 ha subido con fuerza: una casa estadounidense lo situaba en 61,27 TWD en diciembre de 2025 [13] y el consenso de MarketScreener está hoy en 86,24 [25]. En los últimos tres meses los objetivos van en las dos direcciones: un broker japonés subió de 3.222 a 3.666 TWD en julio y lo mantuvo en octubre, y una casa local recortó a 2.380 TWD (22 veces el BPA de 2027) por el margen [5, 7]. Una europea bajó las ventas del 3T26 por la consigna sin tocar el beneficio [32]. Solo hay una fuente con estimaciones completas (MarketScreener); el objetivo y las recomendaciones se contrastan con la prensa."
+  },
+  "bolsa": {
+    "tipo_rentabilidad": "total (con dividendos)",
+    "rentabilidades": [
+      {
+        "periodo": "En el año",
+        "accion_pct": 68.4,
+        "indice_pct": 69.5,
+        "sector_pct": 41.6
+      },
+      {
+        "periodo": "1 año",
+        "accion_pct": 99.6,
+        "indice_pct": 76.5,
+        "sector_pct": 27.1
+      },
+      {
+        "periodo": "3 años (anual.)",
+        "accion_pct": 56.9,
+        "indice_pct": 54.7,
+        "sector_pct": 55.7
+      },
+      {
+        "periodo": "5 años (anual.)",
+        "accion_pct": 54.4,
+        "indice_pct": 29.9,
+        "sector_pct": 50.1
+      },
+      {
+        "periodo": "10 años (anual.)",
+        "accion_pct": 49.3,
+        "indice_pct": 23.6,
+        "sector_pct": 43.5
+      }
+    ],
+    "anual": [
+      {
+        "anio": "2016",
+        "accion_pct": 66.2,
+        "indice_pct": 19.6
+      },
+      {
+        "anio": "2017",
+        "accion_pct": 117.1,
+        "indice_pct": 18.1
+      },
+      {
+        "anio": "2018",
+        "accion_pct": -2.9,
+        "indice_pct": -4.9
+      },
+      {
+        "anio": "2019",
+        "accion_pct": 75.7,
+        "indice_pct": 33.5
+      },
+      {
+        "anio": "2020",
+        "accion_pct": 92.9,
+        "indice_pct": 31.1
+      },
+      {
+        "anio": "2021",
+        "accion_pct": -16.1,
+        "indice_pct": 21.9
+      },
+      {
+        "anio": "2022",
+        "accion_pct": -7.6,
+        "indice_pct": -21.2
+      },
+      {
+        "anio": "2023",
+        "accion_pct": 127.3,
+        "indice_pct": 27.5
+      },
+      {
+        "anio": "2024",
+        "accion_pct": 50.8,
+        "indice_pct": 48.6
+      },
+      {
+        "anio": "2025",
+        "accion_pct": 55.3,
+        "indice_pct": 36.9
+      }
+    ],
+    "beta": 0.74,
+    "volatilidad_pct": 65.3,
+    "max_drawdown_pct": -44,
+    "tramo_drawdown": "2024-12-27 → 2025-04-09",
+    "posicion_corta_pct": null,
+    "confianza": "Alta",
+    "comentario": "Accton ha dado un 54,4 % anual en cinco años frente al 29,9 % del ETF Taiwan 50, pero con caídas fuertes: −44 % entre diciembre de 2024 y abril de 2025 [27]. En 2026 subió de 1.185 a un máximo de 2.825 TWD en julio por los resultados del 1T26 y la subida de objetivos, y desde entonces ha caído un 28 % pese a ventas récord: el mercado descuenta un pico de margen (componentes, módulos aceleradores) y del ciclo de inversión, y los fondos han rotado hacia memorias y otros valores de IA [6, 7, 22]. La volatilidad de un año es del 65,3 % y la beta frente al Taiwan 50 va de 0,74 (mensual, cinco años) a 1,29 (semanal, dos años) [27].",
+    "contexto": {
+      "movimiento": {
+        "fecha": "2026-10-16",
+        "var_1m_pct": 5.6,
+        "var_3m_pct": -14.7,
+        "var_6m_pct": 0.5,
+        "var_12m_pct": 89.5,
+        "dist_max_52s_pct": -28,
+        "dist_min_52s_pct": 119,
+        "dist_max_historico_pct": -28,
+        "tendencia": "alcista",
+        "volatilidad_60d_pct": 61.5,
+        "avisos": []
+      },
+      "movimientos_fuertes": [
+        {
+          "periodo": "abr-may 2026",
+          "var_pct": 65.9,
+          "causa": "Resultados del 1T26 por encima de lo esperado (BPA de 14,92 TWD frente a 12,9) y tres subidas de objetivo a 3.000-3.222 TWD; el 8 de mayo cayó al límite (−7,2 %) por recogida de beneficios [6].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "jul 2026",
+          "var_pct": -22.4,
+          "causa": "Caídas del 7, 14, 17 (−9,9 %), 28 (−8,9 %) y 29 de julio sin noticia de la empresa: dudas sobre el margen bruto por componentes y mezcla, ruido en la cadena de Trainium y ventas de fondos extranjeros y luego locales; las ventas de julio (39.473 M TWD) quedaron en línea [7, 22, 32].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "ago 2026",
+          "var_pct": -8.1,
+          "causa": "Caída del 7 de agosto, el día siguiente a publicar un 2T26 récord (BPA 19,78 TWD): «vende la noticia» y dudas sobre el margen del 2S26 [5, 33].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "nov 2025",
+          "var_pct": -9.1,
+          "causa": "Caída del 5 de noviembre con los resultados del 3T25 (margen EBITDA del 12,8 %, el más bajo del año, por el peso de los módulos aceleradores) [1].",
+          "veredicto": "no cambia",
+          "condicion": null
+        }
+      ],
+      "noticias": [
+        {
+          "fecha": "2026-10-13",
+          "tipo": "recomendación",
+          "hecho": "Broker japonés mantiene Comprar con objetivo de 3.666 TWD (35 veces el BPA a un año); espera margen bruto del 18-19 % en el 2S26 y cree pasajero el ruido de Trainium [7].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-10-08",
+          "tipo": "resultados",
+          "hecho": "El consejo aprueba más presupuesto para el parque de IA de Zhubei, una fábrica y almacén en Nanliao, equipos para la filial de Singapur y un arrendamiento largo en EE. UU. (sin importes en lo leído) [2].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-10-06",
+          "tipo": "resultados",
+          "hecho": "Ventas de septiembre de 40.399 M TWD (−1,2 % mensual, +66,1 % interanual); 3T26 de 120.744 M TWD [2, 4].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-09-30",
+          "tipo": "accionista de referencia",
+          "hecho": "Los fondos locales encadenan nueve sesiones de ventas (≈12.346 M TWD); no hay colocaciones de accionistas de referencia [22].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-09-29",
+          "tipo": "recomendación",
+          "hecho": "Una casa local mantiene Comprar pero recorta el objetivo a 2.380 TWD (22 veces el BPA de 2027 de 107,53) por el margen del 2S26 [5].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-06-11",
+          "tipo": "resultados",
+          "hecho": "La junta aprueba un dividendo de 15 TWD (pagado en julio) [2, 8].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2025-10-15",
+          "tipo": "directivos",
+          "hecho": "Cambio de consejero delegado por reorganización (Shi Jun → Lee Hsun-te) [20].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-11-06",
+          "tipo": "resultados",
+          "hecho": "Próximos resultados (3T26), fecha estimada por StockAnalysis; los del 3T25 se presentaron el 6-nov-2025 [23].",
+          "veredicto": "no cambia",
+          "condicion": null
+        }
+      ],
+      "proximos_resultados": "2026-11-06",
+      "veredicto": "no cambia",
+      "condicion": null,
+      "comentario": "La caída del 28 % desde julio no tiene una causa de la empresa: ventas récord en julio, agosto y septiembre y 3T26 +65,5 %. La explican el margen bruto esperado (18-19 % frente al 19,7 %), el ruido de la cadena de Trainium y la rotación de fondos [7, 22]. No hay colocaciones, ampliaciones, litigios ni ventas de directivos conocidas (el registro de MOPS no se pudo revisar). Los resultados del 3T26 (≈6-nov) no aplazan la decisión (regla 11). Veredicto: no cambia."
+    }
+  },
+  "multiplos_historicos": {
+    "serie": [
+      {
+        "anio": "2021",
+        "precio_cierre": 260,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2022",
+        "precio_cierre": 234.5,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2023",
+        "precio_cierre": 523,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2024",
+        "precio_cierre": 773,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2025",
+        "precio_cierre": 1185,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      }
+    ],
+    "confianza": "Alta",
+    "comentario": "Al cierre de cada año, Accton ha cotizado entre 16 y 36 veces el beneficio de los últimos 12 meses; hoy 31,3 veces, en la media. Medido como lo mira el mercado (precio ÷ BPA del año siguiente) la historia es más baja: 14,3-24,5 veces en 2021-2025, mediana de 16,5, y hoy 18,2 veces nuestro BPA de 2027e. La empresa ya no es la de 2021 (el doble de margen operativo y cinco veces las ventas), pero el riesgo de cliente es mayor: no vemos razón para un múltiplo estructuralmente superior a su historia."
+  },
+  "comparables": {
+    "empresas": [
+      {
+        "nombre": "Celestica",
+        "ticker": "CLS",
+        "pais": "CA",
+        "capitalizacion": 1171147,
+        "ev_ventas": 2.35,
+        "ev_ebitda_ltm": 23.45,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 21.15,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": 10,
+        "roic_pct": 42.3,
+        "dn_ebitda": 0.28,
+        "fcf_yield_pct": 1.43
+      },
+      {
+        "nombre": "Arista Networks",
+        "ticker": "ANET",
+        "pais": "US",
+        "capitalizacion": 7576522,
+        "ev_ventas": 20.94,
+        "ev_ebitda_ltm": 47.57,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 39.9,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": 44,
+        "roic_pct": null,
+        "dn_ebitda": -2.9,
+        "fcf_yield_pct": 2.2
+      },
+      {
+        "nombre": "Wiwynn",
+        "ticker": "6669.TW",
+        "pais": "TW",
+        "capitalizacion": 1030000,
+        "ev_ventas": 1.03,
+        "ev_ebitda_ltm": 14.89,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 12.48,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": 6.8,
+        "roic_pct": 29.2,
+        "dn_ebitda": 1.06,
+        "fcf_yield_pct": -6.08
+      },
+      {
+        "nombre": "Quanta Computer",
+        "ticker": "2382.TW",
+        "pais": "TW",
+        "capitalizacion": 1240000,
+        "ev_ventas": 0.45,
+        "ev_ebitda_ltm": 11.77,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 11.09,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": 3.7,
+        "roic_pct": 20.3,
+        "dn_ebitda": 0.92,
+        "fcf_yield_pct": -2.9
+      },
+      {
+        "nombre": "Wistron",
+        "ticker": "3231.TW",
+        "pais": "TW",
+        "capitalizacion": 580360,
+        "ev_ventas": 0.38,
+        "ev_ebitda_ltm": 8.7,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 9.21,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": 4.2,
+        "roic_pct": 12.7,
+        "dn_ebitda": 3.72,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "Fabrinet",
+        "ticker": "FN",
+        "pais": "US",
+        "capitalizacion": 446706,
+        "ev_ventas": 2.79,
+        "ev_ebitda_ltm": 24.37,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 21.16,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": 11.4,
+        "roic_pct": 26.8,
+        "dn_ebitda": -1.64,
+        "fcf_yield_pct": 0.03
+      }
+    ],
+    "confianza": "Media",
+    "criterio": "Fabricantes a medida de infraestructura para la nube: Celestica (el rival directo en conmutadores white-box), Wiwynn, Quanta y Wistron (servidores y racks de IA para las mismas nubes, en Taiwán) y Fabrinet (fabricación a medida de óptica para centros de datos). Arista entra como referencia de red con marca y software propio, con mucho más margen. Sin Cisco (empresa, otro modelo) ni Nvidia (chips). El PER adelantado de Arista y Celestica es ajustado (sin pagos en acciones); el de Accton es NIIF publicado, casi sin pagos en acciones.",
+    "comentario": "Accton cotiza a 18,5 veces el PER de los próximos 12 meses y 24,2 veces el EV/EBITDA de los últimos 12, por encima de los fabricantes taiwaneses de servidores (9-12 veces) y en línea con Celestica y Fabrinet (21 veces). La prima sobre Quanta y Wiwynn se justifica por el margen (13-15 % frente a 4-7 %) y el ROIC; el descuento frente a Arista, por la falta de software y de marca. La mediana del PER (16,8 veces) da 1.798 TWD por acción, un 9 % por debajo del precio. Usamos el PER: el EV/EBITDA de los últimos 12 meses castiga a Accton por el salto de beneficio en curso."
+  },
+  "transacciones": {
+    "operaciones": [
+      {
+        "fecha": "2025-07",
+        "objetivo": "Juniper Networks",
+        "comprador": "Hewlett Packard Enterprise",
+        "ev": 453180,
+        "ev_ventas": null,
+        "ev_ebitda": null,
+        "prima_pct": 32,
+        "excluir": false,
+        "comentario": "Valor de las acciones de ≈14.000 M USD a 40 USD por acción (prima >30 %); la prensa habla de «casi 3 veces ventas y 30 veces EBITDA», no comprobado con las cuentas [29, 30]."
+      },
+      {
+        "fecha": "2025-03",
+        "objetivo": "ZT Systems (servidores de IA para la nube)",
+        "comprador": "AMD",
+        "ev": 158613,
+        "ev_ventas": null,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "4.900 M USD (75 % caja, 25 % acciones) más hasta 400 M USD variables; ventas de ZT no publicadas por AMD [31]."
+      }
+    ],
+    "confianza": "Baja",
+    "comentario": "Las operaciones del sector no sirven de referencia: HPE pagó una prima de más del 30 % por Juniper (red con marca y software, ≈14.000 M USD) y AMD compró ZT Systems (servidores a medida para la nube, 4.900 M USD) por su ingeniería, sin múltiplos publicados que podamos comprobar [29, 30, 31]. Accton no es candidata natural a una compra: con 1,11 billones de TWD de capitalización (≈34.000 M USD) y sin accionista de control, solo un gran grupo de chips o de redes podría plantearla. Peso cero en la síntesis."
+  },
+  "dcf": {
+    "anios": [
+      {
+        "periodo": "2026e",
+        "crecimiento_pct": 63,
+        "margen_ebitda_pct": 15,
+        "amortizacion_pct_ventas": 0.8,
+        "capex_pct_ventas": 3.2,
+        "nwc_pct_ventas": 11,
+        "tasa_impositiva_pct": 20.5,
+        "fijo": true
+      },
+      {
+        "periodo": "2027e",
+        "crecimiento_pct": 33,
+        "margen_ebitda_pct": 15,
+        "amortizacion_pct_ventas": 0.9,
+        "capex_pct_ventas": 3,
+        "nwc_pct_ventas": 11,
+        "tasa_impositiva_pct": 20.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2028e",
+        "crecimiento_pct": 22,
+        "margen_ebitda_pct": 15,
+        "amortizacion_pct_ventas": 1,
+        "capex_pct_ventas": 2.5,
+        "nwc_pct_ventas": 11,
+        "tasa_impositiva_pct": 20.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2029e",
+        "crecimiento_pct": 10,
+        "margen_ebitda_pct": 14.5,
+        "amortizacion_pct_ventas": 1.1,
+        "capex_pct_ventas": 2,
+        "nwc_pct_ventas": 11,
+        "tasa_impositiva_pct": 20.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2030e",
+        "crecimiento_pct": 7,
+        "margen_ebitda_pct": 14,
+        "amortizacion_pct_ventas": 1.2,
+        "capex_pct_ventas": 1.8,
+        "nwc_pct_ventas": 11,
+        "tasa_impositiva_pct": 20.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2031e",
+        "crecimiento_pct": 5,
+        "margen_ebitda_pct": 13.5,
+        "amortizacion_pct_ventas": 1.2,
+        "capex_pct_ventas": 1.7,
+        "nwc_pct_ventas": 11,
+        "tasa_impositiva_pct": 20.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2032e",
+        "crecimiento_pct": 4,
+        "margen_ebitda_pct": 13,
+        "amortizacion_pct_ventas": 1.3,
+        "capex_pct_ventas": 1.6,
+        "nwc_pct_ventas": 11,
+        "tasa_impositiva_pct": 20.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2033e",
+        "crecimiento_pct": 3.5,
+        "margen_ebitda_pct": 13,
+        "amortizacion_pct_ventas": 1.3,
+        "capex_pct_ventas": 1.6,
+        "nwc_pct_ventas": 11,
+        "tasa_impositiva_pct": 20.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2034e",
+        "crecimiento_pct": 3,
+        "margen_ebitda_pct": 13,
+        "amortizacion_pct_ventas": 1.3,
+        "capex_pct_ventas": 1.5,
+        "nwc_pct_ventas": 11,
+        "tasa_impositiva_pct": 20.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2035e",
+        "crecimiento_pct": 2.5,
+        "margen_ebitda_pct": 13,
+        "amortizacion_pct_ventas": 1.3,
+        "capex_pct_ventas": 1.5,
+        "nwc_pct_ventas": 11,
+        "tasa_impositiva_pct": 20.5,
+        "fijo": false
+      }
+    ],
+    "wacc": {
+      "tasa_libre_pct": 2.03,
+      "beta": 1.2,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 1,
+      "coste_deuda_pct": 2.5,
+      "tasa_impositiva_pct": 20,
+      "peso_deuda_pct": 1
+    },
+    "terminal": {
+      "metodo": "gordon",
+      "crecimiento_pct": 1.5,
+      "multiplo_salida": 12
+    },
+    "etapa2": {
+      "usar": false,
+      "anios": 5,
+      "margen_final_pct": null,
+      "justificacion": null
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "2026e (+63 %, fijo) sale de las ventas oficiales de 9M26 (286.402 M TWD) y de un 4T26 algo por debajo del 3T26 por la consigna y la transición a Trainium 3 [2, 7]. 2027e (+33 %) y 2028e (+22 %) se apoyan en la capacidad (+50 % a finales de 2026, +30 % en 2027), el 1,6T y Trainium 3 [3, 8]; el consenso espera +28 % y +40 % [25]. Luego bajamos al 10, 7, 5 y 4 % y al 2,5 % en 2035: es un negocio cíclico de pocos clientes y no proyectamos años de crecimiento muy alto más allá de 2028.",
+      "margenes": "Margen EBITDA del 15,0 % en 2026-2028, el de los últimos cuatro trimestres (13,2-15,6 %), y bajando al 13 % desde 2032, entre la media de 2022-2025 (13,9 %) y lo que dejan los fabricantes a medida con más competencia [1]. El consenso espera un 16,6 % en 2028 [25]; la mezcla con más conmutadores lo permitiría, pero el segundo proveedor de Trainium y los componentes van en contra.",
+      "inversion": "Capex del 3,2 % y 3,0 % de las ventas en 2026-2027 por las fábricas de Taoyuan, Nanliao, Dallas y Malasia, y bajando al 1,5 % (por encima de la amortización del 1,3 %) [1, 8]. Circulante del 11 % de las ventas: entre el 13,6 % de junio de 2026 y el 5,6-6,7 % de 2023-2024; el 1 % de 2025 era atípico. Tipo impositivo del 20,5 % (20,1 % en 2025) [1].",
+      "wacc": "En TWD. Tasa libre: bono de Taiwán a 10 años al 2,03 % [35]. Beta 1,2: la medida frente al Taiwan 50 va de 0,74 (mensual, cinco años; ese índice es en gran parte TSMC) a 1,29 (semanal, dos años) y la ajustada semanal de cinco años es 1,05 [27]; elegimos la parte alta por la concentración de clientes y el ciclo. Prima de mercado del 5,5 % más 1,0 punto por Taiwán (riesgo geopolítico de las fábricas). Deuda casi nula (1 %). WACC del 9,55 %. Con la prima implícita del mercado (4,20 %) la regla relativa da un coste de capital menor [36].",
+      "terminal": "Gordon con crecimiento del 1,5 % en TWD, medio punto por debajo del bono a 10 años (2,03 %) y en línea con la inflación esperada de Taiwán. El múltiplo implícito del terminal es razonable frente a los comparables de fabricación a medida (EV/EBITDA de 9 a 24 veces)."
+    },
+    "sostenibilidad": {
+      "puente_ingresos": [
+        {
+          "periodo": "2026e",
+          "volumen_pct": 58,
+          "precio_pct": 10,
+          "otros_pct": -5,
+          "comentario": "Ventas de 9M26 oficiales (+62,5 %) [2]. Volumen: Trainium 3 desde el 2T26 y 800G en tres clientes; precio: mezcla hacia 1,6T y módulos con refrigeración líquida (≈20 % más caros) [6, 32]; otros: la consigna de componentes resta ventas desde el 3T26 [7]."
+        },
+        {
+          "periodo": "2027e",
+          "volumen_pct": 23,
+          "precio_pct": 10,
+          "otros_pct": 0,
+          "comentario": "Volumen con la capacidad (+30 % en 2027) y el 1,6T en volumen; precio por la mezcla 1,6T frente a 800G [3, 8]."
+        },
+        {
+          "periodo": "2028e",
+          "volumen_pct": 15,
+          "precio_pct": 7,
+          "otros_pct": 0,
+          "comentario": "Año completo de las plantas de Dallas y Malasia; la mezcla sigue hacia 1,6T y óptica [8]."
+        },
+        {
+          "periodo": "2029e",
+          "volumen_pct": 7,
+          "precio_pct": 3,
+          "otros_pct": 0,
+          "comentario": "Normalización: crecimiento del mercado de redes de IA [11]."
+        },
+        {
+          "periodo": "2030e",
+          "volumen_pct": 5,
+          "precio_pct": 2,
+          "otros_pct": 0,
+          "comentario": "Convergencia hacia el crecimiento del mercado."
+        }
+      ],
+      "mercado_final": null,
+      "veredicto": "Sí",
+      "justificacion": "Sí. La proyección reinvierte el 21 % del NOPAT y, con el ROIC actual, eso financia un crecimiento muy superior al 15,3 % medio proyectado; aun con un ROIC normalizado del ≈60 % el crecimiento financiable (≈13 % de media con esa reinversión) queda cerca del proyectado una vez pasado 2026, que ya está hecho. El capital nuevo rinde un 39,1 % en la proyección, por debajo del histórico. La cuota en conmutadores (≈8 % del segmento de centros de datos) no hace falta que suba: el crecimiento sale del mercado y de Trainium 3. Lo que limita la sostenibilidad no es la financiación sino la concentración en pocos clientes, que tratamos en el bajista."
+    },
+    "lectura": "El DCF da 1.511,34 TWD por acción, un 23,7 % por debajo del precio, con el 54 % del valor en el terminal. El DCF inverso dice que el precio de 1.980 TWD descuenta un crecimiento del 15,2 % anual en 2027-2035 frente al 10,0 % de nuestro caso base, o un margen EBITDA del 16,5 % frente al 13 %: el mercado supone que el crecimiento muy alto dura más de dos años o que el margen no vuelve a la media. Es exigente para un fabricante a medida con pocos clientes, aunque no absurdo si Trainium y el 1,6T siguen tres años más. La sensibilidad es moderada: con un WACC del 8,6 % y un terminal del 2,5 % el valor sube a 1.905 TWD, aún por debajo del precio. La rentabilidad implícita es del 7,7 %, por debajo de nuestro WACC del 9,55 %.",
+    "confianza": "Media"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": -2,
+        "ajuste_margen_pp": -2,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "perfil": [
+          {
+            "periodo": "2027e",
+            "crecimiento_pp": -33,
+            "margen_pp": -2.5
+          },
+          {
+            "periodo": "2028e",
+            "crecimiento_pp": -17,
+            "margen_pp": -2.5
+          }
+        ],
+        "narrativa": "La nube frena la inversión en 2027, como en 2023, y el segundo proveedor de Trainium se queda una parte: ventas planas en 2027 y +5 % en 2028, margen EBITDA 2-2,5 puntos más bajo. Ya le pasó a Accton en 2023 (+9 %) y a los fabricantes de servidores en 2023."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Trainium 3 y el 1,6T llevan las ventas a +33 % en 2027 y +22 % en 2028 con margen EBITDA del 15 %, y después el crecimiento converge al del mercado con margen del 13 %."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": 4,
+        "ajuste_margen_pp": 1,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "perfil": [
+          {
+            "periodo": "2027e",
+            "crecimiento_pp": 6,
+            "margen_pp": 1
+          },
+          {
+            "periodo": "2028e",
+            "crecimiento_pp": 6,
+            "margen_pp": 1
+          }
+        ],
+        "narrativa": "Accton gana un tercer cliente de hiperescala en 1,6T y mantiene la cuota en Trainium: ventas +39 % y +28 % en 2027-2028 y un punto más de margen por la mezcla con conmutadores y óptica."
+      }
+    ],
+    "comentario": "Con el DCF la asimetría es mala: el bajista vale 792,81 TWD (−60,0 %) y el alcista 2.089,96 (+5,6 %), porque nuestro caso base ya está por debajo del precio. A 12 meses, con la regla de múltiplos, la asimetría es de 1,27: el alcista gana un 64,6 % y el bajista pierde un 49,5 %. No compensa comprar al precio de hoy con un 25 % de probabilidad de perder la mitad.",
+    "confianza": "Media"
+  },
+  "suma_partes": {
+    "aplica": false,
+    "descuento_holding_pct": 0,
+    "partes": [],
+    "comentario": "Accton publica un único segmento operativo; conmutadores y módulos aceleradores comparten fábricas, clientes y cadena de suministro, y no hay desglose de resultado por línea: una suma de partes no tendría cifras propias en que apoyarse.",
+    "confianza": "Media"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2026-06-30",
+      "deuda_financiera": 6190,
+      "arrendamientos": 3232,
+      "caja": 43407,
+      "minoritarios": 85,
+      "pensiones": 24,
+      "asociadas": 2693,
+      "otros_ajustes": 8384
+    },
+    "rab": null,
+    "referencia_mercado": {
+      "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+      "prima_implicita_pct": 4.2,
+      "fecha": "2026-10",
+      "fuente": "Damodaran, ERPbymonth [36]"
+    },
+    "pesos": {
+      "dcf": 50,
+      "comparables": 20,
+      "transacciones": 0,
+      "suma_partes": 0,
+      "escenarios": 30
+    },
+    "objetivo_12m": {
+      "ejercicio": "2028e",
+      "casos": [
+        {
+          "escenario": "Bajista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 70.84,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "La nube digiere la inversión en 2027 (como en 2023, cuando Accton solo creció un 9 %): ventas planas en 2027 y +5 % en 2028, margen EBITDA del 12,5 % por precios y por el segundo proveedor de Trainium."
+        },
+        {
+          "escenario": "Base",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 131.77,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Trainium 3 y el 1,6T llevan las ventas a +33 % en 2027 y +22 % en 2028 con margen EBITDA del 15 %, el de los últimos cuatro trimestres; la capacidad crece un 50 % a finales de 2026 y un 30 % en 2027."
+        },
+        {
+          "escenario": "Alcista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 154.51,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Gana cuota en 1,6T con un tercer cliente de hiperescala y mantiene la de Trainium: ventas +39 % y +28 %, margen EBITDA del 16 % por mezcla con más conmutadores."
+        }
+      ],
+      "per_historico": {
+        "base": "adelantado",
+        "actual": 18.2,
+        "mediana_5a": 16.52,
+        "minimo_5a": 14.33,
+        "media_larga": 20.99,
+        "excluidos": "Ninguno excluido. Historia adelantada: cierre de cada año ÷ BPA diluido real del año siguiente (2020: 316/8,36 = 37,8x; 2021: 260/14,45 = 18,0x; 2022: 234,5/15,86 = 14,8x; 2023: 523/21,35 = 24,5x; 2024: 773/46,79 = 16,5x; 2025: 1.185 ÷ nuestro BPA de 2026e de 82,72 = 14,3x). Seis cierres; 2020 entra solo en la media larga."
+      },
+      "comparables_per": {
+        "mediana": 16.8
+      },
+      "consenso": {
+        "bpa_ano1": 86.24,
+        "bpa_ano2": 112.4,
+        "objetivo_medio": 3273.86,
+        "objetivo_min": 2380,
+        "objetivo_max": 3700,
+        "analistas": 14,
+        "tendencia_3m": "estables",
+        "fuente": "MarketScreener (14 analistas) y prensa taiwanesa [7, 25, 26]"
+      },
+      "diferencia_consenso": "Nuestro BPA de 2028e (131.77 TWD) queda un 21 % por debajo del consenso (167,2) y el de 2027e (108.79) un 3 % por debajo (112,4) [25]. La diferencia es de ventas (656.766 M TWD en 2028e frente a 735.100; el consenso supone +40 % en 2028) y de margen (EBIT del 14,0 % frente al 15,8 %). No acercamos la cifra: un tercer año de crecimiento del 40 % con un cliente que ya tiene segundo proveedor no tiene precedente en la historia de Accton. Nuestro objetivo base (2.279,62) queda un 30 % por debajo del objetivo medio de los analistas (3.273,86), que está fuera de nuestro rango central.",
+      "media": null,
+      "comentario": "El objetivo a 12 meses ponderado (2.197,16 TWD) supera al valor intrínseco (1.558,27) en un 41 %: el mercado mirará en un año el BPA de 2028e, todavía en plena subida, mientras el DCF descuenta la vuelta del margen y del crecimiento a la media. Para que el precio converja al valor intrínseco haría falta ver la desaceleración (guía de inversión de la nube para 2027, cuota en Trainium). El BPA crece un 41 % anual desde 2025 porque 2026 ya está casi cerrado (+77 % de BPA con 9M de ventas publicadas); desde 2026e es un 26 % anual. La tesis de valor es a más de un año."
+    },
+    "comentario": "Pesamos el DCF al 50 % (negocio con caja y circulante bien medidos), los escenarios al 30 % (el riesgo de ciclo y de cliente es el centro de la tesis) y los comparables al 20 % (hay pocos fabricantes a medida con el margen de Accton). Transacciones a cero (sin múltiplos fiables). La síntesis da 1.558,27 TWD (−21,3 %). Todos los métodos salvo el alcista quedan por debajo del precio: el DCF en 1.511, la mediana de PER de los comparables en 1.798 y la de EV/EBITDA en 1.580. El mercado paga hoy un crecimiento que dure más que el nuestro.",
+    "confianza": "Media"
+  },
+  "catalizadores": {
+    "items": [
+      {
+        "fecha": "≈6-nov-2026",
+        "evento": "Resultados del 3T26 y conferencia",
+        "efecto": "Margen bruto tras la consigna y nivel de existencias; primeras cifras de Trainium 3",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "10 de cada mes",
+        "evento": "Ventas mensuales (octubre, noviembre, diciembre)",
+        "efecto": "Confirma o no la pausa de septiembre",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "dic-2026",
+        "evento": "Conferencia anual del cliente de nube (Trainium 4, red de IA)",
+        "efecto": "Calendario del siguiente ASIC y reparto entre proveedores",
+        "probabilidad": "Media",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "ene-feb 2027",
+        "evento": "Guía de inversión 2027 de las grandes nubes de EE. UU.",
+        "efecto": "Señal de ciclo: una guía plana activaría el bajista",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "mar-2027",
+        "evento": "Resultados de 2026 y propuesta de dividendo",
+        "efecto": "Consenso espera ≈28 TWD de dividendo",
+        "probabilidad": "Alta",
+        "sentido": "+"
+      },
+      {
+        "fecha": "2027",
+        "evento": "Arranque de Dallas, Nanliao y Malasia",
+        "efecto": "Capacidad +30 % y fabricación en EE. UU. frente a aranceles",
+        "probabilidad": "Media",
+        "sentido": "+"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "riesgos": {
+    "items": [
+      {
+        "riesgo": "Concentración en el cliente de Trainium y entrada de un segundo proveedor",
+        "tipo": "Cliente",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−50 % a 12 meses (bajista)",
+        "mitigante": "Codiseño de cada generación y cuota principal en Trainium 3 según los analistas [7, 13]",
+        "senal": "Ventas mensuales que caigan dos meses seguidos o comentario de cuota en la conferencia"
+      },
+      {
+        "riesgo": "Ciclo de inversión de la nube (digestión en 2027)",
+        "tipo": "Mercado",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−40 % a −50 %",
+        "mitigante": "Varios clientes en conmutadores y 800G/1,6T en plena adopción [10]",
+        "senal": "Guías de inversión 2027 de las cuatro grandes nubes planas o a la baja"
+      },
+      {
+        "riesgo": "Pérdida de cuota en 1,6T frente a Celestica o la red de Nvidia",
+        "tipo": "Competencia",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−15 %",
+        "mitigante": "1,6T en producción en serie desde el 1S26 [8]",
+        "senal": "Celestica anunciando programas de 1,6T con los clientes de Accton"
+      },
+      {
+        "riesgo": "Margen bruto por componentes (memorias, PCB) y mezcla",
+        "tipo": "Operativo",
+        "probabilidad": "Alta",
+        "impacto": "Medio",
+        "efecto_valor": "−10 %",
+        "mitigante": "Consigna de componentes y repercusión en precio [7]",
+        "senal": "Margen bruto por debajo del 17,5 % en el 3T26 o 4T26"
+      },
+      {
+        "riesgo": "Existencias de 76.973 M TWD y circulante",
+        "tipo": "Financiero",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−5 %",
+        "mitigante": "Caja neta y anticipos de clientes [1]",
+        "senal": "Existencias que no bajen en el 3T26 pese a la consigna"
+      },
+      {
+        "riesgo": "Geopolítica de Taiwán y aranceles de EE. UU.",
+        "tipo": "País",
+        "probabilidad": "Baja",
+        "impacto": "Alto",
+        "efecto_valor": "−30 %",
+        "mitigante": "Fábricas en Vietnam y, desde 2027, en Dallas y Malasia [8]",
+        "senal": "Aranceles a equipos de red de Taiwán o Vietnam"
+      },
+      {
+        "riesgo": "Cambio de arquitectura (óptica integrada, conmutación óptica)",
+        "tipo": "Tecnológico",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−10 %",
+        "mitigante": "Pruebas de OWS con un cliente de EE. UU. y NTT [8]",
+        "senal": "Programas de CPO adjudicados a otros"
+      },
+      {
+        "riesgo": "Divisa (ventas en USD, cuentas en TWD)",
+        "tipo": "Financiero",
+        "probabilidad": "Media",
+        "impacto": "Bajo",
+        "efecto_valor": "−5 %",
+        "mitigante": "Costes también en USD",
+        "senal": "TWD por debajo de 30 por USD"
+      }
+    ],
+    "premortem": "Octubre de 2029: Accton vale un 40 % menos. En 2027 las grandes nubes, tras dos años de inversión récord en IA, frenan la compra de centros de datos mientras digieren la capacidad y ven que la inferencia no paga tanto como esperaban. El cliente de Trainium reparte Trainium 4 entre Accton y el segundo proveedor a partes iguales y cambia a módulos de otro diseño. Las ventas de Accton caen un 10 % en 2027, el margen bruto baja al 16 % por las existencias acumuladas en 2026 y los precios, y las fábricas de Dallas y Malasia arrancan medio vacías. El BPA de 2028 se queda en ≈65 TWD y el mercado le pone 13 veces. Las señales que lo habrían anticipado: las ventas mensuales planas del 4T26, las existencias que no bajan pese a la consigna, la guía de inversión 2027 de las nubes y cualquier comentario de cuota en Trainium 4.",
+    "ia": {
+      "exposicion": "Alta",
+      "sentido": "Mixto",
+      "efecto_valor": "+42 % (alcista) a −57 % (bajista) sobre el objetivo base a 12 meses",
+      "comentario": "La IA es casi todo el negocio: los módulos aceleradores (≈62 % de las ventas de 2025) y la mayor parte de los conmutadores de 800G y 1,6T van a centros de datos de IA [3]. Es oportunidad mientras dure la inversión, y amenaza por tres vías: un ciclo de inversión que se frena, la red integrada que Nvidia vende con sus GPU y la concentración en el ASIC de un solo cliente. La IA no sustituye lo que fabrica Accton (es hardware), y la empresa la usa poco en sus costes. Señal observable: la guía de inversión de las nubes para 2027 y el reparto de Trainium 4."
+    },
+    "confianza": "Media"
+  },
+  "esg": {
+    "calificaciones": [],
+    "materialidad": "Lo material para las cifras es la energía y el agua de las fábricas de Taiwán (coste eléctrico al alza en 2026), la cadena de suministro de componentes (minerales, condiciones laborales en Vietnam) y la eficiencia de los equipos (consumo por puerto, refrigeración líquida en Trainium 3). La empresa publica informe de sostenibilidad anual (2025, 173 páginas) que no hemos podido leer.",
+    "controversias": "No hemos encontrado sanciones, litigios relevantes ni incidentes en los últimos tres años en la prensa revisada; el registro de hechos relevantes de la Bolsa de Taiwán de octubre de 2026 solo recoge aprobaciones de inversión del consejo [2].",
+    "confianza": "Baja"
+  },
+  "preguntas": {
+    "items": [
+      {
+        "tema": "Cliente",
+        "pregunta": "¿Qué parte de las ventas de 2025 y del 1S26 hizo el primer cliente, y qué cuota tienen en Trainium 3 frente al segundo proveedor?",
+        "por_que": "Es la cifra que más mueve el bajista y no se publica en lo que hemos podido leer."
+      },
+      {
+        "tema": "Existencias",
+        "pregunta": "¿Cuánto de las existencias de junio (76.973 M TWD) pasa a consigna y cuándo, y qué compromisos de compra de componentes hay?",
+        "por_que": "Explica el flujo operativo de 13.091 M TWD frente a un beneficio de 35.577 M."
+      },
+      {
+        "tema": "Margen",
+        "pregunta": "¿Qué margen bruto deja Trainium 3 con refrigeración líquida frente a la generación anterior?",
+        "por_que": "Decide si el margen EBITDA del 15 % es sostenible en 2027."
+      },
+      {
+        "tema": "Capacidad",
+        "pregunta": "¿Cuánto capex suponen Zhubei, Nanliao, Dallas y Malasia y con qué contratos de cliente se respaldan?",
+        "por_que": "Capacidad sin contratos es coste fijo si la nube frena."
+      },
+      {
+        "tema": "1,6T",
+        "pregunta": "¿Con cuántos clientes está en producción el 1,6T y qué cuota esperan frente a Celestica?",
+        "por_que": "Los conmutadores son la línea de más margen y la que diversifica clientes."
+      },
+      {
+        "tema": "Gobierno",
+        "pregunta": "¿Por qué salió el anterior consejero delegado y cómo se liga la remuneración de la dirección a la rentabilidad?",
+        "por_que": "No hay explicación pública ni informe de remuneración leído."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sentimiento": {
+    "tono": "Dividido",
+    "tendencia": "Empeora",
+    "revisadas": [
+      {
+        "plataforma": "PTT Stock, hilo de las ventas de agosto de 2026",
+        "fecha": "2026-09",
+        "n_comentarios": 60,
+        "tono": "Negativo",
+        "resumen": "Frustración porque la acción no sube pese a ventas récord: «la venden los fondos extranjeros y luego los locales», «la etiquetaron de óptica y se hundió»; una minoría ve valoración baja (25-30 veces el BPA del año próximo) [32]."
+      },
+      {
+        "plataforma": "PTT Stock, hilo de los resultados del 2T26",
+        "fecha": "2026-08",
+        "n_comentarios": 11,
+        "tono": "Dividido",
+        "resumen": "«Suben los tres márgenes y aun así no se mueve»: los resultados se ven buenos pero «ya pasados»; algunos con pérdidas desde 2.200-2.300 TWD [33]."
+      },
+      {
+        "plataforma": "PTT Stock, hilo sobre las ventas de un gestor (2323) en julio",
+        "fecha": "2026-07",
+        "n_comentarios": 62,
+        "tono": "Negativo",
+        "resumen": "Debate sobre vender ganadoras para promediar perdedoras; Accton aparece como valor castigado entre las tecnológicas de IA de Taiwán [34]."
+      },
+      {
+        "plataforma": "Vocus (blog de análisis Beyond Consensus)",
+        "fecha": "2026-09",
+        "n_comentarios": 0,
+        "tono": "Positivo",
+        "resumen": "Tesis de transformación de ODM de conmutadores a plataforma de red y computación para centros de datos de IA, con los riesgos de cuota en 800G/1,6T, contenido por chip y capacidad ociosa si la nube se retrasa [3]."
+      }
+    ],
+    "temas": [
+      {
+        "tema": "La acción no acompaña a las ventas récord",
+        "postura": "Bajista",
+        "peso": "Alto",
+        "contraste": "El precio cae un 28 % desde el máximo de julio mientras las ventas del 3T26 suben un 65,5 %: el mercado descuenta un pico de margen y de ciclo, no un frenazo de ventas [4, 32]."
+      },
+      {
+        "tema": "Venta de fondos extranjeros y locales",
+        "postura": "Bajista",
+        "peso": "Medio",
+        "contraste": "Los fondos locales vendieron nueve sesiones seguidas hasta el 30-sep (≈12.346 M TWD) y los extranjeros vendieron en octubre; es flujo, no un hecho del negocio [4, 22]."
+      },
+      {
+        "tema": "Margen bruto y componentes",
+        "postura": "Dividida",
+        "peso": "Medio",
+        "contraste": "Los analistas esperan 18-19 % en el 2S26 frente al 19,7 % del 2T26; el paso de componentes a consigna baja ventas pero mejora el margen [7]."
+      },
+      {
+        "tema": "Valoración barata frente al crecimiento",
+        "postura": "Alcista",
+        "peso": "Bajo",
+        "contraste": "Cotiza a 23 veces el BPA de 2026e del consenso y 18 veces nuestro BPA de 2027e; el informe lo contrasta con el riesgo de ciclo y de cliente [25]."
+      }
+    ],
+    "confianza": "Media",
+    "lectura": "El inversor particular taiwanés está frustrado: la acción cae un 28 % desde julio con ventas récord, y en el foro se habla de ventas de fondos y de que «ya no basta con crecer un 60 %» [32, 33]. No es capitulación (la acción sigue +89,5 % en un año) ni euforia. Coincide con lo que dice el informe: el precio ya no premia el crecimiento de ventas sino que duda del margen y del ciclo. Va en contra del consenso de analistas (objetivo medio 3.274 TWD, +65 %), que es mucho más optimista que el mercado. No cambia la decisión."
+  },
+  "fuentes": [
+    {
+      "id": 1,
+      "titulo": "Accton Technology (TPE:2345): cuenta de resultados, balance y flujos anuales 2021-2025, trimestrales y LTM jun-26",
+      "editor": "StockAnalysis (datos de S&P Global Market Intelligence)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-08-10",
+      "url": "https://stockanalysis.com/quote/tpe/2345/financials/"
+    },
+    {
+      "id": 2,
+      "titulo": "Accton Technology Corp. Company profile (BPA trimestral, beneficio antes de impuestos acumulado, ventas mensuales 2021-2026, dividendos y hechos relevantes)",
+      "editor": "Taiwan Stock Exchange",
+      "tipo": "Primaria",
+      "fecha": "2026-10-16",
+      "url": "https://www.twse.com.tw/pdf/en/2345_en.pdf"
+    },
+    {
+      "id": 3,
+      "titulo": "智邦（2345）研究：它正在從「白牌交換器 ODM」變成 AI 資料中心的網路與運算整合平台",
+      "editor": "Vocus (Beyond Consensus)",
+      "tipo": "Analistas",
+      "fecha": "2026-09",
+      "url": "https://vocus.cc/article/6abb1ddcfd89780001d5e79c"
+    },
+    {
+      "id": 4,
+      "titulo": "智邦（2345）9 月營收 403.99 億元，年增 66.1%",
+      "editor": "TechNews 財經",
+      "tipo": "Prensa",
+      "fecha": "2026-10-06",
+      "url": "https://finance.technews.tw/2026/10/06/accton-2345-202609-financial-report/"
+    },
+    {
+      "id": 5,
+      "titulo": "智邦 Q2 營運創新高，法人估 Q3 營收 1,219 億元、毛利率 18,1 %",
+      "editor": "時報資訊 / 旺得富理財網",
+      "tipo": "Prensa",
+      "fecha": "2026-09-29",
+      "url": "https://wantrich.chinatimes.com/news/20260929900187-420101"
+    },
+    {
+      "id": 6,
+      "titulo": "三家外資目標價喊上逾 3,000 元 智邦反而落入跌停 (resultados del 1T26)",
+      "editor": "經濟日報",
+      "tipo": "Prensa",
+      "fecha": "2026-05-08",
+      "url": "https://money.udn.com/money/story/5607/9489935"
+    },
+    {
+      "id": 7,
+      "titulo": "《通網股》亞馬遜供應鏈雜音不怕！外資看好智邦、目標價 3666 元",
+      "editor": "旺得富理財網",
+      "tipo": "Prensa",
+      "fecha": "2026-10-13",
+      "url": "https://wantrich.chinatimes.com/news/20261013900303-420101"
+    },
+    {
+      "id": 8,
+      "titulo": "智邦審慎樂觀 2026 年下半年 市場需求優於預期 (junta de accionistas)",
+      "editor": "經濟日報",
+      "tipo": "Prensa",
+      "fecha": "2026-06-12",
+      "url": "https://udn.com/news/story/7253/9561042"
+    },
+    {
+      "id": 9,
+      "titulo": "智邦、嘉澤 前景看旺 (resultados del 4T25 y de 2025)",
+      "editor": "工商時報",
+      "tipo": "Prensa",
+      "fecha": "2026-03-16",
+      "url": "https://www.ctee.com.tw/news/20260316700238-430203"
+    },
+    {
+      "id": 10,
+      "titulo": "Ethernet switch market: datacenter segment surges 60 % in 4Q25 as AI workloads expand",
+      "editor": "IDC",
+      "tipo": "Sectorial",
+      "fecha": "2026-03-18",
+      "url": "https://www.idc.com/resource-center/blog/ethernet-switch-market-size-and-growth-datacenter-segment-surges-60-in-q4-as-ai-workloads-expand/"
+    },
+    {
+      "id": 11,
+      "titulo": "AI back-end switch market will push past 100 billion by 2030",
+      "editor": "Dell'Oro Group",
+      "tipo": "Sectorial",
+      "fecha": "2026-02",
+      "url": "https://www.delloro.com/news/ai-back-end-switch-market-will-push-past-100-billion-by-2030/"
+    },
+    {
+      "id": 12,
+      "titulo": "Worldwide Ethernet switch market grew 35.2 % in the third quarter of 2025",
+      "editor": "IDC",
+      "tipo": "Sectorial",
+      "fecha": "2025-12-11",
+      "url": "https://www.idc.com/resource-center/press-releases/worldwide-ethernet-switch-market-grew-35-2-in-the-third-quarter-of-2025-according-to-idcs-quarterly-ethernet-switch-tracker/"
+    },
+    {
+      "id": 13,
+      "titulo": "《通網股》智邦 2026 成長動能強勁 外資上調目標價至 1620",
+      "editor": "工商時報",
+      "tipo": "Prensa",
+      "fecha": "2025-12-12",
+      "url": "https://www.ctee.com.tw/news/20251212700722-430201"
+    },
+    {
+      "id": 14,
+      "titulo": "Celestica Inc. Q2 2026 earnings (8-K, condensed financial statements)",
+      "editor": "Celestica / SEC",
+      "tipo": "Primaria",
+      "fecha": "2026-07",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001030894/000103089426000043/cls-20260630prcondensedfs.htm"
+    },
+    {
+      "id": 15,
+      "titulo": "Celestica (CLS) statistics",
+      "editor": "StockAnalysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-16",
+      "url": "https://stockanalysis.com/stocks/cls/statistics/"
+    },
+    {
+      "id": 16,
+      "titulo": "Arista Networks (ANET) statistics",
+      "editor": "StockAnalysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-16",
+      "url": "https://stockanalysis.com/stocks/anet/statistics/"
+    },
+    {
+      "id": 17,
+      "titulo": "Wiwynn (TPE:6669) statistics",
+      "editor": "StockAnalysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-15",
+      "url": "https://stockanalysis.com/quote/tpe/6669/statistics/"
+    },
+    {
+      "id": 18,
+      "titulo": "Quanta Computer (TPE:2382) statistics",
+      "editor": "StockAnalysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-15",
+      "url": "https://stockanalysis.com/quote/tpe/2382/statistics/"
+    },
+    {
+      "id": 19,
+      "titulo": "智邦(2345) 公司基本資料",
+      "editor": "Yahoo 股市",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-01-20",
+      "url": "https://tw.stock.yahoo.com/quote/2345/profile"
+    },
+    {
+      "id": 20,
+      "titulo": "網通股王智邦 15 日公告重大人事異動 (石軍辭任、李訓德接任總經理暨執行長)",
+      "editor": "旺得富理財網",
+      "tipo": "Prensa",
+      "fecha": "2025-10-15",
+      "url": "https://wantrich.chinatimes.com/news/20251015900661-420101"
+    },
+    {
+      "id": 21,
+      "titulo": "Jackal Lee: insider profile",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://www.marketscreener.com/insider/JACKAL-LEE-A47CWD/"
+    },
+    {
+      "id": 22,
+      "titulo": "智邦 投信連 9 日賣超 (datos de negociación del 30-sep-2026)",
+      "editor": "旺得富理財網",
+      "tipo": "Prensa",
+      "fecha": "2026-09-30",
+      "url": "https://wantrich.chinatimes.com/news/20260930900499-420101"
+    },
+    {
+      "id": 23,
+      "titulo": "Accton Technology (TPE:2345) statistics",
+      "editor": "StockAnalysis",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-15",
+      "url": "https://stockanalysis.com/quote/tpe/2345/statistics/"
+    },
+    {
+      "id": 24,
+      "titulo": "Accton Technology (TPE:2345) balance sheet",
+      "editor": "StockAnalysis (S&P Global Market Intelligence)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-08-10",
+      "url": "https://stockanalysis.com/quote/tpe/2345/financials/balance-sheet/"
+    },
+    {
+      "id": 25,
+      "titulo": "Accton Technology Corporation: financial data, forecasts and consensus",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-15",
+      "url": "https://www.marketscreener.com/quote/stock/ACCTON-TECHNOLOGY-CORPORA-20699778/finances/"
+    },
+    {
+      "id": 26,
+      "titulo": "Accton Technology Corporation: target price consensus and analysts recommendations",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-15",
+      "url": "https://www.marketscreener.com/quote/stock/ACCTON-TECHNOLOGY-CORPORA-20699778/consensus/"
+    },
+    {
+      "id": 27,
+      "titulo": "Históricos diarios de 2345.TW, 0050.TW y ANET",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-16",
+      "url": "https://finance.yahoo.com/quote/2345.TW/history"
+    },
+    {
+      "id": 28,
+      "titulo": "USD/TWD (TWD=X), 16-oct-2026: 32,37",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-16",
+      "url": "https://finance.yahoo.com/quote/TWD=X"
+    },
+    {
+      "id": 29,
+      "titulo": "Stock of the week - Hewlett Packard Enterprise (oferta por Juniper a 40 USD)",
+      "editor": "XTB",
+      "tipo": "Prensa",
+      "fecha": "2024-01-11",
+      "url": "https://xtb.com/en/market-analysis/stock-of-the-week-hewlett-packard-enterprise-11-01-2024"
+    },
+    {
+      "id": 30,
+      "titulo": "HPE finalise le rachat de Juniper pour 14 milliards de dollars",
+      "editor": "Next",
+      "tipo": "Prensa",
+      "fecha": "2025-07-02",
+      "url": "https://next.ink/brief-article/hpe-finalise-le-rachat-de-juniper-pour-14-milliards-de-dollars/"
+    },
+    {
+      "id": 31,
+      "titulo": "AMD to Acquire ZT Systems for US$4.9 Billion to Enhance AI Infrastructure",
+      "editor": "Nasdaq",
+      "tipo": "Prensa",
+      "fecha": "2024-08-19",
+      "url": "https://www.nasdaq.com/articles/amd-acquire-zt-systems-us-49-billion-enhance-ai-infrastructure"
+    },
+    {
+      "id": 32,
+      "titulo": "[情報] 2345 智邦 8月 (hilo con 60 comentarios)",
+      "editor": "PTT Stock",
+      "tipo": "Foros y redes",
+      "fecha": "2026-09-07",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1788771447.A.CEE.html"
+    },
+    {
+      "id": 33,
+      "titulo": "[情報] 2345 智邦 Q2",
+      "editor": "PTT Stock",
+      "tipo": "Foros y redes",
+      "fecha": "2026-08-06",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1786013571.A.06D.html"
+    },
+    {
+      "id": 34,
+      "titulo": "[情報] 2323 中環 買南亞科、智邦，賣台積電 賠",
+      "editor": "PTT Stock",
+      "tipo": "Foros y redes",
+      "fecha": "2026-07-28",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1785233322.A.DFD.html"
+    },
+    {
+      "id": 35,
+      "titulo": "Taiwan 10Y Bond Yield (2,03 % el 16-oct-2026)",
+      "editor": "Trading Economics (cotizaciones interbancarias OTC)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-16",
+      "url": "https://tradingeconomics.com/taiwan/government-bond-yield"
+    },
+    {
+      "id": 36,
+      "titulo": "Implied ERP by month (ERPbymonth.xlsx), octubre 2026: 4,20 %",
+      "editor": "Aswath Damodaran (NYU Stern)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx"
+    }
+  ],
+  "calc": {
+    "version": 4,
+    "etiquetas": {
+      "margen_bruto": "M. bruto",
+      "margen_bruto_largo": "Margen bruto",
+      "dias_base": "sobre el coste de ventas"
+    },
+    "recomendacion": {
+      "recomendacion": "Mantener",
+      "regla": "Mantener",
+      "regla_absoluta": "Vender",
+      "regla_relativa": "Mantener",
+      "coincide": true,
+      "conviccion": "Baja",
+      "conviccion_sugerida": "Baja",
+      "conviccion_razones": [
+        "las reglas discrepan (absoluta Vender, relativa Mantener)"
+      ],
+      "reglas_discrepan": true,
+      "relativo": {
+        "prima_implicita_pct": 4.2,
+        "wacc": 8.01,
+        "ke": 8.07,
+        "dcf": 1881.39,
+        "dcf_min": 1743.45,
+        "dcf_max": 2042.63,
+        "valor_objetivo": 1852.98,
+        "alcista": 2634.12,
+        "bajista": 970.91,
+        "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+        "fecha": "2026-10",
+        "potencial_pct": -6.4,
+        "rentabilidad_total_pct": -5.7,
+        "asimetria": 0.65
+      },
+      "objetivo_mercado_txt": " · con la prima implícita del mercado: 1.852,98 (-6,4 %)",
+      "objetivo_mercado_corto": " · mercado 1.852,98",
+      "rentabilidad_mercado_corto": " · mercado -5,7 %",
+      "potencial_pct": -21.3,
+      "dividendo_pct": 0.8,
+      "rentabilidad_total_pct": -20.5,
+      "alcista_pct": 5.6,
+      "bajista_pct": -60,
+      "asimetria": 0.09,
+      "comprar_por_debajo": 1558.27,
+      "vender_por_encima": 2457.95,
+      "tabla": [
+        {
+          "concepto": "Objetivo a 12 meses (nuestro PER × nuestro BPA 2028e, ponderado 25/50/25)",
+          "valor": "2.197,16 TWD"
+        },
+        {
+          "concepto": "Bajista / base / alcista a 12 meses",
+          "valor": "13,9x × 70,84 = 984,68 · 17,3x × 131,77 = 2.279,62 · 21,0x × 154,51 = 3.244,71"
+        },
+        {
+          "concepto": "Rentabilidad a 12 meses: ponderada / del base (con dividendo)",
+          "valor": "11,7 % / 15,9 %"
+        },
+        {
+          "concepto": "Regla de múltiplos aplicada",
+          "valor": "v3: base a mitad de camino hacia la mediana adelantada, sin alejarse del actual más de ×1,1; bajista mín. 5 a (adelantado) o base × 0,80; alcista techo base × 1,35"
+        },
+        {
+          "concepto": "Objetivo medio de los analistas (solo contraste)",
+          "valor": "3.273,86 (nuestro base -30,4 %)"
+        },
+        {
+          "concepto": "Valor intrínseco (síntesis ponderada, largo plazo)",
+          "valor": "1.558,27 TWD"
+        },
+        {
+          "concepto": "Potencial sobre el precio actual",
+          "valor": "-21,3 %"
+        },
+        {
+          "concepto": "Rentabilidad por dividendo ordinario",
+          "valor": "0,8 %"
+        },
+        {
+          "concepto": "Rentabilidad total esperada a 12 meses",
+          "valor": "-20,5 %"
+        },
+        {
+          "concepto": "Escenario alcista / bajista",
+          "valor": "5,6 % / -60,0 %"
+        },
+        {
+          "concepto": "Asimetría (ganancia alcista / pérdida bajista)",
+          "valor": "0,09x"
+        },
+        {
+          "concepto": "Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado",
+          "valor": "7,7 % frente a 9,6 % y 8,0 %"
+        },
+        {
+          "concepto": "Valor objetivo con la prima implícita del mercado (4,2 %, WACC 8,0 %)",
+          "valor": "1.852,98 TWD"
+        },
+        {
+          "concepto": "Rentabilidad total esperada con la prima del mercado",
+          "valor": "-5,7 %"
+        },
+        {
+          "concepto": "Asimetría con la prima del mercado",
+          "valor": "0,65x"
+        },
+        {
+          "concepto": "Regla absoluta (frente a su coste de capital)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Regla relativa (frente a lo que pide el mercado)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "¿La calidad de la empresa sostiene el crecimiento previsto?",
+          "valor": "Sí (15,3 % anual proyectado; financiable al ROIC actual: 45,9 %)"
+        },
+        {
+          "concepto": "Señal del valor intrínseco (regla del DCF, referencia)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Recomendación según la regla a 12 meses (Comprar: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender: ponderada ≤ -10 %)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Convicción según los criterios (las reglas discrepan (absoluta Vender, relativa Mantener))",
+          "valor": "Baja"
+        }
+      ],
+      "niveles": [
+        {
+          "accion": "Comprar",
+          "condicion": "Por debajo de 1.558,27 (ponderada a 12 meses ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco)"
+        },
+        {
+          "accion": "Mantener",
+          "condicion": "Entre 1.558,27 y 2.457,95"
+        },
+        {
+          "accion": "Vender o reducir",
+          "condicion": "Por encima de 2.457,95 (ponderada a 12 meses ≤ -10 %)"
+        }
+      ],
+      "precio_txt": "",
+      "valor_objetivo_txt": "",
+      "regla_valor_intrinseco": "Mantener",
+      "objetivo_12m": {
+        "completo": true,
+        "filas": [
+          {
+            "escenario": "Bajista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 70.84,
+            "multiplo": 13.9,
+            "multiplo_informe": null,
+            "origen": "base × 0.8",
+            "precio": 984.68,
+            "rentabilidad_pct": -49.5,
+            "justificacion": "La nube digiere la inversión en 2027 (como en 2023, cuando Accton solo creció un 9 %): ventas planas en 2027 y +5 % en 2028, margen EBITDA del 12,5 % por precios y por el segundo proveedor de Trainium."
+          },
+          {
+            "escenario": "Base",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 131.77,
+            "multiplo": 17.3,
+            "multiplo_informe": null,
+            "origen": "PER actual (18.2x) a mitad de camino hacia abajo, hacia la mediana de 5 años (16.5x)",
+            "precio": 2279.62,
+            "rentabilidad_pct": 15.9,
+            "justificacion": "Trainium 3 y el 1,6T llevan las ventas a +33 % en 2027 y +22 % en 2028 con margen EBITDA del 15 %, el de los últimos cuatro trimestres; la capacidad crece un 50 % a finales de 2026 y un 30 % en 2027."
+          },
+          {
+            "escenario": "Alcista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 154.51,
+            "multiplo": 21,
+            "multiplo_informe": null,
+            "origen": "media histórica larga",
+            "precio": 3244.71,
+            "rentabilidad_pct": 64.6,
+            "justificacion": "Gana cuota en 1,6T con un tercer cliente de hiperescala y mantiene la de Trainium: ventas +39 % y +28 %, margen EBITDA del 16 % por mezcla con más conmutadores."
+          }
+        ],
+        "regla": {
+          "version": "v3",
+          "bajista": 13.9,
+          "base": 17.3,
+          "alcista": 21,
+          "bajista_origen": "base × 0.8",
+          "base_origen": "PER actual (18.2x) a mitad de camino hacia abajo, hacia la mediana de 5 años (16.5x)",
+          "alcista_origen": "media histórica larga"
+        },
+        "version": "v3",
+        "probabilidades": [
+          25,
+          50,
+          25
+        ],
+        "objetivo_ponderado": 2197.16,
+        "objetivo_simple": 2169.67,
+        "objetivo_base": 2279.62,
+        "rentabilidad_ponderada_pct": 11.7,
+        "rentabilidad_simple_pct": 10.3,
+        "rentabilidad_base_pct": 15.9,
+        "asimetria": 1.27,
+        "senal": "Mantener",
+        "senal_sin_confirmar": null,
+        "confianza_baja": false,
+        "comprar_por_debajo": 1558.27,
+        "vender_por_encima": 2457.95,
+        "consenso_objetivo": 3273.86,
+        "diferencia_consenso_pct": -30.4,
+        "selector": null
+      },
+      "rentabilidad_12m_pct": 11.7,
+      "rentabilidad_12m_txt": "+11,7 % (base +15,9 %)",
+      "objetivo_12m_txt": "2.197,16 TWD"
+    },
+    "mercado": {
+      "precio": 1980,
+      "acciones": 562,
+      "capitalizacion": 1112760,
+      "deuda_neta": -33985,
+      "deuda_neta_ajustada": -25577,
+      "asimilables_deuda": 8408,
+      "ajustes_puente": 5800,
+      "valor_empresa": 1084575,
+      "fecha_puente": "2026-06-30"
+    },
+    "clave": {
+      "capitalizacion": 1112760,
+      "valor_empresa": 1084575,
+      "deuda_neta": -33985,
+      "ev_ventas_ltm": 3.49,
+      "ev_ebitda_ltm": 24.2,
+      "ev_ebitda_ntm": 13.4,
+      "ev_ebit_ltm": 25.5,
+      "per_ltm": 31.3,
+      "per_ntm": 18.5,
+      "fcf_yield_pct": 0.5,
+      "dividendo_pct": 0.8,
+      "dn_ebitda": -0.8,
+      "roic_pct": 221.6,
+      "margen_ebitda_pct": 14.4,
+      "deuda_neta_ajustada": -25577,
+      "dn_ebitda_ajustada": -0.6,
+      "crecimiento_tcac_pct": 42.9,
+      "ingresos_ntm": 501410,
+      "ebitda_ntm": 81049,
+      "bpa_ntm": 106.96,
+      "ebitda_ltm": 44838,
+      "ingresos_ltm": 310623,
+      "ev_rab": null
+    },
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 59599,
+        "crecimiento_pct": null,
+        "beneficio_bruto": 11345,
+        "margen_bruto_pct": 19,
+        "ebitda": 6207.5,
+        "margen_ebitda_pct": 10.4,
+        "ebit": 5441,
+        "margen_ebit_pct": 9.1,
+        "beneficio_neto": 4705,
+        "margen_neto_pct": 7.9,
+        "bpa": 8.36,
+        "dpa": 6,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 17.9,
+        "payout_pct": 72
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 77205,
+        "crecimiento_pct": 29.5,
+        "beneficio_bruto": 16518,
+        "margen_bruto_pct": 21.4,
+        "ebitda": 10499.7,
+        "margen_ebitda_pct": 13.6,
+        "ebit": 9633,
+        "margen_ebit_pct": 12.5,
+        "beneficio_neto": 8166,
+        "margen_neto_pct": 10.6,
+        "bpa": 14.45,
+        "dpa": 7.5,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 20.5,
+        "payout_pct": 52
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 84188,
+        "crecimiento_pct": 9,
+        "beneficio_bruto": 19262,
+        "margen_bruto_pct": 22.9,
+        "ebitda": 12454.5,
+        "margen_ebitda_pct": 14.8,
+        "ebit": 11501,
+        "margen_ebit_pct": 13.7,
+        "beneficio_neto": 8920,
+        "margen_neto_pct": 10.6,
+        "bpa": 15.86,
+        "dpa": 10,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 24,
+        "payout_pct": 63
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 110425,
+        "crecimiento_pct": 31.2,
+        "beneficio_bruto": 22791,
+        "margen_bruto_pct": 20.6,
+        "ebitda": 14763.2,
+        "margen_ebitda_pct": 13.4,
+        "ebit": 13601,
+        "margen_ebit_pct": 12.3,
+        "beneficio_neto": 12000,
+        "margen_neto_pct": 10.9,
+        "bpa": 21.35,
+        "dpa": 11,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 20.7,
+        "payout_pct": 52
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 248320,
+        "crecimiento_pct": 124.9,
+        "beneficio_bruto": 44919,
+        "margen_bruto_pct": 18.1,
+        "ebitda": 33861.5,
+        "margen_ebitda_pct": 13.6,
+        "ebit": 32135,
+        "margen_ebit_pct": 12.9,
+        "beneficio_neto": 26342,
+        "margen_neto_pct": 10.6,
+        "bpa": 46.79,
+        "dpa": 15,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 20.1,
+        "payout_pct": 32
+      }
+    ],
+    "tcac": {
+      "periodo": "2021-2025",
+      "ingresos_pct": 42.9,
+      "ebitda_pct": 52.8,
+      "bpa_pct": 53.8
+    },
+    "cuenta_y_prevision": [
+      {
+        "periodo": "2021",
+        "ingresos": 59599,
+        "ebitda": 6207.5
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 77205,
+        "ebitda": 10499.7
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 84188,
+        "ebitda": 12454.5
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 110425,
+        "ebitda": 14763.2
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 248320,
+        "ebitda": 33861.5
+      },
+      {
+        "periodo": "2026e",
+        "ingresos": 404762,
+        "ebitda": 60714
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 538333,
+        "ebitda": 80750
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 656766,
+        "ebitda": 98515
+      },
+      {
+        "periodo": "2029e",
+        "ingresos": 722443,
+        "ebitda": 104754
+      },
+      {
+        "periodo": "2030e",
+        "ingresos": 773014,
+        "ebitda": 108222
+      },
+      {
+        "periodo": "2031e",
+        "ingresos": 811664,
+        "ebitda": 109575
+      },
+      {
+        "periodo": "2032e",
+        "ingresos": 844131,
+        "ebitda": 109737
+      },
+      {
+        "periodo": "2033e",
+        "ingresos": 873676,
+        "ebitda": 113578
+      },
+      {
+        "periodo": "2034e",
+        "ingresos": 899886,
+        "ebitda": 116985
+      },
+      {
+        "periodo": "2035e",
+        "ingresos": 922383,
+        "ebitda": 119910
+      }
+    ],
+    "segmentos_ultimo": [
+      {
+        "nombre": "Aplicaciones de red (módulos aceleradores de IA y otros)",
+        "ingresos": 153958,
+        "peso_pct": 62,
+        "crecimiento_pct": null,
+        "margen_pct": null,
+        "tipo_margen": null
+      },
+      {
+        "nombre": "Conmutadores de red (switches)",
+        "ingresos": 86912,
+        "peso_pct": 35,
+        "crecimiento_pct": null,
+        "margen_pct": null,
+        "tipo_margen": null
+      },
+      {
+        "nombre": "Acceso y otros",
+        "ingresos": 7450,
+        "peso_pct": 3,
+        "crecimiento_pct": null,
+        "margen_pct": null,
+        "tipo_margen": null
+      }
+    ],
+    "segmentos_tabla": {
+      "periodos": [
+        "",
+        "",
+        "",
+        "",
+        "2025"
+      ],
+      "filas": [
+        {
+          "nombre": "Aplicaciones de red (módulos aceleradores de IA y otros)",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": null,
+          "v4": 153958
+        },
+        {
+          "nombre": "Conmutadores de red (switches)",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": null,
+          "v4": 86912
+        },
+        {
+          "nombre": "Acceso y otros",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": null,
+          "v4": 7450
+        }
+      ]
+    },
+    "segmentos_periodo": "2025",
+    "balance": [
+      {
+        "periodo": "2021",
+        "activo_total": 35021,
+        "intangibles": 109.30000000000001,
+        "circulante": 11165.3,
+        "circulante_ventas_pct": 18.7,
+        "caja": 7592,
+        "deuda_financiera": 1178.3,
+        "arrendamientos": 967.3,
+        "deuda_neta": -5446.4,
+        "patrimonio": 15553,
+        "minoritarios": 0,
+        "dn_ebitda": -0.88,
+        "dn_patrimonio_pct": -35,
+        "dso": 63,
+        "dio": 100,
+        "dpo": 87,
+        "ciclo_caja": 76,
+        "cobertura_intereses": 128.3,
+        "capital_invertido": 10106.6,
+        "fondo_comercio": 1.9,
+        "liquidez_corriente": 1.8
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 46061,
+        "intangibles": 167.9,
+        "circulante": 12600.7,
+        "circulante_ventas_pct": 16.3,
+        "caja": 15015,
+        "deuda_financiera": 3530.6,
+        "arrendamientos": 1394.9,
+        "deuda_neta": -10089.5,
+        "patrimonio": 20428,
+        "minoritarios": 0,
+        "dn_ebitda": -0.96,
+        "dn_patrimonio_pct": -49,
+        "dso": 62,
+        "dio": 77,
+        "dpo": 75,
+        "ciclo_caja": 64,
+        "cobertura_intereses": 141.5,
+        "capital_invertido": 10338.5,
+        "fondo_comercio": 1.9,
+        "liquidez_corriente": 1.94
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 56576,
+        "intangibles": 156.3,
+        "circulante": 4749,
+        "circulante_ventas_pct": 5.6,
+        "caja": 24333,
+        "deuda_financiera": 971.7,
+        "arrendamientos": 1591.4,
+        "deuda_neta": -21769.9,
+        "patrimonio": 25188,
+        "minoritarios": 0,
+        "dn_ebitda": -1.75,
+        "dn_patrimonio_pct": -86,
+        "dso": 48,
+        "dio": 76,
+        "dpo": 77,
+        "ciclo_caja": 47,
+        "cobertura_intereses": 157.5,
+        "capital_invertido": 3418.0999999999985,
+        "fondo_comercio": 1.9,
+        "liquidez_corriente": 1.72
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 86467,
+        "intangibles": 995.9,
+        "circulante": 7427,
+        "circulante_ventas_pct": 6.7,
+        "caja": 25465,
+        "deuda_financiera": 756.9,
+        "arrendamientos": 2035.9,
+        "deuda_neta": -22672.2,
+        "patrimonio": 36327,
+        "minoritarios": 108.4,
+        "dn_ebitda": -1.54,
+        "dn_patrimonio_pct": -62,
+        "dso": 69,
+        "dio": 81,
+        "dpo": 108,
+        "ciclo_caja": 42,
+        "cobertura_intereses": 155.4,
+        "capital_invertido": 13763.2,
+        "fondo_comercio": 217.4,
+        "liquidez_corriente": 1.51
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 143231,
+        "intangibles": 742.4,
+        "circulante": 2425,
+        "circulante_ventas_pct": 1,
+        "caja": 51463,
+        "deuda_financiera": 576.3,
+        "arrendamientos": 2667.8,
+        "deuda_neta": -48218.9,
+        "patrimonio": 57540,
+        "minoritarios": 95.7,
+        "dn_ebitda": -1.42,
+        "dn_patrimonio_pct": -84,
+        "dso": 55,
+        "dio": 54,
+        "dpo": 105,
+        "ciclo_caja": 4,
+        "cobertura_intereses": 321.4,
+        "capital_invertido": 9416.799999999996,
+        "fondo_comercio": 1.9,
+        "liquidez_corriente": 1.47
+      }
+    ],
+    "perimetro_nota": null,
+    "flujos": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 1368,
+        "capex": 557.4,
+        "pagos_arrendamientos": 326.8,
+        "fcf": 483.8,
+        "beneficio_neto": 4705,
+        "conversion_pct": 10,
+        "capex_ventas_pct": 0.9,
+        "capex_amortizacion": 0.73,
+        "adquisiciones": 0,
+        "desinversiones": 4.3,
+        "dividendos": 3622,
+        "recompras": 0,
+        "emision_acciones": 6.4,
+        "retorno_accionista": 3622,
+        "payout_caja_pct": 77,
+        "acciones": 562,
+        "fcf_por_accion": 0.86
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 9723,
+        "capex": 1071.6,
+        "pagos_arrendamientos": 263.7,
+        "fcf": 8387.699999999999,
+        "beneficio_neto": 8166,
+        "conversion_pct": 103,
+        "capex_ventas_pct": 1.4,
+        "capex_amortizacion": 1.24,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 3346,
+        "recompras": 0,
+        "emision_acciones": 2.9,
+        "retorno_accionista": 3346,
+        "payout_caja_pct": 41,
+        "acciones": 565,
+        "fcf_por_accion": 14.85
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 18371,
+        "capex": 2311.8,
+        "pagos_arrendamientos": 310.2,
+        "fcf": 15749,
+        "beneficio_neto": 8920,
+        "conversion_pct": 177,
+        "capex_ventas_pct": 2.7,
+        "capex_amortizacion": 2.42,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 4185,
+        "recompras": 0,
+        "emision_acciones": 2.8,
+        "retorno_accionista": 4185,
+        "payout_caja_pct": 47,
+        "acciones": 563,
+        "fcf_por_accion": 27.97
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 9942,
+        "capex": 2904.5,
+        "pagos_arrendamientos": 304.6,
+        "fcf": 6732.9,
+        "beneficio_neto": 12000,
+        "conversion_pct": 56,
+        "capex_ventas_pct": 2.6,
+        "capex_amortizacion": 2.5,
+        "adquisiciones": 534.2,
+        "desinversiones": 0,
+        "dividendos": 5582,
+        "recompras": 0,
+        "emision_acciones": 9.7,
+        "retorno_accionista": 5582,
+        "payout_caja_pct": 47,
+        "acciones": 562,
+        "fcf_por_accion": 11.98
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 34852,
+        "capex": 5030.3,
+        "pagos_arrendamientos": 341.2,
+        "fcf": 29480.5,
+        "beneficio_neto": 26342,
+        "conversion_pct": 112,
+        "capex_ventas_pct": 2,
+        "capex_amortizacion": 2.91,
+        "adquisiciones": 0,
+        "desinversiones": 550.3,
+        "dividendos": 6148,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 6148,
+        "payout_caja_pct": 23,
+        "acciones": 563,
+        "fcf_por_accion": 52.36
+      }
+    ],
+    "flujos_acumulado": {
+      "periodo": "2021-2025",
+      "fcf": 60834,
+      "adquisiciones": 534,
+      "dividendos": 22883,
+      "recompras": 0,
+      "conversion_pct": 101
+    },
+    "rentabilidad": [
+      {
+        "periodo": "2021",
+        "nopat": 4467,
+        "capital_invertido": 10107,
+        "roic_pct": 44.2,
+        "roic_sin_fc_pct": 44.2,
+        "fondo_comercio_pct_capital": 0,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 30.3,
+        "roa_pct": 13.4,
+        "margen_neto_pct": 7.9,
+        "rotacion": 1.7,
+        "apalancamiento": 2.25
+      },
+      {
+        "periodo": "2022",
+        "nopat": 7655,
+        "capital_invertido": 10223,
+        "roic_pct": 74.9,
+        "roic_sin_fc_pct": 74.9,
+        "fondo_comercio_pct_capital": 0,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 45.4,
+        "roa_pct": 20.1,
+        "margen_neto_pct": 10.6,
+        "rotacion": 1.9,
+        "apalancamiento": 2.25
+      },
+      {
+        "periodo": "2023",
+        "nopat": 8744,
+        "capital_invertido": 6878,
+        "roic_pct": 127.1,
+        "roic_sin_fc_pct": 127.2,
+        "fondo_comercio_pct_capital": 0,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 39.1,
+        "roa_pct": 17.4,
+        "margen_neto_pct": 10.6,
+        "rotacion": 1.64,
+        "apalancamiento": 2.25
+      },
+      {
+        "periodo": "2024",
+        "nopat": 10784,
+        "capital_invertido": 8591,
+        "roic_pct": 125.5,
+        "roic_sin_fc_pct": 127.1,
+        "fondo_comercio_pct_capital": 1,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 39,
+        "roa_pct": 16.8,
+        "margen_neto_pct": 10.9,
+        "rotacion": 1.54,
+        "apalancamiento": 2.33
+      },
+      {
+        "periodo": "2025",
+        "nopat": 25681,
+        "capital_invertido": 11590,
+        "roic_pct": 221.6,
+        "roic_sin_fc_pct": 223.7,
+        "fondo_comercio_pct_capital": 1,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 56.1,
+        "roa_pct": 22.9,
+        "margen_neto_pct": 10.6,
+        "rotacion": 2.16,
+        "apalancamiento": 2.45
+      }
+    ],
+    "roic_incremental_pct": 1430.5,
+    "roic_frente_wacc": [
+      {
+        "periodo": "2021",
+        "roic_pct": 44.2,
+        "roic_sin_fc_pct": 44.2,
+        "roic_operativo_pct": null,
+        "roe_pct": 30.3,
+        "wacc_pct": 9.6
+      },
+      {
+        "periodo": "2022",
+        "roic_pct": 74.9,
+        "roic_sin_fc_pct": 74.9,
+        "roic_operativo_pct": null,
+        "roe_pct": 45.4,
+        "wacc_pct": 9.6
+      },
+      {
+        "periodo": "2023",
+        "roic_pct": 127.1,
+        "roic_sin_fc_pct": 127.2,
+        "roic_operativo_pct": null,
+        "roe_pct": 39.1,
+        "wacc_pct": 9.6
+      },
+      {
+        "periodo": "2024",
+        "roic_pct": 125.5,
+        "roic_sin_fc_pct": 127.1,
+        "roic_operativo_pct": null,
+        "roe_pct": 39,
+        "wacc_pct": 9.6
+      },
+      {
+        "periodo": "2025",
+        "roic_pct": 221.6,
+        "roic_sin_fc_pct": 223.7,
+        "roic_operativo_pct": null,
+        "roe_pct": 56.1,
+        "wacc_pct": 9.6
+      }
+    ],
+    "compras": {
+      "tipo": "compra única grande",
+      "subidas": 1,
+      "anios": 4,
+      "fondo_comercio": 1.9,
+      "fondo_comercio_pct_capital": 1,
+      "roic_pct": 221.6,
+      "roic_sin_fc_pct": 223.7,
+      "texto": "Fondo de comercio: 2 M en 2025 (el 1 % del capital invertido medio); ha subido más de un 5 % en 1 de 4 años: compra única grande. ROIC publicado 221,6 %; sin fondo de comercio, 223,7 %. El ROIC sin fondo de comercio mide el rendimiento del negocio operativo; decide el publicado (§4.1) y la cifra sin fondo de comercio es dato para una excepción razonada."
+    },
+    "calidad": {
+      "periodo": "2025",
+      "altman_z": 11.06,
+      "altman_zona": "Zona segura",
+      "piotroski_f": 7,
+      "piotroski_detalle": [
+        {
+          "criterio": "Beneficio neto positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "ROA mejora",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo > beneficio neto",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Baja el endeudamiento (deuda / activo)",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora la liquidez corriente",
+          "resultado": "No"
+        },
+        {
+          "criterio": "No emite acciones",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora el margen bruto",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Mejora la rotación del activo",
+          "resultado": "Sí"
+        }
+      ],
+      "beneish_m": -1.79,
+      "beneish_fiable": true,
+      "beneish_variables": [
+        {
+          "variable": "DSRI",
+          "valor": 0.8
+        },
+        {
+          "variable": "GMI",
+          "valor": 1.14
+        },
+        {
+          "variable": "AQI",
+          "valor": 0.75
+        },
+        {
+          "variable": "SGI",
+          "valor": 2.25
+        },
+        {
+          "variable": "DEPI",
+          "valor": 1.05
+        },
+        {
+          "variable": "SGAI",
+          "valor": 0.57
+        },
+        {
+          "variable": "LVGI",
+          "valor": 1.03
+        },
+        {
+          "variable": "TATA",
+          "valor": -0.06
+        }
+      ],
+      "tabla": [
+        {
+          "indicador": "Altman Z",
+          "valor": "11,06",
+          "lectura": "Zona segura (> 2,99 seguro; < 1,81 riesgo). No aplica a bancos ni aseguradoras, y subestima la solvencia de empresas con grandes anticipos de clientes o prefinanciación pública (contratistas, construcción), que inflan el pasivo."
+        },
+        {
+          "indicador": "Piotroski F",
+          "valor": "7 / 9",
+          "lectura": "Fortaleza financiera alta (7-9)."
+        },
+        {
+          "indicador": "Beneish M",
+          "valor": "-1,79",
+          "lectura": "Por debajo de −1,78: sin señal de manipulación."
+        },
+        {
+          "indicador": "Flujo operativo / beneficio neto (acumulado)",
+          "valor": "1,23x",
+          "lectura": "El beneficio se cobra."
+        }
+      ]
+    },
+    "dcf": {
+      "proyeccion": [
+        {
+          "periodo": "2026e",
+          "ingresos": 404762,
+          "crecimiento_pct": 63,
+          "ebitda": 60714,
+          "margen_ebitda_pct": 15,
+          "amortizacion": 3238,
+          "ebit": 57476,
+          "impuestos": 11783,
+          "capex": 12952,
+          "variacion_circulante": 42099,
+          "fcff": -6120,
+          "fraccion": 0.21,
+          "factor": 0.991,
+          "vp": -1261
+        },
+        {
+          "periodo": "2027e",
+          "ingresos": 538333,
+          "crecimiento_pct": 33,
+          "ebitda": 80750,
+          "margen_ebitda_pct": 15,
+          "amortizacion": 4845,
+          "ebit": 75905,
+          "impuestos": 15561,
+          "capex": 16150,
+          "variacion_circulante": 14693,
+          "fcff": 34347,
+          "fraccion": 1,
+          "factor": 0.937,
+          "vp": 32177
+        },
+        {
+          "periodo": "2028e",
+          "ingresos": 656766,
+          "crecimiento_pct": 22,
+          "ebitda": 98515,
+          "margen_ebitda_pct": 15,
+          "amortizacion": 6568,
+          "ebit": 91947,
+          "impuestos": 18849,
+          "capex": 16419,
+          "variacion_circulante": 13028,
+          "fcff": 50219,
+          "fraccion": 1,
+          "factor": 0.856,
+          "vp": 42966
+        },
+        {
+          "periodo": "2029e",
+          "ingresos": 722443,
+          "crecimiento_pct": 10,
+          "ebitda": 104754,
+          "margen_ebitda_pct": 14.5,
+          "amortizacion": 7947,
+          "ebit": 96807,
+          "impuestos": 19846,
+          "capex": 14449,
+          "variacion_circulante": 7224,
+          "fcff": 63235,
+          "fraccion": 1,
+          "factor": 0.781,
+          "vp": 49353
+        },
+        {
+          "periodo": "2030e",
+          "ingresos": 773014,
+          "crecimiento_pct": 7,
+          "ebitda": 108222,
+          "margen_ebitda_pct": 14,
+          "amortizacion": 9276,
+          "ebit": 98946,
+          "impuestos": 20284,
+          "capex": 13914,
+          "variacion_circulante": 5563,
+          "fcff": 68461,
+          "fraccion": 1,
+          "factor": 0.713,
+          "vp": 48774
+        },
+        {
+          "periodo": "2031e",
+          "ingresos": 811664,
+          "crecimiento_pct": 5,
+          "ebitda": 109575,
+          "margen_ebitda_pct": 13.5,
+          "amortizacion": 9740,
+          "ebit": 99835,
+          "impuestos": 20466,
+          "capex": 13798,
+          "variacion_circulante": 4252,
+          "fcff": 71059,
+          "fraccion": 1,
+          "factor": 0.651,
+          "vp": 46213
+        },
+        {
+          "periodo": "2032e",
+          "ingresos": 844131,
+          "crecimiento_pct": 4,
+          "ebitda": 109737,
+          "margen_ebitda_pct": 13,
+          "amortizacion": 10974,
+          "ebit": 98763,
+          "impuestos": 20246,
+          "capex": 13506,
+          "variacion_circulante": 3571,
+          "fcff": 72413,
+          "fraccion": 1,
+          "factor": 0.594,
+          "vp": 43010
+        },
+        {
+          "periodo": "2033e",
+          "ingresos": 873676,
+          "crecimiento_pct": 3.5,
+          "ebitda": 113578,
+          "margen_ebitda_pct": 13,
+          "amortizacion": 11358,
+          "ebit": 102220,
+          "impuestos": 20955,
+          "capex": 13979,
+          "variacion_circulante": 3250,
+          "fcff": 75394,
+          "fraccion": 1,
+          "factor": 0.542,
+          "vp": 40849
+        },
+        {
+          "periodo": "2034e",
+          "ingresos": 899886,
+          "crecimiento_pct": 3,
+          "ebitda": 116985,
+          "margen_ebitda_pct": 13,
+          "amortizacion": 11699,
+          "ebit": 105287,
+          "impuestos": 21584,
+          "capex": 13498,
+          "variacion_circulante": 2883,
+          "fcff": 79020,
+          "fraccion": 1,
+          "factor": 0.495,
+          "vp": 39082
+        },
+        {
+          "periodo": "2035e",
+          "ingresos": 922383,
+          "crecimiento_pct": 2.5,
+          "ebitda": 119910,
+          "margen_ebitda_pct": 13,
+          "amortizacion": 11991,
+          "ebit": 107919,
+          "impuestos": 22123,
+          "capex": 13836,
+          "variacion_circulante": 2475,
+          "fcff": 81476,
+          "fraccion": 1,
+          "factor": 0.452,
+          "vp": 36785
+        }
+      ],
+      "etapa2": null,
+      "suma_vp": 377947,
+      "valor_terminal": 1026834,
+      "vp_terminal": 443240,
+      "valor_empresa": 821187,
+      "peso_terminal_pct": 54,
+      "valor_acciones": 849372,
+      "valor_accion": 1511.34,
+      "vt_gordon": 1026834,
+      "vt_multiplo": 1438918,
+      "multiplo_implicito": 8.6,
+      "g_implicito_pct": 3.68,
+      "metodo_terminal": "gordon",
+      "terminal_tabla": [
+        {
+          "concepto": "Método principal",
+          "valor": "Crecimiento a perpetuidad"
+        },
+        {
+          "concepto": "Crecimiento a perpetuidad",
+          "valor": "1,5 %"
+        },
+        {
+          "concepto": "Múltiplo EV/EBITDA de salida",
+          "valor": "12,0x"
+        },
+        {
+          "concepto": "Valor terminal (Gordon)",
+          "valor": "1.026.834"
+        },
+        {
+          "concepto": "Valor terminal (múltiplo)",
+          "valor": "1.438.918"
+        },
+        {
+          "concepto": "Múltiplo de salida implícito en Gordon",
+          "valor": "8,6x"
+        },
+        {
+          "concepto": "Crecimiento implícito en el múltiplo",
+          "valor": "3,68 %"
+        },
+        {
+          "concepto": "Peso del valor terminal en el valor empresa",
+          "valor": "54 %"
+        }
+      ],
+      "puente": [
+        {
+          "concepto": "Valor actual de los flujos proyectados",
+          "valor": "377.947"
+        },
+        {
+          "concepto": "Valor actual del valor terminal",
+          "valor": "443.240"
+        },
+        {
+          "concepto": "Valor empresa",
+          "valor": "821.187"
+        },
+        {
+          "concepto": "− Deuda financiera neta (con arrendamientos)",
+          "valor": "33.985"
+        },
+        {
+          "concepto": "− Minoritarios, pensiones y otros; + asociadas",
+          "valor": "-5.800"
+        },
+        {
+          "concepto": "Valor de los fondos propios",
+          "valor": "849.372"
+        },
+        {
+          "concepto": "Acciones diluidas (millones)",
+          "valor": "562,0"
+        },
+        {
+          "concepto": "Valor por acción",
+          "valor": "1.511,34"
+        }
+      ],
+      "composicion": [
+        {
+          "parte": "Flujos proyectados",
+          "valor": 377947
+        },
+        {
+          "parte": "Valor terminal",
+          "valor": 443240
+        }
+      ],
+      "wacc": 9.55,
+      "ke": 9.63,
+      "kd_despues": 2,
+      "wacc_tabla": [
+        {
+          "concepto": "Tasa libre de riesgo",
+          "valor": "2,03 %"
+        },
+        {
+          "concepto": "Beta",
+          "valor": "1,20"
+        },
+        {
+          "concepto": "Prima de riesgo de mercado",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Prima adicional (país, tamaño, específica)",
+          "valor": "1,00 %"
+        },
+        {
+          "concepto": "Coste de los fondos propios",
+          "valor": "9,63 %"
+        },
+        {
+          "concepto": "Coste de la deuda antes de impuestos",
+          "valor": "2,50 %"
+        },
+        {
+          "concepto": "Tipo impositivo",
+          "valor": "20,00 %"
+        },
+        {
+          "concepto": "Coste de la deuda después de impuestos",
+          "valor": "2,00 %"
+        },
+        {
+          "concepto": "Peso de la deuda (D / (D + E))",
+          "valor": "1,00 %"
+        },
+        {
+          "concepto": "WACC",
+          "valor": "9,55 %"
+        },
+        {
+          "concepto": "Prima de riesgo implícita del mercado (regla relativa)",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "WACC con la prima implícita del mercado",
+          "valor": "8,01 %"
+        }
+      ],
+      "potencial_pct": -23.7,
+      "sensibilidad": {
+        "eje_columnas": "Crecimiento a perpetuidad",
+        "columnas": [
+          "0,5 %",
+          "1,0 %",
+          "1,5 %",
+          "2,0 %",
+          "2,5 %"
+        ],
+        "filas": [
+          {
+            "wacc": "8,6 %",
+            "v0": 1602.04,
+            "v1": 1662.79,
+            "v2": 1732.16,
+            "v3": 1812.11,
+            "v4": 1905.26
+          },
+          {
+            "wacc": "9,1 %",
+            "v0": 1504.15,
+            "v1": 1555.81,
+            "v2": 1614.32,
+            "v3": 1681.11,
+            "v4": 1758.1
+          },
+          {
+            "wacc": "9,6 %",
+            "v0": 1417.31,
+            "v1": 1461.58,
+            "v2": 1511.34,
+            "v3": 1567.69,
+            "v4": 1632.02
+          },
+          {
+            "wacc": "10,1 %",
+            "v0": 1339.78,
+            "v1": 1377.96,
+            "v2": 1420.6,
+            "v3": 1468.54,
+            "v4": 1522.82
+          },
+          {
+            "wacc": "10,6 %",
+            "v0": 1270.16,
+            "v1": 1303.29,
+            "v2": 1340.07,
+            "v3": 1381.15,
+            "v4": 1427.34
+          }
+        ]
+      },
+      "sensibilidad2": {
+        "columnas": [
+          "-2 pp",
+          "-1 pp",
+          "0 pp",
+          "+1 pp",
+          "+2 pp"
+        ],
+        "filas": [
+          {
+            "margen": "-2 pp",
+            "v0": 1125.81,
+            "v1": 1181.8,
+            "v2": 1240.79,
+            "v3": 1302.93,
+            "v4": 1368.35
+          },
+          {
+            "margen": "-1 pp",
+            "v0": 1245.02,
+            "v1": 1308.78,
+            "v2": 1376.06,
+            "v3": 1447.04,
+            "v4": 1521.9
+          },
+          {
+            "margen": "0 pp",
+            "v0": 1364.24,
+            "v1": 1435.77,
+            "v2": 1511.34,
+            "v3": 1591.16,
+            "v4": 1675.45
+          },
+          {
+            "margen": "+1 pp",
+            "v0": 1483.46,
+            "v1": 1562.75,
+            "v2": 1646.61,
+            "v3": 1735.28,
+            "v4": 1829
+          },
+          {
+            "margen": "+2 pp",
+            "v0": 1602.68,
+            "v1": 1689.74,
+            "v2": 1781.89,
+            "v3": 1879.4,
+            "v4": 1982.55
+          }
+        ]
+      },
+      "rango_min": 1377.96,
+      "rango_max": 1681.11,
+      "inverso": {
+        "crecimiento_implicito_pct": 15.2,
+        "crecimiento_base_pct": 10,
+        "periodo": "2027e-2035e",
+        "margen_implicito_pct": 16.5,
+        "margen_implicito_texto": null,
+        "margen_base_pct": 13,
+        "rentabilidad_implicita_pct": 7.7
+      },
+      "sostenibilidad": {
+        "veredicto": "Sí",
+        "veredicto_motor": "Sí",
+        "motivos_motor": [],
+        "crecimiento_financiable_bruto_pct": null,
+        "roic_implicito_bruto_pct": null,
+        "tcac_ingresos_historica_pct": 42.9,
+        "crecimiento_proyectado_pct": 15.3,
+        "tasa_reinversion_pct": 21,
+        "crecimiento_financiable_pct": 45.9,
+        "roic_pct": 221.6,
+        "roic_incremental_historico_pct": 1430.5,
+        "roic_implicito_pct": 39.1,
+        "cuota_actual_pct": 8,
+        "cuota_final_pct": null,
+        "puente": [
+          {
+            "periodo": "2026e",
+            "volumen_pct": 58,
+            "precio_pct": 10,
+            "otros_pct": -5,
+            "comentario": "Ventas de 9M26 oficiales (+62,5 %) [2]. Volumen: Trainium 3 desde el 2T26 y 800G en tres clientes; precio: mezcla hacia 1,6T y módulos con refrigeración líquida (≈20 % más caros) [6, 32]; otros: la consigna de componentes resta ventas desde el 3T26 [7].",
+            "suma_pct": 63,
+            "crecimiento_pct": 63
+          },
+          {
+            "periodo": "2027e",
+            "volumen_pct": 23,
+            "precio_pct": 10,
+            "otros_pct": 0,
+            "comentario": "Volumen con la capacidad (+30 % en 2027) y el 1,6T en volumen; precio por la mezcla 1,6T frente a 800G [3, 8].",
+            "suma_pct": 33,
+            "crecimiento_pct": 33
+          },
+          {
+            "periodo": "2028e",
+            "volumen_pct": 15,
+            "precio_pct": 7,
+            "otros_pct": 0,
+            "comentario": "Año completo de las plantas de Dallas y Malasia; la mezcla sigue hacia 1,6T y óptica [8].",
+            "suma_pct": 22,
+            "crecimiento_pct": 22
+          },
+          {
+            "periodo": "2029e",
+            "volumen_pct": 7,
+            "precio_pct": 3,
+            "otros_pct": 0,
+            "comentario": "Normalización: crecimiento del mercado de redes de IA [11].",
+            "suma_pct": 10,
+            "crecimiento_pct": 10
+          },
+          {
+            "periodo": "2030e",
+            "volumen_pct": 5,
+            "precio_pct": 2,
+            "otros_pct": 0,
+            "comentario": "Convergencia hacia el crecimiento del mercado.",
+            "suma_pct": 7,
+            "crecimiento_pct": 7
+          }
+        ],
+        "texto": "La proyección reinvierte el 21 % del NOPAT. Con el ROIC del último ejercicio (221,6 %), eso financia un crecimiento del 45,9 % anual, frente al 15,3 % de ingresos proyectado. Supone que el capital nuevo rinde un 39,1 %, frente a un ROIC incremental histórico del 1.430,5 %.",
+        "tabla": [
+          {
+            "concepto": "Crecimiento medio de ingresos proyectado",
+            "valor": "15,3 %"
+          },
+          {
+            "concepto": "Capex bruto medio (incluidas compras si van como inversión)",
+            "valor": "2,0 % de las ventas"
+          },
+          {
+            "concepto": "Reinversión neta acumulada (capex − amortización + circulante)",
+            "valor": "153.903 M (21 % del NOPAT)"
+          },
+          {
+            "concepto": "Crecimiento que financia esa reinversión al ROIC actual",
+            "valor": "45,9 % (ROIC 221,6 %)"
+          },
+          {
+            "concepto": "Crecimiento histórico de ingresos (TCAC)",
+            "valor": "42,9 % frente al 15,3 % proyectado"
+          },
+          {
+            "concepto": "Veredicto de las pruebas del motor",
+            "valor": "Sí"
+          },
+          {
+            "concepto": "Rendimiento que la proyección supone para el capital nuevo",
+            "valor": "39,1 % (histórico: 1.430,5 %)"
+          }
+        ]
+      }
+    },
+    "escenarios": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "narrativa": "La nube frena la inversión en 2027, como en 2023, y el segundo proveedor de Trainium se queda una parte: ventas planas en 2027 y +5 % en 2028, margen EBITDA 2-2,5 puntos más bajo. Ya le pasó a Accton en 2023 (+9 %) y a los fabricantes de servidores en 2023.",
+        "crecimiento_medio_pct": 2.9,
+        "margen_final_pct": 11,
+        "wacc_pct": 9.6,
+        "valor": 792.81,
+        "potencial_pct": -60
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "narrativa": "Trainium 3 y el 1,6T llevan las ventas a +33 % en 2027 y +22 % en 2028 con margen EBITDA del 15 %, y después el crecimiento converge al del mercado con margen del 13 %.",
+        "crecimiento_medio_pct": 10,
+        "margen_final_pct": 13,
+        "wacc_pct": 9.6,
+        "valor": 1511.34,
+        "potencial_pct": -23.7
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "narrativa": "Accton gana un tercer cliente de hiperescala en 1,6T y mantiene la cuota en Trainium: ventas +39 % y +28 % en 2027-2028 y un punto más de margen por la mezcla con conmutadores y óptica.",
+        "crecimiento_medio_pct": 14.4,
+        "margen_final_pct": 14,
+        "wacc_pct": 9.6,
+        "valor": 2089.96,
+        "potencial_pct": 5.6
+      }
+    ],
+    "valor_ponderado": 1476.36,
+    "potencial_ponderado_pct": -25.4,
+    "comparables": {
+      "tabla": [
+        {
+          "nombre": "Accton",
+          "ticker": "2345.TW",
+          "pais": "TW",
+          "capitalizacion": 1112760,
+          "ev_ventas": 3.49,
+          "ev_ebitda_ltm": 24.2,
+          "ev_ebitda_ntm": 13.4,
+          "per_ntm": 18.5,
+          "crecimiento_pct": 44.7,
+          "margen_ebitda_pct": 14.4,
+          "roic_pct": 221.6,
+          "dn_ebitda": -0.8,
+          "fcf_yield_pct": 0.5,
+          "es_objetivo": true
+        },
+        {
+          "nombre": "Celestica",
+          "ticker": "CLS",
+          "pais": "CA",
+          "capitalizacion": 1171147,
+          "ev_ventas": 2.35,
+          "ev_ebitda_ltm": 23.45,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 21.15,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": 10,
+          "roic_pct": 42.3,
+          "dn_ebitda": 0.28,
+          "fcf_yield_pct": 1.43,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Arista Networks",
+          "ticker": "ANET",
+          "pais": "US",
+          "capitalizacion": 7576522,
+          "ev_ventas": 20.94,
+          "ev_ebitda_ltm": 47.57,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 39.9,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": 44,
+          "roic_pct": null,
+          "dn_ebitda": -2.9,
+          "fcf_yield_pct": 2.2,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Wiwynn",
+          "ticker": "6669.TW",
+          "pais": "TW",
+          "capitalizacion": 1030000,
+          "ev_ventas": 1.03,
+          "ev_ebitda_ltm": 14.89,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 12.48,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": 6.8,
+          "roic_pct": 29.2,
+          "dn_ebitda": 1.06,
+          "fcf_yield_pct": -6.08,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Quanta Computer",
+          "ticker": "2382.TW",
+          "pais": "TW",
+          "capitalizacion": 1240000,
+          "ev_ventas": 0.45,
+          "ev_ebitda_ltm": 11.77,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 11.09,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": 3.7,
+          "roic_pct": 20.3,
+          "dn_ebitda": 0.92,
+          "fcf_yield_pct": -2.9,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Wistron",
+          "ticker": "3231.TW",
+          "pais": "TW",
+          "capitalizacion": 580360,
+          "ev_ventas": 0.38,
+          "ev_ebitda_ltm": 8.7,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 9.21,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": 4.2,
+          "roic_pct": 12.7,
+          "dn_ebitda": 3.72,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Fabrinet",
+          "ticker": "FN",
+          "pais": "US",
+          "capitalizacion": 446706,
+          "ev_ventas": 2.79,
+          "ev_ebitda_ltm": 24.37,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 21.16,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": 11.4,
+          "roic_pct": 26.8,
+          "dn_ebitda": -1.64,
+          "fcf_yield_pct": 0.03,
+          "es_objetivo": false
+        }
+      ],
+      "estadisticos": [
+        {
+          "estadistico": "Mediana",
+          "ev_ventas": 1.7,
+          "ev_ebitda_ltm": 19.2,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 16.8,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": 8.4,
+          "roic_pct": 26.8,
+          "dn_ebitda": 0.6,
+          "fcf_yield_pct": 0
+        },
+        {
+          "estadistico": "Media",
+          "ev_ventas": 4.7,
+          "ev_ebitda_ltm": 21.8,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 19.2,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": 13.4,
+          "roic_pct": 26.3,
+          "dn_ebitda": 0.2,
+          "fcf_yield_pct": -1.1
+        },
+        {
+          "estadistico": "Percentil 25",
+          "ev_ventas": 0.6,
+          "ev_ebitda_ltm": 12.6,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 11.4,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": 4.9,
+          "roic_pct": 20.3,
+          "dn_ebitda": -1.2,
+          "fcf_yield_pct": -2.9
+        },
+        {
+          "estadistico": "Percentil 75",
+          "ev_ventas": 2.7,
+          "ev_ebitda_ltm": 24.1,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 21.2,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": 11.1,
+          "roic_pct": 29.2,
+          "dn_ebitda": 1,
+          "fcf_yield_pct": 1.4
+        }
+      ],
+      "implicito": [
+        {
+          "metodo": "EV/EBITDA últimos 12 meses",
+          "metrica_empresa": 44838,
+          "multiplo_p25": 12.6,
+          "multiplo_mediana": 19.2,
+          "multiplo_p75": 24.1,
+          "multiplos": "12,6x / 19,2x / 24,1x",
+          "valor_p25": 1051.43,
+          "valor_mediana": 1579.59,
+          "valor_p75": 1976.11,
+          "potencial_pct": -20.2
+        },
+        {
+          "metodo": "PER próximos 12 meses",
+          "metrica_empresa": 106.96,
+          "multiplo_p25": 11.4,
+          "multiplo_mediana": 16.8,
+          "multiplo_p75": 21.2,
+          "multiplos": "11,4x / 16,8x / 21,2x",
+          "valor_p25": 1223.32,
+          "valor_mediana": 1798.48,
+          "valor_p75": 2262.94,
+          "potencial_pct": -9.2
+        },
+        {
+          "metodo": "EV/Ventas últimos 12 meses",
+          "metrica_empresa": 310623,
+          "multiplo_p25": 0.6,
+          "multiplo_mediana": 1.7,
+          "multiplo_p75": 2.7,
+          "multiplos": "0,6x / 1,7x / 2,7x",
+          "valor_p25": 379.01,
+          "valor_mediana": 984.23,
+          "valor_p75": 1531.41,
+          "potencial_pct": -50.3
+        }
+      ],
+      "regresion": null,
+      "n": 6
+    },
+    "transacciones": null,
+    "suma_partes": null,
+    "multiplos_historicos": [
+      {
+        "metrica": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+        "campo": "ev_ebitda_ltm",
+        "actual": 24.2,
+        "media": 21.9,
+        "minimo": 11.7,
+        "maximo": 27.9,
+        "percentil": 80,
+        "prima_pct": 11,
+        "anios": 5
+      },
+      {
+        "metrica": "PER últimos 12 meses (cierre de cada año)",
+        "campo": "per_ltm",
+        "actual": 31.3,
+        "media": 31.1,
+        "minimo": 16.2,
+        "maximo": 36.2,
+        "percentil": 60,
+        "prima_pct": 1,
+        "anios": 5
+      }
+    ],
+    "multiplos_serie": [
+      {
+        "anio": "2021",
+        "multiplo": 22.7,
+        "media": 21.9
+      },
+      {
+        "anio": "2022",
+        "multiplo": 11.7,
+        "media": 21.9
+      },
+      {
+        "anio": "2023",
+        "multiplo": 21.9,
+        "media": 21.9
+      },
+      {
+        "anio": "2024",
+        "multiplo": 27.9,
+        "media": 21.9
+      },
+      {
+        "anio": "2025",
+        "multiplo": 18.3,
+        "media": 21.9
+      }
+    ],
+    "multiplos_titulo": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+    "consenso_vs_propio": [
+      {
+        "periodo": "2026e",
+        "ingresos_propio": 404762,
+        "ingresos_consenso": 409344,
+        "ingresos_dif_pct": -1.1,
+        "ebitda_propio": 60714,
+        "ebitda_consenso": 63014,
+        "ebitda_dif_pct": -3.6
+      },
+      {
+        "periodo": "2027e",
+        "ingresos_propio": 538333,
+        "ingresos_consenso": 525600,
+        "ingresos_dif_pct": 2.4,
+        "ebitda_propio": 80750,
+        "ebitda_consenso": 85788,
+        "ebitda_dif_pct": -5.9
+      },
+      {
+        "periodo": "2028e",
+        "ingresos_propio": 656766,
+        "ingresos_consenso": 735100,
+        "ingresos_dif_pct": -10.7,
+        "ebitda_propio": 98515,
+        "ebitda_consenso": 121748,
+        "ebitda_dif_pct": -19.1
+      }
+    ],
+    "gobierno": {
+      "n_consejeros": 0,
+      "independientes_pct": null,
+      "antiguedad_media": null,
+      "composicion": [],
+      "checklist": [
+        {
+          "criterio": "Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Presidencia sin vínculo familiar ni profesional con el accionista de control",
+          "resultado": "Cumple",
+          "valor": "Sin control"
+        },
+        {
+          "criterio": "Presidente no ejecutivo, o consejero coordinador independiente",
+          "resultado": "Cumple",
+          "valor": "No ejecutivo"
+        },
+        {
+          "criterio": "Comisión de auditoría con mayoría de independientes y presidida por uno",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Ningún consejero «otro externo» con más de 12 años",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses",
+          "resultado": "Cumple",
+          "valor": "1 cambio"
+        },
+        {
+          "criterio": "Peor voto a favor sobre remuneración (3 juntas) ≥ 80 %",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)",
+          "resultado": "No cumple",
+          "valor": "No"
+        },
+        {
+          "criterio": "Una acción, un voto, sin blindajes ni límites de voto estatutarios",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Sin operaciones vinculadas relevantes",
+          "resultado": "Cumple",
+          "valor": "No hay"
+        },
+        {
+          "criterio": "Auditor con 10 años o menos en el cargo",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Opinión de auditoría sin salvedades",
+          "resultado": "Cumple",
+          "valor": "Favorable (sin salvedades conocidas; informe de auditoría no leído)"
+        },
+        {
+          "criterio": "Directivos compradores netos en 12 meses (o sin ventas relevantes)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        }
+      ],
+      "puntuacion": "7 de 13 (5 sin dato)",
+      "puntuacion_pct": 54,
+      "compras_insiders": 0,
+      "ventas_insiders": 0
+    },
+    "competidores_margen": [
+      {
+        "nombre": "Accton",
+        "margen_ebit_pct": 12.9
+      },
+      {
+        "nombre": "Celestica",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Arista Networks",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Nvidia (redes)",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Cisco",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Wiwynn",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Quanta Computer (QCT)",
+        "margen_ebit_pct": null
+      }
+    ],
+    "sintesis": {
+      "formato_eje": "#,##0",
+      "rangos": [
+        {
+          "metodo": "Cotización 52 semanas",
+          "etiqueta": "Cotización 52 semanas (884,00 – 2.825,00)",
+          "min": 884,
+          "central": 1980,
+          "max": 2825,
+          "gris": true
+        },
+        {
+          "metodo": "Precio objetivo de los analistas",
+          "etiqueta": "Precio objetivo de los analistas (2.380,00 – 3.700,00)",
+          "min": 2380,
+          "central": 3273.86,
+          "max": 3700,
+          "gris": true
+        },
+        {
+          "metodo": "Comparables: PER NTM",
+          "etiqueta": "Comparables: PER NTM (1.223,32 – 2.262,94)",
+          "min": 1223.32,
+          "central": 1798.48,
+          "max": 2262.94,
+          "gris": false
+        },
+        {
+          "metodo": "DCF (WACC y g ± 0,5)",
+          "etiqueta": "DCF (WACC y g ± 0,5) (1.377,96 – 1.681,11)",
+          "min": 1377.96,
+          "central": 1511.34,
+          "max": 1681.11,
+          "gris": false
+        },
+        {
+          "metodo": "Escenarios (bajista – alcista)",
+          "etiqueta": "Escenarios (bajista – alcista) (792,81 – 2.089,96)",
+          "min": 792.81,
+          "central": 1476.36,
+          "max": 2089.96,
+          "gris": false
+        },
+        {
+          "metodo": "DCF con la prima del mercado",
+          "etiqueta": "DCF con la prima implícita del mercado (4,2 %)",
+          "min": 1743.45,
+          "central": 1881.39,
+          "max": 2042.63
+        },
+        {
+          "metodo": "Precio actual",
+          "etiqueta": "Precio actual (1.980,00)",
+          "min": 1970.1,
+          "central": 1980,
+          "max": 1989.9,
+          "gris": true
+        }
+      ],
+      "tabla": [
+        {
+          "metodo": "DCF",
+          "valor": 1511.34,
+          "peso_pct": 50,
+          "potencial_pct": -23.7
+        },
+        {
+          "metodo": "Comparables (mediana EV/EBITDA y PER)",
+          "valor": 1798.48,
+          "peso_pct": 20,
+          "potencial_pct": -9.2
+        },
+        {
+          "metodo": "Escenarios ponderados",
+          "valor": 1476.36,
+          "peso_pct": 30,
+          "potencial_pct": -25.4
+        }
+      ],
+      "valor_objetivo": 1558.27,
+      "potencial_pct": -21.3
+    },
+    "fuentes": {
+      "n_fuentes": 36,
+      "n_primarias": 2,
+      "por_tipo": [
+        {
+          "tipo": "Datos de mercado",
+          "num": 15
+        },
+        {
+          "tipo": "Primaria",
+          "num": 2
+        },
+        {
+          "tipo": "Analistas",
+          "num": 1
+        },
+        {
+          "tipo": "Prensa",
+          "num": 12
+        },
+        {
+          "tipo": "Sectorial",
+          "num": 3
+        },
+        {
+          "tipo": "Foros y redes",
+          "num": 3
+        }
+      ],
+      "n_citadas": 35,
+      "citas_sin_fuente": [],
+      "fuentes_sin_citar": [
+        "28"
+      ]
+    },
+    "controles": [
+      {
+        "control": "DCF inverso calculable",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Puente de ingresos (volumen + precio + otros) = crecimiento del DCF",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Veredicto de sostenibilidad del analista coherente con las pruebas del motor",
+        "resultado": "OK",
+        "detalle": "El analista dice «Sí» y las pruebas del motor dan «Sí»: razónalo en la justificación."
+      },
+      {
+        "control": "Rendimiento del capital nuevo de la proyección ≤ 1,25 × el histórico",
+        "resultado": "OK",
+        "detalle": "La proyección supone que la inversión nueva rinde un 39,1 % frente a un ROIC de 221,6 % y un incremental histórico de 1.430,5 %: crecimiento que la empresa no ha demostrado poder comprar."
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "resultado": "Explicado",
+        "detalle": "Supuesto 11,0 % frente a 1,0 % real: genera una variación de circulante de 42.099 M en el primer año. Converge de forma gradual. Explicación: El 1 % de 2025 es atípico: proveedores y prepagos de clientes financiaban casi todo el circulante. En junio de 2026 ya es del 13,6 % de las ventas de los últimos 12 meses (clientes 54.832 + existencias 76.973 − proveedores 84.622 − anticipos 5.030 M TWD) [1], así que el salto del primer año ya ha ocurrido en el balance; el 11 % proyectado está entre el 13,6 % de junio y el 5,6-6,7 % de 2023-2024."
+      },
+      {
+        "control": "Peso del valor terminal ≤ 80 % del valor empresa",
+        "resultado": "OK",
+        "detalle": "54 %."
+      },
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "resultado": "OK",
+        "detalle": "1,50 %."
+      },
+      {
+        "control": "Probabilidades de los escenarios suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 5 comparables",
+        "resultado": "OK",
+        "detalle": "6 comparables."
+      },
+      {
+        "control": "Proyección propia frente a consenso (2028e)",
+        "resultado": "Explicado",
+        "detalle": "EBITDA propio -19,1 % frente al consenso: justifica la diferencia en el DCF. Explicación: Nuestro EBITDA de 2028e queda un 19 % por debajo del consenso de MarketScreener: suponemos ventas +22 % en 2028 (consenso +40 %) y margen EBITDA del 15,0 % (consenso 16,6 %). Lo explicamos en el DCF: el consenso supone un tercer año de crecimiento muy alto con un solo cliente decisivo; preferimos no proyectarlo."
+      },
+      {
+        "control": "Pesos de la síntesis suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Crecimiento del BPA base ≤ 25 % anual desde el último real",
+        "resultado": "Explicado",
+        "detalle": "El BPA base de 2028e (131,77) supone un 41,2 % anual desde 46,79 (2025): explícalo en valoracion.objetivo_12m.comentario o la confianza es baja. Explicación: El salto del BPA de 46,79 (2025) a 131,77 (2028e) se apoya en 2026, que ya está casi cerrado: 34,70 TWD de BPA en el 1S26 y ventas de 286.402 M TWD en 9M26 (+62,5 %) [2]. Desde nuestro BPA de 2026e (82,72) el crecimiento es del 26 % anual, por debajo del consenso (39 %)."
+      },
+      {
+        "control": "Precio del cierre de la fecha de corte (o de las dos sesiones anteriores)",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Recomendación coherente con la regla de decisión",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "La síntesis explica la convicción",
+        "resultado": "OK",
+        "detalle": "La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría."
+      },
+      {
+        "control": "Capitalización calculada ≈ publicada",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 25 fuentes",
+        "resultado": "OK",
+        "detalle": "36 fuentes (2 primarias)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "resultado": "Explicado",
+        "detalle": "2. Explicación: MOPS (informe anual, estados financieros, actas) y la web de la empresa estaban bloqueados durante el análisis (exceso de consultas y 403). Las primarias usadas son la ficha oficial de la Bolsa de Taiwán y las de Celestica en la SEC; las cuentas vienen de S&P Global vía StockAnalysis y cuadran con la ficha oficial. Por eso la confianza de cuentas y gobierno es media o baja."
+      },
+      {
+        "control": "Toda cita [n] existe en fuentes",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Fuentes sin citar ≤ 15 %",
+        "resultado": "OK",
+        "detalle": "Sin citar: 28."
+      }
+    ],
+    "controles_resumen": "16 de 20 controles correctos y 4 explicados"
+  }
+}
