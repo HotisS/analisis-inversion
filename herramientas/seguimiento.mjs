@@ -264,7 +264,7 @@ function senalGenerica(x) {
 function senalHSE(x, p, decision) {
   if (!p) { const g = senalGenerica(x); return g === 'Comprar' || g === 'Esperar precio' ? g : 'No comprar'; }
   const q = decision ?? queHacerTenencia(x);
-  return /^Ampliar/.test(q) ? 'Ampliar' : /^Vender/.test(q) ? 'Vender' : 'Mantener';
+  return /^Ampliar/.test(q) ? 'Ampliar' : /^Mantener; ampliar solo a/.test(q) ? 'Esperar precio' : /^Vender/.test(q) ? 'Vender' : 'Mantener';
 }
 const ESTILO_SENAL = { Comprar: 'Comprar', Ampliar: 'Comprar', 'Esperar precio': 'Mantener', Mantener: 'Mantener', 'No comprar': 'Mantener', Vender: 'Vender' };
 // Una columna por filtro de compra (METODO-VIGENTE.md §4.1 y regla 6) y una para el filtro de mantener (§4.2): ✓ / ✗ con la cifra.
@@ -312,8 +312,8 @@ if (conCartera) {
   // Regla 12 (METODO-VIGENTE.md §4): lo comprado no se toca en 3 meses (ni se amplía ni se vende por recálculos).
   const hastaR12 = Object.fromEntries(Object.entries(REGLAS.mantener_hasta || {}).filter(([, f]) => /^\d{4}-\d{2}-\d{2}$/.test(f)));
   for (const p of cart.posiciones || []) if (p.no_tocar_hasta && !(hastaR12[p.clave] >= p.no_tocar_hasta)) hastaR12[p.clave] = p.no_tocar_hasta;
-  for (const [k, f] of Object.entries(hastaR12)) if (f >= hoy && !REGLAS.no_vender?.[k]) DECISION[k] ??= `Mantener: no se toca hasta el ${fechaCorta(f)} (regla de 3 meses)`;
-  for (const k of REGLAS.no_ampliar || []) DECISION[k] ??= 'Mantener: no se amplía (decidido en la tabla de órdenes)';
+  // La regla de 3 meses solo impide vender por recálculo; ampliar sigue permitido (con dinero nuevo y si lo da el método).
+  // Lo que no se amplía por decisión de la tabla de órdenes va aparte (REGLAS.no_ampliar). Ver decisionDe() más abajo.
   const pos = new Map((ultimo.filas || []).filter((p) => p.titulos > 0).map((p) => [p.clave, p]));
   // Las cuatro cifras de la cartera: la última foto cerrada (cartera/cartera-1-AAAA-MM-DD-HHMM.md, tabla «Cartera de hoy»);
   // si no hay, el «## Resumen» de la última cartera/ordenes-AAAA-MM-DD.md.
@@ -331,9 +331,19 @@ if (conCartera) {
     const md = readFileSync(join(dirCartera, fuente), 'utf8'), i = md.indexOf('## Resumen');
     if (i >= 0) cifras = md.slice(i).split(/\n## /)[0].split('\n').slice(1).filter((l) => l.startsWith('|')).map((l) => l.split('|').slice(1, -1).map((x) => x.trim())).filter((c) => c.length >= 3 && !/^-+$/.test(c[1]) && c[0]);
   }
-  real_ = { ultimo, ordenes, DECISION, pos, cifras, fuente, liquidez: n(ultimo.cartera?.liquidez), total: n(ultimo.cartera?.total) };
+  real_ = { ultimo, ordenes, DECISION, hastaR12, noAmpliar: new Set(REGLAS.no_ampliar || []), pos, cifras, fuente, liquidez: n(ultimo.cartera?.liquidez), total: n(ultimo.cartera?.total) };
 }
 
+// Qué hacer con una posición que ya tienes: decisión tuya; si no, el método visto desde la tenencia, con la regla de 3 meses
+// (no se vende por recálculo antes de la fecha) y lo que no se amplía.
+function decisionDe(x, clave) {
+  if (real_.DECISION[clave]) return real_.DECISION[clave];
+  if (!x) return null;
+  const t = queHacerTenencia(x), f = real_.hastaR12[clave];
+  if (f && f >= hoy && /^Vender/.test(t)) return `Mantener: no se vende hasta el ${fechaCorta(f)} (regla de 3 meses; el método diría «${t}»)`;
+  if (real_.noAmpliar.has(clave) && /^(Ampliar|Mantener; ampliar)/.test(t)) return 'Mantener: no se amplía (decidido en la tabla de órdenes)';
+  return t;
+}
 // Alto de una fila con texto ajustado: líneas que ocupa el texto más largo en su columna (ancho en caracteres).
 const alto = (fila, anchos) => { let l = 1; fila.forEach((c, i) => { if (c.s === S.ajuste || c.s === S.titulo) l = Math.max(l, String(c.v ?? '').split('\n').reduce((a, t) => a + Math.max(1, Math.ceil(t.length / (anchos[i] * 1.05))), 0)); }); fila.alto = Math.max(15, l * 13.5 + 3); return fila; };
 
@@ -343,7 +353,7 @@ const COMO = [
   ['Rentabilidad esperada 12 m', 'Lo que esperamos que gane la acción en 12 meses: la subida hasta el precio objetivo más el dividendo, sobre el precio de la columna «Precio».\nValue: beneficio por acción que esperamos para el ejercicio que mirará el mercado dentro de un año × el PER que razonablemente pagará (el de hoy, acercándose un poco a su media de 5 años, como mucho un 10 % arriba o abajo). Se calcula en tres escenarios (pesimista 25 %, central 50 %, optimista 25 %) y se hace la media ponderada.\nGrowth: lo mismo con las ventas de dentro de 12 meses y un múltiplo de ventas o de beneficio bruto con tope.'],
   ['Siendo prudentes (la mitad)', 'La misma cifra dividida entre dos. Los objetivos suelen salir optimistas, así que para comparar con el índice mundial y para el tamaño de las posiciones usamos la mitad.'],
   ['Señal genérica', 'Lo que dice el método para cualquier inversor, con todos los filtros (la columna «Qué hacer según el método» da el motivo):\nComprar: pasa todos los filtros de compra (columnas de la derecha) y el precio está por debajo de «Comprar por debajo de».\nEsperar precio: lo pasa todo menos el precio; se compra si baja hasta «Comprar por debajo de».\nMantener: no se compra, pero si la tienes se queda (pasa el filtro para mantener).\nVender: si la tienes, se vende (no pasa el filtro para mantener o la calidad está por debajo de 4,5).'],
-  ['Señal HSE', 'Lo que toca en TU cartera (solo en la versión privada). Si no la tienes: Comprar, Esperar precio o No comprar. Si la tienes: Ampliar, Mantener o Vender, con tus reglas encima de la genérica: lo comprado no se toca en 3 meses salvo hecho nuevo y duro, lo que se queda por decisión tuya (Edenred, el oro, Zoetis, Rai Way…), lo que no se amplía y las ventas propuestas. Cada compra o ampliación, de 1.000 € como mínimo y, como guía, sin pasar del 7 % de la cartera.'],
+  ['Señal HSE', 'Lo que toca en TU cartera (solo en la versión privada). Si no la tienes: Comprar, Esperar precio o No comprar. Si la tienes: Ampliar, Mantener o Vender, con tus reglas encima de la genérica: lo comprado no se vende en 3 meses salvo hecho nuevo y duro (ampliar sí se puede, con dinero nuevo y si lo da el método), lo que se queda por decisión tuya (Edenred, el oro, Zoetis, Rai Way…), lo que no se amplía y las ventas propuestas. Cada compra o ampliación, de 1.000 € como mínimo y, como guía, sin pasar del 7 % de la cartera.'],
   ['En cartera', 'Si la tienes: títulos y cuenta (versión privada).'],
   ['¿Compra real? y las columnas de filtros', 'Una columna por cada requisito de compra de METODO-VIGENTE.md §4.1, con ✓ o ✗ y la cifra: rentabilidad 12 m ≥ 15 % (growth ≥ 5 %), escenario central ≥ 12 %, valor real (DCF) ≥ precio, el control v2 también da Comprar, con el BPA un 10 % peor sigue dando ≥ 15 % (y central ≥ 12 %), crecimiento sostenible «Sí», calidad ROIC − WACC ≥ 5, no excluida, pruebas de robustez y precio por debajo del límite. «¿Compra real?» es Sí solo si se cumplen todos. «Filtro para mantener»: rentabilidad ≥ 10 %, central ≥ 5 %, valor real no más de un 15 % bajo el precio y calidad ≥ 4,5; si falla, dice qué. En growth solo aplican la rentabilidad, la exclusión, la robustez y el precio.'],
   ['Señal (hoja «Detalle»)', 'La señal antigua, solo con la rentabilidad.\nValue: Comprar si la rentabilidad es del 15 % o más, el escenario central da al menos un 12 % y el valor real del negocio (DCF) no está por debajo del precio. Vender si es del −10 % o menos. Mantener en medio.\nGrowth: Comprar si la puntuación de la empresa es de 60 sobre 100 o más, la rentabilidad del 5 % o más y el escenario pesimista no cae más de un 50 %. Vender si la puntuación baja de 50 o la rentabilidad es del −10 % o menos.'],
@@ -423,8 +433,8 @@ function hojaResumen(privado) {
   const enCartera = (p) => !p ? 'No' : `Sí: ${p.titulos}${p.cuentas?.length ? ` (${p.cuentas.map((c) => c.replace('cuenta-', 'cuenta ')).join(', ')})` : ''}`;
   const fs = resumen.map((x) => {
     const p = privado ? real_.pos.get(x.clave) : null;
-    const que = !p ? x.que : real_.DECISION[x.clave] ?? queHacerTenencia(x);
-    const g = senalGenerica(x), h = privado ? senalHSE(x, p, real_.DECISION[x.clave]) : null;
+    const que = !p ? x.que : decisionDe(x, x.clave);
+    const g = senalGenerica(x), h = privado ? senalHSE(x, p, que) : null;
     return [
       T(x.tipo, S.centro), T(x.empresa), T(x.ticker, S.centro), ...(privado ? [T(enCartera(p), S.centro)] : []), T(x.sector), T(g, S[ESTILO_SENAL[g]] ?? S.centro), ...(privado ? [T(h, S[ESTILO_SENAL[h]] ?? S.centro)] : []),
       P(x.rte, S.pctFuerte), P(x.rte === null ? null : x.rte / 2), T(que), ...(privado ? [T(real_.ordenes.get(x.clave) ?? null)] : []),
@@ -451,8 +461,8 @@ function hojaCartera() {
   const fs = [...pos.values()].sort((a, b) => (b.valor_eur ?? 0) - (a.valor_eur ?? 0)).map((p) => {
     const x = porClave.get(p.clave);
     return [T(x?.empresa ?? p.nombre), T(x?.tipo ?? (p.vertical === 'otro' ? 'Otro' : p.vertical === 'value' ? 'Value' : p.vertical), S.centro), N(p.titulos, S.centro), N(Math.round(p.valor_eur ?? 0)), P(total ? (p.valor_eur ?? 0) / total * 100 : null),
-      ...(() => { const g = x ? senalGenerica(x) : null, h = x ? senalHSE(x, p, DECISION[p.clave]) : DECISION[p.clave] ? 'Mantener' : null; return [T(g, S[ESTILO_SENAL[g]] ?? S.centro), T(h, S[ESTILO_SENAL[h]] ?? S.centro)]; })(),
-      P(x?.rte ?? null, S.pctFuerte), P(x?.rte == null ? null : x.rte / 2), T(DECISION[p.clave] ?? (x ? queHacerTenencia(x) : '—')), T(ordenes.get(p.clave) ?? null), F(x?.proximos ?? null)];
+      ...(() => { const g = x ? senalGenerica(x) : null, h = x ? senalHSE(x, p, decisionDe(x, p.clave)) : DECISION[p.clave] ? 'Mantener' : null; return [T(g, S[ESTILO_SENAL[g]] ?? S.centro), T(h, S[ESTILO_SENAL[h]] ?? S.centro)]; })(),
+      P(x?.rte ?? null, S.pctFuerte), P(x?.rte == null ? null : x.rte / 2), T(decisionDe(x, p.clave) ?? '—'), T(ordenes.get(p.clave) ?? null), F(x?.proximos ?? null)];
   });
   fs.push([T('Liquidez', S.titulo), T(null), T(null), N(Math.round(liquidez ?? 0)), P(total ? liquidez / total * 100 : null)]);
   fs.push([T('Total', S.titulo), T(null), T(null), N(Math.round(total ?? 0)), P(total ? 100 : null)]);
