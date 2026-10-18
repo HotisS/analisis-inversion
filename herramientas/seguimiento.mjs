@@ -193,7 +193,7 @@ for (const g of grupos.values()) {
     mantener: rb?.accion_vigente ?? null, base: rb ? n(rb.base) : n(rev?.rentabilidad_base_pct), vi_precio: f.objetivo && f.precio ? f.objetivo / f.precio : null,
     proximos: f.proximos, informe: f.informe,
     robusta: rb?.accion_robusta ?? null, confianza_baja: !!o?.confianza_baja, sostenible: f.sostenible, roic_wacc: f.roic_wacc,
-    revisar: rev?.revisar ?? null,
+    revisar: rev?.revisar ?? null, rb: rb ?? null,
   });
 }
 for (const dir of readdirSync('informes-growth', { withFileTypes: true }).filter((e) => e.isDirectory()).map((e) => e.name)) {
@@ -207,7 +207,7 @@ for (const dir of readdirSync('informes-growth', { withFileTypes: true }).filter
     divisa: d.moneda, precio: n(d.precio), fecha_precio: d.fecha, compra: n(c.precio_max_compra), venta: null,
     objetivo12: n(d.precio) !== null && n(c.rent_ponderada_pct) !== null ? n(d.precio) * (1 + n(c.rent_ponderada_pct) / 100) : null, valor_real: null,
     proximos: fechaResultados(normal(d.ticker), d, CAL), informe: word ? `informes-growth/${dir}/${word}` : null, conviccion: c.conviccion,
-    robusta: ROBG.get(dir)?.senal_robusta ?? null,
+    robusta: ROBG.get(dir)?.senal_robusta ?? null, excluible: true,
   });
 }
 // «Qué hacer según el método»: los filtros de cartera de METODO-VIGENTE.md §4, en una frase.
@@ -249,6 +249,48 @@ function queHacerTenencia(x) {
   if (/^No comprar/.test(q)) return x.tipo === 'Value' && x.roic_wacc !== null && x.roic_wacc < 4.5 && !EXCEPCION_CALIDAD[x.clave]
     ? `Vender: calidad baja (ROIC − WACC ${rw(x.roic_wacc)})` : q.replace(/^No comprar( todavía)?:/, 'Mantener sin ampliar:');
   return q.replace(/^Vender si la tienes/, 'Vender');
+}
+// Señal genérica (cualquier inversor, de «Qué hacer según el método») y señal HSE (la de tu cartera: si la tienes o no y
+// tus reglas: 3 meses sin tocar, las que se quedan por decisión tuya, lo que no se amplía).
+function senalGenerica(x) {
+  const q = x.que;
+  if (/^Comprar/.test(q)) return 'Comprar';
+  if (/^Esperar/.test(q)) return 'Esperar precio';
+  if (/^No comprar/.test(q)) return /^Vender/.test(queHacerTenencia(x)) ? 'Vender' : 'Mantener';
+  if (/^Vender/.test(q)) return 'Vender';
+  if (/^Mantener/.test(q)) return 'Mantener';
+  return null;
+}
+function senalHSE(x, p, decision) {
+  if (!p) { const g = senalGenerica(x); return g === 'Comprar' || g === 'Esperar precio' ? g : 'No comprar'; }
+  const q = decision ?? queHacerTenencia(x);
+  return /^Ampliar/.test(q) ? 'Ampliar' : /^Vender/.test(q) ? 'Vender' : 'Mantener';
+}
+const ESTILO_SENAL = { Comprar: 'Comprar', Ampliar: 'Comprar', 'Esperar precio': 'Mantener', Mantener: 'Mantener', 'No comprar': 'Mantener', Vender: 'Vender' };
+// Una columna por filtro de compra (METODO-VIGENTE.md §4.1 y regla 6) y una para el filtro de mantener (§4.2): ✓ / ✗ con la cifra.
+const pctTxt = (v) => v === null || v === undefined ? 'n.d.' : `${v > 0 ? '+' : ''}${coma(Math.round(v * 10) / 10)} %`;
+const FILTROS = [
+  ['Rentabilidad 12 m ≥ 15 % (growth ≥ 5 %)', (x) => x.rte === null ? null : [x.rte >= (x.tipo === 'Growth' ? 5 : 15), pctTxt(x.rte)]],
+  ['Escenario central ≥ 12 %', (x) => x.tipo !== 'Value' || x.base === null ? null : [x.base >= 12, pctTxt(x.base)]],
+  ['Valor real ≥ precio', (x) => x.tipo !== 'Value' || x.vi_precio === null ? null : [x.vi_precio >= 1, `${pctTxt((x.vi_precio - 1) * 100)} frente al precio`]],
+  ['Control v2 da Comprar', (x) => { const v = x.rb?.variantes?.find((y) => y.variante === 'v2 (control)'); return v ? [v.ponderada >= 15 && v.base >= 12, pctTxt(v.ponderada)] : null; }],
+  ['Con BPA −10 % sigue ≥ 15 % (y central ≥ 12 %)', (x) => { const v = x.rb?.variantes?.find((y) => y.variante === 'BPA −10 %'); return v ? [v.ponderada >= 15 && v.base >= 12, pctTxt(v.ponderada)] : null; }],
+  ['Crecimiento sostenible «Sí»', (x) => x.tipo !== 'Value' || !x.sostenible ? null : [/^s[ií]/i.test(x.sostenible), x.sostenible]],
+  ['Calidad: ROIC − WACC ≥ 5', (x) => x.tipo !== 'Value' || x.roic_wacc === null ? null : EXCEPCION_CALIDAD[x.clave] ? [true, `${rw(x.roic_wacc)} (excepción tuya)`] : [x.roic_wacc >= MIN_CALIDAD, rw(x.roic_wacc)]],
+  ['No excluida', (x) => { const ex = EXCLUIDAS[x.clave] ?? EXCLUIDAS[normal(x.ticker)]; return ex ? [false, 'excluida'] : [true, 'no']; }],
+  ['Pasa las pruebas de robustez', (x) => x.robusta ? [/^Comprar/.test(x.robusta) || (x.tipo === 'Value' && /^Esperar/.test(x.que)), x.robusta] : null],
+  ['Precio ≤ «Comprar por debajo de»', (x) => x.compra === null || x.precio === null ? null : [x.precio <= x.compra, `${coma(x.precio)} frente a ${coma(Math.round(x.compra * 100) / 100)}`]],
+];
+// Mantener (§4.2): rentabilidad ≥ 10 %, central ≥ 5 %, valor real no más de un 15 % bajo el precio y calidad ≥ 4,5.
+function filtroMantener(x) {
+  if (x.tipo !== 'Value') return null;
+  const fallos = [];
+  if (x.rte !== null && x.rte < 10) fallos.push(`12 m ${pctTxt(x.rte)} < 10 %`);
+  if (x.base !== null && x.base < 5) fallos.push(`central ${pctTxt(x.base)} < 5 %`);
+  if (x.vi_precio !== null && x.vi_precio < 0.85) fallos.push(`valor real ${pctTxt((x.vi_precio - 1) * 100)} frente al precio`);
+  if (x.roic_wacc !== null && x.roic_wacc < 4.5 && !EXCEPCION_CALIDAD[x.clave]) fallos.push(`calidad ${rw(x.roic_wacc)} < 4,5`);
+  if (!fallos.length && x.mantener === 'No mantener') fallos.push('no pasa las pruebas de robustez');
+  return fallos.length ? [false, fallos.join('; ')] : [true, 'sí'];
 }
 const ordenQue = (x) => /^Comprar/.test(x.que) ? 0 : /^Esperar/.test(x.que) ? 1 : /^No comprar/.test(x.que) ? 2 : /^Mantener/.test(x.que) ? 3 : /^Vender/.test(x.que) ? 4 : 5;
 resumen.sort((a, b) => ordenQue(a) - ordenQue(b) || (b.rte ?? -999) - (a.rte ?? -999));
@@ -300,7 +342,11 @@ const COMO = [
   ['Qué mirar', 'La hoja «Resumen». Una fila por empresa analizada (value y growth) con una sola cifra de rentabilidad: la del método que decide hoy. Todo lo demás (métodos antiguos y de control, criterios, DCF) está en «Detalle», por si quieres comprobar algo.'],
   ['Rentabilidad esperada 12 m', 'Lo que esperamos que gane la acción en 12 meses: la subida hasta el precio objetivo más el dividendo, sobre el precio de la columna «Precio».\nValue: beneficio por acción que esperamos para el ejercicio que mirará el mercado dentro de un año × el PER que razonablemente pagará (el de hoy, acercándose un poco a su media de 5 años, como mucho un 10 % arriba o abajo). Se calcula en tres escenarios (pesimista 25 %, central 50 %, optimista 25 %) y se hace la media ponderada.\nGrowth: lo mismo con las ventas de dentro de 12 meses y un múltiplo de ventas o de beneficio bruto con tope.'],
   ['Siendo prudentes (la mitad)', 'La misma cifra dividida entre dos. Los objetivos suelen salir optimistas, así que para comparar con el índice mundial y para el tamaño de las posiciones usamos la mitad.'],
-  ['Señal', 'Lo que dice el método solo con la rentabilidad.\nValue: Comprar si la rentabilidad es del 15 % o más, el escenario central da al menos un 12 % y el valor real del negocio (DCF) no está por debajo del precio. Vender si es del −10 % o menos. Mantener en medio.\nGrowth: Comprar si la puntuación de la empresa es de 60 sobre 100 o más, la rentabilidad del 5 % o más y el escenario pesimista no cae más de un 50 %. Vender si la puntuación baja de 50 o la rentabilidad es del −10 % o menos.'],
+  ['Señal genérica', 'Lo que dice el método para cualquier inversor, con todos los filtros (la columna «Qué hacer según el método» da el motivo):\nComprar: pasa todos los filtros de compra (columnas de la derecha) y el precio está por debajo de «Comprar por debajo de».\nEsperar precio: lo pasa todo menos el precio; se compra si baja hasta «Comprar por debajo de».\nMantener: no se compra, pero si la tienes se queda (pasa el filtro para mantener).\nVender: si la tienes, se vende (no pasa el filtro para mantener o la calidad está por debajo de 4,5).'],
+  ['Señal HSE', 'Lo que toca en TU cartera (solo en la versión privada). Si no la tienes: Comprar, Esperar precio o No comprar. Si la tienes: Ampliar, Mantener o Vender, con tus reglas encima de la genérica: lo comprado no se toca en 3 meses salvo hecho nuevo y duro, lo que se queda por decisión tuya (Edenred, el oro, Zoetis, Rai Way…), lo que no se amplía y las ventas propuestas. Cada compra o ampliación, de 1.000 € como mínimo y, como guía, sin pasar del 7 % de la cartera.'],
+  ['En cartera', 'Si la tienes: títulos y cuenta (versión privada).'],
+  ['¿Compra real? y las columnas de filtros', 'Una columna por cada requisito de compra de METODO-VIGENTE.md §4.1, con ✓ o ✗ y la cifra: rentabilidad 12 m ≥ 15 % (growth ≥ 5 %), escenario central ≥ 12 %, valor real (DCF) ≥ precio, el control v2 también da Comprar, con el BPA un 10 % peor sigue dando ≥ 15 % (y central ≥ 12 %), crecimiento sostenible «Sí», calidad ROIC − WACC ≥ 5, no excluida, pruebas de robustez y precio por debajo del límite. «¿Compra real?» es Sí solo si se cumplen todos. «Filtro para mantener»: rentabilidad ≥ 10 %, central ≥ 5 %, valor real no más de un 15 % bajo el precio y calidad ≥ 4,5; si falla, dice qué. En growth solo aplican la rentabilidad, la exclusión, la robustez y el precio.'],
+  ['Señal (hoja «Detalle»)', 'La señal antigua, solo con la rentabilidad.\nValue: Comprar si la rentabilidad es del 15 % o más, el escenario central da al menos un 12 % y el valor real del negocio (DCF) no está por debajo del precio. Vender si es del −10 % o menos. Mantener en medio.\nGrowth: Comprar si la puntuación de la empresa es de 60 sobre 100 o más, la rentabilidad del 5 % o más y el escenario pesimista no cae más de un 50 %. Vender si la puntuación baja de 50 o la rentabilidad es del −10 % o menos.'],
   ['Qué hacer según el método', 'ESTE ES EL CRITERIO PARA TU CARTERA. Una empresa se compra o se amplía solo si se cumple todo a la vez:\n1. Señal Comprar.\n2. Calidad (value): el negocio gana sobre su capital al menos 5 puntos más de lo que le cuesta ese capital (ROIC − WACC ≥ 5) y su crecimiento es sostenible.\n3. Robusta: el precio está por debajo del límite al que dan Comprar a la vez el método vigente y el de control (la versión anterior del cálculo), y aguanta las pruebas de robustez. Ese límite es el de «Comprar por debajo de»; si el precio está por encima, la fila dice «Esperar».\n4. No está excluida (juego y apuestas, comercio minorista, Accenture, Adobe, Rightmove, Duolingo, Shopify, Axon, Snowflake y las demás de la lista de exclusiones).\n5. El precio del momento está por debajo de «Comprar por debajo de».\nLa compra se hace entera, de una vez: sin tramos y sin esperar a resultados (regla del 15-oct). Lo comprado no se toca en 3 meses salvo un hecho nuevo y duro.\nMantener (si ya la tienes): se queda solo si la rentabilidad esperada es al menos del 10 %, el escenario central da al menos un 5 % y el valor real del negocio no está más de un 15 % por debajo del precio. Si no, «Vender si la tienes». Con calidad entre 4,5 y 5 se mantiene pero no se amplía; por debajo de 4,5 se vende por calidad.\nVender: señal Vender, no pasa el filtro para mantener o el precio supera «Vender por encima de».'],
   ['Tamaño y liquidez', 'Mínimo 1.000 € por posición y, como guía, no más del 7 % de la cartera (salvo Edenred y el oro, que decides tú). Growth, como mucho el 20 % de la cartera. La liquidez nunca negativa; si sobran 3.000 € o más durante 3 meses, a un monetario (XEON).'],
   ['Precio objetivo 12 m y Valor real (DCF)', 'Son dos precios distintos y pueden estar muy lejos.\n«Precio objetivo 12 m»: a cuánto esperamos que cotice dentro de un año (media ponderada 25/50/25 de los tres escenarios de PER × BPA). La «Rentabilidad esperada 12 m» es este objetivo (más el dividendo) sobre el «Precio»: es la que decide y la que se usa en las tablas de tu cartera.\n«Valor real (DCF)»: lo que vale el negocio por el dinero que generará (síntesis del informe: DCF y escenarios). No es un objetivo: es un filtro. Para comprar tiene que estar por encima del precio, y para mantener, no más de un 15 % por debajo. Si el mercado paga la empresa muy por encima de su valor real (Everpure, Cadence, Moody\'s…), la rentabilidad a 12 meses puede ser alta y aun así la fila dice «Vender si la tienes».'],
@@ -369,16 +415,21 @@ const seguimientoTxt = (c) => !c ? null : c.excluida ? `Excluida (${c.excluida})
   : c.toca ? c.toca[0].toUpperCase() + c.toca.slice(1) : c.huecos?.length ? `Falta: ${c.huecos.join('; ')}` : 'Al día (calidad: resultados, noticias y escáner)';
 // ── Resumen (y Mi cartera en la versión privada) ──
 function hojaResumen(privado) {
-  const cols = [['Tipo', 8], ['Empresa', 22], ['Ticker', 9], ...(privado ? [['En mi cartera (títulos)', 10]] : []), ['Sector', 18], ['Señal', 10],
+  const cols = [['Tipo', 8], ['Empresa', 22], ['Ticker', 9], ...(privado ? [['En cartera', 13]] : []), ['Sector', 18], ['Señal genérica', 11], ...(privado ? [['Señal HSE', 11]] : []),
     ['Rentabilidad esperada 12 m', 12], ['Siendo prudentes (la mitad)', 12], ['Qué hacer según el método', 46], ...(privado ? [['Orden propuesta', 50]] : []),
-    ['Divisa', 7], ['Precio', 10], ['Fecha del precio', 11], ['Precio objetivo 12 m', 11], ['Valor real (DCF)', 11], ['Comprar por debajo de', 11], ['Vender por encima de', 11], ['Próximos resultados', 12], ['Último análisis', 11], ['Seguimiento', 40], ['Informe', 46]];
+    ['Divisa', 7], ['Precio', 10], ['Fecha del precio', 11], ['Precio objetivo 12 m', 11], ['Valor real (DCF)', 11], ['Comprar por debajo de', 11], ['Vender por encima de', 11], ['Próximos resultados', 12], ['Último análisis', 11], ['Seguimiento', 40], ['Informe', 46],
+    ['¿Compra real? (todos los filtros)', 11], ...FILTROS.map(([c]) => [c, 15]), ['Filtro para mantener', 30]];
+  const filtro = (r) => !r ? T('—', S.centro) : T(`${r[0] ? '✓' : '✗'} ${r[1]}`, S[r[0] ? '✓' : '✗']);
+  const enCartera = (p) => !p ? 'No' : `Sí: ${p.titulos}${p.cuentas?.length ? ` (${p.cuentas.map((c) => c.replace('cuenta-', 'cuenta ')).join(', ')})` : ''}`;
   const fs = resumen.map((x) => {
     const p = privado ? real_.pos.get(x.clave) : null;
     const que = !p ? x.que : real_.DECISION[x.clave] ?? queHacerTenencia(x);
+    const g = senalGenerica(x), h = privado ? senalHSE(x, p, real_.DECISION[x.clave]) : null;
     return [
-      T(x.tipo, S.centro), T(x.empresa), T(x.ticker, S.centro), ...(privado ? [N(p?.titulos ?? null, S.centro)] : []), T(x.sector), T(x.senal, S[x.senal] ?? S.centro),
+      T(x.tipo, S.centro), T(x.empresa), T(x.ticker, S.centro), ...(privado ? [T(enCartera(p), S.centro)] : []), T(x.sector), T(g, S[ESTILO_SENAL[g]] ?? S.centro), ...(privado ? [T(h, S[ESTILO_SENAL[h]] ?? S.centro)] : []),
       P(x.rte, S.pctFuerte), P(x.rte === null ? null : x.rte / 2), T(que), ...(privado ? [T(real_.ordenes.get(x.clave) ?? null)] : []),
       T(x.divisa, S.centro), N(x.precio), F(x.fecha_precio), N(x.objetivo12 === null ? null : Math.round(x.objetivo12 * 100) / 100), N(x.valor_real === null ? null : Math.round(x.valor_real * 100) / 100), N(x.compra), N(x.venta), F(x.proximos), F(cobDe(x)?.fecha ?? null), T(seguimientoTxt(cobDe(x))), x.informe ? L(x.informe) : T(null),
+      T(/^Comprar/.test(x.que) ? 'Sí' : 'No', S[/^Comprar/.test(x.que) ? '✓' : '✗']), ...FILTROS.map(([, f]) => { try { return filtro(f(x)); } catch { return filtro(null); } }), filtro(filtroMantener(x)),
     ];
   });
   return hoja({ nombre: 'Resumen', cols, filas: fs, congelar: 3 });
@@ -395,12 +446,13 @@ let ROBA, ROBGA;
 function hojaCartera() {
   const { pos, ordenes, DECISION, cifras, fuente, liquidez, total } = real_;
   const porClave = new Map(resumen.map((x) => [x.clave, { ...x, rte: rteHoy(x) }]));
-  const cols = [['Valor', 26], ['Tipo', 8], ['Títulos', 9], ['Valor hoy (EUR)', 12], ['Peso', 8], ['Señal', 10], ['Rentabilidad esperada 12 m', 12], ['Siendo prudentes (la mitad)', 12],
+  const cols = [['Valor', 26], ['Tipo', 8], ['Títulos', 9], ['Valor hoy (EUR)', 12], ['Peso', 8], ['Señal genérica', 11], ['Señal HSE', 11], ['Rentabilidad esperada 12 m', 12], ['Siendo prudentes (la mitad)', 12],
     ['Qué hacer según el método', 46], ['Orden propuesta', 50], ['Próximos resultados', 12]];
   const fs = [...pos.values()].sort((a, b) => (b.valor_eur ?? 0) - (a.valor_eur ?? 0)).map((p) => {
     const x = porClave.get(p.clave);
     return [T(x?.empresa ?? p.nombre), T(x?.tipo ?? (p.vertical === 'otro' ? 'Otro' : p.vertical === 'value' ? 'Value' : p.vertical), S.centro), N(p.titulos, S.centro), N(Math.round(p.valor_eur ?? 0)), P(total ? (p.valor_eur ?? 0) / total * 100 : null),
-      T(x?.senal ?? null, S[x?.senal] ?? S.centro), P(x?.rte ?? null, S.pctFuerte), P(x?.rte == null ? null : x.rte / 2), T(DECISION[p.clave] ?? (x ? queHacerTenencia(x) : '—')), T(ordenes.get(p.clave) ?? null), F(x?.proximos ?? null)];
+      ...(() => { const g = x ? senalGenerica(x) : null, h = x ? senalHSE(x, p, DECISION[p.clave]) : DECISION[p.clave] ? 'Mantener' : null; return [T(g, S[ESTILO_SENAL[g]] ?? S.centro), T(h, S[ESTILO_SENAL[h]] ?? S.centro)]; })(),
+      P(x?.rte ?? null, S.pctFuerte), P(x?.rte == null ? null : x.rte / 2), T(DECISION[p.clave] ?? (x ? queHacerTenencia(x) : '—')), T(ordenes.get(p.clave) ?? null), F(x?.proximos ?? null)];
   });
   fs.push([T('Liquidez', S.titulo), T(null), T(null), N(Math.round(liquidez ?? 0)), P(total ? liquidez / total * 100 : null)]);
   fs.push([T('Total', S.titulo), T(null), T(null), N(Math.round(total ?? 0)), P(total ? 100 : null)]);
@@ -409,12 +461,12 @@ function hojaCartera() {
   const nuevas = [...ordenes.entries()].filter(([k]) => !pos.has(k));
   if (nuevas.length) {
     fs.push([T('Compras propuestas de valores nuevos', S.titulo)]);
-    for (const [k, txt] of nuevas) { const x = porClave.get(k) ?? resumen.find((r) => normal(r.ticker) === k); const qn = x?.que && /^Orden límite/.test(txt) && !/^Comprar/.test(x.que) ? 'Hoy no se compra: la orden límite solo entra a su precio, donde pasa el método' : x?.que ?? null; fs.push([T(x?.empresa ?? k), T(x?.tipo ?? null, S.centro), T(null), T(null), T(null), T(x?.senal ?? null, S[x?.senal] ?? S.centro), P(x?.rte ?? null, S.pctFuerte), P(x?.rte == null ? null : x.rte / 2), T(qn), T(txt), F(x?.proximos ?? null)]); }
+    for (const [k, txt] of nuevas) { const x = porClave.get(k) ?? resumen.find((r) => normal(r.ticker) === k); const qn = x?.que && /^Orden límite/.test(txt) && !/^Comprar/.test(x.que) ? 'Hoy no se compra: la orden límite solo entra a su precio, donde pasa el método' : x?.que ?? null; fs.push([T(x?.empresa ?? k), T(x?.tipo ?? null, S.centro), T(null), T(null), T(null), ...(() => { const g = x ? senalGenerica(x) : null, h = x ? senalHSE(x, null) : null; return [T(g, S[ESTILO_SENAL[g]] ?? S.centro), T(h, S[ESTILO_SENAL[h]] ?? S.centro)]; })(), P(x?.rte ?? null, S.pctFuerte), P(x?.rte == null ? null : x.rte / 2), T(qn), T(txt), F(x?.proximos ?? null)]); }
     fs.push([T(null)]);
   }
   if (cifras?.length) {
-    fs.push([T(`La cartera en cuatro cifras (tabla ${fuente})`, S.titulo), T(null), T(null), T(null), T(null), T(null), T(null), T(null), T(cifras[0]?.length >= 3 ? 'Cartera de hoy' : null, S.cab), T('Tras las órdenes', S.cab)]);
-    for (const c of cifras.filter((c) => !/^cartera de hoy$/i.test(c[1]))) fs.push([T(c[0]), T(null), T(null), T(null), T(null), T(null), T(null), T(null), T(c[1], S.centro), T(c[2], S.centro)]);
+    fs.push([T(`La cartera en cuatro cifras (tabla ${fuente})`, S.titulo), T(null), T(null), T(null), T(null), T(null), T(null), T(null), T(null), T(cifras[0]?.length >= 3 ? 'Cartera de hoy' : null, S.cab), T('Tras las órdenes', S.cab)]);
+    for (const c of cifras.filter((c) => !/^cartera de hoy$/i.test(c[1]))) fs.push([T(c[0]), T(null), T(null), T(null), T(null), T(null), T(null), T(null), T(null), T(c[1], S.centro), T(c[2], S.centro)]);
   }
   fs.push([T(`Posiciones y valor: IBKR, ${real_.ultimo.fecha} ${real_.ultimo.hora ?? ''}. Datos privados: este archivo no va al repo.`)]);
   return hoja({ nombre: 'Mi cartera', cols, filas: fs, congelar: 1, filtro: false });
