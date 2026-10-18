@@ -187,6 +187,9 @@ for (const g of grupos.values()) {
     compra: Number.isFinite(limRobusto) ? limRobusto : rev ? n(rev.comprar_por_debajo_cot ?? rev.comprar_por_debajo) : n(o?.comprar_por_debajo),
     // Vender por encima de: el precio al que deja de pasar el filtro para mantener (robustez.mjs); sin él, el de la señal Vender.
     venta: n(rb?.limite_mantener_cot) ?? (rev ? n(rev.vender_por_encima_cot ?? rev.vender_por_encima) : n(o?.vender_por_encima)),
+    // Precio objetivo a 12 meses (el de la rentabilidad) y valor real del DCF, en la divisa de cotización (como «Precio»).
+    objetivo12: (() => { const ob = rev ? n(rev.objetivo_ponderado) : n(o?.objetivo_ponderado), pr = rev ? n(rev.precio_ref) : null, pc = rev ? n(rev.precio_cot ?? rev.precio_ref) : null; return ob === null ? null : pr && pc ? ob * pc / pr : ob; })(),
+    valor_real: (() => { const pr = rev ? n(rev.precio_ref) : null, pc = rev ? n(rev.precio_cot ?? rev.precio_ref) : null; return f.objetivo === null ? null : pr && pc ? f.objetivo * pc / pr : f.objetivo; })(),
     mantener: rb?.accion_vigente ?? null, base: rb ? n(rb.base) : n(rev?.rentabilidad_base_pct), vi_precio: f.objetivo && f.precio ? f.objetivo / f.precio : null,
     proximos: f.proximos, informe: f.informe,
     robusta: rb?.accion_robusta ?? null, confianza_baja: !!o?.confianza_baja, sostenible: f.sostenible, roic_wacc: f.roic_wacc,
@@ -202,6 +205,7 @@ for (const dir of readdirSync('informes-growth', { withFileTypes: true }).filter
   resumen.push({
     tipo: 'Growth', carpeta: dir, clave: normal(d.ticker), empresa: d.empresa, ticker: d.ticker, sector: 'Growth', senal: c.senal, rte: n(c.rent_ponderada_pct),
     divisa: d.moneda, precio: n(d.precio), fecha_precio: d.fecha, compra: n(c.precio_max_compra), venta: null,
+    objetivo12: n(d.precio) !== null && n(c.rent_ponderada_pct) !== null ? n(d.precio) * (1 + n(c.rent_ponderada_pct) / 100) : null, valor_real: null,
     proximos: fechaResultados(normal(d.ticker), d, CAL), informe: word ? `informes-growth/${dir}/${word}` : null, conviccion: c.conviccion,
     robusta: ROBG.get(dir)?.senal_robusta ?? null,
   });
@@ -299,8 +303,9 @@ const COMO = [
   ['Señal', 'Lo que dice el método solo con la rentabilidad.\nValue: Comprar si la rentabilidad es del 15 % o más, el escenario central da al menos un 12 % y el valor real del negocio (DCF) no está por debajo del precio. Vender si es del −10 % o menos. Mantener en medio.\nGrowth: Comprar si la puntuación de la empresa es de 60 sobre 100 o más, la rentabilidad del 5 % o más y el escenario pesimista no cae más de un 50 %. Vender si la puntuación baja de 50 o la rentabilidad es del −10 % o menos.'],
   ['Qué hacer según el método', 'ESTE ES EL CRITERIO PARA TU CARTERA. Una empresa se compra o se amplía solo si se cumple todo a la vez:\n1. Señal Comprar.\n2. Calidad (value): el negocio gana sobre su capital al menos 5 puntos más de lo que le cuesta ese capital (ROIC − WACC ≥ 5) y su crecimiento es sostenible.\n3. Robusta: el precio está por debajo del límite al que dan Comprar a la vez el método vigente y el de control (la versión anterior del cálculo), y aguanta las pruebas de robustez. Ese límite es el de «Comprar por debajo de»; si el precio está por encima, la fila dice «Esperar».\n4. No está excluida (juego y apuestas, comercio minorista, Accenture, Adobe, Rightmove, Duolingo, Shopify, Axon, Snowflake y las demás de la lista de exclusiones).\n5. El precio del momento está por debajo de «Comprar por debajo de».\nLa compra se hace entera, de una vez: sin tramos y sin esperar a resultados (regla del 15-oct). Lo comprado no se toca en 3 meses salvo un hecho nuevo y duro.\nMantener (si ya la tienes): se queda solo si la rentabilidad esperada es al menos del 10 %, el escenario central da al menos un 5 % y el valor real del negocio no está más de un 15 % por debajo del precio. Si no, «Vender si la tienes». Con calidad entre 4,5 y 5 se mantiene pero no se amplía; por debajo de 4,5 se vende por calidad.\nVender: señal Vender, no pasa el filtro para mantener o el precio supera «Vender por encima de».'],
   ['Tamaño y liquidez', 'Mínimo 1.000 € por posición y, como guía, no más del 7 % de la cartera (salvo Edenred y el oro, que decides tú). Growth, como mucho el 20 % de la cartera. La liquidez nunca negativa; si sobran 3.000 € o más durante 3 meses, a un monetario (XEON).'],
+  ['Precio objetivo 12 m y Valor real (DCF)', 'Son dos precios distintos y pueden estar muy lejos.\n«Precio objetivo 12 m»: a cuánto esperamos que cotice dentro de un año (media ponderada 25/50/25 de los tres escenarios de PER × BPA). La «Rentabilidad esperada 12 m» es este objetivo (más el dividendo) sobre el «Precio»: es la que decide y la que se usa en las tablas de tu cartera.\n«Valor real (DCF)»: lo que vale el negocio por el dinero que generará (síntesis del informe: DCF y escenarios). No es un objetivo: es un filtro. Para comprar tiene que estar por encima del precio, y para mantener, no más de un 15 % por debajo. Si el mercado paga la empresa muy por encima de su valor real (Everpure, Cadence, Moody\'s…), la rentabilidad a 12 meses puede ser alta y aun así la fila dice «Vender si la tienes».'],
   ['Precio y fecha del precio', 'El precio objetivo queda fijo; con un precio nuevo solo cambia la rentabilidad. «Precio» y «Fecha del precio» dicen con qué cierre está calculada la cifra. Antes de cada orden se mira el precio del momento y si ha habido resultados después del informe.'],
-  ['Comprar por debajo de / Vender por encima de', 'Los precios límite: por debajo del primero se puede comprar (en value es el límite robusto, el que pasa con los dos métodos); por encima del segundo deja de pasar el filtro para mantener y se vende. En la divisa en la que cotiza. En growth, «Comprar por debajo de» es el precio máximo de compra y no hay límite de venta (se vende si cambia la puntuación o la rentabilidad).'],
+  ['Comprar por debajo de / Vender por encima de', 'Los precios límite: por debajo del primero se puede comprar (en value es el límite robusto, el que pasa con los dos métodos, y nunca por encima del valor real); por encima del segundo deja de pasar el filtro para mantener y se vende (a menudo es el valor real ÷ 0,85). En la divisa en la que cotiza. En growth, «Comprar por debajo de» es el precio máximo de compra y no hay límite de venta (se vende si cambia la puntuación o la rentabilidad).'],
   ['Próximos resultados', 'Fecha de los próximos resultados (calendario único del escáner; si no está, la del informe).'],
   ['Último análisis', 'Fecha de corte del último análisis de la empresa (value o growth).'],
   ['Seguimiento', 'Lo que toca para no perder de vista ninguna empresa con calidad (inventario de cobertura): «Al día»; «Revisar con los resultados del…» (publicó después del análisis y aún no se ha revisado); «Reanalizar» (análisis de más de 6 meses); «Falta: …» (una pieza del sistema que no la sigue). Las que no tienen calidad solo se siguen por precio.'],
@@ -366,14 +371,14 @@ const seguimientoTxt = (c) => !c ? null : c.excluida ? `Excluida (${c.excluida})
 function hojaResumen(privado) {
   const cols = [['Tipo', 8], ['Empresa', 22], ['Ticker', 9], ...(privado ? [['En mi cartera (títulos)', 10]] : []), ['Sector', 18], ['Señal', 10],
     ['Rentabilidad esperada 12 m', 12], ['Siendo prudentes (la mitad)', 12], ['Qué hacer según el método', 46], ...(privado ? [['Orden propuesta', 50]] : []),
-    ['Divisa', 7], ['Precio', 10], ['Fecha del precio', 11], ['Comprar por debajo de', 11], ['Vender por encima de', 11], ['Próximos resultados', 12], ['Último análisis', 11], ['Seguimiento', 40], ['Informe', 46]];
+    ['Divisa', 7], ['Precio', 10], ['Fecha del precio', 11], ['Precio objetivo 12 m', 11], ['Valor real (DCF)', 11], ['Comprar por debajo de', 11], ['Vender por encima de', 11], ['Próximos resultados', 12], ['Último análisis', 11], ['Seguimiento', 40], ['Informe', 46]];
   const fs = resumen.map((x) => {
     const p = privado ? real_.pos.get(x.clave) : null;
     const que = !p ? x.que : real_.DECISION[x.clave] ?? queHacerTenencia(x);
     return [
       T(x.tipo, S.centro), T(x.empresa), T(x.ticker, S.centro), ...(privado ? [N(p?.titulos ?? null, S.centro)] : []), T(x.sector), T(x.senal, S[x.senal] ?? S.centro),
       P(x.rte, S.pctFuerte), P(x.rte === null ? null : x.rte / 2), T(que), ...(privado ? [T(real_.ordenes.get(x.clave) ?? null)] : []),
-      T(x.divisa, S.centro), N(x.precio), F(x.fecha_precio), N(x.compra), N(x.venta), F(x.proximos), F(cobDe(x)?.fecha ?? null), T(seguimientoTxt(cobDe(x))), x.informe ? L(x.informe) : T(null),
+      T(x.divisa, S.centro), N(x.precio), F(x.fecha_precio), N(x.objetivo12 === null ? null : Math.round(x.objetivo12 * 100) / 100), N(x.valor_real === null ? null : Math.round(x.valor_real * 100) / 100), N(x.compra), N(x.venta), F(x.proximos), F(cobDe(x)?.fecha ?? null), T(seguimientoTxt(cobDe(x))), x.informe ? L(x.informe) : T(null),
     ];
   });
   return hoja({ nombre: 'Resumen', cols, filas: fs, congelar: 3 });
