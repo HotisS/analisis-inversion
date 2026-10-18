@@ -3,6 +3,8 @@
 Lee solo la sección del país que toque.
 
 ## EE. UU. y emisores extranjeros en EE. UU.
+- Emisores extranjeros recién salidos (Aeroméxico): `cuentas.mjs --sec` puede traer solo la portada; usar el folleto F-1 y los 6-K. Una salida a bolsa sin historia de PER cae a v2 y lleva el aviso M2.
+- Cambio de ejercicio (Ferguson, julio → diciembre): usar los años naturales que publica la empresa y que cuadran con el 10-KT; avisar del salto de meses en la TCAC y el PER histórico.
 - EDGAR: 10-K/10-Q o 20-F/6-K, 13G, Form 4 (`form4.mjs`), Form 144 (avisos de venta, no ventas). `curl` a sec.gov da 403: usa `descargar.mjs`, que lleva el User-Agent que exige la SEC.
 - Series anuales limpias en `https://data.sec.gov/api/xbrl/companyfacts/CIK##########.json`; lista de presentaciones en `https://data.sec.gov/submissions/CIK##########.json` (CIK con ceros hasta 10 cifras; lo antiguo en `submissions-001.json`).
 - Tasa libre: FRED `DGS10` (un día por detrás) o el CSV del Tesoro (trae el día).
@@ -59,3 +61,7 @@ Lee solo la sección del país que toque.
 ## Canadá
 - SEDAR+ (403) y SEDI (antibot) no abren sin navegador: web de la empresa (solo el ciclo en curso), MFN y GlobeNewswire, e InsiderTrades para directivos. El voto consultivo de remuneración puede no existir (hueco con sus intentos).
 - Sentimiento: Stockchase; Stockhouse da 403.
+
+## China y Hong Kong (18-oct-2026)
+- Línea H recién salida (Transsion, 2636.HK): la historia del PER es la de la A × el cociente H/A de hoy (sin suponer que el descuento se cierra); beta y rentabilidades con la A. Lote de 100 H: comprobar que el mínimo de 1.000 € cabe en lotes enteros. El folleto de HKEX trae tres años de NIIF auditadas.
+- Guba (Eastmoney) abre con curl: los mensajes van en un JSON incrustado como `article_list=`. ChinaBond da el 10 años con POST al servicio de la curva, no por GET. El EBITDA de consenso de MarketScreener en chinas puede incluir ganancias financieras: usar solo BPA y ventas.

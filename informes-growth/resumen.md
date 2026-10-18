@@ -51,6 +51,7 @@ Lo genera `node motor/growth.mjs --todos` (no editar a mano). Método v11: [vert
 | Glaukos | GKOS | 82.5 | 7/8 | +2,5 % | +5,7 % | Mantener | — | 161.6 USD | 2026-10-14 |
 | Arista Networks, Inc. | ANET | 78.8 | 5/8 | +2,1 % | +4,8 % | Mantener | — | 198.9 USD | 2026-10-14 |
 | TG Therapeutics | TGTX | 73.2 | 5/8 | +1,8 % | +14 % | Mantener | — | 52.7 USD | 2026-10-14 |
+| Medline | MDLN | 43.8 | 1/8 | +1,5 % | +4 % | Vender | — | 34.8 USD | 2026-10-18 |
 | Remitly Global | RELY | 70.5 | 7/8 | +1,5 % | +3,6 % | Mantener | — | 23 USD | 2026-10-14 |
 | Rocket Lab Corporation | RKLB | 63.8 | 3/8 | +1,3 % | +15,7 % | Mantener | — | 28.7 USD | 2026-10-14 |
 | DoorDash | DASH | 63.8 | 3/8 | +0,8 % | +4 % | Mantener | — | 185.3 USD | 2026-10-14 |
@@ -77,6 +78,7 @@ Lo genera `node motor/growth.mjs --todos` (no editar a mano). Método v11: [vert
 | Credo Technology Group | CRDO | 66.8 | 3/8 | -14 % | -11,7 % | Vender | — | 132.4 USD | 2026-10-15 |
 | Addtech AB | ADDT-B | 46.8 | 1/8 | -14,4 % | -12 % | Vender | — | 262 SEK | 2026-10-14 |
 | GE Vernova Inc. | GEV | 61.8 | 3/8 | -14,8 % | -12,6 % | Vender | — | 814 USD | 2026-10-14 |
+| Bloom Energy | BE | 76.2 | 5/8 | -15,5 % | -3 % | Vender | — | 178.1 USD | 2026-10-18 |
 | Camurus | CAMX | 67 | 6/8 | -15,5 % | -10,6 % | Vender | — | 505.3 SEK | 2026-10-14 |
 | Palantir Technologies | PLTR | 93.8 | 7/8 | -15,5 % | -13,3 % | Vender | — | 141.2 USD | 2026-10-14 |
 | Ascendis Pharma A/S | ASND | 68.8 | 3/8 | -16 % | -11 % | Vender | — | 178.5 USD | 2026-10-14 |
@@ -95,3 +97,4 @@ Lo genera `node motor/growth.mjs --todos` (no editar a mano). Método v11: [vert
 | Nextpower (antes Nextracker) | NXT | 46.5 | 1/8 | -36,2 % | -28,9 % | Vender | — | 53.9 USD | 2026-10-14 |
 | SiTime Corp | SITM | 77 | 4/8 | -47,5 % | -46 % | Vender | — | 199 USD | 2026-10-15 |
 | Corcept Therapeutics | CORT | 70 | 6/8 | -49,6 % | -43,6 % | Vender | — | 56.5 USD | 2026-10-14 |
+| Fervo Energy Company | FRVO | 29.8 | 1/8 | -83,5 % | -83,2 % | Vender | — | 1.5 USD | 2026-10-18 |

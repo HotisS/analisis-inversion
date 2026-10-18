@@ -6,7 +6,6 @@ Solo lo pendiente. Lo cerrado está en `archivo/` (índice en `archivo/HISTORICO
 
 ## Pendiente
 
-- **UnitedHealth** (`informes/unitedhealth-2026-10-12/`): ha publicado resultados después de la fecha del informe. Revisarlos (regla E1 de robustez) y actualizar el objetivo a 12 meses como LVMH (`informes/lvmh-2026-10-08/notas/actualizacion-v4.mjs`).
 
 **Octava hora: cerrada el 15-oct** (`informes/octava-hora-2026-10-15/`: Rai Way robusta; Burckhardt bajó a Mantener con la prueba del BPA −10 %, registro 15-oct 15:10).
 
@@ -14,6 +13,7 @@ Solo lo pendiente. Lo cerrado está en `archivo/` (índice en `archivo/HISTORICO
 
 ## Vigilar (cifras v3 ×1,1 al cierre del 14-oct)
 
+- **Para Mejoras (18-oct, análisis del semanal)**: (1) años de BPA atípico en la historia adelantada (UnitedHealth quitó 2023-24 a mano: mediana 23,7x → 19,4x) y campo `per_historico.anios` que el selector necesita para la regla de historia corta (Pernod: sin él daba Comprar 18,1 %, con él Mantener 9,3 %); (2) modo growth para empresas casi sin ventas y G3 en falso con proyección mecánica 0 (Fervo); (3) fin del bloqueo de una salida a bolsa como «retrasa» de la regla 13.
 - **Bloqueadas por calidad o confianza** (5ª hora): Siemens Healthineers +24,9 % (confianza baja; ROIC − WACC ≈ +1), Partners Group +31,8 % (confianza baja; Comprar por debajo de 679,76 CHF si se confirman balance y reembolsos), Alcon +26,3 %, Sika +25,6 %, Pernod Ricard +18,9 % y Air Liquide (fallan calidad). Kuehne+Nagel pasa los tres por debajo de 184,20 CHF.
 - **Edenred** (título-restaurante): si el Senado o un decreto fijan un tope a la comisión, pasa a Mantener y se rehacen Edenred y Pluxee. Si queda claro que no hay tope, se amplía (pasa los tres).
 - **Novena hora** (15-oct): Booz Allen ≤ 76,64 USD si el 23-oct el orgánico vuelve a positivo; Brady ≤ 84,41 USD tras el 17-nov (primer trimestre con PSS).

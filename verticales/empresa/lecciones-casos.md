@@ -57,6 +57,8 @@ No se lee entero: busca con `grep -n -i` la palabra del caso (arrendamiento, ant
 - **Plusvalías de valor razonable en gastos operativos** (Pro Medicus: 174,2 M, el 66 % del beneficio): `no_recurrentes_en_ebitda` y beneficio subyacente en el LTM; el BPA de MarketScreener las incluye.
 
 ## Sectores sueltos
+- Aerolíneas con NIIF 16 (Aeroméxico): el capex del DCF incluye las altas de aviones en arrendamiento (sin ellas el DCF salía casi el doble); el EV/EBITDA no es comparable con las de EE. UU. (US GAAP). Con patrimonio negativo tras un Chapter 11 el ROIC de Yahoo no sirve: capital invertido = patrimonio + deuda + arrendamientos − caja.
+- Salidas a bolsa de compras apalancadas (Medline): no son growth aunque tengan pocas cuentas públicas; con estructura «Up-C» las acciones diluidas incluyen la clase B. En salidas recientes, el fin del bloqueo con fecha es un hecho pendiente de la regla 13 (Fervo).
 - **Semiconductores**: SEMI da 403.
 
 ## Casos de la 6ª hora (14-oct-2026)
