@@ -488,15 +488,16 @@ async function seriesDesde(desde, hist, { total, valorCong, flujos, hoy }) {
 async function calcularAvisos(filas, cartera, hist, hoy) {
   const A = [];
   const noTocar = REGLAS.no_vender || {};
+  const hasta = Object.fromEntries(Object.entries(REGLAS.mantener_hasta || {}).filter(([k, v]) => k !== 'nota' && v >= new Date().toISOString().slice(0, 10)).map(([k, v]) => [k, `${+v.slice(8, 10)}-${['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'][+v.slice(5, 7) - 1]}-${v.slice(0, 4)}`]));
   const pend = leer(join(DATOS, 'escaner-cartera.json'), {})?.ordenes_pendientes || {};
   const vendiendo = new Set(pend.vender || []);
   for (const x of filas.filter((y) => y.titulos > 0)) {
-    if (x.peso_pct > REGLAS.tope_posicion_pct && !noTocar[x.clave]) A.push({ nivel: 'peso', clave: x.clave, texto: `${x.nombre} pesa un ${f(x.peso_pct)} % (tope ${REGLAS.tope_posicion_pct} %). Hay que recortar o no ampliar.` });
-    if (x.valor_eur < REGLAS.minimo_posicion_eur && !vendiendo.has(x.clave) && !noTocar[x.clave]) A.push({ nivel: 'peso', clave: x.clave, texto: `${x.nombre} vale ${fe(x.valor_eur)}, por debajo del mínimo de ${fe(REGLAS.minimo_posicion_eur)}: ampliar o vender.` });
+    if (x.peso_pct > REGLAS.tope_posicion_pct && !noTocar[x.clave]) A.push({ nivel: 'peso', clave: x.clave, texto: `${x.nombre} pesa un ${f(x.peso_pct)} % (tope ${REGLAS.tope_posicion_pct} %). ${hasta[x.clave] ? `No se amplía; no se recorta antes del ${hasta[x.clave]} (tres meses).` : 'Hay que recortar o no ampliar.'}` });
+    if (x.valor_eur < REGLAS.minimo_posicion_eur && !vendiendo.has(x.clave) && !noTocar[x.clave]) A.push({ nivel: 'peso', clave: x.clave, texto: `${x.nombre} vale ${fe(x.valor_eur)}, por debajo del mínimo de ${fe(REGLAS.minimo_posicion_eur)}: ${hasta[x.clave] ? `no se vende antes del ${hasta[x.clave]} (tres meses); solo cabe ampliar si vuelve a ser compra.` : 'ampliar o vender.'}` });
     const pv = x.previsto;
     if (pv && pv.dias >= 30 && pv.desvio_pts <= -15) A.push({ nivel: 'desvio', clave: x.clave, texto: `${x.nombre} va ${f(-pv.desvio_pts, 0)} puntos por debajo de lo previsto (${fp(pv.real_pct)} frente a ${fp(pv.esperado_hoy_pct)} en ${pv.dias} días). Revisar la tesis.` });
     if (pv && pv.real_pct <= -20) A.push({ nivel: 'desvio', clave: x.clave, texto: `${x.nombre} cae un ${f(-pv.real_pct, 0)} % desde la compra. Revisar la tesis y la señal de alarma del informe.` });
-    if (pv && x.precio >= pv.objetivo_hoy && !vendiendo.has(x.clave)) A.push({ nivel: 'objetivo', clave: x.clave, texto: `${x.nombre} ya está en su precio objetivo (${fPrecio(x.precio)} frente a ${fPrecio(pv.objetivo_hoy)} ${x.divisa}). Revisar si se vende.` });
+    if (pv && x.precio >= pv.objetivo_hoy && !vendiendo.has(x.clave)) A.push({ nivel: 'objetivo', clave: x.clave, texto: `${x.nombre} ya está en su precio objetivo (${fPrecio(x.precio)} frente a ${fPrecio(pv.objetivo_hoy)} ${x.divisa}). ${noTocar[x.clave] ? 'Se queda porque así lo decidiste.' : hasta[x.clave] ? `Se mantiene hasta el ${hasta[x.clave]} (tres meses desde la compra).` : 'Revisar si se vende.'}` });
     const ant = [...hist.fotos].reverse().find((h) => dias(h.fecha, hoy) >= 6 && h.posiciones?.[x.clave]);
     if (ant && ant.posiciones[x.clave].precio) { const ch = 100 * (x.precio / ant.posiciones[x.clave].precio - 1); if (Math.abs(ch) >= 10) A.push({ nivel: 'movimiento', clave: x.clave, texto: `${x.nombre} se ha movido un ${fp(ch)} en la última semana. Mirar si hay noticias.` }); }
   }
