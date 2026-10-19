@@ -19,6 +19,8 @@ Top 100 de las 542 que pasan el cribado value en 48 índices (lista, puntos y re
 
 Criterio de limpieza de Hotis (19-oct-2026), que vale para la cola y para la reserva: fuera los restaurantes; los servicios de poco margen (limpieza, seguridad, mantenimiento, personal y servicios para petróleo y gas); las constructoras; los minoristas y las marcas que venden sobre todo en tiendas propias; las pequeñas saudíes de servicios; y las aerolíneas de fuera de Europa. Se quedan las aerolíneas europeas (IAG), las petroleras productoras (Harbour Energy) y los servicios de salud (Ensign). El escáner value (escaner/perfiles*.json, base.excluir_industrias) ya quita Restaurants, Engineering & Construction, Oil & Gas Equipment & Services, Staffing & Employment Services y los minoristas por industria de Yahoo; el resto del criterio se aplica a mano. Con él salieron 25 de la reserva (quedan 417; lista en /mnt/project-files/cobertura/cola-100-2026-10-19.json, clave quitadas_criterio).
 
+PAUSA (Hotis, 19-oct 20:58): análisis parado. Al reanudar, la siguiente pareja es Hon. Precision (40) y Computacenter (41), desde cero y con datos frescos. APT Medical (32) espera a que Hotis decida si salen las chinas de ChiNext y STAR (32, 46, 62, 78 y 88).
+
 Recuento tras la limpieza (19-oct): 83 en la cola (contando las analizadas y las reposiciones 102-109); EE. UU. y Europa 43, resto 40 (Israel cuenta como resto).
 
 ## Vigilar (cifras v3 ×1,1 al cierre del 14-oct)
