@@ -117,7 +117,7 @@ async function escanear() {
 
   const pos = new Map(CARTERA.posiciones.map((p) => [p.clave, p]));
   const pend = CARTERA.ordenes_pendientes || {};
-  const enOrdenes = new Map([...(pend.comprar || []).map((o) => [o.clave, `orden de compra del 15-oct (límite ${fPrecio(o.limite)} ${o.divisa})`]),
+  const enOrdenes = new Map([...(pend.comprar || []).map((o) => [o.clave, `compra propuesta (límite ${fPrecio(o.limite)} ${o.divisa})`]),
     ...(pend.lista_espera || []).map((o) => [o.clave, `${o.hasta ? `lista de espera hasta el ${fechaCorta(o.hasta)}` : (o.condicion || 'lista de espera')} (límite ${fPrecio(o.limite)} ${o.divisa})`])]);
   const ventaPend = new Set(pend.vender || []);
 
@@ -294,6 +294,13 @@ async function escanear() {
     posibles.push({ vertical: 'growth', clave: g.ticker, nombre: g.empresa, precio: g.precio_hoy, divisa: g.divisa, limite: g.precio_max_compra,
       hora_precio: g.fecha_hoy === ahora.fecha ? ahora.hora : `cierre del ${fechaCorta(g.fecha_hoy)}`, rentabilidad_12m_pct: g.ponderada_hoy, estado: estadoPosible(g.ticker) });
   }
+  // Repaso de precio y noticias de la regla 13 (METODO-VIGENTE.md), apuntado a mano en <privada>/escaner/regla13.json:
+  // { "<clave>": { "fecha": "AAAA-MM-DD", "veredicto": "no cambia | retrasa | descarta", "nota": "…" } }. Vale 7 días.
+  const R13 = leer(`${P}regla13.json`, {});
+  for (const c of posibles) {
+    const q = R13[c.clave];
+    c.regla13 = q?.fecha && dias(q.fecha, ahora.fecha) <= 7 ? `${q.veredicto || 'hecho'} (${fechaCorta(q.fecha)})` : 'falta';
+  }
   posibles.sort((a, b) => b.rentabilidad_12m_pct - a.rentabilidad_12m_pct);
 
   // Calendario de resultados (regla 11 de METODO-VIGENTE.md, 15-oct: los resultados cercanos no aplazan ni parten la compra, solo se avisa; con resultados ya
@@ -407,9 +414,9 @@ function tablaPosibles(esc) {
   const t = esc.compras_posibles || [];
   if (!t.length) return 'Compras posibles ahora (todas las seguidas): ninguna está a precio de compra robusta.';
   return [`**Compras posibles ahora (todas las seguidas, ${t.length})**`, '',
-    '| Empresa | Tipo | Comprar a mercado si cotiza en | Precio ahora | Rentab. 12 m | Estado |', '|---|---|---|---|---|---|',
-    ...t.map((c) => `| ${c.nombre} | ${c.vertical} | ${fPrecio(c.limite)} ${c.divisa} o menos | ${fPrecio(c.precio)} ${c.divisa} (${c.hora_precio}) | ${fp(c.rentabilidad_12m_pct)} | ${c.estado} |`),
-    '', `Son posibles, no órdenes: cuáles se compran depende de la liquidez (libre ${f(esc.liquidez_libre_eur ?? 0, 0)} €) y de lo que haya que vender antes.${t.some((c) => c.vertical === 'growth') ? ` Las growth comparten un bolsillo con tope (hoy al ${f(esc.bolsillo_growth_pct ?? 0, 0)} %).` : ''}`].join('\n');
+    '| Empresa | Tipo | Comprar a mercado si cotiza en | Precio ahora | Rentab. 12 m | Repaso de precio y noticias | Estado |', '|---|---|---|---|---|---|---|',
+    ...t.map((c) => `| ${c.nombre} | ${c.vertical} | ${fPrecio(c.limite)} ${c.divisa} o menos | ${fPrecio(c.precio)} ${c.divisa} (${c.hora_precio}) | ${fp(c.rentabilidad_12m_pct)} | ${c.regla13 || 'falta'} | ${c.estado} |`),
+    '', `Son posibles, no órdenes: cuáles se compran depende de la liquidez (libre ${f(esc.liquidez_libre_eur ?? 0, 0)} €) y de lo que haya que vender antes; las que tienen «falta» en el repaso de precio y noticias lo necesitan antes de una orden.${t.some((c) => c.vertical === 'growth') ? ` Las growth comparten un bolsillo con tope (hoy al ${f(esc.bolsillo_growth_pct ?? 0, 0)} %).` : ''}`].join('\n');
 }
 function mensaje(esc, nuevas, reg, avisos = []) {
   return `${mensajeBase(esc, nuevas, reg, avisos)}\n\n${tablaPosibles(esc)}`;
