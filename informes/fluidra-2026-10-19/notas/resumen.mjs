@@ -1,0 +1,55 @@
+// Resumen ejecutivo de Fluidra (corte 2026-10-19). Se escribe el último; cifras de calc tal cual.
+export const resumen = {
+  recomendacion: 'Comprar',
+  conviccion: 'Media',
+  justificacion_recomendacion: null,
+  horizonte: '12 meses',
+  sintesis: [
+    '**La recomendación y por qué.** Comprar según la regla a 12 meses, con convicción media. El objetivo a 12 meses es de 21,32 EUR ponderado y 22,01 EUR en el base, frente a 17,61 EUR (cierre del 19 de octubre): un 24,7 % y un 28,7 % con el dividendo. El valor intrínseco es de 22,48 EUR (+27,7 %) y el objetivo medio de los analistas, de 25,93 EUR. Asimetría de 3,47 veces (alcista +63,1 %, bajista −18,2 %). El precio descuenta un valle permanente del ciclo con unas cifras iguales a las del consenso. El motor sugiere convicción alta; la dejamos en media porque la compra no es robusta: con la regla v2 de control la rentabilidad es del 13,7 % y con un BPA un 10 % peor, del 12,6 %. La subiría un volumen positivo en Norteamérica el 29 de octubre.',
+    '**El negocio.** Primer fabricante mundial de equipos de piscina, con el 13 % de un mercado de 17.400 M EUR [B1]; el 65 % de las ventas es reposición de una base instalada que crece [A1] y un distribuidor de EE. UU. compra el 21 % [B1]. El ROIC del 8,3 % apenas iguala el WACC del 8,16 %, lastrado por el fondo de comercio de Zodiac (47 % del capital invertido): crecer añade poco valor. La calidad sí sostiene el crecimiento proyectado (veredicto Sí): un 4,1 % anual, por debajo del mercado (4-6 %), con la cuota bajando al 11,7 % en 2033e.',
+    '**Sector y finanzas.** La obra nueva está un 21 % por debajo de su media [B2] y el canal de EE. UU. sigue frágil: Pentair recortó previsiones en julio [P5] y Leslie\'s prepara un concurso de acreedores [E9]. El margen reportado de 2025 (21,6 %) es el mejor desde 2021, el flujo libre rinde un 8,0 % y la deuda neta ajustada es de 2,6 veces el EBITDA, sin vencimientos hasta enero de 2029 [A7]. La reestructuración se repite cada año (50-55 M en 2026 [A7]): el DCF proyecta el EBITDA reportado.',
+    '**Equipo y gobierno.** Familias fundadoras y Rhône controlan de hecho la junta (40 % [C1]) con un presidente ejecutivo de una de ellas; la política de remuneración de 2025 tuvo solo un 73 % a favor [C2]. Cambió el director financiero (Juan Graham desde agosto [C10]) y un consejero compró unos 14 M en marzo [C12].',
+    '**Valoración.** DCF de 23,85 EUR y comparables de 20,24 EUR: cotiza a 8,6 veces el EBITDA de los próximos 12 meses (mediana de los comparables, 10,1) y un 20 % por debajo de su media histórica. El DCF inverso supone ventas que caen un 1,4 % al año hasta 2033 o un margen del 19,9 %, el del desestocaje; con nuestras cifras rinde un 9,7 % anual frente al 8,2 % del WACC y al 7,1 % del mercado. Quedamos un 15,1 % por debajo de los analistas por el margen reportado y el tope del PER base (16,8 veces).',
+    '**Riesgos y catalizadores.** Un nuevo desestocaje en EE. UU. (bajista de 14,40 EUR), los robots chinos (cada punto de margen vale un 7 % del valor) y los aranceles. Catalizadores: Pentair y Pool (21-23 de octubre), los nueve meses (29 de octubre [P1]) y la guía de 2027 en febrero.',
+    '**Qué cambiaría la decisión.** La regla da Comprar por debajo de 19,10 EUR y Vender por encima de 24,41. La compra robusta del método (v3 y v2 con un BPA un 10 % peor) pide menos de 17,25 EUR y, además, falla la calidad (ROIC − WACC de 0,1 puntos frente a 5): no entra en cartera. Pasaríamos a Mantener si el volumen de Norteamérica cae dos trimestres seguidos o si se recorta la guía de margen de 2026.',
+  ].join('\n\n'),
+  tesis: [
+    'Fluidra es el líder mundial en equipos de piscina, con el 13 % de un mercado de 17.400 M EUR y marcas como Zodiac, Jandy, Polaris y AstralPool [B1]. Dos tercios de sus ventas son reposición de equipos en una base instalada de unos 20 millones de piscinas enterradas residenciales, un suelo de demanda que no tenía en 2021 [A1, B1]. Genera caja con regularidad: el flujo libre acumulado de 2021-2025 fue de 997 M, el 119 % del beneficio, y hoy rinde un 8,0 % sobre la capitalización.',
+    'El precio de 17,61 EUR está un 3,6 % sobre el mínimo de 52 semanas y un 25 % por debajo de hace un año [D1]. A 8,6 veces el EBITDA de los próximos 12 meses y 14,6 veces el beneficio, el mercado descuenta que las ventas caigan un 1,4 % al año hasta 2033 o que el margen se quede en el 19,9 %. El consenso de 15 analistas, con 12 recomendaciones de compra, espera un EBITDA ajustado de 530 M en 2026 y de 622 M en 2028 [D7, D8].',
+    'Creemos que el mercado extrapola el valle. La obra nueva está un 21 % por debajo de su media [B2], el plan de eficiencia avanza y la guía de 2026 se ha mantenido. Para invertir hay que creer tres cosas: que el canal no vuelva a desestocar, que los robots chinos no se coman más de un punto de margen y que la reestructuración deje de repetirse a partir de 2027. Lo que no cambia es la calidad: con un ROIC del 8,3 % frente a un WACC del 8,16 %, es una apuesta de ciclo, no un compuesto.',
+  ].join('\n\n'),
+  vision_diferencial: {
+    mercado_descuenta: 'Un valle permanente: ventas a la baja (−1,4 % al año) o un margen EBITDA del 19,9 % para siempre, es decir, que la obra nueva en EE. UU. no vuelve, que los robots chinos y los aranceles erosionan los márgenes y que la reestructuración es un coste fijo más. La acción cotiza 9,7 veces el EBITDA de los últimos 12 meses, frente a una media de 12,2 en los cinco últimos cierres.',
+    nuestra_vision: 'Un ciclo que deja de empeorar. Las ventas crecen un 4,5-5 % al año desde 2027, por debajo del objetivo de la empresa (+6-8 %), y el margen reportado sube al 23,5 % en 2030, por debajo del objetivo ajustado de más del 25 %. Nuestra previsión coincide con el consenso en ventas y EBITDA: no pedimos un auge como el de 2021.',
+    por_que: 'El 65 % de las ventas es reposición, que creció incluso en 2025 con la obra nueva en mínimos [A1]. El segundo trimestre de 2026 creció un 4,7 % con un margen ajustado del 28,4 % [A3]. Y el desestocaje de 2023 ya se ha hecho: las existencias de Fluidra bajaron de 599 M en 2022 a 437 M en 2025 [A1].',
+  },
+  a_favor: [
+    '**Precio de valle**: el DCF inverso exige ventas a la baja (−1,4 % al año) o un margen del 19,9 %, el de 2022-2024.',
+    '**Reposición recurrente**: el 65 % de las ventas no depende de la obra nueva [A1].',
+    '**Caja abundante**: rendimiento del flujo libre del 8,0 % y dividendo del 3,7 %; recompra de 2,07 M de acciones terminada en septiembre [D41].',
+    '**Barata frente a su historia y sus rivales**: 8,6 veces el EBITDA de los próximos 12 meses, frente a una mediana de 10,1 de los comparables.',
+    '**Compras de quien conoce la empresa**: un consejero (Manuel Puig) invirtió unos 14 M en marzo y Magallanes entra en octubre [C12, E8].',
+  ],
+  en_contra: [
+    '**ROIC del 8,3 %**, casi igual al WACC del 8,16 %: no pasa el filtro de calidad del método (ROIC − WACC ≥ 5 puntos).',
+    '**Compra frágil**: con la regla v2 de control la rentabilidad ponderada es del 13,7 % y con un BPA un 10 % peor, del 12,6 %.',
+    '**Reestructuración recurrente**: 56 M en 2024, 29 M en 2025 y 50-55 M previstos en 2026 [A1, A7].',
+    '**Canal de EE. UU. frágil**: un distribuidor compra el 21 % de las ventas [B1] y Leslie\'s prepara un concurso de acreedores [E9].',
+    '**Robots chinos**: presión en precio en un 6 % de las ventas [A6].',
+  ],
+  que_vigilar: 'La tesis depende de que el volumen de Norteamérica siga creciendo (+1 % en el primer semestre de 2026 [A7]) mientras la obra nueva toca fondo. Si el canal de EE. UU. vuelve a reducir existencias, como en 2022-2023, el valor cae hacia el bajista (14,40 EUR). Las señales: un volumen negativo en Norteamérica en los resultados del 29 de octubre o del cuarto trimestre, provisiones por Leslie\'s y un margen bruto por debajo del 55 %.',
+  cambiaria_recomendacion: [
+    'Si el volumen de Norteamérica cae dos trimestres seguidos, pasaríamos a Mantener.',
+    'Si la empresa recorta la guía de margen ajustado de 2026 por debajo del 23,3 % el 29 de octubre, pasaríamos a Mantener.',
+    'Si los costes de reestructuración de 2027 superan los 40 M, rebajaríamos el margen del DCF un punto (−7 % de valor).',
+    'Si el precio supera los 19,10 EUR sin cambios en las cifras, pasaríamos a Mantener; por encima de 24,41 EUR, a Vender. Para la cartera, solo por debajo de 17,25 EUR y con el ROIC mejorando.',
+  ],
+  kpis_seguimiento: [
+    { kpi: 'Crecimiento de las ventas a tipo constante', nivel_actual: '+4,9 % (1S26)', umbral_alerta: 'Por debajo del +2 %', por_que: 'La guía de 2026 es del +3 % al +7 %; por debajo del 2 %, el escenario bajista gana peso.' },
+    { kpi: 'Margen EBITDA ajustado', nivel_actual: '25,5 % (1S26); 22,9 % en 2025', umbral_alerta: 'Por debajo del 23,3 % en 2026', por_que: 'Es el suelo de la guía; cada punto de margen vale un 7 % del valor.' },
+    { kpi: 'Volumen en Norteamérica', nivel_actual: '+1 % (1S26)', umbral_alerta: 'Negativo dos trimestres seguidos', por_que: 'Anticipa un nuevo desestocaje del canal, como en 2022-2023.' },
+    { kpi: 'ROIC', nivel_actual: '8,3 % (2025)', umbral_alerta: 'Por debajo del 8 % o sin subir hacia el 10 % en 2027', por_que: 'Sin un ROIC claramente por encima del WACC la empresa no pasa el filtro de calidad.' },
+    { kpi: 'Deuda neta / EBITDA ajustado', nivel_actual: '2,2 veces (junio de 2026)', umbral_alerta: 'Por encima de 2,8 veces', por_que: 'Limita las recompras y aumenta el riesgo en un bajista.' },
+  ],
+  confianza: 'Media',
+};

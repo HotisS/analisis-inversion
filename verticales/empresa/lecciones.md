@@ -77,6 +77,8 @@ Las lecciones nuevas van al archivo que toque, en una o dos líneas, y solo si n
 
 - **Los múltiplos los pone el motor con la regla común** (14-oct; regla v3 desde la tarde del 14-oct): tú das el BPA de los tres casos, la historia del PER limpia **adelantada** (precio de cierre de cada año ÷ BPA real del año siguiente, con `per_historico.base: "adelantado"`; sin ese campo el motor aplica la v2 antigua y avisa) y los comparables. Elegidos a mano salían sesgados al alza. Cuida que historia y comparables estén en la **misma base de BPA** que los casos y que el «mínimo de 5 años» sea el de la serie limpia.
 - **Cuadra el BPA con el publicado** (participadas, minoritarios, plusvalías, intangibles comprados, GBp, ADS, acciones A/B) y quita de la historia los años de pérdidas, burbuja o BPA atípico, diciendo cuáles. `herramientas/objetivo12m.mjs` es solo una calculadora de apoyo (toma el nombre de la carpeta sin `informes/` y no aplica el perfil anual de los escenarios).
+- **Un año «de auge» no es atípico** si no cumple una regla de exclusión: quitarlo deja la historia corta y el selector fuerza la v2 (Pernod 19-oct: 9,3 % → 22,1 %). En compradores en serie sí se quitan los años cuyo BPA siguiente está hundido por costes de integración (DSV 2019, 2024, 2025).
+- **`robustez.mjs --actual` lee `en_curso` de `precios.json`**, que puede ser una toma intradía vieja: tras el cierre, `node herramientas/precios.mjs` antes de la robustez (19-oct: EL, FDR y DSV salían con otro precio).
 - **Valor intrínseco ≠ precio a 12 meses**, y **el consenso no es un input** (corrección del usuario): se muestra al lado; si tu base queda lejos, revisa tus supuestos, pero no acerques la cifra solo porque esté lejos.
 
 ## Redacción e integración
