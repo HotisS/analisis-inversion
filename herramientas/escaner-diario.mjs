@@ -269,6 +269,33 @@ async function escanear() {
     candidatas.push(fila);
   }
 
+  // Regla del usuario (19-oct): en cada pasada, TODAS las compras posibles a precio de ahora, aunque ya estén propuestas,
+  // en cartera (ampliar), en lista de espera o sin liquidez. Value: acción robusta «Comprar», calidad y precio ≤ límite
+  // robusto (v3 y v2 con BPA −10 %). Growth: la misma prueba que arriba. Las excluidas por el usuario no salen.
+  const posibles = [];
+  const estadoPosible = (clave) => {
+    if (pos.has(clave)) {
+      const peso = total ? (100 * (valorPos[clave] || 0)) / total : 0;
+      return peso >= REGLAS.tope_posicion_pct - 0.05 ? `en cartera, ya en el tope del ${REGLAS.tope_posicion_pct} % (${f(peso, 1)} %): no se amplía`
+        : `en cartera (${f(peso, 1)} %): ampliar${enOrdenes.has(clave) ? `; ya propuesta: ${enOrdenes.get(clave)}` : ''}`;
+    }
+    return enOrdenes.has(clave) ? `ya propuesta: ${enOrdenes.get(clave)}` : 'nueva';
+  };
+  for (const x of rob) {
+    if (REGLAS.exclusiones[x.clave] || !x.precio_cot || x.accion_robusta !== 'Comprar') continue;
+    const lim = x.limite_robusto_cot ?? Math.min(x.limite_comprar_cot ?? Infinity, x.limite_comprar_control_cot ?? Infinity);
+    if (!Number.isFinite(lim) || x.precio_cot > lim || calidad(x.carpeta, x.clave).pasa === false) continue;
+    posibles.push({ vertical: 'value', clave: x.clave, nombre: x.nombre, precio: x.precio_cot, divisa: x.divisa_cotizacion, limite: r(lim, 2),
+      hora_precio: x.fecha_precio === ahora.fecha ? horaPrecio : `cierre del ${fechaCorta(x.fecha_precio)}`, rentabilidad_12m_pct: x.ponderada, estado: estadoPosible(x.clave) });
+  }
+  for (const g of gro) {
+    if (!g.precio_hoy || REGLAS.exclusiones[g.ticker]) continue;
+    if (!(g.precio_hoy <= g.precio_max_compra && /^Comprar/.test(g.senal_robusta || '') && g.ponderada_hoy >= g.listones.ponderada && g.base_hoy >= g.listones.base)) continue;
+    posibles.push({ vertical: 'growth', clave: g.ticker, nombre: g.empresa, precio: g.precio_hoy, divisa: g.divisa, limite: g.precio_max_compra,
+      hora_precio: g.fecha_hoy === ahora.fecha ? ahora.hora : `cierre del ${fechaCorta(g.fecha_hoy)}`, rentabilidad_12m_pct: g.ponderada_hoy, estado: estadoPosible(g.ticker) });
+  }
+  posibles.sort((a, b) => b.rentabilidad_12m_pct - a.rentabilidad_12m_pct);
+
   // Calendario de resultados (regla 11 de METODO-VIGENTE.md, 15-oct: los resultados cercanos no aplazan ni parten la compra, solo se avisa; con resultados ya
   // publicados después del informe, revisión obligatoria en el Vup antes de dar la señal).
   for (const c of [...candidatas, ...observaciones, ...activas]) {
@@ -279,7 +306,7 @@ async function escanear() {
     if (dd < 0 && c.fecha_corte && pr > c.fecha_corte) c.vup_obligatorio = `${c.vup_obligatorio ? `${c.vup_obligatorio} ` : ''}Publicó resultados el ${fechaCorta(pr)}, después del informe (corte ${fechaCorta(c.fecha_corte)}): revisarlos antes de dar la señal.`;
   }
   const esc = { fecha: ahora.fecha, hora: ahora.hora, precios_actualizados: PRECIOS.actualizado, valor_cartera_eur: r(total, 0), liquidez_libre_eur: CARTERA.liquidez_libre_eur,
-    bolsillo_growth_pct: r(bolsilloPct), revisadas: { value: rob.length, growth: gro.length }, candidatas, observaciones, activas, descartes_calidad: descartesCalidad, descartadas_hace_poco: recientes };
+    bolsillo_growth_pct: r(bolsilloPct), revisadas: { value: rob.length, growth: gro.length }, candidatas, observaciones, activas, descartes_calidad: descartesCalidad, descartadas_hace_poco: recientes, compras_posibles: posibles };
   guardar(RUTA_ESC, esc);
   console.log(`Escáner ${fechaCorta(ahora.fecha)} ${ahora.hora} (Madrid): ${rob.length} value y ${gro.length} growth revisadas; cartera ${f(total, 0)} EUR, liquidez libre ${f(CARTERA.liquidez_libre_eur, 0)} EUR, bolsillo growth ${f(bolsilloPct, 0)} %.`);
   console.log(`\nCANDIDATAS (necesitan Vup antes de ser señal): ${candidatas.length}`);
@@ -297,6 +324,7 @@ async function escanear() {
   for (const o of observaciones) console.log(`· ${o.tipo} ${o.nombre}: ${o.estado} (${o.nota}); precio ${fPrecio(o.precio)} ${o.divisa}, límite ${fPrecio(o.limite)}, ${fp(o.rentabilidad_12m_pct)}`);
   if (activas.length) console.log(`\nACTIVAS: ${activas.map((a) => `${a.tipo} ${a.nombre} (desde ${fechaCorta(a.desde)})`).join('; ')}`);
   if (recientes.length) console.log(`\nDescartadas en un Vup de los últimos 7 días (no se repiten): ${recientes.join(', ')}`);
+  console.log(`\n${tablaPosibles(esc)}`);
   if (descartesCalidad.length) console.log(`\nTocan banda pero no pasan calidad: ${descartesCalidad.join('; ')}`);
   console.log(`\nSiguiente paso: Vup de cada candidata (escaner/README.md) → ${P}decisiones.json → --registrar.`);
 }
@@ -374,7 +402,19 @@ ${[...reg.senales].reverse().map(fila).join('\n')}
 `;
   writeFileSync(`${P}SENALES.md`, md);
 }
+// Tabla de todas las compras posibles (regla del usuario del 19-oct): va al final de cada mensaje, también del de una línea.
+function tablaPosibles(esc) {
+  const t = esc.compras_posibles || [];
+  if (!t.length) return 'Compras posibles ahora (todas las seguidas): ninguna está a precio de compra robusta.';
+  return [`**Compras posibles ahora (todas las seguidas, ${t.length})**`, '',
+    '| Empresa | Tipo | Comprar a mercado si cotiza en | Precio ahora | Rentab. 12 m | Estado |', '|---|---|---|---|---|---|',
+    ...t.map((c) => `| ${c.nombre} | ${c.vertical} | ${fPrecio(c.limite)} ${c.divisa} o menos | ${fPrecio(c.precio)} ${c.divisa} (${c.hora_precio}) | ${fp(c.rentabilidad_12m_pct)} | ${c.estado} |`),
+    '', `Son posibles, no órdenes: cuáles se compran depende de la liquidez (libre ${f(esc.liquidez_libre_eur ?? 0, 0)} €) y de lo que haya que vender antes.${t.some((c) => c.vertical === 'growth') ? ` Las growth comparten un bolsillo con tope (hoy al ${f(esc.bolsillo_growth_pct ?? 0, 0)} %).` : ''}`].join('\n');
+}
 function mensaje(esc, nuevas, reg, avisos = []) {
+  return `${mensajeBase(esc, nuevas, reg, avisos)}\n\n${tablaPosibles(esc)}`;
+}
+function mensajeBase(esc, nuevas, reg, avisos = []) {
   const emit = nuevas.filter((s) => s.estado === 'emitida');
   const desc0 = nuevas.filter((s) => s.estado === 'descartada tras Vup');
   // Sin nada nuevo (ni señales, ni descartes, ni avisos de resultados o de riesgo): una sola línea (regla del usuario).
