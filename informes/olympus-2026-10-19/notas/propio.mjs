@@ -1,0 +1,68 @@
+// Parte del analista (Olympus, corte 2026-10-19). Citas con prefijo: [A3] = fuente 3 de A.json; [P1] = propia.
+import { anios, wacc, terminal, casos, pesos, bpa } from './supuestos.mjs';
+import { textos as T } from './textos.mjs';
+
+export default {
+  meta: {
+    fecha_corte: '2026-10-19', divisa: 'JPY', divisa_cotizacion: 'JPY', tipo_cambio: 1, unidades: 'millones',
+    cierre_ejercicio_mes: 3, etiqueta_ejercicio: 'fin',
+    normas_contables: 'NIIF (IFRS del IASB, adoptadas voluntariamente en Japón)',
+    formato_cuenta: 'funcion',
+    limitaciones: T.limitaciones,
+    controles_explicados: T.controles_explicados,
+  },
+  identificacion: { indice_referencia: 'TOPIX (Nikkei 225 como contraste)', pais: 'Japón', pais_iso: 'JP', sector: 'Salud', industria: 'Equipos y suministros médicos', sede: 'Hachioji y Shinjuku-ku, Tokio', proximos_resultados: '2026-11-10' },
+  resumen: T.resumen,
+  rentabilidad: T.rentabilidad,
+  bolsa: { comentario: T.bolsa_comentario, contexto: T.contexto },
+  dcf: {
+    anios, wacc, terminal,
+    etapa2: { usar: false, anios: 10, margen_final_pct: null, justificacion: T.etapa2 },
+    mitad_de_anio: true,
+    justificacion: T.dcf_justificacion,
+    sostenibilidad: T.sostenibilidad,
+    lectura: T.dcf_lectura,
+    confianza: 'Media',
+  },
+  escenarios: { casos: casos.map((c) => ({ ...c, narrativa: T.narrativas?.[c.escenario] ?? null })), comentario: T.escenarios_comentario, confianza: 'Media' },
+  suma_partes: { aplica: false, descuento_holding_pct: 0, partes: [], comentario: T.suma_partes, confianza: 'Media' },
+  valoracion: {
+    rab: null,
+    referencia_mercado: { mercado: 'S&P 500, prima implícita de Damodaran (T12m con payout sostenible), válida para mercados desarrollados', prima_implicita_pct: 4.2, fecha: '2026-10', fuente: 'Damodaran, ERPbymonth.xlsx, fila de octubre de 2026, columna «ERP (T12m with sustainable payout)» [P1].' },
+    pesos,
+    comentario: T.valoracion_comentario,
+    objetivo_12m: {
+      ejercicio: 'FY2029e',
+      casos: [
+        { escenario: 'Bajista', metrica: 'PER FY2029e', beneficio_por_accion: bpa.Bajista, multiplo: null, precio: null, justificacion: T.j12.Bajista },
+        { escenario: 'Base', metrica: 'PER FY2029e', beneficio_por_accion: bpa.Base, multiplo: null, precio: null, justificacion: T.j12.Base },
+        { escenario: 'Alcista', metrica: 'PER FY2029e', beneficio_por_accion: bpa.Alcista, multiplo: null, precio: null, justificacion: T.j12.Alcista },
+      ],
+      per_historico: {
+        base: 'adelantado', actual: 15.9, mediana_5a: 20.7, minimo_5a: 15.8, media_larga: 20.9,
+        excluidos: T.per_excluidos,
+        v2: { actual: 15.9, mediana_5a: 20.5, minimo_5a: 18.9, media_larga: 21.8, base: 'cierre' },
+      },
+      comparables_per: { mediana: 19.3 },
+      consenso: { bpa_ano1: 113.9, bpa_ano2: 124.8, objetivo_medio: 2123.08, objetivo_min: 1800, objetivo_max: 3300, analistas: 14, tendencia_3m: 'recortes', fuente: 'MarketScreener e Investing.com, 19-oct-2026 [D6, D7, D8, D34]' },
+      diferencia_consenso: T.diferencia_consenso,
+      media: null,
+      comentario: T.objetivo_comentario,
+    },
+    confianza: 'Media',
+  },
+  catalizadores: T.catalizadores,
+  riesgos: T.riesgos,
+  preguntas: T.preguntas,
+  ...(T.extra || {}),
+  _parches: T.parches || [],
+  huecos_resueltos: T.huecos_resueltos || [],
+  fuentes: [
+    { id: 1, titulo: 'Implied ERP by month (ERPbymonth.xlsx), fila de octubre de 2026', editor: 'Aswath Damodaran, NYU Stern', tipo: 'Datos de mercado', fecha: '2026-10-01', url: 'https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx' },
+    { id: 2, titulo: 'Country Default Spreads and Risk Premiums (ctryprem.xlsx), enero de 2026', editor: 'Aswath Damodaran, NYU Stern', tipo: 'Datos de mercado', fecha: '2026-01-01', url: 'https://pages.stern.nyu.edu/~adamodar/pc/datasets/ctryprem.xlsx' },
+    { id: 3, titulo: 'Betas by Sector: Japan y Global (betaJapan.xls, betaGlobal.xls), enero de 2026', editor: 'Aswath Damodaran, NYU Stern', tipo: 'Datos de mercado', fecha: '2026-01-07', url: 'https://pages.stern.nyu.edu/~adamodar/pc/datasets/betaJapan.xls' },
+    { id: 4, titulo: 'Históricos diarios de 7733.T frente a 1305.T (TOPIX), ^N225, IHI e IXJ (betas de cinco años), hasta el 9-oct-2026', editor: 'Yahoo Finance', tipo: 'Datos de mercado', fecha: '2026-10-09', url: 'https://finance.yahoo.com/quote/7733.T/history' },
+    { id: 5, titulo: 'movimiento.mjs sobre 7733.T: variación a 1, 3, 6 y 12 meses, máximos y mínimos, media de 200 sesiones (datos hasta el 16-oct-2026)', editor: 'Yahoo Finance, históricos diarios', tipo: 'Datos de mercado', fecha: '2026-10-19', url: 'https://finance.yahoo.com/quote/7733.T/history' },
+  ],
+  huecos: T.huecos || [],
+};
