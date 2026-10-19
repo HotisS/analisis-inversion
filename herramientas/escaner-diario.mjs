@@ -273,13 +273,14 @@ async function escanear() {
   // en cartera (ampliar), en lista de espera o sin liquidez. Value: acción robusta «Comprar», calidad y precio ≤ límite
   // robusto (v3 y v2 con BPA −10 %). Growth: la misma prueba que arriba. Las excluidas por el usuario no salen.
   const posibles = [];
+  const propuesta = (clave) => `ya propuesta${enOrdenes.get(clave).replace(/^compra propuesta /, ' ').replace(/^(?! \()/, ': ')}`;
   const estadoPosible = (clave) => {
     if (pos.has(clave)) {
       const peso = total ? (100 * (valorPos[clave] || 0)) / total : 0;
       return peso >= REGLAS.tope_posicion_pct - 0.05 ? `en cartera, ya en el tope del ${REGLAS.tope_posicion_pct} % (${f(peso, 1)} %): no se amplía`
-        : `en cartera (${f(peso, 1)} %): ampliar${enOrdenes.has(clave) ? `; ya propuesta: ${enOrdenes.get(clave)}` : ''}`;
+        : `en cartera (${f(peso, 1)} %): ampliar${enOrdenes.has(clave) ? `; ${propuesta(clave)}` : ''}`;
     }
-    return enOrdenes.has(clave) ? `ya propuesta: ${enOrdenes.get(clave)}` : 'nueva';
+    return enOrdenes.has(clave) ? propuesta(clave) : 'nueva';
   };
   for (const x of rob) {
     if (REGLAS.exclusiones[x.clave] || !x.precio_cot || x.accion_robusta !== 'Comprar') continue;
