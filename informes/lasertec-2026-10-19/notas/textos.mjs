@@ -1,0 +1,142 @@
+// Textos del analista para Lasertec (corte 2026-10-19). Cifras del motor tal cual (calc), hechos con cita de la nota.
+export default {
+  limitaciones: 'Una sola línea: Bolsa de Tokio (Prime), código 6920; el ADR no patrocinado (LSRCY) no se usa. Japón no tiene XBRL público en el repo: las cuentas salen de los tanshin anuales J-GAAP FY2021-FY2026, del tanshin del 3T FY2026, de la hoja Financial Highlights y del yuho FY2026 (traducción parcial al inglés; el original japonés no tiene texto extraíble, así que la remuneración individual del consejero delegado y los años del auditor quedan como huecos). Ejercicio de julio a junio con la etiqueta del cierre: «FY2026» es julio de 2025-junio de 2026. El balance del puente es el de 30-jun-2026; el 1T FY2027 se publica el 30-oct-2026, once días después del corte.',
+  controles_explicados: [
+    { control: 'Proyección propia frente a consenso (FY2029e)', explicacion: 'Diferencia deliberada: suponemos pedidos de FY2027 en el punto medio de la guía (350.000 M frente a 300.000-400.000 M) [A1] y una corrección cíclica en FY2030e como la de FY2025-FY2026, cuando los pedidos bajaron a 105.226 M con los de ACTIS en negativo y las ventas de FY2026 cayeron un 8,3 % [A1, A3]; el consenso proyecta tres años seguidos de crecimiento de doble dígito (299.177, 388.100 y 461.943 M) [D2]. Nuestro EBITDA de FY2029e queda un 18,1 % por debajo; FY2027e solo un 9,6 %, cerca de la guía de la empresa.' },
+    { control: 'Transacciones', explicacion: 'Sin operaciones comparables con múltiplo publicado verificable en inspección de máscaras; peso 0 en la síntesis.' },
+  ],
+  huecos: [],
+  secciones: {
+    rentabilidad: {
+      comentario: 'Lasertec crea valor con un margen excepcional: el ROIC del motor fue del 54,2 % en FY2026 frente a un WACC del 11,48 %, y no ha bajado del 54 % en los siete años de la serie (máximo del 91,0 % en FY2021) [A1, A2]. El ROIC incremental histórico es del 51,8 %: cada yen invertido en circulante (casi todo el capital, porque el inmovilizado apenas pesa) rinde lo mismo que el capital antiguo. El ROE del 33,9 % es menor que el ROIC por la caja (91.503 M) y el patrimonio acumulado. El punto débil es el circulante: las existencias de 167.791 M (72,8 % de las ventas) y la caída de los anticipos de clientes de 95.155 M en FY2023 a 44.284 M en FY2026 llevaron el capital de explotación del 40 % al 59,8 % de las ventas, y por eso la conversión de beneficio en caja fue solo del 57 % de FY2020 a FY2026 [A1]. El ROIC alto es de foso (monopolio actínico), no de ciclo: incluso en FY2020, con 42.572 M de ventas, fue del 74,6 %.',
+      confianza: 'Alta',
+    },
+    capital: {
+      comentario: 'Asignación prudente y poco ambiciosa. De FY2020 a FY2026 generó 184.795 M de flujo libre y devolvió 111.223 M (99.220 M en dividendos y 12.003 M en su primera recompra relevante, la de agosto-diciembre de 2025, 560.600 acciones a unos 21.400 JPY, por debajo de la mitad del precio de hoy) [A1, A16, A17]. Sin compras ni deuda (la de 10.000 M de FY2022 ya se devolvió). La política es un pago del 35 % del beneficio; FY2026 pagó 329 JPY (38,1 %) y FY2027 prevé 351 JPY [A1]. El capital se lo come el circulante: las existencias se multiplicaron por cinco desde FY2020 porque cada ACTIS tarda más de un año en fabricarse y se reconoce cuando el cliente lo acepta. Con 91.503 M de caja y un capex de 1.791 M, el margen para más recompras existe, pero la dirección prefiere colchón para el ciclo.',
+      confianza: 'Media',
+    },
+    multiplos_historicos: {
+      comentario: 'Al cierre de cada ejercicio el PER de los últimos 12 meses ha ido de 20,7 a 84,7 veces (media 56,4) y hoy es de 45,9 veces, en el percentil 33 de su historia; el EV/EBITDA, 31,6 veces frente a una media de 38,6. Con el beneficio adelantado, que es lo que usa la regla (precio de cierre de junio ÷ BPA real del ejercicio siguiente), la historia es más baja: mediana de 32,96 veces en FY2020-FY2025 sin FY2021, mínimo de 22,51 (FY2025) y hoy 38,95 veces sobre nuestro BPA de FY2027e. La acción no está cara frente a su pasado; lo está frente a lo que vale el flujo de caja [A2, D1, D19].',
+      confianza: 'Media',
+    },
+    comparables: {
+      comentario: 'Lasertec cotiza a un PER de los próximos 12 meses de 32,0 veces, algo por encima de la mediana de sus ocho pares (28,2 veces), con el mayor ROIC del grupo junto a KLA y Lam (54,2 %) y el mayor margen EBITDA salvo Disco. Por PER de los comparables saldría un valor de 34.886 JPY por acción (rango 32.443-38.226) y por EV/EBITDA de los últimos 12 meses, 40.379 JPY. Frente al sector el precio es razonable; lo que está caro es el sector entero, que cotiza a 25-33 veces beneficios en máximos de ciclo [D8, D9, D10].',
+    },
+    catalizadores: {
+      items: [
+        { fecha: '30-oct-2026', evento: 'Resultados del 1T FY2027 y pedidos del trimestre', efecto: 'Pedidos por encima de 90.000 M confirmarían la parte alta de la guía (300.000-400.000 M); por debajo de 60.000 M, la parte baja', probabilidad: 'Alta', sentido: '+/−' },
+        { fecha: 'Ene-feb 2027', evento: 'Resultados del 2T y posible revisión de la guía', efecto: 'En los dos últimos ejercicios la guía se subió en enero', probabilidad: 'Alta', sentido: '+' },
+        { fecha: '2027', evento: 'Pedidos de ACTIS para EUV de alta apertura (High-NA) y para el nodo de 2 nm de Intel y Samsung', efecto: 'Decide si FY2028 crece o vuelve a caer', probabilidad: 'Media', sentido: '+/−' },
+        { fecha: '2026-2027', evento: 'Controles de exportación a China', efecto: 'China pesó en los pedidos de MATRICS (DUV); un veto recortaría pedidos', probabilidad: 'Media', sentido: '−' },
+        { fecha: 'Trimestral', evento: 'Inversión de las fundiciones en capacidad de IA (TSMC, Intel, Samsung)', efecto: 'Más capacidad EUV = más inspección de máscaras', probabilidad: 'Alta', sentido: '+' },
+      ],
+      confianza: 'Media',
+    },
+    riesgos: {
+      items: [
+        { riesgo: 'Ciclo de pedidos: cancelaciones o aplazamientos de ACTIS', tipo: 'Cíclico', probabilidad: 'Alta', impacto: 'Alto', efecto_valor: '−46 % (escenario bajista frente al base del DCF)', mitigante: 'Cartera de 322.964 M (1,4 años de ventas) y caja sin deuda [A1]', senal: 'Pedidos trimestrales por debajo de 50.000 M o pedidos netos negativos como en FY2025 [A3]' },
+        { riesgo: 'Concentración: tres clientes son el 62 % de las ventas', tipo: 'Comercial', probabilidad: 'Media', impacto: 'Alto', efecto_valor: '−15 % si uno de los tres aplaza su EUV un año', mitigante: 'TSMC 21,4 %, Intel 20,7 % y Samsung 20,2 %: ninguno domina solo [B4]', senal: 'Recorte de capex de Intel o Samsung en EUV' },
+        { riesgo: 'Compresión del múltiplo con el beneficio cerca de máximos', tipo: 'Valoración', probabilidad: 'Alta', impacto: 'Alto', efecto_valor: '−51 % en el bajista a 12 meses (PER de 22,5 veces)', mitigante: 'PER adelantado de 38,95 veces, no extremo frente a su historia', senal: 'PER adelantado por debajo de 30 veces sin bajada del BPA' },
+        { riesgo: 'Competencia de KLA en EUV (inspección por haz de electrones o actínica propia)', tipo: 'Competitivo', probabilidad: 'Baja', impacto: 'Alto', efecto_valor: '−20 %', mitigante: 'Diez años de ventaja en luz actínica y procesos de los clientes ya calificados [B3]', senal: 'Anuncio de un sistema actínico de KLA o de un segundo proveedor en TSMC' },
+        { riesgo: 'Existencias y calidad contable (acusación de Scorpion Capital de 2024)', tipo: 'Contable', probabilidad: 'Baja', impacto: 'Medio', efecto_valor: '−10 % por un deterioro de existencias', mitigante: 'Auditor PwC Japan sin salvedades conocidas; sin reexpresiones [A18, A19]', senal: 'Deterioros de existencias o cambio de auditor' },
+        { riesgo: 'Yen más fuerte', tipo: 'Divisa', probabilidad: 'Media', impacto: 'Medio', efecto_valor: '−5 % (a 135 JPY/USD)', mitigante: 'Parte de los contratos en yenes', senal: 'USD/JPY por debajo de 140 (cada yen son 1.000 M de resultado de explotación) [A5]' },
+        { riesgo: 'China fabrica su propia EUV o se veta la venta de DUV', tipo: 'Regulatorio', probabilidad: 'Media', impacto: 'Medio', efecto_valor: '−8 %', mitigante: 'La inspección actínica no se vende a China', senal: 'Nuevas listas de control o caída de pedidos de MATRICS [B14]' },
+      ],
+      premortem: 'Octubre de 2028: la acción ha perdido un 50 %. Lo que pasó: los pedidos de FY2027 se quedaron en la parte baja de la guía (300.000 M) porque Intel retrasó otra vez su 14A y Samsung redujo su inversión en fundición; TSMC, ya con su parque de ACTIS completo para 2 nm, aplazó la High-NA. Las ventas de FY2028 bajaron un 15 %, las existencias subieron por equipos fabricados que nadie recogía y el mercado volvió a pagar 22 veces el beneficio, como en junio de 2025. Era previsible: ocurrió en FY2025, cuando los pedidos de ACTIS fueron negativos.',
+      ia: { exposicion: 'Alta', sentido: 'Oportunidad', efecto_valor: '+15 % (alcista a 12 meses) / −46 % si la inversión de las fundiciones se frena (bajista del DCF)', comentario: 'La IA no amenaza el producto: ninguna IA sustituye la inspección física de una máscara EUV, y el software de análisis de defectos que mejora con IA lo incorpora el propio equipo. Al contrario, la demanda de chips de IA es lo que llena las líneas EUV de TSMC, Intel y Samsung (2 nm, 14A) y por tanto la demanda de ACTIS y MATRICS [A4, B6]. El riesgo es de ciclo, no de sustitución: si el gasto en centros de datos se frena en 2027-2028, las fundiciones aplazarían capacidad y los pedidos de Lasertec caerían como en FY2025. Efecto a 3-5 años: positivo en volumen (más capas EUV y máscaras más caras), con una volatilidad de pedidos que no desaparece.' },
+      confianza: 'Media',
+    },
+    esg: {
+      calificaciones: [],
+      materialidad: 'Los asuntos ESG que más afectan a las cifras son la retención de ingenieros (la ventaja es el conocimiento de óptica y luz actínica de una plantilla de 1.335 personas), la cadena de suministro de componentes ópticos y la concentración geográfica de la fabricación en Yokohama (riesgo sísmico) [A6, B1]. Las emisiones propias son pequeñas. El informe integrado 2025 publica objetivos de clima y materialidad sin calificaciones de terceros [B1].',
+      controversias: 'La acusación de fraude contable del bajista Scorpion Capital (junio de 2024), que la empresa negó y que no ha tenido consecuencias regulatorias ni reexpresiones [A18, A19].',
+      confianza: 'Baja',
+    },
+    preguntas: {
+      items: [
+        { tema: 'Pedidos', pregunta: '¿Qué parte de los pedidos de FY2027 (300.000-400.000 M) es ACTIS para 2 nm y High-NA y qué parte reposición?', por_que: 'Decide si FY2028 crece o cae; es el supuesto que más mueve el valor.' },
+        { tema: 'Clientes', pregunta: '¿Cuántos ACTIS tienen ya TSMC, Intel y Samsung y cuántos necesitan por nodo?', por_que: 'Mide la saturación de la base instalada.' },
+        { tema: 'Circulante', pregunta: '¿Por qué los anticipos bajaron de 95.155 M a 44.284 M con los pedidos al alza?', por_que: 'Explica el salto del circulante al 59,8 % de las ventas y la conversión en caja del 57 %.' },
+        { tema: 'Competencia', pregunta: '¿Tiene KLA un sistema actínico en desarrollo o calificado en algún cliente?', por_que: 'Es la única amenaza al monopolio.' },
+        { tema: 'Caja', pregunta: '¿Qué hará con 91.503 M de caja y un capex de 1.791 M?', por_que: 'El pago del 35 % y una recompra puntual dejan crecer la caja sin uso.' },
+      ],
+      confianza: 'Media',
+    },
+  },
+  dcf_justificacion: {
+    crecimiento: 'FY2027e: +25,8 %, la guía de agosto de 290.000 M [A1], apoyada en una cartera de 322.964 M (1,4 años de ventas) [A1]. FY2028e: +22 % (consenso +29,7 %) con pedidos de FY2027 en el punto medio de la guía, 350.000 M [A3, D2]. FY2029e: +12 %. FY2030e: −10 %, una corrección del ciclo como la de FY2026 (−8,3 %), que vino de pedidos negativos de ACTIS en FY2025 [A3]. Después, del 14 % al 3 %, por debajo del crecimiento del mercado de inspección de máscaras (7,2 % anual hasta 2034) a partir de FY2034e [B8].',
+    margenes: 'Margen EBITDA del 44,3 % en FY2027e, coherente con la guía (resultado de explotación del 43,1 % y amortización de 3.600 M) [A1]; del 46 % y el 46,5 % en los dos años siguientes, cerca del 47,7 % de FY2026; baja al 42 % en la corrección de FY2030e y converge al 42,5 % a largo plazo, por debajo de la media de FY2023-FY2026 por más I+D (20.000 M en FY2027) y competencia [A1, A2].',
+    inversion: 'Capex del 2,0 % de las ventas (5.700 M previstos en FY2027) [A1] y amortización del 1,25-1,5 %. Circulante del 57 % de las ventas en FY2027e y del 52 % en FY2028e, desde el 59,8 % de FY2026, y del 48 % después, la media de FY2022-FY2026 (40,2-59,8 %), suponiendo que los anticipos de clientes se recuperan en parte con los pedidos [A1]. Los anticipos se compensan con entregas: son circulante y no deuda.',
+    wacc: 'Tasa libre: bono japonés a 10 años del 2,958 % (16-oct-2026) [D5]. Beta 1,55: entre la semanal ajustada de 5 años (1,54) y la mensual de 5 años (1,89) frente al TOPIX, con la semanal de 2 años en 1,43 [D1]. Prima de mercado del 5,5 %, sin prima adicional (vende a clientes globales). Coste del capital del 11,48 %; sin deuda financiera, así que es también el WACC.',
+    terminal: 'Gordon con un 2,4 %: inflación esperada en yenes en torno al 2 % y algo de crecimiento real por la intensidad de inspección por nodo, por debajo de la tasa libre menos medio punto. El múltiplo de salida implícito es bajo frente a los comparables (EV/EBITDA de 28-40 veces), porque el terminal supone un negocio maduro y no uno en plena expansión de la EUV.',
+  },
+  puente_comentarios: {
+    'FY2027e': 'Volumen: entrega de la cartera (ACTIS y MATRICS para 2 nm) [A3]; precio: equipos más caros (ACTIS A200HiT) [B12]; otros: servicios sobre una base instalada mayor.',
+    'FY2028e': 'Volumen por los pedidos de FY2027 (punto medio de la guía) y precio por High-NA.',
+    'FY2029e': 'Crecimiento menor al completar los clientes la capacidad de 2 nm.',
+    'FY2030e': 'Corrección cíclica: menos compras de ACTIS; precios estables.',
+    'FY2031e': 'Recuperación con el nodo siguiente (A14/1,4 nm).',
+  },
+  sostenibilidad_justificacion: 'Sí. El crecimiento proyectado (9,5 % de media) está en línea con el financiable al ROIC actual y muy por debajo de la tasa histórica (32,5 % anual de FY2020 a FY2026); la proyección apenas necesita capital fijo, así que la prueba es de poder de precios y de cuota. Las dos pasan: Lasertec es el único proveedor de inspección actínica de máscaras EUV con patrón [B3], con alrededor de la mitad del mercado de inspección de máscaras (1.800 M USD en 2025) [B8], y ha subido precio con cada generación de ACTIS [B12]. El mercado crece un 7,2 % anual hasta 2034 [B8]: el 9,5 % proyectado supone ganar algo de cuota en EUV y servicios, coherente con la base instalada.',
+  dcf_lectura: 'El DCF da 14.887 JPY por acción, un 62,4 % por debajo del precio de 39.590 JPY, con un 47 % del valor en el terminal. El DCF inverso es la clave: para justificar el precio con nuestros márgenes, las ventas tendrían que crecer un 28,6 % anual durante diez años, frente al 9,5 % de nuestro base y al 7,2 % del mercado; con nuestro crecimiento, ningún margen hasta el 73 % justifica el precio, y la rentabilidad que implica comprar hoy es del 5,8 % anual frente a un WACC del 11,48 %. El crecimiento histórico (32,5 % anual en seis años) es el que el precio extrapola; venía de lanzar la EUV desde cero.',
+  narrativas: {
+    Bajista: 'Las fundiciones aplazan la High-NA y el 2 nm se llena con los equipos ya instalados: FY2027e crece un 19,8 %, FY2028e y FY2029e se quedan planos y el margen EBITDA baja al 40 % y después al 36,5 %. Ya pasó: los pedidos de ACTIS fueron negativos en FY2025 y las ventas cayeron en FY2026 [A3].',
+    Base: 'FY2027e cumple la guía; dos años más de crecimiento decreciente (22 % y 12 %), corrección del 10 % en FY2030e y margen EBITDA que converge al 42,5 %.',
+    Alcista: 'La IA alarga el ciclo EUV: pedidos de FY2027 en la parte alta de la guía (400.000 M), ventas de FY2028e un 32 % más y margen 2 puntos más, cerca del consenso.',
+  },
+  escenarios_comentario: 'Los tres escenarios del DCF quedan por debajo del precio: 8.108 JPY el bajista (−79,5 %), 14.887 el base (−62,4 %) y 19.061 el alcista (−51,9 %). Lo que separa nuestro valor del precio no es el escenario sino el horizonte: el mercado paga hoy 39 veces el beneficio del año que viene, lo que equivale a suponer que el crecimiento de la EUV se mantiene una década.',
+  per_historico: {
+    base: 'adelantado', actual: 38.95, mediana_5a: 32.96, minimo_5a: 22.51, media_larga: 34.63,
+    excluidos: 'Historia ADELANTADA (precio de cierre de junio de cada año ÷ BPA diluido real del ejercicio siguiente) [A2, D19]: FY2020 47,6x (10.160 ÷ 213,29); FY2021 78,4x (21.590 ÷ 275,34), excluido por la burbuja de 2021; FY2022 31,6x (16.150 ÷ 511,46); FY2023 33,0x (21.575 ÷ 654,49); FY2024 38,5x (36.090 ÷ 937,82); FY2025 22,5x (19.410 ÷ 862,26). Mediana de los cinco años útiles 32,96x, mínimo 22,51x, media larga 34,63x. FY2019 (17,8x) se excluye por ser otro régimen de negocio (antes de la EUV). Actual: 39.590 ÷ 1.016,5 (nuestro BPA de FY2027e) = 38,95x.',
+    v2: { mediana_5a: 55.1, minimo_5a: 20.7, media_larga: 60.0, excluidos: 'Historia al cierre (precio de junio ÷ BPA del mismo ejercicio): FY2022 58,7x; FY2023 42,2x; FY2024 55,1x; FY2025 20,7x; FY2026 57,6x. Media larga FY2020-FY2026: 60,0x.' },
+  },
+  casos_12m: [
+    { escenario: 'Bajista', metrica: 'PER FY2028e', beneficio_por_accion: 868.8, multiplo: null, precio: null, justificacion: 'Escenario bajista del DCF: ventas de FY2028e de 276.121 M (planas frente a FY2027e) y margen EBITDA del 40 %; amortización del 1,5 %, resultado financiero de +2.600 M (el de FY2026: 2.636 M), impuesto del 28,5 % y 89,63 millones de acciones.' },
+    { escenario: 'Base', metrica: 'PER FY2028e', beneficio_por_accion: 1276.5, multiplo: null, precio: null, justificacion: 'Proyección del DCF: ventas de 353.739 M, EBIT de 157.414 M, +2.600 M de resultado financiero, impuesto del 28,5 % y 89,63 millones de acciones. Cuadra con la guía: la misma fórmula da 1.016,5 JPY en FY2027e frente a los 1.004,12 de la empresa [A1].' },
+    { escenario: 'Alcista', metrica: 'PER FY2028e', beneficio_por_accion: 1474.3, multiplo: null, precio: null, justificacion: 'Escenario alcista: ventas de 391.858 M (pedidos de FY2027 de 400.000 M) y margen EBITDA del 48 %, misma fórmula; cerca del consenso (1.509) [D2].' },
+  ],
+  diferencia_consenso: 'Nuestro BPA de FY2027e (1.016,5) está un 9,1 % por debajo del consenso (1.118) y el de FY2028e (1.276,5) un 15,4 % por debajo (1.509) [D2]. La diferencia es de ventas y algo de margen: el consenso supone 299.177 M y 388.100 M (+29,8 % y +29,7 %), nosotros 289.950 M y 353.739 M (+25,8 % y +22 %), porque tomamos la guía de la empresa en FY2027e y el punto medio de su previsión de pedidos para FY2028e.',
+  media_12m: null,
+  objetivo_comentario: 'El objetivo ponderado a 12 meses es de 40.931 JPY (+3,4 %; +4,2 % con dividendo) y el base de 45.699 JPY (+16,3 % con dividendo); el valor intrínseco es de 19.724 JPY. La distancia entre los dos es la prima que el mercado paga por el ciclo EUV y que la regla mantiene en parte (PER base de 35,8 veces, a mitad de camino entre el actual de 38,95 y la mediana adelantada de 32,96). El bajista (19.548 JPY, PER 22,5 sobre un BPA plano) recuerda que en junio de 2025 el mercado pagó ese múltiplo.',
+  valoracion_comentario: 'Pesos: DCF 50 %, escenarios 25 % y comparables 25 %; sin transacciones (no hay operaciones con múltiplo verificable) ni suma de partes. El DCF es el método más fiable para el valor a largo plazo porque obliga a explicitar el ciclo; los comparables (34.886 JPY por PER) solo dicen que el sector cotiza a 25-33 veces beneficios de máximos. La caja neta (91.503 M) suma unos 1.020 JPY por acción y el dividendo final pagado en septiembre (17.657 M) se descuenta del puente.',
+  resumen: {
+    recomendacion: 'Mantener',
+    conviccion: 'Media',
+    justificacion_recomendacion: null,
+    horizonte: '12 meses',
+    sintesis: '**La recomendación y por qué.** Mantener (para quien no la tiene: no comprar a este precio), con convicción media. El objetivo a 12 meses es de 40.931 JPY (ponderado), un 4,2 % de rentabilidad con dividendo sobre el precio de 39.590 JPY del 19-oct; el base, 45.699 JPY (+16,3 %). No llega a Comprar por dos motivos: la ponderada queda lejos del 15 % y el valor intrínseco (19.724 JPY) está un 50 % por debajo del precio. El objetivo medio de los 17 analistas, 49.337,5 JPY [D3], queda por encima de nuestro base. La convicción es media: el negocio es de los mejores del sector, pero el precio depende de un ciclo de pedidos que nadie ve con más de un año de antelación; subiría la convicción ver los pedidos del 1T FY2027 (30-oct) fuera del rango de la guía, en cualquiera de los dos sentidos.\n\n**El negocio.** Lasertec es el único fabricante del mundo de equipos de inspección actínica de máscaras EUV con patrón (ACTIS) y tiene alrededor de la mitad del mercado de inspección de máscaras, de 1.800 M USD [B3, B8]. Sin esos equipos una fundición no puede usar máscaras EUV en producción. Sus clientes son tres: TSMC (21,4 %), Intel (20,7 %) y Samsung (20,2 %) [B4]. El ROIC es del 54,2 % frente a un WACC del 11,48 %, sin deuda y con 91.503 M de caja [A1].\n\n**Lo que pide el precio.** El DCF da 14.887 JPY. Para justificar 39.590 JPY las ventas tendrían que crecer un 28,6 % anual durante diez años; nuestro base, que sigue la guía de FY2027 (290.000 M, +25,8 %) y el punto medio de los pedidos previstos (300.000-400.000 M) [A1], da un 9,5 % con una corrección en FY2030e. El escáner señaló un crecimiento del 40 % anual: es el de FY2020-FY2024, cuando la EUV pasó de cero a la producción en masa; en FY2026 las ventas cayeron un 8,3 % porque en FY2025 los pedidos de ACTIS fueron negativos [A3].\n\n**El ciclo.** Pedidos de 105.226 M en FY2025 y 237.504 M en FY2026; cartera de 322.964 M [A1]. Los anticipos de clientes, el mejor indicador del compromiso, bajaron de 95.155 M a 44.284 M en tres años y el circulante subió al 59,8 % de las ventas [A1]. Si los pedidos de FY2027 se quedan en la parte baja, el mercado volvería a pagar 22 veces el beneficio, como en junio de 2025.\n\n**La IA.** Es la razón del ciclo actual (las fundiciones llenan líneas EUV para chips de IA) y no amenaza el producto; el riesgo es que el gasto en centros de datos se frene y las fundiciones aplacen capacidad.\n\n**Qué cambiaría la recomendación.** Precio por debajo de 19.724 JPY con la regla a 12 meses cumplida; o pedidos del 1T FY2027 (30-oct) que apunten a 400.000 M en el año, que acercarían nuestro BPA de FY2028e al consenso (1.509 JPY).',
+    tesis: 'Lasertec es un monopolio técnico: el único proveedor de inspección actínica de máscaras EUV con patrón, con alrededor de la mitad del mercado de inspección de máscaras y un ROIC del 54,2 % [A1, B3, B8]. La EUV multiplicó sus ventas por 5,4 de FY2020 a FY2026 (de 42.572 M a 230.485 M) con un margen de explotación del 45,7 % [A1].\n\nEl precio descuenta que ese crecimiento siga una década: el DCF inverso pide un 28,6 % anual. Nuestro base, con la guía de la empresa y una corrección cíclica, da un 9,5 % anual y un valor intrínseco de 19.724 JPY. La regla a 12 meses deja un objetivo ponderado de 40.931 JPY (+4,2 % con dividendo): mantener quien la tenga, no comprar.',
+    vision_diferencial: {
+      mercado_descuenta: 'Un crecimiento de las ventas del 28,6 % anual durante diez años y un consenso que proyecta tres años seguidos de crecimiento de doble dígito (FY2027-FY2029: 299.177, 388.100 y 461.943 M) [D2].',
+      nuestra_vision: 'Un negocio excelente pero cíclico: la guía de FY2027 se cumple, FY2028e crece un 22 % con pedidos en el punto medio de la guía, y una corrección del 10 % en FY2030e cuando la capacidad de 2 nm esté completa.',
+      por_que: 'Porque en FY2025 los pedidos de ACTIS fueron negativos y en FY2026 las ventas cayeron un 8,3 % [A3]; porque los anticipos de clientes se han reducido a la mitad aunque los pedidos suban [A1]; y porque tres clientes concentran el 62 % de las ventas [B4].',
+    },
+    a_favor: [
+      '**Monopolio en inspección actínica EUV**: único proveedor comercial de ACTIS para máscaras con patrón [B3].',
+      '**Rentabilidad excepcional**: ROIC del 54,2 % en FY2026 y nunca por debajo del 54 % en siete años.',
+      '**Balance sin riesgo**: 91.503 M de caja y ninguna deuda [A1].',
+      '**Visibilidad**: cartera de 322.964 M (1,4 años de ventas) y guía de pedidos de 300.000-400.000 M [A1].',
+      '**Dirección que bate su guía**: subió la de FY2026 en enero y la superó [C6].',
+    ],
+    en_contra: [
+      '**Precio que exige otra década de EUV**: DCF inverso con un 28,6 % anual frente al 9,5 % de nuestro base.',
+      '**Ciclo**: pedidos de ACTIS negativos en FY2025 y ventas −8,3 % en FY2026 [A3].',
+      '**Concentración**: TSMC, Intel y Samsung son el 62 % de las ventas [B4].',
+      '**Circulante pesado**: existencias del 72,8 % de las ventas y anticipos a la baja [A1].',
+      '**Volatilidad**: anual del 77 % y caída máxima del 76,6 % [D1].',
+    ],
+    que_vigilar: 'La tesis depende de que los pedidos se corrijan cuando las fundiciones completen la capacidad de 2 nm. La señal de que no se cumple sería unos pedidos del 1T y 2T FY2027 que apunten a 400.000 M en el año con los anticipos al alza; la de que se cumple, pedidos por debajo de 75.000 M por trimestre y existencias que suben.',
+    cambiaria_recomendacion: [
+      'Precio por debajo de 19.724 JPY: Comprar (ponderada ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco).',
+      'Pedidos de FY2027 por encima de 400.000 M con anticipos al alza: revisaríamos al alza el BPA de FY2028e hacia el consenso.',
+      'Pedidos trimestrales por debajo de 50.000 M o cancelaciones de ACTIS: bajaríamos el base hacia el bajista.',
+    ],
+    kpis_seguimiento: [
+      { kpi: 'Pedidos trimestrales', nivel_actual: '237.504 M en FY2026 (59.400 M de media)', umbral_alerta: '< 50.000 M en un trimestre', por_que: 'Primer síntoma del ciclo.' },
+      { kpi: 'Anticipos de clientes', nivel_actual: '44.284 M', umbral_alerta: 'Dos trimestres de caída', por_que: 'Compromiso de compra de los clientes.' },
+      { kpi: 'Existencias / ventas', nivel_actual: '72,8 %', umbral_alerta: '> 85 %', por_que: 'Equipos fabricados sin aceptación del cliente.' },
+      { kpi: 'Margen bruto', nivel_actual: '59,2 %', umbral_alerta: '< 52 %', por_que: 'Mezcla de ACTIS y poder de precios.' },
+      { kpi: 'Peso del primer cliente', nivel_actual: '21,4 % (TSMC)', umbral_alerta: '> 35 %', por_que: 'Concentración.' },
+    ],
+  },
+};

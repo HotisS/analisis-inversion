@@ -43,7 +43,7 @@ const regionDePais = (pais) => Object.entries(CONF.regiones).find(([, r]) => r.p
 async function candidatasBuscador(region, perfil) {
   const porDivisa = new Map();
   for (const b of CONF.regiones[region].bolsas) {
-    const div = { GER: 'EUR', PAR: 'EUR', AMS: 'EUR', HEL: 'EUR', MCE: 'EUR', MIL: 'EUR', BRU: 'EUR', VIE: 'EUR', ISE: 'EUR', LIS: 'EUR', LSE: 'GBP', EBS: 'CHF', STO: 'SEK', CPH: 'DKK', OSL: 'NOK', WSE: 'PLN',
+    const div = { GER: 'EUR', PAR: 'EUR', AMS: 'EUR', HEL: 'EUR', MCE: 'EUR', MIL: 'EUR', BRU: 'EUR', VIE: 'EUR', ISE: 'EUR', LIS: 'EUR', LSE: 'GBP', EBS: 'CHF', STO: 'SEK', CPH: 'DKK', OSL: 'NOK', WSE: 'PLN', ATH: 'EUR', ICE: 'ISK', SGO: 'CLP', BVC: 'COP', SAU: 'SAR', DFM: 'AED', DOH: 'QAR', TLV: 'ILS', JNB: 'ZAR', KLS: 'MYR', SET: 'THB', JKT: 'IDR',
       NYQ: 'USD', NMS: 'USD', NGM: 'USD', NCM: 'USD', ASE: 'USD', TOR: 'CAD', SAO: 'BRL', MEX: 'MXN', JPX: 'JPY', ASX: 'AUD', NZE: 'NZD', HKG: 'HKD', SES: 'SGD', KSC: 'KRW', KOE: 'KRW', TAI: 'TWD', TWO: 'TWD', NSI: 'INR', SHH: 'CNY', SHZ: 'CNY' }[b] || 'USD';
     porDivisa.set(div, [...(porDivisa.get(div) || []), b]);
   }
@@ -287,7 +287,9 @@ for (const [clave, perfil] of perfiles) {
       // La región la da el país de la sede (no la bolsa): fuera las extranjeras cotizadas aquí y las de países de
       // fuera de las tres regiones. Si la sede es un paraíso (Bermudas, Caimán…), cuenta la bolsa.
       const reg = regionDePais(f.pais) ?? ((CONF.paraisos || []).includes(f.pais) ? regionDePais(CONF.bolsa_pais[c.bolsa]) : null);
-      if (reg !== region) continue;
+      // Región «extranjeras» (perfiles-amplio.json): las de sede fuera del país de la bolsa que cotizan allí (ADR, dLocal…).
+      const rc = CONF.regiones[region];
+      if (rc.extranjeras ? (f.pais === rc.extranjeras || reg === null) : reg !== region) continue;
       if (BASE.excluir_sectores?.includes(f.sector)) continue;
       if (BASE.excluir_industrias && new RegExp(BASE.excluir_industrias, 'i').test(f.industria || '')) continue;
       if (perfil.excluir_industrias && new RegExp(perfil.excluir_industrias, 'i').test(f.industria || '')) continue;

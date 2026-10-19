@@ -28,7 +28,7 @@ Solo el repo y `%TEMP%` (la caché de fichas vive en `%TEMP%\analisis-inversion\
    - flujo libre de un solo año anómalo (capital circulante);
    - empresas de un solo producto o con un litigio que el precio ya descuenta.
    Mira «Qué hace», el sector y, si hace falta, `--simbolos` para ver la serie. Descarta las que el motor no sabe valorar (bancos, aseguradoras, holdings con NAV, biotecnológicas sin ventas).
-5. Propón al usuario **8-12 candidatas** en una tabla corta: empresa, país, perfil, por qué (dos o tres cifras), el riesgo que más pesa y la señal si ya está analizada. Di cuántas pasaron cada embudo. **No las añadas a la cola ni lances análisis sin su visto bueno.**
+5. **Entrega (regla de Hotis, 19-oct-2026: «la cosa es que me des todas las que pasan, tus favoritas y yo te digo cuáles analizamos o metemos en cola»)**: (a) la **lista completa de todas las que pasan** el cribado, por mercado (en archivo, no en el chat: Excel de `escaneos/` y un .md con una línea por empresa), con cuántas cribó cada mercado; (b) **tus favoritas** (8-12) en una tabla corta: empresa, país, perfil, por qué (una línea con dos o tres cifras), el riesgo que más pesa y la señal si ya está analizada. **No lances ningún análisis ni añadas nada a la cola: decide Hotis.** Por defecto, el escaneo amplio: `--config escaner/perfiles-amplio.json` (16 regiones, 61 bolsas), más `indices.mjs --huecos` y `salidas-bolsa.mjs`.
 6. Si el usuario lo aprueba, haz commit del Excel de `escaneos/` (y de `perfiles.json` si lo cambiaste).
 
 ## Límites (dilos si vienen al caso)

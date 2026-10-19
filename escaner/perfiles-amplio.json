@@ -1,0 +1,654 @@
+{
+  "_ayuda": "Versión AMPLIA del escáner (19-oct-2026, pedida por Hotis: «más extenso y amplio, muchas geografías»). Mismos perfiles y filtros que perfiles.json, con 15 regiones (cada mercado compite solo dentro del suyo: más puestos por mercado) y bolsas nuevas: China continental, Oriente Medio, Israel, Sudáfrica, Sudeste Asiático, Chile, Colombia, Grecia e Islandia. Sin Turquía ni Argentina (contabilidad de hiperinflación: ROIC y crecimiento sin sentido) ni Kuwait/Egipto (precios en fracciones de divisa). Uso: node herramientas/escaner.mjs --config escaner/perfiles-amplio.json",
+  "base": {
+    "cap_min_musd": 1000,
+    "volumen_min_musd": 1,
+    "excluir_sectores": [
+      "Financial Services",
+      "Real Estate"
+    ],
+    "excluir": "\\b(blank check|special purpose acquisition|closed-end fund|investment trust)\\b",
+    "prima_mercado_pct": 5.5,
+    "beta_min": 0.7,
+    "beta_max": 1.5,
+    "max_por_region": 15,
+    "excluir_industrias": "Airlines|Shell Companies|Conglomerates"
+  },
+  "regiones": {
+    "eeuu": {
+      "bolsas": [
+        "NYQ",
+        "NMS",
+        "NGM",
+        "NCM",
+        "ASE"
+      ],
+      "paises": [
+        "United States"
+      ]
+    },
+    "canada": {
+      "bolsas": [
+        "TOR"
+      ],
+      "paises": [
+        "Canada"
+      ]
+    },
+    "latam": {
+      "bolsas": [
+        "SAO",
+        "MEX",
+        "SGO",
+        "BVC"
+      ],
+      "paises": [
+        "Brazil",
+        "Mexico",
+        "Chile",
+        "Colombia",
+        "Peru",
+        "Argentina",
+        "Uruguay",
+        "Panama"
+      ]
+    },
+    "reino-unido": {
+      "bolsas": [
+        "LSE"
+      ],
+      "paises": [
+        "United Kingdom",
+        "Jersey",
+        "Guernsey",
+        "Isle of Man"
+      ]
+    },
+    "europa-continental": {
+      "bolsas": [
+        "GER",
+        "PAR",
+        "AMS",
+        "MCE",
+        "MIL",
+        "BRU",
+        "VIE",
+        "ISE",
+        "LIS",
+        "EBS",
+        "ATH"
+      ],
+      "paises": [
+        "Germany",
+        "France",
+        "Netherlands",
+        "Spain",
+        "Italy",
+        "Belgium",
+        "Austria",
+        "Ireland",
+        "Portugal",
+        "Switzerland",
+        "Greece",
+        "Luxembourg",
+        "Liechtenstein",
+        "Monaco",
+        "Malta",
+        "Cyprus"
+      ]
+    },
+    "nordicos-y-este": {
+      "bolsas": [
+        "STO",
+        "CPH",
+        "OSL",
+        "HEL",
+        "ICE",
+        "WSE"
+      ],
+      "paises": [
+        "Sweden",
+        "Denmark",
+        "Norway",
+        "Finland",
+        "Iceland",
+        "Faroe Islands",
+        "Poland",
+        "Czech Republic"
+      ]
+    },
+    "japon": {
+      "bolsas": [
+        "JPX"
+      ],
+      "paises": [
+        "Japan"
+      ]
+    },
+    "corea": {
+      "bolsas": [
+        "KSC",
+        "KOE"
+      ],
+      "paises": [
+        "South Korea"
+      ]
+    },
+    "taiwan": {
+      "bolsas": [
+        "TAI",
+        "TWO"
+      ],
+      "paises": [
+        "Taiwan"
+      ]
+    },
+    "hong-kong": {
+      "bolsas": [
+        "HKG"
+      ],
+      "paises": [
+        "Hong Kong",
+        "Macau"
+      ]
+    },
+    "china-continental": {
+      "bolsas": [
+        "SHH",
+        "SHZ"
+      ],
+      "paises": [
+        "China"
+      ]
+    },
+    "india": {
+      "bolsas": [
+        "NSI"
+      ],
+      "paises": [
+        "India"
+      ]
+    },
+    "oceania": {
+      "bolsas": [
+        "ASX",
+        "NZE"
+      ],
+      "paises": [
+        "Australia",
+        "New Zealand"
+      ]
+    },
+    "sudeste-asiatico": {
+      "bolsas": [
+        "SES",
+        "KLS",
+        "SET",
+        "JKT"
+      ],
+      "paises": [
+        "Singapore",
+        "Malaysia",
+        "Thailand",
+        "Indonesia",
+        "Philippines",
+        "Vietnam"
+      ]
+    },
+    "oriente-medio-africa": {
+      "bolsas": [
+        "SAU",
+        "DFM",
+        "DOH",
+        "TLV",
+        "JNB"
+      ],
+      "paises": [
+        "Saudi Arabia",
+        "United Arab Emirates",
+        "Qatar",
+        "Israel",
+        "South Africa",
+        "Bahrain",
+        "Oman",
+        "Kuwait"
+      ]
+    },
+    "extranjeras-en-eeuu": {
+      "bolsas": [
+        "NYQ",
+        "NMS",
+        "NGM",
+        "NCM",
+        "ASE"
+      ],
+      "paises": [],
+      "extranjeras": "United States",
+      "_nota": "Empresas con sede fuera de EE. UU. que cotizan en Nueva York (ADR y cotizaciones primarias de latinoamericanas, israelíes, chinas…)."
+    }
+  },
+  "_ayuda_bolsas": "Yahoo da cada bolsa por su código. Para sumar China continental, añadir SHH y SHZ a apac; para India por la BSE, BSE (duplica casi toda la NSE).",
+  "bolsa_pais": {
+    "GER": "Germany",
+    "PAR": "France",
+    "LSE": "United Kingdom",
+    "EBS": "Switzerland",
+    "AMS": "Netherlands",
+    "STO": "Sweden",
+    "CPH": "Denmark",
+    "OSL": "Norway",
+    "HEL": "Finland",
+    "MCE": "Spain",
+    "MIL": "Italy",
+    "BRU": "Belgium",
+    "VIE": "Austria",
+    "ISE": "Ireland",
+    "LIS": "Portugal",
+    "WSE": "Poland",
+    "NYQ": "United States",
+    "NMS": "United States",
+    "NGM": "United States",
+    "NCM": "United States",
+    "ASE": "United States",
+    "TOR": "Canada",
+    "SAO": "Brazil",
+    "MEX": "Mexico",
+    "JPX": "Japan",
+    "ASX": "Australia",
+    "NZE": "New Zealand",
+    "HKG": "Hong Kong",
+    "SES": "Singapore",
+    "KSC": "South Korea",
+    "KOE": "South Korea",
+    "TAI": "Taiwan",
+    "TWO": "Taiwan",
+    "NSI": "India",
+    "SHH": "China",
+    "SHZ": "China",
+    "SGO": "Chile",
+    "BVC": "Colombia",
+    "ATH": "Greece",
+    "ICE": "Iceland",
+    "SAU": "Saudi Arabia",
+    "DFM": "United Arab Emirates",
+    "DOH": "Qatar",
+    "TLV": "Israel",
+    "JNB": "South Africa",
+    "KLS": "Malaysia",
+    "SET": "Thailand",
+    "JKT": "Indonesia"
+  },
+  "paraisos": [
+    "Bermuda",
+    "Cayman Islands",
+    "British Virgin Islands",
+    "Bahamas",
+    "Marshall Islands",
+    "Curacao",
+    "Gibraltar",
+    "Mauritius",
+    "Puerto Rico"
+  ],
+  "_ayuda_tasas": "Tasa libre de riesgo aproximada (bono a 10 años, %) por divisa de las cuentas, y prima país (%) para emergentes. Solo para el WACC orientativo del escáner; el informe calcula el suyo. Revisar de vez en cuando.",
+  "tasa_libre": {
+    "USD": 5.2,
+    "EUR": 3.5,
+    "GBP": 5.4,
+    "CHF": 0.5,
+    "JPY": 3.0,
+    "AUD": 4.3,
+    "CAD": 3.2,
+    "SEK": 3.2,
+    "DKK": 2.5,
+    "NOK": 4.6,
+    "HKD": 4.1,
+    "SGD": 2.3,
+    "KRW": 2.9,
+    "TWD": 1.5,
+    "INR": 6.4,
+    "CNY": 1.8,
+    "NZD": 4.4,
+    "BRL": 13.5,
+    "MXN": 9,
+    "PLN": 5.5,
+    "SAR": 5.0,
+    "AED": 4.6,
+    "QAR": 4.5,
+    "ILS": 4.2,
+    "ZAR": 9.8,
+    "MYR": 3.6,
+    "THB": 2.0,
+    "IDR": 6.6,
+    "CLP": 5.6,
+    "COP": 11.5,
+    "ISK": 6.8
+  },
+  "prima_pais": {
+    "Brazil": 3,
+    "Mexico": 2.2,
+    "India": 2,
+    "China": 1,
+    "South Korea": 0.7,
+    "Taiwan": 0.7,
+    "Poland": 1,
+    "Chile": 1,
+    "Colombia": 2.5,
+    "Peru": 2,
+    "Indonesia": 2,
+    "Malaysia": 1.2,
+    "Thailand": 1.5,
+    "Philippines": 2,
+    "Vietnam": 3,
+    "Greece": 2,
+    "Saudi Arabia": 1,
+    "United Arab Emirates": 0.8,
+    "Qatar": 0.8,
+    "Israel": 1.2,
+    "South Africa": 3,
+    "Iceland": 0.5
+  },
+  "perfiles": {
+    "calidad-castigada": {
+      "activo": true,
+      "descripcion": "Negocios de calidad (ROIC alto y estable, balance sano) que han caído con fuerza y cuyo precio pide menos crecimiento del que han dado. Es el perfil que más Comprar ha dado en los informes.",
+      "buscador": [
+        [
+          "returnontotalcapital.lasttwelvemonths",
+          ">=",
+          7
+        ],
+        [
+          "netdebtebitda.lasttwelvemonths",
+          "<=",
+          3
+        ]
+      ],
+      "filtros": [
+        [
+          "roic_medio",
+          ">=",
+          10
+        ],
+        [
+          "caida_max52",
+          "<=",
+          -25
+        ],
+        [
+          "fcf_yield",
+          ">=",
+          3.5
+        ],
+        [
+          "dn_ebitda",
+          "<=",
+          2.5
+        ],
+        [
+          "rango_margen",
+          "<=",
+          12
+        ]
+      ],
+      "puntuacion": {
+        "roic_medio": 2,
+        "fcf_yield": 2,
+        "margen_seguridad": 2,
+        "caida_max52": -1,
+        "rango_margen": -1,
+        "conversion_fcf": 1,
+        "dn_ebitda": -1
+      }
+    },
+    "nicho-compounder": {
+      "activo": true,
+      "descripcion": "Líderes de nicho medianos que crecen rápido con márgenes altos y sin deuda: los que capitalizan durante años. Suelen estar caros; el escáner prima los que piden menos de lo que han crecido.",
+      "buscador": [
+        [
+          "returnontotalcapital.lasttwelvemonths",
+          ">=",
+          10
+        ],
+        [
+          "ebitdamargin.lasttwelvemonths",
+          ">=",
+          18
+        ]
+      ],
+      "filtros": [
+        [
+          "cap_musd",
+          "entre",
+          [
+            700,
+            25000
+          ]
+        ],
+        [
+          "crec_ventas_3a",
+          ">=",
+          8
+        ],
+        [
+          "roic_medio",
+          ">=",
+          13
+        ],
+        [
+          "margen_ebit",
+          ">=",
+          15
+        ],
+        [
+          "dn_ebitda",
+          "<=",
+          1.5
+        ]
+      ],
+      "puntuacion": {
+        "crec_ventas_3a": 2,
+        "roic_medio": 2,
+        "margen_ebit": 1,
+        "rango_margen": -1,
+        "margen_seguridad": 2,
+        "insiders_pct": 1,
+        "conversion_fcf": 1
+      },
+      "excluir_industrias": "Gold|Silver|Precious Metals|Copper|Uranium|Other Industrial Metals|Aluminum|Steel|Coking Coal|Thermal Coal|Oil & Gas E&P|Oil & Gas Integrated|Oil & Gas Drilling|Agricultural Inputs"
+    },
+    "valor-con-caja": {
+      "activo": true,
+      "descripcion": "Baratas por caja: rentabilidad por flujo libre alta, EV/EBIT bajo y un negocio que al menos cubre su coste de capital.",
+      "buscador": [
+        [
+          "lastclosetevebit.lasttwelvemonths",
+          "entre",
+          [
+            1,
+            14
+          ]
+        ],
+        [
+          "returnontotalcapital.lasttwelvemonths",
+          ">=",
+          6
+        ]
+      ],
+      "filtros": [
+        [
+          "fcf_yield",
+          ">=",
+          7
+        ],
+        [
+          "ev_ebit",
+          "<=",
+          12
+        ],
+        [
+          "roic_medio",
+          ">=",
+          8
+        ],
+        [
+          "dn_ebitda",
+          "<=",
+          2
+        ],
+        [
+          "crec_ventas_3a",
+          ">=",
+          0
+        ]
+      ],
+      "puntuacion": {
+        "fcf_yield": 3,
+        "ev_ebit": -2,
+        "roic_medio": 1,
+        "margen_seguridad": 1,
+        "dn_ebitda": -1,
+        "crec_ventas_3a": 1
+      }
+    },
+    "crecimiento-razonable": {
+      "activo": true,
+      "descripcion": "Crecimiento alto a precio razonable: ventas creciendo más del 12 % y un precio que no descuenta más de lo que ya hacen.",
+      "buscador": [
+        [
+          "totalrevenues1yrgrowth.lasttwelvemonths",
+          ">=",
+          10
+        ],
+        [
+          "returnontotalcapital.lasttwelvemonths",
+          ">=",
+          8
+        ]
+      ],
+      "filtros": [
+        [
+          "crec_ventas_3a",
+          ">=",
+          12
+        ],
+        [
+          "roic_medio",
+          ">=",
+          10
+        ],
+        [
+          "margen_seguridad",
+          ">=",
+          0
+        ],
+        [
+          "dn_ebitda",
+          "<=",
+          2
+        ]
+      ],
+      "puntuacion": {
+        "crec_ventas_3a": 2,
+        "margen_seguridad": 3,
+        "roic_medio": 1,
+        "per_adelantado": -1,
+        "potencial_analistas": 1
+      },
+      "excluir_industrias": "Gold|Silver|Precious Metals|Copper|Uranium|Other Industrial Metals|Aluminum|Steel|Coking Coal|Thermal Coal|Oil & Gas E&P|Oil & Gas Integrated|Oil & Gas Drilling|Agricultural Inputs"
+    },
+    "calidad-a-precio": {
+      "activo": true,
+      "descripcion": "Perfil de la 8ª hora value (14-oct-2026), hecho a partir de los 32 análisis de la 6ª y 7ª hora: casi todos cayeron por el valor intrínseco (el precio pedía más crecimiento del que han dado) o por calidad. Exige ROIC − WACC ≥ 5 (aprox. del escáner, con fondo de comercio), precio que pide menos crecimiento del que han dado, flujo libre decente, deuda moderada y margen estable. Sin juego, comercio minorista ni materias primas.",
+      "buscador": [
+        [
+          "returnontotalcapital.lasttwelvemonths",
+          ">=",
+          8
+        ],
+        [
+          "netdebtebitda.lasttwelvemonths",
+          "<=",
+          2.5
+        ]
+      ],
+      "filtros": [
+        [
+          "roic_wacc",
+          ">=",
+          5
+        ],
+        [
+          "margen_seguridad",
+          ">=",
+          1
+        ],
+        [
+          "fcf_yield",
+          ">=",
+          4
+        ],
+        [
+          "dn_ebitda",
+          "<=",
+          2
+        ],
+        [
+          "rango_margen",
+          "<=",
+          10
+        ],
+        [
+          "crec_ventas_3a",
+          ">=",
+          3
+        ],
+        [
+          "per_adelantado",
+          "<=",
+          24
+        ]
+      ],
+      "puntuacion": {
+        "margen_seguridad": 3,
+        "roic_wacc": 2,
+        "fcf_yield": 2,
+        "rango_margen": -1,
+        "conversion_fcf": 1,
+        "dn_ebitda": -1,
+        "caida_max52": -1
+      },
+      "excluir": "\\b(casino|gaming|gambling|betting|lottery|wagering)\\b",
+      "excluir_industrias": "Gambling|Resorts & Casinos|Retail|Grocery|Gold|Silver|Precious Metals|Copper|Uranium|Other Industrial Metals|Aluminum|Steel|Coking Coal|Thermal Coal|Oil & Gas|Agricultural Inputs|Banks|Insurance|Biotechnology"
+    },
+    "growth-alto": {
+      "activo": false,
+      "descripcion": "Filtro de partida para el análisis growth: ventas creciendo al menos un 15 % (último año y media de 3 años), más de 2.000 M USD de capitalización; sin juego/apuestas ni comercio minorista. No exige beneficios.",
+      "buscador": [
+        [
+          "totalrevenues1yrgrowth.lasttwelvemonths",
+          ">=",
+          15
+        ]
+      ],
+      "filtros": [
+        [
+          "cap_musd",
+          ">=",
+          2000
+        ],
+        [
+          "crec_ventas_3a",
+          ">=",
+          15
+        ]
+      ],
+      "puntuacion": {
+        "crec_ventas_3a": 2,
+        "margen_seguridad": 2,
+        "potencial_analistas": 1
+      },
+      "excluir": "\\b(casino|casinos|gambling|betting|sportsbook|igaming|i-gaming|lottery|lotteries|wagering)\\b",
+      "excluir_industrias": "Gambling|Resorts & Casinos|Retail|Department Stores|Discount Stores|Grocery Stores|Auto & Truck Dealerships|Home Improvement|Pharmaceutical Retailers|Gold|Silver|Precious Metals|Copper|Uranium|Other Industrial Metals|Aluminum|Steel|Coking Coal|Thermal Coal|Oil & Gas E&P|Oil & Gas Integrated|Oil & Gas Drilling|Agricultural Inputs|Biotechnology"
+    }
+  }
+}
