@@ -26,6 +26,7 @@ Lee solo la sección del país que toque.
 
 ## Alemania
 - `^GDAXI` ya es de rentabilidad total aunque `bolsa.mjs` lo trate como índice de precio: usa `EXS1.DE`.
+- `cuentas.mjs --esef` no encuentra emisores alemanes (filings.xbrl.org no los tiene): usar los Excel oficiales «All tables» del informe anual y semestral de la empresa (KION, 19-oct-2026).
 
 ## Suiza
 - Participaciones significativas en la API pública de la SIX; las operaciones de directivos son anónimas (solo cargo e importe); no hay registro público de posiciones cortas.
@@ -51,6 +52,7 @@ Lee solo la sección del país que toque.
 - Web de inversores en inglés (*Securities Report*, *Kessan Tanshin*); EDINET sin clave a través de IR BANK y `disclosure2dl`. Muchos PDF en japonés salen ilegibles: busca la versión inglesa.
 - Ejercicio a marzo (Keyence al 20 de marzo: `--cierre-dia`); unas empresas nombran el ejercicio por el año en que empieza y los proveedores por el de cierre: fija la equivalencia al principio.
 - Sin arrendamientos en balance hasta 2028; la remuneración no se vota cada año (`voto_cupula_pct`); no hay registro público de operaciones de directivos; cortos solo por encima del 0,5 %.
+- Si la web de RI está bloqueada, el feed de eir-parts (`announcement_3.js`) y `disclosure2dl` de EDINET funcionan sin clave; los PDF que salen vacíos con `pdftotext` se leen con pdfminer. Las participaciones cruzadas van al puente a valor de mercado tras el impuesto latente (Takasago, 19-oct).
 
 ## Australia
 - Anuncios de la ASX: la API solo da los 5 últimos; los antiguos salen del listado anual (`announcements.do?...&year=`) y `displayAnnouncement.do?display=pdf&idsId=` da el PDF directo (un script corto resolvió 346 anuncios en un minuto; merecería ser `herramientas/asx.mjs`).
@@ -61,7 +63,15 @@ Lee solo la sección del país que toque.
 ## Canadá
 - SEDAR+ (403) y SEDI (antibot) no abren sin navegador: web de la empresa (solo el ciclo en curso), MFN y GlobeNewswire, e InsiderTrades para directivos. El voto consultivo de remuneración puede no existir (hueco con sus intentos).
 - Sentimiento: Stockchase; Stockhouse da 403.
+- El pago en acciones liquidado en efectivo deforma EBITDA y BPA (Hammond Power, 19-oct).
 
 ## China y Hong Kong (18-oct-2026)
 - Línea H recién salida (Transsion, 2636.HK): la historia del PER es la de la A × el cociente H/A de hoy (sin suponer que el descuento se cierra); beta y rentabilidades con la A. Lote de 100 H: comprobar que el mínimo de 1.000 € cabe en lotes enteros. El folleto de HKEX trae tres años de NIIF auditadas.
 - Guba (Eastmoney) abre con curl: los mensajes van en un JSON incrustado como `article_list=`. ChinaBond da el 10 años con POST al servicio de la curva, no por GET. El EBITDA de consenso de MarketScreener en chinas puede incluir ganancias financieras: usar solo BPA y ventas.
+- Stock Connect: la lista de HKEX («China Connect Securities») en xls se lee pasándola a csv con soffice. Consenso de acciones A con la F10 de Eastmoney o el `earningsTrend` de Yahoo; estados del anual de CNINFO a veces en imagen (leer páginas renderizadas) (DunAn, Sieyuan, Wasion, 19-oct).
+
+## Corea (19-oct-2026)
+- Sin XBRL en `cuentas.mjs`: DART responde desde la nube con el visor por secciones (avisos en cp949; el PDF devuelve 0 bytes). Consenso en FnGuide. Separar mercado, sector y empresa con `movimiento.mjs` (HD Hyundai Electric).
+
+## Arabia Saudí (19-oct-2026)
+- Documentos con la API de Argaam IR (estados a menudo escaneados); `^TASI.SR` no da datos en Yahoo: índice con el ETF KSA; Tadawul cotiza de domingo a jueves y cierra a las 12:00 UTC; el zakat sube el tipo impositivo aparente y `robustez` D5 lo marca sin que el BPA esté inflado (EIC).

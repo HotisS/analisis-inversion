@@ -1,0 +1,4750 @@
+{
+  "meta": {
+    "fecha_corte": "2026-10-19",
+    "divisa": "JPY",
+    "divisa_cotizacion": "JPY",
+    "tipo_cambio": 1,
+    "unidades": "millones",
+    "cierre_ejercicio_mes": 3,
+    "etiqueta_ejercicio": "inicio",
+    "normas_contables": "Normas japonesas (J-GAAP), kessan tanshin y yuho",
+    "formato_cuenta": "funcion",
+    "limitaciones": "Cuentas en millones de JPY, en normas japonesas (J-GAAP), de los kessan tanshin FY2021-FY2025 y del 1T FY2026 y del yuho FY2025 [1, 2, 3, 4, 5, 6, 9, 13]. Japón no tiene XBRL en herramientas/cuentas.mjs; EDINET pide clave en su API y la web de RI de la empresa no abre desde el proxy, así que los documentos salen del canal de TDnet de eir-parts y de disclosure2dl (EDINET). Ejercicio a marzo etiquetado por el año en que empieza, como la empresa: FY2025 = abril 2025-marzo 2026. BPA, DPA y acciones en base posterior al split 1:2 del 1-oct-2025, como los precios de Yahoo [16]. Sin NIIF 16: no hay arrendamientos en balance. EBITDA = beneficio de explotación + amortización + amortización del fondo de comercio; el resultado financiero incluye dividendos de la cartera cruzada, plusvalías por su venta y otros extraordinarios. Clientes incluye los activos de contrato (obra ejecutada pendiente de facturar). Los trimestres salen de restar acumulados de los tanshin; el 1T y el 3T no tienen estado de flujos, así que no hay flujo libre de los últimos 12 meses. El bono a 10 años es el del 16-oct-2026 (2,958 %), el último publicado por el Ministerio de Hacienda al corte [32]. El EBITDA de Yahoo para empresas japonesas incluye partidas no operativas: en los comparables japoneses se deja vacío y el PER es el de la previsión de cada empresa (Yahoo! Japan) [34, 35].",
+    "controles_explicados": [
+      {
+        "control": "Caja proyectada coherente con la histórica",
+        "explicacion": "El flujo libre real de FY2023-FY2025 fue bajo (−16.447, +1.548 y +24.659 M antes de arrendamientos) porque el circulante comercial pasó del 15 % al 32,5 % de las ventas: pagos más rápidos a subcontratistas por la ley y la presión pública, y grandes obras de semiconductores que se cobran al terminar [1, 3, 4]. El DCF no supone que eso se deshaga: mantiene el circulante en el 32,5 % de las ventas (el nivel de FY2025, el más alto de la serie) y solo deja de crecer. Con un margen EBIT del 11-12 % y un capex del 1,2 % de las ventas, el flujo libre sale de ≈ 26.000-31.000 M en FY2027e-FY2028e, cerca del 55-60 % del beneficio de explotación, mientras el circulante sigue absorbiendo 9.000-11.000 M al año. FY2025 (29.725 M de flujo operativo) ya mostró ese orden de magnitud [2]."
+      },
+      {
+        "control": "Convicción frente a la sugerida por los criterios",
+        "explicacion": "Los criterios dan «Baja» porque la regla absoluta (Mantener) y la relativa (Comprar con la prima implícita del mercado) discrepan; mantenemos «Baja»: la rentabilidad a 12 meses es casi nula y el valor intrínseco solo está un 9 % por encima."
+      }
+    ],
+    "huecos": [
+      {
+        "seccion": "trimestres",
+        "campo": "vs_consenso",
+        "tipo": "Complemento",
+        "intentos": "1) MarketScreener: solo estimaciones anuales; 2) kabutan e irbank: 403; 3) prensa (Nikkei, kabutan en Yahoo Japón): sin consenso trimestral publicado",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "financieros",
+        "campo": "ltm.fcf",
+        "tipo": "Complemento",
+        "intentos": "1) Tanshin del 1T FY2026: las empresas japonesas no publican estado de flujos en el 1T y el 3T; 2) presentación del 1T: sin flujos; 3) yuho semestral: aún no publicado (noviembre)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "calidad",
+        "campo": "anios_auditor",
+        "tipo": "Complemento",
+        "intentos": "1) Yuho FY2025: no da el año de inicio en el texto extraído; 2) informe de gobierno 2026: sin dato; 3) tanshin: sin dato",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "esg",
+        "campo": "calificaciones",
+        "tipo": "Complemento",
+        "intentos": "1) Sustainalytics: ficha sin cifra pública; 2) informe de gobierno 2026: no cita calificaciones; 3) web de RI (sostenibilidad): bloqueada por el proxy (502)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sector",
+        "campo": "cr5_pct",
+        "tipo": "Complemento",
+        "intentos": "1) MLIT: no publica cuotas; 2) Yano: solo total de los 73 grandes; 3) presentaciones de la empresa: comparan con rivales sin cuotas",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "insiders",
+        "tipo": "Complemento",
+        "intentos": "1) Japón no tiene registro público de operaciones de directivos; 2) convocatorias de 2025 y 2026: solo saldos de acciones; 3) informes de grandes participaciones (EDINET): solo accionistas de más del 5 %",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "voto de la junta de 2025",
+        "tipo": "Complemento",
+        "intentos": "1) Búsqueda del informe extraordinario de junio de 2025 en EDINET (disclosure2dl): no localizado; 2) web de RI: bloqueada; 3) prensa: sin datos",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "desde de los consejeros de la comisión de auditoría",
+        "tipo": "Complemento",
+        "intentos": "1) Informe de gobierno 2026: nombres sin fecha de entrada; 2) convocatoria 2026: solo los candidatos de ese año; 3) yuho: lista en japonés sin año en el texto extraído",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "bolsa",
+        "campo": "posicion_corta_pct",
+        "tipo": "Complemento",
+        "intentos": "1) JPX publica solo posiciones de más del 0,5 % por gestora, sin total; 2) Yahoo! Japan: margen de crédito, no corto total; 3) karauri.net: 403",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "transacciones",
+        "campo": "operaciones",
+        "tipo": "Complemento",
+        "intentos": "1) Compras de contratistas de instalaciones en Japón (Kinden-Tokyo Electrical, Kandenko): sin múltiplos publicados; 2) Shinryo, Taikisha: compras pequeñas sin cifras; 3) EE. UU. (Comfort Systems, EMCOR): compras de empresas privadas sin EBITDA publicado",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "consenso",
+        "campo": "recomendaciones por tipo y EBITDA/EBIT",
+        "tipo": "Complemento",
+        "intentos": "1) MarketScreener: media «comprar» sin desglose y EBIT con no operativos; 2) Yahoo! Japan (コンセンサス): 403 en la página de consenso; 3) Yahoo Finance: 6 analistas sin desglose",
+        "decision": "Omitido"
+      }
+    ]
+  },
+  "identificacion": {
+    "nombre": "Takasago Thermal Engineering Co., Ltd. (高砂熱学工業株式会社)",
+    "nombre_corto": "Takasago Thermal",
+    "ticker": "1969.T",
+    "isin": "JP3455200000",
+    "mercado": "Bolsa de Tokio (Prime Market), JPY",
+    "indice_referencia": "TOPIX",
+    "pais": "Japón",
+    "pais_iso": "JP",
+    "sector": "Industria",
+    "industria": "Ingeniería e instalaciones (climatización y salas limpias)",
+    "sede": "Tokio (Shinjuku)",
+    "fundacion": "1923",
+    "empleados": 7287,
+    "web": "https://www.tte-net.com",
+    "precio": 4187,
+    "fecha_precio": "2026-10-19",
+    "acciones": 130.89,
+    "capitalizacion_publicada": null,
+    "free_float_pct": 53.1,
+    "max_52s": 5749,
+    "min_52s": 3985,
+    "volumen_medio_diario": "≈ 2639 M JPY/día (3 meses)",
+    "proximos_resultados": "2026-11-13"
+  },
+  "resumen": {
+    "recomendacion": "Mantener",
+    "conviccion": "Baja",
+    "justificacion_recomendacion": null,
+    "horizonte": "12 meses",
+    "sintesis": "**La recomendación y por qué.** Mantener según la regla a 12 meses, con convicción baja; para quien no la tiene, no es compra, y la acción robusta de las pruebas es «No mantener» (no pasa el filtro de mantener). Nuestro objetivo a 12 meses es de 4.006,60 JPY: −1,6 % con dividendo (−0,6 % en el caso base), frente a un precio de 4.187 JPY (cierre del 19-oct-2026) [30]. Con la regla v2 de control la rentabilidad sería del 7,7 % (9,2 % en el base): tampoco llega al 15 %. El valor intrínseco (4.565,88 JPY) está un 9,0 % por encima del precio. El límite de compra es de 3.582 JPY (un 14 % por debajo) y el robusto, de 3.235 JPY. La convicción es baja porque la regla absoluta (Mantener) y la relativa (Comprar con la prima implícita del mercado) discrepan y la asimetría es desfavorable.\n\n**El negocio.** Takasago es el mayor contratista independiente de climatización de Japón: diseña e instala salas limpias para fábricas de semiconductores, farmacia y baterías (climatización industrial, el 59 % de las ventas) y la climatización de oficinas, centros de datos y hospitales (39 %) [7]. El 79 % de las ventas es en Japón y el 21 % en el sudeste asiático, India y China [13]. Cobra por obra, cada vez más con contratos directos y a coste más margen, y trabaja con una red de unos 600 subcontratistas fieles [8]. Su foso es estrecho: escala, técnicos y tecnología de salas limpias en un mercado donde la capacidad de obra es el límite. **Calidad: Sí**: ROIC del 17,9 % en FY2025 frente a un WACC del 8,17 %, aunque es un ROIC de pico de ciclo (8,8 % en FY2021). La sostenibilidad del crecimiento es **sí**: proyectamos un 4,3 % anual frente al 8,8 % de FY2021-FY2025, con la cuota de mercado del 4,1 % al 4,4 %.\n\n**Finanzas y el pico de margen.** Las ventas pasaron de 302.746 M JPY en FY2021 a 423.923 M en FY2025 y el beneficio de explotación se triplicó (47.745 M), con el margen del 4,8 % al 11,3 %, por la ola de fábricas de semiconductores en Japón y la escasez de capacidad de obra, que da poder de precio [1, 5]. FY2025 fue excepcional: cierres favorables de grandes obras; sin ellos, el margen bruto habría quedado en la zona del 21 % (22,1 %) [8]. El 1T FY2026 bajó (ventas −9,9 %, explotación −16,2 %) por la pausa prevista de la obra industrial; la cartera de pedidos sube un 12,2 % (433.250 M) [9, 10]. El circulante (32,5 % de las ventas) se come el flujo: en cinco años el flujo operativo fue 0,46 veces el beneficio [1]. La caja (42.125 M) cubre la deuda (40.593 M) y tiene 64.201 M de inversiones financieras, 45.407 M de ellas en participaciones cruzadas de 83 empresas que va vendiendo (22,6 % del patrimonio, objetivo ≤ 15 %) [9, 13].\n\n**Equipo y gobierno.** Kazuhito Kojima preside desde 2020; Hiroshi Kubota es vicepresidente y consejero representante desde abril de 2026 [23, 26]. La empresa ha batido su guía inicial cuatro años seguidos [1, 29]. Sin accionista de control y con 7 independientes de 12 consejeros y un presidente del consejo externo [21]. El bonus depende del ordinario y el margen; las acciones, del ordinario, el ROE y la rentabilidad frente al TOPIX [21]. La reelección de Kojima bajó del 92,9 % al 88,7 % [24, 25].\n\n**Valoración.** El DCF da 4.377,10 JPY (WACC 8,17 %, crecimiento terminal 1,5 %) y el precio equivale a crecer un 0,8 % al año o a un margen EBITDA del 11,2 % para siempre: el mercado paga el margen de hoy, no más. El objetivo a 12 meses aplica 11,8 veces (el PER de hoy, 13,0x, rebajado un 10 % hacia la mediana adelantada de 9,7x) a nuestro BPA de FY2028e (342,9 JPY), más el dividendo. Los analistas valoran la acción en 5.975 JPY [31], con un BPA un 10 % superior al nuestro y un múltiplo de 16-17 veces.\n\n**Qué puede ir mal y qué vigilar.** Que el ciclo de fábricas de semiconductores en Japón se pare: el bajista del DCF es de 3.087 JPY (−26 %). Los resultados del 2T FY2026, hacia el 13-nov, dirán si la obra industrial vuelve a crecer en el 2S y si el margen bruto aguanta el 21-22 %. Veredicto de precio y noticias: **no cambia** (sin hechos pendientes ajenos al análisis).",
+    "tesis": "Takasago es un buen negocio en el mejor momento de su ciclo: ROIC del 18 %, poder de precio por la escasez de capacidad de obra en Japón y una cartera récord, con la caja y la cartera cruzada cubriendo el 10 % del precio. Pero el precio (13 veces nuestro BPA de FY2027e) ya paga ese margen: el DCF da un 4,5 % más y la regla a 12 meses, nada, porque el múltiplo de hoy está muy por encima de su historia (9,7x) y el margen de FY2025 tiene parte de pico. Se compraría por debajo de 3.582 JPY o si el margen demuestra en FY2026-FY2027 que no era un pico.",
+    "vision_diferencial": {
+      "mercado_descuenta": "Que el margen de FY2025 se mantiene pero sin más crecimiento: el precio equivale a un crecimiento del 0,8 % anual o a un margen EBITDA final del 11,2 %.",
+      "nuestra_vision": "El crecimiento sigue (4-8 % con la cartera actual) pero el margen toca techo en FY2028e y el múltiplo no tiene por qué subir: el negocio vale poco más que el precio.",
+      "por_que": "La cartera crece un 12 % y la guía se ha batido cuatro años, pero el 59 % de las ventas depende del ciclo de inversión industrial y el margen de FY2025 tuvo cierres favorables de grandes obras [8, 10, 29]."
+    },
+    "a_favor": [
+      "**Rentabilidad alta y creciente**: ROIC del 17,9 % y margen de explotación del 11,3 % en FY2025, frente al 8,8 % y el 4,8 % de FY2021 [1].",
+      "**Cartera récord**: 433.250 M (+12,2 %) a jun-26 y objetivo de pedidos de 520.000 M en FY2026 [10].",
+      "**Balance con reservas**: caja que cubre la deuda, 64.201 M de inversiones financieras (cartera cruzada que se va vendiendo) y superávit de pensiones; rating A+ [9].",
+      "**Dirección creíble**: guía inicial batida cuatro años seguidos y dividendo progresivo con payout del 40 % [13, 29]."
+    ],
+    "en_contra": [
+      "**Margen de pico de ciclo**: FY2025 tuvo cierres favorables de grandes obras; el 1T FY2026 bajó un 16 % en explotación [8, 9].",
+      "**Dependencia del ciclo de semiconductores**: los pedidos industriales cayeron un 6,3 % en FY2025 y la cartera industrial un 20,7 % [7].",
+      "**El circulante se come el flujo**: flujo operativo de 0,46 veces el beneficio en cinco años [1].",
+      "**Múltiplo exigente frente a su historia**: 13,0x frente a una mediana adelantada de 9,7x [30]."
+    ],
+    "que_vigilar": "El margen bruto del 2T FY2026 (13-nov) y del año: por encima del 21-22 % confirma el base; los pedidos industriales y la cartera de oportunidades de semiconductores; el circulante sobre ventas; las ventas de la cartera cruzada y posibles colocaciones de tenedores cruzados; el nuevo plan a medio plazo de mayo de 2027.",
+    "cambiaria_recomendacion": [
+      "Precio por debajo de 3.582 JPY: la rentabilidad a 12 meses pasaría del 15 % (Comprar); la compra robusta, por debajo de 3.235 JPY.",
+      "Precio por encima de 4.580 JPY: la ponderada bajaría del −10 % (Vender o reducir).",
+      "Margen bruto por debajo del 21 % en un semestre o pedidos industriales en caída dos trimestres: bajaríamos el base hacia el bajista.",
+      "Un FY2026 con margen de explotación del 12 % o más y pedidos de 520.000 M: subiríamos el BPA y la acción podría pasar a Comprar a precios cercanos al actual."
+    ],
+    "kpis_seguimiento": [
+      {
+        "kpi": "Margen bruto consolidado",
+        "nivel_actual": "22,5 % (1T FY2026)",
+        "umbral_alerta": "< 21 %",
+        "por_que": "Separa el margen estructural del pico de FY2025."
+      },
+      {
+        "kpi": "Pedidos de climatización industrial",
+        "nivel_actual": "208.349 M en FY2025 (−6,3 %)",
+        "umbral_alerta": "Caída dos trimestres seguidos",
+        "por_que": "Mide el ciclo de semiconductores."
+      },
+      {
+        "kpi": "Cartera de pedidos",
+        "nivel_actual": "433.250 M (jun-26, +12,2 %)",
+        "umbral_alerta": "< 400.000 M",
+        "por_que": "Da las ventas del año siguiente."
+      },
+      {
+        "kpi": "Circulante comercial sobre ventas",
+        "nivel_actual": "32,5 % (FY2025)",
+        "umbral_alerta": "> 35 %",
+        "por_que": "Es lo que consume el flujo libre."
+      },
+      {
+        "kpi": "Contratos directos y a coste más margen (matriz)",
+        "nivel_actual": "63,8 % (1T FY2026)",
+        "umbral_alerta": "< 55 %",
+        "por_que": "Sostiene el margen al contratar."
+      },
+      {
+        "kpi": "Cartera cruzada sobre patrimonio",
+        "nivel_actual": "22,6 % (mar-26)",
+        "umbral_alerta": "Sin bajar en FY2026",
+        "por_que": "Caja para recompras y gobierno."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "historia": {
+    "resumen": "Takasago se fundó en 1923 en Tokio como contratista de calefacción (高砂煖房工事) y fue pionera de la climatización en Japón [22]. Cotiza en la Bolsa de Tokio desde 1949. En los años ochenta y noventa se especializó en salas limpias para la industria electrónica y se expandió por Asia [13]. Entre FY2019 y FY2021 el margen de explotación estaba en el 4-5 %; el plan a medio plazo 2026 (lanzado en 2024, revisado en mayo de 2025) y la ola de fábricas de semiconductores en Japón lo llevaron al 11,3 % en FY2025 [4, 14 de A]. En 2023 celebró su centenario con un dividendo conmemorativo [22]. En febrero de 2025 tenedores cruzados (MUFG, Taiyo Life y otros) vendieron 3,1 millones de acciones en una colocación secundaria, y en octubre de 2025 hizo un split 1:2 [D].",
+    "hitos": [
+      {
+        "anio": "1923",
+        "hito": "Fundación en Tokio como contratista de calefacción."
+      },
+      {
+        "anio": "1949",
+        "hito": "Salida a la Bolsa de Tokio."
+      },
+      {
+        "anio": "2020",
+        "hito": "Kazuhito Kojima, presidente y consejero delegado."
+      },
+      {
+        "anio": "2023",
+        "hito": "Centenario; arranque de la ola de fábricas de semiconductores (pedidos de 403.110 M)."
+      },
+      {
+        "anio": "2025",
+        "hito": "Colocación secundaria de tenedores cruzados (febrero), recompra de 8.000 M y split 1:2 (octubre)."
+      },
+      {
+        "anio": "2026",
+        "hito": "Récord de beneficio de FY2025 (explotación 47.745 M); Hiroshi Kubota, vicepresidente y consejero representante (abril); rating JCR A+."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "negocio": {
+    "segmentos": [
+      {
+        "nombre": "Instalaciones: climatización general",
+        "descripcion": "Climatización, ventilación y fontanería de oficinas, redesarrollos urbanos, hospitales, centros de datos, hoteles y edificios públicos; obra nueva y renovación.",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "FY2021",
+            "ingresos": 160202,
+            "resultado": null
+          },
+          {
+            "periodo": "FY2022",
+            "ingresos": 158194,
+            "resultado": null
+          },
+          {
+            "periodo": "FY2023",
+            "ingresos": 161961,
+            "resultado": null
+          },
+          {
+            "periodo": "FY2024",
+            "ingresos": 163170,
+            "resultado": null
+          },
+          {
+            "periodo": "FY2025",
+            "ingresos": 166776,
+            "resultado": null
+          }
+        ]
+      },
+      {
+        "nombre": "Instalaciones: climatización industrial",
+        "descripcion": "Salas limpias y climatización de procesos para fábricas de semiconductores, componentes electrónicos, farmacia, baterías y química (tecnología propia TCR-SWIT); Japón y exterior.",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "FY2021",
+            "ingresos": 136503,
+            "resultado": null
+          },
+          {
+            "periodo": "FY2022",
+            "ingresos": 173822,
+            "resultado": null
+          },
+          {
+            "periodo": "FY2023",
+            "ingresos": 193532,
+            "resultado": null
+          },
+          {
+            "periodo": "FY2024",
+            "ingresos": 210512,
+            "resultado": null
+          },
+          {
+            "periodo": "FY2025",
+            "ingresos": 248606,
+            "resultado": null
+          }
+        ]
+      },
+      {
+        "nombre": "Fabricación y venta de equipos",
+        "descripcion": "Equipos de climatización y salas limpias (Nippon Kucho Service y otras filiales); resultado = beneficio de explotación del segmento.",
+        "tipo_resultado": "EBIT",
+        "historico": [
+          {
+            "periodo": "FY2021",
+            "ingresos": 5953,
+            "resultado": null
+          },
+          {
+            "periodo": "FY2022",
+            "ingresos": 6722,
+            "resultado": 304
+          },
+          {
+            "periodo": "FY2023",
+            "ingresos": 7782,
+            "resultado": 405
+          },
+          {
+            "periodo": "FY2024",
+            "ingresos": 7859,
+            "resultado": 579
+          },
+          {
+            "periodo": "FY2025",
+            "ingresos": 8414,
+            "resultado": 907
+          }
+        ]
+      },
+      {
+        "nombre": "Otros",
+        "descripcion": "Agencia de seguros y servicios menores.",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "FY2021",
+            "ingresos": 86,
+            "resultado": null
+          },
+          {
+            "periodo": "FY2022",
+            "ingresos": 91,
+            "resultado": null
+          },
+          {
+            "periodo": "FY2023",
+            "ingresos": 90,
+            "resultado": null
+          },
+          {
+            "periodo": "FY2024",
+            "ingresos": 119,
+            "resultado": null
+          },
+          {
+            "periodo": "FY2025",
+            "ingresos": 125,
+            "resultado": null
+          }
+        ]
+      }
+    ],
+    "geografias": [
+      {
+        "nombre": "Japón",
+        "peso_pct": 78.6
+      },
+      {
+        "nombre": "Sudeste asiático (Tailandia, Singapur, Malasia, Vietnam, Myanmar)",
+        "peso_pct": 12
+      },
+      {
+        "nombre": "Otros (India, China, EE. UU. y otros)",
+        "peso_pct": 9.4
+      }
+    ],
+    "geografias_criterio": "destino",
+    "kpis": [
+      {
+        "kpi": "Pedidos consolidados",
+        "valor_anterior": "416.147 M (FY2024)",
+        "valor_actual": "460.057 M (FY2025); 106.598 M en el 1T FY2026",
+        "variacion": "+10,6 %; +1,7 % en el 1T",
+        "comentario": "General +30,4 % e industrial −6,3 % en FY2025 por una fábrica de baterías de unos 50.000 M cancelada; guía FY2026: 520.000 M [7, 8, 10]."
+      },
+      {
+        "kpi": "Cartera de pedidos",
+        "valor_anterior": "375.440 M (mar-25)",
+        "valor_actual": "411.573 M (mar-26); 433.250 M (jun-26)",
+        "variacion": "+9,6 %; +12,2 % interanual en jun-26",
+        "comentario": "Cubre ≈ 1 año de ventas; la industrial bajó un 20,7 % en FY2025 (153.957 M) y repuntó a 160.973 M en jun-26 [7, 10]."
+      },
+      {
+        "kpi": "Ventas de climatización industrial (peso)",
+        "valor_anterior": "45,1 % (FY2021)",
+        "valor_actual": "58,6 % (FY2025)",
+        "variacion": "+13,5 puntos",
+        "comentario": "Semiconductores, electrónica, farmacia y baterías [5, 7]."
+      },
+      {
+        "kpi": "Margen bruto consolidado",
+        "valor_anterior": "18,8 % (FY2024)",
+        "valor_actual": "22,1 % (FY2025); 22,5 % en el 1T FY2026",
+        "variacion": "+3,3 puntos",
+        "comentario": "Unos 21 % sin las mejoras al cierre de grandes obras [8, 11]."
+      },
+      {
+        "kpi": "Contratos directos y a coste más margen (matriz)",
+        "valor_anterior": "n. d.",
+        "valor_actual": "61,2 % de los pedidos (FY2025); 63,8 % (1T FY2026)",
+        "variacion": "al alza",
+        "comentario": "Objetivo en torno al 65 %: mejor margen al contratar [8, 11]."
+      },
+      {
+        "kpi": "Ventas en el exterior",
+        "valor_anterior": "50.631 M (FY2021)",
+        "valor_actual": "90.756 M (FY2025)",
+        "variacion": "+15,7 % anual",
+        "comentario": "Sobre todo sudeste asiático e India; la cartera exterior bajó un 25 % en FY2025 [5, 7]."
+      }
+    ],
+    "confianza": "Alta",
+    "descripcion": "Takasago Thermal Engineering diseña, instala y mantiene sistemas de climatización, ventilación y salas limpias. Es un contratista de instalaciones (設備工事, subcontratista o contratista directo de la constructora general o del cliente final) con dos grandes clientelas: la climatización industrial (58,6 % de las ventas en FY2025), sobre todo salas limpias para fábricas de semiconductores y electrónica (TSMC-JASM, Rapidus, Kioxia y otras), farmacia y baterías, y la climatización general (39,4 %): oficinas de los grandes redesarrollos de Tokio, centros de datos, hospitales y edificios públicos [7, 13]. Fabrica equipos en pequeña escala (2 %) y el 21 % de las ventas es fuera de Japón (sudeste asiático, India, China) [7, 13]. Trabaja con una red de unos 600 subcontratistas fieles (Kowakai) y 7.287 empleados, de los que 2.469 en la matriz [7, 13].",
+    "como_gana_dinero": "Cobra por obra: precio cerrado o, cada vez más, coste más margen y contrato directo con el cliente (61-64 % de los pedidos de la matriz), con cláusulas de revisión de precios [11]. El beneficio es el margen bruto de la obra (22 % en FY2025) menos los gastos generales (10,8 % de las ventas): el coste son subcontratistas, materiales (tubería, conductos, equipos) y su propia ingeniería [7, 13]. El margen depende de tres cosas: la escasez de capacidad de obra en Japón (que hoy da poder de precio a quien tiene técnicos y subcontratistas), la mezcla (las renovaciones y las salas limpias de semiconductores dejan más margen) y la ejecución (sobrecostes o mejoras al cerrar una obra grande) [11]. Las renovaciones y el mantenimiento (7,9 % de las ventas) son la parte recurrente [7].",
+    "clientes": "Ningún cliente supera el 10 % de las ventas [13]. Los clientes son fabricantes de semiconductores y electrónica (que deciden por ciclos de inversión), promotores inmobiliarios y constructoras generales (Kajima, Obayashi, Shimizu, Taisei, Takenaka) y el sector público [7]. El poder de precio es hoy alto por la escasez de mano de obra: los clientes aceptan contratos a coste más margen que antes no aceptaban, y la empresa dice que la subida de costes podría frenar parte de la inversión de los clientes [11]. Una fábrica de baterías de unos 50.000 M cancelada en FY2025 muestra el riesgo de concentración por proyecto [11]."
+  },
+  "sector": {
+    "definicion": "El mercado relevante es la obra de climatización y fontanería (管工事業) en Japón según la estadística de obras del MLIT, porque es donde compite el 79 % de las ventas: 8.196.561 M JPY en el ejercicio fiscal 2020, 8.659.659 M en 2021 y 8.313.576 M en 2022 [17], y 10.315.700 M en 2024 según CREX citando la misma fuente [18]. Ojo: el salto 2022-2024 puede deberse en parte a cambios en la encuesta, y el mercado incluye fontanería y pequeñas obras donde Takasago no compite. Contraste: los 73 grandes contratistas del sector facturaron 1.238.800 M en 2021 (Yano) [19]; Takasago (302.746 M) era el mayor. La cuota sobre el mercado amplio es del 3-4 %; sobre los grandes, de alrededor del 20 %.",
+    "tamano": "≈ 10.315.700 M JPY en el ejercicio fiscal 2024 (obras de climatización y fontanería en Japón, MLIT vía CREX) [17, 18]",
+    "unidad_serie": "millones de JPY (obras de climatización y fontanería en Japón)",
+    "serie": [
+      {
+        "anio": "2020",
+        "tamano": 8196561
+      },
+      {
+        "anio": "2021",
+        "tamano": 8659659
+      },
+      {
+        "anio": "2022",
+        "tamano": 8313576
+      },
+      {
+        "anio": "2024",
+        "tamano": 10315700
+      }
+    ],
+    "tcac_historico_pct": 5.9,
+    "tcac_previsto_pct": 3,
+    "cr5_pct": null,
+    "estructura": "Fragmentada en el mercado amplio; concentrada en las grandes obras (cinco o seis contratistas de climatización y los grupos eléctricos)",
+    "drivers": [
+      {
+        "driver": "Fábricas de semiconductores en Japón (subvenciones públicas a TSMC-JASM, Rapidus, Kioxia, Micron)",
+        "efecto": "+",
+        "horizonte": "Cíclico",
+        "evidencia": "La climatización industrial de Takasago pasó de 136.503 M (FY2021) a 248.606 M (FY2025); la cartera de oportunidades de semiconductores sube en 2026 [7, 11]."
+      },
+      {
+        "driver": "Escasez de técnicos y subcontratistas (envejecimiento, límite de horas extra desde abril de 2024)",
+        "efecto": "+/−",
+        "horizonte": "Estructural",
+        "evidencia": "Da poder de precio (más contratos a coste más margen) pero limita cuánta obra se puede hacer [11]."
+      },
+      {
+        "driver": "Redesarrollos urbanos y renovación de edificios",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Los grandes redesarrollos de oficinas dan trabajo estable hasta 2029 según la empresa [11]."
+      },
+      {
+        "driver": "Centros de datos (IA)",
+        "efecto": "+",
+        "horizonte": "Cíclico",
+        "evidencia": "Equipo dedicado y más volumen que antes, pero los pedidos se retrasan al año siguiente [11]."
+      },
+      {
+        "driver": "Descarbonización y eficiencia energética (renovación de equipos, bombas de calor, hidrógeno)",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Línea de negocio de neutralidad de carbono del plan a medio plazo [7]."
+      },
+      {
+        "driver": "Coste de construcción",
+        "efecto": "−",
+        "horizonte": "Cíclico",
+        "evidencia": "La subida de costes puede frenar decisiones de inversión de los clientes, según la propia empresa [11]."
+      }
+    ],
+    "porter": [
+      {
+        "fuerza": "Rivalidad",
+        "intensidad": 3,
+        "justificacion": "Cinco o seis grandes de climatización (Takasago, Sanki, Taikisha, Dai-Dan, Shinryo privada) y los grupos eléctricos (Kinden, Kandenko); hoy hay más obra que capacidad [11, 20]."
+      },
+      {
+        "fuerza": "Poder de los clientes",
+        "intensidad": 3,
+        "justificacion": "Grandes fabricantes y constructoras generales; hoy aceptan contratos a coste más margen por la escasez [11]."
+      },
+      {
+        "fuerza": "Poder de los proveedores",
+        "intensidad": 3,
+        "justificacion": "Los subcontratistas especializados escasean; materiales con cláusulas de revisión [11]."
+      },
+      {
+        "fuerza": "Amenaza de entrada",
+        "intensidad": 1,
+        "justificacion": "Hacen falta licencias, técnicos certificados, historial de obras de salas limpias y una red de subcontratistas [13]."
+      },
+      {
+        "fuerza": "Amenaza de sustitutos",
+        "intensidad": 1,
+        "justificacion": "La climatización y las salas limpias no tienen sustituto; la prefabricación (T-Base) cambia cómo se hace, no si se hace [7]."
+      }
+    ],
+    "ciclo": {
+      "posicion": "Expansión madura",
+      "comentario": "El ciclo de inversión en fábricas de semiconductores en Japón vivió su pico de obra nueva en FY2023-FY2025 [7]. En FY2025 los pedidos industriales de Takasago cayeron un 6,3 % y la cartera industrial un 20,7 %, compensados por la general (+30,4 %); en 2026 la cartera de oportunidades de semiconductores vuelve a subir, ahora sobre todo en ampliaciones (94 % de renovación en los pedidos industriales del 1T) [7, 11]. El sector de obra japonés no cae desde 2011 porque la oferta (técnicos) es el límite, no la demanda. Un parón de inversión en semiconductores sí se notaría: en FY2019-FY2021 el margen de explotación de Takasago estaba en el 4-5 %."
+    },
+    "regulacion": "Licencia de contratista (建設業法) y la ley de subcontratación, que obliga a pagar antes y mejor a los subcontratistas (por eso bajaron los proveedores) [13]. El límite de horas extra en la construcción desde abril de 2024 reduce la capacidad de obra [11]. Normas de eficiencia energética de edificios (ZEB) y la política industrial de semiconductores (subvenciones de METI a Rapidus y TSMC) empujan la demanda [7]. Precios públicos de mano de obra (公共工事設計労務単価) suben cada año.",
+    "tendencias": "Tres tendencias: (1) prefabricación y digitalización de la obra (T-Base de Takasago, BIM) para hacer más con menos técnicos, con una contribución que la empresa cifra en 13.000 M de obra en FY2026 y 50.000 M en FY2030 [7, 11]; (2) contratos directos con el cliente y a coste más margen, que suben el margen al contratar [11]; (3) internacionalización al sudeste asiático e India siguiendo a los fabricantes japoneses y a los centros de datos [7]. Takasago gana con las tres; la amenaza es que el ciclo de semiconductores se enfríe a la vez que se normaliza la escasez.",
+    "confianza": "Media"
+  },
+  "competencia": {
+    "cuota_pct": 4.1,
+    "posicion": "1.º contratista independiente de climatización de Japón por ventas (423.923 M en FY2025, frente a 286.127 M de Taikisha, 254.673 M de Sanki y 256.228 M de Dai-Dan); los grupos eléctricos Kinden y Kandenko son mayores pero hacen sobre todo instalación eléctrica [20]. Cuota del 4,1 % del mercado amplio de climatización y fontanería (estimación propia: 423.923 / 10.315.700) [18].",
+    "competidores": [
+      {
+        "nombre": "Taikisha Ltd.",
+        "pais": "JP",
+        "ticker": "1979.T",
+        "ingresos": 286127,
+        "cuota_pct": null,
+        "margen_ebit_pct": 9,
+        "comentario": "Rival directo en salas limpias industriales (automóvil y semiconductores) y pintura; más peso exterior [20]."
+      },
+      {
+        "nombre": "Sanki Engineering Co., Ltd.",
+        "pais": "JP",
+        "ticker": "1961.T",
+        "ingresos": 254673,
+        "cuota_pct": null,
+        "margen_ebit_pct": 12.9,
+        "comentario": "Climatización y fontanería de edificios; más peso de climatización general [20]."
+      },
+      {
+        "nombre": "Dai-Dan Co., Ltd.",
+        "pais": "JP",
+        "ticker": "1980.T",
+        "ingresos": 256228,
+        "cuota_pct": null,
+        "margen_ebit_pct": 14.7,
+        "comentario": "Climatización y electricidad de edificios; margen alto con renovaciones [20]."
+      },
+      {
+        "nombre": "Kinden Corporation",
+        "pais": "JP",
+        "ticker": "1944.T",
+        "ingresos": 750742,
+        "cuota_pct": null,
+        "margen_ebit_pct": 13,
+        "comentario": "Grupo de instalaciones eléctricas y de climatización ligado a Kansai Electric [20]."
+      },
+      {
+        "nombre": "Kandenko Co.,Ltd.",
+        "pais": "JP",
+        "ticker": "1942.T",
+        "ingresos": 742022,
+        "cuota_pct": null,
+        "margen_ebit_pct": 12.4,
+        "comentario": "Grupo de instalaciones eléctricas ligado a TEPCO; centros de datos y redes [20]."
+      },
+      {
+        "nombre": "United Integrated Services Co., Ltd.",
+        "pais": "TW",
+        "ticker": "2404.TW",
+        "ingresos": 420232,
+        "cuota_pct": null,
+        "margen_ebit_pct": 17.6,
+        "comentario": "Contratista taiwanés de salas limpias para TSMC; compite en las fábricas de TSMC fuera de Taiwán [20]."
+      }
+    ],
+    "foso": {
+      "veredicto": "Estrecho",
+      "tendencia": "Estable",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 0,
+          "evidencia": "No aplica: cada obra es independiente."
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 2,
+          "evidencia": "Las ampliaciones de una fábrica las suele hacer quien la construyó (renovaciones del 94 % de los pedidos industriales en el 1T FY2026) [5]."
+        },
+        {
+          "fuente": "Intangibles (marca, patentes, licencias)",
+          "puntuacion": 2,
+          "evidencia": "Tecnología de salas limpias TCR-SWIT y historial de obras de semiconductores; marca de referencia en Japón [5]."
+        },
+        {
+          "fuente": "Ventaja en costes",
+          "puntuacion": 2,
+          "evidencia": "Escala en compras y prefabricación (T-Base); margen similar al de los rivales (11,3 % frente al 9-15 %) [6]."
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 3,
+          "evidencia": "Red de unos 600 subcontratistas fieles y 2.469 técnicos de la matriz en un mercado donde la capacidad es el límite [4, 5]."
+        }
+      ]
+    },
+    "amenazas": "Taikisha y UIS en salas limpias de semiconductores, y los grupos eléctricos (Kinden, Kandenko) en centros de datos [20]. La mayor amenaza no es un competidor sino el ciclo: si las grandes inversiones en fábricas se frenan, todos los contratistas se disputarán menos obra y los márgenes volverán hacia el 5-8 %.",
+    "confianza": "Media"
+  },
+  "financieros": {
+    "cuenta": [
+      {
+        "periodo": "FY2021",
+        "ingresos": 302746,
+        "coste_ventas": 261349,
+        "gastos_generales": 27012,
+        "ebitda": 16324,
+        "amortizaciones": 1941,
+        "ebit": 14383,
+        "resultado_financiero": 2343,
+        "bai": 16726,
+        "impuestos": 5145,
+        "minoritarios": 45,
+        "beneficio_neto": 11535,
+        "gastos_financieros": 237,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 84.69,
+        "dpa": 30,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 136.2
+      },
+      {
+        "periodo": "FY2022",
+        "ingresos": 338831,
+        "coste_ventas": 292468,
+        "gastos_generales": 31036,
+        "ebitda": 17807,
+        "amortizaciones": 2481,
+        "ebit": 15326,
+        "resultado_financiero": 1526,
+        "bai": 16852,
+        "impuestos": 4133,
+        "minoritarios": 491,
+        "beneficio_neto": 12227,
+        "gastos_financieros": 278,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 92.35,
+        "dpa": 31.5,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 132.4
+      },
+      {
+        "periodo": "FY2023",
+        "ingresos": 363366,
+        "coste_ventas": 303419,
+        "gastos_generales": 35755,
+        "ebitda": 26924,
+        "amortizaciones": 2732,
+        "ebit": 24192,
+        "resultado_financiero": 2861,
+        "bai": 27053,
+        "impuestos": 6942,
+        "minoritarios": 498,
+        "beneficio_neto": 19612,
+        "gastos_financieros": 288,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 147.84,
+        "dpa": 59.5,
+        "dpa_extraordinario": 5,
+        "acciones_diluidas": 132.66
+      },
+      {
+        "periodo": "FY2024",
+        "ingresos": 381661,
+        "coste_ventas": 310015,
+        "gastos_generales": 39231,
+        "ebitda": 35707,
+        "amortizaciones": 3292,
+        "ebit": 32415,
+        "resultado_financiero": 5093,
+        "bai": 37508,
+        "impuestos": 9484,
+        "minoritarios": 392,
+        "beneficio_neto": 27631,
+        "gastos_financieros": 269,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 208.07,
+        "dpa": 83.5,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 132.79
+      },
+      {
+        "periodo": "FY2025",
+        "ingresos": 423923,
+        "coste_ventas": 330203,
+        "gastos_generales": 45974,
+        "ebitda": 51503,
+        "amortizaciones": 3758,
+        "ebit": 47745,
+        "resultado_financiero": 5081,
+        "bai": 52826,
+        "impuestos": 14813,
+        "minoritarios": 542,
+        "beneficio_neto": 37470,
+        "gastos_financieros": 423,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 285.73,
+        "dpa": 115,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 131.14
+      }
+    ],
+    "ltm": {
+      "periodo": "LTM jun-26",
+      "fecha_fin": "2026-06-30",
+      "ingresos": 414640,
+      "ebitda": 50097,
+      "ebit": 46109,
+      "beneficio_neto": 34922,
+      "bpa": 266.72,
+      "dpa": 115,
+      "dpa_extraordinario": 0,
+      "fcf": null,
+      "participadas_en_ebitda": null,
+      "no_recurrentes_en_ebitda": null
+    },
+    "cambios_perimetro": [
+      {
+        "periodo": "FY2025",
+        "descripcion": "Entrada en el perímetro de THS Innovations y Prompt Techno Service (Tailandia, gestión energética y mantenimiento de instalaciones; 1.287 empleados) desde el 3T FY2025; compras por 3.220 M [7, 13]."
+      }
+    ],
+    "comentario": "Takasago es el mayor contratista independiente de climatización de Japón. Las ventas pasaron de 302.746 M en FY2021 a 423.923 M en FY2025 (+8,8 % anual) y el beneficio de explotación se triplicó, de 14.383 M a 47.745 M: el margen de explotación pasó del 4,8 % al 11,3 % [1, 5, 6]. El salto vino de tres cosas: la ola de fábricas de semiconductores en Japón (TSMC-JASM en Kumamoto, Rapidus, Kioxia), que llevó la climatización industrial de 136.503 M a 248.606 M; precios mejores al contratar (más contratos directos con el cliente y a coste más margen: el 61,2 % de los pedidos de la matriz en FY2025) y la escasez de capacidad de obra en Japón, que da poder de precio a quien tiene técnicos [7, 8]. FY2025 fue excepcional: grandes obras de semiconductores se cerraron con mejora de margen al terminar, y la propia empresa dice que sin ellas el margen bruto habría quedado «en la zona del 21 %» (22,1 % publicado) [8]. El 1T FY2026 bajó (ventas −9,9 %, explotación −16,2 %) porque la obra industrial se concentra en el 2S, según la empresa en línea con su plan [9, 11]. Los resultados son muy estacionales: el 3T y el 4T suman más de la mitad de las ventas y del beneficio [12].",
+    "ajustes": "Cifras publicadas (J-GAAP), sin ajustes. EBITDA = beneficio de explotación + amortización + amortización del fondo de comercio (314 M en FY2025). El resultado financiero (BAI − beneficio de explotación) recoge dividendos de la cartera de acciones e intereses netos (no operativo neto de 2.897 M en FY2025) y extraordinarios: plusvalías de venta de acciones de la cartera cruzada (1.161 / 270 / 1.295 / 2.712 / 799 M en FY2021-FY2025) y de inmovilizado (1.517 M en FY2025), deterioro de 288 M en FY2023 [1, 3, 4, 5]. Esas plusvalías se repiten cada año porque la empresa vende su cartera cruzada por plan; en el BPA propio solo cuento una parte decreciente. BPA y DPA de todos los años en base posterior al split 1:2 del 1-oct-2025 [16]. El DPA de FY2023 incluye 5 JPY (10 antes del split) conmemorativos del centenario [4]. El flujo operativo de FY2025 es el corregido el 12-jun-2026 (29.725 M) [2].",
+    "confianza": "Alta"
+  },
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "1T FY2024",
+        "ingresos": 70415,
+        "crecimiento_pct": -10,
+        "crecimiento_organico_pct": null,
+        "ebitda": 2692,
+        "margen_ebitda_pct": 3.8,
+        "bpa": 15.28,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "2T FY2024",
+        "ingresos": 89495,
+        "crecimiento_pct": 3.9,
+        "crecimiento_organico_pct": null,
+        "ebitda": 8674,
+        "margen_ebitda_pct": 9.7,
+        "bpa": 46.42,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "3T FY2024",
+        "ingresos": 105283,
+        "crecimiento_pct": 6,
+        "crecimiento_organico_pct": null,
+        "ebitda": 11976,
+        "margen_ebitda_pct": 11.4,
+        "bpa": 63.48,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "4T FY2024",
+        "ingresos": 116468,
+        "crecimiento_pct": 16.9,
+        "crecimiento_organico_pct": null,
+        "ebitda": 12365,
+        "margen_ebitda_pct": 10.6,
+        "bpa": 82.9,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1T FY2025",
+        "ingresos": 94205,
+        "crecimiento_pct": 33.8,
+        "crecimiento_organico_pct": null,
+        "ebitda": 10977,
+        "margen_ebitda_pct": 11.7,
+        "bpa": 67.98,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "2T FY2025",
+        "ingresos": 100296,
+        "crecimiento_pct": 12.1,
+        "crecimiento_organico_pct": null,
+        "ebitda": 15457,
+        "margen_ebitda_pct": 15.4,
+        "bpa": 85.79,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "3T FY2025",
+        "ingresos": 111524,
+        "crecimiento_pct": 5.9,
+        "crecimiento_organico_pct": null,
+        "ebitda": 15387,
+        "margen_ebitda_pct": 13.8,
+        "bpa": 84.41,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "4T FY2025",
+        "ingresos": 117898,
+        "crecimiento_pct": 1.2,
+        "crecimiento_organico_pct": null,
+        "ebitda": 9682,
+        "margen_ebitda_pct": 8.2,
+        "bpa": 47.55,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1T FY2026",
+        "ingresos": 84922,
+        "crecimiento_pct": -9.9,
+        "crecimiento_organico_pct": null,
+        "ebitda": 9571,
+        "margen_ebitda_pct": 11.3,
+        "bpa": 48.97,
+        "vs_consenso": null
+      }
+    ],
+    "ultima_presentacion": "En la conferencia del 1T FY2026 (5-ago-2026) los analistas preguntaron por la caída de ventas (−9,9 %) y por el margen bruto del 22,5 % [11]. La dirección dijo que la pausa en la obra industrial era la prevista, que el beneficio superó su plan interno por las renovaciones y las filiales de Singapur y Tailandia, y que las ventas volverán a crecer en el 2S [11]. Mantuvo la guía (ventas 440.000 M, explotación 50.000 M, neto 40.000 M) citando el terremoto de Kumamoto y Oriente Medio [9, 11]. La cartera de oportunidades de semiconductores crece (inversiones anunciadas y ampliaciones en fábricas que ya hizo Takasago, con obras de 2-3 meses), la de centros de datos se retrasa al año siguiente y los redesarrollos de oficinas dan trabajo estable hasta 2029 [10, 11]. Frente a mayo, el tono pasó de explicar la pérdida de unos 50.000 M de pedidos por una fábrica de baterías cancelada [8] a destacar que la cartera total subió un 12,2 % hasta 433.250 M y que el 94 % de los pedidos industriales de la matriz son renovaciones [10, 11]. Sobre recompras, «flexible y oportuna» según las inversiones de crecimiento [11].",
+    "confianza": "Alta"
+  },
+  "balance": {
+    "historico": [
+      {
+        "periodo": "FY2021",
+        "activo_total": 300736,
+        "activo_corriente": 228208,
+        "pasivo_corriente": 134342,
+        "pasivo_total": 163838,
+        "fondo_comercio": 1920,
+        "intangibles": 6183,
+        "inmovilizado_material": 20760,
+        "existencias": 3229,
+        "clientes": 158944,
+        "proveedores": 86272,
+        "activos_contrato": null,
+        "pasivos_contrato": 16116,
+        "caja": 56960,
+        "deuda_financiera": 33058,
+        "arrendamientos": 0,
+        "patrimonio_neto": 132897,
+        "minoritarios": 4000,
+        "reservas": 105788
+      },
+      {
+        "periodo": "FY2022",
+        "activo_total": 313391,
+        "activo_corriente": 238331,
+        "pasivo_corriente": 137146,
+        "pasivo_total": 166226,
+        "fondo_comercio": 1728,
+        "intangibles": 6375,
+        "inmovilizado_material": 23756,
+        "existencias": 3330,
+        "clientes": 148252,
+        "proveedores": 87393,
+        "activos_contrato": null,
+        "pasivos_contrato": 14693,
+        "caja": 72317,
+        "deuda_financiera": 29815,
+        "arrendamientos": 0,
+        "patrimonio_neto": 142470,
+        "minoritarios": 4694,
+        "reservas": 113913
+      },
+      {
+        "periodo": "FY2023",
+        "activo_total": 340106,
+        "activo_corriente": 248386,
+        "pasivo_corriente": 146750,
+        "pasivo_total": 172875,
+        "fondo_comercio": 1703,
+        "intangibles": 7469,
+        "inmovilizado_material": 23483,
+        "existencias": 4057,
+        "clientes": 185890,
+        "proveedores": 77279,
+        "activos_contrato": null,
+        "pasivos_contrato": 12593,
+        "caja": 53298,
+        "deuda_financiera": 39133,
+        "arrendamientos": 0,
+        "patrimonio_neto": 164355,
+        "minoritarios": 2875,
+        "reservas": 128724
+      },
+      {
+        "periodo": "FY2024",
+        "activo_total": 334949,
+        "activo_corriente": 245138,
+        "pasivo_corriente": 130040,
+        "pasivo_total": 150665,
+        "fondo_comercio": 1419,
+        "intangibles": 8208,
+        "inmovilizado_material": 23919,
+        "existencias": 3889,
+        "clientes": 186192,
+        "proveedores": 49713,
+        "activos_contrato": null,
+        "pasivos_contrato": 20978,
+        "caja": 47647,
+        "deuda_financiera": 37737,
+        "arrendamientos": 0,
+        "patrimonio_neto": 180667,
+        "minoritarios": 3615,
+        "reservas": 145846
+      },
+      {
+        "periodo": "FY2025",
+        "activo_total": 381823,
+        "activo_corriente": 264045,
+        "pasivo_corriente": 145726,
+        "pasivo_total": 166766,
+        "fondo_comercio": 2696,
+        "intangibles": 8761,
+        "inmovilizado_material": 23840,
+        "existencias": 4161,
+        "clientes": 203174,
+        "proveedores": 51481,
+        "activos_contrato": null,
+        "pasivos_contrato": 17993,
+        "caja": 48228,
+        "deuda_financiera": 42406,
+        "arrendamientos": 0,
+        "patrimonio_neto": 209889,
+        "minoritarios": 5167,
+        "reservas": 170683
+      }
+    ],
+    "vencimientos": [
+      {
+        "anio": "FY2026 (≤ 12 meses)",
+        "importe": 35593
+      },
+      {
+        "anio": "FY2027 o después",
+        "importe": 5000
+      }
+    ],
+    "liquidez": "Caja de 42.125 M a 30-jun-2026 frente a 40.593 M de deuda financiera (préstamos a corto 25.593 M, bono con vencimiento a menos de un año 10.000 M y otro bono 5.000 M): caja neta de deuda de unos 1.500 M [9]. A eso se suman 64.201 M de inversiones financieras, de las que 45.407 M (a mar-26) son la cartera de acciones cruzadas de 83 empresas, y 9.726 M de superávit neto de pensiones [9, 13]. Rating A+ (estable) de JCR, subido el 15-abr-2026 [7].",
+    "rating": "A+ (JCR, estable)",
+    "coste_deuda_pct": 1,
+    "vida_media_anios": 1,
+    "otros_pasivos": "El pasivo que importa es comercial: proveedores y subcontratistas (51.481 M) y anticipos de clientes (17.993 M) a mar-26 [1]. El fondo de pensiones tiene superávit (activo 11.495 M frente a pasivo 1.769 M a jun-26) [9]. El riesgo contable típico del contratista es el reconocimiento de ingresos por grado de avance: las provisiones por pérdidas en obra son pequeñas y no hay litigios relevantes publicados [13]. Avales y garantías a filiales y a terceros por importes menores [13].",
+    "comentario": "El balance de un contratista japonés: el circulante es grande y es lo que consume el flujo. Clientes y obra ejecutada pendiente de facturar suman 203.174 M (el 48 % de las ventas) frente a 51.481 M de proveedores; el circulante comercial neto pasó del 19 % de las ventas en FY2021 al 32 % en FY2025 [1, 5]. La razón es doble: la ley japonesa de subcontratación y la presión pública para pagar antes a los subcontratistas (los proveedores cayeron de 87.393 M en FY2022 a 49.713 M en FY2024) y las grandes obras de semiconductores que se facturan al final [3, 4]. La caja neta de deuda bajó de 42.502 M (FY2022) a 5.822 M (FY2025) mientras el patrimonio subía de 142.470 M a 209.889 M: el crecimiento lo pagó el balance y no el flujo [1, 5]. La cartera cruzada (22,6 % del patrimonio, objetivo ≤ 15 % a mar-27) es una reserva de valor que se va vendiendo [8, 13].",
+    "confianza": "Alta"
+  },
+  "flujos": {
+    "historico": [
+      {
+        "periodo": "FY2021",
+        "flujo_operativo": 1186,
+        "capex": 3011,
+        "pagos_arrendamientos": 410,
+        "adquisiciones": 97,
+        "desinversiones": 0,
+        "dividendos": 3985,
+        "recompras": 6356,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "FY2022",
+        "flujo_operativo": 25826,
+        "capex": 5048,
+        "pagos_arrendamientos": 464,
+        "adquisiciones": 2908,
+        "desinversiones": 0,
+        "dividendos": 4102,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "FY2023",
+        "flujo_operativo": -13100,
+        "capex": 3347,
+        "pagos_arrendamientos": 465,
+        "adquisiciones": 4330,
+        "desinversiones": 0,
+        "dividendos": 4774,
+        "recompras": 2,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "FY2024",
+        "flujo_operativo": 5885,
+        "capex": 4337,
+        "pagos_arrendamientos": 511,
+        "adquisiciones": 32,
+        "desinversiones": 0,
+        "dividendos": 10508,
+        "recompras": 1939,
+        "emision_acciones": 1934,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "FY2025",
+        "flujo_operativo": 29725,
+        "capex": 5066,
+        "pagos_arrendamientos": 544,
+        "adquisiciones": 3220,
+        "desinversiones": 0,
+        "dividendos": 12634,
+        "recompras": 8209,
+        "emision_acciones": 207,
+        "intereses_en_financiacion": 0
+      }
+    ],
+    "comentario": "La conversión del beneficio en caja es irregular y baja: en cinco años el flujo operativo sumó 49.522 M frente a 108.475 M de beneficio neto (0,46 veces), porque el circulante absorbió unos 70.000 M [1, 3, 4, 5]. El año malo fue FY2023 (−13.100 M) por las grandes obras de semiconductores y el pago anticipado a subcontratistas; FY2025 (29.725 M) se recuperó con los cobros al terminar esas obras [2, 7]. El capex es bajo (1,2 % de las ventas): es un negocio de personas, no de fábricas [1]. Dividendos y recompras (12.634 M y 8.209 M en FY2025) superaron el flujo libre, y se pagaron con caja y con la venta de la cartera cruzada [1, 14]. Mientras las ventas crezcan, el flujo libre seguirá por debajo del beneficio; si se estancan, el circulante se liberará.",
+    "confianza": "Alta"
+  },
+  "calidad": {
+    "auditor": "KPMG AZSA LLC",
+    "anios_auditor": null,
+    "opinion": "Favorable (sin salvedades) en FY2025 [13]",
+    "comentario": "Las cuentas de un contratista dependen del reconocimiento por grado de avance: el beneficio de una obra se estima con su coste total previsto, y un cambio de estimación al terminar mueve el margen (como en FY2025, donde grandes obras de semiconductores cerraron con mejora) [8]. La empresa lo explica y separa ese efecto (margen bruto «en la zona del 21 %» sin él) [8]. Las plusvalías de venta de la cartera cruzada (799-2.712 M al año) y del inmovilizado (1.517 M en FY2025) inflan el beneficio neto entre un 2 % y un 10 % según el año [1, 3]. No hay capitalización de gastos ni pagos en acciones relevantes. Corrigió el estado de flujos de FY2025 un mes después de publicarlo (reclasificación dentro del operativo) [2].",
+    "senales": [
+      {
+        "senal": "Flujo operativo acumulado de 5 años = 0,46 veces el beneficio",
+        "nivel": "Media",
+        "comentario": "Normal en un contratista que crece (obra ejecutada pendiente de cobro) y con pagos más rápidos a subcontratistas; vigilar los activos de contrato [1, 5]."
+      },
+      {
+        "senal": "Margen de FY2025 ayudado por cierres de grandes obras",
+        "nivel": "Media",
+        "comentario": "La empresa estima el margen bruto subyacente en la zona del 21 % frente al 22,1 % publicado; el 4T FY2025 ya bajó al 7,3 % de margen de explotación [8, 12]."
+      },
+      {
+        "senal": "Corrección del estado de flujos de FY2025 (12-jun-2026)",
+        "nivel": "Baja",
+        "comentario": "Reclasificación dentro del flujo operativo, sin cambio en cuenta ni balance [2]."
+      }
+    ],
+    "confianza": "Alta"
+  },
+  "rentabilidad": {
+    "comentario": "Takasago crea valor desde FY2023: el ROIC pasó del 8,8 % en FY2021 (por debajo del WACC del 8,2 %) al 17,9 % en FY2025, y el ROE al 19,2 % [1]. El salto viene del margen (NOPAT del 8,1 % de las ventas frente al 3,3 %), no de la rotación, que se mantiene en 2,2 veces el capital invertido. El ROIC incremental de FY2021-FY2025 fue del 31 %: cada yen de capital nuevo (sobre todo circulante) rindió mucho porque coincidió con la mejora de precios. Es un ROIC de pico de ciclo: con el margen de FY2021-FY2022 estaría en el 9-11 %, en torno al WACC. El capital invertido no incluye la cartera cruzada ni las demás inversiones financieras (64.000 M), que van en el puente.",
+    "confianza": "Alta"
+  },
+  "capital": {
+    "politica": "Dividendo progresivo con un payout objetivo del 40 % desde FY2023 [13]: DPA de 115 JPY en FY2025 (43 a cuenta y 72 final) y guía de 123 JPY en FY2026 (61 + 62) [1, 9]. Recompras «flexibles»: unos 8.000 M en abril-junio de 2025 [15]. Plan a medio plazo 2026 (FY2024-FY2026): más de 90.000 M en crecimiento (I+D, neutralidad de carbono, compras de unos 7.500 M, personas) y más de 58.000 M de remuneración al accionista, financiados en parte con la venta de 20.000 M de la cartera cruzada [7, 14].",
+    "adquisiciones": [
+      {
+        "anio": "FY2025",
+        "objetivo": "THS Innovations y Prompt Techno Service (Tailandia): gestión energética y mantenimiento de instalaciones, 1.287 empleados",
+        "importe": 3220,
+        "ev_ebitda": null,
+        "financiacion": "Caja",
+        "resultado": "Consolidadas desde el 3T FY2025; demasiado pronto para juzgar [7, 13]."
+      },
+      {
+        "anio": "FY2023",
+        "objetivo": "Compra de minoritarios de filiales consolidadas",
+        "importe": 4288,
+        "ev_ebitda": null,
+        "financiacion": "Caja",
+        "resultado": "Los minoritarios del balance bajaron de 4.694 M a 2.875 M [4]."
+      }
+    ],
+    "comentario": "La dirección asigna el capital con disciplina y en línea con el código de gobierno japonés: subió el payout del 35 % al 40 %, recompró el 6 % del capital en FY2021 y FY2025 a precios muy por debajo del actual (FY2025: a unos 2.900 JPY en base posterior al split), y reduce la cartera cruzada [1, 14, 15]. Las compras son pequeñas y de servicios en el sudeste asiático [7]. Lo discutible: la caja neta casi desapareció porque el circulante creció, y aun así se repartió más que el flujo libre; con 64.000 M de inversiones financieras no hay tensión, pero el margen para recompras grandes depende de vender la cartera cruzada [9].",
+    "confianza": "Alta"
+  },
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "Kazuhito Kojima (小島和人)",
+        "cargo": "Presidente y consejero delegado (代表取締役社長)",
+        "desde": "2020",
+        "participacion_pct": 0.15,
+        "trayectoria": "Toda su carrera en Takasago; consejero desde 2019 y presidente desde abril de 2020. Con él el margen de explotación pasó del 4,8 % al 11,3 % y lanzó el plan a medio plazo 2026 y T-Base. 193.478 acciones [23]."
+      },
+      {
+        "nombre": "Hiroshi Kubota (久保田浩司)",
+        "cargo": "Vicepresidente ejecutivo y consejero representante",
+        "desde": "2026",
+        "participacion_pct": 0.04,
+        "trayectoria": "Consejero desde 2022; representante desde el 1-abr-2026, lo que lo sitúa como posible sucesor. 57.673 acciones [23, 26]."
+      },
+      {
+        "nombre": "Tadashi Kamiya (神谷忠史)",
+        "cargo": "Consejero, director ejecutivo sénior (ingeniería y obra)",
+        "desde": "2019",
+        "participacion_pct": 0.06,
+        "trayectoria": "Carrera técnica en la empresa; 79.817 acciones [23]."
+      },
+      {
+        "nombre": "Ichiro Yamamoto (山本一郎)",
+        "cargo": "Consejero y director ejecutivo (finanzas y relación con inversores)",
+        "desde": "2026",
+        "participacion_pct": 0.02,
+        "trayectoria": "Nuevo consejero en junio de 2026, sustituye en la práctica a Masatoshi Morino (finanzas, retirado el 31-mar-2026). 21.823 acciones [23]."
+      }
+    ],
+    "historial_guidance": [
+      {
+        "anio": "FY2022",
+        "guia": "Ventas 311.000 / explotación 13.100 / neto 10.800",
+        "real": "Ventas 338.831 / explotación 15.326 / neto 12.227",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "FY2023",
+        "guia": "Ventas 359.000 / explotación 15.500 / neto 12.700",
+        "real": "Ventas 363.366 / explotación 24.192 / neto 19.612",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "FY2024",
+        "guia": "Ventas 370.000 / explotación 25.700 / neto 21.400",
+        "real": "Ventas 381.661 / explotación 32.415 / neto 27.631",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "FY2025",
+        "guia": "Ventas 410.000 / explotación 36.000 / neto 28.700 (subida a 43.300 y 47.100 de explotación en oct-25 y feb-26)",
+        "real": "Ventas 423.923 / explotación 47.745 / neto 37.470",
+        "cumplida": "Sí"
+      }
+    ],
+    "comentario": "Equipo de la casa, como es norma en Japón: el presidente lleva 6 años en el cargo y toda su carrera en la empresa [23]. La credibilidad es alta y medible: la guía inicial se ha superado los cuatro últimos años, y por mucho en beneficio (FY2025: explotación 47.745 M frente a 36.000 M de la guía inicial) [1, 29]. Eso también significa que la guía es conservadora por costumbre: la de FY2026 (explotación 50.000 M, +4,7 %) seguramente esconde margen. La sucesión parece encauzada (Kubota, representante desde abril de 2026) y el relevo en finanzas (Yamamoto por Morino) fue ordenado [26]. Los directivos tienen pocas acciones (menos del 0,3 % entre todos), pero cobran en acciones a través del plan BIP [21].",
+    "confianza": "Alta"
+  },
+  "gobierno": {
+    "consejo": [
+      {
+        "nombre": "Shuma Uchino (内野州馬)",
+        "cargo": "Presidente del consejo (externo, ex-Mitsubishi Corporation)",
+        "tipo": "Independiente",
+        "desde": "2023",
+        "comisiones": "Gobierno, nombramientos y remuneraciones"
+      },
+      {
+        "nombre": "Kazuhito Kojima",
+        "cargo": "Consejero representante, presidente y consejero delegado",
+        "tipo": "Ejecutivo",
+        "desde": "2019",
+        "comisiones": "Gobierno, nombramientos y remuneraciones"
+      },
+      {
+        "nombre": "Hiroshi Kubota",
+        "cargo": "Consejero representante, vicepresidente ejecutivo",
+        "tipo": "Ejecutivo",
+        "desde": "2022",
+        "comisiones": "—"
+      },
+      {
+        "nombre": "Tadashi Kamiya",
+        "cargo": "Consejero, director ejecutivo sénior",
+        "tipo": "Ejecutivo",
+        "desde": "2019",
+        "comisiones": "—"
+      },
+      {
+        "nombre": "Ichiro Yamamoto",
+        "cargo": "Consejero, director ejecutivo",
+        "tipo": "Ejecutivo",
+        "desde": "2026",
+        "comisiones": "—"
+      },
+      {
+        "nombre": "Atsushi Takagi (髙木敦)",
+        "cargo": "Consejero externo",
+        "tipo": "Independiente",
+        "desde": "2022",
+        "comisiones": "Gobierno, nombramientos y remuneraciones (presidente)"
+      },
+      {
+        "nombre": "Yoko Seki (関葉子)",
+        "cargo": "Consejera externa",
+        "tipo": "Independiente",
+        "desde": "2019",
+        "comisiones": "Gobierno, nombramientos y remuneraciones"
+      },
+      {
+        "nombre": "Hideka Morimoto (森本英香)",
+        "cargo": "Consejero externo (ex-viceministro de Medio Ambiente)",
+        "tipo": "Independiente",
+        "desde": "2021",
+        "comisiones": "Gobierno, nombramientos y remuneraciones"
+      },
+      {
+        "nombre": "Hirotaka Yamada",
+        "cargo": "Consejero miembro de la comisión de auditoría (interno)",
+        "tipo": "Otro externo",
+        "desde": "2024",
+        "comisiones": "Auditoría y supervisión"
+      },
+      {
+        "nombre": "Sakakibara",
+        "cargo": "Consejero externo, comisión de auditoría",
+        "tipo": "Independiente",
+        "desde": null,
+        "comisiones": "Auditoría y supervisión (presidente)"
+      },
+      {
+        "nombre": "Hioka",
+        "cargo": "Consejero externo, comisión de auditoría",
+        "tipo": "Independiente",
+        "desde": null,
+        "comisiones": "Auditoría y supervisión"
+      },
+      {
+        "nombre": "Wakamatsu",
+        "cargo": "Consejero externo, comisión de auditoría",
+        "tipo": "Independiente",
+        "desde": null,
+        "comisiones": "Auditoría y supervisión"
+      }
+    ],
+    "presidente_ceo_separados": true,
+    "presidente_ejecutivo": false,
+    "consejero_coordinador": false,
+    "una_accion_un_voto": true,
+    "operaciones_vinculadas_relevantes": false,
+    "variable_ligado_rentabilidad": true,
+    "auditoria_independiente": true,
+    "insiders_sin_operaciones": false,
+    "accionista_control": false,
+    "presidente_vinculado_control": false,
+    "cambios_cupula_24m": 0,
+    "voto_remuneracion_pct": null,
+    "voto_remuneracion_contra_pct": null,
+    "voto_remuneracion_contra_libre_pct": null,
+    "voto_cupula_pct": 88.7,
+    "remuneracion_ceo": {
+      "anio": "FY2025",
+      "total": 159,
+      "fijo": 56,
+      "variable_corto": 68,
+      "variable_largo": 34,
+      "ratio_salario_medio": 12.8
+    },
+    "remuneracion": "Kazuhito Kojima cobró 159 M JPY en FY2025: 56 M fijos, 68 M de bonus y 34 M en acciones (plan BIP) [13]. Los cuatro consejeros internos sumaron 389 M (153 fijos, 155 de bonus, 80 en acciones) [13]. Estructura objetivo del consejero representante: 40 % fijo, 30 % bonus y 30 % acciones [21]. El bonus (0-200 %) depende en un 50 % del beneficio ordinario consolidado, un 20 % del margen bruto y un 30 % de la evaluación individual; las acciones, en un 60 % de objetivos del plan a medio plazo (ordinario 30 %, ROE 20 %, rentabilidad total frente al TOPIX 30 %, CO2 y compromiso de la plantilla) [21]. La remuneración no se vota cada año en Japón; la reelección de Kojima obtuvo el 88,7 % en junio de 2026 (92,9 % en 2024), con un 11,2 % en contra probablemente por las recomendaciones de los asesores de voto sobre la cartera cruzada [24, 25]. El sueldo del presidente equivale a 12,8 veces el salario medio de la matriz (12,46 M) [13].",
+    "accionistas": [
+      {
+        "nombre": "The Master Trust Bank of Japan (fideicomiso)",
+        "pct": 10.64,
+        "tipo": "Custodio (fondos índice e institucionales)",
+        "variacion": "— [13]"
+      },
+      {
+        "nombre": "Nippon Life Insurance",
+        "pct": 6.83,
+        "tipo": "Tenedor cruzado (aseguradora)",
+        "variacion": "Estable [13]."
+      },
+      {
+        "nombre": "State Street Bank and Trust (custodio)",
+        "pct": 5.47,
+        "tipo": "Custodio de inversores extranjeros",
+        "variacion": "— [13]"
+      },
+      {
+        "nombre": "Asociación de empleados de Takasago (持株会)",
+        "pct": 4.71,
+        "tipo": "Empleados",
+        "variacion": "— [13]"
+      },
+      {
+        "nombre": "Takasago Kyoeikai (asociación de subcontratistas y proveedores)",
+        "pct": 4.03,
+        "tipo": "Proveedores (estable)",
+        "variacion": "— [13]"
+      },
+      {
+        "nombre": "Custody Bank of Japan (fideicomiso)",
+        "pct": 3.97,
+        "tipo": "Custodio",
+        "variacion": "— [13]"
+      },
+      {
+        "nombre": "Capital Research and Management",
+        "pct": 3.74,
+        "tipo": "Gestora (Capital Group)",
+        "variacion": "Declaración de participación de mayo de 2026."
+      },
+      {
+        "nombre": "Dai-ichi Life Insurance",
+        "pct": 3.17,
+        "tipo": "Tenedor cruzado (aseguradora)",
+        "variacion": "— [13]"
+      }
+    ],
+    "insiders": [],
+    "control_y_defensas": "Sin accionista de control: el mayor es un custodio (10,6 %), y entre aseguradoras, bancos y socios comerciales (tenedores cruzados), la asociación de empleados y la de subcontratistas suman cerca de una cuarta parte del capital; el flotante libre según la empresa es del 53,1 % [13]. Sin medidas antiOPA [21]. Una acción, un voto. Sociedad con comisión de auditoría y supervisión: 12 consejeros, 7 externos independientes, y el presidente del consejo es externo (Shuma Uchino) [21, 23]. Los tenedores cruzados siguen vendiendo (colocación secundaria de 3,1 millones de acciones en febrero de 2025), lo que da estabilidad de voto decreciente y oferta de acciones latente [27]. Japón no tiene un registro público de operaciones de directivos; sus acciones aparecen en la convocatoria de cada junta [23].",
+    "alertas": [
+      "Ventas de tenedores cruzados (colocación secundaria de feb-2025) que pueden repetirse y pesar sobre el precio [27].",
+      "La reelección del presidente bajó del 92,9 % (2024) al 88,7 % (2026) [24, 25]."
+    ],
+    "confianza": "Media"
+  },
+  "consenso": {
+    "guidance": "Guía FY2026 (12-may-2026, mantenida el 5-ago): ventas 440.000 M (+3,8 %), beneficio de explotación 50.000 M (+4,7 %), ordinario 52.000 M, neto 40.000 M (BPA 305,63 JPY), pedidos 520.000 M y DPA 123 JPY [7, 9]. La empresa ha superado su guía inicial los cuatro últimos años [C]. Los resultados del 2T FY2026 se esperan hacia el 13-nov-2026 (el año pasado, el 14-nov; fecha exacta sin publicar al corte) [9].",
+    "estimaciones": [
+      {
+        "periodo": "FY2026e",
+        "ingresos": 446667,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 327,
+        "dpa": 128.7,
+        "fuente": "MarketScreener, 6 analistas [31]"
+      },
+      {
+        "periodo": "FY2027e",
+        "ingresos": 483500,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 358.8,
+        "dpa": 141,
+        "fuente": "MarketScreener [31]"
+      }
+    ],
+    "recomendaciones": {
+      "n_analistas": 6,
+      "comprar": null,
+      "mantener": null,
+      "vender": null,
+      "po_medio": 5975,
+      "po_min": 5250,
+      "po_max": 6900
+    },
+    "revisiones": "El consenso está por encima de la guía (BPA FY2026e 327 frente a 305,63) porque los analistas descuentan que la empresa la vuelva a batir [9, 31]. Movimientos recientes: Nomura subió a «comprar» el 27-may-2026 (objetivo 5.500); un gran bróker japonés mantuvo «comprar» y bajó el objetivo a 5.400 el 26-ago tras el 1T; Morgan Stanley MUFG subió de neutral a sobreponderar el 14-sep (4.900 → 5.900) [37]. El objetivo medio (5.975 JPY) queda un 43 % por encima del precio. Uso solo ventas y BPA del consenso: su EBIT de FY2026e (53.960 M) parece incluir partidas no operativas, como el de Yahoo para las japonesas [31].",
+    "base_ebitda": "NIIF",
+    "ajuste_ebitda_pct_ventas": null,
+    "confianza": "Media"
+  },
+  "bolsa": {
+    "tipo_rentabilidad": "total (con dividendos)",
+    "rentabilidades": [
+      {
+        "periodo": "En el año",
+        "accion_pct": -2.8,
+        "indice_pct": 21.6,
+        "sector_pct": 2.7
+      },
+      {
+        "periodo": "1 año",
+        "accion_pct": 3.9,
+        "indice_pct": 31,
+        "sector_pct": 19
+      },
+      {
+        "periodo": "3 años (anual.)",
+        "accion_pct": 49.5,
+        "indice_pct": 24.3,
+        "sector_pct": 22.8
+      },
+      {
+        "periodo": "5 años (anual.)",
+        "accion_pct": 35.9,
+        "indice_pct": 17.7,
+        "sector_pct": 17
+      },
+      {
+        "periodo": "10 años (anual.)",
+        "accion_pct": 22.3,
+        "indice_pct": 14.2,
+        "sector_pct": 11.9
+      }
+    ],
+    "anual": [
+      {
+        "anio": "2016",
+        "accion_pct": -13.6,
+        "indice_pct": 0.2
+      },
+      {
+        "anio": "2017",
+        "accion_pct": 40.3,
+        "indice_pct": 22.1
+      },
+      {
+        "anio": "2018",
+        "accion_pct": -10.7,
+        "indice_pct": -15.8
+      },
+      {
+        "anio": "2019",
+        "accion_pct": 12.8,
+        "indice_pct": 17.7
+      },
+      {
+        "anio": "2020",
+        "accion_pct": -17.3,
+        "indice_pct": 7.4
+      },
+      {
+        "anio": "2021",
+        "accion_pct": 24.8,
+        "indice_pct": 12.7
+      },
+      {
+        "anio": "2022",
+        "accion_pct": -2.6,
+        "indice_pct": -2.4
+      },
+      {
+        "anio": "2023",
+        "accion_pct": 85.9,
+        "indice_pct": 28.2
+      },
+      {
+        "anio": "2024",
+        "accion_pct": 103.6,
+        "indice_pct": 20.3
+      },
+      {
+        "anio": "2025",
+        "accion_pct": 43.6,
+        "indice_pct": 25.6
+      }
+    ],
+    "beta": 1.05,
+    "volatilidad_pct": 41.3,
+    "max_drawdown_pct": -28.8,
+    "posicion_corta_pct": null,
+    "comentario": "La acción multiplicó por cinco su precio entre marzo de 2023 y febrero de 2026 (+85,9 % en 2023, +103,6 % en 2024 y +43,6 % en 2025, frente al +20-28 % del TOPIX) al subir el beneficio y el múltiplo a la vez [30]. Desde el máximo de 5.749 JPY del 13-feb-2026 cae un 27 %: ese día bajó un 9,4 % pese a subir la guía, y luego vinieron los resultados de mayo con una guía modesta (−7,3 % y −5,7 %) y un 1T flojo en agosto [30, 37]. En el último año gana un 3,9 % con dividendos frente al +31 % del TOPIX y el +19 % del sector de construcción [30]. Beta de 1,08 mensual a 5 años frente al ETF del TOPIX (ajustada 1,05; semanal a 2 años 0,95); volatilidad del 41 % y caída máxima del −28,8 % (mayo-agosto de 2024) [30].",
+    "contexto": {
+      "movimiento": {
+        "fecha": "2026-10-19",
+        "var_1m_pct": -5.2,
+        "var_3m_pct": -9.5,
+        "var_6m_pct": -7.8,
+        "var_12m_pct": 5,
+        "dist_max_52s_pct": -26.3,
+        "dist_min_52s_pct": 5,
+        "dist_max_historico_pct": -26.3,
+        "tendencia": "bajista",
+        "volatilidad_60d_pct": 34.5,
+        "avisos": []
+      },
+      "movimientos_fuertes": [
+        {
+          "periodo": "feb-2026",
+          "var_pct": 17.2,
+          "causa": "Subida del 17 % en febrero hasta el máximo de 5.749 JPY del 13-feb, día en que la empresa subió la guía de FY2025 (explotación a 47.100 M) y el dividendo; ese mismo día la acción cayó un 9,4 % desde el máximo, sin causa confirmada (recogida de beneficios tras la noticia) [29, 30].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "mar-2026",
+          "var_pct": -16.8,
+          "causa": "Caída del 16,8 % en marzo, con −6,2 % el 9-mar y −5,3 % el 19-mar, sin hecho propio publicado; coincide con la tensión en Oriente Medio que la empresa cita después como riesgo de retrasos en obra (2-3 % del beneficio de explotación de la matriz) [8, 30].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "may-2026",
+          "var_pct": 4.9,
+          "causa": "Resultados de FY2025 el 12-may con récord pero guía modesta para FY2026 (explotación +4,7 %): −7,3 % el 14-may y −5,7 % el 18-may; rebote de tres días tras la subida de Nomura a «comprar» el 27-may [7, 37].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "jul-2026",
+          "var_pct": -16.1,
+          "causa": "Caída del 16,1 % en julio (−18,5 % en un mes hasta el 29-jul, con −5,5 % ese día) sin hecho propio publicado; el 5-ago el ordinario del 1T bajó un 12 %, que la empresa atribuyó a la pausa prevista de la obra industrial [9, 11, 36].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "oct-2026",
+          "var_pct": -11.1,
+          "causa": "Caída del 11,1 % en octubre hasta el 19 (−5,2 % el 15-oct) sin hecho propio publicado; la acción vuelve cerca del mínimo de agosto (3.985) y un 9 % bajo su media de 200 sesiones [36].",
+          "veredicto": "no cambia",
+          "condicion": null
+        }
+      ],
+      "noticias": [
+        {
+          "fecha": "2026-11-13",
+          "tipo": "resultados",
+          "hecho": "Resultados del 2T FY2026 hacia el 13-nov (el año pasado, el 14-nov; fecha exacta sin publicar al corte) [9]. Dirán si la obra industrial vuelve a crecer en el 2S como dice la empresa.",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-09-14",
+          "tipo": "recomendación",
+          "hecho": "Morgan Stanley MUFG sube de neutral a sobreponderar y el objetivo de 4.900 a 5.900 JPY [37].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-08-26",
+          "tipo": "recomendación",
+          "hecho": "Un gran bróker japonés mantiene «comprar» y baja el objetivo a 5.400 JPY tras el 1T [37].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-08-05",
+          "tipo": "resultados",
+          "hecho": "Resultados del 1T FY2026: ventas −9,9 %, explotación −16,2 %, pedidos +1,7 % y cartera +12,2 %; guía mantenida [9, 10].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-06-25",
+          "tipo": "directivos",
+          "hecho": "Junta: reelección del presidente con el 88,7 % (92,9 % en 2024) y nuevo consejero de finanzas (Yamamoto) [24].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-05-27",
+          "tipo": "recomendación",
+          "hecho": "Nomura sube a «comprar» con objetivo de 5.500 JPY [37].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-05-12",
+          "tipo": "resultados",
+          "hecho": "FY2025 récord (explotación 47.745 M, +47 %) y guía FY2026 de explotación de 50.000 M (+4,7 %), pedidos de 520.000 M y DPA de 123 JPY [1, 7].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-01-22",
+          "tipo": "directivos",
+          "hecho": "Hiroshi Kubota, vicepresidente y consejero representante desde el 1-abr-2026; el presidente sigue [26].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2025-02-13",
+          "tipo": "accionista de referencia",
+          "hecho": "Colocación secundaria de 3.106.800 acciones (6,2 M después del split) de tenedores cruzados (MUFG, Taiyo Life y otros) [27]. Puede repetirse, pero no hay ninguna anunciada al corte.",
+          "veredicto": "no cambia",
+          "condicion": null
+        }
+      ],
+      "proximos_resultados": "2026-11-13",
+      "veredicto": "no cambia",
+      "condicion": null,
+      "comentario": "La acción cae un 26 % desde el máximo de febrero y un 9 % bajo su media de 200 sesiones (tendencia bajista), pero gana un 5 % en 12 meses. Las caídas fuertes (marzo, julio, octubre) no tienen un hecho propio publicado y las de mayo y agosto son de resultados ya en la tesis: guía modesta y un 1T flojo por la pausa prevista de la obra industrial [7, 9]. Lo que explica el movimiento es que el mercado duda de que el margen de FY2025 se mantenga, la misma duda del informe. No hay ningún hecho pendiente ajeno al análisis que pueda mover el precio más de un 5 % en contra: no hay colocaciones de tenedores cruzados anunciadas, ni cambios de cúpula, ni litigios. Los resultados del 2T (13-nov) son el examen de la tesis y por la regla 11 no retrasan. Veredicto: no cambia."
+    }
+  },
+  "multiplos_historicos": {
+    "serie": [
+      {
+        "anio": "FY2021",
+        "precio_cierre": 867.5,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 9.39,
+        "excluir": false
+      },
+      {
+        "anio": "FY2022",
+        "precio_cierre": 1054.5,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 7.13,
+        "excluir": false
+      },
+      {
+        "anio": "FY2023",
+        "precio_cierre": 2435,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 11.7,
+        "excluir": false
+      },
+      {
+        "anio": "FY2024",
+        "precio_cierre": 2776,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 9.72,
+        "excluir": false
+      },
+      {
+        "anio": "FY2025",
+        "precio_cierre": 4291,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "Takasago cotiza a 13,0 veces nuestro BPA de FY2027e, frente a una mediana de 9,7 veces el beneficio del año siguiente en los cierres de marzo de FY2021-FY2025 (mínimo 7,1 en FY2022, máximo 14,6 en FY2025) [1, 2, 3, 4, 5, 6, 30]. Con el PER de los últimos 12 meses (15,7x) está en el percentil 80 de su historia de cinco años. Ha cambiado algo de verdad: el margen de explotación pasó del 4-5 % al 11 % y el ROIC del 9 % al 18 %, y el mercado japonés paga más por los contratistas con poder de precio (los comparables cotizan a 13-18 veces). Por eso no esperamos que vuelva a la mediana de 9,7x; la regla v3 lleva el base solo un 10 % por debajo del PER actual (11,8x)."
+  },
+  "comparables": {
+    "empresas": [
+      {
+        "nombre": "Kinden Corporation",
+        "ticker": "1944.T",
+        "pais": "JP",
+        "capitalizacion": 1064855,
+        "ev_ventas": 1.35,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 17.54,
+        "crecimiento_pct": 6.5,
+        "margen_ebitda_pct": null,
+        "roic_pct": 10.3,
+        "dn_ebitda": -0.5,
+        "fcf_yield_pct": 8.2
+      },
+      {
+        "nombre": "Sanki Engineering Co., Ltd.",
+        "ticker": "1961.T",
+        "pais": "JP",
+        "capitalizacion": 399907,
+        "ev_ventas": 1.47,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 15.19,
+        "crecimiento_pct": 0.6,
+        "margen_ebitda_pct": null,
+        "roic_pct": 18.6,
+        "dn_ebitda": -0.7,
+        "fcf_yield_pct": 2.7
+      },
+      {
+        "nombre": "Taikisha Ltd.",
+        "ticker": "1979.T",
+        "pais": "JP",
+        "capitalizacion": 230070,
+        "ev_ventas": 0.49,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 12.88,
+        "crecimiento_pct": 3.6,
+        "margen_ebitda_pct": null,
+        "roic_pct": 10.8,
+        "dn_ebitda": -3.2,
+        "fcf_yield_pct": 27.2
+      },
+      {
+        "nombre": "Dai-Dan Co., Ltd.",
+        "ticker": "1980.T",
+        "pais": "JP",
+        "capitalizacion": 399778,
+        "ev_ventas": 1.25,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 14.65,
+        "crecimiento_pct": -2.5,
+        "margen_ebitda_pct": null,
+        "roic_pct": 20.2,
+        "dn_ebitda": -2,
+        "fcf_yield_pct": 14.4
+      },
+      {
+        "nombre": "Kandenko Co.,Ltd.",
+        "ticker": "1942.T",
+        "pais": "JP",
+        "capitalizacion": 1038853,
+        "ev_ventas": 1.31,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 15.98,
+        "crecimiento_pct": 10.4,
+        "margen_ebitda_pct": null,
+        "roic_pct": 16.6,
+        "dn_ebitda": -0.6,
+        "fcf_yield_pct": 7.1
+      },
+      {
+        "nombre": "Hibiya Engineering, Ltd.",
+        "ticker": "1982.T",
+        "pais": "JP",
+        "capitalizacion": 137206,
+        "ev_ventas": 1.17,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 16.08,
+        "crecimiento_pct": 4.8,
+        "margen_ebitda_pct": null,
+        "roic_pct": 9.9,
+        "dn_ebitda": -2.5,
+        "fcf_yield_pct": 8.3
+      },
+      {
+        "nombre": "United Integrated Services Co., Ltd.",
+        "ticker": "2404.TW",
+        "pais": "TW",
+        "capitalizacion": 1013398,
+        "ev_ventas": 2.07,
+        "ev_ebitda_ltm": 10.2,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 9.9,
+        "crecimiento_pct": 39.4,
+        "margen_ebitda_pct": 20.2,
+        "roic_pct": 49.2,
+        "dn_ebitda": -1.7,
+        "fcf_yield_pct": 13.9
+      },
+      {
+        "nombre": "Comfort Systems USA, Inc.",
+        "ticker": "FIX",
+        "pais": "US",
+        "capitalizacion": 8015461,
+        "ev_ventas": 4.47,
+        "ev_ebitda_ltm": 25.1,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 23.9,
+        "crecimiento_pct": 29.5,
+        "margen_ebitda_pct": 17.8,
+        "roic_pct": 39.7,
+        "dn_ebitda": -0.2,
+        "fcf_yield_pct": 4.3
+      },
+      {
+        "nombre": "EMCOR Group, Inc.",
+        "ticker": "EME",
+        "pais": "US",
+        "capitalizacion": 5037820,
+        "ev_ventas": 1.68,
+        "ev_ebitda_ltm": 14.5,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 19.3,
+        "crecimiento_pct": 16.6,
+        "margen_ebitda_pct": 11.6,
+        "roic_pct": 34.9,
+        "dn_ebitda": -0.3,
+        "fcf_yield_pct": 3.7
+      }
+    ],
+    "criterio": "Seis contratistas japoneses de instalaciones (cuatro de climatización y dos grupos eléctricos con climatización) y tres extranjeros de salas limpias e instalaciones (UIS de Taiwán, Comfort Systems y EMCOR de EE. UU.). Para las japonesas, el PER es el de la previsión de la propia empresa para el ejercicio a marzo de 2027 (Yahoo! Japan, 19-oct-2026), y el EV/EBITDA y el margen EBITDA van vacíos porque el EBITDA de Yahoo para Japón incluye partidas no operativas (Takasago: 57.007 M frente a 51.503 M propios); para las extranjeras, el PER adelantado de Yahoo [34, 35]. Takasago: PER de 13,7 con su propia guía.",
+    "confianza": "Media",
+    "comentario": "Takasago cotiza a 13,7 veces el beneficio que prevé para FY2026 (12,2 veces nuestro BPA de los próximos 12 meses) frente a una mediana de 16,0 veces de los nueve comparables y de 15,6 de los seis japoneses, con más crecimiento (+11,1 % en FY2025) y un ROIC (17,9 %) en la parte alta del grupo [34, 35]. El descuento frente a Kinden (17,5x) y Kandenko (16,0x) se explica por su mayor peso del ciclo de semiconductores y el pico de margen de FY2025; Taikisha (12,9x), el rival más parecido en salas limpias industriales, cotiza igual. Comfort Systems (23,9x) y EMCOR (19,3x) muestran lo que paga EE. UU. por contratistas de centros de datos; UIS (9,9x), lo que paga Taiwán por el de TSMC."
+  },
+  "transacciones": {
+    "operaciones": [],
+    "confianza": "Baja",
+    "comentario": "No hay compras de contratistas de climatización comparables con múltiplos públicos: las compras del sector en Japón son pequeñas y entre grupos (sin cifras) y las de EE. UU. son de empresas privadas sin EBITDA publicado. Peso 0 en la síntesis."
+  },
+  "dcf": {
+    "anios": [
+      {
+        "periodo": "FY2026e",
+        "crecimiento_pct": 3.8,
+        "margen_ebitda_pct": 12.4,
+        "amortizacion_pct_ventas": 0.95,
+        "capex_pct_ventas": 1.3,
+        "nwc_pct_ventas": 32.5,
+        "tasa_impositiva_pct": 30.5,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2027e",
+        "crecimiento_pct": 8,
+        "margen_ebitda_pct": 12.8,
+        "amortizacion_pct_ventas": 1,
+        "capex_pct_ventas": 1.3,
+        "nwc_pct_ventas": 32.5,
+        "tasa_impositiva_pct": 30.5,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2028e",
+        "crecimiento_pct": 6,
+        "margen_ebitda_pct": 13,
+        "amortizacion_pct_ventas": 1,
+        "capex_pct_ventas": 1.25,
+        "nwc_pct_ventas": 32.5,
+        "tasa_impositiva_pct": 30.5,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2029e",
+        "crecimiento_pct": 4.5,
+        "margen_ebitda_pct": 12.7,
+        "amortizacion_pct_ventas": 1,
+        "capex_pct_ventas": 1.2,
+        "nwc_pct_ventas": 32.5,
+        "tasa_impositiva_pct": 30.5,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2030e",
+        "crecimiento_pct": 3.5,
+        "margen_ebitda_pct": 12.3,
+        "amortizacion_pct_ventas": 1.05,
+        "capex_pct_ventas": 1.2,
+        "nwc_pct_ventas": 32.5,
+        "tasa_impositiva_pct": 30.5,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2031e",
+        "crecimiento_pct": 2.5,
+        "margen_ebitda_pct": 12,
+        "amortizacion_pct_ventas": 1.05,
+        "capex_pct_ventas": 1.15,
+        "nwc_pct_ventas": 32.5,
+        "tasa_impositiva_pct": 30.5,
+        "fijo": false
+      },
+      {
+        "periodo": "FY2032e",
+        "crecimiento_pct": 2,
+        "margen_ebitda_pct": 11.7,
+        "amortizacion_pct_ventas": 1.1,
+        "capex_pct_ventas": 1.15,
+        "nwc_pct_ventas": 32.5,
+        "tasa_impositiva_pct": 30.5,
+        "fijo": false
+      }
+    ],
+    "wacc": {
+      "tasa_libre_pct": 2.958,
+      "beta": 1.05,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 0,
+      "coste_deuda_pct": 1,
+      "tasa_impositiva_pct": 30.5,
+      "peso_deuda_pct": 7
+    },
+    "terminal": {
+      "metodo": "gordon",
+      "crecimiento_pct": 1.5,
+      "multiplo_salida": 9.5
+    },
+    "etapa2": {
+      "usar": false,
+      "anios": 5,
+      "margen_final_pct": null,
+      "justificacion": null
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "Las ventas crecieron un 8,8 % anual entre FY2021 y FY2025 (302.746 → 423.923 M) con la ola de fábricas de semiconductores [1, 5]. Proyectamos un 3,8 % en FY2026e (la guía: 440.000 M; el 1T bajó un 9,9 % y la empresa espera recuperar en el 2S [9, 11]), un 8 % en FY2027e (cartera de 433.250 M, +12,2 %, y objetivo de pedidos de 520.000 M) y un 6 % en FY2028e, bajando al 2 % en FY2032e [10]. El mercado de obras de climatización en Japón creció un 5,9 % anual en 2020-2024 con la inflación de la obra; suponemos un 3 % adelante, y la cuota de Takasago pasa del 4,1 % al 4,4 % [17, 18].",
+      "margenes": "El margen EBITDA pasó del 5,4 % en FY2021 al 12,1 % en FY2025, por mejores precios al contratar (contratos directos y a coste más margen: 61-64 % de los pedidos de la matriz), la mezcla industrial y cierres favorables de grandes obras [1, 8]. La empresa dice que sin esos cierres el margen bruto de FY2025 habría estado en la zona del 21 % [8]. Proyectamos un 12,4 % en FY2026e (la guía de explotación: 50.000 M), un máximo del 13,0 % en FY2028e por los contratos ya firmados con mejor margen y una bajada lenta al 11,7 % en FY2032e, cuando la escasez de capacidad de obra se normalice. El margen del último trimestre (4T FY2025: 8,2 %; 1T FY2026: 11,3 %) muestra la volatilidad [12].",
+      "inversion": "El capex es pequeño (1,2 % de las ventas, 5.066 M en FY2025) y lo proyectamos en el 1,15-1,3 %: es un negocio de personas y subcontratistas [1]. Lo que consume caja es el circulante: lo mantenemos en el 32,5 % de las ventas (FY2025), el máximo de la serie, de modo que cada yen de ventas nuevas exige 0,33 yenes de capital [1].",
+      "wacc": "Tasa libre del bono japonés a 10 años (2,958 % el 16-oct-2026, Ministerio de Hacienda [32]); beta de 1,05 (mensual de 5 años frente al ETF del TOPIX, ajustada; bruta 1,08, semanal de 2 años 0,95) [30]; prima de mercado del 5,5 % y sin prima adicional (Japón, rating A+, caja neta). Coste de la deuda del 1,0 % (intereses de 423 M sobre unos 40.000 M de deuda) con un peso del 7 %. WACC del 8,17 %. Con la prima implícita del S&P 500 (4,2 %) el WACC sería del 6,9 % [33].",
+      "terminal": "Gordon con un crecimiento del 1,5 %, por debajo de la tasa libre menos un punto: la obra en Japón crece con la inflación y la población baja. El valor terminal es el 68 % del valor; el múltiplo EV/EBITDA implícito de salida es de 8,7x, por debajo de los 9-10 veces de los comparables japoneses."
+    },
+    "sostenibilidad": {
+      "puente_ingresos": [
+        {
+          "periodo": "FY2026e",
+          "volumen_pct": 1.3,
+          "precio_pct": 2.5,
+          "otros_pct": 0,
+          "comentario": "Volumen del +1,3 % (el 1T bajó un 9,9 % por la pausa de la obra industrial y el 2S debe recuperar; la cartera de 433.250 M cubre el año [9, 10]) y precio del +2,5 % (inflación de la obra y cláusulas de revisión [8])."
+        },
+        {
+          "periodo": "FY2027e",
+          "volumen_pct": 5.5,
+          "precio_pct": 2.5,
+          "otros_pct": 0,
+          "comentario": "Volumen del +5,5 % (pedidos de 520.000 M en FY2026e, ampliaciones de fábricas de semiconductores y redesarrollos de oficinas hasta 2029 [11]) y precio del +2,5 %."
+        },
+        {
+          "periodo": "FY2028e",
+          "volumen_pct": 3.5,
+          "precio_pct": 2,
+          "otros_pct": 0.5,
+          "comentario": "Volumen del +3,5 %, precio del +2 % y 0,5 puntos del exterior (sudeste asiático e India)."
+        },
+        {
+          "periodo": "FY2029e",
+          "volumen_pct": 2.5,
+          "precio_pct": 2,
+          "otros_pct": 0,
+          "comentario": "Volumen del +2,5 % y precio del +2 %."
+        },
+        {
+          "periodo": "FY2030e",
+          "volumen_pct": 1.5,
+          "precio_pct": 2,
+          "otros_pct": 0,
+          "comentario": "Volumen del +1,5 % y precio del +2 %. Ventas de 544.842 M: el 4,4 % del mercado de obras de climatización y fontanería en Japón de FY2032e (13,07 billones), frente al 4,1 % de hoy [18]: la cuota apenas sube."
+        }
+      ],
+      "mercado_final": {
+        "periodo": "FY2032e",
+        "tamano": 13068000
+      },
+      "veredicto": "Sí",
+      "justificacion": "Sí. La proyección crece un 4,3 % al año, la mitad del 8,8 % de FY2021-FY2025, y la cuota de mercado solo pasa del 4,1 % al 4,4 % [1, 18]. El ROIC es del 17,9 % y el incremental de FY2021-FY2025 fue del 31 %; con la reinversión que suponemos (19 % del NOPAT), el ROIC actual financia un 3,4 % al año, algo menos que el 4,3 % proyectado: la diferencia se cubre con la caja y las inversiones financieras (64.000 M), sin deuda nueva [9]. El foso es estrecho (escala, red de subcontratistas, técnicos y tecnología de salas limpias) y el poder de precio de hoy depende de la escasez de capacidad de obra en Japón, que es estructural (envejecimiento y límite de horas extra) [11]. Lo que puede fallar no es la calidad sino el ciclo de inversión de los clientes."
+    },
+    "lectura": "El DCF da 4.377,10 JPY por acción, un 4,5 % por encima del precio, con un WACC del 8,17 % y un crecimiento terminal del 1,5 %; el valor terminal es el 68 % del total y el puente suma 428 JPY por acción de inversiones financieras y pensiones. El DCF inverso dice que el precio equivale a un crecimiento del 0,8 % anual en FY2026e-FY2032e (frente al 4,3 % proyectado) o a un margen EBITDA final del 11,2 % (frente al 11,7 %), y a una rentabilidad anual del 8,5 %, apenas por encima del WACC. El mercado paga lo que vale el negocio si el margen se mantiene cerca del de FY2025: no descuenta un retorno al 5 % de FY2021-FY2022, pero tampoco más crecimiento. Con el bajista (ciclo de semiconductores parado y 2,5 puntos menos de margen) el valor cae a 3.087,33 (−26,3 %); con el alcista sube a 4.923,56 (+17,6 %).",
+    "confianza": "Media"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": -3,
+        "ajuste_margen_pp": -2.5,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": 1,
+        "multiplo_salida": null,
+        "perfil": [
+          {
+            "periodo": "FY2027e",
+            "crecimiento_pp": -10,
+            "margen_pp": -2.5
+          }
+        ],
+        "narrativa": "El ciclo de fábricas de semiconductores en Japón se para en 2027 (Rapidus retrasa su segunda fase, TSMC no hace la segunda planta de Kumamoto) y los centros de datos no compensan: las ventas caen un 2 % en FY2027e (10 puntos menos de crecimiento que el base), crecen 3 puntos menos los demás años y el margen EBITDA vuelve 2,5 puntos atrás, a la zona del 10 %."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Las ventas crecen al 4-8 % con la cartera actual, las ampliaciones de fábricas y los redesarrollos; el margen toca techo en el 13 % en FY2028e y baja despacio al 11,7 %; dividendo del 40 % del beneficio."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": 2,
+        "ajuste_margen_pp": 1,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Nuevas grandes fábricas (Rapidus, Micron, Kioxia, segunda planta de TSMC) y centros de datos a la vez, con la escasez de técnicos sosteniendo el precio: 2 puntos más de crecimiento y 1 de margen."
+      }
+    ],
+    "comentario": "Probabilidades del 25/50/25. La asimetría es desfavorable (0,67x): el bajista (−26,3 %) pesa más que el alcista (+17,6 %), porque el margen actual es el mejor de la historia de la empresa y el ciclo de semiconductores es el que más pesa en él. El negocio aguanta un mal ciclo sin problema financiero (caja e inversiones de 106.000 M frente a 40.593 M de deuda [9]), pero el beneficio de un contratista cae rápido: en FY2019-FY2022 el margen de explotación estuvo en el 4-5 %. A 12 meses el bajista es más duro (−57 %, 7,1x × 237,2), porque la regla aplica el mínimo histórico del PER al BPA bajista.",
+    "confianza": "Media"
+  },
+  "suma_partes": {
+    "aplica": false,
+    "descuento_holding_pct": 0,
+    "partes": [],
+    "comentario": "No aplica: un solo negocio de instalaciones (el 98 % de las ventas); la cartera cruzada y las demás inversiones financieras se suman en el puente.",
+    "confianza": "Media"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2026-06-30",
+      "deuda_financiera": 40593,
+      "arrendamientos": 0,
+      "caja": 42125,
+      "minoritarios": 5274,
+      "pensiones": -6750,
+      "asociadas": 18794,
+      "otros_ajustes": -35750
+    },
+    "referencia_mercado": {
+      "mercado": "Prima implícita del S&P 500 (Damodaran), la principal, para mercados desarrollados; Japón sin prima adicional",
+      "prima_implicita_pct": 4.2,
+      "fecha": "2026-10",
+      "fuente": "Damodaran, ERPbymonth.xlsx, octubre de 2026 [33]"
+    },
+    "pesos": {
+      "dcf": 60,
+      "comparables": 20,
+      "transacciones": 0,
+      "suma_partes": 0,
+      "escenarios": 20
+    },
+    "objetivo_12m": {
+      "ejercicio": "FY2028e",
+      "casos": [
+        {
+          "escenario": "Bajista",
+          "metrica": "PER FY2028e",
+          "beneficio_por_accion": 237.22,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 431.300 M en FY2028e (3 puntos menos de crecimiento al año y 10 menos en FY2027e, cuando las ventas caen un 2 %: el ciclo de semiconductores se para y la general no lo compensa) con 2,5 puntos menos de margen EBITDA (10,5 %): beneficio de explotación de unos 41.000 M, más 3.600 M de no operativo y plusvalías, impuesto del 29 % y 600 M de minoritarios sobre 130,89 M de acciones: BPA de 237,2 JPY, un 17 % por debajo del de FY2025 (285,7)."
+        },
+        {
+          "escenario": "Base",
+          "metrica": "PER FY2028e",
+          "beneficio_por_accion": 342.85,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 503.749 M en FY2028e (+3,8 % en FY2026e, en línea con la guía de 440.000 M, +8 % en FY2027e y +6 % en FY2028e con la cartera de 433.250 M y el objetivo de pedidos de 520.000 M) y margen EBITDA del 13,0 %: beneficio de explotación de 60.450 M (12,0 %), 2.400 M de no operativo y 1.200 M de plusvalías por venta de la cartera cruzada, impuesto del 29 % y 600 M de minoritarios: BPA de 342,9 JPY."
+        },
+        {
+          "escenario": "Alcista",
+          "metrica": "PER FY2028e",
+          "beneficio_por_accion": 390.68,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 533.000 M (2 puntos más de crecimiento al año: nuevas fábricas de semiconductores y centros de datos a la vez) y margen 1 punto más alto (14,0 %, más contratos directos y renovaciones): BPA de 390,7 JPY."
+        }
+      ],
+      "per_historico": {
+        "base": "adelantado",
+        "actual": 13.03,
+        "mediana_5a": 9.72,
+        "minimo_5a": 7.13,
+        "media_larga": 10.51,
+        "excluidos": "PER adelantado de cada cierre de marzo (precio ajustado al split) ÷ BPA real del ejercicio siguiente [1, 2, 3, 4, 5, 6, 30]: FY2021 867,5 ÷ 92,35 = 9,4x; FY2022 1.054,5 ÷ 147,84 = 7,1x; FY2023 2.435 ÷ 208,07 = 11,7x; FY2024 2.776 ÷ 285,73 = 9,7x; FY2025 4.291 ÷ nuestro BPA de FY2026e (293,7) = 14,6x. Mediana 9,7x, mínimo 7,1x y media 10,5x, sin exclusiones: los años baratos (FY2021-FY2022) eran los de un margen de explotación del 4-5 %, antes del ciclo de semiconductores y de la reforma del gobierno corporativo en Japón. Actual: 4.187 ÷ 321,3 (nuestro BPA de FY2027e) = 13,0x.",
+        "v2": {
+          "mediana_5a": 13.34,
+          "minimo_5a": 10.24,
+          "media_larga": 13.3,
+          "excluidos": "PER de cierre (cierre de marzo ÷ BPA del propio ejercicio) [1, 2, 3, 4, 5, 6, 30]: FY2021 10,2x; FY2022 11,4x; FY2023 16,5x; FY2024 13,3x; FY2025 15,0x. Mediana 13,3x, mínimo 10,2x y media 13,3x, sin exclusiones."
+        }
+      },
+      "comparables_per": {
+        "mediana": 15.98
+      },
+      "consenso": {
+        "bpa_ano1": 358.8,
+        "bpa_ano2": null,
+        "objetivo_medio": 5975,
+        "objetivo_min": 5250,
+        "objetivo_max": 6900,
+        "analistas": 6,
+        "tendencia_3m": "subidas",
+        "fuente": "MarketScreener (BPA de FY2027e y objetivos de 6 analistas: 5.975 JPY de media, 5.250-6.900) [31]"
+      },
+      "diferencia_consenso": "Nuestro BPA de FY2026e (293,7 JPY) está por debajo de la guía (305,6) y del consenso (327, 6 analistas [31]), y el de FY2027e (321,3) un 10 % por debajo del consenso (358,8). La diferencia no está en el negocio (nuestro beneficio de explotación de FY2026e, 50.400 M, es el de la guía) sino en dos cosas: suponemos solo 2.000 M de plusvalías por venta de la cartera cruzada (la guía de neto, 40.000 M sobre 52.000 M de ordinario, implica unos 5.500 M de extraordinarios) y un margen que deja de subir en FY2028e. Los analistas cuentan con que la empresa vuelva a batir su guía, como en los cuatro últimos años [1, 29]. Nuestro precio base a 12 meses (4.045,63) queda un 32 % por debajo de su objetivo medio (5.975): ellos aplican 16-17 veces el beneficio, el múltiplo de los comparables; nosotros, el PER de hoy rebajado un 10 % por la regla v3.",
+      "media": null,
+      "comentario": "El objetivo a 12 meses (4.006,60 JPY) da un −1,6 % con dividendo (−0,6 % en el caso base): Mantener. El base aplica 11,8 veces (el PER de hoy, 13,0x, rebajado un 10 % hacia la mediana adelantada de 9,7x) a nuestro BPA de FY2028e (342,9), más un 2,7 % de dividendo. El BPA crece un 7 % al año desde FY2026e, pero la regla supone que el múltiplo se acerca a su historia, y eso se lo come. El bajista (7,1x, el mínimo de FY2022, × 237,2 = 1.684) es muy duro porque la historia incluye años de margen del 4-5 %; el alcista (16,0x, la mediana de los comparables, × 390,7 = 6.251) supone que el mercado la valora como a Kinden. Con la regla v2 (historia al cierre, de control) la ponderada sería del 7,7 % y la del base del 9,2 %: también Mantener."
+    },
+    "comentario": "El valor intrínseco (4.565,88 JPY) sale en un 60 % del DCF (4.377,10), un 20 % de los escenarios (media ponderada de 4.191) y un 20 % de los comparables por PER (5.506,85). Está un 9,0 % por encima del precio: la acción no está cara, pero tampoco barata para un negocio cíclico en su mejor margen de la historia. El puente suma 56.020 M al valor de la empresa: la cartera cruzada a valor de mercado neta de impuestos (35.750 M), el resto de inversiones financieras (18.794 M) y el superávit de pensiones (6.750 M), menos los minoritarios (5.274 M); la caja y la deuda casi se compensan (deuda neta de 1.532 M) [9, 13]. Esos 56.020 M son 428 JPY por acción, el 10 % del precio. Con la prima implícita del mercado (4,2 % en vez de 5,5 %), el valor sería de 5.302,72 JPY (+26,6 %).",
+    "confianza": "Media"
+  },
+  "catalizadores": {
+    "items": [
+      {
+        "fecha": "2026-11-13",
+        "evento": "Resultados del 2T FY2026 (fecha estimada) [9]",
+        "efecto": "Muestran si la obra industrial vuelve a crecer en el 2S y si el margen bruto se mantiene en el 22 %",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2027-02",
+        "evento": "Resultados del 3T FY2026 y posible subida de la guía, como en feb-2026 [29]",
+        "efecto": "La empresa batió su guía inicial cuatro años seguidos",
+        "probabilidad": "Media",
+        "sentido": "+"
+      },
+      {
+        "fecha": "2027-05",
+        "evento": "Resultados de FY2026 y nuevo plan a medio plazo (el actual acaba en FY2026) [14]",
+        "efecto": "Nuevos objetivos de ROE, asignación de capital y reducción de la cartera cruzada; posible recompra",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2026-2027",
+        "evento": "Decisiones de inversión en fábricas de semiconductores en Japón (Rapidus fase 2, TSMC Kumamoto 2, Kioxia, Micron)",
+        "efecto": "Marcan los pedidos industriales de FY2027-FY2028",
+        "probabilidad": "Media",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2027-03",
+        "evento": "Objetivo de cartera cruzada ≤ 15 % del patrimonio [8]",
+        "efecto": "Ventas de unos 15.000 M más: caja para recompras y menos tenedores cruzados",
+        "probabilidad": "Media",
+        "sentido": "+"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "riesgos": {
+    "items": [
+      {
+        "riesgo": "Fin del ciclo de inversión en fábricas de semiconductores en Japón",
+        "tipo": "Demanda",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "DCF de 3.087 (−26 %) en el bajista; −57 % a 12 meses con el PER mínimo",
+        "mitigante": "Las ampliaciones y renovaciones de las fábricas ya hechas (94 % de los pedidos industriales del 1T) y los redesarrollos de oficinas hasta 2029 [11]",
+        "senal": "Pedidos industriales en caída dos trimestres seguidos"
+      },
+      {
+        "riesgo": "Margen de FY2025 como pico (cierres favorables de grandes obras)",
+        "tipo": "Márgenes",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "Cada punto de margen EBITDA ≈ 400 JPY por acción en el DCF",
+        "mitigante": "Más contratos directos y a coste más margen (61-64 %) y precios al alza por la escasez [8, 11]",
+        "senal": "Margen bruto por debajo del 21 % en un semestre"
+      },
+      {
+        "riesgo": "Venta de acciones de tenedores cruzados (aseguradoras y bancos)",
+        "tipo": "Mercado",
+        "probabilidad": "Media",
+        "impacto": "Bajo",
+        "efecto_valor": "Presión temporal sobre el precio (colocaciones con descuento del 3-5 %)",
+        "mitigante": "Recompras de la empresa y entrada de inversores extranjeros [13]",
+        "senal": "Anuncio de colocación secundaria"
+      },
+      {
+        "riesgo": "Ejecución de obra: sobrecostes, retrasos (Oriente Medio, terremoto de Kumamoto) y escasez de subcontratistas",
+        "tipo": "Operativo",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "Retrasos del 20-30 % en obras afectadas ≈ 2-3 % del beneficio de explotación de la matriz según la empresa [7, 8]",
+        "mitigante": "Cláusulas de revisión de precios y red de 600 subcontratistas fieles [8]",
+        "senal": "Provisiones por pérdidas en obra o caída del margen bruto"
+      },
+      {
+        "riesgo": "Circulante: el crecimiento consume caja",
+        "tipo": "Financiero",
+        "probabilidad": "Alta",
+        "impacto": "Bajo",
+        "efecto_valor": "Flujo libre por debajo del beneficio mientras crezca; recogido en el DCF (circulante del 32,5 %)",
+        "mitigante": "Caja e inversiones financieras de 106.000 M y rating A+ [9]",
+        "senal": "Circulante por encima del 35 % de las ventas"
+      },
+      {
+        "riesgo": "Riesgo de IA: exposición media y positiva (centros de datos)",
+        "tipo": "Tecnológico",
+        "probabilidad": "Baja",
+        "impacto": "Bajo",
+        "efecto_valor": "Positivo por demanda de refrigeración de centros de datos; el riesgo es que esos pedidos se retrasen",
+        "mitigante": "La IA no sustituye la obra física; la empresa la usa en diseño y prefabricación (T-Base, BIM)",
+        "senal": "Cancelaciones de centros de datos en Japón y Asia"
+      }
+    ],
+    "premortem": "Es octubre de 2029 y la acción ha perdido un 40 %. Lo que pasó: el ciclo de fábricas de semiconductores en Japón tocó techo en 2025-2026. Rapidus retrasó su segunda fase, TSMC aplazó Kumamoto 2 y Kioxia redujo inversión con la caída de la memoria. Los pedidos industriales de Takasago cayeron un 25 % en FY2027 y la competencia por la obra que quedaba (con Taikisha y los grupos eléctricos con técnicos libres) bajó los precios. Los centros de datos se retrasaron por falta de electricidad. El margen de explotación volvió del 11 % al 7 %, el BPA bajó a 200 JPY y el mercado volvió a pagar 9-10 veces el beneficio, como en FY2021-FY2024. Los tenedores cruzados aprovecharon para vender. Lo habrían anticipado los pedidos industriales de dos trimestres seguidos en caída y el margen bruto por debajo del 21 %.",
+    "ia": {
+      "exposicion": "Media",
+      "sentido": "Positivo",
+      "efecto_valor": "+0-5 % a 3-5 años en el valor del negocio por la demanda de refrigeración de centros de datos y fábricas de chips de IA; sin riesgo de sustitución",
+      "comentario": "La IA empuja la demanda de Takasago por dos vías: los centros de datos, que necesitan climatización y refrigeración de alta densidad (la empresa creó un equipo dedicado y tiene más volumen que antes, aunque los pedidos se retrasan al año siguiente) y las fábricas de semiconductores avanzados (Rapidus, TSMC), que necesitan salas limpias [8, 11]. No puede sustituir su trabajo, que es obra física con técnicos y subcontratistas; sí lo hace más productivo (diseño con BIM, prefabricación con T-Base), lo que ayuda con la escasez de técnicos [7]. El riesgo es indirecto: que la inversión en centros de datos de IA se frene o se retrase por falta de electricidad, como ya pasa en parte. Señal: pedidos de centros de datos en la cartera de oportunidades que publica la empresa."
+    },
+    "confianza": "Media"
+  },
+  "esg": {
+    "calificaciones": [],
+    "materialidad": "Lo material es la seguridad en obra, el capital humano (escasez de técnicos: la plantilla de la matriz pasó de 2.131 a 2.469 y el salario medio subió un 10,3 % en FY2025 hasta 12,46 M JPY) y la eficiencia energética que instala en los edificios de sus clientes [13, 21]. Su propio impacto ambiental es pequeño (no fabrica), pero la climatización es el mayor consumo de energía de un edificio y de una fábrica de semiconductores: la descarbonización es una oportunidad de negocio [7]. Mujeres directivas: 3,5 % (objetivo 10 % hacia 2030) [21].",
+    "controversias": "No constan sanciones, accidentes graves publicados ni litigios relevantes en los últimos tres años [13].",
+    "confianza": "Baja"
+  },
+  "preguntas": {
+    "items": [
+      {
+        "tema": "Margen",
+        "pregunta": "¿Cuál es el margen bruto al contratar de los pedidos de FY2026 frente a los ejecutados en FY2025, sin los cierres de grandes obras?",
+        "por_que": "Separa el margen estructural del pico; la empresa da «la zona del 21 %» para FY2025 [8]."
+      },
+      {
+        "tema": "Semiconductores",
+        "pregunta": "¿Qué parte de la cartera de oportunidades industrial es de proyectos nuevos y cuál de ampliaciones, y cuánto depende de Rapidus y de TSMC Kumamoto 2?",
+        "por_que": "Es el mayor riesgo del bajista [11]."
+      },
+      {
+        "tema": "Circulante",
+        "pregunta": "¿Hasta dónde puede bajar el circulante (32,5 % de las ventas) cuando terminen las grandes obras, y cuánto se debe a pagar antes a los subcontratistas?",
+        "por_que": "Es lo que separa el beneficio del flujo libre [1]."
+      },
+      {
+        "tema": "Capital",
+        "pregunta": "¿Cuánto de la cartera cruzada (45.407 M) venderán hasta marzo de 2027 y se destinará a recompras?",
+        "por_que": "Son el 8 % de la capitalización y el objetivo del 15 % del patrimonio no se ha alcanzado [8]."
+      },
+      {
+        "tema": "Guía",
+        "pregunta": "¿Por qué la guía de FY2026 (explotación +4,7 %) es tan prudente si la cartera crece un 12 %?",
+        "por_que": "La empresa batió su guía cuatro años seguidos; el consenso ya lo descuenta [29]."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sentimiento": {
+    "tono": "Dividido",
+    "tendencia": "Empeora",
+    "revisadas": [
+      {
+        "plataforma": "Foro de Yahoo! Japan Finance (1969)",
+        "fecha": "2026-10",
+        "n_comentarios": 50,
+        "tono": "Dividido",
+        "resumen": "Mayoría de pequeños accionistas a largo plazo («ガチホ», mantener pase lo que pase) inquietos por la caída desde febrero; unos esperan el 2T para comprar más, otros culpan a la venta de los tenedores cruzados y al fin del ciclo de semiconductores [38]."
+      },
+      {
+        "plataforma": "Prensa financiera japonesa (kabutan, Nikkei)",
+        "fecha": "2026-08/10",
+        "n_comentarios": 8,
+        "tono": "Neutro",
+        "resumen": "Titulares sobre el ordinario del 1T (−12 %), la subida de Morgan Stanley MUFG a sobreponderar (14-sep) y la rotación del mercado japonés hacia otros valores de semiconductores y centros de datos [37]."
+      },
+      {
+        "plataforma": "Analistas en las conferencias",
+        "fecha": "2026-05/08",
+        "n_comentarios": 25,
+        "tono": "Neutro",
+        "resumen": "Preguntas sobre el margen sin las grandes obras, la caída de pedidos industriales, el retraso de los centros de datos y la recompra; tono técnico y sin alarma [11]."
+      },
+      {
+        "plataforma": "Simply Wall St",
+        "fecha": "2026-10",
+        "n_comentarios": 1,
+        "tono": "Positivo",
+        "resumen": "Artículo que ve la acción infravalorada frente a su flujo descontado y a sus rivales [39]."
+      }
+    ],
+    "temas": [
+      {
+        "tema": "El ciclo de semiconductores ha tocado techo",
+        "postura": "Bajista",
+        "peso": "Alto",
+        "contraste": "A medias: los pedidos industriales cayeron un 6,3 % en FY2025, pero la cartera industrial repuntó en el 1T FY2026 y la cartera de oportunidades sube [A]."
+      },
+      {
+        "tema": "Ventas de los tenedores cruzados",
+        "postura": "Bajista",
+        "peso": "Medio",
+        "contraste": "Real: colocación de 3,1 millones de acciones en feb-2025 y presión de los inversores para deshacer la cartera cruzada en todo Japón [C]."
+      },
+      {
+        "tema": "La empresa siempre bate su guía",
+        "postura": "Alcista",
+        "peso": "Medio",
+        "contraste": "Cierto los cuatro últimos años [C]; el consenso ya lo descuenta (BPA 327 frente a 305,6)."
+      },
+      {
+        "tema": "Dividendo progresivo y recompras",
+        "postura": "Alcista",
+        "peso": "Medio",
+        "contraste": "Payout del 40 % con DPA de 123 JPY en FY2026 (rentabilidad del 2,9 %) [A]."
+      }
+    ],
+    "lectura": "El tono es el de una acción que fue favorita y se ha enfriado: los particulares aguantan pero sin convicción, y la prensa ha dejado de hablar de ella mientras los analistas mantienen objetivos de 5.400-6.900 JPY [37, 38]. No hay euforia ni capitulación. La duda que mueve el precio (si el margen de FY2025 fue un pico) es la misma del informe, y la resolverá el 2T del 13-nov. Ningún dato del informe sale de los foros.",
+    "confianza": "Media"
+  },
+  "fuentes": [
+    {
+      "id": 1,
+      "titulo": "Consolidated Financial Results for the Fiscal Year Ended March 31, 2026 (kessan tanshin FY2025, J-GAAP): cuenta, balance y flujos de FY2025 y FY2024",
+      "editor": "Takasago Thermal Engineering (TDnet / eir-parts)",
+      "tipo": "Primaria",
+      "fecha": "2026-05-12",
+      "url": "https://ssl4.eir-parts.net/doc/1969/ir_material2/277982/00.pdf"
+    },
+    {
+      "id": 2,
+      "titulo": "Corrección del tanshin FY2025 (estado de flujos: flujo operativo corregido a 29.725 M)",
+      "editor": "Takasago Thermal Engineering (TDnet / eir-parts)",
+      "tipo": "Primaria",
+      "fecha": "2026-06-12",
+      "url": "https://ssl4.eir-parts.net/doc/1969/ir_material2/280514/00.pdf"
+    },
+    {
+      "id": 3,
+      "titulo": "Kessan tanshin FY2024 (ejercicio a marzo de 2025): cuenta, balance y flujos de FY2024 y FY2023",
+      "editor": "Takasago Thermal Engineering (TDnet / eir-parts)",
+      "tipo": "Primaria",
+      "fecha": "2025-05-13",
+      "url": "https://ssl4.eir-parts.net/doc/1969/ir_material2/250365/00.pdf"
+    },
+    {
+      "id": 4,
+      "titulo": "Kessan tanshin FY2023 (ejercicio a marzo de 2024): estados de FY2023 y FY2022 e información por segmentos",
+      "editor": "Takasago Thermal Engineering (TDnet / eir-parts)",
+      "tipo": "Primaria",
+      "fecha": "2024-05-14",
+      "url": "https://ssl4.eir-parts.net/doc/1969/ir_material2/228919/00.pdf"
+    },
+    {
+      "id": 5,
+      "titulo": "Financial results FY2022 (ejercicio a marzo de 2023): estados de FY2022 y FY2021, pedidos, ventas y cartera por línea de negocio",
+      "editor": "Takasago Thermal Engineering (TDnet / eir-parts)",
+      "tipo": "Primaria",
+      "fecha": "2023-05-12",
+      "url": "https://ssl4.eir-parts.net/doc/1969/ir_material2/215940/00.pdf"
+    },
+    {
+      "id": 6,
+      "titulo": "Financial results FY2021 (ejercicio a marzo de 2022)",
+      "editor": "Takasago Thermal Engineering (TDnet / eir-parts)",
+      "tipo": "Primaria",
+      "fecha": "2022-05-13",
+      "url": "https://ssl4.eir-parts.net/doc/1969/ir_material2/215939/00.pdf"
+    },
+    {
+      "id": 7,
+      "titulo": "FY2025 Financial Results Presentation (pedidos, ventas y cartera por sector, matriz y filiales, plan a medio plazo, asignación de capital y guía FY2026); corrección del 12-jun-2026",
+      "editor": "Takasago Thermal Engineering (TDnet / eir-parts)",
+      "tipo": "Primaria",
+      "fecha": "2026-05-12",
+      "url": "https://ssl4.eir-parts.net/doc/1969/ir_material2/277981/00.pdf"
+    },
+    {
+      "id": 8,
+      "titulo": "FY2025 Full-Year Results Briefing: Key Points from the Q&A Session (12-may-2026)",
+      "editor": "Takasago Thermal Engineering (TDnet / eir-parts)",
+      "tipo": "Primaria",
+      "fecha": "2026-05-19",
+      "url": "https://ssl4.eir-parts.net/doc/1969/ir_material2/278602/00.pdf"
+    },
+    {
+      "id": 9,
+      "titulo": "Kessan tanshin 1T FY2026 (abril-junio de 2026): cuenta trimestral y balance a 30-jun-2026",
+      "editor": "Takasago Thermal Engineering (TDnet / eir-parts)",
+      "tipo": "Primaria",
+      "fecha": "2026-08-05",
+      "url": "https://ssl4.eir-parts.net/doc/1969/ir_material2/283591/00.pdf"
+    },
+    {
+      "id": 10,
+      "titulo": "FY2026 First-Quarter Results Presentation (pedidos, cartera, cartera de oportunidades por sector)",
+      "editor": "Takasago Thermal Engineering (TDnet / eir-parts)",
+      "tipo": "Primaria",
+      "fecha": "2026-08-05",
+      "url": "https://ssl4.eir-parts.net/doc/1969/ir_material2/283592/00.pdf"
+    },
+    {
+      "id": 11,
+      "titulo": "FY2026 First-Quarter Results Briefing: Key Points from the Q&A Session (5-ago-2026)",
+      "editor": "Takasago Thermal Engineering (TDnet / eir-parts)",
+      "tipo": "Primaria",
+      "fecha": "2026-08",
+      "url": "https://ssl4.eir-parts.net/doc/1969/ir_material2/284223/00.pdf"
+    },
+    {
+      "id": 12,
+      "titulo": "Kessan tanshin trimestrales 1T, 2T y 3T de FY2024 y FY2025 (cifras acumuladas de las que salen los trimestres)",
+      "editor": "Takasago Thermal Engineering (TDnet / eir-parts)",
+      "tipo": "Primaria",
+      "fecha": "2026-02-13",
+      "url": "https://ssl4.eir-parts.net/doc/1969/ir_material2/273345/00.pdf"
+    },
+    {
+      "id": 13,
+      "titulo": "有価証券報告書 第146期 (yuho FY2025): segmentos, ventas por país del cliente, remuneración, plantilla y cartera de participaciones cruzadas",
+      "editor": "Takasago Thermal Engineering (EDINET)",
+      "tipo": "Primaria",
+      "fecha": "2026-06-25",
+      "url": "https://ssl4.eir-parts.net/doc/1969/yuho_pdf/S100YDOU/00.pdf"
+    },
+    {
+      "id": 14,
+      "titulo": "Revisión del plan a medio plazo 2026 (objetivos de ordinario y ROE, asignación de capital y reducción de participaciones cruzadas)",
+      "editor": "Takasago Thermal Engineering (TDnet / eir-parts)",
+      "tipo": "Primaria",
+      "fecha": "2025-05-13",
+      "url": "https://ssl4.eir-parts.net/doc/1969/ir_material2/250366/00.pdf"
+    },
+    {
+      "id": 15,
+      "titulo": "Notice of Acquisition of Own Shares (recompra de abril-junio de 2025, unos 8.000 M)",
+      "editor": "Takasago Thermal Engineering (TDnet / eir-parts)",
+      "tipo": "Primaria",
+      "fecha": "2025-06-24",
+      "url": "https://ssl4.eir-parts.net/doc/1969/ir_material2/254043/00.pdf"
+    },
+    {
+      "id": 16,
+      "titulo": "Notice of Stock Split (1:2, efectivo el 1-oct-2025)",
+      "editor": "Takasago Thermal Engineering (TDnet / eir-parts)",
+      "tipo": "Primaria",
+      "fecha": "2025-08-08",
+      "url": "https://ssl4.eir-parts.net/doc/1969/ir_material2/257121/00.pdf"
+    },
+    {
+      "id": 17,
+      "titulo": "建設工事施工統計調査報告 令和4年度実績 (estadística de obras de construcción, ejercicio fiscal 2022): obras de climatización y fontanería (管工事業) 2020-2022",
+      "editor": "Ministerio de Tierra, Infraestructura y Transporte (MLIT)",
+      "tipo": "Primaria",
+      "fecha": "2024-03-29",
+      "url": "https://www.mlit.go.jp/report/press/content/001734639.pdf"
+    },
+    {
+      "id": 18,
+      "titulo": "Mercado de obras de climatización y fontanería en Japón: 10.315.700 M JPY en el ejercicio fiscal 2024 (+2,8 %), citando la estadística del MLIT",
+      "editor": "CREX (vía búsqueda web)",
+      "tipo": "Prensa",
+      "fecha": "2025",
+      "url": "https://crex-group.com"
+    },
+    {
+      "id": 19,
+      "titulo": "空調・衛生設備工事市場に関する調査 (Yano Research: 73 grandes contratistas de climatización y fontanería, 1.238.800 M JPY en el ejercicio fiscal 2021)",
+      "editor": "Yano Research Institute",
+      "tipo": "Estudio sectorial",
+      "fecha": "2022-12-16",
+      "url": "https://www.yano.co.jp/press-release/show/press_id/3150"
+    },
+    {
+      "id": 20,
+      "titulo": "Fichas de Kinden, Sanki Engineering, Taikisha, Dai-Dan, Kandenko, Hibiya Engineering, United Integrated Services, Comfort Systems USA y EMCOR (cuentas del último ejercicio)",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-19",
+      "url": "https://finance.yahoo.com"
+    },
+    {
+      "id": 21,
+      "titulo": "Corporate Governance Report (junio de 2026): sostenibilidad, capital humano, política de capital",
+      "editor": "Takasago Thermal Engineering (TDnet / eir-parts)",
+      "tipo": "Primaria",
+      "fecha": "2026-06-25",
+      "url": "https://ssl4.eir-parts.net/doc/1969/ir_material3/281378/00.pdf"
+    },
+    {
+      "id": 22,
+      "titulo": "Financial results FY2023 (centenario, historia y objetivos de capital)",
+      "editor": "Takasago Thermal Engineering (TDnet / eir-parts)",
+      "tipo": "Primaria",
+      "fecha": "2024-05-14",
+      "url": "https://ssl4.eir-parts.net/doc/1969/ir_material2/229728/00.pdf"
+    },
+    {
+      "id": 23,
+      "titulo": "Notice of Convocation of the 146th Annual General Meeting (candidatos, trayectoria y acciones de cada consejero)",
+      "editor": "Takasago Thermal Engineering (TDnet / eir-parts)",
+      "tipo": "Primaria",
+      "fecha": "2026-06-05",
+      "url": "https://ssl4.eir-parts.net/doc/1969/announcement1/121429/00.pdf"
+    },
+    {
+      "id": 24,
+      "titulo": "臨時報告書 (resultado de las votaciones de la junta del 25-jun-2026: reelección de Kazuhito Kojima con el 88,7 %)",
+      "editor": "Takasago Thermal Engineering (EDINET)",
+      "tipo": "Primaria",
+      "fecha": "2026-06-26",
+      "url": "https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/S100YM7V.pdf"
+    },
+    {
+      "id": 25,
+      "titulo": "臨時報告書 (votaciones de la junta del 19-jun-2024: reelección de Kojima con el 92,9 %)",
+      "editor": "Takasago Thermal Engineering (EDINET)",
+      "tipo": "Primaria",
+      "fecha": "2024-06-20",
+      "url": "https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/S100TO7S.pdf"
+    },
+    {
+      "id": 26,
+      "titulo": "Notice of Change in Representative Directors (Hiroshi Kubota, vicepresidente y consejero representante desde el 1-abr-2026)",
+      "editor": "Takasago Thermal Engineering (TDnet / eir-parts)",
+      "tipo": "Primaria",
+      "fecha": "2026-01-22",
+      "url": "https://ssl4.eir-parts.net/doc/1969/ir_material2/271965/00.pdf"
+    },
+    {
+      "id": 27,
+      "titulo": "Notice of Secondary Offering of Shares (venta de 3.106.800 acciones de tenedores cruzados) y fijación del precio",
+      "editor": "Takasago Thermal Engineering (TDnet / eir-parts)",
+      "tipo": "Primaria",
+      "fecha": "2025-02-13",
+      "url": "https://ssl4.eir-parts.net/doc/1969/tdnet/2565677/00.pdf"
+    },
+    {
+      "id": 28,
+      "titulo": "Notice of Resolutions of the 146th AGM",
+      "editor": "Takasago Thermal Engineering (TDnet / eir-parts)",
+      "tipo": "Primaria",
+      "fecha": "2026-06-25",
+      "url": "https://ssl4.eir-parts.net/doc/1969/announcement/122691/00.pdf"
+    },
+    {
+      "id": 29,
+      "titulo": "Revisiones de la guía (29-oct-2025 y 13-feb-2026) y guías iniciales de FY2022-FY2025 en los tanshin",
+      "editor": "Takasago Thermal Engineering (TDnet / eir-parts)",
+      "tipo": "Primaria",
+      "fecha": "2026-02-13",
+      "url": "https://ssl4.eir-parts.net/doc/1969/ir_material2/273347/00.pdf"
+    },
+    {
+      "id": 30,
+      "titulo": "Históricos diarios de 1969.T, 1306.T (ETF del TOPIX) y 1619.T (ETF de construcción y materiales TOPIX-17)",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-19",
+      "url": "https://finance.yahoo.com/quote/1969.T/history"
+    },
+    {
+      "id": 31,
+      "titulo": "Takasago Thermal Engineering: estimaciones FY2026-FY2027 (6 analistas), objetivo medio 5.975 JPY (5.250-6.900) y cambios de recomendación",
+      "editor": "MarketScreener",
+      "tipo": "Analistas",
+      "fecha": "2026-10-19",
+      "url": "https://www.marketscreener.com/quote/stock/TAKASAGO-THERMAL-ENGINEE-6492012/"
+    },
+    {
+      "id": 32,
+      "titulo": "Interest Rate (jgbcme.csv): bono del Estado japonés a 10 años, 2,958 % el 16-oct-2026 (último publicado al corte)",
+      "editor": "Ministerio de Hacienda de Japón",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-16",
+      "url": "https://www.mof.go.jp/english/policy/jgbs/reference/interest_rate/jgbcme.csv"
+    },
+    {
+      "id": 33,
+      "titulo": "Implied ERP by month (ERPbymonth.xlsx), octubre de 2026: 4,20 %",
+      "editor": "Aswath Damodaran (NYU Stern)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx"
+    },
+    {
+      "id": 34,
+      "titulo": "Fichas de comparables (capitalización, valor empresa, ventas, flujo libre, PER adelantado) de nueve contratistas de instalaciones",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-19",
+      "url": "https://finance.yahoo.com"
+    },
+    {
+      "id": 35,
+      "titulo": "PER con la previsión de la propia empresa (会社予想PER) de Kinden, Sanki, Taikisha, Dai-Dan, Kandenko, Hibiya y Takasago",
+      "editor": "Yahoo! Japan Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-19",
+      "url": "https://finance.yahoo.co.jp/quote/1969.T"
+    },
+    {
+      "id": 36,
+      "titulo": "Bolsa: movimiento del precio (movimiento.mjs) de 1969.T",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-19",
+      "url": "https://finance.yahoo.com/quote/1969.T"
+    },
+    {
+      "id": 37,
+      "titulo": "Titulares de kabutan y Nikkei sobre Takasago (revisión de guía de feb-2026, resultados de mayo y agosto de 2026, cambios de recomendación de Nomura y Morgan Stanley MUFG)",
+      "editor": "Yahoo! Japan Finance (noticias)",
+      "tipo": "Prensa",
+      "fecha": "2026-10-19",
+      "url": "https://finance.yahoo.co.jp/quote/1969.T/news"
+    },
+    {
+      "id": 38,
+      "titulo": "Foro de Yahoo! Japan Finance (掲示板) de 1969: unos 50 comentarios de septiembre y octubre de 2026",
+      "editor": "Yahoo! Japan Finance",
+      "tipo": "Foros y redes",
+      "fecha": "2026-10-19",
+      "url": "https://finance.yahoo.co.jp/quote/1969.T/forum"
+    },
+    {
+      "id": 39,
+      "titulo": "Takasago Thermal Engineering: análisis de valoración (19-oct-2026)",
+      "editor": "Simply Wall St",
+      "tipo": "Foros y redes",
+      "fecha": "2026-10-19",
+      "url": "https://simplywall.st/stocks/jp/capital-goods/tse-1969/takasago-thermal-engineering-shares"
+    }
+  ],
+  "calc": {
+    "version": 4,
+    "etiquetas": {
+      "margen_bruto": "M. bruto",
+      "margen_bruto_largo": "Margen bruto",
+      "dias_base": "sobre el coste de ventas"
+    },
+    "recomendacion": {
+      "recomendacion": "Mantener",
+      "regla": "Mantener",
+      "regla_absoluta": "Mantener",
+      "regla_relativa": "Comprar",
+      "coincide": true,
+      "conviccion": "Baja",
+      "conviccion_sugerida": "Baja",
+      "conviccion_razones": [
+        "las reglas discrepan (absoluta Mantener, relativa Comprar)"
+      ],
+      "reglas_discrepan": true,
+      "relativo": {
+        "prima_implicita_pct": 4.2,
+        "wacc": 6.9,
+        "ke": 7.37,
+        "dcf": 5313.11,
+        "dcf_min": 4896.01,
+        "dcf_max": 5815.9,
+        "valor_objetivo": 5302.72,
+        "alcista": 6004.17,
+        "bajista": 3639.38,
+        "mercado": "Prima implícita del S&P 500 (Damodaran), la principal, para mercados desarrollados; Japón sin prima adicional",
+        "fecha": "2026-10",
+        "potencial_pct": 26.6,
+        "rentabilidad_total_pct": 29.4,
+        "asimetria": 3.32
+      },
+      "objetivo_mercado_txt": " · con la prima implícita del mercado: 5.302,72 (+26,6 %)",
+      "objetivo_mercado_corto": " · mercado 5.302,72",
+      "rentabilidad_mercado_corto": " · mercado +29,4 %",
+      "potencial_pct": 9,
+      "dividendo_pct": 2.7,
+      "rentabilidad_total_pct": 11.8,
+      "alcista_pct": 17.6,
+      "bajista_pct": -26.3,
+      "asimetria": 0.67,
+      "comprar_por_debajo": 3584,
+      "vender_por_encima": 4579.56,
+      "tabla": [
+        {
+          "concepto": "Objetivo a 12 meses (nuestro PER × nuestro BPA FY2028e, ponderado 25/50/25)",
+          "valor": "4.006,60 JPY"
+        },
+        {
+          "concepto": "Bajista / base / alcista a 12 meses",
+          "valor": "7,1x × 237,22 = 1.684,26 · 11,8x × 342,85 = 4.045,63 · 16,0x × 390,68 = 6.250,88"
+        },
+        {
+          "concepto": "Rentabilidad a 12 meses: ponderada / del base (con dividendo)",
+          "valor": "-1,6 % / -0,6 %"
+        },
+        {
+          "concepto": "Regla de múltiplos aplicada",
+          "valor": "v3: base a mitad de camino hacia la mediana adelantada, sin alejarse del actual más de ×1,1; bajista mín. 5 a (adelantado) o base × 0,80; alcista techo base × 1,35 (selector de método: sin marcas: decide la v3)"
+        },
+        {
+          "concepto": "Objetivo medio de los analistas (solo contraste)",
+          "valor": "5.975,00 (nuestro base -32,3 %)"
+        },
+        {
+          "concepto": "Valor intrínseco (síntesis ponderada, largo plazo)",
+          "valor": "4.565,88 JPY"
+        },
+        {
+          "concepto": "Potencial sobre el precio actual",
+          "valor": "9,0 %"
+        },
+        {
+          "concepto": "Rentabilidad por dividendo ordinario",
+          "valor": "2,7 %"
+        },
+        {
+          "concepto": "Rentabilidad total esperada a 12 meses",
+          "valor": "11,8 %"
+        },
+        {
+          "concepto": "Escenario alcista / bajista",
+          "valor": "17,6 % / -26,3 %"
+        },
+        {
+          "concepto": "Asimetría (ganancia alcista / pérdida bajista)",
+          "valor": "0,67x"
+        },
+        {
+          "concepto": "Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado",
+          "valor": "8,5 % frente a 8,2 % y 6,9 %"
+        },
+        {
+          "concepto": "Valor objetivo con la prima implícita del mercado (4,2 %, WACC 6,9 %)",
+          "valor": "5.302,72 JPY"
+        },
+        {
+          "concepto": "Rentabilidad total esperada con la prima del mercado",
+          "valor": "29,4 %"
+        },
+        {
+          "concepto": "Asimetría con la prima del mercado",
+          "valor": "3,32x"
+        },
+        {
+          "concepto": "Regla absoluta (frente a su coste de capital)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Regla relativa (frente a lo que pide el mercado)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "Crecimiento anual implícito en el precio (FY2026e-FY2032e) frente al previsto para su mercado",
+          "valor": "0,8 % frente a 3,0 %"
+        },
+        {
+          "concepto": "¿La calidad de la empresa sostiene el crecimiento previsto?",
+          "valor": "Sí (4,3 % anual proyectado; financiable al ROIC actual: 3,4 %)"
+        },
+        {
+          "concepto": "Señal del valor intrínseco (regla del DCF, referencia)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "Recomendación según la regla a 12 meses (Comprar: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender: ponderada ≤ -10 %)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Convicción según los criterios (las reglas discrepan (absoluta Mantener, relativa Comprar))",
+          "valor": "Baja"
+        }
+      ],
+      "niveles": [
+        {
+          "accion": "Comprar",
+          "condicion": "Por debajo de 3.584,00 (ponderada a 12 meses ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco)"
+        },
+        {
+          "accion": "Mantener",
+          "condicion": "Entre 3.584,00 y 4.579,56"
+        },
+        {
+          "accion": "Vender o reducir",
+          "condicion": "Por encima de 4.579,56 (ponderada a 12 meses ≤ -10 %)"
+        }
+      ],
+      "precio_txt": "",
+      "valor_objetivo_txt": "",
+      "regla_valor_intrinseco": "Comprar",
+      "objetivo_12m": {
+        "completo": true,
+        "filas": [
+          {
+            "escenario": "Bajista",
+            "metrica": "PER FY2028e",
+            "beneficio_por_accion": 237.22,
+            "multiplo": 7.1,
+            "multiplo_informe": null,
+            "origen": "mínimo de 5 años",
+            "precio": 1684.26,
+            "rentabilidad_pct": -57,
+            "justificacion": "Ventas de 431.300 M en FY2028e (3 puntos menos de crecimiento al año y 10 menos en FY2027e, cuando las ventas caen un 2 %: el ciclo de semiconductores se para y la general no lo compensa) con 2,5 puntos menos de margen EBITDA (10,5 %): beneficio de explotación de unos 41.000 M, más 3.600 M de no operativo y plusvalías, impuesto del 29 % y 600 M de minoritarios sobre 130,89 M de acciones: BPA de 237,2 JPY, un 17 % por debajo del de FY2025 (285,7)."
+          },
+          {
+            "escenario": "Base",
+            "metrica": "PER FY2028e",
+            "beneficio_por_accion": 342.85,
+            "multiplo": 11.8,
+            "multiplo_informe": null,
+            "origen": "PER actual (13x) ÷ 1.1 (tope: la mediana de 5 años, 9.7x, queda más lejos)",
+            "precio": 4045.63,
+            "rentabilidad_pct": -0.6,
+            "justificacion": "Ventas de 503.749 M en FY2028e (+3,8 % en FY2026e, en línea con la guía de 440.000 M, +8 % en FY2027e y +6 % en FY2028e con la cartera de 433.250 M y el objetivo de pedidos de 520.000 M) y margen EBITDA del 13,0 %: beneficio de explotación de 60.450 M (12,0 %), 2.400 M de no operativo y 1.200 M de plusvalías por venta de la cartera cruzada, impuesto del 29 % y 600 M de minoritarios: BPA de 342,9 JPY."
+          },
+          {
+            "escenario": "Alcista",
+            "metrica": "PER FY2028e",
+            "beneficio_por_accion": 390.68,
+            "multiplo": 16,
+            "multiplo_informe": null,
+            "origen": "mediana de los comparables",
+            "precio": 6250.88,
+            "rentabilidad_pct": 52,
+            "justificacion": "Ventas de 533.000 M (2 puntos más de crecimiento al año: nuevas fábricas de semiconductores y centros de datos a la vez) y margen 1 punto más alto (14,0 %, más contratos directos y renovaciones): BPA de 390,7 JPY."
+          }
+        ],
+        "regla": {
+          "version": "v3",
+          "bajista": 7.1,
+          "base": 11.8,
+          "alcista": 16,
+          "bajista_origen": "mínimo de 5 años",
+          "base_origen": "PER actual (13x) ÷ 1.1 (tope: la mediana de 5 años, 9.7x, queda más lejos)",
+          "alcista_origen": "mediana de los comparables"
+        },
+        "version": "v3",
+        "probabilidades": [
+          25,
+          50,
+          25
+        ],
+        "objetivo_ponderado": 4006.6,
+        "objetivo_simple": 3993.59,
+        "objetivo_base": 4045.63,
+        "rentabilidad_ponderada_pct": -1.6,
+        "rentabilidad_simple_pct": -1.9,
+        "rentabilidad_base_pct": -0.6,
+        "asimetria": 0.82,
+        "senal": "Mantener",
+        "senal_sin_confirmar": null,
+        "confianza_baja": false,
+        "comprar_por_debajo": 3584,
+        "vender_por_encima": 4579.56,
+        "consenso_objetivo": 5975,
+        "diferencia_consenso_pct": -32.3,
+        "selector": {
+          "regla": "v3",
+          "motivo": "sin marcas: decide la v3",
+          "v3_sin_selector": {
+            "version": "v3",
+            "rentabilidad_ponderada_pct": -1.6,
+            "rentabilidad_base_pct": -0.6,
+            "senal": "Mantener",
+            "objetivo_ponderado": 4006.6
+          },
+          "v2": {
+            "version": "v2",
+            "rentabilidad_ponderada_pct": 7.7,
+            "rentabilidad_base_pct": 9.2,
+            "senal": "Mantener",
+            "objetivo_ponderado": 4396.16
+          }
+        },
+        "v2": {
+          "rentabilidad_ponderada_pct": 7.7,
+          "rentabilidad_base_pct": 9.2,
+          "senal": "Mantener",
+          "multiplos": [
+            10.2,
+            13,
+            16
+          ]
+        },
+        "v3_tope_anterior": {
+          "tope": 1.3,
+          "rentabilidad_ponderada_pct": -5.5,
+          "senal": "Mantener"
+        },
+        "comparacion_txt": "Para comparar, con la regla v2 (historia al cierre, mismo precio): 10,2x / 13,0x / 16,0x, 7,7 % Mantener; con el tope anterior del base (×1,3, 14-oct mediodía): -5,5 % Mantener. Decide la v3 con tope ×1,1, elegida por el selector de método (sin marcas: decide la v3; METODO-VIGENTE.md)."
+      },
+      "rentabilidad_12m_pct": -1.6,
+      "rentabilidad_12m_txt": "-1,6 % (base -0,6 %)",
+      "objetivo_12m_txt": "4.006,60 JPY"
+    },
+    "mercado": {
+      "precio": 4187,
+      "acciones": 130.89,
+      "capitalizacion": 548036,
+      "deuda_neta": -1532,
+      "deuda_neta_ajustada": -44032,
+      "asimilables_deuda": -42500,
+      "ajustes_puente": -56020,
+      "valor_empresa": 490484,
+      "fecha_puente": "2026-06-30"
+    },
+    "clave": {
+      "capitalizacion": 548036,
+      "valor_empresa": 490484,
+      "deuda_neta": -1532,
+      "ev_ventas_ltm": 1.18,
+      "ev_ebitda_ltm": 9.8,
+      "ev_ebitda_ntm": null,
+      "ev_ebit_ltm": 10.6,
+      "per_ltm": 15.7,
+      "per_ntm": 12.2,
+      "fcf_yield_pct": 4.4,
+      "dividendo_pct": 2.7,
+      "dn_ebitda": 0,
+      "roic_pct": 17.9,
+      "margen_ebitda_pct": 12.1,
+      "deuda_neta_ajustada": -44032,
+      "dn_ebitda_ajustada": -0.9,
+      "crecimiento_tcac_pct": 8.8,
+      "ingresos_ntm": 467063,
+      "ebitda_ntm": null,
+      "bpa_ntm": 344.61,
+      "ebitda_ltm": 50097,
+      "ingresos_ltm": 414640,
+      "ev_rab": null
+    },
+    "cuenta": [
+      {
+        "periodo": "FY2021",
+        "ingresos": 302746,
+        "crecimiento_pct": null,
+        "beneficio_bruto": 41397,
+        "margen_bruto_pct": 13.7,
+        "ebitda": 16324,
+        "margen_ebitda_pct": 5.4,
+        "ebit": 14383,
+        "margen_ebit_pct": 4.8,
+        "beneficio_neto": 11535,
+        "margen_neto_pct": 3.8,
+        "bpa": 84.69,
+        "dpa": 30,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 30.8,
+        "payout_pct": 35
+      },
+      {
+        "periodo": "FY2022",
+        "ingresos": 338831,
+        "crecimiento_pct": 11.9,
+        "beneficio_bruto": 46363,
+        "margen_bruto_pct": 13.7,
+        "ebitda": 17807,
+        "margen_ebitda_pct": 5.3,
+        "ebit": 15326,
+        "margen_ebit_pct": 4.5,
+        "beneficio_neto": 12227,
+        "margen_neto_pct": 3.6,
+        "bpa": 92.35,
+        "dpa": 31.5,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 24.5,
+        "payout_pct": 34
+      },
+      {
+        "periodo": "FY2023",
+        "ingresos": 363366,
+        "crecimiento_pct": 7.2,
+        "beneficio_bruto": 59947,
+        "margen_bruto_pct": 16.5,
+        "ebitda": 26924,
+        "margen_ebitda_pct": 7.4,
+        "ebit": 24192,
+        "margen_ebit_pct": 6.7,
+        "beneficio_neto": 19612,
+        "margen_neto_pct": 5.4,
+        "bpa": 147.84,
+        "dpa": 59.5,
+        "dpa_extraordinario": 5,
+        "tasa_impositiva_pct": 25.7,
+        "payout_pct": 37
+      },
+      {
+        "periodo": "FY2024",
+        "ingresos": 381661,
+        "crecimiento_pct": 5,
+        "beneficio_bruto": 71646,
+        "margen_bruto_pct": 18.8,
+        "ebitda": 35707,
+        "margen_ebitda_pct": 9.4,
+        "ebit": 32415,
+        "margen_ebit_pct": 8.5,
+        "beneficio_neto": 27631,
+        "margen_neto_pct": 7.2,
+        "bpa": 208.07,
+        "dpa": 83.5,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 25.3,
+        "payout_pct": 40
+      },
+      {
+        "periodo": "FY2025",
+        "ingresos": 423923,
+        "crecimiento_pct": 11.1,
+        "beneficio_bruto": 93720,
+        "margen_bruto_pct": 22.1,
+        "ebitda": 51503,
+        "margen_ebitda_pct": 12.1,
+        "ebit": 47745,
+        "margen_ebit_pct": 11.3,
+        "beneficio_neto": 37470,
+        "margen_neto_pct": 8.8,
+        "bpa": 285.73,
+        "dpa": 115,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 28,
+        "payout_pct": 40
+      }
+    ],
+    "tcac": {
+      "periodo": "FY2021-FY2025",
+      "ingresos_pct": 8.8,
+      "ebitda_pct": 33.3,
+      "bpa_pct": 35.5
+    },
+    "cuenta_y_prevision": [
+      {
+        "periodo": "FY2021",
+        "ingresos": 302746,
+        "ebitda": 16324
+      },
+      {
+        "periodo": "FY2022",
+        "ingresos": 338831,
+        "ebitda": 17807
+      },
+      {
+        "periodo": "FY2023",
+        "ingresos": 363366,
+        "ebitda": 26924
+      },
+      {
+        "periodo": "FY2024",
+        "ingresos": 381661,
+        "ebitda": 35707
+      },
+      {
+        "periodo": "FY2025",
+        "ingresos": 423923,
+        "ebitda": 51503
+      },
+      {
+        "periodo": "FY2026e",
+        "ingresos": 440032,
+        "ebitda": 54564
+      },
+      {
+        "periodo": "FY2027e",
+        "ingresos": 475235,
+        "ebitda": 60830
+      },
+      {
+        "periodo": "FY2028e",
+        "ingresos": 503749,
+        "ebitda": 65487
+      },
+      {
+        "periodo": "FY2029e",
+        "ingresos": 526417,
+        "ebitda": 66855
+      },
+      {
+        "periodo": "FY2030e",
+        "ingresos": 544842,
+        "ebitda": 67016
+      },
+      {
+        "periodo": "FY2031e",
+        "ingresos": 558463,
+        "ebitda": 67016
+      },
+      {
+        "periodo": "FY2032e",
+        "ingresos": 569632,
+        "ebitda": 66647
+      }
+    ],
+    "segmentos_ultimo": [
+      {
+        "nombre": "Instalaciones: climatización general",
+        "ingresos": 166776,
+        "peso_pct": 39.3,
+        "crecimiento_pct": 2.2,
+        "margen_pct": null,
+        "tipo_margen": null
+      },
+      {
+        "nombre": "Instalaciones: climatización industrial",
+        "ingresos": 248606,
+        "peso_pct": 58.6,
+        "crecimiento_pct": 18.1,
+        "margen_pct": null,
+        "tipo_margen": null
+      },
+      {
+        "nombre": "Fabricación y venta de equipos",
+        "ingresos": 8414,
+        "peso_pct": 2,
+        "crecimiento_pct": 7.1,
+        "margen_pct": 10.8,
+        "tipo_margen": "EBIT"
+      },
+      {
+        "nombre": "Otros",
+        "ingresos": 125,
+        "peso_pct": 0,
+        "crecimiento_pct": 5,
+        "margen_pct": null,
+        "tipo_margen": null
+      }
+    ],
+    "segmentos_tabla": {
+      "periodos": [
+        "FY2021",
+        "FY2022",
+        "FY2023",
+        "FY2024",
+        "FY2025"
+      ],
+      "filas": [
+        {
+          "nombre": "Instalaciones: climatización general",
+          "v0": 160202,
+          "v1": 158194,
+          "v2": 161961,
+          "v3": 163170,
+          "v4": 166776
+        },
+        {
+          "nombre": "Instalaciones: climatización industrial",
+          "v0": 136503,
+          "v1": 173822,
+          "v2": 193532,
+          "v3": 210512,
+          "v4": 248606
+        },
+        {
+          "nombre": "Fabricación y venta de equipos",
+          "v0": 5953,
+          "v1": 6722,
+          "v2": 7782,
+          "v3": 7859,
+          "v4": 8414
+        },
+        {
+          "nombre": "Otros",
+          "v0": 86,
+          "v1": 91,
+          "v2": 90,
+          "v3": 119,
+          "v4": 125
+        }
+      ]
+    },
+    "segmentos_periodo": "FY2025",
+    "balance": [
+      {
+        "periodo": "FY2021",
+        "activo_total": 300736,
+        "intangibles": 8103,
+        "circulante": 59785,
+        "circulante_ventas_pct": 19.7,
+        "caja": 56960,
+        "deuda_financiera": 33058,
+        "arrendamientos": 0,
+        "deuda_neta": -23902,
+        "patrimonio": 132897,
+        "minoritarios": 4000,
+        "dn_ebitda": -1.46,
+        "dn_patrimonio_pct": -17,
+        "dso": 192,
+        "dio": 5,
+        "dpo": 120,
+        "ciclo_caja": 77,
+        "cobertura_intereses": 60.7,
+        "capital_invertido": 112995,
+        "fondo_comercio": 1920,
+        "liquidez_corriente": 1.7
+      },
+      {
+        "periodo": "FY2022",
+        "activo_total": 313391,
+        "intangibles": 8103,
+        "circulante": 49496,
+        "circulante_ventas_pct": 14.6,
+        "caja": 72317,
+        "deuda_financiera": 29815,
+        "arrendamientos": 0,
+        "deuda_neta": -42502,
+        "patrimonio": 142470,
+        "minoritarios": 4694,
+        "dn_ebitda": -2.39,
+        "dn_patrimonio_pct": -29,
+        "dso": 160,
+        "dio": 4,
+        "dpo": 109,
+        "ciclo_caja": 55,
+        "cobertura_intereses": 55.1,
+        "capital_invertido": 104662,
+        "fondo_comercio": 1728,
+        "liquidez_corriente": 1.74
+      },
+      {
+        "periodo": "FY2023",
+        "activo_total": 340106,
+        "intangibles": 9172,
+        "circulante": 100075,
+        "circulante_ventas_pct": 27.5,
+        "caja": 53298,
+        "deuda_financiera": 39133,
+        "arrendamientos": 0,
+        "deuda_neta": -14165,
+        "patrimonio": 164355,
+        "minoritarios": 2875,
+        "dn_ebitda": -0.53,
+        "dn_patrimonio_pct": -8,
+        "dso": 187,
+        "dio": 5,
+        "dpo": 93,
+        "ciclo_caja": 99,
+        "cobertura_intereses": 84,
+        "capital_invertido": 153065,
+        "fondo_comercio": 1703,
+        "liquidez_corriente": 1.69
+      },
+      {
+        "periodo": "FY2024",
+        "activo_total": 334949,
+        "intangibles": 9627,
+        "circulante": 119390,
+        "circulante_ventas_pct": 31.3,
+        "caja": 47647,
+        "deuda_financiera": 37737,
+        "arrendamientos": 0,
+        "deuda_neta": -9910,
+        "patrimonio": 180667,
+        "minoritarios": 3615,
+        "dn_ebitda": -0.28,
+        "dn_patrimonio_pct": -5,
+        "dso": 178,
+        "dio": 5,
+        "dpo": 59,
+        "ciclo_caja": 124,
+        "cobertura_intereses": 120.5,
+        "capital_invertido": 174372,
+        "fondo_comercio": 1419,
+        "liquidez_corriente": 1.89
+      },
+      {
+        "periodo": "FY2025",
+        "activo_total": 381823,
+        "intangibles": 11457,
+        "circulante": 137861,
+        "circulante_ventas_pct": 32.5,
+        "caja": 48228,
+        "deuda_financiera": 42406,
+        "arrendamientos": 0,
+        "deuda_neta": -5822,
+        "patrimonio": 209889,
+        "minoritarios": 5167,
+        "dn_ebitda": -0.11,
+        "dn_patrimonio_pct": -3,
+        "dso": 175,
+        "dio": 5,
+        "dpo": 57,
+        "ciclo_caja": 123,
+        "cobertura_intereses": 112.9,
+        "capital_invertido": 209234,
+        "fondo_comercio": 2696,
+        "liquidez_corriente": 1.81
+      }
+    ],
+    "perimetro_nota": "Cambio de perímetro (FY2025: Entrada en el perímetro de THS Innovations y Prompt Techno Service (Tailandia, gestión energética y mantenimiento de instalaciones; 1.287 empleados) desde el 3T FY2025; compras por 3.220 M [7, 13].). Los ratios de balance de ese año (días, circulante, deuda neta / EBITDA, ROIC) y los indicadores de calidad contable no son comparables con los anteriores.",
+    "flujos": [
+      {
+        "periodo": "FY2021",
+        "flujo_operativo": 1186,
+        "capex": 3011,
+        "pagos_arrendamientos": 410,
+        "fcf": -2235,
+        "beneficio_neto": 11535,
+        "conversion_pct": -19,
+        "capex_ventas_pct": 1,
+        "capex_amortizacion": 1.55,
+        "adquisiciones": 97,
+        "desinversiones": 0,
+        "dividendos": 3985,
+        "recompras": 6356,
+        "emision_acciones": 0,
+        "retorno_accionista": 10341,
+        "payout_caja_pct": 90,
+        "acciones": 136.2,
+        "fcf_por_accion": -16.41
+      },
+      {
+        "periodo": "FY2022",
+        "flujo_operativo": 25826,
+        "capex": 5048,
+        "pagos_arrendamientos": 464,
+        "fcf": 20314,
+        "beneficio_neto": 12227,
+        "conversion_pct": 166,
+        "capex_ventas_pct": 1.5,
+        "capex_amortizacion": 2.03,
+        "adquisiciones": 2908,
+        "desinversiones": 0,
+        "dividendos": 4102,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 4102,
+        "payout_caja_pct": 34,
+        "acciones": 132.4,
+        "fcf_por_accion": 153.43
+      },
+      {
+        "periodo": "FY2023",
+        "flujo_operativo": -13100,
+        "capex": 3347,
+        "pagos_arrendamientos": 465,
+        "fcf": -16912,
+        "beneficio_neto": 19612,
+        "conversion_pct": -86,
+        "capex_ventas_pct": 0.9,
+        "capex_amortizacion": 1.23,
+        "adquisiciones": 4330,
+        "desinversiones": 0,
+        "dividendos": 4774,
+        "recompras": 2,
+        "emision_acciones": 0,
+        "retorno_accionista": 4776,
+        "payout_caja_pct": 24,
+        "acciones": 132.66,
+        "fcf_por_accion": -127.48
+      },
+      {
+        "periodo": "FY2024",
+        "flujo_operativo": 5885,
+        "capex": 4337,
+        "pagos_arrendamientos": 511,
+        "fcf": 1037,
+        "beneficio_neto": 27631,
+        "conversion_pct": 4,
+        "capex_ventas_pct": 1.1,
+        "capex_amortizacion": 1.32,
+        "adquisiciones": 32,
+        "desinversiones": 0,
+        "dividendos": 10508,
+        "recompras": 1939,
+        "emision_acciones": 1934,
+        "retorno_accionista": 12447,
+        "payout_caja_pct": 45,
+        "acciones": 132.79,
+        "fcf_por_accion": 7.81
+      },
+      {
+        "periodo": "FY2025",
+        "flujo_operativo": 29725,
+        "capex": 5066,
+        "pagos_arrendamientos": 544,
+        "fcf": 24115,
+        "beneficio_neto": 37470,
+        "conversion_pct": 64,
+        "capex_ventas_pct": 1.2,
+        "capex_amortizacion": 1.35,
+        "adquisiciones": 3220,
+        "desinversiones": 0,
+        "dividendos": 12634,
+        "recompras": 8209,
+        "emision_acciones": 207,
+        "retorno_accionista": 20843,
+        "payout_caja_pct": 56,
+        "acciones": 131.14,
+        "fcf_por_accion": 183.89
+      }
+    ],
+    "flujos_acumulado": {
+      "periodo": "FY2021-FY2025",
+      "fcf": 26319,
+      "adquisiciones": 10587,
+      "dividendos": 36003,
+      "recompras": 16506,
+      "conversion_pct": 24
+    },
+    "rentabilidad": [
+      {
+        "periodo": "FY2021",
+        "nopat": 9959,
+        "capital_invertido": 112995,
+        "roic_pct": 8.8,
+        "roic_sin_fc_pct": 9,
+        "fondo_comercio_pct_capital": 2,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 8.7,
+        "roa_pct": 3.8,
+        "margen_neto_pct": 3.8,
+        "rotacion": 1.01,
+        "apalancamiento": 2.26
+      },
+      {
+        "periodo": "FY2022",
+        "nopat": 11567,
+        "capital_invertido": 108829,
+        "roic_pct": 10.6,
+        "roic_sin_fc_pct": 10.8,
+        "fondo_comercio_pct_capital": 2,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 8.9,
+        "roa_pct": 4,
+        "margen_neto_pct": 3.6,
+        "rotacion": 1.1,
+        "apalancamiento": 2.23
+      },
+      {
+        "periodo": "FY2023",
+        "nopat": 17984,
+        "capital_invertido": 128864,
+        "roic_pct": 14,
+        "roic_sin_fc_pct": 14.1,
+        "fondo_comercio_pct_capital": 1,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 12.8,
+        "roa_pct": 6,
+        "margen_neto_pct": 5.4,
+        "rotacion": 1.11,
+        "apalancamiento": 2.13
+      },
+      {
+        "periodo": "FY2024",
+        "nopat": 24219,
+        "capital_invertido": 163719,
+        "roic_pct": 14.8,
+        "roic_sin_fc_pct": 14.9,
+        "fondo_comercio_pct_capital": 1,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 16,
+        "roa_pct": 8.2,
+        "margen_neto_pct": 7.2,
+        "rotacion": 1.13,
+        "apalancamiento": 1.96
+      },
+      {
+        "periodo": "FY2025",
+        "nopat": 34357,
+        "capital_invertido": 191803,
+        "roic_pct": 17.9,
+        "roic_sin_fc_pct": 18.1,
+        "fondo_comercio_pct_capital": 1,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 19.2,
+        "roa_pct": 10.5,
+        "margen_neto_pct": 8.8,
+        "rotacion": 1.18,
+        "apalancamiento": 1.84
+      }
+    ],
+    "roic_incremental_pct": 31,
+    "roic_frente_wacc": [
+      {
+        "periodo": "FY2021",
+        "roic_pct": 8.8,
+        "roic_sin_fc_pct": 9,
+        "roic_operativo_pct": null,
+        "roe_pct": 8.7,
+        "wacc_pct": 8.2
+      },
+      {
+        "periodo": "FY2022",
+        "roic_pct": 10.6,
+        "roic_sin_fc_pct": 10.8,
+        "roic_operativo_pct": null,
+        "roe_pct": 8.9,
+        "wacc_pct": 8.2
+      },
+      {
+        "periodo": "FY2023",
+        "roic_pct": 14,
+        "roic_sin_fc_pct": 14.1,
+        "roic_operativo_pct": null,
+        "roe_pct": 12.8,
+        "wacc_pct": 8.2
+      },
+      {
+        "periodo": "FY2024",
+        "roic_pct": 14.8,
+        "roic_sin_fc_pct": 14.9,
+        "roic_operativo_pct": null,
+        "roe_pct": 16,
+        "wacc_pct": 8.2
+      },
+      {
+        "periodo": "FY2025",
+        "roic_pct": 17.9,
+        "roic_sin_fc_pct": 18.1,
+        "roic_operativo_pct": null,
+        "roe_pct": 19.2,
+        "wacc_pct": 8.2
+      }
+    ],
+    "compras": {
+      "tipo": "compra única grande",
+      "subidas": 1,
+      "anios": 4,
+      "fondo_comercio": 2696,
+      "fondo_comercio_pct_capital": 1,
+      "roic_pct": 17.9,
+      "roic_sin_fc_pct": 18.1,
+      "texto": "Fondo de comercio: 2.696 M en FY2025 (el 1 % del capital invertido medio); ha subido más de un 5 % en 1 de 4 años: compra única grande. ROIC publicado 17,9 %; sin fondo de comercio, 18,1 %. El ROIC sin fondo de comercio mide el rendimiento del negocio operativo; decide el publicado (§4.1) y la cifra sin fondo de comercio es dato para una excepción razonada."
+    },
+    "calidad": {
+      "periodo": "FY2025",
+      "altman_z": 4.49,
+      "altman_zona": "Zona segura",
+      "piotroski_f": 6,
+      "piotroski_detalle": [
+        {
+          "criterio": "Beneficio neto positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "ROA mejora",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo > beneficio neto",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Baja el endeudamiento (deuda / activo)",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora la liquidez corriente",
+          "resultado": "No"
+        },
+        {
+          "criterio": "No emite acciones",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora el margen bruto",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora la rotación del activo",
+          "resultado": "No"
+        }
+      ],
+      "beneish_m": -2.29,
+      "beneish_fiable": false,
+      "beneish_variables": [
+        {
+          "variable": "DSRI",
+          "valor": 0.98
+        },
+        {
+          "variable": "GMI",
+          "valor": 0.85
+        },
+        {
+          "variable": "AQI",
+          "valor": 1.25
+        },
+        {
+          "variable": "SGI",
+          "valor": 1.11
+        },
+        {
+          "variable": "DEPI",
+          "valor": 0.89
+        },
+        {
+          "variable": "SGAI",
+          "valor": 1.06
+        },
+        {
+          "variable": "LVGI",
+          "valor": 0.97
+        },
+        {
+          "variable": "TATA",
+          "valor": 0.02
+        }
+      ],
+      "tabla": [
+        {
+          "indicador": "Altman Z",
+          "valor": "4,49",
+          "lectura": "Zona segura (> 2,99 seguro; < 1,81 riesgo). No aplica a bancos ni aseguradoras, y subestima la solvencia de empresas con grandes anticipos de clientes o prefinanciación pública (contratistas, construcción), que inflan el pasivo. No fiable en FY2025: cambio de perímetro (el balance incluye negocios sin su cuenta de resultados completa)."
+        },
+        {
+          "indicador": "Piotroski F",
+          "valor": "6 / 9",
+          "lectura": "Intermedio (4-6)."
+        },
+        {
+          "indicador": "Beneish M",
+          "valor": "-2,29",
+          "lectura": "No interpretable en FY2025: con un cambio de perímetro, los índices de activos, amortización y ventas (AQI, DEPI, SGI) comparan grupos distintos y el umbral de −1,78 no sirve."
+        },
+        {
+          "indicador": "Flujo operativo / beneficio neto (acumulado)",
+          "valor": "0,46x",
+          "lectura": "El beneficio se cobra solo en parte: mirar circulante y ajustes."
+        }
+      ]
+    },
+    "dcf": {
+      "proyeccion": [
+        {
+          "periodo": "FY2026e",
+          "ingresos": 440032,
+          "crecimiento_pct": 3.8,
+          "ebitda": 54564,
+          "margen_ebitda_pct": 12.4,
+          "amortizacion": 4180,
+          "ebit": 50384,
+          "impuestos": 15367,
+          "capex": 5720,
+          "variacion_circulante": 5149,
+          "fcff": 28327,
+          "fraccion": 0.45,
+          "factor": 0.983,
+          "vp": 12422
+        },
+        {
+          "periodo": "FY2027e",
+          "ingresos": 475235,
+          "crecimiento_pct": 8,
+          "ebitda": 60830,
+          "margen_ebitda_pct": 12.8,
+          "amortizacion": 4752,
+          "ebit": 56078,
+          "impuestos": 17104,
+          "capex": 6178,
+          "variacion_circulante": 11441,
+          "fcff": 26107,
+          "fraccion": 1,
+          "factor": 0.928,
+          "vp": 24234
+        },
+        {
+          "periodo": "FY2028e",
+          "ingresos": 503749,
+          "crecimiento_pct": 6,
+          "ebitda": 65487,
+          "margen_ebitda_pct": 13,
+          "amortizacion": 5037,
+          "ebit": 60450,
+          "impuestos": 18437,
+          "capex": 6297,
+          "variacion_circulante": 9267,
+          "fcff": 31486,
+          "fraccion": 1,
+          "factor": 0.858,
+          "vp": 27001
+        },
+        {
+          "periodo": "FY2029e",
+          "ingresos": 526417,
+          "crecimiento_pct": 4.5,
+          "ebitda": 66855,
+          "margen_ebitda_pct": 12.7,
+          "amortizacion": 5264,
+          "ebit": 61591,
+          "impuestos": 18785,
+          "capex": 6317,
+          "variacion_circulante": 7367,
+          "fcff": 34385,
+          "fraccion": 1,
+          "factor": 0.793,
+          "vp": 27262
+        },
+        {
+          "periodo": "FY2030e",
+          "ingresos": 544842,
+          "crecimiento_pct": 3.5,
+          "ebitda": 67016,
+          "margen_ebitda_pct": 12.3,
+          "amortizacion": 5721,
+          "ebit": 61295,
+          "impuestos": 18695,
+          "capex": 6538,
+          "variacion_circulante": 5988,
+          "fcff": 35795,
+          "fraccion": 1,
+          "factor": 0.733,
+          "vp": 26237
+        },
+        {
+          "periodo": "FY2031e",
+          "ingresos": 558463,
+          "crecimiento_pct": 2.5,
+          "ebitda": 67016,
+          "margen_ebitda_pct": 12,
+          "amortizacion": 5864,
+          "ebit": 61152,
+          "impuestos": 18651,
+          "capex": 6422,
+          "variacion_circulante": 4427,
+          "fcff": 37515,
+          "fraccion": 1,
+          "factor": 0.678,
+          "vp": 25435
+        },
+        {
+          "periodo": "FY2032e",
+          "ingresos": 569632,
+          "crecimiento_pct": 2,
+          "ebitda": 66647,
+          "margen_ebitda_pct": 11.7,
+          "amortizacion": 6266,
+          "ebit": 60381,
+          "impuestos": 18416,
+          "capex": 6551,
+          "variacion_circulante": 3630,
+          "fcff": 38050,
+          "fraccion": 1,
+          "factor": 0.627,
+          "vp": 23833
+        }
+      ],
+      "etapa2": null,
+      "suma_vp": 166423,
+      "valor_terminal": 578992,
+      "vp_terminal": 348944,
+      "valor_empresa": 515366,
+      "peso_terminal_pct": 68,
+      "valor_acciones": 572918,
+      "valor_accion": 4377.1,
+      "vt_gordon": 578992,
+      "vt_multiplo": 633146,
+      "multiplo_implicito": 8.7,
+      "g_implicito_pct": 2.04,
+      "metodo_terminal": "gordon",
+      "terminal_tabla": [
+        {
+          "concepto": "Método principal",
+          "valor": "Crecimiento a perpetuidad"
+        },
+        {
+          "concepto": "Crecimiento a perpetuidad",
+          "valor": "1,5 %"
+        },
+        {
+          "concepto": "Múltiplo EV/EBITDA de salida",
+          "valor": "9,5x"
+        },
+        {
+          "concepto": "Valor terminal (Gordon)",
+          "valor": "578.992"
+        },
+        {
+          "concepto": "Valor terminal (múltiplo)",
+          "valor": "633.146"
+        },
+        {
+          "concepto": "Múltiplo de salida implícito en Gordon",
+          "valor": "8,7x"
+        },
+        {
+          "concepto": "Crecimiento implícito en el múltiplo",
+          "valor": "2,04 %"
+        },
+        {
+          "concepto": "Peso del valor terminal en el valor empresa",
+          "valor": "68 %"
+        }
+      ],
+      "puente": [
+        {
+          "concepto": "Valor actual de los flujos proyectados",
+          "valor": "166.423"
+        },
+        {
+          "concepto": "Valor actual del valor terminal",
+          "valor": "348.944"
+        },
+        {
+          "concepto": "Valor empresa",
+          "valor": "515.366"
+        },
+        {
+          "concepto": "− Deuda financiera neta (con arrendamientos)",
+          "valor": "1.532"
+        },
+        {
+          "concepto": "− Minoritarios, pensiones y otros; + asociadas",
+          "valor": "56.020"
+        },
+        {
+          "concepto": "Valor de los fondos propios",
+          "valor": "572.918"
+        },
+        {
+          "concepto": "Acciones diluidas (millones)",
+          "valor": "130,9"
+        },
+        {
+          "concepto": "Valor por acción",
+          "valor": "4.377,10"
+        }
+      ],
+      "composicion": [
+        {
+          "parte": "Flujos proyectados",
+          "valor": 166423
+        },
+        {
+          "parte": "Valor terminal",
+          "valor": 348944
+        }
+      ],
+      "wacc": 8.17,
+      "ke": 8.73,
+      "kd_despues": 0.7,
+      "wacc_tabla": [
+        {
+          "concepto": "Tasa libre de riesgo",
+          "valor": "2,96 %"
+        },
+        {
+          "concepto": "Beta",
+          "valor": "1,05"
+        },
+        {
+          "concepto": "Prima de riesgo de mercado",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Prima adicional (país, tamaño, específica)",
+          "valor": "0,00 %"
+        },
+        {
+          "concepto": "Coste de los fondos propios",
+          "valor": "8,73 %"
+        },
+        {
+          "concepto": "Coste de la deuda antes de impuestos",
+          "valor": "1,00 %"
+        },
+        {
+          "concepto": "Tipo impositivo",
+          "valor": "30,50 %"
+        },
+        {
+          "concepto": "Coste de la deuda después de impuestos",
+          "valor": "0,70 %"
+        },
+        {
+          "concepto": "Peso de la deuda (D / (D + E))",
+          "valor": "7,00 %"
+        },
+        {
+          "concepto": "WACC",
+          "valor": "8,17 %"
+        },
+        {
+          "concepto": "Prima de riesgo implícita del mercado (regla relativa)",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "WACC con la prima implícita del mercado",
+          "valor": "6,90 %"
+        }
+      ],
+      "potencial_pct": 4.5,
+      "sensibilidad": {
+        "eje_columnas": "Crecimiento a perpetuidad",
+        "columnas": [
+          "0,5 %",
+          "1,0 %",
+          "1,5 %",
+          "2,0 %",
+          "2,5 %"
+        ],
+        "filas": [
+          {
+            "wacc": "7,2 %",
+            "v0": 4552.08,
+            "v1": 4794.25,
+            "v2": 5079.13,
+            "v3": 5419.12,
+            "v4": 5831.89
+          },
+          {
+            "wacc": "7,7 %",
+            "v0": 4260.17,
+            "v1": 4463.35,
+            "v2": 4699.46,
+            "v3": 4977.2,
+            "v4": 5308.67
+          },
+          {
+            "wacc": "8,2 %",
+            "v0": 4006.69,
+            "v1": 4178.98,
+            "v2": 4377.1,
+            "v3": 4607.32,
+            "v4": 4878.15
+          },
+          {
+            "wacc": "8,7 %",
+            "v0": 3784.59,
+            "v1": 3932.04,
+            "v2": 4100.05,
+            "v3": 4293.25,
+            "v4": 4517.77
+          },
+          {
+            "wacc": "9,2 %",
+            "v0": 3588.41,
+            "v1": 3715.63,
+            "v2": 3859.44,
+            "v3": 4023.31,
+            "v4": 4211.74
+          }
+        ]
+      },
+      "sensibilidad2": {
+        "columnas": [
+          "-2 pp",
+          "-1 pp",
+          "0 pp",
+          "+1 pp",
+          "+2 pp"
+        ],
+        "filas": [
+          {
+            "margen": "-2 pp",
+            "v0": 3533.79,
+            "v1": 3542.78,
+            "v2": 3544.3,
+            "v3": 3537.61,
+            "v4": 3521.97
+          },
+          {
+            "margen": "-1 pp",
+            "v0": 3904.5,
+            "v1": 3935.73,
+            "v2": 3960.7,
+            "v3": 3978.75,
+            "v4": 3989.16
+          },
+          {
+            "margen": "0 pp",
+            "v0": 4275.22,
+            "v1": 4328.68,
+            "v2": 4377.1,
+            "v3": 4419.88,
+            "v4": 4456.36
+          },
+          {
+            "margen": "+1 pp",
+            "v0": 4645.94,
+            "v1": 4721.63,
+            "v2": 4793.5,
+            "v3": 4861.01,
+            "v4": 4923.56
+          },
+          {
+            "margen": "+2 pp",
+            "v0": 5016.66,
+            "v1": 5114.58,
+            "v2": 5209.9,
+            "v3": 5302.14,
+            "v4": 5390.76
+          }
+        ]
+      },
+      "rango_min": 3932.04,
+      "rango_max": 4977.2,
+      "inverso": {
+        "crecimiento_implicito_pct": 0.8,
+        "crecimiento_base_pct": 4.3,
+        "periodo": "FY2026e-FY2032e",
+        "margen_implicito_pct": 11.2,
+        "margen_implicito_texto": null,
+        "margen_base_pct": 11.7,
+        "rentabilidad_implicita_pct": 8.5
+      },
+      "sostenibilidad": {
+        "veredicto": "Sí",
+        "veredicto_motor": "Sí",
+        "motivos_motor": [],
+        "crecimiento_financiable_bruto_pct": null,
+        "roic_implicito_bruto_pct": null,
+        "tcac_ingresos_historica_pct": 8.8,
+        "crecimiento_proyectado_pct": 4.3,
+        "tasa_reinversion_pct": 19,
+        "crecimiento_financiable_pct": 3.4,
+        "roic_pct": 17.9,
+        "roic_incremental_historico_pct": 31,
+        "roic_implicito_pct": 14,
+        "cuota_actual_pct": 4.1,
+        "cuota_final_pct": 4.4,
+        "puente": [
+          {
+            "periodo": "FY2026e",
+            "volumen_pct": 1.3,
+            "precio_pct": 2.5,
+            "otros_pct": 0,
+            "comentario": "Volumen del +1,3 % (el 1T bajó un 9,9 % por la pausa de la obra industrial y el 2S debe recuperar; la cartera de 433.250 M cubre el año [9, 10]) y precio del +2,5 % (inflación de la obra y cláusulas de revisión [8]).",
+            "suma_pct": 3.8,
+            "crecimiento_pct": 3.8
+          },
+          {
+            "periodo": "FY2027e",
+            "volumen_pct": 5.5,
+            "precio_pct": 2.5,
+            "otros_pct": 0,
+            "comentario": "Volumen del +5,5 % (pedidos de 520.000 M en FY2026e, ampliaciones de fábricas de semiconductores y redesarrollos de oficinas hasta 2029 [11]) y precio del +2,5 %.",
+            "suma_pct": 8,
+            "crecimiento_pct": 8
+          },
+          {
+            "periodo": "FY2028e",
+            "volumen_pct": 3.5,
+            "precio_pct": 2,
+            "otros_pct": 0.5,
+            "comentario": "Volumen del +3,5 %, precio del +2 % y 0,5 puntos del exterior (sudeste asiático e India).",
+            "suma_pct": 6,
+            "crecimiento_pct": 6
+          },
+          {
+            "periodo": "FY2029e",
+            "volumen_pct": 2.5,
+            "precio_pct": 2,
+            "otros_pct": 0,
+            "comentario": "Volumen del +2,5 % y precio del +2 %.",
+            "suma_pct": 4.5,
+            "crecimiento_pct": 4.5
+          },
+          {
+            "periodo": "FY2030e",
+            "volumen_pct": 1.5,
+            "precio_pct": 2,
+            "otros_pct": 0,
+            "comentario": "Volumen del +1,5 % y precio del +2 %. Ventas de 544.842 M: el 4,4 % del mercado de obras de climatización y fontanería en Japón de FY2032e (13,07 billones), frente al 4,1 % de hoy [18]: la cuota apenas sube.",
+            "suma_pct": 3.5,
+            "crecimiento_pct": 3.5
+          }
+        ],
+        "texto": "La proyección reinvierte el 19 % del NOPAT. Con el ROIC del último ejercicio (17,9 %), eso financia un crecimiento del 3,4 % anual, frente al 4,3 % de ingresos proyectado. Supone que el capital nuevo rinde un 14,0 %, frente a un ROIC incremental histórico del 31,0 %; la cuota de mercado pasaría al 4,4 % desde el 4,1 %.",
+        "tabla": [
+          {
+            "concepto": "Crecimiento medio de ingresos proyectado",
+            "valor": "4,3 %"
+          },
+          {
+            "concepto": "Capex bruto medio (incluidas compras si van como inversión)",
+            "valor": "1,2 % de las ventas"
+          },
+          {
+            "concepto": "Reinversión neta acumulada (capex − amortización + circulante)",
+            "valor": "54.208 M (19 % del NOPAT)"
+          },
+          {
+            "concepto": "Crecimiento que financia esa reinversión al ROIC actual",
+            "valor": "3,4 % (ROIC 17,9 %)"
+          },
+          {
+            "concepto": "Crecimiento histórico de ingresos (TCAC)",
+            "valor": "8,8 % frente al 4,3 % proyectado"
+          },
+          {
+            "concepto": "Veredicto de las pruebas del motor",
+            "valor": "Sí"
+          },
+          {
+            "concepto": "Rendimiento que la proyección supone para el capital nuevo",
+            "valor": "14,0 % (histórico: 31,0 %)"
+          },
+          {
+            "concepto": "Cuota de mercado implícita en FY2032e",
+            "valor": "4,4 % (hoy: 4,1 %)"
+          }
+        ]
+      }
+    },
+    "escenarios": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "narrativa": "El ciclo de fábricas de semiconductores en Japón se para en 2027 (Rapidus retrasa su segunda fase, TSMC no hace la segunda planta de Kumamoto) y los centros de datos no compensan: las ventas caen un 2 % en FY2027e (10 puntos menos de crecimiento que el base), crecen 3 puntos menos los demás años y el margen EBITDA vuelve 2,5 puntos atrás, a la zona del 10 %.",
+        "crecimiento_medio_pct": 0.3,
+        "margen_final_pct": 9.2,
+        "wacc_pct": 8.2,
+        "valor": 3087.33,
+        "potencial_pct": -26.3
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "narrativa": "Las ventas crecen al 4-8 % con la cartera actual, las ampliaciones de fábricas y los redesarrollos; el margen toca techo en el 13 % en FY2028e y baja despacio al 11,7 %; dividendo del 40 % del beneficio.",
+        "crecimiento_medio_pct": 4.3,
+        "margen_final_pct": 11.7,
+        "wacc_pct": 8.2,
+        "valor": 4377.1,
+        "potencial_pct": 4.5
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "narrativa": "Nuevas grandes fábricas (Rapidus, Micron, Kioxia, segunda planta de TSMC) y centros de datos a la vez, con la escasez de técnicos sosteniendo el precio: 2 puntos más de crecimiento y 1 de margen.",
+        "crecimiento_medio_pct": 6.3,
+        "margen_final_pct": 12.7,
+        "wacc_pct": 8.2,
+        "valor": 4923.56,
+        "potencial_pct": 17.6
+      }
+    ],
+    "valor_ponderado": 4191.27,
+    "potencial_ponderado_pct": 0.1,
+    "comparables": {
+      "tabla": [
+        {
+          "nombre": "Takasago Thermal",
+          "ticker": "1969.T",
+          "pais": "JP",
+          "capitalizacion": 548036,
+          "ev_ventas": 1.18,
+          "ev_ebitda_ltm": 9.8,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 12.2,
+          "crecimiento_pct": 9.6,
+          "margen_ebitda_pct": 12.1,
+          "roic_pct": 17.9,
+          "dn_ebitda": 0,
+          "fcf_yield_pct": 4.4,
+          "es_objetivo": true
+        },
+        {
+          "nombre": "Kinden Corporation",
+          "ticker": "1944.T",
+          "pais": "JP",
+          "capitalizacion": 1064855,
+          "ev_ventas": 1.35,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 17.54,
+          "crecimiento_pct": 6.5,
+          "margen_ebitda_pct": null,
+          "roic_pct": 10.3,
+          "dn_ebitda": -0.5,
+          "fcf_yield_pct": 8.2,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Sanki Engineering Co., Ltd.",
+          "ticker": "1961.T",
+          "pais": "JP",
+          "capitalizacion": 399907,
+          "ev_ventas": 1.47,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 15.19,
+          "crecimiento_pct": 0.6,
+          "margen_ebitda_pct": null,
+          "roic_pct": 18.6,
+          "dn_ebitda": -0.7,
+          "fcf_yield_pct": 2.7,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Taikisha Ltd.",
+          "ticker": "1979.T",
+          "pais": "JP",
+          "capitalizacion": 230070,
+          "ev_ventas": 0.49,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 12.88,
+          "crecimiento_pct": 3.6,
+          "margen_ebitda_pct": null,
+          "roic_pct": 10.8,
+          "dn_ebitda": -3.2,
+          "fcf_yield_pct": 27.2,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Dai-Dan Co., Ltd.",
+          "ticker": "1980.T",
+          "pais": "JP",
+          "capitalizacion": 399778,
+          "ev_ventas": 1.25,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 14.65,
+          "crecimiento_pct": -2.5,
+          "margen_ebitda_pct": null,
+          "roic_pct": 20.2,
+          "dn_ebitda": -2,
+          "fcf_yield_pct": 14.4,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Kandenko Co.,Ltd.",
+          "ticker": "1942.T",
+          "pais": "JP",
+          "capitalizacion": 1038853,
+          "ev_ventas": 1.31,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 15.98,
+          "crecimiento_pct": 10.4,
+          "margen_ebitda_pct": null,
+          "roic_pct": 16.6,
+          "dn_ebitda": -0.6,
+          "fcf_yield_pct": 7.1,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Hibiya Engineering, Ltd.",
+          "ticker": "1982.T",
+          "pais": "JP",
+          "capitalizacion": 137206,
+          "ev_ventas": 1.17,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 16.08,
+          "crecimiento_pct": 4.8,
+          "margen_ebitda_pct": null,
+          "roic_pct": 9.9,
+          "dn_ebitda": -2.5,
+          "fcf_yield_pct": 8.3,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "United Integrated Services Co., Ltd.",
+          "ticker": "2404.TW",
+          "pais": "TW",
+          "capitalizacion": 1013398,
+          "ev_ventas": 2.07,
+          "ev_ebitda_ltm": 10.2,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 9.9,
+          "crecimiento_pct": 39.4,
+          "margen_ebitda_pct": 20.2,
+          "roic_pct": 49.2,
+          "dn_ebitda": -1.7,
+          "fcf_yield_pct": 13.9,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Comfort Systems USA, Inc.",
+          "ticker": "FIX",
+          "pais": "US",
+          "capitalizacion": 8015461,
+          "ev_ventas": 4.47,
+          "ev_ebitda_ltm": 25.1,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 23.9,
+          "crecimiento_pct": 29.5,
+          "margen_ebitda_pct": 17.8,
+          "roic_pct": 39.7,
+          "dn_ebitda": -0.2,
+          "fcf_yield_pct": 4.3,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "EMCOR Group, Inc.",
+          "ticker": "EME",
+          "pais": "US",
+          "capitalizacion": 5037820,
+          "ev_ventas": 1.68,
+          "ev_ebitda_ltm": 14.5,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 19.3,
+          "crecimiento_pct": 16.6,
+          "margen_ebitda_pct": 11.6,
+          "roic_pct": 34.9,
+          "dn_ebitda": -0.3,
+          "fcf_yield_pct": 3.7,
+          "es_objetivo": false
+        }
+      ],
+      "estadisticos": [
+        {
+          "estadistico": "Mediana",
+          "ev_ventas": 1.4,
+          "ev_ebitda_ltm": 14.5,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 16,
+          "crecimiento_pct": 6.5,
+          "margen_ebitda_pct": 17.8,
+          "roic_pct": 18.6,
+          "dn_ebitda": -0.7,
+          "fcf_yield_pct": 8.2
+        },
+        {
+          "estadistico": "Media",
+          "ev_ventas": 1.7,
+          "ev_ebitda_ltm": 16.6,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 16.2,
+          "crecimiento_pct": 12.1,
+          "margen_ebitda_pct": 16.5,
+          "roic_pct": 23.4,
+          "dn_ebitda": -1.3,
+          "fcf_yield_pct": 10
+        },
+        {
+          "estadistico": "Percentil 25",
+          "ev_ventas": 1.3,
+          "ev_ebitda_ltm": 12.4,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 14.7,
+          "crecimiento_pct": 3.6,
+          "margen_ebitda_pct": 14.7,
+          "roic_pct": 10.8,
+          "dn_ebitda": -2,
+          "fcf_yield_pct": 4.3
+        },
+        {
+          "estadistico": "Percentil 75",
+          "ev_ventas": 1.7,
+          "ev_ebitda_ltm": 19.8,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 17.5,
+          "crecimiento_pct": 16.6,
+          "margen_ebitda_pct": 19,
+          "roic_pct": 34.9,
+          "dn_ebitda": -0.5,
+          "fcf_yield_pct": 13.9
+        }
+      ],
+      "implicito": [
+        {
+          "metodo": "EV/EBITDA últimos 12 meses",
+          "metrica_empresa": 50097,
+          "multiplo_p25": 12.4,
+          "multiplo_mediana": 14.5,
+          "multiplo_p75": 19.8,
+          "multiplos": "12,3x / 14,5x / 19,8x",
+          "valor_p25": 5166.55,
+          "valor_mediana": 5989.45,
+          "valor_p75": 8017.97,
+          "potencial_pct": 43
+        },
+        {
+          "metodo": "PER próximos 12 meses",
+          "metrica_empresa": 344.61,
+          "multiplo_p25": 14.7,
+          "multiplo_mediana": 16,
+          "multiplo_p75": 17.5,
+          "multiplos": "14,7x / 16,0x / 17,5x",
+          "valor_p25": 5048.52,
+          "valor_mediana": 5506.85,
+          "valor_p75": 6044.44,
+          "potencial_pct": 31.5
+        },
+        {
+          "metodo": "EV/Ventas últimos 12 meses",
+          "metrica_empresa": 414640,
+          "multiplo_p25": 1.3,
+          "multiplo_mediana": 1.4,
+          "multiplo_p75": 1.7,
+          "multiplos": "1,3x / 1,4x / 1,7x",
+          "valor_p25": 4399.51,
+          "valor_mediana": 4716.3,
+          "valor_p75": 5761.69,
+          "potencial_pct": 12.6
+        }
+      ],
+      "regresion": null,
+      "n": 9
+    },
+    "transacciones": null,
+    "suma_partes": null,
+    "multiplos_historicos": [
+      {
+        "metrica": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+        "campo": "ev_ebitda_ltm",
+        "actual": 9.8,
+        "media": 10.1,
+        "minimo": 5.7,
+        "maximo": 11.6,
+        "percentil": 40,
+        "prima_pct": -3,
+        "anios": 5
+      },
+      {
+        "metrica": "PER últimos 12 meses (cierre de cada año)",
+        "campo": "per_ltm",
+        "actual": 15.7,
+        "media": 13.3,
+        "minimo": 10.2,
+        "maximo": 16.5,
+        "percentil": 80,
+        "prima_pct": 18,
+        "anios": 5
+      },
+      {
+        "metrica": "PER próximos 12 meses",
+        "campo": "per_ntm",
+        "actual": 12.2,
+        "media": 9.6,
+        "minimo": 7.1,
+        "maximo": 11.7,
+        "percentil": 100,
+        "prima_pct": 28,
+        "anios": 4
+      }
+    ],
+    "multiplos_serie": [
+      {
+        "anio": "FY2021",
+        "multiplo": 6,
+        "media": 10.1
+      },
+      {
+        "anio": "FY2022",
+        "multiplo": 5.7,
+        "media": 10.1
+      },
+      {
+        "anio": "FY2023",
+        "multiplo": 11.6,
+        "media": 10.1
+      },
+      {
+        "anio": "FY2024",
+        "multiplo": 10.1,
+        "media": 10.1
+      },
+      {
+        "anio": "FY2025",
+        "multiplo": 10.9,
+        "media": 10.1
+      }
+    ],
+    "multiplos_titulo": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+    "consenso_vs_propio": [
+      {
+        "periodo": "FY2026e",
+        "ingresos_propio": 440032,
+        "ingresos_consenso": 446667,
+        "ingresos_dif_pct": -1.5,
+        "ebitda_propio": 54564,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      },
+      {
+        "periodo": "FY2027e",
+        "ingresos_propio": 475235,
+        "ingresos_consenso": 483500,
+        "ingresos_dif_pct": -1.7,
+        "ebitda_propio": 60830,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      }
+    ],
+    "gobierno": {
+      "n_consejeros": 12,
+      "independientes_pct": 58,
+      "antiguedad_media": 4.3,
+      "composicion": [
+        {
+          "tipo": "Independiente",
+          "num": 7
+        },
+        {
+          "tipo": "Ejecutivo",
+          "num": 4
+        },
+        {
+          "tipo": "Otro externo",
+          "num": 1
+        }
+      ],
+      "checklist": [
+        {
+          "criterio": "Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)",
+          "resultado": "Cumple",
+          "valor": "58 %"
+        },
+        {
+          "criterio": "Presidencia sin vínculo familiar ni profesional con el accionista de control",
+          "resultado": "Cumple",
+          "valor": "Sin control"
+        },
+        {
+          "criterio": "Presidente no ejecutivo, o consejero coordinador independiente",
+          "resultado": "Cumple",
+          "valor": "No ejecutivo"
+        },
+        {
+          "criterio": "Comisión de auditoría con mayoría de independientes y presidida por uno",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Ningún consejero «otro externo» con más de 12 años",
+          "resultado": "Cumple",
+          "valor": "Ninguno"
+        },
+        {
+          "criterio": "Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses",
+          "resultado": "Cumple",
+          "valor": "0 cambios"
+        },
+        {
+          "criterio": "Peor voto a favor a la reelección de presidente o primer ejecutivo (3 juntas) ≥ 80 %",
+          "resultado": "Cumple",
+          "valor": "88,7 % a favor (no se vota la remuneración)"
+        },
+        {
+          "criterio": "Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Una acción, un voto, sin blindajes ni límites de voto estatutarios",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Sin operaciones vinculadas relevantes",
+          "resultado": "Cumple",
+          "valor": "No hay"
+        },
+        {
+          "criterio": "Auditor con 10 años o menos en el cargo",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Opinión de auditoría sin salvedades",
+          "resultado": "Cumple",
+          "valor": "Favorable (sin salvedades) en FY2025 [13]"
+        },
+        {
+          "criterio": "Directivos compradores netos en 12 meses (o sin ventas relevantes)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        }
+      ],
+      "puntuacion": "11 de 13 (2 sin dato)",
+      "puntuacion_pct": 85,
+      "compras_insiders": 0,
+      "ventas_insiders": 0
+    },
+    "competidores_margen": [
+      {
+        "nombre": "Takasago Thermal",
+        "margen_ebit_pct": 11.3
+      },
+      {
+        "nombre": "Taikisha Ltd.",
+        "margen_ebit_pct": 9
+      },
+      {
+        "nombre": "Sanki Engineering Co., Ltd.",
+        "margen_ebit_pct": 12.9
+      },
+      {
+        "nombre": "Dai-Dan Co., Ltd.",
+        "margen_ebit_pct": 14.7
+      },
+      {
+        "nombre": "Kinden Corporation",
+        "margen_ebit_pct": 13
+      },
+      {
+        "nombre": "Kandenko Co.,Ltd.",
+        "margen_ebit_pct": 12.4
+      },
+      {
+        "nombre": "United Integrated Services Co., Ltd.",
+        "margen_ebit_pct": 17.6
+      }
+    ],
+    "sintesis": {
+      "formato_eje": "#,##0",
+      "rangos": [
+        {
+          "metodo": "Cotización 52 semanas",
+          "etiqueta": "Cotización 52 semanas (3.985,00 – 5.749,00)",
+          "min": 3985,
+          "central": 4187,
+          "max": 5749,
+          "gris": true
+        },
+        {
+          "metodo": "Precio objetivo de los analistas",
+          "etiqueta": "Precio objetivo de los analistas (5.250,00 – 6.900,00)",
+          "min": 5250,
+          "central": 5975,
+          "max": 6900,
+          "gris": true
+        },
+        {
+          "metodo": "Comparables: PER NTM",
+          "etiqueta": "Comparables: PER NTM (5.048,52 – 6.044,44)",
+          "min": 5048.52,
+          "central": 5506.85,
+          "max": 6044.44,
+          "gris": false
+        },
+        {
+          "metodo": "DCF (WACC y g ± 0,5)",
+          "etiqueta": "DCF (WACC y g ± 0,5) (3.932,04 – 4.977,20)",
+          "min": 3932.04,
+          "central": 4377.1,
+          "max": 4977.2,
+          "gris": false
+        },
+        {
+          "metodo": "Escenarios (bajista – alcista)",
+          "etiqueta": "Escenarios (bajista – alcista) (3.087,33 – 4.923,56)",
+          "min": 3087.33,
+          "central": 4191.27,
+          "max": 4923.56,
+          "gris": false
+        },
+        {
+          "metodo": "DCF con la prima del mercado",
+          "etiqueta": "DCF con la prima implícita del mercado (4,2 %)",
+          "min": 4896.01,
+          "central": 5313.11,
+          "max": 5815.9
+        },
+        {
+          "metodo": "Precio actual",
+          "etiqueta": "Precio actual (4.187,00)",
+          "min": 4166.06,
+          "central": 4187,
+          "max": 4207.93,
+          "gris": true
+        }
+      ],
+      "tabla": [
+        {
+          "metodo": "DCF",
+          "valor": 4377.1,
+          "peso_pct": 60,
+          "potencial_pct": 4.5
+        },
+        {
+          "metodo": "Comparables (mediana EV/EBITDA y PER)",
+          "valor": 5506.85,
+          "peso_pct": 20,
+          "potencial_pct": 31.5
+        },
+        {
+          "metodo": "Escenarios ponderados",
+          "valor": 4191.27,
+          "peso_pct": 20,
+          "potencial_pct": 0.1
+        }
+      ],
+      "valor_objetivo": 4565.88,
+      "potencial_pct": 9
+    },
+    "fuentes": {
+      "n_fuentes": 39,
+      "n_primarias": 26,
+      "por_tipo": [
+        {
+          "tipo": "Primaria",
+          "num": 26
+        },
+        {
+          "tipo": "Prensa",
+          "num": 2
+        },
+        {
+          "tipo": "Estudio sectorial",
+          "num": 1
+        },
+        {
+          "tipo": "Datos de mercado",
+          "num": 7
+        },
+        {
+          "tipo": "Analistas",
+          "num": 1
+        },
+        {
+          "tipo": "Foros y redes",
+          "num": 2
+        }
+      ],
+      "n_citadas": 38,
+      "citas_sin_fuente": [],
+      "fuentes_sin_citar": [
+        "28"
+      ]
+    },
+    "controles": [
+      {
+        "control": "Geografías suman 100 %",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "DCF inverso calculable",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Puente de ingresos (volumen + precio + otros) = crecimiento del DCF",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Veredicto de sostenibilidad del analista coherente con las pruebas del motor",
+        "resultado": "OK",
+        "detalle": "El analista dice «Sí» y las pruebas del motor dan «Sí»: razónalo en la justificación."
+      },
+      {
+        "control": "Rendimiento del capital nuevo de la proyección ≤ 1,25 × el histórico",
+        "resultado": "OK",
+        "detalle": "La proyección supone que la inversión nueva rinde un 14,0 % frente a un ROIC de 17,9 % y un incremental histórico de 31,0 %: crecimiento que la empresa no ha demostrado poder comprar."
+      },
+      {
+        "control": "Cuota implícita al final de la proyección ≤ 1,5 × la actual (o +10 puntos)",
+        "resultado": "OK",
+        "detalle": "Cuota de 4,4 % en FY2032e frente al 4,1 % de hoy."
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "resultado": "OK",
+        "detalle": "Supuesto 32,5 % frente a 32,5 % real: genera una variación de circulante de 5.149 M en el primer año. Converge de forma gradual."
+      },
+      {
+        "control": "Peso del valor terminal ≤ 80 % del valor empresa",
+        "resultado": "OK",
+        "detalle": "68 %."
+      },
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "resultado": "OK",
+        "detalle": "1,50 %."
+      },
+      {
+        "control": "Caja proyectada coherente con la histórica",
+        "resultado": "Explicado",
+        "detalle": "El DCF proyecta 28.640 M de flujo libre medio en sus tres primeros años, frente a 2.747 M de media real en los tres últimos: justifica el salto (circulante, inversión, márgenes) o ajusta los supuestos. Explicación: El flujo libre real de FY2023-FY2025 fue bajo (−16.447, +1.548 y +24.659 M antes de arrendamientos) porque el circulante comercial pasó del 15 % al 32,5 % de las ventas: pagos más rápidos a subcontratistas por la ley y la presión pública, y grandes obras de semiconductores que se cobran al terminar [1, 3, 4]. El DCF no supone que eso se deshaga: mantiene el circulante en el 32,5 % de las ventas (el nivel de FY2025, el más alto de la serie) y solo deja de crecer. Con un margen EBIT del 11-12 % y un capex del 1,2 % de las ventas, el flujo libre sale de ≈ 26.000-31.000 M en FY2027e-FY2028e, cerca del 55-60 % del beneficio de explotación, mientras el circulante sigue absorbiendo 9.000-11.000 M al año. FY2025 (29.725 M de flujo operativo) ya mostró ese orden de magnitud [2]."
+      },
+      {
+        "control": "Probabilidades de los escenarios suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 5 comparables",
+        "resultado": "OK",
+        "detalle": "9 comparables."
+      },
+      {
+        "control": "Pesos de la síntesis suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Crecimiento del BPA base ≤ 25 % anual desde el último real",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Precio del cierre de la fecha de corte (o de las dos sesiones anteriores)",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Recomendación coherente con la regla de decisión",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "La síntesis explica la convicción",
+        "resultado": "OK",
+        "detalle": "La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría."
+      },
+      {
+        "control": "Al menos 25 fuentes",
+        "resultado": "OK",
+        "detalle": "39 fuentes (26 primarias)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "resultado": "OK",
+        "detalle": "26."
+      },
+      {
+        "control": "Toda cita [n] existe en fuentes",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Fuentes sin citar ≤ 15 %",
+        "resultado": "OK",
+        "detalle": "Sin citar: 28."
+      }
+    ],
+    "controles_resumen": "20 de 21 controles correctos y 1 explicados"
+  }
+}

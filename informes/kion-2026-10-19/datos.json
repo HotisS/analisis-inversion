@@ -1,0 +1,4841 @@
+{
+  "meta": {
+    "fecha_corte": "2026-10-19",
+    "divisa": "EUR",
+    "divisa_cotizacion": "EUR",
+    "tipo_cambio": 1,
+    "unidades": "millones",
+    "cierre_ejercicio_mes": 12,
+    "etiqueta_ejercicio": "fin",
+    "normas_contables": "NIIF-UE (informes anuales 2021-2025 e informe semestral 1S26 de KION; Excel «All tables» oficiales)",
+    "formato_cuenta": "funcion",
+    "limitaciones": "Cuentas en millones de EUR (NIIF-UE) de los informes anuales 2021-2025 y del semestral 1S26 de KION, tomadas de sus Excel oficiales «All tables» y comprobadas contra los PDF de 2025 y 2024 [1, 2, 3, 4, 5, 6]. Alemania no está en filings.xbrl.org, así que no hay extracción XBRL del regulador. El EBITDA de este informe no es el de KION: excluye la depreciación de la flota de alquiler y de arrendamiento (611 M en 2025, el 5,4 % de las ventas), y los pasivos que financian esa flota, netos de los derechos de cobro a clientes, cuentan como deuda; por eso los múltiplos de EV/EBITDA no se comparan con los de los proveedores de datos, y los comparables se miran por PER [10]. El segmento SCS pasó a llamarse IAS en 2026 con el mismo perímetro. El 3T26 solo tiene cifras provisionales del anuncio del 14-oct [13]. No se encontraron foros legibles (sección de sentimiento omitida) ni el resultado de los votos de la junta de 2026. Precio: cierre del 16-oct-2026 (la sesión del 19-oct seguía abierta, a 33,84 EUR) [24].",
+    "controles_explicados": [
+      {
+        "control": "Tipo impositivo efectivo razonable (2024)",
+        "explicacion": "El 37,4 % de 2024 sale de gastos no deducibles, como el deterioro de 22,4 M del fondo de comercio de ITS Americas, y de pérdidas sin activo por impuesto diferido [3]; en 2025 fue del 32,0 % y en 2023 del 31,6 % [1, 3]. El DCF usa un 33 % en 2026e y un 30 % después, la tasa nominal alemana (≈ 30 %), con la mezcla de países."
+      },
+      {
+        "control": "Crecimiento del BPA base ≤ 25 % anual desde el último real",
+        "explicacion": "El BPA de 2025 (1,75 EUR) lleva 201 M de no recurrentes del programa de eficiencia: sin ellos habría sido de unos 2,80 EUR [1]. Desde esa base, el BPA base de 2028e (4,17) supone un 14 % anual, apoyado en los 150 M de ahorro anual del programa y en volver a un margen de EBIT publicado del 7,5 % (8,2 % ajustado), por debajo del 8,2 % ajustado de 2021 y del 8,0 % de 2024 [1]. Está un 2 % por debajo del consenso (4,27) [25]."
+      }
+    ],
+    "huecos": [
+      {
+        "seccion": "financieros",
+        "campo": "cuentas XBRL del regulador",
+        "tipo": "Complemento",
+        "intentos": "1) cuentas.mjs --esef \"KION GROUP\": sin informes con xBRL-JSON para el LEI 5299005KY91C4C6U9H17; 2) filings.xbrl.org por nombre: KION no está (no hay emisores alemanes); 3) Unternehmensregister: sin API sin registro",
+        "decision": "Sustituido por los Excel «All tables» oficiales de KION, comprobados contra los PDF de los informes anuales"
+      },
+      {
+        "seccion": "trimestres",
+        "campo": "vs_consenso de 4T24-2T26 y crecimiento orgánico",
+        "tipo": "Complemento",
+        "intentos": "1) Notas de prensa de KION: no citan consenso; 2) MarketScreener: sin histórico de sorpresas gratis; 3) prensa: solo el 3T26 (consenso de Vara citado por KION)",
+        "decision": "Omitido salvo el 3T26"
+      },
+      {
+        "seccion": "sector",
+        "campo": "serie de tamaño de 5 años y tcac histórico",
+        "tipo": "Complemento",
+        "intentos": "1) MMH Top 20 2024 y 2025: solo los dos últimos años comparables; 2) WITS/FEM (estadística de pedidos mundiales): datos de pago; 3) informes de KION: dan crecimiento en unidades, no tamaño en valor",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "votos de la junta de 2026 (informe de remuneraciones de 2025 y aprobación de la gestión)",
+        "tipo": "Complemento",
+        "intentos": "1) kiongroup.com, Abstimmungsergebnisse 2026: «Site not found»; 2) página de la junta de 2026: sin el PDF; 3) prensa: solo cifras sueltas sin documento",
+        "decision": "Se usa el voto de 2025 (73,89 %) y la cúpula queda sin dato"
+      },
+      {
+        "seccion": "directivos",
+        "campo": "participacion_pct del consejo de dirección",
+        "tipo": "Complemento",
+        "intentos": "1) Informe anual 2025: no da tenencias individuales (todas por debajo del 1 %); 2) informe de remuneraciones: sin tenencias; 3) operaciones de directivos: solo compras sueltas",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "bolsa",
+        "campo": "posicion_corta_pct",
+        "tipo": "Complemento",
+        "intentos": "1) Bundesanzeiger, posiciones cortas netas: solo las de más del 0,5 % por gestora, sin total; 2) Yahoo: sin dato para KGX.DE; 3) prensa: sin cifra reciente",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "consenso",
+        "campo": "recomendaciones por tipo",
+        "tipo": "Complemento",
+        "intentos": "1) MarketScreener: solo la media «Comprar»; 2) Yahoo: 11 analistas sin desglose; 3) prensa: cambios sueltos",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "transacciones",
+        "campo": "EV/EBITDA de Dematic y de Smart Innovation",
+        "tipo": "Complemento",
+        "intentos": "1) Informe anual 2016 y nota de la compra: solo EV/EBIT; 2) nota del 2T26: sin importe de Smart Innovation; 3) prensa: sin cifras",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sentimiento",
+        "campo": "todo",
+        "tipo": "Complemento",
+        "intentos": "1) wallstreet-online.de, foro de KION: necesita JavaScript, sin texto; 2) finanzen.net y ariva.de: foros vacíos en la descarga; boerse.de y Simply Wall St: 403; 3) Stocktwits (KIGRY): 404; parqet: 403; Seeking Alpha solo da titulares sin debate",
+        "decision": "Omitido: la sección no se imprime"
+      }
+    ]
+  },
+  "identificacion": {
+    "nombre": "KION GROUP AG",
+    "nombre_corto": "KION",
+    "ticker": "KGX",
+    "isin": "DE000KGX8881",
+    "mercado": "Xetra / Bolsa de Fráncfort (Prime Standard), EUR; ADR KIGRY sin patrocinio en EE. UU.",
+    "indice_referencia": "MDAX",
+    "pais": "Alemania",
+    "pais_iso": "DE",
+    "sector": "Industria",
+    "industria": "Maquinaria de manutención e intralogística",
+    "sede": "Fráncfort del Meno",
+    "fundacion": "2006",
+    "empleados": 42403,
+    "web": "https://www.kiongroup.com",
+    "precio": 34.09,
+    "fecha_precio": "2026-10-16",
+    "acciones": 131.1,
+    "capitalizacion_publicada": null,
+    "free_float_pct": 53.5,
+    "max_52s": 70.45,
+    "min_52s": 31.88,
+    "volumen_medio_diario": "≈ 14,2 M EUR/día en Xetra (3 meses)",
+    "proximos_resultados": "2026-10-29"
+  },
+  "resumen": {
+    "recomendacion": "Comprar",
+    "conviccion": "Baja",
+    "justificacion_recomendacion": null,
+    "horizonte": "12 meses",
+    "sintesis": "**La recomendación y por qué.** Comprar según la regla a 12 meses, con convicción baja, y **no como compra robusta**: KION no cumple el filtro de calidad (ROIC del 4,5 % frente a un WACC del 8,84 %), así que la acción robusta es Mantener. Nuestro objetivo a 12 meses es de 45,06 EUR: +34,0 % con dividendo (+30,3 % en el caso base), frente a un precio de 34,09 EUR (cierre del 16-oct-2026; el 19-oct cotizaba a 33,84 en sesión) [24]. Aguanta un BPA un 10 % peor (+20,7 %). El límite de compra es de 39,65 EUR y el límite robusto, de 35,75. El valor intrínseco (44,28 EUR) está un 30 % por encima del precio, y el DCF, los escenarios y los comparables por PER coinciden en 44-45 EUR. La convicción es baja, por debajo de la «media» de los criterios del motor, porque la empresa destruye valor (ROIC por debajo del coste de capital desde 2021), el bajista pierde un 27,5 % y la dirección acaba de rebajar la previsión dos veces; subiría si el 3T26 (29-oct) muestra pedidos de carretillas al alza en Europa, y bajaría si el margen de EBIT ajustado de 2026 queda por debajo del 7,3 %.\n\n**El negocio.** KION es el segundo fabricante de carretillas elevadoras del mundo (Linde, STILL, Fenwick, Baoli) y el primero en Europa, y el mayor proveedor de automatización de almacenes con Dematic [1, 15]. Vendió 11.297 M EUR en 2025: el 73 % en carretillas y su servicio (ITS) y el 27 % en sistemas de almacén (IAS); el 66 % en Europa y el 19 % en Norteamérica [1]. El servicio (mantenimiento, recambios, alquiler, arrendamiento) es el 48 % de las ventas y lo más estable. Su foso es estrecho y se estrecha: marcas y red de servicio frente a fabricantes chinos (Heli, Hangcha) que venden más unidades, más baratas y con más margen [15, 28]. **Calidad: No**: ROIC del 4,5 % en 2025 y del 1,6-7,0 % en 2021-2025, con 3.451 M de fondo de comercio y la flota en el capital. La sostenibilidad del crecimiento es **sí**: proyectamos un 2,9 % anual frente al 2,4 % de 2021-2025, sin ganar cuota y con la reinversión cubierta.\n\n**Finanzas y el aviso de octubre.** Las ventas llevan cuatro años en 11.100-11.500 M y el margen de EBIT ajustado bajó del 8,0 % de 2024 al 7,0 % de 2025 [1]. El programa de eficiencia de 2025 (169 M de coste, unos 150 M de ahorro anual) sube el margen en 2026 (7,7 % en el 2T), pero los pedidos de carretillas en Europa cayeron con la guerra de Irán y la energía: el 14-oct KION rebajó la previsión de 2026 a 815-875 M de EBIT ajustado y aplazó el margen de dos cifras a después de 2027 [6, 13]. La deuda es mayor de lo que parece: 1.635 M de deuda financiera y 2.821 M de financiación de la flota y arrendamientos netos, unas 3,0 veces el EBITDA (sin la depreciación de la flota); el FCF real, después de arrendamientos e intereses, es de unos 445 M (10 % de la capitalización) [1, 6].\n\n**Equipo y gobierno.** Weichai Power (China) tiene el 46,5 % y tres consejeros; el consejo de supervisión lo preside un independiente (Mohsen Sohi) y cinco de los ocho consejeros de los accionistas son independientes [1]. El consejero delegado, Rob Smith (desde 2022), cumplió la previsión de 2023-2025 y falla la de 2026 [3, 13]. La variable a largo plazo depende del ROCE y de la rentabilidad frente al MDAX [19]. Los directivos compran acciones, no venden [22].\n\n**Valoración.** El DCF da 44,99 EUR (WACC 8,84 %, crecimiento terminal 2,0 %, valor terminal del 57 %), y el precio equivale a que las ventas bajen un 0,3 % al año para siempre. El objetivo a 12 meses es nuestro BPA de 2028e (4,17 EUR, un 2 % por debajo del consenso) por un PER de 10,5 veces, el actual (9,5) con el tope de la regla; la mediana de cinco años es de 16,1 veces. Con la regla v2 de control la ponderada es del 21,2 %. Los analistas dan 51,40 EUR de media [25].\n\n**Qué puede ir mal y qué vigilar.** Que Europa siga sin invertir en 2027 y los chinos ganen cuota: el bajista a 12 meses es de 24,11 EUR (−27,5 %). Otros riesgos: un deterioro del fondo de comercio de Dematic, proyectos con pérdidas como en 2022 y el control chino (riesgo de IA: mixto y neutral en valor). Los resultados del 29-oct no retrasan la decisión. Veredicto de precio y noticias: **no cambia** (la caída tiene causas conocidas, ya recogidas, y no hay colocaciones ni ventas de directivos).",
+    "tesis": "KION cotiza a 9,5 veces nuestro BPA de 2027e, un 41 % por debajo de su mediana, tras caer un 52 % desde enero con dos rebajas de previsión. El ahorro del programa de eficiencia y un ciclo que no puede caer mucho más llevan el BPA de 2,99 EUR en 2026e a 4,17 en 2028e, y con eso el objetivo a 12 meses da un 34 % sin que el PER vuelva a su historia. Pero es una empresa cíclica, endeudada con su flota y que no cubre su coste de capital: una compra de ciclo, no de calidad, que el método no deja comprar como robusta.",
+    "vision_diferencial": {
+      "mercado_descuenta": "Que KION no crecerá nunca: el precio equivale a ventas que bajan un 0,3 % al año o a un margen EBITDA del 12 % para siempre, y a 9,5 veces el beneficio de 2027e.",
+      "nuestra_vision": "El ciclo de carretillas en Europa está en el fondo y el ahorro de 150 M es real: el margen de EBIT ajustado vuelve al 8,2 % en 2028e, el nivel de 2021 y 2024, sin llegar al objetivo de la dirección.",
+      "por_que": "El margen ya subió al 7,7 % en el 2T26 con el ahorro, la cartera de pedidos es récord (5.070 M) y el servicio (48 % de las ventas) aguanta en la crisis [6, 11]."
+    },
+    "a_favor": [
+      "**Barata frente a su historia**: 9,5 veces el BPA de 2027e frente a una mediana de 16,1 [24].",
+      "**Ahorro en marcha**: 150 M anuales del programa de eficiencia; margen del 7,7 % en el 2T26 [6, 11].",
+      "**Cartera récord**: 5.070 M a junio de 2026, sobre todo en automatización [6].",
+      "**Los directivos compran** y no hay ventas ni colocaciones de Weichai [22]."
+    ],
+    "en_contra": [
+      "**Destruye valor**: ROIC del 4,5 % frente a un WACC del 8,84 %; no cumple el filtro de calidad.",
+      "**Dos rebajas de previsión en 2026** y el objetivo de margen aplazado [13].",
+      "**Deuda de la flota**: 4.456 M de deuda financiera y arrendamientos, unas 3,0 veces el EBITDA [6].",
+      "**Competencia china** en carretillas y fondo de comercio de Dematic en riesgo [1, 15]."
+    ],
+    "que_vigilar": "Los pedidos de carretillas en Europa en el 3T26 (29-oct) y el 4T26; el margen de EBIT ajustado de 2026 (por encima del 7,3 %) y la previsión de 2027 en febrero; el margen de IAS (6,5 % en el 1S26) y el test de deterioro de Dematic.",
+    "cambiaria_recomendacion": [
+      "Precio por encima de 39,65 EUR: pasaríamos a Mantener; por encima de 50,75 EUR, a Vender.",
+      "Margen de EBIT ajustado de 2026 por debajo del 7,3 % o previsión de 2027 sin mejora: bajaríamos el BPA y la recomendación.",
+      "Pedidos de ITS en Europa al alza en el 4T26 y margen de IAS del 8 %: subiría la convicción.",
+      "ROIC por encima del 8 % de forma sostenida: cumpliría el filtro de calidad y podría ser una compra robusta."
+    ],
+    "kpis_seguimiento": [
+      {
+        "kpi": "Margen de EBIT ajustado del grupo",
+        "nivel_actual": "7,7 % (2T26)",
+        "umbral_alerta": "< 7,3 % en 2026",
+        "por_que": "Mide si el ahorro del programa llega al beneficio."
+      },
+      {
+        "kpi": "Pedidos de carretillas de ITS",
+        "nivel_actual": "+4,8 % en unidades (1S26)",
+        "umbral_alerta": "Negativos dos trimestres",
+        "por_que": "Separa el ciclo del bajista."
+      },
+      {
+        "kpi": "Margen de EBIT ajustado de IAS",
+        "nivel_actual": "6,5 % (1S26)",
+        "umbral_alerta": "< 5 %",
+        "por_que": "Riesgo de proyectos y de deterioro de Dematic."
+      },
+      {
+        "kpi": "Cartera de pedidos",
+        "nivel_actual": "5.070 M (jun-26)",
+        "umbral_alerta": "< 4.600 M",
+        "por_que": "Visibilidad de 2027."
+      },
+      {
+        "kpi": "Deuda neta / EBITDA (con la flota)",
+        "nivel_actual": "3,0x (jun-26)",
+        "umbral_alerta": "> 3,5x",
+        "por_que": "Rating y dividendo."
+      },
+      {
+        "kpi": "Participación de Weichai",
+        "nivel_actual": "46,5 %",
+        "umbral_alerta": "Cualquier venta o colocación",
+        "por_que": "Exceso de oferta o cambio de control."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "historia": {
+    "resumen": "KION nació en 2006 cuando Linde AG vendió su división de carretillas (Linde MH, STILL y OM) a KKR y Goldman Sachs. En 2012 Weichai Power entró con el 25 % (y el 70 % de Linde Hydraulics) para salvar un balance muy endeudado; KION salió a bolsa en Fráncfort en junio de 2013. En 2016 compró Dematic por 3.250 M USD, con lo que se convirtió en el líder mundial de automatización de almacenes. Weichai fue subiendo su participación y hoy tiene el 46,5 %. En 2022 los costes de materiales y de energía con contratos a precio cerrado hundieron el beneficio (EBIT ajustado de 292 M) y la acción cayó un 71 %. Rob Smith llegó como consejero delegado en 2022 y, tras dos años de recuperación, en 2025 lanzó un programa de eficiencia de unos 150 M de ahorro anual. En octubre de 2026 aplazó a después de 2027 su objetivo de margen de dos cifras.",
+    "hitos": [
+      {
+        "anio": "2006",
+        "hito": "Linde vende su negocio de carretillas a KKR y Goldman Sachs: nace KION."
+      },
+      {
+        "anio": "2012",
+        "hito": "Weichai Power compra el 25 % y el 70 % de Linde Hydraulics."
+      },
+      {
+        "anio": "2013",
+        "hito": "Salida a bolsa en Fráncfort."
+      },
+      {
+        "anio": "2016",
+        "hito": "Compra de Dematic (3.250 M USD de valor de empresa) y ampliación de capital."
+      },
+      {
+        "anio": "2020",
+        "hito": "Ampliación de capital en plena pandemia: 131,1 M de acciones desde entonces."
+      },
+      {
+        "anio": "2022",
+        "hito": "Crisis de márgenes por costes y proyectos a precio cerrado; Rob Smith, nuevo consejero delegado."
+      },
+      {
+        "anio": "2025",
+        "hito": "Programa de eficiencia (≈ 150 M de ahorro anual); alianza con Nvidia y Accenture (desde finales de 2024) para almacenes con IA y gemelos digitales."
+      },
+      {
+        "anio": "2026",
+        "hito": "SCS pasa a llamarse IAS; compra del 70 % de Smart Innovation; rebaja de la previsión el 14-oct."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "negocio": {
+    "segmentos": [
+      {
+        "nombre": "Industrial Trucks & Services (ITS)",
+        "descripcion": "Carretillas elevadoras y de almacén (Linde MH, STILL, Baoli, Fenwick en Francia), con su servicio, recambios, alquiler, carretillas usadas y financiación a clientes.",
+        "tipo_resultado": "EBIT",
+        "historico": [
+          {
+            "periodo": "2021",
+            "ingresos": 6514,
+            "resultado": 536
+          },
+          {
+            "periodo": "2022",
+            "ingresos": 7356.1,
+            "resultado": 420.5
+          },
+          {
+            "periodo": "2023",
+            "ingresos": 8479.6,
+            "resultado": 848.5
+          },
+          {
+            "periodo": "2024",
+            "ingresos": 8608.8,
+            "resultado": 917.5
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 8272.5,
+            "resultado": 721.8
+          }
+        ]
+      },
+      {
+        "nombre": "Intelligent Automation Solutions (IAS, antes SCS)",
+        "descripcion": "Dematic: diseño, montaje y servicio de sistemas automatizados de almacén (transportadores, clasificadores, almacenes automáticos, lanzaderas, robots y software). Renombrado IAS el 1-ene-2026 con el mismo perímetro.",
+        "tipo_resultado": "EBIT",
+        "historico": [
+          {
+            "periodo": "2021",
+            "ingresos": 3796.2,
+            "resultado": 409.5
+          },
+          {
+            "periodo": "2022",
+            "ingresos": 3806.9,
+            "resultado": -45.6
+          },
+          {
+            "periodo": "2023",
+            "ingresos": 2997,
+            "resultado": 44.3
+          },
+          {
+            "periodo": "2024",
+            "ingresos": 2943.2,
+            "resultado": 112.9
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 3071.4,
+            "resultado": 183.2
+          }
+        ]
+      },
+      {
+        "nombre": "Servicios corporativos y consolidación",
+        "descripcion": "Holding, servicios centrales y eliminaciones entre segmentos.",
+        "tipo_resultado": "EBIT",
+        "historico": [
+          {
+            "periodo": "2021",
+            "ingresos": -15.9,
+            "resultado": -103.6
+          },
+          {
+            "periodo": "2022",
+            "ingresos": -27.4,
+            "resultado": -82.5
+          },
+          {
+            "periodo": "2023",
+            "ingresos": -42.8,
+            "resultado": -102.4
+          },
+          {
+            "periodo": "2024",
+            "ingresos": -48.8,
+            "resultado": -113.3
+          },
+          {
+            "periodo": "2025",
+            "ingresos": -46.8,
+            "resultado": -116.4
+          }
+        ]
+      }
+    ],
+    "geografias": [
+      {
+        "nombre": "Europa occidental",
+        "peso_pct": 58.7
+      },
+      {
+        "nombre": "Norteamérica",
+        "peso_pct": 19.3
+      },
+      {
+        "nombre": "Europa del Este",
+        "peso_pct": 6.9
+      },
+      {
+        "nombre": "China",
+        "peso_pct": 5.5
+      },
+      {
+        "nombre": "Asia-Pacífico sin China",
+        "peso_pct": 5.4
+      },
+      {
+        "nombre": "Centro y Sudamérica",
+        "peso_pct": 2.7
+      },
+      {
+        "nombre": "Oriente Medio y África",
+        "peso_pct": 1.4
+      }
+    ],
+    "geografias_criterio": "destino",
+    "kpis": [
+      {
+        "kpi": "Pedidos del grupo (M EUR)",
+        "valor_anterior": "10.320,9 (2024)",
+        "valor_actual": "11.705,5 (2025)",
+        "variacion": "+13,4 %",
+        "comentario": "Sobre todo IAS (grandes proyectos en Norteamérica); ITS +4,8 % en unidades en el 1S26 [1, 6]."
+      },
+      {
+        "kpi": "Cartera de pedidos (M EUR)",
+        "valor_anterior": "4.635,1 (2024)",
+        "valor_actual": "5.069,6 (jun-26)",
+        "variacion": "+9,4 %",
+        "comentario": "IAS 2.953,5 M y ITS 2.136,5 M a junio de 2026 [6]."
+      },
+      {
+        "kpi": "Carretillas pedidas en ITS (miles)",
+        "valor_anterior": "≈ 250 (2024)",
+        "valor_actual": "266 (2025)",
+        "variacion": "≈ +6 %",
+        "comentario": "El 93 % son eléctricas; el mercado mundial pide un 78 % eléctricas [1]."
+      },
+      {
+        "kpi": "Ingresos de servicio (M EUR)",
+        "valor_anterior": "5.299,9 (2024)",
+        "valor_actual": "5.448,7 (2025)",
+        "variacion": "+2,8 %",
+        "comentario": "ITS 4.200,1 M y SCS 1.248,6 M: el 48 % de las ventas, con más margen que el equipo nuevo [1]."
+      },
+      {
+        "kpi": "Margen de EBIT ajustado de KION",
+        "valor_anterior": "8,0 % (2024)",
+        "valor_actual": "7,0 % (2025)",
+        "variacion": "−1,0 pp",
+        "comentario": "1S26: ITS 9,0 % e IAS 6,5 % [1, 6]."
+      },
+      {
+        "kpi": "ROCE (definición de KION)",
+        "valor_anterior": "8,7 % (2024)",
+        "valor_actual": "7,7 % (2025)",
+        "variacion": "−1,0 pp",
+        "comentario": "Previsión de 2026 rebajada a 7,8-8,4 % el 14-oct-2026 [1, 13]."
+      },
+      {
+        "kpi": "Plantilla (equivalentes a tiempo completo)",
+        "valor_anterior": "42.719 (2024)",
+        "valor_actual": "42.403 (jun-26)",
+        "variacion": "−0,7 %",
+        "comentario": "El programa de eficiencia recorta puestos en Europa; crece en IAS [1, 6]."
+      }
+    ],
+    "confianza": "Alta",
+    "descripcion": "KION GROUP AG (Fráncfort) es el segundo fabricante de carretillas elevadoras del mundo por ingresos, detrás de Toyota Industries, y el primero en Europa, con las marcas Linde Material Handling, STILL, Fenwick y Baoli (marca barata, fabricada en China) [1]. Es también el mayor proveedor mundial de automatización de almacenes con Dematic, comprada en 2016 [1, 16]. En 2025 vendió 11.297 M EUR: el 73 % en carretillas y su servicio (ITS) y el 27 % en sistemas de almacén (IAS) [1]. El 59 % de las ventas se hace en Europa occidental, el 19 % en Norteamérica y el 5,5 % en China [1]. Hay más de 2 millones de sus carretillas en uso y alrededor de la mitad de las nuevas se venden con arrendamiento [10]. Tiene 42.400 empleados y fábricas en Alemania (Aschaffenburg, Hamburgo), Francia, Italia, República Checa, China y EE. UU. [1]. Weichai Power, fabricante chino de motores, tiene el 46,5 % [1].",
+    "como_gana_dinero": "ITS vende carretillas nuevas (contrapesadas eléctricas y diésel, de almacén y apiladoras) con un margen bruto bajo, y gana sobre todo con el servicio: mantenimiento, recambios, alquiler a corto, carretillas usadas y contratos de arrendamiento a 4-5 años, que dan ingresos recurrentes durante la vida de la máquina (8-10 años) [1, 10]. El servicio es el 48 % de las ventas del grupo [1]. IAS (Dematic) cobra proyectos de almacén automatizado de 10-200 M por grado de avance, con un margen bajo en el montaje y más alto en el servicio y el software posteriores [1]. El EBIT ajustado de 2025 fue de 722 M en ITS (8,7 %) y 183 M en IAS (6,0 %); los servicios centrales cuestan unos 116 M [1].",
+    "clientes": "Muy atomizados: fabricantes, distribución, logística, comercio electrónico, alimentación y química. En ITS vende a decenas de miles de empresas a través de su red propia y de concesionarios; en IAS los clientes son grandes distribuidores y operadores logísticos (comercio electrónico, alimentación, moda), con proyectos grandes y más concentrados [1]. KION no publica ningún cliente por encima del 10 % de las ventas [1]."
+  },
+  "sector": {
+    "definicion": "Intralogística: carretillas elevadoras y de almacén (contrapesadas, retráctiles, transpaletas, apiladoras), con su servicio, alquiler y financiación; y automatización de almacenes (sistemas de transporte, clasificación, almacenamiento automático, robots móviles y software).",
+    "tamano": "Más de 58.000 M USD de ingresos de los 18-20 mayores fabricantes de carretillas en 2024 (58.300 M en 2023), incluido su servicio [15]. La automatización de almacenes es un mercado aparte, de unos 40.000-50.000 M USD según Interact Analysis, que facturó un 1 % más en 2024 y espera pedidos un 7 % mayores en 2025 y un 6 % en 2026 [16].",
+    "unidad_serie": "miles de millones de USD (ingresos de los mayores fabricantes de carretillas, MMH)",
+    "serie": [
+      {
+        "anio": "2023",
+        "tamano": 58.3
+      },
+      {
+        "anio": "2024",
+        "tamano": 58
+      }
+    ],
+    "tcac_historico_pct": null,
+    "tcac_previsto_pct": 4,
+    "cr5_pct": 73,
+    "estructura": "Concentrada",
+    "drivers": [
+      {
+        "driver": "Inversión industrial y logística en Europa",
+        "efecto": "+/−",
+        "horizonte": "Cíclico",
+        "evidencia": "El 66 % de las ventas de KION es Europa; los pedidos de carretillas cayeron en el 2T26 con la guerra de Irán y los precios de la energía [1, 6]."
+      },
+      {
+        "driver": "Electrificación",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "El 78 % de los pedidos mundiales de carretillas en 9M25 fueron eléctricas y el 93 % de los de KION; las de litio tienen más precio y servicio [1]."
+      },
+      {
+        "driver": "Automatización y falta de mano de obra en almacenes",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Pedidos de automatización +7 % en 2025 y +6 % previsto en 2026 [16]; la cartera de IAS llegó a 2.954 M en junio de 2026 [6]."
+      },
+      {
+        "driver": "Fabricantes chinos (Heli, Hangcha) en Europa",
+        "efecto": "−",
+        "horizonte": "Estructural",
+        "evidencia": "Heli y Hangcha venden más unidades que KION (340.000 y 280.000 frente a 263.000) con márgenes del 9-15 % y precios más bajos; presionan el precio del segmento bajo en Europa [1, 15]."
+      },
+      {
+        "driver": "Tipos de interés",
+        "efecto": "−",
+        "horizonte": "Cíclico",
+        "evidencia": "Encarecen la financiación de la flota y retrasan proyectos de almacén; el resultado financiero de KION pasó de −35 M en 2021 a −201 M en 2023 [1]."
+      },
+      {
+        "driver": "Comercio electrónico",
+        "efecto": "+/−",
+        "horizonte": "Cíclico",
+        "evidencia": "Tras el exceso de inversión de 2021-2022 los pedidos de IAS cayeron; vuelven desde 2024 con grandes distribuidores en Norteamérica [1, 16]."
+      }
+    ],
+    "porter": [
+      {
+        "fuerza": "Rivalidad",
+        "intensidad": 4,
+        "justificacion": "Toyota, Jungheinrich, Crown y Mitsubishi Logisnext en carretillas, más los chinos Heli y Hangcha con precios más bajos; en automatización, Daifuku, Vanderlande (Toyota), SSI Schäfer, Knapp, Honeywell Intelligrated y Symbotic [15, 16]."
+      },
+      {
+        "fuerza": "Poder de los clientes",
+        "intensidad": 3,
+        "justificacion": "Clientes atomizados en ITS, pero muy grandes y exigentes en IAS (pliegos con precio cerrado) [1]."
+      },
+      {
+        "fuerza": "Poder de los proveedores",
+        "intensidad": 2,
+        "justificacion": "Acero, baterías de litio (proveedores chinos), componentes electrónicos; riesgo de precio y de suministro como en 2022, no de poder estructural [1]."
+      },
+      {
+        "fuerza": "Amenaza de nuevos entrantes",
+        "intensidad": 2,
+        "justificacion": "La red de servicio y de concesionarios tarda décadas en construirse; los entrantes nuevos son en robots móviles autónomos y software [1]."
+      },
+      {
+        "fuerza": "Amenaza de sustitutos",
+        "intensidad": 3,
+        "justificacion": "Los robots móviles autónomos y los almacenes automáticos sustituyen carretillas manuales; KION los vende también (Linde y STILL automatizadas, Dematic) [1, 17]."
+      }
+    ],
+    "ciclo": {
+      "posicion": "Fondo del ciclo en Europa",
+      "comentario": "Los pedidos de carretillas cayeron en 2023-2024 en Europa, se recuperaron en 2025 (+6 % en unidades para KION) y volvieron a flojear en el 2T-3T26 con la guerra de Irán [1, 6]. La automatización sale de su fondo de 2023 con pedidos al alza [16]."
+    },
+    "regulacion": "Normas de seguridad de máquinas de la UE (Reglamento de máquinas 2023/1230, aplicable en 2027), emisiones de motores diésel (Stage V) que favorecen a las eléctricas, y los aranceles y la política comercial de la UE frente a China. Los aranceles de EE. UU. sobre acero y productos europeos afectan a las ventas en Norteamérica [1].",
+    "tendencias": "Tres tendencias: (1) electrificación con baterías de litio y, poco a poco, hidrógeno; (2) automatización de la carretilla (carretillas autónomas, como la compra de Smart Innovation en 2026) y del almacén entero con software de IA para planificar; (3) la llegada de los fabricantes chinos a Europa con carretillas eléctricas baratas, que presiona el precio del segmento bajo, donde compite Baoli [1, 12, 17].",
+    "confianza": "Media"
+  },
+  "competencia": {
+    "cuota_pct": 15,
+    "posicion": "N.º 2 mundial en carretillas por ingresos (≈ 15 % de los ingresos de los mayores fabricantes, tras Toyota Industries con ≈ 31 %), n.º 1 en Europa y n.º 3 en China; n.º 1 mundial en automatización de almacenes con Dematic [1, 15, 16].",
+    "competidores": [
+      {
+        "nombre": "Toyota Industries (incluye Raymond, BT, Vanderlande y Bastian)",
+        "pais": "JP",
+        "ticker": null,
+        "ingresos": 16274,
+        "cuota_pct": 31,
+        "margen_ebit_pct": null,
+        "comentario": "N.º 1: 18.260 M USD en carretillas y logística en 2024 y 288.262 unidades; excluida de bolsa por Toyota en marzo de 2026 [15]."
+      },
+      {
+        "nombre": "Jungheinrich",
+        "pais": "DE",
+        "ticker": "JUN3.DE",
+        "ingresos": 5502,
+        "cuota_pct": 9.6,
+        "margen_ebit_pct": 4.3,
+        "comentario": "Rival directo en Europa (almacén y eléctricas); también lanzó un aviso en abril de 2026 [15, 28]."
+      },
+      {
+        "nombre": "Crown Equipment (privada)",
+        "pais": "US",
+        "ticker": null,
+        "ingresos": 4714,
+        "cuota_pct": 9.1,
+        "margen_ebit_pct": null,
+        "comentario": "5.290 M USD en 2024; fuerte en Norteamérica [15]."
+      },
+      {
+        "nombre": "Mitsubishi Logisnext",
+        "pais": "JP",
+        "ticker": null,
+        "ingresos": 3923,
+        "cuota_pct": 7.6,
+        "margen_ebit_pct": null,
+        "comentario": "4.400 M USD; marcas Cat, UniCarriers, Rocla [15]."
+      },
+      {
+        "nombre": "Hyster-Yale",
+        "pais": "US",
+        "ticker": "HY",
+        "ingresos": 3360,
+        "cuota_pct": 7.4,
+        "margen_ebit_pct": -0.3,
+        "comentario": "4.300 M USD en 2024; en pérdidas en 2025 [15, 28]."
+      },
+      {
+        "nombre": "Anhui Heli",
+        "pais": "CN",
+        "ticker": "600761.SS",
+        "ingresos": 2649,
+        "cuota_pct": 4.3,
+        "margen_ebit_pct": 9,
+        "comentario": "N.º 1 en unidades (340.218 en 2024), exporta a Europa con precios bajos [15, 28]."
+      },
+      {
+        "nombre": "Hangcha Group",
+        "pais": "CN",
+        "ticker": "603298.SS",
+        "ingresos": 2371,
+        "cuota_pct": 3.9,
+        "margen_ebit_pct": 14.9,
+        "comentario": "280.012 unidades en 2024, el más rentable de los grandes [15, 28]."
+      },
+      {
+        "nombre": "Daifuku",
+        "pais": "JP",
+        "ticker": "6383.T",
+        "ingresos": 3723,
+        "cuota_pct": null,
+        "margen_ebit_pct": 16.6,
+        "comentario": "Rival de Dematic en automatización (almacenes, aeropuertos, salas limpias) con mucho más margen [16, 28]."
+      }
+    ],
+    "foso": {
+      "veredicto": "Estrecho",
+      "tendencia": "Se estrecha",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 1,
+          "evidencia": "La base instalada de más de 2 millones de carretillas alimenta el servicio y el mercado de usadas, pero no hay efecto de red entre clientes [B5]."
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 3,
+          "evidencia": "Los contratos de arrendamiento y servicio a 4-5 años y la integración del software de almacén de Dematic atan al cliente; el servicio es el 48 % de las ventas y crece todos los años [A1, B5]."
+        },
+        {
+          "fuente": "Intangibles (marca, patentes, licencias)",
+          "puntuacion": 3,
+          "evidencia": "Linde y STILL son marcas de referencia en Europa (con prima de precio sobre los chinos) y Dematic lo es en automatización [B3]."
+        },
+        {
+          "fuente": "Ventaja en costes",
+          "puntuacion": 1,
+          "evidencia": "No la tiene: Heli y Hangcha fabrican más barato y ganan más margen (9-15 % frente al 7 % de KION) [D5]."
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 3,
+          "evidencia": "La red de servicio propia y de concesionarios en Europa, con más de 2 millones de carretillas en uso, es difícil de copiar y da densidad de rutas [B3, B5]."
+        }
+      ]
+    },
+    "amenazas": "Tres amenazas: (1) los fabricantes chinos (Heli, Hangcha y la propia Baoli de KION compiten en el segmento bajo) entran en Europa con carretillas eléctricas un 20-30 % más baratas, y pueden erosionar el precio de Linde y STILL; (2) en automatización, Symbotic, Ocado, AutoStore y Geek+ venden sistemas de robots más baratos de instalar que los proyectos a medida de Dematic; (3) la caída de pedidos en Europa por la energía y la guerra se alarga [1, 6, 16].",
+    "confianza": "Media"
+  },
+  "financieros": {
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 10294.3,
+        "coste_ventas": 7770.7,
+        "gastos_generales": 1585.2,
+        "ebitda": 1210,
+        "amortizaciones": 415.2,
+        "ebit": 794.8,
+        "resultado_financiero": -35.1,
+        "bai": 759.7,
+        "impuestos": 191.7,
+        "minoritarios": -0.3,
+        "beneficio_neto": 568.3,
+        "gastos_financieros": 84.1,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": -38.7,
+        "bpa": 4.34,
+        "dpa": 1.5,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 131.1
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 11135.6,
+        "coste_ventas": 9011.5,
+        "gastos_generales": 1774.6,
+        "ebitda": 638,
+        "amortizaciones": 469.7,
+        "ebit": 168.3,
+        "resultado_financiero": -30.2,
+        "bai": 138,
+        "impuestos": 32.2,
+        "minoritarios": 7.8,
+        "beneficio_neto": 98,
+        "gastos_financieros": 117.4,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": 16.9,
+        "bpa": 0.75,
+        "dpa": 0.19,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 131.1
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 11433.7,
+        "coste_ventas": 8652.5,
+        "gastos_generales": 1904.2,
+        "ebitda": 1146.1,
+        "amortizaciones": 485.5,
+        "ebit": 660.6,
+        "resultado_financiero": -200.8,
+        "bai": 459.8,
+        "impuestos": 145.4,
+        "minoritarios": 8.6,
+        "beneficio_neto": 305.8,
+        "gastos_financieros": 252.8,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": 32.6,
+        "bpa": 2.33,
+        "dpa": 0.7,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 131.1
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 11503.2,
+        "coste_ventas": 8409.7,
+        "gastos_generales": 2041.4,
+        "ebitda": 1324.1,
+        "amortizaciones": 546.3,
+        "ebit": 777.8,
+        "resultado_financiero": -188,
+        "bai": 589.8,
+        "impuestos": 220.5,
+        "minoritarios": 8.9,
+        "beneficio_neto": 360.3,
+        "gastos_financieros": 315.7,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": 28,
+        "bpa": 2.75,
+        "dpa": 0.82,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 131.1
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 11297.2,
+        "coste_ventas": 8347,
+        "gastos_generales": 2196.2,
+        "ebitda": 1089.4,
+        "amortizaciones": 588.5,
+        "ebit": 500.9,
+        "resultado_financiero": -147.4,
+        "bai": 353.5,
+        "impuestos": 113,
+        "minoritarios": 10.4,
+        "beneficio_neto": 230.1,
+        "gastos_financieros": 297.2,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": 166.9,
+        "bpa": 1.75,
+        "dpa": 0.62,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 131.1
+      }
+    ],
+    "ltm": {
+      "periodo": "LTM jun-26",
+      "fecha_fin": "2026-06-30",
+      "ingresos": 11488.2,
+      "ebitda": 1349.7,
+      "ebit": 740.3,
+      "beneficio_neto": 385.5,
+      "bpa": 2.94,
+      "dpa": 0.62,
+      "dpa_extraordinario": 0,
+      "fcf": 318,
+      "participadas_en_ebitda": null,
+      "no_recurrentes_en_ebitda": -29.7
+    },
+    "cambios_perimetro": [],
+    "comentario": "KION vende unos 11.300-11.500 M EUR al año desde 2022 y no crece: +2,5 % anual de 2021 a 2025 (10.294 → 11.297 M), con un 2025 que cayó un 1,8 % [1, 5]. El EBIT ajustado de KION pasó de 842 M (8,2 %) en 2021 a 292 M en 2022 (inflación de costes con pedidos a precio cerrado y la crisis de las cadenas de suministro en Dematic), se recuperó a 917 M (8,0 %) en 2024 y bajó a 789 M (7,0 %) en 2025 [1, 3]. El EBIT publicado de 2025 (500,9 M) lleva 201,1 M de no recurrentes (sobre todo 168,8 M del programa de eficiencia aprobado el 4-feb-2025: unos 2.000 puestos y la reorganización de la red europea) y 86,6 M de amortización de la asignación del precio de compra de Linde y Dematic [1]. En el EBITDA de este informe los no recurrentes son 166,9 M en 2025, 28,0 M en 2024 y 32,6 M en 2023; en 2021 hubo un ingreso neto (−38,7 M) [1, 2, 3, 4, 5]. Los gastos financieros incluyen los intereses de los arrendamientos de compra y de alquiler; el resultado financiero empeoró de −35 M en 2021 a −201 M en 2023 por la subida de tipos sobre la financiación de la flota y mejoró a −147 M en 2025 [1]. El beneficio atribuido fue de 230 M (1,75 EUR por acción) en 2025 y de 386 M en los últimos 12 meses a junio de 2026 [1, 6].",
+    "ajustes": "Cifras publicadas (NIIF-UE) con un ajuste de definición: el EBITDA de KION suma la depreciación de su flota de alquiler a corto plazo y de las carretillas cedidas en arrendamiento operativo (611,2 M en 2025, el 5,4 % de las ventas), que es un coste recurrente de un negocio de alquiler [1, 10]. Aquí el EBITDA es el EBIT publicado más la amortización y los deterioros del resto del inmovilizado, intangibles y derechos de uso (588,5 M en 2025): 1.089,4 M frente a 1.700,6 M del EBITDA publicado por KION. Coherente con eso, los pasivos que financian la flota (alquiler a corto y arrendamiento, netos de los derechos de cobro a clientes) van como deuda en los arrendamientos del balance y en el puente de valoración [10]. El LTM a junio de 2026 se calcula como 2025 + 1S26 − 1S25 [6, 9]. El FCF del LTM (≈ 318 M) es el FCF de KION con su definición nueva (569,8 M; desde 2026 incluye la deuda financiera usada para el negocio de arrendamiento) menos el principal (175,7 M) y los intereses (31,1 M) de los arrendamientos de compra y los intereses netos de la financiación (≈ 44,6 M) [6, 14]. Acciones: 131,1 M en todos los años, sin dilución [1].",
+    "confianza": "Alta"
+  },
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "4T24",
+        "ingresos": 3067.9,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": 358.6,
+        "margen_ebitda_pct": 11.7,
+        "bpa": 0.85,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1T25",
+        "ingresos": 2788.1,
+        "crecimiento_pct": -2.5,
+        "crecimiento_organico_pct": null,
+        "ebitda": 111.6,
+        "margen_ebitda_pct": 4,
+        "bpa": -0.36,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "2T25",
+        "ingresos": 2708.2,
+        "crecimiento_pct": -5.9,
+        "crecimiento_organico_pct": null,
+        "ebitda": 300.4,
+        "margen_ebitda_pct": 11.1,
+        "bpa": 0.72,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "3T25",
+        "ingresos": 2704,
+        "crecimiento_pct": 0.2,
+        "crecimiento_organico_pct": null,
+        "ebitda": 330.3,
+        "margen_ebitda_pct": 12.2,
+        "bpa": 0.87,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "4T25",
+        "ingresos": 3096.8,
+        "crecimiento_pct": 0.9,
+        "crecimiento_organico_pct": null,
+        "ebitda": 347.2,
+        "margen_ebitda_pct": 11.2,
+        "bpa": 0.53,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1T26",
+        "ingresos": 2771.4,
+        "crecimiento_pct": -0.6,
+        "crecimiento_organico_pct": null,
+        "ebitda": 320,
+        "margen_ebitda_pct": 11.5,
+        "bpa": 0.69,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "2T26",
+        "ingresos": 2915.9,
+        "crecimiento_pct": 7.7,
+        "crecimiento_organico_pct": null,
+        "ebitda": 352.2,
+        "margen_ebitda_pct": 12.1,
+        "bpa": 0.86,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "3T26 (avance)",
+        "ingresos": 2835,
+        "crecimiento_pct": 4.8,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": null,
+        "vs_consenso": "Inferior"
+      }
+    ],
+    "ultima_presentacion": "En la presentación del 2T26 (30-jul-2026) Rob Smith y Christian Harm destacaron el crecimiento del 7,7 % de las ventas y el margen de EBIT ajustado del 7,7 %, la mejor cifra desde 2024, con el ahorro del programa de eficiencia (unos 150 M anuales, casi todo en 2026) y una cartera récord de 5.070 M [6, 11]. Al mismo tiempo bajaron el techo de la previsión de 2026 (EBIT ajustado de 850-1.040 a 880-980 M; ventas 11.525-12.025 M) por los pedidos de carretillas más flojos en el 2T con la guerra de Irán y los precios de la energía; la acción cayó un 7,4 % [11, 12]. Las preguntas se repitieron sobre el margen de ITS (9,0 % en el 1S26 frente al objetivo de dos cifras), la competencia de los fabricantes chinos en Europa, el precio de las carretillas nuevas y la conversión de la cartera de IAS en margen [11]. La dirección no dio cifras de pedidos de julio. El 2-oct-2026 avisó en la conferencia previa al cierre de que el 3T sería flojo y el 14-oct publicó un anuncio ad hoc: ventas del 3T de unos 2.835 M (+4,8 %) y EBIT ajustado de unos 203 M (consenso de Vara: 211 M), previsión de 2026 rebajada a 11.450-11.750 M de ventas y 815-875 M de EBIT ajustado, y el objetivo de margen de dos cifras aplazado a después de 2027 [13]. El 3T26 completo se publica el 29-oct.",
+    "confianza": "Alta"
+  },
+  "balance": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "activo_total": 15850.9,
+        "activo_corriente": 4697.9,
+        "pasivo_corriente": 5105.3,
+        "pasivo_total": 10682,
+        "fondo_comercio": 3544.8,
+        "intangibles": 2165.9,
+        "inmovilizado_material": 3381.8,
+        "existencias": 1632.1,
+        "clientes": 1339.2,
+        "proveedores": 1443.7,
+        "activos_contrato": 519.1,
+        "pasivos_contrato": 854.8,
+        "caja": 483,
+        "deuda_financiera": 1050.5,
+        "arrendamientos": 2319.3,
+        "patrimonio_neto": 5177.2,
+        "minoritarios": -8.3,
+        "reservas": 1699.2
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 16599.4,
+        "activo_corriente": 5186.7,
+        "pasivo_corriente": 4950.8,
+        "pasivo_total": 10991.6,
+        "fondo_comercio": 3619.4,
+        "intangibles": 2162.1,
+        "inmovilizado_material": 3555,
+        "existencias": 1804.6,
+        "clientes": 1667.3,
+        "proveedores": 1124.3,
+        "activos_contrato": 528.8,
+        "pasivos_contrato": 826.1,
+        "caja": 318.1,
+        "deuda_financiera": 1988.6,
+        "arrendamientos": 2453.4,
+        "patrimonio_neto": 5608.7,
+        "minoritarios": -0.9,
+        "reservas": 1600.5
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 17388.4,
+        "activo_corriente": 5223.3,
+        "pasivo_corriente": 4972.8,
+        "pasivo_total": 11615.7,
+        "fondo_comercio": 3558,
+        "intangibles": 2106.9,
+        "inmovilizado_material": 3942.6,
+        "existencias": 1817.1,
+        "clientes": 1755.8,
+        "proveedores": 1194,
+        "activos_contrato": 403.3,
+        "pasivos_contrato": 773.3,
+        "caja": 311.8,
+        "deuda_financiera": 1522.4,
+        "arrendamientos": 2797.4,
+        "patrimonio_neto": 5766.8,
+        "minoritarios": 5.9,
+        "reservas": 1867.3
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 18805.4,
+        "activo_corriente": 5569,
+        "pasivo_corriente": 5510.2,
+        "pasivo_total": 12598.3,
+        "fondo_comercio": 3648.2,
+        "intangibles": 2166.7,
+        "inmovilizado_material": 4422.8,
+        "existencias": 1748.6,
+        "clientes": 1695.6,
+        "proveedores": 1160.4,
+        "activos_contrato": 278.1,
+        "pasivos_contrato": 778.6,
+        "caja": 787,
+        "deuda_financiera": 1700.3,
+        "arrendamientos": 3179,
+        "patrimonio_neto": 6189.4,
+        "minoritarios": 17.7,
+        "reservas": 2135.7
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 18294.9,
+        "activo_corriente": 5080.8,
+        "pasivo_corriente": 5106.8,
+        "pasivo_total": 12171.9,
+        "fondo_comercio": 3450.9,
+        "intangibles": 2022.4,
+        "inmovilizado_material": 4542.5,
+        "existencias": 1631.7,
+        "clientes": 1528.3,
+        "proveedores": 1255.4,
+        "activos_contrato": 259.1,
+        "pasivos_contrato": 655.3,
+        "caja": 474.9,
+        "deuda_financiera": 1058.9,
+        "arrendamientos": 3266.8,
+        "patrimonio_neto": 6097.9,
+        "minoritarios": 25.1,
+        "reservas": 2268.9
+      }
+    ],
+    "vencimientos": [
+      {
+        "anio": "2026",
+        "importe": 155
+      },
+      {
+        "anio": "2027",
+        "importe": 27.5
+      },
+      {
+        "anio": "2028",
+        "importe": 337.8
+      },
+      {
+        "anio": "2029",
+        "importe": 496.8
+      },
+      {
+        "anio": "2030",
+        "importe": 41.5
+      },
+      {
+        "anio": "2031+",
+        "importe": 500
+      }
+    ],
+    "liquidez": "Caja de 391 M a 30-jun-2026 y una línea de crédito sindicada de 1.385,7 M sin disponer hasta octubre de 2028 [6]. En marzo de 2026 emitió un bono de 500 M al 4,125 % con vencimiento en 2031, que usó sobre todo para refinanciar el negocio de arrendamiento [6].",
+    "rating": "Fitch BBB (estable, confirmado en abril de 2026); S&P BB+ (estable, rebajado un escalón en junio de 2025) [1, 6]",
+    "coste_deuda_pct": 4.25,
+    "vida_media_anios": 3.5,
+    "otros_pasivos": "Lo grande no es la deuda financiera (1.635 M a junio de 2026) sino la financiación de la flota: 4.540 M de pasivos del negocio de arrendamiento (titulizaciones de 1.456 M y 557 M, ventas con arrendamiento posterior y préstamos), casados con 3.269 M de derechos de cobro de arrendamientos financieros a clientes, más 775 M de pasivos de alquiler a corto y 775 M de arrendamientos de compra (NIIF 16) [6, 10]. Las pensiones netas son 482 M (527,5 M a cierre de 2025, sobre todo en Alemania y Reino Unido) [1, 6]. Hay provisiones por el programa de eficiencia pendientes de pago en 2026 [1].",
+    "comentario": "Con la definición de este informe la deuda neta es de unos 4.065 M a junio de 2026 (1.635 de deuda financiera + 2.821 de arrendamientos netos − 391 de caja), unas 3,0 veces el EBITDA de los últimos 12 meses (1.350 M) [6]. Con la definición de KION (deuda financiera neta de 1.244 M frente a un EBITDA ajustado de 1.922 M) son 0,6 veces; la diferencia es la financiación de la flota, que se paga con las cuotas de los clientes [6, 10]. El circulante es alto: existencias de 1.782 M y clientes de unos 1.600 M a junio de 2026, con 655 M de anticipos de clientes en IAS [6]. El patrimonio (6.098 M) es más que la capitalización bursátil (≈ 4.470 M), y el fondo de comercio (3.451 M, el 57 % del patrimonio) es sobre todo de Dematic (1.948 M) [1].",
+    "confianza": "Alta"
+  },
+  "flujos": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 881.7,
+        "capex": 333.8,
+        "pagos_arrendamientos": 132.9,
+        "adquisiciones": 17,
+        "desinversiones": 0,
+        "dividendos": 53.7,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 39.1
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": -345.9,
+        "capex": 382.7,
+        "pagos_arrendamientos": 135.6,
+        "adquisiciones": 4.9,
+        "desinversiones": 0,
+        "dividendos": 196.7,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 44.2
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 1144,
+        "capex": 442.8,
+        "pagos_arrendamientos": 135.8,
+        "adquisiciones": 2.8,
+        "desinversiones": 0,
+        "dividendos": 24.9,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 82.1
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 1170.6,
+        "capex": 462.9,
+        "pagos_arrendamientos": 147.3,
+        "adquisiciones": 36.7,
+        "desinversiones": 10.3,
+        "dividendos": 91.8,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 85.6
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 1131.8,
+        "capex": 395.7,
+        "pagos_arrendamientos": 187.6,
+        "adquisiciones": 34.6,
+        "desinversiones": 0,
+        "dividendos": 107.5,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 77.6
+      }
+    ],
+    "comentario": "El flujo operativo fue de 1.132 M en 2025 y de 1.140-1.170 M en 2023-2024, tras un 2022 negativo (−346 M) por el aumento de existencias y de la flota [1, 4, 5]. El flujo operativo de KION incluye la inversión en la flota de alquiler a corto (que KION trata como operativa) y el capex de la tabla es solo inmovilizado material e intangible (396 M en 2025) [1]. El FCF publicado por KION fue de 710 M en 2025, 702 M en 2024 y 715 M en 2023, pero no descuenta los arrendamientos de compra (188 M de principal en 2025) ni los intereses de la financiación (78 M), que en esta tabla van en pagos de arrendamientos e intereses de la financiación [1]. Con eso queda un FCF de unos 445 M en 2025 (3,9 % de las ventas), ≈ 10 % de la capitalización. Desde 2026 KION incluye en su FCF la deuda que capta para financiar arrendamientos, así que su FCF de 2026 no es comparable con el de años anteriores [6, 14]. No hay recompras; los dividendos fueron de 108 M en 2025 (0,82 EUR de 2024) [1].",
+    "confianza": "Alta"
+  },
+  "calidad": {
+    "auditor": "KPMG AG Wirtschaftsprüfungsgesellschaft (socia firmante: Kathrin Rienecker)",
+    "anios_auditor": 3,
+    "opinion": "Favorable sin salvedades en 2025. Asuntos clave de auditoría: test de deterioro del fondo de comercio y reconocimiento de ingresos de proyectos a largo plazo (Dematic) [1].",
+    "comentario": "KPMG audita desde 2023 (antes Deloitte) [1]. Las cuentas son complejas por tres cosas: la financiación de la flota (KION vende carretillas a entidades financieras que las arriendan a los clientes, o las arrienda ella misma; parte se contabiliza como venta y parte como arrendamiento), los proyectos de Dematic reconocidos por grado de avance (activos por contrato de 259 M) y los ajustes del EBIT (no recurrentes y amortización de la asignación del precio de compra), que en 2025 sumaron 288 M [1, 10]. Los ajustes no son una costumbre: fueron 28 M en 2024 y se concentran en la reestructuración de 2025. KION cambió en 2026 la definición de su FCF y en 2026 reclasificó algunos gastos entre venta y administración [6].",
+    "senales": [
+      {
+        "senal": "Fondo de comercio de Dematic (1.948 M) con la capitalización por debajo del patrimonio",
+        "nivel": "Alta",
+        "comentario": "El test de 2025 usa un WACC después de impuestos del 9,9 % para SCS y supone que el margen llega al objetivo de más del 10 % del plan; ese objetivo está aplazado a después de 2027 desde el 14-oct-2026. Un deterioro no afecta a la caja pero sí al beneficio y a los covenants del rating [1, 13]."
+      },
+      {
+        "senal": "Cambio de la definición de FCF en 2026",
+        "nivel": "Media",
+        "comentario": "El FCF de KION incluye desde 2026 la deuda captada para el negocio de arrendamiento: sube el FCF publicado sin más caja libre real [6, 14]."
+      },
+      {
+        "senal": "No recurrentes de 201 M en 2025",
+        "nivel": "Baja",
+        "comentario": "Programa de eficiencia de 168,8 M aprobado el 4-feb-2025, con unos 150 M de ahorro anual; la mayor parte del pago en caja cae en 2026 [1]."
+      },
+      {
+        "senal": "Compras y ventas con el accionista de control (Weichai)",
+        "nivel": "Baja",
+        "comentario": "Ventas a asociadas y otras partes vinculadas (incluye Weichai) de 77,6 M y compras de 46,4 M en el 1S26; informe de dependencia anual revisado por el auditor [1, 6]."
+      }
+    ],
+    "confianza": "Alta"
+  },
+  "rentabilidad": {
+    "comentario": "KION no cubre su coste de capital: el ROIC fue del 4,5 % en 2025, del 5,0 % en 2024 y del 4,9 % en 2023, frente a un WACC del 8,8 %, y solo llegó al 7,0 % en 2021 [1, 2, 3, 4, 5]. Sin el fondo de comercio sube al 6,9 %, todavía por debajo. Es así por tres cosas: un margen de EBIT bajo para el sector (7,0 % ajustado en 2025, frente al 13-17 % de Daifuku, Konecranes o Hangcha) [28]; un capital invertido grande (10.100 M), con 3.450 M de fondo de comercio de Linde y Dematic y la flota de alquiler y arrendamiento; y la crisis de 2022 en Dematic. El ROE es del 3,7 %. Lo que podría cambiarlo es el programa de eficiencia (150 M de ahorro anual, ≈ 1 punto de ROIC) y que IAS lleve su margen del 6 % al 10 % del objetivo, aplazado ahora a después de 2027 [13]. Con el caso base el ROIC sube al 6-7 % en 2028e: mejor, pero aún por debajo del coste de capital.",
+    "confianza": "Alta"
+  },
+  "capital": {
+    "politica": "Reparte entre el 25 % y el 40 % del beneficio atribuido: 0,62 EUR por acción de 2025 (35 %, 81,3 M) y 0,82 EUR de 2024 (30 %) [1]. No recompra acciones. Prioridades: inversión en producto y automatización, reducir la deuda y mantener el grado de inversión de Fitch [1].",
+    "adquisiciones": [
+      {
+        "anio": "2016",
+        "objetivo": "Dematic (automatización de almacenes, EE. UU.)",
+        "importe": 2930,
+        "ev_ebitda": null,
+        "financiacion": "Deuda puente y ampliación de capital (Weichai suscribió su parte)",
+        "resultado": "Hoy es el segmento IAS: 3.071 M de ventas en 2025, pero con un margen de EBIT ajustado del 6,0 % y pérdidas en 2022 por proyectos a precio cerrado; su fondo de comercio (1.948 M) es el riesgo de deterioro del grupo [1]."
+      },
+      {
+        "anio": "2026",
+        "objetivo": "Smart Innovation NV (70 %; filial de I+D de Colruyt, carretillas autónomas de palés)",
+        "importe": null,
+        "financiacion": "Caja",
+        "resultado": "Compra pequeña de tecnología para carga y descarga autónoma de camiones; importe no publicado [12]."
+      }
+    ],
+    "comentario": "La asignación de capital es mediocre. La compra de Dematic en 2016 (unos 2.900 M EUR, 1,8 veces las ventas) dio a KION el liderazgo en automatización, pero diez años después el segmento gana un 6 % de margen y en 2022 perdió dinero [1]. La ampliación de capital de 2020 y el recorte del dividendo de 2022 (0,19 EUR) fueron para defender el balance [5]. Desde 2023 la caja va a reducir deuda: la deuda financiera bajó de 1.989 M en 2022 a 1.059 M en 2025 [1, 4]. El ROIC (4,5 % en 2025) no cubre el coste de capital (8,8 %) desde 2021, y el rendimiento del capital nuevo ha sido negativo en cinco años.",
+    "confianza": "Alta"
+  },
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "Rob Smith",
+        "cargo": "Consejero delegado (CEO)",
+        "desde": "2022",
+        "participacion_pct": null,
+        "trayectoria": "Nacido en 1965, alemán y estadounidense. Consejero delegado desde el 1-ene-2022, con mandato hasta el 31-dic-2029 [1]."
+      },
+      {
+        "nombre": "Christian Harm",
+        "cargo": "Director financiero (CFO)",
+        "desde": "2023",
+        "participacion_pct": null,
+        "trayectoria": "Nacido en 1968, austríaco. En el consejo de dirección desde el 6-jul-2023, con el mandato prorrogado hasta el 5-jul-2029 [1]."
+      },
+      {
+        "nombre": "Andreas Krinninger",
+        "cargo": "Director de ITS EMEA",
+        "desde": "2021",
+        "participacion_pct": null,
+        "trayectoria": "Nacido en 1967, austríaco. En el consejo de dirección desde el 1-ene-2021; dirige ITS en Europa, Oriente Medio y África (Linde, STILL, Fenwick) [1]."
+      },
+      {
+        "nombre": "Michael Larsson",
+        "cargo": "Director de IAS (Dematic) e ITS Americas",
+        "desde": "2024",
+        "participacion_pct": null,
+        "trayectoria": "Nacido en 1965, sueco y estadounidense. En el consejo de dirección desde el 1-ene-2024, con mandato hasta el 31-dic-2026. Compró acciones en septiembre y diciembre de 2025 por 0,72 M EUR [1]."
+      },
+      {
+        "nombre": "Ching Pong Quek",
+        "cargo": "Director de tecnología (CTO) y de ITS APAC",
+        "desde": "2013",
+        "participacion_pct": null,
+        "trayectoria": "Nacido en 1967, malasio. En el consejo de dirección desde el 11-ene-2013; dirige la tecnología, las compras y la automatización móvil, y el negocio en Asia [1]."
+      },
+      {
+        "nombre": "Valeria Gargiulo",
+        "cargo": "Directora de personas y sostenibilidad (CPSO) y de relaciones laborales",
+        "desde": "2023",
+        "participacion_pct": null,
+        "trayectoria": "Nacida en 1972, argentina e italiana. Directora de personas y sostenibilidad desde el 1-may-2023, con mandato hasta el 30-abr-2030; compró acciones en marzo de 2026 [1, 22]."
+      }
+    ],
+    "historial_guidance": [
+      {
+        "anio": "2022",
+        "guia": "EBIT ajustado de 1.010-1.150 M (retirada en abril de 2022)",
+        "real": "292 M",
+        "cumplida": "No"
+      },
+      {
+        "anio": "2023",
+        "guia": "EBIT ajustado de al menos 550 M, subida a al menos 780 M",
+        "real": "791 M",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2024",
+        "guia": "EBIT ajustado de 790-940 M",
+        "real": "917 M; FCF 702 M",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2025",
+        "guia": "EBIT ajustado de 720-870 M (afinada a 760-820 M); FCF de 400-550 M",
+        "real": "789 M; FCF 710 M",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2026",
+        "guia": "Ventas 11.400-12.300 M y EBIT ajustado de 850-1.040 M (julio: 11.525-12.025 / 880-980 M; 14-oct: 11.450-11.750 / 815-875 M)",
+        "real": "Pendiente; rebajada dos veces",
+        "cumplida": "No"
+      },
+      {
+        "anio": "Medio plazo",
+        "guia": "Margen de EBIT ajustado de dos cifras en 2027 (plan «Playing to Win»)",
+        "real": "Aplazado a después de 2027 el 14-oct-2026",
+        "cumplida": "No"
+      }
+    ],
+    "comentario": "El equipo actual (Smith desde 2022) cumplió la previsión de 2023-2025 y recuperó el margen tras el desastre de 2022, sobre todo en caja (FCF de 700 M frente a una guía de 400-550 M en 2025) [3]. Pero 2026 rompe la racha: la previsión se rebajó en julio y otra vez el 14-oct, y el objetivo de margen de dos cifras se aplaza [13]. El consejo de dirección no tiene acciones relevantes: las compras de Larsson y Gargiulo suman unos 0,9 M EUR [22]. La remuneración variable a largo plazo depende del ROCE (50 %) y del rendimiento relativo frente al MDAX (30 %), lo que la alinea con el accionista [19].",
+    "confianza": "Alta"
+  },
+  "gobierno": {
+    "consejo": [
+      {
+        "nombre": "Mohsen Sohi",
+        "cargo": "Presidente del consejo de supervisión",
+        "tipo": "Independiente",
+        "desde": "2025",
+        "comisiones": "Ejecutiva y nombramientos (presidente)"
+      },
+      {
+        "nombre": "Özcan Pancarci",
+        "cargo": "Vicepresidente (representante de los trabajadores)",
+        "tipo": "Otro externo",
+        "desde": null,
+        "comisiones": "Ejecutiva"
+      },
+      {
+        "nombre": "Peter Kameritsch",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2025",
+        "comisiones": "Auditoría (presidente)"
+      },
+      {
+        "nombre": "Sherry A. Aaholm",
+        "cargo": "Consejera",
+        "tipo": "Independiente",
+        "desde": "2025",
+        "comisiones": "—"
+      },
+      {
+        "nombre": "Birgit A. Behrendt",
+        "cargo": "Consejera",
+        "tipo": "Independiente",
+        "desde": "2015",
+        "comisiones": "Nombramientos"
+      },
+      {
+        "nombre": "Alexander Dibelius",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2007",
+        "comisiones": "Ejecutiva"
+      },
+      {
+        "nombre": "Kui Jiang",
+        "cargo": "Consejero (Weichai)",
+        "tipo": "Dominical",
+        "desde": null,
+        "comisiones": "Auditoría, ejecutiva"
+      },
+      {
+        "nombre": "Shaojun Sun",
+        "cargo": "Consejero (Weichai)",
+        "tipo": "Dominical",
+        "desde": null,
+        "comisiones": "—"
+      },
+      {
+        "nombre": "Xiaomei Zhang",
+        "cargo": "Consejera (Weichai)",
+        "tipo": "Dominical",
+        "desde": "2025",
+        "comisiones": "—"
+      }
+    ],
+    "presidente_ceo_separados": true,
+    "presidente_ejecutivo": false,
+    "consejero_coordinador": false,
+    "una_accion_un_voto": true,
+    "operaciones_vinculadas_relevantes": false,
+    "variable_ligado_rentabilidad": true,
+    "auditoria_independiente": true,
+    "insiders_sin_operaciones": false,
+    "accionista_control": true,
+    "presidente_vinculado_control": false,
+    "cambios_cupula_24m": 1,
+    "voto_remuneracion_pct": 73.89,
+    "voto_remuneracion_contra_pct": null,
+    "voto_remuneracion_contra_libre_pct": null,
+    "voto_cupula_pct": null,
+    "remuneracion_ceo": {
+      "anio": "2025",
+      "total": 5.248,
+      "fijo": 1.423,
+      "variable_corto": 1.225,
+      "variable_largo": 2.6,
+      "ratio_salario_medio": 63
+    },
+    "remuneracion": "El consejero delegado cobró 5,25 M EUR en 2025: 1,4 M de fijo, 1,2 M de variable anual (ventas, margen de EBIT ajustado, FCF con el 30 % y objetivos ESG) y 2,6 M de variable a largo plazo (ROCE 50 %, rentabilidad relativa frente al MDAX 30 % y ESG) [19]. Son unas 63 veces el coste medio por empleado (≈ 83 mil EUR). El sistema se aprobó con el 95,7 % en 2024, pero el informe de 2024 solo tuvo el 73,9 % en la junta de 2025 por los pagos a exconsejeros [20]. No se encontró el resultado de la votación del informe de 2025 en la junta del 28-may-2026.",
+    "accionistas": [
+      {
+        "nombre": "Weichai Power (Luxembourg) Holding (Weichai Power Co., Shandong)",
+        "pct": 46.5,
+        "tipo": "Control (industrial, China)",
+        "variacion": "Estable desde 2020; consolida KION en sus cuentas [1]."
+      },
+      {
+        "nombre": "BlackRock",
+        "pct": 3.66,
+        "tipo": "Institucional",
+        "variacion": "Entre el 3 % y el 4 % en 2026 (3,03 % directo a 6-ago-2026) [21]."
+      },
+      {
+        "nombre": "Capital flotante",
+        "pct": 53.5,
+        "tipo": "Mercado",
+        "variacion": "MDAX [1]."
+      }
+    ],
+    "insiders": [
+      {
+        "fecha": "2025-09-26",
+        "persona": "Michael Larsson (consejo de dirección)",
+        "operacion": "Compra",
+        "acciones": 5918,
+        "importe": 0.332
+      },
+      {
+        "fecha": "2025-12-17",
+        "persona": "Michael Larsson (consejo de dirección)",
+        "operacion": "Compra",
+        "acciones": 5920,
+        "importe": 0.3875
+      },
+      {
+        "fecha": "2026-03-25",
+        "persona": "Valeria Gargiulo (consejo de dirección)",
+        "operacion": "Compra",
+        "acciones": 3146,
+        "importe": 0.144
+      }
+    ],
+    "control_y_defensas": "Weichai tiene el 46,5 % y, con la asistencia habitual a la junta (60-70 % del capital), controla de hecho las votaciones; consolida KION y KION publica cada año un informe de dependencia [1]. Tiene tres de los ocho puestos de los accionistas en el consejo de supervisión; cinco son independientes de Weichai y uno de ellos lo preside [1]. Con la codeterminación alemana, la mitad del consejo (8 de 16) son trabajadores. No hay acciones de voto múltiple ni blindajes. Una oferta de compra de Weichai por el resto es posible pero no se ha planteado; las autoridades alemanas y de la UE revisarían el control chino de un proveedor de logística crítica [1].",
+    "alertas": [
+      "Accionista de control chino (46,5 %) con representación en la comisión de auditoría; riesgo de tensiones geopolíticas entre la UE y China [1].",
+      "Voto bajo (73,9 %) al informe de remuneraciones de 2024 [20].",
+      "Dos consejeros considerados independientes llevan 11 y 19 años en el consejo (Behrendt y Dibelius) [1].",
+      "Previsión de 2026 rebajada dos veces y objetivo a medio plazo aplazado [13]."
+    ],
+    "confianza": "Media"
+  },
+  "consenso": {
+    "guidance": "Previsión de 2026 del 14-oct-2026: ventas de 11.450-11.750 M, EBIT ajustado de 815-875 M (ITS 690-740 M), FCF de 400-500 M (con la definición nueva) y ROCE del 7,8-8,4 % [13]. Antes (30-jul): 11.525-12.025 M, 880-980 M, 420-540 M y 8,4-9,4 %. El objetivo de margen de EBIT ajustado de dos cifras, antes para 2027, se aplaza a después de 2027 [13].",
+    "estimaciones": [
+      {
+        "periodo": "2026e",
+        "ingresos": 11672,
+        "ebitda": 1933,
+        "ebit": 895.5,
+        "bpa": 2.92,
+        "dpa": 0.966,
+        "fuente": "MarketScreener, 15 analistas [25]"
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 12188,
+        "ebitda": 2107,
+        "ebit": 1050,
+        "bpa": 3.616,
+        "dpa": 1.22,
+        "fuente": "MarketScreener [25]"
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 12800,
+        "ebitda": 2222,
+        "ebit": 1110,
+        "bpa": 4.27,
+        "dpa": 1.434,
+        "fuente": "MarketScreener [25]"
+      }
+    ],
+    "recomendaciones": {
+      "n_analistas": 15,
+      "comprar": null,
+      "mantener": null,
+      "vender": null,
+      "po_medio": 51.4,
+      "po_min": 37,
+      "po_max": 63
+    },
+    "revisiones": "Las estimaciones y los objetivos bajan desde julio: DZ Bank recortó a 47 EUR, MPCM de 58 a 54, Deutsche Bank de 60 a 52 y Metzler también tras el aviso de octubre; Citi subió a Comprar el 8-sep (objetivo 62) y JPMorgan mantiene 60 [29]. El consenso de BPA de 2026e (2,92) todavía no recoge del todo la previsión del 14-oct (EBIT ajustado de 815-875 M frente a 895 M del consenso) [13, 25].",
+    "base_ebitda": "ajustado",
+    "ajuste_ebitda_pct_ventas": 5.4,
+    "confianza": "Media"
+  },
+  "bolsa": {
+    "tipo_rentabilidad": "total (con dividendos)",
+    "rentabilidades": [
+      {
+        "periodo": "En el año",
+        "accion_pct": -49.3,
+        "indice_pct": 4,
+        "sector_pct": 9.5
+      },
+      {
+        "periodo": "1 año",
+        "accion_pct": -37.1,
+        "indice_pct": 7,
+        "sector_pct": 10.8
+      },
+      {
+        "periodo": "3 años (anual.)",
+        "accion_pct": 1.6,
+        "indice_pct": 18.8,
+        "sector_pct": 22.4
+      },
+      {
+        "periodo": "5 años (anual.)",
+        "accion_pct": -15.6,
+        "indice_pct": 9.9,
+        "sector_pct": 10.4
+      },
+      {
+        "periodo": "10 años (anual.)",
+        "accion_pct": -3.6,
+        "indice_pct": 8.5,
+        "sector_pct": 11.7
+      }
+    ],
+    "anual": [
+      {
+        "anio": "2016",
+        "accion_pct": 16.7,
+        "indice_pct": 5.7
+      },
+      {
+        "anio": "2017",
+        "accion_pct": 37.9,
+        "indice_pct": 11.7
+      },
+      {
+        "anio": "2018",
+        "accion_pct": -37.6,
+        "indice_pct": -18.8
+      },
+      {
+        "anio": "2019",
+        "accion_pct": 41.9,
+        "indice_pct": 24.7
+      },
+      {
+        "anio": "2020",
+        "accion_pct": 16.5,
+        "indice_pct": 3
+      },
+      {
+        "anio": "2021",
+        "accion_pct": 36.3,
+        "indice_pct": 15.2
+      },
+      {
+        "anio": "2022",
+        "accion_pct": -71.3,
+        "indice_pct": -12.8
+      },
+      {
+        "anio": "2023",
+        "accion_pct": 45.3,
+        "indice_pct": 19.5
+      },
+      {
+        "anio": "2024",
+        "accion_pct": -16.3,
+        "indice_pct": 18.1
+      },
+      {
+        "anio": "2025",
+        "accion_pct": 118.5,
+        "indice_pct": 22.6
+      }
+    ],
+    "beta": 1.88,
+    "volatilidad_pct": 43.5,
+    "max_drawdown_pct": -80.7,
+    "posicion_corta_pct": null,
+    "comentario": "KION es una acción muy cíclica: beta de 1,9 frente al DAX (semanal, 5 años; 2,1 mensual) y una volatilidad del 44 % [24]. Subió un 118 % en 2025 y cae un 49 % en 2026, hasta 34,09 EUR el 16-oct, a un 1 % de su mínimo de 52 semanas (31,88 EUR, 14-oct) y un 52 % por debajo del máximo de enero (70,45 EUR) [24]. En diez años rinde un −3,6 % anual con dividendos frente al +8,5 % del DAX: la caída del 81 % de 2021-2022 aún no se ha recuperado [24]. El índice de referencia es el DAX (EXS1) y el sector, el Stoxx Europe 600 de bienes y servicios industriales (EXH4).",
+    "contexto": {
+      "movimiento": {
+        "fecha": "2026-10-19",
+        "var_1m_pct": -16.6,
+        "var_3m_pct": -17.9,
+        "var_6m_pct": -26.9,
+        "var_12m_pct": -39.4,
+        "dist_max_52s_pct": -51.8,
+        "dist_min_52s_pct": 1,
+        "dist_max_historico_pct": -67.2,
+        "tendencia": "bajista",
+        "volatilidad_60d_pct": 44,
+        "avisos": [
+          "P4 En mínimos de 52 semanas (1 % sobre el mínimo del 14-oct, 31,88 EUR)",
+          "P5 Un 27 % por debajo de la media de 200 sesiones (tendencia bajista)"
+        ]
+      },
+      "movimientos_fuertes": [
+        {
+          "periodo": "feb-2026",
+          "var_pct": -10.7,
+          "causa": "Caída del 10,7 % el 26-feb con los resultados de 2025: la previsión de 2026 (EBIT ajustado de 850-1.040 M) quedó por debajo de lo esperado tras subir un 118 % en 2025 [1, 24].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "mar-abr-2026",
+          "var_pct": -26.9,
+          "causa": "La guerra de Irán, el petróleo y la energía hundieron a los cíclicos europeos (−8,7 % el 3-mar, −9,0 % el 2-abr, −6,3 % el 24-abr) y retrasaron los pedidos de carretillas [6, 24].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "jul-2026",
+          "var_pct": null,
+          "causa": "El 30-jul KION bajó el techo de la previsión de 2026 (EBIT ajustado de 880-980 M) pese a un buen 2T, por la caída de pedidos de carretillas en el trimestre [12, 23].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "ago-sep-2026",
+          "var_pct": 21.5,
+          "causa": "Rebote del 21,5 % en un mes hasta el 8-sep, cuando Citi subió la recomendación a Comprar con objetivo de 62 EUR [29]; lo devolvió en dos semanas (−5,8 % el 10-sep y −5,7 % el 14-sep, sin anuncio de KION) [24].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "sep-oct-2026",
+          "var_pct": -29.8,
+          "causa": "Caída del 29,8 % en un mes hasta el 7-oct: el 2-oct (−7,7 %) la dirección avisó en la conferencia previa al cierre de un 3T flojo, y el 14-oct rebajó la previsión de 2026 y aplazó el margen de dos cifras a después de 2027 [13, 34]. La acción tocó 31,88 EUR el 14-oct y rebotó tras el anuncio [33].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "12 meses",
+          "var_pct": -39.4,
+          "causa": "Otros días de −5 % (29-ene, 19-mar, 1-jun, 8-jul) sin anuncio propio de KION: movimientos de mercado y de sector en una acción con beta de 1,9 [24].",
+          "veredicto": "no cambia",
+          "condicion": null
+        }
+      ],
+      "noticias": [
+        {
+          "fecha": "2026-10-29",
+          "tipo": "resultados",
+          "hecho": "Resultados completos del 3T26 [32]; las cifras provisionales ya se publicaron el 14-oct (ventas ≈ 2.835 M, EBIT ajustado ≈ 203 M) [13].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-10-14",
+          "tipo": "resultados",
+          "hecho": "Anuncio ad hoc: previsión de 2026 rebajada a 11.450-11.750 M de ventas, 815-875 M de EBIT ajustado y 400-500 M de FCF; el margen de dos cifras se aplaza a después de 2027 [13]. Está recogido en nuestras cifras: el BPA base de 2026e (2,99) corresponde a la mitad de la horquilla nueva.",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-10",
+          "tipo": "recomendación",
+          "hecho": "Recortes de objetivo tras el aviso: DZ Bank a 47 EUR, Deutsche Bank de 60 a 52, MPCM de 58 a 54, Metzler [29].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-09-08",
+          "tipo": "recomendación",
+          "hecho": "Citi sube a Comprar con objetivo de 62 EUR [29].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-08-06",
+          "tipo": "accionista de referencia",
+          "hecho": "BlackRock cruza umbrales de derechos de voto: 3,66 % en total [21]. Weichai sigue con el 46,5 % y no ha vendido ni anunciado ventas ni colocaciones [6].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-07-30",
+          "tipo": "fusión u oferta",
+          "hecho": "Compra del 70 % de Smart Innovation (filial de I+D de Colruyt, carretillas autónomas de palés); importe no publicado, pequeño [12].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-04-29",
+          "tipo": "resultados",
+          "hecho": "1T26: ventas de 2.771 M (−0,6 %) y EBIT ajustado de 205 M; previsión mantenida [7].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-03-25",
+          "tipo": "directivos",
+          "hecho": "Valeria Gargiulo compra 3.146 acciones a 45,83 EUR (0,14 M); en 2025 Michael Larsson compró por 0,72 M [1, 22]. Ninguna venta de directivos en 12 meses.",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-03",
+          "tipo": "ampliación o convertible",
+          "hecho": "Bono de 500 M al 4,125 % con vencimiento en 2031 para refinanciar el negocio de arrendamiento; sin ampliación de capital [6].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2025-10-30",
+          "tipo": "resultados",
+          "hecho": "3T25: ventas de 2.704 M (+0,2 %) y EBIT ajustado de 191 M [8].",
+          "veredicto": "no cambia",
+          "condicion": null
+        }
+      ],
+      "proximos_resultados": "2026-10-29",
+      "veredicto": "no cambia",
+      "condicion": null,
+      "comentario": "KION cae un 52 % desde su máximo de enero y está a un 1 % de su mínimo de 52 semanas, en tendencia bajista. La caída tiene causas conocidas y públicas: la guerra de Irán y la energía, que frenaron los pedidos de carretillas en Europa, y dos rebajas de la previsión (julio y 14-oct) con el aplazamiento del objetivo de margen [12, 13]. Todo eso está en nuestras cifras: el BPA de 2026e está en la horquilla nueva y el caso base no supone que el margen de dos cifras llegue en 2027. No hay colocaciones de Weichai, ampliaciones ni ventas de directivos (compran) [6, 22]. Los resultados del 29-oct no retrasan una compra (regla 13). Veredicto: no cambia."
+    }
+  },
+  "multiplos_historicos": {
+    "serie": [
+      {
+        "anio": "2021",
+        "precio_cierre": 96.48,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2022",
+        "precio_cierre": 26.77,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": true
+      },
+      {
+        "anio": "2023",
+        "precio_cierre": 38.67,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2024",
+        "precio_cierre": 31.86,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2025",
+        "precio_cierre": 68.25,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "Con el beneficio adelantado (cierre de diciembre ÷ BPA real del año siguiente) KION cotizó a 11,5 veces en 2022, 14,1 en 2023, 18,2 en 2024 y 22,8 en 2025 (sobre nuestro BPA de 2026e); 2021 queda fuera (128,6 veces, porque el BPA de 2022 se hundió a 0,75 EUR) [1, 2, 3, 4, 5, 24]. Hoy cotiza a 9,5 veces nuestro BPA de 2027e: por debajo del mínimo de cinco años y un 41 % por debajo de la mediana (16,1 veces). El EV/EBITDA histórico del motor sale bajo con nuestra definición de EBITDA y de deuda; no lo usamos."
+  },
+  "comparables": {
+    "empresas": [
+      {
+        "nombre": "Jungheinrich",
+        "ticker": "JUN3.DE",
+        "pais": "DE",
+        "capitalizacion": 2238,
+        "ev_ventas": 0.42,
+        "ev_ebitda_ltm": 3.5,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 7.8,
+        "crecimiento_pct": 5.5,
+        "margen_ebitda_pct": 11.9,
+        "roic_pct": 5.7,
+        "dn_ebitda": 0.09,
+        "fcf_yield_pct": 13.4
+      },
+      {
+        "nombre": "Hyster-Yale",
+        "ticker": "HY",
+        "pais": "US",
+        "capitalizacion": 467,
+        "ev_ventas": 0.3,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 24.6,
+        "crecimiento_pct": 5.9,
+        "margen_ebitda_pct": -0.7,
+        "roic_pct": -1,
+        "dn_ebitda": -19.96,
+        "fcf_yield_pct": 2.8
+      },
+      {
+        "nombre": "Hangcha Group",
+        "ticker": "603298.SS",
+        "pais": "CN",
+        "capitalizacion": 3799,
+        "ev_ventas": 1.38,
+        "ev_ebitda_ltm": 8,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 11,
+        "crecimiento_pct": 16.1,
+        "margen_ebitda_pct": 17.3,
+        "roic_pct": 18.2,
+        "dn_ebitda": -0.87,
+        "fcf_yield_pct": 4.3
+      },
+      {
+        "nombre": "Anhui Heli",
+        "ticker": "600761.SS",
+        "pais": "CN",
+        "capitalizacion": 1781,
+        "ev_ventas": 0.64,
+        "ev_ebitda_ltm": 6.5,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 9.3,
+        "crecimiento_pct": 11.8,
+        "margen_ebitda_pct": 9.9,
+        "roic_pct": 12.5,
+        "dn_ebitda": 0.1,
+        "fcf_yield_pct": 7.4
+      },
+      {
+        "nombre": "Daifuku",
+        "ticker": "6383.T",
+        "pais": "JP",
+        "capitalizacion": 11386,
+        "ev_ventas": 2.64,
+        "ev_ebitda_ltm": 14.2,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 20.2,
+        "crecimiento_pct": 16.6,
+        "margen_ebitda_pct": 18.5,
+        "roic_pct": 15.3,
+        "dn_ebitda": -1.56,
+        "fcf_yield_pct": 6.1
+      },
+      {
+        "nombre": "Konecranes",
+        "ticker": "KCR.HE",
+        "pais": "FI",
+        "capitalizacion": 7072,
+        "ev_ventas": 1.7,
+        "ev_ebitda_ltm": 10.7,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 14.5,
+        "crecimiento_pct": 14.3,
+        "margen_ebitda_pct": 16,
+        "roic_pct": 17.8,
+        "dn_ebitda": -0.25,
+        "fcf_yield_pct": 5
+      },
+      {
+        "nombre": "Interroll",
+        "ticker": "INRN.SW",
+        "pais": "CH",
+        "capitalizacion": 1289,
+        "ev_ventas": 1.84,
+        "ev_ebitda_ltm": 10.1,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 17.8,
+        "crecimiento_pct": 14.4,
+        "margen_ebitda_pct": 18.2,
+        "roic_pct": 11.4,
+        "dn_ebitda": -2.11,
+        "fcf_yield_pct": 4.5
+      },
+      {
+        "nombre": "Columbus McKinnon",
+        "ticker": "CMCO",
+        "pais": "US",
+        "capitalizacion": 377,
+        "ev_ventas": 1.89,
+        "ev_ebitda_ltm": null,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 5.8,
+        "crecimiento_pct": 45.8,
+        "margen_ebitda_pct": -3.6,
+        "roic_pct": -2.9,
+        "dn_ebitda": -44.11,
+        "fcf_yield_pct": -29.1
+      },
+      {
+        "nombre": "Symbotic",
+        "ticker": "SYM",
+        "pais": "US",
+        "capitalizacion": 20923,
+        "ev_ventas": 8.4,
+        "ev_ebitda_ltm": 442.9,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 52.5,
+        "crecimiento_pct": 31.8,
+        "margen_ebitda_pct": 1.9,
+        "roic_pct": -40.8,
+        "dn_ebitda": -24.81,
+        "fcf_yield_pct": 3.4
+      },
+      {
+        "nombre": "Terex",
+        "ticker": "TEX",
+        "pais": "US",
+        "capitalizacion": 5196,
+        "ev_ventas": 1.14,
+        "ev_ebitda_ltm": 12.3,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 8.8,
+        "crecimiento_pct": 29.6,
+        "margen_ebitda_pct": 9.3,
+        "roic_pct": 7.6,
+        "dn_ebitda": 2.93,
+        "fcf_yield_pct": 5.8
+      }
+    ],
+    "confianza": "Media",
+    "criterio": "Fabricantes de carretillas (Jungheinrich, Hyster-Yale, Hangcha, Anhui Heli) y de automatización de almacenes y elevación (Daifuku, Interroll, Konecranes, Columbus McKinnon, Symbotic, Terex), cotizados, en EUR. Toyota Industries, el n.º 1, salió de bolsa en marzo de 2026 y no tiene cotización [31]. Crown y Mitsubishi Logisnext no cotizan por separado. Los más parecidos son Jungheinrich (Europa, mismo modelo de alquiler y arrendamiento) y Daifuku (automatización) [28].",
+    "comentario": "KION cotiza a 9,8 veces el beneficio de los próximos 12 meses, en la zona baja del grupo (mediana de 12,8 veces) y cerca de Jungheinrich (7,8), Heli (9,3) y Terex (8,8) [28]. Los que cotizan a 15-20 veces (Daifuku, Interroll, Konecranes) ganan márgenes de EBITDA del 16-19 % y ROIC del 12-18 %; KION gana un 11,5 % (con nuestra definición) y un ROIC del 4,5 %. El descuento está justificado por la rentabilidad, no por el crecimiento: su crecimiento esperado (4 %) es parecido al del grupo. Usamos el PER: el EV/EBITDA de KION no es comparable porque su valor de empresa incluye la financiación de la flota (2.821 M) que los proveedores no suman igual en los demás. La mediana del PER (12,8 veces) da 44,33 EUR por acción."
+  },
+  "transacciones": {
+    "operaciones": [
+      {
+        "fecha": "2016-06",
+        "objetivo": "Dematic (automatización de almacenes)",
+        "comprador": "KION Group",
+        "ev": 2930,
+        "ev_ventas": 1.81,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "3.250 M USD de valor de empresa sobre 1.800 M USD de ventas de 2015; KION habló de 17-19 veces el EBIT [18]."
+      },
+      {
+        "fecha": "2025-02",
+        "objetivo": "Kito Crosby (polipastos y elevación)",
+        "comprador": "Columbus McKinnon",
+        "ev": 2407,
+        "ev_ventas": 2.45,
+        "ev_ebitda": 8,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "2.700 M USD; ≈ 8 veces el EBITDA ajustado de 12 meses con sinergias, 1.100 M USD de ventas [30]."
+      },
+      {
+        "fecha": "2026-03",
+        "objetivo": "Toyota Industries (exclusión de bolsa)",
+        "comprador": "Toyota Motor y grupo",
+        "ev": null,
+        "ev_ventas": null,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": true,
+        "comentario": "OPA a 20.600 JPY por acción con éxito el 24-mar-2026; incluye participaciones cruzadas del grupo Toyota y motores, sin múltiplo comparable [31]."
+      }
+    ],
+    "confianza": "Baja",
+    "comentario": "Hay pocas compras comparables con múltiplos publicados. KION pagó por Dematic en 2016 1,8 veces las ventas y unas 17-19 veces el EBIT [18]; Columbus McKinnon pagó por Kito Crosby en 2025 unas 8 veces el EBITDA ajustado con sinergias [30]. KION cotiza hoy a 0,76 veces las ventas con nuestra definición de deuda. Una oferta por KION solo podría venir de Weichai, que con el 46,5 % no necesita pagar prima para mandar; la exclusión de Toyota Industries por su matriz en 2026 muestra que pasa en el sector, pero Weichai no ha dado señales [31]. No ponderamos las transacciones."
+  },
+  "dcf": {
+    "anios": [
+      {
+        "periodo": "2026e",
+        "crecimiento_pct": 2.7,
+        "margen_ebitda_pct": 11.6,
+        "amortizacion_pct_ventas": 5.2,
+        "capex_pct_ventas": 5.2,
+        "nwc_pct_ventas": 13.5,
+        "tasa_impositiva_pct": 33,
+        "fijo": true
+      },
+      {
+        "periodo": "2027e",
+        "crecimiento_pct": 2.5,
+        "margen_ebitda_pct": 12,
+        "amortizacion_pct_ventas": 5,
+        "capex_pct_ventas": 5.1,
+        "nwc_pct_ventas": 13.5,
+        "tasa_impositiva_pct": 31,
+        "fijo": false
+      },
+      {
+        "periodo": "2028e",
+        "crecimiento_pct": 4,
+        "margen_ebitda_pct": 12.4,
+        "amortizacion_pct_ventas": 4.9,
+        "capex_pct_ventas": 5,
+        "nwc_pct_ventas": 13.5,
+        "tasa_impositiva_pct": 30,
+        "fijo": false
+      },
+      {
+        "periodo": "2029e",
+        "crecimiento_pct": 4,
+        "margen_ebitda_pct": 12.8,
+        "amortizacion_pct_ventas": 4.8,
+        "capex_pct_ventas": 4.9,
+        "nwc_pct_ventas": 13.5,
+        "tasa_impositiva_pct": 30,
+        "fijo": false
+      },
+      {
+        "periodo": "2030e",
+        "crecimiento_pct": 3.5,
+        "margen_ebitda_pct": 13,
+        "amortizacion_pct_ventas": 4.7,
+        "capex_pct_ventas": 4.8,
+        "nwc_pct_ventas": 13.5,
+        "tasa_impositiva_pct": 30,
+        "fijo": false
+      },
+      {
+        "periodo": "2031e",
+        "crecimiento_pct": 3,
+        "margen_ebitda_pct": 13.1,
+        "amortizacion_pct_ventas": 4.6,
+        "capex_pct_ventas": 4.8,
+        "nwc_pct_ventas": 13.5,
+        "tasa_impositiva_pct": 30,
+        "fijo": false
+      },
+      {
+        "periodo": "2032e",
+        "crecimiento_pct": 2.8,
+        "margen_ebitda_pct": 13.1,
+        "amortizacion_pct_ventas": 4.6,
+        "capex_pct_ventas": 4.7,
+        "nwc_pct_ventas": 13.5,
+        "tasa_impositiva_pct": 30,
+        "fijo": false
+      },
+      {
+        "periodo": "2033e",
+        "crecimiento_pct": 2.5,
+        "margen_ebitda_pct": 13.1,
+        "amortizacion_pct_ventas": 4.5,
+        "capex_pct_ventas": 4.7,
+        "nwc_pct_ventas": 13.5,
+        "tasa_impositiva_pct": 30,
+        "fijo": false
+      },
+      {
+        "periodo": "2034e",
+        "crecimiento_pct": 2.3,
+        "margen_ebitda_pct": 13.1,
+        "amortizacion_pct_ventas": 4.5,
+        "capex_pct_ventas": 4.6,
+        "nwc_pct_ventas": 13.5,
+        "tasa_impositiva_pct": 30,
+        "fijo": false
+      },
+      {
+        "periodo": "2035e",
+        "crecimiento_pct": 2,
+        "margen_ebitda_pct": 13.1,
+        "amortizacion_pct_ventas": 4.5,
+        "capex_pct_ventas": 4.6,
+        "nwc_pct_ventas": 13.5,
+        "tasa_impositiva_pct": 30,
+        "fijo": false
+      }
+    ],
+    "wacc": {
+      "tasa_libre_pct": 3.45,
+      "beta": 1.6,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 0.5,
+      "coste_deuda_pct": 4.25,
+      "tasa_impositiva_pct": 30,
+      "peso_deuda_pct": 40
+    },
+    "terminal": {
+      "metodo": "gordon",
+      "crecimiento_pct": 2,
+      "multiplo_salida": 7
+    },
+    "etapa2": {
+      "usar": false,
+      "anios": 5,
+      "margen_final_pct": null,
+      "justificacion": null
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "Las ventas crecieron un 2,4 % anual entre 2021 y 2025 (10.294 → 11.297 M) y llevan cuatro años estancadas en 11.100-11.500 M [1, 2, 3, 4, 5]. Proyectamos un 2,7 % en 2026e (fijo: 1S real de 5.687 M, +3,5 %, y un 3T de ≈ 2.835 M, +4,8 %, dentro de la previsión de 11.450-11.750 M) [6, 13], un 2,5 % en 2027e por la debilidad de los pedidos de carretillas en Europa, un 4 % en 2028e-2029e con la recuperación del ciclo y la cartera de IAS, y luego hasta el 2 %. Es un 2,9 % medio en diez años, cerca de la historia.",
+      "margenes": "El margen EBITDA con nuestra definición (sin la depreciación de la flota y sin no recurrentes) fue del 11,1 % en 2025, del 11,8 % en 2024 y del 10,3 % en 2023; en 2021, del 11,4 % [1, 2, 3, 4, 5]. Lo llevamos del 11,6 % en 2026e (EBIT ajustado de unos 845 M, el centro de la previsión) al 13,1 % en 2031e: el ahorro de 150 M del programa de eficiencia vale 1,3 puntos y IAS mejora del 6 % al 8-9 % de margen. Equivale a un margen de EBIT ajustado del 8,5-9 % a largo plazo, por debajo del objetivo de dos cifras de la dirección.",
+      "inversion": "El capex (inmovilizado e intangibles, 3,5 % de las ventas en 2025, más altas de arrendamientos de compra de ≈ 1,7 %) se proyecta del 5,2 % al 4,6 %, por encima de la amortización (5,2 % → 4,5 %) [1]. La flota de alquiler y arrendamiento se trata como autofinanciada: su depreciación está en el coste y sus pasivos netos, en la deuda. El circulante es el 13,5 % de las ventas, como en 2025 (existencias + clientes + activos por contrato − proveedores − anticipos).",
+      "wacc": "Tasa libre del Bund a 10 años, 3,45 % el 16-oct-2026 [26]. Beta 1,6 (semanal de 5 años frente al DAX 1,88, ajustada 1,59; mensual 2,07) [24], prima de mercado del 5,5 % (la implícita de Damodaran es del 4,2 % [27]) y 0,5 puntos más por el accionista de control chino y la exposición a China: coste del capital del 12,75 %. Coste de la deuda del 4,25 % antes de impuestos (bonos al 4,0 % y 4,125 %) y peso de la deuda del 40 %, por debajo del 50 % de mercado porque los pasivos de la flota están casados con cuotas de clientes. WACC del 8,84 %.",
+      "terminal": "Gordon con un crecimiento del 2,0 %, igual a la inflación objetivo y por debajo de la tasa libre: KION vive del parque instalado de carretillas, que crece con la producción industrial. El valor terminal es el 57 % del valor de empresa. Con un múltiplo de salida de 7 veces el EBITDA (el nuestro, sin flota) el valor sería similar."
+    },
+    "sostenibilidad": {
+      "puente_ingresos": [
+        {
+          "periodo": "2026e",
+          "volumen_pct": 1.2,
+          "precio_pct": 1.5,
+          "otros_pct": 0,
+          "comentario": "Volumen del +1,2 % (1S26 de +3,5 % en ventas con ITS −1,4 % e IAS +17,6 %; pedidos de carretillas flojos en el 3T) y precio del +1,5 % [6, 13]."
+        },
+        {
+          "periodo": "2027e",
+          "volumen_pct": 0.5,
+          "precio_pct": 1.5,
+          "otros_pct": 0.5,
+          "comentario": "Volumen del +0,5 %: Europa sigue débil por la guerra y la energía, compensado por la cartera de IAS (2.954 M) [6]; precio del +1,5 % y 0,5 puntos de servicio."
+        },
+        {
+          "periodo": "2028e",
+          "volumen_pct": 2,
+          "precio_pct": 1.5,
+          "otros_pct": 0.5,
+          "comentario": "Recuperación del ciclo de carretillas en Europa (+2 % de volumen), precio del +1,5 % y servicio."
+        },
+        {
+          "periodo": "2029e",
+          "volumen_pct": 2,
+          "precio_pct": 1.5,
+          "otros_pct": 0.5,
+          "comentario": "Volumen del +2 % con la automatización de almacenes (Interact Analysis prevé pedidos del +6-7 % anual) [16]."
+        },
+        {
+          "periodo": "2030e",
+          "volumen_pct": 1.5,
+          "precio_pct": 1.5,
+          "otros_pct": 0.5,
+          "comentario": "Volumen del +1,5 % y precio del +1,5 %; el crecimiento converge al 2-3 %."
+        }
+      ],
+      "mercado_final": null,
+      "veredicto": "Sí",
+      "justificacion": "Sí. Proyectamos un 2,9 % anual, poco más que el 2,4 % de 2021-2025 y por debajo del 4-6 % que se espera para la automatización de almacenes [1, 16]; la cuota de KION en carretillas (≈ 15 %) no tiene que subir. El crecimiento se financia solo: con la reinversión bruta al ROIC actual da un 4,2 %, por encima del 2,9 %. La proyección supone que el capital nuevo rinda un 6,5 %, más que el histórico negativo de 2021-2025 pero por debajo del coste de capital: no pide nada heroico. El foso es estrecho (servicio, marcas y costes de cambio) y el poder de precios es limitado frente a los fabricantes chinos."
+    },
+    "lectura": "El DCF da 44,99 EUR por acción, un 32 % por encima del precio, con un WACC del 8,84 % y un crecimiento terminal del 2,0 %; el valor terminal es el 57 % del total. El puente es grande: de 8.759 M de valor de empresa hay que restar 1.635 M de deuda financiera, 2.821 M de arrendamientos (sobre todo la financiación de la flota) y 337 M de pensiones después de impuestos. El DCF inverso dice que el precio equivale a que las ventas bajen un 0,3 % al año o a un margen EBITDA del 12,0 % para siempre (13,1 % en el base), con una rentabilidad implícita del 9,9 %. La sensibilidad es alta: ±0,5 puntos de WACC mueven el valor entre 39,58 y 51,27 EUR.",
+    "confianza": "Media"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": -2,
+        "ajuste_margen_pp": -1.5,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": 1.5,
+        "multiplo_salida": null,
+        "perfil": [
+          {
+            "periodo": "2027e",
+            "crecimiento_pp": -6,
+            "margen_pp": -2
+          }
+        ],
+        "narrativa": "Europa sigue sin invertir en 2027 (las ventas caen un 3,5 %), los chinos bajan precios y el ahorro del programa se va en descuentos: 2 puntos menos de crecimiento y 1,5 de margen en todo el periodo, y un crecimiento terminal del 1,5 %."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Un 2027 plano y la recuperación del ciclo desde 2028, con el ahorro de 150 M y una mejora de IAS: margen EBITDA del 13,1 % (EBIT ajustado del 8,5-9 %) y un crecimiento del 2,9 % anual."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": 1.5,
+        "ajuste_margen_pp": 0.8,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Los pedidos de Europa vuelven en 2027 con el fin de la guerra y la automatización acelera: 1,5 puntos más de crecimiento y 0,8 de margen (EBIT ajustado de dos cifras hacia 2029)."
+      }
+    ],
+    "comentario": "Probabilidades del 25/50/25. El bajista es duro (20,80 EUR, −39 %) porque la deuda (con la flota) es grande: con un margen 1,5 puntos menor el valor de las acciones cae más de la mitad. El alcista (59,36 EUR) no supone el margen de dos cifras de la dirección hasta finales de la década. La asimetría es favorable (1,9 veces), pero la acción es muy cíclica y apalancada.",
+    "confianza": "Media"
+  },
+  "suma_partes": {
+    "aplica": false,
+    "descuento_holding_pct": 0,
+    "partes": [],
+    "comentario": "No aplica: ITS e IAS comparten clientes, marcas y red de servicio y no cotizan por separado; con PER parecidos para carretillas (8-11 veces) y automatización (15-20), una suma de partes daría más valor a IAS, pero IAS gana poco (6 % de margen) y no la usamos.",
+    "confianza": "Media"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2026-06-30",
+      "deuda_financiera": 1635.1,
+      "arrendamientos": 2821.3,
+      "caja": 391,
+      "minoritarios": 30.3,
+      "pensiones": 337.2,
+      "asociadas": 143.1,
+      "otros_ajustes": 0
+    },
+    "referencia_mercado": {
+      "mercado": "S&P 500 (prima implícita de Damodaran), la principal para mercados desarrollados",
+      "prima_implicita_pct": 4.2,
+      "fecha": "2026-10",
+      "fuente": "Damodaran, ERPbymonth.xlsx [27]"
+    },
+    "pesos": {
+      "dcf": 60,
+      "comparables": 15,
+      "transacciones": 0,
+      "suma_partes": 0,
+      "escenarios": 25
+    },
+    "objetivo_12m": {
+      "ejercicio": "2028e",
+      "casos": [
+        {
+          "escenario": "Bajista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 2.87,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 11.420 M en 2028e (2026e igual que el base y una caída del 3,5 % en 2027e: Europa sigue sin invertir y los chinos presionan el precio) y margen EBITDA 1,5-2 puntos más bajo: EBIT de 685 M (6,0 %) y BPA de 2,87 EUR. Múltiplo de 8,4 veces (base × 0,8; el mínimo de 5 años, 11,5x, queda por encima)."
+        },
+        {
+          "escenario": "Base",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 4.17,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 12.368 M en 2028e (+2,7 % en 2026e, +2,5 % en 2027e y +4 % en 2028e) y margen EBITDA del 12,4 % (EBIT de 928 M, 7,5 %; 8,2 % ajustado) con el ahorro del programa de eficiencia; resultado financiero de −130 M, impuesto del 30 %: BPA de 4,17 EUR. Múltiplo de 10,5 veces: el PER actual (9,5x) × 1,1, el tope de la regla; la mediana de 5 años (16,1x) queda más lejos."
+        },
+        {
+          "escenario": "Alcista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 4.86,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 12.730 M (pedidos de Europa que vuelven en 2027) y 0,8 puntos más de margen: EBIT de 1.057 M (8,3 %; ≈ 9 % ajustado) y BPA de 4,86 EUR. Múltiplo de 14,1 veces, el techo de la regla (base × 1,35), por debajo de la mediana de 5 años."
+        }
+      ],
+      "per_historico": {
+        "base": "adelantado",
+        "actual": 9.52,
+        "mediana_5a": 16.13,
+        "minimo_5a": 11.49,
+        "media_larga": 16.6,
+        "excluidos": "PER adelantado de cada cierre de diciembre (cierre ÷ BPA real del año siguiente) [1, 2, 3, 4, 5, 24]: 2020 71,16 ÷ 4,34 = 16,4x; 2021 96,48 ÷ 0,75 = 128,6x (excluido: el BPA de 2022 se hundió por la crisis de costes y de proyectos de Dematic; es más de tres veces la mediana); 2022 26,77 ÷ 2,33 = 11,5x; 2023 38,67 ÷ 2,75 = 14,1x; 2024 31,86 ÷ 1,75 = 18,2x; 2025 68,25 ÷ 2,99 (nuestro BPA de 2026e) = 22,8x. Mediana de 5 años (2022-2025) 16,1x, mínimo 11,5x; media larga (2020-2025 sin 2021) 16,6x.",
+        "v2": {
+          "mediana_5a": 16.6,
+          "minimo_5a": 11.59,
+          "media_larga": 16.8,
+          "excluidos": "PER al cierre (cierre ÷ BPA del mismo año) [1, 2, 3, 4, 5, 24]: 2021 22,2x; 2023 16,6x; 2024 11,6x. Excluidos 2022 (35,7x, BPA de 0,75) y 2025 (39,0x, BPA de 1,75 con 201 M de no recurrentes)."
+        }
+      },
+      "comparables_per": {
+        "mediana": 12.75
+      },
+      "consenso": {
+        "bpa_ano1": 3.616,
+        "bpa_ano2": 4.27,
+        "objetivo_medio": 51.4,
+        "objetivo_min": 37,
+        "objetivo_max": 63,
+        "analistas": 15,
+        "tendencia_3m": "recortes",
+        "fuente": "MarketScreener: BPA de 2027e y 2028e y objetivos de 15 analistas (51,40 EUR de media, 37-63) [25, 29]"
+      },
+      "diferencia_consenso": "Nuestro BPA de 2027e (3,58 EUR) está un 1 % por debajo del consenso (3,62, 15 analistas) y el de 2028e (4,17) un 2 % por debajo (4,27) [25]. Coincidimos en el beneficio, pero no en el camino: los analistas suponen más ventas (12.800 M en 2028e frente a 12.368 M) y un EBIT ajustado de 1.110 M; nosotros, menos ventas y un resultado financiero algo mejor. El consenso todavía no recoge del todo la rebaja del 14-oct, así que es probable que baje. Nuestro objetivo (45,06 EUR) está un 12 % por debajo del objetivo medio de los analistas (51,40).",
+      "media": null,
+      "comentario": "El objetivo a 12 meses es de 45,06 EUR (ponderado), un 34,0 % más con el dividendo; en el caso base, 43,79 EUR (+30,3 %). No supone que el mercado vuelva a pagar la mediana histórica (16,1 veces): el base sube el PER solo del 9,5 al 10,5 (el tope de la regla). La rentabilidad sale de que el BPA crezca de 2,99 (2026e) a 4,17 (2028e), con el ahorro del programa de eficiencia y un 2027 de ventas planas. El BPA de 2025 (1,75) estaba deprimido por 201 M de reestructuración: el crecimiento desde una base limpia (≈ 2,80) es del 14 % anual. Con la regla v2 (control) la ponderada es del 21,2 %. Con un BPA un 10 % más bajo en los tres casos, la ponderada baja al 21 %, todavía por encima del 15 %. El riesgo está en el bajista (−27,5 %): una Europa sin pedidos en 2027."
+    },
+    "comentario": "El valor intrínseco (44,28 EUR) sale en un 60 % del DCF (44,99), un 25 % de los escenarios y un 15 % de los comparables por PER (44,33): los tres métodos coinciden en 44-45 EUR, un 30 % por encima del precio. La empresa vale más que su cotización aun sin cubrir su coste de capital, porque el precio descuenta que las ventas no crezcan nunca (crecimiento implícito del −0,3 % anual) y un margen EBITDA del 12 % para siempre, por debajo del 13,1 % de nuestro base. El valor depende mucho del WACC: con 9,8 % y g 2 % el DCF da 34,87 EUR, el precio de hoy. El objetivo a 12 meses (45,06 EUR) y el valor intrínseco casi coinciden.",
+    "confianza": "Media"
+  },
+  "catalizadores": {
+    "items": [
+      {
+        "fecha": "2026-10-29",
+        "evento": "Resultados completos del 3T26 y conferencia [32]",
+        "efecto": "Pedidos de carretillas de septiembre y octubre y lo que dice la dirección de 2027; las cifras del trimestre ya se conocen",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2026-12",
+        "evento": "Fin del mandato de Michael Larsson al frente de IAS e ITS Americas (31-dic-2026) [1]",
+        "efecto": "Renovación o relevo en el negocio de automatización",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2027-02",
+        "evento": "Resultados de 2026 y previsión de 2027",
+        "efecto": "Primera previsión con el ahorro completo del programa de eficiencia; dirá si 2027 sube el margen de EBIT ajustado hacia el 8 %",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2027-05",
+        "evento": "Junta general y dividendo (25-40 % del beneficio)",
+        "efecto": "Dividendo de unos 0,9-1,0 EUR con nuestro BPA de 2026e",
+        "probabilidad": "Alta",
+        "sentido": "+"
+      },
+      {
+        "fecha": "2027",
+        "evento": "Fin de la guerra de Irán o bajada de la energía en Europa",
+        "efecto": "Recuperación de los pedidos de carretillas en Europa (el 66 % de las ventas)",
+        "probabilidad": "Media",
+        "sentido": "+"
+      },
+      {
+        "fecha": "2027",
+        "evento": "Medidas comerciales de la UE frente a carretillas chinas",
+        "efecto": "Protegería el precio de Linde y STILL en Europa",
+        "probabilidad": "Baja",
+        "sentido": "+"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "riesgos": {
+    "items": [
+      {
+        "riesgo": "Ciclo industrial europeo débil más tiempo (guerra, energía, aranceles)",
+        "tipo": "Demanda",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "Bajista a 12 meses de 24,11 EUR (−27,5 %): 8,4 veces un BPA de 2028e de 2,87; DCF bajista de 20,80 EUR",
+        "mitigante": "El servicio es el 48 % de las ventas y aguanta; la cartera de 5.070 M cubre buena parte de 2027 en IAS [1, 6]",
+        "senal": "Pedidos de carretillas de ITS negativos en el 3T y 4T26"
+      },
+      {
+        "riesgo": "Competencia de los fabricantes chinos (Heli, Hangcha) en Europa",
+        "tipo": "Competencia",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−1 punto de margen EBITDA en todo el periodo ≈ −9 EUR por acción en el DCF",
+        "mitigante": "Marcas Linde y STILL, red de servicio propia y Baoli para el segmento bajo [1]",
+        "senal": "Margen de EBIT ajustado de ITS por debajo del 8,5 % en 2026-2027"
+      },
+      {
+        "riesgo": "Deterioro del fondo de comercio de Dematic (1.948 M)",
+        "tipo": "Contable",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "Sin efecto en caja ni en el DCF; un deterioro de 500-1.000 M bajaría el patrimonio y podría pesar en el rating",
+        "mitigante": "IAS mejora (EBIT ajustado del 6,5 % en el 1S26 con pedidos al alza) [6]",
+        "senal": "Test de deterioro de 2026 (informe anual de febrero de 2027) con el objetivo de margen aplazado [13]"
+      },
+      {
+        "riesgo": "Pérdidas en grandes proyectos de automatización a precio cerrado, como en 2022",
+        "tipo": "Ejecución",
+        "probabilidad": "Baja",
+        "impacto": "Alto",
+        "efecto_valor": "En 2022 IAS pasó de 410 M de EBIT a −46 M: un golpe así quitaría ≈ 2,4 EUR de BPA en un año",
+        "mitigante": "Cláusulas de revisión de precios desde 2023 y más servicio en la mezcla [1]",
+        "senal": "Margen de IAS por debajo del 5 % en un trimestre"
+      },
+      {
+        "riesgo": "El programa de eficiencia no da los 150 M de ahorro",
+        "tipo": "Ejecución",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "BPA de 2028e un 10 % menor: la rentabilidad ponderada a 12 meses baja del 34 % al 21 %",
+        "mitigante": "El ahorro viene sobre todo de recortar unos 2.000 puestos ya pactados en 2025 [1]",
+        "senal": "Margen de EBIT ajustado del grupo por debajo del 7,5 % en 2026"
+      },
+      {
+        "riesgo": "Accionista de control chino y tensiones UE-China y EE. UU.-China",
+        "tipo": "Gobierno y geopolítica",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "Descuento de múltiplo; ya lo incluimos con 0,5 puntos más de prima de riesgo en el WACC",
+        "mitigante": "Cinco de los ocho consejeros de los accionistas son independientes; transacciones con Weichai pequeñas y revisadas cada año [1, 6]",
+        "senal": "Restricciones a inversiones chinas en la UE o en EE. UU. que afecten a KION o a Dematic"
+      },
+      {
+        "riesgo": "Financiación de la flota y rating (S&P BB+)",
+        "tipo": "Financiero",
+        "probabilidad": "Baja",
+        "impacto": "Medio",
+        "efecto_valor": "Un punto más de tipos en 4.500 M de pasivos de la flota ≈ −45 M de beneficio antes de impuestos si no se traslada a cuotas",
+        "mitigante": "Los contratos de arrendamiento se financian casados en plazo; Fitch BBB estable [6, 10]",
+        "senal": "Rebaja de Fitch por debajo de BBB"
+      }
+    ],
+    "premortem": "Es octubre de 2029 y KION vale un 40 % menos. Lo que pasó: la guerra y la energía dejaron a la industria europea dos años sin invertir en carretillas, y cuando los pedidos volvieron, Heli y Hangcha ya vendían en Europa eléctricas de litio un 25 % más baratas, con concesionarios propios en Alemania, Francia e Italia. Linde y STILL defendieron la cuota con descuentos, y el margen de ITS se quedó en el 8 %. El programa de eficiencia ahorró lo prometido, pero se fue en precio. En Dematic los grandes clientes de comercio electrónico pasaron a sistemas de robots de Symbotic y AutoStore, más baratos de instalar, y IAS siguió con un margen del 6 %. En febrero de 2028 KION deterioró 1.000 M del fondo de comercio de Dematic, S&P la dejó en BB+ con perspectiva negativa y el dividendo bajó al mínimo de la horquilla. El mercado dejó de pagar 10 veces el beneficio de una empresa que no cubre su coste de capital y el PER se quedó en 8. Lo habrían anticipado el margen de ITS por debajo del 8,5 % en 2026-2027 y la cuota de KION en Europa en las estadísticas de pedidos de la FEM.",
+    "ia": {
+      "exposicion": "Media",
+      "sentido": "Mixto",
+      "efecto_valor": "±10 % a 3-5 años: más demanda de automatización y software para Dematic frente a competidores nuevos de robots y carretillas autónomas",
+      "comentario": "La IA ayuda a KION: los almacenes con planificación por IA y gemelos digitales (alianza con Nvidia y Accenture) y las carretillas autónomas (Smart Innovation) venden más automatización, que es su segmento de crecimiento [1, 12]. También la amenaza: los rivales nacidos con IA y robots (Symbotic, AutoStore, Geek+, robots humanoides a largo plazo) pueden llevarse los proyectos grandes y reducir la necesidad de carretillas con conductor, que son el 73 % de las ventas. El servicio de la base instalada y la red de concesionarios no se automatizan fácilmente. Neto: neutral a 3-5 años, con más dispersión de resultados."
+    },
+    "confianza": "Media"
+  },
+  "esg": {
+    "calificaciones": [
+      {
+        "agencia": "EcoVadis",
+        "calificacion": "Platino (86/100, el 1 % mejor)",
+        "fecha": "2025-12"
+      }
+    ],
+    "materialidad": "Lo material es el uso de sus productos (el alcance 3 es de 14.694 kt de CO₂e, casi todo por la energía que consumen las carretillas vendidas), la seguridad en el trabajo de los usuarios de carretillas y la cadena de suministro de baterías [1]. La electrificación (93 % de los pedidos de ITS) reduce las emisiones de uso [1].",
+    "controversias": "Sin controversias graves. El voto sobre el informe de remuneraciones de 2024 en la junta de 2025 tuvo solo un 73,9 % a favor, por los pagos a exconsejeros [20]. El control por un grupo chino (Weichai) es un punto de atención para algunos inversores y gobiernos europeos [1].",
+    "confianza": "Media"
+  },
+  "preguntas": {
+    "items": [
+      {
+        "tema": "Demanda",
+        "pregunta": "¿Cómo fueron los pedidos de carretillas en septiembre y octubre en Europa, y qué parte de la caída es la guerra y qué parte es cuota perdida frente a los chinos?",
+        "por_que": "Separa el base del bajista [13]."
+      },
+      {
+        "tema": "Margen",
+        "pregunta": "¿Cuánto del ahorro de 150 M ya está en el margen de 2026 y cuánto queda para 2027?",
+        "por_que": "El BPA de 2027e y 2028e depende de él [1]."
+      },
+      {
+        "tema": "Objetivo",
+        "pregunta": "¿Qué margen de EBIT ajustado espera la dirección para 2027 tras aplazar el de dos cifras?",
+        "por_que": "Sin una cifra, el mercado no sabe qué descontar [13]."
+      },
+      {
+        "tema": "IAS",
+        "pregunta": "¿Qué margen tienen los proyectos de la cartera de IAS (2.954 M) y cuántos son a precio cerrado sin revisión?",
+        "por_que": "Evita otro 2022 [6]."
+      },
+      {
+        "tema": "Fondo de comercio",
+        "pregunta": "¿Qué margen de IAS supone el test de deterioro de 2026 y cuánta holgura queda?",
+        "por_que": "La capitalización está por debajo del patrimonio [1]."
+      },
+      {
+        "tema": "FCF",
+        "pregunta": "¿Cuál es el FCF de 2026 con la definición antigua, sin la deuda captada para el negocio de arrendamiento?",
+        "por_que": "Para comparar con los 710 M de 2025 [6]."
+      },
+      {
+        "tema": "Weichai",
+        "pregunta": "¿Tiene Weichai intención de aumentar o reducir su participación?",
+        "por_que": "Una venta sería un exceso de oferta; una compra, una prima [1]."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sentimiento": null,
+  "fuentes": [
+    {
+      "id": 1,
+      "titulo": "Annual Report 2025 (informe anual con cuentas consolidadas NIIF-UE, notas, informe de gestión, gobierno corporativo y opinión de KPMG)",
+      "editor": "KION GROUP AG",
+      "tipo": "Primaria",
+      "fecha": "2026-02-26",
+      "url": "https://reports.kiongroup.com/2025/ar/_assets/downloads/2025-Q4_Annual-Report_KION_Group.pdf"
+    },
+    {
+      "id": 2,
+      "titulo": "Annual Report 2025, «All tables» (Excel con todas las tablas del informe anual: cuenta, balance, flujos, segmentos, arrendamientos, deuda)",
+      "editor": "KION GROUP AG",
+      "tipo": "Primaria",
+      "fecha": "2026-02-26",
+      "url": "https://reports.kiongroup.com/2025/ar/"
+    },
+    {
+      "id": 3,
+      "titulo": "Annual Report 2024 (PDF) y «All tables» (Excel)",
+      "editor": "KION GROUP AG",
+      "tipo": "Primaria",
+      "fecha": "2025-02-27",
+      "url": "https://reports.kiongroup.com/2024/ar/_assets/downloads/2024-Q4_Annual-Report_KION_Group.pdf"
+    },
+    {
+      "id": 4,
+      "titulo": "Annual Report 2023, «All tables» (Excel): ejercicios 2023 y 2022",
+      "editor": "KION GROUP AG",
+      "tipo": "Primaria",
+      "fecha": "2024-02-29",
+      "url": "https://reports.kiongroup.com/2023/ar/"
+    },
+    {
+      "id": 5,
+      "titulo": "Annual Report 2022, «All tables» (Excel): ejercicios 2022 y 2021",
+      "editor": "KION GROUP AG",
+      "tipo": "Primaria",
+      "fecha": "2023-03-02",
+      "url": "https://reports.kiongroup.com/2022/ar/"
+    },
+    {
+      "id": 6,
+      "titulo": "Interim Report Q2 2026 (informe semestral 1S26, cuentas resumidas NIIF, segmentos, deuda, partes vinculadas y previsión)",
+      "editor": "KION GROUP AG",
+      "tipo": "Primaria",
+      "fecha": "2026-07-30",
+      "url": "https://www.kiongroup.com/KION-Website-Main/Investor-Relations/Reports-Presentations/2026-Reports-Presentations/Q2-2026/2026-Q2_Interim-report_KION.pdf"
+    },
+    {
+      "id": 7,
+      "titulo": "Quarterly Statement Q1 2026",
+      "editor": "KION GROUP AG",
+      "tipo": "Primaria",
+      "fecha": "2026-04-29",
+      "url": "https://reports.kiongroup.com/2026/ir/1/_assets/downloads/2026-Q1_Quarterly-Statement_KION.pdf"
+    },
+    {
+      "id": 8,
+      "titulo": "Quarterly Statement Q3 2025 y «All tables» 9M25",
+      "editor": "KION GROUP AG",
+      "tipo": "Primaria",
+      "fecha": "2025-10-30",
+      "url": "https://reports.kiongroup.com/2025/ir/3/_assets/downloads/2025-Q3_Quarterly-Statement_KION_Group.pdf"
+    },
+    {
+      "id": 9,
+      "titulo": "Interim Report Q2 2025 (1S25)",
+      "editor": "KION GROUP AG",
+      "tipo": "Primaria",
+      "fecha": "2025-07-31",
+      "url": "https://reports.kiongroup.com/2025/ir/2/_assets/downloads/2025-Q2_Interim-Report_KION_Group.pdf"
+    },
+    {
+      "id": 10,
+      "titulo": "FY2025 Leasing Deep Dive (presentación del negocio de alquiler y arrendamiento: flota, financiación, derechos de cobro, efecto en EBITDA y FCF)",
+      "editor": "KION GROUP AG",
+      "tipo": "Primaria",
+      "fecha": "2026-02-26",
+      "url": "https://www.kiongroup.com/KION-Website-Main/Investor-Relations/Reports-Presentations/2025-Reports-Presentations/FY-2025/FY2025-Leasing-Deep-Dive_KION_Group.pdf"
+    },
+    {
+      "id": 11,
+      "titulo": "Q2 2026 Update Call (presentación de resultados del 2T26)",
+      "editor": "KION GROUP AG",
+      "tipo": "Primaria",
+      "fecha": "2026-07-30",
+      "url": "https://www.kiongroup.com/KION-Website-Main/Investor-Relations/Reports-Presentations/2026-Reports-Presentations/Q2-2026/20260730_KION-Group-Update-Call-Q2-2026.pdf"
+    },
+    {
+      "id": 12,
+      "titulo": "Nota de prensa de resultados del 2T26 (previsión de 2026 rebajada en el techo; compra del 70 % de Smart Innovation)",
+      "editor": "KION GROUP AG",
+      "tipo": "Primaria",
+      "fecha": "2026-07-30",
+      "url": "https://www.kiongroup.com/KION-Website-Main/Investor-Relations/Reports-Presentations/2026-Reports-Presentations/Q2-2026/3007_KION-GROUP-AG_Press-Release_Q2-2026.pdf"
+    },
+    {
+      "id": 13,
+      "titulo": "EQS-Ad hoc: «KION adjusts outlook for fiscal year 2026 and defers expected timing of mid-term targets beyond 2027» (cifras provisionales del 3T26)",
+      "editor": "KION GROUP AG (EQS)",
+      "tipo": "Primaria",
+      "fecha": "2026-10-14",
+      "url": "https://www.tradingview.com/news/eqs:707544e05094b:0-kion-group-ag-kion-adjusts-outlook-for-fiscal-year-2026-and-defers-expected-timing-of-mid-term-targets-beyond-2027/"
+    },
+    {
+      "id": 14,
+      "titulo": "Interim Report Q2 2026, «All tables» (Excel: trimestres, EBITDA ajustado por segmento, no recurrentes, FCF)",
+      "editor": "KION GROUP AG",
+      "tipo": "Primaria",
+      "fecha": "2026-07-30",
+      "url": "https://www.kiongroup.com/KION-Website-Main/Investor-Relations/Reports-Presentations/2026-Reports-Presentations/Q2-2026/"
+    },
+    {
+      "id": 15,
+      "titulo": "Top 20 lift truck suppliers 2025 (ingresos de 2024 de los fabricantes de carretillas; más de 58.000 M USD el grupo)",
+      "editor": "Modern Materials Handling (Peerless Media)",
+      "tipo": "Sectorial",
+      "fecha": "2025-08",
+      "url": "https://www.mmh.com/article/modern_special_report_2025_top_20_lift_truck_suppliers_2025/Lift_Trucks"
+    },
+    {
+      "id": 16,
+      "titulo": "Interact Analysis bumps up its warehouse automation market forecast (ingresos 2024 +1 %, pedidos 2025 +7 %, 2026 +6 %)",
+      "editor": "Modern Materials Handling",
+      "tipo": "Sectorial",
+      "fecha": "2026-01-13",
+      "url": "https://www.mmh.com/article/interact_analysis_bumps_up_its_warehouse_automation_market_forecast"
+    },
+    {
+      "id": 17,
+      "titulo": "KION Group Corporate Presentation (julio de 2026)",
+      "editor": "KION GROUP AG",
+      "tipo": "Primaria",
+      "fecha": "2026-07",
+      "url": "https://www.kiongroup.com/KION-Website-Main/About-us/KION-at-a-glance/Corporate-Presentation/KION-Group-Corporate-Presentation.pdf"
+    },
+    {
+      "id": 18,
+      "titulo": "Dematic acquired by KION Group (2.100 M USD más deuda; 3.250 M USD de valor de empresa)",
+      "editor": "Supply Chain Management Review",
+      "tipo": "Prensa",
+      "fecha": "2016-06",
+      "url": "https://www.scmr.com/article/dematic_acquired_by_kion_group/intralogistics"
+    },
+    {
+      "id": 19,
+      "titulo": "Vergütungsbericht 2025 (informe de remuneraciones de 2025)",
+      "editor": "KION GROUP AG",
+      "tipo": "Primaria",
+      "fecha": "2026-04",
+      "url": "https://www.kiongroup.com/KION-Website-Main/Investor-Relations/Shareholders-Meeting/2026/2025-Q4_Verg%C3%BCtungsbericht_KION-Group.pdf"
+    },
+    {
+      "id": 20,
+      "titulo": "Junta de 2025: informe de remuneraciones de 2024 aprobado con el 73,89 %; sistema de remuneración aprobado en 2024 con el 95,69 %",
+      "editor": "KION GROUP AG",
+      "tipo": "Primaria",
+      "fecha": "2025-05-27",
+      "url": "https://www.kiongroup.com/en/Investor-Relations/Annual-General-Meeting/"
+    },
+    {
+      "id": 21,
+      "titulo": "BlackRock notifica derechos de voto en KION: 3,66 % en total (3,03 % directo) a 6-ago-2026",
+      "editor": "Goldesel (notificación de derechos de voto)",
+      "tipo": "Prensa",
+      "fecha": "2026-08",
+      "url": "https://goldesel.de/aktien/news/blackrock-meldet-schwellenberuhrung-bei-kion-group-stimmrechte-insgesamt-366-6-august"
+    },
+    {
+      "id": 22,
+      "titulo": "Operaciones de directivos (art. 19 MAR) de KION en 2025-2026: compras de Michael Larsson y Valeria Gargiulo",
+      "editor": "EQS / Google News",
+      "tipo": "Prensa",
+      "fecha": "2026-03",
+      "url": "https://news.google.com/rss/search?q=KION+GROUP+%22Directors%27+Dealings%22+2026&hl=de&gl=DE&ceid=DE:de"
+    },
+    {
+      "id": 23,
+      "titulo": "KION: Kion mit positivem ersten Halbjahr 2026 (nota EQS; previsión de julio)",
+      "editor": "Börse Online / dpa-AFX",
+      "tipo": "Prensa",
+      "fecha": "2026-07-30",
+      "url": "https://www.boerse-online.de/dpa-afx/eqs-news-kion-mit-positivem-ersten-halbjahr-2026-deutsch-541403.html"
+    },
+    {
+      "id": 24,
+      "titulo": "Históricos diarios de KGX.DE, EXS1.DE (DAX) y EXH4.DE (Stoxx Europe 600 bienes y servicios industriales) hasta el 16-oct-2026; intradía del 19-oct",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-19",
+      "url": "https://finance.yahoo.com/quote/KGX.DE/history"
+    },
+    {
+      "id": 25,
+      "titulo": "KION GROUP AG: estimaciones 2026-2028 y consenso (15 analistas, objetivo medio 51,40 EUR, 37-63)",
+      "editor": "MarketScreener",
+      "tipo": "Analistas",
+      "fecha": "2026-10-19",
+      "url": "https://www.marketscreener.com/quote/stock/KION-GROUP-AG-13495387/consensus/"
+    },
+    {
+      "id": 26,
+      "titulo": "Rendimiento del Bund a 10 años (serie BBSIS D.I.ZAR.ZI.EUR.S1311.B.A604.R10XX.R.A.A._Z._Z.A): 3,45 % el 16-oct-2026",
+      "editor": "Deutsche Bundesbank",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-16",
+      "url": "https://api.statistiken.bundesbank.de/rest/download/BBSIS/D.I.ZAR.ZI.EUR.S1311.B.A604.R10XX.R.A.A._Z._Z.A?format=csv&lang=en"
+    },
+    {
+      "id": 27,
+      "titulo": "Implied ERP by month (ERPbymonth.xlsx), octubre de 2026: 4,20 %",
+      "editor": "Aswath Damodaran (NYU Stern)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx"
+    },
+    {
+      "id": 28,
+      "titulo": "Comparables: cotización, valor de empresa, ventas, EBITDA, BPA esperado y balance de 11 fabricantes de intralogística (en EUR)",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-19",
+      "url": "https://finance.yahoo.com/quote/JUN3.DE/"
+    },
+    {
+      "id": 29,
+      "titulo": "KION GROUP AG: revisiones de consenso y cambios de objetivo de los brókeres (DZ, MPCM, Deutsche Bank, Metzler, Citi, JPMorgan)",
+      "editor": "MarketScreener",
+      "tipo": "Analistas",
+      "fecha": "2026-10-19",
+      "url": "https://ca.marketscreener.com/quote/stock/KION-GROUP-AG-13495387/consensus-revisions/"
+    },
+    {
+      "id": 30,
+      "titulo": "Columbus McKinnon to combine with Kito Crosby (2.700 M USD, ≈ 8 veces el EBITDA ajustado con sinergias)",
+      "editor": "Columbus McKinnon (Nasdaq)",
+      "tipo": "Primaria",
+      "fecha": "2025-02-10",
+      "url": "https://www.nasdaq.com/press-release/columbus-mckinnon-combine-kito-crosby-delivering-compelling-value-creation-2025-02-10"
+    },
+    {
+      "id": 31,
+      "titulo": "Toyota’s tender offer for Toyota Industries ends in success",
+      "editor": "Adnkronos",
+      "tipo": "Prensa",
+      "fecha": "2026-03-24",
+      "url": "https://english.adnkronos.com/2026/03/24/toyotas-tender-offer-for-toyota-industries-ends-in-success-2/"
+    },
+    {
+      "id": 32,
+      "titulo": "Calendario financiero de KION: resultados del 3T26 el 29-oct-2026",
+      "editor": "KION GROUP AG",
+      "tipo": "Primaria",
+      "fecha": "2026-10",
+      "url": "https://www.kiongroup.com/en/Investor-Relations/Financial-Calendar/"
+    },
+    {
+      "id": 33,
+      "titulo": "Kion senkt Ziele: Aktien legt nach Absturz zu",
+      "editor": "Vermögenszentrum (AWP/dpa-AFX)",
+      "tipo": "Prensa",
+      "fecha": "2026-10-14",
+      "url": "https://www.vermoegenszentrum.ch/boersen-und-maerkte/news/kion-senkt-ziele-aktien-legt-nach-absturz-zu"
+    },
+    {
+      "id": 34,
+      "titulo": "Kion-Aktie: Chartmarken fallen",
+      "editor": "Börse Express",
+      "tipo": "Prensa",
+      "fecha": "2026-10",
+      "url": "https://www.boerse-express.com/news/articles/kion-aktie-chartmarken-fallen-890352"
+    }
+  ],
+  "calc": {
+    "version": 4,
+    "etiquetas": {
+      "margen_bruto": "M. bruto",
+      "margen_bruto_largo": "Margen bruto",
+      "dias_base": "sobre el coste de ventas"
+    },
+    "recomendacion": {
+      "recomendacion": "Comprar",
+      "regla": "Comprar",
+      "regla_absoluta": "Comprar",
+      "regla_relativa": "Comprar",
+      "coincide": true,
+      "conviccion": "Baja",
+      "conviccion_sugerida": "Media",
+      "conviccion_razones": [
+        "no llega a Alta: asimetría de 1,90 (< 2); bajista del -39,0 % (pierde más del 25 %)"
+      ],
+      "reglas_discrepan": false,
+      "relativo": {
+        "prima_implicita_pct": 4.2,
+        "wacc": 7.59,
+        "ke": 10.67,
+        "dcf": 62.77,
+        "dcf_min": 54.76,
+        "dcf_max": 72.37,
+        "valor_objetivo": 59.2,
+        "alcista": 80.86,
+        "bajista": 31.8,
+        "mercado": "S&P 500 (prima implícita de Damodaran), la principal para mercados desarrollados",
+        "fecha": "2026-10",
+        "potencial_pct": 73.7,
+        "rentabilidad_total_pct": 75.5,
+        "asimetria": 20.42
+      },
+      "objetivo_mercado_txt": " · con la prima implícita del mercado: 59,20 (+73,7 %)",
+      "objetivo_mercado_corto": " · mercado 59,20",
+      "rentabilidad_mercado_corto": " · mercado +75,5 %",
+      "potencial_pct": 29.9,
+      "dividendo_pct": 1.8,
+      "rentabilidad_total_pct": 31.7,
+      "alcista_pct": 74.1,
+      "bajista_pct": -39,
+      "asimetria": 1.9,
+      "comprar_por_debajo": 39.65,
+      "vender_por_encima": 50.75,
+      "tabla": [
+        {
+          "concepto": "Objetivo a 12 meses (nuestro PER × nuestro BPA 2028e, ponderado 25/50/25)",
+          "valor": "45,06 EUR"
+        },
+        {
+          "concepto": "Bajista / base / alcista a 12 meses",
+          "valor": "8,4x × 2,87 = 24,11 · 10,5x × 4,17 = 43,79 · 14,1x × 4,86 = 68,53"
+        },
+        {
+          "concepto": "Rentabilidad a 12 meses: ponderada / del base (con dividendo)",
+          "valor": "34,0 % / 30,3 %"
+        },
+        {
+          "concepto": "Regla de múltiplos aplicada",
+          "valor": "v3: base a mitad de camino hacia la mediana adelantada, sin alejarse del actual más de ×1,1; bajista mín. 5 a (adelantado) o base × 0,80; alcista techo base × 1,35 (selector de método: sin marcas: decide la v3)"
+        },
+        {
+          "concepto": "Objetivo medio de los analistas (solo contraste)",
+          "valor": "51,40 (nuestro base -14,8 %)"
+        },
+        {
+          "concepto": "Valor intrínseco (síntesis ponderada, largo plazo)",
+          "valor": "44,28 EUR"
+        },
+        {
+          "concepto": "Potencial sobre el precio actual",
+          "valor": "29,9 %"
+        },
+        {
+          "concepto": "Rentabilidad por dividendo ordinario",
+          "valor": "1,8 %"
+        },
+        {
+          "concepto": "Rentabilidad total esperada a 12 meses",
+          "valor": "31,7 %"
+        },
+        {
+          "concepto": "Escenario alcista / bajista",
+          "valor": "74,1 % / -39,0 %"
+        },
+        {
+          "concepto": "Asimetría (ganancia alcista / pérdida bajista)",
+          "valor": "1,90x"
+        },
+        {
+          "concepto": "Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado",
+          "valor": "9,9 % frente a 8,8 % y 7,6 %"
+        },
+        {
+          "concepto": "Valor objetivo con la prima implícita del mercado (4,2 %, WACC 7,6 %)",
+          "valor": "59,20 EUR"
+        },
+        {
+          "concepto": "Rentabilidad total esperada con la prima del mercado",
+          "valor": "75,5 %"
+        },
+        {
+          "concepto": "Asimetría con la prima del mercado",
+          "valor": "más de 20x"
+        },
+        {
+          "concepto": "Regla absoluta (frente a su coste de capital)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "Regla relativa (frente a lo que pide el mercado)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "Crecimiento anual implícito en el precio (2027e-2035e) frente al previsto para su mercado",
+          "valor": "-0,3 % frente a 4,0 %"
+        },
+        {
+          "concepto": "¿La calidad de la empresa sostiene el crecimiento previsto?",
+          "valor": "Sí (2,9 % anual proyectado; sin inversión neta)"
+        },
+        {
+          "concepto": "Señal del valor intrínseco (regla del DCF, referencia)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "Recomendación según la regla a 12 meses (Comprar: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender: ponderada ≤ -10 %)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "Convicción según los criterios (no llega a Alta: asimetría de 1,90 (< 2); bajista del -39,0 % (pierde más del 25 %))",
+          "valor": "Media"
+        }
+      ],
+      "niveles": [
+        {
+          "accion": "Comprar",
+          "condicion": "Por debajo de 39,65 (ponderada a 12 meses ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco)"
+        },
+        {
+          "accion": "Mantener",
+          "condicion": "Entre 39,65 y 50,75"
+        },
+        {
+          "accion": "Vender o reducir",
+          "condicion": "Por encima de 50,75 (ponderada a 12 meses ≤ -10 %)"
+        }
+      ],
+      "precio_txt": "",
+      "valor_objetivo_txt": "",
+      "regla_valor_intrinseco": "Comprar",
+      "objetivo_12m": {
+        "completo": true,
+        "filas": [
+          {
+            "escenario": "Bajista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 2.87,
+            "multiplo": 8.4,
+            "multiplo_informe": null,
+            "origen": "base × 0.8",
+            "precio": 24.11,
+            "rentabilidad_pct": -27.5,
+            "justificacion": "Ventas de 11.420 M en 2028e (2026e igual que el base y una caída del 3,5 % en 2027e: Europa sigue sin invertir y los chinos presionan el precio) y margen EBITDA 1,5-2 puntos más bajo: EBIT de 685 M (6,0 %) y BPA de 2,87 EUR. Múltiplo de 8,4 veces (base × 0,8; el mínimo de 5 años, 11,5x, queda por encima)."
+          },
+          {
+            "escenario": "Base",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 4.17,
+            "multiplo": 10.5,
+            "multiplo_informe": null,
+            "origen": "PER actual (9.5x) × 1.1 (tope: la mediana de 5 años, 16.1x, queda más lejos)",
+            "precio": 43.79,
+            "rentabilidad_pct": 30.3,
+            "justificacion": "Ventas de 12.368 M en 2028e (+2,7 % en 2026e, +2,5 % en 2027e y +4 % en 2028e) y margen EBITDA del 12,4 % (EBIT de 928 M, 7,5 %; 8,2 % ajustado) con el ahorro del programa de eficiencia; resultado financiero de −130 M, impuesto del 30 %: BPA de 4,17 EUR. Múltiplo de 10,5 veces: el PER actual (9,5x) × 1,1, el tope de la regla; la mediana de 5 años (16,1x) queda más lejos."
+          },
+          {
+            "escenario": "Alcista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 4.86,
+            "multiplo": 14.1,
+            "multiplo_informe": null,
+            "origen": "techo de base × 1.35",
+            "precio": 68.53,
+            "rentabilidad_pct": 102.8,
+            "justificacion": "Ventas de 12.730 M (pedidos de Europa que vuelven en 2027) y 0,8 puntos más de margen: EBIT de 1.057 M (8,3 %; ≈ 9 % ajustado) y BPA de 4,86 EUR. Múltiplo de 14,1 veces, el techo de la regla (base × 1,35), por debajo de la mediana de 5 años."
+          }
+        ],
+        "regla": {
+          "version": "v3",
+          "bajista": 8.4,
+          "base": 10.5,
+          "alcista": 14.1,
+          "bajista_origen": "base × 0.8",
+          "base_origen": "PER actual (9.5x) × 1.1 (tope: la mediana de 5 años, 16.1x, queda más lejos)",
+          "alcista_origen": "techo de base × 1.35"
+        },
+        "version": "v3",
+        "probabilidades": [
+          25,
+          50,
+          25
+        ],
+        "objetivo_ponderado": 45.06,
+        "objetivo_simple": 45.48,
+        "objetivo_base": 43.79,
+        "rentabilidad_ponderada_pct": 34,
+        "rentabilidad_simple_pct": 35.2,
+        "rentabilidad_base_pct": 30.3,
+        "asimetria": 3.45,
+        "senal": "Comprar",
+        "senal_sin_confirmar": null,
+        "confianza_baja": false,
+        "comprar_por_debajo": 39.65,
+        "vender_por_encima": 50.75,
+        "consenso_objetivo": 51.4,
+        "diferencia_consenso_pct": -14.8,
+        "selector": {
+          "regla": "v3",
+          "motivo": "sin marcas: decide la v3",
+          "v3_sin_selector": {
+            "version": "v3",
+            "rentabilidad_ponderada_pct": 34,
+            "rentabilidad_base_pct": 30.3,
+            "senal": "Comprar",
+            "objetivo_ponderado": 45.06
+          },
+          "v2": {
+            "version": "v2",
+            "rentabilidad_ponderada_pct": 21.2,
+            "rentabilidad_base_pct": 18,
+            "senal": "Comprar",
+            "objetivo_ponderado": 40.69
+          }
+        },
+        "v2": {
+          "rentabilidad_ponderada_pct": 21.2,
+          "rentabilidad_base_pct": 18,
+          "senal": "Comprar",
+          "multiplos": [
+            8.1,
+            9.5,
+            12.4
+          ]
+        },
+        "v3_tope_anterior": {
+          "tope": 1.3,
+          "rentabilidad_ponderada_pct": 57.7,
+          "senal": "Comprar"
+        },
+        "comparacion_txt": "Para comparar, con la regla v2 (historia al cierre, mismo precio): 8,1x / 9,5x / 12,4x, 21,2 % Comprar; con el tope anterior del base (×1,3, 14-oct mediodía): 57,7 % Comprar. Decide la v3 con tope ×1,1, elegida por el selector de método (sin marcas: decide la v3; METODO-VIGENTE.md)."
+      },
+      "rentabilidad_12m_pct": 34,
+      "rentabilidad_12m_txt": "+34,0 % (base +30,3 %)",
+      "objetivo_12m_txt": "45,06 EUR"
+    },
+    "mercado": {
+      "precio": 34.09,
+      "acciones": 131.1,
+      "capitalizacion": 4469,
+      "deuda_neta": 4065,
+      "deuda_neta_ajustada": 4403,
+      "asimilables_deuda": 337,
+      "ajustes_puente": 224,
+      "valor_empresa": 8759,
+      "fecha_puente": "2026-06-30"
+    },
+    "clave": {
+      "capitalizacion": 4469,
+      "valor_empresa": 8759,
+      "deuda_neta": 4065,
+      "ev_ventas_ltm": 0.76,
+      "ev_ebitda_ltm": 6.6,
+      "ev_ebitda_ntm": 6.2,
+      "ev_ebit_ltm": 12.3,
+      "per_ltm": 11.6,
+      "per_ntm": 9.8,
+      "fcf_yield_pct": 7.1,
+      "dividendo_pct": 1.8,
+      "dn_ebitda": 3.1,
+      "roic_pct": 4.5,
+      "margen_ebitda_pct": 11.5,
+      "deuda_neta_ajustada": 4403,
+      "dn_ebitda_ajustada": 3.3,
+      "crecimiento_tcac_pct": 2.4,
+      "ingresos_ntm": 12085,
+      "ebitda_ntm": 1420,
+      "bpa_ntm": 3.48,
+      "ebitda_ltm": 1320,
+      "ingresos_ltm": 11488,
+      "ev_rab": null
+    },
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 10294.3,
+        "crecimiento_pct": null,
+        "beneficio_bruto": 2523.5999999999995,
+        "margen_bruto_pct": 24.5,
+        "ebitda": 1171.3,
+        "margen_ebitda_pct": 11.4,
+        "ebit": 756.0999999999999,
+        "margen_ebit_pct": 7.3,
+        "beneficio_neto": 568.3,
+        "margen_neto_pct": 5.5,
+        "bpa": 4.34,
+        "dpa": 1.5,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 25.2,
+        "payout_pct": 35
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 11135.6,
+        "crecimiento_pct": 8.2,
+        "beneficio_bruto": 2124.1000000000004,
+        "margen_bruto_pct": 19.1,
+        "ebitda": 654.9,
+        "margen_ebitda_pct": 5.9,
+        "ebit": 185.20000000000002,
+        "margen_ebit_pct": 1.7,
+        "beneficio_neto": 98,
+        "margen_neto_pct": 0.9,
+        "bpa": 0.75,
+        "dpa": 0.19,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 23.3,
+        "payout_pct": 25
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 11433.7,
+        "crecimiento_pct": 2.7,
+        "beneficio_bruto": 2781.2000000000007,
+        "margen_bruto_pct": 24.3,
+        "ebitda": 1178.6999999999998,
+        "margen_ebitda_pct": 10.3,
+        "ebit": 693.2,
+        "margen_ebit_pct": 6.1,
+        "beneficio_neto": 305.8,
+        "margen_neto_pct": 2.7,
+        "bpa": 2.33,
+        "dpa": 0.7,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 31.6,
+        "payout_pct": 30
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 11503.2,
+        "crecimiento_pct": 0.6,
+        "beneficio_bruto": 3093.5,
+        "margen_bruto_pct": 26.9,
+        "ebitda": 1352.1,
+        "margen_ebitda_pct": 11.8,
+        "ebit": 805.8,
+        "margen_ebit_pct": 7,
+        "beneficio_neto": 360.3,
+        "margen_neto_pct": 3.1,
+        "bpa": 2.75,
+        "dpa": 0.82,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 37.4,
+        "payout_pct": 30
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 11297.2,
+        "crecimiento_pct": -1.8,
+        "beneficio_bruto": 2950.2000000000007,
+        "margen_bruto_pct": 26.1,
+        "ebitda": 1256.3000000000002,
+        "margen_ebitda_pct": 11.1,
+        "ebit": 667.8,
+        "margen_ebit_pct": 5.9,
+        "beneficio_neto": 230.1,
+        "margen_neto_pct": 2,
+        "bpa": 1.75,
+        "dpa": 0.62,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 32,
+        "payout_pct": 35
+      }
+    ],
+    "tcac": {
+      "periodo": "2021-2025",
+      "ingresos_pct": 2.4,
+      "ebitda_pct": 1.8,
+      "bpa_pct": -20.3
+    },
+    "cuenta_y_prevision": [
+      {
+        "periodo": "2021",
+        "ingresos": 10294.3,
+        "ebitda": 1171.3
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 11135.6,
+        "ebitda": 654.9
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 11433.7,
+        "ebitda": 1178.6999999999998
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 11503.2,
+        "ebitda": 1352.1
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 11297.2,
+        "ebitda": 1256.3000000000002
+      },
+      {
+        "periodo": "2026e",
+        "ingresos": 11602,
+        "ebitda": 1346
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 11892,
+        "ebitda": 1427
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 12368,
+        "ebitda": 1534
+      },
+      {
+        "periodo": "2029e",
+        "ingresos": 12863,
+        "ebitda": 1646
+      },
+      {
+        "periodo": "2030e",
+        "ingresos": 13313,
+        "ebitda": 1731
+      },
+      {
+        "periodo": "2031e",
+        "ingresos": 13712,
+        "ebitda": 1796
+      },
+      {
+        "periodo": "2032e",
+        "ingresos": 14096,
+        "ebitda": 1847
+      },
+      {
+        "periodo": "2033e",
+        "ingresos": 14449,
+        "ebitda": 1893
+      },
+      {
+        "periodo": "2034e",
+        "ingresos": 14781,
+        "ebitda": 1936
+      },
+      {
+        "periodo": "2035e",
+        "ingresos": 15077,
+        "ebitda": 1975
+      }
+    ],
+    "segmentos_ultimo": [
+      {
+        "nombre": "Industrial Trucks & Services (ITS)",
+        "ingresos": 8272.5,
+        "peso_pct": 73.2,
+        "crecimiento_pct": -3.9,
+        "margen_pct": 8.7,
+        "tipo_margen": "EBIT"
+      },
+      {
+        "nombre": "Intelligent Automation Solutions (IAS, antes SCS)",
+        "ingresos": 3071.4,
+        "peso_pct": 27.2,
+        "crecimiento_pct": 4.4,
+        "margen_pct": 6,
+        "tipo_margen": "EBIT"
+      },
+      {
+        "nombre": "Servicios corporativos y consolidación",
+        "ingresos": -46.8,
+        "peso_pct": -0.4,
+        "crecimiento_pct": -4.1,
+        "margen_pct": 248.7,
+        "tipo_margen": "EBIT"
+      }
+    ],
+    "segmentos_tabla": {
+      "periodos": [
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "filas": [
+        {
+          "nombre": "Industrial Trucks & Services (ITS)",
+          "v0": 6514,
+          "v1": 7356.1,
+          "v2": 8479.6,
+          "v3": 8608.8,
+          "v4": 8272.5
+        },
+        {
+          "nombre": "Intelligent Automation Solutions (IAS, antes SCS)",
+          "v0": 3796.2,
+          "v1": 3806.9,
+          "v2": 2997,
+          "v3": 2943.2,
+          "v4": 3071.4
+        },
+        {
+          "nombre": "Servicios corporativos y consolidación",
+          "v0": -15.9,
+          "v1": -27.4,
+          "v2": -42.8,
+          "v3": -48.8,
+          "v4": -46.8
+        }
+      ]
+    },
+    "segmentos_periodo": "2025",
+    "balance": [
+      {
+        "periodo": "2021",
+        "activo_total": 15850.9,
+        "intangibles": 5710.700000000001,
+        "circulante": 1191.9000000000003,
+        "circulante_ventas_pct": 11.6,
+        "caja": 483,
+        "deuda_financiera": 1050.5,
+        "arrendamientos": 2319.3,
+        "deuda_neta": 2886.8,
+        "patrimonio": 5177.2,
+        "minoritarios": -8.3,
+        "dn_ebitda": 2.46,
+        "dn_patrimonio_pct": 56,
+        "dso": 47,
+        "dio": 77,
+        "dpo": 68,
+        "ciclo_caja": 56,
+        "cobertura_intereses": 9,
+        "capital_invertido": 8055.7,
+        "fondo_comercio": 3544.8,
+        "liquidez_corriente": 0.92
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 16599.4,
+        "intangibles": 5781.5,
+        "circulante": 2050.2999999999997,
+        "circulante_ventas_pct": 18.4,
+        "caja": 318.1,
+        "deuda_financiera": 1988.6,
+        "arrendamientos": 2453.4,
+        "deuda_neta": 4123.9,
+        "patrimonio": 5608.7,
+        "minoritarios": -0.9,
+        "dn_ebitda": 6.3,
+        "dn_patrimonio_pct": 74,
+        "dso": 55,
+        "dio": 73,
+        "dpo": 46,
+        "ciclo_caja": 82,
+        "cobertura_intereses": 1.6,
+        "capital_invertido": 9731.7,
+        "fondo_comercio": 3619.4,
+        "liquidez_corriente": 1.05
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 17388.4,
+        "intangibles": 5664.9,
+        "circulante": 2008.8999999999999,
+        "circulante_ventas_pct": 17.6,
+        "caja": 311.8,
+        "deuda_financiera": 1522.4,
+        "arrendamientos": 2797.4,
+        "deuda_neta": 4008,
+        "patrimonio": 5766.8,
+        "minoritarios": 5.9,
+        "dn_ebitda": 3.4,
+        "dn_patrimonio_pct": 69,
+        "dso": 56,
+        "dio": 77,
+        "dpo": 50,
+        "ciclo_caja": 83,
+        "cobertura_intereses": 2.7,
+        "capital_invertido": 9780.7,
+        "fondo_comercio": 3558,
+        "liquidez_corriente": 1.05
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 18805.4,
+        "intangibles": 5814.9,
+        "circulante": 1783.2999999999997,
+        "circulante_ventas_pct": 15.5,
+        "caja": 787,
+        "deuda_financiera": 1700.3,
+        "arrendamientos": 3179,
+        "deuda_neta": 4092.3,
+        "patrimonio": 6189.4,
+        "minoritarios": 17.7,
+        "dn_ebitda": 3.03,
+        "dn_patrimonio_pct": 66,
+        "dso": 54,
+        "dio": 76,
+        "dpo": 50,
+        "ciclo_caja": 80,
+        "cobertura_intereses": 2.6,
+        "capital_invertido": 10299.4,
+        "fondo_comercio": 3648.2,
+        "liquidez_corriente": 1.01
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 18294.9,
+        "intangibles": 5473.3,
+        "circulante": 1508.3999999999999,
+        "circulante_ventas_pct": 13.4,
+        "caja": 474.9,
+        "deuda_financiera": 1058.9,
+        "arrendamientos": 3266.8,
+        "deuda_neta": 3850.8000000000006,
+        "patrimonio": 6097.9,
+        "minoritarios": 25.1,
+        "dn_ebitda": 3.07,
+        "dn_patrimonio_pct": 63,
+        "dso": 49,
+        "dio": 71,
+        "dpo": 55,
+        "ciclo_caja": 65,
+        "cobertura_intereses": 2.2,
+        "capital_invertido": 9973.800000000001,
+        "fondo_comercio": 3450.9,
+        "liquidez_corriente": 0.99
+      }
+    ],
+    "perimetro_nota": null,
+    "flujos": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 881.7,
+        "capex": 333.8,
+        "pagos_arrendamientos": 132.9,
+        "fcf": 375.9000000000001,
+        "beneficio_neto": 568.3,
+        "conversion_pct": 66,
+        "capex_ventas_pct": 3.2,
+        "capex_amortizacion": 0.8,
+        "adquisiciones": 17,
+        "desinversiones": 0,
+        "dividendos": 53.7,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 53.7,
+        "payout_caja_pct": 9,
+        "acciones": 131.1,
+        "fcf_por_accion": 2.87
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": -345.9,
+        "capex": 382.7,
+        "pagos_arrendamientos": 135.6,
+        "fcf": -908.4,
+        "beneficio_neto": 98,
+        "conversion_pct": -927,
+        "capex_ventas_pct": 3.4,
+        "capex_amortizacion": 0.81,
+        "adquisiciones": 4.9,
+        "desinversiones": 0,
+        "dividendos": 196.7,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 196.7,
+        "payout_caja_pct": 201,
+        "acciones": 131.1,
+        "fcf_por_accion": -6.93
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 1144,
+        "capex": 442.8,
+        "pagos_arrendamientos": 135.8,
+        "fcf": 483.30000000000007,
+        "beneficio_neto": 305.8,
+        "conversion_pct": 158,
+        "capex_ventas_pct": 3.9,
+        "capex_amortizacion": 0.91,
+        "adquisiciones": 2.8,
+        "desinversiones": 0,
+        "dividendos": 24.9,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 24.9,
+        "payout_caja_pct": 8,
+        "acciones": 131.1,
+        "fcf_por_accion": 3.69
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 1170.6,
+        "capex": 462.9,
+        "pagos_arrendamientos": 147.3,
+        "fcf": 474.79999999999984,
+        "beneficio_neto": 360.3,
+        "conversion_pct": 132,
+        "capex_ventas_pct": 4,
+        "capex_amortizacion": 0.85,
+        "adquisiciones": 36.7,
+        "desinversiones": 10.3,
+        "dividendos": 91.8,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 91.8,
+        "payout_caja_pct": 25,
+        "acciones": 131.1,
+        "fcf_por_accion": 3.62
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 1131.8,
+        "capex": 395.7,
+        "pagos_arrendamientos": 187.6,
+        "fcf": 470.89999999999986,
+        "beneficio_neto": 230.1,
+        "conversion_pct": 205,
+        "capex_ventas_pct": 3.5,
+        "capex_amortizacion": 0.67,
+        "adquisiciones": 34.6,
+        "desinversiones": 0,
+        "dividendos": 107.5,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 107.5,
+        "payout_caja_pct": 47,
+        "acciones": 131.1,
+        "fcf_por_accion": 3.59
+      }
+    ],
+    "flujos_acumulado": {
+      "periodo": "2021-2025",
+      "fcf": 896,
+      "adquisiciones": 96,
+      "dividendos": 475,
+      "recompras": 0,
+      "conversion_pct": 57
+    },
+    "rentabilidad": [
+      {
+        "periodo": "2021",
+        "nopat": 565,
+        "capital_invertido": 8056,
+        "roic_pct": 7,
+        "roic_sin_fc_pct": 12.5,
+        "fondo_comercio_pct_capital": 44,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 11,
+        "roa_pct": 3.6,
+        "margen_neto_pct": 5.5,
+        "rotacion": 0.65,
+        "apalancamiento": 3.06
+      },
+      {
+        "periodo": "2022",
+        "nopat": 142,
+        "capital_invertido": 8894,
+        "roic_pct": 1.6,
+        "roic_sin_fc_pct": 2.7,
+        "fondo_comercio_pct_capital": 40,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 1.8,
+        "roa_pct": 0.6,
+        "margen_neto_pct": 0.9,
+        "rotacion": 0.69,
+        "apalancamiento": 3.01
+      },
+      {
+        "periodo": "2023",
+        "nopat": 474,
+        "capital_invertido": 9756,
+        "roic_pct": 4.9,
+        "roic_sin_fc_pct": 7.7,
+        "fondo_comercio_pct_capital": 37,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 5.4,
+        "roa_pct": 1.8,
+        "margen_neto_pct": 2.7,
+        "rotacion": 0.67,
+        "apalancamiento": 2.99
+      },
+      {
+        "periodo": "2024",
+        "nopat": 505,
+        "capital_invertido": 10040,
+        "roic_pct": 5,
+        "roic_sin_fc_pct": 7.8,
+        "fondo_comercio_pct_capital": 36,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 6,
+        "roa_pct": 2,
+        "margen_neto_pct": 3.1,
+        "rotacion": 0.64,
+        "apalancamiento": 3.03
+      },
+      {
+        "periodo": "2025",
+        "nopat": 454,
+        "capital_invertido": 10137,
+        "roic_pct": 4.5,
+        "roic_sin_fc_pct": 6.9,
+        "fondo_comercio_pct_capital": 35,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 3.7,
+        "roa_pct": 1.2,
+        "margen_neto_pct": 2,
+        "rotacion": 0.61,
+        "apalancamiento": 3.02
+      }
+    ],
+    "roic_incremental_pct": -5.3,
+    "roic_frente_wacc": [
+      {
+        "periodo": "2021",
+        "roic_pct": 7,
+        "roic_sin_fc_pct": 12.5,
+        "roic_operativo_pct": null,
+        "roe_pct": 11,
+        "wacc_pct": 8.8
+      },
+      {
+        "periodo": "2022",
+        "roic_pct": 1.6,
+        "roic_sin_fc_pct": 2.7,
+        "roic_operativo_pct": null,
+        "roe_pct": 1.8,
+        "wacc_pct": 8.8
+      },
+      {
+        "periodo": "2023",
+        "roic_pct": 4.9,
+        "roic_sin_fc_pct": 7.7,
+        "roic_operativo_pct": null,
+        "roe_pct": 5.4,
+        "wacc_pct": 8.8
+      },
+      {
+        "periodo": "2024",
+        "roic_pct": 5,
+        "roic_sin_fc_pct": 7.8,
+        "roic_operativo_pct": null,
+        "roe_pct": 6,
+        "wacc_pct": 8.8
+      },
+      {
+        "periodo": "2025",
+        "roic_pct": 4.5,
+        "roic_sin_fc_pct": 6.9,
+        "roic_operativo_pct": null,
+        "roe_pct": 3.7,
+        "wacc_pct": 8.8
+      }
+    ],
+    "compras": {
+      "tipo": "sin compras",
+      "subidas": 0,
+      "anios": 4,
+      "fondo_comercio": 3450.9,
+      "fondo_comercio_pct_capital": 35,
+      "roic_pct": 4.5,
+      "roic_sin_fc_pct": 6.9,
+      "texto": "Fondo de comercio: 3.451 M en 2025 (el 35 % del capital invertido medio); ha subido más de un 5 % en 0 de 4 años: sin compras. ROIC publicado 4,5 %; sin fondo de comercio, 6,9 %. Sin compras relevantes: el publicado ya es el ROIC del negocio."
+    },
+    "calidad": {
+      "periodo": "2025",
+      "altman_z": 1.13,
+      "altman_zona": "Zona de riesgo",
+      "piotroski_f": 6,
+      "piotroski_detalle": [
+        {
+          "criterio": "Beneficio neto positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "ROA mejora",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Flujo operativo > beneficio neto",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Baja el endeudamiento (deuda / activo)",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora la liquidez corriente",
+          "resultado": "No"
+        },
+        {
+          "criterio": "No emite acciones",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora el margen bruto",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Mejora la rotación del activo",
+          "resultado": "Sí"
+        }
+      ],
+      "beneish_m": -2.8,
+      "beneish_fiable": true,
+      "beneish_variables": [
+        {
+          "variable": "DSRI",
+          "valor": 0.92
+        },
+        {
+          "variable": "GMI",
+          "valor": 1.03
+        },
+        {
+          "variable": "AQI",
+          "valor": 1.01
+        },
+        {
+          "variable": "SGI",
+          "valor": 0.98
+        },
+        {
+          "variable": "DEPI",
+          "valor": 0.96
+        },
+        {
+          "variable": "SGAI",
+          "valor": 1.1
+        },
+        {
+          "variable": "LVGI",
+          "valor": 0.99
+        },
+        {
+          "variable": "TATA",
+          "valor": -0.05
+        }
+      ],
+      "tabla": [
+        {
+          "indicador": "Altman Z",
+          "valor": "1,13",
+          "lectura": "Zona de riesgo (> 2,99 seguro; < 1,81 riesgo). No aplica a bancos ni aseguradoras, y subestima la solvencia de empresas con grandes anticipos de clientes o prefinanciación pública (contratistas, construcción), que inflan el pasivo."
+        },
+        {
+          "indicador": "Piotroski F",
+          "valor": "6 / 9",
+          "lectura": "Intermedio (4-6)."
+        },
+        {
+          "indicador": "Beneish M",
+          "valor": "-2,80",
+          "lectura": "Por debajo de −1,78: sin señal de manipulación."
+        },
+        {
+          "indicador": "Flujo operativo / beneficio neto (acumulado)",
+          "valor": "2,55x",
+          "lectura": "El beneficio se cobra."
+        }
+      ]
+    },
+    "dcf": {
+      "proyeccion": [
+        {
+          "periodo": "2026e",
+          "ingresos": 11602,
+          "crecimiento_pct": 2.7,
+          "ebitda": 1346,
+          "margen_ebitda_pct": 11.6,
+          "amortizacion": 603,
+          "ebit": 743,
+          "impuestos": 245,
+          "capex": 603,
+          "variacion_circulante": 58,
+          "fcff": 440,
+          "fraccion": 0.2,
+          "factor": 0.992,
+          "vp": 87
+        },
+        {
+          "periodo": "2027e",
+          "ingresos": 11892,
+          "crecimiento_pct": 2.5,
+          "ebitda": 1427,
+          "margen_ebitda_pct": 12,
+          "amortizacion": 595,
+          "ebit": 832,
+          "impuestos": 258,
+          "capex": 607,
+          "variacion_circulante": 39,
+          "fcff": 523,
+          "fraccion": 1,
+          "factor": 0.942,
+          "vp": 493
+        },
+        {
+          "periodo": "2028e",
+          "ingresos": 12368,
+          "crecimiento_pct": 4,
+          "ebitda": 1534,
+          "margen_ebitda_pct": 12.4,
+          "amortizacion": 606,
+          "ebit": 928,
+          "impuestos": 278,
+          "capex": 618,
+          "variacion_circulante": 64,
+          "fcff": 573,
+          "fraccion": 1,
+          "factor": 0.866,
+          "vp": 496
+        },
+        {
+          "periodo": "2029e",
+          "ingresos": 12863,
+          "crecimiento_pct": 4,
+          "ebitda": 1646,
+          "margen_ebitda_pct": 12.8,
+          "amortizacion": 617,
+          "ebit": 1029,
+          "impuestos": 309,
+          "capex": 630,
+          "variacion_circulante": 67,
+          "fcff": 641,
+          "fraccion": 1,
+          "factor": 0.795,
+          "vp": 509
+        },
+        {
+          "periodo": "2030e",
+          "ingresos": 13313,
+          "crecimiento_pct": 3.5,
+          "ebitda": 1731,
+          "margen_ebitda_pct": 13,
+          "amortizacion": 626,
+          "ebit": 1105,
+          "impuestos": 331,
+          "capex": 639,
+          "variacion_circulante": 61,
+          "fcff": 699,
+          "fraccion": 1,
+          "factor": 0.731,
+          "vp": 511
+        },
+        {
+          "periodo": "2031e",
+          "ingresos": 13712,
+          "crecimiento_pct": 3,
+          "ebitda": 1796,
+          "margen_ebitda_pct": 13.1,
+          "amortizacion": 631,
+          "ebit": 1166,
+          "impuestos": 350,
+          "capex": 658,
+          "variacion_circulante": 54,
+          "fcff": 735,
+          "fraccion": 1,
+          "factor": 0.672,
+          "vp": 493
+        },
+        {
+          "periodo": "2032e",
+          "ingresos": 14096,
+          "crecimiento_pct": 2.8,
+          "ebitda": 1847,
+          "margen_ebitda_pct": 13.1,
+          "amortizacion": 648,
+          "ebit": 1198,
+          "impuestos": 359,
+          "capex": 663,
+          "variacion_circulante": 52,
+          "fcff": 773,
+          "fraccion": 1,
+          "factor": 0.617,
+          "vp": 477
+        },
+        {
+          "periodo": "2033e",
+          "ingresos": 14449,
+          "crecimiento_pct": 2.5,
+          "ebitda": 1893,
+          "margen_ebitda_pct": 13.1,
+          "amortizacion": 650,
+          "ebit": 1243,
+          "impuestos": 373,
+          "capex": 679,
+          "variacion_circulante": 48,
+          "fcff": 793,
+          "fraccion": 1,
+          "factor": 0.567,
+          "vp": 449
+        },
+        {
+          "periodo": "2034e",
+          "ingresos": 14781,
+          "crecimiento_pct": 2.3,
+          "ebitda": 1936,
+          "margen_ebitda_pct": 13.1,
+          "amortizacion": 665,
+          "ebit": 1271,
+          "impuestos": 381,
+          "capex": 680,
+          "variacion_circulante": 45,
+          "fcff": 830,
+          "fraccion": 1,
+          "factor": 0.521,
+          "vp": 432
+        },
+        {
+          "periodo": "2035e",
+          "ingresos": 15077,
+          "crecimiento_pct": 2,
+          "ebitda": 1975,
+          "margen_ebitda_pct": 13.1,
+          "amortizacion": 678,
+          "ebit": 1297,
+          "impuestos": 389,
+          "capex": 694,
+          "variacion_circulante": 40,
+          "fcff": 853,
+          "fraccion": 1,
+          "factor": 0.479,
+          "vp": 408
+        }
+      ],
+      "etapa2": null,
+      "suma_vp": 4355,
+      "valor_terminal": 12715,
+      "vp_terminal": 5833,
+      "valor_empresa": 10188,
+      "peso_terminal_pct": 57,
+      "valor_acciones": 5898,
+      "valor_accion": 44.99,
+      "vt_gordon": 12715,
+      "vt_multiplo": 13825,
+      "multiplo_implicito": 6.4,
+      "g_implicito_pct": 2.52,
+      "metodo_terminal": "gordon",
+      "terminal_tabla": [
+        {
+          "concepto": "Método principal",
+          "valor": "Crecimiento a perpetuidad"
+        },
+        {
+          "concepto": "Crecimiento a perpetuidad",
+          "valor": "2,0 %"
+        },
+        {
+          "concepto": "Múltiplo EV/EBITDA de salida",
+          "valor": "7,0x"
+        },
+        {
+          "concepto": "Valor terminal (Gordon)",
+          "valor": "12.715"
+        },
+        {
+          "concepto": "Valor terminal (múltiplo)",
+          "valor": "13.825"
+        },
+        {
+          "concepto": "Múltiplo de salida implícito en Gordon",
+          "valor": "6,4x"
+        },
+        {
+          "concepto": "Crecimiento implícito en el múltiplo",
+          "valor": "2,52 %"
+        },
+        {
+          "concepto": "Peso del valor terminal en el valor empresa",
+          "valor": "57 %"
+        }
+      ],
+      "puente": [
+        {
+          "concepto": "Valor actual de los flujos proyectados",
+          "valor": "4.355"
+        },
+        {
+          "concepto": "Valor actual del valor terminal",
+          "valor": "5.833"
+        },
+        {
+          "concepto": "Valor empresa",
+          "valor": "10.188"
+        },
+        {
+          "concepto": "− Deuda financiera neta (con arrendamientos)",
+          "valor": "-4.065"
+        },
+        {
+          "concepto": "− Minoritarios, pensiones y otros; + asociadas",
+          "valor": "-224"
+        },
+        {
+          "concepto": "Valor de los fondos propios",
+          "valor": "5.898"
+        },
+        {
+          "concepto": "Acciones diluidas (millones)",
+          "valor": "131,1"
+        },
+        {
+          "concepto": "Valor por acción",
+          "valor": "44,99"
+        }
+      ],
+      "composicion": [
+        {
+          "parte": "Flujos proyectados",
+          "valor": 4355
+        },
+        {
+          "parte": "Valor terminal",
+          "valor": 5833
+        }
+      ],
+      "wacc": 8.84,
+      "ke": 12.75,
+      "kd_despues": 2.97,
+      "wacc_tabla": [
+        {
+          "concepto": "Tasa libre de riesgo",
+          "valor": "3,45 %"
+        },
+        {
+          "concepto": "Beta",
+          "valor": "1,60"
+        },
+        {
+          "concepto": "Prima de riesgo de mercado",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Prima adicional (país, tamaño, específica)",
+          "valor": "0,50 %"
+        },
+        {
+          "concepto": "Coste de los fondos propios",
+          "valor": "12,75 %"
+        },
+        {
+          "concepto": "Coste de la deuda antes de impuestos",
+          "valor": "4,25 %"
+        },
+        {
+          "concepto": "Tipo impositivo",
+          "valor": "30,00 %"
+        },
+        {
+          "concepto": "Coste de la deuda después de impuestos",
+          "valor": "2,97 %"
+        },
+        {
+          "concepto": "Peso de la deuda (D / (D + E))",
+          "valor": "40,00 %"
+        },
+        {
+          "concepto": "WACC",
+          "valor": "8,84 %"
+        },
+        {
+          "concepto": "Prima de riesgo implícita del mercado (regla relativa)",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "WACC con la prima implícita del mercado",
+          "valor": "7,59 %"
+        }
+      ],
+      "potencial_pct": 32,
+      "sensibilidad": {
+        "eje_columnas": "Crecimiento a perpetuidad",
+        "columnas": [
+          "1,0 %",
+          "1,5 %",
+          "2,0 %",
+          "2,5 %",
+          "3,0 %"
+        ],
+        "filas": [
+          {
+            "wacc": "7,8 %",
+            "v0": 49.86,
+            "v1": 53.9,
+            "v2": 58.63,
+            "v3": 64.24,
+            "v4": 71.02
+          },
+          {
+            "wacc": "8,3 %",
+            "v0": 44.02,
+            "v1": 47.38,
+            "v2": 51.27,
+            "v3": 55.82,
+            "v4": 61.23
+          },
+          {
+            "wacc": "8,8 %",
+            "v0": 38.93,
+            "v1": 41.76,
+            "v2": 44.99,
+            "v3": 48.73,
+            "v4": 53.12
+          },
+          {
+            "wacc": "9,3 %",
+            "v0": 34.47,
+            "v1": 36.86,
+            "v2": 39.58,
+            "v3": 42.69,
+            "v4": 46.3
+          },
+          {
+            "wacc": "9,8 %",
+            "v0": 30.52,
+            "v1": 32.56,
+            "v2": 34.87,
+            "v3": 37.48,
+            "v4": 40.48
+          }
+        ]
+      },
+      "sensibilidad2": {
+        "columnas": [
+          "-2 pp",
+          "-1 pp",
+          "0 pp",
+          "+1 pp",
+          "+2 pp"
+        ],
+        "filas": [
+          {
+            "margen": "-2 pp",
+            "v0": 20.82,
+            "v1": 22.95,
+            "v2": 25.15,
+            "v3": 27.41,
+            "v4": 29.74
+          },
+          {
+            "margen": "-1 pp",
+            "v0": 29.48,
+            "v1": 32.21,
+            "v2": 35.07,
+            "v3": 38.04,
+            "v4": 41.12
+          },
+          {
+            "margen": "0 pp",
+            "v0": 38.13,
+            "v1": 41.48,
+            "v2": 44.99,
+            "v3": 48.66,
+            "v4": 52.5
+          },
+          {
+            "margen": "+1 pp",
+            "v0": 46.78,
+            "v1": 50.74,
+            "v2": 54.91,
+            "v3": 59.29,
+            "v4": 63.88
+          },
+          {
+            "margen": "+2 pp",
+            "v0": 55.43,
+            "v1": 60.01,
+            "v2": 64.83,
+            "v3": 69.92,
+            "v4": 75.27
+          }
+        ]
+      },
+      "rango_min": 36.86,
+      "rango_max": 55.82,
+      "inverso": {
+        "crecimiento_implicito_pct": -0.3,
+        "crecimiento_base_pct": 3,
+        "periodo": "2027e-2035e",
+        "margen_implicito_pct": 12,
+        "margen_implicito_texto": null,
+        "margen_base_pct": 13.1,
+        "rentabilidad_implicita_pct": 9.9
+      },
+      "sostenibilidad": {
+        "veredicto": "Sí",
+        "veredicto_motor": "Sí",
+        "motivos_motor": [],
+        "crecimiento_financiable_bruto_pct": 4.2,
+        "roic_implicito_bruto_pct": 6.5,
+        "tcac_ingresos_historica_pct": 2.4,
+        "crecimiento_proyectado_pct": 2.9,
+        "tasa_reinversion_pct": 9,
+        "crecimiento_financiable_pct": null,
+        "roic_pct": 4.5,
+        "roic_incremental_historico_pct": -5.3,
+        "roic_implicito_pct": null,
+        "cuota_actual_pct": 15,
+        "cuota_final_pct": null,
+        "puente": [
+          {
+            "periodo": "2026e",
+            "volumen_pct": 1.2,
+            "precio_pct": 1.5,
+            "otros_pct": 0,
+            "comentario": "Volumen del +1,2 % (1S26 de +3,5 % en ventas con ITS −1,4 % e IAS +17,6 %; pedidos de carretillas flojos en el 3T) y precio del +1,5 % [6, 13].",
+            "suma_pct": 2.7,
+            "crecimiento_pct": 2.7
+          },
+          {
+            "periodo": "2027e",
+            "volumen_pct": 0.5,
+            "precio_pct": 1.5,
+            "otros_pct": 0.5,
+            "comentario": "Volumen del +0,5 %: Europa sigue débil por la guerra y la energía, compensado por la cartera de IAS (2.954 M) [6]; precio del +1,5 % y 0,5 puntos de servicio.",
+            "suma_pct": 2.5,
+            "crecimiento_pct": 2.5
+          },
+          {
+            "periodo": "2028e",
+            "volumen_pct": 2,
+            "precio_pct": 1.5,
+            "otros_pct": 0.5,
+            "comentario": "Recuperación del ciclo de carretillas en Europa (+2 % de volumen), precio del +1,5 % y servicio.",
+            "suma_pct": 4,
+            "crecimiento_pct": 4
+          },
+          {
+            "periodo": "2029e",
+            "volumen_pct": 2,
+            "precio_pct": 1.5,
+            "otros_pct": 0.5,
+            "comentario": "Volumen del +2 % con la automatización de almacenes (Interact Analysis prevé pedidos del +6-7 % anual) [16].",
+            "suma_pct": 4,
+            "crecimiento_pct": 4
+          },
+          {
+            "periodo": "2030e",
+            "volumen_pct": 1.5,
+            "precio_pct": 1.5,
+            "otros_pct": 0.5,
+            "comentario": "Volumen del +1,5 % y precio del +1,5 %; el crecimiento converge al 2-3 %.",
+            "suma_pct": 3.5,
+            "crecimiento_pct": 3.5
+          }
+        ],
+        "texto": "La proyección apenas necesita inversión neta de la amortización (reinversión acumulada de 680 M, el 9 % del NOPAT, con un capex bruto medio del 4,8 % de las ventas). En un negocio de activos ligeros, el crecimiento medio del 2,9 % tiene que salir de subir precios y de ganar volumen sin capital nuevo, y la prueba es el poder de precios y la cuota; en un comprador en serie, la amortización es de intangibles comprados y la prueba es el capex bruto (las compras) frente al crecimiento comprado.",
+        "tabla": [
+          {
+            "concepto": "Crecimiento medio de ingresos proyectado",
+            "valor": "2,9 %"
+          },
+          {
+            "concepto": "Capex bruto medio (incluidas compras si van como inversión)",
+            "valor": "4,8 % de las ventas"
+          },
+          {
+            "concepto": "Reinversión neta acumulada (capex − amortización + circulante)",
+            "valor": "680 M (9 % del NOPAT)"
+          },
+          {
+            "concepto": "Con la reinversión bruta (capex + circulante): crecimiento que financia al ROIC actual",
+            "valor": "4,2 % (reinvierte el 93 % del NOPAT)"
+          },
+          {
+            "concepto": "Rendimiento que la proyección supone para la reinversión bruta",
+            "valor": "6,5 % (histórico: -5,3 %)"
+          },
+          {
+            "concepto": "Crecimiento histórico de ingresos (TCAC)",
+            "valor": "2,4 % frente al 2,9 % proyectado"
+          },
+          {
+            "concepto": "Veredicto de las pruebas del motor",
+            "valor": "Sí"
+          }
+        ]
+      }
+    },
+    "escenarios": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "narrativa": "Europa sigue sin invertir en 2027 (las ventas caen un 3,5 %), los chinos bajan precios y el ahorro del programa se va en descuentos: 2 puntos menos de crecimiento y 1,5 de margen en todo el periodo, y un crecimiento terminal del 1,5 %.",
+        "crecimiento_medio_pct": 0.5,
+        "margen_final_pct": 11.6,
+        "wacc_pct": 8.8,
+        "valor": 20.8,
+        "potencial_pct": -39
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "narrativa": "Un 2027 plano y la recuperación del ciclo desde 2028, con el ahorro de 150 M y una mejora de IAS: margen EBITDA del 13,1 % (EBIT ajustado del 8,5-9 %) y un crecimiento del 2,9 % anual.",
+        "crecimiento_medio_pct": 3,
+        "margen_final_pct": 13.1,
+        "wacc_pct": 8.8,
+        "valor": 44.99,
+        "potencial_pct": 32
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "narrativa": "Los pedidos de Europa vuelven en 2027 con el fin de la guerra y la automatización acelera: 1,5 puntos más de crecimiento y 0,8 de margen (EBIT ajustado de dos cifras hacia 2029).",
+        "crecimiento_medio_pct": 4.5,
+        "margen_final_pct": 13.9,
+        "wacc_pct": 8.8,
+        "valor": 59.36,
+        "potencial_pct": 74.1
+      }
+    ],
+    "valor_ponderado": 42.54,
+    "potencial_ponderado_pct": 24.8,
+    "comparables": {
+      "tabla": [
+        {
+          "nombre": "KION",
+          "ticker": "KGX",
+          "pais": "DE",
+          "capitalizacion": 4469,
+          "ev_ventas": 0.76,
+          "ev_ebitda_ltm": 6.6,
+          "ev_ebitda_ntm": 6.2,
+          "per_ntm": 9.8,
+          "crecimiento_pct": 4,
+          "margen_ebitda_pct": 11.5,
+          "roic_pct": 4.5,
+          "dn_ebitda": 3.1,
+          "fcf_yield_pct": 7.1,
+          "es_objetivo": true
+        },
+        {
+          "nombre": "Jungheinrich",
+          "ticker": "JUN3.DE",
+          "pais": "DE",
+          "capitalizacion": 2238,
+          "ev_ventas": 0.42,
+          "ev_ebitda_ltm": 3.5,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 7.8,
+          "crecimiento_pct": 5.5,
+          "margen_ebitda_pct": 11.9,
+          "roic_pct": 5.7,
+          "dn_ebitda": 0.09,
+          "fcf_yield_pct": 13.4,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Hyster-Yale",
+          "ticker": "HY",
+          "pais": "US",
+          "capitalizacion": 467,
+          "ev_ventas": 0.3,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 24.6,
+          "crecimiento_pct": 5.9,
+          "margen_ebitda_pct": -0.7,
+          "roic_pct": -1,
+          "dn_ebitda": -19.96,
+          "fcf_yield_pct": 2.8,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Hangcha Group",
+          "ticker": "603298.SS",
+          "pais": "CN",
+          "capitalizacion": 3799,
+          "ev_ventas": 1.38,
+          "ev_ebitda_ltm": 8,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 11,
+          "crecimiento_pct": 16.1,
+          "margen_ebitda_pct": 17.3,
+          "roic_pct": 18.2,
+          "dn_ebitda": -0.87,
+          "fcf_yield_pct": 4.3,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Anhui Heli",
+          "ticker": "600761.SS",
+          "pais": "CN",
+          "capitalizacion": 1781,
+          "ev_ventas": 0.64,
+          "ev_ebitda_ltm": 6.5,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 9.3,
+          "crecimiento_pct": 11.8,
+          "margen_ebitda_pct": 9.9,
+          "roic_pct": 12.5,
+          "dn_ebitda": 0.1,
+          "fcf_yield_pct": 7.4,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Daifuku",
+          "ticker": "6383.T",
+          "pais": "JP",
+          "capitalizacion": 11386,
+          "ev_ventas": 2.64,
+          "ev_ebitda_ltm": 14.2,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 20.2,
+          "crecimiento_pct": 16.6,
+          "margen_ebitda_pct": 18.5,
+          "roic_pct": 15.3,
+          "dn_ebitda": -1.56,
+          "fcf_yield_pct": 6.1,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Konecranes",
+          "ticker": "KCR.HE",
+          "pais": "FI",
+          "capitalizacion": 7072,
+          "ev_ventas": 1.7,
+          "ev_ebitda_ltm": 10.7,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 14.5,
+          "crecimiento_pct": 14.3,
+          "margen_ebitda_pct": 16,
+          "roic_pct": 17.8,
+          "dn_ebitda": -0.25,
+          "fcf_yield_pct": 5,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Interroll",
+          "ticker": "INRN.SW",
+          "pais": "CH",
+          "capitalizacion": 1289,
+          "ev_ventas": 1.84,
+          "ev_ebitda_ltm": 10.1,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 17.8,
+          "crecimiento_pct": 14.4,
+          "margen_ebitda_pct": 18.2,
+          "roic_pct": 11.4,
+          "dn_ebitda": -2.11,
+          "fcf_yield_pct": 4.5,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Columbus McKinnon",
+          "ticker": "CMCO",
+          "pais": "US",
+          "capitalizacion": 377,
+          "ev_ventas": 1.89,
+          "ev_ebitda_ltm": null,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 5.8,
+          "crecimiento_pct": 45.8,
+          "margen_ebitda_pct": -3.6,
+          "roic_pct": -2.9,
+          "dn_ebitda": -44.11,
+          "fcf_yield_pct": -29.1,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Symbotic",
+          "ticker": "SYM",
+          "pais": "US",
+          "capitalizacion": 20923,
+          "ev_ventas": 8.4,
+          "ev_ebitda_ltm": 442.9,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 52.5,
+          "crecimiento_pct": 31.8,
+          "margen_ebitda_pct": 1.9,
+          "roic_pct": -40.8,
+          "dn_ebitda": -24.81,
+          "fcf_yield_pct": 3.4,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Terex",
+          "ticker": "TEX",
+          "pais": "US",
+          "capitalizacion": 5196,
+          "ev_ventas": 1.14,
+          "ev_ebitda_ltm": 12.3,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 8.8,
+          "crecimiento_pct": 29.6,
+          "margen_ebitda_pct": 9.3,
+          "roic_pct": 7.6,
+          "dn_ebitda": 2.93,
+          "fcf_yield_pct": 5.8,
+          "es_objetivo": false
+        }
+      ],
+      "estadisticos": [
+        {
+          "estadistico": "Mediana",
+          "ev_ventas": 1.5,
+          "ev_ebitda_ltm": 10.4,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 12.8,
+          "crecimiento_pct": 15.3,
+          "margen_ebitda_pct": 10.9,
+          "roic_pct": 9.5,
+          "dn_ebitda": -1.2,
+          "fcf_yield_pct": 4.8
+        },
+        {
+          "estadistico": "Media",
+          "ev_ventas": 2,
+          "ev_ebitda_ltm": 63.5,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 17.2,
+          "crecimiento_pct": 19.2,
+          "margen_ebitda_pct": 9.9,
+          "roic_pct": 4.4,
+          "dn_ebitda": -9.1,
+          "fcf_yield_pct": 2.4
+        },
+        {
+          "estadistico": "Percentil 25",
+          "ev_ventas": 0.8,
+          "ev_ebitda_ltm": 7.6,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 8.9,
+          "crecimiento_pct": 12.4,
+          "margen_ebitda_pct": 3.8,
+          "roic_pct": 0.7,
+          "dn_ebitda": -15.5,
+          "fcf_yield_pct": 3.6
+        },
+        {
+          "estadistico": "Percentil 75",
+          "ev_ventas": 1.9,
+          "ev_ebitda_ltm": 12.8,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 19.6,
+          "crecimiento_pct": 26.4,
+          "margen_ebitda_pct": 17,
+          "roic_pct": 14.6,
+          "dn_ebitda": 0,
+          "fcf_yield_pct": 6
+        }
+      ],
+      "implicito": [
+        {
+          "metodo": "EV/EBITDA últimos 12 meses",
+          "metrica_empresa": 1320,
+          "multiplo_p25": 7.6,
+          "multiplo_mediana": 10.4,
+          "multiplo_p75": 12.8,
+          "multiplos": "7,6x / 10,4x / 12,8x",
+          "valor_p25": 44.05,
+          "valor_mediana": 71.99,
+          "valor_p75": 95.91,
+          "potencial_pct": 111.2
+        },
+        {
+          "metodo": "PER próximos 12 meses",
+          "metrica_empresa": 3.48,
+          "multiplo_p25": 8.9,
+          "multiplo_mediana": 12.8,
+          "multiplo_p75": 19.6,
+          "multiplos": "8,9x / 12,8x / 19,6x",
+          "valor_p25": 31.03,
+          "valor_mediana": 44.33,
+          "valor_p75": 68.15,
+          "potencial_pct": 30
+        },
+        {
+          "metodo": "EV/Ventas últimos 12 meses",
+          "metrica_empresa": 11488.2,
+          "multiplo_p25": 0.8,
+          "multiplo_mediana": 1.5,
+          "multiplo_p75": 1.9,
+          "multiplos": "0,8x / 1,5x / 1,9x",
+          "valor_p25": 34.31,
+          "valor_mediana": 102.23,
+          "valor_p75": 131.8,
+          "potencial_pct": 199.9
+        }
+      ],
+      "regresion": null,
+      "n": 10
+    },
+    "transacciones": null,
+    "suma_partes": null,
+    "multiplos_historicos": [
+      {
+        "metrica": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+        "campo": "ev_ebitda_ltm",
+        "actual": 6.6,
+        "media": 9,
+        "minimo": 6.1,
+        "maximo": 13.3,
+        "percentil": 25,
+        "prima_pct": -26,
+        "anios": 4
+      },
+      {
+        "metrica": "PER últimos 12 meses (cierre de cada año)",
+        "campo": "per_ltm",
+        "actual": 11.6,
+        "media": 19.4,
+        "minimo": 11.6,
+        "maximo": 39,
+        "percentil": 25,
+        "prima_pct": -40,
+        "anios": 4
+      }
+    ],
+    "multiplos_serie": [
+      {
+        "anio": "2021",
+        "multiplo": 13.3,
+        "media": 9
+      },
+      {
+        "anio": "2022",
+        "multiplo": 11.7,
+        "media": 9
+      },
+      {
+        "anio": "2023",
+        "multiplo": 7.7,
+        "media": 9
+      },
+      {
+        "anio": "2024",
+        "multiplo": 6.1,
+        "media": 9
+      },
+      {
+        "anio": "2025",
+        "multiplo": 10.2,
+        "media": 9
+      }
+    ],
+    "multiplos_titulo": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+    "consenso_vs_propio": [
+      {
+        "periodo": "2026e",
+        "ingresos_propio": 11602,
+        "ingresos_consenso": 11672,
+        "ingresos_dif_pct": -0.6,
+        "ebitda_propio": 1346,
+        "ebitda_consenso": 1302.712,
+        "ebitda_dif_pct": 3.3
+      },
+      {
+        "periodo": "2027e",
+        "ingresos_propio": 11892,
+        "ingresos_consenso": 12188,
+        "ingresos_dif_pct": -2.4,
+        "ebitda_propio": 1427,
+        "ebitda_consenso": 1448.848,
+        "ebitda_dif_pct": -1.5
+      },
+      {
+        "periodo": "2028e",
+        "ingresos_propio": 12368,
+        "ingresos_consenso": 12800,
+        "ingresos_dif_pct": -3.4,
+        "ebitda_propio": 1534,
+        "ebitda_consenso": 1530.8,
+        "ebitda_dif_pct": 0.2
+      }
+    ],
+    "gobierno": {
+      "n_consejeros": 9,
+      "independientes_pct": 56,
+      "antiguedad_media": 5.7,
+      "composicion": [
+        {
+          "tipo": "Independiente",
+          "num": 5
+        },
+        {
+          "tipo": "Otro externo",
+          "num": 1
+        },
+        {
+          "tipo": "Dominical",
+          "num": 3
+        }
+      ],
+      "checklist": [
+        {
+          "criterio": "Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)",
+          "resultado": "Cumple",
+          "valor": "56 % (con control)"
+        },
+        {
+          "criterio": "Presidencia sin vínculo familiar ni profesional con el accionista de control",
+          "resultado": "Cumple",
+          "valor": "Independiente del control"
+        },
+        {
+          "criterio": "Presidente no ejecutivo, o consejero coordinador independiente",
+          "resultado": "Cumple",
+          "valor": "No ejecutivo"
+        },
+        {
+          "criterio": "Comisión de auditoría con mayoría de independientes y presidida por uno",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Ningún consejero «otro externo» con más de 12 años",
+          "resultado": "Cumple",
+          "valor": "Ninguno"
+        },
+        {
+          "criterio": "Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses",
+          "resultado": "Cumple",
+          "valor": "1 cambio"
+        },
+        {
+          "criterio": "Peor voto a favor sobre remuneración (3 juntas) ≥ 80 %",
+          "resultado": "No cumple",
+          "valor": "73,9 % a favor"
+        },
+        {
+          "criterio": "Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Una acción, un voto, sin blindajes ni límites de voto estatutarios",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Sin operaciones vinculadas relevantes",
+          "resultado": "Cumple",
+          "valor": "No hay"
+        },
+        {
+          "criterio": "Auditor con 10 años o menos en el cargo",
+          "resultado": "Cumple",
+          "valor": "3 años"
+        },
+        {
+          "criterio": "Opinión de auditoría sin salvedades",
+          "resultado": "Cumple",
+          "valor": "Favorable sin salvedades en 2025. Asuntos clave de auditoría: test de deterioro del fondo de comercio y reconocimiento de ingresos de proyectos a largo plazo (Dematic) [1]."
+        },
+        {
+          "criterio": "Directivos compradores netos en 12 meses (o sin ventas relevantes)",
+          "resultado": "Cumple",
+          "valor": "Compras 0,86 / ventas 0,00 M"
+        }
+      ],
+      "puntuacion": "12 de 13",
+      "puntuacion_pct": 92,
+      "compras_insiders": 0.86,
+      "ventas_insiders": 0
+    },
+    "competidores_margen": [
+      {
+        "nombre": "KION",
+        "margen_ebit_pct": 5.9
+      },
+      {
+        "nombre": "Toyota Industries (incluye Raymond, BT, Vanderlande y Bastian)",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Jungheinrich",
+        "margen_ebit_pct": 4.3
+      },
+      {
+        "nombre": "Crown Equipment (privada)",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Mitsubishi Logisnext",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Hyster-Yale",
+        "margen_ebit_pct": -0.3
+      },
+      {
+        "nombre": "Anhui Heli",
+        "margen_ebit_pct": 9
+      },
+      {
+        "nombre": "Hangcha Group",
+        "margen_ebit_pct": 14.9
+      },
+      {
+        "nombre": "Daifuku",
+        "margen_ebit_pct": 16.6
+      }
+    ],
+    "sintesis": {
+      "formato_eje": "#,##0.0",
+      "rangos": [
+        {
+          "metodo": "Cotización 52 semanas",
+          "etiqueta": "Cotización 52 semanas (31,88 – 70,45)",
+          "min": 31.88,
+          "central": 34.09,
+          "max": 70.45,
+          "gris": true
+        },
+        {
+          "metodo": "Precio objetivo de los analistas",
+          "etiqueta": "Precio objetivo de los analistas (37,00 – 63,00)",
+          "min": 37,
+          "central": 51.4,
+          "max": 63,
+          "gris": true
+        },
+        {
+          "metodo": "Comparables: PER NTM",
+          "etiqueta": "Comparables: PER NTM (31,03 – 68,15)",
+          "min": 31.03,
+          "central": 44.33,
+          "max": 68.15,
+          "gris": false
+        },
+        {
+          "metodo": "DCF (WACC y g ± 0,5)",
+          "etiqueta": "DCF (WACC y g ± 0,5) (36,86 – 55,82)",
+          "min": 36.86,
+          "central": 44.99,
+          "max": 55.82,
+          "gris": false
+        },
+        {
+          "metodo": "Escenarios (bajista – alcista)",
+          "etiqueta": "Escenarios (bajista – alcista) (20,80 – 59,36)",
+          "min": 20.8,
+          "central": 42.54,
+          "max": 59.36,
+          "gris": false
+        },
+        {
+          "metodo": "DCF con la prima del mercado",
+          "etiqueta": "DCF con la prima implícita del mercado (4,2 %)",
+          "min": 54.76,
+          "central": 62.77,
+          "max": 72.37
+        },
+        {
+          "metodo": "Precio actual",
+          "etiqueta": "Precio actual (34,09)",
+          "min": 33.92,
+          "central": 34.09,
+          "max": 34.26,
+          "gris": true
+        }
+      ],
+      "tabla": [
+        {
+          "metodo": "DCF",
+          "valor": 44.99,
+          "peso_pct": 60,
+          "potencial_pct": 32
+        },
+        {
+          "metodo": "Comparables (mediana EV/EBITDA y PER)",
+          "valor": 44.33,
+          "peso_pct": 15,
+          "potencial_pct": 30
+        },
+        {
+          "metodo": "Escenarios ponderados",
+          "valor": 42.54,
+          "peso_pct": 25,
+          "potencial_pct": 24.8
+        }
+      ],
+      "valor_objetivo": 44.28,
+      "potencial_pct": 29.9
+    },
+    "fuentes": {
+      "n_fuentes": 34,
+      "n_primarias": 19,
+      "por_tipo": [
+        {
+          "tipo": "Primaria",
+          "num": 19
+        },
+        {
+          "tipo": "Sectorial",
+          "num": 2
+        },
+        {
+          "tipo": "Prensa",
+          "num": 7
+        },
+        {
+          "tipo": "Datos de mercado",
+          "num": 4
+        },
+        {
+          "tipo": "Analistas",
+          "num": 2
+        }
+      ],
+      "n_citadas": 34,
+      "citas_sin_fuente": [],
+      "fuentes_sin_citar": []
+    },
+    "controles": [
+      {
+        "control": "Tipo impositivo efectivo razonable (2024)",
+        "resultado": "Explicado",
+        "detalle": "37,4 %: explica la causa (créditos fiscales, regularizaciones, mezcla de países) y no lo proyectes en el DCF. Explicación: El 37,4 % de 2024 sale de gastos no deducibles, como el deterioro de 22,4 M del fondo de comercio de ITS Americas, y de pérdidas sin activo por impuesto diferido [3]; en 2025 fue del 32,0 % y en 2023 del 31,6 % [1, 3]. El DCF usa un 33 % en 2026e y un 30 % después, la tasa nominal alemana (≈ 30 %), con la mezcla de países."
+      },
+      {
+        "control": "Geografías suman 100 %",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "DCF inverso calculable",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Puente de ingresos (volumen + precio + otros) = crecimiento del DCF",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Veredicto de sostenibilidad del analista coherente con las pruebas del motor",
+        "resultado": "OK",
+        "detalle": "El analista dice «Sí» y las pruebas del motor dan «Sí»: razónalo en la justificación."
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "resultado": "OK",
+        "detalle": "Supuesto 13,5 % frente a 13,4 % real: genera una variación de circulante de 58 M en el primer año. Converge de forma gradual."
+      },
+      {
+        "control": "Peso del valor terminal ≤ 80 % del valor empresa",
+        "resultado": "OK",
+        "detalle": "57 %."
+      },
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "resultado": "OK",
+        "detalle": "2,00 %."
+      },
+      {
+        "control": "Probabilidades de los escenarios suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 5 comparables",
+        "resultado": "OK",
+        "detalle": "10 comparables."
+      },
+      {
+        "control": "Pesos de la síntesis suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Compra robusta (v3 y v2 dan Comprar)",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Crecimiento del BPA base ≤ 25 % anual desde el último real",
+        "resultado": "Explicado",
+        "detalle": "El BPA base de 2028e (4,17) supone un 33,6 % anual desde 1,75 (2025): explícalo en valoracion.objetivo_12m.comentario o la confianza es baja. Explicación: El BPA de 2025 (1,75 EUR) lleva 201 M de no recurrentes del programa de eficiencia: sin ellos habría sido de unos 2,80 EUR [1]. Desde esa base, el BPA base de 2028e (4,17) supone un 14 % anual, apoyado en los 150 M de ahorro anual del programa y en volver a un margen de EBIT publicado del 7,5 % (8,2 % ajustado), por debajo del 8,2 % ajustado de 2021 y del 8,0 % de 2024 [1]. Está un 2 % por debajo del consenso (4,27) [25]."
+      },
+      {
+        "control": "Precio del cierre de la fecha de corte (o de las dos sesiones anteriores)",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Recomendación coherente con la regla de decisión",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Convicción frente a la sugerida por los criterios",
+        "resultado": "OK",
+        "detalle": "Los criterios dan «Media» (no llega a Alta: asimetría de 1,90 (< 2); bajista del -39,0 % (pierde más del 25 %)) y el análisis pone «Baja»: explica en la síntesis por qué te apartas."
+      },
+      {
+        "control": "La síntesis explica la convicción",
+        "resultado": "OK",
+        "detalle": "La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría."
+      },
+      {
+        "control": "Al menos 25 fuentes",
+        "resultado": "OK",
+        "detalle": "34 fuentes (19 primarias)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "resultado": "OK",
+        "detalle": "19."
+      },
+      {
+        "control": "Toda cita [n] existe en fuentes",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Fuentes sin citar ≤ 15 %",
+        "resultado": "OK",
+        "detalle": ""
+      }
+    ],
+    "controles_resumen": "19 de 21 controles correctos y 2 explicados"
+  }
+}
