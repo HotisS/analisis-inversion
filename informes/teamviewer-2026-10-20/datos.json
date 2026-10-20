@@ -1,0 +1,4623 @@
+{
+  "meta": {
+    "fecha_corte": "2026-10-20",
+    "divisa": "EUR",
+    "divisa_cotizacion": "EUR",
+    "tipo_cambio": 1,
+    "unidades": "millones",
+    "cierre_ejercicio_mes": 12,
+    "etiqueta_ejercicio": "fin",
+    "normas_contables": "NIIF-UE (Geschäftsbericht 2025; notas de resultados anuales 2022-2023 y trimestrales 2025-2026 de TeamViewer)",
+    "formato_cuenta": "funcion",
+    "limitaciones": "Cuentas en millones de EUR (NIIF-UE). Alemania no está en filings.xbrl.org (cuentas.mjs --esef sin datos): 2024-2025 salen del Geschäftsbericht 2025 (estados de las páginas 133-135 y notas) y 2021-2023 de las notas de resultados anuales con estados completos [1, 7, 8]; el 1S26, de la nota y estado trimestral del 28-jul-2026 [2]. TeamViewer publica cifras «pro forma» (con 1E todo el año y sin el recorte contable de los ingresos diferidos de 1E): el informe usa las NIIF y da las pro forma solo para comparar crecimientos. El EBITDA del informe cuenta los pagos en acciones como coste (la empresa los excluye de su EBITDA ajustado) y devuelve solo los costes de la compra de 1E y litigios; el BPA de la regla a 12 meses es el ajustado de la empresa menos los pagos en acciones (sin amortización de intangibles de compras ni diferencias de cambio). El 3T26 se publica el 3-nov-2026, después del corte. Sin foros legibles (sección de sentimiento omitida). Precio: cierre del 19-oct-2026 (7,01 EUR); la sesión del 20-oct seguía abierta (6,955 EUR a las 11:08 UTC) [20, 21].",
+    "controles_explicados": [],
+    "huecos": [
+      {
+        "seccion": "trimestres",
+        "campo": "vs_consenso (1T25, 2T25, 4T25, 2T26)",
+        "tipo": "Complemento",
+        "intentos": "1) notas de resultados de la empresa (no publican consenso); 2) prensa dpa-AFX y boerse-express; 3) Yahoo y MarketScreener (solo el consenso vigente)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "balance",
+        "campo": "arrendamientos 2021-2023 separados de la deuda",
+        "tipo": "Complemento",
+        "intentos": "1) notas de resultados anuales 2022-2023 (no separan); 2) informe anual 2025 (solo 2024-2025); 3) cálculo a partir del inmovilizado: no fiable",
+        "decision": "Omitido: toda la deuda financiera en deuda_financiera (la deuda neta no cambia)"
+      },
+      {
+        "seccion": "competencia",
+        "campo": "cuota_pct y cr5_pct",
+        "tipo": "Núcleo",
+        "intentos": "1) informe anual 2025 (no da cuota); 2) informes de mercado de acceso remoto (cifras de tamaño, no cuotas fiables); 3) cálculo con ingresos de rivales: la mayoría son privados",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sector",
+        "campo": "serie histórica de tamaño de mercado",
+        "tipo": "Complemento",
+        "intentos": "1) Research and Markets (solo 2025 y 2034); 2) TBRC (2025 y 2030); 3) Intel Market Research (DEX, 2025)",
+        "decision": "Omitido: dos puntos"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "voto_remuneracion_pct (junta de 2026)",
+        "tipo": "Complemento",
+        "intentos": "1) nota de la junta del 2-jun-2026 (no da porcentajes); 2) web de inversores ir.teamviewer.com/agm (no abre sin JavaScript); 3) prensa (solo «amplia mayoría»)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "participaciones significativas por nombre",
+        "tipo": "Complemento",
+        "intentos": "1) informe anual 2025 (solo distribución geográfica); 2) notificaciones de derechos de voto en EQS (solo Goldman Sachs encontrada); 3) Yahoo (instituciones 45,9 %)",
+        "decision": "Omitido salvo Goldman Sachs"
+      },
+      {
+        "seccion": "directivos",
+        "campo": "participacion_pct de los directivos",
+        "tipo": "Complemento",
+        "intentos": "1) informe de remuneraciones (acciones restringidas a mantener, no tenencia total); 2) Yahoo (insiders 1,9 %); 3) notificaciones MAR (solo compras)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "bolsa",
+        "campo": "posicion_corta_pct",
+        "tipo": "Complemento",
+        "intentos": "1) Bundesanzeiger, registro de posiciones cortas netas (sin acceso automático); 2) Yahoo (sin dato para Xetra); 3) prensa",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "comparables",
+        "campo": "ev_ebitda_ntm y roic_pct",
+        "tipo": "Complemento",
+        "intentos": "1) Yahoo (no da EBITDA estimado ni ROIC); 2) MarketScreener (solo abre la ficha de TeamViewer); 3) Stock Analysis (bloqueado)",
+        "decision": "Omitido: se compara por PER y EV/ventas"
+      },
+      {
+        "seccion": "sentimiento",
+        "campo": "sección entera",
+        "tipo": "Complemento",
+        "intentos": "1) foro de wallstreet-online (código 410, sin hilos legibles) y ariva (sin contenido); 2) Stocktwits (sin símbolo TMVWY) y Reddit (bloqueado); 3) RSS de Seeking Alpha: solo titulares de análisis y transcripciones, sin comentarios",
+        "decision": "Omitido"
+      }
+    ]
+  },
+  "identificacion": {
+    "nombre": "TeamViewer SE",
+    "nombre_corto": "TeamViewer",
+    "ticker": "TMV",
+    "isin": "DE000A2YN900",
+    "mercado": "Xetra (Fráncfort, Prime Standard)",
+    "indice_referencia": "SDAX y TecDAX (salió del MDAX en marzo de 2026)",
+    "pais": "Alemania",
+    "pais_iso": "DE",
+    "sector": "Tecnologías de la información",
+    "industria": "Software",
+    "sede": "Göppingen (Alemania)",
+    "fundacion": "2005",
+    "empleados": 1925,
+    "web": "https://www.teamviewer.com",
+    "precio": 7.01,
+    "fecha_precio": "2026-10-19",
+    "acciones": 158.4,
+    "capitalizacion_publicada": 1092,
+    "free_float_pct": 100,
+    "max_52s": 8.57,
+    "min_52s": 4.09,
+    "volumen_medio_diario": "≈ 4,3 M EUR/día (3 meses)",
+    "proximos_resultados": "2026-11-03"
+  },
+  "resumen": {
+    "recomendacion": "Mantener",
+    "conviccion": "Media",
+    "justificacion_recomendacion": null,
+    "horizonte": "12 meses",
+    "sintesis": "**La recomendación y por qué.** Mantener según la regla a 12 meses. Nuestro objetivo a 12 meses es de 7,85 EUR (+12,0 % ponderado sobre el cierre de 7,01 EUR del 19-oct; +9,7 % en el caso base), por debajo del 15 % y el 12 % que pide una compra. La acción está muy por debajo de su valor intrínseco (16,26 EUR), pero cotiza a menos de la mitad de su PER histórico y, con la regla v2 para empresas desrateadas, el objetivo solo recoge el crecimiento del BPA, no una vuelta del múltiplo. Además, la prueba de sostenibilidad del crecimiento da «En parte»: el crecimiento depende de subir precios mientras se van clientes. La convicción es media: las dos reglas de recomendación coinciden y el resultado queda lejos de los umbrales, pero el valor depende de un riesgo (la IA) que hoy no se puede medir. Las pruebas de robustez dan una señal frágil: con el BPA NIIF del consenso de 2028e (1,00 EUR, un 26 % por debajo del nuestro, sobre todo porque carga la amortización de los intangibles de las compras) pasaría a No mantener, y el colchón de BPA para mantener es de solo un 3 %. Subiría la convicción un ARR creciendo de nuevo en el 3T26 y el 4T26; la bajaría que los clientes de pago cayeran más del 8 % anual.\n\n**El negocio.** TeamViewer vende programas para conectarse a ordenadores y máquinas a distancia: soporte técnico, gestión de los equipos de una empresa (DEX, con 1E, comprada en 2025 por 682,5 M) y asistencia a técnicos en fábricas [1]. Vendió 746,8 M EUR en 2025, con un margen EBITDA del 42 % y unos 170-200 M de caja libre al año [1]. Dos tercios del ARR son pymes (SMB, −3,6 %) y un tercio grandes cuentas (Enterprise, +8,3 %) [2].\n\n**Finanzas.** Las ventas crecieron un 7-11 % anual en 2023-2025, pero en 2026 están planas (+0,4 % en el 1S, guía de +0-3 % a tipo constante) y los clientes de pago bajan un 7 % al año [2, 4]. El ROIC es del 21,8 % frente a un WACC del 8,35 %: cumple holgadamente el filtro de calidad. La deuda (≈ 870 M, 2,7 veces el EBITDA tras comprar 1E) baja con la caja y no tiene vencimientos difíciles [1, 2]. Los pagos en acciones (11,7 M en 2025) se cuentan como coste en todo el informe.\n\n**Equipo y gobierno.** Oliver Steil es consejero delegado desde 2018 y Michael Wilkens director financiero desde 2022 [1]. El consejo de supervisión es independiente. La dirección incumplió la guía de 2025 (rebaja del 21-oct-2025, −21,6 % en un día) y compró acciones justo después [6, 17]. Sin accionista de control; Goldman Sachs supera el 5 % [19].\n\n**Valoración.** El DCF da 16,89 EUR (WACC 8,35 %, crecimiento terminal 1,5 %, valor terminal del 54 %) y el valor intrínseco, 16,26 EUR (+132 %). El DCF inverso dice que el precio supone que las ventas caen un 4,5 % al año durante nueve años: descuenta un declive por la IA que nuestro base (+2,5 %) no supone. El objetivo a 12 meses es nuestro BPA de 2028e (1,26 EUR) por el PER de hoy (6,1 veces): 7,69 EUR en el base, con un bajista de 5,35 EUR (−23,7 %) y un alcista de 10,67 (+52,1 %). Los analistas apuntan a 7,99 EUR [22].\n\n**Qué puede ir mal y qué vigilar.** La IA es el riesgo central: los agentes de soporte que arreglan los equipos solos y las herramientas gratuitas de Microsoft (Quick Assist, Remote Help en Intune) pueden vaciar el negocio de pymes [13]. También la integración de 1E y un ciberataque. El 3T26 (3-nov) es el primer examen: el ARR tiene que volver a crecer. Veredicto de precio y noticias: **no cambia** (la subida del 48 % en seis meses es un rebote desde un mínimo de capitulación, con causas conocidas; los resultados próximos no retrasan la decisión).",
+    "tesis": "TeamViewer cotiza a 6,6 veces nuestro BPA de 2027e y con una rentabilidad por caja libre del 15 %, porque el mercado da por hecho que la IA y Microsoft acabarán con el soporte remoto de las pymes. Si las bajas de clientes se estabilizan y Enterprise sigue creciendo, el valor intrínseco es de 16 EUR; pero a 12 meses la regla solo da un 12 %, porque sin pruebas de que el ARR vuelve a crecer el múltiplo no tiene por qué subir.",
+    "vision_diferencial": {
+      "mercado_descuenta": "Un declive estructural: ventas que caen un 4,5 % al año durante nueve años, o un margen EBITDA del 23,5 % para siempre, y 6,1 veces el beneficio de 2027e.",
+      "nuestra_vision": "Las ventas crecen poco (2-3,5 % anual) pero no caen: Enterprise y DEX compensan a SMB, el margen se queda en el 41,5 % y la caja paga la deuda y vuelve a las recompras.",
+      "por_que": "El ARR Enterprise crece un 8,3 %, el margen ha aguantado en el 1S26 (40,6 % con los pagos en acciones como coste) y el acuerdo con ServiceNow lleva DEX a grandes cuentas [2, 12]. Pero la tasa de bajas de SMB (−7 %) no deja ser más optimistas."
+    },
+    "a_favor": [
+      "**Muy barata por caja**: rentabilidad por FCF del 15 % y 6,6 veces el BPA de 2027e [20].",
+      "**Calidad alta**: ROIC del 21,8 % frente a un WACC del 8,35 %; margen EBITDA del 42 % [1].",
+      "**Enterprise crece** un 8,3 % y el acuerdo con ServiceNow abre grandes cuentas [2, 12].",
+      "**Los directivos compraron** tras la rebaja de 2025 y la deuda baja con la caja [2, 17]."
+    ],
+    "en_contra": [
+      "**Riesgo de sustitución por IA** y por herramientas gratuitas de Microsoft en pymes [13].",
+      "**Pierde clientes**: −7 % en un año; el ARR total está plano y el NRR es del 93 % [2].",
+      "**Guía de 2025 incumplida** y crecimiento de 2026 de 0-3 % [4, 6].",
+      "**1E**: se pagó ≈ 10 veces las ventas y aún no crece; deuda de 2,7 veces el EBITDA [1]."
+    ],
+    "que_vigilar": "El ARR y los clientes de pago del 3T26 (3-nov) y el 4T26; el NRR de SMB; el ARR Enterprise (por encima del 8 %); la guía de 2027 en febrero; el apalancamiento a fin de 2026 (≈ 2,3 veces) y las recompras; cualquier anuncio de Microsoft que incluya más soporte remoto o agentes en Windows o Microsoft 365.",
+    "cambiaria_recomendacion": [
+      "Precio por debajo de 6,83 EUR (con el objetivo fijo): la regla daría Comprar; como la sostenibilidad es «En parte», solo cabrían los niveles de compra aflojados: C por debajo de 6,42 EUR y B2 por debajo de 6,14 EUR (el límite robusto, que aguanta un BPA un 10 % peor).",
+      "ARR creciendo de nuevo dos trimestres seguidos (clientes estables y NRR por encima del 95 %): la sostenibilidad pasaría a «Sí» y el múltiplo podría volver hacia 9-10 veces.",
+      "Precio por encima de 8,72 EUR sin cambios en las cifras: Vender.",
+      "Bajas de clientes por encima del 10 % anual o NRR de SMB por debajo del 90 %: pasaríamos al bajista y a Vender."
+    ],
+    "kpis_seguimiento": [
+      {
+        "kpi": "ARR total a tipo constante",
+        "nivel_actual": "−0,1 % (2T26)",
+        "umbral_alerta": "Negativo en el 3T26 y el 4T26",
+        "por_que": "Prueba de que el crecimiento vuelve."
+      },
+      {
+        "kpi": "Clientes de pago",
+        "nivel_actual": "611.900, −7 % (jun-26)",
+        "umbral_alerta": "Caída mayor del 8 % anual",
+        "por_que": "Mide la sustitución por IA y herramientas gratuitas."
+      },
+      {
+        "kpi": "ARR Enterprise",
+        "nivel_actual": "+8,3 % (2T26)",
+        "umbral_alerta": "< 6 %",
+        "por_que": "Es lo que compensa a SMB."
+      },
+      {
+        "kpi": "NRR total",
+        "nivel_actual": "93 % (2T26)",
+        "umbral_alerta": "< 90 %",
+        "por_que": "Poder de precios y retención."
+      },
+      {
+        "kpi": "Margen EBITDA ajustado",
+        "nivel_actual": "≈ 43 % (guía 2026)",
+        "umbral_alerta": "< 41 %",
+        "por_que": "Presión de precios o gasto en IA."
+      },
+      {
+        "kpi": "Deuda neta / EBITDA",
+        "nivel_actual": "≈ 2,7x (jun-26)",
+        "umbral_alerta": "> 2,5x a fin de 2026",
+        "por_que": "Recompras y riesgo financiero."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "historia": {
+    "resumen": "TeamViewer nació en 2005 en Göppingen como programa de control remoto gratuito para particulares y de pago para empresas. Permira la compró en 2014 y la sacó a bolsa en septiembre de 2019, la mayor salida a bolsa tecnológica alemana en años. En 2020 la pandemia disparó la facturación; en 2021 un cambio a contratos plurianuales, un patrocinio caro (Manchester United, Mercedes F1) y una rebaja de objetivos hundieron la acción un 73 %. Desde 2022 la dirección pasó a gestionar por ingresos NIIF, recompró acciones (≈ 600 M en 2022-2024) y en enero de 2025 compró 1E por 720 M USD con deuda para entrar en la gestión de la experiencia digital del empleado (DEX). Permira vendió sus últimas acciones en septiembre de 2025 [1, 7, 8].",
+    "hitos": [
+      {
+        "anio": "2005",
+        "hito": "Fundación en Göppingen; software de acceso remoto gratuito para uso privado [1]."
+      },
+      {
+        "anio": "2014",
+        "hito": "Permira compra la empresa [1]."
+      },
+      {
+        "anio": "2019",
+        "hito": "Salida a bolsa en Fráncfort (25-sep-2019) [1]."
+      },
+      {
+        "anio": "2021",
+        "hito": "Rebaja de objetivos, patrocinios caros y caída del 73 % en bolsa [20]."
+      },
+      {
+        "anio": "2022",
+        "hito": "Recompra de 300 M y nuevo marco de indicadores basado en ingresos NIIF [7, 8]."
+      },
+      {
+        "anio": "2025",
+        "hito": "Compra de 1E (682,5 M pagados); TeamViewer ONE; rebaja de la guía en octubre (−21,6 % en un día) [1, 6]."
+      },
+      {
+        "anio": "2025",
+        "hito": "Permira coloca el 7 % restante (4-sep) y queda fuera; amortización de 6,5 M de acciones propias [1]."
+      },
+      {
+        "anio": "2026",
+        "hito": "Pasa del MDAX al SDAX; acuerdo con ServiceNow (23-jul) [12]."
+      }
+    ],
+    "confianza": "Alta"
+  },
+  "negocio": {
+    "segmentos": [
+      {
+        "nombre": "SMB (clientes con ARR < 10.000 EUR)",
+        "descripcion": "Pequeñas y medianas empresas, autónomos y equipos de TI: licencias por suscripción de TeamViewer Remote, Tensor básico y complementos; venta sobre todo en la tienda web.",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2022",
+            "ingresos": 467.2,
+            "resultado": null
+          },
+          {
+            "periodo": "2023",
+            "ingresos": 504.6,
+            "resultado": null
+          },
+          {
+            "periodo": "2024",
+            "ingresos": 520.2,
+            "resultado": null
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 527.3,
+            "resultado": null
+          }
+        ]
+      },
+      {
+        "nombre": "Enterprise (ARR ≥ 10.000 EUR)",
+        "descripcion": "Grandes cuentas: Tensor, DEX (1E), Frontline (realidad aumentada para trabajadores de campo), TeamViewer ONE y acuerdos plurianuales.",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2022",
+            "ingresos": 98.6,
+            "resultado": null
+          },
+          {
+            "periodo": "2023",
+            "ingresos": 122.1,
+            "resultado": null
+          },
+          {
+            "periodo": "2024",
+            "ingresos": 151.2,
+            "resultado": null
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 219.5,
+            "resultado": null
+          }
+        ]
+      }
+    ],
+    "geografias": [
+      {
+        "nombre": "EMEA",
+        "peso_pct": 53.3
+      },
+      {
+        "nombre": "Américas",
+        "peso_pct": 36.9
+      },
+      {
+        "nombre": "Asia-Pacífico",
+        "peso_pct": 9.8
+      }
+    ],
+    "geografias_criterio": "destino",
+    "kpis": [
+      {
+        "kpi": "ARR (M EUR)",
+        "valor_anterior": "759,1 (jun-25)",
+        "valor_actual": "736,8 (jun-26)",
+        "variacion": "−2,9 % (−0,1 % a tipo constante)",
+        "comentario": "Plano a tipo constante: Enterprise +8,3 %, SMB −3,6 % [2]."
+      },
+      {
+        "kpi": "ARR Enterprise (M EUR)",
+        "valor_anterior": "227,1",
+        "valor_actual": "235,5",
+        "variacion": "+3,7 % (+8,3 % cc)",
+        "comentario": "Con 8 M de bajas puntuales de 1E absorbidas en el 1T26 [2, 3]."
+      },
+      {
+        "kpi": "ARR SMB (M EUR)",
+        "valor_anterior": "532,0",
+        "valor_actual": "501,4",
+        "variacion": "−5,8 % (−3,6 % cc)",
+        "comentario": "Cuentas < 1.500 EUR −7,0 % cc tras retirar las subidas de precio de 2025 [2]."
+      },
+      {
+        "kpi": "Clientes (miles)",
+        "valor_anterior": "656,4",
+        "valor_actual": "611,9",
+        "variacion": "−7 %",
+        "comentario": "Pérdida de clientes pequeños; Enterprise sube a 5.311 [2]."
+      },
+      {
+        "kpi": "NRR total (cc)",
+        "valor_anterior": "97 %",
+        "valor_actual": "93 %",
+        "variacion": "−4 pp",
+        "comentario": "Los clientes existentes gastan un 7 % menos que hace un año [2]."
+      },
+      {
+        "kpi": "Margen EBITDA ajustado",
+        "valor_anterior": "44,1 % (2T25)",
+        "valor_actual": "43,2 % (2T26)",
+        "variacion": "−0,9 pp",
+        "comentario": "44,4 % sin el efecto divisa [2]."
+      }
+    ],
+    "confianza": "Alta",
+    "descripcion": "TeamViewer vende software para conectarse a ordenadores, móviles y máquinas a distancia: un técnico entra en el equipo de un usuario para arreglarlo, un empleado accede a su ordenador desde casa o un operario recibe ayuda con realidad aumentada. Desde la compra de 1E (2025) vende también DEX: un agente instalado en cada equipo de la empresa que mide su estado y arregla problemas solo, antes de que el usuario llame. TeamViewer ONE junta las dos cosas con funciones de IA (resúmenes de sesiones, el agente Tia). Tiene 611.900 clientes de pago: 606.600 pequeños (SMB, con menos de 10.000 EUR de gasto anual) y 5.311 grandes (Enterprise) [2]. El 53 % de las ventas viene de EMEA, el 37 % de América y el 10 % de Asia-Pacífico [1].",
+    "como_gana_dinero": "Casi todo es suscripción: el ARR (ingresos recurrentes anualizados) es de 736,8 M frente a 748,3 M de ingresos de los últimos 12 meses [2]. Factura por adelantado (anual o plurianual), así que cobra antes de reconocer el ingreso: los ingresos diferidos suman 376 M, la mitad de las ventas anuales [2]. El coste de dar el servicio es pequeño (margen bruto recurrente del 92 %) y el gasto está en ventas, marketing e I+D; por eso el margen EBITDA ajustado es del 43-45 % y cada euro adicional de ventas deja mucho margen. El 68 % del ARR es SMB, que se vende sobre todo en la tienda web y es sensible al precio; el 32 %, Enterprise, con contratos negociados y plurianuales [2].",
+    "clientes": "Muy diversificada: ningún cliente es relevante. El problema es la retención: el NRR total (lo que gastan hoy los clientes de hace un año frente a entonces) es del 93 %, y el número de clientes cae un 7 % interanual (de 656.400 a 611.900) [2]. En SMB, las subidas de precio de principios de 2025 aumentaron las bajas y la empresa las suspendió en el 3T25 («course correction»): las cuentas de menos de 1.500 EUR caen un 7 % a tipo constante [2, 4]. En Enterprise el NRR es del 94 % (98 % sumando las cuentas que suben desde SMB) y las grandes cuentas (> 200.000 EUR de ARR) crecen un 11 % [2]. Poder de precios: limitado en SMB (demostrado en 2025 en contra), mayor en Enterprise."
+  },
+  "sector": {
+    "tamano": "≈ 3.100-4.100 M USD en 2025 el software de acceso remoto (The Business Research Company y Research and Markets) [9, 10], más 1.655 M USD de herramientas de DEX para empresas [11]",
+    "unidad_serie": "millones de USD",
+    "serie": [
+      {
+        "anio": "2025",
+        "tamano": 3110
+      },
+      {
+        "anio": "2030e",
+        "tamano": 7240
+      }
+    ],
+    "tcac_historico_pct": null,
+    "tcac_previsto_pct": 18.6,
+    "cr5_pct": null,
+    "estructura": "Moderadamente concentrada",
+    "drivers": [
+      {
+        "driver": "Parque de dispositivos y trabajo híbrido",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "600.000 clientes de pago y más de 2.500 millones de instalaciones de TeamViewer [1]."
+      },
+      {
+        "driver": "Agentes de IA que resuelven incidencias sin sesión remota humana",
+        "efecto": "−",
+        "horizonte": "Estructural",
+        "evidencia": "Bernstein la puso en febrero de 2026 en su lista de valores europeos expuestos a la sustitución por IA; la acción marcó 4,81 EUR el 17-feb [13]."
+      },
+      {
+        "driver": "Herramientas gratuitas o incluidas en paquetes (Microsoft Quick Assist, Intune Remote Help)",
+        "efecto": "−",
+        "horizonte": "Estructural",
+        "evidencia": "Presión sobre las cuentas pequeñas: el ARR SMB < 1.500 EUR cae un 7,0 % a tipo constante [2]."
+      },
+      {
+        "driver": "Consolidación de proveedores en plataformas (gestión autónoma de dispositivos)",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "TeamViewer ONE y acuerdo con ServiceNow (paquete para sus clientes) [12]."
+      },
+      {
+        "driver": "Gasto en TI y sector público de EE. UU.",
+        "efecto": "+/−",
+        "horizonte": "Cíclico",
+        "evidencia": "DOGE y el cierre federal de 43 días frenaron a 1E en 2025 [1]."
+      }
+    ],
+    "porter": [
+      {
+        "fuerza": "Rivalidad",
+        "intensidad": 4,
+        "justificacion": "AnyDesk, Splashtop, GoTo, ConnectWise, NinjaOne y Microsoft compiten en precio en SMB; en DEX, Nexthink, Tanium y Riverbed."
+      },
+      {
+        "fuerza": "Poder de los clientes",
+        "intensidad": 3,
+        "justificacion": "SMB muy dispersa (607.000 clientes), pero sensible al precio: las subidas de 2025 dispararon las bajas [2]."
+      },
+      {
+        "fuerza": "Poder de los proveedores",
+        "intensidad": 1,
+        "justificacion": "Coste de ventas del 13,5 % de los ingresos (nube, pasarelas de pago) [1]."
+      },
+      {
+        "fuerza": "Amenaza de entrada",
+        "intensidad": 3,
+        "justificacion": "La conectividad básica es fácil de replicar; la escala, la seguridad y las integraciones no."
+      },
+      {
+        "fuerza": "Amenaza de sustitutos",
+        "intensidad": 4,
+        "justificacion": "Agentes de IA y herramientas incluidas en el sistema operativo pueden quitar sesiones de soporte humano [13]."
+      }
+    ],
+    "ciclo": {
+      "posicion": "Madurez del ciclo",
+      "comentario": "El acceso remoto vivió su auge en 2020 (TeamViewer facturó +45 %) y desde 2022 crece a un dígito; en 2025-2026 se le suma la presión de la IA y de las herramientas incluidas en Windows. En 2008-09 la empresa era privada; en 2022 el gasto de TI de las pymes frenó y la facturación de TeamViewer pasó de crecer un 16 % a casi nada en el 1S23. Hoy el indicador es el ARR: plano a tipo constante y con clientes que bajan un 7 % [2, 7]."
+    },
+    "confianza": "Media",
+    "definicion": "El mercado relevante es el software de acceso y soporte remoto (soporte de TI, acceso a equipos y control de máquinas), más la gestión de la experiencia digital del empleado (DEX) desde la compra de 1E. Las consultoras dan para el acceso remoto entre 3.110 M USD (The Business Research Company) y 4.100 M USD (Research and Markets) en 2025, con crecimientos del 15-19 % anual que no casan con lo que se ve en los rivales cotizados [9, 10]; usamos la cifra menor y no basamos ningún supuesto en su crecimiento. DEX para empresas: 1.655 M USD en 2025 [11].",
+    "regulacion": "Normas de ciberseguridad y protección de datos (RGPD, NIS2 en la UE, FedRAMP para vender al Gobierno de EE. UU.: TeamViewer DEX obtuvo la designación «In Process» en mayo de 2026) [2]. No hay regulación de precios. La Ley de IA europea afecta a las funciones de IA, no al negocio principal. El riesgo regulatorio relevante es el de un incidente de seguridad (el software abre la puerta a los equipos de los clientes).",
+    "tendencias": "Tres tendencias: (1) agentes de IA que arreglan equipos solos, sin técnico conectado: reducen sesiones de soporte humano, que es lo que TeamViewer vende a las pymes; Bernstein la incluyó en febrero de 2026 entre los valores europeos más expuestos [13]; (2) herramientas gratuitas o incluidas (Microsoft Quick Assist en Windows, Remote Help en Intune) que bastan para muchas pymes; (3) consolidación de herramientas de TI en plataformas (gestión «autónoma» de equipos), donde TeamViewer apuesta con 1E, TeamViewer ONE y el acuerdo con ServiceNow [12]. Gana con la tercera, pierde con las dos primeras."
+  },
+  "competencia": {
+    "cuota_pct": null,
+    "posicion": "Líder en acceso y soporte remoto por ingresos (≈ 747 M EUR en 2025, más que N-able entero) y «Leader» en el cuadrante de Gartner de DEX con 1E [2]",
+    "competidores": [
+      {
+        "nombre": "N-able (gestión remota de equipos para proveedores de servicios)",
+        "pais": "EE. UU.",
+        "ticker": "NABL",
+        "ingresos": 475.7,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Ingresos LTM ≈ 533.4 M USD y margen EBITDA del 12.5 % [14]; vende a proveedores de servicios gestionados."
+      },
+      {
+        "nombre": "Microsoft (Quick Assist, Intune Remote Help)",
+        "pais": "EE. UU.",
+        "ticker": "MSFT",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Quick Assist viene gratis con Windows; Remote Help, dentro de Intune: el sustituto más directo en cuentas pequeñas."
+      },
+      {
+        "nombre": "AnyDesk",
+        "pais": "Alemania",
+        "ticker": null,
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Rival directo en SMB, no cotiza, sin cuentas publicadas comparables."
+      },
+      {
+        "nombre": "GoTo (LogMeIn)",
+        "pais": "EE. UU.",
+        "ticker": null,
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Privada desde 2020; GoTo Resolve y Rescue."
+      },
+      {
+        "nombre": "Nexthink y Tanium (DEX y gestión de dispositivos)",
+        "pais": "Suiza / EE. UU.",
+        "ticker": null,
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Rivales de 1E en grandes empresas; privadas."
+      },
+      {
+        "nombre": "Splashtop, ConnectWise, NinjaOne",
+        "pais": "EE. UU.",
+        "ticker": null,
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Rivales de precio en SMB y en proveedores de servicios; privadas."
+      }
+    ],
+    "foso": {
+      "veredicto": "Estrecho",
+      "tendencia": "Se estrecha",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 2,
+          "evidencia": "Las sesiones conectan a técnicos y usuarios que a menudo ya tienen el cliente instalado (2.500 millones de instalaciones)."
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 3,
+          "evidencia": "Alto en Enterprise (NRR ajustado 98 %, renovaciones plurianuales de DEX); bajo en SMB (NRR total 93 %, clientes −7 %) [B8]."
+        },
+        {
+          "fuente": "Intangibles (marca, patentes, licencias)",
+          "puntuacion": 3,
+          "evidencia": "Marca conocida en soporte remoto; Gartner e IDC la sitúan como líder en DEX [B8]."
+        },
+        {
+          "fuente": "Ventaja en costes",
+          "puntuacion": 3,
+          "evidencia": "Margen bruto recurrente del 92 % y margen EBITDA ajustado del 43-44 % [B8]."
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 2,
+          "evidencia": "Nicho rentable, pero la conectividad básica la regala Microsoft."
+        }
+      ]
+    },
+    "confianza": "Media",
+    "amenazas": "La amenaza principal es que la IA y Microsoft conviertan el soporte remoto básico en una función gratuita: si un agente resuelve el problema sin sesión, o Windows trae la conexión de serie, la pyme deja de pagar 300-1.500 EUR al año. Probabilidad media-alta a 3-5 años en las cuentas pequeñas (hoy ≈ 30 % del ARR SMB tiene menos de 1.500 EUR [2]). En Enterprise el riesgo es menor: TeamViewer vende la plataforma que ejecuta esos agentes en los equipos (DEX y TeamViewer ONE), compite con Nexthink, Tanium y la propia Microsoft, y el acuerdo con ServiceNow le da un canal [12]."
+  },
+  "financieros": {
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 501.1,
+        "coste_ventas": 70.9,
+        "gastos_generales": 236.8,
+        "ebitda": 168.3,
+        "amortizaciones": 50.9,
+        "ebit": 117.4,
+        "resultado_financiero": -32,
+        "bai": 85.4,
+        "impuestos": 35.3,
+        "minoritarios": 0,
+        "beneficio_neto": 50.1,
+        "gastos_financieros": 19.2,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 0.25,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 200.6
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 565.9,
+        "coste_ventas": 81.3,
+        "gastos_generales": 281,
+        "ebitda": 197.5,
+        "amortizaciones": 53.7,
+        "ebit": 143.7,
+        "resultado_financiero": -27,
+        "bai": 116.7,
+        "impuestos": 49.1,
+        "minoritarios": 0,
+        "beneficio_neto": 67.6,
+        "gastos_financieros": 25.8,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": 4.7,
+        "bpa": 0.37,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 185.1
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 626.7,
+        "coste_ventas": 81.7,
+        "gastos_generales": 294.8,
+        "ebitda": 221.9,
+        "amortizaciones": 55.4,
+        "ebit": 166.6,
+        "resultado_financiero": -19.1,
+        "bai": 147.5,
+        "impuestos": 33.4,
+        "minoritarios": 0,
+        "beneficio_neto": 114,
+        "gastos_financieros": 16.9,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": 16.8,
+        "bpa": 0.66,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 173
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 671.4,
+        "coste_ventas": 80.8,
+        "gastos_generales": 284.3,
+        "ebitda": 252.6,
+        "amortizaciones": 46.2,
+        "ebit": 206.4,
+        "resultado_financiero": -21.9,
+        "bai": 184.5,
+        "impuestos": 61.4,
+        "minoritarios": 0,
+        "beneficio_neto": 123.1,
+        "gastos_financieros": 17.5,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": 27.5,
+        "bpa": 0.76,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 161.3
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 746.8,
+        "coste_ventas": 101.2,
+        "gastos_generales": 297.5,
+        "ebitda": 306.4,
+        "amortizaciones": 53.8,
+        "ebit": 252.6,
+        "resultado_financiero": -71.7,
+        "bai": 180.9,
+        "impuestos": 62.7,
+        "minoritarios": 0,
+        "beneficio_neto": 118.2,
+        "gastos_financieros": 39.6,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": 7.5,
+        "bpa": 0.75,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 158
+      }
+    ],
+    "ltm": {
+      "periodo": "LTM jun-26",
+      "fecha_fin": "2026-06-30",
+      "ingresos": 748.3,
+      "ebitda": 307.7,
+      "ebit": 254.6,
+      "beneficio_neto": 130.3,
+      "bpa": 0.83,
+      "dpa": 0,
+      "dpa_extraordinario": 0,
+      "fcf": 168.9,
+      "participadas_en_ebitda": null,
+      "no_recurrentes_en_ebitda": 7.5
+    },
+    "cambios_perimetro": [
+      {
+        "periodo": "2025",
+        "descripcion": "1E (Reino Unido, gestión de la experiencia digital del empleado, DEX) consolidada desde el 31-ene-2025: 682,5 M pagados en caja; fondo de comercio de 668,1 a 1.115,5 M e intangibles de 149,0 a 343,9 M [1]. Las cifras pro forma de la empresa (767,5 M de ingresos 2025) incluyen enero y anulan el «haircut» contable; las del informe son las NIIF (746,8 M)."
+      }
+    ],
+    "confianza": "Alta",
+    "comentario": "Ingresos de 501 M (2021) a 747 M (2025), un 10,5 % anual, con 1E desde febrero de 2025 (unos 60 M); sin 1E, 2025 habría crecido ≈ 2 % [1, 4]. El margen EBITDA del informe (con pagos en acciones como coste) subió del 33,6 % al 42,0 % por la bajada del marketing (del 22,7 % al 14,5 % de las ventas) y de los pagos en acciones (de 27,6 M a 11,7 M) [1, 7, 8]. En 2026 las ventas bajan: 1S26 365,9 M (+0,4 % NIIF; −0,9 % a tipo constante pro forma) y margen EBITDA NIIF del 39,8 % por el euro fuerte y más ventas e I+D [2]. El beneficio neto de 2025 (118,2 M) carga 29,4 M de amortización de intangibles de compras y 25,5 M de diferencias de cambio de un préstamo interno [1].",
+    "ajustes": "Diferencias con el EBITDA ajustado de TeamViewer (325,6 M en 2025): excluye pagos en acciones (11,7 M) y otros conceptos (7,5 M: integración de 1E); 2024: 16,6 y 27,5 M (compra de 1E y un litigio pagado en 2025); 2023: 21,8 y 16,8 M; 2022: 27,6 y 4,7 M [1, 7]. Aquí solo se devuelven al EBITDA los «otros» (no_recurrentes); los pagos en acciones se quedan como coste. El BPA ajustado de la empresa (1,17 EUR en 2025) excluye además la amortización de compras (29,4 M) y efectos financieros especiales (30,5 M); nuestro BPA ajustado con pagos en acciones es 1,12 EUR [1]."
+  },
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "1T25",
+        "ingresos": 178.8,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": 66.6,
+        "margen_ebitda_pct": 37.2,
+        "bpa": 0.19,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "2T25",
+        "ingresos": 185.6,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": 77.9,
+        "margen_ebitda_pct": 42,
+        "bpa": 0.14,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "3T25",
+        "ingresos": 189.5,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": 4,
+        "ebitda": 79.5,
+        "margen_ebitda_pct": 42,
+        "bpa": 0.18,
+        "vs_consenso": "Inferior"
+      },
+      {
+        "periodo": "4T25",
+        "ingresos": 192.9,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": 2,
+        "ebitda": 82.5,
+        "margen_ebitda_pct": 42.8,
+        "bpa": 0.24,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1T26",
+        "ingresos": 183.2,
+        "crecimiento_pct": 2.5,
+        "crecimiento_organico_pct": -0.4,
+        "ebitda": 75.1,
+        "margen_ebitda_pct": 41,
+        "bpa": 0.22,
+        "vs_consenso": "En línea"
+      },
+      {
+        "periodo": "2T26",
+        "ingresos": 182.75,
+        "crecimiento_pct": -1.6,
+        "crecimiento_organico_pct": -1.4,
+        "ebitda": 70.6,
+        "margen_ebitda_pct": 38.6,
+        "bpa": 0.19,
+        "vs_consenso": null
+      }
+    ],
+    "confianza": "Media",
+    "ultima_presentacion": "En el 2T26 (28-jul) la dirección habló de «punto de inflexión»: bajas de DEX en mínimos desde la compra de 1E, renovaciones plurianuales de grandes clientes (dos bancos globales, un hospital de EE. UU., una aerolínea), TeamViewer ONE «la adopción más rápida de un producto» y bajas de SMB estabilizadas en junio; reiteró la guía (0-3 % a tipo constante, margen ≈ 43 %) y prometió aceleración en el segundo semestre [2]. En el 1T26 (6-may) el mensaje era «año de entrega»: 8 M de ARR perdidos de una vez en 1E y SMB peor por el fin de las subidas de precio [3]. Lo que cambió: de explicar pérdidas a enseñar indicadores adelantados (NRR Enterprise 93 → 94 %, ARR Enterprise +8,3 %). Lo que no se cuantificó: cuánto ARR aporta TeamViewer ONE y cuánto de la caída de clientes SMB se debe a la IA o a Microsoft. El ARR total sigue plano (−0,1 % cc) y el FCFE del semestre cayó un 38 % [2]."
+  },
+  "balance": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "activo_total": 1546.7,
+        "activo_corriente": 576.6,
+        "pasivo_corriente": 337.1,
+        "pasivo_total": 1226.6,
+        "fondo_comercio": 667.2,
+        "intangibles": 248.2,
+        "inmovilizado_material": 45.5,
+        "existencias": 0,
+        "clientes": 11.6,
+        "proveedores": 7.3,
+        "activos_contrato": null,
+        "pasivos_contrato": 250.6,
+        "caja": 550.5,
+        "deuda_financiera": 877.5,
+        "arrendamientos": 0,
+        "patrimonio_neto": 320.1,
+        "minoritarios": 0,
+        "reservas": -276.8
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 1172.7,
+        "activo_corriente": 209.1,
+        "pasivo_corriente": 474.3,
+        "pasivo_total": 1057.4,
+        "fondo_comercio": 667.9,
+        "intangibles": 212.9,
+        "inmovilizado_material": 50.3,
+        "existencias": 0,
+        "clientes": 18.3,
+        "proveedores": 8.9,
+        "activos_contrato": null,
+        "pasivos_contrato": 312.3,
+        "caja": 161,
+        "deuda_financiera": 632.6,
+        "arrendamientos": 0,
+        "patrimonio_neto": 115.3,
+        "minoritarios": 0,
+        "reservas": -209.2
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 1111.5,
+        "activo_corriente": 159.5,
+        "pasivo_corriente": 511.8,
+        "pasivo_total": 1027.9,
+        "fondo_comercio": 667.7,
+        "intangibles": 175.7,
+        "inmovilizado_material": 43.3,
+        "existencias": 0,
+        "clientes": 22,
+        "proveedores": 8,
+        "activos_contrato": null,
+        "pasivos_contrato": 356.2,
+        "caja": 72.8,
+        "deuda_financiera": 529.4,
+        "arrendamientos": 0,
+        "patrimonio_neto": 83.7,
+        "minoritarios": 0,
+        "reservas": -95.2
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 1070.3,
+        "activo_corriente": 134.3,
+        "pasivo_corriente": 548,
+        "pasivo_total": 969.9,
+        "fondo_comercio": 668.1,
+        "intangibles": 149,
+        "inmovilizado_material": 41.5,
+        "existencias": 0,
+        "clientes": 30.2,
+        "proveedores": 15.8,
+        "activos_contrato": null,
+        "pasivos_contrato": 381.2,
+        "caja": 55.3,
+        "deuda_financiera": 415.7,
+        "arrendamientos": 29,
+        "patrimonio_neto": 100.5,
+        "minoritarios": 0,
+        "reservas": 27.9
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 1675.8,
+        "activo_corriente": 123.7,
+        "pasivo_corriente": 842.5,
+        "pasivo_total": 1510.9,
+        "fondo_comercio": 1115.5,
+        "intangibles": 343.9,
+        "inmovilizado_material": 44.9,
+        "existencias": 0,
+        "clientes": 27.5,
+        "proveedores": 11.2,
+        "activos_contrato": null,
+        "pasivos_contrato": 384,
+        "caja": 41.6,
+        "deuda_financiera": 909.9,
+        "arrendamientos": 33.1,
+        "patrimonio_neto": 164.9,
+        "minoritarios": 0,
+        "reservas": 146.1
+      }
+    ],
+    "vencimientos": [
+      {
+        "anio": "2026",
+        "importe": 346
+      },
+      {
+        "anio": "2027",
+        "importe": 48.5
+      },
+      {
+        "anio": "2028",
+        "importe": 28
+      },
+      {
+        "anio": "2029",
+        "importe": 461.5
+      },
+      {
+        "anio": "2030",
+        "importe": 15
+      },
+      {
+        "anio": "2031+",
+        "importe": 9
+      }
+    ],
+    "liquidez": "Caja 39,6 M a 30-jun-2026 [2] + parte no dispuesta de la línea revolvente sindicada (hasta 525 M; 185 M dispuestos a 31-dic-2025) [1]; en el 2T26 se amplió hasta 2031 la línea revolvente de 75 M, se firmó un préstamo bilateral de 40 M y se lanzó un Schuldschein nuevo [2].",
+    "rating": "Sin rating",
+    "coste_deuda_pct": 4.6,
+    "vida_media_anios": null,
+    "confianza": "Alta",
+    "otros_pasivos": "Ingresos diferidos de 376 M a junio de 2026 (345 M a corto): no son deuda, son servicio ya cobrado, pero su caída (−8 M en el semestre) resta caja si bajan los contratos plurianuales [2]. Covenant de deuda neta / EBITDA en los préstamos de 2022, 2024 y de la compra de 1E, cumplido en todo 2025 [1]. Sin pensiones relevantes. Provisiones pequeñas (4 M). La empresa pagó en 2025 un litigio («bestimmte Rechtsstreitigkeiten», ajustado del FCFE) [1]. Sin pagos aplazados de 1E relevantes (1,3 M en 2026) [2].",
+    "comentario": "La compra de 1E llevó la deuda neta de 389 M (2024) a 901 M (2025), 2,6 veces el EBITDA ajustado pro forma; a junio de 2026 baja a 832,8 M (2,5x) y la empresa apunta a ≈ 2,3x a fin de año [1, 2]. El circulante es muy negativo (−49 % de las ventas) porque se cobra por adelantado: es una fuente de caja mientras crece la facturación y un drenaje si se encoge. En 2026 vencen 346 M (puente DCM y Schuldschein de 2021), refinanciados en parte en el 1S (amortizó 281 M y tomó 220 M) y con un Schuldschein nuevo en marcha [1, 2]. El patrimonio contable es pequeño (250 M) por las recompras."
+  },
+  "flujos": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 194,
+        "capex": 15.2,
+        "pagos_arrendamientos": 6.9,
+        "adquisiciones": 23.4,
+        "desinversiones": 0,
+        "dividendos": 0,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 14.1
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 204.3,
+        "capex": 8.8,
+        "pagos_arrendamientos": 9.5,
+        "adquisiciones": 2,
+        "desinversiones": 0,
+        "dividendos": 0,
+        "recompras": 300.1,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 14.2
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 229.9,
+        "capex": 5.6,
+        "pagos_arrendamientos": 11.1,
+        "adquisiciones": 8.1,
+        "desinversiones": 0,
+        "dividendos": 0,
+        "recompras": 161.9,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 14.4
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 249.2,
+        "capex": 5.4,
+        "pagos_arrendamientos": 12.5,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 0,
+        "recompras": 137.7,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 19.2
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 233,
+        "capex": 5.8,
+        "pagos_arrendamientos": 12.6,
+        "adquisiciones": 682.5,
+        "desinversiones": 0,
+        "dividendos": 0,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 33.8
+      }
+    ],
+    "confianza": "Alta",
+    "comentario": "Convierte el beneficio en caja con holgura: flujo operativo de 233 M en 2025 frente a 118 M de beneficio (amortizaciones no caja, ingresos diferidos) y capex de solo 5,8 M (0,8 % de las ventas) más 12,6 M de arrendamientos [1]. El FCFE de la empresa (después de intereses) fue de 208,3 M ajustado en 2025 y de 64,6 M en el 1S26 (−38 %), por menos contratos plurianuales pagados por adelantado y peores ventas [1, 2]. Casi todo el capex es de mantenimiento (estimación propia: no hay fábricas ni centros de datos propios relevantes). Uso de la caja: 600 M de recompras en 2022-2024 y, desde 2025, amortización de la deuda de 1E."
+  },
+  "calidad": {
+    "auditor": "PricewaterhouseCoopers GmbH WPG",
+    "anios_auditor": null,
+    "opinion": "Favorable (sin salvedades) para 2025",
+    "confianza": "Media",
+    "comentario": "Auditor PwC, opinión favorable [1]. Riesgos contables: (1) el reconocimiento de ingresos de contratos plurianuales (TeamViewer cambió en 2021-2023 su marco de facturación a ingresos); (2) las cifras «pro forma» y «ajustadas» que la empresa destaca: el BPA ajustado (1,17 EUR) es un 56 % mayor que el publicado (0,75) [1]; (3) un fondo de comercio de 1.128 M frente a un patrimonio de 250 M: un deterioro de 1E no afectaría a la caja pero sí al beneficio. Los pagos en acciones han bajado de 27,6 M (4,9 % de las ventas) a 11,7 M (1,6 %). El Altman Z (1,01) está en zona de riesgo porque el patrimonio es pequeño por las recompras y los ingresos diferidos inflan el pasivo, y no es fiable en 2025 por el cambio de perímetro; el Beneish M tampoco es interpretable ese año. El Piotroski (4/9) refleja la deuda nueva. El flujo operativo acumulado es 2,35 veces el beneficio: el beneficio se cobra.",
+    "senales": [
+      {
+        "senal": "Diferencia grande entre BPA ajustado y publicado",
+        "nivel": "Media",
+        "comentario": "1,17 frente a 0,75 EUR en 2025: amortización de compras, pagos en acciones y diferencias de cambio [1]."
+      },
+      {
+        "senal": "Fondo de comercio de 1E sin deteriorar con su negocio por debajo del plan",
+        "nivel": "Media",
+        "comentario": "Rebaja de octubre de 2025 por 1E; sin deterioro en 2025 [1, 6]."
+      },
+      {
+        "senal": "Cifras pro forma como base de la guía",
+        "nivel": "Baja",
+        "comentario": "La guía de 2026 compara con 767,5 M pro forma, no con los 746,8 M NIIF [4]."
+      }
+    ]
+  },
+  "rentabilidad": {
+    "comentario": "Crea valor con holgura: ROIC del 21,8 % en 2025 frente a un WACC del 8,35 % (30,3 % en 2024, antes de 1E). La caída viene de los 682,5 M pagados por 1E, que llevaron el capital invertido de 490 M a 1.066 M; con el capital de cierre de 2025 el ROIC ronda el 16 %, aún 8 puntos por encima del WACC. El motor del ROIC es el margen (EBIT del 34,8 %), no la rotación: el capital invertido es casi todo fondo de comercio y el circulante es negativo. El ROIC incremental histórico es alto (76 %) por la etapa sin compras; el de 1E está por demostrar: aporta ≈ 60-70 M de ingresos con un ARR que perdió 8 M de golpe en el 1T26 [1, 3]. Frente a rivales cotizados de software de gestión de TI (N-able, margen EBITDA del 12,5 %), TeamViewer es mucho más rentable [14].",
+    "confianza": "Media"
+  },
+  "capital": {
+    "adquisiciones": [
+      {
+        "anio": "2025",
+        "objetivo": "1E (Reino Unido; DEX para grandes empresas)",
+        "importe": 682.5,
+        "ev_ebitda": null,
+        "financiacion": "Deuda: préstamo puente DCM 145 M, préstamo a plazo 225 M, línea revolvente y colocaciones privadas [1]",
+        "resultado": "Bajas de clientes del sector público de EE. UU. (DOGE) y fricciones comerciales: causa principal de la rebaja de octubre de 2025; 8 M de ARR perdidos en el 1T26; recuperación desde el 2T26 según la empresa (bajas en mínimos desde la compra) [2, 3, 6]. Sin deterioro del fondo de comercio en 2025 [1]."
+      },
+      {
+        "anio": "2021",
+        "objetivo": "Xaleon (Australia) y otras compras pequeñas",
+        "importe": 23.4,
+        "ev_ebitda": null,
+        "financiacion": "Caja",
+        "resultado": "Integradas en el negocio Enterprise [8]."
+      }
+    ],
+    "confianza": "Media",
+    "politica": "Sin dividendo. Prioridades declaradas: invertir en el producto (I+D, IA), reducir el apalancamiento hacia ≈ 2,3x a fin de 2026 y devolver caja con recompras cuando la deuda lo permita [2, 4]. La junta del 2-jun-2026 renovó la autorización para recomprar hasta el 10 % del capital, sin programa anunciado [15]. En diciembre de 2025 amortizó 6,5 M de acciones propias [1].",
+    "comentario": "Historial mixto. A favor: recompró ≈ 600 M en 2022-2024 a 10-16 EUR, reduciendo las acciones de 200,6 M (2021) a 158 M (2025), un 21 %, aunque a precios que hoy son el doble del actual. En contra: la compra de 1E (682,5 M, ≈ 10 veces sus ventas pro forma) llegó en el peor momento (DOGE en EE. UU., bajas de clientes) y provocó la rebaja de octubre de 2025; su rentabilidad está por ver y el ROIC del grupo bajó de 30 % a 22 %. El FCF acumulado se fue a recompras y a 1E, no a dividendos [1, 6]."
+  },
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "Oliver Steil",
+        "cargo": "Consejero delegado (CEO)",
+        "desde": "2018",
+        "participacion_pct": null,
+        "trayectoria": "Socio operativo de Permira antes de TeamViewer; llevó la salida a bolsa de 2019 y la compra de 1E. Mandato hasta octubre de 2028 [1]. Compró 50.000 acciones a 6,47 EUR el 23-oct-2025 [17]."
+      },
+      {
+        "nombre": "Michael Wilkens",
+        "cargo": "Director financiero (CFO)",
+        "desde": "2022",
+        "participacion_pct": null,
+        "trayectoria": "CFO desde septiembre de 2022, mandato hasta agosto de 2027 [1]; financió la compra de 1E con deuda y redujo el apalancamiento de 3,2x a 2,5x [4]. Compró 10.000 acciones a 6,45 EUR [17]."
+      },
+      {
+        "nombre": "Mark Banfield",
+        "cargo": "Director comercial (CRO)",
+        "desde": "2025",
+        "participacion_pct": null,
+        "trayectoria": "En el consejo de dirección desde febrero de 2025 (CCO y desde agosto CRO); mandato hasta enero de 2028 [1]."
+      },
+      {
+        "nombre": "Mei Dent",
+        "cargo": "Directora de producto y tecnología (CPTO)",
+        "desde": "2023",
+        "participacion_pct": null,
+        "trayectoria": "Desde agosto de 2023, mandato hasta diciembre de 2027 [1]; responsable de TeamViewer ONE y del agente Tia."
+      },
+      {
+        "nombre": "Ralf W. Dieter",
+        "cargo": "Presidente del consejo de supervisión",
+        "desde": null,
+        "participacion_pct": null,
+        "trayectoria": "Presidente del Aufsichtsrat [1]; compró 37.000 acciones el 24-oct-2025 [17]."
+      }
+    ],
+    "historial_guidance": [
+      {
+        "anio": "2023",
+        "guia": "Ingresos y margen EBITDA ajustado ≥ 40 %",
+        "real": "Ingresos +11 % a 626,7 M; margen 42 % [7]",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2024",
+        "guia": "Ingresos 660-685 M; margen EBITDA ajustado ≥ 43 %",
+        "real": "671,4 M; 44 % [1, 7]",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2025",
+        "guia": "ARR pro forma 815-840 M; ingresos 778-797 M; margen ≈ 43 %",
+        "real": "ARR 759,7 M (rebajado en octubre a 780-800); ingresos pro forma 767,5 M; margen 44,3 % [4, 6]",
+        "cumplida": "No"
+      },
+      {
+        "anio": "2026",
+        "guia": "Octubre de 2025: ingresos 790-825 M (antes 850-870); febrero de 2026: +0-3 % a tipo constante sobre 767,5 M; margen ≈ 43 %",
+        "real": "1S26: −0,9 % cc pro forma; margen 44,2 % [2]",
+        "cumplida": "Parcial"
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "Equipo estable: Oliver Steil es CEO desde 2018 (mandato hasta 2028) y Michael Wilkens CFO desde 2022; la dirección comercial cambió en 2025 (Mark Banfield, primero CCO y luego CRO) [1]. La credibilidad sufrió en 2025: dos rebajas de guía en cuatro meses (octubre de 2025 y febrero de 2026) para 2026, de 850-870 M a 0-3 % a tipo constante (≈ 767-790 M) [4, 6]; en 2023 y 2024 sí cumplió. Hubo una señal de confianza: seis directivos y consejeros compraron acciones el 23-24 de octubre de 2025 a 6,45-6,73 EUR, ≈ 1 M EUR en total [17]. Sucesión: no se ha hecho pública."
+  },
+  "gobierno": {
+    "consejo": [
+      {
+        "nombre": "Ralf W. Dieter",
+        "cargo": "Presidente",
+        "tipo": "Independiente",
+        "desde": null,
+        "comisiones": "Nombramientos y retribuciones (vocal)"
+      },
+      {
+        "nombre": "Dr. Abraham (Abe) Peled",
+        "cargo": "Vicepresidente",
+        "tipo": "Independiente",
+        "desde": null,
+        "comisiones": "Nombramientos y retribuciones (presidente)"
+      },
+      {
+        "nombre": "Swantje Conrad",
+        "cargo": "Consejera",
+        "tipo": "Independiente",
+        "desde": null,
+        "comisiones": "Auditoría (presidenta)"
+      },
+      {
+        "nombre": "Dr. Joachim (Joe) Heel",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": null,
+        "comisiones": "—"
+      },
+      {
+        "nombre": "James Jeffrey (Jeff) Kinder",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": null,
+        "comisiones": "—"
+      },
+      {
+        "nombre": "Axel Salzmann",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": null,
+        "comisiones": "Auditoría; nombramientos y retribuciones"
+      },
+      {
+        "nombre": "Christina Stercken",
+        "cargo": "Consejera",
+        "tipo": "Independiente",
+        "desde": "2023",
+        "comisiones": "Auditoría"
+      },
+      {
+        "nombre": "Andrea Euenheim",
+        "cargo": "Consejera",
+        "tipo": "Independiente",
+        "desde": "2026",
+        "comisiones": null
+      }
+    ],
+    "presidente_ceo_separados": true,
+    "presidente_ejecutivo": false,
+    "consejero_coordinador": false,
+    "una_accion_un_voto": true,
+    "operaciones_vinculadas_relevantes": false,
+    "variable_ligado_rentabilidad": true,
+    "auditoria_independiente": true,
+    "insiders_sin_operaciones": false,
+    "accionista_control": false,
+    "presidente_vinculado_control": false,
+    "cambios_cupula_24m": 0,
+    "voto_remuneracion_pct": null,
+    "voto_remuneracion_contra_pct": null,
+    "voto_remuneracion_contra_libre_pct": null,
+    "voto_cupula_pct": null,
+    "remuneracion_ceo": {
+      "anio": "2025",
+      "total": 2.42,
+      "fijo": 1.06,
+      "variable_corto": 1.36,
+      "variable_largo": 0,
+      "ratio_salario_medio": null
+    },
+    "accionistas": [
+      {
+        "nombre": "Inversores de Norteamérica (agregado)",
+        "pct": 28.3,
+        "tipo": "Institucional",
+        "variacion": "Análisis del registro a 31-dic-2025 [1]"
+      },
+      {
+        "nombre": "Accionistas particulares (incluida la dirección)",
+        "pct": 20.2,
+        "tipo": "Particulares",
+        "variacion": "[1]"
+      },
+      {
+        "nombre": "Brokers y otros",
+        "pct": 17.9,
+        "tipo": "Otros",
+        "variacion": "[1]"
+      },
+      {
+        "nombre": "Resto de Europa",
+        "pct": 16.2,
+        "tipo": "Institucional",
+        "variacion": "[1]"
+      },
+      {
+        "nombre": "Alemania",
+        "pct": 9.3,
+        "tipo": "Institucional",
+        "variacion": "[1]"
+      },
+      {
+        "nombre": "Goldman Sachs",
+        "pct": 5,
+        "tipo": "Banco (derechos de voto e instrumentos)",
+        "variacion": "Supera el 5 % el 6-ago-2026 [19]"
+      },
+      {
+        "nombre": "Autocartera",
+        "pct": 4,
+        "tipo": "Autocartera",
+        "variacion": "6,53 M de acciones a 31-dic-2025; 6,5 M amortizadas en diciembre de 2025 [1]"
+      }
+    ],
+    "insiders": [
+      {
+        "fecha": "2025-10-23",
+        "persona": "Oliver Steil (CEO)",
+        "operacion": "Compra",
+        "acciones": 50000,
+        "importe": 0.32
+      },
+      {
+        "fecha": "2025-10-23",
+        "persona": "Michael Wilkens (CFO)",
+        "operacion": "Compra",
+        "acciones": 10000,
+        "importe": 0.06
+      },
+      {
+        "fecha": "2025-10-23",
+        "persona": "Abraham Peled (vicepresidente del consejo de supervisión)",
+        "operacion": "Compra",
+        "acciones": 30000,
+        "importe": 0.2
+      },
+      {
+        "fecha": "2025-10-24",
+        "persona": "Ralf W. Dieter (presidente del consejo de supervisión)",
+        "operacion": "Compra",
+        "acciones": 37000,
+        "importe": 0.25
+      },
+      {
+        "fecha": "2025-10-24",
+        "persona": "Mark Banfield (CRO)",
+        "operacion": "Compra",
+        "acciones": 15000,
+        "importe": 0.1
+      },
+      {
+        "fecha": "2025-10-24",
+        "persona": "Mei Dent (CPTO)",
+        "operacion": "Compra",
+        "acciones": 10000,
+        "importe": 0.07
+      }
+    ],
+    "confianza": "Media",
+    "remuneracion": "El CEO cobró 2,42 M en 2025: 1,06 M fijos y 1,36 M de bonus anual; el plan a largo plazo 2022-2025 pagó cero porque no se cumplió ninguno de sus objetivos (crecimiento de facturación y EBITDA, NPS, ESG y rentabilidad para el accionista frente al STOXX 600 Technology, −57 %) [1]. Eso habla bien del sistema: el variable a largo plazo depende en un 25 % del TSR relativo. Hay cláusula de recuperación (clawback) y obligación de mantener acciones [1]. El bonus anual de 2025 se pagó al 128 % por la integración de 1E y la transición al ARR, en un año de rebaja de guía, lo que es discutible. No encontramos los porcentajes de voto de la junta de 2026 («amplia mayoría») [16].",
+    "control_y_defensas": "Sin accionista de control: el 100 % es capital flotante desde la salida de Permira (septiembre de 2025) [1]. Una acción, un voto, sin blindajes. Consejo de supervisión de 8 miembros, todos independientes, con presidente (Ralf W. Dieter) distinto del CEO; la comisión de auditoría la preside Swantje Conrad [1]. Goldman Sachs superó el 5 % en agosto de 2026 (normalmente posiciones de intermediación y préstamo de valores) [19]. Sin operaciones vinculadas relevantes.",
+    "alertas": [
+      "Dos rebajas de la guía de 2026 en cuatro meses (oct-2025 y feb-2026) [4, 6].",
+      "Bonus anual del CEO al 128 % en el año de la rebaja de previsiones [1]."
+    ]
+  },
+  "consenso": {
+    "estimaciones": [
+      {
+        "periodo": "2026e",
+        "ingresos": 759.3,
+        "ebitda": 327.6,
+        "ebit": 247.4,
+        "bpa": 0.84,
+        "dpa": 0,
+        "fuente": "MarketScreener (BPA NIIF; EBITDA ajustado) [22]; Yahoo: BPA 1,02 de 12 analistas, base mixta [21]"
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 784.9,
+        "ebitda": 338.8,
+        "ebit": 262.2,
+        "bpa": 0.95,
+        "dpa": 0,
+        "fuente": "MarketScreener [22]; Yahoo 1,10 [21]"
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 817.4,
+        "ebitda": 344.2,
+        "ebit": 274.5,
+        "bpa": 1,
+        "dpa": 0,
+        "fuente": "MarketScreener [22]"
+      }
+    ],
+    "recomendaciones": {
+      "n_analistas": 14,
+      "comprar": 7,
+      "mantener": 7,
+      "vender": 0,
+      "po_medio": 7.99,
+      "po_min": 5.7,
+      "po_max": 13
+    },
+    "base_ebitda": "ajustado",
+    "ajuste_ebitda_pct_ventas": 2,
+    "confianza": "Media",
+    "guidance": "Guía de 2026 (10-feb-2026, reiterada el 6-may y el 28-jul): ingresos +0-3 % a tipo constante sobre 767,5 M pro forma y margen EBITDA ajustado ≈ 43 %; el efecto divisa resta ≈ 2,4 puntos [2, 4]. A medio plazo: volver a crecer «a un dígito medio-alto» con márgenes similares, sin fecha [4]. Objetivo de deuda: ≈ 2,3x a fin de 2026 [2]. La guía anterior (oct-2025) era 790-825 M y la original 850-870 M [6].",
+    "revisiones": "Según Yahoo, el BPA medio de 2026e bajó de 1,036 hace 90 días a 1,018 hoy y el de 2027e de 1,121 a 1,096 (−2 %) [21]; base mixta (ajustado y NIIF según el analista). MarketScreener da BPA NIIF de 0,84, 0,95 y 1,00 EUR para 2026-2028 y EBITDA ajustado de 327,6 M en 2026 [22]. Los objetivos de precio suben desde el verano: DZ Bank de 7 a 9 (6-ago) y a 10 EUR (2-oct), Deutsche Bank de 6,50 a 7,50, JPMorgan baja a 7,30 (30-jul), Berenberg 6,70, Barclays 5,00 [19, 25]. Solo hay una fuente con estimaciones completas a tres años (MarketScreener); Yahoo sirve de contraste."
+  },
+  "bolsa": {
+    "tipo_rentabilidad": "total (con dividendos)",
+    "rentabilidades": [
+      {
+        "periodo": "En el año",
+        "accion_pct": 15.9,
+        "indice_pct": 2.8,
+        "sector_pct": 23.5
+      },
+      {
+        "periodo": "1 año",
+        "accion_pct": -17.7,
+        "indice_pct": 3.8,
+        "sector_pct": 18.6
+      },
+      {
+        "periodo": "3 años (anual.)",
+        "accion_pct": -22.5,
+        "indice_pct": 18.9,
+        "sector_pct": 18.4
+      },
+      {
+        "periodo": "5 años (anual.)",
+        "accion_pct": -11.8,
+        "indice_pct": 9.6,
+        "sector_pct": 6.3
+      }
+    ],
+    "anual": [
+      {
+        "anio": "2020",
+        "accion_pct": 37.5,
+        "indice_pct": 3
+      },
+      {
+        "anio": "2021",
+        "accion_pct": -73,
+        "indice_pct": 15.2
+      },
+      {
+        "anio": "2022",
+        "accion_pct": 1.9,
+        "indice_pct": -12.8
+      },
+      {
+        "anio": "2023",
+        "accion_pct": 16.7,
+        "indice_pct": 19.5
+      },
+      {
+        "anio": "2024",
+        "accion_pct": -32.1,
+        "indice_pct": 18.1
+      },
+      {
+        "anio": "2025",
+        "accion_pct": -36.6,
+        "indice_pct": 22.6
+      }
+    ],
+    "beta": 1.2,
+    "volatilidad_pct": 51.7,
+    "max_drawdown_pct": -75.8,
+    "tramo_drawdown": "2023-08-23 → 2026-04-10",
+    "posicion_corta_pct": null,
+    "contexto": {
+      "movimiento": {
+        "fecha": "2026-10-20",
+        "var_1m_pct": 11,
+        "var_3m_pct": 27.8,
+        "var_6m_pct": 47.7,
+        "var_12m_pct": -18,
+        "dist_max_52s_pct": -3.1,
+        "dist_min_52s_pct": 65.4,
+        "dist_max_historico_pct": -60,
+        "tendencia": "alcista",
+        "volatilidad_60d_pct": 47,
+        "avisos": [
+          "P2 A 3 % del máximo de 52 semanas tras subir un 28 % en tres meses"
+        ]
+      },
+      "movimientos_fuertes": [
+        {
+          "periodo": "oct-2025",
+          "var_pct": -26.4,
+          "causa": "Anuncio ad hoc del 21-oct-2025: ARR 2025 rebajado a 780-800 M e ingresos 2026 a 790-825 M (antes 850-870), por 1E y el sector público de EE. UU.; −21,6 % el 22-oct [6, 20].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "feb-2026",
+          "var_pct": -18,
+          "causa": "Guía 2026 de +0-3 % (10-feb, −6,3 %) y lista de Bernstein de valores expuestos a la IA (17-feb, mínimo de 4,81) [4, 13].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "may-2026",
+          "var_pct": 24.2,
+          "causa": "Rebote desde el mínimo de abril y resultados del 1T26 en línea con la guía (6-may, +5,7 %; 7-may, +5,3 %) [3, 20].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "jun-2026",
+          "var_pct": -16.8,
+          "causa": "Subida del 1-jun (+11,1 %) y caída del 3-jun (−7,4 %) sin noticia propia identificada; a mediados de mes, presión sobre el software por Oracle (12-jun) y semana del −11,8 % hasta 4,90 EUR (22-jun) [26].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "jul-2026",
+          "var_pct": 22,
+          "causa": "Resultados del 2T26 con margen mejor de lo esperado y acuerdo con ServiceNow (28-jul +9,3 %, 29-jul +5,5 %); el 30-jul devolvió un 12 % entre dudas por la pérdida de 46.000 clientes [2, 12, 26].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "ago-2026",
+          "var_pct": 17.4,
+          "causa": "Subidas de objetivo de DZ Bank (9 EUR) y Deutsche Bank (7,50) el 6-ago y rumor de que Silver Lake estudiaba comprar Workday, que animó al software (19-ago, +6,5 %) [19].",
+          "veredicto": "no cambia",
+          "condicion": null
+        }
+      ],
+      "noticias": [
+        {
+          "fecha": "2025-10-23",
+          "tipo": "directivos",
+          "hecho": "Compras de CEO, CFO, CRO, CPTO y dos consejeros (≈ 1 M EUR a 6,45-6,73 EUR) tras la rebaja [17].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-02-10",
+          "tipo": "resultados",
+          "hecho": "Guía 2026: ingresos +0-3 % a tipo constante, margen ≈ 43 % [4].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-02-17",
+          "tipo": "recomendación",
+          "hecho": "Bernstein incluye a TeamViewer entre los valores europeos más expuestos a la sustitución por IA [13].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-07-28",
+          "tipo": "resultados",
+          "hecho": "2T26: ingresos −1,4 % cc, ARR plano, guía reiterada [2].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-08-06",
+          "tipo": "recomendación",
+          "hecho": "DZ Bank sube su objetivo a 9 EUR (Comprar) y Deutsche Bank a 7,50 (Mantener) [19].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-08-06",
+          "tipo": "accionista de referencia",
+          "hecho": "Goldman Sachs supera el 5 % de los derechos de voto [19].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-08-19",
+          "tipo": "rumor",
+          "hecho": "Reuters: Silver Lake estudia comprar Workday; sube el software europeo, sin rumor concreto sobre TeamViewer [19].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-10-02",
+          "tipo": "recomendación",
+          "hecho": "DZ Bank sube su objetivo de 9 a 10 EUR (Comprar) [25].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-11-03",
+          "tipo": "resultados",
+          "hecho": "Resultados del 3T26 (primer examen de la aceleración prometida para el segundo semestre) [2].",
+          "veredicto": "no cambia",
+          "condicion": null
+        }
+      ],
+      "proximos_resultados": "2026-11-03",
+      "veredicto": "no cambia",
+      "condicion": null,
+      "comentario": "La subida de seis meses (+47,7 %) tiene causas conocidas: el rebote desde un mínimo de capitulación (4,09 EUR) y unos resultados del 1T y 2T sin sorpresas negativas, además del ánimo comprador del software por las compras de fondos. No hay ningún hecho pendiente que pueda mover el precio más de un 5 % en contra aparte de los resultados del 3-nov (que no retrasan, regla 11): no hay accionista de referencia que pueda colocar (Permira salió en 2025), ni ampliaciones, ni litigios con fecha. Se buscó en las notas de la empresa, en dpa-AFX, boerse-express y las notificaciones MAR. Veredicto global: no cambia. El aviso P2 (cerca de máximos tras subir) no cambia la señal."
+    },
+    "confianza": "Alta",
+    "comentario": "La acción ha perdido un 22,5 % anual en tres años frente al +18,9 % del DAX, por tres golpes: la rebaja de octubre de 2025 (−21,6 % en un día), la guía de 2026 y el miedo a la IA en febrero (mínimo de 4,09 EUR el 13-abr-2026) [6, 13, 20]. Desde abril sube un 70 % con resultados en línea, mejores indicadores de Enterprise y el rumor de compras de software por fondos (Silver Lake y Workday en agosto) [2, 3, 19]. Beta mensual de 1,20 frente al DAX y volatilidad del 51,7 % anual: es un valor muy volátil para una empresa con un 43 % de margen."
+  },
+  "multiplos_historicos": {
+    "serie": [
+      {
+        "anio": "2021",
+        "precio_cierre": 11.82,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2022",
+        "precio_cierre": 12.05,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2023",
+        "precio_cierre": 14.06,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2024",
+        "precio_cierre": 9.54,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2025",
+        "precio_cierre": 6.05,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      }
+    ],
+    "confianza": "Alta",
+    "comentario": "Con el criterio del motor (EV/EBITDA y PER de los últimos 12 meses), TeamViewer cotiza hoy a 6,1 veces el EBITDA y unos 8,5 veces el beneficio publicado, frente a 20-30 veces a finales de 2021-2023. Ha cambiado algo estructural: entonces se pagaba crecimiento de dos dígitos y hoy el ARR está plano y el mercado descuenta que la IA y Microsoft se coman el soporte remoto. Por eso no esperamos que vuelva a la mediana: el selector del método lo trata como desrateado y decide la regla v2."
+  },
+  "comparables": {
+    "empresas": [
+      {
+        "nombre": "N-able",
+        "ticker": "NABL",
+        "pais": "US",
+        "capitalizacion": 767,
+        "ev_ventas": 2.21,
+        "ev_ebitda_ltm": 17.7,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 10.8,
+        "crecimiento_pct": 6.4,
+        "margen_ebitda_pct": 12.5,
+        "roic_pct": null,
+        "dn_ebitda": 4.81,
+        "fcf_yield_pct": 8.2
+      },
+      {
+        "nombre": "Dropbox",
+        "ticker": "DBX",
+        "pais": "US",
+        "capitalizacion": 6969,
+        "ev_ventas": 4.22,
+        "ev_ebitda_ltm": 12.9,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 11,
+        "crecimiento_pct": -0.7,
+        "margen_ebitda_pct": 32.8,
+        "roic_pct": null,
+        "dn_ebitda": 3.45,
+        "fcf_yield_pct": 10
+      },
+      {
+        "nombre": "Box",
+        "ticker": "BOX",
+        "pais": "US",
+        "capitalizacion": 4951,
+        "ev_ventas": 4.99,
+        "ev_ebitda_ltm": 46.7,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 24,
+        "crecimiento_pct": 11.2,
+        "margen_ebitda_pct": 10.7,
+        "roic_pct": null,
+        "dn_ebitda": 0.84,
+        "fcf_yield_pct": 6.8
+      },
+      {
+        "nombre": "DocuSign",
+        "ticker": "DOCU",
+        "pais": "US",
+        "capitalizacion": 12778,
+        "ev_ventas": 4.09,
+        "ev_ebitda_ltm": 31.1,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 15.2,
+        "crecimiento_pct": 10.2,
+        "margen_ebitda_pct": 13.1,
+        "roic_pct": null,
+        "dn_ebitda": -1.35,
+        "fcf_yield_pct": 9.2
+      },
+      {
+        "nombre": "Qualys",
+        "ticker": "QLYS",
+        "pais": "US",
+        "capitalizacion": 5864,
+        "ev_ventas": 8.82,
+        "ev_ebitda_ltm": 24.4,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 22.8,
+        "crecimiento_pct": 11.5,
+        "margen_ebitda_pct": 36.2,
+        "roic_pct": null,
+        "dn_ebitda": -1.46,
+        "fcf_yield_pct": 3.7
+      },
+      {
+        "nombre": "Rapid7",
+        "ticker": "RPD",
+        "pais": "US",
+        "capitalizacion": 795,
+        "ev_ventas": 1.34,
+        "ev_ebitda_ltm": 19.8,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 6.6,
+        "crecimiento_pct": -1.6,
+        "margen_ebitda_pct": 6.8,
+        "roic_pct": null,
+        "dn_ebitda": 4.45,
+        "fcf_yield_pct": 15
+      },
+      {
+        "nombre": "Tenable",
+        "ticker": "TENB",
+        "pais": "US",
+        "capitalizacion": 3824,
+        "ev_ventas": 4.23,
+        "ev_ebitda_ltm": 82.1,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 18.1,
+        "crecimiento_pct": 9.3,
+        "margen_ebitda_pct": 5.1,
+        "roic_pct": null,
+        "dn_ebitda": 2.3,
+        "fcf_yield_pct": 6
+      },
+      {
+        "nombre": "Freshworks",
+        "ticker": "FRSH",
+        "pais": "US",
+        "capitalizacion": 3288,
+        "ev_ventas": 3.38,
+        "ev_ebitda_ltm": 53.2,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 17.7,
+        "crecimiento_pct": 18.9,
+        "margen_ebitda_pct": 6.4,
+        "roic_pct": null,
+        "dn_ebitda": -10.95,
+        "fcf_yield_pct": 7.1
+      }
+    ],
+    "confianza": "Media",
+    "criterio": "Software de suscripción para equipos de TI y seguridad con crecimiento bajo o medio y márgenes altos: N-able (gestión remota para proveedores de servicios, el rival cotizado más cercano), Dropbox y Box (suscripción madura), DocuSign, Qualys, Rapid7 y Tenable (seguridad de TI), Freshworks (soporte de TI). Los rivales directos (AnyDesk, GoTo, ConnectWise, NinjaOne, Nexthink, Tanium) no cotizan. No incluimos Microsoft (tamaño) ni Nemetschek (crecimiento de dos dígitos). El PER es el de Yahoo sobre BPA «non-GAAP», que excluye los pagos en acciones: para las estadounidenses su PER sale más bajo que en nuestra base.",
+    "comentario": "TeamViewer cotiza a 7,6 veces el beneficio de los próximos 12 meses del consenso, frente a una mediana de los comparables de ≈ 16 veces, y a 2,6 veces las ventas frente a ≈ 4: el descuento es de casi la mitad. Una parte se justifica: los comparables crecen un 6-19 % (salvo Dropbox y Rapid7, que caen y cotizan a 11 y 7 veces, como TeamViewer), y TeamViewer no crece y tiene más deuda (2,6x). Pero su margen EBITDA (36 % NIIF; 43 % ajustado) duplica el de casi todos. El múltiplo justo para un software sin crecimiento y con riesgo de sustitución es el de Dropbox y Rapid7 (7-11x), no la mediana: los comparables pesan poco (10 %) en la síntesis."
+  },
+  "transacciones": {
+    "operaciones": [
+      {
+        "fecha": "2024-12",
+        "objetivo": "1E (DEX, Reino Unido)",
+        "comprador": "TeamViewer",
+        "ev": 682.5,
+        "ev_ventas": 9.96,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "720 M USD; 682,5 M EUR pagados en enero de 2025 sobre 68,5 M de ingresos pro forma de 2024 (estimación propia del múltiplo) [1]."
+      },
+      {
+        "fecha": "2025-02",
+        "objetivo": "SolarWinds (gestión y observabilidad de TI)",
+        "comprador": "Turn/River Capital",
+        "ev": 4231,
+        "ev_ventas": 5.52,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Valor empresa 4.400 M USD; múltiplo sobre los ingresos de 2024 (796,9 M USD), estimación propia; prima del 35 % sobre el precio medio de 90 días [27, 28]."
+      },
+      {
+        "fecha": "2025-10",
+        "objetivo": "Jamf (gestión de dispositivos Apple)",
+        "comprador": "Francisco Partners",
+        "ev": 1897,
+        "ev_ventas": 3.3,
+        "ev_ebitda": 14.3,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Unos 2.200 M USD; 3,3 veces los ingresos de 12 meses y 14,3 veces el EBITDA; cerrada en enero de 2026 [29, 30]."
+      }
+    ],
+    "confianza": "Media",
+    "comentario": "Las compras de software de gestión de TI por fondos se han pagado a 3,3 veces las ventas (Jamf, 14,3 veces el EBITDA) y 5,5 veces (SolarWinds) [27, 28, 29, 30]; TeamViewer pagó ≈ 10 veces las ventas por 1E [1]. A 3,3 veces sus ventas, TeamViewer valdría ≈ 2.470 M de valor empresa, unos 10,30 EUR por acción (estimación propia), un 47 % más que hoy. Con el capital 100 % flotante, sin accionista de control y a 6 veces el EBITDA, es un candidato natural a una oferta de capital privado; no lo ponderamos (peso 0) porque no hay ningún indicio concreto."
+  },
+  "dcf": {
+    "anios": [
+      {
+        "periodo": "2026e",
+        "crecimiento_pct": 1.1,
+        "margen_ebitda_pct": 40.5,
+        "amortizacion_pct_ventas": 3,
+        "capex_pct_ventas": 2.6,
+        "nwc_pct_ventas": -47,
+        "tasa_impositiva_pct": 30,
+        "fijo": true
+      },
+      {
+        "periodo": "2027e",
+        "crecimiento_pct": 3,
+        "margen_ebitda_pct": 41,
+        "amortizacion_pct_ventas": 3,
+        "capex_pct_ventas": 2.6,
+        "nwc_pct_ventas": -46,
+        "tasa_impositiva_pct": 30,
+        "fijo": false
+      },
+      {
+        "periodo": "2028e",
+        "crecimiento_pct": 3.5,
+        "margen_ebitda_pct": 41.5,
+        "amortizacion_pct_ventas": 3,
+        "capex_pct_ventas": 2.7,
+        "nwc_pct_ventas": -46,
+        "tasa_impositiva_pct": 29.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2029e",
+        "crecimiento_pct": 3.5,
+        "margen_ebitda_pct": 41.5,
+        "amortizacion_pct_ventas": 3,
+        "capex_pct_ventas": 2.7,
+        "nwc_pct_ventas": -46,
+        "tasa_impositiva_pct": 29,
+        "fijo": false
+      },
+      {
+        "periodo": "2030e",
+        "crecimiento_pct": 3,
+        "margen_ebitda_pct": 41.5,
+        "amortizacion_pct_ventas": 3,
+        "capex_pct_ventas": 2.8,
+        "nwc_pct_ventas": -46,
+        "tasa_impositiva_pct": 28.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2031e",
+        "crecimiento_pct": 2.5,
+        "margen_ebitda_pct": 41.5,
+        "amortizacion_pct_ventas": 3,
+        "capex_pct_ventas": 2.8,
+        "nwc_pct_ventas": -46,
+        "tasa_impositiva_pct": 28,
+        "fijo": false
+      },
+      {
+        "periodo": "2032e",
+        "crecimiento_pct": 2,
+        "margen_ebitda_pct": 41.5,
+        "amortizacion_pct_ventas": 3,
+        "capex_pct_ventas": 2.9,
+        "nwc_pct_ventas": -46,
+        "tasa_impositiva_pct": 28,
+        "fijo": false
+      },
+      {
+        "periodo": "2033e",
+        "crecimiento_pct": 2,
+        "margen_ebitda_pct": 41.5,
+        "amortizacion_pct_ventas": 3,
+        "capex_pct_ventas": 2.9,
+        "nwc_pct_ventas": -46,
+        "tasa_impositiva_pct": 28,
+        "fijo": false
+      },
+      {
+        "periodo": "2034e",
+        "crecimiento_pct": 1.8,
+        "margen_ebitda_pct": 41.5,
+        "amortizacion_pct_ventas": 3,
+        "capex_pct_ventas": 3,
+        "nwc_pct_ventas": -46,
+        "tasa_impositiva_pct": 28,
+        "fijo": false
+      },
+      {
+        "periodo": "2035e",
+        "crecimiento_pct": 1.5,
+        "margen_ebitda_pct": 41.5,
+        "amortizacion_pct_ventas": 3,
+        "capex_pct_ventas": 3,
+        "nwc_pct_ventas": -46,
+        "tasa_impositiva_pct": 28,
+        "fijo": false
+      }
+    ],
+    "wacc": {
+      "tasa_libre_pct": 3.45,
+      "beta": 1.2,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 1,
+      "coste_deuda_pct": 4.75,
+      "tasa_impositiva_pct": 30,
+      "peso_deuda_pct": 35
+    },
+    "terminal": {
+      "metodo": "gordon",
+      "crecimiento_pct": 1.5,
+      "multiplo_salida": 8
+    },
+    "etapa2": {
+      "usar": false,
+      "anios": 5,
+      "margen_final_pct": null,
+      "justificacion": null
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "Ventas 2026e +1,1 % NIIF (755 M), fijo: el 1S26 creció un 0,4 % y la guía (+0-3 % a tipo constante sobre 767,5 M, con −2,4 puntos de divisa) da 749-772 M; tomamos la mitad baja [2, 4]. Después +3,0 % y +3,5 % en 2027-2029, por debajo del «dígito medio-alto» que promete la dirección a medio plazo, y bajando hasta el 1,5 % en 2035e [4]. Precedente: 2023-2025 creció un 7-11 %; hoy el ARR está plano (−0,1 % cc) y la suma de SMB (−3,6 %, dos tercios) y Enterprise (+8,3 %, un tercio) da ≈ 0 %: el 3 % de 2027 exige que SMB deje de caer y Enterprise siga a ≈ 10 % [2]. El consenso es parecido: 784,9 M en 2027e frente a nuestros 777,7 M [22].",
+      "margenes": "Margen EBITDA del 40,5 % en 2026e y 41,0-41,5 % después, con los pagos en acciones y los costes recurrentes de reorganización como gasto. Es menos que el 42,0 % de 2025 y el 40,6 % del 1S26 (sin la integración de 1E) [1, 2], y unos 2 puntos menos que el margen ajustado que guía la empresa (≈ 43 %), que excluye esos gastos [4]. No suponemos ahorro de la IA en el gasto propio ni apalancamiento operativo con el crecimiento.",
+      "inversion": "Amortización del 3,0 % de las ventas: la de inmovilizado y derechos de uso, sin la de los intangibles comprados (29,4 M en 2025), que no es caja ni desgrava (compra de acciones de 1E) [1]. Capex del 2,6-3,0 % (inversión de 5,8 M + altas de arrendamientos ≈ 12,6 M en 2025, 2,5 % de las ventas), igual a la amortización al final. Circulante del −47 % de las ventas en 2026e y −46 % después (−49 % en 2025): los ingresos diferidos bajan un poco porque hay menos contratos plurianuales pagados por adelantado [2]. Impuesto del 30 % (34,6 % efectivo en 2025 con partidas no deducibles), bajando al 28 % con la rebaja del impuesto de sociedades alemán a partir de 2028 [1].",
+      "wacc": "WACC del 8,35 %: Bund a 10 años del 3,45 % (20-oct-2026) [23], beta de 1,20 (mensual de 5 años frente al DAX; la semanal ajustada da 0,93) [20], prima de mercado del 5,5 % y prima adicional de 1,0 punto por el riesgo de sustitución por IA y la pérdida de clientes pequeños, que no recoge la beta. Coste de la deuda del 4,75 % antes de impuestos (intereses de ≈ 40 M sobre ≈ 870 M de deuda) [2] y peso de la deuda del 35 % (hoy 43 % a valor de mercado; baja con el desapalancamiento). Con la prima implícita del mercado (4,20 %) el WACC sería del 7,33 % [24].",
+      "terminal": "Gordon con un 1,5 % de crecimiento, por debajo de la inflación esperada en euros (≈ 2 %): suponemos que el negocio pierde valor real a largo plazo por la IA y las herramientas gratuitas. El valor terminal es el 54 % del total. El múltiplo de salida implícito (≈ 8 veces el EBITDA) es coherente con lo que hoy se paga por software sin crecimiento (Jamf 14,3x, Dropbox ≈ 13x) y queda por debajo [30]."
+    },
+    "sostenibilidad": {
+      "puente_ingresos": [
+        {
+          "periodo": "2026e",
+          "volumen_pct": -5,
+          "precio_pct": 7.5,
+          "otros_pct": -1.4,
+          "comentario": "Los clientes bajan ≈ 5 % (−7 % interanual en junio, con las bajas de SMB estabilizándose) y el ARR medio por cliente sube ≈ 7,5 % porque se van los pequeños y crecen las grandes cuentas; la divisa resta 2,4 puntos [2]."
+        },
+        {
+          "periodo": "2027e",
+          "volumen_pct": -2,
+          "precio_pct": 5,
+          "otros_pct": 0,
+          "comentario": "Bajas de SMB más bajas (−2 % de clientes) y ARR medio +5 % por Enterprise (+8-11 %), TeamViewer ONE y DEX [2]."
+        },
+        {
+          "periodo": "2028e",
+          "volumen_pct": -1,
+          "precio_pct": 4.5,
+          "otros_pct": 0,
+          "comentario": "Clientes −1 %; precio y mezcla +4,5 %: TeamViewer ONE y el canal de ServiceNow [12]."
+        },
+        {
+          "periodo": "2029e",
+          "volumen_pct": -0.5,
+          "precio_pct": 4,
+          "otros_pct": 0,
+          "comentario": "Clientes casi estables; precio y mezcla +4 %."
+        },
+        {
+          "periodo": "2030e",
+          "volumen_pct": 0,
+          "precio_pct": 3,
+          "otros_pct": 0,
+          "comentario": "Clientes estables; precio y mezcla +3 %, cerca de la inflación más la mezcla."
+        }
+      ],
+      "mercado_final": null,
+      "veredicto": "En parte",
+      "justificacion": "En parte. La prueba de inversión pasa (el crecimiento no necesita capital: capex del 2,8 % de las ventas y circulante negativo), pero en un negocio sin inversión la prueba es el poder de precios y la cuota, y ahí falla a medias: el crecimiento proyectado (2,4 % anual) sale de subir el ARR medio por cliente un 3-7,5 % al año mientras los clientes bajan, y en 2025 las subidas de precio en SMB dispararon las bajas y se retiraron [2, 4]. El NRR total es del 93 %. La parte Enterprise sí muestra poder de precios (grandes cuentas +11 %, renovaciones plurianuales), pero es solo un tercio del ARR. Mantenemos el base porque ya está por debajo de la guía de medio plazo y del consenso, pero la calidad del foso no garantiza ni ese 2-3 %: depende de que la IA no vacíe el soporte remoto de las pymes."
+    },
+    "lectura": "El DCF da 16,89 EUR por acción con un WACC del 8,35 % y un crecimiento terminal del 1,5 %; el valor terminal es el 54 %. Es más del doble del precio porque el negocio genera ≈ 200 M de caja libre al año sobre una capitalización de 1.110 M: rentabilidad por FCF del 15,2 %. El DCF inverso dice que el precio de 7,01 EUR equivale a que las ventas caigan un 4,5 % al año durante nueve años (frente al +2,5 % de nuestro base) o a un margen EBITDA del 23,5 % para siempre (41,5 % en el base), con una rentabilidad implícita del 14,1 %. Es un precio que descuenta un declive estructural: el que traería la sustitución del soporte remoto por agentes de IA. Si eso no pasa, el valor está muy por encima; si pasa, el bajista (6,10 EUR) es el escenario relevante. La sensibilidad es moderada: ±0,5 puntos de WACC mueven el valor entre ≈ 15,6 y 18,6 EUR.",
+    "confianza": "Media"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": -5,
+        "ajuste_margen_pp": -4,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": -0.5,
+        "multiplo_salida": null,
+        "perfil": [
+          {
+            "periodo": "2027e",
+            "crecimiento_pp": -6,
+            "margen_pp": -4
+          }
+        ],
+        "narrativa": "La IA y Microsoft se comen el soporte remoto de las pymes: los clientes caen un 8-10 % al año, las ventas bajan un 3 % en 2027 y siguen cayendo un 1,5-3,5 % anual, y el margen pierde 4 puntos por la presión de precios y la inversión en IA. Le pasó a TeamViewer en SMB en 2025 (bajas tras subir precios) y al software de escritorio sustituido por servicios incluidos."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Las bajas de SMB se estabilizan en 2026, Enterprise sigue creciendo ≈ 10 % con TeamViewer ONE, DEX y ServiceNow, y las ventas crecen un 3-3,5 % en 2027-2029 con el margen EBITDA en ≈ 41,5 %. La deuda baja a menos de 1,5 veces el EBITDA en 2028."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": 2,
+        "ajuste_margen_pp": 1,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "La IA se convierte en un producto que se cobra (Tia, sesiones resumidas, reparación automática): las ventas crecen un 5-5,5 % en 2027-2029, como el «dígito medio-alto» de la dirección, y el margen sube un punto. Vuelven las recompras."
+      }
+    ],
+    "comentario": "Probabilidades del 25/50/25. En valor intrínseco la asimetría es muy favorable: bajista de 6,10 EUR (−13 %) frente a un alcista de 21,49 EUR (+207 %), porque el precio ya descuenta un declive. A 12 meses es menos favorable: bajista de 5,35 EUR (−23,7 %) y alcista de 10,67 (+52,1 %), con el múltiplo de hoy. El bajista es verosímil y no cosmético: la pérdida de clientes ya es del 7 % anual.",
+    "confianza": "Media"
+  },
+  "suma_partes": {
+    "aplica": false,
+    "descuento_holding_pct": 0,
+    "partes": [],
+    "comentario": "No aplica: acceso remoto, DEX y Frontline se venden juntos (TeamViewer ONE), comparten clientes y la empresa no da resultados por línea.",
+    "confianza": "Media"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2026-06-30",
+      "deuda_financiera": 839.3,
+      "arrendamientos": 33.1,
+      "caja": 39.6,
+      "minoritarios": 0,
+      "pensiones": 0,
+      "asociadas": 11.5,
+      "otros_ajustes": 0
+    },
+    "rab": null,
+    "referencia_mercado": {
+      "mercado": "S&P 500 (prima implícita de Damodaran), la principal para mercados desarrollados",
+      "prima_implicita_pct": 4.2,
+      "fecha": "2026-10",
+      "fuente": "Damodaran, ERPbymonth.xlsx [24]"
+    },
+    "pesos": {
+      "dcf": 60,
+      "comparables": 10,
+      "transacciones": 0,
+      "suma_partes": 0,
+      "escenarios": 30
+    },
+    "objetivo_12m": {
+      "ejercicio": "2028e",
+      "casos": [
+        {
+          "escenario": "Bajista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 0.99,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "BPA 2028e de 0,99 EUR: ventas de 721 M (−3 % en 2027 y −1,5 % en 2028) con margen EBITDA del 37-37,5 %; a 5,4 veces (mínimo de 5 años al cierre), 5,35 EUR."
+        },
+        {
+          "escenario": "Base",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 1.26,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "BPA 2028e de 1,26 EUR: ventas de 805 M, margen EBITDA del 41,5 %, intereses a la baja con la deuda (−26 M); a 6,1 veces (el PER de hoy, regla v2 por estar desrateada), 7,69 EUR."
+        },
+        {
+          "escenario": "Alcista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 1.35,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "BPA 2028e de 1,35 EUR: ventas de 836 M y margen del 42,5 %; a 7,9 veces (techo de base × 1,3), 10,67 EUR."
+        }
+      ],
+      "per_historico": {
+        "base": "adelantado",
+        "actual": 6.07,
+        "mediana_5a": 14.39,
+        "minimo_5a": 5.68,
+        "media_larga": 12.95,
+        "excluidos": "PER adelantado de cada cierre (cierre ÷ BPA del año siguiente en nuestra base: ajustado de la empresa menos pagos en acciones) [1, 7, 20]: 2021 11,82 ÷ 0,565 = 20,9x; 2022 12,05 ÷ 0,791 = 15,2x; 2023 14,06 ÷ 0,977 = 14,4x; 2024 9,54 ÷ 1,118 = 8,5x; 2025 6,05 ÷ 1,066 (nuestro 2026e) = 5,7x. Ninguno excluido. Mediana 14,4x; mínimo 5,7x; media (5 años) 12,9x. 2020 no entra: el BPA ajustado de 2021 se medía sobre la facturación.",
+        "v2": {
+          "mediana_5a": 13.77,
+          "minimo_5a": 5.41,
+          "media_larga": 13.57,
+          "excluidos": "PER al cierre (cierre ÷ BPA del mismo año): 2022 21,3x; 2023 17,8x; 2024 9,8x; 2025 5,4x (2021 sin BPA comparable). Mediana 13,8x, mínimo 5,4x."
+        }
+      },
+      "comparables_per": {
+        "mediana": 16.4
+      },
+      "consenso": {
+        "bpa_ano1": 0.95,
+        "bpa_ano2": 1,
+        "objetivo_medio": 7.99,
+        "objetivo_min": 5.7,
+        "objetivo_max": 13,
+        "analistas": 14,
+        "tendencia_3m": "subidas",
+        "fuente": "MarketScreener: BPA NIIF de 2027e y 2028e y objetivo medio de 14 analistas; mínimo y máximo de Yahoo (13 analistas) [21, 22]"
+      },
+      "diferencia_consenso": "Nuestro BPA ajustado de 2027e (1,16 EUR) es un 5 % mayor que el de Yahoo (1,10, base mixta) y un 22 % mayor que el NIIF de MarketScreener (0,95), que carga ≈ 0,15 EUR de amortización de compras y pagos en acciones; en ventas coincidimos (777,7 frente a 784,9 M) [21, 22]. La diferencia es de definición, no de previsión. Nuestro objetivo a 12 meses (7,85 EUR) está un 2 % por debajo del objetivo medio de los analistas (7,99 EUR, entre 5,70 y 13,00), que sube desde el verano.",
+      "media": null,
+      "comentario": "Hay 107 % de distancia entre el objetivo a 12 meses (7,85 EUR) y el valor intrínseco (16,26 EUR). Para cerrarla hace falta que el mercado deje de descontar el declive: dos o tres trimestres con el ARR creciendo de nuevo (el primero, el 3T26 del 3-nov), una recompra grande cuando la deuda baje de 2x, o una oferta de un fondo. Sin eso, la regla v2 (que se aplica porque la acción cotiza a menos de la mitad de su PER histórico) solo da el crecimiento del BPA: +9,7 % en el base. La tesis de valor es a varios años, no a 12 meses."
+    },
+    "comentario": "El valor intrínseco (16,26 EUR) sale en un 60 % del DCF (16,89), un 30 % de los escenarios y un 10 % de los comparables. Los tres coinciden en que vale más del doble del precio, y lo mismo dicen las compras de fondos (≈ 10,30 EUR a 3,3 veces las ventas). La dispersión es grande y el DCF manda porque el negocio genera caja de forma estable y la deuda se puede medir. La gran distancia con el precio no es un error de cifras: el mercado descuenta un declive del 4,5 % anual por la IA que nuestro base no supone. Por eso el objetivo a 12 meses (7,85 EUR, +12,0 %) está muy por debajo del valor intrínseco: no hay razón para que el múltiplo se mueva en un año sin pruebas de que el ARR vuelve a crecer.",
+    "confianza": "Media"
+  },
+  "catalizadores": {
+    "items": [
+      {
+        "fecha": "2026-11-03",
+        "evento": "Resultados del 3T26 y conferencia [2]",
+        "efecto": "Primer examen de la aceleración del ARR prometida para el segundo semestre, de las bajas de clientes SMB y de la deuda; el mercado ya ha subido un 48 % en seis meses",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2026-12",
+        "evento": "Objetivo de apalancamiento de ≈ 2,3 veces el EBITDA a fin de 2026 [4]",
+        "efecto": "Abre la puerta a nuevas recompras (la junta de 2026 autorizó hasta el 10 % del capital [15])",
+        "probabilidad": "Media",
+        "sentido": "+"
+      },
+      {
+        "fecha": "2027-02",
+        "evento": "Resultados de 2026 y guía de 2027",
+        "efecto": "Dirá si 2027 vuelve a crecer (nuestro base: +3 %) o sigue plano; la guía de 2026 decepcionó (−6,3 % en el día) [4]",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2026-2027",
+        "evento": "Ventas del acuerdo con ServiceNow y de TeamViewer ONE / DEX en grandes cuentas [12]",
+        "efecto": "Prueba de que Enterprise compensa a SMB; el ARR Enterprise crece un 8,3 % [2]",
+        "probabilidad": "Media",
+        "sentido": "+"
+      },
+      {
+        "fecha": "2026-2027",
+        "evento": "Refinanciación: Schuldschein nuevo y vencimientos de 2029 (461,5 M) [1, 2]",
+        "efecto": "Coste de la deuda y margen de maniobra; hoy sin tensión",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2027",
+        "evento": "Oferta de un fondo de capital riesgo (precedentes: SolarWinds, Jamf) [27, 29]",
+        "efecto": "Las compras de fondos se pagaron a 3,3-5,5 veces las ventas: ≈ 10-20 EUR por acción para TeamViewer",
+        "probabilidad": "Baja",
+        "sentido": "+"
+      },
+      {
+        "fecha": "2026-2028",
+        "evento": "Producto de IA que se cobre (Tia, sesiones resumidas, reparación automática)",
+        "efecto": "Convertiría la IA de amenaza en precio; sin cifras de ingresos todavía",
+        "probabilidad": "Media",
+        "sentido": "+"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "riesgos": {
+    "items": [
+      {
+        "riesgo": "Agentes de IA que arreglan los equipos sin técnico conectado y vacían el soporte remoto de las pymes",
+        "tipo": "Tecnología / demanda",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "Escenario bajista: DCF de 6,10 EUR (−13 %) y 5,35 EUR a 12 meses (−23,7 %); el precio ya descuenta ventas −4,5 % al año",
+        "mitigante": "El acceso remoto sigue haciendo falta cuando el agente falla, en industria (Frontline, OT) y con normas de seguridad; TeamViewer integra IA propia (Tia) y se asocia con ServiceNow [12]",
+        "senal": "Clientes de pago cayendo más del 8 % interanual o NRR de SMB por debajo del 90 %"
+      },
+      {
+        "riesgo": "Herramientas gratis o incluidas: Microsoft Quick Assist en Windows y Remote Help en Intune",
+        "tipo": "Competencia",
+        "probabilidad": "Alta",
+        "impacto": "Medio",
+        "efecto_valor": "Cada punto más de bajas anuales de clientes ≈ −0,7 % de ventas; 3 puntos más durante cinco años ≈ −2,5 EUR por acción en el DCF",
+        "mitigante": "Multiplataforma (Mac, Linux, móviles, máquinas), conexión sin VPN y seguridad que las herramientas de Microsoft no cubren igual [1]",
+        "senal": "Pérdidas de clientes en cuentas de 5-50 puestos y anuncios de Microsoft de incluir más funciones en E3/E5"
+      },
+      {
+        "riesgo": "Pérdida continuada de clientes pequeños (SMB, dos tercios del ARR) por precios y competencia barata (AnyDesk, Splashtop, RustDesk)",
+        "tipo": "Demanda",
+        "probabilidad": "Alta",
+        "impacto": "Medio",
+        "efecto_valor": "Ya en el base: clientes −7 % en el último año (611.900) y ARR de SMB −3,6 % [2]; si sigue a −7 % hasta 2028, el BPA de 2028e baja ≈ 10 % (la rentabilidad base a 12 meses bajaría a ≈ −1 %)",
+        "mitigante": "Sube el ARR medio por cliente; las bajas se concentran en cuentas muy pequeñas",
+        "senal": "ARR de SMB por debajo de −4 % en el 3T26 y el 4T26"
+      },
+      {
+        "riesgo": "Integración de 1E y crecimiento de DEX por debajo de lo pagado (682,5 M, ≈ 10 veces las ventas)",
+        "tipo": "Ejecución / contable",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "Deterioro posible de parte del fondo de comercio (sin caja); en valor, ya contamos con que 1E apenas crece (el sector público de EE. UU. falló en 2025 [6])",
+        "mitigante": "DEX es la base de la oferta a grandes cuentas y del acuerdo con ServiceNow [12]",
+        "senal": "ARR de 1E/DEX plano o a la baja; test de deterioro del informe anual 2026"
+      },
+      {
+        "riesgo": "Deuda tras la compra de 1E: ≈ 870 M brutos y 2,7 veces el EBITDA",
+        "tipo": "Financiero",
+        "probabilidad": "Baja",
+        "impacto": "Medio",
+        "efecto_valor": "Un punto más de tipos en la deuda variable ≈ −0,03 EUR de BPA; un recorte de margen de 4 puntos llevaría el apalancamiento a ≈ 3,2 veces",
+        "mitigante": "FCF de ≈ 170-200 M al año; vencimientos de 2026 ya refinanciados en buena parte [1, 2]",
+        "senal": "Deuda neta / EBITDA por encima de 2,5 veces a fin de 2026"
+      },
+      {
+        "riesgo": "Ciberataque o abuso de la herramienta (acceso remoto usado en estafas o intrusiones)",
+        "tipo": "Reputación / regulación",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "Un incidente grave podría costar un 10-20 % del valor en el corto plazo y acelerar las bajas",
+        "mitigante": "Incidente de 2024 (grupo APT29 en la red corporativa) sin acceso al producto ni a datos de clientes [1]; inversión en seguridad",
+        "senal": "Avisos de autoridades de ciberseguridad o caída de la cuota en sector público"
+      },
+      {
+        "riesgo": "Divisa: el 37 % de las ventas en América (sobre todo USD)",
+        "tipo": "Financiero",
+        "probabilidad": "Media",
+        "impacto": "Bajo",
+        "efecto_valor": "En 2026 la divisa resta ≈ 2,4 puntos de crecimiento [2]; un 10 % de caída del USD ≈ −3 % de ventas y −5 % de BPA",
+        "mitigante": "Parte de los costes en USD",
+        "senal": "EUR/USD por encima de 1,25"
+      },
+      {
+        "riesgo": "Directivos que no cumplen la guía (2025 incumplida y la de 2026 en el límite bajo)",
+        "tipo": "Gobierno",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "Otra rebaja como la de oct-2025 costó un 21,6 % en un día [6]",
+        "mitigante": "Los directivos compraron acciones tras la rebaja [17]",
+        "senal": "Guía de ingresos de 2026 por debajo de 749 M o rebaja del margen"
+      }
+    ],
+    "premortem": "Es octubre de 2029 y TeamViewer vale un 40 % menos. Lo que pasó: en 2027 Microsoft metió en Windows y en Microsoft 365 un agente de soporte con IA que diagnostica y arregla los equipos solo y, cuando hace falta, abre una sesión de Quick Assist sin coste. Las pymes, que eran dos tercios del ARR, dejaron de renovar al ritmo del 10-12 % al año, y las subidas de precio que habían sostenido el ARR medio dejaron de funcionar. Enterprise siguió creciendo, pero solo un 5 %, porque ServiceNow y Microsoft ofrecían lo mismo dentro de sus plataformas, y 1E no despegó: en 2028 TeamViewer deterioró 300 M del fondo de comercio. Las ventas bajaron a 680 M, el margen EBITDA al 36 % y la deuda volvió a 3 veces el EBITDA, sin recompras. El PER se quedó en 5. Lo habrían anticipado los clientes de pago cayendo más del 8 % anual, el NRR por debajo del 90 % y que Tia no generara ingresos propios en 2027.",
+    "ia": {
+      "exposicion": "Alta",
+      "sentido": "Mixto",
+      "efecto_valor": "Entre −30 % (bajista: agentes de IA y herramientas gratuitas vacían el soporte de pymes) y +30 % (la IA se vende como producto y en Enterprise); el precio ya descuenta la mitad mala",
+      "comentario": "Es el riesgo central de la tesis. Amenaza: los agentes de soporte con IA (Microsoft Copilot, ServiceNow, Moveworks, agentes de los propios fabricantes de PC) resuelven solos muchas incidencias que hoy necesitan a un técnico conectado, y Microsoft regala Quick Assist con Windows e incluye Remote Help en Intune; eso golpea a SMB, que ya pierde un 7 % de clientes al año [2, 13]. Oportunidad: cuando el agente no basta hace falta una conexión segura al equipo, y TeamViewer tiene la base instalada (más de 600.000 clientes de pago y miles de millones de instalaciones) para ser la «mano» del agente: lo intenta con Tia, con DEX de 1E (arreglo automático de equipos) y con el acuerdo con ServiceNow [12]. Hoy no hay ingresos de IA publicados, así que la oportunidad es opción y la amenaza, hecho. Neto: exposición alta y sentido mixto con sesgo negativo; lo recogemos con 1 punto de prima de riesgo en el WACC y un bajista del 25 %."
+    },
+    "confianza": "Media"
+  },
+  "esg": {
+    "calificaciones": [],
+    "materialidad": "Lo material para TeamViewer es la ciberseguridad y la protección de datos: su producto abre el acceso a equipos de terceros, y un fallo de seguridad o el uso de la herramienta en estafas al consumidor (falsos técnicos de soporte) es el mayor riesgo de reputación [1]. Le siguen el gobierno (consejo de supervisión de 8 miembros, todos independientes, y retribución variable ligada a ARR, márgenes y acción [1]) y la retención del talento técnico. El impacto ambiental es pequeño (software en la nube); publica el estado de sostenibilidad en el Geschäftsbericht [1].",
+    "controversias": "Ataque del grupo ruso APT29 a la red corporativa en junio de 2024, contenido sin acceso al producto ni a datos de clientes según la empresa [1]; uso fraudulento recurrente de la herramienta por estafadores de soporte técnico, que la empresa combate con avisos y bloqueos. Sin multas ni litigios materiales abiertos en las cuentas de 2025 [1]. No se han encontrado calificaciones ESG públicas fiables y recientes (MSCI, Sustainalytics) en tres búsquedas.",
+    "confianza": "Baja"
+  },
+  "preguntas": {
+    "items": [
+      {
+        "tema": "Clientes SMB",
+        "pregunta": "¿Cuántas de las 46.000 bajas de clientes del último año se fueron a herramientas gratuitas de Microsoft o a agentes de IA, y cuántas por precio o a competidores baratos?",
+        "por_que": "Separa el base del bajista: la primera causa no tiene arreglo, la segunda sí [2]."
+      },
+      {
+        "tema": "IA",
+        "pregunta": "¿Cuántos ingresos o ARR genera hoy Tia y qué parte de los clientes lo usa?",
+        "por_que": "Sin cifras, la IA es solo amenaza en la valoración."
+      },
+      {
+        "tema": "Crecimiento",
+        "pregunta": "¿Qué ARR Enterprise y SMB espera la dirección a fin de 2026 tras un 1S plano?",
+        "por_que": "Nuestro +3 % de 2027 depende de que SMB deje de caer [2]."
+      },
+      {
+        "tema": "1E / DEX",
+        "pregunta": "¿Cuánto crece el ARR de 1E en 2026 y cuánto aporta el acuerdo con ServiceNow?",
+        "por_que": "Se pagaron 682,5 M; un deterioro del fondo de comercio es posible [1, 12]."
+      },
+      {
+        "tema": "Capital",
+        "pregunta": "¿Con qué apalancamiento volverán las recompras y de qué tamaño?",
+        "por_que": "A 6,6 veces el BPA, recomprar crea más valor que amortizar deuda al 4,75 %."
+      },
+      {
+        "tema": "Precio",
+        "pregunta": "¿Qué subidas de precio hay previstas en 2027 en SMB tras las bajas de 2025?",
+        "por_que": "El base supone un 3-5 % de subida del ARR medio por cliente [2]."
+      },
+      {
+        "tema": "Deuda",
+        "pregunta": "¿Qué tipo y plazo tiene el Schuldschein nuevo y cómo se cubren los vencimientos de 2029?",
+        "por_que": "Coste de la deuda del WACC [2]."
+      },
+      {
+        "tema": "Seguridad",
+        "pregunta": "¿Qué ha cambiado tras el incidente de 2024 y cuántos clientes de sector público se han perdido por requisitos de seguridad?",
+        "por_que": "Es el riesgo de reputación más grave [1]."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sentimiento": null,
+  "fuentes": [
+    {
+      "id": 1,
+      "titulo": "Geschäftsbericht 2025 (informe anual con cuentas consolidadas NIIF-UE, notas, informe de gestión, declaración de gobierno corporativo e informe de remuneraciones; PwC)",
+      "editor": "TeamViewer SE",
+      "tipo": "Primaria",
+      "fecha": "2026-03-18",
+      "url": "https://ir-api.eqs.com//media/document/82a3641a-6647-41ac-b435-f7a47fa71aeb/assets/DE000A2YN900-JA-2025-EQ-D-00.pdf"
+    },
+    {
+      "id": 2,
+      "titulo": "Q2 2026 Press Release and Quarterly Statement (cuenta, balance y flujos del 2T26 y del 1S26, sin auditar)",
+      "editor": "TeamViewer SE (EQS)",
+      "tipo": "Primaria",
+      "fecha": "2026-07-28",
+      "url": "https://app.boersengefluester.de/en/newswire/DE000A2YN900/teamviewer-se/dex-turnaround-and-teamviewer-one-platform-momentum-full-year-guidance-reaffirmed-2372290"
+    },
+    {
+      "id": 3,
+      "titulo": "Q1 2026 Press Release and Quarterly Statement",
+      "editor": "TeamViewer SE (EQS)",
+      "tipo": "Primaria",
+      "fecha": "2026-05-06",
+      "url": "https://app.boersengefluester.de/en/newswire/DE000A2YN900/teamviewer-se/revenue-in-line-with-expectations-enterprise-arr-up-8-cc-full-year-2026-guidance-reaffirmed-2321952"
+    },
+    {
+      "id": 4,
+      "titulo": "Q4/FY 2025 Press Release: «TeamViewer delivered on FY 2025 pro forma guidance…» (previsión 2026 y objetivos a medio plazo)",
+      "editor": "TeamViewer SE (EQS)",
+      "tipo": "Primaria",
+      "fecha": "2026-02-10",
+      "url": "https://www.eqs-news.com/news/corporate-news/teamviewer-erfuellt-pro-forma-prognose-fuer-geschaeftsjahr-2025-starkes-8-wachstum-des-bereinigte-ebitda-bereinigte-ebitda-marge-von-44-3/e2f8c1f9-341a-488f-b5fd-e80c863e42be_en"
+    },
+    {
+      "id": 5,
+      "titulo": "Q3 2025 Press Release and Quarterly Statement",
+      "editor": "TeamViewer SE (EQS)",
+      "tipo": "Primaria",
+      "fecha": "2025-10-22",
+      "url": "https://app.boersengefluester.de/en/newswire/DE000A2YN900/teamviewer-se/teamviewer-continues-to-deliver-arr-and-revenue-growth-yoy-with-46-adj-ebitda-margin-2216490"
+    },
+    {
+      "id": 6,
+      "titulo": "EQS-Adhoc: «TeamViewer discloses Q3 2025 results and updates FY 2025 pro forma guidance» (rebaja del ARR 2025 y de los ingresos 2026)",
+      "editor": "TeamViewer SE (EQS)",
+      "tipo": "Primaria",
+      "fecha": "2025-10-21",
+      "url": "https://app.boersengefluester.de/en/newswire/DE000A2YN900/teamviewer-se/teamviewer-discloses-q3-2025-results-and-updates-fy-2025-pro-forma-guidance-2216474"
+    },
+    {
+      "id": 7,
+      "titulo": "Q4/FY 2023 Press Release con estados consolidados 2023 y 2022 («TeamViewer delivers double-digit topline growth…»)",
+      "editor": "TeamViewer SE (EQS, copia en webdisclosure)",
+      "tipo": "Primaria",
+      "fecha": "2024-02-07",
+      "url": "https://webdisclosure.com/press-release/cannapreneur-partners-etr-teamviewer-delivers-double-digit-topline-growth-strong-margin-and-81-basic-eps-increase-6y47JVehFKC"
+    },
+    {
+      "id": 8,
+      "titulo": "Q4/FY 2022 Press Release con estados consolidados 2022 y 2021 («TeamViewer delivers on 2022 targets…»)",
+      "editor": "TeamViewer SE (EQS, copia en webdisclosure)",
+      "tipo": "Primaria",
+      "fecha": "2023-02-07",
+      "url": "https://webdisclosure.com/press-release/cannapreneur-partners-etr-teamviewer-delivers-on-2022-targets-and-increases-earnings-per-share-by-46-ghKpFwerUpq"
+    },
+    {
+      "id": 9,
+      "titulo": "Remote Desktop Software Market Outlook (tamaño 2025: 4.100 M USD; TCAC 14,7 % hasta 2034)",
+      "editor": "Research and Markets",
+      "tipo": "Sectorial",
+      "fecha": "2026",
+      "url": "https://www.researchandmarkets.com/reports/6185692/remote-desktop-software-market-outlook-market"
+    },
+    {
+      "id": 10,
+      "titulo": "Remote Desktop Software Global Market Report (3.110 M USD en 2025; 7.240 M en 2030)",
+      "editor": "The Business Research Company (vía GII)",
+      "tipo": "Sectorial",
+      "fecha": "2026",
+      "url": "https://www.giikorea.co.kr/report/tbrc1977384-remote-desktop-software-global-market-report.html"
+    },
+    {
+      "id": 11,
+      "titulo": "Enterprise Digital Employee Experience Management Tools Market (1.655 M USD en 2025; TCAC 11,6 %)",
+      "editor": "Intel Market Research",
+      "tipo": "Sectorial",
+      "fecha": "2026",
+      "url": "https://www.intelmarketresearch.com/enterprise-digital-employee-experience-management-tools-market-55919"
+    },
+    {
+      "id": 12,
+      "titulo": "TeamViewer and ServiceNow launch strategic partnership to accelerate autonomous IT operations",
+      "editor": "TeamViewer SE",
+      "tipo": "Primaria",
+      "fecha": "2026-07-23",
+      "url": "https://www.teamviewer.com/hu/global/company/press/2026/teamviewer-servicenow-launch-strategic-partnership-accelerate-autonomous-it-operations/"
+    },
+    {
+      "id": 13,
+      "titulo": "«TeamViewer und Aumovio geraten in den Sog der KI-Ängste» (Bernstein incluye a TeamViewer entre los valores europeos expuestos a la sustitución por IA)",
+      "editor": "stock3 / dpa-AFX",
+      "tipo": "Prensa",
+      "fecha": "2026-02-17",
+      "url": "https://stock3.com/news/teamviewer-und-aumovio-geraten-in-den-sog-der-ki-aengste-16934653"
+    },
+    {
+      "id": 14,
+      "titulo": "Yahoo Finance, ficha de N-able (ingresos y margen EBITDA de los últimos 12 meses)",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-20",
+      "url": "https://finance.yahoo.com/quote/NABL/"
+    },
+    {
+      "id": 15,
+      "titulo": "Einberufung der Hauptversammlung 2026 (orden del día: autorización de recompra de hasta el 10 %)",
+      "editor": "TeamViewer SE",
+      "tipo": "Primaria",
+      "fecha": "2026-04-22",
+      "url": "https://www.hauptversammlung.de/fileadmin/public/user_upload/teamviewer_TO26.pdf"
+    },
+    {
+      "id": 16,
+      "titulo": "EQS-News: Annual General Meeting 2026 of TeamViewer SE: shareholders elect new Supervisory Board member and approve all agenda items with a large majority",
+      "editor": "TeamViewer SE (EQS)",
+      "tipo": "Primaria",
+      "fecha": "2026-06-02",
+      "url": "https://www.webdisclosure.com/press-release/cannapreneur-partners-etr-annual-general-meeting-2026-of-teamviewer-se-shareholders-elect-new-supervisory-board-member-and-approve-all-agenda-items-with-a-large-majority-MnxfPPPfzVU"
+    },
+    {
+      "id": 17,
+      "titulo": "TeamViewer SE: director deals (notificaciones del artículo 19 MAR de los últimos 12 meses)",
+      "editor": "Hargreaves Lansdown",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-20",
+      "url": "https://www.hl.co.uk/shares/shares-search-results/t/teamviewer-se-npv/director-deals"
+    },
+    {
+      "id": 18,
+      "titulo": "«TeamViewer-Aktie: Management kauft bei Rekordtief»",
+      "editor": "boerse-express",
+      "tipo": "Prensa",
+      "fecha": "2025-10-26",
+      "url": "https://www.boerse-express.com/news/articles/teamviewer-aktie-management-kauft-bei-rekordtief-836101"
+    },
+    {
+      "id": 19,
+      "titulo": "«TeamViewer-Aktie: 6,5-Prozent-Sprung auf 6,89 Euro» (Goldman Sachs supera el 5 %; objetivos de DZ Bank y Deutsche Bank)",
+      "editor": "kapitalmarktexperten.de",
+      "tipo": "Prensa",
+      "fecha": "2026-08-19",
+      "url": "https://www.kapitalmarktexperten.de/teamviewer-aktie-65-prozent-sprung-auf-689-euro/"
+    },
+    {
+      "id": 20,
+      "titulo": "Yahoo Finance, históricos diarios de TMV.DE, EXS1.DE (DAX) y EXV3.DE (tecnología europea) (herramientas/bolsa.mjs y movimiento.mjs)",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-20",
+      "url": "https://finance.yahoo.com/quote/TMV.DE/history/"
+    },
+    {
+      "id": 21,
+      "titulo": "Yahoo Finance quoteSummary: consenso de BPA y ventas, objetivos y recomendaciones de TeamViewer y datos de los comparables",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-20",
+      "url": "https://finance.yahoo.com/quote/TMV.DE/analysis/"
+    },
+    {
+      "id": 22,
+      "titulo": "MarketScreener, TeamViewer SE: previsiones financieras 2026-2028 (14 analistas, objetivo medio 7,99 EUR)",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-20",
+      "url": "https://www.marketscreener.com/quote/stock/TEAMVIEWER-SE-66480659/finances/"
+    },
+    {
+      "id": 23,
+      "titulo": "Rendimiento del Bund a 10 años (serie diaria BBSIS)",
+      "editor": "Deutsche Bundesbank",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-20",
+      "url": "https://api.statistiken.bundesbank.de/rest/download/BBSIS/D.I.ZAR.ZI.EUR.S1311.B.A604.R10XX.R.A.A._Z._Z.A?format=csv&lang=en"
+    },
+    {
+      "id": 24,
+      "titulo": "Implied Equity Risk Premiums by month (ERPbymonth.xlsx), octubre de 2026: 4,20 %",
+      "editor": "Aswath Damodaran (NYU Stern)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-01",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx"
+    },
+    {
+      "id": 25,
+      "titulo": "«TeamViewer Stock Forecast: What to Watch in the Q3 2026 Results» (objetivos de DZ Bank, JPMorgan, Berenberg y Barclays; fecha de resultados)",
+      "editor": "Admiral Markets",
+      "tipo": "Analistas",
+      "fecha": "2026-10-12",
+      "url": "https://admiralmarkets.com/education/articles/shares/teamviewer-stock-forecast-q3-2026"
+    },
+    {
+      "id": 26,
+      "titulo": "Noticias de TeamViewer (titulares y fechas de junio a octubre de 2026)",
+      "editor": "boerse-express",
+      "tipo": "Prensa",
+      "fecha": "2026-10-20",
+      "url": "https://www.boerse-express.com/boerse/aktie/teamviewer-ag-inh-on+tts-175136296/news"
+    },
+    {
+      "id": 27,
+      "titulo": "SolarWinds to Be Acquired by Turn/River Capital (18,50 USD por acción, valor empresa 4.400 M USD)",
+      "editor": "SolarWinds",
+      "tipo": "Primaria",
+      "fecha": "2025-02-07",
+      "url": "https://www.solarwinds.com/company/newsroom/press-releases/solarwinds-to-be-acquired-by-turn-river-capital"
+    },
+    {
+      "id": 28,
+      "titulo": "SolarWinds Announces Fourth Quarter and Full Year 2024 Results (ingresos 2024: 796,9 M USD)",
+      "editor": "SolarWinds",
+      "tipo": "Primaria",
+      "fecha": "2025-02-12",
+      "url": "https://www.solarwinds.com/company/newsroom/press-releases/solarwinds-announces-fourth-quarter-and-full-year-2024-results"
+    },
+    {
+      "id": 29,
+      "titulo": "«Jamf goes private for $2.2 billion: that’s 3.3x ARR…» (ingresos de 12 meses 666 M USD)",
+      "editor": "SaaStr",
+      "tipo": "Prensa",
+      "fecha": "2025-10-29",
+      "url": "https://www.saastr.com/jamf-goes-private-for-2-2-billion-thats-3-3x-arr-why-b2b-can-be-a-long-hard-road"
+    },
+    {
+      "id": 30,
+      "titulo": "Jamf: múltiplos de la operación con Francisco Partners (EV/EBITDA 14,3x)",
+      "editor": "multiples.vc",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-01",
+      "url": "https://multiples.vc/private-comps/jamf"
+    }
+  ],
+  "calc": {
+    "version": 4,
+    "etiquetas": {
+      "margen_bruto": "M. bruto",
+      "margen_bruto_largo": "Margen bruto",
+      "dias_base": "sobre el coste de ventas"
+    },
+    "recomendacion": {
+      "recomendacion": "Mantener",
+      "regla": "Mantener",
+      "regla_absoluta": "Comprar",
+      "regla_relativa": "Comprar",
+      "coincide": true,
+      "conviccion": "Media",
+      "conviccion_sugerida": "Media",
+      "conviccion_razones": [
+        "Mantener con las dos reglas de acuerdo y lejos de los umbrales"
+      ],
+      "reglas_discrepan": false,
+      "relativo": {
+        "prima_implicita_pct": 4.2,
+        "wacc": 7.33,
+        "ke": 9.49,
+        "dcf": 20.66,
+        "dcf_min": 18.65,
+        "dcf_max": 23.06,
+        "valor_objetivo": 19.55,
+        "alcista": 26.21,
+        "bajista": 7.43,
+        "mercado": "S&P 500 (prima implícita de Damodaran), la principal para mercados desarrollados",
+        "fecha": "2026-10",
+        "potencial_pct": 178.9,
+        "rentabilidad_total_pct": 178.9,
+        "asimetria": null
+      },
+      "objetivo_mercado_txt": " · con la prima implícita del mercado: 19,55 (+178,9 %)",
+      "objetivo_mercado_corto": " · mercado 19,55",
+      "rentabilidad_mercado_corto": " · mercado +178,9 %",
+      "potencial_pct": 132,
+      "dividendo_pct": 0,
+      "rentabilidad_total_pct": 132,
+      "alcista_pct": 206.6,
+      "bajista_pct": -13,
+      "asimetria": 15.89,
+      "comprar_por_debajo": 6.83,
+      "vender_por_encima": 8.72,
+      "tabla": [
+        {
+          "concepto": "Objetivo a 12 meses (nuestro PER × nuestro BPA 2028e, ponderado 25/50/25)",
+          "valor": "7,85 EUR"
+        },
+        {
+          "concepto": "Bajista / base / alcista a 12 meses",
+          "valor": "5,4x × 0,99 = 5,35 · 6,1x × 1,26 = 7,69 · 7,9x × 1,35 = 10,67"
+        },
+        {
+          "concepto": "Rentabilidad a 12 meses: ponderada / del base (con dividendo)",
+          "valor": "12,0 % / 9,7 %"
+        },
+        {
+          "concepto": "Regla de múltiplos aplicada",
+          "valor": "v2: base = mín(actual, mediana 5 a) con la historia al cierre; bajista mín. 5 a o base × 0,85; alcista techo base × 1,30 (selector de método: desrateada: la mediana adelantada (14,4x) es 2,4 veces el PER de hoy (6,1x); la historia es de otro régimen y decide la v2)"
+        },
+        {
+          "concepto": "Objetivo medio de los analistas (solo contraste)",
+          "valor": "7,99 (nuestro base -3,8 %)"
+        },
+        {
+          "concepto": "Valor intrínseco (síntesis ponderada, largo plazo)",
+          "valor": "16,26 EUR"
+        },
+        {
+          "concepto": "Potencial sobre el precio actual",
+          "valor": "132,0 %"
+        },
+        {
+          "concepto": "Rentabilidad por dividendo ordinario",
+          "valor": "0,0 %"
+        },
+        {
+          "concepto": "Rentabilidad total esperada a 12 meses",
+          "valor": "132,0 %"
+        },
+        {
+          "concepto": "Escenario alcista / bajista",
+          "valor": "206,6 % / -13,0 %"
+        },
+        {
+          "concepto": "Asimetría (ganancia alcista / pérdida bajista)",
+          "valor": "15,89x"
+        },
+        {
+          "concepto": "Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado",
+          "valor": "14,1 % frente a 8,3 % y 7,3 %"
+        },
+        {
+          "concepto": "Valor objetivo con la prima implícita del mercado (4,2 %, WACC 7,3 %)",
+          "valor": "19,55 EUR"
+        },
+        {
+          "concepto": "Rentabilidad total esperada con la prima del mercado",
+          "valor": "178,9 %"
+        },
+        {
+          "concepto": "Asimetría con la prima del mercado",
+          "valor": "n.d."
+        },
+        {
+          "concepto": "Regla absoluta (frente a su coste de capital)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "Regla relativa (frente a lo que pide el mercado)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "Crecimiento anual implícito en el precio (2027e-2035e) frente al previsto para su mercado",
+          "valor": "-4,5 % frente a 18,6 %"
+        },
+        {
+          "concepto": "¿La calidad de la empresa sostiene el crecimiento previsto?",
+          "valor": "En parte (2,4 % anual proyectado; sin inversión neta)"
+        },
+        {
+          "concepto": "Señal del valor intrínseco (regla del DCF, referencia)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "Recomendación según la regla a 12 meses (Comprar: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender: ponderada ≤ -10 %)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Convicción según los criterios (Mantener con las dos reglas de acuerdo y lejos de los umbrales)",
+          "valor": "Media"
+        }
+      ],
+      "niveles": [
+        {
+          "accion": "Comprar",
+          "condicion": "Por debajo de 6,83 (ponderada a 12 meses ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco)"
+        },
+        {
+          "accion": "Mantener",
+          "condicion": "Entre 6,83 y 8,72"
+        },
+        {
+          "accion": "Vender o reducir",
+          "condicion": "Por encima de 8,72 (ponderada a 12 meses ≤ -10 %)"
+        }
+      ],
+      "precio_txt": "",
+      "valor_objetivo_txt": "",
+      "regla_valor_intrinseco": "Comprar",
+      "objetivo_12m": {
+        "completo": true,
+        "filas": [
+          {
+            "escenario": "Bajista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 0.99,
+            "multiplo": 5.4,
+            "multiplo_informe": null,
+            "origen": "mínimo de 5 años",
+            "precio": 5.35,
+            "rentabilidad_pct": -23.7,
+            "justificacion": "BPA 2028e de 0,99 EUR: ventas de 721 M (−3 % en 2027 y −1,5 % en 2028) con margen EBITDA del 37-37,5 %; a 5,4 veces (mínimo de 5 años al cierre), 5,35 EUR."
+          },
+          {
+            "escenario": "Base",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 1.26,
+            "multiplo": 6.1,
+            "multiplo_informe": null,
+            "origen": "PER actual",
+            "precio": 7.69,
+            "rentabilidad_pct": 9.6,
+            "justificacion": "BPA 2028e de 1,26 EUR: ventas de 805 M, margen EBITDA del 41,5 %, intereses a la baja con la deuda (−26 M); a 6,1 veces (el PER de hoy, regla v2 por estar desrateada), 7,69 EUR."
+          },
+          {
+            "escenario": "Alcista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 1.35,
+            "multiplo": 7.9,
+            "multiplo_informe": null,
+            "origen": "techo de base × 1.3",
+            "precio": 10.67,
+            "rentabilidad_pct": 52.1,
+            "justificacion": "BPA 2028e de 1,35 EUR: ventas de 836 M y margen del 42,5 %; a 7,9 veces (techo de base × 1,3), 10,67 EUR."
+          }
+        ],
+        "regla": {
+          "version": "v2",
+          "bajista": 5.4,
+          "base": 6.1,
+          "alcista": 7.9,
+          "bajista_origen": "mínimo de 5 años",
+          "base_origen": "PER actual",
+          "alcista_origen": "techo de base × 1.3"
+        },
+        "version": "v2",
+        "probabilidades": [
+          25,
+          50,
+          25
+        ],
+        "objetivo_ponderado": 7.85,
+        "objetivo_simple": 7.9,
+        "objetivo_base": 7.69,
+        "rentabilidad_ponderada_pct": 12,
+        "rentabilidad_simple_pct": 12.7,
+        "rentabilidad_base_pct": 9.7,
+        "asimetria": 2.2,
+        "senal": "Mantener",
+        "senal_sin_confirmar": null,
+        "confianza_baja": false,
+        "comprar_por_debajo": 6.83,
+        "vender_por_encima": 8.72,
+        "consenso_objetivo": 7.99,
+        "diferencia_consenso_pct": -3.8,
+        "selector": {
+          "regla": "v2",
+          "motivo": "desrateada: la mediana adelantada (14.4x) es 2.4 veces el PER de hoy (6.1x); la historia es de otro régimen y decide la v2",
+          "v3_sin_selector": {
+            "version": "v3",
+            "rentabilidad_ponderada_pct": 22.3,
+            "rentabilidad_base_pct": 20.4,
+            "senal": "Comprar",
+            "objetivo_ponderado": 8.57
+          },
+          "v2": {
+            "version": "v2",
+            "rentabilidad_ponderada_pct": 12,
+            "rentabilidad_base_pct": 9.7,
+            "senal": "Mantener",
+            "objetivo_ponderado": 7.85
+          }
+        },
+        "v2": {
+          "rentabilidad_ponderada_pct": 12,
+          "rentabilidad_base_pct": 9.7,
+          "senal": "Mantener",
+          "multiplos": [
+            5.4,
+            6.1,
+            7.9
+          ]
+        },
+        "v3_tope_anterior": {
+          "tope": 1.3,
+          "rentabilidad_ponderada_pct": 42.6,
+          "senal": "Comprar"
+        },
+        "v3_sin_selector": {
+          "version": "v3",
+          "rentabilidad_ponderada_pct": 22.3,
+          "rentabilidad_base_pct": 20.4,
+          "senal": "Comprar",
+          "objetivo_ponderado": 8.57
+        },
+        "comparacion_txt": "Para comparar, con la regla v2 (historia al cierre, mismo precio): 5,4x / 6,1x / 7,9x, 12,0 % Mantener; con el tope anterior del base (×1,3, 14-oct mediodía): 42,6 % Comprar; con la v3 sin el selector (tope ×1,1): 22,3 % Comprar. Decide la v2, elegida por el selector de método (desrateada: la mediana adelantada (14,4x) es 2,4 veces el PER de hoy (6,1x); la historia es de otro régimen y decide la v2; METODO-VIGENTE.md)."
+      },
+      "rentabilidad_12m_pct": 12,
+      "rentabilidad_12m_txt": "+12,0 % (base +9,7 %)",
+      "objetivo_12m_txt": "7,85 EUR"
+    },
+    "mercado": {
+      "precio": 7.01,
+      "acciones": 158.4,
+      "capitalizacion": 1110,
+      "deuda_neta": 833,
+      "deuda_neta_ajustada": null,
+      "asimilables_deuda": null,
+      "ajustes_puente": -11,
+      "valor_empresa": 1932,
+      "fecha_puente": "2026-06-30"
+    },
+    "clave": {
+      "capitalizacion": 1110,
+      "valor_empresa": 1932,
+      "deuda_neta": 833,
+      "ev_ventas_ltm": 2.58,
+      "ev_ebitda_ltm": 6.1,
+      "ev_ebitda_ntm": 6,
+      "ev_ebit_ltm": 7.4,
+      "per_ltm": 8.4,
+      "per_ntm": 7.6,
+      "fcf_yield_pct": 15.2,
+      "dividendo_pct": 0,
+      "dn_ebitda": 2.6,
+      "roic_pct": 21.8,
+      "margen_ebitda_pct": 42.1,
+      "deuda_neta_ajustada": 833,
+      "dn_ebitda_ajustada": 2.6,
+      "crecimiento_tcac_pct": 10.5,
+      "ingresos_ntm": 780,
+      "ebitda_ntm": 321,
+      "bpa_ntm": 0.93,
+      "ebitda_ltm": 315,
+      "ingresos_ltm": 748,
+      "ev_rab": null
+    },
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 501.1,
+        "crecimiento_pct": null,
+        "beneficio_bruto": 430.20000000000005,
+        "margen_bruto_pct": 85.9,
+        "ebitda": 168.3,
+        "margen_ebitda_pct": 33.6,
+        "ebit": 117.4,
+        "margen_ebit_pct": 23.4,
+        "beneficio_neto": 50.1,
+        "margen_neto_pct": 10,
+        "bpa": 0.25,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 41.3,
+        "payout_pct": 0
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 565.9,
+        "crecimiento_pct": 12.9,
+        "beneficio_bruto": 484.59999999999997,
+        "margen_bruto_pct": 85.6,
+        "ebitda": 202.2,
+        "margen_ebitda_pct": 35.7,
+        "ebit": 148.39999999999998,
+        "margen_ebit_pct": 26.2,
+        "beneficio_neto": 67.6,
+        "margen_neto_pct": 11.9,
+        "bpa": 0.37,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 42.1,
+        "payout_pct": 0
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 626.7,
+        "crecimiento_pct": 10.7,
+        "beneficio_bruto": 545,
+        "margen_bruto_pct": 87,
+        "ebitda": 238.70000000000002,
+        "margen_ebitda_pct": 38.1,
+        "ebit": 183.4,
+        "margen_ebit_pct": 29.3,
+        "beneficio_neto": 114,
+        "margen_neto_pct": 18.2,
+        "bpa": 0.66,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 22.6,
+        "payout_pct": 0
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 671.4,
+        "crecimiento_pct": 7.1,
+        "beneficio_bruto": 590.6,
+        "margen_bruto_pct": 88,
+        "ebitda": 280.1,
+        "margen_ebitda_pct": 41.7,
+        "ebit": 233.9,
+        "margen_ebit_pct": 34.8,
+        "beneficio_neto": 123.1,
+        "margen_neto_pct": 18.3,
+        "bpa": 0.76,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 33.3,
+        "payout_pct": 0
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 746.8,
+        "crecimiento_pct": 11.2,
+        "beneficio_bruto": 645.5999999999999,
+        "margen_bruto_pct": 86.4,
+        "ebitda": 313.9,
+        "margen_ebitda_pct": 42,
+        "ebit": 260.1,
+        "margen_ebit_pct": 34.8,
+        "beneficio_neto": 118.2,
+        "margen_neto_pct": 15.8,
+        "bpa": 0.75,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 34.7,
+        "payout_pct": 0
+      }
+    ],
+    "tcac": {
+      "periodo": "2021-2025",
+      "ingresos_pct": 10.5,
+      "ebitda_pct": 16.9,
+      "bpa_pct": 31.6
+    },
+    "cuenta_y_prevision": [
+      {
+        "periodo": "2021",
+        "ingresos": 501.1,
+        "ebitda": 168.3
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 565.9,
+        "ebitda": 202.2
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 626.7,
+        "ebitda": 238.70000000000002
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 671.4,
+        "ebitda": 280.1
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 746.8,
+        "ebitda": 313.9
+      },
+      {
+        "periodo": "2026e",
+        "ingresos": 755,
+        "ebitda": 306
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 778,
+        "ebitda": 319
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 805,
+        "ebitda": 334
+      },
+      {
+        "periodo": "2029e",
+        "ingresos": 833,
+        "ebitda": 346
+      },
+      {
+        "periodo": "2030e",
+        "ingresos": 858,
+        "ebitda": 356
+      },
+      {
+        "periodo": "2031e",
+        "ingresos": 879,
+        "ebitda": 365
+      },
+      {
+        "periodo": "2032e",
+        "ingresos": 897,
+        "ebitda": 372
+      },
+      {
+        "periodo": "2033e",
+        "ingresos": 915,
+        "ebitda": 380
+      },
+      {
+        "periodo": "2034e",
+        "ingresos": 931,
+        "ebitda": 387
+      },
+      {
+        "periodo": "2035e",
+        "ingresos": 945,
+        "ebitda": 392
+      }
+    ],
+    "segmentos_ultimo": [
+      {
+        "nombre": "SMB (clientes con ARR < 10.000 EUR)",
+        "ingresos": 527.3,
+        "peso_pct": 70.6,
+        "crecimiento_pct": 1.4,
+        "margen_pct": null,
+        "tipo_margen": null
+      },
+      {
+        "nombre": "Enterprise (ARR ≥ 10.000 EUR)",
+        "ingresos": 219.5,
+        "peso_pct": 29.4,
+        "crecimiento_pct": 45.2,
+        "margen_pct": null,
+        "tipo_margen": null
+      }
+    ],
+    "segmentos_tabla": {
+      "periodos": [
+        "",
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "filas": [
+        {
+          "nombre": "SMB (clientes con ARR < 10.000 EUR)",
+          "v0": null,
+          "v1": 467.2,
+          "v2": 504.6,
+          "v3": 520.2,
+          "v4": 527.3
+        },
+        {
+          "nombre": "Enterprise (ARR ≥ 10.000 EUR)",
+          "v0": null,
+          "v1": 98.6,
+          "v2": 122.1,
+          "v3": 151.2,
+          "v4": 219.5
+        }
+      ]
+    },
+    "segmentos_periodo": "2025",
+    "balance": [
+      {
+        "periodo": "2021",
+        "activo_total": 1546.7,
+        "intangibles": 915.4000000000001,
+        "circulante": -246.29999999999998,
+        "circulante_ventas_pct": -49.2,
+        "caja": 550.5,
+        "deuda_financiera": 877.5,
+        "arrendamientos": 0,
+        "deuda_neta": 327,
+        "patrimonio": 320.1,
+        "minoritarios": 0,
+        "dn_ebitda": 1.94,
+        "dn_patrimonio_pct": 102,
+        "dso": 8,
+        "dio": 0,
+        "dpo": 38,
+        "ciclo_caja": -30,
+        "cobertura_intereses": 6.1,
+        "capital_invertido": 647.1,
+        "fondo_comercio": 667.2,
+        "liquidez_corriente": 1.71
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 1172.7,
+        "intangibles": 880.8,
+        "circulante": -302.90000000000003,
+        "circulante_ventas_pct": -53.5,
+        "caja": 161,
+        "deuda_financiera": 632.6,
+        "arrendamientos": 0,
+        "deuda_neta": 471.6,
+        "patrimonio": 115.3,
+        "minoritarios": 0,
+        "dn_ebitda": 2.33,
+        "dn_patrimonio_pct": 409,
+        "dso": 12,
+        "dio": 0,
+        "dpo": 40,
+        "ciclo_caja": -28,
+        "cobertura_intereses": 5.8,
+        "capital_invertido": 586.9,
+        "fondo_comercio": 667.9,
+        "liquidez_corriente": 0.44
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 1111.5,
+        "intangibles": 843.4000000000001,
+        "circulante": -342.2,
+        "circulante_ventas_pct": -54.6,
+        "caja": 72.8,
+        "deuda_financiera": 529.4,
+        "arrendamientos": 0,
+        "deuda_neta": 456.59999999999997,
+        "patrimonio": 83.7,
+        "minoritarios": 0,
+        "dn_ebitda": 1.91,
+        "dn_patrimonio_pct": 546,
+        "dso": 13,
+        "dio": 0,
+        "dpo": 36,
+        "ciclo_caja": -23,
+        "cobertura_intereses": 10.9,
+        "capital_invertido": 540.3,
+        "fondo_comercio": 667.7,
+        "liquidez_corriente": 0.31
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 1070.3,
+        "intangibles": 817.1,
+        "circulante": -366.8,
+        "circulante_ventas_pct": -54.6,
+        "caja": 55.3,
+        "deuda_financiera": 415.7,
+        "arrendamientos": 29,
+        "deuda_neta": 389.4,
+        "patrimonio": 100.5,
+        "minoritarios": 0,
+        "dn_ebitda": 1.39,
+        "dn_patrimonio_pct": 387,
+        "dso": 16,
+        "dio": 0,
+        "dpo": 71,
+        "ciclo_caja": -55,
+        "cobertura_intereses": 13.4,
+        "capital_invertido": 489.9,
+        "fondo_comercio": 668.1,
+        "liquidez_corriente": 0.25
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 1675.8,
+        "intangibles": 1459.4,
+        "circulante": -367.7,
+        "circulante_ventas_pct": -49.2,
+        "caja": 41.6,
+        "deuda_financiera": 909.9,
+        "arrendamientos": 33.1,
+        "deuda_neta": 901.4,
+        "patrimonio": 164.9,
+        "minoritarios": 0,
+        "dn_ebitda": 2.87,
+        "dn_patrimonio_pct": 547,
+        "dso": 13,
+        "dio": 0,
+        "dpo": 40,
+        "ciclo_caja": -27,
+        "cobertura_intereses": 6.6,
+        "capital_invertido": 1066.3,
+        "fondo_comercio": 1115.5,
+        "liquidez_corriente": 0.15
+      }
+    ],
+    "perimetro_nota": "Cambio de perímetro (2025: 1E (Reino Unido, gestión de la experiencia digital del empleado, DEX) consolidada desde el 31-ene-2025: 682,5 M pagados en caja; fondo de comercio de 668,1 a 1.115,5 M e intangibles de 149,0 a 343,9 M [1]. Las cifras pro forma de la empresa (767,5 M de ingresos 2025) incluyen enero y anulan el «haircut» contable; las del informe son las NIIF (746,8 M).). Los ratios de balance de ese año (días, circulante, deuda neta / EBITDA, ROIC) y los indicadores de calidad contable no son comparables con los anteriores.",
+    "flujos": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 194,
+        "capex": 15.2,
+        "pagos_arrendamientos": 6.9,
+        "fcf": 157.8,
+        "beneficio_neto": 50.1,
+        "conversion_pct": 315,
+        "capex_ventas_pct": 3,
+        "capex_amortizacion": 0.3,
+        "adquisiciones": 23.4,
+        "desinversiones": 0,
+        "dividendos": 0,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 200.6,
+        "fcf_por_accion": 0.79
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 204.3,
+        "capex": 8.8,
+        "pagos_arrendamientos": 9.5,
+        "fcf": 171.8,
+        "beneficio_neto": 67.6,
+        "conversion_pct": 254,
+        "capex_ventas_pct": 1.6,
+        "capex_amortizacion": 0.16,
+        "adquisiciones": 2,
+        "desinversiones": 0,
+        "dividendos": 0,
+        "recompras": 300.1,
+        "emision_acciones": 0,
+        "retorno_accionista": 300.1,
+        "payout_caja_pct": 444,
+        "acciones": 185.1,
+        "fcf_por_accion": 0.93
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 229.9,
+        "capex": 5.6,
+        "pagos_arrendamientos": 11.1,
+        "fcf": 198.8,
+        "beneficio_neto": 114,
+        "conversion_pct": 174,
+        "capex_ventas_pct": 0.9,
+        "capex_amortizacion": 0.1,
+        "adquisiciones": 8.1,
+        "desinversiones": 0,
+        "dividendos": 0,
+        "recompras": 161.9,
+        "emision_acciones": 0,
+        "retorno_accionista": 161.9,
+        "payout_caja_pct": 142,
+        "acciones": 173,
+        "fcf_por_accion": 1.15
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 249.2,
+        "capex": 5.4,
+        "pagos_arrendamientos": 12.5,
+        "fcf": 212.1,
+        "beneficio_neto": 123.1,
+        "conversion_pct": 172,
+        "capex_ventas_pct": 0.8,
+        "capex_amortizacion": 0.12,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 0,
+        "recompras": 137.7,
+        "emision_acciones": 0,
+        "retorno_accionista": 137.7,
+        "payout_caja_pct": 112,
+        "acciones": 161.3,
+        "fcf_por_accion": 1.31
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 233,
+        "capex": 5.8,
+        "pagos_arrendamientos": 12.6,
+        "fcf": 180.8,
+        "beneficio_neto": 118.2,
+        "conversion_pct": 153,
+        "capex_ventas_pct": 0.8,
+        "capex_amortizacion": 0.11,
+        "adquisiciones": 682.5,
+        "desinversiones": 0,
+        "dividendos": 0,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 158,
+        "fcf_por_accion": 1.14
+      }
+    ],
+    "flujos_acumulado": {
+      "periodo": "2021-2025",
+      "fcf": 921,
+      "adquisiciones": 716,
+      "dividendos": 0,
+      "recompras": 600,
+      "conversion_pct": 195
+    },
+    "rentabilidad": [
+      {
+        "periodo": "2021",
+        "nopat": 70,
+        "capital_invertido": 647,
+        "roic_pct": 10.9,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": 103,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 15.7,
+        "roa_pct": 3.2,
+        "margen_neto_pct": 10,
+        "rotacion": 0.32,
+        "apalancamiento": 4.83
+      },
+      {
+        "periodo": "2022",
+        "nopat": 89,
+        "capital_invertido": 617,
+        "roic_pct": 14.4,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": 108,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 31.1,
+        "roa_pct": 5,
+        "margen_neto_pct": 11.9,
+        "rotacion": 0.42,
+        "apalancamiento": 6.25
+      },
+      {
+        "periodo": "2023",
+        "nopat": 142,
+        "capital_invertido": 564,
+        "roic_pct": 25.2,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": 118,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 114.6,
+        "roa_pct": 10,
+        "margen_neto_pct": 18.2,
+        "rotacion": 0.55,
+        "apalancamiento": 11.48
+      },
+      {
+        "periodo": "2024",
+        "nopat": 156,
+        "capital_invertido": 515,
+        "roic_pct": 30.3,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": 130,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 133.7,
+        "roa_pct": 11.3,
+        "margen_neto_pct": 18.3,
+        "rotacion": 0.62,
+        "apalancamiento": 11.84
+      },
+      {
+        "periodo": "2025",
+        "nopat": 170,
+        "capital_invertido": 778,
+        "roic_pct": 21.8,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": 115,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 89.1,
+        "roa_pct": 8.6,
+        "margen_neto_pct": 15.8,
+        "rotacion": 0.54,
+        "apalancamiento": 10.35
+      }
+    ],
+    "roic_incremental_pct": 76.3,
+    "roic_frente_wacc": [
+      {
+        "periodo": "2021",
+        "roic_pct": 10.9,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 15.7,
+        "wacc_pct": 8.3
+      },
+      {
+        "periodo": "2022",
+        "roic_pct": 14.4,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 31.1,
+        "wacc_pct": 8.3
+      },
+      {
+        "periodo": "2023",
+        "roic_pct": 25.2,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 114.6,
+        "wacc_pct": 8.3
+      },
+      {
+        "periodo": "2024",
+        "roic_pct": 30.3,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 133.7,
+        "wacc_pct": 8.3
+      },
+      {
+        "periodo": "2025",
+        "roic_pct": 21.8,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 89.1,
+        "wacc_pct": 8.3
+      }
+    ],
+    "compras": {
+      "tipo": "compra única grande",
+      "subidas": 1,
+      "anios": 4,
+      "fondo_comercio": 1115.5,
+      "fondo_comercio_pct_capital": 115,
+      "roic_pct": 21.8,
+      "roic_sin_fc_pct": null,
+      "texto": "Fondo de comercio: 1.116 M en 2025 (el 115 % del capital invertido medio); ha subido más de un 5 % en 1 de 4 años: compra única grande. El ROIC sin fondo de comercio mide el rendimiento del negocio operativo; decide el publicado (§4.1) y la cifra sin fondo de comercio es dato para una excepción razonada."
+    },
+    "calidad": {
+      "periodo": "2025",
+      "altman_z": 1.01,
+      "altman_zona": "Zona de riesgo",
+      "piotroski_f": 4,
+      "piotroski_detalle": [
+        {
+          "criterio": "Beneficio neto positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "ROA mejora",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Flujo operativo > beneficio neto",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Baja el endeudamiento (deuda / activo)",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Mejora la liquidez corriente",
+          "resultado": "No"
+        },
+        {
+          "criterio": "No emite acciones",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora el margen bruto",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Mejora la rotación del activo",
+          "resultado": "No"
+        }
+      ],
+      "beneish_m": -2.82,
+      "beneish_fiable": false,
+      "beneish_variables": [
+        {
+          "variable": "DSRI",
+          "valor": 0.82
+        },
+        {
+          "variable": "GMI",
+          "valor": 1.02
+        },
+        {
+          "variable": "AQI",
+          "valor": 1.08
+        },
+        {
+          "variable": "SGI",
+          "valor": 1.11
+        },
+        {
+          "variable": "DEPI",
+          "valor": 0.97
+        },
+        {
+          "variable": "SGAI",
+          "valor": 0.94
+        },
+        {
+          "variable": "LVGI",
+          "valor": 0.99
+        },
+        {
+          "variable": "TATA",
+          "valor": -0.07
+        }
+      ],
+      "tabla": [
+        {
+          "indicador": "Altman Z",
+          "valor": "1,01",
+          "lectura": "Zona de riesgo (> 2,99 seguro; < 1,81 riesgo). No aplica a bancos ni aseguradoras, y subestima la solvencia de empresas con grandes anticipos de clientes o prefinanciación pública (contratistas, construcción), que inflan el pasivo. No fiable en 2025: cambio de perímetro (el balance incluye negocios sin su cuenta de resultados completa)."
+        },
+        {
+          "indicador": "Piotroski F",
+          "valor": "4 / 9",
+          "lectura": "Intermedio (4-6)."
+        },
+        {
+          "indicador": "Beneish M",
+          "valor": "-2,82",
+          "lectura": "No interpretable en 2025: con un cambio de perímetro, los índices de activos, amortización y ventas (AQI, DEPI, SGI) comparan grupos distintos y el umbral de −1,78 no sirve."
+        },
+        {
+          "indicador": "Flujo operativo / beneficio neto (acumulado)",
+          "valor": "2,35x",
+          "lectura": "El beneficio se cobra."
+        }
+      ]
+    },
+    "dcf": {
+      "proyeccion": [
+        {
+          "periodo": "2026e",
+          "ingresos": 755,
+          "crecimiento_pct": 1.1,
+          "ebitda": 306,
+          "margen_ebitda_pct": 40.5,
+          "amortizacion": 23,
+          "ebit": 283,
+          "impuestos": 85,
+          "capex": 20,
+          "variacion_circulante": 13,
+          "fcff": 188,
+          "fraccion": 0.2,
+          "factor": 0.992,
+          "vp": 37
+        },
+        {
+          "periodo": "2027e",
+          "ingresos": 778,
+          "crecimiento_pct": 3,
+          "ebitda": 319,
+          "margen_ebitda_pct": 41,
+          "amortizacion": 23,
+          "ebit": 296,
+          "impuestos": 89,
+          "capex": 20,
+          "variacion_circulante": -3,
+          "fcff": 213,
+          "fraccion": 1,
+          "factor": 0.946,
+          "vp": 201
+        },
+        {
+          "periodo": "2028e",
+          "ingresos": 805,
+          "crecimiento_pct": 3.5,
+          "ebitda": 334,
+          "margen_ebitda_pct": 41.5,
+          "amortizacion": 24,
+          "ebit": 310,
+          "impuestos": 91,
+          "capex": 22,
+          "variacion_circulante": -13,
+          "fcff": 233,
+          "fraccion": 1,
+          "factor": 0.873,
+          "vp": 204
+        },
+        {
+          "periodo": "2029e",
+          "ingresos": 833,
+          "crecimiento_pct": 3.5,
+          "ebitda": 346,
+          "margen_ebitda_pct": 41.5,
+          "amortizacion": 25,
+          "ebit": 321,
+          "impuestos": 93,
+          "capex": 22,
+          "variacion_circulante": -13,
+          "fcff": 243,
+          "fraccion": 1,
+          "factor": 0.806,
+          "vp": 196
+        },
+        {
+          "periodo": "2030e",
+          "ingresos": 858,
+          "crecimiento_pct": 3,
+          "ebitda": 356,
+          "margen_ebitda_pct": 41.5,
+          "amortizacion": 26,
+          "ebit": 330,
+          "impuestos": 94,
+          "capex": 24,
+          "variacion_circulante": -11,
+          "fcff": 249,
+          "fraccion": 1,
+          "factor": 0.743,
+          "vp": 185
+        },
+        {
+          "periodo": "2031e",
+          "ingresos": 879,
+          "crecimiento_pct": 2.5,
+          "ebitda": 365,
+          "margen_ebitda_pct": 41.5,
+          "amortizacion": 26,
+          "ebit": 339,
+          "impuestos": 95,
+          "capex": 25,
+          "variacion_circulante": -10,
+          "fcff": 255,
+          "fraccion": 1,
+          "factor": 0.686,
+          "vp": 175
+        },
+        {
+          "periodo": "2032e",
+          "ingresos": 897,
+          "crecimiento_pct": 2,
+          "ebitda": 372,
+          "margen_ebitda_pct": 41.5,
+          "amortizacion": 27,
+          "ebit": 345,
+          "impuestos": 97,
+          "capex": 26,
+          "variacion_circulante": -8,
+          "fcff": 258,
+          "fraccion": 1,
+          "factor": 0.633,
+          "vp": 163
+        },
+        {
+          "periodo": "2033e",
+          "ingresos": 915,
+          "crecimiento_pct": 2,
+          "ebitda": 380,
+          "margen_ebitda_pct": 41.5,
+          "amortizacion": 27,
+          "ebit": 352,
+          "impuestos": 99,
+          "capex": 27,
+          "variacion_circulante": -8,
+          "fcff": 263,
+          "fraccion": 1,
+          "factor": 0.585,
+          "vp": 154
+        },
+        {
+          "periodo": "2034e",
+          "ingresos": 931,
+          "crecimiento_pct": 1.8,
+          "ebitda": 387,
+          "margen_ebitda_pct": 41.5,
+          "amortizacion": 28,
+          "ebit": 359,
+          "impuestos": 100,
+          "capex": 28,
+          "variacion_circulante": -8,
+          "fcff": 266,
+          "fraccion": 1,
+          "factor": 0.54,
+          "vp": 143
+        },
+        {
+          "periodo": "2035e",
+          "ingresos": 945,
+          "crecimiento_pct": 1.5,
+          "ebitda": 392,
+          "margen_ebitda_pct": 41.5,
+          "amortizacion": 28,
+          "ebit": 364,
+          "impuestos": 102,
+          "capex": 28,
+          "variacion_circulante": -6,
+          "fcff": 269,
+          "fraccion": 1,
+          "factor": 0.498,
+          "vp": 134
+        }
+      ],
+      "etapa2": null,
+      "suma_vp": 1592,
+      "valor_terminal": 3981,
+      "vp_terminal": 1905,
+      "valor_empresa": 3496,
+      "peso_terminal_pct": 54,
+      "valor_acciones": 2675,
+      "valor_accion": 16.89,
+      "vt_gordon": 3981,
+      "vt_multiplo": 3139,
+      "multiplo_implicito": 10.1,
+      "g_implicito_pct": -0.19,
+      "metodo_terminal": "gordon",
+      "terminal_tabla": [
+        {
+          "concepto": "Método principal",
+          "valor": "Crecimiento a perpetuidad"
+        },
+        {
+          "concepto": "Crecimiento a perpetuidad",
+          "valor": "1,5 %"
+        },
+        {
+          "concepto": "Múltiplo EV/EBITDA de salida",
+          "valor": "8,0x"
+        },
+        {
+          "concepto": "Valor terminal (Gordon)",
+          "valor": "3.981"
+        },
+        {
+          "concepto": "Valor terminal (múltiplo)",
+          "valor": "3.139"
+        },
+        {
+          "concepto": "Múltiplo de salida implícito en Gordon",
+          "valor": "10,1x"
+        },
+        {
+          "concepto": "Crecimiento implícito en el múltiplo",
+          "valor": "-0,19 %"
+        },
+        {
+          "concepto": "Peso del valor terminal en el valor empresa",
+          "valor": "54 %"
+        }
+      ],
+      "puente": [
+        {
+          "concepto": "Valor actual de los flujos proyectados",
+          "valor": "1.592"
+        },
+        {
+          "concepto": "Valor actual del valor terminal",
+          "valor": "1.905"
+        },
+        {
+          "concepto": "Valor empresa",
+          "valor": "3.496"
+        },
+        {
+          "concepto": "− Deuda financiera neta (con arrendamientos)",
+          "valor": "-833"
+        },
+        {
+          "concepto": "− Minoritarios, pensiones y otros; + asociadas",
+          "valor": "12"
+        },
+        {
+          "concepto": "Valor de los fondos propios",
+          "valor": "2.675"
+        },
+        {
+          "concepto": "Acciones diluidas (millones)",
+          "valor": "158,4"
+        },
+        {
+          "concepto": "Valor por acción",
+          "valor": "16,89"
+        }
+      ],
+      "composicion": [
+        {
+          "parte": "Flujos proyectados",
+          "valor": 1592
+        },
+        {
+          "parte": "Valor terminal",
+          "valor": 1905
+        }
+      ],
+      "wacc": 8.35,
+      "ke": 11.05,
+      "kd_despues": 3.33,
+      "wacc_tabla": [
+        {
+          "concepto": "Tasa libre de riesgo",
+          "valor": "3,45 %"
+        },
+        {
+          "concepto": "Beta",
+          "valor": "1,20"
+        },
+        {
+          "concepto": "Prima de riesgo de mercado",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Prima adicional (país, tamaño, específica)",
+          "valor": "1,00 %"
+        },
+        {
+          "concepto": "Coste de los fondos propios",
+          "valor": "11,05 %"
+        },
+        {
+          "concepto": "Coste de la deuda antes de impuestos",
+          "valor": "4,75 %"
+        },
+        {
+          "concepto": "Tipo impositivo",
+          "valor": "30,00 %"
+        },
+        {
+          "concepto": "Coste de la deuda después de impuestos",
+          "valor": "3,32 %"
+        },
+        {
+          "concepto": "Peso de la deuda (D / (D + E))",
+          "valor": "35,00 %"
+        },
+        {
+          "concepto": "WACC",
+          "valor": "8,35 %"
+        },
+        {
+          "concepto": "Prima de riesgo implícita del mercado (regla relativa)",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "WACC con la prima implícita del mercado",
+          "valor": "7,33 %"
+        }
+      ],
+      "potencial_pct": 140.9,
+      "sensibilidad": {
+        "eje_columnas": "Crecimiento a perpetuidad",
+        "columnas": [
+          "0,5 %",
+          "1,0 %",
+          "1,5 %",
+          "2,0 %",
+          "2,5 %"
+        ],
+        "filas": [
+          {
+            "wacc": "7,3 %",
+            "v0": 18.23,
+            "v1": 19.33,
+            "v2": 20.6,
+            "v3": 22.12,
+            "v4": 23.95
+          },
+          {
+            "wacc": "7,8 %",
+            "v0": 16.64,
+            "v1": 17.55,
+            "v2": 18.6,
+            "v3": 19.83,
+            "v4": 21.29
+          },
+          {
+            "wacc": "8,3 %",
+            "v0": 15.25,
+            "v1": 16.01,
+            "v2": 16.89,
+            "v3": 17.9,
+            "v4": 19.08
+          },
+          {
+            "wacc": "8,8 %",
+            "v0": 14.03,
+            "v1": 14.68,
+            "v2": 15.41,
+            "v3": 16.25,
+            "v4": 17.23
+          },
+          {
+            "wacc": "9,3 %",
+            "v0": 12.95,
+            "v1": 13.5,
+            "v2": 14.12,
+            "v3": 14.83,
+            "v4": 15.64
+          }
+        ]
+      },
+      "sensibilidad2": {
+        "columnas": [
+          "-2 pp",
+          "-1 pp",
+          "0 pp",
+          "+1 pp",
+          "+2 pp"
+        ],
+        "filas": [
+          {
+            "margen": "-2 pp",
+            "v0": 12.53,
+            "v1": 14.09,
+            "v2": 15.79,
+            "v3": 17.62,
+            "v4": 19.6
+          },
+          {
+            "margen": "-1 pp",
+            "v0": 13.01,
+            "v1": 14.61,
+            "v2": 16.34,
+            "v3": 18.21,
+            "v4": 20.23
+          },
+          {
+            "margen": "0 pp",
+            "v0": 13.49,
+            "v1": 15.12,
+            "v2": 16.89,
+            "v3": 18.8,
+            "v4": 20.86
+          },
+          {
+            "margen": "+1 pp",
+            "v0": 13.97,
+            "v1": 15.63,
+            "v2": 17.44,
+            "v3": 19.39,
+            "v4": 21.49
+          },
+          {
+            "margen": "+2 pp",
+            "v0": 14.44,
+            "v1": 16.15,
+            "v2": 17.99,
+            "v3": 19.97,
+            "v4": 22.12
+          }
+        ]
+      },
+      "rango_min": 14.68,
+      "rango_max": 19.83,
+      "inverso": {
+        "crecimiento_implicito_pct": -4.5,
+        "crecimiento_base_pct": 2.5,
+        "periodo": "2027e-2035e",
+        "margen_implicito_pct": 23.5,
+        "margen_implicito_texto": null,
+        "margen_base_pct": 41.5,
+        "rentabilidad_implicita_pct": 14.1
+      },
+      "sostenibilidad": {
+        "veredicto": "En parte",
+        "veredicto_motor": "Sí",
+        "motivos_motor": [],
+        "crecimiento_financiable_bruto_pct": 1.6,
+        "roic_implicito_bruto_pct": 52.6,
+        "tcac_ingresos_historica_pct": 10.5,
+        "crecimiento_proyectado_pct": 2.4,
+        "tasa_reinversion_pct": -3,
+        "crecimiento_financiable_pct": null,
+        "roic_pct": 21.8,
+        "roic_incremental_historico_pct": 76.3,
+        "roic_implicito_pct": null,
+        "cuota_actual_pct": null,
+        "cuota_final_pct": null,
+        "puente": [
+          {
+            "periodo": "2026e",
+            "volumen_pct": -5,
+            "precio_pct": 7.5,
+            "otros_pct": -1.4,
+            "comentario": "Los clientes bajan ≈ 5 % (−7 % interanual en junio, con las bajas de SMB estabilizándose) y el ARR medio por cliente sube ≈ 7,5 % porque se van los pequeños y crecen las grandes cuentas; la divisa resta 2,4 puntos [2].",
+            "suma_pct": 1.1,
+            "crecimiento_pct": 1.1
+          },
+          {
+            "periodo": "2027e",
+            "volumen_pct": -2,
+            "precio_pct": 5,
+            "otros_pct": 0,
+            "comentario": "Bajas de SMB más bajas (−2 % de clientes) y ARR medio +5 % por Enterprise (+8-11 %), TeamViewer ONE y DEX [2].",
+            "suma_pct": 3,
+            "crecimiento_pct": 3
+          },
+          {
+            "periodo": "2028e",
+            "volumen_pct": -1,
+            "precio_pct": 4.5,
+            "otros_pct": 0,
+            "comentario": "Clientes −1 %; precio y mezcla +4,5 %: TeamViewer ONE y el canal de ServiceNow [12].",
+            "suma_pct": 3.5,
+            "crecimiento_pct": 3.5
+          },
+          {
+            "periodo": "2029e",
+            "volumen_pct": -0.5,
+            "precio_pct": 4,
+            "otros_pct": 0,
+            "comentario": "Clientes casi estables; precio y mezcla +4 %.",
+            "suma_pct": 3.5,
+            "crecimiento_pct": 3.5
+          },
+          {
+            "periodo": "2030e",
+            "volumen_pct": 0,
+            "precio_pct": 3,
+            "otros_pct": 0,
+            "comentario": "Clientes estables; precio y mezcla +3 %, cerca de la inflación más la mezcla.",
+            "suma_pct": 3,
+            "crecimiento_pct": 3
+          }
+        ],
+        "texto": "La proyección apenas necesita inversión neta de la amortización (reinversión acumulada de -82 M, con un capex bruto medio del 2,8 % de las ventas). En un negocio de activos ligeros, el crecimiento medio del 2,4 % tiene que salir de subir precios y de ganar volumen sin capital nuevo, y la prueba es el poder de precios y la cuota; en un comprador en serie, la amortización es de intangibles comprados y la prueba es el capex bruto (las compras) frente al crecimiento comprado.",
+        "tabla": [
+          {
+            "concepto": "Crecimiento medio de ingresos proyectado",
+            "valor": "2,4 %"
+          },
+          {
+            "concepto": "Capex bruto medio (incluidas compras si van como inversión)",
+            "valor": "2,8 % de las ventas"
+          },
+          {
+            "concepto": "Reinversión neta acumulada (capex − amortización + circulante)",
+            "valor": "-82 M (-3 % del NOPAT)"
+          },
+          {
+            "concepto": "Con la reinversión bruta (capex + circulante): crecimiento que financia al ROIC actual",
+            "valor": "1,6 % (reinvierte el 7 % del NOPAT)"
+          },
+          {
+            "concepto": "Rendimiento que la proyección supone para la reinversión bruta",
+            "valor": "52,6 % (histórico: 76,3 %)"
+          },
+          {
+            "concepto": "Crecimiento histórico de ingresos (TCAC)",
+            "valor": "10,5 % frente al 2,4 % proyectado"
+          },
+          {
+            "concepto": "Veredicto de las pruebas del motor",
+            "valor": "Sí"
+          }
+        ]
+      }
+    },
+    "escenarios": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "narrativa": "La IA y Microsoft se comen el soporte remoto de las pymes: los clientes caen un 8-10 % al año, las ventas bajan un 3 % en 2027 y siguen cayendo un 1,5-3,5 % anual, y el margen pierde 4 puntos por la presión de precios y la inversión en IA. Le pasó a TeamViewer en SMB en 2025 (bajas tras subir precios) y al software de escritorio sustituido por servicios incluidos.",
+        "crecimiento_medio_pct": -2.6,
+        "margen_final_pct": 37.5,
+        "wacc_pct": 8.3,
+        "valor": 6.1,
+        "potencial_pct": -13
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "narrativa": "Las bajas de SMB se estabilizan en 2026, Enterprise sigue creciendo ≈ 10 % con TeamViewer ONE, DEX y ServiceNow, y las ventas crecen un 3-3,5 % en 2027-2029 con el margen EBITDA en ≈ 41,5 %. La deuda baja a menos de 1,5 veces el EBITDA en 2028.",
+        "crecimiento_medio_pct": 2.5,
+        "margen_final_pct": 41.5,
+        "wacc_pct": 8.3,
+        "valor": 16.89,
+        "potencial_pct": 140.9
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "narrativa": "La IA se convierte en un producto que se cobra (Tia, sesiones resumidas, reparación automática): las ventas crecen un 5-5,5 % en 2027-2029, como el «dígito medio-alto» de la dirección, y el margen sube un punto. Vuelven las recompras.",
+        "crecimiento_medio_pct": 4.5,
+        "margen_final_pct": 42.5,
+        "wacc_pct": 8.3,
+        "valor": 21.49,
+        "potencial_pct": 206.6
+      }
+    ],
+    "valor_ponderado": 15.34,
+    "potencial_ponderado_pct": 118.8,
+    "comparables": {
+      "tabla": [
+        {
+          "nombre": "TeamViewer",
+          "ticker": "TMV",
+          "pais": "DE",
+          "capitalizacion": 1110,
+          "ev_ventas": 2.58,
+          "ev_ebitda_ltm": 6.1,
+          "ev_ebitda_ntm": 6,
+          "per_ntm": 7.6,
+          "crecimiento_pct": 3.2,
+          "margen_ebitda_pct": 42.1,
+          "roic_pct": 21.8,
+          "dn_ebitda": 2.6,
+          "fcf_yield_pct": 15.2,
+          "es_objetivo": true
+        },
+        {
+          "nombre": "N-able",
+          "ticker": "NABL",
+          "pais": "US",
+          "capitalizacion": 767,
+          "ev_ventas": 2.21,
+          "ev_ebitda_ltm": 17.7,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 10.8,
+          "crecimiento_pct": 6.4,
+          "margen_ebitda_pct": 12.5,
+          "roic_pct": null,
+          "dn_ebitda": 4.81,
+          "fcf_yield_pct": 8.2,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Dropbox",
+          "ticker": "DBX",
+          "pais": "US",
+          "capitalizacion": 6969,
+          "ev_ventas": 4.22,
+          "ev_ebitda_ltm": 12.9,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 11,
+          "crecimiento_pct": -0.7,
+          "margen_ebitda_pct": 32.8,
+          "roic_pct": null,
+          "dn_ebitda": 3.45,
+          "fcf_yield_pct": 10,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Box",
+          "ticker": "BOX",
+          "pais": "US",
+          "capitalizacion": 4951,
+          "ev_ventas": 4.99,
+          "ev_ebitda_ltm": 46.7,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 24,
+          "crecimiento_pct": 11.2,
+          "margen_ebitda_pct": 10.7,
+          "roic_pct": null,
+          "dn_ebitda": 0.84,
+          "fcf_yield_pct": 6.8,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "DocuSign",
+          "ticker": "DOCU",
+          "pais": "US",
+          "capitalizacion": 12778,
+          "ev_ventas": 4.09,
+          "ev_ebitda_ltm": 31.1,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 15.2,
+          "crecimiento_pct": 10.2,
+          "margen_ebitda_pct": 13.1,
+          "roic_pct": null,
+          "dn_ebitda": -1.35,
+          "fcf_yield_pct": 9.2,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Qualys",
+          "ticker": "QLYS",
+          "pais": "US",
+          "capitalizacion": 5864,
+          "ev_ventas": 8.82,
+          "ev_ebitda_ltm": 24.4,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 22.8,
+          "crecimiento_pct": 11.5,
+          "margen_ebitda_pct": 36.2,
+          "roic_pct": null,
+          "dn_ebitda": -1.46,
+          "fcf_yield_pct": 3.7,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Rapid7",
+          "ticker": "RPD",
+          "pais": "US",
+          "capitalizacion": 795,
+          "ev_ventas": 1.34,
+          "ev_ebitda_ltm": 19.8,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 6.6,
+          "crecimiento_pct": -1.6,
+          "margen_ebitda_pct": 6.8,
+          "roic_pct": null,
+          "dn_ebitda": 4.45,
+          "fcf_yield_pct": 15,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Tenable",
+          "ticker": "TENB",
+          "pais": "US",
+          "capitalizacion": 3824,
+          "ev_ventas": 4.23,
+          "ev_ebitda_ltm": 82.1,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 18.1,
+          "crecimiento_pct": 9.3,
+          "margen_ebitda_pct": 5.1,
+          "roic_pct": null,
+          "dn_ebitda": 2.3,
+          "fcf_yield_pct": 6,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Freshworks",
+          "ticker": "FRSH",
+          "pais": "US",
+          "capitalizacion": 3288,
+          "ev_ventas": 3.38,
+          "ev_ebitda_ltm": 53.2,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 17.7,
+          "crecimiento_pct": 18.9,
+          "margen_ebitda_pct": 6.4,
+          "roic_pct": null,
+          "dn_ebitda": -10.95,
+          "fcf_yield_pct": 7.1,
+          "es_objetivo": false
+        }
+      ],
+      "estadisticos": [
+        {
+          "estadistico": "Mediana",
+          "ev_ventas": 4.2,
+          "ev_ebitda_ltm": 27.8,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 16.5,
+          "crecimiento_pct": 9.8,
+          "margen_ebitda_pct": 11.6,
+          "roic_pct": null,
+          "dn_ebitda": 1.6,
+          "fcf_yield_pct": 7.7
+        },
+        {
+          "estadistico": "Media",
+          "ev_ventas": 4.2,
+          "ev_ebitda_ltm": 36,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 15.8,
+          "crecimiento_pct": 8.1,
+          "margen_ebitda_pct": 15.5,
+          "roic_pct": null,
+          "dn_ebitda": 0.3,
+          "fcf_yield_pct": 8.3
+        },
+        {
+          "estadistico": "Percentil 25",
+          "ev_ventas": 3.1,
+          "ev_ebitda_ltm": 19.3,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 11,
+          "crecimiento_pct": 4.6,
+          "margen_ebitda_pct": 6.7,
+          "roic_pct": null,
+          "dn_ebitda": -1.4,
+          "fcf_yield_pct": 6.6
+        },
+        {
+          "estadistico": "Percentil 75",
+          "ev_ventas": 4.4,
+          "ev_ebitda_ltm": 48.3,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 19.3,
+          "crecimiento_pct": 11.3,
+          "margen_ebitda_pct": 18,
+          "roic_pct": null,
+          "dn_ebitda": 3.7,
+          "fcf_yield_pct": 9.4
+        }
+      ],
+      "implicito": [
+        {
+          "metodo": "EV/EBITDA últimos 12 meses",
+          "metrica_empresa": 315.2,
+          "multiplo_p25": 19.3,
+          "multiplo_mediana": 27.8,
+          "multiplo_p75": 48.3,
+          "multiplos": "19,3x / 27,8x / 48,3x",
+          "valor_p25": 33.17,
+          "valor_mediana": 50.03,
+          "valor_p75": 90.98,
+          "potencial_pct": 613.7
+        },
+        {
+          "metodo": "PER próximos 12 meses",
+          "metrica_empresa": 0.93,
+          "multiplo_p25": 11,
+          "multiplo_mediana": 16.5,
+          "multiplo_p75": 19.3,
+          "multiplos": "10,9x / 16,4x / 19,3x",
+          "valor_p25": 10.17,
+          "valor_mediana": 15.27,
+          "valor_p75": 17.89,
+          "potencial_pct": 117.8
+        },
+        {
+          "metodo": "EV/Ventas últimos 12 meses",
+          "metrica_empresa": 748.3,
+          "multiplo_p25": 3.1,
+          "multiplo_mediana": 4.2,
+          "multiplo_p75": 4.4,
+          "multiplos": "3,1x / 4,2x / 4,4x",
+          "valor_p25": 9.4,
+          "valor_mediana": 14.44,
+          "valor_p75": 15.7,
+          "potencial_pct": 106
+        }
+      ],
+      "regresion": null,
+      "n": 8
+    },
+    "transacciones": {
+      "n": 3,
+      "metrica": "EV/ventas",
+      "mediana_ev_ebitda": null,
+      "p25_ev_ebitda": null,
+      "p75_ev_ebitda": null,
+      "mediana_ev_ventas": 5.52,
+      "prima_mediana_pct": null,
+      "valor_p25": 15.65,
+      "valor_mediana": 20.89,
+      "valor_p75": 31.38
+    },
+    "suma_partes": null,
+    "multiplos_historicos": [
+      {
+        "metrica": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+        "campo": "ev_ebitda_ltm",
+        "actual": 6.1,
+        "media": 12.1,
+        "minimo": 5.9,
+        "maximo": 16,
+        "percentil": 20,
+        "prima_pct": -50,
+        "anios": 5
+      },
+      {
+        "metrica": "PER últimos 12 meses (cierre de cada año)",
+        "campo": "per_ltm",
+        "actual": 8.4,
+        "media": 21.3,
+        "minimo": 8.1,
+        "maximo": 47.3,
+        "percentil": 20,
+        "prima_pct": -61,
+        "anios": 5
+      }
+    ],
+    "multiplos_serie": [
+      {
+        "anio": "2021",
+        "multiplo": 16,
+        "media": 12.1
+      },
+      {
+        "anio": "2022",
+        "multiplo": 13.4,
+        "media": 12.1
+      },
+      {
+        "anio": "2023",
+        "multiplo": 12.1,
+        "media": 12.1
+      },
+      {
+        "anio": "2024",
+        "multiplo": 6.9,
+        "media": 12.1
+      },
+      {
+        "anio": "2025",
+        "multiplo": 5.9,
+        "media": 12.1
+      }
+    ],
+    "multiplos_titulo": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+    "consenso_vs_propio": [
+      {
+        "periodo": "2026e",
+        "ingresos_propio": 755,
+        "ingresos_consenso": 759.3,
+        "ingresos_dif_pct": -0.6,
+        "ebitda_propio": 306,
+        "ebitda_consenso": 312.41400000000004,
+        "ebitda_dif_pct": -2.1
+      },
+      {
+        "periodo": "2027e",
+        "ingresos_propio": 778,
+        "ingresos_consenso": 784.9,
+        "ingresos_dif_pct": -0.9,
+        "ebitda_propio": 319,
+        "ebitda_consenso": 323.10200000000003,
+        "ebitda_dif_pct": -1.3
+      },
+      {
+        "periodo": "2028e",
+        "ingresos_propio": 805,
+        "ingresos_consenso": 817.4,
+        "ingresos_dif_pct": -1.5,
+        "ebitda_propio": 334,
+        "ebitda_consenso": 327.852,
+        "ebitda_dif_pct": 1.9
+      }
+    ],
+    "gobierno": {
+      "n_consejeros": 8,
+      "independientes_pct": 100,
+      "antiguedad_media": 1.5,
+      "composicion": [
+        {
+          "tipo": "Independiente",
+          "num": 8
+        }
+      ],
+      "checklist": [
+        {
+          "criterio": "Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)",
+          "resultado": "Cumple",
+          "valor": "100 %"
+        },
+        {
+          "criterio": "Presidencia sin vínculo familiar ni profesional con el accionista de control",
+          "resultado": "Cumple",
+          "valor": "Sin control"
+        },
+        {
+          "criterio": "Presidente no ejecutivo, o consejero coordinador independiente",
+          "resultado": "Cumple",
+          "valor": "No ejecutivo"
+        },
+        {
+          "criterio": "Comisión de auditoría con mayoría de independientes y presidida por uno",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Ningún consejero «otro externo» con más de 12 años",
+          "resultado": "Cumple",
+          "valor": "Ninguno"
+        },
+        {
+          "criterio": "Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses",
+          "resultado": "Cumple",
+          "valor": "0 cambios"
+        },
+        {
+          "criterio": "Peor voto a favor sobre remuneración (3 juntas) ≥ 80 %",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Una acción, un voto, sin blindajes ni límites de voto estatutarios",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Sin operaciones vinculadas relevantes",
+          "resultado": "Cumple",
+          "valor": "No hay"
+        },
+        {
+          "criterio": "Auditor con 10 años o menos en el cargo",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Opinión de auditoría sin salvedades",
+          "resultado": "Cumple",
+          "valor": "Favorable (sin salvedades) para 2025"
+        },
+        {
+          "criterio": "Directivos compradores netos en 12 meses (o sin ventas relevantes)",
+          "resultado": "Cumple",
+          "valor": "Compras 1,00 / ventas 0,00 M"
+        }
+      ],
+      "puntuacion": "11 de 13 (2 sin dato)",
+      "puntuacion_pct": 85,
+      "compras_insiders": 1,
+      "ventas_insiders": 0
+    },
+    "competidores_margen": [
+      {
+        "nombre": "TeamViewer",
+        "margen_ebit_pct": 34.8
+      },
+      {
+        "nombre": "N-able (gestión remota de equipos para proveedores de servicios)",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Microsoft (Quick Assist, Intune Remote Help)",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "AnyDesk",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "GoTo (LogMeIn)",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Nexthink y Tanium (DEX y gestión de dispositivos)",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Splashtop, ConnectWise, NinjaOne",
+        "margen_ebit_pct": null
+      }
+    ],
+    "sintesis": {
+      "formato_eje": "#,##0.0",
+      "rangos": [
+        {
+          "metodo": "Cotización 52 semanas",
+          "etiqueta": "Cotización 52 semanas (4,09 – 8,57)",
+          "min": 4.09,
+          "central": 7.01,
+          "max": 8.57,
+          "gris": true
+        },
+        {
+          "metodo": "Precio objetivo de los analistas",
+          "etiqueta": "Precio objetivo de los analistas (5,70 – 13,00)",
+          "min": 5.7,
+          "central": 7.99,
+          "max": 13,
+          "gris": true
+        },
+        {
+          "metodo": "Comparables: PER NTM",
+          "etiqueta": "Comparables: PER NTM (10,17 – 17,89)",
+          "min": 10.17,
+          "central": 15.27,
+          "max": 17.89,
+          "gris": false
+        },
+        {
+          "metodo": "DCF (WACC y g ± 0,5)",
+          "etiqueta": "DCF (WACC y g ± 0,5) (14,68 – 19,83)",
+          "min": 14.68,
+          "central": 16.89,
+          "max": 19.83,
+          "gris": false
+        },
+        {
+          "metodo": "Escenarios (bajista – alcista)",
+          "etiqueta": "Escenarios (bajista – alcista) (6,10 – 21,49)",
+          "min": 6.1,
+          "central": 15.34,
+          "max": 21.49,
+          "gris": false
+        },
+        {
+          "metodo": "DCF con la prima del mercado",
+          "etiqueta": "DCF con la prima implícita del mercado (4,2 %)",
+          "min": 18.65,
+          "central": 20.66,
+          "max": 23.06
+        },
+        {
+          "metodo": "Precio actual",
+          "etiqueta": "Precio actual (7,01)",
+          "min": 6.97,
+          "central": 7.01,
+          "max": 7.05,
+          "gris": true
+        }
+      ],
+      "tabla": [
+        {
+          "metodo": "DCF",
+          "valor": 16.89,
+          "peso_pct": 60,
+          "potencial_pct": 140.9
+        },
+        {
+          "metodo": "Comparables (mediana EV/EBITDA y PER)",
+          "valor": 15.27,
+          "peso_pct": 10,
+          "potencial_pct": 117.8
+        },
+        {
+          "metodo": "Transacciones precedentes (no se usa)",
+          "valor": 20.89,
+          "peso_pct": 0,
+          "potencial_pct": 198
+        },
+        {
+          "metodo": "Escenarios ponderados",
+          "valor": 15.34,
+          "peso_pct": 30,
+          "potencial_pct": 118.8
+        }
+      ],
+      "valor_objetivo": 16.26,
+      "potencial_pct": 132
+    },
+    "fuentes": {
+      "n_fuentes": 30,
+      "n_primarias": 13,
+      "por_tipo": [
+        {
+          "tipo": "Primaria",
+          "num": 13
+        },
+        {
+          "tipo": "Sectorial",
+          "num": 3
+        },
+        {
+          "tipo": "Prensa",
+          "num": 5
+        },
+        {
+          "tipo": "Datos de mercado",
+          "num": 8
+        },
+        {
+          "tipo": "Analistas",
+          "num": 1
+        }
+      ],
+      "n_citadas": 28,
+      "citas_sin_fuente": [],
+      "fuentes_sin_citar": [
+        "5",
+        "18"
+      ]
+    },
+    "controles": [
+      {
+        "control": "Geografías suman 100 %",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "DCF inverso calculable",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Puente de ingresos (volumen + precio + otros) = crecimiento del DCF",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Veredicto de sostenibilidad del analista coherente con las pruebas del motor",
+        "resultado": "OK",
+        "detalle": "El analista dice «En parte» y las pruebas del motor dan «Sí»: razónalo en la justificación."
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "resultado": "OK",
+        "detalle": "Supuesto -47,0 % frente a -49,2 % real: genera una variación de circulante de 13 M en el primer año. Converge de forma gradual."
+      },
+      {
+        "control": "Peso del valor terminal ≤ 80 % del valor empresa",
+        "resultado": "OK",
+        "detalle": "54 %."
+      },
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "resultado": "OK",
+        "detalle": "1,50 %."
+      },
+      {
+        "control": "Probabilidades de los escenarios suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 5 comparables",
+        "resultado": "OK",
+        "detalle": "8 comparables."
+      },
+      {
+        "control": "Pesos de la síntesis suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Crecimiento del BPA base ≤ 25 % anual desde el último real",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Precio del cierre de la fecha de corte (o de las dos sesiones anteriores)",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Recomendación coherente con la regla de decisión",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "La síntesis explica la convicción",
+        "resultado": "OK",
+        "detalle": "La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría."
+      },
+      {
+        "control": "Capitalización calculada ≈ publicada",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 25 fuentes",
+        "resultado": "OK",
+        "detalle": "30 fuentes (13 primarias)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "resultado": "OK",
+        "detalle": "13."
+      },
+      {
+        "control": "Toda cita [n] existe en fuentes",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Fuentes sin citar ≤ 15 %",
+        "resultado": "OK",
+        "detalle": "Sin citar: 5, 18."
+      }
+    ],
+    "controles_resumen": "19 de 19 controles correctos"
+  }
+}
