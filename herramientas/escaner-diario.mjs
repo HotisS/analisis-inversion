@@ -63,7 +63,13 @@ const sinPrecios = bandera('--sin-precios'), soloSeguimiento = bandera('--seguim
 const REGLAS = leer(`${E}reglas.json`);
 // Regla del usuario del 20-oct (reglas.json → growth_compra): growth solo con 12 m ≥ 25 % y largo plazo mayor.
 // Precio máximo growth con la regla del 20-oct: el menor entre la «compra hasta» del informe y el precio que deja un 25 % hasta el objetivo fijo a 12 m.
-const limiteGrowth = (g) => Math.round(Math.min(g.precio_max_compra, g.objetivo_12m ? g.objetivo_12m / (1 + (REGLAS.growth_compra?.min_12m_pct ?? 25) / 100) : Infinity) * 100) / 100;
+// Regla del 20-oct (2): la rentabilidad a 12 m al menos 0,75 veces la caída del escenario malo, las dos al precio de hoy:
+// objetivo − P ≥ k × (P − bajista)  ⇒  P ≤ (objetivo + k × bajista) / (1 + k).
+const limiteGrowth = (g) => {
+  const k = REGLAS.growth_compra?.ratio_caida_min ?? 0.75, baj = leer(`informes-growth/${g.carpeta}/datos.json`)?.calc?.casos?.bajista?.precio;
+  const porCaida = g.objetivo_12m && baj != null ? (g.objetivo_12m + k * baj) / (1 + k) : Infinity;
+  return Math.round(Math.min(g.precio_max_compra, g.objetivo_12m ? g.objetivo_12m / (1 + (REGLAS.growth_compra?.min_12m_pct ?? 25) / 100) : Infinity, porCaida) * 100) / 100;
+};
 function largoGrowth(carpeta, r12) {
   const d = leer(`informes-growth/${carpeta}/datos.json`), v = d?.valoracion || {};
   const g = v.crecimiento_obj_pct, dil = d?.finanzas?.dilucion_anual_pct ?? 0, inv = v.dcf_inverso_crecimiento_10a_pct;
@@ -433,7 +439,7 @@ function tablaPosibles(esc) {
   return [`**Compras posibles ahora (todas las seguidas, ${t.length})**`, '',
     '| Empresa | Tipo | Comprar a mercado si cotiza en | Precio ahora | Rentab. 12 m | Repaso de precio y noticias | Estado |', '|---|---|---|---|---|---|---|',
     ...t.map((c) => `| ${c.nombre} | ${c.vertical} | ${fPrecio(c.limite)} ${c.divisa} o menos | ${fPrecio(c.precio)} ${c.divisa} (${c.hora_precio}) | ${fp(c.rentabilidad_12m_pct)}${c.largo_plazo ? ` (${c.largo_plazo})` : ''} | ${c.regla13 || 'falta'} | ${c.estado} |`),
-    '', `Son posibles, no órdenes: cuáles se compran depende de la liquidez (libre ${f(esc.liquidez_libre_eur ?? 0, 0)} €) y de lo que haya que vender antes; las que tienen «falta» en el repaso de precio y noticias lo necesitan antes de una orden.${t.some((c) => c.vertical === 'growth') ? ` Las growth solo salen con +25 % o más a 12 meses y más a largo plazo; comparten un bolsillo con tope (hoy al ${f(esc.bolsillo_growth_pct ?? 0, 0)} %).` : ''}`].join('\n');
+    '', `Son posibles, no órdenes: cuáles se compran depende de la liquidez (libre ${f(esc.liquidez_libre_eur ?? 0, 0)} €) y de lo que haya que vender antes; las que tienen «falta» en el repaso de precio y noticias lo necesitan antes de una orden.${t.some((c) => c.vertical === 'growth') ? ` Las growth solo salen con +25 % o más a 12 meses, más a largo plazo y una subida esperada de al menos 0,75 veces la caída del escenario malo; comparten un bolsillo con tope (hoy al ${f(esc.bolsillo_growth_pct ?? 0, 0)} %).` : ''}`].join('\n');
 }
 function mensaje(esc, nuevas, reg, avisos = []) {
   return `${mensajeBase(esc, nuevas, reg, avisos)}\n\n${tablaPosibles(esc)}`;
