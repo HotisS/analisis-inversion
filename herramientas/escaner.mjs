@@ -291,6 +291,8 @@ for (const [clave, perfil] of perfiles) {
       const rc = CONF.regiones[region];
       if (rc.extranjeras ? (f.pais === rc.extranjeras || reg === null) : reg !== region) continue;
       if (BASE.excluir_sectores?.includes(f.sector)) continue;
+      // Bolsas que un particular no puede comprar (ChiNext 300/301 y STAR 688/689 por Stock Connect; Hotis, 20-oct-2026).
+      if (BASE.excluir_simbolos && new RegExp(BASE.excluir_simbolos).test(c.simbolo || '')) continue;
       if (BASE.excluir_industrias && new RegExp(BASE.excluir_industrias, 'i').test(f.industria || '')) continue;
       if (perfil.excluir_industrias && new RegExp(perfil.excluir_industrias, 'i').test(f.industria || '')) continue;
       const texto = `${f.sector || ''} ${f.industria || ''} ${f.descripcion || ''}`;
