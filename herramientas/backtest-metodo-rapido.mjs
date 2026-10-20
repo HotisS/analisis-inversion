@@ -1,12 +1,12 @@
 // Backtest del método value rápido (protocolo: verticales/empresa/backtest/metodo-rapido-preregistro-2026-10-20.md).
 // Decisión 1 día hábil después de publicar las cuentas, precio de ese día, rentabilidad total a 12 m frente al índice.
-//   node herramientas/backtest-metodo-rapido.mjs <carpeta de datos>   (datos de bajar.mjs: universo.json, sec/, yh/)
+//   node herramientas/backtest-metodo-rapido.mjs <carpeta de datos> [sufijo]   (INDICE_US=IJR para otro índice)   (datos de bajar.mjs: universo.json, sec/, yh/)
 // Escribe verticales/empresa/backtest/metodo-rapido-resultados-2026-10-20.md y un .json con las observaciones (sin datos de cartera).
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { raiz, n, mediana, media, f1, cargarEmpresas, atipicos, historia, v2, crecimientoIngenuo, calc } from './backtest-comun.mjs';
 
-const DIR = process.argv[2];
+const DIR = process.argv[2], SUFIJO = process.argv[3] || '', IDX_US = process.env.INDICE_US || 'SPY'; // sufijo: otra muestra (sin «nuestras»)
 const leer = (f) => { try { return existsSync(f) ? JSON.parse(readFileSync(f, 'utf8')) : null; } catch { return null; } };
 const DIA = 86400000, iso = (ms) => new Date(ms).toISOString().slice(0, 10);
 
@@ -104,7 +104,7 @@ function empresasUS(variantes) {
       for (const x of conocidas) { const i = idxEn(s, Date.parse(x.e)); if (i < 0) continue; emp.anios.push(x.y); emp.bpa[x.y] = x.bpa; emp.precio[x.y] = s.c[i]; }
       emp.anios.sort((a, b) => a - b); if (emp.anios.length < 4 || !emp.anios.includes(f.y)) continue;
       const d = decision(s, msF); if (!d || d.ret == null) continue;
-      const ri = retIndice('SPY', d.fecha, d.fin);
+      const ri = retIndice(IDX_US, d.fecha, d.fin);
       const r3 = [f.y, f.y - 1, f.y - 2].map((y) => conocidas.find((x) => x.y === y)?.roic ?? null);
       const calidad = r3[0] == null ? 'desconocida' : r3.every((r) => r != null && r - 8 >= 5) ? 'completa' : (r3[0] - 8 >= 5 || r3.every((r) => r != null && r - 8 >= 4.5)) ? 'aflojada' : 'falla';
       const extra = { conjunto: 'US', sector: u.sector, fecha: iso(d.fecha), anioDec: new Date(d.fecha).getUTCFullYear(), precio: d.precio, dpa: dpaUltimo(s, d.fecha), ret: d.ret, retIdx: ri, calidad, roic: r3[0] };
@@ -163,7 +163,7 @@ function tabla(obs, opts, orden) {
 
 // ---------- Ejecución ----------
 const variantes = { g: { vigente: 0.25, g15: 0.15 } };
-const todas = [...empresasUS(variantes), ...empresasNuestras(variantes)];
+const todas = [...empresasUS(variantes), ...(SUFIJO ? [] : empresasNuestras(variantes))];
 const base = todas.filter((o) => o.varG === 'vigente');
 const US = base.filter((o) => o.conjunto === 'US'), NU = base.filter((o) => o.conjunto === 'nuestras');
 const tickersUS = [...new Set(US.map((o) => o.ticker))].sort(), mitad = Object.fromEntries(tickersUS.map((t, i) => [t, i % 2 ? 'validación' : 'diseño']));
@@ -173,7 +173,7 @@ const P = (s) => out.push(s);
 P('# Backtest del método value rápido · resultados (2026-10-20)\n');
 P('Estudio. **No cambia el método vigente.** Protocolo fijado antes: `metodo-rapido-preregistro-2026-10-20.md`. Script: `herramientas/backtest-metodo-rapido.mjs`.');
 P(`Decisión 1 día hábil después de publicar las cuentas; rentabilidad total a 12 meses; índice SPY (EE. UU.) o el del mercado. BPA ingenuo (decide).\n`);
-P(`**Conjunto US**: ${tickersUS.length} empresas del S&P 500/400 de hoy, ${US.length} decisiones (${Math.min(...US.map((o) => o.anioDec))}-${Math.max(...US.map((o) => o.anioDec))}). **Nuestras**: ${new Set(NU.map((o) => o.ticker)).size} empresas, ${NU.length} decisiones.\n`);
+P(`**Conjunto US**: ${tickersUS.length} empresas ${SUFIJO ? "(muestra " + SUFIJO + ")" : "del S&P 500/400 de hoy"}, ${US.length} decisiones (${Math.min(...US.map((o) => o.anioDec))}-${Math.max(...US.map((o) => o.anioDec))}). **Nuestras**: ${new Set(NU.map((o) => o.ticker)).size} empresas, ${NU.length} decisiones.\n`);
 P('## 1. US, todas las decisiones\n'); P(tabla(US, {}, ORD));
 P('\n## 2. US, validación por empresas (mitad de validación)\n'); P(tabla(US.filter((o) => mitad[o.ticker] === 'validación'), {}, ORD));
 P('\n## 3. US, por tiempo\n'); P('**Ajuste 2012-2018**\n'); P(tabla(US.filter((o) => o.anioDec <= 2018), {}, ORD)); P('\n**Validación 2019-2025**\n'); P(tabla(US.filter((o) => o.anioDec >= 2019), {}, ORD));
@@ -223,6 +223,6 @@ P(`- 6. ¿Vender sirve? Exceso mediano Vender ${f1(medir(gV).exMed)} % frente a 
 P('\n## 8. Números A por sector (US)\n'); P('| Sector | n | Exceso mediano | < −10 % |\n|---|--:|--:|--:|');
 const porS = {}; for (const o of comprasA(US, {})) (porS[o.sector] ||= []).push(o);
 for (const [s, l] of Object.entries(porS).sort((a, b) => b[1].length - a[1].length)) { const m = medir(l); P(`| ${s} | ${m.n} | ${f1(m.exMed)} % | ${f1(m.pierde10, 0)} % |`); }
-writeFileSync(join(raiz, 'verticales/empresa/backtest/metodo-rapido-resultados-2026-10-20.md'), out.join('\n') + '\n');
+writeFileSync(join(raiz, `verticales/empresa/backtest/metodo-rapido-resultados-2026-10-20${SUFIJO ? '-' + SUFIJO : ''}.md`), out.join('\n') + '\n');
 writeFileSync(join(DIR, 'obs.json'), JSON.stringify(base.map((o) => ({ ticker: o.ticker, conjunto: o.conjunto, fecha: o.fecha, sector: o.sector, actual: o.actual, g: o.g, ret: o.ret, retIdx: o.retIdx, calidad: o.calidad, roic: o.roic, grupo: grupo(o, {}), num: grupo(o, { sinCalidad: true }), pond: numeros(o).pond }))));
 console.log(out.join('\n'));

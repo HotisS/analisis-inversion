@@ -140,3 +140,43 @@ Rentabilidad mediana absoluta · exceso mediano frente al SPY · casos.
 - B2, Ajuste: 2012-2018: 36 casos, exceso mediano -0,7
 - B2, Validación: 2019-2025: 54 casos, exceso mediano -12,9
 
+
+## Prueba fuera de muestra: empresas que no cubrimos (añadida 20-oct, solo EE. UU.)
+
+El usuario la pidió a las 16:33 UTC para descartar un sesgo de selección. Europa queda fuera por decisión suya: no hay BPA con fecha de publicación antes de 2021. El protocolo se fijó antes de bajar los datos (commit 41104bc, 16:34 UTC). Tablas: `metodo-rapido-resultados-2026-10-20-sp600-no-cubiertas.md`.
+
+**1. La misma prueba sin las 69 empresas que cubrimos** (422 empresas del S&P 500 y 400, 4.278 decisiones; exceso frente al SPY, en puntos):
+
+| Grupo | Casos | Media | Mediana | Exceso medio | Exceso mediano | Bate al SPY | Pierde > 10 % |
+|---|--:|--:|--:|--:|--:|--:|--:|
+| A | 130 | +19,7 % | +18,1 % | +4,2 | +0,5 | 51 % | 18 % |
+| B1 | 92 | +18,8 % | +14,7 % | +1,7 | −1,0 | 49 % | 14 % |
+| B2 | 79 | +17,7 % | +10,9 % | +1,3 | −6,9 | 39 % | 25 % |
+| C | 36 | +25,5 % | +12,4 % | +10,6 | −2,9 | 47 % | 17 % |
+| Buenos números sin calidad | 449 | +15,3 % | +11,9 % | +0,1 | −2,5 | 46 % | 22 % |
+| Mantener | 882 | +14,4 % | +11,7 % | −1,3 | −3,1 | 45 % | 18 % |
+| Vender | 2.610 | +15,0 % | +12,4 % | +1,0 | −0,8 | 48 % | 17 % |
+| Todas | 4.278 | +15,2 % | +12,4 % | +0,6 | −1,4 | 47 % | 18 % |
+
+A queda +3,6 puntos de media sobre «todas». El intervalo del 90 % va de −1,4 a +9,2, y en el 14 % de las repeticiones la ventaja sale cero o negativa. Sin nuestras empresas la ventaja es algo menor, pero el patrón se repite: lo que suma es la calidad, B2 es flojo y Vender no rinde peor que Mantener.
+
+**2. 200 empresas al azar del S&P 600 que no cubrimos** (semilla fija). 155 dieron 1.324 decisiones; al resto le faltan 4 años de BPA o precio.
+
+| Grupo | Casos | Media | Mediana | Exceso medio SPY | Exceso mediano SPY | Bate al SPY | Exceso medio S&P 600 (IJR) | Pierde > 10 % |
+|---|--:|--:|--:|--:|--:|--:|--:|--:|
+| A | 29 | +16,5 % | +11,3 % | +2,3 | −2,6 | 48 % | +8,0 | 34 % |
+| B1 | 21 | +9,9 % | +0,4 % | −6,5 | −7,3 | 33 % | −1,2 | 33 % |
+| B2 | 38 | +10,1 % | +1,4 % | −6,3 | −13,4 | 34 % | −2,7 | 26 % |
+| C | 9 | +24,3 % | +38,2 % | +11,2 | +14,5 | 67 % | +21,9 | 33 % |
+| Buenos números sin calidad | 132 | +13,7 % | +5,6 % | −2,5 | −7,2 | 44 % | +1,2 | 27 % |
+| Mantener | 307 | +12,6 % | +9,0 % | −3,1 | −4,2 | 45 % | −0,3 | 28 % |
+| Vender | 788 | +11,1 % | +5,7 % | −2,8 | −8,1 | 40 % | +0,9 | 24 % |
+| Todas | 1.324 | +11,9 % | +6,1 % | −2,8 | −7,0 | 41 % | +0,8 | 26 % |
+
+- **La dirección se repite**: A queda +5,1 puntos de media sobre «todas» (+7,2 frente al IJR). Pero con 29 casos el intervalo va de −8,8 a +17,8, así que no prueba nada.
+- **El criterio fijado no se puede aplicar** porque pedía al menos 30 casos de A, y hay 29.
+- **En las pequeñas, los buenos números sin calidad no ganan nada** sobre «todas» (+0,3).
+- **Al revés que en las grandes, Vender sí rinde peor que Mantener** (−8,1 frente a −4,2 de exceso mediano).
+- **B1 y B2 quedan claramente bajo el índice.**
+
+**Conclusión**: con empresas que no elegimos, el resultado no cambia de signo: A y la calidad suman, y B2 resta. No parece que el resultado venga de haber elegido nosotros las empresas, aunque la muestra pequeña no da para más. El sesgo de supervivencia sigue igual, porque todas cotizan hoy.
