@@ -1,0 +1,4595 @@
+{
+  "meta": {
+    "fecha_corte": "2026-10-20",
+    "divisa": "EUR",
+    "divisa_cotizacion": "EUR",
+    "tipo_cambio": 1,
+    "unidades": "millones",
+    "cierre_ejercicio_mes": 12,
+    "etiqueta_ejercicio": "fin",
+    "normas_contables": "NIIF-UE",
+    "formato_cuenta": "naturaleza",
+    "limitaciones": "Cuentas de 2021-2025 del XBRL ESEF del regulador (filings.xbrl.org) cuadradas con el URD 2025 y el databook; 1S26 del informe semestral depositado en la AMF. El precio es el cierre de Euronext París del lunes 19-oct-2026 (22,77 €, 17:35 CEST), tomado del campo «previousClose» de Yahoo el 20-oct a las 08:17 UTC [21], porque la fila diaria del 19-oct venía vacía; las rentabilidades y betas de bolsa.mjs llegan al 16-oct y movimiento.mjs usa el intradía del 20-oct (22,81 €). La OAT a 10 años diaria es de Trading Economics (4,93 % el 19-oct), contrastada con la serie mensual oficial del BCE; el Bund, de la Bundesbank (3,49 %). Los segmentos solo tienen 2024-2025 reexpresados (la segmentación cambió en 2024). No encontramos fuente de las violencias del 17-oct que cita el encargo: se tratan como contexto sin cifra.",
+    "controles_explicados": [
+      {
+        "control": "BAI − impuestos − minoritarios = beneficio neto (2022)",
+        "explicacion": "La diferencia (−2.182 M) es el resultado de actividades interrumpidas de 2022 (+2.183 M, venta de EQUANS a Bouygues) [12]."
+      },
+      {
+        "control": "BPA = beneficio neto / acciones (2022)",
+        "explicacion": "El BPA publicado (0,06 €) descuenta los cupones de los híbridos perpetuos, que se contabilizan en el patrimonio; con un beneficio de 216 M el efecto pesa mucho (0,09 € sin cupones) [12]."
+      },
+      {
+        "control": "Caja proyectada coherente con la histórica",
+        "explicacion": "La media real de 2023-2025 (−1.611 M) incluye el pago de 13.986 M de pasivos nucleares belgas en 2025, financiado con los activos dedicados de Synatom (+8.523 M en inversión); sin ese pago, el flujo operativo de 2025 fue de ≈12.500 M y el «cash flow from operations» publicado de 13.600 M [1, 5]. El DCF parte de un EBITDA recurrente sin nuclear."
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "explicacion": "El circulante se proyecta al 5 % de las ventas, el de 2025; los saltos históricos vienen de los derivados y garantías de energía de 2022-2023."
+      }
+    ],
+    "huecos": [
+      {
+        "seccion": "financieros",
+        "campo": "FCF de los últimos 12 meses",
+        "tipo": "Complemento",
+        "intentos": "1) Flujo del 1S26 [2]: incluye pagos nucleares; 2) databook FY25 [7]: sin LTM; 3) presentación 1S26 [3]: solo «cash flow from operations»",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "negocio",
+        "campo": "ingresos por geografía de 2021-2024 en el mismo criterio",
+        "tipo": "Complemento",
+        "intentos": "1) URD 2024 [10]; 2) databook [7]; 3) XBRL [14]: cambio de criterio de segmentos en 2024",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sector",
+        "campo": "tamaño del mercado, serie y CR5",
+        "tipo": "Núcleo",
+        "intentos": "1) URD 2025 [1]: sin tamaño; 2) presentaciones [3, 6]: sin serie; 3) búsqueda de Eurelectric/IEA: no abierta",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "competencia",
+        "campo": "cuotas de mercado y márgenes de competidores",
+        "tipo": "Complemento",
+        "intentos": "1) URD 2025 [1]; 2) informes del repo (solo Iberdrola y TotalEnergies); 3) MarketScreener: sin márgenes comparables",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "votos de la junta de 2026 sobre remuneración",
+        "tipo": "Complemento",
+        "intentos": "1) URD 2025 [1]: anterior a la junta; 2) web de la junta: no abierta; 3) BDIF [19]: no los recoge",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "bolsa",
+        "campo": "rentabilidad anual por año natural, caída máxima y posición corta",
+        "tipo": "Complemento",
+        "intentos": "1) bolsa.mjs [22]: sin serie anual en el JSON; 2) AMF (posiciones cortas): sin posición publicada ≥ 0,5 %; 3) Yahoo: sin caída máxima",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "comparables",
+        "campo": "ROIC, FCF y EV/ventas de comparables; Enel, RWE, EDP",
+        "tipo": "Complemento",
+        "intentos": "1) MarketScreener [25]: sin ROIC; 2) Yahoo quoteSummary: bloqueado (Too Many Requests); 3) informes del repo: fechas distintas",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "transacciones",
+        "campo": "más operaciones con múltiplo",
+        "tipo": "Complemento",
+        "intentos": "1) informe Enagás del repo; 2) presentación de UKPN [6]; 3) búsqueda web: Teréga y National Gas sin múltiplo de EBITDA",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sentimiento",
+        "campo": "Stocktwits, Reddit y comentarios de Seeking Alpha",
+        "tipo": "Complemento",
+        "intentos": "1) Stocktwits API: sin acceso desde el entorno; 2) Seeking Alpha: sin artículos abiertos; 3) Reddit: sin hilos de Engie en 2026",
+        "decision": "Omitido"
+      }
+    ]
+  },
+  "identificacion": {
+    "nombre": "ENGIE SA",
+    "nombre_corto": "Engie",
+    "ticker": "ENGI.PA",
+    "isin": "FR0010208488",
+    "mercado": "Euronext París",
+    "indice_referencia": "STOXX Europe 600",
+    "pais": "Francia",
+    "pais_iso": "FR",
+    "sector": "Utilities",
+    "industria": "Multi-Utilities",
+    "sede": "Courbevoie (La Défense)",
+    "fundacion": "2008",
+    "empleados": 91000,
+    "web": "www.engie.com",
+    "precio": 22.77,
+    "fecha_precio": "2026-10-19",
+    "acciones": 2540,
+    "capitalizacion_publicada": null,
+    "free_float_pct": 67.9,
+    "max_52s": 29.89,
+    "min_52s": 19.42,
+    "volumen_medio_diario": 112,
+    "proximos_resultados": "2026-11-05"
+  },
+  "resumen": {
+    "recomendacion": "Mantener",
+    "conviccion": "Baja",
+    "justificacion_recomendacion": null,
+    "horizonte": "12 meses",
+    "sintesis": "**La recomendación y por qué.** Mantener con convicción baja. A 22,77 € (cierre de Euronext París del 19-oct), nuestro objetivo a 12 meses es de 21,87 €: una rentabilidad ponderada del 2,0 % con el dividendo y del 0,7 % en el caso base (v2: −1,5 % y −1,1 %). El valor real (DCF 60 % + escenarios 40 %) es de 21,89 € (−3,9 %). Engie está barata frente a las redes y frente al consenso (30,54 € [23]), pero no frente a su propia historia (PER adelantado de 11,6x frente a una mediana de 7,8x), y la regla común no presupone que el mercado le pague ya un múltiplo de red. La convicción es baja porque el valor depende mucho del tipo de descuento (con la prima implícita del mercado el DCF da 30,53 €) y la regla absoluta y la relativa discrepan.\n\n**Francia: cuánto pesa y por qué cae.** Francia es el 40,3 % de las ventas por destino, el 42,8 % del capital industrial y el 45 % del EBIT sin nuclear (44,8 % en el 1S26), y bajará al ≈35 % en 2028 con UKPN [1, 3, 6]. El riesgo país le llega por cinco canales: el coste de la deuda (poco y despacio: el 91 % es a tipo fijo al 4,0 % y a 11,2 años [1]), los impuestos (la sobretasa a grandes empresas ya está en la guía y el presupuesto de 2027 la baja un 30 % [2, 30]), las tarifas reguladas (la CRE fija la retribución de 31.500 M de RAB de gas [3]), los contratos públicos (calor urbano e infraestructuras locales: el negocio LEI es el 5 % del EBIT, solo en parte en Francia [1]) y el consumo interno (comercialización a hogares). Pero el canal que más pesa es la valoración: con la OAT a 10 años (4,93 %) en vez del Bund (3,49 %), el DCF cae un 22-35 % (17,69-14,73 €). Desde el 31-jul Engie ha caído un 16,0 % frente al −1,3 % del STOXX 600, el −1,0 % de las utilities y el −7,5 % del CAC 40, igual que Orange (−14,3 %) y sin cambio de guía (subida el 31-jul) ni de consenso [2, 27]: la caída es sobre todo por riesgo país, amplificada por la deuda tras UKPN; la parte propia (nuclear belga aplazado, gas caro) es menor.\n\n**El negocio.** El 55 % del EBIT es regulado o contratado a largo plazo y será el 67 % en 2028 [6]: redes de gas en Francia, UKPN en el Reino Unido desde mayo y renovables con PPA. Generación flexible y comercialización bajan desde el pico de 2022-2024 (SEM de 3.101 M a 2.357 M de EBIT [1]). Sostenibilidad del crecimiento: «En parte»; el crecimiento (2,1 % anual) es financiable, pero con deuda y a rentabilidades poco por encima del WACC.\n\n**Finanzas.** NRIgs de 4.896 M en 2025 y guía de 4.900-5.500 M en 2026 (subida en julio) y de 5.200-5.800 M en 2028 [2, 5, 6]. La deuda económica pasó de 45.182 M (3,1 veces) a 60.275 M (4,2 veces) en junio con UKPN [2]. ROIC del 8,1 % frente a un WACC del 6,14 %: crea algo de valor, pero lejos de los 5 puntos que pide la cartera.\n\n**Valoración.** El DCF da 22,57 € con el Bund y un WACC del 6,14 %; los escenarios, de 8,16 € a 30,14 €. La asimetría es negativa (0,50x) por la deuda. A 11,6 veces nuestro beneficio de 2027e, Engie cotiza con descuento frente a los comparables (14,5x [25]) pero con prima frente a su mediana adelantada (7,8x).\n\n**Riesgos y catalizadores.** El 23-oct Moody's revisa a Francia (regla 13: retrasa hasta esa decisión); el 4-nov se firma la venta del nuclear belga y el 5-nov se publican los 9M26 [5, 31]. Las presidenciales de 2027 y el periodo tarifario de GRDF son los riesgos de fondo. La IA es una oportunidad pequeña (7 GW de PPA con tecnológicas [3]).\n\n**Qué cambiaría la decisión.** Compraríamos por debajo de 20,19 € (con valor real por encima del precio) y venderíamos por encima de 25,80 €. Subiríamos la convicción con una guía de 2028 por encima de 5.800 M o con el diferencial OAT-Bund de vuelta por debajo de 1 punto.",
+    "tesis": "Engie es una utility europea que se está convirtiendo en una empresa de redes y contratos: el 55 % del EBIT ya es regulado o contratado y será el 67 % en 2028 con UKPN [6]. La acción ha caído un 16 % desde julio por el riesgo país francés, no por el negocio, y cotiza a 11,6 veces el beneficio previsto, con un dividendo del 5,9 %. Pero su valor es muy sensible a los tipos (deuda de 4,2 veces el EBITDA) y nuestra regla de múltiplos, anclada en su historia, no da recorrido suficiente para comprar.",
+    "vision_diferencial": {
+      "mercado_descuenta": "Que Engie merece ya un múltiplo de red (≈14-15 veces el beneficio, objetivo de 30,54 € [23]) por UKPN y los PPA, y que el riesgo francés es pasajero.",
+      "nuestra_vision": "El cambio de mezcla es real, pero la historia del PER de Engie es la de una utility con mucha generación y comercialización (7,8x); el valor real (21,89 €) está en el precio y cae a 14-17 € si la OAT sustituye al Bund.",
+      "por_que": "El 45 % del EBIT sigue en Francia y el 37 % en generación y comercialización, y la deuda multiplica el efecto del tipo de descuento sobre la acción [1, 2]."
+    },
+    "a_favor": [
+      "**Mezcla regulada creciente**: 55 % del EBIT regulado o contratado, 67 % en 2028 [6].",
+      "**Guía subida en julio**: NRIgs de 4.900-5.500 M en 2026 [2].",
+      "**Dividendo del 5,9 %** con un suelo de 1,10 € [5].",
+      "**Descuento frente a comparables**: 11,6x frente a 14,5x [25].",
+      "**La caída es de factor país**: −16 % desde julio frente al −1 % de las utilities, sin cambio de guía [27]."
+    ],
+    "en_contra": [
+      "**Sensibilidad a tipos**: el DCF cae un 22-35 % con la OAT en vez del Bund.",
+      "**Deuda**: 60.275 M de deuda económica, 4,2 veces el EBITDA [2].",
+      "**ROIC − WACC de unos 2 puntos**, lejos de los 5 de la cartera.",
+      "**Francia**: impuestos, tarifas y presidenciales de 2027; el Estado es el primer accionista [1]."
+    ],
+    "que_vigilar": "El diferencial OAT-Bund y la decisión de Moody's del 23-oct: si el diferencial vuelve por debajo de 1 punto, el valor real con la OAT se acerca al del Bund y el descuento frente a los comparables se convierte en recorrido. Si pasa de 1,6 puntos, el valor real baja hacia 14-17 €.",
+    "cambiaria_recomendacion": [
+      "Precio por debajo de 20,19 €: pasaríamos a Comprar si el valor real sigue por encima del precio; por encima de 25,80 €, a Vender.",
+      "Guía de NRIgs de 2028 por encima de 5.800 M (hoy 5.200-5.800 M) [6].",
+      "Diferencial OAT-Bund por debajo de 1 punto o confirmación de la calificación de Francia.",
+      "Retribución de GRDF en el periodo siguiente por encima de la actual."
+    ],
+    "kpis_seguimiento": [
+      {
+        "kpi": "NRIgs (resultado neto recurrente)",
+        "nivel_actual": "2.955 M en el 1S26 (−3 %)",
+        "umbral_alerta": "Por debajo de 4.900 M en 2026",
+        "por_que": "Base del objetivo a 12 meses [2]."
+      },
+      {
+        "kpi": "Diferencial OAT-Bund a 10 años",
+        "nivel_actual": "≈1,45 puntos (19-oct)",
+        "umbral_alerta": "Más de 1,6 puntos",
+        "por_que": "Canal principal del riesgo país en la valoración [28, 29]."
+      },
+      {
+        "kpi": "Deuda económica / EBITDA",
+        "nivel_actual": "4,2 veces (jun-26)",
+        "umbral_alerta": "Más de 4,5 veces",
+        "por_que": "Rating y sensibilidad a tipos [2]."
+      },
+      {
+        "kpi": "Peso de Francia en el EBIT",
+        "nivel_actual": "44,8 % (1S26)",
+        "umbral_alerta": "Por encima del 45 % en 2027",
+        "por_que": "Exposición al riesgo país [3]."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "historia": {
+    "resumen": "Engie nace en 2008 de la fusión de Gaz de France y Suez (GDF Suez) y adopta el nombre Engie en 2015 [1]. Con Isabelle Kocher (2016-2020) y sobre todo con Catherine MacGregor (desde 2021) se desprende del carbón, de EQUANS (servicios, 2022) y de parte de la exploración y GNL, y se centra en renovables, generación flexible, redes e infraestructuras locales [1]. En 2025 cerró el acuerdo con Bélgica para prolongar diez años Doel 4 y Tihange 3 y traspasar los residuos nucleares, y en 2026 compró UK Power Networks y negocia vender todo el nuclear belga al Estado [1, 3, 6]. El Estado francés sigue siendo el primer accionista (22,6 % del capital).",
+    "hitos": [
+      {
+        "anio": "2008",
+        "hito": "Fusión de Gaz de France y Suez [1]."
+      },
+      {
+        "anio": "2015",
+        "hito": "Cambio de nombre a Engie y plan de salida del carbón [1]."
+      },
+      {
+        "anio": "2021",
+        "hito": "Catherine MacGregor, consejera delegada; venta de EQUANS anunciada [1]."
+      },
+      {
+        "anio": "2022",
+        "hito": "Crisis energética: beneficio recurrente récord (5.510 M) [1]."
+      },
+      {
+        "anio": "2025",
+        "hito": "Acuerdo nuclear con Bélgica: prolongación de Doel 4 y Tihange 3 y traspaso de los residuos por ≈15.000 M [1]."
+      },
+      {
+        "anio": "2026",
+        "hito": "Compra de UK Power Networks (19.000 M con deuda) y carta de intenciones para vender el nuclear belga al Estado [3, 6]."
+      }
+    ],
+    "confianza": "Alta"
+  },
+  "negocio": {
+    "segmentos": [
+      {
+        "nombre": "Renovables y generación flexible (R&F Power)",
+        "descripcion": "Renovables (eólica, solar, hidráulica), almacenamiento y centrales de gas flexibles en Europa, América y Oriente Medio.",
+        "tipo_resultado": "EBIT",
+        "historico": [
+          {
+            "periodo": "2024",
+            "ingresos": 10398,
+            "resultado": 3695
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 9860,
+            "resultado": 3577
+          }
+        ]
+      },
+      {
+        "nombre": "Redes (Networks)",
+        "descripcion": "Redes reguladas de gas en Francia (GRDF distribución, NaTran transporte, almacenamiento), redes eléctricas en Latinoamérica y, desde mayo de 2026, UKPN en el Reino Unido.",
+        "tipo_resultado": "EBIT",
+        "historico": [
+          {
+            "periodo": "2024",
+            "ingresos": 7236,
+            "resultado": 2430
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 7992,
+            "resultado": 3054
+          }
+        ]
+      },
+      {
+        "nombre": "Infraestructuras energéticas locales (LEI)",
+        "descripcion": "Redes de calor y frío, producción descentralizada y servicios energéticos para ciudades e industria.",
+        "tipo_resultado": "EBIT",
+        "historico": [
+          {
+            "periodo": "2024",
+            "ingresos": 8900,
+            "resultado": 491
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 8831,
+            "resultado": 482
+          }
+        ]
+      },
+      {
+        "nombre": "Suministro y gestión de energía (SEM)",
+        "descripcion": "Comercialización a hogares y empresas (sobre todo Francia y Bélgica) y gestión de la cartera de energía y trading.",
+        "tipo_resultado": "EBIT",
+        "historico": [
+          {
+            "periodo": "2024",
+            "ingresos": 44717,
+            "resultado": 3101
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 42495,
+            "resultado": 2357
+          }
+        ]
+      },
+      {
+        "nombre": "Nuclear",
+        "descripcion": "Nuclear belga (Doel 4 y Tihange 3 prolongadas), en proceso de venta al Estado belga.",
+        "tipo_resultado": "EBIT",
+        "historico": [
+          {
+            "periodo": "2024",
+            "ingresos": 68,
+            "resultado": 1448
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 539,
+            "resultado": 714
+          }
+        ]
+      },
+      {
+        "nombre": "Otros",
+        "descripcion": "Estructura central y otras actividades.",
+        "tipo_resultado": "EBIT",
+        "historico": [
+          {
+            "periodo": "2024",
+            "ingresos": 2492,
+            "resultado": -823
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 2226,
+            "resultado": -714
+          }
+        ]
+      }
+    ],
+    "geografias": [
+      {
+        "nombre": "Francia",
+        "peso_pct": 40.3
+      },
+      {
+        "nombre": "Bélgica",
+        "peso_pct": 11.2
+      },
+      {
+        "nombre": "Resto de la UE",
+        "peso_pct": 23.4
+      },
+      {
+        "nombre": "Resto de Europa",
+        "peso_pct": 6.5
+      },
+      {
+        "nombre": "Norteamérica",
+        "peso_pct": 8.1
+      },
+      {
+        "nombre": "Sudamérica",
+        "peso_pct": 6.4
+      },
+      {
+        "nombre": "Asia, Oriente Medio y Oceanía",
+        "peso_pct": 3.8
+      },
+      {
+        "nombre": "África",
+        "peso_pct": 0.4
+      }
+    ],
+    "kpis": [
+      {
+        "kpi": "Peso de Francia en el EBIT sin nuclear",
+        "valor_anterior": "45 % (2025: 3.941 de 8.757 M)",
+        "valor_actual": "44,8 % (1S26: 2.356 de 5.263 M)",
+        "variacion": "≈35 % en 2028 con UKPN",
+        "comentario": "Francia es el 40,3 % de las ventas por destino y el 42,8 % del capital industrial empleado [1, 3, 6]."
+      },
+      {
+        "kpi": "EBIT regulado o contratado a largo plazo",
+        "valor_anterior": "42 % (2024)",
+        "valor_actual": "55 % (2025)",
+        "variacion": "67 % objetivo en 2028",
+        "comentario": "Sube con UKPN y los contratos de renovables (PPA) [6, 9]."
+      },
+      {
+        "kpi": "RAB de gas en Francia",
+        "valor_anterior": "32.100 M (2025)",
+        "valor_actual": "31.500 M (jun-26)",
+        "variacion": "−2 %",
+        "comentario": "GRDF 17.600 M, NaTran 9.200 M y almacenamiento 4.400 M; la RAB de gas francés deja de crecer [3, 6]."
+      },
+      {
+        "kpi": "PPA con empresas tecnológicas (centros de datos)",
+        "valor_anterior": null,
+        "valor_actual": "7 GW firmados",
+        "variacion": null,
+        "comentario": "47 % del objetivo de 50 TWh de 2030 [3]."
+      }
+    ],
+    "confianza": "Alta",
+    "descripcion": "Engie es una utility europea con cuatro negocios: renovables y generación flexible (3.577 M de EBIT en 2025), redes reguladas (3.054 M: gas en Francia y, desde 2026, electricidad en el Reino Unido), suministro y gestión de energía (2.357 M) e infraestructuras locales (482 M), más el nuclear belga en venta (714 M) [1, 6]. El 55 % del EBIT es regulado o contratado a largo plazo y la empresa quiere llegar al 67 % en 2028 [6].",
+    "como_gana_dinero": "En redes cobra una retribución regulada sobre la base de activos (en Francia la fija la CRE: 4,0 % real sobre la RAB histórica de GRDF y 5,3 % sobre la nueva; en el Reino Unido, Ofgem) [6]. En renovables vende la energía con contratos a largo plazo (PPA) o a mercado; en generación flexible cobra por disponibilidad y por los precios de punta; en suministro gana un margen sobre la energía que vende a hogares y empresas, sobre todo en Francia y Bélgica [1].",
+    "clientes": "Consumidores de gas de toda Francia (vía peajes de GRDF), unos 22 millones de contratos de suministro en Europa, industria, administraciones y grandes tecnológicas con PPA (7 GW firmados) [1, 3].",
+    "geografias_criterio": "destino"
+  },
+  "sector": {
+    "definicion": "Utilities integradas europeas con redes reguladas, renovables y comercialización. El mercado relevante es el de la inversión en redes y en generación baja en carbono en Europa, el Reino Unido, las Américas y Oriente Medio.",
+    "tamano": null,
+    "unidad_serie": null,
+    "serie": [],
+    "tcac_historico_pct": null,
+    "tcac_previsto_pct": null,
+    "cr5_pct": null,
+    "estructura": "Moderadamente concentrada",
+    "drivers": [
+      {
+        "driver": "Electrificación y centros de datos",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "7 GW de PPA con tecnológicas y cartera de 7 GW para centros de datos [3]."
+      },
+      {
+        "driver": "Tipos de interés",
+        "efecto": "−",
+        "horizonte": "Cíclico",
+        "evidencia": "Sector intensivo en capital y deuda: la OAT a 10 años pasó del 3,85 % (media de julio) al 4,93 % el 19-oct [3]."
+      },
+      {
+        "driver": "Declive del gas en Francia",
+        "efecto": "−",
+        "horizonte": "Estructural",
+        "evidencia": "La RAB de gas francés baja de 32.100 a 31.500 M; la CRE estudia el futuro de las infraestructuras de gas hasta 2050 (informe de 1-jul-2026) [3, 6]."
+      },
+      {
+        "driver": "Precios de la energía",
+        "efecto": "+/−",
+        "horizonte": "Cíclico",
+        "evidencia": "Precios altos del gas en otoño de 2026 y volatilidad [18]."
+      }
+    ],
+    "porter": [
+      {
+        "fuerza": "Rivalidad",
+        "intensidad": 3,
+        "justificacion": "En redes no hay competencia; en renovables y comercialización compite con EDF, TotalEnergies, Iberdrola, Enel y RWE."
+      },
+      {
+        "fuerza": "Nuevos entrantes",
+        "intensidad": 2,
+        "justificacion": "Renovables abiertas a fondos de infraestructuras; redes con barreras regulatorias."
+      },
+      {
+        "fuerza": "Sustitutos",
+        "intensidad": 3,
+        "justificacion": "Electrificación sustituye al gas en calefacción (bomba de calor), lo que amenaza el volumen de GRDF."
+      },
+      {
+        "fuerza": "Poder de clientes",
+        "intensidad": 2,
+        "justificacion": "Hogares fragmentados; grandes tecnológicas negocian PPA."
+      },
+      {
+        "fuerza": "Poder de proveedores",
+        "intensidad": 3,
+        "justificacion": "Fabricantes de turbinas, paneles y baterías concentrados; gas importado."
+      }
+    ],
+    "ciclo": {
+      "posicion": "Expansión",
+      "comentario": "Ciclo inversor en redes y renovables; márgenes de generación y comercialización a la baja tras el pico de 2022-2024."
+    },
+    "regulacion": "Francia: CRE (tarifas de redes de gas por periodos de cuatro años; GRDF negociará en 2027 el periodo siguiente). Reino Unido: Ofgem (RIIO-ED2 hasta marzo de 2028). Bélgica: acuerdo nuclear con el Estado. UE: mercado eléctrico y objetivos de renovables [1, 6].",
+    "tendencias": "Más peso de redes y contratos a largo plazo, rotación de activos para financiar el plan y almacenamiento con baterías; en Francia, presión fiscal sobre las grandes empresas y debate político sobre los precios de la energía de cara a las presidenciales de 2027.",
+    "confianza": "Media"
+  },
+  "competencia": {
+    "cuota_pct": null,
+    "posicion": "Segunda utility francesa tras EDF; primer operador de redes de gas de Francia y, con UKPN, primera distribuidora eléctrica del Reino Unido por clientes [1, 6].",
+    "competidores": [
+      {
+        "nombre": "EDF",
+        "pais": "Francia",
+        "ticker": null,
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "100 % del Estado; nuclear y redes eléctricas en Francia."
+      },
+      {
+        "nombre": "Iberdrola",
+        "pais": "España",
+        "ticker": "IBE.MC",
+        "ingresos": 44076,
+        "cuota_pct": null,
+        "margen_ebit_pct": 22.1,
+        "comentario": "Redes en el Reino Unido, EE. UU., Brasil y España [17]."
+      },
+      {
+        "nombre": "Enel",
+        "pais": "Italia",
+        "ticker": "ENEL.MI",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Integrada con redes en Italia, España y Latinoamérica."
+      },
+      {
+        "nombre": "RWE",
+        "pais": "Alemania",
+        "ticker": "RWE.DE",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Renovables y generación flexible, sin redes."
+      },
+      {
+        "nombre": "TotalEnergies",
+        "pais": "Francia",
+        "ticker": "TTE.PA",
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": 11.7,
+        "comentario": "Competidor en comercialización y renovables en Francia."
+      }
+    ],
+    "foso": {
+      "veredicto": "Estrecho",
+      "tendencia": "Estable",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 0,
+          "evidencia": "No aplica."
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 1,
+          "evidencia": "Bajos en comercialización."
+        },
+        {
+          "fuente": "Activos intangibles / licencias",
+          "puntuacion": 3,
+          "evidencia": "Concesiones de redes de gas en Francia y licencia de UKPN [1, 2]."
+        },
+        {
+          "fuente": "Ventaja de costes",
+          "puntuacion": 2,
+          "evidencia": "Escala en renovables y en gestión de energía."
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 2,
+          "evidencia": "Monopolios naturales de redes."
+        }
+      ]
+    },
+    "amenazas": "El foso de las redes es regulatorio y lo fija el regulador; el del gas francés se erosiona con la electrificación. En comercialización y generación la ventaja es pequeña.",
+    "confianza": "Media"
+  },
+  "financieros": {
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 57866,
+        "coste_ventas": 38861,
+        "gastos_generales": null,
+        "ebitda": 11140,
+        "amortizaciones": 4418,
+        "ebit": 6722,
+        "resultado_financiero": -1350,
+        "bai": 5372,
+        "impuestos": 1695,
+        "minoritarios": 97,
+        "beneficio_neto": 3661,
+        "gastos_financieros": 2061,
+        "participadas_en_ebitda": 750,
+        "no_recurrentes_en_ebitda": -577,
+        "bpa": 1.46,
+        "dpa": 0.85,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 2419.4
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 93865,
+        "coste_ventas": 74535,
+        "gastos_generales": null,
+        "ebitda": 5795,
+        "amortizaciones": 4668,
+        "ebit": 1127,
+        "resultado_financiero": -3003,
+        "bai": -1876,
+        "impuestos": -83,
+        "minoritarios": 173,
+        "beneficio_neto": 216,
+        "gastos_financieros": 3700,
+        "participadas_en_ebitda": 1076,
+        "no_recurrentes_en_ebitda": 7918,
+        "bpa": 0.06,
+        "dpa": 1.4,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 2420
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 82565,
+        "coste_ventas": 56992,
+        "gastos_generales": null,
+        "ebitda": 11031,
+        "amortizaciones": 4933,
+        "ebit": 6098,
+        "resultado_financiero": -2163,
+        "bai": 3935,
+        "impuestos": 1031,
+        "minoritarios": 695,
+        "beneficio_neto": 2208,
+        "gastos_financieros": 3340,
+        "participadas_en_ebitda": 1088,
+        "no_recurrentes_en_ebitda": 3986,
+        "bpa": 0.88,
+        "dpa": 1.43,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 2421.4
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 73812,
+        "coste_ventas": 49465,
+        "gastos_generales": null,
+        "ebitda": 14255,
+        "amortizaciones": 5225,
+        "ebit": 9030,
+        "resultado_financiero": -1842,
+        "bai": 7188,
+        "impuestos": 2215,
+        "minoritarios": 867,
+        "beneficio_neto": 4106,
+        "gastos_financieros": 3845,
+        "participadas_en_ebitda": 1062,
+        "no_recurrentes_en_ebitda": 1311,
+        "bpa": 1.65,
+        "dpa": 1.48,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 2436
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 71944,
+        "coste_ventas": 49047,
+        "gastos_generales": null,
+        "ebitda": 13553,
+        "amortizaciones": 5262,
+        "ebit": 8291,
+        "resultado_financiero": -1973,
+        "bai": 6318,
+        "impuestos": 1570,
+        "minoritarios": 921,
+        "beneficio_neto": 3827,
+        "gastos_financieros": 2994,
+        "participadas_en_ebitda": 1008,
+        "no_recurrentes_en_ebitda": 1180,
+        "bpa": 1.51,
+        "dpa": 1.35,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 2443
+      }
+    ],
+    "ltm": {
+      "periodo": "LTM jun-26",
+      "fecha_fin": "2026-06-30",
+      "ingresos": 70585,
+      "ebitda": 13629,
+      "ebit": 8554,
+      "beneficio_neto": 4227,
+      "bpa": 1.63,
+      "dpa": 1.35,
+      "dpa_extraordinario": 0,
+      "fcf": null,
+      "participadas_en_ebitda": 1052,
+      "no_recurrentes_en_ebitda": 703
+    },
+    "cambios_perimetro": [
+      {
+        "periodo": "2022",
+        "descripcion": "Venta de EQUANS a Bouygues (7.100 M de valor empresa): sale del perímetro como actividad interrumpida; +2.183 M de resultado de operaciones interrumpidas en el beneficio neto de 2022 [12]."
+      },
+      {
+        "periodo": "2026",
+        "descripcion": "Compra del 100 % de UK Power Networks (redes eléctricas de Londres, sureste y este de Inglaterra), anunciada el 25-feb y cerrada el 7-may-2026: 12.200 M de precio (10.600 M GBP) más ≈7.000 M de deuda asumida; base de activos regulada (RAV) de 11.400 M a junio; 180 M de EBIT en el 1S26 y, en año completo, ≈1.200 M de ventas y ≈250 M de beneficio neto [2, 3, 6]."
+      },
+      {
+        "periodo": "2026",
+        "descripcion": "Carta de intenciones del 30-abr-2026 para vender toda la actividad nuclear belga al Estado belga, con efecto neutro en valor según la empresa; la firma de las condiciones principales (Heads of Terms) se aplazó del 1-oct al 4-nov-2026 [2, 3]."
+      }
+    ],
+    "comentario": "Las ventas siguen al precio del gas y la electricidad y no miden la actividad: 57.866 M en 2021, 93.865 M en 2022 con la crisis energética, 71.944 M en 2025 y 36.707 M en el 1S26 (−3,6 %) [2, 14]. Lo que mide la actividad es el EBIT recurrente de la empresa: 6.145 M (2021), 9.045 M (2022), 10.084 M (2023), 10.341 M (2024) y 9.471 M (2025), con 2022-2024 inflados por precios de pico [5, 7]. El EBIT del informe es el «résultat des activités opérationnelles» publicado (XBRL) y la diferencia con el recurrente se trata como no recurrente y se devuelve al EBITDA y al EBIT: valoración a mercado de derivados de materias primas (−7.918 M de efecto en 2022 por las coberturas), deterioros, reestructuraciones y plusvalías [1, 12]. La parte recurrente del resultado de asociadas y negocios conjuntos (750-1.088 M al año) se saca del EBITDA y del EBIT y se valora en el puente. La cuenta se presenta por naturaleza: en coste de ventas, las compras y consumos de energía. El beneficio neto incluye actividades interrumpidas en 2021 (+80 M) [13] y 2022 (+2.183 M, EQUANS), y el BPA descuenta los cupones de los híbridos (140 M en 2025) [1, 12].",
+    "ajustes": "Engie publica un «résultat net récurrent part du Groupe» (NRIgs) que excluye la valoración a mercado de coberturas, deterioros, reestructuraciones y plusvalías: 3.158 M (2021), 5.510 M (2022), 5.366 M (2023), 5.531 M (2024) y 4.896 M (2025, 1,96 € por acción), y 2.955 M en el 1S26 (3.057 M en el 1S25) [2, 5, 7]. Es la base de su dividendo (65-75 % de pay-out, suelo de 1,10 €) y la base de BPA que usamos en el objetivo a 12 meses. Cuadre de 2025: EBITDA 14,7 mil M − amortización 5,3 = EBIT 9,5; − financiero recurrente 2,0; − impuestos recurrentes 1,6; − minoritarios y otros 0,9 = 4,9 mil M [6]. El LTM a junio de 2026 se calcula con 2025 + 1S26 − 1S25; el FCF de los últimos 12 meses queda sin dato porque los pagos de pasivos nucleares belgas (financiados con activos de Synatom) distorsionan el flujo operativo.",
+    "confianza": "Alta"
+  },
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "1S25",
+        "ingresos": 38066,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": 8259,
+        "margen_ebitda_pct": 21.7,
+        "bpa": 1.16,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "2S25",
+        "ingresos": 33878,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": 6474,
+        "margen_ebitda_pct": 19.1,
+        "bpa": 0.35,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1S26",
+        "ingresos": 36707,
+        "crecimiento_pct": -3.6,
+        "crecimiento_organico_pct": null,
+        "ebitda": 7858,
+        "margen_ebitda_pct": 21.4,
+        "bpa": 1.28,
+        "vs_consenso": "EBIT sin nuclear de 5.263 M (+3,3 %) y guía de 2026 subida"
+      }
+    ],
+    "ultima_presentacion": "El 31-jul-2026 Engie subió la guía de 2026: NRIgs de 4.900-5.500 M, EBIT sin nuclear de 9.200-10.200 M y EBITDA de 14.300-15.300 M, con un coste financiero recurrente de 2.300-2.500 M y una tasa impositiva recurrente del 18-22 % que ya incluye la sobretasa francesa a las grandes empresas [2, 3, 15]. El EBIT sin nuclear del 1S26 creció un 3,3 % (5.263 M) con 180 M de UKPN, mientras el NRIgs bajó a 2.955 M (3.057 M en el 1S25 [16]) por la salida del nuclear. La dirección destacó la liquidez de 20.900 M y la deuda económica de 4,2 veces el EBITDA tras UKPN [3, 4].",
+    "confianza": "Alta"
+  },
+  "balance": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "activo_total": 225333,
+        "activo_corriente": 107915,
+        "pasivo_corriente": 95019,
+        "pasivo_total": 183353,
+        "fondo_comercio": 12799,
+        "intangibles": 6784,
+        "inmovilizado_material": 51079,
+        "existencias": 6175,
+        "clientes": 32555,
+        "proveedores": 32822,
+        "activos_contrato": 8344,
+        "pasivos_contrato": 2671,
+        "caja": 13890,
+        "deuda_financiera": 39005,
+        "arrendamientos": 2043,
+        "patrimonio_neto": 36994,
+        "minoritarios": 4986,
+        "reservas": 5238
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 235490,
+        "activo_corriente": 103969,
+        "pasivo_corriente": 93778,
+        "pasivo_total": 196205,
+        "fondo_comercio": 12854,
+        "intangibles": 7364,
+        "inmovilizado_material": 55488,
+        "existencias": 8145,
+        "clientes": 31310,
+        "proveedores": 39801,
+        "activos_contrato": 12575,
+        "pasivos_contrato": 3292,
+        "caja": 15570,
+        "deuda_financiera": 37716,
+        "arrendamientos": 2875,
+        "patrimonio_neto": 34253,
+        "minoritarios": 5032,
+        "reservas": 5036
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 194640,
+        "activo_corriente": 75617,
+        "pasivo_corriente": 76027,
+        "pasivo_total": 158916,
+        "fondo_comercio": 12864,
+        "intangibles": 8449,
+        "inmovilizado_material": 57950,
+        "existencias": 5343,
+        "clientes": 20092,
+        "proveedores": 22976,
+        "activos_contrato": 9530,
+        "pasivos_contrato": 3960,
+        "caja": 16578,
+        "deuda_financiera": 44140,
+        "arrendamientos": 3147,
+        "patrimonio_neto": 30057,
+        "minoritarios": 5667,
+        "reservas": 5198
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 189544,
+        "activo_corriente": 79359,
+        "pasivo_corriente": 72884,
+        "pasivo_total": 148086,
+        "fondo_comercio": 13291,
+        "intangibles": 7964,
+        "inmovilizado_material": 64388,
+        "existencias": 5061,
+        "clientes": 16173,
+        "proveedores": 19153,
+        "activos_contrato": 9229,
+        "pasivos_contrato": 3818,
+        "caja": 16928,
+        "deuda_financiera": 48264,
+        "arrendamientos": 3743,
+        "patrimonio_neto": 34556,
+        "minoritarios": 6902,
+        "reservas": 8937
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 169249,
+        "activo_corriente": 58394,
+        "pasivo_corriente": 53830,
+        "pasivo_total": 128419,
+        "fondo_comercio": 13110,
+        "intangibles": 7919,
+        "inmovilizado_material": 65499,
+        "existencias": 2852,
+        "clientes": 13573,
+        "proveedores": 17226,
+        "activos_contrato": 8006,
+        "pasivos_contrato": 3606,
+        "caja": 14507,
+        "deuda_financiera": 50894,
+        "arrendamientos": 3674,
+        "patrimonio_neto": 32951,
+        "minoritarios": 7879,
+        "reservas": 9455
+      }
+    ],
+    "vencimientos": [
+      {
+        "anio": "2026",
+        "importe": 780
+      },
+      {
+        "anio": "2027",
+        "importe": 3354
+      },
+      {
+        "anio": "2028",
+        "importe": 3184
+      },
+      {
+        "anio": "2029",
+        "importe": 3756
+      },
+      {
+        "anio": "2030",
+        "importe": 3159
+      },
+      {
+        "anio": "2031+",
+        "importe": 25686
+      }
+    ],
+    "liquidez": "Liquidez de 20.900 M a junio de 2026 (caja de 13.537 M más líneas comprometidas) [2, 3]. Deuda financiera bruta de 69.425 M (55.188 M a largo y 14.237 M a corto) con 3.699 M de arrendamientos; deuda financiera neta de 54.922 M y deuda económica neta de 60.275 M (4,2 veces el EBITDA), frente a 38.902 M y 45.182 M (3,1 veces) a cierre de 2025: la diferencia es UKPN [2]. Vencimientos de bonos de 780 M en lo que queda de 2026 y ≈3.200-3.800 M al año en 2027-2030 [2].",
+    "rating": "S&P BBB+ (estable), Moody's Baa1 (estable), Fitch BBB+ (estable) [3]",
+    "coste_deuda_pct": 4,
+    "vida_media_anios": 11.2,
+    "otros_pasivos": "Híbridos perpetuos contabilizados en el patrimonio: 6.693 M a junio de 2026 tras emitir 2.300 M en abril y junio para UKPN [2]. Provisiones nucleares belgas de 9.399 M, cubiertas en parte por 6.679 M de activos dedicados (Synatom); desmantelamiento no nuclear de 1.659 M y pensiones netas de ≈974 M [2]. Todo ello está en la deuda económica de 60.275 M.",
+    "comentario": "La deuda financiera (sin arrendamientos) subió de 39.005 M en 2021 a 50.894 M en 2025 con el plan de inversión en renovables y redes, y saltó a 64.760 M en junio de 2026 con UKPN (19.000 M entre precio y deuda asumida, financiados con 3.000 M de ampliación de capital a 28 €, 2.300 M de híbridos y deuda) [2, 14]. El 91 % de la deuda neta es a tipo fijo tras derivados, con un coste medio bruto del 4,0 % y una vida media de 11,2 años a cierre de 2025 [1]: la subida de la OAT afecta poco y despacio al coste financiero, sobre todo a la refinanciación de 3.000-4.000 M al año y a la deuda nueva del plan. El balance de 2021-2022 estaba inflado por los derivados de materias primas (activo total de 235.490 M en 2022).",
+    "confianza": "Alta"
+  },
+  "flujos": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 7313,
+        "capex": 5990,
+        "pagos_arrendamientos": 560,
+        "adquisiciones": 392,
+        "desinversiones": 0,
+        "dividendos": 1859,
+        "recompras": null,
+        "emision_acciones": null,
+        "intereses_en_financiacion": 719
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 8586,
+        "capex": 6379,
+        "pagos_arrendamientos": 501,
+        "adquisiciones": 289,
+        "desinversiones": 6728,
+        "dividendos": 2665,
+        "recompras": null,
+        "emision_acciones": null,
+        "intereses_en_financiacion": 822
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 13117,
+        "capex": 7328,
+        "pagos_arrendamientos": 418,
+        "adquisiciones": 1392,
+        "desinversiones": 27,
+        "dividendos": 4067,
+        "recompras": null,
+        "emision_acciones": null,
+        "intereses_en_financiacion": 1058
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 13144,
+        "capex": 9385,
+        "pagos_arrendamientos": 461,
+        "adquisiciones": 670,
+        "desinversiones": 883,
+        "dividendos": 4147,
+        "recompras": 86,
+        "emision_acciones": 1040,
+        "intereses_en_financiacion": 1732
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": -1476,
+        "capex": 7267,
+        "pagos_arrendamientos": 458,
+        "adquisiciones": 653,
+        "desinversiones": 1514,
+        "dividendos": 4529,
+        "recompras": 22,
+        "emision_acciones": 367,
+        "intereses_en_financiacion": 1512
+      }
+    ],
+    "comentario": "El flujo operativo de 2025 (−1.476 M) es atípico: incluye el pago de 13.986 M de pasivos nucleares belgas al Estado (acuerdo de extensión de Doel 4 y Tihange 3 y traspaso de los residuos), financiado con activos de Synatom que entran en inversión (+8.523 M); el «cash flow from operations» que publica Engie sin ese efecto fue de 13.600 M [1, 5, 8]. En el 1S26 el flujo operativo fue de 7.133 M y la inversión de 3.145 M (sin UKPN) [2]. La inversión bruta del plan es de 34.000-38.000 M en 2026-2028 con ≈6.000 M de ventas de activos [6]. Los dividendos incluyen los pagados a minoritarios; las desinversiones de 2021 eran negativas en el XBRL (−173 M) y se dejan en 0.",
+    "confianza": "Media"
+  },
+  "calidad": {
+    "auditor": "Deloitte & Associés y EY & Autres",
+    "anios_auditor": 18,
+    "opinion": "Sin salvedades (2025) [1]",
+    "comentario": "Los dos auditores lo son desde 2008 y la junta de 2026 votó su renovación [1]. La distancia entre el beneficio publicado y el recurrente es grande y de signo cambiante: la valoración a mercado de las coberturas de materias primas movió miles de millones en 2022-2023, y hay deterioros y plusvalías cada año; por eso el informe parte del EBIT recurrente [5, 12]. La conversión en caja está distorsionada en 2025 por el pago nuclear belga (financiado con activos dedicados) y en 2022 por las garantías de derivados.",
+    "senales": [
+      {
+        "senal": "Valoración a mercado de coberturas de energía fuera del recurrente",
+        "nivel": "Media",
+        "comentario": "−7.918 M de diferencia entre EBIT recurrente y publicado en 2022 y +3.986 M en 2023: el beneficio publicado no sirve para medir la tendencia [11, 12]."
+      },
+      {
+        "senal": "Pasivos nucleares belgas y su traspaso al Estado",
+        "nivel": "Media",
+        "comentario": "Provisiones de 9.399 M con 6.679 M de activos dedicados; la venta al Estado belga sigue sin firmar (Heads of Terms aplazados al 4-nov-2026) [2]."
+      },
+      {
+        "senal": "Fondo de comercio provisional de UKPN",
+        "nivel": "Baja",
+        "comentario": "7.700 M de fondo de comercio provisional; el fondo de comercio total pasó de 13.110 M a 20.893 M en junio [2]."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "rentabilidad": {
+    "comentario": "El ROIC del motor fue del 8,1 % en 2025 (10,2 % en 2023 y 9,0 % en 2024 con precios de pico), y del 9,7 % sin el fondo de comercio, frente a un WACC del 6,14 %: crea valor, con un diferencial de unos 2 puntos, lejos de los 5 que pide la cartera. El ROE (11,3 %) está apalancado por los híbridos y la deuda. El ROIC incremental de 2021-2025 (27,9 %) es engañoso: refleja la salida de los precios de pico, no la rentabilidad de la inversión. Con UKPN el capital invertido sube ≈19.000 M y el ROIC de 2026 bajará hacia el 7 %.",
+    "confianza": "Media"
+  },
+  "capital": {
+    "politica": "Dividendo del 65-75 % del NRIgs con un suelo de 1,10 € por acción (1,35 € con cargo a 2025, 67 % de pay-out) [5]. Inversión bruta de 34.000-38.000 M en 2026-2028 en redes, renovables y almacenamiento, con ≈6.000 M de rotación de activos, y mantenimiento de un rating «strong investment grade» [6]. Sin recompras salvo las de cobertura de planes (110 M en el 1S26) [2].",
+    "adquisiciones": [
+      {
+        "anio": "2026",
+        "objetivo": "UK Power Networks (100 %)",
+        "importe": 19200,
+        "ev_ebitda": 8.8,
+        "financiacion": "Ampliación acelerada de 3.000 M a 28 € (107,1 M de acciones), 2.300 M de híbridos y deuda",
+        "resultado": "Cerrada el 7-may; 180 M de EBIT en el 1S26; el valor empresa es ≈10 veces el EBITDA de 2027 y ≈1,5 veces la RAV [2, 6]."
+      },
+      {
+        "anio": "2022",
+        "objetivo": "Venta de EQUANS a Bouygues",
+        "importe": 7100,
+        "ev_ebitda": null,
+        "financiacion": "Venta",
+        "resultado": "Salida de los servicios técnicos; +2.183 M de resultado de operaciones interrumpidas [12]."
+      }
+    ],
+    "comentario": "La dirección asigna capital con disciplina: vendió EQUANS (2022) en el pico, salió del carbón y negocia salir del nuclear con efecto neutro, e invierte 34.000-38.000 M en 2026-2028 con ≈6.000 M de ventas de activos [6]. UKPN se pagó a ≈1,5 veces la RAV, en línea con el sector, y en parte con acciones a 28 €, un 23 % por encima del precio actual [2]. El dividendo (1,35 €, 5,9 % de rentabilidad) es la principal vía de retorno; no hay recompras.",
+    "confianza": "Alta"
+  },
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "Catherine MacGregor",
+        "cargo": "Consejera delegada",
+        "desde": "2021",
+        "participacion_pct": null,
+        "trayectoria": "Ingeniera; 23 años en Schlumberger y presidenta de TechnipFMC Ingeniería antes de llegar a Engie. Ha simplificado el grupo (salida de EQUANS, del carbón y del nuclear) y lo ha llevado a redes y renovables [1]."
+      },
+      {
+        "nombre": "Pierre-François Riolacci",
+        "cargo": "Director financiero",
+        "desde": "2021",
+        "participacion_pct": null,
+        "trayectoria": "Antes director financiero de Veolia [1]."
+      },
+      {
+        "nombre": "Jean-Pierre Clamadieu",
+        "cargo": "Presidente no ejecutivo",
+        "desde": "2018",
+        "participacion_pct": null,
+        "trayectoria": "Ex consejero delegado de Solvay [1]."
+      }
+    ],
+    "historial_guidance": [
+      {
+        "anio": "2023",
+        "guia": "NRIgs de 5.000-5.600 M (subida en el año)",
+        "real": "5.366 M",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2024",
+        "guia": "NRIgs de 5.200-5.800 M",
+        "real": "5.531 M",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2025",
+        "guia": "NRIgs de 4.400-5.000 M (subida a 4.600-5.200 M)",
+        "real": "4.896 M",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2026",
+        "guia": "NRIgs de 4.900-5.500 M (subida el 31-jul)",
+        "real": "2.955 M en el 1S26",
+        "cumplida": "En curso"
+      }
+    ],
+    "comentario": "Equipo estable desde 2021 que ha cumplido la guía todos los años y suele subirla a mitad de ejercicio [1, 5]. La asignación de capital ha sido disciplinada (rotación de activos, salida del carbón y del nuclear) y la compra de UKPN, la mayor desde la fusión, se pagó a ≈1,5 veces la RAV y en parte con acciones a 28 € [1].",
+    "confianza": "Alta"
+  },
+  "gobierno": {
+    "consejo": [
+      {
+        "nombre": "Jean-Pierre Clamadieu",
+        "cargo": "Presidente",
+        "tipo": "Independiente",
+        "desde": "2018",
+        "comisiones": "Nombramientos"
+      },
+      {
+        "nombre": "Catherine MacGregor",
+        "cargo": "Consejera delegada",
+        "tipo": "Ejecutivo",
+        "desde": "2021",
+        "comisiones": null
+      },
+      {
+        "nombre": "Fabrice Brégier",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2019",
+        "comisiones": null
+      },
+      {
+        "nombre": "Marie-José Nadeau",
+        "cargo": "Consejera",
+        "tipo": "Independiente",
+        "desde": "2015",
+        "comisiones": null
+      },
+      {
+        "nombre": "Ross McInnes",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2016",
+        "comisiones": "Auditoría (presidente)"
+      },
+      {
+        "nombre": "Céline Fornaro",
+        "cargo": "Representante del Estado",
+        "tipo": "Dominical",
+        "desde": null,
+        "comisiones": null
+      },
+      {
+        "nombre": "Representantes de los trabajadores (3) y del accionariado asalariado (1)",
+        "cargo": "Consejeros",
+        "tipo": "Otro",
+        "desde": null,
+        "comisiones": null
+      }
+    ],
+    "presidente_ceo_separados": true,
+    "presidente_ejecutivo": false,
+    "consejero_coordinador": false,
+    "una_accion_un_voto": false,
+    "operaciones_vinculadas_relevantes": false,
+    "variable_ligado_rentabilidad": true,
+    "auditoria_independiente": true,
+    "insiders_sin_operaciones": false,
+    "accionista_control": false,
+    "presidente_vinculado_control": false,
+    "cambios_cupula_24m": 0,
+    "voto_remuneracion_pct": null,
+    "voto_remuneracion_contra_pct": null,
+    "voto_remuneracion_contra_libre_pct": null,
+    "voto_cupula_pct": null,
+    "remuneracion_ceo": {
+      "anio": "2025",
+      "total": 4.8,
+      "fijo": 1.15,
+      "variable_corto": 1.58,
+      "variable_largo": 2.07,
+      "ratio_salario_medio": 53
+    },
+    "remuneracion": "Consejera delegada (2025): fijo de 1,15 M €, variable de 1,58 M € (125,1 % del objetivo) y 192.567 acciones de rendimiento valoradas en 2,07 M € [1]. Unas 53 veces el salario medio en Francia del grupo (≈90.000 €, estimación propia). El presidente cobra 450.000 € fijos.",
+    "accionistas": [
+      {
+        "nombre": "Estado francés (APE)",
+        "pct": 22.64,
+        "tipo": "Estado",
+        "variacion": "Del 23,64 % al 22,64 % por la ampliación de marzo; 33,80 % de los votos (voto doble) [2, 20]"
+      },
+      {
+        "nombre": "Capital Group",
+        "pct": 6.25,
+        "tipo": "Institucional",
+        "variacion": null
+      },
+      {
+        "nombre": "BlackRock",
+        "pct": 5.9,
+        "tipo": "Institucional",
+        "variacion": null
+      },
+      {
+        "nombre": "Caisse des Dépôts (CDC)",
+        "pct": 3.36,
+        "tipo": "Estado",
+        "variacion": null
+      },
+      {
+        "nombre": "Accionariado asalariado",
+        "pct": 4,
+        "tipo": "Empleados",
+        "variacion": "LINK 2026 (4,3 M de acciones, julio) [2]"
+      }
+    ],
+    "insiders": [
+      {
+        "fecha": "2026-07-30",
+        "persona": "Varios directivos (plan de accionariado asalariado LINK 2026 a 21,71 €)",
+        "operacion": "Compra",
+        "acciones": null,
+        "importe": null
+      }
+    ],
+    "control_y_defensas": "El Estado francés tiene el 22,64 % del capital y el 33,80 % de los votos por el voto doble y tres puestos en el consejo (un representante y dos propuestos); la ley exige que conserve al menos un tercio del capital o de los votos de la antigua GDF y tiene una acción de oro sobre los activos de gas estratégicos [1, 20]. Una OPA hostil es prácticamente imposible.",
+    "alertas": [
+      "El Estado puede reducir su participación para financiar el déficit (en 2026 bajó de un tercio de los votos por la ampliación, no por ventas) [20].",
+      "El Estado como accionista puede presionar en precios regulados, dividendo e inversión en Francia."
+    ],
+    "confianza": "Media"
+  },
+  "consenso": {
+    "guidance": "2026 (subida el 31-jul): NRIgs de 4.900-5.500 M, EBIT sin nuclear de 9.200-10.200 M, EBITDA de 14.300-15.300 M. 2027: NRIgs de 4.900-5.500 M y EBIT sin nuclear de 9.800-10.800 M; 2028: NRIgs de 5.200-5.800 M y EBIT sin nuclear de 10.300-11.300 M (+7 % anual de EBIT) [6].",
+    "estimaciones": [
+      {
+        "periodo": "2026e",
+        "ingresos": 78789,
+        "ebitda": 15116,
+        "ebit": 9746,
+        "bpa": 1.9,
+        "dpa": 1.42,
+        "fuente": "MarketScreener, 20-oct-2026 [23]"
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 81425,
+        "ebitda": 16287,
+        "ebit": 10513,
+        "bpa": 2,
+        "dpa": 1.46,
+        "fuente": "MarketScreener, 20-oct-2026 [23]"
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 84707,
+        "ebitda": 17020,
+        "ebit": 10980,
+        "bpa": 2.13,
+        "dpa": 1.55,
+        "fuente": "MarketScreener, 20-oct-2026 [23]"
+      }
+    ],
+    "recomendaciones": {
+      "n_analistas": 19,
+      "comprar": 17,
+      "mantener": 2,
+      "vender": 0,
+      "po_medio": 30.54,
+      "po_min": 24.5,
+      "po_max": 33.8
+    },
+    "revisiones": "Las estimaciones de beneficio de 2026 subieron tras la guía del 31-jul; el objetivo medio (30,54 €) no ha bajado con la acción, que cotiza un 25 % por debajo [23, 24]. Bernstein fijó 29,40 € en septiembre. La excepción es ABC Bourse (análisis técnico), con objetivo de 22 € y previsión bajista [18].",
+    "base_ebitda": "ajustado",
+    "ajuste_ebitda_pct_ventas": 1.3,
+    "confianza": "Media"
+  },
+  "bolsa": {
+    "tipo_rentabilidad": "total (con dividendos)",
+    "rentabilidades": [
+      {
+        "periodo": "En el año",
+        "accion_pct": 9.8,
+        "indice_pct": 11.6,
+        "sector_pct": 16
+      },
+      {
+        "periodo": "1 año",
+        "accion_pct": 25.7,
+        "indice_pct": 15.6,
+        "sector_pct": 21
+      },
+      {
+        "periodo": "3 años (anual.)",
+        "accion_pct": 25.9,
+        "indice_pct": 17.4,
+        "sector_pct": 21.2
+      },
+      {
+        "periodo": "5 años (anual.)",
+        "accion_pct": 23.6,
+        "indice_pct": 9.5,
+        "sector_pct": 11.8
+      },
+      {
+        "periodo": "10 años (anual.)",
+        "accion_pct": 12.4,
+        "indice_pct": 9.4,
+        "sector_pct": 11.1
+      }
+    ],
+    "anual": [],
+    "beta": 0.75,
+    "volatilidad_pct": 21,
+    "max_drawdown_pct": null,
+    "posicion_corta_pct": null,
+    "comentario": "Hasta julio de 2026 Engie fue una de las mejores utilities europeas: +23,6 % anual en cinco años con dividendos frente al 11,8 % del sector, por el beneficio de la crisis energética, el dividendo y el giro a redes con UKPN [22]. Desde el 31-jul ha caído un 16,0 % (27,11 € a 22,77 €) frente al −1,3 % del STOXX 600, el −1,0 % de las utilities europeas y el −7,5 % del CAC 40 [27]. Las francesas con el Estado en el capital han caído más (Orange −14,3 %, Veolia −7,4 %), mientras Iberdrola sube un 2,8 % [27]. Los datos de rentabilidad llegan al 16-oct (Yahoo); el precio del informe es el cierre del 19-oct.",
+    "contexto": {
+      "movimiento": {
+        "fecha": "2026-10-20",
+        "var_1m_pct": -5.1,
+        "var_3m_pct": -17.2,
+        "var_6m_pct": -20.5,
+        "var_12m_pct": 16.6,
+        "dist_max_52s_pct": -22.8,
+        "dist_min_52s_pct": 16.1,
+        "dist_max_historico_pct": -22.8,
+        "tendencia": "bajista",
+        "volatilidad_60d_pct": 21,
+        "avisos": []
+      },
+      "movimientos_fuertes": [
+        {
+          "periodo": "3-mar-2026",
+          "var_pct": -5.6,
+          "causa": "Única sesión de −5 % en 12 meses; sin noticia propia publicada. Coincide con la entrega de las 107 M de acciones nuevas de la ampliación acelerada de 3.000 M a 28 € para UKPN (el Estado cruzó a la baja el tercio de los votos el 4-mar por esa ampliación) y con la recogida de beneficios tras el máximo de 29,89 € del 26-feb [2, 20].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "31-jul a 19-oct-2026",
+          "var_pct": -16,
+          "causa": "No llega al 15 % en un mes (la mayor caída mensual es −10,9 % hasta el 2-sep), pero es la caída que motiva el encargo: −16,0 % frente al −1,3 % del STOXX 600, el −1,0 % de las utilities europeas y el −7,5 % del CAC 40; Orange cae un 14,3 % y Veolia un 7,4 % [27]. Coincide con la subida del diferencial OAT-Bund de ≈0,9 a ≈1,45 puntos (OAT del 3,85 % de media en julio al 4,93 % el 19-oct) y con el presupuesto de 2027 [28, 29, 30, 32]. Sin cambio de guía (subida el 31-jul) ni de consenso [2, 23].",
+          "veredicto": "no cambia",
+          "condicion": null
+        }
+      ],
+      "noticias": [
+        {
+          "fecha": "2026-10-23",
+          "tipo": "demanda o regulador",
+          "hecho": "Revisión de la calificación de Francia por Moody's, con el diferencial OAT-Bund en máximos desde 2012 y tras las violencias del fin de semana del 17-oct (sin fuente propia) [30]. Un recorte movería la OAT y, por el canal de tipos, a Engie más de un 5 %.",
+          "veredicto": "retrasa",
+          "condicion": "Hasta conocer la decisión de Moody's sobre Francia (23-oct) y la reacción de la OAT."
+        },
+        {
+          "fecha": "2026-10-01",
+          "tipo": "demanda o regulador",
+          "hecho": "Proyecto de presupuesto de 2027: la sobretasa sobre los beneficios de las grandes empresas se mantiene pero baja un 30 % (≈5.000 M de recaudación; tipo efectivo del 41,2 % para ventas de más de 3.000 M) dentro de un esfuerzo de 54.000 M [30]. La guía de Engie (tasa del 18-22 %) ya incluye la sobretasa [2].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-11-04",
+          "tipo": "fusión u oferta",
+          "hecho": "Firma prevista de las condiciones principales de la venta del nuclear belga al Estado (aplazada desde el 1-oct); la empresa la presenta como neutra en valor [31].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-11-05",
+          "tipo": "resultados",
+          "hecho": "Información financiera de 9M26 [5]. Los resultados no aplazan una compra (regla 11).",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-09-08",
+          "tipo": "recomendación",
+          "hecho": "Bernstein fija un objetivo de 29,40 €; el consenso sigue en 30,54 € con 17 de 19 analistas en comprar. ABC Bourse (técnico) apunta a 22 € el 30-sep [18, 23, 24].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-07-30",
+          "tipo": "directivos",
+          "hecho": "Directivos suscriben el plan de accionariado asalariado LINK 2026 a 21,71 €; sin compras ni ventas en mercado en 12 meses [19].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-03-04",
+          "tipo": "accionista de referencia",
+          "hecho": "El Estado baja del 23,64 % al 22,64 % del capital y por debajo de un tercio de los votos por la ampliación de capital, no por ventas; no hay venta anunciada, pero con el déficit una colocación del Estado es posible (overhang sin fecha) [20].",
+          "veredicto": "no cambia",
+          "condicion": null
+        }
+      ],
+      "proximos_resultados": "2026-11-05",
+      "veredicto": "retrasa",
+      "condicion": "Hasta la decisión de Moody's sobre Francia del 23-oct-2026.",
+      "comentario": "La caída desde julio es sobre todo de factor país: las francesas ligadas al Estado caen el doble que el CAC y Engie quince puntos más que las utilities europeas, sin cambio de guía ni de consenso. La parte propia es la sensibilidad a tipos que da la deuda tras UKPN (4,2 veces) y el aplazamiento del nuclear belga. El hecho pendiente con fecha es la revisión de Moody's del 23-oct, que puede mover la OAT y la acción más de un 5 %: retrasa. Se buscó en la prensa francesa, la AMF, el foro de Boursorama y ABC Bourse."
+    },
+    "confianza": "Media"
+  },
+  "multiplos_historicos": {
+    "serie": [
+      {
+        "anio": "2021",
+        "precio_cierre": 13.01,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2022",
+        "precio_cierre": 13.39,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": true
+      },
+      {
+        "anio": "2023",
+        "precio_cierre": 15.92,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": true
+      },
+      {
+        "anio": "2024",
+        "precio_cierre": 15.31,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2025",
+        "precio_cierre": 22.41,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      }
+    ],
+    "comentario": "Con el beneficio publicado, Engie cotiza a 14,0 veces los últimos 12 meses frente a 9,3x de media en los cierres comparables, y a 9,4 veces el EBITDA frente a 6,5x. La prima es engañosa: 2022 y 2023 se excluyen porque el beneficio publicado estaba hundido por la valoración de coberturas, y el de los años buenos estaba inflado por los precios de la crisis. Con la base recurrente y adelantada, el PER actual es de 11,6x frente a una mediana de 7,8x (2023-2025) y una media larga de 9,3x. Lo estructural es el cambio de mezcla: el 55 % del EBIT ya es regulado o contratado (67 % en 2028), y una red regulada cotiza a 12-14 veces [6, 25].",
+    "confianza": "Media"
+  },
+  "comparables": {
+    "criterio": "Utilities europeas con peso de redes reguladas y negocio de gas o electricidad integrado: Iberdrola, Naturgy, Endesa (integradas ibéricas), Snam (redes de gas en Italia) y National Grid (redes en el Reino Unido y EE. UU., la referencia de UKPN). No entran EDF (no cotiza), Enel y RWE (sin datos homogéneos abiertos a la fecha).",
+    "empresas": [
+      {
+        "nombre": "Iberdrola",
+        "ticker": "IBE.MC",
+        "pais": "ES",
+        "capitalizacion": 141670,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": 11.9,
+        "ev_ebitda_ntm": 11.3,
+        "per_ntm": 20,
+        "crecimiento_pct": 3.2,
+        "margen_ebitda_pct": 36.4,
+        "roic_pct": null,
+        "dn_ebitda": 3,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "Naturgy",
+        "ticker": "NTGY.MC",
+        "pais": "ES",
+        "capitalizacion": 29400,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": 7.9,
+        "ev_ebitda_ntm": 7.7,
+        "per_ntm": 14.5,
+        "crecimiento_pct": 0.2,
+        "margen_ebitda_pct": 27.4,
+        "roic_pct": null,
+        "dn_ebitda": 2.3,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "Endesa",
+        "ticker": "ELE.MC",
+        "pais": "ES",
+        "capitalizacion": 44700,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": 9.7,
+        "ev_ebitda_ntm": 9.1,
+        "per_ntm": 17.9,
+        "crecimiento_pct": 0.2,
+        "margen_ebitda_pct": 26.9,
+        "roic_pct": null,
+        "dn_ebitda": 1.8,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "Snam",
+        "ticker": "SRG.MI",
+        "pais": "IT",
+        "capitalizacion": 19580,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": 13,
+        "ev_ebitda_ntm": 11.9,
+        "per_ntm": 13.3,
+        "crecimiento_pct": 6,
+        "margen_ebitda_pct": 76.4,
+        "roic_pct": null,
+        "dn_ebitda": 5.9,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "National Grid",
+        "ticker": "NG.L",
+        "pais": "GB",
+        "capitalizacion": 67000,
+        "ev_ventas": null,
+        "ev_ebitda_ltm": 13.9,
+        "ev_ebitda_ntm": 11.3,
+        "per_ntm": 12.8,
+        "crecimiento_pct": 15,
+        "margen_ebitda_pct": 44.8,
+        "roic_pct": null,
+        "dn_ebitda": 5.6,
+        "fcf_yield_pct": null
+      }
+    ],
+    "comentario": "Con nuestro BPA de 2027e, Engie cotiza a ≈11,6 veces el beneficio previsto frente a una mediana de 14,5x de los comparables (Naturgy 14,5x, Snam 13,3x, National Grid 12,8x, Endesa 17,9x, Iberdrola 20,0x) y a 8,4 veces el EBITDA de los próximos 12 meses frente a 7,7-11,9x [25]. El descuento se explica por la mezcla (el 37 % del EBIT es generación y comercialización, con márgenes que bajan desde el pico), por la deuda económica (4,2 veces) y por el riesgo francés; no por el ROIC, que es similar al de las integradas. El crecimiento de ingresos de los próximos 12 meses de Engie (11 %) está inflado por un consenso de ventas que incluye precios de energía más altos y UKPN entera: no lo usamos. Usaríamos el PER: entre la mediana de las integradas (≈14,5x) y la historia propia (7,8x).",
+    "confianza": "Baja"
+  },
+  "transacciones": {
+    "operaciones": [
+      {
+        "fecha": "2026-02",
+        "objetivo": "UK Power Networks (100 %)",
+        "comprador": "Engie",
+        "ev": 18300,
+        "ev_ventas": null,
+        "ev_ebitda": 8.8,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Valor empresa de 15.800 M GBP, ≈8,8 veces el EBITDA del ejercicio a marzo de 2025 y ≈1,5 veces la RAV [6]."
+      },
+      {
+        "fecha": "2024-10",
+        "objetivo": "2i Rete Gas",
+        "comprador": "Italgas",
+        "ev": 5306,
+        "ev_ventas": 6.5,
+        "ev_ebitda": 9.7,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Distribución de gas en Italia [26]."
+      }
+    ],
+    "comentario": "Solo dos operaciones con múltiplo publicado; el sector se valora por EV/RAB (≈1,0-1,5 veces). Engie es compradora, no objetivo: el Estado francés bloquea cualquier oferta.",
+    "confianza": "Baja"
+  },
+  "dcf": {
+    "anios": [
+      {
+        "periodo": "2026e",
+        "crecimiento_pct": -1,
+        "margen_ebitda_pct": 19.4,
+        "amortizacion_pct_ventas": 7.2,
+        "capex_pct_ventas": 14,
+        "nwc_pct_ventas": 5,
+        "tasa_impositiva_pct": 22,
+        "fijo": true
+      },
+      {
+        "periodo": "2027e",
+        "crecimiento_pct": 3,
+        "margen_ebitda_pct": 20.1,
+        "amortizacion_pct_ventas": 7.3,
+        "capex_pct_ventas": 14,
+        "nwc_pct_ventas": 5,
+        "tasa_impositiva_pct": 22,
+        "fijo": false
+      },
+      {
+        "periodo": "2028e",
+        "crecimiento_pct": 2.6,
+        "margen_ebitda_pct": 20.4,
+        "amortizacion_pct_ventas": 7.45,
+        "capex_pct_ventas": 13.5,
+        "nwc_pct_ventas": 5,
+        "tasa_impositiva_pct": 22,
+        "fijo": false
+      },
+      {
+        "periodo": "2029e",
+        "crecimiento_pct": 2.5,
+        "margen_ebitda_pct": 20.5,
+        "amortizacion_pct_ventas": 7.5,
+        "capex_pct_ventas": 13,
+        "nwc_pct_ventas": 5,
+        "tasa_impositiva_pct": 22,
+        "fijo": false
+      },
+      {
+        "periodo": "2030e",
+        "crecimiento_pct": 2.5,
+        "margen_ebitda_pct": 20.5,
+        "amortizacion_pct_ventas": 7.55,
+        "capex_pct_ventas": 12.5,
+        "nwc_pct_ventas": 5,
+        "tasa_impositiva_pct": 22,
+        "fijo": false
+      },
+      {
+        "periodo": "2031e",
+        "crecimiento_pct": 2.4,
+        "margen_ebitda_pct": 20.5,
+        "amortizacion_pct_ventas": 7.6,
+        "capex_pct_ventas": 12,
+        "nwc_pct_ventas": 5,
+        "tasa_impositiva_pct": 22,
+        "fijo": false
+      },
+      {
+        "periodo": "2032e",
+        "crecimiento_pct": 2.3,
+        "margen_ebitda_pct": 20.5,
+        "amortizacion_pct_ventas": 7.6,
+        "capex_pct_ventas": 11.5,
+        "nwc_pct_ventas": 5,
+        "tasa_impositiva_pct": 22,
+        "fijo": false
+      },
+      {
+        "periodo": "2033e",
+        "crecimiento_pct": 2.2,
+        "margen_ebitda_pct": 20.5,
+        "amortizacion_pct_ventas": 7.6,
+        "capex_pct_ventas": 11,
+        "nwc_pct_ventas": 5,
+        "tasa_impositiva_pct": 22,
+        "fijo": false
+      },
+      {
+        "periodo": "2034e",
+        "crecimiento_pct": 2.1,
+        "margen_ebitda_pct": 20.5,
+        "amortizacion_pct_ventas": 7.6,
+        "capex_pct_ventas": 10.5,
+        "nwc_pct_ventas": 5,
+        "tasa_impositiva_pct": 22,
+        "fijo": false
+      },
+      {
+        "periodo": "2035e",
+        "crecimiento_pct": 2,
+        "margen_ebitda_pct": 20.5,
+        "amortizacion_pct_ventas": 7.6,
+        "capex_pct_ventas": 10,
+        "nwc_pct_ventas": 5,
+        "tasa_impositiva_pct": 22,
+        "fijo": false
+      }
+    ],
+    "wacc": {
+      "tasa_libre_pct": 3.49,
+      "beta": 0.83,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 0.8,
+      "coste_deuda_pct": 4.4,
+      "tasa_impositiva_pct": 22,
+      "peso_deuda_pct": 50
+    },
+    "terminal": {
+      "metodo": "gordon",
+      "crecimiento_pct": 2,
+      "multiplo_salida": 9
+    },
+    "etapa2": {
+      "usar": false,
+      "anios": 5,
+      "margen_final_pct": null,
+      "justificacion": null
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "Ventas −1 % en 2026 (1S26 −3,6 % por precios; UKPN suma ≈800 M en ocho meses) [2], +3,0 % en 2027 (UKPN entera, ≈1.200 M al año [2]) y +2,5-2,6 % en 2028-2030 con la base de activos de redes y renovables; converge al 2 %. No usamos el consenso de ventas (78.789 M en 2026e) porque incluye precios de energía más altos que no cambian el margen absoluto [23].",
+      "margenes": "Margen EBITDA sin asociadas del 19,1 % en 2025 (13.725 M) [5, 7]; 19,4 % en 2026 (EBITDA con asociadas de ≈14.900 M, en la guía de 14.300-15.300 M [2]), 20,1 % en 2027 y 20,4 % en 2028, con el EBIT sin nuclear en la mitad de la guía (10.300 y 10.800 M [6]) y el nuclear fuera; 20,5 % después. El margen de 2022-2024 no se proyecta: era el pico de la crisis.",
+      "inversion": "Inversión neta de ventas de activos del 14 % de las ventas en 2026-2027 (≈10.000 M al año: plan bruto de 34.000-38.000 M menos ≈6.000 M de rotación [6]), sin el precio de UKPN, que ya está en la deuda de junio; baja al 10 % en 2035, por encima de la amortización (7,6 %). Circulante al 5 % de las ventas.",
+      "wacc": "Regla del repo: Bund a 10 años del 3,49 % (19-oct) [29]; beta 0,83 (ajustada, mensual de 5 años frente al STOXX 600 [22]); prima de mercado del 5,5 %; prima adicional de 0,8 puntos: 0,6 por Francia (≈40-45 % del negocio × 1,45 puntos de diferencial OAT-Bund [28, 29]) y 0,2 por Latinoamérica. Coste de la deuda del 4,4 % (coste medio bruto del 4,0 % a cierre de 2025, 91 % a tipo fijo [1]; la deuda nueva cuesta más) y peso del 50 % (≈55.000 M de deuda neta y 6.700 M de híbridos frente a 57.800 M de capitalización). WACC del 6,14 %.",
+      "terminal": "Gordon con un crecimiento del 2,0 % (inflación del euro), que da 9,1 veces el EBITDA, entre UKPN (≈10x [6]) y las integradas (7,7-9,7x [25])."
+    },
+    "sostenibilidad": {
+      "puente_ingresos": [
+        {
+          "periodo": "2026e",
+          "volumen_pct": 1.5,
+          "precio_pct": -2.5,
+          "otros_pct": 0,
+          "comentario": "Volumen 1,5 %: UKPN ocho meses y renovables nuevas; precio −2,5 %: precios de energía más bajos que en el 1S25 [2]."
+        },
+        {
+          "periodo": "2027e",
+          "volumen_pct": 2.5,
+          "precio_pct": 0.5,
+          "otros_pct": 0,
+          "comentario": "Volumen 2,5 %: UKPN el año entero y plan de inversión; precio 0,5 %."
+        },
+        {
+          "periodo": "2028e",
+          "volumen_pct": 2,
+          "precio_pct": 0.6,
+          "otros_pct": 0,
+          "comentario": "Volumen 2,0 %: base de activos regulada y PPA nuevos (7 GW con tecnológicas [3]); precio 0,6 %."
+        },
+        {
+          "periodo": "2029e",
+          "volumen_pct": 1.8,
+          "precio_pct": 0.7,
+          "otros_pct": 0,
+          "comentario": "Volumen 1,8 %: renovables y almacenamiento; precio 0,7 % (actualización de tarifas reguladas)."
+        },
+        {
+          "periodo": "2030e",
+          "volumen_pct": 1.8,
+          "precio_pct": 0.7,
+          "otros_pct": 0,
+          "comentario": "Volumen 1,8 %; precio 0,7 %."
+        }
+      ],
+      "mercado_final": null,
+      "veredicto": "En parte",
+      "justificacion": "El motor da «Sí»: la reinversión del 47 % del NOPAT financia un 3,8 % anual al ROIC de 2025 (8,1 %), frente al 2,1 % proyectado. Lo dejamos en «En parte» porque el crecimiento se financia también con deuda (4,2 veces) y rotación de activos, el capital nuevo rinde ≈6,7 %, apenas por encima del WACC (6,14 %; UKPN pagada a 1,5 veces la RAV), y la RAB de gas francés, el 30 % del capital regulado, ya no crece [3, 6]. No rebajamos el base: ya está en la mitad de la guía y por debajo del consenso."
+    },
+    "lectura": "El DCF da 22,57 € por acción (−0,9 %) con un WACC del 6,14 % y un valor terminal del 76 % del valor empresa (124.795 M). El valor de los fondos propios es solo el 46 % del valor empresa: cada décima del WACC mueve ≈1,5 € por acción. **Sensibilidad a la OAT (encargo):** con la OAT a 10 años (4,93 % el 19-oct [28]) en vez del Bund (3,49 % [29]) y la misma prima adicional, el WACC sube al 6,86 % y el DCF cae a 14,73 € (−35 %); si la OAT sustituye también a la prima por Francia (prima adicional 0,2), el WACC es del 6,56 % y el DCF de 17,69 € (−22 %). El valor real (DCF 60 % + escenarios 40 %) pasa de 21,89 € a 14,20 € y 17,11 €. Con la prima implícita del mercado (4,2 % [33]), el DCF sube a 30,53 €.",
+    "confianza": "Media"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": -1,
+        "ajuste_margen_pp": -1.5,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": 1.5,
+        "multiplo_salida": null,
+        "narrativa": "Francia sube impuestos y presiona tarifas antes de las presidenciales de 2027, la CRE recorta la retribución de las redes de gas y los márgenes de generación y comercialización siguen bajando: ventas un punto por debajo, margen 1,5 puntos menor y crecimiento a perpetuidad del 1,5 %. NRIgs de ≈4.400 M en 2028, por debajo de la guía."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Plan ejecutado con el EBIT sin nuclear en la mitad de la guía (10.800 M en 2028), salida neutra del nuclear belga y UKPN integrada; NRIgs de ≈5.500 M en 2028."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": 0.5,
+        "ajuste_margen_pp": 1,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Demanda de centros de datos (PPA), baterías y redes por encima del plan y precios de energía firmes: medio punto más de crecimiento y un punto más de margen; NRIgs de ≈6.200 M en 2028."
+      }
+    ],
+    "comentario": "Los escenarios del DCF van de 8,16 € (bajista) a 22,57 € (base) y 30,14 € (alcista); ponderados, 20,86 €. La asimetría es negativa (0,50x) porque la deuda multiplica cualquier cambio en el valor empresa: un margen 1,5 puntos menor quita dos tercios del valor de la acción. El bajista no incluye la subida de tipos, que se ve en la sensibilidad a la OAT.",
+    "confianza": "Media"
+  },
+  "suma_partes": {
+    "aplica": false,
+    "descuento_holding_pct": 0,
+    "partes": [],
+    "comentario": "No se aplica: los segmentos solo publican EBIT y no hay balance por segmento. Como referencia, las redes reguladas (RAB de gas francés de 31.500 M y UKPN de 11.400 M [3]) valdrían 47.000-60.000 M a 1,1-1,4 veces la RAB, más de la mitad del valor empresa.",
+    "confianza": "Baja"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2026-06-30",
+      "deuda_financiera": 64760,
+      "arrendamientos": 3699,
+      "caja": 13537,
+      "minoritarios": 10000,
+      "pensiones": 974,
+      "asociadas": 9500,
+      "otros_ajustes": 11072
+    },
+    "rab": null,
+    "referencia_mercado": {
+      "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+      "prima_implicita_pct": 4.2,
+      "fecha": "2026-10",
+      "fuente": "Damodaran, implied ERP [33]"
+    },
+    "pesos": {
+      "dcf": 60,
+      "comparables": 0,
+      "transacciones": 0,
+      "suma_partes": 0,
+      "escenarios": 40
+    },
+    "objetivo_12m": {
+      "ejercicio": "2028e",
+      "casos": [
+        {
+          "escenario": "Bajista",
+          "metrica": "PER",
+          "beneficio_por_accion": 1.61,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "BPA 2028e de 1,61 €: margen 1,5 puntos menor y financiero de −2.900 M (NRIgs ≈4.380 M). PER mínimo de cinco años en base adelantada (7,1x)."
+        },
+        {
+          "escenario": "Base",
+          "metrica": "PER",
+          "beneficio_por_accion": 2.054,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "BPA 2028e de 2,05 €: NRIgs de ≈5.510 M, la mitad de la guía de 5.200-5.800 M [6], tras 290 M de cupones de híbridos. PER del actual (11,6x) ÷ 1,1 = 10,5x: la mediana de 7,8x queda más lejos que el tope."
+        },
+        {
+          "escenario": "Alcista",
+          "metrica": "PER",
+          "beneficio_por_accion": 2.317,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "BPA 2028e de 2,32 €: NRIgs de ≈6.180 M, por encima de la guía. PER limitado al base × 1,35 (14,2x), cerca de la mediana de los comparables (14,5x [25])."
+        }
+      ],
+      "per_historico": {
+        "base": "adelantado",
+        "actual": 11.6,
+        "mediana_5a": 7.8,
+        "minimo_5a": 7.1,
+        "media_larga": 9.3,
+        "anios": 4,
+        "excluidos": "Historia adelantada en base NRIgs por acción (recurrente, tras cupones de híbridos): cierre de cada año ÷ BPA recurrente real del año siguiente [5, 7, 22]. 2020: 12,52 ÷ 1,26 = 9,9x; 2021: 13,01 ÷ 2,24 = 5,8x (excluido); 2022: 13,39 ÷ 2,18 = 6,1x (excluido); 2023: 15,92 ÷ 2,25 = 7,1x; 2024: 15,31 ÷ 1,96 = 7,8x; 2025: 22,41 ÷ 1,84 (nuestro 2026e) = 12,2x. Se excluyen 2021 y 2022 porque el BPA del año siguiente (2022-2023) es el pico de la crisis energética (lección de beneficio de pico en energía). Mediana de 5 años (2023-2025) 7,8x, mínimo 7,1x; media larga 2020 y 2023-2025, 9,3x (2016-2019 sin BPA recurrente homogéneo). Actual = 22,77 € ÷ nuestro BPA de 2027e (1,97 €).",
+        "v2": {
+          "mediana_5a": 10.3,
+          "minimo_5a": 6.8,
+          "media_larga": 9.5,
+          "excluidos": "Historia al cierre (cierre ÷ BPA recurrente del mismo año): 2021 10,3x; 2024 6,8x; 2025 11,4x; sin 2022 y 2023 (pico) ni 2020 (COVID)."
+        }
+      },
+      "comparables_per": {
+        "mediana": 14.5
+      },
+      "consenso": {
+        "bpa_ano1": 1.9,
+        "bpa_ano2": 2,
+        "objetivo_medio": 30.54,
+        "objetivo_min": 24.5,
+        "objetivo_max": 33.8,
+        "analistas": 19,
+        "tendencia_3m": "estables",
+        "fuente": "MarketScreener (19 analistas, BPA de 2026e y 2027e) e Investing.com (17 comprar, 2 mantener) [23, 24]"
+      },
+      "diferencia_consenso": "Nuestro BPA de 2027e (1,97 €) queda un 1-2 % por debajo del consenso (2,00 € [23]) y el de 2028e (2,05 €) un 4 % por debajo (2,13 €): partimos de la mitad de la guía y no de su parte alta. La diferencia grande está en el múltiplo: el consenso (30,54 €) supone ≈14-15 veces el beneficio, el de las redes reguladas, y nuestra regla lleva el PER hacia la historia propia de Engie (7,8x), que es la de una utility con mucha generación y comercialización.",
+      "media": null,
+      "comentario": "El objetivo a 12 meses (21,87 €) da una rentabilidad ponderada del 2,0 % y del 0,7 % en el base con el dividendo de 1,35 €: Mantener. La v2 da −1,5 % y −1,1 %: también Mantener. El objetivo queda un 29 % por debajo del de los analistas porque la regla no presupone que el mercado pague a Engie un múltiplo de red; si la mezcla regulada (67 % del EBIT en 2028) acerca la historia del PER a la de las redes, el objetivo subirá. Compraríamos por debajo de 20,19 € y venderíamos por encima de 25,80 €."
+    },
+    "comentario": "El valor real pesa el DCF al 60 % y los escenarios al 40 %: 21,89 € (−3,9 %). Los comparables no entran (solo cinco, con definiciones de EBITDA distintas, y con el EV/EBITDA darían 34-40 €, muy por encima porque Engie tiene más deuda y mezcla); las transacciones tampoco (dos con múltiplo). En EV/RAB, el valor empresa de Engie (125.300 M) es 2,9 veces la RAB de redes (≈43.000 M), pero las redes son solo un tercio del EBIT, así que el múltiplo no sirve para todo el grupo. El valor real depende sobre todo del tipo de descuento: con la OAT en vez del Bund baja a 14,20-17,11 €.",
+    "confianza": "Media"
+  },
+  "catalizadores": {
+    "items": [
+      {
+        "fecha": "2026-10-23",
+        "evento": "Revisión de Moody's de la calificación de Francia",
+        "efecto": "Un recorte movería la OAT y el WACC; una confirmación aliviaría el diferencial [30]",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2026-11-04",
+        "evento": "Condiciones principales de la venta del nuclear belga al Estado",
+        "efecto": "Quita el riesgo de los pasivos nucleares; neutra en valor [31]",
+        "probabilidad": "Media",
+        "sentido": "+"
+      },
+      {
+        "fecha": "2026-11-05",
+        "evento": "Información financiera de 9M26",
+        "efecto": "Confirmación de la guía de NRIgs de 4.900-5.500 M [5]",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "Noviembre de 2026",
+        "evento": "Vista del litigio fiscal de UKPN con HMRC en el Upper Tribunal",
+        "efecto": "Riesgo de un pago fiscal en UKPN [1]",
+        "probabilidad": "Media",
+        "sentido": "−"
+      },
+      {
+        "fecha": "Diciembre de 2026",
+        "evento": "Aprobación del presupuesto francés de 2027",
+        "efecto": "Sobretasa a grandes empresas −30 % o nuevas medidas sobre la energía [30]",
+        "probabilidad": "Media",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "Febrero de 2027",
+        "evento": "Resultados de 2026 y dividendo",
+        "efecto": "Dividendo ≥ 1,35 € y guía de 2027-2028 [6]",
+        "probabilidad": "Alta",
+        "sentido": "+"
+      },
+      {
+        "fecha": "Abril-mayo de 2027",
+        "evento": "Elecciones presidenciales francesas",
+        "efecto": "Riesgo político sobre impuestos, tarifas y el Estado accionista; puede abrir o cerrar el diferencial [30]",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2027",
+        "evento": "Negociación con la CRE del siguiente periodo tarifario de GRDF",
+        "efecto": "Tasa de retribución de 17.600 M de RAB; con tipos más altos podría subir [6]",
+        "probabilidad": "Media",
+        "sentido": "+/−"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "riesgos": {
+    "items": [
+      {
+        "riesgo": "Riesgo país Francia y tipos largos (OAT)",
+        "tipo": "Macro / financiero",
+        "probabilidad": "Alta",
+        "impacto": "Alto",
+        "efecto_valor": "−22 % a −35 % del DCF con la OAT en vez del Bund (17,69-14,73 €)",
+        "mitigante": "Francia es el 40 % de las ventas y el 45 % del EBIT sin nuclear, y baja al ≈35 % en 2028 con UKPN; el 91 % de la deuda neta es a tipo fijo (4,0 %, 11,2 años) [1, 3, 6].",
+        "senal": "Diferencial OAT-Bund por encima de 1,6 puntos o recorte de Moody's el 23-oct."
+      },
+      {
+        "riesgo": "Más impuestos en Francia (sobretasa, impuesto a beneficios de la energía)",
+        "tipo": "Fiscal / regulatorio",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−4 % (≈250 M al año de beneficio, la cifra que se manejó en 2024)",
+        "mitigante": "La sobretasa ya está en la guía (tasa del 18-22 %) y el presupuesto de 2027 la baja un 30 % [2, 30].",
+        "senal": "Enmiendas al presupuesto sobre la energía o un nuevo impuesto a los beneficios extraordinarios."
+      },
+      {
+        "riesgo": "Regulación de las redes de gas francesas y declive del gas",
+        "tipo": "Regulatorio",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−8 % (retribución un punto menor sobre 31.500 M de RAB)",
+        "mitigante": "La retribución de la CRE sigue a los tipos con retraso; la RAB se amortiza y se recupera [6].",
+        "senal": "Propuesta de la CRE para el periodo siguiente de GRDF (2027-2028) y escenarios de gas a 2050."
+      },
+      {
+        "riesgo": "Apalancamiento tras UKPN",
+        "tipo": "Financiero",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "Cada décima de WACC ≈ −1,5 € por acción",
+        "mitigante": "Rating BBB+/Baa1 estable, liquidez de 20.900 M y vencimientos de ≈3.000-3.800 M al año [2].",
+        "senal": "Deuda económica por encima de 4,5 veces el EBITDA o perspectiva negativa de S&P o Moody's."
+      },
+      {
+        "riesgo": "Márgenes de generación y comercialización",
+        "tipo": "Mercado",
+        "probabilidad": "Alta",
+        "impacto": "Medio",
+        "efecto_valor": "−15 % a −20 % (margen un punto menor)",
+        "mitigante": "El 55 % del EBIT es regulado o contratado (67 % en 2028) [6].",
+        "senal": "EBIT de SEM y R&F Power por debajo del año anterior en los 9M26."
+      },
+      {
+        "riesgo": "Ejecución del plan y rotación de activos",
+        "tipo": "Estratégico",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−5 %",
+        "mitigante": "Historial de cumplimiento de la guía desde 2021 [1].",
+        "senal": "Ventas de activos por debajo de 2.000 M al año."
+      },
+      {
+        "riesgo": "UKPN: litigio con HMRC y revisión RIIO-ED3 desde 2028",
+        "tipo": "Regulatorio / fiscal",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−3 % a −5 %",
+        "mitigante": "Ofgem suele fijar retribuciones ligadas a los tipos [6].",
+        "senal": "Fallo del Upper Tribunal (noviembre de 2026) y propuestas de Ofgem."
+      },
+      {
+        "riesgo": "Nuclear belga: venta al Estado sin cerrar",
+        "tipo": "Contractual",
+        "probabilidad": "Baja",
+        "impacto": "Medio",
+        "efecto_valor": "−3 %",
+        "mitigante": "Carta de intenciones firmada; los pasivos de residuos ya se traspasaron en 2025 [2].",
+        "senal": "Nuevo aplazamiento después del 4-nov."
+      },
+      {
+        "riesgo": "El Estado accionista (22,64 %): ventas o injerencia",
+        "tipo": "Gobierno",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−5 % (colocación con descuento)",
+        "mitigante": "El Estado no ha vendido desde 2019; una OPA hostil es imposible [1, 20].",
+        "senal": "Anuncio de cesiones del Estado para financiar el déficit."
+      }
+    ],
+    "premortem": "Octubre de 2029: Engie ha perdido un 40 % y cotiza a 13,7 €. Qué pasó: en la primavera de 2027 las presidenciales francesas dieron un gobierno que subió los impuestos a las grandes empresas y a los beneficios de la energía, y la agencia de calificación recortó a Francia; la OAT a 10 años pasó del 5 % y el diferencial con el Bund de 2 puntos. Engie, con 60.000 M de deuda económica tras UKPN, vio subir su coste de refinanciación y su WACC; la CRE, presionada por las facturas, recortó la retribución de GRDF en el periodo de 2028, mientras la RAB de gas francés caía con la electrificación. Al mismo tiempo, los márgenes de comercialización y de generación flexible siguieron normalizándose. El NRIgs de 2028 se quedó en 4.400 M, por debajo de la guía, y el mercado dejó de pagar un múltiplo de red. Indicadores que lo habrían anticipado: el diferencial OAT-Bund por encima de 1,6 puntos, la propuesta de la CRE para GRDF y un EBIT de SEM por debajo de 2.000 M.",
+    "ia": {
+      "exposicion": "Baja",
+      "sentido": "Oportunidad",
+      "efecto_valor": "+3 % a +5 %",
+      "comentario": "La IA no sustituye lo que vende Engie (energía, redes, PPA); la aumenta. Los centros de datos son el motor de demanda nuevo: 7 GW de PPA firmados con tecnológicas y una cartera de 7 GW, el 47 % del objetivo de 50 TWh en 2030 [3]. En costes, la IA es una parte pequeña del plan de eficiencia de ≈300 M al año (5 M ahorrados en los centros de atención de clientes en Francia) [4]. La amenaza es indirecta: si la inversión en IA se frena, los precios de los PPA bajarían. Señal: nuevos PPA con hiperescaladores y su precio en los resultados."
+    },
+    "confianza": "Media"
+  },
+  "esg": {
+    "calificaciones": [
+      {
+        "agencia": "MSCI",
+        "calificacion": "AA",
+        "fecha": "2025"
+      },
+      {
+        "agencia": "Sustainalytics",
+        "calificacion": "21,8 (riesgo medio)",
+        "fecha": "2025"
+      },
+      {
+        "agencia": "S&P Global CSA",
+        "calificacion": "81/100",
+        "fecha": "2025"
+      },
+      {
+        "agencia": "ISS ESG",
+        "calificacion": "B- Prime",
+        "fecha": "2025"
+      },
+      {
+        "agencia": "CDP",
+        "calificacion": "A-",
+        "fecha": "2025"
+      }
+    ],
+    "materialidad": "Los asuntos que más pesan en las cifras son: la transición del gas (la RAB de GRDF depende del volumen de gas a largo plazo y la CRE estudia escenarios hasta 2050), el ritmo de inversión en renovables y almacenamiento (la mitad del plan de 34.000-38.000 M) y los pasivos nucleares belgas, que la venta al Estado debe cerrar [1, 3, 6].",
+    "controversias": "Litigio fiscal de UKPN con la autoridad británica (HMRC), con vista en el Upper Tribunal en noviembre de 2026; reclamaciones de Engie contra la tasa extraordinaria italiana a la energía de 2022 (308 M) [1, 6].",
+    "confianza": "Media"
+  },
+  "preguntas": {
+    "items": [
+      {
+        "tema": "Tipos y refinanciación",
+        "por_que": "La sensibilidad a tipos es la clave de la caída desde julio.",
+        "pregunta": "¿Cuánto sube el coste financiero recurrente por cada 100 puntos básicos de la OAT o de su propio diferencial, con la refinanciación de 2027-2028 y la deuda de UKPN?"
+      },
+      {
+        "tema": "Fiscalidad francesa",
+        "por_que": "Canal fiscal del riesgo país.",
+        "pregunta": "¿Qué tasa impositiva recurrente esperan en 2027 con la sobretasa reducida un 30 % del presupuesto de 2027?"
+      },
+      {
+        "tema": "Redes de gas en Francia",
+        "por_que": "31.500 M de RAB y el canal de tarifas reguladas.",
+        "pregunta": "¿Qué retribución piden a la CRE para el periodo siguiente de GRDF y cómo cambia con la OAT al 4,9 %?"
+      },
+      {
+        "tema": "Nuclear belga",
+        "por_que": "Último gran riesgo de pasivos.",
+        "pregunta": "¿Qué cambia en el precio y en los pasivos con el aplazamiento al 4-nov, y la venta sigue siendo neutra en valor y en deuda?"
+      },
+      {
+        "tema": "Exposición a Francia",
+        "por_que": "Mide cuánto del beneficio depende de decisiones del Estado.",
+        "pregunta": "¿Qué parte del EBIT de 2028 dependerá de contratos o tarifas fijados por el Estado francés (redes, calor urbano, contratos públicos)?"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sentimiento": {
+    "tono": "Negativo",
+    "tendencia": "Empeorando",
+    "revisadas": [
+      {
+        "plataforma": "Boursorama (foro de Engie)",
+        "fecha": "2026-10",
+        "n_comentarios": 40,
+        "tono": "Negativo",
+        "resumen": "Unos 40 hilos de julio a octubre: mayoría de títulos bajistas («Baisse brutal», «Krach ?», «En route vers 21 €»), varios que atribuyen la caída a las elecciones, al Estado accionista y a los tipos largos, y algunos de accionistas que esperan buenas noticias de Bélgica y de los resultados del 5-nov [34, 37, 38]."
+      },
+      {
+        "plataforma": "Boursorama: «Engie et les taux»",
+        "fecha": "2026-10-14",
+        "n_comentarios": 14,
+        "tono": "Neutro",
+        "resumen": "Explica que la deuda está casi toda a tipo fijo y que el efecto directo de los tipos en el beneficio es pequeño, pero que el precio sí depende de los tipos por la competencia de los bonos y el descuento de los flujos [35]."
+      },
+      {
+        "plataforma": "Boursorama: nuclear belga",
+        "fecha": "2026-10-20",
+        "n_comentarios": 2,
+        "tono": "Positivo",
+        "resumen": "Lee el aplazamiento de la firma al 4-nov, víspera de resultados, como señal de buenas noticias [36]."
+      },
+      {
+        "plataforma": "ABC Bourse (análisis técnico)",
+        "fecha": "2026-09-30",
+        "n_comentarios": null,
+        "tono": "Negativo",
+        "resumen": "Previsión bajista y objetivo de 22 € pese a un verano «sólido»: precio del gas alto, presión política sobre las facturas y ruptura de soportes [18]."
+      }
+    ],
+    "temas": [
+      {
+        "tema": "Riesgo político francés y Estado accionista",
+        "postura": "Bajista",
+        "peso": "Alto",
+        "contraste": "Cierto en parte: las francesas con el Estado en el capital caen más que el CAC desde julio (Engie −16 %, Orange −14 %, CAC −7,5 %), pero Francia es el 45 % del EBIT y baja al ≈35 % en 2028."
+      },
+      {
+        "tema": "Tipos de interés largos",
+        "postura": "Bajista",
+        "peso": "Alto",
+        "contraste": "El 91 % de la deuda neta es a tipo fijo (coste del 4,0 %); el efecto en el beneficio es lento, el efecto en la valoración es inmediato."
+      },
+      {
+        "tema": "Venta del nuclear belga y resultados del 5-nov",
+        "postura": "Alcista",
+        "peso": "Medio",
+        "contraste": "La venta es neutra en valor según la empresa: quita riesgo, no añade beneficio."
+      },
+      {
+        "tema": "Precio del gas",
+        "postura": "Mixta",
+        "peso": "Medio",
+        "contraste": "Engie no es productora de gas; un gas caro presiona las facturas y la política, más que el beneficio."
+      }
+    ],
+    "lectura": "El inversor particular francés está desanimado y atribuye la caída a Francia (elecciones, Estado, presupuesto) y a los tipos; nadie discute la guía de beneficio. Es el tono típico de una caída por factor país, no por la empresa, y suele ser contrario: el consenso profesional sigue en «comprar» con 30,54 €.",
+    "confianza": "Media"
+  },
+  "fuentes": [
+    {
+      "id": 1,
+      "titulo": "Document d'enregistrement universel 2025 (ESEF, francés): estados consolidados, segmentos, deuda, riesgos",
+      "editor": "ENGIE",
+      "tipo": "Primaria",
+      "fecha": "2026-03-12",
+      "url": "https://filings.xbrl.org/LAXUQCHT4FH58LRZDY46/2025-12-31/ESEF/FR/0/engie-2025-12-31-1-fr/reports/engie-2025-12-31-1-fr.xhtml"
+    },
+    {
+      "id": 2,
+      "titulo": "Rapport financier semestriel au 30 juin 2026 (depositado en la AMF)",
+      "editor": "ENGIE / AMF",
+      "tipo": "Primaria",
+      "fecha": "2026-07-31",
+      "url": "https://echanges.dila.gouv.fr/OPENDATA/AMF/ECO/2026/07/FCECO082884_20260731.pdf"
+    },
+    {
+      "id": 3,
+      "titulo": "H1 2026 results presentation",
+      "editor": "ENGIE",
+      "tipo": "Primaria",
+      "fecha": "2026-07-31",
+      "url": "https://www.engie.com/app/uploads/2026/07/H1-2026-Presentation.pdf"
+    },
+    {
+      "id": 4,
+      "titulo": "H1 2026 results conference call transcript",
+      "editor": "ENGIE",
+      "tipo": "Primaria",
+      "fecha": "2026-07-31",
+      "url": "https://www.engie.com/app/uploads/2026/07/ENGIE-1H26-Transcript.pdf"
+    },
+    {
+      "id": 5,
+      "titulo": "FY 2025 results press release",
+      "editor": "ENGIE",
+      "tipo": "Primaria",
+      "fecha": "2026-02-25",
+      "url": "https://www.engie.com/app/uploads/2026/03/PR-ENGIE-FY-2025-VDEF.pdf"
+    },
+    {
+      "id": 6,
+      "titulo": "FY 2025 results, UKPN presentation & mid-term outlook",
+      "editor": "ENGIE",
+      "tipo": "Primaria",
+      "fecha": "2026-02-25",
+      "url": "https://www.engie.com/sites/default/files/assets/documents/2026-03/FY%202025%20results%2C%20UKPN%20Presentation%20%26%20Mid%20term%20outllok%20-%20site%20web%20-%20vDEF.pdf"
+    },
+    {
+      "id": 7,
+      "titulo": "FY 2025 Databook",
+      "editor": "ENGIE",
+      "tipo": "Primaria",
+      "fecha": "2026-02-25",
+      "url": "https://www.engie.com/app/uploads/2026/03/ENGIE-FY-2025-Databook_VDEF_0.pdf"
+    },
+    {
+      "id": 8,
+      "titulo": "2025 Management report and annual consolidated financial statements",
+      "editor": "ENGIE",
+      "tipo": "Primaria",
+      "fecha": "2026-02-25",
+      "url": "https://www.engie.com/app/uploads/2026/03/2025-Management-report-and-annual-consolidated-financial-statements.pdf"
+    },
+    {
+      "id": 9,
+      "titulo": "FY 2025 results conference call transcript",
+      "editor": "ENGIE",
+      "tipo": "Primaria",
+      "fecha": "2026-02-25",
+      "url": "https://www.engie.com/app/uploads/2026/03/ENGIE-FY-2025-Transcript.pdf"
+    },
+    {
+      "id": 10,
+      "titulo": "Document d'enregistrement universel 2024 (ESEF)",
+      "editor": "ENGIE",
+      "tipo": "Primaria",
+      "fecha": "2025-03",
+      "url": "https://filings.xbrl.org/LAXUQCHT4FH58LRZDY46/2024-12-31/ESEF/FR/0/LAXUQCHT4FH58LRZDY46-2024-12-31-0-FR/reports/LAXUQCHT4FH58LRZDY46-2024-12-31-0-FR.xhtml"
+    },
+    {
+      "id": 11,
+      "titulo": "Document d'enregistrement universel 2023 (ESEF)",
+      "editor": "ENGIE",
+      "tipo": "Primaria",
+      "fecha": "2024-03",
+      "url": "https://filings.xbrl.org/LAXUQCHT4FH58LRZDY46/2023-12-31/ESEF/FR/0/engie-2023-12-31-FR/reports/engie-2023-12-31-FR.xhtml"
+    },
+    {
+      "id": 12,
+      "titulo": "Document d'enregistrement universel 2022 (ESEF)",
+      "editor": "ENGIE",
+      "tipo": "Primaria",
+      "fecha": "2023-03",
+      "url": "https://filings.xbrl.org/LAXUQCHT4FH58LRZDY46/2022-12-31/ESEF/FR/0/engie-2022-12-31-FR/reports/engie-2022-12-31-FR.xhtml"
+    },
+    {
+      "id": 13,
+      "titulo": "Document d'enregistrement universel 2021 (ESEF)",
+      "editor": "ENGIE",
+      "tipo": "Primaria",
+      "fecha": "2022-03",
+      "url": "https://filings.xbrl.org/LAXUQCHT4FH58LRZDY46/2021-12-31/ESEF/FR/0/engie-2021-12-31AR/reports/engie-2021-12-31AR.xhtml"
+    },
+    {
+      "id": 14,
+      "titulo": "Informes anuales ESEF 2020-2025 en xBRL-JSON (cuentas.mjs, LEI LAXUQCHT4FH58LRZDY46)",
+      "editor": "XBRL International (filings.xbrl.org)",
+      "tipo": "Primaria",
+      "fecha": "2026-10-20",
+      "url": "https://filings.xbrl.org/LAXUQCHT4FH58LRZDY46/"
+    },
+    {
+      "id": 15,
+      "titulo": "ENGIE H1 2026 results (comunicado)",
+      "editor": "ENGIE Newsroom",
+      "tipo": "Primaria",
+      "fecha": "2026-07-31",
+      "url": "https://en.newsroom.engie.com/news/engie-h1-2026-results-d8cd5-314df.html"
+    },
+    {
+      "id": 16,
+      "titulo": "H1 2025 results presentation",
+      "editor": "ENGIE",
+      "tipo": "Primaria",
+      "fecha": "2025-07-31",
+      "url": "https://www.engie.com/app/uploads/2026/03/H1-2025-Presentation.pdf"
+    },
+    {
+      "id": 17,
+      "titulo": "Informe Iberdrola 2026-10-14 del repo (margen EBIT de 2025 de Iberdrola, de su nota de prensa de resultados)",
+      "editor": "Iberdrola",
+      "tipo": "Primaria",
+      "fecha": "2026-02-25",
+      "url": "https://www.iberdrola.com/documents/20125/5739678/iberdrola-invierte-14460-millones-en-2025-y-aumenta-el-beneficio-neto-un-12-por-ciento.pdf"
+    },
+    {
+      "id": 18,
+      "titulo": "Engie : sous pression après un été pourtant solide",
+      "editor": "ABC Bourse",
+      "tipo": "Prensa",
+      "fecha": "2026-09-30",
+      "url": "https://www.abcbourse.com/analyses/engie_sous_pression_apres_un_ete_pourtant_solide-7137"
+    },
+    {
+      "id": 19,
+      "titulo": "Base BDIF de la AMF: declaraciones de operaciones de directivos de ENGIE (últimos 12 meses)",
+      "editor": "AMF",
+      "tipo": "Primaria",
+      "fecha": "2026-10-20",
+      "url": "https://bdif.amf-france.org/back/api/v1/informations?RechercheTexte=ENGIE&TypesInformation=DD&From=0&Size=40"
+    },
+    {
+      "id": 20,
+      "titulo": "Declaración de cruce de umbral del Estado francés (por debajo de un tercio de los votos, 4-mar-2026)",
+      "editor": "AMF",
+      "tipo": "Primaria",
+      "fecha": "2026-03-23",
+      "url": "https://echanges.dila.gouv.fr/OPENDATA/AMF/307/8888/01/FC307620207_20260323.pdf"
+    },
+    {
+      "id": 21,
+      "titulo": "Gráfico de ENGI.PA (cierre del 19-oct-2026: 22,77 €; previousClose consultado el 20-oct a las 08:17 UTC)",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-19",
+      "url": "https://finance.yahoo.com/quote/ENGI.PA/"
+    },
+    {
+      "id": 22,
+      "titulo": "Históricos diarios ENGI.PA, EXSA.DE, EXH9.DE (bolsa.mjs): rentabilidades, betas, cierres de ejercicio",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-16",
+      "url": "https://finance.yahoo.com/quote/ENGI.PA/history/"
+    },
+    {
+      "id": 23,
+      "titulo": "ENGIE: consenso de ventas, EBITDA, EBIT, beneficio, BPA, dividendo y deuda 2026e-2028e; 19 analistas; objetivo medio 30,54 €",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-20",
+      "url": "https://www.marketscreener.com/quote/stock/ENGIE-4995/finances/"
+    },
+    {
+      "id": 24,
+      "titulo": "ENGIE: recomendaciones de analistas (17 comprar, 2 mantener; objetivo 24,5-33,8 €)",
+      "editor": "Investing.com",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-20",
+      "url": "https://www.investing.com/equities/gdf-suez-consensus-estimates"
+    },
+    {
+      "id": 25,
+      "titulo": "Comparables (Iberdrola, Naturgy, Endesa, Snam, National Grid): precio, consenso y deuda",
+      "editor": "MarketScreener",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-20",
+      "url": "https://www.marketscreener.com/"
+    },
+    {
+      "id": 26,
+      "titulo": "Italgas: compra de 2i Rete Gas (valor empresa 5.306 M)",
+      "editor": "Italgas",
+      "tipo": "Primaria",
+      "fecha": "2024-10",
+      "url": "https://www.italgas.it/en/"
+    },
+    {
+      "id": 27,
+      "titulo": "Rentabilidad del 31-jul al 19-oct-2026 de ENGI.PA, STOXX 600, STOXX Utilities, CAC 40, Veolia, Orange, Iberdrola, Enel, RWE y EDP (notas/docs/yahoo-relativo-0731-1019.csv)",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-20",
+      "url": "https://finance.yahoo.com/"
+    },
+    {
+      "id": 28,
+      "titulo": "Rendimiento del bono francés a 10 años (4,90 % el 20-oct; 4,93 % el 19-oct)",
+      "editor": "Trading Economics",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-20",
+      "url": "https://tradingeconomics.com/france/government-bond-yield"
+    },
+    {
+      "id": 29,
+      "titulo": "Rendimiento del Bund a 10 años (3,49 % el 19-oct-2026)",
+      "editor": "Deutsche Bundesbank",
+      "tipo": "Primaria",
+      "fecha": "2026-10-19",
+      "url": "https://www.bundesbank.de/en/statistics/money-and-capital-markets/interest-rates-and-yields"
+    },
+    {
+      "id": 30,
+      "titulo": "L'écart entre l'OAT et le Bund atteint 120 points de base, un niveau inédit depuis 2012",
+      "editor": "France-Épargne",
+      "tipo": "Prensa",
+      "fecha": "2026-09-30",
+      "url": "https://www.france-epargne.fr/news/lecart-entre-loat-et-le-bund-atteint-120-points-de-base-un-niveau-inedit-depuis-2012.md"
+    },
+    {
+      "id": 31,
+      "titulo": "Engie prolonge ses discussions avec l'Etat belge sur la cession de ses activités nucléaires (Heads of Terms al 4-nov)",
+      "editor": "Fortuneo / AOF",
+      "tipo": "Prensa",
+      "fecha": "2026-09",
+      "url": "https://bourse.fortuneo.fr/actualites/engie-prolonge-ses-discussions-avec-l-etat-belge-sur-la-cession-de-ses-activites-nucleaires-9534604"
+    },
+    {
+      "id": 32,
+      "titulo": "Rendimientos a largo plazo de la deuda pública (IRS de convergencia): Francia y Alemania, julio-septiembre de 2026",
+      "editor": "Banco Central Europeo",
+      "tipo": "Primaria",
+      "fecha": "2026-10",
+      "url": "https://data.ecb.europa.eu/data/datasets/IRS"
+    },
+    {
+      "id": 33,
+      "titulo": "Damodaran: implied equity risk premium por mes (4,20 %, octubre de 2026)",
+      "editor": "NYU Stern (Damodaran)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/implpr.html"
+    },
+    {
+      "id": 34,
+      "titulo": "Forum ENGIE (lista de hilos de julio-octubre de 2026)",
+      "editor": "Boursorama",
+      "tipo": "Foros y redes",
+      "fecha": "2026-10-20",
+      "url": "https://www.boursorama.com/bourse/forum/1rPENGI/"
+    },
+    {
+      "id": 35,
+      "titulo": "Hilo «Engie et les taux» (14-oct-2026)",
+      "editor": "Boursorama",
+      "tipo": "Foros y redes",
+      "fecha": "2026-10-14",
+      "url": "https://www.boursorama.com/bourse/forum/1rPENGI/detail/468561506/"
+    },
+    {
+      "id": 36,
+      "titulo": "Hilo «Vente du nucléaire belge reportée à la veille des résultats» (20-oct-2026)",
+      "editor": "Boursorama",
+      "tipo": "Foros y redes",
+      "fecha": "2026-10-20",
+      "url": "https://www.boursorama.com/bourse/forum/1rPENGI/detail/468579343/"
+    },
+    {
+      "id": 37,
+      "titulo": "Hilo «pourquoi une telle baisse» / gas y tipos (sep-oct 2026)",
+      "editor": "Boursorama",
+      "tipo": "Foros y redes",
+      "fecha": "2026-10",
+      "url": "https://www.boursorama.com/bourse/forum/1rPENGI/detail/468440575/"
+    },
+    {
+      "id": 38,
+      "titulo": "Hilo «Oh la la encore en baisse… 31 ? Utopique !» y «Ont vise 21 €» (jul-oct 2026)",
+      "editor": "Boursorama",
+      "tipo": "Foros y redes",
+      "fecha": "2026-10",
+      "url": "https://www.boursorama.com/bourse/forum/1rPENGI/detail/468202823/"
+    }
+  ],
+  "calc": {
+    "version": 4,
+    "etiquetas": {
+      "margen_bruto": "M. tras aprov.",
+      "margen_bruto_largo": "Margen tras aprovisionamientos",
+      "dias_base": "sobre costes operativos de caja (ingresos − EBITDA), por ser una cuenta por naturaleza"
+    },
+    "recomendacion": {
+      "recomendacion": "Mantener",
+      "regla": "Mantener",
+      "regla_absoluta": "Mantener",
+      "regla_relativa": "Comprar",
+      "coincide": true,
+      "conviccion": "Baja",
+      "conviccion_sugerida": "Baja",
+      "conviccion_razones": [
+        "las reglas discrepan (absoluta Mantener, relativa Comprar)"
+      ],
+      "reglas_discrepan": true,
+      "relativo": {
+        "prima_implicita_pct": 4.2,
+        "wacc": 5.6,
+        "ke": 7.78,
+        "dcf": 30.53,
+        "dcf_min": 23.08,
+        "dcf_max": 40.41,
+        "valor_objetivo": 29.67,
+        "alcista": 39.29,
+        "bajista": 13.2,
+        "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+        "fecha": "2026-10",
+        "potencial_pct": 30.3,
+        "rentabilidad_total_pct": 36.2,
+        "asimetria": 1.73
+      },
+      "objetivo_mercado_txt": " · con la prima implícita del mercado: 29,67 (+30,3 %)",
+      "objetivo_mercado_corto": " · mercado 29,67",
+      "rentabilidad_mercado_corto": " · mercado +36,2 %",
+      "potencial_pct": -3.9,
+      "dividendo_pct": 5.9,
+      "rentabilidad_total_pct": 2.1,
+      "alcista_pct": 32.4,
+      "bajista_pct": -64.2,
+      "asimetria": 0.5,
+      "comprar_por_debajo": 20.19,
+      "vender_por_encima": 25.8,
+      "tabla": [
+        {
+          "concepto": "Objetivo a 12 meses (nuestro PER × nuestro BPA 2028e, ponderado 25/50/25)",
+          "valor": "21,87 EUR"
+        },
+        {
+          "concepto": "Bajista / base / alcista a 12 meses",
+          "valor": "7,1x × 1,61 = 11,43 · 10,5x × 2,05 = 21,57 · 14,2x × 2,32 = 32,90"
+        },
+        {
+          "concepto": "Rentabilidad a 12 meses: ponderada / del base (con dividendo)",
+          "valor": "2,0 % / 0,7 %"
+        },
+        {
+          "concepto": "Regla de múltiplos aplicada",
+          "valor": "v3: base a mitad de camino hacia la mediana adelantada, sin alejarse del actual más de ×1,1; bajista mín. 5 a (adelantado) o base × 0,80; alcista techo base × 1,35 (selector de método: sin marcas: decide la v3)"
+        },
+        {
+          "concepto": "Objetivo medio de los analistas (solo contraste)",
+          "valor": "30,54 (nuestro base -29,4 %)"
+        },
+        {
+          "concepto": "Valor intrínseco (síntesis ponderada, largo plazo)",
+          "valor": "21,89 EUR"
+        },
+        {
+          "concepto": "Potencial sobre el precio actual",
+          "valor": "-3,9 %"
+        },
+        {
+          "concepto": "Rentabilidad por dividendo ordinario",
+          "valor": "5,9 %"
+        },
+        {
+          "concepto": "Rentabilidad total esperada a 12 meses",
+          "valor": "2,1 %"
+        },
+        {
+          "concepto": "Escenario alcista / bajista",
+          "valor": "32,4 % / -64,2 %"
+        },
+        {
+          "concepto": "Asimetría (ganancia alcista / pérdida bajista)",
+          "valor": "0,50x"
+        },
+        {
+          "concepto": "Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado",
+          "valor": "6,1 % frente a 6,1 % y 5,6 %"
+        },
+        {
+          "concepto": "Valor objetivo con la prima implícita del mercado (4,2 %, WACC 5,6 %)",
+          "valor": "29,67 EUR"
+        },
+        {
+          "concepto": "Rentabilidad total esperada con la prima del mercado",
+          "valor": "36,2 %"
+        },
+        {
+          "concepto": "Asimetría con la prima del mercado",
+          "valor": "1,73x"
+        },
+        {
+          "concepto": "Regla absoluta (frente a su coste de capital)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Regla relativa (frente a lo que pide el mercado)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "¿La calidad de la empresa sostiene el crecimiento previsto?",
+          "valor": "En parte (2,1 % anual proyectado; financiable al ROIC actual: 3,8 %)"
+        },
+        {
+          "concepto": "Señal del valor intrínseco (regla del DCF, referencia)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Recomendación según la regla a 12 meses (Comprar: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender: ponderada ≤ -10 %)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Convicción según los criterios (las reglas discrepan (absoluta Mantener, relativa Comprar))",
+          "valor": "Baja"
+        }
+      ],
+      "niveles": [
+        {
+          "accion": "Comprar",
+          "condicion": "Por debajo de 20,19 (ponderada a 12 meses ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco)"
+        },
+        {
+          "accion": "Mantener",
+          "condicion": "Entre 20,19 y 25,80"
+        },
+        {
+          "accion": "Vender o reducir",
+          "condicion": "Por encima de 25,80 (ponderada a 12 meses ≤ -10 %)"
+        }
+      ],
+      "precio_txt": "",
+      "valor_objetivo_txt": "",
+      "regla_valor_intrinseco": "Mantener",
+      "objetivo_12m": {
+        "completo": true,
+        "filas": [
+          {
+            "escenario": "Bajista",
+            "metrica": "PER",
+            "beneficio_por_accion": 1.61,
+            "multiplo": 7.1,
+            "multiplo_informe": null,
+            "origen": "mínimo de 5 años",
+            "precio": 11.43,
+            "rentabilidad_pct": -43.9,
+            "justificacion": "BPA 2028e de 1,61 €: margen 1,5 puntos menor y financiero de −2.900 M (NRIgs ≈4.380 M). PER mínimo de cinco años en base adelantada (7,1x)."
+          },
+          {
+            "escenario": "Base",
+            "metrica": "PER",
+            "beneficio_por_accion": 2.054,
+            "multiplo": 10.5,
+            "multiplo_informe": null,
+            "origen": "PER actual (11.6x) ÷ 1.1 (tope: la mediana de 5 años, 7.8x, queda más lejos)",
+            "precio": 21.57,
+            "rentabilidad_pct": 0.6,
+            "justificacion": "BPA 2028e de 2,05 €: NRIgs de ≈5.510 M, la mitad de la guía de 5.200-5.800 M [6], tras 290 M de cupones de híbridos. PER del actual (11,6x) ÷ 1,1 = 10,5x: la mediana de 7,8x queda más lejos que el tope."
+          },
+          {
+            "escenario": "Alcista",
+            "metrica": "PER",
+            "beneficio_por_accion": 2.317,
+            "multiplo": 14.2,
+            "multiplo_informe": null,
+            "origen": "techo de base × 1.35",
+            "precio": 32.9,
+            "rentabilidad_pct": 50.4,
+            "justificacion": "BPA 2028e de 2,32 €: NRIgs de ≈6.180 M, por encima de la guía. PER limitado al base × 1,35 (14,2x), cerca de la mediana de los comparables (14,5x [25])."
+          }
+        ],
+        "regla": {
+          "version": "v3",
+          "bajista": 7.1,
+          "base": 10.5,
+          "alcista": 14.2,
+          "bajista_origen": "mínimo de 5 años",
+          "base_origen": "PER actual (11.6x) ÷ 1.1 (tope: la mediana de 5 años, 7.8x, queda más lejos)",
+          "alcista_origen": "techo de base × 1.35"
+        },
+        "version": "v3",
+        "probabilidades": [
+          25,
+          50,
+          25
+        ],
+        "objetivo_ponderado": 21.87,
+        "objetivo_simple": 21.97,
+        "objetivo_base": 21.57,
+        "rentabilidad_ponderada_pct": 2,
+        "rentabilidad_simple_pct": 2.4,
+        "rentabilidad_base_pct": 0.7,
+        "asimetria": 0.89,
+        "senal": "Mantener",
+        "senal_sin_confirmar": null,
+        "confianza_baja": false,
+        "comprar_por_debajo": 20.19,
+        "vender_por_encima": 25.8,
+        "consenso_objetivo": 30.54,
+        "diferencia_consenso_pct": -29.4,
+        "selector": {
+          "regla": "v3",
+          "motivo": "sin marcas: decide la v3",
+          "v3_sin_selector": {
+            "version": "v3",
+            "rentabilidad_ponderada_pct": 2,
+            "rentabilidad_base_pct": 0.7,
+            "senal": "Mantener",
+            "objetivo_ponderado": 21.87
+          },
+          "v2": {
+            "version": "v2",
+            "rentabilidad_ponderada_pct": -1.5,
+            "rentabilidad_base_pct": -1.1,
+            "senal": "Mantener",
+            "objetivo_ponderado": 21.08
+          }
+        },
+        "v2": {
+          "rentabilidad_ponderada_pct": -1.5,
+          "rentabilidad_base_pct": -1.1,
+          "senal": "Mantener",
+          "multiplos": [
+            6.8,
+            10.3,
+            13.4
+          ]
+        },
+        "v3_tope_anterior": {
+          "tope": 1.3,
+          "rentabilidad_ponderada_pct": -6.1,
+          "senal": "Mantener"
+        },
+        "comparacion_txt": "Para comparar, con la regla v2 (historia al cierre, mismo precio): 6,8x / 10,3x / 13,4x, -1,5 % Mantener; con el tope anterior del base (×1,3, 14-oct mediodía): -6,1 % Mantener. Decide la v3 con tope ×1,1, elegida por el selector de método (sin marcas: decide la v3; METODO-VIGENTE.md)."
+      },
+      "rentabilidad_12m_pct": 2,
+      "rentabilidad_12m_txt": "+2,0 % (base +0,7 %)",
+      "objetivo_12m_txt": "21,87 EUR"
+    },
+    "mercado": {
+      "precio": 22.77,
+      "acciones": 2540,
+      "capitalizacion": 57836,
+      "deuda_neta": 54922,
+      "deuda_neta_ajustada": 66968,
+      "asimilables_deuda": 12046,
+      "ajustes_puente": 12546,
+      "valor_empresa": 125304,
+      "fecha_puente": "2026-06-30"
+    },
+    "clave": {
+      "capitalizacion": 57836,
+      "valor_empresa": 125304,
+      "deuda_neta": 54922,
+      "ev_ventas_ltm": 1.78,
+      "ev_ebitda_ltm": 9.4,
+      "ev_ebitda_ntm": 8.4,
+      "ev_ebit_ltm": 15.3,
+      "per_ltm": 14,
+      "per_ntm": 11.5,
+      "fcf_yield_pct": -18.5,
+      "dividendo_pct": 5.9,
+      "dn_ebitda": 4.1,
+      "roic_pct": 8.1,
+      "margen_ebitda_pct": 18.8,
+      "deuda_neta_ajustada": 66968,
+      "dn_ebitda_ajustada": 5,
+      "crecimiento_tcac_pct": 5.6,
+      "ingresos_ntm": 80905,
+      "ebitda_ntm": 15004,
+      "bpa_ntm": 1.98,
+      "ebitda_ltm": 13280,
+      "ingresos_ltm": 70585,
+      "ev_rab": null
+    },
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 57866,
+        "crecimiento_pct": null,
+        "beneficio_bruto": 19005,
+        "margen_bruto_pct": 32.8,
+        "ebitda": 9813,
+        "margen_ebitda_pct": 17,
+        "ebit": 5395,
+        "margen_ebit_pct": 9.3,
+        "beneficio_neto": 3661,
+        "margen_neto_pct": 6.3,
+        "bpa": 1.46,
+        "dpa": 0.85,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 31.6,
+        "payout_pct": 58
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 93865,
+        "crecimiento_pct": 62.2,
+        "beneficio_bruto": 19330,
+        "margen_bruto_pct": 20.6,
+        "ebitda": 12637,
+        "margen_ebitda_pct": 13.5,
+        "ebit": 7969,
+        "margen_ebit_pct": 8.5,
+        "beneficio_neto": 216,
+        "margen_neto_pct": 0.2,
+        "bpa": 0.06,
+        "dpa": 1.4,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": null,
+        "payout_pct": 2333
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 82565,
+        "crecimiento_pct": -12,
+        "beneficio_bruto": 25573,
+        "margen_bruto_pct": 31,
+        "ebitda": 13929,
+        "margen_ebitda_pct": 16.9,
+        "ebit": 8996,
+        "margen_ebit_pct": 10.9,
+        "beneficio_neto": 2208,
+        "margen_neto_pct": 2.7,
+        "bpa": 0.88,
+        "dpa": 1.43,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 26.2,
+        "payout_pct": 163
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 73812,
+        "crecimiento_pct": -10.6,
+        "beneficio_bruto": 24347,
+        "margen_bruto_pct": 33,
+        "ebitda": 14504,
+        "margen_ebitda_pct": 19.6,
+        "ebit": 9279,
+        "margen_ebit_pct": 12.6,
+        "beneficio_neto": 4106,
+        "margen_neto_pct": 5.6,
+        "bpa": 1.65,
+        "dpa": 1.48,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 30.8,
+        "payout_pct": 90
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 71944,
+        "crecimiento_pct": -2.5,
+        "beneficio_bruto": 22897,
+        "margen_bruto_pct": 31.8,
+        "ebitda": 13725,
+        "margen_ebitda_pct": 19.1,
+        "ebit": 8463,
+        "margen_ebit_pct": 11.8,
+        "beneficio_neto": 3827,
+        "margen_neto_pct": 5.3,
+        "bpa": 1.51,
+        "dpa": 1.35,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 24.8,
+        "payout_pct": 89
+      }
+    ],
+    "tcac": {
+      "periodo": "2021-2025",
+      "ingresos_pct": 5.6,
+      "ebitda_pct": 8.7,
+      "bpa_pct": 0.8
+    },
+    "cuenta_y_prevision": [
+      {
+        "periodo": "2021",
+        "ingresos": 57866,
+        "ebitda": 9813
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 93865,
+        "ebitda": 12637
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 82565,
+        "ebitda": 13929
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 73812,
+        "ebitda": 14504
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 71944,
+        "ebitda": 13725
+      },
+      {
+        "periodo": "2026e",
+        "ingresos": 71225,
+        "ebitda": 13818
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 73361,
+        "ebitda": 14746
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 75269,
+        "ebitda": 15355
+      },
+      {
+        "periodo": "2029e",
+        "ingresos": 77150,
+        "ebitda": 15816
+      },
+      {
+        "periodo": "2030e",
+        "ingresos": 79079,
+        "ebitda": 16211
+      },
+      {
+        "periodo": "2031e",
+        "ingresos": 80977,
+        "ebitda": 16600
+      },
+      {
+        "periodo": "2032e",
+        "ingresos": 82840,
+        "ebitda": 16982
+      },
+      {
+        "periodo": "2033e",
+        "ingresos": 84662,
+        "ebitda": 17356
+      },
+      {
+        "periodo": "2034e",
+        "ingresos": 86440,
+        "ebitda": 17720
+      },
+      {
+        "periodo": "2035e",
+        "ingresos": 88169,
+        "ebitda": 18075
+      }
+    ],
+    "segmentos_ultimo": [
+      {
+        "nombre": "Renovables y generación flexible (R&F Power)",
+        "ingresos": 9860,
+        "peso_pct": 13.7,
+        "crecimiento_pct": -5.2,
+        "margen_pct": 36.3,
+        "tipo_margen": "EBIT"
+      },
+      {
+        "nombre": "Redes (Networks)",
+        "ingresos": 7992,
+        "peso_pct": 11.1,
+        "crecimiento_pct": 10.4,
+        "margen_pct": 38.2,
+        "tipo_margen": "EBIT"
+      },
+      {
+        "nombre": "Infraestructuras energéticas locales (LEI)",
+        "ingresos": 8831,
+        "peso_pct": 12.3,
+        "crecimiento_pct": -0.8,
+        "margen_pct": 5.5,
+        "tipo_margen": "EBIT"
+      },
+      {
+        "nombre": "Suministro y gestión de energía (SEM)",
+        "ingresos": 42495,
+        "peso_pct": 59.1,
+        "crecimiento_pct": -5,
+        "margen_pct": 5.5,
+        "tipo_margen": "EBIT"
+      },
+      {
+        "nombre": "Nuclear",
+        "ingresos": 539,
+        "peso_pct": 0.7,
+        "crecimiento_pct": 692.6,
+        "margen_pct": 132.5,
+        "tipo_margen": "EBIT"
+      },
+      {
+        "nombre": "Otros",
+        "ingresos": 2226,
+        "peso_pct": 3.1,
+        "crecimiento_pct": -10.7,
+        "margen_pct": -32.1,
+        "tipo_margen": "EBIT"
+      }
+    ],
+    "segmentos_tabla": {
+      "periodos": [
+        "",
+        "",
+        "",
+        "2024",
+        "2025"
+      ],
+      "filas": [
+        {
+          "nombre": "Renovables y generación flexible (R&F Power)",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": 10398,
+          "v4": 9860
+        },
+        {
+          "nombre": "Redes (Networks)",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": 7236,
+          "v4": 7992
+        },
+        {
+          "nombre": "Infraestructuras energéticas locales (LEI)",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": 8900,
+          "v4": 8831
+        },
+        {
+          "nombre": "Suministro y gestión de energía (SEM)",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": 44717,
+          "v4": 42495
+        },
+        {
+          "nombre": "Nuclear",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": 68,
+          "v4": 539
+        },
+        {
+          "nombre": "Otros",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": 2492,
+          "v4": 2226
+        }
+      ]
+    },
+    "segmentos_periodo": "2025",
+    "balance": [
+      {
+        "periodo": "2021",
+        "activo_total": 225333,
+        "intangibles": 19583,
+        "circulante": 11581,
+        "circulante_ventas_pct": 20,
+        "caja": 13890,
+        "deuda_financiera": 39005,
+        "arrendamientos": 2043,
+        "deuda_neta": 27158,
+        "patrimonio": 36994,
+        "minoritarios": 4986,
+        "dn_ebitda": 2.77,
+        "dn_patrimonio_pct": 65,
+        "dso": 205,
+        "dio": 47,
+        "dpo": 249,
+        "ciclo_caja": 3,
+        "cobertura_intereses": 2.6,
+        "capital_invertido": 69138,
+        "fondo_comercio": 12799,
+        "liquidez_corriente": 1.14
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 235490,
+        "intangibles": 20218,
+        "circulante": 8937,
+        "circulante_ventas_pct": 9.5,
+        "caja": 15570,
+        "deuda_financiera": 37716,
+        "arrendamientos": 2875,
+        "deuda_neta": 25021,
+        "patrimonio": 34253,
+        "minoritarios": 5032,
+        "dn_ebitda": 1.98,
+        "dn_patrimonio_pct": 64,
+        "dso": 122,
+        "dio": 37,
+        "dpo": 179,
+        "ciclo_caja": -20,
+        "cobertura_intereses": 2.2,
+        "capital_invertido": 64306,
+        "fondo_comercio": 12854,
+        "liquidez_corriente": 1.11
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 194640,
+        "intangibles": 21313,
+        "circulante": 8029,
+        "circulante_ventas_pct": 9.7,
+        "caja": 16578,
+        "deuda_financiera": 44140,
+        "arrendamientos": 3147,
+        "deuda_neta": 30709,
+        "patrimonio": 30057,
+        "minoritarios": 5667,
+        "dn_ebitda": 2.2,
+        "dn_patrimonio_pct": 86,
+        "dso": 89,
+        "dio": 28,
+        "dpo": 122,
+        "ciclo_caja": -5,
+        "cobertura_intereses": 2.7,
+        "capital_invertido": 66433,
+        "fondo_comercio": 12864,
+        "liquidez_corriente": 0.99
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 189544,
+        "intangibles": 21255,
+        "circulante": 7492,
+        "circulante_ventas_pct": 10.2,
+        "caja": 16928,
+        "deuda_financiera": 48264,
+        "arrendamientos": 3743,
+        "deuda_neta": 35079,
+        "patrimonio": 34556,
+        "minoritarios": 6902,
+        "dn_ebitda": 2.42,
+        "dn_patrimonio_pct": 85,
+        "dso": 80,
+        "dio": 31,
+        "dpo": 118,
+        "ciclo_caja": -7,
+        "cobertura_intereses": 2.4,
+        "capital_invertido": 76537,
+        "fondo_comercio": 13291,
+        "liquidez_corriente": 1.09
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 169249,
+        "intangibles": 21029,
+        "circulante": 3599,
+        "circulante_ventas_pct": 5,
+        "caja": 14507,
+        "deuda_financiera": 50894,
+        "arrendamientos": 3674,
+        "deuda_neta": 40061,
+        "patrimonio": 32951,
+        "minoritarios": 7879,
+        "dn_ebitda": 2.92,
+        "dn_patrimonio_pct": 98,
+        "dso": 69,
+        "dio": 18,
+        "dpo": 108,
+        "ciclo_caja": -21,
+        "cobertura_intereses": 2.8,
+        "capital_invertido": 80891,
+        "fondo_comercio": 13110,
+        "liquidez_corriente": 1.08
+      }
+    ],
+    "perimetro_nota": "Cambio de perímetro (2022: Venta de EQUANS a Bouygues (7.100 M de valor empresa): sale del perímetro como actividad interrumpida; +2.183 M de resultado de operaciones interrumpidas en el beneficio neto de 2022 [12].; 2026: Carta de intenciones del 30-abr-2026 para vender toda la actividad nuclear belga al Estado belga, con efecto neutro en valor según la empresa; la firma de las condiciones principales (Heads of Terms) se aplazó del 1-oct al 4-nov-2026 [2, 3].). Los ratios de balance de ese año (días, circulante, deuda neta / EBITDA, ROIC) y los indicadores de calidad contable no son comparables con los anteriores.",
+    "flujos": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 7313,
+        "capex": 5990,
+        "pagos_arrendamientos": 560,
+        "fcf": 44,
+        "beneficio_neto": 3661,
+        "conversion_pct": 1,
+        "capex_ventas_pct": 10.4,
+        "capex_amortizacion": 1.36,
+        "adquisiciones": 392,
+        "desinversiones": 0,
+        "dividendos": 1859,
+        "recompras": null,
+        "emision_acciones": null,
+        "retorno_accionista": 1859,
+        "payout_caja_pct": 51,
+        "acciones": 2419.4,
+        "fcf_por_accion": 0.02
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 8586,
+        "capex": 6379,
+        "pagos_arrendamientos": 501,
+        "fcf": 884,
+        "beneficio_neto": 216,
+        "conversion_pct": 409,
+        "capex_ventas_pct": 6.8,
+        "capex_amortizacion": 1.37,
+        "adquisiciones": 289,
+        "desinversiones": 6728,
+        "dividendos": 2665,
+        "recompras": null,
+        "emision_acciones": null,
+        "retorno_accionista": 2665,
+        "payout_caja_pct": 1234,
+        "acciones": 2420,
+        "fcf_por_accion": 0.37
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 13117,
+        "capex": 7328,
+        "pagos_arrendamientos": 418,
+        "fcf": 4313,
+        "beneficio_neto": 2208,
+        "conversion_pct": 195,
+        "capex_ventas_pct": 8.9,
+        "capex_amortizacion": 1.49,
+        "adquisiciones": 1392,
+        "desinversiones": 27,
+        "dividendos": 4067,
+        "recompras": null,
+        "emision_acciones": null,
+        "retorno_accionista": 4067,
+        "payout_caja_pct": 184,
+        "acciones": 2421.4,
+        "fcf_por_accion": 1.78
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 13144,
+        "capex": 9385,
+        "pagos_arrendamientos": 461,
+        "fcf": 1566,
+        "beneficio_neto": 4106,
+        "conversion_pct": 38,
+        "capex_ventas_pct": 12.7,
+        "capex_amortizacion": 1.8,
+        "adquisiciones": 670,
+        "desinversiones": 883,
+        "dividendos": 4147,
+        "recompras": 86,
+        "emision_acciones": 1040,
+        "retorno_accionista": 4233,
+        "payout_caja_pct": 103,
+        "acciones": 2436,
+        "fcf_por_accion": 0.64
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": -1476,
+        "capex": 7267,
+        "pagos_arrendamientos": 458,
+        "fcf": -10713,
+        "beneficio_neto": 3827,
+        "conversion_pct": -280,
+        "capex_ventas_pct": 10.1,
+        "capex_amortizacion": 1.38,
+        "adquisiciones": 653,
+        "desinversiones": 1514,
+        "dividendos": 4529,
+        "recompras": 22,
+        "emision_acciones": 367,
+        "retorno_accionista": 4551,
+        "payout_caja_pct": 119,
+        "acciones": 2443,
+        "fcf_por_accion": -4.39
+      }
+    ],
+    "flujos_acumulado": {
+      "periodo": "2021-2025",
+      "fcf": -3906,
+      "adquisiciones": 3396,
+      "dividendos": 17267,
+      "recompras": 108,
+      "conversion_pct": -28
+    },
+    "rentabilidad": [
+      {
+        "periodo": "2021",
+        "nopat": 3693,
+        "capital_invertido": 69138,
+        "roic_pct": 5.3,
+        "roic_sin_fc_pct": 6.6,
+        "fondo_comercio_pct_capital": 19,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 9.9,
+        "roa_pct": 1.6,
+        "margen_neto_pct": 6.3,
+        "rotacion": 0.26,
+        "apalancamiento": 6.09
+      },
+      {
+        "periodo": "2022",
+        "nopat": 5977,
+        "capital_invertido": 66722,
+        "roic_pct": 9,
+        "roic_sin_fc_pct": 11.1,
+        "fondo_comercio_pct_capital": 19,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 0.6,
+        "roa_pct": 0.1,
+        "margen_neto_pct": 0.2,
+        "rotacion": 0.41,
+        "apalancamiento": 6.47
+      },
+      {
+        "periodo": "2023",
+        "nopat": 6639,
+        "capital_invertido": 65370,
+        "roic_pct": 10.2,
+        "roic_sin_fc_pct": 12.6,
+        "fondo_comercio_pct_capital": 20,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 6.9,
+        "roa_pct": 1,
+        "margen_neto_pct": 2.7,
+        "rotacion": 0.38,
+        "apalancamiento": 6.69
+      },
+      {
+        "periodo": "2024",
+        "nopat": 6420,
+        "capital_invertido": 71485,
+        "roic_pct": 9,
+        "roic_sin_fc_pct": 11,
+        "fondo_comercio_pct_capital": 18,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 12.7,
+        "roa_pct": 2.1,
+        "margen_neto_pct": 5.6,
+        "rotacion": 0.38,
+        "apalancamiento": 5.95
+      },
+      {
+        "periodo": "2025",
+        "nopat": 6360,
+        "capital_invertido": 78714,
+        "roic_pct": 8.1,
+        "roic_sin_fc_pct": 9.7,
+        "fondo_comercio_pct_capital": 17,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 11.3,
+        "roa_pct": 2.1,
+        "margen_neto_pct": 5.3,
+        "rotacion": 0.4,
+        "apalancamiento": 5.31
+      }
+    ],
+    "roic_incremental_pct": 27.9,
+    "roic_frente_wacc": [
+      {
+        "periodo": "2021",
+        "roic_pct": 5.3,
+        "roic_sin_fc_pct": 6.6,
+        "roic_operativo_pct": null,
+        "roe_pct": 9.9,
+        "wacc_pct": 6.1
+      },
+      {
+        "periodo": "2022",
+        "roic_pct": 9,
+        "roic_sin_fc_pct": 11.1,
+        "roic_operativo_pct": null,
+        "roe_pct": 0.6,
+        "wacc_pct": 6.1
+      },
+      {
+        "periodo": "2023",
+        "roic_pct": 10.2,
+        "roic_sin_fc_pct": 12.6,
+        "roic_operativo_pct": null,
+        "roe_pct": 6.9,
+        "wacc_pct": 6.1
+      },
+      {
+        "periodo": "2024",
+        "roic_pct": 9,
+        "roic_sin_fc_pct": 11,
+        "roic_operativo_pct": null,
+        "roe_pct": 12.7,
+        "wacc_pct": 6.1
+      },
+      {
+        "periodo": "2025",
+        "roic_pct": 8.1,
+        "roic_sin_fc_pct": 9.7,
+        "roic_operativo_pct": null,
+        "roe_pct": 11.3,
+        "wacc_pct": 6.1
+      }
+    ],
+    "compras": {
+      "tipo": "sin compras",
+      "subidas": 0,
+      "anios": 4,
+      "fondo_comercio": 13110,
+      "fondo_comercio_pct_capital": 17,
+      "roic_pct": 8.1,
+      "roic_sin_fc_pct": 9.7,
+      "texto": "Fondo de comercio: 13.110 M en 2025 (el 17 % del capital invertido medio); ha subido más de un 5 % en 0 de 4 años: sin compras. ROIC publicado 8,1 %; sin fondo de comercio, 9,7 %. Sin compras relevantes: el publicado ya es el ROIC del negocio."
+    },
+    "calidad": {
+      "periodo": "2025",
+      "altman_z": 0.97,
+      "altman_zona": "Zona de riesgo",
+      "piotroski_f": 4,
+      "piotroski_detalle": [
+        {
+          "criterio": "Beneficio neto positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo positivo",
+          "resultado": "No"
+        },
+        {
+          "criterio": "ROA mejora",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo > beneficio neto",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Baja el endeudamiento (deuda / activo)",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Mejora la liquidez corriente",
+          "resultado": "No"
+        },
+        {
+          "criterio": "No emite acciones",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora el margen bruto",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Mejora la rotación del activo",
+          "resultado": "Sí"
+        }
+      ],
+      "beneish_m": -2.43,
+      "beneish_fiable": true,
+      "beneish_variables": [
+        {
+          "variable": "DSRI",
+          "valor": 0.86
+        },
+        {
+          "variable": "GMI",
+          "valor": 1
+        },
+        {
+          "variable": "AQI",
+          "valor": 1.11
+        },
+        {
+          "variable": "SGI",
+          "valor": 0.97
+        },
+        {
+          "variable": "DEPI",
+          "valor": 1.01
+        },
+        {
+          "variable": "SGAI",
+          "valor": 1
+        },
+        {
+          "variable": "LVGI",
+          "valor": 0.97
+        },
+        {
+          "variable": "TATA",
+          "valor": 0.03
+        }
+      ],
+      "tabla": [
+        {
+          "indicador": "Altman Z",
+          "valor": "0,97",
+          "lectura": "Zona de riesgo (> 2,99 seguro; < 1,81 riesgo). No aplica a bancos ni aseguradoras, y subestima la solvencia de empresas con grandes anticipos de clientes o prefinanciación pública (contratistas, construcción), que inflan el pasivo."
+        },
+        {
+          "indicador": "Piotroski F",
+          "valor": "4 / 9",
+          "lectura": "Intermedio (4-6)."
+        },
+        {
+          "indicador": "Beneish M",
+          "valor": "-2,43",
+          "lectura": "Por debajo de −1,78: sin señal de manipulación. Aproximado: con cuenta por naturaleza, los índices de margen bruto y de gastos generales se fijan en 1."
+        },
+        {
+          "indicador": "Flujo operativo / beneficio neto (acumulado)",
+          "valor": "2,90x",
+          "lectura": "El beneficio se cobra."
+        }
+      ]
+    },
+    "dcf": {
+      "proyeccion": [
+        {
+          "periodo": "2026e",
+          "ingresos": 71225,
+          "crecimiento_pct": -1,
+          "ebitda": 13818,
+          "margen_ebitda_pct": 19.4,
+          "amortizacion": 5128,
+          "ebit": 8689,
+          "impuestos": 1912,
+          "capex": 9971,
+          "variacion_circulante": -38,
+          "fcff": 1972,
+          "fraccion": 0.2,
+          "factor": 0.994,
+          "vp": 386
+        },
+        {
+          "periodo": "2027e",
+          "ingresos": 73361,
+          "crecimiento_pct": 3,
+          "ebitda": 14746,
+          "margen_ebitda_pct": 20.1,
+          "amortizacion": 5355,
+          "ebit": 9390,
+          "impuestos": 2066,
+          "capex": 10271,
+          "variacion_circulante": 107,
+          "fcff": 2302,
+          "fraccion": 1,
+          "factor": 0.959,
+          "vp": 2207
+        },
+        {
+          "periodo": "2028e",
+          "ingresos": 75269,
+          "crecimiento_pct": 2.6,
+          "ebitda": 15355,
+          "margen_ebitda_pct": 20.4,
+          "amortizacion": 5608,
+          "ebit": 9747,
+          "impuestos": 2144,
+          "capex": 10161,
+          "variacion_circulante": 95,
+          "fcff": 2954,
+          "fraccion": 1,
+          "factor": 0.904,
+          "vp": 2669
+        },
+        {
+          "periodo": "2029e",
+          "ingresos": 77150,
+          "crecimiento_pct": 2.5,
+          "ebitda": 15816,
+          "margen_ebitda_pct": 20.5,
+          "amortizacion": 5786,
+          "ebit": 10030,
+          "impuestos": 2207,
+          "capex": 10030,
+          "variacion_circulante": 94,
+          "fcff": 3486,
+          "fraccion": 1,
+          "factor": 0.851,
+          "vp": 2966
+        },
+        {
+          "periodo": "2030e",
+          "ingresos": 79079,
+          "crecimiento_pct": 2.5,
+          "ebitda": 16211,
+          "margen_ebitda_pct": 20.5,
+          "amortizacion": 5970,
+          "ebit": 10241,
+          "impuestos": 2253,
+          "capex": 9885,
+          "variacion_circulante": 96,
+          "fcff": 3977,
+          "fraccion": 1,
+          "factor": 0.802,
+          "vp": 3188
+        },
+        {
+          "periodo": "2031e",
+          "ingresos": 80977,
+          "crecimiento_pct": 2.4,
+          "ebitda": 16600,
+          "margen_ebitda_pct": 20.5,
+          "amortizacion": 6154,
+          "ebit": 10446,
+          "impuestos": 2298,
+          "capex": 9717,
+          "variacion_circulante": 95,
+          "fcff": 4490,
+          "fraccion": 1,
+          "factor": 0.756,
+          "vp": 3391
+        },
+        {
+          "periodo": "2032e",
+          "ingresos": 82840,
+          "crecimiento_pct": 2.3,
+          "ebitda": 16982,
+          "margen_ebitda_pct": 20.5,
+          "amortizacion": 6296,
+          "ebit": 10686,
+          "impuestos": 2351,
+          "capex": 9527,
+          "variacion_circulante": 93,
+          "fcff": 5011,
+          "fraccion": 1,
+          "factor": 0.712,
+          "vp": 3568
+        },
+        {
+          "periodo": "2033e",
+          "ingresos": 84662,
+          "crecimiento_pct": 2.2,
+          "ebitda": 17356,
+          "margen_ebitda_pct": 20.5,
+          "amortizacion": 6434,
+          "ebit": 10921,
+          "impuestos": 2403,
+          "capex": 9313,
+          "variacion_circulante": 91,
+          "fcff": 5549,
+          "fraccion": 1,
+          "factor": 0.671,
+          "vp": 3719
+        },
+        {
+          "periodo": "2034e",
+          "ingresos": 86440,
+          "crecimiento_pct": 2.1,
+          "ebitda": 17720,
+          "margen_ebitda_pct": 20.5,
+          "amortizacion": 6569,
+          "ebit": 11151,
+          "impuestos": 2453,
+          "capex": 9076,
+          "variacion_circulante": 89,
+          "fcff": 6102,
+          "fraccion": 1,
+          "factor": 0.632,
+          "vp": 3854
+        },
+        {
+          "periodo": "2035e",
+          "ingresos": 88169,
+          "crecimiento_pct": 2,
+          "ebitda": 18075,
+          "margen_ebitda_pct": 20.5,
+          "amortizacion": 6701,
+          "ebit": 11374,
+          "impuestos": 2502,
+          "capex": 8817,
+          "variacion_circulante": 86,
+          "fcff": 6669,
+          "fraccion": 1,
+          "factor": 0.595,
+          "vp": 3968
+        }
+      ],
+      "etapa2": null,
+      "suma_vp": 29917,
+      "valor_terminal": 164171,
+      "vp_terminal": 94879,
+      "valor_empresa": 124795,
+      "peso_terminal_pct": 76,
+      "valor_acciones": 57327,
+      "valor_accion": 22.57,
+      "vt_gordon": 164171,
+      "vt_multiplo": 162671,
+      "multiplo_implicito": 9.1,
+      "g_implicito_pct": 1.96,
+      "metodo_terminal": "gordon",
+      "terminal_tabla": [
+        {
+          "concepto": "Método principal",
+          "valor": "Crecimiento a perpetuidad"
+        },
+        {
+          "concepto": "Crecimiento a perpetuidad",
+          "valor": "2,0 %"
+        },
+        {
+          "concepto": "Múltiplo EV/EBITDA de salida",
+          "valor": "9,0x"
+        },
+        {
+          "concepto": "Valor terminal (Gordon)",
+          "valor": "164.171"
+        },
+        {
+          "concepto": "Valor terminal (múltiplo)",
+          "valor": "162.671"
+        },
+        {
+          "concepto": "Múltiplo de salida implícito en Gordon",
+          "valor": "9,1x"
+        },
+        {
+          "concepto": "Crecimiento implícito en el múltiplo",
+          "valor": "1,96 %"
+        },
+        {
+          "concepto": "Peso del valor terminal en el valor empresa",
+          "valor": "76 %"
+        }
+      ],
+      "puente": [
+        {
+          "concepto": "Valor actual de los flujos proyectados",
+          "valor": "29.917"
+        },
+        {
+          "concepto": "Valor actual del valor terminal",
+          "valor": "94.879"
+        },
+        {
+          "concepto": "Valor empresa",
+          "valor": "124.795"
+        },
+        {
+          "concepto": "− Deuda financiera neta (con arrendamientos)",
+          "valor": "-54.922"
+        },
+        {
+          "concepto": "− Minoritarios, pensiones y otros; + asociadas",
+          "valor": "-12.546"
+        },
+        {
+          "concepto": "Valor de los fondos propios",
+          "valor": "57.327"
+        },
+        {
+          "concepto": "Acciones diluidas (millones)",
+          "valor": "2.540,0"
+        },
+        {
+          "concepto": "Valor por acción",
+          "valor": "22,57"
+        }
+      ],
+      "composicion": [
+        {
+          "parte": "Flujos proyectados",
+          "valor": 29917
+        },
+        {
+          "parte": "Valor terminal",
+          "valor": 94879
+        }
+      ],
+      "wacc": 6.14,
+      "ke": 8.86,
+      "kd_despues": 3.43,
+      "wacc_tabla": [
+        {
+          "concepto": "Tasa libre de riesgo",
+          "valor": "3,49 %"
+        },
+        {
+          "concepto": "Beta",
+          "valor": "0,83"
+        },
+        {
+          "concepto": "Prima de riesgo de mercado",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Prima adicional (país, tamaño, específica)",
+          "valor": "0,80 %"
+        },
+        {
+          "concepto": "Coste de los fondos propios",
+          "valor": "8,86 %"
+        },
+        {
+          "concepto": "Coste de la deuda antes de impuestos",
+          "valor": "4,40 %"
+        },
+        {
+          "concepto": "Tipo impositivo",
+          "valor": "22,00 %"
+        },
+        {
+          "concepto": "Coste de la deuda después de impuestos",
+          "valor": "3,43 %"
+        },
+        {
+          "concepto": "Peso de la deuda (D / (D + E))",
+          "valor": "50,00 %"
+        },
+        {
+          "concepto": "WACC",
+          "valor": "6,14 %"
+        },
+        {
+          "concepto": "Prima de riesgo implícita del mercado (regla relativa)",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "WACC con la prima implícita del mercado",
+          "valor": "5,60 %"
+        }
+      ],
+      "potencial_pct": -0.9,
+      "sensibilidad": {
+        "eje_columnas": "Crecimiento a perpetuidad",
+        "columnas": [
+          "1,0 %",
+          "1,5 %",
+          "2,0 %",
+          "2,5 %",
+          "3,0 %"
+        ],
+        "filas": [
+          {
+            "wacc": "5,1 %",
+            "v0": 26.15,
+            "v1": 31.91,
+            "v2": 39.51,
+            "v3": 49.98,
+            "v4": 65.34
+          },
+          {
+            "wacc": "5,6 %",
+            "v0": 19.97,
+            "v1": 24.32,
+            "v2": 29.87,
+            "v3": 37.18,
+            "v4": 47.25
+          },
+          {
+            "wacc": "6,1 %",
+            "v0": 15.01,
+            "v1": 18.38,
+            "v2": 22.57,
+            "v3": 27.9,
+            "v4": 34.94
+          },
+          {
+            "wacc": "6,6 %",
+            "v0": 10.95,
+            "v1": 13.62,
+            "v2": 16.86,
+            "v3": 20.89,
+            "v4": 26.02
+          },
+          {
+            "wacc": "7,1 %",
+            "v0": 7.56,
+            "v1": 9.71,
+            "v2": 12.28,
+            "v3": 15.4,
+            "v4": 19.28
+          }
+        ]
+      },
+      "sensibilidad2": {
+        "columnas": [
+          "-2 pp",
+          "-1 pp",
+          "0 pp",
+          "+1 pp",
+          "+2 pp"
+        ],
+        "filas": [
+          {
+            "margen": "-2 pp",
+            "v0": 6.39,
+            "v1": 8.85,
+            "v2": 11.48,
+            "v3": 14.3,
+            "v4": 17.31
+          },
+          {
+            "margen": "-1 pp",
+            "v0": 11.16,
+            "v1": 13.99,
+            "v2": 17.02,
+            "v3": 20.27,
+            "v4": 23.75
+          },
+          {
+            "margen": "0 pp",
+            "v0": 15.93,
+            "v1": 19.13,
+            "v2": 22.57,
+            "v3": 26.25,
+            "v4": 30.2
+          },
+          {
+            "margen": "+1 pp",
+            "v0": 20.7,
+            "v1": 24.28,
+            "v2": 28.11,
+            "v3": 32.23,
+            "v4": 36.64
+          },
+          {
+            "margen": "+2 pp",
+            "v0": 25.46,
+            "v1": 29.42,
+            "v2": 33.66,
+            "v3": 38.21,
+            "v4": 43.08
+          }
+        ]
+      },
+      "rango_min": 13.62,
+      "rango_max": 37.18,
+      "inverso": {
+        "crecimiento_implicito_pct": 2.5,
+        "crecimiento_base_pct": 2.4,
+        "periodo": "2027e-2035e",
+        "margen_implicito_pct": 20.5,
+        "margen_implicito_texto": null,
+        "margen_base_pct": 20.5,
+        "rentabilidad_implicita_pct": 6.1
+      },
+      "sostenibilidad": {
+        "veredicto": "En parte",
+        "veredicto_motor": "Sí",
+        "motivos_motor": [],
+        "crecimiento_financiable_bruto_pct": null,
+        "roic_implicito_bruto_pct": null,
+        "tcac_ingresos_historica_pct": 5.6,
+        "crecimiento_proyectado_pct": 2.1,
+        "tasa_reinversion_pct": 47,
+        "crecimiento_financiable_pct": 3.8,
+        "roic_pct": 8.1,
+        "roic_incremental_historico_pct": 27.9,
+        "roic_implicito_pct": 6.7,
+        "cuota_actual_pct": null,
+        "cuota_final_pct": null,
+        "puente": [
+          {
+            "periodo": "2026e",
+            "volumen_pct": 1.5,
+            "precio_pct": -2.5,
+            "otros_pct": 0,
+            "comentario": "Volumen 1,5 %: UKPN ocho meses y renovables nuevas; precio −2,5 %: precios de energía más bajos que en el 1S25 [2].",
+            "suma_pct": -1,
+            "crecimiento_pct": -1
+          },
+          {
+            "periodo": "2027e",
+            "volumen_pct": 2.5,
+            "precio_pct": 0.5,
+            "otros_pct": 0,
+            "comentario": "Volumen 2,5 %: UKPN el año entero y plan de inversión; precio 0,5 %.",
+            "suma_pct": 3,
+            "crecimiento_pct": 3
+          },
+          {
+            "periodo": "2028e",
+            "volumen_pct": 2,
+            "precio_pct": 0.6,
+            "otros_pct": 0,
+            "comentario": "Volumen 2,0 %: base de activos regulada y PPA nuevos (7 GW con tecnológicas [3]); precio 0,6 %.",
+            "suma_pct": 2.6,
+            "crecimiento_pct": 2.6
+          },
+          {
+            "periodo": "2029e",
+            "volumen_pct": 1.8,
+            "precio_pct": 0.7,
+            "otros_pct": 0,
+            "comentario": "Volumen 1,8 %: renovables y almacenamiento; precio 0,7 % (actualización de tarifas reguladas).",
+            "suma_pct": 2.5,
+            "crecimiento_pct": 2.5
+          },
+          {
+            "periodo": "2030e",
+            "volumen_pct": 1.8,
+            "precio_pct": 0.7,
+            "otros_pct": 0,
+            "comentario": "Volumen 1,8 %; precio 0,7 %.",
+            "suma_pct": 2.5,
+            "crecimiento_pct": 2.5
+          }
+        ],
+        "texto": "La proyección reinvierte el 47 % del NOPAT. Con el ROIC del último ejercicio (8,1 %), eso financia un crecimiento del 3,8 % anual, frente al 2,1 % de ingresos proyectado. Supone que el capital nuevo rinde un 6,7 %, frente a un ROIC incremental histórico del 27,9 %.",
+        "tabla": [
+          {
+            "concepto": "Crecimiento medio de ingresos proyectado",
+            "valor": "2,1 %"
+          },
+          {
+            "concepto": "Capex bruto medio (incluidas compras si van como inversión)",
+            "valor": "12,2 % de las ventas"
+          },
+          {
+            "concepto": "Reinversión neta acumulada (capex − amortización + circulante)",
+            "valor": "37.575 M (47 % del NOPAT)"
+          },
+          {
+            "concepto": "Crecimiento que financia esa reinversión al ROIC actual",
+            "valor": "3,8 % (ROIC 8,1 %)"
+          },
+          {
+            "concepto": "Crecimiento histórico de ingresos (TCAC)",
+            "valor": "5,6 % frente al 2,1 % proyectado"
+          },
+          {
+            "concepto": "Veredicto de las pruebas del motor",
+            "valor": "Sí"
+          },
+          {
+            "concepto": "Rendimiento que la proyección supone para el capital nuevo",
+            "valor": "6,7 % (histórico: 27,9 %)"
+          }
+        ]
+      }
+    },
+    "escenarios": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "narrativa": "Francia sube impuestos y presiona tarifas antes de las presidenciales de 2027, la CRE recorta la retribución de las redes de gas y los márgenes de generación y comercialización siguen bajando: ventas un punto por debajo, margen 1,5 puntos menor y crecimiento a perpetuidad del 1,5 %. NRIgs de ≈4.400 M en 2028, por debajo de la guía.",
+        "crecimiento_medio_pct": 1.4,
+        "margen_final_pct": 19,
+        "wacc_pct": 6.1,
+        "valor": 8.16,
+        "potencial_pct": -64.2
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "narrativa": "Plan ejecutado con el EBIT sin nuclear en la mitad de la guía (10.800 M en 2028), salida neutra del nuclear belga y UKPN integrada; NRIgs de ≈5.500 M en 2028.",
+        "crecimiento_medio_pct": 2.4,
+        "margen_final_pct": 20.5,
+        "wacc_pct": 6.1,
+        "valor": 22.57,
+        "potencial_pct": -0.9
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "narrativa": "Demanda de centros de datos (PPA), baterías y redes por encima del plan y precios de energía firmes: medio punto más de crecimiento y un punto más de margen; NRIgs de ≈6.200 M en 2028.",
+        "crecimiento_medio_pct": 2.9,
+        "margen_final_pct": 21.5,
+        "wacc_pct": 6.1,
+        "valor": 30.14,
+        "potencial_pct": 32.4
+      }
+    ],
+    "valor_ponderado": 20.86,
+    "potencial_ponderado_pct": -8.4,
+    "comparables": {
+      "tabla": [
+        {
+          "nombre": "Engie",
+          "ticker": "ENGI.PA",
+          "pais": "FR",
+          "capitalizacion": 57836,
+          "ev_ventas": 1.78,
+          "ev_ebitda_ltm": 9.4,
+          "ev_ebitda_ntm": 8.4,
+          "per_ntm": 11.5,
+          "crecimiento_pct": 11,
+          "margen_ebitda_pct": 18.8,
+          "roic_pct": 8.1,
+          "dn_ebitda": 4.1,
+          "fcf_yield_pct": -18.5,
+          "es_objetivo": true
+        },
+        {
+          "nombre": "Iberdrola",
+          "ticker": "IBE.MC",
+          "pais": "ES",
+          "capitalizacion": 141670,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": 11.9,
+          "ev_ebitda_ntm": 11.3,
+          "per_ntm": 20,
+          "crecimiento_pct": 3.2,
+          "margen_ebitda_pct": 36.4,
+          "roic_pct": null,
+          "dn_ebitda": 3,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Naturgy",
+          "ticker": "NTGY.MC",
+          "pais": "ES",
+          "capitalizacion": 29400,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": 7.9,
+          "ev_ebitda_ntm": 7.7,
+          "per_ntm": 14.5,
+          "crecimiento_pct": 0.2,
+          "margen_ebitda_pct": 27.4,
+          "roic_pct": null,
+          "dn_ebitda": 2.3,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Endesa",
+          "ticker": "ELE.MC",
+          "pais": "ES",
+          "capitalizacion": 44700,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": 9.7,
+          "ev_ebitda_ntm": 9.1,
+          "per_ntm": 17.9,
+          "crecimiento_pct": 0.2,
+          "margen_ebitda_pct": 26.9,
+          "roic_pct": null,
+          "dn_ebitda": 1.8,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Snam",
+          "ticker": "SRG.MI",
+          "pais": "IT",
+          "capitalizacion": 19580,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": 13,
+          "ev_ebitda_ntm": 11.9,
+          "per_ntm": 13.3,
+          "crecimiento_pct": 6,
+          "margen_ebitda_pct": 76.4,
+          "roic_pct": null,
+          "dn_ebitda": 5.9,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "National Grid",
+          "ticker": "NG.L",
+          "pais": "GB",
+          "capitalizacion": 67000,
+          "ev_ventas": null,
+          "ev_ebitda_ltm": 13.9,
+          "ev_ebitda_ntm": 11.3,
+          "per_ntm": 12.8,
+          "crecimiento_pct": 15,
+          "margen_ebitda_pct": 44.8,
+          "roic_pct": null,
+          "dn_ebitda": 5.6,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        }
+      ],
+      "estadisticos": [
+        {
+          "estadistico": "Mediana",
+          "ev_ventas": null,
+          "ev_ebitda_ltm": 11.9,
+          "ev_ebitda_ntm": 11.3,
+          "per_ntm": 14.5,
+          "crecimiento_pct": 3.2,
+          "margen_ebitda_pct": 36.4,
+          "roic_pct": null,
+          "dn_ebitda": 3,
+          "fcf_yield_pct": null
+        },
+        {
+          "estadistico": "Media",
+          "ev_ventas": null,
+          "ev_ebitda_ltm": 11.3,
+          "ev_ebitda_ntm": 10.3,
+          "per_ntm": 15.7,
+          "crecimiento_pct": 4.9,
+          "margen_ebitda_pct": 42.4,
+          "roic_pct": null,
+          "dn_ebitda": 3.7,
+          "fcf_yield_pct": null
+        },
+        {
+          "estadistico": "Percentil 25",
+          "ev_ventas": null,
+          "ev_ebitda_ltm": 9.7,
+          "ev_ebitda_ntm": 9.1,
+          "per_ntm": 13.3,
+          "crecimiento_pct": 0.2,
+          "margen_ebitda_pct": 27.4,
+          "roic_pct": null,
+          "dn_ebitda": 2.3,
+          "fcf_yield_pct": null
+        },
+        {
+          "estadistico": "Percentil 75",
+          "ev_ventas": null,
+          "ev_ebitda_ltm": 13,
+          "ev_ebitda_ntm": 11.3,
+          "per_ntm": 17.9,
+          "crecimiento_pct": 6,
+          "margen_ebitda_pct": 44.8,
+          "roic_pct": null,
+          "dn_ebitda": 5.6,
+          "fcf_yield_pct": null
+        }
+      ],
+      "implicito": [
+        {
+          "metodo": "EV/EBITDA próximos 12 meses",
+          "metrica_empresa": 15004.4,
+          "multiplo_p25": 9.1,
+          "multiplo_mediana": 11.3,
+          "multiplo_p75": 11.3,
+          "multiplos": "9,1x / 11,3x / 11,3x",
+          "valor_p25": 27.19,
+          "valor_mediana": 40.19,
+          "valor_p75": 40.19,
+          "potencial_pct": 76.5
+        },
+        {
+          "metodo": "EV/EBITDA últimos 12 meses",
+          "metrica_empresa": 13280,
+          "multiplo_p25": 9.7,
+          "multiplo_mediana": 11.9,
+          "multiplo_p75": 13,
+          "multiplos": "9,7x / 11,9x / 13,0x",
+          "valor_p25": 24.15,
+          "valor_mediana": 35.66,
+          "valor_p75": 41.41,
+          "potencial_pct": 56.6
+        },
+        {
+          "metodo": "PER próximos 12 meses",
+          "metrica_empresa": 1.98,
+          "multiplo_p25": 13.3,
+          "multiplo_mediana": 14.5,
+          "multiplo_p75": 17.9,
+          "multiplos": "13,3x / 14,5x / 17,9x",
+          "valor_p25": 26.34,
+          "valor_mediana": 28.71,
+          "valor_p75": 35.45,
+          "potencial_pct": 26.1
+        }
+      ],
+      "regresion": {
+        "pendiente": 0.19,
+        "ordenada": 9.3,
+        "r2": 0.41,
+        "n": 5,
+        "multiplo_ajustado": 11.4,
+        "valor_accion": 40.78,
+        "fiable": true,
+        "texto": "**Regresión EV/EBITDA NTM sobre crecimiento** (5 comparables): múltiplo = 9,3 + 0,19 × crecimiento; R² = 0,41. Para el crecimiento esperado de la empresa (11,0 %), el múltiplo ajustado es 11,4x y el valor por acción, 40,78."
+      },
+      "n": 5
+    },
+    "transacciones": null,
+    "suma_partes": null,
+    "multiplos_historicos": [
+      {
+        "metrica": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+        "campo": "ev_ebitda_ltm",
+        "actual": 9.4,
+        "media": 6.5,
+        "minimo": 5.5,
+        "maximo": 7.5,
+        "percentil": 100,
+        "prima_pct": 45,
+        "anios": 3
+      },
+      {
+        "metrica": "PER últimos 12 meses (cierre de cada año)",
+        "campo": "per_ltm",
+        "actual": 14,
+        "media": 9.3,
+        "minimo": 8.9,
+        "maximo": 14.8,
+        "percentil": 67,
+        "prima_pct": 51,
+        "anios": 3
+      }
+    ],
+    "multiplos_serie": [
+      {
+        "anio": "2021",
+        "multiplo": 6.5,
+        "media": 6.5
+      },
+      {
+        "anio": "2022",
+        "multiplo": 4.9,
+        "media": 6.5
+      },
+      {
+        "anio": "2023",
+        "multiplo": 5.4,
+        "media": 6.5
+      },
+      {
+        "anio": "2024",
+        "multiplo": 5.5,
+        "media": 6.5
+      },
+      {
+        "anio": "2025",
+        "multiplo": 7.5,
+        "media": 6.5
+      }
+    ],
+    "multiplos_titulo": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+    "consenso_vs_propio": [
+      {
+        "periodo": "2026e",
+        "ingresos_propio": 71225,
+        "ingresos_consenso": 78789,
+        "ingresos_dif_pct": -9.6,
+        "ebitda_propio": 13818,
+        "ebitda_consenso": 14091.743,
+        "ebitda_dif_pct": -1.9
+      },
+      {
+        "periodo": "2027e",
+        "ingresos_propio": 73361,
+        "ingresos_consenso": 81425,
+        "ingresos_dif_pct": -9.9,
+        "ebitda_propio": 14746,
+        "ebitda_consenso": 15228.475,
+        "ebitda_dif_pct": -3.2
+      },
+      {
+        "periodo": "2028e",
+        "ingresos_propio": 75269,
+        "ingresos_consenso": 84707,
+        "ingresos_dif_pct": -11.1,
+        "ebitda_propio": 15355,
+        "ebitda_consenso": 15918.809,
+        "ebitda_dif_pct": -3.5
+      }
+    ],
+    "gobierno": {
+      "n_consejeros": 7,
+      "independientes_pct": 57,
+      "antiguedad_media": 8.2,
+      "composicion": [
+        {
+          "tipo": "Independiente",
+          "num": 4
+        },
+        {
+          "tipo": "Ejecutivo",
+          "num": 1
+        },
+        {
+          "tipo": "Dominical",
+          "num": 1
+        },
+        {
+          "tipo": "Otro",
+          "num": 1
+        }
+      ],
+      "checklist": [
+        {
+          "criterio": "Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)",
+          "resultado": "Cumple",
+          "valor": "57 %"
+        },
+        {
+          "criterio": "Presidencia sin vínculo familiar ni profesional con el accionista de control",
+          "resultado": "Cumple",
+          "valor": "Sin control"
+        },
+        {
+          "criterio": "Presidente no ejecutivo, o consejero coordinador independiente",
+          "resultado": "Cumple",
+          "valor": "No ejecutivo"
+        },
+        {
+          "criterio": "Comisión de auditoría con mayoría de independientes y presidida por uno",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Ningún consejero «otro externo» con más de 12 años",
+          "resultado": "Cumple",
+          "valor": "Ninguno"
+        },
+        {
+          "criterio": "Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses",
+          "resultado": "Cumple",
+          "valor": "0 cambios"
+        },
+        {
+          "criterio": "Peor voto a favor sobre remuneración (3 juntas) ≥ 80 %",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Una acción, un voto, sin blindajes ni límites de voto estatutarios",
+          "resultado": "No cumple",
+          "valor": "No"
+        },
+        {
+          "criterio": "Sin operaciones vinculadas relevantes",
+          "resultado": "Cumple",
+          "valor": "No hay"
+        },
+        {
+          "criterio": "Auditor con 10 años o menos en el cargo",
+          "resultado": "No cumple",
+          "valor": "18 años"
+        },
+        {
+          "criterio": "Opinión de auditoría sin salvedades",
+          "resultado": "Cumple",
+          "valor": "Sin salvedades (2025) [1]"
+        },
+        {
+          "criterio": "Directivos compradores netos en 12 meses (o sin ventas relevantes)",
+          "resultado": "Cumple",
+          "valor": "Compras 0,00 / ventas 0,00 M"
+        }
+      ],
+      "puntuacion": "10 de 13 (1 sin dato)",
+      "puntuacion_pct": 77,
+      "compras_insiders": 0,
+      "ventas_insiders": 0
+    },
+    "competidores_margen": [
+      {
+        "nombre": "Engie",
+        "margen_ebit_pct": 11.8
+      },
+      {
+        "nombre": "EDF",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Iberdrola",
+        "margen_ebit_pct": 22.1
+      },
+      {
+        "nombre": "Enel",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "RWE",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "TotalEnergies",
+        "margen_ebit_pct": 11.7
+      }
+    ],
+    "sintesis": {
+      "formato_eje": "#,##0.0",
+      "rangos": [
+        {
+          "metodo": "Cotización 52 semanas",
+          "etiqueta": "Cotización 52 semanas (19,42 – 29,89)",
+          "min": 19.42,
+          "central": 22.77,
+          "max": 29.89,
+          "gris": true
+        },
+        {
+          "metodo": "Precio objetivo de los analistas",
+          "etiqueta": "Precio objetivo de los analistas (24,50 – 33,80)",
+          "min": 24.5,
+          "central": 30.54,
+          "max": 33.8,
+          "gris": true
+        },
+        {
+          "metodo": "Comparables: EV/EBITDA NTM",
+          "etiqueta": "Comparables: EV/EBITDA NTM (27,19 – 40,19)",
+          "min": 27.19,
+          "central": 40.19,
+          "max": 40.19,
+          "gris": false
+        },
+        {
+          "metodo": "Comparables: PER NTM",
+          "etiqueta": "Comparables: PER NTM (26,34 – 35,45)",
+          "min": 26.34,
+          "central": 28.71,
+          "max": 35.45,
+          "gris": false
+        },
+        {
+          "metodo": "DCF (WACC y g ± 0,5)",
+          "etiqueta": "DCF (WACC y g ± 0,5) (13,62 – 37,18)",
+          "min": 13.62,
+          "central": 22.57,
+          "max": 37.18,
+          "gris": false
+        },
+        {
+          "metodo": "Escenarios (bajista – alcista)",
+          "etiqueta": "Escenarios (bajista – alcista) (8,16 – 30,14)",
+          "min": 8.16,
+          "central": 20.86,
+          "max": 30.14,
+          "gris": false
+        },
+        {
+          "metodo": "DCF con la prima del mercado",
+          "etiqueta": "DCF con la prima implícita del mercado (4,2 %)",
+          "min": 23.08,
+          "central": 30.53,
+          "max": 40.41
+        },
+        {
+          "metodo": "Precio actual",
+          "etiqueta": "Precio actual (22,77)",
+          "min": 22.66,
+          "central": 22.77,
+          "max": 22.88,
+          "gris": true
+        }
+      ],
+      "tabla": [
+        {
+          "metodo": "DCF",
+          "valor": 22.57,
+          "peso_pct": 60,
+          "potencial_pct": -0.9
+        },
+        {
+          "metodo": "Comparables (mediana EV/EBITDA y PER) (no se usa)",
+          "valor": 34.45,
+          "peso_pct": 0,
+          "potencial_pct": 51.3
+        },
+        {
+          "metodo": "Escenarios ponderados",
+          "valor": 20.86,
+          "peso_pct": 40,
+          "potencial_pct": -8.4
+        }
+      ],
+      "valor_objetivo": 21.89,
+      "potencial_pct": -3.9
+    },
+    "fuentes": {
+      "n_fuentes": 38,
+      "n_primarias": 22,
+      "por_tipo": [
+        {
+          "tipo": "Primaria",
+          "num": 22
+        },
+        {
+          "tipo": "Prensa",
+          "num": 3
+        },
+        {
+          "tipo": "Datos de mercado",
+          "num": 8
+        },
+        {
+          "tipo": "Foros y redes",
+          "num": 5
+        }
+      ],
+      "n_citadas": 38,
+      "citas_sin_fuente": [],
+      "fuentes_sin_citar": []
+    },
+    "controles": [
+      {
+        "control": "BAI − impuestos − minoritarios = beneficio neto (2022)",
+        "resultado": "Explicado",
+        "detalle": "Diferencia de -2.182 (¿operaciones interrumpidas?). Explicación: La diferencia (−2.182 M) es el resultado de actividades interrumpidas de 2022 (+2.183 M, venta de EQUANS a Bouygues) [12]."
+      },
+      {
+        "control": "BPA = beneficio neto / acciones (2022)",
+        "resultado": "Explicado",
+        "detalle": "0,09 calculado frente a 0,06 publicado (con convertibles, el BPA diluido publicado ajusta el numerador: explícalo si la diferencia viene de ahí). Explicación: El BPA publicado (0,06 €) descuenta los cupones de los híbridos perpetuos, que se contabilizan en el patrimonio; con un beneficio de 216 M el efecto pesa mucho (0,09 € sin cupones) [12]."
+      },
+      {
+        "control": "Geografías suman 100 %",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "DCF inverso calculable",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Puente de ingresos (volumen + precio + otros) = crecimiento del DCF",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Veredicto de sostenibilidad del analista coherente con las pruebas del motor",
+        "resultado": "OK",
+        "detalle": "El analista dice «En parte» y las pruebas del motor dan «Sí»: razónalo en la justificación."
+      },
+      {
+        "control": "Rendimiento del capital nuevo de la proyección ≤ 1,25 × el histórico",
+        "resultado": "OK",
+        "detalle": "La proyección supone que la inversión nueva rinde un 6,7 % frente a un ROIC de 8,1 % y un incremental histórico de 27,9 %: crecimiento que la empresa no ha demostrado poder comprar."
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "resultado": "OK",
+        "detalle": "Supuesto 5,0 % frente a 5,0 % real: genera una variación de circulante de -38 M en el primer año. Converge de forma gradual."
+      },
+      {
+        "control": "Peso del valor terminal ≤ 80 % del valor empresa",
+        "resultado": "OK",
+        "detalle": "76 %."
+      },
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "resultado": "OK",
+        "detalle": "2,00 %."
+      },
+      {
+        "control": "Caja proyectada coherente con la histórica",
+        "resultado": "Explicado",
+        "detalle": "El DCF proyecta 2.409 M de flujo libre medio en sus tres primeros años, frente a -1.611 M de media real en los tres últimos: justifica el salto (circulante, inversión, márgenes) o ajusta los supuestos. Explicación: La media real de 2023-2025 (−1.611 M) incluye el pago de 13.986 M de pasivos nucleares belgas en 2025, financiado con los activos dedicados de Synatom (+8.523 M en inversión); sin ese pago, el flujo operativo de 2025 fue de ≈12.500 M y el «cash flow from operations» publicado de 13.600 M [1, 5]. El DCF parte de un EBITDA recurrente sin nuclear."
+      },
+      {
+        "control": "Probabilidades de los escenarios suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 5 comparables",
+        "resultado": "OK",
+        "detalle": "5 comparables."
+      },
+      {
+        "control": "Pesos de la síntesis suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Crecimiento del BPA base ≤ 25 % anual desde el último real",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Precio del cierre de la fecha de corte (o de las dos sesiones anteriores)",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Recomendación coherente con la regla de decisión",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "La síntesis explica la convicción",
+        "resultado": "OK",
+        "detalle": "La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría."
+      },
+      {
+        "control": "Al menos 25 fuentes",
+        "resultado": "OK",
+        "detalle": "38 fuentes (22 primarias)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "resultado": "OK",
+        "detalle": "22."
+      },
+      {
+        "control": "Toda cita [n] existe en fuentes",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Fuentes sin citar ≤ 15 %",
+        "resultado": "OK",
+        "detalle": ""
+      }
+    ],
+    "controles_resumen": "19 de 22 controles correctos y 3 explicados"
+  }
+}

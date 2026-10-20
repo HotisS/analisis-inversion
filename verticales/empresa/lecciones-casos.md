@@ -34,6 +34,9 @@ No se lee entero: busca con `grep -n -i` la palabra del caso (arrendamiento, ant
 - **Impuestos aplazados por traslados de propiedad intelectual** (Coloplast-Kerecis): asimilables a deuda en el puente.
 - **Asociadas en el EBITDA de MarketScreener** (Diageo-Moët Hennessy); caja pendiente de una reestructuración que el DCF excluye, en `otros_ajustes`.
 
+- **Híbridos (TSS) en utilities** (Veolia, Engie, Orange): el BPA «corriente» de la empresa no resta los cupones y el publicado sí; objetivo a 12 m e historia del PER con los cupones restados, y decir que el consenso va sin restarlos (≈5 %). Sostenibilidad en utilities: el capex del estado de flujos no basta, sumar arrendamientos y activos financieros operativos (Veolia 7,2 % → 10,3 % de ventas). Telecos con NIIF 16: capex terminal nunca por debajo de la amortización (Orange: +34 % de DCF por ese error).
+- **Distribución eléctrica** (Rexel): el BPA de pico de 2022 (inflación del cobre) hunde el PER mínimo de 5 años y da un bajista extremo; mirar la variante «sin doble castigo».
+
 ## Suma de partes
 - Una parte por DCF o rNPV: `valor_metrica: "dcf"` o `ev_directo` con el valor ya calculado. El motor avisa de las partes sin valor.
 - **Costes centrales sin asignar** (CSL, −2.143 M): una parte negativa al múltiplo medio; si no, sale inflada un 30-40 %.

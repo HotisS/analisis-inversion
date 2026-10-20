@@ -1,0 +1,4942 @@
+{
+  "meta": {
+    "fecha_corte": "2026-10-20",
+    "divisa": "EUR",
+    "divisa_cotizacion": "EUR",
+    "tipo_cambio": 1,
+    "unidades": "millones",
+    "cierre_ejercicio_mes": 12,
+    "etiqueta_ejercicio": "fin",
+    "normas_contables": "NIIF-UE",
+    "formato_cuenta": "funcion",
+    "limitaciones": "Cotización en Euronext París (VIE), la línea principal; el ADR (VEOEY) no se usa. Precio: cierre oficial del lunes 19-oct-2026 (31,93 EUR, subasta de cierre de las 17:35 de París), del histórico de Euronext [15], porque Yahoo no traía el cierre de ese día; la sesión del 20-oct estaba abierta al hacer el análisis (31,92 EUR a las 10:15). Cuentas 2021-2024 del XBRL ESEF del regulador [6] y 2025 de las cuentas consolidadas de la empresa [1] (2025 aún no está en filings.xbrl.org). El EBIT de la cuenta es el resultado operativo publicado antes de puestas en equivalencia, con la amortización de la asignación del precio de Suez y las partidas no corrientes; el BPA del objetivo a 12 meses es el corriente de la empresa (sin esa amortización) menos los cupones de los híbridos, en la misma base que la historia. Puente al 30-jun-2026 [5]: los híbridos (TSS, 3.744 M) se restan como deuda y los minoritarios a valor de mercado aproximado. Segmentos solo 2024-2025 (segmentación vigente). Comparables de Yahoo del 20-oct convertidos con el BCE del 19-oct (USD 1,1225; GBP 0,84205) [22, 23]. La OAT a 10 años sale de una fuente secundaria (Idéal Investisseur) contrastada con la serie mensual del BCE [20, 21]; la revisión de Moody’s del 23-oct y los disturbios del fin de semana del 17-oct son contexto del encargo que no se ha podido leer en una fuente primaria.",
+    "controles_explicados": [
+      {
+        "control": "BAI − impuestos − minoritarios = beneficio neto (2022)",
+        "explicacion": "La diferencia (78 M) es el resultado de actividades interrumpidas (venta de activos de Suez y del negocio EPC), que va debajo del resultado de las operaciones continuadas [1, 6]."
+      },
+      {
+        "control": "BAI − impuestos − minoritarios = beneficio neto (2024)",
+        "explicacion": "Diferencia de 103 M por el resultado de actividades interrumpidas, sobre todo el negocio EPC (ingeniería y construcción) abandonado en todas las geografías [2]."
+      },
+      {
+        "control": "BAI − impuestos − minoritarios = beneficio neto (2025)",
+        "explicacion": "Diferencia de 118 M por la misma razón: pérdidas de actividades interrumpidas (EPC) [2]."
+      },
+      {
+        "control": "BPA = beneficio neto / acciones (2025)",
+        "explicacion": "El BPA publicado (1,54 EUR) resta del numerador los cupones de los híbridos (121 M brutos en 2025, ≈90 M netos de impuestos) y usa las acciones medias (729 M), no las diluidas al cierre: (1.217 − 90) / 729 = 1,55 [1, 2]."
+      }
+    ],
+    "huecos": [
+      {
+        "seccion": "trimestres",
+        "campo": "items (1S24, 2S24 y trimestres sueltos)",
+        "tipo": "Complemento",
+        "intentos": "1) Comunicado 1S26 y amendement: solo comparan con 1S25; 2) presentación FY2025 e informe 1T26: dan el 1T25 y el 1T26 pero no 2T-4T; 3) derivar 2S24 exige el 1S24, no descargado",
+        "decision": "Omitido (tres semestres)"
+      },
+      {
+        "seccion": "negocio",
+        "campo": "segmentos 2021-2023",
+        "tipo": "Complemento",
+        "intentos": "1) URD 2025: segmentos reexpresados solo 2024-2025; 2) XBRL 2021-2023: segmentación anterior (France, Europe hors France, Reste du monde, Activités mondiales) no comparable; 3) no hay reexpresión publicada",
+        "decision": "Omitido (solo 2024-2025 con la segmentación vigente)"
+      },
+      {
+        "seccion": "sector",
+        "campo": "tamano, serie, tcac y cr5",
+        "tipo": "Núcleo",
+        "intentos": "1) URD 2025 de Veolia: no da el tamaño de su mercado total; 2) informes de mercado gratuitos de residuos (TechSci 330.000 M USD 2024, MarketsandMarkets 1,22 billones USD 2024): definiciones incompatibles, solo resúmenes; 3) suma de cotizadas (Veolia, Suez, Hera, Republic…) no llega al mercado total",
+        "decision": "Omitido (tamaño en texto, sin serie)"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "voto_remuneracion_pct y voto_remuneracion_contra_pct",
+        "tipo": "Complemento",
+        "intentos": "1) Amendement del URD (junta del 23-abr-2026): solo dice que se aprobaron todas las resoluciones; 2) URD 2025: no reproduce el resultado de la junta de 2025; 3) búsqueda del acta de votación en la web de la empresa: no localizada en el tiempo del análisis",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "bolsa",
+        "campo": "posicion_corta_pct",
+        "tipo": "Complemento",
+        "intentos": "1) Registro de posiciones cortas netas de la AMF: no consultado con éxito (requiere navegador); 2) ESMA: solo umbrales por encima del 0,5 %; 3) Yahoo no da cortos para París",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "consenso",
+        "campo": "BPA corriente 2028e",
+        "tipo": "Complemento",
+        "intentos": "1) Yahoo earningsTrend: solo 2026-2027; 2) MarketScreener: BPA publicado, no corriente (2,47 en 2028e); 3) Investing: no abre sin JavaScript",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "transacciones",
+        "campo": "operaciones de terceros (Renewi, Biffa, nueva Suez)",
+        "tipo": "Complemento",
+        "intentos": "1) Comunicados de los compradores: múltiplos no localizados en primaria; 2) prensa: solo valores de capital; 3) informes de los vendedores no descargados",
+        "decision": "Omitido (tres operaciones propias de Veolia)"
+      },
+      {
+        "seccion": "rentabilidad",
+        "campo": "roic_operativo_pct",
+        "tipo": "Complemento",
+        "intentos": "1) URD 2025: solo el ROCE de la empresa (9,4 % después de impuestos, con puestas en equivalencia); 2) cuentas 2025: sin capital empleado por segmento; 3) presentación FY2025: ROCE del grupo sin desglose",
+        "decision": "Omitido (se usa el ROCE de la empresa como contraste)"
+      }
+    ]
+  },
+  "identificacion": {
+    "nombre": "Veolia Environnement SA",
+    "nombre_corto": "Veolia",
+    "ticker": "VIE",
+    "isin": "FR0000124141",
+    "mercado": "Euronext París",
+    "indice_referencia": "CAC 40 / STOXX Europe 600",
+    "pais": "Francia",
+    "pais_iso": "FR",
+    "sector": "Utilities",
+    "industria": "Multi-Utilities",
+    "sede": "Aubervilliers (Francia)",
+    "fundacion": "1853",
+    "empleados": 215000,
+    "web": "https://www.veolia.com",
+    "precio": 31.93,
+    "fecha_precio": "2026-10-19",
+    "acciones": 732,
+    "capitalizacion_publicada": 23664,
+    "free_float_pct": 89.2,
+    "max_52s": 37.66,
+    "min_52s": 27.85,
+    "volumen_medio_diario": "≈ 53,3 M EUR/día (3 meses)",
+    "proximos_resultados": "2026-11-05"
+  },
+  "resumen": {
+    "recomendacion": "Mantener",
+    "conviccion": "Baja",
+    "justificacion_recomendacion": null,
+    "horizonte": "12 meses",
+    "sintesis": "**La recomendación y por qué.** Mantener, con convicción baja. El objetivo a 12 meses es 34,48 EUR (12,9 veces nuestro BPA de 2028e en el base), con una rentabilidad ponderada del 12,7 % y del 15,8 % en el base, con el dividendo: la ponderada no llega al 15 % que pide una compra. El valor real (33,85 EUR, DCF 60 % y escenarios 40 %) está un 6,0 % por encima del precio de 31,93 EUR. Y la calidad no pasa: el ROIC (6,9 %) supera al WACC (6,3 %) por menos de un punto, lejos de los 5 que exige una compra. La convicción es baja porque la regla absoluta y la relativa discrepan (con la prima del mercado el DCF da 42,45 EUR).\n\n**El negocio.** Veolia es el líder mundial en agua, residuos y energía local, con contratos largos indexados a la inflación y clientes públicos e industriales [2]. Desde la compra de Suez ha subido el margen EBITDA del 14,4 % al 16,0 % y el resultado neto corriente un 16 % anual [2, 4]. Su punto débil es el balance: unos 32.000 M de deuda, arrendamientos e híbridos por delante del accionista, más que su capitalización, y una caja libre que no cubre las compras.\n\n**Francia y la caída.** Francia es el 19,3 % de las ventas y el segmento de Francia y residuos peligrosos de Europa, el 20,9 % del EBITDA [2]. El riesgo país le llega por cinco canales: el coste de la deuda (limitado: deuda a tipo fijo al 3,7 % con rating propio BBB/Baa1), los impuestos (el recargo de los grandes grupos, que el presupuesto 2027 rebaja un 30 %; el tipo corriente del grupo bajó en 2025), las tarifas y los contratos públicos (ayuntamientos con menos dinero que negocian más las renovaciones de agua), el consumo interno (poco: residuos y agua municipales) y, sobre todo, la tasa de descuento que aplica el mercado. La caída desde el máximo del 14-jul (−14,8 %) tiene dos mitades: del 14 al 31 de julio (−8 %) es propia (rebaja de Morgan Stanley, caja libre negativa y deuda tras Clean Earth); desde el 1-ago (−7,4 %) es riesgo país: cae lo mismo que el CAC 40 y seis puntos más que el STOXX 600 y las utilities europeas, con el diferencial OAT-Bund en 1,36-1,42 puntos [20, 27]. Si el DCF se descontara con la OAT (4,85 %) en vez del Bund, el valor real bajaría un 19,8 %, a 27,14 EUR.\n\n**Valoración.** El DCF da 34,25 EUR y el inverso dice que el precio descuenta un crecimiento del 2,6 % anual, casi nuestro base (2,9 %). En PER adelantado cotiza a 12,6 veces, en su mediana de cinco años (13,3). Nuestro BPA coincide con el consenso una vez quitados los cupones de los híbridos [17]. El apalancamiento abre mucho los escenarios: de 10 a 54 EUR.\n\n**Riesgos y catalizadores.** El riesgo mayor es que el riesgo país y los tipos se queden altos (−20 % con la OAT), y después el apalancamiento si se retrasan las ventas de activos. Catalizadores con fecha: Moody’s sobre Francia el 23-oct, los nueve meses el 5-nov, el presupuesto 2027 y los anuales el 17-feb-2027. El riesgo de IA es bajo: es una herramienta de eficiencia y una fuente de demanda (agua para centros de datos), no un sustituto.\n\n**Qué cambiaría la decisión.** Por debajo de 31,29 EUR la rentabilidad ponderada pasaría del 15 %, pero sin ROIC − WACC ≥ 5 no sería una compra robusta. Venderíamos por encima de 39,98 EUR o si el diferencial OAT-Bund pasa de 2 puntos con un recorte del rating de Veolia.",
+    "tesis": "Veolia es el líder mundial de servicios medioambientales esenciales, con contratos indexados a la inflación y un margen que sube con los ahorros y las sinergias de Suez [2]. Pero tiene mucha deuda y crea poco valor sobre su coste de capital (ROIC del 6,9 % frente a un WACC del 6,3 %), y al precio actual el mercado ya descuenta nuestro caso base. Con la prima de riesgo francesa en máximos desde 2012, la acción depende más de la OAT que de sus resultados.",
+    "vision_diferencial": {
+      "mercado_descuenta": "Un crecimiento del 2,6 % anual, un PER adelantado de 12,6 veces y un riesgo país francés que se queda: el precio ya incorpora la mitad de la subida del diferencial.",
+      "nuestra_vision": "Coincidimos en el negocio y en el BPA; vemos más riesgo en el balance (híbridos y minoritarios que el PER no recoge) y menos en el negocio francés, que es una quinta parte del grupo.",
+      "por_que": "La caída de agosto a octubre ha sido igual que la del CAC 40, sin noticias de la empresa: el mercado vende Francia, no Veolia. Pero a 12,6 veces el BPA y con un ROIC que apenas supera el WACC, no hay margen de seguridad suficiente para comprar."
+    },
+    "a_favor": [
+      "**Negocio esencial**: agua, residuos y energía con contratos indexados a la inflación; margen EBITDA del 16,0 % en el 1S26, +70 puntos básicos [4].",
+      "**Ejecución**: guía cumplida en 2023, 2024 y 2025, sinergias de Suez por encima de lo prometido y guía de 2026 elevada en julio [2, 4].",
+      "**Dividendo**: 4,7 % de rentabilidad, creciendo con el BPA corriente [4].",
+      "**Valoración en su mediana**: 12,6 veces el BPA adelantado y el precio descuenta nuestro crecimiento base.",
+      "**Riesgo país ya en el precio**: −7,4 % desde agosto, como el CAC 40, sin noticias propias [27]."
+    ],
+    "en_contra": [
+      "**Calidad para comprar**: ROIC − WACC de 0,6 puntos, lejos de los 5 que se piden.",
+      "**Deuda**: unos 32.000 M de deuda, arrendamientos e híbridos, 3 veces el EBITDA con Clean Earth [4].",
+      "**Sensibilidad a la tasa**: con la OAT en vez del Bund, el valor real baja un 19,8 %.",
+      "**Caja libre**: negativa en el 1S26 (−288 M) y no cubre las compras [4].",
+      "**Compra cara**: Clean Earth a 15 veces el EBITDA, el doble que el grupo [9]."
+    ],
+    "que_vigilar": "La tesis depende de que el riesgo país francés no pase al negocio (renovación de contratos de agua y margen de Francia) y de que la deuda baje con las ventas de activos. La señal de que no se cumple: un diferencial OAT-Bund por encima de 1,6 puntos con un margen de Francia a la baja en los nueve meses, o una deuda neta por encima de 3,2 veces el EBITDA a fin de 2026.",
+    "cambiaria_recomendacion": [
+      "Si el precio baja de 31,29 EUR sin cambios en la guía el 5-nov, la rentabilidad ponderada pasaría del 15 %; aun así, sin ROIC − WACC ≥ 5 no sería una compra robusta.",
+      "Si el precio supera 39,98 EUR sin mejora del BPA, pasaríamos a Vender.",
+      "Si Moody’s rebaja a Francia y el diferencial OAT-Bund pasa de 2 puntos con una rebaja del rating de Veolia, rebajaríamos el base y probablemente pasaríamos a Vender.",
+      "Si las ventas de activos se firman por encima de 9 veces el EBITDA y la deuda baja de 2,7 veces, subiríamos el caso base."
+    ],
+    "kpis_seguimiento": [
+      {
+        "kpi": "Diferencial OAT-Bund a 10 años",
+        "nivel_actual": "1,36 puntos (19-oct-2026)",
+        "umbral_alerta": "> 1,6 puntos",
+        "por_que": "Mide el riesgo país que el mercado aplica a las francesas [20]."
+      },
+      {
+        "kpi": "Crecimiento orgánico del EBITDA",
+        "nivel_actual": "+5,0 % (1S26)",
+        "umbral_alerta": "< +4 % en el año",
+        "por_que": "Guía del +5-6 % y base del caso base [4]."
+      },
+      {
+        "kpi": "Deuda financiera neta / EBITDA",
+        "nivel_actual": "≈3,4x (30-jun-2026, con estacionalidad; guía ≈3x a fin de año)",
+        "umbral_alerta": "> 3,2x a fin de 2026",
+        "por_que": "Con el rating BBB, decide el margen para comprar y el coste de la deuda [4, 5]."
+      },
+      {
+        "kpi": "Margen EBITDA de Francia y residuos peligrosos de Europa",
+        "nivel_actual": "16,5 % (2025)",
+        "umbral_alerta": "< 16 %",
+        "por_que": "Es donde llegaría al negocio el riesgo país [2]."
+      },
+      {
+        "kpi": "Ventas de activos firmadas",
+        "nivel_actual": "≈500 M (2026)",
+        "umbral_alerta": "< 1.000 M a fin de 2027",
+        "por_que": "Plan de más de 2.000 M hasta mediados de 2028 [4]."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "historia": {
+    "resumen": "Veolia es la antigua Compagnie Générale des Eaux, creada en 1853 para dar agua a las ciudades francesas. En los noventa fue la base del conglomerado Vivendi; las actividades de medio ambiente salieron a bolsa en 2000 y tomaron el nombre de Veolia en 2003. Con Antoine Frérot (consejero delegado desde 2009) vendió transporte y activos dispersos y en 2020-2022 hizo la gran operación de su historia: la compra de Suez, su rival de siempre, por unos 13.000 M, que la convirtió en el número uno mundial en agua, residuos y energía local, con los activos franceses de Suez vendidos a un consorcio para cumplir con la competencia. Desde 2022 la dirige Estelle Brachlianoff, que ha integrado Suez (534 M de sinergias), ha comprado el 30 % que faltaba de Tecnologías del Agua y Clean Earth en EE. UU., y ha lanzado un plan de ventas de activos de más de 2.000 M hasta mediados de 2028 [2, 3, 4].",
+    "hitos": [
+      {
+        "anio": "1853",
+        "hito": "Fundación de la Compagnie Générale des Eaux por decreto imperial [3]"
+      },
+      {
+        "anio": "1998",
+        "hito": "Vivendi: la antigua CGE se convierte en conglomerado de medios; las actividades de medio ambiente forman Vivendi Environnement [3]"
+      },
+      {
+        "anio": "2000",
+        "hito": "Salida a bolsa de Vivendi Environnement, renombrada Veolia Environnement en 2003 [3]"
+      },
+      {
+        "anio": "2011",
+        "hito": "Antoine Frérot, consejero delegado (2009) y presidente-director general: plan de desinversiones y salida de Transdev [3]"
+      },
+      {
+        "anio": "2020",
+        "hito": "Compra del 29,9 % de Suez a Engie (3.400 M) y lanzamiento de la oferta sobre el resto [3]"
+      },
+      {
+        "anio": "2022",
+        "hito": "Consolidación de Suez (18-ene-2022); Estelle Brachlianoff, directora general desde el 1-jul-2022 [3]"
+      },
+      {
+        "anio": "2024",
+        "hito": "Plan GreenUp 2024-2027: crecimiento en «boosters» (tecnologías del agua, residuos peligrosos, bioenergía) [3]"
+      },
+      {
+        "anio": "2025",
+        "hito": "Compra del 30 % de WTS a CDPQ (1.500 M) y acuerdo para comprar Clean Earth [2, 9]"
+      },
+      {
+        "anio": "2026",
+        "hito": "Cierre de Clean Earth (junio): n.º 2 en residuos peligrosos en EE. UU.; plan de desinversiones de más de 2.000 M hasta 2028 [4]"
+      }
+    ],
+    "confianza": "Alta"
+  },
+  "negocio": {
+    "segmentos": [
+      {
+        "nombre": "France et Déchets Dangereux Europe",
+        "descripcion": "Agua y residuos en Francia y residuos peligrosos en Europa",
+        "tipo_resultado": "EBITDA",
+        "historico": [
+          {
+            "periodo": "2024",
+            "ingresos": 9145,
+            "resultado": 1392
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 8914,
+            "resultado": 1475
+          }
+        ]
+      },
+      {
+        "nombre": "Europe",
+        "descripcion": "Europa central y oriental (calefacción urbana, agua), Europa del Norte, Iberia e Italia",
+        "tipo_resultado": "EBITDA",
+        "historico": [
+          {
+            "periodo": "2024",
+            "ingresos": 18619,
+            "resultado": 2642
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 19206,
+            "resultado": 2758
+          }
+        ]
+      },
+      {
+        "nombre": "Amériques, Asie Pacifique, Afrique Moyen-Orient",
+        "descripcion": "Norteamérica, Latinoamérica, Asia, Pacífico, África y Oriente Medio",
+        "tipo_resultado": "EBITDA",
+        "historico": [
+          {
+            "periodo": "2024",
+            "ingresos": 11945,
+            "resultado": 2025
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 11316,
+            "resultado": 2009
+          }
+        ]
+      },
+      {
+        "nombre": "Technologies de l’Eau",
+        "descripcion": "Equipos, química y servicios de tratamiento de agua (antigua WTS de Suez)",
+        "tipo_resultado": "EBITDA",
+        "historico": [
+          {
+            "periodo": "2024",
+            "ingresos": 4973,
+            "resultado": 612
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 4954,
+            "resultado": 669
+          }
+        ]
+      },
+      {
+        "nombre": "Otros",
+        "descripcion": "Holding y otros",
+        "tipo_resultado": "EBITDA",
+        "historico": [
+          {
+            "periodo": "2024",
+            "ingresos": 9,
+            "resultado": 117
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 6,
+            "resultado": 139
+          }
+        ]
+      }
+    ],
+    "geografias": [
+      {
+        "nombre": "Francia",
+        "peso_pct": 19.3
+      },
+      {
+        "nombre": "Estados Unidos",
+        "peso_pct": 10.5
+      },
+      {
+        "nombre": "Alemania",
+        "peso_pct": 7
+      },
+      {
+        "nombre": "España",
+        "peso_pct": 6.8
+      },
+      {
+        "nombre": "Polonia",
+        "peso_pct": 6.8
+      },
+      {
+        "nombre": "Reino Unido",
+        "peso_pct": 6.7
+      },
+      {
+        "nombre": "República Checa",
+        "peso_pct": 4.9
+      },
+      {
+        "nombre": "Otros",
+        "peso_pct": 38
+      }
+    ],
+    "geografias_criterio": "origen",
+    "kpis": [
+      {
+        "kpi": "Crecimiento orgánico del EBITDA",
+        "valor_anterior": "+6,3 % (2025)",
+        "valor_actual": "+5,0 % (1S26)",
+        "variacion": "−1,3 pp",
+        "comentario": "Guía 2026: +5 % a +6 % [4]"
+      },
+      {
+        "kpi": "Margen EBITDA",
+        "valor_anterior": "15,3 % (1S25)",
+        "valor_actual": "16,0 % (1S26)",
+        "variacion": "+70 pb",
+        "comentario": "Eficiencias de 195 M en el semestre [4]"
+      },
+      {
+        "kpi": "Ganancias de eficiencia brutas",
+        "valor_anterior": "399 M (2025)",
+        "valor_actual": "195 M (1S26)",
+        "variacion": "Objetivo > 350 M anual",
+        "comentario": "Retención del 47 % en el EBITDA en 2025 [2]"
+      },
+      {
+        "kpi": "Deuda financiera neta / EBITDA",
+        "valor_anterior": "2,79x (2025)",
+        "valor_actual": "≈3x fin de 2026 (guía)",
+        "variacion": "Sube por Clean Earth",
+        "comentario": "Deuda neta 24.548 M al 30-jun-2026 [4]"
+      },
+      {
+        "kpi": "ROCE después de impuestos",
+        "valor_anterior": "8,8 % (2024)",
+        "valor_actual": "9,4 % (2025)",
+        "variacion": "+0,6 pp",
+        "comentario": "Definición de la empresa, con puestas en equivalencia [2]"
+      },
+      {
+        "kpi": "Inversión industrial neta",
+        "valor_anterior": "3.836 M (2024)",
+        "valor_actual": "3.855 M (2025)",
+        "variacion": "≈8,7 % de ventas",
+        "comentario": "Incluye nuevos activos financieros operativos [3]"
+      }
+    ],
+    "descripcion": "Veolia presta tres servicios esenciales a ayuntamientos e industrias en unos 40 países: agua (captación, potabilización, distribución y depuración, con contratos de concesión y gestión delegada, y equipos y química de tratamiento de Tecnologías del Agua), residuos (recogida, reciclaje, valorización energética y, cada vez más, residuos peligrosos, donde es número uno mundial y número dos en EE. UU. tras comprar Clean Earth) y energía local (redes de calor, cogeneración y servicios energéticos, sobre todo en Europa central y oriental). En 2025 vendió 44.396 M y obtuvo un EBITDA de 7.050 M [1, 2]. Se organiza en cuatro segmentos: Francia y residuos peligrosos de Europa (el 20 % de las ventas), resto de Europa (43 %), resto del mundo (25 %) y Tecnologías del Agua (11 %) [2].",
+    "como_gana_dinero": "Cobra contratos largos con precios indexados a fórmulas que siguen la inflación de salarios, energía y materiales, en su mayoría con clientes públicos (agua y redes de calor) o grandes industriales (residuos peligrosos, agua industrial). Casi todo es recurrente: la parte de proyectos (construcción de plantas en Tecnologías del Agua) es pequeña y la de EPC se abandonó en 2024 [2]. El margen depende de la eficiencia (ahorros de 399 M en 2025, de los que retiene casi la mitad [2]), del retraso con que las fórmulas trasladan la inflación y, en energía, de los precios de la electricidad y el gas. Es un negocio intensivo en capital (inversión neta del 8,7 % de las ventas [3]) con poco apalancamiento operativo y un circulante negativo, porque cobra antes de lo que paga.",
+    "clientes": "No hay un cliente relevante: miles de ayuntamientos, mancomunidades e industriales (petroquímica, minería, microelectrónica, alimentación). Los contratos municipales de agua en Francia duran 8-15 años y se renuevan por concurso; los de residuos peligrosos e industriales, 3-10 años. El poder de precios está demostrado: en 2022-2023, con una inflación del 6-10 %, las fórmulas de indexación y las renegociaciones mantuvieron el margen EBITDA en torno al 14,5 % y en 2025 subió al 15,9 % [2, 3]. El riesgo está en la renovación: con las cuentas locales francesas apretadas, los ayuntamientos negocian más y algunos vuelven a la gestión pública directa (remunicipalización), aunque Veolia sigue siendo el primer operador de agua delegada en Francia [3].",
+    "confianza": "Alta"
+  },
+  "sector": {
+    "definicion": "El mercado relevante son los servicios medioambientales externalizados: agua y depuración gestionadas por operadores privados, recogida y tratamiento de residuos (también peligrosos) y energía local, en Europa, Norteamérica y otros países donde Veolia opera. No hay una cifra común fiable: los informes gratuitos mezclan perímetros incompatibles (residuos entre 330.000 M y 1,2 billones de USD), así que el tamaño se omite [11]. La ficha sectorial de residuos del repositorio describe la parte de residuos sólidos de Norteamérica, que es de otros [11].",
+    "tamano": null,
+    "unidad_serie": null,
+    "serie": [],
+    "tcac_historico_pct": null,
+    "tcac_previsto_pct": null,
+    "cr5_pct": null,
+    "estructura": "Fragmentada",
+    "drivers": [
+      {
+        "driver": "Escasez de agua y reutilización",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Contratos de reutilización y desalación, y agua para centros de datos y microelectrónica: objetivo de 1.000 M de ventas en 2030 en ese nicho [4]."
+      },
+      {
+        "driver": "Residuos peligrosos y contaminantes nuevos (PFAS)",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Clean Earth (ventas de 1.030 M USD) y Enviropacific; mercado de residuos peligrosos de EE. UU. con crecimiento del 5-6 % anual según la empresa [9]."
+      },
+      {
+        "driver": "Precios de la energía",
+        "efecto": "+/−",
+        "horizonte": "Cíclico",
+        "evidencia": "En el 1S26 las ventas crecieron un 0,8 % orgánico, un 1,5 % sin los precios de la energía [4]."
+      },
+      {
+        "driver": "Producción industrial y construcción",
+        "efecto": "+/−",
+        "horizonte": "Cíclico",
+        "evidencia": "Los volúmenes de residuos industriales y comerciales siguen a la industria europea; en el 1S26 pesó el efecto «comercio y volúmenes» positivo, pero los proyectos de Tecnologías del Agua cayeron por Oriente Medio [4]."
+      },
+      {
+        "driver": "Finanzas públicas locales y regulación",
+        "efecto": "−",
+        "horizonte": "Cíclico",
+        "evidencia": "Presupuestos municipales franceses ajustados y presupuesto 2027 del Estado con medidas fiscales [13]; los clientes públicos negocian más las renovaciones."
+      }
+    ],
+    "porter": [
+      {
+        "fuerza": "Rivalidad",
+        "intensidad": 3,
+        "justificacion": "Pocos grandes en cada país (nueva Suez y Saur en agua en Francia; Séché, Hera, A2A, Remondis o Clean Harbors en residuos), con concursos muy competidos en agua municipal [3, 12]."
+      },
+      {
+        "fuerza": "Poder de los clientes",
+        "intensidad": 4,
+        "justificacion": "Ayuntamientos con poder de concurso y opción de remunicipalizar; en residuos peligrosos los industriales negocian menos porque el tratamiento es regulado y escaso."
+      },
+      {
+        "fuerza": "Poder de los proveedores",
+        "intensidad": 2,
+        "justificacion": "Energía, química y mano de obra con muchas fuentes; las fórmulas de indexación trasladan el coste con algún retraso [2]."
+      },
+      {
+        "fuerza": "Amenaza de entrada",
+        "intensidad": 2,
+        "justificacion": "Permisos de vertederos e incineradoras, referencias técnicas y balance para contratos de 10-30 años; los fondos de infraestructura entran comprando, no desde cero."
+      },
+      {
+        "fuerza": "Amenaza de sustitutos",
+        "intensidad": 1,
+        "justificacion": "El agua, la depuración y el tratamiento de residuos no tienen sustituto; el único es la gestión pública directa."
+      }
+    ],
+    "ciclo": {
+      "posicion": "Madurez del ciclo",
+      "comentario": "El negocio es defensivo: en 2009 y en 2020 las ventas cayeron por volúmenes industriales y energía, pero las de agua aguantaron; en 2022 la inflación se trasladó a precios con unos meses de retraso. Hoy la industria europea está floja y los precios de la energía bajan, lo que resta ventas pero no margen (16,0 % en el 1S26 [4]). Lo que más mueve la acción no es el ciclo de negocio sino el de los tipos de interés: el sector cotiza como una utility y se abarata cuando sube el Bund."
+    },
+    "regulacion": "En Francia, los contratos de agua delegada se rigen por la ley Sapin (concursos y duración limitada) y los precios los aprueba cada ayuntamiento; el presupuesto 2027 mantiene un recargo sobre el impuesto de sociedades de los grandes grupos, aunque un 30 % menor [13]. En la UE, las directivas de aguas residuales urbanas (revisada en 2024, con responsabilidad ampliada del productor para micro-contaminantes) y de residuos favorecen la inversión. En EE. UU., la EPA ha fijado límites de PFAS en agua potable y regula los residuos peligrosos (RCRA), lo que sostiene la demanda de Clean Earth [9].",
+    "tendencias": "Tres cambios favorecen a Veolia: la escasez de agua y la reutilización (más tecnología y contratos industriales), la descontaminación de PFAS y los residuos peligrosos (precios regulados y pocas plantas) y la descarbonización de las redes de calor en Europa central. En contra: la digitalización y la IA ayudan sobre todo a la eficiencia, que en parte hay que devolver al cliente en las renovaciones, y la remunicipalización en Francia. Veolia gana con los tres primeros porque ya es el líder en cada uno [3, 4].",
+    "confianza": "Media"
+  },
+  "competencia": {
+    "cuota_pct": null,
+    "posicion": "1.º mundial en servicios medioambientales (agua, residuos y energía local); 1.º mundial en residuos peligrosos y 2.º en EE. UU. tras Clean Earth; 1.º en Francia en agua delegada [3, 9]",
+    "competidores": [
+      {
+        "nombre": "Suez (nueva Suez, no cotizada)",
+        "pais": "Francia",
+        "ticker": null,
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Rival directo en agua municipal en Francia y en concursos internacionales; propiedad de Meridiam, GIP y CDC desde 2022 [3]"
+      },
+      {
+        "nombre": "Hera",
+        "pais": "Italia",
+        "ticker": "HER.MI",
+        "ingresos": 12673,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Multiservicio (agua, residuos, energía) regional; margen EBITDA 11,2 % (LTM) [12]"
+      },
+      {
+        "nombre": "Séché Environnement",
+        "pais": "Francia",
+        "ticker": "SCHP.PA",
+        "ingresos": 1293,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Residuos peligrosos en Francia; competidor directo en Déchets Dangereux Europe; margen EBITDA 14,0 % [12]"
+      },
+      {
+        "nombre": "Clean Harbors",
+        "pais": "EE. UU.",
+        "ticker": "CLH",
+        "ingresos": 5562,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "N.º 1 en residuos peligrosos en EE. UU.; margen EBITDA 19,2 % [12]"
+      },
+      {
+        "nombre": "Republic Services",
+        "pais": "EE. UU.",
+        "ticker": "RSG",
+        "ingresos": 15048,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Residuos sólidos con vertederos propios en EE. UU.; margen EBITDA 31,1 % [12]"
+      },
+      {
+        "nombre": "A2A",
+        "pais": "Italia",
+        "ticker": "A2A.MI",
+        "ingresos": 15534,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Multiservicio lombardo (energía, residuos, agua) [12]"
+      }
+    ],
+    "foso": {
+      "veredicto": "Estrecho",
+      "tendencia": "Estable",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 1,
+          "evidencia": "No hay red: cada contrato es local."
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 3,
+          "evidencia": "Contratos de 8-30 años y redes que conoce el operador; cambiar en mitad del contrato es caro, pero en la renovación hay concurso."
+        },
+        {
+          "fuente": "Intangibles (marca, patentes, licencias)",
+          "puntuacion": 3,
+          "evidencia": "Permisos de vertederos, incineradoras y plantas de residuos peligrosos difíciles de replicar; tecnologías del agua con patentes de membranas y química [A2]."
+        },
+        {
+          "fuente": "Ventaja en costes",
+          "puntuacion": 3,
+          "evidencia": "Escala en compras y eficiencia (399 M de ahorros brutos en 2025) [A2]; margen EBITDA del 15,9 % frente al 14,0 % de Séché [B6]."
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 4,
+          "evidencia": "En residuos peligrosos y redes de calor hay uno o dos operadores por región; Clean Earth la hace número dos en EE. UU. [A9]."
+        }
+      ]
+    },
+    "amenazas": "La erosión vendría por la renovación de contratos: en Francia los ayuntamientos negocian más con presupuestos ajustados y alguno vuelve a la gestión pública; en residuos peligrosos de EE. UU., Clean Harbors y Republic compiten por las mismas plantas. La tecnología no amenaza el foso, aunque la competencia china en membranas y equipos sí presiona los precios de Tecnologías del Agua.",
+    "confianza": "Media"
+  },
+  "financieros": {
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 28508,
+        "coste_ventas": 23906,
+        "gastos_generales": 2893,
+        "ebitda": 4234,
+        "amortizaciones": 2916,
+        "ebit": 1318,
+        "resultado_financiero": -416.8,
+        "bai": 901,
+        "impuestos": 346,
+        "minoritarios": 151,
+        "beneficio_neto": 404,
+        "gastos_financieros": 342.6,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 0.65,
+        "dpa": 1,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": null
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 42885,
+        "coste_ventas": 35740,
+        "gastos_generales": 4170,
+        "ebitda": 6196,
+        "amortizaciones": 3990,
+        "ebit": 2206,
+        "resultado_financiero": -710,
+        "bai": 1496,
+        "impuestos": 420,
+        "minoritarios": 282,
+        "beneficio_neto": 716,
+        "gastos_financieros": 632.7,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 1,
+        "dpa": 1.12,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": null
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 45351,
+        "coste_ventas": 37852,
+        "gastos_generales": 4334,
+        "ebitda": 6543,
+        "amortizaciones": 3819,
+        "ebit": 2724,
+        "resultado_financiero": -855,
+        "bai": 1869,
+        "impuestos": 511,
+        "minoritarios": 397,
+        "beneficio_neto": 937,
+        "gastos_financieros": 539,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 1.28,
+        "dpa": 1.25,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": null
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 44692,
+        "coste_ventas": 36924,
+        "gastos_generales": 4459,
+        "ebitda": 6788,
+        "amortizaciones": 3907,
+        "ebit": 2881,
+        "resultado_financiero": -767,
+        "bai": 2114,
+        "impuestos": 566,
+        "minoritarios": 347,
+        "beneficio_neto": 1098,
+        "gastos_financieros": 590,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 1.4,
+        "dpa": 1.4,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 741
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 44396,
+        "coste_ventas": 36523,
+        "gastos_generales": 4326,
+        "ebitda": 7050,
+        "amortizaciones": 3842,
+        "ebit": 3208,
+        "resultado_financiero": -884,
+        "bai": 2324,
+        "impuestos": 587,
+        "minoritarios": 402,
+        "beneficio_neto": 1217,
+        "gastos_financieros": 654,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 1.54,
+        "dpa": 1.5,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 732
+      }
+    ],
+    "ltm": {
+      "periodo": "LTM jun-26",
+      "fecha_fin": "2026-06-30",
+      "ingresos": 44541,
+      "ebitda": 7235,
+      "ebit": null,
+      "beneficio_neto": 1242,
+      "bpa": null,
+      "dpa": 1.5,
+      "dpa_extraordinario": 0,
+      "fcf": 1341,
+      "participadas_en_ebitda": null,
+      "no_recurrentes_en_ebitda": null
+    },
+    "cambios_perimetro": [
+      {
+        "periodo": "2022",
+        "descripcion": "Suez consolidada desde el 18-ene-2022 (ingresos +50 %): 2021 no es comparable con 2022-2025 [3]."
+      }
+    ],
+    "comentario": "Las ventas pasaron de 28.508 M en 2021 a 42.885 M en 2022 por la consolidación de Suez y desde entonces están planas (44.396 M en 2025), porque la bajada de los precios de la energía compensa el crecimiento orgánico [3]. Lo que sí crece es el margen: el EBITDA subió del 14,4 % de las ventas en 2023 al 15,9 % en 2025 y al 16,0 % en el 1S26, por los ahorros de eficiencia y las sinergias de Suez [2, 4]. El resultado neto corriente de la empresa creció de 896 M (2021) a 1.643 M (2025), un 16 % anual, y el publicado, de 404 M a 1.217 M; la diferencia es la amortización de los activos revalorizados de Suez y las partidas no corrientes [2, 3]. En 2026 la guía pide un EBITDA orgánico del +5-6 % y un resultado neto corriente de al menos +8 % a cambio constante con Clean Earth [4].",
+    "ajustes": "Veolia publica un resultado neto corriente que excluye la amortización de la asignación del precio de compra de Suez (y desde 2026 la de Clean Earth), los deterioros y las partidas no corrientes: 1.643 M en 2025 frente a 1.217 M publicado [2]. Su BPA corriente (2,25 EUR) no resta los cupones de los híbridos; el publicado sí [3]. El BPA del objetivo a 12 meses usa el corriente menos esos cupones netos (≈90 M en 2025), porque son un coste para el accionista ordinario. La cuenta del informe usa las cifras publicadas.",
+    "confianza": "Alta"
+  },
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "1S25",
+        "ingresos": 22048,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": 3367,
+        "margen_ebitda_pct": 15.3,
+        "bpa": null,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "2S25",
+        "ingresos": 22348,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": 3683,
+        "margen_ebitda_pct": 16.5,
+        "bpa": null,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1S26",
+        "ingresos": 22193,
+        "crecimiento_pct": 0.7,
+        "crecimiento_organico_pct": 0.8,
+        "ebitda": 3552,
+        "margen_ebitda_pct": 16,
+        "bpa": null,
+        "vs_consenso": "En línea"
+      }
+    ],
+    "ultima_presentacion": "En el 1S26 (30-jul) la dirección elevó la guía del resultado neto corriente (al menos +8 % a cambio constante con Clean Earth) y confirmó el EBITDA orgánico del +5-6 %. El margen subió 70 puntos básicos, al 16,0 %, con 195 M de ahorros. Lo que no gustó: la caja libre del semestre fue negativa (−288 M, mejor que los −451 M del 1S25 por estacionalidad), la deuda neta subió a 24.548 M por Clean Earth, y Tecnologías del Agua bajó en proyectos por Oriente Medio. La empresa espera que Clean Earth aporte al BPA corriente desde 2027 y firmó 500 M de ventas de activos en 2026 [4, 7].",
+    "confianza": "Alta"
+  },
+  "balance": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "activo_total": 53077,
+        "activo_corriente": 23444,
+        "pasivo_corriente": 23817,
+        "pasivo_total": 40307,
+        "fondo_comercio": 6201,
+        "intangibles": 5035,
+        "inmovilizado_material": 8702,
+        "existencias": 816,
+        "clientes": 10015,
+        "proveedores": 13549,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 10519,
+        "deuda_financiera": 17378,
+        "arrendamientos": 1709,
+        "patrimonio_neto": 11518,
+        "minoritarios": 1252,
+        "reservas": -3751
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 73304,
+        "activo_corriente": 28714,
+        "pasivo_corriente": 29204,
+        "pasivo_total": 58437,
+        "fondo_comercio": 11638,
+        "intangibles": 8434,
+        "inmovilizado_material": 16569,
+        "existencias": 1486,
+        "clientes": 14534,
+        "proveedores": 19475,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 9012,
+        "deuda_financiera": 24060,
+        "arrendamientos": 2153,
+        "patrimonio_neto": 12255,
+        "minoritarios": 2612,
+        "reservas": -4285
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 72566,
+        "activo_corriente": 27897,
+        "pasivo_corriente": 30014,
+        "pasivo_total": 57864,
+        "fondo_comercio": 11556,
+        "intangibles": 8500,
+        "inmovilizado_material": 17134,
+        "existencias": 1550,
+        "clientes": 14363,
+        "proveedores": 19808,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 8696,
+        "deuda_financiera": 25972,
+        "arrendamientos": 2000,
+        "patrimonio_neto": 12311,
+        "minoritarios": 2391,
+        "reservas": -4577
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 72959,
+        "activo_corriente": 27809,
+        "pasivo_corriente": 30670,
+        "pasivo_total": 57653,
+        "fondo_comercio": 11783,
+        "intangibles": 8085,
+        "inmovilizado_material": 17933,
+        "existencias": 1497,
+        "clientes": 14038,
+        "proveedores": 19540,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 9601,
+        "deuda_financiera": 27100,
+        "arrendamientos": 1985,
+        "patrimonio_neto": 12915,
+        "minoritarios": 2391,
+        "reservas": -4027
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 70671,
+        "activo_corriente": 25864,
+        "pasivo_corriente": 30039,
+        "pasivo_total": 57407,
+        "fondo_comercio": 11456,
+        "intangibles": 7946,
+        "inmovilizado_material": 18404,
+        "existencias": 1465,
+        "clientes": 13739,
+        "proveedores": 19216,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 8021,
+        "deuda_financiera": 27319,
+        "arrendamientos": 1983,
+        "patrimonio_neto": 10855,
+        "minoritarios": 2409,
+        "reservas": -6580
+      }
+    ],
+    "vencimientos": [
+      {
+        "anio": "2026",
+        "importe": 9792
+      },
+      {
+        "anio": "2027-2028",
+        "importe": 4536
+      },
+      {
+        "anio": "2029-2030",
+        "importe": 3128
+      },
+      {
+        "anio": "2031+",
+        "importe": 9863
+      }
+    ],
+    "liquidez": "Al 30-jun-2026: liquidez total 15.205 M EUR (caja y activos líquidos 9.332 M, crédito sindicado no dispuesto 4.500 M y líneas bilaterales); deuda a corto y tesorería pasiva 11.374 M [5].",
+    "rating": "S&P BBB / A-2, perspectiva estable (confirmado el 27-abr-2026); Moody’s Baa1 / P-2, estable (4-may-2026) [5]",
+    "coste_deuda_pct": 3.7,
+    "vida_media_anios": 6.2,
+    "otros_pasivos": "Pensiones y prestaciones a empleados: 647 M de provisión, ≈480 M netos de impuestos en el puente. Híbridos (títulos super-subordinados perpetuos): 3.744 M al 30-jun-2026, que la contabilidad trata como patrimonio y el informe resta como deuda. Minoritarios: 2.624 M en libros al 30-jun; se restan a ≈5.100 M (402 M de beneficio de 2025 por unas 12,7 veces, el PER del grupo) porque son negocios rentables de Europa central y España cuyo valor de mercado está muy por encima del contable [1, 5].",
+    "comentario": "La deuda financiera neta de la empresa subió de 19.657 M a fin de 2025 a 24.548 M al 30-jun-2026 por la compra de Clean Earth (2.600 M), Enviropacific y la estacionalidad del circulante; con arrendamientos e híbridos, los derechos por delante del accionista suman unos 32.000 M, más que la capitalización (23.373 M) [4, 5]. La guía es cerrar 2026 con una deuda neta de unas 3 veces el EBITDA. El rating es BBB (S&P) y Baa1 (Moody’s), estable, confirmado en abril y mayo de 2026 [5]; el coste medio de la financiación es del 3,7 % y la vida media de 6,2 años, con 9.792 M que vencen en 2026 (sobre todo papel comercial) y una liquidez de 15.205 M [5]. El Altman Z (0,82) sale bajo, como en todas las utilities con mucho activo fijo y deuda; no es una señal de quiebra en un negocio con flujos regulados y rating BBB.",
+    "confianza": "Alta"
+  },
+  "flujos": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 3147,
+        "capex": 1895,
+        "pagos_arrendamientos": 579,
+        "adquisiciones": 327,
+        "desinversiones": 470,
+        "dividendos": 534,
+        "recompras": 0,
+        "emision_acciones": 2672,
+        "intereses_en_financiacion": 462
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 4148,
+        "capex": 2966,
+        "pagos_arrendamientos": 683,
+        "adquisiciones": 4009,
+        "desinversiones": 9995,
+        "dividendos": 990,
+        "recompras": 5,
+        "emision_acciones": 227,
+        "intereses_en_financiacion": 769
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 5005,
+        "capex": 3394,
+        "pagos_arrendamientos": 631,
+        "adquisiciones": 223,
+        "desinversiones": 658,
+        "dividendos": 1261,
+        "recompras": 0,
+        "emision_acciones": 210,
+        "intereses_en_financiacion": 681
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 5038,
+        "capex": 3190,
+        "pagos_arrendamientos": 614,
+        "adquisiciones": 482,
+        "desinversiones": 949,
+        "dividendos": 1218,
+        "recompras": 8,
+        "emision_acciones": 341,
+        "intereses_en_financiacion": 737
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 5153,
+        "capex": 3212,
+        "pagos_arrendamientos": 556,
+        "adquisiciones": 702,
+        "desinversiones": 59,
+        "dividendos": 1280,
+        "recompras": 402,
+        "emision_acciones": 318,
+        "intereses_en_financiacion": 764
+      }
+    ],
+    "comentario": "Veolia genera un flujo operativo de unos 5.000 M al año (5.153 M en 2025), pero invierte casi todo: inversión industrial de 3.212 M, arrendamientos de 556 M, intereses de 764 M y dividendos de 1.280 M en 2025 [1]. La caja libre después de capex y arrendamientos (1.385 M en 2025) cubre el dividendo pero no las compras, que se financian con deuda y ventas de activos. Es un negocio con poca caja libre para el accionista: el 3-5 % de las ventas, frente al 12-15 % de los grandes de residuos de EE. UU. [11]. En 2025 hubo recompras de 402 M para compensar el plan de accionariado de los empleados.",
+    "confianza": "Alta"
+  },
+  "calidad": {
+    "auditor": "KPMG y Deloitte hasta 2025; nombramiento de nuevos auditores en 2025 para el ejercicio 2026 (commentaires 2025, §1.4) [2]",
+    "anios_auditor": null,
+    "opinion": "Favorable (cuentas 2025) [3]",
+    "comentario": "Las cuentas cuadran entre el XBRL del regulador, las cuentas consolidadas y los comentarios de resultados [1, 2, 3, 6]; los auditores son Deloitte y EY, con opinión sin salvedades. El Beneish (−2,77) no da señal de manipulación y el Piotroski (7 de 9) es bueno. Los puntos a vigilar son la distancia entre el resultado corriente y el publicado (426 M en 2025, sobre todo amortización de la compra de Suez, que es real pero no de caja), las pérdidas recurrentes de actividades interrumpidas (EPC) y la caja libre negativa del primer semestre, que es estacional.",
+    "senales": [
+      {
+        "senal": "Resultado corriente frente al publicado",
+        "nivel": "Media",
+        "comentario": "1.643 M frente a 1.217 M en 2025: la diferencia (amortización de la asignación del precio de Suez, deterioros y no corrientes) es estable y está explicada en la conciliación [2]."
+      },
+      {
+        "senal": "Actividades interrumpidas recurrentes",
+        "nivel": "Baja",
+        "comentario": "Pérdidas del negocio EPC abandonado en 2024 y 2025 (≈100 M al año) [2]."
+      },
+      {
+        "senal": "Fondo de comercio",
+        "nivel": "Media",
+        "comentario": "11.456 M a fin de 2025 (34 % del capital invertido), sobre todo de Suez; sube con Clean Earth (≈2.000 M más)."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "rentabilidad": {
+    "comentario": "Veolia crea poco valor por encima de su coste de capital. El ROIC con fondo de comercio subió del 3,8 % en 2021 al 6,9 % en 2025, frente a un WACC del 6,3 %: menos de un punto de margen. Sin el fondo de comercio llega al 10,4 % y el ROCE de la propia empresa (con puestas en equivalencia, después de impuestos) es del 9,4 % [2]. El ROIC incremental de 2021-2025 (11,9 %) es mejor que el medio, porque las sinergias de Suez se han cumplido. Para el filtro de calidad decide el ROIC publicado: con 0,6 puntos sobre el WACC, Veolia no pasa (pide 5). Clean Earth, pagada a 15 veces el EBITDA (9,8 con sinergias), rebaja el ROIC en 2026-2027 [9].",
+    "confianza": "Media"
+  },
+  "capital": {
+    "politica": "Prioridades del plan GreenUp 2024-2027: inversión en los negocios de crecimiento (tecnologías del agua, residuos peligrosos, bioenergía), dividendo que crece con el BPA corriente (1,50 EUR por 2025, +7 %), recompras para compensar el accionariado de los empleados y deuda neta de unas 3 veces el EBITDA. Las compras se financian con ventas de activos: más de 2.000 M hasta mediados de 2028 [2, 4].",
+    "adquisiciones": [
+      {
+        "anio": "2022",
+        "objetivo": "Suez (70 % restante tras el 29,9 % comprado a Engie en 2020)",
+        "importe": 12900,
+        "ev_ebitda": null,
+        "financiacion": "Ampliación de capital de 2.500 M (oct-2021), híbridos y deuda; venta de la «nueva Suez» a Meridiam, GIP y CDC",
+        "resultado": "Sinergias 534 M a fin de 2025, por encima de los 500 M prometidos (elevados a 530) [2]; ROCE después de impuestos 9,4 % en 2025 frente a 7,6 % en 2023 [3]"
+      },
+      {
+        "anio": "2025",
+        "objetivo": "30 % de Water Technologies and Solutions (WTS) comprado a CDPQ",
+        "importe": 1500,
+        "ev_ebitda": null,
+        "financiacion": "Caja y deuda",
+        "resultado": "Sinergias previstas ~90 M a 2027, 20 M logrados a fin de 2025; margen EBITDA de Tecnologías del Agua 13,5 % en 2025 (+120 pb) [1, 2]"
+      },
+      {
+        "anio": "2025",
+        "objetivo": "Flexibilidad eléctrica en Hungría",
+        "importe": 271,
+        "ev_ebitda": null,
+        "financiacion": "Caja",
+        "resultado": "Integrada; contribuye al crecimiento de Bioenergías y flexibilidad [1, 2]"
+      },
+      {
+        "anio": "2026",
+        "objetivo": "Clean Earth (residuos peligrosos, EE. UU.)",
+        "importe": 2600,
+        "ev_ebitda": 15,
+        "financiacion": "Deuda y caja; plan de desinversiones de más de 2.000 M hasta mediados de 2028",
+        "resultado": "Cerrada en junio de 2026; 9,8 veces el EBITDA 2026e con sinergias de 120 M USD en el año 4; acretiva en BPA corriente desde 2027 [4, 9]"
+      },
+      {
+        "anio": "2026",
+        "objetivo": "Enviropacific (descontaminación de suelos y PFAS, Australia)",
+        "importe": 137,
+        "ev_ebitda": null,
+        "financiacion": "Caja",
+        "resultado": "Cerrada a fines de marzo de 2026; ventas ~250 M AUD (ejercicio 2025) [4]"
+      }
+    ],
+    "comentario": "La dirección ha cumplido lo que prometió con Suez (534 M de sinergias frente a 500 M y ROCE del 7,6 % al 9,4 % en dos años [2, 3]) y ha rotado la cartera hacia negocios de más crecimiento. Pero ha pagado caro: Clean Earth a 15 veces el EBITDA, el doble que el múltiplo del grupo, y la deuda vuelve a 3 veces el EBITDA. El juicio sobre la asignación de capital depende de que las ventas de activos se hagan a buen precio y de que Clean Earth dé las sinergias de 120 M USD [9].",
+    "confianza": "Media"
+  },
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "Estelle Brachlianoff",
+        "cargo": "Directora general",
+        "desde": "2022",
+        "participacion_pct": 0.01,
+        "trayectoria": "Directora general adjunta de operaciones antes de 2022 y en el grupo desde 2005 (Reino Unido, Île-de-France). Con ella el margen EBITDA pasó del 14,4 % (2023) al 15,9 % (2025) y las sinergias de Suez llegaron a 534 M frente a 500 M prometidos [2, 3]."
+      },
+      {
+        "nombre": "Antoine Frérot",
+        "cargo": "Presidente del consejo (no ejecutivo)",
+        "desde": "2010",
+        "participacion_pct": 0.03,
+        "trayectoria": "Consejero delegado desde 2009 y presidente-director general hasta junio de 2022; diseñó la compra de Suez. Renovado como consejero y presidente en la junta del 23-abr-2026 [3, 5]."
+      },
+      {
+        "nombre": "Emmanuelle Menning",
+        "cargo": "Directora general adjunta de Finanzas y Compras",
+        "desde": "2023",
+        "participacion_pct": null,
+        "trayectoria": "Directora financiera; con ella el apalancamiento cerró 2025 en 2,79x y el ROCE en 9,4 % [2]."
+      }
+    ],
+    "historial_guidance": [
+      {
+        "anio": "2023",
+        "guia": "EBITDA orgánico +5 % a +7 %; RNC creciente; DN/EBITDA < 3x",
+        "real": "EBITDA 6.543 M (+5,6 %); RNC 1.335 M (+14,9 %)",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2024",
+        "guia": "EBITDA orgánico +5 % a +6 %; RNC ≈ +8 % a cambio constante",
+        "real": "EBITDA 6.788 M; RNC 1.530 M (+14,6 %)",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2025",
+        "guia": "EBITDA orgánico +5 % a +6 %; RNC +8 % a cambio constante; DN/EBITDA ≤ 3x",
+        "real": "EBITDA +6,3 % orgánico; RNC +9,1 % a cambio constante; 2,79x",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2026",
+        "guia": "EBITDA orgánico +5 % a +6 %; RNC ≥ +8 % a cambio constante (con Clean Earth); DN/EBITDA ≈ 3x",
+        "real": "1S26: EBITDA +5,0 %, RNC +10,4 % (guía del RNC elevada el 30-jul)",
+        "cumplida": "Parcial"
+      }
+    ],
+    "comentario": "Equipo estable y creíble: Brachlianoff lleva cuatro años al frente y ha cumplido la guía de 2023, 2024 y 2025, y la de 2026 va en camino con el resultado neto corriente elevado en julio [2, 4]. Frérot, el arquitecto de la compra de Suez, sigue de presidente no ejecutivo, renovado en 2026 [5]. Los directivos tienen poco capital propio (0,01 % la consejera delegada); en 2026 solo hubo ventas pequeñas de dos miembros del comité ejecutivo (Graveson, 0,46 M) [5].",
+    "confianza": "Media"
+  },
+  "gobierno": {
+    "consejo": [
+      {
+        "nombre": "Antoine Frérot",
+        "cargo": "Presidente",
+        "tipo": "Otro externo",
+        "desde": "2010",
+        "comisiones": "Raison d’être (presidente), Investigación e innovación"
+      },
+      {
+        "nombre": "Estelle Brachlianoff",
+        "cargo": "Consejera y directora general",
+        "tipo": "Ejecutivo",
+        "desde": "2022",
+        "comisiones": "—"
+      },
+      {
+        "nombre": "Pierre-André de Chalendar",
+        "cargo": "Consejero coordinador (référent)",
+        "tipo": "Independiente",
+        "desde": "2021",
+        "comisiones": "Nombramientos (presidente), Remuneraciones, Raison d’être"
+      },
+      {
+        "nombre": "Olivier Andriès",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2023",
+        "comisiones": "Remuneraciones (presidente), Auditoría, I+D"
+      },
+      {
+        "nombre": "Maryse Aulagnon",
+        "cargo": "Consejera",
+        "tipo": "Otro externo",
+        "desde": "2012",
+        "comisiones": "Nombramientos, Remuneraciones, I+D"
+      },
+      {
+        "nombre": "Véronique Bédague",
+        "cargo": "Consejera",
+        "tipo": "Independiente",
+        "desde": "2023",
+        "comisiones": "Auditoría"
+      },
+      {
+        "nombre": "Philippe Brassac",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2025",
+        "comisiones": "Nombramientos, I+D"
+      },
+      {
+        "nombre": "Arnaud Caudoux",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2025",
+        "comisiones": "Auditoría, I+D"
+      },
+      {
+        "nombre": "Isabelle Courville",
+        "cargo": "Consejera",
+        "tipo": "Independiente",
+        "desde": "2016",
+        "comisiones": "Nombramientos, Remuneraciones, I+D"
+      },
+      {
+        "nombre": "Julia Marton-Lefèvre",
+        "cargo": "Consejera",
+        "tipo": "Independiente",
+        "desde": "2024",
+        "comisiones": "I+D"
+      },
+      {
+        "nombre": "Elena Salgado",
+        "cargo": "Consejera",
+        "tipo": "Independiente",
+        "desde": "2025",
+        "comisiones": "Remuneraciones, I+D"
+      },
+      {
+        "nombre": "Guillaume Texier",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2016",
+        "comisiones": "Auditoría, I+D, Raison d’être"
+      },
+      {
+        "nombre": "Franck Le Roux",
+        "cargo": "Consejero (representa a los empleados)",
+        "tipo": "Otro externo",
+        "desde": "2018",
+        "comisiones": "Auditoría, Remuneraciones, I+D"
+      },
+      {
+        "nombre": "Pavel Páša",
+        "cargo": "Consejero (representa a los empleados)",
+        "tipo": "Otro externo",
+        "desde": "2014",
+        "comisiones": "I+D"
+      },
+      {
+        "nombre": "Agata Mazurek-Bąk",
+        "cargo": "Consejera (empleados accionistas; sustituida en la junta de 2026)",
+        "tipo": "Otro externo",
+        "desde": "2022",
+        "comisiones": "Auditoría"
+      }
+    ],
+    "presidente_ceo_separados": true,
+    "presidente_ejecutivo": false,
+    "consejero_coordinador": true,
+    "una_accion_un_voto": true,
+    "operaciones_vinculadas_relevantes": false,
+    "variable_ligado_rentabilidad": true,
+    "auditoria_independiente": true,
+    "insiders_sin_operaciones": false,
+    "accionista_control": false,
+    "presidente_vinculado_control": false,
+    "cambios_cupula_24m": 0,
+    "voto_remuneracion_pct": null,
+    "voto_remuneracion_contra_pct": null,
+    "voto_remuneracion_contra_libre_pct": null,
+    "voto_cupula_pct": null,
+    "remuneracion_ceo": {
+      "anio": "2025",
+      "total": 3.48,
+      "fijo": 1.03,
+      "variable_corto": 1.41,
+      "variable_largo": 1.04,
+      "ratio_salario_medio": 62
+    },
+    "remuneracion": "La consejera delegada cobró 3,48 M por 2025: 1,03 M fijo, 1,41 M de variable anual y 1,04 M de acciones a largo plazo, 62 veces el salario medio [3]. El variable mide el BPA corriente, la caja libre, el ROCE y objetivos de impacto medioambiental, así que está ligado a la rentabilidad. El porcentaje de voto de la junta sobre la remuneración no se ha localizado.",
+    "accionistas": [
+      {
+        "nombre": "Empleados (directa e indirectamente)",
+        "pct": 9.35,
+        "tipo": "Empleados",
+        "variacion": "Primer accionista; ampliaciones anuales reservadas"
+      },
+      {
+        "nombre": "BlackRock",
+        "pct": 5.48,
+        "tipo": "Gestora",
+        "variacion": "6,03 % a fin de 2024"
+      },
+      {
+        "nombre": "Caisse des Dépôts (vía CNP Assurances y LBP Prévoyance)",
+        "pct": 5.11,
+        "tipo": "Inversor público francés",
+        "variacion": "Superó el 5 % el 17-mar-2025"
+      },
+      {
+        "nombre": "CriteriaCaixa",
+        "pct": 5.1,
+        "tipo": "Inversor estable",
+        "variacion": "Entrada anunciada el 4-mar-2025"
+      },
+      {
+        "nombre": "Autocartera",
+        "pct": 1.41,
+        "tipo": "Autocartera",
+        "variacion": "10,4 millones de acciones a fin de 2025"
+      }
+    ],
+    "insiders": [
+      {
+        "fecha": "2026-03-02",
+        "persona": "Gavin Graveson (comité ejecutivo)",
+        "operacion": "Venta",
+        "acciones": 10000,
+        "importe": 0.35
+      },
+      {
+        "fecha": "2026-05-07",
+        "persona": "Gavin Graveson (comité ejecutivo)",
+        "operacion": "Venta",
+        "acciones": 2959,
+        "importe": 0.11
+      },
+      {
+        "fecha": "2026-05-07",
+        "persona": "Richard Kirkman (comité ejecutivo)",
+        "operacion": "Venta",
+        "acciones": 62,
+        "importe": 0
+      }
+    ],
+    "control_y_defensas": "No hay accionista de control: los empleados tienen el 9,35 % (con derechos de voto dobles por la ley Florange para los títulos nominativos de más de dos años), BlackRock el 5,48 %, la Caisse des Dépôts el 5,11 % y CriteriaCaixa el 5,10 % [3]. El voto doble refuerza a los empleados y a la Caisse des Dépôts frente a una opa hostil, pero ninguno controla.",
+    "alertas": [
+      "Ninguna relevante detectada tras revisar el URD 2025, el amendement de julio de 2026 y los comunicados de 2026; el voto de la junta sobre remuneración no se ha localizado con cifras."
+    ],
+    "confianza": "Media"
+  },
+  "consenso": {
+    "guidance": "Guía 2026 (30-jul-2026): crecimiento orgánico sólido de las ventas sin los precios de la energía, EBITDA orgánico del +5 % al +6 %, resultado neto corriente al menos +8 % a cambio constante con Clean Earth (elevada), BPA corriente y dividendo creciendo al mismo ritmo, y deuda neta de unas 3 veces el EBITDA. Clean Earth aportará al BPA corriente desde 2027 [4].",
+    "estimaciones": [
+      {
+        "periodo": "2026e",
+        "ingresos": 46261,
+        "ebitda": 7481,
+        "ebit": 4064,
+        "bpa": 2.41,
+        "dpa": 1.64,
+        "fuente": "MarketScreener (ventas, EBITDA, EBIT corriente, DPA) [16]; BPA corriente de Yahoo, 16 analistas [17]"
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 48347,
+        "ebitda": 7954,
+        "ebit": 4404,
+        "bpa": 2.64,
+        "dpa": 1.8,
+        "fuente": "MarketScreener [16]; BPA corriente de Yahoo, 17 analistas [17]"
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 50038,
+        "ebitda": 8295,
+        "ebit": 4676,
+        "bpa": null,
+        "dpa": 1.96,
+        "fuente": "MarketScreener [16]"
+      }
+    ],
+    "recomendaciones": {
+      "n_analistas": 18,
+      "comprar": 13,
+      "mantener": 5,
+      "vender": 0,
+      "po_medio": 38.56,
+      "po_min": 33,
+      "po_max": 45.3
+    },
+    "revisiones": "Las estimaciones de BPA de 2026 apenas se han movido en tres meses (2,41 EUR), con el efecto de la guía elevada compensado por el dólar [17]. Las recomendaciones están divididas entre comprar (13) y mantener (5); Morgan Stanley bajó a «en línea» el 28-jul con objetivo de 38 EUR y RBC subió el suyo a 41,5 el 19-ago [24, 25].",
+    "base_ebitda": "NIIF",
+    "ajuste_ebitda_pct_ventas": null,
+    "confianza": "Media"
+  },
+  "bolsa": {
+    "tipo_rentabilidad": "total (con dividendos)",
+    "rentabilidades": [
+      {
+        "periodo": "En el año",
+        "accion_pct": 13.8,
+        "indice_pct": 11.6,
+        "sector_pct": 16
+      },
+      {
+        "periodo": "1 año",
+        "accion_pct": 14.3,
+        "indice_pct": 15.6,
+        "sector_pct": 21
+      },
+      {
+        "periodo": "3 años (anual.)",
+        "accion_pct": 13.4,
+        "indice_pct": 17.4,
+        "sector_pct": 21.2
+      },
+      {
+        "periodo": "5 años (anual.)",
+        "accion_pct": 7.3,
+        "indice_pct": 9.5,
+        "sector_pct": 11.8
+      },
+      {
+        "periodo": "10 años (anual.)",
+        "accion_pct": 9.7,
+        "indice_pct": 9.4,
+        "sector_pct": 11.1
+      }
+    ],
+    "anual": [
+      {
+        "anio": "2016",
+        "accion_pct": -24.1,
+        "indice_pct": 1.6
+      },
+      {
+        "anio": "2017",
+        "accion_pct": 37.8,
+        "indice_pct": 10.7
+      },
+      {
+        "anio": "2018",
+        "accion_pct": -12,
+        "indice_pct": -11
+      },
+      {
+        "anio": "2019",
+        "accion_pct": 38.2,
+        "indice_pct": 28.4
+      },
+      {
+        "anio": "2020",
+        "accion_pct": -13.4,
+        "indice_pct": -1.8
+      },
+      {
+        "anio": "2021",
+        "accion_pct": 71.8,
+        "indice_pct": 24.6
+      },
+      {
+        "anio": "2022",
+        "accion_pct": -22.3,
+        "indice_pct": -10.3
+      },
+      {
+        "anio": "2023",
+        "accion_pct": 23.9,
+        "indice_pct": 15.5
+      },
+      {
+        "anio": "2024",
+        "accion_pct": -0.9,
+        "indice_pct": 8.5
+      },
+      {
+        "anio": "2025",
+        "accion_pct": 14.7,
+        "indice_pct": 20.5
+      }
+    ],
+    "beta": 1.25,
+    "volatilidad_pct": 19.6,
+    "max_drawdown_pct": -39.8,
+    "posicion_corta_pct": null,
+    "comentario": "La acción sube un 13,8 % en el año frente al 11,6 % del STOXX 600, pero ha caído un 14,8 % desde su máximo de 37,52 EUR del 14-jul, el doble que el CAC 40 (−6,0 %) y mucho más que el STOXX 600 (−0,1 %) y que las utilities europeas (−4,8 %) [14, 27]. A tres años gana un 13,4 % anual con dividendos, menos que el índice (17,4 %). La beta mensual de cinco años frente al STOXX 600 es de 1,25 y la semanal de dos años, de 0,91; la volatilidad es baja (18 %).",
+    "contexto": {
+      "movimiento": {
+        "fecha": "2026-10-20",
+        "var_1m_pct": 0.6,
+        "var_3m_pct": -14.3,
+        "var_6m_pct": -10.4,
+        "var_12m_pct": 7.4,
+        "dist_max_52s_pct": -14.9,
+        "dist_min_52s_pct": 12.4,
+        "dist_max_historico_pct": -14.9,
+        "tendencia": "bajista",
+        "volatilidad_60d_pct": 18.2,
+        "avisos": []
+      },
+      "movimientos_fuertes": [
+        {
+          "periodo": "14-31 jul 2026",
+          "var_pct": -8.1,
+          "causa": "Causa propia: Morgan Stanley baja a «en línea» el 28-jul y el 31-jul, el día después de los resultados del 1S26, cae un 3,7 % por la caja libre negativa (−288 M), la deuda de 24.548 M y los proyectos de Tecnologías del Agua; el STOXX 600 sube en esas semanas [4, 24, 27].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "31 jul-19 oct 2026",
+          "var_pct": -7.4,
+          "causa": "Riesgo país francés: cae lo mismo que el CAC 40 (−7,5 %) y mucho más que el STOXX 600 (−1,3 %) y las utilities europeas (−1,0 %), mientras el diferencial OAT-Bund sube a 1,36-1,42 puntos; Engie (−16 %), Vinci (−13 %) y Séché (−13 %) caen más [20, 27].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "27-ago-2026",
+          "var_pct": -3.9,
+          "causa": "Caída en un día con todo el mercado francés (CAC 40 −1,7 %, Engie −3,4 %, Vinci −3,9 %) y sin noticia de la empresa: riesgo país [27].",
+          "veredicto": "no cambia",
+          "condicion": null
+        }
+      ],
+      "noticias": [
+        {
+          "fecha": "2026-07-28",
+          "tipo": "recomendación",
+          "hecho": "Morgan Stanley baja a «en línea» con objetivo de 38 EUR: ve el potencial limitado tras la subida [24].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-07-30",
+          "tipo": "resultados",
+          "hecho": "Resultados del 1S26: EBITDA +5,0 % orgánico, margen del 16,0 %, guía del resultado neto corriente elevada; caja libre de −288 M y deuda de 24.548 M [4].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-08-19",
+          "tipo": "recomendación",
+          "hecho": "RBC sube el objetivo a 41,5 EUR y destaca a Veolia en el CAC 40 [25].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-10-01",
+          "tipo": "regulación",
+          "hecho": "El proyecto de presupuesto 2027 mantiene el recargo sobre el impuesto de sociedades de los grandes grupos, un 30 % menor que en 2025-2026 [13].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-10-07",
+          "tipo": "rumor",
+          "hecho": "Análisis de prensa «tras un 20 % de caída, ¿el final del túnel?»: soporte técnico en 30 EUR [26].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-10-19",
+          "tipo": "macro",
+          "hecho": "La OAT a 10 años cierra en el 4,85 % y el Bund en el 3,49 %: diferencial de 1,36 puntos, desde ≈0,8 a principios de julio; disturbios en Francia el fin de semana del 17-oct (contexto del encargo, sin fuente primaria) [18, 20].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-10-23",
+          "tipo": "macro",
+          "hecho": "Revisión prevista de la calificación de Francia por Moody’s (contexto del encargo). Un recorte subiría la OAT, pero el rating de Veolia (Baa1) ya está por debajo del de Francia y su deuda cotiza por su propio riesgo [5].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-11-05",
+          "tipo": "resultados",
+          "hecho": "Publicación de los nueve primeros meses de 2026 [4].",
+          "veredicto": "no cambia",
+          "condicion": null
+        }
+      ],
+      "proximos_resultados": "2026-11-05",
+      "veredicto": "no cambia",
+      "comentario": "La caída desde el máximo (−14,8 %) tiene dos mitades. La primera, del 14 al 31 de julio (−8 %), es propia: una rebaja de Morgan Stanley y una reacción floja a los resultados por la caja libre y la deuda, con el STOXX 600 al alza. La segunda, desde el 1-ago (−7,4 %), es riesgo país: Veolia cae lo mismo que el CAC 40 y seis puntos más que el STOXX 600 y las utilities europeas, mientras el diferencial OAT-Bund sube a 1,36-1,42 puntos [20, 27]. No hay ninguna noticia de la empresa que cambie las cifras: la guía se elevó en julio. Por eso el veredicto es «no cambia»: el riesgo país está en el precio y en la sensibilidad del DCF, y los resultados del 5-nov no retrasan la decisión."
+    },
+    "confianza": "Alta"
+  },
+  "multiplos_historicos": {
+    "serie": [
+      {
+        "anio": "2020",
+        "precio_cierre": 19.29,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 13.2,
+        "excluir": false
+      },
+      {
+        "anio": "2021",
+        "precio_cierre": 32.26,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 20.3,
+        "excluir": false
+      },
+      {
+        "anio": "2022",
+        "precio_cierre": 24,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 13.3,
+        "excluir": false
+      },
+      {
+        "anio": "2023",
+        "precio_cierre": 28.56,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 14,
+        "excluir": false
+      },
+      {
+        "anio": "2024",
+        "precio_cierre": 27.11,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 12.7,
+        "excluir": false
+      },
+      {
+        "anio": "2025",
+        "precio_cierre": 29.72,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 12.9,
+        "excluir": false
+      }
+    ],
+    "comentario": "Con el beneficio publicado, la acción cotiza a 20,7 veces los últimos doce meses, algo por debajo de su media de cinco años (22,3); ese PER está inflado por la amortización de la compra de Suez. En la base que usa el objetivo (precio ÷ BPA corriente del año siguiente menos los cupones de los híbridos), cotiza a 12,6 veces, en línea con su mediana de cinco años (13,3) y con el mínimo (12,7). El PER de 2021 (20,3 veces) fue el de la euforia de la compra de Suez con tipos negativos; desde 2022, con el Bund por encima del 2 %, el múltiplo se ha quedado en 12,7-14 veces. Nada estructural ha cambiado: la empresa crece algo más y tiene más deuda.",
+    "confianza": "Media"
+  },
+  "comparables": {
+    "criterio": "Diez empresas de agua, residuos y servicios medioambientales con cifras del mismo día (20-oct-2026) de Yahoo Finance, convertidas a euros [22, 23]: utilities multiservicio italianas (Hera, Acea, Iren, A2A), residuos peligrosos y medioambientales en Francia (Séché), agua regulada en Reino Unido y EE. UU. (Severn Trent, United Utilities, American Water) y residuos en EE. UU. (Republic Services, Clean Harbors). Ninguna tiene la misma mezcla que Veolia; las de EE. UU. cotizan con prima por su crecimiento y por el mercado.",
+    "empresas": [
+      {
+        "nombre": "Hera",
+        "ticker": "HER.MI",
+        "pais": "IT",
+        "capitalizacion": 5148,
+        "ev_ventas": 0.78,
+        "ev_ebitda_ltm": 7,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 10.6,
+        "crecimiento_pct": 1.7,
+        "margen_ebitda_pct": 11.2,
+        "roic_pct": null,
+        "dn_ebitda": 3.2,
+        "fcf_yield_pct": 0.3
+      },
+      {
+        "nombre": "Acea",
+        "ticker": "ACE.MI",
+        "pais": "IT",
+        "capitalizacion": 4236,
+        "ev_ventas": 3.51,
+        "ev_ebitda_ltm": 8.2,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 12.6,
+        "crecimiento_pct": 23.3,
+        "margen_ebitda_pct": 42.6,
+        "roic_pct": null,
+        "dn_ebitda": 4.4,
+        "fcf_yield_pct": -8.9
+      },
+      {
+        "nombre": "Iren",
+        "ticker": "IRE.MI",
+        "pais": "IT",
+        "capitalizacion": 3067,
+        "ev_ventas": 1.23,
+        "ev_ebitda_ltm": 6.5,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 9.8,
+        "crecimiento_pct": 11,
+        "margen_ebitda_pct": 18.9,
+        "roic_pct": null,
+        "dn_ebitda": 3.7,
+        "fcf_yield_pct": 19.6
+      },
+      {
+        "nombre": "A2A",
+        "ticker": "A2A.MI",
+        "pais": "IT",
+        "capitalizacion": 7436,
+        "ev_ventas": 0.89,
+        "ev_ebitda_ltm": 6.6,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 11.3,
+        "crecimiento_pct": -9.6,
+        "margen_ebitda_pct": 13.4,
+        "roic_pct": null,
+        "dn_ebitda": 2.8,
+        "fcf_yield_pct": -2.9
+      },
+      {
+        "nombre": "Séché Environnement",
+        "ticker": "SCHP.PA",
+        "pais": "FR",
+        "capitalizacion": 540,
+        "ev_ventas": 1.17,
+        "ev_ebitda_ltm": 8.4,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 11.3,
+        "crecimiento_pct": 8.4,
+        "margen_ebitda_pct": 14,
+        "roic_pct": null,
+        "dn_ebitda": 4.2,
+        "fcf_yield_pct": 10.2
+      },
+      {
+        "nombre": "Severn Trent",
+        "ticker": "SVT.L",
+        "pais": "GB",
+        "capitalizacion": 11315,
+        "ev_ventas": 6.96,
+        "ev_ebitda_ltm": 15.1,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 13.6,
+        "crecimiento_pct": 17.4,
+        "margen_ebitda_pct": 46.2,
+        "roic_pct": null,
+        "dn_ebitda": 7.8,
+        "fcf_yield_pct": -12.3
+      },
+      {
+        "nombre": "United Utilities",
+        "ticker": "UU.L",
+        "pais": "GB",
+        "capitalizacion": 12968,
+        "ev_ventas": 7.88,
+        "ev_ebitda_ltm": 12.9,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 13.6,
+        "crecimiento_pct": 8.6,
+        "margen_ebitda_pct": 61.1,
+        "roic_pct": null,
+        "dn_ebitda": 6.1,
+        "fcf_yield_pct": -4.7
+      },
+      {
+        "nombre": "American Water Works",
+        "ticker": "AWK",
+        "pais": "US",
+        "capitalizacion": 23647,
+        "ev_ventas": 8.02,
+        "ev_ebitda_ltm": 14.6,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 20.6,
+        "crecimiento_pct": 8.1,
+        "margen_ebitda_pct": 55.1,
+        "roic_pct": null,
+        "dn_ebitda": 5.4,
+        "fcf_yield_pct": -6.7
+      },
+      {
+        "nombre": "Republic Services",
+        "ticker": "RSG",
+        "pais": "US",
+        "capitalizacion": 62478,
+        "ev_ventas": 4.99,
+        "ev_ebitda_ltm": 16,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 28.9,
+        "crecimiento_pct": 6.7,
+        "margen_ebitda_pct": 31.1,
+        "roic_pct": null,
+        "dn_ebitda": 2.7,
+        "fcf_yield_pct": 2.8
+      },
+      {
+        "nombre": "Clean Harbors",
+        "ticker": "CLH",
+        "pais": "US",
+        "capitalizacion": 14889,
+        "ev_ventas": 3.11,
+        "ev_ebitda_ltm": 16.2,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 31.3,
+        "crecimiento_pct": 10.8,
+        "margen_ebitda_pct": 19.2,
+        "roic_pct": null,
+        "dn_ebitda": 2.3,
+        "fcf_yield_pct": 2.3
+      }
+    ],
+    "comentario": "Veolia cotiza a 12,3 veces el beneficio de los próximos doce meses (BPA de consenso) y a 7,7 veces el EBITDA, frente a 13,1 y 10,7 veces de mediana del grupo. Frente a las europeas (Hera 10,6, Iren 9,8, A2A 11,3, Séché 11,3) está en línea o algo cara; frente a las de agua regulada británicas (13,6) y a las de EE. UU. (20-31 veces), barata. El EV/EBITDA bajo se explica por la deuda y los minoritarios, que el mercado descuenta, y por el margen (16 % frente al 25 % de mediana). Los comparables no entran en la valoración: los múltiplos de valor empresa no sirven con un puente tan grande y la mezcla de negocios es distinta.",
+    "confianza": "Media"
+  },
+  "transacciones": {
+    "operaciones": [
+      {
+        "fecha": "2026-06",
+        "objetivo": "Clean Earth (residuos peligrosos, EE. UU.)",
+        "comprador": "Veolia",
+        "ev": 2600,
+        "ev_ventas": 2.91,
+        "ev_ebitda": 15,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "EV 3.000 M USD sobre ventas de 1.030 M y EBITDA de 200 M USD 2026e; 9,8x con 120 M USD de sinergias en el año 4 [9]"
+      },
+      {
+        "fecha": "2025-05",
+        "objetivo": "30 % de Water Technologies and Solutions (valor del 100 %)",
+        "comprador": "Veolia (a CDPQ)",
+        "ev": 5000,
+        "ev_ventas": 1.01,
+        "ev_ebitda": 8.2,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Estimación propia: 1.500 M EUR por el 30 % → 5.000 M el 100 %, sobre ventas de 4.973 M y EBITDA de 612 M de 2024 del segmento (sin deuda neta relevante) [1]"
+      },
+      {
+        "fecha": "2026-03",
+        "objetivo": "Enviropacific (suelos y PFAS, Australia)",
+        "comprador": "Veolia",
+        "ev": 137,
+        "ev_ventas": 0.91,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "228 M AUD sobre ventas de ~250 M AUD (ejercicio 2025); EBITDA no publicado [4]"
+      }
+    ],
+    "comentario": "Las tres compras recientes de Veolia muestran lo que paga el mercado por cada negocio: residuos peligrosos en EE. UU. a 15 veces el EBITDA (Clean Earth, 9,8 con sinergias) [9], tecnologías del agua a ≈8 veces (el 30 % de WTS, estimación propia) [1] y descontaminación en Australia a 0,9 veces las ventas [4]. No se usan en la valoración: son compras de control de negocios distintos del grueso del grupo y no hay transacciones de grupos multiservicio comparables.",
+    "confianza": "Media"
+  },
+  "dcf": {
+    "anios": [
+      {
+        "periodo": "2026e",
+        "crecimiento_pct": 3,
+        "margen_ebitda_pct": 16.3,
+        "amortizacion_pct_ventas": 7.7,
+        "capex_pct_ventas": 10.3,
+        "nwc_pct_ventas": -9,
+        "tasa_impositiva_pct": 25.8,
+        "fijo": true
+      },
+      {
+        "periodo": "2027e",
+        "crecimiento_pct": 4,
+        "margen_ebitda_pct": 16.6,
+        "amortizacion_pct_ventas": 7.7,
+        "capex_pct_ventas": 10.3,
+        "nwc_pct_ventas": -9,
+        "tasa_impositiva_pct": 26,
+        "fijo": false
+      },
+      {
+        "periodo": "2028e",
+        "crecimiento_pct": 3.5,
+        "margen_ebitda_pct": 16.8,
+        "amortizacion_pct_ventas": 7.7,
+        "capex_pct_ventas": 10.3,
+        "nwc_pct_ventas": -9,
+        "tasa_impositiva_pct": 26,
+        "fijo": false
+      },
+      {
+        "periodo": "2029e",
+        "crecimiento_pct": 3.3,
+        "margen_ebitda_pct": 16.9,
+        "amortizacion_pct_ventas": 7.7,
+        "capex_pct_ventas": 10.3,
+        "nwc_pct_ventas": -9,
+        "tasa_impositiva_pct": 26,
+        "fijo": false
+      },
+      {
+        "periodo": "2030e",
+        "crecimiento_pct": 3,
+        "margen_ebitda_pct": 17,
+        "amortizacion_pct_ventas": 7.7,
+        "capex_pct_ventas": 10.3,
+        "nwc_pct_ventas": -9,
+        "tasa_impositiva_pct": 26,
+        "fijo": false
+      },
+      {
+        "periodo": "2031e",
+        "crecimiento_pct": 2.8,
+        "margen_ebitda_pct": 17,
+        "amortizacion_pct_ventas": 7.7,
+        "capex_pct_ventas": 10.3,
+        "nwc_pct_ventas": -9,
+        "tasa_impositiva_pct": 26,
+        "fijo": false
+      },
+      {
+        "periodo": "2032e",
+        "crecimiento_pct": 2.6,
+        "margen_ebitda_pct": 17,
+        "amortizacion_pct_ventas": 7.7,
+        "capex_pct_ventas": 10.3,
+        "nwc_pct_ventas": -9,
+        "tasa_impositiva_pct": 26,
+        "fijo": false
+      },
+      {
+        "periodo": "2033e",
+        "crecimiento_pct": 2.5,
+        "margen_ebitda_pct": 17,
+        "amortizacion_pct_ventas": 7.7,
+        "capex_pct_ventas": 10.3,
+        "nwc_pct_ventas": -9,
+        "tasa_impositiva_pct": 26,
+        "fijo": false
+      },
+      {
+        "periodo": "2034e",
+        "crecimiento_pct": 2.3,
+        "margen_ebitda_pct": 17,
+        "amortizacion_pct_ventas": 7.7,
+        "capex_pct_ventas": 10.3,
+        "nwc_pct_ventas": -9,
+        "tasa_impositiva_pct": 26,
+        "fijo": false
+      },
+      {
+        "periodo": "2035e",
+        "crecimiento_pct": 2.2,
+        "margen_ebitda_pct": 17,
+        "amortizacion_pct_ventas": 7.7,
+        "capex_pct_ventas": 10.3,
+        "nwc_pct_ventas": -9,
+        "tasa_impositiva_pct": 26,
+        "fijo": false
+      }
+    ],
+    "wacc": {
+      "tasa_libre_pct": 3.49,
+      "beta": 1,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 0.6,
+      "coste_deuda_pct": 4.3,
+      "tasa_impositiva_pct": 25.8,
+      "peso_deuda_pct": 51
+    },
+    "terminal": {
+      "metodo": "media",
+      "crecimiento_pct": 2,
+      "multiplo_salida": 8
+    },
+    "etapa2": {
+      "usar": false,
+      "anios": 10,
+      "margen_final_pct": null,
+      "justificacion": null
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "El 2026e (+3,0 %, fijo) sale de la guía: crecimiento orgánico del 1-2 % con precios de la energía a la baja, siete meses de Clean Earth y nueve de Enviropacific (+2 puntos) y un efecto divisa de −1 punto por el dólar [4]. El 2027e (+4,0 %) suma un punto por los cinco meses de Clean Earth que faltan. Desde 2028e, solo orgánico: volumen del 1-1,5 % y precio del 2 %, en la línea de 2023-2025, bajando al 2,2 % en 2035e. No se modelan las ventas de activos (> 2.000 M), que se tratan como neutras en valor, ni compras nuevas.",
+      "margenes": "Margen EBITDA del 16,3 % en 2026e (16,0 % en el 1S26 y un segundo semestre más fuerte, como en 2025 [4]) que sube al 17,0 % en 2030e por los ahorros (> 350 M al año, de los que se retiene la mitad) y la mezcla hacia residuos peligrosos. Es prudente frente a la guía de EBITDA del +5-6 % anual del plan GreenUp: el base da un EBITDA del +5 % al +6 % en 2027-2028 y del 4-5 % después.",
+      "inversion": "Capex del 10,3 % de las ventas: inversión industrial neta (8,7 % en 2025 [3]) más los pagos de arrendamientos (1,3 %) y los gastos de renovación que van debajo del EBITDA (0,7 %), menos la parte de las ventas de activos industriales. Amortización del 7,7 % (amortizaciones corrientes más renovación, sin la de la compra de Suez). Circulante del −9 % de las ventas, como en 2021-2025. Con ese capex, la inversión neta (capex menos amortización y circulante) financia el crecimiento con un rendimiento del 13,5 %, cerca del ROIC incremental histórico (11,9 %); con un 9,5 % la prueba de sostenibilidad fallaba (20 %) y se subió el capex.",
+      "wacc": "Tasa libre del 3,49 % (Bund a 10 años del 19-oct-2026, Bundesbank) [18]; beta de 1,0, entre la semanal de dos años (0,91) y la mensual ajustada de cinco años (1,17) frente al STOXX 600 [14]; prima de mercado del 5,5 % y prima adicional de 0,6 puntos por el riesgo país: el 19 % de las ventas en Francia con un diferencial OAT-Bund de 1,36 puntos (≈0,25) y un 15-20 % en Latinoamérica, Oriente Medio, África y Asia (≈0,35). Coste de la deuda del 4,3 % antes de impuestos (financiación del 3,7 % [4] más el coste marginal de una emisión BBB a 10 años), tipo del 25,8 % y peso de la deuda del 51 % (deuda neta, arrendamientos e híbridos frente a la capitalización). WACC del 6,33 %.",
+      "terminal": "Media de Gordon con un crecimiento del 2,0 % (la inflación del euro; por debajo de la tasa libre menos medio punto) y de un múltiplo de salida de 8 veces el EBITDA, el del grupo hoy (7,7 veces) y por debajo de la mediana de los comparables (10,7). El valor terminal pesa el 71 % del valor de empresa, normal en un negocio de contratos largos."
+    },
+    "sostenibilidad": {
+      "puente_ingresos": [
+        {
+          "periodo": "2026e",
+          "volumen_pct": 1,
+          "precio_pct": 1.5,
+          "otros_pct": 0.5,
+          "comentario": "Orgánico del 1-2 % con la energía a la baja (precio +1,5, volumen +1,0), perímetro de Clean Earth y Enviropacific (+2) y divisa (−1,5): otros +0,5 [4]."
+        },
+        {
+          "periodo": "2027e",
+          "volumen_pct": 1.5,
+          "precio_pct": 1.5,
+          "otros_pct": 1,
+          "comentario": "Volumen +1,5 y precio +1,5 (indexación con la inflación del 2 %, algo menos en energía), y un punto de arrastre de Clean Earth."
+        },
+        {
+          "periodo": "2028e",
+          "volumen_pct": 1.5,
+          "precio_pct": 2,
+          "otros_pct": 0,
+          "comentario": "Solo orgánico: volumen +1,5 (residuos peligrosos y agua industrial) y precio +2,0."
+        },
+        {
+          "periodo": "2029e",
+          "volumen_pct": 1.3,
+          "precio_pct": 2,
+          "otros_pct": 0,
+          "comentario": "Volumen +1,3 y precio +2,0."
+        },
+        {
+          "periodo": "2030e",
+          "volumen_pct": 1,
+          "precio_pct": 2,
+          "otros_pct": 0,
+          "comentario": "Volumen +1,0 y precio +2,0, la inflación de las fórmulas."
+        }
+      ],
+      "mercado_final": null,
+      "veredicto": "Sí",
+      "justificacion": "Sí. El crecimiento medio proyectado (2,9 % anual) es la suma de precio (≈2 %, la inflación que trasladan las fórmulas de los contratos) y volumen (≈1 %), sin compras nuevas, por debajo de la TCAC histórica (11,7 %, inflada por Suez) y del orgánico de 2023-2025 (3-5 % con la energía). La reinversión neta que supone financia ese crecimiento con un rendimiento del 13,5 % sobre el capital nuevo, cerca del ROIC incremental histórico (11,9 %) y por debajo del límite de 1,25 veces. La cuota de mercado no hace falta subirla: crecer con la inflación es lo que han hecho los contratos en 2022-2025 [2, 3]."
+    },
+    "lectura": "El DCF da 34,25 EUR por acción, un 7,3 % por encima del precio, con un WACC del 6,33 % y un valor terminal del 71 % del valor de empresa. El DCF inverso dice que el precio descuenta un crecimiento del 2,6 % anual en 2027-2035, muy cerca de nuestro base (2,9 %): el mercado valora a Veolia más o menos como nosotros. Con la prima implícita del mercado (4,2 %) el DCF sube a 42,45 EUR.\n\n**Sensibilidad a la OAT.** Si en lugar del Bund (3,49 %) se usa la OAT francesa a 10 años (4,85 % el 19-oct [20]) como tasa libre, el WACC sube 0,66 puntos, al 6,99 %, y el DCF baja a 27,48 EUR (−19,8 %, −6,77 EUR), un 13,9 % por debajo del precio; el valor real (DCF 60 % y escenarios 40 %) pasa de 33,85 a 27,14 EUR (−19,8 %). Es una cota alta del efecto: supone que todo el negocio paga el riesgo de Francia, que solo es el 19 % de las ventas, y suma ese riesgo a la prima adicional de 0,6 puntos que ya lleva el WACC. Pero muestra la palanca: con 32.000 M de deuda e híbridos por delante del accionista, cada medio punto de tasa quita unos 5 EUR por acción.",
+    "confianza": "Media"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": -1,
+        "ajuste_margen_pp": -1,
+        "ajuste_wacc_pp": 0.5,
+        "crecimiento_terminal_pct": 1.5,
+        "multiplo_salida": 7,
+        "perfil": [],
+        "narrativa": "La subida de los tipos y del riesgo país francés se mantiene, los ayuntamientos franceses aprietan en las renovaciones y la industria europea sigue floja: un punto menos de crecimiento al año y un punto menos de margen (el EBITDA vuelve al 15-16 %), con un WACC medio punto más alto. Con la deuda que tiene, el valor del accionista cae a 10 EUR."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "perfil": [],
+        "narrativa": "Se cumple la guía de 2026 y el plan GreenUp en su parte baja: crecimiento con la inflación (≈3 %), margen EBITDA que sube al 17 % en 2030 con los ahorros y Clean Earth integrada."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": 1,
+        "ajuste_margen_pp": 0.5,
+        "ajuste_wacc_pp": -0.25,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": 9,
+        "perfil": [],
+        "narrativa": "El agua para la industria y los centros de datos, los PFAS y los residuos peligrosos crecen más de lo previsto y las ventas de activos se hacen a buen precio: un punto más de crecimiento, medio punto más de margen y un múltiplo de salida de 9 veces."
+      }
+    ],
+    "comentario": "Los escenarios son casi simétricos en euros (+20 y −24 EUR sobre el base) pero muy abiertos en porcentaje (de −68 % a +70 %) por el apalancamiento: el valor del accionista es solo el 44 % del valor de empresa, así que un punto de margen o medio punto de WACC mueven mucho la acción. El ponderado (33,25 EUR) queda cerca del precio. A 12 meses, con múltiplos, el rango es más estrecho (de −27 % a +37 %) porque el mercado valora a Veolia por PER y no por flujos descontados.",
+    "confianza": "Media"
+  },
+  "suma_partes": {
+    "aplica": true,
+    "descuento_holding_pct": 5,
+    "partes": [
+      {
+        "segmento": "Francia y residuos peligrosos de Europa",
+        "metrica": "EBITDA 2025",
+        "valor_metrica": 1475,
+        "multiplo": 8,
+        "ev_directo": null,
+        "justificacion": "Agua delegada y residuos en Francia y residuos peligrosos en Europa: entre Séché (≈7 veces) y las utilities de agua regulada (11-13 veces) [12, 22]."
+      },
+      {
+        "segmento": "Europa",
+        "metrica": "EBITDA 2025",
+        "valor_metrica": 2758,
+        "multiplo": 7.5,
+        "ev_directo": null,
+        "justificacion": "Redes de calor, agua y residuos en Europa central, Alemania, Reino Unido, España e Italia: al nivel de Hera, Iren y A2A (7-8 veces) [22]."
+      },
+      {
+        "segmento": "Resto del mundo",
+        "metrica": "EBITDA 2025",
+        "valor_metrica": 2009,
+        "multiplo": 8.5,
+        "ev_directo": null,
+        "justificacion": "EE. UU., Latinoamérica, Asia y Oriente Medio: más crecimiento y más riesgo país; entre las europeas y las de EE. UU."
+      },
+      {
+        "segmento": "Tecnologías del Agua",
+        "metrica": "EBITDA 2025",
+        "valor_metrica": 669,
+        "multiplo": 11,
+        "ev_directo": null,
+        "justificacion": "Equipos, química y servicios de tratamiento de agua: por debajo de los especialistas cotizados por su margen (13,5 %) y por encima de lo pagado por el 30 % de WTS (≈8 veces) [1]."
+      },
+      {
+        "segmento": "Clean Earth",
+        "metrica": "Precio pagado (junio de 2026)",
+        "valor_metrica": 2600,
+        "multiplo": 1,
+        "ev_directo": 2600,
+        "justificacion": "Al precio pagado (3.000 M USD), que el mercado valida: Clean Harbors cotiza a más de 15 veces el EBITDA [9, 22]."
+      },
+      {
+        "segmento": "Otros y holding",
+        "metrica": "EBITDA 2025",
+        "valor_metrica": 139,
+        "multiplo": 6,
+        "ev_directo": null,
+        "justificacion": "Resultado de las actividades centrales y de servicios compartidos."
+      }
+    ],
+    "comentario": "Veolia tiene negocios con perfiles distintos (agua regulada, residuos, energía, tecnología), así que la suma de partes da una referencia útil, con un descuento de holding del 5 % por la complejidad. Da 34,39 EUR por acción, un 7,7 % por encima del precio y casi igual que el DCF: el mercado no está aplicando un descuento de conglomerado relevante. No entra en la valoración porque los múltiplos de cada parte son aproximados.",
+    "confianza": "Baja"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2026-06-30",
+      "deuda_financiera": 31603,
+      "arrendamientos": 2177,
+      "caja": 9332,
+      "minoritarios": 5100,
+      "pensiones": 480,
+      "asociadas": 1607,
+      "otros_ajustes": 3744
+    },
+    "rab": null,
+    "referencia_mercado": {
+      "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+      "prima_implicita_pct": 4.2,
+      "fecha": "2026-10",
+      "fuente": "Damodaran, ERPbymonth.xlsx [19]"
+    },
+    "pesos": {
+      "dcf": 60,
+      "comparables": 0,
+      "transacciones": 0,
+      "suma_partes": 0,
+      "escenarios": 40
+    },
+    "objetivo_12m": {
+      "ejercicio": "2028e",
+      "casos": [
+        {
+          "escenario": "Bajista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 2.23,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 47.800 M en 2028e (+2,5 % y +2,0 % en 2027-2028) y margen EBITDA del 15,8 %; EBIT corriente de ≈3.960 M, resultado financiero de −1.100 M, impuestos del 25,8 %, minoritarios del 20,5 % y cupones de híbridos de 97 M netos: 1.610 M entre 724 M de acciones."
+        },
+        {
+          "escenario": "Base",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 2.75,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 49.221 M y EBITDA de 8.269 M en 2028e (16,8 %); EBIT corriente de ≈4.580 M (amortización y renovación del 7,7 % y 100 M de puestas en equivalencia), resultado financiero de −1.070 M, impuestos del 25,8 %, minoritarios del 20,5 % y cupones de 97 M: 1.993 M entre 724 M de acciones. Sin cupones serían 2,89 EUR."
+        },
+        {
+          "escenario": "Alcista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 3.04,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 50.175 M (+5 % y +4,5 % en 2027-2028) y margen EBITDA del 17,3 %; resultado financiero de −1.060 M con las ventas de activos: 2.203 M entre 724 M de acciones."
+        }
+      ],
+      "per_historico": {
+        "base": "adelantado",
+        "actual": 12.6,
+        "mediana_5a": 13.3,
+        "minimo_5a": 12.7,
+        "media_larga": 14.4,
+        "excluidos": "Historia adelantada (cierre de cada año ÷ BPA corriente del año siguiente menos los cupones de los híbridos netos de impuestos; estimación propia con las acciones medias y los cupones de cada año [1, 2, 3]): 2020 13,2x (19,29 ÷ 1,46); 2021 20,3x (32,26 ÷ 1,59); 2022 13,3x (24,00 ÷ 1,80); 2023 14,0x (28,56 ÷ 2,04); 2024 12,7x (27,11 ÷ 2,13); 2025 12,9x (29,72 ÷ 2,30, nuestro 2026e). Mediana y mínimo de 2021-2025; media larga de 2020-2025. No se excluye ningún año, aunque 2021 (euforia de Suez con tipos negativos) sube la media. Actual: 31,93 ÷ 2,53 (nuestro 2027e).",
+        "v2": {
+          "mediana_5a": 15.1,
+          "minimo_5a": 13.3,
+          "media_larga": 16.1,
+          "excluidos": "Historia al cierre (precio ÷ BPA corriente menos cupones del mismo año): 2021 22,1x; 2022 15,1x; 2023 15,9x; 2024 13,3x; 2025 14,0x. Sin 2020 (beneficio hundido por la covid)."
+        }
+      },
+      "comparables_per": {
+        "mediana": 13.1
+      },
+      "consenso": {
+        "bpa_ano1": 2.41,
+        "bpa_ano2": 2.64,
+        "objetivo_medio": 38.56,
+        "objetivo_min": 33,
+        "objetivo_max": 45.3,
+        "analistas": 18,
+        "tendencia_3m": "mixta",
+        "fuente": "Yahoo Finance (earningsTrend, BPA corriente sin PPA; 18 analistas) [17]; Morgan Stanley a «en línea» el 28-jul y RBC sube el objetivo a 41,5 el 19-ago [24, 25]"
+      },
+      "diferencia_consenso": "Nuestro BPA de 2026e (2,30 EUR) y de 2027e (2,53) están un 4-5 % por debajo del consenso (2,41 y 2,64) [17], pero solo por la base: restamos los cupones de los híbridos (≈0,13 EUR por acción), que el BPA corriente de la empresa y el consenso no restan. Sin cupones, nuestras cifras (2,43 y 2,66) coinciden con el consenso, y las ventas y el EBITDA quedan un 1-2 % y menos de un 1 % por debajo. Nuestro objetivo base (35,48 EUR) queda un 8 % por debajo del objetivo medio de los analistas (38,56), que aplican múltiplos algo más altos.",
+      "media": 34.15,
+      "comentario": "El objetivo a 12 meses (34,48 EUR) y el valor real (33,85 EUR) casi coinciden: Veolia está valorada más o menos por lo que vale, y la rentabilidad esperada a un año (12,7 % ponderada con el dividendo del 4,7 %) es sobre todo dividendo y crecimiento del BPA. Para que se abra una oportunidad haría falta que el riesgo país francés baje (el diferencial OAT-Bund, de 1,36 puntos, volviendo a 0,8) o que el precio caiga por debajo de 31,29 EUR sin cambio en el negocio."
+    },
+    "comentario": "Pesos: DCF 60 % y escenarios 40 %, sin comparables, transacciones ni suma de partes. El DCF es el método natural en un negocio de contratos largos con márgenes estables, pero es muy sensible a la tasa por la deuda; los escenarios recogen esa asimetría. Los comparables de valor empresa no sirven con un puente de 32.000 M entre deuda, híbridos y minoritarios (el EV/EBITDA da de 28 a 104 EUR), y el PER de los comparables (34 EUR) solo confirma el rango. El valor real (33,85 EUR) queda un 6,0 % por encima del precio; con la prima del mercado, 41,71 EUR.",
+    "confianza": "Media"
+  },
+  "catalizadores": {
+    "items": [
+      {
+        "fecha": "23 oct 2026",
+        "evento": "Revisión de la calificación de Francia por Moody’s",
+        "efecto": "Un recorte subiría la OAT y el riesgo país (la caída desde agosto es de −7,4 %); mantenerla aliviaría a las francesas",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "5 nov 2026",
+        "evento": "Ventas y EBITDA de los nueve primeros meses",
+        "efecto": "Confirmación de la guía de EBITDA (+5-6 %) y del resultado neto corriente (≥ +8 %); primeros datos de Clean Earth [4]",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "Oct-dic 2026",
+        "evento": "Votación del presupuesto 2027 en Francia",
+        "efecto": "Recargo del impuesto de sociedades de los grandes grupos un 30 % menor; riesgo de moción de censura y de más ruido político [13]",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "17 feb 2027",
+        "evento": "Resultados anuales de 2026 y guía de 2027",
+        "efecto": "Último año del plan GreenUp; dividendo de 2026 [4]",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2026-2028",
+        "evento": "Ventas de activos de más de 2.000 M (500 M firmados en 2026)",
+        "efecto": "Bajan la deuda hacia 2,5-3 veces el EBITDA; el precio de venta dirá si el mercado valora bien la cartera [4]",
+        "probabilidad": "Media",
+        "sentido": "+"
+      },
+      {
+        "fecha": "2027-2029",
+        "evento": "Sinergias de Clean Earth (120 M USD en el año 4)",
+        "efecto": "BPA corriente +3-4 % si se cumplen; Veolia dice que es acretiva desde 2027 [9]",
+        "probabilidad": "Media",
+        "sentido": "+"
+      },
+      {
+        "fecha": "4T26",
+        "evento": "Jornada temática en Asia",
+        "efecto": "Crecimiento en agua para microelectrónica y centros de datos [4]",
+        "probabilidad": "Alta",
+        "sentido": "+"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "riesgos": {
+    "items": [
+      {
+        "riesgo": "Riesgo país francés (diferencial OAT-Bund, rating, presupuesto)",
+        "tipo": "Macro / país",
+        "probabilidad": "Alta",
+        "impacto": "Medio",
+        "efecto_valor": "−20 % si se descuenta toda la empresa con la OAT (de 34,25 a 27,48 EUR); −7 a −10 % con la parte francesa",
+        "mitigante": "Francia es el 19,3 % de las ventas y el 20,9 % del EBITDA de los segmentos; la deuda se financia en euros a tipo fijo (3,7 %) con rating propio BBB/Baa1; el tipo impositivo corriente bajó en 2025 (25,4 %) pese al recargo [2, 5]",
+        "senal": "Diferencial OAT-Bund por encima de 1,6 puntos o recorte de Moody’s el 23-oct"
+      },
+      {
+        "riesgo": "Tipos de interés altos (Bund)",
+        "tipo": "Valoración / financiación",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−15 % por cada medio punto de WACC (de 34,25 a 29,04 EUR)",
+        "mitigante": "Deuda a tipo fijo con vida media de 6,2 años; las fórmulas de los contratos indexan la inflación [5]",
+        "senal": "Bund a 10 años por encima del 4 %"
+      },
+      {
+        "riesgo": "Apalancamiento tras Clean Earth",
+        "tipo": "Balance",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−10 % si las ventas de activos se retrasan y la deuda neta se queda por encima de 3 veces el EBITDA",
+        "mitigante": "Plan de ventas de más de 2.000 M hasta mediados de 2028, 500 M firmados; liquidez de 15.205 M [4, 5]",
+        "senal": "Deuda neta / EBITDA por encima de 3,2 veces a fin de 2026"
+      },
+      {
+        "riesgo": "Renovación de contratos públicos en Francia",
+        "tipo": "Negocio / cliente",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−5 %",
+        "mitigante": "Primer operador de agua delegada en Francia; los contratos se renuevan por tramos a lo largo de muchos años [3]",
+        "senal": "Pérdida de un gran contrato municipal (Lyon, Île-de-France) o margen de Francia por debajo del 16 %"
+      },
+      {
+        "riesgo": "Integración de Clean Earth y precio pagado",
+        "tipo": "Asignación de capital",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−5 %",
+        "mitigante": "Historial con Suez (sinergias por encima de lo prometido) [2]",
+        "senal": "Sinergias por debajo de 40 M USD en 2027"
+      },
+      {
+        "riesgo": "Divisas (dólar y emergentes)",
+        "tipo": "Divisa",
+        "probabilidad": "Media",
+        "impacto": "Bajo",
+        "efecto_valor": "−3 %",
+        "mitigante": "Costes y ventas en la misma divisa en cada país",
+        "senal": "Efecto divisa peor que −2 % en el EBITDA"
+      },
+      {
+        "riesgo": "Consumo interno y actividad industrial en Francia y Europa",
+        "tipo": "Ciclo",
+        "probabilidad": "Media",
+        "impacto": "Bajo",
+        "efecto_valor": "−3 %",
+        "mitigante": "Agua y residuos municipales poco cíclicos; la parte industrial francesa es pequeña",
+        "senal": "Volúmenes de residuos industriales a la baja dos trimestres"
+      }
+    ],
+    "premortem": "Es octubre de 2028 y la acción vale 22 EUR, un 30 % menos. La historia empezó a finales de 2026: Moody’s rebajó a Francia, el presupuesto 2027 salió con más impuestos tras una crisis de gobierno y el diferencial OAT-Bund se quedó en 1,5-2 puntos; el Bund subió al 4 %. Los ayuntamientos franceses, sin dinero, renegociaron contratos de agua a la baja y Lyon y otras ciudades volvieron a la gestión pública. Las ventas de activos se retrasaron porque los compradores pedían descuento, la deuda se quedó en 3,3 veces el EBITDA y S&P puso a Veolia en perspectiva negativa. El PER bajó a 10 veces, como en 2012-2013. Lo que lo habría anunciado: el diferencial OAT-Bund por encima de 1,6 puntos y un margen de Francia a la baja en los nueve meses.",
+    "ia": {
+      "exposicion": "Baja",
+      "sentido": "Mixto",
+      "efecto_valor": "+2 % en el base (eficiencias); sin riesgo de sustitución",
+      "comentario": "La IA no sustituye lo que vende Veolia (tratar agua y residuos exige plantas y redes). Le afecta por dos vías: como herramienta de eficiencia (la empresa quiere que el 50 % de sus ahorros venga del digital y la IA en 2030, frente al 23 % en 2025) y como cliente, porque los centros de datos necesitan agua y refrigeración (objetivo de 1.000 M de ventas en 2030 con microelectrónica) [4, 10]. El riesgo es que los ahorros se devuelvan al cliente en las renovaciones."
+    },
+    "confianza": "Media"
+  },
+  "esg": {
+    "calificaciones": [
+      {
+        "agencia": "CDP Climate change",
+        "calificacion": "A (Leadership)",
+        "fecha": "2025-12"
+      },
+      {
+        "agencia": "CDP Water security",
+        "calificacion": "A (Leadership)",
+        "fecha": "2025-12"
+      },
+      {
+        "agencia": "S&P Global CSA",
+        "calificacion": "80/100, 5.º de Multi and Water Utilities",
+        "fecha": "2025-12"
+      },
+      {
+        "agencia": "ISS ESG",
+        "calificacion": "Prime, B (primer decil)",
+        "fecha": "2025-09"
+      },
+      {
+        "agencia": "EcoVadis",
+        "calificacion": "82/100 (percentil 98)",
+        "fecha": "2025"
+      }
+    ],
+    "materialidad": "Lo material es lo que Veolia vende: agua, residuos y energía con menos emisiones. Sus mayores emisiones son las de la quema de carbón en redes de calor de Europa central (salida prevista hacia 2030) y las de los vertederos; su exposición a la regulación climática es por tanto doble, de coste y de demanda. Tiene buenas calificaciones (CDP A en clima y agua, 80/100 en S&P Global) [3].",
+    "controversias": null,
+    "confianza": "Media"
+  },
+  "preguntas": {
+    "items": [
+      {
+        "tema": "Francia",
+        "pregunta": "¿Qué parte del EBITDA francés viene de contratos públicos que se renuevan en 2026-2028 y qué margen se ha perdido en las últimas renovaciones?",
+        "por_que": "Es el canal por el que el riesgo país llega al negocio, más que la deuda."
+      },
+      {
+        "tema": "Impuestos",
+        "pregunta": "¿Cuánto pagó Veolia por el recargo francés del impuesto de sociedades en 2025-2026 y cuánto ahorra con el presupuesto 2027?",
+        "por_que": "El tipo corriente bajó en 2025; no está claro cuánto aporta Francia a la base imponible."
+      },
+      {
+        "tema": "Deuda",
+        "pregunta": "¿Ha subido el diferencial de crédito de los bonos de Veolia desde agosto y a qué coste se refinancian los 9.792 M que vencen en 2026?",
+        "por_que": "Decide el coste de la deuda del WACC y el resultado financiero."
+      },
+      {
+        "tema": "Desinversiones",
+        "pregunta": "¿Qué activos componen el plan de ventas de más de 2.000 M y a qué múltiplo se firmaron los 500 M de 2026?",
+        "por_que": "Si se venden por encima de 8 veces el EBITDA crean valor frente al múltiplo del grupo."
+      },
+      {
+        "tema": "Clean Earth",
+        "pregunta": "¿Cuánto EBITDA aportó Clean Earth en sus primeros meses y qué parte de las sinergias de 120 M USD está ya firmada?",
+        "por_que": "Se pagó a 15 veces el EBITDA; las sinergias deciden si la compra crea valor."
+      },
+      {
+        "tema": "Híbridos",
+        "pregunta": "¿Piensa Veolia sustituir los híbridos por deuda ordinaria o por acciones cuando llegue la primera fecha de amortización?",
+        "por_que": "Son 3.744 M y su cupón resta ≈0,13 EUR al BPA del accionista."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sentimiento": {
+    "tono": "Dividido",
+    "tendencia": "Empeora",
+    "revisadas": [
+      {
+        "plataforma": "Boursorama (foro de VIE)",
+        "fecha": "2026-10",
+        "n_comentarios": 40,
+        "tono": "Dividido",
+        "resumen": "Títulos de hilos de jul-oct: «Hausse des taux», «Veolia a perdu 7 € en 3 mois», «Quand il y a de belles annonces le titre baisse», frente a «Un bon titre pour traverser les turbulences» y «J’ai profité de la baisse pour reprendre quelques billes» [28]."
+      },
+      {
+        "plataforma": "Stocktwits ($VEOEY)",
+        "fecha": "2026-09",
+        "n_comentarios": 15,
+        "tono": "Neutro",
+        "resumen": "Poco debate en EE. UU.: mensajes sueltos de valor defensivo con dividendo y sorpresa por la caída de septiembre [29]."
+      },
+      {
+        "plataforma": "ABC Bourse (análisis técnico)",
+        "fecha": "2026-10",
+        "n_comentarios": 5,
+        "tono": "Dividido",
+        "resumen": "Lee la caída como corrección técnica pese a buenos resultados; soporte de largo plazo en 30 € y canal bajista aún sin romper [26]."
+      }
+    ],
+    "temas": [
+      {
+        "tema": "La acción baja con buenos resultados",
+        "postura": "Dividida",
+        "peso": "Alto",
+        "contraste": "Es cierto: guía elevada en julio y caída del 15 % desde el máximo; la mitad es riesgo país y la otra mitad la rebaja de Morgan Stanley y la caja del semestre [4, 24, 27]."
+      },
+      {
+        "tema": "Tipos de interés",
+        "postura": "Bajista",
+        "peso": "Alto",
+        "contraste": "Los datos lo respaldan: el Bund ha subido medio punto desde julio y la OAT más de uno [18, 20]."
+      },
+      {
+        "tema": "Valor defensivo con dividendo",
+        "postura": "Alcista",
+        "peso": "Medio",
+        "contraste": "Dividendo del 4,7 % y negocio poco cíclico; el informe coincide, pero con mucha deuda."
+      },
+      {
+        "tema": "Soporte técnico en 30 EUR",
+        "postura": "Dividida",
+        "peso": "Bajo",
+        "contraste": "Sin valor para la tesis; coincide con el límite de compra por debajo de 31,29 EUR."
+      }
+    ],
+    "lectura": "El sentimiento ha empeorado pero no es extremo: el foro francés está desconcertado porque la acción baja con buenos resultados y culpa a los tipos, y el inversor estadounidense apenas la sigue [28, 29]. No hay capitulación ni euforia, y coincide con un consenso de analistas dividido. Lo único que aporta es que la caída se lee como macro, igual que en el informe; no cambia la decisión.",
+    "confianza": "Baja"
+  },
+  "fuentes": [
+    {
+      "id": 1,
+      "titulo": "Comptes consolidés au 31 décembre 2025 (états financiers y notas)",
+      "editor": "Veolia Environnement",
+      "tipo": "Primaria",
+      "fecha": "2026-02-26",
+      "url": "https://www.veolia.com/sites/g/files/dvc4206/files/document/2026/02/Finance_Veolia_Annexes_comptes_consolides_31-12-25.pdf"
+    },
+    {
+      "id": 2,
+      "titulo": "Commentaires sur les résultats au 31 décembre 2025",
+      "editor": "Veolia Environnement",
+      "tipo": "Primaria",
+      "fecha": "2026-02-26",
+      "url": "https://www.veolia.com/sites/g/files/dvc4206/files/document/2026/02/Finance_Veolia_Commentaires_sur_les_resultats_2025.pdf"
+    },
+    {
+      "id": 3,
+      "titulo": "Document d’enregistrement universel 2025 (D.26-0118)",
+      "editor": "Veolia Environnement / AMF",
+      "tipo": "Primaria",
+      "fecha": "2026-03-19",
+      "url": "https://www.veolia.com/sites/g/files/dvc4206/files/document/2026/03/Veolia_Finance_DEU_2025_fr.pdf"
+    },
+    {
+      "id": 4,
+      "titulo": "Communiqué: résultats du premier semestre 2026",
+      "editor": "Veolia Environnement (también en la AMF)",
+      "tipo": "Primaria",
+      "fecha": "2026-07-30",
+      "url": "https://www.veolia.com/sites/g/files/dvc4206/files/document/2026/07/veolia-resultats-du-premier-semestre-2026.pdf"
+    },
+    {
+      "id": 5,
+      "titulo": "Amendement du DEU 2025 incluant le rapport financier semestriel au 30 juin 2026",
+      "editor": "Veolia Environnement / AMF",
+      "tipo": "Primaria",
+      "fecha": "2026-07-30",
+      "url": "https://www.veolia.com/sites/g/files/dvc4206/files/document/2026/07/Veolia_Finance_amendement_DEU_2025.pdf"
+    },
+    {
+      "id": 6,
+      "titulo": "Informes ESEF 2021-2024 de Veolia Environnement (LEI 969500LENY69X51OOT31)",
+      "editor": "filings.xbrl.org (repositorio ESEF)",
+      "tipo": "Primaria",
+      "fecha": "2025-03",
+      "url": "https://filings.xbrl.org/api/filings?filter[entity.identifier]=969500LENY69X51OOT31"
+    },
+    {
+      "id": 7,
+      "titulo": "Résultats semestriels 2026 – présentation",
+      "editor": "Veolia Environnement",
+      "tipo": "Primaria",
+      "fecha": "2026-07-30",
+      "url": "https://www.veolia.com/sites/g/files/dvc4206/files/document/2026/07/Veolia_Finance_presentation_H1_2026_results.pdf"
+    },
+    {
+      "id": 8,
+      "titulo": "Commentaires sur les résultats – comptes au 31 mars 2026",
+      "editor": "Veolia Environnement",
+      "tipo": "Primaria",
+      "fecha": "2026-05-06",
+      "url": "https://www.veolia.com/sites/g/files/dvc4206/files/document/2026/05/Rapport_de_gestion_Q1_2026.pdf"
+    },
+    {
+      "id": 9,
+      "titulo": "Acquisition de Clean Earth – présentation investisseurs",
+      "editor": "Veolia Environnement",
+      "tipo": "Primaria",
+      "fecha": "2025-11-21",
+      "url": "https://www.veolia.com/sites/g/files/dvc4206/files/document/2025/11/Veolia_Clean_Earth_Investor_Presentation.pdf"
+    },
+    {
+      "id": 10,
+      "titulo": "Résultats annuels 2025 – présentation",
+      "editor": "Veolia Environnement",
+      "tipo": "Primaria",
+      "fecha": "2026-02-26",
+      "url": "https://www.veolia.com/sites/g/files/dvc4206/files/document/2026/03/Finance_Veolia_2025_full_year_results_presentation.pdf"
+    },
+    {
+      "id": 11,
+      "titulo": "Ficha sectorial corta: gestión de residuos sólidos (14-oct-2026)",
+      "editor": "Repo analisis-inversion (sectores/residuos-2026-10-14.md)",
+      "tipo": "Sectorial",
+      "fecha": "2026-10-14",
+      "url": "sectores/residuos-2026-10-14.md"
+    },
+    {
+      "id": 12,
+      "titulo": "Datos financieros de Hera, Acea, Iren, A2A, Séché, Severn Trent, United Utilities, American Water, Republic Services y Clean Harbors (20-oct-2026)",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-20",
+      "url": "https://finance.yahoo.com/"
+    },
+    {
+      "id": 13,
+      "titulo": "Surtaxe sur les grands groupes réduite de 30 % dans le budget 2027 (BFM Bourse)",
+      "editor": "Tradingsat / BFM Bourse",
+      "tipo": "Prensa",
+      "fecha": "2026-10-01",
+      "url": "https://www.tradingsat.com/actualites/marches-financiers/ils-reclamaient-sa-suppression-la-surtaxe-sur-les-grands-groupes-dont-ceux-du-cac-40-sera-reduite-de-30-dans-le-budget-2027-1170981.html"
+    },
+    {
+      "id": 14,
+      "titulo": "Históricos diarios de VIE.PA, EXSA.DE (STOXX Europe 600) y EXH9.DE (STOXX Europe 600 Utilities): rentabilidades, betas, volatilidad y cierres de ejercicio hasta el 16-oct-2026",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-20",
+      "url": "https://finance.yahoo.com/quote/VIE.PA/history"
+    },
+    {
+      "id": 15,
+      "titulo": "Veolia Environnement (FR0000124141-XPAR): histórico oficial de cotizaciones, cierre del 19-oct-2026",
+      "editor": "Euronext (live.euronext.com)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-20",
+      "url": "https://live.euronext.com/en/product/equities/FR0000124141-XPAR"
+    },
+    {
+      "id": 16,
+      "titulo": "Veolia: estimaciones 2026-2028 (ventas, EBITDA, EBIT, beneficio, BPA publicado, dividendo, deuda neta, FCF) y objetivo medio",
+      "editor": "MarketScreener",
+      "tipo": "Analistas",
+      "fecha": "2026-10-20",
+      "url": "https://www.marketscreener.com/quote/stock/VEOLIA-ENVIRONNEMENT-4726/finances/"
+    },
+    {
+      "id": 17,
+      "titulo": "Veolia (VIE.PA): consenso de BPA 2026-2027 (earningsTrend), recomendaciones y objetivos (quoteSummary)",
+      "editor": "Yahoo Finance",
+      "tipo": "Analistas",
+      "fecha": "2026-10-20",
+      "url": "https://finance.yahoo.com/quote/VIE.PA/analysis"
+    },
+    {
+      "id": 18,
+      "titulo": "Rendimiento de la deuda federal alemana a 10 años (BBSIS, curva de tipos), 19-oct-2026: 3,49 %",
+      "editor": "Deutsche Bundesbank",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-19",
+      "url": "https://api.statistiken.bundesbank.de/rest/data/BBSIS/D.I.ZST.ZI.EUR.S1311.B.A604.R10XX.R.A.A._Z._Z.A"
+    },
+    {
+      "id": 19,
+      "titulo": "Implied ERP by month (ERPbymonth.xlsx), octubre de 2026: 4,20 %",
+      "editor": "A. Damodaran (NYU Stern)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx"
+    },
+    {
+      "id": 20,
+      "titulo": "Spread OAT-Bund: historial diario (OAT 10 años 4,85 % y Bund 3,43 % el 19-oct-2026)",
+      "editor": "Idéal Investisseur",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-20",
+      "url": "https://www.ideal-investisseur.fr/marches/macro/spread-oat-bund.html"
+    },
+    {
+      "id": 21,
+      "titulo": "Tipos de interés a largo plazo (convergencia), Francia y Alemania, mensual hasta sep-2026",
+      "editor": "Banco Central Europeo (IRS)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://data.ecb.europa.eu/data/datasets/IRS"
+    },
+    {
+      "id": 22,
+      "titulo": "Datos de mercado de los comparables (precio, capitalización, valor empresa, EBITDA, ventas, deuda, consenso de BPA y ventas), 20-oct-2026",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-20",
+      "url": "https://finance.yahoo.com/"
+    },
+    {
+      "id": 23,
+      "titulo": "Tipos de cambio de referencia del euro, 19-oct-2026 (USD 1,1225; GBP 0,84205)",
+      "editor": "Banco Central Europeo",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-19",
+      "url": "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"
+    },
+    {
+      "id": 24,
+      "titulo": "Veolia se replie, Morgan Stanley juge le potentiel d’appréciation limité (28-jul-2026)",
+      "editor": "Tradingsat / BFM Bourse",
+      "tipo": "Prensa",
+      "fecha": "2026-07-28",
+      "url": "https://www.tradingsat.com/veolia-environ-FR0000124141/actualites/veolia-environ-veolia-se-replie-morgan-stanley-juge-le-potentiel-d-appreciation-limite-1167607.html"
+    },
+    {
+      "id": 25,
+      "titulo": "Veolia se distingue sur le CAC 40, RBC voit encore du potentiel (19-ago-2026)",
+      "editor": "Option Finance / Zonebourse",
+      "tipo": "Prensa",
+      "fecha": "2026-08-19",
+      "url": "https://www.optionfinance.fr/info-financiere-en-continu/d/2026-08-19-veolia-se-distingue-sur-le-cac-40-rbc-voit-encore-du-potentiel.html"
+    },
+    {
+      "id": 26,
+      "titulo": "Veolia: après 20 % de baisse, le bout du tunnel est-il proche ? (7-oct-2026)",
+      "editor": "ABC Bourse",
+      "tipo": "Prensa",
+      "fecha": "2026-10-07",
+      "url": "https://www.abcbourse.com/analyses/veolia_apres_20_de_baisse_le_bout_du_tunnel_est_il_proche_-7144"
+    },
+    {
+      "id": 27,
+      "titulo": "Movimiento del precio de VIE.PA, ENGI.PA, DG.PA, SCHP.PA, HER.MI, ACE.MI, ^FCHI, EXSA.DE y EXH9.DE (herramientas/movimiento.mjs, 20-oct-2026)",
+      "editor": "Yahoo Finance (cálculo del repo)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-20",
+      "url": "https://finance.yahoo.com/quote/VIE.PA/"
+    },
+    {
+      "id": 28,
+      "titulo": "Forum Veolia Environnement (VIE): hilos de jul-oct 2026",
+      "editor": "Boursorama",
+      "tipo": "Foros y redes",
+      "fecha": "2026-10-20",
+      "url": "https://www.boursorama.com/bourse/forum/1rPVIE/"
+    },
+    {
+      "id": 29,
+      "titulo": "Stream $VEOEY (ADR de Veolia)",
+      "editor": "Stocktwits",
+      "tipo": "Foros y redes",
+      "fecha": "2026-09-22",
+      "url": "https://api.stocktwits.com/api/2/streams/symbol/VEOEY.json"
+    }
+  ],
+  "calc": {
+    "version": 4,
+    "etiquetas": {
+      "margen_bruto": "M. bruto",
+      "margen_bruto_largo": "Margen bruto",
+      "dias_base": "sobre el coste de ventas"
+    },
+    "recomendacion": {
+      "recomendacion": "Mantener",
+      "regla": "Mantener",
+      "regla_absoluta": "Mantener",
+      "regla_relativa": "Comprar",
+      "coincide": true,
+      "conviccion": "Baja",
+      "conviccion_sugerida": "Baja",
+      "conviccion_razones": [
+        "las reglas discrepan (absoluta Mantener, relativa Comprar)"
+      ],
+      "reglas_discrepan": true,
+      "relativo": {
+        "prima_implicita_pct": 4.2,
+        "wacc": 5.69,
+        "ke": 8.29,
+        "dcf": 42.45,
+        "dcf_min": 35.85,
+        "dcf_max": 50.68,
+        "valor_objetivo": 41.96,
+        "alcista": 65.43,
+        "bajista": 14.61,
+        "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+        "fecha": "2026-10",
+        "potencial_pct": 31.4,
+        "rentabilidad_total_pct": 36.1,
+        "asimetria": 1.93
+      },
+      "objetivo_mercado_txt": " · con la prima implícita del mercado: 41,96 (+31,4 %)",
+      "objetivo_mercado_corto": " · mercado 41,96",
+      "rentabilidad_mercado_corto": " · mercado +36,1 %",
+      "potencial_pct": 6,
+      "dividendo_pct": 4.7,
+      "rentabilidad_total_pct": 10.7,
+      "alcista_pct": 70.4,
+      "bajista_pct": -68.5,
+      "asimetria": 1.03,
+      "comprar_por_debajo": 31.29,
+      "vender_por_encima": 39.98,
+      "tabla": [
+        {
+          "concepto": "Objetivo a 12 meses (nuestro PER × nuestro BPA 2028e, ponderado 25/50/25)",
+          "valor": "34,48 EUR"
+        },
+        {
+          "concepto": "Bajista / base / alcista a 12 meses",
+          "valor": "10,4x × 2,23 = 23,19 · 12,9x × 2,75 = 35,48 · 14,4x × 3,04 = 43,78"
+        },
+        {
+          "concepto": "Rentabilidad a 12 meses: ponderada / del base (con dividendo)",
+          "valor": "12,7 % / 15,8 %"
+        },
+        {
+          "concepto": "Regla de múltiplos aplicada",
+          "valor": "v3: base a mitad de camino hacia la mediana adelantada, sin alejarse del actual más de ×1,1; bajista mín. 5 a (adelantado) o base × 0,80; alcista techo base × 1,35 (selector de método: sin marcas: decide la v3)"
+        },
+        {
+          "concepto": "Objetivo medio de los analistas (solo contraste)",
+          "valor": "38,56 (nuestro base -8,0 %)"
+        },
+        {
+          "concepto": "Valor intrínseco (síntesis ponderada, largo plazo)",
+          "valor": "33,85 EUR"
+        },
+        {
+          "concepto": "Potencial sobre el precio actual",
+          "valor": "6,0 %"
+        },
+        {
+          "concepto": "Rentabilidad por dividendo ordinario",
+          "valor": "4,7 %"
+        },
+        {
+          "concepto": "Rentabilidad total esperada a 12 meses",
+          "valor": "10,7 %"
+        },
+        {
+          "concepto": "Escenario alcista / bajista",
+          "valor": "70,4 % / -68,5 %"
+        },
+        {
+          "concepto": "Asimetría (ganancia alcista / pérdida bajista)",
+          "valor": "1,03x"
+        },
+        {
+          "concepto": "Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado",
+          "valor": "6,5 % frente a 6,3 % y 5,7 %"
+        },
+        {
+          "concepto": "Valor objetivo con la prima implícita del mercado (4,2 %, WACC 5,7 %)",
+          "valor": "41,96 EUR"
+        },
+        {
+          "concepto": "Rentabilidad total esperada con la prima del mercado",
+          "valor": "36,1 %"
+        },
+        {
+          "concepto": "Asimetría con la prima del mercado",
+          "valor": "1,93x"
+        },
+        {
+          "concepto": "Regla absoluta (frente a su coste de capital)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Regla relativa (frente a lo que pide el mercado)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "¿La calidad de la empresa sostiene el crecimiento previsto?",
+          "valor": "Sí (2,9 % anual proyectado; financiable al ROIC actual: 2,4 %)"
+        },
+        {
+          "concepto": "Señal del valor intrínseco (regla del DCF, referencia)",
+          "valor": "Comprar"
+        },
+        {
+          "concepto": "Recomendación según la regla a 12 meses (Comprar: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender: ponderada ≤ -10 %)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Convicción según los criterios (las reglas discrepan (absoluta Mantener, relativa Comprar))",
+          "valor": "Baja"
+        }
+      ],
+      "niveles": [
+        {
+          "accion": "Comprar",
+          "condicion": "Por debajo de 31,29 (ponderada a 12 meses ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco)"
+        },
+        {
+          "accion": "Mantener",
+          "condicion": "Entre 31,29 y 39,98"
+        },
+        {
+          "accion": "Vender o reducir",
+          "condicion": "Por encima de 39,98 (ponderada a 12 meses ≤ -10 %)"
+        }
+      ],
+      "precio_txt": "",
+      "valor_objetivo_txt": "",
+      "regla_valor_intrinseco": "Comprar",
+      "objetivo_12m": {
+        "completo": true,
+        "filas": [
+          {
+            "escenario": "Bajista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 2.23,
+            "multiplo": 10.4,
+            "multiplo_informe": null,
+            "origen": "base × 0.8",
+            "precio": 23.19,
+            "rentabilidad_pct": -22.7,
+            "justificacion": "Ventas de 47.800 M en 2028e (+2,5 % y +2,0 % en 2027-2028) y margen EBITDA del 15,8 %; EBIT corriente de ≈3.960 M, resultado financiero de −1.100 M, impuestos del 25,8 %, minoritarios del 20,5 % y cupones de híbridos de 97 M netos: 1.610 M entre 724 M de acciones."
+          },
+          {
+            "escenario": "Base",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 2.75,
+            "multiplo": 12.9,
+            "multiplo_informe": null,
+            "origen": "PER actual (12.6x) a mitad de camino hacia la mediana de 5 años (13.3x)",
+            "precio": 35.48,
+            "rentabilidad_pct": 15.8,
+            "justificacion": "Ventas de 49.221 M y EBITDA de 8.269 M en 2028e (16,8 %); EBIT corriente de ≈4.580 M (amortización y renovación del 7,7 % y 100 M de puestas en equivalencia), resultado financiero de −1.070 M, impuestos del 25,8 %, minoritarios del 20,5 % y cupones de 97 M: 1.993 M entre 724 M de acciones. Sin cupones serían 2,89 EUR."
+          },
+          {
+            "escenario": "Alcista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 3.04,
+            "multiplo": 14.4,
+            "multiplo_informe": null,
+            "origen": "media histórica larga",
+            "precio": 43.78,
+            "rentabilidad_pct": 41.8,
+            "justificacion": "Ventas de 50.175 M (+5 % y +4,5 % en 2027-2028) y margen EBITDA del 17,3 %; resultado financiero de −1.060 M con las ventas de activos: 2.203 M entre 724 M de acciones."
+          }
+        ],
+        "regla": {
+          "version": "v3",
+          "bajista": 10.4,
+          "base": 12.9,
+          "alcista": 14.4,
+          "bajista_origen": "base × 0.8",
+          "base_origen": "PER actual (12.6x) a mitad de camino hacia la mediana de 5 años (13.3x)",
+          "alcista_origen": "media histórica larga"
+        },
+        "version": "v3",
+        "probabilidades": [
+          25,
+          50,
+          25
+        ],
+        "objetivo_ponderado": 34.48,
+        "objetivo_simple": 34.15,
+        "objetivo_base": 35.48,
+        "rentabilidad_ponderada_pct": 12.7,
+        "rentabilidad_simple_pct": 11.7,
+        "rentabilidad_base_pct": 15.8,
+        "asimetria": 1.36,
+        "senal": "Mantener",
+        "senal_sin_confirmar": null,
+        "confianza_baja": false,
+        "comprar_por_debajo": 31.29,
+        "vender_por_encima": 39.98,
+        "consenso_objetivo": 38.56,
+        "diferencia_consenso_pct": -8,
+        "selector": {
+          "regla": "v3",
+          "motivo": "sin marcas: decide la v3",
+          "v3_sin_selector": {
+            "version": "v3",
+            "rentabilidad_ponderada_pct": 12.7,
+            "rentabilidad_base_pct": 15.8,
+            "senal": "Mantener",
+            "objetivo_ponderado": 34.48
+          },
+          "v2": {
+            "version": "v2",
+            "rentabilidad_ponderada_pct": 16,
+            "rentabilidad_base_pct": 13.2,
+            "senal": "Comprar",
+            "objetivo_ponderado": 35.53
+          }
+        },
+        "v2": {
+          "rentabilidad_ponderada_pct": 16,
+          "rentabilidad_base_pct": 13.2,
+          "senal": "Comprar",
+          "multiplos": [
+            10.7,
+            12.6,
+            16.1
+          ]
+        },
+        "comparacion_txt": "Para comparar, con la regla v2 (historia al cierre, mismo precio): 10,7x / 12,6x / 16,1x, 16,0 % Comprar. Decide la v3 con tope ×1,1, elegida por el selector de método (sin marcas: decide la v3; METODO-VIGENTE.md)."
+      },
+      "rentabilidad_12m_pct": 12.7,
+      "rentabilidad_12m_txt": "+12,7 % (base +15,8 %)",
+      "objetivo_12m_txt": "34,48 EUR"
+    },
+    "mercado": {
+      "precio": 31.93,
+      "acciones": 732,
+      "capitalizacion": 23373,
+      "deuda_neta": 24448,
+      "deuda_neta_ajustada": 28672,
+      "asimilables_deuda": 4224,
+      "ajustes_puente": 7717,
+      "valor_empresa": 55538,
+      "fecha_puente": "2026-06-30"
+    },
+    "clave": {
+      "capitalizacion": 23373,
+      "valor_empresa": 55538,
+      "deuda_neta": 24448,
+      "ev_ventas_ltm": 1.25,
+      "ev_ebitda_ltm": 7.7,
+      "ev_ebitda_ntm": 7.1,
+      "ev_ebit_ltm": 17.3,
+      "per_ltm": 20.7,
+      "per_ntm": 12.3,
+      "fcf_yield_pct": 5.7,
+      "dividendo_pct": 4.7,
+      "dn_ebitda": 3.4,
+      "roic_pct": 6.9,
+      "margen_ebitda_pct": 16.2,
+      "deuda_neta_ajustada": 28672,
+      "dn_ebitda_ajustada": 4,
+      "crecimiento_tcac_pct": 11.7,
+      "ingresos_ntm": 47936,
+      "ebitda_ntm": 7861,
+      "bpa_ntm": 2.59,
+      "ebitda_ltm": 7235,
+      "ingresos_ltm": 44541,
+      "ev_rab": null
+    },
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 28508,
+        "crecimiento_pct": null,
+        "beneficio_bruto": 4602,
+        "margen_bruto_pct": 16.1,
+        "ebitda": 4234,
+        "margen_ebitda_pct": 14.9,
+        "ebit": 1318,
+        "margen_ebit_pct": 4.6,
+        "beneficio_neto": 404,
+        "margen_neto_pct": 1.4,
+        "bpa": 0.65,
+        "dpa": 1,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 38.4,
+        "payout_pct": 154
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 42885,
+        "crecimiento_pct": 50.4,
+        "beneficio_bruto": 7145,
+        "margen_bruto_pct": 16.7,
+        "ebitda": 6196,
+        "margen_ebitda_pct": 14.4,
+        "ebit": 2206,
+        "margen_ebit_pct": 5.1,
+        "beneficio_neto": 716,
+        "margen_neto_pct": 1.7,
+        "bpa": 1,
+        "dpa": 1.12,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 28.1,
+        "payout_pct": 112
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 45351,
+        "crecimiento_pct": 5.8,
+        "beneficio_bruto": 7499,
+        "margen_bruto_pct": 16.5,
+        "ebitda": 6543,
+        "margen_ebitda_pct": 14.4,
+        "ebit": 2724,
+        "margen_ebit_pct": 6,
+        "beneficio_neto": 937,
+        "margen_neto_pct": 2.1,
+        "bpa": 1.28,
+        "dpa": 1.25,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 27.3,
+        "payout_pct": 98
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 44692,
+        "crecimiento_pct": -1.5,
+        "beneficio_bruto": 7768,
+        "margen_bruto_pct": 17.4,
+        "ebitda": 6788,
+        "margen_ebitda_pct": 15.2,
+        "ebit": 2881,
+        "margen_ebit_pct": 6.4,
+        "beneficio_neto": 1098,
+        "margen_neto_pct": 2.5,
+        "bpa": 1.4,
+        "dpa": 1.4,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 26.8,
+        "payout_pct": 100
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 44396,
+        "crecimiento_pct": -0.7,
+        "beneficio_bruto": 7873,
+        "margen_bruto_pct": 17.7,
+        "ebitda": 7050,
+        "margen_ebitda_pct": 15.9,
+        "ebit": 3208,
+        "margen_ebit_pct": 7.2,
+        "beneficio_neto": 1217,
+        "margen_neto_pct": 2.7,
+        "bpa": 1.54,
+        "dpa": 1.5,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 25.3,
+        "payout_pct": 97
+      }
+    ],
+    "tcac": {
+      "periodo": "2021-2025",
+      "ingresos_pct": 11.7,
+      "ebitda_pct": 13.6,
+      "bpa_pct": 24.1
+    },
+    "cuenta_y_prevision": [
+      {
+        "periodo": "2021",
+        "ingresos": 28508,
+        "ebitda": 4234
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 42885,
+        "ebitda": 6196
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 45351,
+        "ebitda": 6543
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 44692,
+        "ebitda": 6788
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 44396,
+        "ebitda": 7050
+      },
+      {
+        "periodo": "2026e",
+        "ingresos": 45728,
+        "ebitda": 7454
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 47557,
+        "ebitda": 7894
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 49221,
+        "ebitda": 8269
+      },
+      {
+        "periodo": "2029e",
+        "ingresos": 50846,
+        "ebitda": 8593
+      },
+      {
+        "periodo": "2030e",
+        "ingresos": 52371,
+        "ebitda": 8903
+      },
+      {
+        "periodo": "2031e",
+        "ingresos": 53838,
+        "ebitda": 9152
+      },
+      {
+        "periodo": "2032e",
+        "ingresos": 55237,
+        "ebitda": 9390
+      },
+      {
+        "periodo": "2033e",
+        "ingresos": 56618,
+        "ebitda": 9625
+      },
+      {
+        "periodo": "2034e",
+        "ingresos": 57920,
+        "ebitda": 9846
+      },
+      {
+        "periodo": "2035e",
+        "ingresos": 59195,
+        "ebitda": 10063
+      }
+    ],
+    "segmentos_ultimo": [
+      {
+        "nombre": "France et Déchets Dangereux Europe",
+        "ingresos": 8914,
+        "peso_pct": 20.1,
+        "crecimiento_pct": -2.5,
+        "margen_pct": 16.5,
+        "tipo_margen": "EBITDA"
+      },
+      {
+        "nombre": "Europe",
+        "ingresos": 19206,
+        "peso_pct": 43.3,
+        "crecimiento_pct": 3.2,
+        "margen_pct": 14.4,
+        "tipo_margen": "EBITDA"
+      },
+      {
+        "nombre": "Amériques, Asie Pacifique, Afrique Moyen-Orient",
+        "ingresos": 11316,
+        "peso_pct": 25.5,
+        "crecimiento_pct": -5.3,
+        "margen_pct": 17.8,
+        "tipo_margen": "EBITDA"
+      },
+      {
+        "nombre": "Technologies de l’Eau",
+        "ingresos": 4954,
+        "peso_pct": 11.2,
+        "crecimiento_pct": -0.4,
+        "margen_pct": 13.5,
+        "tipo_margen": "EBITDA"
+      },
+      {
+        "nombre": "Otros",
+        "ingresos": 6,
+        "peso_pct": 0,
+        "crecimiento_pct": -33.3,
+        "margen_pct": 2316.7,
+        "tipo_margen": "EBITDA"
+      }
+    ],
+    "segmentos_tabla": {
+      "periodos": [
+        "",
+        "",
+        "",
+        "2024",
+        "2025"
+      ],
+      "filas": [
+        {
+          "nombre": "France et Déchets Dangereux Europe",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": 9145,
+          "v4": 8914
+        },
+        {
+          "nombre": "Europe",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": 18619,
+          "v4": 19206
+        },
+        {
+          "nombre": "Amériques, Asie Pacifique, Afrique Moyen-Orient",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": 11945,
+          "v4": 11316
+        },
+        {
+          "nombre": "Technologies de l’Eau",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": 4973,
+          "v4": 4954
+        },
+        {
+          "nombre": "Otros",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": 9,
+          "v4": 6
+        }
+      ]
+    },
+    "segmentos_periodo": "2025",
+    "balance": [
+      {
+        "periodo": "2021",
+        "activo_total": 53077,
+        "intangibles": 11236,
+        "circulante": -2718,
+        "circulante_ventas_pct": -9.5,
+        "caja": 10519,
+        "deuda_financiera": 17378,
+        "arrendamientos": 1709,
+        "deuda_neta": 8568,
+        "patrimonio": 11518,
+        "minoritarios": 1252,
+        "dn_ebitda": 2.02,
+        "dn_patrimonio_pct": 67,
+        "dso": 128,
+        "dio": 12,
+        "dpo": 207,
+        "ciclo_caja": -67,
+        "cobertura_intereses": 3.8,
+        "capital_invertido": 21338,
+        "fondo_comercio": 6201,
+        "liquidez_corriente": 0.98
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 73304,
+        "intangibles": 20072,
+        "circulante": -3455,
+        "circulante_ventas_pct": -8.1,
+        "caja": 9012,
+        "deuda_financiera": 24060,
+        "arrendamientos": 2153,
+        "deuda_neta": 17201,
+        "patrimonio": 12255,
+        "minoritarios": 2612,
+        "dn_ebitda": 2.78,
+        "dn_patrimonio_pct": 116,
+        "dso": 124,
+        "dio": 15,
+        "dpo": 199,
+        "ciclo_caja": -60,
+        "cobertura_intereses": 3.5,
+        "capital_invertido": 32068,
+        "fondo_comercio": 11638,
+        "liquidez_corriente": 0.98
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 72566,
+        "intangibles": 20056,
+        "circulante": -3895,
+        "circulante_ventas_pct": -8.6,
+        "caja": 8696,
+        "deuda_financiera": 25972,
+        "arrendamientos": 2000,
+        "deuda_neta": 19276,
+        "patrimonio": 12311,
+        "minoritarios": 2391,
+        "dn_ebitda": 2.95,
+        "dn_patrimonio_pct": 131,
+        "dso": 116,
+        "dio": 15,
+        "dpo": 191,
+        "ciclo_caja": -60,
+        "cobertura_intereses": 5.1,
+        "capital_invertido": 33978,
+        "fondo_comercio": 11556,
+        "liquidez_corriente": 0.93
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 72959,
+        "intangibles": 19868,
+        "circulante": -4005,
+        "circulante_ventas_pct": -9,
+        "caja": 9601,
+        "deuda_financiera": 27100,
+        "arrendamientos": 1985,
+        "deuda_neta": 19484,
+        "patrimonio": 12915,
+        "minoritarios": 2391,
+        "dn_ebitda": 2.87,
+        "dn_patrimonio_pct": 127,
+        "dso": 115,
+        "dio": 15,
+        "dpo": 193,
+        "ciclo_caja": -63,
+        "cobertura_intereses": 4.9,
+        "capital_invertido": 34790,
+        "fondo_comercio": 11783,
+        "liquidez_corriente": 0.91
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 70671,
+        "intangibles": 19402,
+        "circulante": -4012,
+        "circulante_ventas_pct": -9,
+        "caja": 8021,
+        "deuda_financiera": 27319,
+        "arrendamientos": 1983,
+        "deuda_neta": 21281,
+        "patrimonio": 10855,
+        "minoritarios": 2409,
+        "dn_ebitda": 3.02,
+        "dn_patrimonio_pct": 160,
+        "dso": 113,
+        "dio": 15,
+        "dpo": 192,
+        "ciclo_caja": -64,
+        "cobertura_intereses": 4.9,
+        "capital_invertido": 34545,
+        "fondo_comercio": 11456,
+        "liquidez_corriente": 0.86
+      }
+    ],
+    "perimetro_nota": "Cambio de perímetro (2022: Suez consolidada desde el 18-ene-2022 (ingresos +50 %): 2021 no es comparable con 2022-2025 [3].). Los ratios de balance de ese año (días, circulante, deuda neta / EBITDA, ROIC) y los indicadores de calidad contable no son comparables con los anteriores.",
+    "flujos": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 3147,
+        "capex": 1895,
+        "pagos_arrendamientos": 579,
+        "fcf": 211,
+        "beneficio_neto": 404,
+        "conversion_pct": 52,
+        "capex_ventas_pct": 6.6,
+        "capex_amortizacion": 0.65,
+        "adquisiciones": 327,
+        "desinversiones": 470,
+        "dividendos": 534,
+        "recompras": 0,
+        "emision_acciones": 2672,
+        "retorno_accionista": 534,
+        "payout_caja_pct": 132,
+        "acciones": null,
+        "fcf_por_accion": null
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 4148,
+        "capex": 2966,
+        "pagos_arrendamientos": 683,
+        "fcf": -270,
+        "beneficio_neto": 716,
+        "conversion_pct": -38,
+        "capex_ventas_pct": 6.9,
+        "capex_amortizacion": 0.74,
+        "adquisiciones": 4009,
+        "desinversiones": 9995,
+        "dividendos": 990,
+        "recompras": 5,
+        "emision_acciones": 227,
+        "retorno_accionista": 995,
+        "payout_caja_pct": 139,
+        "acciones": null,
+        "fcf_por_accion": null
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 5005,
+        "capex": 3394,
+        "pagos_arrendamientos": 631,
+        "fcf": 299,
+        "beneficio_neto": 937,
+        "conversion_pct": 32,
+        "capex_ventas_pct": 7.5,
+        "capex_amortizacion": 0.89,
+        "adquisiciones": 223,
+        "desinversiones": 658,
+        "dividendos": 1261,
+        "recompras": 0,
+        "emision_acciones": 210,
+        "retorno_accionista": 1261,
+        "payout_caja_pct": 135,
+        "acciones": null,
+        "fcf_por_accion": null
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 5038,
+        "capex": 3190,
+        "pagos_arrendamientos": 614,
+        "fcf": 497,
+        "beneficio_neto": 1098,
+        "conversion_pct": 45,
+        "capex_ventas_pct": 7.1,
+        "capex_amortizacion": 0.82,
+        "adquisiciones": 482,
+        "desinversiones": 949,
+        "dividendos": 1218,
+        "recompras": 8,
+        "emision_acciones": 341,
+        "retorno_accionista": 1226,
+        "payout_caja_pct": 112,
+        "acciones": 741,
+        "fcf_por_accion": 0.67
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 5153,
+        "capex": 3212,
+        "pagos_arrendamientos": 556,
+        "fcf": 621,
+        "beneficio_neto": 1217,
+        "conversion_pct": 51,
+        "capex_ventas_pct": 7.2,
+        "capex_amortizacion": 0.84,
+        "adquisiciones": 702,
+        "desinversiones": 59,
+        "dividendos": 1280,
+        "recompras": 402,
+        "emision_acciones": 318,
+        "retorno_accionista": 1682,
+        "payout_caja_pct": 138,
+        "acciones": 732,
+        "fcf_por_accion": 0.85
+      }
+    ],
+    "flujos_acumulado": {
+      "periodo": "2021-2025",
+      "fcf": 1358,
+      "adquisiciones": 5743,
+      "dividendos": 5283,
+      "recompras": 415,
+      "conversion_pct": 31
+    },
+    "rentabilidad": [
+      {
+        "periodo": "2021",
+        "nopat": 812,
+        "capital_invertido": 21338,
+        "roic_pct": 3.8,
+        "roic_sin_fc_pct": 5.4,
+        "fondo_comercio_pct_capital": 29,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 3.5,
+        "roa_pct": 0.8,
+        "margen_neto_pct": 1.4,
+        "rotacion": 0.54,
+        "apalancamiento": 4.61
+      },
+      {
+        "periodo": "2022",
+        "nopat": 1587,
+        "capital_invertido": 26703,
+        "roic_pct": 5.9,
+        "roic_sin_fc_pct": 8.9,
+        "fondo_comercio_pct_capital": 33,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 6,
+        "roa_pct": 1.1,
+        "margen_neto_pct": 1.7,
+        "rotacion": 0.68,
+        "apalancamiento": 5.32
+      },
+      {
+        "periodo": "2023",
+        "nopat": 1979,
+        "capital_invertido": 33023,
+        "roic_pct": 6,
+        "roic_sin_fc_pct": 9.2,
+        "fondo_comercio_pct_capital": 35,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 7.6,
+        "roa_pct": 1.3,
+        "margen_neto_pct": 2.1,
+        "rotacion": 0.62,
+        "apalancamiento": 5.94
+      },
+      {
+        "periodo": "2024",
+        "nopat": 2110,
+        "capital_invertido": 34384,
+        "roic_pct": 6.1,
+        "roic_sin_fc_pct": 9.3,
+        "fondo_comercio_pct_capital": 34,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 8.7,
+        "roa_pct": 1.5,
+        "margen_neto_pct": 2.5,
+        "rotacion": 0.61,
+        "apalancamiento": 5.77
+      },
+      {
+        "periodo": "2025",
+        "nopat": 2398,
+        "capital_invertido": 34668,
+        "roic_pct": 6.9,
+        "roic_sin_fc_pct": 10.4,
+        "fondo_comercio_pct_capital": 34,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 10.2,
+        "roa_pct": 1.7,
+        "margen_neto_pct": 2.7,
+        "rotacion": 0.62,
+        "apalancamiento": 6.04
+      }
+    ],
+    "roic_incremental_pct": 11.9,
+    "roic_frente_wacc": [
+      {
+        "periodo": "2021",
+        "roic_pct": 3.8,
+        "roic_sin_fc_pct": 5.4,
+        "roic_operativo_pct": null,
+        "roe_pct": 3.5,
+        "wacc_pct": 6.3
+      },
+      {
+        "periodo": "2022",
+        "roic_pct": 5.9,
+        "roic_sin_fc_pct": 8.9,
+        "roic_operativo_pct": null,
+        "roe_pct": 6,
+        "wacc_pct": 6.3
+      },
+      {
+        "periodo": "2023",
+        "roic_pct": 6,
+        "roic_sin_fc_pct": 9.2,
+        "roic_operativo_pct": null,
+        "roe_pct": 7.6,
+        "wacc_pct": 6.3
+      },
+      {
+        "periodo": "2024",
+        "roic_pct": 6.1,
+        "roic_sin_fc_pct": 9.3,
+        "roic_operativo_pct": null,
+        "roe_pct": 8.7,
+        "wacc_pct": 6.3
+      },
+      {
+        "periodo": "2025",
+        "roic_pct": 6.9,
+        "roic_sin_fc_pct": 10.4,
+        "roic_operativo_pct": null,
+        "roe_pct": 10.2,
+        "wacc_pct": 6.3
+      }
+    ],
+    "compras": {
+      "tipo": "compra única grande",
+      "subidas": 1,
+      "anios": 4,
+      "fondo_comercio": 11456,
+      "fondo_comercio_pct_capital": 34,
+      "roic_pct": 6.9,
+      "roic_sin_fc_pct": 10.4,
+      "texto": "Fondo de comercio: 11.456 M en 2025 (el 34 % del capital invertido medio); ha subido más de un 5 % en 1 de 4 años: compra única grande. ROIC publicado 6,9 %; sin fondo de comercio, 10,4 %. El ROIC sin fondo de comercio mide el rendimiento del negocio operativo; decide el publicado (§4.1) y la cifra sin fondo de comercio es dato para una excepción razonada."
+    },
+    "calidad": {
+      "periodo": "2025",
+      "altman_z": 0.82,
+      "altman_zona": "Zona de riesgo",
+      "piotroski_f": 7,
+      "piotroski_detalle": [
+        {
+          "criterio": "Beneficio neto positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "ROA mejora",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo > beneficio neto",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Baja el endeudamiento (deuda / activo)",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Mejora la liquidez corriente",
+          "resultado": "No"
+        },
+        {
+          "criterio": "No emite acciones",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora el margen bruto",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora la rotación del activo",
+          "resultado": "Sí"
+        }
+      ],
+      "beneish_m": -2.77,
+      "beneish_fiable": true,
+      "beneish_variables": [
+        {
+          "variable": "DSRI",
+          "valor": 0.99
+        },
+        {
+          "variable": "GMI",
+          "valor": 0.98
+        },
+        {
+          "variable": "AQI",
+          "valor": 1
+        },
+        {
+          "variable": "SGI",
+          "valor": 0.99
+        },
+        {
+          "variable": "DEPI",
+          "valor": 1.04
+        },
+        {
+          "variable": "SGAI",
+          "valor": 0.98
+        },
+        {
+          "variable": "LVGI",
+          "valor": 1.03
+        },
+        {
+          "variable": "TATA",
+          "valor": -0.06
+        }
+      ],
+      "tabla": [
+        {
+          "indicador": "Altman Z",
+          "valor": "0,82",
+          "lectura": "Zona de riesgo (> 2,99 seguro; < 1,81 riesgo). No aplica a bancos ni aseguradoras, y subestima la solvencia de empresas con grandes anticipos de clientes o prefinanciación pública (contratistas, construcción), que inflan el pasivo."
+        },
+        {
+          "indicador": "Piotroski F",
+          "valor": "7 / 9",
+          "lectura": "Fortaleza financiera alta (7-9)."
+        },
+        {
+          "indicador": "Beneish M",
+          "valor": "-2,77",
+          "lectura": "Por debajo de −1,78: sin señal de manipulación."
+        },
+        {
+          "indicador": "Flujo operativo / beneficio neto (acumulado)",
+          "valor": "5,14x",
+          "lectura": "El beneficio se cobra."
+        }
+      ]
+    },
+    "dcf": {
+      "proyeccion": [
+        {
+          "periodo": "2026e",
+          "ingresos": 45728,
+          "crecimiento_pct": 3,
+          "ebitda": 7454,
+          "margen_ebitda_pct": 16.3,
+          "amortizacion": 3521,
+          "ebit": 3933,
+          "impuestos": 1015,
+          "capex": 4710,
+          "variacion_circulante": -104,
+          "fcff": 1833,
+          "fraccion": 0.2,
+          "factor": 0.994,
+          "vp": 359
+        },
+        {
+          "periodo": "2027e",
+          "ingresos": 47557,
+          "crecimiento_pct": 4,
+          "ebitda": 7894,
+          "margen_ebitda_pct": 16.6,
+          "amortizacion": 3662,
+          "ebit": 4233,
+          "impuestos": 1100,
+          "capex": 4898,
+          "variacion_circulante": -165,
+          "fcff": 2060,
+          "fraccion": 1,
+          "factor": 0.958,
+          "vp": 1973
+        },
+        {
+          "periodo": "2028e",
+          "ingresos": 49221,
+          "crecimiento_pct": 3.5,
+          "ebitda": 8269,
+          "margen_ebitda_pct": 16.8,
+          "amortizacion": 3790,
+          "ebit": 4479,
+          "impuestos": 1165,
+          "capex": 5070,
+          "variacion_circulante": -150,
+          "fcff": 2185,
+          "fraccion": 1,
+          "factor": 0.901,
+          "vp": 1968
+        },
+        {
+          "periodo": "2029e",
+          "ingresos": 50846,
+          "crecimiento_pct": 3.3,
+          "ebitda": 8593,
+          "margen_ebitda_pct": 16.9,
+          "amortizacion": 3915,
+          "ebit": 4678,
+          "impuestos": 1216,
+          "capex": 5237,
+          "variacion_circulante": -146,
+          "fcff": 2286,
+          "fraccion": 1,
+          "factor": 0.847,
+          "vp": 1936
+        },
+        {
+          "periodo": "2030e",
+          "ingresos": 52371,
+          "crecimiento_pct": 3,
+          "ebitda": 8903,
+          "margen_ebitda_pct": 17,
+          "amortizacion": 4033,
+          "ebit": 4871,
+          "impuestos": 1266,
+          "capex": 5394,
+          "variacion_circulante": -137,
+          "fcff": 2380,
+          "fraccion": 1,
+          "factor": 0.797,
+          "vp": 1896
+        },
+        {
+          "periodo": "2031e",
+          "ingresos": 53838,
+          "crecimiento_pct": 2.8,
+          "ebitda": 9152,
+          "margen_ebitda_pct": 17,
+          "amortizacion": 4145,
+          "ebit": 5007,
+          "impuestos": 1302,
+          "capex": 5545,
+          "variacion_circulante": -132,
+          "fcff": 2437,
+          "fraccion": 1,
+          "factor": 0.75,
+          "vp": 1826
+        },
+        {
+          "periodo": "2032e",
+          "ingresos": 55237,
+          "crecimiento_pct": 2.6,
+          "ebitda": 9390,
+          "margen_ebitda_pct": 17,
+          "amortizacion": 4253,
+          "ebit": 5137,
+          "impuestos": 1336,
+          "capex": 5689,
+          "variacion_circulante": -126,
+          "fcff": 2491,
+          "fraccion": 1,
+          "factor": 0.705,
+          "vp": 1756
+        },
+        {
+          "periodo": "2033e",
+          "ingresos": 56618,
+          "crecimiento_pct": 2.5,
+          "ebitda": 9625,
+          "margen_ebitda_pct": 17,
+          "amortizacion": 4360,
+          "ebit": 5265,
+          "impuestos": 1369,
+          "capex": 5832,
+          "variacion_circulante": -124,
+          "fcff": 2549,
+          "fraccion": 1,
+          "factor": 0.663,
+          "vp": 1689
+        },
+        {
+          "periodo": "2034e",
+          "ingresos": 57920,
+          "crecimiento_pct": 2.3,
+          "ebitda": 9846,
+          "margen_ebitda_pct": 17,
+          "amortizacion": 4460,
+          "ebit": 5387,
+          "impuestos": 1401,
+          "capex": 5966,
+          "variacion_circulante": -117,
+          "fcff": 2597,
+          "fraccion": 1,
+          "factor": 0.624,
+          "vp": 1619
+        },
+        {
+          "periodo": "2035e",
+          "ingresos": 59195,
+          "crecimiento_pct": 2.2,
+          "ebitda": 10063,
+          "margen_ebitda_pct": 17,
+          "amortizacion": 4558,
+          "ebit": 5505,
+          "impuestos": 1431,
+          "capex": 6097,
+          "variacion_circulante": -115,
+          "fcff": 2649,
+          "fraccion": 1,
+          "factor": 0.587,
+          "vp": 1553
+        }
+      ],
+      "etapa2": null,
+      "suma_vp": 16574,
+      "valor_terminal": 71484,
+      "vp_terminal": 40664,
+      "valor_empresa": 57238,
+      "peso_terminal_pct": 71,
+      "valor_acciones": 25073,
+      "valor_accion": 34.25,
+      "vt_gordon": 62464,
+      "vt_multiplo": 80505,
+      "multiplo_implicito": 6.2,
+      "g_implicito_pct": 2.94,
+      "metodo_terminal": "media",
+      "terminal_tabla": [
+        {
+          "concepto": "Método principal",
+          "valor": "Media de ambos"
+        },
+        {
+          "concepto": "Crecimiento a perpetuidad",
+          "valor": "2,0 %"
+        },
+        {
+          "concepto": "Múltiplo EV/EBITDA de salida",
+          "valor": "8,0x"
+        },
+        {
+          "concepto": "Valor terminal (Gordon)",
+          "valor": "62.464"
+        },
+        {
+          "concepto": "Valor terminal (múltiplo)",
+          "valor": "80.505"
+        },
+        {
+          "concepto": "Múltiplo de salida implícito en Gordon",
+          "valor": "6,2x"
+        },
+        {
+          "concepto": "Crecimiento implícito en el múltiplo",
+          "valor": "2,94 %"
+        },
+        {
+          "concepto": "Peso del valor terminal en el valor empresa",
+          "valor": "71 %"
+        }
+      ],
+      "puente": [
+        {
+          "concepto": "Valor actual de los flujos proyectados",
+          "valor": "16.574"
+        },
+        {
+          "concepto": "Valor actual del valor terminal",
+          "valor": "40.664"
+        },
+        {
+          "concepto": "Valor empresa",
+          "valor": "57.238"
+        },
+        {
+          "concepto": "− Deuda financiera neta (con arrendamientos)",
+          "valor": "-24.448"
+        },
+        {
+          "concepto": "− Minoritarios, pensiones y otros; + asociadas",
+          "valor": "-7.717"
+        },
+        {
+          "concepto": "Valor de los fondos propios",
+          "valor": "25.073"
+        },
+        {
+          "concepto": "Acciones diluidas (millones)",
+          "valor": "732,0"
+        },
+        {
+          "concepto": "Valor por acción",
+          "valor": "34,25"
+        }
+      ],
+      "composicion": [
+        {
+          "parte": "Flujos proyectados",
+          "valor": 16574
+        },
+        {
+          "parte": "Valor terminal",
+          "valor": 40664
+        }
+      ],
+      "wacc": 6.33,
+      "ke": 9.59,
+      "kd_despues": 3.19,
+      "wacc_tabla": [
+        {
+          "concepto": "Tasa libre de riesgo",
+          "valor": "3,49 %"
+        },
+        {
+          "concepto": "Beta",
+          "valor": "1,00"
+        },
+        {
+          "concepto": "Prima de riesgo de mercado",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Prima adicional (país, tamaño, específica)",
+          "valor": "0,60 %"
+        },
+        {
+          "concepto": "Coste de los fondos propios",
+          "valor": "9,59 %"
+        },
+        {
+          "concepto": "Coste de la deuda antes de impuestos",
+          "valor": "4,30 %"
+        },
+        {
+          "concepto": "Tipo impositivo",
+          "valor": "25,80 %"
+        },
+        {
+          "concepto": "Coste de la deuda después de impuestos",
+          "valor": "3,19 %"
+        },
+        {
+          "concepto": "Peso de la deuda (D / (D + E))",
+          "valor": "51,00 %"
+        },
+        {
+          "concepto": "WACC",
+          "valor": "6,33 %"
+        },
+        {
+          "concepto": "Prima de riesgo implícita del mercado (regla relativa)",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "WACC con la prima implícita del mercado",
+          "valor": "5,69 %"
+        }
+      ],
+      "potencial_pct": 7.3,
+      "sensibilidad": {
+        "eje_columnas": "Crecimiento a perpetuidad",
+        "columnas": [
+          "1,0 %",
+          "1,5 %",
+          "2,0 %",
+          "2,5 %",
+          "3,0 %"
+        ],
+        "filas": [
+          {
+            "wacc": "5,3 %",
+            "v0": 40,
+            "v1": 43.58,
+            "v2": 48.22,
+            "v3": 54.51,
+            "v4": 63.51
+          },
+          {
+            "wacc": "5,8 %",
+            "v0": 34.34,
+            "v1": 37.07,
+            "v2": 40.5,
+            "v3": 44.97,
+            "v4": 51.02
+          },
+          {
+            "wacc": "6,3 %",
+            "v0": 29.5,
+            "v1": 31.63,
+            "v2": 34.25,
+            "v3": 37.56,
+            "v4": 41.86
+          },
+          {
+            "wacc": "6,8 %",
+            "v0": 25.29,
+            "v1": 26.99,
+            "v2": 29.04,
+            "v3": 31.56,
+            "v4": 34.74
+          },
+          {
+            "wacc": "7,3 %",
+            "v0": 21.58,
+            "v1": 22.95,
+            "v2": 24.58,
+            "v3": 26.56,
+            "v4": 28.98
+          }
+        ]
+      },
+      "sensibilidad2": {
+        "columnas": [
+          "-2 pp",
+          "-1 pp",
+          "0 pp",
+          "+1 pp",
+          "+2 pp"
+        ],
+        "filas": [
+          {
+            "margen": "-2 pp",
+            "v0": 5.23,
+            "v1": 10.02,
+            "v2": 15.22,
+            "v3": 20.86,
+            "v4": 26.96
+          },
+          {
+            "margen": "-1 pp",
+            "v0": 13.48,
+            "v1": 18.88,
+            "v2": 24.74,
+            "v3": 31.08,
+            "v4": 37.94
+          },
+          {
+            "margen": "0 pp",
+            "v0": 21.72,
+            "v1": 27.74,
+            "v2": 34.25,
+            "v3": 41.3,
+            "v4": 48.92
+          },
+          {
+            "margen": "+1 pp",
+            "v0": 29.97,
+            "v1": 36.6,
+            "v2": 43.77,
+            "v3": 51.52,
+            "v4": 59.9
+          },
+          {
+            "margen": "+2 pp",
+            "v0": 38.21,
+            "v1": 45.45,
+            "v2": 53.28,
+            "v3": 61.74,
+            "v4": 70.88
+          }
+        ]
+      },
+      "rango_min": 26.99,
+      "rango_max": 44.97,
+      "inverso": {
+        "crecimiento_implicito_pct": 2.6,
+        "crecimiento_base_pct": 2.9,
+        "periodo": "2027e-2035e",
+        "margen_implicito_pct": 16.8,
+        "margen_implicito_texto": null,
+        "margen_base_pct": 17,
+        "rentabilidad_implicita_pct": 6.5
+      },
+      "sostenibilidad": {
+        "veredicto": "Sí",
+        "veredicto_motor": "Sí",
+        "motivos_motor": [],
+        "crecimiento_financiable_bruto_pct": null,
+        "roic_implicito_bruto_pct": null,
+        "tcac_ingresos_historica_pct": 11.7,
+        "crecimiento_proyectado_pct": 2.9,
+        "tasa_reinversion_pct": 35,
+        "crecimiento_financiable_pct": 2.4,
+        "roic_pct": 6.9,
+        "roic_incremental_historico_pct": 11.9,
+        "roic_implicito_pct": 13.5,
+        "cuota_actual_pct": null,
+        "cuota_final_pct": null,
+        "puente": [
+          {
+            "periodo": "2026e",
+            "volumen_pct": 1,
+            "precio_pct": 1.5,
+            "otros_pct": 0.5,
+            "comentario": "Orgánico del 1-2 % con la energía a la baja (precio +1,5, volumen +1,0), perímetro de Clean Earth y Enviropacific (+2) y divisa (−1,5): otros +0,5 [4].",
+            "suma_pct": 3,
+            "crecimiento_pct": 3
+          },
+          {
+            "periodo": "2027e",
+            "volumen_pct": 1.5,
+            "precio_pct": 1.5,
+            "otros_pct": 1,
+            "comentario": "Volumen +1,5 y precio +1,5 (indexación con la inflación del 2 %, algo menos en energía), y un punto de arrastre de Clean Earth.",
+            "suma_pct": 4,
+            "crecimiento_pct": 4
+          },
+          {
+            "periodo": "2028e",
+            "volumen_pct": 1.5,
+            "precio_pct": 2,
+            "otros_pct": 0,
+            "comentario": "Solo orgánico: volumen +1,5 (residuos peligrosos y agua industrial) y precio +2,0.",
+            "suma_pct": 3.5,
+            "crecimiento_pct": 3.5
+          },
+          {
+            "periodo": "2029e",
+            "volumen_pct": 1.3,
+            "precio_pct": 2,
+            "otros_pct": 0,
+            "comentario": "Volumen +1,3 y precio +2,0.",
+            "suma_pct": 3.3,
+            "crecimiento_pct": 3.3
+          },
+          {
+            "periodo": "2030e",
+            "volumen_pct": 1,
+            "precio_pct": 2,
+            "otros_pct": 0,
+            "comentario": "Volumen +1,0 y precio +2,0, la inflación de las fórmulas.",
+            "suma_pct": 3,
+            "crecimiento_pct": 3
+          }
+        ],
+        "texto": "La proyección reinvierte el 35 % del NOPAT. Con el ROIC del último ejercicio (6,9 %), eso financia un crecimiento del 2,4 % anual, frente al 2,9 % de ingresos proyectado. Supone que el capital nuevo rinde un 13,5 %, frente a un ROIC incremental histórico del 11,9 %.",
+        "tabla": [
+          {
+            "concepto": "Crecimiento medio de ingresos proyectado",
+            "valor": "2,9 %"
+          },
+          {
+            "concepto": "Capex bruto medio (incluidas compras si van como inversión)",
+            "valor": "10,3 % de las ventas"
+          },
+          {
+            "concepto": "Reinversión neta acumulada (capex − amortización + circulante)",
+            "valor": "12.425 M (35 % del NOPAT)"
+          },
+          {
+            "concepto": "Crecimiento que financia esa reinversión al ROIC actual",
+            "valor": "2,4 % (ROIC 6,9 %)"
+          },
+          {
+            "concepto": "Crecimiento histórico de ingresos (TCAC)",
+            "valor": "11,7 % frente al 2,9 % proyectado"
+          },
+          {
+            "concepto": "Veredicto de las pruebas del motor",
+            "valor": "Sí"
+          },
+          {
+            "concepto": "Rendimiento que la proyección supone para el capital nuevo",
+            "valor": "13,5 % (histórico: 11,9 %)"
+          }
+        ]
+      }
+    },
+    "escenarios": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "narrativa": "La subida de los tipos y del riesgo país francés se mantiene, los ayuntamientos franceses aprietan en las renovaciones y la industria europea sigue floja: un punto menos de crecimiento al año y un punto menos de margen (el EBITDA vuelve al 15-16 %), con un WACC medio punto más alto. Con la deuda que tiene, el valor del accionista cae a 10 EUR.",
+        "crecimiento_medio_pct": 1.9,
+        "margen_final_pct": 16,
+        "wacc_pct": 6.8,
+        "valor": 10.07,
+        "potencial_pct": -68.5
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "narrativa": "Se cumple la guía de 2026 y el plan GreenUp en su parte baja: crecimiento con la inflación (≈3 %), margen EBITDA que sube al 17 % en 2030 con los ahorros y Clean Earth integrada.",
+        "crecimiento_medio_pct": 2.9,
+        "margen_final_pct": 17,
+        "wacc_pct": 6.3,
+        "valor": 34.25,
+        "potencial_pct": 7.3
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "narrativa": "El agua para la industria y los centros de datos, los PFAS y los residuos peligrosos crecen más de lo previsto y las ventas de activos se hacen a buen precio: un punto más de crecimiento, medio punto más de margen y un múltiplo de salida de 9 veces.",
+        "crecimiento_medio_pct": 3.9,
+        "margen_final_pct": 17.5,
+        "wacc_pct": 6.1,
+        "valor": 54.41,
+        "potencial_pct": 70.4
+      }
+    ],
+    "valor_ponderado": 33.24,
+    "potencial_ponderado_pct": 4.1,
+    "comparables": {
+      "tabla": [
+        {
+          "nombre": "Veolia",
+          "ticker": "VIE",
+          "pais": "FR",
+          "capitalizacion": 23373,
+          "ev_ventas": 1.25,
+          "ev_ebitda_ltm": 7.7,
+          "ev_ebitda_ntm": 7.1,
+          "per_ntm": 12.3,
+          "crecimiento_pct": 5.8,
+          "margen_ebitda_pct": 16.2,
+          "roic_pct": 6.9,
+          "dn_ebitda": 3.4,
+          "fcf_yield_pct": 5.7,
+          "es_objetivo": true
+        },
+        {
+          "nombre": "Hera",
+          "ticker": "HER.MI",
+          "pais": "IT",
+          "capitalizacion": 5148,
+          "ev_ventas": 0.78,
+          "ev_ebitda_ltm": 7,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 10.6,
+          "crecimiento_pct": 1.7,
+          "margen_ebitda_pct": 11.2,
+          "roic_pct": null,
+          "dn_ebitda": 3.2,
+          "fcf_yield_pct": 0.3,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Acea",
+          "ticker": "ACE.MI",
+          "pais": "IT",
+          "capitalizacion": 4236,
+          "ev_ventas": 3.51,
+          "ev_ebitda_ltm": 8.2,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 12.6,
+          "crecimiento_pct": 23.3,
+          "margen_ebitda_pct": 42.6,
+          "roic_pct": null,
+          "dn_ebitda": 4.4,
+          "fcf_yield_pct": -8.9,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Iren",
+          "ticker": "IRE.MI",
+          "pais": "IT",
+          "capitalizacion": 3067,
+          "ev_ventas": 1.23,
+          "ev_ebitda_ltm": 6.5,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 9.8,
+          "crecimiento_pct": 11,
+          "margen_ebitda_pct": 18.9,
+          "roic_pct": null,
+          "dn_ebitda": 3.7,
+          "fcf_yield_pct": 19.6,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "A2A",
+          "ticker": "A2A.MI",
+          "pais": "IT",
+          "capitalizacion": 7436,
+          "ev_ventas": 0.89,
+          "ev_ebitda_ltm": 6.6,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 11.3,
+          "crecimiento_pct": -9.6,
+          "margen_ebitda_pct": 13.4,
+          "roic_pct": null,
+          "dn_ebitda": 2.8,
+          "fcf_yield_pct": -2.9,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Séché Environnement",
+          "ticker": "SCHP.PA",
+          "pais": "FR",
+          "capitalizacion": 540,
+          "ev_ventas": 1.17,
+          "ev_ebitda_ltm": 8.4,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 11.3,
+          "crecimiento_pct": 8.4,
+          "margen_ebitda_pct": 14,
+          "roic_pct": null,
+          "dn_ebitda": 4.2,
+          "fcf_yield_pct": 10.2,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Severn Trent",
+          "ticker": "SVT.L",
+          "pais": "GB",
+          "capitalizacion": 11315,
+          "ev_ventas": 6.96,
+          "ev_ebitda_ltm": 15.1,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 13.6,
+          "crecimiento_pct": 17.4,
+          "margen_ebitda_pct": 46.2,
+          "roic_pct": null,
+          "dn_ebitda": 7.8,
+          "fcf_yield_pct": -12.3,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "United Utilities",
+          "ticker": "UU.L",
+          "pais": "GB",
+          "capitalizacion": 12968,
+          "ev_ventas": 7.88,
+          "ev_ebitda_ltm": 12.9,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 13.6,
+          "crecimiento_pct": 8.6,
+          "margen_ebitda_pct": 61.1,
+          "roic_pct": null,
+          "dn_ebitda": 6.1,
+          "fcf_yield_pct": -4.7,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "American Water Works",
+          "ticker": "AWK",
+          "pais": "US",
+          "capitalizacion": 23647,
+          "ev_ventas": 8.02,
+          "ev_ebitda_ltm": 14.6,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 20.6,
+          "crecimiento_pct": 8.1,
+          "margen_ebitda_pct": 55.1,
+          "roic_pct": null,
+          "dn_ebitda": 5.4,
+          "fcf_yield_pct": -6.7,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Republic Services",
+          "ticker": "RSG",
+          "pais": "US",
+          "capitalizacion": 62478,
+          "ev_ventas": 4.99,
+          "ev_ebitda_ltm": 16,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 28.9,
+          "crecimiento_pct": 6.7,
+          "margen_ebitda_pct": 31.1,
+          "roic_pct": null,
+          "dn_ebitda": 2.7,
+          "fcf_yield_pct": 2.8,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Clean Harbors",
+          "ticker": "CLH",
+          "pais": "US",
+          "capitalizacion": 14889,
+          "ev_ventas": 3.11,
+          "ev_ebitda_ltm": 16.2,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 31.3,
+          "crecimiento_pct": 10.8,
+          "margen_ebitda_pct": 19.2,
+          "roic_pct": null,
+          "dn_ebitda": 2.3,
+          "fcf_yield_pct": 2.3,
+          "es_objetivo": false
+        }
+      ],
+      "estadisticos": [
+        {
+          "estadistico": "Mediana",
+          "ev_ventas": 3.3,
+          "ev_ebitda_ltm": 10.7,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 13.1,
+          "crecimiento_pct": 8.5,
+          "margen_ebitda_pct": 25.2,
+          "roic_pct": null,
+          "dn_ebitda": 4,
+          "fcf_yield_pct": -1.3
+        },
+        {
+          "estadistico": "Media",
+          "ev_ventas": 3.9,
+          "ev_ebitda_ltm": 11.2,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 16.4,
+          "crecimiento_pct": 8.6,
+          "margen_ebitda_pct": 31.3,
+          "roic_pct": null,
+          "dn_ebitda": 4.3,
+          "fcf_yield_pct": 0
+        },
+        {
+          "estadistico": "Percentil 25",
+          "ev_ventas": 1.2,
+          "ev_ebitda_ltm": 7.3,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 11.3,
+          "crecimiento_pct": 7.1,
+          "margen_ebitda_pct": 15.2,
+          "roic_pct": null,
+          "dn_ebitda": 2.9,
+          "fcf_yield_pct": -6.2
+        },
+        {
+          "estadistico": "Percentil 75",
+          "ev_ventas": 6.5,
+          "ev_ebitda_ltm": 15,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 18.9,
+          "crecimiento_pct": 11,
+          "margen_ebitda_pct": 45.3,
+          "roic_pct": null,
+          "dn_ebitda": 5.2,
+          "fcf_yield_pct": 2.7
+        }
+      ],
+      "implicito": [
+        {
+          "metodo": "EV/EBITDA últimos 12 meses",
+          "metrica_empresa": 7235,
+          "multiplo_p25": 7.3,
+          "multiplo_mediana": 10.7,
+          "multiplo_p75": 15,
+          "multiplos": "7,3x / 10,7x / 15,0x",
+          "valor_p25": 28.21,
+          "valor_mediana": 61.32,
+          "valor_p75": 104.07,
+          "potencial_pct": 92
+        },
+        {
+          "metodo": "PER próximos 12 meses",
+          "metrica_empresa": 2.59,
+          "multiplo_p25": 11.3,
+          "multiplo_mediana": 13.1,
+          "multiplo_p75": 18.9,
+          "multiplos": "11,3x / 13,1x / 18,9x",
+          "valor_p25": 29.32,
+          "valor_mediana": 33.99,
+          "valor_p75": 48.91,
+          "potencial_pct": 6.5
+        },
+        {
+          "metodo": "EV/Ventas últimos 12 meses",
+          "metrica_empresa": 44541,
+          "multiplo_p25": 1.2,
+          "multiplo_mediana": 3.3,
+          "multiplo_p75": 6.5,
+          "multiplos": "1,2x / 3,3x / 6,5x",
+          "valor_p25": 28.16,
+          "valor_mediana": 157.47,
+          "valor_p75": 349.6,
+          "potencial_pct": 393.2
+        }
+      ],
+      "regresion": null,
+      "n": 10
+    },
+    "transacciones": {
+      "n": 3,
+      "metrica": "EV/ventas",
+      "mediana_ev_ebitda": null,
+      "p25_ev_ebitda": null,
+      "p75_ev_ebitda": null,
+      "mediana_ev_ventas": 1.01,
+      "prima_mediana_pct": null,
+      "valor_p25": 14.47,
+      "valor_mediana": 17.52,
+      "valor_p75": 75.32
+    },
+    "suma_partes": {
+      "partes": [
+        {
+          "segmento": "Francia y residuos peligrosos de Europa",
+          "metrica": "EBITDA 2025",
+          "valor_metrica": 1475,
+          "multiplo": 8,
+          "ev_directo": null,
+          "justificacion": "Agua delegada y residuos en Francia y residuos peligrosos en Europa: entre Séché (≈7 veces) y las utilities de agua regulada (11-13 veces) [12, 22].",
+          "ev": 11800
+        },
+        {
+          "segmento": "Europa",
+          "metrica": "EBITDA 2025",
+          "valor_metrica": 2758,
+          "multiplo": 7.5,
+          "ev_directo": null,
+          "justificacion": "Redes de calor, agua y residuos en Europa central, Alemania, Reino Unido, España e Italia: al nivel de Hera, Iren y A2A (7-8 veces) [22].",
+          "ev": 20685
+        },
+        {
+          "segmento": "Resto del mundo",
+          "metrica": "EBITDA 2025",
+          "valor_metrica": 2009,
+          "multiplo": 8.5,
+          "ev_directo": null,
+          "justificacion": "EE. UU., Latinoamérica, Asia y Oriente Medio: más crecimiento y más riesgo país; entre las europeas y las de EE. UU.",
+          "ev": 17077
+        },
+        {
+          "segmento": "Tecnologías del Agua",
+          "metrica": "EBITDA 2025",
+          "valor_metrica": 669,
+          "multiplo": 11,
+          "ev_directo": null,
+          "justificacion": "Equipos, química y servicios de tratamiento de agua: por debajo de los especialistas cotizados por su margen (13,5 %) y por encima de lo pagado por el 30 % de WTS (≈8 veces) [1].",
+          "ev": 7359
+        },
+        {
+          "segmento": "Clean Earth",
+          "metrica": "Precio pagado (junio de 2026)",
+          "valor_metrica": 2600,
+          "multiplo": 1,
+          "ev_directo": 2600,
+          "justificacion": "Al precio pagado (3.000 M USD), que el mercado valida: Clean Harbors cotiza a más de 15 veces el EBITDA [9, 22].",
+          "ev": 2600
+        },
+        {
+          "segmento": "Otros y holding",
+          "metrica": "EBITDA 2025",
+          "valor_metrica": 139,
+          "multiplo": 6,
+          "ev_directo": null,
+          "justificacion": "Resultado de las actividades centrales y de servicios compartidos.",
+          "ev": 834
+        }
+      ],
+      "ev_total": 57337,
+      "valor_accion": 34.39,
+      "valor_min": 22.64,
+      "valor_max": 46.14,
+      "potencial_pct": 7.7
+    },
+    "multiplos_historicos": [
+      {
+        "metrica": "PER últimos 12 meses (cierre de cada año)",
+        "campo": "per_ltm",
+        "actual": 20.7,
+        "media": 22.3,
+        "minimo": 19.3,
+        "maximo": 49.6,
+        "percentil": 40,
+        "prima_pct": -7,
+        "anios": 5
+      },
+      {
+        "metrica": "PER próximos 12 meses",
+        "campo": "per_ntm",
+        "actual": 12.3,
+        "media": 13.3,
+        "minimo": 12.7,
+        "maximo": 20.3,
+        "percentil": 0,
+        "prima_pct": -7,
+        "anios": 6
+      }
+    ],
+    "multiplos_serie": [],
+    "multiplos_titulo": null,
+    "consenso_vs_propio": [
+      {
+        "periodo": "2026e",
+        "ingresos_propio": 45728,
+        "ingresos_consenso": 46261,
+        "ingresos_dif_pct": -1.2,
+        "ebitda_propio": 7454,
+        "ebitda_consenso": 7481,
+        "ebitda_dif_pct": -0.4
+      },
+      {
+        "periodo": "2027e",
+        "ingresos_propio": 47557,
+        "ingresos_consenso": 48347,
+        "ingresos_dif_pct": -1.6,
+        "ebitda_propio": 7894,
+        "ebitda_consenso": 7954,
+        "ebitda_dif_pct": -0.8
+      },
+      {
+        "periodo": "2028e",
+        "ingresos_propio": 49221,
+        "ingresos_consenso": 50038,
+        "ingresos_dif_pct": -1.6,
+        "ebitda_propio": 8269,
+        "ebitda_consenso": 8295,
+        "ebitda_dif_pct": -0.3
+      }
+    ],
+    "gobierno": {
+      "n_consejeros": 15,
+      "independientes_pct": 60,
+      "antiguedad_media": 6.3,
+      "composicion": [
+        {
+          "tipo": "Otro externo",
+          "num": 5
+        },
+        {
+          "tipo": "Ejecutivo",
+          "num": 1
+        },
+        {
+          "tipo": "Independiente",
+          "num": 9
+        }
+      ],
+      "checklist": [
+        {
+          "criterio": "Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)",
+          "resultado": "Cumple",
+          "valor": "60 %"
+        },
+        {
+          "criterio": "Presidencia sin vínculo familiar ni profesional con el accionista de control",
+          "resultado": "Cumple",
+          "valor": "Sin control"
+        },
+        {
+          "criterio": "Presidente no ejecutivo, o consejero coordinador independiente",
+          "resultado": "Cumple",
+          "valor": "No ejecutivo"
+        },
+        {
+          "criterio": "Comisión de auditoría con mayoría de independientes y presidida por uno",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Ningún consejero «otro externo» con más de 12 años",
+          "resultado": "No cumple",
+          "valor": "Antoine Frérot, Maryse Aulagnon"
+        },
+        {
+          "criterio": "Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses",
+          "resultado": "Cumple",
+          "valor": "0 cambios"
+        },
+        {
+          "criterio": "Peor voto a favor sobre remuneración (3 juntas) ≥ 80 %",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Una acción, un voto, sin blindajes ni límites de voto estatutarios",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Sin operaciones vinculadas relevantes",
+          "resultado": "Cumple",
+          "valor": "No hay"
+        },
+        {
+          "criterio": "Auditor con 10 años o menos en el cargo",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Opinión de auditoría sin salvedades",
+          "resultado": "Cumple",
+          "valor": "Favorable (cuentas 2025) [3]"
+        },
+        {
+          "criterio": "Directivos compradores netos en 12 meses (o sin ventas relevantes)",
+          "resultado": "No cumple",
+          "valor": "Compras 0,00 / ventas 0,46 M"
+        }
+      ],
+      "puntuacion": "9 de 13 (2 sin dato)",
+      "puntuacion_pct": 69,
+      "compras_insiders": 0,
+      "ventas_insiders": 0.46
+    },
+    "competidores_margen": [
+      {
+        "nombre": "Veolia",
+        "margen_ebit_pct": 7.2
+      },
+      {
+        "nombre": "Suez (nueva Suez, no cotizada)",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Hera",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Séché Environnement",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Clean Harbors",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Republic Services",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "A2A",
+        "margen_ebit_pct": null
+      }
+    ],
+    "sintesis": {
+      "formato_eje": "#,##0.0",
+      "rangos": [
+        {
+          "metodo": "Cotización 52 semanas",
+          "etiqueta": "Cotización 52 semanas (27,85 – 37,66)",
+          "min": 27.85,
+          "central": 31.93,
+          "max": 37.66,
+          "gris": true
+        },
+        {
+          "metodo": "Precio objetivo de los analistas",
+          "etiqueta": "Precio objetivo de los analistas (33,00 – 45,30)",
+          "min": 33,
+          "central": 38.56,
+          "max": 45.3,
+          "gris": true
+        },
+        {
+          "metodo": "Comparables: PER NTM",
+          "etiqueta": "Comparables: PER NTM (29,32 – 48,91)",
+          "min": 29.32,
+          "central": 33.99,
+          "max": 48.91,
+          "gris": false
+        },
+        {
+          "metodo": "Transacciones precedentes (EV/ventas)",
+          "etiqueta": "Transacciones precedentes (EV/ventas) (14,47 – 75,32)",
+          "min": 14.47,
+          "central": 17.52,
+          "max": 75.32,
+          "gris": false
+        },
+        {
+          "metodo": "DCF (WACC y g ± 0,5)",
+          "etiqueta": "DCF (WACC y g ± 0,5) (26,99 – 44,97)",
+          "min": 26.99,
+          "central": 34.25,
+          "max": 44.97,
+          "gris": false
+        },
+        {
+          "metodo": "Escenarios (bajista – alcista)",
+          "etiqueta": "Escenarios (bajista – alcista) (10,07 – 54,41)",
+          "min": 10.07,
+          "central": 33.24,
+          "max": 54.41,
+          "gris": false
+        },
+        {
+          "metodo": "Suma de partes",
+          "etiqueta": "Suma de partes (22,64 – 46,14)",
+          "min": 22.64,
+          "central": 34.39,
+          "max": 46.14,
+          "gris": false
+        },
+        {
+          "metodo": "DCF con la prima del mercado",
+          "etiqueta": "DCF con la prima implícita del mercado (4,2 %)",
+          "min": 35.85,
+          "central": 42.45,
+          "max": 50.68
+        },
+        {
+          "metodo": "Precio actual",
+          "etiqueta": "Precio actual (31,93)",
+          "min": 31.77,
+          "central": 31.93,
+          "max": 32.09,
+          "gris": true
+        }
+      ],
+      "tabla": [
+        {
+          "metodo": "DCF",
+          "valor": 34.25,
+          "peso_pct": 60,
+          "potencial_pct": 7.3
+        },
+        {
+          "metodo": "Comparables (mediana EV/EBITDA y PER) (no se usa)",
+          "valor": 33.99,
+          "peso_pct": 0,
+          "potencial_pct": 6.5
+        },
+        {
+          "metodo": "Transacciones precedentes (no se usa)",
+          "valor": 17.52,
+          "peso_pct": 0,
+          "potencial_pct": -45.1
+        },
+        {
+          "metodo": "Suma de partes (no se usa)",
+          "valor": 34.39,
+          "peso_pct": 0,
+          "potencial_pct": 7.7
+        },
+        {
+          "metodo": "Escenarios ponderados",
+          "valor": 33.24,
+          "peso_pct": 40,
+          "potencial_pct": 4.1
+        }
+      ],
+      "valor_objetivo": 33.85,
+      "potencial_pct": 6
+    },
+    "fuentes": {
+      "n_fuentes": 29,
+      "n_primarias": 10,
+      "por_tipo": [
+        {
+          "tipo": "Primaria",
+          "num": 10
+        },
+        {
+          "tipo": "Sectorial",
+          "num": 1
+        },
+        {
+          "tipo": "Datos de mercado",
+          "num": 10
+        },
+        {
+          "tipo": "Prensa",
+          "num": 4
+        },
+        {
+          "tipo": "Analistas",
+          "num": 2
+        },
+        {
+          "tipo": "Foros y redes",
+          "num": 2
+        }
+      ],
+      "n_citadas": 28,
+      "citas_sin_fuente": [],
+      "fuentes_sin_citar": [
+        "8"
+      ]
+    },
+    "controles": [
+      {
+        "control": "BAI − impuestos − minoritarios = beneficio neto (2022)",
+        "resultado": "Explicado",
+        "detalle": "Diferencia de 78 (¿operaciones interrumpidas?). Explicación: La diferencia (78 M) es el resultado de actividades interrumpidas (venta de activos de Suez y del negocio EPC), que va debajo del resultado de las operaciones continuadas [1, 6]."
+      },
+      {
+        "control": "BAI − impuestos − minoritarios = beneficio neto (2024)",
+        "resultado": "Explicado",
+        "detalle": "Diferencia de 103 (¿operaciones interrumpidas?). Explicación: Diferencia de 103 M por el resultado de actividades interrumpidas, sobre todo el negocio EPC (ingeniería y construcción) abandonado en todas las geografías [2]."
+      },
+      {
+        "control": "BAI − impuestos − minoritarios = beneficio neto (2025)",
+        "resultado": "Explicado",
+        "detalle": "Diferencia de 118 (¿operaciones interrumpidas?). Explicación: Diferencia de 118 M por la misma razón: pérdidas de actividades interrumpidas (EPC) [2]."
+      },
+      {
+        "control": "BPA = beneficio neto / acciones (2025)",
+        "resultado": "Explicado",
+        "detalle": "1,66 calculado frente a 1,54 publicado (con convertibles, el BPA diluido publicado ajusta el numerador: explícalo si la diferencia viene de ahí). Explicación: El BPA publicado (1,54 EUR) resta del numerador los cupones de los híbridos (121 M brutos en 2025, ≈90 M netos de impuestos) y usa las acciones medias (729 M), no las diluidas al cierre: (1.217 − 90) / 729 = 1,55 [1, 2]."
+      },
+      {
+        "control": "Geografías suman 100 %",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "DCF inverso calculable",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Puente de ingresos (volumen + precio + otros) = crecimiento del DCF",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Veredicto de sostenibilidad del analista coherente con las pruebas del motor",
+        "resultado": "OK",
+        "detalle": "El analista dice «Sí» y las pruebas del motor dan «Sí»: razónalo en la justificación."
+      },
+      {
+        "control": "Rendimiento del capital nuevo de la proyección ≤ 1,25 × el histórico",
+        "resultado": "OK",
+        "detalle": "La proyección supone que la inversión nueva rinde un 13,5 % frente a un ROIC de 6,9 % y un incremental histórico de 11,9 %: crecimiento que la empresa no ha demostrado poder comprar."
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "resultado": "OK",
+        "detalle": "Supuesto -9,0 % frente a -9,0 % real: genera una variación de circulante de -104 M en el primer año. Converge de forma gradual."
+      },
+      {
+        "control": "Peso del valor terminal ≤ 80 % del valor empresa",
+        "resultado": "OK",
+        "detalle": "71 %."
+      },
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "resultado": "OK",
+        "detalle": "2,00 %."
+      },
+      {
+        "control": "Probabilidades de los escenarios suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 5 comparables",
+        "resultado": "OK",
+        "detalle": "10 comparables."
+      },
+      {
+        "control": "Pesos de la síntesis suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Crecimiento del BPA base ≤ 25 % anual desde el último real",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Precio del cierre de la fecha de corte (o de las dos sesiones anteriores)",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Recomendación coherente con la regla de decisión",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "La síntesis explica la convicción",
+        "resultado": "OK",
+        "detalle": "La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría."
+      },
+      {
+        "control": "Capitalización calculada ≈ publicada",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 25 fuentes",
+        "resultado": "OK",
+        "detalle": "29 fuentes (10 primarias)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "resultado": "OK",
+        "detalle": "10."
+      },
+      {
+        "control": "Toda cita [n] existe en fuentes",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Fuentes sin citar ≤ 15 %",
+        "resultado": "OK",
+        "detalle": "Sin citar: 8."
+      }
+    ],
+    "controles_resumen": "20 de 24 controles correctos y 4 explicados"
+  }
+}

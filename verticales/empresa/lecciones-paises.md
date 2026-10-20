@@ -23,6 +23,9 @@ Lee solo la sección del país que toque.
 - MFN (`mfn.se/one/a/<empresa>/…`) da los comunicados de resultados con estados completos en HTML.
 - Operaciones de directivos: API de BDIF de la AMF (`bdif.amf-france.org/back/api/v1/informations?RechercheTexte=<EMISOR>&TypesInformation=DD&From=0&Size=40`; PDF en `/back/api/v1/documents/<path>`).
 - Emisores neerlandeses que cotizan en París: participaciones y operaciones de directivos en el registro de la AFM (CSV), no en la BDIF.
+- ESEF 2025 que no está en filings.xbrl.org: va dentro del zip del URD en la BDIF de la AMF (extractor iXBRL). `--esef "Orange"` coge Orange Polska: pasar el LEI (969500MCOONR8990S771).
+- Cierre de París que Yahoo aún no tiene a primera hora: CSV de Euronext (`live.euronext.com/en/ajax/AwlHistoricalPrice/getFullDownloadAjax/<ISIN>-XPAR`) o `previousClose` del gráfico de Yahoo. Comunicados completos con la web bloqueada: bourse.lavenir.net.
+- Riesgo país (oct-2026, diferencial OAT-Bund ≈1,45-1,60): dar en el comentario del DCF el valor con la OAT en vez del Bund (en las endeudadas cae un 20-35 %), sin sumar además la prima por Francia; para separar riesgo país de causa propia, comparar desde el 31-jul con el CAC 40 y con las domésticas (BNP, Orange, Engie), no solo con el STOXX 600.
 
 ## Alemania
 - `^GDAXI` ya es de rentabilidad total aunque `bolsa.mjs` lo trate como índice de precio: usa `EXS1.DE`.
