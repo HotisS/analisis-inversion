@@ -33,7 +33,7 @@ Cada decisión se toma **1 día hábil después de publicar las cuentas anuales*
 
 1. **Nivel A gana al índice, pero poco y sin seguridad.**
    - En media gana +5,9 puntos al año, +4,3 más que el conjunto de todas las empresas.
-   - El intervalo del 90 % va de −0,3 a +9,6 puntos (remuestreo por empresa), así que casi es significativo, pero no del todo.
+   - El intervalo del 90 % va de −0,3 a +9,6 puntos (remuestreo por empresa). Dicho en llano: si repitiéramos la prueba muchas veces con otras empresas parecidas, en unas 6 de cada 100 la ventaja de A saldría cero o negativa (p ≈ 0,06). El listón habitual es 5 de cada 100, así que casi llega, pero no del todo.
    - En mediana gana +0,9 puntos y bate al índice el 52 % de las veces. Ganó en 9 de los 14 años, y aguanta igual en las dos validaciones: +0,9 puntos de exceso mediano por empresas y +0,9 en 2019-2025.
 2. **Lo que funciona es la calidad, no los números.**
    - Las empresas con números de A pero sin calidad quedan por debajo del índice: −3,2 puntos de mediana, y el 23 % pierde más de un 10 %.
@@ -77,3 +77,66 @@ Cada decisión se toma **1 día hábil después de publicar las cuentas anuales*
   - Solo 120 empresas del S&P 400 tenían su ficha de la SEC a mano.
   - Hay una decisión al año por empresa.
 - **Frente al backtest de niveles de esta mañana** (A +26,6 %, 56 casos): aquel medía la rentabilidad absoluta al cierre del ejercicio. Aquí, con la fecha real y frente al índice, la ventaja es mucho menor.
+
+## Anexo (añadido el mismo día a petición del coordinador)
+
+**Preregistro**: las reglas, los grupos, las mejoras y el criterio se fijaron en el commit 3d157d2 a las 16:21 UTC, antes de descargar los datos. Los resultados van en el commit 3d51351.
+
+**Las empresas con informe**: hay 303, de las que 289 tienen símbolo de Yahoo. Con 183 de ellas salen 462 decisiones medibles. Las ≈520 del diseño contaban también las decisiones de 2025, que aún no tienen 12 meses, y las que no tienen precio diario de Yahoo. Muchas solo tienen 5 años de cuentas y necesitan 3 de historia del PER antes de cada decisión. Sin calidad con fecha, solo se miden por números (tabla 5 de los resultados).
+
+**Lectura del ajuste frente a la validación**:
+- **A aguanta en las cuatro partes**: entre +0,9 y +1,2 puntos de exceso mediano y entre +17,8 % y +20,6 % de rentabilidad mediana absoluta.
+- **B2 queda por debajo del índice en las cuatro**, y sobre todo en 2019-2025 (−12,9).
+- **B1 no es estable**: −5,4 en la mitad de ajuste y +1,6 en la de validación.
+- **C tiene 15-27 casos por parte**, demasiado pocos.
+- **Vender queda igual o por encima de Mantener en las cuatro partes.**
+
+**Año a año**: A bate al SPY en 9 de 14 años. Sus peores años son 2014 (−15,5), 2019 (−10,3), 2015 (−10,1) y 2017 (−10,1). Mantener tiene su peor año en 2023 (−16,5), el año del rally de las grandes tecnológicas.
+
+### Ajuste frente a validación (EE. UU.)
+
+Cada celda: rentabilidad mediana absoluta · exceso mediano frente al SPY · casos.
+
+| Grupo | Ajuste: mitad de empresas | Validación: otra mitad | Ajuste: 2012-2018 | Validación: 2019-2025 |
+|---|--:|--:|--:|--:|
+| A | +18,7 % · +1,2 · 69 | +20,6 % · +0,9 · 84 | +17,8 % · +1,1 · 76 | +19,9 % · +0,9 · 77 |
+| B1 | +13,5 % · -5,4 · 54 | +14,7 % · +1,6 · 55 | +13,9 % · -0,1 · 43 | +15,0 % · -1,0 · 66 |
+| B2 | +15,3 % · -2,8 · 39 | +12,2 % · -5,3 · 51 | +17,0 % · -0,7 · 36 | +5,5 % · -12,9 · 54 |
+| C | +21,4 % · -2,9 · 20 | +15,4 % · +2,6 · 22 | +22,5 % · +2,5 · 15 | +17,5 % · +1,5 · 27 |
+| Buenos números sin calidad | +13,4 % · -2,0 · 249 | +8,8 % · -1,8 · 216 | +16,1 % · +0,9 · 206 | +8,9 % · -5,5 · 259 |
+| Mantener | +14,1 % · -1,4 · 540 | +11,4 % · -1,9 · 490 | +17,3 % · +2,3 · 348 | +11,4 % · -4,0 · 682 |
+| Vender | +13,2 % · +0,6 · 1615 | +14,4 % · +0,2 · 1577 | +14,9 % · +2,1 · 1504 | +12,8 % · -2,0 · 1688 |
+| Todas | +13,4 % · -0,1 · 2586 | +13,7 % · -0,4 · 2495 | +15,4 % · +1,9 · 2228 | +12,0 % · -2,8 · 2853 |
+
+### Año a año (EE. UU.): A y Mantener
+
+Rentabilidad mediana absoluta · exceso mediano frente al SPY · casos.
+
+| Año de decisión | A | Mantener | SPY (mediana de las fechas) |
+|---|--:|--:|--:|
+| 2012 | +30,0 % · +4,0 · 7 | +21,4 % · +0,7 · 20 | +26,1 % |
+| 2013 | +31,7 % · +7,9 · 14 | +21,8 % · -2,2 · 62 | +24,1 % |
+| 2014 | -1,1 % · -15,5 · 10 | +10,0 % · +0,8 · 44 | +16,0 % |
+| 2015 | -15,3 % · -10,1 · 6 | -2,5 % · +0,2 · 43 | -5,7 % |
+| 2016 | +41,8 % · +19,1 · 13 | +25,5 % · +3,9 · 69 | +24,0 % |
+| 2017 | +7,8 % · -10,1 · 9 | +23,5 % · +6,3 · 53 | +16,8 % |
+| 2018 | +18,1 % · +9,4 · 17 | +12,2 % · +6,4 · 57 | +4,5 % |
+| 2019 | +3,6 % · -10,3 · 17 | +10,0 % · -5,4 · 101 | +16,5 % |
+| 2020 | +31,3 % · +10,0 · 9 | +23,1 % · -2,6 · 85 | +25,0 % |
+| 2021 | +13,2 % · -5,2 · 9 | +16,1 % · +5,7 · 52 | +12,5 % |
+| 2022 | +4,7 % · +4,7 · 17 | -0,8 % · +4,3 · 114 | -6,0 % |
+| 2023 | +30,5 % · +1,3 · 16 | +8,8 % · -16,5 · 108 | +28,7 % |
+| 2024 | +47,4 % · +24,4 · 3 | +14,1 % · -6,8 · 130 | +19,1 % |
+| 2025 | +27,1 % · +9,9 · 6 | +11,5 % · -3,7 · 92 | +15,8 % |
+
+### Cifras de apoyo para el domingo
+
+- Números A en Real Estate: 92 casos, exceso mediano -10,3, pierden > 10 %: 23 %
+- Números A en Energy: 34 casos, exceso mediano -17,5, pierden > 10 %: 38 %
+- Números A en Materials: 28 casos, exceso mediano -13,0, pierden > 10 %: 29 %
+- A sin esos tres sectores: 136 casos, exceso mediano +1,6, medio +7,1
+- B2, Ajuste: mitad de empresas: 39 casos, exceso mediano -2,8
+- B2, Validación: otra mitad: 51 casos, exceso mediano -5,3
+- B2, Ajuste: 2012-2018: 36 casos, exceso mediano -0,7
+- B2, Validación: 2019-2025: 54 casos, exceso mediano -12,9
+
