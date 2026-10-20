@@ -1,0 +1,4603 @@
+{
+  "meta": {
+    "fecha_corte": "2026-10-20",
+    "divisa": "KRW",
+    "divisa_cotizacion": "KRW",
+    "tipo_cambio": 1,
+    "unidades": "millones",
+    "cierre_ejercicio_mes": 12,
+    "etiqueta_ejercicio": "fin",
+    "normas_contables": "K-IFRS (NIIF adoptadas en Corea), cuentas consolidadas",
+    "formato_cuenta": "funcion",
+    "limitaciones": "Cuentas consolidadas K-IFRS en millones de KRW. Fuente primaria: DART (dart.fss.or.kr) por su visor de secciones: informes anuales de 2025 [1], 2023 [2] y 2021 [4], informe semestral de 2026 [3] y trimestrales [5, 6, 7, 13, 14]. Corea no tiene XBRL en herramientas/cuentas.mjs. **El DCF proyecta el consolidado (100 % de las filiales) y resta a los minoritarios en el puente a un valor fijo (706.000 M, ≈ 75 % del valor de las filiales en el caso base)**: el motor no puede moverlos con cada escenario, así que el bajista sale negativo por acción (ver escenarios). El EBITDA trimestral lleva una amortización repartida a partes iguales (estimación) y la de 2021-2023 es aproximada. Consenso de una sola casa (BNK). Precio: cierre del 20-oct-2026 en el KOSDAQ (21.450 KRW, Yahoo, 15:30 KST); bolsa, beta y movimiento con el mismo cierre [17].",
+    "controles_explicados": [
+      {
+        "control": "Tipo impositivo efectivo razonable (2023)",
+        "explicacion": "En 2023 el BAI consolidado fue de solo 602 M (pérdidas en la matriz y en filiales que no compensan con los beneficios de otras, porque cada sociedad tributa por separado) y los impuestos de 6.804 M [2]. No se proyecta: usamos el 24,5 % (el efectivo de 2025 fue del 24,6 %) [1]."
+      },
+      {
+        "control": "Segmentos suman los ingresos (2022)",
+        "explicacion": "Los segmentos se publican antes de eliminar las ventas entre negocios del grupo (oro e informática se venden entre filiales y a la matriz); la eliminación de 2022 fue de ≈ 288.000 M [2]. En 2025 fue de −475.700 M y en el 1S26 de −469.200 M (el 1S26 incluye compras de oro entre filiales) [1, 3]."
+      },
+      {
+        "control": "Segmentos suman los ingresos (2023)",
+        "explicacion": "Igual que en 2022: los segmentos van antes de eliminar las ventas entre filiales (≈ 148.000 M en 2023) [2]."
+      },
+      {
+        "control": "DCF inverso calculable",
+        "explicacion": "Con los minoritarios fijos en el puente (706.000 M) y un margen EBITDA del 1,6 %, el valor por acción no llega al precio con ningún crecimiento razonable: el precio no descuenta crecimiento, descuenta margen. Hecho a mano, si los minoritarios suben en proporción, 21.450 KRW por acción exigen un margen EBITDA del ≈ 3,5 % para siempre (el del pico de 2025, 3,3 %; el normal de 2022-2024, 1,4-1,5 %) [1]."
+      },
+      {
+        "control": "Proyección propia frente a consenso (2026e)",
+        "explicacion": "El consenso es una sola casa (BNK, 11-sep-2026) con un EBITDA de 307.650 M para 2026e [25]: supone un 2S26 de ≈ 190.000 M, casi el doble que el 1S26 (≈ 115.000 M) cuando el 2T26 ya fue de 12.290 M con el oro enfriándose [3]. Nuestro 2026e (184.647 M) suma el 1S publicado y un 2S con el margen del oro al 0,8 %. La estimación de BNK es anterior a la caída del oro de septiembre-octubre."
+      }
+    ],
+    "huecos": [
+      {
+        "seccion": "trimestres",
+        "campo": "BPA trimestral y consenso previo de cada trimestre",
+        "tipo": "Complemento",
+        "intentos": "1) Informes trimestrales de DART (solo el beneficio y el BPA acumulado); 2) FnGuide (una sola casa, sin consenso trimestral); 3) prensa (cifras sueltas)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "financieros",
+        "campo": "Flujo libre de los últimos doce meses",
+        "tipo": "Complemento",
+        "intentos": "1) Informe semestral de 2026 (flujo del 1S26 y 1S25); 2) informe semestral de 2025 (no descargado); 3) FnGuide (sin flujos trimestrales)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "negocio",
+        "campo": "Ventas por país",
+        "tipo": "Complemento",
+        "intentos": "1) Informe anual de 2025 (no da regiones; exportaciones de oro de KGE FTC sin desglose); 2) informe semestral; 3) prensa",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "esg",
+        "campo": "Calificaciones ESG",
+        "tipo": "Complemento",
+        "intentos": "1) KCGS (sin calificación encontrada); 2) informe ESG de 2025 de la empresa (no da calificaciones externas); 3) informe anual",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sector",
+        "campo": "Tamaño total del comercio físico de oro en Corea y CR5",
+        "tipo": "Complemento",
+        "intentos": "1) Informe anual (no da cuotas); 2) World Gold Council (sin cifra de Corea encontrada); 3) KRX y prensa (solo el mercado regulado)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "Resultado de las votaciones de la junta de marzo de 2026",
+        "tipo": "Complemento",
+        "intentos": "1) DART, aviso de resultado de la junta (sin porcentajes); 2) informe anual (no los da); 3) prensa (sin cifras)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "directivos",
+        "campo": "Empleados del grupo consolidado",
+        "tipo": "Complemento",
+        "intentos": "1) Informe anual (solo los 164 de la matriz); 2) informe ESG (no descargado); 3) informes de las filiales cotizadas (no sumados)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "bolsa",
+        "campo": "Posición corta",
+        "tipo": "Complemento",
+        "intentos": "1) KRX (data.krx.co.kr sin acceso desde este entorno); 2) FnGuide (no la publica); 3) foro de Naver (solo comentarios)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "consenso",
+        "campo": "Consenso de 2027e y 2028e",
+        "tipo": "Complemento",
+        "intentos": "1) FnGuide (solo 2026e de una casa); 2) Yahoo (sin estimaciones); 3) prensa (sin cifras)",
+        "decision": "Omitido"
+      }
+    ]
+  },
+  "identificacion": {
+    "nombre": "ITCEN GLOBAL Co., Ltd. (아이티센글로벌)",
+    "nombre_corto": "ITCEN GLOBAL",
+    "ticker": "124500",
+    "isin": "KR7124500000",
+    "mercado": "KOSDAQ (Korea Exchange)",
+    "indice_referencia": "KOSDAQ",
+    "pais": "Corea del Sur",
+    "pais_iso": "KR",
+    "sector": "Information Technology",
+    "industria": "Holding: servicios informáticos y comercio de oro",
+    "sede": "Gwacheon (Gyeonggi, Corea del Sur)",
+    "fundacion": "2005",
+    "empleados": 164,
+    "web": "https://www.itcenglobal.com",
+    "precio": 21450,
+    "fecha_precio": "2026-10-20",
+    "acciones": 23.2,
+    "capitalizacion_publicada": 497737,
+    "free_float_pct": 75.07,
+    "max_52s": 75500,
+    "min_52s": 17000,
+    "volumen_medio_diario": "≈ 12.653,5 M KRW/día (3 meses; 403.552 acciones)",
+    "proximos_resultados": "2026-11-13"
+  },
+  "resumen": {
+    "recomendacion": "Mantener",
+    "conviccion": "Media",
+    "justificacion_recomendacion": "La regla a 12 meses da Mantener: −0,2 % ponderado y +6,9 % en el caso base, lejos del 15 % y el 12 % que pide para comprar, y el valor intrínseco (7.511 KRW) está un 65 % por debajo del precio. No es una compra a ningún precio cercano: para que lo fuera el precio tendría que bajar por debajo del valor intrínseco. Para quien no la tiene, no comprar; para quien la tiene, el valor intrínseco dice vender y la regla a 12 meses (que manda) se queda en Mantener porque el PER de hoy es el que aplica a un BPA normalizado.",
+    "horizonte": "12 meses",
+    "sintesis": "**Qué es.** ITCEN GLOBAL es un holding coreano con dos negocios: **oro** (Korea Gold Exchange, el mayor mayorista de oro de Corea: compra, refina y vende lingotes y joyería) e **informática** (integración de sistemas y mantenimiento, sobre todo para la Administración coreana, con las filiales cotizadas ITCEN CTS e ITCEN ENTEC) [1]. En 2025 **el oro fue el 87 % de las ventas brutas (7,76 billones de KRW) y el 90 % del beneficio operativo (252.400 M)**; la informática, el 13 % de las ventas (1,12 billones) y el 10 % del beneficio operativo (27.900 M) [1]. La venta de oro se contabiliza por su precio completo, así que las ventas (8,87 billones) exageran el tamaño: el margen operativo del oro fue del 0,5-0,9 % en 2022-2024 y del 3,25 % en el pico de 2025 [1, 2].\n\n**La recomendación y por qué.** Mantener, con convicción media; no comprar. Objetivo a 12 meses de 21.410 KRW: −0,2 % frente a un precio de 21.450 KRW (cierre del 20-oct-2026 en el KOSDAQ) [17]; el caso base da un +6,9 %. El valor intrínseco es de 7.511 KRW (−65 %). Tres motivos: (1) el beneficio de 2025 es el de la fiebre del oro coreana, que ya pasó (margen del oro del 0,6 % en el 2T26); (2) **el ≈ 76,5 % del beneficio consolidado es de los minoritarios de las filiales**: la matriz se queda con ≈ una cuarta parte; (3) la matriz tiene poca caja propia y se refinancia con convertibles [1, 3, 11]. La convicción es media, no alta, porque el precio lo mueve el tema (oro, tokens) más que el beneficio, y un rebote del oro o una noticia regulatoria pueden subirlo un 20 % en días; la subiría un 3T26 con el margen del oro por debajo del 1 % y la bajaría un margen que se mantenga por encima del 2 % sin fiebre del oro.\n\n**Por qué ha caído un 70 %.** Del máximo de 75.500 KRW (13-mar) a 21.450: el oro dejó de subir y los coreanos dejaron de comprarlo (la negociación de la KRX cayó un 80 % de enero a julio) [16], la regulación de stablecoins se retrasó y el token de oro KGLD no ha salido [19, 20]. Hoy, −9,1 % con el oro [21].\n\n**El negocio y la calidad.** ROIC de 2025 del 59 % frente a un WACC del 12 %, pero de pico: en 2021-2023 fue del 7-10 %, por debajo del WACC [1, 2]. **Sostenibilidad: sí**, porque proyectamos poco (2,7 % anual, con −11,8 % en 2027e). **La calidad pasa en la cifra de 2025 y no en un año normal.**\n\n**Finanzas y capital.** Deuda neta consolidada de ≈ 128.000 M con los convertibles a su nominal (0,4 veces el EBITDA de los últimos doce meses); la matriz tenía ≈ 4.000 M de caja frente a ≈ 58.000 M de deuda a un año a fin de 2025 y emitió un convertible de 40.000 M (precio rebajado a 38.021 KRW) [3, 8, 11]. Sin dividendo pese al beneficio récord.\n\n**Equipo y gobierno.** El fundador, Kang Jin-mo, preside y dirige; controla el 24,85 % [10]. Pagos de 10.279 M a ITCEN Core, sociedad de su grupo, y sueldo de 17 veces el medio sin dividendo [1, 24]. Compró acciones por ≈ 140 M el 16 y el 19-oct [23].\n\n**Valoración.** DCF de 7.484 KRW (WACC del 12,0 %, bono coreano al 4,45 % [28]); suma de partes de 1.623 KRW con un descuento de holding del 20 % sobre la parte de la matriz. El precio no se explica con ningún crecimiento: exige un margen EBITDA del ≈ 3,5 % para siempre, el del pico de 2025. A 12 meses: PER de 25,1x (el actual) sobre un BPA de 2028e de 913 KRW; BNK (la única casa) tiene 54.000 KRW de objetivo, fuera de nuestro rango.\n\n**Riesgos.** (1) **Fin de la fiebre del oro** (el principal, en el bajista: −60 % a 12 meses); (2) **precio del oro** (ventas y existencias); (3) **estructura de holding** (minoritarios y deuda de la matriz); (4) **contratos públicos** (toda la cartera de la matriz es pública); (5) **gobierno** (control familiar y vinculadas); (6) **riesgo de IA: amenaza media** sobre la integración de sistemas, que la IA abarata (≈ −10 % del BPA a 3-5 años). Veredicto de precio y noticias: **no cambia**.\n\n**Qué cambiaría la decisión.** Un precio cerca del valor intrínseco (≈ 7.500 KRW); o varios trimestres con el margen del oro por encima del 2 % sin fiebre del oro, que harían normal parte del pico de 2025.",
+    "tesis": "ITCEN GLOBAL es un holding de oro (90 % del beneficio operativo de 2025) e informática pública; vende mucho (8,87 billones) con margen pequeño y la matriz se queda con ≈ una cuarta parte del beneficio [1].\n\nEl precio (25 veces nuestro BPA normalizado de 2027e) descuenta que el margen del oro de 2025 (3,25 %) es permanente. Los datos dicen lo contrario: 0,6 % en el 2T26 y la negociación de oro de Corea un 80 % por debajo de enero [3, 16].\n\nCon un margen del oro del 1,1 %, el BPA de 2028e es de 913 KRW y el valor intrínseco de 7.511 KRW: el precio está muy por encima. No es una compra; la regla a 12 meses se queda en Mantener porque el PER actual se aplica a ese BPA.",
+    "vision_diferencial": {
+      "mercado_descuenta": "Un margen EBITDA del ≈ 3,5 % para siempre (el del pico de 2025) o el éxito del token de oro y de los valores tokenizados; la única casa con objetivo (BNK) pide 54.000 KRW con un BPA de 2026e de 2.222 KRW.",
+      "nuestra_vision": "El margen del oro vuelve hacia el 1,1 % (0,5-0,9 % antes del auge) y la matriz sigue con ≈ 23,5 % del beneficio: BPA de 913 KRW en 2028e y valor intrínseco de 7.511 KRW.",
+      "por_que": "El margen del oro cayó del 3,1 % (1T26) al 0,6 % (2T26) y la negociación de la KRX un 80 % [3, 16]; los minoritarios se llevaron 151.634 de 198.284 M en 2025 [1]."
+    },
+    "a_favor": [
+      "**Escala en el oro**: el mayor mayorista de Corea, con refino propio [1].",
+      "**Informática pública** con cartera (K-Edufine, 217.300 M) y mercado protegido [1, 18].",
+      "**Opciones digitales** (token de oro, Galaxia FN) sin coste grande [9].",
+      "**El presidente compra** acciones (≈ 140 M el 16 y el 19-oct) [23]."
+    ],
+    "en_contra": [
+      "**Fin de la fiebre del oro**: margen del 0,6 % en el 2T26 [3].",
+      "**Minoritarios**: ≈ 76,5 % del beneficio no es del accionista [1].",
+      "**Matriz con poca caja** y convertible rebajado [8, 11].",
+      "**Gobierno**: vinculadas y sin dividendo con beneficio récord [1, 24]."
+    ],
+    "que_vigilar": "El margen del oro y la caja de la matriz. La tesis bajista se confirma con un margen del oro por debajo del 1 % en el 3T26 (hacia el 13-nov) y en el 4T26; se rompe si el margen se mantiene por encima del 2 % con la negociación de oro de la KRX plana, o si la matriz empieza a cobrar dividendos de KGE y a repartirlos.",
+    "cambiaria_recomendacion": [
+      "Precio por debajo de ≈ 7.500 KRW (valor intrínseco): la regla podría dar compra si el BPA aguanta.",
+      "Dos trimestres con margen del oro por encima del 2 % sin fiebre del oro: subiríamos el margen normalizado.",
+      "Venta de KGE a buen precio o fusión que suba el porcentaje de la matriz: cambiaría la estructura.",
+      "Por encima de 23.789 KRW, Vender según el valor intrínseco."
+    ],
+    "kpis_seguimiento": [
+      {
+        "kpi": "Margen operativo del oro",
+        "nivel_actual": "0,6 % (2T26)",
+        "umbral_alerta": "< 1 % (bajista) / > 2 % (revisar al alza)",
+        "por_que": "Decide el beneficio."
+      },
+      {
+        "kpi": "Negociación de oro en la KRX",
+        "nivel_actual": "−80 % desde enero (julio)",
+        "umbral_alerta": "otra caída del 30 %",
+        "por_que": "Mide la fiebre del oro."
+      },
+      {
+        "kpi": "Parte del beneficio de la dominante",
+        "nivel_actual": "23,5 % (2025)",
+        "umbral_alerta": "< 20 %",
+        "por_que": "Lo que llega al accionista."
+      },
+      {
+        "kpi": "Caja y deuda de la matriz",
+        "nivel_actual": "≈ 4.000 M de caja (dic-2025)",
+        "umbral_alerta": "nueva emisión de convertibles",
+        "por_que": "Dependencia de las filiales."
+      },
+      {
+        "kpi": "Margen de la informática",
+        "nivel_actual": "2,5 % (2025)",
+        "umbral_alerta": "< 2 %",
+        "por_que": "Precio de los concursos públicos e IA."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "historia": {
+    "resumen": "ITCEN GLOBAL se fundó el 10-may-2005 en Corea como empresa de integración de sistemas y salió al KOSDAQ el 23-dic-2014 [1]. Su presidente y fundador, Kang Jin-mo (antes en Daou Technology), la convirtió en un holding: compró integradores cotizados (Comtec System, hoy ITCEN CTS; Ssangyong Information & Communications, hoy ITCEN ENTEC) y en 2018 Korea Gold Exchange (KGE), el mayor mayorista de oro de Corea [1, 12]. Desde 2020 vende oro por móvil y desde 2024 se presenta como grupo «Web3»: participación en el Busan Digital Asset Exchange, proyecto de token de oro (KGLD) y compra de Galaxia FN (valores tokenizados) en 2026 [1, 18]. Con el auge del oro de 2025-2026 sus ventas superaron a las de Naver en el 1T26 [12].",
+    "hitos": [
+      {
+        "anio": "2005",
+        "hito": "Fundación (10-may) [1]."
+      },
+      {
+        "anio": "2014",
+        "hito": "Salida a bolsa en el KOSDAQ (23-dic) [1]."
+      },
+      {
+        "anio": "2018",
+        "hito": "Compra de Korea Gold Exchange [12]."
+      },
+      {
+        "anio": "2020",
+        "hito": "Plataforma de oro fraccionado Sengold (vendida en 2025 al Busan Digital Asset Exchange) [12]."
+      },
+      {
+        "anio": "2023",
+        "hito": "Fusiones internas del grupo informático [1]."
+      },
+      {
+        "anio": "2025",
+        "hito": "Ventas de 8,87 billones con el auge del oro; sede en Gwacheon [1]."
+      },
+      {
+        "anio": "2026",
+        "hito": "CB de 40.000 M (mayo); compra de Galaxia FN (julio); proyecto KGLD [18]."
+      }
+    ],
+    "confianza": "Alta"
+  },
+  "negocio": {
+    "segmentos": [
+      {
+        "nombre": "Web3: oro y metales preciosos (Korea Gold Exchange y filiales)",
+        "descripcion": "Compra, refino, fabricación y venta mayorista y al público de oro, plata y lingotes; plataformas móviles y proyecto de token de oro (KGLD)",
+        "tipo_resultado": "EBIT",
+        "historico": [
+          {
+            "periodo": "2022",
+            "ingresos": 2113600,
+            "resultado": 11500
+          },
+          {
+            "periodo": "2023",
+            "ingresos": 1959000,
+            "resultado": 12250
+          },
+          {
+            "periodo": "2024",
+            "ingresos": 3940700,
+            "resultado": 34300
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 7761400,
+            "resultado": 252400
+          },
+          {
+            "periodo": "1S26",
+            "ingresos": 5503900,
+            "resultado": 110500
+          }
+        ]
+      },
+      {
+        "nombre": "Servicios informáticos (ITCEN CTS, ENTEC, Cloit, C-Platform, PNS)",
+        "descripcion": "Integración de sistemas, mantenimiento, nube, centros de datos y equipos para Administraciones, educación, defensa y empresas",
+        "tipo_resultado": "EBIT",
+        "historico": [
+          {
+            "periodo": "2022",
+            "ingresos": 795800,
+            "resultado": 18700
+          },
+          {
+            "periodo": "2023",
+            "ingresos": 1004000,
+            "resultado": 18400
+          },
+          {
+            "periodo": "2024",
+            "ingresos": 1036400,
+            "resultado": 24400
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 1124900,
+            "resultado": 27900
+          },
+          {
+            "periodo": "1S26",
+            "ingresos": 546000,
+            "resultado": 11060
+          }
+        ]
+      }
+    ],
+    "geografias": [],
+    "geografias_criterio": "destino",
+    "kpis": [
+      {
+        "kpi": "Margen operativo del oro",
+        "valor_anterior": "0,87 % (2024)",
+        "valor_actual": "3,25 % (2025); 0,6 % (2T26)",
+        "variacion": "pico en 4T25-1T26",
+        "comentario": "Antes del auge, 0,5-0,9 % [1, 3]."
+      },
+      {
+        "kpi": "Margen operativo de la informática",
+        "valor_anterior": "2,4 % (2024)",
+        "valor_actual": "2,5 % (2025); 2,0 % (1S26)",
+        "variacion": "+0,1 puntos",
+        "comentario": "Estacional: el 4T pesa la mitad del año [1, 3]."
+      },
+      {
+        "kpi": "Peso del oro en las ventas brutas",
+        "valor_anterior": "66,1 % (2023)",
+        "valor_actual": "87,2 % (2025)",
+        "variacion": "+21 puntos",
+        "comentario": "Por el precio y el volumen del oro [1]."
+      },
+      {
+        "kpi": "Parte del beneficio de la dominante",
+        "valor_anterior": "11,8 % (2024)",
+        "valor_actual": "23,5 % (2025)",
+        "variacion": "+11,7 puntos",
+        "comentario": "El resto es de los minoritarios de las filiales [1]."
+      },
+      {
+        "kpi": "Existencias",
+        "valor_anterior": "116.981 M (dic-2024)",
+        "valor_actual": "356.858 M (jun-2026)",
+        "variacion": "×3,1",
+        "comentario": "Más oro y a más precio [1, 3]."
+      }
+    ],
+    "descripcion": "**ITCEN GLOBAL es un holding con dos negocios que no se parecen.** (1) **Oro**: Korea Gold Exchange y sus filiales compran oro (importado y de reciclaje), lo refinan y lo venden en lingotes y joyería a joyerías, bancos, la asociada Aurum Exchange y al público; fue el 87 % de las ventas brutas de 2025 (7,76 billones) y el 90 % del beneficio operativo (252.400 M) [1]. (2) **Servicios informáticos**: ITCEN CTS (cotiza en el KOSPI), ITCEN ENTEC (KOSDAQ), Cloit (nube), C-Platform e ITCEN PNS hacen integración de sistemas, mantenimiento, equipos y centros de datos, sobre todo para Administraciones (educación con K-Edufine, defensa, centros de datos del Estado) y empresas; 1,12 billones de ventas y 27.900 M de beneficio operativo [1]. La matriz cobra marca y alquileres y tiene participaciones en activos digitales [1].",
+    "como_gana_dinero": "En el oro gana un margen pequeño entre el precio de compra y el de venta más la prima de fabricación de lingotes y joyas: el margen operativo fue del 0,5-0,9 % en 2022-2024 y del 3,25 % en 2025, cuando la fiebre del oro en Corea disparó la demanda y las primas [1, 12]. Por eso las ventas suben y bajan con el precio del oro y con la cantidad que compran los coreanos [15, 16]. En la informática gana un 2-3 % de margen operativo en proyectos públicos y privados, con el 4T como trimestre fuerte por el calendario presupuestario [1]. Lo que más pesa en el resultado: el volumen de oro negociado en Corea y las primas, no el nivel del precio en sí.",
+    "clientes": "En el oro, joyerías, mayoristas, bancos (Hana Bank) y el público; el mayor cliente supuso 3,03 billones en 2025 (34 % de las ventas) y la asociada Aurum Exchange, 527.085 M [1]. En la informática, sobre todo el sector público coreano: la cartera de pedidos de más de 5.000 M de la matriz es toda pública (ejército, Agencia de Desarrollo de Defensa, centros de datos del Estado, K-Edufine del Ministerio de Educación) [1]. Las grandes integradoras (Samsung SDS, LG CNS, SK C&C) tienen limitado el acceso a los contratos públicos, lo que deja ese mercado a las medianas como ITCEN [1].",
+    "confianza": "Alta"
+  },
+  "sector": {
+    "definicion": "Dos mercados. (1) **Oro en Corea**: no hay una cifra pública del comercio físico total; usamos como referencia la negociación del mercado del oro de la KRX (19,42 billones de KRW del 2-ene al 2-oct de 2026, +77,2 % frente a 10,96 billones un año antes) [15], que cayó un 80 % entre enero y julio de 2026 [16]. Las ventas de KGE no pasan por la KRX: la comparación mide escala, no cuota. (2) **Software y servicios informáticos públicos**: ≈ 4,25 billones de KRW en 2024 (+4,3 %), según el informe anual [1].",
+    "tamano": "≈ 26 billones de KRW de negociación anualizada en la KRX en 2026 [15]; ≈ 4,25 billones de software público (2024) [1]",
+    "unidad_serie": "billones de KRW (negociación del oro en la KRX, 2-ene a 2-oct)",
+    "serie": [
+      {
+        "anio": "2025",
+        "tamano": 10.96
+      },
+      {
+        "anio": "2026",
+        "tamano": 19.42
+      }
+    ],
+    "tcac_historico_pct": null,
+    "tcac_previsto_pct": null,
+    "cr5_pct": null,
+    "estructura": "Oro: KGE es el mayor mayorista de Corea; Aurum Exchange (asociada) es el cuarto; compiten Samsung Gold Exchange, la Casa de la Moneda (KOMSCO), bancos y la KRX [1]. Informática pública: fragmentada entre integradoras medianas por la restricción a las grandes",
+    "drivers": [
+      {
+        "driver": "Volumen de oro que compran los coreanos",
+        "efecto": "+/−",
+        "horizonte": "Cíclico",
+        "evidencia": "La negociación de la KRX subió un 77 % en 2026 pero cayó un 80 % de enero a julio [15, 16]."
+      },
+      {
+        "driver": "Precio del oro y tipos de EE. UU.",
+        "efecto": "+/−",
+        "horizonte": "Cíclico",
+        "evidencia": "El oro cayó el 20-oct por la subida de los tipos de EE. UU. y el won [21]."
+      },
+      {
+        "driver": "Regulación de activos digitales (stablecoins, valores tokenizados)",
+        "efecto": "+/−",
+        "horizonte": "Estructural",
+        "evidencia": "La ley de valores tokenizados se aprobó en enero de 2026; la de stablecoins se retrasa en Corea y EE. UU. [1, 19, 20]."
+      },
+      {
+        "driver": "Presupuesto público de informática",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Software público de 4,25 billones (+4,3 %) [1]; ENTEC preferente en K-Edufine (217.300 M) [18]."
+      },
+      {
+        "driver": "IA generativa en la programación y la integración",
+        "efecto": "−",
+        "horizonte": "Estructural",
+        "evidencia": "Abarata el trabajo por horas de la integración de sistemas; la empresa lo vende como «transformación con IA» [1]."
+      }
+    ],
+    "porter": [
+      {
+        "fuerza": "Rivalidad",
+        "intensidad": 4,
+        "justificacion": "Oro: producto idéntico, compite por prima y red; informática: concursos públicos por precio [1]."
+      },
+      {
+        "fuerza": "Poder de los clientes",
+        "intensidad": 4,
+        "justificacion": "El mayor cliente del oro fue el 34 % de las ventas de 2025; la Administración fija precios en los concursos [1]."
+      },
+      {
+        "fuerza": "Poder de los proveedores",
+        "intensidad": 3,
+        "justificacion": "El oro se compra a precio internacional; en informática, fabricantes como IBM y subcontratas [1]."
+      },
+      {
+        "fuerza": "Amenaza de entrada",
+        "intensidad": 2,
+        "justificacion": "Refino, licencias y red física en el oro; referencias en contratos públicos en la informática."
+      },
+      {
+        "fuerza": "Amenaza de sustitutos",
+        "intensidad": 3,
+        "justificacion": "Oro en la KRX, fondos cotizados de oro y cuentas de oro de los bancos [15]."
+      }
+    ],
+    "ciclo": {
+      "posicion": "Desaceleración",
+      "comentario": "La fiebre del oro de finales de 2025 y enero de 2026 ya pasó: la negociación de la KRX cayó un 80 % entre enero y julio [16] y el margen del oro de KGE bajó del 3,1 % del 1T26 al 0,6 % del 2T26 [3]. El precio del oro (≈ 4.160 USD) está un 12 % por debajo del máximo de enero. Indicadores: negociación diaria de la KRX, primas de los lingotes y precio del oro en wones."
+    },
+    "regulacion": "El oro se rige por la normativa de comercio de metales preciosos y por la de la KRX para el mercado regulado; KGE tiene licencias de refino y de comercio exterior. La informática pública se rige por la ley de software, que limita a las grandes integradoras en los concursos públicos [1]. Los activos digitales dependen de la ley de valores tokenizados (aprobada en enero de 2026) y de la de stablecoins (pendiente) [1, 19].",
+    "tendencias": "Tres tendencias. (1) El oro pasó de ser un nicho a un activo de inversión masivo en Corea en 2025-2026, con efectos de moda que ya remiten [15, 16]. (2) La tokenización de activos reales (oro, inmuebles) abre una vía de negocio para quien tiene el oro físico, pero aún sin ingresos [18, 22]. (3) En la informática, la IA generativa cambia el trabajo de integración: más demanda de proyectos de IA y nube, pero menos horas por proyecto [1].",
+    "confianza": "Media"
+  },
+  "competencia": {
+    "cuota_pct": 39.2,
+    "posicion": "Korea Gold Exchange es el mayor mayorista de oro de Corea y la asociada Aurum Exchange el cuarto [1]. Sus ventas de oro (≈ 9-10 billones al año al precio de 2026) equivalen a ≈ 35-40 % de la negociación anual del mercado del oro de la KRX, una referencia de escala, no una cuota [15]. En la informática es una integradora mediana del sector público, por detrás de Samsung SDS, LG CNS, SK y Hyundai AutoEver.",
+    "competidores": [
+      {
+        "nombre": "Samsung SDS",
+        "pais": "Corea",
+        "ticker": "018260.KS",
+        "ingresos": 13998813,
+        "cuota_pct": null,
+        "margen_ebit_pct": 6.2,
+        "comentario": "La mayor integradora coreana; limitada en concursos públicos [1, 17]."
+      },
+      {
+        "nombre": "LG CNS",
+        "pais": "Corea",
+        "ticker": "064400.KS",
+        "ingresos": 6293828,
+        "cuota_pct": null,
+        "margen_ebit_pct": 8.4,
+        "comentario": "Integradora grande, nube e IA [17]."
+      },
+      {
+        "nombre": "Lotte Innovate",
+        "pais": "Corea",
+        "ticker": "286940.KS",
+        "ingresos": 1159930,
+        "cuota_pct": null,
+        "margen_ebit_pct": 4.5,
+        "comentario": "Integradora mediana; socio de ITCEN CTS en centros de datos (16-oct-2026) [17]."
+      },
+      {
+        "nombre": "ITCEN CTS (filial, 25 %)",
+        "pais": "Corea",
+        "ticker": "031820.KS",
+        "ingresos": 1144919,
+        "cuota_pct": null,
+        "margen_ebit_pct": 2.6,
+        "comentario": "Filial cotizada del grupo: equipos, redes y centros de datos [17]."
+      },
+      {
+        "nombre": "ITCEN ENTEC (filial)",
+        "pais": "Corea",
+        "ticker": "010280.KQ",
+        "ingresos": 607087,
+        "cuota_pct": null,
+        "margen_ebit_pct": 6,
+        "comentario": "Filial cotizada del grupo: sistemas públicos (K-Edufine) [17]."
+      },
+      {
+        "nombre": "Gold.com (antes A-Mark)",
+        "pais": "EE. UU.",
+        "ticker": "GOLD",
+        "ingresos": 33827208,
+        "cuota_pct": null,
+        "margen_ebit_pct": 0.4,
+        "comentario": "Mayorista de metales preciosos: margen operativo del 0,45 %, la referencia de un mayorista de oro maduro [17]."
+      },
+      {
+        "nombre": "ARE Holdings",
+        "pais": "Japón",
+        "ticker": "5857.T",
+        "ingresos": 5276030,
+        "cuota_pct": null,
+        "margen_ebit_pct": 6,
+        "comentario": "Refino y reciclaje de metales preciosos [17]."
+      }
+    ],
+    "foso": {
+      "veredicto": "Ninguno",
+      "tendencia": "Estable",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 1,
+          "evidencia": "Red de joyerías y bancos, sin efectos de red propiamente dichos."
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 2,
+          "evidencia": "Mantenimiento plurianual de sistemas públicos (K-Edufine) [B1]."
+        },
+        {
+          "fuente": "Intangibles (marca, patentes, licencias)",
+          "puntuacion": 2,
+          "evidencia": "Marca Korea Gold Exchange y licencias de refino; referencias públicas [B1]."
+        },
+        {
+          "fuente": "Ventaja en costes",
+          "puntuacion": 2,
+          "evidencia": "Escala en refino y fabricación de lingotes; margen operativo de 0,5-0,9 % en años normales [B1]."
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 2,
+          "evidencia": "Pocos refinadores grandes en Corea."
+        }
+      ]
+    },
+    "amenazas": "En el oro, que la demanda vuelva a niveles de 2023-2024 (margen del 0,5-0,9 %) y que los bancos, la KRX y los fondos cotizados capten la inversión que hoy compra lingotes (probabilidad alta, impacto alto). En la informática, la presión de precios de la Administración y la IA, que reduce las horas facturables (media, impacto medio). En lo digital, que la regulación retrase o impida el negocio de tokens (media, impacto bajo hoy: no tiene ingresos).",
+    "confianza": "Media"
+  },
+  "financieros": {
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 3280884,
+        "coste_ventas": 3137643,
+        "gastos_generales": 111703,
+        "ebitda": 41916,
+        "amortizaciones": 10378,
+        "ebit": 31538,
+        "resultado_financiero": -24270,
+        "bai": 7268,
+        "impuestos": 9997,
+        "minoritarios": 4454,
+        "beneficio_neto": -7183,
+        "gastos_financieros": 6203,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": -361,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 19.9
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 2621054,
+        "coste_ventas": 2465765,
+        "gastos_generales": 124844,
+        "ebitda": 39401,
+        "amortizaciones": 8956,
+        "ebit": 30445,
+        "resultado_financiero": 10663,
+        "bai": 41108,
+        "impuestos": 9925,
+        "minoritarios": 29485,
+        "beneficio_neto": 1698,
+        "gastos_financieros": 4848,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 85,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 19.98
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 2815145,
+        "coste_ventas": 2649260,
+        "gastos_generales": 135366,
+        "ebitda": 41203,
+        "amortizaciones": 10684,
+        "ebit": 30519,
+        "resultado_financiero": -29917,
+        "bai": 602,
+        "impuestos": 6804,
+        "minoritarios": -6853,
+        "beneficio_neto": 650,
+        "gastos_financieros": 7676,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 32,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 20.32
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 4961847,
+        "coste_ventas": 4759335,
+        "gastos_generales": 143948,
+        "ebitda": 69991,
+        "amortizaciones": 11426,
+        "ebit": 58565,
+        "resultado_financiero": -10753,
+        "bai": 47812,
+        "impuestos": 11749,
+        "minoritarios": 31808,
+        "beneficio_neto": 4255,
+        "gastos_financieros": 9482,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 184,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 23.13
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 8870845,
+        "coste_ventas": 8423636,
+        "gastos_generales": 167283,
+        "ebitda": 294397,
+        "amortizaciones": 14471,
+        "ebit": 279926,
+        "resultado_financiero": -17058,
+        "bai": 262868,
+        "impuestos": 64584,
+        "minoritarios": 151634,
+        "beneficio_neto": 46650,
+        "gastos_financieros": 11572,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 2010,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 23.21
+      }
+    ],
+    "ltm": {
+      "periodo": "LTM jun-26",
+      "fecha_fin": "2026-06-30",
+      "ingresos": 11548194,
+      "ebitda": 347977,
+      "ebit": 331977,
+      "beneficio_neto": 70779,
+      "bpa": 3051,
+      "dpa": 0,
+      "dpa_extraordinario": 0,
+      "fcf": null,
+      "participadas_en_ebitda": null,
+      "no_recurrentes_en_ebitda": null
+    },
+    "cambios_perimetro": [
+      {
+        "periodo": "2018",
+        "descripcion": "Compra de Korea Gold Exchange (한국금거래소, KGE) a través de KGE Holdings: desde entonces el oro es la mayor parte de las ventas [12]."
+      },
+      {
+        "periodo": "2022-2023",
+        "descripcion": "Escisión de la nube de ITCEN ENTEC (Cloit, 2022) y fusiones internas del grupo IT (CTS con Supia ITCEN Holdings; ENTEC con Comtec Information) [1]."
+      },
+      {
+        "periodo": "2025",
+        "descripcion": "Compra de Info U & Company (datos con IA) y de otras participaciones (29.863 M en adquisiciones) [1]."
+      },
+      {
+        "periodo": "2026",
+        "descripcion": "Compra del 93,27 % de Galaxia FN (valores tokenizados) por 1.385 M el 30-jul [9]."
+      }
+    ],
+    "comentario": "Las ventas consolidadas pasaron de 2,62 billones de KRW en 2022 a 8,87 billones en 2025 y a 11,55 billones en los últimos doce meses, pero **casi todo es oro vendido al precio de mercado**: en 2025 el negocio Web3 (oro y metales preciosos de KGE) fueron 7,76 billones de ventas y 252.400 M de beneficio operativo (margen del 3,25 %) y la informática (SI), 1,12 billones y 27.900 M (2,5 %) [1]. Antes del auge del oro el margen del oro era del 0,5-0,9 % (2022-2024) [1, 2]. En el 1S26 el oro vendió 5,50 billones con 110.500 M de beneficio operativo (95.100 M en el 1T y solo 15.400 M en el 2T, margen del 0,6 %) y la informática 546.000 M con 11.060 M [3, 5]. El beneficio atribuido a la dominante es solo el ≈ 23,5 % del consolidado (46.650 M de 198.284 M en 2025): **el ≈ 76 % es de los minoritarios de las filiales** [1].",
+    "ajustes": "Cifras publicadas K-IFRS. Cuatro avisos. (1) El resultado financiero mezcla coberturas del oro (derivados: +58.649 M de beneficio por operaciones en 2025), la revalorización de los vales regalo de oro (−52.744 M) e intereses (−11.572 M) [1]: tratamos como recurrente ≈ −8.000 M. (2) El BPA del 1S26 (1.661 KRW básico) lleva ≈ 17.200 M de ganancia por la revalorización del derivado del CB nº 16 (el BPA diluido es de 891 KRW) [3]: no es recurrente. (3) La amortización de 2021-2023 es aproximada (intangibles estimados). (4) El BPA de los últimos doce meses (3.051 KRW, FnGuide) está inflado por el 4T25 y el 1T26 del oro y por esa ganancia [10].",
+    "confianza": "Alta"
+  },
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "3T24",
+        "ingresos": 1284900,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": 13420,
+        "margen_ebitda_pct": 1.04,
+        "bpa": null,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "4T24",
+        "ingresos": 1506400,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": 30920,
+        "margen_ebitda_pct": 2.05,
+        "bpa": null,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1T25",
+        "ingresos": 1636600,
+        "crecimiento_pct": 79.7,
+        "crecimiento_organico_pct": 79.7,
+        "ebitda": 37460,
+        "margen_ebitda_pct": 2.29,
+        "bpa": null,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "2T25",
+        "ingresos": 1266700,
+        "crecimiento_pct": 0.5,
+        "crecimiento_organico_pct": 0.5,
+        "ebitda": 25190,
+        "margen_ebitda_pct": 1.99,
+        "bpa": null,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "3T25",
+        "ingresos": 1727300,
+        "crecimiento_pct": 34.4,
+        "crecimiento_organico_pct": 34.4,
+        "ebitda": 68090,
+        "margen_ebitda_pct": 3.94,
+        "bpa": null,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "4T25",
+        "ingresos": 4240300,
+        "crecimiento_pct": 181.5,
+        "crecimiento_organico_pct": 181.5,
+        "ebitda": 163670,
+        "margen_ebitda_pct": 3.86,
+        "bpa": null,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1T26",
+        "ingresos": 3288200,
+        "crecimiento_pct": 100.9,
+        "crecimiento_organico_pct": 100.9,
+        "ebitda": 103170,
+        "margen_ebitda_pct": 3.14,
+        "bpa": null,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "2T26",
+        "ingresos": 2292400,
+        "crecimiento_pct": 81,
+        "crecimiento_organico_pct": 81,
+        "ebitda": 12290,
+        "margen_ebitda_pct": 0.54,
+        "bpa": 110,
+        "vs_consenso": null
+      }
+    ],
+    "ultima_presentacion": "Ventas y beneficio operativo de cada trimestre de los informes trimestrales, semestrales y anuales [1, 3, 5, 6, 7, 13, 14]; EBITDA = beneficio operativo + la amortización anual repartida a partes iguales (estimación). Beneficio operativo: 3T24 10.560 M, 4T24 28.060, 1T25 33.840, 2T25 21.570, 3T25 64.470, 4T25 160.050, 1T26 99.170 y 2T26 8.290 M. El 2T26 (13-ago) fue el más flojo desde 2024: el margen del oro cayó al 0,6 % con el precio del oro bajando desde el máximo de enero y la negociación del oro en Corea un 80 % por debajo de la de enero [3]. El BPA diluido del 2T26 fue de 110 KRW (el básico, 876 KRW, lleva la ganancia del derivado del CB). Sin consenso trimestral publicado (una sola casa). Resultados del 3T26 hacia el 13-nov (estimado: en 2025 fueron el 13-nov).",
+    "confianza": "Media"
+  },
+  "balance": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "activo_total": 686717,
+        "activo_corriente": 440496,
+        "pasivo_corriente": 337921,
+        "pasivo_total": 445790,
+        "fondo_comercio": null,
+        "intangibles": 75240,
+        "inmovilizado_material": 65981,
+        "existencias": 148928,
+        "clientes": 131130,
+        "proveedores": 108605,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 89980,
+        "deuda_financiera": 110322,
+        "arrendamientos": null,
+        "patrimonio_neto": 57201,
+        "minoritarios": 183727,
+        "reservas": 4102
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 830503,
+        "activo_corriente": 578455,
+        "pasivo_corriente": 495238,
+        "pasivo_total": 556057,
+        "fondo_comercio": null,
+        "intangibles": 69050,
+        "inmovilizado_material": 72838,
+        "existencias": 135083,
+        "clientes": 163356,
+        "proveedores": 197354,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 192594,
+        "deuda_financiera": 123750,
+        "arrendamientos": null,
+        "patrimonio_neto": 53377,
+        "minoritarios": 221068,
+        "reservas": 3780
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 777368,
+        "activo_corriente": 562633,
+        "pasivo_corriente": 481329,
+        "pasivo_total": 492958,
+        "fondo_comercio": null,
+        "intangibles": 52764,
+        "inmovilizado_material": 73942,
+        "existencias": 149213,
+        "clientes": 191647,
+        "proveedores": 167016,
+        "activos_contrato": 12986,
+        "pasivos_contrato": 30923,
+        "caja": 164529,
+        "deuda_financiera": 120908,
+        "arrendamientos": null,
+        "patrimonio_neto": 68982,
+        "minoritarios": 215429,
+        "reservas": 4348
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 945436,
+        "activo_corriente": 656595,
+        "pasivo_corriente": 550089,
+        "pasivo_total": 622948,
+        "fondo_comercio": null,
+        "intangibles": 48650,
+        "inmovilizado_material": 136271,
+        "existencias": 116981,
+        "clientes": 234983,
+        "proveedores": 206893,
+        "activos_contrato": 31247,
+        "pasivos_contrato": 48089,
+        "caja": 188920,
+        "deuda_financiera": 202467,
+        "arrendamientos": 8156,
+        "patrimonio_neto": 77920,
+        "minoritarios": 244568,
+        "reservas": 8852
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 1599392,
+        "activo_corriente": 1247957,
+        "pasivo_corriente": 1022376,
+        "pasivo_total": 1087584,
+        "fondo_comercio": 40605,
+        "intangibles": 9942,
+        "inmovilizado_material": 154736,
+        "existencias": 351827,
+        "clientes": 253848,
+        "proveedores": 214168,
+        "activos_contrato": 34049,
+        "pasivos_contrato": 100513,
+        "caja": 411890,
+        "deuda_financiera": 252748,
+        "arrendamientos": 13525,
+        "patrimonio_neto": 125387,
+        "minoritarios": 386421,
+        "reservas": 55436
+      }
+    ],
+    "vencimientos": [],
+    "liquidez": "A 30-jun-2026 (consolidado): efectivo de 167.171 M (397.224 M en diciembre), depósitos a corto de 9.665 M y activos financieros a valor razonable a corto de 45.996 M; deuda financiera de 228.227 M en libros (165.969 M de préstamos a corto, 51.843 M de parte corriente del largo, 7.915 M de convertibles en libros y 2.500 M a largo), es decir 270.312 M con los convertibles a su nominal (40.000 M del CB nº 16 y 10.000 M del de ITCEN PNS) [3]. **La matriz sola tiene poca caja**: ≈ 4.000 M a fin de 2025 frente a ≈ 58.000 M de deuda a un año; el CB de 40.000 M de mayo de 2026 fue para refinanciarla [11]. Rating BBB+ (Seoul Credit Rating, may-2025; antes A−).",
+    "rating": "BBB+ (Seoul Credit Rating, mayo de 2025)",
+    "coste_deuda_pct": 5,
+    "vida_media_anios": null,
+    "otros_pasivos": "CB nº 16 (40.000 M, cupón 0 %, rendimiento al vencimiento del 1 %, vence el 8-may-2031): conversión desde el 8-may-2027 a 38.021 KRW (ajustado el 8-ago-2026 desde 54.315; suelo del 70 %), 1.052.050 acciones (4,5 %); el inversor puede pedir el reembolso desde el 8-may-2028 [3, 8]. ITCEN Cloit tiene acciones preferentes convertibles con opción de venta del inversor (≈ 20.000 M, en otros pasivos financieros) [1]. KGE Holdings tiene un préstamo de adquisición con vencimiento anticipado si se incumplen condiciones y la matriz una opción de compra sobre acciones de KGE Holdings (mar-2028 a mar-2030) [1]. Garantías de cumplimiento de contratos del sindicato de software (268.055 M de cobertura) y avales personales del presidente sobre 11.560 M de préstamos [1]. Pleitos pequeños (≈ 9.000 M en total) [1].",
+    "comentario": "El balance es el de un mayorista de oro con un negocio informático pegado: existencias de 351.827 M a fin de 2025 (oro en bruto, lingotes y joyería: 146.276 M de materias primas, 159.841 M de mercaderías y 41.273 M de producto terminado) y 356.858 M a 30-jun-2026 [1, 3]. El circulante comercial (existencias + clientes + activos de contrato − proveedores − pasivos de contrato) fue de ≈ 325.000 M en 2025 (3,7 % de las ventas) y ≈ 476.000 M a 30-jun-2026: en el 1S26 la empresa consumió 188.251 M de caja operativa (impuestos de 2025, menos anticipos de clientes y más cuentas a cobrar) [3]. El patrimonio de la dominante es pequeño (164.448 M a jun-2026) frente al de los minoritarios (457.079 M) [3]. Deuda neta consolidada de ≈ 93.000 M (≈ 0,3 veces el EBITDA de los últimos doce meses), pero la matriz depende de los dividendos de filiales que no controla al 100 %.",
+    "confianza": "Alta"
+  },
+  "flujos": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 3556,
+        "capex": 9311,
+        "pagos_arrendamientos": 2420,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 0,
+        "recompras": 0,
+        "emision_acciones": null,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 123335,
+        "capex": 20138,
+        "pagos_arrendamientos": 3764,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 0,
+        "recompras": 0,
+        "emision_acciones": null,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": -29332,
+        "capex": 6451,
+        "pagos_arrendamientos": 6773,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 0,
+        "recompras": 0,
+        "emision_acciones": null,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 26443,
+        "capex": 73738,
+        "pagos_arrendamientos": null,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 0,
+        "recompras": 0,
+        "emision_acciones": null,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 238152,
+        "capex": 32200,
+        "pagos_arrendamientos": 8567,
+        "adquisiciones": 29863,
+        "desinversiones": null,
+        "dividendos": 0,
+        "recompras": 0,
+        "emision_acciones": null,
+        "intereses_en_financiacion": 0
+      }
+    ],
+    "comentario": "El flujo operativo es muy irregular porque lo mueve el circulante del oro: 123.335 M en 2022, −29.332 M en 2023, 26.443 M en 2024, 238.152 M en 2025 (beneficio récord y anticipos de clientes) y −188.251 M en el 1S26 [1, 2, 3]. En cinco años el flujo operativo acumulado (362.154 M) cubre el capex (141.838 M, sobre todo la sede de Gwacheon en 2024: 72.340 M) [1]. La matriz no paga dividendo (política de no reparto en 2023-2025); en 2025 las filiales pagaron 20.000 M a sus minoritarios [1]. Intereses pagados de 13.086 M en 2025 [1].",
+    "confianza": "Alta"
+  },
+  "calidad": {
+    "auditor": "EY Hanyoung (한영회계법인)",
+    "anios_auditor": 2,
+    "opinion": "Favorable (2025)",
+    "comentario": "EY Hanyoung audita desde 2024 (antes Samil PwC), con opinión favorable; las cuestiones clave de 2025 son el deterioro del fondo de comercio de KGE (40.605 M) y el grado de avance de los contratos de integración de sistemas (230.395 M de ingresos) [1]. En marzo de 2024 la empresa avisó de un retraso del informe de auditoría. Criterios a vigilar: (1) **la venta de oro se contabiliza por el importe bruto**: infla las ventas y hace que cualquier margen parezca bajo [12]; (2) la mezcla de coberturas y vales regalo en el resultado financiero; (3) la ganancia por el derivado del CB en el BPA de 2026; (4) las ventas a la asociada Aurum Exchange (527.085 M en 2025, el 6 % de las ventas) [1]; (5) ITCEN ENTEC fue designada por la KRX en 2023 por comunicación no fiel [1].",
+    "senales": [
+      {
+        "senal": "Ventas de oro brutas",
+        "nivel": "Media",
+        "comentario": "87 % de las ventas con margen operativo del 0,5-3 % [1]."
+      },
+      {
+        "senal": "Flujo operativo muy volátil",
+        "nivel": "Media",
+        "comentario": "−188.251 M en el 1S26 tras +238.152 M en 2025 [1, 3]."
+      },
+      {
+        "senal": "Ventas a una asociada",
+        "nivel": "Media",
+        "comentario": "Aurum Exchange (asociada de KGE): 527.085 M en 2025 [1]."
+      },
+      {
+        "senal": "Ganancias por derivados del CB",
+        "nivel": "Baja",
+        "comentario": "≈ 17.200 M en el 1S26; el BPA diluido es la mitad del básico [3]."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "rentabilidad": {
+    "comentario": "El ROIC consolidado de 2025 fue del 59,4 % frente a un WACC del 12,0 % (47 puntos), pero es el de un año de pico: en 2021-2023 fue del 7-10 % y en 2024 del 15,1 %, por debajo o cerca del WACC [1, 2]. Sale alto porque el capital invertido es pequeño frente a unas ventas de oro enormes y porque el margen del oro se multiplicó por cuatro. Con el margen de 2022-2024, el ROIC volvería al 8-10 %. Además, el ROIC es del consolidado: el accionista de la matriz se queda con ≈ 23,5 % del beneficio, y el ROE de la dominante fue del 46 % en 2025 y del 1-6 % en 2022-2024. El ROIC incremental de 2021-2025 (205 %) solo mide el salto del oro. **La calidad pasa en la cifra de 2025, no en la de un año normal.**",
+    "confianza": "Media"
+  },
+  "capital": {
+    "politica": "Sin dividendo de la matriz en 2023, 2024 ni 2025, ni siquiera con el beneficio récord de 2025 [1]. Sin recompras de la empresa; el presidente compró 6.190 acciones (≈ 140 M) el 16 y el 19-oct-2026 a título personal. Sin plan de valor publicado.",
+    "adquisiciones": [
+      {
+        "fecha": "2018",
+        "objetivo": "Korea Gold Exchange (vía KGE Holdings)",
+        "importe": null,
+        "comentario": "La compra que convirtió al grupo en el mayor mayorista de oro de Corea."
+      },
+      {
+        "fecha": "2025",
+        "objetivo": "Info U & Company y otras participaciones",
+        "importe": 29863,
+        "comentario": "Datos con IA; participaciones en el Busan Digital Asset Exchange y en una gestora de capital riesgo [1]."
+      },
+      {
+        "fecha": "2026-07-30",
+        "objetivo": "Galaxia FN (93,27 %)",
+        "importe": 1385,
+        "comentario": "Plataforma de valores tokenizados, a Galaxia Moneytree (grupo Hyosung) [9]."
+      }
+    ],
+    "comentario": "La matriz asigna capital comprando participaciones (oro, datos, activos digitales) y no reparte. Como holding, su caja depende de los dividendos de filiales en las que tiene entre el 25 % y el 50 %: las filiales pagan al resto de accionistas tanto o más que a la matriz. El ROE consolidado de los últimos doce meses fue del 54 % (Yahoo) por el auge del oro; el ROE atribuible de 2025 fue del 46 % sobre un patrimonio de la dominante pequeño (125.387 M) [1].",
+    "confianza": "Media"
+  },
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "Kang Jin-mo",
+        "cargo": "Fundador, presidente del consejo y consejero delegado",
+        "desde": "2005",
+        "participacion_pct": 12.34,
+        "trayectoria": "Físico (Ajou) con máster en gestión de ingeniería (Yonsei); Daou Technology (1993-97) y Yeollim Technology (1998-2002). Fundó la empresa en 2005 y construyó el grupo por compras (Comtec, Ssangyong Information & Communications, Korea Gold Exchange). Tiene el 12,34 % y controla el 24,85 % con su grupo [1, 23]."
+      },
+      {
+        "nombre": "Lee Kyung-il",
+        "cargo": "Vicepresidente, consejero ejecutivo (inversiones)",
+        "desde": "2006",
+        "participacion_pct": 0.22,
+        "trayectoria": "Daewoo Telecom (1990-98) y Hansol Telecom (1998-2003); en la empresa desde 2006 [1]."
+      },
+      {
+        "nombre": "Jung Kwang-ho",
+        "cargo": "Presidente ejecutivo (finanzas), consejero ejecutivo",
+        "desde": "2023",
+        "participacion_pct": null,
+        "trayectoria": "LG CNS (1994-2018) y Kakao Enterprise (2019-23) [1]."
+      }
+    ],
+    "historial_guidance": [],
+    "comentario": "La dirige su fundador desde 2005; la matriz tiene 164 empleados (sin contar las filiales) [1]. No publica guía de ventas ni de beneficio. Riesgo de persona clave: Kang Jin-mo decide las compras, es consejero en la mayoría de las filiales y avala personalmente 11.560 M de préstamos del grupo [1]. El 20-oct-2026 compró 6.190 acciones (≈ 140 M) diciendo que el precio no refleja el valor [18, 23]: una señal pequeña (0,03 % del capital) frente a su remuneración anual.",
+    "confianza": "Media"
+  },
+  "gobierno": {
+    "consejo": [
+      {
+        "nombre": "Kang Jin-mo",
+        "cargo": "Presidente del consejo y consejero delegado",
+        "tipo": "Ejecutivo",
+        "desde": "2005",
+        "comisiones": null
+      },
+      {
+        "nombre": "Lee Kyung-il",
+        "cargo": "Consejero ejecutivo (vicepresidente)",
+        "tipo": "Ejecutivo",
+        "desde": null,
+        "comisiones": null
+      },
+      {
+        "nombre": "Jung Kwang-ho",
+        "cargo": "Consejero ejecutivo (finanzas)",
+        "tipo": "Ejecutivo",
+        "desde": "2025",
+        "comisiones": null
+      },
+      {
+        "nombre": "Kim Young-ho",
+        "cargo": "Consejero independiente",
+        "tipo": "Independiente",
+        "desde": "2023",
+        "comisiones": "Auditoría (presidente)"
+      },
+      {
+        "nombre": "Lee Hyung-ki",
+        "cargo": "Consejero independiente",
+        "tipo": "Independiente",
+        "desde": "2022",
+        "comisiones": "Auditoría"
+      },
+      {
+        "nombre": "Lim Gyu-jun",
+        "cargo": "Consejero independiente",
+        "tipo": "Independiente",
+        "desde": "2026",
+        "comisiones": "Auditoría"
+      }
+    ],
+    "presidente_ceo_separados": false,
+    "presidente_ejecutivo": true,
+    "consejero_coordinador": false,
+    "una_accion_un_voto": true,
+    "operaciones_vinculadas_relevantes": true,
+    "variable_ligado_rentabilidad": false,
+    "auditoria_independiente": true,
+    "insiders_sin_operaciones": false,
+    "accionista_control": true,
+    "presidente_vinculado_control": true,
+    "cambios_cupula_24m": 1,
+    "voto_remuneracion_pct": null,
+    "voto_remuneracion_contra_pct": null,
+    "voto_remuneracion_contra_libre_pct": null,
+    "voto_cupula_pct": null,
+    "remuneracion_ceo": 1146,
+    "remuneracion": "Kang Jin-mo cobró 1.146,2 M KRW en 2025: 836,2 M de sueldo, 304 M de bonus (pagas extra y bonus por resultados) y 6 M de otros [1]: 17 veces el salario medio de la matriz, en un año de beneficio récord sin dividendo [24]. El límite aprobado por la junta para los seis consejeros es de 3.000 M; se pagaron 1.949 M [1]. El bonus no está ligado a la rentabilidad sobre el capital.",
+    "accionistas": [
+      {
+        "nombre": "Kang Jin-mo",
+        "pct": 12.34,
+        "tipo": "Fundador",
+        "variacion": "+6.190 acciones el 16 y el 19-oct-2026 (12,31 % → 12,34 %) [23]"
+      },
+      {
+        "nombre": "ITCEN Core (sociedad del grupo de control)",
+        "pct": 10.02,
+        "tipo": "Sociedad vinculada al fundador",
+        "variacion": "Sin cambios [10]"
+      },
+      {
+        "nombre": "Soft Itec y otros del grupo de control",
+        "pct": 2.49,
+        "tipo": "Grupo de control",
+        "variacion": "Soft Itec 2,26 %; Lee Kyung-il 0,22 % [10]"
+      },
+      {
+        "nombre": "Extranjeros",
+        "pct": 5.36,
+        "tipo": "Inversores extranjeros",
+        "variacion": "[10]"
+      },
+      {
+        "nombre": "Accionistas minoritarios (pequeños)",
+        "pct": 66.74,
+        "tipo": "Flotante",
+        "variacion": "A fin de 2025 [1]"
+      }
+    ],
+    "insiders": [
+      {
+        "nombre": "Kang Jin-mo",
+        "cargo": "Fundador y presidente",
+        "tipo": "Compra",
+        "fecha": "2026-10-19",
+        "acciones": 6190,
+        "importe": 140,
+        "comentario": "El 16 y el 19-oct-2026 a una media de 22.619 KRW [18, 23]."
+      }
+    ],
+    "control_y_defensas": "El fundador controla con el 24,85 % (12,34 % propio, 10,02 % de ITCEN Core y el resto de sociedades y personas vinculadas) frente a un flotante del 75 % muy disperso [10]. Es presidente del consejo y consejero delegado; tres consejeros independientes forman la comisión de auditoría [1]. **Operaciones vinculadas**: el grupo pagó 10.279 M en «otros gastos» a ITCEN Core (sociedad del grupo de control) en 2025, le compró un activo de 197 M y le vendió bienes y servicios por 2.011 M; vendió 5.806 M a Soft Itec; y vendió 527.085 M de oro a la asociada Aurum Exchange [1]. Kang Jin-mo y personas vinculadas avalan 21.160 M de préstamos del grupo [1]. **Estructura en cadena**: la matriz tiene el 28,86 % directo de KGE Holdings (50 % con el grupo) y el 25 % de ITCEN CTS; el ≈ 76 % del beneficio consolidado es de minoritarios [1].",
+    "alertas": [
+      "Beneficio récord en 2025 sin dividendo y presidente con 17 veces el salario medio [1, 24].",
+      "Pagos de 10.279 M a ITCEN Core, sociedad del grupo de control [1].",
+      "Presidente del consejo y consejero delegado son la misma persona, que es el accionista de control [1].",
+      "La matriz tiene poca caja propia y refinancia con convertibles (CB de 40.000 M con precio rebajado un 30 %) [11]."
+    ],
+    "confianza": "Media"
+  },
+  "consenso": {
+    "guidance": "La empresa no publica guía de ventas ni de beneficio. Objetivo declarado de llevar 50 toneladas de oro a la cadena de bloques en cinco años con el token KGLD (emisión piloto). Resultados del 3T26 hacia el 13-nov-2026 (estimado: en 2025 fueron el 13-nov; sin aviso todavía).",
+    "estimaciones": [
+      {
+        "periodo": "2026e",
+        "ingresos": null,
+        "ebitda": 307650,
+        "ebit": null,
+        "bpa": 2222,
+        "dpa": null,
+        "fuente": "FnGuide, una casa (BNK), a 19-oct-2026 [25]"
+      }
+    ],
+    "recomendaciones": {
+      "n_analistas": 1,
+      "comprar": 1,
+      "mantener": 0,
+      "vender": 0,
+      "po_medio": 54000,
+      "po_min": 54000,
+      "po_max": 54000
+    },
+    "revisiones": "Una sola casa con objetivo publicado: BNK Investment (11-sep-2026), Comprar, rebajó el objetivo de 68.000 a 54.000 KRW [26]. Samsung Securities comenta el valor sin objetivo. Con una sola estimación el consenso no es representativo.",
+    "base_ebitda": "NIIF",
+    "ajuste_ebitda_pct_ventas": null,
+    "confianza": "Baja"
+  },
+  "bolsa": {
+    "tipo_rentabilidad": "de precio (sin dividendos)",
+    "rentabilidades": [
+      {
+        "periodo": "En el año",
+        "accion_pct": -29.2,
+        "indice_pct": -15.5,
+        "sector_pct": -20.7
+      },
+      {
+        "periodo": "1 año",
+        "accion_pct": 14.8,
+        "indice_pct": -10.7,
+        "sector_pct": -22.3
+      },
+      {
+        "periodo": "3 años (anual.)",
+        "accion_pct": 84.9,
+        "indice_pct": 0.5,
+        "sector_pct": -1.2
+      },
+      {
+        "periodo": "5 años (anual.)",
+        "accion_pct": 34.9,
+        "indice_pct": -4.8,
+        "sector_pct": -15.4
+      },
+      {
+        "periodo": "10 años (anual.)",
+        "accion_pct": 17.1,
+        "indice_pct": 1.8,
+        "sector_pct": 1.3
+      }
+    ],
+    "anual": [
+      {
+        "anio": "2016",
+        "accion_pct": -22,
+        "indice_pct": -7.5
+      },
+      {
+        "anio": "2017",
+        "accion_pct": -29.3,
+        "indice_pct": 26.4
+      },
+      {
+        "anio": "2018",
+        "accion_pct": 15.8,
+        "indice_pct": -15.4
+      },
+      {
+        "anio": "2019",
+        "accion_pct": 100.9,
+        "indice_pct": -0.9
+      },
+      {
+        "anio": "2020",
+        "accion_pct": -23.5,
+        "indice_pct": 44.6
+      },
+      {
+        "anio": "2021",
+        "accion_pct": -4.4,
+        "indice_pct": 6.8
+      },
+      {
+        "anio": "2022",
+        "accion_pct": -28.3,
+        "indice_pct": -34.3
+      },
+      {
+        "anio": "2023",
+        "accion_pct": 107.2,
+        "indice_pct": 27.6
+      },
+      {
+        "anio": "2024",
+        "accion_pct": -30.1,
+        "indice_pct": -21.7
+      },
+      {
+        "anio": "2025",
+        "accion_pct": 482.7,
+        "indice_pct": 36.5
+      }
+    ],
+    "beta": 1.68,
+    "volatilidad_pct": 104.5,
+    "max_drawdown_pct": -74.3,
+    "tramo_drawdown": "2026-03-12 → 2026-07-30",
+    "posicion_corta_pct": null,
+    "comentario": "Valor de tema más que de resultados. Pasó de 5.200 KRW (fin de 2024) a 30.300 (fin de 2025, +483 %) y a un máximo de 75.500 KRW el 13-mar-2026 con el auge del oro y los temas de stablecoins y tokens [17]. Desde entonces ha caído un 70 %: −17,6 % el 4-mar (pánico del KOSDAQ), −15,3 % el 23-mar (regulación de stablecoins) [19], −16 % el 16-jun y −12,1 % el 25-jun (rumor de venta de KGE, desmentido, y ajuste del CB) [31, 32], subidas del 14-23 % en julio-agosto (valores tokenizados e institucionales) [22, 33] y caídas el 16-sep (ley CLARITY en EE. UU.) [20] y el 20-oct (−9,1 %, el oro baja) [21]. Hoy cotiza a 21.450 KRW (cierre del 20-oct), 72 % por debajo del máximo y un 26 % por encima del mínimo de 52 semanas (17.000 KRW, 22-oct-2025). Volatilidad del 105 % anual. A 21.450 KRW cotiza a 7 veces el BPA de los últimos doce meses (inflado por el oro y el CB) y a 9.7 veces el BPA de 2026e de la única casa.",
+    "confianza": "Alta",
+    "contexto": {
+      "movimiento": {
+        "fecha": "2026-10-20",
+        "var_1m_pct": -29.7,
+        "var_3m_pct": -0.9,
+        "var_6m_pct": -57.9,
+        "var_12m_pct": 21.1,
+        "dist_max_52s_pct": -70.2,
+        "dist_min_52s_pct": 18.6,
+        "dist_max_historico_pct": -70.2,
+        "tendencia": "bajista",
+        "volatilidad_60d_pct": 108,
+        "avisos": [
+          "P3",
+          "P5"
+        ]
+      },
+      "movimientos_fuertes": [
+        {
+          "periodo": "dic-2025 a mar-2026",
+          "var_pct": 149.2,
+          "causa": "De 30.300 (fin de 2025) a 75.500 KRW (13-mar) con el auge del oro (resultado récord del 4T25), los temas de stablecoins y tokens y entradas de particulares [17, 35]. El 30-dic cayó un 8,2 % por la subida de márgenes de la CME [30].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "mar-2026",
+          "var_pct": -15.3,
+          "causa": "El 4-mar −17,6 % con el pánico del KOSDAQ y el 23-mar −15,3 % por la regulación de stablecoins en Corea y EE. UU. [19].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "jun-2026",
+          "var_pct": -55.3,
+          "causa": "De 54.100 (abril) a 24.200 KRW (junio): rumor de venta de KGE y salida de Web3 (desmentido el 23-jun) [31], ajuste a la baja del precio del CB y temor a nuevas acciones [32], artículos sobre el «crecimiento hueco» del oro y un 2T26 con el margen del oro en el 0,6 %. Recogido en nuestro margen normalizado.",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "jul-ago-2026",
+          "var_pct": 70.5,
+          "causa": "De 21.050 a 35.900 KRW: valores tokenizados (31-jul +14,6 %) y compras de institucionales (24 al 28-ago) [22, 33]. Tema, sin cambio en el beneficio.",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "sep-oct-2026",
+          "var_pct": -40.2,
+          "causa": "De 35.900 a 21.450 KRW: la ley CLARITY no pasó el Senado de EE. UU. (16-sep, −8,7 %) [20], el oro bajó con los tipos de EE. UU. (15-oct −8,7 %, 20-oct −9,1 %) [21] y el foro da por retrasado el KGLD. Todo ello está en nuestro 2S26 (margen del oro del 0,8 %) y en el bajista.",
+          "veredicto": "no cambia",
+          "condicion": null
+        }
+      ],
+      "noticias": [
+        {
+          "fecha": "2026-11-13",
+          "tipo": "resultados",
+          "hecho": "Resultados del 3T26 hacia el 13-nov (estimado). Nuestro 2S26 ya supone un margen del oro del 0,8 %. Unos resultados cercanos no aplazan una decisión (reglas 11 y 13 del método).",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-10-20",
+          "tipo": "compra de directivos",
+          "hecho": "El presidente compra 6.190 acciones (≈ 140 M) el 16 y el 19-oct a 22.619 KRW de media [nota C: 4, 5]. Señal pequeña (0,03 % del capital).",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-10-12",
+          "tipo": "contrato",
+          "hecho": "ENTEC, preferente en K-Edufine (217.300 M) y en HW2 (24.700 M); CTS firma con Lotte Innovate en centros de datos (16-oct) [nota B: 7]. Cartera de la informática; ya en nuestro crecimiento.",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-09-11",
+          "tipo": "recomendación",
+          "hecho": "BNK rebaja el objetivo de 68.000 a 54.000 KRW (Comprar); única casa con objetivo [26].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-08-10",
+          "tipo": "ampliación o convertible",
+          "hecho": "El precio de conversión del CB nº 16 baja de 54.315 a 38.021 KRW (suelo del 70 %): 1.052.050 acciones (4,5 %) desde mayo de 2027 [nota A: 8]. Dilución ya contada en el BPA.",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-07-30",
+          "tipo": "fusión u oferta",
+          "hecho": "Compra del 93,27 % de Galaxia FN por 1.385 M [nota A: 9]. Importe pequeño (en el puente).",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-06-23",
+          "tipo": "otros",
+          "hecho": "Rumor de venta de KGE y de salida de Web3, desmentido por la empresa [31]. Si la venta ocurriera, el valor dependería del precio; no hay hecho con fecha.",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-05-08",
+          "tipo": "ampliación o convertible",
+          "hecho": "CB nº 16 de 40.000 M a un fondo de capital privado para refinanciar deuda de la matriz [nota A: 11]. Deuda en el DCF y acciones en el BPA.",
+          "veredicto": "no cambia",
+          "condicion": null
+        }
+      ],
+      "proximos_resultados": "2026-11-13",
+      "veredicto": "no cambia",
+      "condicion": null,
+      "comentario": "La acción ha caído un 30 % en un mes y un 70 % desde el máximo de marzo, con causas conocidas: el fin de la fiebre del oro (margen del oro del 0,6 % en el 2T26, oro a la baja con los tipos de EE. UU.), la regulación de activos digitales y las dudas sobre el token KGLD. Todo eso está en nuestras cifras (2S26 con el margen del oro al 0,8 % y bajista con el margen de 2022-2024). No hay hecho pendiente con fecha que cambie la conclusión: el CB solo convierte desde mayo de 2027 a un precio un 77 % superior, no hay colocaciones anunciadas y la compra del presidente es pequeña. Los resultados del 3T26 no aplazan nada según el método. Veredicto: no cambia (la conclusión, no comprar, no depende del momento)."
+    }
+  },
+  "multiplos_historicos": {
+    "serie": [
+      {
+        "anio": "2021",
+        "precio_cierre": 5010,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2022",
+        "precio_cierre": 3590,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": true
+      },
+      {
+        "anio": "2023",
+        "precio_cierre": 7440,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2024",
+        "precio_cierre": 5200,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": true
+      },
+      {
+        "anio": "2025",
+        "precio_cierre": 30300,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      }
+    ],
+    "comentario": "PER adelantado (cierre ÷ BPA real del año siguiente): 2021 59,0x (5.010 ÷ 85); 2022 112,2x (3.590 ÷ 32); 2023 40,4x (7.440 ÷ 184); 2024 2,6x (5.200 ÷ 2.010); 2025 ≈ 25x sobre nuestro BPA normalizado de 2026e [D1, nota A]. 2022 y 2024 son atípicos (más de tres veces o menos de un tercio de la mediana del resto): el BPA de la dominante fue casi nulo en 2023 y se multiplicó por 11 en 2025 con el oro. PER al cierre (BPA del propio año): 2021 pérdidas, 2022 42,2x, 2023 232x, 2024 28,3x y 2025 15,1x. El beneficio de la dominante ha sido tan pequeño e irregular que la historia del PER dice poco.",
+    "confianza": "Baja"
+  },
+  "comparables": {
+    "criterio": "Dos grupos: integradoras coreanas cotizadas (Samsung SDS, LG CNS, Hyundai AutoEver, POSCO DX, Lotte Innovate; la filial ITCEN ENTEC queda fuera porque su BPA de Yahoo da un PER de 2x que no es comparable) y comercio y refino de metales preciosos (Gold.com en EE. UU., ARE Holdings y Matsuda Sangyo en Japón, Chow Tai Fook en Hong Kong). PER de los próximos 12 meses = precio ÷ (0,2 × BPA 2026e + 0,8 × BPA 2027e) de Yahoo; los de ejercicio a marzo con 0,45 × marzo-2027 + 0,55 × marzo-2028; Gold.com con el ejercicio a junio de 2027.",
+    "empresas": [
+      {
+        "nombre": "Samsung SDS",
+        "ticker": "018260.KS",
+        "pais": "KR",
+        "capitalizacion": 15377217,
+        "ev_ventas": 0.74,
+        "ev_ebitda_ltm": 7.3,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 18.3,
+        "crecimiento_pct": 5.6,
+        "margen_ebitda_pct": 10.2,
+        "roic_pct": null,
+        "dn_ebitda": -4,
+        "fcf_yield_pct": 3.3
+      },
+      {
+        "nombre": "LG CNS",
+        "ticker": "064400.KS",
+        "pais": "KR",
+        "capitalizacion": 6646376,
+        "ev_ventas": 0.91,
+        "ev_ebitda_ltm": 8.1,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 12.7,
+        "crecimiento_pct": 8.4,
+        "margen_ebitda_pct": 11.3,
+        "roic_pct": null,
+        "dn_ebitda": -1.46,
+        "fcf_yield_pct": 6.8
+      },
+      {
+        "nombre": "Hyundai AutoEver",
+        "ticker": "307950.KS",
+        "pais": "KR",
+        "capitalizacion": 9228170,
+        "ev_ventas": 2.07,
+        "ev_ebitda_ltm": 20.7,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 36.3,
+        "crecimiento_pct": 13.9,
+        "margen_ebitda_pct": 10,
+        "roic_pct": null,
+        "dn_ebitda": -1.01,
+        "fcf_yield_pct": 0.7
+      },
+      {
+        "nombre": "POSCO DX",
+        "ticker": "022100.KS",
+        "pais": "KR",
+        "capitalizacion": 3066815,
+        "ev_ventas": 3,
+        "ev_ebitda_ltm": 61.4,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 57.4,
+        "crecimiento_pct": 12.8,
+        "margen_ebitda_pct": 4.9,
+        "roic_pct": null,
+        "dn_ebitda": -5.19,
+        "fcf_yield_pct": 1.8
+      },
+      {
+        "nombre": "Lotte Innovate",
+        "ticker": "286940.KS",
+        "pais": "KR",
+        "capitalizacion": 266126,
+        "ev_ventas": 0.24,
+        "ev_ebitda_ltm": 2.8,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 7.7,
+        "crecimiento_pct": 5.3,
+        "margen_ebitda_pct": 8.7,
+        "roic_pct": null,
+        "dn_ebitda": -0.05,
+        "fcf_yield_pct": 24.3
+      },
+      {
+        "nombre": "Gold.com (antes A-Mark)",
+        "ticker": "GOLD",
+        "pais": "US",
+        "capitalizacion": 1498556,
+        "ev_ventas": 0.06,
+        "ev_ebitda_ltm": 8.4,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 10.4,
+        "crecimiento_pct": -12.9,
+        "margen_ebitda_pct": 0.7,
+        "roic_pct": null,
+        "dn_ebitda": 1.82,
+        "fcf_yield_pct": 36.2
+      },
+      {
+        "nombre": "ARE Holdings",
+        "ticker": "5857.T",
+        "pais": "JP",
+        "capitalizacion": 2324629,
+        "ev_ventas": 0.84,
+        "ev_ebitda_ltm": 11.7,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 8.5,
+        "crecimiento_pct": 5.9,
+        "margen_ebitda_pct": 7.2,
+        "roic_pct": null,
+        "dn_ebitda": 5.24,
+        "fcf_yield_pct": -10
+      },
+      {
+        "nombre": "Matsuda Sangyo",
+        "ticker": "7456.T",
+        "pais": "JP",
+        "capitalizacion": 1337353,
+        "ev_ventas": 0.27,
+        "ev_ebitda_ltm": 6.2,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 6.5,
+        "crecimiento_pct": -0.6,
+        "margen_ebitda_pct": 4.4,
+        "roic_pct": null,
+        "dn_ebitda": 0.96,
+        "fcf_yield_pct": -5
+      },
+      {
+        "nombre": "Chow Tai Fook",
+        "ticker": "1929.HK",
+        "pais": "HK",
+        "capitalizacion": 18746121,
+        "ev_ventas": 1.37,
+        "ev_ebitda_ltm": 6.8,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 10.5,
+        "crecimiento_pct": 4.7,
+        "margen_ebitda_pct": 20.2,
+        "roic_pct": null,
+        "dn_ebitda": 0.97,
+        "fcf_yield_pct": 1.9
+      }
+    ],
+    "comentario": "Ningún comparable tiene la mezcla de ITCEN (holding con minoritarios, oro a margen bajo e integración pública). Mediana del grupo: 10.5 veces el BPA de los próximos doce meses, con una dispersión enorme (Lotte Innovate ≈ 7x, POSCO DX ≈ 50x). Gold.com, el mayorista de metales preciosos más parecido al oro de KGE, cotiza a ≈ 10x con un margen operativo del 0,45 % [27]. ITCEN, a 21.450 KRW, cotiza a ≈ 25 veces nuestro BPA normalizado de 2027e: más caro que las integradoras grandes y que los mayoristas de oro. Su EV/EBITDA de los últimos doce meses (2,6x en Yahoo) parece bajo porque cuenta un EBITDA del 100 % del que tres cuartas partes son de minoritarios y del pico del oro.",
+    "confianza": "Media"
+  },
+  "transacciones": {
+    "operaciones": [
+      {
+        "fecha": "2026-07",
+        "objetivo": "Galaxia FN (93,27 %)",
+        "comprador": "ITCEN GLOBAL",
+        "ev": 1385,
+        "ev_ventas": null,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": true,
+        "comentario": "Plataforma de valores tokenizados con pérdidas; importe pequeño [nota A: 9]."
+      },
+      {
+        "fecha": "2026-05",
+        "objetivo": "ITCEN GLOBAL (CB nº 16, 40.000 M)",
+        "comprador": "Fondo de capital privado (ITC Holdings, de KCGI)",
+        "ev": null,
+        "ev_ventas": null,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": true,
+        "comentario": "Convertible a 54.315 KRW, rebajado a 38.021 KRW en agosto; deuda con opción, no una compra de control [nota A: 8]."
+      }
+    ],
+    "comentario": "No hay compras recientes de mayoristas de oro o integradoras coreanas con múltiplos públicos comparables. El CB de mayo de 2026 da una referencia: el inversor aceptó convertir a 38.021 KRW (con reembolso garantizado desde 2028), un 77 % por encima del precio de hoy.",
+    "confianza": "Baja"
+  },
+  "dcf": {
+    "anios": [
+      {
+        "periodo": "2026e",
+        "crecimiento_pct": 15,
+        "margen_ebitda_pct": 1.81,
+        "amortizacion_pct_ventas": 0.16,
+        "capex_pct_ventas": 0.1,
+        "nwc_pct_ventas": 4.2,
+        "tasa_impositiva_pct": 24.5,
+        "fijo": true
+      },
+      {
+        "periodo": "2027e",
+        "crecimiento_pct": -11.8,
+        "margen_ebitda_pct": 1.57,
+        "amortizacion_pct_ventas": 0.18,
+        "capex_pct_ventas": 0.22,
+        "nwc_pct_ventas": 4,
+        "tasa_impositiva_pct": 24.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2028e",
+        "crecimiento_pct": 4,
+        "margen_ebitda_pct": 1.6,
+        "amortizacion_pct_ventas": 0.18,
+        "capex_pct_ventas": 0.22,
+        "nwc_pct_ventas": 3.9,
+        "tasa_impositiva_pct": 24.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2029e",
+        "crecimiento_pct": 3.5,
+        "margen_ebitda_pct": 1.6,
+        "amortizacion_pct_ventas": 0.18,
+        "capex_pct_ventas": 0.22,
+        "nwc_pct_ventas": 3.8,
+        "tasa_impositiva_pct": 24.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2030e",
+        "crecimiento_pct": 3,
+        "margen_ebitda_pct": 1.6,
+        "amortizacion_pct_ventas": 0.18,
+        "capex_pct_ventas": 0.22,
+        "nwc_pct_ventas": 3.8,
+        "tasa_impositiva_pct": 24.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2031e",
+        "crecimiento_pct": 3,
+        "margen_ebitda_pct": 1.6,
+        "amortizacion_pct_ventas": 0.18,
+        "capex_pct_ventas": 0.22,
+        "nwc_pct_ventas": 3.8,
+        "tasa_impositiva_pct": 24.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2032e",
+        "crecimiento_pct": 2.5,
+        "margen_ebitda_pct": 1.6,
+        "amortizacion_pct_ventas": 0.18,
+        "capex_pct_ventas": 0.22,
+        "nwc_pct_ventas": 3.8,
+        "tasa_impositiva_pct": 24.5,
+        "fijo": false
+      },
+      {
+        "periodo": "2033e",
+        "crecimiento_pct": 2.5,
+        "margen_ebitda_pct": 1.6,
+        "amortizacion_pct_ventas": 0.18,
+        "capex_pct_ventas": 0.22,
+        "nwc_pct_ventas": 3.8,
+        "tasa_impositiva_pct": 24.5,
+        "fijo": false
+      }
+    ],
+    "wacc": {
+      "tasa_libre_pct": 4.45,
+      "beta": 1.3,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 3,
+      "coste_deuda_pct": 5.5,
+      "tasa_impositiva_pct": 24.5,
+      "peso_deuda_pct": 25
+    },
+    "terminal": {
+      "metodo": "gordon",
+      "crecimiento_pct": 2,
+      "multiplo_salida": 6
+    },
+    "etapa2": {
+      "usar": false,
+      "anios": 5,
+      "margen_final_pct": null,
+      "justificacion": null
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "Las ventas pasaron de 2,62 billones en 2022 a 8,87 billones en 2025 (+50 % anual), pero por el oro: precio (de ≈ 1.800 a ≈ 3.400 USD de media) y volumen de la fiebre del oro coreana [1, 15]. Proyectamos 10,2 billones en 2026e (1S real de 5,58 billones y un 2S de 4,62 con el oro a ≈ 4.160 USD y menos volumen), −11,8 % en 2027e (volumen −8 % y precio −4 %, la media de 2026 fue más alta que el precio de hoy) y un 2,5-4 % después. La informática crece un 4-6 % (pedidos públicos como K-Edufine de ENTEC por 217.300 M) [18].",
+      "margenes": "Margen EBITDA del 1,81 % en 2026e (1S real del ≈ 2,1 % y 2S del ≈ 1,5 %) y del 1,6 % desde 2027e: oro al 1,1 % de margen operativo e informática al 3-3,5 %. El margen del oro fue del 0,5-0,9 % en 2022-2024, del 3,25 % en 2025 y del 0,6 % en el 2T26 [1, 3]: suponemos que el auge deja algo (más volumen al público, primas, coberturas), pero no el 3 %. El EBITDA consolidado de 2022-2024 fue del 1,4-1,6 % de las ventas [1, 2].",
+      "inversion": "Capex del 0,10 % de las ventas en 2026e (3.387 M en el 1S26) y del 0,22 % después (≈ 20.000 M al año, la media de 2021-2025 sin la sede de Gwacheon); amortización del 0,16-0,18 %. Circulante del 4,2 % de las ventas en 2026e (≈ 476.000 M a junio: existencias de oro de 356.858 M) y del 3,8-4,0 % después (3,7 % en 2025) [1, 3].",
+      "wacc": "Todo en KRW: bono coreano a 10 años del 4,45 % (septiembre de 2026, FRED/OCDE) [28]. Beta de 1,3: la medida frente al KOSDAQ es de 1,26 semanal a cinco años y 1,68 mensual (1,17-1,46 ajustadas) con una volatilidad del 105 % [17]. Prima de mercado del 5,5 % (4,2 % implícita en EE. UU. [29] más riesgo de Corea) y prima adicional de 3 puntos: dependencia del oro, estructura de holding con minoritarios, poca caja en la matriz y operaciones vinculadas. Coste de la deuda del 5,5 % (rating BBB+) con un 25 % de deuda: WACC del 12,0 %.",
+      "terminal": "Crecimiento a perpetuidad del 2,0 %, por debajo del bono coreano (4,45 %): un mayorista de oro y una integradora madura. El valor terminal pesa el 47 % del valor; el múltiplo de salida implícito es de 6 veces el EBITDA, como Matsuda Sangyo y la mitad baja de las integradoras [27]."
+    },
+    "sostenibilidad": {
+      "puente_ingresos": [
+        {
+          "periodo": "2026e",
+          "volumen_pct": -12,
+          "precio_pct": 27,
+          "otros_pct": 0,
+          "comentario": "Precio del oro +27 % de media en wones (≈ 4.350 USD de media en 2026 frente a ≈ 3.400 en 2025, con el won más débil) y volumen −12 % (la negociación del oro en Corea cayó un 80 % de enero a julio) [15, 16]; la informática, +4 %."
+        },
+        {
+          "periodo": "2027e",
+          "volumen_pct": -8,
+          "precio_pct": -4,
+          "otros_pct": 0.2,
+          "comentario": "Precio −4 % (el oro de hoy, ≈ 4.160 USD, por debajo de la media de 2026) y volumen −8 % (sin la fiebre del 4T25-1T26); +0,2 puntos de informática."
+        },
+        {
+          "periodo": "2028e",
+          "volumen_pct": 2,
+          "precio_pct": 2,
+          "otros_pct": 0,
+          "comentario": "Volumen +2 % (oro e informática) y precio +2 % (oro estable en dólares e inflación)."
+        },
+        {
+          "periodo": "2029e",
+          "volumen_pct": 1.5,
+          "precio_pct": 2,
+          "otros_pct": 0,
+          "comentario": "Volumen +1,5 % y precio +2 %."
+        },
+        {
+          "periodo": "2030e",
+          "volumen_pct": 1,
+          "precio_pct": 2,
+          "otros_pct": 0,
+          "comentario": "Volumen +1 % y precio +2 %. Ventas de ≈ 9,98 billones, el 41,6 % de nuestra referencia de negociación del oro de la KRX en 2030e (≈ 24 billones) frente al 39,2 % de hoy: una medida de escala, no una cuota [15]."
+        }
+      ],
+      "mercado_final": {
+        "periodo": "2030e",
+        "tamano": 24000000
+      },
+      "veredicto": "Sí",
+      "justificacion": "Sí, porque proyectamos poco. (1) El crecimiento proyectado (2,7 % de media en 2026e-2033e, con −11,8 % en 2027e) está muy por debajo del histórico (28 % anual en ventas, todo por el oro). (2) Apenas necesita capital: reinvierte el 12 % del NOPAT, financiable con el ROIC de 2025 (59 %) y también con el de 2021-2024 (7-15 %). (3) La escala frente a la negociación del oro de la KRX pasa del 39 % al 42 %. **La prueba no dice que el ROIC de 2025 sea normal**: con el margen del oro de 2022-2024 el ROIC consolidado fue del 7-10 %, por debajo del WACC (12 %); el de 2025 es de pico."
+    },
+    "lectura": "El DCF da 7.484 KRW por acción, un 65 % por debajo del precio, con el valor terminal en el 47 %. El valor de empresa del consolidado (973.668 M) no es pequeño (6,9 veces el EBITDA de 2027e), pero la matriz solo se queda con ≈ una cuarta parte: tras la deuda neta (128.386 M con los convertibles a su nominal) y los minoritarios (706.000 M), quedan 173.600 M para sus accionistas. El precio de 21.450 KRW (497.640 M de capitalización) no tiene solución de crecimiento en el DCF inverso: descuenta un margen, no un crecimiento; con los minoritarios en proporción, haría falta un margen EBITDA del ≈ 3,5 % para siempre, el del pico de 2025. La tabla de sensibilidad va de 9.313 a 15.378 KRW en el caso base: ninguna combinación razonable de WACC y crecimiento acerca el valor al precio.",
+    "confianza": "Baja"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 30,
+        "ajuste_crecimiento_pp": -5,
+        "ajuste_margen_pp": -0.4,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": 1.5,
+        "multiplo_salida": null,
+        "narrativa": "Fin de la fiebre del oro: el margen del oro vuelve al ≈ 0,7 % de 2022-2024 (EBITDA consolidado del 1,2 %) y el volumen cae 5 puntos más cada año; la informática sufre presión de precios e IA. Crecimiento terminal del 1,5 %."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "El oro se queda en ≈ 8 billones de ventas al 1,1 % de margen operativo y la informática crece con contratos públicos al 3-3,5 %; margen EBITDA del 1,6 %; sin dividendo de la matriz."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 20,
+        "ajuste_crecimiento_pp": 4,
+        "ajuste_margen_pp": 0.4,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "El oro sigue caro y con volumen, los tokens de oro y los valores tokenizados empiezan a generar ingresos y la informática gana margen con la IA: 4 puntos más de crecimiento y 0,4 puntos más de margen (EBITDA del 2,0 %)."
+      }
+    ],
+    "comentario": "En el DCF el alcista (24.847 KRW) gana un 15,8 % y el base pierde un 65 %; **el bajista sale negativo (−5.626 KRW) por un efecto del método**: los minoritarios están fijos en 706.000 M y en el bajista el valor de las filiales cae por debajo de esa cifra. Hecho bien (minoritarios en proporción), el bajista daría ≈ 2.650 KRW por acción: el 25 % del valor de las filiales (≈ 686.000 M) menos la deuda neta de la matriz (≈ 70.000 M) y sus gastos capitalizados (≈ 40.000 M). A 12 meses, con el PER, el bajista pierde un 60 % y el alcista gana un 72 %. La asimetría es mala: para ganar hace falta que el pico del oro dure.",
+    "confianza": "Media"
+  },
+  "suma_partes": {
+    "aplica": true,
+    "descuento_holding_pct": 0,
+    "partes": [
+      {
+        "segmento": "Oro y metales preciosos (Korea Gold Exchange y filiales)",
+        "metrica": "EBITDA 2027e",
+        "valor_metrica": 93000,
+        "multiplo": 6.5,
+        "ev_directo": null,
+        "justificacion": "EBITDA de 2027e de ≈ 93.000 M (≈ 8,0 billones de ventas al 1,1 % de margen operativo más ≈ 5.000 M de amortización) a 6,5 veces: entre Matsuda Sangyo (6,2x), Chow Tai Fook (6,8x) y Gold.com (8,4x sobre un EBITDA de pico) [27]. Es el 100 % del negocio; la matriz tiene ≈ 25 % en transparencia [1]."
+      },
+      {
+        "segmento": "Servicios informáticos (ITCEN CTS, ENTEC, Cloit, C-Platform, PNS)",
+        "metrica": "EBITDA 2027e",
+        "valor_metrica": 52000,
+        "multiplo": 6,
+        "ev_directo": null,
+        "justificacion": "EBITDA de 2027e de ≈ 52.000 M (≈ 41.000 M de beneficio operativo más ≈ 11.000 M de amortización) a 6 veces: por debajo de Samsung SDS y LG CNS (7,3-8,1x), con más márgen público y menos escala, y por encima de Lotte Innovate (2,8x) y de la filial ITCEN CTS (4,3x) [27]."
+      },
+      {
+        "segmento": "Gastos de la matriz y ajustes de consolidación",
+        "metrica": "EBITDA 2027e",
+        "valor_metrica": -6000,
+        "multiplo": 6,
+        "ev_directo": null,
+        "justificacion": "Gastos de la matriz no repercutidos y ajustes de consolidación (≈ −6.000 M al año; −14.000 M en el 1S26) al mismo múltiplo [1, 3]."
+      },
+      {
+        "segmento": "Descuento de holding (20 % de lo que corresponde a la matriz)",
+        "metrica": "Valor de las participaciones",
+        "valor_metrica": null,
+        "multiplo": null,
+        "ev_directo": -42800,
+        "justificacion": "Descuento de conglomerado del 20 % (el máximo del método) sobre lo que corresponde a la matriz (≈ 25 % de las filiales: ≈ 214.000 M): cadena de participaciones, poca caja en la matriz, filiales que pagan dividendo antes a otros accionistas y operaciones vinculadas [nota C]."
+      }
+    ],
+    "comentario": "La suma de partes da 1.623 KRW por acción: 880.500 M de valor de empresa del oro y la informática, menos los gastos de la matriz y un descuento de holding de 42.800 M, menos la deuda neta consolidada (128.386 M con los convertibles a su nominal) y 706.000 M de minoritarios, más asociadas. Sale por debajo del DCF porque los múltiplos (6-6,5x EBITDA de 2027e) son más bajos que los que implica el DCF (≈ 6,9x) y por el descuento de holding. Lo importante es la estructura: de cada 100 KRW de valor de las filiales, ≈ 75 son de otros accionistas.",
+    "confianza": "Media"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2026-06-30",
+      "deuda_financiera": 270312,
+      "arrendamientos": 13525,
+      "caja": 176836,
+      "minoritarios": 706000,
+      "pensiones": 0,
+      "asociadas": 34341,
+      "otros_ajustes": 21385
+    },
+    "rab": null,
+    "referencia_mercado": {
+      "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout; referencia de mercado desarrollado)",
+      "prima_implicita_pct": 4.2,
+      "fecha": "2026-10",
+      "fuente": "Damodaran, ERPbymonth [29]"
+    },
+    "pesos": {
+      "dcf": 45,
+      "comparables": 10,
+      "transacciones": 0,
+      "suma_partes": 25,
+      "escenarios": 20
+    },
+    "objetivo_12m": {
+      "ejercicio": "2028e",
+      "casos": [
+        {
+          "escenario": "Bajista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 568.32,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "El oro vuelve a los márgenes de 2022-2024 (≈ 0,7 % el oro; EBITDA consolidado del 1,2 %) y el volumen cae con el fin de la fiebre del oro: ventas de 8,40 billones en 2028e (5 puntos menos de crecimiento cada año desde 2027e), EBIT de 85.708 M, resultado financiero de −8.000 M, impuesto del 24,5 %, minoritarios del 76,5 % y 24,26 M de acciones: BPA de 568 KRW."
+        },
+        {
+          "escenario": "Base",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 913.29,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 9,36 billones en 2028e (10,2 billones en 2026e con el 1S real; −11,8 % en 2027e con menos volumen y el oro ≈ 4.160 USD; +4 % en 2028e) y margen EBITDA del 1,6 % (oro al 1,1 % e informática al 3-3,5 %): EBIT de 132.878 M, −8.000 M financieros, impuesto del 24,5 %, minoritarios del 76,5 % y 24,26 M de acciones (con el CB): BPA de 913 KRW."
+        },
+        {
+          "escenario": "Alcista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 1293.6,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "El oro sigue caro y con volumen (KGLD y valores tokenizados empiezan a sumar): ventas de 10,16 billones (4 puntos más de crecimiento) y margen EBITDA del 2,0 % (oro ≈ 1,5 %): EBIT de 184.880 M y BPA de 1.294 KRW; todavía muy por debajo del de 2025 (2.010)."
+        }
+      ],
+      "per_historico": {
+        "base": "adelantado",
+        "anios": 3,
+        "actual": 25.05,
+        "mediana_5a": 40.43,
+        "minimo_5a": 25.14,
+        "media_larga": 41.5,
+        "excluidos": "Historia adelantada (cierre ÷ BPA real del año siguiente) [1, 2, 17]. 2021: 5.010 ÷ 85 = 59,0x. 2022: 3.590 ÷ 32 = 112,2x, EXCLUIDO como atípico (más de tres veces la mediana del resto, 32,4x): el beneficio de la dominante de 2023 fue casi nulo (650 M). 2023: 7.440 ÷ 184 = 40,4x. 2024: 5.200 ÷ 2.010 = 2,6x, EXCLUIDO como atípico (menos de un tercio de la mediana del resto, 49,7x): el BPA se multiplicó por 11 en 2025 con el pico del oro, algo que ningún precio descontaba. 2025: 30.300 ÷ nuestro BPA normalizado de 2026e (1.205 KRW, sin la ganancia del derivado del CB) = 25,1x. 2020 no vale (pérdidas en 2021). Quedan tres años: mediana 40,4x, mínimo 25,1x, media 41,5x. Actual: 21.450 ÷ 856 (nuestro BPA de 2027e) = 25,1x. Con tres años útiles se aplica la regla de historia corta: decide la más baja de v3 y v2.",
+        "v2": {
+          "mediana_5a": 28.26,
+          "minimo_5a": 15.07,
+          "media_larga": 28.52,
+          "excluidos": "PER al cierre (BPA del propio año): 2021 pérdidas (−361 KRW), excluido; 2022 3.590 ÷ 85 = 42,2x; 2023 7.440 ÷ 32 = 232,5x, excluido (150x o más); 2024 5.200 ÷ 184 = 28,3x; 2025 30.300 ÷ 2.010 = 15,1x [1, 2, 17]. Mediana 28,3x, mínimo 15,1x."
+        }
+      },
+      "comparables_per": {
+        "mediana": 10.5
+      },
+      "consenso": {
+        "bpa_ano1": null,
+        "bpa_ano2": null,
+        "objetivo_medio": 54000,
+        "objetivo_min": 54000,
+        "objetivo_max": 54000,
+        "analistas": 1,
+        "tendencia_3m": "recortes",
+        "fuente": "FnGuide/WiseReport: una sola casa (BNK, 11-sep-2026), sin BPA de 2027e ni 2028e; BPA de 2026e de 2.222 KRW [25, 26]"
+      },
+      "diferencia_consenso": "Solo hay una casa con estimaciones (BNK, 11-sep-2026: BPA de 2026e de 2.222 KRW, objetivo de 54.000 KRW) y sin cifras de 2027e ni 2028e [25, 26]. Nuestro BPA de 2026e normalizado es de 1.205 KRW (el publicado será ≈ 1.900 KRW con la ganancia del derivado del CB) y el de 2028e de 913 KRW: suponemos que el margen del oro vuelve al 1,1 % (0,5-0,9 % antes del auge; 0,6 % en el 2T26) y que el 76,5 % del beneficio sigue siendo de los minoritarios. Nuestro precio base a 12 meses (22.924 KRW) queda un 57,5 % por debajo del objetivo de BNK, que está fuera de nuestro rango (8.582-36.868 KRW).",
+      "media": null,
+      "comentario": "El objetivo a 12 meses es de 21.410 KRW (ponderado 30/50/20): −0,2 %, sin dividendo; el base da un +6,9 % (25,1x, el PER actual, sobre un BPA de 2028e de 913 KRW). Con tres años de historia útil decide la regla v2, la más baja; la v3 daría un +21 % ponderado porque la mediana adelantada (40,4x) es la de años de beneficio casi nulo. El bajista (15,1x × 568) pierde un 60 % y el alcista (28,5x × 1.294) gana un 72 %. La distancia con el valor intrínseco (7.511 KRW) es enorme: el precio de hoy no se sostiene con el beneficio normalizado de la dominante; se sostiene con el tema (oro, tokens) y con un PER de 25x. Para cerrar la distancia haría falta que el margen del oro del 3 % de 2025 fuera permanente."
+    },
+    "comentario": "Pesamos el DCF un 45 %, la suma de partes un 25 %, los escenarios un 20 % y los comparables un 10 %. El DCF da 7.484 KRW (−65 %) con un WACC del 12,0 % y el valor terminal en el 47 % del valor; la suma de partes, 1.623 KRW, porque además de los minoritarios resta un descuento de holding de 42.800 M; los escenarios van de negativo (bajista, ver la nota) a 24.847 KRW; los comparables por PER (23.331 KRW) usan el BPA de 2026e de BNK (2.222) y los ponderamos poco: con nuestro BPA de 2027e (856 KRW) y la misma mediana (10,5x) darían ≈ 9.000 KRW. El valor intrínseco ponderado es de 7.511 KRW, un 65 % por debajo del precio; con la prima implícita del mercado (4,2 %), 11.109 KRW. La razón es estructural: el 76,5 % del beneficio es de los minoritarios de las filiales y la matriz tiene deuda propia.",
+    "confianza": "Baja"
+  },
+  "catalizadores": {
+    "items": [
+      {
+        "fecha": "2026-11-13",
+        "evento": "Resultados del 3T26 (fecha estimada: en 2025 fueron el 13-nov)",
+        "efecto": "Primer trimestre entero tras el enfriamiento del oro: nuestro 2S supone un margen del oro del 0,8 %; el 2T26 fue del 0,6 % [3]",
+        "probabilidad": "Alta",
+        "sentido": "−"
+      },
+      {
+        "fecha": "2026 4T",
+        "evento": "Emisión del token de oro KGLD (la empresa prometió mostrarlo en el 3T26) [31]",
+        "efecto": "Tema de bolsa; sin ingresos relevantes previstos a 12 meses; el foro da por hecho un retraso",
+        "probabilidad": "Media",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "Sin fecha",
+        "evento": "Ley coreana de stablecoins y desarrollo de la de valores tokenizados",
+        "efecto": "Mueve el precio como tema (−15,3 % el 23-mar; +14-23 % en julio-agosto) [19, 22]",
+        "probabilidad": "Media",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2027-05-08",
+        "evento": "El CB nº 16 empieza a poder convertirse (38.021 KRW)",
+        "efecto": "Sin efecto si la acción sigue por debajo; reembolso a petición desde mayo de 2028 (40.000 M en la matriz)",
+        "probabilidad": "Alta",
+        "sentido": "−"
+      },
+      {
+        "fecha": "2026-12",
+        "evento": "Contratos públicos de informática (K-Edufine de ENTEC, 217.300 M; HW2, 24.700 M) [18]",
+        "efecto": "Cartera de la informática para 2027-2029",
+        "probabilidad": "Alta",
+        "sentido": "+"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "riesgos": {
+    "items": [
+      {
+        "riesgo": "Fin de la fiebre del oro: margen y volumen vuelven a 2022-2024",
+        "tipo": "Demanda / margen",
+        "probabilidad": "Alta",
+        "impacto": "Alto",
+        "efecto_valor": "El margen del oro pasó del 3,1 % (1T26) al 0,6 % (2T26) y la negociación de la KRX cayó un 80 % de enero a julio [3, 16]. En el bajista (margen EBITDA del 1,2 %) el BPA de 2028e es de 568 KRW y el objetivo a 12 meses de 8.582 KRW (−60 %)",
+        "mitigante": "KGE es el mayor mayorista de Corea; el oro como inversión se ha hecho más popular",
+        "senal": "Margen operativo del oro por debajo del 1 % en el 3T26 y el 4T26"
+      },
+      {
+        "riesgo": "Precio del oro",
+        "tipo": "Materias primas",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "Las ventas siguen al precio, el margen al volumen y las primas; las existencias (356.858 M) están cubiertas en parte con derivados [1, 3]. El 20-oct la acción cayó un 9,1 % con el oro [21]",
+        "mitigante": "Coberturas con futuros (17.836 M de garantías en LS Securities) [1]",
+        "senal": "Oro por debajo de 3.800 USD o pérdidas por coberturas"
+      },
+      {
+        "riesgo": "Estructura de holding: minoritarios y caja de la matriz",
+        "tipo": "Gobierno / financiero",
+        "probabilidad": "Alta",
+        "impacto": "Alto",
+        "efecto_valor": "El 76,5 % del beneficio es de minoritarios; la matriz tenía ≈ 4.000 M de caja y ≈ 58.000 M de deuda a un año (fin de 2025) y refinanció con el CB de 40.000 M [1, 11]. La suma de partes con descuento de holding da 1.623 KRW por acción",
+        "mitigante": "Dividendos de las filiales y opción de compra sobre KGE Holdings (2028-2030)",
+        "senal": "Nuevas emisiones de convertibles o ventas de activos para pagar deuda de la matriz"
+      },
+      {
+        "riesgo": "Dependencia de contratos públicos coreanos (informática)",
+        "tipo": "Clientes",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "Toda la cartera de más de 5.000 M de la matriz es pública (ejército, defensa, centros de datos del Estado, K-Edufine) [1]; la informática es ≈ 25 % del beneficio operativo normalizado. Un recorte presupuestario o la apertura del mercado público a las grandes integradoras restaría ≈ 5-10 % al BPA",
+        "mitigante": "Mantenimiento plurianual y red nacional; las grandes tienen limitado el acceso [1]",
+        "senal": "Presupuesto público de software plano o cambio de la ley que limita a las grandes"
+      },
+      {
+        "riesgo": "Gobierno: familia de control y operaciones vinculadas",
+        "tipo": "Gobierno",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "Control con el 24,85 %; pagos de 10.279 M a ITCEN Core (sociedad del grupo de control) en 2025; sin dividendo con beneficio récord y presidente con 17 veces el salario medio [1, 24]. Lo recogemos en la prima adicional del WACC (+3 puntos) y en el descuento de holding",
+        "mitigante": "Tres independientes en la comisión de auditoría; auditor de primer nivel (EY Hanyoung)",
+        "senal": "Más pagos a sociedades de la familia o ventas de activos entre sociedades del grupo"
+      },
+      {
+        "riesgo": "Tema de bolsa (stablecoins, tokens)",
+        "tipo": "Mercado",
+        "probabilidad": "Alta",
+        "impacto": "Medio",
+        "efecto_valor": "La acción sube y baja un 10-25 % en un día con noticias de regulación de activos digitales (23-mar, 31-jul, 20-ago, 16-sep) sin cambio en el beneficio [19, 20, 22]",
+        "mitigante": "Ninguno: no hay ingresos de esos negocios",
+        "senal": "Retraso del KGLD o de la ley de stablecoins"
+      },
+      {
+        "riesgo": "Riesgo de IA: amenaza para la integración de sistemas",
+        "tipo": "Tecnológico",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "Si la IA abarata un 20-30 % las horas de programación y mantenimiento, los clientes públicos pagarán menos por proyecto: ≈ −10 % del BPA a 3-5 años por la parte de informática (≈ 25 % del beneficio operativo normalizado); recogido en el bajista",
+        "mitigante": "La empresa vende proyectos de IA y nube (Cloit) y la IA también baja sus costes",
+        "senal": "Concursos públicos con presupuestos por proyecto más bajos o márgenes de la informática por debajo del 2 %"
+      }
+    ],
+    "premortem": "Octubre de 2027: la acción ha perdido un 60 %. El 3T26 y el 4T26 mostraron un margen del oro del 0,5-0,8 % con volúmenes que no volvieron, el KGLD se retrasó y la ley de stablecoins dejó fuera a las empresas no financieras. La matriz tuvo que emitir otro convertible o vender participaciones para atender su deuda, y el mercado pasó a valorarla como un holding con descuento: 10-15 veces un BPA de 600-900 KRW. Las señales: margen del oro por debajo del 1 %, negociación de oro de la KRX plana y nuevas emisiones de la matriz.",
+    "ia": {
+      "exposicion": "Media",
+      "sentido": "Amenaza",
+      "efecto_valor": "≈ −10 % del BPA a 3-5 años por la informática (≈ 25 % del beneficio operativo normalizado); recogido en el bajista",
+      "comentario": "**La integración de sistemas es trabajo que la IA puede abaratar**: programar, probar, migrar y mantener sistemas públicos es lo que hacen ITCEN CTS, ENTEC y C-Platform, y se paga por horas o por proyecto. Con herramientas de IA generativa el mismo proyecto necesita menos personas, y la Administración coreana, que compra por concurso, tenderá a pagar menos por proyecto. A favor: la empresa vende «transformación con IA» y nube (Cloit), la IA también baja sus propios costes y el mercado público está protegido de las grandes integradoras. El oro físico no tiene riesgo de IA. Neto: amenaza moderada sobre la parte informática, menor que el riesgo del oro."
+    },
+    "confianza": "Media"
+  },
+  "esg": {
+    "calificaciones": [],
+    "materialidad": "Lo que toca las cifras: (1) gobierno: el fundador controla con el 24,85 % y el grupo es una cadena de participaciones con minoritarios en cada filial; operaciones con sociedades de la familia (ITCEN Core); (2) origen del oro (cadena de suministro responsable, reciclaje); (3) seguridad de la información en sistemas públicos.",
+    "controversias": "ITCEN ENTEC, designada por la KRX en 2023 por comunicación no fiel [1]. En junio de 2026, rumor de venta de KGE y salida de Web3, desmentido por la empresa [12].",
+    "confianza": "Baja"
+  },
+  "preguntas": {
+    "items": [
+      {
+        "tema": "Margen del oro",
+        "pregunta": "¿Qué margen operativo tuvo el oro en el 3T26 y cuánto vino de primas, coberturas y volumen?",
+        "por_que": "Es la variable que decide el valor (0,6 % en el 2T26, 3,25 % en 2025)."
+      },
+      {
+        "tema": "Matriz",
+        "pregunta": "¿Qué deuda y caja tiene la matriz sola después del CB y qué dividendos cobrará de las filiales en 2027?",
+        "por_que": "La matriz tenía ≈ 4.000 M de caja a fin de 2025."
+      },
+      {
+        "tema": "Minoritarios",
+        "pregunta": "¿Cuál es el porcentaje económico efectivo de la matriz en KGE y en cada filial de informática?",
+        "por_que": "Decide cuánto del beneficio consolidado es del accionista."
+      },
+      {
+        "tema": "Vinculadas",
+        "pregunta": "¿Qué son los 10.279 M de «otros gastos» pagados a ITCEN Core en 2025?",
+        "por_que": "Sociedad del grupo de control."
+      },
+      {
+        "tema": "KGLD",
+        "pregunta": "¿Qué ingresos y qué capital pide el token de oro y cuándo se emite?",
+        "por_que": "Es el argumento de la acción y no tiene cifras."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sentimiento": {
+    "tono": "Negativo",
+    "tendencia": "Empeora",
+    "revisadas": [
+      {
+        "plataforma": "Foro de Naver (종목토론실), 17-sep al 20-oct-2026",
+        "fecha": "2026-10",
+        "n_comentarios": 400,
+        "tono": "Negativo",
+        "resumen": "Mensajes de pérdidas, insultos y gráficos tras caer de 35.900 (fin de agosto) a 21.450 KRW; dudas sobre el token de oro KGLD («retraso casi seguro»), recordatorios de que la negociación del oro ha caído mucho y críticas al presidente; una minoría alcista a largo plazo («el banco del oro del futuro») y celebra su compra de acciones del 20-oct [36]."
+      },
+      {
+        "plataforma": "Prensa coreana",
+        "fecha": "2026-06 a 2026-10",
+        "n_comentarios": 4,
+        "tono": "Neutro",
+        "resumen": "Críticas al «crecimiento hueco» de unas ventas infladas por el oro [12]; la empresa destaca el 1S26 récord, el KGLD y Galaxia FN y la compra del presidente [18]; el interés por el oro se enfría [16]."
+      }
+    ],
+    "temas": [
+      {
+        "tema": "Token de oro KGLD y Web3",
+        "postura": "Alcista",
+        "peso": "Alto",
+        "contraste": "Sin ingresos todavía; emisión piloto; depende de la regulación (nota B)."
+      },
+      {
+        "tema": "El oro se enfría",
+        "postura": "Bajista",
+        "peso": "Alto",
+        "contraste": "Cierto: −80 % de negociación en la KRX de enero a julio y margen del 0,6 % en el 2T26 [16]."
+      },
+      {
+        "tema": "Compra del presidente",
+        "postura": "Alcista",
+        "peso": "Bajo",
+        "contraste": "≈ 140 M, el 0,03 % del capital [18]."
+      },
+      {
+        "tema": "Crecimiento hueco (ventas brutas de oro)",
+        "postura": "Bajista",
+        "peso": "Medio",
+        "contraste": "Cierto en las ventas; el beneficio sí creció, pero por el pico del oro [12]."
+      }
+    ],
+    "lectura": "El foro está en capitulación tras perder el 70 % desde el máximo: domina el enfado y se discute el tema (token de oro, stablecoins) más que el beneficio. No hay euforia; los alcistas que quedan dependen de un catalizador (KGLD, ley de stablecoins) sin fecha cierta.",
+    "confianza": "Media"
+  },
+  "fuentes": [
+    {
+      "id": 1,
+      "titulo": "사업보고서 2025 (informe anual): estados consolidados K-IFRS de 2025, 2024 y 2023 auditados por EY Hanyoung (한영회계법인), notas (segmentos, amortizaciones, existencias, derivados, minoritarios, flujos), ventas por negocio, clientes, filiales, consejo, remuneración, vinculadas y litigios",
+      "editor": "ITCEN GLOBAL / DART (FSS)",
+      "tipo": "Primaria",
+      "fecha": "2026-03-23",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260323001492"
+    },
+    {
+      "id": 2,
+      "titulo": "사업보고서 2023 (informe anual): estados consolidados de 2023, 2022 y 2021 (auditor de 2023: Samil PwC), segmentos, notas de amortización y flujos",
+      "editor": "ITCEN GLOBAL / DART (FSS)",
+      "tipo": "Primaria",
+      "fecha": "2024-03-29",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20240329003280"
+    },
+    {
+      "id": 3,
+      "titulo": "반기보고서 2026 (informe semestral, revisión limitada): estados consolidados a 30-jun-2026, 2T26 y 1S26, segmentos, deuda y convertibles (CB nº 16 de 40.000 M y CB de ITCEN PNS de 10.000 M), flujos",
+      "editor": "ITCEN GLOBAL / DART (FSS)",
+      "tipo": "Primaria",
+      "fecha": "2026-08-13",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260813001059"
+    },
+    {
+      "id": 4,
+      "titulo": "사업보고서 2021 (informe anual): notas de amortización y gastos de 2021",
+      "editor": "ITCEN GLOBAL / DART (FSS)",
+      "tipo": "Primaria",
+      "fecha": "2022-03-30",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20220330001842"
+    },
+    {
+      "id": 5,
+      "titulo": "분기보고서 1T26 (1T26 y 1T25, segmentos)",
+      "editor": "ITCEN GLOBAL / DART (FSS)",
+      "tipo": "Primaria",
+      "fecha": "2026-05-14",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260514001486"
+    },
+    {
+      "id": 6,
+      "titulo": "분기보고서 3T25 (3T25 y 9M25, segmentos)",
+      "editor": "ITCEN GLOBAL / DART (FSS)",
+      "tipo": "Primaria",
+      "fecha": "2025-11-13",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20251113000454"
+    },
+    {
+      "id": 7,
+      "titulo": "분기보고서 3T24 (3T24 y 9M24)",
+      "editor": "ITCEN GLOBAL / DART (FSS)",
+      "tipo": "Primaria",
+      "fecha": "2024-11-14",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20241114003011"
+    },
+    {
+      "id": 8,
+      "titulo": "전환가액의 조정 (CB nº 16: precio de conversión de 54.315 a 38.021 KRW el 8-ago-2026; 1.052.050 acciones)",
+      "editor": "ITCEN GLOBAL / KRX",
+      "tipo": "Primaria",
+      "fecha": "2026-08-10",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260810900127"
+    },
+    {
+      "id": 9,
+      "titulo": "타법인 주식 및 출자증권 취득결정 (Galaxia FN: 93,27 % por 1.385 M, 30-jul-2026)",
+      "editor": "ITCEN GLOBAL / DART (FSS)",
+      "tipo": "Primaria",
+      "fecha": "2026-08-04",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260804000030"
+    },
+    {
+      "id": 10,
+      "titulo": "Estados financieros resumidos, BPA de los últimos doce meses (3.051 KRW) y valor contable por acción (7.087 KRW)",
+      "editor": "FnGuide (Naver WiseReport)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-19",
+      "url": "https://navercomp.wisereport.co.kr/v2/company/c1010001.aspx?cmp_cd=124500"
+    },
+    {
+      "id": 11,
+      "titulo": "아이티센글로벌, 500억 CB 발행 검토 (la matriz: caja de ≈ 4.000 M y ≈ 58.000 M de deuda a un año; el CB es refinanciación)",
+      "editor": "NewsTop Korea (The Vista)",
+      "tipo": "Prensa",
+      "fecha": "2026-04-27",
+      "url": "https://www.newstopkorea.com/news/articleView.html?idxno=44636"
+    },
+    {
+      "id": 12,
+      "titulo": "외형만 부풀린 '금' 의존 구조…아이티센글로벌 '허수 성장' 논란 (crecimiento «hueco»: el 92,65 % de las ventas del 1T26 es oro; la venta de oro se contabiliza por el precio total)",
+      "editor": "Sidae TV (시대)",
+      "tipo": "Prensa",
+      "fecha": "2026-06-23",
+      "url": "https://www.sidae.com/article/2026062214032313773"
+    },
+    {
+      "id": 13,
+      "titulo": "반기보고서 1S24 (2T24 y 1S24)",
+      "editor": "ITCEN GLOBAL / DART (FSS)",
+      "tipo": "Primaria",
+      "fecha": "2024-08-19",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20240819000282"
+    },
+    {
+      "id": 14,
+      "titulo": "분기보고서 1T24 (1T24)",
+      "editor": "ITCEN GLOBAL / DART (FSS)",
+      "tipo": "Primaria",
+      "fecha": "2024-05-20",
+      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20240520000086"
+    },
+    {
+      "id": 15,
+      "titulo": "\"통화질서 변곡점…금값 '한 돈 300만원' 간다\" (KRX: negociación del mercado del oro de 19,42 billones del 2-ene al 2-oct de 2026, +77,2 %)",
+      "editor": "Herald Economy",
+      "tipo": "Prensa",
+      "fecha": "2026-10-02",
+      "url": "https://biz.heraldcorp.com/article/10892270"
+    },
+    {
+      "id": 16,
+      "titulo": "차갑게 식어버린 금 투자 열기...연초 대비 거래량·거래대금 80% 급락 (la negociación del oro en la KRX cae un 80 % desde enero)",
+      "editor": "Aju Business Daily",
+      "tipo": "Prensa",
+      "fecha": "2026-08-05",
+      "url": "https://www.ajunews.com/view/20260805150551973"
+    },
+    {
+      "id": 17,
+      "titulo": "Fichas de Samsung SDS, LG CNS, Hyundai AutoEver, POSCO DX, Lotte Innovate, Shinsegae I&C, ITCEN CTS, ITCEN ENTEC, ITCEN PNS, Gold.com (antes A-Mark), ARE Holdings, Matsuda Sangyo y Chow Tai Fook",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-20",
+      "url": "https://finance.yahoo.com/quote/124500.KQ"
+    },
+    {
+      "id": 18,
+      "titulo": "강진모 아이티센글로벌 회장, 자사주 1억 4천만원 규모 매입…\"성장 확신\" (el presidente compra 6.190 acciones; 1S26: ventas de 5,58 billones, +92 %; proyecto KGLD; Galaxia FN)",
+      "editor": "ZDNet Korea",
+      "tipo": "Prensa",
+      "fecha": "2026-10-20",
+      "url": "https://zdnet.co.kr/view/?no=20261020133134"
+    },
+    {
+      "id": 19,
+      "titulo": "스테이블코인株 휘청…韓美 오락가락 규제에 직격탄 (valores de stablecoins caen con dos dígitos en marzo)",
+      "editor": "Maeil Business (MK Economy)",
+      "tipo": "Prensa",
+      "fecha": "2026-03-31",
+      "url": "https://www.mk.co.kr/article/12003579"
+    },
+    {
+      "id": 20,
+      "titulo": "클래리티법 상원 문턱 못 넘자 스테이블코인 관련주 급락 (16-sep: la ley CLARITY no pasa el Senado)",
+      "editor": "CBC News",
+      "tipo": "Prensa",
+      "fecha": "2026-09-16",
+      "url": "https://www.cbci.co.kr/news/articleView.html?idxno=607253"
+    },
+    {
+      "id": 21,
+      "titulo": "오늘 금시세(금값) 폭락... 이중 하방 압력 현실화로 추락한 금가격 (20-oct: el oro cae por los tipos de EE. UU. y el won)",
+      "editor": "Wikitree",
+      "tipo": "Prensa",
+      "fecha": "2026-10-20",
+      "url": "https://www.wikitree.co.kr/articles/1167675"
+    },
+    {
+      "id": 22,
+      "titulo": "블록체인 체질 개선 돋보인 아이티센글로벌, 디지털 플랫폼 주도권 잡는다 (+14,6 % el 31-jul con el tema de los valores tokenizados)",
+      "editor": "Pinpoint News",
+      "tipo": "Prensa",
+      "fecha": "2026-07-31",
+      "url": "https://www.pinpointnews.co.kr/news/articleView.html?idxno=473317"
+    },
+    {
+      "id": 23,
+      "titulo": "아이티센글로벌 강진모, 자사주 추가 매입으로 지분율 12.34% (compras del 16 y 19-oct a una media de 22.619 KRW)",
+      "editor": "Bloter",
+      "tipo": "Prensa",
+      "fecha": "2026-10-20",
+      "url": "https://www.bloter.net/news/articleView.html?idxno=676080"
+    },
+    {
+      "id": 24,
+      "titulo": "'최대 실적 무배당' 아이티센 강진모 회장 연봉은 직원 평균 17배 (beneficio récord sin dividendo; el presidente cobra 17 veces el salario medio)",
+      "editor": "Sidae TV (시대)",
+      "tipo": "Prensa",
+      "fecha": "2026-06-29",
+      "url": "https://www.sidae.com/article/2026062915321732306"
+    },
+    {
+      "id": 25,
+      "titulo": "Consenso 2026e (una casa: BPA de 2.222 KRW, EBITDA de 307.650 M), BPA de los últimos doce meses (3.051) y objetivo (54.000 KRW)",
+      "editor": "FnGuide (Naver WiseReport)",
+      "tipo": "Analistas",
+      "fecha": "2026-10-19",
+      "url": "https://navercomp.wisereport.co.kr/v2/company/c1050001.aspx?cmp_cd=124500"
+    },
+    {
+      "id": 26,
+      "titulo": "Objetivos y recomendaciones: BNK Investment (11-sep-2026, Comprar, de 68.000 a 54.000 KRW)",
+      "editor": "FnGuide (Naver WiseReport)",
+      "tipo": "Analistas",
+      "fecha": "2026-10-19",
+      "url": "https://navercomp.wisereport.co.kr/v2/company/c1080001.aspx?cmp_cd=124500"
+    },
+    {
+      "id": 27,
+      "titulo": "Fichas de comparables (precio, capitalización, valor empresa, ventas, EBITDA, estimaciones de BPA) y tipos de cambio KRW=X (1.325,86), JPYKRW=X (8,374) y HKDKRW=X (168,59)",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-20",
+      "url": "https://finance.yahoo.com/quote/018260.KS"
+    },
+    {
+      "id": 28,
+      "titulo": "Long-Term Government Bond Yields: 10-year for Korea (IRLTLT01KRM156N), septiembre de 2026: 4,454 %",
+      "editor": "OECD vía FRED",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-01",
+      "url": "https://fred.stlouisfed.org/series/IRLTLT01KRM156N"
+    },
+    {
+      "id": 29,
+      "titulo": "Implied ERP by month: octubre de 2026, 4,20 %",
+      "editor": "Aswath Damodaran (NYU Stern)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx"
+    },
+    {
+      "id": 30,
+      "titulo": "CME의 증거금 인상에 금·은 가격 급락…관련주도 된서리 (ITCEN −8,15 % por la subida de márgenes de la CME)",
+      "editor": "Hankyung",
+      "tipo": "Prensa",
+      "fecha": "2025-12-30",
+      "url": "https://www.hankyung.com/article/2025123017836"
+    },
+    {
+      "id": 31,
+      "titulo": "아이티센글로벌 \"웹3 사업 철수는 루머… 3분기 금 토큰 공개로 증명\" (la empresa niega vender KGE y salir de Web3)",
+      "editor": "Chosun Biz",
+      "tipo": "Prensa",
+      "fecha": "2026-06-23",
+      "url": "https://biz.chosun.com/stock/finance/2026/06/23/FVPO7B2N25B43OF6SU553W6LMI/"
+    },
+    {
+      "id": 32,
+      "titulo": "아이티센글로벌 CB 리픽싱 불가피…주가 급락에 오버행 우려 확산 (ajuste del precio del CB y temor a nuevas acciones)",
+      "editor": "Sidae TV (시대)",
+      "tipo": "Prensa",
+      "fecha": "2026-06-23",
+      "url": "https://www.sidae.com/article/2026062315271521765"
+    },
+    {
+      "id": 33,
+      "titulo": "[주간 코스닥 기관] HPSP 파마리서치 아이티센글로벌… (compras netas de institucionales del 24 al 28-ago)",
+      "editor": "Pinpoint News",
+      "tipo": "Prensa",
+      "fecha": "2026-08-29",
+      "url": "https://www.pinpointnews.co.kr/news/articleView.html?idxno=481653"
+    },
+    {
+      "id": 34,
+      "titulo": "SI주 링네트·아이티센글로벌 훨훨... AI·클라우드 수주 기대에 돈 몰린다 (+13 % el 27-abr por la integración de sistemas e IA)",
+      "editor": "Pinpoint News",
+      "tipo": "Prensa",
+      "fecha": "2026-04-27",
+      "url": "https://www.pinpointnews.co.kr/news/articleView.html?idxno=448934"
+    },
+    {
+      "id": 35,
+      "titulo": "아이티센글로벌 주가, 1월 30일 53,800원 10.93% 상승 마감",
+      "editor": "Job Post",
+      "tipo": "Prensa",
+      "fecha": "2026-01-30",
+      "url": "https://www.job-post.co.kr/news/articleView.html?idxno=204926"
+    },
+    {
+      "id": 36,
+      "titulo": "Foro de Naver (종목토론실) de 124500: 400 mensajes del 17-sep al 20-oct-2026 (hora de Corea)",
+      "editor": "Naver Pay Securities",
+      "tipo": "Prensa",
+      "fecha": "2026-10-20",
+      "url": "https://m.stock.naver.com/domestic/stock/124500/discussion"
+    }
+  ],
+  "calc": {
+    "version": 4,
+    "etiquetas": {
+      "margen_bruto": "M. bruto",
+      "margen_bruto_largo": "Margen bruto",
+      "dias_base": "sobre el coste de ventas"
+    },
+    "recomendacion": {
+      "recomendacion": "Mantener",
+      "regla": "Mantener",
+      "regla_absoluta": "Vender",
+      "regla_relativa": "Vender",
+      "coincide": true,
+      "conviccion": "Media",
+      "conviccion_sugerida": "Media",
+      "conviccion_razones": [
+        "Mantener con las dos reglas de acuerdo y lejos de los umbrales"
+      ],
+      "reglas_discrepan": false,
+      "relativo": {
+        "prima_implicita_pct": 4.2,
+        "wacc": 10.72,
+        "ke": 12.91,
+        "dcf": 13053.85,
+        "dcf_min": 10672.73,
+        "dcf_max": 15726.19,
+        "valor_objetivo": 11108.83,
+        "alcista": 33328.42,
+        "bajista": -2379.75,
+        "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout; referencia de mercado desarrollado)",
+        "fecha": "2026-10",
+        "potencial_pct": -48.2,
+        "rentabilidad_total_pct": -48.2,
+        "asimetria": 0.5
+      },
+      "objetivo_mercado_txt": " · con la prima implícita del mercado: 11.108,83 (-48,2 %)",
+      "objetivo_mercado_corto": " · mercado 11.108,83",
+      "rentabilidad_mercado_corto": " · mercado -48,2 %",
+      "potencial_pct": -65,
+      "dividendo_pct": 0,
+      "rentabilidad_total_pct": -65,
+      "alcista_pct": 15.8,
+      "bajista_pct": -126.2,
+      "asimetria": 0.13,
+      "comprar_por_debajo": 7511.25,
+      "vender_por_encima": 23788.67,
+      "tabla": [
+        {
+          "concepto": "Objetivo a 12 meses (nuestro PER × nuestro BPA 2028e, ponderado 30/50/20)",
+          "valor": "21.409,80 KRW"
+        },
+        {
+          "concepto": "Bajista / base / alcista a 12 meses",
+          "valor": "15,1x × 568,32 = 8.581,63 · 25,1x × 913,29 = 22.923,58 · 28,5x × 1.293,60 = 36.867,60"
+        },
+        {
+          "concepto": "Rentabilidad a 12 meses: ponderada / del base (con dividendo)",
+          "valor": "-0,2 % / 6,9 %"
+        },
+        {
+          "concepto": "Regla de múltiplos aplicada",
+          "valor": "v2: base = mín(actual, mediana 5 a) con la historia al cierre; bajista mín. 5 a o base × 0,85; alcista techo base × 1,30 (selector de método: historia adelantada de 3 años: decide la más baja de v3 y v2 (v2))"
+        },
+        {
+          "concepto": "Objetivo medio de los analistas (solo contraste)",
+          "valor": "54.000,00 (nuestro base -57,5 %)"
+        },
+        {
+          "concepto": "Valor intrínseco (síntesis ponderada, largo plazo)",
+          "valor": "7.511,25 KRW"
+        },
+        {
+          "concepto": "Potencial sobre el precio actual",
+          "valor": "-65,0 %"
+        },
+        {
+          "concepto": "Rentabilidad por dividendo ordinario",
+          "valor": "0,0 %"
+        },
+        {
+          "concepto": "Rentabilidad total esperada a 12 meses",
+          "valor": "-65,0 %"
+        },
+        {
+          "concepto": "Escenario alcista / bajista",
+          "valor": "15,8 % / -126,2 %"
+        },
+        {
+          "concepto": "Asimetría (ganancia alcista / pérdida bajista)",
+          "valor": "0,13x"
+        },
+        {
+          "concepto": "Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado",
+          "valor": "9,3 % frente a 12,0 % y 10,7 %"
+        },
+        {
+          "concepto": "Valor objetivo con la prima implícita del mercado (4,2 %, WACC 10,7 %)",
+          "valor": "11.108,83 KRW"
+        },
+        {
+          "concepto": "Rentabilidad total esperada con la prima del mercado",
+          "valor": "-48,2 %"
+        },
+        {
+          "concepto": "Asimetría con la prima del mercado",
+          "valor": "0,50x"
+        },
+        {
+          "concepto": "Regla absoluta (frente a su coste de capital)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Regla relativa (frente a lo que pide el mercado)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "¿La calidad de la empresa sostiene el crecimiento previsto?",
+          "valor": "Sí (2,7 % anual proyectado; sin inversión neta)"
+        },
+        {
+          "concepto": "Señal del valor intrínseco (regla del DCF, referencia)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Recomendación según la regla a 12 meses (Comprar: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender: ponderada ≤ -10 %)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Convicción según los criterios (Mantener con las dos reglas de acuerdo y lejos de los umbrales)",
+          "valor": "Media"
+        }
+      ],
+      "niveles": [
+        {
+          "accion": "Comprar",
+          "condicion": "Por debajo de 7.511,25 (ponderada a 12 meses ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco)"
+        },
+        {
+          "accion": "Mantener",
+          "condicion": "Entre 7.511,25 y 23.788,67"
+        },
+        {
+          "accion": "Vender o reducir",
+          "condicion": "Por encima de 23.788,67 (ponderada a 12 meses ≤ -10 %)"
+        }
+      ],
+      "precio_txt": "",
+      "valor_objetivo_txt": "",
+      "regla_valor_intrinseco": "Vender",
+      "objetivo_12m": {
+        "completo": true,
+        "filas": [
+          {
+            "escenario": "Bajista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 568.32,
+            "multiplo": 15.1,
+            "multiplo_informe": null,
+            "origen": "mínimo de 5 años",
+            "precio": 8581.63,
+            "rentabilidad_pct": -60,
+            "justificacion": "El oro vuelve a los márgenes de 2022-2024 (≈ 0,7 % el oro; EBITDA consolidado del 1,2 %) y el volumen cae con el fin de la fiebre del oro: ventas de 8,40 billones en 2028e (5 puntos menos de crecimiento cada año desde 2027e), EBIT de 85.708 M, resultado financiero de −8.000 M, impuesto del 24,5 %, minoritarios del 76,5 % y 24,26 M de acciones: BPA de 568 KRW."
+          },
+          {
+            "escenario": "Base",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 913.29,
+            "multiplo": 25.1,
+            "multiplo_informe": null,
+            "origen": "PER actual",
+            "precio": 22923.58,
+            "rentabilidad_pct": 6.9,
+            "justificacion": "Ventas de 9,36 billones en 2028e (10,2 billones en 2026e con el 1S real; −11,8 % en 2027e con menos volumen y el oro ≈ 4.160 USD; +4 % en 2028e) y margen EBITDA del 1,6 % (oro al 1,1 % e informática al 3-3,5 %): EBIT de 132.878 M, −8.000 M financieros, impuesto del 24,5 %, minoritarios del 76,5 % y 24,26 M de acciones (con el CB): BPA de 913 KRW."
+          },
+          {
+            "escenario": "Alcista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 1293.6,
+            "multiplo": 28.5,
+            "multiplo_informe": null,
+            "origen": "media histórica larga",
+            "precio": 36867.6,
+            "rentabilidad_pct": 71.9,
+            "justificacion": "El oro sigue caro y con volumen (KGLD y valores tokenizados empiezan a sumar): ventas de 10,16 billones (4 puntos más de crecimiento) y margen EBITDA del 2,0 % (oro ≈ 1,5 %): EBIT de 184.880 M y BPA de 1.294 KRW; todavía muy por debajo del de 2025 (2.010)."
+          }
+        ],
+        "regla": {
+          "version": "v2",
+          "bajista": 15.1,
+          "base": 25.1,
+          "alcista": 28.5,
+          "bajista_origen": "mínimo de 5 años",
+          "base_origen": "PER actual",
+          "alcista_origen": "media histórica larga"
+        },
+        "version": "v2",
+        "probabilidades": [
+          30,
+          50,
+          20
+        ],
+        "objetivo_ponderado": 21409.8,
+        "objetivo_simple": 22790.94,
+        "objetivo_base": 22923.58,
+        "rentabilidad_ponderada_pct": -0.2,
+        "rentabilidad_simple_pct": 6.3,
+        "rentabilidad_base_pct": 6.9,
+        "asimetria": 1.2,
+        "senal": "Mantener",
+        "senal_sin_confirmar": null,
+        "confianza_baja": false,
+        "comprar_por_debajo": 7511.25,
+        "vender_por_encima": 23788.67,
+        "consenso_objetivo": 54000,
+        "diferencia_consenso_pct": -57.5,
+        "selector": {
+          "regla": "v2",
+          "motivo": "historia adelantada de 3 años: decide la más baja de v3 y v2 (v2)",
+          "v3_sin_selector": {
+            "version": "v3",
+            "rentabilidad_ponderada_pct": 21.1,
+            "rentabilidad_base_pct": 17.5,
+            "senal": "Mantener",
+            "objetivo_ponderado": 25978.7
+          },
+          "v2": {
+            "version": "v2",
+            "rentabilidad_ponderada_pct": -0.2,
+            "rentabilidad_base_pct": 6.9,
+            "senal": "Mantener",
+            "objetivo_ponderado": 21409.8
+          }
+        },
+        "v2": {
+          "rentabilidad_ponderada_pct": -0.2,
+          "rentabilidad_base_pct": 6.9,
+          "senal": "Mantener",
+          "multiplos": [
+            15.1,
+            25.1,
+            28.5
+          ]
+        },
+        "v3_tope_anterior": {
+          "tope": 1.3,
+          "rentabilidad_ponderada_pct": 37.7,
+          "senal": "Mantener"
+        },
+        "v3_sin_selector": {
+          "version": "v3",
+          "rentabilidad_ponderada_pct": 21.1,
+          "rentabilidad_base_pct": 17.5,
+          "senal": "Mantener",
+          "objetivo_ponderado": 25978.7
+        },
+        "comparacion_txt": "Para comparar, con la regla v2 (historia al cierre, mismo precio): 15,1x / 25,1x / 28,5x, -0,2 % Mantener; con el tope anterior del base (×1,3, 14-oct mediodía): 37,7 % Mantener; con la v3 sin el selector (tope ×1,1): 21,1 % Mantener. Decide la v2, elegida por el selector de método (historia adelantada de 3 años: decide la más baja de v3 y v2 (v2); METODO-VIGENTE.md)."
+      },
+      "rentabilidad_12m_pct": -0.2,
+      "rentabilidad_12m_txt": "-0,2 % (base +6,9 %)",
+      "objetivo_12m_txt": "21.409,80 KRW"
+    },
+    "mercado": {
+      "precio": 21450,
+      "acciones": 23.2,
+      "capitalizacion": 497640,
+      "deuda_neta": 107001,
+      "deuda_neta_ajustada": 128386,
+      "asimilables_deuda": 21385,
+      "ajustes_puente": 693044,
+      "valor_empresa": 1297685,
+      "fecha_puente": "2026-06-30"
+    },
+    "clave": {
+      "capitalizacion": 497640,
+      "valor_empresa": 1297685,
+      "deuda_neta": 107001,
+      "ev_ventas_ltm": 0.11,
+      "ev_ebitda_ltm": 3.7,
+      "ev_ebitda_ntm": 4.2,
+      "ev_ebit_ltm": 3.9,
+      "per_ltm": 7,
+      "per_ntm": 9.7,
+      "fcf_yield_pct": 39.7,
+      "dividendo_pct": 0,
+      "dn_ebitda": 0.3,
+      "roic_pct": 59.4,
+      "margen_ebitda_pct": 3,
+      "deuda_neta_ajustada": 128386,
+      "dn_ebitda_ajustada": 0.4,
+      "crecimiento_tcac_pct": 28.2,
+      "ingresos_ntm": null,
+      "ebitda_ntm": 307650,
+      "bpa_ntm": 2222,
+      "ebitda_ltm": 347977,
+      "ingresos_ltm": 11548194,
+      "ev_rab": null
+    },
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 3280884,
+        "crecimiento_pct": null,
+        "beneficio_bruto": 143241,
+        "margen_bruto_pct": 4.4,
+        "ebitda": 41916,
+        "margen_ebitda_pct": 1.3,
+        "ebit": 31538,
+        "margen_ebit_pct": 1,
+        "beneficio_neto": -7183,
+        "margen_neto_pct": -0.2,
+        "bpa": -361,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 137.5,
+        "payout_pct": 0
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 2621054,
+        "crecimiento_pct": -20.1,
+        "beneficio_bruto": 155289,
+        "margen_bruto_pct": 5.9,
+        "ebitda": 39401,
+        "margen_ebitda_pct": 1.5,
+        "ebit": 30445,
+        "margen_ebit_pct": 1.2,
+        "beneficio_neto": 1698,
+        "margen_neto_pct": 0.1,
+        "bpa": 85,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 24.1,
+        "payout_pct": 0
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 2815145,
+        "crecimiento_pct": 7.4,
+        "beneficio_bruto": 165885,
+        "margen_bruto_pct": 5.9,
+        "ebitda": 41203,
+        "margen_ebitda_pct": 1.5,
+        "ebit": 30519,
+        "margen_ebit_pct": 1.1,
+        "beneficio_neto": 650,
+        "margen_neto_pct": 0,
+        "bpa": 32,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 1130.2,
+        "payout_pct": 0
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 4961847,
+        "crecimiento_pct": 76.3,
+        "beneficio_bruto": 202512,
+        "margen_bruto_pct": 4.1,
+        "ebitda": 69991,
+        "margen_ebitda_pct": 1.4,
+        "ebit": 58565,
+        "margen_ebit_pct": 1.2,
+        "beneficio_neto": 4255,
+        "margen_neto_pct": 0.1,
+        "bpa": 184,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 24.6,
+        "payout_pct": 0
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 8870845,
+        "crecimiento_pct": 78.8,
+        "beneficio_bruto": 447209,
+        "margen_bruto_pct": 5,
+        "ebitda": 294397,
+        "margen_ebitda_pct": 3.3,
+        "ebit": 279926,
+        "margen_ebit_pct": 3.2,
+        "beneficio_neto": 46650,
+        "margen_neto_pct": 0.5,
+        "bpa": 2010,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 24.6,
+        "payout_pct": 0
+      }
+    ],
+    "tcac": {
+      "periodo": "2021-2025",
+      "ingresos_pct": 28.2,
+      "ebitda_pct": 62.8,
+      "bpa_pct": null
+    },
+    "cuenta_y_prevision": [
+      {
+        "periodo": "2021",
+        "ingresos": 3280884,
+        "ebitda": 41916
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 2621054,
+        "ebitda": 39401
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 2815145,
+        "ebitda": 41203
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 4961847,
+        "ebitda": 69991
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 8870845,
+        "ebitda": 294397
+      },
+      {
+        "periodo": "2026e",
+        "ingresos": 10201472,
+        "ebitda": 184647
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 8997698,
+        "ebitda": 141264
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 9357606,
+        "ebitda": 149722
+      },
+      {
+        "periodo": "2029e",
+        "ingresos": 9685122,
+        "ebitda": 154962
+      },
+      {
+        "periodo": "2030e",
+        "ingresos": 9975676,
+        "ebitda": 159611
+      },
+      {
+        "periodo": "2031e",
+        "ingresos": 10274946,
+        "ebitda": 164399
+      },
+      {
+        "periodo": "2032e",
+        "ingresos": 10531820,
+        "ebitda": 168509
+      },
+      {
+        "periodo": "2033e",
+        "ingresos": 10795115,
+        "ebitda": 172722
+      }
+    ],
+    "segmentos_ultimo": [
+      {
+        "nombre": "Web3: oro y metales preciosos (Korea Gold Exchange y filiales)",
+        "ingresos": 7761400,
+        "peso_pct": 87.3,
+        "crecimiento_pct": 97,
+        "margen_pct": 3.3,
+        "tipo_margen": "EBIT"
+      },
+      {
+        "nombre": "Servicios informáticos (ITCEN CTS, ENTEC, Cloit, C-Platform, PNS)",
+        "ingresos": 1124900,
+        "peso_pct": 12.7,
+        "crecimiento_pct": 8.5,
+        "margen_pct": 2.5,
+        "tipo_margen": "EBIT"
+      }
+    ],
+    "segmentos_tabla": {
+      "periodos": [
+        "1S26",
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "filas": [
+        {
+          "nombre": "Web3: oro y metales preciosos (Korea Gold Exchange y filiales)",
+          "v0": 5503900,
+          "v1": 2113600,
+          "v2": 1959000,
+          "v3": 3940700,
+          "v4": 7761400
+        },
+        {
+          "nombre": "Servicios informáticos (ITCEN CTS, ENTEC, Cloit, C-Platform, PNS)",
+          "v0": 546000,
+          "v1": 795800,
+          "v2": 1004000,
+          "v3": 1036400,
+          "v4": 1124900
+        }
+      ]
+    },
+    "segmentos_periodo": "2025",
+    "balance": [
+      {
+        "periodo": "2021",
+        "activo_total": 686717,
+        "intangibles": 75240,
+        "circulante": 171453,
+        "circulante_ventas_pct": 5.2,
+        "caja": 89980,
+        "deuda_financiera": 110322,
+        "arrendamientos": null,
+        "deuda_neta": 20342,
+        "patrimonio": 57201,
+        "minoritarios": 183727,
+        "dn_ebitda": 0.49,
+        "dn_patrimonio_pct": 8,
+        "dso": 15,
+        "dio": 17,
+        "dpo": 13,
+        "ciclo_caja": 19,
+        "cobertura_intereses": 5.1,
+        "capital_invertido": 261270,
+        "fondo_comercio": null,
+        "liquidez_corriente": 1.3
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 830503,
+        "intangibles": 69050,
+        "circulante": 101085,
+        "circulante_ventas_pct": 3.9,
+        "caja": 192594,
+        "deuda_financiera": 123750,
+        "arrendamientos": null,
+        "deuda_neta": -68844,
+        "patrimonio": 53377,
+        "minoritarios": 221068,
+        "dn_ebitda": -1.75,
+        "dn_patrimonio_pct": -25,
+        "dso": 23,
+        "dio": 20,
+        "dpo": 29,
+        "ciclo_caja": 14,
+        "cobertura_intereses": 6.3,
+        "capital_invertido": 205601,
+        "fondo_comercio": null,
+        "liquidez_corriente": 1.17
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 777368,
+        "intangibles": 52764,
+        "circulante": 155907,
+        "circulante_ventas_pct": 5.5,
+        "caja": 164529,
+        "deuda_financiera": 120908,
+        "arrendamientos": null,
+        "deuda_neta": -43621,
+        "patrimonio": 68982,
+        "minoritarios": 215429,
+        "dn_ebitda": -1.06,
+        "dn_patrimonio_pct": -15,
+        "dso": 25,
+        "dio": 21,
+        "dpo": 23,
+        "ciclo_caja": 23,
+        "cobertura_intereses": 4,
+        "capital_invertido": 240790,
+        "fondo_comercio": null,
+        "liquidez_corriente": 1.17
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 945436,
+        "intangibles": 48650,
+        "circulante": 128229,
+        "circulante_ventas_pct": 2.6,
+        "caja": 188920,
+        "deuda_financiera": 202467,
+        "arrendamientos": 8156,
+        "deuda_neta": 21703,
+        "patrimonio": 77920,
+        "minoritarios": 244568,
+        "dn_ebitda": 0.31,
+        "dn_patrimonio_pct": 7,
+        "dso": 17,
+        "dio": 9,
+        "dpo": 16,
+        "ciclo_caja": 10,
+        "cobertura_intereses": 6.2,
+        "capital_invertido": 344191,
+        "fondo_comercio": null,
+        "liquidez_corriente": 1.19
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 1599392,
+        "intangibles": 50547,
+        "circulante": 325043,
+        "circulante_ventas_pct": 3.7,
+        "caja": 411890,
+        "deuda_financiera": 252748,
+        "arrendamientos": 13525,
+        "deuda_neta": -145617,
+        "patrimonio": 125387,
+        "minoritarios": 386421,
+        "dn_ebitda": -0.49,
+        "dn_patrimonio_pct": -28,
+        "dso": 10,
+        "dio": 15,
+        "dpo": 9,
+        "ciclo_caja": 16,
+        "cobertura_intereses": 24.2,
+        "capital_invertido": 366191,
+        "fondo_comercio": 40605,
+        "liquidez_corriente": 1.22
+      }
+    ],
+    "perimetro_nota": "Cambio de perímetro (2018: Compra de Korea Gold Exchange (한국금거래소, KGE) a través de KGE Holdings: desde entonces el oro es la mayor parte de las ventas [12].; 2022-2023: Escisión de la nube de ITCEN ENTEC (Cloit, 2022) y fusiones internas del grupo IT (CTS con Supia ITCEN Holdings; ENTEC con Comtec Information) [1].; 2025: Compra de Info U & Company (datos con IA) y de otras participaciones (29.863 M en adquisiciones) [1].; 2026: Compra del 93,27 % de Galaxia FN (valores tokenizados) por 1.385 M el 30-jul [9].). Los ratios de balance de ese año (días, circulante, deuda neta / EBITDA, ROIC) y los indicadores de calidad contable no son comparables con los anteriores.",
+    "flujos": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 3556,
+        "capex": 9311,
+        "pagos_arrendamientos": 2420,
+        "fcf": -8175,
+        "beneficio_neto": -7183,
+        "conversion_pct": 114,
+        "capex_ventas_pct": 0.3,
+        "capex_amortizacion": 0.9,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 0,
+        "recompras": 0,
+        "emision_acciones": null,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 19.9,
+        "fcf_por_accion": -410.8
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 123335,
+        "capex": 20138,
+        "pagos_arrendamientos": 3764,
+        "fcf": 99433,
+        "beneficio_neto": 1698,
+        "conversion_pct": 5856,
+        "capex_ventas_pct": 0.8,
+        "capex_amortizacion": 2.25,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 0,
+        "recompras": 0,
+        "emision_acciones": null,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 19.98,
+        "fcf_por_accion": 4976.63
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": -29332,
+        "capex": 6451,
+        "pagos_arrendamientos": 6773,
+        "fcf": -42556,
+        "beneficio_neto": 650,
+        "conversion_pct": -6547,
+        "capex_ventas_pct": 0.2,
+        "capex_amortizacion": 0.6,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 0,
+        "recompras": 0,
+        "emision_acciones": null,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 20.32,
+        "fcf_por_accion": -2094.29
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 26443,
+        "capex": 73738,
+        "pagos_arrendamientos": null,
+        "fcf": -47295,
+        "beneficio_neto": 4255,
+        "conversion_pct": -1112,
+        "capex_ventas_pct": 1.5,
+        "capex_amortizacion": 6.45,
+        "adquisiciones": null,
+        "desinversiones": null,
+        "dividendos": 0,
+        "recompras": 0,
+        "emision_acciones": null,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 23.13,
+        "fcf_por_accion": -2044.75
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 238152,
+        "capex": 32200,
+        "pagos_arrendamientos": 8567,
+        "fcf": 197385,
+        "beneficio_neto": 46650,
+        "conversion_pct": 423,
+        "capex_ventas_pct": 0.4,
+        "capex_amortizacion": 2.23,
+        "adquisiciones": 29863,
+        "desinversiones": null,
+        "dividendos": 0,
+        "recompras": 0,
+        "emision_acciones": null,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 23.21,
+        "fcf_por_accion": 8504.31
+      }
+    ],
+    "flujos_acumulado": {
+      "periodo": "2021-2025",
+      "fcf": 198792,
+      "adquisiciones": 29863,
+      "dividendos": 0,
+      "recompras": 0,
+      "conversion_pct": 431
+    },
+    "rentabilidad": [
+      {
+        "periodo": "2021",
+        "nopat": 18923,
+        "capital_invertido": 261270,
+        "roic_pct": 7.2,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": null,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": -12.6,
+        "roa_pct": -1,
+        "margen_neto_pct": -0.2,
+        "rotacion": 4.78,
+        "apalancamiento": 12.01
+      },
+      {
+        "periodo": "2022",
+        "nopat": 23094,
+        "capital_invertido": 233436,
+        "roic_pct": 9.9,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": null,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 3.1,
+        "roa_pct": 0.2,
+        "margen_neto_pct": 0.1,
+        "rotacion": 3.46,
+        "apalancamiento": 13.72
+      },
+      {
+        "periodo": "2023",
+        "nopat": 18311,
+        "capital_invertido": 223196,
+        "roic_pct": 8.2,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": null,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 1.1,
+        "roa_pct": 0.1,
+        "margen_neto_pct": 0,
+        "rotacion": 3.5,
+        "apalancamiento": 13.14
+      },
+      {
+        "periodo": "2024",
+        "nopat": 44174,
+        "capital_invertido": 292491,
+        "roic_pct": 15.1,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": null,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 5.8,
+        "roa_pct": 0.5,
+        "margen_neto_pct": 0.1,
+        "rotacion": 5.76,
+        "apalancamiento": 11.73
+      },
+      {
+        "periodo": "2025",
+        "nopat": 211151,
+        "capital_invertido": 355191,
+        "roic_pct": 59.4,
+        "roic_sin_fc_pct": 67.1,
+        "fondo_comercio_pct_capital": 11,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 45.9,
+        "roa_pct": 3.7,
+        "margen_neto_pct": 0.5,
+        "rotacion": 6.97,
+        "apalancamiento": 12.52
+      }
+    ],
+    "roic_incremental_pct": 204.7,
+    "roic_frente_wacc": [
+      {
+        "periodo": "2021",
+        "roic_pct": 7.2,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": -12.6,
+        "wacc_pct": 12
+      },
+      {
+        "periodo": "2022",
+        "roic_pct": 9.9,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 3.1,
+        "wacc_pct": 12
+      },
+      {
+        "periodo": "2023",
+        "roic_pct": 8.2,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 1.1,
+        "wacc_pct": 12
+      },
+      {
+        "periodo": "2024",
+        "roic_pct": 15.1,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 5.8,
+        "wacc_pct": 12
+      },
+      {
+        "periodo": "2025",
+        "roic_pct": 59.4,
+        "roic_sin_fc_pct": 67.1,
+        "roic_operativo_pct": null,
+        "roe_pct": 45.9,
+        "wacc_pct": 12
+      }
+    ],
+    "compras": null,
+    "calidad": {
+      "periodo": "2025",
+      "altman_z": 6.62,
+      "altman_zona": "Zona segura",
+      "piotroski_f": 9,
+      "piotroski_detalle": [
+        {
+          "criterio": "Beneficio neto positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "ROA mejora",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo > beneficio neto",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Baja el endeudamiento (deuda / activo)",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora la liquidez corriente",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "No emite acciones",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora el margen bruto",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora la rotación del activo",
+          "resultado": "Sí"
+        }
+      ],
+      "beneish_m": -2.86,
+      "beneish_fiable": false,
+      "beneish_variables": [
+        {
+          "variable": "DSRI",
+          "valor": 0.6
+        },
+        {
+          "variable": "GMI",
+          "valor": 0.81
+        },
+        {
+          "variable": "AQI",
+          "valor": 0.76
+        },
+        {
+          "variable": "SGI",
+          "valor": 1.79
+        },
+        {
+          "variable": "DEPI",
+          "valor": 0.9
+        },
+        {
+          "variable": "SGAI",
+          "valor": 0.65
+        },
+        {
+          "variable": "LVGI",
+          "valor": 1.03
+        },
+        {
+          "variable": "TATA",
+          "valor": -0.12
+        }
+      ],
+      "tabla": [
+        {
+          "indicador": "Altman Z",
+          "valor": "6,62",
+          "lectura": "Zona segura (> 2,99 seguro; < 1,81 riesgo). No aplica a bancos ni aseguradoras, y subestima la solvencia de empresas con grandes anticipos de clientes o prefinanciación pública (contratistas, construcción), que inflan el pasivo. No fiable en 2025: cambio de perímetro (el balance incluye negocios sin su cuenta de resultados completa)."
+        },
+        {
+          "indicador": "Piotroski F",
+          "valor": "9 / 9",
+          "lectura": "Fortaleza financiera alta (7-9)."
+        },
+        {
+          "indicador": "Beneish M",
+          "valor": "-2,86",
+          "lectura": "No interpretable en 2025: con un cambio de perímetro, los índices de activos, amortización y ventas (AQI, DEPI, SGI) comparan grupos distintos y el umbral de −1,78 no sirve."
+        },
+        {
+          "indicador": "Flujo operativo / beneficio neto (acumulado)",
+          "valor": "7,86x",
+          "lectura": "El beneficio se cobra."
+        }
+      ]
+    },
+    "dcf": {
+      "proyeccion": [
+        {
+          "periodo": "2026e",
+          "ingresos": 10201472,
+          "crecimiento_pct": 15,
+          "ebitda": 184647,
+          "margen_ebitda_pct": 1.8,
+          "amortizacion": 16322,
+          "ebit": 168324,
+          "impuestos": 41239,
+          "capex": 10201,
+          "variacion_circulante": 103419,
+          "fcff": 29787,
+          "fraccion": 0.2,
+          "factor": 0.989,
+          "vp": 5807
+        },
+        {
+          "periodo": "2027e",
+          "ingresos": 8997698,
+          "crecimiento_pct": -11.8,
+          "ebitda": 141264,
+          "margen_ebitda_pct": 1.6,
+          "amortizacion": 16196,
+          "ebit": 125068,
+          "impuestos": 30642,
+          "capex": 19795,
+          "variacion_circulante": -68554,
+          "fcff": 159381,
+          "fraccion": 1,
+          "factor": 0.924,
+          "vp": 147190
+        },
+        {
+          "periodo": "2028e",
+          "ingresos": 9357606,
+          "crecimiento_pct": 4,
+          "ebitda": 149722,
+          "margen_ebitda_pct": 1.6,
+          "amortizacion": 16844,
+          "ebit": 132878,
+          "impuestos": 32555,
+          "capex": 20587,
+          "variacion_circulante": 5039,
+          "fcff": 91541,
+          "fraccion": 1,
+          "factor": 0.825,
+          "vp": 75526
+        },
+        {
+          "periodo": "2029e",
+          "ingresos": 9685122,
+          "crecimiento_pct": 3.5,
+          "ebitda": 154962,
+          "margen_ebitda_pct": 1.6,
+          "amortizacion": 17433,
+          "ebit": 137529,
+          "impuestos": 33695,
+          "capex": 21307,
+          "variacion_circulante": 3088,
+          "fcff": 96872,
+          "fraccion": 1,
+          "factor": 0.737,
+          "vp": 71323
+        },
+        {
+          "periodo": "2030e",
+          "ingresos": 9975676,
+          "crecimiento_pct": 3,
+          "ebitda": 159611,
+          "margen_ebitda_pct": 1.6,
+          "amortizacion": 17956,
+          "ebit": 141655,
+          "impuestos": 34705,
+          "capex": 21946,
+          "variacion_circulante": 11041,
+          "fcff": 91918,
+          "fraccion": 1,
+          "factor": 0.658,
+          "vp": 60435
+        },
+        {
+          "periodo": "2031e",
+          "ingresos": 10274946,
+          "crecimiento_pct": 3,
+          "ebitda": 164399,
+          "margen_ebitda_pct": 1.6,
+          "amortizacion": 18495,
+          "ebit": 145904,
+          "impuestos": 35747,
+          "capex": 22605,
+          "variacion_circulante": 11372,
+          "fcff": 94675,
+          "fraccion": 1,
+          "factor": 0.588,
+          "vp": 55589
+        },
+        {
+          "periodo": "2032e",
+          "ingresos": 10531820,
+          "crecimiento_pct": 2.5,
+          "ebitda": 168509,
+          "margen_ebitda_pct": 1.6,
+          "amortizacion": 18957,
+          "ebit": 149552,
+          "impuestos": 36640,
+          "capex": 23170,
+          "variacion_circulante": 9761,
+          "fcff": 98938,
+          "fraccion": 1,
+          "factor": 0.525,
+          "vp": 51899
+        },
+        {
+          "periodo": "2033e",
+          "ingresos": 10795115,
+          "crecimiento_pct": 2.5,
+          "ebitda": 172722,
+          "margen_ebitda_pct": 1.6,
+          "amortizacion": 19431,
+          "ebit": 153291,
+          "impuestos": 37556,
+          "capex": 23749,
+          "variacion_circulante": 10005,
+          "fcff": 101411,
+          "fraccion": 1,
+          "factor": 0.468,
+          "vp": 47471
+        }
+      ],
+      "etapa2": null,
+      "suma_vp": 515239,
+      "valor_terminal": 1035624,
+      "vp_terminal": 458428,
+      "valor_empresa": 973668,
+      "peso_terminal_pct": 47,
+      "valor_acciones": 173623,
+      "valor_accion": 7483.73,
+      "vt_gordon": 1035624,
+      "vt_multiplo": 1036331,
+      "multiplo_implicito": 6,
+      "g_implicito_pct": 2.01,
+      "metodo_terminal": "gordon",
+      "terminal_tabla": [
+        {
+          "concepto": "Método principal",
+          "valor": "Crecimiento a perpetuidad"
+        },
+        {
+          "concepto": "Crecimiento a perpetuidad",
+          "valor": "2,0 %"
+        },
+        {
+          "concepto": "Múltiplo EV/EBITDA de salida",
+          "valor": "6,0x"
+        },
+        {
+          "concepto": "Valor terminal (Gordon)",
+          "valor": "1.035.624"
+        },
+        {
+          "concepto": "Valor terminal (múltiplo)",
+          "valor": "1.036.331"
+        },
+        {
+          "concepto": "Múltiplo de salida implícito en Gordon",
+          "valor": "6,0x"
+        },
+        {
+          "concepto": "Crecimiento implícito en el múltiplo",
+          "valor": "2,01 %"
+        },
+        {
+          "concepto": "Peso del valor terminal en el valor empresa",
+          "valor": "47 %"
+        }
+      ],
+      "puente": [
+        {
+          "concepto": "Valor actual de los flujos proyectados",
+          "valor": "515.239"
+        },
+        {
+          "concepto": "Valor actual del valor terminal",
+          "valor": "458.428"
+        },
+        {
+          "concepto": "Valor empresa",
+          "valor": "973.668"
+        },
+        {
+          "concepto": "− Deuda financiera neta (con arrendamientos)",
+          "valor": "-107.001"
+        },
+        {
+          "concepto": "− Minoritarios, pensiones y otros; + asociadas",
+          "valor": "-693.044"
+        },
+        {
+          "concepto": "Valor de los fondos propios",
+          "valor": "173.623"
+        },
+        {
+          "concepto": "Acciones diluidas (millones)",
+          "valor": "23,2"
+        },
+        {
+          "concepto": "Valor por acción",
+          "valor": "7.483,73"
+        }
+      ],
+      "composicion": [
+        {
+          "parte": "Flujos proyectados",
+          "valor": 515239
+        },
+        {
+          "parte": "Valor terminal",
+          "valor": 458428
+        }
+      ],
+      "wacc": 11.99,
+      "ke": 14.6,
+      "kd_despues": 4.15,
+      "wacc_tabla": [
+        {
+          "concepto": "Tasa libre de riesgo",
+          "valor": "4,45 %"
+        },
+        {
+          "concepto": "Beta",
+          "valor": "1,30"
+        },
+        {
+          "concepto": "Prima de riesgo de mercado",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Prima adicional (país, tamaño, específica)",
+          "valor": "3,00 %"
+        },
+        {
+          "concepto": "Coste de los fondos propios",
+          "valor": "14,60 %"
+        },
+        {
+          "concepto": "Coste de la deuda antes de impuestos",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Tipo impositivo",
+          "valor": "24,50 %"
+        },
+        {
+          "concepto": "Coste de la deuda después de impuestos",
+          "valor": "4,15 %"
+        },
+        {
+          "concepto": "Peso de la deuda (D / (D + E))",
+          "valor": "25,00 %"
+        },
+        {
+          "concepto": "WACC",
+          "valor": "11,99 %"
+        },
+        {
+          "concepto": "Prima de riesgo implícita del mercado (regla relativa)",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "WACC con la prima implícita del mercado",
+          "valor": "10,72 %"
+        }
+      ],
+      "potencial_pct": -65.1,
+      "sensibilidad": {
+        "eje_columnas": "Crecimiento a perpetuidad",
+        "columnas": [
+          "1,0 %",
+          "1,5 %",
+          "2,0 %",
+          "2,5 %",
+          "3,0 %"
+        ],
+        "filas": [
+          {
+            "wacc": "11,0 %",
+            "v0": 9195.14,
+            "v1": 10403.75,
+            "v2": 11746.83,
+            "v3": 13248.15,
+            "v4": 14937.41
+          },
+          {
+            "wacc": "11,5 %",
+            "v0": 7263.64,
+            "v1": 8326.98,
+            "v2": 9502.39,
+            "v3": 10808.57,
+            "v4": 12268.64
+          },
+          {
+            "wacc": "12,0 %",
+            "v0": 5509.35,
+            "v1": 6449.48,
+            "v2": 7483.73,
+            "v3": 8626.99,
+            "v4": 9897.45
+          },
+          {
+            "wacc": "12,5 %",
+            "v0": 3909.01,
+            "v1": 4743.93,
+            "v2": 5658.46,
+            "v3": 6664.55,
+            "v4": 7776.67
+          },
+          {
+            "wacc": "13,0 %",
+            "v0": 2443.26,
+            "v1": 3187.79,
+            "v2": 4000.07,
+            "v3": 4889.8,
+            "v4": 5868.61
+          }
+        ]
+      },
+      "sensibilidad2": {
+        "columnas": [
+          "-2 pp",
+          "-1 pp",
+          "0 pp",
+          "+1 pp",
+          "+2 pp"
+        ],
+        "filas": [
+          {
+            "margen": "-2 pp",
+            "v0": -54528.03,
+            "v1": -57306.89,
+            "v2": -60285.55,
+            "v3": -63476.09,
+            "v4": -66891.23
+          },
+          {
+            "margen": "-1 pp",
+            "v0": -21474.76,
+            "v1": -22423.74,
+            "v2": -23474.4,
+            "v3": -24634.18,
+            "v4": -25910.93
+          },
+          {
+            "margen": "0 pp",
+            "v0": 6321.24,
+            "v1": 6912.04,
+            "v2": 7483.73,
+            "v3": 8032.8,
+            "v4": 8555.47
+          },
+          {
+            "margen": "+1 pp",
+            "v0": 34117.24,
+            "v1": 36247.82,
+            "v2": 38441.86,
+            "v3": 40699.77,
+            "v4": 43021.86
+          },
+          {
+            "margen": "+2 pp",
+            "v0": 61913.24,
+            "v1": 65583.6,
+            "v2": 69399.99,
+            "v3": 73366.75,
+            "v4": 77488.25
+          }
+        ]
+      },
+      "rango_min": 4743.93,
+      "rango_max": 10808.57,
+      "inverso": {
+        "crecimiento_implicito_pct": null,
+        "crecimiento_base_pct": 1,
+        "periodo": "2027e-2033e",
+        "margen_implicito_pct": 2.1,
+        "margen_implicito_texto": null,
+        "margen_base_pct": 1.6,
+        "rentabilidad_implicita_pct": 9.3
+      },
+      "sostenibilidad": {
+        "veredicto": "Sí",
+        "veredicto_motor": "Sí",
+        "motivos_motor": [],
+        "crecimiento_financiable_bruto_pct": 16.9,
+        "roic_implicito_bruto_pct": -38.4,
+        "tcac_ingresos_historica_pct": 28.2,
+        "crecimiento_proyectado_pct": 2.7,
+        "tasa_reinversion_pct": 12,
+        "crecimiento_financiable_pct": null,
+        "roic_pct": 59.4,
+        "roic_incremental_historico_pct": 204.7,
+        "roic_implicito_pct": null,
+        "cuota_actual_pct": 39.2,
+        "cuota_final_pct": 41.6,
+        "puente": [
+          {
+            "periodo": "2026e",
+            "volumen_pct": -12,
+            "precio_pct": 27,
+            "otros_pct": 0,
+            "comentario": "Precio del oro +27 % de media en wones (≈ 4.350 USD de media en 2026 frente a ≈ 3.400 en 2025, con el won más débil) y volumen −12 % (la negociación del oro en Corea cayó un 80 % de enero a julio) [15, 16]; la informática, +4 %.",
+            "suma_pct": 15,
+            "crecimiento_pct": 15
+          },
+          {
+            "periodo": "2027e",
+            "volumen_pct": -8,
+            "precio_pct": -4,
+            "otros_pct": 0.2,
+            "comentario": "Precio −4 % (el oro de hoy, ≈ 4.160 USD, por debajo de la media de 2026) y volumen −8 % (sin la fiebre del 4T25-1T26); +0,2 puntos de informática.",
+            "suma_pct": -11.8,
+            "crecimiento_pct": -11.8
+          },
+          {
+            "periodo": "2028e",
+            "volumen_pct": 2,
+            "precio_pct": 2,
+            "otros_pct": 0,
+            "comentario": "Volumen +2 % (oro e informática) y precio +2 % (oro estable en dólares e inflación).",
+            "suma_pct": 4,
+            "crecimiento_pct": 4
+          },
+          {
+            "periodo": "2029e",
+            "volumen_pct": 1.5,
+            "precio_pct": 2,
+            "otros_pct": 0,
+            "comentario": "Volumen +1,5 % y precio +2 %.",
+            "suma_pct": 3.5,
+            "crecimiento_pct": 3.5
+          },
+          {
+            "periodo": "2030e",
+            "volumen_pct": 1,
+            "precio_pct": 2,
+            "otros_pct": 0,
+            "comentario": "Volumen +1 % y precio +2 %. Ventas de ≈ 9,98 billones, el 41,6 % de nuestra referencia de negociación del oro de la KRX en 2030e (≈ 24 billones) frente al 39,2 % de hoy: una medida de escala, no una cuota [15].",
+            "suma_pct": 3,
+            "crecimiento_pct": 3
+          }
+        ],
+        "texto": "La proyección apenas necesita inversión neta de la amortización (reinversión acumulada de 106.897 M, el 12 % del NOPAT, con un capex bruto medio del 0,2 % de las ventas). En un negocio de activos ligeros, el crecimiento medio del 2,7 % tiene que salir de subir precios y de ganar volumen sin capital nuevo, y la prueba es el poder de precios y la cuota (41,6 % del mercado en 2030e, frente al 39,2 % de hoy); en un comprador en serie, la amortización es de intangibles comprados y la prueba es el capex bruto (las compras) frente al crecimiento comprado.",
+        "tabla": [
+          {
+            "concepto": "Crecimiento medio de ingresos proyectado",
+            "valor": "2,7 %"
+          },
+          {
+            "concepto": "Capex bruto medio (incluidas compras si van como inversión)",
+            "valor": "0,2 % de las ventas"
+          },
+          {
+            "concepto": "Reinversión neta acumulada (capex − amortización + circulante)",
+            "valor": "106.897 M (12 % del NOPAT)"
+          },
+          {
+            "concepto": "Con la reinversión bruta (capex + circulante): crecimiento que financia al ROIC actual",
+            "valor": "16,9 % (reinvierte el 29 % del NOPAT)"
+          },
+          {
+            "concepto": "Rendimiento que la proyección supone para la reinversión bruta",
+            "valor": "-38,4 % (histórico: 204,7 %)"
+          },
+          {
+            "concepto": "Crecimiento histórico de ingresos (TCAC)",
+            "valor": "28,2 % frente al 2,7 % proyectado"
+          },
+          {
+            "concepto": "Veredicto de las pruebas del motor",
+            "valor": "Sí"
+          },
+          {
+            "concepto": "Cuota de mercado implícita en 2030e",
+            "valor": "41,6 % (hoy: 39,2 %)"
+          }
+        ]
+      }
+    },
+    "escenarios": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 30,
+        "narrativa": "Fin de la fiebre del oro: el margen del oro vuelve al ≈ 0,7 % de 2022-2024 (EBITDA consolidado del 1,2 %) y el volumen cae 5 puntos más cada año; la informática sufre presión de precios e IA. Crecimiento terminal del 1,5 %.",
+        "crecimiento_medio_pct": -4,
+        "margen_final_pct": 1.2,
+        "wacc_pct": 12,
+        "valor": -5625.7,
+        "potencial_pct": -126.2
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "narrativa": "El oro se queda en ≈ 8 billones de ventas al 1,1 % de margen operativo y la informática crece con contratos públicos al 3-3,5 %; margen EBITDA del 1,6 %; sin dividendo de la matriz.",
+        "crecimiento_medio_pct": 1,
+        "margen_final_pct": 1.6,
+        "wacc_pct": 12,
+        "valor": 7483.73,
+        "potencial_pct": -65.1
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 20,
+        "narrativa": "El oro sigue caro y con volumen, los tokens de oro y los valores tokenizados empiezan a generar ingresos y la informática gana margen con la IA: 4 puntos más de crecimiento y 0,4 puntos más de margen (EBITDA del 2,0 %).",
+        "crecimiento_medio_pct": 5,
+        "margen_final_pct": 2,
+        "wacc_pct": 12,
+        "valor": 24846.93,
+        "potencial_pct": 15.8
+      }
+    ],
+    "valor_ponderado": 7023.54,
+    "potencial_ponderado_pct": -67.3,
+    "comparables": {
+      "tabla": [
+        {
+          "nombre": "ITCEN GLOBAL",
+          "ticker": "124500",
+          "pais": "KR",
+          "capitalizacion": 497640,
+          "ev_ventas": 0.11,
+          "ev_ebitda_ltm": 3.7,
+          "ev_ebitda_ntm": 4.2,
+          "per_ntm": 9.7,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": 3,
+          "roic_pct": 59.4,
+          "dn_ebitda": 0.3,
+          "fcf_yield_pct": 39.7,
+          "es_objetivo": true
+        },
+        {
+          "nombre": "Samsung SDS",
+          "ticker": "018260.KS",
+          "pais": "KR",
+          "capitalizacion": 15377217,
+          "ev_ventas": 0.74,
+          "ev_ebitda_ltm": 7.3,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 18.3,
+          "crecimiento_pct": 5.6,
+          "margen_ebitda_pct": 10.2,
+          "roic_pct": null,
+          "dn_ebitda": -4,
+          "fcf_yield_pct": 3.3,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "LG CNS",
+          "ticker": "064400.KS",
+          "pais": "KR",
+          "capitalizacion": 6646376,
+          "ev_ventas": 0.91,
+          "ev_ebitda_ltm": 8.1,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 12.7,
+          "crecimiento_pct": 8.4,
+          "margen_ebitda_pct": 11.3,
+          "roic_pct": null,
+          "dn_ebitda": -1.46,
+          "fcf_yield_pct": 6.8,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Hyundai AutoEver",
+          "ticker": "307950.KS",
+          "pais": "KR",
+          "capitalizacion": 9228170,
+          "ev_ventas": 2.07,
+          "ev_ebitda_ltm": 20.7,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 36.3,
+          "crecimiento_pct": 13.9,
+          "margen_ebitda_pct": 10,
+          "roic_pct": null,
+          "dn_ebitda": -1.01,
+          "fcf_yield_pct": 0.7,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "POSCO DX",
+          "ticker": "022100.KS",
+          "pais": "KR",
+          "capitalizacion": 3066815,
+          "ev_ventas": 3,
+          "ev_ebitda_ltm": 61.4,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 57.4,
+          "crecimiento_pct": 12.8,
+          "margen_ebitda_pct": 4.9,
+          "roic_pct": null,
+          "dn_ebitda": -5.19,
+          "fcf_yield_pct": 1.8,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Lotte Innovate",
+          "ticker": "286940.KS",
+          "pais": "KR",
+          "capitalizacion": 266126,
+          "ev_ventas": 0.24,
+          "ev_ebitda_ltm": 2.8,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 7.7,
+          "crecimiento_pct": 5.3,
+          "margen_ebitda_pct": 8.7,
+          "roic_pct": null,
+          "dn_ebitda": -0.05,
+          "fcf_yield_pct": 24.3,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Gold.com (antes A-Mark)",
+          "ticker": "GOLD",
+          "pais": "US",
+          "capitalizacion": 1498556,
+          "ev_ventas": 0.06,
+          "ev_ebitda_ltm": 8.4,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 10.4,
+          "crecimiento_pct": -12.9,
+          "margen_ebitda_pct": 0.7,
+          "roic_pct": null,
+          "dn_ebitda": 1.82,
+          "fcf_yield_pct": 36.2,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "ARE Holdings",
+          "ticker": "5857.T",
+          "pais": "JP",
+          "capitalizacion": 2324629,
+          "ev_ventas": 0.84,
+          "ev_ebitda_ltm": 11.7,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 8.5,
+          "crecimiento_pct": 5.9,
+          "margen_ebitda_pct": 7.2,
+          "roic_pct": null,
+          "dn_ebitda": 5.24,
+          "fcf_yield_pct": -10,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Matsuda Sangyo",
+          "ticker": "7456.T",
+          "pais": "JP",
+          "capitalizacion": 1337353,
+          "ev_ventas": 0.27,
+          "ev_ebitda_ltm": 6.2,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 6.5,
+          "crecimiento_pct": -0.6,
+          "margen_ebitda_pct": 4.4,
+          "roic_pct": null,
+          "dn_ebitda": 0.96,
+          "fcf_yield_pct": -5,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Chow Tai Fook",
+          "ticker": "1929.HK",
+          "pais": "HK",
+          "capitalizacion": 18746121,
+          "ev_ventas": 1.37,
+          "ev_ebitda_ltm": 6.8,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 10.5,
+          "crecimiento_pct": 4.7,
+          "margen_ebitda_pct": 20.2,
+          "roic_pct": null,
+          "dn_ebitda": 0.97,
+          "fcf_yield_pct": 1.9,
+          "es_objetivo": false
+        }
+      ],
+      "estadisticos": [
+        {
+          "estadistico": "Mediana",
+          "ev_ventas": 0.8,
+          "ev_ebitda_ltm": 8.1,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 10.5,
+          "crecimiento_pct": 5.6,
+          "margen_ebitda_pct": 8.7,
+          "roic_pct": null,
+          "dn_ebitda": 0,
+          "fcf_yield_pct": 1.9
+        },
+        {
+          "estadistico": "Media",
+          "ev_ventas": 1.1,
+          "ev_ebitda_ltm": 14.8,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 18.7,
+          "crecimiento_pct": 4.8,
+          "margen_ebitda_pct": 8.6,
+          "roic_pct": null,
+          "dn_ebitda": -0.3,
+          "fcf_yield_pct": 6.7
+        },
+        {
+          "estadistico": "Percentil 25",
+          "ev_ventas": 0.3,
+          "ev_ebitda_ltm": 6.8,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 8.5,
+          "crecimiento_pct": 4.7,
+          "margen_ebitda_pct": 4.9,
+          "roic_pct": null,
+          "dn_ebitda": -1.5,
+          "fcf_yield_pct": 0.7
+        },
+        {
+          "estadistico": "Percentil 75",
+          "ev_ventas": 1.4,
+          "ev_ebitda_ltm": 11.7,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 18.3,
+          "crecimiento_pct": 8.4,
+          "margen_ebitda_pct": 10.2,
+          "roic_pct": null,
+          "dn_ebitda": 1,
+          "fcf_yield_pct": 6.8
+        }
+      ],
+      "implicito": [
+        {
+          "metodo": "EV/EBITDA últimos 12 meses",
+          "metrica_empresa": 347977,
+          "multiplo_p25": 6.8,
+          "multiplo_mediana": 8.1,
+          "multiplo_p75": 11.7,
+          "multiplos": "6,8x / 8,1x / 11,7x",
+          "valor_p25": 67508.56,
+          "valor_mediana": 87007.27,
+          "valor_p75": 141003.7,
+          "potencial_pct": 305.6
+        },
+        {
+          "metodo": "PER próximos 12 meses",
+          "metrica_empresa": 2222,
+          "multiplo_p25": 8.5,
+          "multiplo_mediana": 10.5,
+          "multiplo_p75": 18.3,
+          "multiplos": "8,5x / 10,5x / 18,3x",
+          "valor_p25": 18887,
+          "valor_mediana": 23331,
+          "valor_p75": 40662.6,
+          "potencial_pct": 8.8
+        },
+        {
+          "metodo": "EV/Ventas últimos 12 meses",
+          "metrica_empresa": 11548194,
+          "multiplo_p25": 0.3,
+          "multiplo_mediana": 0.8,
+          "multiplo_p75": 1.4,
+          "multiplos": "0,3x / 0,8x / 1,4x",
+          "valor_p25": 99912.39,
+          "valor_mediana": 383639.57,
+          "valor_p75": 647456.07,
+          "potencial_pct": 1688.5
+        }
+      ],
+      "regresion": null,
+      "n": 9
+    },
+    "transacciones": null,
+    "suma_partes": {
+      "partes": [
+        {
+          "segmento": "Oro y metales preciosos (Korea Gold Exchange y filiales)",
+          "metrica": "EBITDA 2027e",
+          "valor_metrica": 93000,
+          "multiplo": 6.5,
+          "ev_directo": null,
+          "justificacion": "EBITDA de 2027e de ≈ 93.000 M (≈ 8,0 billones de ventas al 1,1 % de margen operativo más ≈ 5.000 M de amortización) a 6,5 veces: entre Matsuda Sangyo (6,2x), Chow Tai Fook (6,8x) y Gold.com (8,4x sobre un EBITDA de pico) [27]. Es el 100 % del negocio; la matriz tiene ≈ 25 % en transparencia [1].",
+          "ev": 604500
+        },
+        {
+          "segmento": "Servicios informáticos (ITCEN CTS, ENTEC, Cloit, C-Platform, PNS)",
+          "metrica": "EBITDA 2027e",
+          "valor_metrica": 52000,
+          "multiplo": 6,
+          "ev_directo": null,
+          "justificacion": "EBITDA de 2027e de ≈ 52.000 M (≈ 41.000 M de beneficio operativo más ≈ 11.000 M de amortización) a 6 veces: por debajo de Samsung SDS y LG CNS (7,3-8,1x), con más márgen público y menos escala, y por encima de Lotte Innovate (2,8x) y de la filial ITCEN CTS (4,3x) [27].",
+          "ev": 312000
+        },
+        {
+          "segmento": "Gastos de la matriz y ajustes de consolidación",
+          "metrica": "EBITDA 2027e",
+          "valor_metrica": -6000,
+          "multiplo": 6,
+          "ev_directo": null,
+          "justificacion": "Gastos de la matriz no repercutidos y ajustes de consolidación (≈ −6.000 M al año; −14.000 M en el 1S26) al mismo múltiplo [1, 3].",
+          "ev": -36000
+        },
+        {
+          "segmento": "Descuento de holding (20 % de lo que corresponde a la matriz)",
+          "metrica": "Valor de las participaciones",
+          "valor_metrica": null,
+          "multiplo": null,
+          "ev_directo": -42800,
+          "justificacion": "Descuento de conglomerado del 20 % (el máximo del método) sobre lo que corresponde a la matriz (≈ 25 % de las filiales: ≈ 214.000 M): cadena de participaciones, poca caja en la matriz, filiales que pagan dividendo antes a otros accionistas y operaciones vinculadas [nota C].",
+          "ev": -42800
+        }
+      ],
+      "ev_total": 837700,
+      "valor_accion": 1623.06,
+      "valor_min": -3793.1,
+      "valor_max": 7039.22,
+      "potencial_pct": -92.4
+    },
+    "multiplos_historicos": [
+      {
+        "metrica": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+        "campo": "ev_ebitda_ltm",
+        "actual": 3.7,
+        "media": 7.2,
+        "minimo": 3.2,
+        "maximo": 7.8,
+        "percentil": 33,
+        "prima_pct": -49,
+        "anios": 3
+      }
+    ],
+    "multiplos_serie": [
+      {
+        "anio": "2021",
+        "multiplo": 7.2,
+        "media": 7.2
+      },
+      {
+        "anio": "2022",
+        "multiplo": 5.7,
+        "media": 7.2
+      },
+      {
+        "anio": "2023",
+        "multiplo": 7.8,
+        "media": 7.2
+      },
+      {
+        "anio": "2024",
+        "multiplo": 5.5,
+        "media": 7.2
+      },
+      {
+        "anio": "2025",
+        "multiplo": 3.2,
+        "media": 7.2
+      }
+    ],
+    "multiplos_titulo": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+    "consenso_vs_propio": [
+      {
+        "periodo": "2026e",
+        "ingresos_propio": 10201472,
+        "ingresos_consenso": null,
+        "ingresos_dif_pct": null,
+        "ebitda_propio": 184647,
+        "ebitda_consenso": 307650,
+        "ebitda_dif_pct": -40
+      }
+    ],
+    "gobierno": {
+      "n_consejeros": 6,
+      "independientes_pct": 50,
+      "antiguedad_media": 5.8,
+      "composicion": [
+        {
+          "tipo": "Ejecutivo",
+          "num": 3
+        },
+        {
+          "tipo": "Independiente",
+          "num": 3
+        }
+      ],
+      "checklist": [
+        {
+          "criterio": "Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)",
+          "resultado": "Cumple",
+          "valor": "50 % (con control)"
+        },
+        {
+          "criterio": "Presidencia sin vínculo familiar ni profesional con el accionista de control",
+          "resultado": "No cumple",
+          "valor": "Vinculada"
+        },
+        {
+          "criterio": "Presidente no ejecutivo, o consejero coordinador independiente",
+          "resultado": "No cumple",
+          "valor": "Ejecutivo, sin coordinador"
+        },
+        {
+          "criterio": "Comisión de auditoría con mayoría de independientes y presidida por uno",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Ningún consejero «otro externo» con más de 12 años",
+          "resultado": "Cumple",
+          "valor": "Ninguno"
+        },
+        {
+          "criterio": "Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses",
+          "resultado": "Cumple",
+          "valor": "1 cambio"
+        },
+        {
+          "criterio": "Peor voto a favor sobre remuneración (3 juntas) ≥ 80 %",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)",
+          "resultado": "No cumple",
+          "valor": "No"
+        },
+        {
+          "criterio": "Una acción, un voto, sin blindajes ni límites de voto estatutarios",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Sin operaciones vinculadas relevantes",
+          "resultado": "No cumple",
+          "valor": "Hay"
+        },
+        {
+          "criterio": "Auditor con 10 años o menos en el cargo",
+          "resultado": "Cumple",
+          "valor": "2 años"
+        },
+        {
+          "criterio": "Opinión de auditoría sin salvedades",
+          "resultado": "Cumple",
+          "valor": "Favorable (2025)"
+        },
+        {
+          "criterio": "Directivos compradores netos en 12 meses (o sin ventas relevantes)",
+          "resultado": "Cumple",
+          "valor": "Compras 0,00 / ventas 0,00 M"
+        }
+      ],
+      "puntuacion": "8 de 13 (1 sin dato)",
+      "puntuacion_pct": 62,
+      "compras_insiders": 0,
+      "ventas_insiders": 0
+    },
+    "competidores_margen": [
+      {
+        "nombre": "ITCEN GLOBAL",
+        "margen_ebit_pct": 3.2
+      },
+      {
+        "nombre": "Samsung SDS",
+        "margen_ebit_pct": 6.2
+      },
+      {
+        "nombre": "LG CNS",
+        "margen_ebit_pct": 8.4
+      },
+      {
+        "nombre": "Lotte Innovate",
+        "margen_ebit_pct": 4.5
+      },
+      {
+        "nombre": "ITCEN CTS (filial, 25 %)",
+        "margen_ebit_pct": 2.6
+      },
+      {
+        "nombre": "ITCEN ENTEC (filial)",
+        "margen_ebit_pct": 6
+      },
+      {
+        "nombre": "Gold.com (antes A-Mark)",
+        "margen_ebit_pct": 0.4
+      },
+      {
+        "nombre": "ARE Holdings",
+        "margen_ebit_pct": 6
+      }
+    ],
+    "sintesis": {
+      "formato_eje": "#,##0",
+      "rangos": [
+        {
+          "metodo": "Cotización 52 semanas",
+          "etiqueta": "Cotización 52 semanas (17.000,00 – 75.500,00)",
+          "min": 17000,
+          "central": 21450,
+          "max": 75500,
+          "gris": true
+        },
+        {
+          "metodo": "Precio objetivo de los analistas",
+          "etiqueta": "Precio objetivo de los analistas (54.000,00 – 54.000,00)",
+          "min": 54000,
+          "central": 54000,
+          "max": 54000,
+          "gris": true
+        },
+        {
+          "metodo": "Comparables: PER NTM",
+          "etiqueta": "Comparables: PER NTM (18.887,00 – 40.662,60)",
+          "min": 18887,
+          "central": 23331,
+          "max": 40662.6,
+          "gris": false
+        },
+        {
+          "metodo": "DCF (WACC y g ± 0,5)",
+          "etiqueta": "DCF (WACC y g ± 0,5) (4.743,93 – 10.808,57)",
+          "min": 4743.93,
+          "central": 7483.73,
+          "max": 10808.57,
+          "gris": false
+        },
+        {
+          "metodo": "Escenarios (bajista – alcista)",
+          "etiqueta": "Escenarios (bajista – alcista) (-5.625,70 – 24.846,93)",
+          "min": -5625.7,
+          "central": 7023.54,
+          "max": 24846.93,
+          "gris": false
+        },
+        {
+          "metodo": "Suma de partes",
+          "etiqueta": "Suma de partes (-3.793,10 – 7.039,22)",
+          "min": -3793.1,
+          "central": 1623.06,
+          "max": 7039.22,
+          "gris": false
+        },
+        {
+          "metodo": "DCF con la prima del mercado",
+          "etiqueta": "DCF con la prima implícita del mercado (4,2 %)",
+          "min": 10672.73,
+          "central": 13053.85,
+          "max": 15726.19
+        },
+        {
+          "metodo": "Precio actual",
+          "etiqueta": "Precio actual (21.450,00)",
+          "min": 21342.75,
+          "central": 21450,
+          "max": 21557.25,
+          "gris": true
+        }
+      ],
+      "tabla": [
+        {
+          "metodo": "DCF",
+          "valor": 7483.73,
+          "peso_pct": 45,
+          "potencial_pct": -65.1
+        },
+        {
+          "metodo": "Comparables (mediana EV/EBITDA y PER)",
+          "valor": 23331,
+          "peso_pct": 10,
+          "potencial_pct": 8.8
+        },
+        {
+          "metodo": "Suma de partes",
+          "valor": 1623.06,
+          "peso_pct": 25,
+          "potencial_pct": -92.4
+        },
+        {
+          "metodo": "Escenarios ponderados",
+          "valor": 7023.54,
+          "peso_pct": 20,
+          "potencial_pct": -67.3
+        }
+      ],
+      "valor_objetivo": 7511.25,
+      "potencial_pct": -65
+    },
+    "fuentes": {
+      "n_fuentes": 36,
+      "n_primarias": 11,
+      "por_tipo": [
+        {
+          "tipo": "Primaria",
+          "num": 11
+        },
+        {
+          "tipo": "Datos de mercado",
+          "num": 5
+        },
+        {
+          "tipo": "Prensa",
+          "num": 18
+        },
+        {
+          "tipo": "Analistas",
+          "num": 2
+        }
+      ],
+      "n_citadas": 35,
+      "citas_sin_fuente": [],
+      "fuentes_sin_citar": [
+        "34"
+      ]
+    },
+    "controles": [
+      {
+        "control": "Tipo impositivo efectivo razonable (2023)",
+        "resultado": "Explicado",
+        "detalle": "1.130,2 %: explica la causa (créditos fiscales, regularizaciones, mezcla de países) y no lo proyectes en el DCF. Explicación: En 2023 el BAI consolidado fue de solo 602 M (pérdidas en la matriz y en filiales que no compensan con los beneficios de otras, porque cada sociedad tributa por separado) y los impuestos de 6.804 M [2]. No se proyecta: usamos el 24,5 % (el efectivo de 2025 fue del 24,6 %) [1]."
+      },
+      {
+        "control": "Segmentos suman los ingresos (2022)",
+        "resultado": "Explicado",
+        "detalle": "Segmentos 2.909.400 frente a ingresos 2.621.054 (11,0 %). Si hay eliminaciones entre segmentos, explícalo. Explicación: Los segmentos se publican antes de eliminar las ventas entre negocios del grupo (oro e informática se venden entre filiales y a la matriz); la eliminación de 2022 fue de ≈ 288.000 M [2]. En 2025 fue de −475.700 M y en el 1S26 de −469.200 M (el 1S26 incluye compras de oro entre filiales) [1, 3]."
+      },
+      {
+        "control": "Segmentos suman los ingresos (2023)",
+        "resultado": "Explicado",
+        "detalle": "Segmentos 2.963.000 frente a ingresos 2.815.145 (5,3 %). Si hay eliminaciones entre segmentos, explícalo. Explicación: Igual que en 2022: los segmentos van antes de eliminar las ventas entre filiales (≈ 148.000 M en 2023) [2]."
+      },
+      {
+        "control": "DCF inverso calculable",
+        "resultado": "Explicado",
+        "detalle": "No hay solución en un rango razonable: revisa circulante, capex o márgenes del DCF (un supuesto extremo hace que el valor no responda al crecimiento). Explicación: Con los minoritarios fijos en el puente (706.000 M) y un margen EBITDA del 1,6 %, el valor por acción no llega al precio con ningún crecimiento razonable: el precio no descuenta crecimiento, descuenta margen. Hecho a mano, si los minoritarios suben en proporción, 21.450 KRW por acción exigen un margen EBITDA del ≈ 3,5 % para siempre (el del pico de 2025, 3,3 %; el normal de 2022-2024, 1,4-1,5 %) [1]."
+      },
+      {
+        "control": "Puente de ingresos (volumen + precio + otros) = crecimiento del DCF",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Veredicto de sostenibilidad del analista coherente con las pruebas del motor",
+        "resultado": "OK",
+        "detalle": "El analista dice «Sí» y las pruebas del motor dan «Sí»: razónalo en la justificación."
+      },
+      {
+        "control": "Cuota implícita al final de la proyección ≤ 1,5 × la actual (o +10 puntos)",
+        "resultado": "OK",
+        "detalle": "Cuota de 41,6 % en 2030e frente al 39,2 % de hoy."
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "resultado": "OK",
+        "detalle": "Supuesto 4,2 % frente a 3,7 % real: genera una variación de circulante de 103.419 M en el primer año. Converge de forma gradual."
+      },
+      {
+        "control": "Peso del valor terminal ≤ 80 % del valor empresa",
+        "resultado": "OK",
+        "detalle": "47 %."
+      },
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "resultado": "OK",
+        "detalle": "2,00 %."
+      },
+      {
+        "control": "Probabilidades de los escenarios suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 5 comparables",
+        "resultado": "OK",
+        "detalle": "9 comparables."
+      },
+      {
+        "control": "Proyección propia frente a consenso (2026e)",
+        "resultado": "Explicado",
+        "detalle": "EBITDA propio -40,0 % frente al consenso: justifica la diferencia en el DCF. Explicación: El consenso es una sola casa (BNK, 11-sep-2026) con un EBITDA de 307.650 M para 2026e [25]: supone un 2S26 de ≈ 190.000 M, casi el doble que el 1S26 (≈ 115.000 M) cuando el 2T26 ya fue de 12.290 M con el oro enfriándose [3]. Nuestro 2026e (184.647 M) suma el 1S publicado y un 2S con el margen del oro al 0,8 %. La estimación de BNK es anterior a la caída del oro de septiembre-octubre."
+      },
+      {
+        "control": "Pesos de la síntesis suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Crecimiento del BPA base ≤ 25 % anual desde el último real",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Precio del cierre de la fecha de corte (o de las dos sesiones anteriores)",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Recomendación coherente con la regla de decisión",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "La síntesis explica la convicción",
+        "resultado": "OK",
+        "detalle": "La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría."
+      },
+      {
+        "control": "Capitalización calculada ≈ publicada",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 25 fuentes",
+        "resultado": "OK",
+        "detalle": "36 fuentes (11 primarias)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "resultado": "OK",
+        "detalle": "11."
+      },
+      {
+        "control": "Toda cita [n] existe en fuentes",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Fuentes sin citar ≤ 15 %",
+        "resultado": "OK",
+        "detalle": "Sin citar: 34."
+      }
+    ],
+    "controles_resumen": "18 de 23 controles correctos y 5 explicados"
+  }
+}
