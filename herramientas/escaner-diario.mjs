@@ -313,7 +313,7 @@ async function escanear() {
     if (!g.precio_hoy || REGLAS.exclusiones[g.ticker]) continue;
     if (!(g.precio_hoy <= g.precio_max_compra && /^Comprar/.test(g.senal_robusta || '') && g.ponderada_hoy >= g.listones.ponderada && g.base_hoy >= g.listones.base)) continue;
     const lpg = largoGrowth(g.carpeta, g.ponderada_hoy);
-    if (!lpg.pasa) continue;
+    if (!lpg.pasa || g.precio_hoy > limiteGrowth(g)) continue; // el límite lleva el +25 % y el mínimo de 0,75 frente a la caída
     posibles.push({ largo_plazo: lpg.txt, vertical: 'growth', clave: g.ticker, nombre: g.empresa, precio: g.precio_hoy, divisa: g.divisa, limite: limiteGrowth(g),
       hora_precio: g.fecha_hoy === ahora.fecha ? ahora.hora : `cierre del ${fechaCorta(g.fecha_hoy)}`, rentabilidad_12m_pct: g.ponderada_hoy, estado: estadoPosible(g.ticker) });
   }
