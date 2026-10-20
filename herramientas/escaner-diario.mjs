@@ -273,7 +273,7 @@ async function escanear() {
   // en cartera (ampliar), en lista de espera o sin liquidez. Value: acción robusta «Comprar», calidad y precio ≤ límite
   // robusto (v3 y v2 con BPA −10 %). Growth: la misma prueba que arriba. Las excluidas por el usuario no salen.
   const posibles = [];
-  const propuesta = (clave) => `ya propuesta${enOrdenes.get(clave).replace(/^compra propuesta /, ' ').replace(/^(?! \()/, ': ')}`;
+  const propuesta = (clave) => { const t = enOrdenes.get(clave), lim = t.match(/\(límite [^)]+\)$/)?.[0]; return lim ? `ya propuesta ${lim}` : `ya propuesta: ${t}`; };
   const estadoPosible = (clave) => {
     if (pos.has(clave)) {
       const peso = total ? (100 * (valorPos[clave] || 0)) / total : 0;
