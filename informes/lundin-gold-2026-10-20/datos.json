@@ -1,0 +1,4765 @@
+{
+  "meta": {
+    "fecha_corte": "2026-10-20",
+    "divisa": "USD",
+    "divisa_cotizacion": "CAD",
+    "tipo_cambio": 0.70937,
+    "unidades": "millones",
+    "cierre_ejercicio_mes": 12,
+    "etiqueta_ejercicio": "fin",
+    "normas_contables": "NIIF",
+    "formato_cuenta": "funcion",
+    "limitaciones": "Canadá no tiene XBRL en herramientas/cuentas.mjs: las cuentas 2021-2025 y los trimestres de 2026 se copiaron de los estados auditados e intermedios (NIIF, USD). El precio es el cierre de Toronto del 19-oct-2026 (91,25 CAD), pasado a USD al 1,4097 del Banco de Canadá; el consenso de Yahoo y MarketScreener viene en CAD y se pasó a USD. SEDI, CanadianInsider y Simply Wall St no abren: sin operaciones de directivos. El puente al valor de las acciones es a 30-jun-2026: no recoge el flujo libre de julio a octubre (≈ 300-350 M con el oro del 3T) ni el dividendo que se declarará en noviembre. La plata (stream con LunR desde abril de 2026) queda fuera de ingresos y del puente. El informe técnico vigente es de 2023 (vida de la mina hasta 2034): el perfil de producción posterior a 2028 es estimación propia.",
+    "controles_explicados": [
+      {
+        "control": "Tipo impositivo efectivo razonable (2023)",
+        "explicacion": "El 37,1 % de 2023 sale de las pérdidas por valor razonable del stream y del offtake de oro con Newmont (en el resultado financiero, −104,4 M), que no son deducibles en Ecuador: el impuesto se paga sobre el resultado de la mina [3]. Desde la recompra de esos contratos en junio de 2024 el tipo vuelve a la zona del 30 % (32,8 % en 2024, 29,5 % en 2025) [1, 2]. El DCF usa un 31 % (22 % de impuesto sobre la renta sobre una base que ya resta la participación del Estado y de los trabajadores y la regalía), no el de 2023."
+      },
+      {
+        "control": "DCF inverso calculable",
+        "explicacion": "No hay solución porque el DCF de una mina que se agota apenas responde al crecimiento y al margen dentro del rango que prueba el motor: el valor del caso base (22,10 USD) es un tercio del precio. Lo que sí se puede calcular es el oro que justifica el precio: extrapolando nuestros escenarios (cada 100 USD de oro mueven el valor ≈ 0,66 USD por acción), el precio de 64,73 USD exige un oro de ≈ 10.500 USD/oz durante toda la vida de la mina con el WACC del 14,7 %, o bien una vida y una producción muy superiores a las de las reservas (5,85 Moz). Bajar el WACC al de la prima del mercado (13,3 %) solo sube el valor a 23,83 USD: el problema no es la tasa de descuento."
+      },
+      {
+        "control": "Proyección propia frente a consenso (2028e)",
+        "explicacion": "Nuestros ingresos de 2027-2028 están un 15 % por debajo del consenso porque usamos el oro de hoy plano (4.150 USD/oz) y el consenso, a juzgar por sus ingresos de ≈ 2.450-2.460 M con 475.000-525.000 onzas, supone ≈ 4.700-4.900 USD [11, 30]. En producción coincidimos (la guía). Nuestro escenario alcista (oro a 4.900) reproduce el consenso: ingresos de 2.450 M en 2027. No proyectamos el oro al alza: usamos el precio de contado del 19-oct (≈ 4.160 USD) [45] como mejor estimación disponible y llevamos las subidas y bajadas a los escenarios."
+      }
+    ],
+    "huecos": [
+      {
+        "seccion": "calidad",
+        "campo": "anios_auditor",
+        "tipo": "Complemento",
+        "intentos": "1) Informe anual 2025 (informe del auditor); 2) circular 2026 (nombramiento del auditor); 3) AIF 2025",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "balance",
+        "campo": "vencimientos",
+        "tipo": "Complemento",
+        "intentos": "1) Nota de deuda del informe del 2T26 (no hay deuda financiera); 2) informe anual 2025; 3) MD&A, liquidez",
+        "decision": "Omitido: sin deuda financiera"
+      },
+      {
+        "seccion": "sector",
+        "campo": "cr5_pct",
+        "tipo": "Complemento",
+        "intentos": "1) WGC Gold Demand Trends (sin producción por empresa); 2) USGS (por país, no por empresa); 3) Producción de los cinco grandes de sus cuentas (no reunida a la misma fecha)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sector",
+        "campo": "tcac_previsto_pct",
+        "tipo": "Complemento",
+        "intentos": "1) WGC (sin previsión de valor); 2) USGS (sin previsión); 3) Derivarlo exigiría suponer el precio del oro, que es la variable del análisis",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "insiders",
+        "tipo": "Complemento",
+        "intentos": "1) SEDI (bloqueo antibot); 2) CanadianInsider.com (la tabla no carga sin anuncios); 3) Simply Wall St, propiedad (HTTP 403) y búsqueda de noticias de compras y ventas de directivos",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "directivos",
+        "campo": "participacion_pct",
+        "tipo": "Complemento",
+        "intentos": "1) Circular 2026 (participaciones de los consejeros en tablas por persona, sin porcentaje claro); 2) AIF 2025; 3) Yahoo (participación agregada de insiders 58,5 %, que incluye a Newmont y Nemesia)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "transacciones",
+        "campo": "ev_ebitda",
+        "tipo": "Complemento",
+        "intentos": "1) Búsqueda de múltiplos EV/EBITDA de las compras de oro de 2024-2026; 2) Fuentes sectoriales (S&P Global, Corrs: solo importes); 3) Prensa (BNN Bloomberg: importe y prima)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "comparables",
+        "campo": "roic_pct y ev_ebitda_ntm",
+        "tipo": "Complemento",
+        "intentos": "1) Yahoo quoteSummary (sin ROIC ni EBITDA estimado); 2) MarketScreener (solo la ficha de Lundin Gold abre); 3) Stock Analysis (no consultado por presupuesto)",
+        "decision": "Omitido"
+      }
+    ]
+  },
+  "identificacion": {
+    "nombre": "Lundin Gold Inc.",
+    "nombre_corto": "Lundin Gold",
+    "ticker": "LUG",
+    "isin": "CA5503711080",
+    "mercado": "Toronto Stock Exchange (también Nasdaq Estocolmo y OTCQX: LUGDF)",
+    "indice_referencia": "S&P/TSX Composite",
+    "pais": "Canadá (mina en Ecuador)",
+    "pais_iso": "CA",
+    "sector": "Materiales",
+    "industria": "Metales y minería (oro)",
+    "sede": "Vancouver (Canadá)",
+    "fundacion": "1986",
+    "empleados": 2013,
+    "web": "www.lundingold.com",
+    "precio": 64.73,
+    "fecha_precio": "2026-10-19",
+    "acciones": 242.8,
+    "capitalizacion_publicada": 15651,
+    "free_float_pct": 41.9,
+    "max_52s": 88.07,
+    "min_52s": 50.73,
+    "volumen_medio_diario": "≈ 52,5 M CAD/día en Toronto (3 meses) [28]",
+    "proximos_resultados": "2026-11-04"
+  },
+  "resumen": {
+    "recomendacion": "Vender",
+    "conviccion": "Media",
+    "justificacion_recomendacion": null,
+    "horizonte": "12 meses",
+    "sintesis": "**La recomendación y por qué.** Vender, con convicción media. Con el oro plano en 4.150 USD/oz, el objetivo a 12 meses es de 50,74 USD (71,53 CAD) frente a un precio de 64,73 USD (91,25 CAD, cierre del 19-oct-2026): rentabilidad ponderada del −15,5 % y del base del −5,4 % con dividendo. El valor intrínseco (24,97 USD) está un 61 % por debajo y el objetivo medio de los analistas, en 67,71 USD. La razón principal: el precio ya descuenta un oro muy por encima del actual y una vida de mina mucho más larga que la de las reservas. La convicción es media y no alta, como sugiere el motor, porque todo depende de una variable que nadie predice: con el oro a 4.900 USD el base a 12 meses sería +17 %; la bajaría a baja un oro sostenido por encima de 5.000, y la subiría un oro por debajo de 3.800.\n\n**El negocio.** Fruta del Norte es una de las minas de oro de mayor ley del mundo (9,5 g/t en 2025) con un AISC de 1.015 USD/oz, primer cuartil del sector [1, 22]. Sin deuda y con margen EBITDA del 69 %, el ROIC fue del 96,9 % en 2025 frente a un WACC del 14,7 %; pero a los precios de oro de 2021-2023 el diferencial era de 2-8 puntos: la calidad es la de la mina y el resto es el oro. La sostenibilidad del crecimiento es «Sí» porque no proyectamos crecimiento: la inversión de mantenimiento cabe con holgura en el flujo libre. El problema es la vida: 5,85 Moz de reservas, ≈ 11-12 años [12].\n\n**Sector y ciclo.** El oro subió de 2.388 USD de media en 2024 a ≈ 3.300 en 2025 [21]; Lundin Gold lo vendió a 4.518 de media en los nueve primeros meses de 2026, con un pico de 5.318 en enero, y hoy está en ≈ 4.160 [10, 45]. La acción amplifica el oro ≈ 2 veces (−11 % en el año, −25 % desde el máximo).\n\n**Finanzas.** Ingresos de 1.783 M en 2025 (+49 %) y beneficio de 792 M; flujo libre de 964 M en los 12 meses a junio de 2026, repartido casi entero en dividendos (3,95 USD ordinarios en 12 meses más 3,09 de LunR) [1, 6]. Caja de 507 M y sin deuda.\n\n**Equipo y gobierno.** Cumple la guía de producción desde 2021. Newmont (31,9 %) y la familia Lundin (26,3 %) controlan la sociedad, y el consejero delegado cambió en noviembre de 2025 [25, 27]. Resta algo: el minoritario no decide y una OPA con prima es improbable.\n\n**Valoración.** El DCF (22,10 USD) muestra que el flujo de la mina con el oro de hoy no paga la capitalización; el oro que justifica el precio es de ≈ 10.500 USD. El PER de 16,3 veces está por encima de la mediana adelantada de cinco años (10,8) y de los comparables (9,8). Discrepamos del consenso en el oro (supone ≈ 4.700-4.900), no en la mina.\n\n**Riesgos y catalizadores.** El oro (bajista −28 % en el DCF) y Ecuador (reclamación del SRI de 154 M por 2023, que puede repetirse en 2024-2025) [16]. Catalizadores: resultados del 4-nov, guía 2027 y decisión sobre FDNS (diciembre), reservas de 2026 (febrero) y el primer recurso de cobre de Sandia (2027). El sentimiento de foros empeora sin capitulación.\n\n**Qué cambiaría la decisión.** Por debajo de 60,77 USD (85,67 CAD) pasaría a Mantener; Comprar solo por debajo de 24,97 USD (35,20 CAD), el valor intrínseco. Unas reservas de 2026 que alarguen la vida a 15 años o un oro sostenido por encima de 5.000 USD nos harían revisar al alza.",
+    "tesis": "Lundin Gold es una mina de oro: Fruta del Norte, en Ecuador, produce ≈ 500.000 onzas al año con una ley de 9,5 g/t y un AISC de ≈ 1.000-1.100 USD/oz, de los más bajos del mundo [1, 11]. Sin deuda y con el oro a 4.150 USD, genera ≈ 900 M USD de flujo libre al año y los reparte casi enteros [1].\n\nEl precio (64,73 USD; 15.700 M de capitalización) es 16,3 veces nuestro BPA de los próximos 12 meses, frente a una mediana adelantada de 10,8 y comparables a 9,8. El DCF a 14,7 % da 22,10 USD: para llegar al precio, el oro tendría que estar en ≈ 10.500 USD durante toda la vida de la mina o la exploración tendría que multiplicar las reservas (5,85 Moz).\n\nEl mercado paga escasez: minas de primer nivel sin deuda, en un ciclo del oro que ha doblado su precio en dos años, y la opción de FDNS, FDN East y siete pórfidos de cobre y oro [23]. Para invertir hay que creer que el oro sigue por encima de 5.000 USD y que el distrito es una segunda mina. Nosotros no lo descartamos, pero a este precio el riesgo está en el lado malo: con el oro de hoy, la acción vale un 5 % menos dentro de 12 meses en el caso base y un 68 % menos en el bajista.",
+    "vision_diferencial": {
+      "mercado_descuenta": "Que el oro se mantiene alto (el consenso de BPA de 2027, 4,30 USD, supone ≈ 4.700-4.900 USD/oz) y que Fruta del Norte tendrá mucha más vida que la de sus reservas gracias a FDNS, FDN East y el cobre; paga 16 veces el beneficio por una mina única en Ecuador [30].",
+      "nuestra_vision": "Coincidimos en la mina (producción de la guía, costes) y discrepamos en el oro y la vida: con el oro de hoy y las reservas de hoy, la acción vale menos de la mitad. La opción de la exploración existe, pero hoy no tiene recursos publicados que la midan.",
+      "por_que": "Del precio del oro nadie sabe más que el mercado, y por eso lo dejamos en el de hoy. Lo que sí sabemos es que cada caída del oro en 2026 (enero, abril-mayo) restó el doble a la acción, y que el PER actual está un 50 % por encima de su historia."
+    },
+    "a_favor": [
+      "**Mina de primer nivel**: ley de 9,5 g/t y AISC de 1.015 USD/oz en 2025, primer cuartil del sector.",
+      "**Sin deuda y caja de 507 M**: todo el flujo libre va al accionista.",
+      "**Dividendo del 6 %**: 3,95 USD ordinarios en 12 meses con la política del 100 % del flujo libre normalizado.",
+      "**Exploración con resultados**: FDNS, FDN East y siete pórfidos; 0,91 Moz de inferidos convertidos en 2025.",
+      "**Guía cumplida**: producción récord de 153.736 oz en el 3T 2026."
+    ],
+    "en_contra": [
+      "**El precio exige un oro de ≈ 10.500 USD**: el DCF con el oro de hoy da 22,10 USD, un 66 % menos.",
+      "**Una mina en un país Caa3**: reclamación del SRI de 154 M y un Estado con ≥ 50 % de los beneficios garantizado.",
+      "**Vida de reservas de ≈ 11-12 años**: 5,85 Moz con la ley bajando de 9,5 a 7,1 g/t.",
+      "**PER de 16,3 frente a 10,8 de su historia**: −15,5 % ponderado a 12 meses.",
+      "**Accionistas de control**: Newmont y los Lundin tienen el 58 %; sin prima de OPA posible sin ellos."
+    ],
+    "que_vigilar": "La tesis de venta depende de que el oro no vuelva a subir con fuerza y de que las reservas no se multipliquen. La señal en contra sería un oro sostenido por encima de 5.000 USD (el base a 12 meses pasaría a positivo) o unas reservas a 31-dic-2026 que, con FDNS, alarguen la vida a 15 años o más.",
+    "cambiaria_recomendacion": [
+      "Precio por debajo de 60,77 USD (85,67 CAD): Mantener.",
+      "Precio por debajo de 24,97 USD (35,20 CAD): Comprar (valor intrínseco).",
+      "Oro sostenido por encima de 5.000 USD/oz durante un trimestre: revisar al alza el BPA y la recomendación.",
+      "Reservas a 31-dic-2026 con vida de 15 años o más (FDNS incluido): revisar el DCF al alza.",
+      "Reclamación del SRI extendida a 2024-2025 por más de 300 M: reforzar Vender."
+    ],
+    "kpis_seguimiento": [
+      {
+        "kpi": "Precio del oro",
+        "nivel_actual": "≈ 4.160 USD/oz",
+        "umbral_alerta": "> 5.000 o < 3.800",
+        "por_que": "Mueve el BPA casi en proporción."
+      },
+      {
+        "kpi": "Producción trimestral",
+        "nivel_actual": "153.736 oz (3T 2026)",
+        "umbral_alerta": "< 115.000 oz",
+        "por_que": "Guía de 475.000-525.000 al año."
+      },
+      {
+        "kpi": "AISC",
+        "nivel_actual": "Guía 1.110-1.170 USD/oz",
+        "umbral_alerta": "> 1.300",
+        "por_que": "Mide la ley y la inflación minera."
+      },
+      {
+        "kpi": "Reservas",
+        "nivel_actual": "5,85 Moz a 7,09 g/t",
+        "umbral_alerta": "< 5,5 Moz",
+        "por_que": "Vida de la mina."
+      },
+      {
+        "kpi": "Reclamaciones del SRI",
+        "nivel_actual": "154 M (2023)",
+        "umbral_alerta": "Nuevas por 2024-2025",
+        "por_que": "Riesgo país y fiscal."
+      }
+    ]
+  },
+  "historia": {
+    "resumen": "Lundin Gold nació como Fortress Resources (1986), una sociedad de cartera del grupo Lundin que en diciembre de 2014 compró a Kinross el yacimiento de Fruta del Norte (FDN), en el sur de la Amazonía ecuatoriana, y tomó su nombre actual [17]. FDN lo descubrió Aurelian Resources entre 2003 y 2008; Kinross la compró en 2008 e hizo los estudios de viabilidad de 2009 y 2011 sin llegar a construir [17]. Lundin Gold hizo su propia viabilidad en 2015-2016, construyó la mina con deuda de proyecto, un stream y un offtake de oro, y entró en producción comercial en febrero de 2020, con tres meses de parada por la COVID ese año [5, 17]. Desde 2023 ha pagado toda la deuda y recomprado el stream y el offtake (2024), y desde 2025 reparte casi todo el flujo libre. Newmont (32 %) y la familia Lundin (26 %) controlan la sociedad [25].",
+    "hitos": [
+      {
+        "anio": "2003-2008",
+        "hito": "Aurelian Resources descubre y define el yacimiento epitermal de Fruta del Norte [17]."
+      },
+      {
+        "anio": "2008",
+        "hito": "Kinross compra Aurelian; viabilidad previa (2009) y viabilidad (2011), sin construir [17]."
+      },
+      {
+        "anio": "2014",
+        "hito": "Fortress Minerals compra FDN y las concesiones de Kinross en Ecuador y pasa a llamarse Lundin Gold [17]."
+      },
+      {
+        "anio": "2016",
+        "hito": "Estudio de viabilidad propio y decisión de construir con financiación de proyecto (stream, prepago y offtake de oro) [17]."
+      },
+      {
+        "anio": "2020",
+        "hito": "Producción comercial desde febrero; parada de tres meses por la COVID [5, 17]."
+      },
+      {
+        "anio": "2023",
+        "hito": "Newmont compra Newcrest y pasa a tener el 32 %; se paga la deuda senior y se renueva la concesión La Zarza hasta 2048; nuevo informe técnico (vida hasta 2034) [17]."
+      },
+      {
+        "anio": "2024",
+        "hito": "Recompra del stream y el offtake a Newmont por 330 M USD: la empresa queda sin deuda y vende todo su oro a precio de mercado [17]."
+      },
+      {
+        "anio": "2025",
+        "hito": "Producción récord (498.315 oz) a 3.594 USD/oz y beneficio de 792 M; nuevo consejero delegado (Jamie Beck) en noviembre; reservas de 5,85 Moz [1, 12, 27]."
+      },
+      {
+        "anio": "2026",
+        "hito": "Stream de plata vendido a LunR Royalties y repartido a los accionistas (junio); siete pórfidos de cobre y oro descubiertos; reclamación fiscal del SRI de 154 M por 2023 (septiembre) [6, 16, 23]."
+      }
+    ],
+    "confianza": "Alta"
+  },
+  "negocio": {
+    "segmentos": [
+      {
+        "nombre": "Oro (concentrado y doré)",
+        "descripcion": "Venta de concentrado de oro a fundiciones y de doré a refinerías, desde la mina de Fruta del Norte (Ecuador).",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2021",
+            "ingresos": 726.3,
+            "resultado": null
+          },
+          {
+            "periodo": "2022",
+            "ingresos": 805.8000000000001,
+            "resultado": null
+          },
+          {
+            "periodo": "2023",
+            "ingresos": 891.1,
+            "resultado": null
+          },
+          {
+            "periodo": "2024",
+            "ingresos": 1178.3,
+            "resultado": null
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 1759.7,
+            "resultado": null
+          }
+        ]
+      },
+      {
+        "nombre": "Plata (subproducto)",
+        "descripcion": "Plata contenida en el concentrado y el doré; desde marzo de 2026 se entrega a LunR por el stream.",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2021",
+            "ingresos": 7,
+            "resultado": null
+          },
+          {
+            "periodo": "2022",
+            "ingresos": 9.9,
+            "resultado": null
+          },
+          {
+            "periodo": "2023",
+            "ingresos": 11.4,
+            "resultado": null
+          },
+          {
+            "periodo": "2024",
+            "ingresos": 14.8,
+            "resultado": null
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 23.2,
+            "resultado": null
+          }
+        ]
+      }
+    ],
+    "geografias": [
+      {
+        "nombre": "Ventas a fundiciones, refinerías y bancos fuera de Ecuador (origen: Ecuador)",
+        "peso_pct": 100
+      }
+    ],
+    "geografias_criterio": "origen",
+    "kpis": [
+      {
+        "kpi": "Producción de oro (onzas)",
+        "valor_anterior": "502.029 (2024)",
+        "valor_actual": "498.315 (2025)",
+        "variacion": "−0,7 %",
+        "comentario": "392.472 en nueve meses de 2026; guía 475.000-525.000 [1, 10]."
+      },
+      {
+        "kpi": "Precio realizado (USD/oz)",
+        "valor_anterior": "2.462",
+        "valor_actual": "3.594",
+        "variacion": "+46 %",
+        "comentario": "4.518 en nueve meses de 2026 [1, 10]."
+      },
+      {
+        "kpi": "Coste en efectivo (USD/oz vendida)",
+        "valor_anterior": "712",
+        "valor_actual": "838",
+        "variacion": "+18 %",
+        "comentario": "Guía 2026: 900-960 a 4.000 USD de oro [1, 11]."
+      },
+      {
+        "kpi": "AISC (USD/oz vendida)",
+        "valor_anterior": "875",
+        "valor_actual": "1.015",
+        "variacion": "+16 %",
+        "comentario": "Guía 2026: 1.110-1.170; 1.114 en el 1T26 y 1.176 en el 2T26 [1, 9, 11, 15]."
+      },
+      {
+        "kpi": "Ritmo de la planta (t/día)",
+        "valor_anterior": "4.620",
+        "valor_actual": "5.009",
+        "variacion": "+8 %",
+        "comentario": "5.823 en el 3T26 (récord) [1, 10]."
+      },
+      {
+        "kpi": "Ley de cabeza (g/t)",
+        "valor_anterior": "10,5",
+        "valor_actual": "9,5",
+        "variacion": "−10 %",
+        "comentario": "Reservas a 7,09 g/t: la ley baja hacia la media [1, 12]."
+      },
+      {
+        "kpi": "Reservas probadas y probables (Moz de oro)",
+        "valor_anterior": "5,52 (est.)",
+        "valor_actual": "5,85",
+        "variacion": "+6 %",
+        "comentario": "Tras extraer 0,53 Moz en 2025; incluye 0,54 Moz de FDNS [12]."
+      }
+    ],
+    "clientes": "Cuatro clientes principales: fundiciones que compran el concentrado (≈ 2/3 de las onzas) y refinerías y bancos que compran el doré; la empresa dice no depender de ellos porque el oro se vende en un mercado mundial líquido [1]. Hasta junio de 2024 el doré se vendía a Newmont por el offtake (177,9 M en 2024) [1]. No hay poder de precios: el precio es el del mercado (LBMA) y el concentrado paga tratamiento y refino (85 USD/oz en los supuestos de reservas) [12].",
+    "confianza": "Alta",
+    "descripcion": "Lundin Gold (Vancouver) es dueña al 100 % de Fruta del Norte, una mina de oro subterránea en la provincia de Zamora Chinchipe, en el sureste de Ecuador, en producción comercial desde febrero de 2020 [17]. Extrae ≈ 1,8-2,0 Mt de mineral al año a 8-10 g/t de oro, lo muele en su planta (5.500-5.800 t/día) y vende dos productos: concentrado de oro (≈ dos tercios de las onzas) a fundiciones, y doré (oro casi puro) a refinerías [11]. Produce ≈ 500.000 onzas al año y la plata como subproducto, que desde marzo de 2026 es de LunR por un stream [11]. Tiene 2.013 empleados (1.862 fijos en Ecuador) [17] y una campaña de exploración de 85 M USD sobre una concesión con tres yacimientos epitermales de oro (FDN, FDNS, FDN East) y siete pórfidos de cobre y oro [23].",
+    "como_gana_dinero": "Ingresos = onzas vendidas × precio del oro (no hay coberturas). El coste es casi fijo por tonelada (≈ 75 USD/t de planta y administración y ≈ 49 USD/t de minería en los supuestos de reservas [12]), así que el coste por onza depende de la ley y el margen, del precio: con oro a 4.000 USD el coste en efectivo es de 900-960 USD/oz y el AISC de 1.110-1.170 [11]. Las regalías (6 %) y la participación de los trabajadores (3 %) suben con el precio. Cada 100 USD de oro mueven ≈ 50 M USD de ingresos y ≈ 31 M de beneficio neto (estimación propia: 500.000 onzas, −9 % de regalías y participación, −31 % de impuestos). El Estado se queda con el 12 % de los beneficios más el 22 % de impuesto, y con un mínimo del 50 % de los beneficios acumulados [16]. Estacionalidad: el 2T tiene menos caja por el pago anual de impuestos en abril."
+  },
+  "sector": {
+    "definicion": "El mercado relevante es el de la producción minera de oro: Lundin Gold vende onzas a precio de mercado y compite por capital, personal y yacimientos, no por clientes. Se mide como el valor de la producción minera mundial (toneladas × precio medio). Dos fuentes: el USGS da 3.280 t en 2024 y ≈ 3.300 t en 2025, con reservas mundiales de 66.000 t [21]; el World Gold Council, 3.881,6 t de producción minera en los 12 meses a junio de 2026 (965,6 t en el 2T26, +2 %) [20]. La diferencia entre las dos series es de cobertura (el WGC incluye la minería artesanal estimada); se usa el WGC para el dato reciente y el USGS para los años completos.",
+    "tamano": "≈ 527.000 M USD en los 12 meses a junio de 2026 (3.881,6 t a precios LBMA trimestrales de 3.456-4.873 USD/oz) [20]; ≈ 350.000 M en 2025 con los datos del USGS [21]",
+    "unidad_serie": "millones de USD (valor de la producción minera mundial)",
+    "serie": [
+      {
+        "anio": "2024",
+        "tamano": 251825
+      },
+      {
+        "anio": "2025",
+        "tamano": 350121
+      },
+      {
+        "anio": "LTM jun-26",
+        "tamano": 526521
+      }
+    ],
+    "tcac_historico_pct": 39,
+    "tcac_previsto_pct": null,
+    "cr5_pct": null,
+    "estructura": "Fragmentada",
+    "drivers": [
+      {
+        "driver": "Compras de los bancos centrales",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "288,9 t en el 2T26, +62 % sobre el trimestre anterior [20]."
+      },
+      {
+        "driver": "Flujos de los ETF de oro",
+        "efecto": "+/−",
+        "horizonte": "Cíclico",
+        "evidencia": "Salidas de 44,8 t en el 2T26 tras entradas de 225,7 t en el 3T25 [20]."
+      },
+      {
+        "driver": "Precio del oro",
+        "efecto": "+/−",
+        "horizonte": "Cíclico",
+        "evidencia": "LBMA medio de 4.506 USD/oz en el 2T26 (+37 % interanual, −8 % trimestral) [20]; máximo de 5.318 USD en enero de 2026 [22]."
+      },
+      {
+        "driver": "Oferta minera rígida",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Producción mundial de 3.280-3.300 t al año en 2024-2025 pese a duplicarse el precio [21]."
+      },
+      {
+        "driver": "Inflación de costes y regalías ligadas al precio",
+        "efecto": "−",
+        "horizonte": "Cíclico",
+        "evidencia": "La guía de Lundin Gold sube ≈ 150 USD/oz de coste por las regalías y la participación de los trabajadores al pasar de 2.500 a 4.000 USD de oro [11]."
+      }
+    ],
+    "porter": [
+      {
+        "fuerza": "Rivalidad",
+        "intensidad": 2,
+        "justificacion": "No se compite por precio: cada onza se vende al de mercado; la rivalidad es por yacimientos y personal [17]."
+      },
+      {
+        "fuerza": "Poder de los clientes",
+        "intensidad": 1,
+        "justificacion": "Mercado mundial líquido; solo el concentrado paga tratamiento y refino (85 USD/oz en los supuestos de reservas) [12]."
+      },
+      {
+        "fuerza": "Poder de los proveedores",
+        "intensidad": 3,
+        "justificacion": "El Estado ecuatoriano cobra el 5 % de regalía, el 12 % de los beneficios, el 22 % de impuesto y un ajuste soberano para quedarse al menos el 50 % [16]; energía, explosivos y mano de obra local."
+      },
+      {
+        "fuerza": "Amenaza de entrada",
+        "intensidad": 2,
+        "justificacion": "Una mina como Fruta del Norte tardó de 2006 (descubrimiento) a 2020 (producción comercial) [17]."
+      },
+      {
+        "fuerza": "Amenaza de sustitutos",
+        "intensidad": 2,
+        "justificacion": "Para la inversión, el oro compite con bonos y activos digitales; para la joyería, con otros metales. La demanda de bancos centrales no tiene sustituto cercano [20]."
+      }
+    ],
+    "ciclo": {
+      "posicion": "Madurez del ciclo",
+      "comentario": "El precio del oro se ha más que duplicado desde 2023 (1.945 USD/oz de media en 2023 [21]; 4.506 en el 2T26 [20]) y marcó máximos en enero de 2026 (5.318 USD) antes de caer a 4.071 en julio y quedar en 4.160 el 19-oct [22]. Las mineras viven márgenes récord. En 2008-09 el oro subió y las mineras cayeron con la bolsa; en 2013 el oro bajó un 28 % y las mineras perdieron más de la mitad; en 2020 subió; en 2022 las mineras cayeron con los tipos."
+    },
+    "regulacion": "Ecuador: Ley de Minería y Acuerdo de Explotación de Fruta del Norte (diciembre de 2016) con un Acuerdo de Protección de Inversiones que fija el régimen fiscal para la vida de la mina: regalía del 5 % NSR, 12 % de participación del Estado, 22 % de impuesto de sociedades, retención del 5 % sobre dividendos, y un ajuste soberano anual para que el Estado reciba al menos el 50 % de los beneficios acumulados [16, 17]. En septiembre de 2026 el SRI reclamó 154 M USD por el ajuste de 2023; la empresa lo discute [16]. La prima de riesgo país de Ecuador (Caa3) es del 12,9 % [24].",
+    "tendencias": "Las grandes mineras no tienen deuda y compran producción (Newmont y Barrick venden activos; Northern Star, Gold Fields y AngloGold compran) [22]. La exploración vuelve a crecer con el precio: Lundin Gold hace su mayor campaña (133.000 m) y ha encontrado siete pórfidos de cobre y oro cerca de la mina [11, 23]. La minería ilegal en Ecuador y la seguridad son el riesgo social del país [17].",
+    "confianza": "Media"
+  },
+  "competencia": {
+    "cuota_pct": 0.47,
+    "posicion": "Mina de oro subterránea de las de mayor ley del mundo (9,5 g/t en 2025) y ≈ 0,5 % de la producción minera mundial (498.315 onzas, 15,5 t, frente a 3.300 t) [14, 21]. Por coste, en el primer cuartil del sector: AISC de 1.015 USD/oz en 2025 [14, 22].",
+    "competidores": [
+      {
+        "nombre": "Agnico Eagle",
+        "pais": "Canadá",
+        "ticker": "AEM",
+        "ingresos": 14526,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Mayor productor de Canadá; minas de alta calidad en jurisdicciones seguras; cotiza con prima. Margen EBITDA de los últimos 12 meses: 69.9 % [22]."
+      },
+      {
+        "nombre": "Newmont",
+        "pais": "EE. UU.",
+        "ticker": "NEM",
+        "ingresos": 25767,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Mayor productor mundial; primer accionista de Lundin Gold (31,9 %). Margen EBITDA de los últimos 12 meses: 66.2 % [22]."
+      },
+      {
+        "nombre": "Barrick Mining",
+        "pais": "Canadá",
+        "ticker": "B",
+        "ingresos": 20655,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Segundo productor; minas en África, América y Asia; riesgo país alto (Malí). Margen EBITDA de los últimos 12 meses: 62.5 % [22]."
+      },
+      {
+        "nombre": "Kinross Gold",
+        "pais": "Canadá",
+        "ticker": "KGC",
+        "ingresos": 8471,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Vendió Fruta del Norte a Lundin en 2014; minas en EE. UU., Canadá y Mauritania. Margen EBITDA de los últimos 12 meses: 63.6 % [22]."
+      },
+      {
+        "nombre": "Alamos Gold",
+        "pais": "Canadá",
+        "ticker": "AGI",
+        "ingresos": 2228,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Productor mediano de Canadá y México; en crecimiento. Margen EBITDA de los últimos 12 meses: 69.8 % [22]."
+      },
+      {
+        "nombre": "Endeavour Mining",
+        "pais": "Reino Unido",
+        "ticker": "EDV.L",
+        "ingresos": 4753,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Productor de África occidental; riesgo país alto. Margen EBITDA de los últimos 12 meses: 60.3 % [22]."
+      },
+      {
+        "nombre": "Torex Gold",
+        "pais": "Canadá",
+        "ticker": "TXG.TO",
+        "ingresos": 1828,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "Mina principal única en México (ELG y Media Luna): el comparable de una sola mina y un solo país. Margen EBITDA de los últimos 12 meses: 58.2 % [22]."
+      }
+    ],
+    "foso": {
+      "veredicto": "Estrecho",
+      "tendencia": "Estable",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 0,
+          "evidencia": "No aplica a una mina."
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 0,
+          "evidencia": "Los clientes compran oro a precio de mercado."
+        },
+        {
+          "fuente": "Intangibles (marca, patentes, licencias)",
+          "puntuacion": 3,
+          "evidencia": "Acuerdo de explotación con estabilidad fiscal para la vida de la mina y concesiones de ≈ 54.000 ha en el cinturón de Zamora [7, 8]."
+        },
+        {
+          "fuente": "Ventaja en costes",
+          "puntuacion": 4,
+          "evidencia": "Ley de 9,5 g/t frente a ≈ 1-3 g/t de las minas típicas; AISC de 1.015 USD/oz en 2025 y margen EBITDA del 69 % frente al 58-70 % de los grandes [10, 3]."
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 2,
+          "evidencia": "Planta e infraestructura ya construidas (≈ 5.500-5.800 t/día) a las que se suman FDNS y FDN East sin una mina nueva [6]."
+        }
+      ]
+    },
+    "amenazas": "El foso es geológico y fiscal, no comercial: dura lo que duren la ley alta (la de reservas es 7,09 g/t, por debajo de lo que se extrae hoy) y el acuerdo con el Estado [12, 16]. Lo puede erosionar un cambio de régimen en Ecuador o una interpretación agresiva del ajuste soberano (ya hay una reclamación de 154 M), la minería ilegal en la concesión y un accidente en la presa de relaves o la mina subterránea [16, 17]. La probabilidad de un cambio fiscal grave en 3-5 años es media: el acuerdo tiene arbitraje internacional, pero el Estado ya ha discutido la cuenta.",
+    "confianza": "Media"
+  },
+  "financieros": {
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 733.3,
+        "coste_ventas": 377.6,
+        "gastos_generales": 34.6,
+        "ebitda": 426.3,
+        "amortizaciones": 107.5,
+        "ebit": 318.7,
+        "resultado_financiero": -61.6,
+        "bai": 257.1,
+        "impuestos": 35.7,
+        "minoritarios": 0,
+        "beneficio_neto": 221.4,
+        "gastos_financieros": 50.9,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 0.94,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 234.6
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 815.7,
+        "coste_ventas": 445.9,
+        "gastos_generales": 34.9,
+        "ebitda": 467.3,
+        "amortizaciones": 130.6,
+        "ebit": 336.7,
+        "resultado_financiero": -159.4,
+        "bai": 177.3,
+        "impuestos": 103.7,
+        "minoritarios": 0,
+        "beneficio_neto": 73.6,
+        "gastos_financieros": 240.8,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 0.31,
+        "dpa": 0.2,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 236.7
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 902.5,
+        "coste_ventas": 467.3,
+        "gastos_generales": 44.8,
+        "ebitda": 526,
+        "amortizaciones": 136.6,
+        "ebit": 389.4,
+        "resultado_financiero": -104.4,
+        "bai": 285,
+        "impuestos": 105.6,
+        "minoritarios": 0,
+        "beneficio_neto": 179.5,
+        "gastos_financieros": 85.3,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 0.75,
+        "dpa": 0.4,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 239.2
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 1193.1,
+        "coste_ventas": 489.7,
+        "gastos_generales": 75.7,
+        "ebitda": 777.6,
+        "amortizaciones": 137,
+        "ebit": 640.6,
+        "resultado_financiero": -6.5,
+        "bai": 634.1,
+        "impuestos": 208.1,
+        "minoritarios": 0,
+        "beneficio_neto": 426.1,
+        "gastos_financieros": 266.5,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 1.76,
+        "dpa": 0.6,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 241.4
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 1782.9,
+        "coste_ventas": 556.6,
+        "gastos_generales": 123.9,
+        "ebitda": 1235.7,
+        "amortizaciones": 135,
+        "ebit": 1100.7,
+        "resultado_financiero": 22.9,
+        "bai": 1123.5,
+        "impuestos": 331.4,
+        "minoritarios": 0,
+        "beneficio_neto": 792.2,
+        "gastos_financieros": 0,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 3.27,
+        "dpa": 2.75,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 242.5
+      }
+    ],
+    "ltm": {
+      "periodo": "LTM jun-26",
+      "fecha_fin": "2026-06-30",
+      "ingresos": 2018.8,
+      "ebitda": 1446.4,
+      "ebit": 1314.5,
+      "beneficio_neto": 917.2,
+      "bpa": 3.8,
+      "dpa": 7.04,
+      "dpa_extraordinario": 3.09,
+      "fcf": 963.8,
+      "participadas_en_ebitda": null,
+      "no_recurrentes_en_ebitda": null
+    },
+    "cambios_perimetro": [],
+    "comentario": "Los ingresos pasaron de 733,3 M USD en 2021 a 1.782,9 M en 2025 (TCAC del 24,9 %) con la producción casi plana: 428.514 onzas en 2021 y 498.315 en 2025 [1, 5]. El motor es el precio del oro: el realizado subió de 1.772 USD/oz en 2021 a 3.594 en 2025 y a 4.518 en los nueve primeros meses de 2026 [1, 5, 10]. El volumen subió por la ampliación de la planta (de 3.878 t/día en 2021 a 5.009 en 2025 y 5.614 en 2026), con la ley bajando de 10,6 a 9,5 g/t [1, 5, 10]. El EBITDA pasó del 58,1 % de los ingresos en 2021 al 69,3 % en 2025: el coste en efectivo por onza solo subió de 632 a 838 USD (regalías y participación de los trabajadores suben con el precio) mientras el precio se duplicaba [1, 5]. En 2025 los gastos corporativos (64,4 M) incluyen 48,5 M de pagos en acciones revalorizados por la subida de la acción [1]. El beneficio de 2022 (73,6 M) y 2024 está deformado por el coste del stream y el offtake con Newmont (gastos financieros de 240,8 M en 2022 y 266,5 M en 2024, compensados en parte por ganancias de derivados) [2, 3].",
+    "ajustes": "Cifras publicadas. El BPA ajustado de la empresa excluye las variaciones de valor del stream y el offtake (hasta 2024), del stream de plata con LunR (desde 2026) y la pérdida de valor de las acciones de LunR repartidas: 1,07 USD en 2021, 0,53 en 2022, 0,86 en 2023, 1,76 en 2024 y 3,29 en 2025 (igual al publicado, sin ajustes) [1, 2, 3, 5]. En el 2T 2026 el publicado (0,91) incluye una ganancia de derivados de 126,7 M y una pérdida de 74,6 M en las acciones de LunR; el ajustado es 0,84 [6]. El LTM a junio de 2026 se da en base ajustada (EBITDA 1.446,4 M y beneficio 917,2 M; publicado 935,1 M) y el dividendo en especie de LunR (747 M, 3,09 USD por acción) va como extraordinario [6].",
+    "confianza": "Alta"
+  },
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "3T24",
+        "ingresos": 323.1,
+        "crecimiento_pct": 53,
+        "crecimiento_organico_pct": null,
+        "ebitda": 220.5,
+        "margen_ebitda_pct": 68.2,
+        "bpa": 0.57,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "4T24",
+        "ingresos": 341.8,
+        "crecimiento_pct": 79.2,
+        "crecimiento_organico_pct": null,
+        "ebitda": 232.2,
+        "margen_ebitda_pct": 67.9,
+        "bpa": 0.54,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1T25",
+        "ingresos": 356.3,
+        "crecimiento_pct": 57.2,
+        "crecimiento_organico_pct": null,
+        "ebitda": 241.5,
+        "margen_ebitda_pct": 67.8,
+        "bpa": 0.64,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "2T25",
+        "ingresos": 452.9,
+        "crecimiento_pct": 50.3,
+        "crecimiento_organico_pct": null,
+        "ebitda": 318.8,
+        "margen_ebitda_pct": 70.4,
+        "bpa": 0.82,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "3T25",
+        "ingresos": 447.1,
+        "crecimiento_pct": 38.4,
+        "crecimiento_organico_pct": null,
+        "ebitda": 311.7,
+        "margen_ebitda_pct": 69.7,
+        "bpa": 0.86,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "4T25",
+        "ingresos": 526.6,
+        "crecimiento_pct": 54.1,
+        "crecimiento_organico_pct": null,
+        "ebitda": 363.8,
+        "margen_ebitda_pct": 69.1,
+        "bpa": 0.97,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1T26",
+        "ingresos": 567.4,
+        "crecimiento_pct": 59.2,
+        "crecimiento_organico_pct": null,
+        "ebitda": 423.9,
+        "margen_ebitda_pct": 74.7,
+        "bpa": 1.13,
+        "vs_consenso": "Inferior"
+      },
+      {
+        "periodo": "2T26",
+        "ingresos": 477.7,
+        "crecimiento_pct": 5.5,
+        "crecimiento_organico_pct": null,
+        "ebitda": 347,
+        "margen_ebitda_pct": 72.6,
+        "bpa": 0.84,
+        "vs_consenso": null
+      }
+    ],
+    "ultima_presentacion": "EBITDA ajustado y BPA ajustado de la empresa [1, 6, 8]. En el 1T26 los ingresos (567,4 M USD) quedaron 9,9 M por debajo de lo esperado según la prensa financiera; no se ha encontrado el consenso de BPA previo de los demás trimestres. En el 2T26 (6-ago-2026) vendió 110.385 onzas a 4.359 USD (el ajuste de las ventas a precio provisional restó 166 USD por onza), con coste en efectivo de 1.016 USD/oz y AISC de 1.176; el flujo libre cayó a 96 M por el pago anual de impuestos y participación del Estado (221 M, frente a 95 M en 2025) [9]. La dirección mantuvo la guía de 2026 (475.000-525.000 onzas; AISC de 1.110-1.170 USD/oz a 4.000 USD de oro), anunció que juntará la mina de FDNS y la ampliación de la planta en una sola decisión de inversión a finales de 2026 y que empezará a recomprar acciones [9]. El 8-oct-2026 publicó la producción del 3T: 153.736 onzas (récord), 148.326 vendidas a 4.299 USD; 392.472 onzas en nueve meses [10]. Resultados del 3T el 4-nov-2026 [10]. Las transcripciones de las conferencias no están abiertas (Seeking Alpha de pago): no se sabe qué evitó contestar la dirección.",
+    "confianza": "Alta"
+  },
+  "balance": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "activo_total": 1685.1,
+        "activo_corriente": 528.2,
+        "pasivo_corriente": 311,
+        "pasivo_total": 870.6,
+        "fondo_comercio": 0,
+        "intangibles": 0,
+        "inmovilizado_material": 1042.2,
+        "existencias": 84.9,
+        "clientes": 167.7,
+        "proveedores": 68,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 262.6,
+        "deuda_financiera": 740,
+        "arrendamientos": 0,
+        "patrimonio_neto": 814.5,
+        "minoritarios": 0,
+        "reservas": -180.7
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 1668.9,
+        "activo_corriente": 635.3,
+        "pasivo_corriente": 440.5,
+        "pasivo_total": 816.8,
+        "fondo_comercio": 0,
+        "intangibles": 0,
+        "inmovilizado_material": 964.8,
+        "existencias": 89.8,
+        "clientes": 169.1,
+        "proveedores": 71.4,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 363.4,
+        "deuda_financiera": 668,
+        "arrendamientos": 0,
+        "patrimonio_neto": 852.1,
+        "minoritarios": 0,
+        "reservas": -154.2
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 1468.2,
+        "activo_corriente": 533.9,
+        "pasivo_corriente": 187,
+        "pasivo_total": 512.4,
+        "fondo_comercio": 0,
+        "intangibles": 0,
+        "inmovilizado_material": 878.9,
+        "existencias": 89.4,
+        "clientes": 163.5,
+        "proveedores": 74.8,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 268,
+        "deuda_financiera": 305.6,
+        "arrendamientos": 0,
+        "patrimonio_neto": 955.8,
+        "minoritarios": 0,
+        "reservas": -69.6
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 1527.5,
+        "activo_corriente": 674.5,
+        "pasivo_corriente": 215.5,
+        "pasivo_total": 311.2,
+        "fondo_comercio": 0,
+        "intangibles": 0,
+        "inmovilizado_material": 828.7,
+        "existencias": 88.2,
+        "clientes": 233.6,
+        "proveedores": 109.9,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 349.2,
+        "deuda_financiera": 0,
+        "arrendamientos": 0,
+        "patrimonio_neto": 1216.3,
+        "minoritarios": 0,
+        "reservas": 212.6
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 1787.2,
+        "activo_corriente": 983.2,
+        "pasivo_corriente": 388.5,
+        "pasivo_total": 423,
+        "fondo_comercio": 0,
+        "intangibles": 0,
+        "inmovilizado_material": 774.8,
+        "existencias": 92.9,
+        "clientes": 260.1,
+        "proveedores": 159.7,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 630.2,
+        "deuda_financiera": 0,
+        "arrendamientos": 0,
+        "patrimonio_neto": 1364.1,
+        "minoritarios": 0,
+        "reservas": 340.9
+      }
+    ],
+    "vencimientos": [],
+    "liquidez": "Caja de 507,1 M USD a 30-jun-2026 y circulante de 444,7 M; sin deuda financiera desde 2024 [6]. La línea de crédito rotatoria no aparece dispuesta en el balance.",
+    "rating": "Sin rating",
+    "coste_deuda_pct": null,
+    "vida_media_anios": null,
+    "otros_pasivos": "Stream de plata con LunR (cerrado el 28-may-2026): pasivo financiero a valor razonable de 690,3 M USD a 30-jun-2026 (26,4 M a corto); se liquida entregando el 100 % de la plata pagable hasta 12,2 Moz, el 50 % hasta otros 7,8 Moz y el 7,5 % después, con un pago del 10 % del precio de contado (luego 20 % y 30 %) [6]. Las reservas tienen 8,9 Moz de plata, por debajo del primer tramo [12]. Impuestos a pagar de 178,5 M (pago anual en abril) [6]. Ajuste soberano: el SRI reclama 73 M más 81 M de multas (154 M sin intereses) por 2023; la empresa lo recurre y no lo ha provisionado [16]. Compromisos de capital de 47,6 M [6], provisión de restauración de 8,9 M [6] y regalías del 5 % al Estado y del 1 % a terceros [6].",
+    "comentario": "La deuda del proyecto (préstamo, stream de oro y offtake, 740 M USD en 2021) se pagó entre 2021 y 2024; la recompra del stream y el offtake a Newmont en junio de 2024 costó 261 M de «finance charge» y 101 M de amortización [1, 2]. Desde entonces la caja neta crece (630,2 M a fin de 2025) y casi todo el flujo libre se reparte. El circulante comercial (clientes + existencias − proveedores) es de 193,3 M en 2025 (10,8 % de las ventas): los cobros de concentrado a precio provisional pesan. En 2026 el patrimonio cayó a 544 M por el dividendo en especie de LunR (747 M) y los dividendos en efectivo (571 M en el semestre) [6].",
+    "confianza": "Alta"
+  },
+  "flujos": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 417.8,
+        "capex": 63.1,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 0,
+        "recompras": 0,
+        "emision_acciones": 18.6,
+        "intereses_en_financiacion": 86.3
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 426.1,
+        "capex": 60.1,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 47,
+        "recompras": 0,
+        "emision_acciones": 11.3,
+        "intereses_en_financiacion": 96.6
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 519.4,
+        "capex": 53.5,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 94.9,
+        "recompras": 0,
+        "emision_acciones": 14.2,
+        "intereses_en_financiacion": 202.4
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 662.4,
+        "capex": 93.5,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 143.8,
+        "recompras": 0,
+        "emision_acciones": 22.1,
+        "intereses_en_financiacion": 264.7
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 1023,
+        "capex": 97.2,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 663.8,
+        "recompras": 0,
+        "emision_acciones": 18.9,
+        "intereses_en_financiacion": 0
+      }
+    ],
+    "comentario": "La conversión en caja es alta: flujo operativo de 1.023,0 M USD en 2025 frente a un EBITDA de 1.235,7 M, con impuestos pagados al año siguiente (los de 2025, 221 M en abril de 2026) [1, 9]. La inversión es baja para una mina: 97,2 M en 2025 (5,5 % de las ventas), casi todo de mantenimiento (presas de relaves, equipos); el AISC incluye ≈ 75-95 M de inversión de mantenimiento al año en 2026-2028 [1, 11]. El flujo libre de la empresa fue de 925,8 M en 2025 (3,84 USD por acción) y de 444,5 M en el primer semestre de 2026 [1, 6]. De 2021 a 2024 la caja fue a pagar la deuda del proyecto (≈ 615 M de amortización y ≈ 650 M de intereses y cargos del stream); desde 2025, a dividendos (663,8 M en 2025 y 570,7 M en el semestre) [1, 6]. Lo que viene de crecimiento (FDNS, ampliación de la planta) no tiene presupuesto publicado.",
+    "confianza": "Alta"
+  },
+  "calidad": {
+    "auditor": "PricewaterhouseCoopers LLP (Vancouver)",
+    "anios_auditor": null,
+    "opinion": "Favorable (sin salvedades) sobre las cuentas de 2025 [1]",
+    "comentario": "Cuentas sencillas: una mina, un país, sin fondo de comercio ni compras. Lo complejo son los instrumentos a valor razonable: el stream de oro y el offtake con Newmont hasta 2024 (ganancias y pérdidas de derivados de −137 a +244 M al año) y, desde mayo de 2026, el stream de plata con LunR, que cambiará de valor cada trimestre con el precio de la plata [2, 3, 6]. Los ingresos de concentrado se reconocen a precio provisional y se ajustan después (en el 2T26 restaron 166 USD/oz) [9]. Los pagos en acciones se liquidan en efectivo y se revalorizan con la acción (48,5 M en 2025) [1]. El tipo impositivo efectivo (29,5 % en 2025) incluye el 22 % de impuesto, el 12 % de participación del Estado y la retención del 5 % sobre dividendos [1]. Altman, Piotroski y Beneish del motor se leen con cuidado en 2021-2024 por los derivados del stream.",
+    "senales": [
+      {
+        "senal": "Ajuste soberano reclamado por el SRI",
+        "nivel": "Media",
+        "comentario": "154 M USD por 2023 (73 M más multas); no provisionado; puede repetirse en 2024-2025 con más beneficio [16]."
+      },
+      {
+        "senal": "Stream de plata a valor razonable",
+        "nivel": "Baja",
+        "comentario": "690 M de pasivo que mueve el resultado cada trimestre; el BPA ajustado lo excluye [6]."
+      },
+      {
+        "senal": "Ventas a precio provisional",
+        "nivel": "Baja",
+        "comentario": "Ajustes de −166 USD/oz (2T26) y +46 USD/oz (3T26) [9, 10]."
+      },
+      {
+        "senal": "Pagos en acciones liquidados en efectivo",
+        "nivel": "Baja",
+        "comentario": "48,5 M en 2025 por la revalorización de la acción; deforma los gastos corporativos [1]."
+      }
+    ],
+    "confianza": "Alta"
+  },
+  "rentabilidad": {
+    "comentario": "Con el WACC del 14,7 % (alto por la prima de Ecuador), Lundin Gold crea valor desde que la mina funciona a pleno: ROIC del 21,2 % en 2021, 16,5 % en 2022 y 22,8 % en 2023, y del 46,3 % y 96,9 % en 2024-2025 [1, 2, 3]. El salto no viene de mejor gestión sino de dos cosas mecánicas: el oro (de 1.772 a 3.594 USD/oz realizados entre 2021 y 2025, con costes por onza casi planos) y la amortización del capital invertido, que baja de 1.292 a 800 M porque la mina se deprecia y no hay inversiones nuevas grandes [1, 5]. Es rotación y margen a la vez (margen neto del 30 % al 44 %, rotación de 0,44 a 1,08). A precios de oro de 2021-2023 el diferencial ROIC − WACC sería de solo 2-8 puntos. Frente a las grandes (Agnico, Newmont), el margen EBITDA del 69 % es de los más altos del sector por la ley de 9,5 g/t [1, 22]. El ROIC incremental no tiene sentido aquí: el capital baja mientras el beneficio sube.",
+    "confianza": "Media"
+  },
+  "capital": {
+    "politica": "Dividendo fijo de 0,30 USD por trimestre (≈ 300 M al año) más uno variable de al menos el 50 % del flujo libre normalizado del trimestre anterior menos el fijo; en 2026 ha pagado el 100 % [9, 13]. El 2T26 declaró 1,08 USD (0,30 + 0,78) [13]. Recompra (NCIB) de hasta 12.086.020 acciones hasta el 2-mar-2027; la de 2025 no se usó y en septiembre de 2026 se cancelaron las primeras 28.400 [18, 19]. En junio de 2026 repartió en especie las 50.505.051 acciones de LunR (747 M) que recibió por el stream de plata [6].",
+    "adquisiciones": [
+      {
+        "anio": "2014",
+        "objetivo": "Fruta del Norte (compra a Kinross)",
+        "importe": 240,
+        "ev_ebitda": null,
+        "financiacion": "Ampliaciones de capital",
+        "resultado": "Mina en producción comercial desde febrero de 2020; reservas de 5,85 Moz a fin de 2025 [12, 17]."
+      }
+    ],
+    "comentario": "La dirección no ha comprado nada desde Fruta del Norte: el capital va a la mina, a exploración (85 M en 2026) y al accionista. La compra de 2014 por 240 M USD es una de las mejores del sector: la mina ha producido ≈ 2,9 Moz y tiene más reservas que al empezar [12, 17]. El ROIC de 2025 (EBIT tras impuestos sobre ≈ 1.000 M de capital invertido) supera el 70 %, porque el capital es el coste histórico de construcción ya amortizado en parte. La cesión del stream de plata a cambio de acciones de LunR repartidas al accionista no cambia el valor total: lo separa (y la plata deja de ser de Lundin Gold) [6]. Las acciones crecieron de 234,6 M diluidas en 2021 a 242,5 M en 2025 (+0,8 % al año) por opciones y los derechos antidilución de Newmont [1, 5].",
+    "confianza": "Alta"
+  },
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "Jamie Beck",
+        "cargo": "Presidente y consejero delegado",
+        "desde": "2025",
+        "participacion_pct": null,
+        "trayectoria": "Consejero delegado de Filo Corp. seis años: descubrimiento de Filo del Sol y venta a BHP y Lundin Mining por ≈ 4.500 M USD en enero de 2025. En el grupo Lundin desde 2009; participó en la compra de Fruta del Norte y en la negociación fiscal con Ecuador [27]."
+      },
+      {
+        "nombre": "Chester See",
+        "cargo": "Director financiero",
+        "desde": null,
+        "participacion_pct": null,
+        "trayectoria": "Director financiero durante el pago de la deuda del proyecto (2021-2024) y la política de dividendos; remuneración total de 1,11 M USD en 2025 [25]."
+      },
+      {
+        "nombre": "Terry Smith",
+        "cargo": "Director de operaciones (persona cualificada de reservas)",
+        "desde": null,
+        "participacion_pct": null,
+        "trayectoria": "Responsable de la ampliación de la planta a 5.500 t/día (terminada en el 1T25) y del récord de 5.823 t/día del 3T26; firma las reservas [6, 25]."
+      },
+      {
+        "nombre": "Jack Lundin",
+        "cargo": "Presidente del consejo (no ejecutivo)",
+        "desde": "2022",
+        "participacion_pct": null,
+        "trayectoria": "Miembro de la familia Lundin (Nemesia, 26,3 %); consejero desde 2022; 93,4 % de votos a favor en 2026 [25, 26]."
+      },
+      {
+        "nombre": "Andre Oliveira",
+        "cargo": "Vicepresidente de exploración",
+        "desde": null,
+        "participacion_pct": null,
+        "trayectoria": "Dirige la campaña de 133.000 m de 2026 y los descubrimientos de FDNS, FDN East y los pórfidos [6]."
+      },
+      {
+        "nombre": "Ron Hochstein",
+        "cargo": "Consejero delegado saliente (2015-2025)",
+        "desde": "2015",
+        "participacion_pct": null,
+        "trayectoria": "Construyó la mina y la llevó a producción comercial en 2020; salió el 7-nov-2025 a otro puesto del grupo Lundin [27]."
+      }
+    ],
+    "historial_guidance": [
+      {
+        "anio": "2021",
+        "guia": "380.000-420.000 oz; AISC 770-830 USD/oz",
+        "real": "428.514 oz; AISC 762",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2023",
+        "guia": "425.000-475.000 oz (revisada al alza a 450.000-485.000)",
+        "real": "481.274 oz",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2024",
+        "guia": "Producción y AISC de la guía 2024",
+        "real": "502.029 oz (por encima); AISC 875 USD/oz, en línea",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2025",
+        "guia": "475.000-525.000 oz (elevada durante el año); costes con oro a 2.500 USD",
+        "real": "498.315 oz; AISC 1.015 USD/oz con oro realizado a 3.594",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2026",
+        "guia": "475.000-525.000 oz; AISC 1.110-1.170 USD/oz a 4.000 USD",
+        "real": "392.472 oz en nueve meses (en camino)",
+        "cumplida": "Parcial"
+      }
+    ],
+    "comentario": "La dirección cumple: ha alcanzado o superado la guía de producción todos los años desde 2021 [1, 3, 11]. El cambio de consejero delegado (Hochstein → Beck, noviembre de 2025) fue ordenado y dentro del grupo Lundin, con el apoyo de los dos grandes accionistas [27]; Beck viene de la exploración (Filo), lo que encaja con la estrategia de crecer por exploración, y suma un riesgo: más gasto en exploración y en una ampliación sin presupuesto publicado. El equipo técnico (operaciones, exploración) sigue. No hay plan de sucesión publicado.",
+    "confianza": "Media"
+  },
+  "gobierno": {
+    "consejo": [
+      {
+        "nombre": "Jack Lundin",
+        "cargo": "Presidente",
+        "tipo": "Independiente",
+        "desde": "2022",
+        "comisiones": "—"
+      },
+      {
+        "nombre": "Jamie Beck",
+        "cargo": "Consejero delegado",
+        "tipo": "Ejecutivo",
+        "desde": "2025",
+        "comisiones": "—"
+      },
+      {
+        "nombre": "Ashley Heppenstall",
+        "cargo": "Consejero coordinador (Lead Director)",
+        "tipo": "Independiente",
+        "desde": "2015",
+        "comisiones": "Auditoría, Remuneración, Gobierno (presidente)"
+      },
+      {
+        "nombre": "Ian Gibbs",
+        "cargo": "Consejero",
+        "tipo": "Independiente",
+        "desde": "2005",
+        "comisiones": "Auditoría (presidente), Remuneración (presidente), Gobierno"
+      },
+      {
+        "nombre": "Carmel Daniele",
+        "cargo": "Consejera",
+        "tipo": "Independiente",
+        "desde": "2015",
+        "comisiones": "Remuneración"
+      },
+      {
+        "nombre": "Gillian Davidson",
+        "cargo": "Consejera",
+        "tipo": "Independiente",
+        "desde": "2021",
+        "comisiones": "Gobierno; HSES (presidenta)"
+      },
+      {
+        "nombre": "Melissa Harmon",
+        "cargo": "Consejera",
+        "tipo": "Independiente",
+        "desde": "2023",
+        "comisiones": "Auditoría (desde mayo de 2026); HSES"
+      },
+      {
+        "nombre": "Scott Langley",
+        "cargo": "Consejero (empleado de Newmont)",
+        "tipo": "Dominical",
+        "desde": "2023",
+        "comisiones": "—"
+      },
+      {
+        "nombre": "Erin Workman",
+        "cargo": "Consejera (empleada de Newmont)",
+        "tipo": "Dominical",
+        "desde": "2026",
+        "comisiones": "—"
+      }
+    ],
+    "presidente_ceo_separados": true,
+    "presidente_ejecutivo": false,
+    "consejero_coordinador": true,
+    "una_accion_un_voto": true,
+    "operaciones_vinculadas_relevantes": true,
+    "variable_ligado_rentabilidad": true,
+    "auditoria_independiente": true,
+    "insiders_sin_operaciones": false,
+    "accionista_control": true,
+    "presidente_vinculado_control": true,
+    "cambios_cupula_24m": 1,
+    "voto_remuneracion_pct": 98.37,
+    "voto_remuneracion_contra_pct": 1.63,
+    "voto_remuneracion_contra_libre_pct": null,
+    "voto_cupula_pct": null,
+    "remuneracion_ceo": {
+      "anio": "2025",
+      "total": 2.27,
+      "fijo": 0.53,
+      "variable_corto": 0.55,
+      "variable_largo": 1.12,
+      "ratio_salario_medio": null
+    },
+    "remuneracion": "Remuneración de 2025 del consejero delegado saliente (año completo): 2,27 M USD (salario 0,53; variable anual 0,55; acciones y opciones 1,12; otros 0,07); Beck cobró 0,61 M por dos meses [25]. El variable a largo plazo son PSU que dependen del TSR relativo frente a un grupo de mineras (los de 2022 se pagaron al 180 % por estar en el cuartil alto) y RSU y opciones [25]. El coste total de los directivos es el 0,4 % de los ingresos de 2025 [25]. Voto consultivo: 98,37 % a favor en 2026 [26]. Premia el TSR relativo, que en una minera depende sobre todo del oro y de la ley; no hay métricas de reservas ni de coste por onza publicadas en la parte larga.",
+    "accionistas": [
+      {
+        "nombre": "Newmont Corporation",
+        "pct": 31.88,
+        "tipo": "Industrial (persona de control)",
+        "variacion": "Estable; ejerce derechos antidilución (252.592 acciones en 2025) [1, 25]"
+      },
+      {
+        "nombre": "Nemesia S.à r.l. (trusts de la familia Lundin)",
+        "pct": 26.26,
+        "tipo": "Familia (persona de control)",
+        "variacion": "Sin cambios conocidos [25]"
+      },
+      {
+        "nombre": "Capital libre",
+        "pct": 41.86,
+        "tipo": "Flotante",
+        "variacion": "—"
+      }
+    ],
+    "insiders": [],
+    "control_y_defensas": "Newmont (31,9 %) y Nemesia, de la familia Lundin (26,3 %), son personas de control: juntas tienen el 58,1 % y deciden la junta [1, 25]. Newmont nombra dos consejeros (Langley y Workman, no independientes) y tiene derechos antidilución [25]. El presidente, Jack Lundin, es de la familia de control aunque el consejo lo califica de independiente [25]. Hay una sola clase de acciones. Operaciones vinculadas: el stream y el offtake con Newmont (recomprados en 2024 por 330 M), alquiler de oficinas a una empresa ligada a un consejero (0,9 M en 2025) y el stream de plata con LunR, sociedad del entorno Lundin repartida a los accionistas [1, 25]. El propio informe anual avisa de que el control puede desanimar una OPA con prima [1].",
+    "alertas": [
+      "Reclamación del SRI de 154 M USD por el ajuste soberano de 2023, recurrida y sin provisión [16].",
+      "Accionistas de control (Newmont y familia Lundin, 58,1 %): el minoritario no decide y una OPA con prima es improbable sin ellos [1, 25].",
+      "Cambio de consejero delegado en noviembre de 2025 [27]."
+    ],
+    "confianza": "Media"
+  },
+  "consenso": {
+    "guidance": "Guía 2026 (8-dic-2025, mantenida el 6-ago y el 8-oct-2026): 475.000-525.000 onzas a 5.500 t/día y 8,3 g/t; coste en efectivo de 900-960 USD/oz y AISC de 1.110-1.170 a 4.000 USD de oro; inversión de mantenimiento de 75-90 M y exploración de 85 M [10, 11]. Perspectiva 2027-2028: 475.000-525.000 onzas cada año, AISC de 1.110-1.180 (2027) y 1.060-1.170 (2028) y mantenimiento de 80-95 M y 50-85 M [11]. Decisión conjunta sobre FDNS y la ampliación de la planta a finales de 2026, sin cifras de inversión todavía [11].",
+    "estimaciones": [
+      {
+        "periodo": "2026e",
+        "ingresos": 2290.6,
+        "ebitda": 1629.4,
+        "ebit": 1525.1,
+        "bpa": 4.31,
+        "dpa": 3.8,
+        "fuente": "MarketScreener (CAD pasados a USD al 1,4097) [30]"
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 2464.4,
+        "ebitda": 1703.9,
+        "ebit": 1659.2,
+        "bpa": 4.3,
+        "dpa": 3.26,
+        "fuente": "MarketScreener (CAD pasados a USD al 1,4097) [30]"
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 2445.2,
+        "ebitda": 1759.9,
+        "ebit": 1658.5,
+        "bpa": 4.49,
+        "dpa": 3.22,
+        "fuente": "MarketScreener (CAD pasados a USD al 1,4097) [30]"
+      }
+    ],
+    "recomendaciones": {
+      "n_analistas": 13,
+      "comprar": 3,
+      "mantener": 9,
+      "vender": 1,
+      "po_medio": 67.71,
+      "po_min": 58.17,
+      "po_max": 73.77
+    },
+    "revisiones": "Las estimaciones bajan con el oro: el BPA de 2027 de Yahoo pasó de 6,37 CAD hace 90 días a 6,02 hace 30 y 5,84 hoy (−8 %), y el de 2026 de 5,99 a 5,75 (−4 %) [29]. Entre julio y septiembre de 2026 recortaron objetivo Jefferies (90 → 88 CAD), Desjardins (105 → 100, comprar), CIBC (137 → 131) y RBC (98 → 89) [35]; ATB Cormark subió a «outperform» en mayo [35] y UBS empezó con «comprar» en mayo. Recomendaciones de Yahoo: 1 compra fuerte, 2 compras, 9 mantener y 1 vender; MarketScreener da «mantener» con 13 analistas y objetivo medio de 95,45 CAD [29, 30]. Dos fuentes de estimaciones (MarketScreener y Yahoo); se usa MarketScreener porque da tres años y el dividendo.",
+    "base_ebitda": "NIIF",
+    "ajuste_ebitda_pct_ventas": null,
+    "confianza": "Media"
+  },
+  "bolsa": {
+    "tipo_rentabilidad": "total (con dividendos)",
+    "rentabilidades": [
+      {
+        "periodo": "En el año",
+        "accion_pct": -11.2,
+        "indice_pct": 16.3,
+        "sector_pct": 7.5
+      },
+      {
+        "periodo": "1 año",
+        "accion_pct": -11.1,
+        "indice_pct": 21.6,
+        "sector_pct": 13.2
+      },
+      {
+        "periodo": "3 años (anual.)",
+        "accion_pct": 83.9,
+        "indice_pct": 26.1,
+        "sector_pct": 47.2
+      },
+      {
+        "periodo": "5 años (anual.)",
+        "accion_pct": 59.3,
+        "indice_pct": 14,
+        "sector_pct": 26.8
+      },
+      {
+        "periodo": "10 años (anual.)",
+        "accion_pct": 35.1,
+        "indice_pct": 12.6,
+        "sector_pct": 15.6
+      }
+    ],
+    "anual": [
+      {
+        "anio": "2016",
+        "accion_pct": 38.4,
+        "indice_pct": 20.3
+      },
+      {
+        "anio": "2017",
+        "accion_pct": -13.9,
+        "indice_pct": 9.6
+      },
+      {
+        "anio": "2018",
+        "accion_pct": 10.2,
+        "indice_pct": -7.8
+      },
+      {
+        "anio": "2019",
+        "accion_pct": 66.9,
+        "indice_pct": 21.8
+      },
+      {
+        "anio": "2020",
+        "accion_pct": 31.2,
+        "indice_pct": 5.3
+      },
+      {
+        "anio": "2021",
+        "accion_pct": -4.7,
+        "indice_pct": 28.1
+      },
+      {
+        "anio": "2022",
+        "accion_pct": 30.6,
+        "indice_pct": -6.3
+      },
+      {
+        "anio": "2023",
+        "accion_pct": 29.6,
+        "indice_pct": 11.9
+      },
+      {
+        "anio": "2024",
+        "accion_pct": 91.6,
+        "indice_pct": 20.7
+      },
+      {
+        "anio": "2025",
+        "accion_pct": 291.3,
+        "indice_pct": 28.9
+      }
+    ],
+    "beta": 1.32,
+    "volatilidad_pct": 55.9,
+    "max_drawdown_pct": -37.9,
+    "tramo_drawdown": "2026-02-27 → 2026-06-10",
+    "posicion_corta_pct": 0.49,
+    "contexto": {
+      "movimiento": {
+        "fecha": "2026-10-19",
+        "var_1m_pct": 0,
+        "var_3m_pct": 18.8,
+        "var_6m_pct": -18,
+        "var_12m_pct": -11.5,
+        "dist_max_52s_pct": -25.1,
+        "dist_min_52s_pct": 24.8,
+        "dist_max_historico_pct": -25.1,
+        "tendencia": "bajista",
+        "volatilidad_60d_pct": 54,
+        "avisos": []
+      },
+      "movimientos_fuertes": [
+        {
+          "periodo": "ene 2026",
+          "var_pct": -13.9,
+          "causa": "Desplome del oro del 30-ene-2026 (−10,8 % en el día tras el máximo de 5.318 USD); cayó todo el sector [28, 42].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "feb-may 2026",
+          "var_pct": -27.1,
+          "causa": "Corrección del oro y de las mineras hasta el 19-may (mayor caída de un mes de la herramienta); el 21-abr bajaron el índice de oro un 5,8 % y el oro un 2,3 %. Sin hecho propio negativo: la producción del 1T fue según guía [28, 41].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "may-ago 2026",
+          "var_pct": 34.8,
+          "causa": "Rebote del oro hasta ≈ 4.700 USD y resultados del 2T (6-ago) con dividendo de 1,08 USD y descubrimientos de pórfidos y FDNS [41, 42].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "oct 2026",
+          "var_pct": 10.5,
+          "causa": "Producción récord del 3T (153.736 onzas, 8-oct) y subida del oro: +10,5 % el 13-oct y +5,4 % el 15-oct [10, 42].",
+          "veredicto": "no cambia",
+          "condicion": null
+        }
+      ],
+      "noticias": [
+        {
+          "fecha": "2026-09-08",
+          "tipo": "regulatorio",
+          "hecho": "El SRI de Ecuador notifica una liquidación de 154 M USD (73 + 81 de recargos) por el ajuste soberano de 2023; la empresa la recurre y no la provisiona. Pesa ≈ 1 % de la capitalización; el riesgo es que se repita en 2024-2025 [41].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-10-08",
+          "tipo": "resultados",
+          "hecho": "Producción del 3T de 153.736 onzas (récord) y 392.472 en nueve meses: guía 2026 de 475.000-525.000 onzas en la parte alta [10].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-07-21",
+          "tipo": "otras",
+          "hecho": "Dos pórfidos de cobre y oro nuevos (siete en el distrito) y primer recurso de Sandia previsto para principios de 2027 [41].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-06-12",
+          "tipo": "recompra / dividendo",
+          "hecho": "Reparto de LunR Royalties (stream de plata) a los accionistas como dividendo en especie (≈ 3,09 USD por acción) [41].",
+          "veredicto": "no cambia",
+          "condicion": null
+        }
+      ],
+      "proximos_resultados": "2026-11-04",
+      "veredicto": "no cambia",
+      "condicion": null,
+      "comentario": "La acción está un 25 % por debajo de su máximo de 52 semanas (y de 5 años) y un 25 % por encima del mínimo, en tendencia bajista (−3 % bajo la media de 200 sesiones) y sin avisos P de la herramienta. Todos los movimientos fuertes de 12 meses los explica el oro, que la acción amplifica ≈ 2 veces, más la producción récord del 3T [10, 28]. No hay colocaciones, ampliaciones ni decisiones con fecha que puedan mover el precio más de un 5 % en contra: la reclamación del SRI va por la vía de recurso, sin fecha. Los resultados del 4-nov no retrasan nada (regla 11). Veredicto: no cambia."
+    },
+    "comentario": "Rentabilidades en CAD con dividendos. La acción multiplicó por 12 en 2021-2025 (TSR de 1.208 sobre 100) frente a 182 del S&P/TSX [28]: subió un 291 % en 2025 con el oro (de 2.388 a 3.300 USD/oz de media) y el paso a repartir casi todo el flujo libre. En 2026 va un −11,2 % frente al +16,3 % del TSX 60 y el +7,5 % del índice de oro: el oro bajó de 5.318 USD (enero) a 4.160, y la acción amplifica el oro ≈ 2 veces (beta frente al TSX 60 de 1,32) [28]. Posición corta del 0,49 % de las acciones (1,19 M a 30-sep-2026, CanadianInsider)."
+  },
+  "multiplos_historicos": {
+    "serie": [
+      {
+        "anio": "2021",
+        "precio_cierre": 7.79,
+        "precio_cierre_cad": 9.88,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2022",
+        "precio_cierre": 9.26,
+        "precio_cierre_cad": 12.54,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2023",
+        "precio_cierre": 11.86,
+        "precio_cierre_cad": 15.68,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2024",
+        "precio_cierre": 20.2,
+        "precio_cierre_cad": 29.06,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2025",
+        "precio_cierre": 78.86,
+        "precio_cierre_cad": 108.08,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      }
+    ],
+    "comentario": "Cierres de Toronto en CAD pasados a USD con el tipo del Banco de Canadá de cada 31 de diciembre [28, 36]. El PER de los últimos 12 meses saltó de 11,5 veces en 2024 a 24,0 en 2025 porque el precio se multiplicó por 3,7 y el beneficio por 1,9: al cierre de 2025 el mercado ya descontaba el oro de 2026. El PER sobre el beneficio del año siguiente (la base de la regla a 12 meses) va de 6,1 (2024) a 17,8 (2025). La prima frente a la historia la explican la caja neta, el reparto del 100 % del flujo libre y los descubrimientos (FDNS, FDN East, pórfidos); el riesgo, que el precio del oro de hoy no se mantenga.",
+    "confianza": "Media"
+  },
+  "comparables": {
+    "criterio": "Productoras de oro cotizadas con datos completos en Yahoo: grandes (Agnico Eagle, Newmont, Barrick, Gold Fields), medianas (Kinross, Alamos, Endeavour, OceanaGold) y de una mina principal en un país (Torex, México). Fuera: DPM Metals (estimaciones incoherentes en Yahoo), AngloGold y Equinox (repetirían perfiles), las de royalties (Franco-Nevada, Wheaton: otro modelo) y las de cobre. Todas en USD al cierre del 19-oct-2026; PER de los próximos 12 meses en la divisa del consenso [31]. Mediana del PER: 9,8 veces.",
+    "empresas": [
+      {
+        "nombre": "Agnico Eagle",
+        "ticker": "AEM",
+        "pais": "CA",
+        "capitalizacion": 94999,
+        "ev_ventas": 6.32,
+        "ev_ebitda_ltm": 9,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 15.7,
+        "crecimiento_pct": 3.1,
+        "margen_ebitda_pct": 69.9,
+        "roic_pct": null,
+        "dn_ebitda": -0.3,
+        "fcf_yield_pct": 4.5
+      },
+      {
+        "nombre": "Newmont",
+        "ticker": "NEM",
+        "pais": "US",
+        "capitalizacion": 124346,
+        "ev_ventas": 4.69,
+        "ev_ebitda_ltm": 7.1,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 11.9,
+        "crecimiento_pct": 6.8,
+        "margen_ebitda_pct": 66.2,
+        "roic_pct": null,
+        "dn_ebitda": -0.2,
+        "fcf_yield_pct": 7.1
+      },
+      {
+        "nombre": "Barrick Mining",
+        "ticker": "B",
+        "pais": "CA",
+        "capitalizacion": 66560,
+        "ev_ventas": 3.16,
+        "ev_ebitda_ltm": 5.1,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 9.8,
+        "crecimiento_pct": 13,
+        "margen_ebitda_pct": 62.5,
+        "roic_pct": null,
+        "dn_ebitda": -0.1,
+        "fcf_yield_pct": 7.6
+      },
+      {
+        "nombre": "Kinross Gold",
+        "ticker": "KGC",
+        "pais": "CA",
+        "capitalizacion": 28055,
+        "ev_ventas": 3.09,
+        "ev_ebitda_ltm": 4.9,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 9,
+        "crecimiento_pct": 5.7,
+        "margen_ebitda_pct": 63.6,
+        "roic_pct": null,
+        "dn_ebitda": -0.4,
+        "fcf_yield_pct": 10.7
+      },
+      {
+        "nombre": "Alamos Gold",
+        "ticker": "AGI",
+        "pais": "CA",
+        "capitalizacion": 13387,
+        "ev_ventas": 5.8,
+        "ev_ebitda_ltm": 8.3,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 11.7,
+        "crecimiento_pct": 21.1,
+        "margen_ebitda_pct": 69.8,
+        "roic_pct": null,
+        "dn_ebitda": -0.3,
+        "fcf_yield_pct": 1
+      },
+      {
+        "nombre": "Endeavour Mining",
+        "ticker": "EDV.L",
+        "pais": "GB",
+        "capitalizacion": 13116,
+        "ev_ventas": 2.72,
+        "ev_ebitda_ltm": 4.5,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 8.3,
+        "crecimiento_pct": 11.2,
+        "margen_ebitda_pct": 60.3,
+        "roic_pct": null,
+        "dn_ebitda": -0.1,
+        "fcf_yield_pct": 13.4
+      },
+      {
+        "nombre": "Torex Gold",
+        "ticker": "TXG.TO",
+        "pais": "CA",
+        "capitalizacion": 4835,
+        "ev_ventas": 2.61,
+        "ev_ebitda_ltm": 4.5,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 7.7,
+        "crecimiento_pct": 6.1,
+        "margen_ebitda_pct": 58.2,
+        "roic_pct": null,
+        "dn_ebitda": -0.1,
+        "fcf_yield_pct": 12.8
+      },
+      {
+        "nombre": "OceanaGold",
+        "ticker": "OGC.TO",
+        "pais": "CA",
+        "capitalizacion": 5930,
+        "ev_ventas": 2.16,
+        "ev_ebitda_ltm": 3.7,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 10.7,
+        "crecimiento_pct": 0.2,
+        "margen_ebitda_pct": 58.3,
+        "roic_pct": null,
+        "dn_ebitda": -0.4,
+        "fcf_yield_pct": 11.8
+      },
+      {
+        "nombre": "Gold Fields",
+        "ticker": "GFI",
+        "pais": "ZA",
+        "capitalizacion": 32669,
+        "ev_ventas": 2.91,
+        "ev_ebitda_ltm": 4.6,
+        "ev_ebitda_ntm": null,
+        "per_ntm": 7.7,
+        "crecimiento_pct": null,
+        "margen_ebitda_pct": 62.7,
+        "roic_pct": null,
+        "dn_ebitda": 0.1,
+        "fcf_yield_pct": 12.8
+      }
+    ],
+    "comentario": "Lundin Gold cotiza a ≈ 16x el BPA de los próximos 12 meses con el oro a 4.150 USD, frente a una mediana de 9,8x de las productoras de oro [31]. La prima la justifican la ley (≈ 8 g/t, de las más altas del mundo), el AISC bajo, la caja neta y el reparto del 100 % del flujo libre; la penalizan una sola mina en un solo país (Ecuador, Caa3) y una vida de reservas de ≈ 11-12 años. Torex (una mina principal en México) y OceanaGold son las más parecidas por concentración. El EV/EBITDA de los últimos 12 meses está más alineado con el grupo porque el de Lundin Gold incluye el oro alto del 1S26.",
+    "confianza": "Media"
+  },
+  "transacciones": {
+    "operaciones": [
+      {
+        "fecha": "2024-12",
+        "objetivo": "De Grey Mining (Hemi, Australia; proyecto sin producción)",
+        "comprador": "Northern Star Resources",
+        "ev": null,
+        "ev_ventas": null,
+        "ev_ebitda": null,
+        "prima_pct": 37.1,
+        "excluir": false,
+        "comentario": "≈ 5.000 M AUD; sin EBITDA (proyecto) [37]."
+      },
+      {
+        "fecha": "2024-09",
+        "objetivo": "Centamin (Sukari, Egipto)",
+        "comprador": "AngloGold Ashanti",
+        "ev": 2480,
+        "ev_ventas": null,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Valor de la operación de 2.480 M USD; múltiplo no publicado en la fuente [38]."
+      },
+      {
+        "fecha": "2025-05",
+        "objetivo": "Gold Road Resources (50 % de Gruyere, Australia)",
+        "comprador": "Gold Fields",
+        "ev": null,
+        "ev_ventas": null,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "≈ 3.700 M AUD; múltiplo no publicado en la fuente [39]."
+      },
+      {
+        "fecha": "2014-12",
+        "objetivo": "Fruta del Norte (proyecto)",
+        "comprador": "Lundin Gold (Fortress Minerals)",
+        "ev": 240,
+        "ev_ventas": null,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Compra a Kinross por 240 M USD; proyecto sin producción [41]."
+      }
+    ],
+    "comentario": "Las compras de minas de oro se pagan por onzas y por valor neto de los activos, no por EBITDA: ninguna de las fuentes publica el múltiplo. Sirven para el control: con Newmont (31,9 %) y la familia Lundin (26,3 %) dentro, una OPA sobre Lundin Gold solo puede venir de ellos o con su acuerdo, y Newmont está vendiendo activos, no comprando [37, 38, 39]. Las transacciones no pesan en la valoración.",
+    "confianza": "Baja"
+  },
+  "dcf": {
+    "anios": [
+      {
+        "periodo": "2026e",
+        "crecimiento_pct": 30.7,
+        "margen_ebitda_pct": 73.1,
+        "amortizacion_pct_ventas": 5.7,
+        "capex_pct_ventas": 5.2,
+        "nwc_pct_ventas": 9,
+        "tasa_impositiva_pct": 31,
+        "fijo": true
+      },
+      {
+        "periodo": "2027e",
+        "crecimiento_pct": -10.9,
+        "margen_ebitda_pct": 71.5,
+        "amortizacion_pct_ventas": 6.6,
+        "capex_pct_ventas": 9,
+        "nwc_pct_ventas": 9,
+        "tasa_impositiva_pct": 31,
+        "fijo": false
+      },
+      {
+        "periodo": "2028e",
+        "crecimiento_pct": 0,
+        "margen_ebitda_pct": 71.5,
+        "amortizacion_pct_ventas": 6.6,
+        "capex_pct_ventas": 8.5,
+        "nwc_pct_ventas": 9,
+        "tasa_impositiva_pct": 31,
+        "fijo": false
+      },
+      {
+        "periodo": "2029e",
+        "crecimiento_pct": -6,
+        "margen_ebitda_pct": 70.5,
+        "amortizacion_pct_ventas": 6.8,
+        "capex_pct_ventas": 6.5,
+        "nwc_pct_ventas": 9,
+        "tasa_impositiva_pct": 31,
+        "fijo": false
+      },
+      {
+        "periodo": "2030e",
+        "crecimiento_pct": -4.3,
+        "margen_ebitda_pct": 69.5,
+        "amortizacion_pct_ventas": 6.8,
+        "capex_pct_ventas": 6,
+        "nwc_pct_ventas": 9,
+        "tasa_impositiva_pct": 31,
+        "fijo": false
+      },
+      {
+        "periodo": "2031e",
+        "crecimiento_pct": -2.2,
+        "margen_ebitda_pct": 68.5,
+        "amortizacion_pct_ventas": 6.8,
+        "capex_pct_ventas": 6,
+        "nwc_pct_ventas": 9,
+        "tasa_impositiva_pct": 31,
+        "fijo": false
+      },
+      {
+        "periodo": "2032e",
+        "crecimiento_pct": -2.3,
+        "margen_ebitda_pct": 67.5,
+        "amortizacion_pct_ventas": 6.8,
+        "capex_pct_ventas": 6,
+        "nwc_pct_ventas": 9,
+        "tasa_impositiva_pct": 31,
+        "fijo": false
+      },
+      {
+        "periodo": "2033e",
+        "crecimiento_pct": -2.4,
+        "margen_ebitda_pct": 66.5,
+        "amortizacion_pct_ventas": 6.8,
+        "capex_pct_ventas": 6,
+        "nwc_pct_ventas": 9,
+        "tasa_impositiva_pct": 31,
+        "fijo": false
+      },
+      {
+        "periodo": "2034e",
+        "crecimiento_pct": -2.4,
+        "margen_ebitda_pct": 65.5,
+        "amortizacion_pct_ventas": 6.8,
+        "capex_pct_ventas": 6.5,
+        "nwc_pct_ventas": 9,
+        "tasa_impositiva_pct": 31,
+        "fijo": false
+      },
+      {
+        "periodo": "2035e",
+        "crecimiento_pct": -2.4,
+        "margen_ebitda_pct": 64.5,
+        "amortizacion_pct_ventas": 6.8,
+        "capex_pct_ventas": 6.8,
+        "nwc_pct_ventas": 9,
+        "tasa_impositiva_pct": 31,
+        "fijo": false
+      }
+    ],
+    "wacc": {
+      "tasa_libre_pct": 5.15,
+      "beta": 1.1,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 3.5,
+      "coste_deuda_pct": 7,
+      "tasa_impositiva_pct": 31,
+      "peso_deuda_pct": 0
+    },
+    "terminal": {
+      "metodo": "gordon",
+      "crecimiento_pct": -3,
+      "multiplo_salida": 5
+    },
+    "etapa2": {
+      "usar": false,
+      "anios": 10,
+      "margen_final_pct": null,
+      "justificacion": null
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "Los ingresos son onzas vendidas × precio del oro. 2026e es casi real (nueve meses publicados: 374.019 oz vendidas a 4.518 USD) [10]. Desde 2027 el oro queda plano en 4.150 USD/oz, el cierre del 19-oct, y la producción sigue la guía (475.000-525.000 oz en 2026-2028) [11]; después baja un 2-6 % al año con la ley del plan de mina (la reserva media es de 7,09 g/t frente a los 9,5 g/t de 2025) [12]. La plata, vendida a LunR, no entra.",
+      "margenes": "Margen EBITDA del 71,5 % en 2027-2028: coste en efectivo de 900-960 USD/oz de la guía más regalía (5 % + 1 %) y participación de los trabajadores, que suben con el precio, y gastos generales y exploración (85 M) [11]. Baja un punto al año desde 2029 por la menor ley (más coste por onza) [12]. En 2025 fue del 69,3 % con el oro a 3.594 [1].",
+      "inversion": "Inversión de mantenimiento de 75-90 M en 2026, 80-95 en 2027 y 50-85 en 2028, más el desarrollo de FDNS y FDN East y la exploración capitalizada: 9 % de las ventas en 2027 y 6-7 % después [11]. No incluimos una ampliación de planta ni un proyecto de cobre: la decisión llegará a final de 2026 sin cifras todavía [11].",
+      "wacc": "Coste del capital del 14,7 %, sin deuda: bono de EE. UU. a 10 años del 5,15 % [33] + beta de 1,10 × 5,5 % (la de Damodaran para metales preciosos, 1,37 sin deuda corregida por caja en 2026 y 1,11 de media en 2020-2024 [34]; la nuestra frente al TSX 60 es 1,32 [28]) + 3,5 % de prima por Ecuador (Caa3, prima de riesgo país de 12,9 % [24]; una cuarta parte porque vende en dólares fuera del país, pero con toda la mina, los impuestos y las concesiones allí). Con la prima implícita del mercado (4,2 %) el motor da un 13,3 % [32].",
+      "terminal": "Crecimiento perpetuo del −3 % desde 2035: una mina se agota. Equivale a seguir produciendo con caída suave gracias a los recursos medidos, indicados e inferidos (7,48 + 2,03 Moz, las medidas e indicadas incluyen las reservas) y a la exploración de FDNS y FDN East [12]; es generoso en onzas, pero a un 14,7 % pesa solo el 19 % del valor."
+    },
+    "sostenibilidad": {
+      "puente_ingresos": [
+        {
+          "periodo": "2026e",
+          "volumen_pct": 5,
+          "precio_pct": 22.8,
+          "otros_pct": 2.9,
+          "comentario": "Volumen +5 % (≈ 524.000 oz vendidas frente a ≈ 498.000) y precio realizado +23 % (≈ 4.410 frente a 3.594 USD); el resto, ajustes de concentrado [1, 10]."
+        },
+        {
+          "periodo": "2027e",
+          "volumen_pct": -4.6,
+          "precio_pct": -6,
+          "otros_pct": -0.3,
+          "comentario": "Volumen −4,6 % (500.000 oz, centro de la guía) y oro −6 % (4.150 plano frente a la media de 2026) [11]."
+        },
+        {
+          "periodo": "2028e",
+          "volumen_pct": 0,
+          "precio_pct": 0,
+          "otros_pct": 0,
+          "comentario": "Igual que 2027: guía plana y oro plano [11]."
+        },
+        {
+          "periodo": "2029e",
+          "volumen_pct": -6,
+          "precio_pct": 0,
+          "otros_pct": 0,
+          "comentario": "Menos onzas por la ley (de ≈ 8 a ≈ 7 g/t de las reservas) [12]."
+        },
+        {
+          "periodo": "2030e",
+          "volumen_pct": -4.3,
+          "precio_pct": 0,
+          "otros_pct": 0,
+          "comentario": "Sigue la bajada de ley; FDNS compensa una parte [12]."
+        }
+      ],
+      "mercado_final": null,
+      "veredicto": "Sí",
+      "justificacion": "La proyección no pide crecer: los ingresos de 2027-2035 bajan de media un 2-3 % al año y la inversión (6-9 % de las ventas) cabe de sobra en un flujo libre del 40 % de los ingresos. La calidad de la mina (ley de 9,5 g/t en 2025, AISC de 1.015 USD/oz, primer cuartil del sector) sostiene el margen proyectado [1, 22]. El riesgo no es financiar el crecimiento sino la vida de la mina y el precio del oro, que van en los escenarios."
+    },
+    "lectura": "El DCF da 22,10 USD por acción, un 66 % por debajo del precio. No es un problema de tasa de descuento (con el 13,3 % del mercado sale 23,83) ni de la cola (el valor terminal pesa un 19 %): es que, con el oro de hoy, el flujo libre de ≈ 900 M al año que da la mina durante unos 10-12 años no llega a la capitalización de 15.700 M. Para justificar el precio hace falta un oro de ≈ 10.500 USD/oz o que la exploración (FDNS, FDN East, los pórfidos de cobre y oro) añada varias vidas de mina. El mercado paga hoy esa opción y la de un oro más alto.",
+    "confianza": "Media"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": -5.5,
+        "ajuste_wacc_pp": 0.5,
+        "crecimiento_terminal_pct": -4,
+        "multiplo_salida": null,
+        "perfil": [
+          {
+            "periodo": "2027e",
+            "crecimiento_pp": -18.3,
+            "margen_pp": -5.5
+          }
+        ],
+        "narrativa": "El oro vuelve a 3.300 USD/oz (nivel de mediados de 2025) desde 2027 y se queda ahí: ingresos de 2027 de ≈ 1.650 M, margen EBITDA del 66 %, y Ecuador sube la presión fiscal (WACC +0,5). La producción sigue la guía. Valor de 15,82 USD."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "perfil": [],
+        "narrativa": "Oro plano en 4.150 USD/oz, producción de la guía hasta 2028 y bajada suave después; dividendo con el 100 % del flujo libre normalizado. Valor de 22,10 USD."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 3,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "perfil": [
+          {
+            "periodo": "2027e",
+            "crecimiento_pp": 16.1,
+            "margen_pp": 3
+          }
+        ],
+        "narrativa": "El oro sube a 4.900 USD/oz desde 2027 (≈ la media de 2026 hasta hoy y lo que parece suponer el consenso) y el margen gana 3 puntos. Valor de 27,02 USD: ni con este oro el DCF se acerca al precio."
+      }
+    ],
+    "comentario": "Los escenarios son de precio del oro, que es lo que decide: entre 3.300 y 4.900 USD el valor va de 15,82 a 27,02 USD, todo por debajo del precio de 64,73. Con producción fija, cada 100 USD de oro mueven ≈ 50 M el EBITDA anual y ≈ 0,66 USD el valor por acción. El valor ponderado es de 24,97 USD; asimetría negativa.",
+    "confianza": "Media"
+  },
+  "suma_partes": {
+    "aplica": false,
+    "descuento_holding_pct": 0,
+    "partes": [],
+    "comentario": "No aplica: un solo activo en producción (Fruta del Norte). La exploración del distrito (FDNS, FDN East, Bonza Sur, siete pórfidos de cobre y oro) tiene valor de opción que la proyección recoge solo en parte (producción plana hasta 2028 y caída suave después); sin recursos publicados de los pórfidos no se puede valorar aparte [A, B].",
+    "confianza": "Media"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2026-06-30",
+      "deuda_financiera": 0,
+      "arrendamientos": 0,
+      "caja": 507.1,
+      "minoritarios": 0,
+      "pensiones": 0,
+      "asociadas": 0,
+      "otros_ajustes": 516.7
+    },
+    "rab": null,
+    "referencia_mercado": {
+      "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+      "prima_implicita_pct": 4.2,
+      "fecha": "2026-10",
+      "fuente": "Damodaran, ERPbymonth.xlsx [32]"
+    },
+    "pesos": {
+      "dcf": 45,
+      "comparables": 15,
+      "transacciones": 0,
+      "suma_partes": 0,
+      "escenarios": 40
+    },
+    "objetivo_12m": {
+      "ejercicio": "2028e",
+      "casos": [
+        {
+          "escenario": "Bajista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 2.75,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Oro a 3.300 USD: BPA de 2028e de 2,75 USD, y PER del mínimo de cinco años (6,1 veces, cierre de 2024, cuando el mercado no creía el oro de entonces) [28]."
+        },
+        {
+          "escenario": "Base",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 3.87,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Oro plano en 4.150 USD: BPA de 2028e de 3,87 USD (beneficio de ≈ 940 M), y PER de 14,8 veces (el actual de 16,3 ÷ 1,1)."
+        },
+        {
+          "escenario": "Alcista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 4.84,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Oro a 4.900 USD: BPA de 2028e de 4,84 USD con el mismo PER del base (14,8): ni la historia (mediana de 10,8) ni los comparables (9,8) pagan más."
+        }
+      ],
+      "per_historico": {
+        "base": "adelantado",
+        "actual": 16.3,
+        "mediana_5a": 10.8,
+        "minimo_5a": 6.1,
+        "media_larga": 10.6,
+        "excluidos": "Historia ADELANTADA en USD: cierre de Toronto de cada año en CAD pasado a USD con el tipo del Banco de Canadá del 31 de diciembre [28, 36] ÷ BPA ajustado real del año siguiente [A]; para el cierre de 2025 (78,86 USD), ÷ nuestro 2026e (4,43). Serie: 2020 7,6x; 2021 14,7x; 2022 10,8x; 2023 6,7x; 2024 6,1x; 2025 17,8x. Excluidos 2018 (pérdida en 2019, mina en construcción) y 2019 (2020 con el arranque de la mina y el cierre por la COVID): sin beneficio normal. Mediana y mínimo de 2021-2025; media de 2020-2025. Los PER de 2023-2024 (6-7x) son de valle de valoración (el mercado no se creía el oro de 2.000-2.600 USD) y el de 2025 (17,8x) de pico de precio del oro: se dejan los dos porque la serie es corta. PER actual = precio (91,25 CAD = 64,73 USD, cierre del 19-oct-2026) ÷ nuestro BPA de los próximos 12 meses (3,98 = 0,2 × 2026e 4,43 + 0,8 × 2027e 3,87, con el oro a 4.150 USD). Con solo 2026e sería 14,6x y con solo 2027e 16,7x.",
+        "v2": {
+          "mediana_5a": 13.8,
+          "minimo_5a": 7.3,
+          "media_larga": 14.8,
+          "excluidos": "Historia AL CIERRE (precio de cierre en USD ÷ BPA ajustado del mismo año): 2021 7,3x; 2022 17,5x; 2023 13,8x; 2024 11,5x; 2025 24x. Mediana y mínimo de 2021-2025."
+        }
+      },
+      "comparables_per": {
+        "mediana": 9.8
+      },
+      "consenso": {
+        "bpa_ano1": 4.31,
+        "bpa_ano2": 4.3,
+        "objetivo_medio": 67.71,
+        "objetivo_min": 58.17,
+        "objetivo_max": 73.77,
+        "analistas": 13,
+        "tendencia_3m": "recortes",
+        "fuente": "MarketScreener, 19-oct-2026: BPA 2026e 6,08 CAD y 2027e 6,06 CAD (pasados a USD al 1,4097); objetivo medio de 13 analistas 95,45 CAD (82-104) [30]; Yahoo: BPA 2027e de 6,37 CAD hace 90 días a 5,84 hoy [29]"
+      },
+      "diferencia_consenso": "Nuestro objetivo a 12 meses (50,74 USD = 71,53 CAD) queda un 25 % por debajo del objetivo medio de 13 analistas (95,45 CAD = 67,71 USD; nuestro base, un 15 % por debajo) [30]. La diferencia es casi toda el oro: el consenso supone ≈ 4.700-4.900 USD (BPA de 2027 de 4,30 USD frente a nuestros 3,87) y un PER más alto. Los analistas van bajando: el BPA de 2027 de Yahoo cayó un 8 % en tres meses y Jefferies, Desjardins, CIBC y RBC recortaron objetivo entre julio y septiembre [29, 35]. TD Cowen ya pasó a «mantener» en julio de 2025 [40].",
+      "media": null,
+      "comentario": "El objetivo es el PER sobre el BPA de 2028e, que en una mina sin deuda que reparte todo el flujo libre depende casi solo del oro. La regla v3 da un base de 14,8 veces (el PER actual de 16,3 rebajado un 10 %, porque la mediana adelantada de cinco años es de 10,8) y deja el alcista en el mismo múltiplo. La v2 (historia al cierre) también da Vender (−17,2 %). Lo que dice: aunque el oro se quede donde está, el mercado ya paga hoy un PER por encima de su historia, y sin subida del oro el precio no tiene recorrido."
+    },
+    "comentario": "Los dos métodos dicen lo mismo con distinta intensidad: el DCF (22,10 USD) mide la mina con el oro de hoy y su vida de reservas; el objetivo a 12 meses (50,74) mide lo que el mercado suele pagar por su beneficio. Los comparables (9,8 veces de mediana) dan más que el DCF porque las grandes tienen décadas de reservas y varias minas. Pesos: DCF 45 %, escenarios 40 %, comparables 15 %; las transacciones no pesan (sin múltiplos publicados).",
+    "confianza": "Media"
+  },
+  "catalizadores": {
+    "items": [
+      {
+        "fecha": "2026-11-04",
+        "evento": "Resultados del 3T 2026 y dividendo trimestral",
+        "efecto": "Dividendo del 3T con el oro de 4.299 USD realizados: ≈ 1,0-1,1 USD; primera lectura del recurso de la reclamación del SRI",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2026-12 / 2027-01",
+        "evento": "Guía 2027 y decisión sobre FDNS y la ampliación de planta",
+        "efecto": "Primera cifra de inversión y de producción más allá de 525.000 oz; puede alargar la vida",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2027-02",
+        "evento": "Reservas y recursos a 31-dic-2026",
+        "efecto": "Si reponen las ≈ 0,6 Moz minadas y añaden FDNS y FDN East, la vida de la mina deja de acortarse",
+        "probabilidad": "Alta",
+        "sentido": "+"
+      },
+      {
+        "fecha": "2027 (primer semestre)",
+        "evento": "Primer recurso del pórfido de cobre y oro de Sandia",
+        "efecto": "Opción de un segundo activo en el distrito; sin él, el valor es solo FDN",
+        "probabilidad": "Media",
+        "sentido": "+"
+      },
+      {
+        "fecha": "2026-2027",
+        "evento": "Recurso de la reclamación del SRI por 2023 (154 M) y ajuste soberano de 2024-2025",
+        "efecto": "Si se repite para 2024-2025 con el oro más alto, el coste podría ser varias veces mayor",
+        "probabilidad": "Media",
+        "sentido": "−"
+      },
+      {
+        "fecha": "continuo",
+        "evento": "Precio del oro",
+        "efecto": "Cada 100 USD/oz ≈ 50 M de EBITDA y ≈ 0,15 USD de BPA al año",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "riesgos": {
+    "items": [
+      {
+        "riesgo": "Precio del oro: la acción mueve el doble que el oro y el BPA casi en proporción",
+        "tipo": "Mercado",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−28 % en el DCF con oro a 3.300 USD (bajista: 15,82 frente a 22,10)",
+        "mitigante": "Sin deuda, AISC de ≈ 1.100 USD/oz: gana dinero hasta con oro muy por debajo del actual",
+        "senal": "Oro por debajo de 3.800 USD varias semanas; salidas de ETF de oro"
+      },
+      {
+        "riesgo": "Una sola mina en un solo país (Ecuador, Caa3): régimen fiscal, ajuste soberano y estabilidad política",
+        "tipo": "Regulatorio / país",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−10 a −30 % según el alcance (el ajuste soberano garantiza al Estado ≥ 50 % de los beneficios)",
+        "mitigante": "Contrato de explotación y de protección de inversiones; concesión hasta 2048; economía dolarizada",
+        "senal": "Reclamaciones del SRI para 2024-2025, cambios en la ley de minería o en la regalía"
+      },
+      {
+        "riesgo": "Reclamación del SRI (154 M) por 2023 y posibles ajustes de 2024-2025",
+        "tipo": "Fiscal",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−1 % por 2023; −3 a −5 % si se extiende a 2024-2025 con más beneficio",
+        "mitigante": "Recurso en curso; el puente ya resta la mitad de 2023",
+        "senal": "Resolución del recurso; nota en los resultados del 3T"
+      },
+      {
+        "riesgo": "Vida de la mina: reservas de 5,85 Moz (≈ 11-12 años) y ley a la baja",
+        "tipo": "Operativo",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "El precio exige varias vidas de mina más que las reservas",
+        "mitigante": "Conversión de 0,91 Moz de inferidos en 2025; FDNS, FDN East, Bonza Sur",
+        "senal": "Reservas de 2026 que no reponen lo minado"
+      },
+      {
+        "riesgo": "Valoración: PER de 16,3 veces frente a una mediana adelantada de 10,8 y comparables a 9,8",
+        "tipo": "Valoración",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−16 % ponderado a 12 meses (regla v3)",
+        "mitigante": "Dividendo del 6 % con el oro de hoy",
+        "senal": "PER que no baja aunque el oro baje (señal de exceso)"
+      },
+      {
+        "riesgo": "Presa de relaves, agua y energía hidroeléctrica",
+        "tipo": "Operativo / ESG",
+        "probabilidad": "Baja",
+        "impacto": "Alto",
+        "efecto_valor": "Parada de la única mina: −10 % o más por cada trimestre perdido",
+        "mitigante": "Seguimiento externo y recrecimientos programados",
+        "senal": "Incidencias en la presa; cortes eléctricos en Ecuador"
+      },
+      {
+        "riesgo": "Accionistas de control (Newmont 31,9 %, familia Lundin 26,3 %)",
+        "tipo": "Gobierno",
+        "probabilidad": "Baja",
+        "impacto": "Medio",
+        "efecto_valor": "Sin prima de OPA posible sin ellos",
+        "mitigante": "Reparto del 100 % del flujo libre normalizado",
+        "senal": "Venta de la participación de Newmont (colocación con descuento)"
+      }
+    ],
+    "premortem": "Octubre de 2029: la acción vale un 40 % menos. Lo más probable es que el oro, tras el pico de enero de 2026 (5.318 USD), hubiera seguido bajando hasta los 3.300-3.500 USD con la vuelta de los tipos reales positivos y la venta de oro de los ETF; con el AISC estable, el beneficio por acción cayó de 4,4 a ≈ 2,8 USD y el dividendo variable a la mitad. El PER, que en 2026 estaba en 16 veces por la escasez de minas de primer nivel, volvió a su media de 10-11: los dos efectos juntos restaron más del 40 %. A la vez, Ecuador extendió el ajuste soberano a 2024-2025 y el SRI reclamó varios cientos de millones, y la decisión sobre FDNS se retrasó. Newmont, que vendía activos, colocó su 32 % con descuento. Lo habrían anticipado el oro por debajo de 3.800 USD, las salidas de ETF y una segunda notificación del SRI.",
+    "ia": {
+      "exposicion": "Baja",
+      "sentido": "Neutral",
+      "efecto_valor": "±1-2 % a 3-5 años",
+      "comentario": "La IA no cambia lo que vende Lundin Gold (oro, un bien físico cuyo precio fija el mercado mundial) ni sustituye la mina. Toca solo los costes: planificación de la mina y del procesado, mantenimiento predictivo de la planta, interpretación de los sondeos de exploración y seguridad, donde puede ahorrar algún punto de coste por onza. La empresa no ha publicado proyectos de IA relevantes. Indirectamente, la demanda de electricidad de los centros de datos sube el coste de la energía y el cobre (opción de los pórfidos), un efecto pequeño frente al oro. Señal: una caída del AISC atribuida a automatización o un descubrimiento acelerado por modelos de datos. Riesgo de IA bajo y neutral."
+    },
+    "confianza": "Media"
+  },
+  "esg": {
+    "calificaciones": [],
+    "materialidad": "Tres asuntos mueven las cifras. (1) La presa de relaves: el informe anual la llama el riesgo ambiental más material; cada recrecimiento (quinto en 2025, sexto en 2026) entra en el AISC, y una rotura pararía la mina única [1]. (2) Agua y energía: la electricidad es sobre todo hidroeléctrica de la red de Ecuador y la empresa declara que la sequía puede limitar la planta [1]. (3) Relación con las comunidades de la Amazonía (Zamora Chinchipe): el 93 % de la plantilla es ecuatoriana y el 53 % de comunidades locales y regionales; compras locales de 36 M USD en 2025 [1]. Seguridad: cero accidentes mortales y TRIR de 0,22 en 2025 (−65 %); emisiones de alcance 1 y 2 de 0,10 tCO₂e por onza [1]. No hemos encontrado calificaciones publicadas de MSCI o Sustainalytics.",
+    "controversias": "La principal es fiscal: el 8-sep-2026 el SRI notificó 154 M USD (73 de cuota y 81 de recargos) por el cálculo del ajuste soberano de 2023; la empresa lo recurre [16]. Hay además una demanda antigua de un accionista de Aurelian contra Aurelian, Kinross y Lundin Gold por la compra de 2008 (reclama la devolución de acciones e intereses), que la empresa considera sin fundamento [17]. Sin sanciones ambientales ni accidentes graves en tres años [1].",
+    "confianza": "Media"
+  },
+  "preguntas": {
+    "items": [
+      {
+        "tema": "Vida de la mina",
+        "pregunta": "¿Cuándo publicarán un informe técnico nuevo que sustituya al de 2023, y cuántos años de producción a 500.000 oz dan las reservas y FDNS?",
+        "por_que": "El precio solo se justifica con muchas más onzas que las reservas actuales."
+      },
+      {
+        "tema": "Ecuador",
+        "pregunta": "¿Qué base usa el SRI en la reclamación de 2023 y se aplicaría el mismo criterio a 2024-2025?",
+        "por_que": "Con el oro más alto, el ajuste de 2024-2025 podría ser varias veces el de 2023."
+      },
+      {
+        "tema": "Ampliación",
+        "pregunta": "¿Qué inversión y qué producción tendrán FDNS y la ampliación de la planta que se decide a final de 2026?",
+        "por_que": "Es lo que puede alargar la vida y subir la producción por encima de la guía plana."
+      },
+      {
+        "tema": "Cobre",
+        "pregunta": "¿Qué ley y tamaño esperan para el primer recurso de Sandia y cómo financiarían una mina de pórfido?",
+        "por_que": "Un segundo activo cambiaría el perfil de mina única."
+      },
+      {
+        "tema": "Dividendo",
+        "pregunta": "¿Mantendrán el 100 % del flujo libre normalizado si hay que invertir en FDNS y el cobre?",
+        "por_que": "El dividendo del 6 % sostiene hoy buena parte del interés por la acción."
+      },
+      {
+        "tema": "Newmont",
+        "pregunta": "¿Tiene Newmont intención de vender su 31,9 %?",
+        "por_que": "Una colocación con descuento presionaría el precio y cambiaría el control."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sentimiento": {
+    "tono": "Dividido",
+    "tendencia": "Empeora",
+    "revisadas": [
+      {
+        "plataforma": "Stocktwits ($LUGDF)",
+        "fecha": "2026-09",
+        "n_comentarios": 30,
+        "tono": "Dividido",
+        "resumen": "Entusiasmo en 2025 («la mina verde entre las rojas», +198 % en un año) y, en 2026, menos mensajes: uno celebra un +12,5 % en agosto y otro atribuye la caída del 15 % a dudas sobre el crecimiento y el oro [43]."
+      },
+      {
+        "plataforma": "Seeking Alpha (artículos y titulares)",
+        "fecha": "2026-09",
+        "n_comentarios": 8,
+        "tono": "Positivo",
+        "resumen": "Dos artículos alcistas en tres meses (valor razonable con conversión de recursos; escasez de una mina de primer nivel que se financia sola) y noticias de resultados y dividendos [44]."
+      },
+      {
+        "plataforma": "Prensa financiera y portales (Kalkine, Simply Wall St, Mining.com)",
+        "fecha": "2026-10",
+        "n_comentarios": 25,
+        "tono": "Dividido",
+        "resumen": "«Presión vendedora persistente» y la reclamación fiscal de Ecuador frente a la producción récord del 3T y el dividendo del 6-7 % [42]."
+      }
+    ],
+    "temas": [
+      {
+        "tema": "Dividendo del 6-7 % y caja",
+        "postura": "Alcista",
+        "peso": "Alto",
+        "contraste": "Correcto: el dividendo de 2026 se paga con el 100 % del flujo libre normalizado; baja con el oro (de 1,21 a 1,08 USD por trimestre) [42, 44]."
+      },
+      {
+        "tema": "Producción récord y descubrimientos (FDNS, pórfidos)",
+        "postura": "Alcista",
+        "peso": "Medio",
+        "contraste": "Los datos lo apoyan (153.736 onzas en el 3T26; 7 pórfidos), pero la guía 2027-2028 sigue plana en 475.000-525.000 onzas [42]."
+      },
+      {
+        "tema": "Precio del oro",
+        "postura": "Dividida",
+        "peso": "Alto",
+        "contraste": "Es la variable que decide: la acción ha subido y bajado el doble que el oro en 2026 [43]."
+      },
+      {
+        "tema": "Ecuador y la reclamación del SRI",
+        "postura": "Bajista",
+        "peso": "Medio",
+        "contraste": "Riesgo real (154 M por 2023, sin provisión), pequeño hoy frente a la capitalización (≈ 1 %); lo que importa es si se repite en 2024-2025 [42]."
+      }
+    ],
+    "lectura": "El sentimiento ha pasado del entusiasmo de 2025 a la duda: menos mensajes y titulares de «presión vendedora», con el oro un 22 % por debajo del máximo de enero y la acción un 25 % por debajo del suyo [42, 43]. No hay capitulación: los artículos de Seeking Alpha siguen alcistas y el dividendo sostiene el interés. El sentimiento no aporta un riesgo que el informe no tenga (oro, Ecuador, mina única) y coincide con los analistas, mayoría en «mantener». Opiniones, no datos: ninguna cifra sale de aquí.",
+    "confianza": "Baja"
+  },
+  "fuentes": [
+    {
+      "id": 1,
+      "titulo": "Informe anual 2025: carta, MD&A y estados financieros auditados (2025 y 2024), notas de impuestos, partes vinculadas y compromisos",
+      "editor": "Lundin Gold Inc.",
+      "tipo": "Primaria",
+      "fecha": "2026-02-19",
+      "url": "https://lundingold.com/site/assets/files/111721/lug_2025_annual_report_final_23apr.pdf"
+    },
+    {
+      "id": 2,
+      "titulo": "Informe anual 2024: MD&A y estados financieros (2024 y 2023); recompra del stream y del offtake a Newmont",
+      "editor": "Lundin Gold Inc.",
+      "tipo": "Primaria",
+      "fecha": "2025-02-20",
+      "url": "https://lundingold.com/site/assets/files/111335/2024_annual_report.pdf"
+    },
+    {
+      "id": 3,
+      "titulo": "Informe anual 2023: MD&A y estados financieros (2023 y 2022)",
+      "editor": "Lundin Gold Inc.",
+      "tipo": "Primaria",
+      "fecha": "2024-02-22",
+      "url": "https://lundingold.com/site/assets/files/111106/lug-2023-annual-report-final-revised.pdf"
+    },
+    {
+      "id": 4,
+      "titulo": "Informe anual 2022: MD&A y estados financieros (2022 y 2021); guía 2023",
+      "editor": "Lundin Gold Inc.",
+      "tipo": "Primaria",
+      "fecha": "2023-02-23",
+      "url": "https://lundingold.com/site/assets/files/110885/lug-2022-annual-report.pdf"
+    },
+    {
+      "id": 5,
+      "titulo": "Informe anual 2021: MD&A y estados financieros (2021 y 2020); guía 2021",
+      "editor": "Lundin Gold Inc.",
+      "tipo": "Primaria",
+      "fecha": "2022-02-24",
+      "url": "https://lundingold.com/site/assets/files/110193/2021_lundin_gold_shareholder_report.pdf"
+    },
+    {
+      "id": 6,
+      "titulo": "Informe del 2T 2026: MD&A y estados financieros intermedios a 30-jun-2026 (stream de plata con LunR, dividendo en especie, ajuste soberano)",
+      "editor": "Lundin Gold Inc.",
+      "tipo": "Primaria",
+      "fecha": "2026-08-06",
+      "url": "https://lundingold.com/site/assets/files/111814/q2-2026-shareholder-report.pdf"
+    },
+    {
+      "id": 7,
+      "titulo": "Informe del 1T 2026: MD&A y estados financieros intermedios a 31-mar-2026",
+      "editor": "Lundin Gold Inc.",
+      "tipo": "Primaria",
+      "fecha": "2026-05-06",
+      "url": "https://lundingold.com/site/assets/files/111781/lug_q1_2026_shareholder_report.pdf"
+    },
+    {
+      "id": 8,
+      "titulo": "Informes del 3T 2024, 2T 2025 y 3T 2025: MD&A y estados intermedios (EBITDA y BPA ajustado trimestrales)",
+      "editor": "Lundin Gold Inc.",
+      "tipo": "Primaria",
+      "fecha": "2025-11-05",
+      "url": "https://lundingold.com/site/assets/files/111646/q3_2025_shareholder_report.pdf"
+    },
+    {
+      "id": 9,
+      "titulo": "Lundin Gold Reports Second Quarter 2026 Results",
+      "editor": "Lundin Gold Inc. (nota de prensa)",
+      "tipo": "Primaria",
+      "fecha": "2026-08-06",
+      "url": "https://lundingold.com/news/lundin-gold-reports-second-quarter-2026-results-122856/"
+    },
+    {
+      "id": 10,
+      "titulo": "Lundin Gold Reports Q3 2026 Production of 153,736 Ounces of Gold (ventas, precio realizado, resultados el 4-nov)",
+      "editor": "Lundin Gold Inc. (nota de prensa)",
+      "tipo": "Primaria",
+      "fecha": "2026-10-08",
+      "url": "https://lundingold.com/news/lundin-gold-reports-q3-2026-production-of-153-736-122861/"
+    },
+    {
+      "id": 11,
+      "titulo": "Lundin Gold Provides 2026 Guidance and Strategic Three-Year Outlook",
+      "editor": "Lundin Gold Inc. (nota de prensa)",
+      "tipo": "Primaria",
+      "fecha": "2025-12-08",
+      "url": "https://lundingold.com/news/lundin-gold-provides-2026-guidance-and-strategic-t-122826/"
+    },
+    {
+      "id": 12,
+      "titulo": "Lundin Gold Reports Record Mineral Reserves (reservas y recursos a 31-dic-2025)",
+      "editor": "Lundin Gold Inc. (nota de prensa)",
+      "tipo": "Primaria",
+      "fecha": "2026-02-17",
+      "url": "https://lundingold.com/news/lundin-gold-reports-record-mineral-reserves-and-ex-122831/"
+    },
+    {
+      "id": 13,
+      "titulo": "Lundin Gold Declares Quarterly Dividends of US$1.08 per Share (cálculo del dividendo variable)",
+      "editor": "Lundin Gold Inc. (nota de prensa)",
+      "tipo": "Primaria",
+      "fecha": "2026-08-06",
+      "url": "https://lundingold.com/news/lundin-gold-declares-quarterly-dividends-of-us-1-0-122855/"
+    },
+    {
+      "id": 14,
+      "titulo": "Lundin Gold Reports Fourth Quarter and Full Year 2025 Results",
+      "editor": "Lundin Gold Inc. (nota de prensa)",
+      "tipo": "Primaria",
+      "fecha": "2026-02-19",
+      "url": "https://lundingold.com/news/lundin-gold-reports-fourth-quarter-and-full-year-2-122834/"
+    },
+    {
+      "id": 15,
+      "titulo": "Lundin Gold Reports First Quarter 2026 Results",
+      "editor": "Lundin Gold Inc. (nota de prensa)",
+      "tipo": "Primaria",
+      "fecha": "2026-05-06",
+      "url": "https://lundingold.com/news/lundin-gold-reports-first-quarter-2026-results-122846/"
+    },
+    {
+      "id": 16,
+      "titulo": "Lundin Gold Receives Notice of Assessment Regarding Sovereign Adjustment (SRI, ejercicio 2023)",
+      "editor": "Lundin Gold Inc. (nota de prensa)",
+      "tipo": "Primaria",
+      "fecha": "2026-09-08",
+      "url": "https://lundingold.com/news/lundin-gold-receives-notice-of-assessment-regardin-122858/"
+    },
+    {
+      "id": 17,
+      "titulo": "Annual Information Form 2025 (riesgos, plan de mina, empleados, acuerdos con Ecuador)",
+      "editor": "Lundin Gold Inc.",
+      "tipo": "Primaria",
+      "fecha": "2026-03-20",
+      "url": "https://lundingold.com/site/assets/files/111751/f2025-lug-aif-final.pdf"
+    },
+    {
+      "id": 18,
+      "titulo": "Lundin Gold Share Capital and Voting Rights Update (241.788.662 acciones a 30-sep-2026; recompra de 28.400)",
+      "editor": "Lundin Gold Inc. (nota de prensa)",
+      "tipo": "Primaria",
+      "fecha": "2026-09-30",
+      "url": "https://lundingold.com/news/lundin-gold-share-capital-and-voting-rights-update-122860/"
+    },
+    {
+      "id": 19,
+      "titulo": "Lundin Gold Announces TSX Approval for Renewal of its Normal Course Issuer Bid (hasta 12.086.020 acciones)",
+      "editor": "Lundin Gold Inc. (nota de prensa)",
+      "tipo": "Primaria",
+      "fecha": "2026-02-26",
+      "url": "https://lundingold.com/news/lundin-gold-announces-tsx-approval-for-renewal-of-122836/"
+    },
+    {
+      "id": 20,
+      "titulo": "Gold Demand Trends Q2 2026: resumen ejecutivo (oferta, demanda, producción minera, precio LBMA)",
+      "editor": "World Gold Council",
+      "tipo": "Sectorial",
+      "fecha": "2026-07-30",
+      "url": "https://www.gold.org/download/file/20967/GDT-Q2-2026-Executive-Summary.pdf"
+    },
+    {
+      "id": 21,
+      "titulo": "Mineral Commodity Summaries 2026: Gold (producción y reservas mundiales, precio medio)",
+      "editor": "U.S. Geological Survey",
+      "tipo": "Sectorial",
+      "fecha": "2026-01-30",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-gold.pdf"
+    },
+    {
+      "id": 22,
+      "titulo": "Datos de Yahoo Finance (quoteSummary) de Agnico Eagle, Newmont, Barrick, Kinross, Alamos, Endeavour, Torex, OceanaGold y Gold Fields: ventas, EBITDA y márgenes de los últimos 12 meses",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-19",
+      "url": "https://finance.yahoo.com/"
+    },
+    {
+      "id": 23,
+      "titulo": "Lundin Gold Discovers Two New Copper-Gold Porphyries (siete pórfidos; recurso inicial de Sandia a principios de 2027)",
+      "editor": "Lundin Gold Inc. (nota de prensa)",
+      "tipo": "Primaria",
+      "fecha": "2026-07-21",
+      "url": "https://lundingold.com/news/lundin-gold-discovers-two-new-copper-gold-porphyri-122853/"
+    },
+    {
+      "id": 24,
+      "titulo": "Country Risk Premiums (ctryprem.xlsx, enero de 2026): Ecuador Caa3, prima de riesgo país 12,9 %",
+      "editor": "A. Damodaran (NYU Stern)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-01",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/datasets/ctryprem.xlsx"
+    },
+    {
+      "id": 25,
+      "titulo": "Management Information Circular 2026 (accionistas > 10 %, consejo, comités, remuneración de directivos, tabla resumen)",
+      "editor": "Lundin Gold Inc.",
+      "tipo": "Primaria",
+      "fecha": "2026-03-20",
+      "url": "https://lundingold.com/site/assets/files/111741/2026_circular_-_conformed.pdf"
+    },
+    {
+      "id": 26,
+      "titulo": "Lundin Gold Announces Voting Results from Annual Meeting (8-may-2026)",
+      "editor": "Lundin Gold Inc. (nota de prensa)",
+      "tipo": "Primaria",
+      "fecha": "2026-05-08",
+      "url": "https://lundingold.com/news/lundin-gold-announces-voting-results-from-annual-m-122847/"
+    },
+    {
+      "id": 27,
+      "titulo": "Lundin Gold Announces CEO Transition (Ron Hochstein → Jamie Beck desde el 7-nov-2025)",
+      "editor": "Lundin Gold Inc. (nota de prensa)",
+      "tipo": "Primaria",
+      "fecha": "2025-09-11",
+      "url": "https://lundingold.com/news/lundin-gold-announces-ceo-transition-celebrating-122817/"
+    },
+    {
+      "id": 28,
+      "titulo": "Históricos diarios de LUG.TO, XIU.TO (S&P/TSX 60) y XGD.TO (S&P/TSX Global Gold), con dividendos",
+      "editor": "Yahoo Finance (herramientas/bolsa.mjs)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-19",
+      "url": "https://finance.yahoo.com/quote/LUG.TO/history"
+    },
+    {
+      "id": 29,
+      "titulo": "Yahoo Finance quoteSummary de LUG.TO: consenso de BPA y ventas (en CAD), recomendaciones y objetivos",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-19",
+      "url": "https://finance.yahoo.com/quote/LUG.TO/analysis"
+    },
+    {
+      "id": 30,
+      "titulo": "Lundin Gold Inc.: estimaciones anuales 2024-2028 (ventas, EBITDA, EBIT, beneficio, BPA, dividendo, en CAD); 13 analistas, objetivo medio 95,45 CAD",
+      "editor": "MarketScreener",
+      "tipo": "Analistas",
+      "fecha": "2026-10-19",
+      "url": "https://www.marketscreener.com/quote/stock/LUNDIN-GOLD-INC-1410059/finances/"
+    },
+    {
+      "id": 31,
+      "titulo": "Yahoo Finance quoteSummary de los comparables (precio, capitalización, caja, deuda, EBITDA, ventas, FCF, BPA estimado)",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-19",
+      "url": "https://finance.yahoo.com/"
+    },
+    {
+      "id": 32,
+      "titulo": "Implied ERP by month (ERPbymonth.xlsx): octubre de 2026, 4,20 % (T12m with sustainable payout)",
+      "editor": "A. Damodaran (NYU Stern)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx"
+    },
+    {
+      "id": 33,
+      "titulo": "Daily Treasury Par Yield Curve Rates 2026: 10 años 5,15 % el 19-oct-2026",
+      "editor": "U.S. Department of the Treasury",
+      "tipo": "Primaria",
+      "fecha": "2026-10-19",
+      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/2026/all?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
+    },
+    {
+      "id": 34,
+      "titulo": "Betas by sector, global (betaGlobal.xls, enero de 2026): Precious Metals, beta sin deuda corregida por caja 1,37; media 2020-2024 1,11",
+      "editor": "A. Damodaran (NYU Stern)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-01",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/datasets/betaGlobal.xls"
+    },
+    {
+      "id": 35,
+      "titulo": "Lundin Gold (TSE:LUG) stock jumps 8.6%: cambios de objetivo de CIBC (131), Desjardins (100), Jefferies (88) y RBC (89) en julio-septiembre de 2026",
+      "editor": "MarketBeat",
+      "tipo": "Analistas",
+      "fecha": "2026-10-09",
+      "url": "https://www.marketbeat.com/instant-alerts/price-lundin-gold-tse-lug-stock-jumps-86-heres-why-2026-10-09/"
+    },
+    {
+      "id": 36,
+      "titulo": "Valet API, FXUSDCAD (tipos diarios; cierres de 2018-2025 y 19-oct-2026: 1,4097)",
+      "editor": "Banco de Canadá",
+      "tipo": "Primaria",
+      "fecha": "2026-10-19",
+      "url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json"
+    },
+    {
+      "id": 37,
+      "titulo": "Northern Star to buy De Grey in deal valued at A$5 billion (prima del 37,1 %)",
+      "editor": "BNN Bloomberg",
+      "tipo": "Prensa",
+      "fecha": "2024-12-01",
+      "url": "https://bnnbloomberg.ca/business/international/2024/12/01/northern-star-to-buy-de-grey-in-deal-valued-at-a5-billion"
+    },
+    {
+      "id": 38,
+      "titulo": "Mining M&A in 2024: gold dominates (AngloGold Ashanti–Centamin, 2.480 M USD)",
+      "editor": "S&P Global Market Intelligence",
+      "tipo": "Sectorial",
+      "fecha": "2025-02",
+      "url": "https://spglobal.com/market-intelligence/en/news-insights/research/mining-mna-in-2024-gold-dominates-mna-space-for-2nd-consecutive-year"
+    },
+    {
+      "id": 39,
+      "titulo": "A glittering year for M&A in the gold sector (Gold Fields–Gold Road, ≈ 3.700 M AUD)",
+      "editor": "Corrs Chambers Westgarth",
+      "tipo": "Sectorial",
+      "fecha": "2025-12",
+      "url": "https://corrs.com.au/insights/a-glittering-year-for-m-a-in-the-gold-sector"
+    },
+    {
+      "id": 40,
+      "titulo": "Globe says TD Cowen cuts Lundin Gold to hold (17-jul-2025) e historial de recomendaciones de 2025",
+      "editor": "Stockwatch",
+      "tipo": "Prensa",
+      "fecha": "2025-07-17",
+      "url": "https://www.stockwatch.com/News/Item/Z-C!LUG-3710639/C/LUG"
+    },
+    {
+      "id": 41,
+      "titulo": "Notas de prensa de Lundin Gold de 2025-2026 (dividendos, reservas, stream de plata, SRI, pórfidos, producción)",
+      "editor": "Lundin Gold Inc.",
+      "tipo": "Primaria",
+      "fecha": "2026-10-08",
+      "url": "https://lundingold.com/news/2026/"
+    },
+    {
+      "id": 42,
+      "titulo": "Rastreador de noticias del repositorio (herramientas/noticias.mjs --meses 12): titulares de 12 meses sobre LUG",
+      "editor": "Repositorio de análisis",
+      "tipo": "Prensa",
+      "fecha": "2026-10-20",
+      "url": "informes/lundin-gold-2026-10-20/notas/noticias.txt"
+    },
+    {
+      "id": 43,
+      "titulo": "Stocktwits, flujo de mensajes de $LUGDF (ago-2025 a sep-2026)",
+      "editor": "Stocktwits",
+      "tipo": "Foros y redes",
+      "fecha": "2026-10-20",
+      "url": "https://api.stocktwits.com/api/2/streams/symbol/LUGDF.json"
+    },
+    {
+      "id": 44,
+      "titulo": "Seeking Alpha: titulares y artículos sobre Lundin Gold (jul-oct 2026: «Fair Value, Resource Conversion, And Improved Operations Offer Upside», «The Scarcity Value Of A Self-Funding Tier 1 Mine»)",
+      "editor": "Seeking Alpha",
+      "tipo": "Foros y redes",
+      "fecha": "2026-09-28",
+      "url": "https://seekingalpha.com/api/sa/combined/LUGDF.xml"
+    },
+    {
+      "id": 45,
+      "titulo": "Gold Spot, futuros GC=F y cotización USD/CAD (cierre del 19-oct-2026: oro ≈ 4.160 USD/oz)",
+      "editor": "Yahoo Finance (herramientas del repositorio)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-19",
+      "url": "https://finance.yahoo.com/quote/GC%3DF/"
+    }
+  ],
+  "calc": {
+    "version": 4,
+    "etiquetas": {
+      "margen_bruto": "M. bruto",
+      "margen_bruto_largo": "Margen bruto",
+      "dias_base": "sobre el coste de ventas"
+    },
+    "recomendacion": {
+      "recomendacion": "Vender",
+      "regla": "Vender",
+      "regla_absoluta": "Vender",
+      "regla_relativa": "Vender",
+      "coincide": true,
+      "conviccion": "Media",
+      "conviccion_sugerida": "Alta",
+      "conviccion_razones": [
+        "las dos reglas dan Vender, rentabilidad del -55,3 % (-53,1 % con la prima del mercado) y el precio pide 21,0 puntos más de crecimiento que el caso base"
+      ],
+      "reglas_discrepan": false,
+      "relativo": {
+        "prima_implicita_pct": 4.2,
+        "wacc": 13.27,
+        "ke": 13.27,
+        "dcf": 23.83,
+        "dcf_min": 23.19,
+        "dcf_max": 24.51,
+        "valor_objetivo": 26.42,
+        "alcista": 29.17,
+        "bajista": 16.94,
+        "mercado": "S&P 500 (prima implícita de Damodaran, T12m with sustainable payout)",
+        "fecha": "2026-10",
+        "potencial_pct": -59.2,
+        "rentabilidad_total_pct": -53.1,
+        "asimetria": -0.74
+      },
+      "objetivo_mercado_txt": " · con la prima implícita del mercado: 26,42 (37,24 CAD) (-59,2 %)",
+      "objetivo_mercado_corto": " · mercado 26,42",
+      "rentabilidad_mercado_corto": " · mercado -53,1 %",
+      "potencial_pct": -61.4,
+      "dividendo_pct": 6.1,
+      "rentabilidad_total_pct": -55.3,
+      "alcista_pct": -58.3,
+      "bajista_pct": -75.6,
+      "asimetria": -0.77,
+      "comprar_por_debajo": 24.97,
+      "vender_por_encima": 60.77,
+      "tabla": [
+        {
+          "concepto": "Objetivo a 12 meses (nuestro PER × nuestro BPA 2028e, ponderado 25/50/25)",
+          "valor": "50,74 USD (71,53 CAD)"
+        },
+        {
+          "concepto": "Bajista / base / alcista a 12 meses",
+          "valor": "6,1x × 2,75 = 16,77 · 14,8x × 3,87 = 57,28 · 14,8x × 4,84 = 71,63"
+        },
+        {
+          "concepto": "Rentabilidad a 12 meses: ponderada / del base (con dividendo)",
+          "valor": "-15,5 % / -5,4 %"
+        },
+        {
+          "concepto": "Regla de múltiplos aplicada",
+          "valor": "v3: base a mitad de camino hacia la mediana adelantada, sin alejarse del actual más de ×1,1; bajista mín. 5 a (adelantado) o base × 0,80; alcista techo base × 1,35 (selector de método: sin marcas: decide la v3)"
+        },
+        {
+          "concepto": "Objetivo medio de los analistas (solo contraste)",
+          "valor": "67,71 (nuestro base -15,4 %)"
+        },
+        {
+          "concepto": "Valor intrínseco (síntesis ponderada, largo plazo)",
+          "valor": "24,97 USD (35,20 CAD)"
+        },
+        {
+          "concepto": "Precio actual (CAD al tipo de 0,7094 USD por CAD)",
+          "valor": "64,73 USD (91,25 CAD)"
+        },
+        {
+          "concepto": "Potencial sobre el precio actual",
+          "valor": "-61,4 %"
+        },
+        {
+          "concepto": "Rentabilidad por dividendo ordinario",
+          "valor": "6,1 %"
+        },
+        {
+          "concepto": "Rentabilidad total esperada a 12 meses",
+          "valor": "-55,3 %"
+        },
+        {
+          "concepto": "Escenario alcista / bajista",
+          "valor": "-58,3 % / -75,6 %"
+        },
+        {
+          "concepto": "Asimetría (ganancia alcista / pérdida bajista)",
+          "valor": "-0,77x"
+        },
+        {
+          "concepto": "Valor objetivo con la prima implícita del mercado (4,2 %, WACC 13,3 %)",
+          "valor": "26,42 USD (37,24 CAD)"
+        },
+        {
+          "concepto": "Rentabilidad total esperada con la prima del mercado",
+          "valor": "-53,1 %"
+        },
+        {
+          "concepto": "Asimetría con la prima del mercado",
+          "valor": "-0,74x"
+        },
+        {
+          "concepto": "Regla absoluta (frente a su coste de capital)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Regla relativa (frente a lo que pide el mercado)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "¿La calidad de la empresa sostiene el crecimiento previsto?",
+          "valor": "Sí (-0,2 % anual proyectado; sin inversión neta)"
+        },
+        {
+          "concepto": "Señal del valor intrínseco (regla del DCF, referencia)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Recomendación según la regla a 12 meses (Comprar: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender: ponderada ≤ -10 %)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Convicción según los criterios (las dos reglas dan Vender, rentabilidad del -55,3 % (-53,1 % con la prima del mercado) y el precio pide 21,0 puntos más de crecimiento que el caso base)",
+          "valor": "Alta"
+        }
+      ],
+      "niveles": [
+        {
+          "accion": "Comprar",
+          "condicion": "Por debajo de 24,97 (35,20 CAD) (ponderada a 12 meses ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco)"
+        },
+        {
+          "accion": "Mantener",
+          "condicion": "Entre 24,97 y 60,77 (35,20 y 85,67 CAD)"
+        },
+        {
+          "accion": "Vender o reducir",
+          "condicion": "Por encima de 60,77 (85,67 CAD) (ponderada a 12 meses ≤ -10 %)"
+        }
+      ],
+      "precio_txt": " (91,25 CAD)",
+      "valor_objetivo_txt": " (35,20 CAD)",
+      "regla_valor_intrinseco": "Vender",
+      "objetivo_12m": {
+        "completo": true,
+        "filas": [
+          {
+            "escenario": "Bajista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 2.75,
+            "multiplo": 6.1,
+            "multiplo_informe": null,
+            "origen": "mínimo de 5 años",
+            "precio": 16.77,
+            "rentabilidad_pct": -68,
+            "justificacion": "Oro a 3.300 USD: BPA de 2028e de 2,75 USD, y PER del mínimo de cinco años (6,1 veces, cierre de 2024, cuando el mercado no creía el oro de entonces) [28]."
+          },
+          {
+            "escenario": "Base",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 3.87,
+            "multiplo": 14.8,
+            "multiplo_informe": null,
+            "origen": "PER actual (16.3x) ÷ 1.1 (tope: la mediana de 5 años, 10.8x, queda más lejos)",
+            "precio": 57.28,
+            "rentabilidad_pct": -5.4,
+            "justificacion": "Oro plano en 4.150 USD: BPA de 2028e de 3,87 USD (beneficio de ≈ 940 M), y PER de 14,8 veces (el actual de 16,3 ÷ 1,1)."
+          },
+          {
+            "escenario": "Alcista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 4.84,
+            "multiplo": 14.8,
+            "multiplo_informe": null,
+            "origen": "el base (ni la historia ni los comparables pagan más)",
+            "precio": 71.63,
+            "rentabilidad_pct": 16.8,
+            "justificacion": "Oro a 4.900 USD: BPA de 2028e de 4,84 USD con el mismo PER del base (14,8): ni la historia (mediana de 10,8) ni los comparables (9,8) pagan más."
+          }
+        ],
+        "regla": {
+          "version": "v3",
+          "bajista": 6.1,
+          "base": 14.8,
+          "alcista": 14.8,
+          "bajista_origen": "mínimo de 5 años",
+          "base_origen": "PER actual (16.3x) ÷ 1.1 (tope: la mediana de 5 años, 10.8x, queda más lejos)",
+          "alcista_origen": "el base (ni la historia ni los comparables pagan más)"
+        },
+        "version": "v3",
+        "probabilidades": [
+          25,
+          50,
+          25
+        ],
+        "objetivo_ponderado": 50.74,
+        "objetivo_simple": 48.56,
+        "objetivo_base": 57.28,
+        "rentabilidad_ponderada_pct": -15.5,
+        "rentabilidad_simple_pct": -18.9,
+        "rentabilidad_base_pct": -5.4,
+        "asimetria": 0.14,
+        "senal": "Vender",
+        "senal_sin_confirmar": null,
+        "confianza_baja": false,
+        "comprar_por_debajo": 24.97,
+        "vender_por_encima": 60.77,
+        "consenso_objetivo": 67.71,
+        "diferencia_consenso_pct": -15.4,
+        "selector": {
+          "regla": "v3",
+          "motivo": "sin marcas: decide la v3",
+          "v3_sin_selector": {
+            "version": "v3",
+            "rentabilidad_ponderada_pct": -15.5,
+            "rentabilidad_base_pct": -5.4,
+            "senal": "Vender",
+            "objetivo_ponderado": 50.74
+          },
+          "v2": {
+            "version": "v2",
+            "rentabilidad_ponderada_pct": -17.2,
+            "rentabilidad_base_pct": -11.4,
+            "senal": "Vender",
+            "objetivo_ponderado": 49.63
+          }
+        },
+        "v2": {
+          "rentabilidad_ponderada_pct": -17.2,
+          "rentabilidad_base_pct": -11.4,
+          "senal": "Vender",
+          "multiplos": [
+            7.3,
+            13.8,
+            14.8
+          ]
+        },
+        "v3_tope_anterior": {
+          "tope": 1.3,
+          "rentabilidad_ponderada_pct": -22.8,
+          "senal": "Vender"
+        },
+        "comparacion_txt": "Para comparar, con la regla v2 (historia al cierre, mismo precio): 7,3x / 13,8x / 14,8x, -17,2 % Vender; con el tope anterior del base (×1,3, 14-oct mediodía): -22,8 % Vender. Decide la v3 con tope ×1,1, elegida por el selector de método (sin marcas: decide la v3; METODO-VIGENTE.md)."
+      },
+      "rentabilidad_12m_pct": -15.5,
+      "rentabilidad_12m_txt": "-15,5 % (base -5,4 %)",
+      "objetivo_12m_txt": "50,74 USD (71,53 CAD)"
+    },
+    "mercado": {
+      "precio": 64.73,
+      "acciones": 242.8,
+      "capitalizacion": 15716,
+      "deuda_neta": -507,
+      "deuda_neta_ajustada": 10,
+      "asimilables_deuda": 517,
+      "ajustes_puente": 517,
+      "valor_empresa": 15726,
+      "fecha_puente": "2026-06-30"
+    },
+    "clave": {
+      "capitalizacion": 15716,
+      "valor_empresa": 15726,
+      "deuda_neta": -507,
+      "ev_ventas_ltm": 7.79,
+      "ev_ebitda_ltm": 10.9,
+      "ev_ebitda_ntm": 9.3,
+      "ev_ebit_ltm": 12,
+      "per_ltm": 17,
+      "per_ntm": 15,
+      "fcf_yield_pct": 6.1,
+      "dividendo_pct": 10.9,
+      "dn_ebitda": -0.4,
+      "roic_pct": 96.9,
+      "margen_ebitda_pct": 71.6,
+      "deuda_neta_ajustada": 10,
+      "dn_ebitda_ajustada": 0,
+      "crecimiento_tcac_pct": 24.9,
+      "ingresos_ntm": 2430,
+      "ebitda_ntm": 1689,
+      "bpa_ntm": 4.3,
+      "ebitda_ltm": 1446,
+      "ingresos_ltm": 2019,
+      "ev_rab": null
+    },
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 733.3,
+        "crecimiento_pct": null,
+        "beneficio_bruto": 355.69999999999993,
+        "margen_bruto_pct": 48.5,
+        "ebitda": 426.3,
+        "margen_ebitda_pct": 58.1,
+        "ebit": 318.7,
+        "margen_ebit_pct": 43.5,
+        "beneficio_neto": 221.4,
+        "margen_neto_pct": 30.2,
+        "bpa": 0.94,
+        "dpa": 0,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 13.9,
+        "payout_pct": 0
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 815.7,
+        "crecimiento_pct": 11.2,
+        "beneficio_bruto": 369.80000000000007,
+        "margen_bruto_pct": 45.3,
+        "ebitda": 467.3,
+        "margen_ebitda_pct": 57.3,
+        "ebit": 336.7,
+        "margen_ebit_pct": 41.3,
+        "beneficio_neto": 73.6,
+        "margen_neto_pct": 9,
+        "bpa": 0.31,
+        "dpa": 0.2,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 58.5,
+        "payout_pct": 65
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 902.5,
+        "crecimiento_pct": 10.6,
+        "beneficio_bruto": 435.2,
+        "margen_bruto_pct": 48.2,
+        "ebitda": 526,
+        "margen_ebitda_pct": 58.3,
+        "ebit": 389.4,
+        "margen_ebit_pct": 43.1,
+        "beneficio_neto": 179.5,
+        "margen_neto_pct": 19.9,
+        "bpa": 0.75,
+        "dpa": 0.4,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 37.1,
+        "payout_pct": 53
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 1193.1,
+        "crecimiento_pct": 32.2,
+        "beneficio_bruto": 703.3999999999999,
+        "margen_bruto_pct": 59,
+        "ebitda": 777.6,
+        "margen_ebitda_pct": 65.2,
+        "ebit": 640.6,
+        "margen_ebit_pct": 53.7,
+        "beneficio_neto": 426.1,
+        "margen_neto_pct": 35.7,
+        "bpa": 1.76,
+        "dpa": 0.6,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 32.8,
+        "payout_pct": 34
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 1782.9,
+        "crecimiento_pct": 49.4,
+        "beneficio_bruto": 1226.3000000000002,
+        "margen_bruto_pct": 68.8,
+        "ebitda": 1235.7,
+        "margen_ebitda_pct": 69.3,
+        "ebit": 1100.7,
+        "margen_ebit_pct": 61.7,
+        "beneficio_neto": 792.2,
+        "margen_neto_pct": 44.4,
+        "bpa": 3.27,
+        "dpa": 2.75,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 29.5,
+        "payout_pct": 84
+      }
+    ],
+    "tcac": {
+      "periodo": "2021-2025",
+      "ingresos_pct": 24.9,
+      "ebitda_pct": 30.5,
+      "bpa_pct": 36.6
+    },
+    "cuenta_y_prevision": [
+      {
+        "periodo": "2021",
+        "ingresos": 733.3,
+        "ebitda": 426.3
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 815.7,
+        "ebitda": 467.3
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 902.5,
+        "ebitda": 526
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 1193.1,
+        "ebitda": 777.6
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 1782.9,
+        "ebitda": 1235.7
+      },
+      {
+        "periodo": "2026e",
+        "ingresos": 2330,
+        "ebitda": 1703
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 2076,
+        "ebitda": 1485
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 2076,
+        "ebitda": 1485
+      },
+      {
+        "periodo": "2029e",
+        "ingresos": 1952,
+        "ebitda": 1376
+      },
+      {
+        "periodo": "2030e",
+        "ingresos": 1868,
+        "ebitda": 1298
+      },
+      {
+        "periodo": "2031e",
+        "ingresos": 1827,
+        "ebitda": 1251
+      },
+      {
+        "periodo": "2032e",
+        "ingresos": 1785,
+        "ebitda": 1205
+      },
+      {
+        "periodo": "2033e",
+        "ingresos": 1742,
+        "ebitda": 1158
+      },
+      {
+        "periodo": "2034e",
+        "ingresos": 1700,
+        "ebitda": 1114
+      },
+      {
+        "periodo": "2035e",
+        "ingresos": 1659,
+        "ebitda": 1070
+      }
+    ],
+    "segmentos_ultimo": [
+      {
+        "nombre": "Oro (concentrado y doré)",
+        "ingresos": 1759.7,
+        "peso_pct": 98.7,
+        "crecimiento_pct": 49.3,
+        "margen_pct": null,
+        "tipo_margen": null
+      },
+      {
+        "nombre": "Plata (subproducto)",
+        "ingresos": 23.2,
+        "peso_pct": 1.3,
+        "crecimiento_pct": 56.8,
+        "margen_pct": null,
+        "tipo_margen": null
+      }
+    ],
+    "segmentos_tabla": {
+      "periodos": [
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "filas": [
+        {
+          "nombre": "Oro (concentrado y doré)",
+          "v0": 726.3,
+          "v1": 805.8000000000001,
+          "v2": 891.1,
+          "v3": 1178.3,
+          "v4": 1759.7
+        },
+        {
+          "nombre": "Plata (subproducto)",
+          "v0": 7,
+          "v1": 9.9,
+          "v2": 11.4,
+          "v3": 14.8,
+          "v4": 23.2
+        }
+      ]
+    },
+    "segmentos_periodo": "2025",
+    "balance": [
+      {
+        "periodo": "2021",
+        "activo_total": 1685.1,
+        "intangibles": 0,
+        "circulante": 184.6,
+        "circulante_ventas_pct": 25.2,
+        "caja": 262.6,
+        "deuda_financiera": 740,
+        "arrendamientos": 0,
+        "deuda_neta": 477.4,
+        "patrimonio": 814.5,
+        "minoritarios": 0,
+        "dn_ebitda": 1.12,
+        "dn_patrimonio_pct": 59,
+        "dso": 83,
+        "dio": 82,
+        "dpo": 66,
+        "ciclo_caja": 99,
+        "cobertura_intereses": 6.3,
+        "capital_invertido": 1291.9,
+        "fondo_comercio": 0,
+        "liquidez_corriente": 1.7
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 1668.9,
+        "intangibles": 0,
+        "circulante": 187.49999999999997,
+        "circulante_ventas_pct": 23,
+        "caja": 363.4,
+        "deuda_financiera": 668,
+        "arrendamientos": 0,
+        "deuda_neta": 304.6,
+        "patrimonio": 852.1,
+        "minoritarios": 0,
+        "dn_ebitda": 0.65,
+        "dn_patrimonio_pct": 36,
+        "dso": 76,
+        "dio": 74,
+        "dpo": 58,
+        "ciclo_caja": 92,
+        "cobertura_intereses": 1.4,
+        "capital_invertido": 1156.7,
+        "fondo_comercio": 0,
+        "liquidez_corriente": 1.44
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 1468.2,
+        "intangibles": 0,
+        "circulante": 178.10000000000002,
+        "circulante_ventas_pct": 19.7,
+        "caja": 268,
+        "deuda_financiera": 305.6,
+        "arrendamientos": 0,
+        "deuda_neta": 37.60000000000002,
+        "patrimonio": 955.8,
+        "minoritarios": 0,
+        "dn_ebitda": 0.07,
+        "dn_patrimonio_pct": 4,
+        "dso": 66,
+        "dio": 70,
+        "dpo": 58,
+        "ciclo_caja": 78,
+        "cobertura_intereses": 4.6,
+        "capital_invertido": 993.4,
+        "fondo_comercio": 0,
+        "liquidez_corriente": 2.86
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 1527.5,
+        "intangibles": 0,
+        "circulante": 211.9,
+        "circulante_ventas_pct": 17.8,
+        "caja": 349.2,
+        "deuda_financiera": 0,
+        "arrendamientos": 0,
+        "deuda_neta": -349.2,
+        "patrimonio": 1216.3,
+        "minoritarios": 0,
+        "dn_ebitda": -0.45,
+        "dn_patrimonio_pct": -29,
+        "dso": 71,
+        "dio": 66,
+        "dpo": 82,
+        "ciclo_caja": 55,
+        "cobertura_intereses": 2.4,
+        "capital_invertido": 867.0999999999999,
+        "fondo_comercio": 0,
+        "liquidez_corriente": 3.13
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 1787.2,
+        "intangibles": 0,
+        "circulante": 193.3,
+        "circulante_ventas_pct": 10.8,
+        "caja": 630.2,
+        "deuda_financiera": 0,
+        "arrendamientos": 0,
+        "deuda_neta": -630.2,
+        "patrimonio": 1364.1,
+        "minoritarios": 0,
+        "dn_ebitda": -0.51,
+        "dn_patrimonio_pct": -46,
+        "dso": 53,
+        "dio": 61,
+        "dpo": 105,
+        "ciclo_caja": 9,
+        "cobertura_intereses": null,
+        "capital_invertido": 733.8999999999999,
+        "fondo_comercio": 0,
+        "liquidez_corriente": 2.53
+      }
+    ],
+    "perimetro_nota": null,
+    "flujos": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 417.8,
+        "capex": 63.1,
+        "pagos_arrendamientos": 0,
+        "fcf": 268.4,
+        "beneficio_neto": 221.4,
+        "conversion_pct": 121,
+        "capex_ventas_pct": 8.6,
+        "capex_amortizacion": 0.59,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 0,
+        "recompras": 0,
+        "emision_acciones": 18.6,
+        "retorno_accionista": 0,
+        "payout_caja_pct": 0,
+        "acciones": 234.6,
+        "fcf_por_accion": 1.14
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 426.1,
+        "capex": 60.1,
+        "pagos_arrendamientos": 0,
+        "fcf": 269.4,
+        "beneficio_neto": 73.6,
+        "conversion_pct": 366,
+        "capex_ventas_pct": 7.4,
+        "capex_amortizacion": 0.46,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 47,
+        "recompras": 0,
+        "emision_acciones": 11.3,
+        "retorno_accionista": 47,
+        "payout_caja_pct": 64,
+        "acciones": 236.7,
+        "fcf_por_accion": 1.14
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 519.4,
+        "capex": 53.5,
+        "pagos_arrendamientos": 0,
+        "fcf": 263.5,
+        "beneficio_neto": 179.5,
+        "conversion_pct": 147,
+        "capex_ventas_pct": 5.9,
+        "capex_amortizacion": 0.39,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 94.9,
+        "recompras": 0,
+        "emision_acciones": 14.2,
+        "retorno_accionista": 94.9,
+        "payout_caja_pct": 53,
+        "acciones": 239.2,
+        "fcf_por_accion": 1.1
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 662.4,
+        "capex": 93.5,
+        "pagos_arrendamientos": 0,
+        "fcf": 304.2,
+        "beneficio_neto": 426.1,
+        "conversion_pct": 71,
+        "capex_ventas_pct": 7.8,
+        "capex_amortizacion": 0.68,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 143.8,
+        "recompras": 0,
+        "emision_acciones": 22.1,
+        "retorno_accionista": 143.8,
+        "payout_caja_pct": 34,
+        "acciones": 241.4,
+        "fcf_por_accion": 1.26
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 1023,
+        "capex": 97.2,
+        "pagos_arrendamientos": 0,
+        "fcf": 925.8,
+        "beneficio_neto": 792.2,
+        "conversion_pct": 117,
+        "capex_ventas_pct": 5.5,
+        "capex_amortizacion": 0.72,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 663.8,
+        "recompras": 0,
+        "emision_acciones": 18.9,
+        "retorno_accionista": 663.8,
+        "payout_caja_pct": 84,
+        "acciones": 242.5,
+        "fcf_por_accion": 3.82
+      }
+    ],
+    "flujos_acumulado": {
+      "periodo": "2021-2025",
+      "fcf": 2031,
+      "adquisiciones": 0,
+      "dividendos": 950,
+      "recompras": 0,
+      "conversion_pct": 120
+    },
+    "rentabilidad": [
+      {
+        "periodo": "2021",
+        "nopat": 274,
+        "capital_invertido": 1292,
+        "roic_pct": 21.2,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": 0,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 27.2,
+        "roa_pct": 13.1,
+        "margen_neto_pct": 30.2,
+        "rotacion": 0.44,
+        "apalancamiento": 2.07
+      },
+      {
+        "periodo": "2022",
+        "nopat": 202,
+        "capital_invertido": 1224,
+        "roic_pct": 16.5,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": 0,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 8.8,
+        "roa_pct": 4.4,
+        "margen_neto_pct": 9,
+        "rotacion": 0.49,
+        "apalancamiento": 2.01
+      },
+      {
+        "periodo": "2023",
+        "nopat": 245,
+        "capital_invertido": 1075,
+        "roic_pct": 22.8,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": 0,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 19.9,
+        "roa_pct": 11.4,
+        "margen_neto_pct": 19.9,
+        "rotacion": 0.58,
+        "apalancamiento": 1.74
+      },
+      {
+        "periodo": "2024",
+        "nopat": 430,
+        "capital_invertido": 930,
+        "roic_pct": 46.3,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": 0,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 39.2,
+        "roa_pct": 28.4,
+        "margen_neto_pct": 35.7,
+        "rotacion": 0.8,
+        "apalancamiento": 1.38
+      },
+      {
+        "periodo": "2025",
+        "nopat": 776,
+        "capital_invertido": 800,
+        "roic_pct": 96.9,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": 0,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 61.4,
+        "roa_pct": 47.8,
+        "margen_neto_pct": 44.4,
+        "rotacion": 1.08,
+        "apalancamiento": 1.28
+      }
+    ],
+    "roic_incremental_pct": null,
+    "roic_frente_wacc": [
+      {
+        "periodo": "2021",
+        "roic_pct": 21.2,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 27.2,
+        "wacc_pct": 14.7
+      },
+      {
+        "periodo": "2022",
+        "roic_pct": 16.5,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 8.8,
+        "wacc_pct": 14.7
+      },
+      {
+        "periodo": "2023",
+        "roic_pct": 22.8,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 19.9,
+        "wacc_pct": 14.7
+      },
+      {
+        "periodo": "2024",
+        "roic_pct": 46.3,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 39.2,
+        "wacc_pct": 14.7
+      },
+      {
+        "periodo": "2025",
+        "roic_pct": 96.9,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 61.4,
+        "wacc_pct": 14.7
+      }
+    ],
+    "compras": {
+      "tipo": "sin compras",
+      "subidas": 0,
+      "anios": 4,
+      "fondo_comercio": 0,
+      "fondo_comercio_pct_capital": 0,
+      "roic_pct": 96.9,
+      "roic_sin_fc_pct": null,
+      "texto": "Fondo de comercio: 0 M en 2025 (el 0 % del capital invertido medio); ha subido más de un 5 % en 0 de 4 años: sin compras. Sin compras relevantes: el publicado ya es el ROIC del negocio."
+    },
+    "calidad": {
+      "periodo": "2025",
+      "altman_z": 25.99,
+      "altman_zona": "Zona segura",
+      "piotroski_f": 8,
+      "piotroski_detalle": [
+        {
+          "criterio": "Beneficio neto positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "ROA mejora",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo > beneficio neto",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Baja el endeudamiento (deuda / activo)",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora la liquidez corriente",
+          "resultado": "No"
+        },
+        {
+          "criterio": "No emite acciones",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora el margen bruto",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora la rotación del activo",
+          "resultado": "Sí"
+        }
+      ],
+      "beneish_m": -3.02,
+      "beneish_fiable": true,
+      "beneish_variables": [
+        {
+          "variable": "DSRI",
+          "valor": 0.75
+        },
+        {
+          "variable": "GMI",
+          "valor": 0.86
+        },
+        {
+          "variable": "AQI",
+          "valor": 1.03
+        },
+        {
+          "variable": "SGI",
+          "valor": 1.49
+        },
+        {
+          "variable": "DEPI",
+          "valor": 0.96
+        },
+        {
+          "variable": "SGAI",
+          "valor": 1.1
+        },
+        {
+          "variable": "LVGI",
+          "valor": 1.16
+        },
+        {
+          "variable": "TATA",
+          "valor": -0.13
+        }
+      ],
+      "tabla": [
+        {
+          "indicador": "Altman Z",
+          "valor": "25,99",
+          "lectura": "Zona segura (> 2,99 seguro; < 1,81 riesgo). No aplica a bancos ni aseguradoras, y subestima la solvencia de empresas con grandes anticipos de clientes o prefinanciación pública (contratistas, construcción), que inflan el pasivo."
+        },
+        {
+          "indicador": "Piotroski F",
+          "valor": "8 / 9",
+          "lectura": "Fortaleza financiera alta (7-9)."
+        },
+        {
+          "indicador": "Beneish M",
+          "valor": "-3,02",
+          "lectura": "Por debajo de −1,78: sin señal de manipulación."
+        },
+        {
+          "indicador": "Flujo operativo / beneficio neto (acumulado)",
+          "valor": "1,80x",
+          "lectura": "El beneficio se cobra."
+        }
+      ]
+    },
+    "dcf": {
+      "proyeccion": [
+        {
+          "periodo": "2026e",
+          "ingresos": 2330,
+          "crecimiento_pct": 30.7,
+          "ebitda": 1703,
+          "margen_ebitda_pct": 73.1,
+          "amortizacion": 133,
+          "ebit": 1571,
+          "impuestos": 487,
+          "capex": 121,
+          "variacion_circulante": 16,
+          "fcff": 1079,
+          "fraccion": 0.2,
+          "factor": 0.987,
+          "vp": 210
+        },
+        {
+          "periodo": "2027e",
+          "ingresos": 2076,
+          "crecimiento_pct": -10.9,
+          "ebitda": 1485,
+          "margen_ebitda_pct": 71.5,
+          "amortizacion": 137,
+          "ebit": 1347,
+          "impuestos": 418,
+          "capex": 187,
+          "variacion_circulante": -23,
+          "fcff": 903,
+          "fraccion": 1,
+          "factor": 0.909,
+          "vp": 820
+        },
+        {
+          "periodo": "2028e",
+          "ingresos": 2076,
+          "crecimiento_pct": 0,
+          "ebitda": 1485,
+          "margen_ebitda_pct": 71.5,
+          "amortizacion": 137,
+          "ebit": 1347,
+          "impuestos": 418,
+          "capex": 176,
+          "variacion_circulante": 0,
+          "fcff": 890,
+          "fraccion": 1,
+          "factor": 0.792,
+          "vp": 705
+        },
+        {
+          "periodo": "2029e",
+          "ingresos": 1952,
+          "crecimiento_pct": -6,
+          "ebitda": 1376,
+          "margen_ebitda_pct": 70.5,
+          "amortizacion": 133,
+          "ebit": 1243,
+          "impuestos": 385,
+          "capex": 127,
+          "variacion_circulante": -11,
+          "fcff": 875,
+          "fraccion": 1,
+          "factor": 0.691,
+          "vp": 604
+        },
+        {
+          "periodo": "2030e",
+          "ingresos": 1868,
+          "crecimiento_pct": -4.3,
+          "ebitda": 1298,
+          "margen_ebitda_pct": 69.5,
+          "amortizacion": 127,
+          "ebit": 1171,
+          "impuestos": 363,
+          "capex": 112,
+          "variacion_circulante": -8,
+          "fcff": 831,
+          "fraccion": 1,
+          "factor": 0.602,
+          "vp": 500
+        },
+        {
+          "periodo": "2031e",
+          "ingresos": 1827,
+          "crecimiento_pct": -2.2,
+          "ebitda": 1251,
+          "margen_ebitda_pct": 68.5,
+          "amortizacion": 124,
+          "ebit": 1127,
+          "impuestos": 349,
+          "capex": 110,
+          "variacion_circulante": -4,
+          "fcff": 796,
+          "fraccion": 1,
+          "factor": 0.525,
+          "vp": 418
+        },
+        {
+          "periodo": "2032e",
+          "ingresos": 1785,
+          "crecimiento_pct": -2.3,
+          "ebitda": 1205,
+          "margen_ebitda_pct": 67.5,
+          "amortizacion": 121,
+          "ebit": 1083,
+          "impuestos": 336,
+          "capex": 107,
+          "variacion_circulante": -4,
+          "fcff": 766,
+          "fraccion": 1,
+          "factor": 0.458,
+          "vp": 350
+        },
+        {
+          "periodo": "2033e",
+          "ingresos": 1742,
+          "crecimiento_pct": -2.4,
+          "ebitda": 1158,
+          "margen_ebitda_pct": 66.5,
+          "amortizacion": 118,
+          "ebit": 1040,
+          "impuestos": 322,
+          "capex": 105,
+          "variacion_circulante": -4,
+          "fcff": 735,
+          "fraccion": 1,
+          "factor": 0.399,
+          "vp": 293
+        },
+        {
+          "periodo": "2034e",
+          "ingresos": 1700,
+          "crecimiento_pct": -2.4,
+          "ebitda": 1114,
+          "margen_ebitda_pct": 65.5,
+          "amortizacion": 116,
+          "ebit": 998,
+          "impuestos": 309,
+          "capex": 111,
+          "variacion_circulante": -4,
+          "fcff": 697,
+          "fraccion": 1,
+          "factor": 0.348,
+          "vp": 242
+        },
+        {
+          "periodo": "2035e",
+          "ingresos": 1659,
+          "crecimiento_pct": -2.4,
+          "ebitda": 1070,
+          "margen_ebitda_pct": 64.5,
+          "amortizacion": 113,
+          "ebit": 957,
+          "impuestos": 297,
+          "capex": 113,
+          "variacion_circulante": -4,
+          "fcff": 664,
+          "fraccion": 1,
+          "factor": 0.303,
+          "vp": 201
+        }
+      ],
+      "etapa2": null,
+      "suma_vp": 4344,
+      "valor_terminal": 3640,
+      "vp_terminal": 1031,
+      "valor_empresa": 5375,
+      "peso_terminal_pct": 19,
+      "valor_acciones": 5366,
+      "valor_accion": 22.1,
+      "vt_gordon": 3640,
+      "vt_multiplo": 5351,
+      "multiplo_implicito": 3.4,
+      "g_implicito_pct": 2.03,
+      "metodo_terminal": "gordon",
+      "terminal_tabla": [
+        {
+          "concepto": "Método principal",
+          "valor": "Crecimiento a perpetuidad"
+        },
+        {
+          "concepto": "Crecimiento a perpetuidad",
+          "valor": "-3,0 %"
+        },
+        {
+          "concepto": "Múltiplo EV/EBITDA de salida",
+          "valor": "5,0x"
+        },
+        {
+          "concepto": "Valor terminal (Gordon)",
+          "valor": "3.640"
+        },
+        {
+          "concepto": "Valor terminal (múltiplo)",
+          "valor": "5.351"
+        },
+        {
+          "concepto": "Múltiplo de salida implícito en Gordon",
+          "valor": "3,4x"
+        },
+        {
+          "concepto": "Crecimiento implícito en el múltiplo",
+          "valor": "2,03 %"
+        },
+        {
+          "concepto": "Peso del valor terminal en el valor empresa",
+          "valor": "19 %"
+        }
+      ],
+      "puente": [
+        {
+          "concepto": "Valor actual de los flujos proyectados",
+          "valor": "4.344"
+        },
+        {
+          "concepto": "Valor actual del valor terminal",
+          "valor": "1.031"
+        },
+        {
+          "concepto": "Valor empresa",
+          "valor": "5.375"
+        },
+        {
+          "concepto": "− Deuda financiera neta (con arrendamientos)",
+          "valor": "507"
+        },
+        {
+          "concepto": "− Minoritarios, pensiones y otros; + asociadas",
+          "valor": "-517"
+        },
+        {
+          "concepto": "Valor de los fondos propios",
+          "valor": "5.366"
+        },
+        {
+          "concepto": "Acciones diluidas (millones)",
+          "valor": "242,8"
+        },
+        {
+          "concepto": "Valor por acción",
+          "valor": "22,10"
+        }
+      ],
+      "composicion": [
+        {
+          "parte": "Flujos proyectados",
+          "valor": 4344
+        },
+        {
+          "parte": "Valor terminal",
+          "valor": 1031
+        }
+      ],
+      "wacc": 14.7,
+      "ke": 14.7,
+      "kd_despues": 4.83,
+      "wacc_tabla": [
+        {
+          "concepto": "Tasa libre de riesgo",
+          "valor": "5,15 %"
+        },
+        {
+          "concepto": "Beta",
+          "valor": "1,10"
+        },
+        {
+          "concepto": "Prima de riesgo de mercado",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Prima adicional (país, tamaño, específica)",
+          "valor": "3,50 %"
+        },
+        {
+          "concepto": "Coste de los fondos propios",
+          "valor": "14,70 %"
+        },
+        {
+          "concepto": "Coste de la deuda antes de impuestos",
+          "valor": "7,00 %"
+        },
+        {
+          "concepto": "Tipo impositivo",
+          "valor": "31,00 %"
+        },
+        {
+          "concepto": "Coste de la deuda después de impuestos",
+          "valor": "4,83 %"
+        },
+        {
+          "concepto": "Peso de la deuda (D / (D + E))",
+          "valor": "0,00 %"
+        },
+        {
+          "concepto": "WACC",
+          "valor": "14,70 %"
+        },
+        {
+          "concepto": "Prima de riesgo implícita del mercado (regla relativa)",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "WACC con la prima implícita del mercado",
+          "valor": "13,27 %"
+        }
+      ],
+      "potencial_pct": -65.9,
+      "sensibilidad": {
+        "eje_columnas": "Crecimiento a perpetuidad",
+        "columnas": [
+          "-4,0 %",
+          "-3,5 %",
+          "-3,0 %",
+          "-2,5 %",
+          "-2,0 %"
+        ],
+        "filas": [
+          {
+            "wacc": "13,7 %",
+            "v0": 22.95,
+            "v1": 23.11,
+            "v2": 23.28,
+            "v3": 23.45,
+            "v4": 23.64
+          },
+          {
+            "wacc": "14,2 %",
+            "v0": 22.38,
+            "v1": 22.52,
+            "v2": 22.67,
+            "v3": 22.83,
+            "v4": 23
+          },
+          {
+            "wacc": "14,7 %",
+            "v0": 21.83,
+            "v1": 21.96,
+            "v2": 22.1,
+            "v3": 22.24,
+            "v4": 22.4
+          },
+          {
+            "wacc": "15,2 %",
+            "v0": 21.31,
+            "v1": 21.43,
+            "v2": 21.56,
+            "v3": 21.69,
+            "v4": 21.83
+          },
+          {
+            "wacc": "15,7 %",
+            "v0": 20.82,
+            "v1": 20.93,
+            "v2": 21.05,
+            "v3": 21.17,
+            "v4": 21.3
+          }
+        ]
+      },
+      "sensibilidad2": {
+        "columnas": [
+          "-2 pp",
+          "-1 pp",
+          "0 pp",
+          "+1 pp",
+          "+2 pp"
+        ],
+        "filas": [
+          {
+            "margen": "-2 pp",
+            "v0": 19.51,
+            "v1": 20.43,
+            "v2": 21.41,
+            "v3": 22.45,
+            "v4": 23.55
+          },
+          {
+            "margen": "-1 pp",
+            "v0": 19.82,
+            "v1": 20.76,
+            "v2": 21.75,
+            "v3": 22.81,
+            "v4": 23.93
+          },
+          {
+            "margen": "0 pp",
+            "v0": 20.13,
+            "v1": 21.08,
+            "v2": 22.1,
+            "v3": 23.17,
+            "v4": 24.31
+          },
+          {
+            "margen": "+1 pp",
+            "v0": 20.44,
+            "v1": 21.41,
+            "v2": 22.44,
+            "v3": 23.54,
+            "v4": 24.7
+          },
+          {
+            "margen": "+2 pp",
+            "v0": 20.75,
+            "v1": 21.74,
+            "v2": 22.79,
+            "v3": 23.9,
+            "v4": 25.08
+          }
+        ]
+      },
+      "rango_min": 21.43,
+      "rango_max": 22.83,
+      "inverso": {
+        "crecimiento_implicito_pct": 17.3,
+        "crecimiento_base_pct": -3.7,
+        "periodo": "2027e-2035e",
+        "margen_implicito_pct": null,
+        "margen_implicito_texto": "ningún margen hasta el 95 % justifica el precio",
+        "margen_base_pct": 64.5,
+        "rentabilidad_implicita_pct": null
+      },
+      "sostenibilidad": {
+        "veredicto": "Sí",
+        "veredicto_motor": "Sí",
+        "motivos_motor": [],
+        "crecimiento_financiable_bruto_pct": 14.5,
+        "roic_implicito_bruto_pct": -9.5,
+        "tcac_ingresos_historica_pct": 24.9,
+        "crecimiento_proyectado_pct": -0.2,
+        "tasa_reinversion_pct": 0,
+        "crecimiento_financiable_pct": null,
+        "roic_pct": 96.9,
+        "roic_incremental_historico_pct": null,
+        "roic_implicito_pct": null,
+        "cuota_actual_pct": 0.47,
+        "cuota_final_pct": null,
+        "puente": [
+          {
+            "periodo": "2026e",
+            "volumen_pct": 5,
+            "precio_pct": 22.8,
+            "otros_pct": 2.9,
+            "comentario": "Volumen +5 % (≈ 524.000 oz vendidas frente a ≈ 498.000) y precio realizado +23 % (≈ 4.410 frente a 3.594 USD); el resto, ajustes de concentrado [1, 10].",
+            "suma_pct": 30.7,
+            "crecimiento_pct": 30.7
+          },
+          {
+            "periodo": "2027e",
+            "volumen_pct": -4.6,
+            "precio_pct": -6,
+            "otros_pct": -0.3,
+            "comentario": "Volumen −4,6 % (500.000 oz, centro de la guía) y oro −6 % (4.150 plano frente a la media de 2026) [11].",
+            "suma_pct": -10.9,
+            "crecimiento_pct": -10.9
+          },
+          {
+            "periodo": "2028e",
+            "volumen_pct": 0,
+            "precio_pct": 0,
+            "otros_pct": 0,
+            "comentario": "Igual que 2027: guía plana y oro plano [11].",
+            "suma_pct": 0,
+            "crecimiento_pct": 0
+          },
+          {
+            "periodo": "2029e",
+            "volumen_pct": -6,
+            "precio_pct": 0,
+            "otros_pct": 0,
+            "comentario": "Menos onzas por la ley (de ≈ 8 a ≈ 7 g/t de las reservas) [12].",
+            "suma_pct": -6,
+            "crecimiento_pct": -6
+          },
+          {
+            "periodo": "2030e",
+            "volumen_pct": -4.3,
+            "precio_pct": 0,
+            "otros_pct": 0,
+            "comentario": "Sigue la bajada de ley; FDNS compensa una parte [12].",
+            "suma_pct": -4.3,
+            "crecimiento_pct": -4.3
+          }
+        ],
+        "texto": "La proyección apenas necesita inversión neta de la amortización (reinversión acumulada de -36 M, con un capex bruto medio del 6,7 % de las ventas). En un negocio de activos ligeros, el crecimiento medio del -0,2 % tiene que salir de subir precios y de ganar volumen sin capital nuevo, y la prueba es el poder de precios y la cuota; en un comprador en serie, la amortización es de intangibles comprados y la prueba es el capex bruto (las compras) frente al crecimiento comprado.",
+        "tabla": [
+          {
+            "concepto": "Crecimiento medio de ingresos proyectado",
+            "valor": "-0,2 %"
+          },
+          {
+            "concepto": "Capex bruto medio (incluidas compras si van como inversión)",
+            "valor": "6,7 % de las ventas"
+          },
+          {
+            "concepto": "Reinversión neta acumulada (capex − amortización + circulante)",
+            "valor": "-36 M (-0 % del NOPAT)"
+          },
+          {
+            "concepto": "Con la reinversión bruta (capex + circulante): crecimiento que financia al ROIC actual",
+            "valor": "14,5 % (reinvierte el 15 % del NOPAT)"
+          },
+          {
+            "concepto": "Rendimiento que la proyección supone para la reinversión bruta",
+            "valor": "-9,5 %"
+          },
+          {
+            "concepto": "Crecimiento histórico de ingresos (TCAC)",
+            "valor": "24,9 % frente al -0,2 % proyectado"
+          },
+          {
+            "concepto": "Veredicto de las pruebas del motor",
+            "valor": "Sí"
+          }
+        ]
+      }
+    },
+    "escenarios": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "narrativa": "El oro vuelve a 3.300 USD/oz (nivel de mediados de 2025) desde 2027 y se queda ahí: ingresos de 2027 de ≈ 1.650 M, margen EBITDA del 66 %, y Ecuador sube la presión fiscal (WACC +0,5). La producción sigue la guía. Valor de 15,82 USD.",
+        "crecimiento_medio_pct": -5.7,
+        "margen_final_pct": 59,
+        "wacc_pct": 15.2,
+        "valor": 15.82,
+        "potencial_pct": -75.6
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "narrativa": "Oro plano en 4.150 USD/oz, producción de la guía hasta 2028 y bajada suave después; dividendo con el 100 % del flujo libre normalizado. Valor de 22,10 USD.",
+        "crecimiento_medio_pct": -3.7,
+        "margen_final_pct": 64.5,
+        "wacc_pct": 14.7,
+        "valor": 22.1,
+        "potencial_pct": -65.9
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "narrativa": "El oro sube a 4.900 USD/oz desde 2027 (≈ la media de 2026 hasta hoy y lo que parece suponer el consenso) y el margen gana 3 puntos. Valor de 27,02 USD: ni con este oro el DCF se acerca al precio.",
+        "crecimiento_medio_pct": -1.9,
+        "margen_final_pct": 67.5,
+        "wacc_pct": 14.7,
+        "valor": 27.02,
+        "potencial_pct": -58.3
+      }
+    ],
+    "valor_ponderado": 21.76,
+    "potencial_ponderado_pct": -66.4,
+    "comparables": {
+      "tabla": [
+        {
+          "nombre": "Lundin Gold",
+          "ticker": "LUG",
+          "pais": "CA",
+          "capitalizacion": 15716,
+          "ev_ventas": 7.79,
+          "ev_ebitda_ltm": 10.9,
+          "ev_ebitda_ntm": 9.3,
+          "per_ntm": 15,
+          "crecimiento_pct": 15.2,
+          "margen_ebitda_pct": 71.6,
+          "roic_pct": 96.9,
+          "dn_ebitda": -0.4,
+          "fcf_yield_pct": 6.1,
+          "es_objetivo": true
+        },
+        {
+          "nombre": "Agnico Eagle",
+          "ticker": "AEM",
+          "pais": "CA",
+          "capitalizacion": 94999,
+          "ev_ventas": 6.32,
+          "ev_ebitda_ltm": 9,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 15.7,
+          "crecimiento_pct": 3.1,
+          "margen_ebitda_pct": 69.9,
+          "roic_pct": null,
+          "dn_ebitda": -0.3,
+          "fcf_yield_pct": 4.5,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Newmont",
+          "ticker": "NEM",
+          "pais": "US",
+          "capitalizacion": 124346,
+          "ev_ventas": 4.69,
+          "ev_ebitda_ltm": 7.1,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 11.9,
+          "crecimiento_pct": 6.8,
+          "margen_ebitda_pct": 66.2,
+          "roic_pct": null,
+          "dn_ebitda": -0.2,
+          "fcf_yield_pct": 7.1,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Barrick Mining",
+          "ticker": "B",
+          "pais": "CA",
+          "capitalizacion": 66560,
+          "ev_ventas": 3.16,
+          "ev_ebitda_ltm": 5.1,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 9.8,
+          "crecimiento_pct": 13,
+          "margen_ebitda_pct": 62.5,
+          "roic_pct": null,
+          "dn_ebitda": -0.1,
+          "fcf_yield_pct": 7.6,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Kinross Gold",
+          "ticker": "KGC",
+          "pais": "CA",
+          "capitalizacion": 28055,
+          "ev_ventas": 3.09,
+          "ev_ebitda_ltm": 4.9,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 9,
+          "crecimiento_pct": 5.7,
+          "margen_ebitda_pct": 63.6,
+          "roic_pct": null,
+          "dn_ebitda": -0.4,
+          "fcf_yield_pct": 10.7,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Alamos Gold",
+          "ticker": "AGI",
+          "pais": "CA",
+          "capitalizacion": 13387,
+          "ev_ventas": 5.8,
+          "ev_ebitda_ltm": 8.3,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 11.7,
+          "crecimiento_pct": 21.1,
+          "margen_ebitda_pct": 69.8,
+          "roic_pct": null,
+          "dn_ebitda": -0.3,
+          "fcf_yield_pct": 1,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Endeavour Mining",
+          "ticker": "EDV.L",
+          "pais": "GB",
+          "capitalizacion": 13116,
+          "ev_ventas": 2.72,
+          "ev_ebitda_ltm": 4.5,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 8.3,
+          "crecimiento_pct": 11.2,
+          "margen_ebitda_pct": 60.3,
+          "roic_pct": null,
+          "dn_ebitda": -0.1,
+          "fcf_yield_pct": 13.4,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Torex Gold",
+          "ticker": "TXG.TO",
+          "pais": "CA",
+          "capitalizacion": 4835,
+          "ev_ventas": 2.61,
+          "ev_ebitda_ltm": 4.5,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 7.7,
+          "crecimiento_pct": 6.1,
+          "margen_ebitda_pct": 58.2,
+          "roic_pct": null,
+          "dn_ebitda": -0.1,
+          "fcf_yield_pct": 12.8,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "OceanaGold",
+          "ticker": "OGC.TO",
+          "pais": "CA",
+          "capitalizacion": 5930,
+          "ev_ventas": 2.16,
+          "ev_ebitda_ltm": 3.7,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 10.7,
+          "crecimiento_pct": 0.2,
+          "margen_ebitda_pct": 58.3,
+          "roic_pct": null,
+          "dn_ebitda": -0.4,
+          "fcf_yield_pct": 11.8,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Gold Fields",
+          "ticker": "GFI",
+          "pais": "ZA",
+          "capitalizacion": 32669,
+          "ev_ventas": 2.91,
+          "ev_ebitda_ltm": 4.6,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 7.7,
+          "crecimiento_pct": null,
+          "margen_ebitda_pct": 62.7,
+          "roic_pct": null,
+          "dn_ebitda": 0.1,
+          "fcf_yield_pct": 12.8,
+          "es_objetivo": false
+        }
+      ],
+      "estadisticos": [
+        {
+          "estadistico": "Mediana",
+          "ev_ventas": 3.1,
+          "ev_ebitda_ltm": 4.9,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 9.8,
+          "crecimiento_pct": 6.5,
+          "margen_ebitda_pct": 62.7,
+          "roic_pct": null,
+          "dn_ebitda": -0.2,
+          "fcf_yield_pct": 10.7
+        },
+        {
+          "estadistico": "Media",
+          "ev_ventas": 3.7,
+          "ev_ebitda_ltm": 5.7,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 10.3,
+          "crecimiento_pct": 8.4,
+          "margen_ebitda_pct": 63.5,
+          "roic_pct": null,
+          "dn_ebitda": -0.2,
+          "fcf_yield_pct": 9.1
+        },
+        {
+          "estadistico": "Percentil 25",
+          "ev_ventas": 2.7,
+          "ev_ebitda_ltm": 4.5,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 8.3,
+          "crecimiento_pct": 5.1,
+          "margen_ebitda_pct": 60.3,
+          "roic_pct": null,
+          "dn_ebitda": -0.3,
+          "fcf_yield_pct": 7.1
+        },
+        {
+          "estadistico": "Percentil 75",
+          "ev_ventas": 4.7,
+          "ev_ebitda_ltm": 7.1,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 11.7,
+          "crecimiento_pct": 11.6,
+          "margen_ebitda_pct": 66.2,
+          "roic_pct": null,
+          "dn_ebitda": -0.1,
+          "fcf_yield_pct": 12.8
+        }
+      ],
+      "implicito": [
+        {
+          "metodo": "EV/EBITDA últimos 12 meses",
+          "metrica_empresa": 1446.4,
+          "multiplo_p25": 4.5,
+          "multiplo_mediana": 4.9,
+          "multiplo_p75": 7.1,
+          "multiplos": "4,5x / 4,9x / 7,1x",
+          "valor_p25": 26.77,
+          "valor_mediana": 29.15,
+          "valor_p75": 42.26,
+          "potencial_pct": -55
+        },
+        {
+          "metodo": "PER próximos 12 meses",
+          "metrica_empresa": 4.3,
+          "multiplo_p25": 8.3,
+          "multiplo_mediana": 9.8,
+          "multiplo_p75": 11.7,
+          "multiplos": "8,3x / 9,8x / 11,7x",
+          "valor_p25": 35.71,
+          "valor_mediana": 42.16,
+          "valor_p75": 50.33,
+          "potencial_pct": -34.9
+        },
+        {
+          "metodo": "EV/Ventas últimos 12 meses",
+          "metrica_empresa": 2018.8,
+          "multiplo_p25": 2.7,
+          "multiplo_mediana": 3.1,
+          "multiplo_p75": 4.7,
+          "multiplos": "2,7x / 3,1x / 4,7x",
+          "valor_p25": 22.58,
+          "valor_mediana": 25.65,
+          "valor_p75": 38.96,
+          "potencial_pct": -60.4
+        }
+      ],
+      "regresion": null,
+      "n": 9
+    },
+    "transacciones": null,
+    "suma_partes": null,
+    "multiplos_historicos": [
+      {
+        "metrica": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+        "campo": "ev_ebitda_ltm",
+        "actual": 10.9,
+        "media": 5.5,
+        "minimo": 5.3,
+        "maximo": 15,
+        "percentil": 80,
+        "prima_pct": 98,
+        "anios": 5
+      },
+      {
+        "metrica": "PER últimos 12 meses (cierre de cada año)",
+        "campo": "per_ltm",
+        "actual": 17,
+        "media": 15.8,
+        "minimo": 8.3,
+        "maximo": 29.9,
+        "percentil": 60,
+        "prima_pct": 8,
+        "anios": 5
+      }
+    ],
+    "multiplos_serie": [
+      {
+        "anio": "2021",
+        "multiplo": 5.4,
+        "media": 5.5
+      },
+      {
+        "anio": "2022",
+        "multiplo": 5.3,
+        "media": 5.5
+      },
+      {
+        "anio": "2023",
+        "multiplo": 5.5,
+        "media": 5.5
+      },
+      {
+        "anio": "2024",
+        "multiplo": 5.8,
+        "media": 5.5
+      },
+      {
+        "anio": "2025",
+        "multiplo": 15,
+        "media": 5.5
+      }
+    ],
+    "multiplos_titulo": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+    "consenso_vs_propio": [
+      {
+        "periodo": "2026e",
+        "ingresos_propio": 2330,
+        "ingresos_consenso": 2290.6,
+        "ingresos_dif_pct": 1.7,
+        "ebitda_propio": 1703,
+        "ebitda_consenso": 1629.4,
+        "ebitda_dif_pct": 4.5
+      },
+      {
+        "periodo": "2027e",
+        "ingresos_propio": 2076,
+        "ingresos_consenso": 2464.4,
+        "ingresos_dif_pct": -15.8,
+        "ebitda_propio": 1485,
+        "ebitda_consenso": 1703.9,
+        "ebitda_dif_pct": -12.8
+      },
+      {
+        "periodo": "2028e",
+        "ingresos_propio": 2076,
+        "ingresos_consenso": 2445.2,
+        "ingresos_dif_pct": -15.1,
+        "ebitda_propio": 1485,
+        "ebitda_consenso": 1759.9,
+        "ebitda_dif_pct": -15.6
+      }
+    ],
+    "gobierno": {
+      "n_consejeros": 9,
+      "independientes_pct": 67,
+      "antiguedad_media": 6.6,
+      "composicion": [
+        {
+          "tipo": "Independiente",
+          "num": 6
+        },
+        {
+          "tipo": "Ejecutivo",
+          "num": 1
+        },
+        {
+          "tipo": "Dominical",
+          "num": 2
+        }
+      ],
+      "checklist": [
+        {
+          "criterio": "Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)",
+          "resultado": "Cumple",
+          "valor": "67 % (con control)"
+        },
+        {
+          "criterio": "Presidencia sin vínculo familiar ni profesional con el accionista de control",
+          "resultado": "No cumple",
+          "valor": "Vinculada"
+        },
+        {
+          "criterio": "Presidente no ejecutivo, o consejero coordinador independiente",
+          "resultado": "Cumple",
+          "valor": "No ejecutivo"
+        },
+        {
+          "criterio": "Comisión de auditoría con mayoría de independientes y presidida por uno",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Ningún consejero «otro externo» con más de 12 años",
+          "resultado": "Cumple",
+          "valor": "Ninguno"
+        },
+        {
+          "criterio": "Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses",
+          "resultado": "Cumple",
+          "valor": "1 cambio"
+        },
+        {
+          "criterio": "Peor voto en contra sobre remuneración (3 juntas) ≤ 20 %",
+          "resultado": "Cumple",
+          "valor": "1,6 % en contra"
+        },
+        {
+          "criterio": "Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Una acción, un voto, sin blindajes ni límites de voto estatutarios",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Sin operaciones vinculadas relevantes",
+          "resultado": "No cumple",
+          "valor": "Hay"
+        },
+        {
+          "criterio": "Auditor con 10 años o menos en el cargo",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Opinión de auditoría sin salvedades",
+          "resultado": "Cumple",
+          "valor": "Favorable (sin salvedades) sobre las cuentas de 2025 [1]"
+        },
+        {
+          "criterio": "Directivos compradores netos en 12 meses (o sin ventas relevantes)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        }
+      ],
+      "puntuacion": "9 de 13 (2 sin dato)",
+      "puntuacion_pct": 69,
+      "compras_insiders": 0,
+      "ventas_insiders": 0
+    },
+    "competidores_margen": [
+      {
+        "nombre": "Lundin Gold",
+        "margen_ebit_pct": 61.7
+      },
+      {
+        "nombre": "Agnico Eagle",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Newmont",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Barrick Mining",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Kinross Gold",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Alamos Gold",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Endeavour Mining",
+        "margen_ebit_pct": null
+      },
+      {
+        "nombre": "Torex Gold",
+        "margen_ebit_pct": null
+      }
+    ],
+    "sintesis": {
+      "formato_eje": "#,##0.0",
+      "rangos": [
+        {
+          "metodo": "Cotización 52 semanas",
+          "etiqueta": "Cotización 52 semanas (50,73 – 88,07)",
+          "min": 50.73,
+          "central": 64.73,
+          "max": 88.07,
+          "gris": true
+        },
+        {
+          "metodo": "Precio objetivo de los analistas",
+          "etiqueta": "Precio objetivo de los analistas (58,17 – 73,77)",
+          "min": 58.17,
+          "central": 67.71,
+          "max": 73.77,
+          "gris": true
+        },
+        {
+          "metodo": "Comparables: PER NTM",
+          "etiqueta": "Comparables: PER NTM (35,71 – 50,33)",
+          "min": 35.71,
+          "central": 42.16,
+          "max": 50.33,
+          "gris": false
+        },
+        {
+          "metodo": "DCF (WACC y g ± 0,5)",
+          "etiqueta": "DCF (WACC y g ± 0,5) (21,43 – 22,83)",
+          "min": 21.43,
+          "central": 22.1,
+          "max": 22.83,
+          "gris": false
+        },
+        {
+          "metodo": "Escenarios (bajista – alcista)",
+          "etiqueta": "Escenarios (bajista – alcista) (15,82 – 27,02)",
+          "min": 15.82,
+          "central": 21.76,
+          "max": 27.02,
+          "gris": false
+        },
+        {
+          "metodo": "DCF con la prima del mercado",
+          "etiqueta": "DCF con la prima implícita del mercado (4,2 %)",
+          "min": 23.19,
+          "central": 23.83,
+          "max": 24.51
+        },
+        {
+          "metodo": "Precio actual",
+          "etiqueta": "Precio actual (64,73)",
+          "min": 64.41,
+          "central": 64.73,
+          "max": 65.05,
+          "gris": true
+        }
+      ],
+      "tabla": [
+        {
+          "metodo": "DCF",
+          "valor": 22.1,
+          "peso_pct": 45,
+          "potencial_pct": -65.9
+        },
+        {
+          "metodo": "Comparables (mediana EV/EBITDA y PER)",
+          "valor": 42.16,
+          "peso_pct": 15,
+          "potencial_pct": -34.9
+        },
+        {
+          "metodo": "Escenarios ponderados",
+          "valor": 21.76,
+          "peso_pct": 40,
+          "potencial_pct": -66.4
+        }
+      ],
+      "valor_objetivo": 24.97,
+      "potencial_pct": -61.4
+    },
+    "fuentes": {
+      "n_fuentes": 45,
+      "n_primarias": 26,
+      "por_tipo": [
+        {
+          "tipo": "Primaria",
+          "num": 26
+        },
+        {
+          "tipo": "Sectorial",
+          "num": 4
+        },
+        {
+          "tipo": "Datos de mercado",
+          "num": 8
+        },
+        {
+          "tipo": "Analistas",
+          "num": 2
+        },
+        {
+          "tipo": "Prensa",
+          "num": 3
+        },
+        {
+          "tipo": "Foros y redes",
+          "num": 2
+        }
+      ],
+      "n_citadas": 43,
+      "citas_sin_fuente": [],
+      "fuentes_sin_citar": [
+        "4",
+        "7"
+      ]
+    },
+    "controles": [
+      {
+        "control": "Tipo impositivo efectivo razonable (2023)",
+        "resultado": "Explicado",
+        "detalle": "37,1 %: explica la causa (créditos fiscales, regularizaciones, mezcla de países) y no lo proyectes en el DCF. Explicación: El 37,1 % de 2023 sale de las pérdidas por valor razonable del stream y del offtake de oro con Newmont (en el resultado financiero, −104,4 M), que no son deducibles en Ecuador: el impuesto se paga sobre el resultado de la mina [3]. Desde la recompra de esos contratos en junio de 2024 el tipo vuelve a la zona del 30 % (32,8 % en 2024, 29,5 % en 2025) [1, 2]. El DCF usa un 31 % (22 % de impuesto sobre la renta sobre una base que ya resta la participación del Estado y de los trabajadores y la regalía), no el de 2023."
+      },
+      {
+        "control": "Geografías suman 100 %",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "DCF inverso calculable",
+        "resultado": "Explicado",
+        "detalle": "No hay solución en un rango razonable: revisa circulante, capex o márgenes del DCF (un supuesto extremo hace que el valor no responda al crecimiento). Explicación: No hay solución porque el DCF de una mina que se agota apenas responde al crecimiento y al margen dentro del rango que prueba el motor: el valor del caso base (22,10 USD) es un tercio del precio. Lo que sí se puede calcular es el oro que justifica el precio: extrapolando nuestros escenarios (cada 100 USD de oro mueven el valor ≈ 0,66 USD por acción), el precio de 64,73 USD exige un oro de ≈ 10.500 USD/oz durante toda la vida de la mina con el WACC del 14,7 %, o bien una vida y una producción muy superiores a las de las reservas (5,85 Moz). Bajar el WACC al de la prima del mercado (13,3 %) solo sube el valor a 23,83 USD: el problema no es la tasa de descuento."
+      },
+      {
+        "control": "Puente de ingresos (volumen + precio + otros) = crecimiento del DCF",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Veredicto de sostenibilidad del analista coherente con las pruebas del motor",
+        "resultado": "OK",
+        "detalle": "El analista dice «Sí» y las pruebas del motor dan «Sí»: razónalo en la justificación."
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "resultado": "OK",
+        "detalle": "Supuesto 9,0 % frente a 10,8 % real: genera una variación de circulante de 16 M en el primer año. Converge de forma gradual."
+      },
+      {
+        "control": "Peso del valor terminal ≤ 80 % del valor empresa",
+        "resultado": "OK",
+        "detalle": "19 %."
+      },
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "resultado": "OK",
+        "detalle": "-3,00 %."
+      },
+      {
+        "control": "Probabilidades de los escenarios suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 5 comparables",
+        "resultado": "OK",
+        "detalle": "9 comparables."
+      },
+      {
+        "control": "Proyección propia frente a consenso (2028e)",
+        "resultado": "Explicado",
+        "detalle": "EBITDA propio -15,6 % frente al consenso: justifica la diferencia en el DCF. Explicación: Nuestros ingresos de 2027-2028 están un 15 % por debajo del consenso porque usamos el oro de hoy plano (4.150 USD/oz) y el consenso, a juzgar por sus ingresos de ≈ 2.450-2.460 M con 475.000-525.000 onzas, supone ≈ 4.700-4.900 USD [11, 30]. En producción coincidimos (la guía). Nuestro escenario alcista (oro a 4.900) reproduce el consenso: ingresos de 2.450 M en 2027. No proyectamos el oro al alza: usamos el precio de contado del 19-oct (≈ 4.160 USD) [45] como mejor estimación disponible y llevamos las subidas y bajadas a los escenarios."
+      },
+      {
+        "control": "Pesos de la síntesis suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Crecimiento del BPA base ≤ 25 % anual desde el último real",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Precio del cierre de la fecha de corte (o de las dos sesiones anteriores)",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Recomendación coherente con la regla de decisión",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Convicción frente a la sugerida por los criterios",
+        "resultado": "OK",
+        "detalle": "Los criterios dan «Alta» (las dos reglas dan Vender, rentabilidad del -55,3 % (-53,1 % con la prima del mercado) y el precio pide 21,0 puntos más de crecimiento que el caso base) y el análisis pone «Media»: explica en la síntesis por qué te apartas."
+      },
+      {
+        "control": "La síntesis explica la convicción",
+        "resultado": "OK",
+        "detalle": "La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría."
+      },
+      {
+        "control": "Capitalización calculada ≈ publicada",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 25 fuentes",
+        "resultado": "OK",
+        "detalle": "45 fuentes (26 primarias)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "resultado": "OK",
+        "detalle": "26."
+      },
+      {
+        "control": "Toda cita [n] existe en fuentes",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Fuentes sin citar ≤ 15 %",
+        "resultado": "OK",
+        "detalle": "Sin citar: 4, 7."
+      }
+    ],
+    "controles_resumen": "19 de 22 controles correctos y 3 explicados"
+  }
+}
