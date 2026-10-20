@@ -176,6 +176,13 @@ async function escanear() {
 
   const candidatas = [], observaciones = [], activas = [], descartesCalidad = [], recientes = [];
   const horaPrecio = madrid(new Date(PRECIOS.actualizado)).hora;
+  // Hora del precio: Asia y Arabia ya han cerrado cuando corre el escáner de Madrid, y Europa después de las 17:35.
+  const horaDe = (fecha, hora, simbolo = '') => {
+    if (fecha !== ahora.fecha) return `cierre del ${fechaCorta(fecha)}`;
+    const suf = String(simbolo).match(/\.([A-Z]+)$/)?.[1] || '';
+    if (/^(HK|T|KS|KQ|TW|TWO|SS|SZ|SR|SI|AX|NZ|BK|JK|KL)$/.test(suf) || (suf && suf !== 'TO' && hora > '17:35')) return 'cierre de hoy';
+    return hora;
+  };
   const base = (x, extra) => ({ fecha: ahora.fecha, hora: ahora.hora, ...extra });
 
   // --- Value: compras ---
@@ -187,7 +194,7 @@ async function escanear() {
     const rev = REV[x.clave], q = calidad(x.carpeta, x.clave), d = q.d;
     const sim = PRECIOS.precios[x.clave]?.simbolo || null;
     const fila = base(x, { tipo: 'COMPRA', vertical: 'value', clave: x.clave, nombre: x.nombre, carpeta: `informes/${x.carpeta}`, simbolo: sim,
-      precio: x.precio_cot, divisa: x.divisa_cotizacion, hora_precio: x.fecha_precio === ahora.fecha ? horaPrecio : `cierre del ${fechaCorta(x.fecha_precio)}`,
+      precio: x.precio_cot, divisa: x.divisa_cotizacion, hora_precio: horaDe(x.fecha_precio, horaPrecio, PRECIOS.precios[x.clave]?.simbolo),
       limite, rentabilidad_12m_pct: x.ponderada, rentabilidad_v2_pct: x.v2, base_pct: x.base, metodo: rev?.selector?.regla || x.version,
       accion_robusta: x.accion_robusta, veredicto: x.veredicto, calidad: q.txt,
       fecha_corte: d?.meta?.fecha_corte || null, proximos_resultados: fechaResultados(x.clave, d),
@@ -271,7 +278,7 @@ async function escanear() {
       if (q.dif !== null && q.dif < REGLAS.calidad_min_roic_wacc - 0.5 && !REGLAS.calidad_excepciones?.[p.clave]) motivos.push(`No pasa calidad (${q.txt}).`);
       for (const u of REGLAS.umbrales_venta.filter((u) => u.clave === p.clave)) if (x.divisa_cotizacion === u.divisa && x.precio_cot > u.precio) motivos.push(`Cruza el umbral apuntado: ${u.motivo}.`);
       fila = { tipo: 'VENTA', vertical: 'value', clave: p.clave, nombre: p.nombre, carpeta: `informes/${x.carpeta}`, simbolo: PRECIOS.precios[p.clave]?.simbolo || null,
-        precio: x.precio_cot, divisa: x.divisa_cotizacion, hora_precio: x.fecha_precio === ahora.fecha ? horaPrecio : `cierre del ${fechaCorta(x.fecha_precio)}`,
+        precio: x.precio_cot, divisa: x.divisa_cotizacion, hora_precio: horaDe(x.fecha_precio, horaPrecio, PRECIOS.precios[x.clave]?.simbolo),
         limite: x.limite_mantener_cot, rentabilidad_12m_pct: x.ponderada, base_pct: x.base, calidad: q.txt, fecha_corte: d?.meta?.fecha_corte || null,
         proximos_resultados: fechaResultados(p.clave, d), senal_alarma: d?.resumen?.cambiaria_recomendacion || null,
         objecion_auto: x.colchon?.mantener !== null && x.ponderada >= 0 ? `La empresa sigue siendo buena; el problema es el precio: el objetivo del informe da ${fp(x.ponderada)}.` : 'La tesis puede volver con los próximos resultados.' };
@@ -311,7 +318,7 @@ async function escanear() {
     const lim = x.limite_nivel_cot;
     if (!Number.isFinite(lim) || x.precio_cot > lim) continue;
     posibles.push({ vertical: 'value', nivel: x.nivel, tope_pct: REGLAS.niveles_compra?.[x.nivel]?.tope_pct ?? null, clave: x.clave, nombre: x.nombre, precio: x.precio_cot, divisa: x.divisa_cotizacion, limite: r(lim, 2),
-      hora_precio: x.fecha_precio === ahora.fecha ? horaPrecio : `cierre del ${fechaCorta(x.fecha_precio)}`, rentabilidad_12m_pct: x.ponderada, estado: estadoPosible(x.clave, x.nivel),
+      hora_precio: horaDe(x.fecha_precio, horaPrecio, PRECIOS.precios[x.clave]?.simbolo), rentabilidad_12m_pct: x.ponderada, estado: estadoPosible(x.clave, x.nivel),
       contexto_informe: x.contexto_mercado?.veredicto ? { veredicto: x.contexto_mercado.veredicto, fecha: x.carpeta.match(/\d{4}-\d{2}-\d{2}/)?.[0] || null } : null });
   }
   for (const g of gro) {
@@ -335,6 +342,41 @@ async function escanear() {
   const ordenNivel = { A: 0, B1: 1, B2: 1, C: 2 };
   posibles.sort((a, b) => (ordenNivel[a.nivel] ?? 1.5) - (ordenNivel[b.nivel] ?? 1.5) || b.rentabilidad_12m_pct - a.rentabilidad_12m_pct);
 
+  // Seguimiento de cerca (Hotis 20-oct-2026): cada escáner cierra con cuatro grupos: compras posibles, la lista marcada por
+  // Hotis (órdenes de compra, lista de espera y fijadas) con su distancia al límite, y las de calidad completa (niveles A/B1) a
+  // menos de un 5 % y a un 5-15 % de su primer nivel, marcando las que cambian de grupo desde el escáner anterior.
+  const previo = leer(RUTA_ESC, {});
+  const grupoPrevio = new Map([...(previo.cerca || []).map((c) => [c.clave, c.grupo]), ...(previo.compras_posibles || []).map((c) => [c.clave, 'posible'])]);
+  const buscarValue = (k) => rob.find((x) => x.clave === k) || rob.find((x) => { const s = PRECIOS.precios[x.clave]?.simbolo || ''; return s === k || s.split('.')[0] === k || x.clave === k.split('.')[0]; });
+  const faltaPct = (precio, lim) => (precio && lim ? r(100 * (1 - lim / precio), 1) : null);
+  const marcadas = [];
+  for (const [o, papel] of [...(pend.comprar || []).map((o) => [o, 'compra apuntada']), ...(pend.lista_espera || []).map((o) => [o, 'lista de espera']),
+    ...(CARTERA.ordenes_pendientes?.fijadas_por_hotis?.claves || []).map((k) => [{ clave: k }, 'fijada por Hotis'])]) {
+    if (marcadas.some((m) => m.clave === o.clave || m.clave_informe === buscarValue(o.clave)?.clave)) continue;
+    const g = gro.find((y) => y.ticker === o.clave), x = g ? null : buscarValue(o.clave);
+    const precio = g ? g.precio_hoy : x?.precio_cot, lims = x?.limites_nivel_cot || {};
+    const lim = o.limite ?? lims.A ?? lims.B2 ?? null; // sin límite apuntado: el de su compra robusta
+    marcadas.push({ clave: o.clave, clave_informe: x?.clave || null, nombre: g?.empresa || x?.nombre || o.clave, vertical: g ? 'growth' : 'value', papel, titulos: o.titulos ?? null,
+      precio: precio ?? null, divisa: o.divisa || g?.divisa || x?.divisa_cotizacion, limite: lim, falta_pct: faltaPct(precio, lim),
+      hora_precio: g ? horaDe(g.fecha_hoy, ahora.hora, g.simbolo) : x ? horaDe(x.fecha_precio, horaPrecio, PRECIOS.precios[x.clave]?.simbolo) : null, nivel_hoy: x?.nivel || null });
+  }
+  marcadas.sort((a, b) => (a.falta_pct ?? 99) - (b.falta_pct ?? 99));
+  const enPosibles = new Set(posibles.map((c) => c.clave));
+  const cerca = [];
+  for (const x of rob) {
+    const lims = x.limites_nivel_cot || {};
+    if (REGLAS.exclusiones[x.clave] || noComprable(x.clave, PRECIOS.precios[x.clave]?.simbolo) || !x.precio_cot || lims.A == null || enPosibles.has(x.clave)) continue;
+    const nivel = lims.B1 != null && lims.B1 >= lims.A ? 'B1' : 'A', lim = lims[nivel], d = faltaPct(x.precio_cot, lim);
+    if (!(d > 0 && d < 15)) continue;
+    const grupo = d < 5 ? 'menos de 5 %' : '5-15 %', antes = grupoPrevio.get(x.clave) || null;
+    cerca.push({ clave: x.clave, nombre: x.nombre, grupo, nivel, precio: x.precio_cot, divisa: x.divisa_cotizacion, limite: lim, limite_a: lims.A, falta_pct: d,
+      hora_precio: horaDe(x.fecha_precio, horaPrecio, PRECIOS.precios[x.clave]?.simbolo), rentabilidad_12m_pct: x.ponderada, en_cartera: pos.has(x.clave),
+      cambio: !previo.cerca ? null : antes === grupo ? null : antes === 'posible' ? 'sale de compras posibles' : antes ? (grupo === 'menos de 5 %' ? 'se acerca (venía de 5-15 %)' : 'se aleja (venía de menos de 5 %)') : 'entra' });
+  }
+  cerca.sort((a, b) => a.falta_pct - b.falta_pct);
+  const salenDeCerca = previo.cerca ? previo.cerca.filter((c) => !cerca.some((y) => y.clave === c.clave) && !enPosibles.has(c.clave)).map((c) => c.nombre) : [];
+  const pasanAPosible = posibles.filter((c) => grupoPrevio.has(c.clave) && grupoPrevio.get(c.clave) !== 'posible').map((c) => c.nombre);
+
   // Calendario de resultados (regla 11 de METODO-VIGENTE.md, 15-oct: los resultados cercanos no aplazan ni parten la compra, solo se avisa; con resultados ya
   // publicados después del informe, revisión obligatoria en el Vup antes de dar la señal).
   for (const c of [...candidatas, ...observaciones, ...activas]) {
@@ -345,7 +387,8 @@ async function escanear() {
     if (dd < 0 && c.fecha_corte && pr > c.fecha_corte) c.vup_obligatorio = `${c.vup_obligatorio ? `${c.vup_obligatorio} ` : ''}Publicó resultados el ${fechaCorta(pr)}, después del informe (corte ${fechaCorta(c.fecha_corte)}): revisarlos antes de dar la señal.`;
   }
   const esc = { fecha: ahora.fecha, hora: ahora.hora, precios_actualizados: PRECIOS.actualizado, valor_cartera_eur: r(total, 0), liquidez_libre_eur: CARTERA.liquidez_libre_eur,
-    bolsillo_growth_pct: r(bolsilloPct), revisadas: { value: rob.length, growth: gro.length }, candidatas, observaciones, activas, descartes_calidad: descartesCalidad, descartadas_hace_poco: recientes, compras_posibles: posibles };
+    bolsillo_growth_pct: r(bolsilloPct), revisadas: { value: rob.length, growth: gro.length }, candidatas, observaciones, activas, descartes_calidad: descartesCalidad, descartadas_hace_poco: recientes, compras_posibles: posibles,
+    marcadas, cerca, sale_de_cerca: salenDeCerca, pasan_a_posible: pasanAPosible };
   guardar(RUTA_ESC, esc);
   console.log(`Escáner ${fechaCorta(ahora.fecha)} ${ahora.hora} (Madrid): ${rob.length} value y ${gro.length} growth revisadas; cartera ${f(total, 0)} EUR, liquidez libre ${f(CARTERA.liquidez_libre_eur, 0)} EUR, bolsillo growth ${f(bolsilloPct, 0)} %.`);
   console.log(`\nCANDIDATAS (necesitan Vup antes de ser señal): ${candidatas.length}`);
@@ -363,7 +406,7 @@ async function escanear() {
   for (const o of observaciones) console.log(`· ${o.tipo} ${o.nombre}: ${o.estado} (${o.nota}); precio ${fPrecio(o.precio)} ${o.divisa}, límite ${fPrecio(o.limite)}, ${fp(o.rentabilidad_12m_pct)}`);
   if (activas.length) console.log(`\nACTIVAS: ${activas.map((a) => `${a.tipo} ${a.nombre} (desde ${fechaCorta(a.desde)})`).join('; ')}`);
   if (recientes.length) console.log(`\nDescartadas en un Vup de los últimos 7 días (no se repiten): ${recientes.join(', ')}`);
-  console.log(`\n${tablaPosibles(esc)}`);
+  console.log(`\n${tablaPosibles(esc)}\n\n${tablaCerca(esc)}`);
   if (descartesCalidad.length) console.log(`\nTocan banda pero no pasan calidad: ${descartesCalidad.join('; ')}`);
   console.log(`\nSiguiente paso: Vup de cada candidata (escaner/README.md) → ${P}decisiones.json → --registrar.`);
 }
@@ -451,7 +494,23 @@ function tablaPosibles(esc) {
     '', `Son posibles, no órdenes. Niveles value (regla 16): A = compra robusta (7 %); B1 = v2 y BPA −10 % solo aguantan Mantener, calidad completa (4 %); B2 = números de A, sostenibilidad «En parte» con ROIC − WACC ≥ 5 (4 %); C = las dos cosas aflojadas (3,3 %); niveles 2 y 3 como mucho el 25 % del bolsillo value y el 3 el 10 %; el dinero va primero a A. Cuáles se compran depende de la liquidez (libre ${f(esc.liquidez_libre_eur ?? 0, 0)} €) y de lo que haya que vender antes; las que tienen «falta» en el repaso de precio y noticias lo necesitan antes de una orden.${t.some((c) => c.vertical === 'growth') ? ` Las growth solo salen con +25 % o más a 12 meses, más a largo plazo y una subida esperada de al menos 0,75 veces la caída del escenario malo; comparten un bolsillo con tope (hoy al ${f(esc.bolsillo_growth_pct ?? 0, 0)} %).` : ''}`].join('\n');
 }
 function mensaje(esc, nuevas, reg, avisos = []) {
-  return `${mensajeBase(esc, nuevas, reg, avisos)}\n\n${tablaPosibles(esc)}`;
+  const arriba = esc.pasan_a_posible?.length ? `**Pasan a compra posible desde el escáner anterior: ${esc.pasan_a_posible.join(', ')}.**\n\n` : '';
+  return `${arriba}${mensajeBase(esc, nuevas, reg, avisos)}\n\n${tablaPosibles(esc)}\n\n${tablaCerca(esc)}`;
+}
+// Grupos 2-4 del seguimiento de cerca (Hotis 20-oct-2026): lista marcada y calidad completa a < 5 % y a 5-15 % de su primer nivel.
+function tablaCerca(esc) {
+  const m = esc.marcadas || [], c = esc.cerca || [], falta = (d) => (d == null ? 'sin precio' : d <= 0 ? 'en el límite o por debajo' : `−${f(d, 1)} %`);
+  const out = [`**Lista marcada por ti (${m.length})**`, '', '| Empresa | Tipo | Apunte | Comprar a mercado si cotiza en | Precio ahora | Falta |', '|---|---|---|---|---|---|',
+    ...m.map((x) => `| ${x.nombre} | ${x.vertical} | ${x.papel}${x.titulos ? ` (${x.titulos})` : ''} | ${x.limite != null ? `${fPrecio(x.limite)} ${x.divisa} o menos` : 'sin límite'} | ${x.precio != null ? `${fPrecio(x.precio)} ${x.divisa} (${x.hora_precio})` : 'sin precio'} | ${falta(x.falta_pct)} |`)];
+  for (const g of ['menos de 5 %', '5-15 %']) {
+    const t = c.filter((x) => x.grupo === g);
+    out.push('', `**Calidad completa a ${g} de su primer nivel (${t.length})**`, '');
+    if (!t.length) { out.push('Ninguna.'); continue; }
+    out.push('| Empresa | Precio ahora | Límite (nivel) | Límite A | Falta | Rentab. 12 m | Cambio |', '|---|---|---|---|---|---|---|',
+      ...t.map((x) => `| ${x.nombre}${x.en_cartera ? ' (en cartera)' : ''} | ${fPrecio(x.precio)} ${x.divisa} (${x.hora_precio}) | ${fPrecio(x.limite)} (${x.nivel}) | ${fPrecio(x.limite_a)} | ${falta(x.falta_pct)} | ${fp(x.rentabilidad_12m_pct)} | ${x.cambio || '='} |`));
+  }
+  if (esc.sale_de_cerca?.length) out.push('', `Se alejan más de un 15 %: ${esc.sale_de_cerca.join(', ')}.`);
+  return out.join('\n');
 }
 function mensajeBase(esc, nuevas, reg, avisos = []) {
   const emit = nuevas.filter((s) => s.estado === 'emitida');

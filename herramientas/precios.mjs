@@ -172,6 +172,9 @@ async function actualizar(pedidas = [], comprobar = false) {
       if (f === null) { avisos++; console.error(`${k}: divisa de Yahoo ${y.divisa} ≠ informe ${cot.divisa}`); }
       else if (fila.informe.variacion_pct !== null && Math.abs(fila.informe.variacion_pct) > 35) { avisos++; console.error(`${k}: ${fila.informe.variacion_pct} % frente al precio del informe (${cot.fecha}): ¿símbolo, split o divisa?`); }
     }
+    // Yahoo a veces devuelve una serie atrasada (Hong Kong, 20-oct-2026): nunca se cambia un cierre por otro más viejo.
+    const ant = salida.precios[k];
+    if (ant?.fecha && fila.fecha < ant.fecha && !ant.error) { avisos++; console.error(`${k}: Yahoo da el cierre del ${fila.fecha}, más viejo que el guardado (${ant.fecha}); se queda el guardado`); continue; }
     salida.precios[k] = fila;
     console.log(`${k.padEnd(10)} ${String(fila.precio).padStart(10)} ${fila.divisa.padEnd(4)} ${fila.fecha}${fila.en_curso ? ` (sesión en curso: ${fila.en_curso.precio})` : ''}${fila.informe?.variacion_pct !== undefined && fila.informe?.variacion_pct !== null ? `  informe ${fila.informe.fecha}: ${fila.informe.variacion_pct > 0 ? '+' : ''}${fila.informe.variacion_pct} %` : ''}`);
     await espera(200);
