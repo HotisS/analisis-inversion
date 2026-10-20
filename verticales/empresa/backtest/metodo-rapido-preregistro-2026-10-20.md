@@ -42,3 +42,11 @@ n, media, mediana, exceso medio y mediano frente al índice, % que bate al índi
 
 ## Límites conocidos
 Sesgo de supervivencia (listas de hoy): cifras absolutas infladas; vale la comparación entre grupos. Las «nuestras» las elegimos porque hoy nos gustan. Sostenibilidad no reconstruible. Decisión anual.
+
+## Añadido 2026-10-20 ~16:40 UTC, antes de bajar datos: prueba fuera de muestra (sesgo de selección)
+Pedido por el usuario (16:33): 200 empresas que no cubrimos.
+- **Muestra nueva**: 200 empresas al azar (semilla 20261020, `random.sample` de Python sobre la lista ordenada por ticker) del S&P 600 de hoy (Wikipedia, con CIK), quitando las que tienen informe (`verticales/empresa/simbolos.json`).
+- **Control**: el conjunto US ya probado quitando las 69 empresas que cubrimos.
+- Mismas reglas, grupos, medidas y fechas (1 día hábil después del 10-K) que arriba. Sin mejoras nuevas.
+- **Criterio «no es sesgo de selección»**: en la muestra nueva, A (o, si A tiene < 30 casos, números A + calidad completa ≥ 30 casos) tiene exceso medio frente al SPY por encima del de «todas» de esa muestra, y números A sin calidad no lo supera. Si no se cumple, se dice que el resultado no se repite.
+- Índice: SPY (también se da el exceso frente a IJR, el ETF del S&P 600, por ser pequeñas).
