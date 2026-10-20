@@ -1,0 +1,4824 @@
+{
+  "meta": {
+    "fecha_corte": "2026-10-20",
+    "divisa": "RMB",
+    "divisa_cotizacion": "HKD",
+    "tipo_cambio": 0.8507,
+    "unidades": "millones",
+    "cierre_ejercicio_mes": 12,
+    "etiqueta_ejercicio": "fin",
+    "normas_contables": "NIIF (HKFRS/IFRS), cuentas consolidadas; sociedad anónima china (acciones H) cotizada en Hong Kong",
+    "formato_cuenta": "funcion",
+    "limitaciones": "Cuentas consolidadas NIIF en millones de RMB; la acción H cotiza en HKD. Fuente primaria: HKEXnews (informes anuales de 2021-2025, anuncio de resultados de 2025, anuncio e informe del 1S26, informes semestrales de 2024-2025, junta de 2026, operaciones vinculadas y Monthly Return de septiembre de 2026) [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 20, 21, 22, 23, 24, 25, 26]. Hong Kong no tiene XBRL en herramientas/cuentas.mjs. Las cuentas las auditó Ernst & Young (opinión favorable) y EY revisó el 1S26 [1, 3]. La empresa publica semestres, no trimestres, y cinco segmentos (agua, té, funcionales, zumos y otros) con su resultado, pero no volumen ni precio por categoría: el puente de ingresos es estimación nuestra. Precio: cierre de hoy en Hong Kong, 41,88 HKD (20-oct-2026, 16:08 hora de Hong Kong), × 0,8507 RMB por HKD = 35,63 RMB [27, 32]. El ISIN (CNE100003TQ1) sale de listados de datos de mercado, no de un documento de la empresa. Los datos del sector (tamaño del mercado, cuotas) son de consultoras chinas (观研天下, CIC, Nielsen vía prensa, 马上赢) y no de estadística oficial [12, 13, 14, 15, 16].",
+    "controles_explicados": [
+      {
+        "control": "Regresión múltiplo-crecimiento explicativa (R² ≥ 0,3)",
+        "explicacion": "R² de 0,00: en esta muestra el múltiplo lo explican el margen y la calidad de la marca (Coca-Cola y Monster a 25-30 veces el EBITDA; Tingyi, Uni-President y CR Beverage a 5-6 veces con márgenes del 11-15 %), no el crecimiento. No usamos el valor de la regresión."
+      },
+      {
+        "control": "Comparables estables al quitar una empresa",
+        "explicacion": "La mediana del EV/EBITDA de los próximos 12 meses va de 8,5x a 10,1x según qué comparable se quite: la muestra mezcla bebidas chinas baratas y de margen bajo con marcas mundiales caras. Ningún comparable tiene el margen EBITDA del 45 % de Nongfu. Por eso los comparables pesan solo un 20 % y lo que decide es el DCF y la regla a 12 meses con el PER propio."
+      }
+    ],
+    "huecos": [
+      {
+        "seccion": "sector",
+        "campo": "tcac_historico_pct y cr5_pct",
+        "tipo": "Complemento",
+        "intentos": "1) Informes anuales de Nongfu y de CR Beverage: solo cuotas de agua de 2023 [14]; 2) 观研天下: solo 2024 y CR3 por categoría [12]; 3) Euromonitor y Nielsen: de pago, solo resúmenes de prensa",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "esg",
+        "campo": "calificaciones",
+        "tipo": "Complemento",
+        "intentos": "1) Informe de sostenibilidad 2025 (HKEXnews, 20 MB): no descargado por tamaño; 2) web de MSCI (requiere registro); 3) prensa: sin calificación con fecha",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "bolsa",
+        "campo": "posicion_corta_pct",
+        "tipo": "Complemento",
+        "intentos": "1) HKEX: solo ventas en corto diarias, no posición; 2) Yahoo: sin dato para Hong Kong [29]; 3) SFC (posiciones cortas agregadas semanales): no consultado con éxito desde este entorno",
+        "decision": "Omitido"
+      }
+    ]
+  },
+  "identificacion": {
+    "nombre": "Nongfu Spring Co., Ltd. (农夫山泉股份有限公司)",
+    "nombre_corto": "Nongfu Spring",
+    "ticker": "9633.HK",
+    "isin": "CNE100003TQ1",
+    "mercado": "Bolsa de Hong Kong (Main Board), acciones H",
+    "indice_referencia": "Hang Seng (Tracker Fund 2800.HK)",
+    "pais": "China",
+    "pais_iso": "CN",
+    "sector": "Productos de consumo básico",
+    "industria": "Bebidas sin alcohol",
+    "sede": "Hangzhou (Zhejiang)",
+    "fundacion": "1996",
+    "empleados": 28000,
+    "web": "https://www.nongfuspring.com",
+    "precio": 35.63,
+    "fecha_precio": "2026-10-20",
+    "acciones": 11246.5,
+    "capitalizacion_publicada": 400681,
+    "free_float_pct": 16,
+    "max_52s": 47.85,
+    "min_52s": 32.24,
+    "volumen_medio_diario": "≈ 262 M HKD/día (3 meses)",
+    "proximos_resultados": "2027-03-23"
+  },
+  "resumen": {
+    "recomendacion": "Mantener",
+    "conviccion": "Baja",
+    "justificacion_recomendacion": "Convicción baja porque las reglas discrepan (valor intrínseco por debajo del precio, múltiplo en mínimos). La regla a 12 meses (v3) da un 26,2 % ponderado y un 22,0 % en el base, pero la señal es Mantener: el valor intrínseco (30,46 RMB, 35,81 HKD) queda un 14,5 % por debajo del precio, y la v2 (PER al cierre) tampoco da compra (14,5 % y 10,9 %). La calidad pasa con holgura (ROIC − WACC de 106 puntos y sostenibilidad «Sí»). La acción robusta (herramientas/robustez.mjs) es Mantener: no abrir posición; la compra robusta empieza por debajo de 35,80 HKD.",
+    "horizonte": "12 meses",
+    "sintesis": "**La recomendación y por qué.** **Mantener**, con convicción baja: no es una compra nueva a 41,88 HKD (35,63 RMB, cierre del 20-oct-2026) [27]. La regla v3 da un objetivo de 43,96 RMB (51,68 HKD): +26,2 % con dividendo (+22,0 % en el base). Pero el valor intrínseco (30,46 RMB, 35,81 HKD) está un 14,5 % por debajo del precio y la v2 da un 14,5 %: no pasa el filtro de valor real. La compra robusta empieza por debajo de 35,80 HKD, un 15 % por debajo de hoy. La convicción es baja porque las reglas discrepan: el valor intrínseco dice que está cara (−14,5 %) y el múltiplo, en mínimos de su historia, dice que está barata (+26 % a 12 meses). La subiría un 2S26 con el agua creciendo y el margen en el 45 % (sube el valor intrínseco); la bajaría un té creciendo por debajo del 15 %.\n\n**El negocio.** Nongfu es la mayor empresa de bebidas envasadas de China: agua (农夫山泉, 36 % de las ventas de 2025), té sin azúcar (东方树叶, 41 %), bebidas funcionales, zumos y otras [1]. Tiene 17 fuentes de agua propias y vende a través de distribuidores que llegan a millones de tiendas [12]. **Calidad**: ROIC del 114 % en 2025 frente a un WACC del 7,7 % (106 puntos) y sostenibilidad del crecimiento **Sí**: **pasa el requisito de calidad**.\n\n**Finanzas.** Ventas de 52.553 M RMB en 2025 (+22,5 %), margen EBITDA del 45,3 % y beneficio de 15.868 M (+30,9 %, BPA 1,41) [1]; en el 1S26, ventas de 29.718 M (+16,0 %) y margen del 45 % [3]. Caja y depósitos de 37.645 M frente a 5.273 M de deuda (antes del dividendo de 11.134 M pagado en agosto); reparte ≈ 70 % del beneficio [3].\n\n**Lo que preocupa al mercado.** El agua: tras la campaña en redes contra la empresa y su fundador de 2024 cayó un 21,3 %, rebotó un 17,3 % en 2025 y en el 1S26 solo crece un 2,1 %, aún por debajo de 2023, en plena guerra de precios con C'estbon (怡宝, −7,9 %), Wahaha y las marcas baratas: el mercado del agua cae un 7,3 % en importe según Nielsen [3, 16, 17]. Nongfu gana cuota, pero sin precio. El té sin azúcar sostiene el crecimiento (+30,1 %, cuota del 31 %) [3, 15].\n\n**Equipo y gobierno.** Zhong Shanshan, fundador y presidente, controla el 84 % y ha comprado ≈ 120,8 M HKD de acciones H en julio-septiembre de 2026 [1, 23]. Alertas: libre flotación del 16 %, compras a empresas del fundador con topes al alza (hasta 1.000 M en 2028) y su hijo en el consejo desde 2026 [20, 21].\n\n**Valoración.** El DCF da 31,97 RMB (WACC del 7,68 %, bono chino al 1,64 % [30]); el precio descuenta un crecimiento del 8,5 % anual (base 6,4 %) o un margen del 48,9 %. A 12 meses: PER de 22,6x (el actual × 1,1) sobre un BPA de 2028e de 1,88 RMB, un 6 % por debajo del consenso. Con un BPA un 10 % menor, la v3 baja al 13,8 %.\n\n**Riesgos y catalizadores.** El riesgo principal es que la guerra de precios del agua pase al té (bajista a 12 meses −13,4 %); le siguen otra campaña en redes, el PET y el gobierno de un fundador con el 84 %. **Riesgo de IA: bajo**. Catalizador: resultados de 2026 hacia el 23-mar-2027. Veredicto de precio y noticias: no cambia.\n\n**Qué cambiaría la decisión.** Un precio por debajo de 35,80 HKD (límite robusto: v3 y v2 con BPA −10 % y valor real) o un agua que vuelva a crecer al 5 % con el té por encima del 15 %, que subiría el valor intrínseco.",
+    "tesis": "Nongfu es el mejor negocio de bebidas de China: margen EBITDA del 45 %, ROIC por encima del 100 %, caja neta y una marca que sobrevivió a la campaña de 2024 [1, 5].\n\nEl problema es el precio: a 41,88 HKD paga unas 20 veces nuestro BPA de 2027e, que es poco frente a su historia (mediana de 37x) pero mucho para un crecimiento a largo plazo del 6-7 % con un WACC del 7,7 %. El DCF da 31,97 RMB, un 10 % menos que el precio.\n\nLa regla a 12 meses ve un 26 % de subida porque el múltiplo está en mínimos de su historia, pero el valor real no la respalda. Es una empresa para comprar más abajo: por debajo de 35,80 HKD.",
+    "vision_diferencial": {
+      "mercado_descuenta": "Ventas creciendo un 8,5 % anual hasta 2033 con margen del 44,5 %, o un margen del 48,9 % con nuestro crecimiento. Los analistas (22 de 28 comprar) esperan un 12 % y un 11 % en 2027-2028 [28].",
+      "nuestra_vision": "Un crecimiento algo menor que el del consenso (10 % y 9 % en 2027e-2028e, 6,4 % de media en 2027e-2033e) porque el té no puede seguir al 30 % y el agua está plana; margen del 45 %, igual que el consenso. BPA de 2028e un 6 % por debajo.",
+      "por_que": "El té ya es el 44 % de las ventas y su cuota es del 31 % [3, 15]; el agua crece un 2,1 % en un mercado que cae un 7,3 % [3, 16]. Un crecimiento del 12 % anual exigiría que el agua vuelva a crecer, y no hay señal de ello."
+    },
+    "a_favor": [
+      "**Calidad del negocio**: ROIC del 114 % y margen EBITDA del 45 % [1].",
+      "**Té sin azúcar**: +30,1 % en el 1S26 y cuota del 31 %, la mayor del mercado [3, 15].",
+      "**Fundador comprador**: ≈ 120,8 M HKD de compras en julio-septiembre de 2026 [23].",
+      "**Múltiplo en mínimos**: 20,5x nuestro BPA de 2027e, el PER más bajo desde la salida a bolsa [27]."
+    ],
+    "en_contra": [
+      "**Valor real por debajo del precio**: DCF de 31,97 RMB y valor intrínseco de 30,46 RMB frente a 35,63.",
+      "**Agua sin crecimiento**: +2,1 % en el 1S26, aún por debajo de 2023, con guerra de precios [3, 16].",
+      "**Costes**: PET +40 % entre enero y abril de 2026; sin guía de margen [41, 42].",
+      "**Gobierno**: fundador con el 84 % y operaciones vinculadas al alza [21]."
+    ],
+    "que_vigilar": "Si el agua vuelve a crecer y el té aguanta. La señal de que la tesis mejora: un 2S26 con ventas de 29.930 M o más (+11 %), agua creciendo al 5 % y margen EBITDA del 45 %; la de que falla: té creciendo por debajo del 15 % o margen EBITDA por debajo del 43 %.",
+    "cambiaria_recomendacion": [
+      "Precio por debajo de 35,80 HKD (límite robusto): pasan la v3, la v2 con BPA −10 % y el valor real; la calidad ya pasa.",
+      "Agua creciendo al 5 % o más en el 2S26 y el 1S27 con el té por encima del 15 %: subiríamos el base y el valor intrínseco.",
+      "Té por debajo del 10 % o margen EBITDA por debajo del 43 %: bajaríamos el base al bajista.",
+      "Precio por encima de 49,95 RMB (≈ 58,7 HKD): Vender."
+    ],
+    "kpis_seguimiento": [
+      {
+        "kpi": "Crecimiento del agua envasada",
+        "nivel_actual": "+2,1 % (1S26)",
+        "umbral_alerta": "Caída en el 2S26",
+        "por_que": "La guerra de precios es el riesgo principal."
+      },
+      {
+        "kpi": "Crecimiento del té",
+        "nivel_actual": "+30,1 % (1S26)",
+        "umbral_alerta": "< 15 %",
+        "por_que": "Es el motor del beneficio."
+      },
+      {
+        "kpi": "Margen EBITDA semestral",
+        "nivel_actual": "45,0 % (1S26)",
+        "umbral_alerta": "< 43 %",
+        "por_que": "El base supone 45 %."
+      },
+      {
+        "kpi": "Cuota del té listo para beber",
+        "nivel_actual": "31,1 % (1T26)",
+        "umbral_alerta": "< 28 %",
+        "por_que": "Mide si la competencia llega al té."
+      },
+      {
+        "kpi": "Compras o ventas del fundador",
+        "nivel_actual": "Compras de ≈ 120,8 M HKD (jul-sep 2026)",
+        "umbral_alerta": "Cualquier venta",
+        "por_que": "Controla el 84 %."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "historia": {
+    "resumen": "Zhong Shanshan, periodista y vendedor de bebidas, fundó en 1993 Yangshengtang y en 1996 Nongfu Spring en Qiandao (Zhejiang), con agua del lago y la publicidad de «农夫山泉有点甜» [1]. En 2000 dejó de producir agua purificada y se quedó solo con la natural, en guerra abierta con las marcas de purificada [5]. Diversificó en zumos (农夫果园, 2003), funcionales (尖叫, 2003), té (东方树叶, 2011, demasiado pronto: tardó una década en despegar) y café. Salió a bolsa en Hong Kong el 8-sep-2020 [3]. En 2024 sufrió una campaña en redes contra la empresa y el fundador, volvió a lanzar agua purificada en abril de 2024 y vio caer el agua un 21 % [5]; en 2025 recuperó crecimiento con el té [1].",
+    "hitos": [
+      {
+        "anio": "1996",
+        "hito": "Fundación en Qiandao (Zhejiang) por Zhong Shanshan [1]"
+      },
+      {
+        "anio": "2000",
+        "hito": "Deja el agua purificada y se queda con la natural [5]"
+      },
+      {
+        "anio": "2003",
+        "hito": "Lanza 农夫果园 (zumo) y 尖叫 (funcional) [3]"
+      },
+      {
+        "anio": "2011",
+        "hito": "Lanza 东方树叶, té sin azúcar [3]"
+      },
+      {
+        "anio": "2020",
+        "hito": "Salida a bolsa en Hong Kong (8-sep) [3]"
+      },
+      {
+        "anio": "2024",
+        "hito": "Campaña en redes contra la empresa y el fundador; agua −21,3 %; agua purificada verde (abril) [5]"
+      },
+      {
+        "anio": "2025",
+        "hito": "Ventas +22,5 %; el té supera al agua en ventas [1]"
+      },
+      {
+        "anio": "2026",
+        "hito": "30.º aniversario; 17 fuentes; té +30,1 % y agua +2,1 % en el 1S [3]"
+      }
+    ],
+    "confianza": "Alta"
+  },
+  "negocio": {
+    "segmentos": [
+      {
+        "nombre": "Agua envasada",
+        "descripcion": "Agua natural de 17 fuentes (marca 农夫山泉, botella roja), agua purificada (botella verde, desde abril de 2024), agua mineral y para bebés, hielo",
+        "tipo_resultado": "EBIT",
+        "historico": [
+          {
+            "periodo": "2021",
+            "ingresos": 17058.5,
+            "resultado": 6575.3
+          },
+          {
+            "periodo": "2022",
+            "ingresos": 18262.6,
+            "resultado": 6443.4
+          },
+          {
+            "periodo": "2023",
+            "ingresos": 20262.3,
+            "resultado": 7347.2
+          },
+          {
+            "periodo": "2024",
+            "ingresos": 15952.4,
+            "resultado": 4970.5
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 18709,
+            "resultado": 7001.3
+          }
+        ]
+      },
+      {
+        "nombre": "Té listo para beber",
+        "descripcion": "Té sin azúcar 东方树叶 (Oriental Leaf) y té con fruta 茶π, té con gas",
+        "tipo_resultado": "EBIT",
+        "historico": [
+          {
+            "periodo": "2021",
+            "ingresos": 4578.9,
+            "resultado": 1832.4
+          },
+          {
+            "periodo": "2022",
+            "ingresos": 6906,
+            "resultado": 2753.3
+          },
+          {
+            "periodo": "2023",
+            "ingresos": 12658.9,
+            "resultado": 5622.3
+          },
+          {
+            "periodo": "2024",
+            "ingresos": 16744.5,
+            "resultado": 7562.6
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 21595.9,
+            "resultado": 10374.4
+          }
+        ]
+      },
+      {
+        "nombre": "Bebidas funcionales",
+        "descripcion": "Bebidas para deportistas 尖叫 (Scream), agua con vitaminas, electrolitos",
+        "tipo_resultado": "EBIT",
+        "historico": [
+          {
+            "periodo": "2021",
+            "ingresos": 3695,
+            "resultado": 1595
+          },
+          {
+            "periodo": "2022",
+            "ingresos": 3837.6,
+            "resultado": 1534
+          },
+          {
+            "periodo": "2023",
+            "ingresos": 4901.6,
+            "resultado": 2067.7
+          },
+          {
+            "periodo": "2024",
+            "ingresos": 4932.1,
+            "resultado": 2082
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 5762.3,
+            "resultado": 2695.9
+          }
+        ]
+      },
+      {
+        "nombre": "Zumos",
+        "descripcion": "Zumos NFC y 17.5°, 水溶C100, 农夫果园",
+        "tipo_resultado": "EBIT",
+        "historico": [
+          {
+            "periodo": "2021",
+            "ingresos": 2613.6,
+            "resultado": 503.3
+          },
+          {
+            "periodo": "2022",
+            "ingresos": 2878.8,
+            "resultado": 580
+          },
+          {
+            "periodo": "2023",
+            "ingresos": 3533.6,
+            "resultado": 945.6
+          },
+          {
+            "periodo": "2024",
+            "ingresos": 4084.9,
+            "resultado": 1017.1
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 5176.3,
+            "resultado": 1776.9
+          }
+        ]
+      },
+      {
+        "nombre": "Otros",
+        "descripcion": "Soda, café 炭仌, bebidas vegetales, fruta fresca",
+        "tipo_resultado": "EBIT",
+        "historico": [
+          {
+            "periodo": "2021",
+            "ingresos": 1750.4,
+            "resultado": 225.7
+          },
+          {
+            "periodo": "2022",
+            "ingresos": 1354.2,
+            "resultado": 280.3
+          },
+          {
+            "periodo": "2023",
+            "ingresos": 1310.9,
+            "resultado": 396.2
+          },
+          {
+            "periodo": "2024",
+            "ingresos": 1182.1,
+            "resultado": 392.1
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 1309.5,
+            "resultado": 469.6
+          }
+        ]
+      }
+    ],
+    "geografias": [
+      {
+        "nombre": "China continental",
+        "peso_pct": 99
+      },
+      {
+        "nombre": "Otros",
+        "peso_pct": 1
+      }
+    ],
+    "geografias_criterio": "destino",
+    "kpis": [
+      {
+        "kpi": "Ventas de agua envasada",
+        "valor_anterior": "15.952 M (2024)",
+        "valor_actual": "18.709 M (2025); 9.641 M en el 1S26 (+2,1 %)",
+        "variacion": "+17,3 %",
+        "comentario": "Aún por debajo de los 20.262 M de 2023 [1, 3]"
+      },
+      {
+        "kpi": "Ventas de té",
+        "valor_anterior": "16.745 M (2024)",
+        "valor_actual": "21.596 M (2025); 13.122 M en el 1S26 (+30,1 %)",
+        "variacion": "+29,0 %",
+        "comentario": "Primera línea del grupo desde 2025 [1, 3]"
+      },
+      {
+        "kpi": "Margen bruto",
+        "valor_anterior": "58,1 % (2024)",
+        "valor_actual": "60,5 % (2025); 60,9 % en el 1S26",
+        "variacion": "+2,4 pp",
+        "comentario": "PET y azúcar más baratos y mezcla hacia el té [2, 3]"
+      },
+      {
+        "kpi": "Gasto comercial sobre ventas",
+        "valor_anterior": "21,4 % (2024)",
+        "valor_actual": "18,6 % (2025); 19,7 % en el 1S26",
+        "variacion": "−2,8 pp",
+        "comentario": "Menos publicidad tras el año olímpico y logística más barata [2, 3]"
+      },
+      {
+        "kpi": "Fuentes de agua en explotación",
+        "valor_anterior": "12 (dic-2024)",
+        "valor_actual": "17 (jun-2026)",
+        "variacion": "+5",
+        "comentario": "[3, 5]"
+      },
+      {
+        "kpi": "Días de existencias",
+        "valor_anterior": "95,5 (2025)",
+        "valor_actual": "94,7 (1S26)",
+        "variacion": "−0,8",
+        "comentario": "[3]"
+      }
+    ],
+    "confianza": "Media",
+    "descripcion": "Nongfu Spring (农夫山泉, Hangzhou) embotella y vende bebidas sin alcohol en China: agua envasada (35,6 % de las ventas de 2025), té listo para beber (41,1 %), bebidas funcionales (11,0 %), zumos (9,8 %) y otros (2,5 %) [1]. Embotella en origen en 17 fuentes naturales (Qiandao, Changbai, Emei, Wanlv…) y produce también té, zumo y café en fábricas propias [3]. Vende a través de una red de miles de distribuidores que pagan por adelantado y llegan a millones de tiendas de barrio, supermercados, gasolineras y canales digitales; Sam's Club es su escaparate de productos nuevos (té frío Longjing, café 炭仌) [3]. Más del 99 % de las ventas es en China continental y ningún cliente supera el 10 % [3].",
+    "como_gana_dinero": "Margen bruto del 60,5 % en 2025 (60,9 % en el 1S26) y margen EBITDA del 45 %: es el más alto de las bebidas chinas, el doble que Tingyi o Uni-President (márgenes operativos del 9-10 %) [1, 18]. El coste principal es el PET, el azúcar, el zumo y la logística; el agua es barata, pero pesa y se transporta mal, y por eso cuentan las fuentes repartidas por el país [2]. El té sin azúcar es el negocio más rentable (margen de segmento del 48 % frente al 37 % del agua en 2025) y el que más crece [1]. Casi todo es recurrente (consumo diario) con estacionalidad de verano. El apalancamiento operativo es alto: en 2024 las ventas de agua cayeron un 21 % y el margen de su segmento bajó de 36,3 % a 31,2 % [1, 6].",
+    "clientes": "Clientes directos: distribuidores (sin datos públicos de cuántos) y grandes cadenas; consumidores finales en todo el país. Ningún cliente llega al 10 % de las ventas [3]. Los distribuidores pagan por adelantado (pasivos por contrato de 4.195 M a dic-2025) [1]. Poder de precios demostrado en el té (35 % de crecimiento de 2023 a 2025 sin bajar precio; margen de segmento del 44 % al 48 %) y perdido en el agua barata: en 2024 la empresa respondió a la campaña en redes y a C'estbon con el agua purificada verde, que se vendió a 9,9 RMB el paquete de 12 en algunos canales y hoy a 8,9 RMB [5, 16]."
+  },
+  "sector": {
+    "definicion": "Bebidas sin alcohol envasadas en China continental (agua, té, zumos, funcionales, refrescos, café listo para beber), por ventas minoristas: es donde Nongfu vende el 99 % [3]. Usamos la serie de 观研天下 (12.502 億 RMB en 2024) [12]; para el agua, el dato de CIC del folleto de CR Beverage (≈ 2.150 億 RMB en 2023, estimación propia a partir del 56,1 % del agua purificada) [13] da un mercado de agua algo menor que el de 观研天下 (2.688 億 en 2024), por diferencias de perímetro (agua en garrafa, canales).",
+    "tamano": "≈ 1,25 billones de RMB en 2024 (+7,56 %) [12]; agua envasada 268.800 M y té 194.100 M [12]; agua según CIC ≈ 215.000 M en 2023 y ≈ 314.000 M en 2028e (estimación propia con sus porcentajes) [13]",
+    "unidad_serie": "millones de RMB (ventas minoristas de bebidas sin alcohol; 2025e-2030e, estimación propia al 5 %)",
+    "serie": [
+      {
+        "anio": "2023",
+        "tamano": 1162300
+      },
+      {
+        "anio": "2024",
+        "tamano": 1250200
+      },
+      {
+        "anio": "2025e",
+        "tamano": 1312700
+      },
+      {
+        "anio": "2026e",
+        "tamano": 1378300
+      },
+      {
+        "anio": "2027e",
+        "tamano": 1447300
+      },
+      {
+        "anio": "2028e",
+        "tamano": 1519600
+      },
+      {
+        "anio": "2029e",
+        "tamano": 1595600
+      },
+      {
+        "anio": "2030e",
+        "tamano": 1675400
+      }
+    ],
+    "tcac_historico_pct": null,
+    "tcac_previsto_pct": 5,
+    "cr5_pct": null,
+    "estructura": "Moderadamente concentrada",
+    "drivers": [
+      {
+        "driver": "Salud: bebidas sin azúcar y té natural",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Té de Nongfu +29 % en 2025 y +30,1 % en el 1S26; cuota de Nongfu en té del 23,7 % al 31,1 % en un año (马上赢) [1, 3, 15]"
+      },
+      {
+        "driver": "Guerra de precios en el agua barata",
+        "efecto": "−",
+        "horizonte": "Cíclico",
+        "evidencia": "Agua: Nielsen 1S26 volumen −4,9 % e importe −7,3 %; C'estbon −7,9 %; paquetes a menos de 1 RMB por botella [16, 17]"
+      },
+      {
+        "driver": "Consumo chino débil",
+        "efecto": "−",
+        "horizonte": "Cíclico",
+        "evidencia": "Ventas minoristas totales +1,3 % en el 1S26 y bebidas de empresas grandes +1,0 % en 2025 [2, 3]"
+      },
+      {
+        "driver": "Coste del PET (petróleo)",
+        "efecto": "+/−",
+        "horizonte": "Cíclico",
+        "evidencia": "PET más barato subió el margen bruto 2,4 puntos en 2025; en el 1S26 vuelve a subir por la tensión geopolítica [2, 3]"
+      },
+      {
+        "driver": "Agua natural frente a purificada",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "La purificada pesa el 56,1 % del agua (CIC) y se prevé que pierda peso; Nongfu es la marca de agua natural [13, 14]"
+      }
+    ],
+    "porter": [
+      {
+        "fuerza": "Rivalidad",
+        "intensidad": 4,
+        "justificacion": "Guerra de precios del agua desde 2024 (Nongfu verde, C'estbon, Wahaha, Master Kong, 今麦郎) y muchas marcas nuevas de té sin azúcar; el mercado del agua cae un 7,3 % en importe en el 1S26 [16]."
+      },
+      {
+        "fuerza": "Poder de los clientes",
+        "intensidad": 2,
+        "justificacion": "Consumidor atomizado; los distribuidores pagan por adelantado y ninguno pesa un 10 % [1, 3]."
+      },
+      {
+        "fuerza": "Poder de los proveedores",
+        "intensidad": 2,
+        "justificacion": "PET, azúcar y zumo son materias primas con precio de mercado; parte de los tapones y envases los compra a empresas del fundador [21]."
+      },
+      {
+        "fuerza": "Amenaza de entrada",
+        "intensidad": 3,
+        "justificacion": "Fabricar es fácil; la barrera es la distribución nacional, las fuentes y la marca. Wahaha recuperó cuota en agua purificada en 2025-2026 [16]."
+      },
+      {
+        "fuerza": "Amenaza de sustitutos",
+        "intensidad": 2,
+        "justificacion": "Agua del grifo hervida, té recién hecho y cafeterías (Mixue, Luckin) compiten por la ocasión de consumo."
+      }
+    ],
+    "ciclo": {
+      "posicion": "Madurez del ciclo",
+      "comentario": "Las bebidas crecieron un 7,56 % en 2024 según 观研天下 [12], pero las de empresas grandes solo un 1,0 % en 2025 según la estadística oficial [2], y el agua cae en el 1S26 (−7,3 % en importe) [16]. El sector aguantó 2020 (Nongfu −0,3 % de ventas en 2020 y +29,8 % en 2021) y 2022 (+11,9 %) [7, 8]: es consumo básico, con ciclo de precios más que de volumen. Hoy hay dos ciclos: el agua barata en guerra de precios y el té sin azúcar en expansión."
+    },
+    "regulacion": "Ley de Seguridad Alimentaria reformada el 1-dic-2025 (transporte a granel de líquidos alimentarios) [2]. Medidas de producción por encargo y de retirada de alimentos, en vigor el 1-dic-2026, y normas de venta online de alimentos de mayo de 2026 [3]. Fiscalidad: tipo del 25 % con rebajas al 15 % o 9 % para filiales del oeste (Desarrollo del Oeste hasta 2030; Xizang hasta 2027) [3]. No hay impuesto sobre bebidas azucaradas en China.",
+    "tendencias": "Gana el té sin azúcar y lo natural; pierde el agua barata purificada, donde se reparten el volumen Wahaha, C'estbon y Nongfu verde a menos de 1 RMB la botella [16]. Nongfu gana con el té (cuota del 31,1 %) y con el agua natural; pierde precio en el agua de masas. Los canales de descuento (tiendas de snacks a granel, Sam's Club, comercio online) aprietan los precios de catálogo [3, 16].",
+    "confianza": "Media"
+  },
+  "competencia": {
+    "cuota_pct": 4,
+    "posicion": "1.ª en agua envasada en China (23,6 % del valor minorista en 2023, CIC) y 1.ª en té listo para beber (31,1 % en el 1T26 según 马上赢) [14, 15]; ≈ 4,0 % del mercado total de bebidas sin alcohol (estimación propia: 52.553 M de ventas en 2025 frente a ≈ 1,31 billones de mercado en 2025e, precios de fábrica frente a minoristas) [1, 12]",
+    "competidores": [
+      {
+        "nombre": "Tingyi (Master Kong)",
+        "pais": "China",
+        "ticker": "0322.HK",
+        "ingresos": 79520,
+        "cuota_pct": 26.8,
+        "margen_ebit_pct": 9.4,
+        "comentario": "Té con azúcar (冰红茶), agua, zumos y fideos; cuota de té del 26,8 % en el 1T26 [15, 18]"
+      },
+      {
+        "nombre": "Uni-President China",
+        "pais": "China",
+        "ticker": "0220.HK",
+        "ingresos": 31949,
+        "cuota_pct": null,
+        "margen_ebit_pct": 10.4,
+        "comentario": "Té, zumos y fideos (统一, 小茗同学) [18]"
+      },
+      {
+        "nombre": "China Resources Beverage (C'estbon)",
+        "pais": "China",
+        "ticker": "2460.HK",
+        "ingresos": 10252,
+        "cuota_pct": 18.4,
+        "margen_ebit_pct": 11.9,
+        "comentario": "N.º 2 del agua (18,4 % en 2023, CIC), 88,7 % de ventas en agua purificada; −12,1 % en el 1S26 [14, 17]"
+      },
+      {
+        "nombre": "Eastroc Beverage",
+        "pais": "China",
+        "ticker": "605499.SS",
+        "ingresos": 22582,
+        "cuota_pct": null,
+        "margen_ebit_pct": 28,
+        "comentario": "Energéticas y electrolitos; entra en té y agua [18]"
+      },
+      {
+        "nombre": "Coca-Cola (grupo)",
+        "pais": "EE. UU.",
+        "ticker": "KO",
+        "ingresos": 334180,
+        "cuota_pct": null,
+        "margen_ebit_pct": 34.9,
+        "comentario": "En China vía embotelladores COFCO y Swire; referencia de margen de marca [18]"
+      },
+      {
+        "nombre": "Wahaha (娃哈哈)",
+        "pais": "China",
+        "ticker": null,
+        "ingresos": null,
+        "cuota_pct": null,
+        "margen_ebit_pct": null,
+        "comentario": "No cotiza; recupera cuota en agua purificada en 2025-2026 [16]"
+      }
+    ],
+    "foso": {
+      "veredicto": "Amplio",
+      "tendencia": "Estable",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 0,
+          "evidencia": "No aplica: producto de consumo."
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 0,
+          "evidencia": "Nulos: el consumidor cambia de marca en cada compra."
+        },
+        {
+          "fuente": "Intangibles (marca, patentes, licencias)",
+          "puntuacion": 4,
+          "evidencia": "Marca n.º 1 en agua y té; el té sin azúcar 东方树叶 ganó 7,4 puntos de cuota en un año y mantiene margen de segmento del 48 % [A1, B4]; 17 derechos de fuentes naturales difíciles de replicar [A3]."
+        },
+        {
+          "fuente": "Ventaja en costes",
+          "puntuacion": 4,
+          "evidencia": "Margen operativo del 39 % frente al 9-12 % de Tingyi, Uni-President y CR Beverage con los mismos canales [A1, B7]; fuentes repartidas que abaratan el transporte del agua."
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 3,
+          "evidencia": "Red nacional de distribución y fábricas que un entrante no replica en pocos años; pero Wahaha y C'estbon tienen escala parecida en agua [B3, B5]."
+        }
+      ]
+    },
+    "amenazas": "Tres amenazas, de más a menos probable: (1) que la guerra de precios del agua dure y pase al té sin azúcar, donde ya hay decenas de marcas (Master Kong, Uni-President, Suntory, marcas de canal) [15, 16]; (2) otra campaña en redes contra la marca o el fundador, como la de 2024, que hundió el agua un 21 % en un año [5]; (3) un problema de calidad o de fuente de agua, que en una marca de agua natural es letal. Probabilidad media de la primera, baja de las otras dos.",
+    "confianza": "Media"
+  },
+  "financieros": {
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 29696.4,
+        "coste_ventas": 12040.2,
+        "gastos_generales": 8984,
+        "ebitda": 11559.2,
+        "amortizaciones": 2378.2,
+        "ebit": 9181,
+        "resultado_financiero": 173.3,
+        "bai": 9354.3,
+        "impuestos": 2192.5,
+        "minoritarios": 0,
+        "beneficio_neto": 7161.8,
+        "gastos_financieros": 52.9,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 0.64,
+        "dpa": 0.45,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 11246.5
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 33239.2,
+        "coste_ventas": 14143.8,
+        "gastos_generales": 9655.8,
+        "ebitda": 12618,
+        "amortizaciones": 2486.9,
+        "ebit": 10131.1,
+        "resultado_financiero": 919.2,
+        "bai": 11050.3,
+        "impuestos": 2555.1,
+        "minoritarios": 0,
+        "beneficio_neto": 8495.3,
+        "gastos_financieros": 76,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 0.76,
+        "dpa": 0.68,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 11246.5
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 42667.2,
+        "coste_ventas": 17260.4,
+        "gastos_generales": 11446.4,
+        "ebitda": 17382.1,
+        "amortizaciones": 2631.4,
+        "ebit": 14750.7,
+        "resultado_financiero": 937.5,
+        "bai": 15688.2,
+        "impuestos": 3608.7,
+        "minoritarios": 0,
+        "beneficio_neto": 12079.5,
+        "gastos_financieros": 99.7,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 1.07,
+        "dpa": 0.75,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 11246.5
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 42896,
+        "coste_ventas": 17980.3,
+        "gastos_generales": 11135.8,
+        "ebitda": 17752.5,
+        "amortizaciones": 2874.7,
+        "ebit": 14877.8,
+        "resultado_financiero": 910.1,
+        "bai": 15787.9,
+        "impuestos": 3664.6,
+        "minoritarios": 0,
+        "beneficio_neto": 12123.3,
+        "gastos_financieros": 91.5,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 1.08,
+        "dpa": 0.76,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 11246.5
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 52552.9,
+        "coste_ventas": 20744.8,
+        "gastos_generales": 12252.6,
+        "ebitda": 23824.7,
+        "amortizaciones": 3392.6,
+        "ebit": 20432.1,
+        "resultado_financiero": 485.5,
+        "bai": 20917.6,
+        "impuestos": 5049.3,
+        "minoritarios": 0,
+        "beneficio_neto": 15868.3,
+        "gastos_financieros": 66.9,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 1.41,
+        "dpa": 0.99,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 11246.5
+      }
+    ],
+    "ltm": {
+      "periodo": "LTM jun-26",
+      "fecha_fin": "2026-06-30",
+      "ingresos": 56648.8,
+      "ebitda": 25804.7,
+      "ebit": 22190.6,
+      "beneficio_neto": 17133,
+      "bpa": 1.52,
+      "dpa": 0.99,
+      "dpa_extraordinario": 0,
+      "fcf": 14266,
+      "participadas_en_ebitda": null,
+      "no_recurrentes_en_ebitda": null
+    },
+    "cambios_perimetro": [],
+    "comentario": "Las ventas pasaron de 29.696 M en 2021 a 52.553 M en 2025 (+15,3 % anual), todo orgánico y sin compras [1, 8]. El año 2024 fue la excepción: +0,5 %, porque el agua cayó un 21,3 % (de 20.262 M a 15.952 M) tras la campaña en redes contra la empresa y su fundador desde febrero de 2024, mientras el té subía un 32 % [5]. En 2025 el grupo creció un 22,5 % (agua +17,3 %, té +29,0 %) y en el 1S26 un 16,0 % (agua +2,1 %, té +30,1 %) [2, 3]. El margen EBITDA subió de 38,9 % (2021) a 45,3 % (2025) y 45,0 % en el 1S26: más peso del té (margen de segmento del 48 % frente al 34-37 % del agua), PET y azúcar más baratos en 2025 y menos publicidad tras el año olímpico (gasto comercial del 21,4 % al 18,6 % de las ventas) [1, 2]. En 2024 el margen bruto bajó 1,4 puntos por el agua purificada «verde» lanzada en abril y la menor absorción de costes fijos [5].",
+    "ajustes": "Cifras publicadas NIIF, sin ajustes de la empresa (no publica beneficio ajustado). Nuestro EBIT saca del resultado los intereses de depósitos (580 M en 2025; 866 M en 2024; 991 M en 2023), las ganancias de productos financieros (171 M en 2025) y las diferencias de cambio (−199 M en 2025, +75 M en 2024, +370 M en 2022), que pasan al resultado financiero; las subvenciones públicas (606 M en 2025, 786 M en 2024) se quedan en el EBIT porque llegan todos los años [1, 5, 7]. Las donaciones de 2025 (68 M) son pequeñas y no se tratan como no recurrentes. Los BPA de 2021-2023 están redondeados a dos decimales en las cuentas [6, 7].",
+    "confianza": "Alta"
+  },
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "1S24",
+        "ingresos": 22173.1,
+        "crecimiento_pct": 8.4,
+        "crecimiento_organico_pct": 8.4,
+        "ebitda": 8976.2,
+        "margen_ebitda_pct": 40.5,
+        "bpa": 0.55,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "2S24",
+        "ingresos": 20722.9,
+        "crecimiento_pct": -6.7,
+        "crecimiento_organico_pct": -6.7,
+        "ebitda": 8776.3,
+        "margen_ebitda_pct": 42.4,
+        "bpa": 0.52,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1S25",
+        "ingresos": 25622.2,
+        "crecimiento_pct": 15.6,
+        "crecimiento_organico_pct": 15.6,
+        "ebitda": 11392.7,
+        "margen_ebitda_pct": 44.5,
+        "bpa": 0.68,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "2S25",
+        "ingresos": 26930.7,
+        "crecimiento_pct": 30,
+        "crecimiento_organico_pct": 30,
+        "ebitda": 12432,
+        "margen_ebitda_pct": 46.2,
+        "bpa": 0.73,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1S26",
+        "ingresos": 29718.1,
+        "crecimiento_pct": 16,
+        "crecimiento_organico_pct": 16,
+        "ebitda": 13372.7,
+        "margen_ebitda_pct": 45,
+        "bpa": 0.79,
+        "vs_consenso": "Superior"
+      }
+    ],
+    "ultima_presentacion": "La empresa publica semestres y no da guía numérica ni celebra una conferencia con transcripción pública en HKEXnews. En los resultados de 2025 (24-mar-2026) la dirección habló de una «mejora gradual» del agua, de un 2025 de «competencia excepcionalmente intensa» y atribuyó la subida del margen bruto (del 58,1 % al 60,5 %) al PET y al azúcar más baratos y a «regular la proporción de ventas por comercio electrónico» para mantener la disciplina de precios de los distribuidores [2]. En el 1S26 (25-ago-2026) el mensaje cambió de tono: «más estable, más lento y más lejos» (lema del 30.º aniversario), el agua solo creció un 2,1 % y el té un 30,1 %, y la empresa avisó de que el PET sube por el petróleo [3]. No respondió en el documento a la pregunta que más pesa: por qué el agua no vuelve al nivel de 2023 (9.641 M en el 1S26 frente a un 2023 de 20.262 M en el año) ni cuánto le cuesta en precio la guerra con las marcas de agua purificada [3]. El 1S26 batió el consenso (29.300 M de ventas y 8.630 M de beneficio esperados) [19].",
+    "confianza": "Alta"
+  },
+  "balance": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "activo_total": 32896.1,
+        "activo_corriente": 17835.7,
+        "pasivo_corriente": 11588.9,
+        "pasivo_total": 12154.5,
+        "fondo_comercio": 0,
+        "intangibles": 65.1,
+        "inmovilizado_material": 12800.1,
+        "existencias": 1809.2,
+        "clientes": 476.3,
+        "proveedores": 1153.1,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 16113.5,
+        "deuda_financiera": 2500.1,
+        "arrendamientos": 90,
+        "patrimonio_neto": 20741.6,
+        "minoritarios": 0,
+        "reservas": 10620
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 39254.9,
+        "activo_corriente": 18361.5,
+        "pasivo_corriente": 14601.4,
+        "pasivo_total": 15170.8,
+        "fondo_comercio": 0,
+        "intangibles": 58.1,
+        "inmovilizado_material": 15397.6,
+        "existencias": 2108.4,
+        "clientes": 478.6,
+        "proveedores": 1425.1,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 19315.9,
+        "deuda_financiera": 2425.1,
+        "arrendamientos": 99.9,
+        "patrimonio_neto": 24084.1,
+        "minoritarios": 0,
+        "reservas": 14054.4
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 49137.1,
+        "activo_corriente": 28461.4,
+        "pasivo_corriente": 19876.6,
+        "pasivo_total": 20566.2,
+        "fondo_comercio": 0,
+        "intangibles": 74.2,
+        "inmovilizado_material": 17179.6,
+        "existencias": 3091.7,
+        "clientes": 547,
+        "proveedores": 1770.1,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 25638.6,
+        "deuda_financiera": 3120.6,
+        "arrendamientos": 89.3,
+        "patrimonio_neto": 28570.9,
+        "minoritarios": 0,
+        "reservas": 18486.3
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 53160.3,
+        "activo_corriente": 19071.9,
+        "pasivo_corriente": 19984.7,
+        "pasivo_total": 20873.1,
+        "fondo_comercio": 0,
+        "intangibles": 71.6,
+        "inmovilizado_material": 21083.2,
+        "existencias": 5013,
+        "clientes": 581.4,
+        "proveedores": 1499.4,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 22890,
+        "deuda_financiera": 3625.4,
+        "arrendamientos": 121.6,
+        "patrimonio_neto": 32287.2,
+        "minoritarios": 0,
+        "reservas": 22174.7
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 65169.1,
+        "activo_corriente": 26563.6,
+        "pasivo_corriente": 24822.8,
+        "pasivo_total": 25699.1,
+        "fondo_comercio": 0,
+        "intangibles": 80.9,
+        "inmovilizado_material": 24719.3,
+        "existencias": 5846.5,
+        "clientes": 598.2,
+        "proveedores": 1654.2,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 29848.7,
+        "deuda_financiera": 4390,
+        "arrendamientos": 102.7,
+        "patrimonio_neto": 39470,
+        "minoritarios": 0,
+        "reservas": 29495.7
+      }
+    ],
+    "vencimientos": [
+      {
+        "anio": "2026",
+        "importe": 5185.5
+      }
+    ],
+    "liquidez": "A 30-jun-2026: efectivo y depósitos a corto de 21.080 M, depósitos bancarios a largo de 5.426 M, productos financieros a valor razonable de 11.110 M y 28 M restringidos o pignorados (≈ 37.645 M en total); líneas de crédito de 22.033 M [3]. De esa caja salieron 11.134 M de dividendo el 19-ago-2026 [3].",
+    "rating": "Sin rating",
+    "coste_deuda_pct": 1.2,
+    "vida_media_anios": 0.5,
+    "otros_pasivos": "La deuda (5.186 M a jun-2026, toda en RMB y a tipo variable) es casi toda descuento de efectos comerciales a menos de un año, no financiación estructural: la empresa la usa porque es más barata que lo que rinde su caja [3]. Arrendamientos NIIF 16 de 88 M. Pasivos por contrato (anticipos de distribuidores) de 3.439 M y otras cuentas a pagar de 25.672 M, que a 30-jun incluyen los 11.134 M del dividendo de 2025 aprobado el 19-may y pagado el 19-ago-2026 [3]. Compromisos de inversión de 3.970 M (fábricas y líneas) [3]. Planes de pensiones de aportación definida, sin déficit. Sin pasivos contingentes significativos ni activos pignorados, según la empresa [3]. Subvenciones diferidas de 384 M.",
+    "comentario": "El balance tiene caja neta: ≈ 32.370 M a jun-2026 antes del dividendo (≈ 21.240 M después) frente a un activo de 76.573 M [3]. El circulante comercial (existencias + clientes − proveedores) pasó del 3,8 % de las ventas en 2021 al 9,1 % en 2025, por las existencias (de 1.809 M a 5.846 M; 95 días en 2025), que la empresa acumula antes del verano y que se dispararon en 2024 con el agua invendida [1, 5]. Pero el circulante real es negativo: los distribuidores pagan por adelantado (pasivos por contrato de 4.195 M a dic-2025) y las otras cuentas a pagar (11.962 M) superan a las existencias [1]. Los depósitos a largo bajaron de 11.088 M a 5.426 M en el 1S26 al pasar a productos de tesorería a corto [3].",
+    "confianza": "Alta"
+  },
+  "flujos": {
+    "historico": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 11400.3,
+        "capex": 2488.1,
+        "pagos_arrendamientos": 67.6,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 1911.9,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 12041.5,
+        "capex": 4352,
+        "pagos_arrendamientos": 81.7,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 5059.1,
+        "recompras": 225.4,
+        "emision_acciones": 71.4,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 17304.9,
+        "capex": 4862.8,
+        "pagos_arrendamientos": 81,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 7646.3,
+        "recompras": 0,
+        "emision_acciones": 9.7,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 11022.1,
+        "capex": 6460.8,
+        "pagos_arrendamientos": 135.2,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 8434.9,
+        "recompras": 0,
+        "emision_acciones": 3.3,
+        "intereses_en_financiacion": 0
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 21141.7,
+        "capex": 6796.1,
+        "pagos_arrendamientos": 130.5,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 8547.3,
+        "recompras": 221.6,
+        "emision_acciones": 76.5,
+        "intereses_en_financiacion": 0
+      }
+    ],
+    "comentario": "El flujo operativo es después de impuestos e intereses pagados; la mayor parte de los intereses cobrados entra por inversión, con la retirada de depósitos [1]. La conversión del beneficio en flujo operativo fue del 133 % en 2025, del 91 % en 2024 (existencias +1.921 M con el agua invendida) y del 143 % en 2023 [1, 5]. El capex (inmovilizado, intangibles y derechos sobre suelo) subió de 2.488 M en 2021 a 6.796 M en 2025 (12,9 % de las ventas): nuevas fuentes de agua (17 a jun-2026), fábricas de té y zumo y líneas en el oeste del país [1, 3]. La amortización es de 3.393 M (6,5 % de las ventas): estimación propia, la mitad del capex es de crecimiento. En el 1S26 el capex fue de 3.820 M y el flujo operativo de 10.712 M [4]. Las «recompras» son compras de acciones H del fideicomiso del plan de incentivos, no amortizaciones [1].",
+    "confianza": "Alta"
+  },
+  "calidad": {
+    "auditor": "Ernst & Young Hua Ming (China) y Ernst & Young (Hong Kong)",
+    "anios_auditor": 6,
+    "opinion": "Favorable (2025)",
+    "comentario": "Cuentas NIIF auditadas por Ernst & Young con opinión favorable; EY revisó también el 1S26 y la junta de 2026 lo renovó [1, 3]. No hay cambios de criterio relevantes en 2021-2026 (las enmiendas de NIIF 9 y 7 de 2026 no tienen efecto) [3]. No se capitaliza I+D (311 M de gasto en 2025) ni intereses. Los pagos en acciones son mínimos (77 M en 2025, el 0,5 % del beneficio) [1]. El ingreso se reconoce al entregar a distribuidores que suelen pagar por adelantado; existen devoluciones y rápels por volumen como contraprestación variable [3]. Tipo impositivo efectivo del 24,1 % en 2025 (oficial del 25 %, con filiales del oeste al 15 % y al 9 %) [3]. Puntos que vigilar: las subvenciones (606 M en 2025, el 3 % del beneficio antes de impuestos) y las compras de tapones y otros productos a empresas del fundador (255 M en el 1S26; tope de 1.000 M en 2028) [1, 21].",
+    "senales": [
+      {
+        "senal": "Existencias altas",
+        "nivel": "Baja",
+        "comentario": "95 días en 2025 (89 en el 1S26) frente a 55 días en 2021; en 2024 se dispararon con el agua invendida (+1.921 M) [1, 3, 5]."
+      },
+      {
+        "senal": "Compras a empresas del fundador con topes al alza",
+        "nivel": "Baja",
+        "comentario": "Tapones y envases de Yangshengtang: 255 M en el 1S26; topes subidos a 520 / 700 / 1.000 M en 2026-2028 [21]."
+      },
+      {
+        "senal": "Subvenciones públicas recurrentes",
+        "nivel": "Baja",
+        "comentario": "606 M en 2025 y 786 M en 2024, dentro del EBIT [1]."
+      }
+    ],
+    "confianza": "Alta"
+  },
+  "rentabilidad": {
+    "comentario": "Nongfu crea mucho valor: ROIC del 114 % en 2025 frente a un WACC del 7,7 % (106 puntos), entre el 97 % y el 169 % en 2021-2025, y ROIC incremental de 2021-2025 del 132 % [1]. Viene de un margen operativo del 39 % con poco capital operativo (≈ 13.600 M para 52.553 M de ventas): las fábricas están amortizadas y el circulante es pequeño. La caja (≈ 30.000 M a fin de 2025) no entra en el ROIC; con ella, el ROE fue del 44 % en 2025 [1]. El año malo (2024, campaña en redes) bajó el ROIC al 118 %, no por debajo del 100 %. Pasa con mucha holgura el requisito de ROIC − WACC ≥ 5 puntos.",
+    "confianza": "Alta"
+  },
+  "capital": {
+    "politica": "Dividendo en efectivo de alrededor del 70 % del beneficio, una vez al año (final): 0,45 RMB por 2021, 0,68 por 2022, 0,75 por 2023, 0,76 por 2024 y 0,99 por 2025 (11.134 M, el 70 % del beneficio de 2025, pagado el 19-ago-2026); sin dividendo a cuenta en 2026 [1, 3]. No hay programa de recompra de acciones; el fideicomiso del plan de incentivos compra acciones H en el mercado (222 M en 2025, 122 M en el 1S26) [1, 4]. La prioridad declarada de la caja es el capex en fuentes de agua y fábricas [3].",
+    "adquisiciones": [],
+    "comentario": "La dirección invierte en el negocio propio y reparte el resto: 6.796 M de capex y 8.547 M de dividendos en 2025, sin compras de empresas en diez años [1]. El capex ha crecido rápido (de 2.488 M en 2021 a 6.796 M en 2025) y sigue rindiendo: las ventas crecieron 22.857 M en ese periodo. Diluye poco (plan de incentivos con acciones compradas en el mercado). Lo discutible es el exceso de caja: ≈ 21.000 M de caja neta tras el dividendo, que rinde un 1-2 % con los tipos chinos en mínimos, y una deuda de descuento de efectos que solo existe porque es más barata que esa caja [3].",
+    "confianza": "Alta"
+  },
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "Zhong Shanshan (钟睒睒)",
+        "cargo": "Fundador, presidente y director general",
+        "desde": "1996",
+        "participacion_pct": 84.04,
+        "trayectoria": "Fundó Yangshengtang (1993) y Nongfu Spring (1996) y los preside; controla también Beijing Wantai (vacunas, cotizada en Shanghái). 71 años. Llevó a Nongfu de una fuente a 17 y de 29.696 M a 52.553 M de ventas en 2021-2025 [1]."
+      },
+      {
+        "nombre": "Wu Limin (吴莉敏)",
+        "cargo": "Consejera ejecutiva y directora financiera",
+        "desde": "2023",
+        "participacion_pct": 0,
+        "trayectoria": "Directora financiera de Yonghui Superstores (2019-2022) y antes 20 años en Unilever China [1]."
+      },
+      {
+        "nombre": "Xiang Xiansong (向咸松)",
+        "cargo": "Consejero ejecutivo y director comercial (centro de ventas y marketing)",
+        "desde": "2023",
+        "participacion_pct": 0,
+        "trayectoria": "Hecho en la casa: de supervisor de ventas a director regional y del centro comercial; 43 años [1]."
+      },
+      {
+        "nombre": "Han Linyou (韩林攸)",
+        "cargo": "Consejera ejecutiva y secretaria del consejo",
+        "desde": "2023",
+        "participacion_pct": 0,
+        "trayectoria": "Abogada; vicepresidenta de Tibet Water Resources (2013-2019) antes de entrar en 2019 [1]."
+      },
+      {
+        "nombre": "Zhong Shu Zi (钟树子)",
+        "cargo": "Consejero no ejecutivo; asistente del director general desde marzo de 2026",
+        "desde": "2017",
+        "participacion_pct": 0,
+        "trayectoria": "Hijo del fundador, 38 años; director de marca de Yangshengtang desde 2020 y director regional de ventas de Nongfu en 2023-2025 [1]."
+      }
+    ],
+    "historial_guidance": [
+      {
+        "anio": "2024",
+        "guia": "Sin guía numérica; tras la campaña en redes, «reforzar la marca y la conciencia de crisis» [5]",
+        "real": "Ventas +0,5 %, beneficio +0,4 % [1]",
+        "cumplida": "Parcial"
+      },
+      {
+        "anio": "2025",
+        "guia": "Sin guía numérica [5]",
+        "real": "Ventas +22,5 %, beneficio +30,9 % [1]",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2026",
+        "guia": "Sin guía numérica; «más estable, más lento y más lejos» [3]",
+        "real": "1S26: ventas +16,0 %, beneficio +16,6 % [3]",
+        "cumplida": "Sí"
+      }
+    ],
+    "comentario": "Empresa de fundador: Zhong Shanshan, de 71 años, preside, dirige y controla el 84 %. El equipo profesional es estable (sin cambios de presidente ni de director general en 24 meses) y la directora financiera viene de multinacional y de una cadena cotizada. La empresa no publica guía numérica, así que no hay historial de cumplimiento que medir. La sucesión es el punto débil: no hay plan publicado, y el hijo, Zhong Shu Zi, pasó en marzo de 2026 a asistente del director general tras dos años como director regional de ventas [1].",
+    "confianza": "Media"
+  },
+  "gobierno": {
+    "consejo": [
+      {
+        "nombre": "Zhong Shanshan",
+        "cargo": "Presidente y director general",
+        "tipo": "Ejecutivo",
+        "desde": "1996",
+        "comisiones": "Remuneraciones"
+      },
+      {
+        "nombre": "Wu Limin",
+        "cargo": "Consejera ejecutiva y directora financiera",
+        "tipo": "Ejecutivo",
+        "desde": "2023",
+        "comisiones": "—"
+      },
+      {
+        "nombre": "Xiang Xiansong",
+        "cargo": "Consejero ejecutivo",
+        "tipo": "Ejecutivo",
+        "desde": "2023",
+        "comisiones": "—"
+      },
+      {
+        "nombre": "Han Linyou",
+        "cargo": "Consejera ejecutiva",
+        "tipo": "Ejecutivo",
+        "desde": "2023",
+        "comisiones": "Nombramientos"
+      },
+      {
+        "nombre": "Zhong Shu Zi",
+        "cargo": "Consejero no ejecutivo",
+        "tipo": "Dominical",
+        "desde": "2017",
+        "comisiones": "—"
+      },
+      {
+        "nombre": "Gu Zhaoyang",
+        "cargo": "Consejero independiente",
+        "tipo": "Independiente",
+        "desde": "2025",
+        "comisiones": "Auditoría (presidente)"
+      },
+      {
+        "nombre": "Wen Ming",
+        "cargo": "Consejera independiente",
+        "tipo": "Independiente",
+        "desde": "2026",
+        "comisiones": "Auditoría, Remuneraciones"
+      },
+      {
+        "nombre": "Wang Yingzhe",
+        "cargo": "Consejero independiente",
+        "tipo": "Independiente",
+        "desde": "2026",
+        "comisiones": "Auditoría, Nombramientos"
+      }
+    ],
+    "presidente_ceo_separados": false,
+    "presidente_ejecutivo": true,
+    "consejero_coordinador": false,
+    "una_accion_un_voto": true,
+    "operaciones_vinculadas_relevantes": true,
+    "variable_ligado_rentabilidad": false,
+    "auditoria_independiente": true,
+    "insiders_sin_operaciones": false,
+    "accionista_control": true,
+    "presidente_vinculado_control": true,
+    "cambios_cupula_24m": 0,
+    "voto_remuneracion_pct": 100,
+    "voto_remuneracion_contra_pct": 0,
+    "voto_remuneracion_contra_libre_pct": 0,
+    "voto_cupula_pct": 98.93,
+    "remuneracion_ceo": {
+      "anio": "2025",
+      "total": 3.5,
+      "fijo": 2.04,
+      "variable_corto": 1.46,
+      "variable_largo": 0,
+      "ratio_salario_medio": 19
+    },
+    "remuneracion": "Remuneración baja para el tamaño: el presidente y director general cobró 3,50 M RMB en 2025 (2,04 M fijos y 1,46 M de bonus), igual que en 2024, y no tiene acciones del plan [1]. La directora financiera cobró 11,22 M (con 3,06 M de acciones del plan) y el director comercial 8,34 M [1]. El bonus depende de ventas, beneficio y evaluación individual, sin métricas de ROIC ni de rentabilidad para el accionista [3]. El plan de incentivos da acciones H compradas en el mercado a un 30 % del precio medio, con consolidación en tres años según resultados [3]. Estimación propia del cociente con el empleado medio: 3,50 M frente a 5.100 M de gasto de personal entre 28.000 empleados (≈ 0,18 M), unas 19 veces [1]. La junta de 2026 aprobó el plan de remuneración del consejo con el 100 % a favor [20].",
+    "accionistas": [
+      {
+        "nombre": "Zhong Shanshan (directo, acciones H)",
+        "pct": 17.16,
+        "tipo": "Control (fundador)",
+        "variacion": "Compró 3,09 M de acciones H en julio-septiembre de 2026 a 38,7-40,0 HKD (≈ 121 M HKD) [23]"
+      },
+      {
+        "nombre": "Yangshengtang (100 % de Zhong Shanshan): 6.211,8 M domésticas + 1.310,3 M H",
+        "pct": 66.89,
+        "tipo": "Control (fundador)",
+        "variacion": "Plan de compra de hasta 2.000 M HKD anunciado en jul-2024 [24]"
+      },
+      {
+        "nombre": "Consejeros y directivos (plan de incentivos)",
+        "pct": 0.01,
+        "tipo": "Consejeros",
+        "variacion": "Consolidación de acciones del plan el 30-abr-2026 [23]"
+      },
+      {
+        "nombre": "Capital libre (acciones H)",
+        "pct": 15.96,
+        "tipo": "Flotante",
+        "variacion": "Sin colocaciones [11]"
+      }
+    ],
+    "insiders": [
+      {
+        "fecha": "2026-07-02",
+        "persona": "Zhong Shanshan",
+        "operacion": "Compra",
+        "acciones": 11200,
+        "importe": 0.38
+      },
+      {
+        "fecha": "2026-07-07",
+        "persona": "Zhong Shanshan",
+        "operacion": "Compra",
+        "acciones": 170800,
+        "importe": 5.79
+      },
+      {
+        "fecha": "2026-07-10",
+        "persona": "Zhong Shanshan",
+        "operacion": "Compra",
+        "acciones": 81800,
+        "importe": 2.77
+      },
+      {
+        "fecha": "2026-09-17",
+        "persona": "Zhong Shanshan",
+        "operacion": "Compra",
+        "acciones": 490000,
+        "importe": 16.19
+      },
+      {
+        "fecha": "2026-09-18",
+        "persona": "Zhong Shanshan",
+        "operacion": "Compra",
+        "acciones": 499000,
+        "importe": 16.42
+      },
+      {
+        "fecha": "2026-09-21",
+        "persona": "Zhong Shanshan",
+        "operacion": "Compra",
+        "acciones": 212400,
+        "importe": 7.01
+      },
+      {
+        "fecha": "2026-09-23",
+        "persona": "Zhong Shanshan",
+        "operacion": "Compra",
+        "acciones": 376600,
+        "importe": 12.49
+      },
+      {
+        "fecha": "2026-09-24",
+        "persona": "Zhong Shanshan",
+        "operacion": "Compra",
+        "acciones": 352000,
+        "importe": 11.7
+      },
+      {
+        "fecha": "2026-09-28",
+        "persona": "Zhong Shanshan",
+        "operacion": "Compra",
+        "acciones": 450000,
+        "importe": 15.07
+      },
+      {
+        "fecha": "2026-09-29",
+        "persona": "Zhong Shanshan",
+        "operacion": "Compra",
+        "acciones": 300000,
+        "importe": 10.06
+      },
+      {
+        "fecha": "2026-09-30",
+        "persona": "Zhong Shanshan",
+        "operacion": "Compra",
+        "acciones": 146200,
+        "importe": 4.91
+      },
+      {
+        "fecha": "2026-06-12",
+        "persona": "Han Linyou",
+        "operacion": "Venta",
+        "acciones": 6000,
+        "importe": 0.23
+      }
+    ],
+    "control_y_defensas": "Zhong Shanshan controla el 84,04 % (17,15 % directo y 66,89 % por Yangshengtang, que es suyo al 100 %) [1, 21]; preside y dirige, y su hijo es consejero. El capital libre es solo el ≈ 16 % (acciones H); las acciones domésticas (55,2 %) no cotizan y son todas de Yangshengtang [11]. Hay operaciones vinculadas recurrentes: compras de tapones y envases a empresas de Yangshengtang (255 M en el 1S26; topes subidos a 520 / 700 / 1.000 M en 2026-2028, «por la subida del plástico y la expansión») y nueve empleados de Yangshengtang recibieron acciones del plan [3, 21]. Una acción, un voto; la junta de 2026 suprimió la comisión de supervisión (nueva Ley de Sociedades) [20, 26]. El 24 % del capital libre presente votó contra la reelección del fundador en la junta de 2026 (estimación propia: 1,07 % de los votos con un 3,92 % del capital libre presente) [20].",
+    "alertas": [
+      "Control del 84 % por el fundador, de 71 años, que preside y dirige; sucesión sin plan publicado [1].",
+      "Operaciones vinculadas con Yangshengtang al alza: topes de 520 M (2026) a 1.000 M (2028) [21].",
+      "Comisión de remuneraciones con el propio presidente como miembro [1]."
+    ],
+    "confianza": "Media"
+  },
+  "consenso": {
+    "guidance": "La empresa no publica guía numérica de ventas ni de beneficio, ni objetivos a medio plazo. Su mensaje en los resultados del 1S26 (25-ago-2026) es cualitativo: crecer «más estable, más lento y más lejos», con 17 fuentes de agua y la innovación en té, funcionales y zumos (nota A). Dividendo: ≈ 70 % del beneficio en los últimos tres años.",
+    "estimaciones": [
+      {
+        "periodo": "2026e",
+        "ingresos": 60138,
+        "ebitda": 26992,
+        "ebit": 23017,
+        "bpa": 1.594,
+        "dpa": 1.125,
+        "fuente": "MarketScreener, 20-oct-2026 (EBITDA y EBIT con los ingresos financieros) [28]"
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 67436,
+        "ebitda": 30247,
+        "ebit": 25583,
+        "bpa": 1.792,
+        "dpa": 1.29,
+        "fuente": "MarketScreener [28]"
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 74847,
+        "ebitda": 33669,
+        "ebit": 28433,
+        "bpa": 2.005,
+        "dpa": 1.446,
+        "fuente": "MarketScreener [28]"
+      }
+    ],
+    "recomendaciones": {
+      "n_analistas": 28,
+      "comprar": 22,
+      "mantener": 4,
+      "vender": 2,
+      "po_medio": 45.2,
+      "po_min": 27.32,
+      "po_max": 52.38
+    },
+    "revisiones": "El BPA de 2026e de Yahoo pasó de 1,575 a 1,599 RMB en 90 días y el de 2027e de 1,778 a 1,798 RMB, con 25-26 analistas: subidas pequeñas tras el 1S26, que batió lo esperado [29]. Las recomendaciones son estables (22 de compra, 4 de mantener y 2 de venta, igual que hace tres meses) [29]. China Merchants mantuvo en mayo «compra fuerte» con 55 HKD [37]. MarketScreener (28 analistas) da un BPA de 1,594 / 1,792 / 2,005 RMB para 2026e-2028e y un objetivo medio de 45,24 CNY [28]; Yahoo, 53,13 HKD de media (32,11-61,57 HKD) [29]. El EBITDA de MarketScreener incluye los ingresos financieros (24.377 M en 2025 frente a 23.825 M sin ellos): diferencia del 1,05 % de las ventas.",
+    "base_ebitda": "ajustado",
+    "ajuste_ebitda_pct_ventas": 1.05,
+    "confianza": "Media"
+  },
+  "bolsa": {
+    "tipo_rentabilidad": "total (con dividendos)",
+    "rentabilidades": [
+      {
+        "periodo": "En el año",
+        "accion_pct": -8.2,
+        "indice_pct": -4.3,
+        "sector_pct": -8
+      },
+      {
+        "periodo": "1 año",
+        "accion_pct": -21.2,
+        "indice_pct": -4.8,
+        "sector_pct": -10.9
+      },
+      {
+        "periodo": "3 años (anual.)",
+        "accion_pct": 1.4,
+        "indice_pct": 15.3,
+        "sector_pct": null
+      },
+      {
+        "periodo": "5 años (anual.)",
+        "accion_pct": 4,
+        "indice_pct": 1.7,
+        "sector_pct": null
+      }
+    ],
+    "anual": [
+      {
+        "anio": "2021",
+        "accion_pct": -5.9,
+        "indice_pct": -12.1
+      },
+      {
+        "anio": "2022",
+        "accion_pct": -13.2,
+        "indice_pct": -11.9
+      },
+      {
+        "anio": "2023",
+        "accion_pct": 4.3,
+        "indice_pct": -10.6
+      },
+      {
+        "anio": "2024",
+        "accion_pct": -23.3,
+        "indice_pct": 22.3
+      },
+      {
+        "anio": "2025",
+        "accion_pct": 40.8,
+        "indice_pct": 31.5
+      }
+    ],
+    "beta": 0.48,
+    "volatilidad_pct": 32.9,
+    "max_drawdown_pct": -51.4,
+    "posicion_corta_pct": null,
+    "comentario": "Rentabilidad total en HKD: −21,2 % en un año frente al −4,8 % del Tracker Fund (2800.HK) y −8,2 % en 2026 [27]. Tras subir un 40,8 % en 2025 (recuperación del agua y del té), la acción tocó máximos de 56,25 HKD el 12-nov-2025 y desde entonces cae un 25 %, con mínimo de 37,90 HKD el 25-sep-2026 [27]. La bajada no viene de los resultados (2025 +30,9 % de beneficio, 1S26 +16,6 %) sino del múltiplo: el mercado paga menos por un agua que no vuelve a crecer (+2,1 % en el 1S26) y por el miedo a la guerra de precios. Beta de 0,48 frente al Tracker Fund (mensual, 60 meses; 0,54 semanal a dos años) y volatilidad del 32,9 % [27]. No hay dato oficial de posición corta en las fuentes leídas.",
+    "confianza": "Alta",
+    "contexto": {
+      "movimiento": {
+        "fecha": "2026-10-20",
+        "var_1m_pct": 7.5,
+        "var_3m_pct": -1.3,
+        "var_6m_pct": -9.3,
+        "var_12m_pct": -22.7,
+        "dist_max_52s_pct": -25.3,
+        "dist_min_52s_pct": 9.1,
+        "dist_max_historico_pct": -25.3,
+        "tendencia": "bajista",
+        "volatilidad_60d_pct": 30,
+        "avisos": []
+      },
+      "movimientos_fuertes": [
+        {
+          "periodo": "nov-2025",
+          "var_pct": -13.2,
+          "causa": "Del máximo de 56,25 HKD (12-nov-2025) a 48,82 HKD a fin de mes [27]: recogida de beneficios tras un 2025 de +40 % y el miedo a que el agua no vuelva a crecer. Sin hecho de la empresa.",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "mar-2026",
+          "var_pct": -4.4,
+          "causa": "Caídas del −4,4 % (12-mar) y −4,0 % (26-mar) [27] alrededor de los resultados de 2025 (24-mar): beneficio +30,9 %, pero la dirección no dio guía de margen por el PET y no subirá precios [2, 41]. Recogido en el base (margen plano en el 45 %).",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "may-jun-2026",
+          "var_pct": -15.3,
+          "causa": "De 46,80 HKD a 39,62 HKD en dos meses [27], con el −8,4 % del 30-jun en un día de caída del sector de alimentación y bebidas [36]; el PET había subido más de un 40 % desde enero [42]. No hemos encontrado un hecho de la empresa que lo explique; el 1S26 (+16 % de ventas, margen del 45 %) desmintió el miedo al margen [3].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "jul-2026",
+          "var_pct": 10.5,
+          "causa": "Rebote hasta 43,78 HKD (+15,0 % la mayor subida de un mes, al 30-jul) [27] con las primeras compras del fundador en el mercado (julio-septiembre: ≈ 120,8 M HKD) [23].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "ago-sep-2026",
+          "var_pct": -8.9,
+          "causa": "Tras los resultados del 1S26 (25-ago: ventas +16,0 %, por encima de lo esperado, pero agua +2,1 % y guerra de precios en el agua según Nielsen, −7,3 %) la acción cayó hasta el mínimo de 37,90 HKD del 25-sep [3, 16, 27]. Recogido en el base (agua al 2-3 %).",
+          "veredicto": "no cambia",
+          "condicion": null
+        }
+      ],
+      "noticias": [
+        {
+          "fecha": "2027-03-23",
+          "tipo": "resultados",
+          "hecho": "Próximos resultados (2026) hacia el 23-mar-2027, estimación por la fecha de 2025 [2]. Unos resultados cercanos no aplazan una compra (reglas 11 y 13).",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-10-06",
+          "tipo": "accionista de referencia",
+          "hecho": "Zhong Shanshan compró ≈ 3,09 M de acciones H por ≈ 120,8 M HKD entre julio y septiembre de 2026 (avisos de participaciones); el consejero Han Linyou vendió 6.000 acciones [23]. Compras del fundador, no ventas.",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-09-11",
+          "tipo": "operaciones vinculadas",
+          "hecho": "Subida de los topes de compras a empresas del fundador (Yangshengtang) a 520 / 700 / 1.000 M en 2026-2028 [21]: importe pequeño frente a las ventas (≈ 1 %).",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-08-25",
+          "tipo": "resultados",
+          "hecho": "Resultados del 1S26: ventas 29.718 M (+16,0 %), beneficio +16,6 %, té +30,1 %, agua +2,1 %, margen EBITDA del 45 %; sin dividendo a cuenta [3, 19]. Por encima del consenso.",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-05-19",
+          "tipo": "junta",
+          "hecho": "Junta de 2026: dividendo final de 0,99 RMB (pagado el 19-ago), consejo nuevo con el hijo del fundador como consejero no ejecutivo y supresión de la comisión de supervisión; la reelección de Zhong con un 98,9 % a favor [20, 26].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-10-20",
+          "tipo": "recomendación",
+          "hecho": "Los analistas siguen en comprar (22 compras, 4 mantener, 2 vender; objetivo medio de 45,20 RMB ≈ 53 HKD) y han subido el BPA un 1,5 % en 90 días [28, 29].",
+          "veredicto": "no cambia",
+          "condicion": null
+        }
+      ],
+      "proximos_resultados": "2027-03-23",
+      "veredicto": "no cambia",
+      "condicion": null,
+      "comentario": "La acción ha caído un 23 % en un año y un 25 % desde el máximo de noviembre de 2025, con causas conocidas: un agua que no vuelve a crecer en plena guerra de precios, el coste del PET y la caída de los múltiplos del consumo chino. Los resultados siguen siendo buenos (1S26 +16 %). No hay un hecho pendiente con fecha que pueda mover el precio más de un 5 % en contra: ninguna colocación ni venta anunciada (el fundador compra), ningún regulador con decisión pendiente y los resultados no llegan hasta marzo de 2027. Sin avisos P de movimiento. Veredicto: no cambia."
+    }
+  },
+  "multiplos_historicos": {
+    "serie": [
+      {
+        "anio": "2021",
+        "precio_cierre": 41.99,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2022",
+        "precio_cierre": 39.33,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2023",
+        "precio_cierre": 40.79,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2024",
+        "precio_cierre": 31.96,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2025",
+        "precio_cierre": 42.11,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      }
+    ],
+    "comentario": "Precios de cierre de cada año en HKD (51,45; 44,10; 45,15; 34,00; 46,84) [27] convertidos a RMB con el tipo de cierre del año (0,8162; 0,8919; 0,9035; 0,9400; 0,8991) [32]. El PER de los últimos doce meses bajó de 66x (2021) a 52x (2022), 38x (2023), 30x (2024 y 2025) y ≈ 23x hoy: la compresión viene de 2020-2021, cuando Nongfu cotizaba como una empresa de crecimiento; desde 2024 el múltiplo es el de un consumo básico de calidad que crece al 10-15 %.",
+    "confianza": "Alta"
+  },
+  "comparables": {
+    "criterio": "Bebidas envasadas chinas que venden en la misma red de tiendas (Tingyi, Uni-President China, CR Beverage, Eastroc) y grandes marcas mundiales de bebidas sin alcohol (Coca-Cola, PepsiCo, Monster, Danone por el agua Evian y Aqua, Suntory BF e Ito En por el té). Fuera Wahaha (no cotiza) y Keurig Dr Pepper (su PER lo deforma la compra de JDE Peet's). Datos de Yahoo del 20-oct-2026, en millones de RMB; PER NTM = PER adelantado de Yahoo [29, 32].",
+    "empresas": [
+      {
+        "nombre": "Tingyi (Master Kong)",
+        "ticker": "0322.HK",
+        "pais": "CN",
+        "capitalizacion": 59419,
+        "ev_ventas": 0.72,
+        "ev_ebitda_ltm": 5.8,
+        "ev_ebitda_ntm": 5.6,
+        "per_ntm": 12.5,
+        "crecimiento_pct": 3,
+        "margen_ebitda_pct": 12.5,
+        "roic_pct": null,
+        "dn_ebitda": -0.2,
+        "fcf_yield_pct": 9.9
+      },
+      {
+        "nombre": "Uni-President China",
+        "ticker": "0220.HK",
+        "pais": "CN",
+        "capitalizacion": 28036,
+        "ev_ventas": 0.68,
+        "ev_ebitda_ltm": 5.9,
+        "ev_ebitda_ntm": 5.6,
+        "per_ntm": 12.2,
+        "crecimiento_pct": 5.2,
+        "margen_ebitda_pct": 11.6,
+        "roic_pct": null,
+        "dn_ebitda": -1.7,
+        "fcf_yield_pct": null
+      },
+      {
+        "nombre": "China Resources Beverage",
+        "ticker": "2460.HK",
+        "pais": "CN",
+        "capitalizacion": 14686,
+        "ev_ventas": 0.87,
+        "ev_ebitda_ltm": 5.8,
+        "ev_ebitda_ntm": 5.4,
+        "per_ntm": 14.1,
+        "crecimiento_pct": 6.9,
+        "margen_ebitda_pct": 15.1,
+        "roic_pct": null,
+        "dn_ebitda": -3.7,
+        "fcf_yield_pct": -31.5
+      },
+      {
+        "nombre": "Eastroc Beverage",
+        "ticker": "605499.SS",
+        "pais": "CN",
+        "capitalizacion": 78479,
+        "ev_ventas": 2.72,
+        "ev_ebitda_ltm": 9.9,
+        "ev_ebitda_ntm": 8.5,
+        "per_ntm": 13.9,
+        "crecimiento_pct": 16.7,
+        "margen_ebitda_pct": 27.3,
+        "roic_pct": null,
+        "dn_ebitda": -2.8,
+        "fcf_yield_pct": 5.1
+      },
+      {
+        "nombre": "Coca-Cola",
+        "ticker": "KO",
+        "pais": "US",
+        "capitalizacion": 2679520,
+        "ev_ventas": 8.57,
+        "ev_ebitda_ltm": 25.3,
+        "ev_ebitda_ntm": 25.5,
+        "per_ntm": 26.5,
+        "crecimiento_pct": -0.7,
+        "margen_ebitda_pct": 33.9,
+        "roic_pct": null,
+        "dn_ebitda": 1.6,
+        "fcf_yield_pct": 1.3
+      },
+      {
+        "nombre": "PepsiCo",
+        "ticker": "PEP",
+        "pais": "US",
+        "capitalizacion": 1213427,
+        "ev_ventas": 2.27,
+        "ev_ebitda_ltm": 11.6,
+        "ev_ebitda_ntm": 11.3,
+        "per_ntm": 15.5,
+        "crecimiento_pct": 3.1,
+        "margen_ebitda_pct": 19.5,
+        "roic_pct": null,
+        "dn_ebitda": 2.1,
+        "fcf_yield_pct": 5
+      },
+      {
+        "nombre": "Monster Beverage",
+        "ticker": "MNST",
+        "pais": "US",
+        "capitalizacion": 611200,
+        "ev_ventas": 9.58,
+        "ev_ebitda_ltm": 30.1,
+        "ev_ebitda_ntm": 26.5,
+        "per_ntm": 35.7,
+        "crecimiento_pct": 13.7,
+        "margen_ebitda_pct": 31.8,
+        "roic_pct": null,
+        "dn_ebitda": -1.1,
+        "fcf_yield_pct": 1.8
+      },
+      {
+        "nombre": "Danone",
+        "ticker": "BN.PA",
+        "pais": "FR",
+        "capitalizacion": 294391,
+        "ev_ventas": 1.76,
+        "ev_ebitda_ltm": 10.7,
+        "ev_ebitda_ntm": 10.1,
+        "per_ntm": 14.5,
+        "crecimiento_pct": 6.2,
+        "margen_ebitda_pct": 16.4,
+        "roic_pct": null,
+        "dn_ebitda": 2,
+        "fcf_yield_pct": 5.3
+      },
+      {
+        "nombre": "Suntory Beverage & Food",
+        "ticker": "2587.T",
+        "pais": "JP",
+        "capitalizacion": 63450,
+        "ev_ventas": 0.75,
+        "ev_ebitda_ltm": 5.9,
+        "ev_ebitda_ntm": 5.6,
+        "per_ntm": 14.7,
+        "crecimiento_pct": 4.4,
+        "margen_ebitda_pct": 12.8,
+        "roic_pct": null,
+        "dn_ebitda": -0.6,
+        "fcf_yield_pct": 6
+      },
+      {
+        "nombre": "Ito En",
+        "ticker": "2593.T",
+        "pais": "JP",
+        "capitalizacion": 16189,
+        "ev_ventas": 0.79,
+        "ev_ebitda_ltm": 12,
+        "ev_ebitda_ntm": 12,
+        "per_ntm": 19.6,
+        "crecimiento_pct": 0.1,
+        "margen_ebitda_pct": 6.5,
+        "roic_pct": null,
+        "dn_ebitda": 0.3,
+        "fcf_yield_pct": null
+      }
+    ],
+    "comentario": "Nongfu cotiza a ≈ 22x el BPA del consenso de 2026e y ≈ 20x el de 2027e, por encima de las chinas (Tingyi 12,5x, Uni-President 12,2x, CR Beverage 14,1x, Eastroc 13,9x) y en línea con las mundiales de calidad (Coca-Cola 26,5x, Monster 35,7x, Ito En 19,6x) [29]. La prima frente a las chinas se explica por un margen EBITDA del 45 % (el triple que Tingyi) y un crecimiento del 14 % frente al 2-5 % de ellas; frente a Coca-Cola, Nongfu crece más pero es una sola marca en un solo país, con un fundador de control. Usaríamos el PER: la caja neta es una parte pequeña del valor (≈ 5 % de la capitalización).",
+    "confianza": "Media"
+  },
+  "transacciones": {
+    "operaciones": [
+      {
+        "fecha": "2024-07",
+        "objetivo": "Britvic (refrescos y zumos, Reino Unido)",
+        "comprador": "Carlsberg",
+        "ev": 36410,
+        "ev_ventas": null,
+        "ev_ebitda": 13.6,
+        "prima_pct": 36,
+        "excluir": false,
+        "comentario": "Valor empresa ≈ 4.100 M GBP; 13,6 veces el EBITDA ajustado de 12 meses (10,2 con sinergias) [33]"
+      },
+      {
+        "fecha": "2025-02",
+        "objetivo": "Alani Nu (energéticas, EE. UU.)",
+        "comprador": "Celsius Holdings",
+        "ev": 12000,
+        "ev_ventas": 3.03,
+        "ev_ebitda": 13.1,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "1.800 M USD sobre ≈ 595 M de ventas y ≈ 137 M de EBITDA de 2024 (12x según Celsius, con sinergias y neto de ventajas fiscales) [34]"
+      },
+      {
+        "fecha": "2021-02",
+        "objetivo": "Nestlé Waters North America (agua: Poland Spring, Pure Life)",
+        "comprador": "One Rock Capital y Metropoulos",
+        "ev": 28666,
+        "ev_ventas": 1.13,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "4.300 M USD sobre ≈ 3.800 M de ventas de 2019; EBITDA no publicado [35]"
+      }
+    ],
+    "comentario": "Las marcas de bebidas se compran a 13-14 veces el EBITDA [33, 34]; el agua de masas sin marca fuerte, a ≈ 1,1 veces las ventas [35]. Nongfu cotiza a ≈ 15 veces el EBITDA de los últimos doce meses (sin la caja), ya por encima de esas operaciones, que además llevan prima de control. Con el 84 % en manos del fundador no habrá operación: no ponderamos las transacciones. Montos convertidos a RMB al tipo del 20-oct-2026 [32].",
+    "confianza": "Baja"
+  },
+  "dcf": {
+    "anios": [
+      {
+        "periodo": "2026e",
+        "crecimiento_pct": 13.5,
+        "margen_ebitda_pct": 45,
+        "amortizacion_pct_ventas": 6.4,
+        "capex_pct_ventas": 12,
+        "nwc_pct_ventas": 9,
+        "tasa_impositiva_pct": 24.3,
+        "fijo": true
+      },
+      {
+        "periodo": "2027e",
+        "crecimiento_pct": 10,
+        "margen_ebitda_pct": 45,
+        "amortizacion_pct_ventas": 6.6,
+        "capex_pct_ventas": 11,
+        "nwc_pct_ventas": 9,
+        "tasa_impositiva_pct": 24.3,
+        "fijo": false
+      },
+      {
+        "periodo": "2028e",
+        "crecimiento_pct": 9,
+        "margen_ebitda_pct": 45,
+        "amortizacion_pct_ventas": 6.8,
+        "capex_pct_ventas": 10,
+        "nwc_pct_ventas": 9,
+        "tasa_impositiva_pct": 24.3,
+        "fijo": false
+      },
+      {
+        "periodo": "2029e",
+        "crecimiento_pct": 7.5,
+        "margen_ebitda_pct": 45,
+        "amortizacion_pct_ventas": 7,
+        "capex_pct_ventas": 9.5,
+        "nwc_pct_ventas": 9,
+        "tasa_impositiva_pct": 24.3,
+        "fijo": false
+      },
+      {
+        "periodo": "2030e",
+        "crecimiento_pct": 6,
+        "margen_ebitda_pct": 44.8,
+        "amortizacion_pct_ventas": 7.2,
+        "capex_pct_ventas": 9,
+        "nwc_pct_ventas": 9,
+        "tasa_impositiva_pct": 24.3,
+        "fijo": false
+      },
+      {
+        "periodo": "2031e",
+        "crecimiento_pct": 5,
+        "margen_ebitda_pct": 44.5,
+        "amortizacion_pct_ventas": 7.3,
+        "capex_pct_ventas": 8.5,
+        "nwc_pct_ventas": 9,
+        "tasa_impositiva_pct": 24.3,
+        "fijo": false
+      },
+      {
+        "periodo": "2032e",
+        "crecimiento_pct": 4,
+        "margen_ebitda_pct": 44.5,
+        "amortizacion_pct_ventas": 7.4,
+        "capex_pct_ventas": 8,
+        "nwc_pct_ventas": 9,
+        "tasa_impositiva_pct": 24.3,
+        "fijo": false
+      },
+      {
+        "periodo": "2033e",
+        "crecimiento_pct": 3,
+        "margen_ebitda_pct": 44.5,
+        "amortizacion_pct_ventas": 7.4,
+        "capex_pct_ventas": 7.5,
+        "nwc_pct_ventas": 9,
+        "tasa_impositiva_pct": 24.3,
+        "fijo": false
+      }
+    ],
+    "wacc": {
+      "tasa_libre_pct": 1.6354,
+      "beta": 0.75,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 2,
+      "coste_deuda_pct": 2.5,
+      "tasa_impositiva_pct": 24.3,
+      "peso_deuda_pct": 1.3
+    },
+    "terminal": {
+      "metodo": "gordon",
+      "crecimiento_pct": 1,
+      "multiplo_salida": 12
+    },
+    "etapa2": {
+      "usar": false,
+      "anios": 5,
+      "margen_final_pct": null,
+      "justificacion": null
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "Las ventas crecieron un 15,3 % anual de 2021 a 2025 (29.696 M a 52.553 M), todo orgánico, con un 2024 casi plano (+0,5 %) por la campaña en redes contra la empresa y su fundador, que hundió el agua un 21,3 % [1, 5]. El té (东方树叶) pasó de 4.579 M a 21.596 M en cuatro años y ya es el 44 % de las ventas en el 1S26 [3]. Proyectamos +13,5 % en 2026e (1S publicado +16,0 % y un 2S26 de +11 %; la dirección pidió «crecimiento de dos dígitos» [41]), +10 % en 2027e, +9 % en 2028e y bajando al 3 % en 2033e: el té se modera desde una base enorme y el agua crece al 2-3 % en un mercado que cae (Nielsen: −7,3 % en importe en el 1S26 [16]). El consenso es algo más alto (+12 % y +11 % en 2027e-2028e) [28].",
+      "margenes": "El margen EBITDA subió del 38,9 % (2021) al 45,3 % (2025) y fue del 45,0 % en el 1S26 [1, 3]: más peso del té (resultado de segmento del 48 % de sus ventas frente al 37 % del agua), PET y azúcar baratos en 2025 y menos publicidad. Lo mantenemos en el 45 % hasta 2029e y lo bajamos al 44,5 % después: el PET subió más de un 40 % entre enero y abril de 2026 [42] y la dirección no da guía de margen por ello [41], pero el 1S26 aguantó el 45 %. No suponemos más margen por la mezcla: la guerra de precios del agua lo impide.",
+      "inversion": "Capex del 12 % de las ventas en 2026e (12,9 % en 2025: fábricas cerca de las 17 fuentes y líneas de té [1]) bajando al 7,5 % en 2033e, y amortización del 6,4 % al 7,4 % (6,5 % en 2025). Circulante del 9 % de las ventas, el de 2024-2025 (las existencias subieron a ≈ 100 días con el agua de 2024) [1].",
+      "wacc": "Todo en RMB: bono chino a 10 años del 1,6354 % (ChinaBond, 20-oct-2026) [30]. Beta de 0,75: la medida frente al Tracker Fund es de 0,48 (mensual, cinco años) a 0,65 (semanal, cinco años) [27]; la subimos hacia 1 porque el Tracker Fund pesa mucho en bancos y tecnológicas y un consumo básico no tiene beta 0,5 a largo plazo. Prima de mercado del 5,5 % y prima adicional de 2 puntos (China, un solo país, fundador con el 84 % y libre flotación del 16 %). Deuda bancaria pequeña (≈ 1,3 % del valor) al 2,5 %. WACC del 7,68 %; con la prima implícita de Damodaran (4,2 %) [31] sería del 6,72 %.",
+      "terminal": "Crecimiento a perpetuidad del 1 %, por debajo del bono chino (1,64 %) y del crecimiento nominal de China; el mercado de bebidas crece un 3-5 % y el agua envasada cae en 2026 [12, 16]. El valor terminal pesa el 67 % del valor; el múltiplo de salida implícito es de 9,4 veces el EBITDA, por debajo de las 14,7 veces de hoy."
+    },
+    "sostenibilidad": {
+      "puente_ingresos": [
+        {
+          "periodo": "2026e",
+          "volumen_pct": 10.5,
+          "precio_pct": 0.5,
+          "otros_pct": 2.5,
+          "comentario": "Volumen +10,5 %: té (+30 % en el 1S26) y funcionales; agua plana [3]. Precio +0,5 % (la dirección no sube precios [41]; el agua verde barata resta y el té de 900 ml suma). +2,5 puntos de productos nuevos (té con fruta, café, bebidas vegetales)."
+        },
+        {
+          "periodo": "2027e",
+          "volumen_pct": 7.5,
+          "precio_pct": 0.5,
+          "otros_pct": 2,
+          "comentario": "Volumen +7,5 % (té al 15 %, agua al 2-3 %), precio +0,5 % y +2 puntos de categorías nuevas."
+        },
+        {
+          "periodo": "2028e",
+          "volumen_pct": 7,
+          "precio_pct": 0.5,
+          "otros_pct": 1.5,
+          "comentario": "Volumen +7 %, precio +0,5 % y +1,5 puntos de categorías nuevas."
+        },
+        {
+          "periodo": "2029e",
+          "volumen_pct": 6,
+          "precio_pct": 0.5,
+          "otros_pct": 1,
+          "comentario": "Volumen +6 %, precio +0,5 % y un punto de categorías nuevas."
+        },
+        {
+          "periodo": "2030e",
+          "volumen_pct": 5,
+          "precio_pct": 0.5,
+          "otros_pct": 0.5,
+          "comentario": "Volumen +5 % y precio +0,5 %. Ventas de 81.494 M: el 4,9 % del mercado de bebidas sin alcohol de 2030e (≈ 1,68 billones de RMB al 5 % anual [12]), frente al 4,0 % de hoy: ganamos cuota como en 2021-2025 (del 3,1 % al 4,0 %)."
+        }
+      ],
+      "mercado_final": {
+        "periodo": "2030e",
+        "tamano": 1675400
+      },
+      "veredicto": "Sí",
+      "justificacion": "Sí. Las tres pruebas pasan: crecemos un 7,3 % anual frente al 15,3 % histórico; con un ROIC del 114 % y un ROIC incremental de 2021-2025 del 132 %, el crecimiento casi no necesita capital (la reinversión neta es el 10 % del beneficio operativo); y la cuota de 2030e (4,9 %) supone seguir ganando lo que ganó en 2021-2025. Lo sostiene la calidad: marca de agua natural con 17 fuentes que nadie más tiene, red de distribuidores que llega a millones de tiendas [12] y la mayor cuota del té sin azúcar (31 % en el 1T26 [15]). El riesgo es el agua: lleva dos años en guerra de precios y aún vende menos que en 2023; por eso el agua crece al 2-3 % en el base y no al 5-6 %."
+    },
+    "lectura": "El DCF da 31,97 RMB por acción (37,58 HKD), un 10 % por debajo del precio, con el valor terminal en el 67 % del valor. El precio de 35,63 RMB equivale a que las ventas crezcan un 8,5 % anual de 2027e a 2033e (base 6,4 %) o a un margen EBITDA del 48,9 % para siempre (base 44,5 %); la rentabilidad implícita es del 7,0 % anual frente a un WACC del 7,68 %. La tabla de sensibilidad va de 28,54 a 36,59 RMB: solo con un WACC del 7,2 % y un crecimiento terminal del 1,5 % el valor supera el precio. La caja neta (≈ 21.000 M tras el dividendo de agosto) es el 5 % de la capitalización.",
+    "confianza": "Media"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": -3,
+        "ajuste_margen_pp": -3,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": 0.5,
+        "multiplo_salida": null,
+        "narrativa": "La guerra de precios del agua dura y pasa al té sin azúcar, con Master Kong, Uni-President, Wahaha y marcas nuevas bajando precios, y el PET sigue caro: 3 puntos menos de crecimiento, margen EBITDA 3 puntos más bajo (≈ 42 %) y crecimiento terminal del 0,5 %."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "El té sigue creciendo pero se modera (del 30 % al 12-15 %), el agua crece al 2-3 % ganando cuota en un mercado que cae, margen EBITDA del 45 % y reparto del ≈ 70 % del beneficio."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": 2,
+        "ajuste_margen_pp": 1,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "El agua natural vuelve a crecer al 5-6 % (los consumidores vuelven a pagar la marca roja y C'estbon sigue perdiendo cuota) y el té, los funcionales y los zumos siguen al 15-20 %: 2 puntos más de crecimiento y 1 punto más de margen."
+      }
+    ],
+    "comentario": "En el DCF solo el alcista (36,25 RMB, +1,7 %) supera el precio; el base da −10,3 % y el bajista −31,9 %: la asimetría es mala porque el precio ya descuenta más crecimiento o más margen que nuestro base. A 12 meses, con el PER propio de la regla, el cuadro es otro (bajista −13,4 %, base +22,0 %, alcista +74 %), porque la regla supone que el PER sube un 10 % desde el más bajo de su historia como cotizada. Las dos lecturas no se contradicen: el múltiplo está bajo frente a su historia, pero la historia era la de una empresa que crecía al 20 %; con un 7 % anual a largo plazo y un WACC del 7,7 %, el DCF no llega al precio.",
+    "confianza": "Media"
+  },
+  "suma_partes": {
+    "aplica": false,
+    "descuento_holding_pct": 0,
+    "partes": [],
+    "comentario": "No la hacemos: los cinco segmentos comparten fábricas, red de ventas y marca, y la empresa no reparte el balance por segmento [1].",
+    "confianza": "Media"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2026-06-30",
+      "deuda_financiera": 5185.5,
+      "arrendamientos": 87.8,
+      "caja": 37644.8,
+      "minoritarios": 0,
+      "pensiones": 0,
+      "asociadas": 0,
+      "otros_ajustes": 11134
+    },
+    "rab": null,
+    "referencia_mercado": {
+      "mercado": "S&P 500 (prima implícita de Damodaran, referencia de mercado desarrollado)",
+      "prima_implicita_pct": 4.2,
+      "fecha": "2026-10",
+      "fuente": "Damodaran, ERPbymonth [31]"
+    },
+    "pesos": {
+      "dcf": 50,
+      "comparables": 20,
+      "transacciones": 0,
+      "suma_partes": 0,
+      "escenarios": 30
+    },
+    "objetivo_12m": {
+      "ejercicio": "2028e",
+      "casos": [
+        {
+          "escenario": "Bajista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 1.65,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "La guerra de precios del agua llega al té (marcas nuevas de té sin azúcar, Master Kong y Uni-President bajan precios) y el PET sigue caro: ventas de 2027e-2028e creciendo 3 puntos menos (7 % y 6 %) hasta 67.652 M y margen EBITDA 3 puntos más bajo (42 %): BPA de 1,65 RMB en 2028e. PER de 18,1x (el base × 0,8; por debajo del mínimo de cinco años, 22,7x)."
+        },
+        {
+          "escenario": "Base",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 1.88,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "Ventas de 71.517 M en 2028e (+13,5 % en 2026e con el 1S publicado, +10 % y +9 % después: té y funcionales creciendo al 12-15 %, agua al 2-3 %) y margen EBITDA del 45 % (45,0 % en el 1S26 [3]): EBIT de 27.320 M, +650 M de resultado financiero, impuesto del 24,3 % y 11.246,5 M de acciones: BPA de 1,88 RMB. PER de 22,6x: el actual (20,5x) × 1,1, el tope de la regla; la mediana de cinco años (36,8x) queda lejos."
+        },
+        {
+          "escenario": "Alcista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 2,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "El agua vuelve a crecer al 5-6 % (ganando cuota a C'estbon, que cae un 7,9 %) y el té sigue por encima del 20 %: 2 puntos más de crecimiento y 1 punto más de margen (46 %): BPA de 2,00 RMB. PER de 30,5x (techo de la regla: el base × 1,35; por debajo aún de la mediana de 36,8x)."
+        }
+      ],
+      "per_historico": {
+        "base": "adelantado",
+        "anios": 5,
+        "actual": 20.52,
+        "mediana_5a": 36.76,
+        "minimo_5a": 22.67,
+        "media_larga": 35.81,
+        "excluidos": "Historia adelantada de cinco años: cierre del año en RMB ÷ BPA real del año siguiente [1, 5, 6, 7, 8, 27, 32]: 2021: 41,99 ÷ 0,76 = 55,3x; 2022: 39,33 ÷ 1,07 = 36,8x; 2023: 40,79 ÷ 1,08 = 37,8x; 2024: 31,96 ÷ 1,41 = 22,7x; 2025: 42,11 ÷ 1,58 (nuestro 2026e) = 26,6x. Mediana 36,8x, mínimo 22,7x, media 35,8x. Actual: 35,63 ÷ 1,74 (nuestro 2027e) = 20,5x. La mediana es 1,79 veces el PER de hoy, justo por debajo del 1,8 que haría elegir la v2: decide la v3 con el tope ×1,1. 2020 (salida a bolsa en septiembre, ≈ 72x) queda fuera de los cinco años. No excluimos 2021, aunque es un múltiplo de la burbuja de 2020-2021: con él o sin él la regla da lo mismo, porque el tope ×1,1 manda.",
+        "v2": {
+          "mediana_5a": 38.12,
+          "minimo_5a": 29.59,
+          "media_larga": 42.99,
+          "excluidos": "PER al cierre (cierre ÷ BPA del mismo año) [1, 27]: 2021: 65,6x; 2022: 51,8x; 2023: 38,1x; 2024: 29,6x; 2025: 29,9x. Mediana 38,1x, mínimo 29,6x, media 43,0x. La serie baja todos los años: el mercado dejó de pagar a Nongfu como empresa de crecimiento en 2021-2022 y desde 2024 la paga como un consumo básico de calidad."
+        }
+      },
+      "comparables_per": {
+        "mediana": 14.6
+      },
+      "consenso": {
+        "bpa_ano1": 1.792,
+        "bpa_ano2": 2.005,
+        "objetivo_medio": 45.2,
+        "objetivo_min": 27.32,
+        "objetivo_max": 52.38,
+        "analistas": 28,
+        "tendencia_3m": "ligeramente al alza",
+        "fuente": "MarketScreener (BPA de 2027e y 2028e y objetivos en RMB, 20-oct-2026) y tendencia de 90 días de Yahoo [28, 29]"
+      },
+      "diferencia_consenso": "Nuestro BPA de 2027e (1,74 RMB) está un 3 % por debajo del consenso de MarketScreener (1,79) y el de 2028e (1,88 RMB) un 6 % por debajo (2,01) [28]. Las ventas casi coinciden en 2026e (59.648 M frente a 60.138 M); la diferencia crece después porque crecemos un 10 % y un 9 % en 2027e-2028e frente al 12 % y 11 % del consenso: el té ya es el 44 % de las ventas y no puede crecer al 30 % mucho más tiempo, y el agua está plana en un mercado que cae [3, 16]. El margen EBITDA es el mismo (45 %) y el objetivo base (42,49 RMB) queda un 6 % por debajo del objetivo medio de los analistas (45,20 RMB) [28].",
+      "media": null,
+      "comentario": "El objetivo a 12 meses (43,96 RMB, 51,68 HKD, ponderado 25/50/25) da un 26,2 % con dividendo (22,0 % en el base), por encima del 15 % y del 12 % que pide la regla v3. El base es un PER de 22,6x sobre un BPA de 2028e de 1,88 RMB, más un 2,8 % de dividendo (0,99 RMB de 2025). Pero la señal es Mantener por el filtro de valor real: el valor intrínseco (30,46 RMB) está un 14,5 % por debajo del precio. La regla v2 (PER al cierre) da también Mantener: 14,5 % ponderado y 10,9 % en el base, porque en v2 el base se queda en el PER de hoy y la rentabilidad del base es solo el crecimiento del BPA (8,5 %) más el dividendo. El crecimiento del BPA que pedimos es del 10 % anual desde 1,41 RMB (2025), sin rebote. Nuestro objetivo base queda un 6 % por debajo del objetivo medio de los analistas (45,20 RMB). El bajista (−13,4 %) es un PER de 18x con un margen 3 puntos más bajo."
+    },
+    "comentario": "El DCF da 31,97 RMB (37,58 HKD), un 10 % por debajo del precio, con un WACC del 7,68 % y un crecimiento a perpetuidad del 1 %; los escenarios van de 24,28 (bajista) a 36,25 RMB (alcista). Los comparables por PER dan 24,45-32,56 RMB (mediana de 14,6x sobre el BPA del consenso; ninguno tiene el margen de Nongfu) y por EV/EBITDA 16-32 RMB. El valor intrínseco ponderado (DCF 50 %, escenarios 30 %, comparables 20 %) es de 30,46 RMB (35,81 HKD), un 14,5 % por debajo del precio. Con la prima implícita del mercado (4,2 %) el WACC baja al 6,72 % y el DCF sube a ≈ 37,5 RMB, por encima del precio: la valoración depende mucho del coste de capital, y con 7,7 % (bono chino 1,64 % más prima de mercado y de país) Nongfu no está barata. Las transacciones (Britvic 13,6x EBITDA, Alani Nu 13,1x, Nestlé Waters 1,1x ventas) no se usan: son compras de marcas occidentales, no comparables con el margen y el crecimiento de Nongfu [33, 34, 35].",
+    "confianza": "Media"
+  },
+  "catalizadores": {
+    "items": [
+      {
+        "fecha": "2027-03-23 (estimada)",
+        "evento": "Resultados de 2026 y dividendo final (0,99 RMB en 2025) [2]",
+        "efecto": "Si el 2S26 crece un 11 % o más con margen del 45 %, el consenso sube; si el agua cae, la tesis de cuota se discute",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2026-11 a 2027-03",
+        "evento": "Precio del PET y del azúcar (PET +40 % entre enero y abril de 2026) [42]",
+        "efecto": "Cada punto de coste de envase en ventas es ≈ 600 M de EBITDA; la dirección no da guía de margen por ello [41]",
+        "probabilidad": "Media",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2026-2027",
+        "evento": "Guerra de precios del agua (C'estbon −7,9 % en el 1S26; agua verde barata de Nongfu desde 2024) [16, 17]",
+        "efecto": "Si CR Beverage y Wahaha dejan de bajar precios, el agua de Nongfu vuelve a crecer al 5 %; si siguen, se queda plana",
+        "probabilidad": "Media",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "2026-2027",
+        "evento": "Compras del fundador en el mercado (≈ 120,8 M HKD en julio-septiembre de 2026) [23]",
+        "efecto": "Sostienen el precio y señalan que el accionista de control lo ve barato; reducen aún más la libre flotación",
+        "probabilidad": "Media",
+        "sentido": "+"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "riesgos": {
+    "items": [
+      {
+        "riesgo": "La guerra de precios del agua dura y pasa al té sin azúcar",
+        "tipo": "Competencia / precio",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "Bajista a 12 meses −13,4 % (18,1x × 1,65 RMB); DCF de 24,28 RMB con 3 puntos menos de crecimiento y de margen",
+        "mitigante": "Coste más bajo del sector (fuentes propias, fábricas amortizadas) y margen del 45 % frente al 11-15 % de los rivales: aguanta precios bajos más que nadie [18]",
+        "senal": "Agua cayendo en el 2S26 o margen del té por debajo del 45 % del segmento"
+      },
+      {
+        "riesgo": "Campañas en redes contra la empresa o el fundador (como la de 2024)",
+        "tipo": "Reputacional",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "En 2024 el agua cayó un 21,3 % y la acción ≈ 30 % en dos meses [5]",
+        "mitigante": "La recuperación de 2025 (agua +17,3 %) mostró que la marca aguanta; hoy el foro no habla de boicot [1, 38]",
+        "senal": "Nuevas campañas en Douyin o Weibo; caída del agua en Nielsen"
+      },
+      {
+        "riesgo": "Coste del PET y del azúcar",
+        "tipo": "Costes",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "Un punto de margen EBITDA es ≈ 0,8 RMB por acción en el DCF",
+        "mitigante": "El 1S26 aguantó el 45 % con el PET al alza [3]",
+        "senal": "Margen bruto del 2S26 por debajo del 58 %"
+      },
+      {
+        "riesgo": "Gobierno: fundador con el 84 % y operaciones vinculadas",
+        "tipo": "Gobierno",
+        "probabilidad": "Baja",
+        "impacto": "Medio",
+        "efecto_valor": "Compras de tapones y envases a empresas del fundador (topes de 520 / 700 / 1.000 M en 2026-2028) [21]; no recogido en el base",
+        "mitigante": "Importe pequeño (≈ 1 % de las ventas); el fundador compra acciones, no vende [23]",
+        "senal": "Topes de operaciones vinculadas al alza otra vez o ventas del fundador"
+      },
+      {
+        "riesgo": "Riesgo país y regulador chino (seguridad alimentaria, normas de agua de 2026)",
+        "tipo": "Regulatorio",
+        "probabilidad": "Baja",
+        "impacto": "Medio",
+        "efecto_valor": "No cuantificado; en la prima adicional del WACC (2 puntos)",
+        "mitigante": "Las normas nuevas del agua favorecen a quien tiene fuentes propias [3]",
+        "senal": "Cambios de normas de etiquetado o de agua mineral"
+      },
+      {
+        "riesgo": "Riesgo de IA: bajo",
+        "tipo": "Tecnológico",
+        "probabilidad": "Baja",
+        "impacto": "Bajo",
+        "efecto_valor": "≈ 0 % a 3-5 años; no se recoge en ningún escenario",
+        "mitigante": "Producto físico de compra por impulso, con fábrica y red de tiendas",
+        "senal": "Que la compra en tiendas pase a pedidos automáticos que elijan solo por precio"
+      }
+    ],
+    "premortem": "Octubre de 2027: la acción ha perdido otro 25 %. El té sin azúcar se llenó de marcas y Master Kong bajó precios; el té de Nongfu creció un 5 % en 2027 y su margen bajó cinco puntos. El agua siguió plana y el PET subió otra vez. El BPA de 2027 se quedó en 1,55 RMB y el mercado pasó a pagar 17 veces el beneficio, como a Tingyi con un margen mejor. Las señales: té creciendo por debajo del 15 % en el 2S26, margen EBITDA por debajo del 43 % y cuota del té por debajo del 28 % en los datos de 马上赢.",
+    "ia": {
+      "exposicion": "Baja",
+      "sentido": "Neutral",
+      "efecto_valor": "≈ 0 % a 3-5 años; no se recoge en ningún escenario",
+      "comentario": "La IA no sustituye una botella de agua o de té: Nongfu vende un producto físico, barato y de compra por impulso en millones de tiendas, con fábricas junto a sus fuentes. Puede ayudar en la planificación de la producción, la distribución y el marketing y no cambia el poder de la marca. El riesgo indirecto es pequeño: que plataformas de compra instantánea elijan la bebida más barata. Riesgo de IA: bajo."
+    },
+    "confianza": "Media"
+  },
+  "esg": {
+    "calificaciones": [],
+    "materialidad": "Tres asuntos con cifras: (1) el plástico, porque el PET es la materia prima clave y su precio movió el margen bruto 2,4 puntos en 2025 [2]; (2) el agua de las fuentes, que es el activo y la licencia social del negocio (17 fuentes, campañas de «fábricas transparentes» con 700.000 visitas en 2025) [2]; (3) la seguridad alimentaria y las nuevas normas de 2025-2026 [2, 3]. El informe de sostenibilidad de 2025 se publicó el 17-abr-2026 en HKEXnews.",
+    "controversias": "Febrero-diciembre de 2024: campaña en redes contra la empresa y su fundador (supuestos símbolos japoneses en el envase, el hijo con pasaporte estadounidense y críticas a Wahaha); la empresa la llamó «difamación maliciosa», algunas cuentas fueron sancionadas por las autoridades y el agua cayó un 21,3 % en el año [5]. No hemos encontrado sanciones de reguladores a la empresa en 2024-2026.",
+    "confianza": "Media"
+  },
+  "preguntas": {
+    "items": [
+      {
+        "tema": "Agua",
+        "pregunta": "¿Cuánto vende hoy el agua verde (purificada) frente a la roja (natural) y con qué margen?",
+        "por_que": "El agua verde defiende cuota pero baja el precio medio."
+      },
+      {
+        "tema": "Té",
+        "pregunta": "¿Qué crecimiento del té esperan en 2027, con su cuota ya en el 31 %?",
+        "por_que": "Es el motor del beneficio y nuestro base supone que se modera al 12-15 %."
+      },
+      {
+        "tema": "Costes",
+        "pregunta": "¿Qué parte del coste del PET de 2026 está cubierta y cuánto margen cuesta en el 2S26?",
+        "por_que": "La dirección no da guía de margen por el PET."
+      },
+      {
+        "tema": "Caja",
+        "pregunta": "¿Por qué no recompran acciones con ≈ 37.600 M de caja y depósitos?",
+        "por_que": "Solo el fideicomiso del plan compra acciones; el fundador compra por su cuenta."
+      },
+      {
+        "tema": "Gobierno",
+        "pregunta": "¿Por qué suben los topes de compras a empresas del fundador hasta 1.000 M en 2028?",
+        "por_que": "Operaciones vinculadas al alza en una empresa controlada al 84 %."
+      },
+      {
+        "tema": "Libre flotación",
+        "pregunta": "¿Piensan aumentar la libre flotación de las acciones H (16 %)?",
+        "por_que": "Con tan poca flotación, los flujos del sur y los índices mueven mucho la acción."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sentimiento": {
+    "tono": "Dividido",
+    "tendencia": "Estable",
+    "revisadas": [
+      {
+        "plataforma": "Guba (Eastmoney), foro de 9633",
+        "fecha": "2026-10",
+        "n_comentarios": 35,
+        "tono": "Dividido",
+        "resumen": "«Buena empresa, acción demasiado cara» frente a «el PER más bajo desde la salida a bolsa, hay que entrar»; dudas sobre si comprar por Stock Connect por la retención del dividendo; moda del «agua grande» (botellas de 1,5 l) como señal alcista [38]."
+      },
+      {
+        "plataforma": "Guba (Eastmoney), foro de 9633",
+        "fecha": "2026-09",
+        "n_comentarios": 40,
+        "tono": "Negativo",
+        "resumen": "Cansancio por la caída («ya no aguanto», «basura, no la toquéis») mezclado con la noticia de que el fundador compra acciones H (64,37-64,41 %) y con quejas sobre la promoción «abre el tapón y gana» [39]."
+      },
+      {
+        "plataforma": "Guba (Eastmoney), foro de 9633",
+        "fecha": "2026-09",
+        "n_comentarios": 30,
+        "tono": "Dividido",
+        "resumen": "Debate sobre si el agua «ya no gana dinero» y el té carga con el grupo; algunos ven suelo en 38-40 HKD [40]."
+      },
+      {
+        "plataforma": "Prensa con lectores (36Kr)",
+        "fecha": "2026-09",
+        "n_comentarios": 0,
+        "tono": "Negativo",
+        "resumen": "El agua barata a menos de 1 RMB por botella y el mercado del agua en caída en el 1S26 [16]."
+      }
+    ],
+    "temas": [
+      {
+        "tema": "Guerra de precios del agua",
+        "postura": "Bajista",
+        "peso": "Alto",
+        "contraste": "Cierto en el sector (mercado del agua −7,3 % en importe en el 1S26; C'estbon −7,9 %), pero Nongfu creció un 2,1 % en agua: gana cuota (nota B)."
+      },
+      {
+        "tema": "Compras del fundador",
+        "postura": "Alcista",
+        "peso": "Medio",
+        "contraste": "Cierto: 3,09 M de acciones H en julio-septiembre de 2026 a 38,7-40,0 HKD, unos 121 M HKD; pequeño frente a su 84 % (nota C)."
+      },
+      {
+        "tema": "Valoración («cara» o «el PER más bajo de su historia»)",
+        "postura": "Dividida",
+        "peso": "Alto",
+        "contraste": "Las dos cosas son ciertas: ≈ 20x el BPA de 2027e es el mínimo de su historia en bolsa, pero el doble que Tingyi (nota D)."
+      },
+      {
+        "tema": "Té sin azúcar como motor",
+        "postura": "Alcista",
+        "peso": "Medio",
+        "contraste": "Cierto: +30,1 % en el 1S26 y 44,2 % de las ventas (nota A)."
+      }
+    ],
+    "lectura": "El particular chino está dividido y cansado, sin capitulación ni euforia: la caída del 25 % desde noviembre se lee como «buena empresa a precio que aún no es de ganga». Coincide con nuestra lectura de que el negocio va bien y el debate es el precio. No anticipa ningún riesgo que el informe no tenga; las compras del fundador son el único dato nuevo que circula, y está comprobado en HKEXnews. Va algo más cauto que los analistas (22 de 28 recomiendan comprar).",
+    "confianza": "Media"
+  },
+  "fuentes": [
+    {
+      "id": 1,
+      "titulo": "2025 Annual Report: estados consolidados NIIF de 2025 y 2024 auditados por Ernst & Young, notas de segmentos, otros ingresos, impuestos, dividendos, remuneración y participaciones",
+      "editor": "Nongfu Spring / HKEXnews",
+      "tipo": "Primaria",
+      "fecha": "2026-04-17",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0417/2026041701389.pdf"
+    },
+    {
+      "id": 2,
+      "titulo": "Announcement of annual results for the year ended December 31, 2025 (ventas por categoría, margen bruto, gastos, dividendo final de 0,99 RMB)",
+      "editor": "Nongfu Spring / HKEXnews",
+      "tipo": "Primaria",
+      "fecha": "2026-03-24",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0324/2026032401065.pdf"
+    },
+    {
+      "id": 3,
+      "titulo": "Announcement of 2026 interim results (cuenta, balance y segmentos del 1S26; revisado por Ernst & Young)",
+      "editor": "Nongfu Spring / HKEXnews",
+      "tipo": "Primaria",
+      "fecha": "2026-08-25",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0825/2026082501292.pdf"
+    },
+    {
+      "id": 4,
+      "titulo": "2026 Interim Report (estado de flujos del 1S26, plan de acciones, participaciones)",
+      "editor": "Nongfu Spring / HKEXnews",
+      "tipo": "Primaria",
+      "fecha": "2026-09-24",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0924/2026092401877.pdf"
+    },
+    {
+      "id": 5,
+      "titulo": "2024 Annual Report: estados de 2024 y 2023 (flujos, otros ingresos) y explicación de la caída del agua en 2024",
+      "editor": "Nongfu Spring / HKEXnews",
+      "tipo": "Primaria",
+      "fecha": "2025-04-25",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0425/2025042503151.pdf"
+    },
+    {
+      "id": 6,
+      "titulo": "2023 Annual Report: estados de 2023 y 2022 y segmentos",
+      "editor": "Nongfu Spring / HKEXnews",
+      "tipo": "Primaria",
+      "fecha": "2024-04-18",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0418/2024041802052.pdf"
+    },
+    {
+      "id": 7,
+      "titulo": "2022 Annual Report: estados de 2022 y 2021, segmentos y otros ingresos",
+      "editor": "Nongfu Spring / HKEXnews",
+      "tipo": "Primaria",
+      "fecha": "2023-04-14",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0414/2023041400852.pdf"
+    },
+    {
+      "id": 8,
+      "titulo": "2021 Annual Report: estados de 2021 y 2020",
+      "editor": "Nongfu Spring / HKEXnews",
+      "tipo": "Primaria",
+      "fecha": "2022-04-28",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2022/0428/2022042803673.pdf"
+    },
+    {
+      "id": 9,
+      "titulo": "2025 Interim Report (1S25 y 1S24: cuenta, flujos y otros ingresos)",
+      "editor": "Nongfu Spring / HKEXnews",
+      "tipo": "Primaria",
+      "fecha": "2025-09-23",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0923/2025092300352.pdf"
+    },
+    {
+      "id": 10,
+      "titulo": "2024 Interim Report (1S24 y 1S23)",
+      "editor": "Nongfu Spring / HKEXnews",
+      "tipo": "Primaria",
+      "fecha": "2024-09-20",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0920/2024092001250.pdf"
+    },
+    {
+      "id": 11,
+      "titulo": "Monthly Return de septiembre de 2026 (5.034.666.400 acciones H y 6.211.800.000 domésticas; sin autocartera)",
+      "editor": "Nongfu Spring / HKEXnews",
+      "tipo": "Primaria",
+      "fecha": "2026-10-02",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1002/2026100203295.pdf"
+    },
+    {
+      "id": 12,
+      "titulo": "中国软饮行业现状 (mercado chino de bebidas sin alcohol 2024: 12.502 億 RMB, +7,56 %; agua envasada 2.688 億, té 1.941 億; CR3 por categoría)",
+      "editor": "观研天下 (chinabaogao)",
+      "tipo": "Sectorial",
+      "fecha": "2025-10-21",
+      "url": "https://www.chinabaogao.com/jingzheng/202510/767812.html"
+    },
+    {
+      "id": 13,
+      "titulo": "Mercado de agua envasada según 灼识咨询 (CIC): agua purificada 1.206 億 RMB en 2023 (56,1 % del total) y 1.798 億 en 2028e (57,2 %); mercado +2,5 % en 2024",
+      "editor": "Jiemian (界面新闻)",
+      "tipo": "Prensa",
+      "fecha": "2025-03-24",
+      "url": "https://www.jiemian.com/article/12512428.html"
+    },
+    {
+      "id": 14,
+      "titulo": "Cuotas del agua envasada en 2023 por ventas minoristas (CIC, folleto de CR Beverage): Nongfu 23,6 %, CR Beverage 18,4 %, 乐百氏 6,1 %",
+      "editor": "投资界 (pedaily)",
+      "tipo": "Prensa",
+      "fecha": "2024-05-10",
+      "url": "https://news.pedaily.cn/202405/533622.shtml"
+    },
+    {
+      "id": 15,
+      "titulo": "Cuota del té listo para beber (马上赢): Nongfu del 23,7 % (1T25) al 31,1 % (1T26); Master Kong del 27,4 % al 26,8 %",
+      "editor": "牛刀财经 / 36Kr",
+      "tipo": "Prensa",
+      "fecha": "2026-08-06",
+      "url": "https://www.36kr.com/p/3927486246304136"
+    },
+    {
+      "id": 16,
+      "titulo": "Guerra de precios del agua: Nielsen 1S26 (volumen −4,9 %, importe −7,3 %), precios por botella de las marcas (Nongfu verde 8,9 RMB el paquete de 12)",
+      "editor": "财经天下 WEEKLY / 36Kr",
+      "tipo": "Prensa",
+      "fecha": "2026-09-08",
+      "url": "https://eu.36kr.com/zh/p/3974040426819849"
+    },
+    {
+      "id": 17,
+      "titulo": "China Resources Beverage: interim results 2026 (agua envasada C'estbon 4.837,9 M, −7,9 %; bebidas −35,4 %; beneficio −26,2 %)",
+      "editor": "China Resources Beverage / HKEXnews",
+      "tipo": "Primaria",
+      "fecha": "2026-08-26",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0826/2026082601377.pdf"
+    },
+    {
+      "id": 18,
+      "titulo": "Tingyi, Uni-President China, CR Beverage, Eastroc, Coca-Cola, PepsiCo, Monster, Danone, Suntory BF, Ito En: ventas y márgenes de los últimos 12 meses (ficha de Yahoo Finance)",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-20",
+      "url": "https://finance.yahoo.com"
+    },
+    {
+      "id": 19,
+      "titulo": "Nongfu 1S26: ventas 29.718 M frente a 29.300 M esperados; té 44,2 % de las ventas",
+      "editor": "Wallstreetcn (华尔街见闻)",
+      "tipo": "Prensa",
+      "fecha": "2026-08-25",
+      "url": "https://wallstreetcn.com/articles/3780263"
+    },
+    {
+      "id": 20,
+      "titulo": "Results of AGM; election of the ninth session of the Board (19-may-2026)",
+      "editor": "Nongfu Spring / HKEXnews",
+      "tipo": "Primaria",
+      "fecha": "2026-05-19",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0519/2026051901101.pdf"
+    },
+    {
+      "id": 21,
+      "titulo": "Revision of annual caps for continuing connected transactions (compras a Yangshengtang: 520 / 700 / 1.000 M en 2026-2028)",
+      "editor": "Nongfu Spring / HKEXnews",
+      "tipo": "Primaria",
+      "fecha": "2026-09-11",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0911/2026091101529.pdf"
+    },
+    {
+      "id": 22,
+      "titulo": "Renewal of continuing connected transactions (acuerdos marco 2026-2028 con Yangshengtang)",
+      "editor": "Nongfu Spring / HKEXnews",
+      "tipo": "Primaria",
+      "fecha": "2025-12-16",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1216/2025121601352.pdf"
+    },
+    {
+      "id": 23,
+      "titulo": "Disclosure of Interests: avisos de Zhong Shanshan (compras de acciones H, jul-sep 2026) y de consejeros",
+      "editor": "HKEXnews (DI)",
+      "tipo": "Primaria",
+      "fecha": "2026-10-06",
+      "url": "https://di.hkex.com.hk/di/NSSrchCorpList.aspx?sa1=cl&sc=9633&src=MAIN&lang=EN"
+    },
+    {
+      "id": 24,
+      "titulo": "Voluntary announcement: proposed increase in shareholding by controlling shareholder (hasta 2.000 M HKD; 83,98 %)",
+      "editor": "Nongfu Spring / HKEXnews",
+      "tipo": "Primaria",
+      "fecha": "2024-07-09",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0709/2024070900318.pdf"
+    },
+    {
+      "id": 25,
+      "titulo": "Poll results of the AGM held on May 20, 2025",
+      "editor": "Nongfu Spring / HKEXnews",
+      "tipo": "Primaria",
+      "fecha": "2025-05-20",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0520/2025052000684.pdf"
+    },
+    {
+      "id": 26,
+      "titulo": "Circular de la junta de 2026 (supresión de la comisión de supervisión, estatutos, consejo nuevo)",
+      "editor": "Nongfu Spring / HKEXnews",
+      "tipo": "Primaria",
+      "fecha": "2026-04-17",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0417/2026041701411.pdf"
+    },
+    {
+      "id": 27,
+      "titulo": "Históricos diarios de 9633.HK, 2800.HK y 2828.HK (herramientas/bolsa.mjs): precio, rango, betas, rentabilidades y cierres de ejercicio; cierre del 20-oct-2026",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-20",
+      "url": "https://finance.yahoo.com/quote/9633.HK/history/"
+    },
+    {
+      "id": 28,
+      "titulo": "Nongfu Spring: estimaciones (ventas, EBITDA, EBIT, beneficio, BPA y DPA 2026e-2028e en CNY; 28 analistas; objetivo medio 45,24 CNY)",
+      "editor": "MarketScreener",
+      "tipo": "Analistas",
+      "fecha": "2026-10-20",
+      "url": "https://www.marketscreener.com/quote/stock/NONGFU-SPRING-CO-LTD-111379875/finances/"
+    },
+    {
+      "id": 29,
+      "titulo": "quoteSummary de 9633.HK y comparables: recomendaciones, objetivos, tendencia de estimaciones, múltiplos",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-20",
+      "url": "https://finance.yahoo.com/quote/9633.HK/analysis/"
+    },
+    {
+      "id": 30,
+      "titulo": "Curva de la deuda pública china (中债国债收益率曲线), 10 años a 20-oct-2026: 1,6354 %",
+      "editor": "ChinaBond (中央国债登记结算)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-20",
+      "url": "https://yield.chinabond.com.cn/"
+    },
+    {
+      "id": 31,
+      "titulo": "Implied ERP by month (ERPbymonth.xlsx): octubre de 2026, 4,20 % (T12m with sustainable payout)",
+      "editor": "Damodaran Online",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx"
+    },
+    {
+      "id": 32,
+      "titulo": "Tipos de cambio HKD/CNY, USD/CNY, EUR/CNY, JPY/CNY y GBP/CNY (20-oct-2026) y cierres de 2020-2025 de HKD/CNY",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-20",
+      "url": "https://finance.yahoo.com/quote/HKDCNY=X/"
+    },
+    {
+      "id": 33,
+      "titulo": "Carlsberg: recommended offer to acquire Britvic plc (valor empresa ≈ 4.100 M GBP, 13,6 veces el EBITDA ajustado de 303 M GBP; prima del 36 %)",
+      "editor": "Carlsberg Group",
+      "tipo": "Primaria",
+      "fecha": "2024-07-08",
+      "url": "https://www.carlsberggroup.com/media/ch3jhoji/33_08072024_recommended-offer-to-acquire-britvic-plc.pdf"
+    },
+    {
+      "id": 34,
+      "titulo": "Celsius Holdings: acquisition of Alani Nu (1.800 M USD; ventas de ≈ 595 M y EBITDA de ≈ 137 M en 2024) (8-K)",
+      "editor": "Celsius Holdings / SEC",
+      "tipo": "Primaria",
+      "fecha": "2025-02-20",
+      "url": "https://www.sec.gov/Archives/edgar/data/1341766/000134176625000018/a991pressreleasedatedfebru.htm"
+    },
+    {
+      "id": 35,
+      "titulo": "Nestlé vende Nestlé Waters North America por 4.300 M USD (ventas de 2019 de ≈ 3.800 M USD)",
+      "editor": "FoodNavigator-USA",
+      "tipo": "Prensa",
+      "fecha": "2021-02-17",
+      "url": "https://foodnavigator-usa.com/Article/2021/02/17/Nestle-sells-Nestle-Waters-North-America-for-4.3bn"
+    },
+    {
+      "id": 36,
+      "titulo": "Cierre del 30-jun-2026: Nongfu −8,41 % con el sector de alimentación y bebidas a la baja",
+      "editor": "金吾财讯 / 证券之星",
+      "tipo": "Prensa",
+      "fecha": "2026-06-30",
+      "url": "https://wap.stockstar.com/detail/IG2026063000030056"
+    },
+    {
+      "id": 37,
+      "titulo": "China Merchants Securities mantiene «compra fuerte» con objetivo de 55 HKD (mayo de 2026)",
+      "editor": "Tonghuashun (10jqka)",
+      "tipo": "Analistas",
+      "fecha": "2026-05-26",
+      "url": "https://stock.10jqka.com.cn/20260526/c676980625.shtml"
+    },
+    {
+      "id": 38,
+      "titulo": "Foro 农夫山泉 (hk09633), páginas de octubre de 2026",
+      "editor": "Guba (Eastmoney)",
+      "tipo": "Foros y redes",
+      "fecha": "2026-10-20",
+      "url": "https://guba.eastmoney.com/list,hk09633.html"
+    },
+    {
+      "id": 39,
+      "titulo": "Foro 农夫山泉 (hk09633), páginas de septiembre de 2026",
+      "editor": "Guba (Eastmoney)",
+      "tipo": "Foros y redes",
+      "fecha": "2026-09-23",
+      "url": "https://guba.eastmoney.com/list,hk09633_2.html"
+    },
+    {
+      "id": 40,
+      "titulo": "Foro 农夫山泉 (hk09633), páginas de mediados de septiembre de 2026",
+      "editor": "Guba (Eastmoney)",
+      "tipo": "Foros y redes",
+      "fecha": "2026-09-17",
+      "url": "https://guba.eastmoney.com/list,hk09633_3.html"
+    },
+    {
+      "id": 41,
+      "titulo": "Nongfu Spring FY2025 earnings call: management targets double-digit revenue growth in 2026, Q1 in line; no GPM/NPM guidance given raw-material volatility (PET); no price hikes planned",
+      "editor": "Dolphin Research (LongPort)",
+      "tipo": "Analistas",
+      "fecha": "2026-03-25",
+      "url": "https://longportapp.cn/topics/39506218"
+    },
+    {
+      "id": 42,
+      "titulo": "PET-Preise steigen um mehr als 40 % in drei Monaten (≈ 6.300 RMB/t en enero a ≈ 9.000 RMB/t a mediados de abril de 2026); el agua embotellada, la más expuesta",
+      "editor": "36Kr Europe",
+      "tipo": "Prensa",
+      "fecha": "2026-04",
+      "url": "https://eu.36kr.com/de/p/3956469187247488"
+    }
+  ],
+  "calc": {
+    "version": 4,
+    "etiquetas": {
+      "margen_bruto": "M. bruto",
+      "margen_bruto_largo": "Margen bruto",
+      "dias_base": "sobre el coste de ventas"
+    },
+    "recomendacion": {
+      "recomendacion": "Mantener",
+      "regla": "Mantener",
+      "regla_absoluta": "Vender",
+      "regla_relativa": "Mantener",
+      "coincide": true,
+      "conviccion": "Baja",
+      "conviccion_sugerida": "Baja",
+      "conviccion_razones": [
+        "las reglas discrepan (absoluta Vender, relativa Mantener)"
+      ],
+      "reglas_discrepan": true,
+      "relativo": {
+        "prima_implicita_pct": 4.2,
+        "wacc": 6.72,
+        "ke": 6.79,
+        "dcf": 37.23,
+        "dcf_min": 34.29,
+        "dcf_max": 40.74,
+        "valor_objetivo": 34.6,
+        "alcista": 42.36,
+        "bajista": 27.82,
+        "mercado": "S&P 500 (prima implícita de Damodaran, referencia de mercado desarrollado)",
+        "fecha": "2026-10",
+        "potencial_pct": -2.9,
+        "rentabilidad_total_pct": -0.1,
+        "asimetria": 0.86
+      },
+      "objetivo_mercado_txt": " · con la prima implícita del mercado: 34,60 (40,67 HKD) (-2,9 %)",
+      "objetivo_mercado_corto": " · mercado 34,60",
+      "rentabilidad_mercado_corto": " · mercado -0,1 %",
+      "potencial_pct": -14.5,
+      "dividendo_pct": 2.8,
+      "rentabilidad_total_pct": -11.7,
+      "alcista_pct": 1.7,
+      "bajista_pct": -31.9,
+      "asimetria": 0.05,
+      "comprar_por_debajo": 30.46,
+      "vender_por_encima": 49.95,
+      "tabla": [
+        {
+          "concepto": "Objetivo a 12 meses (nuestro PER × nuestro BPA 2028e, ponderado 25/50/25)",
+          "valor": "43,96 RMB (51,68 HKD)"
+        },
+        {
+          "concepto": "Bajista / base / alcista a 12 meses",
+          "valor": "18,1x × 1,65 = 29,87 · 22,6x × 1,88 = 42,49 · 30,5x × 2,00 = 61,00"
+        },
+        {
+          "concepto": "Rentabilidad a 12 meses: ponderada / del base (con dividendo)",
+          "valor": "26,2 % / 22,0 %"
+        },
+        {
+          "concepto": "Regla de múltiplos aplicada",
+          "valor": "v3: base a mitad de camino hacia la mediana adelantada, sin alejarse del actual más de ×1,1; bajista mín. 5 a (adelantado) o base × 0,80; alcista techo base × 1,35 (selector de método: sin marcas: decide la v3)"
+        },
+        {
+          "concepto": "Objetivo medio de los analistas (solo contraste)",
+          "valor": "45,20 (nuestro base -6,0 %)"
+        },
+        {
+          "concepto": "Valor intrínseco (síntesis ponderada, largo plazo)",
+          "valor": "30,46 RMB (35,81 HKD)"
+        },
+        {
+          "concepto": "Precio actual (HKD al tipo de 0,8507 RMB por HKD)",
+          "valor": "35,63 RMB (41,88 HKD)"
+        },
+        {
+          "concepto": "Potencial sobre el precio actual",
+          "valor": "-14,5 %"
+        },
+        {
+          "concepto": "Rentabilidad por dividendo ordinario",
+          "valor": "2,8 %"
+        },
+        {
+          "concepto": "Rentabilidad total esperada a 12 meses",
+          "valor": "-11,7 %"
+        },
+        {
+          "concepto": "Escenario alcista / bajista",
+          "valor": "1,7 % / -31,9 %"
+        },
+        {
+          "concepto": "Asimetría (ganancia alcista / pérdida bajista)",
+          "valor": "0,05x"
+        },
+        {
+          "concepto": "Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado",
+          "valor": "7,0 % frente a 7,7 % y 6,7 %"
+        },
+        {
+          "concepto": "Valor objetivo con la prima implícita del mercado (4,2 %, WACC 6,7 %)",
+          "valor": "34,60 RMB (40,67 HKD)"
+        },
+        {
+          "concepto": "Rentabilidad total esperada con la prima del mercado",
+          "valor": "-0,1 %"
+        },
+        {
+          "concepto": "Asimetría con la prima del mercado",
+          "valor": "0,86x"
+        },
+        {
+          "concepto": "Regla absoluta (frente a su coste de capital)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Regla relativa (frente a lo que pide el mercado)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Crecimiento anual implícito en el precio (2027e-2033e) frente al previsto para su mercado",
+          "valor": "8,5 % frente a 5,0 %"
+        },
+        {
+          "concepto": "¿La calidad de la empresa sostiene el crecimiento previsto?",
+          "valor": "Sí (7,3 % anual proyectado; sin inversión neta)"
+        },
+        {
+          "concepto": "Señal del valor intrínseco (regla del DCF, referencia)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Recomendación según la regla a 12 meses (Comprar: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender: ponderada ≤ -10 %)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Convicción según los criterios (las reglas discrepan (absoluta Vender, relativa Mantener))",
+          "valor": "Baja"
+        }
+      ],
+      "niveles": [
+        {
+          "accion": "Comprar",
+          "condicion": "Por debajo de 30,46 (35,81 HKD) (ponderada a 12 meses ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco)"
+        },
+        {
+          "accion": "Mantener",
+          "condicion": "Entre 30,46 y 49,95 (35,81 y 58,72 HKD)"
+        },
+        {
+          "accion": "Vender o reducir",
+          "condicion": "Por encima de 49,95 (58,72 HKD) (ponderada a 12 meses ≤ -10 %)"
+        }
+      ],
+      "precio_txt": " (41,88 HKD)",
+      "valor_objetivo_txt": " (35,81 HKD)",
+      "regla_valor_intrinseco": "Mantener",
+      "objetivo_12m": {
+        "completo": true,
+        "filas": [
+          {
+            "escenario": "Bajista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 1.65,
+            "multiplo": 18.1,
+            "multiplo_informe": null,
+            "origen": "base × 0.8",
+            "precio": 29.87,
+            "rentabilidad_pct": -13.4,
+            "justificacion": "La guerra de precios del agua llega al té (marcas nuevas de té sin azúcar, Master Kong y Uni-President bajan precios) y el PET sigue caro: ventas de 2027e-2028e creciendo 3 puntos menos (7 % y 6 %) hasta 67.652 M y margen EBITDA 3 puntos más bajo (42 %): BPA de 1,65 RMB en 2028e. PER de 18,1x (el base × 0,8; por debajo del mínimo de cinco años, 22,7x)."
+          },
+          {
+            "escenario": "Base",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 1.88,
+            "multiplo": 22.6,
+            "multiplo_informe": null,
+            "origen": "PER actual (20.5x) × 1.1 (tope: la mediana de 5 años, 36.8x, queda más lejos)",
+            "precio": 42.49,
+            "rentabilidad_pct": 22,
+            "justificacion": "Ventas de 71.517 M en 2028e (+13,5 % en 2026e con el 1S publicado, +10 % y +9 % después: té y funcionales creciendo al 12-15 %, agua al 2-3 %) y margen EBITDA del 45 % (45,0 % en el 1S26 [3]): EBIT de 27.320 M, +650 M de resultado financiero, impuesto del 24,3 % y 11.246,5 M de acciones: BPA de 1,88 RMB. PER de 22,6x: el actual (20,5x) × 1,1, el tope de la regla; la mediana de cinco años (36,8x) queda lejos."
+          },
+          {
+            "escenario": "Alcista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 2,
+            "multiplo": 30.5,
+            "multiplo_informe": null,
+            "origen": "techo de base × 1.35",
+            "precio": 61,
+            "rentabilidad_pct": 74,
+            "justificacion": "El agua vuelve a crecer al 5-6 % (ganando cuota a C'estbon, que cae un 7,9 %) y el té sigue por encima del 20 %: 2 puntos más de crecimiento y 1 punto más de margen (46 %): BPA de 2,00 RMB. PER de 30,5x (techo de la regla: el base × 1,35; por debajo aún de la mediana de 36,8x)."
+          }
+        ],
+        "regla": {
+          "version": "v3",
+          "bajista": 18.1,
+          "base": 22.6,
+          "alcista": 30.5,
+          "bajista_origen": "base × 0.8",
+          "base_origen": "PER actual (20.5x) × 1.1 (tope: la mediana de 5 años, 36.8x, queda más lejos)",
+          "alcista_origen": "techo de base × 1.35"
+        },
+        "version": "v3",
+        "probabilidades": [
+          25,
+          50,
+          25
+        ],
+        "objetivo_ponderado": 43.96,
+        "objetivo_simple": 44.45,
+        "objetivo_base": 42.49,
+        "rentabilidad_ponderada_pct": 26.2,
+        "rentabilidad_simple_pct": 27.5,
+        "rentabilidad_base_pct": 22,
+        "asimetria": 4.4,
+        "senal": "Mantener",
+        "senal_sin_confirmar": null,
+        "confianza_baja": false,
+        "comprar_por_debajo": 30.46,
+        "vender_por_encima": 49.95,
+        "consenso_objetivo": 45.2,
+        "diferencia_consenso_pct": -6,
+        "selector": {
+          "regla": "v3",
+          "motivo": "sin marcas: decide la v3",
+          "v3_sin_selector": {
+            "version": "v3",
+            "rentabilidad_ponderada_pct": 26.2,
+            "rentabilidad_base_pct": 22,
+            "senal": "Mantener",
+            "objetivo_ponderado": 43.96
+          },
+          "v2": {
+            "version": "v2",
+            "rentabilidad_ponderada_pct": 14.5,
+            "rentabilidad_base_pct": 10.9,
+            "senal": "Mantener",
+            "objetivo_ponderado": 39.8
+          }
+        },
+        "v2": {
+          "rentabilidad_ponderada_pct": 14.5,
+          "rentabilidad_base_pct": 10.9,
+          "senal": "Mantener",
+          "multiplos": [
+            17.4,
+            20.5,
+            26.7
+          ]
+        },
+        "v3_tope_anterior": {
+          "tope": 1.3,
+          "rentabilidad_ponderada_pct": 48.4,
+          "senal": "Mantener"
+        },
+        "comparacion_txt": "Para comparar, con la regla v2 (historia al cierre, mismo precio): 17,4x / 20,5x / 26,7x, 14,5 % Mantener; con el tope anterior del base (×1,3, 14-oct mediodía): 48,4 % Mantener. Decide la v3 con tope ×1,1, elegida por el selector de método (sin marcas: decide la v3; METODO-VIGENTE.md)."
+      },
+      "rentabilidad_12m_pct": 26.2,
+      "rentabilidad_12m_txt": "+26,2 % (base +22,0 %)",
+      "objetivo_12m_txt": "43,96 RMB (51,68 HKD)"
+    },
+    "mercado": {
+      "precio": 35.63,
+      "acciones": 11246.5,
+      "capitalizacion": 400713,
+      "deuda_neta": -32372,
+      "deuda_neta_ajustada": -21238,
+      "asimilables_deuda": 11134,
+      "ajustes_puente": 11134,
+      "valor_empresa": 379475,
+      "fecha_puente": "2026-06-30"
+    },
+    "clave": {
+      "capitalizacion": 400713,
+      "valor_empresa": 379475,
+      "deuda_neta": -32372,
+      "ev_ventas_ltm": 6.7,
+      "ev_ebitda_ltm": 14.7,
+      "ev_ebitda_ntm": 13.1,
+      "ev_ebit_ltm": 17.1,
+      "per_ltm": 23.4,
+      "per_ntm": 20.3,
+      "fcf_yield_pct": 3.6,
+      "dividendo_pct": 2.8,
+      "dn_ebitda": -1.3,
+      "roic_pct": 113.7,
+      "margen_ebitda_pct": 45.6,
+      "deuda_neta_ajustada": -21238,
+      "dn_ebitda_ajustada": -0.8,
+      "crecimiento_tcac_pct": 15.3,
+      "ingresos_ntm": 65997,
+      "ebitda_ntm": 28912,
+      "bpa_ntm": 1.75,
+      "ebitda_ltm": 25805,
+      "ingresos_ltm": 56649,
+      "ev_rab": null
+    },
+    "cuenta": [
+      {
+        "periodo": "2021",
+        "ingresos": 29696.4,
+        "crecimiento_pct": null,
+        "beneficio_bruto": 17656.2,
+        "margen_bruto_pct": 59.5,
+        "ebitda": 11559.2,
+        "margen_ebitda_pct": 38.9,
+        "ebit": 9181,
+        "margen_ebit_pct": 30.9,
+        "beneficio_neto": 7161.8,
+        "margen_neto_pct": 24.1,
+        "bpa": 0.64,
+        "dpa": 0.45,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 23.4,
+        "payout_pct": 70
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 33239.2,
+        "crecimiento_pct": 11.9,
+        "beneficio_bruto": 19095.399999999998,
+        "margen_bruto_pct": 57.4,
+        "ebitda": 12618,
+        "margen_ebitda_pct": 38,
+        "ebit": 10131.1,
+        "margen_ebit_pct": 30.5,
+        "beneficio_neto": 8495.3,
+        "margen_neto_pct": 25.6,
+        "bpa": 0.76,
+        "dpa": 0.68,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 23.1,
+        "payout_pct": 89
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 42667.2,
+        "crecimiento_pct": 28.4,
+        "beneficio_bruto": 25406.799999999996,
+        "margen_bruto_pct": 59.5,
+        "ebitda": 17382.1,
+        "margen_ebitda_pct": 40.7,
+        "ebit": 14750.7,
+        "margen_ebit_pct": 34.6,
+        "beneficio_neto": 12079.5,
+        "margen_neto_pct": 28.3,
+        "bpa": 1.07,
+        "dpa": 0.75,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 23,
+        "payout_pct": 70
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 42896,
+        "crecimiento_pct": 0.5,
+        "beneficio_bruto": 24915.7,
+        "margen_bruto_pct": 58.1,
+        "ebitda": 17752.5,
+        "margen_ebitda_pct": 41.4,
+        "ebit": 14877.8,
+        "margen_ebit_pct": 34.7,
+        "beneficio_neto": 12123.3,
+        "margen_neto_pct": 28.3,
+        "bpa": 1.08,
+        "dpa": 0.76,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 23.2,
+        "payout_pct": 70
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 52552.9,
+        "crecimiento_pct": 22.5,
+        "beneficio_bruto": 31808.100000000002,
+        "margen_bruto_pct": 60.5,
+        "ebitda": 23824.7,
+        "margen_ebitda_pct": 45.3,
+        "ebit": 20432.1,
+        "margen_ebit_pct": 38.9,
+        "beneficio_neto": 15868.3,
+        "margen_neto_pct": 30.2,
+        "bpa": 1.41,
+        "dpa": 0.99,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 24.1,
+        "payout_pct": 70
+      }
+    ],
+    "tcac": {
+      "periodo": "2021-2025",
+      "ingresos_pct": 15.3,
+      "ebitda_pct": 19.8,
+      "bpa_pct": 21.8
+    },
+    "cuenta_y_prevision": [
+      {
+        "periodo": "2021",
+        "ingresos": 29696.4,
+        "ebitda": 11559.2
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 33239.2,
+        "ebitda": 12618
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 42667.2,
+        "ebitda": 17382.1
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 42896,
+        "ebitda": 17752.5
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 52552.9,
+        "ebitda": 23824.7
+      },
+      {
+        "periodo": "2026e",
+        "ingresos": 59648,
+        "ebitda": 26841
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 65612,
+        "ebitda": 29526
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 71517,
+        "ebitda": 32183
+      },
+      {
+        "periodo": "2029e",
+        "ingresos": 76881,
+        "ebitda": 34597
+      },
+      {
+        "periodo": "2030e",
+        "ingresos": 81494,
+        "ebitda": 36509
+      },
+      {
+        "periodo": "2031e",
+        "ingresos": 85569,
+        "ebitda": 38078
+      },
+      {
+        "periodo": "2032e",
+        "ingresos": 88992,
+        "ebitda": 39601
+      },
+      {
+        "periodo": "2033e",
+        "ingresos": 91661,
+        "ebitda": 40789
+      }
+    ],
+    "segmentos_ultimo": [
+      {
+        "nombre": "Agua envasada",
+        "ingresos": 18709,
+        "peso_pct": 35.6,
+        "crecimiento_pct": 17.3,
+        "margen_pct": 37.4,
+        "tipo_margen": "EBIT"
+      },
+      {
+        "nombre": "Té listo para beber",
+        "ingresos": 21595.9,
+        "peso_pct": 41.1,
+        "crecimiento_pct": 29,
+        "margen_pct": 48,
+        "tipo_margen": "EBIT"
+      },
+      {
+        "nombre": "Bebidas funcionales",
+        "ingresos": 5762.3,
+        "peso_pct": 11,
+        "crecimiento_pct": 16.8,
+        "margen_pct": 46.8,
+        "tipo_margen": "EBIT"
+      },
+      {
+        "nombre": "Zumos",
+        "ingresos": 5176.3,
+        "peso_pct": 9.8,
+        "crecimiento_pct": 26.7,
+        "margen_pct": 34.3,
+        "tipo_margen": "EBIT"
+      },
+      {
+        "nombre": "Otros",
+        "ingresos": 1309.5,
+        "peso_pct": 2.5,
+        "crecimiento_pct": 10.8,
+        "margen_pct": 35.9,
+        "tipo_margen": "EBIT"
+      }
+    ],
+    "segmentos_tabla": {
+      "periodos": [
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "filas": [
+        {
+          "nombre": "Agua envasada",
+          "v0": 17058.5,
+          "v1": 18262.6,
+          "v2": 20262.3,
+          "v3": 15952.4,
+          "v4": 18709
+        },
+        {
+          "nombre": "Té listo para beber",
+          "v0": 4578.9,
+          "v1": 6906,
+          "v2": 12658.9,
+          "v3": 16744.5,
+          "v4": 21595.9
+        },
+        {
+          "nombre": "Bebidas funcionales",
+          "v0": 3695,
+          "v1": 3837.6,
+          "v2": 4901.6,
+          "v3": 4932.1,
+          "v4": 5762.3
+        },
+        {
+          "nombre": "Zumos",
+          "v0": 2613.6,
+          "v1": 2878.8,
+          "v2": 3533.6,
+          "v3": 4084.9,
+          "v4": 5176.3
+        },
+        {
+          "nombre": "Otros",
+          "v0": 1750.4,
+          "v1": 1354.2,
+          "v2": 1310.9,
+          "v3": 1182.1,
+          "v4": 1309.5
+        }
+      ]
+    },
+    "segmentos_periodo": "2025",
+    "balance": [
+      {
+        "periodo": "2021",
+        "activo_total": 32896.1,
+        "intangibles": 65.1,
+        "circulante": 1132.4,
+        "circulante_ventas_pct": 3.8,
+        "caja": 16113.5,
+        "deuda_financiera": 2500.1,
+        "arrendamientos": 90,
+        "deuda_neta": -13523.4,
+        "patrimonio": 20741.6,
+        "minoritarios": 0,
+        "dn_ebitda": -1.17,
+        "dn_patrimonio_pct": -65,
+        "dso": 6,
+        "dio": 55,
+        "dpo": 35,
+        "ciclo_caja": 26,
+        "cobertura_intereses": 173.6,
+        "capital_invertido": 7218.199999999999,
+        "fondo_comercio": 0,
+        "liquidez_corriente": 1.54
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 39254.9,
+        "intangibles": 58.1,
+        "circulante": 1161.9,
+        "circulante_ventas_pct": 3.5,
+        "caja": 19315.9,
+        "deuda_financiera": 2425.1,
+        "arrendamientos": 99.9,
+        "deuda_neta": -16790.9,
+        "patrimonio": 24084.1,
+        "minoritarios": 0,
+        "dn_ebitda": -1.33,
+        "dn_patrimonio_pct": -70,
+        "dso": 5,
+        "dio": 54,
+        "dpo": 37,
+        "ciclo_caja": 22,
+        "cobertura_intereses": 133.3,
+        "capital_invertido": 7293.199999999997,
+        "fondo_comercio": 0,
+        "liquidez_corriente": 1.26
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 49137.1,
+        "intangibles": 74.2,
+        "circulante": 1868.6,
+        "circulante_ventas_pct": 4.4,
+        "caja": 25638.6,
+        "deuda_financiera": 3120.6,
+        "arrendamientos": 89.3,
+        "deuda_neta": -22428.699999999997,
+        "patrimonio": 28570.9,
+        "minoritarios": 0,
+        "dn_ebitda": -1.29,
+        "dn_patrimonio_pct": -79,
+        "dso": 5,
+        "dio": 65,
+        "dpo": 37,
+        "ciclo_caja": 33,
+        "cobertura_intereses": 148,
+        "capital_invertido": 6142.200000000004,
+        "fondo_comercio": 0,
+        "liquidez_corriente": 1.43
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 53160.3,
+        "intangibles": 71.6,
+        "circulante": 4094.9999999999995,
+        "circulante_ventas_pct": 9.5,
+        "caja": 22890,
+        "deuda_financiera": 3625.4,
+        "arrendamientos": 121.6,
+        "deuda_neta": -19143,
+        "patrimonio": 32287.2,
+        "minoritarios": 0,
+        "dn_ebitda": -1.08,
+        "dn_patrimonio_pct": -59,
+        "dso": 5,
+        "dio": 102,
+        "dpo": 30,
+        "ciclo_caja": 77,
+        "cobertura_intereses": 162.6,
+        "capital_invertido": 13144.2,
+        "fondo_comercio": 0,
+        "liquidez_corriente": 0.95
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 65169.1,
+        "intangibles": 80.9,
+        "circulante": 4790.5,
+        "circulante_ventas_pct": 9.1,
+        "caja": 29848.7,
+        "deuda_financiera": 4390,
+        "arrendamientos": 102.7,
+        "deuda_neta": -25356,
+        "patrimonio": 39470,
+        "minoritarios": 0,
+        "dn_ebitda": -1.06,
+        "dn_patrimonio_pct": -64,
+        "dso": 4,
+        "dio": 103,
+        "dpo": 29,
+        "ciclo_caja": 78,
+        "cobertura_intereses": 305.4,
+        "capital_invertido": 14114,
+        "fondo_comercio": 0,
+        "liquidez_corriente": 1.07
+      }
+    ],
+    "perimetro_nota": null,
+    "flujos": [
+      {
+        "periodo": "2021",
+        "flujo_operativo": 11400.3,
+        "capex": 2488.1,
+        "pagos_arrendamientos": 67.6,
+        "fcf": 8844.599999999999,
+        "beneficio_neto": 7161.8,
+        "conversion_pct": 123,
+        "capex_ventas_pct": 8.4,
+        "capex_amortizacion": 1.05,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 1911.9,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 1911.9,
+        "payout_caja_pct": 27,
+        "acciones": 11246.5,
+        "fcf_por_accion": 0.79
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 12041.5,
+        "capex": 4352,
+        "pagos_arrendamientos": 81.7,
+        "fcf": 7607.8,
+        "beneficio_neto": 8495.3,
+        "conversion_pct": 90,
+        "capex_ventas_pct": 13.1,
+        "capex_amortizacion": 1.75,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 5059.1,
+        "recompras": 225.4,
+        "emision_acciones": 71.4,
+        "retorno_accionista": 5284.5,
+        "payout_caja_pct": 62,
+        "acciones": 11246.5,
+        "fcf_por_accion": 0.68
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 17304.9,
+        "capex": 4862.8,
+        "pagos_arrendamientos": 81,
+        "fcf": 12361.100000000002,
+        "beneficio_neto": 12079.5,
+        "conversion_pct": 102,
+        "capex_ventas_pct": 11.4,
+        "capex_amortizacion": 1.85,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 7646.3,
+        "recompras": 0,
+        "emision_acciones": 9.7,
+        "retorno_accionista": 7646.3,
+        "payout_caja_pct": 63,
+        "acciones": 11246.5,
+        "fcf_por_accion": 1.1
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 11022.1,
+        "capex": 6460.8,
+        "pagos_arrendamientos": 135.2,
+        "fcf": 4426.1,
+        "beneficio_neto": 12123.3,
+        "conversion_pct": 37,
+        "capex_ventas_pct": 15.1,
+        "capex_amortizacion": 2.25,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 8434.9,
+        "recompras": 0,
+        "emision_acciones": 3.3,
+        "retorno_accionista": 8434.9,
+        "payout_caja_pct": 70,
+        "acciones": 11246.5,
+        "fcf_por_accion": 0.39
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 21141.7,
+        "capex": 6796.1,
+        "pagos_arrendamientos": 130.5,
+        "fcf": 14215.1,
+        "beneficio_neto": 15868.3,
+        "conversion_pct": 90,
+        "capex_ventas_pct": 12.9,
+        "capex_amortizacion": 2,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 8547.3,
+        "recompras": 221.6,
+        "emision_acciones": 76.5,
+        "retorno_accionista": 8768.9,
+        "payout_caja_pct": 55,
+        "acciones": 11246.5,
+        "fcf_por_accion": 1.26
+      }
+    ],
+    "flujos_acumulado": {
+      "periodo": "2021-2025",
+      "fcf": 47455,
+      "adquisiciones": 0,
+      "dividendos": 31599,
+      "recompras": 447,
+      "conversion_pct": 85
+    },
+    "rentabilidad": [
+      {
+        "periodo": "2021",
+        "nopat": 7029,
+        "capital_invertido": 7218,
+        "roic_pct": 97.4,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": 0,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 34.5,
+        "roa_pct": 21.8,
+        "margen_neto_pct": 24.1,
+        "rotacion": 0.9,
+        "apalancamiento": 1.59
+      },
+      {
+        "periodo": "2022",
+        "nopat": 7789,
+        "capital_invertido": 7256,
+        "roic_pct": 107.3,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": 0,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 37.9,
+        "roa_pct": 23.5,
+        "margen_neto_pct": 25.6,
+        "rotacion": 0.92,
+        "apalancamiento": 1.61
+      },
+      {
+        "periodo": "2023",
+        "nopat": 11358,
+        "capital_invertido": 6718,
+        "roic_pct": 169.1,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": 0,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 45.9,
+        "roa_pct": 27.3,
+        "margen_neto_pct": 28.3,
+        "rotacion": 0.97,
+        "apalancamiento": 1.68
+      },
+      {
+        "periodo": "2024",
+        "nopat": 11424,
+        "capital_invertido": 9643,
+        "roic_pct": 118.5,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": 0,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 39.8,
+        "roa_pct": 23.7,
+        "margen_neto_pct": 28.3,
+        "rotacion": 0.84,
+        "apalancamiento": 1.68
+      },
+      {
+        "periodo": "2025",
+        "nopat": 15500,
+        "capital_invertido": 13629,
+        "roic_pct": 113.7,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": 0,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 44.2,
+        "roa_pct": 26.8,
+        "margen_neto_pct": 30.2,
+        "rotacion": 0.89,
+        "apalancamiento": 1.65
+      }
+    ],
+    "roic_incremental_pct": 132.1,
+    "roic_frente_wacc": [
+      {
+        "periodo": "2021",
+        "roic_pct": 97.4,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 34.5,
+        "wacc_pct": 7.7
+      },
+      {
+        "periodo": "2022",
+        "roic_pct": 107.3,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 37.9,
+        "wacc_pct": 7.7
+      },
+      {
+        "periodo": "2023",
+        "roic_pct": 169.1,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 45.9,
+        "wacc_pct": 7.7
+      },
+      {
+        "periodo": "2024",
+        "roic_pct": 118.5,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 39.8,
+        "wacc_pct": 7.7
+      },
+      {
+        "periodo": "2025",
+        "roic_pct": 113.7,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 44.2,
+        "wacc_pct": 7.7
+      }
+    ],
+    "compras": {
+      "tipo": "sin compras",
+      "subidas": 0,
+      "anios": 4,
+      "fondo_comercio": 0,
+      "fondo_comercio_pct_capital": 0,
+      "roic_pct": 113.7,
+      "roic_sin_fc_pct": null,
+      "texto": "Fondo de comercio: 0 M en 2025 (el 0 % del capital invertido medio); ha subido más de un 5 % en 0 de 4 años: sin compras. Sin compras relevantes: el publicado ya es el ROIC del negocio."
+    },
+    "calidad": {
+      "periodo": "2025",
+      "altman_z": 11.86,
+      "altman_zona": "Zona segura",
+      "piotroski_f": 8,
+      "piotroski_detalle": [
+        {
+          "criterio": "Beneficio neto positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "ROA mejora",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo > beneficio neto",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Baja el endeudamiento (deuda / activo)",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora la liquidez corriente",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "No emite acciones",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora el margen bruto",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora la rotación del activo",
+          "resultado": "No"
+        }
+      ],
+      "beneish_m": -2.86,
+      "beneish_fiable": true,
+      "beneish_variables": [
+        {
+          "variable": "DSRI",
+          "valor": 0.84
+        },
+        {
+          "variable": "GMI",
+          "valor": 0.96
+        },
+        {
+          "variable": "AQI",
+          "valor": 0.87
+        },
+        {
+          "variable": "SGI",
+          "valor": 1.23
+        },
+        {
+          "variable": "DEPI",
+          "valor": 0.99
+        },
+        {
+          "variable": "SGAI",
+          "valor": 0.9
+        },
+        {
+          "variable": "LVGI",
+          "valor": 1
+        },
+        {
+          "variable": "TATA",
+          "valor": -0.08
+        }
+      ],
+      "tabla": [
+        {
+          "indicador": "Altman Z",
+          "valor": "11,86",
+          "lectura": "Zona segura (> 2,99 seguro; < 1,81 riesgo). No aplica a bancos ni aseguradoras, y subestima la solvencia de empresas con grandes anticipos de clientes o prefinanciación pública (contratistas, construcción), que inflan el pasivo."
+        },
+        {
+          "indicador": "Piotroski F",
+          "valor": "8 / 9",
+          "lectura": "Fortaleza financiera alta (7-9)."
+        },
+        {
+          "indicador": "Beneish M",
+          "valor": "-2,86",
+          "lectura": "Por debajo de −1,78: sin señal de manipulación."
+        },
+        {
+          "indicador": "Flujo operativo / beneficio neto (acumulado)",
+          "valor": "1,31x",
+          "lectura": "El beneficio se cobra."
+        }
+      ]
+    },
+    "dcf": {
+      "proyeccion": [
+        {
+          "periodo": "2026e",
+          "ingresos": 59648,
+          "crecimiento_pct": 13.5,
+          "ebitda": 26841,
+          "margen_ebitda_pct": 45,
+          "amortizacion": 3817,
+          "ebit": 23024,
+          "impuestos": 5595,
+          "capex": 7158,
+          "variacion_circulante": 578,
+          "fcff": 13511,
+          "fraccion": 0.2,
+          "factor": 0.993,
+          "vp": 2644
+        },
+        {
+          "periodo": "2027e",
+          "ingresos": 65612,
+          "crecimiento_pct": 10,
+          "ebitda": 29526,
+          "margen_ebitda_pct": 45,
+          "amortizacion": 4330,
+          "ebit": 25195,
+          "impuestos": 6122,
+          "capex": 7217,
+          "variacion_circulante": 537,
+          "fcff": 15649,
+          "fraccion": 1,
+          "factor": 0.95,
+          "vp": 14852
+        },
+        {
+          "periodo": "2028e",
+          "ingresos": 71517,
+          "crecimiento_pct": 9,
+          "ebitda": 32183,
+          "margen_ebitda_pct": 45,
+          "amortizacion": 4863,
+          "ebit": 27320,
+          "impuestos": 6639,
+          "capex": 7152,
+          "variacion_circulante": 531,
+          "fcff": 17861,
+          "fraccion": 1,
+          "factor": 0.882,
+          "vp": 15751
+        },
+        {
+          "periodo": "2029e",
+          "ingresos": 76881,
+          "crecimiento_pct": 7.5,
+          "ebitda": 34597,
+          "margen_ebitda_pct": 45,
+          "amortizacion": 5382,
+          "ebit": 29215,
+          "impuestos": 7099,
+          "capex": 7304,
+          "variacion_circulante": 483,
+          "fcff": 19711,
+          "fraccion": 1,
+          "factor": 0.819,
+          "vp": 16131
+        },
+        {
+          "periodo": "2030e",
+          "ingresos": 81494,
+          "crecimiento_pct": 6,
+          "ebitda": 36509,
+          "margen_ebitda_pct": 44.8,
+          "amortizacion": 5868,
+          "ebit": 30642,
+          "impuestos": 7446,
+          "capex": 7334,
+          "variacion_circulante": 415,
+          "fcff": 21314,
+          "fraccion": 1,
+          "factor": 0.761,
+          "vp": 16199
+        },
+        {
+          "periodo": "2031e",
+          "ingresos": 85569,
+          "crecimiento_pct": 5,
+          "ebitda": 38078,
+          "margen_ebitda_pct": 44.5,
+          "amortizacion": 6247,
+          "ebit": 31832,
+          "impuestos": 7735,
+          "capex": 7273,
+          "variacion_circulante": 367,
+          "fcff": 22703,
+          "fraccion": 1,
+          "factor": 0.706,
+          "vp": 16024
+        },
+        {
+          "periodo": "2032e",
+          "ingresos": 88992,
+          "crecimiento_pct": 4,
+          "ebitda": 39601,
+          "margen_ebitda_pct": 44.5,
+          "amortizacion": 6585,
+          "ebit": 33016,
+          "impuestos": 8023,
+          "capex": 7119,
+          "variacion_circulante": 308,
+          "fcff": 24151,
+          "fraccion": 1,
+          "factor": 0.656,
+          "vp": 15839
+        },
+        {
+          "periodo": "2033e",
+          "ingresos": 91661,
+          "crecimiento_pct": 3,
+          "ebitda": 40789,
+          "margen_ebitda_pct": 44.5,
+          "amortizacion": 6783,
+          "ebit": 34006,
+          "impuestos": 8264,
+          "capex": 6875,
+          "variacion_circulante": 240,
+          "fcff": 25411,
+          "fraccion": 1,
+          "factor": 0.609,
+          "vp": 15466
+        }
+      ],
+      "etapa2": null,
+      "suma_vp": 112905,
+      "valor_terminal": 383969,
+      "vp_terminal": 225359,
+      "valor_empresa": 338264,
+      "peso_terminal_pct": 67,
+      "valor_acciones": 359501,
+      "valor_accion": 31.97,
+      "vt_gordon": 383969,
+      "vt_multiplo": 489471,
+      "multiplo_implicito": 9.4,
+      "g_implicito_pct": 2.37,
+      "metodo_terminal": "gordon",
+      "terminal_tabla": [
+        {
+          "concepto": "Método principal",
+          "valor": "Crecimiento a perpetuidad"
+        },
+        {
+          "concepto": "Crecimiento a perpetuidad",
+          "valor": "1,0 %"
+        },
+        {
+          "concepto": "Múltiplo EV/EBITDA de salida",
+          "valor": "12,0x"
+        },
+        {
+          "concepto": "Valor terminal (Gordon)",
+          "valor": "383.969"
+        },
+        {
+          "concepto": "Valor terminal (múltiplo)",
+          "valor": "489.471"
+        },
+        {
+          "concepto": "Múltiplo de salida implícito en Gordon",
+          "valor": "9,4x"
+        },
+        {
+          "concepto": "Crecimiento implícito en el múltiplo",
+          "valor": "2,37 %"
+        },
+        {
+          "concepto": "Peso del valor terminal en el valor empresa",
+          "valor": "67 %"
+        }
+      ],
+      "puente": [
+        {
+          "concepto": "Valor actual de los flujos proyectados",
+          "valor": "112.905"
+        },
+        {
+          "concepto": "Valor actual del valor terminal",
+          "valor": "225.359"
+        },
+        {
+          "concepto": "Valor empresa",
+          "valor": "338.264"
+        },
+        {
+          "concepto": "− Deuda financiera neta (con arrendamientos)",
+          "valor": "32.372"
+        },
+        {
+          "concepto": "− Minoritarios, pensiones y otros; + asociadas",
+          "valor": "-11.134"
+        },
+        {
+          "concepto": "Valor de los fondos propios",
+          "valor": "359.501"
+        },
+        {
+          "concepto": "Acciones diluidas (millones)",
+          "valor": "11.246,5"
+        },
+        {
+          "concepto": "Valor por acción",
+          "valor": "31,97"
+        }
+      ],
+      "composicion": [
+        {
+          "parte": "Flujos proyectados",
+          "valor": 112905
+        },
+        {
+          "parte": "Valor terminal",
+          "valor": 225359
+        }
+      ],
+      "wacc": 7.68,
+      "ke": 7.76,
+      "kd_despues": 1.89,
+      "wacc_tabla": [
+        {
+          "concepto": "Tasa libre de riesgo",
+          "valor": "1,64 %"
+        },
+        {
+          "concepto": "Beta",
+          "valor": "0,75"
+        },
+        {
+          "concepto": "Prima de riesgo de mercado",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Prima adicional (país, tamaño, específica)",
+          "valor": "2,00 %"
+        },
+        {
+          "concepto": "Coste de los fondos propios",
+          "valor": "7,76 %"
+        },
+        {
+          "concepto": "Coste de la deuda antes de impuestos",
+          "valor": "2,50 %"
+        },
+        {
+          "concepto": "Tipo impositivo",
+          "valor": "24,30 %"
+        },
+        {
+          "concepto": "Coste de la deuda después de impuestos",
+          "valor": "1,89 %"
+        },
+        {
+          "concepto": "Peso de la deuda (D / (D + E))",
+          "valor": "1,30 %"
+        },
+        {
+          "concepto": "WACC",
+          "valor": "7,68 %"
+        },
+        {
+          "concepto": "Prima de riesgo implícita del mercado (regla relativa)",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "WACC con la prima implícita del mercado",
+          "valor": "6,72 %"
+        }
+      ],
+      "potencial_pct": -10.3,
+      "sensibilidad": {
+        "eje_columnas": "Crecimiento a perpetuidad",
+        "columnas": [
+          "0,0 %",
+          "0,5 %",
+          "1,0 %",
+          "1,5 %",
+          "2,0 %"
+        ],
+        "filas": [
+          {
+            "wacc": "6,7 %",
+            "v0": 33.49,
+            "v1": 35.32,
+            "v2": 37.48,
+            "v3": 40.04,
+            "v4": 43.16
+          },
+          {
+            "wacc": "7,2 %",
+            "v0": 31.19,
+            "v1": 32.72,
+            "v2": 34.5,
+            "v3": 36.59,
+            "v4": 39.08
+          },
+          {
+            "wacc": "7,7 %",
+            "v0": 29.19,
+            "v1": 30.48,
+            "v2": 31.97,
+            "v3": 33.69,
+            "v4": 35.72
+          },
+          {
+            "wacc": "8,2 %",
+            "v0": 27.43,
+            "v1": 28.54,
+            "v2": 29.79,
+            "v3": 31.24,
+            "v4": 32.92
+          },
+          {
+            "wacc": "8,7 %",
+            "v0": 25.89,
+            "v1": 26.83,
+            "v2": 27.91,
+            "v3": 29.13,
+            "v4": 30.53
+          }
+        ]
+      },
+      "sensibilidad2": {
+        "columnas": [
+          "-2 pp",
+          "-1 pp",
+          "0 pp",
+          "+1 pp",
+          "+2 pp"
+        ],
+        "filas": [
+          {
+            "margen": "-2 pp",
+            "v0": 27.44,
+            "v1": 28.83,
+            "v2": 30.3,
+            "v3": 31.84,
+            "v4": 33.46
+          },
+          {
+            "margen": "-1 pp",
+            "v0": 28.19,
+            "v1": 29.62,
+            "v2": 31.13,
+            "v3": 32.72,
+            "v4": 34.39
+          },
+          {
+            "margen": "0 pp",
+            "v0": 28.93,
+            "v1": 30.41,
+            "v2": 31.97,
+            "v3": 33.6,
+            "v4": 35.32
+          },
+          {
+            "margen": "+1 pp",
+            "v0": 29.68,
+            "v1": 31.2,
+            "v2": 32.8,
+            "v3": 34.48,
+            "v4": 36.25
+          },
+          {
+            "margen": "+2 pp",
+            "v0": 30.42,
+            "v1": 31.99,
+            "v2": 33.63,
+            "v3": 35.36,
+            "v4": 37.18
+          }
+        ]
+      },
+      "rango_min": 28.54,
+      "rango_max": 36.59,
+      "inverso": {
+        "crecimiento_implicito_pct": 8.5,
+        "crecimiento_base_pct": 6.4,
+        "periodo": "2027e-2033e",
+        "margen_implicito_pct": 48.9,
+        "margen_implicito_texto": null,
+        "margen_base_pct": 44.5,
+        "rentabilidad_implicita_pct": 7
+      },
+      "sostenibilidad": {
+        "veredicto": "Sí",
+        "veredicto_motor": "Sí",
+        "motivos_motor": [],
+        "crecimiento_financiable_bruto_pct": 39,
+        "roic_implicito_bruto_pct": 16.8,
+        "tcac_ingresos_historica_pct": 15.3,
+        "crecimiento_proyectado_pct": 7.3,
+        "tasa_reinversion_pct": 10,
+        "crecimiento_financiable_pct": null,
+        "roic_pct": 113.7,
+        "roic_incremental_historico_pct": 132.1,
+        "roic_implicito_pct": null,
+        "cuota_actual_pct": 4,
+        "cuota_final_pct": 4.9,
+        "puente": [
+          {
+            "periodo": "2026e",
+            "volumen_pct": 10.5,
+            "precio_pct": 0.5,
+            "otros_pct": 2.5,
+            "comentario": "Volumen +10,5 %: té (+30 % en el 1S26) y funcionales; agua plana [3]. Precio +0,5 % (la dirección no sube precios [41]; el agua verde barata resta y el té de 900 ml suma). +2,5 puntos de productos nuevos (té con fruta, café, bebidas vegetales).",
+            "suma_pct": 13.5,
+            "crecimiento_pct": 13.5
+          },
+          {
+            "periodo": "2027e",
+            "volumen_pct": 7.5,
+            "precio_pct": 0.5,
+            "otros_pct": 2,
+            "comentario": "Volumen +7,5 % (té al 15 %, agua al 2-3 %), precio +0,5 % y +2 puntos de categorías nuevas.",
+            "suma_pct": 10,
+            "crecimiento_pct": 10
+          },
+          {
+            "periodo": "2028e",
+            "volumen_pct": 7,
+            "precio_pct": 0.5,
+            "otros_pct": 1.5,
+            "comentario": "Volumen +7 %, precio +0,5 % y +1,5 puntos de categorías nuevas.",
+            "suma_pct": 9,
+            "crecimiento_pct": 9
+          },
+          {
+            "periodo": "2029e",
+            "volumen_pct": 6,
+            "precio_pct": 0.5,
+            "otros_pct": 1,
+            "comentario": "Volumen +6 %, precio +0,5 % y un punto de categorías nuevas.",
+            "suma_pct": 7.5,
+            "crecimiento_pct": 7.5
+          },
+          {
+            "periodo": "2030e",
+            "volumen_pct": 5,
+            "precio_pct": 0.5,
+            "otros_pct": 0.5,
+            "comentario": "Volumen +5 % y precio +0,5 %. Ventas de 81.494 M: el 4,9 % del mercado de bebidas sin alcohol de 2030e (≈ 1,68 billones de RMB al 5 % anual [12]), frente al 4,0 % de hoy: ganamos cuota como en 2021-2025 (del 3,1 % al 4,0 %).",
+            "suma_pct": 6,
+            "crecimiento_pct": 6
+          }
+        ],
+        "texto": "La proyección apenas necesita inversión neta de la amortización (reinversión acumulada de 17.016 M, el 10 % del NOPAT, con un capex bruto medio del 9,4 % de las ventas). En un negocio de activos ligeros, el crecimiento medio del 7,3 % tiene que salir de subir precios y de ganar volumen sin capital nuevo, y la prueba es el poder de precios y la cuota (4,9 % del mercado en 2030e, frente al 4,0 % de hoy); en un comprador en serie, la amortización es de intangibles comprados y la prueba es el capex bruto (las compras) frente al crecimiento comprado.",
+        "tabla": [
+          {
+            "concepto": "Crecimiento medio de ingresos proyectado",
+            "valor": "7,3 %"
+          },
+          {
+            "concepto": "Capex bruto medio (incluidas compras si van como inversión)",
+            "valor": "9,4 % de las ventas"
+          },
+          {
+            "concepto": "Reinversión neta acumulada (capex − amortización + circulante)",
+            "valor": "17.016 M (10 % del NOPAT)"
+          },
+          {
+            "concepto": "Con la reinversión bruta (capex + circulante): crecimiento que financia al ROIC actual",
+            "valor": "39,0 % (reinvierte el 34 % del NOPAT)"
+          },
+          {
+            "concepto": "Rendimiento que la proyección supone para la reinversión bruta",
+            "valor": "16,8 % (histórico: 132,1 %)"
+          },
+          {
+            "concepto": "Crecimiento histórico de ingresos (TCAC)",
+            "valor": "15,3 % frente al 7,3 % proyectado"
+          },
+          {
+            "concepto": "Veredicto de las pruebas del motor",
+            "valor": "Sí"
+          },
+          {
+            "concepto": "Cuota de mercado implícita en 2030e",
+            "valor": "4,9 % (hoy: 4,0 %)"
+          }
+        ]
+      }
+    },
+    "escenarios": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "narrativa": "La guerra de precios del agua dura y pasa al té sin azúcar, con Master Kong, Uni-President, Wahaha y marcas nuevas bajando precios, y el PET sigue caro: 3 puntos menos de crecimiento, margen EBITDA 3 puntos más bajo (≈ 42 %) y crecimiento terminal del 0,5 %.",
+        "crecimiento_medio_pct": 3.4,
+        "margen_final_pct": 41.5,
+        "wacc_pct": 7.7,
+        "valor": 24.28,
+        "potencial_pct": -31.9
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "narrativa": "El té sigue creciendo pero se modera (del 30 % al 12-15 %), el agua crece al 2-3 % ganando cuota en un mercado que cae, margen EBITDA del 45 % y reparto del ≈ 70 % del beneficio.",
+        "crecimiento_medio_pct": 6.4,
+        "margen_final_pct": 44.5,
+        "wacc_pct": 7.7,
+        "valor": 31.97,
+        "potencial_pct": -10.3
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "narrativa": "El agua natural vuelve a crecer al 5-6 % (los consumidores vuelven a pagar la marca roja y C'estbon sigue perdiendo cuota) y el té, los funcionales y los zumos siguen al 15-20 %: 2 puntos más de crecimiento y 1 punto más de margen.",
+        "crecimiento_medio_pct": 8.4,
+        "margen_final_pct": 45.5,
+        "wacc_pct": 7.7,
+        "valor": 36.25,
+        "potencial_pct": 1.7
+      }
+    ],
+    "valor_ponderado": 31.12,
+    "potencial_ponderado_pct": -12.7,
+    "comparables": {
+      "tabla": [
+        {
+          "nombre": "Nongfu Spring",
+          "ticker": "9633.HK",
+          "pais": "CN",
+          "capitalizacion": 400713,
+          "ev_ventas": 6.7,
+          "ev_ebitda_ltm": 14.7,
+          "ev_ebitda_ntm": 13.1,
+          "per_ntm": 20.3,
+          "crecimiento_pct": 12.4,
+          "margen_ebitda_pct": 45.6,
+          "roic_pct": 113.7,
+          "dn_ebitda": -1.3,
+          "fcf_yield_pct": 3.6,
+          "es_objetivo": true
+        },
+        {
+          "nombre": "Tingyi (Master Kong)",
+          "ticker": "0322.HK",
+          "pais": "CN",
+          "capitalizacion": 59419,
+          "ev_ventas": 0.72,
+          "ev_ebitda_ltm": 5.8,
+          "ev_ebitda_ntm": 5.6,
+          "per_ntm": 12.5,
+          "crecimiento_pct": 3,
+          "margen_ebitda_pct": 12.5,
+          "roic_pct": null,
+          "dn_ebitda": -0.2,
+          "fcf_yield_pct": 9.9,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Uni-President China",
+          "ticker": "0220.HK",
+          "pais": "CN",
+          "capitalizacion": 28036,
+          "ev_ventas": 0.68,
+          "ev_ebitda_ltm": 5.9,
+          "ev_ebitda_ntm": 5.6,
+          "per_ntm": 12.2,
+          "crecimiento_pct": 5.2,
+          "margen_ebitda_pct": 11.6,
+          "roic_pct": null,
+          "dn_ebitda": -1.7,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "China Resources Beverage",
+          "ticker": "2460.HK",
+          "pais": "CN",
+          "capitalizacion": 14686,
+          "ev_ventas": 0.87,
+          "ev_ebitda_ltm": 5.8,
+          "ev_ebitda_ntm": 5.4,
+          "per_ntm": 14.1,
+          "crecimiento_pct": 6.9,
+          "margen_ebitda_pct": 15.1,
+          "roic_pct": null,
+          "dn_ebitda": -3.7,
+          "fcf_yield_pct": -31.5,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Eastroc Beverage",
+          "ticker": "605499.SS",
+          "pais": "CN",
+          "capitalizacion": 78479,
+          "ev_ventas": 2.72,
+          "ev_ebitda_ltm": 9.9,
+          "ev_ebitda_ntm": 8.5,
+          "per_ntm": 13.9,
+          "crecimiento_pct": 16.7,
+          "margen_ebitda_pct": 27.3,
+          "roic_pct": null,
+          "dn_ebitda": -2.8,
+          "fcf_yield_pct": 5.1,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Coca-Cola",
+          "ticker": "KO",
+          "pais": "US",
+          "capitalizacion": 2679520,
+          "ev_ventas": 8.57,
+          "ev_ebitda_ltm": 25.3,
+          "ev_ebitda_ntm": 25.5,
+          "per_ntm": 26.5,
+          "crecimiento_pct": -0.7,
+          "margen_ebitda_pct": 33.9,
+          "roic_pct": null,
+          "dn_ebitda": 1.6,
+          "fcf_yield_pct": 1.3,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "PepsiCo",
+          "ticker": "PEP",
+          "pais": "US",
+          "capitalizacion": 1213427,
+          "ev_ventas": 2.27,
+          "ev_ebitda_ltm": 11.6,
+          "ev_ebitda_ntm": 11.3,
+          "per_ntm": 15.5,
+          "crecimiento_pct": 3.1,
+          "margen_ebitda_pct": 19.5,
+          "roic_pct": null,
+          "dn_ebitda": 2.1,
+          "fcf_yield_pct": 5,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Monster Beverage",
+          "ticker": "MNST",
+          "pais": "US",
+          "capitalizacion": 611200,
+          "ev_ventas": 9.58,
+          "ev_ebitda_ltm": 30.1,
+          "ev_ebitda_ntm": 26.5,
+          "per_ntm": 35.7,
+          "crecimiento_pct": 13.7,
+          "margen_ebitda_pct": 31.8,
+          "roic_pct": null,
+          "dn_ebitda": -1.1,
+          "fcf_yield_pct": 1.8,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Danone",
+          "ticker": "BN.PA",
+          "pais": "FR",
+          "capitalizacion": 294391,
+          "ev_ventas": 1.76,
+          "ev_ebitda_ltm": 10.7,
+          "ev_ebitda_ntm": 10.1,
+          "per_ntm": 14.5,
+          "crecimiento_pct": 6.2,
+          "margen_ebitda_pct": 16.4,
+          "roic_pct": null,
+          "dn_ebitda": 2,
+          "fcf_yield_pct": 5.3,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Suntory Beverage & Food",
+          "ticker": "2587.T",
+          "pais": "JP",
+          "capitalizacion": 63450,
+          "ev_ventas": 0.75,
+          "ev_ebitda_ltm": 5.9,
+          "ev_ebitda_ntm": 5.6,
+          "per_ntm": 14.7,
+          "crecimiento_pct": 4.4,
+          "margen_ebitda_pct": 12.8,
+          "roic_pct": null,
+          "dn_ebitda": -0.6,
+          "fcf_yield_pct": 6,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Ito En",
+          "ticker": "2593.T",
+          "pais": "JP",
+          "capitalizacion": 16189,
+          "ev_ventas": 0.79,
+          "ev_ebitda_ltm": 12,
+          "ev_ebitda_ntm": 12,
+          "per_ntm": 19.6,
+          "crecimiento_pct": 0.1,
+          "margen_ebitda_pct": 6.5,
+          "roic_pct": null,
+          "dn_ebitda": 0.3,
+          "fcf_yield_pct": null,
+          "es_objetivo": false
+        }
+      ],
+      "estadisticos": [
+        {
+          "estadistico": "Mediana",
+          "ev_ventas": 1.3,
+          "ev_ebitda_ltm": 10.3,
+          "ev_ebitda_ntm": 9.3,
+          "per_ntm": 14.6,
+          "crecimiento_pct": 4.8,
+          "margen_ebitda_pct": 15.8,
+          "roic_pct": null,
+          "dn_ebitda": -0.4,
+          "fcf_yield_pct": 5.1
+        },
+        {
+          "estadistico": "Media",
+          "ev_ventas": 2.9,
+          "ev_ebitda_ltm": 12.3,
+          "ev_ebitda_ntm": 11.6,
+          "per_ntm": 17.9,
+          "crecimiento_pct": 5.9,
+          "margen_ebitda_pct": 18.7,
+          "roic_pct": null,
+          "dn_ebitda": -0.4,
+          "fcf_yield_pct": 0.4
+        },
+        {
+          "estadistico": "Percentil 25",
+          "ev_ventas": 0.8,
+          "ev_ebitda_ltm": 5.9,
+          "ev_ebitda_ntm": 5.6,
+          "per_ntm": 14,
+          "crecimiento_pct": 3,
+          "margen_ebitda_pct": 12.6,
+          "roic_pct": null,
+          "dn_ebitda": -1.5,
+          "fcf_yield_pct": 1.7
+        },
+        {
+          "estadistico": "Percentil 75",
+          "ev_ventas": 2.6,
+          "ev_ebitda_ltm": 11.9,
+          "ev_ebitda_ntm": 11.8,
+          "per_ntm": 18.6,
+          "crecimiento_pct": 6.7,
+          "margen_ebitda_pct": 25.4,
+          "roic_pct": null,
+          "dn_ebitda": 1.3,
+          "fcf_yield_pct": 5.5
+        }
+      ],
+      "implicito": [
+        {
+          "metodo": "EV/EBITDA próximos 12 meses",
+          "metrica_empresa": 28912.38,
+          "multiplo_p25": 5.6,
+          "multiplo_mediana": 9.3,
+          "multiplo_p75": 11.8,
+          "multiplos": "5,6x / 9,3x / 11,8x",
+          "valor_p25": 16.28,
+          "valor_mediana": 25.8,
+          "valor_p75": 32.29,
+          "potencial_pct": -27.6
+        },
+        {
+          "metodo": "EV/EBITDA últimos 12 meses",
+          "metrica_empresa": 25804.7,
+          "multiplo_p25": 5.9,
+          "multiplo_mediana": 10.3,
+          "multiplo_p75": 11.9,
+          "multiplos": "5,9x / 10,3x / 11,9x",
+          "valor_p25": 15.43,
+          "valor_mediana": 25.52,
+          "valor_p75": 29.19,
+          "potencial_pct": -28.4
+        },
+        {
+          "metodo": "PER próximos 12 meses",
+          "metrica_empresa": 1.75,
+          "multiplo_p25": 14,
+          "multiplo_mediana": 14.6,
+          "multiplo_p75": 18.6,
+          "multiplos": "13,9x / 14,6x / 18,6x",
+          "valor_p25": 24.45,
+          "valor_mediana": 25.59,
+          "valor_p75": 32.56,
+          "potencial_pct": -28.2
+        },
+        {
+          "metodo": "EV/Ventas últimos 12 meses",
+          "metrica_empresa": 56648.8,
+          "multiplo_p25": 0.8,
+          "multiplo_mediana": 1.3,
+          "multiplo_p75": 2.6,
+          "multiplos": "0,8x / 1,3x / 2,6x",
+          "valor_p25": 5.72,
+          "valor_mediana": 8.51,
+          "valor_p75": 15.02,
+          "potencial_pct": -76.1
+        }
+      ],
+      "regresion": {
+        "pendiente": 0.05,
+        "ordenada": 11.3,
+        "r2": 0,
+        "n": 10,
+        "multiplo_ajustado": 11.9,
+        "valor_accion": 32.48,
+        "fiable": false,
+        "texto": "**Regresión EV/EBITDA NTM sobre crecimiento** (10 comparables): múltiplo = 11,3 + 0,05 × crecimiento; R² = 0,00. El crecimiento explica poco los múltiplos de estos comparables (R² < 0,3): la regresión no se usa en la valoración."
+      },
+      "n": 10
+    },
+    "transacciones": null,
+    "suma_partes": null,
+    "multiplos_historicos": [
+      {
+        "metrica": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+        "campo": "ev_ebitda_ltm",
+        "actual": 14.7,
+        "media": 25.1,
+        "minimo": 18.8,
+        "maximo": 39.7,
+        "percentil": 0,
+        "prima_pct": -41,
+        "anios": 5
+      },
+      {
+        "metrica": "PER últimos 12 meses (cierre de cada año)",
+        "campo": "per_ltm",
+        "actual": 23.4,
+        "media": 38.1,
+        "minimo": 29.6,
+        "maximo": 65.6,
+        "percentil": 0,
+        "prima_pct": -39,
+        "anios": 5
+      }
+    ],
+    "multiplos_serie": [
+      {
+        "anio": "2021",
+        "multiplo": 39.7,
+        "media": 25.1
+      },
+      {
+        "anio": "2022",
+        "multiplo": 33.7,
+        "media": 25.1
+      },
+      {
+        "anio": "2023",
+        "multiplo": 25.1,
+        "media": 25.1
+      },
+      {
+        "anio": "2024",
+        "multiplo": 19.2,
+        "media": 25.1
+      },
+      {
+        "anio": "2025",
+        "multiplo": 18.8,
+        "media": 25.1
+      }
+    ],
+    "multiplos_titulo": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+    "consenso_vs_propio": [
+      {
+        "periodo": "2026e",
+        "ingresos_propio": 59648,
+        "ingresos_consenso": 60138,
+        "ingresos_dif_pct": -0.8,
+        "ebitda_propio": 26841,
+        "ebitda_consenso": 26360.551,
+        "ebitda_dif_pct": 1.8
+      },
+      {
+        "periodo": "2027e",
+        "ingresos_propio": 65612,
+        "ingresos_consenso": 67436,
+        "ingresos_dif_pct": -2.7,
+        "ebitda_propio": 29526,
+        "ebitda_consenso": 29538.922,
+        "ebitda_dif_pct": 0
+      },
+      {
+        "periodo": "2028e",
+        "ingresos_propio": 71517,
+        "ingresos_consenso": 74847,
+        "ingresos_dif_pct": -4.4,
+        "ebitda_propio": 32183,
+        "ebitda_consenso": 32883.1065,
+        "ebitda_dif_pct": -2.1
+      }
+    ],
+    "gobierno": {
+      "n_consejeros": 8,
+      "independientes_pct": 38,
+      "antiguedad_media": 6.1,
+      "composicion": [
+        {
+          "tipo": "Ejecutivo",
+          "num": 4
+        },
+        {
+          "tipo": "Dominical",
+          "num": 1
+        },
+        {
+          "tipo": "Independiente",
+          "num": 3
+        }
+      ],
+      "checklist": [
+        {
+          "criterio": "Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)",
+          "resultado": "Cumple",
+          "valor": "38 % (con control)"
+        },
+        {
+          "criterio": "Presidencia sin vínculo familiar ni profesional con el accionista de control",
+          "resultado": "No cumple",
+          "valor": "Vinculada"
+        },
+        {
+          "criterio": "Presidente no ejecutivo, o consejero coordinador independiente",
+          "resultado": "No cumple",
+          "valor": "Ejecutivo, sin coordinador"
+        },
+        {
+          "criterio": "Comisión de auditoría con mayoría de independientes y presidida por uno",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Ningún consejero «otro externo» con más de 12 años",
+          "resultado": "Cumple",
+          "valor": "Ninguno"
+        },
+        {
+          "criterio": "Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses",
+          "resultado": "Cumple",
+          "valor": "0 cambios"
+        },
+        {
+          "criterio": "Peor voto en contra sobre remuneración (3 juntas, capital libre) ≤ 20 %",
+          "resultado": "Cumple",
+          "valor": "0,0 % en contra"
+        },
+        {
+          "criterio": "Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)",
+          "resultado": "No cumple",
+          "valor": "No"
+        },
+        {
+          "criterio": "Una acción, un voto, sin blindajes ni límites de voto estatutarios",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Sin operaciones vinculadas relevantes",
+          "resultado": "No cumple",
+          "valor": "Hay"
+        },
+        {
+          "criterio": "Auditor con 10 años o menos en el cargo",
+          "resultado": "Cumple",
+          "valor": "6 años"
+        },
+        {
+          "criterio": "Opinión de auditoría sin salvedades",
+          "resultado": "Cumple",
+          "valor": "Favorable (2025)"
+        },
+        {
+          "criterio": "Directivos compradores netos en 12 meses (o sin ventas relevantes)",
+          "resultado": "Cumple",
+          "valor": "Compras 102,79 / ventas 0,23 M"
+        }
+      ],
+      "puntuacion": "9 de 13",
+      "puntuacion_pct": 69,
+      "compras_insiders": 102.79,
+      "ventas_insiders": 0.23
+    },
+    "competidores_margen": [
+      {
+        "nombre": "Nongfu Spring",
+        "margen_ebit_pct": 38.9
+      },
+      {
+        "nombre": "Tingyi (Master Kong)",
+        "margen_ebit_pct": 9.4
+      },
+      {
+        "nombre": "Uni-President China",
+        "margen_ebit_pct": 10.4
+      },
+      {
+        "nombre": "China Resources Beverage (C'estbon)",
+        "margen_ebit_pct": 11.9
+      },
+      {
+        "nombre": "Eastroc Beverage",
+        "margen_ebit_pct": 28
+      },
+      {
+        "nombre": "Coca-Cola (grupo)",
+        "margen_ebit_pct": 34.9
+      },
+      {
+        "nombre": "Wahaha (娃哈哈)",
+        "margen_ebit_pct": null
+      }
+    ],
+    "sintesis": {
+      "formato_eje": "#,##0.0",
+      "rangos": [
+        {
+          "metodo": "Cotización 52 semanas",
+          "etiqueta": "Cotización 52 semanas (32,24 – 47,85)",
+          "min": 32.24,
+          "central": 35.63,
+          "max": 47.85,
+          "gris": true
+        },
+        {
+          "metodo": "Precio objetivo de los analistas",
+          "etiqueta": "Precio objetivo de los analistas (27,32 – 52,38)",
+          "min": 27.32,
+          "central": 45.2,
+          "max": 52.38,
+          "gris": true
+        },
+        {
+          "metodo": "Comparables: EV/EBITDA NTM",
+          "etiqueta": "Comparables: EV/EBITDA NTM (16,28 – 32,29)",
+          "min": 16.28,
+          "central": 25.8,
+          "max": 32.29,
+          "gris": false
+        },
+        {
+          "metodo": "Comparables: PER NTM",
+          "etiqueta": "Comparables: PER NTM (24,45 – 32,56)",
+          "min": 24.45,
+          "central": 25.59,
+          "max": 32.56,
+          "gris": false
+        },
+        {
+          "metodo": "DCF (WACC y g ± 0,5)",
+          "etiqueta": "DCF (WACC y g ± 0,5) (28,54 – 36,59)",
+          "min": 28.54,
+          "central": 31.97,
+          "max": 36.59,
+          "gris": false
+        },
+        {
+          "metodo": "Escenarios (bajista – alcista)",
+          "etiqueta": "Escenarios (bajista – alcista) (24,28 – 36,25)",
+          "min": 24.28,
+          "central": 31.12,
+          "max": 36.25,
+          "gris": false
+        },
+        {
+          "metodo": "DCF con la prima del mercado",
+          "etiqueta": "DCF con la prima implícita del mercado (4,2 %)",
+          "min": 34.29,
+          "central": 37.23,
+          "max": 40.74
+        },
+        {
+          "metodo": "Precio actual",
+          "etiqueta": "Precio actual (35,63)",
+          "min": 35.45,
+          "central": 35.63,
+          "max": 35.81,
+          "gris": true
+        }
+      ],
+      "tabla": [
+        {
+          "metodo": "DCF",
+          "valor": 31.97,
+          "peso_pct": 50,
+          "potencial_pct": -10.3
+        },
+        {
+          "metodo": "Comparables (mediana EV/EBITDA y PER)",
+          "valor": 25.7,
+          "peso_pct": 20,
+          "potencial_pct": -27.9
+        },
+        {
+          "metodo": "Escenarios ponderados",
+          "valor": 31.12,
+          "peso_pct": 30,
+          "potencial_pct": -12.7
+        }
+      ],
+      "valor_objetivo": 30.46,
+      "potencial_pct": -14.5
+    },
+    "fuentes": {
+      "n_fuentes": 42,
+      "n_primarias": 21,
+      "por_tipo": [
+        {
+          "tipo": "Primaria",
+          "num": 21
+        },
+        {
+          "tipo": "Sectorial",
+          "num": 1
+        },
+        {
+          "tipo": "Prensa",
+          "num": 8
+        },
+        {
+          "tipo": "Datos de mercado",
+          "num": 6
+        },
+        {
+          "tipo": "Analistas",
+          "num": 3
+        },
+        {
+          "tipo": "Foros y redes",
+          "num": 3
+        }
+      ],
+      "n_citadas": 42,
+      "citas_sin_fuente": [],
+      "fuentes_sin_citar": []
+    },
+    "controles": [
+      {
+        "control": "Geografías suman 100 %",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "DCF inverso calculable",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Puente de ingresos (volumen + precio + otros) = crecimiento del DCF",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Veredicto de sostenibilidad del analista coherente con las pruebas del motor",
+        "resultado": "OK",
+        "detalle": "El analista dice «Sí» y las pruebas del motor dan «Sí»: razónalo en la justificación."
+      },
+      {
+        "control": "Cuota implícita al final de la proyección ≤ 1,5 × la actual (o +10 puntos)",
+        "resultado": "OK",
+        "detalle": "Cuota de 4,9 % en 2030e frente al 4,0 % de hoy."
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "resultado": "OK",
+        "detalle": "Supuesto 9,0 % frente a 9,1 % real: genera una variación de circulante de 578 M en el primer año. Converge de forma gradual."
+      },
+      {
+        "control": "Peso del valor terminal ≤ 80 % del valor empresa",
+        "resultado": "OK",
+        "detalle": "67 %."
+      },
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "resultado": "OK",
+        "detalle": "1,00 %."
+      },
+      {
+        "control": "Probabilidades de los escenarios suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Regresión múltiplo-crecimiento explicativa (R² ≥ 0,3)",
+        "resultado": "Explicado",
+        "detalle": "R² = 0,00: el crecimiento no explica los múltiplos de estos comparables; no uses el valor de la regresión. Explicación: R² de 0,00: en esta muestra el múltiplo lo explican el margen y la calidad de la marca (Coca-Cola y Monster a 25-30 veces el EBITDA; Tingyi, Uni-President y CR Beverage a 5-6 veces con márgenes del 11-15 %), no el crecimiento. No usamos el valor de la regresión."
+      },
+      {
+        "control": "Al menos 5 comparables",
+        "resultado": "OK",
+        "detalle": "10 comparables."
+      },
+      {
+        "control": "Comparables estables al quitar una empresa",
+        "resultado": "Explicado",
+        "detalle": "La mediana del EV/EBITDA NTM va de 8,5x a 10,1x según qué comparable se quite (23,74 a 27,85 por acción): la muestra es frágil; explícalo y no le des mucho peso. Explicación: La mediana del EV/EBITDA de los próximos 12 meses va de 8,5x a 10,1x según qué comparable se quite: la muestra mezcla bebidas chinas baratas y de margen bajo con marcas mundiales caras. Ningún comparable tiene el margen EBITDA del 45 % de Nongfu. Por eso los comparables pesan solo un 20 % y lo que decide es el DCF y la regla a 12 meses con el PER propio."
+      },
+      {
+        "control": "Pesos de la síntesis suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Crecimiento del BPA base ≤ 25 % anual desde el último real",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Precio del cierre de la fecha de corte (o de las dos sesiones anteriores)",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Recomendación coherente con la regla de decisión",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "La síntesis explica la convicción",
+        "resultado": "OK",
+        "detalle": "La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría."
+      },
+      {
+        "control": "Capitalización calculada ≈ publicada",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 25 fuentes",
+        "resultado": "OK",
+        "detalle": "42 fuentes (21 primarias)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "resultado": "OK",
+        "detalle": "21."
+      },
+      {
+        "control": "Toda cita [n] existe en fuentes",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Fuentes sin citar ≤ 15 %",
+        "resultado": "OK",
+        "detalle": ""
+      }
+    ],
+    "controles_resumen": "20 de 22 controles correctos y 2 explicados"
+  }
+}
