@@ -29,6 +29,10 @@ if (!existsSync(CARTERA)) { console.error(`No veo ${CARTERA}`); process.exit(1);
 const cart = leer(CARTERA, {});
 const op = cart.ordenes_pendientes || {};
 const PRECIOS = leer(new URL('../verticales/empresa/precios.json', import.meta.url), {});
+// Niveles de compra (regla 16, 20-oct-2026): cada orden de compra puede llevar `nivel` (A, B1, B2, C); el aviso dice el nivel y
+// su tamaño máximo (escaner/reglas.json → niveles_compra). Sin `nivel`, se da por A (las apuntadas antes del 20-oct).
+const NIVELES = leer(new URL('../escaner/reglas.json', import.meta.url), {}).niveles_compra || {};
+const txtNivel = (o) => { const n = o.nivel || 'A', t = NIVELES[n]?.tope_pct; return ` Nivel ${n}${t ? ` (tamaño máximo ${fp(t, t % 1 ? 1 : 0)} % de la cartera)` : ''}.`; };
 const MAPA = { IOT: 'IOT', ...(op.simbolos || {}) };
 const simbolo = (k) => MAPA[k] || (PRECIOS.precios || PRECIOS)[k]?.simbolo || k;
 const nombre = (k, m) => (PRECIOS.precios || PRECIOS)[k]?.nombre || m?.shortName || k;
@@ -85,7 +89,7 @@ for (const o of lista) {
     const dinero = o.lado === 'venta' || o.reservada || coste === null ? '' :
       coste <= (cart.liquidez_libre_eur ?? 0) ? '' : ` Ojo: cuesta unos ${fp(coste, 0)} € y la liquidez libre es de ${fp(cart.liquidez_libre_eur ?? 0, 0)} €; hace falta vender antes o repartir entre cuentas.`;
     avisos.push(o.lado === 'compra'
-      ? `**COMPRA AHORA A MERCADO: ${n}${tit(o.titulos)}.** Cotiza a ${P(precio)} (${hora(t)} de Madrid, ${bolsa}); su precio máximo de compra es ${P(lim)}${coste ? `; unos ${fp(coste, 0)} €` : ''}.${o.reservada ? ` Dinero ya reservado${o.cuenta ? ` en la ${o.cuenta.replace(/-/g, ' ')}` : ''}.` : o.cuenta ? ` Cuenta: ${o.cuenta.replace(/-/g, ' ')}.` : ''}${dinero}`
+      ? `**COMPRA AHORA A MERCADO: ${n}${tit(o.titulos)}.** Cotiza a ${P(precio)} (${hora(t)} de Madrid, ${bolsa}); su precio máximo de compra es ${P(lim)}${coste ? `; unos ${fp(coste, 0)} €` : ''}.${txtNivel(o)}${o.reservada ? ` Dinero ya reservado${o.cuenta ? ` en la ${o.cuenta.replace(/-/g, ' ')}` : ''}.` : o.cuenta ? ` Cuenta: ${o.cuenta.replace(/-/g, ' ')}.` : ''}${dinero}`
       : `**VENDE AHORA A MERCADO: ${n}${tit(o.titulos)}.** Cotiza a ${P(precio)} (${hora(t)} de Madrid, ${bolsa}); se vende desde ${P(lim)}.`);
   } else if (!dentro && toco) {
     avisos.push(`${n} tocó su límite (${P(o.lado === 'compra' ? minimo : maximo)} a las ${hora(o.lado === 'compra' ? tMin : tMax)}; límite ${P(lim)}) y ahora está en ${P(precio)} (${hora(t)}, ${bolsa}): ahora no ${o.lado === 'compra' ? 'se compra' : 'se vende'}.`);

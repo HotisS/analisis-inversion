@@ -14,6 +14,9 @@
 //   … --bpa-factor 0,95                                         «Vup» del escáner: BPA de los tres escenarios × factor (resultados
 //                                                               publicados después del informe); solo en memoria, no toca el informe
 //
+// Niveles de compra (regla 16, 20-oct-2026): «nivel» (A, B1, B2, C o null) al precio de hoy y «limites_nivel_cot» con el
+// límite de cada nivel al que puede llegar la empresa. La acción robusta sigue siendo la de A.
+//
 // Tratamientos (columna «tratamiento»):
 //   CORREGIR   el dato está mal (precio, divisa, BPA): no se da señal hasta corregirlo.
 //   VARIANTE   el dato está bien, pero la regla no sirve para esta empresa: decide la variante que se indica.
@@ -314,6 +317,34 @@ function probar(carpeta) {
     for (let i = 0; i < 40; i++) { const m = (lo + hi) / 2; if (pasa(m)) lo = m; else hi = m; }
     return lo;
   })();
+  // Niveles de compra value (Hotis 20-oct-2026, regla 16 de METODO-VIGENTE.md): A = la compra robusta de siempre; B1 afloja los
+  // números (v2 y BPA −10 % solo aguantan Mantener; precio ≤ límite B); B2 afloja la calidad (sostenibilidad «En parte» con
+  // ROIC − WACC ≥ 5, o «Sí» con 4,5-5); C afloja las dos cosas. En todos: v3 en Comprar al precio de hoy, sin dato que corregir,
+  // sin marca de confianza, sin exclusión y sin «retrasa» ni «descarta» en precio y noticias.
+  const excQ = REGLAS.calidad_excepciones?.[clave] ?? REGLAS.calidad_excepciones?.[String(id.ticker || '').toUpperCase()] ?? null;
+  const calidadA = (sostOk && roicOk) || !!excQ;
+  const calidadB = calidadA || (cx.roicWacc === null || cx.roicWacc >= 5 ? /^en parte/i.test(String(cx.sost || '')) : sostOk && cx.roicWacc >= 4.5);
+  const limB = (() => {
+    if (!vig?.completo) return null;
+    const ok = (p) => pasaComprar(evaluar(cx, { precio: p }), p, cx.vi) && pasaMantener(evaluar(cx, { precio: p, escalaBpa: 0.9 }), p, cx.vi)
+      && (!(ph.v2 && v3) || pasaMantener(evaluar(cx, { precio: p, historia: 'v2' }), p, cx.vi));
+    let hi = precio * 3; if (ok(hi)) return hi; let lo = precio * 0.3; if (!ok(lo)) return null;
+    for (let i = 0; i < 50; i++) { const m = (lo + hi) / 2; if (ok(m)) lo = m; else hi = m; }
+    return lo;
+  })();
+  const sinBloqueo = !bloq && !confianza.length && !exclu && !(ctx?.veredicto && /retrasa|descarta/i.test(String(ctx.veredicto)));
+  // Límite de cada nivel (el precio más alto al que pasa) y nivel al precio de hoy. Los números A son los de la compra robusta
+  // (todas las variantes defendibles en Comprar, BPA −10 % en Comprar, precio ≤ límite robusto); los B, v3 en Comprar y todo
+  // lo demás al menos en Mantener (precio ≤ límite B).
+  const limitesNivel = {};
+  if (sinBloqueo && (calidadA || calidadB)) {
+    if (limRobusto !== null) limitesNivel[calidadA ? 'A' : 'B2'] = limRobusto;
+    if (limB !== null) limitesNivel[calidadA ? 'B1' : 'C'] = limB;
+  }
+  const hoyA = v0?.comprar && defendibles.every((t) => t.comprar) && bpa10?.comprar && limRobusto !== null && precio <= limRobusto;
+  const hoyB = v0?.comprar && defendibles.every((t) => t.mantener) && bpa10?.mantener && limB !== null && precio <= limB;
+  const nivel = !sinBloqueo ? null : calidadA ? (hoyA ? 'A' : hoyB ? 'B1' : null) : calidadB ? (hoyA ? 'B2' : hoyB ? 'C' : null) : null;
+  const limNivel = nivel ? limitesNivel[nivel] : null;
   const colchonBpa = (cond) => { if (!vig?.completo || !cond(vig, precio, cx.vi)) return null; for (let e = 1; e >= 0.5; e -= 0.01) { const c = evaluar(cx, { precio, escalaBpa: e }); if (!c?.completo || !cond(c, precio, cx.vi)) return r((1 - e) * 100, 0); } return 50; };
   return {
     carpeta, clave, nombre: id.nombre_corto || id.nombre, ...(BPA_FACTOR !== 1 ? { bpa_factor: BPA_FACTOR } : {}), divisa: meta.divisa, precio: r(precio, 2), fecha_precio: fechaPrecio,
@@ -327,6 +358,9 @@ function probar(carpeta) {
     divisa_cotizacion: divCot, limite_comprar_cot: lim ? r(lim.comprar / tc, 2) : null, limite_mantener_cot: lim ? r(lim.mantener / tc, 2) : null,
     limite_comprar_control_cot: limCtrl ? r(limCtrl.comprar / tc, 2) : null, precio_cot: r(precio / tc, 2), limite_robusto_cot: limRobusto !== null ? Math.floor((100 * limRobusto) / tc) / 100 : null,
     limite_comprar: r(lim?.comprar, 2), limite_comprar_control: r(limCtrl?.comprar, 2), limite_mantener: r(lim?.mantener, 2), limite_mantener_control: r(limCtrl?.mantener, 2),
+    nivel, limite_nivel_cot: limNivel !== null ? Math.floor((100 * limNivel) / tc) / 100 : null,
+    limites_nivel_cot: Object.fromEntries(Object.entries(limitesNivel).map(([k, v]) => [k, Math.floor((100 * v) / tc) / 100])), limite_b_cot: limB !== null ? Math.floor((100 * limB) / tc) / 100 : null,
+    calidad_sost: cx.sost, calidad_roic_wacc: r(cx.roicWacc),
     elasticidad_objetivo: r(elast, 2), colchon_bpa_comprar: colchonBpa(pasaComprar), colchon_bpa_mantener: colchonBpa(pasaMantener),
     marcas, variantes: tabla,
   };
@@ -338,6 +372,7 @@ else for (const x of res) {
   if (x.error) { console.log(`${x.carpeta}: ERROR ${x.error}`); continue; }
   console.log(`\n${x.nombre} (${x.carpeta}) · ${x.version} ${f(x.ponderada)} % / base ${f(x.base)} % → ${x.senal}${x.v2 !== null ? ` · v2 ${f(x.v2)} %` : ''} · precio ${f(x.precio, 2)} ${x.divisa} (${x.fecha_precio})`);
   console.log(`  Veredicto: ${x.veredicto}. Acción vigente: ${x.accion_vigente}. Acción robusta: ${x.accion_robusta}.${x.frente.length ? ` Cambia con: ${x.frente.join('; ')}.` : ''}`);
+  if (Object.keys(x.limites_nivel_cot || {}).length) console.log(`  Nivel de compra hoy: ${x.nivel ?? 'ninguno'}. Límites por nivel (${x.divisa_cotizacion}): ${Object.entries(x.limites_nivel_cot).map(([k, v]) => `${k} ${f(v, 2)}`).join('; ')}.`);
   console.log(`  En ${x.divisa_cotizacion} (broker): precio ${f(x.precio_cot, 2)}; límite de compra (objetivo fijo) ${f(x.limite_comprar_cot, 2)}${x.limite_comprar_control_cot !== null ? ` (v2: ${f(x.limite_comprar_control_cot, 2)})` : ''}; filtro de mantener hasta ${f(x.limite_mantener_cot, 2)}; límite robusto (v3 y v2 con BPA −10 %) ${x.limite_robusto_cot !== null ? f(x.limite_robusto_cot, 2) : '—'}. Colchón de BPA: ${x.colchon_bpa_comprar ?? '—'} % para Comprar, ${x.colchon_bpa_mantener ?? '—'} % para mantener.`);
   for (const m of x.marcas) console.log(`  [${m.codigo} ${m.tratamiento}] ${m.texto}`);
   console.log(`  Variantes: ${x.variantes.filter((t) => !t.error).map((t) => `${t.variante} ${f(t.ponderada)}/${f(t.base)}`).join(' · ')}`);

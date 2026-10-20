@@ -4,6 +4,10 @@
 
 **Qué se apunta aquí** (una entrada por cambio, la más reciente arriba, dos o tres líneas): cambios de método o de reglas, decisiones de cartera que sustituyen a otras, cambios de estructura del repo o del flujo de trabajo, y lo que se retira de `MEMORIA.md`, `cola.md` o `lecciones.md` cuando ya no está vigente. No se apuntan análisis sueltos (están en `seguimiento.xlsx` y en cada `diario.md`).
 
+## 20-oct-2026 · Niveles de compra value A, B1, B2 y C
+
+Pedido del usuario (más compras de calidad aunque no sean perfectas) y aprobado a las 10:33. A es la compra robusta de siempre; B1 afloja los números (v2 y BPA −10 % solo en Mantener), B2 la calidad (sostenibilidad «En parte» con ROIC − WACC ≥ 5) y C las dos; topes 7/4/4/3,3 %. Regla 16 de `METODO-VIGENTE.md`; backtest en `/mnt/project-files/estrategia/niveles-compra-2026-10-20/`.
+
 ## 19-oct-2026 · Excepción de calidad de LVMH confirmada; KION no
 
 Hasta hoy el repo daba la excepción de LVMH (ROIC − WACC 3,4) como «aceptada por el usuario el 14-oct», pero las tablas de ese día la llevaban como supuesto sin contestar. El usuario la confirma el 19-oct («si a lvmh, no al otro», cmsg_018PhzEVSk4hABnLFHAp7iTQ9vKS7pyDJdhVvxEYKGgmjb) y rechaza la misma excepción para KION (−4,3). Diez análisis value completos ese día (KION, Smurfit Westrock y ocho de electricidad y frío del escáner value): ninguno en compra robusta.

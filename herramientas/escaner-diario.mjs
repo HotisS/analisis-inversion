@@ -290,24 +290,26 @@ async function escanear() {
   }
 
   // Regla del usuario (19-oct): en cada pasada, TODAS las compras posibles a precio de ahora, aunque ya estén propuestas,
-  // en cartera (ampliar), en lista de espera o sin liquidez. Value: acción robusta «Comprar», calidad y precio ≤ límite
-  // robusto (v3 y v2 con BPA −10 %). Growth: la misma prueba que arriba. Las excluidas por el usuario no salen.
+  // en cartera (ampliar), en lista de espera o sin liquidez. Value: cualquier nivel de compra (regla 16: A, B1, B2 o C de
+  // robustez.mjs) con el precio ≤ el límite de su nivel. Growth: la misma prueba que arriba. Las excluidas por el usuario no salen.
   const posibles = [];
   const propuesta = (clave) => { const t = enOrdenes.get(clave), lim = t.match(/\(límite [^)]+\)$/)?.[0]; return lim ? `ya propuesta ${lim}` : `ya propuesta: ${t}`; };
-  const estadoPosible = (clave) => {
+  const estadoPosible = (clave, nivel = null) => {
     if (pos.has(clave)) {
-      const peso = total ? (100 * (valorPos[clave] || 0)) / total : 0;
-      return peso >= REGLAS.tope_posicion_pct - 0.05 ? `en cartera, ya en el tope del ${REGLAS.tope_posicion_pct} % (${f(peso, 1)} %): no se amplía`
+      const peso = total ? (100 * (valorPos[clave] || 0)) / total : 0, tope = REGLAS.niveles_compra?.[nivel]?.tope_pct ?? REGLAS.tope_posicion_pct;
+      return peso >= tope - 0.05 ? `en cartera, ya en el tope del ${f(tope, tope % 1 ? 1 : 0)} %${nivel ? ` del nivel ${nivel}` : ''} (${f(peso, 1)} %): no se amplía`
         : `en cartera (${f(peso, 1)} %): ampliar${enOrdenes.has(clave) ? `; ${propuesta(clave)}` : ''}`;
     }
     return enOrdenes.has(clave) ? propuesta(clave) : 'nueva';
   };
+  // Niveles de compra (regla 16, 20-oct-2026): A, B1, B2 y C con su límite y su tamaño máximo (robustez.mjs → nivel).
   for (const x of rob) {
-    if (REGLAS.exclusiones[x.clave] || !x.precio_cot || x.accion_robusta !== 'Comprar') continue;
-    const lim = x.limite_robusto_cot ?? Math.min(x.limite_comprar_cot ?? Infinity, x.limite_comprar_control_cot ?? Infinity);
-    if (!Number.isFinite(lim) || x.precio_cot > lim || calidad(x.carpeta, x.clave).pasa === false) continue;
-    posibles.push({ vertical: 'value', clave: x.clave, nombre: x.nombre, precio: x.precio_cot, divisa: x.divisa_cotizacion, limite: r(lim, 2),
-      hora_precio: x.fecha_precio === ahora.fecha ? horaPrecio : `cierre del ${fechaCorta(x.fecha_precio)}`, rentabilidad_12m_pct: x.ponderada, estado: estadoPosible(x.clave) });
+    if (REGLAS.exclusiones[x.clave] || !x.precio_cot || !x.nivel) continue;
+    const lim = x.limite_nivel_cot;
+    if (!Number.isFinite(lim) || x.precio_cot > lim) continue;
+    posibles.push({ vertical: 'value', nivel: x.nivel, tope_pct: REGLAS.niveles_compra?.[x.nivel]?.tope_pct ?? null, clave: x.clave, nombre: x.nombre, precio: x.precio_cot, divisa: x.divisa_cotizacion, limite: r(lim, 2),
+      hora_precio: x.fecha_precio === ahora.fecha ? horaPrecio : `cierre del ${fechaCorta(x.fecha_precio)}`, rentabilidad_12m_pct: x.ponderada, estado: estadoPosible(x.clave, x.nivel),
+      contexto_informe: x.contexto_mercado?.veredicto ? { veredicto: x.contexto_mercado.veredicto, fecha: x.carpeta.match(/\d{4}-\d{2}-\d{2}/)?.[0] || null } : null });
   }
   for (const g of gro) {
     if (!g.precio_hoy || REGLAS.exclusiones[g.ticker]) continue;
@@ -322,9 +324,13 @@ async function escanear() {
   const R13 = leer(`${P}regla13.json`, {});
   for (const c of posibles) {
     const q = R13[c.clave];
-    c.regla13 = q?.fecha && dias(q.fecha, ahora.fecha) <= 7 ? `${q.veredicto || 'hecho'} (${fechaCorta(q.fecha)})` : 'falta';
+    // Si no está en regla13.json, vale el bloque de precio y noticias del propio informe (bolsa.contexto) si tiene 7 días o menos.
+    const qi = c.contexto_informe;
+    c.regla13 = q?.fecha && dias(q.fecha, ahora.fecha) <= 7 ? `${q.veredicto || 'hecho'} (${fechaCorta(q.fecha)})`
+      : qi?.fecha && dias(qi.fecha, ahora.fecha) <= 7 ? `${qi.veredicto} (informe del ${fechaCorta(qi.fecha)})` : 'falta';
   }
-  posibles.sort((a, b) => b.rentabilidad_12m_pct - a.rentabilidad_12m_pct);
+  const ordenNivel = { A: 0, B1: 1, B2: 1, C: 2 };
+  posibles.sort((a, b) => (ordenNivel[a.nivel] ?? 1.5) - (ordenNivel[b.nivel] ?? 1.5) || b.rentabilidad_12m_pct - a.rentabilidad_12m_pct);
 
   // Calendario de resultados (regla 11 de METODO-VIGENTE.md, 15-oct: los resultados cercanos no aplazan ni parten la compra, solo se avisa; con resultados ya
   // publicados después del informe, revisión obligatoria en el Vup antes de dar la señal).
@@ -437,9 +443,9 @@ function tablaPosibles(esc) {
   const t = esc.compras_posibles || [];
   if (!t.length) return 'Compras posibles ahora (todas las seguidas): ninguna está a precio de compra robusta.';
   return [`**Compras posibles ahora (todas las seguidas, ${t.length})**`, '',
-    '| Empresa | Tipo | Comprar a mercado si cotiza en | Precio ahora | Rentab. 12 m | Repaso de precio y noticias | Estado |', '|---|---|---|---|---|---|---|',
-    ...t.map((c) => `| ${c.nombre} | ${c.vertical} | ${fPrecio(c.limite)} ${c.divisa} o menos | ${fPrecio(c.precio)} ${c.divisa} (${c.hora_precio}) | ${fp(c.rentabilidad_12m_pct)}${c.largo_plazo ? ` (${c.largo_plazo})` : ''} | ${c.regla13 || 'falta'} | ${c.estado} |`),
-    '', `Son posibles, no órdenes: cuáles se compran depende de la liquidez (libre ${f(esc.liquidez_libre_eur ?? 0, 0)} €) y de lo que haya que vender antes; las que tienen «falta» en el repaso de precio y noticias lo necesitan antes de una orden.${t.some((c) => c.vertical === 'growth') ? ` Las growth solo salen con +25 % o más a 12 meses, más a largo plazo y una subida esperada de al menos 0,75 veces la caída del escenario malo; comparten un bolsillo con tope (hoy al ${f(esc.bolsillo_growth_pct ?? 0, 0)} %).` : ''}`].join('\n');
+    '| Empresa | Tipo | Nivel (tamaño máx.) | Comprar a mercado si cotiza en | Precio ahora | Rentab. 12 m | Repaso de precio y noticias | Estado |', '|---|---|---|---|---|---|---|---|',
+    ...t.map((c) => `| ${c.nombre} | ${c.vertical} | ${c.nivel ? `${c.nivel} (${f(c.tope_pct ?? 0, c.tope_pct % 1 ? 1 : 0)} %)` : 'growth'} | ${fPrecio(c.limite)} ${c.divisa} o menos | ${fPrecio(c.precio)} ${c.divisa} (${c.hora_precio}) | ${fp(c.rentabilidad_12m_pct)}${c.largo_plazo ? ` (${c.largo_plazo})` : ''} | ${c.regla13 || 'falta'} | ${c.estado} |`),
+    '', `Son posibles, no órdenes. Niveles value (regla 16): A = compra robusta (7 %); B1 = v2 y BPA −10 % solo aguantan Mantener, calidad completa (4 %); B2 = números de A, sostenibilidad «En parte» con ROIC − WACC ≥ 5 (4 %); C = las dos cosas aflojadas (3,3 %); niveles 2 y 3 como mucho el 25 % del bolsillo value y el 3 el 10 %; el dinero va primero a A. Cuáles se compran depende de la liquidez (libre ${f(esc.liquidez_libre_eur ?? 0, 0)} €) y de lo que haya que vender antes; las que tienen «falta» en el repaso de precio y noticias lo necesitan antes de una orden.${t.some((c) => c.vertical === 'growth') ? ` Las growth solo salen con +25 % o más a 12 meses, más a largo plazo y una subida esperada de al menos 0,75 veces la caída del escenario malo; comparten un bolsillo con tope (hoy al ${f(esc.bolsillo_growth_pct ?? 0, 0)} %).` : ''}`].join('\n');
 }
 function mensaje(esc, nuevas, reg, avisos = []) {
   return `${mensajeBase(esc, nuevas, reg, avisos)}\n\n${tablaPosibles(esc)}`;
