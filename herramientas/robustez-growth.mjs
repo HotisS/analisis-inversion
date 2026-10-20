@@ -107,6 +107,18 @@ for (const c of carpetas) {
     if (movP && !movP.error) for (const a of movP.avisos || []) marca(a.codigo, 'AVISO', `${a.texto} (${movP.fecha}; explicar la causa en contexto_mercado)`);
   }
 
+  // G12 apartado cualitativo (obligatorio desde el 20-oct-2026, decisión de Hotis; plantilla 4 bis): foso con cifras, riesgo de IA,
+  // ciclo y sector, por qué podría perder y fuente del mercado alcanzable. Si falta, la compra espera; si la IA sustituye el producto, no se compra.
+  const q = d.cualitativo || {}, faltan = [];
+  if (!q.foso?.veredicto || !(q.foso?.evidencia?.length >= 2)) faltan.push('foso con dos cifras');
+  if (!q.riesgo_ia?.veredicto || !q.riesgo_ia?.vigilar?.length) faltan.push('riesgo de IA con qué vigilar');
+  if (!q.ciclo_sector?.sensibilidad || !q.ciclo_sector?.motivo) faltan.push('ciclo y sector');
+  if (!q.por_que_podria_perder) faltan.push('por qué podría perder');
+  if (!q.tam_fuente || /de memoria|sin verificar/i.test(q.tam_fuente)) faltan.push('fuente del mercado alcanzable');
+  if (faltan.length) marca('G12', 'AVISO', `Apartado cualitativo incompleto (falta: ${faltan.join(', ')}): no se propone la compra hasta completarlo.`);
+  const iaSustituye = /sustituye/i.test(q.riesgo_ia?.veredicto || '') && /alto/i.test(q.riesgo_ia?.nivel || '');
+  if (iaSustituye) marca('G12', 'AVISO', 'La IA sustituye el producto con riesgo alto: no se compra.');
+
   const defendibles = variantes.filter((x) => !/^precio de hoy/.test(x.variante) && !/35\/50\/15/.test(x.variante));
   const senales = [...new Set(defendibles.map((x) => x.senal))];
   const bloq = marcas.some((m) => m.tratamiento === 'CORREGIR');
@@ -115,6 +127,8 @@ for (const c of carpetas) {
   if (!bloq && robusta === 'Comprar' && marcas.some((m) => m.tratamiento === 'CONFIANZA' && m.codigo !== 'G5')) robusta = 'Comprar con cautela (peso pequeño)';
   if (!bloq && /^Comprar/.test(robusta) && ctxVer && /retrasa/.test(ctxVer)) { robusta = 'Esperar'; espera = ctx.condicion || 'ver contexto_mercado'; }
   else if (!bloq && /^Comprar/.test(robusta) && ctxVer && /descarta/.test(ctxVer)) robusta = 'Mantener';
+  if (!bloq && /^Comprar/.test(robusta) && iaSustituye) robusta = 'Mantener';
+  else if (!bloq && /^Comprar/.test(robusta) && faltan.length) { robusta = 'Esperar'; espera = `completar el apartado cualitativo (${faltan.join(', ')})`; }
   res.push({ carpeta: c, empresa: d.empresa, ticker: d.ticker, precio_informe: d.precio, precio_hoy: precioHoy, fecha_hoy: fechaHoy,
     senal: vig.senal, ponderada: vig.rent_ponderada_pct, base: vig.rent_base_pct, conviccion: vig.conviccion, precio_max_compra: vig.precio_max_compra,
     veredicto: bloq ? 'BLOQUEADA' : senales.length === 1 ? 'SÓLIDA' : 'FRÁGIL', senal_robusta: robusta, espera,

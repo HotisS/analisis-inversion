@@ -6,7 +6,7 @@ Análisis growth de: $ARGUMENTS
 
 1. `git pull`. Lee `verticales/growth/metodo.md` y `verticales/growth/plantilla.md` enteros y síguelos. No leas el método value ni sus informes salvo para el encaje en cartera (`MEMORIA.md`, cartera vigente).
 2. Comprueba que la empresa no tiene informe en `informes/` ni en `informes-growth/`; si lo tiene, dilo y sigue solo si el ángulo growth lo justifica.
-3. Investiga con búsqueda web (fuentes primarias primero) y rellena `informes-growth/<empresa>-<AAAA-MM-DD>/datos.json`. Capa de foros y sentimiento obligatoria. Nunca datos personales del usuario en consultas.
+3. Investiga con búsqueda web (fuentes primarias primero) y rellena `informes-growth/<empresa>-<AAAA-MM-DD>/datos.json`. Capa de foros y sentimiento obligatoria. **Bloque `cualitativo` obligatorio** (plantilla, sección 4 bis; 20-oct-2026): foso con cifras, riesgo de IA con veredicto y qué vigilar, ciclo y sector con el último bache, por qué podría perder y fuente del mercado alcanzable (nunca de memoria). Nunca datos personales del usuario en consultas.
 4. `node motor/growth.mjs informes-growth/<carpeta>/datos.json` y corrige lo que digan los avisos.
 5. Escribe `informe.md` con la plantilla, copiando las cifras de `calc`. Genera Word y PDF (pandoc y soffice).
 6. `node motor/growth.mjs --todos` para rehacer `informes-growth/resumen.md`; quita la empresa de `cola-growth.md`.

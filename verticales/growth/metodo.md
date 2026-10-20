@@ -50,6 +50,8 @@
 
 Dilución (pagos en acciones > 15 % de las ventas se dice en rojo), caja y vencimientos, ejecución, concentración de clientes o de un producto, competencia de gigantes, regulación, crecimiento por un hecho que no se repite, y **la reversión del sentimiento**: en growth el precio cae más que el negocio cuando la percepción gira.
 
+**Apartado cualitativo obligatorio (20-oct-2026, decisión de Hotis).** Además de los números, cada informe lleva el bloque `cualitativo` (plantilla, sección 4 bis): foso con al menos dos cifras con fuente, veredicto de riesgo de IA (sustituye / presiona / neutral / impulsa, con qué vigilar y su umbral), ciclo y sector (cuánto frenó en el último bache, regulación, estructura), por qué podría perder y la fuente del mercado alcanzable (nunca de memoria). Sin él no hay compra (`robustez-growth.mjs`, G12: Esperar); con la IA que sustituye el producto y riesgo alto, no se compra. No cambia ninguna cifra del motor: es una regla de juicio, como la 13.
+
 ## 5. Encaje en cartera (orientativo; decide el usuario)
 
 - Bolsillo growth: **como mucho el 20 % de la cartera**; cada posición **3,5 % (baja), 4 % (media) o 5 % (alta)** y nunca por debajo de 1.000 EUR. Compra entera, de una vez, sin tramos ni esperar a resultados (regla 11 de `METODO-VIGENTE.md`, decisión del usuario del 15-oct; sustituye a la entrada en dos tramos). Lo comprado no se toca en 3 meses salvo hecho nuevo y duro (regla 12). Salida por tesis, no por precio.

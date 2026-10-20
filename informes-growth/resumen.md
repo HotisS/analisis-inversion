@@ -6,13 +6,13 @@ Lo genera `node motor/growth.mjs --todos` (no editar a mano). Método v11: [vert
 |---|---|---|---|---|---|---|---|---|---|
 | Axon Enterprise | AXON | 68.2 | 3/8 | +32,3 % | +26,6 % | Comprar (baja) | 3.5 % | 476.4 USD | 2026-10-14 |
 | Insulet | PODD | 54.5 | 1/8 | +22,4 % | +16,1 % | Mantener | — | 157.3 USD | 2026-10-14 |
-| MongoDB | MDB | 74.5 | 5/8 | +17,8 % | +11,6 % | Comprar (baja) | 3.5 % | 416.4 USD | 2026-10-14 |
 | Elastic | ESTC | 69.7 | 6/8 | +15,3 % | +11,4 % | Comprar (baja) | 3.5 % | 101.1 USD | 2026-10-15 |
 | Nu Holdings | NU | 78.3 | 4/8 | +15,1 % | +8,9 % | Comprar (media) | 4 % | 16.6 USD | 2026-10-14 |
 | dLocal | DLO | 73.7 | 4/8 | +14,8 % | +15,7 % | Comprar (baja) | 3.5 % | 16.4 USD | 2026-10-14 |
 | Samsara | IOT | 78.5 | 7/8 | +14,7 % | +18,2 % | Comprar (media) | 4 % | 45.1 USD | 2026-10-14 |
 | Hinge Health | HNGE | 89.7 | 6/8 | +14,6 % | +14,5 % | Comprar (media) | 4 % | 114.6 USD | 2026-10-15 |
 | Shopify | SHOP | 77.8 | 5/8 | +14,3 % | +18,1 % | Comprar (media) | 4 % | 192.1 USD | 2026-10-14 |
+| MongoDB | MDB | 74.5 | 5/8 | +14,1 % | +11,6 % | Comprar (baja) | 3.5 % | 405.3 USD | 2026-10-14 |
 | Rubrik | RBRK | 79.3 | 6/8 | +13,9 % | +14,2 % | Comprar (media) | 4 % | 123.6 USD | 2026-10-15 |
 | ServiceTitan | TTAN | 65.5 | 5/8 | +13,4 % | +9,5 % | Comprar (baja) | 3.5 % | 78.5 USD | 2026-10-15 |
 | Klaviyo | KVYO | 66.2 | 3/8 | +12,6 % | +6,5 % | Comprar (baja) | 3.5 % | 18.1 USD | 2026-10-15 |

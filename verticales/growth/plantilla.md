@@ -48,6 +48,13 @@ Se sigue entera en cada empresa. Método y reglas: [metodo.md](metodo.md). Todo 
     "consenso_ventas_obj_m": null, "consenso_precio_objetivo": null,
     "dcf_inverso_crecimiento_10a_pct": null
   },
+  "cualitativo": {
+    "foso": { "tipo": ["costes de cambio|efecto red|escala|datos|marca|regulación|ninguno"], "evidencia": ["dato con cifra y fuente [n]", "otro dato [n]"], "cuota": "cuota de mercado con cifra y fuente, o null", "veredicto": "fuerte|medio|débil" },
+    "riesgo_ia": { "veredicto": "sustituye|presiona|neutral|impulsa", "nivel": "alto|medio|bajo", "en_contra": ["…"], "a_favor": ["…"], "vigilar": ["métrica y umbral que diría que la IA le está quitando negocio"] },
+    "ciclo_sector": { "sensibilidad": "baja|media|alta", "motivo": "qué la hace cíclica (consumo, inversión, crédito, tipos, materias primas…) y qué pasó en el último bache, con cifras [n]", "regulacion": "riesgo regulatorio concreto o «sin riesgo relevante»", "estructura": "quién manda en el sector (concentración, hiperescaladores, plataformas) y hacia dónde va" },
+    "por_que_podria_perder": "el argumento más fuerte de un rival o del cambio del sector, con datos",
+    "tam_fuente": "de dónde sale tam_m (informe del sector con fecha, o cálculo con fuentes [n]); null si no se ha podido verificar"
+  },
   "tesis_rota": false,
   "contexto_mercado": {
     "movimiento": { "fecha": "AAAA-MM-DD", "var_1m_pct": 0, "var_3m_pct": 0, "var_6m_pct": 0, "var_12m_pct": 0, "dist_max_52s_pct": 0, "dist_min_52s_pct": 0, "dist_max_historico_pct": 0, "tendencia": "alcista|lateral|bajista", "volatilidad_60d_pct": 0, "avisos": [] },
@@ -78,6 +85,7 @@ Notas de los campos:
 - `crecimiento_actual_pct` / `crecimiento_obj_pct`: crecimiento de ventas de los próximos 12 meses y del ejercicio objetivo (escenario base), para la rebaja por desaceleración.
 - `probabilidades`: 25/50/25 salvo los casos de `metodo.md` §2.5.
 - `tesis_rota`: true solo con los supuestos de venta de `metodo.md` §3.
+- **`cualitativo` (obligatorio desde el 20-oct-2026, decisión de Hotis: «dadas las volatilidades, comprueba que miremos bien el negocio, sector y análisis competitivo»)**: lo que los números no ven. `foso.evidencia` lleva al menos dos cifras con fuente (retención neta o bruta, cuota y su tendencia, coste de migrar, clientes grandes, margen bruto estable); la puntuación `tecnologia_0a5` y `posicion_0a5` tiene que salir de aquí. `riesgo_ia`: «sustituye» = la IA hace lo mismo más barato (Duolingo); «presiona» = no lo sustituye pero baja precios o el coste de cambiarse; «neutral»; «impulsa» = la IA necesita el producto. `vigilar`, siempre con umbral. `ciclo_sector.motivo` con lo que pasó en el último bache (cuánto frenó). `tam_fuente`: **nunca «de memoria»**; si no se verifica, `null` y lo dice el informe. `robustez-growth.mjs` marca **G12** si falta algo: la acción robusta pasa a **Esperar** hasta completarlo; con `riesgo_ia.veredicto = "sustituye"` y nivel alto, a **Mantener** (no se compra).
 - **`contexto_mercado` (obligatorio desde el 15-oct-2026; regla 13 de `METODO-VIGENTE.md` §4, igual que `bolsa.contexto` en value)**: las cifras de `movimiento` salen de `NODE_USE_ENV_PROXY=1 node herramientas/movimiento.mjs --growth <carpeta>` (copia sus avisos P1-P5); cada subida o caída fuerte (≥ 15 % en un mes) con su causa; las noticias de los últimos 6 meses (recomendaciones, directivos, colocaciones o ventas de accionistas de referencia, ampliaciones y convertibles, demandas y reguladores, fusiones u ofertas, fecha de resultados, rumores con fundamento) **cada una con veredicto** `no cambia`, `retrasa` (con `condicion`: hasta qué hecho o precio) o `descarta`. Veredicto global = el más restrictivo; `retrasa` también con un hecho pendiente que pueda mover el precio más de un 5 % (colocación) o con tendencia bajista y resultados a ≤ 15 días. `robustez-growth.mjs` lo lee: con `retrasa` o `descarta` no hay Comprar robusto.
 
 Después: `node motor/growth.mjs informes-growth/<carpeta>/datos.json` escribe `calc` (puntuación, casos, señal, precio máximo) y el informe copia esas cifras.
@@ -95,6 +103,7 @@ Peso orientativo: <x %> o «no entra»
 ## 2. Negocio y tecnología        (qué vende, a quién, qué tiene de nuevo)
 ## 3. Crecimiento                  (tabla ventas por trimestre y año, aceleración, retención, guía)
 ## 4. Mercado y competencia         (mercado alcanzable con fuente, cuota, rivales, por qué gana)
+## 4 bis. Foso, riesgo de IA y sector (tabla de `cualitativo`: tipo de foso con sus cifras; veredicto de IA con argumentos a favor y en contra y qué vigilar; ciclo con el último bache; regulación; estructura del sector; por qué podría perder)
 ## 5. Cambio de tendencia           (tabla de las 8 señales: sí/no, prueba, fuente; euforia sí/no)
 ## 6. Economía unitaria y camino a la rentabilidad (margen bruto, regla del 40, FCF, apalancamiento operativo)
 ## 7. Caja, deuda y dilución        (pista, convertibles, pagos en acciones sobre ventas)

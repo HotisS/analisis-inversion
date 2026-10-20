@@ -2,6 +2,8 @@
 
 **Señal (método vigente v11): Comprar (convicción baja)** · Puntuación 74,5/100 · Señales de cambio de tendencia 5/8 · EV/ventas NTM 8,8 veces
 Precio 373,07 USD (fecha del informe) · Objetivo 12 m 439,5 USD · Ponderada +17,8 % · Base +11,6 % · Bajista −38,6 % · Alcista +86,6 % · Compra hasta 416,4 USD
+
+> **Actualización del 20-oct-2026 (sin investigación nueva del negocio; el resto del informe es del 14-oct).** (1) Apartado 4 bis añadido (foso, riesgo de IA, ciclo y sector, mercado con fuente: Gartner). (2) **Comparables verificados con una sola fuente: mediana 12,3x, no ~14x** (el ~14x salía en parte de memoria). El múltiplo alcista baja de 13,4x a 12,3x: **objetivo 12 m 425,5 USD (antes 439,5)**, ponderada al precio del informe +14,1 % (antes +17,8 %), compra hasta v11 405,3 USD. La señal v11 sigue siendo Comprar (convicción baja). Con las reglas del 20-oct (+25 % a 12 m y rentabilidad ≥ 0,75 veces la caída del escenario malo, las dos al precio de hoy), **el límite queda en 340,40 USD** (antes 349,37). A 348,69 USD (cierre del 19-oct) da +22,0 % con un escenario malo de −34,3 % (0,64 veces): hoy no es compra. Donde las secciones 9 y 13 citan 439,5 USD, +17,8 % o el alcista de 13,4x, valen las cifras de esta nota.
 Peso orientativo: 3.5 % de la cartera · Por qué: cumple todos los requisitos de compra
 Cabecera rehecha con la v11 el 15-oct (auditoría de homogeneidad). Antes decía (método v7): Comprar (convicción baja). El texto de abajo puede citar cifras de esa versión anterior; mandan las de esta cabecera.
 
@@ -54,7 +56,7 @@ Fuente: SEC XBRL y notas de resultados [1][2][11].
 
 ## 4. Mercado y competencia
 
-- **Mercado alcanzable: ~100.000 M USD en 2028**: el mercado de software de bases de datos (IDC/Gartner, de memoria, sin verificar en esta sesión) [14]. Con cualquier cifra entre 56.000 y 139.000 M la penetración puntúa igual.
+- **Mercado alcanzable: ~100.000 M USD en 2028**: la parte operativa de un mercado de bases de datos de 119.700 M en 2024 y ~161.000 M previstos en 2026 (Gartner; verificado el 20-oct, ver 4 bis). Con cualquier cifra entre 56.000 y 139.000 M la penetración puntúa igual.
 - **Penetración**: 2.783 / 100.000 = **2,8 %**.
 - **Rivales**: Postgres y sus versiones gestionadas (Amazon Aurora y RDS, Neon de Databricks, Crunchy Data de Snowflake, Supabase), DocumentDB de AWS y Microsoft, Cosmos DB, Oracle, bases vectoriales especializadas (Pinecone) y, en analítica, Snowflake y Databricks.
 - **Por qué gana**: es la opción por defecto para datos con estructura cambiante y para aplicaciones de cara al cliente que escalan; las empresas de IA que crecen (ElevenLabs, Harvey) migran a MongoDB cuando chocan con los límites de Postgres o de las bases de los hiperescaladores [13]. La mitad de las ventas pasan por algún hiperescalador y las de *marketplace* crecen más que el total [4].
@@ -71,6 +73,22 @@ Fuente: SEC XBRL y notas de resultados [1][2][11].
 | Postgres con pgvector cubre la búsqueda vectorial «suficiente» sin otra base. | Voyage AI: las altas llegan sobre todo **desde Claude Code y Codex**, que recomiendan sus *embeddings* [13]; búsqueda vectorial ya en EA. |
 
 **Lo que dicen los datos hoy**: ninguna señal de erosión. Atlas lleva tres trimestres en ~29 %, la retención neta sube (119 → 122 %), las altas de clientes son récord (2.900 en el 2T) y la guía de Atlas del año pasó del ~24 % al ~27 % [1][10]. **Lo que vigilar**: altas de clientes por trimestre (si bajan de ~2.000, los nuevos proyectos se van a Postgres), crecimiento de Atlas por debajo del 22 % y retención neta por debajo del 115 %. La salida del jefe de producto de IA (13-oct) justo cuando la empresa quiere que los agentes la elijan por defecto es una mala noticia para este frente.
+
+## 4 bis. Foso, riesgo de IA y sector (añadido el 20-oct-2026)
+
+Apartado obligatorio desde el 20-oct (decisión de Hotis). No cambia ninguna cifra del cálculo.
+
+| Aspecto | Veredicto | Pruebas |
+|---|---|---|
+| Foso (costes de cambio, escala) | **medio** | Retención neta de ARR 122 % (2T FY27; 119 % un año antes): los clientes que se quedan gastan un 22 % más cada año [1][10]; 2.999 clientes de más de 100.000 USD de ARR (+17 %) y ~75 % de la Fortune 100: aplicaciones de misión crítica, caras de migrar [1]; Cuota: ventas de ~2.000 M USD en 2024 frente a un mercado de 119.700 M (≈1,7 %), con los no relacionales creciendo al 22,7 % frente al 10,8 % de los relacionales [15]; Margen bruto estable del 72-74 % con Atlas ya ~73 % de las ventas: no compite por precio [1][11] |
+| Riesgo de IA | **presiona, nivel medio** | La IA no sustituye el producto (lo necesita), pero baja el coste de cambiarse y empuja los proyectos nuevos hacia Postgres (detalle en la sección 4). Vigilar: Altas netas de clientes < 2.000 por trimestre dos veces seguidas; Atlas < 22 % dos trimestres seguidos; Retención neta < 115 %. |
+| Ciclo | **sensibilidad media** | Atlas se cobra por consumo: en el bache de 2022-2023 los clientes optimizaron uso y el consumo frenó desde el verano de 2022; Atlas pasó a +37 % en FY24 y en mayo de 2024 la empresa recortó la guía por menor consumo [16]. No es cíclica como un industrial, pero una recesión recorta varios puntos de crecimiento en dos o tres trimestres. |
+| Regulación | baja | Sin riesgo relevante (residencia de datos y privacidad, que favorecen a quien funciona en cualquier nube). |
+| Estructura del sector | — | Mandan los hiperescaladores (AWS, Microsoft, Google, Oracle, IBM, los cinco primeros desde 2022) [17], que son a la vez socios (la mitad de las ventas pasan por sus marketplaces) y rivales (DocumentDB, Cosmos DB). El mercado va a la nube (64 %) y crece más en no relacionales [15]. |
+| Por qué podría perder | — | Postgres gratis, «suficiente» para la mayoría de los casos (JSONB, pgvector) y elegido por defecto por los agentes y las plataformas de IA; los hiperescaladores ofrecen copias compatibles con la API de MongoDB dentro de lo que el cliente ya paga. Si los proyectos nuevos se quedan en Postgres, MongoDB vive de la base instalada y el crecimiento baja hacia el 15 %. |
+| Mercado alcanzable (fuente) | ~100.000 M USD en 2028 | Gartner: DBMS 119.700 M USD en 2024 y ~161.000 M previstos en 2026 [15]. Se toma como alcanzable en 2028 ~100.000 M: la parte operativa (sin analítica, donde mandan Snowflake, Databricks y BigQuery); la proporción operativa/analítica es estimación propia. Con cualquier cifra entre 56.000 y 139.000 M la penetración puntúa igual. |
+
+**Lectura:** foso medio, no fuerte. Los clientes que ya la usan se quedan y gastan más (retención neta del 122 %), pero el riesgo está en los proyectos nuevos. La IA presiona sin sustituir, y el consumo hace que frene en una recesión. Nada de esto rompe la tesis. Encaja con la puntuación que ya tenía (tecnología 3/5, posición 4/5) y con la convicción baja.
 
 ## 5. Cambio de tendencia
 
