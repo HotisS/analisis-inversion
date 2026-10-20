@@ -61,6 +61,18 @@ const vup = opcion('--vup'), bpa = opcion('--bpa'), registrar = (() => { const i
 const sinPrecios = bandera('--sin-precios'), soloSeguimiento = bandera('--seguimiento');
 
 const REGLAS = leer(`${E}reglas.json`);
+// Regla del usuario del 20-oct (reglas.json → growth_compra): growth solo con 12 m ≥ 25 % y largo plazo mayor.
+// Precio máximo growth con la regla del 20-oct: el menor entre la «compra hasta» del informe y el precio que deja un 25 % hasta el objetivo fijo a 12 m.
+const limiteGrowth = (g) => Math.round(Math.min(g.precio_max_compra, g.objetivo_12m ? g.objetivo_12m / (1 + (REGLAS.growth_compra?.min_12m_pct ?? 25) / 100) : Infinity) * 100) / 100;
+function largoGrowth(carpeta, r12) {
+  const d = leer(`informes-growth/${carpeta}/datos.json`), v = d?.valoracion || {};
+  const g = v.crecimiento_obj_pct, dil = d?.finanzas?.dilucion_anual_pct ?? 0, inv = v.dcf_inverso_crecimiento_10a_pct;
+  if (g == null || r12 == null) return { pasa: false, txt: 'sin datos de largo plazo' };
+  const lp = 100 * ((1 + r12 / 100) * Math.pow(1 + (g - Math.max(0, dil)) / 100, 2) - 1);
+  const descuenta = inv != null && inv > g;
+  const pasa = r12 >= (REGLAS.growth_compra?.min_12m_pct ?? 25) && lp > r12 && !descuenta;
+  return { pasa, lp_3a_pct: Math.round(lp * 10) / 10, txt: `3 años ${Math.round(lp)} %${descuenta ? `; el precio descuenta crecer ${inv} % a 10 años, más que nuestro ${g} %` : ''}` };
+}
 // Exclusiones y bloqueos con caducidad (herramientas/exclusiones.mjs): las vigentes, públicas y privadas (cuentas de Hotis).
 const MENC = mapas(vigentes(leerMenciones()));
 REGLAS.exclusiones = { ...REGLAS.exclusiones, ...MENC.exclusiones };
@@ -199,10 +211,10 @@ async function escanear() {
   // --- Growth: compras ---
   const bolsilloPct = total ? (100 * growthEur) / total : 0;
   for (const g of gro.filter((y) => y.precio_hoy && !pos.has(y.ticker) && !REGLAS.exclusiones[y.ticker]).sort((a, b) => b.ponderada_hoy - a.ponderada_hoy)) {
-    const pasa = g.precio_hoy <= g.precio_max_compra && /^Comprar/.test(g.senal_robusta || '') && g.ponderada_hoy >= g.listones.ponderada && g.base_hoy >= g.listones.base;
+    const pasa = g.precio_hoy <= g.precio_max_compra && /^Comprar/.test(g.senal_robusta || '') && g.ponderada_hoy >= g.listones.ponderada && g.base_hoy >= g.listones.base && largoGrowth(g.carpeta, g.ponderada_hoy).pasa && g.precio_hoy <= limiteGrowth(g);
     if (!pasa) continue;
     const c = { fecha: ahora.fecha, hora: ahora.hora, tipo: 'COMPRA', vertical: 'growth', clave: g.ticker, nombre: g.empresa, carpeta: `informes-growth/${g.carpeta}`, simbolo: g.simbolo,
-      precio: g.precio_hoy, divisa: g.divisa, hora_precio: g.fecha_hoy === ahora.fecha ? ahora.hora : `cierre del ${fechaCorta(g.fecha_hoy)}`, limite: g.precio_max_compra,
+      precio: g.precio_hoy, divisa: g.divisa, hora_precio: g.fecha_hoy === ahora.fecha ? ahora.hora : `cierre del ${fechaCorta(g.fecha_hoy)}`, limite: limiteGrowth(g),
       rentabilidad_12m_pct: g.ponderada_hoy, base_pct: g.base_hoy, conviccion: g.conviccion, fecha_corte: leer(`informes-growth/${g.carpeta}/datos.json`)?.fecha || null, proximos_resultados: fechaResultados(g.ticker, leer(`informes-growth/${g.carpeta}/datos.json`)), accion_robusta: g.senal_robusta, veredicto: g.veredicto,
       marcas: g.marcas.filter((m) => m.tratamiento !== 'AVISO').map((m) => `[${m.codigo} ${m.tratamiento}] ${m.texto}`),
       motivo: `Growth: por debajo de su «compra hasta» (${fPrecio(g.precio_max_compra)} ${g.divisa}); rentabilidad esperada a 12 meses ${fp(g.ponderada_hoy)}, convicción ${g.conviccion}.`,
@@ -292,7 +304,9 @@ async function escanear() {
   for (const g of gro) {
     if (!g.precio_hoy || REGLAS.exclusiones[g.ticker]) continue;
     if (!(g.precio_hoy <= g.precio_max_compra && /^Comprar/.test(g.senal_robusta || '') && g.ponderada_hoy >= g.listones.ponderada && g.base_hoy >= g.listones.base)) continue;
-    posibles.push({ vertical: 'growth', clave: g.ticker, nombre: g.empresa, precio: g.precio_hoy, divisa: g.divisa, limite: g.precio_max_compra,
+    const lpg = largoGrowth(g.carpeta, g.ponderada_hoy);
+    if (!lpg.pasa) continue;
+    posibles.push({ largo_plazo: lpg.txt, vertical: 'growth', clave: g.ticker, nombre: g.empresa, precio: g.precio_hoy, divisa: g.divisa, limite: limiteGrowth(g),
       hora_precio: g.fecha_hoy === ahora.fecha ? ahora.hora : `cierre del ${fechaCorta(g.fecha_hoy)}`, rentabilidad_12m_pct: g.ponderada_hoy, estado: estadoPosible(g.ticker) });
   }
   // Repaso de precio y noticias de la regla 13 (METODO-VIGENTE.md), apuntado a mano en <privada>/escaner/regla13.json:
@@ -416,8 +430,8 @@ function tablaPosibles(esc) {
   if (!t.length) return 'Compras posibles ahora (todas las seguidas): ninguna está a precio de compra robusta.';
   return [`**Compras posibles ahora (todas las seguidas, ${t.length})**`, '',
     '| Empresa | Tipo | Comprar a mercado si cotiza en | Precio ahora | Rentab. 12 m | Repaso de precio y noticias | Estado |', '|---|---|---|---|---|---|---|',
-    ...t.map((c) => `| ${c.nombre} | ${c.vertical} | ${fPrecio(c.limite)} ${c.divisa} o menos | ${fPrecio(c.precio)} ${c.divisa} (${c.hora_precio}) | ${fp(c.rentabilidad_12m_pct)} | ${c.regla13 || 'falta'} | ${c.estado} |`),
-    '', `Son posibles, no órdenes: cuáles se compran depende de la liquidez (libre ${f(esc.liquidez_libre_eur ?? 0, 0)} €) y de lo que haya que vender antes; las que tienen «falta» en el repaso de precio y noticias lo necesitan antes de una orden.${t.some((c) => c.vertical === 'growth') ? ` Las growth comparten un bolsillo con tope (hoy al ${f(esc.bolsillo_growth_pct ?? 0, 0)} %).` : ''}`].join('\n');
+    ...t.map((c) => `| ${c.nombre} | ${c.vertical} | ${fPrecio(c.limite)} ${c.divisa} o menos | ${fPrecio(c.precio)} ${c.divisa} (${c.hora_precio}) | ${fp(c.rentabilidad_12m_pct)}${c.largo_plazo ? ` (${c.largo_plazo})` : ''} | ${c.regla13 || 'falta'} | ${c.estado} |`),
+    '', `Son posibles, no órdenes: cuáles se compran depende de la liquidez (libre ${f(esc.liquidez_libre_eur ?? 0, 0)} €) y de lo que haya que vender antes; las que tienen «falta» en el repaso de precio y noticias lo necesitan antes de una orden.${t.some((c) => c.vertical === 'growth') ? ` Las growth solo salen con +25 % o más a 12 meses y más a largo plazo; comparten un bolsillo con tope (hoy al ${f(esc.bolsillo_growth_pct ?? 0, 0)} %).` : ''}`].join('\n');
 }
 function mensaje(esc, nuevas, reg, avisos = []) {
   return `${mensajeBase(esc, nuevas, reg, avisos)}\n\n${tablaPosibles(esc)}`;
