@@ -61,6 +61,9 @@ const vup = opcion('--vup'), bpa = opcion('--bpa'), registrar = (() => { const i
 const sinPrecios = bandera('--sin-precios'), soloSeguimiento = bandera('--seguimiento');
 
 const REGLAS = leer(`${E}reglas.json`);
+// Bolsas que el broker no deja comprar (reglas.json → no_comprables): ChiNext y STAR Market.
+const NO_COMPRABLE = REGLAS.no_comprables?.simbolos_regex ? new RegExp(REGLAS.no_comprables.simbolos_regex) : null;
+const noComprable = (clave, simbolo) => !!NO_COMPRABLE && (NO_COMPRABLE.test(simbolo || '') || NO_COMPRABLE.test(clave || ''));
 // Regla del usuario del 20-oct (reglas.json → growth_compra): growth solo con 12 m ≥ 25 % y largo plazo mayor.
 // Precio máximo growth con la regla del 20-oct: el menor entre la «compra hasta» del informe y el precio que deja un 25 % hasta el objetivo fijo a 12 m.
 // Regla del 20-oct (2): la rentabilidad a 12 m al menos 0,75 veces la caída del escenario malo, las dos al precio de hoy:
@@ -178,7 +181,7 @@ async function escanear() {
   // --- Value: compras ---
   const compras = [];
   for (const x of rob) {
-    if (pos.has(x.clave) || REGLAS.exclusiones[x.clave] || !x.precio_cot || x.limite_comprar_cot === null) continue;
+    if (pos.has(x.clave) || REGLAS.exclusiones[x.clave] || noComprable(x.clave, PRECIOS.precios[x.clave]?.simbolo) || !x.precio_cot || x.limite_comprar_cot === null) continue;
     const limite = r(Math.min(x.limite_comprar_cot, x.limite_comprar_control_cot ?? Infinity), 2);
     if (x.precio_cot > limite) continue;
     const rev = REV[x.clave], q = calidad(x.carpeta, x.clave), d = q.d;
@@ -218,7 +221,7 @@ async function escanear() {
 
   // --- Growth: compras ---
   const bolsilloPct = total ? (100 * growthEur) / total : 0;
-  for (const g of gro.filter((y) => y.precio_hoy && !pos.has(y.ticker) && !REGLAS.exclusiones[y.ticker]).sort((a, b) => b.ponderada_hoy - a.ponderada_hoy)) {
+  for (const g of gro.filter((y) => y.precio_hoy && !pos.has(y.ticker) && !REGLAS.exclusiones[y.ticker] && !noComprable(y.ticker, y.simbolo)).sort((a, b) => b.ponderada_hoy - a.ponderada_hoy)) {
     const pasa = g.precio_hoy <= g.precio_max_compra && /^Comprar/.test(g.senal_robusta || '') && g.ponderada_hoy >= g.listones.ponderada && g.base_hoy >= g.listones.base && largoGrowth(g.carpeta, g.ponderada_hoy).pasa && g.precio_hoy <= limiteGrowth(g);
     if (!pasa) continue;
     const c = { fecha: ahora.fecha, hora: ahora.hora, tipo: 'COMPRA', vertical: 'growth', clave: g.ticker, nombre: g.empresa, carpeta: `informes-growth/${g.carpeta}`, simbolo: g.simbolo,
@@ -304,7 +307,7 @@ async function escanear() {
   };
   // Niveles de compra (regla 16, 20-oct-2026): A, B1, B2 y C con su límite y su tamaño máximo (robustez.mjs → nivel).
   for (const x of rob) {
-    if (REGLAS.exclusiones[x.clave] || !x.precio_cot || !x.nivel) continue;
+    if (REGLAS.exclusiones[x.clave] || noComprable(x.clave, PRECIOS.precios[x.clave]?.simbolo) || !x.precio_cot || !x.nivel) continue;
     const lim = x.limite_nivel_cot;
     if (!Number.isFinite(lim) || x.precio_cot > lim) continue;
     posibles.push({ vertical: 'value', nivel: x.nivel, tope_pct: REGLAS.niveles_compra?.[x.nivel]?.tope_pct ?? null, clave: x.clave, nombre: x.nombre, precio: x.precio_cot, divisa: x.divisa_cotizacion, limite: r(lim, 2),
@@ -312,7 +315,7 @@ async function escanear() {
       contexto_informe: x.contexto_mercado?.veredicto ? { veredicto: x.contexto_mercado.veredicto, fecha: x.carpeta.match(/\d{4}-\d{2}-\d{2}/)?.[0] || null } : null });
   }
   for (const g of gro) {
-    if (!g.precio_hoy || REGLAS.exclusiones[g.ticker]) continue;
+    if (!g.precio_hoy || REGLAS.exclusiones[g.ticker] || noComprable(g.ticker, g.simbolo)) continue;
     if (!(g.precio_hoy <= g.precio_max_compra && /^Comprar/.test(g.senal_robusta || '') && g.ponderada_hoy >= g.listones.ponderada && g.base_hoy >= g.listones.base)) continue;
     const lpg = largoGrowth(g.carpeta, g.ponderada_hoy);
     if (!lpg.pasa || g.precio_hoy > limiteGrowth(g)) continue; // el límite lleva el +25 % y el mínimo de 0,75 frente a la caída

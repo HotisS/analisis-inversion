@@ -5,10 +5,22 @@
   "tope_posicion_pct": 7,
   "niveles_compra": {
     "nota": "Regla 16 de METODO-VIGENTE.md (Hotis 20-oct-2026, cmsg_018PhzEVSk4hABnLFHAp7iTQJH2AXMNiGmiPQDGutnc5iH). A = compra robusta; B1 afloja los números; B2 afloja la calidad; C afloja las dos. Tope de posición por nivel; niveles 2 y 3 juntos como mucho el 25 % del bolsillo value, nivel 3 el 10 %. El dinero va primero a A, luego a B1/B2 y luego a C.",
-    "A": { "tope_pct": 7, "texto": "nivel 1 (A)" },
-    "B1": { "tope_pct": 4, "texto": "nivel 2 (B1: números aflojados, calidad completa)" },
-    "B2": { "tope_pct": 4, "texto": "nivel 2 (B2: números completos, calidad aflojada)" },
-    "C": { "tope_pct": 3.3, "texto": "nivel 3 (C: números y calidad aflojados; ≈ 1.000 €)" },
+    "A": {
+      "tope_pct": 7,
+      "texto": "nivel 1 (A)"
+    },
+    "B1": {
+      "tope_pct": 4,
+      "texto": "nivel 2 (B1: números aflojados, calidad completa)"
+    },
+    "B2": {
+      "tope_pct": 4,
+      "texto": "nivel 2 (B2: números completos, calidad aflojada)"
+    },
+    "C": {
+      "tope_pct": 3.3,
+      "texto": "nivel 3 (C: números y calidad aflojados; ≈ 1.000 €)"
+    },
     "tope_niveles_2_3_pct": 25,
     "tope_nivel_3_pct": 10
   },
@@ -290,5 +302,9 @@
   "ejecucion": {
     "regla": "Sin órdenes límite en el broker: solo compra o venta a mercado en el momento (Hotis, 16-oct-2026). El límite robusto es el umbral: se compra a mercado solo si en ese momento cotiza en el límite o por debajo.",
     "vigia": "herramientas/vigia.mjs, cada hora L-V de 9:33 a 21:33 (Madrid), desde un hilo ligero aparte: «COMPRA/VENDE AHORA A MERCADO» con precio, hora, bolsa y divisa; avisa también si tocó el límite entre pasadas y rebotó. Lee ordenes_pendientes de la cartera privada."
+  },
+  "no_comprables": {
+    "nota": "Bolsas que IBKR no deja comprar desde España (coordinador, 20-oct-2026): ChiNext (Shenzhen 300xxx/301xxx) y STAR Market (Shanghái 688xxx). Salen de las compras posibles y de las señales; si la empresa cotiza también en otra bolsa, se usa esa.",
+    "simbolos_regex": "^(30[01]\\d{3}\\.SZ|688\\d{3}\\.SS)$"
   }
 }
