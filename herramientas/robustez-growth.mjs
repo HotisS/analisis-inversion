@@ -121,9 +121,10 @@ for (const c of carpetas) {
     contexto_mercado: ctx ? { veredicto: ctx.veredicto ?? null, condicion: ctx.condicion ?? null, proximos_resultados: ctx.proximos_resultados ?? null } : null,
     movimiento: movP && !movP.error ? { fecha: movP.fecha, var_1m_pct: movP.var_1m_pct, var_3m_pct: movP.var_3m_pct, var_12m_pct: movP.var_12m_pct, dist_max_52s_pct: movP.dist_max_52s_pct, dist_min_52s_pct: movP.dist_min_52s_pct, tendencia: movP.tendencia } : null,
     // Para el escáner diario: objetivo fijo del informe y rentabilidad al precio de hoy.
-    simbolo, divisa: divisaHoy || d.moneda, objetivo_12m: vig.objetivo_12m, objetivo_base: vig.casos.base.precio, puntuacion: vig.puntuacion,
+    simbolo, divisa: divisaHoy || d.moneda, objetivo_12m: vig.objetivo_12m, objetivo_base: vig.casos.base.precio, objetivo_bajista: vig.casos.bajista.precio, dividendo_pct: v.dividendo_pct ?? 0, puntuacion: vig.puntuacion,
     ponderada_hoy: precioHoy ? r((vig.objetivo_12m / precioHoy - 1) * 100 + (v.dividendo_pct ?? 0)) : null,
     base_hoy: precioHoy ? r((vig.casos.base.precio / precioHoy - 1) * 100 + (v.dividendo_pct ?? 0)) : null,
+    bajista_hoy: precioHoy ? r((vig.casos.bajista.precio / precioHoy - 1) * 100 + (v.dividendo_pct ?? 0)) : null,
     listones: { ponderada: V.compra.ponderada, base: V.compra.base, vender: V.venta.ponderada },
     frente: defendibles.filter((x) => x.senal !== vig.senal).map((x) => `${x.variante}: ${x.senal} (${f(x.ponderada)} %)`), marcas, variantes });
 }
