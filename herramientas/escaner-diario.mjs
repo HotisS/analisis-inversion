@@ -132,6 +132,8 @@ async function escanear() {
   const enOrdenes = new Map([...(pend.comprar || []).map((o) => [o.clave, `compra propuesta (límite ${fPrecio(o.limite)} ${o.divisa})`]),
     ...(pend.lista_espera || []).map((o) => [o.clave, `${o.hasta ? `lista de espera hasta el ${fechaCorta(o.hasta)}` : (o.condicion || 'lista de espera')} (límite ${fPrecio(o.limite)} ${o.divisa})`])]);
   const ventaPend = new Set(pend.vender || []);
+  // Órdenes apuntadas con el símbolo de bolsa (FDR.MC, DSV.CO) en lugar de la clave del análisis: se reconocen igual.
+  for (const [k, q] of Object.entries(PRECIOS.precios || {})) if (!enOrdenes.has(k) && q?.simbolo && enOrdenes.has(q.simbolo)) enOrdenes.set(k, enOrdenes.get(q.simbolo));
 
   // Valor de la cartera a precio de ahora (para el tamaño y el bolsillo growth).
   let total = CARTERA.liquidez_eur, growthEur = 0;
