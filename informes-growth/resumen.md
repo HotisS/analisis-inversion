@@ -97,4 +97,5 @@ Lo genera `node motor/growth.mjs --todos` (no editar a mano). Método v11: [vert
 | Nextpower (antes Nextracker) | NXT | 46.5 | 1/8 | -36,2 % | -28,9 % | Vender | — | 53.9 USD | 2026-10-14 |
 | SiTime Corp | SITM | 77 | 4/8 | -47,5 % | -46 % | Vender | — | 199 USD | 2026-10-15 |
 | Corcept Therapeutics | CORT | 70 | 6/8 | -49,6 % | -43,6 % | Vender | — | 56.5 USD | 2026-10-14 |
+| Nebius Group | NBIS | 60.8 | 5/8 | -74,7 % | -76 % | Vender | — | 26.2 USD | 2026-10-20 |
 | Fervo Energy Company | FRVO | 29.8 | 1/8 | -83,5 % | -83,2 % | Vender | — | 1.5 USD | 2026-10-18 |
