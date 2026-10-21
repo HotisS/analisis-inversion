@@ -508,14 +508,15 @@ function mensaje(esc, nuevas, reg, avisos = []) {
   const arriba = esc.pasan_a_posible?.length ? `**Pasan a compra posible desde el escáner anterior: ${esc.pasan_a_posible.join(', ')}.**\n\n` : '';
   return `${arriba}${mensajeBase(esc, nuevas, reg, avisos)}\n\n${tablaPosibles(esc)}\n\n${tablaCerca(esc)}`;
 }
-// Grupos 2-4 del seguimiento de cerca (Hotis 20-oct-2026): lista marcada y calidad completa a < 5 % y a 5-15 % de su primer nivel.
+// Grupos de cerca (Hotis 20-oct-2026; la lista marcada se disolvió el 21-oct): calidad completa a < 5 % y a 5-15 % de su primer nivel.
 function tablaCerca(esc) {
   const m = esc.marcadas || [], c = esc.cerca || [], falta = (d) => (d == null ? 'sin precio' : d <= 0 ? 'en el límite o por debajo' : `−${f(d, 1)} %`);
-  const out = [`**Lista marcada por ti (${m.length})**`, '', '| Empresa | Tipo | Apunte | Comprar a mercado si cotiza en | Precio ahora | Falta |', '|---|---|---|---|---|---|',
-    ...m.map((x) => `| ${x.nombre} | ${x.vertical} | ${x.papel}${x.titulos ? ` (${x.titulos})` : ''} | ${x.limite == null ? 'sin límite' : Object.keys(x.limites || {}).length > 1 ? `${Object.entries(x.limites).sort((a, b) => b[1] - a[1]).map(([n, v]) => `${n} ${fPrecio(v)}`).join(' / ')} ${x.divisa} o menos` : `${fPrecio(x.limite)} ${x.divisa} o menos`} | ${x.precio != null ? `${fPrecio(x.precio)} ${x.divisa} (${x.hora_precio})` : 'sin precio'} | ${falta(x.falta_pct)} |`)];
+  // La lista marcada se disolvió el 21-oct-2026 (Hotis: «disuelve la lista marcada por mi»): quedan tres grupos.
+  const out = [];
   for (const g of ['menos de 5 %', '5-15 %']) {
     const t = c.filter((x) => x.grupo === g);
-    out.push('', `**Calidad completa a ${g} de su primer nivel (${t.length})**`, '');
+    if (out.length) out.push('');
+    out.push(`**Calidad completa a ${g} de su primer nivel (${t.length})**`, '');
     if (!t.length) { out.push('Ninguna.'); continue; }
     out.push('| Empresa | Precio ahora | Límite (nivel) | Límite A | Falta | Rentab. 12 m | Cambio |', '|---|---|---|---|---|---|---|',
       ...t.map((x) => `| ${x.nombre}${x.en_cartera ? ' (en cartera)' : ''} | ${fPrecio(x.precio)} ${x.divisa} (${x.hora_precio}) | ${fPrecio(x.limite)} (${x.nivel}) | ${fPrecio(x.limite_a)} | ${falta(x.falta_pct)} | ${fp(x.rentabilidad_12m_pct)} | ${x.cambio || '='} |`));
