@@ -374,7 +374,9 @@ async function escanear() {
       cambio: !previo.cerca ? null : antes === grupo ? null : antes === 'posible' ? 'sale de compras posibles' : antes ? (grupo === 'menos de 5 %' ? 'se acerca (venía de 5-15 %)' : 'se aleja (venía de menos de 5 %)') : 'entra' });
   }
   cerca.sort((a, b) => a.falta_pct - b.falta_pct);
-  const salenDeCerca = previo.cerca ? previo.cerca.filter((c) => !cerca.some((y) => y.clave === c.clave) && !enPosibles.has(c.clave)).map((c) => c.nombre) : [];
+  // Las que salen de los grupos 3 y 4: o se alejan más de un 15 %, o pierden el límite (resultados nuevos u otra duda que revisar).
+  const salenDeCerca = previo.cerca ? previo.cerca.filter((c) => !cerca.some((y) => y.clave === c.clave) && !enPosibles.has(c.clave))
+    .map((c) => { const x = rob.find((y) => y.clave === c.clave); return Object.keys(x?.limites_nivel_cot || {}).length ? c.nombre : `${c.nombre} (sin límite hasta revisar el informe)`; }) : [];
   const pasanAPosible = posibles.filter((c) => grupoPrevio.has(c.clave) && grupoPrevio.get(c.clave) !== 'posible').map((c) => c.nombre);
 
   // Calendario de resultados (regla 11 de METODO-VIGENTE.md, 15-oct: los resultados cercanos no aplazan ni parten la compra, solo se avisa; con resultados ya
@@ -509,7 +511,7 @@ function tablaCerca(esc) {
     out.push('| Empresa | Precio ahora | Límite (nivel) | Límite A | Falta | Rentab. 12 m | Cambio |', '|---|---|---|---|---|---|---|',
       ...t.map((x) => `| ${x.nombre}${x.en_cartera ? ' (en cartera)' : ''} | ${fPrecio(x.precio)} ${x.divisa} (${x.hora_precio}) | ${fPrecio(x.limite)} (${x.nivel}) | ${fPrecio(x.limite_a)} | ${falta(x.falta_pct)} | ${fp(x.rentabilidad_12m_pct)} | ${x.cambio || '='} |`));
   }
-  if (esc.sale_de_cerca?.length) out.push('', `Se alejan más de un 15 %: ${esc.sale_de_cerca.join(', ')}.`);
+  if (esc.sale_de_cerca?.length) out.push('', `Salen de los grupos de cerca (se alejan más de un 15 % o quedan sin límite): ${esc.sale_de_cerca.join(', ')}.`);
   return out.join('\n');
 }
 function mensajeBase(esc, nuevas, reg, avisos = []) {
