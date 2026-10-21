@@ -1,0 +1,16 @@
+# Encargo común: Edenred, análisis completo tras las ventas del 3T26 (corte 21-oct-2026) — URGENTE
+
+Empresa: **Edenred SE** · Euronext París `EDEN` (Yahoo `EDEN.PA`) · ISIN FR0010908533 · LEI 9695006LOD5B2D7Y0N70 · divisa EUR · ejercicio natural (diciembre, etiqueta «fin») · NIIF-UE. Líneas: Benefits & Engagement (cheques comida y otros beneficios), Mobility (tarjetas de combustible y más), Payment Solutions & New Markets. «Other revenue» = intereses de la caja de clientes (float).
+Carpeta de trabajo: `informes/edenred-2026-10-21/` (repo `/home/user/analisis-inversion`). Notas en `notas/`, documentos en `notas/docs/`. Ya están: `notas/cuentas-xbrl.json` (ESEF), `notas/bolsa.json` (bolsa.mjs, corte 21-oct) y la presentación del 3T26 en `notas/docs/2026-10-21-q3-2026-revenue-presentation-vf.pdf` (texto en `notas/docs/p.txt`).
+Fecha de corte: 2026-10-21. Precio del informe: **cierre de Euronext del 20-oct-2026, 29,22 EUR** (antes de las ventas, publicadas el 21-oct antes de la apertura). El 21-oct a las 10:40 cotizaba a 27,75 EUR (−5,0 %).
+Hecho nuevo: **ventas del 3T26 publicadas el 21-oct-2026** (comunicado y presentación en edenred.com; conferencia con analistas). Resumen de la presentación: ventas operativas del 3T 667 M (0 % publicado, −1,2 % comparable, +6,6 % sin la reforma de Italia y Brasil); Benefits −5,9 %, Mobility +10,7 %; nueve meses 2.027 M (+0,6 % comparable). Guía 2026 confirmada (EBITDA −10 % / −7 % comparable), pero en euros ≈1.220-1.260 M (antes 1.230-1.270) por cambios de perímetro del 3T; other revenue ≥210 M; 2027-2028 EBITDA +8/+12 % y conversión ≥65 % confirmados. Análisis anterior: `informes/edenred-2026-10-19/` (corte 19-oct, dos días antes). Ley francesa de los cheques comida: el Senado la estudia el 19-nov.
+
+## Cómo trabajar (iteración corta tras unas ventas trimestrales)
+- Tu nota `notas/<letra>.json` es una **copia de la del 19-oct**: es el punto de partida y está casi al día. Actualiza **solo lo que cambia con el 3T26 y lo publicado desde el 19-oct**, y vuelve a comprobar cada cifra nueva en su fuente original (regla 0: ninguna cifra de un resumen de buscador ni de un «AI summary»; con WebFetch, pide el texto literal). Si ves un error en lo viejo, corrígelo.
+- Fuentes nuevas al final de `fuentes` con id consecutivo (fecha AAAA-MM-DD, tipo Primaria/Datos de mercado/Sectorial/Analistas/Prensa/Foros y redes), citadas con `[n]`.
+- **Guarda la nota tras cada campo que termines** (Write, JSON válido; compruébalo con `node -e "JSON.parse(require('fs').readFileSync('<ruta>','utf8'))"`). `"_estado": "en curso"` arriba y `"terminado"` al acabar.
+- Tu parte del prompt: `node herramientas/prompt-de.mjs <tu letra>`. Lecciones: `verticales/empresa/lecciones.md` y «Francia» en `lecciones-paises.md`.
+- Descargas: `NODE_USE_ENV_PROXY=1 node herramientas/descargar.mjs --dir informes/edenred-2026-10-21/notas/docs <nombre> <url>`. Documentos de Edenred: `https://www.edenred.com/system/files/documents/<fecha>-<nombre>.pdf`; `pdftotext` está instalado.
+- Huecos: tres búsquedas distintas, escritas («1) …; 2) …; 3) …»).
+- **Presupuesto corto: 10-15 minutos y 40-60 llamadas** (Hotis espera la señal). Trabaja solo en el repo y /tmp. Nunca datos personales en consultas ni User-Agent.
+- Al final, diez líneas: qué cambia con el 3T26, qué falta y qué te ha parecido raro.

@@ -1,0 +1,42 @@
+// Resumen ejecutivo (se escribe el último). Cifras del motor tal cual.
+export const resumen = {
+  recomendacion: 'Mantener',
+  conviccion: 'Media',
+  justificacion_recomendacion: 'La regla a 12 meses da Comprar con la v3 (26,1 % ponderada, 27,4 % base, al cierre del 20-oct) y el valor intrínseco queda por encima del precio, pero el informe se queda en Mantener por dos motivos que fija el método. La sostenibilidad del crecimiento es «En parte» (el regulador fija el precio en Italia y Brasil y podrá hacerlo en Francia desde 2028), y con «En parte» no se compra ni se amplía. Además, la v2 de control da Mantener (13,8 %), así que no es una compra robusta. Para quien ya la tiene, todas las variantes pasan el filtro de mantener (ponderada ≥ 10 %, base ≥ 5 %, valor intrínseco por encima del precio).',
+  horizonte: '12 meses',
+  sintesis: '**La recomendación y por qué.** Mantener, con convicción media. Al cierre del 20-oct (29,22 EUR), el objetivo a 12 meses es de 35,51 EUR (+26,1 % con el dividendo; base +27,4 %) y el valor intrínseco, de 43,51 EUR. El 21-oct, tras las ventas, cayó a 27,72 EUR (−5,1 %): a ese precio la v3 da un 33,0 % y la v2 de control un 20,0 %. La regla daría Comprar, pero la calidad sostiene el volumen, no el precio (sostenibilidad «En parte»): no se compra ni se amplía. Para quien la tiene, todas las variantes pasan el filtro de mantener, y por eso es Mantener y no Vender. La convicción es media porque el resultado depende de reguladores con fechas abiertas: subiría si el Senado (19-nov) aprueba el texto sin tope y la guía de 2027 confirma +8 % de EBITDA; bajaría con un tope legal o con una caída de Brasil tras la interoperabilidad de noviembre.\n\n**Qué ha cambiado con el 3T26 (21-oct).** Ventas operativas de 667 M: planas en euros, −1,2 % comparable y +6,6 % sin la reforma de Italia y Brasil (8,0 % en el 1S26) [A12, A13]. Superan lo que esperaba el consenso que recopila la empresa (658 M operativos y 709 M totales) [D]. Beneficios cae un 5,9 % y Movilidad crece un 10,7 %. La guía de 2026 se mantiene en comparable (EBITDA −10/−7 %), pero en euros baja 10 M, a ≈ 1.220-1.260 M, porque Edenred Pay North America pasa a puesta en equivalencia desde el 1-ago. El other revenue sigue en al menos 210 M, con el aviso de que el 4T puede bajar. 2027-2028 se confirman (+8/+12 % de EBITDA). La caída en bolsa la explican el comparable negativo, la desaceleración del crecimiento intrínseco y la calidad de la batida (intereses del float), según Jefferies [E]. Bajamos 2026e de +1,5 % a +0,3 % en ingresos operativos: el BPA base de 2028e pasa de 2,47 a 2,44 EUR.\n\n**El negocio.** Plataforma de pagos de uso específico con 49.000 M de volumen y 2.961 M de ingresos en 2025, un margen EBITDA del 45,9 % y casi sin capital: el circulante negativo y el float financian el crecimiento [A1]. El ROIC operativo ronda el 20 % (estimación propia) frente a un WACC del 8,25 %. La sostenibilidad es «En parte»: el volumen crece un 6-8 % intrínseco, pero Italia (5 %) y Brasil (3,6 %) ya han topado las comisiones.\n\n**Valoración.** El DCF da 46,89 EUR con un WACC del 8,25 %. El DCF inverso dice que el precio descuenta un crecimiento del 0,9 % anual frente al 4,6 % de nuestro base, o un margen del 34,2 %. Cotiza a 14,2 veces el beneficio de los últimos 12 meses. El valor depende del trato del float: aquí 2.739 M se tratan como dinero de clientes.\n\n**Riesgos y catalizadores.** El primero es el decreto francés: el bajista del DCF da 23,67 EUR (−19,0 %). El segundo es la interoperabilidad brasileña de noviembre (iFood negocia comprar Caju) [B]. El tercero es la bajada de tipos sobre el other revenue. Catalizadores: debate del Senado el 19-nov [B24], ventana de las opciones del grupo Niel (8 %) de enero a mayo de 2027 [C8] y resultados de 2026 y guía de 2027 el 2-mar-2027 [D].\n\n**Qué cambiaría la decisión.** Por debajo de 32,03 EUR la regla vigente da Comprar, pero no se compraría mientras la sostenibilidad siga «En parte»; por encima de 40,93 EUR, Vender. Pasaríamos a Vender si el Senado introduce un tope legal, si la guía de 2027 queda por debajo de +5 % de EBITDA o si los ingresos de Brasil caen más de un 10 % tras la interoperabilidad.',
+  tesis: 'Edenred es el mayor emisor mundial de beneficios a empleados y un actor fuerte en tarjetas de flota en Europa y Brasil: 49.000 M de volumen, más de un millón de empresas clientes y 2 millones de comercios, con un margen EBITDA del 45,9 % y un negocio que crece sin capital porque los clientes pagan antes de que el comercio cobre [A1].\n\nEl precio descuenta que la regulación congela el negocio: un crecimiento implícito del 1,0 % anual en 2027e-2035e, frente a una guía de +8/+12 % de EBITDA en 2027-2028 y un consenso que la sigue [A5, D4]. A 14,6 veces el beneficio, está en el percentil 17 de su historia.\n\nEl mercado acierta en que la regulación ha cambiado el negocio (Italia y Brasil ya topan y Francia podrá hacerlo), pero exagera su alcance: la ley francesa no fija porcentaje y lo deja para 2028 tras un dictamen [B1]. Para invertir hay que creer que el volumen sigue creciendo al 6-8 % y que el tope francés, si llega, se parece al italiano.',
+  vision_diferencial: {
+    mercado_descuenta: 'Un crecimiento del 1 % anual durante nueve años: que los topes de Italia, Brasil y, después, Francia dejan el beneficio plano.',
+    nuestra_vision: 'Un EBITDA que vuelve a crecer un 8 % en 2027-2028, igual que el consenso, con un posible tope francés solo desde 2028 y en el bajista.',
+    por_que: 'La diferencia no está en las cifras (coinciden con la calle) sino en el múltiplo: el mercado pide un 10,2 % anual a un negocio sin capital y con un 4,4 % de dividendo. Podríamos tener razón si 2027 confirma la guía; podríamos no tenerla si el Senado endurece la ley.',
+  },
+  a_favor: [
+    '**Precio exigente para el mercado, no para el negocio**: descuenta un 0,9 % de crecimiento anual frente al 4,6 % del base.',
+    '**Ley francesa más suave de lo temido**: sin tope legal; decreto posible solo desde el 1-ene-2028 [B1].',
+    '**Caja y dividendo**: 4,4 % de dividendo, 600 M de recompras en marcha y A- de S&P [A7, A4].',
+    '**Opcionalidad de capital**: aproximación de fondos (jun-2026) y 8 % del grupo Niel en opciones [C9, C8].',
+    '**Guía confirmada tras el 3T26**: 2026 en −10/−7 % comparable y 2027-2028 en +8/+12 % de EBITDA [A12].',
+  ],
+  en_contra: [
+    '**Regulación**: tres reguladores con poder sobre el precio; la sostenibilidad es «En parte».',
+    '**Brasil**: interoperabilidad plena en noviembre de 2026 (21 % de los ingresos) [B11].',
+    '**Tipos**: el other revenue (229 M, 17 % del EBITDA en 2025) baja con el BCE [A1].',
+    '**Desaceleración**: crecimiento intrínseco del 6,6 % en el 3T26 frente al 8,0 % del 1S26, y Payment Solutions en negativo [A13].',
+    '**Gobierno mejorable**: presidente y consejero delegado a la vez y hasta un 34 % de votos en contra de la remuneración [C4].',
+  ],
+  que_vigilar: 'La tesis depende de que el volumen siga creciendo al 6-8 % y de que Francia no tope por encima de lo que ya hizo Italia. La señal de que no se cumple: enmiendas del Senado con un porcentaje, o crecimiento comparable de los ingresos operativos por debajo del 3 % en el 4T26 o el 1T27.',
+  cambiaria_recomendacion: [
+    'Si el Senado introduce un tope legal de comisiones (2,5 % o similar), revisión del bajista y probable Vender.',
+    'Si la guía de EBITDA 2027 de marzo queda por debajo de +5 % comparable, Vender.',
+    'Si los ingresos de Brasil caen más de un 10 % interanual en el 1T27 tras la interoperabilidad, revisión.',
+    'Por encima de 40,93 EUR, Vender; por debajo de 32,03 EUR la regla da Comprar, pero no se compra con la sostenibilidad «En parte».',
+  ],
+  kpis_seguimiento: [
+    { kpi: 'Crecimiento comparable de ingresos operativos', nivel_actual: '−1,2 % (3T26); +6,6 % sin la reforma', umbral_alerta: 'Intrínseco < 5 % en el 4T26', por_que: 'Mide el efecto de los topes frente al volumen.' },
+    { kpi: 'Other revenue semestral', nivel_actual: '113 M (1S26)', umbral_alerta: '< 95 M', por_que: 'Rendimiento del float y efecto de los tipos.' },
+    { kpi: 'Ingresos operativos de Brasil', nivel_actual: '279 M (1S26)', umbral_alerta: 'Caída > 10 %', por_que: 'Interoperabilidad de noviembre.' },
+    { kpi: 'Margen EBITDA', nivel_actual: '41,8 % (1S26)', umbral_alerta: '< 40 % en 2026', por_que: 'Base del BPA de 2028e.' },
+  ],
+  confianza: 'Media',
+};
