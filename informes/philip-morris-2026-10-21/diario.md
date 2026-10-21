@@ -1,7 +1,7 @@
 # Diario · Philip Morris International (PM) · 21-oct-2026
 
 - Iteración tras los resultados del 3T26 (8-K del 21-oct a las 7:04 ET). Análisis anterior: `informes/philip-morris-2026-10-20/`.
-- Pasos (UTC): comprobación del 8-K en EDGAR 11:16; carpeta y `bolsa.mjs` 11:17; cinco subagentes A-E 11:18-11:24; integración, cálculo, Word, PDF, revisión a 12 m, robustez, cobertura y seguimiento ≈ 11:25-11:40.
+- Pasos (UTC): comprobación del 8-K en EDGAR 11:16; carpeta y `bolsa.mjs` 11:17; cinco subagentes A-E 11:17-11:22; integración, cálculo, Word, PDF, revisión a 12 m, robustez, cobertura y seguimiento 11:22-11:26.
 - Precio: cierre del 20-oct (199,90 USD). La sesión del 21-oct no había abierto (13:30 UTC); premercado 197,99 (−1,0 %) a las 7:20 ET.
 
 ## Decisiones
