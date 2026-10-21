@@ -351,7 +351,7 @@ async function escanear() {
   const faltaPct = (precio, lim) => (precio && lim ? r(100 * (1 - lim / precio), 1) : null);
   const marcadas = [];
   for (const [o, papel] of [...(pend.comprar || []).map((o) => [o, 'compra apuntada']), ...(pend.lista_espera || []).map((o) => [o, 'lista de espera']),
-    ...(CARTERA.ordenes_pendientes?.fijadas_por_hotis?.claves || []).map((k) => [{ clave: k }, 'fijada por Hotis'])]) {
+    ...(CARTERA.ordenes_pendientes?.fijadas_por_hotis?.claves || []).map((k) => [{ clave: k }, 'fijada por ti'])]) {
     // Una empresa puede venir con un apunte por nivel («LII» con el límite A y «LII-B1» con el B1): se juntan en una línea.
     const suf = String(o.clave).match(/-(A|B1|B2|C)$/)?.[1] || null, base = suf ? o.clave.slice(0, -suf.length - 1) : o.clave;
     const g = gro.find((y) => y.ticker === base), x = g ? null : buscarValue(base);
