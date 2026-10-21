@@ -1,0 +1,76 @@
+// Textos del analista (TSMC, corte 2026-10-21, tras el 3T26). Cifras del motor tal cual; citas con la letra de la nota.
+export default {
+  limitaciones: 'Línea elegida: la acción local 2330 de la Bolsa de Taiwán, en TWD (el ADR TSM de la NYSE equivale a 5 acciones). Cuentas anuales del XBRL de los 20-F (2015-2024) y del 20-F de 2025 [A1, A4], en NIIF del IASB; los trimestres, los últimos 12 meses y el consenso local van en TIFRS (el BPA de 2025 es 65,47 TWD en el 20-F y 66,25 en TIFRS por el momento en que se registra el impuesto del 5 % sobre beneficios no distribuidos) [A1, A10]. La web de inversores de TSMC da error desde la nube: los documentos salen de EDGAR (6-K y 20-F). La amortización del 3T26 y la porción corriente de la deuda a 30-sep no se publican hasta los estados del 3T26 (mediados de noviembre): el EBITDA de los últimos 12 meses y la deuda del puente son estimaciones propias [A15, D3]. El precio es el cierre del 21-oct-2026 (2.420 TWD) [D5].',
+  controles_explicados: [
+    { control: 'Caja proyectada coherente', explicacion: 'El salto es real y ya se ve: el flujo libre de los últimos 12 meses ronda 1,48 billones TWD [A5, A15], el doble de la media de 2023-2025, porque las ventas crecen un 47 % en 2026 con un margen EBITDA del 72 % [A5]. El capex proyectado (35-38 % de las ventas en 2026-2027) está por encima del de 2025 (34 %) [A1].' },
+    { control: 'Crecimiento del BPA base ≤ 25 % anual', explicacion: 'Desde 2025 el BPA de 2026e ya está casi hecho: 78,76 TWD en nueve meses [A5, A8, A9] más el 4T con la guía dan ≈ 110 (+67 %). De 2026e a 2028e el crecimiento es del 22 % anual, por debajo del consenso (31 %) [D6].' },
+  ],
+  parches: [],
+  huecos_resueltos: [],
+  dcf_justificacion: {
+    crecimiento: 'El 2026e (+46,9 %) está casi cerrado: 3,90 billones TWD en nueve meses y un 4T guiado de 52.300-54.300 M USD, con una previsión anual de ≈ +44 % en USD [A5, C3]. Para 2027e suponemos +32 % y para 2028e +22 %, por debajo del consenso (+37 % y +26 %) [D6], porque el gasto de los hiperescaladores no puede crecer indefinidamente al ritmo de 2026. Después +14 %, +10 % y convergencia al 3,5 % en 2035e: una TCAC 2025-2035e del ≈ 15 %, frente al 24 % de 2021-2025 [A4, A1].',
+    margenes: 'Margen EBITDA del 72 % en 2026e (72,3 % en los últimos 12 meses [A5, A15]) que baja al 67,5 % en 2035e: la dirección prevé que las fábricas del extranjero diluyan el margen bruto ≈ 2 puntos en 2026 y 3-4 puntos en los años siguientes, y el 2 nm lo diluye al arrancar (margen bruto del 67,7 % en el 2T26 al 66,4 % en el 3T26) [B3, B17].',
+    inversion: 'Capex del 35 % de las ventas en 2026e (60.000-64.000 M USD) [A5] y del 38 % en 2027e («significativamente superior» en 2026-2028, según la dirección) [C4], bajando al 22,5 % en 2035e, siempre por encima de la amortización (13 % → 20 %). Circulante del 12,5 % de las ventas, el de 2025.',
+    wacc: 'Tasa libre del bono taiwanés a 10 años (2,01 % el 21-oct) [D23]; beta de 1,14 (mensual de cinco años frente al TAIEX, 1,21, ajustada hacia 1) [D5]; prima de mercado del 5,5 % y 1,5 puntos de prima adicional (0,78 de riesgo país de Damodaran y 0,7 por el riesgo de bloqueo en el estrecho) [D22]. Deuda del 1,7 % del valor al 1,85 %. WACC del 9,64 %.',
+    terminal: 'Gordon con un 1,5 %: la tasa libre menos medio punto (2,01 − 0,5); con un bono al 2 %, un terminal del 2,5 % como el de una empresa en dólares sería incoherente. El valor terminal pesa un 60 % del total.',
+  },
+  puente_comentarios: {
+    '2026e': 'Volumen: 3 y 5 nm llenos y rampa del 2 nm (8 % de las obleas en el 3T26); precio: subidas en nodos avanzados y CoWoS; otros: mezcla [B3, B4].',
+    '2027e': 'Volumen con la nueva capacidad de 2 nm, Arizona y Kumamoto; precio con la mezcla hacia 2 y 3 nm.',
+    '2028e': 'Volumen con el capex de 2026-2027; precio más moderado.',
+    '2029e': 'Normalización del crecimiento del gasto en IA.',
+    '2030e': 'Crecimiento cercano al del mercado de fabricación por encargo.',
+  },
+  veredicto: 'Sí',
+  sostenibilidad_justificacion: 'Sí. El foso (72,5 % de las diez mayores fundiciones en el 2T26 y prácticamente el único fabricante a escala de 2-3 nm) [B8] y el poder de precios sostienen el crecimiento proyectado (15,3 % anual), menor que el histórico (16,7 %). Con el capex que proyectamos, la reinversión financia al ROIC actual (46,6 %) un 13,9 % anual: la diferencia (1,4 puntos) entra en la tolerancia del motor, el capital nuevo rinde un 30,5 % frente a un ROIC incremental histórico del 53,9 % y la cuota del mercado amplio «Foundry 2.0» pasaría del ≈ 42 % al 48 % en 2035e [B11].',
+  dcf_lectura: 'El DCF da 1.981,33 TWD por acción, un 18,1 % por debajo del precio, con un WACC del 9,64 % y un valor terminal que pesa el 60 %. El DCF inverso dice que el precio de 2.420 TWD descuenta un crecimiento del 15,1 % anual en 2027e-2035e frente al 11,8 % de nuestro base, o una rentabilidad implícita del 8,3 %, algo más de un punto por debajo de nuestro WACC y casi igual a la que pide hoy el mercado (8,2 %). Con esa prima del mercado el DCF sube a 2.457,81 TWD: el precio está entre las dos lecturas.',
+  narrativas: {
+    Bajista: 'El gasto en IA se frena en 2027 como el de las telecomunicaciones en 2001: el crecimiento se queda 8 puntos por debajo del base y el margen baja 4 puntos por capacidad ociosa y fábricas caras en el extranjero, como en 2023 (ventas −8,7 % en TWD) [A4].',
+    Base: 'La IA sigue creciendo, pero a menos ritmo: +32 % en 2027 y +22 % en 2028 y convergencia gradual; margen EBITDA del 72 % al 67,5 % con la dilución del extranjero.',
+    Alcista: 'Los hiperescaladores mantienen el ritmo de 2026 y TSMC sube precios en 2 nm: 4 puntos más de crecimiento y 1,5 de margen, cerca del consenso [D6].',
+  },
+  escenarios_comentario: 'La asimetría del valor intrínseco es mala: el alcista (2.616,47 TWD) apenas supera el precio y el bajista (1.118,48) pierde más de la mitad, porque el precio ya descuenta más crecimiento que nuestro base. A 12 meses la asimetría mejora (bajista −37 %, alcista +59 %), porque el PER de hoy (17,6 veces nuestro BPA de 2027e) no es caro para el crecimiento del beneficio.',
+  valoracion_comentario: 'Pesamos el DCF al 50 %, los escenarios al 30 % y los comparables al 20 %. El DCF es el método más fiable para un negocio con un capex tan alto, porque los múltiplos de Nvidia o Broadcom no cobran ese capex; los comparables suben el valor porque el sector cotiza a 22,3 veces el beneficio de los próximos 12 meses frente a 17,2 de TSMC [D12-D19]. No hay transacciones comparables. La síntesis da 2.196,92 TWD, un 9,2 % por debajo del precio.',
+  per_excluidos: 'Ningún año excluido. PER al cierre de cada año sobre el BPA real del año siguiente (cierres de Yahoo [D5]; BPA de las cuentas [A1, A4]): 2018 16,5x; 2019 16,8x; 2020 23,0x; 2021 15,7x; 2022 13,9x; 2023 13,1x; 2024 16,2x; 2025 14,2x (1.550 ÷ 109,51, nuestro BPA de 2026e, que ya tiene nueve meses publicados) [D5, D6]. Mediana de cinco años (2021-2025) 14,2x, mínimo 13,1x, media de ocho años 16,2x. Actual = 2.420 ÷ 137,85 (nuestro BPA de 2027e). La historia v2 (al cierre, mismo año): 2021 26,7x, 2022 11,4x, 2023 18,3x, 2024 23,8x, 2025 23,4x.',
+  just12m: {
+    Bajista: 'Ventas de 7,13 billones TWD en 2028e (+18 % y +8 % en 2027-28), margen EBITDA 4-5 puntos por debajo del base por fábricas a medio llenar: BPA de 118,75, casi plano desde 2026e.',
+    Base: 'Ventas de 9,01 billones TWD (+32 % y +22 %), margen EBITDA del 70 % y amortización del 15 %: EBIT de 4,96 billones, 150.000 M de ingresos financieros, impuesto del 17 % y 25.930 M de acciones.',
+    Alcista: 'Ventas de 9,59 billones TWD (+36 % y +26 %, el consenso) y 1,5 puntos más de margen: BPA de 177,94, aún por debajo del consenso (188,2) [D6].',
+  },
+  diferencia_consenso: 'Nuestro BPA de 2026e (109,51 TWD) coincide con el consenso (110,2), pero el de 2027e (137,85) queda un 7 % por debajo (148,1) y el de 2028e (163,20) un 13 % (188,2) [D6]. La diferencia es el margen: el consenso no recoge la dilución de 3-4 puntos de las fábricas del extranjero que anunció la dirección [B17]. Además, nuestro PER base (16,0x) es menor que el que implica el objetivo medio de los analistas (3.387 TWD, 35 analistas) [D6]. No acercamos la cifra.',
+  objetivo12m_comentario: 'Objetivo ponderado de 2.646,48 TWD: +10,4 % con dividendo, por debajo del 15 % que exigimos. El BPA base crece un 35,6 % anual desde el de 2025 porque 2026 ya está casi cerrado (+67 %); de 2026e a 2028e el crecimiento es del 22 % anual. El PER base (16,0x) queda a mitad de camino entre el actual (17,6x) y la mediana adelantada (14,2x): a un año, el beneficio sube y el múltiplo baja. El valor intrínseco (2.196,92 TWD) queda por debajo del precio: para comprar haría falta las dos cosas.',
+  rentabilidad_comentario: 'Crea valor con holgura: ROIC del 46,6 % en el último ejercicio frente a un WACC del 9,64 % y ROIC incremental histórico del 53,9 %. Lo mueve el margen, no la rotación: cada nodo nuevo sube el precio por oblea y el margen operativo pasó del 42,6 % en 2023 al 50,8 % en 2025 y al 58,7 % en el 3T26 [A1, A5]. Supera con mucho a los demás fabricantes por encargo: margen operativo del 18,5 % en UMC, 11,9 % en SMIC, 11,7 % en GlobalFoundries y −58 % en Intel Foundry [B13-B16].',
+  catalizadores: {
+    items: [
+      { fecha: 'Mediados de enero de 2027', evento: 'Resultados del 4T26 y guía de 2027 (crecimiento, capex, margen)', efecto: 'Fija el BPA de 2027 y la dilución de margen del extranjero', probabilidad: 'Alta', sentido: '+/−' },
+      { fecha: 'Mediados de noviembre de 2026', evento: 'Estados financieros del 3T26 (amortización, deuda corriente)', efecto: 'Cierra el EBITDA y el puente de este informe', probabilidad: 'Alta', sentido: '+/−' },
+      { fecha: 'Mensual (día 10)', evento: 'Ventas mensuales', efecto: 'Primer indicador de desaceleración [A7]', probabilidad: 'Alta', sentido: '+/−' },
+      { fecha: '2026-2027', evento: 'Aranceles de EE. UU. a chips importados (Sección 232)', efecto: 'Podría encarecer la producción en Taiwán o forzar más inversión en Arizona', probabilidad: 'Media', sentido: '−' },
+      { fecha: '2027', evento: 'Rampa del 2 nm y del A16', efecto: 'Más precio por oblea; diluye el margen al principio [B4]', probabilidad: 'Alta', sentido: '+' },
+    ],
+    confianza: 'Media',
+  },
+  riesgos: {
+    items: [
+      { riesgo: 'Frenazo del gasto en IA de los hiperescaladores', tipo: 'Demanda', probabilidad: 'Media', impacto: 'Alto', efecto_valor: '−44 % (bajista del DCF frente al base)', mitigante: 'Diversificación por clientes y nodos; móviles y PC', senal: 'Ventas mensuales con crecimiento interanual por debajo del 20 % [A7]' },
+      { riesgo: 'Compresión del PER de una operación concurrida', tipo: 'Mercado', probabilidad: 'Media', impacto: 'Alto', efecto_valor: '−26 % si vuelve al mínimo adelantado de 5 años (13,1x)', mitigante: 'Beneficio creciente', senal: 'Foros locales decepcionados con resultados récord [E1]' },
+      { riesgo: 'Conflicto o bloqueo en el estrecho de Taiwán', tipo: 'Geopolítico', probabilidad: 'Baja', impacto: 'Alto', efecto_valor: '−50 % o más', mitigante: 'Fábricas en Arizona, Japón y Alemania [B1]', senal: 'Maniobras militares y sanciones' },
+      { riesgo: 'Dilución del margen por las fábricas del extranjero y el 2 nm', tipo: 'Operativo', probabilidad: 'Alta', impacto: 'Medio', efecto_valor: '−8 % por cada 2 puntos de margen EBITDA', mitigante: 'Subidas de precio', senal: 'Margen bruto trimestral por debajo del 62 % [B3]' },
+      { riesgo: 'Exceso de capacidad tras un capex récord', tipo: 'Ciclo', probabilidad: 'Media', impacto: 'Medio', efecto_valor: '−10 % a −15 %', mitigante: 'Capacidad reservada con anticipos', senal: 'Días de inventario por encima de 95 (82 en el 3T26) [B3]' },
+      { riesgo: 'Concentración de clientes', tipo: 'Demanda', probabilidad: 'Baja', impacto: 'Medio', efecto_valor: '−5 % a −10 %', mitigante: 'Ventaja de rendimientos y ecosistema', senal: 'Los diez primeros clientes son el 78 % de las ventas; el mayor, el 19 % [B1]' },
+    ],
+    premortem: 'Es octubre de 2029 y TSMC ha perdido un 40 %. La historia más probable: en 2027 los hiperescaladores recortaron el crecimiento del gasto en centros de datos tras dos años sin rentabilizar la IA; los pedidos de 3 y 2 nm se frenaron justo cuando entraba la capacidad del capex récord de 2026-2028. Las ventas crecieron un 8 % en 2028, el margen bruto volvió al 55 % con fábricas a medio llenar y la amortización disparada, y el BPA se quedó plano; el PER volvió a su mínimo. Las señales: ventas mensuales por debajo del +20 %, días de inventario por encima de 95 y una guía de capex de 2027 que no sube.',
+    confianza: 'Media',
+  },
+  preguntas: {
+    items: [
+      { tema: 'Margen de 2027', pregunta: '¿Cuánto diluyen en 2027 el 2 nm y las fábricas del extranjero el margen bruto y cuánto compensan las subidas de precio?', por_que: 'Es la diferencia entre nuestro BPA y el del consenso.' },
+      { tema: 'Capex 2027-2028', pregunta: '¿Cuánto es «significativamente superior» y qué parte tiene contratos?', por_que: 'Decide el riesgo de exceso de capacidad.' },
+      { tema: 'Aranceles', pregunta: '¿Qué exención consigue TSMC en la Sección 232 y a qué coste en Arizona?', por_que: 'Riesgo regulatorio con fecha incierta.' },
+      { tema: 'Impuestos', pregunta: '¿Qué tipo efectivo deja el impuesto mínimo global a partir de 2027?', por_que: 'Proyectamos el 17 %; cada punto mueve ≈ 1 % el BPA.' },
+    ],
+    confianza: 'Media',
+  },
+  fuentes: [],
+  huecos: [],
+};
