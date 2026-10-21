@@ -78,3 +78,8 @@ Lee solo la sección del país que toque.
 
 ## Arabia Saudí (19-oct-2026)
 - Documentos con la API de Argaam IR (estados a menudo escaneados); `^TASI.SR` no da datos en Yahoo: índice con el ETF KSA; Tadawul cotiza de domingo a jueves y cierra a las 12:00 UTC; el zakat sube el tipo impositivo aparente y `robustez` D5 lo marca sin que el BPA esté inflado (EIC).
+
+## Taiwán (21-oct-2026)
+- TSMC: pr.tsmc.com e investor.tsmc.com dan 403 desde la nube; todo está en EDGAR (6-K de resultados, ventas mensuales y estados semestrales; 20-F). El XBRL de `cuentas.mjs --sec` no trae el último 20-F a tiempo: el último año, del 20-F.
+- Emisores 20-F con Form 4 (TSMC desde marzo de 2026): `form4.mjs` cuenta como compras en mercado las del plan de empleados (código «P»): filtrarlas a mano.
+- Sentimiento: PTT (foro Stock) abre con curl y la cookie `over18=1`.

@@ -1,7 +1,7 @@
 # Diario · TSMC (2330.TW) · 21-oct-2026
 
 - Iteración completa tras los resultados del 3T26 (15-oct). Análisis anterior: `informes/tsmc-2026-10-14/` (solo extractos de búsqueda, confianza baja).
-- Pasos (UTC): carpeta, `bolsa.mjs` y `cuentas.mjs --sec TSM` 09:10; cinco subagentes A-E 09:12-09:27 con fuentes primarias (20-F 2025, 6-K, estados del 2T26, Form 4); integración, cálculo, Word y PDF ≈ 09:55; revisión 12 m, robustez, cobertura y seguimiento a continuación.
+- Pasos (UTC): carpeta, `bolsa.mjs` y `cuentas.mjs --sec TSM` 09:10; cinco subagentes A-E 09:12-09:23 con fuentes primarias (20-F 2025, 6-K, estados del 2T26, Form 4); integración, cálculo, Word, PDF, revisión 12 m, robustez, cobertura y seguimiento 09:23-09:30.
 - Precio: cierre del 21-oct (2.420 TWD), sesión de Taiwán ya cerrada.
 
 ## Decisiones
