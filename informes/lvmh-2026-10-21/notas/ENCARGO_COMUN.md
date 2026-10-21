@@ -1,0 +1,16 @@
+# Encargo común: LVMH, análisis completo tras las ventas del 3T26 (corte 21-oct-2026)
+
+Empresa: **LVMH Moët Hennessy Louis Vuitton SE** · Euronext París `MC` (Yahoo `MC.PA`) · ISIN FR0000121014 · LEI IOG4E947OATN0KJYSD45 · divisa EUR (cuentas y cotización) · ejercicio natural (diciembre, etiqueta «fin») · NIIF-UE. Grupos: Moda y Marroquinería, Vinos y Licores, Perfumes y Cosméticos, Relojes y Joyería, Distribución selectiva (Sephora, DFS), otros.
+Carpeta de trabajo: `informes/lvmh-2026-10-21/` (repo `/home/user/analisis-inversion`). Notas en `notas/`, documentos en `notas/docs/`. Cuentas XBRL del ESEF ya descargadas por `cuentas.mjs` en `notas/` (informes anuales); `notas/bolsa.json` ya hecho con `bolsa.mjs`.
+Fecha de corte: 2026-10-21. Precio del informe: **cierre de Euronext París del 20-oct-2026** (D lo saca de `bolsa.json` o de una fuente con fecha). Hoy, 21-oct, a media mañana cotizaba a 384,85 EUR: en mínimos de 52 semanas, −38 % en 12 meses.
+Hecho nuevo: **ventas del 3T26 publicadas el 12-oct-2026** (comunicado en lvmh.com, «continued growth in the third quarter of 2026», y conferencia). Análisis anterior: `informes/lvmh-2026-10-08/` (corte 8-oct, precio 380,90), con una actualización rápida v4 del 14-oct (`notas/previo/datos-anterior.json` es la v4; su diario explica la v4: nueve meses −2 % publicado, +2 % orgánico; Moda −4 % / 3T −5 %). Aquel análisis no tuvo nota E: E la hace de cero.
+
+## Cómo trabajar (iteración tras unos resultados)
+- Tu nota `notas/<letra>.json` es una **copia de la del 8-oct** (salvo E, nueva): es el punto de partida. Actualiza todo lo que cambia con el 3T26 y lo que haya pasado desde el 8-oct, y **vuelve a comprobar cada cifra que uses** en su fuente original (regla 0: ninguna cifra de un resumen de buscador ni de un «AI summary»; con WebFetch, pide el texto literal de la tabla). Lo que no cambie se queda, pero si ves un error, corrígelo.
+- Fuentes nuevas: añádelas al final de la lista `fuentes` de tu nota con id consecutivo (fecha AAAA-MM-DD, tipo Primaria/Datos de mercado/Sectorial/Analistas/Prensa/Foros y redes) y cítalas con `[n]`.
+- **Guarda la nota tras cada campo que termines** (con Write, JSON válido; compruébalo con `node -e "JSON.parse(require('fs').readFileSync('<ruta>','utf8'))"`). Pon `"_estado": "en curso"` arriba y `"terminado"` al acabar.
+- Lee antes `verticales/empresa/lecciones.md` y la sección «Francia» / «Unión Europea» de `verticales/empresa/lecciones-paises.md`. Ejecuta `node herramientas/prompt-de.mjs <tu letra>` y lee su salida: es tu parte del prompt (formato de cada campo).
+- Descargas: `NODE_USE_ENV_PROXY=1 node herramientas/descargar.mjs --dir informes/lvmh-2026-10-21/notas/docs <nombre> <url>`. En la nube, Node sale a internet solo con `NODE_USE_ENV_PROXY=1`. La web de LVMH es Next.js: las fechas y documentos están en su API pública de contenidos (`lvmh-com.cdn.prismic.io/api/v2`); `pdftotext` está instalado.
+- Huecos: un campo sin dato tras **tres búsquedas distintas** va a `huecos` con los tres intentos escritos («1) …; 2) …; 3) …»).
+- Presupuesto: unos 20 minutos y 60-90 llamadas. Trabaja solo dentro del repo y de /tmp. Nunca datos personales en consultas ni User-Agent (usa uno genérico).
+- Al final, devuelve un resumen de diez líneas: qué ha cambiado con el 3T26, qué falta y qué te ha parecido raro.
