@@ -1,0 +1,8 @@
+# Diario Netflix 2026-10-21
+
+- Commit de partida: cd70c95 Escáner: cuatro grupos de cerca (lista marcada y calidad completa a <5 % y 5-15 %), hora de cierre de Asia y Europa; precios.mjs no cambia un cierre por otro más viejo
+- Inicio: 07:36 UTC. Iteración nueva tras los resultados del 3T26 (publicados el 20-oct tras el cierre). Pedido de Hotis (21-oct): rehacer los análisis de la lista con resultados nuevos.
+- Método: iteración tras resultados (lecciones, «Iteración tras unos resultados»): notas A-E del 11-oct copiadas como punto de partida y cinco subagentes con encargo acotado a lo que cambia, cada dato recomprobado. Cuentas de la SEC con `cuentas.mjs` (XBRL 2016-2025), `bolsa.mjs` y `movimiento.mjs` al cierre del 20-oct (68,69 USD, antes de los resultados).
+- Integración 21-oct: puente 30-sep de D (deuda 15.132, caja 8.223); acciones parcheadas a 4.170 M (la media del 3T no recoge la recompra de 63,9 M de acciones); veredicto de precio y noticias de D «retrasa» cambiado a «no cambia» por la regla 13 (unos resultados nunca retrasan; la reacción se mide con robustez --actual). Supuestos: 2026e +13,1 % fijo (guía 51.100 M), 2027e +10,5 %, Tesoro 5,12 %, deuda a mercado 5 %.
+- Cálculo: DCF 61,23 (−10,9 %), WACC 11,36 %; valor intrínseco 61,92 (−9,9 %); mercado 74,74. 12 m v3 30,9 % / 28,0 % (objetivo 89,94); v2 18,8 %; BPA −10 % 17,8 %. Señal Mantener (valor intrínseco < precio). Robustez SÓLIDA, límite 61,92 (nivel A, calidad completa).
+- Word y PDF «Netflix - 2026-10-21»; revision-12m-2026-10-21.md; apuntar-12m (Mantener 18,1 % → 30,9 %). precios.mjs NFLX DSV refrescado (en_curso del 20-oct a medias).
