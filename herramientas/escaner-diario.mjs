@@ -352,12 +352,21 @@ async function escanear() {
   const marcadas = [];
   for (const [o, papel] of [...(pend.comprar || []).map((o) => [o, 'compra apuntada']), ...(pend.lista_espera || []).map((o) => [o, 'lista de espera']),
     ...(CARTERA.ordenes_pendientes?.fijadas_por_hotis?.claves || []).map((k) => [{ clave: k }, 'fijada por Hotis'])]) {
-    if (marcadas.some((m) => m.clave === o.clave || m.clave_informe === buscarValue(o.clave)?.clave)) continue;
-    const g = gro.find((y) => y.ticker === o.clave), x = g ? null : buscarValue(o.clave);
-    const precio = g ? g.precio_hoy : x?.precio_cot, lims = x?.limites_nivel_cot || {};
-    const lim = o.limite ?? lims.A ?? lims.B2 ?? null; // sin límite apuntado: el de su compra robusta
-    marcadas.push({ clave: o.clave, clave_informe: x?.clave || null, nombre: g?.empresa || x?.nombre || o.clave, vertical: g ? 'growth' : 'value', papel, titulos: o.titulos ?? null,
-      precio: precio ?? null, divisa: o.divisa || g?.divisa || x?.divisa_cotizacion, limite: lim, falta_pct: faltaPct(precio, lim),
+    // Una empresa puede venir con un apunte por nivel («LII» con el límite A y «LII-B1» con el B1): se juntan en una línea.
+    const suf = String(o.clave).match(/-(A|B1|B2|C)$/)?.[1] || null, base = suf ? o.clave.slice(0, -suf.length - 1) : o.clave;
+    const g = gro.find((y) => y.ticker === base), x = g ? null : buscarValue(base);
+    const lims = x?.limites_nivel_cot || {}, lim = o.limite ?? lims.A ?? lims.B2 ?? null; // sin límite apuntado: el de su compra robusta
+    const nivelApunte = o.nivel || suf || (o.limite == null ? (lims.A != null ? 'A' : lims.B2 != null ? 'B2' : null) : 'tu límite');
+    const m = marcadas.find((y) => y.clave === base || (x && y.clave_informe === x.clave));
+    if (m) {
+      if (lim != null && nivelApunte && !(nivelApunte in m.limites)) m.limites[nivelApunte] = lim;
+      if (lim != null && (m.limite == null || lim > m.limite)) { m.limite = lim; m.falta_pct = faltaPct(m.precio, lim); }
+      if (o.titulos && !m.titulos) m.titulos = o.titulos;
+      continue;
+    }
+    const precio = g ? g.precio_hoy : x?.precio_cot;
+    marcadas.push({ clave: base, clave_informe: x?.clave || null, nombre: g?.empresa || x?.nombre || base, vertical: g ? 'growth' : 'value', papel, titulos: o.titulos ?? null,
+      precio: precio ?? null, divisa: o.divisa || g?.divisa || x?.divisa_cotizacion, limite: lim, limites: lim != null && nivelApunte ? { [nivelApunte]: lim } : {}, falta_pct: faltaPct(precio, lim),
       hora_precio: g ? horaDe(g.fecha_hoy, ahora.hora, g.simbolo) : x ? horaDe(x.fecha_precio, horaPrecio, PRECIOS.precios[x.clave]?.simbolo) : null, nivel_hoy: x?.nivel || null });
   }
   marcadas.sort((a, b) => (a.falta_pct ?? 99) - (b.falta_pct ?? 99));
@@ -503,7 +512,7 @@ function mensaje(esc, nuevas, reg, avisos = []) {
 function tablaCerca(esc) {
   const m = esc.marcadas || [], c = esc.cerca || [], falta = (d) => (d == null ? 'sin precio' : d <= 0 ? 'en el límite o por debajo' : `−${f(d, 1)} %`);
   const out = [`**Lista marcada por ti (${m.length})**`, '', '| Empresa | Tipo | Apunte | Comprar a mercado si cotiza en | Precio ahora | Falta |', '|---|---|---|---|---|---|',
-    ...m.map((x) => `| ${x.nombre} | ${x.vertical} | ${x.papel}${x.titulos ? ` (${x.titulos})` : ''} | ${x.limite != null ? `${fPrecio(x.limite)} ${x.divisa} o menos` : 'sin límite'} | ${x.precio != null ? `${fPrecio(x.precio)} ${x.divisa} (${x.hora_precio})` : 'sin precio'} | ${falta(x.falta_pct)} |`)];
+    ...m.map((x) => `| ${x.nombre} | ${x.vertical} | ${x.papel}${x.titulos ? ` (${x.titulos})` : ''} | ${x.limite == null ? 'sin límite' : Object.keys(x.limites || {}).length > 1 ? `${Object.entries(x.limites).sort((a, b) => b[1] - a[1]).map(([n, v]) => `${n} ${fPrecio(v)}`).join(' / ')} ${x.divisa} o menos` : `${fPrecio(x.limite)} ${x.divisa} o menos`} | ${x.precio != null ? `${fPrecio(x.precio)} ${x.divisa} (${x.hora_precio})` : 'sin precio'} | ${falta(x.falta_pct)} |`)];
   for (const g of ['menos de 5 %', '5-15 %']) {
     const t = c.filter((x) => x.grupo === g);
     out.push('', `**Calidad completa a ${g} de su primer nivel (${t.length})**`, '');
