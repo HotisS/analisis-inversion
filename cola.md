@@ -23,6 +23,12 @@ Reanudada el 20-oct (Hotis). Fuera las chinas de ChiNext (300/301) y STAR (688/6
 
 Recuento (20-oct): 78 en la cola (contando las analizadas y las reposiciones 102-109); EE. UU. y Europa 43, resto 35 (Israel cuenta como resto).
 
+## Reserva (Hotis dijo sí el 21-oct a las 18:31)
+
+Acabada la cola de 100, se sigue con la reserva en tandas de 4, mismos criterios y exclusiones, con EE. UU. y Europa primero y por puntos. Quedan 104 de EE. UU. y Europa y 242 del resto; el orden completo está en /mnt/project-files/cobertura/reserva-orden-2026-10-21.json. Una empresa que caiga en el criterio de limpieza se salta y se avisa.
+
+R1. Österreichische Post AG (POST.VI) [en curso 21-oct], R2. FirstGroup plc (FGP.L) [en curso 21-oct], R3. Gamma Communications plc (GAMA.L) [en curso 21-oct], R4. Synopsys, Inc. (SNPS) [en curso 21-oct], R5. Monster Beverage Corporation (MNST), R6. Wallenius Wilhelmsen ASA (WAWI.OL), R7. Coca-Cola Consolidated, Inc. (COKE), R8. Dropbox, Inc. (DBX), R9. Airbnb, Inc. (ABNB), R10. Veralto Corporation (VLTO), R11. SGS SA (SGSN.SW), R12. Galenica AG (GALE.SW), R13. ME Group International plc (MEGP.L), R14. Airbus SE (AIR.PA), R15. HCA Healthcare, Inc. (HCA), R16. Allegion plc (ALLE), R17. Molina Healthcare, Inc. (MOH), R18. UL Solutions Inc. (ULS), R19. Carlsberg A/S (CARL-B.CO), R20. Omnicom Group Inc. (OMC), R21. NOS, S.G.P.S., S.A. (NOS.LS), R22. Texas Pacific Land Corporation (TPL), R23. Knorr-Bremse AG (KBX.DE), R24. Clarkson PLC (CKN.L)
+
 ## Vigilar (cifras v3 ×1,1 al cierre del 14-oct)
 
 - **Para Mejoras (18-oct, análisis del semanal)**: (1) años de BPA atípico en la historia adelantada (UnitedHealth quitó 2023-24 a mano: mediana 23,7x → 19,4x) y campo `per_historico.anios` que el selector necesita para la regla de historia corta (Pernod: sin él daba Comprar 18,1 %, con él Mantener 9,3 %); (2) modo growth para empresas casi sin ventas y G3 en falso con proyección mecánica 0 (Fervo); (3) fin del bloqueo de una salida a bolsa como «retrasa» de la regla 13.
