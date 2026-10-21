@@ -1,7 +1,7 @@
 # Diario · Puig (PUIG) · 21-oct-2026
 
 - Iteración completa tras las ventas de los nueve meses (CNMV, 21-oct tras el cierre). Análisis anterior: `informes/puig-2026-10-11/`.
-- Pasos (UTC): `bolsa.mjs` y cuentas (ESEF, sin cambios desde 2025) 17:17; cinco subagentes A-E 17:18-17:25; integración, cálculo, Word, PDF, revisión 12 m, robustez, cobertura y seguimiento 17:26-17:35.
+- Pasos (UTC; Madrid = UTC+2): `bolsa.mjs` y cuentas (ESEF, sin cambios desde 2025) 17:17; cinco subagentes A-E 17:18-17:25; integración, cálculo, Word, PDF, revisión 12 m, robustez, cobertura y seguimiento 17:26-17:32 (commit d33770f).
 - Precio: cierre del 21-oct (19,59 EUR), anterior a la publicación.
 
 ## Decisiones

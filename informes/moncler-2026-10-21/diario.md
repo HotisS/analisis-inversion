@@ -1,7 +1,7 @@
 # Diario · Moncler (MONC) · 21-oct-2026
 
 - Iteración completa tras las ventas de los nueve meses (eMarket, 21-oct tras el cierre). Análisis anterior: `informes/moncler-2026-10-14/` (solo extractos de búsqueda).
-- Pasos (UTC): `bolsa.mjs` y `cuentas.mjs --esef` (2020-2025), y cinco subagentes A-E con fuentes primarias, terminados hacia las 17:30; integración, supuestos nuevos, cálculo, Word, PDF, revisión 12 m, robustez, cobertura y seguimiento 17:30-17:40.
+- Pasos (UTC; Madrid = UTC+2): `bolsa.mjs` y `cuentas.mjs --esef` (2020-2025) 17:17; cinco subagentes A-E con fuentes primarias 17:18-17:31; integración, supuestos nuevos, cálculo, Word, PDF, revisión 12 m, robustez, cobertura y seguimiento 17:31-17:39 (commit 6606108).
 - Precio: cierre del 21-oct (42,94 EUR), anterior a la publicación.
 
 ## Decisiones
