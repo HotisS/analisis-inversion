@@ -1,5 +1,5 @@
 // Comparables de Yutong Bus con datos de Yahoo (fichas de herramientas/yahoo.mjs + earningsTrend), pasados a CNY.
-// Uso: NODE_USE_ENV_PROXY=1 node informes/yutong-2026-10-20/notas/comparables-yahoo.mjs
+// Uso: NODE_USE_ENV_PROXY=1 node informes/yutong-2026-10-21/notas/comparables-yahoo.mjs
 import { writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -40,7 +40,7 @@ for (const [nombre, t, pais] of LISTA) {
     const v = (o) => (o && typeof o === 'object' ? o.raw ?? null : o ?? null);
     const y0 = tr.find((x) => x.period === '0y'), y1 = tr.find((x) => x.period === '+1y');
     const fin0 = y0?.endDate ? new Date(y0.endDate) : null;
-    const hoy = new Date('2026-10-20');
+    const hoy = new Date('2026-10-21');
     const w0 = fin0 ? Math.max(0, Math.min(1, (fin0 - hoy) / (365 * 864e5))) : 0;
     const eps0 = v(y0?.earningsEstimate?.avg), eps1 = v(y1?.earningsEstimate?.avg);
     const rev0 = v(y0?.revenueEstimate?.avg), rev1 = v(y1?.revenueEstimate?.avg);
