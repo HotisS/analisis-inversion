@@ -1,7 +1,7 @@
 # Diario · Interparfums SA (ITP) · 21-oct-2026
 
 - Iteración tras las ventas de los nueve meses (comunicado del 21-oct antes de la apertura, archivo AMF/DILA FCECO083502). Análisis anterior: `informes/interparfums-sa-2026-10-15/` (fuentes primarias).
-- Pasos (UTC; Madrid = UTC+2): `bolsa.mjs` (ITP.PA, ^FCHI, EXH7.DE) 17:42; cuentas ESEF 2020-2025 sin cambios (copiadas); cinco subagentes A-E 17:43-17:51; supuestos, textos, cálculo, Word, PDF, revisión 12 m, robustez, cobertura y seguimiento 17:48-17:55.
+- Pasos (UTC; Madrid = UTC+2): `bolsa.mjs` (ITP.PA, ^FCHI, EXH7.DE) 17:42; cuentas ESEF 2020-2025 sin cambios (copiadas); cinco subagentes A-E 17:43-17:51; supuestos, textos, cálculo, Word, PDF, revisión 12 m, robustez, cobertura y seguimiento 17:48-17:53 (commit d6d4147).
 - Precio: cierre del 21-oct (34,82 EUR), que ya recoge las ventas.
 
 ## Decisiones
