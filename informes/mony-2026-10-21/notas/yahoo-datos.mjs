@@ -1,5 +1,5 @@
-// Datos de Yahoo Finance (quoteSummary) para MONY Group y sus comparables, corte 2026-10-20 (cierre del 20-oct-2026).
-// Guarda notas/yahoo-datos.json. Ejecutar: NODE_USE_ENV_PROXY=1 node informes/mony-2026-10-20/notas/yahoo-datos.mjs
+// Datos de Yahoo Finance (quoteSummary) para MONY Group y sus comparables, corte 2026-10-21 (cierre del 20-oct-2026; sesión del 21-oct abierta).
+// Guarda notas/yahoo-datos.json. Ejecutar: NODE_USE_ENV_PROXY=1 node informes/mony-2026-10-21/notas/yahoo-datos.mjs
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
