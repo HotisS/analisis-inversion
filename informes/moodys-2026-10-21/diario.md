@@ -1,7 +1,7 @@
 # Diario · Moody's (MCO) · 21-oct-2026
 
 - Iteración completa tras los resultados del 3T26 (8-K del 21-oct a las 6:58 ET). Análisis anterior: `informes/moodys-2026-10-14/` (solo extractos de búsqueda).
-- Pasos (UTC): `bolsa.mjs` y `cuentas.mjs --sec MCO` 11:28; cinco subagentes A-E con fuentes primarias 11:30-11:41; integración, cálculo, Word, PDF, revisión 12 m, robustez, cobertura y seguimiento 11:41-11:55.
+- Pasos (UTC): `bolsa.mjs` y `cuentas.mjs --sec MCO` 11:28; cinco subagentes A-E con fuentes primarias 11:28-11:36; integración, cálculo, Word, PDF, revisión 12 m, robustez, cobertura y seguimiento 11:36-11:42.
 - Precio: cierre del 20-oct (475,35 USD); la sesión del 21-oct no había abierto.
 
 ## Decisiones
