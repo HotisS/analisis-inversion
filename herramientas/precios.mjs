@@ -46,6 +46,11 @@ export async function ultimoCierre(simbolo, intentos = 4) {
   const tp = m.currentTradingPeriod?.regular;
   const enCurso = tp && Date.now() / 1000 >= tp.start && Date.now() / 1000 < tp.end ? fecha(tp.start) : null;
   const filas = x.timestamp.map((t, i) => ({ fecha: fecha(t), cierre: q.close[i] })).filter((f) => f.cierre != null);
+  // Yahoo a veces deja la vela del día en blanco (Europa, 23-oct-2026) aunque `meta` traiga el último precio: se usa ese.
+  if (m.regularMarketPrice != null && m.regularMarketTime) {
+    const fm = fecha(m.regularMarketTime);
+    if (!filas.length || fm > filas.at(-1).fecha) filas.push({ fecha: fm, cierre: m.regularMarketPrice });
+  }
   const cerradas = filas.filter((f) => f.fecha !== enCurso);
   const ult = cerradas.at(-1);
   if (!ult) return { simbolo, error: 'sin cierres' };
