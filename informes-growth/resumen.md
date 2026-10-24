@@ -90,6 +90,7 @@ Lo genera `node motor/growth.mjs --todos` (no editar a mano). Método v11: [vert
 | iRhythm | IRTC | 59 | 4/8 | -21 % | -15,6 % | Vender | — | 81.1 USD | 2026-10-14 |
 | Argan | AGX | 62.7 | 2/8 | -21,1 % | -20,2 % | Vender | — | 291 USD | 2026-10-14 |
 | BE Semiconductor Industries (Besi) | BESI | 63.3 | 2/8 | -23 % | -26,9 % | Vender | — | 124 EUR | 2026-10-14 |
+| Uranium Energy Corp | UEC | 36.8 | 1/8 | -23 % | -14,6 % | Vender | — | 3 USD | 2026-10-24 |
 | Advanced Micro Devices (AMD) | AMD | 82.3 | 6/8 | -26,2 % | -24,2 % | Vender | — | 397.4 USD | 2026-10-15 |
 | Celestica Inc. | CLS | 66.2 | 3/8 | -26,2 % | -24,4 % | Vender | — | 251.1 USD | 2026-10-14 |
 | Insmed | INSM | 71.5 | 3/8 | -30,2 % | -23,8 % | Vender | — | 58 USD | 2026-10-14 |
