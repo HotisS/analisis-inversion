@@ -11,6 +11,8 @@ Solo lo pendiente. Lo cerrado está en `archivo/` (índice en `archivo/HISTORICO
 
 **Novena hora: cerrada el 15-oct** (`informes/novena-hora-2026-10-15/`: Universal Music bajó a Mantener con la prueba del BPA −10 %; Neurocrine comprada el 15-oct). No se arranca otra tanda value hasta que el usuario la pida.
 
+**Regeneron (REGN): hecha el 24-oct a petición de Hotis** (`informes/regeneron-2026-10-24/`: Mantener, no compra; lo sería a ≤677,23 USD).
+
 ## Cola de cobertura de índices (Hotis, 19-oct-2026)
 
 Top 100 de las 542 que pasan el cribado value en 48 índices (lista, puntos y reserva en la carpeta compartida, cobertura/cola-100-2026-10-19.md). De 2 en 2, en este orden; EE. UU. + Europa siempre más que el resto. Análisis completo /analiza-empresa.
