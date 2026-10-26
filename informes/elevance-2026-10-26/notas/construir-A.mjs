@@ -1,0 +1,178 @@
+// Nota A (cuentas) de Elevance Health, 26-oct-2026. Escribe notas/A.json. Solo hechos de fuentes primarias.
+import { writeFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
+const aqui = dirname(fileURLToPath(import.meta.url));
+
+const fuentes = [
+  { id: 1, titulo: 'Elevance Health, informe anual 10-K 2025', editor: 'Elevance Health (SEC EDGAR)', tipo: 'Primaria', fecha: '2026-02-06', url: 'https://www.sec.gov/Archives/edgar/data/1156039/000115603926000013/elv-20251231.htm' },
+  { id: 2, titulo: 'Elevance Health, informe anual 10-K 2023 (2021-2022 reexpresados por LDTI)', editor: 'Elevance Health (SEC EDGAR)', tipo: 'Primaria', fecha: '2024-02-21', url: 'https://www.sec.gov/Archives/edgar/data/1156039/000115603924000015/elv-20231231.htm' },
+  { id: 3, titulo: 'Elevance Health, informe anual 10-K 2022', editor: 'Elevance Health (SEC EDGAR)', tipo: 'Primaria', fecha: '2023-02-15', url: 'https://www.sec.gov/Archives/edgar/data/1156039/000115603923000007/elv-20221231.htm' },
+  { id: 4, titulo: 'Elevance Health Reports Third Quarter 2026 Results; Raises Full-Year Guidance (8-K, exhibit 99.1)', editor: 'Elevance Health (SEC EDGAR)', tipo: 'Primaria', fecha: '2026-10-21', url: 'https://www.sec.gov/Archives/edgar/data/1156039/000115603926000068/a3q2026elvearningsrelease.htm' },
+  { id: 5, titulo: 'Elevance Health, informe trimestral 10-Q del 3T26', editor: 'Elevance Health (SEC EDGAR)', tipo: 'Primaria', fecha: '2026-10-21', url: 'https://www.sec.gov/Archives/edgar/data/1156039/000115603926000071/elv-20260930.htm' },
+  { id: 6, titulo: 'Elevance Health, resultados del 2T26 (8-K, exhibit 99.1)', editor: 'Elevance Health (SEC EDGAR)', tipo: 'Primaria', fecha: '2026-07-15', url: 'https://www.sec.gov/Archives/edgar/data/1156039/000115603926000058/a2q2026elvearningsrelease.htm' },
+  { id: 7, titulo: 'Elevance Health, resultados del 1T26 (8-K, exhibit 99.1)', editor: 'Elevance Health (SEC EDGAR)', tipo: 'Primaria', fecha: '2026-04-22', url: 'https://www.sec.gov/Archives/edgar/data/1156039/000115603926000039/a1q2026elvearningsrelease.htm' },
+  { id: 8, titulo: 'Elevance Health, resultados del 4T25 y del año 2025 (8-K, exhibit 99.1)', editor: 'Elevance Health (SEC EDGAR)', tipo: 'Primaria', fecha: '2026-01-28', url: 'https://www.sec.gov/Archives/edgar/data/1156039/000115603926000006/a4q2025elvearningsrelease.htm' },
+  { id: 9, titulo: 'Elevance Health, resultados del 3T25 (8-K, exhibit 99.1)', editor: 'Elevance Health (SEC EDGAR)', tipo: 'Primaria', fecha: '2025-10-21', url: 'https://www.sec.gov/Archives/edgar/data/1156039/000119312525244191/d270615dex991.htm' },
+  { id: 10, titulo: 'Elevance Health, resultados del 2T25 (8-K, exhibit 99.1)', editor: 'Elevance Health (SEC EDGAR)', tipo: 'Primaria', fecha: '2025-07-17', url: 'https://www.sec.gov/Archives/edgar/data/1156039/000115603925000111/a2q2025elvearningsrelease.htm' },
+  { id: 11, titulo: 'Elevance Health, resultados del 1T25 (8-K, exhibit 99.1)', editor: 'Elevance Health (SEC EDGAR)', tipo: 'Primaria', fecha: '2025-04-22', url: 'https://www.sec.gov/Archives/edgar/data/1156039/000115603925000056/a1q2025elvearningsrelease.htm' },
+  { id: 12, titulo: 'Elevance Health, resultados del 4T24 y del año 2024 (8-K, exhibit 99.1)', editor: 'Elevance Health (SEC EDGAR)', tipo: 'Primaria', fecha: '2025-01-23', url: 'https://www.sec.gov/Archives/edgar/data/1156039/000115603925000007/a4q2024elvearningsrelease.htm' },
+  { id: 13, titulo: 'Elevance Health, resultados del 4T23 y del año 2023 (8-K, exhibit 99.1)', editor: 'Elevance Health (SEC EDGAR)', tipo: 'Primaria', fecha: '2024-01-24', url: 'https://www.sec.gov/Archives/edgar/data/1156039/000119312524013498/d736006dex991.htm' },
+  { id: 14, titulo: 'Elevance Health, resultados del 4T22 y del año 2022 (8-K, exhibit 99.1)', editor: 'Elevance Health (SEC EDGAR)', tipo: 'Primaria', fecha: '2023-01-25', url: 'https://www.sec.gov/Archives/edgar/data/1156039/000119312523014676/d418386dex991.htm' },
+  { id: 15, titulo: 'Anthem, resultados del 4T21 y del año 2021 (8-K, exhibit 99.1)', editor: 'Anthem (SEC EDGAR)', tipo: 'Primaria', fecha: '2022-01-26', url: 'https://www.sec.gov/Archives/edgar/data/1156039/000119312522017585/d279540dex991.htm' },
+  { id: 16, titulo: 'Anthem, resultados del 4T20 y del año 2020 (8-K, exhibit 99.1)', editor: 'Anthem (SEC EDGAR)', tipo: 'Primaria', fecha: '2021-01-27', url: 'https://www.sec.gov/Archives/edgar/data/1156039/000119312521018334/d100984dex991.htm' },
+  { id: 17, titulo: 'Elevance Health (ELV) Q3 2026 Earnings Call Transcript', editor: 'The Motley Fool', tipo: 'Primaria', fecha: '2026-10-21', url: 'https://www.fool.com/earnings/call-transcripts/2026/10/21/elevance-elv-q3-2026-earnings-call-transcript/' },
+  { id: 18, titulo: 'Elevance Health (ELV) Q2 2026 Earnings Call Transcript', editor: 'The Motley Fool', tipo: 'Primaria', fecha: '2026-07-15', url: 'https://www.fool.com/earnings/call-transcripts/2026/07/15/elevance-health-elv-q2-2026-earnings-call-transcript/' },
+  { id: 19, titulo: 'Elevance Health (ELV) earnings history: consensus estimate vs reported EPS', editor: 'MarketBeat', tipo: 'Datos de mercado', fecha: '2026-10-26', url: 'https://www.marketbeat.com/stocks/NYSE/ELV/earnings/' },
+  { id: 20, titulo: 'Elevance Health Tops Earnings Expectations and Lifts Guidance (Dow Jones, con el consenso de FactSet)', editor: 'Dow Jones vía Tiger Brokers', tipo: 'Prensa', fecha: '2026-10-21', url: 'https://www.itiger.com/news/2677986627' },
+  { id: 21, titulo: 'Elevance Health: hechos XBRL (companyfacts)', editor: 'SEC EDGAR', tipo: 'Primaria', fecha: '2026-10-26', url: 'https://data.sec.gov/api/xbrl/companyfacts/CIK0001156039.json' },
+];
+
+// Cuenta: ingresos = ingresos operativos; EBIT = ingresos operativos − prestaciones − coste de productos − gastos operativos
+// + renta neta de inversiones − amortización de intangibles; resultado financiero = − intereses ± resultados de instrumentos
+// financieros − pérdida por amortización de deuda + plusvalía por venta de negocio. BAI = el publicado.
+function fila(p, x) {
+  const coste = x.prest + x.cogs;
+  const ebit = x.rev - coste - x.opex + x.nii - x.amint;
+  const rf = -x.int + x.fi - (x.ext || 0) + (x.venta || 0);
+  if (Math.abs(ebit + rf - x.bai) > 1) throw new Error(`BAI no cuadra en ${p}: ${ebit + rf} vs ${x.bai}`);
+  return {
+    periodo: p, ingresos: x.rev, coste_ventas: coste, gastos_generales: x.opex, ebitda: ebit + x.da, amortizaciones: x.da, ebit,
+    resultado_financiero: rf, bai: x.bai, impuestos: x.tax, minoritarios: x.min, beneficio_neto: x.bn, gastos_financieros: x.int,
+    participadas_en_ebitda: null, no_recurrentes_en_ebitda: x.nr, bpa: x.bpa, dpa: x.dpa, dpa_extraordinario: 0, acciones_diluidas: x.acc,
+  };
+}
+const cuenta = [
+  fila('2021', { rev: 136943, prest: 102571, cogs: 10895, opex: 15918, nii: 1378, amint: 441, int: 798, fi: 318, ext: 21, bai: 7995, tax: 1846, min: -9, bn: 6158, bpa: 24.95, dpa: 4.52, acc: 246.8, da: 1302, nr: 229 }),
+  fila('2022', { rev: 155660, prest: 116642, cogs: 13035, opex: 17700, nii: 1485, amint: 767, int: 851, fi: -550, bai: 7600, tax: 1712, min: -6, bn: 5894, bpa: 24.28, dpa: 5.12, acc: 242.8, da: 1675, nr: 7 }),
+  fila('2023', { rev: 170209, prest: 124330, cogs: 17293, opex: 20087, nii: 1825, amint: 885, int: 1030, fi: -694, bai: 7715, tax: 1724, min: 4, bn: 5987, bpa: 25.22, dpa: 5.92, acc: 237.4, da: 1745, nr: 717 }),
+  fila('2024', { rev: 175204, prest: 127567, cogs: 19750, opex: 20025, nii: 2051, amint: 580, int: 1185, fi: -445, venta: 201, bai: 7904, tax: 1933, min: -9, bn: 5980, bpa: 25.68, dpa: 6.52, acc: 232.9, da: 1393, nr: 1241 }),
+  fila('2025', { rev: 197584, prest: 148223, cogs: 21178, opex: 20984, nii: 2194, amint: 628, int: 1402, fi: -653, bai: 6710, tax: 1049, min: -1, bn: 5662, bpa: 25.21, dpa: 6.84, acc: 224.6, da: 1546, nr: 27 }),
+];
+// LTM a 30-sep-2026 = 4T25 + 9M26
+const l = fila('LTM sep-26', { rev: 49311 + 149760, prest: 38065 + 110418, cogs: 5522 + 16595, opex: 5415 + 17629, nii: 493 + 2506, amint: 164 + 328, int: 366 + 1079, fi: -57 - 182, bai: 215 + 6035, tax: 0, min: 0, bn: 547 + 4592, bpa: 2.47 + 21.01, dpa: 1.71 + 3 * 1.72, acc: 218.6, da: 406 + 1083, nr: 12 + 1108 });
+const ltm = { periodo: 'LTM sep-26', fecha_fin: '2026-09-30', ingresos: l.ingresos, ebitda: l.ebitda, ebit: l.ebit, beneficio_neto: l.beneficio_neto, bpa: Math.round(l.bpa * 100) / 100, dpa: Math.round(l.dpa * 100) / 100, dpa_extraordinario: 0, fcf: (84 + 7512) - (293 + 789), participadas_en_ebitda: null, no_recurrentes_en_ebitda: 1120 };
+
+// Trimestres: EBITDA con la misma definición que la cuenta (D&A trimestral = diferencia de los acumulados del estado de flujos).
+function tri(p, rev, revPrev, prest, cogs, opex, nii, amint, da, bpa, vs) {
+  const ebit = rev - prest - cogs - opex + nii - amint;
+  return { periodo: p, ingresos: rev, crecimiento_pct: revPrev ? Math.round((rev / revPrev - 1) * 1000) / 10 : null, crecimiento_organico_pct: null, ebitda: ebit + da, margen_ebitda_pct: Math.round((ebit + da) / rev * 1000) / 10, bpa, vs_consenso: vs };
+}
+const trimestres_items = [
+  tri('4T24', 44989, 42454, 33500, 6012, 4804, 527, 180, 398, 1.81, 'En línea'),
+  tri('1T25', 48765, 42273, 35312, 4983, 5300, 590, 155, 373, 9.61, 'Superior'),
+  tri('2T25', 49421, 43223, 36706, 5293, 4997, 486, 147, 380, 7.72, 'Inferior'),
+  tri('3T25', 50087, 44719, 38140, 5380, 5272, 625, 162, 387, 5.32, 'Superior'),
+  tri('4T25', 49311, 44989, 38065, 5522, 5415, 493, 164, 406, 2.47, 'Superior'),
+  tri('1T26', 49494, 48765, 35615, 5463, 6330, 765, 112, 354, 8.00, 'Superior'),
+  tri('2T26', 49826, 49421, 37024, 5492, 5547, 704, 110, 366, 6.71, 'Superior'),
+  tri('3T26', 50440, 50087, 37779, 5640, 5752, 1037, 106, 363, 6.27, 'Superior'),
+];
+
+const segH = (arr) => ['2021', '2022', '2023', '2024', '2025'].map((p, i) => ({ periodo: p, ingresos: arr[i][0], resultado: arr[i][1] }));
+const negocio = {
+  segmentos: [
+    { nombre: 'Health Benefits', descripcion: 'Seguro médico de riesgo y servicios a planes autoasegurados: Individual (ACA), grupo de empresa, BlueCard, Medicare, Medicaid y empleados federales (FEP). 44,9 M de afiliados médicos a 30-sep-2026 [4].', tipo_resultado: 'EBIT', historico: segH([[121728, 5850], [138484, 6022], [148571, 6888], [150275, 6243], [167094, 4158]]) },
+    { nombre: 'CarelonRx', descripcion: 'Gestor de farmacia (PBM), farmacia de especialidad (BioPlus) y centros de infusión (Paragon). 82,6 M de recetas ajustadas en el 3T26 [4].', tipo_resultado: 'EBIT', historico: segH([[25431, 1684], [28526, 1868], [33835, 1975], [35961, 2172], [43400, 2418]]) },
+    { nombre: 'Carelon Services', descripcion: 'Servicios sanitarios con y sin riesgo: salud conductual, gestión de especialidades, atención en el domicilio (CareBridge), oncología y gestión de pagos. 91 M de consumidores atendidos [4].', tipo_resultado: 'EBIT', historico: segH([[10130, 187], [12860, 535], [14147, 680], [17961, 717], [28316, 960]]) },
+    { nombre: 'Corporate & Other', descripcion: 'Negocios por debajo del umbral y gastos corporativos no asignados; aquí van las partidas no recurrentes (reorganización, litigios, provisión de CMS) [1, 4].', tipo_resultado: 'EBIT', historico: segH([[95, -162], [399, -142], [479, -1044], [309, -1270], [463, -337]]) },
+    { nombre: 'Eliminaciones', descripcion: 'Ventas internas de CarelonRx y Carelon Services a los planes de salud del grupo [1].', tipo_resultado: 'EBIT', historico: segH([[-20441, 0], [-24609, 0], [-26823, 0], [-29302, 0], [-41689, 0]]) },
+  ],
+  geografias: [{ nombre: 'Estados Unidos', peso_pct: 100 }],
+  geografias_criterio: 'destino',
+  kpis: [
+    { kpi: 'Afiliados médicos (millones)', valor_anterior: '45,4 (3T25)', valor_actual: '44,9 (3T26)', variacion: '−1,1 %', comentario: 'Bajan Medicare Advantage (−15,5 %), Medicaid (−4,9 %) y grupo de riesgo (−6,9 %); suben los de servicios (+1,9 %) [4].' },
+    { kpi: 'Ratio de prestaciones (sobre primas)', valor_anterior: '88,9 % (9M25)', valor_actual: '89,0 % (9M26)', variacion: '+10 pb', comentario: '90,6 % en el 3T26, 70 pb mejor que un año antes; 90,0 % en 2025 frente a 88,5 % en 2024 y 87,0 % en 2023 [4, 8, 12].' },
+    { kpi: 'Ratio de gastos operativos ajustado', valor_anterior: '10,4 % (9M25)', valor_actual: '10,9 % (9M26)', variacion: '+50 pb', comentario: 'Inversiones puntuales en tecnología, gestión del coste médico y Carelon, financiadas con la renta no recurrente de la cartera [4, 18].' },
+    { kpi: 'Días de reservas médicas (DCP)', valor_anterior: '41,4 (3T25)', valor_actual: '44,9 (3T26)', variacion: '+3,5 días', comentario: 'Más reservas por día de prestaciones: colchón prudente frente a la tendencia de costes [4].' },
+    { kpi: 'Recetas ajustadas de CarelonRx (M, trimestre)', valor_anterior: '85,0 (3T25)', valor_actual: '82,6 (3T26)', variacion: '−2,8 %', comentario: 'Menos recetas por la pérdida de afiliados; el margen del segmento sube al 5,3 % [4].' },
+    { kpi: 'Margen operativo ajustado del grupo', valor_anterior: '4,8 % (9M25)', valor_actual: '4,2 % (9M26)', variacion: '−60 pb', comentario: 'Health Benefits cae al 2,7 % (3,5 %); Carelon Services al 4,9 %; CarelonRx estable en el 5,3 % [4].' },
+  ],
+  confianza: 'Alta',
+};
+
+const balance_historico = [
+  { periodo: '2021', activo_total: 97460, activo_corriente: 51122, pasivo_corriente: 34885, pasivo_total: 61332, fondo_comercio: 24228, intangibles: 10615, inmovilizado_material: 3919, existencias: null, clientes: 13440, proveedores: 4970, activos_contrato: null, pasivos_contrato: null, caja: 4880, deuda_financiera: 23031, arrendamientos: 0, patrimonio_neto: 36060, minoritarios: 68, reservas: 27088 },
+  { periodo: '2022', activo_total: 102755, activo_corriente: 55617, pasivo_corriente: 39696, pasivo_total: 66425, fondo_comercio: 24383, intangibles: 10315, inmovilizado_material: 4316, existencias: null, clientes: 16044, proveedores: 5607, activos_contrato: null, pasivos_contrato: null, caja: 7387, deuda_financiera: 24114, arrendamientos: 0, patrimonio_neto: 36243, minoritarios: 87, reservas: 29647 },
+  { periodo: '2023', activo_total: 108928, activo_corriente: 60029, pasivo_corriente: 41791, pasivo_total: 69523, fondo_comercio: 25317, intangibles: 10273, inmovilizado_material: 4359, existencias: null, clientes: 17865, proveedores: 6910, activos_contrato: null, pasivos_contrato: null, caja: 6526, deuda_financiera: 25120, arrendamientos: 0, patrimonio_neto: 39306, minoritarios: 99, reservas: 31749 },
+  { periodo: '2024', activo_total: 116889, activo_corriente: 58942, pasivo_corriente: 40581, pasivo_total: 75463, fondo_comercio: 28277, intangibles: 12094, inmovilizado_material: 4652, existencias: null, clientes: 19071, proveedores: 6927, activos_contrato: null, pasivos_contrato: null, caja: 8288, deuda_financiera: 31232, arrendamientos: 0, patrimonio_neto: 41315, minoritarios: 111, reservas: 33549 },
+  { periodo: '2025', activo_total: 121494, activo_corriente: 63001, pasivo_corriente: 41035, pasivo_total: 77468, fondo_comercio: 28344, intangibles: 11200, inmovilizado_material: 4679, existencias: null, clientes: 21542, proveedores: 7322, activos_contrato: null, pasivos_contrato: null, caja: 9491, deuda_financiera: 32046, arrendamientos: 0, patrimonio_neto: 43882, minoritarios: 144, reservas: 35393 },
+];
+const flujos_historico = [
+  { periodo: '2021', flujo_operativo: 8364, capex: 1087, pagos_arrendamientos: 0, adquisiciones: 3476, desinversiones: 0, dividendos: 1104, recompras: 1900, emision_acciones: 203, intereses_en_financiacion: 0 },
+  { periodo: '2022', flujo_operativo: 8399, capex: 1152, pagos_arrendamientos: 0, adquisiciones: 649, desinversiones: 0, dividendos: 1229, recompras: 2316, emision_acciones: 182, intereses_en_financiacion: 0 },
+  { periodo: '2023', flujo_operativo: 8061, capex: 1296, pagos_arrendamientos: 0, adquisiciones: 1552, desinversiones: 0, dividendos: 1395, recompras: 2676, emision_acciones: 152, intereses_en_financiacion: 0 },
+  { periodo: '2024', flujo_operativo: 5808, capex: 1256, pagos_arrendamientos: 0, adquisiciones: 4809, desinversiones: 363, dividendos: 1508, recompras: 2900, emision_acciones: 221, intereses_en_financiacion: 0 },
+  { periodo: '2025', flujo_operativo: 4290, capex: 1116, pagos_arrendamientos: 0, adquisiciones: 0, desinversiones: 88, dividendos: 1529, recompras: 2605, emision_acciones: 79, intereses_en_financiacion: 0 },
+];
+
+const A = {
+  _estado: 'completa (26-oct-2026, 09:55)',
+  negocio,
+  financieros: {
+    cuenta, ltm,
+    cambios_perimetro: [
+      { periodo: '2024', descripcion: 'CareBridge (10-dic-2024) y Centers (31-dic-2024), consolidadas al cierre: entran en el balance de 2024 y en la cuenta desde 2025; Paragon desde marzo de 2024. Pagos por compras de 4.809 M en 2024 [1].' },
+    ],
+    comentario: 'Los ingresos operativos pasaron de 136.943 M en 2021 a 197.584 M en 2025 (+12,8 % solo en 2025, con primas más altas, más afiliados de Medicaid de alta complejidad y las compras de CareBridge, Centers y Paragon) [1, 2]. El beneficio no acompañó: el EBIT (con la renta de la cartera y después de amortizar intangibles) bajó de 9.439 M en 2023 a 8.765 M en 2025, porque el ratio de prestaciones subió del 87,0 % (2023) al 88,5 % (2024) y al 90,0 % (2025), con Medicaid, el ACA y la parte D por delante de las tarifas [8, 12, 13]. En los últimos doce meses a septiembre de 2026 los ingresos apenas crecen (199.071 M) porque la empresa salió de mercados de Medicare Advantage y Medicaid; el margen operativo ajustado de los nueve meses baja al 4,2 % (4,8 %) por inversiones puntuales, mientras el ratio de prestaciones del 3T26 mejora 70 pb [4]. El BPA aguantó gracias a la recompra (de 246,8 a 224,6 M de acciones entre 2021 y 2025) y a un tipo del 15,6 % en 2025 [1].',
+    ajustes: 'Cuentas en US GAAP; 2021 y 2022 reexpresados por la norma de contratos de larga duración (LDTI, ASU 2018-12) en el 10-K 2023 [2]. Elevance publica un BPA ajustado que excluye la amortización de intangibles comprados, los resultados de instrumentos financieros, los costes de operaciones e integración, las reorganizaciones, los litigios y, en 2026, la provisión de 935 M por el aviso de CMS sobre datos de riesgo de Medicare Advantage: 30,29 USD en 2025 frente a 25,21 contables, y una guía de 2026 de al menos 29,00 frente a 22,00 contables [4, 8]. En `no_recurrentes_en_ebitda` van las reorganizaciones, litigios, ventas de negocios y la provisión de CMS (1.241 M en 2024, 717 M en 2023, 1.120 M en los últimos doce meses); los costes de integración (≈ 130-240 M al año) se repiten y se dejan como gasto [1, 4, 8, 12, 13, 14, 15]. Además, la renta de inversiones de 2026 lleva ajustes de valoración no recurrentes: 0,80 USD por acción en el 2T26 y la mayor parte de los 1,85 USD de beneficio no operativo neto del 3T26 [17, 18].',
+    confianza: 'Alta',
+  },
+  trimestres: {
+    items: trimestres_items,
+    ultima_presentacion: 'En el 3T26 (21-oct-2026) la dirección subió la guía de BPA ajustado a «al menos» 29,00 USD y, sobre todo, la base de partida de 2026 para el crecimiento de 2027 a 26,75 USD (26,00 tras el 2T26), y repitió el +12 % de BPA ajustado para 2027 [4, 17]. El 3T26 tuvo ≈ 0,50 USD de mejora operativa (Medicaid por las tarifas del 1-jul, Medicare Advantage por la cartera retenida y el ACA por menor coste de los planes bronce) y 1,85 USD de beneficio no operativo neto, sobre todo ajustes de valoración en la renta de inversiones [17]. Entre una conferencia y otra cambia el tono sobre Medicaid: en julio el margen «se mantenía prudente» y la empresa anunciaba salidas de mercados (Distrito de Columbia) en 12-18 meses; en octubre va «ligeramente por delante» y 2026 es «el suelo», con objetivo del 2-4 % a largo plazo [17, 18]. Medicare Advantage cerrará 2026 con un margen de al menos el 2 % (objetivo 3-5 %) [17]. Los analistas preguntaron sobre todo por Medicaid (requisitos de trabajo de la ley H.R. 1, acuidad, tarifas de 2027), por los arbitrajes de la ley No Surprises (IDR) y por el ACA tras el fin de los subsidios reforzados. La dirección no cuantificó el puente al +12 % de 2027 ni la recompra que incluye («más detalle en enero») [17].',
+    confianza: 'Alta',
+  },
+  balance: {
+    historico: balance_historico,
+    vencimientos: [
+      { anio: '2026', importe: 1100 }, { anio: '2027', importe: 1625 }, { anio: '2028', importe: 2000 }, { anio: '2029', importe: 1425 }, { anio: '2030', importe: 1850 }, { anio: '2031+', importe: 24126 },
+    ],
+    liquidez: 'Caja e inversiones de la matriz de 2.416 M a 30-sep-2026; línea de crédito a 5 años de 5.000 M (vence en septiembre de 2030) sin disponer y programa de pagarés de 5.000 M sin saldo [5].',
+    rating: null,
+    coste_deuda_pct: 4.6,
+    vida_media_anios: null,
+    otros_pasivos: 'Reservas médicas de 18.438 M (44,9 días de prestaciones) a 30-sep-2026 [4]. Provisión por el aviso de CMS de febrero de 2026 sobre datos de riesgo de Medicare Advantage de 2015-2023: 935 M dotados, 342 M pagados el 27-may-2026 y 593 M pendientes; el rango posible va de 320 M menos a 320 M más [5]. Demanda del Departamento de Justicia por la Ley de Reclamaciones Falsas (datos de riesgo de la parte C): pruebas periciales hasta el 2-ago-2027 [5]. Arbitrajes IDR: pasivos de 669 M, de los que 625 M son de clientes autoasegurados y se recuperan (cuentas a cobrar de 575 M) [5]. Demanda colectiva de valores por la guía de 2024 (el juez denegó en septiembre de 2026 la desestimación) y tres demandas derivadas [5]. Ratio deuda/capital del 40,7 % según el contrato de la línea de crédito, con holgura sobre el covenant [5].',
+    comentario: 'La deuda financiera bruta pasó de 23.031 M (2021) a 32.046 M (2025) para pagar compras (4.809 M en 2024) y recompras; a 30-sep-2026 baja a 30.757 M tras amortizar 750 M en marzo [1, 4, 5]. La caja consolidada (10.348 M) y la cartera de inversiones respaldan las reservas médicas y el capital exigido a las filiales; la que puede usar el accionista es la de la matriz (2.416 M) [5]. Las cuentas a cobrar suben de 21.542 M a 24.573 M en nueve meses y otros pasivos corrientes de 22.702 M a 27.849 M, por el calendario de cobros y pagos con CMS y los estados; por eso el flujo operativo de los nueve meses (7.512 M) casi duplica el de 2025 (4.206 M) [4].',
+    confianza: 'Alta',
+  },
+  flujos: {
+    historico: flujos_historico,
+    comentario: 'La conversión del beneficio en caja se ha deteriorado: el flujo operativo cayó de 8.364 M (2021) a 4.290 M (2025), por debajo del beneficio neto (5.662 M), por el aumento de las cuentas a cobrar (−2.526 M en 2025) y el pago de reservas [1]. En 2026 rebota: 7.512 M en nueve meses y una guía de al menos 6.500 M para el año, con efecto favorable del circulante que se dará la vuelta en parte [4, 17]. El capex es pequeño (1.087-1.296 M, 0,6-0,8 % de los ingresos) y es casi todo tecnología de mantenimiento y desarrollo; la inversión que de verdad exige crecer es el capital regulatorio que retienen las filiales (estimación propia en el DCF). De 2021 a 2025 se dedicaron 12.397 M a recompras, 6.765 M a dividendos y 10.486 M a compras [1, 2].',
+    confianza: 'Alta',
+  },
+  calidad: {
+    auditor: 'Ernst & Young LLP',
+    anios_auditor: 82,
+    opinion: 'Favorable',
+    comentario: 'Ernst & Young audita a la empresa desde 1944 y señala como asunto clave de auditoría la estimación de las prestaciones ocurridas y no comunicadas [1]. La principal fuente de juicio es la reserva médica: en 2025 la empresa liberó 1.290 M de reservas de años anteriores (1,0 % de las prestaciones del año anterior), menos que los 1.731 M de 2024 (1,4 %), y a septiembre de 2026 los días de reservas suben a 44,9 [4]. El BPA ajustado excluye partidas que se repiten cada año (costes de integración, reorganizaciones) y en 2026 una provisión de 935 M por datos de riesgo de Medicare Advantage, que es un coste del negocio ya pagado en parte [4, 5]. La renta de inversiones de 2026 incluye ajustes de valoración no recurrentes que la empresa sí cuenta en el BPA ajustado (≈ 2,65 USD por acción entre 2T y 3T) pero excluye de la base de 2026 (26,75) [17, 18]. Pagos en acciones moderados (276 M en 2025, 4,9 % del beneficio) [1].',
+    senales: [
+      { senal: 'Renta de inversiones no recurrente dentro del BPA ajustado', nivel: 'Media', comentario: 'Ajustes de valoración de 0,80 USD (2T26) y la mayor parte de 1,85 USD (3T26) por acción: la guía de 29,00 incluye ≈ 2,25 USD que la propia empresa excluye de la base de 26,75 [4, 17, 18].' },
+      { senal: 'Provisión por el aviso de CMS sobre datos de riesgo de Medicare Advantage', nivel: 'Media', comentario: '935 M dotados en el 1T26, excluidos del BPA ajustado; rango ±320 M [5]. El mismo asunto sostiene la demanda del Departamento de Justicia.' },
+      { senal: 'Conversión de caja baja en 2024-2025', nivel: 'Media', comentario: 'Flujo operativo de 4.290 M frente a un beneficio de 5.662 M en 2025, por cobros pendientes de gobiernos [1].' },
+      { senal: 'Menos liberación de reservas de años anteriores', nivel: 'Baja', comentario: '1,0 % de las prestaciones del año anterior en 2025 frente al 1,4 % de 2023-2024: reservas menos holgadas o costes más altos [4].' },
+    ],
+    confianza: 'Alta',
+  },
+  capital: {
+    politica: 'Dividendo trimestral de 1,72 USD (6,88 al año, ≈ 1,6 % al precio actual), pagado desde 2011 y subido cada año [4]. Autorización de recompra pendiente de 5.007 M a 30-sep-2026; en nueve meses se recompraron 5,2 M de acciones por 1.688 M (324,88 USD de media) [5]. Para 2027 la dirección promete disciplina: mantener la solidez del balance, financiar inversiones y ser «oportunista» en recompras; a largo plazo, reinversión, compras selectivas y devolución de capital [17].',
+    adquisiciones: [
+      { anio: '2021', objetivo: 'MMM Holdings (Medicare Advantage en Puerto Rico), myNEXUS y otras (total del año)', importe: 3476, ev_ebitda: null, financiacion: 'Caja y deuda', resultado: 'Sin deterioros del fondo de comercio publicados [2].' },
+      { anio: '2022', objetivo: 'Integra Managed Care (Medicaid de cuidados de larga duración en Nueva York)', importe: 649, ev_ebitda: null, financiacion: 'Caja', resultado: 'Sin deterioros publicados [2].' },
+      { anio: '2023', objetivo: 'BioPlus (farmacia de especialidad, CarelonRx)', importe: 1552, ev_ebitda: null, financiacion: 'Caja', resultado: 'Base de la farmacia de especialidad; la dirección cita su centro de oncología de 2026 [2, 17].' },
+      { anio: '2024', objetivo: 'Paragon Healthcare (infusión), CareBridge (atención domiciliaria) y Centers (Medicaid de larga duración en Nueva York) (total del año)', importe: 4809, ev_ebitda: null, financiacion: 'Deuda (7.710 M emitidos en 2024)', resultado: 'Explican el salto de ingresos de Carelon Services en 2025 (+57,7 %) con margen bajo (3,4 %) [1].' },
+    ],
+    comentario: null,
+    confianza: 'Media',
+  },
+  fuentes,
+  huecos: [
+    { seccion: 'balance', campo: 'rating', tipo: 'Complemento', intentos: '1) 10-K 2025 (solo habla de los ratings en los riesgos, sin notas); 2) 10-Q del 3T26 (sin notas); 3) folleto de emisión no consultado por tiempo', decision: 'Omitido' },
+    { seccion: 'balance', campo: 'vida_media_anios', tipo: 'Complemento', intentos: '1) nota de deuda del 10-K 2025 (solo vencimientos); 2) 10-Q del 3T26; 3) derivarla exige el detalle bono a bono', decision: 'Omitido' },
+    { seccion: 'capital', campo: 'adquisiciones.ev_ebitda', tipo: 'Complemento', intentos: '1) nota de combinaciones de negocios del 10-K 2025 y 2023 (sin EBITDA); 2) comunicados de cada compra (importes no publicados); 3) prensa (sin múltiplos fiables)', decision: 'Omitido' },
+  ],
+};
+writeFileSync(join(aqui, 'A.json'), JSON.stringify(A, null, 2));
+console.log('A.json', cuenta.map(c => `${c.periodo} EBIT ${c.ebit} EBITDA ${c.ebitda} rf ${c.resultado_financiero}`).join(' | '));
+console.log('LTM', JSON.stringify(ltm));
+console.log(trimestres_items.map(t => `${t.periodo} ${t.ebitda} ${t.margen_ebitda_pct} ${t.crecimiento_pct}`).join(' | '));
