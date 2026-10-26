@@ -36,6 +36,8 @@ Las lecciones nuevas van al archivo que toque, en una o dos líneas, y solo si n
 - **Bonos a 10 años**: siempre con `descargar.mjs` de fuente oficial (FRED `DGS10`, que va un día por detrás; Tesoro, BCE, Bundesbank…). **Nunca con WebFetch** (se inventó un 3,9 % con el bono al 5,31 %). **Tasa libre en euros = Bund**, no el bono del país de la sede; el riesgo país, si procede, en `prima_adicional_pct`.
 - **Prima de riesgo implícita** (regla relativa): Excel mensual de Damodaran `https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx` (última fila de la hoja 1; columna «ERP (T12m with sustainable payout)»; las fechas de la primera columna vienen mal, guíate por el S&P y el bono). Oct 2026: 4,20 %.
 - **Rating**: suele estar en el informe anual o en el folleto de la última emisión de bonos; no gastes búsquedas web en él.
+- **Consenso tras resultados** (26-oct): MarketScreener y Stock Analysis tardan días en actualizar (y pueden servir páginas viejas por WebFetch); MarketBeat, el `quoteSummary`/`earningsTrend` de Yahoo, IFIS (Japón) y las notas de brokers de `reportapi.eastmoney.com` (acciones A) van al día. Di la fecha de cada cifra.
+- **Antes de rehacer un informe «tras resultados», confirma la fecha en el comunicado o calendario de la empresa**: la del calendario o del informe puede ser supuesta (Air Liquide: 29-oct, no 23-oct).
 - **Comunicados**: GlobeNewswire, MFN y Cision cuando la web de inversores no responde.
 
 ## Datos y consenso: trampas generales
@@ -79,6 +81,7 @@ Las lecciones nuevas van al archivo que toque, en una o dos líneas, y solo si n
 - **Cuadra el BPA con el publicado** (participadas, minoritarios, plusvalías, intangibles comprados, GBp, ADS, acciones A/B) y quita de la historia los años de pérdidas, burbuja o BPA atípico, diciendo cuáles. `herramientas/objetivo12m.mjs` es solo una calculadora de apoyo (toma el nombre de la carpeta sin `informes/` y no aplica el perfil anual de los escenarios).
 - **Un año «de auge» no es atípico** si no cumple una regla de exclusión: quitarlo deja la historia corta y el selector fuerza la v2 (Pernod 19-oct: 9,3 % → 22,1 %). En compradores en serie sí se quitan los años cuyo BPA siguiente está hundido por costes de integración (DSV 2019, 2024, 2025).
 - **`robustez.mjs --actual` lee `en_curso` de `precios.json`**, que puede ser una toma intradía vieja: tras el cierre, `node herramientas/precios.mjs` antes de la robustez (19-oct: EL, FDR y DSV salían con otro precio).
+- **Comprueba a mano la base de la historia del PER** (26-oct): `historia-adelantada.mjs` puede dividir los cierres por el BPA contable del XBRL mientras los casos van en ajustado o subyacente; infló la v3 de Elevance, Thermo Fisher, Nestlé, Tomra y Bureau Veritas (TMO 15,9 % → 4,6 %). Apunta en el diario qué base usan historia y casos.
 - **Valor intrínseco ≠ precio a 12 meses**, y **el consenso no es un input** (corrección del usuario): se muestra al lado; si tu base queda lejos, revisa tus supuestos, pero no acerques la cifra solo porque esté lejos.
 
 ## Redacción e integración

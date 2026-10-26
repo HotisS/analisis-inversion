@@ -33,6 +33,7 @@ Lee solo la sección del país que toque.
 
 ## Suiza
 - Participaciones significativas en la API pública de la SIX; las operaciones de directivos son anónimas (solo cargo e importe); no hay registro público de posiciones cortas.
+- Roche cotiza como ROP (ISIN CH1499059983) desde el canje de ROG del 17-mar-2026; Yahoo y Stock Analysis dan historia continua. La clave del repo es «ROP-(ANTES-ROG)» para no pisar a Roper (ROP). Con la tasa libre suiza por debajo de la inflación del BNS, el crecimiento terminal va a la inflación.
 - **Swiss GAAP FER** (SFS, 9ª hora): el fondo de comercio se resta del patrimonio al comprar y no se amortiza; sin sumarlo de vuelta, el capital invertido queda corto y el ROIC sale inflado (SFS: 14,8 % en vez de 8,1 %, y la calidad pasaba por error). Sumar el fondo de comercio acumulado (nota de patrimonio) al patrimonio y al capital invertido; el BPA FER no lleva su amortización (comparable con el ajustado de NIIF, no con el estatutario).
 
 ## Italia y Polonia
@@ -72,12 +73,14 @@ Lee solo la sección del país que toque.
 - Línea H recién salida (Transsion, 2636.HK): la historia del PER es la de la A × el cociente H/A de hoy (sin suponer que el descuento se cierra); beta y rentabilidades con la A. Lote de 100 H: comprobar que el mínimo de 1.000 € cabe en lotes enteros. El folleto de HKEX trae tres años de NIIF auditadas.
 - Guba (Eastmoney) abre con curl: los mensajes van en un JSON incrustado como `article_list=`. ChinaBond da el 10 años con POST al servicio de la curva, no por GET. El EBITDA de consenso de MarketScreener en chinas puede incluir ganancias financieras: usar solo BPA y ventas.
 - Stock Connect: la lista de HKEX («China Connect Securities») en xls se lee pasándola a csv con soffice. Consenso de acciones A con la F10 de Eastmoney o el `earningsTrend` de Yahoo; estados del anual de CNINFO a veces en imagen (leer páginas renderizadas) (DunAn, Sieyuan, Wasion, 19-oct).
+- CNINFO publica el acta de cada reunión con inversores (`tabName=relation`, 投资者关系活动记录表): es la fuente primaria de la «conferencia». La historia del PER en acciones A va con el BPA 扣非 (recurrente), la misma base que los casos.
 
 ## Corea (19-oct-2026)
 - Sin XBRL en `cuentas.mjs`: DART responde desde la nube con el visor por secciones (avisos en cp949; el PDF devuelve 0 bytes). Consenso en FnGuide. Separar mercado, sector y empresa con `movimiento.mjs` (HD Hyundai Electric).
 
 ## Arabia Saudí (19-oct-2026)
 - Documentos con la API de Argaam IR (estados a menudo escaneados); `^TASI.SR` no da datos en Yahoo: índice con el ETF KSA; Tadawul cotiza de domingo a jueves y cierra a las 12:00 UTC; el zakat sube el tipo impositivo aparente y `robustez` D5 lo marca sin que el BPA esté inflado (EIC).
+- Argaam `financial-reports/company-report/<id>/<año>/70|71|72` da las tablas del 1T, 1S y 9M el mismo día; el anuncio completo de Tadawul sale en el inglés de Mubasher. En la nube, el token de Argaam IR puede quedar denegado: puente con el último balance (EIC, 26-oct).
 
 ## Taiwán (21-oct-2026)
 - TSMC: pr.tsmc.com e investor.tsmc.com dan 403 desde la nube; todo está en EDGAR (6-K de resultados, ventas mensuales y estados semestrales; 20-F). El XBRL de `cuentas.mjs --sec` no trae el último 20-F a tiempo: el último año, del 20-F.
