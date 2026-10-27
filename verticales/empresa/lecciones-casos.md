@@ -77,3 +77,4 @@ No se lee entero: busca con `grep -n -i` la palabra del caso (arrendamiento, ant
 ## Bancos (27-oct-2026: Itaú, BTG)
 - El motor no tiene modelo de bancos: calidad = ROE recurrente − Ke (misma regla ≥ 4,5 y niveles); valor intrínseco por exceso de rentabilidad con P/VC justificado de contraste, en `valoracion-banco.md`. En el motor: deuda, caja y minoritarios a 0 (ROIC = ROE), capex = retención, amortización 0: el DCF queda en modelo de dividendos y cuadra con el exceso de rentabilidad (±2 %). La regla de 12 meses (BPA × PER) sí vale.
 - Bolsas con cámara (B3): el fondo de comercio puede superar al capital invertido; el ROIC sin fondo de comercio no sirve y hay que decirlo.
+- Filial con oferta de canje de la matriz (Santander Brasil, 27-oct-2026): el precio sigue al valor de canje (ratio × precio de la matriz × tipo de cambio) y la regla de 12 meses no da señal; calcularlo y decirlo. Antes de dar un ADR por deslistado, comprobarlo en EDGAR.

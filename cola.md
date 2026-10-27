@@ -11,7 +11,7 @@ Solo lo pendiente. Lo cerrado está en `archivo/` (índice en `archivo/HISTORICO
 
 **Novena hora: cerrada el 15-oct** (`informes/novena-hora-2026-10-15/`: Universal Music bajó a Mantener con la prueba del BPA −10 %; Neurocrine comprada el 15-oct). No se arranca otra tanda value hasta que el usuario la pida.
 
-**Brasil (B3, Itaú, BTG, Sabesp): hecha el 27-oct a petición de Hotis** (`informes/b3-2026-10-27/`, `itau-unibanco-2026-10-27/`, `btg-pactual-2026-10-27/`, `sabesp-2026-10-27/`: las cuatro Mantener, ninguna compra; ninguna pasa ROIC − WACC (o ROE − Ke) ≥ 4,5 con el bono en reales del 26-oct).
+**Brasil (B3, Itaú, BTG, Sabesp, Santander Brasil): hecha el 27-oct a petición de Hotis** (`informes/b3-2026-10-27/`, `itau-unibanco-2026-10-27/`, `btg-pactual-2026-10-27/`, `sabesp-2026-10-27/`, `santander-brasil-2026-10-27/`: las cinco Mantener, ninguna compra; ninguna pasa ROIC − WACC (o ROE − Ke) ≥ 4,5 con el bono en reales del 26-oct).
 
 **Regeneron (REGN): hecha el 24-oct a petición de Hotis** (`informes/regeneron-2026-10-24/`: Mantener, no compra; lo sería a ≤677,23 USD).
 
