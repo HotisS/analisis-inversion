@@ -1,0 +1,14 @@
+{
+  "_nota": "Laboratorios Farmacéuticos Rovi (ESEF, LEI 95980020140005936480). Cuenta por naturaleza; la nota A usa el coste de ventas de la propia Rovi (aprovisionamientos + variación de existencias) y como gastos_generales el total de personal + otros gastos − trabajos para el inmovilizado (incluye I+D: 2025 = 240,7 SG&A + 37,8 I+D). Cotejado el 27-oct-2026 contra la nota de resultados 2025 y las cuentas 2025: ingresos, EBIT, BAI, impuestos, beneficio, BPA, activo, pasivo, caja, existencias y flujos coinciden. rovi:Aprovisionamientos (ESEF 2021-2022) viene con signo negativo, al revés que RawMaterialsAndConsumablesUsed: revisar el coste de ventas de 2020-2021 si se regenera. Las claves que empiezan por _ son documentación y cuentas.mjs las ignora.",
+  "_diferencias_con_la_nota": {
+    "balance.deuda_financiera": "El XBRL (Borrowings) incluye los pasivos por arrendamiento (15,7 M en 2025; 16,1 en 2024; 18,8 en 2023; 17,9 en 2022; 17,7 en 2021) y derivados; la nota A los separa en `arrendamientos` con la nota 18 de la deuda financiera.",
+    "cuenta.bpa 2020": "El ESEF 2021 etiqueta el BPA de 2020 como 1100 (error de escala): es 1,10 EUR.",
+    "cuenta.dpa": "El XBRL da el dividendo pagado en el año; la nota A usa el dividendo con cargo a cada ejercicio (nota de dividendos).",
+    "flujos.recompras": "PaymentsToAcquireOrRedeemEntitysShares es solo la compra bruta de autocartera; Rovi revende acciones propias continuamente (ProceedsFromSaleOrIssueOfTreasuryShares). La nota A usa compras − reventas.",
+    "flujos.adquisiciones": "PurchaseOfInterestsInInvestmentsAccountedForUsingEquityMethod (Terafront Farmatech 19,1 M en 2024).",
+    "balance.pasivos_contrato": "Suma corriente + no corriente (anticipos de clientes de la CDMO)."
+  },
+  "coste_ventas": [{ "partes": [["ifrs-full:RawMaterialsAndConsumablesUsed", "rovi:Aprovisionamientos"], ["ifrs-full:ChangesInInventoriesOfFinishedGoodsAndWorkInProgress"]], "nombres": ["aprovisionamientos", "variación de existencias"] }],
+  "reservas": [{ "suma": ["rovi:ResultadosDeEjerciciosAnterioresYReservasVoluntariasExcluyendoElResultadoDelEjercicio", "rovi:PorcionDeGananciasAcumuladasRelacionadasConElPeriodoRelevanteOPeriodoPrevioALaFechaRelevante"] }],
+  "adquisiciones": ["ifrs-full:PurchaseOfInterestsInInvestmentsAccountedForUsingEquityMethod"]
+}
