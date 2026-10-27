@@ -1,0 +1,4952 @@
+{
+  "meta": {
+    "fecha_corte": "2026-10-27",
+    "divisa": "BRL",
+    "divisa_cotizacion": "BRL",
+    "tipo_cambio": 1,
+    "unidades": "millones",
+    "cierre_ejercicio_mes": 12,
+    "etiqueta_ejercicio": "fin",
+    "normas_contables": "NIIF (IFRS, CPC en Brasil)",
+    "formato_cuenta": "funcion",
+    "limitaciones": "Divisa de las cuentas, de la valoración y de la cotización: BRL (B3SA3, Novo Mercado). Precio: cierre de São Paulo del 26-oct-2026 (15,07 BRL), el día de la caída tras la victoria de Lula del 25-oct; a la hora del análisis no había cierre del 27-oct. El ADR BOLSY (OTC, 1 ADR = 3 acciones) cerró a 8,38 USD, equivalente a 15,10 BRL con 5,403 BRL/USD [24, 31]. B3 no presenta 20-F: cuentas de la CVM (DFP 2018-2025 e ITR 1T26-2T26, datos abiertos) y releases de la empresa. 2016-2017 no son comparables (fusión con Cetip en marzo de 2017 y cambio de presentación de ingresos): la serie empieza en 2018. BPA de 2018-2019 divididos por 3 por el desdoblamiento de 2021. El balance quita de la caja, del activo y del pasivo las garantías en efectivo de los participantes de la cámara (2.655 M) y los proventos en custodia (184 M), dinero de clientes, como en HKEX, CME y LSEG. La historia del PER usa el beneficio recurrente de B3 (suma la amortización de intangibles de Cetip y quita no recurrentes), con 2024 y 2025 estimados con los trimestres publicados. Consenso y objetivos de los analistas anteriores a la segunda vuelta. No se ajustan los recursos propios que B3 dedica a las salvaguardas de la cámara (importe no localizado). Los comparables son de Yahoo Finance del 26-oct en BRL a los cambios del día.",
+    "controles_explicados": [
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "explicacion": "El 5,5 % es nominal en BRL: inflación esperada del Focus del 4,1 % para 2027 (3,5-3,7 % para 2028-2029) más ≈ 1,4 puntos reales, dentro del rango del encargo (inflación más 0-1,5 puntos) y muy por debajo de la tasa libre (15,4 %) [36]. El control está pensado para divisas de inflación baja."
+      },
+      {
+        "control": "Convicción frente a la sugerida por los criterios",
+        "explicacion": "Los criterios dan «Media»; ponemos «Baja» porque el WACC cambió 2,5 puntos en un día con la tasa libre y el precio cayó un 36 %: la señal depende de una tasa de descuento en plena dislocación, y con la tasa previa a la elección la calidad pasaría el filtro (ver la sensibilidad del WACC)."
+      }
+    ],
+    "huecos": [
+      {
+        "seccion": "balance",
+        "campo": "vencimientos",
+        "tipo": "Complemento",
+        "intentos": "1) Datos abiertos de la CVM (sin nota de deuda); 2) release 2T26 (solo el 83 % a largo plazo); 3) notas explicativas de la DFP 2025 (PDF no descargado)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "balance",
+        "campo": "rating",
+        "tipo": "Complemento",
+        "intentos": "1) Release 2T26 y 4T25 (no lo citan); 2) datos abiertos de la CVM (no lo traen); 3) no se buscó en Moody's o S&P por tiempo",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "negocio",
+        "campo": "segmentos (2018-2023 y resultado por segmento)",
+        "tipo": "Complemento",
+        "intentos": "1) DFP 2025 (segmentación nueva desde 2024); 2) releases 4T25 y 2T26 (solo ingresos); 3) DFP 2023 con la segmentación antigua, no comparable",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "sector",
+        "campo": "tamano y serie del mercado",
+        "tipo": "Núcleo",
+        "intentos": "1) Releases de B3 (volúmenes, no tamaño en BRL); 2) ficha sectorial del repo (no hay de bolsas emergentes); 3) informes de las comparables (otro perímetro)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "esg",
+        "campo": "calificaciones",
+        "tipo": "Complemento",
+        "intentos": "1) Release 2T26 (solo índices DJSI); 2) release 4T25; 3) no se buscó en MSCI/Sustainalytics por tiempo",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "consejo completo, comisiones y votos de remuneración",
+        "tipo": "Núcleo",
+        "intentos": "1) ri.b3.com.br (Formulário de Referência no descargado por tiempo); 2) datos abiertos de la CVM (FRE no bajado); 3) prensa (solo el presidente del consejo)",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "accionistas significativos",
+        "tipo": "Complemento",
+        "intentos": "1) Composición de capital de la CVM (solo totales y tesorería); 2) Yahoo (68 % institucional, sin nombres); 3) Formulário de Referência no descargado",
+        "decision": "Omitido"
+      },
+      {
+        "seccion": "gobierno",
+        "campo": "insiders (operaciones de directivos de 12 meses)",
+        "tipo": "Complemento",
+        "intentos": "1) Formulários consolidados del art. 11 (CVM) no descargados; 2) prensa: sin compras o ventas relevantes citadas; 3) releases: no las mencionan",
+        "decision": "Omitido"
+      }
+    ]
+  },
+  "identificacion": {
+    "nombre": "B3 S.A. – Brasil, Bolsa, Balcão",
+    "nombre_corto": "B3",
+    "ticker": "B3SA3",
+    "isin": "BRB3SAACNOR6",
+    "mercado": "B3 (Novo Mercado); ADR nivel I en OTC (BOLSY, 1 ADR = 3 acciones)",
+    "indice_referencia": "Ibovespa",
+    "pais": "Brasil",
+    "pais_iso": "BR",
+    "sector": "Finanzas",
+    "industria": "Bolsas e infraestructura de mercados",
+    "sede": "São Paulo",
+    "fundacion": "2017",
+    "empleados": null,
+    "web": "https://ri.b3.com.br",
+    "precio": 15.07,
+    "fecha_precio": "2026-10-26",
+    "acciones": 4998.3,
+    "capitalizacion_publicada": 74990,
+    "free_float_pct": null,
+    "max_52s": 24.28,
+    "min_52s": 11.83,
+    "volumen_medio_diario": "≈ 900 M BRL/día (3 meses; 49 M de acciones)",
+    "proximos_resultados": "2026-11-12"
+  },
+  "resumen": {
+    "recomendacion": "Mantener",
+    "conviccion": "Baja",
+    "justificacion_recomendacion": null,
+    "horizonte": "12 meses",
+    "sintesis": "**La recomendación y por qué.** Mantener con convicción baja: no comprar, y si estuviera en cartera se vendería (por calidad y por valor). El objetivo a 12 meses es de 17,52 BRL frente a un precio de 15,07 (cierre del 26-oct, el día de la caída tras la victoria de Lula): rentabilidad ponderada del 18,2 % y del 15,8 % en el base, con dividendo. Pero el valor intrínseco (10,50) queda un 30 % por debajo del precio, y el ROIC del 23,3 % supera al WACC en BRL (19,75 %) en solo 3,6 puntos, por debajo de los 4,5 del método. La señal depende de la tasa: con el bono a 10 años de antes de la elección (12,98 %) el ROIC − WACC sería de 5,9 puntos, pero el valor intrínseco (11,88) seguiría bajo el precio. La convicción es baja porque la señal depende de una tasa de descuento que se movió 2,5 puntos en un día; subiría si el bono se estabiliza y el gobierno aclara la política fiscal, y bajaría si se gravan los dividendos o desaparecen los JCP.\n\n**El WACC del escáner.** El barrido del 26-oct daba ROIC − WACC de −4,1 con 3 puntos de prima país sumados a una tasa en BRL: el riesgo país contado dos veces. Con el WACC correcto (tasa libre en BRL del 15,435 %, beta 1,10, prima del 5,5 %, sin prima adicional) la diferencia es +3,6: mejor, pero aún bajo el umbral.\n\n**El negocio.** Monopolio de hecho de la bolsa, la compensación y el depósito de Brasil, con un margen EBITDA del 70 %, capex del 3 % y reparto del 90-110 % [1, 22]. Sostenibilidad: **Sí** (6,9 % de crecimiento nominal proyectado, por debajo del 11 % de 2018-2025). Sin fondo de comercio el ROIC no tiene sentido (el capital operativo es negativo); sin el de Cetip sería ≈ 40 %.\n\n**Valoración.** DCF de 8,46 (−43,9 %); el precio descuenta una rentabilidad del 13,3 %, por debajo del propio bono. Con la prima implícita de Damodaran (4,20 %), 11,14. Frente a las bolsas del mundo cotiza a la mitad (11,4 veces el beneficio frente a 22,6): es el precio del riesgo Brasil.\n\n**Lula.** La caída (−36 %, Ibovespa −13,9 %, real −8 %, bono +2,5 puntos) no trae noticia propia de B3: es el miedo a impuestos sobre dividendos y JCP y a una Selic más alta más tiempo [25, 26, 28]. Precio y noticias: **retrasa** hasta que el gobierno concrete la política fiscal o hasta 10,50.\n\n**Qué cambiaría la decisión.** Comprar solo por debajo de 10,50 y con el ROIC − WACC por encima de 5 (bono a 10 años por debajo de ≈ 13,5 %); vender por encima de 19,80.",
+    "tesis": "B3 es el monopolio de hecho de la bolsa, la compensación y el depósito de Brasil, con un margen EBITDA del 70 %, capex del 3 % de los ingresos y un reparto del 90-110 % del beneficio [1, 22]. Gana con el volumen y la inflación y no necesita capital. Pero valorada en reales con el bono al 15,4 % y un WACC del 19,75 %, ni siquiera tras caer un 36 % el precio queda por debajo de su valor: el DCF da 8,46 y el valor intrínseco ponderado, 10,50.",
+    "vision_diferencial": {
+      "mercado_descuenta": "Una rentabilidad del 13,3 % anual, por debajo del bono a 10 años: el mercado no cree que los tipos se queden en el 15 % o paga por un negocio de monopolio que en BRL no rinde lo que la deuda del Estado.",
+      "nuestra_vision": "Que el negocio es de calidad pero el precio no compensa el riesgo Brasil con la curva actual, y que el cambio fiscal de Lula puede quitar el escudo de los JCP.",
+      "por_que": "El ROIC del 23 % apenas supera el WACC en BRL (3,6 puntos) y el valor intrínseco queda un 30 % bajo el precio incluso con la prima implícita del mercado."
+    },
+    "a_favor": [
+      "**Monopolio y margen**: única bolsa, cámara y depósito de Brasil, margen EBITDA del 70 % [1, 5].",
+      "**Barata frente a su historia y al sector**: 12,8 veces el BPA recurrente del año próximo frente a 13,8 de mediana y 22,6 de las bolsas del mundo [19].",
+      "**Reparto del 90-110 %** y recompra de hasta el 4,5 % del capital [22].",
+      "**Récord de volumen en 2026**: ingresos netos +14,4 % en el 1S26 [5]."
+    ],
+    "en_contra": [
+      "**Valor intrínseco muy bajo el precio**: 10,50 frente a 15,07 con el bono al 15,4 %.",
+      "**ROIC − WACC de 3,6 puntos**, bajo el 4,5 del método.",
+      "**Riesgo fiscal**: impuestos sobre dividendos y JCP tras la victoria de Lula [26, 28].",
+      "**BPA un 10 % peor** deja la rentabilidad en 6,7 %."
+    ],
+    "que_vigilar": "Las primeras medidas fiscales del gobierno electo, el bono a 10 años (por debajo del 13,5 % la calidad pasaría el filtro) y los volúmenes de contado tras la elección.",
+    "cambiaria_recomendacion": [
+      "Si el precio baja de 10,50 BRL (el valor intrínseco) y el bono a 10 años vuelve por debajo del 13,5 % (ROIC − WACC ≥ 5), pasaría a Comprar.",
+      "Si el gobierno grava los dividendos o elimina los JCP, bajaríamos el BPA un 5-8 % y el objetivo con él.",
+      "Por encima de 19,80 BRL, Vender."
+    ],
+    "kpis_seguimiento": [
+      {
+        "kpi": "Bono de Brasil a 10 años",
+        "nivel_actual": "15,435 % (26-oct)",
+        "umbral_alerta": "> 16 %",
+        "por_que": "Decide el WACC y la calidad."
+      },
+      {
+        "kpi": "Volumen medio diario de contado",
+        "nivel_actual": "31.310 M (2T26)",
+        "umbral_alerta": "< 25.000 M",
+        "por_que": "El 40 % de los ingresos ligados al ciclo."
+      },
+      {
+        "kpi": "Tipo efectivo",
+        "nivel_actual": "≈ 29-30 %",
+        "umbral_alerta": "> 33 %",
+        "por_que": "Mide el efecto de JCP y CSLL."
+      },
+      {
+        "kpi": "Margen EBITDA recurrente",
+        "nivel_actual": "70,1 % (2T26)",
+        "umbral_alerta": "< 67 %",
+        "por_que": "Disciplina de costes."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "historia": {
+    "resumen": "B3 nace en marzo de 2017 de la combinación de BM&FBovespa (que ya unía desde 2008 la Bolsa de São Paulo y la de mercadorias e futuros) con Cetip, el registro y depósito de renta fija y de gravámenes de vehículos [7]. Es la única bolsa de Brasil: negocia, compensa, liquida y custodia acciones, derivados y renta fija, y registra la mayor parte de los títulos de deuda y de los gravámenes de vehículos del país. Cotiza en el Novo Mercado (una sola clase de acciones, sin accionista de control). Desde 2020 compró empresas de datos (Neoway en 2021, Neurotech en 2023) y en 2024 reorganizó la información por segmentos con Trillia como marca de datos [1]. En 2026 cambió de consejero delegado (Christian Egan sustituye a Gilson Finkelsztain tras nueve años) [17].",
+    "hitos": [
+      {
+        "anio": "2008",
+        "hito": "Fusión de Bovespa y BM&F (BM&FBovespa)."
+      },
+      {
+        "anio": "2017",
+        "hito": "Combinación con Cetip: nace B3 [7]."
+      },
+      {
+        "anio": "2020",
+        "hito": "Récord de inversores particulares y de volumen con la Selic en el 2 %."
+      },
+      {
+        "anio": "2021",
+        "hito": "Desdoblamiento de 3 por 1 y compra de Neoway."
+      },
+      {
+        "anio": "2022",
+        "hito": "Fin del beneficio fiscal de la amortización del ágio de Cetip (2T22) [7]."
+      },
+      {
+        "anio": "2023",
+        "hito": "Compra de Neurotech; los volúmenes caen con la Selic al 13,75 %."
+      },
+      {
+        "anio": "2025",
+        "hito": "Nueva tarifa de renta variable, opciones semanales de Ibovespa y contratos de eventos financieros [6]."
+      },
+      {
+        "anio": "2026",
+        "hito": "Primer IPO en cinco años, duplicata escritural, stablecoin B3RL en pruebas, venta de Dimensa y nuevo consejero delegado (Christian Egan) [5]."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "negocio": {
+    "segmentos": [
+      {
+        "nombre": "Mercados",
+        "descripcion": "Derivados (tipos, índices, divisa, cripto), renta variable (negociación, compensación y custodia), renta fija y crédito, préstamo de títulos.",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2024",
+            "ingresos": 7196,
+            "resultado": null
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 7415,
+            "resultado": null
+          }
+        ]
+      },
+      {
+        "nombre": "Soluções para Mercado de Capitais",
+        "descripcion": "Datos de mercado, depositaria de contado, cotización y servicios a emisores.",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2024",
+            "ingresos": 611,
+            "resultado": null
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 672,
+            "resultado": null
+          }
+        ]
+      },
+      {
+        "nombre": "Soluções Analíticas de Dados (Trillia)",
+        "descripcion": "SNG (gravámenes de vehículos), inmobiliario, crédito y prevención de fraude (Neoway, Neurotech).",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2024",
+            "ingresos": 1018,
+            "resultado": null
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 1124,
+            "resultado": null
+          }
+        ]
+      },
+      {
+        "nombre": "Tecnologia e Plataformas",
+        "descripcion": "Uso de sistemas de balcão, servicios para fondos, co-location.",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2024",
+            "ingresos": 1664,
+            "resultado": null
+          },
+          {
+            "periodo": "2025",
+            "ingresos": 1909,
+            "resultado": null
+          }
+        ]
+      },
+      {
+        "nombre": "Otros e impuestos sobre ingresos",
+        "descripcion": "Otros ingresos y reversión de provisiones menos PIS, Cofins e ISS (los segmentos se publican en bruto).",
+        "tipo_resultado": null,
+        "historico": [
+          {
+            "periodo": "2024",
+            "ingresos": -976,
+            "resultado": null
+          },
+          {
+            "periodo": "2025",
+            "ingresos": -1053,
+            "resultado": null
+          }
+        ]
+      }
+    ],
+    "geografias": [],
+    "geografias_criterio": null,
+    "kpis": [
+      {
+        "kpi": "Volumen medio diario de contado (ADTV)",
+        "valor_anterior": "26.067 M BRL (2T25)",
+        "valor_actual": "31.310 M BRL (2T26)",
+        "variacion": "+20,1 %",
+        "comentario": "Acciones +21,2 %, BDR +41,8 %, fondos cotizados +73,6 % [5]."
+      },
+      {
+        "kpi": "Contratos medios diarios de derivados (ADV)",
+        "valor_anterior": "12,1 M (2T25)",
+        "valor_actual": "11,1 M (2T26)",
+        "variacion": "−8,3 %",
+        "comentario": "Por los futuros de bitcoin; tipos en BRL +6,7 % [5]."
+      },
+      {
+        "kpi": "Receita por contrato (RPC) media",
+        "valor_anterior": "1,134 BRL",
+        "valor_actual": "1,180 BRL",
+        "variacion": "+4,1 %",
+        "comentario": "Mezcla con menos opciones de IDI [5]."
+      },
+      {
+        "kpi": "Margen de negociación y postnegociación de contado",
+        "valor_anterior": "3,159 pb",
+        "valor_actual": "3,074 pb",
+        "variacion": "−0,085 pb",
+        "comentario": "Escalado por volumen [5]."
+      },
+      {
+        "kpi": "Inversores individuales en la depositaria (media)",
+        "valor_anterior": "5,335 M",
+        "valor_actual": "5,667 M",
+        "variacion": "+6,2 %",
+        "comentario": "[5]"
+      },
+      {
+        "kpi": "Stock medio de Tesouro Direto",
+        "valor_anterior": "164.000 M BRL",
+        "valor_actual": "236.000 M BRL",
+        "variacion": "+43,7 %",
+        "comentario": "Con tipos altos el ahorro va a renta fija, donde B3 también cobra [5]."
+      }
+    ],
+    "descripcion": "B3 es la infraestructura de mercado de Brasil: bolsa de acciones y derivados, cámara de compensación central, depositaria de valores, registro de renta fija y de derivados de balcão, y proveedor de datos [5]. Mercados aportó el 67 % de los ingresos brutos de 2025 (derivados, renta variable, renta fija y crédito, préstamo de títulos); Tecnologia e Plataformas el 17 % (uso de los sistemas de balcão por bancos y fondos, servicios a fondos); Trillia el 10 % (registro de gravámenes de vehículos SNG, datos de crédito y fraude) y Soluções para Mercado de Capitais el 6 % (datos de mercado, depositaria, cotización) [1]. Sus clientes son bancos, corretoras, gestoras, emisores, financieras de automóviles y, a través de ellos, 5,7 millones de inversores particulares [5].",
+    "como_gana_dinero": "Cobra por operación (un margen en puntos básicos sobre el volumen de contado y una tarifa por contrato en derivados) y por stock (custodia, registro de renta fija, uso mensual de sistemas, gravámenes registrados), con tarifas que se ajustan por inflación cada año [5]. Alrededor del 60 % de los ingresos depende del ciclo del mercado (volúmenes) y el resto es recurrente [5]. Los costes son casi fijos (2.346 M de gastos ajustados en 2025, que crecen cerca del IPCA), así que el margen EBITDA recurrente (≈ 70 %) sube con los volúmenes [6]. La caja propia rinde el CDI, y la deuda, en su mayoría, también lo paga: el efecto neto de los tipos sobre el resultado financiero es pequeño. Los tipos altos sí mueven el negocio: menos volumen en acciones y más en renta fija y derivados de tipos.",
+    "clientes": "No hay un cliente que pese de forma significativa (no se publica concentración). La relación es casi obligatoria: B3 es la única bolsa y cámara del país, y la mayor parte del registro de renta fija privada y de gravámenes de vehículos pasa por sus sistemas [5]. El poder de precio se ve en las tarifas ajustadas por inflación (depositaria y cotización en 2026) y en que el margen de contado ha bajado poco (3,07 pb) pese a los descuentos por volumen [5]. El riesgo de precio viene del regulador y de los clientes grandes: la CVM y el Banco Central vigilan las tarifas y han abierto la puerta a otras infraestructuras."
+  },
+  "sector": {
+    "definicion": "El mercado relevante es la **infraestructura de mercados de capitales de Brasil** (negociación, compensación, depósito y registro de valores y derivados), donde B3 es casi monopolista; no hay una fuente independiente que lo mida en reales, así que el tamaño se aproxima con los ingresos de B3 en Mercados y con los volúmenes de mercado que publica la propia empresa [5]. Como referencia mundial, las bolsas cotizadas comparables (HKEX, CME, ICE, Nasdaq, Cboe, LSEG, BMV, SGX, ASX) facturan entre 1.300 y 11.000 M USD con márgenes operativos del 35-76 % [14].",
+    "tamano": "Sin fuente independiente en BRL: el contado de acciones de Brasil negoció 31.310 M BRL al día en el 2T26, sobre una capitalización media de 5,15 billones BRL; derivados de balcão con un stock de 8,9 billones [5].",
+    "unidad_serie": null,
+    "serie": [],
+    "tcac_historico_pct": null,
+    "tcac_previsto_pct": null,
+    "cr5_pct": null,
+    "estructura": "Concentrada",
+    "drivers": [
+      {
+        "driver": "Tipos de interés (Selic) y flujo hacia la renta variable",
+        "efecto": "+/−",
+        "horizonte": "Cíclico",
+        "evidencia": "Con la Selic al 2 % (2020-2021) los ingresos subieron a 9.248 M; con el 13,75 % (2023) bajaron a 8.930 M [1]."
+      },
+      {
+        "driver": "Volatilidad y cobertura (derivados de tipos y divisa)",
+        "efecto": "+",
+        "horizonte": "Cíclico",
+        "evidencia": "ADV de tipos en BRL en máximo histórico en mar-2026 por el conflicto de Oriente Medio [5]."
+      },
+      {
+        "driver": "Profundización de la renta fija privada y del Tesouro Direto",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Stock de deuda corporativa +14,4 % y Tesouro Direto +43,7 % en el 2T26 [5]."
+      },
+      {
+        "driver": "Diversificación a datos y tecnología",
+        "efecto": "+",
+        "horizonte": "Estructural",
+        "evidencia": "Ingresos recurrentes +17,3 % en el 2T26 [5]."
+      },
+      {
+        "driver": "Flujo extranjero y capitalización bursátil en BRL",
+        "efecto": "+/−",
+        "horizonte": "Cíclico",
+        "evidencia": "El margen de contado se cobra sobre el volumen en reales: el Ibovespa cayó un 13,9 % el 26-oct-2026 y el real un 8 % [25, 27]."
+      }
+    ],
+    "porter": [
+      {
+        "fuerza": "Rivalidad",
+        "intensidad": 1,
+        "justificacion": "Única bolsa y cámara de Brasil; los competidores potenciales (ATG, otras infraestructuras de registro) no tienen cuota relevante en las fuentes leídas."
+      },
+      {
+        "fuerza": "Poder de los clientes",
+        "intensidad": 3,
+        "justificacion": "Los grandes bancos y corretoras negocian descuentos por volumen y presionan por tarifas; el margen de contado baja con el volumen [5]."
+      },
+      {
+        "fuerza": "Poder de los proveedores",
+        "intensidad": 2,
+        "justificacion": "Personal y tecnología (nube); gastos ajustados que crecen cerca del IPCA [5]."
+      },
+      {
+        "fuerza": "Amenaza de entrada",
+        "intensidad": 2,
+        "justificacion": "Licencias de la CVM y del Banco Central, efecto red de la liquidez y de la cámara; el regulador quiere más competencia."
+      },
+      {
+        "fuerza": "Amenaza de sustitutos",
+        "intensidad": 2,
+        "justificacion": "Listados en el exterior (ADR, BDR) y negociación de balcão; los BDR y ETF se negocian en la propia B3 [5]."
+      }
+    ],
+    "ciclo": {
+      "posicion": "Contracción",
+      "comentario": "Hasta el 23-oct el ciclo era de expansión (ADTV +20 % en el 2T26, primer IPO en cinco años) [5]. La victoria de Lula del 25-oct lo da la vuelta: Ibovespa −13,9 % y real −8 % el 26-oct, DI de 2031 al 15,24 % (+2,7 puntos) y el mercado espera subidas de la Selic [25, 27]. En 2021-2023, con la Selic subiendo del 2 % al 13,75 %, los ingresos de B3 cayeron un 3,4 % en dos años y el BPA publicado bajó de 0,77 a 0,71 [1]; en 2020 subió. La volatilidad de los primeros meses suele subir los volúmenes de derivados."
+    },
+    "regulacion": "B3 está supervisada por la CVM y el Banco Central (infraestructura del mercado financiero). En 2025-2026 cambian tres cosas que tocan sus cifras: la Lei Complementar 224/2025 sube la CSLL desde el 2T26 (tipo nominal del 37 % en vez del 34 %) y obligó a actualizar el impuesto diferido (1.043,9 M en el 4T25) [5, 6]; desde 2026 se gravan los dividendos por encima de 50.000 BRL al mes en la persona física; y la duplicata escritural abre un mercado de registro nuevo con varias registradoras autorizadas [5]. Tras el 25-oct, el riesgo regulatorio es fiscal: el mercado teme más impuestos sobre dividendos y JCP o un impuesto sobre la riqueza, que bajarían el atractivo de la renta variable y el ahorro fiscal de B3 [28].",
+    "tendencias": "La tokenización (stablecoin B3RL en pruebas), los contratos de eventos y la negociación de BDR y ETF amplían la oferta sin depender del ciclo local [5]. La duplicata escritural y el registro de crédito son nuevas fuentes de ingresos recurrentes, pero con competencia de otras registradoras. La IA afecta poco a una infraestructura regulada; puede ayudar en datos (Trillia) y en costes.",
+    "confianza": "Baja"
+  },
+  "competencia": {
+    "cuota_pct": null,
+    "posicion": "**Única bolsa y cámara central de contraparte de Brasil**, y mayor registradora de renta fija privada y de gravámenes de vehículos del país; tercera bolsa de América por capitalización de sus listadas tras las de EE. UU. y Canadá (estimación propia) [5].",
+    "competidores": [
+      {
+        "nombre": "CME Group",
+        "pais": "EE. UU.",
+        "ticker": "CME",
+        "ingresos": 37584,
+        "cuota_pct": null,
+        "margen_ebit_pct": 65.9,
+        "comentario": "No compite en Brasil; referencia de margen operativo (Yahoo, últimos 12 meses), ingresos convertidos a BRL al 26-oct [14]."
+      },
+      {
+        "nombre": "Intercontinental Exchange",
+        "pais": "EE. UU.",
+        "ticker": "ICE",
+        "ingresos": 57045,
+        "cuota_pct": null,
+        "margen_ebit_pct": 52.6,
+        "comentario": "No compite en Brasil; referencia de margen operativo (Yahoo, últimos 12 meses), ingresos convertidos a BRL al 26-oct [14]."
+      },
+      {
+        "nombre": "Nasdaq",
+        "pais": "EE. UU.",
+        "ticker": "NDAQ",
+        "ingresos": 31229,
+        "cuota_pct": null,
+        "margen_ebit_pct": 50.6,
+        "comentario": "No compite en Brasil; referencia de margen operativo (Yahoo, últimos 12 meses), ingresos convertidos a BRL al 26-oct [14]."
+      },
+      {
+        "nombre": "HKEX",
+        "pais": "Hong Kong",
+        "ticker": "0388.HK",
+        "ingresos": 21695,
+        "cuota_pct": null,
+        "margen_ebit_pct": 76,
+        "comentario": "No compite en Brasil; referencia de margen operativo (Yahoo, últimos 12 meses), ingresos convertidos a BRL al 26-oct [14]."
+      },
+      {
+        "nombre": "LSEG",
+        "pais": "Reino Unido",
+        "ticker": "LSEG.L",
+        "ingresos": 69585,
+        "cuota_pct": null,
+        "margen_ebit_pct": 29,
+        "comentario": "No compite en Brasil; referencia de margen operativo (Yahoo, últimos 12 meses), ingresos convertidos a BRL al 26-oct [14]."
+      },
+      {
+        "nombre": "Bolsa Mexicana de Valores",
+        "pais": "México",
+        "ticker": "BOLSAA.MX",
+        "ingresos": 1301,
+        "cuota_pct": null,
+        "margen_ebit_pct": 47.8,
+        "comentario": "No compite en Brasil; referencia de margen operativo (Yahoo, últimos 12 meses), ingresos convertidos a BRL al 26-oct [14]."
+      }
+    ],
+    "foso": {
+      "veredicto": "Amplio",
+      "tendencia": "Estable",
+      "fuentes": [
+        {
+          "fuente": "Efectos de red",
+          "puntuacion": 5,
+          "evidencia": "Toda la liquidez de acciones y derivados listados de Brasil está en B3; 5,7 M de inversores en su depositaria [B1]."
+        },
+        {
+          "fuente": "Costes de cambio",
+          "puntuacion": 4,
+          "evidencia": "Bancos, fondos y corretoras conectados a sus sistemas de balcão (24.328 clientes de uso mensual) [B1]."
+        },
+        {
+          "fuente": "Intangibles (marca, patentes, licencias)",
+          "puntuacion": 4,
+          "evidencia": "Licencias de bolsa, cámara, depositaria y registradora de la CVM y el Banco Central."
+        },
+        {
+          "fuente": "Ventaja en costes",
+          "puntuacion": 4,
+          "evidencia": "Margen EBITDA recurrente del 70 %, por encima del 35-66 % operativo de las grandes bolsas comparables [A5, B4]."
+        },
+        {
+          "fuente": "Escala eficiente",
+          "puntuacion": 5,
+          "evidencia": "Un mercado de este tamaño no sostiene dos cámaras con la misma liquidez."
+        }
+      ]
+    },
+    "amenazas": "Tres amenazas, todas regulatorias o macro: (1) que la CVM y el Banco Central fuercen competencia en negociación o registro (probabilidad media a cinco años; el registro de duplicatas ya es abierto); (2) que la política fiscal tras las elecciones (impuestos sobre dividendos y JCP, riqueza) aleje el ahorro de la renta variable y quite a B3 el ahorro fiscal de sus JCP (media); (3) que la fuga de capital extranjero hunda la capitalización en reales y con ella el volumen de contado (media, cíclica) [25, 28].",
+    "confianza": "Media"
+  },
+  "financieros": {
+    "cuenta": [
+      {
+        "periodo": "2018",
+        "ingresos": 4832,
+        "coste_ventas": null,
+        "gastos_generales": 2433,
+        "ebitda": 3343,
+        "amortizaciones": 953,
+        "ebit": 2390,
+        "resultado_financiero": -52,
+        "bai": 2338,
+        "impuestos": 250,
+        "minoritarios": 1,
+        "beneficio_neto": 2087,
+        "gastos_financieros": 541,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": 9,
+        "bpa": 0.3388,
+        "dpa": 0.234,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 6160
+      },
+      {
+        "periodo": "2019",
+        "ingresos": 5908,
+        "coste_ventas": null,
+        "gastos_generales": 2679,
+        "ebitda": 4259,
+        "amortizaciones": 1030,
+        "ebit": 3229,
+        "resultado_financiero": 110,
+        "bai": 3339,
+        "impuestos": 626,
+        "minoritarios": -1,
+        "beneficio_neto": 2714,
+        "gastos_financieros": 446,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 0.4405,
+        "dpa": 0.442,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 6161.2
+      },
+      {
+        "periodo": "2020",
+        "ingresos": 8383,
+        "coste_ventas": null,
+        "gastos_generales": 2702,
+        "ebitda": 6641,
+        "amortizaciones": 1041,
+        "ebit": 5600,
+        "resultado_financiero": -84,
+        "bai": 5516,
+        "impuestos": 1365,
+        "minoritarios": -2,
+        "beneficio_neto": 4152,
+        "gastos_financieros": 460,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": 80,
+        "bpa": 0.6757,
+        "dpa": 0.678,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 6144.7
+      },
+      {
+        "periodo": "2021",
+        "ingresos": 9248,
+        "coste_ventas": null,
+        "gastos_generales": 2928,
+        "ebitda": 7374,
+        "amortizaciones": 1057,
+        "ebit": 6317,
+        "resultado_financiero": 199,
+        "bai": 6516,
+        "impuestos": 1799,
+        "minoritarios": 0,
+        "beneficio_neto": 4717,
+        "gastos_financieros": 730,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": 4,
+        "bpa": 0.7739,
+        "dpa": 0.776,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 6095.1
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 9092,
+        "coste_ventas": null,
+        "gastos_generales": 3519,
+        "ebitda": 6628,
+        "amortizaciones": 1056,
+        "ebit": 5572,
+        "resultado_financiero": 218,
+        "bai": 5790,
+        "impuestos": 1564,
+        "minoritarios": 1,
+        "beneficio_neto": 4226,
+        "gastos_financieros": 1594,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 0.7116,
+        "dpa": 0.386,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 5938.7
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 8930,
+        "coste_ventas": null,
+        "gastos_generales": 3686,
+        "ebitda": 6335,
+        "amortizaciones": 1090,
+        "ebit": 5245,
+        "resultado_financiero": 313,
+        "bai": 5558,
+        "impuestos": 1426,
+        "minoritarios": 1,
+        "beneficio_neto": 4132,
+        "gastos_financieros": 1475,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 0.7222,
+        "dpa": 0.446,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 5721.4
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 9513,
+        "coste_ventas": null,
+        "gastos_generales": 3395,
+        "ebitda": 6623,
+        "amortizaciones": 572,
+        "ebit": 6051,
+        "resultado_financiero": 73,
+        "bai": 6124,
+        "impuestos": 1547,
+        "minoritarios": 0,
+        "beneficio_neto": 4577,
+        "gastos_financieros": 1571,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": 68,
+        "bpa": 0.8344,
+        "dpa": 0.296,
+        "dpa_extraordinario": 0,
+        "acciones_diluidas": 5485.4
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 10068,
+        "coste_ventas": null,
+        "gastos_generales": 3436,
+        "ebitda": 7019,
+        "amortizaciones": 387,
+        "ebit": 6632,
+        "resultado_financiero": 314,
+        "bai": 6946,
+        "impuestos": 2359,
+        "minoritarios": 1,
+        "beneficio_neto": 4586,
+        "gastos_financieros": 1901,
+        "participadas_en_ebitda": null,
+        "no_recurrentes_en_ebitda": null,
+        "bpa": 0.8812,
+        "dpa": 0.584,
+        "dpa_extraordinario": 0.29,
+        "acciones_diluidas": 5204.3
+      }
+    ],
+    "ltm": {
+      "periodo": "LTM jun-26",
+      "fecha_fin": "2026-06-30",
+      "ingresos": 10777,
+      "ebitda": 7503,
+      "ebit": 7119,
+      "beneficio_neto": 5330,
+      "bpa": 1.05,
+      "dpa": null,
+      "dpa_extraordinario": null,
+      "fcf": null,
+      "participadas_en_ebitda": null,
+      "no_recurrentes_en_ebitda": null
+    },
+    "cambios_perimetro": [
+      {
+        "periodo": "2021",
+        "descripcion": "Compra de Neoway (datos y analítica, ≈ R$ 1.800 M en caja) en diciembre de 2021; base de la línea Trillia (Soluções Analíticas de Dados)."
+      }
+    ],
+    "comentario": "Los ingresos netos (receita líquida, tras PIS, Cofins e ISS) pasaron de 4.832 M BRL en 2018 a 10.068 M en 2025 [1, 3]: el salto de 2020-2021 (8.383 y 9.248 M) fue el auge de la bolsa con tipos del 2 %, y en 2022-2023 los ingresos bajaron con la Selic al 13,75 % (9.092 y 8.930 M) [2]. En 2024-2025 volvieron a crecer (+6,5 % y +5,8 %) por la diversificación: renta fija, datos (Trillia), tecnología y servicios para fondos [1, 6]. En el 1S26 los ingresos netos fueron de 5.639 M (+14,4 %): el volumen medio diario de contado subió un 20 % y los ingresos recurrentes un 17 % [4, 5]. El margen EBITDA publicado pasó del 69 % al 69,7 % en 2025; las amortizaciones cayeron de 1.090 M en 2023 a 387 M en 2025 al terminar de amortizarse los intangibles de la combinación con Cetip, y eso explica la subida del EBIT (de 5.245 a 6.632 M) más que el negocio [1, 7]. El beneficio neto de 2025 (4.586 M) lleva un cargo no recurrente de 1.043,9 M por actualizar el impuesto diferido de la amortización fiscal del ágio tras la subida de la CSLL, compensado en parte por 510 M de ahorro fiscal de un JCP extraordinario [6].",
+    "ajustes": "B3 publica un «lucro líquido recorrente» que suma la amortización de intangibles de compras (la de Cetip, ≈ 500-520 M netos al año hasta 2023) y quita partidas no recurrentes; es la base del consenso y la que usa este informe para el BPA a 12 meses [6, 7, 13]. Cifras del lucro recurrente: 4.766,6 M en 2022 y 4.601,3 M en 2023 [7]; 2024 ≈ 4.777 M (suma de trimestres: 1.130 [11], ≈ 1.220 [12], 1.226,0 y 1.201,0 [8]; estimación propia por trimestre de prensa); 2025 ≈ 5.123 M (≈ 1.126,7 del 1T25, derivado del +33,1 % del 1T26 [10]; 1.274,9; 1.257,5; 1.464,3 [5, 6]). En 2026: 1.499,6 M en el 1T y 1.376,6 M en el 2T [5]. Partidas no recurrentes recientes: impuesto diferido de 1.043,9 M y beneficio de JCP extraordinario de 510 M en el 4T25 [6]; plusvalía de 123,9 M por la venta del 37,5 % de Dimensa, 277,5 M de beneficio fiscal de JCP extraordinario y 40,5 M de costes del cambio de dirección en el 2T26 [5]. El impairment de 2018, 2020, 2021 y 2024 va en no recurrentes del EBITDA.",
+    "confianza": "Alta"
+  },
+  "trimestres": {
+    "items": [
+      {
+        "periodo": "4T24",
+        "ingresos": 2399,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": 1598,
+        "margen_ebitda_pct": 66.6,
+        "bpa": 0.23,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "1T25",
+        "ingresos": 2388,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": null,
+        "margen_ebitda_pct": null,
+        "bpa": 0.22,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "2T25",
+        "ingresos": 2542,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": 1716,
+        "margen_ebitda_pct": 67.5,
+        "bpa": 0.25,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "3T25",
+        "ingresos": 2486,
+        "crecimiento_pct": null,
+        "crecimiento_organico_pct": null,
+        "ebitda": 1727,
+        "margen_ebitda_pct": 69.5,
+        "bpa": 0.24,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "4T25",
+        "ingresos": 2652,
+        "crecimiento_pct": 10.5,
+        "crecimiento_organico_pct": null,
+        "ebitda": 1830,
+        "margen_ebitda_pct": 69,
+        "bpa": 0.29,
+        "vs_consenso": "Superior"
+      },
+      {
+        "periodo": "1T26",
+        "ingresos": 2873,
+        "crecimiento_pct": 20.3,
+        "crecimiento_organico_pct": null,
+        "ebitda": 2053,
+        "margen_ebitda_pct": 71.5,
+        "bpa": 0.3,
+        "vs_consenso": null
+      },
+      {
+        "periodo": "2T26",
+        "ingresos": 2766,
+        "crecimiento_pct": 8.8,
+        "crecimiento_organico_pct": null,
+        "ebitda": 1939,
+        "margen_ebitda_pct": 70.1,
+        "bpa": 0.28,
+        "vs_consenso": null
+      }
+    ],
+    "ultima_presentacion": "En el 2T26 (11-ago-2026) los ingresos totales fueron de 3.081,4 M BRL (+12,2 %) y los netos de 2.765,7 M (+8,8 %): los ingresos ligados al ciclo crecieron un 7,9 % y los recurrentes un 17,3 % [5]. El volumen medio diario de contado fue de 31.310 M (+20,1 %), con BDR +41,8 % y fondos cotizados +73,6 %, pero los derivados cayeron un 8,3 % en contratos (futuros de bitcoin −84,5 % tras subir las garantías exigidas) [5]. Hubo el primer IPO en cinco años (3.000 M) y 8.600 M de ampliaciones [5]. Los gastos ajustados subieron un 6,2 % (IPCA + 1,5 %); el EBITDA recurrente fue de 1.938,6 M (margen 70,2 %) y el lucro recurrente de 1.376,6 M (+8,0 %; BPA recurrente 0,28, +12,3 %) [5]. B3 vendió su 37,5 % de Dimensa por 665 M y pagó 1.106 M de JCP (750 M extraordinarios) y 196,9 M de recompras [5]. En junio anunció a Christian Egan como consejero delegado en sustitución de Gilson Finkelsztain; el mensaje de la dirección pasa de la eficiencia a «clientes, tecnología y personas» [5]. Frente al 4T25, el discurso cambia de los volúmenes (que en el 4T25 aún no se recuperaban) a la diversificación: datos para el mercado de capitales +28,4 %, servicios para fondos +31,4 %, duplicata escritural en producción desde julio y la stablecoin B3RL en pruebas [5, 6]. No hay transcripción de la conferencia en las fuentes leídas.",
+    "confianza": "Media"
+  },
+  "balance": {
+    "historico": [
+      {
+        "periodo": "2018",
+        "activo_total": 35501,
+        "activo_corriente": 5305,
+        "pasivo_corriente": 3585,
+        "pasivo_total": 10457,
+        "fondo_comercio": 22339,
+        "intangibles": 4796,
+        "inmovilizado_material": 627,
+        "existencias": 0,
+        "clientes": 324,
+        "proveedores": 191,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 6683,
+        "deuda_financiera": 4509,
+        "arrendamientos": 0,
+        "patrimonio_neto": 25033,
+        "minoritarios": 11,
+        "reservas": 3523
+      },
+      {
+        "periodo": "2019",
+        "activo_total": 36944,
+        "activo_corriente": 7386,
+        "pasivo_corriente": 4972,
+        "pasivo_total": 11543,
+        "fondo_comercio": 22416,
+        "intangibles": 4071,
+        "inmovilizado_material": 690,
+        "existencias": 0,
+        "clientes": 339,
+        "proveedores": 184,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 8426,
+        "deuda_financiera": 4365,
+        "arrendamientos": 0,
+        "patrimonio_neto": 25388,
+        "minoritarios": 13,
+        "reservas": 3870
+      },
+      {
+        "periodo": "2020",
+        "activo_total": 40561,
+        "activo_corriente": 11329,
+        "pasivo_corriente": 3906,
+        "pasivo_total": 16039,
+        "fondo_comercio": 22409,
+        "intangibles": 3276,
+        "inmovilizado_material": 809,
+        "existencias": 0,
+        "clientes": 412,
+        "proveedores": 221,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 12144,
+        "deuda_financiera": 7059,
+        "arrendamientos": 0,
+        "patrimonio_neto": 24510,
+        "minoritarios": 11,
+        "reservas": 3684
+      },
+      {
+        "periodo": "2021",
+        "activo_total": 46078,
+        "activo_corriente": 14641,
+        "pasivo_corriente": 6505,
+        "pasivo_total": 23658,
+        "fondo_comercio": 23604,
+        "intangibles": 3027,
+        "inmovilizado_material": 904,
+        "existencias": 0,
+        "clientes": 436,
+        "proveedores": 218,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 15647,
+        "deuda_financiera": 14198,
+        "arrendamientos": 0,
+        "patrimonio_neto": 22408,
+        "minoritarios": 11,
+        "reservas": 2527
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 42697,
+        "activo_corriente": 12232,
+        "pasivo_corriente": 4408,
+        "pasivo_total": 22413,
+        "fondo_comercio": 23697,
+        "intangibles": 2098,
+        "inmovilizado_material": 921,
+        "existencias": 0,
+        "clientes": 504,
+        "proveedores": 219,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 12816,
+        "deuda_financiera": 12111,
+        "arrendamientos": 0,
+        "patrimonio_neto": 20271,
+        "minoritarios": 12,
+        "reservas": 3896
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 45642,
+        "activo_corriente": 15064,
+        "pasivo_corriente": 8374,
+        "pasivo_total": 25355,
+        "fondo_comercio": 24459,
+        "intangibles": 1762,
+        "inmovilizado_material": 873,
+        "existencias": 0,
+        "clientes": 566,
+        "proveedores": 293,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 14627,
+        "deuda_financiera": 14009,
+        "arrendamientos": 0,
+        "patrimonio_neto": 20273,
+        "minoritarios": 13,
+        "reservas": 5651
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 41219,
+        "activo_corriente": 11163,
+        "pasivo_corriente": 5150,
+        "pasivo_total": 22836,
+        "fondo_comercio": 24334,
+        "intangibles": 1312,
+        "inmovilizado_material": 857,
+        "existencias": 0,
+        "clientes": 507,
+        "proveedores": 335,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 11708,
+        "deuda_financiera": 13228,
+        "arrendamientos": 0,
+        "patrimonio_neto": 18370,
+        "minoritarios": 13,
+        "reservas": 6916
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 44587,
+        "activo_corriente": 13811,
+        "pasivo_corriente": 5391,
+        "pasivo_total": 27123,
+        "fondo_comercio": 24359,
+        "intangibles": 1212,
+        "inmovilizado_material": 880,
+        "existencias": 0,
+        "clientes": 618,
+        "proveedores": 391,
+        "activos_contrato": null,
+        "pasivos_contrato": null,
+        "caja": 14707,
+        "deuda_financiera": 14945,
+        "arrendamientos": 0,
+        "patrimonio_neto": 17442,
+        "minoritarios": 22,
+        "reservas": 6808
+      }
+    ],
+    "vencimientos": [],
+    "liquidez": "Disponibilidades y aplicaciones de 19.291 M BRL a 30-jun-2026, de las que 2.655 M son garantías en efectivo de participantes de la cámara y 184 M proventos de títulos en custodia (no son de B3) [4, 5]. Endeudamiento bruto de 14.933 M (83 % a largo plazo), 2,0 veces el EBITDA recurrente de 12 meses [5].",
+    "rating": null,
+    "coste_deuda_pct": 12.7,
+    "vida_media_anios": null,
+    "otros_pasivos": "Las garantías depositadas por los participantes en las cámaras de B3 son en su mayoría títulos fuera del balance; la parte en efectivo (2.655 M a 30-jun-2026; 3.712 M en diciembre de 2025) figura como pasivo con su contrapartida en aplicaciones financieras y se quita de la caja, del activo y del pasivo de este informe [4]. Pasivo por impuesto diferido de 6.841 M, creado por la amortización fiscal del ágio (BM&FBovespa y Cetip): solo se pagaría si se vendiera el negocio, y no se trata como deuda [4, 6]. Provisiones para litigios fiscales, civiles y laborales de 655 M [4]. JCP declarado y pendiente de pago de 1.582 M a 30-jun-2026 (va al puente) [4]. Quedan ≈ 3.250 M de saldos de JCP de años anteriores por distribuir en próximos ejercicios con su ahorro fiscal (4.000 M al cierre de 2025 menos 750 M usados en el 2T26) [5, 6].",
+    "comentario": "La deuda bruta subió de 4.509 M en 2018 a 14.945 M en 2025 para financiar recompras (3.746 M en 2022, 3.835 M en 2024 y 3.008 M en 2025) y la compra de Neoway [1, 3]; la caja propia (sin garantías de terceros) se mantiene en 14.000-16.500 M, así que la deuda neta es casi nula (63 M en el puente de junio de 2026). El circulante comercial es pequeño (clientes 618 M frente a proveedores 391 M en 2025). El patrimonio baja de 25.033 M a 17.442 M por las recompras y la amortización de acciones; el ágio (24.359 M) es mayor que el patrimonio [1, 4].",
+    "confianza": "Alta"
+  },
+  "flujos": {
+    "historico": [
+      {
+        "periodo": "2018",
+        "flujo_operativo": 3983,
+        "capex": 271,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 1529,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 372
+      },
+      {
+        "periodo": "2019",
+        "flujo_operativo": 4594,
+        "capex": 297,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 51,
+        "desinversiones": 0,
+        "dividendos": 2062,
+        "recompras": 76,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 316
+      },
+      {
+        "periodo": "2020",
+        "flujo_operativo": 5688,
+        "capex": 442,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 12,
+        "desinversiones": 0,
+        "dividendos": 3884,
+        "recompras": 798,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 259
+      },
+      {
+        "periodo": "2021",
+        "flujo_operativo": 6473,
+        "capex": 381,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 1868,
+        "desinversiones": 0,
+        "dividendos": 6705,
+        "recompras": 729,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 597
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 5804,
+        "capex": 215,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 22,
+        "desinversiones": 12,
+        "dividendos": 2643,
+        "recompras": 3746,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 1300
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 5175,
+        "capex": 231,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 646,
+        "desinversiones": 1,
+        "dividendos": 2036,
+        "recompras": 2150,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 1243
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 5331,
+        "capex": 249,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 8,
+        "desinversiones": 3,
+        "dividendos": 2044,
+        "recompras": 3835,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 1389
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 6408,
+        "capex": 287,
+        "pagos_arrendamientos": 0,
+        "adquisiciones": 44,
+        "desinversiones": 5,
+        "dividendos": 1445,
+        "recompras": 3008,
+        "emision_acciones": 0,
+        "intereses_en_financiacion": 1495
+      }
+    ],
+    "comentario": "El flujo operativo de este informe es el «caixa gerado nas operações» menos el impuesto pagado, sin los movimientos de aplicaciones financieras, garantías de la cámara ni coberturas, que en la DFC de B3 van dentro de explotación y la hacen saltar de −637 M a 9.893 M según el año [1, 2]. Así medido, pasó de 3.983 M en 2018 a 6.408 M en 2025, por encima del beneficio neto todos los años porque la amortización y el impuesto diferido no son caja [1]. El capex es pequeño: 287 M en 2025 (2,9 % de los ingresos netos) y una guía de 260-350 M para 2026; B3 lleva a gasto parte de la modernización (451 M de desembolsos totales de tecnología en el 1S26) [5, 6]. Las compras grandes fueron Neoway (2021, 1.868 M) y Neurotech (2023, 646 M); la caja va sobre todo a JCP, dividendos y recompras (6.300 M en 2025, un 137 % del beneficio) [6]. 2018-2019 y los intereses de 2018-2021 son estimación propia (la DFP de esos años no separa el impuesto ni los intereses pagados).",
+    "confianza": "Media"
+  },
+  "calidad": {
+    "auditor": "PricewaterhouseCoopers Auditores Independentes",
+    "anios_auditor": null,
+    "opinion": "Favorable (DFP 2025)",
+    "comentario": "Las cuentas de la CVM cuadran con las notas de resultados (ingresos, balance, deuda bruta de 14,9 mil millones) [1, 5, 6]. Las diferencias entre beneficio publicado y recurrente vienen de cargos fiscales: el impuesto diferido del ágio (1.043,9 M en el 4T25, sin caja) y los JCP extraordinarios (510 M y 277,5 M de ahorro fiscal), que no se repiten [5, 6]. La amortización de intangibles de Cetip terminó en 2024, así que el BPA publicado de 2025-2026 ya se parece al recurrente salvo esos efectos. La remuneración en acciones es moderada (182,3 M en 2025, un 4 % del beneficio) [6]. Las cifras de balance quitan las garantías en efectivo de la cámara. El motor calcula Altman, Piotroski y Beneish sobre ese balance; con un ágio mayor que el patrimonio y caja casi igual a la deuda, el Altman Z no dice mucho de una infraestructura de mercado. Auditor: no verificado en el parecer (dato de memoria de la DFP; ver huecos).",
+    "senales": [
+      {
+        "senal": "Cargos fiscales no recurrentes grandes (impuesto diferido del ágio y JCP extraordinarios)",
+        "nivel": "Media",
+        "comentario": "Mueven el beneficio publicado un 10-20 % en algunos trimestres [5, 6]."
+      },
+      {
+        "senal": "Flujo operativo de la DFC mezclado con tesorería y garantías",
+        "nivel": "Baja",
+        "comentario": "Se reconstruye sin esos movimientos [1]."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "rentabilidad": {
+    "comentario": "El ROIC del motor (con el fondo de comercio, NOPAT sobre capital invertido) fue del 23,3 % en 2025 y del 20-23 % desde 2020, frente a un WACC del 19,75 %: diferencia de 3,6 puntos, por debajo de 4,5 (filtro del método). Con la tasa libre de antes de la elección (WACC 17,41 %) la diferencia sería de 5,9 puntos y pasaría el filtro; con el 13,5 % del encargo (WACC 17,90 %), de 5,4. Sin el fondo de comercio el ROIC no tiene sentido: el fondo de comercio (24.359 M, ≈ 14.400 M de la fusión BM&FBovespa y ≈ 7.900 M de Cetip) es mayor que el capital invertido (18.803 M en 2025), porque el circulante es negativo y el pasivo por impuesto diferido (6.841 M, nacido de amortizar fiscalmente ese fondo de comercio) resta capital: el capital operativo sin fondo de comercio es negativo y el rendimiento, infinito. Quitando solo el fondo de comercio de Cetip el ROIC sería ≈ 40 %. El filtro usa el del método, con fondo de comercio: 23,3 %. El ROE fue del 25,6 % [1, 4].",
+    "confianza": "Media"
+  },
+  "capital": {
+    "politica": "Guía de reparto para 2026 de entre el 90 % y el 110 % del beneficio, en JCP, dividendos y recompras, y programa de recompra de hasta 230 M de acciones (≈ 4,5 % del capital en circulación) para 2026-2027 [22]. Quedan ≈ 3.250 M de saldos de JCP de años anteriores por pagar en próximos ejercicios con su ahorro fiscal [5, 6]. En 2025 devolvió 6.300 M (3.000 M de JCP y 3.300 M de recompras, el 4,6 % del capital: payout del 137 %) [6]. Deuda bruta en torno a 2 veces el EBITDA recurrente [5].",
+    "adquisiciones": [
+      {
+        "anio": "2017",
+        "objetivo": "Cetip (registro, custodia y negociación de renta fija y gravámenes de vehículos)",
+        "importe": null,
+        "ev_ebitda": null,
+        "financiacion": "Caja y acciones",
+        "resultado": "Integrada; generó ≈ 7.900 M de ágio y ≈ 500 M netos al año de amortización de intangibles hasta 2023-2024; es la base de Renda Fixa, Trillia (SNG) y Tecnologia [1, 7]."
+      },
+      {
+        "anio": "2021",
+        "objetivo": "Neoway (datos y analítica)",
+        "importe": 1868,
+        "ev_ebitda": null,
+        "financiacion": "Caja",
+        "resultado": "Integrada en Trillia, que crece un 22 % en el 2T26 (en parte por el cambio de cobro del SNG) [5]."
+      },
+      {
+        "anio": "2023",
+        "objetivo": "Neurotech (crédito y prevención de fraude)",
+        "importe": 646,
+        "ev_ebitda": null,
+        "financiacion": "Caja",
+        "resultado": "Integrada en Trillia [5]."
+      },
+      {
+        "anio": "2026",
+        "objetivo": "Venta del 37,5 % de Dimensa (opción de venta)",
+        "importe": 665,
+        "ev_ebitda": null,
+        "financiacion": "Desinversión",
+        "resultado": "Plusvalía no recurrente de 123,9 M en el 2T26 [5]."
+      }
+    ],
+    "comentario": "Reparto casi total: 90-110 % del beneficio en 2026 entre dividendos, JCP y recompras, con un programa de hasta 230 M de acciones (≈ 4,5 %) [22]. Las acciones bajan de 6.160 M equivalentes en 2018 a 4.998 M en junio de 2026 [1, 4]. Deuda bruta de 14.933 M frente a 16.452 M de caja propia: caja neta de ≈ 1.500 M. No hay compras grandes desde Neoway (2021); Dimensa se vendió en 2026.",
+    "confianza": "Media"
+  },
+  "directivos": {
+    "equipo": [
+      {
+        "nombre": "Christian George Egan",
+        "cargo": "Consejero delegado (diretor-presidente)",
+        "desde": "2026",
+        "participacion_pct": null,
+        "trayectoria": "Más de 30 años en banca de inversión, mercados, tesorería y gestión de activos en Credit Suisse, Itaú, Tivio Capital y Santander Brasil [16]. Elegido el 19-may-2026; sin historial en el cargo."
+      },
+      {
+        "nombre": "Gilson Finkelsztain",
+        "cargo": "Consejero delegado saliente",
+        "desde": "2017",
+        "participacion_pct": null,
+        "trayectoria": "Dirigió B3 nueve años: integración de Cetip, diversificación a datos y recompras; sale en 2026 [16, 17]."
+      },
+      {
+        "nombre": "Caio Ibrahim David",
+        "cargo": "Presidente del consejo",
+        "desde": null,
+        "participacion_pct": null,
+        "trayectoria": "Presidente del consejo en el nombramiento de Egan [16]."
+      }
+    ],
+    "historial_guidance": [
+      {
+        "anio": "2024",
+        "guia": "Gastos ajustados (guía anual)",
+        "real": "En la parte baja del intervalo; +6,2 % (IPCA + 1,4 %) [8]",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2025",
+        "guia": "Gastos ajustados de 2.260-2.450 M; amortización de 340-400 M",
+        "real": "2.345,5 M y 387,0 M [6]",
+        "cumplida": "Sí"
+      },
+      {
+        "anio": "2026",
+        "guia": "Gastos ajustados de 2.400-2.600 M; capex de 260-350 M; reparto del 90-110 % [22]",
+        "real": "1S26: gastos ajustados 1.192 M (+5,7 %), capex 112 M [5]",
+        "cumplida": "Parcial"
+      }
+    ],
+    "comentario": "La guía de B3 es de gastos y reparto, no de ingresos, y la ha cumplido en 2024-2025 [6, 8]. El cambio de consejero delegado en 2026, tras nueve años, costó 40,5 M de gastos extraordinarios en el 2T26 (rescisiones y pactos de no competencia) [5]. El nuevo, Christian Egan, viene de la banca (Santander) y llega sin historial en B3; su primera guía será la de 2027 (diciembre). No hay información pública de un plan de sucesión más allá del relevo.",
+    "confianza": "Baja"
+  },
+  "gobierno": {
+    "consejo": [
+      {
+        "nombre": "Caio Ibrahim David",
+        "cargo": "Presidente del consejo",
+        "tipo": "Independiente",
+        "desde": null,
+        "comisiones": null
+      }
+    ],
+    "presidente_ceo_separados": true,
+    "presidente_ejecutivo": false,
+    "consejero_coordinador": null,
+    "una_accion_un_voto": true,
+    "operaciones_vinculadas_relevantes": false,
+    "variable_ligado_rentabilidad": null,
+    "auditoria_independiente": null,
+    "insiders_sin_operaciones": null,
+    "accionista_control": false,
+    "presidente_vinculado_control": false,
+    "cambios_cupula_24m": 1,
+    "voto_remuneracion_pct": null,
+    "voto_remuneracion_contra_pct": null,
+    "voto_remuneracion_contra_libre_pct": null,
+    "voto_cupula_pct": null,
+    "remuneracion_ceo": null,
+    "remuneracion": "El programa de incentivo a largo plazo en acciones costó 182,3 M en 2025 y 107,9 M en el 1S26, más 40,5 M de aceleración de planes y rescisiones por el cambio de dirección en el 2T26 [5, 6]. No se ha leído la propuesta de la junta (Formulário de Referência, sección 8) con las métricas y los votos: ver huecos.",
+    "accionistas": [
+      {
+        "nombre": "Autocartera",
+        "pct": 0.96,
+        "tipo": "Autocartera",
+        "variacion": "48,2 M de acciones de 5.046,5 M a 30-jun-2026 (35,7 M a 31-mar); se amortizan periódicamente [4]."
+      }
+    ],
+    "insiders": [],
+    "control_y_defensas": "B3 cotiza en el Novo Mercado: una sola clase de acciones ordinarias con voto, capital disperso y sin accionista de control ni pacto conocido; los estatutos limitan el derecho de voto de un accionista (no verificado el porcentaje en esta iteración) [4]. Como infraestructura del mercado, los cambios de control y de consejeros están sometidos a la CVM y al Banco Central.",
+    "alertas": [
+      "Cambio de consejero delegado en 2026 tras nueve años, con 40,5 M de costes extraordinarios [5]."
+    ],
+    "confianza": "Baja"
+  },
+  "consenso": {
+    "guidance": "Guía de 2026 (diciembre de 2025): gastos ajustados de 2.400-2.600 M BRL, capex de 260-350 M, desembolsos totales de 3.170-3.610 M y reparto del 90-110 % del beneficio, con un programa de recompra de hasta 230 M de acciones [22]. B3 no da guía de ingresos ni de beneficio. En el 1S26 los gastos ajustados fueron de 1.192,4 M (+5,7 %) y el capex de 112 M [5]. La guía de 2027 se publica normalmente en diciembre.",
+    "estimaciones": [
+      {
+        "periodo": "2026e",
+        "ingresos": 11390,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 1.2,
+        "dpa": null,
+        "fuente": "Yahoo Finance, 8 analistas (anterior a las elecciones) [19]"
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 12700,
+        "ebitda": null,
+        "ebit": null,
+        "bpa": 1.35,
+        "dpa": null,
+        "fuente": "Yahoo Finance, 8 analistas [19]"
+      }
+    ],
+    "recomendaciones": {
+      "n_analistas": 14,
+      "comprar": 10,
+      "mantener": 4,
+      "vender": 0,
+      "po_medio": 22.64,
+      "po_min": 16,
+      "po_max": 30
+    },
+    "revisiones": "Las estimaciones de Yahoo son anteriores al 25-oct: el BPA de 2026 apenas cambió en 90 días (1,207 → 1,202) y el de 2027 subió (1,308 → 1,346) [19]. El objetivo medio (22,64 BRL, 14 analistas, 10 comprar y 4 mantener) es de antes de la caída del 26-oct y queda un 50 % por encima del precio: es de esperar que se revise a la baja con la Selic más alta y el real más débil. Solo hay un proveedor gratuito con estimaciones; no se ha podido contrastar con MarketScreener ni con notas de bancos posteriores a las elecciones (hueco temporal).",
+    "base_ebitda": "NIIF",
+    "ajuste_ebitda_pct_ventas": null,
+    "confianza": "Baja"
+  },
+  "bolsa": {
+    "tipo_rentabilidad": "de precio (sin dividendos)",
+    "rentabilidades": [
+      {
+        "periodo": "En el año",
+        "accion_pct": 8.5,
+        "indice_pct": 27.7,
+        "sector_pct": 9.6
+      },
+      {
+        "periodo": "1 año",
+        "accion_pct": 20.3,
+        "indice_pct": 40.1,
+        "sector_pct": 20.2
+      },
+      {
+        "periodo": "3 años (anual.)",
+        "accion_pct": 10.4,
+        "indice_pct": 22.5,
+        "sector_pct": 15.9
+      },
+      {
+        "periodo": "5 años (anual.)",
+        "accion_pct": 4.5,
+        "indice_pct": 14.5,
+        "sector_pct": 10.7
+      },
+      {
+        "periodo": "10 años (anual.)",
+        "accion_pct": 9.3,
+        "indice_pct": 12.5,
+        "sector_pct": 10.6
+      }
+    ],
+    "anual": [
+      {
+        "anio": "2016",
+        "accion_pct": 51.5,
+        "indice_pct": 38.2
+      },
+      {
+        "anio": "2017",
+        "accion_pct": 38.1,
+        "indice_pct": 26.8
+      },
+      {
+        "anio": "2018",
+        "accion_pct": 17.7,
+        "indice_pct": 14.6
+      },
+      {
+        "anio": "2019",
+        "accion_pct": 60.3,
+        "indice_pct": 31.5
+      },
+      {
+        "anio": "2020",
+        "accion_pct": 44.2,
+        "indice_pct": 3.1
+      },
+      {
+        "anio": "2021",
+        "accion_pct": -46.1,
+        "indice_pct": -12.1
+      },
+      {
+        "anio": "2022",
+        "accion_pct": 18.6,
+        "indice_pct": 5.1
+      },
+      {
+        "anio": "2023",
+        "accion_pct": 10.1,
+        "indice_pct": 23.1
+      },
+      {
+        "anio": "2024",
+        "accion_pct": -29.1,
+        "indice_pct": -10.1
+      },
+      {
+        "anio": "2025",
+        "accion_pct": 34.6,
+        "indice_pct": 34.7
+      }
+    ],
+    "beta": 1.57,
+    "volatilidad_pct": 61.8,
+    "max_drawdown_pct": -38.4,
+    "tramo_drawdown": "2022-04-04 → 2024-11-28",
+    "posicion_corta_pct": null,
+    "comentario": "La acción cae un 36,3 % el 26-oct (hasta −50 % en la apertura, con circuit breaker del Ibovespa, −13,9 %) y pierde un 15,4 % en un mes, pero aún gana un 19,0 % en 12 meses: el 5-oct había subido a 23,30 con la primera vuelta y el 23-oct cerró a 23,65 [18, 26, 27]. Beta de 5 años de 1,57 frente al BOVA11, volatilidad de 60 días del 106 % y caída máxima del 38,4 % [18].",
+    "confianza": "Media",
+    "contexto": {
+      "movimiento": {
+        "fecha": "2026-10-26",
+        "var_1m_pct": -15.4,
+        "var_3m_pct": -4.1,
+        "var_6m_pct": -19.5,
+        "var_12m_pct": 19,
+        "dist_max_52s_pct": -36.4,
+        "dist_min_52s_pct": 22.2,
+        "dist_max_historico_pct": -36.4,
+        "tendencia": "lateral",
+        "volatilidad_60d_pct": 106,
+        "avisos": []
+      },
+      "movimientos_fuertes": [
+        {
+          "periodo": "oct-2026 (26-oct)",
+          "var_pct": -36.3,
+          "causa": "Lula gana la segunda vuelta del 25-oct con el 51,79 % frente a Flávio Bolsonaro: el mercado había comprado la alternancia tras la primera vuelta. El 26-oct el EWZ cayó un 18-27 % antes de abrir, el Ibovespa un 13,9 % con circuit breaker, los bancos un 14-29 %, el real un 8-10 % (5,403 por dólar) y el bono a 10 años subió del 12,98 % al 15,44 % [20, 25, 27, 29]. B3, como valor más líquido y termómetro del mercado de capitales, cayó un 36 % sin noticia propia; se temen impuestos sobre dividendos y JCP, un impuesto a las grandes fortunas y más control estatal [26, 28].",
+          "veredicto": "retrasa",
+          "condicion": "Hasta que el gobierno electo concrete su política fiscal (tributación de dividendos y JCP, marco fiscal de 2027) o hasta un precio que lo descuente; nuestro límite de compra (10,50) ya lo hace."
+        },
+        {
+          "periodo": "oct-2026 (5-oct a 23-oct)",
+          "var_pct": 34.8,
+          "causa": "Subida tras la primera vuelta (4-oct), que el mercado leyó como probable cambio de gobierno: de 19,00 el 2-oct a 23,30 el 5-oct y 23,65 el 23-oct [18].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "periodo": "may-2026",
+          "var_pct": -19.7,
+          "causa": "Caída de un mes hasta el 19-may con los primeros sondeos favorables a Lula, la subida del CSLL (LC 224/2025) y el relevo de consejero delegado (Christian Egan sustituye a Gilson Finkelsztain) [5, 6, 16].",
+          "veredicto": "no cambia",
+          "condicion": null
+        }
+      ],
+      "noticias": [
+        {
+          "fecha": "2026-10-26",
+          "tipo": "litigios y reguladores",
+          "hecho": "Victoria de Lula: posibles impuestos sobre dividendos y JCP, impuesto a las grandes fortunas y más intervención; sin medidas concretas anunciadas [26, 28].",
+          "veredicto": "retrasa",
+          "condicion": "Hasta conocer las medidas fiscales del gobierno electo."
+        },
+        {
+          "fecha": "2026-10-26",
+          "tipo": "otro",
+          "hecho": "El mercado descuenta una subida de la Selic en noviembre; el Focus la tenía en el 13,25 % para final de 2026 antes de la elección [25].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-08-11",
+          "tipo": "resultados",
+          "hecho": "2T26: ingresos netos de 2.766 M (+8,8 %), lucro recurrente de 1.377 M; los mercados de derivados cayeron un 8 % en contratos [5, 34, 35].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-05-19",
+          "tipo": "directivos",
+          "hecho": "Christian George Egan, nuevo consejero delegado; sustituye a Gilson Finkelsztain [5, 16].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-03-31",
+          "tipo": "otro",
+          "hecho": "Venta de Dimensa (plusvalía de 124 M en el 1S26) y recompra de hasta 230 M de acciones [4, 22].",
+          "veredicto": "no cambia",
+          "condicion": null
+        },
+        {
+          "fecha": "2026-11-12",
+          "tipo": "resultados",
+          "hecho": "Resultados del 3T26 el 12-nov-2026 [30].",
+          "veredicto": "no cambia",
+          "condicion": null
+        }
+      ],
+      "proximos_resultados": "2026-11-12",
+      "veredicto": "retrasa",
+      "condicion": "que el gobierno electo concrete la tributación de dividendos y JCP y el marco fiscal de 2027, o hasta un precio que lo descuente (≤ 10,50 BRL, nuestro valor intrínseco). No aplaza por los resultados del 12-nov (regla 11).",
+      "comentario": "La caída tiene una causa conocida (la elección) que nuestra tesis recoge a través de la tasa en BRL: el bono a 10 años al 15,4 % es lo que hunde el DCF. Lo que no recoge aún es el cambio fiscal: si se gravan los dividendos o desaparecen los JCP, el tipo efectivo de B3 sube y los inversores locales pierden interés en la bolsa. Para B3, Lula cambia cuatro cosas: (1) Selic más alta más tiempo, que desplaza el ahorro a renta fija (B3 cobra menos por renta fija que por contado) y sube la tasa de descuento; (2) real más débil, que abarata la acción para el extranjero pero ahuyenta flujos; (3) riesgo fiscal, que es la causa del salto del bono; (4) regulación y tributación del capital, que puede tocar los JCP (≈ 3 puntos de tipo efectivo) y el volumen. Global: retrasa, aunque la señal ya es «No mantener» por el valor intrínseco."
+    }
+  },
+  "multiplos_historicos": {
+    "serie": [
+      {
+        "anio": "2018",
+        "precio_cierre": 8.94,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2019",
+        "precio_cierre": 14.32,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2020",
+        "precio_cierre": 20.66,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": true
+      },
+      {
+        "anio": "2021",
+        "precio_cierre": 11.14,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2022",
+        "precio_cierre": 13.21,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2023",
+        "precio_cierre": 14.55,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2024",
+        "precio_cierre": 10.32,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      },
+      {
+        "anio": "2025",
+        "precio_cierre": 13.89,
+        "ev_ebitda_ntm": null,
+        "per_ntm": null,
+        "excluir": false
+      }
+    ],
+    "comentario": "El PER adelantado sobre beneficio recurrente es de 12,8 veces frente a una mediana de 13,8 en 2021-2025 y un mínimo de 10,4 (cierre de 2024, con la Selic subiendo hacia el 15 %) [18]. Con el beneficio publicado, que en 2021-2024 cargaba la amortización de Cetip, el PER parece más alto; no se usa. La acción ya cotizó así: en diciembre de 2024 cayó a 10,32 con el miedo fiscal.",
+    "confianza": "Media"
+  },
+  "comparables": {
+    "criterio": "Nueve bolsas cotizadas con cámara o depositaria propias: CME, ICE, Nasdaq y Cboe (EE. UU.), HKEX, LSEG, Bolsa Mexicana (la más parecida por país emergente y tipos altos), Singapur y ASX. Fuera Deutsche Börse (Yahoo no da valor empresa), Euronext (sin capitalización) y JPX (consenso de un solo analista para 2026). Cifras de Yahoo Finance al cierre del 26-oct-2026: PER de los próximos 12 meses con 2/12 del BPA de 2026 y 10/12 del de 2027 del consenso; EV/EBITDA de los próximos 12 meses estimado con el crecimiento de ventas del consenso (estimación propia); capitalización en M BRL al cambio del 26-oct [19, 24]. Las bolsas de países con tipos bajos cotizan a 18-25 veces: su PER no se puede aplicar a una empresa que descuenta con un bono al 15,4 %; por eso pesan poco.",
+    "empresas": [
+      {
+        "nombre": "CME Group",
+        "ticker": "CME",
+        "pais": "US",
+        "capitalizacion": 595762,
+        "ev_ventas": 16.07,
+        "ev_ebitda_ltm": 22.6,
+        "ev_ebitda_ntm": 21.5,
+        "per_ntm": 23.6,
+        "crecimiento_pct": 5.2,
+        "margen_ebitda_pct": 71,
+        "roic_pct": null,
+        "dn_ebitda": 0.31,
+        "fcf_yield_pct": 2.8
+      },
+      {
+        "nombre": "Intercontinental Exchange",
+        "ticker": "ICE",
+        "pais": "US",
+        "capitalizacion": 485466,
+        "ev_ventas": 10.36,
+        "ev_ebitda_ltm": 16.3,
+        "ev_ebitda_ntm": 15.4,
+        "per_ntm": 18.3,
+        "crecimiento_pct": 5.8,
+        "margen_ebitda_pct": 63.6,
+        "roic_pct": null,
+        "dn_ebitda": 2.91,
+        "fcf_yield_pct": 4
+      },
+      {
+        "nombre": "Nasdaq",
+        "ticker": "NDAQ",
+        "pais": "US",
+        "capitalizacion": 316271,
+        "ev_ventas": 11.57,
+        "ev_ebitda_ltm": 19.2,
+        "ev_ebitda_ntm": 17.6,
+        "per_ntm": 22.6,
+        "crecimiento_pct": 9,
+        "margen_ebitda_pct": 60.3,
+        "roic_pct": null,
+        "dn_ebitda": 2.4,
+        "fcf_yield_pct": 3.7
+      },
+      {
+        "nombre": "Cboe Global Markets",
+        "ticker": "CBOE",
+        "pais": "US",
+        "capitalizacion": 189162,
+        "ev_ventas": 6.76,
+        "ev_ebitda_ltm": 17.7,
+        "ev_ebitda_ntm": 17.2,
+        "per_ntm": 22.3,
+        "crecimiento_pct": 3.2,
+        "margen_ebitda_pct": 38.1,
+        "roic_pct": null,
+        "dn_ebitda": -0.4,
+        "fcf_yield_pct": 1.9
+      },
+      {
+        "nombre": "HKEX",
+        "ticker": "0388.HK",
+        "pais": "HK",
+        "capitalizacion": 319967,
+        "ev_ventas": 9.66,
+        "ev_ebitda_ltm": 12.6,
+        "ev_ebitda_ntm": 12.4,
+        "per_ntm": 22.9,
+        "crecimiento_pct": 2,
+        "margen_ebitda_pct": 76.7,
+        "roic_pct": null,
+        "dn_ebitda": -6.63,
+        "fcf_yield_pct": 11.7
+      },
+      {
+        "nombre": "LSEG",
+        "ticker": "LSEG.L",
+        "pais": "GB",
+        "capitalizacion": 323125,
+        "ev_ventas": 6.01,
+        "ev_ebitda_ltm": 18.5,
+        "ev_ebitda_ntm": 17.3,
+        "per_ntm": 17.7,
+        "crecimiento_pct": 6.7,
+        "margen_ebitda_pct": 32.5,
+        "roic_pct": null,
+        "dn_ebitda": 4.21,
+        "fcf_yield_pct": 3.8
+      },
+      {
+        "nombre": "Bolsa Mexicana de Valores",
+        "ticker": "BOLSAA.MX",
+        "pais": "MX",
+        "capitalizacion": 5944,
+        "ev_ventas": 3.91,
+        "ev_ebitda_ltm": 8.7,
+        "ev_ebitda_ntm": 8,
+        "per_ntm": 11.3,
+        "crecimiento_pct": 7.8,
+        "margen_ebitda_pct": 45.1,
+        "roic_pct": null,
+        "dn_ebitda": -1.47,
+        "fcf_yield_pct": 5.9
+      },
+      {
+        "nombre": "Singapore Exchange",
+        "ticker": "S68.SI",
+        "pais": "SG",
+        "capitalizacion": 93476,
+        "ev_ventas": 13.22,
+        "ev_ebitda_ltm": 22.6,
+        "ev_ebitda_ntm": 21.2,
+        "per_ntm": 25.3,
+        "crecimiento_pct": 6.6,
+        "margen_ebitda_pct": 58.4,
+        "roic_pct": null,
+        "dn_ebitda": -1.7,
+        "fcf_yield_pct": 2.8
+      },
+      {
+        "nombre": "ASX",
+        "ticker": "ASX.AX",
+        "pais": "AU",
+        "capitalizacion": 48625,
+        "ev_ventas": 6.67,
+        "ev_ebitda_ltm": 12.8,
+        "ev_ebitda_ntm": 12.2,
+        "per_ntm": 24.1,
+        "crecimiento_pct": 4.6,
+        "margen_ebitda_pct": 52.3,
+        "roic_pct": null,
+        "dn_ebitda": -6.67,
+        "fcf_yield_pct": -2.5
+      }
+    ],
+    "comentario": "B3 cotiza a 11,4 veces el beneficio de los próximos 12 meses y a 10,0 veces el EBITDA de los últimos 12 meses, frente a medianas de 22,6 y ≈ 17 veces de nueve bolsas (CME, ICE, Nasdaq, Cboe, HKEX, LSEG, Bolsa Mexicana, SGX y ASX) [19, 24]. El descuento del 50 % es el precio del riesgo Brasil: la comparación útil es la Bolsa Mexicana (11,3 veces) [14]. Por eso los comparables pesan poco.",
+    "confianza": "Media"
+  },
+  "transacciones": {
+    "operaciones": [
+      {
+        "fecha": "2026-07",
+        "objetivo": "MarketAxess Holdings",
+        "comprador": "Intercontinental Exchange",
+        "ev": 30149,
+        "ev_ventas": 6.41,
+        "ev_ebitda": 13,
+        "prima_pct": 33,
+        "excluir": false,
+        "comentario": "Pendiente, en efectivo: 167 USD por acción. Ventas (870 M) y EBITDA (430 M) de los últimos 12 meses a junio de 2026; la prima es la que publica el folleto. Valor empresa pasado a BRL a 5,403 [23]."
+      },
+      {
+        "fecha": "2025-10",
+        "objetivo": "With Intelligence",
+        "comprador": "S&P Global",
+        "ev": 9725,
+        "ev_ventas": 13.8,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Vendedor, Motive Partners (capital privado). Unos 130 M de ingresos esperados en 2025, con crecimiento del valor anual de contratos en la parte alta de la decena; el múltiplo es sobre esos ingresos previstos. No se publicó el EBITDA. Valor empresa pasado a BRL a 5,403 [23]."
+      },
+      {
+        "fecha": "2024-07",
+        "objetivo": "Preqin",
+        "comprador": "BlackRock",
+        "ev": 17290,
+        "ev_ventas": null,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "2.550 M GBP (unos 3.200 M USD) en efectivo por el 100 % del capital. El 8-K no da ingresos ni EBITDA, así que no hay múltiplo verificado. Valor empresa pasado a BRL a 5,403 [23]."
+      },
+      {
+        "fecha": "2023-06",
+        "objetivo": "Adenza",
+        "comprador": "Nasdaq",
+        "ev": 56731,
+        "ev_ventas": 17.8,
+        "ev_ebitda": 30.7,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "A Thoma Bravo, con 5.750 M en efectivo y 85,6 M de acciones de Nasdaq. Múltiplos sobre las previsiones de 2023 que publicó Nasdaq (unos 590 M de ingresos y un margen EBITDA ajustado del 58 %), no sobre los últimos 12 meses: estimación propia. Valor empresa pasado a BRL a 5,403 [23]."
+      },
+      {
+        "fecha": "2020-11",
+        "objetivo": "IHS Markit",
+        "comprador": "S&P Global",
+        "ev": 237732,
+        "ev_ventas": 10.26,
+        "ev_ebitda": 24,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "Fusión en acciones: 0,2838 acciones de S&P Global por cada una de IHS Markit. Valor empresa publicado, 44.000 M, con 4.800 M de deuda neta. Ventas (4.288 M) y EBITDA ajustado (1.837 M) del ejercicio cerrado en noviembre de 2020. Valor empresa pasado a BRL a 5,403 [23]."
+      },
+      {
+        "fecha": "2019-08",
+        "objetivo": "Refinitiv",
+        "comprador": "London Stock Exchange Group",
+        "ev": 145881,
+        "ev_ventas": 4.35,
+        "ev_ebitda": 13.1,
+        "prima_pct": null,
+        "excluir": false,
+        "comentario": "En acciones: los vendedores (Blackstone y Thomson Reuters) se quedaron con el 37 % económico de LSEG. El valor empresa incluye 12.500 M de deuda neta. Ingresos ajustados de 2018, 6.204 M; EBITDA ajustado, 2.054 M, antes de los 650 M de ahorros en marcha. Anunciada en agosto de 2019 y cerrada en enero de 2021, al límite del periodo de siete años. Valor empresa pasado a BRL a 5,403 [23]."
+      },
+      {
+        "fecha": "2022-05",
+        "objetivo": "Black Knight",
+        "comprador": "Intercontinental Exchange",
+        "ev": 63755,
+        "ev_ventas": null,
+        "ev_ebitda": null,
+        "prima_pct": null,
+        "excluir": true,
+        "comentario": "Cerrada en septiembre de 2023 a 76 USD por acción. La cifra es lo pagado por las acciones; además, ICE asumió unos 1.000 M de bonos. No hay EBITDA oficial del perímetro comprado. Valor empresa pasado a BRL a 5,403 [23]."
+      }
+    ],
+    "comentario": "No hay transacciones de bolsas recientes comparables con datos; las del repositorio son de datos financieros (Refinitiv, IHS Markit, Adenza) a 13-31 veces el EBITDA en USD [23]. Peso cero.",
+    "confianza": "Baja"
+  },
+  "dcf": {
+    "anios": [
+      {
+        "periodo": "2026e",
+        "crecimiento_pct": 12,
+        "margen_ebitda_pct": 69.5,
+        "amortizacion_pct_ventas": 3.4,
+        "capex_pct_ventas": 2.8,
+        "nwc_pct_ventas": 2,
+        "tasa_impositiva_pct": 29,
+        "fijo": true
+      },
+      {
+        "periodo": "2027e",
+        "crecimiento_pct": 6,
+        "margen_ebitda_pct": 69,
+        "amortizacion_pct_ventas": 3.4,
+        "capex_pct_ventas": 2.9,
+        "nwc_pct_ventas": 2,
+        "tasa_impositiva_pct": 29,
+        "fijo": false
+      },
+      {
+        "periodo": "2028e",
+        "crecimiento_pct": 7,
+        "margen_ebitda_pct": 69.5,
+        "amortizacion_pct_ventas": 3.3,
+        "capex_pct_ventas": 3,
+        "nwc_pct_ventas": 2,
+        "tasa_impositiva_pct": 29,
+        "fijo": false
+      },
+      {
+        "periodo": "2029e",
+        "crecimiento_pct": 6.5,
+        "margen_ebitda_pct": 70,
+        "amortizacion_pct_ventas": 3.2,
+        "capex_pct_ventas": 3,
+        "nwc_pct_ventas": 2,
+        "tasa_impositiva_pct": 29,
+        "fijo": false
+      },
+      {
+        "periodo": "2030e",
+        "crecimiento_pct": 6,
+        "margen_ebitda_pct": 70,
+        "amortizacion_pct_ventas": 3,
+        "capex_pct_ventas": 3,
+        "nwc_pct_ventas": 2,
+        "tasa_impositiva_pct": 29,
+        "fijo": false
+      },
+      {
+        "periodo": "2031e",
+        "crecimiento_pct": 5.5,
+        "margen_ebitda_pct": 70,
+        "amortizacion_pct_ventas": 3,
+        "capex_pct_ventas": 3,
+        "nwc_pct_ventas": 2,
+        "tasa_impositiva_pct": 29,
+        "fijo": false
+      },
+      {
+        "periodo": "2032e",
+        "crecimiento_pct": 5.5,
+        "margen_ebitda_pct": 70,
+        "amortizacion_pct_ventas": 3,
+        "capex_pct_ventas": 3,
+        "nwc_pct_ventas": 2,
+        "tasa_impositiva_pct": 29,
+        "fijo": false
+      }
+    ],
+    "wacc": {
+      "tasa_libre_pct": 15.435,
+      "beta": 1.1,
+      "prima_mercado_pct": 5.5,
+      "prima_adicional_pct": 0,
+      "coste_deuda_pct": 15.5,
+      "tasa_impositiva_pct": 29,
+      "peso_deuda_pct": 16.6
+    },
+    "terminal": {
+      "metodo": "gordon",
+      "crecimiento_pct": 5.5,
+      "multiplo_salida": 10
+    },
+    "etapa2": {
+      "usar": false,
+      "anios": 10,
+      "margen_final_pct": null,
+      "justificacion": null
+    },
+    "mitad_de_anio": true,
+    "justificacion": {
+      "crecimiento": "Ingresos netos +12 % en 2026e: el 1S26 creció un 14,4 % (5.639 M) con récord de contado (+20 % de volumen medio diario en el 2T26) y de los negocios recurrentes (+17 %), y suponemos un segundo semestre al +8-9 % [4, 5]. Después +6 % en 2027e (normalización de volúmenes y Selic alta), +7 % en 2028e y hacia el 5,5 %, cerca del crecimiento nominal del PIB brasileño. El crecimiento medio de 2018-2025 fue del 11 % anual, con la fusión de Cetip completa desde 2018 [1].",
+      "margenes": "Margen EBITDA recurrente del 69,5 % en 2026e y del 69-70 % después, frente al 69,7 % de 2025 y el 70,8 % del 1S26 (sin la plusvalía de Dimensa) [1, 5]. La guía de gastos ajustados de 2026 (2.400-2.600 M) es compatible [22].",
+      "inversion": "Capex del 2,8-3,0 % de los ingresos (guía de 260-350 M en 2026) y amortización del 3,0-3,4 %, ya sin la de los intangibles de Cetip, que terminó en 2024-2025 (1.090 M en 2023, 572 M en 2024, 387 M en 2025) [1, 22]. Circulante del 2 % de los ingresos.",
+      "wacc": "Tasa libre del 15,435 %: bono a 10 años de Brasil el 26-oct-2026 (12,98 % el día anterior; DI1F31 15,24 %) [20, 25]. Beta de 1,10: la mensual de 5 años frente al BOVA11 es de 1,57 (ajustada 1,38) [18], pero esa beta mide la sensibilidad de B3 al ciclo brasileño, que ya está en la tasa en BRL; el sector de bolsas mundial está en ≈ 1,0. Prima de mercado del 5,5 % y prima adicional de 0: el riesgo país ya está en la tasa en reales. El escáner del 26-oct sumaba 3 puntos más de prima país sobre una tasa en BRL: contaba el riesgo país dos veces. Coste de la deuda del 15,5 % (debentures ligadas al CDI y bonos en USD cubiertos) y peso del 16,6 % (14.933 M de deuda frente a 75.324 M de capitalización). WACC del 19,75 %.",
+      "terminal": "Gordon con un crecimiento del 5,5 % nominal en BRL: inflación del Focus para 2027 del 4,1 % más ≈ 1,4 puntos reales [36]. El valor terminal pesa un 44 % del DCF, poco porque el WACC es alto. Implica ≈ 5,7 veces el EBITDA terminal, frente a 10,0 veces hoy."
+    },
+    "sostenibilidad": {
+      "puente_ingresos": [
+        {
+          "periodo": "2026e",
+          "volumen_pct": 11,
+          "precio_pct": 1.5,
+          "otros_pct": -0.5,
+          "comentario": "Volumen: récord de contado, renta fija y Tesouro Direto en el 1S26 (+14,4 % de ingresos netos) [5]; precio ≈ 1,5 puntos por mezcla y tarifas; perímetro −0,5 (venta de Dimensa)."
+        },
+        {
+          "periodo": "2027e",
+          "volumen_pct": 4,
+          "precio_pct": 2,
+          "otros_pct": 0,
+          "comentario": "Volúmenes más normales tras el año electoral; la Selic alta resta contado y suma renta fija."
+        },
+        {
+          "periodo": "2028e",
+          "volumen_pct": 4.5,
+          "precio_pct": 2.5,
+          "otros_pct": 0,
+          "comentario": "Volumen 4,5 %, precio 2,5 % (inflación)."
+        },
+        {
+          "periodo": "2029e",
+          "volumen_pct": 4,
+          "precio_pct": 2.5,
+          "otros_pct": 0,
+          "comentario": "Volumen 4 %, precio 2,5 %."
+        },
+        {
+          "periodo": "2030e",
+          "volumen_pct": 3.5,
+          "precio_pct": 2.5,
+          "otros_pct": 0,
+          "comentario": "Converge al PIB nominal."
+        }
+      ],
+      "mercado_final": null,
+      "veredicto": "Sí",
+      "justificacion": "Sí: el crecimiento medio proyectado (6,9 % nominal en BRL, ≈ 3 % real) está por debajo del de 2018-2025 (11 % anual) y del PIB nominal más la penetración de la renta variable en Brasil, y no necesita capital nuevo: capex del 3 % de los ingresos. B3 es el monopolio de hecho de la bolsa, la compensación y el depósito en Brasil [5, 7]."
+    },
+    "lectura": "El DCF da 8,46 por acción, un 43,9 % por debajo del precio, con un WACC del 19,75 % y un valor terminal del 44 %. El DCF inverso dice que el precio descuenta un crecimiento del 20,5 % anual en 2027-2032 frente al 6,1 % de nuestro base, o una rentabilidad implícita del 13,3 %, por debajo de la propia tasa libre (15,4 %): el mercado no cree que el bono a 10 años se quede en el 15 % o descuenta a B3 con una tasa menor que la del Estado. Es el problema de fondo de valorar en BRL con la curva del día de la elección: cualquier activo brasileño de duración larga sale caro.",
+    "confianza": "Media"
+  },
+  "escenarios": {
+    "casos": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": -3,
+        "ajuste_margen_pp": -3,
+        "ajuste_wacc_pp": 1,
+        "crecimiento_terminal_pct": 4.5,
+        "multiplo_salida": null,
+        "narrativa": "El gobierno grava dividendos y elimina los JCP, la Selic sube al 16-17 % y los extranjeros (≈ 50 % del volumen de contado) salen: volumen de contado a la baja, menos salidas a bolsa y margen 3 puntos menor. Crecimiento terminal del 4,5 % y WACC un punto mayor."
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "ajuste_crecimiento_pp": 0,
+        "ajuste_margen_pp": 0,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "Brasil sigue con tipos altos pero sin ruptura: B3 crece con la inflación más un poco de volumen, mantiene el margen del 70 % y devuelve casi todo el beneficio."
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "ajuste_crecimiento_pp": 2,
+        "ajuste_margen_pp": 1,
+        "ajuste_wacc_pp": 0,
+        "crecimiento_terminal_pct": null,
+        "multiplo_salida": null,
+        "narrativa": "La volatilidad y la renta fija sostienen volúmenes récord y los nuevos negocios (datos, Tesouro Direto, derivados de cripto y de renta fija) crecen: +2 puntos de crecimiento y un punto más de margen."
+      }
+    ],
+    "comentario": "Los tres escenarios del DCF quedan por debajo del precio (6,56, 8,46 y 9,31): la asimetría es negativa (−0,68 veces). Lo que mueve el valor no es el negocio sino la tasa: con 2,5 puntos menos de tasa libre (la de antes de la elección) el base sube a 10,03. A 12 meses, el bajista con PER de 10,4 veces da 11,44 (−24 %) y el alcista 24,34 (+62 %).",
+    "confianza": "Media"
+  },
+  "suma_partes": {
+    "aplica": false,
+    "descuento_holding_pct": 0,
+    "partes": [],
+    "comentario": "No aplica: contado, derivados, renta fija y datos comparten la misma infraestructura de negociación, compensación y depósito.",
+    "confianza": "Media"
+  },
+  "valoracion": {
+    "puente": {
+      "fecha": "2026-06-30",
+      "deuda_financiera": 14933,
+      "arrendamientos": 0,
+      "caja": 16452,
+      "minoritarios": 24,
+      "pensiones": 0,
+      "asociadas": 113,
+      "otros_ajustes": 1582
+    },
+    "rab": null,
+    "referencia_mercado": {
+      "mercado": "S&P 500 (prima implícita de Damodaran, octubre de 2026; vale para mercados desarrollados, se aplica sobre la tasa en BRL)",
+      "prima_implicita_pct": 4.2,
+      "fecha": "2026-10",
+      "fuente": "Damodaran, ERPbymonth.xlsx [21]"
+    },
+    "pesos": {
+      "dcf": 50,
+      "comparables": 10,
+      "transacciones": 0,
+      "suma_partes": 0,
+      "escenarios": 40
+    },
+    "objetivo_12m": {
+      "ejercicio": "2028e",
+      "casos": [
+        {
+          "escenario": "Bajista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 1.1,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "El nuevo gobierno sube la tributación de dividendos y elimina o recorta los JCP, la Selic sube por encima del 15 % y salen inversores: ingresos +3 % en 2027 y +4 % en 2028 (12.080 M), margen EBITDA del 66,5 % y tipo efectivo del 33 % al perder parte del escudo de los JCP. Beneficio de ≈ 5.400 M con 4.900 M de acciones."
+        },
+        {
+          "escenario": "Base",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 1.29,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "2026e +12 % (1S26 +14,4 % y segundo semestre más flojo), +6 % en 2027 y +7 % en 2028: ingresos de 12.790 M, margen EBITDA del 69,5 % (8.890 M), amortización del 3,3 %, resultado financiero neto de ≈ +475 M y tipo efectivo del 30 % (nominal del 37 % con escudo de JCP). Beneficio de ≈ 6.260 M con 4.856 M de acciones (recompra anunciada de hasta 230 M, ejecutada en parte) [5, 22]."
+        },
+        {
+          "escenario": "Alcista",
+          "metrica": "PER 2028e",
+          "beneficio_por_accion": 1.36,
+          "multiplo": null,
+          "precio": null,
+          "justificacion": "La volatilidad electoral y la Selic alta mantienen volúmenes récord de contado, renta fija y Tesouro Direto: +8 % en 2027 y +9 % en 2028 (13.280 M) y un punto más de margen (70,5 %). Beneficio de ≈ 6.600 M."
+        }
+      ],
+      "per_historico": {
+        "base": "adelantado",
+        "actual": 12.8,
+        "mediana_5a": 13.8,
+        "minimo_5a": 10.4,
+        "media_larga": 13.9,
+        "excluidos": "PER adelantado = precio de cierre ÷ BPA recurrente del año siguiente: 2021 13,8x (11,14 ÷ 0,805); 2022 16,4x (13,21 ÷ 0,807); 2023 16,6x (14,55 ÷ 0,875); 2024 10,4x (10,32 ÷ 0,990); 2025 12,2x (13,89 ÷ nuestro 1,14 de 2026e) [1, 7, 8, 11, 18]. Excluidos 2020 y anteriores: no hay serie recurrente comparable (amortización de Cetip de ≈ 1.000 M al año y cambio de presentación de ingresos) y el cierre de 2020 (20,66) es una burbuja de volumen con la Selic al 2 %.",
+        "v2": {
+          "mediana_5a": 15.2,
+          "minimo_5a": 11.8,
+          "media_larga": 15.1,
+          "excluidos": "2021 y anteriores (sin BPA recurrente comparable; amortización de Cetip y desdoblamiento de 2021). Serie al cierre: 2022 16,4x; 2023 18,0x; 2024 11,8x; 2025 14,0x (precio de cierre ÷ BPA recurrente del mismo año)."
+        }
+      },
+      "comparables_per": {
+        "mediana": 22.6
+      },
+      "consenso": {
+        "bpa_ano1": 1.202,
+        "bpa_ano2": 1.346,
+        "objetivo_medio": 22.64,
+        "objetivo_min": 16,
+        "objetivo_max": 30,
+        "analistas": 14,
+        "tendencia_3m": "estables",
+        "fuente": "BPA 2026e y 2027e (8 analistas) y objetivos (14 analistas) de Yahoo Finance, anteriores a la segunda vuelta: no recogen la caída del 26-oct [19]"
+      },
+      "diferencia_consenso": "Nuestro BPA de 2026e (1,14) queda un 5 % por debajo del consenso (1,20) y el de 2027e (1,18), un 12 % por debajo (1,35) [19]. La diferencia viene de tres cosas: el tipo nominal del 37 % desde el 2T26 (LC 224/2025), que el consenso de antes del verano quizá no recoge del todo; que no contamos créditos extraordinarios de JCP antiguos (510 M en el 4T25 y 277,5 M en el 2T26) como recurrentes; y menos recompras. El consenso es anterior a la segunda vuelta y no recoge la caída.",
+      "media": 17.52,
+      "comentario": "El objetivo a 12 meses (17,52) sale de un PER base de 13,3 veces sobre un BPA de 2028e de 1,29: la mitad del camino entre el PER adelantado de hoy (12,8) y la mediana de 2021-2025 (13,8). Da un 18,2 % ponderado y un 15,8 % en el base, pero el valor intrínseco (10,50) queda un 30 % por debajo del precio: con un bono a 10 años del 15,4 % el DCF no sostiene ni el precio de después de la caída. Con la regla v2 (historia al cierre) 15,8 % / 11,6 %. Con un BPA un 10 % peor, 6,7 % / 4,5 %: la rentabilidad depende de que el beneficio aguante con la Selic y los impuestos nuevos."
+    },
+    "comentario": "El DCF pesa un 50 % y los escenarios un 40 % porque es un negocio de caja estable con un margen EBITDA del 70 %; los comparables solo un 10 %: las bolsas desarrolladas cotizan con tasas libres del 3-5 %, no del 15,4 %, y su PER (22,6 de mediana) no se puede trasladar a Brasil sin la prima país. Transacciones, cero: son del sector de datos (Refinitiv, IHS Markit), en dólares y con otra tasa. La señal la decide el DCF en BRL: 8,46 en el base, 10,50 ponderado, 11,14 con la prima implícita del mercado. Con la tasa libre previa a la elección (12,98 %, WACC 17,41 %) el ponderado sube a 11,88; con el 13,5 % del encargo (WACC 17,90 %), a 11,54. En ningún caso llega al precio, ni al de antes de la elección (23,65).",
+    "confianza": "Media"
+  },
+  "catalizadores": {
+    "items": [
+      {
+        "fecha": "12-nov-2026",
+        "evento": "Resultados del 3T26",
+        "efecto": "Volúmenes de septiembre-octubre récord por la volatilidad; tipo efectivo con el CSLL nuevo",
+        "probabilidad": "Alta",
+        "sentido": "+/−"
+      },
+      {
+        "fecha": "Nov-dic de 2026",
+        "evento": "Primeras medidas fiscales del gobierno electo (presupuesto de 2027, dividendos, JCP)",
+        "efecto": "Decide el bajista: tipo efectivo +3-5 puntos y salida de inversores",
+        "probabilidad": "Alta",
+        "sentido": "−"
+      },
+      {
+        "fecha": "Nov-dic de 2026",
+        "evento": "Copom: subida de la Selic",
+        "efecto": "Más tasa de descuento; más renta fija y menos contado",
+        "probabilidad": "Alta",
+        "sentido": "−"
+      },
+      {
+        "fecha": "Feb-2027",
+        "evento": "Resultados de 2026, guía de 2027 y nueva recompra",
+        "efecto": "Reparto del 90-110 %",
+        "probabilidad": "Alta",
+        "sentido": "+"
+      },
+      {
+        "fecha": "2027",
+        "evento": "Bajada del bono a 10 años hacia el 13 %",
+        "efecto": "El DCF sube ≈ 1,5 BRL y el ROIC − WACC pasa de 5",
+        "probabilidad": "Media",
+        "sentido": "+"
+      }
+    ],
+    "confianza": "Media"
+  },
+  "riesgos": {
+    "items": [
+      {
+        "riesgo": "Tributación de dividendos y fin de los JCP",
+        "tipo": "Regulatorio / fiscal",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−15 a −25 % (bajista a 12 meses: 11,44, −24 %)",
+        "mitigante": "Reparto vía recompras; los JCP antiguos (≈ 3.250 M) ya reconocidos",
+        "senal": "Proyecto de ley con fecha"
+      },
+      {
+        "riesgo": "Selic y bono a 10 años por encima del 15 % durante años",
+        "tipo": "Macro / tipos",
+        "probabilidad": "Media",
+        "impacto": "Alto",
+        "efecto_valor": "−20 % en el DCF por cada 2,5 puntos",
+        "mitigante": "Más ingresos de renta fija y de la caja propia",
+        "senal": "DI1F31 por encima del 15 %"
+      },
+      {
+        "riesgo": "Salida de inversores extranjeros y caída del contado",
+        "tipo": "Cíclico",
+        "probabilidad": "Media",
+        "impacto": "Medio",
+        "efecto_valor": "−10 %",
+        "mitigante": "Negocios recurrentes (datos, depósito, OTC) del ≈ 40 % de los ingresos",
+        "senal": "Volumen medio diario de contado por debajo de 25.000 M"
+      },
+      {
+        "riesgo": "Competencia de una segunda bolsa (ATS, A5X) y presión de tarifas",
+        "tipo": "Competencia",
+        "probabilidad": "Baja",
+        "impacto": "Medio",
+        "efecto_valor": "−5 a −10 %",
+        "mitigante": "Cámara y depósito integrados, red de participantes",
+        "senal": "Licencia de la CVM a un competidor con cámara propia"
+      },
+      {
+        "riesgo": "Fallo de la cámara en un día extremo como el 26-oct",
+        "tipo": "Operativo",
+        "probabilidad": "Baja",
+        "impacto": "Alto",
+        "efecto_valor": "n.d.",
+        "mitigante": "Garantías de los participantes y salvaguardas",
+        "senal": "Llamadas de margen extraordinarias"
+      }
+    ],
+    "premortem": "Octubre de 2027: B3 vale 9 BRL. El gobierno gravó los dividendos al 15 % y eliminó los JCP en 2027; la Selic subió al 16,5 % y la renta variable perdió un 20 % de volumen frente a la renta fija. El tipo efectivo de B3 pasó del 29 % al 34 % y el beneficio bajó un 8 %. El PER cayó a 9 veces, el mínimo de 2015-2016.",
+    "ia": {
+      "exposicion": "Baja",
+      "sentido": "Mixto",
+      "efecto_valor": "Pequeño",
+      "comentario": "La IA no sustituye una bolsa con monopolio de compensación y depósito; puede aumentar la negociación algorítmica (más volumen) y competir en datos, una parte pequeña de los ingresos."
+    },
+    "confianza": "Media"
+  },
+  "esg": {
+    "calificaciones": [],
+    "materialidad": "Lo material es la resiliencia operativa y la ciberseguridad de una infraestructura sistémica (cámara y depositaria) y la gobernanza de los datos de inversores. En 2026 B3 entró en el Dow Jones Best in Class global y de mercados emergentes, y registra más de 6,4 M de créditos de carbono [5].",
+    "controversias": "Sin sanciones relevantes en los tres últimos años en las fuentes leídas (releases 2025-2026).",
+    "confianza": "Baja"
+  },
+  "preguntas": {
+    "items": [
+      {
+        "tema": "Fiscal",
+        "pregunta": "¿Qué efecto tendría el fin de los JCP en el tipo efectivo y en el reparto?",
+        "por_que": "Es el principal riesgo de la victoria de Lula para B3."
+      },
+      {
+        "tema": "Cámara",
+        "pregunta": "¿Cuántos recursos propios dedica B3 a las salvaguardas de la cámara y cuánto de la caja es libre?",
+        "por_que": "Cambia el puente: hoy suponemos libre toda la caja propia."
+      },
+      {
+        "tema": "Volumen",
+        "pregunta": "¿Cómo fueron los volúmenes y la salida de extranjeros en las semanas tras la elección?",
+        "por_que": "Separa el miedo de un cambio de negocio."
+      },
+      {
+        "tema": "Renta fija",
+        "pregunta": "¿Cuánto compensa la renta fija y el Tesouro Direto la caída del contado con la Selic alta?",
+        "por_que": "Define el crecimiento de 2027."
+      }
+    ],
+    "confianza": "Media"
+  },
+  "sentimiento": {
+    "tono": "Negativo",
+    "tendencia": "Empeora",
+    "revisadas": [
+      {
+        "plataforma": "InfoMoney (noticia del día y comentarios)",
+        "fecha": "2026-10",
+        "n_comentarios": null,
+        "tono": "Negativo",
+        "resumen": "La caída de B3 (−36 %, hasta −50 % en la apertura) se lee como apuesta contra el mercado de capitales brasileño tras la victoria de Lula, sin una noticia propia de la empresa [26]."
+      },
+      {
+        "plataforma": "BP Money (noticia y lectores)",
+        "fecha": "2026-10",
+        "n_comentarios": null,
+        "tono": "Negativo",
+        "resumen": "Atribuye la caída del sector financiero a la reelección; sin explicación específica para B3 [32]."
+      },
+      {
+        "plataforma": "Traders Union (análisis para particulares, EWZ)",
+        "fecha": "2026-10",
+        "n_comentarios": null,
+        "tono": "Dividido",
+        "resumen": "Parte de los comentaristas ve oportunidad en el desplome de Brasil (EWZ) y otros esperan más salidas de capital [33]."
+      },
+      {
+        "plataforma": "Eu Quero Investir y Genial (análisis del 2T26)",
+        "fecha": "2026-08",
+        "n_comentarios": null,
+        "tono": "Dividido",
+        "resumen": "Antes de las elecciones el debate era la pérdida de fuerza de los volúmenes compensada por la diversificación [34, 35]."
+      }
+    ],
+    "temas": [
+      {
+        "tema": "Riesgo político y fiscal (dividendos, JCP, riqueza)",
+        "postura": "Bajista",
+        "peso": "Alto",
+        "contraste": "El ahorro fiscal de los JCP vale ≈ 0,10-0,11 BRL por acción y año y quedan ≈ 3.250 M de saldos por usar (releases de B3): si se eliminaran, el BPA bajaría ≈ 8 % (estimación propia)."
+      },
+      {
+        "tema": "Volúmenes con la Selic al alza",
+        "postura": "Bajista",
+        "peso": "Alto",
+        "contraste": "En 2021-2023 la subida de la Selic bajó los ingresos un 3,4 % en dos años, no un 36 %; los derivados de tipos suben con la volatilidad (releases de B3)."
+      },
+      {
+        "tema": "Diversificación y recurrentes",
+        "postura": "Alcista",
+        "peso": "Medio",
+        "contraste": "Ingresos recurrentes +17,3 % en el 2T26 (release 2T26)."
+      },
+      {
+        "tema": "Oportunidad tras el desplome",
+        "postura": "Dividida",
+        "peso": "Medio",
+        "contraste": "A 15,07 BRL el PER sobre nuestro BPA de 2027 es de 12,7 veces, frente a 13,8 de mediana adelantada en 2021-2025."
+      }
+    ],
+    "lectura": "Lo leído son noticias con comentarios y análisis para particulares, no hilos de foro (los foros brasileños y Reddit no abren desde este entorno): confianza baja. El tono pasó en un día de dividido a negativo, con capitulación en la apertura (−50 %) y rebote parcial al cierre. Los inversores ven a B3 como la forma más directa de vender el mercado brasileño, que es lo que mide su beta de 1,57 frente al Ibovespa. El riesgo que señalan (impuestos sobre dividendos y JCP) está en el informe como bajista; no hay una noticia propia de B3 que explique la diferencia con el Ibovespa (−36 % frente a −14 %).",
+    "confianza": "Baja"
+  },
+  "fuentes": [
+    {
+      "id": 1,
+      "titulo": "DFP 2025 consolidada de B3 S.A. (DRE, balance, DFC, DVA; versión 1 recibida el 26-feb-2026), datos abiertos de la CVM",
+      "editor": "CVM, Portal de Dados Abertos (dfp_cia_aberta_2025.zip)",
+      "tipo": "Primaria",
+      "fecha": "2026-02-26",
+      "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2025.zip"
+    },
+    {
+      "id": 2,
+      "titulo": "DFP 2023 consolidada de B3 S.A. (ejercicios 2022 y 2023)",
+      "editor": "CVM, Portal de Dados Abertos",
+      "tipo": "Primaria",
+      "fecha": "2024-02-22",
+      "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2023.zip"
+    },
+    {
+      "id": 3,
+      "titulo": "DFP 2021 y DFP 2019 consolidadas de B3 S.A. (ejercicios 2018-2021)",
+      "editor": "CVM, Portal de Dados Abertos",
+      "tipo": "Primaria",
+      "fecha": "2022-03",
+      "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2021.zip"
+    },
+    {
+      "id": 4,
+      "titulo": "ITR 1T26 y 2T26 consolidados de B3 S.A. (recibidos el 7-may y el 11-ago-2026)",
+      "editor": "CVM, Portal de Dados Abertos (itr_cia_aberta_2026.zip)",
+      "tipo": "Primaria",
+      "fecha": "2026-08-11",
+      "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/ITR/DADOS/itr_cia_aberta_2026.zip"
+    },
+    {
+      "id": 5,
+      "titulo": "Release de Resultados 2T26 (ingresos por segmento, despesas ajustadas, EBITDA recurrente, lucro recurrente, deuda, JCP, Dimensa)",
+      "editor": "B3 S.A. (ri.b3.com.br; copia en Poder360)",
+      "tipo": "Primaria",
+      "fecha": "2026-08-11",
+      "url": "https://static.poder360.com.br/uploads/2026/08/Release-de-Resultados-2T26.pdf"
+    },
+    {
+      "id": 6,
+      "titulo": "Release de Resultados 4T25 (imposto diferido de R$ 1,04 bi por la subida de la CSLL, JCP extraordinario, payout 2025, guía de gastos 2025)",
+      "editor": "B3 S.A. (copia en Poder360)",
+      "tipo": "Primaria",
+      "fecha": "2026-02-26",
+      "url": "https://static.poder360.com.br/2026/02/B3-4T25.pdf"
+    },
+    {
+      "id": 7,
+      "titulo": "Demonstrações Financeiras 2023 y Relatório da Administração (lucro recurrente 2022 y 2023, fin del beneficio fiscal del ágio de Cetip en el 2T22)",
+      "editor": "B3 S.A. (ri.b3.com.br, mziq)",
+      "tipo": "Primaria",
+      "fecha": "2024-02-22",
+      "url": "https://api.mziq.com/mzfilemanager/v2/d/5fd7b7d8-54a1-472d-8426-eb896ad8a3c4/d1122f03-9e28-8411-262d-fb93ae66aa9f?origin=1"
+    },
+    {
+      "id": 8,
+      "titulo": "Release de Resultados 4T24 (lucro recurrente del 4T24 y del 3T24)",
+      "editor": "B3 S.A. (copia en Poder360)",
+      "tipo": "Primaria",
+      "fecha": "2025-02-20",
+      "url": "https://static.poder360.com.br/2025/02/balanco-financeiro-b3-4o-tri-2024.pdf"
+    },
+    {
+      "id": 9,
+      "titulo": "Release de Resultados 4T23 (lucro recurrente del 4T23)",
+      "editor": "B3 S.A. (ri.b3.com.br, mziq)",
+      "tipo": "Primaria",
+      "fecha": "2024-02-22",
+      "url": "https://api.mziq.com/mzfilemanager/v2/d/5fd7b7d8-54a1-472d-8426-eb896ad8a3c4/cd9d7c4b-7079-cb54-752e-795c07debea4?origin=1"
+    },
+    {
+      "id": 10,
+      "titulo": "B3 bate recorde com receita de R$ 3,2 bi no primeiro trimestre de 2026 (lucro recurrente 1T26 +33,1 %)",
+      "editor": "Eu Quero Investir",
+      "tipo": "Prensa",
+      "fecha": "2026-05-07",
+      "url": "https://euqueroinvestir.com/acoes/b3-bate-recorde-com-receita-de-r-32-bi-no-primeiro-trimestre-de-2026"
+    },
+    {
+      "id": 11,
+      "titulo": "Lucro líquido recorrente da B3 cai 7,1 % em 12 meses para R$ 1,130 bi no 1º trimestre (2024)",
+      "editor": "Folha Vitória / Estadão Conteúdo",
+      "tipo": "Prensa",
+      "fecha": "2024-05-09",
+      "url": "https://www.folhavitoria.com.br/economia/lucro-liquido-recorrente-da-b3-cai-7-1-em-12-meses-para-r-1-130-bi-no-1-trimestre/"
+    },
+    {
+      "id": 12,
+      "titulo": "B3 (B3SA3) lucra R$ 1,22 bilhão no segundo trimestre (2T24)",
+      "editor": "Suno Notícias",
+      "tipo": "Prensa",
+      "fecha": "2024-08-08",
+      "url": "https://www.suno.com.br/noticias/?p=569873"
+    },
+    {
+      "id": 13,
+      "titulo": "Release de Resultados 4T20 (conciliación del lucro recurrente: amortización de intangibles de Cetip e imposto diferido do ágio)",
+      "editor": "B3 S.A. (ri.b3.com.br, mziq)",
+      "tipo": "Primaria",
+      "fecha": "2021-03-04",
+      "url": "https://api.mziq.com/mzfilemanager/v2/d/5fd7b7d8-54a1-472d-8426-eb896ad8a3c4/5c816e59-e27a-60b3-3b44-17ecc9afa153?origin=1"
+    },
+    {
+      "id": 14,
+      "titulo": "Datos de los comparables (márgenes y crecimiento) de Yahoo Finance quoteSummary, 26-oct-2026",
+      "editor": "Yahoo Finance (notas/yahoo-datos.json)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-26",
+      "url": "https://finance.yahoo.com/quote/B3SA3.SA"
+    },
+    {
+      "id": 15,
+      "titulo": "Informes value del repositorio de bolsas (HKEX 16-oct, CME 26-oct, LSEG 26-oct): estructura del sector de infraestructura de mercados",
+      "editor": "Repositorio analisis-inversion",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-26",
+      "url": null
+    },
+    {
+      "id": 16,
+      "titulo": "Christian Egan é escolhido como novo CEO da B3 (19-may-2026)",
+      "editor": "Bora Investir (B3)",
+      "tipo": "Primaria",
+      "fecha": "2026-05-19",
+      "url": "https://borainvestir.b3.com.br/noticias/empresas/christian-egan-e-escolhido-como-novo-ceo-da-b3/"
+    },
+    {
+      "id": 17,
+      "titulo": "Christian George Egan é eleito novo diretor-presidente de B3",
+      "editor": "Mercado & Consumo",
+      "tipo": "Prensa",
+      "fecha": "2026-05-19",
+      "url": "https://mercadoeconsumo.com.br/19/05/2026/gestao/christian-george-egan-e-eleito-novo-diretor-presidente-de-b3/"
+    },
+    {
+      "id": 18,
+      "titulo": "B3SA3.SA, BOVA11.SA, ^BVSP: históricos diarios hasta el 26-oct-2026 (precio, rango, volumen, beta, rentabilidades, cierres de año; movimiento.mjs)",
+      "editor": "Yahoo Finance (herramientas/bolsa.mjs y movimiento.mjs)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-26",
+      "url": "https://finance.yahoo.com/quote/B3SA3.SA/history"
+    },
+    {
+      "id": 19,
+      "titulo": "B3SA3.SA y comparables: consenso de BPA (earningsTrend), objetivo medio, recomendaciones, valor empresa y EBITDA (quoteSummary)",
+      "editor": "Yahoo Finance (notas/yahoo-datos.json)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-26",
+      "url": "https://finance.yahoo.com/quote/B3SA3.SA/analysis"
+    },
+    {
+      "id": 20,
+      "titulo": "Brazil 10Y government bond yield: 15,435 % el 26-oct-2026 (anterior 12,98 %)",
+      "editor": "Trading Economics",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-26",
+      "url": "https://tradingeconomics.com/brazil/government-bond-yield"
+    },
+    {
+      "id": 21,
+      "titulo": "Implied ERP by month (ERPbymonth.xlsx), octubre de 2026: 4,20 %",
+      "editor": "Aswath Damodaran (NYU Stern)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/implprem/ERPbymonth.xlsx"
+    },
+    {
+      "id": 22,
+      "titulo": "B3 promete payout elevado em 2026, mas guidance de custos acende alerta (guía 2026: gastos ajustados de 2.400-2.600 M, capex de 260-350 M, payout del 90-110 %, recompra de hasta 230 M de acciones)",
+      "editor": "InfoMoney",
+      "tipo": "Prensa",
+      "fecha": "2025-12-15",
+      "url": "https://www.infomoney.com.br/?p=3141347"
+    },
+    {
+      "id": 23,
+      "titulo": "Transacciones del informe de S&P Global del repo (Refinitiv, IHS Markit, Adenza, MarketAxess, With Intelligence, Preqin, Black Knight)",
+      "editor": "Repositorio analisis-inversion (informes/sp-global-2026-10-12)",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-12",
+      "url": null
+    },
+    {
+      "id": 24,
+      "titulo": "Tipos de cambio frente al real al cierre del 26-oct-2026 (USDBRL, HKDBRL, EURBRL, GBPBRL, JPYBRL, MXNBRL, SGDBRL, AUDBRL)",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-26",
+      "url": "https://finance.yahoo.com/quote/BRL=X"
+    },
+    {
+      "id": 25,
+      "titulo": "Ibovespa desaba 13 % após eleição, em dia de circuit breaker; dólar dispara 8 % (cierre del 26-oct: Ibovespa 176.608 puntos, −13,88 %; dólar 5,403; DI1F27 13,723 %, DI1F31 15,240 %, DI1F35 15,195 %; B3 −36,28 %)",
+      "editor": "InfoMoney",
+      "tipo": "Prensa",
+      "fecha": "2026-10-26",
+      "url": "https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-26102026/"
+    },
+    {
+      "id": 26,
+      "titulo": "B3 (B3SA3): ação chega a cair 50 % após reeleição de Lula, mas fecha em queda de 36 % (Lula 51,79 % frente a 48,21 %)",
+      "editor": "InfoMoney",
+      "tipo": "Prensa",
+      "fecha": "2026-10-26",
+      "url": "https://www.infomoney.com.br/mercados/b3-b3sa3-desempenho-eleicoes-segundo-turno-26102026/"
+    },
+    {
+      "id": 27,
+      "titulo": "Brazil Stocks Plunge 13.88 % After Lula Win (circuit breaker, bancos −13 a −22 %, temores fiscales y de control estatal)",
+      "editor": "The Rio Times",
+      "tipo": "Prensa",
+      "fecha": "2026-10-26",
+      "url": "https://www.riotimesonline.com/brazil-markets-ibovespa-real-monday-october-26-2026/"
+    },
+    {
+      "id": 28,
+      "titulo": "Ação da B3 despenca após vitória de Lula (temor a impuestos sobre dividendos o a la riqueza; nota de B3 de que sigue el escenario)",
+      "editor": "Brasil em Folhas",
+      "tipo": "Prensa",
+      "fecha": "2026-10-26",
+      "url": "https://brasilemfolhas.com.br/2026/10/acao-da-b3-despenca-apos-vitoria-de-lula/"
+    },
+    {
+      "id": 29,
+      "titulo": "Brazil stocks brace for selloff after Lula's win; EWZ ETF falls 27 % in premarket",
+      "editor": "Invezz",
+      "tipo": "Prensa",
+      "fecha": "2026-10-26",
+      "url": "https://invezz.com/news/2026/10/26/brazil-stocks-brace-for-selloff-after-lulas-win-ewz-etf-falls-27-in-premarket/"
+    },
+    {
+      "id": 30,
+      "titulo": "Calendario de resultados del 3T26: B3 publica el 12-nov-2026",
+      "editor": "BP Money",
+      "tipo": "Prensa",
+      "fecha": "2026-10",
+      "url": "https://www.bpmoney.com.br/negocios/empresas-na-bolsa/resultados-3t26-calendario-balancos-b3/"
+    },
+    {
+      "id": 31,
+      "titulo": "BOLSY (ADR de B3 en OTC, 1 ADR = 3 acciones): cierre del 26-oct-2026 en 8,38 USD",
+      "editor": "Yahoo Finance",
+      "tipo": "Datos de mercado",
+      "fecha": "2026-10-26",
+      "url": "https://finance.yahoo.com/quote/BOLSY"
+    },
+    {
+      "id": 32,
+      "titulo": "Ação da B3 derrete até 50 % e fecha com queda de 36 % após reeleição de Lula",
+      "editor": "BP Money",
+      "tipo": "Foros y redes",
+      "fecha": "2026-10-26",
+      "url": "https://bpmoney.com.br/mercado/acoes/b3-b3sa3-queda-36-apos-reeleicao-lula-segundo-turno/"
+    },
+    {
+      "id": 33,
+      "titulo": "Brazil stocks sell off after Lula win as Weiss Ratings flags Nu Holdings, EWZ opportunity",
+      "editor": "Traders Union",
+      "tipo": "Foros y redes",
+      "fecha": "2026-10-26",
+      "url": "https://tradersunion.com/news/stocks/show/3974620-brazil-stocks-selloff-lula-win-nu-ewz/"
+    },
+    {
+      "id": 34,
+      "titulo": "B3 (B3SA3): resultado do 2T26 acende alerta no mercado",
+      "editor": "Eu Quero Investir",
+      "tipo": "Foros y redes",
+      "fecha": "2026-08",
+      "url": "https://euqueroinvestir.com/acoes/b3-resultado-acende-alerta-no-mercado"
+    },
+    {
+      "id": 35,
+      "titulo": "B3 (B3SA3) resultado 2T26: diversificação amortece a perda de força dos volumes",
+      "editor": "Genial Investimentos (Analisa)",
+      "tipo": "Foros y redes",
+      "fecha": "2026-08",
+      "url": "https://analisa.genialinvestimentos.com.br/acoes/b3/b3-b3sa3-resultado-2t26-diversificacao-amortece-a-perda-de-forca-dos-volumes"
+    },
+    {
+      "id": 36,
+      "titulo": "Focus: mercado vê IPCA e Selic maiores em 2026 e 2027 (Focus del 15-jun-2026: IPCA 2027 4,10 %, 2028 3,68 %, 2029 3,50 %)",
+      "editor": "Eu Quero Investir",
+      "tipo": "Prensa",
+      "fecha": "2026-06-15",
+      "url": "https://euqueroinvestir.com/economia/focus-mercado-ve-ipca-e-selic-maiores-em-2026-e-2027"
+    }
+  ],
+  "calc": {
+    "version": 4,
+    "etiquetas": {
+      "margen_bruto": "M. bruto",
+      "margen_bruto_largo": "Margen bruto",
+      "dias_base": "sobre el coste de ventas"
+    },
+    "recomendacion": {
+      "recomendacion": "Mantener",
+      "regla": "Mantener",
+      "regla_absoluta": "Vender",
+      "regla_relativa": "Vender",
+      "coincide": true,
+      "conviccion": "Baja",
+      "conviccion_sugerida": "Media",
+      "conviccion_razones": [
+        "Mantener con las dos reglas de acuerdo y lejos de los umbrales"
+      ],
+      "reglas_discrepan": false,
+      "relativo": {
+        "prima_implicita_pct": 4.2,
+        "wacc": 18.55,
+        "ke": 20.06,
+        "dcf": 9.19,
+        "dcf_min": 8.87,
+        "dcf_max": 9.54,
+        "valor_objetivo": 11.14,
+        "alcista": 10.13,
+        "bajista": 7.03,
+        "mercado": "S&P 500 (prima implícita de Damodaran, octubre de 2026; vale para mercados desarrollados, se aplica sobre la tasa en BRL)",
+        "fecha": "2026-10",
+        "potencial_pct": -26.1,
+        "rentabilidad_total_pct": -24.1,
+        "asimetria": -0.61
+      },
+      "objetivo_mercado_txt": " · con la prima implícita del mercado: 11,14 (-26,1 %)",
+      "objetivo_mercado_corto": " · mercado 11,14",
+      "rentabilidad_mercado_corto": " · mercado -24,1 %",
+      "potencial_pct": -30.3,
+      "dividendo_pct": 2,
+      "rentabilidad_total_pct": -28.4,
+      "alcista_pct": -38.2,
+      "bajista_pct": -56.5,
+      "asimetria": -0.68,
+      "comprar_por_debajo": 10.5,
+      "vender_por_encima": 19.8,
+      "tabla": [
+        {
+          "concepto": "Objetivo a 12 meses (nuestro PER × nuestro BPA 2028e, ponderado 25/50/25)",
+          "valor": "17,52 BRL"
+        },
+        {
+          "concepto": "Bajista / base / alcista a 12 meses",
+          "valor": "10,4x × 1,10 = 11,44 · 13,3x × 1,29 = 17,16 · 17,9x × 1,36 = 24,34"
+        },
+        {
+          "concepto": "Rentabilidad a 12 meses: ponderada / del base (con dividendo)",
+          "valor": "18,2 % / 15,8 %"
+        },
+        {
+          "concepto": "Regla de múltiplos aplicada",
+          "valor": "v3: base a mitad de camino hacia la mediana adelantada, sin alejarse del actual más de ×1,1; bajista mín. 5 a (adelantado) o base × 0,80; alcista techo base × 1,35 (selector de método: sin marcas: decide la v3)"
+        },
+        {
+          "concepto": "Objetivo medio de los analistas (solo contraste)",
+          "valor": "22,64 (nuestro base -24,2 %)"
+        },
+        {
+          "concepto": "Valor intrínseco (síntesis ponderada, largo plazo)",
+          "valor": "10,50 BRL"
+        },
+        {
+          "concepto": "Potencial sobre el precio actual",
+          "valor": "-30,3 %"
+        },
+        {
+          "concepto": "Rentabilidad por dividendo ordinario",
+          "valor": "2,0 %"
+        },
+        {
+          "concepto": "Rentabilidad total esperada a 12 meses",
+          "valor": "-28,4 %"
+        },
+        {
+          "concepto": "Escenario alcista / bajista",
+          "valor": "-38,2 % / -56,5 %"
+        },
+        {
+          "concepto": "Asimetría (ganancia alcista / pérdida bajista)",
+          "valor": "-0,68x"
+        },
+        {
+          "concepto": "Rentabilidad anual implícita en el precio frente al WACC y al que pide el mercado",
+          "valor": "13,3 % frente a 19,8 % y 18,6 %"
+        },
+        {
+          "concepto": "Valor objetivo con la prima implícita del mercado (4,2 %, WACC 18,6 %)",
+          "valor": "11,14 BRL"
+        },
+        {
+          "concepto": "Rentabilidad total esperada con la prima del mercado",
+          "valor": "-24,1 %"
+        },
+        {
+          "concepto": "Asimetría con la prima del mercado",
+          "valor": "-0,61x"
+        },
+        {
+          "concepto": "Regla absoluta (frente a su coste de capital)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Regla relativa (frente a lo que pide el mercado)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "¿La calidad de la empresa sostiene el crecimiento previsto?",
+          "valor": "Sí (6,9 % anual proyectado; sin inversión neta)"
+        },
+        {
+          "concepto": "Señal del valor intrínseco (regla del DCF, referencia)",
+          "valor": "Vender"
+        },
+        {
+          "concepto": "Recomendación según la regla a 12 meses (Comprar: ponderada ≥ 15 %, base ≥ 12 % y valor intrínseco ≥ precio; Vender: ponderada ≤ -10 %)",
+          "valor": "Mantener"
+        },
+        {
+          "concepto": "Convicción según los criterios (Mantener con las dos reglas de acuerdo y lejos de los umbrales)",
+          "valor": "Media"
+        }
+      ],
+      "niveles": [
+        {
+          "accion": "Comprar",
+          "condicion": "Por debajo de 10,50 (ponderada a 12 meses ≥ 15 %, base ≥ 12 % y precio ≤ valor intrínseco)"
+        },
+        {
+          "accion": "Mantener",
+          "condicion": "Entre 10,50 y 19,80"
+        },
+        {
+          "accion": "Vender o reducir",
+          "condicion": "Por encima de 19,80 (ponderada a 12 meses ≤ -10 %)"
+        }
+      ],
+      "precio_txt": "",
+      "valor_objetivo_txt": "",
+      "regla_valor_intrinseco": "Vender",
+      "objetivo_12m": {
+        "completo": true,
+        "filas": [
+          {
+            "escenario": "Bajista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 1.1,
+            "multiplo": 10.4,
+            "multiplo_informe": null,
+            "origen": "mínimo de 5 años",
+            "precio": 11.44,
+            "rentabilidad_pct": -22.1,
+            "justificacion": "El nuevo gobierno sube la tributación de dividendos y elimina o recorta los JCP, la Selic sube por encima del 15 % y salen inversores: ingresos +3 % en 2027 y +4 % en 2028 (12.080 M), margen EBITDA del 66,5 % y tipo efectivo del 33 % al perder parte del escudo de los JCP. Beneficio de ≈ 5.400 M con 4.900 M de acciones."
+          },
+          {
+            "escenario": "Base",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 1.29,
+            "multiplo": 13.3,
+            "multiplo_informe": null,
+            "origen": "PER actual (12.8x) a mitad de camino hacia la mediana de 5 años (13.8x)",
+            "precio": 17.16,
+            "rentabilidad_pct": 15.8,
+            "justificacion": "2026e +12 % (1S26 +14,4 % y segundo semestre más flojo), +6 % en 2027 y +7 % en 2028: ingresos de 12.790 M, margen EBITDA del 69,5 % (8.890 M), amortización del 3,3 %, resultado financiero neto de ≈ +475 M y tipo efectivo del 30 % (nominal del 37 % con escudo de JCP). Beneficio de ≈ 6.260 M con 4.856 M de acciones (recompra anunciada de hasta 230 M, ejecutada en parte) [5, 22]."
+          },
+          {
+            "escenario": "Alcista",
+            "metrica": "PER 2028e",
+            "beneficio_por_accion": 1.36,
+            "multiplo": 17.9,
+            "multiplo_informe": null,
+            "origen": "techo de base × 1.35",
+            "precio": 24.34,
+            "rentabilidad_pct": 63.5,
+            "justificacion": "La volatilidad electoral y la Selic alta mantienen volúmenes récord de contado, renta fija y Tesouro Direto: +8 % en 2027 y +9 % en 2028 (13.280 M) y un punto más de margen (70,5 %). Beneficio de ≈ 6.600 M."
+          }
+        ],
+        "regla": {
+          "version": "v3",
+          "bajista": 10.4,
+          "base": 13.3,
+          "alcista": 17.9,
+          "bajista_origen": "mínimo de 5 años",
+          "base_origen": "PER actual (12.8x) a mitad de camino hacia la mediana de 5 años (13.8x)",
+          "alcista_origen": "techo de base × 1.35"
+        },
+        "version": "v3",
+        "probabilidades": [
+          25,
+          50,
+          25
+        ],
+        "objetivo_ponderado": 17.52,
+        "objetivo_simple": 17.65,
+        "objetivo_base": 17.16,
+        "rentabilidad_ponderada_pct": 18.2,
+        "rentabilidad_simple_pct": 19,
+        "rentabilidad_base_pct": 15.8,
+        "asimetria": 2.55,
+        "senal": "Mantener",
+        "senal_sin_confirmar": null,
+        "confianza_baja": false,
+        "comprar_por_debajo": 10.5,
+        "vender_por_encima": 19.8,
+        "consenso_objetivo": 22.64,
+        "diferencia_consenso_pct": -24.2,
+        "selector": {
+          "regla": "v3",
+          "motivo": "sin marcas: decide la v3",
+          "v3_sin_selector": {
+            "version": "v3",
+            "rentabilidad_ponderada_pct": 18.2,
+            "rentabilidad_base_pct": 15.8,
+            "senal": "Mantener",
+            "objetivo_ponderado": 17.52
+          },
+          "v2": {
+            "version": "v2",
+            "rentabilidad_ponderada_pct": 15.7,
+            "rentabilidad_base_pct": 11.5,
+            "senal": "Mantener",
+            "objetivo_ponderado": 17.15
+          }
+        },
+        "v2": {
+          "rentabilidad_ponderada_pct": 15.7,
+          "rentabilidad_base_pct": 11.5,
+          "senal": "Mantener",
+          "multiplos": [
+            11.8,
+            12.8,
+            16.6
+          ]
+        },
+        "comparacion_txt": "Para comparar, con la regla v2 (historia al cierre, mismo precio): 11,8x / 12,8x / 16,6x, 15,7 % Mantener. Decide la v3 con tope ×1,1, elegida por el selector de método (sin marcas: decide la v3; METODO-VIGENTE.md)."
+      },
+      "rentabilidad_12m_pct": 18.2,
+      "rentabilidad_12m_txt": "+18,2 % (base +15,8 %)",
+      "objetivo_12m_txt": "17,52 BRL"
+    },
+    "mercado": {
+      "precio": 15.07,
+      "acciones": 4998.3,
+      "capitalizacion": 75324,
+      "deuda_neta": -1519,
+      "deuda_neta_ajustada": 63,
+      "asimilables_deuda": 1582,
+      "ajustes_puente": 1493,
+      "valor_empresa": 75298,
+      "fecha_puente": "2026-06-30"
+    },
+    "clave": {
+      "capitalizacion": 75324,
+      "valor_empresa": 75298,
+      "deuda_neta": -1519,
+      "ev_ventas_ltm": 6.99,
+      "ev_ebitda_ltm": 10,
+      "ev_ebitda_ntm": null,
+      "ev_ebit_ltm": 10.6,
+      "per_ltm": 14.4,
+      "per_ntm": 11.4,
+      "fcf_yield_pct": 6.1,
+      "dividendo_pct": 3.9,
+      "dn_ebitda": -0.2,
+      "roic_pct": 23.3,
+      "margen_ebitda_pct": 69.6,
+      "deuda_neta_ajustada": 63,
+      "dn_ebitda_ajustada": 0,
+      "crecimiento_tcac_pct": 11.1,
+      "ingresos_ntm": 12467,
+      "ebitda_ntm": null,
+      "bpa_ntm": 1.32,
+      "ebitda_ltm": 7503,
+      "ingresos_ltm": 10777,
+      "ev_rab": null
+    },
+    "cuenta": [
+      {
+        "periodo": "2018",
+        "ingresos": 4832,
+        "crecimiento_pct": null,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 3352,
+        "margen_ebitda_pct": 69.4,
+        "ebit": 2399,
+        "margen_ebit_pct": 49.6,
+        "beneficio_neto": 2087,
+        "margen_neto_pct": 43.2,
+        "bpa": 0.3388,
+        "dpa": 0.234,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 10.7,
+        "payout_pct": 69
+      },
+      {
+        "periodo": "2019",
+        "ingresos": 5908,
+        "crecimiento_pct": 22.3,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 4259,
+        "margen_ebitda_pct": 72.1,
+        "ebit": 3229,
+        "margen_ebit_pct": 54.7,
+        "beneficio_neto": 2714,
+        "margen_neto_pct": 45.9,
+        "bpa": 0.4405,
+        "dpa": 0.442,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 18.7,
+        "payout_pct": 100
+      },
+      {
+        "periodo": "2020",
+        "ingresos": 8383,
+        "crecimiento_pct": 41.9,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 6721,
+        "margen_ebitda_pct": 80.2,
+        "ebit": 5680,
+        "margen_ebit_pct": 67.8,
+        "beneficio_neto": 4152,
+        "margen_neto_pct": 49.5,
+        "bpa": 0.6757,
+        "dpa": 0.678,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 24.7,
+        "payout_pct": 100
+      },
+      {
+        "periodo": "2021",
+        "ingresos": 9248,
+        "crecimiento_pct": 10.3,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 7378,
+        "margen_ebitda_pct": 79.8,
+        "ebit": 6321,
+        "margen_ebit_pct": 68.3,
+        "beneficio_neto": 4717,
+        "margen_neto_pct": 51,
+        "bpa": 0.7739,
+        "dpa": 0.776,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 27.6,
+        "payout_pct": 100
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 9092,
+        "crecimiento_pct": -1.7,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 6628,
+        "margen_ebitda_pct": 72.9,
+        "ebit": 5572,
+        "margen_ebit_pct": 61.3,
+        "beneficio_neto": 4226,
+        "margen_neto_pct": 46.5,
+        "bpa": 0.7116,
+        "dpa": 0.386,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 27,
+        "payout_pct": 54
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 8930,
+        "crecimiento_pct": -1.8,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 6335,
+        "margen_ebitda_pct": 70.9,
+        "ebit": 5245,
+        "margen_ebit_pct": 58.7,
+        "beneficio_neto": 4132,
+        "margen_neto_pct": 46.3,
+        "bpa": 0.7222,
+        "dpa": 0.446,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 25.7,
+        "payout_pct": 62
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 9513,
+        "crecimiento_pct": 6.5,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 6691,
+        "margen_ebitda_pct": 70.3,
+        "ebit": 6119,
+        "margen_ebit_pct": 64.3,
+        "beneficio_neto": 4577,
+        "margen_neto_pct": 48.1,
+        "bpa": 0.8344,
+        "dpa": 0.296,
+        "dpa_extraordinario": 0,
+        "tasa_impositiva_pct": 25.3,
+        "payout_pct": 35
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 10068,
+        "crecimiento_pct": 5.8,
+        "beneficio_bruto": null,
+        "margen_bruto_pct": null,
+        "ebitda": 7019,
+        "margen_ebitda_pct": 69.7,
+        "ebit": 6632,
+        "margen_ebit_pct": 65.9,
+        "beneficio_neto": 4586,
+        "margen_neto_pct": 45.6,
+        "bpa": 0.8812,
+        "dpa": 0.584,
+        "dpa_extraordinario": 0.29,
+        "tasa_impositiva_pct": 34,
+        "payout_pct": 33
+      }
+    ],
+    "tcac": {
+      "periodo": "2018-2025",
+      "ingresos_pct": 11.1,
+      "ebitda_pct": 11.1,
+      "bpa_pct": 14.6
+    },
+    "cuenta_y_prevision": [
+      {
+        "periodo": "2018",
+        "ingresos": 4832,
+        "ebitda": 3352
+      },
+      {
+        "periodo": "2019",
+        "ingresos": 5908,
+        "ebitda": 4259
+      },
+      {
+        "periodo": "2020",
+        "ingresos": 8383,
+        "ebitda": 6721
+      },
+      {
+        "periodo": "2021",
+        "ingresos": 9248,
+        "ebitda": 7378
+      },
+      {
+        "periodo": "2022",
+        "ingresos": 9092,
+        "ebitda": 6628
+      },
+      {
+        "periodo": "2023",
+        "ingresos": 8930,
+        "ebitda": 6335
+      },
+      {
+        "periodo": "2024",
+        "ingresos": 9513,
+        "ebitda": 6691
+      },
+      {
+        "periodo": "2025",
+        "ingresos": 10068,
+        "ebitda": 7019
+      },
+      {
+        "periodo": "2026e",
+        "ingresos": 11276,
+        "ebitda": 7837
+      },
+      {
+        "periodo": "2027e",
+        "ingresos": 11953,
+        "ebitda": 8247
+      },
+      {
+        "periodo": "2028e",
+        "ingresos": 12789,
+        "ebitda": 8889
+      },
+      {
+        "periodo": "2029e",
+        "ingresos": 13621,
+        "ebitda": 9535
+      },
+      {
+        "periodo": "2030e",
+        "ingresos": 14438,
+        "ebitda": 10107
+      },
+      {
+        "periodo": "2031e",
+        "ingresos": 15232,
+        "ebitda": 10662
+      },
+      {
+        "periodo": "2032e",
+        "ingresos": 16070,
+        "ebitda": 11249
+      }
+    ],
+    "segmentos_ultimo": [
+      {
+        "nombre": "Mercados",
+        "ingresos": 7415,
+        "peso_pct": 73.7,
+        "crecimiento_pct": 3,
+        "margen_pct": null,
+        "tipo_margen": null
+      },
+      {
+        "nombre": "Soluções para Mercado de Capitais",
+        "ingresos": 672,
+        "peso_pct": 6.7,
+        "crecimiento_pct": 10,
+        "margen_pct": null,
+        "tipo_margen": null
+      },
+      {
+        "nombre": "Soluções Analíticas de Dados (Trillia)",
+        "ingresos": 1124,
+        "peso_pct": 11.2,
+        "crecimiento_pct": 10.4,
+        "margen_pct": null,
+        "tipo_margen": null
+      },
+      {
+        "nombre": "Tecnologia e Plataformas",
+        "ingresos": 1909,
+        "peso_pct": 19,
+        "crecimiento_pct": 14.7,
+        "margen_pct": null,
+        "tipo_margen": null
+      },
+      {
+        "nombre": "Otros e impuestos sobre ingresos",
+        "ingresos": -1053,
+        "peso_pct": -10.5,
+        "crecimiento_pct": 7.9,
+        "margen_pct": null,
+        "tipo_margen": null
+      }
+    ],
+    "segmentos_tabla": {
+      "periodos": [
+        "",
+        "",
+        "",
+        "2024",
+        "2025"
+      ],
+      "filas": [
+        {
+          "nombre": "Mercados",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": 7196,
+          "v4": 7415
+        },
+        {
+          "nombre": "Soluções para Mercado de Capitais",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": 611,
+          "v4": 672
+        },
+        {
+          "nombre": "Soluções Analíticas de Dados (Trillia)",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": 1018,
+          "v4": 1124
+        },
+        {
+          "nombre": "Tecnologia e Plataformas",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": 1664,
+          "v4": 1909
+        },
+        {
+          "nombre": "Otros e impuestos sobre ingresos",
+          "v0": null,
+          "v1": null,
+          "v2": null,
+          "v3": -976,
+          "v4": -1053
+        }
+      ]
+    },
+    "segmentos_periodo": "2025",
+    "balance": [
+      {
+        "periodo": "2018",
+        "activo_total": 35501,
+        "intangibles": 27135,
+        "circulante": 133,
+        "circulante_ventas_pct": 2.8,
+        "caja": 6683,
+        "deuda_financiera": 4509,
+        "arrendamientos": 0,
+        "deuda_neta": -2174,
+        "patrimonio": 25033,
+        "minoritarios": 11,
+        "dn_ebitda": -0.65,
+        "dn_patrimonio_pct": -9,
+        "dso": 24,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 4.4,
+        "capital_invertido": 22870,
+        "fondo_comercio": 22339,
+        "liquidez_corriente": 1.48
+      },
+      {
+        "periodo": "2019",
+        "activo_total": 36944,
+        "intangibles": 26487,
+        "circulante": 155,
+        "circulante_ventas_pct": 2.6,
+        "caja": 8426,
+        "deuda_financiera": 4365,
+        "arrendamientos": 0,
+        "deuda_neta": -4061,
+        "patrimonio": 25388,
+        "minoritarios": 13,
+        "dn_ebitda": -0.95,
+        "dn_patrimonio_pct": -16,
+        "dso": 21,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 7.2,
+        "capital_invertido": 21340,
+        "fondo_comercio": 22416,
+        "liquidez_corriente": 1.49
+      },
+      {
+        "periodo": "2020",
+        "activo_total": 40561,
+        "intangibles": 25685,
+        "circulante": 191,
+        "circulante_ventas_pct": 2.3,
+        "caja": 12144,
+        "deuda_financiera": 7059,
+        "arrendamientos": 0,
+        "deuda_neta": -5085,
+        "patrimonio": 24510,
+        "minoritarios": 11,
+        "dn_ebitda": -0.76,
+        "dn_patrimonio_pct": -21,
+        "dso": 18,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 12.3,
+        "capital_invertido": 19436,
+        "fondo_comercio": 22409,
+        "liquidez_corriente": 2.9
+      },
+      {
+        "periodo": "2021",
+        "activo_total": 46078,
+        "intangibles": 26631,
+        "circulante": 218,
+        "circulante_ventas_pct": 2.4,
+        "caja": 15647,
+        "deuda_financiera": 14198,
+        "arrendamientos": 0,
+        "deuda_neta": -1449,
+        "patrimonio": 22408,
+        "minoritarios": 11,
+        "dn_ebitda": -0.2,
+        "dn_patrimonio_pct": -6,
+        "dso": 17,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 8.7,
+        "capital_invertido": 20970,
+        "fondo_comercio": 23604,
+        "liquidez_corriente": 2.25
+      },
+      {
+        "periodo": "2022",
+        "activo_total": 42697,
+        "intangibles": 25795,
+        "circulante": 285,
+        "circulante_ventas_pct": 3.1,
+        "caja": 12816,
+        "deuda_financiera": 12111,
+        "arrendamientos": 0,
+        "deuda_neta": -705,
+        "patrimonio": 20271,
+        "minoritarios": 12,
+        "dn_ebitda": -0.11,
+        "dn_patrimonio_pct": -3,
+        "dso": 20,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 3.5,
+        "capital_invertido": 19578,
+        "fondo_comercio": 23697,
+        "liquidez_corriente": 2.77
+      },
+      {
+        "periodo": "2023",
+        "activo_total": 45642,
+        "intangibles": 26221,
+        "circulante": 273,
+        "circulante_ventas_pct": 3.1,
+        "caja": 14627,
+        "deuda_financiera": 14009,
+        "arrendamientos": 0,
+        "deuda_neta": -618,
+        "patrimonio": 20273,
+        "minoritarios": 13,
+        "dn_ebitda": -0.1,
+        "dn_patrimonio_pct": -3,
+        "dso": 23,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 3.6,
+        "capital_invertido": 19668,
+        "fondo_comercio": 24459,
+        "liquidez_corriente": 1.8
+      },
+      {
+        "periodo": "2024",
+        "activo_total": 41219,
+        "intangibles": 25646,
+        "circulante": 172,
+        "circulante_ventas_pct": 1.8,
+        "caja": 11708,
+        "deuda_financiera": 13228,
+        "arrendamientos": 0,
+        "deuda_neta": 1520,
+        "patrimonio": 18370,
+        "minoritarios": 13,
+        "dn_ebitda": 0.23,
+        "dn_patrimonio_pct": 8,
+        "dso": 19,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 3.9,
+        "capital_invertido": 19903,
+        "fondo_comercio": 24334,
+        "liquidez_corriente": 2.17
+      },
+      {
+        "periodo": "2025",
+        "activo_total": 44587,
+        "intangibles": 25571,
+        "circulante": 227,
+        "circulante_ventas_pct": 2.3,
+        "caja": 14707,
+        "deuda_financiera": 14945,
+        "arrendamientos": 0,
+        "deuda_neta": 238,
+        "patrimonio": 17442,
+        "minoritarios": 22,
+        "dn_ebitda": 0.03,
+        "dn_patrimonio_pct": 1,
+        "dso": 22,
+        "dio": null,
+        "dpo": null,
+        "ciclo_caja": null,
+        "cobertura_intereses": 3.5,
+        "capital_invertido": 17702,
+        "fondo_comercio": 24359,
+        "liquidez_corriente": 2.56
+      }
+    ],
+    "perimetro_nota": "Cambio de perímetro (2021: Compra de Neoway (datos y analítica, ≈ R$ 1.800 M en caja) en diciembre de 2021; base de la línea Trillia (Soluções Analíticas de Dados).). Los ratios de balance de ese año (días, circulante, deuda neta / EBITDA, ROIC) y los indicadores de calidad contable no son comparables con los anteriores.",
+    "flujos": [
+      {
+        "periodo": "2018",
+        "flujo_operativo": 3983,
+        "capex": 271,
+        "pagos_arrendamientos": 0,
+        "fcf": 3340,
+        "beneficio_neto": 2087,
+        "conversion_pct": 160,
+        "capex_ventas_pct": 5.6,
+        "capex_amortizacion": 0.28,
+        "adquisiciones": 0,
+        "desinversiones": 0,
+        "dividendos": 1529,
+        "recompras": 0,
+        "emision_acciones": 0,
+        "retorno_accionista": 1529,
+        "payout_caja_pct": 73,
+        "acciones": 6160,
+        "fcf_por_accion": 0.54
+      },
+      {
+        "periodo": "2019",
+        "flujo_operativo": 4594,
+        "capex": 297,
+        "pagos_arrendamientos": 0,
+        "fcf": 3981,
+        "beneficio_neto": 2714,
+        "conversion_pct": 147,
+        "capex_ventas_pct": 5,
+        "capex_amortizacion": 0.29,
+        "adquisiciones": 51,
+        "desinversiones": 0,
+        "dividendos": 2062,
+        "recompras": 76,
+        "emision_acciones": 0,
+        "retorno_accionista": 2138,
+        "payout_caja_pct": 79,
+        "acciones": 6161.2,
+        "fcf_por_accion": 0.65
+      },
+      {
+        "periodo": "2020",
+        "flujo_operativo": 5688,
+        "capex": 442,
+        "pagos_arrendamientos": 0,
+        "fcf": 4987,
+        "beneficio_neto": 4152,
+        "conversion_pct": 120,
+        "capex_ventas_pct": 5.3,
+        "capex_amortizacion": 0.42,
+        "adquisiciones": 12,
+        "desinversiones": 0,
+        "dividendos": 3884,
+        "recompras": 798,
+        "emision_acciones": 0,
+        "retorno_accionista": 4682,
+        "payout_caja_pct": 113,
+        "acciones": 6144.7,
+        "fcf_por_accion": 0.81
+      },
+      {
+        "periodo": "2021",
+        "flujo_operativo": 6473,
+        "capex": 381,
+        "pagos_arrendamientos": 0,
+        "fcf": 5495,
+        "beneficio_neto": 4717,
+        "conversion_pct": 116,
+        "capex_ventas_pct": 4.1,
+        "capex_amortizacion": 0.36,
+        "adquisiciones": 1868,
+        "desinversiones": 0,
+        "dividendos": 6705,
+        "recompras": 729,
+        "emision_acciones": 0,
+        "retorno_accionista": 7434,
+        "payout_caja_pct": 158,
+        "acciones": 6095.1,
+        "fcf_por_accion": 0.9
+      },
+      {
+        "periodo": "2022",
+        "flujo_operativo": 5804,
+        "capex": 215,
+        "pagos_arrendamientos": 0,
+        "fcf": 4289,
+        "beneficio_neto": 4226,
+        "conversion_pct": 101,
+        "capex_ventas_pct": 2.4,
+        "capex_amortizacion": 0.2,
+        "adquisiciones": 22,
+        "desinversiones": 12,
+        "dividendos": 2643,
+        "recompras": 3746,
+        "emision_acciones": 0,
+        "retorno_accionista": 6389,
+        "payout_caja_pct": 151,
+        "acciones": 5938.7,
+        "fcf_por_accion": 0.72
+      },
+      {
+        "periodo": "2023",
+        "flujo_operativo": 5175,
+        "capex": 231,
+        "pagos_arrendamientos": 0,
+        "fcf": 3701,
+        "beneficio_neto": 4132,
+        "conversion_pct": 90,
+        "capex_ventas_pct": 2.6,
+        "capex_amortizacion": 0.21,
+        "adquisiciones": 646,
+        "desinversiones": 1,
+        "dividendos": 2036,
+        "recompras": 2150,
+        "emision_acciones": 0,
+        "retorno_accionista": 4186,
+        "payout_caja_pct": 101,
+        "acciones": 5721.4,
+        "fcf_por_accion": 0.65
+      },
+      {
+        "periodo": "2024",
+        "flujo_operativo": 5331,
+        "capex": 249,
+        "pagos_arrendamientos": 0,
+        "fcf": 3693,
+        "beneficio_neto": 4577,
+        "conversion_pct": 81,
+        "capex_ventas_pct": 2.6,
+        "capex_amortizacion": 0.44,
+        "adquisiciones": 8,
+        "desinversiones": 3,
+        "dividendos": 2044,
+        "recompras": 3835,
+        "emision_acciones": 0,
+        "retorno_accionista": 5879,
+        "payout_caja_pct": 128,
+        "acciones": 5485.4,
+        "fcf_por_accion": 0.67
+      },
+      {
+        "periodo": "2025",
+        "flujo_operativo": 6408,
+        "capex": 287,
+        "pagos_arrendamientos": 0,
+        "fcf": 4626,
+        "beneficio_neto": 4586,
+        "conversion_pct": 101,
+        "capex_ventas_pct": 2.9,
+        "capex_amortizacion": 0.74,
+        "adquisiciones": 44,
+        "desinversiones": 5,
+        "dividendos": 1445,
+        "recompras": 3008,
+        "emision_acciones": 0,
+        "retorno_accionista": 4453,
+        "payout_caja_pct": 97,
+        "acciones": 5204.3,
+        "fcf_por_accion": 0.89
+      }
+    ],
+    "flujos_acumulado": {
+      "periodo": "2018-2025",
+      "fcf": 34112,
+      "adquisiciones": 2651,
+      "dividendos": 22348,
+      "recompras": 14342,
+      "conversion_pct": 109
+    },
+    "rentabilidad": [
+      {
+        "periodo": "2018",
+        "nopat": 2142,
+        "capital_invertido": 22870,
+        "roic_pct": 9.4,
+        "roic_sin_fc_pct": 403.5,
+        "fondo_comercio_pct_capital": 98,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 8.3,
+        "roa_pct": 5.9,
+        "margen_neto_pct": 43.2,
+        "rotacion": 0.14,
+        "apalancamiento": 1.42
+      },
+      {
+        "periodo": "2019",
+        "nopat": 2624,
+        "capital_invertido": 22105,
+        "roic_pct": 11.9,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": 101,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 10.8,
+        "roa_pct": 7.5,
+        "margen_neto_pct": 45.9,
+        "rotacion": 0.16,
+        "apalancamiento": 1.44
+      },
+      {
+        "periodo": "2020",
+        "nopat": 4274,
+        "capital_invertido": 20388,
+        "roic_pct": 21,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": 110,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 16.6,
+        "roa_pct": 10.7,
+        "margen_neto_pct": 49.5,
+        "rotacion": 0.22,
+        "apalancamiento": 1.55
+      },
+      {
+        "periodo": "2021",
+        "nopat": 4576,
+        "capital_invertido": 20203,
+        "roic_pct": 22.6,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": 114,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 20.1,
+        "roa_pct": 10.9,
+        "margen_neto_pct": 51,
+        "rotacion": 0.21,
+        "apalancamiento": 1.85
+      },
+      {
+        "periodo": "2022",
+        "nopat": 4067,
+        "capital_invertido": 20274,
+        "roic_pct": 20.1,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": 117,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 19.8,
+        "roa_pct": 9.5,
+        "margen_neto_pct": 46.5,
+        "rotacion": 0.2,
+        "apalancamiento": 2.08
+      },
+      {
+        "periodo": "2023",
+        "nopat": 3899,
+        "capital_invertido": 19623,
+        "roic_pct": 19.9,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": 123,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 20.4,
+        "roa_pct": 9.4,
+        "margen_neto_pct": 46.3,
+        "rotacion": 0.2,
+        "apalancamiento": 2.18
+      },
+      {
+        "periodo": "2024",
+        "nopat": 4573,
+        "capital_invertido": 19786,
+        "roic_pct": 23.1,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": 123,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 23.7,
+        "roa_pct": 10.5,
+        "margen_neto_pct": 48.1,
+        "rotacion": 0.22,
+        "apalancamiento": 2.25
+      },
+      {
+        "periodo": "2025",
+        "nopat": 4380,
+        "capital_invertido": 18803,
+        "roic_pct": 23.3,
+        "roic_sin_fc_pct": null,
+        "fondo_comercio_pct_capital": 129,
+        "roic_operativo_pct": null,
+        "capital_operativo": null,
+        "base_roic_operativo": null,
+        "roic_nota": null,
+        "roe_pct": 25.6,
+        "roa_pct": 10.7,
+        "margen_neto_pct": 45.6,
+        "rotacion": 0.23,
+        "apalancamiento": 2.4
+      }
+    ],
+    "roic_incremental_pct": null,
+    "roic_frente_wacc": [
+      {
+        "periodo": "2018",
+        "roic_pct": 9.4,
+        "roic_sin_fc_pct": 403.5,
+        "roic_operativo_pct": null,
+        "roe_pct": 8.3,
+        "wacc_pct": 19.7
+      },
+      {
+        "periodo": "2019",
+        "roic_pct": 11.9,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 10.8,
+        "wacc_pct": 19.7
+      },
+      {
+        "periodo": "2020",
+        "roic_pct": 21,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 16.6,
+        "wacc_pct": 19.7
+      },
+      {
+        "periodo": "2021",
+        "roic_pct": 22.6,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 20.1,
+        "wacc_pct": 19.7
+      },
+      {
+        "periodo": "2022",
+        "roic_pct": 20.1,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 19.8,
+        "wacc_pct": 19.7
+      },
+      {
+        "periodo": "2023",
+        "roic_pct": 19.9,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 20.4,
+        "wacc_pct": 19.7
+      },
+      {
+        "periodo": "2024",
+        "roic_pct": 23.1,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 23.7,
+        "wacc_pct": 19.7
+      },
+      {
+        "periodo": "2025",
+        "roic_pct": 23.3,
+        "roic_sin_fc_pct": null,
+        "roic_operativo_pct": null,
+        "roe_pct": 25.6,
+        "wacc_pct": 19.7
+      }
+    ],
+    "compras": {
+      "tipo": "compras pequeñas",
+      "subidas": 1,
+      "anios": 7,
+      "fondo_comercio": 24359,
+      "fondo_comercio_pct_capital": 129,
+      "roic_pct": 23.3,
+      "roic_sin_fc_pct": null,
+      "texto": "Fondo de comercio: 24.359 M en 2025 (el 129 % del capital invertido medio); ha subido más de un 5 % en 1 de 7 años: compras pequeñas. El ROIC sin fondo de comercio mide el rendimiento del negocio operativo; decide el publicado (§4.1) y la cifra sin fondo de comercio es dato para una excepción razonada."
+    },
+    "calidad": {
+      "periodo": "2025",
+      "altman_z": 2.82,
+      "altman_zona": "Zona gris",
+      "piotroski_f": 5,
+      "piotroski_detalle": [
+        {
+          "criterio": "Beneficio neto positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Flujo operativo positivo",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "ROA mejora",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Flujo operativo > beneficio neto",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Baja el endeudamiento (deuda / activo)",
+          "resultado": "No"
+        },
+        {
+          "criterio": "Mejora la liquidez corriente",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "No emite acciones",
+          "resultado": "Sí"
+        },
+        {
+          "criterio": "Mejora el margen bruto",
+          "resultado": "n.d."
+        },
+        {
+          "criterio": "Mejora la rotación del activo",
+          "resultado": "No"
+        }
+      ],
+      "beneish_m": -2.49,
+      "beneish_fiable": true,
+      "beneish_variables": [
+        {
+          "variable": "DSRI",
+          "valor": 1.15
+        },
+        {
+          "variable": "GMI",
+          "valor": 1
+        },
+        {
+          "variable": "AQI",
+          "valor": 0.95
+        },
+        {
+          "variable": "SGI",
+          "valor": 1.06
+        },
+        {
+          "variable": "DEPI",
+          "valor": 1.31
+        },
+        {
+          "variable": "SGAI",
+          "valor": 0.96
+        },
+        {
+          "variable": "LVGI",
+          "valor": 1.1
+        },
+        {
+          "variable": "TATA",
+          "valor": -0.04
+        }
+      ],
+      "tabla": [
+        {
+          "indicador": "Altman Z",
+          "valor": "2,82",
+          "lectura": "Zona gris (> 2,99 seguro; < 1,81 riesgo). No aplica a bancos ni aseguradoras, y subestima la solvencia de empresas con grandes anticipos de clientes o prefinanciación pública (contratistas, construcción), que inflan el pasivo."
+        },
+        {
+          "indicador": "Piotroski F",
+          "valor": "5 / 8",
+          "lectura": "Intermedio (4-6)."
+        },
+        {
+          "indicador": "Beneish M",
+          "valor": "-2,49",
+          "lectura": "Por debajo de −1,78: sin señal de manipulación."
+        },
+        {
+          "indicador": "Flujo operativo / beneficio neto (acumulado)",
+          "valor": "1,39x",
+          "lectura": "El beneficio se cobra."
+        }
+      ]
+    },
+    "dcf": {
+      "proyeccion": [
+        {
+          "periodo": "2026e",
+          "ingresos": 11276,
+          "crecimiento_pct": 12,
+          "ebitda": 7837,
+          "margen_ebitda_pct": 69.5,
+          "amortizacion": 383,
+          "ebit": 7454,
+          "impuestos": 2162,
+          "capex": 316,
+          "variacion_circulante": -1,
+          "fcff": 5361,
+          "fraccion": 0.18,
+          "factor": 0.984,
+          "vp": 939
+        },
+        {
+          "periodo": "2027e",
+          "ingresos": 11953,
+          "crecimiento_pct": 6,
+          "ebitda": 8247,
+          "margen_ebitda_pct": 69,
+          "amortizacion": 406,
+          "ebit": 7841,
+          "impuestos": 2274,
+          "capex": 347,
+          "variacion_circulante": 14,
+          "fcff": 5613,
+          "fraccion": 1,
+          "factor": 0.885,
+          "vp": 4965
+        },
+        {
+          "periodo": "2028e",
+          "ingresos": 12789,
+          "crecimiento_pct": 7,
+          "ebitda": 8889,
+          "margen_ebitda_pct": 69.5,
+          "amortizacion": 422,
+          "ebit": 8467,
+          "impuestos": 2455,
+          "capex": 384,
+          "variacion_circulante": 17,
+          "fcff": 6033,
+          "fraccion": 1,
+          "factor": 0.739,
+          "vp": 4458
+        },
+        {
+          "periodo": "2029e",
+          "ingresos": 13621,
+          "crecimiento_pct": 6.5,
+          "ebitda": 9535,
+          "margen_ebitda_pct": 70,
+          "amortizacion": 436,
+          "ebit": 9099,
+          "impuestos": 2639,
+          "capex": 409,
+          "variacion_circulante": 17,
+          "fcff": 6471,
+          "fraccion": 1,
+          "factor": 0.617,
+          "vp": 3990
+        },
+        {
+          "periodo": "2030e",
+          "ingresos": 14438,
+          "crecimiento_pct": 6,
+          "ebitda": 10107,
+          "margen_ebitda_pct": 70,
+          "amortizacion": 433,
+          "ebit": 9673,
+          "impuestos": 2805,
+          "capex": 433,
+          "variacion_circulante": 16,
+          "fcff": 6852,
+          "fraccion": 1,
+          "factor": 0.515,
+          "vp": 3529
+        },
+        {
+          "periodo": "2031e",
+          "ingresos": 15232,
+          "crecimiento_pct": 5.5,
+          "ebitda": 10662,
+          "margen_ebitda_pct": 70,
+          "amortizacion": 457,
+          "ebit": 10205,
+          "impuestos": 2960,
+          "capex": 457,
+          "variacion_circulante": 16,
+          "fcff": 7230,
+          "fraccion": 1,
+          "factor": 0.43,
+          "vp": 3110
+        },
+        {
+          "periodo": "2032e",
+          "ingresos": 16070,
+          "crecimiento_pct": 5.5,
+          "ebitda": 11249,
+          "margen_ebitda_pct": 70,
+          "amortizacion": 482,
+          "ebit": 10767,
+          "impuestos": 3122,
+          "capex": 482,
+          "variacion_circulante": 17,
+          "fcff": 7628,
+          "fraccion": 1,
+          "factor": 0.359,
+          "vp": 2741
+        }
+      ],
+      "etapa2": null,
+      "suma_vp": 23732,
+      "valor_terminal": 56490,
+      "vp_terminal": 18552,
+      "valor_empresa": 42284,
+      "peso_terminal_pct": 44,
+      "valor_acciones": 42310,
+      "valor_accion": 8.46,
+      "vt_gordon": 56490,
+      "vt_multiplo": 112489,
+      "multiplo_implicito": 5,
+      "g_implicito_pct": 12.14,
+      "metodo_terminal": "gordon",
+      "terminal_tabla": [
+        {
+          "concepto": "Método principal",
+          "valor": "Crecimiento a perpetuidad"
+        },
+        {
+          "concepto": "Crecimiento a perpetuidad",
+          "valor": "5,5 %"
+        },
+        {
+          "concepto": "Múltiplo EV/EBITDA de salida",
+          "valor": "10,0x"
+        },
+        {
+          "concepto": "Valor terminal (Gordon)",
+          "valor": "56.490"
+        },
+        {
+          "concepto": "Valor terminal (múltiplo)",
+          "valor": "112.489"
+        },
+        {
+          "concepto": "Múltiplo de salida implícito en Gordon",
+          "valor": "5,0x"
+        },
+        {
+          "concepto": "Crecimiento implícito en el múltiplo",
+          "valor": "12,14 %"
+        },
+        {
+          "concepto": "Peso del valor terminal en el valor empresa",
+          "valor": "44 %"
+        }
+      ],
+      "puente": [
+        {
+          "concepto": "Valor actual de los flujos proyectados",
+          "valor": "23.732"
+        },
+        {
+          "concepto": "Valor actual del valor terminal",
+          "valor": "18.552"
+        },
+        {
+          "concepto": "Valor empresa",
+          "valor": "42.284"
+        },
+        {
+          "concepto": "− Deuda financiera neta (con arrendamientos)",
+          "valor": "1.519"
+        },
+        {
+          "concepto": "− Minoritarios, pensiones y otros; + asociadas",
+          "valor": "-1.493"
+        },
+        {
+          "concepto": "Valor de los fondos propios",
+          "valor": "42.310"
+        },
+        {
+          "concepto": "Acciones diluidas (millones)",
+          "valor": "4.998,3"
+        },
+        {
+          "concepto": "Valor por acción",
+          "valor": "8,46"
+        }
+      ],
+      "composicion": [
+        {
+          "parte": "Flujos proyectados",
+          "valor": 23732
+        },
+        {
+          "parte": "Valor terminal",
+          "valor": 18552
+        }
+      ],
+      "wacc": 19.75,
+      "ke": 21.49,
+      "kd_despues": 11.01,
+      "wacc_tabla": [
+        {
+          "concepto": "Tasa libre de riesgo",
+          "valor": "15,44 %"
+        },
+        {
+          "concepto": "Beta",
+          "valor": "1,10"
+        },
+        {
+          "concepto": "Prima de riesgo de mercado",
+          "valor": "5,50 %"
+        },
+        {
+          "concepto": "Prima adicional (país, tamaño, específica)",
+          "valor": "0,00 %"
+        },
+        {
+          "concepto": "Coste de los fondos propios",
+          "valor": "21,48 %"
+        },
+        {
+          "concepto": "Coste de la deuda antes de impuestos",
+          "valor": "15,50 %"
+        },
+        {
+          "concepto": "Tipo impositivo",
+          "valor": "29,00 %"
+        },
+        {
+          "concepto": "Coste de la deuda después de impuestos",
+          "valor": "11,00 %"
+        },
+        {
+          "concepto": "Peso de la deuda (D / (D + E))",
+          "valor": "16,60 %"
+        },
+        {
+          "concepto": "WACC",
+          "valor": "19,75 %"
+        },
+        {
+          "concepto": "Prima de riesgo implícita del mercado (regla relativa)",
+          "valor": "4,20 %"
+        },
+        {
+          "concepto": "WACC con la prima implícita del mercado",
+          "valor": "18,55 %"
+        }
+      ],
+      "potencial_pct": -43.9,
+      "sensibilidad": {
+        "eje_columnas": "Crecimiento a perpetuidad",
+        "columnas": [
+          "4,5 %",
+          "5,0 %",
+          "5,5 %",
+          "6,0 %",
+          "6,5 %"
+        ],
+        "filas": [
+          {
+            "wacc": "18,7 %",
+            "v0": 8.74,
+            "v1": 8.9,
+            "v2": 9.07,
+            "v3": 9.25,
+            "v4": 9.45
+          },
+          {
+            "wacc": "19,2 %",
+            "v0": 8.45,
+            "v1": 8.6,
+            "v2": 8.76,
+            "v3": 8.92,
+            "v4": 9.11
+          },
+          {
+            "wacc": "19,7 %",
+            "v0": 8.19,
+            "v1": 8.32,
+            "v2": 8.46,
+            "v3": 8.62,
+            "v4": 8.78
+          },
+          {
+            "wacc": "20,2 %",
+            "v0": 7.94,
+            "v1": 8.06,
+            "v2": 8.19,
+            "v3": 8.33,
+            "v4": 8.48
+          },
+          {
+            "wacc": "20,7 %",
+            "v0": 7.71,
+            "v1": 7.82,
+            "v2": 7.94,
+            "v3": 8.07,
+            "v4": 8.21
+          }
+        ]
+      },
+      "sensibilidad2": {
+        "columnas": [
+          "-2 pp",
+          "-1 pp",
+          "0 pp",
+          "+1 pp",
+          "+2 pp"
+        ],
+        "filas": [
+          {
+            "margen": "-2 pp",
+            "v0": 7.58,
+            "v1": 7.89,
+            "v2": 8.22,
+            "v3": 8.56,
+            "v4": 8.91
+          },
+          {
+            "margen": "-1 pp",
+            "v0": 7.69,
+            "v1": 8.01,
+            "v2": 8.34,
+            "v3": 8.68,
+            "v4": 9.04
+          },
+          {
+            "margen": "0 pp",
+            "v0": 7.81,
+            "v1": 8.13,
+            "v2": 8.46,
+            "v3": 8.81,
+            "v4": 9.18
+          },
+          {
+            "margen": "+1 pp",
+            "v0": 7.92,
+            "v1": 8.25,
+            "v2": 8.59,
+            "v3": 8.94,
+            "v4": 9.31
+          },
+          {
+            "margen": "+2 pp",
+            "v0": 8.03,
+            "v1": 8.37,
+            "v2": 8.71,
+            "v3": 9.07,
+            "v4": 9.45
+          }
+        ]
+      },
+      "rango_min": 8.06,
+      "rango_max": 8.92,
+      "inverso": {
+        "crecimiento_implicito_pct": 20.5,
+        "crecimiento_base_pct": 6.1,
+        "periodo": "2027e-2032e",
+        "margen_implicito_pct": null,
+        "margen_implicito_texto": "ningún margen hasta el 100 % justifica el precio",
+        "margen_base_pct": 70,
+        "rentabilidad_implicita_pct": 13.3
+      },
+      "sostenibilidad": {
+        "veredicto": "Sí",
+        "veredicto_motor": "Sí",
+        "motivos_motor": [],
+        "crecimiento_financiable_bruto_pct": 1.5,
+        "roic_implicito_bruto_pct": 111.7,
+        "tcac_ingresos_historica_pct": 11.1,
+        "crecimiento_proyectado_pct": 6.9,
+        "tasa_reinversion_pct": 0,
+        "crecimiento_financiable_pct": null,
+        "roic_pct": 23.3,
+        "roic_incremental_historico_pct": null,
+        "roic_implicito_pct": null,
+        "cuota_actual_pct": null,
+        "cuota_final_pct": null,
+        "puente": [
+          {
+            "periodo": "2026e",
+            "volumen_pct": 11,
+            "precio_pct": 1.5,
+            "otros_pct": -0.5,
+            "comentario": "Volumen: récord de contado, renta fija y Tesouro Direto en el 1S26 (+14,4 % de ingresos netos) [5]; precio ≈ 1,5 puntos por mezcla y tarifas; perímetro −0,5 (venta de Dimensa).",
+            "suma_pct": 12,
+            "crecimiento_pct": 12
+          },
+          {
+            "periodo": "2027e",
+            "volumen_pct": 4,
+            "precio_pct": 2,
+            "otros_pct": 0,
+            "comentario": "Volúmenes más normales tras el año electoral; la Selic alta resta contado y suma renta fija.",
+            "suma_pct": 6,
+            "crecimiento_pct": 6
+          },
+          {
+            "periodo": "2028e",
+            "volumen_pct": 4.5,
+            "precio_pct": 2.5,
+            "otros_pct": 0,
+            "comentario": "Volumen 4,5 %, precio 2,5 % (inflación).",
+            "suma_pct": 7,
+            "crecimiento_pct": 7
+          },
+          {
+            "periodo": "2029e",
+            "volumen_pct": 4,
+            "precio_pct": 2.5,
+            "otros_pct": 0,
+            "comentario": "Volumen 4 %, precio 2,5 %.",
+            "suma_pct": 6.5,
+            "crecimiento_pct": 6.5
+          },
+          {
+            "periodo": "2030e",
+            "volumen_pct": 3.5,
+            "precio_pct": 2.5,
+            "otros_pct": 0,
+            "comentario": "Converge al PIB nominal.",
+            "suma_pct": 6,
+            "crecimiento_pct": 6
+          }
+        ],
+        "texto": "La proyección apenas necesita inversión neta de la amortización (reinversión acumulada de -95 M, con un capex bruto medio del 3,0 % de las ventas). En un negocio de activos ligeros, el crecimiento medio del 6,9 % tiene que salir de subir precios y de ganar volumen sin capital nuevo, y la prueba es el poder de precios y la cuota; en un comprador en serie, la amortización es de intangibles comprados y la prueba es el capex bruto (las compras) frente al crecimiento comprado.",
+        "tabla": [
+          {
+            "concepto": "Crecimiento medio de ingresos proyectado",
+            "valor": "6,9 %"
+          },
+          {
+            "concepto": "Capex bruto medio (incluidas compras si van como inversión)",
+            "valor": "3,0 % de las ventas"
+          },
+          {
+            "concepto": "Reinversión neta acumulada (capex − amortización + circulante)",
+            "valor": "-95 M (-0 % del NOPAT)"
+          },
+          {
+            "concepto": "Con la reinversión bruta (capex + circulante): crecimiento que financia al ROIC actual",
+            "valor": "1,5 % (reinvierte el 6 % del NOPAT)"
+          },
+          {
+            "concepto": "Rendimiento que la proyección supone para la reinversión bruta",
+            "valor": "111,7 %"
+          },
+          {
+            "concepto": "Crecimiento histórico de ingresos (TCAC)",
+            "valor": "11,1 % frente al 6,9 % proyectado"
+          },
+          {
+            "concepto": "Veredicto de las pruebas del motor",
+            "valor": "Sí"
+          }
+        ]
+      }
+    },
+    "escenarios": [
+      {
+        "escenario": "Bajista",
+        "probabilidad_pct": 25,
+        "narrativa": "El gobierno grava dividendos y elimina los JCP, la Selic sube al 16-17 % y los extranjeros (≈ 50 % del volumen de contado) salen: volumen de contado a la baja, menos salidas a bolsa y margen 3 puntos menor. Crecimiento terminal del 4,5 % y WACC un punto mayor.",
+        "crecimiento_medio_pct": 3.1,
+        "margen_final_pct": 67,
+        "wacc_pct": 20.7,
+        "valor": 6.56,
+        "potencial_pct": -56.5
+      },
+      {
+        "escenario": "Base",
+        "probabilidad_pct": 50,
+        "narrativa": "Brasil sigue con tipos altos pero sin ruptura: B3 crece con la inflación más un poco de volumen, mantiene el margen del 70 % y devuelve casi todo el beneficio.",
+        "crecimiento_medio_pct": 6.1,
+        "margen_final_pct": 70,
+        "wacc_pct": 19.7,
+        "valor": 8.46,
+        "potencial_pct": -43.9
+      },
+      {
+        "escenario": "Alcista",
+        "probabilidad_pct": 25,
+        "narrativa": "La volatilidad y la renta fija sostienen volúmenes récord y los nuevos negocios (datos, Tesouro Direto, derivados de cripto y de renta fija) crecen: +2 puntos de crecimiento y un punto más de margen.",
+        "crecimiento_medio_pct": 8.1,
+        "margen_final_pct": 71,
+        "wacc_pct": 19.7,
+        "valor": 9.31,
+        "potencial_pct": -38.2
+      }
+    ],
+    "valor_ponderado": 8.2,
+    "potencial_ponderado_pct": -45.6,
+    "comparables": {
+      "tabla": [
+        {
+          "nombre": "B3",
+          "ticker": "B3SA3",
+          "pais": "BR",
+          "capitalizacion": 75324,
+          "ev_ventas": 6.99,
+          "ev_ebitda_ltm": 10,
+          "ev_ebitda_ntm": null,
+          "per_ntm": 11.4,
+          "crecimiento_pct": 11.6,
+          "margen_ebitda_pct": 69.6,
+          "roic_pct": 23.3,
+          "dn_ebitda": -0.2,
+          "fcf_yield_pct": 6.1,
+          "es_objetivo": true
+        },
+        {
+          "nombre": "CME Group",
+          "ticker": "CME",
+          "pais": "US",
+          "capitalizacion": 595762,
+          "ev_ventas": 16.07,
+          "ev_ebitda_ltm": 22.6,
+          "ev_ebitda_ntm": 21.5,
+          "per_ntm": 23.6,
+          "crecimiento_pct": 5.2,
+          "margen_ebitda_pct": 71,
+          "roic_pct": null,
+          "dn_ebitda": 0.31,
+          "fcf_yield_pct": 2.8,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Intercontinental Exchange",
+          "ticker": "ICE",
+          "pais": "US",
+          "capitalizacion": 485466,
+          "ev_ventas": 10.36,
+          "ev_ebitda_ltm": 16.3,
+          "ev_ebitda_ntm": 15.4,
+          "per_ntm": 18.3,
+          "crecimiento_pct": 5.8,
+          "margen_ebitda_pct": 63.6,
+          "roic_pct": null,
+          "dn_ebitda": 2.91,
+          "fcf_yield_pct": 4,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Nasdaq",
+          "ticker": "NDAQ",
+          "pais": "US",
+          "capitalizacion": 316271,
+          "ev_ventas": 11.57,
+          "ev_ebitda_ltm": 19.2,
+          "ev_ebitda_ntm": 17.6,
+          "per_ntm": 22.6,
+          "crecimiento_pct": 9,
+          "margen_ebitda_pct": 60.3,
+          "roic_pct": null,
+          "dn_ebitda": 2.4,
+          "fcf_yield_pct": 3.7,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Cboe Global Markets",
+          "ticker": "CBOE",
+          "pais": "US",
+          "capitalizacion": 189162,
+          "ev_ventas": 6.76,
+          "ev_ebitda_ltm": 17.7,
+          "ev_ebitda_ntm": 17.2,
+          "per_ntm": 22.3,
+          "crecimiento_pct": 3.2,
+          "margen_ebitda_pct": 38.1,
+          "roic_pct": null,
+          "dn_ebitda": -0.4,
+          "fcf_yield_pct": 1.9,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "HKEX",
+          "ticker": "0388.HK",
+          "pais": "HK",
+          "capitalizacion": 319967,
+          "ev_ventas": 9.66,
+          "ev_ebitda_ltm": 12.6,
+          "ev_ebitda_ntm": 12.4,
+          "per_ntm": 22.9,
+          "crecimiento_pct": 2,
+          "margen_ebitda_pct": 76.7,
+          "roic_pct": null,
+          "dn_ebitda": -6.63,
+          "fcf_yield_pct": 11.7,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "LSEG",
+          "ticker": "LSEG.L",
+          "pais": "GB",
+          "capitalizacion": 323125,
+          "ev_ventas": 6.01,
+          "ev_ebitda_ltm": 18.5,
+          "ev_ebitda_ntm": 17.3,
+          "per_ntm": 17.7,
+          "crecimiento_pct": 6.7,
+          "margen_ebitda_pct": 32.5,
+          "roic_pct": null,
+          "dn_ebitda": 4.21,
+          "fcf_yield_pct": 3.8,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Bolsa Mexicana de Valores",
+          "ticker": "BOLSAA.MX",
+          "pais": "MX",
+          "capitalizacion": 5944,
+          "ev_ventas": 3.91,
+          "ev_ebitda_ltm": 8.7,
+          "ev_ebitda_ntm": 8,
+          "per_ntm": 11.3,
+          "crecimiento_pct": 7.8,
+          "margen_ebitda_pct": 45.1,
+          "roic_pct": null,
+          "dn_ebitda": -1.47,
+          "fcf_yield_pct": 5.9,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "Singapore Exchange",
+          "ticker": "S68.SI",
+          "pais": "SG",
+          "capitalizacion": 93476,
+          "ev_ventas": 13.22,
+          "ev_ebitda_ltm": 22.6,
+          "ev_ebitda_ntm": 21.2,
+          "per_ntm": 25.3,
+          "crecimiento_pct": 6.6,
+          "margen_ebitda_pct": 58.4,
+          "roic_pct": null,
+          "dn_ebitda": -1.7,
+          "fcf_yield_pct": 2.8,
+          "es_objetivo": false
+        },
+        {
+          "nombre": "ASX",
+          "ticker": "ASX.AX",
+          "pais": "AU",
+          "capitalizacion": 48625,
+          "ev_ventas": 6.67,
+          "ev_ebitda_ltm": 12.8,
+          "ev_ebitda_ntm": 12.2,
+          "per_ntm": 24.1,
+          "crecimiento_pct": 4.6,
+          "margen_ebitda_pct": 52.3,
+          "roic_pct": null,
+          "dn_ebitda": -6.67,
+          "fcf_yield_pct": -2.5,
+          "es_objetivo": false
+        }
+      ],
+      "estadisticos": [
+        {
+          "estadistico": "Mediana",
+          "ev_ventas": 9.7,
+          "ev_ebitda_ltm": 17.7,
+          "ev_ebitda_ntm": 17.2,
+          "per_ntm": 22.6,
+          "crecimiento_pct": 5.8,
+          "margen_ebitda_pct": 58.4,
+          "roic_pct": null,
+          "dn_ebitda": -0.4,
+          "fcf_yield_pct": 3.7
+        },
+        {
+          "estadistico": "Media",
+          "ev_ventas": 9.4,
+          "ev_ebitda_ltm": 16.8,
+          "ev_ebitda_ntm": 15.9,
+          "per_ntm": 20.9,
+          "crecimiento_pct": 5.7,
+          "margen_ebitda_pct": 55.3,
+          "roic_pct": null,
+          "dn_ebitda": -0.8,
+          "fcf_yield_pct": 3.8
+        },
+        {
+          "estadistico": "Percentil 25",
+          "ev_ventas": 6.7,
+          "ev_ebitda_ltm": 12.8,
+          "ev_ebitda_ntm": 12.4,
+          "per_ntm": 18.3,
+          "crecimiento_pct": 4.6,
+          "margen_ebitda_pct": 45.1,
+          "roic_pct": null,
+          "dn_ebitda": -1.7,
+          "fcf_yield_pct": 2.8
+        },
+        {
+          "estadistico": "Percentil 75",
+          "ev_ventas": 11.6,
+          "ev_ebitda_ltm": 19.2,
+          "ev_ebitda_ntm": 17.6,
+          "per_ntm": 23.6,
+          "crecimiento_pct": 6.7,
+          "margen_ebitda_pct": 63.6,
+          "roic_pct": null,
+          "dn_ebitda": 2.4,
+          "fcf_yield_pct": 4
+        }
+      ],
+      "implicito": [
+        {
+          "metodo": "EV/EBITDA últimos 12 meses",
+          "metrica_empresa": 7503,
+          "multiplo_p25": 12.8,
+          "multiplo_mediana": 17.7,
+          "multiplo_p75": 19.2,
+          "multiplos": "12,8x / 17,7x / 19,2x",
+          "valor_p25": 19.22,
+          "valor_mediana": 26.57,
+          "valor_p75": 28.83,
+          "potencial_pct": 76.3
+        },
+        {
+          "metodo": "PER próximos 12 meses",
+          "metrica_empresa": 1.32,
+          "multiplo_p25": 18.3,
+          "multiplo_mediana": 22.6,
+          "multiplo_p75": 23.6,
+          "multiplos": "18,3x / 22,6x / 23,6x",
+          "valor_p25": 24.22,
+          "valor_mediana": 29.91,
+          "valor_p75": 31.23,
+          "potencial_pct": 98.5
+        },
+        {
+          "metodo": "EV/Ventas últimos 12 meses",
+          "metrica_empresa": 10777,
+          "multiplo_p25": 6.7,
+          "multiplo_mediana": 9.7,
+          "multiplo_p75": 11.6,
+          "multiplos": "6,7x / 9,7x / 11,6x",
+          "valor_p25": 14.39,
+          "valor_mediana": 20.83,
+          "valor_p75": 24.95,
+          "potencial_pct": 38.2
+        }
+      ],
+      "regresion": {
+        "pendiente": 0.15834583862403356,
+        "ordenada": 14.971132979337408,
+        "r2": 0.006245192108581099,
+        "n": 9
+      },
+      "n": 9
+    },
+    "transacciones": {
+      "metrica": "EV/EBITDA",
+      "n": 6,
+      "mediana_ev_ebitda": 18.6,
+      "p25_ev_ebitda": 13.1,
+      "p75_ev_ebitda": 25.7,
+      "mediana_ev_ventas": 10.26,
+      "prima_mediana_pct": 33,
+      "valor_p25": 19.63,
+      "valor_mediana": 27.85,
+      "valor_p75": 38.55
+    },
+    "suma_partes": null,
+    "multiplos_historicos": [
+      {
+        "metrica": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+        "campo": "ev_ebitda_ltm",
+        "actual": 10,
+        "media": 11.7,
+        "minimo": 8.7,
+        "maximo": 19.8,
+        "percentil": 29,
+        "prima_pct": -15,
+        "anios": 7
+      },
+      {
+        "metrica": "PER últimos 12 meses (cierre de cada año)",
+        "campo": "per_ltm",
+        "actual": 14.4,
+        "media": 18.6,
+        "minimo": 12.4,
+        "maximo": 32.5,
+        "percentil": 29,
+        "prima_pct": -23,
+        "anios": 7
+      }
+    ],
+    "multiplos_serie": [
+      {
+        "anio": "2018",
+        "multiplo": 15.8,
+        "media": 11.7
+      },
+      {
+        "anio": "2019",
+        "multiplo": 19.8,
+        "media": 11.7
+      },
+      {
+        "anio": "2020",
+        "multiplo": 18.1,
+        "media": 11.7
+      },
+      {
+        "anio": "2021",
+        "multiplo": 9,
+        "media": 11.7
+      },
+      {
+        "anio": "2022",
+        "multiplo": 11.7,
+        "media": 11.7
+      },
+      {
+        "anio": "2023",
+        "multiplo": 13,
+        "media": 11.7
+      },
+      {
+        "anio": "2024",
+        "multiplo": 8.7,
+        "media": 11.7
+      },
+      {
+        "anio": "2025",
+        "multiplo": 10.3,
+        "media": 11.7
+      }
+    ],
+    "multiplos_titulo": "EV/EBITDA últimos 12 meses (cierre de cada año)",
+    "consenso_vs_propio": [
+      {
+        "periodo": "2026e",
+        "ingresos_propio": 11276,
+        "ingresos_consenso": 11390,
+        "ingresos_dif_pct": -1,
+        "ebitda_propio": 7837,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      },
+      {
+        "periodo": "2027e",
+        "ingresos_propio": 11953,
+        "ingresos_consenso": 12700,
+        "ingresos_dif_pct": -5.9,
+        "ebitda_propio": 8247,
+        "ebitda_consenso": null,
+        "ebitda_dif_pct": null
+      }
+    ],
+    "gobierno": {
+      "n_consejeros": 1,
+      "independientes_pct": 100,
+      "antiguedad_media": null,
+      "composicion": [
+        {
+          "tipo": "Independiente",
+          "num": 1
+        }
+      ],
+      "checklist": [
+        {
+          "criterio": "Consejeros independientes ≥ 50 % (≥ 33 % si hay accionista de control)",
+          "resultado": "Cumple",
+          "valor": "100 %"
+        },
+        {
+          "criterio": "Presidencia sin vínculo familiar ni profesional con el accionista de control",
+          "resultado": "Cumple",
+          "valor": "Sin control"
+        },
+        {
+          "criterio": "Presidente no ejecutivo, o consejero coordinador independiente",
+          "resultado": "Cumple",
+          "valor": "No ejecutivo"
+        },
+        {
+          "criterio": "Comisión de auditoría con mayoría de independientes y presidida por uno",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Ningún consejero «otro externo» con más de 12 años",
+          "resultado": "Cumple",
+          "valor": "Ninguno"
+        },
+        {
+          "criterio": "Estabilidad de la cúpula: como mucho un cambio de presidente o primer ejecutivo en 24 meses",
+          "resultado": "Cumple",
+          "valor": "1 cambio"
+        },
+        {
+          "criterio": "Peor voto a favor sobre remuneración (3 juntas) ≥ 80 %",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Variable a largo plazo ligado a rentabilidad (ROIC, TSR, FCF)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Una acción, un voto, sin blindajes ni límites de voto estatutarios",
+          "resultado": "Cumple",
+          "valor": "Sí"
+        },
+        {
+          "criterio": "Sin operaciones vinculadas relevantes",
+          "resultado": "Cumple",
+          "valor": "No hay"
+        },
+        {
+          "criterio": "Auditor con 10 años o menos en el cargo",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        },
+        {
+          "criterio": "Opinión de auditoría sin salvedades",
+          "resultado": "Cumple",
+          "valor": "Favorable (DFP 2025)"
+        },
+        {
+          "criterio": "Directivos compradores netos en 12 meses (o sin ventas relevantes)",
+          "resultado": "Sin dato",
+          "valor": "Sin dato"
+        }
+      ],
+      "puntuacion": "8 de 13 (5 sin dato)",
+      "puntuacion_pct": 62,
+      "compras_insiders": 0,
+      "ventas_insiders": 0
+    },
+    "competidores_margen": [
+      {
+        "nombre": "B3",
+        "margen_ebit_pct": 65.9
+      },
+      {
+        "nombre": "CME Group",
+        "margen_ebit_pct": 65.9
+      },
+      {
+        "nombre": "Intercontinental Exchange",
+        "margen_ebit_pct": 52.6
+      },
+      {
+        "nombre": "Nasdaq",
+        "margen_ebit_pct": 50.6
+      },
+      {
+        "nombre": "HKEX",
+        "margen_ebit_pct": 76
+      },
+      {
+        "nombre": "LSEG",
+        "margen_ebit_pct": 29
+      },
+      {
+        "nombre": "Bolsa Mexicana de Valores",
+        "margen_ebit_pct": 47.8
+      }
+    ],
+    "sintesis": {
+      "formato_eje": "#,##0.0",
+      "rangos": [
+        {
+          "metodo": "Cotización 52 semanas",
+          "etiqueta": "Cotización 52 semanas (11,83 – 24,28)",
+          "min": 11.83,
+          "central": 15.07,
+          "max": 24.28,
+          "gris": true
+        },
+        {
+          "metodo": "Precio objetivo de los analistas",
+          "etiqueta": "Precio objetivo de los analistas (16,00 – 30,00)",
+          "min": 16,
+          "central": 22.64,
+          "max": 30,
+          "gris": true
+        },
+        {
+          "metodo": "Comparables: PER NTM",
+          "etiqueta": "Comparables: PER NTM (24,22 – 31,23)",
+          "min": 24.22,
+          "central": 29.91,
+          "max": 31.23,
+          "gris": false
+        },
+        {
+          "metodo": "Transacciones precedentes (EV/EBITDA)",
+          "etiqueta": "Transacciones precedentes (EV/EBITDA) (19,63 – 38,55)",
+          "min": 19.63,
+          "central": 27.85,
+          "max": 38.55,
+          "gris": false
+        },
+        {
+          "metodo": "DCF (WACC y g ± 0,5)",
+          "etiqueta": "DCF (WACC y g ± 0,5) (8,06 – 8,92)",
+          "min": 8.06,
+          "central": 8.46,
+          "max": 8.92,
+          "gris": false
+        },
+        {
+          "metodo": "Escenarios (bajista – alcista)",
+          "etiqueta": "Escenarios (bajista – alcista) (6,56 – 9,31)",
+          "min": 6.56,
+          "central": 8.2,
+          "max": 9.31,
+          "gris": false
+        },
+        {
+          "metodo": "DCF con la prima del mercado",
+          "etiqueta": "DCF con la prima implícita del mercado (4,2 %)",
+          "min": 8.87,
+          "central": 9.19,
+          "max": 9.54
+        },
+        {
+          "metodo": "Precio actual",
+          "etiqueta": "Precio actual (15,07)",
+          "min": 14.99,
+          "central": 15.07,
+          "max": 15.15,
+          "gris": true
+        }
+      ],
+      "tabla": [
+        {
+          "metodo": "DCF",
+          "valor": 8.46,
+          "peso_pct": 50,
+          "potencial_pct": -43.9
+        },
+        {
+          "metodo": "Comparables (mediana EV/EBITDA y PER)",
+          "valor": 29.91,
+          "peso_pct": 10,
+          "potencial_pct": 98.5
+        },
+        {
+          "metodo": "Transacciones precedentes (no se usa)",
+          "valor": 27.85,
+          "peso_pct": 0,
+          "potencial_pct": 84.8
+        },
+        {
+          "metodo": "Escenarios ponderados",
+          "valor": 8.2,
+          "peso_pct": 40,
+          "potencial_pct": -45.6
+        }
+      ],
+      "valor_objetivo": 10.5,
+      "potencial_pct": -30.3
+    },
+    "fuentes": {
+      "n_fuentes": 36,
+      "n_primarias": 11,
+      "por_tipo": [
+        {
+          "tipo": "Primaria",
+          "num": 11
+        },
+        {
+          "tipo": "Prensa",
+          "num": 12
+        },
+        {
+          "tipo": "Datos de mercado",
+          "num": 9
+        },
+        {
+          "tipo": "Foros y redes",
+          "num": 4
+        }
+      ],
+      "n_citadas": 34,
+      "citas_sin_fuente": [],
+      "fuentes_sin_citar": [
+        "9",
+        "15"
+      ]
+    },
+    "controles": [
+      {
+        "control": "DCF inverso calculable",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Puente de ingresos (volumen + precio + otros) = crecimiento del DCF",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Veredicto de sostenibilidad del analista coherente con las pruebas del motor",
+        "resultado": "OK",
+        "detalle": "El analista dice «Sí» y las pruebas del motor dan «Sí»: razónalo en la justificación."
+      },
+      {
+        "control": "Circulante del primer año de proyección ≈ último real",
+        "resultado": "OK",
+        "detalle": "Supuesto 2,0 % frente a 2,3 % real: genera una variación de circulante de -1 M en el primer año. Converge de forma gradual."
+      },
+      {
+        "control": "Peso del valor terminal ≤ 80 % del valor empresa",
+        "resultado": "OK",
+        "detalle": "44 %."
+      },
+      {
+        "control": "Crecimiento a perpetuidad ≤ 3 %",
+        "resultado": "Explicado",
+        "detalle": "5,50 %. Explicación: El 5,5 % es nominal en BRL: inflación esperada del Focus del 4,1 % para 2027 (3,5-3,7 % para 2028-2029) más ≈ 1,4 puntos reales, dentro del rango del encargo (inflación más 0-1,5 puntos) y muy por debajo de la tasa libre (15,4 %) [36]. El control está pensado para divisas de inflación baja."
+      },
+      {
+        "control": "Probabilidades de los escenarios suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 5 comparables",
+        "resultado": "OK",
+        "detalle": "9 comparables."
+      },
+      {
+        "control": "Pesos de la síntesis suman 100",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Crecimiento del BPA base ≤ 25 % anual desde el último real",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Precio del cierre de la fecha de corte (o de las dos sesiones anteriores)",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Recomendación coherente con la regla de decisión",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Convicción frente a la sugerida por los criterios",
+        "resultado": "OK",
+        "detalle": "Los criterios dan «Media» (Mantener con las dos reglas de acuerdo y lejos de los umbrales) y el análisis pone «Baja»: explica en la síntesis por qué te apartas."
+      },
+      {
+        "control": "La síntesis explica la convicción",
+        "resultado": "OK",
+        "detalle": "La síntesis debe decir por qué tiene esa convicción y qué la subiría o la bajaría."
+      },
+      {
+        "control": "Capitalización calculada ≈ publicada",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Al menos 25 fuentes",
+        "resultado": "OK",
+        "detalle": "36 fuentes (11 primarias)."
+      },
+      {
+        "control": "Al menos 10 fuentes primarias",
+        "resultado": "OK",
+        "detalle": "11."
+      },
+      {
+        "control": "Toda cita [n] existe en fuentes",
+        "resultado": "OK",
+        "detalle": ""
+      },
+      {
+        "control": "Fuentes sin citar ≤ 15 %",
+        "resultado": "OK",
+        "detalle": "Sin citar: 9, 15."
+      }
+    ],
+    "controles_resumen": "18 de 19 controles correctos y 1 explicados"
+  }
+}

@@ -86,3 +86,8 @@ Lee solo la sección del país que toque.
 - TSMC: pr.tsmc.com e investor.tsmc.com dan 403 desde la nube; todo está en EDGAR (6-K de resultados, ventas mensuales y estados semestrales; 20-F). El XBRL de `cuentas.mjs --sec` no trae el último 20-F a tiempo: el último año, del 20-F.
 - Emisores 20-F con Form 4 (TSMC desde marzo de 2026): `form4.mjs` cuenta como compras en mercado las del plan de empleados (código «P»): filtrarlas a mano.
 - Sentimiento: PTT (foro Stock) abre con curl y la cookie `over18=1`.
+
+## Brasil (27-oct-2026: B3, Itaú, BTG, Sabesp)
+- WACC/Ke en BRL con el bono del Tesoro a 10 años en reales (Trading Economics; el CSV del Tesouro Transparente lo corta el proxy) y **sin prima país encima**: ya está dentro del bono (el escáner sumaba 3 puntos, doble cuenta). IPCA esperado y PTAX: API olinda del BCB (Focus). Dar siempre la sensibilidad a la tasa libre: con el bono por encima del 12 % el DCF castiga a todo.
+- Cuentas oficiales: datos abiertos de la CVM (dados.cvm.gov.br, `dfp_cia_aberta_AAAA.zip`/`itr_cia_aberta_AAAA.zip`, filtrar por CD_CVM). Los códigos de la DFC cambian de significado entre años: leer con su descripción, no pivotar por código. companyfacts de la SEC no trae los 20-F NIIF recientes (`cuentas.mjs --sec` no lee `ifrs-full`): usar la instancia XBRL del 20-F o la CVM.
+- RI con JavaScript (BTG): los PDF están en cloudfront/mziq.
