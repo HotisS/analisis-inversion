@@ -16,7 +16,7 @@ export const resumen = {
 
 **En cartera.** Pasa el filtro de rentabilidad para seguir (ponderada ≥10 % y base ≥5 %), pero no el de valor: el valor intrínseco está más de un 15 % por debajo del precio. Es la misma situación que antes de los resultados: la prueba de robustez da «No mantener» por valor, no por rentabilidad.
 
-**Qué cambiaría la decisión.** Compra por debajo de 937,70 EUR (valor intrínseco); venta por encima de 1.874,47 EUR. Revisaríamos el caso base al alza si Asia-Pacífico sin Japón vuelve a crecer por encima del 6 % en un semestre.`,
+**Qué cambiaría la decisión.** Compra por debajo de 937,70 EUR (valor intrínseco); para quien la tiene, el método pide vender por encima de 1.103,18 EUR (el valor intrínseco, 937,70, quedaría más de un 15 % bajo el precio); la regla de 12 meses sola no daría Vender hasta 1.874,88 EUR. Revisaríamos el caso base al alza si Asia-Pacífico sin Japón vuelve a crecer por encima del 6 % en un semestre.`,
   tesis: `Hermès es una marca de 189 años que vende objetos que fabrica en cantidades que ella decide: margen operativo del 41,0 %, ROIC del 55,1 %, sin deuda y con 12.926 M EUR de caja [A].
 
 El precio ya ha caído más de un 40 % en 2026 y cotiza a 31,5 veces el beneficio, por debajo de su mínimo de cinco años [D]. Pero el DCF inverso dice que todavía descuenta un 13,0 % de crecimiento anual hasta 2035 con nuestros márgenes, cuando la empresa crece un 4,3 % a tipos constantes en el 3T26 y el consenso espera un 7,5 % para 2027-2028 [A, D].
@@ -44,7 +44,7 @@ El mercado acierta en la calidad y se equivoca en la duración del crecimiento: 
   que_vigilar: `La tesis depende de que el crecimiento a tipos constantes se quede en el 4-8 % y no vuelva a los dos dígitos. Lo próximo: la revisión del consenso tras el 3T26 (noviembre), las subidas de precio de enero de 2027 y los resultados de 2026 el 12-feb-2027, con el margen del segundo semestre.`,
   cambiaria_recomendacion: [
     'Por debajo de 937,70 EUR (el valor intrínseco) pasaría a Comprar, si la rentabilidad a 12 meses sigue por encima del 15 %.',
-    'Por encima de 1.874,47 EUR la regla de 12 meses daría Vender.',
+    'Para quien la tiene: por encima de 1.103,18 EUR deja de pasar el filtro de cartera (valor intrínseco más de un 15 % bajo el precio) y el método pide vender; la regla de 12 meses sola daría Vender por encima de 1.874,88 EUR.',
     'Si el crecimiento a tipos constantes supera el 9 % dos trimestres seguidos con Asia por encima del 6 %, revisaríamos el caso base al alza.',
     'Si el margen operativo semestral baja del 39 %, bajaríamos el caso base.',
   ],
