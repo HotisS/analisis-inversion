@@ -5,7 +5,7 @@ Solo lo pendiente. Lo cerrado está en `archivo/` (índice en `archivo/HISTORICO
 **Ritmo**: de cuatro en cuatro (desde el 14-oct; antes de tres en tres). Al cerrar cada empresa: quítala de aquí, `node herramientas/seguimiento.mjs`, commit y push. Ninguna empresa con informe se repite salvo que el usuario lo pida (sería una iteración nueva). Sin juego ni apuestas.
 
 ## Pendiente
-- **Alibaba (27-oct)**: la historia v3 del PER está en BPA publicado y los escenarios en ajustado; vale la v2 (≈ −15 %). En la próxima versión, rehacer la historia v3 en BPA no GAAP. Excluida (minorista): sin prisa.
+- (nada pendiente; Alibaba rehecha el 27-oct en `informes/alibaba-2026-10-27/` con la historia del PER en BPA no GAAP)
 
 
 **Octava hora: cerrada el 15-oct** (`informes/octava-hora-2026-10-15/`: Rai Way robusta; Burckhardt bajó a Mantener con la prueba del BPA −10 %, registro 15-oct 15:10).
