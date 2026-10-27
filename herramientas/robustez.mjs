@@ -14,6 +14,13 @@
 //   … --bpa-factor 0,95                                         «Vup» del escáner: BPA de los tres escenarios × factor (resultados
 //                                                               publicados después del informe); solo en memoria, no toca el informe
 //
+// DOS PREGUNTAS DISTINTAS (27-oct-2026, caso Aon: la foto de cartera leyó «No mantener» de la acción robusta como venta):
+//   «¿se compra?»  → `compra_robusta` (sí/no) y `accion_robusta` (Comprar, Esperar, No comprar…). Sale de la PEOR lectura
+//                    defendible: sirve para NO comprar, nunca para vender.
+//   «¿se queda?»   → `senal_cartera` (Mantener / Vender). Sale de la regla VIGENTE (filtro de mantener) y de la calidad
+//                    (ROIC − WACC < 4,5 sin excepción). Es la única que puede dar una venta (y luego mandan las reglas de
+//                    Hotis: 3 meses, no_vender). `lectura_mas_dura` guarda la peor lectura solo como dato.
+//
 // Niveles de compra (regla 16, 20-oct-2026): «nivel» (A, B1, B2, C o null) al precio de hoy y «limites_nivel_cot» con el
 // límite de cada nivel al que puede llegar la empresa. La acción robusta sigue siendo la de A.
 //
@@ -29,6 +36,7 @@ import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { ultimoDatos } from './objetivo12m.mjs';
 import { calcularObjetivo12m, multiplosRegla, senal12m, REGLA_12M } from '../motor/objetivo12m.mjs';
 import { leerPrecios, factorDivisa } from './precios.mjs';
+import { slugCarpeta, carpetaMasNueva } from './carpetas.mjs';
 
 const args = process.argv.slice(2);
 const bandera = (k) => { const i = args.indexOf(k); if (i >= 0) args.splice(i, 1); return i >= 0; };
@@ -104,14 +112,17 @@ function probar(carpeta) {
   const cx = contexto(d);
   if (BPA_FACTOR !== 1) for (const c of cx.o.casos || []) if (num(c.beneficio_por_accion) !== null) c.beneficio_por_accion = +c.beneficio_por_accion * BPA_FACTOR;
   const id = d.identificacion || {}, meta = d.meta || {};
-  const rev = Object.entries(REV).find(([, v]) => v.carpeta === carpeta);
+  // La clave sale de objetivo12m-revisados.json; si apunta a otro informe de la misma empresa (uno más viejo), se reconoce por
+  // el nombre de la carpeta (caso CR Sanjiu, 26-oct: el escáner usaba el límite del informe viejo).
+  const revExacto = Object.entries(REV).find(([, v]) => v.carpeta === carpeta);
+  const rev = revExacto || Object.entries(REV).find(([, v]) => slugCarpeta(v.carpeta || '') === slugCarpeta(carpeta));
   const clave = rev?.[0] || String(id.ticker || '').trim().toUpperCase().replace(/\s+/g, '-');
   const pr = PRECIOS[clave] || Object.values(PRECIOS).find((x) => x.carpeta === carpeta) || null;
   const tc = num(meta.tipo_cambio) || 1, divCot = meta.divisa_cotizacion || meta.divisa;
   const fac = pr && !pr.error ? factorDivisa(pr.divisa, divCot) : null;
   const prP = actual && pr?.en_curso ? pr.en_curso.precio : pr?.precio; // --actual: sesión en curso si la hay
   const precioYahoo = pr && fac !== null && !pr.error ? prP * fac * tc : null; // en la divisa de las cuentas
-  const precio = precioYahoo ?? rev?.[1]?.precio_ref ?? cx.precioInforme;
+  const precio = precioYahoo ?? revExacto?.[1]?.precio_ref ?? cx.precioInforme;
   const marcas = [];
   const marca = (codigo, tratamiento, texto) => marcas.push({ codigo, tratamiento, texto });
 
@@ -131,7 +142,7 @@ function probar(carpeta) {
       if ((pc < min52 * 0.9 || pc > max52 * 1.1)) marca('D1', 'CORREGIR', `El precio del informe queda fuera de su rango de 52 semanas (${f(min52, 2)}-${f(max52, 2)}): precio o rango mal leídos.`);
     }
   } else marca('D3', 'AVISO', `Sin cierre de mercado en precios.json${pr?.error ? ` (${pr.error})` : ''}: no se puede comprobar el precio.`);
-  const fechaPrecio = (actual && pr?.en_curso?.fecha) || pr?.fecha || rev?.[1]?.fecha_precio || id.fecha_precio;
+  const fechaPrecio = (actual && pr?.en_curso?.fecha) || pr?.fecha || revExacto?.[1]?.fecha_precio || id.fecha_precio;
   if (fechaPrecio && dias(fechaPrecio, HOY) > 4) marca('D3', 'CORREGIR', `Precio del ${fechaPrecio} (${dias(fechaPrecio, HOY)} días): actualizar con herramientas/precios.mjs antes de dar señal.`);
   // D4 BPA real coherente con beneficio ÷ acciones.
   const cuenta = (d.financieros?.cuenta || []).filter((c) => num(c.bpa) !== null);
@@ -242,14 +253,16 @@ function probar(carpeta) {
   // Variantes que pesan en el veredicto: las que corrigen un fallo conocido o son igual de defendibles que la vigente.
   // «BPA −10 %» y «precio ±5 %» miden el colchón (no cambian el veredicto, se dicen en la defensa).
   const defendibles = tabla.filter((t) => !t.error && !/BPA −10|precio/.test(t.variante));
-  const accion = (t) => (t.comprar ? 'Comprar' : t.mantener ? 'Mantener en cartera' : 'No mantener');
+  // Etiquetas de cada lectura (solo dentro de esta función y en `frente`): «No pasa mantener» NO es una señal de venta.
+  const accion = (t) => (t.comprar ? 'Comprar' : t.mantener ? 'Mantener en cartera' : 'No pasa mantener');
   const acciones = [...new Set(defendibles.map(accion))];
   const bloq = marcas.some((m) => m.tratamiento === 'CORREGIR');
   const frente = defendibles.filter((t) => accion(t) !== accion(v0)).map((t) => `${t.variante}: ${accion(t)} (${f(t.ponderada)} %)`);
   const veredicto = bloq ? 'BLOQUEADA' : acciones.length === 1 ? 'SÓLIDA' : 'FRÁGIL';
   // Acción robusta = la peor de las variantes defendibles (si una lectura igual de razonable no pasa, no se compra).
-  const orden = ['No mantener', 'Mantener en cartera', 'Comprar'];
+  const orden = ['No pasa mantener', 'Mantener en cartera', 'Comprar'];
   let robusta = defendibles.length ? orden[Math.min(...defendibles.map((t) => orden.indexOf(accion(t))))] : null;
+  const masDura = robusta;
   // Una marca de CONFIANZA baja el Comprar a Mantener. Excepción: la historia corta de la v3 (M2) no baja si la regla de
   // control (v2, con su historia al cierre, más larga) también da Comprar.
   const ctrlComprar = tabla.find((t) => t.variante === 'v2 (control)')?.comprar;
@@ -345,12 +358,32 @@ function probar(carpeta) {
   const hoyB = v0?.comprar && defendibles.every((t) => t.mantener) && bpa10?.mantener && limB !== null && precio <= limB;
   const nivel = !sinBloqueo ? null : calidadA ? (hoyA ? 'A' : hoyB ? 'B1' : null) : calidadB ? (hoyA ? 'B2' : hoyB ? 'C' : null) : null;
   const limNivel = nivel ? limitesNivel[nivel] : null;
+  // H1 (27-oct-2026, informes viejos): la historia del PER y los escenarios tienen que usar el MISMO BPA (los dos ajustados o
+  // los dos publicados). Si el informe declara `per_historico.base_bpa` y `objetivo_12m.base_bpa` y no coinciden, o los textos
+  // dicen una cosa en la historia y otra en los escenarios, se avisa (no cambia la señal: se revisa a mano).
+  {
+    const AJ = /ajustad|recurrente|normalizad|sin extraordinari|扣非|non-gaap|subyacente|underlying|adjusted/i, PUB = /publicad|contable|reportad|\bgaap\b|estatutari/i;
+    const decl = (v) => (v ? (/ajust|recurr|normal/i.test(v) ? 'ajustado' : /public|contab|report/i.test(v) ? 'publicado' : null) : null);
+    const bH = decl(ph.base_bpa), bE = decl(o.base_bpa);
+    const tH = `${ph.excluidos || ''} ${ph.nota || ''}`, tE = casos.map((c) => c.justificacion || '').join(' ');
+    const lee = (t) => (AJ.test(t) ? 'ajustado' : PUB.test(t) ? 'publicado' : null);
+    const h = bH || lee(tH), e = bE || lee(tE);
+    if (h && e && h !== e) marca('H1', 'AVISO', `La historia del PER parece en BPA ${h} y los escenarios en BPA ${e}${bH && bE ? ' (declarado)' : ' (por el texto)'}: mezclar bases infla o desinfla el múltiplo. Revisar a mano y declarar \`base_bpa\` en los dos.`);
+  }
+  // Señal para lo que YA está en cartera (regla vigente + calidad). Una lectura dura que no pasa mantener no vende.
+  const excQv = REGLAS.calidad_excepciones?.[clave] ?? REGLAS.calidad_excepciones?.[String(id.ticker || '').toUpperCase()] ?? null;
+  const calidadVende = cx.roicWacc !== null && cx.roicWacc < 4.5 && !excQv;
+  const senalCartera = bloq || !v0 || v0.error ? null : !v0.mantener ? 'Vender (no pasa el filtro de mantener con la regla vigente)' : calidadVende ? `Vender (calidad: ROIC − WACC ${f(cx.roicWacc, 1)} < 4,5)` : 'Mantener';
   const colchonBpa = (cond) => { if (!vig?.completo || !cond(vig, precio, cx.vi)) return null; for (let e = 1; e >= 0.5; e -= 0.01) { const c = evaluar(cx, { precio, escalaBpa: e }); if (!c?.completo || !cond(c, precio, cx.vi)) return r((1 - e) * 100, 0); } return 50; };
   return {
     carpeta, clave, nombre: id.nombre_corto || id.nombre, ...(BPA_FACTOR !== 1 ? { bpa_factor: BPA_FACTOR } : {}), divisa: meta.divisa, precio: r(precio, 2), fecha_precio: fechaPrecio,
     version: vig?.version, ponderada: vig?.rentabilidad_ponderada_pct ?? null, base: vig?.rentabilidad_base_pct ?? null, senal: vig?.senal ?? null,
     v2: cv2?.completo ? cv2.rentabilidad_ponderada_pct : null, cagr_bpa: r(cagr), dif_consenso: r(difCons),
-    veredicto, accion_vigente: v0 && !v0.error ? accion(v0) : null, accion_robusta: bloq ? 'Sin señal (corregir dato)' : robusta, espera, frente, colchon,
+    veredicto, accion_vigente: v0 && !v0.error ? accion(v0) : null,
+    // Compra: `accion_robusta` nunca dice «mantener» ni «vender» (27-oct): Comprar / Esperar / No comprar (…) / Sin señal.
+    accion_robusta: bloq ? 'Sin señal (corregir dato)' : robusta === 'Comprar' || robusta === 'Esperar' || /^No comprar/.test(robusta || '') ? robusta : robusta ? 'No comprar (no es compra robusta)' : null,
+    compra_robusta: !bloq && robusta === 'Comprar', senal_cartera: senalCartera, lectura_mas_dura: masDura,
+    obsoleto: carpetaMasNueva(carpeta) !== carpeta ? carpetaMasNueva(carpeta) : null, espera, frente, colchon,
     contexto_mercado: ctx ? { veredicto: ctx.veredicto ?? null, condicion: ctx.condicion ?? null, proximos_resultados: ctx.proximos_resultados ?? null } : null,
     movimiento: movP && !movP.error ? { fecha: movP.fecha, var_1m_pct: movP.var_1m_pct, var_3m_pct: movP.var_3m_pct, var_12m_pct: movP.var_12m_pct, dist_max_52s_pct: movP.dist_max_52s_pct, dist_min_52s_pct: movP.dist_min_52s_pct, tendencia: movP.tendencia } : null,
     // Límites en la divisa de COTIZACIÓN (la del broker): el informe puede llevar las cuentas en otra (Constellation USD/CAD,
@@ -371,7 +404,8 @@ if (comoJson) { console.log(JSON.stringify(res, null, 1)); }
 else for (const x of res) {
   if (x.error) { console.log(`${x.carpeta}: ERROR ${x.error}`); continue; }
   console.log(`\n${x.nombre} (${x.carpeta}) · ${x.version} ${f(x.ponderada)} % / base ${f(x.base)} % → ${x.senal}${x.v2 !== null ? ` · v2 ${f(x.v2)} %` : ''} · precio ${f(x.precio, 2)} ${x.divisa} (${x.fecha_precio})`);
-  console.log(`  Veredicto: ${x.veredicto}. Acción vigente: ${x.accion_vigente}. Acción robusta: ${x.accion_robusta}.${x.frente.length ? ` Cambia con: ${x.frente.join('; ')}.` : ''}`);
+  if (x.obsoleto) console.log(`  OJO: hay un informe más nuevo (${x.obsoleto}); este no vale para señales.`);
+  console.log(`  Veredicto: ${x.veredicto}. Si la tienes: ${x.senal_cartera ?? '—'}. ¿Compra robusta?: ${x.compra_robusta ? 'sí' : 'no'} (${x.accion_robusta}).${x.frente.length ? ` Otras lecturas: ${x.frente.join('; ')}.` : ''}`);
   if (Object.keys(x.limites_nivel_cot || {}).length) console.log(`  Nivel de compra hoy: ${x.nivel ?? 'ninguno'}. Límites por nivel (${x.divisa_cotizacion}): ${Object.entries(x.limites_nivel_cot).map(([k, v]) => `${k} ${f(v, 2)}`).join('; ')}.`);
   console.log(`  En ${x.divisa_cotizacion} (broker): precio ${f(x.precio_cot, 2)}; límite de compra (objetivo fijo) ${f(x.limite_comprar_cot, 2)}${x.limite_comprar_control_cot !== null ? ` (v2: ${f(x.limite_comprar_control_cot, 2)})` : ''}; filtro de mantener hasta ${f(x.limite_mantener_cot, 2)}; límite robusto (v3 y v2 con BPA −10 %) ${x.limite_robusto_cot !== null ? f(x.limite_robusto_cot, 2) : '—'}. Colchón de BPA: ${x.colchon_bpa_comprar ?? '—'} % para Comprar, ${x.colchon_bpa_mantener ?? '—'} % para mantener.`);
   for (const m of x.marcas) console.log(`  [${m.codigo} ${m.tratamiento}] ${m.texto}`);

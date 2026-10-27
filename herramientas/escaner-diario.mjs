@@ -131,8 +131,12 @@ async function escanear() {
   if (!sinPrecios) { process.stderr.write('Precios value (precios.mjs)…\n'); nodo('herramientas/precios.mjs', []); }
   const PRECIOS = leerPrecios();
   process.stderr.write('Robustez value al precio de ahora…\n');
-  const rob = JSON.parse(nodo('herramientas/robustez.mjs', ['--todas', '--json', '--actual']))
-    .filter((x) => !x.error && REV[x.clave]?.carpeta === x.carpeta);
+  // Solo el informe MÁS NUEVO de cada empresa (27-oct, casos CR Sanjiu y Moncler: objetivo12m-revisados.json seguía apuntando
+  // al informe viejo y el escáner usaba su límite). Si revisados.json va por detrás, se avisa para rehacer apuntar-12m.
+  const robTodo = JSON.parse(nodo('herramientas/robustez.mjs', ['--todas', '--json', '--actual'])).filter((x) => !x.error);
+  const rob = robTodo.filter((x) => !x.obsoleto && REV[x.clave]);
+  const revViejo = robTodo.filter((x) => x.obsoleto && REV[x.clave]?.carpeta === x.carpeta).map((x) => `${x.nombre}: revisados.json apunta a ${x.carpeta} y hay ${x.obsoleto} (node herramientas/apuntar-12m.mjs ${x.obsoleto} --precios)`);
+  if (revViejo.length) process.stderr.write(`AVISO informes viejos en objetivo12m-revisados.json (el escáner ya usa el nuevo):\n  ${revViejo.join('\n  ')}\n`);
   process.stderr.write('Growth (precios y robustez)…\n');
   const gro = JSON.parse(nodo('herramientas/robustez-growth.mjs', ['--precios', '--json']));
 
@@ -265,7 +269,7 @@ async function escanear() {
       const x = rob.find((y) => y.clave === p.clave);
       if (!x?.precio_cot) continue;
       const q = calidad(x.carpeta, x.clave), d = q.d, vi = num(d?.calc?.sintesis?.valor_objetivo), tc = num(d?.meta?.tipo_cambio) || 1;
-      if (x.accion_vigente === 'No mantener') {
+      if (x.accion_vigente === 'No pasa mantener') {
         const fallos = [];
         if (x.ponderada < 10) fallos.push(`la rentabilidad esperada a 12 meses baja a ${fp(x.ponderada)} (hace falta ≥ 10 %)`);
         if (x.base < 5) fallos.push(`la del escenario base baja a ${fp(x.base)} (hace falta ≥ 5 %)`);
@@ -400,7 +404,12 @@ async function escanear() {
   const esc = { fecha: ahora.fecha, hora: ahora.hora, precios_actualizados: PRECIOS.actualizado, valor_cartera_eur: r(total, 0), liquidez_libre_eur: CARTERA.liquidez_libre_eur,
     bolsillo_growth_pct: r(bolsilloPct), revisadas: { value: rob.length, growth: gro.length }, candidatas, observaciones, activas, descartes_calidad: descartesCalidad, descartadas_hace_poco: recientes, compras_posibles: posibles,
     marcadas, cerca, sale_de_cerca: salenDeCerca, pasan_a_posible: pasanAPosible };
+  // Comprobaciones de coherencia (herramientas/comprobar.mjs, 27-oct-2026): van en el JSON y arriba del texto; un ERROR se
+  // dice a Hotis antes que cualquier compra posible.
+  try { esc.comprobaciones = JSON.parse(execFileSync(process.execPath, ['herramientas/comprobar.mjs', '--json'], { cwd: RAIZ, env: process.env, encoding: 'utf8' })).resultados; }
+  catch (e) { try { esc.comprobaciones = JSON.parse(e.stdout).resultados; } catch { esc.comprobaciones = [{ nivel: 'ERROR', codigo: 'C0', texto: `comprobar.mjs no corre: ${e.message.slice(0, 120)}` }]; } }
   guardar(RUTA_ESC, esc);
+  for (const c of esc.comprobaciones.filter((x) => x.nivel === 'ERROR')) console.log(`COMPROBACIÓN [${c.codigo}] ${c.texto}`);
   console.log(`Escáner ${fechaCorta(ahora.fecha)} ${ahora.hora} (Madrid): ${rob.length} value y ${gro.length} growth revisadas; cartera ${f(total, 0)} EUR, liquidez libre ${f(CARTERA.liquidez_libre_eur, 0)} EUR, bolsillo growth ${f(bolsilloPct, 0)} %.`);
   console.log(`\nCANDIDATAS (necesitan Vup antes de ser señal): ${candidatas.length}`);
   for (const c of candidatas) {
@@ -663,7 +672,7 @@ async function semanal() {
   const ahora = madrid(), hoy = ahora.fecha;
   if (!sinPrecios) nodo('herramientas/precios.mjs', []);
   const PRECIOS = leerPrecios();
-  const rob = JSON.parse(nodo('herramientas/robustez.mjs', ['--todas', '--json', '--actual'])).filter((x) => !x.error && REV[x.clave]?.carpeta === x.carpeta);
+  const rob = JSON.parse(nodo('herramientas/robustez.mjs', ['--todas', '--json', '--actual'])).filter((x) => !x.error && !x.obsoleto && REV[x.clave]);
   const vs = vigilados();
   const supG = vs.filter((v) => v.papel === 'suplente growth' && v.carpeta).map((v) => v.carpeta.split('/')[1]);
   const gro = supG.length ? JSON.parse(nodo('herramientas/robustez-growth.mjs', ['--precios', '--json', ...supG])) : [];

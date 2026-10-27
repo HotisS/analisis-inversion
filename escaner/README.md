@@ -45,7 +45,7 @@ Si no hay nada nuevo, el mensaje del escáner es una sola línea. Las tareas des
 
 ## Pasos de cada ejecución
 
-1. `git pull --rebase --autostash origin main`.
+1. `git pull --rebase --autostash origin main` y `node herramientas/comprobar.mjs` (27-oct-2026: informe viejo en `objetivo12m-revisados.json`, regla de 3 meses sin apuntar, niveles mal puestos, notas que condicionan compras a ventas que Hotis rechazó, listas viejas). El escáner la corre también y pone el resultado en `comprobaciones`; **un ERROR va arriba del mensaje** y se arregla antes de proponer nada.
 2. `NODE_USE_ENV_PROXY=1 node herramientas/escaner-diario.mjs` — precio de ahora de todas las analizadas (value y growth), pruebas de robustez a ese precio con el **objetivo fijo** y reglas contra la cartera. Deja tres listas:
    - **Candidatas**: necesitan Vup antes de ser señal.
    - **Observaciones**: tocan banda pero no hay liquidez libre (o el bolsillo growth está lleno), o ya están en una orden decidida. Se apuntan en el registro sin Vup, para medir después si habría acertado.
@@ -57,6 +57,15 @@ Si no hay nada nuevo, el mensaje del escáner es una sola línea. Las tareas des
 7. **Todas las compras posibles, siempre (regla del usuario, 19-oct-2026: «si hay posibles quiero que me las digas siempre, todas»).** El mensaje de cada pasada (9:25, 15:45 y las que pida fuera de hora) termina con la tabla «Compras posibles ahora»: todas las empresas seguidas que a precio de ahora son compra robusta (value: acción robusta «Comprar», calidad y precio ≤ límite robusto; growth: señal robusta «Comprar» y precio ≤ «compra hasta»), estén en cartera (ampliar), en órdenes o lista de espera, o sean nuevas, con «comprar a mercado si cotiza en X o por debajo» y si ya estaba propuesta. Si no hay ninguna, una línea. No salen las excluidas por el usuario ni las de bolsas que el broker no deja comprar desde España (`no_comprables` en `reglas.json`: ChiNext y STAR Market). La escribe `escaner-diario.mjs` (`compras_posibles` en `escaneo-ultimo.json`); Growth (regla del usuario del 20-oct, `growth_compra` en `reglas.json`): solo salen con +25 % o más a 12 meses al precio de hoy y más a largo plazo (acumulada a 3 años con el crecimiento al final del periodo y el precio sin descontar más crecimiento que el nuestro); su precio máximo es el menor entre la «compra hasta», el que deja un 25 % hasta el objetivo fijo y el que deja una subida de al menos 0,75 veces la caída del escenario malo ((objetivo + 0,75 × bajista) / 1,75). «Ya propuesta» sale de `ordenes_pendientes` de la cartera privada, así que cada propuesta nueva se apunta allí. La columna «Repaso de precio y noticias» (regla 13) sale de `regla13.json` privado (`{clave: {fecha, veredicto, nota}}`, vale 7 días): quien haga el repaso lo apunta ahí.
 8. **Grupos de cerca (regla del usuario, 20-oct-2026; el 21-oct disolvió su lista marcada: «disuelve la lista marcada por mi»).** Cada mensaje (9:25, 15:45 y las de fuera de hora) cierra con precio fresco y su hora con tres grupos: (1) «Compras posibles ahora» (la tabla del paso 7); (2) y (3) las de calidad completa (con límite de nivel A) a menos de un 5 % y a un 5-15 % de su primer nivel (el límite más alto entre B1 y A), una línea por empresa con precio, límite, límite A, lo que falta, rentabilidad a 12 m y si cambia de grupo («entra», «se acerca», «se aleja», «sale de compras posibles») frente a la pasada anterior. Las que pasan al grupo 1 se destacan arriba del mensaje. Ya no hay apuntes de compra propios del usuario (`comprar`, `lista_espera` y las fijadas de compra están vacíos desde el 21-oct; copia en la carpeta privada): las empresas siguen en el universo y salen en estos grupos si les toca. Lo escribe `escaner-diario.mjs` (`cerca`, `pasan_a_posible` en `escaneo-ultimo.json`). El vigía copia en cada pasada el grupo de menos de un 5 % a `ordenes_pendientes.vigia_cerca` (no a `lista_espera`, que es solo para apuntes del usuario) y corre con su propia carpeta privada `vigia/`, que se reescribe sola. Los precios de Asia, Arabia y Europa ya cerrada salen como «cierre de hoy».
 
+## Cómo leer `robustez.mjs` sin equivocarse (27-oct-2026, caso Aon)
+
+- **¿Se compra?** → `compra_robusta` / `accion_robusta` (Comprar, Esperar, No comprar…). Es la peor lectura defendible: **solo sirve para no comprar**.
+- **¿Se queda lo que ya hay en cartera?** → `senal_cartera` (Mantener / Vender (motivo)): regla vigente + calidad < 4,5. Luego mandan las reglas de Hotis (3 meses, `no_vender`, `mantener_hasta`). Nunca se saca una venta de `accion_robusta` ni de `lectura_mas_dura`, y nunca se atribuye a una variante (BPA −10 %, v2) lo que no dice el campo.
+- **El nivel (A, B1, B2, C) es del precio de ahora**: el mejor nivel cuyo límite está en el precio o por encima (si baja, B1 pasa a A). Antes de «corregir» un nivel, mirar `limites_nivel_cot` al precio del momento. Los niveles son **solo value**: una growth nunca lleva nivel.
+- **Solo vale el informe más nuevo** de cada empresa (`obsoleto` marca los viejos). Si `comprobar.mjs` dice que `objetivo12m-revisados.json` apunta a uno viejo: `node herramientas/apuntar-12m.mjs <carpeta nueva> --precios`.
+- **No condicionar compras a ventas que Hotis ha rechazado** (Equifax, ICE y Hermès se quedan desde el 20-oct): la compra se propone con su origen de dinero real o como «sin liquidez».
+- **Horas siempre en hora de Madrid** (desde el 25-oct Madrid es UTC+1): `TZ=Europe/Madrid date +%H:%M`.
+
 ## Cuándo una acción es candidata
 
 **Compra (no está en cartera):**
@@ -66,7 +75,7 @@ Si no hay nada nuevo, el mensaje del escáner es una sola línea. Las tareas des
 - Y además: liquidez libre para una posición de al menos 1.000 EUR (5 % de la cartera, tope 7 %), y en growth hueco en el bolsillo (≤ 20 %). Varias candidatas se reparten la liquidez por orden de rentabilidad.
 
 **Venta (está en cartera; nunca Edenred ni el oro):**
-- Value: deja de pasar el filtro para mantener al precio de ahora (ponderada ≥ 10 %, base ≥ 5 %, valor intrínseco no más de un 15 % bajo el precio), o ROIC − WACC < 5, o cruza un umbral apuntado (Netflix > 71,88 USD; Uber > ≈72,3 USD).
+- Value: deja de pasar el filtro para mantener al precio de ahora (ponderada ≥ 10 %, base ≥ 5 %, valor intrínseco no más de un 15 % bajo el precio), o ROIC − WACC < 4,5 (de 4,5 a 5 cuenta como «al límite» y se mantiene; LVMH, Fluidra y DSV son excepción), o cruza un umbral apuntado (Netflix > 71,88 USD; Uber > ≈72,3 USD).
 - Growth: rentabilidad de hoy ≤ −10 % (regla de venta de v11), o tesis rota (en el Vup).
 
 ## Vup: actualizar el análisis antes de emitir

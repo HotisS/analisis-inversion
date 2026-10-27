@@ -19,7 +19,13 @@ NODE_USE_ENV_PROXY=1 node herramientas/robustez-growth.mjs --precios [<carpeta> 
 | CONFIANZA | La cifra depende de algo poco firme | Un Comprar baja a Mantener (como la confianza «Baja») |
 | AVISO | No cambia la señal | Se dice en la defensa |
 
-**Veredicto.** SÓLIDA si todas las variantes razonables dan la misma acción (Comprar / Mantener en cartera / No mantener); FRÁGIL si alguna la cambia (se dice cuál); BLOQUEADA si hay un CORREGIR. La **acción robusta** es la peor de las variantes razonables, rebajada de Comprar a Mantener si hay una marca de CONFIANZA. Es la que se comunica y la que decide las órdenes. Variantes razonables: la vigente (v3 ×1,1 con el selector de método), la v3 sin selector, la v2 de control, la v3 con el tope anterior (×1,3), sin doble castigo en el bajista (v3 y v2), pesos 25/50/25 y el BPA del consenso cuando el nuestro va por encima. «BPA −10 %» y «precio ±5 %» miden el **colchón** y no cambian el veredicto. Todas se calculan con el **objetivo fijo** (el del precio del informe) y la rentabilidad al precio del día; M6 es la única que recalcula con el PER movido, para medir cuánto se movería el objetivo.
+**Dos preguntas, dos campos (27-oct-2026, caso Aon).** La foto de cartera leyó «No mantener» de la acción robusta como venta de Aon; era solo la lectura de control (v2), que no pasaba. Desde hoy:
+
+- **¿Se compra?** → `compra_robusta` (sí/no) y `accion_robusta` (Comprar / Esperar / No comprar (…) / Sin señal). Sale de la peor lectura defendible. **Solo sirve para no comprar; nunca para vender.**
+- **¿Se queda lo que ya tengo?** → `senal_cartera` (Mantener / Vender (motivo)). Sale de la regla **vigente** (filtro de mantener: ponderada ≥ 10 %, base ≥ 5 %, valor real ≥ 0,85 × precio) y de la calidad (ROIC − WACC < 4,5 sin excepción). Después mandan las reglas de Hotis (3 meses, `no_vender`).
+- `lectura_mas_dura` guarda la peor lectura solo como dato; cada lectura se llama «Comprar», «Mantener en cartera» o «No pasa mantener» (nunca «No mantener»).
+
+**Veredicto.** SÓLIDA si todas las variantes razonables dan la misma lectura (Comprar / Mantener en cartera / No pasa mantener); FRÁGIL si alguna la cambia (se dice cuál); BLOQUEADA si hay un CORREGIR. La **acción robusta** es la peor de las variantes razonables, rebajada de Comprar si hay una marca de CONFIANZA, y decide solo las compras. Variantes razonables: la vigente (v3 ×1,1 con el selector de método), la v3 sin selector, la v2 de control, la v3 con el tope anterior (×1,3), sin doble castigo en el bajista (v3 y v2), pesos 25/50/25 y el BPA del consenso cuando el nuestro va por encima. «BPA −10 %» y «precio ±5 %» miden el **colchón** y no cambian el veredicto. Todas se calculan con el **objetivo fijo** (el del precio del informe) y la rentabilidad al precio del día; M6 es la única que recalcula con el PER movido, para medir cuánto se movería el objetivo.
 
 ## Pruebas value (`herramientas/robustez.mjs`)
 
@@ -37,6 +43,7 @@ NODE_USE_ENV_PROXY=1 node herramientas/robustez-growth.mjs --precios [<carpeta> 
 | M3 | v3 y v2 a más de 15 puntos | VARIANTE: decide la más baja hasta revisar la historia a mano | — |
 | M4 | Doble castigo: BPA bajista ≥ 15 % bajo el base y además PER bajista < 0,79 × el base | VARIANTE «sin doble castigo» (PER bajista = base × 0,80) | Edenred |
 | M5 | La ponderada sale del alcista (base < 5 %) | CONFIANZA | — |
+| H1 | La historia del PER y los escenarios usan bases de BPA distintas (ajustado frente a publicado), declaradas en `base_bpa` o leídas en los textos | AVISO: revisar a mano y declarar `base_bpa` en `per_historico` y en `objetivo_12m` | Informes viejos (26-oct) |
 | M6 | El objetivo se mueve con el precio (elasticidad > 0,5): el base es el PER de hoy | AVISO: los límites se calculan con el **objetivo fijo**, nunca recalculando a otro precio | Nu |
 | X1 | Excluida por el usuario (`escaner/reglas.json`, copia de `MEMORIA.md`) | AVISO: la acción robusta nunca es Comprar («No comprar (excluida)») | Dunelm, Inditex, Amazon |
 | B1 | La variante «BPA −10 %» no pasa la compra (ponderada < 15 % o base < 12 %) | AVISO: no es compra robusta (regla 12: pasar v3 y v2, aguantar BPA −10 % y precio bajo el límite común); Comprar baja a Mantener | Viscofan (11,0 %), Hershey (8,1 %), Daiichi (base 8,8 %), UMG (6,2 %), Rai Way (base 11,1 %) |

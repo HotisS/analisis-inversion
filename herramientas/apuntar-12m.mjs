@@ -26,6 +26,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { ultimoDatos } from './objetivo12m.mjs';
 import { calcularObjetivo12m, REGLA_12M } from '../motor/objetivo12m.mjs';
 import { leerPrecios, factorDivisa } from './precios.mjs';
+import { slugCarpeta } from './carpetas.mjs';
 
 const P = new URL('../verticales/empresa/objetivo12m-revisados.json', import.meta.url);
 const J = JSON.parse(readFileSync(P, 'utf8'));
@@ -52,13 +53,16 @@ for (const carpeta of carpetas) {
   if (!o) throw new Error(`${carpeta}: falta valoracion.objetivo_12m`);
   const precioInforme = +d.identificacion.precio, div = +(d.calc?.recomendacion?.dividendo_pct || 0);
   const tc = +(d.meta?.tipo_cambio || 1), divCot = d.meta?.divisa_cotizacion || d.meta?.divisa;
-  const previo = Object.entries(J.revisados).find(([, v]) => v.carpeta === carpeta)?.[0];
+  // Un informe nuevo de una empresa ya apuntada SUSTITUYE la entrada vieja (misma clave). Antes del 27-oct se buscaba solo por la
+  // carpeta exacta y, si el ticker del informe no era la clave (MONC frente a MONC.MI), quedaba la entrada vieja viva.
+  const previo = Object.entries(J.revisados).find(([, v]) => v.carpeta === carpeta)?.[0]
+    ?? Object.entries(J.revisados).find(([, v]) => slugCarpeta(v.carpeta || '') === slugCarpeta(carpeta))?.[0];
   const t = previo || String(d.identificacion.ticker).trim().toUpperCase().replace(/\s+/g, '-');
   // Precio: el del informe, el pedido (--precio, en la divisa de cotización) o el último cierre de precios.json.
   let precio = precioInforme, fechaPrecio = d.identificacion.fecha_precio || null, origen = 'informe';
   if (precioPedido !== null) { precio = +precioPedido * tc; fechaPrecio = fechaPedida || hoy; origen = `--precio ${precioPedido} ${divCot}`; }
   if (usarPrecios) {
-    const p = precios.precios[t] || Object.values(precios.precios).find((x) => x.carpeta === carpeta);
+    const p = precios.precios[t] || Object.values(precios.precios).find((x) => x.carpeta === carpeta || slugCarpeta(x.carpeta || '') === slugCarpeta(carpeta));
     const fac = p && !p.error ? factorDivisa(p.divisa, divCot) : null;
     if (!p || p.error) console.error(`AVISO ${t}: sin cierre en precios.json${p?.error ? ` (${p.error})` : ''}; se deja el precio del informe.`);
     else if (fac === null) console.error(`AVISO ${t}: Yahoo cotiza en ${p.divisa} y el informe en ${divCot}; se deja el precio del informe.`);

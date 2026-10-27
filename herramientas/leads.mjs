@@ -24,6 +24,7 @@
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { execFileSync } from 'node:child_process';
 import { serie } from './movimiento.mjs';
 
 const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -43,8 +44,10 @@ const expediente = (k) => leer(`${P}expedientes/${k}.json`, { noticias: [] }).no
 const simbolos = leer(join(RAIZ, 'verticales/empresa/simbolos.json'), { empresas: {} }).empresas;
 
 // Universo con límite: value (robustez.json) y growth (informes-growth/robustez.json con símbolo conocido).
-const value = leer(join(RAIZ, 'verticales/empresa/robustez.json'), { resultados: [] }).resultados
-  .filter((x) => x.limite_robusto_cot && x.precio_cot && simbolos[x.clave]?.yahoo)
+// Value: la robustez se calcula AL MOMENTO (27-oct-2026: el robustez.json guardado era del 15-oct y traía límites viejos e
+// informes ya sustituidos); solo el informe más nuevo de cada empresa.
+const value = JSON.parse(execFileSync(process.execPath, [join(RAIZ, 'herramientas/robustez.mjs'), '--todas', '--json'], { cwd: RAIZ, encoding: 'utf8', maxBuffer: 1 << 28 }))
+  .filter((x) => !x.error && !x.obsoleto && x.limite_robusto_cot && x.precio_cot && simbolos[x.clave]?.yahoo)
   .map((x) => ({ vertical: 'value', clave: x.clave, nombre: x.nombre, simbolo: simbolos[x.clave].yahoo, carpeta: x.carpeta, precio_ref: x.precio_cot, fecha_ref: x.fecha_precio, limite: x.limite_robusto_cot, divisa: x.divisa_cotizacion, accion: x.accion_robusta, rentabilidad: x.ponderada }));
 const growth = leer(join(RAIZ, 'informes-growth/robustez.json'), { resultados: [] }).resultados
   .map((x) => ({ ...x, simbolo: x.simbolo || ajustes[x.ticker]?.yahoo }))

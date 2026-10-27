@@ -106,7 +106,14 @@ async function metricas(f) {
   const pais = f.pais;
   const beta = Math.min(Math.max(n(f.beta) ?? 1, BASE.beta_min), BASE.beta_max);
   const rf = CONF.tasa_libre[f.divisa_cuentas || f.divisa] ?? CONF.tasa_libre.USD;
-  const wacc = rf + beta * BASE.prima_mercado_pct + (CONF.prima_pais[pais] ?? 0);
+  // Prima país sin contarla dos veces (27-oct-2026, barrido de Brasil: WACC ≈ 20,4 % = bono en reales 13,5 % + prima + 3 de
+  // prima país). Un bono en moneda local de un emergente YA lleva el riesgo de impago del país: con cuentas en esa moneda solo
+  // se suma un tercio de la prima país (Damodaran: Ke = bono local − diferencial de impago + prima país ≈ bono + ⅓ prima país).
+  // Con cuentas en divisa fuerte (USD, EUR…) la tasa libre no lleva el riesgo país y se suma entera.
+  const divCuentas = f.divisa_cuentas || f.divisa;
+  const primaPais = CONF.prima_pais[pais] ?? 0;
+  const local = !['USD', 'EUR', 'GBP', 'CHF', 'JPY'].includes(divCuentas) && CONF.tasa_libre[divCuentas] !== undefined;
+  const wacc = rf + beta * BASE.prima_mercado_pct + (local ? primaPais / 3 : primaPais);
   // Lo que descuenta el precio: crecimiento perpetuo del flujo libre que justifica el valor de empresa
   // (Gordon: EV = FCF·(1+g)/(WACC−g) → g = (WACC·EV − FCF)/(EV + FCF)). Frente al crecimiento de las ventas.
   // Con flujo libre negativo no tiene sentido: queda sin dato.
@@ -145,7 +152,7 @@ const METRICAS = {
   roic_medio: ['ROIC medio', 'Mediana del ROIC de los ejercicios disponibles (4-5): EBIT por (1 − tipo impositivo) entre el capital invertido medio. Aproximado; el informe calcula el bueno.', 'pct'],
   roic_ultimo: ['ROIC último', 'ROIC del último ejercicio cerrado.', 'pct'],
   roic_min: ['ROIC mínimo', 'El peor ROIC de los ejercicios disponibles: mide la resistencia en un mal año.', 'pct'],
-  wacc: ['WACC orientativo', 'Tasa libre de la divisa de las cuentas + beta (acotada) × prima del mercado (4,20 %) + prima país. Solo para el escáner.', 'pct'],
+  wacc: ['WACC orientativo', 'Tasa libre de la divisa de las cuentas + beta (acotada) × prima del mercado (4,20 %) + prima país (entera con cuentas en divisa fuerte; un tercio si el bono es en moneda local de un emergente, que ya lleva el riesgo país). Solo para el escáner.', 'pct'],
   roic_wacc: ['ROIC − WACC', 'Diferencia en puntos entre el ROIC medio y el WACC orientativo.', 'pct'],
   crec_ventas_3a: ['Crecimiento ventas', 'Crecimiento anual compuesto de las ventas entre el primer y el último ejercicio disponible (3-4 años).', 'pct'],
   margen_ebit: ['Margen EBIT', 'EBIT entre ventas del último ejercicio.', 'pct'],

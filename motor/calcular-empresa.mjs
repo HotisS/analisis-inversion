@@ -361,6 +361,11 @@ export function calcularEmpresa(datos) {
   const kdDesp = n(w.coste_deuda_pct) !== null ? n(w.coste_deuda_pct) * (1 - (n(w.tasa_impositiva_pct) ?? 25) / 100) : null;
   const pesoD = (n(w.peso_deuda_pct) ?? 0) / 100;
   const wacc = ke !== null && kdDesp !== null ? ke * (1 - pesoD) + kdDesp * pesoD : null;
+  // Doble prima país (27-oct-2026, Brasil): si los flujos van en la moneda local de un emergente, la tasa libre (su bono) ya
+  // lleva el riesgo de impago del país; una prima adicional por país encima solo vale por la parte que el bono no recoge.
+  const EMERGENTE_LOCAL = ['BRL', 'MXN', 'INR', 'ZAR', 'COP', 'IDR', 'TRY', 'ARS', 'CLP', 'PEN', 'PHP', 'EGP', 'NGN', 'VND', 'PKR'];
+  if (EMERGENTE_LOCAL.includes(meta.divisa) && (n(w.prima_adicional_pct) ?? 0) >= 1.5)
+    control('Sin doble prima país (bono local + prima país)', false, `Flujos en ${meta.divisa} con tasa libre ${fmt(n(w.tasa_libre_pct), 2)} % (bono local, ya lleva el riesgo país) y además prima adicional de ${fmt(n(w.prima_adicional_pct), 2)} %: probablemente se cuenta dos veces. Usa bono local − diferencial de impago + prima país (≈ bono + ⅓ de la prima país), o justifica la prima por tamaño o riesgo propio.`);
   // Regla relativa: el mismo WACC con la prima de riesgo que hoy descuenta el mercado (prima implícita, p. ej.
   // la de Damodaran para el S&P 500) en vez de la prima normalizada. Responde a «¿rinde más que el mercado,
   // ajustado por su beta?», no a «¿rinde más que su coste de capital histórico?».

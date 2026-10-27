@@ -13,7 +13,7 @@
 //
 //   NODE_USE_ENV_PROXY=1 node herramientas/vigia.mjs        → /mnt/project-files/cartera/real/escaner/vigia-ultimo.md
 //   … --todo                                              enseña también las que están por encima (sin avisar)
-import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, readdirSync } from 'node:fs';
 
 const REAL = process.env.CARTERA_REAL || '/mnt/project-files/cartera/real';
 const CARTERA = `${REAL}/escaner-cartera.json`, ESTADO = `${REAL}/escaner/vigia-estado.json`, SALIDA = `${REAL}/escaner/vigia-ultimo.md`;
@@ -30,9 +30,21 @@ const cart = leer(CARTERA, {});
 const op = cart.ordenes_pendientes || {};
 const PRECIOS = leer(new URL('../verticales/empresa/precios.json', import.meta.url), {});
 // Niveles de compra (regla 16, 20-oct-2026): cada orden de compra puede llevar `nivel` (A, B1, B2, C); el aviso dice el nivel y
-// su tamaño máximo (escaner/reglas.json → niveles_compra). Sin `nivel`, se da por A (las apuntadas antes del 20-oct).
-const NIVELES = leer(new URL('../escaner/reglas.json', import.meta.url), {}).niveles_compra || {};
-const txtNivel = (o) => { const n = o.nivel || 'A', t = NIVELES[n]?.tope_pct; return ` Nivel ${n}${t ? ` (tamaño máximo ${fp(t, t % 1 ? 1 : 0)} % de la cartera)` : ''}.`; };
+// su tamaño máximo (escaner/reglas.json → niveles_compra).
+// 27-oct-2026: (1) los niveles A/B1/B2/C son SOLO value: una growth nunca lleva nivel (el 21-oct salió «Nivel A» en Nu porque
+// sin `nivel` se daba por A); (2) una value sin `nivel` ya no se da por A: se dice que falta; (3) el nivel depende del precio:
+// si a este precio pasan dos entradas de la misma empresa (NEM con A y NEM-B1 con B1), solo avisa la del mejor nivel.
+const REGLAS_V = leer(new URL('../escaner/reglas.json', import.meta.url), {});
+const NIVELES = REGLAS_V.niveles_compra || {};
+const ORDEN_NIVEL = ['A', 'B1', 'B2', 'C'];
+const GROWTH = new Set((() => { try { return readdirSync(new URL('../informes-growth/', import.meta.url), { withFileTypes: true }).filter((e) => e.isDirectory())
+  .map((e) => leer(new URL(`../informes-growth/${e.name}/datos.json`, import.meta.url), {})?.ticker).filter(Boolean).map((t) => String(t).toUpperCase()); } catch { return []; } })());
+const esGrowth = (o) => o.vertical === 'growth' || (o.vertical !== 'value' && GROWTH.has(String(o.clave).replace(/-(A|B1|B2|C)$/, '').toUpperCase()));
+const txtNivel = (o) => {
+  if (esGrowth(o)) return ` Growth (sin niveles A/B/C; bolsillo growth como mucho ${REGLAS_V.bolsillo_growth_max_pct ?? 20} %).`;
+  if (!o.nivel) return ' Nivel sin indicar: comprobar con robustez.mjs antes de comprar.';
+  const t = NIVELES[o.nivel]?.tope_pct; return ` Nivel ${o.nivel} a este precio${t ? ` (tamaño máximo ${fp(t, t % 1 ? 1 : 0)} % de la cartera)` : ''}.`;
+};
 const MAPA = { IOT: 'IOT', ...(op.simbolos || {}) };
 const simbolo = (k) => MAPA[k] || (PRECIOS.precios || PRECIOS)[k]?.simbolo || k;
 const nombre = (k, m) => (PRECIOS.precios || PRECIOS)[k]?.nombre || m?.shortName || k;
@@ -63,6 +75,9 @@ async function aEur(divisa) {
 
 const est = leer(ESTADO, {});
 const avisos = [], resto = [];
+// Mejor nivel primero: si el de arriba ya avisa a este precio, el de abajo de la misma empresa se calla.
+lista.sort((a, b) => (a.lado === 'compra' && b.lado === 'compra' ? (ORDEN_NIVEL.indexOf(a.nivel) + 1 || 9) - (ORDEN_NIVEL.indexOf(b.nivel) + 1 || 9) : 0));
+const avisadoCompra = new Set();
 for (const o of lista) {
   const s = simbolo(o.clave), x = await velas(s);
   if (!x?.meta) continue;
@@ -84,6 +99,9 @@ for (const o of lista) {
   const n = nombre(o.clave, m), dv = m.currency, bolsa = m.fullExchangeName || m.exchangeName;
   const P = (v) => `${fp(v / escala, escala === 100 || v < 20 ? 3 : 2)} ${escala === 100 ? 'GBP' : dv}`;
   const yaAvisado = e.fecha === hoy && e.dentro;
+  const sim = simbolo(o.clave);
+  if (o.lado === 'compra' && dentro && avisadoCompra.has(sim)) { est[id] = { fecha: hoy, t: ts.at(-1) || t, dentro: true }; continue; }
+  if (o.lado === 'compra' && dentro && abierto) avisadoCompra.add(sim);
   if (dentro && abierto && !yaAvisado) {
     const eur = await aEur(dv), coste = o.titulos && eur ? Math.round(o.titulos * precio * eur) : null;
     const dinero = o.lado === 'venta' || o.reservada || coste === null ? '' :

@@ -30,6 +30,7 @@ import { objetivo12m } from './objetivo12m.mjs';
 import { readFileSync as leer } from 'node:fs';
 const REV12 = JSON.parse(leer(new URL('../verticales/empresa/objetivo12m-revisados.json', import.meta.url), 'utf8')).revisados;
 import { leerCalendario, fechaResultados } from './calendario.mjs';
+import { slugCarpeta } from './carpetas.mjs';
 const CAL = leerCalendario();
 
 const argv = process.argv.slice(2);
@@ -105,7 +106,11 @@ for (const dir of readdirSync('informes', { withFileTypes: true }).filter((e) =>
   });
 }
 // Iteraciones: los análisis de una misma empresa (mismo ticker), numerados por fecha de corte.
-const clave = (f) => String(f.ticker || f.empresa).trim().toUpperCase();
+// Misma carpeta (empresa-AAAA-MM-DD) = misma empresa aunque el ticker cambie entre versiones (27-oct-2026: Moncler salía dos
+// veces, MONC.MI en el informe del 14-oct y MONC en el del 21-oct).
+const tickerPorSlug = new Map();
+for (const f of [...filas].sort((a, b) => String(a.carpeta).localeCompare(String(b.carpeta)))) if (!tickerPorSlug.has(slugCarpeta(f.carpeta))) tickerPorSlug.set(slugCarpeta(f.carpeta), f.ticker || f.empresa);
+const clave = (f) => String(tickerPorSlug.get(slugCarpeta(f.carpeta)) || f.ticker || f.empresa).trim().toUpperCase();
 const grupos = new Map();
 for (const f of filas) { if (!grupos.has(clave(f))) grupos.set(clave(f), []); grupos.get(clave(f)).push(f); }
 for (const g of grupos.values()) { g.sort((a, b) => String(a.fecha).localeCompare(String(b.fecha)) || a.informe.localeCompare(b.informe)); g.forEach((f, i) => { f.iteracion = i + 1; }); }
@@ -218,7 +223,7 @@ function queHacer(x) {
   if (x.senal === 'Mantener' || !x.senal) {
     if (x.tipo === 'Value' && x.roic_wacc !== null && x.roic_wacc < 4.5 && !excCal) return `Vender si la tienes: calidad baja (ROIC − WACC ${rw(x.roic_wacc)})`;
     // Filtro para mantener (METODO-VIGENTE.md §4): rentabilidad ≥ 10 %, escenario central ≥ 5 % y valor real no más de un 15 % bajo el precio.
-    if (x.tipo === 'Value' && x.mantener === 'No mantener') {
+    if (x.tipo === 'Value' && x.mantener === 'No pasa mantener') {
       const m = x.rte !== null && x.rte < 10 ? 'rentabilidad esperada por debajo del 10 %' : x.base !== null && x.base < 5 ? 'escenario central por debajo del 5 %'
         : x.vi_precio !== null && x.vi_precio < 0.85 ? 'valor real más de un 15 % por debajo del precio' : 'no pasa el filtro para mantener';
       return `Vender si la tienes: ${m}`;
@@ -289,7 +294,7 @@ function filtroMantener(x) {
   if (x.base !== null && x.base < 5) fallos.push(`central ${pctTxt(x.base)} < 5 %`);
   if (x.vi_precio !== null && x.vi_precio < 0.85) fallos.push(`valor real ${pctTxt((x.vi_precio - 1) * 100)} frente al precio`);
   if (x.roic_wacc !== null && x.roic_wacc < 4.5 && !EXCEPCION_CALIDAD[x.clave]) fallos.push(`calidad ${rw(x.roic_wacc)} < 4,5`);
-  if (!fallos.length && x.mantener === 'No mantener') fallos.push('no pasa las pruebas de robustez');
+  if (!fallos.length && x.mantener === 'No pasa mantener') fallos.push('no pasa las pruebas de robustez');
   return fallos.length ? [false, fallos.join('; ')] : [true, 'sí'];
 }
 const ordenQue = (x) => /^Comprar/.test(x.que) ? 0 : /^Esperar/.test(x.que) ? 1 : /^No comprar/.test(x.que) ? 2 : /^Mantener/.test(x.que) ? 3 : /^Vender/.test(x.que) ? 4 : 5;
