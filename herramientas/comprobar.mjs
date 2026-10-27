@@ -133,6 +133,13 @@ if (cartera) {
   const excl = new Set([...Object.keys(REGLAS.exclusiones || {}), ...menc.filter((m) => /^no_comprar|exclu/.test(m.tipo)).flatMap((m) => m.claves || [])]);
   for (const c of [...(esc?.compras_posibles || []), ...(esc?.cerca || [])].filter((x) => excl.has(x.clave))) nota('ERROR', 'C19', `escáner: ${c.clave} (${c.nombre}) está excluida y sale como ${c.grupo ? `cerca (${c.grupo})` : 'compra posible'}.`);
 
+  // C20 · un «no vender» de cuenta entera que cae sobre una cuenta de IBKR deja esas posiciones sin señal de venta en silencio
+  // («cuenta 2 sin cambios» era la Cartera dos aparte, no la cuenta-2 de IBKR: Hotis 27-oct).
+  for (const m of menc.filter((x) => x.tipo === 'no_vender' && x.cuenta && !(x.claves || []).length)) {
+    const afect = (cartera.posiciones || []).filter((p) => p.cuenta === m.cuenta).map((p) => p.clave);
+    if (afect.length) nota('ERROR', 'C20', `Mención «no vender» de toda la ${m.cuenta} (${m.nombre || ''}) tapa las ventas de ${afect.join(', ')} en el escáner. ¿Es esa cuenta de IBKR o otra cartera?`);
+  }
+
   // C12 · títulos y cuentas: la cartera privada del escáner tiene que cuadrar con la foto del broker (Flex). Si no, el escáner
   // calcula pesos y ventas con otra cartera.
   const hab = (a, b) => { let n = 0; for (let d = new Date(`${a}T12:00:00Z`); d < new Date(`${b}T12:00:00Z`); d.setUTCDate(d.getUTCDate() + 1)) if (![0, 6].includes(d.getUTCDay())) n++; return n; };

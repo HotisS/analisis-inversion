@@ -3,7 +3,7 @@
 //
 // La fuente es `menciones` de escaner/reglas.json (lo que puede ser público) y, para lo que toca a sus cuentas,
 // /mnt/project-files/cartera/real/escaner-menciones.json (mismo formato; nunca va al repo). Cada mención:
-//   { claves: [...], cuenta?: "cuenta-2", tipo: "no_comprar" | "no_vender", origen: "Hotis" | "método",
+//   { claves: [...], cuenta?: "cartera-dos", tipo: "no_comprar" | "no_vender", origen: "Hotis" | "método",
 //     motivo, fecha, mensaje?, caduca?, recordado? }
 // Caducidad por defecto de lo que dijo Hotis: empresa 6 meses, sector 12 meses. Dos semanas antes de caducar, el
 // informe del domingo lo recuerda; al caducar la mención sigue en vigor hasta que Hotis la haya visto en ese
