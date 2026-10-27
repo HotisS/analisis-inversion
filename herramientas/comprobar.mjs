@@ -123,6 +123,62 @@ if (cartera) {
   // C9 · escaneo-ultimo de otro día: el vigía y la foto lo usan como lista.
   const esc = leer(join(REAL, 'escaner', 'escaneo-ultimo.json'));
   if (esc?.fecha && dias(esc.fecha, hoy) > 3) nota('AVISO', 'C9', `escaneo-ultimo.json es del ${esc.fecha}: el vigía vigila una lista vieja.`);
+  // C14 · growth en compras posibles: sin nivel y con +25 % o más a 12 m (regla 15); el escáner ya lo filtra, esto lo vigila.
+  for (const c of (esc?.compras_posibles || []).filter((x) => x.vertical === 'growth')) {
+    if (c.nivel) nota('ERROR', 'C14', `escáner: ${c.clave} es growth y sale con «nivel ${c.nivel}».`);
+    if (c.rentabilidad_12m_pct != null && c.rentabilidad_12m_pct < (REGLAS.growth_compra?.min_12m_pct ?? 25)) nota('ERROR', 'C14', `escáner: ${c.clave} growth sale como posible con ${c.rentabilidad_12m_pct} % a 12 m (regla 15 pide 25 %).`);
+  }
+
+  // C19 · excluidas por Hotis (reglas.json y menciones privadas) que aparecen como compra posible o cerca.
+  const excl = new Set([...Object.keys(REGLAS.exclusiones || {}), ...menc.filter((m) => /^no_comprar|exclu/.test(m.tipo)).flatMap((m) => m.claves || [])]);
+  for (const c of [...(esc?.compras_posibles || []), ...(esc?.cerca || [])].filter((x) => excl.has(x.clave))) nota('ERROR', 'C19', `escáner: ${c.clave} (${c.nombre}) está excluida y sale como ${c.grupo ? `cerca (${c.grupo})` : 'compra posible'}.`);
+
+  // C12 · títulos y cuentas: la cartera privada del escáner tiene que cuadrar con la foto del broker (Flex). Si no, el escáner
+  // calcula pesos y ventas con otra cartera.
+  const hab = (a, b) => { let n = 0; for (let d = new Date(`${a}T12:00:00Z`); d < new Date(`${b}T12:00:00Z`); d.setUTCDate(d.getUTCDate() + 1)) if (![0, 6].includes(d.getUTCDay())) n++; return n; };
+  const foto = leer(join(REAL, 'foto-broker.json'));
+  if (foto?.posiciones) {
+    const br = {}, cu = {};
+    for (const p of foto.posiciones) { br[p.clave] = (br[p.clave] || 0) + (p.titulos || 0); (cu[p.clave] ??= new Set()).add(p.cuenta); }
+    const ec = Object.fromEntries((cartera.posiciones || []).map((p) => [p.clave, p]));
+    for (const k of new Set([...Object.keys(br), ...Object.keys(ec)])) {
+      const a = br[k] || 0, b = ec[k]?.titulos || 0;
+      if (Math.abs(a - b) > 1e-6) nota('ERROR', 'C12', `${k}: los títulos del broker y los de la cartera del escáner no coinciden. Poner al día escaner-cartera.json antes de tablas o señales.`);
+      else if (ec[k]?.cuenta && cu[k]?.size === 1 && !cu[k].has(ec[k].cuenta)) nota('AVISO', 'C12', `${k}: en el broker está en ${[...cu[k]][0]} y la cartera del escáner dice ${ec[k].cuenta}.`);
+    }
+    // C13 · foto del broker vieja: la tarea Flex de las 9:10 no corrió o falló.
+    if (foto.fecha && hab(foto.fecha, hoy) > 1) nota('AVISO', 'C13', `foto-broker.json es del ${foto.fecha} (más de un día hábil): la importación Flex de las 9:10 no ha corrido; títulos y liquidez pueden estar viejos.`);
+  }
+  // C13b · liquidez: la del escáner frente a la del último seguimiento (ultimo.json, de la misma importación).
+  const ult = leer(join(REAL, 'ultimo.json'));
+  const liqU = ult?.cartera?.liquidez, liqE = cartera.liquidez_eur ?? cartera.liquidez_libre_eur;
+  if (liqU != null && liqE != null && Math.abs(liqU - liqE) > 50) nota('AVISO', 'C13', `Liquidez: la del escáner y la de la última importación Flex difieren en más de 50 €; poner al día escaner-cartera.json.`);
+
+  // C15 · fechas «no tocar» vencidas: la posición vuelve a las reglas normales; quitar la fecha o renovarla con motivo.
+  for (const p of cartera.posiciones || []) if (p.no_tocar_hasta && p.no_tocar_hasta < hoy) nota('AVISO', 'C15', `${p.clave}: no_tocar_hasta ${p.no_tocar_hasta} ya pasó.`);
+  for (const [k, v] of Object.entries(REGLAS.mantener_hasta || {})) if (typeof v === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(v) && v < hoy) nota('AVISO', 'C15', `reglas.json: mantener_hasta de ${k} (${v}) ya pasó.`);
+
+  // C16 · calendario de resultados: cada posición tiene su próxima fecha (si no, nadie revisa sus cuentas a tiempo).
+  const CAL = leer(join(RAIZ, 'escaner/calendario.json'), { fechas: {} }).fechas;
+  const sinFecha = (cartera.posiciones || []).filter((p) => !['IGLN'].includes(p.clave) && !(CAL[p.clave]?.fecha >= hoy)).map((p) => `${p.clave}${CAL[p.clave]?.fecha ? ` (${CAL[p.clave].fecha})` : ''}`);
+  if (sinFecha.length) nota('AVISO', 'C16', `Posiciones sin próxima fecha de resultados en calendario.json: ${sinFecha.join(', ')}. Correr node herramientas/cobertura.mjs --arreglar.`);
+}
+
+// C17 · rutinas programadas sin hacer (escáner de la mañana o la tarde, semanal, mensual).
+try {
+  const { pendientes } = await import('./rutinas.mjs');
+  for (const r of pendientes() || []) nota('AVISO', 'C17', `Rutina sin completar: ${typeof r === 'string' ? r : `${r.rutina || r.nombre} (prevista ${r.prevista || r.desde || '?'})`}.`);
+} catch { /* sin registro de rutinas: no se comprueba */ }
+
+// C18 · horas de EE. UU. en notas del calendario: hasta el 1-nov (horario de verano allí, de invierno en Madrid) 9:30 ET son
+// las 14:30 de Madrid; después, las 15:30. Una nota con «ET (… de Madrid)» que no cuadre es un error de conversión.
+const CAL2 = leer(join(RAIZ, 'escaner/calendario.json'), { fechas: {} }).fechas;
+for (const [k, v] of Object.entries(CAL2)) {
+  const m = String(v.nota || '').match(/(\d{1,2}):(\d{2}) ET \((\d{1,2}):(\d{2}) de Madrid/);
+  if (!m || !v.fecha) continue;
+  const f = v.fecha, dif = f < '2026-10-25' || (f >= '2027-03-28' && f < '2027-11-07') ? 6 : (f < '2026-11-01' || (f >= '2027-03-14' && f < '2027-03-28')) ? 5 : 6;
+  const esperada = (Number(m[1]) + dif) % 24;
+  if (Number(m[3]) !== esperada) nota('ERROR', 'C18', `calendario ${k} (${f}): ${m[1]}:${m[2]} ET son las ${esperada}:${m[2]} de Madrid, no las ${m[3]}:${m[4]}.`);
 }
 
 if (process.argv.includes('--json')) console.log(JSON.stringify({ fecha: hoy, resultados: res }, null, 1));

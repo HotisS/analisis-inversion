@@ -29,6 +29,7 @@ import { leerCalendario } from './calendario.mjs';
 
 const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
 const PRIV = process.env.CARTERA_REAL || '/mnt/project-files/cartera/real';
+const EN_CARTERA = new Set((() => { try { return JSON.parse(readFileSync(join(PRIV, 'escaner-cartera.json'), 'utf8')).posiciones.map((p) => p.clave); } catch { return []; } })());
 const argv = process.argv.slice(2);
 const tiene = (k) => argv.includes(k);
 const arg = (k, d = null) => (argv.includes(k) ? argv[argv.indexOf(k) + 1] : d);
@@ -158,7 +159,10 @@ export function inventario() {
     f.resultados_sin_recoger = hecha ? null : pub;
     f.indices = [...new Set([f.yahoo, f.isin, f.clave].filter(Boolean).flatMap((k) => INDICES?.miembros?.[k] || []))];
     f.radar = !!RADAR.find((r) => r.clave === f.clave);
-    f.seguir = !f.excluida && f.calidad !== 'no';
+    // Lo que está EN CARTERA se sigue siempre, tenga o no calidad (27-oct-2026: Edenred y Equifax se quedaron con la fecha de
+    // resultados pasada porque no pasan calidad, y la vigilancia no veía sus próximos resultados).
+    // Lo que está en cartera se sigue siempre, tenga o no calidad completa; no se escribe qué está en cartera (repo público).
+    f.seguir = (!f.excluida && f.calidad !== 'no') || EN_CARTERA.has(f.clave);
     f.huecos = !f.seguir ? [] : [
       f.calendario !== 'sí' && 'sin fecha de resultados en el calendario',
       f.noticias !== 'sí' && 'fuera del rastreador de noticias (sin símbolo)',
@@ -229,17 +233,20 @@ async function rellenarCalendario(inv) {
       const previa = cal.fechas[f.clave]?.fecha && cal.fechas[f.clave].fecha < HOY ? { anteriores: [...(cal.fechas[f.clave].anteriores || []), cal.fechas[f.clave].fecha].slice(-4) } : {};
       const todas = (e?.earningsDate || []).map((x) => new Date((x.raw ?? x) * 1000).toISOString().slice(0, 10)).sort();
       const fechas = todas.filter((x) => x >= HOY);
-      const nota = `Puesta por cobertura.mjs (${HOY}) para que ninguna empresa con calidad quede sin seguimiento`;
+      const nota = `Puesta por cobertura.mjs (${HOY}) para que ninguna empresa con calidad o en cartera quede sin seguimiento`;
       if (fechas.length) {
         cal.fechas[f.clave] = { ...previa, fecha: fechas[0], confirmada: e?.isEarningsDateEstimate === false, nombre: f.nombre,
           nota: `${nota}${e?.isEarningsDateEstimate === false ? '' : '; estimada: la vigilancia la confirma cuando se anuncie'}`, fuente: 'Yahoo Finance (calendarEvents)' };
       } else if (f.prox_informe && f.prox_informe >= HOY) {
         cal.fechas[f.clave] = { ...previa, fecha: f.prox_informe, confirmada: false, nombre: f.nombre, nota: `${nota}; estimada, la del informe (Yahoo aún no la da)`, fuente: `informe (${f.carpeta})` };
-      } else if (todas.length) {
-        // Sin fecha anunciada: la última publicada más un trimestre (EE. UU.) o un semestre (resto), aproximada.
-        const d = new Date(Date.parse(todas.at(-1)) + (/\./.test(f.yahoo) ? 182 : 91) * 864e5).toISOString().slice(0, 10);
-        if (d < HOY) continue;
-        cal.fechas[f.clave] = { ...previa, fecha: d, confirmada: false, nombre: f.nombre, nota: `${nota}; APROXIMADA (últimos resultados el ${todas.at(-1)} + ${/\./.test(f.yahoo) ? 'un semestre' : 'un trimestre'}): la vigilancia la confirma`, fuente: 'Yahoo Finance (últimos resultados) + estimación' };
+      } else if (todas.length || previa.anteriores) {
+        // Sin fecha anunciada: la última publicada (de Yahoo o la que ya teníamos) más un trimestre, aproximada. Antes eran seis
+        // meses fuera de EE. UU.; desde el 27-oct siempre un trimestre: mejor revisar antes de tiempo que perder unos
+        // resultados (Edenred y Equifax se quedaron sin fecha futura).
+        const base = [todas.at(-1), previa.anteriores?.at(-1)].filter(Boolean).sort().at(-1);
+        let d = new Date(Date.parse(base) + 91 * 864e5).toISOString().slice(0, 10);
+        while (d < HOY) d = new Date(Date.parse(d) + 91 * 864e5).toISOString().slice(0, 10);
+        cal.fechas[f.clave] = { ...previa, fecha: d, confirmada: false, nombre: f.nombre, nota: `${nota}; APROXIMADA (últimos resultados el ${base} + un trimestre): la vigilancia la confirma`, fuente: `${todas.length ? 'Yahoo Finance (últimos resultados)' : 'calendario anterior'} + estimación` };
       } else continue;
       n++;
     }
