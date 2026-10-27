@@ -88,6 +88,12 @@ if (cartera) {
     const tiene = [p.no_tocar_hasta, REGLAS.mantener_hasta?.[p.clave]].filter(Boolean).sort().at(-1);
     if (hasta >= hoy && !noVender.has(p.clave) && (!tiene || tiene < hasta)) nota('ERROR', 'C6', `${p.clave}: comprada el ${ultima}; no se toca hasta el ${hasta} y no lo tiene apuntado (no_tocar_hasta ${tiene || 'vacío'}). El escáner podría dar una venta.`);
   }
+  // C11 · nivel de cada compra value desde el 20-oct (regla 16): sin él no se pueden aplicar los topes conjuntos de los niveles 2 y 3.
+  for (const p of (cartera.posiciones || []).filter((x) => x.vertical === 'value' && !x.nivel)) {
+    const m = movs.find((x) => x.clave === p.clave);
+    const ultima = (m?.compras || []).filter((x) => x.tipo === 'compra').map((x) => x.fecha).sort().at(-1);
+    if (ultima && ultima >= '2026-10-20') nota('AVISO', 'C11', `${p.clave}: comprada el ${ultima} sin «nivel» en la cartera privada; el escáner la cuenta como A para los topes de niveles 2 y 3.`);
+  }
   // C7 · niveles en órdenes y vigía: los niveles A/B1/B2/C son solo value; una growth no lleva nivel (Nu «Nivel A» 21-oct);
   // la clave con sufijo (NEM-B1) y el campo nivel tienen que decir lo mismo.
   const growth = new Set(readdirSync(join(RAIZ, 'informes-growth'), { withFileTypes: true }).filter((e) => e.isDirectory())

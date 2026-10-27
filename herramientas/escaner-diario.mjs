@@ -308,13 +308,27 @@ async function escanear() {
   // robustez.mjs) con el precio ≤ el límite de su nivel. Growth: la misma prueba que arriba. Las excluidas por el usuario no salen.
   const posibles = [];
   const propuesta = (clave) => { const t = enOrdenes.get(clave), lim = t.match(/\(límite [^)]+\)$/)?.[0]; return lim ? `ya propuesta ${lim}` : `ya propuesta: ${t}`; };
+  // Topes conjuntos de la regla 16 (27-oct-2026: no se aplicaban): niveles 2 y 3 (B1, B2, C) como mucho el 25 % del bolsillo
+  // value y el nivel 3 (C) el 10 %. El nivel de cada posición sale de `nivel` en la cartera privada (sin él, se da por A: compras
+  // anteriores al 20-oct). Y lo que Hotis no amplía (`no_ampliar`, `no_vender` de Edenred) no sale como «ampliar».
+  const valueEur = CARTERA.posiciones.filter((p) => p.vertical === 'value').reduce((t, p) => t + (valorPos[p.clave] || 0), 0);
+  const pesoNivel = (ns) => valueEur ? (100 * CARTERA.posiciones.filter((p) => p.vertical === 'value' && ns.includes(p.nivel)).reduce((t, p) => t + (valorPos[p.clave] || 0), 0)) / valueEur : 0;
+  const huecoNivel = (nivel) => {
+    if (!['B1', 'B2', 'C'].includes(nivel) || !valueEur) return '';
+    const t = (REGLAS.niveles_compra?.[nivel]?.tope_pct ?? 0) * total / valueEur, n23 = pesoNivel(['B1', 'B2', 'C']), n3 = pesoNivel(['C']);
+    const max23 = REGLAS.niveles_compra?.tope_niveles_2_3_pct ?? 25, max3 = REGLAS.niveles_compra?.tope_nivel_3_pct ?? 10;
+    if (n23 + t > max23 + 0.05) return `; sin hueco en niveles 2 y 3 (${f(n23, 1)} % del bolsillo value; tope ${max23} %)`;
+    if (nivel === 'C' && n3 + t > max3 + 0.05) return `; sin hueco en nivel 3 (${f(n3, 1)} % del bolsillo value; tope ${max3} %)`;
+    return '';
+  };
   const estadoPosible = (clave, nivel = null) => {
+    if (pos.has(clave) && ((REGLAS.no_ampliar || []).includes(clave) || REGLAS.no_vender?.[clave]?.match(/no se ampl|tampoco se ampl/i))) return 'en cartera: no se amplía (decisión de Hotis)';
     if (pos.has(clave)) {
       const peso = total ? (100 * (valorPos[clave] || 0)) / total : 0, tope = REGLAS.niveles_compra?.[nivel]?.tope_pct ?? REGLAS.tope_posicion_pct;
       return peso >= tope - 0.05 ? `en cartera, ya en el tope del ${f(tope, tope % 1 ? 1 : 0)} %${nivel ? ` del nivel ${nivel}` : ''} (${f(peso, 1)} %): no se amplía`
-        : `en cartera (${f(peso, 1)} %): ampliar${enOrdenes.has(clave) ? `; ${propuesta(clave)}` : ''}`;
+        : `en cartera (${f(peso, 1)} %): ampliar${enOrdenes.has(clave) ? `; ${propuesta(clave)}` : ''}${huecoNivel(nivel)}`;
     }
-    return enOrdenes.has(clave) ? propuesta(clave) : 'nueva';
+    return `${enOrdenes.has(clave) ? propuesta(clave) : 'nueva'}${huecoNivel(nivel)}`;
   };
   // Niveles de compra (regla 16, 20-oct-2026): A, B1, B2 y C con su límite y su tamaño máximo (robustez.mjs → nivel).
   for (const x of rob) {
