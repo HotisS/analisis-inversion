@@ -37,6 +37,7 @@ import { ultimoDatos } from './objetivo12m.mjs';
 import { calcularObjetivo12m, multiplosRegla, senal12m, REGLA_12M } from '../motor/objetivo12m.mjs';
 import { leerPrecios, factorDivisa } from './precios.mjs';
 import { slugCarpeta, carpetaMasNueva } from './carpetas.mjs';
+import { calidadAmpliada } from '../motor/calidad-ampliada.mjs';
 
 const args = process.argv.slice(2);
 const bandera = (k) => { const i = args.indexOf(k); if (i >= 0) args.splice(i, 1); return i >= 0; };
@@ -394,6 +395,8 @@ function probar(carpeta) {
     nivel, limite_nivel_cot: limNivel !== null ? Math.floor((100 * limNivel) / tc) / 100 : null,
     limites_nivel_cot: Object.fromEntries(Object.entries(limitesNivel).map(([k, v]) => [k, Math.floor((100 * v) / tc) / 100])), limite_b_cot: limB !== null ? Math.floor((100 * limB) / tc) / 100 : null,
     calidad_sost: cx.sost, calidad_roic_wacc: r(cx.roicWacc),
+    // Calidad ampliada (28-oct-2026): 10 pruebas INFORMATIVAS (backtest calidad-ampliada-2026-10-28): no tocan señal, nivel ni acción.
+    ...(() => { const q = calidadAmpliada(d); return { calidad_pruebas: q.texto, calidad_pruebas_pasa: q.pasa, calidad_pruebas_con_dato: q.con_dato, calidad_fallan: q.fallan }; })(),
     elasticidad_objetivo: r(elast, 2), colchon_bpa_comprar: colchonBpa(pasaComprar), colchon_bpa_mantener: colchonBpa(pasaMantener),
     marcas, variantes: tabla,
   };
@@ -408,6 +411,7 @@ else for (const x of res) {
   console.log(`  Veredicto: ${x.veredicto}. Si la tienes: ${x.senal_cartera ?? '—'}. ¿Compra robusta?: ${x.compra_robusta ? 'sí' : 'no'} (${x.accion_robusta}).${x.frente.length ? ` Otras lecturas: ${x.frente.join('; ')}.` : ''}`);
   if (Object.keys(x.limites_nivel_cot || {}).length) console.log(`  Nivel de compra hoy: ${x.nivel ?? 'ninguno'}. Límites por nivel (${x.divisa_cotizacion}): ${Object.entries(x.limites_nivel_cot).map(([k, v]) => `${k} ${f(v, 2)}`).join('; ')}.`);
   console.log(`  En ${x.divisa_cotizacion} (broker): precio ${f(x.precio_cot, 2)}; límite de compra (objetivo fijo) ${f(x.limite_comprar_cot, 2)}${x.limite_comprar_control_cot !== null ? ` (v2: ${f(x.limite_comprar_control_cot, 2)})` : ''}; filtro de mantener hasta ${f(x.limite_mantener_cot, 2)}; límite robusto (v3 y v2 con BPA −10 %) ${x.limite_robusto_cot !== null ? f(x.limite_robusto_cot, 2) : '—'}. Colchón de BPA: ${x.colchon_bpa_comprar ?? '—'} % para Comprar, ${x.colchon_bpa_mantener ?? '—'} % para mantener.`);
+  console.log(`  Calidad: ROIC − WACC ${f(x.calidad_roic_wacc)} puntos, sostenibilidad ${x.calidad_sost ?? 'n.d.'}; pruebas ampliadas (informativas) ${x.calidad_pruebas}.`);
   for (const m of x.marcas) console.log(`  [${m.codigo} ${m.tratamiento}] ${m.texto}`);
   console.log(`  Variantes: ${x.variantes.filter((t) => !t.error).map((t) => `${t.variante} ${f(t.ponderada)}/${f(t.base)}`).join(' · ')}`);
 }
