@@ -128,6 +128,16 @@ if (cartera) {
     if (c.nivel) nota('ERROR', 'C14', `escáner: ${c.clave} es growth y sale con «nivel ${c.nivel}».`);
     if (c.rentabilidad_12m_pct != null && c.rentabilidad_12m_pct < (REGLAS.growth_compra?.min_12m_pct ?? 25)) nota('ERROR', 'C14', `escáner: ${c.clave} growth sale como posible con ${c.rentabilidad_12m_pct} % a 12 m (regla 15 pide 25 %).`);
   }
+  // C7 en los grupos de cerca: una growth no lleva nivel; la que tiene también análisis value revisado (dLocal 19-oct) cuenta como value.
+  const value12m = JSON.stringify(leer(join(RAIZ, 'verticales', 'empresa', 'objetivo12m-revisados.json')) || {});
+  for (const c of (esc?.cerca || [])) if (c.nivel && growth.has(String(c.clave).toUpperCase()) && !value12m.includes(`"${c.clave}":`))
+    nota('ERROR', 'C7', `escáner (grupos de cerca): ${c.clave} es growth y sale con «nivel ${c.nivel}»; los niveles son solo value.`);
+  // C20 · «decisión de Hotis» en el estado de una compra posible: solo vale si reglas.json lo atribuye a Hotis (no_vender o
+  // no_ampliar_motivo); el 28-oct Daiichi salía así y lo había recomendado el análisis del 27-oct.
+  for (const c of (esc?.compras_posibles || []).filter((x) => /decisión de Hotis/i.test(x.estado || ''))) {
+    const base = `${REGLAS.no_vender?.[c.clave] || ''} ${REGLAS.no_ampliar_motivo?.[c.clave] || ''}`;
+    if (!/Hotis/i.test(base)) nota('ERROR', 'C20', `escáner: ${c.clave} dice «decisión de Hotis» y reglas.json no lo atribuye a Hotis; poner el motivo en no_ampliar_motivo.`);
+  }
 
   // C19 · excluidas por Hotis (reglas.json y menciones privadas) que aparecen como compra posible o cerca.
   const excl = new Set([...Object.keys(REGLAS.exclusiones || {}), ...menc.filter((m) => /^no_comprar|exclu/.test(m.tipo)).flatMap((m) => m.claves || [])]);

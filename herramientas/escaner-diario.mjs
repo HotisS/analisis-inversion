@@ -322,7 +322,9 @@ async function escanear() {
     return '';
   };
   const estadoPosible = (clave, nivel = null) => {
-    if (pos.has(clave) && ((REGLAS.no_ampliar || []).includes(clave) || REGLAS.no_vender?.[clave]?.match(/no se ampl|tampoco se ampl/i))) return 'en cartera: no se amplía (decisión de Hotis)';
+    // El motivo sale de reglas.json (no_ampliar_motivo); solo se atribuye a Hotis lo que su no_vender dice (28-oct: Daiichi lo puso el análisis, no él).
+    const deHotis = REGLAS.no_vender?.[clave]?.match(/no se ampl|tampoco se ampl/i);
+    if (pos.has(clave) && ((REGLAS.no_ampliar || []).includes(clave) || deHotis)) return `en cartera: no se amplía (${REGLAS.no_ampliar_motivo?.[clave] || (deHotis ? 'decisión de Hotis' : 'apuntado en las reglas')})`;
     if (pos.has(clave)) {
       const peso = total ? (100 * (valorPos[clave] || 0)) / total : 0, tope = REGLAS.niveles_compra?.[nivel]?.tope_pct ?? REGLAS.tope_posicion_pct;
       return peso >= tope - 0.05 ? `en cartera, ya en el tope del ${f(tope, tope % 1 ? 1 : 0)} %${nivel ? ` del nivel ${nivel}` : ''} (${f(peso, 1)} %): no se amplía`
