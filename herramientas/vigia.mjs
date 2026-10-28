@@ -14,6 +14,8 @@
 //   NODE_USE_ENV_PROXY=1 node herramientas/vigia.mjs        → /mnt/project-files/cartera/real/escaner/vigia-ultimo.md
 //   … --todo                                              enseña también las que están por encima (sin avisar)
 import { readFileSync, writeFileSync, existsSync, readdirSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { calidadAmpliada, avisoRiesgo } from '../motor/calidad-ampliada.mjs';
 
 const REAL = process.env.CARTERA_REAL || '/mnt/project-files/cartera/real';
 const CARTERA = `${REAL}/escaner-cartera.json`, ESTADO = `${REAL}/escaner/vigia-estado.json`, SALIDA = `${REAL}/escaner/vigia-ultimo.md`;
@@ -44,6 +46,20 @@ const txtNivel = (o) => {
   if (esGrowth(o)) return ` Growth (sin niveles A/B/C; bolsillo growth como mucho ${REGLAS_V.bolsillo_growth_max_pct ?? 20} %).`;
   if (!o.nivel) return ' Nivel sin indicar: comprobar con robustez.mjs antes de comprar.';
   const t = NIVELES[o.nivel]?.tope_pct; return ` Nivel ${o.nivel} a este precio${t ? ` (tamaño máximo ${fp(t, t % 1 ? 1 : 0)} % de la cartera)` : ''}.`;
+};
+// Q2 (28-oct-2026, usuario: «introdúcelo como check»): aviso de riesgo por deuda neta / EBITDA > 3 o dilución > 2 % anual en
+// las compras value. Solo avisa; el informe sale de objetivo12m-revisados.json (el más nuevo de la empresa).
+const REV12 = leer(new URL('../verticales/empresa/objetivo12m-revisados.json', import.meta.url), {}).revisados || {};
+const riesgo = (o) => {
+  if (o.lado !== 'compra' || esGrowth(o)) return '';
+  try {
+    const car = REV12[String(o.clave).replace(/-(A|B1|B2|C)$/, '')]?.carpeta; if (!car) return '';
+    const raiz = fileURLToPath(new URL('../informes/', import.meta.url)), slug = car.replace(/-\d{4}-\d{2}-\d{2}$/, '');
+    const ultima = readdirSync(raiz).filter((x) => x === car || x.replace(/-\d{4}-\d{2}-\d{2}$/, '') === slug).sort().at(-1);
+    const dir = `${raiz}${ultima}/`, fich = readdirSync(dir).filter((a) => /^datos(-v\d+)?\.json$/.test(a)).sort((a, b) => (+(a.match(/v(\d+)/)?.[1] ?? 1)) - (+(b.match(/v(\d+)/)?.[1] ?? 1))).at(-1);
+    const t = fich ? avisoRiesgo(calidadAmpliada(JSON.parse(readFileSync(dir + fich, 'utf8')))) : null;
+    return t ? ` ${t}` : '';
+  } catch { return ''; }
 };
 const MAPA = { IOT: 'IOT', ...(op.simbolos || {}) };
 const simbolo = (k) => MAPA[k] || (PRECIOS.precios || PRECIOS)[k]?.simbolo || k;
@@ -107,7 +123,7 @@ for (const o of lista) {
     const dinero = o.lado === 'venta' || o.reservada || coste === null ? '' :
       coste <= (cart.liquidez_libre_eur ?? 0) ? '' : ` Ojo: cuesta unos ${fp(coste, 0)} € y la liquidez libre es de ${fp(cart.liquidez_libre_eur ?? 0, 0)} €; hace falta vender antes o repartir entre cuentas.`;
     avisos.push(o.lado === 'compra'
-      ? `**COMPRA AHORA A MERCADO: ${n}${tit(o.titulos)}.** Cotiza a ${P(precio)} (${hora(t)} de Madrid, ${bolsa}); su precio máximo de compra es ${P(lim)}${coste ? `; unos ${fp(coste, 0)} €` : ''}.${txtNivel(o)}${o.reservada ? ` Dinero ya reservado${o.cuenta ? ` en la ${o.cuenta.replace(/-/g, ' ')}` : ''}.` : o.cuenta ? ` Cuenta: ${o.cuenta.replace(/-/g, ' ')}.` : ''}${dinero}`
+      ? `**COMPRA AHORA A MERCADO: ${n}${tit(o.titulos)}.** Cotiza a ${P(precio)} (${hora(t)} de Madrid, ${bolsa}); su precio máximo de compra es ${P(lim)}${coste ? `; unos ${fp(coste, 0)} €` : ''}.${txtNivel(o)}${riesgo(o)}${o.reservada ? ` Dinero ya reservado${o.cuenta ? ` en la ${o.cuenta.replace(/-/g, ' ')}` : ''}.` : o.cuenta ? ` Cuenta: ${o.cuenta.replace(/-/g, ' ')}.` : ''}${dinero}`
       : `**VENDE AHORA A MERCADO: ${n}${tit(o.titulos)}.** Cotiza a ${P(precio)} (${hora(t)} de Madrid, ${bolsa}); se vende desde ${P(lim)}.`);
   } else if (!dentro && toco) {
     avisos.push(`${n} tocó su límite (${P(o.lado === 'compra' ? minimo : maximo)} a las ${hora(o.lado === 'compra' ? tMin : tMax)}; límite ${P(lim)}) y ahora está en ${P(precio)} (${hora(t)}, ${bolsa}): ahora no ${o.lado === 'compra' ? 'se compra' : 'se vende'}.`);

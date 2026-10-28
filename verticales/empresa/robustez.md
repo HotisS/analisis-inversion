@@ -86,3 +86,8 @@ Variantes growth: v9, v7, ventas del analista, pesos 25/50/25 y 35/50/15 (este �
 ## Lo que no se automatiza (va en la defensa escrita)
 
 Riesgo de IA sobre el negocio, regulación pendiente, ciclo y calidad (ROIC − WACC a mano cuando el capital invertido es negativo: Booking, ANYCOLOR, CTS Eventim, Edenred). Para cada empresa de la cartera o de una orden: **las dos o tres objeciones más fuertes y por qué la decisión se sostiene o cambia**.
+
+
+## Q2 · Aviso de riesgo por deuda o dilución (28-oct-2026)
+
+Marca **Q2 AVISO** cuando la deuda neta / EBITDA del último ejercicio es mayor que 3 o las acciones diluidas crecen más de un 2 % anual en 3 años (pruebas P4 y P7 de `motor/calidad-ampliada.mjs`). Pedido por el usuario el 28-oct («introdúcelo como check»). Solo avisa: no cambia la acción robusta, el nivel ni la señal. Sale en `robustez.mjs`, en el escáner y en el aviso del vigía. Por qué: en el backtest de calidad ampliada eran las dos pruebas con más caídas de más del 25 % dentro de las compras A + B1, aunque con pocos casos (`verticales/empresa/backtest/calidad-ampliada-informe-2026-10-28.md`).

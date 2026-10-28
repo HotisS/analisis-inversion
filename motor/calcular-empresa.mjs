@@ -14,7 +14,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 import { conviccionSugerida } from './conviccion.mjs';
 import { calcularObjetivo12m, REGLA_12M } from './objetivo12m.mjs';
-import { calidadAmpliada } from './calidad-ampliada.mjs';
+import { calidadAmpliada, avisoRiesgo } from './calidad-ampliada.mjs';
 
 // ───────────────────────────── utilidades ─────────────────────────────
 
@@ -1032,6 +1032,8 @@ export function calcularEmpresa(datos) {
   // Calidad ampliada (28-oct-2026): 10 pruebas INFORMATIVAS en la sección 9 (no deciden: backtest calidad-ampliada-2026-10-28).
   const qa = calidadAmpliada(d, d.calc);
   d.calc.calidad.ampliada = qa;
+  const riesgoQa = avisoRiesgo(qa); // Q2 (28-oct): deuda neta / EBITDA > 3 o dilución > 2 %: avisa, no decide
+  if (riesgoQa) d.calc.calidad.tabla.push({ indicador: 'Aviso de riesgo (Q2)', valor: 'Sí', lectura: riesgoQa });
   d.calc.calidad.tabla.push({ indicador: 'Calidad ampliada: pruebas que pasa', valor: `${qa.pasa} / ${qa.con_dato}`, lectura: 'Diez pruebas más (estabilidad del ROIC, caja, devengos, deuda, intereses, margen, dilución, Piotroski, Altman y ventas). Son informativas: en el backtest de 2012-2025 ninguna mejoró la rentabilidad de las compras con la calidad que ya exigimos; en el universo entero, pasar varias reduce algo las caídas fuertes. No cambian la señal ni el nivel.' },
     ...qa.pruebas.map((x) => ({ indicador: `${x.clave}. ${x.prueba}`, valor: x.valor, lectura: x.resultado === 'n.d.' ? 'Sin dato.' : x.resultado === 'Sí' ? 'Pasa.' : 'No pasa (informativo).' })));
   return d;

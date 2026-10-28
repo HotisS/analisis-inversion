@@ -37,7 +37,7 @@ import { ultimoDatos } from './objetivo12m.mjs';
 import { calcularObjetivo12m, multiplosRegla, senal12m, REGLA_12M } from '../motor/objetivo12m.mjs';
 import { leerPrecios, factorDivisa } from './precios.mjs';
 import { slugCarpeta, carpetaMasNueva } from './carpetas.mjs';
-import { calidadAmpliada } from '../motor/calidad-ampliada.mjs';
+import { calidadAmpliada, avisoRiesgo } from '../motor/calidad-ampliada.mjs';
 
 const args = process.argv.slice(2);
 const bandera = (k) => { const i = args.indexOf(k); if (i >= 0) args.splice(i, 1); return i >= 0; };
@@ -277,6 +277,9 @@ function probar(carpeta) {
     robusta = 'Mantener en cartera';
     marca('Q1', 'AVISO', `No cumple el requisito de calidad para comprar (§4.1): sostenibilidad ${cx.sost ?? 'n.d.'}${roicOk ? '' : `, ROIC − WACC ${f(cx.roicWacc, 1)} puntos (< 5)`}. La acción robusta baja a Mantener: no se compra ni se amplía.`);
   }
+  // Q2 (28-oct-2026, usuario: «introdúcelo como check»): deuda neta / EBITDA > 3 o dilución > 2 % anual. Solo avisa: no cambia la acción.
+  const calAmp = calidadAmpliada(d), riesgoCal = avisoRiesgo(calAmp);
+  if (riesgoCal) marca('Q2', 'AVISO', riesgoCal);
   // Exclusiones del usuario (MEMORIA.md, copiadas en escaner/reglas.json; auditoría de homogeneidad del 15-oct: Dunelm salía «Comprar»):
   // la acción robusta nunca es Comprar en una excluida.
   const exclu = REGLAS.exclusiones?.[clave] ?? REGLAS.exclusiones?.[String(id.ticker || '').toUpperCase()] ?? null;
@@ -396,7 +399,7 @@ function probar(carpeta) {
     limites_nivel_cot: Object.fromEntries(Object.entries(limitesNivel).map(([k, v]) => [k, Math.floor((100 * v) / tc) / 100])), limite_b_cot: limB !== null ? Math.floor((100 * limB) / tc) / 100 : null,
     calidad_sost: cx.sost, calidad_roic_wacc: r(cx.roicWacc),
     // Calidad ampliada (28-oct-2026): 10 pruebas INFORMATIVAS (backtest calidad-ampliada-2026-10-28): no tocan señal, nivel ni acción.
-    ...(() => { const q = calidadAmpliada(d); return { calidad_pruebas: q.texto, calidad_pruebas_pasa: q.pasa, calidad_pruebas_con_dato: q.con_dato, calidad_fallan: q.fallan }; })(),
+    calidad_pruebas: calAmp.texto, calidad_pruebas_pasa: calAmp.pasa, calidad_pruebas_con_dato: calAmp.con_dato, calidad_fallan: calAmp.fallan, aviso_riesgo: riesgoCal,
     elasticidad_objetivo: r(elast, 2), colchon_bpa_comprar: colchonBpa(pasaComprar), colchon_bpa_mantener: colchonBpa(pasaMantener),
     marcas, variantes: tabla,
   };

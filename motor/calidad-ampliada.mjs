@@ -65,3 +65,12 @@ export function calidadAmpliada(d, calc = d?.calc) {
   return { pruebas, pasa, con_dato: con.length, fallan: fallan.map((p) => p.clave),
     texto: `${pasa} de ${con.length}${fallan.length ? ` (falla ${fallan.map((p) => `${p.clave} ${p.prueba.split(':')[0].toLowerCase()}`).join('; ')})` : ''}` };
 }
+
+// Comprobación de riesgo en compras (usuario, 28-oct-2026 11:15: «sí, introdúcelo como check»): deuda neta / EBITDA > 3 (P4)
+// o dilución > 2 % anual (P7). AVISA, no bloquea ni cambia el nivel: en el backtest eran las dos con más caídas de más del
+// 25 % dentro de las compras A + B1 (18,8 % frente a 8,3 % con 11 casos; 14,1 % frente a 8,6 % con 32), muy pocos para decidir.
+export function avisoRiesgo(q) {
+  const f = q.pruebas.filter((x) => ['P4', 'P7'].includes(x.clave) && x.resultado === 'No');
+  if (!f.length) return null;
+  return `Aviso de riesgo (comprobación de compra, no bloquea): ${f.map((x) => (x.clave === 'P4' ? `deuda neta / EBITDA ${x.valor} (> 3)` : `dilución ${x.valor} (> 2 %)`)).join(' y ')}. En el backtest, las compras con esto tuvieron más caídas fuertes; mirar en el informe si la deuda o las acciones nuevas están justificadas antes de comprar.`;
+}

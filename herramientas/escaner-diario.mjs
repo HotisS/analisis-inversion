@@ -203,7 +203,7 @@ async function escanear() {
       accion_robusta: x.accion_robusta, veredicto: x.veredicto, calidad: q.txt,
       fecha_corte: d?.meta?.fecha_corte || null, proximos_resultados: fechaResultados(x.clave, d),
       senal_alarma: d?.resumen?.cambiaria_recomendacion || null, que_vigilar: d?.resumen?.que_vigilar || null,
-      marcas: x.marcas.filter((m) => m.tratamiento !== 'AVISO' || /^E/.test(m.codigo)).map((m) => `[${m.codigo} ${m.tratamiento}] ${m.texto}`),
+      marcas: x.marcas.filter((m) => m.tratamiento !== 'AVISO' || /^(E|Q2)/.test(m.codigo)).map((m) => `[${m.codigo} ${m.tratamiento}] ${m.texto}`),
       motivo: `Toca su precio de compra robusto (${fPrecio(limite)} ${x.divisa_cotizacion}: pasa con el método vigente y con v2). Rentabilidad esperada a 12 meses ${fp(x.ponderada)}; ${q.txt}.`,
       objecion_auto: x.frente?.[0] ? `Con otra lectura razonable cambia: ${x.frente[0]}.` : (x.marcas.find((m) => m.tratamiento === 'VARIANTE')?.texto || x.marcas.find((m) => m.tratamiento === 'AVISO')?.texto || 'Sin objeción fuerte en las pruebas de robustez.') });
     if (q.pasa === false) { descartesCalidad.push(`${x.nombre} (${q.txt})`); continue; }
@@ -337,7 +337,7 @@ async function escanear() {
     if (REGLAS.exclusiones[x.clave] || noComprable(x.clave, PRECIOS.precios[x.clave]?.simbolo) || !x.precio_cot || !x.nivel) continue;
     const lim = x.limite_nivel_cot;
     if (!Number.isFinite(lim) || x.precio_cot > lim) continue;
-    posibles.push({ calidad_pruebas: x.calidad_pruebas ?? null, calidad_fallan: x.calidad_fallan ?? [], vertical: 'value', nivel: x.nivel, tope_pct: REGLAS.niveles_compra?.[x.nivel]?.tope_pct ?? null, clave: x.clave, nombre: x.nombre, precio: x.precio_cot, divisa: x.divisa_cotizacion, limite: r(lim, 2),
+    posibles.push({ aviso_riesgo: x.aviso_riesgo ?? null, calidad_pruebas: x.calidad_pruebas ?? null, calidad_fallan: x.calidad_fallan ?? [], vertical: 'value', nivel: x.nivel, tope_pct: REGLAS.niveles_compra?.[x.nivel]?.tope_pct ?? null, clave: x.clave, nombre: x.nombre, precio: x.precio_cot, divisa: x.divisa_cotizacion, limite: r(lim, 2),
       hora_precio: horaDe(x.fecha_precio, horaPrecio, PRECIOS.precios[x.clave]?.simbolo), rentabilidad_12m_pct: x.ponderada, estado: estadoPosible(x.clave, x.nivel),
       contexto_informe: x.contexto_mercado?.veredicto ? { veredicto: x.contexto_mercado.veredicto, fecha: x.carpeta.match(/\d{4}-\d{2}-\d{2}/)?.[0] || null } : null });
   }
@@ -527,6 +527,7 @@ function tablaPosibles(esc) {
   return [`**Compras posibles ahora (todas las seguidas, ${t.length})**`, '',
     '| Empresa | Tipo | Nivel (tamaño máx.) | Comprar a mercado si cotiza en | Precio ahora | Rentab. 12 m | Repaso de precio y noticias | Estado |', '|---|---|---|---|---|---|---|---|',
     ...t.map((c) => `| ${c.nombre} | ${c.vertical} | ${c.nivel ? `${c.nivel} (${f(c.tope_pct ?? 0, c.tope_pct % 1 ? 1 : 0)} %)` : 'growth'} | ${fPrecio(c.limite)} ${c.divisa} o menos | ${fPrecio(c.precio)} ${c.divisa} (${c.hora_precio}) | ${fp(c.rentabilidad_12m_pct)}${c.largo_plazo ? ` (${c.largo_plazo})` : ''} | ${c.regla13 || 'falta'} | ${c.estado} |`),
+    ...(() => { const ar = t.filter((c) => c.vertical === 'value' && c.aviso_riesgo); return ar.length ? ['', `**Aviso de riesgo (deuda neta / EBITDA > 3 o dilución > 2 % anual; avisa, no bloquea ni cambia el nivel):** ${ar.map((c) => `${c.nombre}: ${c.aviso_riesgo.replace(/^Aviso de riesgo \(comprobación de compra, no bloquea\): /, '').replace(/\. En el backtest.*$/, '')}`).join('; ')}.`] : []; })(),
     ...(() => { const fl = t.filter((c) => c.vertical === 'value' && c.calidad_fallan?.length); return fl.length ? ['', `Calidad ampliada (10 pruebas, informativas: no cambian nivel ni compra; backtest 28-oct): ${fl.map((c) => `${c.nombre} ${c.calidad_pruebas}`).join('; ')}.`] : []; })(),
     '', `Son posibles, no órdenes. Niveles value (regla 16): A = compra robusta (7 %); B1 = v2 y BPA −10 % solo aguantan Mantener, calidad completa (4 %); B2 = números de A, sostenibilidad «En parte» con ROIC − WACC ≥ 5 (4 %); C = las dos cosas aflojadas (3,3 %); niveles 2 y 3 como mucho el 25 % del bolsillo value y el 3 el 10 %; el dinero va primero a A. Cuáles se compran depende de la liquidez (libre ${f(esc.liquidez_libre_eur ?? 0, 0)} €) y de lo que haya que vender antes; las que tienen «falta» en el repaso de precio y noticias lo necesitan antes de una orden.${t.some((c) => c.vertical === 'growth') ? ` Las growth solo salen con +25 % o más a 12 meses, más a largo plazo y una subida esperada de al menos 0,75 veces la caída del escenario malo; comparten un bolsillo con tope (hoy al ${f(esc.bolsillo_growth_pct ?? 0, 0)} %).` : ''}`].join('\n');
 }
