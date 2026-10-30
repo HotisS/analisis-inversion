@@ -12,7 +12,7 @@ Solo lo pendiente. Lo cerrado está en `archivo/` (índice en `archivo/HISTORICO
 
 **Novena hora: cerrada el 15-oct** (`informes/novena-hora-2026-10-15/`: Universal Music bajó a Mantener con la prueba del BPA −10 %; Neurocrine comprada el 15-oct). No se arranca otra tanda value hasta que el usuario la pida.
 
-**Brasil (B3, Itaú, BTG, Sabesp, Santander Brasil) y Banco Santander: hecha el 27-oct a petición de Hotis** (`informes/b3-2026-10-27/`, `itau-unibanco-2026-10-27/`, `btg-pactual-2026-10-27/`, `sabesp-2026-10-27/`, `santander-brasil-2026-10-27/`, `banco-santander-2026-10-27/`: ninguna compra; ninguna pasa ROIC − WACC (o ROE − Ke) ≥ 4,5: las brasileñas con el bono en reales del 26-oct, Banco Santander (RoTE − Ke +3,5) por la prima país).
+**Brasil (B3, Itaú, BTG, Sabesp, Santander Brasil) y Banco Santander: hecha el 27-oct a petición de Hotis** (`informes/b3-2026-10-27/`, `itau-unibanco-2026-10-27/`, `btg-pactual-2026-10-27/`, `sabesp-2026-10-27/`, `santander-brasil-2026-10-27/`, `banco-santander-2026-10-27/`: ninguna compra; ninguna pasa ROIC − WACC (o ROE − Ke) ≥ 4,5: las brasileñas con el bono en reales del 26-oct, Banco Santander (RoTE − Ke +3,5) por la prima país). **Banco Santander rehecho el 30-oct tras el 3T26** (`banco-santander-2026-10-30/`, petición de Hotis): RoTE − Ke +4,2, sigue sin pasar; No mantener; valor intrínseco 9,82 €.
 
 **Regeneron (REGN): hecha el 24-oct a petición de Hotis** (`informes/regeneron-2026-10-24/`: Mantener, no compra; lo sería a ≤677,23 USD).
 
