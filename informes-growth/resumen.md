@@ -56,6 +56,7 @@ Lo genera `node motor/growth.mjs --todos` (no editar a mano). Método v11: [vert
 | Remitly Global | RELY | 70.5 | 7/8 | +1,5 % | +3,6 % | Mantener | — | 23 USD | 2026-10-14 |
 | Rocket Lab Corporation | RKLB | 63.8 | 3/8 | +1,3 % | +15,7 % | Mantener | — | 28.7 USD | 2026-10-14 |
 | DoorDash | DASH | 63.8 | 3/8 | +0,8 % | +4 % | Mantener | — | 185.3 USD | 2026-10-14 |
+| GigaCloud Technology | GCT | 58.5 | 3/8 | +0,7 % | -4 % | Mantener | — | 60.4 USD | 2026-11-06 |
 | HubSpot | HUBS | 66.8 | 3/8 | -0,4 % | +4,8 % | Mantener | — | 209.8 USD | 2026-10-14 |
 | Spotify Technology | SPOT | 54.5 | 3/8 | -0,6 % | -5 % | Mantener | — | 499.5 USD | 2026-10-14 |
 | Krystal Biotech | KRYS | 75.3 | 6/8 | -0,8 % | +9,5 % | Mantener | — | 303.5 USD | 2026-10-14 |
