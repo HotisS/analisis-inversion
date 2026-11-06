@@ -2,7 +2,7 @@
 
 Pedido del usuario (14-oct-2026): «escáner diario de actualización de precios que se lance cada día sobre las 9:30 y las 15:00 (EE. UU. y Europa abiertos); si una acción toca banda de comprar (y puede entrar como candidata) o de vender (y está en cartera), se actualiza el análisis con nueva V (Vup) y se emite señal; ideal para trackear y dar valor a todo este trabajo».
 
-Se lanza solo, de lunes a viernes, a las **9:25 y a las 15:45 de Madrid** (Wall Street abre a las 15:30 de Madrid), con una tarea programada que hace los pasos de abajo y publica el resultado en el proyecto. (`perfiles.json` de esta carpeta es de otra herramienta: el buscador de candidatas `/escanea-mercado`.)
+Se lanza solo, de lunes a viernes, **una sola vez al día, a las 9:00 de Madrid** (regla del usuario del 6-nov-2026: una pasada diaria para no repetir y ahorrar; la de las 15:45 y el vigía de cada hora quedan en esa única pasada), con una tarea programada que hace los pasos de abajo y publica el resultado en el proyecto. (`perfiles.json` de esta carpeta es de otra herramienta: el buscador de candidatas `/escanea-mercado`.)
 
 > **REGLA DURA (usuario, 14-oct 18:04):** las señales del escáner son **avisos, nunca órdenes**. Ninguna rutina ni paso automático toca el broker ni herramientas de órdenes. Una compra o venta solo se lanza si el usuario la pide explícitamente en el chat **y** la confirma cuando se le pide confirmación.
 
@@ -10,8 +10,8 @@ Se lanza solo, de lunes a viernes, a las **9:25 y a las 15:45 de Madrid** (Wall 
 
 | Cuándo | Qué | Cómo |
 |---|---|---|
-| L-V 9:25 | Vigilancia + escáner: resultados publicados desde la última pasada (cartera, órdenes, lista de espera, suplentes) → actualizar su análisis y revisar su señal; alertas de riesgo de la cartera (salida del consejero delegado, recorte de previsión, investigación abierta, ley francesa de Edenred); escáner de precios con Vup | `--vigilancia`, noticias y leads (paso 1c), búsqueda web, escáner, `--registrar` (avisos en `decisiones.json`) |
-| L-V 15:45 | Escáner de precios con EE. UU. abierto | escáner, `--registrar` |
+| L-V 9:00 | Vigilancia + escáner: resultados publicados desde la última pasada (cartera, órdenes, lista de espera, suplentes) → actualizar su análisis y revisar su señal; alertas de riesgo de la cartera (salida del consejero delegado, recorte de previsión, investigación abierta, ley francesa de Edenred); escáner de precios con Vup | `--vigilancia`, noticias y leads (paso 1c), búsqueda web, escáner, `--registrar` (avisos en `decisiones.json`) |
+| ~~L-V 15:45~~ | Desactivada el 6-nov-2026 (una sola pasada al día) | — |
 | Domingo 17:50 | Informe semanal (la parte de cartera —rentabilidad frente al índice, liquidez— la dará la vertical de seguimiento de cartera conectada a IBKR cuando exista; hasta entonces sale provisional de `--semanal`) (cartera frente al índice, señales y aciertos, lista de espera, suplentes, liquidez ociosa / XEON) y repaso del método (robustez de todo, informes viejos para la cola) y noticias (seguimiento de avisos y leads, muestra del modelo, propuestas por sector) | `--semanal` → `semanal-ultimo.md`; `noticias.mjs --seguimiento`, `noticias-modelo.mjs --datos --muestra` |
 | Primer domingo del mes 17:20 | Backtest con los cierres nuevos (selector y regla de desrateadas, que se apoya en 7 casos); se implanta solo si mejora y lo hace el hilo Mejoras | `node herramientas/backtest-selector.mjs --salida verticales/empresa/backtest/selector-mensual-AAAA-MM.md`, comparar con `selector-resultados-2026-10-14.md` |
 | Cuando haga falta | Tandas de análisis nuevos, dinero nuevo o rebalanceo grande, cambios de método, preguntas del usuario | No es rutina |

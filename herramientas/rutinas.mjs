@@ -14,8 +14,8 @@ import { fileURLToPath } from 'node:url';
 const RUTA = fileURLToPath(new URL('../escaner/ejecuciones.json', import.meta.url));
 // Horas de Madrid. dias: 0 = domingo … 6 = sábado. primerDomingo: solo si el día del mes es ≤ 7.
 export const RUTINAS = {
-  manana: { nombre: 'Vigilancia y escáner de la mañana', dias: [1, 2, 3, 4, 5], hora: '09:25' },
-  tarde: { nombre: 'Escáner de la tarde', dias: [1, 2, 3, 4, 5], hora: '15:45' },
+  // 6-nov-2026 (Hotis): una sola pasada diaria de escáner, a las 9:00 de Madrid. La de la tarde (15:45) queda desactivada.
+  manana: { nombre: 'Vigilancia y escáner de la mañana', dias: [1, 2, 3, 4, 5], hora: '09:00' },
   semanal: { nombre: 'Informe semanal', dias: [0], hora: '17:50' },
   mensual: { nombre: 'Backtest mensual', dias: [0], hora: '17:20', primerDomingo: true },
 };
