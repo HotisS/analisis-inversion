@@ -35,6 +35,7 @@ No se lee entero: busca con `grep -n -i` la palabra del caso (arrendamiento, ant
 - **Asociadas en el EBITDA de MarketScreener** (Diageo-Moët Hennessy); caja pendiente de una reestructuración que el DCF excluye, en `otros_ajustes`.
 
 - **Híbridos (TSS) en utilities** (Veolia, Engie, Orange): el BPA «corriente» de la empresa no resta los cupones y el publicado sí; objetivo a 12 m e historia del PER con los cupones restados, y decir que el consenso va sin restarlos (≈5 %). Sostenibilidad en utilities: el capex del estado de flujos no basta, sumar arrendamientos y activos financieros operativos (Veolia 7,2 % → 10,3 % de ventas). Telecos con NIIF 16: capex terminal nunca por debajo de la amortización (Orange: +34 % de DCF por ese error).
+- **Productores de renovables con rotación de activos** (Solaria, 8-nov-2026): cuenta por naturaleza sin aprovisionamientos y EBITDA mayor que la cifra de negocios por «otros ingresos» (activaciones de obra, penalizaciones y plusvalías por desconsolidar filiales a valor razonable, sin caja); el consenso mide «ingresos totales» con esas plusvalías dentro. Valorar en base ajustada sin plusvalías y decirlo (BPA −36 % frente a la calle). Capital ≈ 10 veces las ventas: el capex terminal tiene que ir muy por encima de la amortización (38 % frente a 23 %) o el control del capital nuevo salta (13,4 % frente a 7,2 %).
 - **Distribución eléctrica** (Rexel): el BPA de pico de 2022 (inflación del cobre) hunde el PER mínimo de 5 años y da un bajista extremo; mirar la variante «sin doble castigo».
 
 ## Suma de partes
