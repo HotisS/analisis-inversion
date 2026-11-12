@@ -10,6 +10,7 @@ Lee solo la sección del país que toque.
 - Tasa libre: FRED `DGS10` (un día por detrás) o el CSV del Tesoro (trae el día).
 - US GAAP con arrendamientos operativos: el alquiler ya está en el EBITDA; sumar sus pasivos a la deuda lo cuenta dos veces.
 - El rating suele estar en EDGAR (folleto de la última emisión).
+- Cambio de ticker (Lancaster Colony LANC → MZTI, jul-2025): la API de Stocktwits sigue con el ticker viejo; EDGAR, Yahoo y MarketScreener ya usan el nuevo.
 
 ## España
 - Web de inversores de la empresa (los PDF bajan aunque la web tenga antibot; a veces desde otro dominio: uploads.puig.com, blob.almirall.com). Grifols enlaza PDF sin `.pdf`: mejor sus 20-F y 6-K en EDGAR.
