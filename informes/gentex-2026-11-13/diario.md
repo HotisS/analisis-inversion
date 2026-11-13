@@ -1,0 +1,20 @@
+# Diario · Gentex (GNTX) · 13-nov-2026
+
+- Commit de partida: 645f096 (escáner 12-nov). Encargo de una tanda de 10 análisis paralelos: análisis value completo sin subagentes, tras el 3T26 flojo del 23-oct; el escáner del 12-nov la daba como compra posible nivel A (≤ 19,94 USD con el informe del 15-oct). Sin commits propios.
+- 13-11 08:54 Inicio. Lectura de `analiza-empresa.md`, `prompt.md`, `lecciones.md`, sección de EE. UU. de `lecciones-paises.md` y `METODO-VIGENTE.md` (§2 y §4, reglas 13 y 16).
+- 13-11 08:56 `cuentas.mjs --sec GNTX` (XBRL 2016-2025, igual que en octubre), `bolsa.mjs` (cierre del 12-nov: 19,37 USD; el 13-nov no había abierto) y `movimiento.mjs GNTX` (1 m −6,8 %, 3 m −18,9 %, 12 m −16,9 %, en mínimos de 52 semanas, bajista).
+- 13-11 08:58 EDGAR: nota de resultados del 3T26 (8-K del 23-oct) y 10-Q del 3T26 (6-nov). Transcripción de la conferencia en Earnings Whispers (MarketBeat 403; Seeking Alpha solo la cabecera). Yahoo quoteSummary de GNTX y ocho comparables tras sus resultados; Stock Analysis (objetivo 25,28); `form4.mjs` (ninguna operación nueva desde mayo); Tesoro (10 años 5,10 % el 12-nov); Damodaran (prima implícita 4,41 % en noviembre).
+- 13-11 09:00 Notas A-E con `notas/construir-notas.mjs` (copiado del informe anterior como estructura y actualizado dato a dato: LTM a sep-26, 3T26, balance y puente a 30-sep, consenso, comparables rehechos, guía, sentimiento).
+- Decisiones: BPA GAAP publicado (deterioros de inversiones tecnológicas dentro, sin la devolución IEEPA de 2026). Margen EBITDA del base 22,6 % en 2026 (guía), 22,0 % en 2027 (margen bruto del 33 %: la dirección dijo 33-34 %, «quizá menos») y 22,5 % desde 2028 (antes 23,5 % plano). Ventas 2027 en la parte baja de la guía (2.800 M, igual que el consenso). Puente a 30-sep: caja + inversiones a corto + renta fija a largo 249,1 M; tecnológicas 110,0 M como asociadas; sin deuda ni minoritarios. Historia del PER adelantada sin el cierre de 2025 (no hay BPA real de 2026, lección del 9-nov), sin 2019-2021. WACC 10,60 % (tasa libre 5,1 %, beta 1,0, prima 5,5 %). Comparables: siete, sin Aptiv. Pesos DCF 50 / comparables 25 / escenarios 25.
+- 13-11 09:04 Integración, cálculo, Word (`rellenar.mjs`, cobertura 89,2 %, 4 avisos de tablas vacías) y PDF con `soffice` (46 páginas). Bajista del 12 m corregido a 1,89 (amortización del 3,8 % como en los otros dos casos) y textos alineados.
+- Resultado: DCF 27,54 USD (+42,2 %); valor intrínseco 25,10 (+29,6 %); DCF inverso: ventas −8,0 % al año o margen EBITDA del 16,9 %. ROIC 17,9 % − WACC 10,60 % = 7,3 puntos. Sostenibilidad «Sí» (proyectado 3,8 % frente a financiable 5,7 %). Altman 7,88, Piotroski 6, Beneish −2,82.
+- **Línea 12 m (v3, selector sin marcas)**: objetivo 23,75 USD; ponderada +25,1 %, base +22,3 % (dividendo incluido) → **Comprar**, convicción media. v2 (control): 13,5 % / 11,5 % → Mantener. `apuntar-12m.mjs --precios` (con flock; precio de `precios.json`, 19,58 del 11-nov): 23,8 % / 21,0 %, v2 12,3 %.
+- **Robustez (`robustez.mjs`, con flock): FRÁGIL; acción robusta Mantener; si la tienes, Mantener. Nivel hoy B1; límite A 19,02 USD, B1 19,88; filtro de mantener hasta 22,03.** Colchón de BPA 8 % (Comprar) y 12 % (mantener). Precio y noticias (regla 13): no cambia.
+- Controles: 19 de 20 y uno explicado (compra robusta). Confianza: alta en cuentas, media en consenso y comparables.
+- Qué cambió frente al 15-oct: precio −6,8 %; margen del base −1 punto; BPA 2028e 2,38 → 2,32; objetivo 24,99 → 23,75; valor intrínseco 26,25 → 25,10; compra robusta 20,13 → 19,02. Señal de alarma anterior no cumplida (margen bruto del 3T26 33,4 % > 33 %; guía 2027 mantenida).
+- Pendiente para el coordinador: `seguimiento.mjs`, `cobertura.mjs --arreglar` y `simbolos.json` (si GNTX sigue sin entrar) no se tocan en esta tanda. Próximos resultados: finales de enero de 2027 (Yahoo estima el 29-ene).
+- 13-11 09:08 Revisión a 12 meses escrita (`revision-12m-2026-11-13.md`).
+
+## Lecciones
+
+- La transcripción de la conferencia de resultados se lee gratis en Earnings Whispers (`earningswhispers.com/transcript/<TICKER>/Q<n><AAAA>`) con WebFetch cuando Seeking Alpha y MarketBeat no abren.

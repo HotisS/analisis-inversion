@@ -39,6 +39,7 @@ Lee solo la sección del país que toque.
 
 ## Italia y Polonia
 - Sin XBRL utilizable en filings.xbrl.org (Rai Way, Diagnostyka, 8ª hora): `cuentas.mjs --esef` no encuentra el informe o lo trae sin las etiquetas que usa el mapa. Las cuentas se sacan del PDF del informe anual (nota A con la tabla de la cuenta, balance y flujos) y la confianza del informe no pasa de media hasta que haya dos ejercicios cuadrados contra el PDF.
+- (13-nov, Rai Way) La web (Plone) busca votaciones de junta e IAGC con `++api++/@search?SearchableText=…`; el comunicado de 9M no trae balance: deuda y caja de la diapositiva de deuda neta.
 
 ## Nórdicos (Dinamarca, Suecia, Noruega)
 - filings.xbrl.org (`cuentas.mjs --esef`) va con retraso en Noruega y Suecia: en octubre de 2026 el último ejercicio cargado de Borregaard y Sweco es 2024 (los índices se cargan por tandas, la última de mayo de 2025). El 2025 sale del informe anual (MFN) y se cuadra con 2024 del XBRL.
@@ -75,9 +76,11 @@ Lee solo la sección del país que toque.
 - Guba (Eastmoney) abre con curl: los mensajes van en un JSON incrustado como `article_list=`. ChinaBond da el 10 años con POST al servicio de la curva, no por GET. El EBITDA de consenso de MarketScreener en chinas puede incluir ganancias financieras: usar solo BPA y ventas.
 - Stock Connect: la lista de HKEX («China Connect Securities») en xls se lee pasándola a csv con soffice. Consenso de acciones A con la F10 de Eastmoney o el `earningsTrend` de Yahoo; estados del anual de CNINFO a veces en imagen (leer páginas renderizadas) (DunAn, Sieyuan, Wasion, 19-oct).
 - CNINFO publica el acta de cada reunión con inversores (`tabName=relation`, 投资者关系活动记录表): es la fuente primaria de la «conferencia». La historia del PER en acciones A va con el BPA 扣非 (recurrente), la misma base que los casos.
+- (13-nov, Transsion) En una A+H, la H entra en el Stock Connect justo al acabar la estabilización: salto de flujo (arbitraje del descuento H/A), no noticia. Bono a 10 años: POST a ChinaBond `/cbweb-czb-web/czb/czbChartSearch`. Con una H recién salida, `movimiento.mjs` con la A.
 
 ## Corea (19-oct-2026)
 - Sin XBRL en `cuentas.mjs`: DART responde desde la nube con el visor por secciones (avisos en cp949; el PDF devuelve 0 bytes). Consenso en FnGuide. Separar mercado, sector y empresa con `movimiento.mjs` (HD Hyundai Electric).
+- (13-nov, CLASSYS) DART ya abre desde la nube: avisos en cp949 por `viewDoc`, informes periódicos en UTF-8 por `report/viewer.do`. Informes de analistas: `m.stock.naver.com/api/research/company/<id>`.
 
 ## Arabia Saudí (19-oct-2026)
 - Documentos con la API de Argaam IR (estados a menudo escaneados); `^TASI.SR` no da datos en Yahoo: índice con el ETF KSA; Tadawul cotiza de domingo a jueves y cierra a las 12:00 UTC; el zakat sube el tipo impositivo aparente y `robustez` D5 lo marca sin que el BPA esté inflado (EIC).
@@ -87,6 +90,7 @@ Lee solo la sección del país que toque.
 - TSMC: pr.tsmc.com e investor.tsmc.com dan 403 desde la nube; todo está en EDGAR (6-K de resultados, ventas mensuales y estados semestrales; 20-F). El XBRL de `cuentas.mjs --sec` no trae el último 20-F a tiempo: el último año, del 20-F.
 - Emisores 20-F con Form 4 (TSMC desde marzo de 2026): `form4.mjs` cuenta como compras en mercado las del plan de empleados (código «P»): filtrarlas a mano.
 - Sentimiento: PTT (foro Stock) abre con curl y la cookie `over18=1`.
+- (13-nov, ASPEED) MOPS abre por `mopsov.twse.com.tw/server-java/t164sb01?step=1&CO_ID=XXXX&SYEAR=AAAA&SSEASON=N&REPORT_ID=C` (XBRL completo, Big5). D2 de robustez da falsos CORREGIR tras caídas del 20-35 % (lo toma por otra divisa): mirar la historia de precios.
 
 ## Brasil (27-oct-2026: B3, Itaú, BTG, Sabesp)
 - WACC/Ke en BRL con el bono del Tesoro a 10 años en reales (Trading Economics; el CSV del Tesouro Transparente lo corta el proxy) y **sin prima país encima**: ya está dentro del bono (el escáner sumaba 3 puntos, doble cuenta). IPCA esperado y PTAX: API olinda del BCB (Focus). Dar siempre la sensibilidad a la tasa libre: con el bono por encima del 12 % el DCF castiga a todo.
