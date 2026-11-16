@@ -31,19 +31,22 @@ if (!existsSync(CARTERA)) { console.error(`No veo ${CARTERA}`); process.exit(1);
 const cart = leer(CARTERA, {});
 const op = cart.ordenes_pendientes || {};
 const PRECIOS = leer(new URL('../verticales/empresa/precios.json', import.meta.url), {});
-// Niveles de compra (regla 16, 20-oct-2026): cada orden de compra puede llevar `nivel` (A, B1, B2, C); el aviso dice el nivel y
+// Niveles de compra (regla 16, 20-oct-2026): cada orden de compra puede llevar `nivel` (A o B desde el 16-nov; antes A, B1, B2, C); el aviso dice el nivel y
 // su tamaño máximo (escaner/reglas.json → niveles_compra).
-// 27-oct-2026: (1) los niveles A/B1/B2/C son SOLO value: una growth nunca lleva nivel (el 21-oct salió «Nivel A» en Nu porque
+// 27-oct-2026: (1) los niveles son SOLO value: una growth nunca lleva nivel (el 21-oct salió «Nivel A» en Nu porque
 // sin `nivel` se daba por A); (2) una value sin `nivel` ya no se da por A: se dice que falta; (3) el nivel depende del precio:
-// si a este precio pasan dos entradas de la misma empresa (NEM con A y NEM-B1 con B1), solo avisa la del mejor nivel.
+// si a este precio pasan dos entradas de la misma empresa (NEM con A y NEM-B con B), solo avisa la del mejor nivel.
+// 16-nov-2026 (Hotis): solo A y B son compra; B1 pasa a llamarse B (lo apuntado como B1 se lee como B) y las entradas de
+// compra con nivel B2 o C ya no avisan.
 const REGLAS_V = leer(new URL('../escaner/reglas.json', import.meta.url), {});
 const NIVELES = REGLAS_V.niveles_compra || {};
-const ORDEN_NIVEL = ['A', 'B1', 'B2', 'C'];
+const ORDEN_NIVEL = ['A', 'B'];
+const SUFIJO = /-(A|B|B1|B2|C)$/;
 const GROWTH = new Set((() => { try { return readdirSync(new URL('../informes-growth/', import.meta.url), { withFileTypes: true }).filter((e) => e.isDirectory())
   .map((e) => leer(new URL(`../informes-growth/${e.name}/datos.json`, import.meta.url), {})?.ticker).filter(Boolean).map((t) => String(t).toUpperCase()); } catch { return []; } })());
-const esGrowth = (o) => o.vertical === 'growth' || (o.vertical !== 'value' && GROWTH.has(String(o.clave).replace(/-(A|B1|B2|C)$/, '').toUpperCase()));
+const esGrowth = (o) => o.vertical === 'growth' || (o.vertical !== 'value' && GROWTH.has(String(o.clave).replace(SUFIJO, '').toUpperCase()));
 const txtNivel = (o) => {
-  if (esGrowth(o)) return ` Growth (sin niveles A/B/C; bolsillo growth como mucho ${REGLAS_V.bolsillo_growth_max_pct ?? 20} %).`;
+  if (esGrowth(o)) return ` Growth (sin niveles A/B; bolsillo growth como mucho ${REGLAS_V.bolsillo_growth_max_pct ?? 20} %).`;
   if (!o.nivel) return ' Nivel sin indicar: comprobar con robustez.mjs antes de comprar.';
   const t = NIVELES[o.nivel]?.tope_pct; return ` Nivel ${o.nivel} a este precio${t ? ` (tamaño máximo ${fp(t, t % 1 ? 1 : 0)} % de la cartera)` : ''}.`;
 };
@@ -53,7 +56,7 @@ const REV12 = leer(new URL('../verticales/empresa/objetivo12m-revisados.json', i
 const riesgo = (o) => {
   if (o.lado !== 'compra' || esGrowth(o)) return '';
   try {
-    const car = REV12[String(o.clave).replace(/-(A|B1|B2|C)$/, '')]?.carpeta; if (!car) return '';
+    const car = REV12[String(o.clave).replace(SUFIJO, '')]?.carpeta; if (!car) return '';
     const raiz = fileURLToPath(new URL('../informes/', import.meta.url)), slug = car.replace(/-\d{4}-\d{2}-\d{2}$/, '');
     const ultima = readdirSync(raiz).filter((x) => x === car || x.replace(/-\d{4}-\d{2}-\d{2}$/, '') === slug).sort().at(-1);
     const dir = `${raiz}${ultima}/`, fich = readdirSync(dir).filter((a) => /^datos(-v\d+)?\.json$/.test(a)).sort((a, b) => (+(a.match(/v(\d+)/)?.[1] ?? 1)) - (+(b.match(/v(\d+)/)?.[1] ?? 1))).at(-1);
@@ -65,9 +68,11 @@ const MAPA = { IOT: 'IOT', ...(op.simbolos || {}) };
 const simbolo = (k) => MAPA[k] || (PRECIOS.precios || PRECIOS)[k]?.simbolo || k;
 const nombre = (k, m) => (PRECIOS.precios || PRECIOS)[k]?.nombre || m?.shortName || k;
 
+const normNivel = (o) => (o.nivel === 'B1' ? { ...o, nivel: 'B' } : o);
+const esCompraValida = (o) => !['B2', 'C'].includes(o.nivel); // B2 y C ya no son compra (16-nov-2026)
 const lista = [
-  ...(op.comprar || []).map((o) => ({ ...o, lado: 'compra', reservada: /reservad/i.test(o.nota || '') })),
-  ...(op.lista_espera || []).filter((o) => !o.hasta || o.hasta >= hoy).map((o) => ({ ...o, lado: 'compra', reservada: false })),
+  ...(op.comprar || []).map(normNivel).filter(esCompraValida).map((o) => ({ ...o, lado: 'compra', reservada: /reservad/i.test(o.nota || '') })),
+  ...(op.lista_espera || []).filter((o) => !o.hasta || o.hasta >= hoy).map(normNivel).filter(esCompraValida).map((o) => ({ ...o, lado: 'compra', reservada: false })),
   ...(op.vender || []).filter((o) => typeof o === 'object' && o.minimo).map((o) => ({ ...o, lado: 'venta', limite: o.minimo })),
 ];
 

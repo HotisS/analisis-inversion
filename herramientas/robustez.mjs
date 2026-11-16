@@ -21,8 +21,9 @@
 //                    (ROIC − WACC < 4,5 sin excepción). Es la única que puede dar una venta (y luego mandan las reglas de
 //                    Hotis: 3 meses, no_vender). `lectura_mas_dura` guarda la peor lectura solo como dato.
 //
-// Niveles de compra (regla 16, 20-oct-2026): «nivel» (A, B1, B2, C o null) al precio de hoy y «limites_nivel_cot» con el
-// límite de cada nivel al que puede llegar la empresa. La acción robusta sigue siendo la de A.
+// Niveles de compra (regla 16, 20-oct-2026; desde el 16-nov solo A y B): «nivel» (A, B o null) al precio de hoy y
+// «limites_nivel_cot» con el límite de cada nivel al que puede llegar la empresa. B2 y C ya no son compra: van aparte en
+// «nivel_informativo» y «limites_informativos_cot». La acción robusta sigue siendo la de A.
 //
 // Tratamientos (columna «tratamiento»):
 //   CORREGIR   el dato está mal (precio, divisa, BPA): no se da señal hasta corregirlo.
@@ -334,9 +335,10 @@ function probar(carpeta) {
     for (let i = 0; i < 40; i++) { const m = (lo + hi) / 2; if (pasa(m)) lo = m; else hi = m; }
     return lo;
   })();
-  // Niveles de compra value (Hotis 20-oct-2026, regla 16 de METODO-VIGENTE.md): A = la compra robusta de siempre; B1 afloja los
-  // números (v2 y BPA −10 % solo aguantan Mantener; precio ≤ límite B); B2 afloja la calidad (sostenibilidad «En parte» con
-  // ROIC − WACC ≥ 5, o «Sí» con 4,5-5); C afloja las dos cosas. En todos: v3 en Comprar al precio de hoy, sin dato que corregir,
+  // Niveles de compra value (Hotis 20-oct-2026, regla 16 de METODO-VIGENTE.md; cambiada el 16-nov-2026): A = la compra robusta
+  // de siempre; B (antes B1) afloja los números (v2 y BPA −10 % solo aguantan Mantener; precio ≤ límite B). Solo A y B son
+  // compra. B2 (calidad aflojada: sostenibilidad «En parte» con ROIC − WACC ≥ 5, o «Sí» con 4,5-5) y C (las dos cosas) se
+  // siguen calculando como dato informativo (Hotis 16-nov: «B2 deja de ser compra»; C tiene el mismo defecto). En todos: v3 en Comprar al precio de hoy, sin dato que corregir,
   // sin marca de confianza, sin exclusión y sin «retrasa» ni «descarta» en precio y noticias.
   const excQ = REGLAS.calidad_excepciones?.[clave] ?? REGLAS.calidad_excepciones?.[String(id.ticker || '').toUpperCase()] ?? null;
   const calidadA = (sostOk && roicOk) || !!excQ;
@@ -353,14 +355,18 @@ function probar(carpeta) {
   // Límite de cada nivel (el precio más alto al que pasa) y nivel al precio de hoy. Los números A son los de la compra robusta
   // (todas las variantes defendibles en Comprar, BPA −10 % en Comprar, precio ≤ límite robusto); los B, v3 en Comprar y todo
   // lo demás al menos en Mantener (precio ≤ límite B).
-  const limitesNivel = {};
-  if (sinBloqueo && (calidadA || calidadB)) {
-    if (limRobusto !== null) limitesNivel[calidadA ? 'A' : 'B2'] = limRobusto;
-    if (limB !== null) limitesNivel[calidadA ? 'B1' : 'C'] = limB;
+  const limitesNivel = {}, limitesInfo = {};
+  if (sinBloqueo && calidadA) {
+    if (limRobusto !== null) limitesNivel.A = limRobusto;
+    if (limB !== null) limitesNivel.B = limB;
+  } else if (sinBloqueo && calidadB) {
+    if (limRobusto !== null) limitesInfo.B2 = limRobusto;
+    if (limB !== null) limitesInfo.C = limB;
   }
   const hoyA = v0?.comprar && defendibles.every((t) => t.comprar) && bpa10?.comprar && limRobusto !== null && precio <= limRobusto;
   const hoyB = v0?.comprar && defendibles.every((t) => t.mantener) && bpa10?.mantener && limB !== null && precio <= limB;
-  const nivel = !sinBloqueo ? null : calidadA ? (hoyA ? 'A' : hoyB ? 'B1' : null) : calidadB ? (hoyA ? 'B2' : hoyB ? 'C' : null) : null;
+  const nivel = !sinBloqueo ? null : calidadA ? (hoyA ? 'A' : hoyB ? 'B' : null) : null;
+  const nivelInfo = !sinBloqueo || calidadA || !calidadB ? null : hoyA ? 'B2' : hoyB ? 'C' : null;
   const limNivel = nivel ? limitesNivel[nivel] : null;
   // H1 (27-oct-2026, informes viejos): la historia del PER y los escenarios tienen que usar el MISMO BPA (los dos ajustados o
   // los dos publicados). Si el informe declara `per_historico.base_bpa` y `objetivo_12m.base_bpa` y no coinciden, o los textos
@@ -396,7 +402,8 @@ function probar(carpeta) {
     limite_comprar_control_cot: limCtrl ? r(limCtrl.comprar / tc, 2) : null, precio_cot: r(precio / tc, 2), limite_robusto_cot: limRobusto !== null ? Math.floor((100 * limRobusto) / tc) / 100 : null,
     limite_comprar: r(lim?.comprar, 2), limite_comprar_control: r(limCtrl?.comprar, 2), limite_mantener: r(lim?.mantener, 2), limite_mantener_control: r(limCtrl?.mantener, 2),
     nivel, limite_nivel_cot: limNivel !== null ? Math.floor((100 * limNivel) / tc) / 100 : null,
-    limites_nivel_cot: Object.fromEntries(Object.entries(limitesNivel).map(([k, v]) => [k, Math.floor((100 * v) / tc) / 100])), limite_b_cot: limB !== null ? Math.floor((100 * limB) / tc) / 100 : null,
+    limites_nivel_cot: Object.fromEntries(Object.entries(limitesNivel).map(([k, v]) => [k, Math.floor((100 * v) / tc) / 100])),
+    nivel_informativo: nivelInfo, limites_informativos_cot: Object.fromEntries(Object.entries(limitesInfo).map(([k, v]) => [k, Math.floor((100 * v) / tc) / 100])), limite_b_cot: limB !== null ? Math.floor((100 * limB) / tc) / 100 : null,
     calidad_sost: cx.sost, calidad_roic_wacc: r(cx.roicWacc),
     // Calidad ampliada (28-oct-2026): 10 pruebas INFORMATIVAS (backtest calidad-ampliada-2026-10-28): no tocan señal, nivel ni acción.
     calidad_pruebas: calAmp.texto, calidad_pruebas_pasa: calAmp.pasa, calidad_pruebas_con_dato: calAmp.con_dato, calidad_fallan: calAmp.fallan, aviso_riesgo: riesgoCal,
@@ -413,6 +420,7 @@ else for (const x of res) {
   if (x.obsoleto) console.log(`  OJO: hay un informe más nuevo (${x.obsoleto}); este no vale para señales.`);
   console.log(`  Veredicto: ${x.veredicto}. Si la tienes: ${x.senal_cartera ?? '—'}. ¿Compra robusta?: ${x.compra_robusta ? 'sí' : 'no'} (${x.accion_robusta}).${x.frente.length ? ` Otras lecturas: ${x.frente.join('; ')}.` : ''}`);
   if (Object.keys(x.limites_nivel_cot || {}).length) console.log(`  Nivel de compra hoy: ${x.nivel ?? 'ninguno'}. Límites por nivel (${x.divisa_cotizacion}): ${Object.entries(x.limites_nivel_cot).map(([k, v]) => `${k} ${f(v, 2)}`).join('; ')}.`);
+  if (Object.keys(x.limites_informativos_cot || {}).length) console.log(`  Sin nivel de compra (calidad aflojada). Dato informativo, ya no es compra (16-nov): hoy ${x.nivel_informativo ?? 'ninguno'}; límites ${Object.entries(x.limites_informativos_cot).map(([k, v]) => `${k} ${f(v, 2)}`).join('; ')}.`);
   console.log(`  En ${x.divisa_cotizacion} (broker): precio ${f(x.precio_cot, 2)}; límite de compra (objetivo fijo) ${f(x.limite_comprar_cot, 2)}${x.limite_comprar_control_cot !== null ? ` (v2: ${f(x.limite_comprar_control_cot, 2)})` : ''}; filtro de mantener hasta ${f(x.limite_mantener_cot, 2)}; límite robusto (v3 y v2 con BPA −10 %) ${x.limite_robusto_cot !== null ? f(x.limite_robusto_cot, 2) : '—'}. Colchón de BPA: ${x.colchon_bpa_comprar ?? '—'} % para Comprar, ${x.colchon_bpa_mantener ?? '—'} % para mantener.`);
   console.log(`  Calidad: ROIC − WACC ${f(x.calidad_roic_wacc)} puntos, sostenibilidad ${x.calidad_sost ?? 'n.d.'}; pruebas ampliadas (informativas) ${x.calidad_pruebas}.`);
   for (const m of x.marcas) console.log(`  [${m.codigo} ${m.tratamiento}] ${m.texto}`);

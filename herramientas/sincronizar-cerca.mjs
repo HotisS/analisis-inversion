@@ -7,7 +7,7 @@
 //   node herramientas/sincronizar-cerca.mjs --escribir    escribe <privada>/vigia/escaner-cartera.json (y la copia en
 //                                                         ordenes_pendientes.vigia_cerca de la cartera privada)
 //
-// Una entrada por nivel: «NEM» con el límite A y «NEM-B1» con el de B1 si es más alto. Solo value (las growth no tienen
+// Una entrada por nivel: «NEM» con el límite A y «NEM-B» con el de B (antes B1) si es más alto. Solo value (las growth no tienen
 // niveles). Nunca toca el broker.
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { leerPrecios } from './precios.mjs';
@@ -31,8 +31,8 @@ for (const c of esc.cerca.filter((x) => x.grupo === 'menos de 5 %' && x.vertical
   const nota = (n) => `${esc.fecha}: ${c.nombre}${n ? ` nivel ${n}` : ''}, grupo a menos de 5 % (escáner ${esc.hora})`;
   lista.push({ clave: c.clave, limite: a, nivel: 'A', divisa: c.divisa, vertical: 'value', desde: desde.get(c.clave) || esc.fecha, condicion: cond, nota: nota(null) });
   if (b > a + 1e-9) {
-    lista.push({ clave: `${c.clave}-B1`, limite: b, nivel: 'B1', divisa: c.divisa, vertical: 'value', desde: desde.get(`${c.clave}-B1`) || esc.fecha, condicion: cond, nota: nota('B1') });
-    const s = P[c.clave]?.simbolo; if (s) simbolos[`${c.clave}-B1`] = s;
+    lista.push({ clave: `${c.clave}-B`, limite: b, nivel: 'B', divisa: c.divisa, vertical: 'value', desde: desde.get(`${c.clave}-B`) || esc.fecha, condicion: cond, nota: nota('B') });
+    const s = P[c.clave]?.simbolo; if (s) simbolos[`${c.clave}-B`] = s;
   }
 }
 const salida = { nota: 'Copia para el vigía (herramientas/sincronizar-cerca.mjs); no editar a mano.', escaner: `${esc.fecha} ${esc.hora}`, liquidez_libre_eur: cartera.liquidez_libre_eur ?? previo.liquidez_libre_eur ?? 0,

@@ -88,25 +88,28 @@ if (cartera) {
     const tiene = [p.no_tocar_hasta, REGLAS.mantener_hasta?.[p.clave]].filter(Boolean).sort().at(-1);
     if (hasta >= hoy && !noVender.has(p.clave) && (!tiene || tiene < hasta)) nota('ERROR', 'C6', `${p.clave}: comprada el ${ultima}; no se toca hasta el ${hasta} y no lo tiene apuntado (no_tocar_hasta ${tiene || 'vacío'}). El escáner podría dar una venta.`);
   }
-  // C11 · nivel de cada compra value desde el 20-oct (regla 16): sin él no se pueden aplicar los topes conjuntos de los niveles 2 y 3.
+  // C11 · nivel de cada compra value desde el 20-oct (regla 16): sin él no se puede aplicar el tope del nivel B (25 % del value).
   for (const p of (cartera.posiciones || []).filter((x) => x.vertical === 'value' && !x.nivel)) {
     const m = movs.find((x) => x.clave === p.clave);
     const ultima = (m?.compras || []).filter((x) => x.tipo === 'compra').map((x) => x.fecha).sort().at(-1);
-    if (ultima && ultima >= '2026-10-20') nota('AVISO', 'C11', `${p.clave}: comprada el ${ultima} sin «nivel» en la cartera privada; el escáner la cuenta como A para los topes de niveles 2 y 3.`);
+    if (ultima && ultima >= '2026-10-20') nota('AVISO', 'C11', `${p.clave}: comprada el ${ultima} sin «nivel» en la cartera privada; el escáner la cuenta como A para el tope del nivel B.`);
   }
-  // C7 · niveles en órdenes y vigía: los niveles A/B1/B2/C son solo value; una growth no lleva nivel (Nu «Nivel A» 21-oct);
-  // la clave con sufijo (NEM-B1) y el campo nivel tienen que decir lo mismo.
+  // C7 · niveles en órdenes y vigía: los niveles son solo value; una growth no lleva nivel (Nu «Nivel A» 21-oct);
+  // la clave con sufijo (NEM-B) y el campo nivel tienen que decir lo mismo (B1 es el nombre antiguo de B).
+  // C21 · desde el 16-nov-2026 solo A y B son compra: una compra apuntada con nivel B2 o C es ERROR.
   const growth = new Set(readdirSync(join(RAIZ, 'informes-growth'), { withFileTypes: true }).filter((e) => e.isDirectory())
     .map((e) => leer(join(RAIZ, 'informes-growth', e.name, 'datos.json'))?.ticker).filter(Boolean).map((t) => String(t).toUpperCase()));
   const vigia = leer(join(REAL, 'vigia', 'escaner-cartera.json'));
   const listas = [['órdenes', cartera.ordenes_pendientes || {}], ['vigía', vigia?.ordenes_pendientes || {}]];
   for (const [donde, op] of listas) for (const o of [...(op.comprar || []), ...(op.lista_espera || []), ...(op.vigia_cerca || [])]) {
     if (!o?.clave) continue;
-    const base = String(o.clave).replace(/-(A|B1|B2|C)$/, ''), suf = String(o.clave).match(/-(A|B1|B2|C)$/)?.[1];
+    const nB = (n) => (n === 'B1' ? 'B' : n);
+    const base = String(o.clave).replace(/-(A|B|B1|B2|C)$/, ''), suf = String(o.clave).match(/-(A|B|B1|B2|C)$/)?.[1];
+    if (['B2', 'C'].includes(o.nivel) || ['B2', 'C'].includes(suf)) nota('ERROR', 'C21', `${donde}: ${o.clave} lleva nivel ${o.nivel || suf}; B2 y C ya no son compra desde el 16-nov (solo A y B).`);
     const esG = o.vertical === 'growth' || (o.vertical !== 'value' && growth.has(base.toUpperCase()));
     if (esG && o.nivel) nota('ERROR', 'C7', `${donde}: ${o.clave} es growth y lleva «nivel ${o.nivel}»; los niveles son solo value.`);
     if (!esG && !o.nivel && o.limite) nota('AVISO', 'C7', `${donde}: ${o.clave} sin nivel: el vigía ya no lo da por A; apuntar el nivel con robustez.mjs.`);
-    if (suf && o.nivel && suf !== o.nivel) nota('ERROR', 'C7', `${donde}: ${o.clave} dice nivel ${o.nivel} y su clave dice ${suf}.`);
+    if (suf && o.nivel && nB(suf) !== nB(o.nivel)) nota('ERROR', 'C7', `${donde}: ${o.clave} dice nivel ${o.nivel} y su clave dice ${suf}.`);
   }
   // C8 · compras condicionadas a vender lo que Hotis decidió quedarse (Equifax/ICE 20-oct): notas con «si … vend…» que nombran
   // una posición que no se vende.
@@ -123,6 +126,8 @@ if (cartera) {
   // C9 · escaneo-ultimo de otro día: el vigía y la foto lo usan como lista.
   const esc = leer(join(REAL, 'escaner', 'escaneo-ultimo.json'));
   if (esc?.fecha && dias(esc.fecha, hoy) > 3) nota('AVISO', 'C9', `escaneo-ultimo.json es del ${esc.fecha}: el vigía vigila una lista vieja.`);
+  for (const c of (esc?.compras_posibles || []).filter((x) => x.vertical === 'value' && !['A', 'B'].includes(x.nivel)))
+    nota('ERROR', 'C21', `escáner: ${c.clave} sale como compra posible con nivel ${c.nivel ?? 'vacío'}; solo A y B son compra desde el 16-nov.`);
   // C14 · growth en compras posibles: sin nivel y con +25 % o más a 12 m (regla 15); el escáner ya lo filtra, esto lo vigila.
   for (const c of (esc?.compras_posibles || []).filter((x) => x.vertical === 'growth')) {
     if (c.nivel) nota('ERROR', 'C14', `escáner: ${c.clave} es growth y sale con «nivel ${c.nivel}».`);

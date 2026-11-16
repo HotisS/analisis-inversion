@@ -4,6 +4,10 @@
 
 **Qué se apunta aquí** (una entrada por cambio, la más reciente arriba, dos o tres líneas): cambios de método o de reglas, decisiones de cartera que sustituyen a otras, cambios de estructura del repo o del flujo de trabajo, y lo que se retira de `MEMORIA.md`, `cola.md` o `lecciones.md` cuando ya no está vigente. No se apuntan análisis sueltos (están en `seguimiento.xlsx` y en cada `diario.md`).
 
+## 16-nov-2026 · Solo A y B son compra
+
+El usuario quita B2 como compra y renombra B1 a B; acepta quitar también C (mismo defecto de calidad). B2 y C se siguen calculando como dato informativo. Tope: B ≤ 25 % del bolsillo value (desaparece el 10 % del nivel 3). Salen de compras posibles Edenred, Giant Biogene, Marzetti y Adyen.
+
 ## 20-oct-2026 · Niveles de compra value A, B1, B2 y C
 
 Pedido del usuario (más compras de calidad aunque no sean perfectas) y aprobado a las 10:33. A es la compra robusta de siempre; B1 afloja los números (v2 y BPA −10 % solo en Mantener), B2 la calidad (sostenibilidad «En parte» con ROIC − WACC ≥ 5) y C las dos; topes 7/4/4/3,3 %. Regla 16 de `METODO-VIGENTE.md`; backtest en `/mnt/project-files/estrategia/niveles-compra-2026-10-20/`.

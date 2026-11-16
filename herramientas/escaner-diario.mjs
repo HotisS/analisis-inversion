@@ -304,21 +304,20 @@ async function escanear() {
   }
 
   // Regla del usuario (19-oct): en cada pasada, TODAS las compras posibles a precio de ahora, aunque ya estén propuestas,
-  // en cartera (ampliar), en lista de espera o sin liquidez. Value: cualquier nivel de compra (regla 16: A, B1, B2 o C de
-  // robustez.mjs) con el precio ≤ el límite de su nivel. Growth: la misma prueba que arriba. Las excluidas por el usuario no salen.
+  // en cartera (ampliar), en lista de espera o sin liquidez. Value: cualquier nivel de compra (regla 16: A o B de
+  // robustez.mjs; B2 y C dejaron de ser compra el 16-nov) con el precio ≤ el límite de su nivel. Growth: la misma prueba que arriba. Las excluidas por el usuario no salen.
   const posibles = [];
   const propuesta = (clave) => { const t = enOrdenes.get(clave), lim = t.match(/\(límite [^)]+\)$/)?.[0]; return lim ? `ya propuesta ${lim}` : `ya propuesta: ${t}`; };
-  // Topes conjuntos de la regla 16 (27-oct-2026: no se aplicaban): niveles 2 y 3 (B1, B2, C) como mucho el 25 % del bolsillo
-  // value y el nivel 3 (C) el 10 %. El nivel de cada posición sale de `nivel` en la cartera privada (sin él, se da por A: compras
+  // Tope conjunto de la regla 16 (16-nov-2026): el nivel B como mucho el 25 % del bolsillo value. Las posiciones apuntadas
+  // como B1, B2 o C (compras antiguas) cuentan dentro de ese 25 %. El nivel de cada posición sale de `nivel` en la cartera privada (sin él, se da por A: compras
   // anteriores al 20-oct). Y lo que Hotis no amplía (`no_ampliar`, `no_vender` de Edenred) no sale como «ampliar».
   const valueEur = CARTERA.posiciones.filter((p) => p.vertical === 'value').reduce((t, p) => t + (valorPos[p.clave] || 0), 0);
   const pesoNivel = (ns) => valueEur ? (100 * CARTERA.posiciones.filter((p) => p.vertical === 'value' && ns.includes(p.nivel)).reduce((t, p) => t + (valorPos[p.clave] || 0), 0)) / valueEur : 0;
   const huecoNivel = (nivel) => {
-    if (!['B1', 'B2', 'C'].includes(nivel) || !valueEur) return '';
-    const t = (REGLAS.niveles_compra?.[nivel]?.tope_pct ?? 0) * total / valueEur, n23 = pesoNivel(['B1', 'B2', 'C']), n3 = pesoNivel(['C']);
-    const max23 = REGLAS.niveles_compra?.tope_niveles_2_3_pct ?? 25, max3 = REGLAS.niveles_compra?.tope_nivel_3_pct ?? 10;
-    if (n23 + t > max23 + 0.05) return `; sin hueco en niveles 2 y 3 (${f(n23, 1)} % del bolsillo value; tope ${max23} %)`;
-    if (nivel === 'C' && n3 + t > max3 + 0.05) return `; sin hueco en nivel 3 (${f(n3, 1)} % del bolsillo value; tope ${max3} %)`;
+    if (nivel !== 'B' || !valueEur) return '';
+    const t = (REGLAS.niveles_compra?.B?.tope_pct ?? 0) * total / valueEur, nB = pesoNivel(['B', 'B1', 'B2', 'C']);
+    const maxB = REGLAS.niveles_compra?.tope_nivel_b_pct ?? 25;
+    if (nB + t > maxB + 0.05) return `; sin hueco en el nivel B (${f(nB, 1)} % del bolsillo value; tope ${maxB} %)`;
     return '';
   };
   const estadoPosible = (clave, nivel = null) => {
@@ -332,15 +331,25 @@ async function escanear() {
     }
     return `${enOrdenes.has(clave) ? propuesta(clave) : 'nueva'}${huecoNivel(nivel)}`;
   };
-  // Niveles de compra (regla 16, 20-oct-2026): A, B1, B2 y C con su límite y su tamaño máximo (robustez.mjs → nivel).
+  // Niveles de compra (regla 16, 20-oct-2026; desde el 16-nov solo A y B) con su límite y su tamaño máximo (robustez.mjs → nivel).
+  // B2 y C van aparte, como dato informativo (no son compra).
+  const informativos = [];
   for (const x of rob) {
     if (REGLAS.exclusiones[x.clave] || noComprable(x.clave, PRECIOS.precios[x.clave]?.simbolo) || !x.precio_cot || !x.nivel) continue;
     const lim = x.limite_nivel_cot;
     if (!Number.isFinite(lim) || x.precio_cot > lim) continue;
+    if (!['A', 'B'].includes(x.nivel)) continue; // defensa: solo A y B son compra (16-nov-2026)
     posibles.push({ aviso_riesgo: x.aviso_riesgo ?? null, calidad_pruebas: x.calidad_pruebas ?? null, calidad_fallan: x.calidad_fallan ?? [], vertical: 'value', nivel: x.nivel, tope_pct: REGLAS.niveles_compra?.[x.nivel]?.tope_pct ?? null, clave: x.clave, nombre: x.nombre, precio: x.precio_cot, divisa: x.divisa_cotizacion, limite: r(lim, 2),
       hora_precio: horaDe(x.fecha_precio, horaPrecio, PRECIOS.precios[x.clave]?.simbolo), rentabilidad_12m_pct: x.ponderada, estado: estadoPosible(x.clave, x.nivel),
       contexto_informe: x.contexto_mercado?.veredicto ? { veredicto: x.contexto_mercado.veredicto, fecha: x.carpeta.match(/\d{4}-\d{2}-\d{2}/)?.[0] || null } : null });
   }
+  for (const x of rob) {
+    if (REGLAS.exclusiones[x.clave] || noComprable(x.clave, PRECIOS.precios[x.clave]?.simbolo) || !x.precio_cot || !x.nivel_informativo) continue;
+    const lim = x.limites_informativos_cot?.[x.nivel_informativo];
+    if (!Number.isFinite(lim) || x.precio_cot > lim) continue;
+    informativos.push({ clave: x.clave, nombre: x.nombre, nivel: x.nivel_informativo, precio: x.precio_cot, divisa: x.divisa_cotizacion, limite: r(lim, 2), rentabilidad_12m_pct: x.ponderada, en_cartera: pos.has(x.clave) });
+  }
+  informativos.sort((a, b) => a.nivel.localeCompare(b.nivel) || b.rentabilidad_12m_pct - a.rentabilidad_12m_pct);
   for (const g of gro) {
     if (!g.precio_hoy || REGLAS.exclusiones[g.ticker] || noComprable(g.ticker, g.simbolo)) continue;
     if (!(g.precio_hoy <= g.precio_max_compra && /^Comprar/.test(g.senal_robusta || '') && g.ponderada_hoy >= g.listones.ponderada && g.base_hoy >= g.listones.base)) continue;
@@ -359,11 +368,11 @@ async function escanear() {
     c.regla13 = q?.fecha && dias(q.fecha, ahora.fecha) <= 7 ? `${q.veredicto || 'hecho'} (${fechaCorta(q.fecha)})`
       : qi?.fecha && dias(qi.fecha, ahora.fecha) <= 7 ? `${qi.veredicto} (informe del ${fechaCorta(qi.fecha)})` : 'falta';
   }
-  const ordenNivel = { A: 0, B1: 1, B2: 1, C: 2 };
+  const ordenNivel = { A: 0, B: 1 };
   posibles.sort((a, b) => (ordenNivel[a.nivel] ?? 1.5) - (ordenNivel[b.nivel] ?? 1.5) || b.rentabilidad_12m_pct - a.rentabilidad_12m_pct);
 
   // Seguimiento de cerca (Hotis 20-oct-2026): cada escáner cierra con cuatro grupos: compras posibles, la lista marcada por
-  // Hotis (órdenes de compra, lista de espera y fijadas) con su distancia al límite, y las de calidad completa (niveles A/B1) a
+  // Hotis (órdenes de compra, lista de espera y fijadas) con su distancia al límite, y las de calidad completa (niveles A/B) a
   // menos de un 5 % y a un 5-15 % de su primer nivel, marcando las que cambian de grupo desde el escáner anterior.
   const previo = leer(RUTA_ESC, {});
   const grupoPrevio = new Map([...(previo.cerca || []).map((c) => [c.clave, c.grupo]), ...(previo.compras_posibles || []).map((c) => [c.clave, 'posible'])]);
@@ -372,11 +381,11 @@ async function escanear() {
   const marcadas = [];
   for (const [o, papel] of [...(pend.comprar || []).map((o) => [o, 'compra apuntada']), ...(pend.lista_espera || []).map((o) => [o, 'lista de espera']),
     ...(CARTERA.ordenes_pendientes?.fijadas_por_hotis?.claves || []).map((k) => [{ clave: k }, 'fijada por ti'])]) {
-    // Una empresa puede venir con un apunte por nivel («LII» con el límite A y «LII-B1» con el B1): se juntan en una línea.
-    const suf = String(o.clave).match(/-(A|B1|B2|C)$/)?.[1] || null, base = suf ? o.clave.slice(0, -suf.length - 1) : o.clave;
+    // Una empresa puede venir con un apunte por nivel («LII» con el límite A y «LII-B» con el B): se juntan en una línea.
+    const suf = String(o.clave).match(/-(A|B|B1|B2|C)$/)?.[1] || null, base = suf ? o.clave.slice(0, -suf.length - 1) : o.clave;
     const g = gro.find((y) => y.ticker === base), x = g ? null : buscarValue(base);
-    const lims = x?.limites_nivel_cot || {}, lim = o.limite ?? lims.A ?? lims.B2 ?? null; // sin límite apuntado: el de su compra robusta
-    const nivelApunte = o.nivel || suf || (o.limite == null ? (lims.A != null ? 'A' : lims.B2 != null ? 'B2' : null) : 'tu límite');
+    const lims = x?.limites_nivel_cot || {}, lim = o.limite ?? lims.A ?? null; // sin límite apuntado: el de su compra robusta
+    const nivelApunte = o.nivel || suf || (o.limite == null ? (lims.A != null ? 'A' : null) : 'tu límite');
     const m = marcadas.find((y) => y.clave === base || (x && y.clave_informe === x.clave));
     if (m) {
       if (lim != null && nivelApunte && !(nivelApunte in m.limites)) m.limites[nivelApunte] = lim;
@@ -395,7 +404,7 @@ async function escanear() {
   for (const x of rob) {
     const lims = x.limites_nivel_cot || {};
     if (REGLAS.exclusiones[x.clave] || noComprable(x.clave, PRECIOS.precios[x.clave]?.simbolo) || !x.precio_cot || lims.A == null || enPosibles.has(x.clave)) continue;
-    const nivel = lims.B1 != null && lims.B1 >= lims.A ? 'B1' : 'A', lim = lims[nivel], d = faltaPct(x.precio_cot, lim);
+    const nivel = lims.B != null && lims.B >= lims.A ? 'B' : 'A', lim = lims[nivel], d = faltaPct(x.precio_cot, lim);
     if (!(d > 0 && d < 15)) continue;
     const grupo = d < 5 ? 'menos de 5 %' : '5-15 %', antes = grupoPrevio.get(x.clave) || null;
     cerca.push({ clave: x.clave, nombre: x.nombre, grupo, nivel, precio: x.precio_cot, divisa: x.divisa_cotizacion, limite: lim, limite_a: lims.A, falta_pct: d,
@@ -418,7 +427,7 @@ async function escanear() {
     if (dd < 0 && c.fecha_corte && pr > c.fecha_corte) c.vup_obligatorio = `${c.vup_obligatorio ? `${c.vup_obligatorio} ` : ''}Publicó resultados el ${fechaCorta(pr)}, después del informe (corte ${fechaCorta(c.fecha_corte)}): revisarlos antes de dar la señal.`;
   }
   const esc = { fecha: ahora.fecha, hora: ahora.hora, precios_actualizados: PRECIOS.actualizado, valor_cartera_eur: r(total, 0), liquidez_libre_eur: CARTERA.liquidez_libre_eur,
-    bolsillo_growth_pct: r(bolsilloPct), revisadas: { value: rob.length, growth: gro.length }, candidatas, observaciones, activas, descartes_calidad: descartesCalidad, descartadas_hace_poco: recientes, compras_posibles: posibles,
+    bolsillo_growth_pct: r(bolsilloPct), revisadas: { value: rob.length, growth: gro.length }, candidatas, observaciones, activas, descartes_calidad: descartesCalidad, descartadas_hace_poco: recientes, compras_posibles: posibles, informativos_b2_c: informativos,
     marcadas, cerca, sale_de_cerca: salenDeCerca, pasan_a_posible: pasanAPosible };
   // Comprobaciones de coherencia (herramientas/comprobar.mjs, 27-oct-2026): van en el JSON y arriba del texto; un ERROR se
   // dice a Hotis antes que cualquier compra posible.
@@ -529,7 +538,7 @@ function tablaPosibles(esc) {
     ...t.map((c) => `| ${c.nombre} | ${c.vertical} | ${c.nivel ? `${c.nivel} (${f(c.tope_pct ?? 0, c.tope_pct % 1 ? 1 : 0)} %)` : 'growth'} | ${fPrecio(c.limite)} ${c.divisa} o menos | ${fPrecio(c.precio)} ${c.divisa} (${c.hora_precio}) | ${fp(c.rentabilidad_12m_pct)}${c.largo_plazo ? ` (${c.largo_plazo})` : ''} | ${c.regla13 || 'falta'} | ${c.estado} |`),
     ...(() => { const ar = t.filter((c) => c.vertical === 'value' && c.aviso_riesgo); return ar.length ? ['', `**Aviso de riesgo (deuda neta / EBITDA > 3 o dilución > 2 % anual; avisa, no bloquea ni cambia el nivel):** ${ar.map((c) => `${c.nombre}: ${c.aviso_riesgo.replace(/^Aviso de riesgo \(comprobación de compra, no bloquea\): /, '').replace(/\. En el backtest.*$/, '')}`).join('; ')}.`] : []; })(),
     ...(() => { const fl = t.filter((c) => c.vertical === 'value' && c.calidad_fallan?.length); return fl.length ? ['', `Calidad ampliada (10 pruebas, informativas: no cambian nivel ni compra; backtest 28-oct): ${fl.map((c) => `${c.nombre} ${c.calidad_pruebas}`).join('; ')}.`] : []; })(),
-    '', `Son posibles, no órdenes. Niveles value (regla 16): A = compra robusta (7 %); B1 = v2 y BPA −10 % solo aguantan Mantener, calidad completa (4 %); B2 = números de A, sostenibilidad «En parte» con ROIC − WACC ≥ 5 (4 %); C = las dos cosas aflojadas (3,3 %); niveles 2 y 3 como mucho el 25 % del bolsillo value y el 3 el 10 %; el dinero va primero a A. Cuáles se compran depende de la liquidez (libre ${f(esc.liquidez_libre_eur ?? 0, 0)} €) y de lo que haya que vender antes; las que tienen «falta» en el repaso de precio y noticias lo necesitan antes de una orden.${t.some((c) => c.vertical === 'growth') ? ` Las growth solo salen con +25 % o más a 12 meses, más a largo plazo y una subida esperada de al menos 0,75 veces la caída del escenario malo; comparten un bolsillo con tope (hoy al ${f(esc.bolsillo_growth_pct ?? 0, 0)} %).` : ''}`].join('\n');
+    '', `Son posibles, no órdenes. Niveles value (regla 16, desde el 16-nov): A = compra robusta (7 %); B = v2 y BPA −10 % solo aguantan Mantener, calidad completa (4 %); B como mucho el 25 % del bolsillo value; el dinero va primero a A. B2 y C ya no son compra. Cuáles se compran depende de la liquidez (libre ${f(esc.liquidez_libre_eur ?? 0, 0)} €) y de lo que haya que vender antes; las que tienen «falta» en el repaso de precio y noticias lo necesitan antes de una orden.${t.some((c) => c.vertical === 'growth') ? ` Las growth solo salen con +25 % o más a 12 meses, más a largo plazo y una subida esperada de al menos 0,75 veces la caída del escenario malo; comparten un bolsillo con tope (hoy al ${f(esc.bolsillo_growth_pct ?? 0, 0)} %).` : ''}`].join('\n');
 }
 function mensaje(esc, nuevas, reg, avisos = []) {
   const arriba = esc.pasan_a_posible?.length ? `**Pasan a compra posible desde el escáner anterior: ${esc.pasan_a_posible.join(', ')}.**\n\n` : '';
@@ -548,6 +557,8 @@ function tablaCerca(esc) {
     out.push('| Empresa | Precio ahora | Límite (nivel) | Límite A | Falta | Rentab. 12 m | Cambio |', '|---|---|---|---|---|---|---|',
       ...t.map((x) => `| ${x.nombre}${x.en_cartera ? ' (en cartera)' : ''} | ${fPrecio(x.precio)} ${x.divisa} (${x.hora_precio}) | ${fPrecio(x.limite)} (${x.nivel}) | ${fPrecio(x.limite_a)} | ${falta(x.falta_pct)} | ${fp(x.rentabilidad_12m_pct)} | ${x.cambio || '='} |`));
   }
+  const inf = esc.informativos_b2_c || [];
+  if (inf.length) out.push('', `Solo informativo, ya no son compra (B2 y C, 16-nov): ${inf.map((x) => `${x.nombre}${x.en_cartera ? ' (en cartera)' : ''} ${x.nivel} ≤${fPrecio(x.limite)} ${x.divisa}`).join('; ')}.`);
   if (esc.sale_de_cerca?.length) out.push('', `Salen de los grupos de cerca (se alejan más de un 15 % o quedan sin límite): ${esc.sale_de_cerca.join(', ')}.`);
   return out.join('\n');
 }

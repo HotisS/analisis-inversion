@@ -4,25 +4,21 @@
   "peso_objetivo_pct": 5,
   "tope_posicion_pct": 7,
   "niveles_compra": {
-    "nota": "Regla 16 de METODO-VIGENTE.md (Hotis 20-oct-2026, cmsg_018PhzEVSk4hABnLFHAp7iTQJH2AXMNiGmiPQDGutnc5iH). A = compra robusta; B1 afloja los números; B2 afloja la calidad; C afloja las dos. Tope de posición por nivel; niveles 2 y 3 juntos como mucho el 25 % del bolsillo value, nivel 3 el 10 %. El dinero va primero a A, luego a B1/B2 y luego a C.",
+    "nota": "Regla 16 de METODO-VIGENTE.md (Hotis 20-oct-2026; cambiada el 16-nov-2026, cmsg_018PhzEVSk4hABnLFHAp7iTQ1hRciqAVsF6FyZQxjLLqWa y «si» en cmsg_018PhzEVSk4hABnLFHAp7iTQ9eNFXhr9v7xKqAR6yEg9fn). Solo dos niveles de compra: A = compra robusta (7 %); B (antes B1) = números aflojados, calidad completa (4 %). B como mucho el 25 % del bolsillo value. El dinero va primero a A. B2 y C ya no son compra: quedan en «informativos» (robustez.mjs → nivel_informativo) por si se recuperan.",
     "A": {
       "tope_pct": 7,
-      "texto": "nivel 1 (A)"
+      "texto": "nivel A (compra robusta)"
     },
-    "B1": {
+    "B": {
       "tope_pct": 4,
-      "texto": "nivel 2 (B1: números aflojados, calidad completa)"
+      "texto": "nivel B (números aflojados, calidad completa; antes B1)"
     },
-    "B2": {
-      "tope_pct": 4,
-      "texto": "nivel 2 (B2: números completos, calidad aflojada)"
-    },
-    "C": {
-      "tope_pct": 3.3,
-      "texto": "nivel 3 (C: números y calidad aflojados; ≈ 1.000 €)"
-    },
-    "tope_niveles_2_3_pct": 25,
-    "tope_nivel_3_pct": 10
+    "tope_nivel_b_pct": 25,
+    "informativos": {
+      "nota": "Ya no son compra desde el 16-nov-2026; solo dato en el escáner. Topes que tenían: B2 4 %, C 3,3 %.",
+      "B2": "números de A, calidad aflojada (sostenibilidad «En parte» con ROIC − WACC ≥ 5, o «Sí» con 4,5-5)",
+      "C": "números y calidad aflojados"
+    }
   },
   "bolsillo_growth_max_pct": 20,
   "growth_compra": {
