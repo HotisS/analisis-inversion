@@ -1,0 +1,40 @@
+// Actualiza notas/A.json con el 1T FY27 (19-nov-2026). Uso: node A-actualiza.mjs
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+const dir = path.dirname(fileURLToPath(import.meta.url));
+const f = path.join(dir, 'A.json');
+const d = JSON.parse(fs.readFileSync(f, 'utf8'));
+
+// ---------- fuentes nuevas (10-18) ----------
+const nuevas = [
+  { id: 10, titulo: 'Intuit Reports First-Quarter Results and Enters Agreement to Sell Mailchimp to Bending Spoons (8-K, anexo 99.01)', editor: 'Intuit Inc. / SEC EDGAR', tipo: 'Primaria', fecha: '2026-11-19', url: 'https://www.sec.gov/Archives/edgar/data/896878/000089687826000043/fy27q1earningspressrelease.htm' },
+  { id: 11, titulo: 'Intuit Inc. Form 10-Q, primer trimestre fiscal 2027 (trimestre a 31-oct-2026)', editor: 'Intuit Inc. / SEC EDGAR', tipo: 'Primaria', fecha: '2026-11-19', url: 'https://www.sec.gov/Archives/edgar/data/896878/000089687826000045/intu-20261031.htm' },
+  { id: 12, titulo: 'Form 8-K (Item 1.01): Equity and Asset Purchase Agreement con Bending Spoons US Inc. para la venta de Mailchimp', editor: 'Intuit Inc. / SEC EDGAR', tipo: 'Primaria', fecha: '2026-11-19', url: 'https://www.sec.gov/Archives/edgar/data/896878/000119312526468834/d182669d8k.htm' },
+  { id: 13, titulo: 'Form 8-K (Item 8.01), anexo 99.01: partidas del 10-K FY2026 reexpresadas con Mailchimp como segmento propio', editor: 'Intuit Inc. / SEC EDGAR', tipo: 'Primaria', fecha: '2026-11-19', url: 'https://www.sec.gov/Archives/edgar/data/896878/000089687826000047/intu-20261119_d2.htm' },
+  { id: 14, titulo: 'First-quarter Fiscal 2027 Conference Call Remarks (guion de la conferencia)', editor: 'Intuit Inc.', tipo: 'Primaria', fecha: '2026-11-19', url: 'https://investors.intuit.com/_assets/_ec6fa3d84099c818e3499aef167549b7/intuit/db/946/10425/webcast_transcript/Q1_FY27_Earnings_Script.pdf' },
+  { id: 15, titulo: 'Q1 FY27 Fact Sheet', editor: 'Intuit Inc.', tipo: 'Primaria', fecha: '2026-11-19', url: 'https://investors.intuit.com/_assets/_ec6fa3d84099c818e3499aef167549b7/intuit/db/946/10425/fact_sheet/Q1_FY27_Fact_Sheet_External_vShared.pdf' },
+  { id: 16, titulo: 'Intuit meets FQ1 earnings estimates, Credit Karma hits guidance, Mailchimp sale disclosed', editor: 'Seeking Alpha (vía TradingView News)', tipo: 'Prensa', fecha: '2026-11-19', url: 'https://www.tradingview.com/news/seekingalpha:91a0413ae094b:0-intuit-meets-fq1-earnings-estimates-credit-karma-hits-guidance-mailchimp-sale-disclosed/' },
+  { id: 17, titulo: 'Intuit Revenue Forecast Shows AI Disruption Concerns Linger', editor: 'Benzinga (vía TradingView News)', tipo: 'Prensa', fecha: '2026-11-20', url: 'https://www.tradingview.com/news/benzinga:cc1c9a7b2094b:0-intuit-revenue-forecast-shows-ai-disruption-concerns-linger/' },
+  { id: 18, titulo: 'Intuit Stocks Drop 9.52% After Hours on Credit Karma Guide Cut and Mailchimp Sale', editor: 'GuruFocus (vía TradingView News)', tipo: 'Prensa', fecha: '2026-11-19', url: 'https://www.tradingview.com/news/gurufocus:33444a65e094b:0-intuit-stocks-drop-9-52-after-hours-on-credit-karma-guide-cut-and-mailchimp-sale/' },
+];
+d.fuentes = d.fuentes.filter(x => x.id <= 9).concat(nuevas);
+
+// ---------- trimestres ----------
+const t = d.trimestres;
+t.items = t.items.filter(x => x.periodo !== '1T25');
+const i4 = t.items.findIndex(x => x.periodo === '1T27');
+const q = { periodo: '1T27', ingresos: 4354, crecimiento_pct: 12.1, crecimiento_organico_pct: null, ebitda: 1080, margen_ebitda_pct: 24.8, bpa: 2.59, vs_consenso: 'Superior' };
+if (i4 >= 0) t.items[i4] = q; else t.items.push(q);
+t.ultima_presentacion = 'En el 4T26 (25-ago-2026) la dirección presentó un FY2026 de 21.448 M (+14 %), anunció que aceptaría menos ingreso medio por cliente en TurboTax para recuperar cuota de declaraciones del IRS y guió un FY2027 de +9-10 % con Credit Karma al +11-13 % [6, 7]. Tres meses después (19-nov-2026) el tono cambió: el trimestre superó el techo de su guía en ingresos, beneficio operativo y BPA [10, 14], pero Credit Karma creció solo un 9 %, «por debajo de las expectativas internas de ingresos y de uso», por tipos de interés más altos y por un traslado «más rápido de lo previsto» de los consumidores a asistentes de IA para buscar productos financieros [14]. La guía de ingresos del año baja solo por Credit Karma (ahora +3-7 %), y el beneficio operativo y el BPA se mantienen gracias a menos gasto en pagos en acciones [14]. Para el 2T la dirección prevé +6-7 %, con Consumer cayendo a un dígito medio: precios más bajos en TurboTax para captar declarantes sensibles al precio (más gratuitos al principio de campaña) y unos 30 M que pasan del 2T al 3T al internalizar las transferencias de reembolsos [14]. La novedad estratégica es la venta de Mailchimp a Bending Spoons, presentada como foco en la estrategia «del cliente potencial al cobro» [10, 14]. El discurso insiste en la IA como «nueva puerta de entrada»: integraciones con OpenAI, Anthropic, Microsoft, Google y Meta, más de 2 millones de llamadas semanales a QuickBooks desde asistentes [14]. El guion publicado no incluye el turno de preguntas.';
+t.extra = t.extra || {};
+delete t.extra.q1_fy27;
+t.extra.resultado_1t27 = '1T27 (ago-oct 2026): ingresos 4.354 M (+12 %) frente a la guía de 4.294-4.313 M y un consenso de unos 4.310 M (Visible Alpha y Benzinga) [6, 16, 17]; beneficio operativo GAAP 868 M (+63 %) frente a una guía de 716-729 M; no GAAP (con pagos en acciones) 1.046 M (+46 %, margen 24,0 %); BPA GAAP 2,59 USD (+63 %) frente a 1,71-1,75 USD de guía; BPA no GAAP 2,91 USD (+56 %) frente a 2,44-2,48 USD de guía y un consenso de 2,64 (CapIQ, según Seeking Alpha) o 2,70 USD (Benzinga) [6, 10, 15, 16, 17]. El BPA lleva 118 M de plusvalías de inversiones a largo plazo (0,44 USD por acción, excluidas del no GAAP) y una tasa fiscal del 28 % por 35 M de déficit fiscal de los pagos en acciones [10].';
+t.extra.guia_2t27 = 'Guía 2T27 (nov-ene): ingresos 4.931-4.954 M (+6-7 %) frente a un consenso de 5.110 M [10, 16, 17]; beneficio operativo GAAP 971-988 M (+14-16 %) y no GAAP 1.131-1.148 M (+10-12 %); BPA GAAP 2,55-2,60 USD (+3-5 %) y no GAAP 3,17-3,22 USD (+16-18 %) frente a un consenso de 3,94-3,98 USD que probablemente sigue en la base antigua sin pagos en acciones [10, 16, 17]. Por segmentos: Global Business Solutions sube entre un 10 % y un 15 % (ecosistema online +15-19 %, escritorio plano), Consumer baja a un dígito medio, TurboTax baja y Mailchimp cae como en el 1T [14].';
+t.extra.guia_fy27 = 'Guía FY2027 (19-nov): ingresos 23.081-23.365 M (+8-9 %), antes 23.279-23.512 M (+9-10 %), frente a un consenso de 23.400-23.430 M [6, 10, 16, 17]; Credit Karma +3-7 % (antes +11-13 %), Consumer +2-4 %, Global Business Solutions 13.068-13.158 M (+13-14 %, sin cambio), TurboTax +2-3 %, ProTax +2 %, Mailchimp 1.256-1.266 M (-1 % a 0 %). Se mantienen el beneficio operativo GAAP 7.408-7.490 M (+26-27 %) y no GAAP 8.063-8.145 M (+17-18 %), el BPA GAAP 20,12-20,36 USD y el no GAAP 22,88-23,12 USD, y la tasa fiscal GAAP de alrededor del 27 % [10, 14]. La guía no incluye la venta de Mailchimp; se actualizará al cierre [10].';
+t.extra.no_gaap_trimestral = 'Desde el 1T27 el no GAAP incluye los pagos en acciones. Con esa base, beneficio operativo no GAAP por trimestre: FY2025 442, 762, 3.874 y 526 M; FY2026 715, 1.028, 4.195 y 941 M (6.879 M en el año); 1T27 1.046 M. BPA no GAAP FY2026: 1,87, 2,73, 11,47 y 2,62 USD (18,63 USD en el año) [10, 15].';
+t.extra.consenso_bases = 'El BPA de consenso que publica la prensa mezcla bases: 2,64-2,70 USD para el 1T27 y 3,94-3,98 USD para el 2T27 casan con la base nueva (con pagos en acciones), pero el consenso del FY2027 sale en 23,62 USD (Benzinga) y 28,99 USD (Visible Alpha), este último en la base antigua sin pagos en acciones [16, 17].';
+t.extra.reaccion = 'La acción cerró el 19-nov en 310,02 USD (-1,03 %) y cayó un 9,5 % fuera de hora tras la publicación [18]; el viernes 20-nov cotizaba en torno a 280 USD antes de la apertura (-9,7 %) [17].';
+t.confianza = 'Alta';
+fs.writeFileSync(f, JSON.stringify(d, null, 2));
+console.log('trimestres y fuentes ok');
