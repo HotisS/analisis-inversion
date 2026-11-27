@@ -1,0 +1,55 @@
+// Resumen ejecutivo de Fluidra (corte 2026-11-27, tras los nueve meses del 29-oct). Se escribe el último; cifras de calc tal cual.
+export const resumen = {
+  recomendacion: 'Comprar',
+  conviccion: 'Media',
+  justificacion_recomendacion: null,
+  horizonte: '12 meses',
+  sintesis: [
+    '**La recomendación y por qué.** Comprar según la regla a 12 meses, con convicción media. El objetivo a 12 meses es de 22,74 EUR ponderado y 23,55 EUR en el base, frente a 18,70 EUR (cierre del 26 de noviembre): un 25,1 % y un 29,4 % con el dividendo. El valor intrínseco es de 24,59 EUR (+31,5 %) y el objetivo medio de los analistas, de 25,93 EUR, entre nuestro base y nuestro alcista. Asimetría de 2,92 veces (alcista +58,7 %, bajista −20,1 %). El precio sigue descontando un valle permanente. El motor sugiere convicción alta; la dejamos en media porque la compra no es robusta: con la regla v2 de control la ponderada es del 12,8 % y con un BPA un 10 % peor, del 13,0 %. Al precio de hoy es **nivel B** (límite 19,19 EUR), no nivel A (18,35 EUR). La subiría una guía de 2027 con menos reestructuración.',
+    '**El negocio.** Primer fabricante mundial de equipos de piscina, con el 13 % de un mercado de 17.400 M EUR [B1]; el 65 % de las ventas es reposición [A1]. El ROIC del 8,3 % apenas supera el WACC del 8,07 %, lastrado por el fondo de comercio de Zodiac (47 % del capital invertido): Fluidra entra como excepción de calidad del usuario, no por sus números. La calidad sí sostiene el crecimiento proyectado (veredicto Sí): un 4,1 % anual, por debajo del mercado (4-6 %), con la cuota bajando al 11,7 % en 2033e.',
+    '**Los nueve meses y la guía.** Ventas +4,3 % a tipo constante, EBITDA ajustado de 428 M (24,1 %, 20 pb más) y beneficio atribuido −5,9 % por 40 M de reestructuración [A13]. La guía se estrecha **recortando la parte alta**: ventas +3,5/+5,5 % (antes +3/+7 %), margen ajustado 23,3-23,5 % (antes 23,3-24,3 %) y BPA ajustado +5/+9 % (antes +4/+13 %) [A13]. El margen del año se apoya en devoluciones de aranceles puntuales [A14]. Lo recogemos: margen de 2027e-2029e tres décimas más bajo y BPA de 2028e de 1,31 a 1,28 EUR; el de 2026e queda en 0,93 EUR (0,97 en octubre).',
+    '**Finanzas y gobierno.** Deuda neta de 1.145 M (2,2 veces el EBITDA ajustado) tras la recompra de 40 M y el arrendamiento de Tánger [A13]; flujo libre que rinde un 8,1 %. Familias fundadoras y Rhône controlan de hecho la junta (40 % [C1]); un consejero compró unos 14 M en marzo [C12] y no hay ventas de directivos.',
+    '**Valoración.** DCF de 24,66 EUR (Bund del 3,30 %); comparables de 27,41 EUR, inflados por la revalorización de un 30-36 % de Pool Corp, Hayward y Pentair tras su 3T, que ensancha el descuento de Fluidra frente a Hayward del 5 % al 28 % en EV/EBITDA [D17-D21]. El DCF inverso supone ventas que caen un 1,0 % al año hasta 2033 o un margen del 20,1 %, el del desestocaje; con nuestras cifras rinde un 9,5 % anual. Nuestro BPA de 2028e queda un 15 % bajo el consenso por la reestructuración que proyectamos.',
+    '**Riesgos y catalizadores.** Un nuevo desestocaje en EE. UU. (bajista de 14,95 EUR), una reestructuración que no cede (cada punto de margen vale un 7 %) y los aranceles sin devoluciones en 2027. Catalizadores: ex-dividendo el 8-dic y resultados de 2026 con la guía de 2027 a finales de febrero (fecha estimada).',
+    '**Qué cambiaría la decisión.** Con el objetivo fijo, la regla da Comprar por debajo de 20,34 EUR; la compra robusta (nivel A) pide menos de 18,35 EUR y el nivel B, menos de 19,19 EUR. Para quien la tiene, el precio de venta es el filtro de mantener: por encima de 21,27 EUR (la banda Vender de la regla, ponderada ≤ −10 %, empieza en 25,99 EUR). Pasaríamos a Mantener si la guía de 2027 no mejora el margen ajustado o si el volumen de Norteamérica cae dos trimestres seguidos.',
+  ].join('\n\n'),
+  tesis: [
+    'Fluidra es el líder mundial en equipos de piscina, con el 13 % de un mercado de 17.400 M EUR y marcas como Zodiac, Jandy, Polaris y AstralPool [B1]. Dos tercios de sus ventas son reposición en una base instalada de unos 20 millones de piscinas enterradas residenciales [A1, B1], y por eso crece un 4,3 % a tipo constante en 2026 con la obra nueva de EE. UU. un 30 % por debajo de su media [A13]. Genera caja con regularidad: el flujo libre rinde un 8,1 % sobre la capitalización.',
+    'A 18,70 EUR, 8,8 veces el EBITDA de los próximos 12 meses y 14,9 veces el beneficio, el mercado descuenta que las ventas caigan un 1,0 % al año hasta 2033 o que el margen reportado se quede en el 20,1 %. Sus rivales de EE. UU. han subido un 30-36 % desde octubre y Fluidra un 6 %; el consenso de 15 analistas (12 compras) mantiene un objetivo medio de 25,93 EUR [D8].',
+    'Creemos que el mercado extrapola el valle y castiga la guía estrechada más de lo que pesa: el recorte es de la parte alta, el margen ajustado sigue subiendo y los precios de 2027 ya están anunciados [A14]. Para invertir hay que creer que la reestructuración baja desde 2027 y que el canal no vuelve a desestocar. Con un ROIC del 8,3 % frente a un WACC del 8,07 % es una apuesta de ciclo, no un compuesto.',
+  ].join('\n\n'),
+  vision_diferencial: {
+    mercado_descuenta: 'Un valle permanente: ventas a la baja (−1,0 % al año) o un margen EBITDA reportado del 20,1 % para siempre, es decir, que la obra nueva no vuelve, que los aranceles y los robots chinos erosionan el margen y que la reestructuración es un coste fijo más. La acción cotiza a 9,9 veces el EBITDA de los últimos 12 meses, frente a una media de 12,2 en los cinco últimos cierres.',
+    nuestra_vision: 'Un ciclo que deja de empeorar: ventas +4,5-5 % al año desde 2027, por debajo del objetivo de la empresa (+6-8 %), y margen reportado del 23,5 % en 2030, por debajo del objetivo ajustado de más del 25 %. Nuestras ventas coinciden con el consenso y nuestro BPA queda un 15 % por debajo.',
+    por_que: 'La reposición creció en nueve meses con la obra nueva en mínimos y la venta al cliente final en Norteamérica crece «en la parte alta de un dígito» [A14]; el margen ajustado subió 20 pb pese a los aranceles y el plan de eficiencia lleva 23 M de ahorro [A13]. Y el desestocaje ya se hizo: existencias de 498 M a septiembre, frente a 599 M en 2022 [A1, A13].',
+  },
+  a_favor: [
+    '**Precio de valle**: el DCF inverso exige ventas a la baja (−1,0 % al año) o un margen reportado del 20,1 %, el de 2022-2024.',
+    '**Reposición recurrente**: el 65 % de las ventas no depende de la obra nueva; ventas +4,3 % a tipo constante en nueve meses [A1, A13].',
+    '**Caja abundante**: rendimiento del flujo libre del 8,1 % y dividendo del 3,5 %; recompra de 40 M terminada en septiembre [D41].',
+    '**Rezagada frente a sus rivales**: 8,8 veces el EBITDA de los próximos 12 meses frente a 12,2 de Hayward, que sube un 36 % desde octubre [D18].',
+    '**Precios de 2027 ya anunciados**: +3,5-5 % en EE. UU. y +2 % en Europa [A14].',
+  ],
+  en_contra: [
+    '**ROIC del 8,3 %**, casi igual al WACC del 8,07 %: entra solo como excepción de calidad del usuario.',
+    '**Compra frágil**: con la regla v2 de control la ponderada es del 12,8 % y con un BPA un 10 % peor, del 13,0 %; es nivel B, no A.',
+    '**Guía recortada en la parte alta** y margen de 2026 apoyado en devoluciones de aranceles que no se repiten [A13, A14].',
+    '**Reestructuración recurrente**: 56 M en 2024, 29 M en 2025 y 45 M solo en nueve meses de 2026 [A1, A13].',
+    '**Canal de EE. UU. frágil**: un distribuidor compra el 21 % de las ventas [B1] y Leslie\'s prepara un concurso [E9].',
+  ],
+  que_vigilar: 'La tesis depende de que la guía de 2027 (finales de febrero) muestre margen ajustado por encima del 23,4 % sin devoluciones de aranceles y reestructuración a la baja, y de que la reposición siga creciendo mientras la obra nueva toca fondo. Si el canal de EE. UU. vuelve a desestocar, el valor cae hacia el bajista (14,95 EUR). Señales: volumen negativo en Norteamérica, reestructuración de más de 40 M en 2027 y margen bruto por debajo del 55 % (56,0 % en nueve meses).',
+  cambiaria_recomendacion: [
+    'Si la guía de 2027 sitúa el margen EBITDA ajustado por debajo del 23,3 %, rebajaríamos el margen del DCF y pasaríamos a Mantener.',
+    'Si el volumen de Norteamérica cae dos trimestres seguidos, pasaríamos a Mantener.',
+    'Si la reestructuración y los pagos en acciones de 2027 superan los 40 M, rebajaríamos un punto el margen (−7 % de valor).',
+    'Con el objetivo fijo: Comprar por debajo de 20,34 EUR (nivel B hasta 19,19 y nivel A hasta 18,35); para quien la tiene, vender por encima de 21,27 EUR (filtro de mantener); la banda Vender de la regla empieza en 25,99 EUR.',
+  ],
+  kpis_seguimiento: [
+    { kpi: 'Crecimiento de las ventas a tipo constante', nivel_actual: '+4,3 % (9M26)', umbral_alerta: 'Por debajo del +2 % en 2027', por_que: 'La guía de 2026 es del +3,5 % al +5,5 %; por debajo del 2 %, el bajista gana peso.' },
+    { kpi: 'Margen EBITDA ajustado', nivel_actual: '24,1 % (9M26); 22,9 % en 2025', umbral_alerta: 'Guía de 2027 por debajo del 23,3 %', por_que: 'La guía de 2026 se quedó en el 23,3-23,5 % con aranceles devueltos; cada punto de margen vale un 7 % del valor.' },
+    { kpi: 'Reestructuración y pagos en acciones', nivel_actual: '45 M (9M26)', umbral_alerta: 'Más de 40 M en 2027', por_que: 'Es la diferencia entre nuestro BPA y el del consenso.' },
+    { kpi: 'Ventas de Norteamérica a perímetro y tipo constantes', nivel_actual: '+3,5 % (9M26)', umbral_alerta: 'Negativo dos trimestres seguidos', por_que: 'Anticipa un nuevo desestocaje del canal, como en 2022-2023.' },
+    { kpi: 'Deuda neta / EBITDA ajustado', nivel_actual: '2,2 veces (septiembre de 2026)', umbral_alerta: 'Por encima de 2,8 veces', por_que: 'Limita las recompras y aumenta el riesgo en un bajista.' },
+  ],
+  confianza: 'Media',
+};

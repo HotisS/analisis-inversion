@@ -11,6 +11,7 @@ Lee solo la sección del país que toque.
 - US GAAP con arrendamientos operativos: el alquiler ya está en el EBITDA; sumar sus pasivos a la deuda lo cuenta dos veces.
 - El rating suele estar en EDGAR (folleto de la última emisión).
 - Cambio de ticker (Lancaster Colony LANC → MZTI, jul-2025): la API de Stocktwits sigue con el ticker viejo; EDGAR, Yahoo y MarketScreener ya usan el nuevo.
+- (27-nov, Paycom) Tras resultados, leer el Item 5 del 10-Q: ahí salen los planes 10b5-1 de directivos (venta futura) que `form4.mjs` y el escáner no ven hasta que hay ventas.
 
 ## España
 - Web de inversores de la empresa (los PDF bajan aunque la web tenga antibot; a veces desde otro dominio: uploads.puig.com, blob.almirall.com). Grifols enlaza PDF sin `.pdf`: mejor sus 20-F y 6-K en EDGAR.
@@ -77,6 +78,7 @@ Lee solo la sección del país que toque.
 - Stock Connect: la lista de HKEX («China Connect Securities») en xls se lee pasándola a csv con soffice. Consenso de acciones A con la F10 de Eastmoney o el `earningsTrend` de Yahoo; estados del anual de CNINFO a veces en imagen (leer páginas renderizadas) (DunAn, Sieyuan, Wasion, 19-oct).
 - CNINFO publica el acta de cada reunión con inversores (`tabName=relation`, 投资者关系活动记录表): es la fuente primaria de la «conferencia». La historia del PER en acciones A va con el BPA 扣非 (recurrente), la misma base que los casos.
 - (13-nov, Transsion) En una A+H, la H entra en el Stock Connect justo al acabar la estabilización: salto de flujo (arbitraje del descuento H/A), no noticia. Bono a 10 años: POST a ChinaBond `/cbweb-czb-web/czb/czbChartSearch`. Con una H recién salida, `movimiento.mjs` con la A.
+- (27-nov, Eastroc) En CNINFO el `orgId` no es fijo: sacarlo con `topSearch`. Las pérdidas de cambio del efectivo en HKD de una H recién salida no son recurrentes.
 
 ## Corea (19-oct-2026)
 - Sin XBRL en `cuentas.mjs`: DART responde desde la nube con el visor por secciones (avisos en cp949; el PDF devuelve 0 bytes). Consenso en FnGuide. Separar mercado, sector y empresa con `movimiento.mjs` (HD Hyundai Electric).
