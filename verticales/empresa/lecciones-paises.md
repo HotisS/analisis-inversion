@@ -60,6 +60,7 @@ Lee solo la sección del país que toque.
 - Ejercicio a marzo (Keyence al 20 de marzo: `--cierre-dia`); unas empresas nombran el ejercicio por el año en que empieza y los proveedores por el de cierre: fija la equivalencia al principio.
 - Sin arrendamientos en balance hasta 2028; la remuneración no se vota cada año (`voto_cupula_pct`); no hay registro público de operaciones de directivos; cortos solo por encima del 0,5 %.
 - Si la web de RI está bloqueada, el feed de eir-parts (`announcement_3.js`) y `disclosure2dl` de EDINET funcionan sin clave; los PDF que salen vacíos con `pdftotext` se leen con pdfminer. Las participaciones cruzadas van al puente a valor de mercado tras el impuesto latente (Takasago, 19-oct).
+- (27-nov, Keyence) Tras un desdoblamiento, el `forwardEps` de Yahoo (`defaultKeyStatistics`) no se ajusta aunque `earningsTrend` sí, y MarketScreener tarda semanas en pasar a la base nueva.
 
 ## Australia
 - Anuncios de la ASX: la API solo da los 5 últimos; los antiguos salen del listado anual (`announcements.do?...&year=`) y `displayAnnouncement.do?display=pdf&idsId=` da el PDF directo (un script corto resolvió 346 anuncios en un minuto; merecería ser `herramientas/asx.mjs`).
@@ -93,6 +94,7 @@ Lee solo la sección del país que toque.
 - TSMC: pr.tsmc.com e investor.tsmc.com dan 403 desde la nube; todo está en EDGAR (6-K de resultados, ventas mensuales y estados semestrales; 20-F). El XBRL de `cuentas.mjs --sec` no trae el último 20-F a tiempo: el último año, del 20-F.
 - Emisores 20-F con Form 4 (TSMC desde marzo de 2026): `form4.mjs` cuenta como compras en mercado las del plan de empleados (código «P»): filtrarlas a mano.
 - Sentimiento: PTT (foro Stock) abre con curl y la cookie `over18=1`.
+- (27-nov, Fortune Electric) Si MOPS rechaza la consulta desde la nube, OpenAPI de la TWSE (`t187ap06_L_ci`, `t187ap07_L_ci`, `t187ap05_L`) y los hechos relevantes de MOPS que reproduce Anue. El consenso FactSet de Anue ya va en la base posterior a la ampliación gratuita. D2 «otra divisa» también salta en EE. UU. tras caídas reales del 20-35 % (Fortinet, Vertiv, Silicon2, 27-nov): mirar la serie diaria antes de buscar el error.
 - (13-nov, ASPEED) MOPS abre por `mopsov.twse.com.tw/server-java/t164sb01?step=1&CO_ID=XXXX&SYEAR=AAAA&SSEASON=N&REPORT_ID=C` (XBRL completo, Big5). D2 de robustez da falsos CORREGIR tras caídas del 20-35 % (lo toma por otra divisa): mirar la historia de precios.
 
 ## Brasil (27-oct-2026: B3, Itaú, BTG, Sabesp)
