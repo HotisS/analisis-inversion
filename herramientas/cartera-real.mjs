@@ -745,7 +745,9 @@ async function flexAEstructura(filas, cuenta) {
   for (const x of filas.filter((y) => y._tag === 'OpenPosition')) {
     const nivel = campo(x, 'levelOfDetail'); if (nivel && !/SUMMARY/i.test(nivel)) continue;
     if (!accion(x)) continue;
-    posiciones.push({ simbolo: simboloFlex(campo(x, 'symbol')), nombre: campo(x, 'description'), mercado: campo(x, 'listingExchange'), divisa: campo(x, 'currency', 'currencyPrimary'),
+    // Derechos («… -RTS»): IBKR les da el símbolo de la acción; se apartan para que no pisen la posición en acciones.
+    const derechos = /-RTS$|\bRIGHTS?\b/i.test(campo(x, 'description') || '');
+    posiciones.push({ simbolo: simboloFlex(campo(x, 'symbol')) + (derechos ? '-RTS' : ''), nombre: campo(x, 'description'), mercado: campo(x, 'listingExchange'), divisa: campo(x, 'currency', 'currencyPrimary'),
       titulos: num(campo(x, 'position')), precio: num(campo(x, 'markPrice')) * enPeniques(x), coste_medio: enPeniques(x) * (num(campo(x, 'costBasisPrice')) || (num(campo(x, 'costBasisMoney')) && num(campo(x, 'position')) ? num(campo(x, 'costBasisMoney')) / num(campo(x, 'position')) : null) || num(campo(x, 'openPrice')) || 0) });
   }
   const caja = filas.filter((y) => y._tag === 'CashReportCurrency' && /BASE/i.test(campo(y, 'currency') || ''));
