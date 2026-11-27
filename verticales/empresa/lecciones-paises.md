@@ -95,6 +95,7 @@ Lee solo la sección del país que toque.
 - Emisores 20-F con Form 4 (TSMC desde marzo de 2026): `form4.mjs` cuenta como compras en mercado las del plan de empleados (código «P»): filtrarlas a mano.
 - Sentimiento: PTT (foro Stock) abre con curl y la cookie `over18=1`.
 - (27-nov, Fortune Electric) Si MOPS rechaza la consulta desde la nube, OpenAPI de la TWSE (`t187ap06_L_ci`, `t187ap07_L_ci`, `t187ap05_L`) y los hechos relevantes de MOPS que reproduce Anue. El consenso FactSet de Anue ya va en la base posterior a la ampliación gratuita. D2 «otra divisa» también salta en EE. UU. tras caídas reales del 20-35 % (Fortinet, Vertiv, Silicon2, 27-nov): mirar la serie diaria antes de buscar el error.
+- (27-nov, ASML) Estados trimestrales completos en el anexo 99.3 del 6-K (`financial_statementsxusx.htm`). Beta de un valor que pesa mucho en su índice local: medir frente al STOXX 600 (`--indice-beta EXSA.DE`), frente al AEX sale inflada.
 - (13-nov, ASPEED) MOPS abre por `mopsov.twse.com.tw/server-java/t164sb01?step=1&CO_ID=XXXX&SYEAR=AAAA&SSEASON=N&REPORT_ID=C` (XBRL completo, Big5). D2 de robustez da falsos CORREGIR tras caídas del 20-35 % (lo toma por otra divisa): mirar la historia de precios.
 
 ## Brasil (27-oct-2026: B3, Itaú, BTG, Sabesp)

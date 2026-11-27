@@ -78,6 +78,7 @@ Lo genera `node motor/growth.mjs --todos` (no editar a mano). Método v11: [vert
 | Alnylam Pharmaceuticals | ALNY | 62.7 | 2/8 | -10,1 % | -5 % | Vender | — | 191.7 USD | 2026-10-14 |
 | Boston Scientific | BSX | 46 | 2/8 | -10,2 % | -4 % | Vender | — | 37 USD | 2026-10-14 |
 | Hensoldt AG | HAG | 57 | 2/8 | -13,3 % | -10,8 % | Vender | — | 65.3 EUR | 2026-10-14 |
+| Glaukos | GKOS | 83 | 6/8 | -13,6 % | -11,9 % | Vender | — | 213.9 USD | 2026-11-27 |
 | Credo Technology Group | CRDO | 66.8 | 3/8 | -14 % | -11,7 % | Vender | — | 132.4 USD | 2026-10-15 |
 | Addtech AB | ADDT-B | 46.8 | 1/8 | -14,4 % | -12 % | Vender | — | 262 SEK | 2026-10-14 |
 | GE Vernova Inc. | GEV | 61.8 | 3/8 | -14,8 % | -12,6 % | Vender | — | 814 USD | 2026-10-14 |
