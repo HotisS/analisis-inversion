@@ -360,7 +360,10 @@ async function foto({ semanal = false } = {}) {
   const filas = [];
   for (const p of pos.values()) {
     if (p.titulos <= 0 && !p.ventas_eur) continue;
-    const s = await serie(p.simbolo);
+    let s = await serie(p.simbolo);
+    // Precio fijado a mano (derechos de un dividendo flexible, por ejemplo): precios-manuales.json de la carpeta privada.
+    const man = leer(join(DATOS, 'precios-manuales.json'), {})[p.clave];
+    if (s?.error && man?.precio != null && (!man.hasta || hoy <= man.hasta)) s = { divisa: man.divisa || p.divisa, ahora: +man.precio, cierres: [[hoy, +man.precio]] };
     if (s?.error && p.titulos > 0) { console.error(`Sin precio para ${p.clave} (${p.simbolo}): ${s.error}`); }
     const div = s?.divisa || p.divisa;
     const precio = precioEn(s, null), fx = await eurPor(div, null);
