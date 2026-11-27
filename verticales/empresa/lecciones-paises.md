@@ -85,6 +85,7 @@ Lee solo la sección del país que toque.
 ## Arabia Saudí (19-oct-2026)
 - Documentos con la API de Argaam IR (estados a menudo escaneados); `^TASI.SR` no da datos en Yahoo: índice con el ETF KSA; Tadawul cotiza de domingo a jueves y cierra a las 12:00 UTC; el zakat sube el tipo impositivo aparente y `robustez` D5 lo marca sin que el BPA esté inflado (EIC).
 - Argaam `financial-reports/company-report/<id>/<año>/70|71|72` da las tablas del 1T, 1S y 9M el mismo día; el anuncio completo de Tadawul sale en el inglés de Mubasher. En la nube, el token de Argaam IR puede quedar denegado: puente con el último balance (EIC, 26-oct).
+- (27-nov, Almawarid) XBRL oficiales de Saudi Exchange y anuncios de Tadawul: se leen en `financialfilings.com/companies/<nombre>/` y se bajan de `cdn.financialreports.eu` con `descargar.mjs` aunque Saudi Exchange dé 403.
 
 ## Taiwán (21-oct-2026)
 - TSMC: pr.tsmc.com e investor.tsmc.com dan 403 desde la nube; todo está en EDGAR (6-K de resultados, ventas mensuales y estados semestrales; 20-F). El XBRL de `cuentas.mjs --sec` no trae el último 20-F a tiempo: el último año, del 20-F.
