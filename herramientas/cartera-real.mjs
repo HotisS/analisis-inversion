@@ -496,7 +496,7 @@ async function calcularAvisos(filas, cartera, hist, hoy) {
   const vendiendo = new Set(pend.vender || []);
   for (const x of filas.filter((y) => y.titulos > 0)) {
     if (x.peso_pct > REGLAS.tope_posicion_pct && !noTocar[x.clave]) A.push({ nivel: 'peso', clave: x.clave, texto: `${x.nombre} pesa un ${f(x.peso_pct)} % (tope ${REGLAS.tope_posicion_pct} %). ${hasta[x.clave] ? `No se amplía; no se recorta antes del ${hasta[x.clave]} (tres meses).` : 'Hay que recortar o no ampliar.'}` });
-    if (x.valor_eur < REGLAS.minimo_posicion_eur && !vendiendo.has(x.clave) && !noTocar[x.clave]) A.push({ nivel: 'peso', clave: x.clave, texto: `${x.nombre} vale ${fe(x.valor_eur)}, por debajo del mínimo de ${fe(REGLAS.minimo_posicion_eur)}: ${hasta[x.clave] ? `no se vende antes del ${hasta[x.clave]} (tres meses); solo cabe ampliar si vuelve a ser compra.` : 'ampliar o vender.'}` });
+    if (x.valor_eur < REGLAS.minimo_posicion_eur && !/-RTS$/.test(x.clave) && !vendiendo.has(x.clave) && !noTocar[x.clave]) A.push({ nivel: 'peso', clave: x.clave, texto: `${x.nombre} vale ${fe(x.valor_eur)}, por debajo del mínimo de ${fe(REGLAS.minimo_posicion_eur)}: ${hasta[x.clave] ? `no se vende antes del ${hasta[x.clave]} (tres meses); solo cabe ampliar si vuelve a ser compra.` : 'ampliar o vender.'}` });
     const pv = x.previsto;
     if (pv && pv.dias >= 30 && pv.desvio_pts <= -15) A.push({ nivel: 'desvio', clave: x.clave, texto: `${x.nombre} va ${f(-pv.desvio_pts, 0)} puntos por debajo de lo previsto (${fp(pv.real_pct)} frente a ${fp(pv.esperado_hoy_pct)} en ${pv.dias} días). Revisar la tesis.` });
     if (pv && pv.real_pct <= -20) A.push({ nivel: 'desvio', clave: x.clave, texto: `${x.nombre} cae un ${f(-pv.real_pct, 0)} % desde la compra. Revisar la tesis y la señal de alarma del informe.` });
@@ -709,7 +709,7 @@ function filasFlexXml(texto) {
 }
 // El Flex escribe algunos símbolos distinto que el conector: con la bolsa (4568.T) o con una minúscula al final en
 // Madrid (FDRe). Se dejan como el conector para que posiciones, operaciones y dividendos casen.
-const simboloFlex = (s) => { const t = String(s || '').trim(); return t.replace(/\.[A-Z]{1,2}$/, '').replace(/^([A-Z0-9]{2,})[a-z]+$/, '$1') || t; };
+const simboloFlex = (s) => { const t = String(s || '').trim().replace(/^\d{14}(?=[A-Z])/, ''); return t.replace(/\.[A-Z]{1,2}$/, '').replace(/^([A-Z0-9]{2,})[a-z]+$/, '$1') || t; };
 // Algunas cuentas traen fifoPnlRealized a 0 en todas las ventas; entonces el beneficio sale de lo cobrado, la comisión
 // y el coste de lo vendido («cost», en negativo en las ventas): es la misma cuenta que hace IBKR.
 const realizadoFlex = (x) => {
